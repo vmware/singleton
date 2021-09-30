@@ -1,101 +1,147 @@
-Singleton
-============
+# I18NClient.NET
 
-A service that provides support for Software Internationalization and Localization
+## Overview
 
-Introduction
-------------
-Singleton is an open-source application for streamlining software globalization. It standardizes and simplifies software application globalization – not just in L10n, but in i18n too. 
+I18N .NET client is tailored for the next generation of internationalization development. In a multi-cloud environment, the development of large-scale software project source strings and the way to obtain translations are very different from traditional internationalization software development. 
 
-Singleton was originally developed under the R&D Operations and Central Services (ROCS) team in VMware. The core application is written using the Java™ programming language. Client-side code implementation is also available – in JavaScript (Angular, AngularJS and NodeJS web frameworks), C#, and Java™ programming languages. While VMware continues to lead development and maintenance of Singleton, the organization has decided to make it available to the open source community. In May 2019, VMware has decided to release an open-source repository in GitHub. We invite you to collaborate with us to enrich Singleton's resources and help organizations that will adopt it thrive. 
+> Fast, convenient and flexible are the most basic requirements.
 
-How does it work?
-------------
-The L10n capabilities of Singleton decouple localized resources from the application software. Singleton delivers a web service that provides an API for sending source artifacts for translation. These artifacts are processed externally, and localized resources are then embedded into the Singleton Service. L10n functions in Singleton are separated from the core application, which makes it possible to update or add new language support independently from the core application's release cycle – a requirement for fast-paced, agile releases as well as the SaaS world. Singleton's interoperability with multiple applications results to a simpler, more consistent quality of L10n across the board.
+I18N .NET client is based on .NET Standard 2.0 with full pluggable architecture, aiming to provide i18n support (localization and I18n data formatting) for most .NET related applications.
 
-The i18n capabilities of Singleton eliminate the need for developers to learn different APIs for i18n across technologies and programming languages. It acts as an abstraction layer that provides consistent i18n format (e.g. date, time, number, and currency) to various applications that may be written in different programming languages. Its web service API exposes REST endpoints for i18n, which naturally provides abstraction across multiple clients. This allows for a programming language–agnostic i18n implementation, significantly reducing the implementation effort of software developers, allowing them to focus on implementing new features and innovation. It also allows for consistent quality of i18n.
+Current Features Include:
 
-Features
----------
- * Singleton Core API - RESTful web services for delivering localized resources.
- * Source Collection - RESTful web service to collect source text that are to be translated. To use this feature, the Localization Manager has to be installed in addition to the service installation described in the succeeding section. See User Guide for details.
- * Pseudo-translation - a way to test product compatibility with locale when translated resources are not yet available. It uses auto-generated text for testing various aspects of localization readiness, including character set support, UI design, and hard coding. See User Guide for details.
- 
- 
-Upcoming features
----------
- * (To Do)
- *
+- Full Pluggable Architecture
+- Local Resource Bundle Loading
+- Remote Resource Loading
+- Configurable Resource Loading Strategy
+  - Remote Only
+  - Local Only
+  - Mixed
+- Configurable Cache Manager
+- I18N Resource Management
+- Runtime Culture Management
 
-Prerequisites
----------
- * [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) (Java 9+ are not supported, will get compiler issue)
- * [Git](https://git-scm.com/downloads)
+## Installation
 
-Building from source code
----------
- Clone the repository using Git.
- ```
- git clone https://github.com/vmware/singleton.git
- Or
- git clone git@github.com:vmware/singleton.git
- ```
- Go to singleton/g11n-ws to run a build using Gradle.
- ```
- cd singleton/g11n-ws
- ./gradlew build
- ```
- Jar files will be generated inside the following location:
- ```
- singleton/publish (Eg. singleton/publish/singleton-0.1.0.jar)
- ```
- 
-To start using Singleton Service
----------
- Navigate to singleton/publish and run the Spring Boot main application.
- ```
- cd ../publish
- java -jar singleton-0.1.0.jar
- ```
- A user interface for testing all available API endpoints will be available in the following URL:
- ```
- https://localhost:8090/i18n/api/doc/swagger-ui.html
- ```
- or
-  ```
- http://localhost:8091/i18n/api/doc/swagger-ui.html
- ```
- Sample translation resources will be in the following location:
- ```
- singleton/l10n/bundles
- ```
- Use the following as URI/request parameters to test the API. These parameters come from the sample translation resources.
- ```  
- productName: "SampleProject"
- version: "1.0.0"
- component: "component1" or "component2"
- locale: "en", "ja" or "es"
- ```
+Nuget:
 
-Singleton Clients
-----------------
- Singleton also provides client bindings to talk with Singleton Service.
+```bash
+Install-package I18NClient.NET
+```
 
- * [JAVA Client](https://github.com/vmware/singleton/tree/g11n-java-client)
- * [Angular Client](https://github.com/vmware/singleton/tree/g11n-angular-client)
- * [JS Client](https://github.com/vmware/singleton/tree/g11n-js-client)
- * [Go Client](https://github.com/vmware/singleton/tree/g11n-go-client)
+## Basic Usage
 
-Online Resources
-----------------
- We welcome discussions about and contributions to the project!
- 
- * Feel free to start a conversation with us at [Stackoverflow](https://stackoverflow.com/). Tag your question with "vmware-singleton" and we will get back to you.
- * User Guide: 
- * Website: https://vmware.github.io/singleton/
+1.  Configure the `I18NClientOptions` according to the business requirement, in the actual application development process, these options are recommended to be defined  and configured in the application level configuration file, and then loaded to the I18NClientOptions at runtime.
+
+   ```c#
+   var options = new I18NClientOptions()
+   {
+       ProductName = "Sample",
+       Version = "1.0.0",
+       SupportedLanguages = new List<string>() {
+          "en-US",
+          "zh-CN",
+          "de"
+       },
+       BackendServiceUrl = "http://localhost:8080",
+       OfflineResourceRelativePath = "Resources.{0}.LabelValues",
+       DefaultLanguage = "en-US",
+       MaxDegreeOfParallelism  = 20
+   };
+   ```
+
+2. Select and assemble plug-ins according to actual business needs. For example, the source string may come from a local file, or the strings may be stored in the DB due to historical reasons, or it may be loaded through a web service. There are also many different options for the loading method of translation, especially in some large-scale projects, the pre-design did not consider the needs of internationalization. 
+
+   > Note: The configuration of the plug-in is not mandatory, we have the recommended process with default configuration.
+
+   ##### Default
+
+   ```c#
+   var client = new I18NClientBuilder(options).Build();
+   ```
+   
+   ##### Mixed loading strategy
+   
+   There is a usage scenario where the source string and basic translation are saved in a local resource file, and a remote translation service is also connected to update the local translation cache, which not only ensures the speed and stability of application UI loading, but also reaches the need to update the translation at runtime.
+   
+   ```c#
+   var client = new I18NClientBuilder(options)
+       .WithLoadingStrategy<MixedLoadingStrategy>()
+       .Build();
+   ```
+   
+   ##### Customize foundation services
+   
+   All foundation services can be replaced according to business needs, such as logger, cache and loader, etc.
+   
+   ```c#
+   var client = new I18NClientBuilder(options)
+       .WithComponentMessageCacheManager<CustomizedCacheManager>()
+       .WithLocalLoader<ResxLocalLoader>()
+       .WithRemoteLoader<SingletonRemoteLoader>()
+       .WithLogger<TraceLogger>()
+       .Build();
+   ```
+   
+   > Note: It is best to build I18N client at application start, and then use it in different components and services in the form of dependency injection.
+
+3. *Cache warming*, here are several cache warm-up schemes and cache refresh schemes.
+
+   ##### By component and language
+
+   This is suitable for caching translations according to functional modules, cache translation on demand.
+
+   ```c#
+   var success = await client.ResourceService.TryInitTranslationsByComponentAsync("Apps", "en-US");
+   ```
+
+   ##### By product and language
+
+   In many cases, you may only need to warm up some commonly used languages or source languages by product scope.
+
+   ```c#
+   var success = await client.ResourceService.TryInitTranslationsByLanguageAsync("en-US");
+   ```
+
+   ##### By product
+
+   If you need to warm up all strings without distinguishing between languages, this API is the right choice.
+
+   ```c#
+   var success = await client.ResourceService.TryInitTranslationsByProductAsync();
+   ```
+
+4.  Runtime message call, at the resource service level, some low-level APIs will be provided to obtain related i18n resources.
+
+   ```c#
+   var supportedComponentList = await client.ResourceService.GetSupportedComponentListAsync();
+   var supportedLanguageList = await client.ResourceService.GetSupportedLanguageListAsync();
+   var component = await client.ResourceService.GetTranslationsByComponentAsync("Account", "en-US");
+   var translation = await client.ResourceService.GetTranslationByKeyAsync("Account", "ALLOW_HTTP_HTTPS", "zh-CN");
+   ```
+
+> Note: The public APIs in this lib are asynchronous , in most cases, you should access the value by using **Await** or **await** instead of accessing the property directly, but in some cases if you need synchronous APIs, please use the APIs from resource service extension which have been wrapped to avoid deadlock issues. 
+
+## API
 
 
-License
---------
-Singleton is released under [EPL v2.0 license](https://github.com/vmware/singleton/blob/master/LICENSE.txt).
 
+## Compatibility
+
+
+| .NET Implementation | Version Support |
+| ------ | ------ |
+| .NET Core and .NET 5 | 2.0, 2.1, 2.2, 3.0, 3.1, 5.0 |
+| .NET Framework | 4.6.1, 4.6.2, 4.7, 4.7.1, 4.7.2, 4.8 |
+| Mono | 5.4, 6.4 |
+| Xamarin.iOS | 10.14, 12.16 |
+| Xamarin.Android | 8.0, 10.0 |
+| Universal Windows Platform | 10.0.16299, TBD |
+| Universal Windows Platform | 2018.1 |
+
+## Todo
+
+- [x] Message localizer
+- [ ] Datetime formatter
+- [ ] Number formatter
+- [ ] Plural handler

@@ -1,0 +1,1035 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="MessageTemplates_Content_AccessFileAndCommentNavigateToSSPSection" xml:space="preserve">
+    <value>Bu dosyaya ve yorumlarına, Self Servis Portalı bölümüne giderek ulaşabilirsiniz</value>
+  </data>
+  <data name="MessageTemplates_Content_AccessFolderNavigateToSSPSection" xml:space="preserve">
+    <value>Bu klasöre, Self Servis Portalı bölümüne giderek ulaşabilirsiniz</value>
+  </data>
+  <data name="MessageTemplates_Content_AccountEnabledActivateDeviceUsingBrowserNavigateTo" xml:space="preserve">
+    <value>Workspace ONE UEM hesabınız etkinleştirildi; artık aygıtınızı etkinleştirebilirsiniz. Lütfen aygıtınızın tarayıcısını kullanarak şuraya gidin:</value>
+  </data>
+  <data name="MessageTemplates_Content_AccountEnabledFollowStepsToEnrollDevice" xml:space="preserve">
+    <value>Tebrikler! Workspace ONE UEM hesabınız etkinleştirildi. Aygıtınızı kaydetmek için lütfen aşağıdaki adımları uygulayın.</value>
+  </data>
+  <data name="MessageTemplates_Content_AccountExpirationExpirationDate" xml:space="preserve">
+    <value>Hesap Sona Erme Tarihi: {ExpirationDate}</value>
+  </data>
+  <data name="MessageTemplates_Content_AdminConsole" xml:space="preserve">
+    <value>Workspace ONE UEM Yönetici Konsolu</value>
+  </data>
+  <data name="MessageTemplates_Content_AdminCreatedLogIntoConsoleUsingCredential" xml:space="preserve">
+    <value>Workspace ONE UEM yönetici hesabınız oluşturuldu. Artık aşağıdaki kimlik bilgilerini kullanarak Workspace ONE UEM Administrator Console'da oturum açabilirsiniz:</value>
+  </data>
+  <data name="MessageTemplates_Content_AdminCreatedWithDetails" xml:space="preserve">
+    <value>Workspace ONE UEM yönetici hesabınız oluşturuldu. Konsol: {ConsoleUrl} Kullanıcı adı: {AdminUserName} Parola: {AdminPassword}</value>
+  </data>
+  <data name="MessageTemplates_Content_AdminFirstNameAdminLastName" xml:space="preserve">
+    <value>{AdminFirstName} {AdminLastName},</value>
+  </data>
+  <data name="MessageTemplates_Content_AdminInfoUpdatedLogIntoConsoleToConfirm" xml:space="preserve">
+    <value>Workspace ONE UEM yönetici bilgileriniz güncellendi. Hesap bilgilerinizi onaylamak için lütfen Console'da oturum açın.</value>
+  </data>
+  <data name="MessageTemplates_Content_AdminPasswordReset" xml:space="preserve">
+    <value>Siz ya da başka bir yönetici tarafından bir parola sıfırlama işlemi başlatılmıştır. Bu doğru değilse daha fazla bilgi almak için lütfen yöneticinizle iletişime geçin. Web sitemize geri dönmek ve parolanızı değiştirmek için şu bağlantıyı kullanabilirsiniz:</value>
+  </data>
+  <data name="MessageTemplates_Content_AdminPasswordUpdated" xml:space="preserve">
+    <value>Workspace ONE UEM parolanız güncellendi.</value>
+  </data>
+  <data name="MessageTemplates_Content_AdminPasswordWillExpireInDays" xml:space="preserve">
+    <value>Workspace ONE UEM Console hesabı "{AdminUserName}" için yönetici parolanızın süresi {DaysToBasicAdminPasswordExpiry} gün içinde dolacak.</value>
+  </data>
+  <data name="MessageTemplates_Content_AdminStatusChanged" xml:space="preserve">
+    <value>Workspace ONE UEM yönetici durumunuz {AdminStatus} olarak değiştirildi.</value>
+  </data>
+  <data name="MessageTemplates_Content_AlternativelyScanQrCodeToBeginEnrollment" xml:space="preserve">
+    <value>Alternatif olarak, kayıt işlemine başlamak için QR kodunu tarayın:</value>
+  </data>
+  <data name="MessageTemplates_Content_AppAssignedAccessInternalAppPageReviewPublish" xml:space="preserve">
+    <value>{ApplicationName} aygıtlara atandı ve artık bu aygıtlara yayınlamaya hazır. Workspace ONE UEM Console'daki Dahili Uygulamalar sayfasına giderek bu uygulamaya ulaşabilirsiniz. Lütfen aygıt atamasını gözden geçirin ve uygulamayı yayınlayın. Uygulama detayları aşağıda listelenmiştir:</value>
+  </data>
+  <data name="MessageTemplates_Content_AppAvailableForDownloadFromUem" xml:space="preserve">
+    <value>{ApplicationName}, Workspace ONE UEM Uygulama Kataloğu'ndan aygıtınıza indirilmeye hazır.</value>
+  </data>
+  <data name="MessageTemplates_Content_AppAvailableForDownloadFromUemWithDetails" xml:space="preserve">
+    <value>{ApplicationName}, Workspace ONE UEM Uygulama Kataloğu'ndan aygıtınıza indirilmeye hazır. Uygulamanın ayrıntıları aşağıda listelenmiştir:</value>
+  </data>
+  <data name="MessageTemplates_Content_AppCreatedAccessInternalAppPage" xml:space="preserve">
+    <value>{ApplicationName} adlı uygulama oluşturuldu. Workspace ONE UEM Console'daki Dahili Uygulamalar sayfasına giderek bu uygulamaya ulaşabilirsiniz. Uygulama ayrıntıları aşağıda listelenmiştir:</value>
+  </data>
+  <data name="MessageTemplates_Content_AppCreatedAccessInternalAppPageReviewSubmit" xml:space="preserve">
+    <value>{ApplicationName} oluşturuldu ve incelenmeye hazır. Workspace ONE UEM Console'daki Dahili Uygulamalar sayfasına giderek bu uygulamaya ulaşabilirsiniz. Lütfen uygulamayı gözden geçirip atama için gönderin. Uygulama ayrıntıları aşağıdadır:</value>
+  </data>
+  <data name="MessageTemplates_Content_AppErrorFindLogFile" xml:space="preserve">
+    <value>{ApplicationName} uygulaması hata döndürdü. Lütfen ekli günlük dosyasını bulun.</value>
+  </data>
+  <data name="MessageTemplates_Content_AppEulaUpdatedAcceptanceRequired" xml:space="preserve">
+    <value>Uygulama Kullanıcısı Sözleşmenizin şartları güncellendi ve bunları kabul etmeniz gerekiyor.</value>
+  </data>
+  <data name="MessageTemplates_Content_AppEulaUpdatedAcceptanceRequiredBeforeGracePeriod" xml:space="preserve">
+    <value>Uygulama Kullanıcısı Sözleşmenizin şartları güncellendi ve tanınan süre sonra ermeden bunları kabul etmeniz gerekiyor.</value>
+  </data>
+  <data name="MessageTemplates_Content_AppEulaUpdatedAcceptanceRequiredLogInToAppCatalogToAccept" xml:space="preserve">
+    <value>Uygulamanıza ait Kullanıcı Sözleşmesi'nin şartları güncellendi ve bunları kabul etmeniz gerekiyor. Kabul etmek için lütfen Workspace ONE UEM Uygulama Kataloğu'nda oturum açın.</value>
+  </data>
+  <data name="MessageTemplates_Content_AppGroupCreatedNavigateToSettingsPageToAccessAppGroups" xml:space="preserve">
+    <value>{VendorName} ile eşitleme sonucunda {CountOfApplicationGroups} Uygulama Grubu oluşturuldu. Bu Uygulama Gruplarının ayrıntılarını ekte bulabilirsiniz. Bu uygulama gruplarına, Workspace ONE UEM Console'daki Uygulamalar ve Kitaplar &gt; Uygulama Ayarları sayfasında bulunan Uygulama Gruplarına giderek ulaşabilirsiniz.</value>
+  </data>
+  <data name="MessageTemplates_Content_AppHasBeenPurchasedOpenHubToDownload" xml:space="preserve">
+    <value>{ApplicationName} sizin adınıza satın alındı ve indirilmeye hazır. Satın alınan uygulamayı indirmek için Workspace ONE Intelligent Hub'ı açın.</value>
+  </data>
+  <data name="MessageTemplates_Content_AppNameAppVersion" xml:space="preserve">
+    <value>{ApplicationName}, {ApplicationVersion}</value>
+  </data>
+  <data name="MessageTemplates_Content_AppReputationAnalysisCompletedForApp" xml:space="preserve">
+    <value>{ApplicationName} için Uygulama Geçmişi Analizi tamamlandı ve sonuçlar hazır.</value>
+  </data>
+  <data name="MessageTemplates_Content_AppReviewedAccessInternalAppPageAssignSubmit" xml:space="preserve">
+    <value>{ApplicationName} incelendi ve aygıtlara atanmaya hazır. Workspace ONE UEM Console'daki Dahili Uygulamalar sayfasına giderek bu uygulamaya ulaşabilirsiniz. Lütfen uygulamayı aygıtlara atayın ve yayınlama için gönderin. Uygulama ayrıntıları aşağıda listelenmiştir:</value>
+  </data>
+  <data name="MessageTemplates_Content_AuthenticationRequiredCredentialsBelow" xml:space="preserve">
+    <value>Kimlik doğrulaması gerekebilir. Benzersiz kimlik bilgileriniz aşağıdadır:</value>
+  </data>
+  <data name="MessageTemplates_Content_ClickHere" xml:space="preserve">
+    <value>buraya tıklayın</value>
+  </data>
+  <data name="MessageTemplates_Content_ClickInstallAcceptPrompts" xml:space="preserve">
+    <value>"Yükle"ye tıklayın ve yapılandırma istemlerine devam etmeyi kabul edin.</value>
+  </data>
+  <data name="MessageTemplates_Content_ConsoleURL" xml:space="preserve">
+    <value>Console URL'si:</value>
+  </data>
+  <data name="MessageTemplates_Content_ContactItHelpDeskIfHaveQuestions" xml:space="preserve">
+    <value>Sorularınız varsa lütfen BT yardım masanız ile iletişime geçin:</value>
+  </data>
+  <data name="MessageTemplates_Content_ContentComment" xml:space="preserve">
+    <value>"{Comment}"</value>
+  </data>
+  <data name="MessageTemplates_Content_ContentShareUserFirstNameLastName" xml:space="preserve">
+    <value>{ContentShareUserFirstName} {ContentShareUserLastName}</value>
+  </data>
+  <data name="MessageTemplates_Content_ContentUserIsUsingContentLocker" xml:space="preserve">
+    <value>{ContentShareUserFirstName}, sizinle kolay ve güvenli bir şekilde dosya paylaşmak için Workspace ONE UEM Content Locker çözümünü kullanıyor.</value>
+  </data>
+  <data name="Messagetemplates_Content_DearAdministrator" xml:space="preserve">
+    <value>Sayın Yönetici</value>
+  </data>
+  <data name="MessageTemplates_Content_DeviceApprovedForAccessUsingBrowserNavigateTo" xml:space="preserve">
+    <value>Aygıtınız mobil erişim için onaylandı. Lütfen aygıtınızın web tarayıcısını kullanarak şuraya gidin:</value>
+  </data>
+  <data name="MessageTemplates_Content_DeviceBlockedFromEnrollmentForReason" xml:space="preserve">
+    <value>{DevicePlatform} {DeviceModel} aygıtınızın aşağıdaki nedenden ötürü kaydedilmesi engellendi:</value>
+  </data>
+  <data name="MessageTemplates_Content_DeviceEnrollmentUsingCredentials" xml:space="preserve">
+    <value>{DeviceFriendlyName} aygıtınız, {EnrollmentUser} adlı kullanıcının kimlik bilgilerini kullanarak Workspace ONE UEM kaydını başarıyla tamamladı.</value>
+  </data>
+  <data name="MessageTemplates_Content_DeviceHasNotReportedComplianceToUemLaunchHubToCheckIn" xml:space="preserve">
+    <value>Aygıtınız gerekli zaman çerçevesinde uyumluluk durumunu Workspace ONE UEM'ye rapor etmedi. Teslim edilmesi için lütfen aygıtınızda Workspace ONE Intelligent Hub'ı başlatın.</value>
+  </data>
+  <data name="MessageTemplates_Content_DeviceInViolationOfOrgCompliancePolicy" xml:space="preserve">
+    <value>{DeviceFriendlyName} aygıtınız şu anda kurumunuzun uyumluluk ilkesini ihlal ediyor:</value>
+  </data>
+  <data name="MessageTemplates_Content_DeviceInViolationOfPolicyActionTakenIfNonCompliant" xml:space="preserve">
+    <value>Aygıtınız, "{PolicyName}" uyumluluk ilkesini ihlal ediyor. Aygıt uyumsuz olmayı sürdürürse başka eylem gerçekleştirilecek.</value>
+  </data>
+  <data name="MessageTemplates_Content_DeviceLostCallMe" xml:space="preserve">
+    <value>Bu aygıt kayboldu. Lütfen beni arayın.</value>
+  </data>
+  <data name="MessageTemplates_Content_DeviceNoAccessData" xml:space="preserve">
+    <value>Bu aygıt, kayıt sırasında dağıtılan ayarlara, uygulamalara ve içeriklere artık erişemiyor.</value>
+  </data>
+  <data name="MessageTemplates_Content_DeviceNonCompliantActionsInEffect" xml:space="preserve">
+    <value>Uyumsuz olduğu süre boyunca aygıtınızda aşağıdaki eylemler etkili olacak:</value>
+  </data>
+  <data name="MessageTemplates_Content_DevicesWipedWithinLastMinutes" xml:space="preserve">
+    <value>Alışılmadık biçimde çok sayıda aygıtın son {EnterpriseWipeInterval} dakika içinde Kurum veya Aygıt Tarafından Silinmiş olduğunu fark ettik.</value>
+  </data>
+  <data name="MessageTemplates_Content_DevicesWithAppExceededLimitRemovalOnHoldUntilConfirm" xml:space="preserve">
+    <value>{BundleID} uygulamasının bulunduğu aygıt sayısı, Uygulama Kaldırma Sınırınızı aştı. Bu uygulamaların kaldırılması, miktar ve bu uygulamaya yönelik tüm kaldırma komutlarından vazgeçmek isteyip istemediğiniz tarafınızdan onaylanana kadar beklemeye alındı.</value>
+  </data>
+  <data name="MessageTemplates_Content_DeviceUnenrolled" xml:space="preserve">
+    <value>{DeviceFriendlyName} aygıtınızın kaydı iptal edildi.</value>
+  </data>
+  <data name="MessageTemplates_Content_DoNotEnterInfoUntilInContainerApp" xml:space="preserve">
+    <value>Aşağıda resmedilen Workspace ONE UEM Container Uygulaması'na güvenli bir şekilde giriş yapmadan lütfen kişisel veya kuruma özel bilgi girmeyin:</value>
+  </data>
+  <data name="MessageTemplates_Content_DoNotEnterInfoUntilInHubApp" xml:space="preserve">
+    <value>Aşağıda resmedilen Workspace ONE UEM Intelligent Hub'a güvenli bir şekilde giriş yapmadan lütfen kişisel veya da kuruma özel bilgi girmeyin:</value>
+  </data>
+  <data name="MessageTemplates_Content_DownloadHubApp" xml:space="preserve">
+    <value>Workspace ONE Intelligent Hub uygulamasını indirin.</value>
+  </data>
+  <data name="MessageTemplates_Content_DownloadHubAppOnDeviceYouWantToEnrollAt" xml:space="preserve">
+    <value>Workspace ONE Intelligent Hub uygulamasını kaydolmak istediğiniz aygıta indirin</value>
+  </data>
+  <data name="MessageTemplates_Content_EmailDomainConfirmedUserWithSameDomainEnrolledInto" xml:space="preserve">
+    <value>E-posta etki alanınız onaylandıktan sonra, aynı etki alanına sahip bir e-posta adresi kullanarak kaydolan kullanıcılar aşağıdaki URL'ye ve Grup Kimliği'ne kaydedilecektir:</value>
+  </data>
+  <data name="MessageTemplates_Content_EmailDomainRegisteredVerifyEmailAddress" xml:space="preserve">
+    <value>E-posta etki alanınız, e-posta tabanlı kayıt için kaydedildi. Lütfen aşağıdaki bağlantıya tıklayarak e-posta adresinizi doğrulayın:</value>
+  </data>
+  <data name="MessageTemplates_Content_EnrollmentURL" xml:space="preserve">
+    <value>Kayıt URL'si:</value>
+  </data>
+  <data name="MessageTemplates_Content_EnrollYourDevice" xml:space="preserve">
+    <value>Aygıtınızı kaydedin.</value>
+  </data>
+  <data name="MessageTemplates_Content_EnterCredentialsToAuthenticateDevice" xml:space="preserve">
+    <value>Lütfen aygıtınızın kimliğini doğrulamak için kimlik bilgilerinizi girin.</value>
+  </data>
+  <data name="MessageTemplates_Content_EnterTokenBelowInAppToResetPasscode" xml:space="preserve">
+    <value>Şifrenizi sıfırlamak için uygulamanızdaki "Şifremi Unuttum" seçeneğini kullanırken lütfen aşağıdaki belirteci girin.</value>
+  </data>
+  <data name="MessageTemplates_Content_EnterTokenWhenPromptedDuringAuth" xml:space="preserve">
+    <value>Uygulama Kataloğu kimlik doğrulaması sırasında sorulduğunda lütfen aşağıda verilen belirteci girin.</value>
+  </data>
+  <data name="MessageTemplates_Content_EnterTokenWhenPromptedWithDetails" xml:space="preserve">
+    <value>Uygulama Kataloğu kimlik doğrulaması sırasında sorulduğunda lütfen aşağıda verilen belirteci girin. Belirteç: {AppCatalogToken}</value>
+  </data>
+  <data name="MessageTemplates_Content_EulaUpdatedAcceptanceRequired" xml:space="preserve">
+    <value>Workspace ONE UEM Kullanıcı Sözleşmenizin şartları güncellendi ve bunları kabul etmeniz gerekiyor.</value>
+  </data>
+  <data name="MessageTemplates_Content_ExpirationDateTokenExpirationDate" xml:space="preserve">
+    <value>Sona Erme Tarihi: {TokenExpirationDate}</value>
+  </data>
+  <data name="MessageTemplates_Content_FileAccessibleInContentLockerOrContentLockerSync" xml:space="preserve">
+    <value>Ayrıca, dosyaya mobil aygıtınızdaki Content Locker'dan veya bilgisayarınıza yüklüyse Content Locker Eşitleme'den ulaşabilirsiniz.</value>
+  </data>
+  <data name="MessageTemplates_Content_FinalNoticeAppEulaUpdatedLogInToUemToAccept" xml:space="preserve">
+    <value>SON BİLDİRİM: Uygulamanıza ait Kullanıcı Sözleşmesi'nin şartları güncellendi. Lütfen şartları kabul etmek için Workspace ONE UEM Uygulama Kataloğu'nda oturum açın.</value>
+  </data>
+  <data name="MessageTemplates_Content_FinalNotificationIfRejectAppRemoved" xml:space="preserve">
+    <value>Bu son bildirimdir. Kullanıcı Sözleşmesi'nin şartlarını reddederseniz uygulama aygıtınızdan kaldırılacak.</value>
+  </data>
+  <data name="MessageTemplates_Content_FirstNameLastName" xml:space="preserve">
+    <value>{FirstName} {LastName},</value>
+  </data>
+  <data name="MessageTemplates_Content_FolderAccessibleInContentLockerOrContentLockerSync" xml:space="preserve">
+    <value>Ayrıca, klasöre mobil aygıtınızdaki Content Locker'dan veya bilgisayarınıza yüklüyse Content Locker Eşitleme'den ulaşabilirsiniz.</value>
+  </data>
+  <data name="MessageTemplates_Content_FollowPromptsToSetupPasswordAt" xml:space="preserve">
+    <value>Şurada parolanızı ayarlamak için istemleri izleyin:</value>
+  </data>
+  <data name="MessageTemplates_Content_ForFutureAccessRequireCredentials" xml:space="preserve">
+    <value>Klasörlere ileride ulaşmak için aşağıdaki kimlik bilgileri gerekebilir.</value>
+  </data>
+  <data name="MessageTemplates_Content_GoToAppRemovalLogPageToSeeDevicesCanChangeAppRemovalLimitSettings" xml:space="preserve">
+    <value>Etkilenen tüm aygıtların listesini görmek için lütfen {AppRemovalLog} sayfasına gidin. Uygulama Kaldırma Sınırı ayarlarınızı {AppRemovalProtection} konumunda artırıp azaltabilirsiniz.</value>
+  </data>
+  <data name="MessageTemplates_Content_GoToContainerEnrollmentUrlToActivateDevice" xml:space="preserve">
+    <value>Aygıtınızı etkinleştirmek için {ContainerEnrollmentUrl} adresine gidin</value>
+  </data>
+  <data name="MessageTemplates_Content_GoToHubEnrollmentUrlToActivateDevice" xml:space="preserve">
+    <value>Aygıtınızı etkinleştirmek için {HubEnrollmentUrl} adresine gidin</value>
+  </data>
+  <data name="MessageTemplates_Content_GrantedFollowingAdminRoles" xml:space="preserve">
+    <value>Size aşağıdaki Yönetici rollerine erişim izni verildi:</value>
+  </data>
+  <data name="MessageTemplates_Content_GroupIdGroupIdentifier" xml:space="preserve">
+    <value>Grup Kimliği: {GroupIdentifier}</value>
+  </data>
+  <data name="MessageTemplates_Content_HasMentionedYouInCommentOnFile" xml:space="preserve">
+    <value>dosyayla ilgili bir yorumda sizden bahsetti</value>
+  </data>
+  <data name="MessageTemplates_Content_HasSharedYouFolder" xml:space="preserve">
+    <value>klasörü sizinle paylaştı</value>
+  </data>
+  <data name="MessageTemplates_Content_HaveNewFolderSharesNavigateToSSPSection" xml:space="preserve">
+    <value>Sizinle paylaşılan yeni klasörler var. Buna erişmek için Self Servis Portalı bölümüne gidin</value>
+  </data>
+  <data name="MessageTemplates_Content_HoldOnWipeUntilConfirm" xml:space="preserve">
+    <value>İlerideki tüm Silme komutlarını, artan Silme işlemi sayısının nedenini değerlendirebileceğiniz ve gelecekteki tüm Silme komutlarından vazgeçmek istediğinizi onaylayabileceğiniz zamana kadar beklemeye alacağız.</value>
+  </data>
+  <data name="MessageTemplates_Content_IfPasswordExpiresForcedToReset" xml:space="preserve">
+    <value>Hesap parolanızın süresi dolarsa oturum açmadan önce parolanızı sıfırlamaya zorlanacaksınız.</value>
+  </data>
+  <data name="MessageTemplates_Content_IfRejectDeviceUnenrolledRemovalOfData" xml:space="preserve">
+    <value>Kullanıcı Sözleşmesi'nin şartlarını reddederseniz Workspace ONE UEM'den aygıtınızın kaydı kaldırılacak ve bu, aygıtınızdan kuruma özel tüm verilerin kaldırılmasına neden olacak.</value>
+  </data>
+  <data name="MessageTemplates_Content_IfRejectOrNotAcceptRemoveApp" xml:space="preserve">
+    <value>Kullanıcı Sözleşmesi'nin şartlarını reddeder veya tanınan süre içinde kabul etmezseniz uygulama aygıtınızdan kaldırılacak.</value>
+  </data>
+  <data name="MessageTemplates_Content_Important" xml:space="preserve">
+    <value>Önemli:</value>
+  </data>
+  <data name="MessageTemplates_Content_LinkAboveWillExpireOn" xml:space="preserve">
+    <value>Yukarıdaki bağlantının süresi şu tarihte dolacak:</value>
+  </data>
+  <data name="MessageTemplates_Content_LinkExpiredContactItHelpDeskToRequestAt" xml:space="preserve">
+    <value>Bağlantının süresi dolduysa yeni kayıt e-postası istemek için lütfen şuradan BT yardım masanız ile iletişime geçin:</value>
+  </data>
+  <data name="MessageTemplates_Content_LogIntoConsoleToImplementCompliancePolicies" xml:space="preserve">
+    <value>Uyumsuz aygıtları izlemek amacıyla {VendorName} uygulama gruplarını kullanan uyumluluk ilkelerini uygulamak için lütfen Workspace ONE UEM Console'da oturum açın.</value>
+  </data>
+  <data name="MessageTemplates_Content_LogIntoConsoleToResetPassword" xml:space="preserve">
+    <value>Lütfen Workspace ONE UEM Yönetici Konsolu'nda oturum açın ve sağ üst köşedeki adınızı seçip "Hesap Ayarlarını Yönet" seçeneğini belirleyerek parolanızı sıfırlayın.</value>
+  </data>
+  <data name="MessageTemplates_Content_LogIntoSSPToReviewAcceptUpdatedTermsAt" xml:space="preserve">
+    <value>Lütfen Self Servis Portalı'nda oturum açın ve şurada güncellenen Şartları inceleyip kabul edin:</value>
+  </data>
+  <data name="MessageTemplates_Content_LogIntoUemToAcceptChangesForApp" xml:space="preserve">
+    <value>Aşağıdaki uygulamayla ilgili değişiklikleri kabul etmek için lütfen aygıtınızdan Workspace ONE UEM Uygulama Kataloğu'nda oturum açın:</value>
+  </data>
+  <data name="MessageTemplates_Content_MyContent" xml:space="preserve">
+    <value>İçeriğim</value>
+  </data>
+  <data name="MessageTemplates_Content_OnlyDownloadFromOfficialAppStore" xml:space="preserve">
+    <value>Yalnızca aygıtınızın Resmi Uygulama Mağazası'ndan indirin</value>
+  </data>
+  <data name="MessageTemplates_Content_OrContactComplianceSupportPhone" xml:space="preserve">
+    <value>veya ilgili kişi telefonu: {ComplianceSupportPhone}</value>
+  </data>
+  <data name="MessageTemplates_Content_OrContactEnrollmentSupportPhone" xml:space="preserve">
+    <value>veya ilgili kişi telefonu: {EnrollmentSupportPhone}.</value>
+  </data>
+  <data name="MessageTemplates_Content_OurWebsite" xml:space="preserve">
+    <value>web sitemiz</value>
+  </data>
+  <data name="MessageTemplates_Content_PasswordEnrollmentPassword" xml:space="preserve">
+    <value>Parola: {EnrollmentPassword}</value>
+  </data>
+  <data name="MessageTemplates_Content_PasswordResetLink" xml:space="preserve">
+    <value>Parola Sıfırlama Bağlantısı:</value>
+  </data>
+  <data name="MessageTemplates_Content_PasswordResetLinkExpiration" xml:space="preserve">
+    <value>Parola Sıfırlama Bağlantısının Son Kullanım Tarihi:</value>
+  </data>
+  <data name="MessageTemplates_Content_PolicyNamePolicyDescription" xml:space="preserve">
+    <value>{PolicyName}: {PolicyDescription}</value>
+  </data>
+  <data name="MessageTemplates_Content_ProvisioningPackageRequestStatusChangedLogIntoConsoleToSee" xml:space="preserve">
+    <value>Windows Provizyonlama Paketi oluşturma isteğinizin durumu değişti. Ayrıntılı bilgi için lütfen Console'da oturum açın ve bildirimlere bakın.</value>
+  </data>
+  <data name="MessageTemplates_Content_RedirectedToContainerAppOrToDownloadContainerApp" xml:space="preserve">
+    <value>Aygıtınıza yüklüyse Workspace ONE UEM Container uygulamasına yönlendirileceksiniz. Aksi takdirde, uygulamayı indirmek için aygıtınızın resmi uygulama mağazasına yönlendirileceksiniz.</value>
+  </data>
+  <data name="MessageTemplates_Content_RedirectedToHubAppOrToDownloadHubApp" xml:space="preserve">
+    <value>Aygıtınıza yüklüyse Workspace ONE UEM Intelligent Hub uygulamasına yönlendirileceksiniz. Aksi takdirde, uygulamayı indirmek için aygıtınızın resmi uygulama mağazasına yönlendirileceksiniz.</value>
+  </data>
+  <data name="MessageTemplates_Content_Regards" xml:space="preserve">
+    <value>Saygılar,</value>
+  </data>
+  <data name="MessageTemplates_Content_RegisteringEnableDownloadAppPurchasedByOrg" xml:space="preserve">
+    <value>Programa kaydolmak, kurumunuz tarafından sizin adınıza satın alınan uygulamaları indirmenizi sağlar.</value>
+  </data>
+  <data name="MessageTemplates_Content_RegistrationTokenRevoked" xml:space="preserve">
+    <value>Aygıtınızın kayıt belirteci iptal edildi.</value>
+  </data>
+  <data name="MessageTemplates_Content_RegistrationTokenRevokedCannotBeActivated" xml:space="preserve">
+    <value>Aygıtınızın kayıt belirteci iptal edildi ve artık bunu Workspace ONE UEM'de etkinleştiremeyeceksiniz.</value>
+  </data>
+  <data name="MessageTemplates_Content_ResetUrlExpirationText" xml:space="preserve">
+    <value>Yukarıdaki bağlantının süresi {PasswordResetUrlExpiration} saat içinde sona erecektir.</value>
+  </data>
+  <data name="MessageTemplates_Content_ResetUrlRetryText" xml:space="preserve">
+    <value>Bu bağlantı çalışmazsa aşağıdaki bağlantıyı tarayıcınıza kopyalayıp yapıştırmayı deneyin.</value>
+  </data>
+  <data name="MessageTemplates_Content_ResetUrlText" xml:space="preserve">
+    <value>Parolanızı şimdi sıfırlayın</value>
+  </data>
+  <data name="MessageTemplates_Content_RestrictionsLiftedWhenCompliant" xml:space="preserve">
+    <value>Aygıtınıza getirilen kısıtlamalar, aygıtınız tekrar uyumlu olduğunda kaldırılacak.</value>
+  </data>
+  <data name="MessageTemplates_Content_SeeAppReputationAnalysisReportForApp" xml:space="preserve">
+    <value>Lütfen ekteki {ApplicationName} {ApplicationVersion} Uygulaması ile ilgili ayrıntılı Uygulama Geçmişi Analizi raporuna bakın.</value>
+  </data>
+  <data name="MessageTemplates_Content_SeeDeviceWipeDetailsNavigateTo" xml:space="preserve">
+    <value>Silinen veya Silinmeyi bekleyen tüm aygıtların listesine bakmak, her eylemi neyin tetiklediğini anlamak ve her eylemi kaldırmak mı yoksa eyleme devam etmek mi istediğinizi belirtmek için lütfen şuraya gidin:</value>
+  </data>
+  <data name="MessageTemplates_Content_SetUemPassword" xml:space="preserve">
+    <value>Workspace ONE UEM parolanızı ayarlayın.</value>
+  </data>
+  <data name="MessageTemplates_Content_TempAdminCreatedOrModifiedLogIntoConsole" xml:space="preserve">
+    <value>Geçici Workspace ONE UEM yönetici hesabınız oluşturuldu veya değiştirildi. Artık aşağıdaki kimlik bilgilerini kullanarak Workspace ONE UEM Administrator Console'da oturum açabilirsiniz:</value>
+  </data>
+  <data name="MessageTemplates_Content_ToActivateAndAccessContent" xml:space="preserve">
+    <value>Hesabınızı etkinleştirmek ve sizinle paylaşılan içeriğe erişmek için</value>
+  </data>
+  <data name="MessageTemplates_Content_ToComplyWithPolicyAddressViolations" xml:space="preserve">
+    <value>İlkeye uymak için aşağıdaki ihlalleri ele almalısınız:</value>
+  </data>
+  <data name="MessageTemplates_Content_TokenAppCatalogToken" xml:space="preserve">
+    <value>Belirteç: {AppCatalogToken}</value>
+  </data>
+  <data name="MessageTemplates_Content_TokenApplicationAuthenticationToken" xml:space="preserve">
+    <value>Belirteç: {ApplicationAuthenticationToken}</value>
+  </data>
+  <data name="MessageTemplates_Content_ToLearnMoreVisit" xml:space="preserve">
+    <value>Daha fazla bilgi edinmek için lütfen şuraya gidin:</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAdminAccountActivationTitle" xml:space="preserve">
+    <value>Workspace ONE UEM Yönetici Hesabı Etkinleştirme - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAdminPasswordExpiryNotificationTitle" xml:space="preserve">
+    <value>Workspace ONE UEM Yönetici Parolası Kullanım Süresi Sonu Bildirimi - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAdminPasswordResetTitle" xml:space="preserve">
+    <value>Workspace ONE UEM Yönetici Parolası Sıfırlama - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAdminPasswordUpdatedTitle" xml:space="preserve">
+    <value>Workspace ONE UEM Yönetici Parolası Güncellendi - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAdminPersonalInfoUpdatedTitle" xml:space="preserve">
+    <value>Workspace ONE UEM Yönetici Kişisel Bilgileri Güncellendi - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAdminStatusUpdatedTitle" xml:space="preserve">
+    <value>Workspace ONE UEM Yönetici Durumu Güncellendi - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAppCatalogTokenNotificationTitle" xml:space="preserve">
+    <value>Workspace ONE UEM Uygulama Kataloğu Belirteç Bildirimi - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAppEulaUpdateNotificationTitle" xml:space="preserve">
+    <value>Workspace ONE UEM Uygulaması Kullanım Şartları Güncellemesi Bildirimi - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAppForgotPasscodeTokenNotificationTitle" xml:space="preserve">
+    <value>Workspace ONE UEM Uygulaması Şifremi Unuttum Belirteci Bildirimi - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAppGroupCreationNotificationTitle" xml:space="preserve">
+    <value>Workspace ONE UEM Uygulaması Grup Oluşturma Bildirimi - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAppLogNotificationTitle" xml:space="preserve">
+    <value>Workspace ONE UEM Uygulaması Günlük Bildirimi - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAppNotificationTitle" xml:space="preserve">
+    <value>Workspace ONE UEM Uygulaması Bildirimi - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAppPurchaseTitle" xml:space="preserve">
+    <value>Workspace ONE UEM Uygulaması Satın Alma - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAppRemovalNotificationTitle" xml:space="preserve">
+    <value>Workspace ONE UEM Uygulamasını Kaldırma Bildirimi - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAppReputationAnalysisTitle" xml:space="preserve">
+    <value>Workspace ONE UEM Uygulama Geçmişi Analizi - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAppWorkflowAppAssignmentNotificationTitle" xml:space="preserve">
+    <value>Workspace ONE UEM Uygulaması İş Akışı - Uygulama Atama Bildirimi - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAppWorkflowAppCreatedNotificationTitle" xml:space="preserve">
+    <value>Workspace ONE UEM Uygulaması İş Akışı - Uygulama Oluşturma Bildirimi - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAppWorkflowAppPublishNotificationTitle" xml:space="preserve">
+    <value>Workspace ONE UEM Uygulaması İş Akışı - Uygulama Yayınlama Bildirimi - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAppWorkflowAppReviewNotificationTitle" xml:space="preserve">
+    <value>Workspace ONE UEM Uygulaması İş Akışı - Uygulama İnceleme Bildirimi - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemContentNotificationTitle" xml:space="preserve">
+    <value>Workspace ONE UEM İçerik Bildirimi - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemDeviceActivationTitle" xml:space="preserve">
+    <value>Workspace ONE UEM Aygıtı Etkinleştirme - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemDeviceBlockedByEnrollmentRestrictionTitle" xml:space="preserve">
+    <value>Workspace ONE UEM Aygıtı Kayıt Kısıtlaması Tarafından Engellendi - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemDeviceComplianceViolationTitle" xml:space="preserve">
+    <value>Workspace ONE UEM Aygıtı Uyumluluk İhlali - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemDeviceEnrolledTitle" xml:space="preserve">
+    <value>Workspace ONE UEM Aygıtı Başarıyla Kaydedildi - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemDeviceRemovalTitle" xml:space="preserve">
+    <value>Workspace ONE UEM Aygıtı Kaldırma - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemDeviceUnenrolledTitle" xml:space="preserve">
+    <value>Workspace ONE UEM Aygıt Kaydı İptal Edildi - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemEmailDomainRegistrationTitle" xml:space="preserve">
+    <value>Workspace ONE UEM E-posta Etki Alanı Kaydı - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemEulaUpdateTitle" xml:space="preserve">
+    <value>Workspace ONE UEM Kullanım Şartları Güncellemesi - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemFinalNoticeAppEulaUpdateTitle" xml:space="preserve">
+    <value>SON BİLDİRİM - Workspace ONE UEM Uygulaması Kullanım Şartları Güncellemesi - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemLicenseBasedVppNotificationTitle" xml:space="preserve">
+    <value>Workspace ONE UEM Lisans Tabanlı Toplu Satın Alma Programı (VPP) Bildirimi - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemProvisioningPackageTitle" xml:space="preserve">
+    <value>Workspace ONE UEM Provizyonlama Paketi - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemTempAdminActivationTitle" xml:space="preserve">
+    <value>Workspace ONE UEM Geçici Yönetici Hesabı Etkinleştirme - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemUserActivationTitle" xml:space="preserve">
+    <value>Workspace ONE UEM Kullanıcısı Etkinleştirme - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemWipeProtectionNotificationTitle" xml:space="preserve">
+    <value>Workspace ONE UEM Silme Koruması Bildirimi - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UnenrollmentReason" xml:space="preserve">
+    <value>Sebep: {ServerActionSource}</value>
+  </data>
+  <data name="MessageTemplates_Content_UserCommentsForApp" xml:space="preserve">
+    <value>Uygulamayla ilgili kullanıcı yorumları aşağıdadır:</value>
+  </data>
+  <data name="MessageTemplates_Content_UserHasSharedFolder" xml:space="preserve">
+    <value>{ContentShareUserFirstName} {ContentShareUserLastName} ({ContentShareUserEmail}), "{ContentFolderName}" klasörünü sizinle paylaştı.</value>
+  </data>
+  <data name="MessageTemplates_Content_UserNameAdminUserName" xml:space="preserve">
+    <value>Kullanıcı adı: {AdminUserName}</value>
+  </data>
+  <data name="MessageTemplates_Content_UserNameEmailAddress" xml:space="preserve">
+    <value>Kullanıcı adı: {EmailAddress}</value>
+  </data>
+  <data name="MessageTemplates_Content_UserNameEnrollmentUserName" xml:space="preserve">
+    <value>Kullanıcı adı: {EnrollmentUserName}</value>
+  </data>
+  <data name="MessageTemplates_Content_UsingBrowserToRegisterVppProgramNavigateTo" xml:space="preserve">
+    <value>iOS 7 aygıtınızın tarayıcısını kullanarak Apple'ın Lisans Tabanlı Toplu Satın Alma Programı'na (VPP) kaydolmak için lütfen şuraya gidin:</value>
+  </data>
+  <data name="Messagetemplates_Content_WelcomeToWorkspaceOneUEM" xml:space="preserve">
+    <value>Workspace ONE UEM'ye Hoş Geldiniz</value>
+  </data>
+  <data name="MessageTemplates_Content_WhenPromptedEnterUseNamePassword" xml:space="preserve">
+    <value>İstendiğinde, kayıt kullanıcı adınızı ve parolanızı girin:</value>
+  </data>
+  <data name="MessageTemplates_Content_WipeLogPage" xml:space="preserve">
+    <value>Günlük Sayfasını Sil</value>
+  </data>
+  <data name="MessageTemplates_Content_WorkspaceOneUem" xml:space="preserve">
+    <value>Workspace ONE UEM</value>
+  </data>
+  <data name="Messagetemplates_Content_WorkspaceOneUEMUser" xml:space="preserve">
+    <value>Workspace ONE UEM Kullanıcısı</value>
+  </data>
+  <data name="Messagetemplates_Description_AdminAccountActivation" xml:space="preserve">
+    <value>Bir yönetici, başka bir yönetici tarafından konsoldan eklendiğinde gösterilen varsayılan mesaj şablonu.</value>
+  </data>
+  <data name="Messagetemplates_Description_AdminPasswordChange" xml:space="preserve">
+    <value>Bir yöneticiye parolasının değiştirildiğini bildiren varsayılan mesaj şablonu. Bu mesaj, otomatik olarak oluşturulur ve her zaman güvenlik amaçları doğrultusunda gönderilir.</value>
+  </data>
+  <data name="Messagetemplates_Description_AdminPasswordExpiryNotification" xml:space="preserve">
+    <value>Yöneticiye, parola süresinin kısa bir süre içinde dolacağını ve parolasını sıfırlamak için harekete geçmesi gerektiğini bildiren varsayılan mesaj şablonu</value>
+  </data>
+  <data name="Messagetemplates_Description_AdminPasswordReset" xml:space="preserve">
+    <value>Bir yöneticiye parolasının değiştirildiğini bildiren varsayılan mesaj şablonu. Bu mesaj, otomatik olarak oluşturulur ve her zaman güvenlik amaçları doğrultusunda gönderilir.</value>
+  </data>
+  <data name="Messagetemplates_Description_AdminPersonalInformationChange" xml:space="preserve">
+    <value>Bir yöneticiye kişisel bilgilerinin değiştirildiğini bildiren varsayılan mesaj şablonu. Bu mesaj, otomatik olarak oluşturulur ve her zaman güvenlik amaçları doğrultusunda gönderilir.</value>
+  </data>
+  <data name="Messagetemplates_Description_AdminPersonalInformationChangeViaApi" xml:space="preserve">
+    <value>Bir yöneticiye kişisel bilgilerinin Uygulama Programı Arabirimi (API) aracılığıyla değiştirildiğini bildiren varsayılan mesaj şablonu. Bu mesaj, otomatik olarak oluşturulur ve her zaman güvenlik amaçları doğrultusunda gönderilir.</value>
+  </data>
+  <data name="Messagetemplates_Description_AdminStatusChange" xml:space="preserve">
+    <value>Bir yöneticiye devre dışı bırakıldığını ya da yeniden etkinleştirildiğini bildiren varsayılan mesaj şablonu. Bu mesaj, otomatik olarak oluşturulur ve her zaman güvenlik amaçları doğrultusunda gönderilir.</value>
+  </data>
+  <data name="Messagetemplates_Description_AppCatalogTokenNotification" xml:space="preserve">
+    <value>Uygulama kataloğuna ilk kez eriştiğinde belirteç bilgilerini kullanıcıya gönderen varsayılan mesaj şablonu. Bu, yalnızca aygıt belirteç kimlik doğrulaması için yapılandırılmış bir Organizasyon Grubunda bulunuyorsa gönderilecektir.</value>
+  </data>
+  <data name="Messagetemplates_Description_ApplicationAssignmentNotification" xml:space="preserve">
+    <value>Bir yöneticiye yeni bir uygulamanın atanmaya hazır olduğunu bildiren varsayılan mesaj şablonu.</value>
+  </data>
+  <data name="Messagetemplates_Description_ApplicationCreationNotification" xml:space="preserve">
+    <value>Bir yöneticiye yeni bir uygulamanın oluşturulduğunu bildiren varsayılan mesaj şablonu.</value>
+  </data>
+  <data name="Messagetemplates_Description_ApplicationEulaFinalNotification" xml:space="preserve">
+    <value>Kullanıcılara bir uygulama için güncellenmiş veya eklenmiş Kullanım Şartlarını kabul etmeleri gerektiği ya da uygulamanın kaldırılacağı konusunda son bir uyarı sağlayan varsayılan mesaj şablonu.</value>
+  </data>
+  <data name="Messagetemplates_Description_ApplicationEulaNotification" xml:space="preserve">
+    <value>Kullanıcılara bir uygulamanın Kullanım Şartlarının eklendiğini ya da güncellendiğini bildiren varsayılan mesaj şablonu. Bu mesaj, kullanıcılara eklemeyi ya da değişikliği kabul etmeleri için talimat verir.</value>
+  </data>
+  <data name="Messagetemplates_Description_ApplicationLogNotification" xml:space="preserve">
+    <value>Yazılım Geliştirme Seti (SDK) tarafından etkinleştirilen bir uygulamanın bir çökme günlüğü oluşturduğu ve söz konusu uygulamanın, çökme günlüklerini otomatik olarak geliştiricinin e-postasına göndermek için etkinleştirilmiş bir bayrağının bulunduğu durumlar için varsayılan mesaj şablonu.</value>
+  </data>
+  <data name="Messagetemplates_Description_ApplicationNotification" xml:space="preserve">
+    <value>Bir kullanıcıya yeni bir uygulamanın Uygulama Kataloğundan indirilebileceğini bildiren varsayılan mesaj şablonu.</value>
+  </data>
+  <data name="Messagetemplates_Description_ApplicationPublishNotification" xml:space="preserve">
+    <value>Bir yöneticiye yeni bir uygulamanın yayınlanmaya hazır olduğunu bildiren varsayılan mesaj şablonu.</value>
+  </data>
+  <data name="Messagetemplates_Description_ApplicationReviewNotification" xml:space="preserve">
+    <value>Bir yöneticiye yeni bir uygulamanın incelenmeye hazır olduğunu bildiren varsayılan mesaj şablonu.</value>
+  </data>
+  <data name="Messagetemplates_Description_ApplicationScanDetailResult" xml:space="preserve">
+    <value>Geliştiricileri ayrıntılı App Reputations analiz raporu hakkında bilgilendiren varsayılan mesaj şablonu.</value>
+  </data>
+  <data name="Messagetemplates_Description_ApplicationScanNotification" xml:space="preserve">
+    <value>Uygulama geçmişi Analizi Tamamlanma Bildirimi</value>
+  </data>
+  <data name="Messagetemplates_Description_AppRemoveNotification" xml:space="preserve">
+    <value>Bu mesaj şablonu kısa bir süre içerisinde çok sayıda aygıt için bir uygulama kaldırma işleminin tetiklendiğini aygıtlara bildirmek için kullanılır</value>
+  </data>
+  <data name="Messagetemplates_Description_AppVersionUpdateNotification" xml:space="preserve">
+    <value>Kayıt süresince, MDM profilini kur komutu içinde görüntülenen mesajı kişiselleştirin.</value>
+  </data>
+  <data name="Messagetemplates_Description_AuthenticationAppTokenNotification" xml:space="preserve">
+    <value>Bir aygıttaki SDK uygulamasının şifresini sıfırlamak için kullanıcılara e-posta ile gönderilecek belirteç için şablon.</value>
+  </data>
+  <data name="Messagetemplates_Description_ComplianceViolationAdministratorNotification" xml:space="preserve">
+    <value>Yöneticiye bir aygıtın bir uyumluluk ilkesini ihlal ettiğini ve kullanıcının uyumlu olmak üzere eyleme geçmesi gerektiğini bildiren varsayılan mesaj şablonu.</value>
+  </data>
+  <data name="Messagetemplates_Description_ComplianceViolationUserNotification" xml:space="preserve">
+    <value>Kullanıcıya bir uyumluluk ilkesini ihlal ettiğini ve uyumlu olmak üzere eyleme geçmesi gerektiğini bildiren varsayılan mesaj şablonu.</value>
+  </data>
+  <data name="Messagetemplates_Description_DeviceActivation" xml:space="preserve">
+    <value>Kullanıcılara aygıtlarını kaydedebileceklerini bildiren varsayılan mesaj şablonu.</value>
+  </data>
+  <data name="Messagetemplates_Description_DeviceBlockedByRestriction" xml:space="preserve">
+    <value>Kullanıcılara aygıtlarının bir kısıtlama tarafından engellendiğini bildiren varsayılan mesaj şablonu.</value>
+  </data>
+  <data name="Messagetemplates_Description_DeviceEnrolled" xml:space="preserve">
+    <value>Kullanıcılara aygıtlarının başarılı bir şekilde kaydedildiğini bildiren varsayılan mesaj şablonu.</value>
+  </data>
+  <data name="Messagetemplates_Description_DeviceEnrollmentProgramCustomPrompt" xml:space="preserve">
+    <value>Bir Aygıt Kayıt Program Profile atanan aygıtlar için Kurulum Yardımcısı'nın Kimlik Doğrulama bölmesinde beliren metni özelleştir.</value>
+  </data>
+  <data name="Messagetemplates_Description_DeviceLockScreenMessageiOS7" xml:space="preserve">
+    <value>Aygıtın kaybolduğu zaman için aygıta bir kilit ekranı mesajı komutu gönderildiğinde görüntülenen varsayılan mesaj şablonu.</value>
+  </data>
+  <data name="Messagetemplates_Description_DeviceOutofDateCompliance" xml:space="preserve">
+    <value>Aygıtın teslim edilmesi ve gizliliği tehlikeye atan bir tarama çalıştırılması için olanak sağlamak üzere kullanıcının Workspace ONE Intelligent Hub'ı başlatmasını isteyen varsayılan mesaj şablonu.</value>
+  </data>
+  <data name="Messagetemplates_Description_DeviceUnenrolled" xml:space="preserve">
+    <value>Kullanıcılara aygıtlarının kaydının başarılı bir şekilde kaldırıldığını bildiren varsayılan mesaj şablonu.</value>
+  </data>
+  <data name="Messagetemplates_Description_DeviceWipeEmailNotification" xml:space="preserve">
+    <value>Yöneticiye kısa bir süre içinde çok sayıda aygıtın Şirket Verilerinin veya Aygıt Verilerinin Silinmiş olduğunu bildiren varsayılan mesaj şablonu.</value>
+  </data>
+  <data name="Messagetemplates_Description_EmailDomainRegistration" xml:space="preserve">
+    <value>Basitleştirilmiş kayıt işlemi sırasında kullanılacak e-posta etki alanını doğrulamak için kullanılan varsayılan mesaj şablonu.</value>
+  </data>
+  <data name="Messagetemplates_Description_EulaNotification" xml:space="preserve">
+    <value>Kullanıcılara Kullanım Şartlarının eklendiğini veya güncellendiğini bildiren ve onlara eklemeleri veya değişiklikleri kabul etmeleri için talimat veren varsayılan mesaj şablonu.</value>
+  </data>
+  <data name="Messagetemplates_Description_ExternalUserActivation" xml:space="preserve">
+    <value>Bir klasör paylaşıldığında harici kullanıcıları hesap etkinleştirme konusunda bilgilendiren varsayılan mesaj şablonu.</value>
+  </data>
+  <data name="Messagetemplates_Description_LicenseBasedPurchasedApplicationInvitation" xml:space="preserve">
+    <value>Kayıt kullanıcısına Lisans Temelli VPP için Apple'a kaydolmasını bildiren varsayılan mesaj şablonu.</value>
+  </data>
+  <data name="Messagetemplates_Description_MamEnrollmentUserActivation" xml:space="preserve">
+    <value>Bir yöneticinin MAM kaydı için yapılandırılmış olan bir OG'ye konsoldan yeni kullanıcı eklediği durum için varsayılan mesaj şablonu.</value>
+  </data>
+  <data name="Messagetemplates_Description_MamNewUserActivation" xml:space="preserve">
+    <value>Kullanıcının MAM kaydı için yapılandırılmış bir OG'ye kaydolduğu durum için varsayılan mesaj şablonu.</value>
+  </data>
+  <data name="Messagetemplates_Description_MentionedCommentNotification" xml:space="preserve">
+    <value>Açıklama bildirimden bahsedilmiştir</value>
+  </data>
+  <data name="Messagetemplates_Description_NewlyAddedUserToUserGroupNotification" xml:space="preserve">
+    <value>Yeni eklenen kullanıcılara önceden paylaşılan klasöre ilişkin kullanıcı grubu hakkında bilgilendiren varsayılan mesaj şablonu.</value>
+  </data>
+  <data name="Messagetemplates_Description_NewSharedFolderNotification" xml:space="preserve">
+    <value>Paylaşılan Klasör bildirimi</value>
+  </data>
+  <data name="Messagetemplates_Description_ProvisioningPackageNotification" xml:space="preserve">
+    <value>Bir yöneticiye provizyonlama paketinin oluşturulduğunu ve indirme için mevcut olduğunu bildiren varsayılan mesaj şablonu.</value>
+  </data>
+  <data name="Messagetemplates_Description_PurchasedApplication" xml:space="preserve">
+    <value>Bir kullanıcıya, bir uygulamanın onlar adına satın alındığını ve indirilebileceğini bildiren varsayılan mesaj şablonu.</value>
+  </data>
+  <data name="Messagetemplates_Description_TempAdminActivation" xml:space="preserve">
+    <value>Geçici bir yöneticinin başka bir yönetici tarafından konsoldan eklendiği durum için varsayılan mesaj şablonu.</value>
+  </data>
+  <data name="Messagetemplates_Description_UnRegisterDevice" xml:space="preserve">
+    <value>Kullanıcılara aygıtlarının kaydının kaldırıldığını ve tüm kurum verilerinin kaldırılacağını bildiren varsayılan mesaj şablonu.</value>
+  </data>
+  <data name="Messagetemplates_Description_UserActivation" xml:space="preserve">
+    <value>Kullanıcılara EMM kullanıcısı olarak eklendiklerini ve aygıtlarını kaydedebileceklerini bildiren varsayılan mesaj şablonu.</value>
+  </data>
+  <data name="Messagetemplates_Description_VendorApplicationGroupCreationNotification" xml:space="preserve">
+    <value>Bir kullanıcıya tedarikçi uygulama gruplarının oluşturulduğunu ve uyumluluk ilkelerinin uygulanması için kullanılabilir olduklarını bildiren varsayılan mesajı şablonu.</value>
+  </data>
+  <data name="Messagetemplates_Description_WorkSpaceDeviceActivation" xml:space="preserve">
+    <value>Kullanıcılara aygıtlarını kaydedebileceklerini bildiren varsayılan mesaj şablonu.</value>
+  </data>
+  <data name="Messagetemplates_Name_AdminAccountActivation" xml:space="preserve">
+    <value>Yönetici Etkinleştirme</value>
+  </data>
+  <data name="Messagetemplates_Name_AdminPasswordChange" xml:space="preserve">
+    <value>Yönetici Parolası Değiştirme</value>
+  </data>
+  <data name="Messagetemplates_Name_AdminPasswordExpiryNotification" xml:space="preserve">
+    <value>Yönetici Parolasının Kullanım Süresi Sonu Bildirimi</value>
+  </data>
+  <data name="Messagetemplates_Name_AdminPasswordReset" xml:space="preserve">
+    <value>Yönetici Parolası Değiştirme</value>
+  </data>
+  <data name="Messagetemplates_Name_AdminPersonalInformationChange" xml:space="preserve">
+    <value>Yönetici Kişisel Bilgi Değiştirme</value>
+  </data>
+  <data name="Messagetemplates_Name_AdminPersonalInformationChangeViaApi" xml:space="preserve">
+    <value>Uygulama Programı Arabirimi (API) Aracılığıyla Yönetici Kişisel Bilgileri Değişikliği</value>
+  </data>
+  <data name="Messagetemplates_Name_AdminStatusChange" xml:space="preserve">
+    <value>Yönetici Durumu Değişikliği</value>
+  </data>
+  <data name="Messagetemplates_Name_AppCatalogTokenNotification" xml:space="preserve">
+    <value>Uygulama Kataloğu Belirteç Bildirimi</value>
+  </data>
+  <data name="Messagetemplates_Name_ApplicationAssignmentNotification" xml:space="preserve">
+    <value>Uygulama İş Akışı - Atama Bildirimi</value>
+  </data>
+  <data name="Messagetemplates_Name_ApplicationCreationNotification" xml:space="preserve">
+    <value>Uygulama İş Akışı - Oluşturma Bildirimi</value>
+  </data>
+  <data name="Messagetemplates_Name_ApplicationEulaFinalNotification" xml:space="preserve">
+    <value>Uygulama Kullanım Şartları- Son Bildirim</value>
+  </data>
+  <data name="Messagetemplates_Name_ApplicationEulaNotification" xml:space="preserve">
+    <value>Uygulama Kullanım Şartları- Güncelleme Bildirimi</value>
+  </data>
+  <data name="Messagetemplates_Name_ApplicationLogNotification" xml:space="preserve">
+    <value>SDK İçin Uygulama Günlüğü Bildirimi</value>
+  </data>
+  <data name="Messagetemplates_Name_ApplicationNotification" xml:space="preserve">
+    <value>Uygulama Bildirimi</value>
+  </data>
+  <data name="Messagetemplates_Name_ApplicationPublishNotification" xml:space="preserve">
+    <value>Uygulama İş Akışı - Yayınlama Bildirimi</value>
+  </data>
+  <data name="Messagetemplates_Name_ApplicationReviewNotification" xml:space="preserve">
+    <value>Uygulama İş Akışı - İnceleme Bildirimi</value>
+  </data>
+  <data name="Messagetemplates_Name_ApplicationScanDetailResult" xml:space="preserve">
+    <value>Uygulama Tanınmışlık Analizi Detayları</value>
+  </data>
+  <data name="Messagetemplates_Name_ApplicationScanNotification" xml:space="preserve">
+    <value>Uygulama Tanınmışlık Analizi Tamamlanma Bildirimi</value>
+  </data>
+  <data name="Messagetemplates_Name_AppRemoveNotification" xml:space="preserve">
+    <value>Uygulama Kaldırma Sınırına Ulaşıldı Bildirimi</value>
+  </data>
+  <data name="Messagetemplates_Name_AppVersionUpdateNotification" xml:space="preserve">
+    <value>MDM Profil Yükleme (sadece iOS)</value>
+  </data>
+  <data name="Messagetemplates_Name_AuthenticationAppTokenNotification" xml:space="preserve">
+    <value>Uygulama Unutulan Şifre Belirteç Bildirimi</value>
+  </data>
+  <data name="Messagetemplates_Name_ComplianceViolationAdministratorNotification" xml:space="preserve">
+    <value>Uyumluluk İhlali Yönetici Bildirimi</value>
+  </data>
+  <data name="Messagetemplates_Name_ComplianceViolationUserNotification" xml:space="preserve">
+    <value>Uyumluluk iİhlali Kullanıcı Bildirimi</value>
+  </data>
+  <data name="Messagetemplates_Name_DeviceActivation" xml:space="preserve">
+    <value>Aygıt Etkinleştirme</value>
+  </data>
+  <data name="Messagetemplates_Name_DeviceBlockedByRestriction" xml:space="preserve">
+    <value>Kayıt Kısıtlama Tarafından Aygıt Engellendi</value>
+  </data>
+  <data name="Messagetemplates_Name_DeviceEnrolled" xml:space="preserve">
+    <value>Aygıt Başarıyla Kaydedildi</value>
+  </data>
+  <data name="Messagetemplates_Name_DeviceEnrollmentProgramCustomPrompt" xml:space="preserve">
+    <value>Aygıt Kayıt Programı Özel İstemi</value>
+  </data>
+  <data name="Messagetemplates_Name_DeviceLockScreenMessageiOS7" xml:space="preserve">
+    <value>Kayıp Aygıt Ekran Kilidi İletisi (yalnız iOS 7)</value>
+  </data>
+  <data name="Messagetemplates_Name_DeviceOutofDateCompliance" xml:space="preserve">
+    <value>Uyumluluk Denetimi İste</value>
+  </data>
+  <data name="Messagetemplates_Name_DeviceUnenrolled" xml:space="preserve">
+    <value>Aygıt Kayıttan Çıkarıldı</value>
+  </data>
+  <data name="Messagetemplates_Name_DeviceWipeEmailNotification" xml:space="preserve">
+    <value>Fabrika Ayarlarına Geri Döndürme Koruma Bildirimi</value>
+  </data>
+  <data name="Messagetemplates_Name_EmailDomainRegistration" xml:space="preserve">
+    <value>E-posta Etki Alanı Kaydı</value>
+  </data>
+  <data name="Messagetemplates_Name_EulaNotification" xml:space="preserve">
+    <value>Kullanım Şartları Bildirimi</value>
+  </data>
+  <data name="Messagetemplates_Name_ExternalUserActivation" xml:space="preserve">
+    <value>Harici Kullanıcı Etkinleştirme</value>
+  </data>
+  <data name="Messagetemplates_Name_LicenseBasedPurchasedApplicationInvitation" xml:space="preserve">
+    <value>Lisansa Dayalı VPP Bildirimi</value>
+  </data>
+  <data name="Messagetemplates_Name_MamEnrollmentUserActivation" xml:space="preserve">
+    <value>MAM Yönetici Tarafından Başlatılan Yeni Kullanıcı Etkinleştirme</value>
+  </data>
+  <data name="Messagetemplates_Name_MamNewUserActivation" xml:space="preserve">
+    <value>MAM Kullanıcı Tarafından Başlatılan Yeni Kullanıcı Etkinleştirme</value>
+  </data>
+  <data name="Messagetemplates_Name_MentionedCommentNotification" xml:space="preserve">
+    <value>Yorumda Bahsetme</value>
+  </data>
+  <data name="Messagetemplates_Name_NewlyAddedUserToUserGroupNotification" xml:space="preserve">
+    <value>Kullanıcı Grubuna Yeni eklenen Kullanıcı için Paylaşım Bildirimi</value>
+  </data>
+  <data name="Messagetemplates_Name_NewSharedFolderNotification" xml:space="preserve">
+    <value>Yeni Paylaşılan Klasör</value>
+  </data>
+  <data name="Messagetemplates_Name_ProvisioningPackageNotification" xml:space="preserve">
+    <value>Provizyonlama Paketi Durum Bildirimi</value>
+  </data>
+  <data name="Messagetemplates_Name_PurchasedApplication" xml:space="preserve">
+    <value>Uygulama Satın Alma</value>
+  </data>
+  <data name="Messagetemplates_Name_TempAdminActivation" xml:space="preserve">
+    <value>Geçici Yönetici Etkinleştirme</value>
+  </data>
+  <data name="Messagetemplates_Name_UnRegisterDevice" xml:space="preserve">
+    <value>Aygıt Kaydını Sil</value>
+  </data>
+  <data name="Messagetemplates_Name_UserActivation" xml:space="preserve">
+    <value>Kullanıcı Etkinleştirme</value>
+  </data>
+  <data name="Messagetemplates_Name_VendorApplicationGroupCreationNotification" xml:space="preserve">
+    <value>Tedarikçi Uygulaması Grup Oluşturma Bildirimi</value>
+  </data>
+  <data name="Messagetemplates_Name_WorkSpaceDeviceActivation" xml:space="preserve">
+    <value>Kapsayıcı Aygıt Etkinleştirmesi</value>
+  </data>
+  <data name="Messagetemplates_Subject_AdminAccountActivation" xml:space="preserve">
+    <value>Workspace ONE UEM Yönetici Hesabı Etkinleştirme</value>
+  </data>
+  <data name="Messagetemplates_Subject_AdminPasswordChange" xml:space="preserve">
+    <value>Workspace ONE UEM Yönetici Parolası Güncellendi</value>
+  </data>
+  <data name="Messagetemplates_Subject_AdminPasswordExpiryNotification" xml:space="preserve">
+    <value>Yönetici Parolası Kullanım Süresi Sonu Bildirimi</value>
+  </data>
+  <data name="Messagetemplates_Subject_AdminPasswordReset" xml:space="preserve">
+    <value>Workspace ONE UEM Yönetici Parolası Sıfırlama</value>
+  </data>
+  <data name="Messagetemplates_Subject_AdminPersonalInformationChange" xml:space="preserve">
+    <value>Workspace ONE UEM Yönetici Kişisel Bilgileri Güncellendi</value>
+  </data>
+  <data name="Messagetemplates_Subject_AdminPersonalInformationChangeViaApi" xml:space="preserve">
+    <value>Workspace ONE UEM Yönetici Kişisel Bilgileri Güncellendi</value>
+  </data>
+  <data name="Messagetemplates_Subject_AdminStatusChange" xml:space="preserve">
+    <value>Workspace ONE UEM Yönetici Durumu Güncellendi</value>
+  </data>
+  <data name="Messagetemplates_Subject_AppCatalogTokenNotification" xml:space="preserve">
+    <value>Workspace ONE UEM Uygulama Kataloğu Belirteci</value>
+  </data>
+  <data name="Messagetemplates_Subject_ApplicationAssignmentNotification" xml:space="preserve">
+    <value>Workspace ONE UEM - Uygulama, Atama için kullanılabilir</value>
+  </data>
+  <data name="Messagetemplates_Subject_ApplicationCreationNotification" xml:space="preserve">
+    <value>Workspace ONE UEM - Yeni uygulama oluşturuldu</value>
+  </data>
+  <data name="Messagetemplates_Subject_ApplicationEulaFinalNotification" xml:space="preserve">
+    <value>SON BİLDİRİM - Workspace ONE UEM Uygulaması Kullanım Şartları Güncellemesi</value>
+  </data>
+  <data name="Messagetemplates_Subject_ApplicationEulaNotification" xml:space="preserve">
+    <value>Uygulama Kullanım Şartları Güncellemesi</value>
+  </data>
+  <data name="Messagetemplates_Subject_ApplicationLogNotification" xml:space="preserve">
+    <value>Workspace ONE UEM Uygulaması Hata Günlüğü</value>
+  </data>
+  <data name="Messagetemplates_Subject_ApplicationNotification" xml:space="preserve">
+    <value>Workspace ONE UEM - Uygulama indirilebilir</value>
+  </data>
+  <data name="Messagetemplates_Subject_ApplicationPublishNotification" xml:space="preserve">
+    <value>Workspace ONE UEM - Uygulama yayınlanabilir</value>
+  </data>
+  <data name="Messagetemplates_Subject_ApplicationReviewNotification" xml:space="preserve">
+    <value>Workspace ONE UEM - Uygulama İnceleme Bildirimi</value>
+  </data>
+  <data name="Messagetemplates_Subject_ApplicationScanDetailResult" xml:space="preserve">
+    <value>Workspace ONE UEM - Uygulama Tanınmışlık Analizi Raporu</value>
+  </data>
+  <data name="Messagetemplates_Subject_ApplicationScanNotification" xml:space="preserve">
+    <value>Uygulama Tanınmışlık Analizi Tamamlandı</value>
+  </data>
+  <data name="Messagetemplates_Subject_AppRemoveNotification" xml:space="preserve">
+    <value>Dikkat: Uygulama Kaldırma Sınırı Aşıldı</value>
+  </data>
+  <data name="Messagetemplates_Subject_AuthenticationAppTokenNotification" xml:space="preserve">
+    <value>Unutulan Şifre Belirteci</value>
+  </data>
+  <data name="Messagetemplates_Subject_ComplianceViolationAdministratorNotification" xml:space="preserve">
+    <value>Dikkat: Workspace ONE UEM aygıt uyumluluk ihlali</value>
+  </data>
+  <data name="Messagetemplates_Subject_ComplianceViolationUserNotification" xml:space="preserve">
+    <value>Dikkat: Workspace ONE UEM aygıt uyumluluk ihlali</value>
+  </data>
+  <data name="Messagetemplates_Subject_DeviceActivation" xml:space="preserve">
+    <value>Workspace ONE UEM Aygıtı Etkinleştirme</value>
+  </data>
+  <data name="Messagetemplates_Subject_DeviceBlockedByRestriction" xml:space="preserve">
+    <value>Workspace ONE UEM - Aygıt, Kayıt Kısıtlaması Tarafından Engellendi</value>
+  </data>
+  <data name="Messagetemplates_Subject_DeviceEnrolled" xml:space="preserve">
+    <value>Workspace ONE UEM - Aygıt Başarıyla Kaydedildi</value>
+  </data>
+  <data name="Messagetemplates_Subject_DeviceEnrollmentProgramCustomPrompt" xml:space="preserve">
+    <value>Aygıt Kayıt Programı Özel İstemi</value>
+  </data>
+  <data name="Messagetemplates_Subject_DeviceLockScreenMessageiOS7" xml:space="preserve">
+    <value>Aygıt Ekran Kilidi İletisi iOS 7</value>
+  </data>
+  <data name="Messagetemplates_Subject_DeviceOutofDateCompliance" xml:space="preserve">
+    <value>Workspace ONE UEM Uyumluluk Denetimi Talebi</value>
+  </data>
+  <data name="Messagetemplates_Subject_DeviceUnenrolled" xml:space="preserve">
+    <value>Workspace ONE UEM - Aygıt Kayıttan Çıkarıldı</value>
+  </data>
+  <data name="Messagetemplates_Subject_DeviceWipeEmailNotification" xml:space="preserve">
+    <value>Workspace ONE UEM Silme sınırı aşıldı</value>
+  </data>
+  <data name="Messagetemplates_Subject_EmailDomainRegistration" xml:space="preserve">
+    <value>Workspace ONE UEM E-posta Etki Alanı Kaydı</value>
+  </data>
+  <data name="Messagetemplates_Subject_EulaNotification" xml:space="preserve">
+    <value>Workspace ONE UEM Kullanım Şartları Güncellemesi</value>
+  </data>
+  <data name="Messagetemplates_Subject_ExternalUserActivation" xml:space="preserve">
+    <value>{ContentShareUserFirstName} {ContentShareUserLastName}, sizinle Workspace ONE UEM üzerinden bir klasör paylaştı</value>
+  </data>
+  <data name="Messagetemplates_Subject_LicenseBasedPurchasedApplicationInvitation" xml:space="preserve">
+    <value>Workspace ONE UEM - Lisans Tabanlı Toplu Satın Alma Programı (VPP) için Apple ile kaydolma bağlantısı</value>
+  </data>
+  <data name="Messagetemplates_Subject_MamEnrollmentUserActivation" xml:space="preserve">
+    <value>Workspace ONE UEM Kullanıcı Etkinleştirme</value>
+  </data>
+  <data name="Messagetemplates_Subject_MamNewUserActivation" xml:space="preserve">
+    <value>Workspace ONE UEM Kullanıcı Etkinleştirme</value>
+  </data>
+  <data name="Messagetemplates_Subject_MentionedCommentNotification" xml:space="preserve">
+    <value>{Commenter} "{ContentName}" dosyasındaki bir yorumda sizden bahsetti</value>
+  </data>
+  <data name="Messagetemplates_Subject_NewlyAddedUserToUserGroupNotification" xml:space="preserve">
+    <value>Sizinle yeni içerik klasörleri paylaşılıyor</value>
+  </data>
+  <data name="Messagetemplates_Subject_NewSharedFolderNotification" xml:space="preserve">
+    <value>{ContentShareUserFirstName} "{ContentFolderName}" klasörünü sizinle paylaştı</value>
+  </data>
+  <data name="Messagetemplates_Subject_ProvisioningPackageNotification" xml:space="preserve">
+    <value>Workspace ONE UEM Provizyonlama Paketi Oluşturuldu</value>
+  </data>
+  <data name="Messagetemplates_Subject_PurchasedApplication" xml:space="preserve">
+    <value>Workspace ONE UEM Uygulaması Satın Alma</value>
+  </data>
+  <data name="Messagetemplates_Subject_TempAdminActivation" xml:space="preserve">
+    <value>Workspace ONE UEM Geçici Yönetici Hesabı Etkinleştirme</value>
+  </data>
+  <data name="Messagetemplates_Subject_UnRegisterDevice" xml:space="preserve">
+    <value>Workspace ONE UEM Aygıtı Kaldırma</value>
+  </data>
+  <data name="Messagetemplates_Subject_UserActivation" xml:space="preserve">
+    <value>Workspace ONE UEM Kullanıcı Etkinleştirme</value>
+  </data>
+  <data name="Messagetemplates_Subject_VendorApplicationGroupCreationNotification" xml:space="preserve">
+    <value>Workspace ONE UEM - Yeni Uygulama Grubu Oluşturuldu</value>
+  </data>
+  <data name="Messagetemplates_Subject_WorkSpaceDeviceActivation" xml:space="preserve">
+    <value>Workspace ONE UEM Aygıtı Etkinleştirme</value>
+  </data>
+</root>

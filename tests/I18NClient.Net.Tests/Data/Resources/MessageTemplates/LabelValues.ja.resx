@@ -1,0 +1,1035 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="MessageTemplates_Content_AccessFileAndCommentNavigateToSSPSection" xml:space="preserve">
+    <value>このファイルとそのコメントにアクセスするには、[セルフサービス ポータル] セクションに移動します</value>
+  </data>
+  <data name="MessageTemplates_Content_AccessFolderNavigateToSSPSection" xml:space="preserve">
+    <value>このフォルダにアクセスするには、[セルフサービス ポータル] セクションに移動します</value>
+  </data>
+  <data name="MessageTemplates_Content_AccountEnabledActivateDeviceUsingBrowserNavigateTo" xml:space="preserve">
+    <value>Workspace ONE UEM アカウントが有効になりました。デバイスをアクティブ化できます。デバイスのブラウザを使用して、次に移動してください:</value>
+  </data>
+  <data name="MessageTemplates_Content_AccountEnabledFollowStepsToEnrollDevice" xml:space="preserve">
+    <value>Workspace ONE UEM アカウントが有効になりました。以下の手順に従ってデバイスを加入させてください。</value>
+  </data>
+  <data name="MessageTemplates_Content_AccountExpirationExpirationDate" xml:space="preserve">
+    <value>アカウントの有効期限: {ExpirationDate}</value>
+  </data>
+  <data name="MessageTemplates_Content_AdminConsole" xml:space="preserve">
+    <value>Workspace ONE UEM 管理者コンソール</value>
+  </data>
+  <data name="MessageTemplates_Content_AdminCreatedLogIntoConsoleUsingCredential" xml:space="preserve">
+    <value>Workspace ONE UEM 管理者アカウントが作成され、次の資格情報を使用して Workspace ONE UEM 管理者コンソールにログインできるようになりました:</value>
+  </data>
+  <data name="MessageTemplates_Content_AdminCreatedWithDetails" xml:space="preserve">
+    <value>Workspace ONE UEM 管理者アカウントが作成されました。コンソール: {ConsoleUrl} ユーザー名: {AdminUserName} パスワード: {AdminPassword}</value>
+  </data>
+  <data name="MessageTemplates_Content_AdminFirstNameAdminLastName" xml:space="preserve">
+    <value>{AdminLastName} {AdminFirstName}、</value>
+  </data>
+  <data name="MessageTemplates_Content_AdminInfoUpdatedLogIntoConsoleToConfirm" xml:space="preserve">
+    <value>Workspace ONE UEM 管理者情報が更新されました。Console にログインしてアカウント情報を確認してください。</value>
+  </data>
+  <data name="MessageTemplates_Content_AdminPasswordReset" xml:space="preserve">
+    <value>パスワード リセットが、お客様または別の管理者によって開始されました。これが正しくない場合は、管理者に連絡して詳細を確認してください。次のリンクで弊社 Web サイトに戻り、パスワードを変更できます。</value>
+  </data>
+  <data name="MessageTemplates_Content_AdminPasswordUpdated" xml:space="preserve">
+    <value>Workspace ONE UEM パスワードが更新されました。</value>
+  </data>
+  <data name="MessageTemplates_Content_AdminPasswordWillExpireInDays" xml:space="preserve">
+    <value>Workspace ONE UEM Console アカウント「{AdminUserName}」の管理者パスワードは、{DaysToBasicAdminPasswordExpiry} 日後に期限切れになります。</value>
+  </data>
+  <data name="MessageTemplates_Content_AdminStatusChanged" xml:space="preserve">
+    <value>Workspace ONE UEM 管理者の状態が {AdminStatus} に変更されました。</value>
+  </data>
+  <data name="MessageTemplates_Content_AlternativelyScanQrCodeToBeginEnrollment" xml:space="preserve">
+    <value>または、QR コードをスキャンして加入を開始します:</value>
+  </data>
+  <data name="MessageTemplates_Content_AppAssignedAccessInternalAppPageReviewPublish" xml:space="preserve">
+    <value>{ApplicationName} がデバイスに割り当てられ、これらのデバイスに公開できるようになりました。このアプリケーションにアクセスするには、Workspace ONE UEM Console の [社内アプリ] ページに移動します。デバイス割り当てをレビューし、アプリケーションを公開してください。アプリケーションの詳細は、以下のとおりです。</value>
+  </data>
+  <data name="MessageTemplates_Content_AppAvailableForDownloadFromUem" xml:space="preserve">
+    <value>{ApplicationName} を Workspace ONE UEM App Catalog からデバイスにダウンロードできるようになりました。</value>
+  </data>
+  <data name="MessageTemplates_Content_AppAvailableForDownloadFromUemWithDetails" xml:space="preserve">
+    <value>{ApplicationName} を Workspace ONE UEM App Catalog からデバイスにダウンロードできるようになりました。アプリケーションの詳細は、以下のとおりです。</value>
+  </data>
+  <data name="MessageTemplates_Content_AppCreatedAccessInternalAppPage" xml:space="preserve">
+    <value>{ApplicationName} という名前のアプリケーションが作成されました。このアプリケーションにアクセスするには、Workspace ONE UEM Console の [社内アプリ] ページに移動します。アプリケーションの詳細は、以下のとおりです。</value>
+  </data>
+  <data name="MessageTemplates_Content_AppCreatedAccessInternalAppPageReviewSubmit" xml:space="preserve">
+    <value>{ApplicationName} が作成され、レビューできるようになりました。このアプリケーションにアクセスするには、Workspace ONE UEM Console の [社内アプリ] ページに移動します。これをレビューし、割り当てのために送信してください。アプリの詳細は、以下のとおりです。</value>
+  </data>
+  <data name="MessageTemplates_Content_AppErrorFindLogFile" xml:space="preserve">
+    <value>{ApplicationName} アプリケーションがエラーを返しました。添付されたログ ファイルを確認してください。</value>
+  </data>
+  <data name="MessageTemplates_Content_AppEulaUpdatedAcceptanceRequired" xml:space="preserve">
+    <value>アプリケーション ユーザー同意書の規約が更新されており、同意が必要です。</value>
+  </data>
+  <data name="MessageTemplates_Content_AppEulaUpdatedAcceptanceRequiredBeforeGracePeriod" xml:space="preserve">
+    <value>アプリケーション ユーザー同意書の規約が更新されており、猶予期間が経過するまでに同意が必要です。</value>
+  </data>
+  <data name="MessageTemplates_Content_AppEulaUpdatedAcceptanceRequiredLogInToAppCatalogToAccept" xml:space="preserve">
+    <value>アプリケーションのユーザー同意書の規約が更新されており、同意が必要です。Workspace ONE UEM App Catalog にログインして同意してください。</value>
+  </data>
+  <data name="MessageTemplates_Content_AppGroupCreatedNavigateToSettingsPageToAccessAppGroups" xml:space="preserve">
+    <value>{VendorName} との同期によって {CountOfApplicationGroups} 個のアプリケーション グループが作成されました。これらのアプリケーション グループの詳細については、添付ファイルを確認してください。これらのアプリケーション グループにアクセスするには、Workspace ONE UEM Console の [アプリとブック] &gt; [アプリケーション設定] ページにある [アプリ グループ] に移動します。</value>
+  </data>
+  <data name="MessageTemplates_Content_AppHasBeenPurchasedOpenHubToDownload" xml:space="preserve">
+    <value>ユーザーに代わって {ApplicationName} が購入され、ダウンロード可能になりました。VMware Workspace ONE Intelligent Hub を開いて、購入されたアプリケーションをダウンロードしてください。</value>
+  </data>
+  <data name="MessageTemplates_Content_AppNameAppVersion" xml:space="preserve">
+    <value>{ApplicationName}、{ApplicationVersion}</value>
+  </data>
+  <data name="MessageTemplates_Content_AppReputationAnalysisCompletedForApp" xml:space="preserve">
+    <value>{ApplicationName} のアプリ評価分析が完了し、結果が利用可能になりました。</value>
+  </data>
+  <data name="MessageTemplates_Content_AppReviewedAccessInternalAppPageAssignSubmit" xml:space="preserve">
+    <value>{ApplicationName} がレビューされ、デバイスに割り当てることができるようになりました。このアプリケーションにアクセスするには、Workspace ONE UEM Console の [社内アプリ] ページに移動します。これをデバイスに割り当て、公開のために送信してください。アプリケーションの詳細は、以下のとおりです。</value>
+  </data>
+  <data name="MessageTemplates_Content_AuthenticationRequiredCredentialsBelow" xml:space="preserve">
+    <value>認証が必要な場合があります。あなた固有の資格情報は、以下のとおりです。</value>
+  </data>
+  <data name="MessageTemplates_Content_ClickHere" xml:space="preserve">
+    <value>ここをクリック</value>
+  </data>
+  <data name="MessageTemplates_Content_ClickInstallAcceptPrompts" xml:space="preserve">
+    <value>[インストール] をクリックし、後の構成プロンプトに同意します。</value>
+  </data>
+  <data name="MessageTemplates_Content_ConsoleURL" xml:space="preserve">
+    <value>Console URL:</value>
+  </data>
+  <data name="MessageTemplates_Content_ContactItHelpDeskIfHaveQuestions" xml:space="preserve">
+    <value>質問がある場合は、社内の IT ヘルプデスクにお問い合わせください:</value>
+  </data>
+  <data name="MessageTemplates_Content_ContentComment" xml:space="preserve">
+    <value>「{Comment}」</value>
+  </data>
+  <data name="MessageTemplates_Content_ContentShareUserFirstNameLastName" xml:space="preserve">
+    <value>{ContentShareUserLastName} {ContentShareUserFirstName}</value>
+  </data>
+  <data name="MessageTemplates_Content_ContentUserIsUsingContentLocker" xml:space="preserve">
+    <value>{ContentShareUserFirstName} では、Workspace ONE UEM Content Locker ソリューションを使用して、簡単かつ安全にファイルを共有しています。</value>
+  </data>
+  <data name="Messagetemplates_Content_DearAdministrator" xml:space="preserve">
+    <value>管理者様</value>
+  </data>
+  <data name="MessageTemplates_Content_DeviceApprovedForAccessUsingBrowserNavigateTo" xml:space="preserve">
+    <value>お使いのデバイスのモバイル アクセスが承認されました。デバイスの Web ブラウザを使用して、次に移動してください:</value>
+  </data>
+  <data name="MessageTemplates_Content_DeviceBlockedFromEnrollmentForReason" xml:space="preserve">
+    <value>お使いのデバイス {DevicePlatform} {DeviceModel} は、次の理由で加入からブロックされました:</value>
+  </data>
+  <data name="MessageTemplates_Content_DeviceEnrollmentUsingCredentials" xml:space="preserve">
+    <value>お使いのデバイス {DeviceFriendlyName} は、{EnrollmentUser} の資格情報を使用して Workspace ONE UEM への加入を正常に完了しました。</value>
+  </data>
+  <data name="MessageTemplates_Content_DeviceHasNotReportedComplianceToUemLaunchHubToCheckIn" xml:space="preserve">
+    <value>お使いのデバイスは、必要な時間枠内に順守状態を Workspace ONE UEM にレポートしませんでした。デバイスで VMware Workspace ONE Intelligent Hub を起動してチェックインしてください。</value>
+  </data>
+  <data name="MessageTemplates_Content_DeviceInViolationOfOrgCompliancePolicy" xml:space="preserve">
+    <value>お使いのデバイス {DeviceFriendlyName} は現在、組織の順守ポリシーに違反しています:</value>
+  </data>
+  <data name="MessageTemplates_Content_DeviceInViolationOfPolicyActionTakenIfNonCompliant" xml:space="preserve">
+    <value>お使いのデバイスが「{PolicyName}」順守ポリシーに違反しています。デバイスを非順守のままにした場合、さらなるアクションが実行されます。</value>
+  </data>
+  <data name="MessageTemplates_Content_DeviceLostCallMe" xml:space="preserve">
+    <value>これは紛失したデバイスです。電話でのご連絡をお願いいたします。</value>
+  </data>
+  <data name="MessageTemplates_Content_DeviceNoAccessData" xml:space="preserve">
+    <value>このデバイスは、加入中に展開された設定、アプリケーション、およびコンテンツにアクセスできなくなりました。</value>
+  </data>
+  <data name="MessageTemplates_Content_DeviceNonCompliantActionsInEffect" xml:space="preserve">
+    <value>デバイスが非順守になっている間、次のアクションがデバイスで有効になります:</value>
+  </data>
+  <data name="MessageTemplates_Content_DevicesWipedWithinLastMinutes" xml:space="preserve">
+    <value>過去 {EnterpriseWipeInterval} 分以内に通常と異なる多数のデバイスで企業情報ワイプまたはデバイス ワイプが実行されたことが判明しました。</value>
+  </data>
+  <data name="MessageTemplates_Content_DevicesWithAppExceededLimitRemovalOnHoldUntilConfirm" xml:space="preserve">
+    <value>アプリ {BundleID} があるデバイスの台数がアプリ削除の制限を超過しています。その数量と、このアプリに対する削除コマンドをすべてリリースしてよいかどうかを確認するまで、これらのアプリの削除が保留されました。</value>
+  </data>
+  <data name="MessageTemplates_Content_DeviceUnenrolled" xml:space="preserve">
+    <value>デバイス {DeviceFriendlyName} は加入解除されました。</value>
+  </data>
+  <data name="MessageTemplates_Content_DoNotEnterInfoUntilInContainerApp" xml:space="preserve">
+    <value>下の図に示す Workspace ONE UEM コンテナ アプリケーション内の安全な環境に入るまで、個人または組織固有の情報を入力しないでください:</value>
+  </data>
+  <data name="MessageTemplates_Content_DoNotEnterInfoUntilInHubApp" xml:space="preserve">
+    <value>下の図に示す VMware Workspace ONE Intelligent Hub 内の安全な環境に入るまで、個人または組織固有の情報を入力しないでください:</value>
+  </data>
+  <data name="MessageTemplates_Content_DownloadHubApp" xml:space="preserve">
+    <value>VMware Workspace ONE Intelligent Hub アプリをダウンロードします。</value>
+  </data>
+  <data name="MessageTemplates_Content_DownloadHubAppOnDeviceYouWantToEnrollAt" xml:space="preserve">
+    <value>加入するデバイスにおいて、次の場所で VMware Workspace ONE Intelligent Hub アプリをダウンロードします:</value>
+  </data>
+  <data name="MessageTemplates_Content_EmailDomainConfirmedUserWithSameDomainEnrolledInto" xml:space="preserve">
+    <value>E メール ドメインが確認されると、同じドメインのメール アドレスを使用して加入するユーザーは、次の URL およびグループ ID に加入します:</value>
+  </data>
+  <data name="MessageTemplates_Content_EmailDomainRegisteredVerifyEmailAddress" xml:space="preserve">
+    <value>ご使用の E メール ドメインが、E メール ベースの加入用に登録されました。下のリンクをクリックしてメール アドレスを確認してください。</value>
+  </data>
+  <data name="MessageTemplates_Content_EnrollmentURL" xml:space="preserve">
+    <value>加入 URL:</value>
+  </data>
+  <data name="MessageTemplates_Content_EnrollYourDevice" xml:space="preserve">
+    <value>デバイスを加入させます。</value>
+  </data>
+  <data name="MessageTemplates_Content_EnterCredentialsToAuthenticateDevice" xml:space="preserve">
+    <value>デバイスを認証するには資格情報を入力してください</value>
+  </data>
+  <data name="MessageTemplates_Content_EnterTokenBelowInAppToResetPasscode" xml:space="preserve">
+    <value>アプリケーションで [パスコードを忘れた場合] オプションを使用してパスコードをリセットするときは、下のトークンを入力してください。</value>
+  </data>
+  <data name="MessageTemplates_Content_EnterTokenWhenPromptedDuringAuth" xml:space="preserve">
+    <value>App Catalog の認証中にトークンの入力を求められたら、下の指定のトークンを入力してください。</value>
+  </data>
+  <data name="MessageTemplates_Content_EnterTokenWhenPromptedWithDetails" xml:space="preserve">
+    <value>App Catalog の認証中にトークンの入力を求められたら、下の指定のトークンを入力してください。トークン: {AppCatalogToken}</value>
+  </data>
+  <data name="MessageTemplates_Content_EulaUpdatedAcceptanceRequired" xml:space="preserve">
+    <value>Workspace ONE UEM ユーザー同意書の規約が更新されており、同意が必要です。</value>
+  </data>
+  <data name="MessageTemplates_Content_ExpirationDateTokenExpirationDate" xml:space="preserve">
+    <value>有効期限: {TokenExpirationDate}</value>
+  </data>
+  <data name="MessageTemplates_Content_FileAccessibleInContentLockerOrContentLockerSync" xml:space="preserve">
+    <value>また、モバイル デバイス上の Content Locker、または Content Locker Sync (コンピュータにインストールされている場合) でこのファイルにアクセスできます。</value>
+  </data>
+  <data name="MessageTemplates_Content_FinalNoticeAppEulaUpdatedLogInToUemToAccept" xml:space="preserve">
+    <value>最終通知: アプリケーションのユーザー同意書の規約が更新されています。Workspace ONE UEM App Catalog にログインして規約に同意してください。</value>
+  </data>
+  <data name="MessageTemplates_Content_FinalNotificationIfRejectAppRemoved" xml:space="preserve">
+    <value>これは最終通知です。ユーザー同意書の規約を拒否した場合、アプリケーションがデバイスから削除されます。</value>
+  </data>
+  <data name="MessageTemplates_Content_FirstNameLastName" xml:space="preserve">
+    <value>{LastName} {FirstName}、</value>
+  </data>
+  <data name="MessageTemplates_Content_FolderAccessibleInContentLockerOrContentLockerSync" xml:space="preserve">
+    <value>また、モバイル デバイス上の Content Locker、または Content Locker Sync (コンピュータにインストールされている場合) でこのフォルダにアクセスできます。</value>
+  </data>
+  <data name="MessageTemplates_Content_FollowPromptsToSetupPasswordAt" xml:space="preserve">
+    <value>次の場所で、プロンプトに従ってパスワードをセットアップします:</value>
+  </data>
+  <data name="MessageTemplates_Content_ForFutureAccessRequireCredentials" xml:space="preserve">
+    <value>このフォルダに今後アクセスするために、下の資格情報が必要になる場合があります。</value>
+  </data>
+  <data name="MessageTemplates_Content_GoToAppRemovalLogPageToSeeDevicesCanChangeAppRemovalLimitSettings" xml:space="preserve">
+    <value>{AppRemovalLog} ページに移動して、影響を受けたすべてのデバイスのリストを確認してください。{AppRemovalProtection} で、アプリ削除の制限の設定を増減できます。</value>
+  </data>
+  <data name="MessageTemplates_Content_GoToContainerEnrollmentUrlToActivateDevice" xml:space="preserve">
+    <value>{ContainerEnrollmentUrl} に移動してデバイスを有効にしてください</value>
+  </data>
+  <data name="MessageTemplates_Content_GoToHubEnrollmentUrlToActivateDevice" xml:space="preserve">
+    <value>{HubEnrollmentUrl} に移動してデバイスを有効にしてください</value>
+  </data>
+  <data name="MessageTemplates_Content_GrantedFollowingAdminRoles" xml:space="preserve">
+    <value>次の管理者役割へのアクセスが許可されました:</value>
+  </data>
+  <data name="MessageTemplates_Content_GroupIdGroupIdentifier" xml:space="preserve">
+    <value>グループ ID: {GroupIdentifier}</value>
+  </data>
+  <data name="MessageTemplates_Content_HasMentionedYouInCommentOnFile" xml:space="preserve">
+    <value>がファイルのコメントであなたに言及しました</value>
+  </data>
+  <data name="MessageTemplates_Content_HasSharedYouFolder" xml:space="preserve">
+    <value>がこのフォルダをあなたと共有しました</value>
+  </data>
+  <data name="MessageTemplates_Content_HaveNewFolderSharesNavigateToSSPSection" xml:space="preserve">
+    <value>新しいフォルダ共有があります。これにアクセスするには、[セルフサービス ポータル] セクションに移動してください</value>
+  </data>
+  <data name="MessageTemplates_Content_HoldOnWipeUntilConfirm" xml:space="preserve">
+    <value>ワイプの数が増えた理由を評価して今後のすべてのワイプ コマンドをリリースしてよいことを確認するまで、今後のすべてのワイプ コマンドが保留されます。</value>
+  </data>
+  <data name="MessageTemplates_Content_IfPasswordExpiresForcedToReset" xml:space="preserve">
+    <value>アカウント パスワードの有効期限が切れた場合、ログイン前にパスワードのリセットが強制されます。</value>
+  </data>
+  <data name="MessageTemplates_Content_IfRejectDeviceUnenrolledRemovalOfData" xml:space="preserve">
+    <value>ユーザー同意書の規約を拒否した場合、デバイスが Workspace ONE UEM から加入解除され、組織固有のすべてのデータがデバイスから削除されます。</value>
+  </data>
+  <data name="MessageTemplates_Content_IfRejectOrNotAcceptRemoveApp" xml:space="preserve">
+    <value>ユーザー同意書の規約を拒否した場合、または猶予期間内に同意しない場合、アプリケーションがデバイスから削除されます。</value>
+  </data>
+  <data name="MessageTemplates_Content_Important" xml:space="preserve">
+    <value>重要:</value>
+  </data>
+  <data name="MessageTemplates_Content_LinkAboveWillExpireOn" xml:space="preserve">
+    <value>上のリンクは、次の日に有効期限が切れます:</value>
+  </data>
+  <data name="MessageTemplates_Content_LinkExpiredContactItHelpDeskToRequestAt" xml:space="preserve">
+    <value>リンクの有効期限が切れた場合は、次の場所で社内の IT ヘルプデスクに連絡して新しい加入 E メールをリクエストしてください:</value>
+  </data>
+  <data name="MessageTemplates_Content_LogIntoConsoleToImplementCompliancePolicies" xml:space="preserve">
+    <value>Workspace ONE UEM Console にログインし、非順守デバイスを追跡するために {VendorName} アプリケーション グループを使用した順守ポリシーを実装してください。</value>
+  </data>
+  <data name="MessageTemplates_Content_LogIntoConsoleToResetPassword" xml:space="preserve">
+    <value>Workspace ONE UEM 管理者コンソールにログインし、右上隅で名前を選択してから [アカウント設定を管理] を選択して、パスワードをリセットしてください。</value>
+  </data>
+  <data name="MessageTemplates_Content_LogIntoSSPToReviewAcceptUpdatedTermsAt" xml:space="preserve">
+    <value>セルフサービス ポータルにログインして、次の場所で更新された規約を確認して同意してください:</value>
+  </data>
+  <data name="MessageTemplates_Content_LogIntoUemToAcceptChangesForApp" xml:space="preserve">
+    <value>デバイスから Workspace ONE UEM App Catalog にログインして、次のアプリケーションに対する変更に同意してください:</value>
+  </data>
+  <data name="MessageTemplates_Content_MyContent" xml:space="preserve">
+    <value>マイ コンテンツ</value>
+  </data>
+  <data name="MessageTemplates_Content_OnlyDownloadFromOfficialAppStore" xml:space="preserve">
+    <value>デバイスの公式アプリ ストアからのみダウンロードしてください</value>
+  </data>
+  <data name="MessageTemplates_Content_OrContactComplianceSupportPhone" xml:space="preserve">
+    <value>または問い合わせ電話番号: {ComplianceSupportPhone}</value>
+  </data>
+  <data name="MessageTemplates_Content_OrContactEnrollmentSupportPhone" xml:space="preserve">
+    <value>または問い合わせ電話番号: {EnrollmentSupportPhone}。</value>
+  </data>
+  <data name="MessageTemplates_Content_OurWebsite" xml:space="preserve">
+    <value>当社の Web サイト</value>
+  </data>
+  <data name="MessageTemplates_Content_PasswordEnrollmentPassword" xml:space="preserve">
+    <value>パスワード: {EnrollmentPassword}</value>
+  </data>
+  <data name="MessageTemplates_Content_PasswordResetLink" xml:space="preserve">
+    <value>パスワードのリセット リンク:</value>
+  </data>
+  <data name="MessageTemplates_Content_PasswordResetLinkExpiration" xml:space="preserve">
+    <value>パスワードのリセット リンクの有効期限:</value>
+  </data>
+  <data name="MessageTemplates_Content_PolicyNamePolicyDescription" xml:space="preserve">
+    <value>{PolicyName}: {PolicyDescription}</value>
+  </data>
+  <data name="MessageTemplates_Content_ProvisioningPackageRequestStatusChangedLogIntoConsoleToSee" xml:space="preserve">
+    <value>Windows プロビジョニング パッケージを作成するリクエストの状態が変わりました。Console にログインし、詳細について通知を確認してください。</value>
+  </data>
+  <data name="MessageTemplates_Content_RedirectedToContainerAppOrToDownloadContainerApp" xml:space="preserve">
+    <value>Workspace ONE UEM コンテナ アプリがデバイスにインストールされている場合、そのアプリにリダイレクトされます。そうでない場合、そのアプリをダウンロードするためにデバイスの公式アプリ ストアにリダイレクトされます。</value>
+  </data>
+  <data name="MessageTemplates_Content_RedirectedToHubAppOrToDownloadHubApp" xml:space="preserve">
+    <value>VMware Workspace ONE Intelligent Hub アプリがデバイスにインストールされている場合、そのアプリにリダイレクトされます。そうでない場合、そのアプリをダウンロードするためにデバイスの公式アプリ ストアにリダイレクトされます。</value>
+  </data>
+  <data name="MessageTemplates_Content_Regards" xml:space="preserve">
+    <value>敬具</value>
+  </data>
+  <data name="MessageTemplates_Content_RegisteringEnableDownloadAppPurchasedByOrg" xml:space="preserve">
+    <value>プログラムに登録すると、ユーザーに代わって組織が購入したアプリケーションをダウンロードできるようになります。</value>
+  </data>
+  <data name="MessageTemplates_Content_RegistrationTokenRevoked" xml:space="preserve">
+    <value>デバイスの登録トークンが取り消されました。</value>
+  </data>
+  <data name="MessageTemplates_Content_RegistrationTokenRevokedCannotBeActivated" xml:space="preserve">
+    <value>デバイスの登録トークンが取り消されました。Workspace ONE UEM でそのデバイスをアクティブ化することはできなくなりました。</value>
+  </data>
+  <data name="MessageTemplates_Content_ResetUrlExpirationText" xml:space="preserve">
+    <value>上のリンクの有効期限は {PasswordResetUrlExpiration} 時間後です。</value>
+  </data>
+  <data name="MessageTemplates_Content_ResetUrlRetryText" xml:space="preserve">
+    <value>このリンクが機能しない場合は、ブラウザに次のリンクをコピーして貼り付けてください。</value>
+  </data>
+  <data name="MessageTemplates_Content_ResetUrlText" xml:space="preserve">
+    <value>今すぐパスワードをリセットしてください</value>
+  </data>
+  <data name="MessageTemplates_Content_RestrictionsLiftedWhenCompliant" xml:space="preserve">
+    <value>デバイスに課せられた制限は、デバイスが再び順守状態になった際、解除されます。</value>
+  </data>
+  <data name="MessageTemplates_Content_SeeAppReputationAnalysisReportForApp" xml:space="preserve">
+    <value>アプリケーション {ApplicationName}{ApplicationVersion} のアプリ評価分析に関する、添付の詳細レポートを参照してください。</value>
+  </data>
+  <data name="MessageTemplates_Content_SeeDeviceWipeDetailsNavigateTo" xml:space="preserve">
+    <value>ワイプされたかワイプが保留中であるすべてのデバイスのリストを参照し、各アクションが何によってトリガされたかを確認し、各アクションを削除するか続行するかを指定するには、次に移動してください:</value>
+  </data>
+  <data name="MessageTemplates_Content_SetUemPassword" xml:space="preserve">
+    <value>Workspace ONE UEM パスワードを設定します。</value>
+  </data>
+  <data name="MessageTemplates_Content_TempAdminCreatedOrModifiedLogIntoConsole" xml:space="preserve">
+    <value>Workspace ONE UEM 一時管理者アカウントが作成または変更され、次の資格情報を使用して Workspace ONE UEM 管理者コンソールにログインできるようになりました:</value>
+  </data>
+  <data name="MessageTemplates_Content_ToActivateAndAccessContent" xml:space="preserve">
+    <value>アカウントを有効にして、自分と共有されているコンテンツにアクセスするには、</value>
+  </data>
+  <data name="MessageTemplates_Content_ToComplyWithPolicyAddressViolations" xml:space="preserve">
+    <value>ポリシーを順守するには、次の違反に対処する必要があります:</value>
+  </data>
+  <data name="MessageTemplates_Content_TokenAppCatalogToken" xml:space="preserve">
+    <value>トークン: {AppCatalogToken}</value>
+  </data>
+  <data name="MessageTemplates_Content_TokenApplicationAuthenticationToken" xml:space="preserve">
+    <value>トークン: {ApplicationAuthenticationToken}</value>
+  </data>
+  <data name="MessageTemplates_Content_ToLearnMoreVisit" xml:space="preserve">
+    <value>詳細については、次にアクセスしてください:</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAdminAccountActivationTitle" xml:space="preserve">
+    <value>Workspace ONE UEM 管理者アカウント アクティベーション - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAdminPasswordExpiryNotificationTitle" xml:space="preserve">
+    <value>Workspace ONE UEM 管理者パスワードの期限の通知 - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAdminPasswordResetTitle" xml:space="preserve">
+    <value>Workspace ONE UEM 管理者パスワードがリセットされました - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAdminPasswordUpdatedTitle" xml:space="preserve">
+    <value>Workspace ONE UEM 管理者パスワードが更新されました - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAdminPersonalInfoUpdatedTitle" xml:space="preserve">
+    <value>Workspace ONE UEM 管理者の個人情報が更新されました - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAdminStatusUpdatedTitle" xml:space="preserve">
+    <value>Workspace ONE UEM 管理者の状態が更新されました - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAppCatalogTokenNotificationTitle" xml:space="preserve">
+    <value>Workspace ONE UEM App Catalog トークン通知 - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAppEulaUpdateNotificationTitle" xml:space="preserve">
+    <value>Workspace ONE UEM アプリケーション利用規約の更新通知 - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAppForgotPasscodeTokenNotificationTitle" xml:space="preserve">
+    <value>Workspace ONE UEM アプリのパスコードを忘れた場合のトークン通知 - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAppGroupCreationNotificationTitle" xml:space="preserve">
+    <value>Workspace ONE UEM アプリケーション グループ作成通知 - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAppLogNotificationTitle" xml:space="preserve">
+    <value>Workspace ONE UEM アプリケーション ログ通知 - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAppNotificationTitle" xml:space="preserve">
+    <value>Workspace ONE UEM アプリケーション通知 - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAppPurchaseTitle" xml:space="preserve">
+    <value>Workspace ONE UEM アプリケーション購入 - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAppRemovalNotificationTitle" xml:space="preserve">
+    <value>Workspace ONE UEM アプリケーション削除通知 - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAppReputationAnalysisTitle" xml:space="preserve">
+    <value>Workspace ONE UEM アプリケーション評価分析 - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAppWorkflowAppAssignmentNotificationTitle" xml:space="preserve">
+    <value>Workspace ONE UEM アプリケーション ワークフロー - アプリケーション割り当て通知 - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAppWorkflowAppCreatedNotificationTitle" xml:space="preserve">
+    <value>Workspace ONE UEM アプリケーション ワークフロー - アプリケーション作成通知 - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAppWorkflowAppPublishNotificationTitle" xml:space="preserve">
+    <value>Workspace ONE UEM アプリケーション ワークフロー - アプリケーション公開通知 - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAppWorkflowAppReviewNotificationTitle" xml:space="preserve">
+    <value>Workspace ONE UEM アプリケーション ワークフロー - アプリケーション レビュー通知 - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemContentNotificationTitle" xml:space="preserve">
+    <value>Workspace ONE UEM コンテンツ通知 - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemDeviceActivationTitle" xml:space="preserve">
+    <value>Workspace ONE UEM デバイス アクティベーション - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemDeviceBlockedByEnrollmentRestrictionTitle" xml:space="preserve">
+    <value>Workspace ONE UEM デバイスが加入制限によってブロックされました - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemDeviceComplianceViolationTitle" xml:space="preserve">
+    <value>Workspace ONE UEM デバイス順守違反 - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemDeviceEnrolledTitle" xml:space="preserve">
+    <value>Workspace ONE UEM デバイスが正常に加入しました - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemDeviceRemovalTitle" xml:space="preserve">
+    <value>Workspace ONE UEM デバイス削除 - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemDeviceUnenrolledTitle" xml:space="preserve">
+    <value>Workspace ONE UEM デバイスが加入解除されました - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemEmailDomainRegistrationTitle" xml:space="preserve">
+    <value>Workspace ONE UEM E メール ドメイン登録 - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemEulaUpdateTitle" xml:space="preserve">
+    <value>Workspace ONE UEM 利用規約の更新 - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemFinalNoticeAppEulaUpdateTitle" xml:space="preserve">
+    <value>最終通知 - Workspace ONE UEM アプリケーション利用規約の更新 - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemLicenseBasedVppNotificationTitle" xml:space="preserve">
+    <value>Workspace ONE UEM ライセンス ベース VPP 通知 - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemProvisioningPackageTitle" xml:space="preserve">
+    <value>Workspace ONE UEM プロビジョニング パッケージ - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemTempAdminActivationTitle" xml:space="preserve">
+    <value>Workspace ONE UEM 一時管理者アカウント アクティベーション - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemUserActivationTitle" xml:space="preserve">
+    <value>Workspace ONE UEM ユーザー アクティベーション - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemWipeProtectionNotificationTitle" xml:space="preserve">
+    <value>Workspace ONE UEM ワイプ保護通知 - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UnenrollmentReason" xml:space="preserve">
+    <value>理由: {ServerActionSource}</value>
+  </data>
+  <data name="MessageTemplates_Content_UserCommentsForApp" xml:space="preserve">
+    <value>アプリケーションのユーザー コメントは以下のとおりです。</value>
+  </data>
+  <data name="MessageTemplates_Content_UserHasSharedFolder" xml:space="preserve">
+    <value>{ContentShareUserLastName} {ContentShareUserFirstName} ({ContentShareUserEmail}) がフォルダ「{ContentFolderName}」をあなたと共有しました。</value>
+  </data>
+  <data name="MessageTemplates_Content_UserNameAdminUserName" xml:space="preserve">
+    <value>ユーザー名: {AdminUserName}</value>
+  </data>
+  <data name="MessageTemplates_Content_UserNameEmailAddress" xml:space="preserve">
+    <value>ユーザー名: {EmailAddress}</value>
+  </data>
+  <data name="MessageTemplates_Content_UserNameEnrollmentUserName" xml:space="preserve">
+    <value>ユーザー名: {EnrollmentUserName}</value>
+  </data>
+  <data name="MessageTemplates_Content_UsingBrowserToRegisterVppProgramNavigateTo" xml:space="preserve">
+    <value>iOS 7 デバイスのブラウザを使用して Apple のライセンス ベース VPP プログラムに登録するには、次に移動してください:</value>
+  </data>
+  <data name="Messagetemplates_Content_WelcomeToWorkspaceOneUEM" xml:space="preserve">
+    <value>Workspace ONE UEM へようこそ</value>
+  </data>
+  <data name="MessageTemplates_Content_WhenPromptedEnterUseNamePassword" xml:space="preserve">
+    <value>加入ユーザー名およびパスワードの入力を求められたら、それらを入力します:</value>
+  </data>
+  <data name="MessageTemplates_Content_WipeLogPage" xml:space="preserve">
+    <value>｢ワイプ ログ｣ ページ</value>
+  </data>
+  <data name="MessageTemplates_Content_WorkspaceOneUem" xml:space="preserve">
+    <value>Workspace ONE UEM</value>
+  </data>
+  <data name="Messagetemplates_Content_WorkspaceOneUEMUser" xml:space="preserve">
+    <value>Workspace ONE UEM ユーザー</value>
+  </data>
+  <data name="Messagetemplates_Description_AdminAccountActivation" xml:space="preserve">
+    <value>コンソールで管理者が別の管理者を追加する際に使用されるデフォルトのメッセージ テンプレートです。</value>
+  </data>
+  <data name="Messagetemplates_Description_AdminPasswordChange" xml:space="preserve">
+    <value>パスワードが変更されたことを管理者に通知するデフォルトのメッセージ テンプレートです。このメッセージは自動化され、常にセキュリティ目的のために送信されます。</value>
+  </data>
+  <data name="Messagetemplates_Description_AdminPasswordExpiryNotification" xml:space="preserve">
+    <value>パスワードがまもなく期限切れになること、およびパスワードをリセットするためのアクションを実行する必要があることを管理者に通知する、デフォルトのメッセージ テンプレート</value>
+  </data>
+  <data name="Messagetemplates_Description_AdminPasswordReset" xml:space="preserve">
+    <value>パスワードが変更されたことを管理者に通知するデフォルトのメッセージ テンプレートです。このメッセージは自動化され、常にセキュリティ目的のために送信されます。</value>
+  </data>
+  <data name="Messagetemplates_Description_AdminPersonalInformationChange" xml:space="preserve">
+    <value>ユーザー情報が変更されたことを管理者に通知するデフォルトのメッセージ テンプレートです。このメッセージは自動化され、常にセキュリティ目的のために送信されます。</value>
+  </data>
+  <data name="Messagetemplates_Description_AdminPersonalInformationChangeViaApi" xml:space="preserve">
+    <value>ユーザー情報が API から変更されたことを管理者に通知するデフォルトのメッセージ テンプレートです。このメッセージは自動化され、常にセキュリティ目的のために送信されます。</value>
+  </data>
+  <data name="Messagetemplates_Description_AdminStatusChange" xml:space="preserve">
+    <value>非アクティブ化または再アクティブ化されていることを管理者に通知するデフォルトのメッセージ テンプレートです。このメッセージは自動化され、常にセキュリティ目的のために送信されます。</value>
+  </data>
+  <data name="Messagetemplates_Description_AppCatalogTokenNotification" xml:space="preserve">
+    <value>アプリ カタログに最初にアクセスするときにユーザーにトークン情報を送信するデフォルトのメッセージ テンプレートです。これは、トークン認証用に構成した組織グループ内にデバイスがある場合にのみ送信されます。</value>
+  </data>
+  <data name="Messagetemplates_Description_ApplicationAssignmentNotification" xml:space="preserve">
+    <value>新しいアプリケーションの割り当て準備が整ったことを管理者に通知するデフォルトのメッセージ テンプレートです。</value>
+  </data>
+  <data name="Messagetemplates_Description_ApplicationCreationNotification" xml:space="preserve">
+    <value>新しいアプリケーションが作成されたことを管理者に通知するデフォルトのメッセージ テンプレートです。</value>
+  </data>
+  <data name="Messagetemplates_Description_ApplicationEulaFinalNotification" xml:space="preserve">
+    <value>更新または追加されたアプリケーションの利用規約に同意しないと、アプリケーションが削除されるという最終警告をユーザーに通知するデフォルトのメッセージ テンプレートです。</value>
+  </data>
+  <data name="Messagetemplates_Description_ApplicationEulaNotification" xml:space="preserve">
+    <value>アプリケーションの利用規約が追加または更新されたことをユーザーに通知するデフォルトのメッセージ テンプレートです。追加事項や変更内容に同意するように指示します。</value>
+  </data>
+  <data name="Messagetemplates_Description_ApplicationLogNotification" xml:space="preserve">
+    <value>SDK 対応アプリケーションでクラッシュ ログが生成され、そのログを開発者に E メールで自動送信するフラグがアプリケーションで有効になっている場合に使用するデフォルトのメッセージ テンプレートです。</value>
+  </data>
+  <data name="Messagetemplates_Description_ApplicationNotification" xml:space="preserve">
+    <value>アプリ カタログで新しいアプリケーションがダウンロード可能になったことをユーザーに通知するデフォルトのメッセージ テンプレートです。</value>
+  </data>
+  <data name="Messagetemplates_Description_ApplicationPublishNotification" xml:space="preserve">
+    <value>新しいアプリケーションの公開準備ができたことを管理者に通知するデフォルトのメッセージ テンプレートです。</value>
+  </data>
+  <data name="Messagetemplates_Description_ApplicationReviewNotification" xml:space="preserve">
+    <value>新しいアプリケーションの確認準備が整ったことを管理者に通知するデフォルトのメッセージ テンプレートです。</value>
+  </data>
+  <data name="Messagetemplates_Description_ApplicationScanDetailResult" xml:space="preserve">
+    <value>詳細なアプリ評価分析レポートについて開発者に通知するデフォルトのメッセージ テンプレートです。</value>
+  </data>
+  <data name="Messagetemplates_Description_ApplicationScanNotification" xml:space="preserve">
+    <value>アプリ評価分析完了通知</value>
+  </data>
+  <data name="Messagetemplates_Description_AppRemoveNotification" xml:space="preserve">
+    <value>このメッセージ テンプレートは、短期間のうちに多数のデバイスでアプリが削除されたことを管理者に通知する際に使用します</value>
+  </data>
+  <data name="Messagetemplates_Description_AppVersionUpdateNotification" xml:space="preserve">
+    <value>加入プロセス中に ｢MDM プロファイルをインストール｣ プロンプトに表示されるメッセージをカスタマイズします。</value>
+  </data>
+  <data name="Messagetemplates_Description_AuthenticationAppTokenNotification" xml:space="preserve">
+    <value>デバイス上の SDK アプリケーションのパスコードをリセットするために、ユーザーにトークンを E メールで送信するためのテンプレート。</value>
+  </data>
+  <data name="Messagetemplates_Description_ComplianceViolationAdministratorNotification" xml:space="preserve">
+    <value>デバイスが順守ポリシーに違反しているため、順守するためにユーザーが措置を講じる必要があると管理者に通知するデフォルトのメッセージ テンプレートです。</value>
+  </data>
+  <data name="Messagetemplates_Description_ComplianceViolationUserNotification" xml:space="preserve">
+    <value>順守ポリシーに違反しているため、順守するために措置を講じる必要があるとユーザーに通知する、デフォルトのメッセージ テンプレートです。</value>
+  </data>
+  <data name="Messagetemplates_Description_DeviceActivation" xml:space="preserve">
+    <value>デバイスを加入できることをユーザーに通知するデフォルトのメッセージ テンプレートです。</value>
+  </data>
+  <data name="Messagetemplates_Description_DeviceBlockedByRestriction" xml:space="preserve">
+    <value>制限によりデバイスがブロックされていることをユーザーに通知するデフォルトのメッセージ テンプレートです。</value>
+  </data>
+  <data name="Messagetemplates_Description_DeviceEnrolled" xml:space="preserve">
+    <value>デバイスが正常に加入されたことをユーザーに通知するデフォルトのメッセージ テンプレートです。</value>
+  </data>
+  <data name="Messagetemplates_Description_DeviceEnrollmentProgramCustomPrompt" xml:space="preserve">
+    <value>デバイス加入プログラム プロファイルが割り当てられたデバイスの ｢アシスタントの認証をセットアップ｣ ペインに表示されるテキストをカスタマイズします。</value>
+  </data>
+  <data name="Messagetemplates_Description_DeviceLockScreenMessageiOS7" xml:space="preserve">
+    <value>デバイスを紛失した際にロック画面のメッセージ コマンドがデバイスに送信されるときに表示される、既定のメッセージ テンプレートです。</value>
+  </data>
+  <data name="Messagetemplates_Description_DeviceOutofDateCompliance" xml:space="preserve">
+    <value>デバイスの返却と侵害状態スキャンの実行を許可するため、Workspace ONE Intelligent Hub を起動するようユーザーに要求するデフォルトのメッセージ テンプレートです。</value>
+  </data>
+  <data name="Messagetemplates_Description_DeviceUnenrolled" xml:space="preserve">
+    <value>デバイスが未加入であることをユーザーに通知するデフォルトのメッセージ テンプレートです。</value>
+  </data>
+  <data name="Messagetemplates_Description_DeviceWipeEmailNotification" xml:space="preserve">
+    <value>短期間中に多数のデバイスが企業情報ワイプまたはデバイス ワイプされたことを管理者に通知するデフォルトのメッセージ テンプレートです。</value>
+  </data>
+  <data name="Messagetemplates_Description_EmailDomainRegistration" xml:space="preserve">
+    <value>簡素化された加入プロセスで使用する E メール ドメインを検証する際のデフォルトのメッセージ テンプレートです。</value>
+  </data>
+  <data name="Messagetemplates_Description_EulaNotification" xml:space="preserve">
+    <value>利用規約が追加または更新されたことをユーザーに通知し、追加事項または変更内容に同意するようユーザーに指示するデフォルトのメッセージ テンプレートです。</value>
+  </data>
+  <data name="Messagetemplates_Description_ExternalUserActivation" xml:space="preserve">
+    <value>フォルダが共有されている場合のアカウントのアクティベーションについて、社外ユーザーに通知するデフォルトのメッセージ テンプレートです。</value>
+  </data>
+  <data name="Messagetemplates_Description_LicenseBasedPurchasedApplicationInvitation" xml:space="preserve">
+    <value>ライセンス ベース VPP について Apple に登録する必要があることを加入ユーザーに通知するデフォルトのメッセージ テンプレートです。</value>
+  </data>
+  <data name="Messagetemplates_Description_MamEnrollmentUserActivation" xml:space="preserve">
+    <value>管理者が、MAM 加入のために構成した組織グループに新しいユーザーをコンソールで追加する際のデフォルトのメッセージ テンプレートです。</value>
+  </data>
+  <data name="Messagetemplates_Description_MamNewUserActivation" xml:space="preserve">
+    <value>ユーザーが、MAM 加入のために構成した組織グループに加入する際のデフォルトのメッセージ テンプレートです。</value>
+  </data>
+  <data name="Messagetemplates_Description_MentionedCommentNotification" xml:space="preserve">
+    <value>コメント通知で言及</value>
+  </data>
+  <data name="Messagetemplates_Description_NewlyAddedUserToUserGroupNotification" xml:space="preserve">
+    <value>以前共有されていたフォルダのユーザー グループに新規ユーザーが追加されたことを既存のユーザーに通知する、デフォルトのメッセージ テンプレートです。</value>
+  </data>
+  <data name="Messagetemplates_Description_NewSharedFolderNotification" xml:space="preserve">
+    <value>共有フォルダ通知</value>
+  </data>
+  <data name="Messagetemplates_Description_ProvisioningPackageNotification" xml:space="preserve">
+    <value>プロビジョニング パッケージが作成され、ダウンロードできることを管理者に通知する、デフォルトのメッセージ テンプレートです。</value>
+  </data>
+  <data name="Messagetemplates_Description_PurchasedApplication" xml:space="preserve">
+    <value>ユーザーに代わってアプリケーションが購入され、ダウンロード可能になったことをユーザーに通知するデフォルトのメッセージ テンプレートです。</value>
+  </data>
+  <data name="Messagetemplates_Description_TempAdminActivation" xml:space="preserve">
+    <value>管理者がコンソールで一時的な管理者を追加する際のデフォルトのメッセージ テンプレートです。</value>
+  </data>
+  <data name="Messagetemplates_Description_UnRegisterDevice" xml:space="preserve">
+    <value>デバイスが加入解除され、すべての組織固有データが削除されることをユーザーに通知するデフォルトのメッセージ テンプレートです。</value>
+  </data>
+  <data name="Messagetemplates_Description_UserActivation" xml:space="preserve">
+    <value>EMM ユーザーとして追加され、デバイスの加入が可能になったことをユーザーに通知するデフォルトのメッセージ テンプレートです。</value>
+  </data>
+  <data name="Messagetemplates_Description_VendorApplicationGroupCreationNotification" xml:space="preserve">
+    <value>ベンダー アプリケーション グループが作成されており、順守ポリシーの実装に使用できることを、ユーザーに通知するデフォルトのメッセージ テンプレートです。</value>
+  </data>
+  <data name="Messagetemplates_Description_WorkSpaceDeviceActivation" xml:space="preserve">
+    <value>デバイスを加入できることをユーザーに通知するデフォルトのメッセージ テンプレートです。</value>
+  </data>
+  <data name="Messagetemplates_Name_AdminAccountActivation" xml:space="preserve">
+    <value>管理者アクティベーション</value>
+  </data>
+  <data name="Messagetemplates_Name_AdminPasswordChange" xml:space="preserve">
+    <value>管理者パスワード変更</value>
+  </data>
+  <data name="Messagetemplates_Name_AdminPasswordExpiryNotification" xml:space="preserve">
+    <value>管理者パスワードの期限の通知</value>
+  </data>
+  <data name="Messagetemplates_Name_AdminPasswordReset" xml:space="preserve">
+    <value>管理者パスワード変更</value>
+  </data>
+  <data name="Messagetemplates_Name_AdminPersonalInformationChange" xml:space="preserve">
+    <value>管理者個人情報変更</value>
+  </data>
+  <data name="Messagetemplates_Name_AdminPersonalInformationChangeViaApi" xml:space="preserve">
+    <value>API による管理者個人情報変更</value>
+  </data>
+  <data name="Messagetemplates_Name_AdminStatusChange" xml:space="preserve">
+    <value>管理者状態変更</value>
+  </data>
+  <data name="Messagetemplates_Name_AppCatalogTokenNotification" xml:space="preserve">
+    <value>App Catalog トークン通知</value>
+  </data>
+  <data name="Messagetemplates_Name_ApplicationAssignmentNotification" xml:space="preserve">
+    <value>アプリ ワークフロー - 割り当て通知</value>
+  </data>
+  <data name="Messagetemplates_Name_ApplicationCreationNotification" xml:space="preserve">
+    <value>アプリ ワークフロー - 作成通知</value>
+  </data>
+  <data name="Messagetemplates_Name_ApplicationEulaFinalNotification" xml:space="preserve">
+    <value>アプリ利用規約 - 最終通知</value>
+  </data>
+  <data name="Messagetemplates_Name_ApplicationEulaNotification" xml:space="preserve">
+    <value>アプリ利用規約 - 更新通知</value>
+  </data>
+  <data name="Messagetemplates_Name_ApplicationLogNotification" xml:space="preserve">
+    <value>SDK に対するアプリケーション ログ通知</value>
+  </data>
+  <data name="Messagetemplates_Name_ApplicationNotification" xml:space="preserve">
+    <value>アプリケーション通知</value>
+  </data>
+  <data name="Messagetemplates_Name_ApplicationPublishNotification" xml:space="preserve">
+    <value>アプリ ワークフロー - 公開通知</value>
+  </data>
+  <data name="Messagetemplates_Name_ApplicationReviewNotification" xml:space="preserve">
+    <value>アプリ ワークフロー - レビュー通知</value>
+  </data>
+  <data name="Messagetemplates_Name_ApplicationScanDetailResult" xml:space="preserve">
+    <value>アプリ評価分析詳細</value>
+  </data>
+  <data name="Messagetemplates_Name_ApplicationScanNotification" xml:space="preserve">
+    <value>アプリ評価分析完了通知</value>
+  </data>
+  <data name="Messagetemplates_Name_AppRemoveNotification" xml:space="preserve">
+    <value>アプリ削除上限到達通知</value>
+  </data>
+  <data name="Messagetemplates_Name_AppVersionUpdateNotification" xml:space="preserve">
+    <value>MDM プロファイル インストール (iOS のみ)</value>
+  </data>
+  <data name="Messagetemplates_Name_AuthenticationAppTokenNotification" xml:space="preserve">
+    <value>アプリのパスワード リセット用トークンに関する通知</value>
+  </data>
+  <data name="Messagetemplates_Name_ComplianceViolationAdministratorNotification" xml:space="preserve">
+    <value>順守違反管理者通知</value>
+  </data>
+  <data name="Messagetemplates_Name_ComplianceViolationUserNotification" xml:space="preserve">
+    <value>順守違反ユーザー通知</value>
+  </data>
+  <data name="Messagetemplates_Name_DeviceActivation" xml:space="preserve">
+    <value>デバイスのアクティベーション</value>
+  </data>
+  <data name="Messagetemplates_Name_DeviceBlockedByRestriction" xml:space="preserve">
+    <value>加入制限によってブロックされたデバイス</value>
+  </data>
+  <data name="Messagetemplates_Name_DeviceEnrolled" xml:space="preserve">
+    <value>デバイス加入成功</value>
+  </data>
+  <data name="Messagetemplates_Name_DeviceEnrollmentProgramCustomPrompt" xml:space="preserve">
+    <value>デバイス登録プログラムカスタムプロンプト</value>
+  </data>
+  <data name="Messagetemplates_Name_DeviceLockScreenMessageiOS7" xml:space="preserve">
+    <value>紛失デバイス ロック画面メッセージ (iOS 7 のみ)</value>
+  </data>
+  <data name="Messagetemplates_Name_DeviceOutofDateCompliance" xml:space="preserve">
+    <value>順守状態チェックの要求</value>
+  </data>
+  <data name="Messagetemplates_Name_DeviceUnenrolled" xml:space="preserve">
+    <value>デバイス加入解除済み</value>
+  </data>
+  <data name="Messagetemplates_Name_DeviceWipeEmailNotification" xml:space="preserve">
+    <value>ワイプ保護通知</value>
+  </data>
+  <data name="Messagetemplates_Name_EmailDomainRegistration" xml:space="preserve">
+    <value>メール ドメイン登録</value>
+  </data>
+  <data name="Messagetemplates_Name_EulaNotification" xml:space="preserve">
+    <value>利用規約通知</value>
+  </data>
+  <data name="Messagetemplates_Name_ExternalUserActivation" xml:space="preserve">
+    <value>外部ユーザー アクティベーション</value>
+  </data>
+  <data name="Messagetemplates_Name_LicenseBasedPurchasedApplicationInvitation" xml:space="preserve">
+    <value>ライセンス ベース VPP 通知</value>
+  </data>
+  <data name="Messagetemplates_Name_MamEnrollmentUserActivation" xml:space="preserve">
+    <value>MAM管理者 - 新規ユーザー アクティベーションを開始</value>
+  </data>
+  <data name="Messagetemplates_Name_MamNewUserActivation" xml:space="preserve">
+    <value>MAM新規ユーザー アクティベーション</value>
+  </data>
+  <data name="Messagetemplates_Name_MentionedCommentNotification" xml:space="preserve">
+    <value>コメント言及</value>
+  </data>
+  <data name="Messagetemplates_Name_NewlyAddedUserToUserGroupNotification" xml:space="preserve">
+    <value>ユーザー グループへの新しいユーザー追加の通知を共有</value>
+  </data>
+  <data name="Messagetemplates_Name_NewSharedFolderNotification" xml:space="preserve">
+    <value>新規共有フォルダ</value>
+  </data>
+  <data name="Messagetemplates_Name_ProvisioningPackageNotification" xml:space="preserve">
+    <value>プロビジョニング パッケージ状態通知</value>
+  </data>
+  <data name="Messagetemplates_Name_PurchasedApplication" xml:space="preserve">
+    <value>アプリケーション購入</value>
+  </data>
+  <data name="Messagetemplates_Name_TempAdminActivation" xml:space="preserve">
+    <value>一時的管理者アクティベーション</value>
+  </data>
+  <data name="Messagetemplates_Name_UnRegisterDevice" xml:space="preserve">
+    <value>デバイスの登録解除</value>
+  </data>
+  <data name="Messagetemplates_Name_UserActivation" xml:space="preserve">
+    <value>ユーザー アクティベーション</value>
+  </data>
+  <data name="Messagetemplates_Name_VendorApplicationGroupCreationNotification" xml:space="preserve">
+    <value>ベンダーアプリケーショングループ作成通知</value>
+  </data>
+  <data name="Messagetemplates_Name_WorkSpaceDeviceActivation" xml:space="preserve">
+    <value>Container デバイス アクティベーション</value>
+  </data>
+  <data name="Messagetemplates_Subject_AdminAccountActivation" xml:space="preserve">
+    <value>Workspace ONE UEM 管理者アカウント アクティベーション</value>
+  </data>
+  <data name="Messagetemplates_Subject_AdminPasswordChange" xml:space="preserve">
+    <value>Workspace ONE UEM 管理者パスワードが更新されました</value>
+  </data>
+  <data name="Messagetemplates_Subject_AdminPasswordExpiryNotification" xml:space="preserve">
+    <value>管理者パスワードの期限の通知</value>
+  </data>
+  <data name="Messagetemplates_Subject_AdminPasswordReset" xml:space="preserve">
+    <value>Workspace ONE UEM 管理者パスワードがリセットされました</value>
+  </data>
+  <data name="Messagetemplates_Subject_AdminPersonalInformationChange" xml:space="preserve">
+    <value>Workspace ONE UEM 管理者の個人情報が更新されました</value>
+  </data>
+  <data name="Messagetemplates_Subject_AdminPersonalInformationChangeViaApi" xml:space="preserve">
+    <value>Workspace ONE UEM 管理者の個人情報が更新されました</value>
+  </data>
+  <data name="Messagetemplates_Subject_AdminStatusChange" xml:space="preserve">
+    <value>Workspace ONE UEM 管理者の状態が更新されました</value>
+  </data>
+  <data name="Messagetemplates_Subject_AppCatalogTokenNotification" xml:space="preserve">
+    <value>Workspace ONE UEM App Catalog トークン</value>
+  </data>
+  <data name="Messagetemplates_Subject_ApplicationAssignmentNotification" xml:space="preserve">
+    <value>Workspace ONE UEM - アプリケーション割り当て可能</value>
+  </data>
+  <data name="Messagetemplates_Subject_ApplicationCreationNotification" xml:space="preserve">
+    <value>Workspace ONE UEM - 新規アプリケーションの作成</value>
+  </data>
+  <data name="Messagetemplates_Subject_ApplicationEulaFinalNotification" xml:space="preserve">
+    <value>最終通知 - Workspace ONE UEM アプリケーション利用規約の更新</value>
+  </data>
+  <data name="Messagetemplates_Subject_ApplicationEulaNotification" xml:space="preserve">
+    <value>アプリケーション利用規約の更新</value>
+  </data>
+  <data name="Messagetemplates_Subject_ApplicationLogNotification" xml:space="preserve">
+    <value>Workspace ONE UEM アプリケーション エラー ログ</value>
+  </data>
+  <data name="Messagetemplates_Subject_ApplicationNotification" xml:space="preserve">
+    <value>Workspace ONE UEM - アプリケーション ダウンロード可能</value>
+  </data>
+  <data name="Messagetemplates_Subject_ApplicationPublishNotification" xml:space="preserve">
+    <value>Workspace ONE UEM - アプリケーション公開可能</value>
+  </data>
+  <data name="Messagetemplates_Subject_ApplicationReviewNotification" xml:space="preserve">
+    <value>Workspace ONE UEM - アプリケーション レビュー通知</value>
+  </data>
+  <data name="Messagetemplates_Subject_ApplicationScanDetailResult" xml:space="preserve">
+    <value>Workspace ONE UEM - アプリケーション評価分析レポート</value>
+  </data>
+  <data name="Messagetemplates_Subject_ApplicationScanNotification" xml:space="preserve">
+    <value>アプリケーション評価分析完了</value>
+  </data>
+  <data name="Messagetemplates_Subject_AppRemoveNotification" xml:space="preserve">
+    <value>注意: アプリ削除制限の上限を超えています</value>
+  </data>
+  <data name="Messagetemplates_Subject_AuthenticationAppTokenNotification" xml:space="preserve">
+    <value>パスコード リセット用トークン</value>
+  </data>
+  <data name="Messagetemplates_Subject_ComplianceViolationAdministratorNotification" xml:space="preserve">
+    <value>要注意: Workspace ONE UEM デバイス順守違反</value>
+  </data>
+  <data name="Messagetemplates_Subject_ComplianceViolationUserNotification" xml:space="preserve">
+    <value>要注意: Workspace ONE UEM デバイス順守違反</value>
+  </data>
+  <data name="Messagetemplates_Subject_DeviceActivation" xml:space="preserve">
+    <value>Workspace ONE UEM デバイス アクティベーション</value>
+  </data>
+  <data name="Messagetemplates_Subject_DeviceBlockedByRestriction" xml:space="preserve">
+    <value>Workspace ONE UEM - デバイスが加入制限によってブロックされました</value>
+  </data>
+  <data name="Messagetemplates_Subject_DeviceEnrolled" xml:space="preserve">
+    <value>Workspace ONE UEM - デバイスの加入が完了しました</value>
+  </data>
+  <data name="Messagetemplates_Subject_DeviceEnrollmentProgramCustomPrompt" xml:space="preserve">
+    <value>デバイス登録プログラムカスタムプロンプト</value>
+  </data>
+  <data name="Messagetemplates_Subject_DeviceLockScreenMessageiOS7" xml:space="preserve">
+    <value>デバイス ロック画面メッセージ iOS7</value>
+  </data>
+  <data name="Messagetemplates_Subject_DeviceOutofDateCompliance" xml:space="preserve">
+    <value>Workspace ONE UEM 順守状態チェックの要求</value>
+  </data>
+  <data name="Messagetemplates_Subject_DeviceUnenrolled" xml:space="preserve">
+    <value>Workspace ONE UEM - デバイスが加入解除されました</value>
+  </data>
+  <data name="Messagetemplates_Subject_DeviceWipeEmailNotification" xml:space="preserve">
+    <value>Workspace ONE UEM ワイプ上限値を超えました</value>
+  </data>
+  <data name="Messagetemplates_Subject_EmailDomainRegistration" xml:space="preserve">
+    <value>Workspace ONE UEM E メール ドメイン登録</value>
+  </data>
+  <data name="Messagetemplates_Subject_EulaNotification" xml:space="preserve">
+    <value>Workspace ONE UEM 利用規約の更新</value>
+  </data>
+  <data name="Messagetemplates_Subject_ExternalUserActivation" xml:space="preserve">
+    <value>{ContentShareUserLastName} {ContentShareUserFirstName} が Workspace ONE UEM であなたとフォルダを共有しました</value>
+  </data>
+  <data name="Messagetemplates_Subject_LicenseBasedPurchasedApplicationInvitation" xml:space="preserve">
+    <value>Workspace ONE UEM - ライセンス ベース VPP について Apple に登録するためのリンク</value>
+  </data>
+  <data name="Messagetemplates_Subject_MamEnrollmentUserActivation" xml:space="preserve">
+    <value>Workspace ONE UEM ユーザー アクティベーション</value>
+  </data>
+  <data name="Messagetemplates_Subject_MamNewUserActivation" xml:space="preserve">
+    <value>Workspace ONE UEM ユーザー アクティベーション</value>
+  </data>
+  <data name="Messagetemplates_Subject_MentionedCommentNotification" xml:space="preserve">
+    <value>{Commenter} がファイル「{ContentName}」のコメントであなたに言及しました</value>
+  </data>
+  <data name="Messagetemplates_Subject_NewlyAddedUserToUserGroupNotification" xml:space="preserve">
+    <value>新しいコンテンツ フォルダがあなたと共有されました</value>
+  </data>
+  <data name="Messagetemplates_Subject_NewSharedFolderNotification" xml:space="preserve">
+    <value>{ContentShareUserFirstName} がフォルダ「{ContentFolderName}」をあなたと共有しました</value>
+  </data>
+  <data name="Messagetemplates_Subject_ProvisioningPackageNotification" xml:space="preserve">
+    <value>Workspace ONE UEM プロビジョニング パッケージの作成</value>
+  </data>
+  <data name="Messagetemplates_Subject_PurchasedApplication" xml:space="preserve">
+    <value>Workspace ONE UEM アプリケーション購入</value>
+  </data>
+  <data name="Messagetemplates_Subject_TempAdminActivation" xml:space="preserve">
+    <value>Workspace ONE UEM 一時管理者アカウント アクティベーション</value>
+  </data>
+  <data name="Messagetemplates_Subject_UnRegisterDevice" xml:space="preserve">
+    <value>Workspace ONE UEM デバイス削除</value>
+  </data>
+  <data name="Messagetemplates_Subject_UserActivation" xml:space="preserve">
+    <value>Workspace ONE UEM ユーザー アクティベーション</value>
+  </data>
+  <data name="Messagetemplates_Subject_VendorApplicationGroupCreationNotification" xml:space="preserve">
+    <value>Workspace ONE UEM - 新規アプリケーション グループの作成</value>
+  </data>
+  <data name="Messagetemplates_Subject_WorkSpaceDeviceActivation" xml:space="preserve">
+    <value>Workspace ONE UEM デバイス アクティベーション</value>
+  </data>
+</root>

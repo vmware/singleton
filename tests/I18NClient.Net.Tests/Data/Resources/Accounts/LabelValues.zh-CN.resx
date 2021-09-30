@@ -1,0 +1,1042 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AadAsIdpAttributeRequired" xml:space="preserve">
+    <value>当“目录”设置为“无”，并在“目录服务”设置页上启用了 Azure AD For Identity Services 时，必须输入“Azure Active Directory 映射属性”。</value>
+  </data>
+  <data name="AadAttributeMapping" xml:space="preserve">
+    <value>Azure Active Directory 映射属性</value>
+  </data>
+  <data name="AccountLocked" xml:space="preserve">
+    <value>您的 Workspace ONE UEM 帐户已锁定。请 {0} 解除您的帐户锁定，或者联系您的 IT 管理员。</value>
+    <comment>{0} will be replaced with url to reset password</comment>
+  </data>
+  <data name="AccountLockedSubject" xml:space="preserve">
+    <value>Workspace ONE UEM 帐户已锁定</value>
+  </data>
+  <data name="AccountUnlocked" xml:space="preserve">
+    <value>您的 Workspace ONE UEM 帐户已解除锁定。请 {0} 以访问 Workspace ONE UEM Console。</value>
+    <comment>{0} will be replaced with url to login</comment>
+  </data>
+  <data name="AccountUnlockedSubject" xml:space="preserve">
+    <value>Workspace ONE UEM 帐户已解除锁定</value>
+  </data>
+  <data name="AddCloudServicesAdmin" xml:space="preserve">
+    <value>添加云服务管理员</value>
+  </data>
+  <data name="AddCloudServicesAdminPlaceHolder" xml:space="preserve">
+    <value>{0}</value>
+  </data>
+  <data name="AddSelectedUsersToUserGroup" xml:space="preserve">
+    <value>将选定的用户添加到用户组</value>
+  </data>
+  <data name="AdminAccountLocked" xml:space="preserve">
+    <value>管理员帐户已锁定</value>
+  </data>
+  <data name="AdminAccountUnlocked" xml:space="preserve">
+    <value>管理员帐户已解除锁定</value>
+  </data>
+  <data name="AdminApiAuthenticationWarningText" xml:space="preserve">
+    <value>除非已生成客户端证书，否则控制台将默认为用户证书。</value>
+  </data>
+  <data name="AdminGroupMembersExport" xml:space="preserve">
+    <value>管理员组成员导出</value>
+  </data>
+  <data name="AdminGroupMembersExportHelp" xml:space="preserve">
+    <value>控制访问权限以导出管理组成员。请导航到“菜单”\“帐户”\“管理员”\“管理员组”</value>
+  </data>
+  <data name="Administrators" xml:space="preserve">
+    <value>管理员</value>
+  </data>
+  <data name="AdministratorsSettings" xml:space="preserve">
+    <value>管理员设置</value>
+  </data>
+  <data name="AdminNotificationArgForSamlConfiguration" xml:space="preserve">
+    <value>您的身份提供程序 SAML 响应中缺少安全地向控制台验证管理员身份所需的“{0}”属性。</value>
+  </data>
+  <data name="AdminPasswordReset" xml:space="preserve">
+    <value>管理员密码重置</value>
+  </data>
+  <data name="AdminUserPasswordResetAction" xml:space="preserve">
+    <value>此操作将会为以下管理员触发密码重置电子邮件。请正确验证电子邮件地址，然后继续。</value>
+    <comment>This action corresponds to triggering password reset for admin user from the admin list view grid</comment>
+  </data>
+  <data name="AdminUserPasswordResetEmailTriggered" xml:space="preserve">
+    <value>管理员用户密码重置电子邮件已触发</value>
+  </data>
+  <data name="AgentSettingsPublish" xml:space="preserve">
+    <value>代理设置发布</value>
+  </data>
+  <data name="AllAdministratorsSettings" xml:space="preserve">
+    <value>所有管理员设置</value>
+  </data>
+  <data name="AllAppsBooksSettings" xml:space="preserve">
+    <value>所有应用与图书设置</value>
+  </data>
+  <data name="AllowedDevicesDescription" xml:space="preserve">
+    <value>按 IMEI、序列号或 UDID 导入预先批准的设备。使用它可导入已知设备的列表 (例如公司设备)。与此设备关联的所有权和组 ID 将在注册期间自动应用于设备。</value>
+  </data>
+  <data name="AllUsersSettings" xml:space="preserve">
+    <value>所有用户设置</value>
+  </data>
+  <data name="AndroidEfotaApproveUpdate" xml:space="preserve">
+    <value>Android Efota 批准更新</value>
+  </data>
+  <data name="ApiQuotaReachedNotification" xml:space="preserve">
+    <value>API 利用率</value>
+  </data>
+  <data name="ApiQuotaThresholdReachedAction" xml:space="preserve">
+    <value>查看 API 利用率</value>
+  </data>
+  <data name="ApiQuotaThresholdReachedMessage" xml:space="preserve">
+    <value>您已达到每日 API 限制的 {0}%，其将于 {1} 重置</value>
+    <comment>{0} will be replaced with a numeric value indicating what percentage of api calls have been utilized for that day. {1} will be replaced with the localized time in which the api usage resets</comment>
+  </data>
+  <data name="ApiQuotaThresholdReachedTitle" xml:space="preserve">
+    <value>API 利用率</value>
+  </data>
+  <data name="ArgCannotBeMappedAppleIdArgAsArgNotFoundInOgArg" xml:space="preserve">
+    <value>无法将 {0} 映射到受管 Apple ID {1}，因为在组织组 - {3} 层次结构中找不到 {2}</value>
+  </data>
+  <data name="ArgCannotBeMappedToEnrollmentUserAppleAlreadyPresent" xml:space="preserve">
+    <value>csv 文件中已存在 {0}，因此不会再次添加该文件。</value>
+  </data>
+  <data name="ArgCannotBeMappedToEnrollmentUserAppleIDNotFound" xml:space="preserve">
+    <value>无法将 {0} 映射到注册用户，因为在系统中找不到此 Apple ID</value>
+  </data>
+  <data name="ArgCannotBeMappedToEnrollmentUserKeyboardLayoutInValid" xml:space="preserve">
+    <value>无法将 {0} 映射到注册用户，因为此键盘布局无效</value>
+  </data>
+  <data name="ArgCannotBeMappedToEnrollmentUserMissingAppleID" xml:space="preserve">
+    <value>无法将 {0} 映射到注册用户，因为 csv 文件中缺少此 Apple ID</value>
+  </data>
+  <data name="ArgCannotBeMappedToUserArgAsAlreadyMapped" xml:space="preserve">
+    <value>无法将 {fileProcessorDataContext.Person.ManagedAppleIdentifier} 映射到注册用户 {username}，因为此注册用户已映射到另一个成员</value>
+  </data>
+  <data name="ArgDefinedAboveGivenOG" xml:space="preserve">
+    <value>{0} 在给定组织组上一级定义</value>
+  </data>
+  <data name="ArgHasAlreadyMapped" xml:space="preserve">
+    <value>{0} 已映射</value>
+  </data>
+  <data name="BackToLoginPage" xml:space="preserve">
+    <value>返回登录页面</value>
+  </data>
+  <data name="BatchImportAdminUsersExplanation" xml:space="preserve">
+    <value>管理员用户导入功能可用来将管理员用户批量加载到系统中。管理员用户应与组织组相关联。</value>
+  </data>
+  <data name="BatchImportCancelled" xml:space="preserve">
+    <value>批量导入已取消。</value>
+  </data>
+  <data name="BatchImportDescription" xml:space="preserve">
+    <value>批量导入功能可用于将用户及其设备批量加载到系统中。CSV 模板位于下方。如果使用 Microsoft Excel 实用程序编辑模板，请确保将列格式设置为“文本”以避免由于格式转换而丢失信息，并将其另存为 CSV 文件。</value>
+  </data>
+  <data name="BatchImportErrors" xml:space="preserve">
+    <value>批量导入错误</value>
+  </data>
+  <data name="BatchImportSuccessful" xml:space="preserve">
+    <value>批量导入成功。</value>
+  </data>
+  <data name="BatchImportUserGroupsExplanation" xml:space="preserve">
+    <value>批量导入功能可用于将用户组批量加载到系统。</value>
+  </data>
+  <data name="BatchImportUsersDevicesExplanation" xml:space="preserve">
+    <value>批量导入功能可用于批量加载用户和设备进入系统。下面是导入模板链接。</value>
+  </data>
+  <data name="BeAtleastArgCharactersLong" xml:space="preserve">
+    <value>至少为 {0} 个字符</value>
+    <comment>{0} will be replaced by a number</comment>
+  </data>
+  <data name="CancelBatchImport" xml:space="preserve">
+    <value>取消批量导入</value>
+  </data>
+  <data name="CancelBatchImportWarning" xml:space="preserve">
+    <value>此操作将取消批量导入过程。</value>
+  </data>
+  <data name="CanNotDeleteUserGroupBecauseAssignedToSmartGroup" xml:space="preserve">
+    <value>无法删除用户组，因为已将其分配给下列智能组 - {0}</value>
+  </data>
+  <data name="CartPublish" xml:space="preserve">
+    <value>购物车发布</value>
+  </data>
+  <data name="CertificateBasedApiAuthenticationWarningText" xml:space="preserve">
+    <value>为 API 身份验证生成并导出客户端证书。</value>
+  </data>
+  <data name="CertificateProvisioning" xml:space="preserve">
+    <value>证书配置</value>
+  </data>
+  <data name="ChallengeClientCertificate" xml:space="preserve">
+    <value>质询客户端证书</value>
+    <comment>Client certificate for authenticating the retrieval of a SCEP challenge</comment>
+  </data>
+  <data name="CheckGroup" xml:space="preserve">
+    <value>检查组</value>
+  </data>
+  <data name="ClickedResetPasswordNotifyAdmin" xml:space="preserve">
+    <value>您或另一位管理员已启动密码重置。如果并非如此，请联系您的管理员获取更多信息</value>
+  </data>
+  <data name="ClickHereToLogin" xml:space="preserve">
+    <value>登录</value>
+  </data>
+  <data name="ColumnsInSpreadsheetDoesNotMatchTemplate" xml:space="preserve">
+    <value>电子表格中的列与模板不匹配。</value>
+  </data>
+  <data name="CompleteWithErrors" xml:space="preserve">
+    <value>完成但出现错误</value>
+  </data>
+  <data name="CompliancePoliciesView" xml:space="preserve">
+    <value>合规策略视图</value>
+  </data>
+  <data name="CompliancePoliciesViewHelp" xml:space="preserve">
+    <value>控制访问权限以查看合规策略。请导航到“设备”\“合规策略”\“列表视图”</value>
+  </data>
+  <data name="CompromiseDetectionForWindows10Device" xml:space="preserve">
+    <value>Windows 10 设备的破解检测</value>
+  </data>
+  <data name="ContactAdministratorIfYouHaveDirectoryAccount" xml:space="preserve">
+    <value>如果您有目录帐户，请联系您的管理员以重置密码。</value>
+    <comment>Used in conjuction with "PasswordResetIsNotAvailableForDirectoryAccounts" in telling a user that a directory account cannot use the WS1 password reset flow.</comment>
+  </data>
+  <data name="ContactAdministratorIfYouHaveExternalAccount" xml:space="preserve">
+    <value>如果您拥有目录帐户，请联系您的管理员以重置密码。如果您拥有 VMware Cloud Services 帐户，则可以从 cloud.vmware.com 重置密码</value>
+    <comment>Message shown during touble loggingIn flow for an account</comment>
+  </data>
+  <data name="ContentRightsManagement" xml:space="preserve">
+    <value>内容权限管理</value>
+  </data>
+  <data name="CreateAdminAccountsFromCSPPortal" xml:space="preserve">
+    <value>此租户通过 Workspace One Cloud Admin Hub 启用。在 UEM 中创建的管理员只能访问 UEM。请在 Cloud Services 中添加管理员以启用对 Workspace ONE 服务的访问。{0}</value>
+  </data>
+  <data name="Date&amp;Time" xml:space="preserve">
+    <value>日期与时间</value>
+  </data>
+  <data name="DecryptionFailedFieldName" xml:space="preserve">
+    <value>Field Name</value>
+  </data>
+  <data name="DeleteDepSharedMdmProfile" xml:space="preserve">
+    <value>删除 Dep 共享的 Mdm 配置文件</value>
+  </data>
+  <data name="DeniedDevices" xml:space="preserve">
+    <value>被拒绝的设备</value>
+  </data>
+  <data name="DeniedDevicesDescription" xml:space="preserve">
+    <value>按 IMEI、序列号或 UDID 导入被拒绝的设备。使用此方法可导入已知的不合规设备列表。被拒绝的设备不允许注册。如果被拒绝的设备已注册，则在处理导入时将自动取消注册。注册期间不考虑此处指定的平台、操作系统和型号。</value>
+  </data>
+  <data name="DeviceBasedVppAppUpdate" xml:space="preserve">
+    <value>基于设备的 Vpp 应用更新</value>
+  </data>
+  <data name="DeviceBulkManagementDeviceViewGps" xml:space="preserve">
+    <value>设备批量管理：设备视图位置</value>
+  </data>
+  <data name="DeviceBulkManagementDeviceViewGpsHelp" xml:space="preserve">
+    <value>允许用户批量查看设备的位置。</value>
+  </data>
+  <data name="Devicebulkmanagementrebootdevice" xml:space="preserve">
+    <value>批量重新引导设备</value>
+  </data>
+  <data name="DeviceEditionNotAllowedAsUserArgNotManagedAtOG" xml:space="preserve">
+    <value>不允许使用该设备版本，因为用户 {0} 不受此组织组管理</value>
+  </data>
+  <data name="DeviceLgCannotBeParentUserDefaultLg" xml:space="preserve">
+    <value>设备组织组不能是父项用户的默认组织组。</value>
+  </data>
+  <data name="DirectoryAccountsToBePushedBySCIMProvisioning" xml:space="preserve">
+    <value>仅可通过 SCIM 置备 API 创建目录帐户</value>
+  </data>
+  <data name="DirectoryNameIsInvalid" xml:space="preserve">
+    <value>目录名称无效。目录名称不能包含任何空格。</value>
+  </data>
+  <data name="DirectorySync" xml:space="preserve">
+    <value>目录同步</value>
+  </data>
+  <data name="DisableDepConfiguration" xml:space="preserve">
+    <value>禁用 Dep 配置</value>
+  </data>
+  <data name="DisplayVideoImport" xml:space="preserve">
+    <value>显示视频导入</value>
+  </data>
+  <data name="DisplayVideoView" xml:space="preserve">
+    <value>显示视频视图</value>
+  </data>
+  <data name="DomainMappingIsNotFoundForGivenDomain" xml:space="preserve">
+    <value>找不到指定域的域映射。</value>
+  </data>
+  <data name="DownloadAdvancedTemplateForUsersAndDevices" xml:space="preserve">
+    <value>为用户和设备下载高级模板</value>
+  </data>
+  <data name="DownloadSimpleTemplateForUsersAndDevices" xml:space="preserve">
+    <value>为用户和设备下载简单模板</value>
+  </data>
+  <data name="DownloadTemplateForAllowedDevices" xml:space="preserve">
+    <value>下载允许设备的模板</value>
+  </data>
+  <data name="DuplicateAdminUserFound" xml:space="preserve">
+    <value>发现重复的管理员用户。</value>
+  </data>
+  <data name="DuplicateDirectoryUserGroupMessage" xml:space="preserve">
+    <value>已存在 ID 为“{0}”的目录用户组。</value>
+  </data>
+  <data name="DuplicateExcludedUserGroupInSmartGroup" xml:space="preserve">
+    <value>同一用户组不能同时在排除名单和添加名单中。如果您要排除用户组，请将其从添加名单中移除。</value>
+  </data>
+  <data name="DuplicateUserGroupMessage" xml:space="preserve">
+    <value>已存在友好名称为“{0}”的用户组。请提供其他友好名称。</value>
+  </data>
+  <data name="EARAppUpdateAvailableNotification" xml:space="preserve">
+    <value>企业应用存储库更新</value>
+  </data>
+  <data name="EditAdmin" xml:space="preserve">
+    <value>编辑管理员</value>
+  </data>
+  <data name="EditCustomReportsGettingStarted" xml:space="preserve">
+    <value>Intelligence 入门</value>
+  </data>
+  <data name="EditCustomReportsGettingStartedHelp" xml:space="preserve">
+    <value>授予订阅 Intelligence 的完全访问权限。</value>
+  </data>
+  <data name="EditDepSharedMdmProfile" xml:space="preserve">
+    <value>编辑 Dep 共享的 Mdm 配置文件</value>
+  </data>
+  <data name="EditTemporaryAdmin" xml:space="preserve">
+    <value>编辑临时管理员</value>
+  </data>
+  <data name="EditTypeGrHelp" xml:space="preserve">
+    <value>查看和编辑组织组的组织组类型。</value>
+  </data>
+  <data name="EditUserArgOpensDialog" xml:space="preserve">
+    <value>编辑用户 {0}“打开”对话框</value>
+    <comment>The placeholder in this label key contains username.</comment>
+  </data>
+  <data name="EMAdvancedLogging" xml:space="preserve">
+    <value>EMA 高级记录</value>
+  </data>
+  <data name="EMAdvancedLoggingHelp" xml:space="preserve">
+    <value>直接 MEM 部署时设备的高级事件日志记录窗口。</value>
+  </data>
+  <data name="EncounteredErrorLoadingAvailableLocationGroup" xml:space="preserve">
+    <value>加载可用组织组时出错。</value>
+  </data>
+  <data name="EnrollmentOgInvalidOrUnauthorized" xml:space="preserve">
+    <value>注册组织组无效或未经授权。</value>
+  </data>
+  <data name="EnrollmentRestrictNewUserForScimProvisioning" xml:space="preserve">
+    <value>您的帐户未在 UEM 中置备，因此无法注册。请与您的管理员联系以获得更多帮助。</value>
+  </data>
+  <data name="EnrollmentUserTenancyNotification" xml:space="preserve">
+    <value>2021 年年底发布后，将不允许在客户组织组之外创建注册用户和用户组。</value>
+  </data>
+  <data name="EnterSearchTerm" xml:space="preserve">
+    <value>输入搜索词</value>
+  </data>
+  <data name="ErrorOccuredBulkOperation" xml:space="preserve">
+    <value>批量操作期间出错</value>
+  </data>
+  <data name="ErrorOccuredDuringMergeOfNewUserGroup" xml:space="preserve">
+    <value>在合并/同步新用户组期间出错。{0}</value>
+  </data>
+  <data name="ErrorOccuredForUserGroups" xml:space="preserve">
+    <value>查找用户所属的组时出错</value>
+  </data>
+  <data name="ErrorOccuredWhileMergingGroups" xml:space="preserve">
+    <value>合并组时出错</value>
+  </data>
+  <data name="ErrorResolvingValidOgForUser" xml:space="preserve">
+    <value>解析用户的有效组织组时出错</value>
+  </data>
+  <data name="ExcludedUserGroups" xml:space="preserve">
+    <value>排除的用户组</value>
+  </data>
+  <data name="ExcludedUserGroupsToolTip" xml:space="preserve">
+    <value>通过此条件，可以将属于特定用户组用户的设备从通过应用其余条件生成的设备列表中排除。</value>
+  </data>
+  <data name="ExpressSetupEdit" xml:space="preserve">
+    <value>Express 设置编辑</value>
+  </data>
+  <data name="ExpressSetupEditHelp" xml:space="preserve">
+    <value>为管理员提供对 AirWatch Express 中控制台集成组件设置的编辑访问权限。</value>
+  </data>
+  <data name="ExpressSetupRead" xml:space="preserve">
+    <value>Express 设置读取</value>
+  </data>
+  <data name="ExpressSetupReadHelp" xml:space="preserve">
+    <value>为管理员提供对 AirWatch Express 中控制台集成组件的简化设置的读取访问权限。</value>
+  </data>
+  <data name="ExternalIdArgDNArgMismatch" xml:space="preserve">
+    <value>外部 ID {0} 不属于标识名 {1}。</value>
+  </data>
+  <data name="FailedToCheckDirectoryGroup" xml:space="preserve">
+    <value>检查目录组失败。</value>
+  </data>
+  <data name="FailedToSaveTheAdminGroup" xml:space="preserve">
+    <value>无法保存管理员组</value>
+  </data>
+  <data name="FailedToSendResetPasswordEmail" xml:space="preserve">
+    <value>无法发送重置密码电子邮件。</value>
+    <comment>When admin tries to trigger a reset password email for an admin.</comment>
+  </data>
+  <data name="FileInvalidErrorText" xml:space="preserve">
+    <value>文件类型必须为 CSV。</value>
+  </data>
+  <data name="FileTypeHelperText" xml:space="preserve">
+    <value>必须是符合模板规范的 CSV 文件</value>
+  </data>
+  <data name="FirstNameFirstTwoLetters" xml:space="preserve">
+    <value>名字（前 2 个字母）</value>
+  </data>
+  <data name="FirstNameInitial" xml:space="preserve">
+    <value>名字首字母</value>
+  </data>
+  <data name="FollowingUsersWillBeUnlocked" xml:space="preserve">
+    <value>以下用户将被解除锁定:</value>
+  </data>
+  <data name="ForgotUserName" xml:space="preserve">
+    <value>忘记用户名</value>
+  </data>
+  <data name="GeneralFailure" xml:space="preserve">
+    <value>无法发送重置密码电子邮件。请验证 SMTP 服务器配置设置并重试。</value>
+  </data>
+  <data name="GeofenceAreaEdit" xml:space="preserve">
+    <value>地理围栏区域编辑</value>
+  </data>
+  <data name="GivenDistinguishedNameNotFoundUserCannotAdd" xml:space="preserve">
+    <value>未找到所给的标识名。无法添加用户。</value>
+  </data>
+  <data name="GivenOgCustomerCodeInvalid" xml:space="preserve">
+    <value>给定的组织组客户代码无效。</value>
+  </data>
+  <data name="GivenSecurityTypeNotConfigured" xml:space="preserve">
+    <value>未配置给定的安全类型。</value>
+  </data>
+  <data name="GivenSecurityTypeNotSupported" xml:space="preserve">
+    <value>不支持给定的安全类型。</value>
+  </data>
+  <data name="GroupNameRequired" xml:space="preserve">
+    <value>组名称为必填项</value>
+  </data>
+  <data name="HideTemplatesAndGuidelines" xml:space="preserve">
+    <value>隐藏模板和准则</value>
+  </data>
+  <data name="IBeaconGroupEdit" xml:space="preserve">
+    <value>IBeacon 组编辑</value>
+  </data>
+  <data name="IfExistsAnEmailWillBeSentToTheAddressOnFile" xml:space="preserve">
+    <value>已向我们备案的电子邮件地址发送了一封附有进一步说明的电子邮件。</value>
+    <comment>When a user requests a "forgot password" reset link via email, this is the message given regardless of whether the user name is valid or not.</comment>
+  </data>
+  <data name="IfTroubleClickingCopyAndPasteLink" xml:space="preserve">
+    <value>如果此链接无效，请尝试将以下链接复制粘贴到浏览器中。</value>
+  </data>
+  <data name="IncorrectPasswordAnswerAttemptWarning" xml:space="preserve">
+    <value>您还有 1 次尝试机会。请正确回答所有问题，否则您将被锁定。</value>
+  </data>
+  <data name="IncorrectPasswordAnswerAttemptWarningPlural" xml:space="preserve">
+    <value>您还有 {0} 次尝试机会。请正确回答所有问题，否则您将被锁定。</value>
+  </data>
+  <data name="InstallAppOnAll" xml:space="preserve">
+    <value>在所有设备上安装应用</value>
+  </data>
+  <data name="InstallMdmProfile" xml:space="preserve">
+    <value>安装 Mdm 配置文件</value>
+  </data>
+  <data name="InstallOnFiltered" xml:space="preserve">
+    <value>在筛选设备上安装</value>
+  </data>
+  <data name="InvalidDataEntered" xml:space="preserve">
+    <value>输入的数据无效。</value>
+  </data>
+  <data name="InvalidDeviceGroupId" xml:space="preserve">
+    <value>设备组 ID 无效。</value>
+  </data>
+  <data name="InvalidGroupBaseDN" xml:space="preserve">
+    <value>默认或提供的组基本 DN“{0}”无效</value>
+  </data>
+  <data name="InvalidSession" xml:space="preserve">
+    <value>会话无效</value>
+  </data>
+  <data name="InvalidTemplate" xml:space="preserve">
+    <value>模板无效。请下载最新模板</value>
+  </data>
+  <data name="InvalidUserCredentialsPleaseTryAgain" xml:space="preserve">
+    <value>凭证无效。请重试。</value>
+  </data>
+  <data name="IsRequiredArg" xml:space="preserve">
+    <value>该参数为必填项。</value>
+  </data>
+  <data name="IssueCertificate" xml:space="preserve">
+    <value>发行证书</value>
+  </data>
+  <data name="JITSettings" xml:space="preserve">
+    <value>JIT 设置</value>
+    <comment>Resource for JIT Settings</comment>
+  </data>
+  <data name="JITSettingsHelp" xml:space="preserve">
+    <value>控制对 JIT 的 GET 和 UPDATE 端点的访问。</value>
+  </data>
+  <data name="LastNameFirstTwoLetters" xml:space="preserve">
+    <value>姓氏（前 2 个字母）</value>
+  </data>
+  <data name="LastNameInitial" xml:space="preserve">
+    <value>姓氏首字母</value>
+  </data>
+  <data name="LdapNotDefinedUserCannotAdd" xml:space="preserve">
+    <value>未针对给定的组织组定义 LDAP。无法添加管理员用户。</value>
+  </data>
+  <data name="LocalSync" xml:space="preserve">
+    <value>本地同步</value>
+  </data>
+  <data name="LoginAsDifferentUser" xml:space="preserve">
+    <value>以其他用户身份登录</value>
+  </data>
+  <data name="LoginPasswordIsRequired" xml:space="preserve">
+    <value>必须提供密码</value>
+  </data>
+  <data name="MailboxBusy" xml:space="preserve">
+    <value>无法完成请求的电子邮件操作。SMTP 协议错误: 邮箱不可用 (Mailbox Unavailable)。请重试。</value>
+  </data>
+  <data name="MailboxUnavailable" xml:space="preserve">
+    <value>无法发送重置密码电子邮件。SMTP 协议错误: 邮箱不可用 (Mailbox Unavailable)。</value>
+  </data>
+  <data name="MEMRotateGSuitePassword" xml:space="preserve">
+    <value>轮换 G Suite 密码</value>
+  </data>
+  <data name="MEMRotateGSuitePasswordConfirmation" xml:space="preserve">
+    <value>轮换 G Suite 密码确认</value>
+  </data>
+  <data name="MEMRotateGSuitePasswordFailed" xml:space="preserve">
+    <value>轮换 G Suite 密码失败</value>
+  </data>
+  <data name="MEMRotateGSuitePasswordInfoMessage" xml:space="preserve">
+    <value>此操作将重置用户的密码并刷新用户设备上任何关联的电子邮件配置文件。此操作无法撤消。</value>
+  </data>
+  <data name="MergeFailedRetry" xml:space="preserve">
+    <value>合并失败 - 重试</value>
+  </data>
+  <data name="MessageTemplateCouldNotBeRetrieved" xml:space="preserve">
+    <value>无法检索消息模板。</value>
+  </data>
+  <data name="MigrateWarning" xml:space="preserve">
+    <value>迁移操作会将设备和用户设置从基本和身份验证代理用户帐户转移到选定的目录用户帐户。迁移完成后，基本和身份验证代理用户帐户将被删除，并且无法再用于注册新设备。
+
+是否要继续?</value>
+  </data>
+  <data name="NetworkRanges" xml:space="preserve">
+    <value>网络范围</value>
+  </data>
+  <data name="NoCommonCustomUserGroupsForSelectedUsers" xml:space="preserve">
+    <value>所选用户没有通用自定义用户组。</value>
+  </data>
+  <data name="NoPasswordQuestionContactAdminMessage" xml:space="preserve">
+    <value>您尚未指定密码恢复问题，因此无法重置您的密码。请联系管理员。</value>
+  </data>
+  <data name="NotifyDevicesEnrolledHubApp" xml:space="preserve">
+    <value>通知设备注册的 Hub 应用</value>
+  </data>
+  <data name="NumberOfChangesShouldBePositive" xml:space="preserve">
+    <value>更改数应为正整数</value>
+  </data>
+  <data name="NumberOfObjects" xml:space="preserve">
+    <value>{0} 对象</value>
+  </data>
+  <data name="OfflineCompliancePolicy" xml:space="preserve">
+    <value>脱机合规策略</value>
+  </data>
+  <data name="OGGroupIdNotInCurrentHierarchy" xml:space="preserve">
+    <value>导入失败。组织组 (ID: {0}) 不在当前层次结构中。</value>
+  </data>
+  <data name="OGNotInCurrentHierarchy" xml:space="preserve">
+    <value>导入失败。组织组不在当前层次结构中。</value>
+  </data>
+  <data name="OneAttemptRemaining" xml:space="preserve">
+    <value>剩下 1 次尝试机会。</value>
+  </data>
+  <data name="P2PPublish" xml:space="preserve">
+    <value>P2P 发布</value>
+  </data>
+  <data name="PasswordNotificationPeriodDays" xml:space="preserve">
+    <value>密码通知期限 (天)</value>
+  </data>
+  <data name="PasswordResetIsNotAvailableForDirectoryAccounts" xml:space="preserve">
+    <value>密码重置不可用于目录帐户。</value>
+  </data>
+  <data name="PasswordResetIsNotAvailableForExternalAccounts" xml:space="preserve">
+    <value>无法重置目录或 VMware Cloud Services 帐户的密码</value>
+    <comment>Message shown during trouble loggingIn flow for an account</comment>
+  </data>
+  <data name="PasswordShouldBeAtleastArgCharactersLong" xml:space="preserve">
+    <value>您的密码应至少为 {0} 个字符</value>
+    <comment>{0} will be relaced by a number</comment>
+  </data>
+  <data name="PermissionColumnIsEmply" xml:space="preserve">
+    <value>权限列为空，因此正在为用户组添加默认权限</value>
+  </data>
+  <data name="PermissonArgDoesnotConformWithTemplate" xml:space="preserve">
+    <value>权限 {0} 不符合模板，因此已跳过</value>
+  </data>
+  <data name="PleaseCheckDirectoryUsername" xml:space="preserve">
+    <value>请检查目录用户名</value>
+  </data>
+  <data name="ProvisioningPackagePublish" xml:space="preserve">
+    <value>置备软件包发布</value>
+  </data>
+  <data name="PublishAndroidWorkPublicApp" xml:space="preserve">
+    <value>发布 Android Work 公共应用</value>
+  </data>
+  <data name="PublishAreaProfile" xml:space="preserve">
+    <value>发布区域配置文件</value>
+  </data>
+  <data name="PublishBrowserSettings" xml:space="preserve">
+    <value>发布浏览器设置</value>
+  </data>
+  <data name="RemoteViewDD" xml:space="preserve">
+    <value>远程查看 — 设备详细信息</value>
+  </data>
+  <data name="RemoteViewDDHelp" xml:space="preserve">
+    <value>启用对设备进行远程截屏的功能。</value>
+  </data>
+  <data name="RemoveDepRegisteredDevices" xml:space="preserve">
+    <value>移除 Dep 注册的设备</value>
+  </data>
+  <data name="RemoveSelectedUsersFromUserGroup" xml:space="preserve">
+    <value>从用户组移除选定的用户</value>
+  </data>
+  <data name="ReportAppleMDM" xml:space="preserve">
+    <value>报表 - Apple MDM</value>
+  </data>
+  <data name="ReportAppleMDMHelp" xml:space="preserve">
+    <value>控制对查看 Apple MDM 报告的访问。</value>
+  </data>
+  <data name="ReportProductCompliance" xml:space="preserve">
+    <value>报表：产品合规</value>
+  </data>
+  <data name="ReportProductComplianceHelp" xml:space="preserve">
+    <value>控制对查看产品合规报表的访问。</value>
+  </data>
+  <data name="ReportProductDeploymentSummary" xml:space="preserve">
+    <value>报表：产品部署概要</value>
+  </data>
+  <data name="ReportProductDeploymentSummaryHelp" xml:space="preserve">
+    <value>控制对查看产品部署概要报表的访问。</value>
+  </data>
+  <data name="ReportProvisioningProductAssigned" xml:space="preserve">
+    <value>目前已分配的预置详细信息 - 产品（新）</value>
+  </data>
+  <data name="ResetPassword" xml:space="preserve">
+    <value>重置密码</value>
+    <comment>To be used to trigger reset password for core user.</comment>
+  </data>
+  <data name="ResetYourPassword" xml:space="preserve">
+    <value>重置您的密码</value>
+  </data>
+  <data name="ResetYourPasswordNow" xml:space="preserve">
+    <value>立即重置您的密码</value>
+  </data>
+  <data name="RestApiCustomAttriutesDelete" xml:space="preserve">
+    <value>删除 REST API 自定义属性</value>
+  </data>
+  <data name="RestApiCustomAttriutesDeleteHelp" xml:space="preserve">
+    <value>启用对所有在自定义属性集中删除 API 的访问</value>
+  </data>
+  <data name="RestApiEnterpriseIntegrationRead" xml:space="preserve">
+    <value>REST API 企业集成读取</value>
+  </data>
+  <data name="RestApiEnterpriseIntegrationReadHelp" xml:space="preserve">
+    <value>启用对所有企业集成唯读 API 的访问</value>
+  </data>
+  <data name="Restapimamapps" xml:space="preserve">
+    <value>REST API MAM 应用</value>
+  </data>
+  <data name="RestapimamappsHelp" xml:space="preserve">
+    <value>访问纳管应用</value>
+  </data>
+  <data name="Restapimamblob" xml:space="preserve">
+    <value>REST API MAM Blob</value>
+  </data>
+  <data name="RestapimamblobHelp" xml:space="preserve">
+    <value>上载/下载内容</value>
+  </data>
+  <data name="Restapimdmdevices" xml:space="preserve">
+    <value>REST API MDM - 设备</value>
+  </data>
+  <data name="RestapimdmdevicesHelp" xml:space="preserve">
+    <value>发送锁定/解锁命令</value>
+  </data>
+  <data name="Restapimdmprofiles" xml:space="preserve">
+    <value>REST API MDM - 配置文件</value>
+  </data>
+  <data name="RestapimdmprofilesHelp" xml:space="preserve">
+    <value>发送锁定/解锁命令</value>
+  </data>
+  <data name="Restapimdmsmartgroups" xml:space="preserve">
+    <value>REST API MDM - 智能组</value>
+  </data>
+  <data name="RestapimdmsmartgroupsHelp" xml:space="preserve">
+    <value>对智能组信息的访问</value>
+  </data>
+  <data name="Restapimdmusergroups" xml:space="preserve">
+    <value>REST API MDM - 用户组</value>
+  </data>
+  <data name="RestapimdmusergroupsHelp" xml:space="preserve">
+    <value>访问用户组</value>
+  </data>
+  <data name="Restapisystemadmin" xml:space="preserve">
+    <value>REST API 系统管理员</value>
+  </data>
+  <data name="RestapisystemadminHelp" xml:space="preserve">
+    <value>对管理员信息的访问</value>
+  </data>
+  <data name="Restapisystemgroups" xml:space="preserve">
+    <value>REST API 系统组</value>
+  </data>
+  <data name="RestapisystemgroupsHelp" xml:space="preserve">
+    <value>对组织组信息的访问</value>
+  </data>
+  <data name="Restapisystemusers" xml:space="preserve">
+    <value>REST API 系统用户</value>
+  </data>
+  <data name="RestapisystemusersHelp" xml:space="preserve">
+    <value>对用户信息的访问</value>
+  </data>
+  <data name="RevokeAzureADUserTokensOnDeviceWipe" xml:space="preserve">
+    <value>擦除设备时自动撤销用户令牌</value>
+  </data>
+  <data name="RevokeAzureADUserTokensToolTip" xml:space="preserve">
+    <value>允许 Workspace ONE UEM 在执行设备或企业擦除时撤销 Microsoft Azure AD 用户令牌。注意: 不建议禁用此功能，这会降低配置的安全状态。一旦擦除的设备丢失，该设备可能仍然含有有效的 AAD 身份验证令牌</value>
+  </data>
+  <data name="RoleId" xml:space="preserve">
+    <value>角色 ID</value>
+  </data>
+  <data name="Roles" xml:space="preserve">
+    <value>角色</value>
+  </data>
+  <data name="SaveDepRegisteredDevices" xml:space="preserve">
+    <value>保存 Dep 注册的设备</value>
+  </data>
+  <data name="Scheduler" xml:space="preserve">
+    <value>计划程序</value>
+  </data>
+  <data name="SchedulerApple" xml:space="preserve">
+    <value>计划程序</value>
+  </data>
+  <data name="SchedulerAppleHelp" xml:space="preserve">
+    <value>控制对 MDM 调度程序页面的访问</value>
+  </data>
+  <data name="SchedulerHelp" xml:space="preserve">
+    <value>控制对调度程序设置页面的访问</value>
+  </data>
+  <data name="ScimEnabledOGCannotBatchImportDirectoryTypes" xml:space="preserve">
+    <value>此组织组使用 SCIM 来置备用户、管理员和组。无法批量导入目录用户和组。</value>
+  </data>
+  <data name="SecurityTypeIsRequired" xml:space="preserve">
+    <value>安全类型为必填项。</value>
+  </data>
+  <data name="SelectedUsersDoNotExistOrHaveAlreadyBeenDeleted" xml:space="preserve">
+    <value>所选用户可能已被删除，因此不存在。请关闭此弹出窗口并刷新用户列表页面。</value>
+  </data>
+  <data name="SelectFileLabel" xml:space="preserve">
+    <value>选择文件</value>
+  </data>
+  <data name="SelectMemConfigLabel" xml:space="preserve">
+    <value>MEM 配置</value>
+  </data>
+  <data name="SendApplicationConfigurationRequest" xml:space="preserve">
+    <value>发送应用程序配置请求</value>
+  </data>
+  <data name="SendFeedback" xml:space="preserve">
+    <value>发送反馈</value>
+  </data>
+  <data name="SendsEmail" xml:space="preserve">
+    <value>发送电子邮件</value>
+  </data>
+  <data name="ServerError" xml:space="preserve">
+    <value>服务器错误</value>
+  </data>
+  <data name="SettingsEnrollmentCustomization" xml:space="preserve">
+    <value>设置注册自定义</value>
+  </data>
+  <data name="SettingsEnrollmentCustomizationHelp" xml:space="preserve">
+    <value>允许访问和修改（“设备”\“设备设置”\“设备与用户”\“常规”\“注册”）“自定义”选项卡</value>
+  </data>
+  <data name="SettingsEnrollmentOptionalPrompt" xml:space="preserve">
+    <value>设置注册可选提示</value>
+  </data>
+  <data name="SettingsEnrollmentOptionalPromptHelp" xml:space="preserve">
+    <value>允许访问和修改（“设备”\“设备设置”\“设备与用户”\“常规”\“注册”）“可选提示”选项卡</value>
+  </data>
+  <data name="SettingsHeaderBasedAuthentication" xml:space="preserve">
+    <value>设置基于标头的身份验证</value>
+  </data>
+  <data name="SettingsMDMSampleSchedule" xml:space="preserve">
+    <value>设置： MDM 采样日程</value>
+  </data>
+  <data name="SettingsMDMSampleScheduleHelp" xml:space="preserve">
+    <value>允许访问 MDM 采用调度页面</value>
+  </data>
+  <data name="SettingsScheduler" xml:space="preserve">
+    <value>设置：计划程序</value>
+  </data>
+  <data name="SettingsSchedulerHelp" xml:space="preserve">
+    <value>允许访问调度程序页面</value>
+  </data>
+  <data name="ShareYourFeedback" xml:space="preserve">
+    <value>共享反馈</value>
+  </data>
+  <data name="ShowBatchTypeTemplates" xml:space="preserve">
+    <value>显示批处理类型模板</value>
+  </data>
+  <data name="SingleAppModeProfileRemove" xml:space="preserve">
+    <value>单应用模式配置文件移除</value>
+  </data>
+  <data name="SyncDirectoryGroup" xml:space="preserve">
+    <value>同步目录组</value>
+  </data>
+  <data name="TargetLgCannotParentUserLg" xml:space="preserve">
+    <value>目标组织组不能是用户组织组的父项。</value>
+  </data>
+  <data name="ThresholdAdminActionRequest" xml:space="preserve">
+    <value>阈值管理员操作请求</value>
+  </data>
+  <data name="TimedOut" xml:space="preserve">
+    <value>超时</value>
+  </data>
+  <data name="TokenNotCreatedDeviceIdentifiersSpecifiersNotProvided" xml:space="preserve">
+    <value>未创建令牌! 缺少设备信息。</value>
+  </data>
+  <data name="TransactionFailed" xml:space="preserve">
+    <value>无法发送重置密码电子邮件。请验证收件人的电子邮件地址并重试。</value>
+  </data>
+  <data name="TroubleLoggingIn" xml:space="preserve">
+    <value>无法登录</value>
+  </data>
+  <data name="TwoFactorAuthenticationMethodNotValidOrNotAllowed" xml:space="preserve">
+    <value>双因素身份验证方法无效或不允许。</value>
+  </data>
+  <data name="TwoMoreLgCannotSameCustomerCode" xml:space="preserve">
+    <value>两个或更多的组织组不能有相同的客户代码。</value>
+  </data>
+  <data name="UnableToFindCertificate" xml:space="preserve">
+    <value>找不到该证书。</value>
+  </data>
+  <data name="UninstallAppFromAll" xml:space="preserve">
+    <value>卸载以下设备的所有应用程序:</value>
+  </data>
+  <data name="UniqueIdentifierArgNotProvidedForNewAdmin" xml:space="preserve">
+    <value>没有提供新管理员的唯一标识符“{0}”。</value>
+  </data>
+  <data name="UniqueIdentifierArgNotProvidedForNewUser" xml:space="preserve">
+    <value>没有提供新用户的唯一标识符“{0}”</value>
+  </data>
+  <data name="UpdatePublish" xml:space="preserve">
+    <value>更新发布</value>
+  </data>
+  <data name="UserAccountUnlocked" xml:space="preserve">
+    <value>用户帐户已解除锁定</value>
+  </data>
+  <data name="UserAndroidWorkAppsSync" xml:space="preserve">
+    <value>用户 Android Work 应用同步</value>
+  </data>
+  <data name="UserArgCannotBeEditedUserResidesAtBelowImportingOG" xml:space="preserve">
+    <value>无法编辑/管理用户 {0}，因为用户位于导入组织组的外部或低于导入组织组</value>
+  </data>
+  <data name="UserArgCannotBeMoved" xml:space="preserve">
+    <value>由于一个/多个设备的主组织组高于目标组织组，因此无法移动用户 {0}</value>
+  </data>
+  <data name="UserArgEditNotAllowedForFollowingSecurityType" xml:space="preserve">
+    <value>不允许以下安全类型的用户 {0} 版本</value>
+  </data>
+  <data name="UserArgEditNotAllowedNoPermission" xml:space="preserve">
+    <value>不允许用户 {0} 版本，因为此组织组中不允许存在该用户</value>
+  </data>
+  <data name="UserArgNotCreatedAsNotFoundInAD" xml:space="preserve">
+    <value>未创建用户 {0}，因为在 AD 中找不到该用户</value>
+  </data>
+  <data name="UserArgWasNotFoundatLG" xml:space="preserve">
+    <value>在给定的位置组中找不到用户 {0}，或者不是基本用户</value>
+  </data>
+  <data name="UserCannotAssignedToParentLg" xml:space="preserve">
+    <value>无法将用户分配给父项组织组。</value>
+  </data>
+  <data name="UserDataCorruptedErrorMessage" xml:space="preserve">
+    <value>解密用户信息时出现问题。请查看事件日志以找出哪些字段和用户已受到影响。请选择“编辑”并重新输入每个受影响用户的正确信息，从而解决此问题。</value>
+    <comment>Error message shown during the User List View in case Decryption fails for some of the Personal info of any Users.</comment>
+  </data>
+  <data name="UserDecryptionFailed" xml:space="preserve">
+    <value>用户数据解密失败</value>
+  </data>
+  <data name="UserGroupsNotPermittedAtGivenOG" xml:space="preserve">
+    <value>不允许在给定的组织组中添加用户组</value>
+  </data>
+  <data name="UserInformationPrivacySettingWarning" xml:space="preserve">
+    <value>用户信息的隐私设置不适用于“系统”&gt;“企业集成”下“目录服务”设置页面的测试连接实用程序。</value>
+  </data>
+  <data name="UserLockedOut" xml:space="preserve">
+    <value>用户帐户已注销</value>
+  </data>
+  <data name="UsernameAndPassword" xml:space="preserve">
+    <value>用户名和密码</value>
+  </data>
+  <data name="UserNoAccessForOGArg" xml:space="preserve">
+    <value>用户没有组织组 {0} 的访问权限</value>
+  </data>
+  <data name="UserNotFoundAd" xml:space="preserve">
+    <value>在目录服务中找不到该用户。无法添加用户。</value>
+  </data>
+  <data name="UserQuestionsNotAuthenticated" xml:space="preserve">
+    <value>只有答对您的安全问题方可重置您的密码。请参阅您收到的密码恢复电子邮件，查看有关如何操作的说明。</value>
+    <comment>Only appears if someone tries to directly hit the "reset password" page without first answering their security questions.</comment>
+  </data>
+  <data name="UserRoleNotValid" xml:space="preserve">
+    <value>用户角色无效。</value>
+  </data>
+  <data name="UsersSettings" xml:space="preserve">
+    <value>用户设置</value>
+  </data>
+  <data name="UserTypeRequiredFieldValueDirectoryBasicArg" xml:space="preserve">
+    <value>“用户类型”字段值应为 {0} 或 {1}。</value>
+  </data>
+  <data name="VideoImport" xml:space="preserve">
+    <value>视频导入</value>
+  </data>
+  <data name="ViewCustomReportsGettingStarted" xml:space="preserve">
+    <value>Intelligence 入门</value>
+  </data>
+  <data name="ViewCustomReportsGettingStartedHelp" xml:space="preserve">
+    <value>对“Intelligence 入门”页面进行只读访问。</value>
+  </data>
+  <data name="ViewEducationOverview" xml:space="preserve">
+    <value>查看教育概览</value>
+  </data>
+  <data name="ViewManagedAdminPasswordHelp" xml:space="preserve">
+    <value>控制访问权限以查看受管管理员密码</value>
+  </data>
+  <data name="ViewUserGroup.Plural" xml:space="preserve">
+    <value>查看用户组</value>
+  </data>
+  <data name="WebAppEntitlements" xml:space="preserve">
+    <value>Web 应用授权</value>
+  </data>
+  <data name="Websitefilterssettings" xml:space="preserve">
+    <value>网站筛选器设置</value>
+  </data>
+  <data name="WindowsBspTenantIdDelete" xml:space="preserve">
+    <value>Windows Bsp 租户 ID 删除</value>
+  </data>
+  <data name="WorkspaceOneCloudAccessDeniesErrorMessage" xml:space="preserve">
+    <value>您必须拥有 VMware Cloud Services 帐户才能访问 Workspace ONE。请联系您的管理员以寻求帮助。{0}</value>
+  </data>
+</root>

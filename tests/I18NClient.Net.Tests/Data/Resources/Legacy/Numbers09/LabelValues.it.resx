@@ -1,0 +1,290 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="0000SessionOK" xml:space="preserve">
+    <value>0000: La sessione è valida</value>
+  </data>
+  <data name="0001SessionNotOK" xml:space="preserve">
+    <value>0001 La sessione non va bene</value>
+  </data>
+  <data name="0Day" xml:space="preserve">
+    <value>{0} giorno</value>
+  </data>
+  <data name="0Day.Plural" xml:space="preserve">
+    <value>{0} giorni</value>
+  </data>
+  <data name="0Month" xml:space="preserve">
+    <value>{0} mese</value>
+  </data>
+  <data name="0No" xml:space="preserve">
+    <value>0 (No)</value>
+  </data>
+  <data name="10_iPadOnly" xml:space="preserve">
+    <value>10 (solo iPad)</value>
+  </data>
+  <data name="100%" xml:space="preserve">
+    <value>Livello batteria 100%</value>
+  </data>
+  <data name="1040RequestParamNotValid" xml:space="preserve">
+    <value>1040: Il parametro richiesto non è valido</value>
+  </data>
+  <data name="10Minutes" xml:space="preserve">
+    <value>10 minuti</value>
+  </data>
+  <data name="12Hour" xml:space="preserve">
+    <value>12 ore</value>
+  </data>
+  <data name="12Hours" xml:space="preserve">
+    <value>12 ore</value>
+  </data>
+  <data name="12hrs" xml:space="preserve">
+    <value>12 ore</value>
+  </data>
+  <data name="1-3Months" xml:space="preserve">
+    <value>Da 1 a 3 mesi</value>
+  </data>
+  <data name="15%" xml:space="preserve">
+    <value>Livello batteria 15%</value>
+  </data>
+  <data name="15_iPadOnly" xml:space="preserve">
+    <value>15 (solo iPad)</value>
+  </data>
+  <data name="15Minutes" xml:space="preserve">
+    <value>15 minuti</value>
+  </data>
+  <data name="1Day" xml:space="preserve">
+    <value>Un giorno</value>
+  </data>
+  <data name="1File" xml:space="preserve">
+    <value>1 file</value>
+  </data>
+  <data name="1File.Plural" xml:space="preserve">
+    <value>{0} file</value>
+  </data>
+  <data name="1Hour" xml:space="preserve">
+    <value>1 ora</value>
+  </data>
+  <data name="1Star" xml:space="preserve">
+    <value>1 stella</value>
+  </data>
+  <data name="1Week" xml:space="preserve">
+    <value>1 settimana</value>
+  </data>
+  <data name="1Yes" xml:space="preserve">
+    <value>1 (Sì)</value>
+  </data>
+  <data name="200OK" xml:space="preserve">
+    <value>200: OK</value>
+  </data>
+  <data name="2050ProviderError" xml:space="preserve">
+    <value>2050: Errore del fornitore
+</value>
+  </data>
+  <data name="20MB" xml:space="preserve">
+    <value>20 MB</value>
+  </data>
+  <data name="24Hour" xml:space="preserve">
+    <value>24 ore</value>
+  </data>
+  <data name="24HourTime" xml:space="preserve">
+    <value>Orario di 24 ore</value>
+  </data>
+  <data name="25%" xml:space="preserve">
+    <value>Livello batteria 25%</value>
+  </data>
+  <data name="2Days" xml:space="preserve">
+    <value>Due giorni</value>
+  </data>
+  <data name="2Hours" xml:space="preserve">
+    <value>2 ore</value>
+  </data>
+  <data name="2Minutes" xml:space="preserve">
+    <value>2 minuti</value>
+  </data>
+  <data name="30Minutes" xml:space="preserve">
+    <value>30 minuti</value>
+  </data>
+  <data name="3-6Months" xml:space="preserve">
+    <value>Da 3 a 6 mesi</value>
+  </data>
+  <data name="3Days" xml:space="preserve">
+    <value>3 giorni</value>
+  </data>
+  <data name="3Hours" xml:space="preserve">
+    <value>3 ore</value>
+  </data>
+  <data name="3rdPartyApp" xml:space="preserve">
+    <value>Applicazione di terze parti</value>
+  </data>
+  <data name="3rdPartyApp.Plural" xml:space="preserve">
+    <value>Applicazioni di terze parti</value>
+  </data>
+  <data name="400BadRequest" xml:space="preserve">
+    <value>400: Richiesta non valida
+</value>
+  </data>
+  <data name="4Hours" xml:space="preserve">
+    <value>4 ore</value>
+  </data>
+  <data name="50%" xml:space="preserve">
+    <value>Livello batteria 50%</value>
+  </data>
+  <data name="500InternalServerError" xml:space="preserve">
+    <value>500: Errore interno del server
+</value>
+  </data>
+  <data name="500To1000mb" xml:space="preserve">
+    <value>500-1000mb</value>
+  </data>
+  <data name="503ServiceUnavailable" xml:space="preserve">
+    <value>503: servizio API non disponibile</value>
+  </data>
+  <data name="5Hours" xml:space="preserve">
+    <value>5 ore</value>
+  </data>
+  <data name="5Minutes" xml:space="preserve">
+    <value>5 minuti</value>
+  </data>
+  <data name="6-12Months" xml:space="preserve">
+    <value>Da 6 a 12 mesi</value>
+  </data>
+  <data name="6Hours" xml:space="preserve">
+    <value>6 ore</value>
+  </data>
+  <data name="6hrs" xml:space="preserve">
+    <value>6 ore</value>
+  </data>
+  <data name="75%" xml:space="preserve">
+    <value>Livello batteria 75%</value>
+  </data>
+  <data name="7Hours" xml:space="preserve">
+    <value>7 ore</value>
+  </data>
+  <data name="8Hours" xml:space="preserve">
+    <value>8 ore</value>
+  </data>
+  <data name="9910RemoteServiceError" xml:space="preserve">
+    <value>9910: Errore del servizio remoto
+</value>
+  </data>
+  <data name="9999RemoteDBError" xml:space="preserve">
+    <value>9999: Errore del database remoto
+</value>
+  </data>
+</root>

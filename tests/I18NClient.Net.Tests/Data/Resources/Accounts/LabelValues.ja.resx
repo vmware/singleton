@@ -1,0 +1,1042 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AadAsIdpAttributeRequired" xml:space="preserve">
+    <value>[ディレクトリ サービス] 設定ページで [ディレクトリ] が [なし] に設定され、[ID サービスに Azure AD を使用] が有効である場合、[Azure Active Directory マッピング属性] は必須です。</value>
+  </data>
+  <data name="AadAttributeMapping" xml:space="preserve">
+    <value>Azure Active Directory マッピング属性</value>
+  </data>
+  <data name="AccountLocked" xml:space="preserve">
+    <value>Workspace ONE UEM アカウントがロックされています。{0}によってアカウントのロックを解除するか、IT 管理者に連絡してください。</value>
+    <comment>{0} will be replaced with url to reset password</comment>
+  </data>
+  <data name="AccountLockedSubject" xml:space="preserve">
+    <value>Workspace ONE UEM アカウントがロックされています</value>
+  </data>
+  <data name="AccountUnlocked" xml:space="preserve">
+    <value>Workspace ONE UEM アカウントがロック解除されました。Workspace ONE UEM Console にアクセスするには、{0}してください。</value>
+    <comment>{0} will be replaced with url to login</comment>
+  </data>
+  <data name="AccountUnlockedSubject" xml:space="preserve">
+    <value>Workspace ONE UEM アカウントがロック解除されました</value>
+  </data>
+  <data name="AddCloudServicesAdmin" xml:space="preserve">
+    <value>Cloud Services 管理者を追加</value>
+  </data>
+  <data name="AddCloudServicesAdminPlaceHolder" xml:space="preserve">
+    <value>{0}</value>
+  </data>
+  <data name="AddSelectedUsersToUserGroup" xml:space="preserve">
+    <value>選択したユーザーをユーザー グループに追加</value>
+  </data>
+  <data name="AdminAccountLocked" xml:space="preserve">
+    <value>管理者アカウントがロックされました</value>
+  </data>
+  <data name="AdminAccountUnlocked" xml:space="preserve">
+    <value>管理者アカウントがロック解除されました</value>
+  </data>
+  <data name="AdminApiAuthenticationWarningText" xml:space="preserve">
+    <value>クライアント証明書が生成されていない場合、Console は既定でユーザー資格情報になります。</value>
+  </data>
+  <data name="AdminGroupMembersExport" xml:space="preserve">
+    <value>管理者グループのメンバーのエクスポート</value>
+  </data>
+  <data name="AdminGroupMembersExportHelp" xml:space="preserve">
+    <value>管理グループメンバーをエクスポートする権限を管理します。[メニュー] &gt; [アカウント] &gt; [管理者] &gt; [管理者グループ] に移動します。</value>
+  </data>
+  <data name="Administrators" xml:space="preserve">
+    <value>管理者</value>
+  </data>
+  <data name="AdministratorsSettings" xml:space="preserve">
+    <value>管理者設定</value>
+  </data>
+  <data name="AdminNotificationArgForSamlConfiguration" xml:space="preserve">
+    <value>管理者を Console に安全に認証する際に必要な「{0}」属性が、ID プロバイダ SAML 応答にありません。</value>
+  </data>
+  <data name="AdminPasswordReset" xml:space="preserve">
+    <value>管理者のパスワード リセット</value>
+  </data>
+  <data name="AdminUserPasswordResetAction" xml:space="preserve">
+    <value>この処理により、次の管理者のパスワード リセット メールが送信されます。メール アドレスを正しく確認してから、続行してください。</value>
+    <comment>This action corresponds to triggering password reset for admin user from the admin list view grid</comment>
+  </data>
+  <data name="AdminUserPasswordResetEmailTriggered" xml:space="preserve">
+    <value>管理者ユーザーのパスワード リセット E メールが送信されました</value>
+  </data>
+  <data name="AgentSettingsPublish" xml:space="preserve">
+    <value>エージェント設定の発行</value>
+  </data>
+  <data name="AllAdministratorsSettings" xml:space="preserve">
+    <value>すべての管理者設定</value>
+  </data>
+  <data name="AllAppsBooksSettings" xml:space="preserve">
+    <value>すべてのアプリとブックの設定</value>
+  </data>
+  <data name="AllowedDevicesDescription" xml:space="preserve">
+    <value>事前承認済みデバイスを IMEI、シリアル番号、または UDID でインポートします。既知のデバイス (会社のデバイスなど) のリストのインポートに使用します。このデバイスに関連付けられている所有権とグループ ID が、加入時に自動でデバイスに適用されます。</value>
+  </data>
+  <data name="AllUsersSettings" xml:space="preserve">
+    <value>すべてのユーザー設定</value>
+  </data>
+  <data name="AndroidEfotaApproveUpdate" xml:space="preserve">
+    <value>Android Efota が更新を承認</value>
+  </data>
+  <data name="ApiQuotaReachedNotification" xml:space="preserve">
+    <value>API 使用率</value>
+  </data>
+  <data name="ApiQuotaThresholdReachedAction" xml:space="preserve">
+    <value>API 使用率の表示</value>
+  </data>
+  <data name="ApiQuotaThresholdReachedMessage" xml:space="preserve">
+    <value>日次の API 制限の {0}% に達しました。これは、{1}にリセットされます</value>
+    <comment>{0} will be replaced with a numeric value indicating what percentage of api calls have been utilized for that day. {1} will be replaced with the localized time in which the api usage resets</comment>
+  </data>
+  <data name="ApiQuotaThresholdReachedTitle" xml:space="preserve">
+    <value>API 使用率</value>
+  </data>
+  <data name="ArgCannotBeMappedAppleIdArgAsArgNotFoundInOgArg" xml:space="preserve">
+    <value>組織グループ - {3} 階層に {2} が見つからないため、{0} を管理対象 Apple ID {1} にマッピングできません</value>
+  </data>
+  <data name="ArgCannotBeMappedToEnrollmentUserAppleAlreadyPresent" xml:space="preserve">
+    <value>{0} は csv ファイルにすでに存在しているため、再度追加されません。</value>
+  </data>
+  <data name="ArgCannotBeMappedToEnrollmentUserAppleIDNotFound" xml:space="preserve">
+    <value>この Apple ID がシステムで見つからないため、{0} を加入ユーザーにマッピングできません</value>
+  </data>
+  <data name="ArgCannotBeMappedToEnrollmentUserKeyboardLayoutInValid" xml:space="preserve">
+    <value>このキーボード レイアウトは有効ではないため、{0} を加入ユーザーにマッピングできません</value>
+  </data>
+  <data name="ArgCannotBeMappedToEnrollmentUserMissingAppleID" xml:space="preserve">
+    <value>この Apple ID が csv ファイルで見つからないため、{0} を加入ユーザーにマッピングできません</value>
+  </data>
+  <data name="ArgCannotBeMappedToUserArgAsAlreadyMapped" xml:space="preserve">
+    <value>この加入ユーザーはすでに別のメンバーにマッピングされているため、{fileProcessorDataContext.Person.ManagedAppleIdentifier} を加入ユーザー {username} にマッピングできません</value>
+  </data>
+  <data name="ArgDefinedAboveGivenOG" xml:space="preserve">
+    <value>{0} はこの組織グループよりも上のレベルで定義されています</value>
+  </data>
+  <data name="ArgHasAlreadyMapped" xml:space="preserve">
+    <value>{0} はすでにマッピングされています</value>
+  </data>
+  <data name="BackToLoginPage" xml:space="preserve">
+    <value>ログインに戻る</value>
+  </data>
+  <data name="BatchImportAdminUsersExplanation" xml:space="preserve">
+    <value>管理者ユーザー インポート機能は、管理者ユーザーをシステムに一括ロードする際に使用されます。管理者ユーザーを組織グループに関連付ける必要があります。</value>
+  </data>
+  <data name="BatchImportCancelled" xml:space="preserve">
+    <value>バッチ インポートがキャンセルされました。</value>
+  </data>
+  <data name="BatchImportDescription" xml:space="preserve">
+    <value>バッチ インポート機能を使用して、ユーザーと、ユーザーのデバイスを一括でシステムにロードできます。CSV テンプレートは下記を参照してください。Microsoft Excel ユーティリティを使用してテンプレートを編集する場合は、書式変換によって情報が失われないように、列の書式が [文字列] に設定されていることを確認し、CSV ファイルとして保存してください。</value>
+  </data>
+  <data name="BatchImportErrors" xml:space="preserve">
+    <value>バッチ インポート エラー</value>
+  </data>
+  <data name="BatchImportSuccessful" xml:space="preserve">
+    <value>バッチ インポートに成功しました。</value>
+  </data>
+  <data name="BatchImportUserGroupsExplanation" xml:space="preserve">
+    <value>このバッチ インポート機能はシステムに一括でユーザー グループを読み込む場合に使います。</value>
+  </data>
+  <data name="BatchImportUsersDevicesExplanation" xml:space="preserve">
+    <value>バッチ インポート機能で、複数のユーザーまたはデバイスを一括でシステムに取り込むことができます。以下にインポート用のテンプレートのリンクがあります。</value>
+  </data>
+  <data name="BeAtleastArgCharactersLong" xml:space="preserve">
+    <value>少なくとも {0} 文字の長さがあること</value>
+    <comment>{0} will be replaced by a number</comment>
+  </data>
+  <data name="CancelBatchImport" xml:space="preserve">
+    <value>バッチ インポートをキャンセル</value>
+  </data>
+  <data name="CancelBatchImportWarning" xml:space="preserve">
+    <value>この操作により、バッチ インポート プロセスがキャンセルされます。</value>
+  </data>
+  <data name="CanNotDeleteUserGroupBecauseAssignedToSmartGroup" xml:space="preserve">
+    <value>このユーザー グループは、次のスマート グループに割り当てられているため、削除できません - {0}</value>
+  </data>
+  <data name="CartPublish" xml:space="preserve">
+    <value>カートの公開</value>
+  </data>
+  <data name="CertificateBasedApiAuthenticationWarningText" xml:space="preserve">
+    <value>API 認証のクライアント証明書を生成してエクスポートします。</value>
+  </data>
+  <data name="CertificateProvisioning" xml:space="preserve">
+    <value>証明書プロビジョニング</value>
+  </data>
+  <data name="ChallengeClientCertificate" xml:space="preserve">
+    <value>クライアント証明書をチャレンジ</value>
+    <comment>Client certificate for authenticating the retrieval of a SCEP challenge</comment>
+  </data>
+  <data name="CheckGroup" xml:space="preserve">
+    <value>グループを確認</value>
+  </data>
+  <data name="ClickedResetPasswordNotifyAdmin" xml:space="preserve">
+    <value>パスワード リセットが、お客様または別の管理者によって開始されました。これが正しくない場合は、管理者に連絡して詳細を確認してください。</value>
+  </data>
+  <data name="ClickHereToLogin" xml:space="preserve">
+    <value>ログイン</value>
+  </data>
+  <data name="ColumnsInSpreadsheetDoesNotMatchTemplate" xml:space="preserve">
+    <value>スプレッドシートの列がテンプレートと一致しません。</value>
+  </data>
+  <data name="CompleteWithErrors" xml:space="preserve">
+    <value>完了 (エラーあり)</value>
+  </data>
+  <data name="CompliancePoliciesView" xml:space="preserve">
+    <value>順守ポリシー表示</value>
+  </data>
+  <data name="CompliancePoliciesViewHelp" xml:space="preserve">
+    <value>順守ポリシーを表示する権限を管理します。[デバイス] &gt; [順守ポリシー] &gt; [リスト表示] に移動します</value>
+  </data>
+  <data name="CompromiseDetectionForWindows10Device" xml:space="preserve">
+    <value>Windows 10 デバイスの侵害検出</value>
+  </data>
+  <data name="ContactAdministratorIfYouHaveDirectoryAccount" xml:space="preserve">
+    <value>ディレクトリ アカウントがある場合は、管理者に連絡してパスワードをリセットしてください。</value>
+    <comment>Used in conjuction with "PasswordResetIsNotAvailableForDirectoryAccounts" in telling a user that a directory account cannot use the WS1 password reset flow.</comment>
+  </data>
+  <data name="ContactAdministratorIfYouHaveExternalAccount" xml:space="preserve">
+    <value>ディレクトリ アカウントがある場合は、管理者に連絡してパスワードをリセットしてください。VMware Cloud Services アカウントがある場合は、cloud.vmware.com からパスワードをリセットできます</value>
+    <comment>Message shown during touble loggingIn flow for an account</comment>
+  </data>
+  <data name="ContentRightsManagement" xml:space="preserve">
+    <value>コンテンツ権管理</value>
+  </data>
+  <data name="CreateAdminAccountsFromCSPPortal" xml:space="preserve">
+    <value>このテナントは、Workspace ONE Cloud Admin Hub で有効にされました。UEM で作成された管理者は、UEM にのみアクセスできます。Workspace ONE サービスにアクセスできるようにするには、Cloud Services で管理者を追加してください。{0}</value>
+  </data>
+  <data name="Date&amp;Time" xml:space="preserve">
+    <value>日付と時刻</value>
+  </data>
+  <data name="DecryptionFailedFieldName" xml:space="preserve">
+    <value>Field Name</value>
+  </data>
+  <data name="DeleteDepSharedMdmProfile" xml:space="preserve">
+    <value>DEP 共有 MDM プロファイルの削除</value>
+  </data>
+  <data name="DeniedDevices" xml:space="preserve">
+    <value>拒否済みのデバイス</value>
+  </data>
+  <data name="DeniedDevicesDescription" xml:space="preserve">
+    <value>拒否済みのデバイスを IMEI、シリアル番号、または UDID でインポートします。既知の非遵守状態デバイスのリストのインポートに使用します。拒否済みのデバイスは加入できません。拒否済みのデバイスが加入されている場合は、このインポートが処理される時点で自動的に加入が解除されます。ここで指定されたプラットフォーム、OS、およびモデルは、加入時には考慮されません。</value>
+  </data>
+  <data name="DeviceBasedVppAppUpdate" xml:space="preserve">
+    <value>デバイス ベースの Vpp アプリ更新</value>
+  </data>
+  <data name="DeviceBulkManagementDeviceViewGps" xml:space="preserve">
+    <value>デバイス一括管理 デバイス表示の場所</value>
+  </data>
+  <data name="DeviceBulkManagementDeviceViewGpsHelp" xml:space="preserve">
+    <value>デバイスの場所を一括表示できます。</value>
+  </data>
+  <data name="Devicebulkmanagementrebootdevice" xml:space="preserve">
+    <value>デバイスを一括再起動</value>
+  </data>
+  <data name="DeviceEditionNotAllowedAsUserArgNotManagedAtOG" xml:space="preserve">
+    <value>ユーザー {0} はこの組織グループで管理されていないため、デバイスのエディションは許可されていません</value>
+  </data>
+  <data name="DeviceLgCannotBeParentUserDefaultLg" xml:space="preserve">
+    <value>デバイス組織グループを親ユーザーの既定の組織グループにすることはできません。</value>
+  </data>
+  <data name="DirectoryAccountsToBePushedBySCIMProvisioning" xml:space="preserve">
+    <value>ディレクトリ アカウントは SCIM プロビジョニング API でのみ作成できます</value>
+  </data>
+  <data name="DirectoryNameIsInvalid" xml:space="preserve">
+    <value>ディレクトリ名が無効です。ディレクトリ名にスペースを含めることはできません。</value>
+  </data>
+  <data name="DirectorySync" xml:space="preserve">
+    <value>ディレクトリの同期</value>
+  </data>
+  <data name="DisableDepConfiguration" xml:space="preserve">
+    <value>DEP 構成の無効化</value>
+  </data>
+  <data name="DisplayVideoImport" xml:space="preserve">
+    <value>表示 動画インポート</value>
+  </data>
+  <data name="DisplayVideoView" xml:space="preserve">
+    <value>動画表示を表示する</value>
+  </data>
+  <data name="DomainMappingIsNotFoundForGivenDomain" xml:space="preserve">
+    <value>このドメインのドメインマッピングは見つかりませんでした</value>
+  </data>
+  <data name="DownloadAdvancedTemplateForUsersAndDevices" xml:space="preserve">
+    <value>ユーザーおよびデバイスの高度なテンプレートをダウンロードする</value>
+  </data>
+  <data name="DownloadSimpleTemplateForUsersAndDevices" xml:space="preserve">
+    <value>ユーザーおよびデバイスのシンプルなテンプレートをダウンロードする</value>
+  </data>
+  <data name="DownloadTemplateForAllowedDevices" xml:space="preserve">
+    <value>許可済みのデバイスのテンプレートをダウンロードする</value>
+  </data>
+  <data name="DuplicateAdminUserFound" xml:space="preserve">
+    <value>重複している管理者ユーザーが見つかりました。</value>
+  </data>
+  <data name="DuplicateDirectoryUserGroupMessage" xml:space="preserve">
+    <value>ID「{0}」のディレクトリ ユーザー グループはすでに存在します。</value>
+  </data>
+  <data name="DuplicateExcludedUserGroupInSmartGroup" xml:space="preserve">
+    <value>除外リストと追加リストの両方に同じユーザー グループを追加することはできません。除外する場合は、このユーザー グループを追加リストから削除します。</value>
+  </data>
+  <data name="DuplicateUserGroupMessage" xml:space="preserve">
+    <value>フレンドリ名「{0}」のユーザー グループはすでに存在します。別のフレンドリ名を入力してください。</value>
+  </data>
+  <data name="EARAppUpdateAvailableNotification" xml:space="preserve">
+    <value>エンタープライズ アプリ リポジトリ更新</value>
+  </data>
+  <data name="EditAdmin" xml:space="preserve">
+    <value>管理者を編集</value>
+  </data>
+  <data name="EditCustomReportsGettingStarted" xml:space="preserve">
+    <value>Intelligence の基礎</value>
+  </data>
+  <data name="EditCustomReportsGettingStartedHelp" xml:space="preserve">
+    <value>Intelligence に参加するためのフル アクセス権限を付与します。</value>
+  </data>
+  <data name="EditDepSharedMdmProfile" xml:space="preserve">
+    <value>DEP 共有 MDM プロファイルの編集</value>
+  </data>
+  <data name="EditTemporaryAdmin" xml:space="preserve">
+    <value>一時的な管理者を編集</value>
+  </data>
+  <data name="EditTypeGrHelp" xml:space="preserve">
+    <value>組織グループの組織グループ タイプを表示および編集します。</value>
+  </data>
+  <data name="EditUserArgOpensDialog" xml:space="preserve">
+    <value>[{0} ユーザーの編集] でダイアログが開きます</value>
+    <comment>The placeholder in this label key contains username.</comment>
+  </data>
+  <data name="EMAdvancedLogging" xml:space="preserve">
+    <value>EMA 高度ログ</value>
+  </data>
+  <data name="EMAdvancedLoggingHelp" xml:space="preserve">
+    <value>MEM 直接展開で、デバイスの高度なイベントログを示すウィンドウを表示します。</value>
+  </data>
+  <data name="EncounteredErrorLoadingAvailableLocationGroup" xml:space="preserve">
+    <value>使用可能な組織グループの読み込み中にエラーが発生しました。</value>
+  </data>
+  <data name="EnrollmentOgInvalidOrUnauthorized" xml:space="preserve">
+    <value>加入組織グループが無効または未認証です。</value>
+  </data>
+  <data name="EnrollmentRestrictNewUserForScimProvisioning" xml:space="preserve">
+    <value>アカウントは UEM でプロビジョニングされなかったため、加入できません。詳細は、管理者にお問い合わせください。</value>
+  </data>
+  <data name="EnrollmentUserTenancyNotification" xml:space="preserve">
+    <value>2021 年後半のリリース以降、カスタマー組織グループ外の加入ユーザーおよびユーザー グループの作成は許可されなくなります。</value>
+  </data>
+  <data name="EnterSearchTerm" xml:space="preserve">
+    <value>検索用語を入力</value>
+  </data>
+  <data name="ErrorOccuredBulkOperation" xml:space="preserve">
+    <value>一括操作中にエラーが発生しました</value>
+  </data>
+  <data name="ErrorOccuredDuringMergeOfNewUserGroup" xml:space="preserve">
+    <value>新しいユーザー グループのマージ/同期中にエラーが発生しました。{0}</value>
+  </data>
+  <data name="ErrorOccuredForUserGroups" xml:space="preserve">
+    <value>ユーザーが所属するグループの検索中にエラーが発生しました</value>
+  </data>
+  <data name="ErrorOccuredWhileMergingGroups" xml:space="preserve">
+    <value>グループのマージ中にエラーが発生しました</value>
+  </data>
+  <data name="ErrorResolvingValidOgForUser" xml:space="preserve">
+    <value>ユーザーの有効な組織グループの解決中にエラーが発生しました</value>
+  </data>
+  <data name="ExcludedUserGroups" xml:space="preserve">
+    <value>除外するユーザー グループ</value>
+  </data>
+  <data name="ExcludedUserGroupsToolTip" xml:space="preserve">
+    <value>この抽出条件はこれ以外の条件で抽出された結果生成されたデバイス リストにある特定のユーザー グループのユーザーに所属するデバイスを除外する方法を提供します。</value>
+  </data>
+  <data name="ExpressSetupEdit" xml:space="preserve">
+    <value>Express セットアップ 編集</value>
+  </data>
+  <data name="ExpressSetupEditHelp" xml:space="preserve">
+    <value>AirWatch Express 内のコンソール統合コンポーネントの簡易セットアップ情報に対する編集権限を管理者に付与します。</value>
+  </data>
+  <data name="ExpressSetupRead" xml:space="preserve">
+    <value>Express に対する読み取り権限を設定</value>
+  </data>
+  <data name="ExpressSetupReadHelp" xml:space="preserve">
+    <value>AirWatch Express 内のコンソール統合コンポーネントの簡易セットアップ情報に対する読み取り権限を管理者に付与します。</value>
+  </data>
+  <data name="ExternalIdArgDNArgMismatch" xml:space="preserve">
+    <value>外部 ID {0} は識別名 {1} に属していません。</value>
+  </data>
+  <data name="FailedToCheckDirectoryGroup" xml:space="preserve">
+    <value>ディレクトリ グループの確認に失敗しました</value>
+  </data>
+  <data name="FailedToSaveTheAdminGroup" xml:space="preserve">
+    <value>管理者グループを保存できません。</value>
+  </data>
+  <data name="FailedToSendResetPasswordEmail" xml:space="preserve">
+    <value>パスワードをリセットする E メールの送信に失敗しました。</value>
+    <comment>When admin tries to trigger a reset password email for an admin.</comment>
+  </data>
+  <data name="FileInvalidErrorText" xml:space="preserve">
+    <value>ファイル形式は CSV にする必要があります。</value>
+  </data>
+  <data name="FileTypeHelperText" xml:space="preserve">
+    <value>テンプレート仕様に従っている CSV ファイルにする必要があります</value>
+  </data>
+  <data name="FirstNameFirstTwoLetters" xml:space="preserve">
+    <value>下の名前（最初の 2 文字）</value>
+  </data>
+  <data name="FirstNameInitial" xml:space="preserve">
+    <value>下の名前のイニシャル</value>
+  </data>
+  <data name="FollowingUsersWillBeUnlocked" xml:space="preserve">
+    <value>次のユーザーのロックは解除されます。</value>
+  </data>
+  <data name="ForgotUserName" xml:space="preserve">
+    <value>ユーザー名を忘れた場合</value>
+  </data>
+  <data name="GeneralFailure" xml:space="preserve">
+    <value>パスワードをリセットする E メールの送信に失敗しました。SMTP サーバの設定を確認して、再試行してください。</value>
+  </data>
+  <data name="GeofenceAreaEdit" xml:space="preserve">
+    <value>Geofence 領域の編集</value>
+  </data>
+  <data name="GivenDistinguishedNameNotFoundUserCannotAdd" xml:space="preserve">
+    <value>指定した識別名が見つかりません。ユーザーを追加することはできません。</value>
+  </data>
+  <data name="GivenOgCustomerCodeInvalid" xml:space="preserve">
+    <value>この組織グループのカスタマー コードは無効です。</value>
+  </data>
+  <data name="GivenSecurityTypeNotConfigured" xml:space="preserve">
+    <value>このセキュリティ タイプは構成されていません。</value>
+  </data>
+  <data name="GivenSecurityTypeNotSupported" xml:space="preserve">
+    <value>このセキュリティ タイプはサポートされていません。</value>
+  </data>
+  <data name="GroupNameRequired" xml:space="preserve">
+    <value>グループ名は必須です</value>
+  </data>
+  <data name="HideTemplatesAndGuidelines" xml:space="preserve">
+    <value>テンプレートとガイドラインを非表示</value>
+  </data>
+  <data name="IBeaconGroupEdit" xml:space="preserve">
+    <value>IBeacon グループの編集</value>
+  </data>
+  <data name="IfExistsAnEmailWillBeSentToTheAddressOnFile" xml:space="preserve">
+    <value>詳細な手順を記載した E メールを、登録されたメール アドレスに送信しました。</value>
+    <comment>When a user requests a "forgot password" reset link via email, this is the message given regardless of whether the user name is valid or not.</comment>
+  </data>
+  <data name="IfTroubleClickingCopyAndPasteLink" xml:space="preserve">
+    <value>このリンクが機能しない場合は、ブラウザに次のリンクをコピーして貼り付けてください。</value>
+  </data>
+  <data name="IncorrectPasswordAnswerAttemptWarning" xml:space="preserve">
+    <value>あと 1 回で試行回数上限に達します。すべての質問に正しく回答しないと、アカウントがロックされます。</value>
+  </data>
+  <data name="IncorrectPasswordAnswerAttemptWarningPlural" xml:space="preserve">
+    <value>あと {0} 回で試行回数上限に達します。すべての質問に正しく回答しないと、アカウントがロックされます。</value>
+  </data>
+  <data name="InstallAppOnAll" xml:space="preserve">
+    <value>アプリをすべてにインストール</value>
+  </data>
+  <data name="InstallMdmProfile" xml:space="preserve">
+    <value>MDM プロファイルをインストール</value>
+  </data>
+  <data name="InstallOnFiltered" xml:space="preserve">
+    <value>フィルタにインストール</value>
+  </data>
+  <data name="InvalidDataEntered" xml:space="preserve">
+    <value>無効なデータが入力されました</value>
+  </data>
+  <data name="InvalidDeviceGroupId" xml:space="preserve">
+    <value>デバイス グループ ID が無効です。</value>
+  </data>
+  <data name="InvalidGroupBaseDN" xml:space="preserve">
+    <value>デフォルトまたは指定されたグループ ベース DN - {0} は正しくありません</value>
+  </data>
+  <data name="InvalidSession" xml:space="preserve">
+    <value>セッションが無効です</value>
+  </data>
+  <data name="InvalidTemplate" xml:space="preserve">
+    <value>テンプレートが無効です。最新のテンプレートをダウンロードしてください</value>
+  </data>
+  <data name="InvalidUserCredentialsPleaseTryAgain" xml:space="preserve">
+    <value>資格情報が無効です。再試行してください。</value>
+  </data>
+  <data name="IsRequiredArg" xml:space="preserve">
+    <value>引数は必須です。</value>
+  </data>
+  <data name="IssueCertificate" xml:space="preserve">
+    <value>証明書を発行</value>
+  </data>
+  <data name="JITSettings" xml:space="preserve">
+    <value>JIT 設定</value>
+    <comment>Resource for JIT Settings</comment>
+  </data>
+  <data name="JITSettingsHelp" xml:space="preserve">
+    <value>JIT の GET および UPDATE エンドポイントにアクセスする権限を管理します。</value>
+  </data>
+  <data name="LastNameFirstTwoLetters" xml:space="preserve">
+    <value>名字（最初の 2 文字）</value>
+  </data>
+  <data name="LastNameInitial" xml:space="preserve">
+    <value>名字のイニシャル</value>
+  </data>
+  <data name="LdapNotDefinedUserCannotAdd" xml:space="preserve">
+    <value>この組織グループの LDAP が定義されていません。管理者ユーザーを追加できません。</value>
+  </data>
+  <data name="LocalSync" xml:space="preserve">
+    <value>ローカル同期</value>
+  </data>
+  <data name="LoginAsDifferentUser" xml:space="preserve">
+    <value>別のユーザーとしてログイン</value>
+  </data>
+  <data name="LoginPasswordIsRequired" xml:space="preserve">
+    <value>パスワードは必須です</value>
+  </data>
+  <data name="MailboxBusy" xml:space="preserve">
+    <value>要求された E メール処理を完了できませんでした。SMTP プロトコル エラー: メールボックスが使用できません。再試行してください。</value>
+  </data>
+  <data name="MailboxUnavailable" xml:space="preserve">
+    <value>パスワードをリセットする E メールの送信に失敗しました。SMTP プロトコル エラー: メールボックスが使用できません。</value>
+  </data>
+  <data name="MEMRotateGSuitePassword" xml:space="preserve">
+    <value>G Suite パスワードを変更</value>
+  </data>
+  <data name="MEMRotateGSuitePasswordConfirmation" xml:space="preserve">
+    <value>G Suite パスワードの変更の確認</value>
+  </data>
+  <data name="MEMRotateGSuitePasswordFailed" xml:space="preserve">
+    <value>G Suite パスワードを変更できませんでした</value>
+  </data>
+  <data name="MEMRotateGSuitePasswordInfoMessage" xml:space="preserve">
+    <value>このアクションによって、ユーザーのパスワードがリセットされ、ユーザーのデバイス上の関連付けられた E メール プロファイルがすべて更新されます。このアクションは元に戻せません。</value>
+  </data>
+  <data name="MergeFailedRetry" xml:space="preserve">
+    <value>マージに失敗しました - 再試行</value>
+  </data>
+  <data name="MessageTemplateCouldNotBeRetrieved" xml:space="preserve">
+    <value>メッセージ テンプレートを取得できませんでした。</value>
+  </data>
+  <data name="MigrateWarning" xml:space="preserve">
+    <value>移行アクションを実行すると、デバイス設定とユーザー設定が、ベーシック ユーザー アカウントおよび認証プロキシ ユーザー アカウントから選択されたディレクトリ ユーザー アカウントに移行されます。移行が完了すると、ベーシック ユーザー アカウントおよび認証プロキシ ユーザー アカウントは削除され、デバイス加入に使用できなくなります。
+
+続行しますか?</value>
+  </data>
+  <data name="NetworkRanges" xml:space="preserve">
+    <value>ネットワーク範囲</value>
+  </data>
+  <data name="NoCommonCustomUserGroupsForSelectedUsers" xml:space="preserve">
+    <value>選択したユーザーの共通カスタム ユーザー グループがありません。</value>
+  </data>
+  <data name="NoPasswordQuestionContactAdminMessage" xml:space="preserve">
+    <value>パスワード回復用の質問を設定していないため、パスワードのリセットはできません。管理者に連絡してください。</value>
+  </data>
+  <data name="NotifyDevicesEnrolledHubApp" xml:space="preserve">
+    <value>デバイスの登録済み Hub アプリに通知</value>
+  </data>
+  <data name="NumberOfChangesShouldBePositive" xml:space="preserve">
+    <value>変更数は正の整数にする必要があります</value>
+  </data>
+  <data name="NumberOfObjects" xml:space="preserve">
+    <value>{0} オブジェクト</value>
+  </data>
+  <data name="OfflineCompliancePolicy" xml:space="preserve">
+    <value>オフライン順守ポリシー</value>
+  </data>
+  <data name="OGGroupIdNotInCurrentHierarchy" xml:space="preserve">
+    <value>インポートに失敗しました。組織グループ (ID: {0}) は現在の階層にありません。</value>
+  </data>
+  <data name="OGNotInCurrentHierarchy" xml:space="preserve">
+    <value>インポートに失敗しました。組織グループは現在の階層にありません。</value>
+  </data>
+  <data name="OneAttemptRemaining" xml:space="preserve">
+    <value>残り 1 回試行できます</value>
+  </data>
+  <data name="P2PPublish" xml:space="preserve">
+    <value>P2P の公開</value>
+  </data>
+  <data name="PasswordNotificationPeriodDays" xml:space="preserve">
+    <value>パスワードの通知期間 (日)</value>
+  </data>
+  <data name="PasswordResetIsNotAvailableForDirectoryAccounts" xml:space="preserve">
+    <value>パスワードのリセットは、ディレクトリ アカウントでは使用できません。</value>
+  </data>
+  <data name="PasswordResetIsNotAvailableForExternalAccounts" xml:space="preserve">
+    <value>パスワードのリセットは、ディレクトリ アカウントまたは VMware Cloud Services アカウントでは使用できません</value>
+    <comment>Message shown during trouble loggingIn flow for an account</comment>
+  </data>
+  <data name="PasswordShouldBeAtleastArgCharactersLong" xml:space="preserve">
+    <value>パスワードには {0} 文字以上を含める必要があります</value>
+    <comment>{0} will be relaced by a number</comment>
+  </data>
+  <data name="PermissionColumnIsEmply" xml:space="preserve">
+    <value>権限の列が空のため、デフォルトの権限をユーザー グループに追加します。</value>
+  </data>
+  <data name="PermissonArgDoesnotConformWithTemplate" xml:space="preserve">
+    <value>権限 {0} はテンプレートに準拠していないため、スキップされました</value>
+  </data>
+  <data name="PleaseCheckDirectoryUsername" xml:space="preserve">
+    <value>ディレクトリのユーザー名を確認してください</value>
+  </data>
+  <data name="ProvisioningPackagePublish" xml:space="preserve">
+    <value>プロビジョニング パッケージの公開</value>
+  </data>
+  <data name="PublishAndroidWorkPublicApp" xml:space="preserve">
+    <value>Android Work パブリック アプリの公開</value>
+  </data>
+  <data name="PublishAreaProfile" xml:space="preserve">
+    <value>領域プロファイルの公開</value>
+  </data>
+  <data name="PublishBrowserSettings" xml:space="preserve">
+    <value>ブラウザ公開設定</value>
+  </data>
+  <data name="RemoteViewDD" xml:space="preserve">
+    <value>リモート表示 - デバイス詳細</value>
+  </data>
+  <data name="RemoteViewDDHelp" xml:space="preserve">
+    <value>デバイス画面のスクリーンショットをリモートで撮る機能を有効化します。</value>
+  </data>
+  <data name="RemoveDepRegisteredDevices" xml:space="preserve">
+    <value>DEP 登録済みデバイスの削除</value>
+  </data>
+  <data name="RemoveSelectedUsersFromUserGroup" xml:space="preserve">
+    <value>選択したユーザーをユーザー グループから削除</value>
+  </data>
+  <data name="ReportAppleMDM" xml:space="preserve">
+    <value>レポート Apple MDM</value>
+  </data>
+  <data name="ReportAppleMDMHelp" xml:space="preserve">
+    <value>｢Apple MDM｣ レポートを表示する権限を管理します。</value>
+  </data>
+  <data name="ReportProductCompliance" xml:space="preserve">
+    <value>レポート プロダクト順守</value>
+  </data>
+  <data name="ReportProductComplianceHelp" xml:space="preserve">
+    <value>｢プロダクト順守｣ レポートを表示する権限を管理します。</value>
+  </data>
+  <data name="ReportProductDeploymentSummary" xml:space="preserve">
+    <value>レポート プロダクト展開概要</value>
+  </data>
+  <data name="ReportProductDeploymentSummaryHelp" xml:space="preserve">
+    <value>｢プロダクト展開概要｣ レポートを表示する権限を管理します。</value>
+  </data>
+  <data name="ReportProvisioningProductAssigned" xml:space="preserve">
+    <value>現在割り当てられているプロビジョニング詳細－プロダクト (新)</value>
+  </data>
+  <data name="ResetPassword" xml:space="preserve">
+    <value>パスワードをリセットする</value>
+    <comment>To be used to trigger reset password for core user.</comment>
+  </data>
+  <data name="ResetYourPassword" xml:space="preserve">
+    <value>パスワードをリセットします</value>
+  </data>
+  <data name="ResetYourPasswordNow" xml:space="preserve">
+    <value>今すぐパスワードをリセットしてください</value>
+  </data>
+  <data name="RestApiCustomAttriutesDelete" xml:space="preserve">
+    <value>REST API カスタム属性 削除</value>
+  </data>
+  <data name="RestApiCustomAttriutesDeleteHelp" xml:space="preserve">
+    <value>カスタム属性コレクションのすべての ｢削除｣ API を使用する権限を有効化します。</value>
+  </data>
+  <data name="RestApiEnterpriseIntegrationRead" xml:space="preserve">
+    <value>REST API エンタープライズ統合 読み取り</value>
+  </data>
+  <data name="RestApiEnterpriseIntegrationReadHelp" xml:space="preserve">
+    <value>エンタープライズ統合のすべての ｢読み取り専用｣ API を使用する権限を有効化します。</value>
+  </data>
+  <data name="Restapimamapps" xml:space="preserve">
+    <value>Rest API MAM アプリ</value>
+  </data>
+  <data name="RestapimamappsHelp" xml:space="preserve">
+    <value>管理アプリへアクセス</value>
+  </data>
+  <data name="Restapimamblob" xml:space="preserve">
+    <value>REST API MAM Blob</value>
+  </data>
+  <data name="RestapimamblobHelp" xml:space="preserve">
+    <value>コンテンツをアップロード/ダウンロードします。</value>
+  </data>
+  <data name="Restapimdmdevices" xml:space="preserve">
+    <value>REST API MDM デバイス</value>
+  </data>
+  <data name="RestapimdmdevicesHelp" xml:space="preserve">
+    <value>ロック/ロック解除コマンドを送信</value>
+  </data>
+  <data name="Restapimdmprofiles" xml:space="preserve">
+    <value>REST API MDM プロファイル</value>
+  </data>
+  <data name="RestapimdmprofilesHelp" xml:space="preserve">
+    <value>ロック/ロック解除コマンドを送信</value>
+  </data>
+  <data name="Restapimdmsmartgroups" xml:space="preserve">
+    <value>REST API MDM スマートグループ</value>
+  </data>
+  <data name="RestapimdmsmartgroupsHelp" xml:space="preserve">
+    <value>スマート グループ情報にアクセスする権限を与えます。</value>
+  </data>
+  <data name="Restapimdmusergroups" xml:space="preserve">
+    <value>REST API MDM ユーザー グループ</value>
+  </data>
+  <data name="RestapimdmusergroupsHelp" xml:space="preserve">
+    <value>ユーザー グループへのアクセス権限を付与</value>
+  </data>
+  <data name="Restapisystemadmin" xml:space="preserve">
+    <value>REST API システム管理者</value>
+  </data>
+  <data name="RestapisystemadminHelp" xml:space="preserve">
+    <value>管理者情報にアクセスする権限を与えます。</value>
+  </data>
+  <data name="Restapisystemgroups" xml:space="preserve">
+    <value>REST API システムグループ</value>
+  </data>
+  <data name="RestapisystemgroupsHelp" xml:space="preserve">
+    <value>組織グループ情報にアクセスする権限を与えます。</value>
+  </data>
+  <data name="Restapisystemusers" xml:space="preserve">
+    <value>REST API システムユーザー</value>
+  </data>
+  <data name="RestapisystemusersHelp" xml:space="preserve">
+    <value>ユーザー情報にアクセスする権限を与えます。</value>
+  </data>
+  <data name="RevokeAzureADUserTokensOnDeviceWipe" xml:space="preserve">
+    <value>デバイスのワイプ時にユーザー トークンを自動的に失効</value>
+  </data>
+  <data name="RevokeAzureADUserTokensToolTip" xml:space="preserve">
+    <value>デバイスのワイプまたは企業情報ワイプの実行時に、Workspace ONE UEM が Microsoft Azure AD のユーザー トークンを失効できるようにします。注: この機能を無効にすることは、構成のセキュリティを弱めるため推奨されません。ワイプされたデバイスを紛失した場合、そのデバイスには有効な AAD 認証トークンが依然として含まれている可能性があります</value>
+  </data>
+  <data name="RoleId" xml:space="preserve">
+    <value>役割 ID</value>
+  </data>
+  <data name="Roles" xml:space="preserve">
+    <value>役割</value>
+  </data>
+  <data name="SaveDepRegisteredDevices" xml:space="preserve">
+    <value>DEP 登録済みデバイスの保存</value>
+  </data>
+  <data name="Scheduler" xml:space="preserve">
+    <value>スケジューラ</value>
+  </data>
+  <data name="SchedulerApple" xml:space="preserve">
+    <value>スケジューラ</value>
+  </data>
+  <data name="SchedulerAppleHelp" xml:space="preserve">
+    <value>MDM のスケジューラ ページへのアクセス権限を管理</value>
+  </data>
+  <data name="SchedulerHelp" xml:space="preserve">
+    <value>スケジューラ設定ページへのアクセス権限を管理</value>
+  </data>
+  <data name="ScimEnabledOGCannotBatchImportDirectoryTypes" xml:space="preserve">
+    <value>この組織グループは、SCIM を使用してユーザー、管理者、およびグループをプロビジョニングします。ディレクトリのユーザーとグループを一括でインポートすることはできません。</value>
+  </data>
+  <data name="SecurityTypeIsRequired" xml:space="preserve">
+    <value>セキュリティ タイプは必須です。</value>
+  </data>
+  <data name="SelectedUsersDoNotExistOrHaveAlreadyBeenDeleted" xml:space="preserve">
+    <value>選択したユーザーはすでに削除されており、存在しません。このポップアップを閉じて、[ユーザー リスト] ページを更新してください。</value>
+  </data>
+  <data name="SelectFileLabel" xml:space="preserve">
+    <value>ファイルを選択</value>
+  </data>
+  <data name="SelectMemConfigLabel" xml:space="preserve">
+    <value>MEM 構成</value>
+  </data>
+  <data name="SendApplicationConfigurationRequest" xml:space="preserve">
+    <value>アプリケーション構成要求の送信</value>
+  </data>
+  <data name="SendFeedback" xml:space="preserve">
+    <value>フィードバックを送信</value>
+  </data>
+  <data name="SendsEmail" xml:space="preserve">
+    <value>E メールの送信</value>
+  </data>
+  <data name="ServerError" xml:space="preserve">
+    <value>サーバ エラー</value>
+  </data>
+  <data name="SettingsEnrollmentCustomization" xml:space="preserve">
+    <value>設定加入カスタマイズ</value>
+  </data>
+  <data name="SettingsEnrollmentCustomizationHelp" xml:space="preserve">
+    <value>[カスタマイズ] タブ ([デバイス] &gt; [デバイス設定] &gt; [デバイスとユーザー] &gt; [全般] &gt; [加入]) にアクセスし変更する権限</value>
+  </data>
+  <data name="SettingsEnrollmentOptionalPrompt" xml:space="preserve">
+    <value>設定加入オプション プロンプト</value>
+  </data>
+  <data name="SettingsEnrollmentOptionalPromptHelp" xml:space="preserve">
+    <value>[プロンプト表示 (オプション)] タブ ([デバイス] &gt; [デバイス設定] &gt; [デバイスとユーザー] &gt; [全般] &gt; [加入]) にアクセスし変更する権限</value>
+  </data>
+  <data name="SettingsHeaderBasedAuthentication" xml:space="preserve">
+    <value>ヘッダー ベース認証の設定</value>
+  </data>
+  <data name="SettingsMDMSampleSchedule" xml:space="preserve">
+    <value>設定 MDM サンプリングスケジュール</value>
+  </data>
+  <data name="SettingsMDMSampleScheduleHelp" xml:space="preserve">
+    <value>MDM サンプル スケジュール ページへのアクセスを提供</value>
+  </data>
+  <data name="SettingsScheduler" xml:space="preserve">
+    <value>設定 スケジューラ</value>
+  </data>
+  <data name="SettingsSchedulerHelp" xml:space="preserve">
+    <value>スケジューラ ページへのアクセスを提供</value>
+  </data>
+  <data name="ShareYourFeedback" xml:space="preserve">
+    <value>フィードバックを共有</value>
+  </data>
+  <data name="ShowBatchTypeTemplates" xml:space="preserve">
+    <value>バッチ タイプ テンプレートを表示</value>
+  </data>
+  <data name="SingleAppModeProfileRemove" xml:space="preserve">
+    <value>シングル アプリ モード プロファイルの削除</value>
+  </data>
+  <data name="SyncDirectoryGroup" xml:space="preserve">
+    <value>ディレクトリ グループを同期</value>
+  </data>
+  <data name="TargetLgCannotParentUserLg" xml:space="preserve">
+    <value>対象組織グループをユーザーの組織グループの親にすることはできません。</value>
+  </data>
+  <data name="ThresholdAdminActionRequest" xml:space="preserve">
+    <value>しきい値管理アクションの要求</value>
+  </data>
+  <data name="TimedOut" xml:space="preserve">
+    <value>タイムアウトしました</value>
+  </data>
+  <data name="TokenNotCreatedDeviceIdentifiersSpecifiersNotProvided" xml:space="preserve">
+    <value>トークンが作成されませんでした。デバイスの情報がありません。</value>
+  </data>
+  <data name="TransactionFailed" xml:space="preserve">
+    <value>パスワードをリセットする E メールの送信に失敗しました。受信者のメール アドレスを確認して、再試行してください。</value>
+  </data>
+  <data name="TroubleLoggingIn" xml:space="preserve">
+    <value>ログインできない場合</value>
+  </data>
+  <data name="TwoFactorAuthenticationMethodNotValidOrNotAllowed" xml:space="preserve">
+    <value>2 要素認証方法が有効でないか、許可されていません。</value>
+  </data>
+  <data name="TwoMoreLgCannotSameCustomerCode" xml:space="preserve">
+    <value>複数の組織グループに同じカスタマー コードは使えません。</value>
+  </data>
+  <data name="UnableToFindCertificate" xml:space="preserve">
+    <value>証明書が見つかりません。</value>
+  </data>
+  <data name="UninstallAppFromAll" xml:space="preserve">
+    <value>アプリをすべてからアンインストール</value>
+  </data>
+  <data name="UniqueIdentifierArgNotProvidedForNewAdmin" xml:space="preserve">
+    <value>一意の識別子「{0}」が新規管理者に提供されませんでした。</value>
+  </data>
+  <data name="UniqueIdentifierArgNotProvidedForNewUser" xml:space="preserve">
+    <value>一意の識別子「{0}」が新規ユーザーに提供されませんでした</value>
+  </data>
+  <data name="UpdatePublish" xml:space="preserve">
+    <value>更新の公開</value>
+  </data>
+  <data name="UserAccountUnlocked" xml:space="preserve">
+    <value>ユーザーアカウントはロック解除されました</value>
+  </data>
+  <data name="UserAndroidWorkAppsSync" xml:space="preserve">
+    <value>ユーザーの Android Work アプリの同期</value>
+  </data>
+  <data name="UserArgCannotBeEditedUserResidesAtBelowImportingOG" xml:space="preserve">
+    <value>ユーザー {0} が、インポート中の組織グループ外またはそれより下位に存在するため、同ユーザーを編集/管理できません</value>
+  </data>
+  <data name="UserArgCannotBeMoved" xml:space="preserve">
+    <value>1 つ以上のデバイスのプライマリ OG がターゲットの組織グループより上位にあるため、ユーザー {0} を移動できません</value>
+  </data>
+  <data name="UserArgEditNotAllowedForFollowingSecurityType" xml:space="preserve">
+    <value>ユーザー {0} のエディションは、次のセキュリティ タイプでは許可されていません</value>
+  </data>
+  <data name="UserArgEditNotAllowedNoPermission" xml:space="preserve">
+    <value>ユーザー {0} はこの OG では許可されていないため、同ユーザーのエディションは許可されていません</value>
+  </data>
+  <data name="UserArgNotCreatedAsNotFoundInAD" xml:space="preserve">
+    <value>ユーザー {0} は AD で見つからなかったため、作成されませんでした</value>
+  </data>
+  <data name="UserArgWasNotFoundatLG" xml:space="preserve">
+    <value>ユーザー {0} は、この場所グループで見つからなかったか、ベーシック ユーザーではありません</value>
+  </data>
+  <data name="UserCannotAssignedToParentLg" xml:space="preserve">
+    <value>ユーザーをメイン組織グループに割り当てることはできません。</value>
+  </data>
+  <data name="UserDataCorruptedErrorMessage" xml:space="preserve">
+    <value>ユーザー情報の復号化で問題が発生しました。イベント ログを表示して、どのフィールドとユーザーが影響を受けたか調べてください。この問題を解決するには、[編集] を選択し、影響を受けた各ユーザーについて正しい情報を再入力します。</value>
+    <comment>Error message shown during the User List View in case Decryption fails for some of the Personal info of any Users.</comment>
+  </data>
+  <data name="UserDecryptionFailed" xml:space="preserve">
+    <value>ユーザー データの復号化に失敗しました</value>
+  </data>
+  <data name="UserGroupsNotPermittedAtGivenOG" xml:space="preserve">
+    <value>ユーザー グループをこの組織グループに追加することは許可されていません</value>
+  </data>
+  <data name="UserInformationPrivacySettingWarning" xml:space="preserve">
+    <value>[システム] &gt; [エンタープライズ統合] の [ディレクトリ サービス] 設定ページにあるテスト接続ユーティリティには、ユーザー情報のプライバシー設定は適用されません。</value>
+  </data>
+  <data name="UserLockedOut" xml:space="preserve">
+    <value>ユーザーアカウントはロックアウトされました</value>
+  </data>
+  <data name="UsernameAndPassword" xml:space="preserve">
+    <value>ユーザー名とパスワード</value>
+  </data>
+  <data name="UserNoAccessForOGArg" xml:space="preserve">
+    <value>ユーザーには組織グループ {0} へのアクセス権限がありません</value>
+  </data>
+  <data name="UserNotFoundAd" xml:space="preserve">
+    <value>このユーザーはディレクトリ サービスで見つかりませんでした。このユーザーは追加できません。</value>
+  </data>
+  <data name="UserQuestionsNotAuthenticated" xml:space="preserve">
+    <value>パスワードをリセットするには、セキュリティの質問に正しく回答する必要があります。処理を進める手順については、受信したパスワード回復 E メールを参照してください。</value>
+    <comment>Only appears if someone tries to directly hit the "reset password" page without first answering their security questions.</comment>
+  </data>
+  <data name="UserRoleNotValid" xml:space="preserve">
+    <value>ユーザー役割が無効です。</value>
+  </data>
+  <data name="UsersSettings" xml:space="preserve">
+    <value>ユーザー設定</value>
+  </data>
+  <data name="UserTypeRequiredFieldValueDirectoryBasicArg" xml:space="preserve">
+    <value>[ユーザーの種類] のフィールド値は {0} または {1} のいずれかにする必要があります。</value>
+  </data>
+  <data name="VideoImport" xml:space="preserve">
+    <value>動画インポート</value>
+  </data>
+  <data name="ViewCustomReportsGettingStarted" xml:space="preserve">
+    <value>Intelligence の基礎</value>
+  </data>
+  <data name="ViewCustomReportsGettingStartedHelp" xml:space="preserve">
+    <value>｢Intelligence の基礎｣ ページに対する読み取りアクセス権限だけを付与します。</value>
+  </data>
+  <data name="ViewEducationOverview" xml:space="preserve">
+    <value>教育の概要の表示</value>
+  </data>
+  <data name="ViewManagedAdminPasswordHelp" xml:space="preserve">
+    <value>管理対象の管理者パスワードを表示する権限を管理します</value>
+  </data>
+  <data name="ViewUserGroup.Plural" xml:space="preserve">
+    <value>ユーザー グループを表示</value>
+  </data>
+  <data name="WebAppEntitlements" xml:space="preserve">
+    <value>Web アプリ資格</value>
+  </data>
+  <data name="Websitefilterssettings" xml:space="preserve">
+    <value>Web サイト フィルターの設定</value>
+  </data>
+  <data name="WindowsBspTenantIdDelete" xml:space="preserve">
+    <value>Windows Bsp TenantId の削除</value>
+  </data>
+  <data name="WorkspaceOneCloudAccessDeniesErrorMessage" xml:space="preserve">
+    <value>Workspace ONE にアクセスするには、VMware Cloud Services アカウントが必要です。サポートが必要な場合は、管理者にお問い合わせください。{0}</value>
+  </data>
+</root>

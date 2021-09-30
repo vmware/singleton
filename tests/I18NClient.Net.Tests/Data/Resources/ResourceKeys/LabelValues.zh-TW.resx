@@ -1,0 +1,3387 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AdaptivaSetup" xml:space="preserve">
+    <value>Adaptiva 設定</value>
+  </data>
+  <data name="AdaptivaSetupHelp" xml:space="preserve">
+    <value>為 P2P 合作夥伴 Adaptiva 配置資源</value>
+  </data>
+  <data name="AdaptiveManagement" xml:space="preserve">
+    <value>彈性管理</value>
+  </data>
+  <data name="AdaptiveManagementHelp" xml:space="preserve">
+    <value>根據應用程式原則檢視和設定彈性管理等級</value>
+  </data>
+  <data name="AddApplicationWorkflowHelp" xml:space="preserve">
+    <value>授予開發者上傳應用程式的權限</value>
+  </data>
+  <data name="AddCartHelp" xml:space="preserve">
+    <value>為共享裝置上傳裝置序號的 CSV。</value>
+  </data>
+  <data name="AddCustomReportSubscriptionHelp" xml:space="preserve">
+    <value>控制新增自訂報告訂閲的權限。請導覽至 [Hub] \ [報告與分析] \ [自訂報告] \ [訂閱]</value>
+  </data>
+  <data name="AddDeviceUserAccounts" xml:space="preserve">
+    <value>新增裝置</value>
+  </data>
+  <data name="AddDeviceUserAccountsHelp" xml:space="preserve">
+    <value>為使用者帳戶新增裝置。</value>
+  </data>
+  <data name="AddEditAdminAccount" xml:space="preserve">
+    <value>新增/編輯</value>
+  </data>
+  <data name="AddEditAdminAccountHelp" xml:space="preserve">
+    <value>新增或編輯管理員帳戶。</value>
+  </data>
+  <data name="AddEditAdminGroup" xml:space="preserve">
+    <value>新增/編輯</value>
+  </data>
+  <data name="AddEditAdminGroupHelp" xml:space="preserve">
+    <value>新增或編輯管理員群組。</value>
+  </data>
+  <data name="AddEditAdminRoles" xml:space="preserve">
+    <value>新增/編輯</value>
+  </data>
+  <data name="AddEditAdminRolesHelp" xml:space="preserve">
+    <value>新增、編輯和刪除管理員身份。</value>
+  </data>
+  <data name="AddEditDeviceManufacturerDetails" xml:space="preserve">
+    <value>新增編輯裝置製造商詳細資料</value>
+  </data>
+  <data name="AddEditDeviceManufacturerDetailsHelp" xml:space="preserve">
+    <value>透過 API 將新的裝置製造商新增至主控台，或在主控台上編輯現有的製造商</value>
+  </data>
+  <data name="AddEditDeviceModelDetails" xml:space="preserve">
+    <value>新增編輯裝置型號詳細資料</value>
+  </data>
+  <data name="AddEditDeviceModelDetailsHelp" xml:space="preserve">
+    <value>透過 API 將新的裝置型號新增至主控台，或在主控台上編輯現有的型號</value>
+  </data>
+  <data name="AddEditUG" xml:space="preserve">
+    <value>新增/編輯</value>
+  </data>
+  <data name="AddEditUGHelp" xml:space="preserve">
+    <value>新增、編輯和刪除使用者群組。</value>
+  </data>
+  <data name="AddEditUserAccount" xml:space="preserve">
+    <value>新增/編輯</value>
+  </data>
+  <data name="AddEditUserAccountHelp" xml:space="preserve">
+    <value>新增或編輯使用者帳戶。</value>
+  </data>
+  <data name="AddEditUserCat" xml:space="preserve">
+    <value>新增/編輯</value>
+  </data>
+  <data name="AddEditUserCatHelp" xml:space="preserve">
+    <value>新增、編輯和刪除使用者註冊類別。</value>
+  </data>
+  <data name="AddEditUserRoles" xml:space="preserve">
+    <value>新增/編輯</value>
+  </data>
+  <data name="AddEditUserRolesHelp" xml:space="preserve">
+    <value>新增與編輯使用者身份</value>
+  </data>
+  <data name="AddEditWindowsTemplateHelp" xml:space="preserve">
+    <value>允許管理員進行設定，以新增和/或編輯 Console 儀表板上的 Windows 範本</value>
+  </data>
+  <data name="AddFileServerConfiguration" xml:space="preserve">
+    <value>新增檔案伺服器組態</value>
+  </data>
+  <data name="AddFileServerConfigurationHelp" xml:space="preserve">
+    <value>授予使用者新增檔案伺服器網格和詳細資料的權限</value>
+  </data>
+  <data name="AddNoteHelp" xml:space="preserve">
+    <value>授予新增備註的權限</value>
+  </data>
+  <data name="AdminAd" xml:space="preserve">
+    <value>管理員</value>
+  </data>
+  <data name="AdminAdHelp" xml:space="preserve">
+    <value>控制在以下區塊的存取權：系統設定登陸頁面、警示模組、自訂欄位定義頁面、系統設定說明頁面和 RADIUS 設定檔頁面。</value>
+  </data>
+  <data name="AdminOptIn" xml:space="preserve">
+    <value>管理員選擇加入</value>
+  </data>
+  <data name="AdminSaaSNotifications" xml:space="preserve">
+    <value>SaaS 通知</value>
+  </data>
+  <data name="AdminSaaSNotificationsHelp" xml:space="preserve">
+    <value>控制對 SaaS 通知設定頁面的存取權</value>
+  </data>
+  <data name="AdminsRESTSystem" xml:space="preserve">
+    <value>管理員</value>
+  </data>
+  <data name="AdminsRESTSystemHelp" xml:space="preserve">
+    <value>管理員帳戶的 REST API</value>
+  </data>
+  <data name="AdvancedEm" xml:space="preserve">
+    <value>進階</value>
+  </data>
+  <data name="AdvancedEmHelp" xml:space="preserve">
+    <value>控制電子郵件進階設定。</value>
+  </data>
+  <data name="AdvancedHelp" xml:space="preserve">
+    <value>控制存取進階子功能表</value>
+  </data>
+  <data name="AdvancedIn" xml:space="preserve">
+    <value>進階</value>
+  </data>
+  <data name="AdvancedInHelp" xml:space="preserve">
+    <value>控管進階安裝設定之存取權。</value>
+  </data>
+  <data name="AdvancedSet" xml:space="preserve">
+    <value>進階</value>
+  </data>
+  <data name="AdvancedSetHelp" xml:space="preserve">
+    <value>控制對系統設定中之進階頁面的存取權。</value>
+  </data>
+  <data name="AdvancedSOaP" xml:space="preserve">
+    <value>進階</value>
+  </data>
+  <data name="AdvancedSOaPHelp" xml:space="preserve">
+    <value>使用「裝置抹除」及「企業抹除」等進階 API。</value>
+  </data>
+  <data name="AdvancedSys" xml:space="preserve">
+    <value>進階</value>
+  </data>
+  <data name="AdvancedSysHelp" xml:space="preserve">
+    <value>控制對 [系統] 下的 [進階] 頁面的存取權。</value>
+  </data>
+  <data name="AfterArg" xml:space="preserve">
+    <value>在 {0} 之後</value>
+  </data>
+  <data name="AgentApplicationAn" xml:space="preserve">
+    <value>Hub 應用程式</value>
+  </data>
+  <data name="AgentApplicationAnHelp" xml:space="preserve">
+    <value>控制存取 [Android] 下 [Hub 應用程式] 頁面的權限。</value>
+  </data>
+  <data name="AgentPackageAdd" xml:space="preserve">
+    <value>Hub 套件新增</value>
+  </data>
+  <data name="AgentPackageAddHelp" xml:space="preserve">
+    <value>給予權限可上傳 Hub .apf 檔案供產品佈建的註冊預備使用。</value>
+  </data>
+  <data name="AgentPackageDelete" xml:space="preserve">
+    <value>Hub 套件刪除</value>
+  </data>
+  <data name="AgentPackageDeleteHelp" xml:space="preserve">
+    <value>給予權限可刪除 Hub .apf 檔案，檔案將無法用於產品佈建註冊預備。</value>
+  </data>
+  <data name="AgentPackagePPN" xml:space="preserve">
+    <value>Hub 套件</value>
+  </data>
+  <data name="AgentPackagePPNHelp" xml:space="preserve">
+    <value>給予權限新增/更新/刪除產品佈建註冊預備用的 Hub .apf 檔案。</value>
+  </data>
+  <data name="AgentPackageView" xml:space="preserve">
+    <value>Hub 套件檢視</value>
+  </data>
+  <data name="AgentPackageViewHelp" xml:space="preserve">
+    <value>給予權限可在 [Hub 套件] 畫面檢視可用的 Hub .apf 檔案清單。這些檔案可於產品佈建中用於註冊預備。</value>
+  </data>
+  <data name="AgentSettingsAn" xml:space="preserve">
+    <value>Intelligent Hub 設定</value>
+  </data>
+  <data name="AgentSettingsAnHelp" xml:space="preserve">
+    <value>控制存取 [Android] 下 [Intelligent Hub 設定] 頁面的權限。</value>
+  </data>
+  <data name="AgentSettingsApple" xml:space="preserve">
+    <value>Hub 設定</value>
+  </data>
+  <data name="AgentSettingsAppleHelp" xml:space="preserve">
+    <value>控制存取 [iOS] 下 [iOS Hub 設定] 的權限。</value>
+  </data>
+  <data name="AgentSettingsLinuxHelp" xml:space="preserve">
+    <value>控制對 Linux 下 Linux Intelligent Hub 設定的存取權。</value>
+  </data>
+  <data name="AirwatchEmailClientSet" xml:space="preserve">
+    <value>AirWatch 電子郵件用戶端</value>
+  </data>
+  <data name="AirwatchEmailClientSetHelp" xml:space="preserve">
+    <value>控制對 APP 下之 AirWatch 頁面的存取權。</value>
+  </data>
+  <data name="AirWatchHelpAd" xml:space="preserve">
+    <value>AirWatch 說明</value>
+  </data>
+  <data name="AirWatchHelpAdHelp" xml:space="preserve">
+    <value>控管「AirWatch 說明」的存取權。</value>
+  </data>
+  <data name="AirWatchTunnelHelp" xml:space="preserve">
+    <value>授予設定 AirWatch Tunnel 的權限</value>
+  </data>
+  <data name="AkamaiSetting" xml:space="preserve">
+    <value>Akamai</value>
+  </data>
+  <data name="AkamaiSettingHelp" xml:space="preserve">
+    <value>用來將 Akamai 配置為 CDN 提供者的設定</value>
+  </data>
+  <data name="AlertCreationPoliciesViewHelp" xml:space="preserve">
+    <value>控制存取警示設置的「建立原則」檢視</value>
+  </data>
+  <data name="AlertDD" xml:space="preserve">
+    <value>警示</value>
+  </data>
+  <data name="AlertDDHelp" xml:space="preserve">
+    <value>存取與裝警示有關的裝置。</value>
+  </data>
+  <data name="AlertsPM" xml:space="preserve">
+    <value>警示</value>
+  </data>
+  <data name="AlertsPMHelp" xml:space="preserve">
+    <value>控制對 [印表機警示] 頁面的存取權</value>
+  </data>
+  <data name="AndroidFileManagerDM" xml:space="preserve">
+    <value>Android 檔案管理員</value>
+  </data>
+  <data name="AndroidFileManagerDMHelp" xml:space="preserve">
+    <value>從裝置明細頁面遠端管理 Android 的檔案和資料夾。</value>
+  </data>
+  <data name="AndroidForWorkHelp" xml:space="preserve">
+    <value>AndroidForWork</value>
+  </data>
+  <data name="AndroidServiceApplicationsAn" xml:space="preserve">
+    <value>Android 服務應用程式</value>
+  </data>
+  <data name="AndroidServiceApplicationsAnHelp" xml:space="preserve">
+    <value>授予檢視和編輯服務應用程式的權限。</value>
+  </data>
+  <data name="ApnsApp" xml:space="preserve">
+    <value>APN</value>
+  </data>
+  <data name="ApnsAppHelp" xml:space="preserve">
+    <value>控制 iOS 下 [應用程式] 頁面之 APNs 的存取權。</value>
+  </data>
+  <data name="ApnsSet" xml:space="preserve">
+    <value>APN</value>
+  </data>
+  <data name="ApnsSetHelp" xml:space="preserve">
+    <value>控制對於系統設定中 APNs 頁面的存取權。</value>
+  </data>
+  <data name="AppCatalogHelp" xml:space="preserve">
+    <value>應用程式目錄的資源</value>
+  </data>
+  <data name="AppConfigurationSet" xml:space="preserve">
+    <value>應用程式組態</value>
+  </data>
+  <data name="AppConfigurationSetHelp" xml:space="preserve">
+    <value>控制對 APP 配置頁面的存取權。</value>
+  </data>
+  <data name="AppCrashLogsHelp" xml:space="preserve">
+    <value>控制「應用程式當機」記錄的存取權。</value>
+  </data>
+  <data name="AppleConfiguratorSet" xml:space="preserve">
+    <value>Apple Configurator</value>
+  </data>
+  <data name="AppleConfiguratorSetHelp" xml:space="preserve">
+    <value>控制 iOS 下之 Apple Configurator 頁面的存取權。</value>
+  </data>
+  <data name="AppleEducation" xml:space="preserve">
+    <value>教育</value>
+  </data>
+  <data name="AppleEducationHelp" xml:space="preserve">
+    <value>控制對 Apple Education 頁面的存取權</value>
+  </data>
+  <data name="ApplicationCatalogEdit" xml:space="preserve">
+    <value>編輯應用程式目錄</value>
+  </data>
+  <data name="ApplicationCatalogEditHelp" xml:space="preserve">
+    <value>用於編輯應用程式目錄設定頁面</value>
+  </data>
+  <data name="ApplicationCategoriesAb" xml:space="preserve">
+    <value>應用程式類別</value>
+  </data>
+  <data name="ApplicationCategoriesAbHelp" xml:space="preserve">
+    <value>檢視並管理應用程式類別。</value>
+  </data>
+  <data name="ApplicationGroupsAb" xml:space="preserve">
+    <value>應用程式群組</value>
+  </data>
+  <data name="ApplicationGroupsAbHelp" xml:space="preserve">
+    <value>檢視和管理應用程式群組。</value>
+  </data>
+  <data name="ApplicationIntegrationSet" xml:space="preserve">
+    <value>應用程式整合</value>
+  </data>
+  <data name="ApplicationIntegrationSetHelp" xml:space="preserve">
+    <value>控制對 [應用程式整合設定] 畫面的存取權。</value>
+  </data>
+  <data name="ApplicationPPN" xml:space="preserve">
+    <value>應用程式</value>
+  </data>
+  <data name="ApplicationPPNHelp" xml:space="preserve">
+    <value>存取佈建應用程式頁面。</value>
+  </data>
+  <data name="ApplicationProfilesAb" xml:space="preserve">
+    <value>應用程式設定檔</value>
+  </data>
+  <data name="ApplicationProfilesAbHelp" xml:space="preserve">
+    <value>檢視和管理應用程式設定檔。</value>
+  </data>
+  <data name="ApplicationPublishAb" xml:space="preserve">
+    <value>應用程式發佈</value>
+  </data>
+  <data name="ApplicationPublishAbHelp" xml:space="preserve">
+    <value>發佈新增的應用程式。</value>
+  </data>
+  <data name="ApplicationsAb" xml:space="preserve">
+    <value>應用程式</value>
+  </data>
+  <data name="ApplicationsAbHelp" xml:space="preserve">
+    <value>存取行動應用程式管理頁面。</value>
+  </data>
+  <data name="ApplicationsDD" xml:space="preserve">
+    <value>應用程式</value>
+  </data>
+  <data name="ApplicationsDDHelp" xml:space="preserve">
+    <value>從遠端安裝和移除受管裝置上的應用程式。</value>
+  </data>
+  <data name="ApplicationsDM" xml:space="preserve">
+    <value>應用程式</value>
+  </data>
+  <data name="ApplicationsDMHelp" xml:space="preserve">
+    <value>請求記錄並管理應用程式的意見反應。</value>
+  </data>
+  <data name="ApplicationsHub" xml:space="preserve">
+    <value>應用程式</value>
+  </data>
+  <data name="ApplicationsHubHelp" xml:space="preserve">
+    <value>產生裝置應用程式的報告。</value>
+  </data>
+  <data name="ApplicationsSet" xml:space="preserve">
+    <value>應用程式</value>
+  </data>
+  <data name="ApplicationsSetHelp" xml:space="preserve">
+    <value>存取內容管理應用程式的設定頁面。</value>
+  </data>
+  <data name="ApplicationWorkflowAb" xml:space="preserve">
+    <value>應用程式工作流程</value>
+  </data>
+  <data name="ApplicationWorkflowAbHelp" xml:space="preserve">
+    <value>上傳、檢視、指派和發佈 APP。</value>
+  </data>
+  <data name="ApplicationWrappingAb" xml:space="preserve">
+    <value>應用程式包裝</value>
+  </data>
+  <data name="ApplicationWrappingAbHelp" xml:space="preserve">
+    <value>存取應用程式包裝。</value>
+  </data>
+  <data name="AppRemovalProtectionHelp" xml:space="preserve">
+    <value>顯示啟用應用程式移除保護的選項</value>
+  </data>
+  <data name="AppRemovalProtectionLogEditHelp" xml:space="preserve">
+    <value>控制對「編輯」應用程式移除保護記錄頁面存取權的資源</value>
+  </data>
+  <data name="AppRemovalProtectionLogViewHelp" xml:space="preserve">
+    <value>控制對「檢視」應用程式移除保護記錄頁面存取權的資源</value>
+  </data>
+  <data name="ApproveAndUnapproveUpdates" xml:space="preserve">
+    <value>核准及取消核准更新</value>
+  </data>
+  <data name="ApproveUpdate" xml:space="preserve">
+    <value>核准更新</value>
+  </data>
+  <data name="ApproveUpdateHelp" xml:space="preserve">
+    <value>授予向裝置發出核准更新指令的權限。</value>
+  </data>
+  <data name="ApproveUpdates" xml:space="preserve">
+    <value>核准更新</value>
+  </data>
+  <data name="AppsRESTMam" xml:space="preserve">
+    <value>應用程式</value>
+  </data>
+  <data name="AppsRESTMamHelp" xml:space="preserve">
+    <value>應用程式的 REST API</value>
+  </data>
+  <data name="AppUserCommentsAb" xml:space="preserve">
+    <value>應用程式使用者註解</value>
+  </data>
+  <data name="AppUserCommentsAbHelp" xml:space="preserve">
+    <value>檢視和管理使用者註解設定。</value>
+  </data>
+  <data name="AssetBatchImportSys" xml:space="preserve">
+    <value>資產批次匯入</value>
+  </data>
+  <data name="AssetBatchImportSysHelp" xml:space="preserve">
+    <value>大量匯入電信資產。</value>
+  </data>
+  <data name="AssetManagementO" xml:space="preserve">
+    <value>資產管理</value>
+  </data>
+  <data name="AssetManagementOHelp" xml:space="preserve">
+    <value>搜尋、新增和修改資產。</value>
+  </data>
+  <data name="AssetTrackingDM" xml:space="preserve">
+    <value>資產追蹤</value>
+  </data>
+  <data name="AssetTrackingDMHelp" xml:space="preserve">
+    <value>在裝置管理下存取資產追蹤頁面。</value>
+  </data>
+  <data name="AssetUserTrackingO" xml:space="preserve">
+    <value>資產使用者追蹤</value>
+  </data>
+  <data name="AssetUserTrackingOHelp" xml:space="preserve">
+    <value>存取使用者追蹤頁面，包括「簽入」和「簽出」標籤。</value>
+  </data>
+  <data name="AssignDeviceEnrollmentProgram" xml:space="preserve">
+    <value>註冊計畫指派設定檔</value>
+  </data>
+  <data name="AssignDeviceEnrollmentProgramHelp" xml:space="preserve">
+    <value>控制指派 DEP 設定檔到裝置的存取權限。請導覽至註冊狀態頁面</value>
+  </data>
+  <data name="AssignmentRulesAdd" xml:space="preserve">
+    <value>指派規則新增</value>
+  </data>
+  <data name="AssignmentRulesAddHelp" xml:space="preserve">
+    <value>新增裝置指派規則。</value>
+  </data>
+  <data name="AssignmentRulesDelete" xml:space="preserve">
+    <value>指派規則刪除</value>
+  </data>
+  <data name="AssignmentRulesDeleteHelp" xml:space="preserve">
+    <value>刪除裝置指派規則。</value>
+  </data>
+  <data name="AssignmentRulesEdit" xml:space="preserve">
+    <value>指派規則編輯</value>
+  </data>
+  <data name="AssignmentRulesEditHelp" xml:space="preserve">
+    <value>編輯裝置指派規則。</value>
+  </data>
+  <data name="AssignmentSys" xml:space="preserve">
+    <value>指派</value>
+  </data>
+  <data name="AssignmentSysHelp" xml:space="preserve">
+    <value>編輯電信方案的靜態和動態指派。</value>
+  </data>
+  <data name="Assist" xml:space="preserve">
+    <value>Assist</value>
+  </data>
+  <data name="AssistFileManager" xml:space="preserve">
+    <value>檔案管理員</value>
+  </data>
+  <data name="AssistFileManagerHelp" xml:space="preserve">
+    <value>提供存取權以管理遠端裝置上的檔案</value>
+  </data>
+  <data name="AssistHelp" xml:space="preserve">
+    <value>管理遠端管理角色</value>
+  </data>
+  <data name="AssistRegistryEditor" xml:space="preserve">
+    <value>登錄編輯</value>
+  </data>
+  <data name="AssistRegistryEditorHelp" xml:space="preserve">
+    <value>提供存取權以變更 Windows 行動裝置上的登錄</value>
+  </data>
+  <data name="AssistRemoteControl" xml:space="preserve">
+    <value>遠端控制</value>
+  </data>
+  <data name="AssistRemoteControlHelp" xml:space="preserve">
+    <value>提供存取權以檢視和控制遠端裝置</value>
+  </data>
+  <data name="AssistRemoteShell" xml:space="preserve">
+    <value>遠端殼層</value>
+  </data>
+  <data name="AssistRemoteShellHelp" xml:space="preserve">
+    <value>提供存取權以透過遠端裝置的命令列介面來執行命令</value>
+  </data>
+  <data name="AssistRemoteView" xml:space="preserve">
+    <value>遠端檢視</value>
+  </data>
+  <data name="AssistRemoteViewHelp" xml:space="preserve">
+    <value>提供僅限檢視遠端裝置的存取權。若啟用 [遠端檢視] 和 [控制]，系統會啟動僅限檢視的工作階段，但可要求使用者提供控制螢幕的存取權</value>
+  </data>
+  <data name="AssistSessionCollaboration" xml:space="preserve">
+    <value>工作階段協作</value>
+  </data>
+  <data name="AssistSessionCollaborationHelp" xml:space="preserve">
+    <value>可讓主控台使用者邀請其他參與者加入 Remote Assist 工作階段</value>
+  </data>
+  <data name="AssistUnattendedAccess" xml:space="preserve">
+    <value>自動存取</value>
+  </data>
+  <data name="AssistUnattendedAccessHelp" xml:space="preserve">
+    <value>在自動模式下提供裝置的存取權</value>
+  </data>
+  <data name="AttachmentsDD" xml:space="preserve">
+    <value>附件</value>
+  </data>
+  <data name="AttachmentsDDHelp" xml:space="preserve">
+    <value>在裝置明細中 新增和移除裝置的附件。</value>
+  </data>
+  <data name="AutoDiscoveryIns" xml:space="preserve">
+    <value>自動探索</value>
+  </data>
+  <data name="AutoDiscoveryInsHelp" xml:space="preserve">
+    <value>控管在「安裝」下之「自動探索」頁面的存取權。</value>
+  </data>
+  <data name="AutoEnrollmentHelp" xml:space="preserve">
+    <value>自動註冊</value>
+  </data>
+  <data name="AutomationHelp" xml:space="preserve">
+    <value>此技術預覽資源可讓您透過 Hub 總覽頁面存取我們的自動化平台</value>
+  </data>
+  <data name="AwcmDD" xml:space="preserve">
+    <value>AWCM</value>
+  </data>
+  <data name="AwcmDDHelp" xml:space="preserve">
+    <value>從裝置明細頁面中啟動和停止 AirWatch 雲端管理員的連線。</value>
+  </data>
+  <data name="AWProDeviceClearPasscode" xml:space="preserve">
+    <value>AW Pro 裝置：清除密碼</value>
+  </data>
+  <data name="AWProDeviceClearPasscodeHelp" xml:space="preserve">
+    <value>控制在 AirWatch Pro 中清除密碼/開機密碼的存取權限</value>
+  </data>
+  <data name="AWProDeviceSendMessage" xml:space="preserve">
+    <value>AW Pro 裝置：發送訊息</value>
+  </data>
+  <data name="AWProDeviceSendMessageHelp" xml:space="preserve">
+    <value>控制存取在 AW Pro 中發送訊息的權限</value>
+  </data>
+  <data name="AWProGenerateNewCertificate" xml:space="preserve">
+    <value>AW Pro：產生新憑證</value>
+  </data>
+  <data name="AWProGenerateNewCertificateHelp" xml:space="preserve">
+    <value>控制產生新憑證的存取權</value>
+  </data>
+  <data name="AwProResCategory" xml:space="preserve">
+    <value>AW Pro</value>
+  </data>
+  <data name="AwProResCategoryHelp" xml:space="preserve">
+    <value>完整存取 AW Pro 主控台的權力</value>
+  </data>
+  <data name="BatchImportAccounts" xml:space="preserve">
+    <value>批次匯入</value>
+  </data>
+  <data name="BatchImportAccountsHelp" xml:space="preserve">
+    <value>批次匯入管理帳戶。</value>
+  </data>
+  <data name="BatchImportDM" xml:space="preserve">
+    <value>批次匯入</value>
+  </data>
+  <data name="BatchImportDMHelp" xml:space="preserve">
+    <value>批次匯入裝置設定檔。</value>
+  </data>
+  <data name="BatchImportUG" xml:space="preserve">
+    <value>批次匯入</value>
+  </data>
+  <data name="BatchImportUGHelp" xml:space="preserve">
+    <value>批次匯入使用者註冊群組</value>
+  </data>
+  <data name="BatchImportUserAccount" xml:space="preserve">
+    <value>批次匯入</value>
+  </data>
+  <data name="BatchImportUserAccountHelp" xml:space="preserve">
+    <value>存取註冊使用者的批次匯入。</value>
+  </data>
+  <data name="BatchSizeBySmartGroupHelp" xml:space="preserve">
+    <value>指定內部應用程式部署的每個批次所包含的裝置數量。</value>
+  </data>
+  <data name="BatchStatusAdminGeneral" xml:space="preserve">
+    <value>批次狀態</value>
+  </data>
+  <data name="BatchStatusAdminGeneralHelp" xml:space="preserve">
+    <value>檢視管理員使用者批次匯入狀態。</value>
+  </data>
+  <data name="BatchStatusUserGeneral" xml:space="preserve">
+    <value>批次狀態</value>
+  </data>
+  <data name="BatchStatusUserGeneralHelp" xml:space="preserve">
+    <value>大量註冊匯入使用者的批次狀態存取權。</value>
+  </data>
+  <data name="BeforeArg" xml:space="preserve">
+    <value>在 {0} 之前</value>
+  </data>
+  <data name="BESResCategory" xml:space="preserve">
+    <value>BES</value>
+  </data>
+  <data name="BESResCategoryHelp" xml:space="preserve">
+    <value>在儀表板頁面上啟用 BES 登錄圖示。</value>
+  </data>
+  <data name="BillingBi" xml:space="preserve">
+    <value>帳單</value>
+  </data>
+  <data name="BillingBiHelp" xml:space="preserve">
+    <value>管理帳目明細頁面。</value>
+  </data>
+  <data name="BIOSManagement" xml:space="preserve">
+    <value>BIOS 管理</value>
+  </data>
+  <data name="BIOSManagementHelp" xml:space="preserve">
+    <value>BIOS 管理資源</value>
+  </data>
+  <data name="BooksAb" xml:space="preserve">
+    <value>書籍</value>
+  </data>
+  <data name="BooksAbHelp" xml:space="preserve">
+    <value>給予在 APP &amp; 書籍之下書籍模組的存取權。</value>
+  </data>
+  <data name="BoxerConfigReadWrite" xml:space="preserve">
+    <value>Boxer 應用程式組態</value>
+  </data>
+  <data name="BoxerConfigReadWriteHelp" xml:space="preserve">
+    <value>以公用應用程式上傳時，用來配置 Boxer 之設定</value>
+  </data>
+  <data name="BranchCacheSetup" xml:space="preserve">
+    <value>分支快取設定</value>
+  </data>
+  <data name="BranchCacheSetupHelp" xml:space="preserve">
+    <value>在適用 Windows 10 的 Workspace ONE 內安裝和設定原生點對點應用程式散發功能的設定</value>
+  </data>
+  <data name="BrandingSys" xml:space="preserve">
+    <value>品牌</value>
+  </data>
+  <data name="BrandingSysHelp" xml:space="preserve">
+    <value>控制「一般」下之「品牌化」頁面的存取權。</value>
+  </data>
+  <data name="BrowserDM" xml:space="preserve">
+    <value>瀏覽器</value>
+  </data>
+  <data name="BrowserDMHelp" xml:space="preserve">
+    <value>在裝置管理中配置瀏覽器原則。</value>
+  </data>
+  <data name="BulkActionUserAccounts" xml:space="preserve">
+    <value>大量動作</value>
+  </data>
+  <data name="BulkActionUserAccountsHelp" xml:space="preserve">
+    <value>在使用者帳戶上執行大量行動，例如傳送訊息。</value>
+  </data>
+  <data name="BulkImportCM" xml:space="preserve">
+    <value>批次匯入</value>
+  </data>
+  <data name="BulkImportCMHelp" xml:space="preserve">
+    <value>在所有內容視圖中的批次匯入內容。</value>
+  </data>
+  <data name="BulkManagementAd" xml:space="preserve">
+    <value>大量管理</value>
+  </data>
+  <data name="BulkManagementAdHelp" xml:space="preserve">
+    <value>檢視與編輯大量管理之設定。</value>
+  </data>
+  <data name="BulkManagementDM" xml:space="preserve">
+    <value>大量管理</value>
+  </data>
+  <data name="BulkManagementDMHelp" xml:space="preserve">
+    <value>從裝置清單視圖中對裝置執行大量的行動。</value>
+  </data>
+  <data name="CatalogSet" xml:space="preserve">
+    <value>目錄</value>
+  </data>
+  <data name="CatalogSetHelp" xml:space="preserve">
+    <value>給予造訪系統設定中應用程式目錄頁面的權限。</value>
+  </data>
+  <data name="CategoriesCM" xml:space="preserve">
+    <value>類別</value>
+  </data>
+  <data name="CategoriesCMHelp" xml:space="preserve">
+    <value>建立和編輯內容類別。</value>
+  </data>
+  <data name="CDNSetupHelp" xml:space="preserve">
+    <value>CDN 的系統設定</value>
+  </data>
+  <data name="CertificateAuthoritiesApple" xml:space="preserve">
+    <value>憑證授權機構</value>
+  </data>
+  <data name="CertificateAuthoritiesAppleHelp" xml:space="preserve">
+    <value>控制對 [iOS] 下的 [憑證授權機構] 頁面的存取權。</value>
+  </data>
+  <data name="CertificateAuthorityCM" xml:space="preserve">
+    <value>憑證授權機構</value>
+  </data>
+  <data name="CertificateAuthorityCMHelp" xml:space="preserve">
+    <value>存取憑證授權單位和憑證範本區段。</value>
+  </data>
+  <data name="CertificateManagementDM" xml:space="preserve">
+    <value>憑證管理</value>
+  </data>
+  <data name="CertificateManagementDMHelp" xml:space="preserve">
+    <value>在裝置管理下檢視和管理憑證。</value>
+  </data>
+  <data name="CertificatesDD" xml:space="preserve">
+    <value>憑證</value>
+  </data>
+  <data name="CertificatesDDHelp" xml:space="preserve">
+    <value>在裝置明細中檢視與裝置有關的憑證。’</value>
+  </data>
+  <data name="CertificatesExpired" xml:space="preserve">
+    <value>憑證已過期</value>
+  </data>
+  <data name="CertificatesRevoked" xml:space="preserve">
+    <value>憑證已撤銷</value>
+  </data>
+  <data name="ChangePasswordAdminAccounts" xml:space="preserve">
+    <value>變更密碼</value>
+  </data>
+  <data name="ChangePasswordAdminAccountsHelp" xml:space="preserve">
+    <value>變更管理密碼。</value>
+  </data>
+  <data name="ChromebookSet" xml:space="preserve">
+    <value>ChromeBook</value>
+  </data>
+  <data name="ChromebookSetHelp" xml:space="preserve">
+    <value>控管「ChromeBook」下的「代理程式設定」頁面存取權。</value>
+  </data>
+  <data name="CloudContentPlatformHelp" xml:space="preserve">
+    <value>用於啟用 UEM 選項以啟動雲端內容服務的資源</value>
+  </data>
+  <data name="CollapsedAriaLabel" xml:space="preserve">
+    <value>已摺疊</value>
+  </data>
+  <data name="CommaSeparatedEmailInfo" xml:space="preserve">
+    <value>請使用逗號分隔多個電子郵件地址。</value>
+  </data>
+  <data name="ComplianceDD" xml:space="preserve">
+    <value>符合性</value>
+  </data>
+  <data name="ComplianceDDHelp" xml:space="preserve">
+    <value>在裝置明細中檢視合規原則和狀態。</value>
+  </data>
+  <data name="ComplianceDM" xml:space="preserve">
+    <value>符合性</value>
+  </data>
+  <data name="ComplianceDMHelp" xml:space="preserve">
+    <value>在裝置管理下檢視和管理裝置的合規原則。</value>
+  </data>
+  <data name="ComplianceHub" xml:space="preserve">
+    <value>符合性</value>
+  </data>
+  <data name="ComplianceHubHelp" xml:space="preserve">
+    <value>產生裝置合規性的報告。</value>
+  </data>
+  <data name="CompliancePoliciesEM" xml:space="preserve">
+    <value>符合性原則</value>
+  </data>
+  <data name="CompliancePoliciesEMHelp" xml:space="preserve">
+    <value>處理電子郵件管理的合規原則。</value>
+  </data>
+  <data name="ConditionalAccessIntegrations" xml:space="preserve">
+    <value>條件式存取整合</value>
+  </data>
+  <data name="ConditionalAccessIntegrationsHelp" xml:space="preserve">
+    <value>為設定條件式存取原則，而控制與第三方分享裝置合規性狀態時的存取權</value>
+  </data>
+  <data name="ConditionsPPN" xml:space="preserve">
+    <value>條件</value>
+  </data>
+  <data name="ConditionsPPNHelp" xml:space="preserve">
+    <value>為佈建原則建立和管理佈建條件。</value>
+  </data>
+  <data name="ConsoleSecurityAd" xml:space="preserve">
+    <value>主控台安全</value>
+  </data>
+  <data name="ConsoleSecurityAdHelp" xml:space="preserve">
+    <value>檢視主控台安全性頁面並從 Global 企業群組進行管理。</value>
+  </data>
+  <data name="ContentDashboard" xml:space="preserve">
+    <value>Content 儀表板</value>
+  </data>
+  <data name="ContentDashboardHelp" xml:space="preserve">
+    <value>控制「檢視內容儀表板頁面」的存取權。請導覽至 功能表\內容\儀表板</value>
+  </data>
+  <data name="ContentDD" xml:space="preserve">
+    <value>Content</value>
+  </data>
+  <data name="ContentDDHelp" xml:space="preserve">
+    <value>在裝置明細中 執行裝置內容的存取和管理。</value>
+  </data>
+  <data name="ContentDeliveryServiceHelp" xml:space="preserve">
+    <value>控制對內容交付服務設定的存取權</value>
+  </data>
+  <data name="ContentHub" xml:space="preserve">
+    <value>Content</value>
+  </data>
+  <data name="ContentHubHelp" xml:space="preserve">
+    <value>產生裝置內容的報告。</value>
+  </data>
+  <data name="ContentRightsManagementHelp" xml:space="preserve">
+    <value>配置 Azure 權限管理保護內容的相關設定。</value>
+  </data>
+  <data name="ContentViewerHelp" xml:space="preserve">
+    <value>控制對內容檢視器 (HTML5 檢視器) 設定的存取權</value>
+  </data>
+  <data name="CreationPoliciesGr" xml:space="preserve">
+    <value>建立原則</value>
+  </data>
+  <data name="CreationPoliciesGrHelp" xml:space="preserve">
+    <value>檢視與管理建立警示通知原則。</value>
+  </data>
+  <data name="CustomAttributeAssignmentRulesHelp" xml:space="preserve">
+    <value>用來檢視目前自訂屬性指派原則的清單視圖畫面</value>
+  </data>
+  <data name="CustomAttributesSet" xml:space="preserve">
+    <value>自訂屬性</value>
+  </data>
+  <data name="CustomAttributesSetHelp" xml:space="preserve">
+    <value>檢視和管理在系統設定中的自訂屬性。</value>
+  </data>
+  <data name="CustomFieldsDM" xml:space="preserve">
+    <value>自訂欄位</value>
+  </data>
+  <data name="CustomFieldsDMHelp" xml:space="preserve">
+    <value>在裝置設定之下，編輯自訂變數。</value>
+  </data>
+  <data name="CustomizationAd" xml:space="preserve">
+    <value>自訂</value>
+  </data>
+  <data name="CustomizationAdHelp" xml:space="preserve">
+    <value>給予自訂支援格線的權限。</value>
+  </data>
+  <data name="CustomizationHelp" xml:space="preserve">
+    <value>授予在使用者層級自訂支援格的權限</value>
+  </data>
+  <data name="CustomMdmCommandHelp" xml:space="preserve">
+    <value>控制啟用透過貼上 XML 指令傳送指令到 iOS、tvOS 和 macOS 的功能</value>
+  </data>
+  <data name="DataPurgingD" xml:space="preserve">
+    <value>資料清除</value>
+  </data>
+  <data name="DataPurgingDHelp" xml:space="preserve">
+    <value>給予修改資料清除設定的權限。</value>
+  </data>
+  <data name="DataSamplesAd" xml:space="preserve">
+    <value>資料取樣</value>
+  </data>
+  <data name="DataSamplesAdHelp" xml:space="preserve">
+    <value>控制在資料庫表上，對裝置範例記錄的稽查。</value>
+  </data>
+  <data name="DataSecuritySec" xml:space="preserve">
+    <value>資料安全性</value>
+  </data>
+  <data name="DataSecuritySecHelp" xml:space="preserve">
+    <value>給予檢視「資料安全」畫面的權限。</value>
+  </data>
+  <data name="DeleteCartHelp" xml:space="preserve">
+    <value>刪除購物車可讓管理員移除共享裝置所使用的序號清單。</value>
+  </data>
+  <data name="DeleteCustomReportSubscriptionHelp" xml:space="preserve">
+    <value>控制刪除自訂報告訂閲的權限。請導覽至 [Hub] \ [報告與分析] \ [自訂報告] \ [訂閱]</value>
+  </data>
+  <data name="DeleteDeviceDD" xml:space="preserve">
+    <value>刪除裝置</value>
+  </data>
+  <data name="DeleteDeviceDDHelp" xml:space="preserve">
+    <value>從裝置明細頁面中刪除裝置記錄。</value>
+  </data>
+  <data name="DeleteFileServerConfiguration" xml:space="preserve">
+    <value>刪除檔案伺服器組態</value>
+  </data>
+  <data name="DeleteFileServerConfigurationHelp" xml:space="preserve">
+    <value>授予使用者刪除檔案伺服器網格和詳細資料的權限</value>
+  </data>
+  <data name="DeleteNoteHelp" xml:space="preserve">
+    <value>授予刪除便箋的權限</value>
+  </data>
+  <data name="DeleteTagHelp" xml:space="preserve">
+    <value>授與刪除標記的權限</value>
+  </data>
+  <data name="DeleteUnmanagedEM" xml:space="preserve">
+    <value>刪除未受管的項目</value>
+  </data>
+  <data name="DeleteUnmanagedEMHelp" xml:space="preserve">
+    <value>從電子郵件管理儀表板中，刪除未受管的裝置。</value>
+  </data>
+  <data name="DeleteWindowsTemplateHelp" xml:space="preserve">
+    <value>允許管理員進行設定，以刪除 Console 儀表板上的 Windows 範本</value>
+  </data>
+  <data name="DesignateRecipients" xml:space="preserve">
+    <value>指定收件者</value>
+  </data>
+  <data name="DetailsPM" xml:space="preserve">
+    <value>詳細資料</value>
+  </data>
+  <data name="DetailsPMHelp" xml:space="preserve">
+    <value>檢視印表機細目頁面。</value>
+  </data>
+  <data name="DeviceBulkManagementRebootDeviceHelp" xml:space="preserve">
+    <value>允許使用者將大量的裝置重新開機</value>
+  </data>
+  <data name="DeviceDetailsHub" xml:space="preserve">
+    <value>裝置詳細資料</value>
+  </data>
+  <data name="DeviceDetailsHubHelp" xml:space="preserve">
+    <value>產生裝置詳明細的報告。</value>
+  </data>
+  <data name="DeviceDetailsQueryHealthAttestationHelp" xml:space="preserve">
+    <value>隨選查詢健全狀況證明憑證 Blob</value>
+  </data>
+  <data name="DeviceDetailsQueryOSUpdates" xml:space="preserve">
+    <value>裝置詳細資料：查詢作業系統更新</value>
+  </data>
+  <data name="DeviceDetailsQueryOSUpdatesHelp" xml:space="preserve">
+    <value>控制從裝置詳細資料頁面查詢裝置作業系統更新資訊的存取權限</value>
+  </data>
+  <data name="DeviceEnterpriseReset" xml:space="preserve">
+    <value>企業重設</value>
+  </data>
+  <data name="DeviceEnterpriseResetHelp" xml:space="preserve">
+    <value>在保留 AirWatch 的註冊和其他公司資料的狀況下，允許對裝置執行原廠抹除</value>
+  </data>
+  <data name="DeviceGroupsDM" xml:space="preserve">
+    <value>裝置群組</value>
+  </data>
+  <data name="DeviceGroupsDMHelp" xml:space="preserve">
+    <value>在裝置管理中，建立並管理裝置群組。</value>
+  </data>
+  <data name="DeviceGroupsSet" xml:space="preserve">
+    <value>裝置群組</value>
+  </data>
+  <data name="DeviceGroupsSetHelp" xml:space="preserve">
+    <value>控制對系統設定中之裝置群組的存取權。</value>
+  </data>
+  <data name="DeviceInventoryHub" xml:space="preserve">
+    <value>裝置詳細目錄</value>
+  </data>
+  <data name="DeviceInventoryHubHelp" xml:space="preserve">
+    <value>產生裝置庫存的報告。</value>
+  </data>
+  <data name="DeviceLimitRestrictionEdit" xml:space="preserve">
+    <value>編輯裝置限制規定</value>
+  </data>
+  <data name="DeviceLimitRestrictionEditHelp" xml:space="preserve">
+    <value>授予在 [設定] \ [裝置與使用者] / [一般] / [註冊] / [限制] 下修改/讀取裝置限制的權限</value>
+  </data>
+  <data name="DevicePM" xml:space="preserve">
+    <value>裝置</value>
+  </data>
+  <data name="DevicePMHelp" xml:space="preserve">
+    <value>控制對 [印表機裝置] 頁面的存取權</value>
+  </data>
+  <data name="DevicesHub" xml:space="preserve">
+    <value>裝置</value>
+  </data>
+  <data name="DevicesHubHelp" xml:space="preserve">
+    <value>產生裝置分組和衡量標準的報告。</value>
+  </data>
+  <data name="DevicesRESTMdm" xml:space="preserve">
+    <value>裝置</value>
+  </data>
+  <data name="DevicesRESTMdmHelp" xml:space="preserve">
+    <value>裝置管理的 REST API</value>
+  </data>
+  <data name="DeviceWipeDD" xml:space="preserve">
+    <value>裝置抹除</value>
+  </data>
+  <data name="DeviceWipeDDHelp" xml:space="preserve">
+    <value>從裝置明細中執行裝置的遠端抹除並將裝置恢復到原廠設定。</value>
+  </data>
+  <data name="DeviceWipeHelp" xml:space="preserve">
+    <value>控制抹除裝置的存取權</value>
+  </data>
+  <data name="DeviceWipesSet" xml:space="preserve">
+    <value>裝置抹除</value>
+  </data>
+  <data name="DeviceWipesSetHelp" xml:space="preserve">
+    <value>控制對「系統設定」中之「裝置週期管理」的存取權。</value>
+  </data>
+  <data name="DiagnosticsAd" xml:space="preserve">
+    <value>診斷</value>
+  </data>
+  <data name="DiagnosticsAdHelp" xml:space="preserve">
+    <value>管理系統設定中的診斷設定。</value>
+  </data>
+  <data name="DisableActivationLockBypassCodeHelp" xml:space="preserve">
+    <value>讓管理員使用者能停用 iOS 裝置上的啟動鎖定旁路代碼。請導覽至 [裝置] / [詳細資料] / [摘要] 或 [裝置] / [清單]，選取裝置，然後按一下 [更多]。</value>
+  </data>
+  <data name="DisableActivationLockBypassDD" xml:space="preserve">
+    <value>停用 [略過啟動鎖定]</value>
+  </data>
+  <data name="DisableActivationLockBypassDDHelp" xml:space="preserve">
+    <value>停用 iOS 裝置上的啟動鎖定旁路代碼。</value>
+  </data>
+  <data name="DisplayVideoImportHelp" xml:space="preserve">
+    <value>使用 Wistia 匯入 AirWatch 的視訊</value>
+  </data>
+  <data name="DisplayVideoViewHelp" xml:space="preserve">
+    <value>檢視視訊清單</value>
+  </data>
+  <data name="DistributionDM" xml:space="preserve">
+    <value>散發</value>
+  </data>
+  <data name="DistributionDMHelp" xml:space="preserve">
+    <value>在位置編輯和位置細目的頁面上，存取分發伺服器的路徑。</value>
+  </data>
+  <data name="DomainJoinConfigEdit" xml:space="preserve">
+    <value>編輯</value>
+  </data>
+  <data name="DomainJoinConfigEditHelp" xml:space="preserve">
+    <value>控制新增/編輯/指派/刪除網域加入組態的存取權限。</value>
+  </data>
+  <data name="DownloadContentCM" xml:space="preserve">
+    <value>下載 Content</value>
+  </data>
+  <data name="DownloadContentCMHelp" xml:space="preserve">
+    <value>在「所有內容視圖」中下載內容。</value>
+  </data>
+  <data name="DownloadLinuxPullServiceInstallerHelp" xml:space="preserve">
+    <value>授予下載 Linux 的「提取服務」安裝程式的權限</value>
+  </data>
+  <data name="DownloadWindowsPullServiceInstallerHelp" xml:space="preserve">
+    <value>授予下載 Windows 的「提取服務」安裝程式的權限</value>
+  </data>
+  <data name="DropshipProvisioningEdit" xml:space="preserve">
+    <value>編輯直運佈建的設定</value>
+  </data>
+  <data name="DropshipProvisioningHelp" xml:space="preserve">
+    <value>控制啟用直運佈建的存取權限</value>
+  </data>
+  <data name="DxModeEM" xml:space="preserve">
+    <value>DxMode</value>
+  </data>
+  <data name="DxModeEMHelp" xml:space="preserve">
+    <value>從電子郵件管理儀表板中，為裝置的疑難排解啟用和停用 DxMode。</value>
+  </data>
+  <data name="EasIntegrationEm" xml:space="preserve">
+    <value>EAS 整合</value>
+  </data>
+  <data name="EasIntegrationEmHelp" xml:space="preserve">
+    <value>控制對「一般」功能下之「行動電子郵件閘道」頁面的存取權。</value>
+  </data>
+  <data name="EditAdminGroupHelp" xml:space="preserve">
+    <value>編輯管理員群組的權限。</value>
+  </data>
+  <data name="EditDD" xml:space="preserve">
+    <value>編輯</value>
+  </data>
+  <data name="EditDDHelp" xml:space="preserve">
+    <value>編輯裝置訊息，例如暱稱、資產號碼等。</value>
+  </data>
+  <data name="EditFileServerConfiguration" xml:space="preserve">
+    <value>編輯檔案伺服器組態</value>
+  </data>
+  <data name="EditFileServerConfigurationHelp" xml:space="preserve">
+    <value>授予使用者編輯檔案伺服器網格和詳細資料的權限</value>
+  </data>
+  <data name="EditNoteHelp" xml:space="preserve">
+    <value>授與編輯備註的權限</value>
+  </data>
+  <data name="EditTagHelp" xml:space="preserve">
+    <value>授予編輯標籤的權限</value>
+  </data>
+  <data name="EditTypeGr" xml:space="preserve">
+    <value>編輯類型</value>
+  </data>
+  <data name="EditUserAccounts" xml:space="preserve">
+    <value>編輯</value>
+  </data>
+  <data name="EditUserAccountsHelp" xml:space="preserve">
+    <value>編輯註冊使用者帳戶。</value>
+  </data>
+  <data name="EmailAddressAlreadyExists" xml:space="preserve">
+    <value>電子郵件地址已存在</value>
+  </data>
+  <data name="EmailDM" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="EmailDMHelp" xml:space="preserve">
+    <value>鎖定並允許ActiveSync 的請求。</value>
+  </data>
+  <data name="EmailManagementHub" xml:space="preserve">
+    <value>Email 管理</value>
+  </data>
+  <data name="EmailManagementHubHelp" xml:space="preserve">
+    <value>產生電子郵件管理的報告。</value>
+  </data>
+  <data name="EMDashboardMigrateDevice" xml:space="preserve">
+    <value>電子郵件管理儀表板移轉裝置</value>
+  </data>
+  <data name="EMDashboardMigrateDeviceHelp" xml:space="preserve">
+    <value>控制移動 MEM 組態間一或多個裝置的存取權</value>
+  </data>
+  <data name="EnableDigitalExperienceTelemetry" xml:space="preserve">
+    <value>啟用數位體驗遙測</value>
+  </data>
+  <data name="EnableDigitalExperienceTelemetryHelp" xml:space="preserve">
+    <value>啟用數位體驗遙測的收集並傳輸至 Workspace ONE Intelligence。</value>
+  </data>
+  <data name="EnableDisableAd" xml:space="preserve">
+    <value>啟用/停用</value>
+  </data>
+  <data name="EnableDisableAdHelp" xml:space="preserve">
+    <value>啟用或停用 Memcache。</value>
+  </data>
+  <data name="EnableSystemSettingsAuditHelp" xml:space="preserve">
+    <value>透過系統代碼，啟用/停用設定檔稽查。</value>
+  </data>
+  <data name="EncryptionKeyManagementHelp" xml:space="preserve">
+    <value>授予執行加密金鑰管理的權限。請瀏覽至 [系統] \ [安全性] \ [加密金鑰管理]</value>
+  </data>
+  <data name="EnrollmentDM" xml:space="preserve">
+    <value>註冊</value>
+  </data>
+  <data name="EnrollmentDMHelp" xml:space="preserve">
+    <value>修改註冊限制。</value>
+  </data>
+  <data name="EnrollmentProgramSet" xml:space="preserve">
+    <value>註冊計畫</value>
+  </data>
+  <data name="EnrollmentProgramSetHelp" xml:space="preserve">
+    <value>控制裝置註冊方案的存取權。</value>
+  </data>
+  <data name="EnrollmentProgramUserGen" xml:space="preserve">
+    <value>註冊計畫</value>
+  </data>
+  <data name="EnrollmentProgramUserGenHelp" xml:space="preserve">
+    <value>存取裝置的裝置註冊方案設定檔。</value>
+  </data>
+  <data name="EnrollmentSet" xml:space="preserve">
+    <value>註冊</value>
+  </data>
+  <data name="EnrollmentSetHelp" xml:space="preserve">
+    <value>控制對 [一般] 下的 [註冊] 頁面的存取權。</value>
+  </data>
+  <data name="EnrollOffline" xml:space="preserve">
+    <value>離線註冊</value>
+  </data>
+  <data name="EnrollOfflineHelp" xml:space="preserve">
+    <value>此資源允許擁有指定角色的管理員離線註冊已登記的裝置</value>
+  </data>
+  <data name="EnterAdminModeHelp" xml:space="preserve">
+    <value>控制對進入 Launcher 管理員模式指令的存取權</value>
+  </data>
+  <data name="EnterEmailAddressToDesignateRecipients" xml:space="preserve">
+    <value>輸入電子郵件地址以指定收件者</value>
+  </data>
+  <data name="EnterpriseIntegrationSys" xml:space="preserve">
+    <value>企業整合</value>
+  </data>
+  <data name="EnterpriseIntegrationSysHelp" xml:space="preserve">
+    <value>控制「企業整合」的存取權。</value>
+  </data>
+  <data name="EnterpriseResourceAddHelp" xml:space="preserve">
+    <value>授予新增企業資源的權限。</value>
+  </data>
+  <data name="EnterpriseResourceHelp" xml:space="preserve">
+    <value>控制存取企業資源頁面。</value>
+  </data>
+  <data name="EnterpriseWipeDD" xml:space="preserve">
+    <value>企業抹除</value>
+  </data>
+  <data name="EnterpriseWipeDDHelp" xml:space="preserve">
+    <value>給予在裝置明細頁面中解除裝置註冊的許可權，並移除所有企業資料和設定。</value>
+  </data>
+  <data name="EnterpriseWipeDM" xml:space="preserve">
+    <value>企業抹除</value>
+  </data>
+  <data name="EnterpriseWipeDMHelp" xml:space="preserve">
+    <value>給予解除裝置註冊的許可權，並移除所有企業資料和設定。</value>
+  </data>
+  <data name="EquipmentEq" xml:space="preserve">
+    <value>設備</value>
+  </data>
+  <data name="EquipmentEqHelp" xml:space="preserve">
+    <value>設備管理。請瀏覽至功能表\設備。</value>
+  </data>
+  <data name="ESignature" xml:space="preserve">
+    <value>電子簽名</value>
+  </data>
+  <data name="ESignatureHelp" xml:space="preserve">
+    <value>在「內容」之 電子簽名的設定。請導覽至設定\內容\進階\電子簽名</value>
+  </data>
+  <data name="ESignatures" xml:space="preserve">
+    <value>電子簽名</value>
+  </data>
+  <data name="EulDD" xml:space="preserve">
+    <value>使用者授權合約</value>
+  </data>
+  <data name="EulDDHelp" xml:space="preserve">
+    <value>在裝置明細中，檢視過去和現在裝置的使用條款。</value>
+  </data>
+  <data name="EventLogAd" xml:space="preserve">
+    <value>事件記錄</value>
+  </data>
+  <data name="EventLogAdHelp" xml:space="preserve">
+    <value>控制對主控台事件記錄的存取權。</value>
+  </data>
+  <data name="EventLogHelp" xml:space="preserve">
+    <value>控制讀取事件記錄的存取權限</value>
+  </data>
+  <data name="EventsPM" xml:space="preserve">
+    <value>事件</value>
+  </data>
+  <data name="EventsPMHelp" xml:space="preserve">
+    <value>控制對 [印表機事件記錄] 頁面的存取權</value>
+  </data>
+  <data name="ExitAdminModeHelp" xml:space="preserve">
+    <value>控制退出管理員模式指令的存取權</value>
+  </data>
+  <data name="ExitAirWatchLauncherHelp" xml:space="preserve">
+    <value>控制退出 Launcher 指令的存取權</value>
+  </data>
+  <data name="ExpandedAriaLabel" xml:space="preserve">
+    <value>已展開</value>
+  </data>
+  <data name="ExpireAllUsersGr" xml:space="preserve">
+    <value>讓所有使用者過期</value>
+  </data>
+  <data name="ExpireAllUsersGrHelp" xml:space="preserve">
+    <value>啟用 [讓所有使用者密碼過期] 按鈕。</value>
+  </data>
+  <data name="ExportUG" xml:space="preserve">
+    <value>匯出</value>
+  </data>
+  <data name="ExportUGHelp" xml:space="preserve">
+    <value>匯出使用者群組。</value>
+  </data>
+  <data name="ExportUserAccounts" xml:space="preserve">
+    <value>匯出</value>
+  </data>
+  <data name="ExportUserAccountsHelp" xml:space="preserve">
+    <value>匯出使用者帳戶。</value>
+  </data>
+  <data name="ExportUserCategories" xml:space="preserve">
+    <value>匯出</value>
+  </data>
+  <data name="ExportUserCategoriesHelp" xml:space="preserve">
+    <value>匯出註冊使用者帳戶類別。</value>
+  </data>
+  <data name="ExportUserRoles" xml:space="preserve">
+    <value>匯出</value>
+  </data>
+  <data name="ExportUserRolesHelp" xml:space="preserve">
+    <value>匯出使用者身份。</value>
+  </data>
+  <data name="FeatureFlagEdit" xml:space="preserve">
+    <value>編輯功能旗標</value>
+  </data>
+  <data name="FeatureFlagEditHelp" xml:space="preserve">
+    <value>控制編輯和更新功能旗標的存取權。</value>
+  </data>
+  <data name="FeatureFlagRead" xml:space="preserve">
+    <value>讀取功能旗標</value>
+  </data>
+  <data name="FeatureFlagReadHelp" xml:space="preserve">
+    <value>控制讀取功能旗標狀態的功能。</value>
+  </data>
+  <data name="FileActionsPPN" xml:space="preserve">
+    <value>檔案動作</value>
+  </data>
+  <data name="FileActionsPPNHelp" xml:space="preserve">
+    <value>為佈建原則建立和管理檔案動作。</value>
+  </data>
+  <data name="FileEncryptionStats" xml:space="preserve">
+    <value>檔案加密狀態</value>
+  </data>
+  <data name="FileEncryptionStatsHelp" xml:space="preserve">
+    <value>租用戶儲存空間設定: TenantStorage.FileEncryptionStats</value>
+  </data>
+  <data name="FileManagerHelp" xml:space="preserve">
+    <value>授與遠端存取WinMo裝置之檔案的權限</value>
+  </data>
+  <data name="FilepathIns" xml:space="preserve">
+    <value>檔案路徑</value>
+  </data>
+  <data name="FilepathInsHelp" xml:space="preserve">
+    <value>控制對 [進階] 下的 [檔案同步] 頁面的存取權。</value>
+  </data>
+  <data name="FilesPM" xml:space="preserve">
+    <value>檔案</value>
+  </data>
+  <data name="FilesPMHelp" xml:space="preserve">
+    <value>控制對 [印表機檔案] 頁面的存取權</value>
+  </data>
+  <data name="FilesPr" xml:space="preserve">
+    <value>檔案</value>
+  </data>
+  <data name="FilesPrHelp" xml:space="preserve">
+    <value>管理印表機檔案。</value>
+  </data>
+  <data name="FindDeviceDD" xml:space="preserve">
+    <value>尋找裝置</value>
+  </data>
+  <data name="FindDeviceDDHelp" xml:space="preserve">
+    <value>設定裝置狀態啟來動音訊警示，以便於使用者找尋裝置。此功能可由裝置細目中獲取。</value>
+  </data>
+  <data name="FindDeviceHelp" xml:space="preserve">
+    <value>控制存取「將裝置狀態設定為“開啟音訊警示”以方便使用者找到裝置」的權限。此功能可在裝置詳細資料 (HTML5) 畫面中找到。</value>
+  </data>
+  <data name="FriendlyNameSet" xml:space="preserve">
+    <value>暱稱</value>
+  </data>
+  <data name="FriendlyNameSetHelp" xml:space="preserve">
+    <value>控制對 [一般] 下的 [易記名稱] 頁面的存取權。</value>
+  </data>
+  <data name="GatewayStatusEm" xml:space="preserve">
+    <value>閘道狀態</value>
+  </data>
+  <data name="GatewayStatusEmHelp" xml:space="preserve">
+    <value>控制電子郵件閘道狀態的設定。</value>
+  </data>
+  <data name="GeneralDD" xml:space="preserve">
+    <value>一般</value>
+  </data>
+  <data name="GeneralDDHelp" xml:space="preserve">
+    <value>控制裝置明細頁面的各種基本的功能。</value>
+  </data>
+  <data name="GeneralHub" xml:space="preserve">
+    <value>一般</value>
+  </data>
+  <data name="GeneralHubHelp" xml:space="preserve">
+    <value>存取報告模式。</value>
+  </data>
+  <data name="GeneralPM" xml:space="preserve">
+    <value>一般</value>
+  </data>
+  <data name="GeneralPMHelp" xml:space="preserve">
+    <value>控制對 [印表機一般設定] 頁面的存取權</value>
+  </data>
+  <data name="GeneralSettingsEm" xml:space="preserve">
+    <value>一般設定</value>
+  </data>
+  <data name="GeneralSettingsEmHelp" xml:space="preserve">
+    <value>控制電子郵件一般設定。</value>
+  </data>
+  <data name="GeneralSOaP" xml:space="preserve">
+    <value>一般</value>
+  </data>
+  <data name="GeneralSOaPHelp" xml:space="preserve">
+    <value>存取除了抹除命令之外所有的 AirWatch 服務 API。</value>
+  </data>
+  <data name="GeneralSys" xml:space="preserve">
+    <value>一般</value>
+  </data>
+  <data name="GeneralSysHelp" xml:space="preserve">
+    <value>控制對 [系統] 下的 [一般] 頁面的存取權。</value>
+  </data>
+  <data name="GeofencingAreaDM" xml:space="preserve">
+    <value>地理柵欄區域</value>
+  </data>
+  <data name="GeofencingAreaDMHelp" xml:space="preserve">
+    <value>管理設定檔的地理柵欄設定。</value>
+  </data>
+  <data name="GeofencingHelp" xml:space="preserve">
+    <value>授予檢視/編輯地理柵欄設定的權限。</value>
+  </data>
+  <data name="GeofencingSet" xml:space="preserve">
+    <value>地理柵欄</value>
+  </data>
+  <data name="GeofencingSetHelp" xml:space="preserve">
+    <value>授予檢視/編輯地理柵欄設定的權限。</value>
+  </data>
+  <data name="GettingStartedApplicationHelp" xml:space="preserve">
+    <value>控管適用於「Mobile Application Management」之「使用入門」途徑</value>
+  </data>
+  <data name="GettingStartedSys" xml:space="preserve">
+    <value>使用入門</value>
+  </data>
+  <data name="GettingStartedSysHelp" xml:space="preserve">
+    <value>授予檢視入門指南的權限。</value>
+  </data>
+  <data name="GooglePlayIntegrationAn" xml:space="preserve">
+    <value>Google Play 整合</value>
+  </data>
+  <data name="GooglePlayIntegrationAnHelp" xml:space="preserve">
+    <value>給予權限來檢視和編輯 Android 市場的整合。</value>
+  </data>
+  <data name="GroupsRESTSystem" xml:space="preserve">
+    <value>群組</value>
+  </data>
+  <data name="GroupsRESTSystemHelp" xml:space="preserve">
+    <value>群組管理的 REST API</value>
+  </data>
+  <data name="GSuiteRotatePasswordAction" xml:space="preserve">
+    <value>G Suite 密碼輪換</value>
+  </data>
+  <data name="GSuiteRotatePasswordActionHelp" xml:space="preserve">
+    <value>輪換 G Suite 基本密碼與輪換電子郵件設定檔的功能。</value>
+  </data>
+  <data name="HeroCards" xml:space="preserve">
+    <value>Mobile Flows</value>
+  </data>
+  <data name="HeroCardsHelp" xml:space="preserve">
+    <value>用於 Mobile Flows 後端和服務的組態 UI</value>
+  </data>
+  <data name="HorizonWorkspaceSettings" xml:space="preserve">
+    <value>Horizon Workspace 設定</value>
+  </data>
+  <data name="HorizonWorkspaceSettingsHelp" xml:space="preserve">
+    <value>控制檢視和編輯 Horizon Workspace 設定的存取權。導覽途徑為設定\APP\應用程式整合\Horizon Workspace</value>
+  </data>
+  <data name="HyperLinkDeleteAd" xml:space="preserve">
+    <value>刪除超連結</value>
+  </data>
+  <data name="HyperLinkDeleteAdHelp" xml:space="preserve">
+    <value>允許在裝置明細頁面中移除超連結附件</value>
+  </data>
+  <data name="InProductSupport" xml:space="preserve">
+    <value>產品內建支援</value>
+  </data>
+  <data name="InProductSupportHelp" xml:space="preserve">
+    <value>存取產品內建的支援工具，方便管理員搜尋說明文件，並直接從 UEM 內取得說明協助。</value>
+  </data>
+  <data name="InstallationAdvancedIns" xml:space="preserve">
+    <value>進階安裝</value>
+  </data>
+  <data name="InstallationAdvancedInsHelp" xml:space="preserve">
+    <value>控制「安裝」下之「進階」頁面的存取權。</value>
+  </data>
+  <data name="InstallationIns" xml:space="preserve">
+    <value>安裝</value>
+  </data>
+  <data name="InstallationInsHelp" xml:space="preserve">
+    <value>控制「安裝」頁面的存取權。</value>
+  </data>
+  <data name="InstallFontsApple" xml:space="preserve">
+    <value>安裝字型</value>
+  </data>
+  <data name="InstallFontsAppleHelp" xml:space="preserve">
+    <value>啟用「設定」中的「安裝字型」區段。</value>
+  </data>
+  <data name="InstallIntelligentHub" xml:space="preserve">
+    <value>安裝 Intelligent Hub</value>
+  </data>
+  <data name="InstallIntelligentHubHelp" xml:space="preserve">
+    <value>提供在已註冊裝置上遠端安裝 Intelligent Hub 的存取權</value>
+  </data>
+  <data name="InsufficientResourceToSaveAdmin" xml:space="preserve">
+    <value>無法儲存。您的管理員帳戶沒有足夠權限可以修改此記錄。</value>
+  </data>
+  <data name="Intelligence" xml:space="preserve">
+    <value>Intelligence</value>
+  </data>
+  <data name="IntelligenceHelp" xml:space="preserve">
+    <value>存取 Intelligence 頁。</value>
+  </data>
+  <data name="InternalAppsAb" xml:space="preserve">
+    <value>內部用 APP</value>
+  </data>
+  <data name="InternalAppsAbHelp" xml:space="preserve">
+    <value>上傳並管理內部研發的應用程式。</value>
+  </data>
+  <data name="LanguageManagementAd" xml:space="preserve">
+    <value>語言管理</value>
+  </data>
+  <data name="LanguageManagementAdHelp" xml:space="preserve">
+    <value>檢視「語言管理」的選單項目，並存取「當地語系化編輯器」和「語言套件」的啟動頁面。</value>
+  </data>
+  <data name="LearnMoreAccess" xml:space="preserve">
+    <value>深入瞭解存取</value>
+  </data>
+  <data name="LearnMoreAccessContact" xml:space="preserve">
+    <value>深入瞭解存取聯絡人</value>
+  </data>
+  <data name="LearnMoreAccessContactHelp" xml:space="preserve">
+    <value>控制 [資訊與升級] 區段的 [聯絡人] 區段存取</value>
+  </data>
+  <data name="LearnMoreAccessHelp" xml:space="preserve">
+    <value>控制 [資訊與升級] 區段的存取</value>
+  </data>
+  <data name="LegacyAndroidMigration" xml:space="preserve">
+    <value>舊版 Android 移轉</value>
+  </data>
+  <data name="LegacyAndroidMigrationHelp" xml:space="preserve">
+    <value>控制舊版 Android 移轉頁面，使用 Work 設定檔將舊版 Android 裝置移轉至 Android Enterprise 的存取權</value>
+  </data>
+  <data name="LicensesAd" xml:space="preserve">
+    <value>授權</value>
+  </data>
+  <data name="LicensesAdHelp" xml:space="preserve">
+    <value>授予修改授權的權限。</value>
+  </data>
+  <data name="LinuxHelp" xml:space="preserve">
+    <value>控制「系統設定」之中 Linux 設定頁面的存取權。</value>
+  </data>
+  <data name="LocalizationSys" xml:space="preserve">
+    <value>當地語系化</value>
+  </data>
+  <data name="LocalizationSysHelp" xml:space="preserve">
+    <value>控制「當地語系化」設定的存取權。</value>
+  </data>
+  <data name="LocationCodeGr" xml:space="preserve">
+    <value>位置代碼</value>
+  </data>
+  <data name="LocationCodeGrHelp" xml:space="preserve">
+    <value>在位置新增/編輯頁面上，編輯位置碼。</value>
+  </data>
+  <data name="LocationDD" xml:space="preserve">
+    <value>位置</value>
+  </data>
+  <data name="LocationDDHelp" xml:space="preserve">
+    <value>檢視裝置的位置和階層連結資料。</value>
+  </data>
+  <data name="LocationGroupTypeHelp" xml:space="preserve">
+    <value>控制企業群組類型頁面的存取</value>
+  </data>
+  <data name="LocationsGr" xml:space="preserve">
+    <value>位置</value>
+  </data>
+  <data name="LocationsGrHelp" xml:space="preserve">
+    <value>檢視和管理企業群組的位置。</value>
+  </data>
+  <data name="LocationsHub" xml:space="preserve">
+    <value>位置</value>
+  </data>
+  <data name="LocationsHubHelp" xml:space="preserve">
+    <value>產生位置的報告。</value>
+  </data>
+  <data name="LocationStatusHelp" xml:space="preserve">
+    <value>控制位置狀態連結的存取。控制新增位置狀態的存取。</value>
+  </data>
+  <data name="LocationTypeHelp" xml:space="preserve">
+    <value>控制存取位置類型頁面</value>
+  </data>
+  <data name="LocationZonesGr" xml:space="preserve">
+    <value>位置區域</value>
+  </data>
+  <data name="LocationZonesGrHelp" xml:space="preserve">
+    <value>為某個位置新增和編輯位置區域。</value>
+  </data>
+  <data name="LockDD" xml:space="preserve">
+    <value>鎖定</value>
+  </data>
+  <data name="LockDDHelp" xml:space="preserve">
+    <value>遠端鎖定裝置或鎖定 APP 的單一登入功能。</value>
+  </data>
+  <data name="LogDD" xml:space="preserve">
+    <value>記錄</value>
+  </data>
+  <data name="LogDDHelp" xml:space="preserve">
+    <value>檢視在裝置明細裡的記錄。</value>
+  </data>
+  <data name="LoggingAd" xml:space="preserve">
+    <value>記錄</value>
+  </data>
+  <data name="LoggingAdHelp" xml:space="preserve">
+    <value>授予檢視事件記錄設定的權限。</value>
+  </data>
+  <data name="LoggingAdL" xml:space="preserve">
+    <value>記錄</value>
+  </data>
+  <data name="LoggingAdLHelp" xml:space="preserve">
+    <value>檢視並編輯Syslog和目標記錄的記錄設定。</value>
+  </data>
+  <data name="LoginHistoryAdminGen" xml:space="preserve">
+    <value>登入記錄</value>
+  </data>
+  <data name="LoginHistoryAdminGenHelp" xml:space="preserve">
+    <value>存取在管理員帳戶頁面和使用者偏好頁面上的登入記錄頁面。</value>
+  </data>
+  <data name="LookupFields" xml:space="preserve">
+    <value>查閱欄位</value>
+  </data>
+  <data name="LookupFieldsHelp" xml:space="preserve">
+    <value>控制對 [一般] 下的 [查閱欄位] 頁面的存取權。</value>
+  </data>
+  <data name="MacOsXApple" xml:space="preserve">
+    <value>macOS</value>
+  </data>
+  <data name="MacOsXAppleHelp" xml:space="preserve">
+    <value>控制「系統設定」中之 macOS 設定頁面的存取權。</value>
+  </data>
+  <data name="MailRecipient" xml:space="preserve">
+    <value>郵件收件者</value>
+  </data>
+  <data name="MaintenanceUpgradeNotificationInfo" xml:space="preserve">
+    <value>選取選項來決定接收 Workspace ONE UEM 和 Workspace ONE Assist 通知的對象。如果已選取 [管理員選擇加入]，管理員就會在 [帳戶設定] &gt; [通知] 下看到 [維護] 和 [升級] 選項。</value>
+  </data>
+  <data name="MaintenanceUpgradeNotifications" xml:space="preserve">
+    <value>維護和升級通知</value>
+  </data>
+  <data name="ManageAdminGroups" xml:space="preserve">
+    <value>管理</value>
+  </data>
+  <data name="ManageAdminGroupsHelp" xml:space="preserve">
+    <value>在管理員群組上執行動作，例如同步或合併。</value>
+  </data>
+  <data name="ManageBaselines" xml:space="preserve">
+    <value>管理基準</value>
+  </data>
+  <data name="ManageBaselinesHelp" xml:space="preserve">
+    <value>控制管理基準的存取，包括加入、新增、編輯及指派基準的權限</value>
+  </data>
+  <data name="ManageContentCM" xml:space="preserve">
+    <value>管理內容</value>
+  </data>
+  <data name="ManageContentCMHelp" xml:space="preserve">
+    <value>新增內容和管理現有的內容。</value>
+  </data>
+  <data name="ManageDevicesCM" xml:space="preserve">
+    <value>管理裝置</value>
+  </data>
+  <data name="ManageDevicesCMHelp" xml:space="preserve">
+    <value>從遠端安裝和刪除受管裝置上的內容。</value>
+  </data>
+  <data name="ManageDeviceSensors" xml:space="preserve">
+    <value>管理裝置感應器</value>
+  </data>
+  <data name="ManageDeviceSensorsHelp" xml:space="preserve">
+    <value>控制新增、編輯、指派或刪除裝置感應器的存取權</value>
+  </data>
+  <data name="ManageDM" xml:space="preserve">
+    <value>管理</value>
+  </data>
+  <data name="ManageDMHelp" xml:space="preserve">
+    <value>管理裝置設定檔。</value>
+  </data>
+  <data name="ManagedSettingsApple" xml:space="preserve">
+    <value>受管設定</value>
+  </data>
+  <data name="ManagedSettingsAppleHelp" xml:space="preserve">
+    <value>控制 iOS 之受管設定的存取權。</value>
+  </data>
+  <data name="ManageGr" xml:space="preserve">
+    <value>管理</value>
+  </data>
+  <data name="ManageGrHelp" xml:space="preserve">
+    <value>管理企業群組。</value>
+  </data>
+  <data name="ManageNodeAd" xml:space="preserve">
+    <value>管理節點</value>
+  </data>
+  <data name="ManageNodeAdHelp" xml:space="preserve">
+    <value>新增、編輯、刪除和排清 MemCached Node。</value>
+  </data>
+  <data name="ManagePM" xml:space="preserve">
+    <value>管理</value>
+  </data>
+  <data name="ManagePMHelp" xml:space="preserve">
+    <value>向印表機傳送遠端命令和查詢。</value>
+  </data>
+  <data name="ManageTimeWindow" xml:space="preserve">
+    <value>管理時間範圍</value>
+  </data>
+  <data name="ManageTimeWindowHelp" xml:space="preserve">
+    <value>控制管理時間範圍的存取權，包括新增、編輯及指派時間範圍的權限。</value>
+  </data>
+  <data name="ManageUG" xml:space="preserve">
+    <value>管理</value>
+  </data>
+  <data name="ManageUGHelp" xml:space="preserve">
+    <value>在註冊使用者群組上執行動作，例如同步或合併。</value>
+  </data>
+  <data name="MapsIns" xml:space="preserve">
+    <value>地圖</value>
+  </data>
+  <data name="MapsInsHelp" xml:space="preserve">
+    <value>控制對 [安裝] 下的 [對應] 頁面的存取權。</value>
+  </data>
+  <data name="MembersAdminGroup" xml:space="preserve">
+    <value>成員</value>
+  </data>
+  <data name="MembersAdminGroupHelp" xml:space="preserve">
+    <value>檢視管理員群組成員。</value>
+  </data>
+  <data name="MembersUG" xml:space="preserve">
+    <value>成員</value>
+  </data>
+  <data name="MembersUGHelp" xml:space="preserve">
+    <value>存取使用者群組成員清單。</value>
+  </data>
+  <data name="MenuLinkForTagHelp" xml:space="preserve">
+    <value>控制存取標記功能表的存取權。</value>
+  </data>
+  <data name="MessageTemplatesSet" xml:space="preserve">
+    <value>訊息範本</value>
+  </data>
+  <data name="MessageTemplatesSetHelp" xml:space="preserve">
+    <value>控制對 [訊息範本] 的存取權。</value>
+  </data>
+  <data name="MessagingDD" xml:space="preserve">
+    <value>傳訊</value>
+  </data>
+  <data name="MessagingDDHelp" xml:space="preserve">
+    <value>將 Email、推播通知或 SMS 訊息傳送到裝置上。</value>
+  </data>
+  <data name="MessagingSet" xml:space="preserve">
+    <value>傳訊</value>
+  </data>
+  <data name="MessagingSetHelp" xml:space="preserve">
+    <value>控制對 [一般] 下的 [傳訊] 頁面的存取權。</value>
+  </data>
+  <data name="MigrateUserAccounts" xml:space="preserve">
+    <value>移轉</value>
+  </data>
+  <data name="MigrateUserAccountsHelp" xml:space="preserve">
+    <value>將註冊使用者帳戶從基本註冊移轉到 LDAP 註冊。</value>
+  </data>
+  <data name="MirrorPM" xml:space="preserve">
+    <value>鏡像</value>
+  </data>
+  <data name="MirrorPMHelp" xml:space="preserve">
+    <value>控制對 [印表機鏡像] 頁面的存取權</value>
+  </data>
+  <data name="MobileFlowsAuthToken" xml:space="preserve">
+    <value>Mobile Flows 驗證 Token</value>
+  </data>
+  <data name="MobileFlowsAuthTokenHelp" xml:space="preserve">
+    <value>產生 Mobile Flows 伺服器使用的憑證 JWT</value>
+  </data>
+  <data name="MobileFlowsServerUrl" xml:space="preserve">
+    <value>Mobile Flows 伺服器 URL</value>
+  </data>
+  <data name="MobileFlowsServerUrlHelp" xml:space="preserve">
+    <value>Mobile Flows 伺服器 URL</value>
+  </data>
+  <data name="MobileFlowsTenantAdd" xml:space="preserve">
+    <value>新增 Mobile Flows 租用戶</value>
+  </data>
+  <data name="MobileFlowsTenantAddHelp" xml:space="preserve">
+    <value>在 Mobile Flows 雲端服務佈建客戶租用戶</value>
+  </data>
+  <data name="ModifyAgentSet" xml:space="preserve">
+    <value>修改 Hub</value>
+  </data>
+  <data name="ModifyAgentSetHelp" xml:space="preserve">
+    <value>控制修改 Hub 設定的權限。</value>
+  </data>
+  <data name="MonitoringAd" xml:space="preserve">
+    <value>監控</value>
+  </data>
+  <data name="MonitoringAdHelp" xml:space="preserve">
+    <value>授予存取和編輯監控設定的權限。</value>
+  </data>
+  <data name="MoreHelp" xml:space="preserve">
+    <value>控制存取「更多」之功能表</value>
+  </data>
+  <data name="NacIntegrationSys" xml:space="preserve">
+    <value>NAC 整合</value>
+  </data>
+  <data name="NacIntegrationSysHelp" xml:space="preserve">
+    <value>控制「一般」下之「網路存取控制整合」頁面的存取權。</value>
+  </data>
+  <data name="NavigateExportStatusHelp" xml:space="preserve">
+    <value>存取匯出狀態頁面，用於檢視和下載網格匯出。</value>
+  </data>
+  <data name="NavigationO" xml:space="preserve">
+    <value>導覽</value>
+  </data>
+  <data name="NavigationOHelp" xml:space="preserve">
+    <value>存取進階功能表。</value>
+  </data>
+  <data name="NetworkAccessControlIntegrationHelp" xml:space="preserve">
+    <value>控制「一般」下之「網路存取控制整合」頁面的存取權。</value>
+  </data>
+  <data name="NetworkDD" xml:space="preserve">
+    <value>網路</value>
+  </data>
+  <data name="NetworkDDHelp" xml:space="preserve">
+    <value>在裝置明細中存取網路頁面。</value>
+  </data>
+  <data name="NetworkRangeGr" xml:space="preserve">
+    <value>網路範圍</value>
+  </data>
+  <data name="NetworkRangeGrHelp" xml:space="preserve">
+    <value>管理和匯入企業群組網路範圍。</value>
+  </data>
+  <data name="NetworkRangeHelp" xml:space="preserve">
+    <value>授與檢視網路範圍螢幕的權限</value>
+  </data>
+  <data name="NoFiltersSelected" xml:space="preserve">
+    <value>未選取任何篩選器</value>
+  </data>
+  <data name="NotesDD" xml:space="preserve">
+    <value>備註</value>
+  </data>
+  <data name="NotesDDHelp" xml:space="preserve">
+    <value>在裝置細目中新增、編輯和移除裝置備註。</value>
+  </data>
+  <data name="NotificationRecipients" xml:space="preserve">
+    <value>通知收件者</value>
+  </data>
+  <data name="NotificationsAd" xml:space="preserve">
+    <value>通知</value>
+  </data>
+  <data name="NotificationsAdHelp" xml:space="preserve">
+    <value>檢視並編輯事件通知設定。</value>
+  </data>
+  <data name="NotifyAb" xml:space="preserve">
+    <value>通知</value>
+  </data>
+  <data name="NotifyAbHelp" xml:space="preserve">
+    <value>透過裝置應用程式傳送通知。</value>
+  </data>
+  <data name="Office365MamIntegrationSettings" xml:space="preserve">
+    <value>Office365 整合設定</value>
+  </data>
+  <data name="Office365MamIntegrationSettingsHelp" xml:space="preserve">
+    <value>控制系統設定畫面以新增 Office 365 應用程式之預設 DLP 原則的資源</value>
+  </data>
+  <data name="Old" xml:space="preserve">
+    <value>舊的</value>
+  </data>
+  <data name="OldPPO" xml:space="preserve">
+    <value>舊的</value>
+  </data>
+  <data name="OldPPOHelp" xml:space="preserve">
+    <value>存取佈建設定檔的舊版設定。</value>
+  </data>
+  <data name="OrganizationGroupChangeAd" xml:space="preserve">
+    <value>變更組織群組</value>
+  </data>
+  <data name="OrganizationGroupChangeAdHelp" xml:space="preserve">
+    <value>賦予透過下拉式清單來變更企業群組的許可權。</value>
+  </data>
+  <data name="OrganizationGroupCodeGr" xml:space="preserve">
+    <value>企業群組 ID</value>
+  </data>
+  <data name="OrganizationGroupCodeGrHelp" xml:space="preserve">
+    <value>編輯企業群組 ID。</value>
+  </data>
+  <data name="OsUpdateStatusHelp" xml:space="preserve">
+    <value>控制存取裝置上的作業系統更新狀態。導覽至 [裝置 / 詳細資料檢視]</value>
+  </data>
+  <data name="OutlookAddinSet" xml:space="preserve">
+    <value>Outlook增益集</value>
+  </data>
+  <data name="OutlookAddinSetHelp" xml:space="preserve">
+    <value>啟用和停用Outlook增益集的外掛程式</value>
+  </data>
+  <data name="OverrideJobLogLevelHelp" xml:space="preserve">
+    <value>授予使用者當裝置支援此功能時，可透過裝置詳細資料來覆寫工作記錄層級的權限。</value>
+  </data>
+  <data name="OverviewHub" xml:space="preserve">
+    <value>總覽</value>
+  </data>
+  <data name="OverviewHubHelp" xml:space="preserve">
+    <value>存取監視器總覽頁面。</value>
+  </data>
+  <data name="P2PSetupHelp" xml:space="preserve">
+    <value>包含各種 P2P 廠商子區段的設定頁面</value>
+  </data>
+  <data name="PasscodeDD" xml:space="preserve">
+    <value>密碼</value>
+  </data>
+  <data name="PasscodeDDHelp" xml:space="preserve">
+    <value>清除並重設裝置和 APP 的密碼。</value>
+  </data>
+  <data name="PerformanceTuningHelp" xml:space="preserve">
+    <value>控制「系統設定」中之「效能微調參數」的存取權。</value>
+  </data>
+  <data name="PerformanceTuningIns" xml:space="preserve">
+    <value>效能微調</value>
+  </data>
+  <data name="PerformanceTuningInsHelp" xml:space="preserve">
+    <value>控制「系統設定」中之「效能微調參數」的存取權。</value>
+  </data>
+  <data name="PersonalContentSet" xml:space="preserve">
+    <value>個人內容</value>
+  </data>
+  <data name="PersonalContentSetHelp" xml:space="preserve">
+    <value>授予修改有關個人內容之設定的權限</value>
+  </data>
+  <data name="PlansTel" xml:space="preserve">
+    <value>方案</value>
+  </data>
+  <data name="PlansTelHelp" xml:space="preserve">
+    <value>為企業群組管理配置的電信方案。</value>
+  </data>
+  <data name="PoliciesPPN" xml:space="preserve">
+    <value>原則</value>
+  </data>
+  <data name="PoliciesPPNHelp" xml:space="preserve">
+    <value>建立並管理佈建原則。</value>
+  </data>
+  <data name="PolicyEngineSettingsEditHelp" xml:space="preserve">
+    <value>編輯原則引擎設定的權限。請導覽至 [組態] \ [設定] \ [管理員] \ [原則引擎設定]</value>
+  </data>
+  <data name="PolicyEngineSettingsViewHelp" xml:space="preserve">
+    <value>授予檢視原則引擎設定的權限。</value>
+  </data>
+  <data name="PolicyOverrideEM" xml:space="preserve">
+    <value>原則覆寫</value>
+  </data>
+  <data name="PolicyOverrideEMHelp" xml:space="preserve">
+    <value>覆寫電子郵件原則，以允許和拒絕裝置。</value>
+  </data>
+  <data name="PolicySigningCertificateHelp" xml:space="preserve">
+    <value>授予上傳 ECC 憑證的權限。請導覽至 [系統] \ [進階] \ [原則簽署憑證]</value>
+  </data>
+  <data name="PowerPM" xml:space="preserve">
+    <value>電源</value>
+  </data>
+  <data name="PowerPMHelp" xml:space="preserve">
+    <value>控制對 [印表機電源] 頁面的存取權</value>
+  </data>
+  <data name="PrinterManagementProfile" xml:space="preserve">
+    <value>印表機管理設定檔</value>
+  </data>
+  <data name="PrinterManagementProfiles" xml:space="preserve">
+    <value>印表機管理設定檔</value>
+  </data>
+  <data name="PrinterProfiles" xml:space="preserve">
+    <value>印表機設定檔</value>
+  </data>
+  <data name="PrinterProfilesHelp" xml:space="preserve">
+    <value>控制存取檢視印表機設定檔網格。請依「功能表」、「印表機管理」順序巡覽至「印表機設定檔」頁面</value>
+  </data>
+  <data name="PrinterServersPM" xml:space="preserve">
+    <value>印表機伺服器</value>
+  </data>
+  <data name="PrinterServersPMHelp" xml:space="preserve">
+    <value>檢視、新增和刪除在印表機設定頁面中的印表機伺服器。</value>
+  </data>
+  <data name="PrinterTestPrint" xml:space="preserve">
+    <value>印表機測試列印</value>
+  </data>
+  <data name="PrinterTestPrintHelp" xml:space="preserve">
+    <value>授予提交印表機測試列印的權限。</value>
+  </data>
+  <data name="PrinterViewAveryDennisonGeneralHelp" xml:space="preserve">
+    <value>Avery Dennison [裝置詳細資料] 頁面上的 [一般] 索引標籤。</value>
+  </data>
+  <data name="PrinterViewCpclPM" xml:space="preserve">
+    <value>CPCL</value>
+  </data>
+  <data name="PrinterViewCpclPMHelp" xml:space="preserve">
+    <value>控制對 [印表機 CPCL] 頁面的存取權</value>
+  </data>
+  <data name="PrinterViewDataMaxONeilAutoUpdateHelp" xml:space="preserve">
+    <value>Datamax [裝置詳細資料] 頁面的 [AutoUpdate] 索引標籤。</value>
+  </data>
+  <data name="PrinterViewDataMaxONeilBatteryHelp" xml:space="preserve">
+    <value>Datamax 印表機的 [裝置詳細資料] 頁面中的 [電池] 索引標籤。</value>
+  </data>
+  <data name="PrinterViewDataMaxONeilBluetoothHelp" xml:space="preserve">
+    <value>Datamax [裝置詳細資料] 頁面的 [藍牙] 索引標籤。</value>
+  </data>
+  <data name="PrinterViewDataMaxONeilCustomSettingsHelp" xml:space="preserve">
+    <value>檢視 Datamax O'Neil [裝置詳細資料] 頁面上的 [自訂設定] 索引標籤。</value>
+  </data>
+  <data name="PrinterViewDataMaxONeilGeneralHelp" xml:space="preserve">
+    <value>Datamax [裝置詳細資料] 頁面的 [一般] 索引標籤。</value>
+  </data>
+  <data name="PrinterViewDataMaxONeilGeneralNetworkHelp" xml:space="preserve">
+    <value>Datamax [裝置詳細資料] 頁面的 [GeneralNetwork] 索引標籤。</value>
+  </data>
+  <data name="PrinterViewDataMaxONeilMediaLabelHelp" xml:space="preserve">
+    <value>Datamax [裝置詳細資料] 頁面的 [媒體標籤] 索引標籤。</value>
+  </data>
+  <data name="PrinterViewDataMaxONeilMiscellaneousHelp" xml:space="preserve">
+    <value>Datamax [裝置詳細資料] 頁面的 [Miscellanous] 索引標籤。</value>
+  </data>
+  <data name="PrinterViewDataMaxONeilPrintControlHelp" xml:space="preserve">
+    <value>Datamax [裝置詳細資料] 頁面的 [PrintControl] 索引標籤。</value>
+  </data>
+  <data name="PrinterViewDataMaxONeilRS232Help" xml:space="preserve">
+    <value>Datamax [裝置詳細資料] 頁面的 [RS232] 索引標籤。</value>
+  </data>
+  <data name="PrinterViewDataMaxONeilSystemSettingsHelp" xml:space="preserve">
+    <value>Datamax [裝置詳細資料] 頁面的 [系統設定] 索引標籤。</value>
+  </data>
+  <data name="PrinterViewDataMaxONeilWifiHelp" xml:space="preserve">
+    <value>Datamax [裝置詳細資料] 頁面的 [Wifi] 索引標籤。</value>
+  </data>
+  <data name="PrinterViewEpsonGeneral" xml:space="preserve">
+    <value>檢視 Epson 印表機詳細資訊：一般標籤</value>
+  </data>
+  <data name="PrinterViewEpsonGeneralHelp" xml:space="preserve">
+    <value>檢視 Epson 印表機之裝置明細</value>
+  </data>
+  <data name="PrinterViewEpsonPrintSettingsHelp" xml:space="preserve">
+    <value>允許使用者存取 Epson 列印設定</value>
+  </data>
+  <data name="PrivacySet" xml:space="preserve">
+    <value>隱私權</value>
+  </data>
+  <data name="PrivacySetHelp" xml:space="preserve">
+    <value>控制對在「一般」之下，「隱私權」頁面的存取權。</value>
+  </data>
+  <data name="ProductImprovementProgramSettings" xml:space="preserve">
+    <value>產品改善計畫設定</value>
+  </data>
+  <data name="ProductImprovementProgramSettingsHelp" xml:space="preserve">
+    <value>控制在 [設定] &gt; [管理員] &gt; [產品改善計畫] 中「產品改善計畫設定」頁面的存取權。</value>
+  </data>
+  <data name="ProductivityAppsAb" xml:space="preserve">
+    <value>生產力應用程式</value>
+  </data>
+  <data name="ProductProvisioningHub" xml:space="preserve">
+    <value>產品佈建</value>
+  </data>
+  <data name="ProductProvisioningHubHelp" xml:space="preserve">
+    <value>產生產品佈建的報告。</value>
+  </data>
+  <data name="ProductProvisioningSettingsHelp" xml:space="preserve">
+    <value>設定產品佈建的某些功能。</value>
+  </data>
+  <data name="ProductSetsHelp" xml:space="preserve">
+    <value>在產品 (新) 下，掌控產品的存取權</value>
+  </data>
+  <data name="ProfileEncryptAndExportXmlDM" xml:space="preserve">
+    <value>設定檔加密和匯出XML</value>
+  </data>
+  <data name="ProfileEncryptAndExportXmlDMHelp" xml:space="preserve">
+    <value>上傳設定檔加密的憑證並匯出設定檔XML。</value>
+  </data>
+  <data name="ProfilesApple" xml:space="preserve">
+    <value>設定檔</value>
+  </data>
+  <data name="ProfilesAppleHelp" xml:space="preserve">
+    <value>控制對 [iOS] 下的 [設定檔] 頁面的存取權。</value>
+  </data>
+  <data name="ProfilesDD" xml:space="preserve">
+    <value>設定檔</value>
+  </data>
+  <data name="ProfilesDDHelp" xml:space="preserve">
+    <value>檢視並管理在裝置明細中的組態設定檔。</value>
+  </data>
+  <data name="ProfilesHub" xml:space="preserve">
+    <value>設定檔</value>
+  </data>
+  <data name="ProfilesHubHelp" xml:space="preserve">
+    <value>為裝置設定檔產生報告</value>
+  </data>
+  <data name="ProfilesPM" xml:space="preserve">
+    <value>設定檔</value>
+  </data>
+  <data name="ProfilesPMHelp" xml:space="preserve">
+    <value>控制對 [印表機設定檔] 頁面的存取權</value>
+  </data>
+  <data name="ProfilesPPN" xml:space="preserve">
+    <value>設定檔</value>
+  </data>
+  <data name="ProfilesPPNHelp" xml:space="preserve">
+    <value>存取佈建設定檔分頁。</value>
+  </data>
+  <data name="ProfilesPr" xml:space="preserve">
+    <value>設定檔</value>
+  </data>
+  <data name="ProfilesPrHelp" xml:space="preserve">
+    <value>管理印表機設定檔。</value>
+  </data>
+  <data name="ProfilesRESTMdm" xml:space="preserve">
+    <value>設定檔</value>
+  </data>
+  <data name="ProfilesRESTMdmHelp" xml:space="preserve">
+    <value>裝置設定檔的 REST API</value>
+  </data>
+  <data name="ProvisioningHelp" xml:space="preserve">
+    <value>控制存取 WinMo 佈建頁面</value>
+  </data>
+  <data name="ProvisioningPolicyConditionCopyHelp" xml:space="preserve">
+    <value>授予使用者複製狀況的權限。</value>
+  </data>
+  <data name="ProvisioningPolicyFileActionCopyHelp" xml:space="preserve">
+    <value>授予使用者複製佈建檔案/動作的權限。</value>
+  </data>
+  <data name="ProxiesAndTunnelHelp" xml:space="preserve">
+    <value>授予檢視和編輯代理伺服器與 Tunnel 設定的權限</value>
+  </data>
+  <data name="ProxyIns" xml:space="preserve">
+    <value>Proxy</value>
+  </data>
+  <data name="ProxyInsHelp" xml:space="preserve">
+    <value>控制對 [一般] 下的 [Proxy 設定] 頁面的存取權。</value>
+  </data>
+  <data name="PublicAppsAb" xml:space="preserve">
+    <value>公用應用程式</value>
+  </data>
+  <data name="PublicAppsAbHelp" xml:space="preserve">
+    <value>從公開應用程式商店指派並管理應用程式。</value>
+  </data>
+  <data name="PullServiceInstallersPPN" xml:space="preserve">
+    <value>提取服務安裝程式</value>
+  </data>
+  <data name="PullServiceInstallersPPNHelp" xml:space="preserve">
+    <value>檢視並下載「提取服務」安裝程式</value>
+  </data>
+  <data name="PurchasedApplicationsAb" xml:space="preserve">
+    <value>已購買的應用程式</value>
+  </data>
+  <data name="PurchasedApplicationsAbHelp" xml:space="preserve">
+    <value>匯入大量已購買的應用程式授權，並管理授權的發佈。</value>
+  </data>
+  <data name="QnxSet" xml:space="preserve">
+    <value>QNX</value>
+  </data>
+  <data name="QnxSetHelp" xml:space="preserve">
+    <value>控制在「QNX」下「代理程式設定」的存取權。</value>
+  </data>
+  <data name="QRCodeHelp" xml:space="preserve">
+    <value>QR 碼註冊組態</value>
+  </data>
+  <data name="QueryDD" xml:space="preserve">
+    <value>查詢</value>
+  </data>
+  <data name="QueryDDHelp" xml:space="preserve">
+    <value>查詢裝置以更新裝置狀態資訊。</value>
+  </data>
+  <data name="ReadDeviceManufacturerDetails" xml:space="preserve">
+    <value>閱讀裝置製造商詳細資料</value>
+  </data>
+  <data name="ReadDeviceManufacturerDetailsHelp" xml:space="preserve">
+    <value>透過 API 閱讀裝置製造商詳細資料</value>
+  </data>
+  <data name="ReadDeviceModelDetails" xml:space="preserve">
+    <value>閱讀裝置型號詳細資料</value>
+  </data>
+  <data name="ReadDeviceModelDetailsHelp" xml:space="preserve">
+    <value>透過 API 閱讀裝置型號詳細資料</value>
+  </data>
+  <data name="RefreshEsimHelp" xml:space="preserve">
+    <value>授予更新 eSIM 行動方案的權限</value>
+  </data>
+  <data name="RegistryManagerHelp" xml:space="preserve">
+    <value>授與遠端存取WinMo裝置登錄資訊的權限</value>
+  </data>
+  <data name="RelayServerBatching" xml:space="preserve">
+    <value>轉送伺服器批次處理</value>
+  </data>
+  <data name="RelayServerBatchingHelp" xml:space="preserve">
+    <value>控制轉送伺服器批次匯入和批次狀態的存取</value>
+  </data>
+  <data name="RelayServerRemoteFileList" xml:space="preserve">
+    <value>轉送伺服器遠端檔案清單</value>
+  </data>
+  <data name="RelayServerRemoteFileListHelp" xml:space="preserve">
+    <value>控制轉送伺服器遠端檔案清單的存取</value>
+  </data>
+  <data name="RelayServersPPN" xml:space="preserve">
+    <value>轉送伺服器</value>
+  </data>
+  <data name="RelayServersPPNHelp" xml:space="preserve">
+    <value>檢視並管理佈建轉送伺服器。</value>
+  </data>
+  <data name="RemoteControlDD" xml:space="preserve">
+    <value>遠端控制</value>
+  </data>
+  <data name="RemoteControlDDHelp" xml:space="preserve">
+    <value>遠端控制裝置。</value>
+  </data>
+  <data name="RemoteManagementSettingsEditHelp" xml:space="preserve">
+    <value>控制在 [企業整合] 之下 [遠端管理] 頁面的編輯權限。請導覽至 [組態] \ [系統設定] \ [企業整合] \ [遠端管理]</value>
+  </data>
+  <data name="RemoteSet" xml:space="preserve">
+    <value>遠端</value>
+  </data>
+  <data name="RemoteSetHelp" xml:space="preserve">
+    <value>授予修改遠端儲存相關設定的權限。</value>
+  </data>
+  <data name="RemoveDeviceEnrollmentProgram" xml:space="preserve">
+    <value>註冊計畫移除設定檔</value>
+  </data>
+  <data name="RemoveDeviceEnrollmentProgramHelp" xml:space="preserve">
+    <value>控制從裝置移除 DEP 設定檔的權限。請導覽至 [註冊狀態] 頁面</value>
+  </data>
+  <data name="RenameDeviceHelp" xml:space="preserve">
+    <value>重新命名裝置的指令。</value>
+  </data>
+  <data name="RenewCertificateHelp" xml:space="preserve">
+    <value>授與更新憑證的權限</value>
+  </data>
+  <data name="RepairHub" xml:space="preserve">
+    <value>修復 Hub</value>
+  </data>
+  <data name="RepairHubHelp" xml:space="preserve">
+    <value>授予在裝置上修復 Hub 的權限。</value>
+  </data>
+  <data name="ReportIOS7Compatability" xml:space="preserve">
+    <value>iOS 7 相容性</value>
+  </data>
+  <data name="ReportIOS7CompatabilityHelp" xml:space="preserve">
+    <value>授予存取iOS7相容性報告的權限</value>
+  </data>
+  <data name="ReportsAlertsSys" xml:space="preserve">
+    <value>報告及警示</value>
+  </data>
+  <data name="ReportsAlertsSysHelp" xml:space="preserve">
+    <value>控控制存取「報告和警示」的權限。</value>
+  </data>
+  <data name="ReportsIns" xml:space="preserve">
+    <value>報告</value>
+  </data>
+  <data name="ReportsInsHelp" xml:space="preserve">
+    <value>控制「安裝」下之「報告」頁面的存取權。</value>
+  </data>
+  <data name="RepositoriesCM" xml:space="preserve">
+    <value>存放庫</value>
+  </data>
+  <data name="RepositoriesCMHelp" xml:space="preserve">
+    <value>新增、編輯和刪除內容存放庫。</value>
+  </data>
+  <data name="ReputationAnalysisAb" xml:space="preserve">
+    <value>評價分析</value>
+  </data>
+  <data name="ReputationAnalysisAbHelp" xml:space="preserve">
+    <value>執行 APP 評價分析並檢視結果。</value>
+  </data>
+  <data name="RequestCheckinDD" xml:space="preserve">
+    <value>要求簽入</value>
+  </data>
+  <data name="RequestCheckinDDHelp" xml:space="preserve">
+    <value>向裝置傳送一個訊息並要求它簽入。裝置細目分頁可提供此功能。</value>
+  </data>
+  <data name="ResBlueprints" xml:space="preserve">
+    <value>藍圖</value>
+  </data>
+  <data name="ResBlueprintsHelp" xml:space="preserve">
+    <value>針對使用者和裝置，建立單一的位置來新增並關聯 APP、資源和限制原則。</value>
+  </data>
+  <data name="ResCompliancePolicy" xml:space="preserve">
+    <value>符合性原則</value>
+  </data>
+  <data name="ResCompliancePolicyHelp" xml:space="preserve">
+    <value>透過 REST API 來存取合規原則的資訊</value>
+  </data>
+  <data name="ResConsoleNotifications" xml:space="preserve">
+    <value>主控台通知</value>
+  </data>
+  <data name="ResConsoleNotificationsHelp" xml:space="preserve">
+    <value>檢視並與主控台管理通知互動</value>
+  </data>
+  <data name="ResCustomAttributes" xml:space="preserve">
+    <value>自訂屬性</value>
+  </data>
+  <data name="ResCustomAttributesHelp" xml:space="preserve">
+    <value>REST API 提供存取自訂屬性的權限</value>
+  </data>
+  <data name="ResCustomReports" xml:space="preserve">
+    <value>自訂報告</value>
+  </data>
+  <data name="ResCustomReportsHelp" xml:space="preserve">
+    <value>存取自訂報告頁面。</value>
+  </data>
+  <data name="ResDirectMEMAdvLog" xml:space="preserve">
+    <value>直接 MEM 的進階記錄</value>
+  </data>
+  <data name="ResDirectMEMAdvLogHelp" xml:space="preserve">
+    <value>由 MEM 儀表板存取的功能，讓您能夠透過主控台逐一檢視每台裝置的進階佇列記錄。</value>
+  </data>
+  <data name="ResEmailNotification" xml:space="preserve">
+    <value>電子郵件通知服務設定</value>
+  </data>
+  <data name="ResEmailNotificationHelp" xml:space="preserve">
+    <value>管理 ENS 設定。</value>
+  </data>
+  <data name="ResGlobalServiceExchange" xml:space="preserve">
+    <value>AppleCare</value>
+  </data>
+  <data name="ResGlobalServiceExchangeHelp" xml:space="preserve">
+    <value>控管在 Apple 下 AppleCare 頁面的存取權。</value>
+  </data>
+  <data name="ResJasperIntegration" xml:space="preserve">
+    <value>Jasper 整合</value>
+  </data>
+  <data name="ResJasperIntegrationHelp" xml:space="preserve">
+    <value>管理 Jasper 整合設定。</value>
+  </data>
+  <data name="ResLifecycleNotifications" xml:space="preserve">
+    <value>生命週期通知</value>
+  </data>
+  <data name="ResLifecycleNotificationsHelp" xml:space="preserve">
+    <value>存取「裝置明細」中的生命週期通知。</value>
+  </data>
+  <data name="ResMutualTlsAuthentication" xml:space="preserve">
+    <value>TLS 相互驗證</value>
+  </data>
+  <data name="ResMutualTlsAuthenticationHelp" xml:space="preserve">
+    <value>設定 Workspace ONE Intelligent Hub 和 Workspace ONE UEM 伺服器之間的 TLS 相互驗證</value>
+  </data>
+  <data name="ResNotifications" xml:space="preserve">
+    <value>通知</value>
+  </data>
+  <data name="ResNotificationsHelp" xml:space="preserve">
+    <value>檢視並與主控台管理通知互動</value>
+  </data>
+  <data name="ResOverrideJobLogLevel" xml:space="preserve">
+    <value>覆寫工作記錄層級</value>
+  </data>
+  <data name="ResOverrideJobLogLevelHelp" xml:space="preserve">
+    <value>存取覆寫工作記錄層級的設定</value>
+  </data>
+  <data name="ResProductProvisioning" xml:space="preserve">
+    <value>產品佈建</value>
+  </data>
+  <data name="ResProductProvisioningHelp" xml:space="preserve">
+    <value>在群組層級上管理產品佈建設定</value>
+  </data>
+  <data name="ResProducts" xml:space="preserve">
+    <value>產品</value>
+  </data>
+  <data name="ResProductSets" xml:space="preserve">
+    <value>產品組</value>
+  </data>
+  <data name="ResProductSetsHelp" xml:space="preserve">
+    <value>檢視與管理產品組合的能力。</value>
+  </data>
+  <data name="ResProductsHelp" xml:space="preserve">
+    <value>透過主控台 REST API 來啟用存取「產品」收集的權限。</value>
+  </data>
+  <data name="RestAPIAirWatchEducationWrite" xml:space="preserve">
+    <value>REST API Education 設定寫入</value>
+  </data>
+  <data name="RestAPIAirWatchEducationWriteHelp" xml:space="preserve">
+    <value>用來儲存和編輯教育設定的 REST API</value>
+  </data>
+  <data name="RestApiCartDelete" xml:space="preserve">
+    <value>REST API 購物車刪除</value>
+  </data>
+  <data name="RestApiCartDeleteHelp" xml:space="preserve">
+    <value>用來刪除購物車資料的 REST API</value>
+  </data>
+  <data name="RestApiCartWrite" xml:space="preserve">
+    <value>REST API 購物車寫入</value>
+  </data>
+  <data name="RestApiCartWriteHelp" xml:space="preserve">
+    <value>用來儲存和編輯購物車資料的 REST API</value>
+  </data>
+  <data name="RestApiClassAssignmentSave" xml:space="preserve">
+    <value>REST API 類別指派儲存</value>
+  </data>
+  <data name="RestApiClassAssignmentSaveHelp" xml:space="preserve">
+    <value>用來儲存類別指派的 REST API 呼叫</value>
+  </data>
+  <data name="RestAPIClassDelete" xml:space="preserve">
+    <value>REST API 類別刪除</value>
+  </data>
+  <data name="RestAPIClassDeleteHelp" xml:space="preserve">
+    <value>用來刪除類別資料的 REST API</value>
+  </data>
+  <data name="RestAPIClassLoad" xml:space="preserve">
+    <value>REST API 類別讀取</value>
+  </data>
+  <data name="RestAPIClassLoadHelp" xml:space="preserve">
+    <value>用來檢視類別資料的 REST API</value>
+  </data>
+  <data name="RestAPIClassWrite" xml:space="preserve">
+    <value>REST API 類別寫入</value>
+  </data>
+  <data name="RestAPIClassWriteHelp" xml:space="preserve">
+    <value>用來儲存和編輯類別資料的 REST API</value>
+  </data>
+  <data name="RestApiEduAppsForDeviceRead" xml:space="preserve">
+    <value>用來讀取裝置的 REST API 應用程式</value>
+  </data>
+  <data name="RestApiEduAppsForDeviceReadhelp" xml:space="preserve">
+    <value>用來取得適用於裝置之應用程式清單的 REST API</value>
+  </data>
+  <data name="RestAPILoadEducation" xml:space="preserve">
+    <value>REST API 教育設定讀取</value>
+  </data>
+  <data name="RestAPILoadEducationHelp" xml:space="preserve">
+    <value>用來檢視教育設定的 REST API</value>
+  </data>
+  <data name="RestApiPersonEnrollmentUserMapWrite" xml:space="preserve">
+    <value>REST API Apple School Manager 對應</value>
+  </data>
+  <data name="RestApiPersonEnrollmentUserMapWriteHelp" xml:space="preserve">
+    <value>用來將註冊使用者對應到 Apple School Manager 成員的 REST API</value>
+  </data>
+  <data name="RestApiRosterSyncRead" xml:space="preserve">
+    <value>REST API Apple School Manager 同步讀取</value>
+  </data>
+  <data name="RestApiRosterSyncReadHelp" xml:space="preserve">
+    <value>用來檢查 Apple School Manager 同步狀態的 REST API</value>
+  </data>
+  <data name="RestApiRosterSyncWrite" xml:space="preserve">
+    <value>REST API Apple School Manager 寫入</value>
+  </data>
+  <data name="RestApiRosterSyncWriteHelp" xml:space="preserve">
+    <value>用來啟動 Apple School Manager 同步的 REST API</value>
+  </data>
+  <data name="RestApiUpdatesPolicyDelete" xml:space="preserve">
+    <value>更新原則刪除存取權</value>
+  </data>
+  <data name="RestApiUpdatesPolicyDeleteHelp" xml:space="preserve">
+    <value>啟用在更新原則集合中存取所有「刪除 API」的權限</value>
+  </data>
+  <data name="RestApiUpdatesPolicyExecute" xml:space="preserve">
+    <value>更新原則執行存取權</value>
+  </data>
+  <data name="RestApiUpdatesPolicyExecuteHelp" xml:space="preserve">
+    <value>啟用在更新原則集合中存取所有「執行 API」的權限</value>
+  </data>
+  <data name="RestApiUpdatesPolicyRead" xml:space="preserve">
+    <value>更新原則讀取存取權</value>
+  </data>
+  <data name="RestApiUpdatesPolicyReadHelp" xml:space="preserve">
+    <value>啟用在更新原則集合中所有「唯讀 API」的存取權</value>
+  </data>
+  <data name="RestApiUpdatesPolicyWrite" xml:space="preserve">
+    <value>更新原則寫入權限</value>
+  </data>
+  <data name="RestApiUpdatesPolicyWriteHelp" xml:space="preserve">
+    <value>啟用在更新原則集合中存取所有「寫入 API」的權限</value>
+  </data>
+  <data name="RestEnterpiseIntegration" xml:space="preserve">
+    <value>REST 企業整合</value>
+  </data>
+  <data name="RestEnterpiseIntegrationHelp" xml:space="preserve">
+    <value>企業整合之 REST API</value>
+  </data>
+  <data name="RestrictedActionsSec" xml:space="preserve">
+    <value>受限動作</value>
+  </data>
+  <data name="RestrictedActionsSecHelp" xml:space="preserve">
+    <value>給予檢視「受限動作」螢幕的權限。</value>
+  </data>
+  <data name="RestrictionsDD" xml:space="preserve">
+    <value>限制</value>
+  </data>
+  <data name="RestrictionsDDHelp" xml:space="preserve">
+    <value>要求目前的限制施行在裝置上。</value>
+  </data>
+  <data name="ResVideo" xml:space="preserve">
+    <value>視訊</value>
+  </data>
+  <data name="ResVideoHelp" xml:space="preserve">
+    <value>為視訊 APP 管理設定</value>
+  </data>
+  <data name="ResWebApps" xml:space="preserve">
+    <value>Web APP</value>
+  </data>
+  <data name="ResWebAppsHelp" xml:space="preserve">
+    <value>指派和管理 Web 應用程式</value>
+  </data>
+  <data name="RetentionAd" xml:space="preserve">
+    <value>保留</value>
+  </data>
+  <data name="RetentionAdHelp" xml:space="preserve">
+    <value>授與清除警示的權限。</value>
+  </data>
+  <data name="RevokeCertificateHelp" xml:space="preserve">
+    <value>授與撤銷憑證的權限</value>
+  </data>
+  <data name="RotateRecoveryKeyHelp" xml:space="preserve">
+    <value>授予管理員隨選輪換加密 macOS 裝置之個人復原金鑰的存取權。</value>
+  </data>
+  <data name="RoutingPoliciesHub" xml:space="preserve">
+    <value>路由原則</value>
+  </data>
+  <data name="RoutingPoliciesHubHelp" xml:space="preserve">
+    <value>檢視並管理警示路由原則。</value>
+  </data>
+  <data name="SaveListViewFilters" xml:space="preserve">
+    <value>儲存清單視圖篩選器</value>
+  </data>
+  <data name="SaveListViewFiltersHelp" xml:space="preserve">
+    <value>允許管理員儲存清單視圖頁面上的篩選器</value>
+  </data>
+  <data name="ScepApple" xml:space="preserve">
+    <value>SCEP</value>
+  </data>
+  <data name="ScepAppleHelp" xml:space="preserve">
+    <value>控制對 [iOS] 下的 [SCEP] 頁面的存取權。</value>
+  </data>
+  <data name="ScepCertificateHelp" xml:space="preserve">
+    <value>控制對 [SCEP 憑證工具] 的存取權限。</value>
+  </data>
+  <data name="SdkAnalyticsAb" xml:space="preserve">
+    <value>SDK 分析</value>
+  </data>
+  <data name="SdkAnalyticsAbHelp" xml:space="preserve">
+    <value>控制「應用程式管理的 SDK 分析頁面」之存取權限。</value>
+  </data>
+  <data name="SdkIos" xml:space="preserve">
+    <value>SDK</value>
+  </data>
+  <data name="SdkIosHelp" xml:space="preserve">
+    <value>用於設定 SDK 應用程式安全性的設定。</value>
+  </data>
+  <data name="SearchDevicesDM" xml:space="preserve">
+    <value>搜尋裝置</value>
+  </data>
+  <data name="SearchDevicesDMHelp" xml:space="preserve">
+    <value>存取在裝置管理中的「搜尋裝置」功能表。</value>
+  </data>
+  <data name="SearchNotesHelp" xml:space="preserve">
+    <value>授予搜尋備註及標記的權限</value>
+  </data>
+  <data name="SearchUserAccounts" xml:space="preserve">
+    <value>搜尋</value>
+  </data>
+  <data name="SearchUserAccountsHelp" xml:space="preserve">
+    <value>存取快速搜尋列的使用者選項。</value>
+  </data>
+  <data name="SecureChannelCertificateHelp" xml:space="preserve">
+    <value>上傳正在設定安全性通路的憑證。</value>
+  </data>
+  <data name="SecurityInfoDD" xml:space="preserve">
+    <value>安全性資訊</value>
+  </data>
+  <data name="SecurityInfoDDHelp" xml:space="preserve">
+    <value>存取裝置的安全性稽核訊息。</value>
+  </data>
+  <data name="SecuritySec" xml:space="preserve">
+    <value>安全性</value>
+  </data>
+  <data name="SecuritySecHelp" xml:space="preserve">
+    <value>給予檢視「安全性」螢幕的權限。</value>
+  </data>
+  <data name="ServiceUrlsHelp" xml:space="preserve">
+    <value>授予編輯服務 URL (例如身份識別管理提供者端點) 的權限。</value>
+  </data>
+  <data name="SettingsAndPoliciesSet" xml:space="preserve">
+    <value>設定和原則</value>
+  </data>
+  <data name="SettingsAndPoliciesSetHelp" xml:space="preserve">
+    <value>控制對 APP 設定和原則頁面的存取權。</value>
+  </data>
+  <data name="SettingsAttributeHelp" xml:space="preserve">
+    <value>控制對 [一般] 下的 [屬性] 頁面的存取權。請導覽至 [組態] / [系統設定] / [裝置] / [一般]</value>
+  </data>
+  <data name="SettingsAuditAd" xml:space="preserve">
+    <value>設定稽核</value>
+  </data>
+  <data name="SettingsAuditAdHelp" xml:space="preserve">
+    <value>透過系統代碼，啟用/停用設定檔稽查。</value>
+  </data>
+  <data name="SettingsDeviceAdvanced" xml:space="preserve">
+    <value>設定：裝置 - 進階</value>
+  </data>
+  <data name="SettingsDeviceAdvancedHelp" xml:space="preserve">
+    <value>控制在 [裝置與使用者] 之下 [進階] 頁面的存取權。瀏覽至 [組態]\[系統設定]\[裝置與使用者]\[進階]</value>
+  </data>
+  <data name="SettingsDeviceEnrollmentProgramHelp" xml:space="preserve">
+    <value>控制裝置註冊方案的存取權。請導覽至 [組態] \ [系統設定] \ [裝置] \ [Apple]</value>
+  </data>
+  <data name="SettingsDeviceGeneralAdvanced" xml:space="preserve">
+    <value>設定：裝置 - 一般 - 進階</value>
+  </data>
+  <data name="SettingsDeviceGeneralAdvancedHelp" xml:space="preserve">
+    <value>控制在 [一般] 之下 [進階] 頁面的存取權。瀏覽至 [設定]\[裝置使用者]\[一般]\[進階]</value>
+  </data>
+  <data name="SettingsEm" xml:space="preserve">
+    <value>設定</value>
+  </data>
+  <data name="SettingsEmHelp" xml:space="preserve">
+    <value>控制電子郵件設定的存取權。</value>
+  </data>
+  <data name="SettingsEnrollmentUserPasswordPolicyEditHelp" xml:space="preserve">
+    <value>控制在 [裝置與使用者] 之下 [密碼設定] 頁面的編輯權限。請導覽至 [組態] \ [裝置與使用者設定] \ [一般] \ [安全性] \ [密碼]</value>
+  </data>
+  <data name="SettingsEnrollmentUserPasswordPolicyViewHelp" xml:space="preserve">
+    <value>控制在 [裝置與使用者] 之下 [密碼設定] 頁面的檢視權限。請導覽至 [組態] \ [裝置與使用者設定] \ [一般] \ [安全性] \ [密碼]</value>
+  </data>
+  <data name="SettingsHeaderBasedAuthenticationHelp" xml:space="preserve">
+    <value>控制 [企業整合] 之下 [外部驗證] 頁面的存取權。請導覽至 [設定] \ [系統] \ [企業整合]</value>
+  </data>
+  <data name="SettingsLinux" xml:space="preserve">
+    <value>Linux 設定</value>
+  </data>
+  <data name="SettingsLinuxAgentApplication" xml:space="preserve">
+    <value>設定 - 適用於 Linux 應用程式的 Intelligent Hub</value>
+  </data>
+  <data name="SettingsLinuxAgentApplicationHelp" xml:space="preserve">
+    <value>控制 Linux 的 Intelligent Hub 應用程式設定頁面的存取權</value>
+  </data>
+  <data name="SettingsLinuxAgentSettings" xml:space="preserve">
+    <value>Linux Intelligent Hub 設定</value>
+  </data>
+  <data name="SettingsLinuxAgentSettingsHelp" xml:space="preserve">
+    <value>控制在 Linux 下的 Intelligent Hub 設定頁面的存取權。請瀏覽至 [設定] \ [裝置與使用者] \ [Apple] \ [Linux]</value>
+  </data>
+  <data name="SettingsLinuxHelp" xml:space="preserve">
+    <value>控制在 Linux 下的 Intelligent Hub 設定頁面的存取權。請瀏覽至 [設定] \ [裝置與使用者] \ [Apple] \ [Linux]</value>
+  </data>
+  <data name="SettingsOnlyValidAtPartnerOrCustomer" xml:space="preserve">
+    <value>無法在目前的企業群組層級查看 SaaS 通知。選擇客戶或合作夥伴層級的 OG 來查看 SaaS 通知。</value>
+  </data>
+  <data name="SettingsOverridesAd" xml:space="preserve">
+    <value>設定覆寫</value>
+  </data>
+  <data name="SettingsOverridesAdHelp" xml:space="preserve">
+    <value>檢視並編輯事件記錄的覆寫。</value>
+  </data>
+  <data name="SettingsQnxAgentSettingsHelp" xml:space="preserve">
+    <value>控制在 Qnx 下的代理程式設定頁面的存取權。請導覽至 [組態] \ [系統設定] \ [裝置] \ [Qnx]</value>
+  </data>
+  <data name="SharedDevicesSet" xml:space="preserve">
+    <value>共享的裝置</value>
+  </data>
+  <data name="SharedDevicesSetHelp" xml:space="preserve">
+    <value>控制存取「共享裝置」頁面的權力。</value>
+  </data>
+  <data name="SmartGroupsAb" xml:space="preserve">
+    <value>智慧群組</value>
+  </data>
+  <data name="SmartGroupsAbHelp" xml:space="preserve">
+    <value>編輯應用程式智慧群組的指派。</value>
+  </data>
+  <data name="SmartGroupsGr" xml:space="preserve">
+    <value>智慧群組</value>
+  </data>
+  <data name="SmartGroupsGrHelp" xml:space="preserve">
+    <value>檢視、編輯和刪除智慧群組。</value>
+  </data>
+  <data name="SoftwareInventoryWM" xml:space="preserve">
+    <value>軟體詳細目錄</value>
+  </data>
+  <data name="SoftwareInventoryWMHelp" xml:space="preserve">
+    <value>存取 [WinMo 軟體庫存] 頁面。</value>
+  </data>
+  <data name="SslPinningSec" xml:space="preserve">
+    <value>SSL 固定</value>
+  </data>
+  <data name="SslPinningSecHelp" xml:space="preserve">
+    <value>給予檢視「SSL 固定」畫面的權限。</value>
+  </data>
+  <data name="StagingPPN" xml:space="preserve">
+    <value>註冊預備</value>
+  </data>
+  <data name="StagingPPNHelp" xml:space="preserve">
+    <value>管理佈建原則的註冊預備定義。</value>
+  </data>
+  <data name="StartAwcm" xml:space="preserve">
+    <value>啟動 AWCM</value>
+  </data>
+  <data name="StatusHistoryDD" xml:space="preserve">
+    <value>狀態歷程記錄</value>
+  </data>
+  <data name="StatusHistoryDDHelp" xml:space="preserve">
+    <value>檢視裝置註冊和合規性狀態的歷程記錄。</value>
+  </data>
+  <data name="StopAwcm" xml:space="preserve">
+    <value>停止 AWCM</value>
+  </data>
+  <data name="SummaryInfoPM" xml:space="preserve">
+    <value>摘要資訊</value>
+  </data>
+  <data name="SummaryInfoPMHelp" xml:space="preserve">
+    <value>控制對 [印表機摘要資訊] 頁面的存取權</value>
+  </data>
+  <data name="SuspendBitlockerEncryptionHelp" xml:space="preserve">
+    <value>在 [裝置詳細資料] 頁面設定暫停 Bitlocker 加密</value>
+  </data>
+  <data name="SymbianDev" xml:space="preserve">
+    <value>Symbian</value>
+  </data>
+  <data name="SymbianDevHelp" xml:space="preserve">
+    <value>控制「裝置」下之 Symbian 頁面的存取權。</value>
+  </data>
+  <data name="SyncDD" xml:space="preserve">
+    <value>同步裝置設定</value>
+  </data>
+  <data name="SyncDDHelp" xml:space="preserve">
+    <value>遠端同步裝置設定，例如設定檔和APP。</value>
+  </data>
+  <data name="SyncDeviceEnrollmentProgram" xml:space="preserve">
+    <value>註冊計畫同步裝置</value>
+  </data>
+  <data name="SyncDeviceEnrollmentProgramHelp" xml:space="preserve">
+    <value>控制同步 DEP 裝置的存取權。請導覽至 [註冊狀態] 頁面</value>
+  </data>
+  <data name="SyncDeviceSensors" xml:space="preserve">
+    <value>同步裝置感應器</value>
+  </data>
+  <data name="SyncDeviceSensorsHelp" xml:space="preserve">
+    <value>控制從裝置要求重新整理感應器資料的存取權</value>
+  </data>
+  <data name="SystemCodeAuditAd" xml:space="preserve">
+    <value>系統程式碼稽核</value>
+  </data>
+  <data name="SystemCodeAuditAdHelp" xml:space="preserve">
+    <value>控制對系統代碼稽查的存取權。</value>
+  </data>
+  <data name="SystemHealthSettingsAd" xml:space="preserve">
+    <value>系統健全狀況設定</value>
+  </data>
+  <data name="SystemHealthSettingsAdHelp" xml:space="preserve">
+    <value>檢視並編輯系統健康狀態的設定。</value>
+  </data>
+  <data name="SystemHealthSettingsEditHelp" xml:space="preserve">
+    <value>授予編輯系統健康狀態設定的權限。請瀏覽至: [功能表] \ [組態] \ [系統設定] \ [管理員] \ [診斷] \ [系統健康狀態]</value>
+  </data>
+  <data name="SystemHealthSettingsViewHelp" xml:space="preserve">
+    <value>授予檢視系統健康狀態設定的權限。請瀏覽至: [功能表] \ [組態] \ [系統設定] \ [管理員] \ [診斷] \ [系統健康狀態]</value>
+  </data>
+  <data name="SystemInternalHub" xml:space="preserve">
+    <value>系統內部</value>
+  </data>
+  <data name="SystemInternalHubHelp" xml:space="preserve">
+    <value>產生內部收費報告。</value>
+  </data>
+  <data name="TagManagementViewHelp" xml:space="preserve">
+    <value>授與檢視標籤管理的權限</value>
+  </data>
+  <data name="TagsApi" xml:space="preserve">
+    <value>標記</value>
+  </data>
+  <data name="TagsApiHelp" xml:space="preserve">
+    <value>存取所有的「標記 API」</value>
+  </data>
+  <data name="TagsDev" xml:space="preserve">
+    <value>標記</value>
+  </data>
+  <data name="TagsDevHelp" xml:space="preserve">
+    <value>給予權限來存取標記管理。</value>
+  </data>
+  <data name="TargetedLogDeviceEditHelp" xml:space="preserve">
+    <value>授予編輯目標裝置記錄的權限。請導覽至 [儀表板] \ [裝置儀表板]</value>
+  </data>
+  <data name="TargetedLogDeviceViewHelp" xml:space="preserve">
+    <value>授予檢視目標裝置記錄的權限。請導覽至 [儀表板] \ [裝置儀表板]</value>
+  </data>
+  <data name="TelecomBasicSettingsViewHelp" xml:space="preserve">
+    <value>控制電信基本設定精靈的存取權</value>
+  </data>
+  <data name="TelecomDD" xml:space="preserve">
+    <value>電信</value>
+  </data>
+  <data name="TelecomDDHelp" xml:space="preserve">
+    <value>存取在裝置細目中的裝置電信數據。</value>
+  </data>
+  <data name="TelecomHub" xml:space="preserve">
+    <value>電信</value>
+  </data>
+  <data name="TelecomHubHelp" xml:space="preserve">
+    <value>產生電信管理的報告。</value>
+  </data>
+  <data name="TelecomManagementTel" xml:space="preserve">
+    <value>電信管理</value>
+  </data>
+  <data name="TelecomManagementTelHelp" xml:space="preserve">
+    <value>控制「電信模組」的存取權。顯示在「電信」下可用的選單項目。</value>
+  </data>
+  <data name="TelecomSettingsSys" xml:space="preserve">
+    <value>電信設定</value>
+  </data>
+  <data name="TelecomSettingsSysHelp" xml:space="preserve">
+    <value>限制存取電信設定頁面的權限。</value>
+  </data>
+  <data name="TenantStorageGr" xml:space="preserve">
+    <value>租用戶儲存空間</value>
+  </data>
+  <data name="TenantStorageGrHelp" xml:space="preserve">
+    <value>內部專用: 控制對 [租用戶儲存空間] 頁面的存取。</value>
+  </data>
+  <data name="TenantStorageHelp" xml:space="preserve">
+    <value>內部專用，只有系統管理員角色可以看見。控制對租用戶儲存空間之 [設定]/[管理員]/[儲存空間] 頁面的存取。</value>
+  </data>
+  <data name="TermsOfUseAdmin" xml:space="preserve">
+    <value>使用條款</value>
+  </data>
+  <data name="TermsOfUseAdminHelp" xml:space="preserve">
+    <value>檢視管理員帳戶的使用條款。</value>
+  </data>
+  <data name="TermsOfUseSys" xml:space="preserve">
+    <value>使用條款</value>
+  </data>
+  <data name="TermsOfUseSysHelp" xml:space="preserve">
+    <value>控制存取在「系統設定」和「裝置註冊」中之使用條款頁面的權限。</value>
+  </data>
+  <data name="TestModeEM" xml:space="preserve">
+    <value>測試模式</value>
+  </data>
+  <data name="TestModeEMHelp" xml:space="preserve">
+    <value>編輯電子郵件管理合規原則之測試模式。</value>
+  </data>
+  <data name="TimeScheduleDM" xml:space="preserve">
+    <value>時間排程</value>
+  </data>
+  <data name="TimeScheduleDMHelp" xml:space="preserve">
+    <value>檢視並編輯設定檔的時間表。</value>
+  </data>
+  <data name="TimeScheduleHelp" xml:space="preserve">
+    <value>允許檢視/編輯時間排程設定。</value>
+  </data>
+  <data name="TroubleshootingSys" xml:space="preserve">
+    <value>疑難排解</value>
+  </data>
+  <data name="TroubleshootingSysHelp" xml:space="preserve">
+    <value>控制存取記錄和疑難排解頁面的權限。</value>
+  </data>
+  <data name="UemNotificationsInfo" xml:space="preserve">
+    <value>包括 Workspace ONE UEM 和 Workspace ONE Assist 的通知。</value>
+  </data>
+  <data name="UnApproveUpdate" xml:space="preserve">
+    <value>取消核准更新</value>
+  </data>
+  <data name="UnApproveUpdateHelp" xml:space="preserve">
+    <value>授予向裝置發出取消核准更新指令的權限。</value>
+  </data>
+  <data name="UnApproveUpdates" xml:space="preserve">
+    <value>取消核准更新</value>
+  </data>
+  <data name="UnManagedWipeProtectionHelp" xml:space="preserve">
+    <value>未受管裝置的抹除保護設定</value>
+  </data>
+  <data name="UpdateEditAssignment" xml:space="preserve">
+    <value>更新編輯指派</value>
+  </data>
+  <data name="UpdateEditAssignmentHelp" xml:space="preserve">
+    <value>允許編輯智慧群組的更新指派</value>
+  </data>
+  <data name="UploadCctk" xml:space="preserve">
+    <value>上傳 Cctk</value>
+  </data>
+  <data name="UploadCctkHelp" xml:space="preserve">
+    <value>允許管理員上傳部署組態的 CCTK 套件檔案以設定 BIOS。</value>
+  </data>
+  <data name="UploadUnattendXml" xml:space="preserve">
+    <value>上傳自動 Xml</value>
+  </data>
+  <data name="UploadUnattendXmlHelp" xml:space="preserve">
+    <value>允許管理員上傳自動 XML 檔案以進行部署組態。</value>
+  </data>
+  <data name="UsageTel" xml:space="preserve">
+    <value>使用量</value>
+  </data>
+  <data name="UsageTelHelp" xml:space="preserve">
+    <value>檢視電信使用量的詳細總覽和儀表板。</value>
+  </data>
+  <data name="UserCategoriesDU" xml:space="preserve">
+    <value>使用者類別</value>
+  </data>
+  <data name="UserCategoriesDUHelp" xml:space="preserve">
+    <value>控制存取「系統設定」中「使用者類別」的權限。</value>
+  </data>
+  <data name="UserDetailUserAccounts" xml:space="preserve">
+    <value>使用者詳細資料</value>
+  </data>
+  <data name="UserDetailUserAccountsHelp" xml:space="preserve">
+    <value>存取「檢視使用者詳細資料」的頁面。</value>
+  </data>
+  <data name="UserInfoDD" xml:space="preserve">
+    <value>使用者資訊</value>
+  </data>
+  <data name="UserInfoDDHelp" xml:space="preserve">
+    <value>存取在裝置明細中的使用者訊息。</value>
+  </data>
+  <data name="UserManagementHub" xml:space="preserve">
+    <value>使用者管理</value>
+  </data>
+  <data name="UserManagementHubHelp" xml:space="preserve">
+    <value>產生使用者管理的報告。</value>
+  </data>
+  <data name="UserMigrationHelp" xml:space="preserve">
+    <value>授予權限檢視哪些基本註冊使用者可移轉成LDAP使用者</value>
+  </data>
+  <data name="UserRegistrationDashboard" xml:space="preserve">
+    <value>使用者登錄</value>
+  </data>
+  <data name="UserRegistrationDashboardHelp" xml:space="preserve">
+    <value>從儀表板和使用者帳戶頁面存取註冊狀態的連結。</value>
+  </data>
+  <data name="UserRegistrationEnrollmentStatus" xml:space="preserve">
+    <value>使用者登錄</value>
+  </data>
+  <data name="UserRegistrationEnrollmentStatusHelp" xml:space="preserve">
+    <value>在註冊狀態頁面存取使用者登記。</value>
+  </data>
+  <data name="UserRegistrationHelp" xml:space="preserve">
+    <value>控制檢視 [儀表板] 及 [使用者帳戶] 頁面上註冊狀態連結的存取權。導覽至 [功能表]/[系統管理]/[使用者帳戶]</value>
+  </data>
+  <data name="UserRoleHelp" xml:space="preserve">
+    <value>控制存取使用者帳戶下的身份</value>
+  </data>
+  <data name="UsersRESTSystem" xml:space="preserve">
+    <value>使用者</value>
+  </data>
+  <data name="UsersRESTSystemHelp" xml:space="preserve">
+    <value>註冊使用者帳戶的 REST API</value>
+  </data>
+  <data name="UserStorageSet" xml:space="preserve">
+    <value>使用者儲存空間</value>
+  </data>
+  <data name="UserStorageSetHelp" xml:space="preserve">
+    <value>管理終端使用者的內容存放空間設定。</value>
+  </data>
+  <data name="UserTrackingHub" xml:space="preserve">
+    <value>使用者追蹤</value>
+  </data>
+  <data name="UserTrackingHubHelp" xml:space="preserve">
+    <value>產生追蹤使用者的報告。</value>
+  </data>
+  <data name="VideoManagementSet" xml:space="preserve">
+    <value>視訊管理</value>
+  </data>
+  <data name="VideoManagementSetHelp" xml:space="preserve">
+    <value>將視訊新增至頻道。</value>
+  </data>
+  <data name="ViewAd" xml:space="preserve">
+    <value>檢視</value>
+  </data>
+  <data name="ViewAdHelp" xml:space="preserve">
+    <value>給予檢視快取設定的權限。</value>
+  </data>
+  <data name="ViewAdminAccount" xml:space="preserve">
+    <value>檢視</value>
+  </data>
+  <data name="ViewAdminAccountHelp" xml:space="preserve">
+    <value>檢視管理員帳戶</value>
+  </data>
+  <data name="ViewAdminGroup" xml:space="preserve">
+    <value>檢視</value>
+  </data>
+  <data name="ViewAdminGroupHelp" xml:space="preserve">
+    <value>檢視使用者群組頁面。</value>
+  </data>
+  <data name="ViewAdminRoles" xml:space="preserve">
+    <value>檢視</value>
+  </data>
+  <data name="ViewAdminRolesHelp" xml:space="preserve">
+    <value>檢視使用者身份頁面。</value>
+  </data>
+  <data name="ViewAn" xml:space="preserve">
+    <value>檢視</value>
+  </data>
+  <data name="ViewAnHelp" xml:space="preserve">
+    <value>控制對 [裝置] 下的 [Android] 頁面的存取權。</value>
+  </data>
+  <data name="ViewApple" xml:space="preserve">
+    <value>檢視</value>
+  </data>
+  <data name="ViewAppleHelp" xml:space="preserve">
+    <value>控制對「裝置」下之 Apple 頁面的存取權。</value>
+  </data>
+  <data name="ViewBaselines" xml:space="preserve">
+    <value>檢視基準</value>
+  </data>
+  <data name="ViewBaselinesHelp" xml:space="preserve">
+    <value>控制檢視基準的存取權</value>
+  </data>
+  <data name="ViewCM" xml:space="preserve">
+    <value>檢視</value>
+  </data>
+  <data name="ViewCMHelp" xml:space="preserve">
+    <value>檢視內容管理分頁。</value>
+  </data>
+  <data name="ViewCustomReportSubscriptionHelp" xml:space="preserve">
+    <value>控制檢視自訂報告訂閱的權限。請導覽至 [Hub] \ [報告與分析] \ [自訂報告] \ [訂閱]</value>
+  </data>
+  <data name="ViewDashboardDM" xml:space="preserve">
+    <value>檢視儀表板</value>
+  </data>
+  <data name="ViewDashboardDMHelp" xml:space="preserve">
+    <value>在裝置管理中檢視裝置儀表板頁面。</value>
+  </data>
+  <data name="ViewDeviceManagement" xml:space="preserve">
+    <value>檢視</value>
+  </data>
+  <data name="ViewDeviceManagementHelp" xml:space="preserve">
+    <value>檢視裝置管理模式。</value>
+  </data>
+  <data name="ViewDevicesAb" xml:space="preserve">
+    <value>檢視裝置</value>
+  </data>
+  <data name="ViewDevicesAbHelp" xml:space="preserve">
+    <value>控制「檢視與應用程式有關的裝置」之存取權。</value>
+  </data>
+  <data name="ViewDevicesCM" xml:space="preserve">
+    <value>檢視裝置</value>
+  </data>
+  <data name="ViewDevicesCMHelp" xml:space="preserve">
+    <value>依內容管理分頁中受指派的內容來檢視裝置。</value>
+  </data>
+  <data name="ViewDevicesDM" xml:space="preserve">
+    <value>檢視裝置</value>
+  </data>
+  <data name="ViewDevicesDMHelp" xml:space="preserve">
+    <value>在設定檔下，存取「檢視裝置」的圖示。</value>
+  </data>
+  <data name="ViewDeviceSensors" xml:space="preserve">
+    <value>檢視裝置感應器</value>
+  </data>
+  <data name="ViewDeviceSensorsHelp" xml:space="preserve">
+    <value>控制檢視裝置感應器詳細資料和組態的存取權</value>
+  </data>
+  <data name="ViewDeviceWnsStatus" xml:space="preserve">
+    <value>檢視裝置 WNS 狀態</value>
+  </data>
+  <data name="ViewDeviceWnsStatusHelp" xml:space="preserve">
+    <value>檢視裝置 WNS 狀態的能力。</value>
+  </data>
+  <data name="ViewDM" xml:space="preserve">
+    <value>檢視</value>
+  </data>
+  <data name="ViewDMHelp" xml:space="preserve">
+    <value>在裝置管理下，檢視設定檔分頁。</value>
+  </data>
+  <data name="ViewEducationOverviewHelp" xml:space="preserve">
+    <value>檢視教育總覽頁面</value>
+  </data>
+  <data name="ViewEM" xml:space="preserve">
+    <value>檢視</value>
+  </data>
+  <data name="ViewEMHelp" xml:space="preserve">
+    <value>存取 Email 管理功能表項目。</value>
+  </data>
+  <data name="ViewExtendedDeviceInventory" xml:space="preserve">
+    <value>檢視擴充的裝置詳細目錄</value>
+  </data>
+  <data name="ViewExtendedDeviceInventoryHelp" xml:space="preserve">
+    <value>控制檢視擴充之裝置詳細目錄的存取權。</value>
+  </data>
+  <data name="ViewExtendedDeviceInventoryOnDeviceDetail" xml:space="preserve">
+    <value>在裝置詳細資料頁面上檢視擴充的裝置詳細目錄</value>
+  </data>
+  <data name="ViewExtendedDeviceInventoryOnDeviceDetailHelp" xml:space="preserve">
+    <value>控制在裝置詳細資料頁面中檢視擴充之裝置詳細目錄的存取權。</value>
+  </data>
+  <data name="ViewFileServerConfiguration" xml:space="preserve">
+    <value>檢視檔案伺服器組態</value>
+  </data>
+  <data name="ViewFileServerConfigurationHelp" xml:space="preserve">
+    <value>授予使用者檢視檔案伺服器網格和詳細資料的權限</value>
+  </data>
+  <data name="ViewGen" xml:space="preserve">
+    <value>檢視</value>
+  </data>
+  <data name="ViewGenHelp" xml:space="preserve">
+    <value>控制在「系統設定」中之「裝置」頁面的存取權。</value>
+  </data>
+  <data name="ViewGr" xml:space="preserve">
+    <value>檢視</value>
+  </data>
+  <data name="ViewGrHelp" xml:space="preserve">
+    <value>存取企業群組頁面。</value>
+  </data>
+  <data name="ViewHA" xml:space="preserve">
+    <value>檢視</value>
+  </data>
+  <data name="ViewHAHelp" xml:space="preserve">
+    <value>存取警示模式。</value>
+  </data>
+  <data name="ViewIos" xml:space="preserve">
+    <value>檢視</value>
+  </data>
+  <data name="ViewIosHelp" xml:space="preserve">
+    <value>控制「裝置」下之 iOS 頁面的存取權。</value>
+  </data>
+  <data name="ViewLinux" xml:space="preserve">
+    <value>檢視</value>
+  </data>
+  <data name="ViewLinuxHelp" xml:space="preserve">
+    <value>控制對 [裝置] 之下 [Linux] 頁面的存取權。</value>
+  </data>
+  <data name="ViewNotesHelp" xml:space="preserve">
+    <value>授予檢視備註的權限</value>
+  </data>
+  <data name="ViewOemUpdates" xml:space="preserve">
+    <value>檢視 OEM 更新</value>
+  </data>
+  <data name="ViewOemUpdatesHelp" xml:space="preserve">
+    <value>控制檢視 OEM 更新儀表板的存取權。請導覽至 [功能表] \ [裝置] \ [OEMUpdates]</value>
+  </data>
+  <data name="ViewPM" xml:space="preserve">
+    <value>檢視</value>
+  </data>
+  <data name="ViewPMHelp" xml:space="preserve">
+    <value>週邊設備之設定頁面的存取權。</value>
+  </data>
+  <data name="ViewProvisioningPackages" xml:space="preserve">
+    <value>檢視佈建套件</value>
+  </data>
+  <data name="ViewProvisioningPackagesHelp" xml:space="preserve">
+    <value>控制檢視佈建套件的存取權</value>
+  </data>
+  <data name="ViewSet" xml:space="preserve">
+    <value>檢視</value>
+  </data>
+  <data name="ViewSetHelp" xml:space="preserve">
+    <value>控制對系統設定中 APP 頁面的存取權。</value>
+  </data>
+  <data name="ViewSys" xml:space="preserve">
+    <value>檢視</value>
+  </data>
+  <data name="ViewSysHelp" xml:space="preserve">
+    <value>控制對 [系統設定] 的存取權。</value>
+  </data>
+  <data name="ViewTagHelp" xml:space="preserve">
+    <value>授與檢視標籤的權限</value>
+  </data>
+  <data name="ViewTimeWindow" xml:space="preserve">
+    <value>檢視時間範圍</value>
+  </data>
+  <data name="ViewTimeWindowHelp" xml:space="preserve">
+    <value>控制檢視時間範圍的存取權。</value>
+  </data>
+  <data name="ViewTimeWindowOnDeviceDetail" xml:space="preserve">
+    <value>檢視裝置詳細資料頁面上的時間範圍</value>
+  </data>
+  <data name="ViewTimeWindowOnDeviceDetailHelp" xml:space="preserve">
+    <value>控制在裝置詳細資料頁面中檢視時間範圍的存取權。</value>
+  </data>
+  <data name="ViewUG" xml:space="preserve">
+    <value>檢視</value>
+  </data>
+  <data name="ViewUGHelp" xml:space="preserve">
+    <value>存取使用者群組頁面。</value>
+  </data>
+  <data name="ViewUpdateDevices" xml:space="preserve">
+    <value>檢視更新裝置</value>
+  </data>
+  <data name="ViewUpdateDevicesHelp" xml:space="preserve">
+    <value>控制檢視裝置更新狀態的存取權。請導覽至 [功能表] \ [裝置] \ [更新]</value>
+  </data>
+  <data name="ViewUpdatesHelp" xml:space="preserve">
+    <value>控制檢視更新儀表板的存取權。請導覽至 [功能表] \ [裝置] \ [更新]</value>
+  </data>
+  <data name="ViewUserAccounts" xml:space="preserve">
+    <value>檢視</value>
+  </data>
+  <data name="ViewUserAccountsHelp" xml:space="preserve">
+    <value>檢視使用者帳戶。</value>
+  </data>
+  <data name="ViewUserCategories" xml:space="preserve">
+    <value>檢視</value>
+  </data>
+  <data name="ViewUserCategoriesHelp" xml:space="preserve">
+    <value>存取使用者帳戶的類別。</value>
+  </data>
+  <data name="ViewUserDetails" xml:space="preserve">
+    <value>檢視使用者詳細資料</value>
+  </data>
+  <data name="ViewUserDetailsHelp" xml:space="preserve">
+    <value>檢視 Chrome OS 使用者設定檔的使用者指派。</value>
+  </data>
+  <data name="ViewUserRoles" xml:space="preserve">
+    <value>檢視</value>
+  </data>
+  <data name="ViewUserRolesHelp" xml:space="preserve">
+    <value>檢視使用者身份。</value>
+  </data>
+  <data name="ViewWin" xml:space="preserve">
+    <value>檢視</value>
+  </data>
+  <data name="ViewWindowsTemplateDevicesHelp" xml:space="preserve">
+    <value>允許管理員進行設定，以在 Console 儀表板上檢視已套用 Windows 佈建套件範本的裝置</value>
+  </data>
+  <data name="ViewWindowsTemplatesHelp" xml:space="preserve">
+    <value>允許管理員進行設定，以在 Console 儀表板上檢視 Windows 範本</value>
+  </data>
+  <data name="ViewWinHelp" xml:space="preserve">
+    <value>控制對「裝置」下之 Windows 頁面的存取權。</value>
+  </data>
+  <data name="ViewXmlDM" xml:space="preserve">
+    <value>檢視 XML</value>
+  </data>
+  <data name="ViewXmlDMHelp" xml:space="preserve">
+    <value>在設定檔之下，存取「檢視 XML」的圖示。</value>
+  </data>
+  <data name="VmInstanceLockHelp" xml:space="preserve">
+    <value>鎖定 Horizon FLEX 所管理的虛擬機器執行個體</value>
+  </data>
+  <data name="VmInstanceUnlockHelp" xml:space="preserve">
+    <value>解除鎖定 Horizon FLEX 所管理的虛擬機器執行個體</value>
+  </data>
+  <data name="VmInstanceWipeHelp" xml:space="preserve">
+    <value>抹除 Horizon FLEX 所管理的虛擬機器執行個體</value>
+  </data>
+  <data name="VMwareEmployeeLoginNotification" xml:space="preserve">
+    <value>VMware 員工登入通知</value>
+  </data>
+  <data name="VMwareEmployeeLoginNotificationInfo" xml:space="preserve">
+    <value>啟用為在 VMware 員工存取客戶或合作夥伴 OG 時，通知指定的收件者。</value>
+  </data>
+  <data name="WebConsoleLogHelp" xml:space="preserve">
+    <value>控制存取網路當機記錄檔</value>
+  </data>
+  <data name="WeblinkPM" xml:space="preserve">
+    <value>網頁連結</value>
+  </data>
+  <data name="WeblinkPMHelp" xml:space="preserve">
+    <value>控制對 [印表機網頁連結] 頁面的存取權</value>
+  </data>
+  <data name="WebsiteFiltersSettingsHelp" xml:space="preserve">
+    <value>控制檢視和編輯網站篩選條件設定畫面的存取權。導覽途徑為 [設定] \ [APP] \ [應用程式整合] \ [網站篩選條件]</value>
+  </data>
+  <data name="WiFiPM" xml:space="preserve">
+    <value>Wi-Fi</value>
+  </data>
+  <data name="WiFiPMHelp" xml:space="preserve">
+    <value>控制對 [印表機 Wi-Fi] 頁面的存取權</value>
+  </data>
+  <data name="Windows8RtWin" xml:space="preserve">
+    <value>Windows 8/RT</value>
+  </data>
+  <data name="Windows8RtWinHelp" xml:space="preserve">
+    <value>控制對 WinRT 設定的存取權。</value>
+  </data>
+  <data name="WindowsAppDeploymentsEditHelp" xml:space="preserve">
+    <value>此資源允許管理員在主控台上配置應用程式部署設定</value>
+  </data>
+  <data name="WindowsAutoDiscoverySettingsEditHelp" xml:space="preserve">
+    <value>此資源允許管理員設定自動探索模式為「內部部署」或「雲端裝載」，並為 Windows 自動探索註冊特定網域</value>
+  </data>
+  <data name="WindowsAutoEnrollmentSettings" xml:space="preserve">
+    <value>Windows 自動註冊設定</value>
+  </data>
+  <data name="WindowsAutoEnrollmentSettingsHelp" xml:space="preserve">
+    <value>此資源允許管理員為 Windows 裝置所要執行的佈建代理程式配置適用的設定。</value>
+  </data>
+  <data name="WindowsMobileDD" xml:space="preserve">
+    <value>Windows Mobile</value>
+  </data>
+  <data name="WindowsMobileDDHelp" xml:space="preserve">
+    <value>在裝置明細中管理特定的 Windows Mobile 設定。</value>
+  </data>
+  <data name="WindowsMobileWm" xml:space="preserve">
+    <value>Windows Mobile</value>
+  </data>
+  <data name="WindowsMobileWmHelp" xml:space="preserve">
+    <value>控制「裝置」下之 Windows Mobile 頁面的存取權。</value>
+  </data>
+  <data name="WindowsPcSet" xml:space="preserve">
+    <value>Windows PC</value>
+  </data>
+  <data name="WindowsPcSetHelp" xml:space="preserve">
+    <value>控制對「裝置」下之 Windows PC 頁面之存取權限。</value>
+  </data>
+  <data name="WindowsPhone8Win" xml:space="preserve">
+    <value>Windows Phone 8</value>
+  </data>
+  <data name="WindowsPhone8WinHelp" xml:space="preserve">
+    <value>控制 Windows Phone 設定的存取權。</value>
+  </data>
+  <data name="WindowsPhoneHealthAttestationEdit" xml:space="preserve">
+    <value>編輯 Windows Phone 健康情況證明</value>
+  </data>
+  <data name="WindowsPhoneHealthAttestationEditHelp" xml:space="preserve">
+    <value>此資源允許管理員為 Window 10 行動裝置配置健全狀況證明之設定</value>
+  </data>
+  <data name="WindowsPhoneWin" xml:space="preserve">
+    <value>Windows Phone</value>
+  </data>
+  <data name="WindowsPhoneWinHelp" xml:space="preserve">
+    <value>控制對在「系統設定」中之 Windows Phone 頁面的存取權。</value>
+  </data>
+  <data name="WindowsRuntimeProvisioningHelp" xml:space="preserve">
+    <value>這些設定將允許管理員檢視大量佈建給使用者的 Windows 裝置所需的註冊預備資訊。這也有助於所有裝置設定啟動載入的資訊。</value>
+  </data>
+  <data name="WindowsSampleScheduleHelp" xml:space="preserve">
+    <value>此組設定可讓管理員設定收集 MDM 資料取樣的間隔及設定。</value>
+  </data>
+  <data name="WinmoSWInventoryHub" xml:space="preserve">
+    <value>WinMo S/W 詳細目錄</value>
+  </data>
+  <data name="WinmoSWInventoryHubHelp" xml:space="preserve">
+    <value>為 WinMo S/W 庫存產生報告。</value>
+  </data>
+  <data name="WipeProtectionDU" xml:space="preserve">
+    <value>抹除防護</value>
+  </data>
+  <data name="WipeProtectionDUHelp" xml:space="preserve">
+    <value>控制對於「進階」下之「抹除防護」頁面的存取權。</value>
+  </data>
+  <data name="WorkflowsDD" xml:space="preserve">
+    <value>工作流程</value>
+  </data>
+  <data name="WorkflowsDDHelp" xml:space="preserve">
+    <value>在裝置上查看工作流程執行狀態。</value>
+  </data>
+  <data name="WorkspaceSet" xml:space="preserve">
+    <value>容器</value>
+  </data>
+  <data name="WorkspaceSetHelp" xml:space="preserve">
+    <value>控管「一般」下之 Container 頁面的存取權。</value>
+  </data>
+  <data name="ZonesGr" xml:space="preserve">
+    <value>區域</value>
+  </data>
+  <data name="ZonesGrHelp" xml:space="preserve">
+    <value>為企業群組管理位置區域。</value>
+  </data>
+  <data name="ZplPM" xml:space="preserve">
+    <value>Zpl</value>
+  </data>
+  <data name="ZplPMHelp" xml:space="preserve">
+    <value>控制印表機 Zpl 頁面的存取權</value>
+  </data>
+</root>

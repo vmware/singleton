@@ -1,0 +1,498 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AdminExecutionContext" xml:space="preserve">
+    <value>Administratör</value>
+  </data>
+  <data name="AirWatchDataPlatformService" xml:space="preserve">
+    <value>AirWatch DataPlatform-tjänst</value>
+  </data>
+  <data name="Always32BitArchitecture" xml:space="preserve">
+    <value>32–bitars (tvingat)</value>
+  </data>
+  <data name="AssignedDeviceSensorRequested" xml:space="preserve">
+    <value>Tilldelning av enhetssensor begärd</value>
+  </data>
+  <data name="AssignmentLabel" xml:space="preserve">
+    <value>Tilldelning</value>
+  </data>
+  <data name="AssignSensor" xml:space="preserve">
+    <value>Tilldela sensor till smartgrupper</value>
+  </data>
+  <data name="BackButtonLabel" xml:space="preserve">
+    <value>Tillbaka</value>
+  </data>
+  <data name="BooleanType" xml:space="preserve">
+    <value>Boolesk</value>
+  </data>
+  <data name="CannotDeleteWorkflowResource" xml:space="preserve">
+    <value>Det går inte att ta bort de resurser som är associerade med arbetsflödet.</value>
+  </data>
+  <data name="DataTypeLabel" xml:space="preserve">
+    <value>Datatyp</value>
+  </data>
+  <data name="DateTimeType" xml:space="preserve">
+    <value>Datum tid</value>
+  </data>
+  <data name="DefineQueryLabel" xml:space="preserve">
+    <value>Definiera fråga</value>
+  </data>
+  <data name="DeviceScriptAssignmentGroup" xml:space="preserve">
+    <value>Enhetsskript för tilldelningsgrupp</value>
+  </data>
+  <data name="DeviceSensor" xml:space="preserve">
+    <value>Enhetssensor</value>
+  </data>
+  <data name="DeviceSensorAssignmenGroupRankingUpdated" xml:space="preserve">
+    <value>Rangordningen för enhetssensortilldelningsgruppen har uppdaterats</value>
+  </data>
+  <data name="DeviceSensorAssignmentGroup" xml:space="preserve">
+    <value>Enhetssensor för tilldelningsgrupp</value>
+  </data>
+  <data name="DeviceSensorAssignmentGroupAdded" xml:space="preserve">
+    <value>Tilldelningsgrupp för enhetssensorer har lagts till</value>
+  </data>
+  <data name="DeviceSensorAssignmentGroupDeleted" xml:space="preserve">
+    <value>Tilldelningsgrupp för enhetssensorer har tagits bort.</value>
+  </data>
+  <data name="DeviceSensorAssignmentGroupEdited" xml:space="preserve">
+    <value>Tilldelningsgrupp för enhetssensorer har redigerats</value>
+  </data>
+  <data name="DeviceSensorAssignmentGroupName" xml:space="preserve">
+    <value>Tilldelningsnamn för enhetssensor</value>
+  </data>
+  <data name="DeviceSensorCreated" xml:space="preserve">
+    <value>Enhetssensor skapades</value>
+  </data>
+  <data name="DeviceSensorDeleted" xml:space="preserve">
+    <value>Enhetssensor togs bort</value>
+  </data>
+  <data name="DeviceSensorDeletedSuccessfully" xml:space="preserve">
+    <value>Enhetssensorn har tagits bort</value>
+  </data>
+  <data name="DeviceSensorEdited" xml:space="preserve">
+    <value>Enhetssensor redigerades</value>
+  </data>
+  <data name="DeviceSensorIdentifiers" xml:space="preserve">
+    <value>Identifierare för enhetssensor</value>
+  </data>
+  <data name="DeviceSensorListViewTitle" xml:space="preserve">
+    <value>Listvyn för sensor</value>
+  </data>
+  <data name="DeviceSensorName" xml:space="preserve">
+    <value>Namn på enhetssensor</value>
+  </data>
+  <data name="DeviceSensorNotSupportedForEmployeeOwnedDevice" xml:space="preserve">
+    <value>Personalägd enhet: enhetssensordata begärs inte</value>
+  </data>
+  <data name="DeviceSensorOg" xml:space="preserve">
+    <value>Enhetssensor för organisationsgrupp</value>
+  </data>
+  <data name="DeviceSensorPersistedInDeviceState" xml:space="preserve">
+    <value>Sensorprov sparat i enhetsstatus</value>
+  </data>
+  <data name="DeviceSensorPersistedInIntelligence" xml:space="preserve">
+    <value>Sensorprov sparat i Intelligence</value>
+  </data>
+  <data name="DeviceSensorSampleReceived" xml:space="preserve">
+    <value>Prov för enhetssensor mottaget</value>
+  </data>
+  <data name="DeviceSensorSampleReceivedWithErrors" xml:space="preserve">
+    <value>Provet togs emot med fel</value>
+  </data>
+  <data name="DeviceSensorSampleSentFailed" xml:space="preserve">
+    <value>Det gick inte att skicka sensorns samplingsvärde</value>
+  </data>
+  <data name="DeviceSensorSampleSentSuccess" xml:space="preserve">
+    <value>Sensors samplingsvärde skickades</value>
+  </data>
+  <data name="DeviceSensorSmartGroupAssigned" xml:space="preserve">
+    <value>Enhetssensor tilldelad till smartgrupp</value>
+  </data>
+  <data name="EditSensor" xml:space="preserve">
+    <value>Redigera sensor</value>
+  </data>
+  <data name="Either32Or64BitArchitecture" xml:space="preserve">
+    <value>Auto</value>
+  </data>
+  <data name="EmployeeOwnedDevicesWillNotSupportSensors" xml:space="preserve">
+    <value>Personalägda enheter exkluderas automatiskt från sensortilldelningen av användarintegritetsskäl.</value>
+  </data>
+  <data name="ExecutionArchitecture" xml:space="preserve">
+    <value>Körningsarkitektur</value>
+  </data>
+  <data name="ExecutionArchitectureInfo" xml:space="preserve">
+    <value>
+32-bitars (tvingat): kör som 32-bitars oavsett målenhetsarkitekturen.
+32-bitars: kör endast på 32-bitarsenheter.
+64-bitars: kör endast på 64-bitarsenheter.
+Automatiskt: kör baserat på målenhetsarkitekturen.</value>
+  </data>
+  <data name="ExecutionContextLabel" xml:space="preserve">
+    <value>Körningskontext</value>
+  </data>
+  <data name="FinishButtonLabel" xml:space="preserve">
+    <value>Avsluta</value>
+  </data>
+  <data name="ImportCodeButtonText" xml:space="preserve">
+    <value>Importera från VMwares mallbibliotek</value>
+  </data>
+  <data name="IncludeInSmartGroupLabel" xml:space="preserve">
+    <value>Inkludera i Smart grupper</value>
+  </data>
+  <data name="IntegerType" xml:space="preserve">
+    <value>Heltal</value>
+  </data>
+  <data name="LastExecutedDate" xml:space="preserve">
+    <value>Senaste körningsdatum</value>
+  </data>
+  <data name="MacOsPeriodicTriggerInfoText" xml:space="preserve">
+    <value>Kör regelbundet baserat på det konfigurerade schemat för datastickprovsintervall för Intelligent Hub som definieras i Inställningar &gt; Enheter och användare &gt; Apple &gt; Apple macOS &gt; Intelligent Hub-inställningar</value>
+  </data>
+  <data name="ManageEndpointResources" xml:space="preserve">
+    <value>Hantera slutpunktsresurser</value>
+  </data>
+  <data name="ManageEndpointResourcesInfo" xml:space="preserve">
+    <value>Använd sensorvärden som villkor i Freestyle för att hantera slutpunktsresurser baserat på anpassade kriterier.</value>
+  </data>
+  <data name="NetworkChangeTriggerInfo" xml:space="preserve">
+    <value>Kör när en nätverksändring upptäcks på enheten (t.ex. att växla från Ethernet till Wi-Fi)</value>
+  </data>
+  <data name="NewSensor" xml:space="preserve">
+    <value>Ny sensor</value>
+  </data>
+  <data name="NextButtonLabel" xml:space="preserve">
+    <value>Nästa</value>
+  </data>
+  <data name="NoRecordsFound" xml:space="preserve">
+    <value>Inga skript hittades, skapa ett nytt för att starta</value>
+  </data>
+  <data name="NoSensorsFound" xml:space="preserve">
+    <value>Inga sensorer hittades, skapa en ny för att starta</value>
+  </data>
+  <data name="NotRunLabel" xml:space="preserve">
+    <value>Kör inte</value>
+  </data>
+  <data name="Only32BitArchitecture" xml:space="preserve">
+    <value>32-bitars</value>
+  </data>
+  <data name="Only64BitArchitecture" xml:space="preserve">
+    <value>64-bitars</value>
+  </data>
+  <data name="PlatformLabel" xml:space="preserve">
+    <value>Plattform</value>
+  </data>
+  <data name="QueryType" xml:space="preserve">
+    <value>Frågetyp</value>
+  </data>
+  <data name="QueryTypeHelpText" xml:space="preserve">
+    <value>Denna inställning avgör målet för enhetsförfrågan</value>
+  </data>
+  <data name="QueryTypeNotSetError" xml:space="preserve">
+    <value>Frågetyp får inte vara tom</value>
+  </data>
+  <data name="ReplaceWarningForScriptUpload" xml:space="preserve">
+    <value>
+	Överföring av ett skript ersätter allt befintligt innehåll i redigeraren.
+	
+	Obs: Totalt 4 kB data kommer sparas per enhet för alla sensorer
+	Obs: Skriptets tidsgräns kommer uppnås om det inte är slutfört på 5 minuter.
+	</value>
+  </data>
+  <data name="RequestSensorsSyncFailed" xml:space="preserve">
+    <value>Enhetskommandot för att synkronisera sensorer köades inte</value>
+  </data>
+  <data name="RequestSensorsSyncSuccess" xml:space="preserve">
+    <value>Enhetskommandot för att synkronisera sensorer köades</value>
+  </data>
+  <data name="ResponseLabel" xml:space="preserve">
+    <value>Svar</value>
+  </data>
+  <data name="RunButtonText" xml:space="preserve">
+    <value>Kör</value>
+  </data>
+  <data name="ScheduleTriggerInfo" xml:space="preserve">
+    <value>När utlösaren är inställd på Schemalägg samlar den här sensorn in och överför data baserat på sensorschemat som är konfigurerat på inställningssidan för exempelscheman i Windows.</value>
+  </data>
+  <data name="ScriptExecutedAt" xml:space="preserve">
+    <value>Kördes</value>
+  </data>
+  <data name="ScriptLabel" xml:space="preserve">
+    <value>Skript/kommando</value>
+  </data>
+  <data name="SelectSmartGroupToAssignSensor" xml:space="preserve">
+    <value>Välj vilka smartgrupper som denna sensor ska tilldelas till.</value>
+  </data>
+  <data name="Sensor" xml:space="preserve">
+    <value>Sensor</value>
+  </data>
+  <data name="SensorAssignmentDeploymentTabDesc" xml:space="preserve">
+    <value>Välj vilka utlösare som ska få den här sensorn att köras på tilldelade enheter</value>
+  </data>
+  <data name="SensorAssignmentGroups" xml:space="preserve">
+    <value>Sensorer</value>
+  </data>
+  <data name="SensorDellCustomBIOSQuery" xml:space="preserve">
+    <value>Dells anpassade BIOS</value>
+  </data>
+  <data name="SensorDuplicateNameError" xml:space="preserve">
+    <value>En sensor med samma namn finns redan. Använd ett annat namn.</value>
+  </data>
+  <data name="SensorEventSelectionError" xml:space="preserve">
+    <value>Välj en eller flera händelsetyper för att fortsätta</value>
+  </data>
+  <data name="SensorEventTrigger" xml:space="preserve">
+    <value>Händelse</value>
+  </data>
+  <data name="SensorGoToOptIn" xml:space="preserve">
+    <value>Klicka här för att anmäla dig</value>
+  </data>
+  <data name="SensorLoginEvent" xml:space="preserve">
+    <value>Logga in</value>
+  </data>
+  <data name="SensorLogoutEvent" xml:space="preserve">
+    <value>Utloggning</value>
+  </data>
+  <data name="SensorMenuDescription" xml:space="preserve">
+    <value>Sensormenybeskrivning</value>
+  </data>
+  <data name="SensorName" xml:space="preserve">
+    <value>Sensornamn</value>
+  </data>
+  <data name="SensorNameFormatError" xml:space="preserve">
+    <value>Måste vara mellan 2 och 64 tecken med endast en kombination av små bokstäver, siffror och understreck. Det första tecknet måste vara en liten bokstav.</value>
+  </data>
+  <data name="SensorNameHelpText" xml:space="preserve">
+    <value>Sensornamnet är nyckeln till de data som returneras från enheten när sensorns skript/sökning körs. Nyckeln och värdet returneras och lagras i Workspace ONE Intelligence och kan användas i rapporter, scheman och automatiseringar</value>
+  </data>
+  <data name="SensorNameNotSetError" xml:space="preserve">
+    <value>Sensornamn kan inte vara tomt</value>
+  </data>
+  <data name="SensorOGNotOptedInfo" xml:space="preserve">
+    <value>Inställning av sensorer kräver Workspace ONE Intelligence. Anmäl dig till Workspace ONE Intelligence och gå tillbaka till den här sidan för att skapa sensorer.</value>
+  </data>
+  <data name="SensorPowershellQuery" xml:space="preserve">
+    <value>PowerShell</value>
+  </data>
+  <data name="Sensors" xml:space="preserve">
+    <value>Sensorer</value>
+  </data>
+  <data name="SensorScheduleTrigger" xml:space="preserve">
+    <value>Schema</value>
+  </data>
+  <data name="SensorsCreateReports" xml:space="preserve">
+    <value>Skapa rapporter och kontrollpaneler</value>
+  </data>
+  <data name="SensorsCreateReportsInfo" xml:space="preserve">
+    <value>Använd Workspace ONE Intelligence för att skapa rapporter och kontrollpaneler baserat på sensordata. </value>
+  </data>
+  <data name="SensorScriptHash" xml:space="preserve">
+    <value>Sensor Script Hash</value>
+  </data>
+  <data name="SensorScriptInvalid" xml:space="preserve">
+    <value>Skript/kommando är ett obligatoriskt värde. Specificera ett giltigt skript för att spara denna sensor.</value>
+  </data>
+  <data name="SensorsDD" xml:space="preserve">
+    <value>Sensorer</value>
+  </data>
+  <data name="SensorsDDHelp" xml:space="preserve">
+    <value>Kontrollerar åtkomst till visning av enhetssensorns värden och att begära synkronisering.</value>
+  </data>
+  <data name="SensorsHeader" xml:space="preserve">
+    <value>Automatiserad insamling av slutpunkter</value>
+  </data>
+  <data name="SensorsHelp" xml:space="preserve">
+    <value>Kontrollerar åtkomst till visning och hantering av enhetens sensorer</value>
+  </data>
+  <data name="SensorsInfo" xml:space="preserve">
+    <value>Automatisera datainsamling för dina slutpunkter med hjälp av vanliga skriptspråk, snabbt och säkert. Läs mer om sensorer i</value>
+  </data>
+  <data name="SensorsPurpose" xml:space="preserve">
+    <value>Vad kan jag göra med sensorer?</value>
+  </data>
+  <data name="SensorsRetrieveDeviceData" xml:space="preserve">
+    <value>Hämta enhetsdata</value>
+  </data>
+  <data name="SensorsRetrieveDeviceDataInfo" xml:space="preserve">
+    <value>Använd vanliga skriptspråk och säkra miljövariabler för att hämta data från skrivbordsenheter.</value>
+  </data>
+  <data name="SensorsSync" xml:space="preserve">
+    <value>Sensorer</value>
+  </data>
+  <data name="SensorStartupEvent" xml:space="preserve">
+    <value>Starta</value>
+  </data>
+  <data name="SensorStepDefinition" xml:space="preserve">
+    <value>Konfigurera knappnamn, beskrivning och utlösare för data som returneras av sensorn.</value>
+  </data>
+  <data name="SensorUserSwitchEvent" xml:space="preserve">
+    <value>Använder Switch</value>
+  </data>
+  <data name="SensorValue" xml:space="preserve">
+    <value>Sensorvärde</value>
+  </data>
+  <data name="SetupScriptParametersMac" xml:space="preserve">
+    <value>Skapa variabler som är en del av skriptmiljön under körningen.
+Skalskript kan hänvisa till variabler direkt enligt namn (t.ex. $myvariable) och Python 3-skript kan hänvisa till variabler med os-modulen (t.ex. os.getenv('myvariable') )</value>
+  </data>
+  <data name="SetupScriptParametersWindow" xml:space="preserve">
+    <value>Skapa variabler som ska skickas med ett skript som miljövariabler.
+PowerShell-skript kan referera till variabler som definieras här genom att anropa $env:key där key är nyckelfältet som anges nedan.</value>
+  </data>
+  <data name="SmartGroupCannotBeAssignedToMultipleAssignmentGroups" xml:space="preserve">
+    <value>Det går inte att tilldela dubbletter av smartgrupp(er) till flera tilldelningsgrupper.</value>
+  </data>
+  <data name="StringType" xml:space="preserve">
+    <value>Sträng</value>
+  </data>
+  <data name="SyncSensors" xml:space="preserve">
+    <value>Synkronisera sensorer</value>
+    <comment>Label key for DeviceCommand</comment>
+  </data>
+  <data name="SystemExecutionContext" xml:space="preserve">
+    <value>System</value>
+  </data>
+  <data name="Triggers" xml:space="preserve">
+    <value>Utlösare</value>
+  </data>
+  <data name="TriggerTypeHelpText" xml:space="preserve">
+    <value>När utlösaren är inställd på schema samlar sensorn in data och överför den baserat på sensorschemat som konfigureras på inställningssidan för Windows samplingsschema. Val av en händelse gör att data samlas in baserat på valda enhetshändelser och att data överförs baserat på inställningar som konfigureras på inställningssidan för Windows samplingsschema.</value>
+  </data>
+  <data name="TriggerTypeLabel" xml:space="preserve">
+    <value>Utlösartyp</value>
+  </data>
+  <data name="UseInLookUpLabel" xml:space="preserve">
+    <value>Använd som uppslagsvärde</value>
+  </data>
+  <data name="UserExecutionContext" xml:space="preserve">
+    <value>Nuvarande användare</value>
+  </data>
+  <data name="ValueTypeHelpText" xml:space="preserve">
+    <value>Värdetyp avgör datatyp för den insamlade samplingen. Detta hjälper Workspace ONE att avgöra vilka operatörer och kommandon som ska tillhandahållas för denna datatyp.</value>
+  </data>
+  <data name="ValueTypeLabel" xml:space="preserve">
+    <value>Värdetyp</value>
+  </data>
+  <data name="ValueTypeNotSetError" xml:space="preserve">
+    <value>Värdetyp får inte vara tom</value>
+  </data>
+  <data name="WindowsPeriodicTriggerInfoText" xml:space="preserve">
+    <value>Kör regelbundet baserat på det konfigurerade schemat för datastickprovsintervall för Intelligent Hub som definieras i Inställningar &gt; Enheter och användare &gt; Windows &gt; Windows Desktop &gt; Intelligent Hub-inställningar</value>
+  </data>
+</root>

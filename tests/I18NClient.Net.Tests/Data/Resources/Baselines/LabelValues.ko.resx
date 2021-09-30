@@ -1,0 +1,486 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AddedPolices" xml:space="preserve">
+    <value>추가된 정책</value>
+  </data>
+  <data name="AssignBaseline" xml:space="preserve">
+    <value>기준선 할당</value>
+  </data>
+  <data name="AssignBaselineDescription" xml:space="preserve">
+    <value>기준선을 할당할 스마트 그룹을 선택하십시오.</value>
+  </data>
+  <data name="AssignBaselineDescription2" xml:space="preserve">
+    <value>기준선을 할당할 스마트 그룹을 선택합니다. 특정 그룹을 제외하려면 제외를 선택합니다. 게시된 기준선에 제외를 추가하면 제외된 장치에서 기준선이 제거됩니다.</value>
+  </data>
+  <data name="AssignBaselineLocationGroupNotFound" xml:space="preserve">
+    <value>조직 그룹을 찾을 수 없어 기준선을 할당할 수 없습니다.</value>
+  </data>
+  <data name="AssignBaselineNotFound" xml:space="preserve">
+    <value>기준선을 찾을 수 없어 기준선을 할당할 수 없습니다.</value>
+  </data>
+  <data name="AssignedDevicesArg" xml:space="preserve">
+    <value>할당: {0}개 장치</value>
+  </data>
+  <data name="Assignments" xml:space="preserve">
+    <value>할당</value>
+  </data>
+  <data name="Baseline" xml:space="preserve">
+    <value>기준선</value>
+  </data>
+  <data name="BaselineAssigned" xml:space="preserve">
+    <value>기준선 할당됨</value>
+  </data>
+  <data name="BaselineAssignmentFailed" xml:space="preserve">
+    <value>기준선을 할당할 수 없습니다. 다시 시도하십시오.</value>
+  </data>
+  <data name="BaselineAssignmentSuccessful" xml:space="preserve">
+    <value>업데이트 할당에 기준선을 성공적으로 게시했습니다.</value>
+  </data>
+  <data name="BaselineBlobFailed" xml:space="preserve">
+    <value>패키지를 생성할 수 없음에 따라 기준선을 생성하지 못했습니다.</value>
+  </data>
+  <data name="BaselineCombinedBlobFailed" xml:space="preserve">
+    <value>사용자 지정을 포함하는 패키지를 생성할 수 없음에 따라 기준선을 생성하지 못했습니다.</value>
+  </data>
+  <data name="BaselineContainsExe" xml:space="preserve">
+    <value>사용자 지정 기준선에 실행 파일이 포함되어 있습니다. 제거 후 다시 시도하십시오.</value>
+  </data>
+  <data name="BaselineCopyFailed" xml:space="preserve">
+    <value>선택한 기준선 복사에 실패했습니다.</value>
+  </data>
+  <data name="BaselineCopySuccessful" xml:space="preserve">
+    <value>선택한 기준선이 복사되었습니다.</value>
+  </data>
+  <data name="BaselineCreated" xml:space="preserve">
+    <value>기준선 생성됨</value>
+  </data>
+  <data name="BaselineCreationFailed" xml:space="preserve">
+    <value>기준선 작성 실패함.</value>
+  </data>
+  <data name="BaselineCreationSuccessful" xml:space="preserve">
+    <value>기준선을 성공적으로 저장했습니다.</value>
+  </data>
+  <data name="BaselineCustomizationFailed" xml:space="preserve">
+    <value>사용자 지정을 적용할 수 없어서 기준선을 생성하지 못했습니다.</value>
+  </data>
+  <data name="BaselineDeleted" xml:space="preserve">
+    <value>기준선 삭제됨</value>
+  </data>
+  <data name="BaselineDeleteFailed" xml:space="preserve">
+    <value>기준선을 삭제하지 못했습니다. 다시 시도하십시오.</value>
+  </data>
+  <data name="BaselineDeleteSuccessful" xml:space="preserve">
+    <value>기준선을 성공적으로 삭제했습니다.</value>
+  </data>
+  <data name="BaselineDetails" xml:space="preserve">
+    <value>기준선 이름 및 버전</value>
+  </data>
+  <data name="BaselineErrorCode" xml:space="preserve">
+    <value>장치 오류 코드</value>
+  </data>
+  <data name="BaselineErrorMessage" xml:space="preserve">
+    <value>오류 메시지</value>
+  </data>
+  <data name="BaselineFileCorrupt" xml:space="preserve">
+    <value>사용자 지정 기준선이 유효한 zip 파일이 아닙니다.</value>
+  </data>
+  <data name="BaselineFileEmpty" xml:space="preserve">
+    <value>사용자 지정 기준선이 비어있습니다. 유효한 파일로 다시 시도하십시오.</value>
+  </data>
+  <data name="BaselineFileMissingPolicies" xml:space="preserve">
+    <value>사용자 지정 기준선에 대한 선택된 파일이 권장 규격을 따르지 않습니다. 문서를 참조하여 수정하십시오.</value>
+  </data>
+  <data name="BaselineFileSizeError" xml:space="preserve">
+    <value>사용자 지정 기준선이 5MB의 최대 크기 제한을 초과했습니다.</value>
+  </data>
+  <data name="BaselineGetPolicyTreeFailed" xml:space="preserve">
+    <value>사용자 지정에 대한 정책을 로드할 수 없습니다. 나중에 다시 시도하십시오.</value>
+  </data>
+  <data name="BaselineInvalidRequest" xml:space="preserve">
+    <value>필수 필드가 모두 채워졌는지 확인하십시오.</value>
+  </data>
+  <data name="BaselineMissingPolicies" xml:space="preserve">
+    <value>하나 또는 그 이상의 정책이 제거 또는 사용할 수 없게 되어 기준선을 생성하지 못했습니다.</value>
+  </data>
+  <data name="BaselineModified" xml:space="preserve">
+    <value>기준선 수정됨</value>
+  </data>
+  <data name="BaselineName" xml:space="preserve">
+    <value>기준선 이름</value>
+  </data>
+  <data name="BaselinePendingReboot" xml:space="preserve">
+    <value>재부팅 보류 중</value>
+  </data>
+  <data name="BaselinePolicyFieldError" xml:space="preserve">
+    <value>하나 또는 그 이상의 정책이 잘못된 값을 갖고 있어서 기준선을 생성하지 못했습니다.</value>
+  </data>
+  <data name="BaselinePolicyGenerationFailed" xml:space="preserve">
+    <value>하나 또는 그 이상의 정책을 생성할 수 없어서 기준선을 생성하지 못했습니다.</value>
+  </data>
+  <data name="Baselines" xml:space="preserve">
+    <value>기준선</value>
+  </data>
+  <data name="BaselinesBlobID" xml:space="preserve">
+    <value>기준선 Blob ID</value>
+  </data>
+  <data name="BaselinesCount" xml:space="preserve">
+    <value>기준선 개수</value>
+  </data>
+  <data name="BaselineServiceUnavailable" xml:space="preserve">
+    <value>기준선 서비스 "https://www.vmwarebaselines.com"에 연결할 수 없습니다. 자세한 내용은 연결 및 로그를 확인하십시오.</value>
+  </data>
+  <data name="BaselinesMenuDescription" xml:space="preserve">
+    <value>기준선 보기</value>
+  </data>
+  <data name="BaselineStatusCallFailed" xml:space="preserve">
+    <value>기준선 상태를 검색할 수 없습니다. 나중에 다시 시도하십시오.</value>
+  </data>
+  <data name="BaselineTooltipCis" xml:space="preserve">
+    <value>선택된 버전과 수준에 대한 CIS 벤치마크 권장 설정을 사용합니다.</value>
+  </data>
+  <data name="BaselineTooltipCustom" xml:space="preserve">
+    <value>장치에 적용하려면 사용자 지정 그룹 정책 개체(GPO) 백업을 업로드합니다. GPO 백업은 5MB 이하의 ZIP 파일이어야 합니다.</value>
+  </data>
+  <data name="BaselineTooltipWindows" xml:space="preserve">
+    <value>Microsoft 보안 툴킷의 보안 기준선 구성 요소("SBC")는 Microsoft에서 작성했으며 Windows 10 장치 관리에만 사용할 수 있습니다. SBC는 있는 그대로 제공되며 VMware 또는 Microsoft에서는 어떠한 종류의 보장도 하지 않습니다. SBC에 대한 자세한 내용은 {0}에서 확인할 수 있습니다.</value>
+  </data>
+  <data name="BaselineUUID" xml:space="preserve">
+    <value>기준선 UUID</value>
+  </data>
+  <data name="BlankBaseline" xml:space="preserve">
+    <value>직접 생성</value>
+  </data>
+  <data name="BlankBaselineDescription" xml:space="preserve">
+    <value>정책 카탈로그에서 선택하여 자체 기준선을 생성합니다.</value>
+  </data>
+  <data name="ChooseTemplate" xml:space="preserve">
+    <value>기준선 선택</value>
+  </data>
+  <data name="ComplianceDataMissing" xml:space="preserve">
+    <value>이 기준선에 대해 규정 준수 데이터를 아직 사용할 수 없습니다. 규정 준수 샘플 보고를 트리거하기 위해 할당된 장치에 기준선을 다시 게시합니다.</value>
+  </data>
+  <data name="ConfirmCancelBaseline" xml:space="preserve">
+    <value>이 기준선에 대한 변경 사항은 저장되지 않습니다. 변경 사항을 삭제하시겠습니까?</value>
+  </data>
+  <data name="ConfirmCloudDescription" xml:space="preserve">
+    <value>Workspace ONE 기준선을 사용하여 VMware에서 원격으로 저장하는 데이터에 액세스합니다. 계속 진행하지 않으려면 취소를 클릭하십시오.</value>
+  </data>
+  <data name="ConfirmCloudTitle" xml:space="preserve">
+    <value>원격 데이터 액세스</value>
+  </data>
+  <data name="ConfirmDeleteBaseline" xml:space="preserve">
+    <value>이 기준선을 할당한 경우 삭제하면 모든 장치에서 제거됩니다. 계속하시겠습니까?</value>
+  </data>
+  <data name="CopyBaseline" xml:space="preserve">
+      <value>기준선 복사</value>
+  </data>
+  <data name="CustomBaseline" xml:space="preserve">
+    <value>사용자 지정 기준선</value>
+  </data>
+  <data name="CustomBaselineCompliance" xml:space="preserve">
+    <value>사용자 지정 기준선에 대한 규정 준수 데이터는 압축된 정책이 아니라 기준선에 추가된 정책에 따라 평가됩니다.</value>
+  </data>
+  <data name="CustomBaselineComplianceDataMissing" xml:space="preserve">
+    <value>압축된 정책을 검토할 수 없기 때문에 규정 준수 데이터가 사용자 지정 기준선에 대해 사용할 수 없거나 완전하지 않습니다.</value>
+  </data>
+  <data name="CustomBaselineError" xml:space="preserve">
+    <value>사용자 지정 기준선에 대한 파일을 선택하십시오.</value>
+  </data>
+  <data name="CustomBaselineHelpLink" xml:space="preserve">
+    <value>GPO 업로드 지침 보기</value>
+  </data>
+  <data name="CustomizeSelectPolicy" xml:space="preserve">
+    <value>설정을 보려면 정책을 선택하십시오.</value>
+  </data>
+  <data name="CustomizeStepDescription" xml:space="preserve">
+    <value>필요에 맞게 {0}에서 정책을 검토하거나 사용자 지정할 수 있습니다.</value>
+  </data>
+  <data name="DefinitionStepDescription" xml:space="preserve">
+    <value>기준선에 이름과 설명을 제공합니다.</value>
+  </data>
+  <data name="DeleteBaseline" xml:space="preserve">
+    <value>기준선 삭제</value>
+  </data>
+  <data name="DeviceBaselineLocationGroupNotFound" xml:space="preserve">
+    <value>조직 그룹을 찾을 수 없어 기준선에 대한 장치를 가져올 수 없습니다.</value>
+  </data>
+  <data name="DeviceBaselineNotFound" xml:space="preserve">
+    <value>기준선을 찾을 수 없어 기준선에 대한 장치를 가져올 수 없습니다.</value>
+  </data>
+  <data name="DiscardAndExit" xml:space="preserve">
+    <value>삭제 및 종료</value>
+  </data>
+  <data name="EditBaseline" xml:space="preserve">
+    <value>기준선 편집</value>
+  </data>
+  <data name="EditRequestError" xml:space="preserve">
+    <value>선택한 기준선 버전을 더 이상 사용할 수 없습니다. 새로 생성하십시오.</value>
+  </data>
+  <data name="EmptyBaselineList" xml:space="preserve">
+    <value>기준선을 찾을 수 없음</value>
+  </data>
+  <data name="EmptyDeviceList" xml:space="preserve">
+    <value>장치를 찾을 수 없음</value>
+  </data>
+  <data name="EmptyListInput" xml:space="preserve">
+    <value>하나 이상의 항목이 필요합니다.</value>
+  </data>
+  <data name="EmptyPolicyList" xml:space="preserve">
+    <value>추가된 정책 없음</value>
+  </data>
+  <data name="ErrorBaselineDeviceException" xml:space="preserve">
+    <value>기준선을 적용할 수 없습니다. 업데이트 적용을 위해 로그를 확인하십시오.</value>
+  </data>
+  <data name="ErrorDownloadBlobFailed" xml:space="preserve">
+    <value>기준선에 액세스할 수 없습니다. 업데이트 적용을 위해 로그를 확인하십시오.</value>
+  </data>
+  <data name="ErrorInvalidExecutable" xml:space="preserve">
+    <value>LGPO.exe가 유효하지 않습니다. 업데이트 적용을 위해 실행 파일을 교체하십시오.</value>
+  </data>
+  <data name="ErrorLGPOBackupFailed" xml:space="preserve">
+    <value>기준선을 적용할 수 없습니다. 업데이트 적용을 위해 로그를 확인하십시오.</value>
+  </data>
+  <data name="ErrorMissingLGPO" xml:space="preserve">
+    <value>LGPO.exe를 기준선에 적용할 수 없습니다.</value>
+  </data>
+  <data name="ErrorSavingFileInFolder" xml:space="preserve">
+    <value>기준선을 저장할 수 없습니다. 업데이트 적용을 위해 로그를 확인하십시오.</value>
+  </data>
+  <data name="ErrorUpdatingDatabase" xml:space="preserve">
+    <value>기준선 상태를 알 수 없습니다. 자세한 정보를 보려면 로그를 확인하십시오.</value>
+  </data>
+  <data name="ErrorZipExtractionFailed" xml:space="preserve">
+    <value>기준선을 추출할 수 없습니다. 업데이트 적용을 위해 로그를 확인하십시오.</value>
+  </data>
+  <data name="ExcludedSmartGroups" xml:space="preserve">
+    <value>제외된 스마트 그룹</value>
+  </data>
+  <data name="Exclusions" xml:space="preserve">
+    <value>제외 항목</value>
+  </data>
+  <data name="FailedInstall" xml:space="preserve">
+    <value>설치 실패</value>
+  </data>
+  <data name="FailedRemoval" xml:space="preserve">
+    <value>제거 실패</value>
+  </data>
+  <data name="IntermediateDescription" xml:space="preserve">
+    <value>{0}%~{1}%을(를) 준수하는 장치는 중간으로 분류됩니다.</value>
+  </data>
+  <data name="MaxValueArg" xml:space="preserve">
+    <value>{0}보다 작거나 같아야 함</value>
+  </data>
+  <data name="MinValueArg" xml:space="preserve">
+    <value>{0}보다 크거나 같아야 함</value>
+  </data>
+  <data name="NewBaseline" xml:space="preserve">
+    <value>새 기준선</value>
+  </data>
+  <data name="NoActiveOSVersion" xml:space="preserve">
+    <value>OS 버전을 찾을 수 없습니다. 나중에 다시 시도하십시오.</value>
+  </data>
+  <data name="NoCustomizationSupport" xml:space="preserve">
+    <value>선택 기준선에 대해 현재 사용자 지정을 사용할 수 없습니다.</value>
+  </data>
+  <data name="NoFileSelected" xml:space="preserve">
+    <value>선택된 파일이 없습니다.</value>
+  </data>
+  <data name="NonEnglishSearchResult" xml:space="preserve">
+    <value>"{0}"에 대한 결과를 찾을 수 없습니다. 영어로 다시 검색하여 정책을 사용할 수 있는지 확인할 수 있습니다.</value>
+  </data>
+  <data name="NoResultsFoundForArg" xml:space="preserve">
+    <value>"{0}"에 대한 결과를 찾을 수 없음</value>
+  </data>
+  <data name="NoSmartGroupsSelected" xml:space="preserve">
+    <value>스마트 그룹을 선택하지 않음</value>
+  </data>
+  <data name="PolicyNotFound" xml:space="preserve">
+    <value>정책 세부 정보를 찾을 수 없음</value>
+  </data>
+  <data name="PolicyStepDescription" xml:space="preserve">
+    <value>카탈로그에서 정책을 검색하고 추가합니다.</value>
+  </data>
+  <data name="Proceed" xml:space="preserve">
+    <value>진행</value>
+  </data>
+  <data name="RemovalFailed" xml:space="preserve">
+    <value>제거 실패</value>
+  </data>
+  <data name="RequiredFieldError" xml:space="preserve">
+    <value>기준선에 대한 이름을 입력하십시오.</value>
+  </data>
+  <data name="SaveAndPublish" xml:space="preserve">
+    <value>저장 및 게시</value>
+  </data>
+  <data name="SearchPolicyPlaceholder" xml:space="preserve">
+    <value>입력을 시작하여 정책을 검색합니다.</value>
+  </data>
+  <data name="SearchSmartGroupPlaceholder" xml:space="preserve">
+    <value>입력을 시작하여 스마트 그룹을 검색합니다.</value>
+  </data>
+  <data name="SelectedSmartGroups" xml:space="preserve">
+    <value>선택된 스마트 그룹</value>
+  </data>
+  <data name="SelectTypeDescription" xml:space="preserve">
+    <value>추가할 기준선 유형을 선택합니다.</value>
+  </data>
+  <data name="SelectTypeTitle" xml:space="preserve">
+    <value>기준선 유형 선택</value>
+  </data>
+  <data name="SmartGroupAtLeastOneValidationDescription" xml:space="preserve">
+    <value>할당 탭에는 하나 이상의 스마트 그룹이 필요합니다.</value>
+  </data>
+  <data name="SummaryStepDescription" xml:space="preserve">
+    <value>이 기준선을 저장하기 전에 요약을 검토하십시오.</value>
+  </data>
+  <data name="TemplateStepDescription" xml:space="preserve">
+    <value>미리 구성된 기준선 및 버전을 선택하십시오.</value>
+  </data>
+  <data name="TextareaMaxLinesError" xml:space="preserve">
+    <value>최대 줄 수 초과</value>
+  </data>
+  <data name="TextareaMaxSentenceError" xml:space="preserve">
+    <value>하나 이상의 문장이 최대 길이를 초과</value>
+  </data>
+  <data name="TotalInstalledArg" xml:space="preserve">
+    <value>총 설치 수: {0}</value>
+  </data>
+  <data name="UnabletoLoadDevices" xml:space="preserve">
+    <value>장치 목록을 로드할 수 없습니다. 나중에 다시 시도하십시오.</value>
+  </data>
+  <data name="UnsavedChanges" xml:space="preserve">
+    <value>저장되지 않은 변경 사항</value>
+  </data>
+  <data name="UnsupportedLanguageError" xml:space="preserve">
+    <value>오류: 선택한 언어가 지원되지 않습니다.</value>
+  </data>
+  <data name="UseBaselineTemplate" xml:space="preserve">
+      <value>템플릿 사용</value>
+  </data>
+  <data name="UseTemplateDescription" xml:space="preserve">
+    <value>업계 표준 템플릿을 사용하여 기준선을 설정합니다.</value>
+  </data>
+  <data name="VersionBreakdown" xml:space="preserve">
+    <value>버전 구분</value>
+  </data>
+  <data name="ViewBaselineDevicesTitle" xml:space="preserve">
+    <value>장치 보기 - 기준선</value>
+  </data>
+</root>

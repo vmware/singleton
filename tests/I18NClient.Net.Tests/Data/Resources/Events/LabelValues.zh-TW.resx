@@ -1,0 +1,1002 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AadCustomAttributeLookupFailed" xml:space="preserve">
+    <value>新增自訂屬性查詢失敗</value>
+  </data>
+  <data name="ActionStatus" xml:space="preserve">
+    <value>動作狀態</value>
+  </data>
+  <data name="ActionUuid" xml:space="preserve">
+    <value>動作 UUID</value>
+  </data>
+  <data name="ActivationLockBypassCodeConfirmed" xml:space="preserve">
+    <value>已確認啟用鎖定旁路代碼</value>
+  </data>
+  <data name="ActivationLockBypassCodeFailed" xml:space="preserve">
+    <value>啟用鎖定旁路代碼失敗</value>
+  </data>
+  <data name="ActivationLockBypassCodeRefused" xml:space="preserve">
+    <value>啟用鎖定旁路代碼遭拒</value>
+  </data>
+  <data name="ActivationLockBypassCodeRequested" xml:space="preserve">
+    <value>已要求啟用鎖定旁路代碼</value>
+  </data>
+  <data name="AdminAppAuthTokenIssued" xml:space="preserve">
+    <value>已核發管理員 APP 驗證 Token</value>
+  </data>
+  <data name="AdminGroupDirectorySyncCompleted" xml:space="preserve">
+    <value>管理員群組目錄同步已完成</value>
+  </data>
+  <data name="AdminPasswordRotationConfirmed" xml:space="preserve">
+    <value>管理員密碼輪換已確認</value>
+  </data>
+  <data name="AdminPasswordRotationFailed" xml:space="preserve">
+    <value>管理員密碼輪換失敗</value>
+  </data>
+  <data name="AdminPasswordRotationRequested" xml:space="preserve">
+    <value>已要求管理員密碼輪換</value>
+  </data>
+  <data name="AndroidHeartbeatIntervalSettingChangedFailed" xml:space="preserve">
+    <value>Android 活動訊號間隔設定變更失敗</value>
+  </data>
+  <data name="AndroidHeartbeatIntervalSettingChangedSuccess" xml:space="preserve">
+    <value>Android 活動訊號間隔設定變更成功</value>
+  </data>
+  <data name="AndroidSyncPerAppVpnAssociations" xml:space="preserve">
+    <value>同步 Per-App VPN 關聯</value>
+  </data>
+  <data name="AndroidSyncPerAppVpnAssociationsConfirmed" xml:space="preserve">
+    <value>已確認同步 Per App VPN 關聯命令</value>
+  </data>
+  <data name="AndroidSyncPerAppVpnAssociationsRequested" xml:space="preserve">
+    <value>已要求同步 Per App VPN 關聯命令</value>
+  </data>
+  <data name="AppleMdmSampleScheduleSettingChangedFailed" xml:space="preserve">
+    <value>Apple MDM 取樣排程設定變更失敗</value>
+  </data>
+  <data name="AppleMdmSampleScheduleSettingChangedSuccess" xml:space="preserve">
+    <value>Apple MDM 取樣排程設定變更成功</value>
+  </data>
+  <data name="AppleProfileSigningCertificateChangedFailure" xml:space="preserve">
+    <value>Apple 設定檔簽署憑證設定變更失敗</value>
+  </data>
+  <data name="AppleProfileSigningCertificateChangedSuccess" xml:space="preserve">
+    <value>Apple 設定檔簽署憑證設定變更成功</value>
+  </data>
+  <data name="ApplicationDeploymentCriteriaMissing" xml:space="preserve">
+    <value>缺少應用程式部署條件</value>
+  </data>
+  <data name="ApplicationDownloadFailed" xml:space="preserve">
+    <value>應用程式下載失敗</value>
+  </data>
+  <data name="ApplicationInstalling" xml:space="preserve">
+    <value>應用程式正在安裝</value>
+  </data>
+  <data name="AppLogsDescription" xml:space="preserve">
+    <value>View and download available log files.</value>
+  </data>
+  <data name="ApproveRemoval" xml:space="preserve">
+    <value>核准移除</value>
+  </data>
+  <data name="ApproveRemovalDescription" xml:space="preserve">
+    <value>此動作會核准從受到潛在影響的裝置中移除應用程式。不需其他動作即可調整應用程式指派。</value>
+  </data>
+  <data name="ApproveRemovalTitle" xml:space="preserve">
+    <value>審核要移除的應用程式</value>
+  </data>
+  <data name="BaselineInstallConfirmed" xml:space="preserve">
+    <value>基準安裝確認</value>
+  </data>
+  <data name="BaselineInstallFailed" xml:space="preserve">
+    <value>基準安裝失敗</value>
+  </data>
+  <data name="BaselineMissingHash" xml:space="preserve">
+    <value>已請求基準雜湊更新</value>
+  </data>
+  <data name="BaselineQueryConfirmed" xml:space="preserve">
+    <value>基準查詢確認</value>
+  </data>
+  <data name="BaselineQueryFailed" xml:space="preserve">
+    <value>基準查詢失敗</value>
+  </data>
+  <data name="BaselineQueryRequested" xml:space="preserve">
+    <value>基準查詢要求</value>
+  </data>
+  <data name="BaselineReapplyFailed" xml:space="preserve">
+    <value>無法重新套用基準。</value>
+  </data>
+  <data name="BaselineRemovalConfirmed" xml:space="preserve">
+    <value>基準移除確認</value>
+  </data>
+  <data name="BaselineRemovalFailed" xml:space="preserve">
+    <value>基準移除失敗</value>
+  </data>
+  <data name="BaselineStatusUpdateFailed" xml:space="preserve">
+    <value>基準狀態更新失敗</value>
+  </data>
+  <data name="BootstrapTokenEscrowed" xml:space="preserve">
+    <value>已委付 BootstrapToken</value>
+  </data>
+  <data name="BootstrapTokenRemoved" xml:space="preserve">
+    <value>Bootstrap Token 已移除</value>
+  </data>
+  <data name="CartCreationFailed" xml:space="preserve">
+    <value>裝置車建立失敗</value>
+  </data>
+  <data name="CertificateMissingInSample" xml:space="preserve">
+    <value>缺少樣本</value>
+  </data>
+  <data name="CertificateNoLongerInUse" xml:space="preserve">
+    <value>未使用</value>
+  </data>
+  <data name="CertificatePinningDisable" xml:space="preserve">
+    <value>固定憑證已停用</value>
+  </data>
+  <data name="CertificateReinstated" xml:space="preserve">
+    <value>已恢復憑證</value>
+  </data>
+  <data name="CheckInCheckOut" xml:space="preserve">
+    <value>簽入/簽出</value>
+  </data>
+  <data name="ComplianceBrokerRequest" xml:space="preserve">
+    <value>合規性代理要求</value>
+  </data>
+  <data name="ComplianceEvaluationTime" xml:space="preserve">
+    <value>符合性評估時間</value>
+  </data>
+  <data name="CompliancePolicyParsing" xml:space="preserve">
+    <value>合規原則剖析</value>
+  </data>
+  <data name="ConditionalAccessDeviceRegistration" xml:space="preserve">
+    <value>條件式存取裝置登錄</value>
+  </data>
+  <data name="ConditionalAccessDeviceStateChange" xml:space="preserve">
+    <value>條件式存取裝置狀態變更</value>
+  </data>
+  <data name="ConditionalAccessPartnerType" xml:space="preserve">
+    <value>條件式存取合作夥伴類型</value>
+  </data>
+  <data name="ConfigurationReceivedToRestrictAppOrProcess" xml:space="preserve">
+    <value>接收組態以限制應用程式或程序</value>
+  </data>
+  <data name="ConsoleEvent" xml:space="preserve">
+    <value>主控台事件</value>
+  </data>
+  <data name="ConsoleEventLogSearchFilterDateRange" xml:space="preserve">
+    <value>已全域停用顯示大範圍日期的主控台事件的功能，例如「任何」和「上個月」。請選取較小的日期範圍以檢視控制台事件，或導覽至子系 OG。</value>
+  </data>
+  <data name="ConsoleEventLogSearchLimitExceeded" xml:space="preserve">
+    <value>為主控台事件選取的日期範圍過大。請選取較小的日期範圍以檢視主控台事件。</value>
+  </data>
+  <data name="ConsoleEvents" xml:space="preserve">
+    <value>主控台事件</value>
+  </data>
+  <data name="ConsoleSessionTimeOutChangedFailure" xml:space="preserve">
+    <value>主控台工作階段逾時變更失敗</value>
+  </data>
+  <data name="ConsoleSessionTimeOutChangedSuccess" xml:space="preserve">
+    <value>主控台工作階段逾時變更成功</value>
+  </data>
+  <data name="CreateWnsChannelCommandRequestConfirmed" xml:space="preserve">
+    <value>建立 Wns 通道命令要求已確認</value>
+  </data>
+  <data name="CreateWnsChannelCommandRequestFailed" xml:space="preserve">
+    <value>建立 Wns 通道命令要求失敗</value>
+  </data>
+  <data name="DateTimeLabel" xml:space="preserve">
+    <value>日期和時間</value>
+  </data>
+  <data name="DeviceActionFailed" xml:space="preserve">
+    <value>無法處理裝置動作</value>
+  </data>
+  <data name="DeviceActionInprogress" xml:space="preserve">
+    <value>正在處理裝置動作</value>
+  </data>
+  <data name="DeviceActionProcessed" xml:space="preserve">
+    <value>已處理裝置動作</value>
+  </data>
+  <data name="DeviceActionRequested" xml:space="preserve">
+    <value>已要求裝置動作</value>
+  </data>
+  <data name="DeviceAddedToAppleDep" xml:space="preserve">
+    <value>已將裝置新增至 Apple DEP</value>
+  </data>
+  <data name="DeviceAddedToEnrollmentWhiteList" xml:space="preserve">
+    <value>已將裝置新增至註冊允許清單</value>
+  </data>
+  <data name="DeviceAllMangedApplicationDisable" xml:space="preserve">
+    <value>已停用所有裝置管理的應用程式</value>
+  </data>
+  <data name="DeviceAttributeAssetNumberModified" xml:space="preserve">
+    <value>已修改裝置屬性的資產編號</value>
+  </data>
+  <data name="DeviceAttributeOperatingSystem" xml:space="preserve">
+    <value>裝置屬性作業系統</value>
+  </data>
+  <data name="DeviceAttributeUserEmailAddressModified" xml:space="preserve">
+    <value>裝置屬性使用者電子郵件地址已修改</value>
+  </data>
+  <data name="DeviceCheckInWihtNotEnrolledUser" xml:space="preserve">
+    <value>裝置簽入使用未註冊使用者</value>
+  </data>
+  <data name="DeviceConfiguredFailed" xml:space="preserve">
+    <value>裝置設定失敗</value>
+  </data>
+  <data name="DeviceConfiguredRefused" xml:space="preserve">
+    <value>裝置設定被拒</value>
+  </data>
+  <data name="DeviceConsoleEvent" xml:space="preserve">
+    <value>裝置和主控台事件</value>
+  </data>
+  <data name="DeviceConsoleEvents" xml:space="preserve">
+    <value>裝置和主控台事件</value>
+  </data>
+  <data name="DeviceCpuInfoChanged" xml:space="preserve">
+    <value>已變更裝置 CPU 資訊</value>
+  </data>
+  <data name="DeviceData" xml:space="preserve">
+    <value>裝置資料</value>
+  </data>
+  <data name="DeviceEvent" xml:space="preserve">
+    <value>裝置事件</value>
+  </data>
+  <data name="DeviceEventLogSearchFilterDateRange" xml:space="preserve">
+    <value>已全域停用顯示大範圍日期之裝置事件的功能，例如「任何」和「上個月」。請選取較小的日期範圍以檢視裝置事件，或導覽至子系 OG。</value>
+  </data>
+  <data name="DeviceEventLogSearchLimitExceeded" xml:space="preserve">
+    <value>為裝置事件選取的日期範圍過大。請選取較小的日期範圍以檢視裝置事件。</value>
+  </data>
+  <data name="DeviceEvents" xml:space="preserve">
+    <value>裝置事件</value>
+  </data>
+  <data name="DeviceEventsDescription" xml:space="preserve">
+    <value>查看裝置事件詳細資訊</value>
+  </data>
+  <data name="DeviceLimitPerOrganizationGroupEnabled" xml:space="preserve">
+    <value>每個企業群組的裝置限制已啟用</value>
+  </data>
+  <data name="DeviceLocationFailed" xml:space="preserve">
+    <value>裝置位置失敗</value>
+  </data>
+  <data name="DeviceLocationRefused" xml:space="preserve">
+    <value>裝置位置被拒</value>
+  </data>
+  <data name="DeviceManagementStatus" xml:space="preserve">
+    <value>裝置管理狀態</value>
+  </data>
+  <data name="DeviceMangedApplicationDisable" xml:space="preserve">
+    <value>已停用裝置管理的應用程式</value>
+  </data>
+  <data name="DeviceModelChanged" xml:space="preserve">
+    <value>裝置型號已變更</value>
+  </data>
+  <data name="DeviceOemChanged" xml:space="preserve">
+    <value>裝置原始設備製造商已變更</value>
+  </data>
+  <data name="DeviceOfflineDomainJoinConfigCreationFailed" xml:space="preserve">
+    <value>裝置離線網域加入組態建立失敗</value>
+  </data>
+  <data name="DeviceScriptSampleSentFailed" xml:space="preserve">
+    <value>裝置指令碼樣本傳送失敗</value>
+  </data>
+  <data name="DeviceServicesAutoDiscoverySync" xml:space="preserve">
+    <value>裝置服務自動探索同步</value>
+  </data>
+  <data name="DeviceTimeWindowStatusSampleCompleted" xml:space="preserve">
+    <value>裝置時間範圍狀態取樣已完成</value>
+  </data>
+  <data name="DeviceTimeWindowStatusSampleFailed" xml:space="preserve">
+    <value>裝置時間範圍狀態取樣失敗</value>
+  </data>
+  <data name="DeviceTimeWindowSync" xml:space="preserve">
+    <value>裝置時間範圍同步</value>
+  </data>
+  <data name="DeviceUserCheckOutFailed" xml:space="preserve">
+    <value>裝置使用者簽出失敗</value>
+  </data>
+  <data name="DeviceUUID" xml:space="preserve">
+    <value>裝置 UUID</value>
+  </data>
+  <data name="DeviceWorkflowComplete" xml:space="preserve">
+    <value>裝置工作流程完成</value>
+  </data>
+  <data name="DeviceWorkflowFailed" xml:space="preserve">
+    <value>裝置工作流程失敗</value>
+  </data>
+  <data name="DeviceWorkflowSync" xml:space="preserve">
+    <value>裝置工作流程同步</value>
+  </data>
+  <data name="DisableLostModeRefused" xml:space="preserve">
+    <value>停用遺失模式被拒</value>
+  </data>
+  <data name="DoNotShowAgain" xml:space="preserve">
+    <value>不要再顯示</value>
+  </data>
+  <data name="EnableActivationLockFailed" xml:space="preserve">
+    <value>啟用啟動鎖定失敗</value>
+  </data>
+  <data name="EnableActivationLockSucceeded" xml:space="preserve">
+    <value>啟用啟動鎖定成功</value>
+  </data>
+  <data name="EnableLostModeRefused" xml:space="preserve">
+    <value>啟用遺失模式被拒</value>
+  </data>
+  <data name="EnrollmentAuthenticationSettingChanged" xml:space="preserve">
+    <value>註冊驗證設定已變更</value>
+  </data>
+  <data name="FileVaultRecoveryKeyRotationRequested" xml:space="preserve">
+    <value>已要求 FileVault 復原金鑰輪換</value>
+  </data>
+  <data name="FromDeviceDetailsPage" xml:space="preserve">
+    <value>從裝置詳細資料頁面</value>
+  </data>
+  <data name="FromSSPDetailsPage" xml:space="preserve">
+    <value>從 SSP 詳細資料頁面</value>
+  </data>
+  <data name="GetBootstrapTokenRequested" xml:space="preserve">
+    <value>已要求 GetBootstrapToken</value>
+  </data>
+  <data name="GetBootstrapTokenRequestProcessed" xml:space="preserve">
+    <value>已處理 GetBootstrapToken 要求</value>
+  </data>
+  <data name="GlobalThresholdMessage" xml:space="preserve">
+    <value>在 Global 中只能查看過去一小時的事件。如要查看的時間範圍內較長，請前往 OG</value>
+  </data>
+  <data name="GuestUserLogin" xml:space="preserve">
+    <value>賓客使用者登入</value>
+  </data>
+  <data name="ImpactedDevices" xml:space="preserve">
+    <value>受影響的裝置</value>
+  </data>
+  <data name="InitiateAutoDiscoveryPinningSync" xml:space="preserve">
+    <value>啟動自動探索固定同步</value>
+  </data>
+  <data name="InstallIntelligentHubRequestFailure" xml:space="preserve">
+    <value>無法將命令排入佇列以安裝 Intelligent Hub</value>
+  </data>
+  <data name="InstallIntelligentHubRequestSuccess" xml:space="preserve">
+    <value>已成功將命令排入佇列以安裝 Intelligent Hub</value>
+  </data>
+  <data name="InstallMacOSBootstrapPkgFailed" xml:space="preserve">
+    <value>安裝 macOS 執行啟動程序套件失敗</value>
+  </data>
+  <data name="InstallMacOSBootstrapPkgRefused" xml:space="preserve">
+    <value>安裝 macOS 執行啟動程序套件遭拒</value>
+  </data>
+  <data name="InstallOnFilteredSuccess" xml:space="preserve">
+    <value>安裝在已篩選的成功</value>
+  </data>
+  <data name="InstallPackagedMacOsXAgentConfirmed" xml:space="preserve">
+    <value>已確認安裝 macOS 代理程式</value>
+  </data>
+  <data name="InstallPackagedMacOsXAgentFailed" xml:space="preserve">
+    <value>安裝 macOS 代理程式失敗</value>
+  </data>
+  <data name="InstallPackagedMacOsXAgentRefused" xml:space="preserve">
+    <value>安裝 macOS 代理程式遭拒</value>
+  </data>
+  <data name="InstallPackagedMacOsXAgentRequested" xml:space="preserve">
+    <value>已要求安裝 macOS 代理程式</value>
+  </data>
+  <data name="LogOutUserConfirmed" xml:space="preserve">
+    <value>登出使用者確認</value>
+  </data>
+  <data name="LogoutUserFailed" xml:space="preserve">
+    <value>登出使用者失敗</value>
+  </data>
+  <data name="LogOutUserRefused" xml:space="preserve">
+    <value>登出使用者被拒</value>
+  </data>
+  <data name="LogOutUserRequested" xml:space="preserve">
+    <value>登出使用者要求</value>
+  </data>
+  <data name="ManagedAdminPasswordRotationRequested" xml:space="preserve">
+    <value>已要求受管理的管理員密碼輪換</value>
+  </data>
+  <data name="ManagedSettings" xml:space="preserve">
+    <value>受管設定</value>
+  </data>
+  <data name="ManagedSettingsConfirmed" xml:space="preserve">
+    <value>已確認受管設定</value>
+  </data>
+  <data name="ManagedSettingsFailed" xml:space="preserve">
+    <value>受管設定失敗</value>
+  </data>
+  <data name="ManagedSettingsRefused" xml:space="preserve">
+    <value>受管設定遭拒</value>
+  </data>
+  <data name="ManagedSettingsRequested" xml:space="preserve">
+    <value>已要求受管設定</value>
+  </data>
+  <data name="MembershipSyncRequestSent" xml:space="preserve">
+    <value>成員資格同步要求已傳送</value>
+  </data>
+  <data name="NotNowInAwaitConfiguration" xml:space="preserve">
+    <value>暫時不要，正在等候配置</value>
+  </data>
+  <data name="P2PTrueUpGenericError" xml:space="preserve">
+    <value>P2P 調整一般錯誤</value>
+  </data>
+  <data name="PCRefreshConfirmed" xml:space="preserve">
+    <value>Windows 桌面重新整理確認</value>
+  </data>
+  <data name="PCRefreshFailed" xml:space="preserve">
+    <value>Windows 桌面重新整理失敗</value>
+  </data>
+  <data name="PeerDistributionStatistics" xml:space="preserve">
+    <value>Peer Distribution 統計資料</value>
+  </data>
+  <data name="PinnedCertificateDelete" xml:space="preserve">
+    <value>固定憑證刪除</value>
+  </data>
+  <data name="PinnedHostDelete" xml:space="preserve">
+    <value>固定主機刪除</value>
+  </data>
+  <data name="PinnedHostDisable" xml:space="preserve">
+    <value>固定主機已停用</value>
+  </data>
+  <data name="PinnedHostEdit" xml:space="preserve">
+    <value>固定主機編輯</value>
+  </data>
+  <data name="PinnedHostEnable" xml:space="preserve">
+    <value>固定主機已啟用</value>
+  </data>
+  <data name="PolicySigningCertificateSettingChangedFailure" xml:space="preserve">
+    <value>原則簽署憑證設定變更失敗</value>
+  </data>
+  <data name="PolicySigningCertificateSettingChangedSuccess" xml:space="preserve">
+    <value>原則簽署憑證設定變更成功</value>
+  </data>
+  <data name="ProfilesPerformActionAgain" xml:space="preserve">
+    <value>設定檔建立/更新/刪除失敗。請重新執行動作。</value>
+  </data>
+  <data name="ProvisioningAgentQueryFailed" xml:space="preserve">
+    <value>佈建代理程式查詢失敗</value>
+  </data>
+  <data name="ProvisioningPackageCreated" xml:space="preserve">
+    <value>已建立佈建套件</value>
+  </data>
+  <data name="ProvisioningPackageInstallConfirmed" xml:space="preserve">
+    <value>佈建套件安裝已確認</value>
+  </data>
+  <data name="ProvisioningPackageInstallFailed" xml:space="preserve">
+    <value>佈建套件安裝失敗</value>
+  </data>
+  <data name="RecordDeleted" xml:space="preserve">
+    <value>Record deleted.</value>
+  </data>
+  <data name="RefreshEsimConfirmed" xml:space="preserve">
+    <value>重新整理 eSIM 已確認</value>
+  </data>
+  <data name="RefreshEsimFailed" xml:space="preserve">
+    <value>重新整理 eSIM 失敗</value>
+  </data>
+  <data name="RefreshEsimRefused" xml:space="preserve">
+    <value>重新整理 eSIM 遭拒</value>
+  </data>
+  <data name="RefreshEsimRequested" xml:space="preserve">
+    <value>已要求重新整理 eSIM</value>
+  </data>
+  <data name="RejectRemoval" xml:space="preserve">
+    <value>拒絕移除</value>
+  </data>
+  <data name="RejectRemovalDescription" xml:space="preserve">
+    <value>此動作將會從可能受影響的裝置上清除應用程式移除指令。請確保應用程式已啟用且已指派至裝置，以避免再次觸發應用程式移除。</value>
+  </data>
+  <data name="RejectRemovalTitle" xml:space="preserve">
+    <value>拒絕要移除的應用程式</value>
+  </data>
+  <data name="RemovableDriveRecoveryKeyAccessed" xml:space="preserve">
+    <value>已存取磁碟加密復原金鑰</value>
+  </data>
+  <data name="RemoveBootstrapTokenRequested" xml:space="preserve">
+    <value>已要求移除 Bootstrap Token</value>
+  </data>
+  <data name="RemoveLockConfirmed" xml:space="preserve">
+    <value>移除鎖定確認</value>
+  </data>
+  <data name="RequestLogConfirmed" xml:space="preserve">
+    <value>裝置要求記錄已確認</value>
+  </data>
+  <data name="RequestLogFailed" xml:space="preserve">
+    <value>裝置要求記錄失敗</value>
+  </data>
+  <data name="RequestLogRefused" xml:space="preserve">
+    <value>裝置要求記錄遭拒</value>
+  </data>
+  <data name="RequestLogRequested" xml:space="preserve">
+    <value>已要求裝置記錄</value>
+  </data>
+  <data name="ResourceUuid" xml:space="preserve">
+    <value>資源 Uuid</value>
+  </data>
+  <data name="ResourceVersion" xml:space="preserve">
+    <value>資源版本</value>
+  </data>
+  <data name="RestrictedAppOrProcessDetected" xml:space="preserve">
+    <value>偵測到限制的應用程式或程序</value>
+  </data>
+  <data name="RestrictedAppOrProcessRemediated" xml:space="preserve">
+    <value>已修復限制的應用程式或程序</value>
+  </data>
+  <data name="RotateDeviceRecoveryKey" xml:space="preserve">
+    <value>輪換裝置復原金鑰</value>
+  </data>
+  <data name="RotateDeviceRecoveryKeyRequested" xml:space="preserve">
+    <value>已要求復原金鑰輪換</value>
+  </data>
+  <data name="SampleResponseListReceived" xml:space="preserve">
+    <value>已收到樣本回應清單</value>
+  </data>
+  <data name="ScheduledAdminPasswordRotationRequested" xml:space="preserve">
+    <value>已要求排程的管理員密碼輪換</value>
+  </data>
+  <data name="ScheduledRotateDeviceRecoveryKeyRequested" xml:space="preserve">
+    <value>已要求排程的復原金鑰輪換</value>
+  </data>
+  <data name="ScheduleOSUpdateScanFailed" xml:space="preserve">
+    <value>排程作業系統更新掃描失敗</value>
+  </data>
+  <data name="ScimProvisioningFailure" xml:space="preserve">
+    <value>SCIM 佈建失敗</value>
+  </data>
+  <data name="ScriptFailedToExecuteOnDevice" xml:space="preserve">
+    <value>指令碼無法在裝置上執行</value>
+  </data>
+  <data name="ScriptPersistedInDeviceState" xml:space="preserve">
+    <value>以裝置狀態保存的指令碼</value>
+  </data>
+  <data name="ScriptResourceRequestedByDevice" xml:space="preserve">
+    <value>裝置要求的指令碼資源</value>
+  </data>
+  <data name="ScriptSampleNotPersisted" xml:space="preserve">
+    <value>指令碼樣本未以裝置狀態保存</value>
+  </data>
+  <data name="ScriptSamplePersistedInDeviceState" xml:space="preserve">
+    <value>指令碼樣本以裝置狀態保存</value>
+  </data>
+  <data name="ScriptSampleReceived" xml:space="preserve">
+    <value>已收到指令碼樣本</value>
+  </data>
+  <data name="ScriptSampleReceivedWithErrors" xml:space="preserve">
+    <value>收到指令碼樣本但發生錯誤</value>
+  </data>
+  <data name="ScriptSampleSentFailed" xml:space="preserve">
+    <value>裝置指令碼樣本傳送失敗</value>
+  </data>
+  <data name="SdkComplianceSettings" xml:space="preserve">
+    <value>SDK 應用程式合規性設定</value>
+  </data>
+  <data name="SdkComplianceSettingsChanged" xml:space="preserve">
+    <value>SDK 應用程式合規性設定已變更</value>
+  </data>
+  <data name="ServerKeyUtilityKeyInstallationFailure" xml:space="preserve">
+    <value>伺服器金鑰公用程式金鑰安裝失敗</value>
+  </data>
+  <data name="ServerKeyUtilityKeyInstallationSuccess" xml:space="preserve">
+    <value>伺服器金鑰公用程式金鑰安裝成功</value>
+  </data>
+  <data name="SetBootstrapTokenRequested" xml:space="preserve">
+    <value>已要求 SetBootstrapToken</value>
+  </data>
+  <data name="SetUpConfigurationConfirmed" xml:space="preserve">
+    <value>設定組態已確認</value>
+  </data>
+  <data name="SetUpConfigurationFailed" xml:space="preserve">
+    <value>安裝組態失敗</value>
+  </data>
+  <data name="SetUpConfigurationRefused" xml:space="preserve">
+    <value>安裝組態被拒</value>
+  </data>
+  <data name="SetUpConfigurationRequested" xml:space="preserve">
+    <value>已要求設定組態</value>
+  </data>
+  <data name="SigningServiceCertificateRotationFailedEvent" xml:space="preserve">
+    <value>簽署服務憑證輪換失敗事件</value>
+  </data>
+  <data name="SoapApiClearClientCertificate" xml:space="preserve">
+    <value>已清除 SOAP API 用戶端憑證</value>
+  </data>
+  <data name="SoapApiExportClientCertificate" xml:space="preserve">
+    <value>已匯出 SOAP API 用戶端憑證</value>
+  </data>
+  <data name="SoapApiGenerateClientCertificate" xml:space="preserve">
+    <value>已產生 SOAP API 用戶端憑證</value>
+  </data>
+  <data name="StopLogRequested" xml:space="preserve">
+    <value>已要求停止記錄</value>
+  </data>
+  <data name="SyncAssetsAppDeleted" xml:space="preserve">
+    <value>已刪除同步資產應用程式</value>
+  </data>
+  <data name="SyncAssetsAppVppInfoRemoved" xml:space="preserve">
+    <value>已移除同步資產應用程式 VPP 資訊</value>
+  </data>
+  <data name="SyncEntitlementsConfirmed" xml:space="preserve">
+    <value>同步權限已確認</value>
+  </data>
+  <data name="SyncEntitlementsFailed" xml:space="preserve">
+    <value>同步權限失敗</value>
+  </data>
+  <data name="SyncEntitlementsRefused" xml:space="preserve">
+    <value>同步權限遭拒</value>
+  </data>
+  <data name="SyncEntitlementsRequested" xml:space="preserve">
+    <value>已要求同步權限</value>
+  </data>
+  <data name="TimeMachineEnabled" xml:space="preserve">
+    <value>時光機已啟用</value>
+  </data>
+  <data name="TimeWindowAssignmentDeleted" xml:space="preserve">
+    <value>已刪除時間範圍指派</value>
+  </data>
+  <data name="TimeWindowAssignmentUpdated" xml:space="preserve">
+    <value>已更新時間範圍指派</value>
+  </data>
+  <data name="TimeWindowAssignmentUpdateFailed" xml:space="preserve">
+    <value>時間範圍指派更新失敗</value>
+  </data>
+  <data name="TimeWindowCreated" xml:space="preserve">
+    <value>已建立時間範圍</value>
+  </data>
+  <data name="TimeWindowDeleted" xml:space="preserve">
+    <value>已刪除時間範圍</value>
+  </data>
+  <data name="TimeWindowIdentifiers" xml:space="preserve">
+    <value>時間範圍識別碼</value>
+  </data>
+  <data name="TimeWindows" xml:space="preserve">
+    <value>時間範圍</value>
+  </data>
+  <data name="TimeWindowUpdated" xml:space="preserve">
+    <value>已更新時間範圍</value>
+  </data>
+  <data name="TimeWindowUpdateFailed" xml:space="preserve">
+    <value>時間範圍更新失敗</value>
+  </data>
+  <data name="UpdateAssignmentCreated" xml:space="preserve">
+    <value>已建立更新指派</value>
+  </data>
+  <data name="UpdateAssignmentModified" xml:space="preserve">
+    <value>已修改更新指派</value>
+  </data>
+  <data name="UpdateAssignmentRemoved" xml:space="preserve">
+    <value>已移除更新指派</value>
+  </data>
+  <data name="UserEnrollmentAuthenticationFailure" xml:space="preserve">
+    <value>使用者註冊驗證失敗</value>
+  </data>
+  <data name="UserEnrollmentName" xml:space="preserve">
+    <value>註冊使用者名稱</value>
+  </data>
+  <data name="UserFriendlyPrivacyPolicy" xml:space="preserve">
+    <value>使用者暱稱的隱私權政策</value>
+  </data>
+  <data name="UserListConfirmed" xml:space="preserve">
+    <value>使用者清單確認</value>
+  </data>
+  <data name="UserListFailed" xml:space="preserve">
+    <value>使用者清單失敗</value>
+  </data>
+  <data name="UserListRefused" xml:space="preserve">
+    <value>使用者清單被拒</value>
+  </data>
+  <data name="UserListRequested" xml:space="preserve">
+    <value>使用者清單要求</value>
+  </data>
+  <data name="VmLockConfirmed" xml:space="preserve">
+    <value>VM 鎖定確認</value>
+  </data>
+  <data name="VmLockFailed" xml:space="preserve">
+    <value>VM 鎖定失敗</value>
+  </data>
+  <data name="VmLockRefused" xml:space="preserve">
+    <value>VM 鎖定被拒</value>
+  </data>
+  <data name="VmLockRequested" xml:space="preserve">
+    <value>VM 鎖定要求</value>
+  </data>
+  <data name="VmUnlockConfirmed" xml:space="preserve">
+    <value>VM 解鎖確認</value>
+  </data>
+  <data name="VmUnlockRefused" xml:space="preserve">
+    <value>VM 解鎖被拒</value>
+  </data>
+  <data name="VmUnlockRequested" xml:space="preserve">
+    <value>VM 解鎖要求</value>
+  </data>
+  <data name="VmWipeConfirmed" xml:space="preserve">
+    <value>VM 抹除確認</value>
+  </data>
+  <data name="VmWipeFailed" xml:space="preserve">
+    <value>VM 抹除失敗</value>
+  </data>
+  <data name="VmWipeRefused" xml:space="preserve">
+    <value>VM 抹除被拒</value>
+  </data>
+  <data name="VmWipeRequested" xml:space="preserve">
+    <value>VM 抹除要求</value>
+  </data>
+  <data name="Windows10InvalidOdjSyncAlert" xml:space="preserve">
+    <value>Windows 10 無效 Odj 同步警示</value>
+  </data>
+  <data name="WindowsDeviceCheckInMode" xml:space="preserve">
+    <value>Windows 裝置簽入模式</value>
+  </data>
+  <data name="WindowsOobeAccountProvisioningComplete" xml:space="preserve">
+    <value>使用者的 OOBE 佈建已完成</value>
+  </data>
+  <data name="WindowsOobeDeviceProvisioningComplete" xml:space="preserve">
+    <value>裝置的 OOBE 佈建已完成</value>
+  </data>
+  <data name="WindowsOobeProvisioningRequested" xml:space="preserve">
+    <value>要求的 OOBE 佈建</value>
+  </data>
+  <data name="WorkAccessibilityServicesPermittedAppIds" xml:space="preserve">
+    <value>允許協助工具服務的應用程式</value>
+  </data>
+  <data name="WorkAllowAccountChanges" xml:space="preserve">
+    <value>允許新增 Google 帳戶</value>
+  </data>
+  <data name="WorkAllowBluetoothContactSharing" xml:space="preserve">
+    <value>與藍牙裝置共用企業聯絡人</value>
+  </data>
+  <data name="WorkAllowCamera" xml:space="preserve">
+    <value>允許相機</value>
+  </data>
+  <data name="WorkAllowChrome" xml:space="preserve">
+    <value>允許 Chrome 瀏覽器</value>
+  </data>
+  <data name="WorkAllowContacts" xml:space="preserve">
+    <value>允許工作聯絡人出現在個人通訊錄應用程式</value>
+  </data>
+  <data name="WorkAllowDisableAppVerify" xml:space="preserve">
+    <value>允許停用應用程式驗證</value>
+  </data>
+  <data name="WorkAllowGooglePlay" xml:space="preserve">
+    <value>允許 Google Play</value>
+  </data>
+  <data name="WorkAllowInstallingApps" xml:space="preserve">
+    <value>允許安裝應用程式</value>
+  </data>
+  <data name="WorkAllowKeyguardFingerprint" xml:space="preserve">
+    <value>允許鍵盤鎖指紋感應器</value>
+  </data>
+  <data name="WorkAllowKeyguardTrustAgent" xml:space="preserve">
+    <value>允許鍵盤鎖信任代理程式狀態</value>
+  </data>
+  <data name="WorkAllowKeyguardUnredacted" xml:space="preserve">
+    <value>允許鍵盤鎖未編輯的通知</value>
+  </data>
+  <data name="WorkAllowNFC" xml:space="preserve">
+    <value>允許 NFC</value>
+  </data>
+  <data name="WorkAllowNonGoogleAccounts" xml:space="preserve">
+    <value>允許新增/刪除帳戶</value>
+  </data>
+  <data name="WorkAllowNonMarketAppInstall" xml:space="preserve">
+    <value>允許非市場應用程式安裝</value>
+  </data>
+  <data name="WorkAllowOutgoingBluetoothConnections" xml:space="preserve">
+    <value>允許傳出的藍牙連線</value>
+  </data>
+  <data name="WorkAllowPersonalShareWithWork" xml:space="preserve">
+    <value>允許個人應用程式與工作應用程式共用文件</value>
+  </data>
+  <data name="WorkAllowPersonalToAccessWork" xml:space="preserve">
+    <value>允許個人應用程式從工作應用程式存取文件</value>
+  </data>
+  <data name="WorkAllowScreenCapture" xml:space="preserve">
+    <value>允許螢幕擷取</value>
+  </data>
+  <data name="WorkAllowUninstallingApps" xml:space="preserve">
+    <value>允許解除安裝應用程式</value>
+  </data>
+  <data name="WorkAllowUSBDebugging" xml:space="preserve">
+    <value>允許 USB 偵錯</value>
+  </data>
+  <data name="WorkAllowWorkContactsInPhone" xml:space="preserve">
+    <value>允許工作聯絡人來電顯示資訊顯示在電話撥號程式中</value>
+  </data>
+  <data name="WorkAllowWorkPersonalPaste" xml:space="preserve">
+    <value>允許在工作與個人應用程式間貼上內容到剪貼簿</value>
+  </data>
+  <data name="WorkAllowWorkShareWithPersonal" xml:space="preserve">
+    <value>允許工作應用程式與個人應用程式共用文件</value>
+  </data>
+  <data name="WorkAllowWorkToAccessPersonal" xml:space="preserve">
+    <value>允許工作應用程式從個人應用程式存取文件</value>
+  </data>
+  <data name="WorkflowAssignmentDeleted" xml:space="preserve">
+    <value>已刪除工作流程指派</value>
+  </data>
+  <data name="WorkflowAssignmentUpdated" xml:space="preserve">
+    <value>已更新工作流程指派</value>
+  </data>
+  <data name="WorkflowCreated" xml:space="preserve">
+    <value>已建立工作流程</value>
+  </data>
+  <data name="WorkflowDeleted" xml:space="preserve">
+    <value>已刪除工作流程</value>
+  </data>
+  <data name="WorkflowUpdated" xml:space="preserve">
+    <value>已更新工作流程</value>
+  </data>
+  <data name="WorkflowUpdatedDueToResourceUpdate" xml:space="preserve">
+    <value>由於資源更新，已更新工作流程</value>
+  </data>
+  <data name="WorkflowUpdateFailed" xml:space="preserve">
+    <value>工作流程更新失敗</value>
+  </data>
+  <data name="WorkflowUuid" xml:space="preserve">
+    <value>工作流程識別碼</value>
+  </data>
+  <data name="WorkManagedApplication" xml:space="preserve">
+    <value>工作受管應用程式</value>
+  </data>
+  <data name="WorkManagedBluetooth" xml:space="preserve">
+    <value>工作受管藍牙</value>
+  </data>
+  <data name="WorkManagedDeviceFunctionality" xml:space="preserve">
+    <value>工作受管裝置功能</value>
+  </data>
+  <data name="WorkManagedHardwareRestrictions" xml:space="preserve">
+    <value>工作受管硬體限制</value>
+  </data>
+  <data name="WorkManagedMmsRestrictions" xml:space="preserve">
+    <value>工作受管 MMS 限制</value>
+  </data>
+  <data name="WorkManagedNetwork" xml:space="preserve">
+    <value>工作受管網路</value>
+  </data>
+  <data name="WorkManagedPhoneAndData" xml:space="preserve">
+    <value>工作受管電話與資料</value>
+  </data>
+  <data name="WorkManagedRoaming" xml:space="preserve">
+    <value>工作受管漫遊</value>
+  </data>
+  <data name="WorkManagedSecurity" xml:space="preserve">
+    <value>工作受管安全性</value>
+  </data>
+  <data name="WorkManagedSyncAndStorage" xml:space="preserve">
+    <value>工作受管同步並儲存</value>
+  </data>
+  <data name="WorkManagedTethering" xml:space="preserve">
+    <value>工作受管網際網路共用功能</value>
+  </data>
+  <data name="WorkProfileApplication" xml:space="preserve">
+    <value>Work 設定檔應用程式</value>
+  </data>
+  <data name="WorkProfileDeviceFunctionality" xml:space="preserve">
+    <value>Work 設定檔裝置功能</value>
+  </data>
+  <data name="WorkProfileNetwork" xml:space="preserve">
+    <value>Work 設定檔網路</value>
+  </data>
+  <data name="WorkProfileSyncAndStorage" xml:space="preserve">
+    <value>Work 設定檔同步並儲存</value>
+  </data>
+  <data name="WorkProfileWorkAndPersonal" xml:space="preserve">
+    <value>Work 設定檔工作和個人</value>
+  </data>
+  <data name="WorkWhitelistPermittedAccessibilityServices" xml:space="preserve">
+    <value>允許協助工具服務</value>
+  </data>
+</root>

@@ -1,0 +1,1035 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="MessageTemplates_Content_AccessFileAndCommentNavigateToSSPSection" xml:space="preserve">
+    <value>U hebt toegang tot dit bestand en de bijbehorende opmerking door te navigeren naar de sectie Selfserviceportal</value>
+  </data>
+  <data name="MessageTemplates_Content_AccessFolderNavigateToSSPSection" xml:space="preserve">
+    <value>U hebt toegang tot deze map door te navigeren naar de sectie Selfserviceportal</value>
+  </data>
+  <data name="MessageTemplates_Content_AccountEnabledActivateDeviceUsingBrowserNavigateTo" xml:space="preserve">
+    <value>Uw Workspace ONE UEM-account is ingeschakeld en u kunt uw toestel activeren. Ga in de browser van uw apparaat naar:</value>
+  </data>
+  <data name="MessageTemplates_Content_AccountEnabledFollowStepsToEnrollDevice" xml:space="preserve">
+    <value>Gefeliciteerd! Uw Workspace ONE UEM-account is ingeschakeld. Voer de volgende stappen uit om uw toestel in te schrijven.</value>
+  </data>
+  <data name="MessageTemplates_Content_AccountExpirationExpirationDate" xml:space="preserve">
+    <value>Vervaldatum account: {ExpirationDate}</value>
+  </data>
+  <data name="MessageTemplates_Content_AdminConsole" xml:space="preserve">
+    <value>Workspace ONE UEM-beheerconsole:</value>
+  </data>
+  <data name="MessageTemplates_Content_AdminCreatedLogIntoConsoleUsingCredential" xml:space="preserve">
+    <value>Uw Workspace ONE UEM-beheerdersaccount is gemaakt en u kunt nu zich aanmelden bij de Workspace ONE UEM-beheerconsole met de volgende inloggegevens:</value>
+  </data>
+  <data name="MessageTemplates_Content_AdminCreatedWithDetails" xml:space="preserve">
+    <value>Uw Workspace ONE UEM-beheerdersaccount is aangemaakt. Console: {ConsoleUrl} Gebruikersnaam: {AdminUserName} Wachtwoord: {AdminPassword}</value>
+  </data>
+  <data name="MessageTemplates_Content_AdminFirstNameAdminLastName" xml:space="preserve">
+    <value>{AdminFirstName} {AdminLastName},</value>
+  </data>
+  <data name="MessageTemplates_Content_AdminInfoUpdatedLogIntoConsoleToConfirm" xml:space="preserve">
+    <value>Uw Workspace ONE UEM-beheerdersaccountgegevens zijn bijgewerkt. Meld u aan bij de console om uw accountgegevens te bevestigen.</value>
+  </data>
+  <data name="MessageTemplates_Content_AdminPasswordReset" xml:space="preserve">
+    <value>Opnieuw instellen van het wachtwoord is gestart door u of een andere beheerder. Als dit niet correct is, neemt u contact op met uw beheerder voor meer informatie. De volgende link zal u terugbrengen naar onze website waar u uw wachtwoord kunt wijzigen:</value>
+  </data>
+  <data name="MessageTemplates_Content_AdminPasswordUpdated" xml:space="preserve">
+    <value>Uw Workspace ONE UEM-wachtwoord is bijgewerkt.</value>
+  </data>
+  <data name="MessageTemplates_Content_AdminPasswordWillExpireInDays" xml:space="preserve">
+    <value>Uw beheerderswachtwoord voor het Workspace ONE UEM Console-account '{AdminUserName}' verloopt over {DaysToBasicAdminPasswordExpiry} dagen.</value>
+  </data>
+  <data name="MessageTemplates_Content_AdminStatusChanged" xml:space="preserve">
+    <value>De status van uw Workspace ONE UEM beheerdersaccount is gewijzigd in {AdminStatus}.</value>
+  </data>
+  <data name="MessageTemplates_Content_AlternativelyScanQrCodeToBeginEnrollment" xml:space="preserve">
+    <value>U kunt ook de QR-code scannen om de inschrijving te starten:</value>
+  </data>
+  <data name="MessageTemplates_Content_AppAssignedAccessInternalAppPageReviewPublish" xml:space="preserve">
+    <value>{ApplicationName} is toegewezen aan apparaten en is nu beschikbaar om op deze apparaten te publiceren. U hebt toegang tot deze applicatie via de pagina Interne applicaties in de Workspace ONE UEM Console. Controleer de toewijzing van het apparaat en publiceer de applicatie. De applicatiegegevens staan hieronder:</value>
+  </data>
+  <data name="MessageTemplates_Content_AppAvailableForDownloadFromUem" xml:space="preserve">
+    <value>{ApplicationName} kan nu naar uw apparaat worden gedownload vanuit de Workspace ONE UEM App Catalog.</value>
+  </data>
+  <data name="MessageTemplates_Content_AppAvailableForDownloadFromUemWithDetails" xml:space="preserve">
+    <value>{ApplicationName} kan nu naar uw apparaat worden gedownload vanuit de Workspace ONE UEM App Catalog. De applicatiegegevens staan hieronder:</value>
+  </data>
+  <data name="MessageTemplates_Content_AppCreatedAccessInternalAppPage" xml:space="preserve">
+    <value>De applicatie met de naam {ApplicationName} is gemaakt. U hebt toegang tot deze applicatie via de pagina Interne applicaties in de Workspace ONE UEM Console. De applicatiegegevens staan hieronder:</value>
+  </data>
+  <data name="MessageTemplates_Content_AppCreatedAccessInternalAppPageReviewSubmit" xml:space="preserve">
+    <value>{ApplicationName} is gemaakt en is nu beschikbaar voor controle. U hebt toegang tot deze applicatie via de pagina Interne applicaties in de Workspace ONE UEM Console. Controleer de applicatie en dien deze in voor de toewijzing. Applicatiegegevens staan hieronder:</value>
+  </data>
+  <data name="MessageTemplates_Content_AppErrorFindLogFile" xml:space="preserve">
+    <value>De applicatie {ApplicationName} heeft een fout geretourneerd. Ga naar het bijgesloten logboekbestand.</value>
+  </data>
+  <data name="MessageTemplates_Content_AppEulaUpdatedAcceptanceRequired" xml:space="preserve">
+    <value>De voorwaarden van uw gebruikersovereenkomst voor applicaties zijn bijgewerkt en uw acceptatie is vereist.</value>
+  </data>
+  <data name="MessageTemplates_Content_AppEulaUpdatedAcceptanceRequiredBeforeGracePeriod" xml:space="preserve">
+    <value>De voorwaarden van uw gebruikersovereenkomst voor applicaties zijn bijgewerkt en uw acceptatie is vereist voordat de respijtperiode is verstreken.</value>
+  </data>
+  <data name="MessageTemplates_Content_AppEulaUpdatedAcceptanceRequiredLogInToAppCatalogToAccept" xml:space="preserve">
+    <value>De voorwaarden van de gebruikersovereenkomst van uw applicatie zijn bijgewerkt en uw acceptatie is vereist. Meld u aan bij de Workspace ONE UEM App Catalog om akkoord te gaan.</value>
+  </data>
+  <data name="MessageTemplates_Content_AppGroupCreatedNavigateToSettingsPageToAccessAppGroups" xml:space="preserve">
+    <value>{CountOfApplicationGroups} Applicatiegroep(en) zijn gemaakt als gevolg van synchronisatie met {VendorName}. Details van deze applicatiegroepen vindt u in de bijlage. U hebt toegang tot deze applicatiegroepen door te navigeren naar Applicatiegroepen op de pagina Applicaties en boeken &gt; Applicatie-instellingen in de Workspace ONE UEM Console.</value>
+  </data>
+  <data name="MessageTemplates_Content_AppHasBeenPurchasedOpenHubToDownload" xml:space="preserve">
+    <value>{ApplicationName} is namens u aangeschaft en kan nu worden gedownload. Open de Workspace ONE Intelligent Hub om de aangeschafte applicatie te downloaden.</value>
+  </data>
+  <data name="MessageTemplates_Content_AppNameAppVersion" xml:space="preserve">
+    <value>{ApplicationName}, {ApplicationVersion}</value>
+  </data>
+  <data name="MessageTemplates_Content_AppReputationAnalysisCompletedForApp" xml:space="preserve">
+    <value>De analyse van applicatiereputatie is uitgevoerd voor {ApplicationName} en de resultaten zijn nu beschikbaar.</value>
+  </data>
+  <data name="MessageTemplates_Content_AppReviewedAccessInternalAppPageAssignSubmit" xml:space="preserve">
+    <value>{ApplicationName} is gecontroleerd en is nu beschikbaar voor toewijzing aan apparaten. U hebt toegang tot deze applicatie via de pagina Interne applicaties in de Workspace ONE UEM Console. Wijs de app toe aan apparaten en dien deze in voor publicatie. De applicatiegegevens staan hieronder:</value>
+  </data>
+  <data name="MessageTemplates_Content_AuthenticationRequiredCredentialsBelow" xml:space="preserve">
+    <value>Mogelijk is verificatie vereist. Uw unieke inloggegevens staan hieronder:</value>
+  </data>
+  <data name="MessageTemplates_Content_ClickHere" xml:space="preserve">
+    <value>klik hier</value>
+  </data>
+  <data name="MessageTemplates_Content_ClickInstallAcceptPrompts" xml:space="preserve">
+    <value>Klik op "Installeren" en accepteer de instructies voor de configuratie.</value>
+  </data>
+  <data name="MessageTemplates_Content_ConsoleURL" xml:space="preserve">
+    <value>Console URL:</value>
+  </data>
+  <data name="MessageTemplates_Content_ContactItHelpDeskIfHaveQuestions" xml:space="preserve">
+    <value>Neem contact op met uw IT-helpdesk als u vragen hebt:</value>
+  </data>
+  <data name="MessageTemplates_Content_ContentComment" xml:space="preserve">
+    <value>"{Comment}"</value>
+  </data>
+  <data name="MessageTemplates_Content_ContentShareUserFirstNameLastName" xml:space="preserve">
+    <value>{ContentShareUserFirstName} {ContentShareUserLastName}</value>
+  </data>
+  <data name="MessageTemplates_Content_ContentUserIsUsingContentLocker" xml:space="preserve">
+    <value>{ContentShareUserFirstName} maakt gebruik van Workspace ONE UEM Content Locker om bestanden eenvoudig en veilig met u te delen.</value>
+  </data>
+  <data name="Messagetemplates_Content_DearAdministrator" xml:space="preserve">
+    <value>Beste beheerder</value>
+  </data>
+  <data name="MessageTemplates_Content_DeviceApprovedForAccessUsingBrowserNavigateTo" xml:space="preserve">
+    <value>Uw toestel is goedgekeurd voor mobiele toegang. Ga in de webbrowser van uw apparaat naar</value>
+  </data>
+  <data name="MessageTemplates_Content_DeviceBlockedFromEnrollmentForReason" xml:space="preserve">
+    <value>Uw apparaat {DevicePlatform} {DeviceModel} is geblokkeerd voor inschrijving om de volgende reden:</value>
+  </data>
+  <data name="MessageTemplates_Content_DeviceEnrollmentUsingCredentials" xml:space="preserve">
+    <value>Uw apparaat {DeviceFriendlyName} heeft de Workspace ONE UEM inschrijving met de inloggegevens van {EnrollmentUser} voltooid.</value>
+  </data>
+  <data name="MessageTemplates_Content_DeviceHasNotReportedComplianceToUemLaunchHubToCheckIn" xml:space="preserve">
+    <value>Uw apparaat heeft de nalevingsstatus niet gerapporteerd aan Workspace ONE UEM binnen de vereiste periode. Start de VMware Workspace ONE Intelligent Hub op uw toestel om in te checken.</value>
+  </data>
+  <data name="MessageTemplates_Content_DeviceInViolationOfOrgCompliancePolicy" xml:space="preserve">
+    <value>Uw toestel, {DeviceFriendlyName}, is momenteel in strijd met het nalevingsbeleid van uw organisatie:</value>
+  </data>
+  <data name="MessageTemplates_Content_DeviceInViolationOfPolicyActionTakenIfNonCompliant" xml:space="preserve">
+    <value>Uw apparaat is in strijd met het nalevingsbeleid "{PolicyName}". Er wordt verdere actie ondernomen als het apparaat niet-compatibel blijft.</value>
+  </data>
+  <data name="MessageTemplates_Content_DeviceLostCallMe" xml:space="preserve">
+    <value>Dit apparaat is verloren gegaan. Bel me.</value>
+  </data>
+  <data name="MessageTemplates_Content_DeviceNoAccessData" xml:space="preserve">
+    <value>Dit apparaat heeft geen toegang meer tot instellingen, applicaties en content die zijn geïmplementeerd tijdens inschrijving.</value>
+  </data>
+  <data name="MessageTemplates_Content_DeviceNonCompliantActionsInEffect" xml:space="preserve">
+    <value>Zolang uw apparaat niet voldoet aan de vereisten, zijn de volgende acties van kracht op uw toestel:</value>
+  </data>
+  <data name="MessageTemplates_Content_DevicesWipedWithinLastMinutes" xml:space="preserve">
+    <value>Er is geconstateerd dat een ongebruikelijk groot aantal apparaten is gewist of dat de bedrijfsgegevens zijn gewist in de afgelopen {EnterpriseWipeInterval} minuten.</value>
+  </data>
+  <data name="MessageTemplates_Content_DevicesWithAppExceededLimitRemovalOnHoldUntilConfirm" xml:space="preserve">
+    <value>Het aantal apparaten met de app {BundleID} heeft de limiet voor applicatieverwijdering overschreden. De verwijdering van deze apps is in de wacht geplaatst totdat u het aantal bevestigt en bepaalt of u alle verwijderingsopdrachten voor deze app wilt vrijgeven.</value>
+  </data>
+  <data name="MessageTemplates_Content_DeviceUnenrolled" xml:space="preserve">
+    <value>Uw apparaat {DeviceFriendlyName} is niet meer ingeschreven.</value>
+  </data>
+  <data name="MessageTemplates_Content_DoNotEnterInfoUntilInContainerApp" xml:space="preserve">
+    <value>Voer geen persoonlijke of organisatiespecifieke informatie in totdat u veilig in de Workspace ONE UEM Container Application bent zoals hieronder afgebeeld:</value>
+  </data>
+  <data name="MessageTemplates_Content_DoNotEnterInfoUntilInHubApp" xml:space="preserve">
+    <value>Voer geen persoonlijke of organisatiespecifieke informatie in totdat u veilig in de Workspace ONE Intelligent Hub bent zoals hieronder afgebeeld:</value>
+  </data>
+  <data name="MessageTemplates_Content_DownloadHubApp" xml:space="preserve">
+    <value>Download de Workspace ONE Intelligent Hub app.</value>
+  </data>
+  <data name="MessageTemplates_Content_DownloadHubAppOnDeviceYouWantToEnrollAt" xml:space="preserve">
+    <value>Download de Workspace ONE Intelligent Hub app op het apparaat waarop u zich wilt inschrijven</value>
+  </data>
+  <data name="MessageTemplates_Content_EmailDomainConfirmedUserWithSameDomainEnrolledInto" xml:space="preserve">
+    <value>Nadat uw e-maildomein is bevestigd, worden gebruikers die zich inschrijven met behulp van een e-mailadres met hetzelfde domein ingeschreven bij de volgende URL en groeps-ID:</value>
+  </data>
+  <data name="MessageTemplates_Content_EmailDomainRegisteredVerifyEmailAddress" xml:space="preserve">
+    <value>Uw e-maildomein is geregistreerd voor inschrijving op basis van e-mail. Verifieer uw e-mailadres door op de onderstaande link te klikken:</value>
+  </data>
+  <data name="MessageTemplates_Content_EnrollmentURL" xml:space="preserve">
+    <value>Inschrijvings-URL:</value>
+  </data>
+  <data name="MessageTemplates_Content_EnrollYourDevice" xml:space="preserve">
+    <value>Schrijf uw apparaat in.</value>
+  </data>
+  <data name="MessageTemplates_Content_EnterCredentialsToAuthenticateDevice" xml:space="preserve">
+    <value>Voer uw inloggegevens in om uw toestel te verifiëren.</value>
+  </data>
+  <data name="MessageTemplates_Content_EnterTokenBelowInAppToResetPasscode" xml:space="preserve">
+    <value>Voer hieronder het token in als u "Toegangscode vergeten" in uw applicatie gebruikt om uw toegangscode opnieuw in te stellen.</value>
+  </data>
+  <data name="MessageTemplates_Content_EnterTokenWhenPromptedDuringAuth" xml:space="preserve">
+    <value>Voer de onderstaande token in als dit wordt gevraagd tijdens verificatie van de applicatiecatalogus.</value>
+  </data>
+  <data name="MessageTemplates_Content_EnterTokenWhenPromptedWithDetails" xml:space="preserve">
+    <value>Voer de onderstaande token in als dit wordt gevraagd tijdens verificatie van de applicatiecatalogus. Token: {AppCatalogToken}</value>
+  </data>
+  <data name="MessageTemplates_Content_EulaUpdatedAcceptanceRequired" xml:space="preserve">
+    <value>De voorwaarden van uw Workspace ONE UEM gebruikersovereenkomst zijn bijgewerkt en uw acceptatie is vereist.</value>
+  </data>
+  <data name="MessageTemplates_Content_ExpirationDateTokenExpirationDate" xml:space="preserve">
+    <value>Verloopdatum: {TokenExpirationDate}</value>
+  </data>
+  <data name="MessageTemplates_Content_FileAccessibleInContentLockerOrContentLockerSync" xml:space="preserve">
+    <value>Bovendien is het bestand toegankelijk voor de Content Locker op uw mobiele toestel of Content Locker Sync indien geïnstalleerd op uw computer.</value>
+  </data>
+  <data name="MessageTemplates_Content_FinalNoticeAppEulaUpdatedLogInToUemToAccept" xml:space="preserve">
+    <value>LAATSTE kennisgeving: De voorwaarden van de gebruikersovereenkomst van uw applicatie zijn bijgewerkt. Meld u aan bij de Workspace ONE UEM App Catalog om de voorwaarden te accepteren.</value>
+  </data>
+  <data name="MessageTemplates_Content_FinalNotificationIfRejectAppRemoved" xml:space="preserve">
+    <value>Dit is de laatste kennisgeving. Als u de voorwaarden van de gebruikersovereenkomst afwijst, wordt de applicatie van uw toestel verwijderd.</value>
+  </data>
+  <data name="MessageTemplates_Content_FirstNameLastName" xml:space="preserve">
+    <value>{FirstName} {LastName},</value>
+  </data>
+  <data name="MessageTemplates_Content_FolderAccessibleInContentLockerOrContentLockerSync" xml:space="preserve">
+    <value>Bovendien is de map toegankelijk in de Content Locker op uw mobiele toestel of Content Locker Sync indien geïnstalleerd op uw computer.</value>
+  </data>
+  <data name="MessageTemplates_Content_FollowPromptsToSetupPasswordAt" xml:space="preserve">
+    <value>Volg de instructies om uw toegangscode in te stellen op</value>
+  </data>
+  <data name="MessageTemplates_Content_ForFutureAccessRequireCredentials" xml:space="preserve">
+    <value>Voor latere toegang tot de map(pen) hebt u mogelijk de onderstaande inloggegevens nodig.</value>
+  </data>
+  <data name="MessageTemplates_Content_GoToAppRemovalLogPageToSeeDevicesCanChangeAppRemovalLimitSettings" xml:space="preserve">
+    <value>Ga naar de pagina {AppRemovalLog} om een lijst weer te geven van alle apparaten waarop dit probleem betrekking heeft. U kunt de instellingen voor de limiet voor applicatieverwijdering verhogen of verlagen op {AppRemovalProtection}.</value>
+  </data>
+  <data name="MessageTemplates_Content_GoToContainerEnrollmentUrlToActivateDevice" xml:space="preserve">
+    <value>Ga naar {ContainerEnrollmentUrl} om uw toestel te activeren</value>
+  </data>
+  <data name="MessageTemplates_Content_GoToHubEnrollmentUrlToActivateDevice" xml:space="preserve">
+    <value>Ga naar {HubEnrollmentUrl} om uw toestel te activeren</value>
+  </data>
+  <data name="MessageTemplates_Content_GrantedFollowingAdminRoles" xml:space="preserve">
+    <value>U hebt toegang gekregen tot de volgende beheerdersrollen:</value>
+  </data>
+  <data name="MessageTemplates_Content_GroupIdGroupIdentifier" xml:space="preserve">
+    <value>Groeps-ID: {GroupIdentifier}</value>
+  </data>
+  <data name="MessageTemplates_Content_HasMentionedYouInCommentOnFile" xml:space="preserve">
+    <value>heeft u vermeld in een opmerking over het bestand</value>
+  </data>
+  <data name="MessageTemplates_Content_HasSharedYouFolder" xml:space="preserve">
+    <value>heeft de map met u gedeeld</value>
+  </data>
+  <data name="MessageTemplates_Content_HaveNewFolderSharesNavigateToSSPSection" xml:space="preserve">
+    <value>U hebt nieuwe mapshares. Ga naar de sectie Selfserviceportal om deze te openen</value>
+  </data>
+  <data name="MessageTemplates_Content_HoldOnWipeUntilConfirm" xml:space="preserve">
+    <value>We plaatsen alle toekomstige wisopdrachten in de wachtrij totdat u de reden voor het verhoogde aantal wisbewerkingen kunt evalueren en bevestigen dat u alle toekomstige wisopdrachten wilt vrijgeven.</value>
+  </data>
+  <data name="MessageTemplates_Content_IfPasswordExpiresForcedToReset" xml:space="preserve">
+    <value>Als uw accountwachtwoord verloopt, wordt u gedwongen uw wachtwoord opnieuw in te stellen voordat u zich aanmeldt.</value>
+  </data>
+  <data name="MessageTemplates_Content_IfRejectDeviceUnenrolledRemovalOfData" xml:space="preserve">
+    <value>Als u de voorwaarden van de gebruikersovereenkomst afwijst, wordt uw toestel uitgeschreven uit Workspace ONE UEM, waardoor alle organisatiespecifieke gegevens van uw apparaat worden verwijderd.</value>
+  </data>
+  <data name="MessageTemplates_Content_IfRejectOrNotAcceptRemoveApp" xml:space="preserve">
+    <value>Als u de voorwaarden van de gebruikersovereenkomst afwijst of niet binnen de respijtperiode akkoord gaat, wordt de applicatie van uw toestel verwijderd.</value>
+  </data>
+  <data name="MessageTemplates_Content_Important" xml:space="preserve">
+    <value>Belangrijk:</value>
+  </data>
+  <data name="MessageTemplates_Content_LinkAboveWillExpireOn" xml:space="preserve">
+    <value>De bovenstaande link verloopt op</value>
+  </data>
+  <data name="MessageTemplates_Content_LinkExpiredContactItHelpDeskToRequestAt" xml:space="preserve">
+    <value>Als de link is verlopen, neemt u contact op met uw IT-helpdesk om een nieuwe inschrijvings-e-mail aan te vragen op</value>
+  </data>
+  <data name="MessageTemplates_Content_LogIntoConsoleToImplementCompliancePolicies" xml:space="preserve">
+    <value>Meld u aan bij Workspace ONE UEM Console om nalevingsbeleidsregels te implementeren die {VendorName} applicatiegroepen gebruiken om niet-compatibele apparaten te traceren.</value>
+  </data>
+  <data name="MessageTemplates_Content_LogIntoConsoleToResetPassword" xml:space="preserve">
+    <value>Meld u aan bij de Workspace ONE UEM-beheerdersconsole en stel uw wachtwoord opnieuw in door uw naam in de rechterbovenhoek te selecteren en vervolgens Accountinstellingen beheren te selecteren.</value>
+  </data>
+  <data name="MessageTemplates_Content_LogIntoSSPToReviewAcceptUpdatedTermsAt" xml:space="preserve">
+    <value>Meld u aan bij de Selfserviceportal om de bijgewerkte voorwaarden door te nemen en te accepteren op</value>
+  </data>
+  <data name="MessageTemplates_Content_LogIntoUemToAcceptChangesForApp" xml:space="preserve">
+    <value>Meld u op uw toestel aan bij de Workspace ONE UEM App Catalog om de wijzigingen voor de volgende applicatie te accepteren:</value>
+  </data>
+  <data name="MessageTemplates_Content_MyContent" xml:space="preserve">
+    <value>Mijn Content</value>
+  </data>
+  <data name="MessageTemplates_Content_OnlyDownloadFromOfficialAppStore" xml:space="preserve">
+    <value>Alleen downloaden uit de officiële App Store van uw apparaat</value>
+  </data>
+  <data name="MessageTemplates_Content_OrContactComplianceSupportPhone" xml:space="preserve">
+    <value>of neem contact op met telefoonnummer: {ComplianceSupportPhone}</value>
+  </data>
+  <data name="MessageTemplates_Content_OrContactEnrollmentSupportPhone" xml:space="preserve">
+    <value>of neem contact op met telefoonnummer: {EnrollmentSupportPhone}.</value>
+  </data>
+  <data name="MessageTemplates_Content_OurWebsite" xml:space="preserve">
+    <value>onze website</value>
+  </data>
+  <data name="MessageTemplates_Content_PasswordEnrollmentPassword" xml:space="preserve">
+    <value>Wachtwoord: {EnrollmentPassword}</value>
+  </data>
+  <data name="MessageTemplates_Content_PasswordResetLink" xml:space="preserve">
+    <value>Link voor opnieuw instellen wachtwoord:</value>
+  </data>
+  <data name="MessageTemplates_Content_PasswordResetLinkExpiration" xml:space="preserve">
+    <value>Vervaldatum link voor opnieuw instellen wachtwoord:</value>
+  </data>
+  <data name="MessageTemplates_Content_PolicyNamePolicyDescription" xml:space="preserve">
+    <value>{PolicyName}: {PolicyDescription}</value>
+  </data>
+  <data name="MessageTemplates_Content_ProvisioningPackageRequestStatusChangedLogIntoConsoleToSee" xml:space="preserve">
+    <value>De status van uw aanvraag om een Windows-provisioningpakket te maken, is gewijzigd. Log in bij de console en raadpleeg de meldingen voor meer informatie.</value>
+  </data>
+  <data name="MessageTemplates_Content_RedirectedToContainerAppOrToDownloadContainerApp" xml:space="preserve">
+    <value>Als de Workspace ONE UEM Container-app op uw toestel is geïnstalleerd, wordt u naar deze app geleid. Als dit niet het geval is, wordt u naar de officiële App Store van uw apparaat doorverwezen om het te downloaden.</value>
+  </data>
+  <data name="MessageTemplates_Content_RedirectedToHubAppOrToDownloadHubApp" xml:space="preserve">
+    <value>Als de Workspace ONE Intelligent Hub-app op uw toestel is geïnstalleerd, wordt u naar deze applicatie doorverwezen. Als dit niet het geval is, wordt u naar de officiële App Store van uw apparaat doorverwezen om het te downloaden.</value>
+  </data>
+  <data name="MessageTemplates_Content_Regards" xml:space="preserve">
+    <value>Met vriendelijke groet,</value>
+  </data>
+  <data name="MessageTemplates_Content_RegisteringEnableDownloadAppPurchasedByOrg" xml:space="preserve">
+    <value>Als u zich registreert voor het programma, kunt u de applicaties die uw organisatie heeft aangeschaft in uw naam downloaden.</value>
+  </data>
+  <data name="MessageTemplates_Content_RegistrationTokenRevoked" xml:space="preserve">
+    <value>Het registratietoken voor uw toestel is ingetrokken.</value>
+  </data>
+  <data name="MessageTemplates_Content_RegistrationTokenRevokedCannotBeActivated" xml:space="preserve">
+    <value>Het registratietoken voor uw toestel is ingetrokken en u kunt het niet meer activeren in Workspace ONE UEM.</value>
+  </data>
+  <data name="MessageTemplates_Content_ResetUrlExpirationText" xml:space="preserve">
+    <value>De bovenstaande link vervalt over {PasswordResetUrlExpiration} uur.</value>
+  </data>
+  <data name="MessageTemplates_Content_ResetUrlRetryText" xml:space="preserve">
+    <value>Als deze koppeling niet werkt, probeer de volgende link te kopiëren en te plakken in uw browser.</value>
+  </data>
+  <data name="MessageTemplates_Content_ResetUrlText" xml:space="preserve">
+    <value>Uw wachtwoord nu opnieuw instellen</value>
+  </data>
+  <data name="MessageTemplates_Content_RestrictionsLiftedWhenCompliant" xml:space="preserve">
+    <value>Beperkingen die voor uw apparaat gelden, worden opgeheven wanneer uw apparaat weer voldoet aan de vereisten.</value>
+  </data>
+  <data name="MessageTemplates_Content_SeeAppReputationAnalysisReportForApp" xml:space="preserve">
+    <value>Zie een bijgevoegd gedetailleerd rapport van de applicatiereputatie-analyse voor de applicatie {ApplicationName}{ApplicationVersion}.</value>
+  </data>
+  <data name="MessageTemplates_Content_SeeDeviceWipeDetailsNavigateTo" xml:space="preserve">
+    <value>Als u een lijst wilt weergeven van alle apparaten die zijn gewist of daarop wachten, kijkt u waardoor een actie werd geactiveerd en geeft u op of u acties wilt verwijderen of voortzetten. Ga naar</value>
+  </data>
+  <data name="MessageTemplates_Content_SetUemPassword" xml:space="preserve">
+    <value>Stel uw Workspace ONE UEM wachtwoord in.</value>
+  </data>
+  <data name="MessageTemplates_Content_TempAdminCreatedOrModifiedLogIntoConsole" xml:space="preserve">
+    <value>Uw Workspace ONE UEM tijdelijke beheerdersaccount is gemaakt of gewijzigd en u kunt nu zich aanmelden bij de Workspace ONE UEM beheerconsole met de volgende inloggegevens:</value>
+  </data>
+  <data name="MessageTemplates_Content_ToActivateAndAccessContent" xml:space="preserve">
+    <value>Om uw account te activeren en toegang te krijgen tot de content die met u wordt gedeeld,</value>
+  </data>
+  <data name="MessageTemplates_Content_ToComplyWithPolicyAddressViolations" xml:space="preserve">
+    <value>Om te voldoen aan het beleid moet u de volgende schendingen verhelpen:</value>
+  </data>
+  <data name="MessageTemplates_Content_TokenAppCatalogToken" xml:space="preserve">
+    <value>Token: {AppCatalogToken}</value>
+  </data>
+  <data name="MessageTemplates_Content_TokenApplicationAuthenticationToken" xml:space="preserve">
+    <value>Token: {ApplicationAuthenticationToken}</value>
+  </data>
+  <data name="MessageTemplates_Content_ToLearnMoreVisit" xml:space="preserve">
+    <value>Voor meer informatie gaat u naar</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAdminAccountActivationTitle" xml:space="preserve">
+    <value>Workspace ONE UEM beheerdersaccount activeren - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAdminPasswordExpiryNotificationTitle" xml:space="preserve">
+    <value>Workspace ONE UEM melding over verlopen van beheerders wachtwoord - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAdminPasswordResetTitle" xml:space="preserve">
+    <value>Workspace ONE UEM beheerderswachtwoord opnieuw instellen - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAdminPasswordUpdatedTitle" xml:space="preserve">
+    <value>Workspace ONE UEM beheerderswachtwoord bijgewerkt - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAdminPersonalInfoUpdatedTitle" xml:space="preserve">
+    <value>Workspace ONE UEM persoonlijke informatie beheerder bijgewerkt - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAdminStatusUpdatedTitle" xml:space="preserve">
+    <value>Workspace ONE UEM beheerdersstatus bijgewerkt - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAppCatalogTokenNotificationTitle" xml:space="preserve">
+    <value>Workspace ONE UEM App Catalog-tokenmelding - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAppEulaUpdateNotificationTitle" xml:space="preserve">
+    <value>Workspace ONE UEM melding van update gebruikersovereenkomst applicatie - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAppForgotPasscodeTokenNotificationTitle" xml:space="preserve">
+    <value>Workspace ONE UEM melding van apptoegangscode-token vergeten - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAppGroupCreationNotificationTitle" xml:space="preserve">
+    <value>Melding voor het aan maken van een Workspace ONE UEM applicatiegroep - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAppLogNotificationTitle" xml:space="preserve">
+    <value>Workspace ONE UEM applicatielogboekmelding - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAppNotificationTitle" xml:space="preserve">
+    <value>Workspace ONE UEM applicatiemelding - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAppPurchaseTitle" xml:space="preserve">
+    <value>Workspace ONE UEM applicatie-aanschaf - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAppRemovalNotificationTitle" xml:space="preserve">
+    <value>Workspace ONE UEM melding van applicatie verwijderen - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAppReputationAnalysisTitle" xml:space="preserve">
+    <value>Workspace ONE UEM analyse applicatiereputatie - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAppWorkflowAppAssignmentNotificationTitle" xml:space="preserve">
+    <value>Workspace ONE UEM applicatieworkflow - melding applicatietoewijzing - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAppWorkflowAppCreatedNotificationTitle" xml:space="preserve">
+    <value>Workspace ONE UEM applicatieworkflow - melding applicatie maken - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAppWorkflowAppPublishNotificationTitle" xml:space="preserve">
+    <value>Workspace ONE UEM applicatieworkflow - melding applicatie publiceren - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAppWorkflowAppReviewNotificationTitle" xml:space="preserve">
+    <value>Workspace ONE UEM applicatieworkflow - melding applicatiebeoordeling - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemContentNotificationTitle" xml:space="preserve">
+    <value>Workspace ONE UEM Content-melding - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemDeviceActivationTitle" xml:space="preserve">
+    <value>Workspace ONE UEM toestelactivering - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemDeviceBlockedByEnrollmentRestrictionTitle" xml:space="preserve">
+    <value>Workspace ONE UEM toestel geblokkeerd door inschrijvingsbeperking - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemDeviceComplianceViolationTitle" xml:space="preserve">
+    <value>Workspace ONE UEM schending netwerkbeleid toestellen - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemDeviceEnrolledTitle" xml:space="preserve">
+    <value>Workspace ONE UEM toestel ingeschreven - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemDeviceRemovalTitle" xml:space="preserve">
+    <value>Workspace ONE UEM toestel verwijderen - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemDeviceUnenrolledTitle" xml:space="preserve">
+    <value>Workspace ONE UEM toestel uitgeschreven - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemEmailDomainRegistrationTitle" xml:space="preserve">
+    <value>Workspace ONE UEM e-maildomeinregistratie - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemEulaUpdateTitle" xml:space="preserve">
+    <value>Workspace ONE UEM update gebruikersovereenkomst - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemFinalNoticeAppEulaUpdateTitle" xml:space="preserve">
+    <value>LAATSTE melding - Workspace ONE UEM applicatie - update gebruikersovereenkomst - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemLicenseBasedVppNotificationTitle" xml:space="preserve">
+    <value>Workspace ONE UEM licentiegebaseerde VPP-melding - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemProvisioningPackageTitle" xml:space="preserve">
+    <value>Workspace ONE UEM provisioningpakket - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemTempAdminActivationTitle" xml:space="preserve">
+    <value>Workspace ONE UEM tijdelijke beheerdersaccount activeren - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemUserActivationTitle" xml:space="preserve">
+    <value>Workspace ONE UEM gebruikersactivering - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemWipeProtectionNotificationTitle" xml:space="preserve">
+    <value>Workspace ONE UEM wisbeveilgingsmelding - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UnenrollmentReason" xml:space="preserve">
+    <value>Reden: {ServerActionSource}</value>
+  </data>
+  <data name="MessageTemplates_Content_UserCommentsForApp" xml:space="preserve">
+    <value>Gebruikersopmerkingen voor de applicatie staan hieronder:</value>
+  </data>
+  <data name="MessageTemplates_Content_UserHasSharedFolder" xml:space="preserve">
+    <value>{ContentShareUserFirstName} {ContentShareUserLastName} ({ContentShareUserEmail}) heeft de map "{ContentFolderName}" met u gedeeld.</value>
+  </data>
+  <data name="MessageTemplates_Content_UserNameAdminUserName" xml:space="preserve">
+    <value>Gebruikersnaam: {AdminUserName}</value>
+  </data>
+  <data name="MessageTemplates_Content_UserNameEmailAddress" xml:space="preserve">
+    <value>Gebruikersnaam: {EmailAddress}</value>
+  </data>
+  <data name="MessageTemplates_Content_UserNameEnrollmentUserName" xml:space="preserve">
+    <value>Gebruikersnaam: {EnrollmentUserName}</value>
+  </data>
+  <data name="MessageTemplates_Content_UsingBrowserToRegisterVppProgramNavigateTo" xml:space="preserve">
+    <value>Als u via de browser van uw iOS 7-apparaat het Apple licentieprogramma voor VPP-applicaties wilt registreren, gaat u naar</value>
+  </data>
+  <data name="Messagetemplates_Content_WelcomeToWorkspaceOneUEM" xml:space="preserve">
+    <value>Welkom bij Workspace ONE UEM</value>
+  </data>
+  <data name="MessageTemplates_Content_WhenPromptedEnterUseNamePassword" xml:space="preserve">
+    <value>Voer uw gebruikersnaam en wachtwoord voor inschrijving in als dit wordt gevraagd:</value>
+  </data>
+  <data name="MessageTemplates_Content_WipeLogPage" xml:space="preserve">
+    <value>Logpagina voor het wissen</value>
+  </data>
+  <data name="MessageTemplates_Content_WorkspaceOneUem" xml:space="preserve">
+    <value>Workspace ONE UEM</value>
+  </data>
+  <data name="Messagetemplates_Content_WorkspaceOneUEMUser" xml:space="preserve">
+    <value>Workspace ONE UEM-gebruiker</value>
+  </data>
+  <data name="Messagetemplates_Description_AdminAccountActivation" xml:space="preserve">
+    <value>De standaardberichtsjabloon die wordt gebruikt wanneer een beheerder van de Console een andere beheerder toevoegt.</value>
+  </data>
+  <data name="Messagetemplates_Description_AdminPasswordChange" xml:space="preserve">
+    <value>Dit is de standaardberichtsjabloon waarmee een beheerder wordt gewaarschuwd dat diens wachtwoord is gewijzigd. Dit bericht is geautomatiseerd en wordt altijd verzonden voor beveiligingsdoeleinden.</value>
+  </data>
+  <data name="Messagetemplates_Description_AdminPasswordExpiryNotification" xml:space="preserve">
+    <value>Dit is de standaardberichtsjabloon waarmee een beheerder wordt geïnformeerd dat zijn/haar wachtwoord binnenkort verloopt en dat dit opnieuw moet worden ingesteld</value>
+  </data>
+  <data name="Messagetemplates_Description_AdminPasswordReset" xml:space="preserve">
+    <value>Dit is de standaardberichtsjabloon waarmee een beheerder wordt gewaarschuwd dat diens wachtwoord is gewijzigd. Dit bericht is geautomatiseerd en wordt altijd verzonden voor beveiligingsdoeleinden.</value>
+  </data>
+  <data name="Messagetemplates_Description_AdminPersonalInformationChange" xml:space="preserve">
+    <value>Dit is de standaardberichtsjabloon waarmee een beheerder wordt gewaarschuwd dat diens persoonlijke informatie is gewijzigd. Dit bericht is geautomatiseerd en wordt altijd verzonden voor beveiligingsdoeleinden.</value>
+  </data>
+  <data name="Messagetemplates_Description_AdminPersonalInformationChangeViaApi" xml:space="preserve">
+    <value>Dit is de standaardberichtsjabloon waarmee een beheerder wordt gewaarschuwd dat diens persoonlijke informatie is gewijzigd via de API. Dit bericht is geautomatiseerd en wordt altijd verzonden voor beveiligingsdoeleinden.</value>
+  </data>
+  <data name="Messagetemplates_Description_AdminStatusChange" xml:space="preserve">
+    <value>Dit is de standaardberichtsjabloon waarmee een beheerder op de hoogte wordt gesteld dat hij/zij is gedeactiveerd of geactiveerd. Dit bericht is geautomatiseerd en wordt altijd verzonden voor beveiligingsdoeleinden.</value>
+  </data>
+  <data name="Messagetemplates_Description_AppCatalogTokenNotification" xml:space="preserve">
+    <value>Dit is de standaardberichtsjabloon om token-informatie naar gebruikers te verzenden wanneer zij de applicatiecatalogus voor de eerste keer openen. Dit bericht wordt alleen verzonden als het toestel in een organisatiegroep is geconfigureerd voor token-verificatie.</value>
+  </data>
+  <data name="Messagetemplates_Description_ApplicationAssignmentNotification" xml:space="preserve">
+    <value>Dit is de standaardberichtsjabloon waarmee een beheerder wordt gewaarschuwd dat er een nieuwe applicatie klaar staat voor toewijzing.</value>
+  </data>
+  <data name="Messagetemplates_Description_ApplicationCreationNotification" xml:space="preserve">
+    <value>Dit is de standaardberichtsjabloon waarmee een beheerder wordt gewaarschuwd dat er een nieuwe applicatie is gemaakt.</value>
+  </data>
+  <data name="Messagetemplates_Description_ApplicationEulaFinalNotification" xml:space="preserve">
+    <value>Dit is de standaardberichtsjabloon waarmee gebruikers een laatste waarschuwing krijgen dat ze nieuwe of aanvullende gebruikersovereenkomst voor een applicatie moeten accepteren; anders wordt de applicatie verwijderd.</value>
+  </data>
+  <data name="Messagetemplates_Description_ApplicationEulaNotification" xml:space="preserve">
+    <value>De standaardberichtsjabloon om gebruikers te informeren dat de gebruikersovereenkomst van een applicatie zijn toegevoegd of bijgewerkt. Gebruikers krijgen de instructie om de toevoeging of wijziging te accepteren.</value>
+  </data>
+  <data name="Messagetemplates_Description_ApplicationLogNotification" xml:space="preserve">
+    <value>De standaardberichtsjabloon die wordt gebruikt als een SDK-geactiveerde applicatie een crashlogboek genereert en voor de applicatie een vlag is ingeschakeld om automatisch crashlogboeken te verzenden naar het e-mailadres van de ontwikkelaar.</value>
+  </data>
+  <data name="Messagetemplates_Description_ApplicationNotification" xml:space="preserve">
+    <value>Dit is de standaardberichtsjabloon waarmee een gebruiker wordt gewaarschuwd dat er een nieuwe applicatie in de applicatiecatalogus klaar staat om te worden gedownload.</value>
+  </data>
+  <data name="Messagetemplates_Description_ApplicationPublishNotification" xml:space="preserve">
+    <value>Dit is de standaardberichtsjabloon waarmee een beheerder wordt gewaarschuwd dat er een nieuwe applicatie klaar staat om te worden gepubliceerd.</value>
+  </data>
+  <data name="Messagetemplates_Description_ApplicationReviewNotification" xml:space="preserve">
+    <value>Dit is de standaardberichtsjabloon waarmee een beheerder wordt gewaarschuwd dat er een nieuwe applicatie klaar staat voor evaluatie.</value>
+  </data>
+  <data name="Messagetemplates_Description_ApplicationScanDetailResult" xml:space="preserve">
+    <value>Dit is de standaardberichtsjabloon waarmee ontwikkelaars op de hoogte worden gebracht van het gedetailleerde rapport over de applicatiereputatieanalyse.</value>
+  </data>
+  <data name="Messagetemplates_Description_ApplicationScanNotification" xml:space="preserve">
+    <value>Melding - Applicatiereputatieanalyse voltooid</value>
+  </data>
+  <data name="Messagetemplates_Description_AppRemoveNotification" xml:space="preserve">
+    <value>Dit berichtsjabloon wordt gebruikt om aan toestellen te melden dat er binnen een korte tijd op een groot aantal toestellen een applicatie is verwijderd.</value>
+  </data>
+  <data name="Messagetemplates_Description_AppVersionUpdateNotification" xml:space="preserve">
+    <value>U kunt de melding die tijdens inschrijving in het installatievenster voor het MDM-profiel wordt getoond aanpassen.</value>
+  </data>
+  <data name="Messagetemplates_Description_AuthenticationAppTokenNotification" xml:space="preserve">
+    <value>Dit is het sjabloon waarmee een token naar gebruikers wordt gestuurd zodat ze de toegangscode in een SDK-applicatie op een toestel opnieuw kunnen instellen.</value>
+  </data>
+  <data name="Messagetemplates_Description_ComplianceViolationAdministratorNotification" xml:space="preserve">
+    <value>Dit is de standaardberichtsjabloon waarmee een beheerder wordt gewaarschuwd dat een toestel een netwerkregel overtreedt en dat de gebruiker actie moet ondernemen om ervoor te zorgen dat het toestel zich weer aan de netwerkregels conformeert.</value>
+  </data>
+  <data name="Messagetemplates_Description_ComplianceViolationUserNotification" xml:space="preserve">
+    <value>Dit is de standaardberichtsjabloon om gebruikers te waarschuwen dat ze een netwerkbeleid overtreden en dat ze actie moeten ondernemen om hun toestel weer in conformiteit met de regels te brengen.</value>
+  </data>
+  <data name="Messagetemplates_Description_DeviceActivation" xml:space="preserve">
+    <value>Dit is de standaardberichtsjabloon waarmee aan gebruikers wordt gemeld dat ze hun toestel kunnen inschrijven.</value>
+  </data>
+  <data name="Messagetemplates_Description_DeviceBlockedByRestriction" xml:space="preserve">
+    <value>Dit is de standaardberichtsjabloon waarmee aan gebruikers wordt gemeld dat hun toestel als gevolg van een restrictie is geblokkeerd.</value>
+  </data>
+  <data name="Messagetemplates_Description_DeviceEnrolled" xml:space="preserve">
+    <value>Dit is de standaardberichtsjabloon waarmee aan gebruikers wordt gemeld dat hun toestel succesvol is ingeschreven.</value>
+  </data>
+  <data name="Messagetemplates_Description_DeviceEnrollmentProgramCustomPrompt" xml:space="preserve">
+    <value>Pas de tekst aan die verschijnt in het deelvenster Verificatie van de Configuratieassistent voor toestellen waaraan een Device Enrollment Program-profiel is toegewezen.</value>
+  </data>
+  <data name="Messagetemplates_Description_DeviceLockScreenMessageiOS7" xml:space="preserve">
+    <value>Dit is de standaard HTML-berichtsjabloon die wordt getoond wanneer een commando wordt verzonden om het scherm te vergrendelen als het toestel is kwijtgeraakt.</value>
+  </data>
+  <data name="Messagetemplates_Description_DeviceOutofDateCompliance" xml:space="preserve">
+    <value>Dit is de standaardberichtsjabloon waarmee gebruikers worden verzocht Workspace ONE Intelligent Hub te openen, zodat het toestel zich incheckt en een nalevingscontrole kan uitvoeren.</value>
+  </data>
+  <data name="Messagetemplates_Description_DeviceUnenrolled" xml:space="preserve">
+    <value>Dit is de standaardberichtsjabloon waarmee aan gebruikers wordt gemeld dat hun toestel is uitgeschreven.</value>
+  </data>
+  <data name="Messagetemplates_Description_DeviceWipeEmailNotification" xml:space="preserve">
+    <value>Dit is de standaardberichtsjabloon waarmee de beheerder wordt gewaarschuwd dat een groot aantal toestellen binnen een korte tijd zijn gewist of waarvan de bedrijfsgegevens zijn gewist.</value>
+  </data>
+  <data name="Messagetemplates_Description_EmailDomainRegistration" xml:space="preserve">
+    <value>Dit is de standaardberichtsjabloon om het e-maildomein dat voor de vereenvoudigde inschrijvingsprocedure wordt gebruikt, te valideren.</value>
+  </data>
+  <data name="Messagetemplates_Description_EulaNotification" xml:space="preserve">
+    <value>Dit is de standaardberichtsjabloon waarmee aan gebruikers wordt gemeld dat er aanvullende gebruikersovereenkomst zijn toegevoegd of dat bestaande voorwaarden zijn geactualiseerd en dat deze wijziging moet worden geaccepteerd.</value>
+  </data>
+  <data name="Messagetemplates_Description_ExternalUserActivation" xml:space="preserve">
+    <value>Dit is de standaardberichtsjabloon waarmee aan externe gebruikers na activering van hun account wordt gemeld dat er een map met hen is gedeeld.</value>
+  </data>
+  <data name="Messagetemplates_Description_LicenseBasedPurchasedApplicationInvitation" xml:space="preserve">
+    <value>Dit is de standaardberichtsjabloon waarmee aan ingeschreven gebruikers wordt gemeld dat zij zich bij Apple moeten registreren voor VPP-apps op licentiebasis.</value>
+  </data>
+  <data name="Messagetemplates_Description_MamEnrollmentUserActivation" xml:space="preserve">
+    <value>Dit is de standaardberichtsjabloon die wordt gebruikt wanneer een beheerder vanuit de Console een nieuwe gebruiker aan een organisatiegroep toevoegt die voor MAM-inschrijving wordt gebruikt.</value>
+  </data>
+  <data name="Messagetemplates_Description_MamNewUserActivation" xml:space="preserve">
+    <value>Dit is de standaardberichtsjabloon die wordt gebruikt wanneer een gebruiker zich inschrijft in een organisatiegroep die voor MAM-inschrijving wordt gebruikt.</value>
+  </data>
+  <data name="Messagetemplates_Description_MentionedCommentNotification" xml:space="preserve">
+    <value>Melding - Genoemd in opmerking</value>
+  </data>
+  <data name="Messagetemplates_Description_NewlyAddedUserToUserGroupNotification" xml:space="preserve">
+    <value>Dit is de standaardberichtsjabloon om recent toegevoegde gebruikers in een groep op de hoogte te brengen van mappen die al eerder met de groep waren gedeeld.</value>
+  </data>
+  <data name="Messagetemplates_Description_NewSharedFolderNotification" xml:space="preserve">
+    <value>Melding - Gedeelde map</value>
+  </data>
+  <data name="Messagetemplates_Description_ProvisioningPackageNotification" xml:space="preserve">
+    <value>Dit is de standaardberichtsjabloon waarmee een beheerder wordt gewaarschuwd dat het provisioningspakket is gemaakt en beschikbaar is om te downloaden.</value>
+  </data>
+  <data name="Messagetemplates_Description_PurchasedApplication" xml:space="preserve">
+    <value>Dit is de standaardberichtsjabloon waarmee een gebruiker op de gewaarschuwd dat er namens hem/haar een applicatie is aangekocht en dat deze nu klaar staat om te worden gedownload.</value>
+  </data>
+  <data name="Messagetemplates_Description_TempAdminActivation" xml:space="preserve">
+    <value>Dit is de standaardberichtsjabloon om te waarschuwen dat een beheerder in de Console een nieuwe tijdelijke beheerdersaccount heeft toegevoegd.</value>
+  </data>
+  <data name="Messagetemplates_Description_UnRegisterDevice" xml:space="preserve">
+    <value>Dit is de standaardberichtsjabloon om gebruikers te waarschuwen dat hun toestel is uitgeschreven en dat alle gegevens eigen aan de organisatie worden verwijderd.</value>
+  </data>
+  <data name="Messagetemplates_Description_UserActivation" xml:space="preserve">
+    <value>Dit is de standaardberichtsjabloon om gebruikers ervan op de hoogte te stellen dat ze als EMM-gebruiker zijn toegevoegd zodat ze hun toestel kunnen inschrijven.</value>
+  </data>
+  <data name="Messagetemplates_Description_VendorApplicationGroupCreationNotification" xml:space="preserve">
+    <value>Dit is de standaardberichtsjabloon waarmee gebruikers op de hoogte worden gesteld dat er één of meer applicatiegroepen van de leverancier zijn gecreëerd en dat deze klaar staan zodat men er netwerkbeleid op kan toepassen.</value>
+  </data>
+  <data name="Messagetemplates_Description_WorkSpaceDeviceActivation" xml:space="preserve">
+    <value>Dit is de standaardberichtsjabloon waarmee aan gebruikers wordt gemeld dat ze hun toestel kunnen inschrijven.</value>
+  </data>
+  <data name="Messagetemplates_Name_AdminAccountActivation" xml:space="preserve">
+    <value>Beheerdersactivering</value>
+  </data>
+  <data name="Messagetemplates_Name_AdminPasswordChange" xml:space="preserve">
+    <value>Beheerderswachtwoord veranderen</value>
+  </data>
+  <data name="Messagetemplates_Name_AdminPasswordExpiryNotification" xml:space="preserve">
+    <value>Melding voor verlopen van beheerderswachtwoord</value>
+  </data>
+  <data name="Messagetemplates_Name_AdminPasswordReset" xml:space="preserve">
+    <value>Beheerderswachtwoord veranderen</value>
+  </data>
+  <data name="Messagetemplates_Name_AdminPersonalInformationChange" xml:space="preserve">
+    <value>Verandering persoonlijke informatie van de beheerder</value>
+  </data>
+  <data name="Messagetemplates_Name_AdminPersonalInformationChangeViaApi" xml:space="preserve">
+    <value>Wijziging persoonlijke informatie van de beheerder via API</value>
+  </data>
+  <data name="Messagetemplates_Name_AdminStatusChange" xml:space="preserve">
+    <value>Veranderen beheerdersstatus</value>
+  </data>
+  <data name="Messagetemplates_Name_AppCatalogTokenNotification" xml:space="preserve">
+    <value>Melding - token voor de applicatiecatalogus</value>
+  </data>
+  <data name="Messagetemplates_Name_ApplicationAssignmentNotification" xml:space="preserve">
+    <value>App-werkstroom - melding voor toewijzen</value>
+  </data>
+  <data name="Messagetemplates_Name_ApplicationCreationNotification" xml:space="preserve">
+    <value>App-werkstroom - melding voor maken</value>
+  </data>
+  <data name="Messagetemplates_Name_ApplicationEulaFinalNotification" xml:space="preserve">
+    <value>Gebruikersovereenkomst applicatie - Laatste melding</value>
+  </data>
+  <data name="Messagetemplates_Name_ApplicationEulaNotification" xml:space="preserve">
+    <value>Gebruikersovereenkomst applicatie - Melding over update</value>
+  </data>
+  <data name="Messagetemplates_Name_ApplicationLogNotification" xml:space="preserve">
+    <value>Logboekmelding voor applicatie voor SDK</value>
+  </data>
+  <data name="Messagetemplates_Name_ApplicationNotification" xml:space="preserve">
+    <value>Applicatiemelding</value>
+  </data>
+  <data name="Messagetemplates_Name_ApplicationPublishNotification" xml:space="preserve">
+    <value>App-werkstroom - melding voor publicatie</value>
+  </data>
+  <data name="Messagetemplates_Name_ApplicationReviewNotification" xml:space="preserve">
+    <value>App-werkstroom - melding voor controle</value>
+  </data>
+  <data name="Messagetemplates_Name_ApplicationScanDetailResult" xml:space="preserve">
+    <value>Details app-reputatieanalyse</value>
+  </data>
+  <data name="Messagetemplates_Name_ApplicationScanNotification" xml:space="preserve">
+    <value>Melding -voor app-reputatieanalyse voltooid</value>
+  </data>
+  <data name="Messagetemplates_Name_AppRemoveNotification" xml:space="preserve">
+    <value>Melding over verwijderingslimiet voor app bereikt</value>
+  </data>
+  <data name="Messagetemplates_Name_AppVersionUpdateNotification" xml:space="preserve">
+    <value>MDM-profielinstallatie (alleen iOS)</value>
+  </data>
+  <data name="Messagetemplates_Name_AuthenticationAppTokenNotification" xml:space="preserve">
+    <value>Melding voor token toegangscode vergeten bij app</value>
+  </data>
+  <data name="Messagetemplates_Name_ComplianceViolationAdministratorNotification" xml:space="preserve">
+    <value>Beheerdersnotificatie - overtreding netwerkbeleid</value>
+  </data>
+  <data name="Messagetemplates_Name_ComplianceViolationUserNotification" xml:space="preserve">
+    <value>Gebruikersnotificatie - overtreding netwerkbeleid</value>
+  </data>
+  <data name="Messagetemplates_Name_DeviceActivation" xml:space="preserve">
+    <value>Toestelactivering</value>
+  </data>
+  <data name="Messagetemplates_Name_DeviceBlockedByRestriction" xml:space="preserve">
+    <value>Toestel geblokkeerd door inschrijvingsbeperking</value>
+  </data>
+  <data name="Messagetemplates_Name_DeviceEnrolled" xml:space="preserve">
+    <value>Toestel is ingeschreven</value>
+  </data>
+  <data name="Messagetemplates_Name_DeviceEnrollmentProgramCustomPrompt" xml:space="preserve">
+    <value>Toestelinschrijving - Aangepast bericht</value>
+  </data>
+  <data name="Messagetemplates_Name_DeviceLockScreenMessageiOS7" xml:space="preserve">
+    <value>Bericht vergrendelscherm voor verloren apparaat (alleen iOS 7)</value>
+  </data>
+  <data name="Messagetemplates_Name_DeviceOutofDateCompliance" xml:space="preserve">
+    <value>Nalevingscontrole aanvragen</value>
+  </data>
+  <data name="Messagetemplates_Name_DeviceUnenrolled" xml:space="preserve">
+    <value>Toestel uitgeschreven</value>
+  </data>
+  <data name="Messagetemplates_Name_DeviceWipeEmailNotification" xml:space="preserve">
+    <value>Melding voor wisbeveiliging</value>
+  </data>
+  <data name="Messagetemplates_Name_EmailDomainRegistration" xml:space="preserve">
+    <value>Registratie e-maildomein</value>
+  </data>
+  <data name="Messagetemplates_Name_EulaNotification" xml:space="preserve">
+    <value>Melding van de gebruikersovereenkomst</value>
+  </data>
+  <data name="Messagetemplates_Name_ExternalUserActivation" xml:space="preserve">
+    <value>Activering externe gebruiker</value>
+  </data>
+  <data name="Messagetemplates_Name_LicenseBasedPurchasedApplicationInvitation" xml:space="preserve">
+    <value>Melding licentiegebaseerde VPP</value>
+  </data>
+  <data name="Messagetemplates_Name_MamEnrollmentUserActivation" xml:space="preserve">
+    <value>Nieuwe gebruikeractivering door MAM-beheerder begonnen</value>
+  </data>
+  <data name="Messagetemplates_Name_MamNewUserActivation" xml:space="preserve">
+    <value>Een nieuwe MAM-gebruiker activeren</value>
+  </data>
+  <data name="Messagetemplates_Name_MentionedCommentNotification" xml:space="preserve">
+    <value>Noemen in opmerking</value>
+  </data>
+  <data name="Messagetemplates_Name_NewlyAddedUserToUserGroupNotification" xml:space="preserve">
+    <value>Deelmelding voor nieuw toegevoegde gebruiker in gebruikersgroep</value>
+  </data>
+  <data name="Messagetemplates_Name_NewSharedFolderNotification" xml:space="preserve">
+    <value>Nieuwe gedeelde map</value>
+  </data>
+  <data name="Messagetemplates_Name_ProvisioningPackageNotification" xml:space="preserve">
+    <value>Melding provisioningpakket</value>
+  </data>
+  <data name="Messagetemplates_Name_PurchasedApplication" xml:space="preserve">
+    <value>Applicatie-aankoop</value>
+  </data>
+  <data name="Messagetemplates_Name_TempAdminActivation" xml:space="preserve">
+    <value>Activering tijdelijke beheerder</value>
+  </data>
+  <data name="Messagetemplates_Name_UnRegisterDevice" xml:space="preserve">
+    <value>Toestelregistratie ongedaan maken</value>
+  </data>
+  <data name="Messagetemplates_Name_UserActivation" xml:space="preserve">
+    <value>Gebruikersactivering</value>
+  </data>
+  <data name="Messagetemplates_Name_VendorApplicationGroupCreationNotification" xml:space="preserve">
+    <value>Melding voor het aanmaken van een aanbieder-applicatiegroep</value>
+  </data>
+  <data name="Messagetemplates_Name_WorkSpaceDeviceActivation" xml:space="preserve">
+    <value>Toestelactivering via container</value>
+  </data>
+  <data name="Messagetemplates_Subject_AdminAccountActivation" xml:space="preserve">
+    <value>Workspace ONE UEM beheerdersaccount activeren</value>
+  </data>
+  <data name="Messagetemplates_Subject_AdminPasswordChange" xml:space="preserve">
+    <value>Workspace ONE UEM beheerderswachtwoord bijgewerkt</value>
+  </data>
+  <data name="Messagetemplates_Subject_AdminPasswordExpiryNotification" xml:space="preserve">
+    <value>Melding voor verlopen van beheerderswachtwoord</value>
+  </data>
+  <data name="Messagetemplates_Subject_AdminPasswordReset" xml:space="preserve">
+    <value>Workspace ONE UEM beheerderswachtwoord opnieuw ingesteld</value>
+  </data>
+  <data name="Messagetemplates_Subject_AdminPersonalInformationChange" xml:space="preserve">
+    <value>Workspace ONE UEM - persoonlijke informatie beheerder bijgewerkt</value>
+  </data>
+  <data name="Messagetemplates_Subject_AdminPersonalInformationChangeViaApi" xml:space="preserve">
+    <value>Workspace ONE UEM - persoonlijke informatie beheerder bijgewerkt</value>
+  </data>
+  <data name="Messagetemplates_Subject_AdminStatusChange" xml:space="preserve">
+    <value>Workspace ONE UEM - beheerdersstatus bijgewerkt</value>
+  </data>
+  <data name="Messagetemplates_Subject_AppCatalogTokenNotification" xml:space="preserve">
+    <value>Workspace ONE UEM App Catalog-token</value>
+  </data>
+  <data name="Messagetemplates_Subject_ApplicationAssignmentNotification" xml:space="preserve">
+    <value>Workspace ONE UEM - applicatie beschikbaar voor toewijzing</value>
+  </data>
+  <data name="Messagetemplates_Subject_ApplicationCreationNotification" xml:space="preserve">
+    <value>Workspace ONE UEM - nieuwe applicatie gemaakt</value>
+  </data>
+  <data name="Messagetemplates_Subject_ApplicationEulaFinalNotification" xml:space="preserve">
+    <value>LAATSTE MELDING - Workspace ONE UEM-applicatie - update gebruikersovereenkomst</value>
+  </data>
+  <data name="Messagetemplates_Subject_ApplicationEulaNotification" xml:space="preserve">
+    <value>Update voor gebruikersovereenkomst applicatie</value>
+  </data>
+  <data name="Messagetemplates_Subject_ApplicationLogNotification" xml:space="preserve">
+    <value>Workspace ONE UEM-applicatiefoutenlogboek</value>
+  </data>
+  <data name="Messagetemplates_Subject_ApplicationNotification" xml:space="preserve">
+    <value>Workspace ONE UEM - applicatie beschikbaar voor downloaden</value>
+  </data>
+  <data name="Messagetemplates_Subject_ApplicationPublishNotification" xml:space="preserve">
+    <value>Workspace ONE UEM - applicatie beschikbaar voor publicatie</value>
+  </data>
+  <data name="Messagetemplates_Subject_ApplicationReviewNotification" xml:space="preserve">
+    <value>Workspace ONE UEM - melding applicatiebeoordeling</value>
+  </data>
+  <data name="Messagetemplates_Subject_ApplicationScanDetailResult" xml:space="preserve">
+    <value>Workspace ONE UEM - analyserapport applicatiereputatie</value>
+  </data>
+  <data name="Messagetemplates_Subject_ApplicationScanNotification" xml:space="preserve">
+    <value>Applicatiereputatie-analyse voltooid</value>
+  </data>
+  <data name="Messagetemplates_Subject_AppRemoveNotification" xml:space="preserve">
+    <value>Let op: limiet voor verwijderen van applicaties is overschreden</value>
+  </data>
+  <data name="Messagetemplates_Subject_AuthenticationAppTokenNotification" xml:space="preserve">
+    <value>Token toegangscode vergeten</value>
+  </data>
+  <data name="Messagetemplates_Subject_ComplianceViolationAdministratorNotification" xml:space="preserve">
+    <value>Aandacht vereist: overtreding van Workspace ONE UEM-apparaatbeleid</value>
+  </data>
+  <data name="Messagetemplates_Subject_ComplianceViolationUserNotification" xml:space="preserve">
+    <value>Aandacht vereist: overtreding van Workspace ONE UEM-apparaatbeleid</value>
+  </data>
+  <data name="Messagetemplates_Subject_DeviceActivation" xml:space="preserve">
+    <value>Workspace ONE UEM apparaatactivering</value>
+  </data>
+  <data name="Messagetemplates_Subject_DeviceBlockedByRestriction" xml:space="preserve">
+    <value>Workspace ONE UEM - toestel geblokkeerd door inschrijvingsbeperking</value>
+  </data>
+  <data name="Messagetemplates_Subject_DeviceEnrolled" xml:space="preserve">
+    <value>Workspace ONE UEM - toestel ingeschreven </value>
+  </data>
+  <data name="Messagetemplates_Subject_DeviceEnrollmentProgramCustomPrompt" xml:space="preserve">
+    <value>Toestelinschrijving - Aangepast bericht</value>
+  </data>
+  <data name="Messagetemplates_Subject_DeviceLockScreenMessageiOS7" xml:space="preserve">
+    <value>Bericht vergrendelscherm iOS7</value>
+  </data>
+  <data name="Messagetemplates_Subject_DeviceOutofDateCompliance" xml:space="preserve">
+    <value>Workspace ONE UEM - aanvraag voor controle van naleving van netwerkbeleid</value>
+  </data>
+  <data name="Messagetemplates_Subject_DeviceUnenrolled" xml:space="preserve">
+    <value>Workspace ONE UEM - toestel uitgeschreven</value>
+  </data>
+  <data name="Messagetemplates_Subject_DeviceWipeEmailNotification" xml:space="preserve">
+    <value>Workspace ONE UEM - wislimiet overschreden</value>
+  </data>
+  <data name="Messagetemplates_Subject_EmailDomainRegistration" xml:space="preserve">
+    <value>Workspace ONE UEM - e-maildomeinregistratie</value>
+  </data>
+  <data name="Messagetemplates_Subject_EulaNotification" xml:space="preserve">
+    <value>Workspace ONE UEM - update gebruikersovereenkomst</value>
+  </data>
+  <data name="Messagetemplates_Subject_ExternalUserActivation" xml:space="preserve">
+    <value>{ContentShareUserFirstName} {ContentShareUserLastName} heeft een map met u gedeeld op Workspace ONE UEM</value>
+  </data>
+  <data name="Messagetemplates_Subject_LicenseBasedPurchasedApplicationInvitation" xml:space="preserve">
+    <value>Workspace ONE UEM - link om bij Apple te registreren voor VPP op basis van licentie</value>
+  </data>
+  <data name="Messagetemplates_Subject_MamEnrollmentUserActivation" xml:space="preserve">
+    <value>Workspace ONE UEM gebruikersactivering</value>
+  </data>
+  <data name="Messagetemplates_Subject_MamNewUserActivation" xml:space="preserve">
+    <value>Workspace ONE UEM gebruikersactivering</value>
+  </data>
+  <data name="Messagetemplates_Subject_MentionedCommentNotification" xml:space="preserve">
+    <value>{Commenter} heeft u vermeld in een opmerking over het bestand '{ContentName}'</value>
+  </data>
+  <data name="Messagetemplates_Subject_NewlyAddedUserToUserGroupNotification" xml:space="preserve">
+    <value>Nieuwe inhoudsmap(pen) met u gedeeld</value>
+  </data>
+  <data name="Messagetemplates_Subject_NewSharedFolderNotification" xml:space="preserve">
+    <value>{ContentShareUserFirstName} heeft de map '{ContentFolderName}' met u gedeeld.</value>
+  </data>
+  <data name="Messagetemplates_Subject_ProvisioningPackageNotification" xml:space="preserve">
+    <value>Workspace ONE UEM provisioningpakket gemaakt</value>
+  </data>
+  <data name="Messagetemplates_Subject_PurchasedApplication" xml:space="preserve">
+    <value>Workspace ONE UEM applicatieaankoop</value>
+  </data>
+  <data name="Messagetemplates_Subject_TempAdminActivation" xml:space="preserve">
+    <value>Workspace ONE UEM tijdelijke beheerdersaccount activeren</value>
+  </data>
+  <data name="Messagetemplates_Subject_UnRegisterDevice" xml:space="preserve">
+    <value>Workspace ONE UEM toestel verwijderen</value>
+  </data>
+  <data name="Messagetemplates_Subject_UserActivation" xml:space="preserve">
+    <value>Workspace ONE UEM gebruikersactivering</value>
+  </data>
+  <data name="Messagetemplates_Subject_VendorApplicationGroupCreationNotification" xml:space="preserve">
+    <value>Workspace ONE UEM - nieuwe applicatiegroep gemaakt</value>
+  </data>
+  <data name="Messagetemplates_Subject_WorkSpaceDeviceActivation" xml:space="preserve">
+    <value>Workspace ONE UEM apparaatactivering</value>
+  </data>
+</root>

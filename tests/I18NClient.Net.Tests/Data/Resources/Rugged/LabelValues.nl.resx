@@ -1,0 +1,967 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AC" xml:space="preserve">
+    <value>Netstroom</value>
+  </data>
+  <data name="AccessToDeviceReprocessProductsMenuTooltip" xml:space="preserve">
+    <value>Geeft medewerkers toegang tot het menu Toestel opnieuw verwerken voor snellere probleemoplossing.</value>
+  </data>
+  <data name="ACorFullBattery" xml:space="preserve">
+    <value>Netstroom of volle accu</value>
+  </data>
+  <data name="ACPowerCondition" xml:space="preserve">
+    <value>Plan uw acties die moeten worden uitgevoerd wanneer het apparaat is aangesloten op een stopcontact (bijvoorbeeld wanneer het in een houder is geplaatst en op een stopcontact is aangesloten)</value>
+  </data>
+  <data name="AddAgentPackages" xml:space="preserve">
+    <value>Hub/Agent-pakket toevoegen</value>
+  </data>
+  <data name="AddFileServer" xml:space="preserve">
+    <value>Bestandsserver toevoegen</value>
+  </data>
+  <data name="AddPinnedAppsHelp" xml:space="preserve">
+    <value>Als u een rij voor vastgemaakte apps toevoegt, wordt Titelbalk minimaliseren ingeschakeld vanwege de schijfruimtebeperkingen op het startscherm van het apparaat.</value>
+  </data>
+  <data name="AddPinnedAppsRow" xml:space="preserve">
+    <value>Rij voor vastgemaakte apps toevoegen</value>
+  </data>
+  <data name="AddToLauncher" xml:space="preserve">
+    <value>Toevoegen aan Launcher</value>
+  </data>
+  <data name="AfterDurationExceeded" xml:space="preserve">
+    <value>Nadat duur is overschreden</value>
+  </data>
+  <data name="AgentPackages" xml:space="preserve">
+    <value>Hub/Agent-pakketten</value>
+  </data>
+  <data name="AgentPackagesMenuTitle" xml:space="preserve">
+    <value>Hub/Agent-pakketten weergeven en toevoegen</value>
+  </data>
+  <data name="AirwatchMdmAgentUpgrade" xml:space="preserve">
+    <value>AirWatch MDM Agent-upgrade</value>
+  </data>
+  <data name="Airwatchmdmagentupgradefile" xml:space="preserve">
+    <value>AirWatch MDM Agent-upgradebestand</value>
+  </data>
+  <data name="AndroidAvailableSystemActions" xml:space="preserve">
+    <value>Intent uitvoeren, opnieuw opstarten, aangepaste instellingen toepassen, Launcher uitloggen.</value>
+  </data>
+  <data name="AndroidFile" xml:space="preserve">
+    <value>Bestand</value>
+  </data>
+  <data name="ApplicationAssignmentsCount" xml:space="preserve">
+    <value>Toewijzingen</value>
+  </data>
+  <data name="AssistCommandLine" xml:space="preserve">
+    <value>Commandoregel</value>
+  </data>
+  <data name="AssistManageFiles" xml:space="preserve">
+    <value>Bestanden beheren</value>
+  </data>
+  <data name="AssistRemoteAssist" xml:space="preserve">
+    <value>Hulp op afstand</value>
+  </data>
+  <data name="AssistRemoteViewIosTooltip" xml:space="preserve">
+    <value>Ondersteunt weergave en bediening op afstand voor alle platforms, met uitzondering van iOS, dat alleen externe weergave ondersteunt.</value>
+  </data>
+  <data name="AssistShareScreen" xml:space="preserve">
+    <value>Scherm delen</value>
+  </data>
+  <data name="AtleastOneCustomAttributeAndAttributeValueIsRequired" xml:space="preserve">
+    <value>Ten minste één aangepast kenmerk en één kenmerkwaarde zijn vereist</value>
+  </data>
+  <data name="AutoRetry" xml:space="preserve">
+    <value>Automatisch opnieuw proberen</value>
+  </data>
+  <data name="BackgroundApplication" xml:space="preserve">
+    <value>Applicatie op achtergrond</value>
+  </data>
+  <data name="Batchimportrelayserverexplanation" xml:space="preserve">
+    <value>De functie Relayserver importeren kan worden gebruikt om relayservers bulkgewijs in het systeem te laden. De gebruikers van de relayserver moeten aan een organisatiegroep zijn gekoppeld.
+
+Klik op Sjabloon downloaden voor informatie.</value>
+  </data>
+  <data name="BulkEnterpriseResetDescription" xml:space="preserve">
+    <value>Opmerking: deze actie geldt alleen voor Zebra of Honeywell Rugged Android en Windows Mobile-toestellen die werden ingeschreven door het vooraf opgezette inschrijvingsproces dat gebruikmaakt van de VMware Rapid Deployment-client. Deze actie zal het toestel wissen en vervolgens opnieuw opstarten. Nadat het toestel opnieuw is opgestart, is het nog steeds ingeschreven in Workspace ONE en zal het zichzelf weer opbouwen tot een gewenste en vooraf gedefinieerde toestand.</value>
+  </data>
+  <data name="CannotActivatePolicy_DeactivationDateIsInPast" xml:space="preserve">
+    <value>Kan beleid niet activeren. Deactiveringsdatum ligt in het verleden.</value>
+  </data>
+  <data name="CannotBeEmptyArg" xml:space="preserve">
+    <value>{0}, mag niet null of leeg zijn</value>
+  </data>
+  <data name="CannotDeactivatePolicy_ActivationDateIsInThePast" xml:space="preserve">
+    <value>Kan beleid niet deactiveren. Activeringsdatum ligt in het verleden.</value>
+  </data>
+  <data name="CannotSavePolicySmartGroupNotAssigned" xml:space="preserve">
+    <value>Kan beleid niet activeren. Smart group is niet toegewezen.</value>
+  </data>
+  <data name="CASettingsCannotBeConfiguredAtThisOg" xml:space="preserve">
+    <value>Aangepaste kenmerkinstellingen kunnen niet worden geconfigureerd bij deze organisatiegroep.</value>
+  </data>
+  <data name="CDNShouldBeEnabled" xml:space="preserve">
+    <value>Schakel de CDN-instellingen in en sla deze op voordat u Productdownloads toestaan via CDN-instellingen inschakelt.</value>
+  </data>
+  <data name="CharactersAreRestrictedInProductName" xml:space="preserve">
+    <value>Productnaam mag de tekens {0} niet bevatten</value>
+  </data>
+  <data name="CloudRelayConnectionShouldFollowFormat" xml:space="preserve">
+    <value>Cloud relay-verbinding moet de indeling /DesiredFolder/Temp hebben</value>
+  </data>
+  <data name="ConditionActionAfterDurationHelp" xml:space="preserve">
+    <value>Bepaalt hoe verder te gaan nadat aan de voorwaarde is voldaan.</value>
+  </data>
+  <data name="ConditionDurationHelp" xml:space="preserve">
+    <value>Hiermee stelt u in hoe lang deze voorwaarde deze actie zal uitvoeren.</value>
+  </data>
+  <data name="ConditionFileNameHelp" xml:space="preserve">
+    <value>Als u de voorwaarde wilt instellen, voert u het toestelpad en de bestandsnaam in waarop moet worden gecontroleerd voordat u productonderdelen downloadt en/of installeert op toestellen.</value>
+  </data>
+  <data name="ConditionFrequencyHelp" xml:space="preserve">
+    <value>Bepaalt hoe vaak toestellen deze voorwaarde uitvoeren om te controleren of dit bestand is gevonden of niet.</value>
+  </data>
+  <data name="ConditionMetWhen" xml:space="preserve">
+    <value>Voorwaarde voldaan wanneer</value>
+  </data>
+  <data name="ConditionTestTypeHelp" xml:space="preserve">
+    <value>Bepaalt of productonderdelen worden gedownload en geïnstalleerd wanneer dit bestand wel of niet wordt gevonden op toestellen.</value>
+  </data>
+  <data name="ConfigureAgentTakesToSettingsConfiguration" xml:space="preserve">
+    <value>Als u op "Agent configureren" klikt, gaat u naar de Instellingen-pagina voor de volgende stappen.</value>
+  </data>
+  <data name="ConfigureWinmoAgent" xml:space="preserve">
+    <value>Agent configureren</value>
+  </data>
+  <data name="ConfirmContinueWithPreviousActivationDate" xml:space="preserve">
+    <value>U heeft geprobeerd de activeringsdatum en -tijd te wijzigen. De activeringsdatum kan niet worden gewijzigd voor een actief product. Als u de activeringsdatum wilt wijzigen, klikt u op Annuleren en deactiveert u het product. Stel daarna de gewenste datum in, sla het product op en activeer het. Als u de bestaande activeringsdatum voor dit actieve product wilt behouden, selecteert u OK.</value>
+  </data>
+  <data name="ConfirmDeactivateDependentPolicy" xml:space="preserve">
+    <value>Dit product is een afhankelijk product voor een ander product. Deactivering van dit product heeft invloed op wanneer de volgende producten kunnen worden uitgevoerd: {0}</value>
+  </data>
+  <data name="ConsoleConnectionShouldFollowFormat" xml:space="preserve">
+    <value>Het Console-verbindingspad moet de indeling /DesiredFolder/Temp hebben</value>
+  </data>
+  <data name="ContentPull" xml:space="preserve">
+    <value>Content pull</value>
+  </data>
+  <data name="CopyRelayServer" xml:space="preserve">
+    <value>Relay-server kopiëren</value>
+  </data>
+  <data name="CopyStaging" xml:space="preserve">
+    <value>Voorbereide inrichting kopiëren</value>
+  </data>
+  <data name="CouldNotEstablishConnectionToRemoteManagementHost" xml:space="preserve">
+    <value>Er is een fout opgetreden tijdens het maken van verbinding met de host voor extern beheer.</value>
+  </data>
+  <data name="CustomAttributeDoesNotExist" xml:space="preserve">
+    <value>Het aangepaste kenmerk dat u probeert te openen, bestaat niet.</value>
+  </data>
+  <data name="CustomAttributeNameIsRequired" xml:space="preserve">
+    <value>Naam van aangepast kenmerk is vereist</value>
+  </data>
+  <data name="CustomAttributesFieldsRequired" xml:space="preserve">
+    <value>Alle velden zijn verplicht</value>
+  </data>
+  <data name="CustomAttributesOnlyExplanation" xml:space="preserve">
+    <value>Gebruik dit batchimporttype om aangepaste kenmerken en de bijbehorende instellingen toe te voegen of bij te werken. (Opmerking: er is ten minste één aangepaste kenmerkwaarde vereist).</value>
+  </data>
+  <data name="DailyInterval" xml:space="preserve">
+    <value>Daginterval</value>
+  </data>
+  <data name="DailyIntervalPlaceholder" xml:space="preserve">
+    <value>Voer een getal in tussen 1 en 7</value>
+  </data>
+  <data name="DateTimeIsNotInAllowedRange" xml:space="preserve">
+    <value>Alleen datums en tijden tussen {0} en {1} mogen worden toegestaan.</value>
+  </data>
+  <data name="DeleteApplicationWithLinkedPoliciesWarning" xml:space="preserve">
+    <value>U kunt deze applicatie niet verwijderen omdat deze in één of meer producten wordt gebruikt. Ontkoppel de applicatie van het product door het te bewerken. Daarna kunt u de applicatie verwijderen.</value>
+  </data>
+  <data name="DeleteApplicationWithLinkedStagingWarning" xml:space="preserve">
+    <value>U kunt deze applicatie niet verwijderen omdat deze in één of meer inrichtingsdefinities wordt gebruikt. Selecteer een andere applicatie door de inrichtingsdefinitie te bewerken of te verwijderen. Daarna kunt u de applicatie verwijderen.</value>
+  </data>
+  <data name="DeleteAttributesWithLinkedRegisteredDevicesWarning" xml:space="preserve">
+    <value>Aangepaste kenmerken die momenteel aan geregistreerde toestellen zijn gekoppeld, kunnen niet worden verwijderd. Ontkoppel eerst de kenmerken van de toestellen.</value>
+  </data>
+  <data name="DeleteEventActionWithLinkedPoliciesWarning" xml:space="preserve">
+    <value>U kunt deze gebeurtenisactie niet verwijderen omdat deze in één of meer producten wordt gebruikt. Ontkoppel de gebeurtenisactie van het product door het te bewerken. Daarna, kunt u de gebeurtenisactie verwijderen.</value>
+  </data>
+  <data name="DeleteEventActionWithLinkedStagingWarning" xml:space="preserve">
+    <value>U kunt deze EventAction niet verwijderen omdat deze in één of meer inrichtingsdefinities wordt gebruikt. Selecteer een andere EventAction door de inrichtingsdefinitie te bewerken of te verwijderen. Daarna kunt u de EventAction verwijderen.</value>
+  </data>
+  <data name="DeleteFileActionWithLinkedPoliciesWarning" xml:space="preserve">
+    <value>U kunt dit bestand / deze actie niet verwijderen omdat het bestand / de actie in één of meer producten wordt gebruikt. Ontkoppel het bestand / de actie van het product door het te bewerken. Daarna kunt u het bestand / de actie verwijderen.</value>
+  </data>
+  <data name="DeleteFileActionWithLinkedStagingWarning" xml:space="preserve">
+    <value>U kunt dit bestand / deze actie niet verwijderen omdat het bestand / de actie in één of meer inrichtingsdefinities wordt gebruikt. Selecteer een ander(e) bestand / actie door de inrichtingsdefinitie te bewerken of te verwijderen. Daarna kunt u het bestand / de actie verwijderen.</value>
+  </data>
+  <data name="DeleteProductWithAppTunnelingEnabledError" xml:space="preserve">
+    <value>Kan dit product niet verwijderen omdat een of meer applicatiemanifesten voor installatie zijn geconfigureerd met app-tunneling. Verwijder de configuratie en probeer het opnieuw.</value>
+  </data>
+  <data name="DeleteProfileWithLinkedPoliciesWarning" xml:space="preserve">
+    <value>U kunt dit profiel niet verwijderen omdat het in één of meer producten wordt gebruikt. Ontkoppel het profiel van het product door het te bewerken. Daarna kunt u het profiel verwijderen.</value>
+  </data>
+  <data name="DeleteProfileWithLinkedStagingWarning" xml:space="preserve">
+    <value>U kunt dit profiel niet verwijderen omdat het in één of meer inrichtingsdefinities wordt gebruikt. Selecteer een ander profiel door de inrichtingsdefinitie te bewerken of te verwijderen. Daarna kunt u het profiel verwijderen.</value>
+  </data>
+  <data name="DeploymentMode" xml:space="preserve">
+    <value>Implementatiemodus</value>
+  </data>
+  <data name="DestinationMustBeDirectoryPath" xml:space="preserve">
+    <value>Bestemming moet een directorypad zijn</value>
+  </data>
+  <data name="DeviceConnectionShouldFollowFormat" xml:space="preserve">
+    <value>Het toestelverbindingspad moet de indeling /DesiredFolder/Temp hebben</value>
+  </data>
+  <data name="DeviceFriendlyNameLookUpText" xml:space="preserve">
+    <value>Beschrijvende naam van het toestel</value>
+  </data>
+  <data name="DevicePlatformID" xml:space="preserve">
+    <value>Toestelplatform-ID</value>
+  </data>
+  <data name="DevicePolicyJobStatusNoJobs" xml:space="preserve">
+    <value>Geen taken</value>
+  </data>
+  <data name="DeviceReprocess" xml:space="preserve">
+    <value>Toestel opnieuw verwerken</value>
+  </data>
+  <data name="DeviceReprocessTooltip" xml:space="preserve">
+    <value>Hiermee kunnen medewerkers producten opnieuw verwerken.</value>
+  </data>
+  <data name="DeviceTypeOfTheFileIsInvalid" xml:space="preserve">
+    <value>Toesteltype van het bestand is ongeldig. Toesteltype moet een platform zijn zoals Android, Apple, etc.</value>
+  </data>
+  <data name="DeviceWillNeedToBePluggedIn" xml:space="preserve">
+    <value>Het apparaat moet worden aangesloten of voldoende zijn opgeladen om de actie te kunnen uitvoeren. De berichten- en vertragingsvelden zijn niet van toepassing wanneer deze voorwaarde deel uitmaakt van een gebeurtenis/actie.</value>
+  </data>
+  <data name="DoubleQuotesForCommandLineIsRequired" xml:space="preserve">
+    <value>Dubbele aanhalingstekens voor opdrachtregel vereist</value>
+  </data>
+  <data name="DownloadAndDeployMotoDcCabFile" xml:space="preserve">
+    <value>Voor rapportage van statistieken op Motorola-toestellen downloadt en implementeert u het bestand MotoDC.cab van</value>
+  </data>
+  <data name="DownloadFiles" xml:space="preserve">
+    <value>Bestanden downloaden</value>
+  </data>
+  <data name="DownloadPullServiceConfig" xml:space="preserve">
+    <value>Pull-serviceconfiguratie downloaden</value>
+  </data>
+  <data name="EditFileServer" xml:space="preserve">
+    <value>Bestandsserver bewerken</value>
+  </data>
+  <data name="EditStaging" xml:space="preserve">
+    <value>Voorbereide inrichting bewerken</value>
+  </data>
+  <data name="EndDay" xml:space="preserve">
+    <value>Einddag</value>
+  </data>
+  <data name="EndHour" xml:space="preserve">
+    <value>Einduur</value>
+  </data>
+  <data name="EndMinute" xml:space="preserve">
+    <value>Eindminuut</value>
+  </data>
+  <data name="EndMonth" xml:space="preserve">
+    <value>Eindmaand</value>
+  </data>
+  <data name="EndTimeShouldBeLaterThanStartTime" xml:space="preserve">
+    <value>De eindtijd moet later zijn dan de begintijd</value>
+  </data>
+  <data name="EndTimeUtc" xml:space="preserve">
+    <value>Eindtijd (UTC)</value>
+  </data>
+  <data name="EndYear" xml:space="preserve">
+    <value>Eindjaar</value>
+  </data>
+  <data name="EnterAdminModeConfirmed" xml:space="preserve">
+    <value>Beheerdersmodus openen bevestigd</value>
+  </data>
+  <data name="EnterAdminModeFailed" xml:space="preserve">
+    <value>Beheerdersmodus openen mislukt</value>
+  </data>
+  <data name="EnterAdminModeRefused" xml:space="preserve">
+    <value>Beheerdersmodus openen geweigerd</value>
+  </data>
+  <data name="EnterAdminModeRequested" xml:space="preserve">
+    <value>Beheerdersmodus openen aangevraagd</value>
+  </data>
+  <data name="EnterAdminModeSuccess" xml:space="preserve">
+    <value>Beheerdersmodus openen geslaagd</value>
+  </data>
+  <data name="ErrorParsingRemoteFeature" xml:space="preserve">
+    <value>Fout bij het parseren van de functie voor hulp op afstand "{0}"</value>
+  </data>
+  <data name="ErrorReturnedFromHoneywellServer" xml:space="preserve">
+    <value>Fout geretourneerd door Honeywell Server</value>
+  </data>
+  <data name="ErrorReturnedFromZebraServer" xml:space="preserve">
+    <value>Fout geretourneerd door Zebra Server</value>
+  </data>
+  <data name="EventActionAndroidPrerequisite" xml:space="preserve">
+    <value>Voeg ten minste één voorwaarde toe voor het triggeren van actie(s). U kunt eerder gemaakte voorwaarden toevoegen of hier nieuwe voorwaarden maken met de optie "Voorwaarde toevoegen". U kunt meer dan één type voorwaarde tegelijk kiezen, maar u kunt slechts één voorwaarde van een bepaald type selecteren. Als een voorwaarde wordt geselecteerd van hetzelfde type als een reeds geselecteerde voorwaarde, vervangt de nieuwe voorwaarde de vorige selectie. Toegestaan type voorwaarde is Drempelwaarde batterij, Terugkerend schema en Netvoeding.</value>
+  </data>
+  <data name="EventActionLinkedToPolicyOrStagingAndCanNotBeMovedToNonAccessibleOgs" xml:space="preserve">
+    <value>Gebeurtenisactie is gekoppeld aan een of meer producten of inrichtingspakketten. De gebeurtenisactie kan dus niet worden verplaatst naar OG's die niet toegankelijk zijn voor gekoppelde onderdelen.</value>
+  </data>
+  <data name="ExitAdminModeConfirmed" xml:space="preserve">
+    <value>Beheerdersmodus afsluiten bevestigd</value>
+  </data>
+  <data name="ExitAdminModeFailed" xml:space="preserve">
+    <value>Beheerdersmodus afsluiten mislukt</value>
+  </data>
+  <data name="ExitAdminModeRefused" xml:space="preserve">
+    <value>Beheerdersmodus afsluiten geweigerd</value>
+  </data>
+  <data name="ExitAdminModeRequested" xml:space="preserve">
+    <value>Beheerdersmodus afsluiten aangevraagd</value>
+  </data>
+  <data name="ExitAdminModeSuccess" xml:space="preserve">
+    <value>Beheerdersmodus afsluiten geslaagd</value>
+  </data>
+  <data name="ExitAirwatchLauncher" xml:space="preserve">
+    <value>Launcher afsluiten</value>
+  </data>
+  <data name="ExitAirwatchLauncherConfirmed" xml:space="preserve">
+    <value>Launcher afsluiten bevestigd</value>
+  </data>
+  <data name="ExitAirwatchLauncherFailed" xml:space="preserve">
+    <value>Launcher afsluiten mislukt</value>
+  </data>
+  <data name="ExitAirwatchLauncherRefused" xml:space="preserve">
+    <value>Launcher afsluiten geweigerd</value>
+  </data>
+  <data name="ExitAirwatchLauncherRequested" xml:space="preserve">
+    <value>Launcher afsluiten aangevraagd</value>
+  </data>
+  <data name="ExitAirWatchLauncherSuccess" xml:space="preserve">
+    <value>Launcher afsluiten geslaagd</value>
+  </data>
+  <data name="Expedited" xml:space="preserve">
+    <value>Versneld</value>
+  </data>
+  <data name="ExpeditedProductTooltip" xml:space="preserve">
+    <value>Het product moet worden gedeactiveerd om deze optie te bewerken.</value>
+  </data>
+  <data name="ExpeditedProvisioningPolicyEdit" xml:space="preserve">
+    <value>Beleid voor versnelde provisioning bewerken</value>
+  </data>
+  <data name="ExpeditedProvisioningPolicyEditHelp" xml:space="preserve">
+    <value>Beheert toegang om de optie voor snelle implementatie in het provisioningbeleid te bewerken.</value>
+  </data>
+  <data name="FileActionLinkedToPolicyOrStagingAndCanNotBeMovedToNonAccessibleOgs" xml:space="preserve">
+    <value>Bestandsactie is gekoppeld aan een of meer producten of inrichtingspakketten. De actie kan dus niet worden verplaatst naar OG's die niet toegankelijk zijn voor gekoppelde onderdelen.</value>
+  </data>
+  <data name="FileActionsFilePathError" xml:space="preserve">
+    <value>Naam en downloadpad mogen samen maximaal 255 tekens bevatten</value>
+  </data>
+  <data name="FileFound" xml:space="preserve">
+    <value>Bestand gevonden</value>
+  </data>
+  <data name="FileServerAssociatedWithEventActionArgs" xml:space="preserve">
+    <value>{0} bestandsserver wordt gebruikt met {1}</value>
+  </data>
+  <data name="FileServerDeleteFailed" xml:space="preserve">
+    <value>U kunt deze bestandsserver niet verwijderen, omdat deze momenteel in de volgende gebeurtenisactie(s) wordt gebruikt. Ontkoppel de bestandsserver van de gebeurtenisactie door deze te bewerken. Zodra dit voltooid is, kunt u de bestandsserver verwijderen.</value>
+  </data>
+  <data name="FileServerDeleteSuccessful" xml:space="preserve">
+    <value>Bestandsserver is verwijderd</value>
+  </data>
+  <data name="FileServerDetails" xml:space="preserve">
+    <value>Gegevens bestandsserver</value>
+  </data>
+  <data name="FileServerNameIsRequired" xml:space="preserve">
+    <value>Bestandsservernaam is verplicht</value>
+  </data>
+  <data name="FileServers" xml:space="preserve">
+    <value>Bestandsservers</value>
+  </data>
+  <data name="FileServerUsernameIsRequired" xml:space="preserve">
+    <value>Gebruikersnaam voor bestandsserver is vereist</value>
+  </data>
+  <data name="FileSyncDownload" xml:space="preserve">
+    <value>Bestandssynchronisatie-download</value>
+  </data>
+  <data name="FileSyncUpload" xml:space="preserve">
+    <value>Bestandssynchronisatie-upload</value>
+  </data>
+  <data name="FirstFieldShouldBeSmallerThanSecondField" xml:space="preserve">
+    <value>Ongeldige waarden. Zorg dat het eerste veld is een lager getal is dan het tweede veld.</value>
+  </data>
+  <data name="FiveDays" xml:space="preserve">
+    <value>5 dagen</value>
+  </data>
+  <data name="GenerateHoneywellBarcode" xml:space="preserve">
+    <value>Honeywell-barcode genereren</value>
+  </data>
+  <data name="GenerateHoneywellBarcodeDisclaimerText" xml:space="preserve">
+    <value>Als u hierop klikt, worden er barcodes van de gegevens op deze pagina gegenereerd met behulp van de Honeywell Enterprise Provisioner-barcodemaker.
+
+Dit is geen VMware-website. VMware is niet verantwoordelijk voor de inhoud. Als u barcodes op deze pagina genereert, doet u dat op eigen risico.</value>
+  </data>
+  <data name="HideActionBar" xml:space="preserve">
+    <value>Titelbalk minimaliseren</value>
+  </data>
+  <data name="Honeywell" xml:space="preserve">
+    <value>Honeywell Enterprise Provisioner</value>
+  </data>
+  <data name="HoneywellBarcode" xml:space="preserve">
+    <value>Honeywell-barcode</value>
+  </data>
+  <data name="HoneywellEP" xml:space="preserve">
+    <value>Honeywell Enterprise Provisioner</value>
+  </data>
+  <data name="HoneywellEPUrl" xml:space="preserve">
+    <value>Honeywell Enterprise Provisioner-URL</value>
+  </data>
+  <data name="HostPlaceHolder" xml:space="preserve">
+    <value>* of 1.2.3.4 of 10.0.0.0-10.0.0.255</value>
+  </data>
+  <data name="HourlyInterval" xml:space="preserve">
+    <value>Uurinterval</value>
+  </data>
+  <data name="HourlyIntervalPlaceholder" xml:space="preserve">
+    <value>Voer een getal in tussen 1 en 24</value>
+  </data>
+  <data name="HttpsNotSupportedForPushRelayServers" xml:space="preserve">
+    <value>HTTPS-protocol voor verbinding met toestel wordt niet ondersteund voor push relay-server</value>
+  </data>
+  <data name="HubPackageAlreadyExists" xml:space="preserve">
+    <value>Er bestaat al een Hub-pakket met dezelfde bestandsnaam of pakketnaam en versie.</value>
+  </data>
+  <data name="IntelligentHub" xml:space="preserve">
+    <value>Intelligent Hub</value>
+  </data>
+  <data name="InvalidDateTimeInputs" xml:space="preserve">
+    <value>De opgegeven invoer van datums en tijden is ongeldig of onvolledig. Voer de juiste invoer in.</value>
+  </data>
+  <data name="InvalidHoneywellRelayServerProtocol" xml:space="preserve">
+    <value>Honeywell biedt geen ondersteuning voor dit relayserverprotocol</value>
+  </data>
+  <data name="InvalidOrganizationGroupsForStagingAndProductionServers" xml:space="preserve">
+    <value>Ongeldige organisatiegroepen voor staging- en productieservers</value>
+  </data>
+  <data name="IOTGateway" xml:space="preserve">
+    <value>IOTGateway</value>
+  </data>
+  <data name="IsExpedited" xml:space="preserve">
+    <value>Implementatie versnellen</value>
+  </data>
+  <data name="LastContactDate" xml:space="preserve">
+    <value>Datum laatste contact</value>
+  </data>
+  <data name="LastErrorCode" xml:space="preserve">
+    <value>Laatste foutcode</value>
+  </data>
+  <data name="Launcher" xml:space="preserve">
+    <value>Launcher</value>
+  </data>
+  <data name="LauncherAction" xml:space="preserve">
+    <value>Launcher</value>
+  </data>
+  <data name="LauncherCheckInCheckOutCondtion" xml:space="preserve">
+    <value>Voer acties uit wanneer de Launcher is in- of uitgecheckt.</value>
+  </data>
+  <data name="LauncherLogout" xml:space="preserve">
+    <value>Uitloggen Launcher</value>
+  </data>
+  <data name="LauncherMiscAppWildcardRuleInfo" xml:space="preserve">
+    <value>U kunt het teken '*' gebruiken om applicaties die overeenkomen met dat patroon automatisch op de toestemmingslijst te plaatsen. Voorbeeld: com.example.*</value>
+  </data>
+  <data name="LegacyAgent" xml:space="preserve">
+    <value>Agent</value>
+  </data>
+  <data name="LegacyAirwatchAgent" xml:space="preserve">
+    <value>AirWatch Agent</value>
+  </data>
+  <data name="LinkIsRequired" xml:space="preserve">
+    <value>Bestandsserverlink is verplicht</value>
+  </data>
+  <data name="LowMemCondition" xml:space="preserve">
+    <value>Voorwaarde - weinig geheugen</value>
+  </data>
+  <data name="ManifestItemAlreadyExists" xml:space="preserve">
+    <value>Manifest-item bestaat al. Kies een ander.</value>
+  </data>
+  <data name="MaxPullConnections" xml:space="preserve">
+    <value>Max. aantal pull-verbindingen</value>
+  </data>
+  <data name="MaxPullConnectionsValueCannotBeNullOrInvalid" xml:space="preserve">
+    <value>Waarde voor maximum aantal pull-verbindingen mag niet null of ongeldig zijn</value>
+  </data>
+  <data name="MaxPushConnections" xml:space="preserve">
+    <value>Max. aantal push-verbindingen</value>
+  </data>
+  <data name="MaxPushConnectionsValueCannotBeNullOrInvalid" xml:space="preserve">
+    <value>Waarde voor maximum aantal push-verbindingen mag niet null of ongeldig zijn</value>
+  </data>
+  <data name="MaxRSCCPushConnectionHelpText" xml:space="preserve">
+    <value>Wijzig deze waarde om het maximum aantal gelijktijdige verbindingen te beperken dat wordt gebruikt om inhoud naar relayservers te pushen. Standaardwaarde: 50 verbindingen</value>
+  </data>
+  <data name="NoContentAddedToProduct" xml:space="preserve">
+    <value>Er is geen applicatie of bestandsactie toegevoegd aan het product.</value>
+  </data>
+  <data name="NotTested" xml:space="preserve">
+    <value>Niet getest</value>
+  </data>
+  <data name="NoVPNProfileSelected" xml:space="preserve">
+    <value>Selecteer een VPN-profiel om PerAppVPN te configureren.</value>
+  </data>
+  <data name="OemBuildRuleHelpText" xml:space="preserve">
+    <value>Toewijzingsregel met OEM-buildversie en "&gt;" en "&lt;" is alleen geldig wanneer de versies dezelfde indeling hebben en in ASCII worden vergeleken</value>
+  </data>
+  <data name="OemBuildVersionShouldHaveDeviceManufacturerRule" xml:space="preserve">
+    <value>De regel met de versie van de OEM-build moet ook het kenmerk toestelfabrikant bevatten (alleen EN-voorwaarde toegestaan) wanneer u de operators '&gt;' en '&lt;' gebruikt</value>
+  </data>
+  <data name="OGDeleteWarningForProducts" xml:space="preserve">
+    <value>Componenten die aan deze organisatiegroep zijn gekoppeld, kunnen aan een of meer producten zijn gerelateerd die aan een of meer bovenliggende organisatiegroepen zijn gekoppeld. Als u deze organisatiegroep verwijdert, worden deze producten in een of meer bovenliggende organisatiegroepen ongeldig gemaakt. Het wordt aanbevolen de componenten te ontkoppelen voordat u deze organisatiegroep verwijdert of de bovenliggende producten ook verwijdert.</value>
+  </data>
+  <data name="OnlyAppWithSpecifiedVersionWillBeUninstalled" xml:space="preserve">
+    <value>De geselecteerde applicatieversie wordt verwijderd. Alle andere versies van deze applicatie blijven op het toestel aanwezig.</value>
+  </data>
+  <data name="OnlyFileServersWithCGCanBeAdded" xml:space="preserve">
+    <value>Voor bestandsservers moet een Content Gateway zijn geconfigureerd om in deze lijst te worden weergegeven en te worden toegevoegd aan een gebeurtenisactie</value>
+  </data>
+  <data name="OnlyNumericValuesAreAllowedForSpecificOperators" xml:space="preserve">
+    <value>Alleen numerieke waarden zijn toegestaan voor operators zoals &lt;, &gt;=, &lt;, &lt;= en BETWEEN</value>
+  </data>
+  <data name="OrganizationGroupIsRequired" xml:space="preserve">
+    <value>Organisatiegroep is verplicht</value>
+  </data>
+  <data name="OutRanked" xml:space="preserve">
+    <value>Hogere positie</value>
+  </data>
+  <data name="PasswordForPullServiceCertificate" xml:space="preserve">
+    <value>Wachtwoord voor pull-servicecertificaat</value>
+  </data>
+  <data name="PasswordIsRequired" xml:space="preserve">
+    <value>Wachtwoord voor bestandsserver is verplicht</value>
+  </data>
+  <data name="PinnedApps" xml:space="preserve">
+    <value>Vastgemaakte apps</value>
+  </data>
+  <data name="PleaseEnterValidURL" xml:space="preserve">
+    <value>Voer geldige URL in</value>
+  </data>
+  <data name="PolicyEngineQueue" xml:space="preserve">
+    <value>Wachtrij beleidsengine</value>
+  </data>
+  <data name="PolicyEngineQueueMenuTitle" xml:space="preserve">
+    <value>Wachtrij beleidsengine</value>
+  </data>
+  <data name="PolicyId" xml:space="preserve">
+    <value>Beleid-ID</value>
+  </data>
+  <data name="PortPlaceHolder" xml:space="preserve">
+    <value>* of 80 of 8080-8085</value>
+  </data>
+  <data name="ProductDeviceForceReprocessFailed" xml:space="preserve">
+    <value>Geforceerd opnieuw verwerken productapparaat mislukt</value>
+  </data>
+  <data name="ProductDownloadsThroughCDN" xml:space="preserve">
+    <value>Productdownloads via CDN</value>
+  </data>
+  <data name="ProductionServerDescription" xml:space="preserve">
+    <value>Productieserver is geconfigureerd om productie-inhoud te ontvangen zoals: bestandsacties en applicaties.</value>
+  </data>
+  <data name="ProductProvisioning_ColdBoot" xml:space="preserve">
+    <value>Koud opstarten</value>
+  </data>
+  <data name="ProductProvisioning_InstallApplication" xml:space="preserve">
+    <value>Applicatie - Installeren</value>
+  </data>
+  <data name="ProductProvisioning_InstallEventAction" xml:space="preserve">
+    <value>Gebeurtenisactie - Installeren</value>
+  </data>
+  <data name="ProductProvisioning_InstallFilesActions" xml:space="preserve">
+    <value>Bestand/actie - Installeren</value>
+  </data>
+  <data name="ProductProvisioning_InstallProduct" xml:space="preserve">
+    <value>Product - Installeren</value>
+  </data>
+  <data name="ProductProvisioning_InstallProfile" xml:space="preserve">
+    <value>Profiel - Installeren</value>
+  </data>
+  <data name="ProductProvisioning_Reboot" xml:space="preserve">
+    <value>Opnieuw opstarten</value>
+  </data>
+  <data name="ProductProvisioning_UninstallApplication" xml:space="preserve">
+    <value>Applicatie - Verwijderen</value>
+  </data>
+  <data name="ProductProvisioning_UninstallEventAction" xml:space="preserve">
+    <value>Gebeurtenisactie - Verwijderen</value>
+  </data>
+  <data name="ProductProvisioning_UninstallFilesActions" xml:space="preserve">
+    <value>Bestand/actie - Verwijderen</value>
+  </data>
+  <data name="ProductProvisioning_UninstallProduct" xml:space="preserve">
+    <value>Product - Verwijderen</value>
+  </data>
+  <data name="ProductProvisioning_UninstallProfile" xml:space="preserve">
+    <value>Profiel - Verwijderen</value>
+  </data>
+  <data name="ProductProvisioning_WarmBoot" xml:space="preserve">
+    <value>Warm opstarten</value>
+  </data>
+  <data name="ProductProvisioningDeviceConnectionHttpsSupportFeatureDisabled" xml:space="preserve">
+    <value>HTTPS-protocol voor toestelverbindingsfunctie is uitgeschakeld</value>
+  </data>
+  <data name="ProductSetForceReprocess" xml:space="preserve">
+    <value>Alles opnieuw verwerken</value>
+  </data>
+  <data name="ProductSetNameArgAlreadyExistsPleaseChooseAnother" xml:space="preserve">
+    <value>Productset met de naam {0} bestaat al. Kies een andere.</value>
+  </data>
+  <data name="ProfileLinkedToPolicyOrStagingAndCanNotBeMovedToNonAccessibleOgs" xml:space="preserve">
+    <value>Profiel is gekoppeld aan een of meer producten of inrichtingspakketten. Het profiel kan dus niet worden verplaatst naar OG's die niet toegankelijk zijn voor gekoppelde onderdelen.</value>
+  </data>
+  <data name="ProvisioningCommandDeleted" xml:space="preserve">
+    <value>Provisioningcommando verwijderd</value>
+  </data>
+  <data name="ProvisioningEventAction" xml:space="preserve">
+    <value>Gebeurtenisactie</value>
+  </data>
+  <data name="ProvisioningEventActions" xml:space="preserve">
+    <value>Gebeurtenisacties</value>
+  </data>
+  <data name="PublishOnRelayServers" xml:space="preserve">
+    <value>Publiceren op relayservers</value>
+  </data>
+  <data name="PullRelayServerNotAllowed" xml:space="preserve">
+    <value>Het type geselecteerde relayserver is ongeldig</value>
+  </data>
+  <data name="QueueContentOnRelayServer" xml:space="preserve">
+    <value>Content in wachtrij op relayservers zonder toegewezen toestellen</value>
+  </data>
+  <data name="RelayServerCloudConnector" xml:space="preserve">
+    <value>Relayserver Cloud Connector</value>
+  </data>
+  <data name="RelayServerCloudConnectorBatchSize" xml:space="preserve">
+    <value>Batchgrootte van Relay-server Cloud Connector</value>
+  </data>
+  <data name="RelayServerCloudConnectorBatchSizeHelp" xml:space="preserve">
+    <value>Het maximum aantal inhoudsinstructies dat per batch van de WS1-server wordt gedownload. Aanvullende instructies worden in volgende batches verwerkt.</value>
+  </data>
+  <data name="RelayServerCloudConnectorEnableHelp" xml:space="preserve">
+    <value>Als u deze instelling inschakelt, wordt de Cloud Connector Relay geconfigureerd om inhoud uit de VMware Cloud op te halen en naar relayservers in uw netwerk te pushen.</value>
+  </data>
+  <data name="RelayServerCloudRelayAlreadyExists" xml:space="preserve">
+    <value>Hostnaam, poort, gebruiker en pad voor de cloud-relayverbinding zijn allemaal hetzelfde als een andere relayserver.</value>
+  </data>
+  <data name="RelayServerCloudRelayConnection" xml:space="preserve">
+    <value>Cloud Relay-verbinding</value>
+  </data>
+  <data name="RelayServerCountConfirm" xml:space="preserve">
+    <value>Content wordt bij {0} relayservers in de wachtrij geplaatst. Weet u zeker dat u wilt doorgaan?</value>
+  </data>
+  <data name="RelayServerDoesNotExists" xml:space="preserve">
+    <value>Er bestaat geen relayserver in de geselecteerde OG.</value>
+  </data>
+  <data name="RelayServerDomainUserFormat" xml:space="preserve">
+    <value>Geaccepteerde indelingen voor domeingebruikers: gebruikersnaam@domein, domein\gebruiker</value>
+  </data>
+  <data name="RelayServerDomainUserFormatError" xml:space="preserve">
+    <value>Fout in indeling domeingebruiker</value>
+  </data>
+  <data name="RelayServerId" xml:space="preserve">
+    <value>Relayserver-ID</value>
+  </data>
+  <data name="RelayServerOnly" xml:space="preserve">
+    <value>Uitsluitend relayserver</value>
+  </data>
+  <data name="RelayServerOnlyHelp" xml:space="preserve">
+    <value>Zorg dat een relayserver is geconfigureerd voor alle toestellen die zijn toegewezen aan dit product.</value>
+  </data>
+  <data name="RelayServerProtocolHTTPS" xml:space="preserve">
+    <value>HTTPS</value>
+  </data>
+  <data name="RelayServerPullConnectionInvalidPullDiscoveryText" xml:space="preserve">
+    <value>Pull-detectietekst mag niet 127.0.0.1 bevatten</value>
+  </data>
+  <data name="RelayServerPushOrCloudRelay" xml:space="preserve">
+    <value>Push/Cloud Relay</value>
+  </data>
+  <data name="RelayServerTypeCloudRelay" xml:space="preserve">
+    <value>Cloud Relay</value>
+  </data>
+  <data name="RelayServerUserRestrictionError" xml:space="preserve">
+    <value>Het teken ':' is niet toegestaan in de gebruikersnaam/het wachtwoord.</value>
+  </data>
+  <data name="RelayServerWithDeviceServicesBackup" xml:space="preserve">
+    <value>Relayserver met Workspace ONE-server als back-up</value>
+  </data>
+  <data name="RemoveFromLauncher" xml:space="preserve">
+    <value>Verwijderen uit Launcher</value>
+  </data>
+  <data name="ReportStatusBatchSize" xml:space="preserve">
+    <value>Batchgrootte rapportstatussen</value>
+  </data>
+  <data name="ReportStatusBatchSizeValueCannotBeNullOrInvalid" xml:space="preserve">
+    <value>Waarde voor batchgrootte rapportstatus mag niet null of ongeldig zijn</value>
+  </data>
+  <data name="RequestDeviceServicesPinsNumberOfCertificatesReturned" xml:space="preserve">
+    <value>PIN’s van toestelservices opvragen: aantal certificaten geretourneerd</value>
+  </data>
+  <data name="RequestDeviceServicesPinsNumberOfHostsReturned" xml:space="preserve">
+    <value>PIN’s van toestelservices opvragen: aantal hosts geretourneerd</value>
+  </data>
+  <data name="RequestDeviceServicesPinsUpdated" xml:space="preserve">
+    <value>PIN’s van toestelservices opvragen bijgewerkt</value>
+  </data>
+  <data name="RestartAirWatchAgent" xml:space="preserve">
+    <value>AirWatch Agent herstarten</value>
+  </data>
+  <data name="RSCCReportBatchSizeHelpText" xml:space="preserve">
+    <value>Omdat inhoud wordt gedistribueerd naar doelrelayservers, zal Cloud Relay de overdrachtsstatus van elke relayserver rapporteren aan de Workspace ONE Cloud. Wijzig deze waarde om het aantal relayserverstatussen te beperken zodat deze in elke batch worden opgenomen. Standaardwaarde: 25 statussen per batch</value>
+  </data>
+  <data name="RSFileSize" xml:space="preserve">
+    <value>Bestandsgrootte in bytes</value>
+  </data>
+  <data name="Selectawifiproile" xml:space="preserve">
+    <value>Selecteer een Wi-Fi-profiel dat toestellen zullen gebruiken om verbinding met een of meer FTP-servers te maken nadat er een streepjescode is gescand om de {0} te downloaden.</value>
+  </data>
+  <data name="Selectfrompreviouslyconfiguredpackages" xml:space="preserve">
+    <value>Kies uit eerder geconfigureerde {0}-pakketten of download de nieuwste van het Workspace ONE UEM-resourcesportaal</value>
+  </data>
+  <data name="SelectProductFilter" xml:space="preserve">
+    <value>Selecteer producten om te filteren</value>
+  </data>
+  <data name="Sideloadprereqs1" xml:space="preserve">
+    <value>1. Als u besluit de meest recente versie van de {0} te gebruiken, moet u deze eerst downloaden vanaf het MyAirWatch Resources-portaal en vervolgens uploaden.</value>
+  </data>
+  <data name="Sideloadstagingallowsyoutodownloadandinstall" xml:space="preserve">
+    <value>U kunt de Sideload-methode voor voorbereide inrichting gebruiken om {0} te downloaden en te installeren op een toestel, zodat u het automatische inschrijvingsproces kunt beginnen. Dit vereenvoudigt de inschrijving doordat alle vereiste componenten worden gecombineerd in één bestand dat naar het toestel wordt gesideload.</value>
+  </data>
+  <data name="SingleAppModeWildcardRule" xml:space="preserve">
+    <value>De regel Jokerteken voor Diverse app kan alleen op het tabblad Verborgen applicatie worden toegevoegd aan een profiel voor de Eén-app-modus.</value>
+  </data>
+  <data name="SmartGroupNotAssignedForAnActiveProduct" xml:space="preserve">
+    <value>Toewijzing van smart group(s) is vereist voor actieve producten. Voeg smart group(s) toe of deactiveer het product voordat u alle toewijzingen van smart groups verwijdert.</value>
+  </data>
+  <data name="SourceLocalizationKey" xml:space="preserve">
+    <value>Bron</value>
+  </data>
+  <data name="StagingAddManifestInfo" xml:space="preserve">
+    <value>Het toevoegen van een manifest definieert de aanvullende inhoud en de commando's die moeten worden toegepast tijdens de voorbereide inrichting. Onderdelen zoals applicaties, profielen en bestanden/acties moeten worden gemaakt in het menu Provisioning &gt; Onderdelen voordat u acties kunt uitvoeren.</value>
+  </data>
+  <data name="StagingPackageNameLengthExceeded" xml:space="preserve">
+    <value>Naam van inrichtingspakket overschrijdt de maximale limiet van {0} tekens. Wijzig de naam en sla het inrichtingspakket opnieuw op.</value>
+  </data>
+  <data name="StagingPackageNameShouldNotContainTheFollowingCharacters" xml:space="preserve">
+    <value>Naam van staging-pakket mag de tekens {0} niet bevatten</value>
+  </data>
+  <data name="StagingServerDescription" xml:space="preserve">
+    <value>De stagingserver is geconfigureerd om inhoud voor voorbereide inrichting (staging) te ontvangen, zoals het Hub-pakket en geavanceerde configuraties voor voorbereide inrichting tijdens inschrijving.</value>
+  </data>
+  <data name="StartDay" xml:space="preserve">
+    <value>Begindag</value>
+  </data>
+  <data name="StartHour" xml:space="preserve">
+    <value>Beginuur</value>
+  </data>
+  <data name="StartMinute" xml:space="preserve">
+    <value>Beginminuut</value>
+  </data>
+  <data name="StartMonth" xml:space="preserve">
+    <value>Beginmaand</value>
+  </data>
+  <data name="StartTimeUtc" xml:space="preserve">
+    <value>Begintijd (UTC)</value>
+  </data>
+  <data name="StartYear" xml:space="preserve">
+    <value>Beginjaar</value>
+  </data>
+  <data name="StopACMRequested" xml:space="preserve">
+    <value>ACM stoppen aangevraagd</value>
+  </data>
+  <data name="StoreOsUpdatesFilesOnRelayServer" xml:space="preserve">
+    <value>Updatebestanden van besturingssysteem opslaan op relayserver</value>
+  </data>
+  <data name="StoreOsUpdatesFilesOnRelayServerHelp" xml:space="preserve">
+    <value>Deze functie kan worden gebruikt voor Windows Mobile-toestellen met onvoldoende ruimte om OS-updates op te slaan. Als deze vlag is ingesteld, blijven alle grote imagebestanden op de relayserver. Het hulpprogramma OSUPDATE op het toestel zal tijdens het updateproces de bestanden één voor één binnenhalen. Wanneer de vlag niet is ingesteld, worden alle bestanden naar het toestel gekopieerd en voert het updateprogramma deze lokaal uit.</value>
+  </data>
+  <data name="Tags" xml:space="preserve">
+    <value>Labels</value>
+  </data>
+  <data name="TemplateModeWildcardRule" xml:space="preserve">
+    <value>De regel Jokerteken voor Diverse app kan alleen op het tabblad Verborgen applicatie worden toegevoegd aan een profiel voor de Sjabloonmodus.</value>
+  </data>
+  <data name="TestConnectionStatus" xml:space="preserve">
+    <value>Verbindingsstatus testen</value>
+  </data>
+  <data name="TimeFormatPlaceholder" xml:space="preserve">
+    <value>HH:MM</value>
+  </data>
+  <data name="Typetoselectanagentpackage" xml:space="preserve">
+    <value>Selecteer {0}</value>
+  </data>
+  <data name="VersionIncrementMessage" xml:space="preserve">
+    <value>Geeft de huidige versie weer. Dit getal wordt verhoogd wanneer wijzigingen worden opgeslagen.</value>
+  </data>
+  <data name="ViewAndManageCustomAttributeAssignmentRules" xml:space="preserve">
+    <value>Toewijzingsregels voor aangepaste kenmerken weergeven en beheren</value>
+  </data>
+  <data name="ViewApplicationAssignments" xml:space="preserve">
+    <value>Applicatietoewijzingen weergeven</value>
+  </data>
+  <data name="ViewAttribute" xml:space="preserve">
+    <value>Kenmerk weergeven</value>
+  </data>
+  <data name="ViewCondition" xml:space="preserve">
+    <value>Voorwaarde weergeven</value>
+  </data>
+  <data name="ViewRelayServer" xml:space="preserve">
+    <value>Relay-server weergeven</value>
+  </data>
+  <data name="ViewStaging" xml:space="preserve">
+    <value>Voorbereide inrichting weergeven</value>
+  </data>
+  <data name="VmwareResourcePortal" xml:space="preserve">
+    <value>vmware-resourceportal</value>
+  </data>
+  <data name="VPNAccessNotApplicableInfoMessage" xml:space="preserve">
+    <value>VPN-toegang wordt ingesteld op 'Niet van toepassing' als de applicatie wordt gebruikt in het manifest voor het verwijderen van de applicatie voor een product</value>
+  </data>
+  <data name="WeeklyInterval" xml:space="preserve">
+    <value>Weekinterval</value>
+  </data>
+  <data name="WeeklyIntervalPlaceholder" xml:space="preserve">
+    <value>Voer een getal in tussen 1 en 52</value>
+  </data>
+  <data name="Wizardenrollmentcomments" xml:space="preserve">
+    <value>Volg deze stapsgewijze leidraad om uw relayserver, Wi-Fi-profiel, {0}, voorbereide inrichting van gebruikers en configuratie met streepjescodes in te stellen. Zodra u alles heeft voltooid, zult u de streepjescodes ontvangen om uw toestellen in te schrijven en krijgt u toegang tot extra ondersteuning, indien u dit nodig zou hebben.</value>
+  </data>
+  <data name="Wizardsideloadenrollmentcomments" xml:space="preserve">
+    <value>Volg deze stapsgewijze leidraad om uw {0}, voorbereide inrichting van gebruikers en sideloadconfiguratie in te stellen. Zodra u alles heeft voltooid, ontvangt u een sideloadbestand om op uw toestellen te laden en krijgt u toegang tot extra ondersteuning, indien u dit nodig zou hebben.</value>
+  </data>
+  <data name="Wizardwebenrollmentcomments" xml:space="preserve">
+    <value>Volg deze stapsgewijze leidraad om de AirWatch Agent correct in te stellen voor inschrijving. Zodra u alles heeft voltooid, krijgt u toegang tot extra ondersteuning, indien u dit nodig zou hebben.</value>
+  </data>
+  <data name="WorkSpaceONECertificate" xml:space="preserve">
+    <value>Workspace ONE-certificaat</value>
+  </data>
+  <data name="WorkSpaceOneLauncher" xml:space="preserve">
+    <value>Workspace ONE Launcher</value>
+  </data>
+  <data name="ZQ510" xml:space="preserve">
+    <value>ZQ510</value>
+  </data>
+  <data name="ZQ520" xml:space="preserve">
+    <value>ZQ520</value>
+  </data>
+</root>

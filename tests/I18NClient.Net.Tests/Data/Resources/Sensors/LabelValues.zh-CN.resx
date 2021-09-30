@@ -1,0 +1,498 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AdminExecutionContext" xml:space="preserve">
+    <value>管理员</value>
+  </data>
+  <data name="AirWatchDataPlatformService" xml:space="preserve">
+    <value>AirWatch DataPlatform 服务</value>
+  </data>
+  <data name="Always32BitArchitecture" xml:space="preserve">
+    <value>32 位 (强制)</value>
+  </data>
+  <data name="AssignedDeviceSensorRequested" xml:space="preserve">
+    <value>分配请求的设备传感器</value>
+  </data>
+  <data name="AssignmentLabel" xml:space="preserve">
+    <value>分配</value>
+  </data>
+  <data name="AssignSensor" xml:space="preserve">
+    <value>将传感器分配给智能组</value>
+  </data>
+  <data name="BackButtonLabel" xml:space="preserve">
+    <value>返回</value>
+  </data>
+  <data name="BooleanType" xml:space="preserve">
+    <value>布尔</value>
+  </data>
+  <data name="CannotDeleteWorkflowResource" xml:space="preserve">
+    <value>无法删除与工作流关联的资源。</value>
+  </data>
+  <data name="DataTypeLabel" xml:space="preserve">
+    <value>数据类型</value>
+  </data>
+  <data name="DateTimeType" xml:space="preserve">
+    <value>日期时间</value>
+  </data>
+  <data name="DefineQueryLabel" xml:space="preserve">
+    <value>定义查询</value>
+  </data>
+  <data name="DeviceScriptAssignmentGroup" xml:space="preserve">
+    <value>设备脚本分配组</value>
+  </data>
+  <data name="DeviceSensor" xml:space="preserve">
+    <value>设备传感器</value>
+  </data>
+  <data name="DeviceSensorAssignmenGroupRankingUpdated" xml:space="preserve">
+    <value>设备传感器分配组排名已更新</value>
+  </data>
+  <data name="DeviceSensorAssignmentGroup" xml:space="preserve">
+    <value>设备传感器分配组</value>
+  </data>
+  <data name="DeviceSensorAssignmentGroupAdded" xml:space="preserve">
+    <value>已添加设备传感器分配组</value>
+  </data>
+  <data name="DeviceSensorAssignmentGroupDeleted" xml:space="preserve">
+    <value>已删除设备传感器分配组。</value>
+  </data>
+  <data name="DeviceSensorAssignmentGroupEdited" xml:space="preserve">
+    <value>已编辑设备传感器分配组</value>
+  </data>
+  <data name="DeviceSensorAssignmentGroupName" xml:space="preserve">
+    <value>设备传感器分配名称</value>
+  </data>
+  <data name="DeviceSensorCreated" xml:space="preserve">
+    <value>已创建设备传感器</value>
+  </data>
+  <data name="DeviceSensorDeleted" xml:space="preserve">
+    <value>已删除设备传感器</value>
+  </data>
+  <data name="DeviceSensorDeletedSuccessfully" xml:space="preserve">
+    <value>已成功删除设备传感器</value>
+  </data>
+  <data name="DeviceSensorEdited" xml:space="preserve">
+    <value>已编辑设备传感器</value>
+  </data>
+  <data name="DeviceSensorIdentifiers" xml:space="preserve">
+    <value>设备传感器标识符</value>
+  </data>
+  <data name="DeviceSensorListViewTitle" xml:space="preserve">
+    <value>传感器列表视图</value>
+  </data>
+  <data name="DeviceSensorName" xml:space="preserve">
+    <value>设备传感器名称</value>
+  </data>
+  <data name="DeviceSensorNotSupportedForEmployeeOwnedDevice" xml:space="preserve">
+    <value>员工拥有的设备: 未请求设备传感器数据</value>
+  </data>
+  <data name="DeviceSensorOg" xml:space="preserve">
+    <value>设备传感器组织组</value>
+  </data>
+  <data name="DeviceSensorPersistedInDeviceState" xml:space="preserve">
+    <value>传感器样本以设备状态保存</value>
+  </data>
+  <data name="DeviceSensorPersistedInIntelligence" xml:space="preserve">
+    <value>传感器样本保存在 Intelligent 中</value>
+  </data>
+  <data name="DeviceSensorSampleReceived" xml:space="preserve">
+    <value>已收到设备传感器样本</value>
+  </data>
+  <data name="DeviceSensorSampleReceivedWithErrors" xml:space="preserve">
+    <value>错误接收样本</value>
+  </data>
+  <data name="DeviceSensorSampleSentFailed" xml:space="preserve">
+    <value>无法发送传感器样本值</value>
+  </data>
+  <data name="DeviceSensorSampleSentSuccess" xml:space="preserve">
+    <value>已成功发送传感器样本值</value>
+  </data>
+  <data name="DeviceSensorSmartGroupAssigned" xml:space="preserve">
+    <value>已将设备传感器分配给智能组</value>
+  </data>
+  <data name="EditSensor" xml:space="preserve">
+    <value>编辑传感器</value>
+  </data>
+  <data name="Either32Or64BitArchitecture" xml:space="preserve">
+    <value>自动</value>
+  </data>
+  <data name="EmployeeOwnedDevicesWillNotSupportSensors" xml:space="preserve">
+    <value>出于用户隐私原因，将自动从“传感器”分配中排除所有权类型为“员工所有”的设备。</value>
+  </data>
+  <data name="ExecutionArchitecture" xml:space="preserve">
+    <value>执行架构</value>
+  </data>
+  <data name="ExecutionArchitectureInfo" xml:space="preserve">
+    <value>
+32 位 (强制): 无论目标设备架构如何，都作为 32 位执行。
+32 位: 仅在 32 位设备上执行。
+64 位: 仅在 64 位设备上执行。
+自动: 根据目标设备架构执行。</value>
+  </data>
+  <data name="ExecutionContextLabel" xml:space="preserve">
+    <value>执行环境</value>
+  </data>
+  <data name="FinishButtonLabel" xml:space="preserve">
+    <value>完成</value>
+  </data>
+  <data name="ImportCodeButtonText" xml:space="preserve">
+    <value>从 VMware 模板库导入</value>
+  </data>
+  <data name="IncludeInSmartGroupLabel" xml:space="preserve">
+    <value>包含在智能组中</value>
+  </data>
+  <data name="IntegerType" xml:space="preserve">
+    <value>整数</value>
+  </data>
+  <data name="LastExecutedDate" xml:space="preserve">
+    <value>上次执行日期</value>
+  </data>
+  <data name="MacOsPeriodicTriggerInfoText" xml:space="preserve">
+    <value>根据“设置”&gt;“设备与用户”&gt;“Apple”&gt;“Apple macOS”&gt;“Intelligent Hub 设置”中定义的已配置 Intelligent Hub 数据采样间隔计划定期运行</value>
+  </data>
+  <data name="ManageEndpointResources" xml:space="preserve">
+    <value>管理端点资源</value>
+  </data>
+  <data name="ManageEndpointResourcesInfo" xml:space="preserve">
+    <value>使用传感器值作为 Freestyle 中的条件，根据自定义条件管理端点资源。</value>
+  </data>
+  <data name="NetworkChangeTriggerInfo" xml:space="preserve">
+    <value>每当在设备上检测到网络更改时运行 (例如，从以太网切换到 WiFi)</value>
+  </data>
+  <data name="NewSensor" xml:space="preserve">
+    <value>新传感器</value>
+  </data>
+  <data name="NextButtonLabel" xml:space="preserve">
+    <value>下一步</value>
+  </data>
+  <data name="NoRecordsFound" xml:space="preserve">
+    <value>找不到脚本，请创建一个新脚本以开始</value>
+  </data>
+  <data name="NoSensorsFound" xml:space="preserve">
+    <value>找不到传感器，请创建一个新传感器以开始</value>
+  </data>
+  <data name="NotRunLabel" xml:space="preserve">
+    <value>未运行</value>
+  </data>
+  <data name="Only32BitArchitecture" xml:space="preserve">
+    <value>32 位</value>
+  </data>
+  <data name="Only64BitArchitecture" xml:space="preserve">
+    <value>64 位</value>
+  </data>
+  <data name="PlatformLabel" xml:space="preserve">
+    <value>平台</value>
+  </data>
+  <data name="QueryType" xml:space="preserve">
+    <value>查询类型</value>
+  </data>
+  <data name="QueryTypeHelpText" xml:space="preserve">
+    <value>此设置确定设备查询的目标</value>
+  </data>
+  <data name="QueryTypeNotSetError" xml:space="preserve">
+    <value>查询类型不能为空</value>
+  </data>
+  <data name="ReplaceWarningForScriptUpload" xml:space="preserve">
+    <value>
+	上载脚本将取代编辑器中的任何现有内容。
+	
+	注意: 每台设备的所有传感器上将总共存储 4 KB 的数据。
+	注意: 如果未能在 5 分钟内完成，脚本将会超时。
+	</value>
+  </data>
+  <data name="RequestSensorsSyncFailed" xml:space="preserve">
+    <value>将设备命令排队到同步传感器失败</value>
+  </data>
+  <data name="RequestSensorsSyncSuccess" xml:space="preserve">
+    <value>将设备命令排队到同步传感器</value>
+  </data>
+  <data name="ResponseLabel" xml:space="preserve">
+    <value>响应</value>
+  </data>
+  <data name="RunButtonText" xml:space="preserve">
+    <value>运行</value>
+  </data>
+  <data name="ScheduleTriggerInfo" xml:space="preserve">
+    <value>当触发器设置为“日程安排”时，此传感器将根据“Windows 采样日程”设置页面中配置的传感器日程安排收集和传输数据。</value>
+  </data>
+  <data name="ScriptExecutedAt" xml:space="preserve">
+    <value>执行时间</value>
+  </data>
+  <data name="ScriptLabel" xml:space="preserve">
+    <value>脚本/命令</value>
+  </data>
+  <data name="SelectSmartGroupToAssignSensor" xml:space="preserve">
+    <value>选择要为其分配此传感器的智能组</value>
+  </data>
+  <data name="Sensor" xml:space="preserve">
+    <value>传感器</value>
+  </data>
+  <data name="SensorAssignmentDeploymentTabDesc" xml:space="preserve">
+    <value>选择哪些触发器可能导致此传感器在分配的设备上运行</value>
+  </data>
+  <data name="SensorAssignmentGroups" xml:space="preserve">
+    <value>传感器</value>
+  </data>
+  <data name="SensorDellCustomBIOSQuery" xml:space="preserve">
+    <value>Dell 自定义 BIOS</value>
+  </data>
+  <data name="SensorDuplicateNameError" xml:space="preserve">
+    <value>存在具有相同名称的传感器。请使用不同的名称。</value>
+  </data>
+  <data name="SensorEventSelectionError" xml:space="preserve">
+    <value>请选择一个或多个事件类型以继续</value>
+  </data>
+  <data name="SensorEventTrigger" xml:space="preserve">
+    <value>事件</value>
+  </data>
+  <data name="SensorGoToOptIn" xml:space="preserve">
+    <value>单击此处以选择加入</value>
+  </data>
+  <data name="SensorLoginEvent" xml:space="preserve">
+    <value>登录</value>
+  </data>
+  <data name="SensorLogoutEvent" xml:space="preserve">
+    <value>注销</value>
+  </data>
+  <data name="SensorMenuDescription" xml:space="preserve">
+    <value>传感器菜单说明</value>
+  </data>
+  <data name="SensorName" xml:space="preserve">
+    <value>传感器名称</value>
+  </data>
+  <data name="SensorNameFormatError" xml:space="preserve">
+    <value>只能使用小写字母、数字和下划线的组合形式，且必须介于 2 到 64 个字符之间。第一个字符必须是小写字母。</value>
+  </data>
+  <data name="SensorNameHelpText" xml:space="preserve">
+    <value>在运行传感器脚本/查询时，传感器名称将成为从设备传回数据的密钥。该密钥和值将被传回并存储到 Workspace ONE Intelligence 中，还能用于报告、图表和自动化中</value>
+  </data>
+  <data name="SensorNameNotSetError" xml:space="preserve">
+    <value>传感器名称不能为空</value>
+  </data>
+  <data name="SensorOGNotOptedInfo" xml:space="preserve">
+    <value>设置传感器需要用到 Workspace ONE Intelligence。请选择加入 Workspace ONE Intelligence，然后返回此页面创建传感器。</value>
+  </data>
+  <data name="SensorPowershellQuery" xml:space="preserve">
+    <value>PowerShell</value>
+  </data>
+  <data name="Sensors" xml:space="preserve">
+    <value>传感器</value>
+  </data>
+  <data name="SensorScheduleTrigger" xml:space="preserve">
+    <value>日程安排</value>
+  </data>
+  <data name="SensorsCreateReports" xml:space="preserve">
+    <value>创建报告和仪表板</value>
+  </data>
+  <data name="SensorsCreateReportsInfo" xml:space="preserve">
+    <value>使用 Workspace ONE Intelligence 根据传感器数据创建报告和仪表板。</value>
+  </data>
+  <data name="SensorScriptHash" xml:space="preserve">
+    <value>Sensor Script Hash</value>
+  </data>
+  <data name="SensorScriptInvalid" xml:space="preserve">
+    <value>脚本/命令是必需值。请指定一个有效的脚本来保存此传感器</value>
+  </data>
+  <data name="SensorsDD" xml:space="preserve">
+    <value>传感器</value>
+  </data>
+  <data name="SensorsDDHelp" xml:space="preserve">
+    <value>控制对查看设备传感器值和请求同步的访问权限</value>
+  </data>
+  <data name="SensorsHeader" xml:space="preserve">
+    <value>自动端点数据收集</value>
+  </data>
+  <data name="SensorsHelp" xml:space="preserve">
+    <value>控制对查看和管理设备传感器的访问权限</value>
+  </data>
+  <data name="SensorsInfo" xml:space="preserve">
+    <value>使用通用脚本语言快速且安全地自动收集端点的数据。有关传感器的详细信息，请参阅</value>
+  </data>
+  <data name="SensorsPurpose" xml:space="preserve">
+    <value>可以使用传感器执行哪些操作?</value>
+  </data>
+  <data name="SensorsRetrieveDeviceData" xml:space="preserve">
+    <value>检索设备数据</value>
+  </data>
+  <data name="SensorsRetrieveDeviceDataInfo" xml:space="preserve">
+    <value>使用通用脚本语言和安全环境变量从桌面设备中检索数据。</value>
+  </data>
+  <data name="SensorsSync" xml:space="preserve">
+    <value>传感器</value>
+  </data>
+  <data name="SensorStartupEvent" xml:space="preserve">
+    <value>启动</value>
+  </data>
+  <data name="SensorStepDefinition" xml:space="preserve">
+    <value>配置传感器将返回的数据的键名称、描述和触发器。</value>
+  </data>
+  <data name="SensorUserSwitchEvent" xml:space="preserve">
+    <value>用户切换</value>
+  </data>
+  <data name="SensorValue" xml:space="preserve">
+    <value>传感器值</value>
+  </data>
+  <data name="SetupScriptParametersMac" xml:space="preserve">
+    <value>创建变量以在执行期间作为脚本环境的一部分使用。
+Shell 脚本可以按名称 (例如 $myvariable) 直接引用变量，Python 3 脚本可以使用操作系统模块 (例如 os.getenv('myvariable')) 引用变量</value>
+  </data>
+  <data name="SetupScriptParametersWindow" xml:space="preserve">
+    <value>创建变量以作为环境变量与脚本一起传递。
+PowerShell 脚本可以通过调用 $env:key 引用在此处定义的变量，其中键是在下面定义的键字段。</value>
+  </data>
+  <data name="SmartGroupCannotBeAssignedToMultipleAssignmentGroups" xml:space="preserve">
+    <value>无法将重复的智能组分配给多个分配组。</value>
+  </data>
+  <data name="StringType" xml:space="preserve">
+    <value>字符串</value>
+  </data>
+  <data name="SyncSensors" xml:space="preserve">
+    <value>同步传感器</value>
+    <comment>Label key for DeviceCommand</comment>
+  </data>
+  <data name="SystemExecutionContext" xml:space="preserve">
+    <value>系统</value>
+  </data>
+  <data name="Triggers" xml:space="preserve">
+    <value>触发器</value>
+  </data>
+  <data name="TriggerTypeHelpText" xml:space="preserve">
+    <value>当触发器设置为“日程安排”时，此传感器将根据“Windows 采样日程”设置页面中配置的传感器日程安排收集和传输数据。选择“事件”将根据所选设备事件收集数据，并将根据“Windows 采样日程”设置页面中配置的设置传输数据</value>
+  </data>
+  <data name="TriggerTypeLabel" xml:space="preserve">
+    <value>触发器类型</value>
+  </data>
+  <data name="UseInLookUpLabel" xml:space="preserve">
+    <value>用作查阅值</value>
+  </data>
+  <data name="UserExecutionContext" xml:space="preserve">
+    <value>当前用户</value>
+  </data>
+  <data name="ValueTypeHelpText" xml:space="preserve">
+    <value>“值类型”将确定收集的样本的数据类型。这将有助于 Workspace ONE 确定为此数据类型提供哪些运算符和命令</value>
+  </data>
+  <data name="ValueTypeLabel" xml:space="preserve">
+    <value>值类型</value>
+  </data>
+  <data name="ValueTypeNotSetError" xml:space="preserve">
+    <value>值类型不能为空</value>
+  </data>
+  <data name="WindowsPeriodicTriggerInfoText" xml:space="preserve">
+    <value>根据“设置”&gt;“设备与用户”&gt;“Windows”&gt;“Windows 桌面”&gt;“Intelligent Hub 设置”中定义的已配置 Intelligent Hub 数据采样间隔计划定期运行</value>
+  </data>
+</root>

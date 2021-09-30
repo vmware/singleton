@@ -1,0 +1,643 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AboutMobileFlows" xml:space="preserve">
+    <value>Om Mobile Flows</value>
+  </data>
+  <data name="AddArgMobileFlow" xml:space="preserve">
+    <value>Tilføj {0} flow</value>
+    <comment>String will be passed in for {0}. Examples: 'Add Salesforce Flow', 'Add ServiceNow Flow' etc.</comment>
+  </data>
+  <data name="AddKeyValuePairs" xml:space="preserve">
+    <value>Tilføj alle relevante nøgleværdipar</value>
+  </data>
+  <data name="AddNewMobileFlow" xml:space="preserve">
+    <value>Tilføj nyt Mobile Flow</value>
+  </data>
+  <data name="AdobeSignDescription" xml:space="preserve">
+    <value>Adobe forbindelseselement til signering af dokumenter</value>
+  </data>
+  <data name="AdobeSignTitle" xml:space="preserve">
+    <value>Adobe Sign</value>
+  </data>
+  <data name="Algorithm" xml:space="preserve">
+    <value>Algoritme</value>
+  </data>
+  <data name="Approvals" xml:space="preserve">
+    <value>Godkendelser</value>
+  </data>
+  <data name="AreYouSureToCancel" xml:space="preserve">
+    <value>Er du sikker på at du ønsker at annullere?</value>
+  </data>
+  <data name="ArgCatalogConnector" xml:space="preserve">
+    <value>{0} Katalog-konnektor</value>
+  </data>
+  <data name="ArgCatalogConnectors" xml:space="preserve">
+    <value>{0} Katalog-konnektorer</value>
+  </data>
+  <data name="ArgMobileFlow" xml:space="preserve">
+    <value>{0} Mobile Flow</value>
+    <comment>Numeric one will be passed in for {0}</comment>
+  </data>
+  <data name="ArgMobileFlows" xml:space="preserve">
+    <value>{0} Mobile Flows</value>
+    <comment>Numeric value will be passed for {0}</comment>
+  </data>
+  <data name="AuthenticationHeader" xml:space="preserve">
+    <value>Godkendelsesheader</value>
+  </data>
+  <data name="BaseURL" xml:space="preserve">
+    <value>Basis-URL-adresse</value>
+  </data>
+  <data name="BasicInformation" xml:space="preserve">
+    <value>Grundlæggende oplysninger</value>
+  </data>
+  <data name="BoxNotesDescription" xml:space="preserve">
+    <value>Box Notes-forbindelseselement til notifikationer om @omtale</value>
+  </data>
+  <data name="BoxNotesTitle" xml:space="preserve">
+    <value>Box Notes</value>
+  </data>
+  <data name="ClientCredentials" xml:space="preserve">
+    <value>Klientlegitimationsoplysninger</value>
+  </data>
+  <data name="ConcurDescription" xml:space="preserve">
+    <value>Concur-forbindelseselement til godkendelse af udgiftsanmodninger</value>
+  </data>
+  <data name="ConcurTitle" xml:space="preserve">
+    <value>Concur</value>
+  </data>
+  <data name="ConcurTravelDescription" xml:space="preserve">
+    <value>Concur-forbindelseselement til godkendelse af rejseanmodninger</value>
+  </data>
+  <data name="ConcurTravelTitle" xml:space="preserve">
+    <value>Concur Travel</value>
+  </data>
+  <data name="ConfirmConnectorDelete" xml:space="preserve">
+    <value>Er du sikker på, at du ønsker at slette dette forbindelseselement?</value>
+  </data>
+  <data name="ConnectionStatus" xml:space="preserve">
+    <value>Forbindelsesstatus</value>
+  </data>
+  <data name="ConnectorAuthConfigError" xml:space="preserve">
+    <value>Godkendelsestypen er enten forkert, eller også er stikket defekt. Kontakt din IT-administrator for at undersøge problemet.</value>
+  </data>
+  <data name="ConnectorAuthenticationTypeHelp" xml:space="preserve">
+    <value>På rullelisten skal du vælge den bekræftelsestype, som backend-tjenesten forventer, at klienten bruger.</value>
+  </data>
+  <data name="ConnectorBaseUrlConfigError" xml:space="preserve">
+    <value>Stikket er defekt. Kontakt din IT-administrator for at undersøge problemet.</value>
+  </data>
+  <data name="ConnectorBaseURLHelp" xml:space="preserve">
+    <value>URL-adressen for backend-tjeneste for Mobile Flows-forbindelseselementet. Dette kræves kun for VMware-forbindelseselementer. Dvs. at hvis du benytter VMware Salesforce-forbindelseselementet, skal du indtaste din organisations Salesforce-URL-adresse her.</value>
+  </data>
+  <data name="ConnectorDeleteWarning" xml:space="preserve">
+    <value>Denne handling vil fjerne forbindelseselementet permanent</value>
+  </data>
+  <data name="ConnectorDiscoveryApiError" xml:space="preserve">
+    <value>URL-adresse til registrering kunne ikke valideres</value>
+  </data>
+  <data name="ConnectorDiscoveryError" xml:space="preserve">
+    <value>Dette stik blev ikke fundet. Kontakt din IT-administrator for at undersøge problemet.</value>
+  </data>
+  <data name="ConnectorDiscoveryInvalidResponse" xml:space="preserve">
+    <value>Connector Discovery-svar er ikke gyldigt</value>
+  </data>
+  <data name="ConnectorDiscoveryURLHelp" xml:space="preserve">
+    <value>Dette er den URL-adresse, som benyttes af Mobile Flows-serveren til at bestemme et udrullet forbindelseselements muligheder. Hvis du hoster dit forbindelseselement i clouden, benyttes den offentligt tilgængelige URL-adresse. Hvis dit forbindelseselement er hostet bag en API eller Edge Gateway, benyttes den fulde URL-adressesti til gatewayen til at omdirigere selve forbindelseselementet, når det er blevet godkendt. Denne URL-adresses respons skal stemme overens med det forventede format som defineret i Kortforbindelseselement-guiden.</value>
+  </data>
+  <data name="ConnectorIDHelp" xml:space="preserve">
+    <value>Indtast et id til at identificere din organisations forbindelseselementer unikt</value>
+  </data>
+  <data name="ConnectorIsNotFound" xml:space="preserve">
+    <value>Connector ikke fundet</value>
+  </data>
+  <data name="ConnectorKeyValueHelp" xml:space="preserve">
+    <value>Dette er de felter, som er nødvendige til godkendelse af brugeren for forbindelseselementets backend-system. OAuth 2.0-felter inkluderes her efter behov. Se Kortforbindelseselement-guiden for detaljer.</value>
+  </data>
+  <data name="ConnectorLoginURLHelp" xml:space="preserve">
+    <value>Den URL-adresse, som bruges af klienten til at godkende med backend-tjenesten og levere et adgangstoken. F.eks. https://login.salesforce.com</value>
+  </data>
+  <data name="ConnectorName" xml:space="preserve">
+    <value>Forbindelseselementnavn</value>
+  </data>
+  <data name="ConnectorNameHelp" xml:space="preserve">
+    <value>Indtast et navn til at identificere dit forbindelseselement. Dette bruges både af slutbrugere til at aktivere tjenester på klienten og af Mobile Flows-administratorer til at skelne mellem de forskellige forbindelseselementer.</value>
+  </data>
+  <data name="ConnectorProviderHelp" xml:space="preserve">
+    <value>Vælg, om du vil udrulle et forbindelseselement leveret af VMware eller et, der hostes internt i din organisation.</value>
+  </data>
+  <data name="ConnectorServiceHelp" xml:space="preserve">
+    <value>Vælg det VMware-forbindelseselement, du ønsker at udrulle, på rullemenuen</value>
+  </data>
+  <data name="ConnectorStatusHelp" xml:space="preserve">
+    <value>Deaktiver connector, hvis du vil forhindre alle brugere i at få adgang til Mobile Flow-information på deres enheder for denne connector.</value>
+  </data>
+  <data name="ConnectorType" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="CoupaDescription" xml:space="preserve">
+    <value>Coupa-forbindelseselement til godkendelse af rekvisitionsanmodninger</value>
+  </data>
+  <data name="CoupaTitle" xml:space="preserve">
+    <value>Coupa</value>
+  </data>
+  <data name="DeveloperGuide" xml:space="preserve">
+    <value>vejledning til udviklere</value>
+  </data>
+  <data name="DiscoveryURL" xml:space="preserve">
+    <value>URL-adresse til registrering</value>
+  </data>
+  <data name="DiscoveryURLChanged" xml:space="preserve">
+    <value>URL-adresse til registrering ændret</value>
+  </data>
+  <data name="EditMobileFlow" xml:space="preserve">
+    <value>Rediger Mobile Flow</value>
+  </data>
+  <data name="FieldCannotContainWhiteSpaces" xml:space="preserve">
+    <value>Feltet må ikke indeholde mellemrum</value>
+  </data>
+  <data name="FieldIsRequired" xml:space="preserve">
+    <value>Feltet er påkrævet</value>
+  </data>
+  <data name="FieldMaxLength" xml:space="preserve">
+    <value>Feltet må ikke indeholde mere end {0} tegn</value>
+  </data>
+  <data name="FieldMinLength" xml:space="preserve">
+    <value>Navnet skal indeholde mindst {0} tegn</value>
+  </data>
+  <data name="FieldShouldBeValidHttpsURL" xml:space="preserve">
+    <value>Feltet skal være gyldig https URL</value>
+  </data>
+  <data name="FieldShouldBeValidURL" xml:space="preserve">
+    <value>Feltet skal være en gyldig URL-adresse</value>
+  </data>
+  <data name="GitHubPage" xml:space="preserve">
+    <value>GitHub-side</value>
+  </data>
+  <data name="GoogleDocsDescription" xml:space="preserve">
+    <value>Google Docs-forbindelseselement til notifikationer om @omtale</value>
+  </data>
+  <data name="GoogleDocsTitle" xml:space="preserve">
+    <value>Google Docs</value>
+  </data>
+  <data name="GrantType" xml:space="preserve">
+    <value>Tildelingstype</value>
+  </data>
+  <data name="GrantTypeHelp" xml:space="preserve">
+    <value>Vælg metoden for opnåelse af et adgangstoken på rullelisten. Godkendelseskode anvendes af fortrolige og offentlige klienter til at udveksle en godkendelseskode for et adgangstoken. Dette kaldes også Web App eller Web Server i OAuth 2.0-konfigurationen. Klientlegitimationsoplysninger bruges af klienter til at indhente et adgangstoken udenfor en brugers kontekst. Dette er nyttigt hvis din OAuth 2.0-udbyder tilbyder en klients legitimationsoplysninger for tildeling af type med servicekontoprivilegier. Adgangskode anvendes af førstepartsklienter til at udveksle en brugers legitimationsoplysninger for en adgangstoken. Dette er nyttigt, hvis din OAuth 2.0-udbyder har en adgangskode-tildelingsbonustype, og du har en servicekonto som du ønsker at bruge.</value>
+  </data>
+  <data name="HideAdvancedOAuth2Options" xml:space="preserve">
+    <value>Skjul avancerede indstillinger</value>
+  </data>
+  <data name="HowMobileFlowsWork" xml:space="preserve">
+    <value>Hvordan virker det</value>
+  </data>
+  <data name="HowMobileFlowsWorkDescription" xml:space="preserve">
+    <value>Mobile Flows giver dig mulighed for at give medarbejderne mulighed for at aktivere eller deaktivere handlingsorienterede notifikationer via deres mobile apps ved at implementere forbindelser for hvert virksomhedssystem, du vil tilslutte. Når hvert connector-navn er knyttet til en offentligt URL for hver forbindelse, vil medarbejdere derefter have nem adgang til meddelelser på deres virksomheds-apps.</value>
+  </data>
+  <data name="HubSpotDealsDescription" xml:space="preserve">
+    <value>HubSpot-forbindelseselement for nye tildelinger af handler</value>
+  </data>
+  <data name="HubSpotDealsTitle" xml:space="preserve">
+    <value>HubSpot – handler</value>
+  </data>
+  <data name="HubSpotTicketsDescription" xml:space="preserve">
+    <value>HubSpot forbindelseselement til nye tickettildelinger</value>
+  </data>
+  <data name="HubSpotTicketsTitle" xml:space="preserve">
+    <value>HubSpot – tickets</value>
+  </data>
+  <data name="JiraServiceDeskDescription" xml:space="preserve">
+    <value>Jira Service Desk-forbindelseselement til godkendelse af tickets</value>
+  </data>
+  <data name="JiraServiceDeskTitle" xml:space="preserve">
+    <value>Jira Service Desk</value>
+  </data>
+  <data name="KeyValuePair" xml:space="preserve">
+    <value>Tilføj nøgleværdipar</value>
+  </data>
+  <data name="LinkedInLearningChatbotDescription" xml:space="preserve">
+    <value>LinkedIn Learning-forbindelseselement til søgning efter kurser via Hub Assistant</value>
+  </data>
+  <data name="LinkedInLearningChatbotTitle" xml:space="preserve">
+    <value>LinkedIn Learning-chatbot</value>
+  </data>
+  <data name="LinkedInLearningDescription" xml:space="preserve">
+    <value>LinkedIn Learning-forbindelseselement til notifikationer om nye kurser</value>
+  </data>
+  <data name="LinkedInLearningTitle" xml:space="preserve">
+    <value>LinkedIn Learning</value>
+  </data>
+  <data name="MicrosoftDynamicsCaseResolutionDescription" xml:space="preserve">
+    <value>Microsoft Dynamics-forbindelseselement for nye sagstildelinger</value>
+  </data>
+  <data name="MicrosoftDynamicsCaseResolutionTitle" xml:space="preserve">
+    <value>Microsoft Dynamics – sagsløsning</value>
+  </data>
+  <data name="MicrosoftDynamicsDescription" xml:space="preserve">
+    <value>Microsoft Dynamics-forbindelseselement til notifikationer om nytildelte konti</value>
+  </data>
+  <data name="MicrosoftDynamicsTasksDescription" xml:space="preserve">
+    <value>Microsoft Dynamics-forbindelseselement til nye opgavetildelinger</value>
+  </data>
+  <data name="MicrosoftDynamicsTasksTitle" xml:space="preserve">
+    <value>Microsoft Dynamics – opgaver</value>
+  </data>
+  <data name="MicrosoftDynamicsTitle" xml:space="preserve">
+    <value>Microsoft Dynamics</value>
+  </data>
+  <data name="MicrosoftOneDriveDescription" xml:space="preserve">
+    <value>Microsoft OneDrive-forbindelseselement til godkendelse af adgang til fil/mappe</value>
+  </data>
+  <data name="MicrosoftOneDriveTitle" xml:space="preserve">
+    <value>Microsoft OneDrive</value>
+  </data>
+  <data name="MicrosoftPlannerDescription" xml:space="preserve">
+    <value>Microsoft Planner-forbindelseselement til notifikationer om nytildelte opgaver</value>
+  </data>
+  <data name="MicrosoftPlannerTitle" xml:space="preserve">
+    <value>Microsoft Planner</value>
+  </data>
+  <data name="MicrosoftTeamsDescription" xml:space="preserve">
+    <value>Microsoft Teams-forbindelseselement til notifikationer om @omtale</value>
+  </data>
+  <data name="MicrosoftTeamsTitle" xml:space="preserve">
+    <value>Microsoft Teams</value>
+  </data>
+  <data name="MobileFlow" xml:space="preserve">
+    <value>Mobile Flow</value>
+  </data>
+  <data name="MobileFlowAPIURL" xml:space="preserve">
+    <value>Mobile Flows API URL</value>
+  </data>
+  <data name="MobileFlowBestPracticesDescription" xml:space="preserve">
+    <value>Bedste praksis for Mobile Flows kan findes i Wiki på VMware GitHub-webstedet: https://github.com/vmwaresamples/card-connectors-guide/wiki.</value>
+  </data>
+  <data name="MobileFlowDescription" xml:space="preserve">
+    <value>Vis og administrer alle forbindelseselementer</value>
+  </data>
+  <data name="MobileFlows" xml:space="preserve">
+    <value>Mobile Flows</value>
+  </data>
+  <data name="MobileFlowsAddConnectors" xml:space="preserve">
+    <value>Tilføj Connectors</value>
+  </data>
+  <data name="MobileFlowsAdminNoAccessToOG" xml:space="preserve">
+    <value>Administratorer har adgang til Mobile Flows, hvis de styres i denne organisationsgruppe. Bed din systemadministrator om at tildele den påkrævede rolle og gemme denne administrator i denne organisationsgruppe. Log derefter på igen, og brug den pågældende rolle til at få adgang til Mobile Flows i denne organisationsgruppe.</value>
+  </data>
+  <data name="MobileFlowsAPIURL" xml:space="preserve">
+    <value>Mobile Flows API URL</value>
+  </data>
+  <data name="MobileFlowsApiUrlNotFound" xml:space="preserve">
+    <value>Mobile Flows-cloudtjenesten er ikke tilgængelig.</value>
+  </data>
+  <data name="MobileFlowsApiUrlNotProvisioned" xml:space="preserve">
+    <value>Sørg for, at Mobile Flows API URL'en er konfigureret i den aktuelle organisationsgruppe, som du finder i URL-adressen. Hvis problemet fortsætter, skal du kontakte systemadministratoren.</value>
+  </data>
+  <data name="MobileFlowsBestPractices" xml:space="preserve">
+    <value>Bedste praksis for Mobile Flows</value>
+  </data>
+  <data name="MobileFlowsCatalogDescription" xml:space="preserve">
+    <value>Begynd at anvende Workspace ONE Mobile Flows med det samme ved at vælge mellem OOTB-forbindelserne (out-of-the-box) og arbejdsgangene herunder. Du skal blot tilføje, konfigurere, angive enkelte yderligere oplysninger, så er du færdig!</value>
+  </data>
+  <data name="MobileFlowsCloudServiceDescription" xml:space="preserve">
+    <value>Mobile Flows er en cloud-tjeneste, der kan integreres med VMware Intelligent Hub og Boxer for at give medarbejderne de handlingsorienterede underretninger, de behøver for at blive mere produktive.</value>
+  </data>
+  <data name="MobileFlowsConnectingToCloudService" xml:space="preserve">
+    <value>Opretter forbindelse til Mobile Flows cloud-tjeneste</value>
+  </data>
+  <data name="MobileFlowsConnectorGuideWikiArg" xml:space="preserve">
+    <value>Se dette {0} for at finde ud af, hvordan man opbygger forbindelser</value>
+    <comment>Html string will be passed in for {0}. Example: &lt;label for='open-connectors-guide-wiki' class='wiki-link'&gt;developer guide&lt;/label&gt;`.</comment>
+  </data>
+  <data name="MobileFlowsDescription" xml:space="preserve">
+    <value>Se og administrer Mobile Flows</value>
+  </data>
+  <data name="MobileFlowsDirectoryBasicAdminError" xml:space="preserve">
+    <value>Du har ikke adgang til Workspace ONE Access. Du skal være directory-administrator i det konfigurerede directory for at få adgang til Workspace ONE Access.</value>
+  </data>
+  <data name="MobileFlowsIDMNotConfigured" xml:space="preserve">
+    <value>Ingen adgang til Workspace ONE Access. Kontrollér dine adgangsprivilegier, og sørg for, at de er konfigureret korrekt.</value>
+  </data>
+  <data name="MobileFlowsIDMSetupArg" xml:space="preserve">
+    <value>Workspace ONE Access skal konfigureres, før Mobile Flows kan tilgås. Gå til {0}, og opret forbindelse til Workspace ONE Access. Når du er færdig, skal du logge af og derefter logge på igen for at prøve igen.</value>
+  </data>
+  <data name="MobileFlowsIDMSetupRequired" xml:space="preserve">
+    <value>Workspace ONE skal indstilles, før Mobile Flows kan tilgås. Gå til Kom i gang og fuldfør opsætningen af Workspace ONE. Når du er færdig, skal du logge ud og ind igen for at prøve igen.</value>
+  </data>
+  <data name="MobileFlowsNoAccessToIDM" xml:space="preserve">
+    <value>Du har ikke adgang til Workspace ONE Access. Du skal være mappeadministrator for at få adgang til Workspace ONE Access</value>
+  </data>
+  <data name="MobileFlowsNoAccessToOrganizationGroup" xml:space="preserve">
+    <value>Denne bruger tilhører ikke denne organisationsgruppe.</value>
+  </data>
+  <data name="MobileFlowsNotCustomerTypeOrganizationGroup" xml:space="preserve">
+    <value>Cloud Tenant kan kun registreres ved organisationsgruppe af kundetypen.</value>
+  </data>
+  <data name="MobileFlowsProductivityDescription" xml:space="preserve">
+    <value>Ved at afdække medarbejdernes personlige arbejdsgange og samle data fra forskellige virksomhedssystemer gør Mobile Flows det lettere for medarbejderne at holde forbindelsen til alle deres produktivitets-apps fra en enkelt app.</value>
+  </data>
+  <data name="MobileFlowsRegisteringTenant" xml:space="preserve">
+    <value>Sender og registrerer kundedata til URL</value>
+  </data>
+  <data name="MobileFlowsSampleConnectorWikiArg" xml:space="preserve">
+    <value>Gå til {0} for at finde eksempler på forudbyggede forbindelser</value>
+    <comment>Html string will be passed in for {0}. Example: &lt;label for='open-sample-connectors-wiki' class='wiki-link'&gt;GitHub page&lt;/label&gt;`.</comment>
+  </data>
+  <data name="MobileFlowsTenantAlreadyExists" xml:space="preserve">
+    <value>Denne Cloud Tenant eksisterer allerede i Mobile Flows-cloudtjenesten.</value>
+  </data>
+  <data name="MobileFlowsTenantProvisioning" xml:space="preserve">
+    <value>For at komme i gang, skal du registrere kundetenant, der skal tilsluttes Mobile Flows-cloudtjeneste.</value>
+  </data>
+  <data name="MobileFlowsTenantProvisioningError" xml:space="preserve">
+    <value>Der er noget galt…</value>
+  </data>
+  <data name="MobileFlowsTenantProvisioningFailed" xml:space="preserve">
+    <value>Cloud Tenant kunne ikke registreres.</value>
+  </data>
+  <data name="MobileFlowsTenantProvisioningSuccess" xml:space="preserve">
+    <value>Der er oprettet forbindelse til Mobile Flows-cloudtjeneste!</value>
+  </data>
+  <data name="MobileFlowsVidmNotConfigured" xml:space="preserve">
+    <value>Workspace ONE Access er ikke konfigureret for denne organisationsgruppe.</value>
+  </data>
+  <data name="MobileFlowTroubleshootDocs" xml:space="preserve">
+    <value>Se vores guide til Mobile Flows-forbindelseselement på GitHub: https://github.com/vmwaresamples/card-connectors-guide.</value>
+  </data>
+  <data name="MultiTenantParameters" xml:space="preserve">
+    <value>Multi-tenant-parametre</value>
+  </data>
+  <data name="MyFlows" xml:space="preserve">
+    <value>Mine flows</value>
+  </data>
+  <data name="NoMobileFlowsCatalogFound" xml:space="preserve">
+    <value>Ingen tilgængelige flows blev fundet</value>
+  </data>
+  <data name="NoMobileFlowsFound" xml:space="preserve">
+    <value>Det ser ud til, at du ikke har oprettet nogen mobile flows endnu!</value>
+  </data>
+  <data name="NotificationMethod" xml:space="preserve">
+    <value>Notifikationsmetode</value>
+  </data>
+  <data name="NotificationMethodPoll" xml:space="preserve">
+    <value>Notifikationsmetode – Afstemning</value>
+  </data>
+  <data name="NotificationMethodPush" xml:space="preserve">
+    <value>Notifikationsmetode – Push</value>
+  </data>
+  <data name="NotificationMethodPushInfo" xml:space="preserve">
+    <value>Anvend venligst disse oplysninger til at konfigurere indstillingerne for push-meddelelser i kildevirksomhedssystemet.</value>
+  </data>
+  <data name="NotificationPollPushDifference" xml:space="preserve">
+    <value>Notifikationer fra virksomhedssystemer kan forespørges eller pushes:
+Forespørgsel – Mobile Flows-serveren sender en forespørgsel til backend-virksomhedssystemer en gang i timen for nye notifikationer. 
+Push – hvis et backend-virksomhedssystem understøtter en push-mekanisme, kan Mobile Flows generere et slutpunkt, som tjenesten kan kalde, når notifikationer er klar.</value>
+  </data>
+  <data name="NoVmwareServicesFound" xml:space="preserve">
+    <value>Der blev ikke fundet nogen VMware-tjenester.</value>
+  </data>
+  <data name="OAuth2Parameters" xml:space="preserve">
+    <value>OAuth 2.0-parametre</value>
+  </data>
+  <data name="OopsSomethingWentWrong" xml:space="preserve">
+    <value>Ups! Noget gik galt!</value>
+  </data>
+  <data name="PollingInterval" xml:space="preserve">
+    <value>Afstemningsinterval</value>
+  </data>
+  <data name="PushNotificationInfo" xml:space="preserve">
+    <value>Når den er gemt, bliver push-URL-adressen genereret, og den kan findes under siden med forbindelsesoplysninger. Brug disse oplysninger til at konfigurere indstillingerne for push-meddelelser i kildevirksomhedssystemet. Du kan se og redigere disse indstillinger under Mine flows &gt; Rediger.</value>
+  </data>
+  <data name="PushURL" xml:space="preserve">
+    <value>Push-URL-adresse</value>
+  </data>
+  <data name="RegenerateSecret" xml:space="preserve">
+    <value>Generer hemmeligheden igen?</value>
+  </data>
+  <data name="RegenerateSecretConfirm" xml:space="preserve">
+    <value>Er du sikker på, at du vil generere hemmeligheden igen? Når den er genereret igen, vil den tidligere hemmelighed ikke længere fungere. Sørg venligst for at opdatere indstillingerne for push-notifikationer i kildevirksomhedssystemet i overensstemmelse hermed.</value>
+  </data>
+  <data name="SabaDescription" xml:space="preserve">
+    <value>Saba-forbindelseselement til nye læringsnotifikationer</value>
+  </data>
+  <data name="SabaTitle" xml:space="preserve">
+    <value>Saba</value>
+  </data>
+  <data name="SalesforceCaseResolutionDescription" xml:space="preserve">
+    <value>Salesforce forbindelseselement til nye sagstildelinger</value>
+  </data>
+  <data name="SalesforceCaseResolutionTitle" xml:space="preserve">
+    <value>Salesforce – sagsløsning</value>
+  </data>
+  <data name="SalesforceDescription" xml:space="preserve">
+    <value>Salesforce-forbindelseselement til godkendelse af rabatanmodninger</value>
+  </data>
+  <data name="SalesforceLeadsDescription" xml:space="preserve">
+    <value>Salesforce-forbindelseselement til notifikationer om nytildelte kundeemner</value>
+  </data>
+  <data name="SalesforceLeadsTitle" xml:space="preserve">
+    <value>Salesforce Leads</value>
+  </data>
+  <data name="SalesforceTasksDescription" xml:space="preserve">
+    <value>Salesforce-forbindelseselement til nye opgavetildelinger</value>
+  </data>
+  <data name="SalesforceTasksTitle" xml:space="preserve">
+    <value>Salesforce – opgaver</value>
+  </data>
+  <data name="SalesforceTitle" xml:space="preserve">
+    <value>Salesforce</value>
+  </data>
+  <data name="ServiceAccountCredential" xml:space="preserve">
+    <value>Legitimationsoplysninger til tjenestekontoen</value>
+  </data>
+  <data name="ServiceAccountCredentialHelp" xml:space="preserve">
+    <value>Indtast legitimationsoplysningerne til tjenestekontoen, som backend-tjenesten forventer, at klienten bruger.</value>
+  </data>
+  <data name="ServiceNowChatbotDescription" xml:space="preserve">
+    <value>ServiceNow-forbindelseselement til oprettelse af tickets, visning af tickets og bestilling af enheder via Hub Assistant</value>
+  </data>
+  <data name="ServiceNowChatbotTitle" xml:space="preserve">
+    <value>ServiceNow-chatbot</value>
+  </data>
+  <data name="ServiceNowDescription" xml:space="preserve">
+    <value>ServiceNow-forbindelseselement til godkendelse af rekvisitionsanmodninger</value>
+  </data>
+  <data name="ServiceNowTitle" xml:space="preserve">
+    <value>ServiceNow</value>
+  </data>
+  <data name="ShowAdvancedOAuth2Options" xml:space="preserve">
+    <value>Vis avancerede indstillinger</value>
+  </data>
+  <data name="TokenServerHints" xml:space="preserve">
+    <value>Tip til token-server</value>
+  </data>
+  <data name="TokenUriBodyParameters" xml:space="preserve">
+    <value>Token-URI Body-parametre</value>
+  </data>
+  <data name="UEMChatbotDescription" xml:space="preserve">
+    <value>UEM-forbindelseselement til synkronisering af enheder via Hub Assistant</value>
+  </data>
+  <data name="UEMChatbotTitle" xml:space="preserve">
+    <value>UEM-chatbot</value>
+  </data>
+  <data name="UseCase" xml:space="preserve">
+    <value>Use case</value>
+  </data>
+  <data name="VirtualAssistant" xml:space="preserve">
+    <value>Virtuel assistent</value>
+  </data>
+  <data name="WhatIsMobileFlow" xml:space="preserve">
+    <value>Hvad er Mobile Flows?</value>
+  </data>
+  <data name="WhatIsMobileFlowDescription" xml:space="preserve">
+    <value>Mobile Flows muliggør intelligente notifikationer, som der kan handles på, i forhold til fjernsystemer i Boxer og andre virksomheds-apps, hvilket fremmer medarbejdereffektivitet og produktivitet. Her kan admins konfigurere og udrulle de forbindelseselementer og flows, som de ønsker at aktivere for slutbrugere.</value>
+  </data>
+  <data name="Wiki" xml:space="preserve">
+    <value>Wiki</value>
+  </data>
+  <data name="WorkdayDescription" xml:space="preserve">
+    <value>Workday-forbindelseselement til PTO-godkendelse</value>
+  </data>
+  <data name="WorkdayTitle" xml:space="preserve">
+    <value>Workday</value>
+  </data>
+  <data name="WorkspaceONEHub" xml:space="preserve">
+    <value>Workspace ONE Hub</value>
+  </data>
+  <data name="ZendeskTasksDescription" xml:space="preserve">
+    <value>Zendesk-forbindelseselement til opgavegodkendelser</value>
+  </data>
+  <data name="ZendeskTasksTitle" xml:space="preserve">
+    <value>Zendesk – opgaver</value>
+  </data>
+  <data name="ZendeskTicketResolutionDescription" xml:space="preserve">
+    <value>Zendesk-forbindelseselement til nye tickettildelinger</value>
+  </data>
+  <data name="ZendeskTicketResolutionTitle" xml:space="preserve">
+    <value>Zendesk – ticketløsning</value>
+  </data>
+  <data name="ZoomRecordingsDescription" xml:space="preserve">
+    <value>Zoom-forbindelseselement til notifikation om ny optagelse</value>
+  </data>
+  <data name="ZoomRecordingsTitle" xml:space="preserve">
+    <value>Zoom Recordings</value>
+  </data>
+</root>

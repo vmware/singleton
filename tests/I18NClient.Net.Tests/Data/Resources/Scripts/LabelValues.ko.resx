@@ -1,0 +1,286 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AddEditScripts" xml:space="preserve">
+    <value>스크립트 추가/편집</value>
+  </data>
+  <data name="AddEditScriptsHelp" xml:space="preserve">
+    <value>장치 스크립트를 추가 또는 편집하기 위한 액세스 권한 제어</value>
+  </data>
+  <data name="AppCatalogCustomization" xml:space="preserve">
+    <value>앱 카탈로그 사용자 지정</value>
+  </data>
+  <data name="CatalogCustomizationNotDefined" xml:space="preserve">
+    <value>스크립트에 대한 앱 카탈로그 사용자 지정 세부 정보가 없습니다. Hub에서 표시를 사용하도록 설정할 수 없습니다.</value>
+  </data>
+  <data name="CatalogIconLimit" xml:space="preserve">
+    <value>아이콘이 최대 크기 제한인 1MB를 초과합니다.</value>
+  </data>
+  <data name="ConfigureComplexSequences" xml:space="preserve">
+    <value>복잡한 시퀀스 구성</value>
+  </data>
+  <data name="ConfigureComplexSequencesInfo" xml:space="preserve">
+    <value>Freestyle에서 스크립트를 리소스로 사용하여 애플리케이션 및 프로필을 포함하는 복잡한 장치 시퀀스를 구성합니다.</value>
+  </data>
+  <data name="DeleteAssignmentsWarning" xml:space="preserve">
+    <value>이 할당을 삭제하시겠습니까?
+삭제하면 할당된 모든 장치에서 스크립트가 제거됩니다.</value>
+  </data>
+  <data name="DeleteScripts" xml:space="preserve">
+    <value>스크립트 삭제</value>
+  </data>
+  <data name="DeleteScriptsHelp" xml:space="preserve">
+    <value>장치 스크립트 삭제하기 위한 액세스 권한 제어</value>
+  </data>
+  <data name="DuplicateServerCertificate" xml:space="preserve">
+    <value>업로드된 인증서가 기존 서버 인증서 집합에 이미 존재합니다.</value>
+  </data>
+  <data name="EditScript" xml:space="preserve">
+    <value>스크립트 편집</value>
+  </data>
+  <data name="EnableSelfService" xml:space="preserve">
+    <value>셀프 서비스 사용</value>
+  </data>
+  <data name="EnableSelfServiceInfo" xml:space="preserve">
+    <value>Intelligent Hub 카탈로그에 장치 셀프 서비스에 대한 스크립트를 추가합니다.</value>
+  </data>
+  <data name="ExecutionContextWindows" xml:space="preserve">
+    <value>실행 컨텍스트 및 권한</value>
+  </data>
+  <data name="ExecutionTime" xml:space="preserve">
+    <value>실행 시간</value>
+  </data>
+  <data name="HoursLabel" xml:space="preserve">
+    <value>시간</value>
+  </data>
+  <data name="LastExecutionTime" xml:space="preserve">
+    <value>마지막 실행 시간</value>
+  </data>
+  <data name="NetworkChange" xml:space="preserve">
+    <value>네트워크 변경</value>
+  </data>
+  <data name="PostActionButtonText" xml:space="preserve">
+    <value>작업 후 버튼 텍스트</value>
+  </data>
+  <data name="PreActionButtonText" xml:space="preserve">
+    <value>작업 전 버튼 텍스트</value>
+  </data>
+  <data name="Repair" xml:space="preserve">
+    <value>수리</value>
+  </data>
+  <data name="RunImmediately" xml:space="preserve">
+    <value>즉시 한 번 실행</value>
+  </data>
+  <data name="RunImmediatelyInfoText" xml:space="preserve">
+    <value>이 트리거는 모든 할당된 장치에 대한 스크립트가 게시된 후 자동으로 실행됩니다. 새 장치가 등록된 직후에도 실행됩니다.</value>
+  </data>
+  <data name="RunOnEnrollment" xml:space="preserve">
+    <value>등록 시 실행</value>
+  </data>
+  <data name="RunOnPublish" xml:space="preserve">
+    <value>게시 시 실행/지금 실행</value>
+  </data>
+  <data name="RunPeriodically" xml:space="preserve">
+    <value>정기적으로 실행</value>
+  </data>
+  <data name="ScriptCategory" xml:space="preserve">
+    <value>카테고리(선택 사항)</value>
+  </data>
+  <data name="ScriptDeleteWarning" xml:space="preserve">
+    <value>이 스크립트를 삭제하시겠습니까?</value>
+  </data>
+  <data name="ScriptDeploymentHeader" xml:space="preserve">
+    <value>스크립트 실행 시기를 정의하는 배포 방법 선택</value>
+  </data>
+  <data name="ScriptDescription" xml:space="preserve">
+    <value>설명(선택 사항)</value>
+  </data>
+  <data name="ScriptDetailsLoadFailed" xml:space="preserve">
+    <value>스크립트 세부 정보를 로드하지 못했습니다.</value>
+  </data>
+  <data name="ScriptDisplayDescription" xml:space="preserve">
+    <value>설명 표시(선택 사항)</value>
+  </data>
+  <data name="ScriptLanguage" xml:space="preserve">
+    <value>스크립트 언어</value>
+  </data>
+  <data name="ScriptLinkedToWorkflowError" xml:space="preserve">
+    <value>스크립트가 하나 이상의 워크플로에 포함되어 있습니다. 스크립트를 삭제하려면 모든 워크플로에서 스크립트를 제거하십시오.</value>
+  </data>
+  <data name="Scripts" xml:space="preserve">
+    <value>스크립트</value>
+  </data>
+  <data name="ScriptsConfigureDevices" xml:space="preserve">
+    <value>장치 구성</value>
+  </data>
+  <data name="ScriptsConfigureDevicesInfo" xml:space="preserve">
+    <value>공용 스크립팅 언어 및 보안 환경 변수를 사용하여 데스크톱 장치를 구성합니다.</value>
+  </data>
+  <data name="ScriptSearchFailed" xml:space="preserve">
+    <value>스크립트 검색 실패 </value>
+  </data>
+  <data name="ScriptsHeader" xml:space="preserve">
+    <value>자동화된 끝점 구성</value>
+  </data>
+  <data name="ScriptsHelp" xml:space="preserve">
+    <value>장치 스크립트를 보고 관리하기 위한 액세스 권한 제어</value>
+  </data>
+  <data name="ScriptsInfo" xml:space="preserve">
+    <value>공통 스크립팅 언어를 사용하여 끝점에서 사용자 지정 구성 작업을 자동화합니다. 스크립트에 대한 자세한 내용은 다음을 참조하십시오.</value>
+  </data>
+  <data name="ScriptsPurpose" xml:space="preserve">
+    <value>스크립트로 무엇을 할 수 있습니까?</value>
+  </data>
+  <data name="ScriptsTimeOutInSeconds" xml:space="preserve">
+    <value>시간 초과(초)</value>
+  </data>
+  <data name="ScriptWorkflow" xml:space="preserve">
+    <value>스크립트 워크플로</value>
+  </data>
+  <data name="SearchExistingScript" xml:space="preserve">
+    <value>기존 스크립트 검색</value>
+  </data>
+  <data name="ShowInHubCatalog" xml:space="preserve">
+    <value>Hub Catalog에 표시</value>
+  </data>
+  <data name="ShowInHubOptional" xml:space="preserve">
+    <value>Hub에 표시(선택 사항)</value>
+  </data>
+  <data name="UnableRetrieveScriptError" xml:space="preserve">
+    <value>스크립트를 검색할 수 없습니다. 스크립트가 더 이상 없거나 삭제되었을 수 있습니다.</value>
+  </data>
+  <data name="ViewScripts" xml:space="preserve">
+    <value>스크립트 보기</value>
+  </data>
+  <data name="ViewScriptsHelp" xml:space="preserve">
+    <value>장치 스크립트 세부 정보 및 구성을 보기 위한 액세스 권한 제어</value>
+  </data>
+  <data name="WindowsAdminExecutionContext" xml:space="preserve">
+    <value>관리자 권한을 가진 사용자 컨텍스트</value>
+  </data>
+  <data name="WindowsExecutionContextInfo" xml:space="preserve">
+    <value>시스템 컨텍스트에서 스크립트가 실행될 때 항상 관리자 권한으로 실행되고 사용자 상호 작용은 표시되지 않습니다. 사용자 상호 작용이 필요한 스크립트는 스크립트에 필요한 적절한 권한을 갖는 사용자 컨텍스트에서 실행해야 합니다. 관리자 권한은 장치의 표준 사용자와 관리자에 모두 적용됩니다.</value>
+  </data>
+  <data name="WindowsSystemExecutionContext" xml:space="preserve">
+    <value>System Context</value>
+  </data>
+  <data name="WindowsUserExecutionContext" xml:space="preserve">
+    <value>관리자 권한이 없는 사용자 컨텍스트</value>
+  </data>
+</root>

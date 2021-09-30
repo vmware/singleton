@@ -1,0 +1,636 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AntiXssErrorMessage" xml:space="preserve">
+    <value>Treść interfejsu API zawiera znaki, które są ograniczone w ramach walidacji Xss.</value>
+  </data>
+  <data name="ArgAccountDropDownMenu" xml:space="preserve">
+    <value>Menu rozwijane konta {0}</value>
+    <comment>Placeholder in this label key will contain admin username.</comment>
+  </data>
+  <data name="ArgCharacters" xml:space="preserve">
+    <value>{0} znaki(-ów)</value>
+  </data>
+  <data name="ArgGoToPrevOrNextSlide" xml:space="preserve">
+    <value>Przejdź do {0} slajdu</value>
+    <comment>Placeholder in this label key will contain the link text localized value.</comment>
+  </data>
+  <data name="ArgGoToSpecificSlide" xml:space="preserve">
+    <value>Przejdź do slajdu numer {0}</value>
+    <comment>Placeholder in this label key will contain the link text localized value.</comment>
+  </data>
+  <data name="ArgOpensDialog" xml:space="preserve">
+    <value>{0} Otwiera okno dialogowe</value>
+    <comment>Placeholder in this label key will contain the link text localized value.</comment>
+  </data>
+  <data name="ArgPlatformLabel" xml:space="preserve">
+    <value>Platforma {0}</value>
+    <comment>Placeholder in this label key will contain the link text localized value.</comment>
+  </data>
+  <data name="AuthenticationAppTokenNotification" xml:space="preserve">
+    <value>Aplikacja uwierzytelniania – powiadomienie tokenu</value>
+  </data>
+  <data name="BatchImportCsvTemplateColumnFormatInfo" xml:space="preserve">
+    <value>Jeśli szablon CSV jest edytowany przy użyciu programu Microsoft Excel, upewnij się, że ustawiono format kolumny „Tekst”, aby uniknąć utraty informacji spowodowanej konwersją formatu.</value>
+  </data>
+  <data name="CheckforDependencyToolTip" xml:space="preserve">
+    <value>Dodaj zależność modułu łączenia, jeśli istnieje.</value>
+  </data>
+  <data name="CloseDialog" xml:space="preserve">
+    <value>Zamknij okno dialogowe</value>
+  </data>
+  <data name="CompanyLogoWithUrl" xml:space="preserve">
+    <value>Logo firmowe odsyła do firmowej witryny internetowej</value>
+  </data>
+  <data name="CSV" xml:space="preserve">
+    <value>CSV</value>
+  </data>
+  <data name="CurrentOrgLevelArg" xml:space="preserve">
+    <value>Bieżąca grupa organizacyjna to {0}</value>
+    <comment>Placeholder in this label key will contain the link text localized value.</comment>
+  </data>
+  <data name="CustomIngestionServiceIsMissing" xml:space="preserve">
+    <value>Brak jednej z usług wymaganych do uruchomienia raportów niestandardowych. Skontaktuj się z administratorem.</value>
+  </data>
+  <data name="DataInRowInvalid" xml:space="preserve">
+    <value>Dane w wierszu są nieprawidłowe</value>
+  </data>
+  <data name="DCUApplicationError" xml:space="preserve">
+    <value>Błąd aktualizacji polecenia Dell</value>
+  </data>
+  <data name="DeviceBiosVerificationFailed" xml:space="preserve">
+    <value>Weryfikacja systemu BIOS urządzenia nie powiodła się</value>
+  </data>
+  <data name="DeviceBiosVerificationUnknown" xml:space="preserve">
+    <value>Weryfikacja systemu BIOS urządzenia jest nieznana</value>
+  </data>
+  <data name="DismissAll" xml:space="preserve">
+    <value>Odrzuć wszystkie</value>
+  </data>
+  <data name="DismissAllNotificationsConfirmation" xml:space="preserve">
+    <value>Wszystkie powiadomienia zostaną odrzucone. Czy na pewno chcesz kontynuować?</value>
+  </data>
+  <data name="DoorIsLocked" xml:space="preserve">
+    <value>Te drzwi są zablokowane</value>
+  </data>
+  <data name="DuplicateRequest" xml:space="preserve">
+    <value>Przesyłanie pliku zostało anulowane, ponieważ zidentyfikowaliśmy to żądanie jako duplikat. Jeśli problem będzie się powtarzał, skontaktuj się z administratorem.</value>
+  </data>
+  <data name="EnforceManifest" xml:space="preserve">
+    <value>Wymuszaj manifest</value>
+  </data>
+  <data name="EnforceManifestToolTip" xml:space="preserve">
+    <value>Ponownie zastosowany w interwale transmisji danych, jeśli został usunięty przez użytkownika końcowego.</value>
+  </data>
+  <data name="EnterPositiveIntegerValue" xml:space="preserve">
+    <value>Wprowadź dodatnią liczbę całkowitą.</value>
+  </data>
+  <data name="ErrorOccuredWhilePostingBindingDetailsToIntelligence" xml:space="preserve">
+    <value>Wystąpił błąd podczas publikowania szczegółów powiązania dzierżawcy z Intelligence. Skontaktuj się z administratorem.</value>
+  </data>
+  <data name="Export" xml:space="preserve">
+    <value>Eksportuj</value>
+  </data>
+  <data name="Exports" xml:space="preserve">
+    <value>Eksporty</value>
+  </data>
+  <data name="ExternalOAuthIntegration" xml:space="preserve">
+    <value>Integracja zewnętrznego klienta OAuth</value>
+  </data>
+  <data name="ExternalOAuthIntegrationHelp" xml:space="preserve">
+    <value>Pozwolenie na przydzielenie zewnętrznego klienta OAuth w UEM w celu uwierzytelnienia.</value>
+  </data>
+  <data name="ExternalServiceIntegration" xml:space="preserve">
+    <value>Integracja zewnętrznej usługi</value>
+  </data>
+  <data name="ExternalServiceIntegrationHelp" xml:space="preserve">
+    <value>Pozwolenie na przydzielenie dowolnej zewnętrznej usługi VMware, takiej jak WS1 intelligence w UEM.</value>
+  </data>
+  <data name="GlobalSearch" xml:space="preserve">
+    <value>Wyszukiwanie globalne</value>
+  </data>
+  <data name="GmtMinusEightTimeZoneFirst" xml:space="preserve">
+    <value>(GMT -08:00) Czas pacyficzny (Stany Zjednoczone i Kanada)</value>
+  </data>
+  <data name="GmtMinusEightTimeZoneSecond" xml:space="preserve">
+    <value>(GMT-08:00) Kalifornia Dolna</value>
+  </data>
+  <data name="GmtMinusElevenTimeZone" xml:space="preserve">
+    <value>(GMT -11:00) Samoa Amerykańskie, Niue</value>
+  </data>
+  <data name="GmtMinusFiveTimeZoneFirst" xml:space="preserve">
+    <value>(GMT -05:00) Czas wschodni (Stany Zjednoczone i Kanada)</value>
+  </data>
+  <data name="GmtMinusFiveTimeZoneSecond" xml:space="preserve">
+    <value>(GMT-05:00) Bogota, Lima, Quito, Rio Branco</value>
+  </data>
+  <data name="GmtMinusFiveTimeZoneThird" xml:space="preserve">
+    <value>(GMT -05:00) Kajmany, Jamajka, Panama</value>
+  </data>
+  <data name="GmtMinusFourAndHalfTimeZoneFifth" xml:space="preserve">
+    <value>(GMT-04:00) Caracas</value>
+  </data>
+  <data name="GmtMinusFourTimeZoneFifth" xml:space="preserve">
+    <value>(GMT-04:00) Santiago</value>
+  </data>
+  <data name="GmtMinusFourTimeZoneFirst" xml:space="preserve">
+    <value>(GMT -04:00) Czas atlantycki (Kanada)</value>
+  </data>
+  <data name="GmtMinusFourTimeZoneFourth" xml:space="preserve">
+    <value>(GMT-04:00) Georgetown, La Paz, Manaus, San Juan</value>
+  </data>
+  <data name="GmtMinusFourTimeZoneSecond" xml:space="preserve">
+    <value>(GMT -04:00) Czas atlantycki (Bermudy)</value>
+  </data>
+  <data name="GmtMinusFourTimeZoneSixth" xml:space="preserve">
+    <value>(GMT-04:00) Asunción</value>
+  </data>
+  <data name="GmtMinusFourTimeZoneThird" xml:space="preserve">
+    <value>(GMT -04:00) Aruba, Barbados, Curaçao, Dominikana</value>
+  </data>
+  <data name="GmtMinusNineThirtyTimeZone" xml:space="preserve">
+    <value>(GMT -09:30) Markizy (Polinezja Francuska)</value>
+  </data>
+  <data name="GmtMinusNineTimeZone" xml:space="preserve">
+    <value>(GMT -09:00) Alaska</value>
+  </data>
+  <data name="GmtMinusNineTimeZoneSecond" xml:space="preserve">
+    <value>(GMT -09:00) Wyspy Gambiera (Polinezja francuska)</value>
+  </data>
+  <data name="GmtMinusOneTimeZoneFirst" xml:space="preserve">
+    <value>(GMT -01:00) Azory</value>
+  </data>
+  <data name="GmtMinusOneTimeZoneSecond" xml:space="preserve">
+    <value>(GMT -01:00) Republika Zielonego Przylądka</value>
+  </data>
+  <data name="GmtMinusSevenTimeZoneFirst" xml:space="preserve">
+    <value>(GMT -07:00) Czas górski (Stany Zjednoczone i Kanada)</value>
+  </data>
+  <data name="GmtMinusSevenTimeZoneSecond" xml:space="preserve">
+    <value>(GMT-07:00) Chihuahua, La Paz, Mazatlan</value>
+  </data>
+  <data name="GmtMinusSevenTimeZoneThird" xml:space="preserve">
+    <value>(GMT -07:00) Arizona (Stany Zjednoczone)</value>
+  </data>
+  <data name="GmtMinusSixTimeZoneFirst" xml:space="preserve">
+    <value>(GMT -06:00) Czas Centralny (Stany Zjednoczone i Kanada)</value>
+  </data>
+  <data name="GmtMinusSixTimeZoneFourth" xml:space="preserve">
+    <value>(GMT -06:00) Belize, Kostaryka, Gwatemala, Honduras</value>
+  </data>
+  <data name="GmtMinusSixTimeZoneSecond" xml:space="preserve">
+    <value>(GMT-06:00) Guadalajara, Meksyk, Monterrey</value>
+  </data>
+  <data name="GmtMinusSixTimeZoneThird" xml:space="preserve">
+    <value>(GMT-06:00) Saskatchewan</value>
+  </data>
+  <data name="GmtMinusTenTimeZone" xml:space="preserve">
+    <value>(GMT -10:00) Hawaii, Tahiti (French Polynesia)</value>
+  </data>
+  <data name="GmtMinusThreeTimeZoneFifth" xml:space="preserve">
+    <value>(GMT -03:00) Nuuk (Grenlandia)</value>
+  </data>
+  <data name="GmtMinusThreeTimeZoneFirst" xml:space="preserve">
+    <value>(GMT-03:00) Brasilia</value>
+  </data>
+  <data name="GmtMinusThreeTimeZoneFourth" xml:space="preserve">
+    <value>(GMT -03:30) Nowa Fundlandia</value>
+  </data>
+  <data name="GmtMinusThreeTimeZoneSecond" xml:space="preserve">
+    <value>(GMT-03:00) Kajenna, Fortaleza, Paramaribo</value>
+  </data>
+  <data name="GmtMinusThreeTimeZoneThird" xml:space="preserve">
+    <value>(GMT -03:00) Argentyna</value>
+  </data>
+  <data name="GmtMinusTwelveTimeZone" xml:space="preserve">
+    <value>(GMT -12:00) Linia zmiany daty (zachodnia)</value>
+  </data>
+  <data name="GmtMinusTwoTimeZone" xml:space="preserve">
+    <value>(GMT -02:00) Georgia Południowa i Sandwich Południowy</value>
+  </data>
+  <data name="GmtPlusEightTimeZoneFifth" xml:space="preserve">
+    <value>(GMT +08:00) Singapur</value>
+  </data>
+  <data name="GmtPlusEightTimeZoneFirst" xml:space="preserve">
+    <value>(GMT+08:00) Perth</value>
+  </data>
+  <data name="GmtPlusEightTimeZoneFourth" xml:space="preserve">
+    <value>(GMT+08:00) Kuala Lumpur</value>
+  </data>
+  <data name="GmtPlusEightTimeZoneSecond" xml:space="preserve">
+    <value>(GMT+08:00) Ułan Bator</value>
+  </data>
+  <data name="GmtPlusEightTimeZoneSeventh" xml:space="preserve">
+    <value>(GMT +08:00) Pekin, Chongqing, Hongkong, Urumczi</value>
+  </data>
+  <data name="GmtPlusEightTimeZoneSixth" xml:space="preserve">
+    <value>(GMT+08:00) Tajpej</value>
+  </data>
+  <data name="GmtPlusEightTimeZoneThird" xml:space="preserve">
+    <value>(GMT +08:00) Filipiny</value>
+  </data>
+  <data name="GmtPlusElevenTimeZone" xml:space="preserve">
+    <value>(GMT +11:00) Wyspy Salomona, Nowa Kaledonia</value>
+  </data>
+  <data name="GmtPlusElevenTimeZoneSecond" xml:space="preserve">
+    <value>(GMT+11:00) Wyspa Bougainville’a</value>
+  </data>
+  <data name="GmtPlusFiveTimeZoneFifth" xml:space="preserve">
+    <value>(GMT+05:00) Aszchabad, Taszkient</value>
+  </data>
+  <data name="GmtPlusFiveTimeZoneFirst" xml:space="preserve">
+    <value>(GMT+05:45) Katmandu</value>
+  </data>
+  <data name="GmtPlusFiveTimeZoneFourth" xml:space="preserve">
+    <value>(GMT +05:00) Islamabad, Karaczi</value>
+  </data>
+  <data name="GmtPlusFiveTimeZoneSecond" xml:space="preserve">
+    <value>(GMT +05:30) Ćennaj, Kalkuta, Mumbaj, Nowe Delhi, Sri Dźajawardanapura</value>
+  </data>
+  <data name="GmtPlusFiveTimeZoneThird" xml:space="preserve">
+    <value>(GMT +05:00) Malediwy</value>
+  </data>
+  <data name="GmtPlusFourteenTimeZone" xml:space="preserve">
+    <value>(GMT +14:00) Wyspa Bożego Narodzenia</value>
+  </data>
+  <data name="GmtPlusFourTimeZoneFirst" xml:space="preserve">
+    <value>(GMT+04:30) Kabul</value>
+  </data>
+  <data name="GmtPlusFourTimeZoneSecond" xml:space="preserve">
+    <value>(GMT+04:00) Baku</value>
+  </data>
+  <data name="GmtPlusFourTimeZoneThird" xml:space="preserve">
+    <value>(GMT +04:00) Abu Zabi, Maskat, Port Louis</value>
+  </data>
+  <data name="GmtPlusNineTimeThird" xml:space="preserve">
+    <value>(GMT +09:00) Osaka, Sapporo, Tokio</value>
+  </data>
+  <data name="GmtPlusNineTimeZoneFifth" xml:space="preserve">
+    <value>(GMT +09:00) Palau, Timor Wschodni</value>
+  </data>
+  <data name="GmtPlusNineTimeZoneFirst" xml:space="preserve">
+    <value>(GMT+09:30) Adelajda</value>
+  </data>
+  <data name="GmtPlusNineTimeZoneFourth" xml:space="preserve">
+    <value>(GMT+09:00) Seul</value>
+  </data>
+  <data name="GmtPlusNineTimeZoneSecond" xml:space="preserve">
+    <value>(GMT+09:30) Darwin</value>
+  </data>
+  <data name="GmtPlusNineTimeZoneSixth" xml:space="preserve">
+    <value>(GMT +09:00) Chita, Jakuck, Błagowieszczeńsk</value>
+  </data>
+  <data name="GmtPlusOneTimeZoneFifth" xml:space="preserve">
+    <value>(GMT +01:00) Kopenhaga, Oslo, Sztokholm</value>
+  </data>
+  <data name="GmtPlusOneTimeZoneFirst" xml:space="preserve">
+    <value>(GMT +01:00) Sarajewo, Skopje, Warszawa, Zagrzeb</value>
+  </data>
+  <data name="GmtPlusOneTimeZoneFourth" xml:space="preserve">
+    <value>(GMT +01:00) Belgrad, Bratysława, Budapeszt, Lublana, Praga</value>
+  </data>
+  <data name="GmtPlusOneTimeZoneSecond" xml:space="preserve">
+    <value>(GMT +01:00) Bruksela, Kopenhaga, Madryt, Paryż</value>
+  </data>
+  <data name="GmtPlusOneTimeZoneSeventh" xml:space="preserve">
+    <value>(GMT +01:00) Algieria, Angola, Kongo, Nigeria, Tunezja</value>
+  </data>
+  <data name="GmtPlusOneTimeZoneSixth" xml:space="preserve">
+    <value>(GMT+01:00) Windhuk</value>
+  </data>
+  <data name="GmtPlusOneTimeZoneThird" xml:space="preserve">
+    <value>(GMT +01:00) Amsterdam, Berlin, Berno, Rzym, Sztokholm, Wiedeń</value>
+  </data>
+  <data name="GmtPlusSevenTimeZoneFirst" xml:space="preserve">
+    <value>(GMT +07:00) Novosibirsk</value>
+  </data>
+  <data name="GmtPlusSevenTimeZoneSecond" xml:space="preserve">
+    <value>(GMT +07:00) Bangkok, Hanoi, Dżakarta</value>
+  </data>
+  <data name="GmtPlusSixTimeZoneFifth" xml:space="preserve">
+    <value>(GMT+06:00) Omsk</value>
+  </data>
+  <data name="GmtPlusSixTimeZoneFirst" xml:space="preserve">
+    <value>(GMT+06:30) Jangon (Rangun), Wyspy Kokosowe</value>
+  </data>
+  <data name="GmtPlusSixTimeZoneFourth" xml:space="preserve">
+    <value>(GMT+06:00) Biszkek</value>
+  </data>
+  <data name="GmtPlusSixTimeZoneSecond" xml:space="preserve">
+    <value>(GMT+06:00) Dhaka</value>
+  </data>
+  <data name="GmtPlusSixTimeZoneThird" xml:space="preserve">
+    <value>(GMT+06:00) Astana</value>
+  </data>
+  <data name="GmtPlusTenTimeZoneFifth" xml:space="preserve">
+    <value>(GMT +10:00) Guam, Port Moresby</value>
+  </data>
+  <data name="GmtPlusTenTimeZoneSecond" xml:space="preserve">
+    <value>(GMT+10:00) Canberra, Melbourne, Sydney</value>
+  </data>
+  <data name="GmtPlusTenTimeZoneSixth" xml:space="preserve">
+    <value>(GMT+10:00) Brisbane</value>
+  </data>
+  <data name="GmtPlusTenTimeZoneThird" xml:space="preserve">
+    <value>(GMT+10:00) Hobart</value>
+  </data>
+  <data name="GmtPlusThirteenTimeZoneFirst" xml:space="preserve">
+    <value>(GMT +13:00) Samoa</value>
+  </data>
+  <data name="GmtPlusThirteenTimeZoneSecond" xml:space="preserve">
+    <value>(GMT+13:00) Nuku'alofa</value>
+  </data>
+  <data name="GmtPlusThirteenTimeZoneThird" xml:space="preserve">
+    <value>(GMT +13:00) Tokelau</value>
+  </data>
+  <data name="GmtPlusThreeTimeZoneEighth" xml:space="preserve">
+    <value>(GMT+03:00) Stambuł</value>
+  </data>
+  <data name="GmtPlusThreeTimeZoneFifth" xml:space="preserve">
+    <value>(GMT +03:00) Rijad, Kuwejt, Doha, Manama</value>
+  </data>
+  <data name="GmtPlusThreeTimeZoneFirst" xml:space="preserve">
+    <value>(GMT+03:30) Teheran</value>
+  </data>
+  <data name="GmtPlusThreeTimeZoneFourth" xml:space="preserve">
+    <value>(GMT+03:00) Nairobi</value>
+  </data>
+  <data name="GmtPlusThreeTimeZoneSecond" xml:space="preserve">
+    <value>(GMT+03:00) Mińsk</value>
+  </data>
+  <data name="GmtPlusThreeTimeZoneSeventh" xml:space="preserve">
+    <value>(GMT +03:00), Moskwa, Petersburg, Wołgograd</value>
+  </data>
+  <data name="GmtPlusThreeTimeZoneSixth" xml:space="preserve">
+    <value>(GMT+03:00) Bagdad</value>
+  </data>
+  <data name="GmtPlusThreeTimeZoneThird" xml:space="preserve">
+    <value>(GMT +03:00) Madagaskar</value>
+  </data>
+  <data name="GmtPlusTwelveFortyFiveTimeZone" xml:space="preserve">
+    <value>(GMT +12:45) Wyspy Chatham</value>
+  </data>
+  <data name="GmtPlusTwelveTimeZoneFirst" xml:space="preserve">
+    <value>(GMT +12:00) Fiji</value>
+  </data>
+  <data name="GmtPlusTwelveTimeZoneSecond" xml:space="preserve">
+    <value>(GMT +12:00) Wyspy Marshalla, Tuvalu</value>
+  </data>
+  <data name="GmtPlusTwelveTimeZoneThird" xml:space="preserve">
+    <value>(GMT+12:00) Auckland, Wellington</value>
+  </data>
+  <data name="GmtPlusTwoTimeZoneEighth" xml:space="preserve">
+    <value>(GMT+02:00) Trypolis</value>
+  </data>
+  <data name="GmtPlusTwoTimeZoneFifth" xml:space="preserve">
+    <value>(GMT+02:00) Kijów</value>
+  </data>
+  <data name="GmtPlusTwoTimeZoneFirst" xml:space="preserve">
+    <value>(GMT+02:00) Kiszyniów, Ateny, Bukareszt, Nikozja </value>
+  </data>
+  <data name="GmtPlusTwoTimeZoneFourth" xml:space="preserve">
+    <value>(GMT+02:00) Helsinki, Kijów, Ryga, Sofia, Tallinn, Wilno</value>
+  </data>
+  <data name="GmtPlusTwoTimeZoneSecond" xml:space="preserve">
+    <value>(GMT+02:00) Jerozolima</value>
+  </data>
+  <data name="GmtPlusTwoTimeZoneSeventh" xml:space="preserve">
+    <value>(GMT+02:00) Harare, Pretoria</value>
+  </data>
+  <data name="GmtPlusTwoTimeZoneSixth" xml:space="preserve">
+    <value>(GMT+02:00) Kair</value>
+  </data>
+  <data name="GmtPlusTwoTimeZoneThird" xml:space="preserve">
+    <value>(GMT+02:00) Amman, Bejrut, Damaszek</value>
+  </data>
+  <data name="GmtTimeZoneFirst" xml:space="preserve">
+    <value>(GMT +00:00) Dublin, Edynburg, Lizbona, Londyn</value>
+  </data>
+  <data name="GmtTimeZoneForth" xml:space="preserve">
+    <value>(GMT +00:00) Casablanca</value>
+  </data>
+  <data name="GmtTimeZoneSecond" xml:space="preserve">
+    <value>(GMT+00:00) Reykjavík</value>
+  </data>
+  <data name="GmtTimeZoneThird" xml:space="preserve">
+    <value>(GMT+00:00) Monrovia, Wagadugu, Dakar, Jamusukro</value>
+  </data>
+  <data name="InstallManifestToolTip" xml:space="preserve">
+    <value>Wykonany po zastosowaniu profilu.</value>
+  </data>
+  <data name="IUnderstand" xml:space="preserve">
+    <value>Rozumiem</value>
+  </data>
+  <data name="LearnAndUpgrade" xml:space="preserve">
+    <value>Informacje i aktualizacja</value>
+  </data>
+  <data name="LearnMoreAboutCloudServices" xml:space="preserve">
+    <value>Dowiedz się więcej o usługach w chmurze</value>
+  </data>
+  <data name="LoginToCustomerTypeOgForDataIntegration" xml:space="preserve">
+    <value>Aby kontynuować, zaloguj się do grupy organizacyjnej typu klienta.</value>
+  </data>
+  <data name="MyServices" xml:space="preserve">
+    <value>Moje usługi</value>
+  </data>
+  <data name="NoDataFound" xml:space="preserve">
+    <value>Wygląda na to, że nie masz żadnych danych</value>
+  </data>
+  <data name="NoteYouWillNeedToSaveTheFileAsA_csvBeforeImporting" xml:space="preserve">
+    <value>Uwaga: trzeba zapisać plik w formacie .csv przed importem.</value>
+  </data>
+  <data name="OperationNotSupported" xml:space="preserve">
+    <value>Operacja nie jest obsługiwana</value>
+  </data>
+  <data name="ProvisioningPackageNotification" xml:space="preserve">
+    <value>Powiadomienie pakietu zastrzegania</value>
+  </data>
+  <data name="Remember" xml:space="preserve">
+    <value>Zapamiętaj</value>
+  </data>
+  <data name="RemoveManifest" xml:space="preserve">
+    <value>Usuń manifest</value>
+  </data>
+  <data name="RemoveManifestToolTip" xml:space="preserve">
+    <value>Działanie wykonywane, gdy profil jest nieprzypisany.</value>
+  </data>
+  <data name="ResetBiosPasswordConfirmed" xml:space="preserve">
+    <value>Potwierdzono zresetowanie hasła BIOS</value>
+  </data>
+  <data name="ResetBiosPasswordFailed" xml:space="preserve">
+    <value>Resetowanie hasła systemu BIOS nie powiodło się</value>
+  </data>
+  <data name="ResetBiosPasswordRefused" xml:space="preserve">
+    <value>Odrzucono zresetowanie hasła systemu BIOS</value>
+  </data>
+  <data name="ResetBiosPasswordRequested" xml:space="preserve">
+    <value>Zażądano zresetowania hasła systemu BIOS</value>
+  </data>
+  <data name="SearchInArgListView" xml:space="preserve">
+    <value>Szukaj w widoku listy {0}</value>
+  </data>
+  <data name="UEM" xml:space="preserve">
+    <value>UEM</value>
+  </data>
+  <data name="UnAuthorizedAccessWarningMessage" xml:space="preserve">
+    <value>Użytkownik nie ma uprawnień dostępu do tego zasobu. Skontaktuj się z administratorem IT, jeśli uważasz, że ten komunikat został wyświetlony przez pomyłkę.</value>
+  </data>
+  <data name="UnrecoverableErrorDescription" xml:space="preserve">
+    <value>Wystąpił błąd. Jeśli problem będzie się powtarzał, skontaktuj się z administratorem IT.</value>
+  </data>
+  <data name="WorkspaceOneUemDataIntegration" xml:space="preserve">
+    <value>Integracja danych aplikacji Workspace ONE UEM</value>
+  </data>
+  <data name="WorkspaceOneUemDataIntegrationDescription1" xml:space="preserve">
+    <value>Integracja z Workspace ONE Intelligence wymaga danych użytkownika i zdarzenia z Workspace ONE UEM.</value>
+  </data>
+  <data name="WorkspaceOneUemDataIntegrationDescription2" xml:space="preserve">
+    <value>W przypadku zaakceptowania użytkownik autoryzuje wysłanie tych danych z Workspace ONE UEM do Workspace ONE Intelligence i nastąpi przekierowanie do Workspace ONE Intelligence.</value>
+  </data>
+  <data name="WorkspaceOneUemDataIntegrationDescription3" xml:space="preserve">
+    <value>Odrzucenie spowoduje przekierowanie do Workspace ONE Intelligence bez integracji danych z Workspace ONE UEM.</value>
+  </data>
+  <data name="WorkspaceOneUemIsAlreadyBoundToIntelligence" xml:space="preserve">
+    <value>Określony dzierżawca Workspace ONE UEM jest już powiązany z dzierżawcą Intelligence.</value>
+  </data>
+  <data name="WS1CloudPlatform" xml:space="preserve">
+    <value>Workspace ONE</value>
+  </data>
+  <data name="WS1HubServices" xml:space="preserve">
+    <value>Workspace ONE Hub Services</value>
+  </data>
+  <data name="WS1IdentityManager" xml:space="preserve">
+    <value>Workspace ONE Access</value>
+  </data>
+  <data name="WS1Intelligence" xml:space="preserve">
+    <value>Workspace ONE Intelligence</value>
+  </data>
+  <data name="WS1OneUEM" xml:space="preserve">
+    <value>Workspace ONE UEM</value>
+  </data>
+  <data name="WUChoosePolicySource" xml:space="preserve">
+    <value>Aktualizacje Windows — wybierz źródło zasad</value>
+  </data>
+  <data name="WUSelectPolicySource" xml:space="preserve">
+    <value>Aktualizacje Windows — zaznacz źródło zasad</value>
+  </data>
+  <data name="XLSX" xml:space="preserve">
+    <value>XLSX</value>
+  </data>
+</root>

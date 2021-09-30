@@ -1,0 +1,431 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Acknowledged" xml:space="preserve">
+    <value>Bevestigd</value>
+  </data>
+  <data name="AcknowledgedNotRequired" xml:space="preserve">
+    <value>De bevestiging is alleen van toepassing op SmartFolio voor vereiste inhoud.</value>
+  </data>
+  <data name="AdminRepositoryContent" xml:space="preserve">
+    <value>Inhoud opslagplaats voor beheerders</value>
+  </data>
+  <data name="AllowCorporateFileServerViewing" xml:space="preserve">
+    <value>Weergave van zakelijke bestandsservers toestaan</value>
+  </data>
+  <data name="AllowFileActions" xml:space="preserve">
+    <value>Bestandsacties toestaan</value>
+  </data>
+  <data name="AllowFileActionsTooltip" xml:space="preserve">
+    <value>Hiermee kunnen eindgebruikers content verwijderen, een nieuwe naam geven en rechtstreeks vanuit hun SharePoint Online verplaatsen met behulp van de Content Locker-app.</value>
+  </data>
+  <data name="ArgFilesLargerThanMaximumAllowedArgMessage" xml:space="preserve">
+    <value>U probeert {0} bestanden te uploaden die groter zijn dan de maximaal toegestane bestandsgrootte van {1} MB. Zie Instellingen &gt; Admin &gt; Opslag om de maximale bestandsgrootte ten opzichte van de standaardwaarden te wijzigen. Als u de optie Opslag niet ziet, hebt u geen toegang. Als u de gewenste wijzigingen wilt aanbrengen, moet u contact opnemen met een beheerder met hogere bevoegdheden.</value>
+  </data>
+  <data name="AutoSyncAdminRepositories" xml:space="preserve">
+    <value>Opslagplaatsen voor beheerders automatisch synchroniseren</value>
+  </data>
+  <data name="AutoTemplateDescription" xml:space="preserve">
+    <value>Omschrijving</value>
+  </data>
+  <data name="BatchImportContentLockerExplanation" xml:space="preserve">
+    <value>Deze batchimportfunctie kan worden gebruikt voor het laden van documenten in het systeem in grote omvang. Een sjabloon voor deze import is hieronder gekoppeld voor verwijzing.</value>
+  </data>
+  <data name="CCPCanBeEnabledAtCustomerOgOnly" xml:space="preserve">
+    <value>Cloud Content Platform kan alleen worden ingeschakeld op de Customer-organisatiegroep</value>
+  </data>
+  <data name="CellDataUsageExceedsArg" xml:space="preserve">
+    <value>Het gebruik van mobiele gegevens overschrijdt de waarde {0} {1}</value>
+    <comment>{0} and {1} will be replaced by Data Usage and unit. Ex: 10 MB</comment>
+  </data>
+  <data name="CellDataUsageExceedsArgOfTotalPlan" xml:space="preserve">
+    <value>Het gebruik van mobiele gegevens overschrijdt {0} van het totale plan</value>
+    <comment>{0} will be replaced by Cell Data Usage Percentage</comment>
+  </data>
+  <data name="CertificateAuthentication" xml:space="preserve">
+    <value>Certificaatverificatie</value>
+  </data>
+  <data name="CertificateBasedAuthenticationTooltip" xml:space="preserve">
+    <value>Om het gebruik van PIV-D afgeleide inloggegevens in te schakelen, is Kerberos-configuratie vereist in de Content Gateway-instellingen.</value>
+  </data>
+  <data name="CGPublicSslCertificateTooltip" xml:space="preserve">
+    <value>Upload een openbaar SSL-certificaat van een externe aanbieder zodat toestellen de Content Gateway vertrouwen (moet in .pfx-formaat zijn en uw openbare en persoonlijke-sleutelparen bevatten).</value>
+  </data>
+  <data name="ChangeRepositoryName" xml:space="preserve">
+    <value>Naam van de opslagplaats voor beheerde inhoud wijzigen</value>
+  </data>
+  <data name="ClientCertificateChain" xml:space="preserve">
+    <value>Clientcertificaatketen</value>
+  </data>
+  <data name="CloudContentPlatform" xml:space="preserve">
+    <value>Platform voor Cloud-inhoud</value>
+  </data>
+  <data name="CloudContentPlatformConfigured" xml:space="preserve">
+    <value>Het platform voor Cloud-inhoud is al geconfigureerd voor deze klant-OG. Client-API's kunnen worden gebruikt om met het platform te communiceren</value>
+  </data>
+  <data name="CloudContentPlatformDescription" xml:space="preserve">
+    <value>Platform voor Cloud-inhoud</value>
+  </data>
+  <data name="CloudContentPlatformInfo" xml:space="preserve">
+    <value>Het inhoudsplatform biedt een uniforme toegang tot de inhoud van een eind gebruiker in verschillende bedrijfsopslagplaatsen waar de gegevens verblijven. Klik op de knop om te starten met het configureren van deze klant-OG voor het gebruik van de CCP-endpoints.</value>
+  </data>
+  <data name="ConfigureContentGateway" xml:space="preserve">
+    <value>Content Gateway is niet geconfigureerd. Configureer de {0} instellingen.</value>
+  </data>
+  <data name="ContentAdvancedCorporateFileServers" xml:space="preserve">
+    <value>Content geavanceerde zakelijke bestandsservers</value>
+  </data>
+  <data name="ContentAdvancedCorporateFileServersHelp" xml:space="preserve">
+    <value>Regelt de synchronisatie van de opslagplaats voor externe inhoud.</value>
+  </data>
+  <data name="ContentDevice" xml:space="preserve">
+    <value>Content-toestel</value>
+  </data>
+  <data name="ContentGatewayConfigurationNotSelected" xml:space="preserve">
+    <value>Content Gateway-configuratie selecteren</value>
+  </data>
+  <data name="ContentGatewayConfigurationUid" xml:space="preserve">
+    <value>UID van Content Gateway-configuratie</value>
+  </data>
+  <data name="ContentGatewayPublicSslCertificate" xml:space="preserve">
+    <value>Publiek SSL-certificaat (verplicht voor Linux-implementaties)</value>
+  </data>
+  <data name="ContentLocker" xml:space="preserve">
+    <value>Workspace ONE Content-app</value>
+  </data>
+  <data name="ContentSSLCertificate" xml:space="preserve">
+    <value>Content SSL-certificaat</value>
+  </data>
+  <data name="CorporateFileServerDefaultMessage" xml:space="preserve">
+    <value>Deze functie zal in een komende release buiten gebruik worden gesteld. Deel uw feedback over deze wijziging in de {0}.</value>
+    <comment>{0} will be replaced with Ideas Portal link.</comment>
+  </data>
+  <data name="CustomGatewaySettingID" xml:space="preserve">
+    <value>UID van Aangepaste Gateway-instelling</value>
+  </data>
+  <data name="CustomGatewaySettingInvalidDataType" xml:space="preserve">
+    <value>Geselecteerde type en waarde komen niet overeen voor de sleutels {0}.</value>
+  </data>
+  <data name="CustomGatewaySettings" xml:space="preserve">
+    <value>Aangepaste Gateway-instellingen</value>
+  </data>
+  <data name="DeletedSucessfully" xml:space="preserve">
+    <value>Succesvol verwijderd</value>
+  </data>
+  <data name="DenyList" xml:space="preserve">
+    <value>Weigeringslijst</value>
+  </data>
+  <data name="DomainController" xml:space="preserve">
+    <value>Domeincontroller</value>
+  </data>
+  <data name="DomainControllerTooltip" xml:space="preserve">
+    <value>Hostnaam of IP-adres van domeincontroller voor het domein.</value>
+  </data>
+  <data name="DownloadContentGatewayConfiguration" xml:space="preserve">
+    <value>Content Gateway-configuratie downloaden</value>
+  </data>
+  <data name="DownloadContentViewerConfiguration" xml:space="preserve">
+    <value>Configuratie voor inhoudsviewer downloaden</value>
+  </data>
+  <data name="DownloadSuccessful" xml:space="preserve">
+    <value>Downloaden geslaagd</value>
+  </data>
+  <data name="Eb" xml:space="preserve">
+    <value>EB</value>
+  </data>
+  <data name="ExternalRepositorySyncDeprecationMessage" xml:space="preserve">
+    <value>Ga naar de pagina {0} om dit in te schakelen. Deze functie zal in een volgende release verouderd zijn.</value>
+    <comment>{0} will be replaced with CorporateFileServer settings.</comment>
+  </data>
+  <data name="ExternalRepositorySyncShareFeedbackMessage" xml:space="preserve">
+    <value>Deel uw feedback over deze wijziging in de {0}.</value>
+    <comment>{0} will be replaced with Ideas Portal link.</comment>
+  </data>
+  <data name="Failure" xml:space="preserve">
+    <value>Fout</value>
+  </data>
+  <data name="FeatureIsDisabled" xml:space="preserve">
+    <value>Deze functie is uitgeschakeld</value>
+  </data>
+  <data name="FileSizeExceededForMultiDownload" xml:space="preserve">
+    <value>Totale bestandsgrootte (6 GB) overschreden voor meerdere downloads.</value>
+  </data>
+  <data name="FileStatus" xml:space="preserve">
+    <value>Bestandsstatus</value>
+  </data>
+  <data name="FileStorageInformationMessageWithArg" xml:space="preserve">
+    <value>Workspace ONE UEM configureert automatisch de bestandsopslag voor SaaS-klanten. Voor klanten op locatie configureert u een aparte server voor {0}, interne apps en beheerde inhoud. Dit vermindert de algehele belasting van de Workspace ONE UEM-database en verhoogt de prestaties. Wijzig de bestandsopslagserver niet zonder de huidige inhoud te migreren.</value>
+  </data>
+  <data name="IdeasPortal" xml:space="preserve">
+    <value>Ideeënportaal</value>
+  </data>
+  <data name="InvalidBlacklistLink" xml:space="preserve">
+    <value>Ongeldige sjabloon of weigeringslijst voor {0}</value>
+  </data>
+  <data name="InvalidCategoryAssignment" xml:space="preserve">
+    <value>Categorie {0} behoort niet tot een van de toegewezen organisatiegroephiërarchieën</value>
+  </data>
+  <data name="InvalidResponseFormat" xml:space="preserve">
+    <value>Ongeldige responsindeling</value>
+  </data>
+  <data name="KcdDomainTooltip" xml:space="preserve">
+    <value>Domeinnaam in AD die gebruikers bevat. Domein moet hetzelfde zijn als UPN-achtervoegsel. (bijv. corp.test.com en user@corp.test.com) </value>
+  </data>
+  <data name="KerberosAuthenticationError" xml:space="preserve">
+    <value>Kerberos-verificatiefout. Controleer de opgegeven UPN.</value>
+  </data>
+  <data name="KerberosConfigurationError" xml:space="preserve">
+    <value>Kerberos-configuratiefout. Controleer de KDC-host, domeinnaam en gegevens van het serviceaccount.</value>
+  </data>
+  <data name="LabelCorporateFileServers" xml:space="preserve">
+    <value>Zakelijke bestandsservers</value>
+  </data>
+  <data name="ManagedContent" xml:space="preserve">
+    <value>Beheerde inhoud</value>
+  </data>
+  <data name="ManagedContentDelete" xml:space="preserve">
+    <value>Beheerde inhoud verwijderen</value>
+  </data>
+  <data name="ManualTemplateBlacklistedLinks" xml:space="preserve">
+    <value>Geweigerde link(s)</value>
+  </data>
+  <data name="ManualTemplateLink" xml:space="preserve">
+    <value>Link</value>
+  </data>
+  <data name="ManualTemplateLinkAdd" xml:space="preserve">
+    <value>Toev.</value>
+  </data>
+  <data name="ManualTemplateRepoEndPoints" xml:space="preserve">
+    <value>Eindpunten opslagplaats</value>
+  </data>
+  <data name="ManualTemplateType" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="MaxSelectedFileCountExceeded" xml:space="preserve">
+    <value>Maximum aantal geselecteerde bestanden (10) overschreden.</value>
+  </data>
+  <data name="MemConfigurationUId" xml:space="preserve">
+    <value>UID van mem-configuratie</value>
+  </data>
+  <data name="MyRepositoryDeprecationWarning" xml:space="preserve">
+    <value>Deze pagina wordt in een toekomstige release verwijderd. Gebruik de Content-applicatie om uw opslagplaatsen te beheren.</value>
+  </data>
+  <data name="NullValue" xml:space="preserve">
+    <value>NullValue</value>
+  </data>
+  <data name="Pb" xml:space="preserve">
+    <value>PB</value>
+  </data>
+  <data name="Permissions" xml:space="preserve">
+    <value>Machtigingen</value>
+  </data>
+  <data name="PersonalContentCanOnlyBeEnabledAtCustomerLg" xml:space="preserve">
+    <value>Persoonlijke inhoud kan alleen worden ingeschakeld in een organisatiegroep van het type Klant of daaronder.</value>
+  </data>
+  <data name="PIVDDerivedCredentials" xml:space="preserve">
+    <value>Afgeleide inloggegevens gebruiken</value>
+  </data>
+  <data name="PlatformLinux" xml:space="preserve">
+    <value>Linux (legacy)</value>
+  </data>
+  <data name="PlatformUag" xml:space="preserve">
+    <value>Unified Access Gateway</value>
+  </data>
+  <data name="PlatformWindows" xml:space="preserve">
+    <value>Windows (legacy)</value>
+  </data>
+  <data name="PleaseEnterContentRepositoryTemplateName" xml:space="preserve">
+    <value>Voer een naam in.</value>
+  </data>
+  <data name="PleaseEnterUserRepositoryName" xml:space="preserve">
+    <value>Voer naam van gebruikersopslagplaats in.</value>
+  </data>
+  <data name="PleaseSelectContentGatewayWithKcdSettings" xml:space="preserve">
+    <value>Selecteer Content Gateway met KCD-instellingen.</value>
+  </data>
+  <data name="ProvideADUserUPN" xml:space="preserve">
+    <value>Geef de User Principal Name op voor de AD-gebruiker die wordt gesynchroniseerd met de externe opslagplaats.</value>
+  </data>
+  <data name="Repositories" xml:space="preserve">
+    <value>Opslagplaatsen</value>
+  </data>
+  <data name="Repository" xml:space="preserve">
+    <value>Opslagplaats</value>
+  </data>
+  <data name="RepositoryTestConnectionFailed" xml:space="preserve">
+    <value>Testverbinding met opslagplaats mislukt.</value>
+  </data>
+  <data name="RFSSSLCertificateRequiredWarning" xml:space="preserve">
+    <value>Voor RFS met veilige verbinding is een openbaar SSL-certificaat nodig. Upload de volledige certificaatketen als .pfx-bestand.</value>
+  </data>
+  <data name="SearchSignatureRequests" xml:space="preserve">
+    <value>Zoeken in ondertekeningsaanvragen</value>
+  </data>
+  <data name="SecureContentLockerSettingsCustomizeMessage" xml:space="preserve">
+    <value>Content maakt gebruik van de instellingen die gedefinieerd zijn in de geselecteerde profielen. Stel uw profiel in door te navigeren naar Applicaties &gt; Instellingen en Beleid &gt; {0}</value>
+    <comment>{0} will be replaced with a link to Profiles settings page under Apps &gt;Settings and Policies with the text "Profiles"</comment>
+  </data>
+  <data name="SecureContentLockerSettingsDefaultMessage" xml:space="preserve">
+    <value>Content maakt gebruik van de standaard applicatie-instellingen en netwerkregels die op de volgende pagina's omschreven zijn:</value>
+  </data>
+  <data name="StorageTypeDatabase" xml:space="preserve">
+    <value>Door AirWatch beheerde database</value>
+  </data>
+  <data name="StorageTypeInternal" xml:space="preserve">
+    <value>UEM beheerd</value>
+  </data>
+  <data name="StoreYourReports" xml:space="preserve">
+    <value>rapporten opslaan</value>
+  </data>
+  <data name="Tb" xml:space="preserve">
+    <value>TB</value>
+  </data>
+  <data name="TermsOfUseMessage" xml:space="preserve">
+    <value>Content zal de gebruiksrechtovereenkomst in het veld hieronder tonen. Creëer uw eigen gebruiksrechtovereenkomst door naar Systeem &gt; {0} te navigeren.</value>
+    <comment>{0} will be replaced with a link to Terms of use settings page with the text "Terms of Use" </comment>
+  </data>
+  <data name="TunnelConfigurationUid" xml:space="preserve">
+    <value>UID van Tunnelconfiguratie</value>
+  </data>
+  <data name="Uaginfomessage" xml:space="preserve">
+    <value>Content Gateway Services zijn nu alleen beschikbaar via de Unified Access Gateway. Oudere Linux-en Windows-versies van Content Gateway worden niet meer ondersteund.
+</value>
+  </data>
+  <data name="UnableToDelete" xml:space="preserve">
+    <value>Kan niet verwijderen</value>
+  </data>
+  <data name="UploadNotAllowedOverQuota" xml:space="preserve">
+    <value>Upload is niet toegestaan, de bestandsgrootte overschrijdt de beschikbare opslagruimte.</value>
+  </data>
+  <data name="UploadNotPermittedEmptyFile" xml:space="preserve">
+    <value>Het uploaden van een leeg bestand is niet toegestaan</value>
+  </data>
+  <data name="Viewed" xml:space="preserve">
+    <value>Bekeken</value>
+  </data>
+  <data name="WorkspaceONEContentApp" xml:space="preserve">
+    <value>Workspace ONE Content-app</value>
+  </data>
+  <data name="Yb" xml:space="preserve">
+    <value>YB</value>
+  </data>
+  <data name="Zb" xml:space="preserve">
+    <value>ZB</value>
+  </data>
+</root>

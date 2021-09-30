@@ -1,0 +1,803 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AboutEnrollment" xml:space="preserve">
+    <value>Kayıt durumları hakkında daha fazla bilgi edinmek için:</value>
+  </data>
+  <data name="AboutTotalDeployment" xml:space="preserve">
+    <value>Aygıtların dağıtılmış olarak sayılacak şekilde kayıtlı olması gerekir. Şirket verilerini silme gibi eylemleri bekleyen aygıtlar, eylem tamamlanana kadar sayılır. Kayıtlı aygıtlar, kayda kadar sayılmaz.</value>
+  </data>
+  <data name="AddTag" xml:space="preserve">
+    <value>Etiket Oluştur</value>
+  </data>
+  <data name="AddTagHelp" xml:space="preserve">
+    <value>Yeni etiket oluşturulmasına izin verir</value>
+  </data>
+  <data name="AdminModePasscodeHelpText" xml:space="preserve">
+    <value>Yönetici modunda bir aygıtta sorun gidermek için alfasayısal bir şifre belirleyin. Yönetici moduna erişmek için oturum açma ekranındaki Hub simgesine 5 defa dokunun.</value>
+  </data>
+  <data name="AirwatchCannotSeeYourPersonalContent" xml:space="preserve">
+    <value>VMware Workspace ONE Intelligent Hub, sadece güvenli kurumsal erişimi sağlamak için gereken bilgiyi toplar</value>
+  </data>
+  <data name="AllowPinAtStartup" xml:space="preserve">
+    <value>Başlangıçta PIN'e izin ver</value>
+  </data>
+  <data name="AndroidSharedDeviceAdminModePasscode" xml:space="preserve">
+    <value>Yönetici Modu Şifresi</value>
+  </data>
+  <data name="AndroidSharedDeviceMode" xml:space="preserve">
+    <value>Android Paylaşılan Aygıt Modu</value>
+  </data>
+  <data name="AndroidSharedDeviceModeHelpText" xml:space="preserve">
+    <value>Yerel Android yeteneğini veya Workspace ONE Launcher'ı kullanarak paylaşılan Android aygıtını teslim edin ve teslim alın. Yerel Android, çok fazla özelleştirme gerektirmeyen, daha basit kullanım örneklerini destekler. Launcher, daha karmaşık kullanım örnekleri için kullanıcı arabirimi özelleştirmesini destekler.</value>
+  </data>
+  <data name="AppCatalogSupport" xml:space="preserve">
+    <value>Uygulama Kataloğu Desteği</value>
+  </data>
+  <data name="AssignTags" xml:space="preserve">
+    <value>Etiket Ata</value>
+  </data>
+  <data name="BluetoothDeviceMessageLabelAny" xml:space="preserve">
+    <value>Bluetooth Aygıtı</value>
+  </data>
+  <data name="BulkAndroidWipeAddition" xml:space="preserve">
+    <value>Bu aygıtlardan herhangi biri Workspace ONE'a yeniden kaydolursa yeni bir UDID oluşturulacak ve yinelenen bir aygıt kaydı ile sonuçlanacaktır.</value>
+  </data>
+  <data name="BulkEnterpriseWipeDescription" xml:space="preserve">
+    <value>Şirket Verilerini Silme, uygulamalar ve profiller de dahil olmak üzere kayıttan çıkaracak ve seçilen aygıttaki(lardaki) tüm kurumsal kaynakları kaldıracaktır. Bu eylem geri alınamaz ve Workspace ONE'ın bu aygıtı(ları) yönetebilmesi için tekrar kayıt gerekecektir.</value>
+  </data>
+  <data name="CallUsageMessageLabelAny" xml:space="preserve">
+    <value>Çağrı Kullanımı</value>
+  </data>
+  <data name="CannotDeleteUsersWithRegistrationRecord" xml:space="preserve">
+    <value>DEP kaydetme kaydına sahip ya da bir DEP profili ile ilişkilendirilmiş kullanıcı silinemez</value>
+  </data>
+  <data name="CarrierCountryCodeMessageLabelAny" xml:space="preserve">
+    <value>Telekom Şirketi Ülke Kodu</value>
+  </data>
+  <data name="CellularDataUsageMessageLabelAny" xml:space="preserve">
+    <value>Hücresel Veri Kullanımı</value>
+  </data>
+  <data name="ChromeOsDeviceCleanup" xml:space="preserve">
+    <value>Chrome OS Aygıt Kaldırma</value>
+  </data>
+  <data name="ClearAndroidAccounts" xml:space="preserve">
+    <value>Android Hesapları Temizle</value>
+  </data>
+  <data name="ClearAndroidAccountsHelpInfo" xml:space="preserve">
+    <value>Android hesapların temizlenmesi, bazı uygulamaların otomatik oturum açma izni kullanabildiği hesapları kaldırır. Google hesabı temizliği için Android 8+ gerekirken Google olmayan hesapların temizliği için Android 9+ gerekir. Yerel yöntemde daima tüm hesaplar silindiği için bu ayar yalnızca Android paylaşımlı aygıtların Launcher yöntemi için geçerlidir.</value>
+  </data>
+  <data name="ClearDevicePasscodeDevicePageHelpInfo" xml:space="preserve">
+    <value>Aygıtı önyüklemek için başlangıçta PIN girişi gerektiren Güvenli Başlatma seçeneğini etkinleştirin veya devre dışı bırakın. Güvenli Başlatma daha önce devre dışı bırakılmışsa etkinleştirmek için aygıtın fabrika ayarlarına sıfırlanması gerekir. Bu özellik sadece dosya tabanlı şifrelemeye sahip olmayan Android aygıtlar için geçerlidir.</value>
+  </data>
+  <data name="ClearDevicePasscodeSharedSettingsHelpInfo" xml:space="preserve">
+    <value>Aygıtı önyüklemek için başlangıçta PIN girişi gerektiren Android Güvenli Başlatma seçeneğini etkinleştirin veya devre dışı bırakın. Devre dışı bırakılırsa kullanıcılar şifre kurulumu esnasında Güvenli Başlatma seçeneğini etkinleştiremez. Güvenli Başlatma aygıtta daha önce devre dışı bırakılmışsa etkinleştirmek için aygıtın fabrika ayarlarına sıfırlanması gerekir. Bu özellik sadece dosya tabanlı şifrelemeye sahip olmayan Android aygıtlar için geçerlidir.</value>
+  </data>
+  <data name="ConfirmAndroidSharedDeviceAdminModePasscode" xml:space="preserve">
+    <value>Yönetici Modu Şifresini Onayla</value>
+  </data>
+  <data name="ConfirmEnterpriseWipeDeviceMessageChromeOs" xml:space="preserve">
+    <value>Bu işlem, tüm yönetilen kurumsal kaynakları (uygulamalar ve profiller dahil olmak üzere) seçilen aygıttan siler ve kaldırır.  Bu aygıtı yeniden kaydetmeden bu eylemi geri alamazsınız.</value>
+  </data>
+  <data name="ConfirmExport" xml:space="preserve">
+    <value>Evet, dışa aktar</value>
+  </data>
+  <data name="ConfirmOverwrite" xml:space="preserve">
+    <value>Üzerine Yazma Onayı</value>
+  </data>
+  <data name="ConfirmOverwriteMessage" xml:space="preserve">
+    <value>Bu PPKG dışa aktarılırsa tamamlanan şablonlar için tüm PPKG'lerin üzerine yazılacaktır. Lütfen bunu dışa aktarmadan önce PPKG'leri indirdiğinizden emin olun. Devam etmek istediğinizden emin misiniz?</value>
+  </data>
+  <data name="ContactAdminPrivacyNotice" xml:space="preserve">
+    <value>Yukarıdaki toplama alanları VMware Workspace ONE Intelligent Hub'a özgüdür ve kurumsal ve kişisel aygıtlar için değişiklik gösterebilir.
+
+Şirketinizin ek kişisel/özel bilgileri görmesine izin verebilecek üçüncü taraf uygulamaları ve tüm geçerli şirket içi ilkelerin kopyası için IT Yöneticinize başvurun.</value>
+  </data>
+  <data name="DependencyApplications" xml:space="preserve">
+    <value>Bağımlılık Uygulamaları</value>
+  </data>
+  <data name="DeviceBulkManagementAddTags" xml:space="preserve">
+    <value>Aygıt Toplu Yönetimi Etiket ata</value>
+  </data>
+  <data name="DeviceBulkManagementAddTagsHelp" xml:space="preserve">
+    <value>Kullanıcının toplu halde, aygıtlara etiket atamasına izin verir.</value>
+  </data>
+  <data name="DeviceDeleteWhiteSpaceReason" xml:space="preserve">
+    <value>Boş alan bir neden olarak kullanılamaz.</value>
+  </data>
+  <data name="DevicePhoneNumberMessageLabelAny" xml:space="preserve">
+    <value>Aygıt Telefon Numarasi</value>
+  </data>
+  <data name="DeviceProvisioningMenuDescription" xml:space="preserve">
+    <value>Aygıt provizyonlama paketlerini yönet</value>
+  </data>
+  <data name="DeviceProvisioningMenuTitle" xml:space="preserve">
+    <value>Provizyonlama</value>
+  </data>
+  <data name="DevicesCountExcludesUnenrolled" xml:space="preserve">
+    <value>Toplam dağıtım sayısına dahil olan aygıtlar, kayıtsız aygıtları hariç tutmak için güncellenmiştir.</value>
+  </data>
+  <data name="DeviceViewWorkflowsList" xml:space="preserve">
+    <value>Aygıt Görünümü İş Akışı Listesi</value>
+  </data>
+  <data name="DeviceViewWorkflowsListHelp" xml:space="preserve">
+    <value>Aygıt Detayları sayfasında mevcut olan İş Akışı sekmesine erişimi kontrol eder.</value>
+  </data>
+  <data name="DifferentModelReplacement" xml:space="preserve">
+    <value>Farklı Modelle Değişim</value>
+  </data>
+  <data name="DownloadEncryptedPackage" xml:space="preserve">
+    <value>Şifreli Paketi indir</value>
+  </data>
+  <data name="DownloadProvisioningFiles" xml:space="preserve">
+    <value>Provizyonlama Dosyalarını İndir</value>
+  </data>
+  <data name="DownloadWindowsPhoneAgent" xml:space="preserve">
+    <value>Windows Phone aracısını indir</value>
+  </data>
+  <data name="DuplicatePackageFound" xml:space="preserve">
+    <value>Bu ad zaten kullanılıyor. Lütfen başka bir ad seçin.</value>
+  </data>
+  <data name="EditProvisioningPackage" xml:space="preserve">
+    <value>Provizyonlama Paketini Düzenle</value>
+  </data>
+  <data name="EducationCertificateRenewalJob" xml:space="preserve">
+    <value>Eğitim Sertifikası Yenileme İşi</value>
+  </data>
+  <data name="EmailDiscovery" xml:space="preserve">
+    <value>E-posta Otomatik Bulma</value>
+  </data>
+  <data name="EmailDomainRegistrationFailure" xml:space="preserve">
+    <value>E-posta Etki Alanı Kayıt Hatası</value>
+  </data>
+  <data name="EmailDomainRegistrationSuccess" xml:space="preserve">
+    <value>E-posta Etki Alanı Kaydı Başarılı</value>
+  </data>
+  <data name="EmptyApplicationList" xml:space="preserve">
+    <value>Hiçbir uygulama bulunamadı.</value>
+  </data>
+  <data name="EmptyEnrollmentSessionPleaseTryAgain" xml:space="preserve">
+    <value>Boş kayıt oturumu. Lütfen tekrar deneyin.</value>
+  </data>
+  <data name="EmptyPackageList" xml:space="preserve">
+    <value>Yeni provizyonlama paketleriniz burada görünür.</value>
+  </data>
+  <data name="EncryptedPackageDescription" xml:space="preserve">
+    <value>Yerel aygıtlara yapılandırmalar, ayarlar ve uygulamaları sağlamak için tek şifreli PPKG paketini dışa aktarın.</value>
+  </data>
+  <data name="EncryptedPackageTitle" xml:space="preserve">
+    <value>Şifreli Paket</value>
+  </data>
+  <data name="Enrollmentemailaddress" xml:space="preserve">
+    <value>E-posta adresi</value>
+  </data>
+  <data name="Enrollmentemailusername" xml:space="preserve">
+    <value>E-posta Kullanıcı Adı</value>
+  </data>
+  <data name="EnterCharactersShownAbove" xml:space="preserve">
+    <value>Yukarıda gösterilen karakterleri girin</value>
+  </data>
+  <data name="EnterpriseWipeFailed" xml:space="preserve">
+    <value>Şirket verilerini silme işlemi başarısız oldu.</value>
+  </data>
+  <data name="EnterpriseWipeReasonRequired" xml:space="preserve">
+    <value>Şirket verilerini silme işlemi talep edildiğinde Neden alanı gereklidir.</value>
+  </data>
+  <data name="EnterpriseWipeSucceeded" xml:space="preserve">
+    <value>Şirket verilerini silme işlemi başarısız.</value>
+  </data>
+  <data name="ExportInProgress" xml:space="preserve">
+    <value>Dışa aktarılıyor...</value>
+  </data>
+  <data name="ExportLater" xml:space="preserve">
+    <value>Başka bir provizyonlama paketi dışa aktarma işlemi zaten devam ediyor. Şablonunuzu kaydedin ve daha sonra dışa aktarın ya da diğer dışa aktarma işlemi tamamlanana dek bekleyin.</value>
+  </data>
+  <data name="FailedLoadingUnmanagedProfilePayload" xml:space="preserve">
+    <value>Yönetilmeyen Profil yükü yüklenemedi</value>
+  </data>
+  <data name="FailedToDownload" xml:space="preserve">
+    <value>İndirme isteği başarısız oldu, lütfen daha sonra tekrar deneyin.</value>
+  </data>
+  <data name="FailedToExport" xml:space="preserve">
+    <value>Dışa aktarılamadı</value>
+  </data>
+  <data name="FeatureNotSupported" xml:space="preserve">
+    <value>Bu özellik şu anda desteklenmemektedir.</value>
+  </data>
+  <data name="GPSMessageLabelAny" xml:space="preserve">
+    <value>GPS</value>
+  </data>
+  <data name="GroupIDAndEmailRequired" xml:space="preserve">
+    <value>Hem E-Posta Adresi hem de Grup Kimliği gereklidir</value>
+  </data>
+  <data name="InactiveAppsFound" xml:space="preserve">
+    <value>Bu paket oluşturulduktan sonra bazı uygulamalar silindi veya değiştirildi. Lütfen tamamlandığından emin olmak için seçili uygulamaların listesini gözden geçirin.</value>
+  </data>
+  <data name="InvokeAgent" xml:space="preserve">
+    <value>Aracıyı Çalıştır</value>
+  </data>
+  <data name="LauncherSharedDeviceMode" xml:space="preserve">
+    <value>Launcher</value>
+  </data>
+  <data name="ManagedInstallations" xml:space="preserve">
+    <value>Yönetilen Yüklemeler</value>
+  </data>
+  <data name="MultipleEnrollmentUsersForEmail" xml:space="preserve">
+    <value>Bu e-posta adresiyle birden çok kayıtlı kullanıcı ilişkilendirilmiş</value>
+  </data>
+  <data name="NativeSharedDeviceMode" xml:space="preserve">
+    <value>Yerli</value>
+  </data>
+  <data name="NewProvisioningPackage" xml:space="preserve">
+    <value>Yeni Provizyonlama Paketi</value>
+  </data>
+  <data name="NoEnrollmentUserForEmail" xml:space="preserve">
+    <value>Bu e-posta adresiyle hiçbir kayıtlı kullanıcı ilişkilendirilmemiş</value>
+  </data>
+  <data name="NoOrganizationGroupForGroupId" xml:space="preserve">
+    <value>Girilen Grup Kimliği için organizasyon grubu bulunamadı</value>
+  </data>
+  <data name="NoTransformSelected" xml:space="preserve">
+    <value>Hiçbir Dönüşüm Seçilmedi</value>
+  </data>
+  <data name="NotWorking" xml:space="preserve">
+    <value>Çalışmıyor mu?</value>
+  </data>
+  <data name="OEMProvisioningDescription" xml:space="preserve">
+    <value>Aygıtları OEM Tesisindeki yapılandırmalar, ayarlar ve uygulamalarla önceden yüklemek için PPKG ve XML dosyalarını dışa aktarın.</value>
+  </data>
+  <data name="OEMProvisioningTitle" xml:space="preserve">
+    <value>Fabrikada Provizyonlama</value>
+  </data>
+  <data name="OnboardingMethod" xml:space="preserve">
+    <value>Ekleme Yöntemi</value>
+  </data>
+  <data name="OnboardingMethods" xml:space="preserve">
+    <value>Ekleme Yöntemleri</value>
+  </data>
+  <data name="OrganizationGroupInvalidForEnrollmentUser" xml:space="preserve">
+    <value>Kullanıcı, bu organizasyon grubuna kaydolma yetkisine sahip değil</value>
+  </data>
+  <data name="PackageInProgress" xml:space="preserve">
+    <value>Mevcut bir Windows Provizyonlama Paketi (PPKG) dışa aktarma isteği devam ediyor. Lütfen dışa aktarma işleminin tamamlanmasını bekleyin.</value>
+  </data>
+  <data name="PackageSaved" xml:space="preserve">
+    <value>Başarılı! Provizyonlama paketi oluşturma işlemi devam ediyor. İndirme bağlantısı için daha sonra tekrar kontrol edin.</value>
+  </data>
+  <data name="PersonalApplicationMessageLabelAny" xml:space="preserve">
+    <value>Kişisel Uygulama</value>
+  </data>
+  <data name="PersonalAppsCollected" xml:space="preserve">
+    <value>Yüklenen kişisel uygulamalar kişisel ve kurumsal verileriniz için kötü niyetli ya da zararlı uygulamaların olmadığını garantiye almak için toplanır. Sadece yüklü uygulamaların bir listesi kullanılabilir hale getirilir. Kişisel uygulamadan içerik/veri Workspace ONE ile paylaşılmaz.</value>
+  </data>
+  <data name="PlatformConfirmation" xml:space="preserve">
+    <value>Platform Onayı</value>
+  </data>
+  <data name="PromptForiPadandMAC" xml:space="preserve">
+    <value>Uygulamaları kaydettirme ve yükleme ile ilgili sorunlardan kaçınmak için bir iPad kullanıyorsanız onaylayın.</value>
+  </data>
+  <data name="RemoteControlAccess" xml:space="preserve">
+    <value>Uzaktan Denetim Erişimi</value>
+  </data>
+  <data name="Replaced" xml:space="preserve">
+    <value>Değiştirildi</value>
+  </data>
+  <data name="Requested" xml:space="preserve">
+    <value>İstek Gönderildi</value>
+  </data>
+  <data name="RetiringDevice" xml:space="preserve">
+    <value>Aygıt Devre Dışı Bırakılıyor</value>
+  </data>
+  <data name="RoamingStatusMessageLabelAny" xml:space="preserve">
+    <value>Dolaşım Durumu</value>
+  </data>
+  <data name="SameModelReplacement" xml:space="preserve">
+    <value>Aynı Modelle Değişim</value>
+  </data>
+  <data name="SaveAndExport" xml:space="preserve">
+    <value>Kaydet ve Dışa Aktar</value>
+  </data>
+  <data name="SaveForLater" xml:space="preserve">
+    <value>Hayır, daha sonrası için kaydet</value>
+  </data>
+  <data name="SelectedApplications" xml:space="preserve">
+    <value>Seçili Uygulamalar</value>
+  </data>
+  <data name="SelectStagingMode" xml:space="preserve">
+    <value>Hazırlama Modunu Seç</value>
+  </data>
+  <data name="SingleAndroidWipeAddition" xml:space="preserve">
+    <value>Bu aygıt Workspace ONE'a yeniden kaydolursa yeni bir UDID oluşturulacak ve bunun sonucunda yinelenen bir aygıt kaydı elde edilecektir.</value>
+  </data>
+  <data name="SingleEnterpriseWipeDescription" xml:space="preserve">
+    <value>Şirket Verilerini Silme, uygulamalar ve profiller de dahil olmak üzere, seçili aygıttaki tüm yönetilen kurumsal kaynakları kaldıracaktır. Bu işlem geri alınamaz ve Workspace ONE'ın bu aygıtı tekrar yönetebilmesi için yeniden kayıt gerekecektir.</value>
+  </data>
+  <data name="SMSUsageMessageLabelAny" xml:space="preserve">
+    <value>SMS Kullanımı</value>
+  </data>
+  <data name="StagingIsEnabledForEnrollmentUser" xml:space="preserve">
+    <value>Bu kayıtlı kullanıcı için hazırlama özelliği etkin</value>
+  </data>
+  <data name="SystemAppsToggleHelpText" xml:space="preserve">
+    <value>Son kullanıcıların sistem uygulamalarına erişmesine izin verin</value>
+  </data>
+  <data name="SystemLogs" xml:space="preserve">
+    <value>Sistem Günlükleri</value>
+  </data>
+  <data name="SystemLogsPrivacyNoticeMessageLabel" xml:space="preserve">
+    <value>Sistem Günlükleri Gizlilik Bildirimi</value>
+  </data>
+  <data name="TapHereToRetry" xml:space="preserve">
+    <value>Tekrar denemek için buraya dokunun</value>
+  </data>
+  <data name="TermsAndConditions" xml:space="preserve">
+    <value>Hükümler ve Koşullar</value>
+  </data>
+  <data name="TransformLabel" xml:space="preserve">
+    <value>Uygulama Yükleyici Dönüşümü</value>
+  </data>
+  <data name="TransformToolTipText" xml:space="preserve">
+    <value>Dönüşüm, bir MSI yükleyicisi sırasında uygulanan değişiklikleri kapsar. Yükleme sırasında kullanılacak uygun bir dönüşüm dosyası (MST) seçin.</value>
+  </data>
+  <data name="TransformToolTipTitle" xml:space="preserve">
+    <value>Dönüşüm</value>
+  </data>
+  <data name="UnattendAdJoinLabel" xml:space="preserve">
+    <value>Active Directory Türü</value>
+  </data>
+  <data name="UnattendAdJoinText" xml:space="preserve">
+    <value>Kullanılacak AD (Active Directory) Katılımı türünü seçin. Bu seçime dayalı olarak aşağıdaki form belirli bir AD Katılımı unattend.xml dosyasını kolaylaştıracaktır</value>
+  </data>
+  <data name="UnattendAutoAdminLogonLabel" xml:space="preserve">
+    <value>Otomatik Yönetici Oturumu Açma</value>
+  </data>
+  <data name="UnattendAutoAdminLogonText" xml:space="preserve">
+    <value>Aygıtın kaydedilmesi için tek seferlik bir yönetici oturumunun açılması gerekir. Otomatik yönetici oturumu açma etkinleştirilmiştir ve şimdi yerel yönetici hesabının ayarlanması gereklidir</value>
+  </data>
+  <data name="UnattendBuildConfigFile" xml:space="preserve">
+    <value>Yapılandırma Dosyası Oluştur</value>
+  </data>
+  <data name="UnattendBuildInAdminText" xml:space="preserve">
+    <value>Bu, yönetici hesabının parolasıdır</value>
+  </data>
+  <data name="UnattendBuiltInAdminLabel" xml:space="preserve">
+    <value>Yönetici Parolası</value>
+  </data>
+  <data name="UnattendComputerNameLabel" xml:space="preserve">
+    <value>Bilgisayar Adı</value>
+  </data>
+  <data name="UnattendComputerNamePlaceholder" xml:space="preserve">
+    <value>Bilgisayar Adı (Rastgele)</value>
+  </data>
+  <data name="UnattendCreateLocalUserLabel" xml:space="preserve">
+    <value>Yerel Kullanıcı Oluştur</value>
+  </data>
+  <data name="UnattendCreateLocalUserText" xml:space="preserve">
+    <value>"Evet" seçildiğinde bir yerel kullanıcı hesabı önceden oluşturulur. "Hayır" seçildiğinde OOBE sırasında kullanıcıdan bir yerel kullanıcı hesabı oluşturması istenir.</value>
+  </data>
+  <data name="UnattendDomainNameLabel" xml:space="preserve">
+    <value>Etki Alanı Adı</value>
+  </data>
+  <data name="UnattendDomainNameText" xml:space="preserve">
+    <value>İstemcinin katılacağı Etki Alanının adıdır</value>
+  </data>
+  <data name="UnattendDomainOuLabel" xml:space="preserve">
+    <value>AD Kurum Birimi (OU)</value>
+  </data>
+  <data name="UnattendDomainOuText" xml:space="preserve">
+    <value>"OU=,OU=,DC=Şirket,DC=com" formatında olmalıdır</value>
+  </data>
+  <data name="UnattendDomainPasswordLabel" xml:space="preserve">
+    <value>Etki Alanı Parolası</value>
+  </data>
+  <data name="UnattendDomainPasswordText" xml:space="preserve">
+    <value>Active Directory etki alanına katılım hesabının parolasını girin.</value>
+  </data>
+  <data name="UnattendDomainUserLabel" xml:space="preserve">
+    <value>Etki Alanı Kullanıcı Adı</value>
+  </data>
+  <data name="UnattendDomainUserText" xml:space="preserve">
+    <value>Etki alanına katılım ayrıcalıklarına sahip bir Active Directory hesabının kullanıcı adını girin.</value>
+  </data>
+  <data name="UnattendDownloadMarkup" xml:space="preserve">
+    <value>XML Atamasını Kaldır</value>
+  </data>
+  <data name="UnattendDownloadPackage" xml:space="preserve">
+    <value>PPKG</value>
+  </data>
+  <data name="UnattendEnableBuiltInAdminLabel" xml:space="preserve">
+    <value>Yönetici Hesabını Etkinleştir</value>
+  </data>
+  <data name="UnattendEnableBuiltInAdminText" xml:space="preserve">
+    <value>Yerleşik yönetici hesabını etkinleştirin. Bu hesap varsayılan olarak devre dışı bırakılmıştır. Otomatik Yönetici Oturumu Açma seçeneği kullanılırken varsayılan yönetici hesabının etkinleştirilmesi gerekir</value>
+  </data>
+  <data name="UnattendFirstLogonCmdLabel" xml:space="preserve">
+    <value>İlk Oturum Açma Komutları</value>
+  </data>
+  <data name="UnattendFirstLogonCmdText" xml:space="preserve">
+    <value>Bir kullanıcı ilk kez oturum açtığında otomatik olarak çalıştırılacak komutlar ekleyebilirsiniz (Kullanıcının yerel yönetici ayrıcalıklarına sahip olması gerekir)</value>
+  </data>
+  <data name="UnattendLocaleChineseHongKong" xml:space="preserve">
+    <value>Çince (Hong Kong)</value>
+  </data>
+  <data name="UnattendLocaleChinesePrc" xml:space="preserve">
+    <value>Çince (Çin)</value>
+  </data>
+  <data name="UnattendLocaleChineseSimplified" xml:space="preserve">
+    <value>Çince (basitleştirilmiş)</value>
+  </data>
+  <data name="UnattendLocaleChineseTaiwan" xml:space="preserve">
+    <value>Çince (Tayvan)</value>
+  </data>
+  <data name="UnattendLocaleChineseTraditional" xml:space="preserve">
+    <value>Çince (geleneksel)</value>
+  </data>
+  <data name="UnattendLocaleEnglish" xml:space="preserve">
+    <value>İngilizce</value>
+  </data>
+  <data name="UnattendLocaleEnglishUk" xml:space="preserve">
+    <value>İngilizce - BK</value>
+  </data>
+  <data name="UnattendLocaleEnglishUs" xml:space="preserve">
+    <value>İngilizce - ABD</value>
+  </data>
+  <data name="UnattendLocaleFrench" xml:space="preserve">
+    <value>Fransızca</value>
+  </data>
+  <data name="UnattendLocaleFrenchCanada" xml:space="preserve">
+    <value>Fransızca - Kanada</value>
+  </data>
+  <data name="UnattendLocaleFrenchFrance" xml:space="preserve">
+    <value>Fransızca - Fransa</value>
+  </data>
+  <data name="UnattendLocaleGerman" xml:space="preserve">
+    <value>Almanca</value>
+  </data>
+  <data name="UnattendLocaleItalian" xml:space="preserve">
+    <value>İtalyanca</value>
+  </data>
+  <data name="UnattendLocaleJapanese" xml:space="preserve">
+    <value>Japonca</value>
+  </data>
+  <data name="UnattendLocaleKorean" xml:space="preserve">
+    <value>Korece</value>
+  </data>
+  <data name="UnattendLocaleLabel" xml:space="preserve">
+    <value>Bölge ve Klavye</value>
+  </data>
+  <data name="UnattendLocalePortuguese" xml:space="preserve">
+    <value>Portekizce</value>
+  </data>
+  <data name="UnattendLocalePortugueseBrazil" xml:space="preserve">
+    <value>Portekizce (Brezilya)</value>
+  </data>
+  <data name="UnattendLocalePortuguesePortugal" xml:space="preserve">
+    <value>Portekizce (Portekiz)</value>
+  </data>
+  <data name="UnattendLocaleSpanish" xml:space="preserve">
+    <value>İspanyolca</value>
+  </data>
+  <data name="UnattendLocaleSpanishMexico" xml:space="preserve">
+    <value>İspanyolca - Meksika</value>
+  </data>
+  <data name="UnattendLocaleSpanishSpain" xml:space="preserve">
+    <value>İspanyolca - İspanya</value>
+  </data>
+  <data name="UnattendLocaleText" xml:space="preserve">
+    <value>Yukarıda seçilen işletim sistemi diline dayalı olarak kullanılabilecek giriş dilini ve klavye düzenini belirtir.</value>
+  </data>
+  <data name="UnattendLocalUserAdminLabel" xml:space="preserve">
+    <value>Yönetici Yap</value>
+  </data>
+  <data name="UnattendLocalUserAdminText" xml:space="preserve">
+    <value>AirWatch kaydının otomatik olarak başlaması için Evet seçeneğinin işaretlenmesi gereklidir. Oturum açılırken kullanıcı, kayıt kimlik bilgilerini gireceği, açılan AirWatch penceresini görür</value>
+  </data>
+  <data name="UnattendLocalUserNameLabel" xml:space="preserve">
+    <value>Yerel Kullanıcı Adı</value>
+  </data>
+  <data name="UnattendLocalUserNameText" xml:space="preserve">
+    <value>Bu, yerel kullanıcının kullanıcı adıdır</value>
+  </data>
+  <data name="UnattendLocalUserPasswordLabel" xml:space="preserve">
+    <value>Yerel Kullanıcı Parolası</value>
+  </data>
+  <data name="UnattendLocalUserPasswordText" xml:space="preserve">
+    <value>Herhangi bir parola belirtilmezse sistem, ilk kez oturum açtığında kullanıcıdan parolayı değiştirmesini ister</value>
+  </data>
+  <data name="UnattendMediaLanguageLabel" xml:space="preserve">
+    <value>İşletim Sistemi Dili</value>
+  </data>
+  <data name="UnattendMediaLanguageText" xml:space="preserve">
+    <value>Özgün donatım üreticisine (OEM) sağlanan İşletim Sistemi yükleme medyasının dilini seçin</value>
+  </data>
+  <data name="UnattendModeAzureAdNoPrem" xml:space="preserve">
+    <value>Azure Active Directory - Premium Değil</value>
+  </data>
+  <data name="UnattendModeAzureAdPrem" xml:space="preserve">
+    <value>Azure Active Directory - Premium</value>
+  </data>
+  <data name="UnattendModeWorkgroup" xml:space="preserve">
+    <value>Çalışma Grubu</value>
+  </data>
+  <data name="UnattendNewCmdLabel" xml:space="preserve">
+    <value>Yeni Komut</value>
+  </data>
+  <data name="UnattendOnPremAdJoin" xml:space="preserve">
+    <value>Tesis İçi Active Directory Katılımı</value>
+  </data>
+  <data name="UnattendOobeSectionLabel" xml:space="preserve">
+    <value>OOBE Yapılandırması</value>
+  </data>
+  <data name="UnattendProductKeyLabel" xml:space="preserve">
+    <value>Ürün Anahtarı</value>
+  </data>
+  <data name="UnattendProductKeyText" xml:space="preserve">
+    <value>Windows ürün anahtarı, beş kez tekrarlanan ve çizgilerle birbirinden ayrılmış beş harf veya rakamdan oluşan bir dizidir. Örnek: "12345-54CDE-XYZ78-ONM98-456TY"</value>
+  </data>
+  <data name="UnattendRegisteredOrgLabel" xml:space="preserve">
+    <value>Kayıtlı Kurum</value>
+  </data>
+  <data name="UnattendRegisteredOrgText" xml:space="preserve">
+    <value>Bu, sistem bilgilerinde gösterilecektir.</value>
+  </data>
+  <data name="UnattendRegisteredOwnerLabel" xml:space="preserve">
+    <value>Kayıtlı Sahip</value>
+  </data>
+  <data name="UnattendRegisteredOwnerText" xml:space="preserve">
+    <value>Bu, sistem bilgilerinde gösterilecektir</value>
+  </data>
+  <data name="UnattendRemoveConsumerAppsLabel" xml:space="preserve">
+    <value>Windows 10 Müşteri Uygulamalarını Kaldır</value>
+  </data>
+  <data name="UnattendRemoveConsumerAppsText" xml:space="preserve">
+    <value>Bu seçenek etkinleştirildiğinde, müşteri uygulamaları (ör. Candy Crush) Windows 10'da görünmez. Yalnızca aşağıdaki bir Kurumsal veya Eğitim ürün anahtarının girilmesi durumunda desteklenir. Windows 1511 veya sonraki bir sürümünü gerektirir</value>
+  </data>
+  <data name="UnattendSaveFailed" xml:space="preserve">
+    <value>Paket kaydedilemedi, lütfen formu onaylayın ve tekrar deneyin.</value>
+  </data>
+  <data name="UnattendShowEulaLabel" xml:space="preserve">
+    <value>Son Kullanıcı Lisans Anlaşması (EULA) Sayfası</value>
+  </data>
+  <data name="UnattendShowEulaText" xml:space="preserve">
+    <value>OOBE sırasında Microsoft Yazılım Lisansı Şartları sayfasını göstermek için "Göster" seçeneğini belirleyin</value>
+  </data>
+  <data name="UnattendShowLocaleSettingsLabel" xml:space="preserve">
+    <value>Bölge ve Klavye Ayarları</value>
+  </data>
+  <data name="UnattendShowLocaleSettingsText" xml:space="preserve">
+    <value>"Göster" seçeneği belirlenirse OOBE sırasında Bölge ve Klavye Ayarları sayfası gösterilir. "Gizle" seçeneği belirlendiğinde bu sayfa gösterilmez ve aşağıdaki açılır listede yer alan mevcut yerel ayarlar arasından seçim yapmanız gerekir.</value>
+  </data>
+  <data name="UnattendShowOnlineAccountLabel" xml:space="preserve">
+    <value>Çevrimiçi Hesap Ayarları</value>
+  </data>
+  <data name="UnattendShowOnlineAccountText" xml:space="preserve">
+    <value>Çevrimiçi hesap ekranını göstermek için "Göster" seçeneğini belirleyin. Bu seçenek, bir Microsoft hesabı kullanarak oturum açmanıza olanak tanır.</value>
+  </data>
+  <data name="UnattendShowPrivacyLabel" xml:space="preserve">
+    <value>Gizlilik Ayarları</value>
+  </data>
+  <data name="UnattendShowPrivacyText" xml:space="preserve">
+    <value>OOBE sırasında kullanıcının Gizlilik ayarlarını seçmesini istemek için "Göster" seçeneğini belirleyin. "Gizle" seçeneği belirlendiğinde, Hızlı ayarlar kullanılır ve bilgi istemi görüntülenmez.</value>
+  </data>
+  <data name="UnattendSyncCmdLabel" xml:space="preserve">
+    <value>Ek Eşzamanlı Komutlar</value>
+  </data>
+  <data name="UnattendSyncCmdText" xml:space="preserve">
+    <value>Windows kurulum işleminin sonunda, herhangi bir kullanıcı oturumu açılmadan önce otomatik olarak çalıştırılacak komutlar ekleyebilirsiniz</value>
+  </data>
+  <data name="UnattendSystemConfigurationSection" xml:space="preserve">
+    <value>Sistem Yapılandırması</value>
+  </data>
+  <data name="UnattendUacAlwaysNotify" xml:space="preserve">
+    <value>Herzaman Bildir</value>
+  </data>
+  <data name="UnattendUacDefault" xml:space="preserve">
+    <value>Varsayılan</value>
+  </data>
+  <data name="UnattendUacDisabled" xml:space="preserve">
+    <value>Devre Dışı Bırakıldı</value>
+  </data>
+  <data name="UnattendUacEnableButDoNotNotify" xml:space="preserve">
+    <value>Etkin ancak Bildirme</value>
+  </data>
+  <data name="UnattendUacLabel" xml:space="preserve">
+    <value>Kullanıcı Hesabı Denetimi</value>
+  </data>
+  <data name="UnattendUacNotifyWithoutDimmingDesktop" xml:space="preserve">
+    <value>Masaüstünü Karartmadan Bildir</value>
+  </data>
+  <data name="UnattendUacText" xml:space="preserve">
+    <value>Kullanıcı Hesabı Denetiminin türünü seçin</value>
+  </data>
+  <data name="UnattendValidationInvalidInput" xml:space="preserve">
+    <value>Geçersiz giriş</value>
+  </data>
+  <data name="UnattendValidationMaxLength" xml:space="preserve">
+    <value>Bu alan zorunludur ve en fazla {0} karakter içerebilir</value>
+  </data>
+  <data name="UnattendValidationNoAdminUser" xml:space="preserve">
+    <value>Yönetici grubunun üyesi olan bir yerel kullanıcı oluşturmanız veya yerleşik yöneticiyi etkinleştirmeniz gerekir</value>
+  </data>
+  <data name="UnattendValidationProductKey" xml:space="preserve">
+    <value>Geçersiz ürün anahtarı</value>
+  </data>
+  <data name="UnattendValidationRequired" xml:space="preserve">
+    <value>Bu alan boş bırakılamaz</value>
+  </data>
+  <data name="UnattendWelcome" xml:space="preserve">
+    <value>Provizyonlama için Yapılandırma Aracına hoş geldiniz. Yapılandırma dosyası oluştur düğmesini etkinleştirmek için tüm zorunlu alanlarda değerleri girdiğinizden emin olun</value>
+  </data>
+  <data name="UnattendWorkgroupLabel" xml:space="preserve">
+    <value>Çalışma Grubu</value>
+  </data>
+  <data name="UnattendWorkgroupText" xml:space="preserve">
+    <value>İstemcinin katılacağı Çalışma Grubunun adıdır</value>
+  </data>
+  <data name="UnattendWs1OgLabel" xml:space="preserve">
+    <value>Kayıt OG'si</value>
+  </data>
+  <data name="UnattendWs1OgText" xml:space="preserve">
+    <value>Bu, kayıt OG Grubu Kimliğinizdir. SAML açıksa SAML kapalıyken ayrı bir "Hazırlama" OG'si kurduğunuzdan emin olun. Grup Kimliğini öğrenmek için farenizi Workspace ONE Console'un üst kısmındaki OG'nin üzerine getirebilirsiniz.</value>
+  </data>
+  <data name="UnattendWs1Section" xml:space="preserve">
+    <value>Workspace ONE Kaydı</value>
+  </data>
+  <data name="UnattendWs1ServerLabel" xml:space="preserve">
+    <value>Kayıt Sunucusu</value>
+  </data>
+  <data name="UnattendWs1ServerText" xml:space="preserve">
+    <value>Bu, sizin kayıt sunucusu URL'nizdir. MDM Kayıt URL'si altındaki Tüm Ayarlar --&gt; Sistem --&gt; Gelişmiş --&gt; Site URL'leri seçeneğinden bulunabilir. Yalnızca temel URL'yi ekleyin. Örneğin, https://vmwarelab.awmdm.com</value>
+  </data>
+  <data name="UnattendWs1StagingAccountLabel" xml:space="preserve">
+    <value>Hazırlama Hesabı</value>
+  </data>
+  <data name="UnattendWs1StagingAccountPasswordLabel" xml:space="preserve">
+    <value>Hazırlama Parolası</value>
+  </data>
+  <data name="UnattendWs1StagingAccountPasswordText" xml:space="preserve">
+    <value>Hazırlama hesabı ile aynı sayfada belirtilen hazırlama hesabı "parolası". Parola özel karakterler ( '&amp;', '&gt;', veya '&lt;') içeriyorsa kayıt için bu hesabı kullanan fabrikada provizyonlama iş akışları başarısız olur. Parolayı değiştirmek için Kullanıcılar sayfasına gidin.</value>
+  </data>
+  <data name="UnattendWs1StagingAccountText" xml:space="preserve">
+    <value>Bu, UPN alanındaki Tüm Ayarlar --&gt; Aygıtlar ve Kullanıcılar --&gt; Windows --&gt; Windows Masaüstü --&gt; Hazırlık ve Provizyonlama seçeneğinde bulunan hazırlama hesabıdır</value>
+  </data>
+  <data name="UnmanagedProfilesMessageLabelAny" xml:space="preserve">
+    <value>Yönetilmeyen Profiller</value>
+  </data>
+  <data name="USBDeviceMessageLabelAny" xml:space="preserve">
+    <value>USB Aygıt</value>
+  </data>
+  <data name="UserEnrollmentAndEnter" xml:space="preserve">
+    <value>Grup Kimliğiniz var mı?</value>
+  </data>
+  <data name="UserEnrollmentNotEnabledInOg" xml:space="preserve">
+    <value>Belirtilen organizasyon grubunda kullanıcı kaydı özelliği etkin değildir</value>
+  </data>
+  <data name="UserEnrollmentSettingsMessage" xml:space="preserve">
+    <value>"Ayarlar" uygulamasında, "Şirketinizde kaydolun" seçeneğini bulup dokunun</value>
+  </data>
+  <data name="UserEnrollmentUseEmailAddress" xml:space="preserve">
+    <value>E-posta adresini kullan</value>
+  </data>
+  <data name="UserPasswordIsRequired" xml:space="preserve">
+    <value>Parola gerekli</value>
+  </data>
+  <data name="Workappsprivacynoticemessagelabel" xml:space="preserve">
+    <value>Workspace ONE aracılığıyla sunulan tüm iş uygulamaları için uygulama adı, sürüm ve yükleme durumunun listesi, raporlama amacıyla aygıttan alınır.</value>
+  </data>
+</root>

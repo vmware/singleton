@@ -1,0 +1,556 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ActivateHubServices" xml:space="preserve">
+    <value>Aktivera Hub-tjänster</value>
+  </data>
+  <data name="ActivateHubServicesDescription" xml:space="preserve">
+    <value>Hub-tjänster hanteras av Workspace ONE Access i molnet. För att aktivera, ange information om din molninnehavare för Workspace ONE Access eller begär en nedan. Om du inte känner till molninnehavaren kan du leta upp den informationen i e-postmeddelandet du fick från VMware eller logga ett supportärende om du inte kan hitta informationen.</value>
+  </data>
+  <data name="ActivateHubServicesGeneralDescription" xml:space="preserve">
+    <value>Hub-tjänsterna finns på samma plats som Workspace ONE Access. Om du vill konfigurera dem anger du information om Workspace ONE Access-innehavaren nedan. Om du inte känner till innehavaren kan du leta rätt på den informationen i det e-postmeddelande du fick från VMware. Om du inte hittar informationen loggar du ett supportärende.</value>
+  </data>
+  <data name="ActivateHubServicesGeneralNote" xml:space="preserve">
+    <value>Obs! Du kan använda vissa Hub-tjänster utan att konfigurera Workspace ONE Access.</value>
+  </data>
+  <data name="ActivateHubServicesNote" xml:space="preserve">
+    <value>Obs! Hub-katalogfunktioner är åtkomliga utan att konfigurera anslutningar eller synkronisera Active Directory.</value>
+  </data>
+  <data name="AdministratorDetails" xml:space="preserve">
+    <value>Administratörsinformation</value>
+  </data>
+  <data name="ArgOrganizationGroups" xml:space="preserve">
+    <value>{0}-organisationsgrupper</value>
+    <comment>{0} will be integer</comment>
+  </data>
+  <data name="AuthenticationSourceSettingsFetchFailedError" xml:space="preserve">
+    <value>Inställningar för autentiseringskälla kunde inte erhållas.</value>
+  </data>
+  <data name="Avenger" xml:space="preserve">
+    <value>Android Avenger</value>
+  </data>
+  <data name="BluetoothLocationServiceHubPassport" xml:space="preserve">
+    <value>*Bluetooth måste vara aktiverat på anställdas enheter och Platstjänster bör aktiveras för bästa resultat.</value>
+  </data>
+  <data name="CatalogSettings" xml:space="preserve">
+    <value>Kataloginställningar</value>
+  </data>
+  <data name="CatalogSettingsDescription" xml:space="preserve">
+    <value>Hub visar en integrerad appkatalog baserat på inställningarna nedan.</value>
+  </data>
+  <data name="CloudTenant" xml:space="preserve">
+    <value>Cloud-innehavare</value>
+  </data>
+  <data name="CloudTenantAlreadyConfigured" xml:space="preserve">
+    <value>En molninnehavare har redan konfigurerats för Workspace ONE Access.</value>
+  </data>
+  <data name="CloudTenantHelpText" xml:space="preserve">
+    <value>Har du inte någon molninnehavare? Du kan begära en molninnehavare för Workspace ONE Access nu.</value>
+  </data>
+  <data name="CloudTenantHostedInOneOfTheRegion" xml:space="preserve">
+    <value>Din Cloud-innehavare kan hanteras i någon av nedanstående regioner. Markera det alternativ som bäst tillgodoser företagets efterlevnadskrav, säkerhetskrav och generella affärsbehov.</value>
+  </data>
+  <data name="CloudTenantSameAsExisting" xml:space="preserve">
+    <value>Den här Cloud-innehavaren är densamma som den befintliga. Spara för att fortsätta.</value>
+  </data>
+  <data name="CloudTenantSuccessfullyCreatedActivateHubServices" xml:space="preserve">
+    <value>Din molninnehavare har skapats. För att aktivera Hub-tjänster klickar du på Kom igång och anger uppgifterna för din molninnehavare för Workspace ONE Access, som du bör ha fått via e-post.</value>
+  </data>
+  <data name="CloudTenantUrl" xml:space="preserve">
+    <value>Webbadress för molninnehavare</value>
+  </data>
+  <data name="CollectLocationDataTooltip" xml:space="preserve">
+    <value>Uppmana de anställda att tillåta insamling av GPS-positionsdata.</value>
+  </data>
+  <data name="ConfigurationOverwrite" xml:space="preserve">
+    <value>Skriv över konfiguration</value>
+  </data>
+  <data name="ConsiderUpdatingArgLanguage" xml:space="preserve">
+    <value>Det kan vara bra att uppdatera språket för {0} för anställda.</value>
+    <comment>{0} will be "Terms of Use"</comment>
+  </data>
+  <data name="DeviceDatafromGoogleNotReceived" xml:space="preserve">
+    <value>Enhetsdata från Google har inte tagits emot. Kontakta din IT-administratör för att lösa problemet.</value>
+  </data>
+  <data name="DifferentVidmTenantConfiguredAtCurrentOg" xml:space="preserve">
+    <value>En annan innehavare av Workspace ONE Access har redan konfigurerats i den här organisationsgruppen.</value>
+  </data>
+  <data name="DisabledByDefault" xml:space="preserve">
+    <value>Avaktiverad som standard</value>
+  </data>
+  <data name="DisableManagedAppNotAcceptable" xml:space="preserve">
+    <value>Ange en giltig applikationsidentifierare</value>
+  </data>
+  <data name="DisplayPrivacyDialogTooltip" xml:space="preserve">
+    <value>Visar standard-sekretesskärm vid den första uppstarten.</value>
+  </data>
+  <data name="DownloadLatestMacOsHubVersion" xml:space="preserve">
+    <value>Hämta senaste version</value>
+  </data>
+  <data name="EditHidPassportServiceSettings" xml:space="preserve">
+    <value>Redigera inställningar för HID Passport-tjänsten</value>
+  </data>
+  <data name="EditHidPassportServiceSettingsHelp" xml:space="preserve">
+    <value>Hantera åtkomst för redigering av inställningarna för HID Passport-tjänsten.</value>
+  </data>
+  <data name="EnableAutomaticUpdates" xml:space="preserve">
+    <value>Automatiska uppdateringar</value>
+  </data>
+  <data name="EnableAutomaticUpdatesTooltip" xml:space="preserve">
+    <value>Kontrollerar automatiskt om det finns uppdateringar tillgängliga. Om den är inaktiverad måste medarbetare söka efter uppdateringar manuellt i Hub.</value>
+  </data>
+  <data name="EnableAwcmTooltip" xml:space="preserve">
+    <value>AirWatch Cloud Messaging (AWCM) möjliggör realtidskommunikation mellan servern och Hub . Om det är inaktiverat tas kommandon och exempel inte emot av Hub förrän nästa incheckning sker enligt schemalagt intervall.</value>
+  </data>
+  <data name="EnableConfigureHubPassportDescription" xml:space="preserve">
+    <value>Aktivera och konfigurera Hub-pass bland Hub-tjänsterna för att ge anställda åtkomst till företagets kontor genom att använda sina iOS- och Android-enheter som virtuella åtkomst-ID-kort.</value>
+  </data>
+  <data name="EnabledByDefault" xml:space="preserve">
+    <value>Aktiverad som standard</value>
+  </data>
+  <data name="EnableHubExperienceModeInfo" xml:space="preserve">
+    <value>Välj Aktiverad om du vill tillåta att enheter i den här organisationsgruppen ansluter till Workspace ONE Hub för funktioner som Appkatalog och Personer.</value>
+  </data>
+  <data name="EnableMacOsHubDownloadAfterEnrollment" xml:space="preserve">
+    <value>Installera Hub efter registrering</value>
+  </data>
+  <data name="EnableMacOsHubDownloadAfterEnrollmentTooltip" xml:space="preserve">
+    <value>Installerar automatiskt Hub på enheter efter registrering via DEP eller webben.</value>
+  </data>
+  <data name="EnforcePasscodePolicyTooltip" xml:space="preserve">
+    <value>Anställda uppmanas att skapa ett nytt lösenord som uppfyller MDM-profilkraven. Om det är inaktiverat uppmanas anställda endast när de loggar ut och loggar in igen.</value>
+  </data>
+  <data name="ExcludesOrganizationGroups" xml:space="preserve">
+    <value>Undantagna organisationsgrupper</value>
+  </data>
+  <data name="FailedToRetrieveAvailableHostingRegionsContactSupport" xml:space="preserve">
+    <value>Det gick inte att hämta tillgängliga värdregioner för Workspace ONE Access-innehavare. Försök igen senare. Om problemet kvarstår, kontakta supporten.</value>
+  </data>
+  <data name="GeneratingCloudTenant" xml:space="preserve">
+    <value>Genererar Cloud-innehavare</value>
+  </data>
+  <data name="HubCatalogAndroid" xml:space="preserve">
+    <value>Hub-katalog (Android)</value>
+  </data>
+  <data name="HubCatalogIos" xml:space="preserve">
+    <value>Hub-katalog (iOS)</value>
+  </data>
+  <data name="HubCatalogMacos" xml:space="preserve">
+    <value>Hub-katalog (macOS)</value>
+  </data>
+  <data name="HubCatalogSettingsFetchFailedError" xml:space="preserve">
+    <value>Aktiveringslägesinställningar för Hub-katalog kunde inte hämtas.</value>
+  </data>
+  <data name="HubCatalogWinRT" xml:space="preserve">
+    <value>Hub-katalog (Windows)</value>
+  </data>
+  <data name="HubEnabledSelectedOg" xml:space="preserve">
+    <value>Hub-passinställningarna har redan aktiverats för den valda organisationsgruppen.</value>
+  </data>
+  <data name="HubIntegration" xml:space="preserve">
+    <value>Hub-integrering</value>
+  </data>
+  <data name="HubPassport" xml:space="preserve">
+    <value>Hub-pass</value>
+  </data>
+  <data name="HubPassportDescription" xml:space="preserve">
+    <value>Med Hub-pass kan anställda komma åt företagskontor genom att använda sina iOS- och Android-enheter som virtuella åtkomst-ID-kort. Detta måste aktiveras i Hub-tjänsterna. Välj Organisationsgrupper för att hantera åtkomsten till den här funktionen.</value>
+  </data>
+  <data name="HubPassportEnabledAtChildArgOgInfo" xml:space="preserve">
+    <value>Underordnade till den valda organisationsgruppen ingår redan i urvalet. Om du vill välja den överordnade tar du bort {0}.</value>
+    <comment>{0} will be list of Organization groups name</comment>
+  </data>
+  <data name="HubPassportEnabledAtParentArgOgInfo" xml:space="preserve">
+    <value>Den valda organisationsgruppen är redan inkluderad som underordnad till {0}.</value>
+    <comment>{0} will be Organization group name</comment>
+  </data>
+  <data name="HubPassportSettingChildOgDescription" xml:space="preserve">
+    <value>När funktionen är aktiverad tillämpas Hub-passfunktionerna automatiskt för organisationsgruppen och alla dess underordnade grupper som förval. Du kan dock begränsa den här funktionen till specifika organisationsgrupper genom att välja dem nedan.</value>
+  </data>
+  <data name="HubServicesActivatedLaunchHubServicesToConfigure" xml:space="preserve">
+    <value>Hub-tjänster har aktiverats. Du kan nu starta Hub-tjänster för konfigurering.</value>
+  </data>
+  <data name="HubServicesActivationInfo" xml:space="preserve">
+    <value>Konfigurera Hub-tjänster via Intelligent Hub konfigurationssidan för att aktivera integreringsalternativen nedan.</value>
+  </data>
+  <data name="HubServicesFeature" xml:space="preserve">
+    <value>Använda Hub-tjänstfunktioner i Intelligent Hub</value>
+  </data>
+  <data name="HubServicesFeaturesSettingsFetchFailedError" xml:space="preserve">
+    <value>Inställningar för Hub-tjänstfunktioner kunde inte hämtas</value>
+  </data>
+  <data name="HubServicesGeneralNote" xml:space="preserve">
+    <value>Obs! Funktionerna Aviseringar och Personer är endast tillgängliga när du använder Hub-molntjänsterna som en innehavare.</value>
+  </data>
+  <data name="HubServicesHostingDescription" xml:space="preserve">
+    <value>Hub-tjänster hanteras av Workspace ONE Access i molnet.</value>
+  </data>
+  <data name="HubServicesHostingGeneralDescription" xml:space="preserve">
+    <value>Hub-tjänsterna finns på samma plats som Workspace ONE Access.</value>
+  </data>
+  <data name="HubServicesSuccessfullyReactivatedLaunchHubServicesToConfigureIntelligentHubExperience" xml:space="preserve">
+    <value>Hub-tjänster har återaktiverats. Du kan nu starta Hub-tjänster för att konfigurera Intelligent Hub-upplevelsen.</value>
+  </data>
+  <data name="HubServicesURL" xml:space="preserve">
+    <value>URL för Hub-tjänster</value>
+  </data>
+  <data name="HubServicesURLSaveError" xml:space="preserve">
+    <value>Det gick inte att spara konfigurations-URL:en för Hub-tjänster.</value>
+  </data>
+  <data name="HubSettingsConfiguredSuccess" xml:space="preserve">
+    <value>Hub-passinställningarna har sparats.</value>
+  </data>
+  <data name="HubSettingsInvalidInputError" xml:space="preserve">
+    <value>Resurser för denna organisationsgrupp hittades inte, eller så har användaren inte åtkomst till den här organisationsgruppen.</value>
+  </data>
+  <data name="HubSettingsUnauthorizedAccessError" xml:space="preserve">
+    <value>Obehörig åtkomst.</value>
+  </data>
+  <data name="IDMAuthentication" xml:space="preserve">
+    <value>Workspace ONE Access</value>
+  </data>
+  <data name="IncorrectEmailAddress" xml:space="preserve">
+    <value>E-postadressen är ogiltig. Kontrollera e-postadressens format och försök igen.</value>
+  </data>
+  <data name="InvalidCloudTenantUrl" xml:space="preserve">
+    <value>Ogiltig webbadress. Ange webbadressen för din molninnehavare för Workspace ONE Access för att fortsätta.</value>
+  </data>
+  <data name="InvalidFirstName" xml:space="preserve">
+    <value>Ogiltigt förnamn. Försök igen.</value>
+  </data>
+  <data name="InvalidLastName" xml:space="preserve">
+    <value>Ogiltigt efternamn. Försök igen.</value>
+  </data>
+  <data name="InvalidPasswordTryAgain" xml:space="preserve">
+    <value>Ogiltigt lösenord. Försök igen.</value>
+  </data>
+  <data name="InvalidUserNameErrorMessage" xml:space="preserve">
+    <value>Ogiltigt användarnamn. Ändra användarnamnet och försök sedan igen.</value>
+  </data>
+  <data name="InvalidUserNamePleaseTryAgain" xml:space="preserve">
+    <value>Ogiltigt användarnamn. Försök igen.</value>
+  </data>
+  <data name="InvalidUsernameTryAgain" xml:space="preserve">
+    <value>Ogiltigt användarnamn. Försök igen.</value>
+  </data>
+  <data name="macOSCheckInIntervalTooltip" xml:space="preserve">
+    <value>Ställer in frekvensen med vilken Hub checkar in på servern för att ta emot nya kommandon.</value>
+  </data>
+  <data name="MacOsCollectAnalytics" xml:space="preserve">
+    <value>Samla in statistik</value>
+  </data>
+  <data name="MacOsCollectCrashReports" xml:space="preserve">
+    <value>Begäran om att samla in kraschrapporter</value>
+  </data>
+  <data name="MacOsCollectLocationData" xml:space="preserve">
+    <value>Begäran om att samla in platsdata</value>
+  </data>
+  <data name="macOsEnforcePasscode" xml:space="preserve">
+    <value>Framtvinga lösenord</value>
+  </data>
+  <data name="MacOsPrivacyLink" xml:space="preserve">
+    <value>Sekretesslänk</value>
+  </data>
+  <data name="MacOsRequestPermission" xml:space="preserve">
+    <value>Begär behörighet</value>
+  </data>
+  <data name="macOSSampleIntervalTooltip" xml:space="preserve">
+    <value>Ställer in den frekvens med vilken Hub söker av enheter för att samla in data såsom produktprovisioneringsstatus, diskkrypteringsstatus, anpassade attribut, GPS-position och annan grundläggande systeminformation.</value>
+  </data>
+  <data name="MacOsShowPrivacyScreen" xml:space="preserve">
+    <value>Visa sekretesskärm</value>
+  </data>
+  <data name="macOSTransmitIntervalTooltip" xml:space="preserve">
+    <value>Ställer in frekvensen med vilken Hub skickar datasamplingar till Hub UEM-servern.</value>
+  </data>
+  <data name="MacOsUninstallHub" xml:space="preserve">
+    <value>Avinstallationsbehörighet</value>
+  </data>
+  <data name="MacOsVMwareWorkspaceONEIntelligentHub" xml:space="preserve">
+    <value>VMware Workspace ONE Intelligent Hub</value>
+  </data>
+  <data name="ManagementModeDescription" xml:space="preserve">
+    <value>Gör det möjligt för enheter att registrera utan MDM-hantering (registrerad med Workspace).</value>
+  </data>
+  <data name="ManagementModeSettingsFetchFailedError" xml:space="preserve">
+    <value>Lägesinställningar för behållare kunde inte hämtas.</value>
+  </data>
+  <data name="OptInFlowAlreadyCompletedInformationMessage" xml:space="preserve">
+    <value>Workspace ONE Access har redan konfigurerats för den aktuella organisationsgruppen. Kontakta din IT-administratör.</value>
+  </data>
+  <data name="OrganizationGroupNotFoundError" xml:space="preserve">
+    <value>Organisationsgrupp hittades inte.</value>
+  </data>
+  <data name="OrganizationGroupRestrictedError" xml:space="preserve">
+    <value>Resurser för denna organisationsgrupp hittades inte, eller så har användaren inte åtkomst till den här organisationsgruppen.</value>
+  </data>
+  <data name="PickARegion" xml:space="preserve">
+    <value>Välj en region</value>
+  </data>
+  <data name="PickDataCenterLocation" xml:space="preserve">
+    <value>Välj plats för datacenter</value>
+  </data>
+  <data name="PleaseWaitWhileYourCloudTenantIsCreated" xml:space="preserve">
+    <value>Vänta några minuter medan din Cloud-innehavare skapas.</value>
+  </data>
+  <data name="PolicyAllowCrashReportingTooltip" xml:space="preserve">
+    <value>Samlar in kraschrapporter och skickar dem automatiskt till servern.</value>
+  </data>
+  <data name="PrivacyPolicyLinkTooltip" xml:space="preserve">
+    <value>Omdirigerar sekretesskärm till en annan länk än VMwares officiella sekretessida.</value>
+  </data>
+  <data name="ProvideInformationBelowToRequestAdministratorAccessAndvIDMCloudTenant" xml:space="preserve">
+    <value>Ange informationen nedan för att begära administratörsbehörighet och en molninnehavare för Workspace ONE Access, som du får via e-post inom några minuter.</value>
+  </data>
+  <data name="ReadAndAcceptHubServicesTOS" xml:space="preserve">
+    <value>Läs och godkänn följande användarvillkor för att använda Hub-tjänster.</value>
+  </data>
+  <data name="ReconfigureHubServices" xml:space="preserve">
+    <value>Omkonfigurera Hub-tjänster</value>
+  </data>
+  <data name="ReconfigureHubServicesDescription" xml:space="preserve">
+    <value>Hub-tjänster hanteras av Workspace ONE Access i molnet. För att omkonfigurera, ange information om din molninnehavare för Workspace ONE Access nedan. Om du inte känner till molninnehavaren kan du leta upp den informationen i e-postmeddelandet du fick från VMware eller logga ett supportärende om du inte kan hitta informationen.</value>
+  </data>
+  <data name="ReconfigureHubServicesGeneralDescription" xml:space="preserve">
+    <value>Hub-tjänsterna finns på samma plats som Workspace ONE Access. Om du vill konfigurera dem anger du information om Workspace ONE Access-innehavaren nedan. Om du inte känner till innehavaren kan du leta rätt på den informationen i det e-postmeddelande du fick från VMware. Om du inte hittar informationen loggar du ett supportärende.</value>
+  </data>
+  <data name="RequestCloudTenant" xml:space="preserve">
+    <value>Begär Cloud-innehavare</value>
+  </data>
+  <data name="RequestCloudTenantInfo" xml:space="preserve">
+    <value>Obs! En anslutning till ett datacenter krävs för moln-innehavaren, vilket kan skilja sig från din nuvarande datacenterserviceleverantör, och kan befinna sig i ett annat land.</value>
+  </data>
+  <data name="RequireGroupIdForVidmWithoutLink" xml:space="preserve">
+    <value>Den här organisationsgruppen har inte något grupp-ID, vilket krävs för konfiguration av Workspace ONE Access. Du kan lägga till grupp-ID på informationssidan för organisationsgrupp.</value>
+  </data>
+  <data name="SaveFailedTryAgain" xml:space="preserve">
+    <value>Kunde inte spara. Försök igen.</value>
+  </data>
+  <data name="SdkProfileV2" xml:space="preserve">
+    <value>SDK-profil</value>
+  </data>
+  <data name="SourceOfAuthentication" xml:space="preserve">
+    <value>Autentiseringskälla</value>
+  </data>
+  <data name="SourceOfAuthenticationDescription" xml:space="preserve">
+    <value>Hub kommer att använda leverantören som valts nedan för autentisering.</value>
+  </data>
+  <data name="SourceOfAuthenticationForHub" xml:space="preserve">
+    <value>Autentiseringskälla för Hub</value>
+  </data>
+  <data name="StartTypeToAddGroup" xml:space="preserve">
+    <value>Börja skriva för att lägga till en grupp</value>
+  </data>
+  <data name="TechnicalErrorOccurredPleaseContactAdministrator" xml:space="preserve">
+    <value>Ett tekniskt fel har inträffat. Försök igen. Om problemet kvarstår, kontakta din IT-administratör.</value>
+  </data>
+  <data name="TenantAlreadyConfigured" xml:space="preserve">
+    <value>Det finns redan en konfigurerad innehavare för Workspace ONE Access.</value>
+  </data>
+  <data name="TenantNameWillBeCreatedBasedOnOG" xml:space="preserve">
+    <value>Det innehavarnamn som skapas baserat på det aktuella inloggade organisationsgruppnamnet visas nedan.</value>
+  </data>
+  <data name="TenantUrlLabel" xml:space="preserve">
+    <value>Innehavare-URL</value>
+  </data>
+  <data name="TermsOfService" xml:space="preserve">
+    <value>Användarvillkor</value>
+  </data>
+  <data name="TermsOfServices" xml:space="preserve">
+    <value>Användarvillkor</value>
+  </data>
+  <data name="UEMAirwatch" xml:space="preserve">
+    <value>UEM (AirWatch)</value>
+  </data>
+  <data name="UninstallAgentTooltip" xml:space="preserve">
+    <value>Ger de anställda möjlighet att avinstallera Hub-appen från sina enheter.</value>
+  </data>
+  <data name="UpgradeSilentlyTooltip" xml:space="preserve">
+    <value>Uppgraderingar installeras automatiskt i bakgrunden utan att anställda behöver uppmanas. Om det är inaktiverat uppmanas anställda att uppgradera när nya uppdateringar finns tillgängliga.</value>
+  </data>
+  <data name="UseHubServicesFeatures" xml:space="preserve">
+    <value>Använda Hub-tjänstfunktioner</value>
+  </data>
+  <data name="UserNameLabel" xml:space="preserve">
+    <value>Användarnamn</value>
+  </data>
+  <data name="VidmConfigOverwriteNote" xml:space="preserve">
+    <value>Obs! Om du använder Workspace ONE-appen med din nuvarande konfiguration kommer registrerade anställda inte att påverkas. Nya anställda kommer dock endast att kunna använda Intelligent Hub-appen.</value>
+  </data>
+  <data name="VidmConfigRemoveWarning" xml:space="preserve">
+    <value>Din nuvarande Workspace ONE Access-konfiguration kommer att ersättas av den nya informationen du just angav.</value>
+  </data>
+  <data name="VidmConfigRemoveWarningDescription" xml:space="preserve">
+    <value>Om du använder Workspace ONE-appen med din nuvarande konfiguration kommer registrerade anställda inte att påverkas. Nya anställda kommer dock endast att kunna använda Intelligent Hub-appen.</value>
+  </data>
+  <data name="VidmConfigReplacedWithNewCloudTenantWarning" xml:space="preserve">
+    <value>Workspace ONE Access-konfigurationen kommer att ersättas med din nya molninnehavare när du har slutfört den här begäran.</value>
+  </data>
+  <data name="VIDMConfigureCertificateError" xml:space="preserve">
+    <value>Det gick inte att skapa certifikat för Workspace ONE UEM-tjänstkonto. Det gick inte att konfigurera Workspace ONE Access-inställningar.</value>
+  </data>
+  <data name="VIDMConfigureExistingUEMSettingError" xml:space="preserve">
+    <value>Ett fel tycks ha uppstått vid hämtningen av konfigurationsinformation för Workspace ONE UEM från din Workspace ONE Access-innehavare. Kontrollera dessa inställningar och försök igen för att fortsätta.</value>
+  </data>
+  <data name="VIDMConfigureUEMSettingsError" xml:space="preserve">
+    <value>Ett fel tycks ha inträffat vid konfigureringen av Workspace ONE UEM-inställningarna på din Workspace ONE Access-innehavare. Försök igen för att fortsätta.</value>
+  </data>
+  <data name="VidmImpactedConfigDescription" xml:space="preserve">
+    <value>Om du vill använda Hub-tjänstfunktioner som kräver Workspace ONE Access måste du konfigurera om din nya Workspace ONE Access-instans med alla tillämpliga konfigurationer. En fullständig lista över berörda konfigurationer finns i avsnittet {0} i handboken för Workspace ONE Hub-tjänster.</value>
+  </data>
+  <data name="VIDMInvalidOGTypeError" xml:space="preserve">
+    <value>Workspace ONE Access kan endast konfigureras vid kundtypen organisationsgrupp.</value>
+  </data>
+  <data name="VIDMInvalidSettingsError" xml:space="preserve">
+    <value>Inloggningsuppgifterna för molninnehavare för Workspace ONE Access är ogiltiga. Du bör ha fått ett e-postmeddelande från VMware med dina inloggningsuppgifter. Logga ett supportärende om du inte kan hitta den här informationen.</value>
+  </data>
+  <data name="VidmNotConfiguredError" xml:space="preserve">
+    <value>Workspace ONE Access har inte konfigurerats för den begärda organisationsgruppen.</value>
+  </data>
+  <data name="VidmTenantRemoveFailed" xml:space="preserve">
+    <value>Det gick inte att ta bort en befintlig konfiguration för Workspace ONE Access-innehavare.</value>
+  </data>
+  <data name="ViewHidPassportServiceSettings" xml:space="preserve">
+    <value>Visa inställningarna för HID Passport-tjänsten</value>
+  </data>
+  <data name="ViewHidPassportServiceSettingsHelp" xml:space="preserve">
+    <value>Hanterar åtkomst för visning av inställningarna för HID Passport-tjänsten.</value>
+  </data>
+  <data name="ViewTermsOfServiceAndAccept" xml:space="preserve">
+    <value>Visa användarvillkoren för tjänst {0} och godkänn dem nedan.</value>
+  </data>
+  <data name="VMwarePrivacyNotice" xml:space="preserve">
+    <value>VMware integritetsnotis</value>
+  </data>
+  <data name="WantToUseSameCloudTenant" xml:space="preserve">
+    <value>Vill du använda samma molninnehavare för att aktivera Hub-tjänster?</value>
+  </data>
+  <data name="WantToUseSameTenant" xml:space="preserve">
+    <value>Vill du använda den här innehavaren till att aktivera Hub-tjänsterna?</value>
+  </data>
+  <data name="WindowsDesktopCollectAnalytics" xml:space="preserve">
+    <value>Samla in statistik</value>
+  </data>
+  <data name="WindowsDesktopPrivacyLink" xml:space="preserve">
+    <value>Sekretesslänk</value>
+  </data>
+  <data name="WindowsDesktopShowPrivacyScreen" xml:space="preserve">
+    <value>Visa sekretesskärm</value>
+  </data>
+</root>

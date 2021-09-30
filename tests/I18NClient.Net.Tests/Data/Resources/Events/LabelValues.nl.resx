@@ -1,0 +1,1002 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AadCustomAttributeLookupFailed" xml:space="preserve">
+    <value>Opzoeken custom kenmerk toevoegen mislukt</value>
+  </data>
+  <data name="ActionStatus" xml:space="preserve">
+    <value>Actiestatus</value>
+  </data>
+  <data name="ActionUuid" xml:space="preserve">
+    <value>Actie-UUID</value>
+  </data>
+  <data name="ActivationLockBypassCodeConfirmed" xml:space="preserve">
+    <value>Omzeilingscode van de activeringsvergrendeling bevestigd</value>
+  </data>
+  <data name="ActivationLockBypassCodeFailed" xml:space="preserve">
+    <value>Omzeilingscode van de activeringsvergrendeling mislukt</value>
+  </data>
+  <data name="ActivationLockBypassCodeRefused" xml:space="preserve">
+    <value>Omzeilingscode van de activeringsvergrendeling geweigerd</value>
+  </data>
+  <data name="ActivationLockBypassCodeRequested" xml:space="preserve">
+    <value>Omzeilingscode van de activeringsvergrendeling aangevraagd</value>
+  </data>
+  <data name="AdminAppAuthTokenIssued" xml:space="preserve">
+    <value>Verificatietoken beheerdersapplicatie uitgegeven</value>
+  </data>
+  <data name="AdminGroupDirectorySyncCompleted" xml:space="preserve">
+    <value>Mapsynchronisatie beheerdersgroep voltooid</value>
+  </data>
+  <data name="AdminPasswordRotationConfirmed" xml:space="preserve">
+    <value>Rotatie van beheerderswachtwoord bevestigd</value>
+  </data>
+  <data name="AdminPasswordRotationFailed" xml:space="preserve">
+    <value>Rotatie van beheerderswachtwoord mislukt</value>
+  </data>
+  <data name="AdminPasswordRotationRequested" xml:space="preserve">
+    <value>Rotatie van beheerderswachtwoord aangevraagd</value>
+  </data>
+  <data name="AndroidHeartbeatIntervalSettingChangedFailed" xml:space="preserve">
+    <value>Wijziging instelling Android heartbeat-interval mislukt</value>
+  </data>
+  <data name="AndroidHeartbeatIntervalSettingChangedSuccess" xml:space="preserve">
+    <value>Wijziging instelling Android heartbeat-interval geslaagd</value>
+  </data>
+  <data name="AndroidSyncPerAppVpnAssociations" xml:space="preserve">
+    <value>App-specifieke VPN-koppelingen synchroniseren</value>
+  </data>
+  <data name="AndroidSyncPerAppVpnAssociationsConfirmed" xml:space="preserve">
+    <value>Commando synchroniseren app-specifieke VPN-koppelingen bevestigd</value>
+  </data>
+  <data name="AndroidSyncPerAppVpnAssociationsRequested" xml:space="preserve">
+    <value>Commando synchroniseren app-specifieke VPN-koppelingen aangevraagd</value>
+  </data>
+  <data name="AppleMdmSampleScheduleSettingChangedFailed" xml:space="preserve">
+    <value>Wijziging instelling Apple MDM-sample schema mislukt</value>
+  </data>
+  <data name="AppleMdmSampleScheduleSettingChangedSuccess" xml:space="preserve">
+    <value>Wijziging instelling Apple MDM-sample schema gelukt</value>
+  </data>
+  <data name="AppleProfileSigningCertificateChangedFailure" xml:space="preserve">
+    <value>Wijziging instelling ondertekeningscertificaat Apple-profiel mislukt</value>
+  </data>
+  <data name="AppleProfileSigningCertificateChangedSuccess" xml:space="preserve">
+    <value>Wijziging instelling ondertekeningscertificaat Apple-profiel geslaagd</value>
+  </data>
+  <data name="ApplicationDeploymentCriteriaMissing" xml:space="preserve">
+    <value>Applicatie implementatiecriteria ontbreken</value>
+  </data>
+  <data name="ApplicationDownloadFailed" xml:space="preserve">
+    <value>Applicatie downloaden mislukt</value>
+  </data>
+  <data name="ApplicationInstalling" xml:space="preserve">
+    <value>Applicatie wordt geïnstalleerd</value>
+  </data>
+  <data name="AppLogsDescription" xml:space="preserve">
+    <value>View and download available log files.</value>
+  </data>
+  <data name="ApproveRemoval" xml:space="preserve">
+    <value>Verwijdering goedkeuren</value>
+  </data>
+  <data name="ApproveRemovalDescription" xml:space="preserve">
+    <value>Met deze actie wordt het verwijderen van apps van mogelijk getroffen apparaten goedgekeurd. Er is geen extra actie nodig om de app-toewijzing aan te passen.</value>
+  </data>
+  <data name="ApproveRemovalTitle" xml:space="preserve">
+    <value>Applicatieverwijdering goedkeuren</value>
+  </data>
+  <data name="BaselineInstallConfirmed" xml:space="preserve">
+    <value>Uitgangswaarde installeren bevestigd</value>
+  </data>
+  <data name="BaselineInstallFailed" xml:space="preserve">
+    <value>Uitgangswaarde installeren mislukt</value>
+  </data>
+  <data name="BaselineMissingHash" xml:space="preserve">
+    <value>Hash-update van uitgangswaarde aangevraagd</value>
+  </data>
+  <data name="BaselineQueryConfirmed" xml:space="preserve">
+    <value>Uitgangswaarde opvragen bevestigd</value>
+  </data>
+  <data name="BaselineQueryFailed" xml:space="preserve">
+    <value>Uitgangswaarde opvragen mislukt</value>
+  </data>
+  <data name="BaselineQueryRequested" xml:space="preserve">
+    <value>Uitgangswaarde opvragen aangevraagd</value>
+  </data>
+  <data name="BaselineReapplyFailed" xml:space="preserve">
+    <value>Kan uitgangswaarde niet opnieuw toepassen</value>
+  </data>
+  <data name="BaselineRemovalConfirmed" xml:space="preserve">
+    <value>Uitgangswaarde verwijderen bevestigd</value>
+  </data>
+  <data name="BaselineRemovalFailed" xml:space="preserve">
+    <value>Uitgangswaarde verwijderen mislukt</value>
+  </data>
+  <data name="BaselineStatusUpdateFailed" xml:space="preserve">
+    <value>Uitgangswaarde statusupdate mislukt</value>
+  </data>
+  <data name="BootstrapTokenEscrowed" xml:space="preserve">
+    <value>BootstrapToken in bewaring gesteld</value>
+  </data>
+  <data name="BootstrapTokenRemoved" xml:space="preserve">
+    <value>Bootstrap-token verwijderd</value>
+  </data>
+  <data name="CartCreationFailed" xml:space="preserve">
+    <value>Creëren van kar mislukt</value>
+  </data>
+  <data name="CertificateMissingInSample" xml:space="preserve">
+    <value>Ontbreekt in steekproef</value>
+  </data>
+  <data name="CertificateNoLongerInUse" xml:space="preserve">
+    <value>Niet in gebruik</value>
+  </data>
+  <data name="CertificatePinningDisable" xml:space="preserve">
+    <value>Vastmaken van certificaten uitgeschakeld</value>
+  </data>
+  <data name="CertificateReinstated" xml:space="preserve">
+    <value>Certificaat opnieuw in functie</value>
+  </data>
+  <data name="CheckInCheckOut" xml:space="preserve">
+    <value>Inchecken/uitchecken</value>
+  </data>
+  <data name="ComplianceBrokerRequest" xml:space="preserve">
+    <value>Aanvraag conformiteitsaanbieder</value>
+  </data>
+  <data name="ComplianceEvaluationTime" xml:space="preserve">
+    <value>Tijdstip conformiteitsevaluatie</value>
+  </data>
+  <data name="CompliancePolicyParsing" xml:space="preserve">
+    <value>Netwerkbeleid parseren</value>
+  </data>
+  <data name="ConditionalAccessDeviceRegistration" xml:space="preserve">
+    <value>Voorwaardelijke toegang - appraatregistratie</value>
+  </data>
+  <data name="ConditionalAccessDeviceStateChange" xml:space="preserve">
+    <value>Voorwaardelijke toegang - apparaatstatuswijziging</value>
+  </data>
+  <data name="ConditionalAccessPartnerType" xml:space="preserve">
+    <value>Voorwaardelijke toegang - partnertype</value>
+  </data>
+  <data name="ConfigurationReceivedToRestrictAppOrProcess" xml:space="preserve">
+    <value>Configuratie ontvangen om applicaties of processen te beperken</value>
+  </data>
+  <data name="ConsoleEvent" xml:space="preserve">
+    <value>Consolegebeurtenis</value>
+  </data>
+  <data name="ConsoleEventLogSearchFilterDateRange" xml:space="preserve">
+    <value>De mogelijkheid om consolegebeurtenissen te tonen voor grote datumbereiken zoals 'Elke' en 'Vorige maand' is uitgeschakeld op Globaal. Selecteer een kleiner datumbereik om consolegebeurtenissen te bekijken of navigeer naar een onderliggende OG.</value>
+  </data>
+  <data name="ConsoleEventLogSearchLimitExceeded" xml:space="preserve">
+    <value>Het datumbereik dat is geselecteerd voor consolegebeurtenissen is te groot. Selecteer een kleiner datumbereik om consolegebeurtenissen te bekijken.</value>
+  </data>
+  <data name="ConsoleEvents" xml:space="preserve">
+    <value>Consolegebeurtenissen</value>
+  </data>
+  <data name="ConsoleSessionTimeOutChangedFailure" xml:space="preserve">
+    <value>Wijziging time-out consolesessie mislukt</value>
+  </data>
+  <data name="ConsoleSessionTimeOutChangedSuccess" xml:space="preserve">
+    <value>Wijziging time-out consolesessie geslaagd</value>
+  </data>
+  <data name="CreateWnsChannelCommandRequestConfirmed" xml:space="preserve">
+    <value>Aanvraag voor WNS-kanaal maken bevestigd</value>
+  </data>
+  <data name="CreateWnsChannelCommandRequestFailed" xml:space="preserve">
+    <value>Aanvraag voor WNS-kanaal creëren is mislukt</value>
+  </data>
+  <data name="DateTimeLabel" xml:space="preserve">
+    <value>Datum en tijd</value>
+  </data>
+  <data name="DeviceActionFailed" xml:space="preserve">
+    <value>Apparaatactie mislukt</value>
+  </data>
+  <data name="DeviceActionInprogress" xml:space="preserve">
+    <value>Apparaatactie wordt uitgevoerd</value>
+  </data>
+  <data name="DeviceActionProcessed" xml:space="preserve">
+    <value>Apparaatactie verwerkt</value>
+  </data>
+  <data name="DeviceActionRequested" xml:space="preserve">
+    <value>Toestelactie aangevraagd</value>
+  </data>
+  <data name="DeviceAddedToAppleDep" xml:space="preserve">
+    <value>Apparaat toegevoegd aan Apple DEP</value>
+  </data>
+  <data name="DeviceAddedToEnrollmentWhiteList" xml:space="preserve">
+    <value>Apparaat toegevoegd aan toestemmingslijst voor inschrijving</value>
+  </data>
+  <data name="DeviceAllMangedApplicationDisable" xml:space="preserve">
+    <value>Alle door het apparaat beheerde applicaties zijn uitgeschakeld</value>
+  </data>
+  <data name="DeviceAttributeAssetNumberModified" xml:space="preserve">
+    <value>Toestelkenmerk - Activanummer gewijzigd</value>
+  </data>
+  <data name="DeviceAttributeOperatingSystem" xml:space="preserve">
+    <value>Besturingssysteem toestelkenmerk</value>
+  </data>
+  <data name="DeviceAttributeUserEmailAddressModified" xml:space="preserve">
+    <value>E-mailadres gebruiker toestelkenmerk gewijzigd</value>
+  </data>
+  <data name="DeviceCheckInWihtNotEnrolledUser" xml:space="preserve">
+    <value>Toestel inchecken met niet ingeschreven gebruiker</value>
+  </data>
+  <data name="DeviceConfiguredFailed" xml:space="preserve">
+    <value>Toestel geconfigureerd mislukt</value>
+  </data>
+  <data name="DeviceConfiguredRefused" xml:space="preserve">
+    <value>Toestel geconfigureerd geweigerd</value>
+  </data>
+  <data name="DeviceConsoleEvent" xml:space="preserve">
+    <value>Toestel- en consolegebeurtenis</value>
+  </data>
+  <data name="DeviceConsoleEvents" xml:space="preserve">
+    <value>Toestel- en consolegebeurtenissen</value>
+  </data>
+  <data name="DeviceCpuInfoChanged" xml:space="preserve">
+    <value>CPU-informatie toestel gewijzigd</value>
+  </data>
+  <data name="DeviceData" xml:space="preserve">
+    <value>Toestelgegevens</value>
+  </data>
+  <data name="DeviceEvent" xml:space="preserve">
+    <value>Toestelgebeurtenis</value>
+  </data>
+  <data name="DeviceEventLogSearchFilterDateRange" xml:space="preserve">
+    <value>De mogelijkheid om toestelgebeurtenissen te tonen voor grote datumbereiken zoals 'Elke' en 'Vorige maand' is uitgeschakeld op Globaal niveau. Selecteer een kleiner datumbereik om toestelgebeurtenissen te bekijken of navigeer naar een onderliggende OG.</value>
+  </data>
+  <data name="DeviceEventLogSearchLimitExceeded" xml:space="preserve">
+    <value>Het datumbereik dat is geselecteerd voor toestelgebeurtenissen is te groot. Selecteer een kleiner datumbereik om toestelgebeurtenissen te bekijken.</value>
+  </data>
+  <data name="DeviceEvents" xml:space="preserve">
+    <value>Toestelgebeurtenissen</value>
+  </data>
+  <data name="DeviceEventsDescription" xml:space="preserve">
+    <value>Gedetailleerde informatie over apparaatgebeurtenissen weergeven</value>
+  </data>
+  <data name="DeviceLimitPerOrganizationGroupEnabled" xml:space="preserve">
+    <value>Limiet voor aantal toestellen per organisatiegroep ingeschakeld</value>
+  </data>
+  <data name="DeviceLocationFailed" xml:space="preserve">
+    <value>Toestellocatie mislukt</value>
+  </data>
+  <data name="DeviceLocationRefused" xml:space="preserve">
+    <value>Toestellocatie geweigerd</value>
+  </data>
+  <data name="DeviceManagementStatus" xml:space="preserve">
+    <value>Apparaatbeheerstatus</value>
+  </data>
+  <data name="DeviceMangedApplicationDisable" xml:space="preserve">
+    <value>Door apparaat beheerde applicatie uitgeschakeld</value>
+  </data>
+  <data name="DeviceModelChanged" xml:space="preserve">
+    <value>Toestelmodel gewijzigd</value>
+  </data>
+  <data name="DeviceOemChanged" xml:space="preserve">
+    <value>OEM van toestel gewijzigd</value>
+  </data>
+  <data name="DeviceOfflineDomainJoinConfigCreationFailed" xml:space="preserve">
+    <value>Maken van configuratie voor deelname aan offlinedomein mislukt</value>
+  </data>
+  <data name="DeviceScriptSampleSentFailed" xml:space="preserve">
+    <value>Voorbeeld van toestelscript verzenden is mislukt</value>
+  </data>
+  <data name="DeviceServicesAutoDiscoverySync" xml:space="preserve">
+    <value>Synchronisatie automatische ontdekking toestelservices</value>
+  </data>
+  <data name="DeviceTimeWindowStatusSampleCompleted" xml:space="preserve">
+    <value>Toestel - steekproef tijdvensterstatus voltooid</value>
+  </data>
+  <data name="DeviceTimeWindowStatusSampleFailed" xml:space="preserve">
+    <value>Toestel - steekproef tijdvensterstatus mislukt</value>
+  </data>
+  <data name="DeviceTimeWindowSync" xml:space="preserve">
+    <value>Toestel - tijdvenster synchroniseren</value>
+  </data>
+  <data name="DeviceUserCheckOutFailed" xml:space="preserve">
+    <value>Uitchecken toestelgebruiker mislukt</value>
+  </data>
+  <data name="DeviceUUID" xml:space="preserve">
+    <value>Toestel-UUID</value>
+  </data>
+  <data name="DeviceWorkflowComplete" xml:space="preserve">
+    <value>Apparaatwerkstroom voltooid</value>
+  </data>
+  <data name="DeviceWorkflowFailed" xml:space="preserve">
+    <value>Apparaatwerkstroom mislukt</value>
+  </data>
+  <data name="DeviceWorkflowSync" xml:space="preserve">
+    <value>Apparaatwerkstroom synchroniseren</value>
+  </data>
+  <data name="DisableLostModeRefused" xml:space="preserve">
+    <value>Uitschakelen Verloren-modus geweigerd</value>
+  </data>
+  <data name="DoNotShowAgain" xml:space="preserve">
+    <value>Niet meer tonen</value>
+  </data>
+  <data name="EnableActivationLockFailed" xml:space="preserve">
+    <value>Inschakelen van activeringsvergrendeling mislukt</value>
+  </data>
+  <data name="EnableActivationLockSucceeded" xml:space="preserve">
+    <value>Inschakelen van activeringsvergrendeling geslaagd</value>
+  </data>
+  <data name="EnableLostModeRefused" xml:space="preserve">
+    <value>Inschakelen Verloren-modus geweigerd</value>
+  </data>
+  <data name="EnrollmentAuthenticationSettingChanged" xml:space="preserve">
+    <value>Instelling inschrijvingsverificatie gewijzigd</value>
+  </data>
+  <data name="FileVaultRecoveryKeyRotationRequested" xml:space="preserve">
+    <value>Rotatie FileVault-herstelsleutel aangevraagd</value>
+  </data>
+  <data name="FromDeviceDetailsPage" xml:space="preserve">
+    <value>Van toestelgegevenspagina</value>
+  </data>
+  <data name="FromSSPDetailsPage" xml:space="preserve">
+    <value>Van SSP-gegevenspagina</value>
+  </data>
+  <data name="GetBootstrapTokenRequested" xml:space="preserve">
+    <value>GetBootstrapToken aangevraagd</value>
+  </data>
+  <data name="GetBootstrapTokenRequestProcessed" xml:space="preserve">
+    <value>GetBootstrapToken-aanvraag verwerkt</value>
+  </data>
+  <data name="GlobalThresholdMessage" xml:space="preserve">
+    <value>Alleen gebeurtenissen in het afgelopen uur kunnen worden bekeken op Global. Navigeer naar een onderliggende OG om grotere tijdsbereiken te zien</value>
+  </data>
+  <data name="GuestUserLogin" xml:space="preserve">
+    <value>Login gastgebruiker</value>
+  </data>
+  <data name="ImpactedDevices" xml:space="preserve">
+    <value>Getroffen toestellen</value>
+  </data>
+  <data name="InitiateAutoDiscoveryPinningSync" xml:space="preserve">
+    <value>Synchronisatie Auto Discovery Pinning initiëren</value>
+  </data>
+  <data name="InstallIntelligentHubRequestFailure" xml:space="preserve">
+    <value>Kan commando om Hub te installeren niet in wachtrij plaatsen</value>
+  </data>
+  <data name="InstallIntelligentHubRequestSuccess" xml:space="preserve">
+    <value>Commando om Hub te installeren is in wachtrij geplaatst</value>
+  </data>
+  <data name="InstallMacOSBootstrapPkgFailed" xml:space="preserve">
+    <value>macOS Bootstrap-pakket installeren mislukt</value>
+  </data>
+  <data name="InstallMacOSBootstrapPkgRefused" xml:space="preserve">
+    <value>macOS Bootstrap-pakket installeren geweigerd</value>
+  </data>
+  <data name="InstallOnFilteredSuccess" xml:space="preserve">
+    <value>Installeren op alle gefilterde geslaagd</value>
+  </data>
+  <data name="InstallPackagedMacOsXAgentConfirmed" xml:space="preserve">
+    <value>Installatie macOS-agent bevestigd</value>
+  </data>
+  <data name="InstallPackagedMacOsXAgentFailed" xml:space="preserve">
+    <value>Installatie macOS-agent mislukt</value>
+  </data>
+  <data name="InstallPackagedMacOsXAgentRefused" xml:space="preserve">
+    <value>Installatie macOS-agent geweigerd</value>
+  </data>
+  <data name="InstallPackagedMacOsXAgentRequested" xml:space="preserve">
+    <value>Installatie macOS-agent aangevraagd</value>
+  </data>
+  <data name="LogOutUserConfirmed" xml:space="preserve">
+    <value>Gebruiker afmelden bevestigd</value>
+  </data>
+  <data name="LogoutUserFailed" xml:space="preserve">
+    <value>Gebruiker afmelden mislukt</value>
+  </data>
+  <data name="LogOutUserRefused" xml:space="preserve">
+    <value>Gebruiker afmelden geweigerd</value>
+  </data>
+  <data name="LogOutUserRequested" xml:space="preserve">
+    <value>Gebruiker afmelden aangevraagd</value>
+  </data>
+  <data name="ManagedAdminPasswordRotationRequested" xml:space="preserve">
+    <value>Wachwoordrotatie beheerde admingebruiker aangevraagd</value>
+  </data>
+  <data name="ManagedSettings" xml:space="preserve">
+    <value>Beheerde instellingen</value>
+  </data>
+  <data name="ManagedSettingsConfirmed" xml:space="preserve">
+    <value>Beheerde instellingen bevestigd</value>
+  </data>
+  <data name="ManagedSettingsFailed" xml:space="preserve">
+    <value>Beheerde instellingen mislukt</value>
+  </data>
+  <data name="ManagedSettingsRefused" xml:space="preserve">
+    <value>Beheerde instellingen geweigerd</value>
+  </data>
+  <data name="ManagedSettingsRequested" xml:space="preserve">
+    <value>Beheerde instellingen aangevraagd</value>
+  </data>
+  <data name="MembershipSyncRequestSent" xml:space="preserve">
+    <value>Synchronisatieaanvraag lidmaatschap verzonden</value>
+  </data>
+  <data name="NotNowInAwaitConfiguration" xml:space="preserve">
+    <value>Niet nu in Wachten op configuratie</value>
+  </data>
+  <data name="P2PTrueUpGenericError" xml:space="preserve">
+    <value>P2P True Up generieke fout</value>
+  </data>
+  <data name="PCRefreshConfirmed" xml:space="preserve">
+    <value>Windows Desktop vernieuwen bevestigd</value>
+  </data>
+  <data name="PCRefreshFailed" xml:space="preserve">
+    <value>Windows Desktop vernieuwen mislukt</value>
+  </data>
+  <data name="PeerDistributionStatistics" xml:space="preserve">
+    <value>Statistieken voor peerdistributie</value>
+  </data>
+  <data name="PinnedCertificateDelete" xml:space="preserve">
+    <value>Gepind certificaat verwijderen</value>
+  </data>
+  <data name="PinnedHostDelete" xml:space="preserve">
+    <value>Gepinde host verwijderen</value>
+  </data>
+  <data name="PinnedHostDisable" xml:space="preserve">
+    <value>Gepinde host uitgeschakeld</value>
+  </data>
+  <data name="PinnedHostEdit" xml:space="preserve">
+    <value>Gepinde host bewerken</value>
+  </data>
+  <data name="PinnedHostEnable" xml:space="preserve">
+    <value>Gepinde host ingeschakeld</value>
+  </data>
+  <data name="PolicySigningCertificateSettingChangedFailure" xml:space="preserve">
+    <value>Wijziging instelling beleidsondertekeningscertificaat mislukt</value>
+  </data>
+  <data name="PolicySigningCertificateSettingChangedSuccess" xml:space="preserve">
+    <value>Wijziging instelling beleidsondertekeningscertificaat geslaagd</value>
+  </data>
+  <data name="ProfilesPerformActionAgain" xml:space="preserve">
+    <value>Profielen maken/bijwerken/verwijderen is mislukt. Voer de actie opnieuw uit.</value>
+  </data>
+  <data name="ProvisioningAgentQueryFailed" xml:space="preserve">
+    <value>Opvragen provisioningagent mislukt</value>
+  </data>
+  <data name="ProvisioningPackageCreated" xml:space="preserve">
+    <value>Provisioningpakket gemaakt</value>
+  </data>
+  <data name="ProvisioningPackageInstallConfirmed" xml:space="preserve">
+    <value>Installatie provisioningpakket bevestigd</value>
+  </data>
+  <data name="ProvisioningPackageInstallFailed" xml:space="preserve">
+    <value>Installatie provisioningpakket mislukt</value>
+  </data>
+  <data name="RecordDeleted" xml:space="preserve">
+    <value>Record deleted.</value>
+  </data>
+  <data name="RefreshEsimConfirmed" xml:space="preserve">
+    <value>eSIM vernieuwen bevestigd</value>
+  </data>
+  <data name="RefreshEsimFailed" xml:space="preserve">
+    <value>eSIM vernieuwen mislukt</value>
+  </data>
+  <data name="RefreshEsimRefused" xml:space="preserve">
+    <value>eSIM vernieuwen geweigerd</value>
+  </data>
+  <data name="RefreshEsimRequested" xml:space="preserve">
+    <value>eSIM vernieuwen aangevraagd</value>
+  </data>
+  <data name="RejectRemoval" xml:space="preserve">
+    <value>Verwijdering weigeren</value>
+  </data>
+  <data name="RejectRemovalDescription" xml:space="preserve">
+    <value>Met deze actie zal het commando voor het verwijderen van apps van mogelijk beïnvloede apparaten worden gewist. Zorg ervoor dat de applicatie actief is en aan de toestellen is toegewezen om te voorkomen dat de verwijdering van de applicatie opnieuw wordt geactiveerd.</value>
+  </data>
+  <data name="RejectRemovalTitle" xml:space="preserve">
+    <value>Applicatieverwijdering weigeren</value>
+  </data>
+  <data name="RemovableDriveRecoveryKeyAccessed" xml:space="preserve">
+    <value>Diskencryptie herstelsleutel geopend</value>
+  </data>
+  <data name="RemoveBootstrapTokenRequested" xml:space="preserve">
+    <value>Bootstrap-token verwijderen aangevraagd</value>
+  </data>
+  <data name="RemoveLockConfirmed" xml:space="preserve">
+    <value>Vergrendeling verwijderen bevestigd</value>
+  </data>
+  <data name="RequestLogConfirmed" xml:space="preserve">
+    <value>Aanvraag toestellogboek bevestigd</value>
+  </data>
+  <data name="RequestLogFailed" xml:space="preserve">
+    <value>Aanvraag toestellogboek mislukt</value>
+  </data>
+  <data name="RequestLogRefused" xml:space="preserve">
+    <value>Aanvraag toestellogboek geweigerd</value>
+  </data>
+  <data name="RequestLogRequested" xml:space="preserve">
+    <value>Toestellogboek aangevraagd</value>
+  </data>
+  <data name="ResourceUuid" xml:space="preserve">
+    <value>Resource-UUID</value>
+  </data>
+  <data name="ResourceVersion" xml:space="preserve">
+    <value>Resource-versie</value>
+  </data>
+  <data name="RestrictedAppOrProcessDetected" xml:space="preserve">
+    <value>Beperkte app of beperkt proces gedetecteerd</value>
+  </data>
+  <data name="RestrictedAppOrProcessRemediated" xml:space="preserve">
+    <value>Beperkte app of beperkt proces gecorrigeerd</value>
+  </data>
+  <data name="RotateDeviceRecoveryKey" xml:space="preserve">
+    <value>Toestel-herstelsleutel roteren</value>
+  </data>
+  <data name="RotateDeviceRecoveryKeyRequested" xml:space="preserve">
+    <value>Rotatie herstelsleutel aangevraagd</value>
+  </data>
+  <data name="SampleResponseListReceived" xml:space="preserve">
+    <value>Steekproef responslijst ontvangen</value>
+  </data>
+  <data name="ScheduledAdminPasswordRotationRequested" xml:space="preserve">
+    <value>Geplande rotatie van beheerderswachtwoord aangevraagd</value>
+  </data>
+  <data name="ScheduledRotateDeviceRecoveryKeyRequested" xml:space="preserve">
+    <value>Geplande rotatie herstelsleutel aangevraagd</value>
+  </data>
+  <data name="ScheduleOSUpdateScanFailed" xml:space="preserve">
+    <value>Scan voor update van het besturingssysteem plannen is mislukt</value>
+  </data>
+  <data name="ScimProvisioningFailure" xml:space="preserve">
+    <value>SCIM-provisioningfout</value>
+  </data>
+  <data name="ScriptFailedToExecuteOnDevice" xml:space="preserve">
+    <value>Script kan niet worden uitgevoerd op toestel</value>
+  </data>
+  <data name="ScriptPersistedInDeviceState" xml:space="preserve">
+    <value>Script persistent gemaakt in toestelstatus</value>
+  </data>
+  <data name="ScriptResourceRequestedByDevice" xml:space="preserve">
+    <value>Scriptresource aangevraagd door toestel</value>
+  </data>
+  <data name="ScriptSampleNotPersisted" xml:space="preserve">
+    <value>Scriptvoorbeeld niet persistent gemaakt in toestelstatus</value>
+  </data>
+  <data name="ScriptSamplePersistedInDeviceState" xml:space="preserve">
+    <value>Scriptvoorbeeld persistent gemaakt in toestelstatus</value>
+  </data>
+  <data name="ScriptSampleReceived" xml:space="preserve">
+    <value>Scriptvoorbeeld ontvangen</value>
+  </data>
+  <data name="ScriptSampleReceivedWithErrors" xml:space="preserve">
+    <value>Scriptvoorbeeld ontvangen met fouten</value>
+  </data>
+  <data name="ScriptSampleSentFailed" xml:space="preserve">
+    <value>Voorbeeld van toestelscript verzenden is mislukt</value>
+  </data>
+  <data name="SdkComplianceSettings" xml:space="preserve">
+    <value>Conformiteitsinstellingen SDK-app</value>
+  </data>
+  <data name="SdkComplianceSettingsChanged" xml:space="preserve">
+    <value>Conformiteitsinstellingen SDK-applicatie zijn gewijzigd</value>
+  </data>
+  <data name="ServerKeyUtilityKeyInstallationFailure" xml:space="preserve">
+    <value>Server Key Utility-installatie mislukt</value>
+  </data>
+  <data name="ServerKeyUtilityKeyInstallationSuccess" xml:space="preserve">
+    <value>Server Key Utility-installatie geslaagd</value>
+  </data>
+  <data name="SetBootstrapTokenRequested" xml:space="preserve">
+    <value>SetBootstrapToken aangevraagd</value>
+  </data>
+  <data name="SetUpConfigurationConfirmed" xml:space="preserve">
+    <value>Installatieconfiguratie bevestigd</value>
+  </data>
+  <data name="SetUpConfigurationFailed" xml:space="preserve">
+    <value>Installatieconfiguratie mislukt</value>
+  </data>
+  <data name="SetUpConfigurationRefused" xml:space="preserve">
+    <value>Installatieconfiguratie geweigerd</value>
+  </data>
+  <data name="SetUpConfigurationRequested" xml:space="preserve">
+    <value>Installatieconfiguratie aangevraagd</value>
+  </data>
+  <data name="SigningServiceCertificateRotationFailedEvent" xml:space="preserve">
+    <value>Gebeurtenis Rotatie van ondertekeningsservicecertificaat mislukt</value>
+  </data>
+  <data name="SoapApiClearClientCertificate" xml:space="preserve">
+    <value>SOAP API-clientcertificaat gewist</value>
+  </data>
+  <data name="SoapApiExportClientCertificate" xml:space="preserve">
+    <value>SOAP API-clientcertificaat geëxporteerd</value>
+  </data>
+  <data name="SoapApiGenerateClientCertificate" xml:space="preserve">
+    <value>SOAP API-clientcertificaat gegenereerd</value>
+  </data>
+  <data name="StopLogRequested" xml:space="preserve">
+    <value>Stop logboek aangevraagd</value>
+  </data>
+  <data name="SyncAssetsAppDeleted" xml:space="preserve">
+    <value>Applicatie voor synchroniseren van assets is verwijderd</value>
+  </data>
+  <data name="SyncAssetsAppVppInfoRemoved" xml:space="preserve">
+    <value>VPP-informatie van applicatie voor synchroniseren van assets is verwijderd</value>
+  </data>
+  <data name="SyncEntitlementsConfirmed" xml:space="preserve">
+    <value>Synchroniseren van rechten bevestigd</value>
+  </data>
+  <data name="SyncEntitlementsFailed" xml:space="preserve">
+    <value>Synchroniseren van rechten mislukt</value>
+  </data>
+  <data name="SyncEntitlementsRefused" xml:space="preserve">
+    <value>Synchroniseren van rechten geweigerd</value>
+  </data>
+  <data name="SyncEntitlementsRequested" xml:space="preserve">
+    <value>Synchroniseren van rechten aangevraagd</value>
+  </data>
+  <data name="TimeMachineEnabled" xml:space="preserve">
+    <value>Time Machine ingeschakeld</value>
+  </data>
+  <data name="TimeWindowAssignmentDeleted" xml:space="preserve">
+    <value>Toewijzing tijdvenster verwijderd</value>
+  </data>
+  <data name="TimeWindowAssignmentUpdated" xml:space="preserve">
+    <value>Toewijzing tijdvenster bijgewerkt</value>
+  </data>
+  <data name="TimeWindowAssignmentUpdateFailed" xml:space="preserve">
+    <value>Toewijzing tijdvenster bijwerken mislukt</value>
+  </data>
+  <data name="TimeWindowCreated" xml:space="preserve">
+    <value>Tijdvenster gemaakt</value>
+  </data>
+  <data name="TimeWindowDeleted" xml:space="preserve">
+    <value>Tijdvenster verwijderd</value>
+  </data>
+  <data name="TimeWindowIdentifiers" xml:space="preserve">
+    <value>Tijdvenster-ID's</value>
+  </data>
+  <data name="TimeWindows" xml:space="preserve">
+    <value>Tijdvensters</value>
+  </data>
+  <data name="TimeWindowUpdated" xml:space="preserve">
+    <value>Tijdvenster bijgewerkt</value>
+  </data>
+  <data name="TimeWindowUpdateFailed" xml:space="preserve">
+    <value>Bijwerken van tijdvenster is mislukt</value>
+  </data>
+  <data name="UpdateAssignmentCreated" xml:space="preserve">
+    <value>Toewijzing van update gemaakt</value>
+  </data>
+  <data name="UpdateAssignmentModified" xml:space="preserve">
+    <value>Toewijzing van update gewijzigd</value>
+  </data>
+  <data name="UpdateAssignmentRemoved" xml:space="preserve">
+    <value>Toewijzing van update verwijderd</value>
+  </data>
+  <data name="UserEnrollmentAuthenticationFailure" xml:space="preserve">
+    <value>Verificatie gebruikersinschrijving mislukt</value>
+  </data>
+  <data name="UserEnrollmentName" xml:space="preserve">
+    <value>Inschrijving-gebruikersnaam</value>
+  </data>
+  <data name="UserFriendlyPrivacyPolicy" xml:space="preserve">
+    <value>Gebruikersvriendelijk privacybeleid</value>
+  </data>
+  <data name="UserListConfirmed" xml:space="preserve">
+    <value>Gebruikerslijst bevestigd</value>
+  </data>
+  <data name="UserListFailed" xml:space="preserve">
+    <value>Gebruikerslijst mislukt</value>
+  </data>
+  <data name="UserListRefused" xml:space="preserve">
+    <value>Gebruikerslijst geweigerd</value>
+  </data>
+  <data name="UserListRequested" xml:space="preserve">
+    <value>Gebruikerslijst aangevraagd</value>
+  </data>
+  <data name="VmLockConfirmed" xml:space="preserve">
+    <value>Vm-vergrendeling bevestigd</value>
+  </data>
+  <data name="VmLockFailed" xml:space="preserve">
+    <value>Vm-vergrendeling mislukt</value>
+  </data>
+  <data name="VmLockRefused" xml:space="preserve">
+    <value>Vm-vergrendeling geweigerd</value>
+  </data>
+  <data name="VmLockRequested" xml:space="preserve">
+    <value>Vm-vergrendeling aangevraagd</value>
+  </data>
+  <data name="VmUnlockConfirmed" xml:space="preserve">
+    <value>Vm-ontgrendeling bevestigd</value>
+  </data>
+  <data name="VmUnlockRefused" xml:space="preserve">
+    <value>Vm-ontgrendeling geweigerd</value>
+  </data>
+  <data name="VmUnlockRequested" xml:space="preserve">
+    <value>Vm-ontgrendeling aangevraagd</value>
+  </data>
+  <data name="VmWipeConfirmed" xml:space="preserve">
+    <value>Vm wissen bevestigd</value>
+  </data>
+  <data name="VmWipeFailed" xml:space="preserve">
+    <value>Vm wissen mislukt</value>
+  </data>
+  <data name="VmWipeRefused" xml:space="preserve">
+    <value>Vm wissen geweigerd</value>
+  </data>
+  <data name="VmWipeRequested" xml:space="preserve">
+    <value>Vm wissen aangevraagd</value>
+  </data>
+  <data name="Windows10InvalidOdjSyncAlert" xml:space="preserve">
+    <value>Windows 10 ongeldige Odj-synchronisatiewaarschuwing</value>
+  </data>
+  <data name="WindowsDeviceCheckInMode" xml:space="preserve">
+    <value>Incheckmodus Windows-toestel</value>
+  </data>
+  <data name="WindowsOobeAccountProvisioningComplete" xml:space="preserve">
+    <value>OOBE-provisioning voltooid voor gebruiker</value>
+  </data>
+  <data name="WindowsOobeDeviceProvisioningComplete" xml:space="preserve">
+    <value>OOBE-provisioning voltooid voor toestel</value>
+  </data>
+  <data name="WindowsOobeProvisioningRequested" xml:space="preserve">
+    <value>OOBE-provisioning aangevraagd</value>
+  </data>
+  <data name="WorkAccessibilityServicesPermittedAppIds" xml:space="preserve">
+    <value>Applicaties waarvoor toegankelijkheidsservices zijn toegestaan</value>
+  </data>
+  <data name="WorkAllowAccountChanges" xml:space="preserve">
+    <value>Toevoegen van Google-accounts toevoegen</value>
+  </data>
+  <data name="WorkAllowBluetoothContactSharing" xml:space="preserve">
+    <value>Zakelijke contacten met Bluetooth-toestellen delen</value>
+  </data>
+  <data name="WorkAllowCamera" xml:space="preserve">
+    <value>Camera toestaan</value>
+  </data>
+  <data name="WorkAllowChrome" xml:space="preserve">
+    <value>Chrome Browser toestaan</value>
+  </data>
+  <data name="WorkAllowContacts" xml:space="preserve">
+    <value>Zakelijke contactpersonen toestaan in persoonlijk adresboek</value>
+  </data>
+  <data name="WorkAllowDisableAppVerify" xml:space="preserve">
+    <value>Uitschakelen van applicatieverificatie toestaan</value>
+  </data>
+  <data name="WorkAllowGooglePlay" xml:space="preserve">
+    <value>Google Play toestaan</value>
+  </data>
+  <data name="WorkAllowInstallingApps" xml:space="preserve">
+    <value>Applicaties installeren toestaan</value>
+  </data>
+  <data name="WorkAllowKeyguardFingerprint" xml:space="preserve">
+    <value>Keyguard-vingerafdruksensor toestaan</value>
+  </data>
+  <data name="WorkAllowKeyguardTrustAgent" xml:space="preserve">
+    <value>Keyguard Trust Agent Status toestaan</value>
+  </data>
+  <data name="WorkAllowKeyguardUnredacted" xml:space="preserve">
+    <value>Keyguard onbewerkte notificaties toestaan</value>
+  </data>
+  <data name="WorkAllowNFC" xml:space="preserve">
+    <value>NFC toestaan</value>
+  </data>
+  <data name="WorkAllowNonGoogleAccounts" xml:space="preserve">
+    <value>Toevoegen/verwijderen van accounts toestaan</value>
+  </data>
+  <data name="WorkAllowNonMarketAppInstall" xml:space="preserve">
+    <value>De installatie van applicaties die niet van de Play Store gehaald zijn toestaan</value>
+  </data>
+  <data name="WorkAllowOutgoingBluetoothConnections" xml:space="preserve">
+    <value>Uitgaande Bluetooth-verbindingen toestaan</value>
+  </data>
+  <data name="WorkAllowPersonalShareWithWork" xml:space="preserve">
+    <value>Toestaan dat persoonlijke applicaties documenten delen met zakelijke applicaties</value>
+  </data>
+  <data name="WorkAllowPersonalToAccessWork" xml:space="preserve">
+    <value>Toestaan dat persoonlijke applicaties documenten openen van zakelijke applicaties</value>
+  </data>
+  <data name="WorkAllowScreenCapture" xml:space="preserve">
+    <value>Schermafbeelding toestaan</value>
+  </data>
+  <data name="WorkAllowUninstallingApps" xml:space="preserve">
+    <value>Deïnstalleren van applicaties toestaan</value>
+  </data>
+  <data name="WorkAllowUSBDebugging" xml:space="preserve">
+    <value>USB-foutopsporing toestaan</value>
+  </data>
+  <data name="WorkAllowWorkContactsInPhone" xml:space="preserve">
+    <value>Nummerweergave bij zakelijke contacten toestaan</value>
+  </data>
+  <data name="WorkAllowWorkPersonalPaste" xml:space="preserve">
+    <value>Plakken van klembord tussen zakelijke en persoonlijke applicaties toestaan</value>
+  </data>
+  <data name="WorkAllowWorkShareWithPersonal" xml:space="preserve">
+    <value>Toestaan dat zakelijke applicaties documenten delen met persoonlijke applicaties</value>
+  </data>
+  <data name="WorkAllowWorkToAccessPersonal" xml:space="preserve">
+    <value>Toestaan dat zakelijke applicaties toegang hebben tot documenten van persoonlijke applicaties</value>
+  </data>
+  <data name="WorkflowAssignmentDeleted" xml:space="preserve">
+    <value>Werkstroomtoewijzing verwijderd</value>
+  </data>
+  <data name="WorkflowAssignmentUpdated" xml:space="preserve">
+    <value>Werkstroomtoewijzing bijgewerkt</value>
+  </data>
+  <data name="WorkflowCreated" xml:space="preserve">
+    <value>Werkstroom gemaakt</value>
+  </data>
+  <data name="WorkflowDeleted" xml:space="preserve">
+    <value>Werkstroom verwijderd</value>
+  </data>
+  <data name="WorkflowUpdated" xml:space="preserve">
+    <value>Werkstroom bijgewerkt</value>
+  </data>
+  <data name="WorkflowUpdatedDueToResourceUpdate" xml:space="preserve">
+    <value>Werkstroom is bijgewerkt vanwege resource-update</value>
+  </data>
+  <data name="WorkflowUpdateFailed" xml:space="preserve">
+    <value>Werkstroom bijwerken mislukt</value>
+  </data>
+  <data name="WorkflowUuid" xml:space="preserve">
+    <value>Werkstroom-ID</value>
+  </data>
+  <data name="WorkManagedApplication" xml:space="preserve">
+    <value>Via werk beheerde applicatie</value>
+  </data>
+  <data name="WorkManagedBluetooth" xml:space="preserve">
+    <value>Via werk beheerde Bluetooth</value>
+  </data>
+  <data name="WorkManagedDeviceFunctionality" xml:space="preserve">
+    <value>Via werk beheerde toestelfunctionaliteit</value>
+  </data>
+  <data name="WorkManagedHardwareRestrictions" xml:space="preserve">
+    <value>Via werk beheerde hardwarebeperkingen</value>
+  </data>
+  <data name="WorkManagedMmsRestrictions" xml:space="preserve">
+    <value>Via werk beheerde MMS-beperkingen</value>
+  </data>
+  <data name="WorkManagedNetwork" xml:space="preserve">
+    <value>Via werk beheerd netwerk</value>
+  </data>
+  <data name="WorkManagedPhoneAndData" xml:space="preserve">
+    <value>Via werk beheerde telefoon en gegevens</value>
+  </data>
+  <data name="WorkManagedRoaming" xml:space="preserve">
+    <value>Via werk beheerde roaming</value>
+  </data>
+  <data name="WorkManagedSecurity" xml:space="preserve">
+    <value>Via werk beheerde beveiliging</value>
+  </data>
+  <data name="WorkManagedSyncAndStorage" xml:space="preserve">
+    <value>Via werk beheerde synchronisatie en opslag</value>
+  </data>
+  <data name="WorkManagedTethering" xml:space="preserve">
+    <value>Via werk beheerde tethering</value>
+  </data>
+  <data name="WorkProfileApplication" xml:space="preserve">
+    <value>Werkprofiel-applicatie</value>
+  </data>
+  <data name="WorkProfileDeviceFunctionality" xml:space="preserve">
+    <value>Werkprofiel-toestelfunctionaliteit</value>
+  </data>
+  <data name="WorkProfileNetwork" xml:space="preserve">
+    <value>Werkprofiel-netwerk</value>
+  </data>
+  <data name="WorkProfileSyncAndStorage" xml:space="preserve">
+    <value>Werkprofiel-synchronisatie en -opslag</value>
+  </data>
+  <data name="WorkProfileWorkAndPersonal" xml:space="preserve">
+    <value>Werkprofiel werk en persoonlijk</value>
+  </data>
+  <data name="WorkWhitelistPermittedAccessibilityServices" xml:space="preserve">
+    <value>Toegankelijkheidsservices toestaan</value>
+  </data>
+</root>

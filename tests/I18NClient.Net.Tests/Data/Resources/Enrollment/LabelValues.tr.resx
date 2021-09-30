@@ -1,0 +1,584 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AMAPIEnrollmentFeatureNotSupported" xml:space="preserve">
+    <value>Android Management API Geçiş Özelliği kurumunuz için desteklenmiyor. Lütfen yöneticinizle iletişime geçin.</value>
+  </data>
+  <data name="AMAPIEnrollmentNotAllowed" xml:space="preserve">
+    <value>Android Management API ayarları, aygıt Kurumunda etkinleştirilmedi.</value>
+  </data>
+  <data name="AMAPIRegistration" xml:space="preserve">
+    <value>Android Management API Kaydı</value>
+  </data>
+  <data name="AndroidEnterpriseNotAllowed" xml:space="preserve">
+    <value>Aygıt için Android Enterprise Kaydına izin verilmiyor.</value>
+  </data>
+  <data name="AndroidEnterpriseNotFound" xml:space="preserve">
+    <value>Android Enterprise ayarları, aygıtın Kurumunda etkinleştirilmedi</value>
+  </data>
+  <data name="AndroidLegacyEnrollmentNotAllowed" xml:space="preserve">
+    <value>Aygıt Sahibi modunda Android Eski kaydına izin verilmez.</value>
+  </data>
+  <data name="AndroidManagementAPI" xml:space="preserve">
+    <value>Android Management API</value>
+  </data>
+  <data name="AndroidWorkEnrollmentUserAddError" xml:space="preserve">
+    <value>Kayıt Kullanıcısı GSuite içine eklenemedi. Lütfen yöneticinizle iletişime geçin ya da tekrar deneyin.</value>
+  </data>
+  <data name="AndroidWorkEnrollmentUserEmailNotFound" xml:space="preserve">
+    <value>Hesabınızı bulamadık, lütfen yöneticinizle iletişime geçin veya tekrar deneyin.</value>
+  </data>
+  <data name="AndroidWorkEnrollmentUserNotFound" xml:space="preserve">
+    <value>Bu, geçersiz bir Google hesabıdır.</value>
+  </data>
+  <data name="AndroidWorkProfileEnrollmentNotAllowed" xml:space="preserve">
+    <value>Sağlanan sunucu ve grup kimliği, İş Profili kaydına izin vermiyor. Sorularınız varsa lütfen Yöneticinizle iletişime geçin.</value>
+  </data>
+  <data name="AndroidWorkUserEmailDomainNotASubDomain" xml:space="preserve">
+    <value>Kullanılan etki alanı kayıtlı bir alt etki alanı değil. Lütfen yöneticinizle iletişime geçin.</value>
+  </data>
+  <data name="ApplicationIsNotAllowedToRegister" xml:space="preserve">
+    <value>Uygulamanın kaydedilmesine izin verilmiyor.</value>
+  </data>
+  <data name="AssignUserRole" xml:space="preserve">
+    <value>Kullanıcı Rolü Ata</value>
+  </data>
+  <data name="AutoEnrollmentDisabled" xml:space="preserve">
+    <value>Sağlanan Organizasyon Grubu için otomatik kayıt etkinleştirilmemiş. Lütfen yöneticinizle iletişime geçin ya da tekrar deneyin.</value>
+  </data>
+  <data name="CannotChangeOGForDEPTokenArg" xml:space="preserve">
+    <value>{0} DEP belirteci için organizasyon grubu değiştirilemiyor</value>
+  </data>
+  <data name="CannotUseStagingUserForCustomDep" xml:space="preserve">
+    <value>Hazırlama kullanıcıları desteklenmemektedir. Lütfen yöneticinizle iletişime geçin.</value>
+  </data>
+  <data name="CaptchaText" xml:space="preserve">
+    <value>Captcha</value>
+  </data>
+  <data name="ChangeRankOrOrganizationGroup" xml:space="preserve">
+    <value>Sırayı veya Organizasyon Grubunu değiştir</value>
+  </data>
+  <data name="ChangeRankOrOrganizationGroupForUserGroup" xml:space="preserve">
+    <value>Bir Kullanıcı Grubu için sırayı veya Organizasyon Grubunu değiştir</value>
+  </data>
+  <data name="ChangeRankOrUserRole" xml:space="preserve">
+    <value>Sırayı veya Kullanıcı Rolünü değiştir</value>
+  </data>
+  <data name="ChangeRankOrUserRoleForUserGroup" xml:space="preserve">
+    <value>Bir Kullanıcı Grubu için sırayı veya Kullanıcı Rolünü değiştir</value>
+  </data>
+  <data name="ChangeUserRoleAssignmentRankUsingEdit" xml:space="preserve">
+    <value>Bir Kullanıcı Grubu için sırayı veya Kullanıcı Rolünü değiştirmek üzere kayıt düğmesinin yanındaki düzenle düğmesine tıklayın</value>
+  </data>
+  <data name="ConfirmEnterpriseWipeDeviceTitleMessage" xml:space="preserve">
+    <value>Bu işlem, tüm yönetilen kurumsal kaynakları (uygulamalar ve profiller dahil olmak üzere) seçilen aygıttan siler ve kaldırır.  Bu aygıtı yeniden kaydetmeden bu eylemi geri alamazsınız.</value>
+  </data>
+  <data name="CopeEnrollmentNotSupported" xml:space="preserve">
+    <value>Desteklenmeyen Workspace ONE Intelligent Hub sürümü nedeniyle kayıt engellendi</value>
+  </data>
+  <data name="CopyEMMToken" xml:space="preserve">
+    <value>3. Sonraki adımda kullanmak üzere sağlanan EMM belirtecini kopyalayın.</value>
+  </data>
+  <data name="CustomEnrollmentFeatureNotEnabled" xml:space="preserve">
+    <value>Özel kayıt, kurumunuz için devre dışı bırakıldı. Bu aygıtın kayıt profilini yeniden kaydetmek ve yeniden kayıt olmayı denemek için lütfen yöneticinizle iletişime geçin.</value>
+  </data>
+  <data name="DefaultActionForInactiveUsersChanged" xml:space="preserve">
+    <value>Etkin olmayan kullanıcılar için varsayılan eylem</value>
+  </data>
+  <data name="DefaultDeviceOwnershipChanged" xml:space="preserve">
+    <value>Varsayılan aygıt mülkiyeti değişti</value>
+  </data>
+  <data name="DefaultDeviceUserRoleChanged" xml:space="preserve">
+    <value>Varsayılan aygıt kullanıcı rolü değişti</value>
+  </data>
+  <data name="DeleteDeviceCountMessage" xml:space="preserve">
+    <value>Kalıcı olarak silinecek aygıt sayısı:</value>
+  </data>
+  <data name="DepFetchInfoMessage" xml:space="preserve">
+    <value>Tüm Aygıtları Al seçeneği, önceden eşitlenmiş olan aygıtlar da dahil olmak üzere Apple Business Manager'da bu belirtece atanmış tüm aygıtları UEM console ile eşitler. Bu seçenek yalnızca Apple Business Manager'dan tüm aygıtları tam olarak yenilemek ve yeniden eşitlemek için son alternatif olarak kullanılmalıdır.</value>
+  </data>
+  <data name="DepFetchInfoMessageSchool" xml:space="preserve">
+    <value>Tüm Aygıtları Al seçeneği, önceden eşitlenmiş olan aygıtlar da dahil olmak üzere Apple School Manager'da bu belirtece atanmış tüm aygıtları UEM console ile eşitler. Bu seçenek yalnızca Apple School Manager'dan tüm aygıtları tam olarak yenilemek ve yeniden eşitlemek için son alternatif olarak kullanılmalıdır.</value>
+  </data>
+  <data name="DEPTokenArgCannotBeDeleted" xml:space="preserve">
+    <value>{0} DEP belirteci silinemiyor</value>
+  </data>
+  <data name="DEPTokenArgCannotBeRevoked" xml:space="preserve">
+    <value>{0} DEP belirteci iptal edilemiyor</value>
+  </data>
+  <data name="DeviceEnrolledArg" xml:space="preserve">
+    <value>Kayıttan Çıkarılan Aygıt # {0}</value>
+  </data>
+  <data name="DeviceMacAddressDenylisted" xml:space="preserve">
+    <value>Aygıtın MAC adresine izin verilmediği için aygıt kaydedilemiyor.</value>
+  </data>
+  <data name="DeviceManagementRemoved" xml:space="preserve">
+    <value>Aygıt Yönetimi, Workspace ONE UEM Yöneticisi tarafından kaldırıldı</value>
+  </data>
+  <data name="DeviceNotAllowlisted" xml:space="preserve">
+    <value>Aygıt Model Türüne izin verilmiyor ve/veya Aygıt İS'ye izin verilmiyor.</value>
+  </data>
+  <data name="DeviceNotAllowlistedManufacturererNotAllowed" xml:space="preserve">
+    <value>Aygıta izin verilmiyor ve/veya Üreticiye izin verilmiyor.</value>
+  </data>
+  <data name="DeviceNotAllowlistedModelNotAllowed" xml:space="preserve">
+    <value>Aygıt Model Türüne izin verilmiyor.</value>
+  </data>
+  <data name="DeviceNotEnrolled" xml:space="preserve">
+    <value>Aygıt Kayıtlı değil</value>
+  </data>
+  <data name="DeviceNotRegistered" xml:space="preserve">
+    <value>Aygıt kayıtlı değil. Geçersiz Aygıt Modeli Türü ve/veya İS</value>
+  </data>
+  <data name="DeviceSNArgNotExistsForArgToken" xml:space="preserve">
+    <value>{0} aygıt seri numarası, {1} Belirteci için mevcut değil</value>
+  </data>
+  <data name="DeviceStateIsAndroidEnterprise" xml:space="preserve">
+    <value>Aygıt zaten Android Kurumsal'a kayıtlı</value>
+  </data>
+  <data name="DeviceUserNotFound" xml:space="preserve">
+    <value>Aygıt için Kayıt Kullanıcısı bulunamadı</value>
+  </data>
+  <data name="DirectoryGroupBasedMappingChanged" xml:space="preserve">
+    <value>Dizin grubu bazlı eşleşmeyi etkinleştir ayarı değişti</value>
+  </data>
+  <data name="DropshipProvisioning" xml:space="preserve">
+    <value>Drop Ship Provisioning</value>
+  </data>
+  <data name="EMMToken" xml:space="preserve">
+    <value>EMM Belirteci</value>
+  </data>
+  <data name="EmptyDeviceIdentifierPleaseTryAgain" xml:space="preserve">
+    <value>Aygıtın UDID'si, kayıt isteğinde mevcut değil. Lütfen yöneticinizle iletişime geçin ya da tekrar deneyin.</value>
+  </data>
+  <data name="EmptyPasswordPleaseTryAgain" xml:space="preserve">
+    <value>Parola, kayıt isteğinde mevcut değil. Lütfen yöneticinizle iletişime geçin ya da tekrar deneyin.</value>
+  </data>
+  <data name="EmptyUserNameOrEmailAddressPleaseTryAgain" xml:space="preserve">
+    <value>Kullanıcı adı veya e-posta adresi, kayıt isteğinde mevcut değil. Lütfen yöneticinizle iletişime geçin ya da tekrar deneyin.</value>
+  </data>
+  <data name="EnableDropShipProvisioning" xml:space="preserve">
+    <value>Workspace ONE Drop Ship Provisioning özelliğini etkinleştirin</value>
+  </data>
+  <data name="EnrollmentDisabled" xml:space="preserve">
+    <value>MDM siparişi, stok saklama biriminde (SKU) bulunamadığından kayıt devre dışı bırakıldı.</value>
+  </data>
+  <data name="EnrollmentSecurityTypeNotSupported" xml:space="preserve">
+    <value>Kayıt, desteklenmeyen bir güvenlik türüyle denendi. Lütfen yöneticinizle iletişime geçin ya da tekrar deneyin.</value>
+  </data>
+  <data name="EnrollmentTypeCriteriaMustContainOneEnrollmentType" xml:space="preserve">
+    <value>Kayıt Türü Kriteri en az bir kayıt türü içermelidir</value>
+  </data>
+  <data name="EnrollmentUserNotFound" xml:space="preserve">
+    <value>Kayıt kullanıcısı bulunamadı. Lütfen mevcut bir kullanıcı sağlayın.</value>
+  </data>
+  <data name="EnrollmentWelcomeMessageBody" xml:space="preserve">
+    <value>Workspace ONE UEM, IT Departmanınızın aygıtınız için kaynaklara güvenli erişim sağlamasına yardımcı olur. Aşağıdaki adım adım uygulama rehberi, aygıtınızın yapılandırılmasında size yol gösterecek ve aygıtınızın ilkeler ile uyumlu olmasını sağlayacaktır.</value>
+  </data>
+  <data name="EnrollmentWelcomeMessageHeader" xml:space="preserve">
+    <value>Workspace ONE UEM'ye Hoş Geldiniz!</value>
+  </data>
+  <data name="EnterpriseWipeDeviceCountMessage" xml:space="preserve">
+    <value>{0} aygıt</value>
+  </data>
+  <data name="EnterpriseWipeDeviceCountTitle" xml:space="preserve">
+    <value>Şirket verileri silinecek aygıt sayısı:</value>
+  </data>
+  <data name="ErrorAddingUserAccount" xml:space="preserve">
+    <value>Kullanıcı hesabı otomatik olarak eklenirken hata oluştu. Lütfen yöneticinizle iletişime geçin ya da tekrar deneyin.</value>
+  </data>
+  <data name="ErrorThrownWhenResolvingDeviceIdentifier" xml:space="preserve">
+    <value>Aygıt tanımlayıcısı çözümlenmeye çalışılırken hata oluştu</value>
+  </data>
+  <data name="ExistingClientIDDontMatch" xml:space="preserve">
+    <value>Metin alanlarının mevcut kayıt değerleriyle eşleşmesi gerektiği için değişiklikler kaydedilemiyor. Sadece sertifika düzenlenebilir.</value>
+  </data>
+  <data name="ExternalAccessRole" xml:space="preserve">
+    <value>Harici Erişim Rolü</value>
+  </data>
+  <data name="FailedToCreateAgentInstallUrl" xml:space="preserve">
+    <value>Agent Install URL'si oluşturulamadı. Lütfen yöneticinizle iletişime geçin ya da tekrar deneyin.</value>
+  </data>
+  <data name="FailedToCreateDeviceAuthenticationToken" xml:space="preserve">
+    <value>Aygıtın kimlik doğrulama belirteci oluşturulamadı. Lütfen yöneticinizle iletişime geçin ya da tekrar deneyin.</value>
+  </data>
+  <data name="FailedToDisplayAgentAppStoreLink" xml:space="preserve">
+    <value>Aracı Uygulama Mağazası Bağlantısı görüntülenemedi. Lütfen yöneticinizle iletişime geçin ya da tekrar deneyin.</value>
+  </data>
+  <data name="FailedToDisplayWelcomeMessage" xml:space="preserve">
+    <value>Karşılama mesajı görüntülenemedi. Lütfen yöneticinizle iletişime geçin ya da tekrar deneyin.</value>
+  </data>
+  <data name="FailedToProcessDisplayMdmInstallationMessage" xml:space="preserve">
+    <value>MDM yükleme mesajı görüntülenemedi. Lütfen yöneticinizle iletişime geçin ya da tekrar deneyin.</value>
+  </data>
+  <data name="FailedToRedirectToAgentInstallUrl" xml:space="preserve">
+    <value>Aracı yükleme URL'sine yeniden yönlendirilemedi. Lütfen yöneticinizle iletişime geçin ya da tekrar deneyin.</value>
+  </data>
+  <data name="FailedToRedirectToMdmInstallUrl" xml:space="preserve">
+    <value>MDM yükleme URL'sine yeniden yönlendirilemedi. Lütfen yöneticinizle iletişime geçin ya da tekrar deneyin.</value>
+  </data>
+  <data name="FailedToRedirectToWorkspaceSchema" xml:space="preserve">
+    <value>Çalışma alanı şemasına yeniden yönlendirilemedi. Lütfen yöneticinizle iletişime geçin ya da tekrar deneyin.</value>
+  </data>
+  <data name="FailedToRegisterApplication" xml:space="preserve">
+    <value>Uygulama kaydedilemedi. Lütfen yöneticinizle iletişime geçin ya da tekrar deneyin.</value>
+  </data>
+  <data name="FailedToRetrieveNextStep" xml:space="preserve">
+    <value>Sonraki kayıt adımı alınamadı. Lütfen yöneticinizle iletişime geçin ya da tekrar deneyin.</value>
+  </data>
+  <data name="FailedToRetrieveSessionId" xml:space="preserve">
+    <value>Aygıtın kayıt oturumu kimliği alınamadı. Lütfen yöneticinizle iletişime geçin ya da tekrar deneyin.</value>
+  </data>
+  <data name="FailedToValidateDeviceRestrictions" xml:space="preserve">
+    <value>Aygıtın kayıt kısıtlamaları doğrulanamadı. Lütfen yöneticinizle iletişime geçin ya da tekrar deneyin.</value>
+  </data>
+  <data name="FailedToValidateEmailAddress" xml:space="preserve">
+    <value>Kayıt kullanıcısının e -posta adresi doğrulanamadı. Lütfen yöneticinizle iletişime geçin ya da tekrar deneyin.</value>
+  </data>
+  <data name="FailedValidatingDeviceIdentifier" xml:space="preserve">
+    <value>Aygıtın UDID'si doğrulanamadı. Lütfen yöneticinizle iletişime geçin ya da tekrar deneyin.</value>
+  </data>
+  <data name="FailedValidatingStagingMode" xml:space="preserve">
+    <value>Hazırlama modu doğrulanamadı. Lütfen yöneticinizle iletişime geçin ya da tekrar deneyin.</value>
+  </data>
+  <data name="FieldMustBeOfArgCharacters" xml:space="preserve">
+    <value>Alan, {0} karakterlik olmalıdır.</value>
+  </data>
+  <data name="FollowingTokensOwnershipWillNotChange" xml:space="preserve">
+    <value>Aşağıdaki belirteçlerin sahipliği değişmez</value>
+  </data>
+  <data name="ForceAospEnrollment" xml:space="preserve">
+    <value>AOSP/Kapalı Ağ Kaydını Zorunlu Kıl</value>
+  </data>
+  <data name="GeneralCheckIn" xml:space="preserve">
+    <value>Teslim Et</value>
+  </data>
+  <data name="GetStarted:" xml:space="preserve">
+    <value>Başlayın:</value>
+  </data>
+  <data name="GetSuccessfully" xml:space="preserve">
+    <value>MDM sunucu URL'si başarıyla alındı</value>
+  </data>
+  <data name="GoogleAdminConsole" xml:space="preserve">
+    <value>Google Yönetici Konsolu.</value>
+  </data>
+  <data name="GoogleDeviceIdRequired" xml:space="preserve">
+    <value>Google aygıt kimliği gerekli.</value>
+  </data>
+  <data name="GoogleUserIdRequired" xml:space="preserve">
+    <value>Google kullanıcı kimliği gerekli.</value>
+  </data>
+  <data name="GoToThe" xml:space="preserve">
+    <value>1. Şu konuma gidin: </value>
+  </data>
+  <data name="GroupIdAssignmentModeChanged" xml:space="preserve">
+    <value>Grup kimliği atama modu değişti</value>
+  </data>
+  <data name="HubRegistered" xml:space="preserve">
+    <value>Hub Kaydedildi</value>
+  </data>
+  <data name="IntelligentHubManaged" xml:space="preserve">
+    <value>Intelligent Hub Tarafından Yönetilen</value>
+  </data>
+  <data name="InvalidDeviceAttributes" xml:space="preserve">
+    <value>Lütfen şu aygıt özniteliklerinden birini girin: Seri Numarası / IMEI / UDID</value>
+  </data>
+  <data name="InvalidDeviceModel" xml:space="preserve">
+    <value>Aygıt kayıtlı değil. Geçersiz Aygıt Modeli Türü</value>
+  </data>
+  <data name="InvalidDeviceOS" xml:space="preserve">
+    <value>Aygıt kayıtlı değil. Geçersiz Aygıt İS'si</value>
+  </data>
+  <data name="InvalidDeviceType" xml:space="preserve">
+    <value>Geçersiz Aygıt Türü</value>
+  </data>
+  <data name="InvalidHeaderUsedInTemplate" xml:space="preserve">
+    <value>Şablonda geçersiz üst bilgi kullanıldı. Lütfen Atama Düzenleme penceresinde sağlanan şablonu indirin ve kullanın.</value>
+  </data>
+  <data name="InvalidImeiAttributeArgs" xml:space="preserve">
+    <value>IMEI, sayısal olmalı ve tam 15 karakterden oluşmalıdır.</value>
+  </data>
+  <data name="InvalidMigrationRequest" xml:space="preserve">
+    <value>Aygıt UDID'si boş</value>
+  </data>
+  <data name="InvalidOrganizationGroupFromVidm" xml:space="preserve">
+    <value>Kayıt kullanıcısı, sağlanan Workspace ONE Access tarafından atanan Organizasyon Grubunda değil.</value>
+  </data>
+  <data name="InvalidSerialNumberAttributeArgs" xml:space="preserve">
+    <value>Seri Numarası, en fazla {0} karakter uzunluğunda olmalıdır.</value>
+  </data>
+  <data name="InvalidSerialNumberValuesFoundArgs" xml:space="preserve">
+    <value>Her bir Seri Numarası en fazla {0} karakter uzunluğunda olmalıdır</value>
+  </data>
+  <data name="InvalidTokenDetails" xml:space="preserve">
+    <value>Geçersiz belirteç ayrıntıları nedeniyle kimlik doğrulama başarısız oldu.</value>
+  </data>
+  <data name="InvalidUdidAttributeArgs" xml:space="preserve">
+    <value>UDID, en fazla {0} karakter uzunluğunda olmalıdır.</value>
+  </data>
+  <data name="InvalidUDIDValuesFoundArgs" xml:space="preserve">
+    <value>Her bir UDID'nin uzunluğu {0} karakterden az olmalıdır.</value>
+  </data>
+  <data name="IosProfileDownloadHeaderTitle" xml:space="preserve">
+    <value>Profili indirme adımları</value>
+  </data>
+  <data name="IosProfileDownloadSteps" xml:space="preserve">
+    <value>1. profili indirmeniz istendiğinde, {0} öğesinin üzerine dokunun
+
+2. İndirme tamamlandıktan sonra {1} öğesine dokunun</value>
+  </data>
+  <data name="LaforgeUserCreationFailed" xml:space="preserve">
+    <value>Android Enterprise Kullanıcı Oluşturma Başarısız Oldu</value>
+  </data>
+  <data name="LinkToConfigurationTab" xml:space="preserve">
+    <value>Yapılandırma sekmesine bağlantı</value>
+  </data>
+  <data name="MigrationFeatureDisabled" xml:space="preserve">
+    <value>Android Enterprise Geçiş Özelliği kurumunuz için desteklenmiyor. Lütfen yöneticinizle iletişime geçin.</value>
+  </data>
+  <data name="MoveDevicesToUserOrOGBAsedOnIPOrCA" xml:space="preserve">
+    <value>Bir IP aralığı atamasına dayalı bir kullanıcı veya Organizasyon Grubu'na ya da özel öznitelik kurallarına dayalı bir Organizasyon Grubu'na aygıtlar atayın. Hiyerarşideki herhangi bir Organizasyon Grubu için IP Aralığına Göre Organizasyon Grubu veya Özel Özniteliğe Göre Organizasyon Grubu seçilirse aygıt atama kuralları etkinleştirilemez. Ancak hiyerarşide IP Aralığı türüne göre Kullanıcı adı seçilirse aygıt atama kuralları etkinleştirilebilir.</value>
+  </data>
+  <data name="MultiuserFFSetup" xml:space="preserve">
+    <value>Özellik düzgün şekilde kurulmadığından çok kullanıcılı kayıt engellendi.</value>
+  </data>
+  <data name="MultiuserNonMdmSupport" xml:space="preserve">
+    <value>Kullanılan kayıt protokolü için çoklu kullanıcı kaydı desteklenmiyor.</value>
+  </data>
+  <data name="NoMDMOrderFound" xml:space="preserve">
+    <value>MDM siparişi, stok saklama biriminde (SKU) bulunamadığından kayıt askıya alındı.</value>
+  </data>
+  <data name="NotAuthorizedToCreateEnrollmentUser" xml:space="preserve">
+    <value>Kullanıcının kayıt kullanıcısı oluşturma yetkisi yok.</value>
+  </data>
+  <data name="OperationNotAuthorized" xml:space="preserve">
+    <value>Bu işlemi gerçekleştirmek için yetkilendirilmemiş</value>
+  </data>
+  <data name="OrganizationGroupInherited" xml:space="preserve">
+    <value>Organizasyon Grubu devralındı</value>
+  </data>
+  <data name="PasscodeExpired" xml:space="preserve">
+    <value>Şifrenin süresi doldu</value>
+  </data>
+  <data name="PhoneNumberPrivacyCheck" xml:space="preserve">
+    <value>Telefon Numarası için Gizlilik Kontrolü</value>
+  </data>
+  <data name="PreventReEnrollmentMessage" xml:space="preserve">
+    <value>Aşağıdaki bulunan "Yeniden Kaydı Engelle" kutusunu işaretlediğinizde bu, izin verilmeyen aygıtlar listesine dahil edilir ve kullanıcının Workspace ONE UEM'e yeniden kaydetmesini engeller. Bir yönetici, daha sonra gerektiğinde bu aygıtı izin verilmeyenler listesinden çıkarabilir.</value>
+  </data>
+  <data name="PrivacyNotificationDisabled" xml:space="preserve">
+    <value>Kullanımı Kolay Gizlilik Bildirimi devre dışı bırakıldı</value>
+  </data>
+  <data name="PromptToBeginDownloadMessageForAppleOsX" xml:space="preserve">
+    <value>Intelligent Hub otomatik olarak bilgisayarınıza indiriliyor ve yükleniyor. Ağ bağlantınıza bağlı olarak bu işlem 1-5 dakika sürer. Kayıt işlemini tamamlamak için Agent yüklendikten sonra bir kez devam öğesine dokunun.</value>
+  </data>
+  <data name="RegisterAMAPI" xml:space="preserve">
+    <value>AMAPI'yi kaydedin. {0}</value>
+  </data>
+  <data name="RegisterAMAPIAtParentOG" xml:space="preserve">
+    <value>AMAPI'yi, Android EMM Kaydının yapılandırıldığı organizasyon grubuna kaydedin. {0}</value>
+  </data>
+  <data name="RegisterAMAPIHelpText" xml:space="preserve">
+    <value>Bu organizasyon grubuyla kullanılabilmesi için Android Management API (AMAPI) kaydı gereklidir.</value>
+  </data>
+  <data name="RegisteredOrAppEnrolled" xml:space="preserve">
+    <value>Kayıtlı veya Tek Başına Uygulama Kaydedildi</value>
+  </data>
+  <data name="RegisterManagedDomain" xml:space="preserve">
+    <value>2. Mevcut değilse yönetilen bir Google etki alanını kaydedin.</value>
+  </data>
+  <data name="RegisterMultiuserDeviceConfirmationMessage" xml:space="preserve">
+    <value>Windows aygıtları için aygıt kaydıyla ilişkili kullanıcı bilgileri silinecek.</value>
+  </data>
+  <data name="Requirements" xml:space="preserve">
+    <value>Gereksinimler</value>
+  </data>
+  <data name="RequireSharedDeviceEnrollmentEulaAcceptance" xml:space="preserve">
+    <value>Her zaman Kullanım Şartları istemi, Kayıt Kullanım Şartları oluşturuluncaya kadar etkinleştirilemez. Bir Kullanım Şartı oluşturmak için Gruplar ve Ayarlar &gt; Aygıtlar ve Kullanıcılar &gt; Genel &gt; Kayıt &gt; Kullanım Şartları sekmesine gidin.</value>
+  </data>
+  <data name="SerialNumberAssignmentFailed" xml:space="preserve">
+    <value>Seri numarası atanamadı.</value>
+  </data>
+  <data name="SetUpDirectoryServices" xml:space="preserve">
+    <value>Dizin hizmetlerini ayarla</value>
+  </data>
+  <data name="SubOrganizationGroup" xml:space="preserve">
+    <value>Alt Organizasyon Grubu </value>
+  </data>
+  <data name="SubsequentUserEnrollmentBlocked" xml:space="preserve">
+    <value>Sonraki kullanıcı kaydı engellendi.</value>
+  </data>
+  <data name="TapHereIfNotPromptedAutomatically" xml:space="preserve">
+    <value>Otomatik olarak istenmezse buraya tıklayın</value>
+  </data>
+  <data name="TapHereWhenDownloadFinishes" xml:space="preserve">
+    <value>İndirme bittiğinde buraya dokunun</value>
+  </data>
+  <data name="TargetOwnershipRestrictedByDefaultPolicyAtGivenOG" xml:space="preserve">
+    <value>Hedef sahiplik, verilen Organizasyon Grubundaki varsayılan ilke tarafından kısıtlandı</value>
+  </data>
+  <data name="TokenSaveFailed" xml:space="preserve">
+    <value>Belirteç Kaydedilemedi.</value>
+  </data>
+  <data name="UemManaged" xml:space="preserve">
+    <value>UEM Tarafından Yönetilen</value>
+  </data>
+  <data name="UnapprovedUser" xml:space="preserve">
+    <value>Kullanıcı, harici SAML kimliği doğrulanmış bir kullanıcıdır ve kullanıcının kaydına izin verilmez. Lütfen yöneticinizle iletişime geçin ya da tekrar deneyin.</value>
+  </data>
+  <data name="UploadedCertMisMatch" xml:space="preserve">
+    <value>Sertifika eksik. Devam etmek için geçerli bir sertifika yükleyin.</value>
+  </data>
+  <data name="UserEnrolled" xml:space="preserve">
+    <value>Kullanıcı Kayıtlı</value>
+  </data>
+  <data name="UserEnrollmentFeatureNotEnabled" xml:space="preserve">
+    <value>Kullanıcı kaydı, kurumunuz için devre dışı bırakıldı. Kullanıcı kaydını etkinleştirip tekrar denemek için lütfen yöneticinizle iletişime geçin.</value>
+  </data>
+  <data name="UserHasExceededMaxAllowedDevices" xml:space="preserve">
+    <value>Kullanıcı izin verilen maksimum aygıt sayısını aştı.</value>
+  </data>
+  <data name="UsernameAlreadyExists" xml:space="preserve">
+    <value>Kullanıcı adı farklı bir kullanıcı için zaten mevcut. Lütfen tekrar deneyin.</value>
+  </data>
+  <data name="UserSetup" xml:space="preserve">
+    <value>Kullanıcı Kurulumu</value>
+  </data>
+  <data name="ValidatePhoneNumberFailed" xml:space="preserve">
+    <value>Kayıt kullanıcısının telefon numarası doğrulanamadı. Lütfen yöneticinizle iletişime geçin ya da tekrar deneyin.</value>
+  </data>
+  <data name="WipeInitiated" xml:space="preserve">
+    <value>Silme İşlemi Başlatıldı</value>
+  </data>
+  <data name="WipeInitiatedTooltip" xml:space="preserve">
+    <value>Silme işlemi başlatıldı</value>
+  </data>
+  <data name="WorkProfileManagementMode" xml:space="preserve">
+    <value>İş Profili Yönetim Modu</value>
+  </data>
+  <data name="WorkProfileManagementModeInfoMessage" xml:space="preserve">
+    <value>Yeni kayıtlı aygıtların Intelligent Hub veya Android Management API (AMAPI) tarafından yönetilip yönetilmeyeceğini belirtir. AMAPI önerilir. Intelligent Hub aygıtta hala mevcut olacaktır fakat yönetim yetenekleri yerel Android İşletim Sistemine devredilecektir. Mevcut kayıtlı aygıtlar bundan etkilenmeyecektir.</value>
+  </data>
+  <data name="WorkProfileManagementModeToggleSuccessfulMessage" xml:space="preserve">
+    <value>Kayıt Başarılı! Yönetim modu, Android Management (AMAPI) olarak güncellendi. Yapılandırılan yönetim modunu görüntülemek veya düzenlemek için kayıt ayarlarına bakın.</value>
+  </data>
+  <data name="Ws1RealTimeUserGroupSyncChanged" xml:space="preserve">
+    <value>Workspace ONE gerçek zamanlı kullanıcı grubu eşitleme ayarı değişti</value>
+  </data>
+</root>

@@ -1,0 +1,218 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AddDomainJoinConfig" xml:space="preserve">
+    <value>新增網域加入</value>
+  </data>
+  <data name="AddedDJSuccessfully" xml:space="preserve">
+    <value>已成功新增網域加入</value>
+  </data>
+  <data name="AddedDJUnSuccessfully" xml:space="preserve">
+    <value>網域加入儲存失敗</value>
+  </data>
+  <data name="CreateLocalUser" xml:space="preserve">
+    <value>建立本機使用者</value>
+  </data>
+  <data name="CreateLocalUserTooltip" xml:space="preserve">
+    <value>選取以建立用來登入裝置的本機使用者帳戶。如果未選取，您就必須使用自訂設定檔來建立使用者帳戶。</value>
+  </data>
+  <data name="DeletedDJSuccessfully" xml:space="preserve">
+    <value>已成功刪除網域加入</value>
+  </data>
+  <data name="DeleteDomainJoinConfig" xml:space="preserve">
+    <value>刪除網域加入</value>
+  </data>
+  <data name="DJDeleteFailure" xml:space="preserve">
+    <value>網域加入刪除失敗</value>
+  </data>
+  <data name="DJUsernameCannotHaveRestrictedCharacters" xml:space="preserve">
+    <value>使用者名稱不能包含這些字元：/ \ [ ] : | &lt; &gt; + = ; , ? * % @</value>
+  </data>
+  <data name="DomainFriendlyName" xml:space="preserve">
+    <value>網域易記名稱</value>
+  </data>
+  <data name="DomainFriendlyNameTooltip" xml:space="preserve">
+    <value>在目錄服務設定中設定的舊版網域名稱參數。這是使用 Active Directory 網域認證登入時，常與網域\使用者名稱格式搭配使用的值。如果未設定此參數，請使用與網域名稱 (上一個欄位) 相同的值。</value>
+  </data>
+  <data name="DomainJoin" xml:space="preserve">
+    <value>網域加入</value>
+  </data>
+  <data name="DomainJoinConfigListDescription" xml:space="preserve">
+    <value>網域加入</value>
+  </data>
+  <data name="DomainJoinConfigWillBeDeleted" xml:space="preserve">
+    <value>刪除此網域加入組態，會從已登錄但尚未註冊的裝置中移除該組態。已註冊的裝置不受影響。
+是否要繼續?</value>
+  </data>
+  <data name="DomainJoinName" xml:space="preserve">
+    <value>名稱</value>
+  </data>
+  <data name="DomainJoinType" xml:space="preserve">
+    <value>網域加入類型</value>
+  </data>
+  <data name="DomainServerUrl" xml:space="preserve">
+    <value>網域名稱</value>
+  </data>
+  <data name="DomainServerUrlHelptext" xml:space="preserve">
+    <value>按一下此處，以在 {0} 設定中設定此值。</value>
+    <comment>{0} will be replaced with link to Directory Services settings page with the the text "Directory Services"</comment>
+  </data>
+  <data name="DomainServerUrlTooltip" xml:space="preserve">
+    <value>Active Directory 網域的完整網域元件名稱 (如 dc01.contoso.com)。您必須先在目錄服務設定中設定此伺服器，然後才能新增網域加入。</value>
+  </data>
+  <data name="EditDomainJoinConfig" xml:space="preserve">
+    <value>編輯網域加入</value>
+  </data>
+  <data name="LocalUsername" xml:space="preserve">
+    <value>本機使用者名稱</value>
+  </data>
+  <data name="LocalUsernamePassword" xml:space="preserve">
+    <value>本機使用者密碼</value>
+  </data>
+  <data name="MachineNameFormat" xml:space="preserve">
+    <value>機器名稱格式</value>
+  </data>
+  <data name="MachineNameFormatTooltip" xml:space="preserve">
+    <value>為裝置輸入 15 個字元的唯一名稱。若需產生唯一名稱的協助，使用包含硬體特定序號的 %SERIAL%，也可以使用 %RAND:[#]%，這會產生長度為 # 的隨機字元。若要在使用隨機數字產生時盡可能減少建立重複電腦名稱的可能性，隨機數字長度 [%RAND:[#]%] 必須大於或等於 7。</value>
+  </data>
+  <data name="MakeAdministrator" xml:space="preserve">
+    <value>建立管理員</value>
+  </data>
+  <data name="MakeAdministratorTooltip" xml:space="preserve">
+    <value>將本機使用者帳戶新增至裝置上的管理員群組。</value>
+  </data>
+  <data name="NoDomainJoinConfig" xml:space="preserve">
+    <value>未在此 OG 中新增任何網域加入組態</value>
+  </data>
+  <data name="OnPremActiveDirectory" xml:space="preserve">
+    <value>內部部署 Active Directory</value>
+  </data>
+  <data name="SmartGroupAlreadyAssigned" xml:space="preserve">
+    <value>已指派給</value>
+  </data>
+  <data name="Workgroup" xml:space="preserve">
+    <value>工作群組</value>
+  </data>
+  <data name="WorkGroupName" xml:space="preserve">
+    <value>工作群組</value>
+  </data>
+  <data name="WorkgroupNameTooltip" xml:space="preserve">
+    <value>用戶端將加入的工作群組名稱。</value>
+  </data>
+</root>

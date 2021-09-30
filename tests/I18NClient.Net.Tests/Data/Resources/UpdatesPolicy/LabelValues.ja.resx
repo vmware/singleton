@@ -1,0 +1,309 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="WUActiveHoursDDUI" xml:space="preserve">
+    <value>アクティブ時間</value>
+  </data>
+  <data name="WUActiveHoursMaxRangeDDUI" xml:space="preserve">
+    <value>アクティブ時間最大範囲</value>
+  </data>
+  <data name="WUActiveHoursStartDDUI" xml:space="preserve">
+    <value>アクティブ時間開始時刻</value>
+  </data>
+  <data name="WUAllowAutoUpdateSwitchDDUI" xml:space="preserve">
+    <value>自動更新を許可</value>
+  </data>
+  <data name="WUAllowAutoWindowsUpdateDownloadOverMeteredNetworkDDUI" xml:space="preserve">
+    <value>従量制課金接続における Windows Update の自動ダウンロードを許可</value>
+  </data>
+  <data name="WUAllowMUUpdateServiceDDUI" xml:space="preserve">
+    <value>Microsoft 更新サービスを許可</value>
+  </data>
+  <data name="WUAllowNonMicrosoftSignedUpdateDDUI" xml:space="preserve">
+    <value>Microsoft 以外によって署名された更新プログラムを許可</value>
+  </data>
+  <data name="WUAllowStandbyStatesWhenSleepingOnBatteryDDUI" xml:space="preserve">
+    <value>バッテリ使用中のスリープでのスタンドバイ状態を許可</value>
+  </data>
+  <data name="WUAllowStandbyWhenSleepingPluggedInDDUI" xml:space="preserve">
+    <value>電源接続時のスリープでのスタンドバイ状態を許可</value>
+  </data>
+  <data name="WUAllowTelemetryDDUI" xml:space="preserve">
+    <value>製品利用統計情報 (テレメトリ) を許可</value>
+  </data>
+  <data name="WUAllowUpdateServiceDDUI" xml:space="preserve">
+    <value>更新サービスを許可</value>
+  </data>
+  <data name="WUAutomaticMaintenanceWakeUpDDUI" xml:space="preserve">
+    <value>メンテナンスの自動スリープ解除</value>
+  </data>
+  <data name="WUAutoRestartDeadlinePeriodInDaysDDUI" xml:space="preserve">
+    <value>自動再起動期限 (日)</value>
+  </data>
+  <data name="WUAutoRestartDeadlinePeriodInDaysForFeatureUpdatesDDUI" xml:space="preserve">
+    <value>今後の更新の自動再起動期限 (日数)</value>
+  </data>
+  <data name="WUAutoRestartNotificationScheduleDDUI" xml:space="preserve">
+    <value>自動再起動通知をスケジュール</value>
+  </data>
+  <data name="WUAutoRestartRequiredNotificationDismissalDDUI" xml:space="preserve">
+    <value>自動再起動で必要な通知の解除</value>
+  </data>
+  <data name="WUConfigurationDeadlineDDUI" xml:space="preserve">
+    <value>構成期限</value>
+  </data>
+  <data name="WUConfigureDeadlineForFeatureUpdatesDDUI" xml:space="preserve">
+    <value>機能更新プログラムの期限を構成</value>
+  </data>
+  <data name="WUConfigureDeadlineForQualityUpdatesDDUI" xml:space="preserve">
+    <value>品質更新プログラムの期限を構成</value>
+  </data>
+  <data name="WUConfigureDeadlineGracePeriodDDUI" xml:space="preserve">
+    <value>期限の猶予期間を構成</value>
+  </data>
+  <data name="WUConfigureDeadlineNoAutoRebootDDUI" xml:space="preserve">
+    <value>期限の自動再起動を構成</value>
+  </data>
+  <data name="WUConfigureFeatureUpdateUninstallPeriodDDUI" xml:space="preserve">
+    <value>機能更新プログラムのアンインストール期間 (日数) を構成</value>
+  </data>
+  <data name="WUConfigureFeatureUpdateUninstallPeriodErrorMsgDDUI" xml:space="preserve">
+    <value>2 ～ 60 の範囲の日数を入力</value>
+  </data>
+  <data name="WUDeferFeatureUpdatesPeriodInDaysDDUI" xml:space="preserve">
+    <value>機能更新プログラムのアンインストール期間 (日数) を構成</value>
+  </data>
+  <data name="WUDeferFeatureUpdatesPeriodInDaysErrorMsgDDUI" xml:space="preserve">
+    <value>2 ～ 365 の範囲の日数を入力</value>
+  </data>
+  <data name="WUDeferQualityUpdatesPeriodInDaysDDUI" xml:space="preserve">
+    <value>品質更新プログラムを延期する期間 (日数)</value>
+  </data>
+  <data name="WUDeliveryOptimizationCachingDDUI" xml:space="preserve">
+    <value>キャッシュ</value>
+  </data>
+  <data name="WUDetectionFrequencyDDUI" xml:space="preserve">
+    <value>検出頻度</value>
+  </data>
+  <data name="WUDisableDualScanDDUI" xml:space="preserve">
+    <value>デュアル スキャンを無効にする</value>
+  </data>
+  <data name="WUDisableWUfBSafeguardsDDUI" xml:space="preserve">
+    <value>Safe Guard を無効にする</value>
+  </data>
+  <data name="WUDOAllowVPNPeerCachingDDUI" xml:space="preserve">
+    <value>VPN ピア キャッシュ機能を許可</value>
+  </data>
+  <data name="WUDOCacheHostDDUI" xml:space="preserve">
+    <value>キャッシュ ホスト</value>
+  </data>
+  <data name="WUDOCacheHostSourceDDUI" xml:space="preserve">
+    <value>キャッシュ ホスト ソース</value>
+  </data>
+  <data name="WUDODelayCacheServerFallbackForegroundDDUI" xml:space="preserve">
+    <value>キャッシュ サーバのフォールバックを延期 (フォアグラウンド)</value>
+  </data>
+  <data name="WUDODownloadModeDDUI" xml:space="preserve">
+    <value>ダウンロード モード</value>
+  </data>
+  <data name="WUDOGroupIdDDUI" xml:space="preserve">
+    <value>グループ ID</value>
+  </data>
+  <data name="WUDOGroupIdSourceDDUI" xml:space="preserve">
+    <value>グループ ID ソース</value>
+  </data>
+  <data name="WUDOMaxCacheAgeDDUI" xml:space="preserve">
+    <value>キャッシュの有効期間</value>
+  </data>
+  <data name="WUDOMaxCacheSizeDDUI" xml:space="preserve">
+    <value>絶対最大キャッシュ サイズ</value>
+  </data>
+  <data name="WUDOMinFileSizeToCacheDDUI" xml:space="preserve">
+    <value>キャッシュする最小ファイル サイズ</value>
+  </data>
+  <data name="WUDOModifyCacheDriveDDUI" xml:space="preserve">
+    <value>キャッシュ ドライブの変更</value>
+  </data>
+  <data name="WUEnableDeliveryOptimizationDDUI" xml:space="preserve">
+    <value>配信最適化を有効にする</value>
+  </data>
+  <data name="WUExcludeWUDriversInQualityUpdateDDUI" xml:space="preserve">
+    <value>品質更新プログラムで Windows Update ドライバを除外</value>
+  </data>
+  <data name="WUIgnoreMOAppDownloadLimitDDUI" xml:space="preserve">
+    <value>モバイル アプリケーションのダウンロード制限を無視</value>
+  </data>
+  <data name="WUIgnoreMOUpdateDownloadLimitDDUI" xml:space="preserve">
+    <value>モバイル アップロードのダウンロード制限を無視</value>
+  </data>
+  <data name="WUIntelligentActiveHoursDDUI" xml:space="preserve">
+    <value>インテリジェントなアクティブ時間</value>
+  </data>
+  <data name="WULabelDefineUpdateBehaviorDDUI" xml:space="preserve">
+    <value>更新の動作を定義</value>
+  </data>
+  <data name="WULabelDefinitionDDUI" xml:space="preserve">
+    <value>ポリシーの定義とスマート グループの選択</value>
+  </data>
+  <data name="WULabelDeliveryOptimizationDDUI" xml:space="preserve">
+    <value>配信最適化を定義</value>
+  </data>
+  <data name="WULabelDeviceBehaviorDDUI" xml:space="preserve">
+    <value>デバイスの動作</value>
+  </data>
+  <data name="WULabelDeviceSchedulingDDUI" xml:space="preserve">
+    <value>デバイスのスケジュールを定義</value>
+  </data>
+  <data name="WULegendBodyDefineUpdateBehaviorDDUI" xml:space="preserve">
+    <value>メッセージ: 20 年後、どのようなものをダウンロードしているか想像できますか?</value>
+  </data>
+  <data name="WUPolicyNameDDUI" xml:space="preserve">
+    <value>ポリシー名</value>
+  </data>
+  <data name="WUSelectLidCloseActionOnBatteryDDUI" xml:space="preserve">
+    <value>バッテリ使用中のカバーを閉じたときの操作を選択</value>
+  </data>
+  <data name="WUSelectLidCloseActionPluggedInDDUI" xml:space="preserve">
+    <value>電源接続時のカバーを閉じたときの操作を選択</value>
+  </data>
+  <data name="WUSetProxyBehaviorForUpdateDetectionDDUI" xml:space="preserve">
+    <value>更新プログラムの検出のためのプロキシ動作を設定</value>
+  </data>
+  <data name="WUTabDefineUpdateBehaviorDDUI" xml:space="preserve">
+    <value>更新動作</value>
+  </data>
+  <data name="WUTabDefinitionDDUI" xml:space="preserve">
+    <value>定義</value>
+  </data>
+  <data name="WUTabDeliveryOptimizationDDUI" xml:space="preserve">
+    <value>配信最適化</value>
+  </data>
+  <data name="WUTabDeviceBehaviorDDUI" xml:space="preserve">
+    <value>デバイスのデバイス動作</value>
+  </data>
+  <data name="WUTabDeviceSchedulingDDUI" xml:space="preserve">
+    <value>デバイス スケジューリング</value>
+  </data>
+  <data name="WUUpdateBranchDDUI" xml:space="preserve">
+    <value>ブランチを更新</value>
+  </data>
+  <data name="WUUpdateServiceUrlDDUI" xml:space="preserve">
+    <value>WSUS サーバ URL</value>
+  </data>
+</root>

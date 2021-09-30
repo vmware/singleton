@@ -1,0 +1,804 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AboutEnrollment" xml:space="preserve">
+    <value>Dowiedz się więcej o stanach rejestracji:</value>
+  </data>
+  <data name="AboutTotalDeployment" xml:space="preserve">
+    <value>Urządzenia muszą być zarejestrowane, aby być liczone jako wdrożone. Urządzenia oczekujące na działania, takie jak wymaz danych firmowych, są liczone do momentu zakończenia tej czynności. Zarejestrowane urządzenia nie są liczone, dopóki nie zostaną zarejestrowane.</value>
+  </data>
+  <data name="AddTag" xml:space="preserve">
+    <value>Utwórz znacznik</value>
+  </data>
+  <data name="AddTagHelp" xml:space="preserve">
+    <value>Zezwala na utworzenie nowego znacznika</value>
+  </data>
+  <data name="AdminModePasscodeHelpText" xml:space="preserve">
+    <value>Określ hasło alfanumeryczne, aby rozwiązywać problemy z urządzeniem w trybie administratora. Dotknij ikony Hub ma ekranie logowania 5 razy, aby uzyskać dostęp do trybu administratora.</value>
+  </data>
+  <data name="AirwatchCannotSeeYourPersonalContent" xml:space="preserve">
+    <value>Aplikacja Intelligent Hub VMware Workspace ONE gromadzi tylko informacje wymagane do zapewnienia bezpiecznego dostępu do zasobów firmowych</value>
+  </data>
+  <data name="AllowPinAtStartup" xml:space="preserve">
+    <value>Zezwól na kod PIN przy uruchamianiu</value>
+  </data>
+  <data name="AndroidSharedDeviceAdminModePasscode" xml:space="preserve">
+    <value>Hasło trybu administratora</value>
+  </data>
+  <data name="AndroidSharedDeviceMode" xml:space="preserve">
+    <value>Tryb urządzenia współdzielonego Android</value>
+  </data>
+  <data name="AndroidSharedDeviceModeHelpText" xml:space="preserve">
+    <value>Zarejestruj i wyrejestruj współdzielone urządzenia Android przy użyciu natywnej możliwości Android lub Workspace ONE Launcher. Natywny Android obsługuje prostsze przypadki użycia, które nie wymagają znacznej indywidualizacji. Launcher obsługuje indywidualizację interfejsu użytkownika dla bardziej złożonych przypadków użycia.</value>
+  </data>
+  <data name="AppCatalogSupport" xml:space="preserve">
+    <value>Pomoc techniczna dotycząca wykazu aplikacji</value>
+  </data>
+  <data name="AssignTags" xml:space="preserve">
+    <value>Przypisz znaczniki</value>
+  </data>
+  <data name="BluetoothDeviceMessageLabelAny" xml:space="preserve">
+    <value>Urządzenie Bluetooth</value>
+  </data>
+  <data name="BulkAndroidWipeAddition" xml:space="preserve">
+    <value>Jeśli którekolwiek z tych urządzeń zarejestruje się ponownie w Workspace ONE, zostanie utworzony nowy UDID, w wyniku czego zostanie zduplikowany rekord urządzenia.</value>
+  </data>
+  <data name="BulkEnterpriseWipeDescription" xml:space="preserve">
+    <value>Usunięcie danych firmowych wyrejestruje i usunie wszystkie zarządzane zasoby firmowe, w tym aplikacje i profile, z wybranych urządzeń.
+Działanie to nie może zostać cofnięte i ponowna rejestracja będzie wymagana, aby urządzenia znowu mogły być zarządzane przez Workspace ONE.</value>
+  </data>
+  <data name="CallUsageMessageLabelAny" xml:space="preserve">
+    <value>Użycie połączeń</value>
+  </data>
+  <data name="CannotDeleteUsersWithRegistrationRecord" xml:space="preserve">
+    <value>Nie można usunąć użytkownika z wpisem rejestracyjnym DEP lub jeśli jest on powiązany z profilem DEP</value>
+  </data>
+  <data name="CarrierCountryCodeMessageLabelAny" xml:space="preserve">
+    <value>Kod kraju operatora</value>
+  </data>
+  <data name="CellularDataUsageMessageLabelAny" xml:space="preserve">
+    <value>Użycie danych komórkowych</value>
+  </data>
+  <data name="ChromeOsDeviceCleanup" xml:space="preserve">
+    <value>Usuwanie urządzenia z systemem Chrome</value>
+  </data>
+  <data name="ClearAndroidAccounts" xml:space="preserve">
+    <value>Czyszczenie kont Android</value>
+  </data>
+  <data name="ClearAndroidAccountsHelpInfo" xml:space="preserve">
+    <value>Czyszczenie kont Android spowoduje usunięcie kont, których niektóre aplikacje mogą używać do automatycznego logowania. Wyczyszczenie konta Google wymaga systemu Android 8+, a wyczyszczenie konta innego niż Google wymaga systemu Android 9+. Ustawienie to dotyczy tylko metody uruchamiania urządzenia współdzielonego przez Android, ponieważ metoda natywna zawsze powoduje wyczyszczenie każdego konta.</value>
+  </data>
+  <data name="ClearDevicePasscodeDevicePageHelpInfo" xml:space="preserve">
+    <value>Włącz lub wyłącz opcję bezpiecznego rozruchu, która wymaga wprowadzenia kodu PIN w celu uruchomienia urządzenia. Jeśli bezpieczny rozruch został już wyłączony, urządzenie musi być zresetowane do ustawień fabrycznych, aby go włączyć. Funkcja ta dotyczy tylko urządzeń z systemem Android, w których nie wdrożono szyfrowania opartego na plikach.</value>
+  </data>
+  <data name="ClearDevicePasscodeSharedSettingsHelpInfo" xml:space="preserve">
+    <value>Włącz lub wyłącz funkcję bezpiecznego rozruchu systemu Android, która wymaga wprowadzenia kodu PIN w celu uruchomienia urządzenia. W przypadku wyłączenia tej funkcji użytkownicy nie mogą włączyć bezpiecznego rozruchu podczas konfiguracji kodu dostępu. Jeśli bezpieczny rozruch został już wyłączony na urządzeniu, urządzenie musi być zresetowane do ustawień fabrycznych, aby go włączyć. Funkcja ta dotyczy tylko urządzeń z systemem Android, w których nie wdrożono szyfrowania opartego na plikach.</value>
+  </data>
+  <data name="ConfirmAndroidSharedDeviceAdminModePasscode" xml:space="preserve">
+    <value>Potwierdź hasło trybu administratora</value>
+  </data>
+  <data name="ConfirmEnterpriseWipeDeviceMessageChromeOs" xml:space="preserve">
+    <value>To działanie powoduje wyrejestrowanie i usunięcie wszystkich zarządzanych zasobów firmowych z wybranego urządzenia (w tym aplikacji i profili). Nie można cofnąć tej czynności bez ponownego zarejestrowania tego urządzenia.</value>
+  </data>
+  <data name="ConfirmExport" xml:space="preserve">
+    <value>Tak, eksportuj</value>
+  </data>
+  <data name="ConfirmOverwrite" xml:space="preserve">
+    <value>Potwierdzenie zastąpienia</value>
+  </data>
+  <data name="ConfirmOverwriteMessage" xml:space="preserve">
+    <value>Wyeksportowanie tego pakietu PPKG zastąpi wszystkie pakiety PPKG dla ukończonych szablonów. Należy upewnić się, że pobrano poprzedni pakiet PPKG przed eksportem kolejnego. Czy na pewno chcesz kontynuować?</value>
+  </data>
+  <data name="ContactAdminPrivacyNotice" xml:space="preserve">
+    <value>Powyższe obszary zbierania są charakterystyczne dla aplikacji Intelligent Hub VMware Workspace ONE i mogą się różnić dla urządzeń firmowych i osobistych.
+
+Skontaktuj się z administratorem IT, aby dowiedzieć się więcej na temat aplikacji innych producentów, które mogą umożliwić Twojej firmie wyświetlanie dodatkowych informacji osobistych/prywatnych, oraz uzyskać kopię wszystkich stosownych zasad wewnętrznych.</value>
+  </data>
+  <data name="DependencyApplications" xml:space="preserve">
+    <value>Zastosowania zależne</value>
+  </data>
+  <data name="DeviceBulkManagementAddTags" xml:space="preserve">
+    <value>Zarządzanie zbiorcze urządzeniami – przypisywanie znaczników</value>
+  </data>
+  <data name="DeviceBulkManagementAddTagsHelp" xml:space="preserve">
+    <value>Zezwala użytkownikom na zbiorcze przypisywanie znaczników do urządzeń.</value>
+  </data>
+  <data name="DeviceDeleteWhiteSpaceReason" xml:space="preserve">
+    <value>Nie można użyć pustego miejsca jako powodu.</value>
+  </data>
+  <data name="DevicePhoneNumberMessageLabelAny" xml:space="preserve">
+    <value>Numer telefonu urządzenia</value>
+  </data>
+  <data name="DeviceProvisioningMenuDescription" xml:space="preserve">
+    <value>Zarządzaj pakietami zastrzegania dla urządzeń</value>
+  </data>
+  <data name="DeviceProvisioningMenuTitle" xml:space="preserve">
+    <value>Zastrzeganie</value>
+  </data>
+  <data name="DevicesCountExcludesUnenrolled" xml:space="preserve">
+    <value>Urządzenia zaliczane do całkowitego wdrożenia zostały zaktualizowane, aby wykluczyć urządzenia niezarejestrowane.</value>
+  </data>
+  <data name="DeviceViewWorkflowsList" xml:space="preserve">
+    <value>Lista przepływów pracy widoku urządzenia</value>
+  </data>
+  <data name="DeviceViewWorkflowsListHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do karty Przepływy pracy dostępnej na stronie Szczegóły urządzenia.</value>
+  </data>
+  <data name="DifferentModelReplacement" xml:space="preserve">
+    <value>Zastąpienie innego modelu</value>
+  </data>
+  <data name="DownloadEncryptedPackage" xml:space="preserve">
+    <value>Pobierz zaszyfrowany pakiet</value>
+  </data>
+  <data name="DownloadProvisioningFiles" xml:space="preserve">
+    <value>Pobierz pliki zastrzegania</value>
+  </data>
+  <data name="DownloadWindowsPhoneAgent" xml:space="preserve">
+    <value>Pobierz agenta Windows Phone</value>
+  </data>
+  <data name="DuplicatePackageFound" xml:space="preserve">
+    <value>Ta nazwa jest już w użyciu. Proszę wybrać inną nazwę.</value>
+  </data>
+  <data name="EditProvisioningPackage" xml:space="preserve">
+    <value>Edytuj pakiet zastrzegania</value>
+  </data>
+  <data name="EducationCertificateRenewalJob" xml:space="preserve">
+    <value>Zadanie odnowienia certyfikatu edukacji</value>
+  </data>
+  <data name="EmailDiscovery" xml:space="preserve">
+    <value>Autowykrywanie adresu e-mail</value>
+  </data>
+  <data name="EmailDomainRegistrationFailure" xml:space="preserve">
+    <value>Rejestracja domeny poczty e-mail nieudana</value>
+  </data>
+  <data name="EmailDomainRegistrationSuccess" xml:space="preserve">
+    <value>Rejestracja domeny poczty e-mail zakończona</value>
+  </data>
+  <data name="EmptyApplicationList" xml:space="preserve">
+    <value>Nie znaleziono żadnych aplikacji.</value>
+  </data>
+  <data name="EmptyEnrollmentSessionPleaseTryAgain" xml:space="preserve">
+    <value>Pusta sesja rejestracji. Spróbuj ponownie.</value>
+  </data>
+  <data name="EmptyPackageList" xml:space="preserve">
+    <value>Nowe pakiety zastrzegania zostaną wyświetlone w tym miejscu.</value>
+  </data>
+  <data name="EncryptedPackageDescription" xml:space="preserve">
+    <value>Eksportuj pojedynczy zaszyfrowany pakiet PPKG, aby zaopatrzyć lokalne urządzenia w odpowiednie konfiguracje, ustawienia i aplikacje.</value>
+  </data>
+  <data name="EncryptedPackageTitle" xml:space="preserve">
+    <value>Zaszyfrowany pakiet</value>
+  </data>
+  <data name="Enrollmentemailaddress" xml:space="preserve">
+    <value>Adres e-mail</value>
+  </data>
+  <data name="Enrollmentemailusername" xml:space="preserve">
+    <value>Nazwa użytkownika poczty e-mail</value>
+  </data>
+  <data name="EnterCharactersShownAbove" xml:space="preserve">
+    <value>Wprowadź znaki pokazane powyżej</value>
+  </data>
+  <data name="EnterpriseWipeFailed" xml:space="preserve">
+    <value>Wymazanie danych firmowych nie powiodło się.</value>
+  </data>
+  <data name="EnterpriseWipeReasonRequired" xml:space="preserve">
+    <value>Pole przyczyny jest wymagane podczas żądania wymazu danych firmowych.</value>
+  </data>
+  <data name="EnterpriseWipeSucceeded" xml:space="preserve">
+    <value>Wymazanie danych firmowych powiodło się.</value>
+  </data>
+  <data name="ExportInProgress" xml:space="preserve">
+    <value>Trwa eksportowanie...</value>
+  </data>
+  <data name="ExportLater" xml:space="preserve">
+    <value>Eksport innego pakietu zastrzegania jest już w toku. Możesz zapisać szablon i eksportować pakiet później lub poczekać na zakończenie poprzedniego eksportu.</value>
+  </data>
+  <data name="FailedLoadingUnmanagedProfilePayload" xml:space="preserve">
+    <value>Ładowanie niezarządzanego ładunku profilu nie powiodło się</value>
+  </data>
+  <data name="FailedToDownload" xml:space="preserve">
+    <value>Żądanie pobierania nieudane, spróbuj ponownie.</value>
+  </data>
+  <data name="FailedToExport" xml:space="preserve">
+    <value>Eksport nie powiódł się</value>
+  </data>
+  <data name="FeatureNotSupported" xml:space="preserve">
+    <value>Ta funkcja nie jest obecnie obsługiwana.</value>
+  </data>
+  <data name="GPSMessageLabelAny" xml:space="preserve">
+    <value>GPS</value>
+  </data>
+  <data name="GroupIDAndEmailRequired" xml:space="preserve">
+    <value>Wymagany jest adres e-mail i identyfikator grupy.</value>
+  </data>
+  <data name="InactiveAppsFound" xml:space="preserve">
+    <value>Niektóre aplikacje zostały usunięte lub zmodyfikowane po utworzeniu tego pakietu. Sprawdź listę wybranych aplikacji, aby upewnić się, że zostały ukończone.</value>
+  </data>
+  <data name="InvokeAgent" xml:space="preserve">
+    <value>Wywołaj agenta</value>
+  </data>
+  <data name="LauncherSharedDeviceMode" xml:space="preserve">
+    <value>Launcher</value>
+  </data>
+  <data name="ManagedInstallations" xml:space="preserve">
+    <value>Zarządzane instalacje</value>
+  </data>
+  <data name="MultipleEnrollmentUsersForEmail" xml:space="preserve">
+    <value>Wielu użytkowników rejestracji jest powiązanych z podanym adresem e-mail</value>
+  </data>
+  <data name="NativeSharedDeviceMode" xml:space="preserve">
+    <value>Natywne</value>
+  </data>
+  <data name="NewProvisioningPackage" xml:space="preserve">
+    <value>Nowy pakiet zastrzegania</value>
+  </data>
+  <data name="NoEnrollmentUserForEmail" xml:space="preserve">
+    <value>Żadne konto użytkownika rejestracji nie jest powiązane z podanym adresem e-mail</value>
+  </data>
+  <data name="NoOrganizationGroupForGroupId" xml:space="preserve">
+    <value>Nie znaleziono żadnej grupy organizacyjnej dla podanego identyfikatora ID grupy</value>
+  </data>
+  <data name="NoTransformSelected" xml:space="preserve">
+    <value>Nie wybrano przekształcenia</value>
+  </data>
+  <data name="NotWorking" xml:space="preserve">
+    <value>Nie działa?</value>
+  </data>
+  <data name="OEMProvisioningDescription" xml:space="preserve">
+    <value>Eksportuj pliki PPKG i XML, aby wstępnie wyposażyć urządzenia w konfiguracje, ustawienia i aplikacje w placówce OEM.</value>
+  </data>
+  <data name="OEMProvisioningTitle" xml:space="preserve">
+    <value>Zastrzeganie fabryczne</value>
+  </data>
+  <data name="OnboardingMethod" xml:space="preserve">
+    <value>Metoda wdrażania</value>
+  </data>
+  <data name="OnboardingMethods" xml:space="preserve">
+    <value>Metody wdrażania</value>
+  </data>
+  <data name="OrganizationGroupInvalidForEnrollmentUser" xml:space="preserve">
+    <value>Użytkownik nie ma autoryzacji do rejestracji w podanej grupie organizacyjnej</value>
+  </data>
+  <data name="PackageInProgress" xml:space="preserve">
+    <value>Eksport istniejącego pakietu przydzielania zasobów systemu Windows (PPKG) w toku. Poczekaj na zakończenie eksportowania.</value>
+  </data>
+  <data name="PackageSaved" xml:space="preserve">
+    <value>Sukces! Tworzenie pakietu zastrzegania w toku. Sprawdź później, aby pobrać link.</value>
+  </data>
+  <data name="PersonalApplicationMessageLabelAny" xml:space="preserve">
+    <value>Aplikacja osobista</value>
+  </data>
+  <data name="PersonalAppsCollected" xml:space="preserve">
+    <value>Zainstalowane aplikacje osobiste są zbierane, aby zapewnić, że nie ma aplikacji złośliwych lub szkodliwych dla danych osobistych i firmowych. Udostępniana jest tylko lista zainstalowanych aplikacji. Dla Workspace ONE nie jest udostępniana żadna zawartość/dane z aplikacji osobistej.</value>
+  </data>
+  <data name="PlatformConfirmation" xml:space="preserve">
+    <value>Potwierdzenie platformy</value>
+  </data>
+  <data name="PromptForiPadandMAC" xml:space="preserve">
+    <value>Potwierdź, że używasz tabletu iPad, aby uniknąć problemów z rejestracją i instalowaniem aplikacji.</value>
+  </data>
+  <data name="RemoteControlAccess" xml:space="preserve">
+    <value>Dostęp zdalnej kontroli</value>
+  </data>
+  <data name="Replaced" xml:space="preserve">
+    <value>Wymienione</value>
+  </data>
+  <data name="Requested" xml:space="preserve">
+    <value>Żądane</value>
+  </data>
+  <data name="RetiringDevice" xml:space="preserve">
+    <value>Wycofywanie urządzenia</value>
+  </data>
+  <data name="RoamingStatusMessageLabelAny" xml:space="preserve">
+    <value>Stan roamingu</value>
+  </data>
+  <data name="SameModelReplacement" xml:space="preserve">
+    <value>Zastąpienie tego samego modelu</value>
+  </data>
+  <data name="SaveAndExport" xml:space="preserve">
+    <value>Zapisz i eksportuj</value>
+  </data>
+  <data name="SaveForLater" xml:space="preserve">
+    <value>Nie, zapisz na później</value>
+  </data>
+  <data name="SelectedApplications" xml:space="preserve">
+    <value>Wybrane aplikacje</value>
+  </data>
+  <data name="SelectStagingMode" xml:space="preserve">
+    <value>Wybierz tryb wstępnej rejestracji</value>
+  </data>
+  <data name="SingleAndroidWipeAddition" xml:space="preserve">
+    <value>Jeśli urządzenie zarejestruje się ponownie w Workspace ONE, zostanie utworzony nowy UDID, co spowoduje zduplikowanie rekordu urządzenia.</value>
+  </data>
+  <data name="SingleEnterpriseWipeDescription" xml:space="preserve">
+    <value>Usunięcie danych firmowych wyrejestruje wybrane urządzenie i usunie z niego wszystkie zasoby firmowe, w tym aplikacje i profile. Czynności tej nie można cofnąć i będzie wymagana ponowna rejestracja, aby urządzenie znowu mogło być zarządzane przez Workspace ONE.</value>
+  </data>
+  <data name="SMSUsageMessageLabelAny" xml:space="preserve">
+    <value>Użycie wiadomości SMS</value>
+  </data>
+  <data name="StagingIsEnabledForEnrollmentUser" xml:space="preserve">
+    <value>Wstępna rejestracja jest włączona dla danego użytkownika rejestracji</value>
+  </data>
+  <data name="SystemAppsToggleHelpText" xml:space="preserve">
+    <value>Zezwól użytkownikom końcowym na dostęp do aplikacji systemowych</value>
+  </data>
+  <data name="SystemLogs" xml:space="preserve">
+    <value>Dzienniki systemowe</value>
+  </data>
+  <data name="SystemLogsPrivacyNoticeMessageLabel" xml:space="preserve">
+    <value>Dzienniki systemowe – zasady zachowania poufności informacji</value>
+  </data>
+  <data name="TapHereToRetry" xml:space="preserve">
+    <value>Dotknij tutaj, aby ponowić próbę</value>
+  </data>
+  <data name="TermsAndConditions" xml:space="preserve">
+    <value>Postanowienia</value>
+  </data>
+  <data name="TransformLabel" xml:space="preserve">
+    <value>Transformacja instalatora aplikacji</value>
+  </data>
+  <data name="TransformToolTipText" xml:space="preserve">
+    <value>Transformacja to zbiór zmian zastosowanych do instalacji pliku MSI. Wybierz dostępny plik transformacji (MST), który zostanie użyty podczas instalacji.</value>
+  </data>
+  <data name="TransformToolTipTitle" xml:space="preserve">
+    <value>Transformacja</value>
+  </data>
+  <data name="UnattendAdJoinLabel" xml:space="preserve">
+    <value>Typ usługi Active Directory</value>
+  </data>
+  <data name="UnattendAdJoinText" xml:space="preserve">
+    <value>Wybierz typ połączenia AD. W oparciu o ten wybór poniższy formularz ułatwi konkretne połączenia AD unattend.xml</value>
+  </data>
+  <data name="UnattendAutoAdminLogonLabel" xml:space="preserve">
+    <value>Automatyczne logowanie administratora</value>
+  </data>
+  <data name="UnattendAutoAdminLogonText" xml:space="preserve">
+    <value>Aby zarejestrować urządzenie, konieczne jest jednorazowe logowanie administratora. Automatyczne logowanie administratora zostało włączone i wymagane jest skonfigurowanie konta administratora lokalnego</value>
+  </data>
+  <data name="UnattendBuildConfigFile" xml:space="preserve">
+    <value>Utwórz plik konfiguracyjny</value>
+  </data>
+  <data name="UnattendBuildInAdminText" xml:space="preserve">
+    <value>Jest to hasło konta administratora</value>
+  </data>
+  <data name="UnattendBuiltInAdminLabel" xml:space="preserve">
+    <value>Hasło administratora</value>
+  </data>
+  <data name="UnattendComputerNameLabel" xml:space="preserve">
+    <value>Nazwa komputera</value>
+  </data>
+  <data name="UnattendComputerNamePlaceholder" xml:space="preserve">
+    <value>Nazwa komputera (losowa)</value>
+  </data>
+  <data name="UnattendCreateLocalUserLabel" xml:space="preserve">
+    <value>Utwórz użytkownika lokalnego</value>
+  </data>
+  <data name="UnattendCreateLocalUserText" xml:space="preserve">
+    <value>Wybranie opcji „Tak” spowoduje utworzenie konta użytkownika lokalnego. Wybranie opcji „Nie” spowoduje wyświetlenie monitu o utworzenie użytkownika podczas rejestracji OOBE.</value>
+  </data>
+  <data name="UnattendDomainNameLabel" xml:space="preserve">
+    <value>Nazwa domeny</value>
+  </data>
+  <data name="UnattendDomainNameText" xml:space="preserve">
+    <value>Jest to nazwa domeny, w której klient zostanie dołączony do</value>
+  </data>
+  <data name="UnattendDomainOuLabel" xml:space="preserve">
+    <value>jednostki organizacyjnej AD (OU)</value>
+  </data>
+  <data name="UnattendDomainOuText" xml:space="preserve">
+    <value>Musi być w formacie „OU=,OU=,DC=firma,DC=com”</value>
+  </data>
+  <data name="UnattendDomainPasswordLabel" xml:space="preserve">
+    <value>Hasło domeny</value>
+  </data>
+  <data name="UnattendDomainPasswordText" xml:space="preserve">
+    <value>Wprowadź hasło do konta przyłączania domeny w usłudze Active Directory.</value>
+  </data>
+  <data name="UnattendDomainUserLabel" xml:space="preserve">
+    <value>Nazwa użytkownika domeny</value>
+  </data>
+  <data name="UnattendDomainUserText" xml:space="preserve">
+    <value>Wprowadź nazwę użytkownika konta Active Directory z uprawnieniami do przyłączania domeny.</value>
+  </data>
+  <data name="UnattendDownloadMarkup" xml:space="preserve">
+    <value>Usuń nadzorowanie pliku XML</value>
+  </data>
+  <data name="UnattendDownloadPackage" xml:space="preserve">
+    <value>PPKG</value>
+  </data>
+  <data name="UnattendEnableBuiltInAdminLabel" xml:space="preserve">
+    <value>Włącz konto administratora</value>
+  </data>
+  <data name="UnattendEnableBuiltInAdminText" xml:space="preserve">
+    <value>Włącza wbudowane konto administratora. To konto jest domyślnie wyłączone. Przy korzystaniu z automatycznego logowania administratora należy włączyć domyślne konto administratora</value>
+  </data>
+  <data name="UnattendFirstLogonCmdLabel" xml:space="preserve">
+    <value>Polecenia pierwszego logowania</value>
+  </data>
+  <data name="UnattendFirstLogonCmdText" xml:space="preserve">
+    <value>Można dodawać polecenia, które będą automatycznie uruchamiane przy pierwszym logowaniu użytkownika (użytkowniki musi posiadać uprawnienia administratora lokalnego).</value>
+  </data>
+  <data name="UnattendLocaleChineseHongKong" xml:space="preserve">
+    <value>Chiński (Hongkong)</value>
+  </data>
+  <data name="UnattendLocaleChinesePrc" xml:space="preserve">
+    <value>Chiński (Chiny)</value>
+  </data>
+  <data name="UnattendLocaleChineseSimplified" xml:space="preserve">
+    <value>Chiński (uproszczony)</value>
+  </data>
+  <data name="UnattendLocaleChineseTaiwan" xml:space="preserve">
+    <value>Chiński (Tajwan)</value>
+  </data>
+  <data name="UnattendLocaleChineseTraditional" xml:space="preserve">
+    <value>Chiński (tradycyjny)</value>
+  </data>
+  <data name="UnattendLocaleEnglish" xml:space="preserve">
+    <value>Angielski</value>
+  </data>
+  <data name="UnattendLocaleEnglishUk" xml:space="preserve">
+    <value>Angielski – Zjednoczone Królestwo</value>
+  </data>
+  <data name="UnattendLocaleEnglishUs" xml:space="preserve">
+    <value>Angielski – Stany Zjednoczone</value>
+  </data>
+  <data name="UnattendLocaleFrench" xml:space="preserve">
+    <value>Francuski</value>
+  </data>
+  <data name="UnattendLocaleFrenchCanada" xml:space="preserve">
+    <value>Francuski – Kanada</value>
+  </data>
+  <data name="UnattendLocaleFrenchFrance" xml:space="preserve">
+    <value>Francuski – Francja</value>
+  </data>
+  <data name="UnattendLocaleGerman" xml:space="preserve">
+    <value>Niemiecki</value>
+  </data>
+  <data name="UnattendLocaleItalian" xml:space="preserve">
+    <value>Włoski</value>
+  </data>
+  <data name="UnattendLocaleJapanese" xml:space="preserve">
+    <value>Japoński</value>
+  </data>
+  <data name="UnattendLocaleKorean" xml:space="preserve">
+    <value>Koreański</value>
+  </data>
+  <data name="UnattendLocaleLabel" xml:space="preserve">
+    <value>Region i klawiatura</value>
+  </data>
+  <data name="UnattendLocalePortuguese" xml:space="preserve">
+    <value>Portugalski</value>
+  </data>
+  <data name="UnattendLocalePortugueseBrazil" xml:space="preserve">
+    <value>Portugalski (Brazylia)</value>
+  </data>
+  <data name="UnattendLocalePortuguesePortugal" xml:space="preserve">
+    <value>Portugalski (Portugalia)</value>
+  </data>
+  <data name="UnattendLocaleSpanish" xml:space="preserve">
+    <value>Hiszpański</value>
+  </data>
+  <data name="UnattendLocaleSpanishMexico" xml:space="preserve">
+    <value>Hiszpański – Meksyk</value>
+  </data>
+  <data name="UnattendLocaleSpanishSpain" xml:space="preserve">
+    <value>Hiszpański – Hiszpania</value>
+  </data>
+  <data name="UnattendLocaleText" xml:space="preserve">
+    <value>Określa dostępne języki wprowadzania i układy klawiatury w oparciu o wybrany język systemu operacyjnego.</value>
+  </data>
+  <data name="UnattendLocalUserAdminLabel" xml:space="preserve">
+    <value>Nadaj uprawnienia administratora</value>
+  </data>
+  <data name="UnattendLocalUserAdminText" xml:space="preserve">
+    <value>Aby funkcja rejestracji AirWatch została automatycznie uruchomiona, należy wyrazić zgodę. Podczas logowania użytkownik zobaczy okno aplikacji AirWatch, w którym należy wprowadzić poświadczenia rejestracji</value>
+  </data>
+  <data name="UnattendLocalUserNameLabel" xml:space="preserve">
+    <value>Lokalna nazwa użytkownika</value>
+  </data>
+  <data name="UnattendLocalUserNameText" xml:space="preserve">
+    <value>Jest to nazwa użytkownika lokalnego</value>
+  </data>
+  <data name="UnattendLocalUserPasswordLabel" xml:space="preserve">
+    <value>Hasło użytkownika lokalnego</value>
+  </data>
+  <data name="UnattendLocalUserPasswordText" xml:space="preserve">
+    <value>Jeśli nie określono hasła, system poprosi użytkownika o zmianę hasła przy pierwszym logowaniu.</value>
+  </data>
+  <data name="UnattendMediaLanguageLabel" xml:space="preserve">
+    <value>Język systemu operacyjnego</value>
+  </data>
+  <data name="UnattendMediaLanguageText" xml:space="preserve">
+    <value>Wybierz język nośnika instalacyjnego systemu operacyjnego dostarczonego do OEM</value>
+  </data>
+  <data name="UnattendModeAzureAdNoPrem" xml:space="preserve">
+    <value>Azure Active Directory – Brak premium</value>
+  </data>
+  <data name="UnattendModeAzureAdPrem" xml:space="preserve">
+    <value>Azure Active Directory – Premium</value>
+  </data>
+  <data name="UnattendModeWorkgroup" xml:space="preserve">
+    <value>Grupa robocza</value>
+  </data>
+  <data name="UnattendNewCmdLabel" xml:space="preserve">
+    <value>Nowe polecenie</value>
+  </data>
+  <data name="UnattendOnPremAdJoin" xml:space="preserve">
+    <value>Połączenie z usługą Active Directory na miejscu</value>
+  </data>
+  <data name="UnattendOobeSectionLabel" xml:space="preserve">
+    <value>Konfiguracja OOBE</value>
+  </data>
+  <data name="UnattendProductKeyLabel" xml:space="preserve">
+    <value>Klucz produktu</value>
+  </data>
+  <data name="UnattendProductKeyText" xml:space="preserve">
+    <value>Klucz produktu systemu Windows jest sekwencją pięciu liter lub cyfr, powtarzanych pięć razy i rozdzielonych myślnikami. Przykład: „12345-54CDE-XYZ78-ONM98-456TY”</value>
+  </data>
+  <data name="UnattendRegisteredOrgLabel" xml:space="preserve">
+    <value>Zarejestrowana organizacja</value>
+  </data>
+  <data name="UnattendRegisteredOrgText" xml:space="preserve">
+    <value>Spowoduje to wyświetlenie informacji o systemie.</value>
+  </data>
+  <data name="UnattendRegisteredOwnerLabel" xml:space="preserve">
+    <value>Zarejestrowany właściciel</value>
+  </data>
+  <data name="UnattendRegisteredOwnerText" xml:space="preserve">
+    <value>Spowoduje to wyświetlenie informacji o systemie</value>
+  </data>
+  <data name="UnattendRemoveConsumerAppsLabel" xml:space="preserve">
+    <value>Usuwanie aplikacji dla użytkowników systemu Windows 10</value>
+  </data>
+  <data name="UnattendRemoveConsumerAppsText" xml:space="preserve">
+    <value>Włączenie tej funkcji spowoduje, że aplikacje klienckie (np. Candy Crush) nie pojawią się w systemie Windows 10. Jest to możliwe tylko po wprowadzeniu poniżej klucza typu Enterprise lub Education. Wymaga systemu Windows w wersji 1511 lub nowszej</value>
+  </data>
+  <data name="UnattendSaveFailed" xml:space="preserve">
+    <value>Nie można zapisać pakietu, sprawdź formularz i spróbuj ponownie.</value>
+  </data>
+  <data name="UnattendShowEulaLabel" xml:space="preserve">
+    <value>Strona EULA</value>
+  </data>
+  <data name="UnattendShowEulaText" xml:space="preserve">
+    <value>Wybierz opcję „Pokaż”, aby wyświetlić stronę z warunkami licencji oprogramowania firmy Microsoft podczas rejestracji OOBE</value>
+  </data>
+  <data name="UnattendShowLocaleSettingsLabel" xml:space="preserve">
+    <value>Ustawienia regionu i klawiatury</value>
+  </data>
+  <data name="UnattendShowLocaleSettingsText" xml:space="preserve">
+    <value>Wybranie opcji „Pokaż” spowoduje wyświetlenie strony ustawień regionu i klawiatury w trakcie rejestracji OOBE. Wybranie opcji „Ukryj” spowoduje ukrycie i konieczność wybrania z listy dostępnych ustawień regionalnych z listy rozwijanej poniżej.</value>
+  </data>
+  <data name="UnattendShowOnlineAccountLabel" xml:space="preserve">
+    <value>Ustawienia konta online</value>
+  </data>
+  <data name="UnattendShowOnlineAccountText" xml:space="preserve">
+    <value>Wybierz opcję „Pokaż”, aby wyświetlić ekran konta online. Dzięki temu użytkownik będzie mógł zalogować się za pomocą konta firmy Microsoft.</value>
+  </data>
+  <data name="UnattendShowPrivacyLabel" xml:space="preserve">
+    <value>Ustawienia prywatności</value>
+  </data>
+  <data name="UnattendShowPrivacyText" xml:space="preserve">
+    <value>Wybierz opcję „Pokaż”, aby monitować użytkownika o wybór ustawień prywatności w czasie rejestracji OOBE. Wybór opcji „Ukryj” spowoduje użycie ustawień Express i ukrycie ich.</value>
+  </data>
+  <data name="UnattendSyncCmdLabel" xml:space="preserve">
+    <value>Dodatkowe polecenia synchroniczne</value>
+  </data>
+  <data name="UnattendSyncCmdText" xml:space="preserve">
+    <value>Można dodać polecenia, które będą automatycznie uruchamiane na końcu procesu konfiguracji systemu Windows, ale przed zalogowaniem użytkownika</value>
+  </data>
+  <data name="UnattendSystemConfigurationSection" xml:space="preserve">
+    <value>Konfiguracja systemu</value>
+  </data>
+  <data name="UnattendUacAlwaysNotify" xml:space="preserve">
+    <value>Zawsze powiadamiaj</value>
+  </data>
+  <data name="UnattendUacDefault" xml:space="preserve">
+    <value>Domyślne</value>
+  </data>
+  <data name="UnattendUacDisabled" xml:space="preserve">
+    <value>Wył.</value>
+  </data>
+  <data name="UnattendUacEnableButDoNotNotify" xml:space="preserve">
+    <value>Włączone, ale nie powiadamiaj</value>
+  </data>
+  <data name="UnattendUacLabel" xml:space="preserve">
+    <value>Kontrola konta użytkownika</value>
+  </data>
+  <data name="UnattendUacNotifyWithoutDimmingDesktop" xml:space="preserve">
+    <value>Powiadom bez przyciemniania pulpitu</value>
+  </data>
+  <data name="UnattendUacText" xml:space="preserve">
+    <value>Wybierz typ kontroli konta użytkownika.</value>
+  </data>
+  <data name="UnattendValidationInvalidInput" xml:space="preserve">
+    <value>Nieprawidłowy wpis</value>
+  </data>
+  <data name="UnattendValidationMaxLength" xml:space="preserve">
+    <value>To pole jest wymagane i nie może zawierać więcej niż {0} znaki(-ów)</value>
+  </data>
+  <data name="UnattendValidationNoAdminUser" xml:space="preserve">
+    <value>Należy utworzyć użytkownika lokalnego, który jest członkiem grupy Administratorzy lub włączyć wbudowanego administratora.</value>
+  </data>
+  <data name="UnattendValidationProductKey" xml:space="preserve">
+    <value>Nieprawidłowy klucz produktu</value>
+  </data>
+  <data name="UnattendValidationRequired" xml:space="preserve">
+    <value>Pole nie może być puste</value>
+  </data>
+  <data name="UnattendWelcome" xml:space="preserve">
+    <value>Witamy w Narzędziu konfiguracyjnym do zastrzegania. Należy pamiętać o podaniu wartości dla wszystkich wymaganych pól, aby włączyć przycisk tworzenia pliku konfiguracyjnego.</value>
+  </data>
+  <data name="UnattendWorkgroupLabel" xml:space="preserve">
+    <value>Grupa robocza</value>
+  </data>
+  <data name="UnattendWorkgroupText" xml:space="preserve">
+    <value>Jest to nazwa grupy roboczej, do której klient zostanie dołączony</value>
+  </data>
+  <data name="UnattendWs1OgLabel" xml:space="preserve">
+    <value>Rejestracja OG</value>
+  </data>
+  <data name="UnattendWs1OgText" xml:space="preserve">
+    <value>To jest identyfikator grupy rejestracji OG. Jeśli SAML jest włączone, upewnij się, że skonfigurowano wstępną rejestrację OG bez SAML. Aby uzyskać identyfikator grupy, ustaw kursor myszy nad OG w górnej części Workspace ONE Console.</value>
+  </data>
+  <data name="UnattendWs1Section" xml:space="preserve">
+    <value>Rejestracja w Workspace ONE</value>
+  </data>
+  <data name="UnattendWs1ServerLabel" xml:space="preserve">
+    <value>Serwer rejestracji</value>
+  </data>
+  <data name="UnattendWs1ServerText" xml:space="preserve">
+    <value>Jest to adres URL serwera rejestracji. Można go znaleźć, wybierając kolejno Wszystkie ustawienia --&gt; System --&gt; Zaawansowane --&gt; Adresy URL witryny pod adresem URL rejestracji MDM. Dotyczy tylko podstawowego adresu URL. Na przykład https://vmwarelab.awmdm.com</value>
+  </data>
+  <data name="UnattendWs1StagingAccountLabel" xml:space="preserve">
+    <value>Konto wstępnej rejestracji</value>
+  </data>
+  <data name="UnattendWs1StagingAccountPasswordLabel" xml:space="preserve">
+    <value>Hasło wstępnej rejestracji</value>
+  </data>
+  <data name="UnattendWs1StagingAccountPasswordText" xml:space="preserve">
+    <value>Hasło wstępnej rejestracji określone na tej samej stronie, co konto wstępnej rejestracji. Jeśli hasło zawiera znaki specjalne („&amp;”, „&gt;” lub „&lt;”) przepływy pracy przydzielania fabrycznego, które używają tego konta do celów rejestracji, zakończą się niepowodzeniem. Aby zmienić hasło, przejdź do strony Użytkownicy.</value>
+  </data>
+  <data name="UnattendWs1StagingAccountText" xml:space="preserve">
+    <value>To jest konto wstępnej rejestracji , które można znaleźć w polu Wszystkie ustawienia --&gt; Urządzenia i użytkownicy --&gt; Windows --&gt; Pulpit systemu Windows --&gt; Wstępna rejestracja i zastrzeganie w polu UPN.</value>
+  </data>
+  <data name="UnmanagedProfilesMessageLabelAny" xml:space="preserve">
+    <value>Profile niezarządzane</value>
+  </data>
+  <data name="USBDeviceMessageLabelAny" xml:space="preserve">
+    <value>Urządzenie USB</value>
+  </data>
+  <data name="UserEnrollmentAndEnter" xml:space="preserve">
+    <value>Posiadasz identyfikator grupy?</value>
+  </data>
+  <data name="UserEnrollmentNotEnabledInOg" xml:space="preserve">
+    <value>Rejestracja użytkownika nie jest włączona w określonej grupie organizacyjnej</value>
+  </data>
+  <data name="UserEnrollmentSettingsMessage" xml:space="preserve">
+    <value>W aplikacji „Ustawienia” znajdź i dotknij pozycji „Zarejestruj się w swojej firmie”.</value>
+  </data>
+  <data name="UserEnrollmentUseEmailAddress" xml:space="preserve">
+    <value>Użyj adresu e-mail</value>
+  </data>
+  <data name="UserPasswordIsRequired" xml:space="preserve">
+    <value>Hasło jest wymagane</value>
+  </data>
+  <data name="Workappsprivacynoticemessagelabel" xml:space="preserve">
+    <value>Na potrzeby raportowania z urządzenia zbierane są takie informacje jak nazwa, wersja i stan instalacji wszystkich aplikacji dostarczonych przez Workspace ONE.</value>
+  </data>
+</root>

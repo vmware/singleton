@@ -1,0 +1,805 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AboutEnrollment" xml:space="preserve">
+    <value>Läs mer om registreringstillstånd:</value>
+  </data>
+  <data name="AboutTotalDeployment" xml:space="preserve">
+    <value>Enheter måste registreras för att räknas som driftsatta. Enheters väntande åtgärder, t.ex. företagsrensning, räknas tills åtgärden slutförts. Registrerade enheter räknas inte förrän de registreras.</value>
+  </data>
+  <data name="AddTag" xml:space="preserve">
+    <value>Skapa etikett</value>
+  </data>
+  <data name="AddTagHelp" xml:space="preserve">
+    <value>Ger behörighet att lägga till en ny tagg.</value>
+  </data>
+  <data name="AdminModePasscodeHelpText" xml:space="preserve">
+    <value>Ange en alfanumerisk lösenkod för felsökning av enheter i administratörsläge. Välj Hub-ikonen på inloggningssidan 5 gånger för att starta administratörsläge.</value>
+  </data>
+  <data name="AirwatchCannotSeeYourPersonalContent" xml:space="preserve">
+    <value>VMware Workspace ONE Intelligent Hub samlar endast in information som krävs för att ge säker åtkomst till företagsresurser.</value>
+  </data>
+  <data name="AllowPinAtStartup" xml:space="preserve">
+    <value>Tillåt PIN-kod vid start</value>
+  </data>
+  <data name="AndroidSharedDeviceAdminModePasscode" xml:space="preserve">
+    <value>Lösenkod för administratörsläge</value>
+  </data>
+  <data name="AndroidSharedDeviceMode" xml:space="preserve">
+    <value>Androids läge för delade enheter</value>
+  </data>
+  <data name="AndroidSharedDeviceModeHelpText" xml:space="preserve">
+    <value>Incheckning och utcheckning av delade Android-enheter med inbyggd Android-kapacitet eller Workspace ONE Launcher. Ursprunglig Android stödjer enklare användningsfall som inte kräver mycket anpassning. Launcher stödjer anpassning av användargränssnitt för komplexare användningsfall.</value>
+  </data>
+  <data name="AppCatalogSupport" xml:space="preserve">
+    <value>Stöd för Appkatalog</value>
+  </data>
+  <data name="AssignTags" xml:space="preserve">
+    <value>Tilldela taggar</value>
+  </data>
+  <data name="BluetoothDeviceMessageLabelAny" xml:space="preserve">
+    <value>Bluetooth-enhet</value>
+  </data>
+  <data name="BulkAndroidWipeAddition" xml:space="preserve">
+    <value>Om någon av dessa enhet(er) omregistreras i Workspace ONE skapas ett nytt UDID vilket resulterar i en dubblett av enhetsposten.</value>
+  </data>
+  <data name="BulkEnterpriseWipeDescription" xml:space="preserve">
+    <value>Vid en företagsrensning avregistreras och tas alla företagsresurser, som hanteras, bort från de(n) valda enheten(erna), appar och profiler inkluderat.
+Åtgärden kan inte ångras och enheten(erna) måste registreras på nytt om den/de ska kunna hanteras med Workspace ONE igen.</value>
+  </data>
+  <data name="CallUsageMessageLabelAny" xml:space="preserve">
+    <value>Samtalsanvändning</value>
+  </data>
+  <data name="CannotDeleteUsersWithRegistrationRecord" xml:space="preserve">
+    <value>Det går inte att ta bort användare med DEP-registreringsposter eller användare som är associerade med DEP-profiler</value>
+  </data>
+  <data name="CarrierCountryCodeMessageLabelAny" xml:space="preserve">
+    <value>Operatörens landskod</value>
+  </data>
+  <data name="CellularDataUsageMessageLabelAny" xml:space="preserve">
+    <value>Mobildataanvändning</value>
+  </data>
+  <data name="ChromeOsDeviceCleanup" xml:space="preserve">
+    <value>Ta bort Chrome OS-enhet</value>
+  </data>
+  <data name="ClearAndroidAccounts" xml:space="preserve">
+    <value>Rensa Android-konton</value>
+  </data>
+  <data name="ClearAndroidAccountsHelpInfo" xml:space="preserve">
+    <value>Om du rensar Android-konton tas konton som vissa appar kan använda för automatisk inloggning bort. Rensning av Google-konton kräver Android 8 eller senare och rensning av konton som inte är Google-konton kräver Android 9 eller senare. Den här inställningen tillämpas endast för Launcher-metoden för delade Android-enheter eftersom den ursprungliga metoden alltid rensar varje konto.</value>
+  </data>
+  <data name="ClearDevicePasscodeDevicePageHelpInfo" xml:space="preserve">
+    <value>Aktivera eller avaktivera alternativet säker start, vilket kräver en initial PIN-kod för att starta enheten. Om säker start redan är avaktiverat måste enheten fabriksåterställas för att aktivera det. Den här funktionen gäller endast för Android-enheter som inte har filbaserad kryptering.</value>
+  </data>
+  <data name="ClearDevicePasscodeSharedSettingsHelpInfo" xml:space="preserve">
+    <value>Aktivera eller avaktivera säker start med Android, vilket kräver en initial PIN-post för att starta enheten. Om funktionen är avaktiverad kan användare inte aktivera säker start vid inställning av lösenkod. Om säker start redan är avaktiverat på enheten måste enheten fabriksåterställas för att aktivera det. Den här funktionen gäller endast för Android-enheter som inte har filbaserad kryptering.</value>
+  </data>
+  <data name="ConfirmAndroidSharedDeviceAdminModePasscode" xml:space="preserve">
+    <value>Bekräfta lösenkoden för administratörsläge</value>
+  </data>
+  <data name="ConfirmEnterpriseWipeDeviceMessageChromeOs" xml:space="preserve">
+    <value>Den här åtgärden avregistrerar och tar bort alla hanterade företagsresurser från den valda enheten (inklusive appar och profiler). Du kan inte ångra åtgärden utan att registrera om enheten.</value>
+  </data>
+  <data name="ConfirmExport" xml:space="preserve">
+    <value>Ja, exportera</value>
+  </data>
+  <data name="ConfirmOverwrite" xml:space="preserve">
+    <value>Skriv över bekräftelse</value>
+  </data>
+  <data name="ConfirmOverwriteMessage" xml:space="preserve">
+    <value>Om du exporterar detta PPKG skrivs alla PPKG över för ifyllda mallar. Se till att du hämtar tidigare PPKG innan du exporterar det här. Är du säker på att du vill fortsätta?</value>
+  </data>
+  <data name="ContactAdminPrivacyNotice" xml:space="preserve">
+    <value>Ovanstående insamlingsområden är specifika för VMware Workspace ONE Intelligent Hub och kan variera mellan företagsenheter och personliga enheter.
+
+Kontakta din IT-administratör angående tredjepartsappar som kan ge företaget möjlighet att visa ytterligare personlig/privat information, och för en kopia av alla gällande interna policyer.</value>
+  </data>
+  <data name="DependencyApplications" xml:space="preserve">
+    <value>Beroende appar</value>
+  </data>
+  <data name="DeviceBulkManagementAddTags" xml:space="preserve">
+    <value>Tilldela taggar för masshantering av enheter</value>
+  </data>
+  <data name="DeviceBulkManagementAddTagsHelp" xml:space="preserve">
+    <value>Tillåter användare att tilldela taggar på enhet(er) som massåtgärd</value>
+  </data>
+  <data name="DeviceDeleteWhiteSpaceReason" xml:space="preserve">
+    <value>Ett tomt utrymme kan inte användas som en orsak.</value>
+  </data>
+  <data name="DevicePhoneNumberMessageLabelAny" xml:space="preserve">
+    <value>Enheters telefonnummer</value>
+  </data>
+  <data name="DeviceProvisioningMenuDescription" xml:space="preserve">
+    <value>Hantera provisioneringspaket för enheten</value>
+  </data>
+  <data name="DeviceProvisioningMenuTitle" xml:space="preserve">
+    <value>Provisionering</value>
+  </data>
+  <data name="DevicesCountExcludesUnenrolled" xml:space="preserve">
+    <value>Enheter som räknas in i den totala driftsättningen har uppdaterats så att de utesluter avregistrerade enheter.</value>
+  </data>
+  <data name="DeviceViewWorkflowsList" xml:space="preserve">
+    <value>Visa lista över arbetsflöden för enheter</value>
+  </data>
+  <data name="DeviceViewWorkflowsListHelp" xml:space="preserve">
+    <value>Hanterar åtkomst till fliken Arbetsflöden som finns på enhetsinformationssidan.</value>
+  </data>
+  <data name="DifferentModelReplacement" xml:space="preserve">
+    <value>Olika modellersättningar</value>
+  </data>
+  <data name="DownloadEncryptedPackage" xml:space="preserve">
+    <value>Hämta krypterat paket</value>
+  </data>
+  <data name="DownloadProvisioningFiles" xml:space="preserve">
+    <value>Hämta provisioneringsfiler</value>
+  </data>
+  <data name="DownloadWindowsPhoneAgent" xml:space="preserve">
+    <value>Hämta Windows Phone-agenten</value>
+  </data>
+  <data name="DuplicatePackageFound" xml:space="preserve">
+    <value>Namnet används redan. Ange ett annat namn.</value>
+  </data>
+  <data name="EditProvisioningPackage" xml:space="preserve">
+    <value>Redigera provisioneringspaket</value>
+  </data>
+  <data name="EducationCertificateRenewalJob" xml:space="preserve">
+    <value>Förnyelsejobb för utbildningscertifikat</value>
+  </data>
+  <data name="EmailDiscovery" xml:space="preserve">
+    <value>Automatisk identifiering av e-post</value>
+  </data>
+  <data name="EmailDomainRegistrationFailure" xml:space="preserve">
+    <value>Fel vid registrering av e-postdomän</value>
+  </data>
+  <data name="EmailDomainRegistrationSuccess" xml:space="preserve">
+    <value>Lyckad registrering av e-postdomän</value>
+  </data>
+  <data name="EmptyApplicationList" xml:space="preserve">
+    <value>Inga appar hittades.</value>
+  </data>
+  <data name="EmptyEnrollmentSessionPleaseTryAgain" xml:space="preserve">
+    <value>Tom registreringssession. Försök igen.</value>
+  </data>
+  <data name="EmptyPackageList" xml:space="preserve">
+    <value>Dina nya provisioneringspaket visas här.</value>
+  </data>
+  <data name="EncryptedPackageDescription" xml:space="preserve">
+    <value>Exportera enkelt krypterat PPKG-paket för att provisionera lokala enheter med konfigurationer, inställningar och applikationer.</value>
+  </data>
+  <data name="EncryptedPackageTitle" xml:space="preserve">
+    <value>Krypterat paket</value>
+  </data>
+  <data name="Enrollmentemailaddress" xml:space="preserve">
+    <value>E-postadress</value>
+  </data>
+  <data name="Enrollmentemailusername" xml:space="preserve">
+    <value>Användarnamn för e-post</value>
+  </data>
+  <data name="EnterCharactersShownAbove" xml:space="preserve">
+    <value>Ange de tecken som visas ovan</value>
+  </data>
+  <data name="EnterpriseWipeFailed" xml:space="preserve">
+    <value>Företagsrensning misslyckades.</value>
+  </data>
+  <data name="EnterpriseWipeReasonRequired" xml:space="preserve">
+    <value>Orsaksfältet är obligatoriskt när du begär en företagsrensning.</value>
+  </data>
+  <data name="EnterpriseWipeSucceeded" xml:space="preserve">
+    <value>Företagsrensning lyckades.</value>
+  </data>
+  <data name="ExportInProgress" xml:space="preserve">
+    <value>Exporterar...</value>
+  </data>
+  <data name="ExportLater" xml:space="preserve">
+    <value>Det pågår redan en export av provisioneringspaket. Spara mallen och exportera vid ett senare tillfälle, eller vänta tills den andra exporten har slutförts.</value>
+  </data>
+  <data name="FailedLoadingUnmanagedProfilePayload" xml:space="preserve">
+    <value>Det gick inte att läsa in ohanterad profilnyttolast</value>
+  </data>
+  <data name="FailedToDownload" xml:space="preserve">
+    <value>Det gick inte att begära hämtning, försök igen senare.</value>
+  </data>
+  <data name="FailedToExport" xml:space="preserve">
+    <value>Det gick inte att exportera</value>
+  </data>
+  <data name="FeatureNotSupported" xml:space="preserve">
+    <value>Den här funktionen stöds inte för närvarande.</value>
+  </data>
+  <data name="GPSMessageLabelAny" xml:space="preserve">
+    <value>GPS</value>
+  </data>
+  <data name="GroupIDAndEmailRequired" xml:space="preserve">
+    <value>Både e-postadress och grupp-ID krävs.</value>
+  </data>
+  <data name="InactiveAppsFound" xml:space="preserve">
+    <value>Vissa applikationer har tagits bort eller ändrats efter att det här paketet skapades. Kontrollera att listan över valda applikationer är fullständig.</value>
+  </data>
+  <data name="InvokeAgent" xml:space="preserve">
+    <value>Anropa agent</value>
+  </data>
+  <data name="LauncherSharedDeviceMode" xml:space="preserve">
+    <value>Launcher</value>
+  </data>
+  <data name="ManagedInstallations" xml:space="preserve">
+    <value>Hanterade installationer</value>
+  </data>
+  <data name="MultipleEnrollmentUsersForEmail" xml:space="preserve">
+    <value>Flera registreringsanvändare är kopplade till den angivna e-postadressen</value>
+  </data>
+  <data name="NativeSharedDeviceMode" xml:space="preserve">
+    <value>Ursprunglig</value>
+  </data>
+  <data name="NewProvisioningPackage" xml:space="preserve">
+    <value>Nytt provisioneringspaket</value>
+  </data>
+  <data name="NoEnrollmentUserForEmail" xml:space="preserve">
+    <value>Ingen registreringsanvändare är kopplad till den angivna e-postadressen</value>
+  </data>
+  <data name="NoOrganizationGroupForGroupId" xml:space="preserve">
+    <value>Det gick inte att hitta någon organisationsgrupp för det angivna grupp-ID:t</value>
+  </data>
+  <data name="NoTransformSelected" xml:space="preserve">
+    <value>Ingen transformation vald</value>
+  </data>
+  <data name="NotWorking" xml:space="preserve">
+    <value>Fungerar det inte?</value>
+  </data>
+  <data name="OEMProvisioningDescription" xml:space="preserve">
+    <value>Exportera PPKG- och XML-filer till förinstallerade enheter med konfigurationer, inställningar och applikationer vid OEM-anläggningen.</value>
+  </data>
+  <data name="OEMProvisioningTitle" xml:space="preserve">
+    <value>Fabriksprovisionering</value>
+  </data>
+  <data name="OnboardingMethod" xml:space="preserve">
+    <value>Onboardingmetod</value>
+  </data>
+  <data name="OnboardingMethods" xml:space="preserve">
+    <value>Onboardingmetoder</value>
+  </data>
+  <data name="OrganizationGroupInvalidForEnrollmentUser" xml:space="preserve">
+    <value>Användaren har inte behörighet att registrera sig i den angivna organisationsgruppen</value>
+  </data>
+  <data name="PackageInProgress" xml:space="preserve">
+    <value>En befintlig exportbegäran för Windows-provisioneringspaket (PPKG) pågår. Vänta tills exporten är klar.</value>
+  </data>
+  <data name="PackageSaved" xml:space="preserve">
+    <value>Provisioneringspaketet skapas. Kom tillbaka senare för hämtningslänken.</value>
+  </data>
+  <data name="PersonalApplicationMessageLabelAny" xml:space="preserve">
+    <value>Personlig applikation</value>
+  </data>
+  <data name="PersonalAppsCollected" xml:space="preserve">
+    <value>Information om vilka personliga applikationer som installerats samlas in för att kontrollera att det inte finns några applikationer på enheten som är skadliga för personlig och företagsdata. Endast en lista över installerade applikationer finns tillgänglig. Inget innehåll eller data från personliga applikationer delas med Workspace ONE.</value>
+  </data>
+  <data name="PlatformConfirmation" xml:space="preserve">
+    <value>Plattformsbekräftelse</value>
+  </data>
+  <data name="PromptForiPadandMAC" xml:space="preserve">
+    <value>Bekräfta om du använder en iPad för att undvika problem med registrering och installation av appar.</value>
+  </data>
+  <data name="RemoteControlAccess" xml:space="preserve">
+    <value>Fjärrstyrningsåtkomst</value>
+  </data>
+  <data name="Replaced" xml:space="preserve">
+    <value>Ersatt</value>
+  </data>
+  <data name="Requested" xml:space="preserve">
+    <value>Begärd</value>
+  </data>
+  <data name="RetiringDevice" xml:space="preserve">
+    <value>Enheten tas ur bruk</value>
+  </data>
+  <data name="RoamingStatusMessageLabelAny" xml:space="preserve">
+    <value>Roamingstatus</value>
+  </data>
+  <data name="SameModelReplacement" xml:space="preserve">
+    <value>Ersättning med samma modell</value>
+  </data>
+  <data name="SaveAndExport" xml:space="preserve">
+    <value>Spara och exportera</value>
+  </data>
+  <data name="SaveForLater" xml:space="preserve">
+    <value>Nej, spara till senare</value>
+  </data>
+  <data name="SelectedApplications" xml:space="preserve">
+    <value>Valda appar</value>
+  </data>
+  <data name="SelectStagingMode" xml:space="preserve">
+    <value>Välj mellanlagringsläge</value>
+  </data>
+  <data name="SingleAndroidWipeAddition" xml:space="preserve">
+    <value>Om denna enhet omregistreras i Workspace ONE skapas ett nytt UDID vilket resulterar i en dubblett av enhetsposten.</value>
+  </data>
+  <data name="SingleEnterpriseWipeDescription" xml:space="preserve">
+    <value>Vid en företagsrensning avregistreras och tas alla företagsresurser som hanteras, bort från de valda enheten, appar och profiler inkluderat.
+Åtgärden kan inte ångras och enheten måste registreras på nytt om den ska kunna hanteras med Workspace ONE igen.</value>
+  </data>
+  <data name="SMSUsageMessageLabelAny" xml:space="preserve">
+    <value>SMS-användning</value>
+  </data>
+  <data name="StagingIsEnabledForEnrollmentUser" xml:space="preserve">
+    <value>Mellanlagring är aktiverat för den angivna registreringsanvändaren</value>
+  </data>
+  <data name="SystemAppsToggleHelpText" xml:space="preserve">
+    <value>Tillåt slutanvändare att få åtkomst till systemappar</value>
+  </data>
+  <data name="SystemLogs" xml:space="preserve">
+    <value>Systemloggar</value>
+  </data>
+  <data name="SystemLogsPrivacyNoticeMessageLabel" xml:space="preserve">
+    <value>Sekretessmeddelande om systemloggar</value>
+  </data>
+  <data name="TapHereToRetry" xml:space="preserve">
+    <value>Tryck här för att försöka igen</value>
+  </data>
+  <data name="TermsAndConditions" xml:space="preserve">
+    <value>Villkor</value>
+  </data>
+  <data name="TransformLabel" xml:space="preserve">
+    <value>Transformation för app-installerare</value>
+  </data>
+  <data name="TransformToolTipText" xml:space="preserve">
+    <value>En transformation är en samling ändringar som appliceras på en installation av en MSI. Välj en tillgänglig transformationsfil (MST) som ska användas under installationen.</value>
+  </data>
+  <data name="TransformToolTipTitle" xml:space="preserve">
+    <value>Transformation</value>
+  </data>
+  <data name="UnattendAdJoinLabel" xml:space="preserve">
+    <value>Active Directory-typ</value>
+  </data>
+  <data name="UnattendAdJoinText" xml:space="preserve">
+    <value>Välj den typ av AD-koppling som ska användas. Beroende på det här valet så kan formuläret nedan hantera en viss typ av AD-koppling (unattend.xml)</value>
+  </data>
+  <data name="UnattendAutoAdminLogonLabel" xml:space="preserve">
+    <value>Automatisk inloggning som administratör</value>
+  </data>
+  <data name="UnattendAutoAdminLogonText" xml:space="preserve">
+    <value>En inledande administratörsinloggning krävs för att registrera enheten. Automatisk inloggning som administratör har aktiverats och nu måste du konfigurera det lokala administratörskontot</value>
+  </data>
+  <data name="UnattendBuildConfigFile" xml:space="preserve">
+    <value>Skapa konfigurationsfil</value>
+  </data>
+  <data name="UnattendBuildInAdminText" xml:space="preserve">
+    <value>Det här är lösenordet för administratörskontot</value>
+  </data>
+  <data name="UnattendBuiltInAdminLabel" xml:space="preserve">
+    <value>Administratörslösenord</value>
+  </data>
+  <data name="UnattendComputerNameLabel" xml:space="preserve">
+    <value>Datorns namn</value>
+  </data>
+  <data name="UnattendComputerNamePlaceholder" xml:space="preserve">
+    <value>Datorns namn (slumpmässigt)</value>
+  </data>
+  <data name="UnattendCreateLocalUserLabel" xml:space="preserve">
+    <value>Skapa lokal användare</value>
+  </data>
+  <data name="UnattendCreateLocalUserText" xml:space="preserve">
+    <value>Om du väljer ”Ja” skapas ett lokalt användarkonto i förväg. Om du väljer ”Nej” uppmanas användaren att skapa ett under OOBE.</value>
+  </data>
+  <data name="UnattendDomainNameLabel" xml:space="preserve">
+    <value>Domännamn</value>
+  </data>
+  <data name="UnattendDomainNameText" xml:space="preserve">
+    <value>Det här är namnet på domänen som klienten ska kopplas till</value>
+  </data>
+  <data name="UnattendDomainOuLabel" xml:space="preserve">
+    <value>AD-organisationsenhet (OU)</value>
+  </data>
+  <data name="UnattendDomainOuText" xml:space="preserve">
+    <value>Måste ha formatet ”OU=,OU=,DC=Company,DC=com”</value>
+  </data>
+  <data name="UnattendDomainPasswordLabel" xml:space="preserve">
+    <value>Lösenord för domän</value>
+  </data>
+  <data name="UnattendDomainPasswordText" xml:space="preserve">
+    <value>Ange lösenordet för Active Directory-kontot med behörigheten domain-join.</value>
+  </data>
+  <data name="UnattendDomainUserLabel" xml:space="preserve">
+    <value>Domänanvändarnamn</value>
+  </data>
+  <data name="UnattendDomainUserText" xml:space="preserve">
+    <value>Ange användarnamnet för ett Active Directory-konto med behörigheten domain-join.</value>
+  </data>
+  <data name="UnattendDownloadMarkup" xml:space="preserve">
+    <value>Upphör XML-bevakning</value>
+  </data>
+  <data name="UnattendDownloadPackage" xml:space="preserve">
+    <value>PPKG</value>
+  </data>
+  <data name="UnattendEnableBuiltInAdminLabel" xml:space="preserve">
+    <value>Aktivera administratörskonto</value>
+  </data>
+  <data name="UnattendEnableBuiltInAdminText" xml:space="preserve">
+    <value>Aktivera det inbyggda administratörskontot. Det här kontot är inaktiverat som standard. När du använder automatisk inloggning som administratör måste du aktivera standardadministratörskontot</value>
+  </data>
+  <data name="UnattendFirstLogonCmdLabel" xml:space="preserve">
+    <value>Kommandon vid första inloggning</value>
+  </data>
+  <data name="UnattendFirstLogonCmdText" xml:space="preserve">
+    <value>Du kan lägga till kommandon som ska köras automatiskt första gången en användare loggar in (användaren måste ha behörighet som lokal administratör)</value>
+  </data>
+  <data name="UnattendLocaleChineseHongKong" xml:space="preserve">
+    <value>Kinesiska (Hong Kong)</value>
+  </data>
+  <data name="UnattendLocaleChinesePrc" xml:space="preserve">
+    <value>Kinesiska (Kina)</value>
+  </data>
+  <data name="UnattendLocaleChineseSimplified" xml:space="preserve">
+    <value>Kinesiska (förenklad)</value>
+  </data>
+  <data name="UnattendLocaleChineseTaiwan" xml:space="preserve">
+    <value>Kinesiska (Taiwan)</value>
+  </data>
+  <data name="UnattendLocaleChineseTraditional" xml:space="preserve">
+    <value>Kinesiska (traditionell)</value>
+  </data>
+  <data name="UnattendLocaleEnglish" xml:space="preserve">
+    <value>Engelska</value>
+  </data>
+  <data name="UnattendLocaleEnglishUk" xml:space="preserve">
+    <value>Engelska – Storbritannien</value>
+  </data>
+  <data name="UnattendLocaleEnglishUs" xml:space="preserve">
+    <value>Engelska – USA</value>
+  </data>
+  <data name="UnattendLocaleFrench" xml:space="preserve">
+    <value>Franska</value>
+  </data>
+  <data name="UnattendLocaleFrenchCanada" xml:space="preserve">
+    <value>Franska – Kanada</value>
+  </data>
+  <data name="UnattendLocaleFrenchFrance" xml:space="preserve">
+    <value>Franska – Frankrike</value>
+  </data>
+  <data name="UnattendLocaleGerman" xml:space="preserve">
+    <value>Tyska</value>
+  </data>
+  <data name="UnattendLocaleItalian" xml:space="preserve">
+    <value>Italienska</value>
+  </data>
+  <data name="UnattendLocaleJapanese" xml:space="preserve">
+    <value>Japanska</value>
+  </data>
+  <data name="UnattendLocaleKorean" xml:space="preserve">
+    <value>Koreanska</value>
+  </data>
+  <data name="UnattendLocaleLabel" xml:space="preserve">
+    <value>Region och tangentbord</value>
+  </data>
+  <data name="UnattendLocalePortuguese" xml:space="preserve">
+    <value>Portugisiska</value>
+  </data>
+  <data name="UnattendLocalePortugueseBrazil" xml:space="preserve">
+    <value>Portugisiska (Brasilien)</value>
+  </data>
+  <data name="UnattendLocalePortuguesePortugal" xml:space="preserve">
+    <value>Portugisiska (Portugal)</value>
+  </data>
+  <data name="UnattendLocaleSpanish" xml:space="preserve">
+    <value>Spanska</value>
+  </data>
+  <data name="UnattendLocaleSpanishMexico" xml:space="preserve">
+    <value>Spanska – Mexiko</value>
+  </data>
+  <data name="UnattendLocaleSpanishSpain" xml:space="preserve">
+    <value>Spanska – Spanien</value>
+  </data>
+  <data name="UnattendLocaleText" xml:space="preserve">
+    <value>Anger inmatningsspråk och tangentbordslayout baserat på det valda operativsystemspråket ovan.</value>
+  </data>
+  <data name="UnattendLocalUserAdminLabel" xml:space="preserve">
+    <value>Gör till administratör</value>
+  </data>
+  <data name="UnattendLocalUserAdminText" xml:space="preserve">
+    <value>Ja krävs för att AirWatch-registreringen ska starta automatiskt. Vid inloggning ser användaren ett AirWatch-fönster där registreringsuppgifterna ska anges</value>
+  </data>
+  <data name="UnattendLocalUserNameLabel" xml:space="preserve">
+    <value>Lokalt användarnamn</value>
+  </data>
+  <data name="UnattendLocalUserNameText" xml:space="preserve">
+    <value>Användarnamn för den lokala användaren</value>
+  </data>
+  <data name="UnattendLocalUserPasswordLabel" xml:space="preserve">
+    <value>Lokalt användarlösenord</value>
+  </data>
+  <data name="UnattendLocalUserPasswordText" xml:space="preserve">
+    <value>Om inget lösenord anges så får uppmanas användaren att ändra lösenordet vid den första inloggningen</value>
+  </data>
+  <data name="UnattendMediaLanguageLabel" xml:space="preserve">
+    <value>Operativsystemspråk</value>
+  </data>
+  <data name="UnattendMediaLanguageText" xml:space="preserve">
+    <value>Välj språk för installationsmediet med operativsystemfiler som skickats till OEM</value>
+  </data>
+  <data name="UnattendModeAzureAdNoPrem" xml:space="preserve">
+    <value>Azure Active Directory – Inte Premium</value>
+  </data>
+  <data name="UnattendModeAzureAdPrem" xml:space="preserve">
+    <value>Azure Active Directory – Premium</value>
+  </data>
+  <data name="UnattendModeWorkgroup" xml:space="preserve">
+    <value>Arbetsgrupp</value>
+  </data>
+  <data name="UnattendNewCmdLabel" xml:space="preserve">
+    <value>Nytt kommando</value>
+  </data>
+  <data name="UnattendOnPremAdJoin" xml:space="preserve">
+    <value>Lokal Active Directory-koppling</value>
+  </data>
+  <data name="UnattendOobeSectionLabel" xml:space="preserve">
+    <value>OOBE-konfiguration</value>
+  </data>
+  <data name="UnattendProductKeyLabel" xml:space="preserve">
+    <value>Produktnyckel</value>
+  </data>
+  <data name="UnattendProductKeyText" xml:space="preserve">
+    <value>En Windows-produktnyckel är en sekvens med fem bokstäver eller siffror, som upprepas fem gånger och separeras med bindestreck. Exempel: ”12345-54CDE-XYZ78-ONM98-456TY”</value>
+  </data>
+  <data name="UnattendRegisteredOrgLabel" xml:space="preserve">
+    <value>Registrerad organisation</value>
+  </data>
+  <data name="UnattendRegisteredOrgText" xml:space="preserve">
+    <value>Detta visas i systeminformationen.</value>
+  </data>
+  <data name="UnattendRegisteredOwnerLabel" xml:space="preserve">
+    <value>Registrerad ägare</value>
+  </data>
+  <data name="UnattendRegisteredOwnerText" xml:space="preserve">
+    <value>Detta visas i systeminformationen</value>
+  </data>
+  <data name="UnattendRemoveConsumerAppsLabel" xml:space="preserve">
+    <value>Ta bort konsumentappar för Windows 10</value>
+  </data>
+  <data name="UnattendRemoveConsumerAppsText" xml:space="preserve">
+    <value>Om du aktiverar det här alternativet visas inga konsumentappar (exempelvis Candy Crush) i Windows 10. Du kan bara aktivera alternativet genom att ange en produktnyckel för Enterprise eller Education nedan. Du måste ha Windows version 1511 eller senare</value>
+  </data>
+  <data name="UnattendSaveFailed" xml:space="preserve">
+    <value>Det gick inte att spara paketet, kontrollera formuläret och försök igen.</value>
+  </data>
+  <data name="UnattendShowEulaLabel" xml:space="preserve">
+    <value>EULA-sida</value>
+  </data>
+  <data name="UnattendShowEulaText" xml:space="preserve">
+    <value>Välj ”Visa” för att visa sidan med Microsofts licensvillkor under OOBE</value>
+  </data>
+  <data name="UnattendShowLocaleSettingsLabel" xml:space="preserve">
+    <value>Inställningar för region och tangentbord</value>
+  </data>
+  <data name="UnattendShowLocaleSettingsText" xml:space="preserve">
+    <value>Om du väljer ”Visa” så visas sidan med inställningar för region och tangentbord under OOBE. Om du väljer ”Dölj” måste du välja bland de tillgängliga språkinställningarna i listrutan nedan.</value>
+  </data>
+  <data name="UnattendShowOnlineAccountLabel" xml:space="preserve">
+    <value>Inställningar för onlinekonto</value>
+  </data>
+  <data name="UnattendShowOnlineAccountText" xml:space="preserve">
+    <value>Välj ”Visa” för att visa onlinekontoskärmen. Där kan du logga in med ett Microsoft-konto.</value>
+  </data>
+  <data name="UnattendShowPrivacyLabel" xml:space="preserve">
+    <value>Integritetsinställningar</value>
+  </data>
+  <data name="UnattendShowPrivacyText" xml:space="preserve">
+    <value>Välj ”Visa” för att uppmana användaren att välja sekretessinställningar under OOBE. Om du väljer ”Dölj” används Express-inställningarna och sidan döljs.</value>
+  </data>
+  <data name="UnattendSyncCmdLabel" xml:space="preserve">
+    <value>Ytterligare synkrona kommandon</value>
+  </data>
+  <data name="UnattendSyncCmdText" xml:space="preserve">
+    <value>Du kan lägga till kommandon som ska köras automatiskt i slutet av Windows-konfigurationen, men innan någon användare loggar in.</value>
+  </data>
+  <data name="UnattendSystemConfigurationSection" xml:space="preserve">
+    <value>Systemkonfiguation</value>
+  </data>
+  <data name="UnattendUacAlwaysNotify" xml:space="preserve">
+    <value>Meddela alltid</value>
+  </data>
+  <data name="UnattendUacDefault" xml:space="preserve">
+    <value>Standard</value>
+  </data>
+  <data name="UnattendUacDisabled" xml:space="preserve">
+    <value>Avaktiverad</value>
+  </data>
+  <data name="UnattendUacEnableButDoNotNotify" xml:space="preserve">
+    <value>Aktiverad men avisera inte</value>
+  </data>
+  <data name="UnattendUacLabel" xml:space="preserve">
+    <value>Kontroll av användarkonto</value>
+  </data>
+  <data name="UnattendUacNotifyWithoutDimmingDesktop" xml:space="preserve">
+    <value>Meddela utan att tona ned skrivbordet</value>
+  </data>
+  <data name="UnattendUacText" xml:space="preserve">
+    <value>Välj typ av kontroll av användarkonto</value>
+  </data>
+  <data name="UnattendValidationInvalidInput" xml:space="preserve">
+    <value>Ogiltiga indata</value>
+  </data>
+  <data name="UnattendValidationMaxLength" xml:space="preserve">
+    <value>Det här fältet är obligatoriskt och kan inte innehålla fler än {0} tecken.</value>
+  </data>
+  <data name="UnattendValidationNoAdminUser" xml:space="preserve">
+    <value>Du måste skapa en lokal användare som är medlem i administratörsgruppen, eller aktivera den inbyggda administratören</value>
+  </data>
+  <data name="UnattendValidationProductKey" xml:space="preserve">
+    <value>Ogiltig produktnyckel</value>
+  </data>
+  <data name="UnattendValidationRequired" xml:space="preserve">
+    <value>Det här fältet får inte vara tomt</value>
+  </data>
+  <data name="UnattendWelcome" xml:space="preserve">
+    <value>Välkommen till konfigurationsverktyget för provisionering. Ange värden i alla obligatoriska fält så aktiveras knappen Skapa byggekonfigurationsfil</value>
+  </data>
+  <data name="UnattendWorkgroupLabel" xml:space="preserve">
+    <value>Arbetsgrupp</value>
+  </data>
+  <data name="UnattendWorkgroupText" xml:space="preserve">
+    <value>Det här är namnet på den arbetsgrupp som klienten ska kopplas till</value>
+  </data>
+  <data name="UnattendWs1OgLabel" xml:space="preserve">
+    <value>OG för registrering</value>
+  </data>
+  <data name="UnattendWs1OgText" xml:space="preserve">
+    <value>Det här är grupp-ID:t för din OG för registrering. Om du har SAML aktiverad ska du ställa in en separat OG för mellanlagring med SAML inaktiverad. Du ser grupp-ID:t om du hovrar med musen över OG:n längst upp i Workspace ONE-konsolen.</value>
+  </data>
+  <data name="UnattendWs1Section" xml:space="preserve">
+    <value>Workspace ONE-registrering</value>
+  </data>
+  <data name="UnattendWs1ServerLabel" xml:space="preserve">
+    <value>Registreringsserver</value>
+  </data>
+  <data name="UnattendWs1ServerText" xml:space="preserve">
+    <value>Det här är webbadressen till din registreringsserver. Du hittar den under Alla inställningar &gt; System &gt; Avancerat &gt; Webbplatsadresser, under webbadressen för MDM-registrering. Ta bara med kärnadressen, exempelvis https://vmwarelab.awmdm.com</value>
+  </data>
+  <data name="UnattendWs1StagingAccountLabel" xml:space="preserve">
+    <value>Konto för mellanlagring</value>
+  </data>
+  <data name="UnattendWs1StagingAccountPasswordLabel" xml:space="preserve">
+    <value>Lösenord för mellanlagring</value>
+  </data>
+  <data name="UnattendWs1StagingAccountPasswordText" xml:space="preserve">
+    <value>Lösenordet för inställningskontot som angetts på samma sida som inställningskontot. Om lösenordet innehåller specialtecken (&amp;, &gt; eller &lt;) kommer fabriksinställda arbetsflöden som använder kontot för registrering att misslyckas. Gå till sidan användare om du vill ändra lösenordet.</value>
+  </data>
+  <data name="UnattendWs1StagingAccountText" xml:space="preserve">
+    <value>Du hittar det här mellanlagringskontot under Alla inställningar &gt; Enheter och användare &gt; Windows &gt; Windows Desktop &gt; Mellanlagring och provisionering, i fältet UPN</value>
+  </data>
+  <data name="UnmanagedProfilesMessageLabelAny" xml:space="preserve">
+    <value>Icke hanterade profiler</value>
+  </data>
+  <data name="USBDeviceMessageLabelAny" xml:space="preserve">
+    <value>USB-enhet</value>
+  </data>
+  <data name="UserEnrollmentAndEnter" xml:space="preserve">
+    <value>Har du ett grupp-ID?</value>
+  </data>
+  <data name="UserEnrollmentNotEnabledInOg" xml:space="preserve">
+    <value>Användarregistrering är inte aktiverat i den angivna organisationsgruppen</value>
+  </data>
+  <data name="UserEnrollmentSettingsMessage" xml:space="preserve">
+    <value>I appen Inställningar letar du reda på och trycker på ”Registrera i ditt företag”</value>
+  </data>
+  <data name="UserEnrollmentUseEmailAddress" xml:space="preserve">
+    <value>Använd e-postadress</value>
+  </data>
+  <data name="UserPasswordIsRequired" xml:space="preserve">
+    <value>Lösenord krävs</value>
+  </data>
+  <data name="Workappsprivacynoticemessagelabel" xml:space="preserve">
+    <value>En lista över appar med namn, version och installationsstatus för alla arbetsappar från Workspace ONE samlas in från enheten i rapporteringssyfte.</value>
+  </data>
+</root>

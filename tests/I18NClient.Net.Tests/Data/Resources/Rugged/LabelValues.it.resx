@@ -1,0 +1,967 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AC" xml:space="preserve">
+    <value>CA</value>
+  </data>
+  <data name="AccessToDeviceReprocessProductsMenuTooltip" xml:space="preserve">
+    <value>Offre ai dipendenti l'accesso al menu di rielaborazione dei prodotti per una risoluzione più rapida dei problemi.</value>
+  </data>
+  <data name="ACorFullBattery" xml:space="preserve">
+    <value>CA o batteria carica</value>
+  </data>
+  <data name="ACPowerCondition" xml:space="preserve">
+    <value>Pianificare le azioni da effettuare quando il dispositivo è connesso all'alimentazione (ad esempio, quando viene posizionato in un supporto collegato alla rete elettrica)</value>
+  </data>
+  <data name="AddAgentPackages" xml:space="preserve">
+    <value>Aggiungi pacchetto Hub/Agent</value>
+  </data>
+  <data name="AddFileServer" xml:space="preserve">
+    <value>Aggiungi file server</value>
+  </data>
+  <data name="AddPinnedAppsHelp" xml:space="preserve">
+    <value>Se aggiungi una riga di app bloccate, è necessario abilitare la riduzione della barra del titolo a causa dei vincoli di spazio nella schermata principale del dispositivo.</value>
+  </data>
+  <data name="AddPinnedAppsRow" xml:space="preserve">
+    <value>Aggiungi riga per le app bloccate</value>
+  </data>
+  <data name="AddToLauncher" xml:space="preserve">
+    <value>Aggiungi all'utilità di avvio</value>
+  </data>
+  <data name="AfterDurationExceeded" xml:space="preserve">
+    <value>Dopo il superamento della durata</value>
+  </data>
+  <data name="AgentPackages" xml:space="preserve">
+    <value>Pacchetti Hub/Agent</value>
+  </data>
+  <data name="AgentPackagesMenuTitle" xml:space="preserve">
+    <value>Visualizza e aggiungi pacchetti Hub/Agent</value>
+  </data>
+  <data name="AirwatchMdmAgentUpgrade" xml:space="preserve">
+    <value>Aggiornamento AirWatch MDM Agent</value>
+  </data>
+  <data name="Airwatchmdmagentupgradefile" xml:space="preserve">
+    <value>File di aggiornamento Airwatch MDM Agent</value>
+  </data>
+  <data name="AndroidAvailableSystemActions" xml:space="preserve">
+    <value>Esegui motivo, Riavvia, Applica impostazioni personalizzate, Disconnetti dal programma di avvio.</value>
+  </data>
+  <data name="AndroidFile" xml:space="preserve">
+    <value>File</value>
+  </data>
+  <data name="ApplicationAssignmentsCount" xml:space="preserve">
+    <value>Assegnazioni</value>
+  </data>
+  <data name="AssistCommandLine" xml:space="preserve">
+    <value>Riga di comando</value>
+  </data>
+  <data name="AssistManageFiles" xml:space="preserve">
+    <value>Gestione file</value>
+  </data>
+  <data name="AssistRemoteAssist" xml:space="preserve">
+    <value>Assistenza remota</value>
+  </data>
+  <data name="AssistRemoteViewIosTooltip" xml:space="preserve">
+    <value>Supporta la visualizzazione e il controllo remoti per tutte le piattaforme, ad eccezione di iOS, che supporta solo la Visualizzazione remota.</value>
+  </data>
+  <data name="AssistShareScreen" xml:space="preserve">
+    <value>Condividi schermo</value>
+  </data>
+  <data name="AtleastOneCustomAttributeAndAttributeValueIsRequired" xml:space="preserve">
+    <value>È necessario almeno un valore di attributo e attributo personalizzato</value>
+  </data>
+  <data name="AutoRetry" xml:space="preserve">
+    <value>Ripetizione automatica</value>
+  </data>
+  <data name="BackgroundApplication" xml:space="preserve">
+    <value>Applicazione in background</value>
+  </data>
+  <data name="Batchimportrelayserverexplanation" xml:space="preserve">
+    <value>La funzionalità di importazione del relay server può essere usata per caricare i relay server nel sistema in blocco. Gli utenti dei relay server dovrebbero essere associati a un gruppo.
+
+Fai clic su Scarica modello per riferimento.</value>
+  </data>
+  <data name="BulkEnterpriseResetDescription" xml:space="preserve">
+    <value>Nota che quest'azione si applica solo ai dispositivi rinforzati Zebra o Honeywell, Android e Windows Mobile che sono stati iscritti attraverso il processo di registrazione e staging sfruttando il client di VMware Rapid Deployment. Quest'azione eseguirà una cancellazione del dispositivo e poi un riavvio. Al riavvio, il dispositivo sarà ancora iscritto a Workspace ONE e si riporterà da solo allo stato predefinito desiderato.</value>
+  </data>
+  <data name="CannotActivatePolicy_DeactivationDateIsInPast" xml:space="preserve">
+    <value>Impossibile attivare il criterio. La data di disattivazione è già trascorsa.</value>
+  </data>
+  <data name="CannotBeEmptyArg" xml:space="preserve">
+    <value>{0}, non può essere null o vuoto</value>
+  </data>
+  <data name="CannotDeactivatePolicy_ActivationDateIsInThePast" xml:space="preserve">
+    <value>Impossibile disattivare il criterio. La data di attivazione è trascorsa.</value>
+  </data>
+  <data name="CannotSavePolicySmartGroupNotAssigned" xml:space="preserve">
+    <value>Impossibile salvare e attivare automaticamente il criterio. Smart Group non assegnato.</value>
+  </data>
+  <data name="CASettingsCannotBeConfiguredAtThisOg" xml:space="preserve">
+    <value>Le impostazioni dell'attributo personalizzato non possono essere configurate in questo gruppo.</value>
+  </data>
+  <data name="CDNShouldBeEnabled" xml:space="preserve">
+    <value>Abilitare e salvare le impostazioni CDN prima di abilitare le impostazioni Consenti download dei prodotti tramite CDN</value>
+  </data>
+  <data name="CharactersAreRestrictedInProductName" xml:space="preserve">
+    <value>Il nome del prodotto non deve contenere i caratteri {0}</value>
+  </data>
+  <data name="CloudRelayConnectionShouldFollowFormat" xml:space="preserve">
+    <value>La connessione a Cloud Relay deve avere il formato /CartellaDesiderata/Temp</value>
+  </data>
+  <data name="ConditionActionAfterDurationHelp" xml:space="preserve">
+    <value>Determina come procedere dopo aver soddisfatto la condizione di durata.</value>
+  </data>
+  <data name="ConditionDurationHelp" xml:space="preserve">
+    <value>Imposta la durata entro la quale questa condizione eseguirà questa azione.</value>
+  </data>
+  <data name="ConditionFileNameHelp" xml:space="preserve">
+    <value>Per impostare la condizione, immettere il percorso di dispositivo e il nome file da verificare prima di scaricare e/o installare i componenti del prodotto sui dispositivi.</value>
+  </data>
+  <data name="ConditionFrequencyHelp" xml:space="preserve">
+    <value>Determina la frequenza con cui i dispositivi eseguiranno questa condizione per verificare se questo file è stato trovato o meno.</value>
+  </data>
+  <data name="ConditionMetWhen" xml:space="preserve">
+    <value>Condizione soddisfatta quando</value>
+  </data>
+  <data name="ConditionTestTypeHelp" xml:space="preserve">
+    <value>Determina se scaricare e/o installare i componenti del prodotto quando questo file viene trovato o meno sui dispositivi.</value>
+  </data>
+  <data name="ConfigureAgentTakesToSettingsConfiguration" xml:space="preserve">
+    <value>L'"agente di configurazione" indirizza alla pagina di configurazione delle impostazioni per i passaggi successivi</value>
+  </data>
+  <data name="ConfigureWinmoAgent" xml:space="preserve">
+    <value>Agente di configurazione</value>
+  </data>
+  <data name="ConfirmContinueWithPreviousActivationDate" xml:space="preserve">
+    <value>Hai tentato di modificare la data e l'ora di attivazione. La data di attivazione non può essere aggiornata su un prodotto attivo. Per modificarla, annulla le modifiche e disattiva il prodotto. Modifica il prodotto per cambiare la data, quindi salva e attiva il prodotto. Per mantenere la data di attivazione precedente sul prodotto attivo, seleziona OK.</value>
+  </data>
+  <data name="ConfirmDeactivateDependentPolicy" xml:space="preserve">
+    <value>Questo prodotto dipende da un altro prodotto. La sua disattivazione influenzerà il funzionamento del prodotto: {0}</value>
+  </data>
+  <data name="ConsoleConnectionShouldFollowFormat" xml:space="preserve">
+    <value>Il percorso di connessione della console deve essere nel formato /CartellaDesiderata/Temp</value>
+  </data>
+  <data name="ContentPull" xml:space="preserve">
+    <value>Pull dei contenuti</value>
+  </data>
+  <data name="CopyRelayServer" xml:space="preserve">
+    <value>Copia relay server</value>
+  </data>
+  <data name="CopyStaging" xml:space="preserve">
+    <value>Copia staging</value>
+  </data>
+  <data name="CouldNotEstablishConnectionToRemoteManagementHost" xml:space="preserve">
+    <value>Si è verificato un errore durante il tentativo di connessione all'host di gestione remota.</value>
+  </data>
+  <data name="CustomAttributeDoesNotExist" xml:space="preserve">
+    <value>L'attributo personalizzato a cui stai tentando di accedere non esiste.</value>
+  </data>
+  <data name="CustomAttributeNameIsRequired" xml:space="preserve">
+    <value>Nome dell'attributo personalizzato obbligatorio</value>
+  </data>
+  <data name="CustomAttributesFieldsRequired" xml:space="preserve">
+    <value>Tutti i campi sono obbligatori</value>
+  </data>
+  <data name="CustomAttributesOnlyExplanation" xml:space="preserve">
+    <value>Utilizza questo tipo di importazione batch per aggiungere o aggiornare gli attributi personalizzati e le relative impostazioni (nota: è necessario specificare almeno un valore di attributo personalizzato).</value>
+  </data>
+  <data name="DailyInterval" xml:space="preserve">
+    <value>Intervallo giornaliero</value>
+  </data>
+  <data name="DailyIntervalPlaceholder" xml:space="preserve">
+    <value>Inserisci un numero da 1 a 7</value>
+  </data>
+  <data name="DateTimeIsNotInAllowedRange" xml:space="preserve">
+    <value>Devono essere consentite solo date e ore comprese fra {0} e {1}.</value>
+  </data>
+  <data name="DeleteApplicationWithLinkedPoliciesWarning" xml:space="preserve">
+    <value>Non puoi eliminare questa applicazione perché è attualmente utilizzata in uno o più prodotti. Separa l'applicazione dal prodotto modificandola. Una volta finito, puoi cancellare l'applicazione.</value>
+  </data>
+  <data name="DeleteApplicationWithLinkedStagingWarning" xml:space="preserve">
+    <value>Non puoi eliminare questa applicazione perché è attualmente in uso da una o più definizioni dello staging. Seleziona un'altra applicazione modificando o eliminando la definizione dello staging. Una volta completato, potrai eliminare l'applicazione.</value>
+  </data>
+  <data name="DeleteAttributesWithLinkedRegisteredDevicesWarning" xml:space="preserve">
+    <value>Gli attributi personalizzati attualmente correlati ai dispositivi registrati non possono essere eliminati. Prima di tutto è necessario separare gli attributi dai dispositivi registrati.</value>
+  </data>
+  <data name="DeleteEventActionWithLinkedPoliciesWarning" xml:space="preserve">
+    <value>Non puoi eliminare questa azione dell'evento perché è attualmente utilizzata in uno o più prodotti. Scollega l'azione dell'evento dal prodotto modificandola. Al termine, puoi eliminare l'azione dell'evento.</value>
+  </data>
+  <data name="DeleteEventActionWithLinkedStagingWarning" xml:space="preserve">
+    <value>Non puoi eliminare questa azione dell'evento perché è attualmente in uso da uno o più definizioni dello staging. Seleziona un'altra l'azione dell'evento modificando o eliminando la definizione dello staging. Una volta completato, potrai eliminare l'azione dell'evento.</value>
+  </data>
+  <data name="DeleteFileActionWithLinkedPoliciesWarning" xml:space="preserve">
+    <value>Non puoi eliminare questo file/azione perché è attualmente in uso in uno o più prodotti. Separa il file/azione dal prodotto modificandolo. Una volta completato, puoi cancellare il file/azione.</value>
+  </data>
+  <data name="DeleteFileActionWithLinkedStagingWarning" xml:space="preserve">
+    <value>Non puoi eliminare questo file/azione perché è attualmente in uso da una o più definizioni dello staging. Seleziona un altro file/azione modificando o eliminando la definizione dello staging. Una volta completato, potrai cancellare il file/azione.</value>
+  </data>
+  <data name="DeleteProductWithAppTunnelingEnabledError" xml:space="preserve">
+    <value>Impossibile eliminare questo prodotto poiché uno o più manifesti dell'applicazione di installazione sono configurati con il tunneling dell'app. Rimuovi la configurazione e riprova</value>
+  </data>
+  <data name="DeleteProfileWithLinkedPoliciesWarning" xml:space="preserve">
+    <value>Non puoi eliminare questo profilo perché è attualmente utilizzato in uno o più prodotti. Separa il profilo dal prodotto modificandola. Una volta finito, puoi cancellare il profilo.</value>
+  </data>
+  <data name="DeleteProfileWithLinkedStagingWarning" xml:space="preserve">
+    <value>Non puoi eliminare questo profilo perché è attualmente in uso da una o più definizioni dello staging. Seleziona un altro profilo modificando o eliminando la definizione dello staging. Una volta completato, potrai eliminare il profilo.</value>
+  </data>
+  <data name="DeploymentMode" xml:space="preserve">
+    <value>Modalità distribuzione</value>
+  </data>
+  <data name="DestinationMustBeDirectoryPath" xml:space="preserve">
+    <value>La destinazione deve essere un percorso della directory</value>
+  </data>
+  <data name="DeviceConnectionShouldFollowFormat" xml:space="preserve">
+    <value>Il percorso di connessione del dispositivo deve essere nel formato /CartellaDesiderata/Temp</value>
+  </data>
+  <data name="DeviceFriendlyNameLookUpText" xml:space="preserve">
+    <value>Nickname del dispositivo</value>
+  </data>
+  <data name="DevicePlatformID" xml:space="preserve">
+    <value>Identificatore piattaforma dispositivo</value>
+  </data>
+  <data name="DevicePolicyJobStatusNoJobs" xml:space="preserve">
+    <value>Nessun lavoro</value>
+  </data>
+  <data name="DeviceReprocess" xml:space="preserve">
+    <value>Rielaborazione dispositivo</value>
+  </data>
+  <data name="DeviceReprocessTooltip" xml:space="preserve">
+    <value>Consente ai dipendenti di rielaborare i prodotti.</value>
+  </data>
+  <data name="DeviceTypeOfTheFileIsInvalid" xml:space="preserve">
+    <value>L'attributo DeviceType del file non è valido. Il tipo di dispositivo deve essere una piattaforma di dispositivo, ad esempio Android, Apple, ecc.</value>
+  </data>
+  <data name="DeviceWillNeedToBePluggedIn" xml:space="preserve">
+    <value>Il dispositivo deve essere collegato o essere sufficientemente caricato per l'azione che avrà luogo. I campi messaggio e ritardo non sono applicabili quando questa condizione fa parte di qualsiasi evento/azione.</value>
+  </data>
+  <data name="DoubleQuotesForCommandLineIsRequired" xml:space="preserve">
+    <value>Virgolette necessarie per la riga di comando</value>
+  </data>
+  <data name="DownloadAndDeployMotoDcCabFile" xml:space="preserve">
+    <value>Per la creazione di report sulle metriche sui dispositivi Motorola, scarica e distribuisci il file MotoDC.cab da</value>
+  </data>
+  <data name="DownloadFiles" xml:space="preserve">
+    <value>Scarica file</value>
+  </data>
+  <data name="DownloadPullServiceConfig" xml:space="preserve">
+    <value>Scarica configurazione servizi pull</value>
+  </data>
+  <data name="EditFileServer" xml:space="preserve">
+    <value>Modifica file server</value>
+  </data>
+  <data name="EditStaging" xml:space="preserve">
+    <value>Modifica staging</value>
+  </data>
+  <data name="EndDay" xml:space="preserve">
+    <value>Ultimo giorno</value>
+  </data>
+  <data name="EndHour" xml:space="preserve">
+    <value>Ora di fine</value>
+  </data>
+  <data name="EndMinute" xml:space="preserve">
+    <value>Minuto di fine</value>
+  </data>
+  <data name="EndMonth" xml:space="preserve">
+    <value>Mese di fine</value>
+  </data>
+  <data name="EndTimeShouldBeLaterThanStartTime" xml:space="preserve">
+    <value>L'ora di fine deve essere successiva all'ora di inizio</value>
+  </data>
+  <data name="EndTimeUtc" xml:space="preserve">
+    <value>Ora fine (UTC)</value>
+  </data>
+  <data name="EndYear" xml:space="preserve">
+    <value>Anno di fine</value>
+  </data>
+  <data name="EnterAdminModeConfirmed" xml:space="preserve">
+    <value>Passaggio a modalità amministrativa confermato</value>
+  </data>
+  <data name="EnterAdminModeFailed" xml:space="preserve">
+    <value>Passaggio a modalità amministrativa non riuscito</value>
+  </data>
+  <data name="EnterAdminModeRefused" xml:space="preserve">
+    <value>Passaggio a modalità amministrativa rifiutato</value>
+  </data>
+  <data name="EnterAdminModeRequested" xml:space="preserve">
+    <value>Passaggio a modalità amministrativa richiesto</value>
+  </data>
+  <data name="EnterAdminModeSuccess" xml:space="preserve">
+    <value>Passaggio alla modalità di amministrazione riuscito</value>
+  </data>
+  <data name="ErrorParsingRemoteFeature" xml:space="preserve">
+    <value>Errore durante l'analisi della funzionalità di assistenza remota "{0}"</value>
+  </data>
+  <data name="ErrorReturnedFromHoneywellServer" xml:space="preserve">
+    <value>Errore restituito dal server Honeywell</value>
+  </data>
+  <data name="ErrorReturnedFromZebraServer" xml:space="preserve">
+    <value>Errore restituito dal server Zebra</value>
+  </data>
+  <data name="EventActionAndroidPrerequisite" xml:space="preserve">
+    <value>Aggiungi almeno una condizione per avviare l'azione. Qui è possibile aggiungere condizioni create in precedenza o crearne di nuove con l'opzione "Aggiungi condizione". Puoi scegliere più tipi di condizione alla volta, ma puoi selezionare una sola condizione di un determinato tipo. Se selezioni una condizione dello stesso tipo di una già scelta, sostituirai la prima che hai selezionato. Un tipo di condizione consentita è Soglia batteria, Pianificazione ricorrente e Alimentazione CA.</value>
+  </data>
+  <data name="EventActionLinkedToPolicyOrStagingAndCanNotBeMovedToNonAccessibleOgs" xml:space="preserve">
+    <value>L'azione evento è collegata ad alcuni prodotti o pacchetti di staging, pertanto non può essere spostata in gruppi che non sono accessibili ai componenti collegati.</value>
+  </data>
+  <data name="ExitAdminModeConfirmed" xml:space="preserve">
+    <value>Uscita da modalità amministrativa confermata</value>
+  </data>
+  <data name="ExitAdminModeFailed" xml:space="preserve">
+    <value>Uscita da modalità amministrativa non riuscita</value>
+  </data>
+  <data name="ExitAdminModeRefused" xml:space="preserve">
+    <value>Uscita da modalità amministrativa rifiutata</value>
+  </data>
+  <data name="ExitAdminModeRequested" xml:space="preserve">
+    <value>Uscita da modalità amministrativa richiesta</value>
+  </data>
+  <data name="ExitAdminModeSuccess" xml:space="preserve">
+    <value>Uscita dalla modalità di amministratore riuscita</value>
+  </data>
+  <data name="ExitAirwatchLauncher" xml:space="preserve">
+    <value>Esci da Launcher</value>
+  </data>
+  <data name="ExitAirwatchLauncherConfirmed" xml:space="preserve">
+    <value>Uscita da Launcher confermata</value>
+  </data>
+  <data name="ExitAirwatchLauncherFailed" xml:space="preserve">
+    <value>Uscita da Launcher non riuscita</value>
+  </data>
+  <data name="ExitAirwatchLauncherRefused" xml:space="preserve">
+    <value>Uscita da Launcher rifiutata</value>
+  </data>
+  <data name="ExitAirwatchLauncherRequested" xml:space="preserve">
+    <value>Uscita da Launcher richiesta</value>
+  </data>
+  <data name="ExitAirWatchLauncherSuccess" xml:space="preserve">
+    <value>Uscita da Launcher riuscita</value>
+  </data>
+  <data name="Expedited" xml:space="preserve">
+    <value>Rapido</value>
+  </data>
+  <data name="ExpeditedProductTooltip" xml:space="preserve">
+    <value>Il prodotto deve essere disattivato per modificare questa opzione.</value>
+  </data>
+  <data name="ExpeditedProvisioningPolicyEdit" xml:space="preserve">
+    <value>Modifica del criterio di provisioning rapido</value>
+  </data>
+  <data name="ExpeditedProvisioningPolicyEditHelp" xml:space="preserve">
+    <value>Controlla l'accesso alla modifica dell'opzione di distribuzione rapida nel criterio di provisioning.</value>
+  </data>
+  <data name="FileActionLinkedToPolicyOrStagingAndCanNotBeMovedToNonAccessibleOgs" xml:space="preserve">
+    <value>L'azione file è collegata ad alcuni prodotti o pacchetti di staging, pertanto non può essere spostata in gruppi che non sono accessibili ai componenti collegati.</value>
+  </data>
+  <data name="FileActionsFilePathError" xml:space="preserve">
+    <value>Il nome e il percorso di download combinati devono includere massimo 255 caratteri</value>
+  </data>
+  <data name="FileFound" xml:space="preserve">
+    <value>File trovato</value>
+  </data>
+  <data name="FileServerAssociatedWithEventActionArgs" xml:space="preserve">
+    <value>Il file server {0} è utilizzato con {1}</value>
+  </data>
+  <data name="FileServerDeleteFailed" xml:space="preserve">
+    <value>Non puoi eliminare questo file server perché è attualmente utilizzato nelle seguenti azioni degli eventi. Scollega il file server dall'azione dell'evento modificandolo. Al termine, puoi eliminare il file server.</value>
+  </data>
+  <data name="FileServerDeleteSuccessful" xml:space="preserve">
+    <value>Eliminazione file server riuscita</value>
+  </data>
+  <data name="FileServerDetails" xml:space="preserve">
+    <value>Dettagli file server</value>
+  </data>
+  <data name="FileServerNameIsRequired" xml:space="preserve">
+    <value>Il nome del file server è obbligatorio</value>
+  </data>
+  <data name="FileServers" xml:space="preserve">
+    <value>File server</value>
+  </data>
+  <data name="FileServerUsernameIsRequired" xml:space="preserve">
+    <value>Il nome utente del file server è obbligatorio</value>
+  </data>
+  <data name="FileSyncDownload" xml:space="preserve">
+    <value>Scarica sincronizzazione file</value>
+  </data>
+  <data name="FileSyncUpload" xml:space="preserve">
+    <value>Carica sincronizzazione file</value>
+  </data>
+  <data name="FirstFieldShouldBeSmallerThanSecondField" xml:space="preserve">
+    <value>Valori non validi. Verificare che il primo campo sia un numero inferiore rispetto a quello del secondo campo.</value>
+  </data>
+  <data name="FiveDays" xml:space="preserve">
+    <value>5 giorni</value>
+  </data>
+  <data name="GenerateHoneywellBarcode" xml:space="preserve">
+    <value>Genera codice a barre Honeywell</value>
+  </data>
+  <data name="GenerateHoneywellBarcodeDisclaimerText" xml:space="preserve">
+    <value>Effettua una chiamata al generatore di codici a barre Honeywell Enterprise Provisioner per creare i codici a barre che rappresentano i dati selezionati nella pagina.
+
+VMware non controlla questo sito e declina esplicitamente qualsiasi responsabilità in relazione al contenuto. La generazione di codici a barre da questa pagina avviene a rischio dell'utente.</value>
+  </data>
+  <data name="HideActionBar" xml:space="preserve">
+    <value>Minimizza la barra del titolo</value>
+  </data>
+  <data name="Honeywell" xml:space="preserve">
+    <value>Honeywell Enterprise Provisioner</value>
+  </data>
+  <data name="HoneywellBarcode" xml:space="preserve">
+    <value>Codice a barre Honeywell</value>
+  </data>
+  <data name="HoneywellEP" xml:space="preserve">
+    <value>Honeywell Enterprise Provisioner</value>
+  </data>
+  <data name="HoneywellEPUrl" xml:space="preserve">
+    <value>URL Honeywell Enterprise Provisioner</value>
+  </data>
+  <data name="HostPlaceHolder" xml:space="preserve">
+    <value>* o 1.2.3.4 o 10.0.0.0-10.0.0.255</value>
+  </data>
+  <data name="HourlyInterval" xml:space="preserve">
+    <value>Intervallo orario</value>
+  </data>
+  <data name="HourlyIntervalPlaceholder" xml:space="preserve">
+    <value>Inserisci un numero da 1 a 24</value>
+  </data>
+  <data name="HttpsNotSupportedForPushRelayServers" xml:space="preserve">
+    <value>Il protocollo Https per la connessione del dispositivo non è supportato per il relay server push</value>
+  </data>
+  <data name="HubPackageAlreadyExists" xml:space="preserve">
+    <value>Esiste già un pacchetto Hub con lo stesso nome di file O lo stesso nome del pacchetto e versione</value>
+  </data>
+  <data name="IntelligentHub" xml:space="preserve">
+    <value>Intelligent Hub</value>
+  </data>
+  <data name="InvalidDateTimeInputs" xml:space="preserve">
+    <value>Le immissioni DateTime fornite non sono valide o sono incompleto. Immetti i dati appropriati.</value>
+  </data>
+  <data name="InvalidHoneywellRelayServerProtocol" xml:space="preserve">
+    <value>Honeywell non supporta questo protocollo del relay server.</value>
+  </data>
+  <data name="InvalidOrganizationGroupsForStagingAndProductionServers" xml:space="preserve">
+    <value>Gruppi non validi per i server di staging e produzione</value>
+  </data>
+  <data name="IOTGateway" xml:space="preserve">
+    <value>IOTGateway</value>
+  </data>
+  <data name="IsExpedited" xml:space="preserve">
+    <value>Distribuzione rapida</value>
+  </data>
+  <data name="LastContactDate" xml:space="preserve">
+    <value>Data ultimo contatto</value>
+  </data>
+  <data name="LastErrorCode" xml:space="preserve">
+    <value>Codice ultimo errore</value>
+  </data>
+  <data name="Launcher" xml:space="preserve">
+    <value>Launcher</value>
+  </data>
+  <data name="LauncherAction" xml:space="preserve">
+    <value>Launcher</value>
+  </data>
+  <data name="LauncherCheckInCheckOutCondtion" xml:space="preserve">
+    <value>Esegui azioni quando si esegue il check-in o il check-out di Launcher.</value>
+  </data>
+  <data name="LauncherLogout" xml:space="preserve">
+    <value>Logout dal programma di avvio</value>
+  </data>
+  <data name="LauncherMiscAppWildcardRuleInfo" xml:space="preserve">
+    <value>Puoi utilizzare il carattere "*" per consentire automaticamente le applicazioni che corrispondono a tale modello. Esempio: com.esempio.*</value>
+  </data>
+  <data name="LegacyAgent" xml:space="preserve">
+    <value>Agent</value>
+  </data>
+  <data name="LegacyAirwatchAgent" xml:space="preserve">
+    <value>AirWatch Agent</value>
+  </data>
+  <data name="LinkIsRequired" xml:space="preserve">
+    <value>Il link al file server è obbligatorio</value>
+  </data>
+  <data name="LowMemCondition" xml:space="preserve">
+    <value>Memoria insufficiente</value>
+  </data>
+  <data name="ManifestItemAlreadyExists" xml:space="preserve">
+    <value>Elemento manifesto già esistente. È necessario sceglierne un altro.</value>
+  </data>
+  <data name="MaxPullConnections" xml:space="preserve">
+    <value>Numero massimo connessioni pull</value>
+  </data>
+  <data name="MaxPullConnectionsValueCannotBeNullOrInvalid" xml:space="preserve">
+    <value>Il valore massimo delle connessioni pull non può essere nullo o non valido</value>
+  </data>
+  <data name="MaxPushConnections" xml:space="preserve">
+    <value>Numero massimo connessioni push</value>
+  </data>
+  <data name="MaxPushConnectionsValueCannotBeNullOrInvalid" xml:space="preserve">
+    <value>Il valore massimo delle connessioni push non può essere nullo o non valido</value>
+  </data>
+  <data name="MaxRSCCPushConnectionHelpText" xml:space="preserve">
+    <value>Modifica questo valore per limitare il numero massimo di connessioni simultanee utilizzate per eseguire il push dei contenuti ai Relay Server. Valore predefinito: 50 connessioni</value>
+  </data>
+  <data name="NoContentAddedToProduct" xml:space="preserve">
+    <value>Nessuna azione applicazione o file aggiunta al prodotto.</value>
+  </data>
+  <data name="NotTested" xml:space="preserve">
+    <value>Non testato</value>
+  </data>
+  <data name="NoVPNProfileSelected" xml:space="preserve">
+    <value>Seleziona un profilo VPN per configurare PerAppVPN</value>
+  </data>
+  <data name="OemBuildRuleHelpText" xml:space="preserve">
+    <value>La regola di assegnazione con la versione build OEM e "&gt;" e "&lt;" è valida solo quando le versioni hanno lo stesso formato e vengono confrontate in ASCII</value>
+  </data>
+  <data name="OemBuildVersionShouldHaveDeviceManufacturerRule" xml:space="preserve">
+    <value>La regola con la versione build OEM dovrebbe includere anche l'attributo del produttore del dispositivo (solo condizione AND consentita) quando si utilizzanzo gli operatori "&gt;" e "&lt;"</value>
+  </data>
+  <data name="OGDeleteWarningForProducts" xml:space="preserve">
+    <value>I componenti associati a questo gruppo possono essere collegati a uno o più prodotti associati a uno o più gruppi principali. L'eliminazione di questo gruppo comporterà l'invalidazione di tali prodotti in uno o più gruppi principali. È consigliabile scollegare i componenti prima di eliminare questo gruppo, o eliminare anche i prodotti principali.</value>
+  </data>
+  <data name="OnlyAppWithSpecifiedVersionWillBeUninstalled" xml:space="preserve">
+    <value>La versione dell'applicazione selezionata verrà disinstallata. Tutte le altre versioni di questa applicazione rimarranno sul dispositivo.</value>
+  </data>
+  <data name="OnlyFileServersWithCGCanBeAdded" xml:space="preserve">
+    <value>Per comparire in questo elenco ed essere aggiunti a un'azione evento, per i file server deve essere configurato un Content Gateway</value>
+  </data>
+  <data name="OnlyNumericValuesAreAllowedForSpecificOperators" xml:space="preserve">
+    <value>Per gli operatori come &gt;, &gt;=, &lt;, &lt;= e BETWEEN sono consentiti solo valori numerici</value>
+  </data>
+  <data name="OrganizationGroupIsRequired" xml:space="preserve">
+    <value>Il gruppo è obbligatorio</value>
+  </data>
+  <data name="OutRanked" xml:space="preserve">
+    <value>Superato</value>
+  </data>
+  <data name="PasswordForPullServiceCertificate" xml:space="preserve">
+    <value>Password per certificato servizio pull</value>
+  </data>
+  <data name="PasswordIsRequired" xml:space="preserve">
+    <value>La password del file server è obbligatoria</value>
+  </data>
+  <data name="PinnedApps" xml:space="preserve">
+    <value>App bloccate</value>
+  </data>
+  <data name="PleaseEnterValidURL" xml:space="preserve">
+    <value>Inserisci un URL valido</value>
+  </data>
+  <data name="PolicyEngineQueue" xml:space="preserve">
+    <value>Coda motore criteri</value>
+  </data>
+  <data name="PolicyEngineQueueMenuTitle" xml:space="preserve">
+    <value>Coda motore criteri</value>
+  </data>
+  <data name="PolicyId" xml:space="preserve">
+    <value>Identificatore criteri</value>
+  </data>
+  <data name="PortPlaceHolder" xml:space="preserve">
+    <value>* o 80 o 8080-8085</value>
+  </data>
+  <data name="ProductDeviceForceReprocessFailed" xml:space="preserve">
+    <value>Rielaborazione forzata del dispositivo del prodotto non riuscita</value>
+  </data>
+  <data name="ProductDownloadsThroughCDN" xml:space="preserve">
+    <value>Download prodotti tramite CDN</value>
+  </data>
+  <data name="ProductionServerDescription" xml:space="preserve">
+    <value>Il server di produzione è configurato per la ricezione di contenuti di produzione come: applicazioni e azioni dei file.</value>
+  </data>
+  <data name="ProductProvisioning_ColdBoot" xml:space="preserve">
+    <value>Avvio a freddo</value>
+  </data>
+  <data name="ProductProvisioning_InstallApplication" xml:space="preserve">
+    <value>Applicazione - installazione</value>
+  </data>
+  <data name="ProductProvisioning_InstallEventAction" xml:space="preserve">
+    <value>Azione evento - installazione</value>
+  </data>
+  <data name="ProductProvisioning_InstallFilesActions" xml:space="preserve">
+    <value>File/azione - installazione</value>
+  </data>
+  <data name="ProductProvisioning_InstallProduct" xml:space="preserve">
+    <value>Prodotto - installazione</value>
+  </data>
+  <data name="ProductProvisioning_InstallProfile" xml:space="preserve">
+    <value>Profilo - installazione</value>
+  </data>
+  <data name="ProductProvisioning_Reboot" xml:space="preserve">
+    <value>Riavvio</value>
+  </data>
+  <data name="ProductProvisioning_UninstallApplication" xml:space="preserve">
+    <value>Applicazione - disinstallazione</value>
+  </data>
+  <data name="ProductProvisioning_UninstallEventAction" xml:space="preserve">
+    <value>Azione evento - disinstallazione</value>
+  </data>
+  <data name="ProductProvisioning_UninstallFilesActions" xml:space="preserve">
+    <value>File/azione - disinstallazione</value>
+  </data>
+  <data name="ProductProvisioning_UninstallProduct" xml:space="preserve">
+    <value>Prodotto - disinstallazione</value>
+  </data>
+  <data name="ProductProvisioning_UninstallProfile" xml:space="preserve">
+    <value>Profilo - disinstallazione</value>
+  </data>
+  <data name="ProductProvisioning_WarmBoot" xml:space="preserve">
+    <value>Avvio a caldo</value>
+  </data>
+  <data name="ProductProvisioningDeviceConnectionHttpsSupportFeatureDisabled" xml:space="preserve">
+    <value>Il protocollo Https per la funzionalità di connessione del dispositivo è disattivato</value>
+  </data>
+  <data name="ProductSetForceReprocess" xml:space="preserve">
+    <value>Imponi rielaborazione</value>
+  </data>
+  <data name="ProductSetNameArgAlreadyExistsPleaseChooseAnother" xml:space="preserve">
+    <value>Il set di prodotti denominato {0} esiste già. Scegline un altro.</value>
+  </data>
+  <data name="ProfileLinkedToPolicyOrStagingAndCanNotBeMovedToNonAccessibleOgs" xml:space="preserve">
+    <value>Il profilo è collegato ad alcuni prodotti o pacchetti di staging, pertanto non può essere spostato in gruppi che non sono accessibili ai componenti collegati.</value>
+  </data>
+  <data name="ProvisioningCommandDeleted" xml:space="preserve">
+    <value>Comando di provisioning eliminato</value>
+  </data>
+  <data name="ProvisioningEventAction" xml:space="preserve">
+    <value>Azione evento</value>
+  </data>
+  <data name="ProvisioningEventActions" xml:space="preserve">
+    <value>Azioni evento</value>
+  </data>
+  <data name="PublishOnRelayServers" xml:space="preserve">
+    <value>Pubblica su relay server</value>
+  </data>
+  <data name="PullRelayServerNotAllowed" xml:space="preserve">
+    <value>Il tipo del Relay Server selezionato non è valido</value>
+  </data>
+  <data name="QueueContentOnRelayServer" xml:space="preserve">
+    <value>Accoda contenuti sui relay server senza dispositivi assegnati</value>
+  </data>
+  <data name="RelayServerCloudConnector" xml:space="preserve">
+    <value>Cloud Connector per il relay server</value>
+  </data>
+  <data name="RelayServerCloudConnectorBatchSize" xml:space="preserve">
+    <value>Dimensioni batch di Cloud Connector per il relay server</value>
+  </data>
+  <data name="RelayServerCloudConnectorBatchSizeHelp" xml:space="preserve">
+    <value>Numero massimo di istruzioni sui contenuti da scaricare dal server WS1 per batch. Le istruzioni aggiuntive verranno elaborate nei batch successivi.</value>
+  </data>
+  <data name="RelayServerCloudConnectorEnableHelp" xml:space="preserve">
+    <value>Abilitando questa impostazione, il relay di Cloud Connector viene configurato per estrarre i contenuti da VMware Cloud ed eseguire il push ai relay server nella rete.</value>
+  </data>
+  <data name="RelayServerCloudRelayAlreadyExists" xml:space="preserve">
+    <value>Nome host, porta, utente e percorso per la connessione cloud relay sono uguali a un altro relay server.</value>
+  </data>
+  <data name="RelayServerCloudRelayConnection" xml:space="preserve">
+    <value>Connessione Cloud Relay</value>
+  </data>
+  <data name="RelayServerCountConfirm" xml:space="preserve">
+    <value>I contenuti verranno aggiunti alla coda sui relay server di {0}. Continuare?</value>
+  </data>
+  <data name="RelayServerDoesNotExists" xml:space="preserve">
+    <value>Non esiste alcun relay server nel gruppo selezionato.</value>
+  </data>
+  <data name="RelayServerDomainUserFormat" xml:space="preserve">
+    <value>Formati accettati per gli utenti del dominio: nomeutente@dominio, dominio\utente</value>
+  </data>
+  <data name="RelayServerDomainUserFormatError" xml:space="preserve">
+    <value>Errore nel formato utente del dominio</value>
+  </data>
+  <data name="RelayServerId" xml:space="preserve">
+    <value>ID relay server</value>
+  </data>
+  <data name="RelayServerOnly" xml:space="preserve">
+    <value>Solo il Relay Server</value>
+  </data>
+  <data name="RelayServerOnlyHelp" xml:space="preserve">
+    <value>Verifica che sia configurato un relay server per tutti i dispositivi assegnati a questo prodotto.</value>
+  </data>
+  <data name="RelayServerProtocolHTTPS" xml:space="preserve">
+    <value>HTTPS</value>
+  </data>
+  <data name="RelayServerPullConnectionInvalidPullDiscoveryText" xml:space="preserve">
+    <value>Il testo di esplorazione pull non deve contenere 127.0.0.1</value>
+  </data>
+  <data name="RelayServerPushOrCloudRelay" xml:space="preserve">
+    <value>Push/Cloud Relay</value>
+  </data>
+  <data name="RelayServerTypeCloudRelay" xml:space="preserve">
+    <value>Cloud Relay</value>
+  </data>
+  <data name="RelayServerUserRestrictionError" xml:space="preserve">
+    <value>Il carattere ':' non è consentito nel nome utente e nella password.</value>
+  </data>
+  <data name="RelayServerWithDeviceServicesBackup" xml:space="preserve">
+    <value>Relay server con server Workspace ONE come backup</value>
+  </data>
+  <data name="RemoveFromLauncher" xml:space="preserve">
+    <value>Rimuovi da Launcher</value>
+  </data>
+  <data name="ReportStatusBatchSize" xml:space="preserve">
+    <value>Dimensioni batch dello stato del report</value>
+  </data>
+  <data name="ReportStatusBatchSizeValueCannotBeNullOrInvalid" xml:space="preserve">
+    <value>Il valore della dimensione del batch di stato del report non può essere nullo o non valido</value>
+  </data>
+  <data name="RequestDeviceServicesPinsNumberOfCertificatesReturned" xml:space="preserve">
+    <value>Richiesta PIN per i servizi del dispositivo: numero di certificati restituiti</value>
+  </data>
+  <data name="RequestDeviceServicesPinsNumberOfHostsReturned" xml:space="preserve">
+    <value>Richiesta PIN per i servizi del dispositivo: numero di host restituiti</value>
+  </data>
+  <data name="RequestDeviceServicesPinsUpdated" xml:space="preserve">
+    <value>Richiesta PIN per i servizi del dispositivo aggiornata</value>
+  </data>
+  <data name="RestartAirWatchAgent" xml:space="preserve">
+    <value>Riavvia AirWatch Agent</value>
+  </data>
+  <data name="RSCCReportBatchSizeHelpText" xml:space="preserve">
+    <value>Poiché il contenuto viene distribuito ai Relay Server di destinazione, Cloud Relay segnala lo stato di trasferimento di ciascun Relay Server a Workspace ONE Cloud. Modifica questo valore per limitare il numero degli stati del Relay Server da includere in ciascun batch. Valore predefinito: 25 stati per batch</value>
+  </data>
+  <data name="RSFileSize" xml:space="preserve">
+    <value>Dimensioni file in byte</value>
+  </data>
+  <data name="Selectawifiproile" xml:space="preserve">
+    <value>Selezionare un profilo Wi-Fi che verrà utilizzato dai dispositivi per effettuare la connessione a uno o più server FTP dopo la scansione di un codice a barre per il download di {0}.</value>
+  </data>
+  <data name="Selectfrompreviouslyconfiguredpackages" xml:space="preserve">
+    <value>Selezionare dai {0} pacchetti configurati in precedenza o scaricare il più recente dal portale delle risorse di Workspace ONE UEM</value>
+  </data>
+  <data name="SelectProductFilter" xml:space="preserve">
+    <value>Seleziona i prodotti da filtrare</value>
+  </data>
+  <data name="Sideloadprereqs1" xml:space="preserve">
+    <value>1. Se si sceglie di utilizzare la versione più recente di {0}, sarà necessario scaricarla da myAirWatch Resources Portal e caricarla.</value>
+  </data>
+  <data name="Sideloadstagingallowsyoutodownloadandinstall" xml:space="preserve">
+    <value>Il metodo di staging trasferimento locale consente di scaricare e installare {0} su un dispositivo per iniziare il processo di registrazione automatica. Questo metodo semplifica la registrazione combinando tutti i componenti richiesti in un singolo file trasferito localmente sul dispositivo.</value>
+  </data>
+  <data name="SingleAppModeWildcardRule" xml:space="preserve">
+    <value>La regola con caratteri jolly App varie può essere aggiunta solo alla scheda App nascosta per un profilo Modalità app singola.</value>
+  </data>
+  <data name="SmartGroupNotAssignedForAnActiveProduct" xml:space="preserve">
+    <value>Assegnazioni di gruppi smart obbligatorie per i prodotti attivi. Aggiungi i gruppi smart o disattiva il prodotto prima di procedere alla rimozione di tutte le assegnazioni di gruppi smart.</value>
+  </data>
+  <data name="SourceLocalizationKey" xml:space="preserve">
+    <value>Sorgente</value>
+  </data>
+  <data name="StagingAddManifestInfo" xml:space="preserve">
+    <value>Aggiungi manifesto definisce il contenuto e i comandi aggiuntivi da applicare durante lo staging. Componenti quali applicazioni, profili e file/azioni devono essere creati nel menu Provisioning&gt;Componenti prima di selezionare le azioni da eseguire.</value>
+  </data>
+  <data name="StagingPackageNameLengthExceeded" xml:space="preserve">
+    <value>Il nome del pacchetto di staging supera il limite massimo di {0} caratteri. Rinomina e salva di nuovo il pacchetto di staging.</value>
+  </data>
+  <data name="StagingPackageNameShouldNotContainTheFollowingCharacters" xml:space="preserve">
+    <value>Il nome del pacchetto di staging non deve contenere i caratteri {0}</value>
+  </data>
+  <data name="StagingServerDescription" xml:space="preserve">
+    <value>Il server di staging è configurato per ricevere contenuti di staging, come pacchetto Hub e configurazioni di staging avanzate, durante la registrazione.</value>
+  </data>
+  <data name="StartDay" xml:space="preserve">
+    <value>Giorno di inizio</value>
+  </data>
+  <data name="StartHour" xml:space="preserve">
+    <value>Ora di inizio</value>
+  </data>
+  <data name="StartMinute" xml:space="preserve">
+    <value>Minuto di inizio</value>
+  </data>
+  <data name="StartMonth" xml:space="preserve">
+    <value>Mese di inizio</value>
+  </data>
+  <data name="StartTimeUtc" xml:space="preserve">
+    <value>Ora inizio (UTC)</value>
+  </data>
+  <data name="StartYear" xml:space="preserve">
+    <value>Anno di inizio</value>
+  </data>
+  <data name="StopACMRequested" xml:space="preserve">
+    <value>Arresto di ACM richiesto</value>
+  </data>
+  <data name="StoreOsUpdatesFilesOnRelayServer" xml:space="preserve">
+    <value>Memorizza i file di aggiornamento del sistema operativo sul relay server</value>
+  </data>
+  <data name="StoreOsUpdatesFilesOnRelayServerHelp" xml:space="preserve">
+    <value>Questa funzionalità può essere utilizzata per i dispositivi Windows Mobile con spazio insufficiente per migliorare gli aggiornamenti del sistema operativo. Se il flag è impostato, tutti i file immagine di grandi dimensioni rimarranno sul relay server. L'utility OSUPDATE sul dispositivo li scaricherà uno alla volta durante il processo di aggiornamento. Quando il flag non è impostato, tutti i file vengono copiati sul dispositivo e l'utility di aggiornamento del sistema operativo li esegue localmente.</value>
+  </data>
+  <data name="Tags" xml:space="preserve">
+    <value>Etichette</value>
+  </data>
+  <data name="TemplateModeWildcardRule" xml:space="preserve">
+    <value>La regola dei caratteri jolly per app varie può essere aggiunta solo alla scheda App nascosta per un profilo Modalità modello</value>
+  </data>
+  <data name="TestConnectionStatus" xml:space="preserve">
+    <value>Stato del test di connessione</value>
+  </data>
+  <data name="TimeFormatPlaceholder" xml:space="preserve">
+    <value>HH:MM</value>
+  </data>
+  <data name="Typetoselectanagentpackage" xml:space="preserve">
+    <value>Selezionare {0}</value>
+  </data>
+  <data name="VersionIncrementMessage" xml:space="preserve">
+    <value>Visualizza la versione corrente. Questo numero sarà incrementale una volta salvate le modifiche.</value>
+  </data>
+  <data name="ViewAndManageCustomAttributeAssignmentRules" xml:space="preserve">
+    <value>Visualizza e gestisci regole di assegnazione attributi personalizzate</value>
+  </data>
+  <data name="ViewApplicationAssignments" xml:space="preserve">
+    <value>Visualizza le assegnazioni delle applicazioni</value>
+  </data>
+  <data name="ViewAttribute" xml:space="preserve">
+    <value>Visualizza attributo</value>
+  </data>
+  <data name="ViewCondition" xml:space="preserve">
+    <value>Visualizza condizione</value>
+  </data>
+  <data name="ViewRelayServer" xml:space="preserve">
+    <value>Visualizza relay server</value>
+  </data>
+  <data name="ViewStaging" xml:space="preserve">
+    <value>Visualizza staging</value>
+  </data>
+  <data name="VmwareResourcePortal" xml:space="preserve">
+    <value>portale delle risorse vmware</value>
+  </data>
+  <data name="VPNAccessNotApplicableInfoMessage" xml:space="preserve">
+    <value>L'accesso alla VPN sarà impostato su "Non applicabile" se l'applicazione viene utilizzata nel manifesto di disinstallazione applicazione per un prodotto</value>
+  </data>
+  <data name="WeeklyInterval" xml:space="preserve">
+    <value>Intervallo settimanale</value>
+  </data>
+  <data name="WeeklyIntervalPlaceholder" xml:space="preserve">
+    <value>Inserisci un numero da 1 a 52</value>
+  </data>
+  <data name="Wizardenrollmentcomments" xml:space="preserve">
+    <value>Seguire questa procedura guidata dettagliata per configurare il relay server, il profilo Wi-Fi, {0}, lo staging degli utenti e i codici a barre. Al termine, si riceveranno i codici a barre per registrare i dispositivi e ottenere ulteriore assistenza, se necessario.</value>
+  </data>
+  <data name="Wizardsideloadenrollmentcomments" xml:space="preserve">
+    <value>Seguire questa procedura guidata dettagliata per configurare {0}, lo staging degli utenti e il trasferimento locale. Al termine, si riceveranno un file per il trasferimento locale da caricare sui dispositivi e l'accesso per ottenere ulteriore assistenza, se necessario.</value>
+  </data>
+  <data name="Wizardwebenrollmentcomments" xml:space="preserve">
+    <value>Seguire questa procedura guidata dettagliata per configurare AirWatch Agent per la registrazione. Al termine, si riceverà l'accesso per ottenere ulteriore assistenza, se necessario.</value>
+  </data>
+  <data name="WorkSpaceONECertificate" xml:space="preserve">
+    <value>Certificato di Workspace ONE</value>
+  </data>
+  <data name="WorkSpaceOneLauncher" xml:space="preserve">
+    <value>Workspace ONE Launcher</value>
+  </data>
+  <data name="ZQ510" xml:space="preserve">
+    <value>ZQ510</value>
+  </data>
+  <data name="ZQ520" xml:space="preserve">
+    <value>ZQ520</value>
+  </data>
+</root>

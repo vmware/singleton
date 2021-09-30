@@ -1,0 +1,808 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AboutEnrollment" xml:space="preserve">
+    <value>Learn more about enrollment states:</value>
+  </data>
+  <data name="AboutTotalDeployment" xml:space="preserve">
+    <value>Devices must be enrolled to be counted as deployed. Devices pending actions such as enterprise wipe are counted until the action is completed. Registered devices are not counted until they are enrolled.</value>
+  </data>
+  <data name="AddTag" xml:space="preserve">
+    <value>Create Tag</value>
+  </data>
+  <data name="AddTagHelp" xml:space="preserve">
+    <value>Grants permission to create a new tag</value>
+  </data>
+  <data name="AdminModePasscodeHelpText" xml:space="preserve">
+    <value>Specify an alphanumeric passcode to troubleshoot a device in admin mode. Tap the Hub icon on the login screeen 5 times to access admin mode.</value>
+  </data>
+  <data name="AirwatchCannotSeeYourPersonalContent" xml:space="preserve">
+    <value>VMware Workspace ONE Intelligent Hub only collects information that is required to provide secure corporate access</value>
+  </data>
+  <data name="AllowPinAtStartup" xml:space="preserve">
+    <value>Allow PIN at Startup</value>
+  </data>
+  <data name="AndroidSharedDeviceAdminModePasscode" xml:space="preserve">
+    <value>Admin Mode Passcode</value>
+  </data>
+  <data name="AndroidSharedDeviceMode" xml:space="preserve">
+    <value>Android Shared Device Mode</value>
+  </data>
+  <data name="AndroidSharedDeviceModeHelpText" xml:space="preserve">
+    <value>Check in and check out shared Android devices using native Android capability or Workspace ONE Launcher. Native Android supports simpler use cases that don’t require much customization. Launcher supports UI customization for more complex use cases.</value>
+  </data>
+  <data name="AppCatalogSupport" xml:space="preserve">
+    <value>App Catalog Support</value>
+  </data>
+  <data name="AssignTags" xml:space="preserve">
+    <value>Assign Tags</value>
+  </data>
+  <data name="BluetoothDeviceMessageLabelAny" xml:space="preserve">
+    <value>Bluetooth Device</value>
+  </data>
+  <data name="BulkAndroidWipeAddition" xml:space="preserve">
+    <value>If any of these device(s) re-enroll into Workspace ONE, a new UDID will be created, resulting in a duplicated device record.</value>
+  </data>
+  <data name="BulkEnterpriseWipeDescription" xml:space="preserve">
+    <value>An Enterprise Wipe will unenroll and remove all managed enterprise resources from the selected device(s), including applications and profiles.
+This action cannot be undone and re-enrollment will be required for Workspace ONE to manage these device(s) again.</value>
+  </data>
+  <data name="CallUsageMessageLabelAny" xml:space="preserve">
+    <value>Call Usage</value>
+  </data>
+  <data name="CannotDeleteUsersWithRegistrationRecord" xml:space="preserve">
+    <value>Cannot delete an user that has a DEP registration record or if it's asscociated to a DEP profile</value>
+  </data>
+  <data name="CarrierCountryCodeMessageLabelAny" xml:space="preserve">
+    <value>Carrier Country Code</value>
+  </data>
+  <data name="CellularDataUsageMessageLabelAny" xml:space="preserve">
+    <value>Cellular Data Usage</value>
+  </data>
+  <data name="ChromeOsDeviceCleanup" xml:space="preserve">
+    <value>Chrome OS Device Removal</value>
+  </data>
+  <data name="ClearAndroidAccounts" xml:space="preserve">
+    <value>Clear Android Accounts</value>
+  </data>
+  <data name="ClearAndroidAccountsHelpInfo" xml:space="preserve">
+    <value>Clearing Android accounts would remove accounts that some apps can use to automatically login. Google account clearing requires Android 8+, and non-Google account clearing requires Android 9+. This setting only applies to Launcher method of Android shared device, since the Native method always clears every account.</value>
+  </data>
+  <data name="ClearDevicePasscodeDevicePageHelpInfo" xml:space="preserve">
+    <value>Enable or disable the Secure Startup option, which requires an initial PIN entry to boot up the device. If Secure Startup is already disabled, the device must be factory reset to enable it.  This feature applies only to Android devices that do not have file-based encryption.</value>
+  </data>
+  <data name="ClearDevicePasscodeSharedSettingsHelpInfo" xml:space="preserve">
+    <value>Enable or disable Android Secure Startup, which requires an initial PIN entry to boot up the device. If disabled, users cannot enable Secure Startup during passcode setup. If Secure Startup is already disabled on the device, the device must be factory reset to enable it.  This feature applies only to Android devices that do not have file-based encryption.</value>
+  </data>
+  <data name="ConfirmAndroidSharedDeviceAdminModePasscode" xml:space="preserve">
+    <value>Confirm Admin Mode Passcode</value>
+  </data>
+  <data name="ConfirmEnterpriseWipeDeviceMessageChromeOs" xml:space="preserve">
+    <value>This action unenrolls and removes all managed enterprise resources from the selected device (including applications and profiles).  You cannot undo this action without re-enrolling this device.</value>
+  </data>
+  <data name="ConfirmExport" xml:space="preserve">
+    <value>Yes, export</value>
+  </data>
+  <data name="ConfirmOverwrite" xml:space="preserve">
+    <value>Overwrite Confirmation</value>
+  </data>
+  <data name="ConfirmOverwriteMessage" xml:space="preserve">
+    <value>Exporting this PPKG will overwrite any PPKGs for completed templates. Please ensure you download the previous PPKG before exporting this one. Are you sure you want to continue?</value>
+  </data>
+  <data name="ContactAdminPrivacyNotice" xml:space="preserve">
+    <value>The above collection areas are specific to VMware Workspace ONE Intelligent Hub, and may vary for corporate and personal devices.
+
+Contact your IT Administrator about any third-party applications that may allow your company to see additional personal/private information, and for a copy of all applicable internal policies.</value>
+  </data>
+  <data name="DependencyApplications" xml:space="preserve">
+    <value>Dependency Applications</value>
+  </data>
+  <data name="DeviceBulkManagementAddTags" xml:space="preserve">
+    <value>Device Bulk Management assign Tags</value>
+  </data>
+  <data name="DeviceBulkManagementAddTagsHelp" xml:space="preserve">
+    <value>Allows user to assign tags to device(s) in bulk.</value>
+  </data>
+  <data name="DeviceDeleteWhiteSpaceReason" xml:space="preserve">
+    <value>An empty space cannot be used as a reason.</value>
+  </data>
+  <data name="DevicePhoneNumberMessageLabelAny" xml:space="preserve">
+    <value>Device Phone Number</value>
+  </data>
+  <data name="DeviceProvisioningMenuDescription" xml:space="preserve">
+    <value>Manage device provisioning packages</value>
+  </data>
+  <data name="DeviceProvisioningMenuTitle" xml:space="preserve">
+    <value>Provisioning</value>
+  </data>
+  <data name="DevicesCountExcludesUnenrolled" xml:space="preserve">
+    <value>Devices counted toward total deployment have been updated to exclude unenrolled devices.</value>
+  </data>
+  <data name="DeviceViewWorkflowsList" xml:space="preserve">
+    <value>Device View Workflows List</value>
+  </data>
+  <data name="DeviceViewWorkflowsListHelp" xml:space="preserve">
+    <value>Controls access to the Workflows tab available in Device Details page.</value>
+  </data>
+  <data name="DifferentModelReplacement" xml:space="preserve">
+    <value>Different Model Replacement</value>
+  </data>
+  <data name="DownloadEncryptedPackage" xml:space="preserve">
+    <value>Download Encrypted Package</value>
+  </data>
+  <data name="DownloadProvisioningFiles" xml:space="preserve">
+    <value>Download Provisioning Files</value>
+  </data>
+  <data name="DownloadWindowsPhoneAgent" xml:space="preserve">
+    <value>Download windows phone agent</value>
+  </data>
+  <data name="DropShipProvisioningTitleOffline" xml:space="preserve">
+    <value>Drop Ship Provisioning - Offline</value>
+  </data>
+  <data name="DuplicatePackageFound" xml:space="preserve">
+    <value>This name is already in use. Please choose another name.</value>
+  </data>
+  <data name="EditProvisioningPackage" xml:space="preserve">
+    <value>Edit Provisioning Package</value>
+  </data>
+  <data name="EducationCertificateRenewalJob" xml:space="preserve">
+    <value>Education Certificate Renewal Job</value>
+  </data>
+  <data name="EmailDiscovery" xml:space="preserve">
+    <value>Email Auto-Discovery</value>
+  </data>
+  <data name="EmailDomainRegistrationFailure" xml:space="preserve">
+    <value>Email Domain Registration Failure</value>
+  </data>
+  <data name="EmailDomainRegistrationSuccess" xml:space="preserve">
+    <value>Email Domain Registration Success</value>
+  </data>
+  <data name="EmptyApplicationList" xml:space="preserve">
+    <value>No applications found.</value>
+  </data>
+  <data name="EmptyEnrollmentSessionPleaseTryAgain" xml:space="preserve">
+    <value>Empty enrollment session. Please try again.</value>
+  </data>
+  <data name="EmptyPackageList" xml:space="preserve">
+    <value>Your new provisioning packages will appear here.</value>
+  </data>
+  <data name="EncryptedPackageDescription" xml:space="preserve">
+    <value>Export single encrypted PPKG bundle to provision local devices with configurations, settings, and applications.</value>
+  </data>
+  <data name="EncryptedPackageTitle" xml:space="preserve">
+    <value>Encrypted Package</value>
+  </data>
+  <data name="Enrollmentemailaddress" xml:space="preserve">
+    <value>Email address</value>
+  </data>
+  <data name="Enrollmentemailusername" xml:space="preserve">
+    <value>Email Username</value>
+  </data>
+  <data name="EnterCharactersShownAbove" xml:space="preserve">
+    <value>Enter characters shown above</value>
+  </data>
+  <data name="EnterpriseWipeFailed" xml:space="preserve">
+    <value>Enterprise wipe failed.</value>
+  </data>
+  <data name="EnterpriseWipeReasonRequired" xml:space="preserve">
+    <value>The Reason field is required when requesting an enterprise wipe.</value>
+  </data>
+  <data name="EnterpriseWipeSucceeded" xml:space="preserve">
+    <value>Enterprise wipe succeeded.</value>
+  </data>
+  <data name="ExportInProgress" xml:space="preserve">
+    <value>Exporting...</value>
+  </data>
+  <data name="ExportLater" xml:space="preserve">
+    <value>Another provisioning package export is already in progress. Either save your template and export later, or wait until the other export completes.</value>
+  </data>
+  <data name="FailedLoadingUnmanagedProfilePayload" xml:space="preserve">
+    <value>Failed loading unmanaged Profile payload</value>
+  </data>
+  <data name="FailedToDownload" xml:space="preserve">
+    <value>Download request failed, please try again later.</value>
+  </data>
+  <data name="FailedToExport" xml:space="preserve">
+    <value>Failed to export</value>
+  </data>
+  <data name="FeatureNotSupported" xml:space="preserve">
+    <value>This feature is currently not supported.</value>
+  </data>
+  <data name="GPSMessageLabelAny" xml:space="preserve">
+    <value>GPS</value>
+  </data>
+  <data name="GroupIDAndEmailRequired" xml:space="preserve">
+    <value>Email Address and Group ID both are required</value>
+  </data>
+  <data name="InactiveAppsFound" xml:space="preserve">
+    <value>Some applications were deleted or modified after this package was created. Please review the list of selected applications to ensure it is complete.</value>
+  </data>
+  <data name="InvokeAgent" xml:space="preserve">
+    <value>Invoke Agent</value>
+  </data>
+  <data name="LauncherSharedDeviceMode" xml:space="preserve">
+    <value>Launcher</value>
+  </data>
+  <data name="ManagedInstallations" xml:space="preserve">
+    <value>Managed Installations</value>
+  </data>
+  <data name="MultipleEnrollmentUsersForEmail" xml:space="preserve">
+    <value>Multiple enrollment users associated with the given email address</value>
+  </data>
+  <data name="NativeSharedDeviceMode" xml:space="preserve">
+    <value>Native</value>
+  </data>
+  <data name="NewProvisioningPackage" xml:space="preserve">
+    <value>New Provisioning Package</value>
+  </data>
+  <data name="NoEnrollmentUserForEmail" xml:space="preserve">
+    <value>No enrollment user is associated with the given email address</value>
+  </data>
+  <data name="NoOrganizationGroupForGroupId" xml:space="preserve">
+    <value>No organization group was found for the entered group ID</value>
+  </data>
+  <data name="NoTransformSelected" xml:space="preserve">
+    <value>No Transform Selected</value>
+  </data>
+  <data name="NotWorking" xml:space="preserve">
+    <value>Not working?</value>
+  </data>
+  <data name="OEMProvisioningDescription" xml:space="preserve">
+    <value>Export PPKG and XML files to pre-load devices with configurations, settings, and applications at the OEM Facility.</value>
+  </data>
+  <data name="OEMProvisioningTitle" xml:space="preserve">
+    <value>Factory Provisioning</value>
+  </data>
+  <data name="OnboardingMethod" xml:space="preserve">
+    <value>Onboarding Method</value>
+  </data>
+  <data name="OnboardingMethods" xml:space="preserve">
+    <value>Onboarding Methods</value>
+  </data>
+  <data name="OrganizationGroupInvalidForEnrollmentUser" xml:space="preserve">
+    <value>The user is not authorized to enroll at the given organization group</value>
+  </data>
+  <data name="PackageInProgress" xml:space="preserve">
+    <value>An existing Windows Provisioning Package (PPKG) export request is in progress. Please wait for the export to complete.</value>
+  </data>
+  <data name="PackageSaved" xml:space="preserve">
+    <value>Success! Creating provisioning package in progress. Check back later for download link.</value>
+  </data>
+  <data name="PersonalApplicationMessageLabelAny" xml:space="preserve">
+    <value>Personal Application</value>
+  </data>
+  <data name="PersonalAppsCollected" xml:space="preserve">
+    <value>Personal applications installed are collected to ensure that there are no malicious or harmful apps to your personal and corporate data. Only a list of installed applications is made available. No content/data from the personal application is shared with Workspace ONE.</value>
+  </data>
+  <data name="PlatformConfirmation" xml:space="preserve">
+    <value>Platform Confirmation</value>
+  </data>
+  <data name="PromptForiPadandMAC" xml:space="preserve">
+    <value>Confirm if you are using an iPad to avoid problems registering and installing apps.</value>
+  </data>
+  <data name="RemoteControlAccess" xml:space="preserve">
+    <value>Remote Control Access</value>
+  </data>
+  <data name="Replaced" xml:space="preserve">
+    <value>Replaced</value>
+  </data>
+  <data name="Requested" xml:space="preserve">
+    <value>Requested</value>
+  </data>
+  <data name="RetiringDevice" xml:space="preserve">
+    <value>Retiring Device</value>
+  </data>
+  <data name="RoamingStatusMessageLabelAny" xml:space="preserve">
+    <value>Roaming Status</value>
+  </data>
+  <data name="SameModelReplacement" xml:space="preserve">
+    <value>Same Model Replacement</value>
+  </data>
+  <data name="SaveAndExport" xml:space="preserve">
+    <value>Save And Export</value>
+  </data>
+  <data name="SaveForLater" xml:space="preserve">
+    <value>No, save for later</value>
+  </data>
+  <data name="SelectedApplications" xml:space="preserve">
+    <value>Selected Applications</value>
+  </data>
+  <data name="SelectStagingMode" xml:space="preserve">
+    <value>Select Staging Mode</value>
+  </data>
+  <data name="SingleAndroidWipeAddition" xml:space="preserve">
+    <value>If this device re-enrolls into Workspace ONE, a new UDID will be created, resulting in a duplicated device record.</value>
+  </data>
+  <data name="SingleEnterpriseWipeDescription" xml:space="preserve">
+    <value>An Enterprise Wipe will unenroll and remove all managed enterprise resources from the selected device, including applications and profiles.
+This action cannot be undone and re-enrollment will be required for Workspace ONE to manage this device again.</value>
+  </data>
+  <data name="SMSUsageMessageLabelAny" xml:space="preserve">
+    <value>SMS Usage</value>
+  </data>
+  <data name="StagingIsEnabledForEnrollmentUser" xml:space="preserve">
+    <value>Staging is enabled for the given enrollment user</value>
+  </data>
+  <data name="SystemAppsToggleHelpText" xml:space="preserve">
+    <value>Allow end users to access system apps</value>
+  </data>
+  <data name="SystemLogs" xml:space="preserve">
+    <value>System Logs</value>
+  </data>
+  <data name="SystemLogsPrivacyNoticeMessageLabel" xml:space="preserve">
+    <value>System Logs Privacy Notice</value>
+  </data>
+  <data name="TapHereToRetry" xml:space="preserve">
+    <value>Tap here to retry</value>
+  </data>
+  <data name="TermsAndConditions" xml:space="preserve">
+    <value>Terms and Conditions</value>
+  </data>
+  <data name="TransformLabel" xml:space="preserve">
+    <value>App Installer Transform</value>
+  </data>
+  <data name="TransformToolTipText" xml:space="preserve">
+    <value>A transform is a collection of changes applied to an installation of an MSI. Select an available transform file (MST) that will be used during installation.</value>
+  </data>
+  <data name="TransformToolTipTitle" xml:space="preserve">
+    <value>Transform</value>
+  </data>
+  <data name="UnattendAdJoinLabel" xml:space="preserve">
+    <value>Active Directory Type</value>
+  </data>
+  <data name="UnattendAdJoinText" xml:space="preserve">
+    <value>Select the type of AD Join to use. Based on this selection the form below will facilitate a particular AD Join unattend.xml</value>
+  </data>
+  <data name="UnattendAutoAdminLogonLabel" xml:space="preserve">
+    <value>Auto Admin Logon</value>
+  </data>
+  <data name="UnattendAutoAdminLogonText" xml:space="preserve">
+    <value>A one-time administrator logon is needed to enroll the device. Auto admin logon has been turned on and the local administrator account is now required to be set up</value>
+  </data>
+  <data name="UnattendBuildConfigFile" xml:space="preserve">
+    <value>Build Config File</value>
+  </data>
+  <data name="UnattendBuildInAdminText" xml:space="preserve">
+    <value>This is the password for the administrator account</value>
+  </data>
+  <data name="UnattendBuiltInAdminLabel" xml:space="preserve">
+    <value>Administrator Password</value>
+  </data>
+  <data name="UnattendComputerNameLabel" xml:space="preserve">
+    <value>Computer Name</value>
+  </data>
+  <data name="UnattendComputerNamePlaceholder" xml:space="preserve">
+    <value>Computer Name (Random)</value>
+  </data>
+  <data name="UnattendCreateLocalUserLabel" xml:space="preserve">
+    <value>Create Local User</value>
+  </data>
+  <data name="UnattendCreateLocalUserText" xml:space="preserve">
+    <value>Selecting "Yes" will pre-create a local user account. Selecting "No" will prompt the user to create one during OOBE.</value>
+  </data>
+  <data name="UnattendDomainNameLabel" xml:space="preserve">
+    <value>Domain Name</value>
+  </data>
+  <data name="UnattendDomainNameText" xml:space="preserve">
+    <value>This is the name of the Domain the client will be joined to</value>
+  </data>
+  <data name="UnattendDomainOuLabel" xml:space="preserve">
+    <value>AD Organization Unit (OU)</value>
+  </data>
+  <data name="UnattendDomainOuText" xml:space="preserve">
+    <value>Must be in format "OU=,OU=,DC=Company,DC=com"</value>
+  </data>
+  <data name="UnattendDomainPasswordLabel" xml:space="preserve">
+    <value>Domain Password</value>
+  </data>
+  <data name="UnattendDomainPasswordText" xml:space="preserve">
+    <value>Enter password of the Active Directory domain-join account.</value>
+  </data>
+  <data name="UnattendDomainUserLabel" xml:space="preserve">
+    <value>Domain Username</value>
+  </data>
+  <data name="UnattendDomainUserText" xml:space="preserve">
+    <value>Enter username of an Active Directory account with domain-join privileges.</value>
+  </data>
+  <data name="UnattendDownloadMarkup" xml:space="preserve">
+    <value>Unattend XML</value>
+  </data>
+  <data name="UnattendDownloadPackage" xml:space="preserve">
+    <value>PPKG</value>
+  </data>
+  <data name="UnattendEnableBuiltInAdminLabel" xml:space="preserve">
+    <value>Enable Administrator Account</value>
+  </data>
+  <data name="UnattendEnableBuiltInAdminText" xml:space="preserve">
+    <value>Enable the built-in administrator account. This account is disabled by default. When using Auto Admin Logon, the default administrator account must be enabled</value>
+  </data>
+  <data name="UnattendFirstLogonCmdLabel" xml:space="preserve">
+    <value>First Logon Commands</value>
+  </data>
+  <data name="UnattendFirstLogonCmdText" xml:space="preserve">
+    <value>You can add commands that will automatically run the first time a user logs on (Requires the user to have local admin privileges)</value>
+  </data>
+  <data name="UnattendLocaleChineseHongKong" xml:space="preserve">
+    <value>Chinese (Hong Kong)</value>
+  </data>
+  <data name="UnattendLocaleChinesePrc" xml:space="preserve">
+    <value>Chinese (China)</value>
+  </data>
+  <data name="UnattendLocaleChineseSimplified" xml:space="preserve">
+    <value>Chinese (simplified)</value>
+  </data>
+  <data name="UnattendLocaleChineseTaiwan" xml:space="preserve">
+    <value>Chinese (Taiwan)</value>
+  </data>
+  <data name="UnattendLocaleChineseTraditional" xml:space="preserve">
+    <value>Chinese (traditional)</value>
+  </data>
+  <data name="UnattendLocaleEnglish" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="UnattendLocaleEnglishUk" xml:space="preserve">
+    <value>English - UK</value>
+  </data>
+  <data name="UnattendLocaleEnglishUs" xml:space="preserve">
+    <value>English - US</value>
+  </data>
+  <data name="UnattendLocaleFrench" xml:space="preserve">
+    <value>French</value>
+  </data>
+  <data name="UnattendLocaleFrenchCanada" xml:space="preserve">
+    <value>French - Canada</value>
+  </data>
+  <data name="UnattendLocaleFrenchFrance" xml:space="preserve">
+    <value>French - France</value>
+  </data>
+  <data name="UnattendLocaleGerman" xml:space="preserve">
+    <value>German</value>
+  </data>
+  <data name="UnattendLocaleItalian" xml:space="preserve">
+    <value>Italian</value>
+  </data>
+  <data name="UnattendLocaleJapanese" xml:space="preserve">
+    <value>Japanese</value>
+  </data>
+  <data name="UnattendLocaleKorean" xml:space="preserve">
+    <value>Korean</value>
+  </data>
+  <data name="UnattendLocaleLabel" xml:space="preserve">
+    <value>Region and Keyboard</value>
+  </data>
+  <data name="UnattendLocalePortuguese" xml:space="preserve">
+    <value>Portuguese</value>
+  </data>
+  <data name="UnattendLocalePortugueseBrazil" xml:space="preserve">
+    <value>Portuguese (Brazil)</value>
+  </data>
+  <data name="UnattendLocalePortuguesePortugal" xml:space="preserve">
+    <value>Portuguese (Portugal)</value>
+  </data>
+  <data name="UnattendLocaleSpanish" xml:space="preserve">
+    <value>Spanish</value>
+  </data>
+  <data name="UnattendLocaleSpanishMexico" xml:space="preserve">
+    <value>Spanish - Mexico</value>
+  </data>
+  <data name="UnattendLocaleSpanishSpain" xml:space="preserve">
+    <value>Spanish - Spain</value>
+  </data>
+  <data name="UnattendLocaleText" xml:space="preserve">
+    <value>Specifies the input language and keyboard layout available based on operating system language selected above.</value>
+  </data>
+  <data name="UnattendLocalUserAdminLabel" xml:space="preserve">
+    <value>Make Administrator</value>
+  </data>
+  <data name="UnattendLocalUserAdminText" xml:space="preserve">
+    <value>Yes is required for AirWatch enrollment to automatically kick off. During login, the user will see an AirWatch window pop up to enter enrollment credentials</value>
+  </data>
+  <data name="UnattendLocalUserNameLabel" xml:space="preserve">
+    <value>Local Username</value>
+  </data>
+  <data name="UnattendLocalUserNameText" xml:space="preserve">
+    <value>This is the username of the local user</value>
+  </data>
+  <data name="UnattendLocalUserPasswordLabel" xml:space="preserve">
+    <value>Local User Password</value>
+  </data>
+  <data name="UnattendLocalUserPasswordText" xml:space="preserve">
+    <value>If no password is specified, system will prompt user to change password on first sign in</value>
+  </data>
+  <data name="UnattendMediaLanguageLabel" xml:space="preserve">
+    <value>Operating System Language</value>
+  </data>
+  <data name="UnattendMediaLanguageText" xml:space="preserve">
+    <value>Select the language of the Operating System installation media provided to OEM</value>
+  </data>
+  <data name="UnattendModeAzureAdNoPrem" xml:space="preserve">
+    <value>Azure Active Directory - No Premium</value>
+  </data>
+  <data name="UnattendModeAzureAdPrem" xml:space="preserve">
+    <value>Azure Active Directory - Premium</value>
+  </data>
+  <data name="UnattendModeWorkgroup" xml:space="preserve">
+    <value>Workgroup</value>
+  </data>
+  <data name="UnattendNewCmdLabel" xml:space="preserve">
+    <value>New Command</value>
+  </data>
+  <data name="UnattendOnPremAdJoin" xml:space="preserve">
+    <value>On-premises Active Directory Join</value>
+  </data>
+  <data name="UnattendOobeSectionLabel" xml:space="preserve">
+    <value>OOBE Configuration</value>
+  </data>
+  <data name="UnattendProductKeyLabel" xml:space="preserve">
+    <value>Product Key</value>
+  </data>
+  <data name="UnattendProductKeyText" xml:space="preserve">
+    <value>A Windows product key is a sequence of five letters or numbers, repeated five times and seperated by dashes. Example: "12345-54CDE-XYZ78-ONM98-456TY"</value>
+  </data>
+  <data name="UnattendRegisteredOrgLabel" xml:space="preserve">
+    <value>Registered Organization</value>
+  </data>
+  <data name="UnattendRegisteredOrgText" xml:space="preserve">
+    <value>This will show up in system information.</value>
+  </data>
+  <data name="UnattendRegisteredOwnerLabel" xml:space="preserve">
+    <value>Registered Owner</value>
+  </data>
+  <data name="UnattendRegisteredOwnerText" xml:space="preserve">
+    <value>This will show up in system information</value>
+  </data>
+  <data name="UnattendRemoveConsumerAppsLabel" xml:space="preserve">
+    <value>Remove Windows 10 Consumer Apps</value>
+  </data>
+  <data name="UnattendRemoveConsumerAppsText" xml:space="preserve">
+    <value>Enabling this prevents consumer apps (i.e. Candy Crush) from appearing in Windows 10. It is only supported by entering an Enterprise or Education product key below. Requires Windows version 1511 or higher</value>
+  </data>
+  <data name="UnattendSaveFailed" xml:space="preserve">
+    <value>Failed to save package, please verify the form and try again.</value>
+  </data>
+  <data name="UnattendShowEulaLabel" xml:space="preserve">
+    <value>EULA Page</value>
+  </data>
+  <data name="UnattendShowEulaText" xml:space="preserve">
+    <value>Select "Show" to show the Microsoft Software License Terms page during OOBE</value>
+  </data>
+  <data name="UnattendShowLocaleSettingsLabel" xml:space="preserve">
+    <value>Region and Keyboard Settings</value>
+  </data>
+  <data name="UnattendShowLocaleSettingsText" xml:space="preserve">
+    <value>Selecting "Show" will show the Region and Keyboard Settings page during OOBE. Selecting "Hide" hides it and requires you to select the from available locale in the drop-down below.</value>
+  </data>
+  <data name="UnattendShowOnlineAccountLabel" xml:space="preserve">
+    <value>Online Account Settings</value>
+  </data>
+  <data name="UnattendShowOnlineAccountText" xml:space="preserve">
+    <value>Select "Show" to show the online account screen. This allows you to sign in using a Microsoft account.</value>
+  </data>
+  <data name="UnattendShowPrivacyLabel" xml:space="preserve">
+    <value>Privacy Settings</value>
+  </data>
+  <data name="UnattendShowPrivacyText" xml:space="preserve">
+    <value>Select "Show" to prompt the user to select Privacy settings during OOBE. Selecting "Hide" uses Express settings and hides it.</value>
+  </data>
+  <data name="UnattendSyncCmdLabel" xml:space="preserve">
+    <value>Additional Synchronous Commands</value>
+  </data>
+  <data name="UnattendSyncCmdText" xml:space="preserve">
+    <value>You can add commands that will automatically run at the end of the Windows setup process, but before any user login</value>
+  </data>
+  <data name="UnattendSystemConfigurationSection" xml:space="preserve">
+    <value>System Configuration</value>
+  </data>
+  <data name="UnattendUacAlwaysNotify" xml:space="preserve">
+    <value>Always Notify</value>
+  </data>
+  <data name="UnattendUacDefault" xml:space="preserve">
+    <value>Default</value>
+  </data>
+  <data name="UnattendUacDisabled" xml:space="preserve">
+    <value>Disabled</value>
+  </data>
+  <data name="UnattendUacEnableButDoNotNotify" xml:space="preserve">
+    <value>Enabled but do not Notify</value>
+  </data>
+  <data name="UnattendUacLabel" xml:space="preserve">
+    <value>User Account Control</value>
+  </data>
+  <data name="UnattendUacNotifyWithoutDimmingDesktop" xml:space="preserve">
+    <value>Notify Without Dimming Desktop</value>
+  </data>
+  <data name="UnattendUacText" xml:space="preserve">
+    <value>Select the type of User Account Control</value>
+  </data>
+  <data name="UnattendValidationInvalidInput" xml:space="preserve">
+    <value>Invalid input</value>
+  </data>
+  <data name="UnattendValidationMaxLength" xml:space="preserve">
+    <value>This field is required and cannot have more than {0} characters</value>
+  </data>
+  <data name="UnattendValidationNoAdminUser" xml:space="preserve">
+    <value>You must create a local user which is a member of the administrators group, or enable the built-in administrator</value>
+  </data>
+  <data name="UnattendValidationProductKey" xml:space="preserve">
+    <value>Invalid product key</value>
+  </data>
+  <data name="UnattendValidationRequired" xml:space="preserve">
+    <value>This field cannot be empty</value>
+  </data>
+  <data name="UnattendWelcome" xml:space="preserve">
+    <value>Welcome to the Configuration Tool for Provisioning. Be sure to provide values for all required fields to enable the build config file button</value>
+  </data>
+  <data name="UnattendWorkgroupLabel" xml:space="preserve">
+    <value>Workgroup</value>
+  </data>
+  <data name="UnattendWorkgroupText" xml:space="preserve">
+    <value>This is the name of the Workgroup the client will be joined to</value>
+  </data>
+  <data name="UnattendWs1OgLabel" xml:space="preserve">
+    <value>Enrollment OG</value>
+  </data>
+  <data name="UnattendWs1OgText" xml:space="preserve">
+    <value>This is your enrollment OG Group ID. If you have SAML turned on, ensure you setup a separate "Staging" OG with SAML turned off. You can mouse over the OG at the top of the Workspace ONE console to get the Group ID.</value>
+  </data>
+  <data name="UnattendWs1Section" xml:space="preserve">
+    <value>Workspace ONE Enrollment</value>
+  </data>
+  <data name="UnattendWs1ServerLabel" xml:space="preserve">
+    <value>Enrollment Server</value>
+  </data>
+  <data name="UnattendWs1ServerText" xml:space="preserve">
+    <value>This is your enrollment server URL. It is found in All Settings --&gt; System --&gt; Advanced --&gt; Site URLs under MDM Enrollment URL. Only include the core URL. For example, https://vmwarelab.awmdm.com</value>
+  </data>
+  <data name="UnattendWs1StagingAccountLabel" xml:space="preserve">
+    <value>Staging Account</value>
+  </data>
+  <data name="UnattendWs1StagingAccountPasswordLabel" xml:space="preserve">
+    <value>Staging Password</value>
+  </data>
+  <data name="UnattendWs1StagingAccountPasswordText" xml:space="preserve">
+    <value>Staging account "password" as specified on the same page as the staging account. If the password includes special characters ( '&amp;', '&gt;', or '&lt;' ) , factory provisioning workflows that use this account for enrollment will fail. To change the password, go to the Users page.</value>
+  </data>
+  <data name="UnattendWs1StagingAccountText" xml:space="preserve">
+    <value>This is the staging account found in All Settings --&gt; Devices &amp; Users --&gt; Windows --&gt; Windows Desktop --&gt; Staging &amp; Provisioning in the UPN field</value>
+  </data>
+  <data name="UnmanagedProfilesMessageLabelAny" xml:space="preserve">
+    <value>Unmanaged Profiles</value>
+  </data>
+  <data name="USBDeviceMessageLabelAny" xml:space="preserve">
+    <value>USB Device</value>
+  </data>
+  <data name="UserEnrollmentAndEnter" xml:space="preserve">
+    <value>Have a group ID?</value>
+  </data>
+  <data name="UserEnrollmentNotEnabledInOg" xml:space="preserve">
+    <value>User enrollment is not enabled in the specified organization group</value>
+  </data>
+  <data name="UserEnrollmentSettingsMessage" xml:space="preserve">
+    <value>In the 'Settings' app, locate and tap "Enroll in your company"</value>
+  </data>
+  <data name="UserEnrollmentUseEmailAddress" xml:space="preserve">
+    <value>Use email address</value>
+  </data>
+  <data name="UserPasswordIsRequired" xml:space="preserve">
+    <value>Password is required</value>
+  </data>
+  <data name="Workappsprivacynoticemessagelabel" xml:space="preserve">
+    <value>A list of app name, version, and installation status for all work apps delivered via Workspace ONE are collected from the device for reporting purposes.</value>
+  </data>
+</root>

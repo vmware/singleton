@@ -1,0 +1,2909 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AccessDeniedForOG" xml:space="preserve">
+    <value>Aktuální organizační skupina nemá přístup k aplikaci</value>
+  </data>
+  <data name="AccessPoliciesIDMSetupArg" xml:space="preserve">
+    <value>Zásady přístupu lze používat až po nastavení aplikace Workspace ONE. Přejděte do části {0} a dokončete nastavení aplikace Workspace ONE. Až budete hotovi, odhlaste se, znovu se přihlaste a zkuste to znovu.</value>
+  </data>
+  <data name="AccountNameExample" xml:space="preserve">
+    <value>např. VMware</value>
+  </data>
+  <data name="AccountNotifyEmail" xml:space="preserve">
+    <value>Nastavení e-mailového oznámení</value>
+  </data>
+  <data name="AccountNotifyEmailInfo" xml:space="preserve">
+    <value>Oznámení e-mailem</value>
+  </data>
+  <data name="AccountNotifyPush" xml:space="preserve">
+    <value>ENS2</value>
+  </data>
+  <data name="AccountNotifyPushInfo" xml:space="preserve">
+    <value>Aktivuje nebo deaktivuje službu e-mailových oznámení.</value>
+  </data>
+  <data name="AccountSMIMESignByDefault" xml:space="preserve">
+    <value>Automaticky podepsat e-mail</value>
+  </data>
+  <data name="AccountSMIMESignByDefaultInfo" xml:space="preserve">
+    <value>Aktivuje ve výchozím nastavení podepisování S/MIME, když je spuštěno zobrazení vytváření.</value>
+  </data>
+  <data name="AccountSyncCalendar" xml:space="preserve">
+    <value>Nastavení synchronizace kalendáře</value>
+  </data>
+  <data name="AccountSyncCalendarInfo" xml:space="preserve">
+    <value>Deaktivuje synchronizaci kalendáře na zařízení</value>
+  </data>
+  <data name="AccountSyncContact" xml:space="preserve">
+    <value>Nastavení synchronizace kontaktů</value>
+  </data>
+  <data name="AccountSyncContactInfo" xml:space="preserve">
+    <value>Deaktivuje synchronizaci kontaktů na zařízení</value>
+  </data>
+  <data name="AccountSyncEmail" xml:space="preserve">
+    <value>Nastavení synchronizace e-mailu</value>
+  </data>
+  <data name="AccountSyncEmailInfo" xml:space="preserve">
+    <value>Deaktivuje synchronizaci e-mailu na zařízení</value>
+  </data>
+  <data name="AccountUseOAuth" xml:space="preserve">
+    <value>Moderní autentizace</value>
+  </data>
+  <data name="AccountUseOAuthInfo" xml:space="preserve">
+    <value>Pokud je tato položka aktivována, budou uživatelé za účelem autentizace během registrace přesměrováni na přihlašovací stránku</value>
+  </data>
+  <data name="ActionsGrid" xml:space="preserve">
+    <value>Mřížka akcí</value>
+  </data>
+  <data name="ActionsNotShownForProductBasedApps" xml:space="preserve">
+    <value>Jednotlivé akce instalace a odebrání jsou u aplikací, které jsou součástí balíčku „produktu“, omezeny.</value>
+  </data>
+  <data name="ActivateApplication" xml:space="preserve">
+    <value>Aktivovat aplikaci</value>
+  </data>
+  <data name="AddContingencies" xml:space="preserve">
+    <value>Přidat nepředvídané události</value>
+  </data>
+  <data name="AIPSensitivityLabels" xml:space="preserve">
+    <value>Popisky citlivosti AIP</value>
+  </data>
+  <data name="AllAppsImportedFromPlay" xml:space="preserve">
+    <value>Všechny aplikace již byly importovány</value>
+  </data>
+  <data name="AllAppsTab" xml:space="preserve">
+    <value>Všechny aplikace</value>
+  </data>
+  <data name="Alloted" xml:space="preserve">
+    <value>Přiděleno</value>
+  </data>
+  <data name="AllowActionArchiveInfo" xml:space="preserve">
+    <value>Tato možnost povolí nebo zablokuje funkci archivace e-mailů</value>
+  </data>
+  <data name="AllowActionSpamInfo" xml:space="preserve">
+    <value>Pokud je deaktivována, možnost Spam v aplikaci Workspace ONE Boxer není k dispozici pro koncové uživatele. Pokud je tato možnost aktivována a e-mailová adresa není zadána, hlášení o spamu budou přesunuta do nevyžádané pošty.</value>
+  </data>
+  <data name="AllowAnnotations" xml:space="preserve">
+    <value>Povolit poznámky</value>
+  </data>
+  <data name="AllowAnnotationsTip" xml:space="preserve">
+    <value>Umožňuje používat nástroje pro psaní rukou a zvýrazňovače.</value>
+  </data>
+  <data name="AllowAppRemovalsWithoutProtectionTimeWindowHelp" xml:space="preserve">
+    <value>Jakmile administrátoři schválí a znovu aktivují odstranění, pro danou aplikaci nebude aktivována ochrana po dobu intervalu, který je zde naplánován, aby mohla být akce odstranění úspěšně provedena. Po uplynutí tohoto intervalu bude ochrana znovu aktivována, pokud dotčená zařízení dosáhnou počtu nakonfigurovaného v části „zaevidovaná dotčená zařízení“.</value>
+  </data>
+  <data name="AllowArchivingEmails" xml:space="preserve">
+    <value>Povolit archivaci e-mailů</value>
+  </data>
+  <data name="AllowAttachmentsDownloadInfo" xml:space="preserve">
+    <value>Aktivuje nebo deaktivuje stahování příloh.</value>
+  </data>
+  <data name="AllowAttachmentsInfo" xml:space="preserve">
+    <value>Aktivuje nebo deaktivuje přílohy u posílání e-mailů.</value>
+  </data>
+  <data name="AllowAttachmentsTip" xml:space="preserve">
+    <value>Aktivuje nebo deaktivuje funkci přiložených poznámek. Pokud je deaktivováno, nejsou povoleny žádné typy příloh.</value>
+  </data>
+  <data name="AllowCameraTip" xml:space="preserve">
+    <value>Aktivuje nebo deaktivuje možnost kamery zařízení.</value>
+  </data>
+  <data name="AllowCrashReportingInfo" xml:space="preserve">
+    <value>Ve výchozím nastavení smí aplikace Boxer anonymně hlásit chyby. Doporučujeme ponechat tuto možnost aktivovanou, aby nám umožnila zobrazit a opravit chyby</value>
+  </data>
+  <data name="AllowDocProvidersInfo" xml:space="preserve">
+    <value>Aktivuje nebo deaktivuje přílohy externích poskytovatelů (iCloud, Dropbox, Disk Google atd.) v rámci aplikace Workspace ONE Boxer.</value>
+  </data>
+  <data name="AllowDocumentScanner" xml:space="preserve">
+    <value>Povolit skener dokumentů</value>
+  </data>
+  <data name="AllowDocumentScannerTip" xml:space="preserve">
+    <value>Aktivuje nebo deaktivuje funkci skenování dokumentů.</value>
+  </data>
+  <data name="AllowEnterpriseContentInfo" xml:space="preserve">
+    <value>Podnikový obsah přenese nastavení vašich úložišť z aplikace Workspace ONE Content do aplikace Boxer, abyste mohli ukládat a prohlížet soubory z on-line úložišť. Tato konfigurace vyžaduje povolenou funkci SSO.</value>
+  </data>
+  <data name="AllowExchange" xml:space="preserve">
+    <value>Povolit Exchange</value>
+  </data>
+  <data name="AllowGallery" xml:space="preserve">
+    <value>Povolit galerii</value>
+  </data>
+  <data name="AllowGalleryTip" xml:space="preserve">
+    <value>Aktivuje nebo deaktivuje přístup a použití galerie obrázků zařízení.</value>
+  </data>
+  <data name="AllowHyperlinksTip" xml:space="preserve">
+    <value>Povolit uživatelům zadávat hypertextové odkazy</value>
+  </data>
+  <data name="AllowList" xml:space="preserve">
+    <value>Povolit seznam</value>
+  </data>
+  <data name="AllowLocalCalendarsInfo" xml:space="preserve">
+    <value>Pokud chcete povolit místní kalendáře v aplikaci Workspace ONE Boxer, proveďte nastavení na hodnotu True. Pokud je možnost deaktivována, není možnost Místní kontakty v aplikaci Workspace ONE Boxer k dispozici koncovým uživatelům.</value>
+  </data>
+  <data name="AllowMetricsInfo" xml:space="preserve">
+    <value>Zvolte, zda chcete deaktivovat shromažďování anonymních metrik, které nám pomáhají rozhodovat o dalším vývoji produktu.</value>
+  </data>
+  <data name="AllowOpenInInfo" xml:space="preserve">
+    <value>Aktivuje nebo deaktivuje připojování souborů z jiných aplikací pomocí příkazů Otevřít v nebo Sdílet do aplikace Workspace ONE Boxer. Je-li otevírání nebo sdílení příloh deaktivováno, zobrazí se zpráva „Váš administrátor omezil přílohy z externích aplikací“.</value>
+  </data>
+  <data name="AllowRemovalsForDuration" xml:space="preserve">
+    <value>Povolit odstranění bez ochrany (hod.)</value>
+  </data>
+  <data name="AllowTextBoxes" xml:space="preserve">
+    <value>Povolit textová pole</value>
+  </data>
+  <data name="AllowTextBoxesTip" xml:space="preserve">
+    <value>Povoluje textová pole.</value>
+  </data>
+  <data name="AllowUserInstallDeferralLabel" xml:space="preserve">
+    <value>Povolit uživateli odložení instalace</value>
+  </data>
+  <data name="AllowUserInstallDeferralTooltip" xml:space="preserve">
+    <value>Je-li zapnuto, uživatel může odložit instalaci této aplikace</value>
+  </data>
+  <data name="AllowUserRegistrationMessage" xml:space="preserve">
+    <value>Umožňuje všem uživatelům, kteří mají přístup k ID skupiny a adrese URL vašeho prostředí, vytvořit uživatelský účet a získat přístup k podnikovým zdrojům. Pokud chcete zabránit neoprávněným uživatelům v přístupu, zrušte výběr této možnosti a v části Účty &gt; Uživatelé &gt; Zobrazení seznamu &gt; ,Přidat uživatele‘ vytvořte uživatelské účty.</value>
+  </data>
+  <data name="AllowVoiceRecordings" xml:space="preserve">
+    <value>Povolit hlasový záznam</value>
+  </data>
+  <data name="AllowVoiceRecordingsTip" xml:space="preserve">
+    <value>Aktivuje nebo deaktivuje používání zvukového záznamu.</value>
+  </data>
+  <data name="AndroidDerivedCredentialSmimeForFirstaccount" xml:space="preserve">
+    <value>{0} podporuje pouze jeden certifikát S/MIME. Tuto možnost vyberte pouze pro primární spravovaný e-mailový účet.</value>
+  </data>
+  <data name="AppAlreadyExistsUnderProductProvisioning" xml:space="preserve">
+    <value>Tato aplikace již existuje v části „Zajišťování produktu“ a nelze ji nahrát do části „Aplikace a knihy“. Instanci aplikace můžete odstranit z části „Zajišťování produktu“ a opakovat pokus o nahrání. Chcete-li se vyhnout odstraňování aplikací, ujistěte se, že jsou součástí přiřazování všechna zařízení s oprávněním k zachování aplikace.</value>
+  </data>
+  <data name="AppAvatarsDefault" xml:space="preserve">
+    <value>Aktivovat avatary</value>
+  </data>
+  <data name="AppBulkAction" xml:space="preserve">
+    <value>Hromadná akce aplikace</value>
+  </data>
+  <data name="AppCategories" xml:space="preserve">
+    <value>Kategorie aplikací</value>
+  </data>
+  <data name="AppCompliance" xml:space="preserve">
+    <value>Shoda aplikace</value>
+  </data>
+  <data name="AppComplianceReportedCompliant" xml:space="preserve">
+    <value>Shoda aplikace hlášena konformní</value>
+  </data>
+  <data name="AppComplianceReportedNonCompliant" xml:space="preserve">
+    <value>Shoda aplikace hlášena nekonformní</value>
+  </data>
+  <data name="AppComplianceReportedUnknown" xml:space="preserve">
+    <value>Shoda aplikace hlášena neznámá</value>
+  </data>
+  <data name="AppConfigSectionMmaInfoMsg" xml:space="preserve">
+    <value>Ujistěte se, že KVP platí napříč celou aplikací. Všechny konfigurace, které se týkají pouze specifického e-mailového účtu, by měly být přesunuty do části „Vlastní konfigurace účtu“ v nastavení e-mailu, aby se předešlo narušení.</value>
+  </data>
+  <data name="AppConversationViewDefault" xml:space="preserve">
+    <value>Seskupení konverzace</value>
+  </data>
+  <data name="AppDefaultBrowser" xml:space="preserve">
+    <value>Omezit na výchozí prohlížeč</value>
+  </data>
+  <data name="AppDefaultBrowserExceptions" xml:space="preserve">
+    <value>Výjimky prohlížeče</value>
+  </data>
+  <data name="AppDefaultBrowserExceptionsInfo" xml:space="preserve">
+    <value>Pokud jsou hypertextové odkazy v konzole Console omezeny, můžete přidat seznam výjimek pro domény/weby, aby se odkazy vždy otevíraly ve výchozím/nativním prohlížeči. Pokud hypertextové odkazy nejsou nijak omezeny, můžete přidat seznam výjimek pro domény/weby tak, aby se odkazy vždy otevíraly v aplikaci Workspace ONE Web. Seznam výjimek bude porovnávat pouze zástupné znaky, subdomény a domény. Příklad: AppDefaultBrowserExceptions = ["*.vmware.com", "jira*.vmware.com", "internal.vmware.com", "vmware.com"]</value>
+  </data>
+  <data name="AppDefaultBrowserTooltip" xml:space="preserve">
+    <value>Otevře všechny odkazy ve výchozím prohlížeči.</value>
+  </data>
+  <data name="AppDefaultCallerID" xml:space="preserve">
+    <value>Výchozí ID volajícího</value>
+  </data>
+  <data name="AppDeploymentInlineHelpPublic" xml:space="preserve">
+    <value>Až bude potřeba, nasaďte aplikaci automaticky (Auto), nebo manuálně (Na vyžádání).</value>
+  </data>
+  <data name="AppDetails" xml:space="preserve">
+    <value>Podrobnosti aplikace</value>
+  </data>
+  <data name="AppDetailsView" xml:space="preserve">
+    <value>Zobrazení podrobností aplikace</value>
+  </data>
+  <data name="AppDomainsInternal" xml:space="preserve">
+    <value>Seznam interních domén</value>
+  </data>
+  <data name="AppDomainsWarning" xml:space="preserve">
+    <value>Upozornění externího příjemce</value>
+  </data>
+  <data name="AppDomainsWarningInfo" xml:space="preserve">
+    <value>Upozorní koncového uživatele, že posílá zprávu externímu příjemci.</value>
+  </data>
+  <data name="AppEnableKeyWrappingOnlyMode" xml:space="preserve">
+    <value>Aktivovat režim Pouze zabalení klíče Swift SDK</value>
+  </data>
+  <data name="AppEnableKeyWrappingOnlyModeInfo" xml:space="preserve">
+    <value>Zachovat aktivované a plně tak využívat bezpečnostní funkce zabalování klíčů</value>
+  </data>
+  <data name="AppForceActivateSSO" xml:space="preserve">
+    <value>Aktivovat jednotné přihlášení (SSO)</value>
+  </data>
+  <data name="AppForceActivateSSOInfo" xml:space="preserve">
+    <value>Tato možnost aktivuje SSO, tento klíč bude zastaralý a přihlášení SSO vždy zapnuto. Tato možnost je také vyžadována pro řadu funkcí včetně podnikového obsahu.</value>
+  </data>
+  <data name="AppGroup" xml:space="preserve">
+    <value>Skupina aplikací</value>
+  </data>
+  <data name="AppGroups" xml:space="preserve">
+    <value>Skupiny aplikací</value>
+  </data>
+  <data name="AppInstallDeferred" xml:space="preserve">
+    <value>Instalace odložena</value>
+  </data>
+  <data name="AppKeyWrappingOnlyMode" xml:space="preserve">
+    <value>Režim Pouze zabalení klíče Swift SDK</value>
+  </data>
+  <data name="AppleUpdateAvailableHelpText" xml:space="preserve">
+    <value>Tento sloupec určuje, jestli je aplikace v nejnovější verzi nebo jestli je dostupná aktualizace. Podporováno pouze pro aplikace dostupné v obchodu App Store.</value>
+  </data>
+  <data name="ApplicationApprovedFordeviceAssignment" xml:space="preserve">
+    <value>Aplikace byla aktivována pro přiřazení dle zařízení. Všimněte si prosím, že všechna zařízení iOS9+ a macOS 10.11+ obdrží jednu licenci na zařízení. Tato zařízení nebudou vyžadovat Apple ID za účelem obdržení aplikace.</value>
+  </data>
+  <data name="ApplicationApprovedFordeviceAssignmentWithTvOS" xml:space="preserve">
+    <value>Aplikace byla aktivována pro přiřazení podle zařízení. Všechna zařízení se systémem iOS 9 a novějším a macOS 10.11 a novějším obdrží jednu licenci na zařízení. Tato zařízení nebudou pro přijetí aplikace vyžadovat Apple ID. Zařízení tvOS mohou používat pouze licence založené na zařízení a lze je využívat bez nutnosti zásahu administrátora.</value>
+  </data>
+  <data name="ApplicationAttributes" xml:space="preserve">
+    <value>Atributy</value>
+  </data>
+  <data name="ApplicationAttributesTooltip" xml:space="preserve">
+    <value>Atributy aplikace jsou používány k poskytování detailů specifických pro zařízení u aplikací, které budou použity během jejich provozu, jako je seznam domén přiřazených jedinečné organizaci.</value>
+  </data>
+  <data name="ApplicationBundleId" xml:space="preserve">
+    <value>ID sady aplikací</value>
+  </data>
+  <data name="ApplicationCantDeleteRetireConfirmation" xml:space="preserve">
+    <value>Odstraněním této aplikace bude aplikace odebrána z jednoho nebo více přiřazených zařízení, kde je spravována platformou Workspace ONE. Bude také deaktivována v konzole. Chcete pokračovat?</value>
+  </data>
+  <data name="ApplicationConfigMigrationJob" xml:space="preserve">
+    <value>Úloha migrace konfigurace aplikace</value>
+  </data>
+  <data name="ApplicationDeactivateDescription" xml:space="preserve">
+    <value>Deaktivace aplikace odinstaluje všechny verze aplikace ze všech zařízení, kde je aplikace spravovaná systémem Workspace ONE. Postupujte uvážlivě.</value>
+  </data>
+  <data name="ApplicationDeploymentStatusStaleTime" xml:space="preserve">
+    <value>Označit příkaz UEM aplikace za zastaralý po</value>
+  </data>
+  <data name="ApplicationDeploymentStatusStaleTimeForAndroid" xml:space="preserve">
+    <value>Android</value>
+  </data>
+  <data name="ApplicationDeploymentStatusStaleTimeForIos" xml:space="preserve">
+    <value>iOS</value>
+  </data>
+  <data name="ApplicationDeploymentStatusStaleTimeForMacOs" xml:space="preserve">
+    <value>macOS</value>
+  </data>
+  <data name="ApplicationDeploymentStatusStaleTimeForWindows" xml:space="preserve">
+    <value>Windows</value>
+  </data>
+  <data name="ApplicationDeploymentStatusStaleTimeTooltip" xml:space="preserve">
+    <value>Stanovte, kolik minut poté, co zařízení potvrdí poslední příkaz UEM (ale nedokončí akci), bude příkaz UEM označen jako „zastaralý“. Zastaralé příkazy se znovu aktivují při publikování aplikací. Katalog aplikací již nebude koncovým uživatelům aplikace zobrazovat ve stavu „zpracování“, místo toho budou znovu povoleny akce „Instalovat“ nebo „Aktualizovat“.</value>
+  </data>
+  <data name="ApplicationGroupActivated" xml:space="preserve">
+    <value>Skupina aplikací aktivována</value>
+  </data>
+  <data name="ApplicationGroupDeactivated" xml:space="preserve">
+    <value>Skupina aplikací deaktivována</value>
+  </data>
+  <data name="ApplicationGroupDeleted" xml:space="preserve">
+    <value>Skupina aplikací odstraněna</value>
+  </data>
+  <data name="ApplicationInKiosk" xml:space="preserve">
+    <value>POZNÁMKA: Tato aplikace je součástí profilu veřejného terminálu. Po odebrání aplikace aktualizujte profil.</value>
+  </data>
+  <data name="ApplicationMaxFileSizeWithCdn" xml:space="preserve">
+    <value>Maximální velikost souboru aplikace s CDN</value>
+  </data>
+  <data name="ApplicationMaxFileSizeWithCdnToolTip" xml:space="preserve">
+    <value>Pokud je síť CDN aktivována, bude pro nahrávání u této organizační skupiny použita větší z hodnot Maximální velikost souboru a Maximální velikost souboru s CDN.</value>
+  </data>
+  <data name="ApplicationPublished" xml:space="preserve">
+    <value>Publikace aplikace proběhla úspěšně</value>
+  </data>
+  <data name="ApplicationPublishFailed" xml:space="preserve">
+    <value>Publikace aplikace se nezdařila</value>
+  </data>
+  <data name="ApplicationPublishStarted" xml:space="preserve">
+    <value>Publikace aplikace byla zahájena</value>
+  </data>
+  <data name="ApplicationReasonChange" xml:space="preserve">
+    <value>Příčina změny aplikace</value>
+  </data>
+  <data name="ApplicationRetireDescription" xml:space="preserve">
+    <value>Vyřazení verze aplikace odinstaluje tuto verzi aplikace ze všech zařízení, kde ji spravuje systém Workspace ONE. Pokud je dostupná další starší verze aplikace, odešle se do zařízení tato. Postupujte uvážlivě.</value>
+  </data>
+  <data name="ApplicationSample" xml:space="preserve">
+    <value>Vzorek aplikace</value>
+  </data>
+  <data name="ApplicationSource" xml:space="preserve">
+    <value>Zdroj aplikace</value>
+  </data>
+  <data name="ApplicationsSetting" xml:space="preserve">
+    <value>Nastavení aplikace</value>
+  </data>
+  <data name="ApplicationsSettings" xml:space="preserve">
+    <value>Nastavení aplikací</value>
+  </data>
+  <data name="ApplicationTransforms" xml:space="preserve">
+    <value>Transformace aplikace</value>
+  </data>
+  <data name="ApplicationUemVersionAlreadyExists" xml:space="preserve">
+    <value>Verze UEM aplikace již existuje</value>
+  </data>
+  <data name="ApplicationUserAppRatingDescription" xml:space="preserve">
+    <value>Hodnocení uživatelské aplikace {0} – {1} z 5 hvězdiček</value>
+    <comment>The first placeholder in the label key is for the application name and the second placeholder is for the app rating count by user.</comment>
+  </data>
+  <data name="ApplicationUUID" xml:space="preserve">
+    <value>UUID aplikace</value>
+  </data>
+  <data name="AppLogAggregationMode" xml:space="preserve">
+    <value>Režim agregace protokolů</value>
+  </data>
+  <data name="AppLogAggregationUrl" xml:space="preserve">
+    <value>Adresa URL agregace protokolů</value>
+  </data>
+  <data name="AppMobileFlowsAutoEnableConnectors" xml:space="preserve">
+    <value>Automaticky aktivovat konektory Mobile Flows</value>
+  </data>
+  <data name="AppMobileFlowsEnabled" xml:space="preserve">
+    <value>Mobile Flows</value>
+  </data>
+  <data name="AppMobileFlowsEnabledInfo" xml:space="preserve">
+    <value>Konfigurujte informace o serveru Mobile Flows, se kterými je možné integrovat aplikaci Boxer</value>
+  </data>
+  <data name="AppMobileFlowsHost" xml:space="preserve">
+    <value>Hostitel Mobile Flows</value>
+  </data>
+  <data name="AppMobileFlowsSyncTimeHours" xml:space="preserve">
+    <value>Hodiny synchronizace Mobile Flows</value>
+  </data>
+  <data name="AppMobileFlowsSyncTimeHoursInfo" xml:space="preserve">
+    <value>Nepožadovat karty Mobile Flow pro e-maily poslané dříve než v tuto hodnotu (v hodinách)</value>
+  </data>
+  <data name="AppMobileFlowsvIDM" xml:space="preserve">
+    <value>Server autentizace Mobile Flows</value>
+  </data>
+  <data name="AppNameIsRequired" xml:space="preserve">
+    <value>K zobrazení výsledků je nutné zadat název aplikace.</value>
+  </data>
+  <data name="AppNotExistOrUnauthorizedAccess" xml:space="preserve">
+    <value>Aplikace neexistuje nebo nemáte oprávnění přístupu k ní.</value>
+  </data>
+  <data name="AppPasscode" xml:space="preserve">
+    <value>Heslo aplikace</value>
+  </data>
+  <data name="AppPatchUpdate" xml:space="preserve">
+    <value>Aktualizace opravy aplikace</value>
+  </data>
+  <data name="AppPhishEmailAddress" xml:space="preserve">
+    <value>Nahlásit phishingový útok uživateli</value>
+  </data>
+  <data name="AppPhishEmailAddressInfo" xml:space="preserve">
+    <value>Konfigurujte e-mailovou adresu, která obdrží nahlášený podvodný e-mail</value>
+  </data>
+  <data name="AppPlainTextMode" xml:space="preserve">
+    <value>Režim prostého textu</value>
+  </data>
+  <data name="AppPlainTextModeInfo" xml:space="preserve">
+    <value>Vyberte, pokud chcete, aby aplikace Boxer prováděla synchronizaci pouze v režimu prostého textu. Obsah ve formátu HTML není povolen.</value>
+  </data>
+  <data name="AppPolicies" xml:space="preserve">
+    <value>Zásady aplikace</value>
+  </data>
+  <data name="AppPurebredPackageName" xml:space="preserve">
+    <value>ID aplikace Purebred</value>
+  </data>
+  <data name="AppPurebredPackageNameInfo" xml:space="preserve">
+    <value>ID balíčku/sady aplikace Purebred. Toto ID se použije k ověření aplikace Purebred na zařízení, kde chcete použít aplikaci Boxer.</value>
+  </data>
+  <data name="AppPurebredPublicKey" xml:space="preserve">
+    <value>Podpis aplikace Purebred</value>
+  </data>
+  <data name="AppPurebredPublicKeyInfo" xml:space="preserve">
+    <value>Veřejný podpis aplikace Purebred. Tento klíč se použije k ověření aplikace Purebred na zařízení, kde chcete použít aplikaci Boxer.</value>
+  </data>
+  <data name="AppRefetchEmptyLinksUsingMime" xml:space="preserve">
+    <value>Znovu načíst prázdné odkazy s použitím MIME</value>
+  </data>
+  <data name="AppRefetchEmptyLinksUsingMimeInfo" xml:space="preserve">
+    <value>U e-mailových zpráv načtených ve formátu HTML, které obsahují nestandardní schémata URL (například pro aplikaci RSA) odkazující na neserverové domény, nahradí Exchange adresu URL dvěma prázdnými mezerami. KVP umožňuje aplikaci Boxer zjistit výskyt takových zpráv a znovu stáhnout dotčené tělo zprávy s využitím protokolu MIME, který nepodléhá stejnému problému nahrazení adresy URL.</value>
+  </data>
+  <data name="AppRemovalProtectionLogDevicesHeader" xml:space="preserve">
+    <value>Protokol ochrany před odstraněním aplikace – Zařízení</value>
+  </data>
+  <data name="AppRetriesOnFailedInitialAuth" xml:space="preserve">
+    <value>Určuje počet opakovaných pokusů o autentizaci</value>
+  </data>
+  <data name="AppRetriesOnFailedInitialAuthInfo" xml:space="preserve">
+    <value>Určuje počet opakovaných pokusů o autentizaci po selhání</value>
+  </data>
+  <data name="AppSampleInformation" xml:space="preserve">
+    <value>Informace o vzorku aplikace</value>
+  </data>
+  <data name="AppSampleLastSeen" xml:space="preserve">
+    <value>Naposledy spatřený vzorek aplikace</value>
+  </data>
+  <data name="AppSequencingTab" xml:space="preserve">
+    <value>Pořadí aplikací</value>
+  </data>
+  <data name="AppSkipTutorial" xml:space="preserve">
+    <value>Přeskočit kurz v aplikaci</value>
+  </data>
+  <data name="AppSkipTutorialTooltip" xml:space="preserve">
+    <value>Přeskočit kurz v aplikaci při prvním spuštění</value>
+  </data>
+  <data name="AppSpamForwardAddress" xml:space="preserve">
+    <value>Nahlásit spam uživateli</value>
+  </data>
+  <data name="AppSpamForwardAddressInfo" xml:space="preserve">
+    <value>Konfigurujte e-mailovou adresu, která obdrží nahlášený spamový e-mail</value>
+  </data>
+  <data name="AppsTabSegregationFeatureInformation" xml:space="preserve">
+    <value>Karta Spravované aplikace zobrazuje všechny aplikace a programy pro instalaci softwaru macOS, které jsou spravovány v aplikaci Workspace ONE UEM. Na kartě Všechny aplikace se zobrazuje seznam všech sad .app, které jsou na zařízení se systémem macOS instalovány, ve formátu pouze pro čtení. Dostupnost obsahu na kartě Všechny aplikace je konfigurována v nastavení ochrany osobních údajů konzoly UEM Console pro osobní aplikace.</value>
+  </data>
+  <data name="AppStatus" xml:space="preserve">
+    <value>Stav aplikace</value>
+  </data>
+  <data name="AppsTermsOfUseNotification" xml:space="preserve">
+    <value>Oznámení aktualizace EULA aplikace</value>
+  </data>
+  <data name="AppStore" xml:space="preserve">
+    <value>App Store</value>
+  </data>
+  <data name="AppStoreAppSourceHelpText" xml:space="preserve">
+    <value>Tento sloupec uvádí, jestli byla aplikace dostupná v obchodu App Store.</value>
+  </data>
+  <data name="AppSwipesLeftLongDefault" xml:space="preserve">
+    <value>Dlouhé potažení doleva je výchozí</value>
+  </data>
+  <data name="AppSwipesLeftShortDefault" xml:space="preserve">
+    <value>Krátké potažení doleva je výchozí</value>
+  </data>
+  <data name="AppSwipesRightLongDefault" xml:space="preserve">
+    <value>Dlouhé potažení doprava je výchozí</value>
+  </data>
+  <data name="AppSwipesRightShortDefault" xml:space="preserve">
+    <value>Krátké potažení doprava je výchozí</value>
+  </data>
+  <data name="AppsWithConfigurationErrors" xml:space="preserve">
+    <value>Aplikace s chybami konfigurace</value>
+  </data>
+  <data name="AppUpdatedDate" xml:space="preserve">
+    <value>Datum aktualizace aplikace</value>
+  </data>
+  <data name="AppUpdateSource" xml:space="preserve">
+    <value>Zdroj aktualizací aplikace</value>
+  </data>
+  <data name="AppUrl" xml:space="preserve">
+    <value>Adresa URL aplikace</value>
+  </data>
+  <data name="AppVersionDetailsHelp" xml:space="preserve">
+    <value>Pro každý balíček interních aplikací Workspace ONE UEM udržuje interní verzi. Toto políčko se automaticky vyplní hodnotou „Verze aplikace“. Toto pole slouží k identifikaci nejnovější verze, která má být přiřazena a nasazena na zařízení koncových uživatelů.</value>
+  </data>
+  <data name="AppVersionInformationFourDecimal" xml:space="preserve">
+    <value>Každé pole je povinné a nesmí překročit maximální hodnotu pro 32bitové celé číslo (2 147 483 647).</value>
+  </data>
+  <data name="AppVersionNeedsAssignment" xml:space="preserve">
+    <value>Verze aplikace potřebuje přiřazení</value>
+  </data>
+  <data name="AppVersionNeedsAssignmentInfo" xml:space="preserve">
+    <value>Nejnovější verze aplikace potřebuje nejméně jedno přiřazení.</value>
+  </data>
+  <data name="AppVersionNeedsAssignmentMessage" xml:space="preserve">
+    <value>Nejnovější verze aplikace nemá přiřazení aplikace. Přiřazení pracovních postupů, která používají tuto aplikaci, budou nadále používat předchozí verzi aplikace a její výchozí zásady. Chcete-li použít novou verzi aplikace, vytvořte přiřazení aplikace.</value>
+  </data>
+  <data name="AppVersionUpdateNotification" xml:space="preserve">
+    <value>Oznámení o aktualizaci verze aplikace</value>
+  </data>
+  <data name="AppWorkflowsMenuDescription" xml:space="preserve">
+    <value>Pracovní postupy aplikace</value>
+  </data>
+  <data name="AppWorkflowsMenuItem" xml:space="preserve">
+    <value>Pracovní postupy aplikace</value>
+  </data>
+  <data name="Architecture" xml:space="preserve">
+    <value>Architektura</value>
+  </data>
+  <data name="ArgAssignedCount" xml:space="preserve">
+    <value>Přiřazeno: {0}</value>
+  </data>
+  <data name="ArgInstalledCount" xml:space="preserve">
+    <value>Instalováno: {0}</value>
+  </data>
+  <data name="ArgNotInstalledCount" xml:space="preserve">
+    <value>Neinstalováno: {0}</value>
+  </data>
+  <data name="ArgVersions" xml:space="preserve">
+    <value>Verzí: {0}</value>
+  </data>
+  <data name="ARMAppDependencies" xml:space="preserve">
+    <value>Závislosti ARM</value>
+  </data>
+  <data name="ArpMessage" xml:space="preserve">
+    <value>Odstraňování vaší aplikace bylo pozastaveno, protože bylo dosaženo mezní hodnoty odstranění.</value>
+  </data>
+  <data name="AssignedArgOutOfTotalInstalledArg" xml:space="preserve">
+    <value>{0} ze {1} bylo přiřazeno</value>
+  </data>
+  <data name="AssignedButNotInstalled" xml:space="preserve">
+    <value>Přiřazeno, ale neinstalováno</value>
+  </data>
+  <data name="AssignedConfiguration" xml:space="preserve">
+    <value>Přiřazená konfigurace</value>
+  </data>
+  <data name="AssignmentCannotBeRemovedForAnAppAssociatedWithWorkflow" xml:space="preserve">
+    <value>Přiřazení nemůže být odstraněno pro aplikaci, která je součástí pracovního postupu.</value>
+  </data>
+  <data name="AssignmentCopiedFrom" xml:space="preserve">
+    <value>Přiřazení zkopírováno z</value>
+  </data>
+  <data name="AssignmentCopiedFromMessage" xml:space="preserve">
+    <value>Kliknutím níže na tlačítko Obnovit zobrazíte, odkud budou přiřazení čísla verze zkopírována.</value>
+  </data>
+  <data name="AssignmentCreated" xml:space="preserve">
+    <value>Přiřazení aplikace bylo vytvořeno</value>
+  </data>
+  <data name="AssignmentDeleted" xml:space="preserve">
+    <value>Přiřazení aplikace bylo odstraněno</value>
+  </data>
+  <data name="AssignmentDescriptionPlaceholder" xml:space="preserve">
+    <value>Popis přiřazení</value>
+  </data>
+  <data name="AssignmentGroupingInfoMessage" xml:space="preserve">
+    <value>Některé smart skupiny v tomto přiřazení mají odlišné hodnoty konfigurace aplikace nebo klíčů atributu aplikace nebo transformační soubory MST, které byly odděleny, aby byla zajištěna přesnost. Zařízení koncových uživatelů nebudou nijak ovlivněna a není zapotřebí žádná další akce.</value>
+  </data>
+  <data name="AssignmentInformation" xml:space="preserve">
+    <value>Informace o přiřazení</value>
+  </data>
+  <data name="AssignmentInstallDetails" xml:space="preserve">
+    <value>Podrobnosti přiřazení a instalace</value>
+  </data>
+  <data name="AssignmentInstallDetailsToolTip" xml:space="preserve">
+    <value>Podrobnosti instalace pro zařízení, která mají tuto aplikaci přiřazenou z Workspace ONE.</value>
+  </data>
+  <data name="AssignmentNamePlaceholder" xml:space="preserve">
+    <value>Název přiřazení</value>
+  </data>
+  <data name="AssignmentOutOfDate" xml:space="preserve">
+    <value>Zastaralé přiřazení</value>
+  </data>
+  <data name="AssignmentStatus" xml:space="preserve">
+    <value>Stav přiřazení</value>
+  </data>
+  <data name="AssignmentUpdated" xml:space="preserve">
+    <value>Přiřazení aplikace bylo aktualizováno</value>
+  </data>
+  <data name="AssignmentUpToDate" xml:space="preserve">
+    <value>Aktuální. Aplikace je přiřazena a instalována</value>
+  </data>
+  <data name="AtleastOneActiveAssignmentIsRequired" xml:space="preserve">
+    <value>Jedna nebo více zásad přiřazení nemá přiřazenu aktivní smart skupinu. Chcete-li pokračovat, přidejte smart skupinu nebo odstraňte zásady přiřazení.</value>
+  </data>
+  <data name="AtleastOneAssignmentIsRequired" xml:space="preserve">
+    <value>V přiřazeních musí být zadána alespoň jedna smart skupina.</value>
+  </data>
+  <data name="AttachmentDownload" xml:space="preserve">
+    <value>Stahování příloh</value>
+  </data>
+  <data name="AttachmentsRestrictionMMAInfo" xml:space="preserve">
+    <value>Toto nastavení určuje, zda může uživatel otevírat e-maily nebo jejich přílohy v jiných aplikacích. Zvolte možnost Pouze náhled, pokud chcete zabránit otevírání v jakýchkoli aplikacích. Volbou možnosti Seznam povolených můžete přidat aplikace, které povolíte. Možnost Bez omezení povolí všechny aplikace.</value>
+  </data>
+  <data name="AttachPhotos" xml:space="preserve">
+    <value>Připojit fotografie</value>
+  </data>
+  <data name="AuthenticateExchangeServerTooltip" xml:space="preserve">
+    <value>Konfigurovat způsob autentizace na serveru Exchange</value>
+  </data>
+  <data name="AuthenticationAdvancedSectionMessage" xml:space="preserve">
+    <value>Pro vaše výběry nejsou k dispozici žádné rozšířené konfigurace</value>
+  </data>
+  <data name="AuthenticationType" xml:space="preserve">
+    <value>Typ ověřování</value>
+  </data>
+  <data name="AuthenticationTypeInfo" xml:space="preserve">
+    <value>Při autentizaci pomocí uživatelského jména a hesla zvolte možnost Základní. Při použití certifikátu zvolte možnost Certifikát. Pokud pro autentizaci s Exchange vyžadujete certifikát i heslo, zvolte možnost Obě.</value>
+  </data>
+  <data name="AutoAppAssignedButNotInstalled" xml:space="preserve">
+    <value>Zastaralý. Aplikace je přiřazena, ale není instalována.</value>
+  </data>
+  <data name="AutoAppAssignmentOutOfDate" xml:space="preserve">
+    <value>Zastaralý. Přiřazená verze aplikace se liší od nainstalované verze.</value>
+  </data>
+  <data name="AutoBootstrapPackageAssignedButNotInstalled" xml:space="preserve">
+    <value>Byl přiřazen balíček spuštění, ale zařízení již bylo zaregistrováno. Je k dispozici pro nasazení na vyžádání, ale nebylo vyžádáno.</value>
+  </data>
+  <data name="AvailablePatchCriticality" xml:space="preserve">
+    <value>Závažnost dostupné opravy</value>
+  </data>
+  <data name="AvatarsDefault" xml:space="preserve">
+    <value>Avatary</value>
+  </data>
+  <data name="BackLinkEmailSettings" xml:space="preserve">
+    <value>&lt; Nastavení e-mailu</value>
+  </data>
+  <data name="BadgeOnly" xml:space="preserve">
+    <value>Žádná (pouze počet odznáčků)</value>
+  </data>
+  <data name="BasicAndCertificate" xml:space="preserve">
+    <value>Možnosti Základní a Certifikát</value>
+  </data>
+  <data name="BetaAppSourceHelpText" xml:space="preserve">
+    <value>Tento sloupec uvádí, jestli byla aplikace stažená ze služby TestFlight a považuje se za beta verzi aplikace.</value>
+  </data>
+  <data name="BlockingApplicationsInfoMessage" xml:space="preserve">
+    <value>Definujte všechny aplikace nebo procesy, které mohou bránit úspěšnému dokončení instalace. Toto pole také můžete použít k tomu, abyste zabránili ukončení aplikací bez uložení.</value>
+  </data>
+  <data name="BlockingApplicationsTooltip" xml:space="preserve">
+    <value>Definujte název aplikace. Jestliže se aplikace nachází ve složce /Aplikace/, můžete zde zadat jen název souboru a cesta bude doplněna automaticky.</value>
+  </data>
+  <data name="BookCategoriesHelp" xml:space="preserve">
+    <value>Balíčky knih rozdělte do předdefinovaných nebo vlastních kategorií. To Vám usnadní přístup do katalogu knih.</value>
+  </data>
+  <data name="BootstrapPackageAssignedAndInstallCommandAcknowledged" xml:space="preserve">
+    <value>Byl přiřazen balíček spuštění a potvrzen příkaz k instalaci.</value>
+  </data>
+  <data name="BootstrapPackageAssignedButInstallCommandNotAcknowledged" xml:space="preserve">
+    <value>Byl přiřazen balíček spuštění, ale příkaz k instalaci ještě nebyl potvrzen.</value>
+  </data>
+  <data name="BoxerSmimeInfoMsg" xml:space="preserve">
+    <value>Níže uvedená konfigurace bude rozpoznána aplikací Boxer verze 5.21 a vyšší. U starších verzí použijte datovou část „přihlašovací údaje“ ve vlastním profilu SDK propojeném s touto aplikací.</value>
+  </data>
+  <data name="BoxerTrustStoreOnly" xml:space="preserve">
+    <value>Pouze důvěryhodné úložiště Boxer</value>
+  </data>
+  <data name="BuildNumber" xml:space="preserve">
+    <value>Číslo sestavení</value>
+  </data>
+  <data name="BulkActionExceptionMessage" xml:space="preserve">
+    <value>Výběrem filtru proveďte operaci na velkém počtu zařízení.</value>
+  </data>
+  <data name="BulkSyncTunnelConfigAlert" xml:space="preserve">
+    <value>Konfigurace aplikace Tunnel bude synchronizována na zařízeních s platným přiřazením.</value>
+  </data>
+  <data name="Bundleidwarningforb2bapps" xml:space="preserve">
+    <value>Ke spravovované distribuci a k přesnému zavedení vlastních aplikací je nutné ID sady.</value>
+  </data>
+  <data name="CalendarMaxSyncPeriodInfo" xml:space="preserve">
+    <value>Jak daleko směrem zpět může uživatel označit události v kalendáři pro synchronizaci.</value>
+  </data>
+  <data name="CannotAllotMoreThanArgLicenses" xml:space="preserve">
+    <value>Nelze přidělit více licencí (max. {0})</value>
+  </data>
+  <data name="CannotRevokeLicense" xml:space="preserve">
+    <value>Licenci aplikace nelze odvolat. Zkuste to s platným ID účtu VPP.</value>
+  </data>
+  <data name="CardsVersionMessage" xml:space="preserve">
+    <value>Tyto zásady platí pouze pro aplikaci Card verze 1.1 a novější. Chcete-li provádět správu nastavení Exchange pro předchozí verze aplikace Card, přejděte na vlastní nastavení v profilu SDK asociovaném s touto aplikací.</value>
+  </data>
+  <data name="CardsWarningToEditAllAssignments" xml:space="preserve">
+    <value>Konfigurace aplikace Cards je připravená k nastavení. Před publikováním se ujistěte, že konfigurace, které byly přeneseny z vlastního nastavení profilu SDK přidruženého k této aplikaci, jsou správné.</value>
+  </data>
+  <data name="CertAuthenticationTip" xml:space="preserve">
+    <value>Chcete-li provést autentizaci certifikátu, nakonfigurujte certifikát v profilu SDK nebo jej do něj nahrajte.</value>
+  </data>
+  <data name="CertificateTemplateInfo" xml:space="preserve">
+    <value>Když na zařízeních konfigurujete více spravovaných e-mailových účtů (ze stejného serveru Exchange), konfigurujte jiné šablony certifikátů s odlišným UPN.</value>
+  </data>
+  <data name="CertificateUrlOnly" xml:space="preserve">
+    <value>Pouze adresa URL certifikátu</value>
+  </data>
+  <data name="CertUrlWithFallback" xml:space="preserve">
+    <value>Adresa URL certifikátu se zálohou</value>
+  </data>
+  <data name="ChangeWhenToCallInstallComplete" xml:space="preserve">
+    <value>Změna kritéria, kdy označit instalaci za dokončenou</value>
+  </data>
+  <data name="ChangeWhenToCallInstallCompleteDescription" xml:space="preserve">
+    <value>Změna kritéria, kdy označit instalaci za dokončenou po instalaci aplikace na libovolné zařízení, spustí přehodnocení aplikace na těchto zařízeních. Pokud nejsou nová kritéria splněna, aplikace bude z těchto zařízení odstraněna. Kvůli možnému narušení, která tato akce může způsobit, je k aktivaci změny kritéria nutný PIN administrátora.</value>
+  </data>
+  <data name="CheckingDeviceEligibility" xml:space="preserve">
+    <value>Kontrola způsobilosti zařízení</value>
+  </data>
+  <data name="ClearConfigurationWarningText" xml:space="preserve">
+    <value>Vymazáním této konfigurace budou obnoveny všechny dříve uložené hodnoty, které nebudou moci být načteny.
+Opravdu chcete pokračovat?</value>
+  </data>
+  <data name="ClearConfigurationWarningTitleText" xml:space="preserve">
+    <value>Vymazat upozornění konfigurace</value>
+  </data>
+  <data name="ClipboardEnabled" xml:space="preserve">
+    <value>Schránka je zapnuta</value>
+  </data>
+  <data name="ClipboardPasteActionEnabled" xml:space="preserve">
+    <value>Aktivovat vkládání ze schránky</value>
+  </data>
+  <data name="CollectionMenuDescription" xml:space="preserve">
+    <value>Integruje aplikaci Workspace ONE Access s aplikacemi Horizon, Horizon Cloud, Citrix nebo ThinApp zavedenými jako virtuální aplikace nebo desktop.</value>
+  </data>
+  <data name="Collections" xml:space="preserve">
+    <value>Kolekce</value>
+  </data>
+  <data name="CollectionsHelp" xml:space="preserve">
+    <value>Řídí přístup ke kolekcím virtuálních aplikací; týká se pouze adresářových administrátorů.</value>
+  </data>
+  <data name="CompromisedProtectionTooltip" xml:space="preserve">
+    <value>Povolením automaticky provedete firemní výmaz kompromitovaných zařízení.</value>
+  </data>
+  <data name="ConditionIf" xml:space="preserve">
+    <value>Jestliže</value>
+  </data>
+  <data name="ConditionIfArg" xml:space="preserve">
+    <value>Pokud {0}</value>
+  </data>
+  <data name="ConditionNotMet" xml:space="preserve">
+    <value>Podmínka není splněna</value>
+  </data>
+  <data name="ConditionPrefix" xml:space="preserve">
+    <value>Filtrovat (Pokud)</value>
+  </data>
+  <data name="ConditionSuffix" xml:space="preserve">
+    <value>Akce (Potom)</value>
+  </data>
+  <data name="ConditionSuffixUpgradeApp" xml:space="preserve">
+    <value>Akce (Potom) Upgrade aplikace</value>
+  </data>
+  <data name="ConditionThen" xml:space="preserve">
+    <value>Pak</value>
+  </data>
+  <data name="ConditionThenArg" xml:space="preserve">
+    <value>Potom {0}</value>
+  </data>
+  <data name="ConditionTitle" xml:space="preserve">
+    <value>Kontrolní podmínka</value>
+  </data>
+  <data name="ConfigurationFeedbackFor" xml:space="preserve">
+    <value>Zpětná vazba konfigurace pro {0}</value>
+  </data>
+  <data name="ConfigurationPositionChangeNotice" xml:space="preserve">
+    <value>Upozornění na změnu umístění konfigurace</value>
+  </data>
+  <data name="ConfigureDLPSettingsTooltip" xml:space="preserve">
+    <value>Konfigurovat nastavení DLP pro tento účet</value>
+  </data>
+  <data name="ConfiguredUrlOnly" xml:space="preserve">
+    <value>Pouze nakonfigurovaná adresa URL</value>
+  </data>
+  <data name="ConfigureEmailSeparationTooltip" xml:space="preserve">
+    <value>Konfigurovat e-mailovou klasifikaci pro tento účet</value>
+  </data>
+  <data name="ConfigureRegistryData" xml:space="preserve">
+    <value>Konfigurovat data registru</value>
+  </data>
+  <data name="ConfigureRegistryDataHelpText" xml:space="preserve">
+    <value>Vyberte, pokud chcete zkontrolovat konkrétní hodnotu registru</value>
+  </data>
+  <data name="ConfigureRegistryValues" xml:space="preserve">
+    <value>Konfigurujte hodnoty registru</value>
+  </data>
+  <data name="ConfigureRegistryValuesHelpText" xml:space="preserve">
+    <value>Ponechte tuto možnost bez zaškrtnutí, pokud chcete pouze ověřit existenci cesty</value>
+  </data>
+  <data name="ConfigureSyncEmailCalenderTooltip" xml:space="preserve">
+    <value>Konfigurovat synchronizaci e-mailu a kalendáře</value>
+  </data>
+  <data name="ConfigureVpnAtApplicationLevel" xml:space="preserve">
+    <value>Vyberte profil konfigurace VPN, který chcete použít pro tuto aplikaci. Toto nastavení se netýká zařízení tvOS.</value>
+  </data>
+  <data name="ConfirmDeactivationApplicationRemoval" xml:space="preserve">
+    <value>Deaktivováním aplikace se odinstalují všechny verze této aplikace ze všech zařízení, kde je spravována platformou Workspace ONE. Opravdu chcete tuto aplikaci deaktivovat?</value>
+  </data>
+  <data name="ConfirmRetirementApplicationRemoval" xml:space="preserve">
+    <value>Vyřazení verze aplikace tuto verzi odinstaluje ze všech zařízení, kde je spravována platformou Workspace ONE. Pokud je aktivní, je do přiřazených zařízení poslána další nižší verze aplikace. Opravdu chcete tuto aplikaci vyřadit?</value>
+  </data>
+  <data name="ConversationThreading" xml:space="preserve">
+    <value>Seskupování podle konverzací</value>
+  </data>
+  <data name="CopyOf" xml:space="preserve">
+    <value>Kopie</value>
+  </data>
+  <data name="CopyOfArg" xml:space="preserve">
+    <value>Kopie – {0}</value>
+  </data>
+  <data name="CouldnotRetrieveApp" xml:space="preserve">
+    <value>Nepodařilo se načíst aplikaci. Již neexistuje nebo byla odstraněna.</value>
+  </data>
+  <data name="CouldnotRetrieveAssignmentForApp" xml:space="preserve">
+    <value>Nepodařilo se načíst přiřazení pro tuto aplikaci. Již neexistuje nebo byla odstraněna.</value>
+  </data>
+  <data name="CrashReporting" xml:space="preserve">
+    <value>Hlášení selhání</value>
+  </data>
+  <data name="CreatedOnArgArgByArg" xml:space="preserve">
+    <value>Vytvořeno {0} uživatelem {1}</value>
+  </data>
+  <data name="CreateWorkflow" xml:space="preserve">
+    <value>Vytvořit pracovní postup</value>
+  </data>
+  <data name="CreateWorkflowBannerDescription" xml:space="preserve">
+    <value>Pracovní postupy aplikace vám umožňují zpracovat více nasazení nebo aktualizací aplikace v určitém pořadí na základě vámi definovaných kritérií. Správa složitých požadavků na nasazení a aktualizace aplikací, které nesplňují zásady zabezpečení a dodržování zásad, jsou tak snazší než kdy dřív.</value>
+  </data>
+  <data name="CreateWorkflowBannerHeader" xml:space="preserve">
+    <value>Větší kontrola nad nasazením a aktualizacemi aplikací</value>
+  </data>
+  <data name="CreateWorkflowNote" xml:space="preserve">
+    <value>Aktuálně k dispozici pouze pro desktopová zařízení Windows.</value>
+  </data>
+  <data name="CurrentActiveAppAndUEMVersionArgs" xml:space="preserve">
+    <value>Aktuální aktivní verze aplikace je: {0} a verze UEM aplikace je: {1}.</value>
+  </data>
+  <data name="CurrentDeployment" xml:space="preserve">
+    <value>Aktuální nasazení</value>
+  </data>
+  <data name="CurrentUemVersion" xml:space="preserve">
+    <value>Aktuální verze UEM</value>
+  </data>
+  <data name="CustomAccountConfiguration" xml:space="preserve">
+    <value>Vlastní konfigurace účtu</value>
+  </data>
+  <data name="CustomOnlineMeetingUrlsInfo" xml:space="preserve">
+    <value>Tato možnost aktivuje tlačítko QuickJoin v pozvánkách v kalendáři, které obsahují pozvánku na schůzku v režimu on-line, a to konkrétně u schůzek, které nejsou ve standardním formátu používaném cloudovou verzí služeb on-line schůzek. Máte-li místní nastavení, je vhodné v této konfiguraci zadat vlastní adresy URL.</value>
+  </data>
+  <data name="DeactivateApplication" xml:space="preserve">
+    <value>Deaktivovat aplikaci</value>
+  </data>
+  <data name="DefaultAppAvatarsInfo" xml:space="preserve">
+    <value>Přepnout avatary</value>
+  </data>
+  <data name="DefaultAssignmentDescription" xml:space="preserve">
+    <value>Zásady z tohoto přiřazení budou nyní použity ve výchozím nastavení pro přiřazení pracovních postupů.</value>
+  </data>
+  <data name="DefaultAssignmentPrompt" xml:space="preserve">
+    <value>Opravdu chcete použít zásady tohoto přiřazení jako výchozí?</value>
+  </data>
+  <data name="DefaultAssignmentPromptTitle" xml:space="preserve">
+    <value>Změnit výchozí zásady</value>
+  </data>
+  <data name="DefaultAssignmentTooltip" xml:space="preserve">
+    <value>Je-li tato možnost aktivována, zařízení, která mají tuto aplikaci přiřazenou v pracovních postupech, obdrží tyto zásady ve výchozím nastavení, pokud nebudou přepsány jiným přiřazením zásad vyšší priority pro zařízení. Pro aplikaci lze jako výchozí označit pouze jednu zásadu.</value>
+  </data>
+  <data name="DefaultCalendarSyncPeriod" xml:space="preserve">
+    <value>Výchozí doba synchronizace kalendáře</value>
+  </data>
+  <data name="DefaultCallerIDInfo" xml:space="preserve">
+    <value>Aktivuje export telefonních čísel a jmen kontaktů ve výchozím nastavení. Toto nastavení vyžaduje, aby byla možnost ID volajícího v konzole Workspace ONE UEM Console nastavena na hodnotu Neomezeno.</value>
+  </data>
+  <data name="DefaultConversationViewInfo" xml:space="preserve">
+    <value>Tím nastavíte pro zobrazení konverzace jako výchozí režim seskupení e-mailů nebo režim, kdy e-maily nebudou seskupeny podle konverzace</value>
+  </data>
+  <data name="DefaultEmailSyncPeriod" xml:space="preserve">
+    <value>Výchozí doba synchronizace e-mailu</value>
+  </data>
+  <data name="DeleteEmailAccountContent" xml:space="preserve">
+    <value>Opravdu chcete odstranit tento e-mailový účet?</value>
+  </data>
+  <data name="DeleteEmailAccountTitle" xml:space="preserve">
+    <value>Odstranit e-mailový účet</value>
+  </data>
+  <data name="DeleteOnSpamForwardInfo" xml:space="preserve">
+    <value>Aktivujte tuto možnost, chcete-li po přesměrování odstranit nevyžádanou poštu ze zařízení koncového uživatele.</value>
+  </data>
+  <data name="DeleteTabContentLabel" xml:space="preserve">
+    <value>Opravdu chcete odstranit tuto instanci? Tato konfigurace již nikdy nebude na aplikaci použita.</value>
+  </data>
+  <data name="DeleteTabTitleLabel" xml:space="preserve">
+    <value>Odstranit instanci</value>
+  </data>
+  <data name="DependencyMissing" xml:space="preserve">
+    <value>Chybí závislost</value>
+  </data>
+  <data name="DependentAppValidationFailed" xml:space="preserve">
+    <value>Ověření závislé aplikace se nezdařilo</value>
+  </data>
+  <data name="DeploymentProgressToolTip" xml:space="preserve">
+    <value>Zobrazuje podrobnosti postupu zavádění na přiřazených zařízeních pro tuto verzi aplikace.</value>
+  </data>
+  <data name="DeploymentStatus" xml:space="preserve">
+    <value>Stav zavádění</value>
+  </data>
+  <data name="DeploymentTimeInvalid" xml:space="preserve">
+    <value>Zadejte čas mezi {0}</value>
+    <comment>Please provide time between between 01:00 - 12:59</comment>
+  </data>
+  <data name="DeployX86FileToX64MachineInfo" xml:space="preserve">
+    <value>Soubor architektury X86 lze nahrát k zavedení na stroji architektury X64.</value>
+  </data>
+  <data name="DerivedCredentialForFirstaccount" xml:space="preserve">
+    <value>Aplikace {0} podporuje pouze jeden ověřovací certifikát. Tuto možnost vyberte pouze pro primární spravovaný e-mailový účet.
+Pokud chcete použít aplikaci {0} s verzí aplikace Boxer nižší než 5.21, předejte vlastní KVP „PolicyDerivedCredentials“ v sekci Konfigurace aplikace.</value>
+  </data>
+  <data name="DerivedCredentialSmimeForFirstaccount" xml:space="preserve">
+    <value>Aplikace PIV-D podporuje pouze jeden certifikát S/MIME. Tuto možnost vyberte pouze pro primární spravovaný e-mailový účet.
+Pokud chcete použít aplikaci PIV-D s verzí aplikace Boxer nižší než 5.21, předejte vlastní KVP „PolicyDerivedCredentials“ v sekci Konfigurace aplikace.</value>
+  </data>
+  <data name="Descriptions" xml:space="preserve">
+    <value>Popisy</value>
+  </data>
+  <data name="DesiredStateManagementTooltip" xml:space="preserve">
+    <value>Je-li povoleno, bude aplikace v případě jejího odstranění koncovým uživatelem automaticky znovu instalována při příští synchronizaci centra Hub.
+Je-li deaktivováno, nebude aplikace v případě jejího odstranění koncovým uživatelem automaticky znovu instalována, jedině v případě jejího natažení z konzole UEM Console nebo Katalogu.</value>
+  </data>
+  <data name="DeviceAndBoxerTrustStore" xml:space="preserve">
+    <value>Důvěryhodné úložiště zařízení a aplikace Boxer</value>
+  </data>
+  <data name="DeviceArchitecture" xml:space="preserve">
+    <value>Architektura zařízení</value>
+  </data>
+  <data name="DeviceAssignmentEnableCountArg" xml:space="preserve">
+    <value>Aplikace způsobilé pro přiřazení podle zařízení. Pokud se rozhodnete aktivovat tuto možnost, všechna zařízení s iOS 9 a novějším a macOS 10.11 a novějším obdrží jednu licenci na zařízení. Aktuálně máte přiřazena zařízení iOS 9+/macOS 10.11+ ({0}). Tato zařízení nebudou k příjmu aplikace vyžadovat Apple ID.</value>
+  </data>
+  <data name="DeviceAssignmentEnableWithTvOSCountArg" xml:space="preserve">
+    <value>Aplikace způsobilé pro přiřazení podle zařízení. Pokud se rozhodnete aktivovat tuto možnost, všechna zařízení se systémem iOS 9 a novějším a macOS 10.11 a novějším obdrží jednu licenci na zařízení. Aktuálně máte přiřazena zařízení iOS 9+/macOS 10.11+ ({0}). Tato zařízení nebudou pro přijetí aplikace vyžadovat Apple ID. Zařízení tvOS mohou používat pouze licence založené na zařízení a lze je využívat bez nutnosti zásahu administrátora.</value>
+  </data>
+  <data name="DeviceBasedVPPAppSourceHelpText" xml:space="preserve">
+    <value>Tento sloupec uvádí, jestli byla aplikace nainstalovaná pomocí licencí na bázi zařízení nebo programu hromadného nákupu.</value>
+  </data>
+  <data name="DeviceEligibilityCheckFailed" xml:space="preserve">
+    <value>Kontrola způsobilosti zařízení se nezdařila</value>
+  </data>
+  <data name="DeviceGuardErrorArg" xml:space="preserve">
+    <value>K aktivaci ochrany zařízení je požadován licenční klíč Windows Enterprise v {0}.</value>
+  </data>
+  <data name="DeviceReportedReason" xml:space="preserve">
+    <value>Ohlášený důvod zařízení</value>
+  </data>
+  <data name="DeviceTrustStoreOnly" xml:space="preserve">
+    <value>Pouze důvěryhodné úložiště zařízení</value>
+  </data>
+  <data name="DeviceUuIdLookUpText" xml:space="preserve">
+    <value>UUID zařízení</value>
+  </data>
+  <data name="DisableAppConfiguration" xml:space="preserve">
+    <value>Deaktivovat konfiguraci aplikace</value>
+  </data>
+  <data name="DisableAppConfigWarning" xml:space="preserve">
+    <value>Při deaktivaci konfigurace aplikace dojde k odstranění konfigurace a může být odstraněno nebo změněno nastavení aplikace na zařízení.</value>
+  </data>
+  <data name="DisableCDNWarning" xml:space="preserve">
+    <value>Byla nahrána aplikace o velikosti větší než {0} MB. Deaktivace CDN není povolena.</value>
+  </data>
+  <data name="DisableKeyEscrowInfo" xml:space="preserve">
+    <value>Deaktivuje úschovu klíče na serveru. Vypnutím této možnosti se deaktivuje funkce „Zapomněli jste heslo?“ (při použití toku přihlašování SDK).</value>
+  </data>
+  <data name="DisableKeyEscrowYesNoInfo" xml:space="preserve">
+    <value>Deaktivuje úschovu klíče na serveru. Pokud je tato možnost nastavena na hodnotu Ano, deaktivuje se tímto funkce zapomenutého hesla (při použití toku přihlašování SDK).</value>
+  </data>
+  <data name="DisplayInAppCatalog" xml:space="preserve">
+    <value>Zobrazit v katalogu aplikací</value>
+  </data>
+  <data name="DisplayInAppCatalogHelp" xml:space="preserve">
+    <value>Pomocí tohoto nastavení můžete konfigurovat, zda se má tato aplikace zobrazovat, nebo skrývat v katalogu aplikace Workspace ONE.</value>
+  </data>
+  <data name="DlpHelpText" xml:space="preserve">
+    <value>Zásady DLP zajišťují řízenou výměnu dat mezi spravovanými a nespravovanými aplikacemi na zařízení. Chcete-li zabránit ztrátě dat u této aplikace, nastavte ji na možnost „Spravovaný přístup“ a vytvořte pro požadované typy zařízení zásady profilu „Omezení“.</value>
+  </data>
+  <data name="DoNotCollectApplicationListWarningForCompliancePolicy" xml:space="preserve">
+    <value>Vaše zásady ochrany osobních údajů pro osobní aplikace jsou alespoň pro jedno zařízení v alespoň jedné organizační skupině ve vaší hierarchii nastavené na možnost Neshromažďovat. Zásady shody související se skupinami aplikací pro osobní aplikace těchto zařízení se nebudou vynucovat.</value>
+  </data>
+  <data name="DownloadAutomaticallyAndInstall" xml:space="preserve">
+    <value>Aplikace se automaticky stáhne a nainstaluje na vaše zařízení.</value>
+  </data>
+  <data name="DownloadAutomaticallyAndInstallInApplicationsFolder" xml:space="preserve">
+    <value>Aplikace se automaticky stáhne a nainstaluje do složky Aplikace.</value>
+  </data>
+  <data name="DownloadFeedback" xml:space="preserve">
+    <value>Stáhnout zpětnou vazbu</value>
+  </data>
+  <data name="DoYouWantToDeletePpkg" xml:space="preserve">
+    <value>Chcete odstranit zřizovací balíček (PPKG)?</value>
+  </data>
+  <data name="DuplicateAppConfigInTab" xml:space="preserve">
+    <value>Duplicitní konfigurace aplikace na kartě {0}</value>
+  </data>
+  <data name="DuplicateAssignmentName" xml:space="preserve">
+    <value>Pravidlo přiřazení s tímto názvem již existuje.</value>
+  </data>
+  <data name="DuplicateEmailSettings" xml:space="preserve">
+    <value>Duplicitní hodnota {0} konfigurována na kartě {1}</value>
+  </data>
+  <data name="DuplicateVppSmartGroupPresent" xml:space="preserve">
+    <value>Stejnou smart skupinu nelze přidat dvakrát.</value>
+  </data>
+  <data name="E_FAIL" xml:space="preserve">
+    <value>Nástroj Office Deployment Tool (ODT) nelze použít k instalaci hromadné licence</value>
+  </data>
+  <data name="E_UNEXPECTED" xml:space="preserve">
+    <value>Byl proveden pokus o odinstalaci, když v počítači není Office Click-to-Run (C2R).</value>
+  </data>
+  <data name="EARAppUpdateAvailable" xml:space="preserve">
+    <value>Je k dispozici aktualizace aplikace EAR</value>
+  </data>
+  <data name="EARAppUpdateMode" xml:space="preserve">
+    <value>Aktualizovat oznámení</value>
+  </data>
+  <data name="EARAppUpdateModeHelp" xml:space="preserve">
+    <value>Aktivujte tuto možnost, chcete-li být upozorněni při každém zpřístupnění nové verze této aplikace.</value>
+  </data>
+  <data name="EARNewAppVersionAvailable" xml:space="preserve">
+    <value>Nyní je k dispozici nová verze v{1} aplikace {0} k nahrání</value>
+  </data>
+  <data name="EasilyAddWindowsAppsFromEnterpriseAppRepository" xml:space="preserve">
+    <value>Snadné přidávání aplikací systému Windows z úložiště firemních aplikací</value>
+  </data>
+  <data name="EditApp" xml:space="preserve">
+    <value>Upravit aplikaci</value>
+  </data>
+  <data name="EditApplicationArgOpensDialog" xml:space="preserve">
+    <value>Příkaz Upravit aplikaci {0} otevře dialogové okno</value>
+    <comment>The placeholder in this label key contains application name.</comment>
+  </data>
+  <data name="EditConfiguration" xml:space="preserve">
+    <value>Upravit konfiguraci</value>
+  </data>
+  <data name="EditWarning" xml:space="preserve">
+    <value>Upravit upozornění</value>
+  </data>
+  <data name="EditWarningMessage" xml:space="preserve">
+    <value>Pokud upravíte konfiguraci přidruženou k tomuto zařízení, budou tyto změny uplatněny na všechna ostatní zařízení ve smart skupinách ({0}). Opravdu chcete pokračovat?</value>
+  </data>
+  <data name="EditWorkflow" xml:space="preserve">
+    <value>Upravit pracovní postup</value>
+  </data>
+  <data name="EditWtcicCriteriaHelpText" xml:space="preserve">
+    <value>Klikněte na Upravit a zadejte kód PIN administrátora, abyste změnili kritérium, kdy označit instalaci za dokončenou poté, co je aplikace zařazena do fronty nebo nainstalována na libovolném zařízení. Poznámka: zadáte-li nesprávná kritéria, bude aplikace odstraněna ze zařízení.</value>
+  </data>
+  <data name="EmailClassification" xml:space="preserve">
+    <value>Klasifikace e-mailu</value>
+  </data>
+  <data name="EmailClassificationInfo" xml:space="preserve">
+    <value>Konfigurovat klasifikaci e-mailu</value>
+  </data>
+  <data name="EmailMaxSyncPeriodInfo" xml:space="preserve">
+    <value>Jak daleko směrem zpět může uživatel označit e-mailové zprávy pro synchronizaci.</value>
+  </data>
+  <data name="EmmManagedAccessHelpInfo" xml:space="preserve">
+    <value>{0} nastavení této aplikace si můžete přizpůsobit, aniž byste museli vyžadovat registraci spravovaného přístupu k EMM.</value>
+  </data>
+  <data name="EnableClipboardPasteActionTip" xml:space="preserve">
+    <value>Chcete-li funkci vkládání aktivovat, nastavte na hodnotu true. Pokud není nastaven tento klíč, je vkládání ze schránky standardně podporováno.</value>
+  </data>
+  <data name="EnableClipboardTip" xml:space="preserve">
+    <value>Nastavte na hodnotu true, chcete-li povolit funkci schránky pouze mezi aplikacemi Workspace ONE.</value>
+  </data>
+  <data name="EnableComplianceOnDeviceTooltip" xml:space="preserve">
+    <value>Je-li povoleno, budou pravidla vyhodnocována podpůrnými aplikacemi SDK.</value>
+  </data>
+  <data name="EnableDeviceAssignmentConfirmationBulk" xml:space="preserve">
+    <value>Opravdu chcete aktivovat přiřazení licence dle zařízení pro vybrané aplikace?</value>
+  </data>
+  <data name="EnableDeviceGuard" xml:space="preserve">
+    <value>Aktivovat ochranu zařízení po instalaci aplikací</value>
+  </data>
+  <data name="EnableKeyEscrow" xml:space="preserve">
+    <value>Aktivovat FastSync</value>
+  </data>
+  <data name="EnableKeyEscrowInfo" xml:space="preserve">
+    <value>FastSync vylepšuje synchronizaci na pozadí a rychlost následných synchronizací. K použití nastavení FastSync dochází v případě, že je služba oznámení e-mailem aktivována a nakonfigurována.</value>
+  </data>
+  <data name="EnableNewAuthEncoding" xml:space="preserve">
+    <value>Podpora znaků s přehláskou v heslu</value>
+  </data>
+  <data name="EnableNewAuthEncodingInfo" xml:space="preserve">
+    <value>Po aktivaci této možnosti bude používáno kódování ISO 8859-1 pro heslo aplikace Boxer, aby v něm bylo možné použít speciální německé znaky s přehláskou (ä, ß atd.).</value>
+  </data>
+  <data name="EnableOfflineAccessTooltip" xml:space="preserve">
+    <value>Je-li deaktivováno, je přístup off-line omezen. Je-li aktivováno a možnost Maximální povolená doba v režimu off-line je nastavena na 0, je přístup off-line povolen po neomezenou dobu. Je-li aktivováno a dojde-li k překročení nenulové Maximální povolené doby v režimu off-line, je přístup zablokován</value>
+  </data>
+  <data name="EnableOsVersionTooltip" xml:space="preserve">
+    <value>Je-li povoleno, aplikace vyhodnotí verzi OS zařízení vzhledem k nakonfigurovanému pravidlu a v případě kladného výsledku provede akci.</value>
+  </data>
+  <data name="EnableSecurityPatchDateTooltip" xml:space="preserve">
+    <value>Je-li povoleno, aplikace vyhodnotí datum bezpečnostní opravy na zařízení vůči konfigurovanému pravidlu a provede akci, pokud oprava není aktuální. Toto nastavení se vyskytuje jen u zařízení Android.</value>
+  </data>
+  <data name="EncryptionCertificateAuthority" xml:space="preserve">
+    <value>Certifikační autorita šifrování</value>
+  </data>
+  <data name="EncryptionCertificateTemplate" xml:space="preserve">
+    <value>Certifikační šablona šifrování</value>
+  </data>
+  <data name="ENSAPIToken" xml:space="preserve">
+    <value>Token rozhraní API ENS2</value>
+  </data>
+  <data name="ENSAPITokenInfo" xml:space="preserve">
+    <value>Token rozhraní API poskytnutý firmou VMware k aktivaci cloudové služby ENS2.</value>
+  </data>
+  <data name="ENSFetchTokenInfo" xml:space="preserve">
+    <value>Po zadání nové adresy serveru ENS2 načtěte nový token. U nové adresy serveru ENS2 nemůžete použít dříve konfigurovaný token.</value>
+  </data>
+  <data name="ENSInvalidAPITokenMessage" xml:space="preserve">
+    <value>Token nelze načíst. Zkontrolujte, zda je adresa serveru ENS2 správná a server ENS2 funkční, a zkuste to znovu. Pokud problém přetrvává, zkontrolujte protokoly konzoly UEM nebo protokoly serveru ENS2 a obraťte se na podporu VMware.</value>
+  </data>
+  <data name="ENSLinkAddress" xml:space="preserve">
+    <value>Adresa serveru ENS2</value>
+  </data>
+  <data name="ENSLinkAddressInfo" xml:space="preserve">
+    <value>Adresa systému ENS2, ke kterému se uživatelé budou připojovat.</value>
+  </data>
+  <data name="ENSRetrieveTokenBtnText" xml:space="preserve">
+    <value>Načíst token</value>
+  </data>
+  <data name="ENSValidAPITokenMessage" xml:space="preserve">
+    <value>Načtený token rozhraní API ENS2.</value>
+  </data>
+  <data name="EnterAppUrlFromGooglePlayStore" xml:space="preserve">
+    <value>Zadejte adresu URL aplikace z obchodu Google Play Store.</value>
+  </data>
+  <data name="EnterKeyValuePairsForApplicationAttributes" xml:space="preserve">
+    <value>Zadejte páry klíč-hodnota, které poskytnou aplikacím atributy</value>
+  </data>
+  <data name="EnterKeyValuePairsToConfigureWhenAppNotSupport" xml:space="preserve">
+    <value>Tato aplikace nepodporuje konfiguraci aplikace. Když ke konfiguraci aplikace použijete SDK, zadejte níže páry klíč-hodnota.</value>
+  </data>
+  <data name="EnterNumberBetweenArgAndArg" xml:space="preserve">
+    <value>Zadejte číslo v rozmezí {0}–{1}.</value>
+  </data>
+  <data name="EnterpriseAppCatalogDetailsLegalTooltip" xml:space="preserve">
+    <value>Pokud kliknete na níže uvedenou možnost Pokračovat, budete stahovat software z webu třetí strany. Společnost VMware neposkytuje žádná vyjádření ani záruky týkající se kvality, obsahu, spolehlivosti nebo bezpečnostních postupů softwaru třetí strany a nenese žádnou zodpovědnost, pokud si rozhodnete stáhnout a použít software třetí strany.</value>
+  </data>
+  <data name="EnterpriseAppCatalogFailedToLoad" xml:space="preserve">
+    <value>Katalog aplikací nelze načíst. Zkuste jej znovu načíst a pokud problém přetrvává, obraťte se na administrátora.</value>
+  </data>
+  <data name="EnterpriseAppCatalogNoApplications" xml:space="preserve">
+    <value>V katalogu nejsou k dispozici žádné aplikace. Zkuste jej znovu načíst a pokud problém přetrvává, obraťte se na administrátora.</value>
+  </data>
+  <data name="EnterpriseAppRepository" xml:space="preserve">
+    <value>Úložiště firemních aplikací.</value>
+  </data>
+  <data name="EnterpriseAppRepositoryAddAppName" xml:space="preserve">
+    <value>Zadejte název aplikace, který se zobrazí v katalogu Intelligent Hub.</value>
+  </data>
+  <data name="EnterpriseAppRepositoryAppUpdateMode" xml:space="preserve">
+    <value>Aktualizovat oznámení</value>
+  </data>
+  <data name="EnterpriseAppRepositoryAppUpdateModeInfo" xml:space="preserve">
+    <value>Vyberte možnost pro aktualizace aplikací.</value>
+  </data>
+  <data name="EnterpriseAppRepositoryAppUpdateModeNone" xml:space="preserve">
+    <value>Neupozorňovat</value>
+  </data>
+  <data name="EnterpriseAppRepositoryAppUpdateModeNotify" xml:space="preserve">
+    <value>Oznámit</value>
+  </data>
+  <data name="EnterpriseAppSourceHelpText" xml:space="preserve">
+    <value>Tento sloupec uvádí, jestli je aplikace podepsaná pomocí podnikového podpisového certifikátu a není distribuovaná prostřednictvím obchodu App Store.</value>
+  </data>
+  <data name="EnterValidBuildVersion" xml:space="preserve">
+    <value>Zadejte platnou hodnotu do pole Verze sestavení</value>
+  </data>
+  <data name="EnterValidWhitelistedApplications" xml:space="preserve">
+    <value>Zadejte platné povolené aplikace</value>
+  </data>
+  <data name="EntireChain" xml:space="preserve">
+    <value>Celý řetězec</value>
+  </data>
+  <data name="ERROR_ANOTHER_RUNNING_SCENARIO" xml:space="preserve">
+    <value>Je spuštěn jiný scénář</value>
+  </data>
+  <data name="ERROR_COMPLETING_SCENARIO" xml:space="preserve">
+    <value>Proces se nepodařilo dokončit. Možné příčiny:
+
+    Instalace byla zrušena uživatelem
+    Instalace byla zrušena jinou instalací
+    Během instalace došlo místo na disku
+    Neznámé ID jazyka</value>
+  </data>
+  <data name="ERROR_COMPLETING_SCENARIO_NEED_CLEAN_UP" xml:space="preserve">
+    <value>Možné příčiny:
+
+    Neznámé SKU.
+    Obsah na CDN neexistuje,
+        např. pokus o instalaci nepodporovaného LAP, jako je zh-SG,
+        problém s CDN způsobující, že obsah není k dispozici
+    Problém s kontrolou podpisu, jako je selhání kontroly podpisu obsahu sady Office
+    Zrušeno uživatelem</value>
+  </data>
+  <data name="ERROR_HANDLING_COMMAND_LINE" xml:space="preserve">
+    <value>Chyba příkazového řádku klienta C2RClient</value>
+  </data>
+  <data name="ERROR_INSTALL_FAILURE" xml:space="preserve">
+    <value>Kontrola požadavků se nezdařila.
+
+    SxS (pokus o instalaci, když je nainstalováno MSI verze 2016)
+    Neshoda v bitové verzi aktuálně nainstalované sady Office a sady Office, která se pokoušela o instalaci (například když se pokoušíte o instalaci 32bitové verze, když je aktuálně nainstalována 64bitová verze).</value>
+  </data>
+  <data name="ERROR_INSTALL_USEREXIT" xml:space="preserve">
+    <value>Uživatel zrušil instalaci</value>
+  </data>
+  <data name="ERROR_INVALID_DATA" xml:space="preserve">
+    <value>Nelze ověřit podpis staženého nástroje Office Deployment Tool (ODT)</value>
+  </data>
+  <data name="ERROR_PROCESSPOOL_INITIALIZATION" xml:space="preserve">
+    <value>Nepodařilo se spustit klienta C2RClient</value>
+  </data>
+  <data name="ERROR_QUEUE_SCENARIO" xml:space="preserve">
+    <value>V klientu C2RClient se nepodařilo zařadit do fronty scénář instalace</value>
+  </data>
+  <data name="ERROR_REMOVE_INSTALLATION_NEEDED" xml:space="preserve">
+    <value>Klient požaduje vyčištění klientů ve scénáři „Odebrat instalaci“</value>
+  </data>
+  <data name="ERROR_SCENARIO_CANCELLED" xml:space="preserve">
+    <value>Aktualizace blokována spuštěnými aplikacemi</value>
+  </data>
+  <data name="ERROR_SCENARIO_CANCELLED_AS_PLANNED" xml:space="preserve">
+    <value>Scénář byl zrušen podle plánu</value>
+  </data>
+  <data name="ERROR_TIMEOUT" xml:space="preserve">
+    <value>Nepodařilo se stáhnout nástroj Office Deployment Tool (ODT)</value>
+  </data>
+  <data name="ErrorApplicationSyncJobAppPublish" xml:space="preserve">
+    <value>Po publikování aplikace došlo k chybě v úloze její synchronizace.</value>
+  </data>
+  <data name="EscrowExpiry" xml:space="preserve">
+    <value>Vypršení platnosti FastSync</value>
+  </data>
+  <data name="EscrowExpiryInfo" xml:space="preserve">
+    <value>Nastavte dobu vypršení platnosti v hodinách, pokud aplikace Workspace ONE Boxer neobdrží během této doby klíč FastSync. K použití nastavení FastSync dochází v případě, že je služba oznámení e-mailem aktivována a nakonfigurována.</value>
+  </data>
+  <data name="EscrowGatewayToolTipInfo" xml:space="preserve">
+    <value>Konfigurace brány pro úschovu se použije pouze v případě, že je brána nakonfigurována ve vašem prostředí.</value>
+  </data>
+  <data name="EventBased" xml:space="preserve">
+    <value>Na základě události</value>
+  </data>
+  <data name="EventTargeted" xml:space="preserve">
+    <value>Cílená událost</value>
+  </data>
+  <data name="EWSConfigPositionChangeInfo" xml:space="preserve">
+    <value>Rozhodněte, zda chcete v sekci Nastavení e-mailu nastavit adresu URL EWS.</value>
+  </data>
+  <data name="EWSUrl" xml:space="preserve">
+    <value>Adresa URL EWS</value>
+  </data>
+  <data name="EWSUrlInfo" xml:space="preserve">
+    <value>Adresa koncového bodu EWS (nebo SEG)</value>
+  </data>
+  <data name="EwsUrlInfoMsg" xml:space="preserve">
+    <value>Konfigurace adresy URL serveru EWS byla přesunuta do sekce nastavení e-mailu.</value>
+  </data>
+  <data name="ExchangeSettings" xml:space="preserve">
+    <value>Nastavení Microsoft Exchange</value>
+  </data>
+  <data name="ExchangeURL" xml:space="preserve">
+    <value>Adresa URL Exchange</value>
+  </data>
+  <data name="ExchangeUserName" xml:space="preserve">
+    <value>Uživatelské jméno Exchange</value>
+  </data>
+  <data name="ExecutionFailed" xml:space="preserve">
+    <value>Spuštění se nezdařilo</value>
+  </data>
+  <data name="ExportFactoryPpkg" xml:space="preserve">
+    <value>Export</value>
+  </data>
+  <data name="ExportPpkgMessage" xml:space="preserve">
+    <value>Vyberte aplikace ze seznamu podporovaných aplikací a exportujte je do zajišťovacího balíčku Windows (PPKG). Až bude export PPKG dokončen, bude odesláno oznámení s odkazem pro stažení.</value>
+  </data>
+  <data name="ExportPpkgWindowsNoAppsMessage" xml:space="preserve">
+    <value>Exportem aplikací do zajišťovacího balíčku Windows (PPKG) aktivujete jejich balení pro potřeby tovární instalace. Nahrajte nějaké aplikace pro Windows a exportujte je do balíčku PPKG.</value>
+  </data>
+  <data name="ExternalApplicationIdInfo" xml:space="preserve">
+    <value>Toto je jedinečný identifikátor obchodu Apple App Store. Zobrazuje se v adrese URL iTunes dané aplikace.</value>
+  </data>
+  <data name="FactoryProvisioningServiceNotRunning" xml:space="preserve">
+    <value>Služba továrního zajišťování není konfigurována nebo spuštěna. Zkontrolujte instalaci Workspace ONE UEM.</value>
+  </data>
+  <data name="FailedToUploadApplication" xml:space="preserve">
+    <value>Nahrání aplikace se nezdařilo.</value>
+  </data>
+  <data name="FastAsyncConfigPositionChangeInfo" xml:space="preserve">
+    <value>Rozhodněte, zda chcete v sekci Nastavení e-mailu nastavit adresu URL EWS.
+V části Zásady aplikace &gt; Pokročilé nastavte, zda chcete aktivovat FastSync a dobu jeho vypršení.</value>
+  </data>
+  <data name="FeaturedApps" xml:space="preserve">
+    <value>Doporučené aplikace</value>
+  </data>
+  <data name="FeedbackChannelDataNotAvailableMessage" xml:space="preserve">
+    <value>Toto zařízení momentálně nehlásí zpětnou vazbu a může být v režimu off-line. Zkuste to znovu později.</value>
+  </data>
+  <data name="FeedbackChannelEditConfigurationMessage" xml:space="preserve">
+    <value>Změny konfigurace budou uplatněny u všech zařízení, která patří do následujících smart skupin:
+
+{0}.
+
+Opravdu chcete provést úpravy?</value>
+  </data>
+  <data name="FeedbackDateTime" xml:space="preserve">
+    <value>Čas hlášení zařízení</value>
+  </data>
+  <data name="FeedbackMessage" xml:space="preserve">
+    <value>Zpráva</value>
+  </data>
+  <data name="FeedbackTitle" xml:space="preserve">
+    <value>Název zpětné vazby</value>
+  </data>
+  <data name="FeedbackTriggerValue" xml:space="preserve">
+    <value>Aktivační hodnota</value>
+  </data>
+  <data name="FieldShouldBeANumber" xml:space="preserve">
+    <value>Hodnota pole by měla být číslo</value>
+  </data>
+  <data name="FieldShouldBeBetweenArgAndMaxInt" xml:space="preserve">
+    <value>Hodnota pole by měla být číslo mezi {0} a {1}</value>
+  </data>
+  <data name="FieldShouldBeValidColourInHexFormat" xml:space="preserve">
+    <value>Toto pole vyžaduje barvu textu v hexadecimálním formátu.</value>
+  </data>
+  <data name="FileFormatNotSupported" xml:space="preserve">
+    <value>Zvolený formát souboru není podporován, zvolte soubor XML.</value>
+  </data>
+  <data name="FilterAppleSystemApps" xml:space="preserve">
+    <value>Zobrazit aplikace com.apple.*</value>
+  </data>
+  <data name="FilterBySmartGroup" xml:space="preserve">
+    <value>Filtrovat podle smart skupiny</value>
+  </data>
+  <data name="FinalDetectionFailed" xml:space="preserve">
+    <value>Závěrečná detekce se nezdařila</value>
+  </data>
+  <data name="FlexDeploymentNewMessage" xml:space="preserve">
+    <value>Zařízení obdrží aplikaci na základě níže uvedených konfigurací. Zařízení s více přiřazeními získají zásady v pořadí dle priority. Upravením priority pro jedno přiřazení se automaticky přepočítá priorita ostatních přiřazení. Vyberte přiřazení, které chcete upravit. Přidání nového přiřazení vytvoří v dolní části seznamu nové pravidlo.</value>
+  </data>
+  <data name="FlexeraCriticalAppsArrived" xml:space="preserve">
+    <value>K dispozici jsou nové opravy Flexera SVM</value>
+  </data>
+  <data name="FlexeraSVM" xml:space="preserve">
+    <value>Flexera SVM</value>
+  </data>
+  <data name="ForwardAddAttachments" xml:space="preserve">
+    <value>Přeposlat / Přidat přílohy</value>
+  </data>
+  <data name="FromEnterpriseCatalog" xml:space="preserve">
+    <value>Z úložiště firemních aplikací</value>
+  </data>
+  <data name="GetStartedWithWorkflows" xml:space="preserve">
+    <value>Začínáme s pracovními postupy</value>
+  </data>
+  <data name="GoToChromeWebStore" xml:space="preserve">
+    <value>Přejít do webového obchodu Chrome</value>
+  </data>
+  <data name="HideNotificationsLabel" xml:space="preserve">
+    <value>Skrýt oznámení</value>
+  </data>
+  <data name="HideNotificationsTooltip" xml:space="preserve">
+    <value>Aktivací tohoto nastavení zabráníte u této aplikace zobrazování oznámení o instalaci a odinstalaci. Toto se týká pouze automaticky nasazených aplikací.</value>
+  </data>
+  <data name="HighCriticality" xml:space="preserve">
+    <value>Vysoká závažnost</value>
+  </data>
+  <data name="IconFile" xml:space="preserve">
+    <value>Soubor ikony</value>
+  </data>
+  <data name="InactiveAppAlreadyExistsinConsole" xml:space="preserve">
+    <value>Tato aplikace již byla přidána do konzoly a nachází se v neaktivním stavu. Chcete-li pokračovat v přiřazení, znovu aktivujte aplikaci v zobrazení seznamu aplikací.</value>
+  </data>
+  <data name="IncorrectExchangeURL" xml:space="preserve">
+    <value>Použijte formát https://server.domain.com/EWS/Exchange.asmx.</value>
+  </data>
+  <data name="IndividualAppSizeLimitMessage" xml:space="preserve">
+    <value>Maximální povolená velikost souboru: {0} MB</value>
+  </data>
+  <data name="InstallAppExceptionMessage" xml:space="preserve">
+    <value>Vybrání filtru umožňuje instalaci aplikace na velké množství zařízení.</value>
+  </data>
+  <data name="InstallApplicationConfirmed" xml:space="preserve">
+    <value>Zařízení potvrdilo instalaci aplikace</value>
+  </data>
+  <data name="InstallAppOnAllBspAlert" xml:space="preserve">
+    <value>Chystáte se instalovat aplikaci na všechna zařízení. Pokud jsou licence omezeny, některá zařízení nemusí aplikaci obdržet. Pokračujte kliknutím na tlačítko OK. Dostupné licence – on-line: {0}, off-line: {1}</value>
+  </data>
+  <data name="InstallationStatus" xml:space="preserve">
+    <value>Stav instalace</value>
+  </data>
+  <data name="InstallationStatusLastScan" xml:space="preserve">
+    <value>Stav instalace – poslední skenování</value>
+  </data>
+  <data name="InstallCommandFailed" xml:space="preserve">
+    <value>Instalační příkaz selhal</value>
+  </data>
+  <data name="InstalledAndFeedbackAvailable" xml:space="preserve">
+    <value>Instalováno (k dispozici je zpětná vazba konfigurace)</value>
+  </data>
+  <data name="InstalledAppVersion" xml:space="preserve">
+    <value>Instalovaná verze aplikace</value>
+  </data>
+  <data name="InstalledButHidden" xml:space="preserve">
+    <value>Nainstalováno, ale skryto</value>
+  </data>
+  <data name="InstalledByUser" xml:space="preserve">
+    <value>Instalováno uživatelem</value>
+  </data>
+  <data name="InstalledEqualsAssigned" xml:space="preserve">
+    <value>Instalováno = Přiřazeno</value>
+  </data>
+  <data name="InstalledNotEqualsAssigned" xml:space="preserve">
+    <value>Instalováno &lt;&gt; Přiřazeno</value>
+  </data>
+  <data name="InstalledPersonalApp" xml:space="preserve">
+    <value>Instalovaná osobní aplikace</value>
+  </data>
+  <data name="InstalledSystemApp" xml:space="preserve">
+    <value>Instalovaná systémová aplikace</value>
+  </data>
+  <data name="InstalledWithVersion" xml:space="preserve">
+    <value>Instalováno ({0})</value>
+  </data>
+  <data name="InstallerDeferralExitCodeInvalid" xml:space="preserve">
+    <value>Ukončovací kód je neplatný.</value>
+  </data>
+  <data name="InstallerDeferralExitCodeLabel" xml:space="preserve">
+    <value>Ukončovací kód odložení instalačního programu</value>
+  </data>
+  <data name="InstallerDeferralExitCodeRequired" xml:space="preserve">
+    <value>Ukončovací kód je povinný údaj.</value>
+  </data>
+  <data name="InstallerDeferralExitCodeTooltip" xml:space="preserve">
+    <value>Určete celočíselný kód vrácený instalačním programem, který udává, že instalace aplikace byla odložena. To umožní pokus o opakování instalace aplikace během příštího intervalu instalace.</value>
+  </data>
+  <data name="InstallerDeferralIntervalLabel" xml:space="preserve">
+    <value>Interval odložení instalačního programu</value>
+  </data>
+  <data name="InstallerDeferralIntervalOption12Hours" xml:space="preserve">
+    <value>12 hodin</value>
+  </data>
+  <data name="InstallerDeferralIntervalOption24Hours" xml:space="preserve">
+    <value>24 hodin</value>
+  </data>
+  <data name="InstallerDeferralIntervalOption2Hours" xml:space="preserve">
+    <value>2 hodiny</value>
+  </data>
+  <data name="InstallerDeferralIntervalOption4Hours" xml:space="preserve">
+    <value>4 hodiny</value>
+  </data>
+  <data name="InstallerDeferralIntervalOption8Hours" xml:space="preserve">
+    <value>8 hodin</value>
+  </data>
+  <data name="InstallerDeferralIntervalTooltip" xml:space="preserve">
+    <value>Určete časový rámec odložení</value>
+  </data>
+  <data name="InstallerDeferralNotificationCustom" xml:space="preserve">
+    <value>DEFINOVÁNO UŽIVATELEM</value>
+  </data>
+  <data name="InstallerDeferralNotificationLabel" xml:space="preserve">
+    <value>Použít UEM nebo vlastní oznámení</value>
+  </data>
+  <data name="InstallerDeferralNotificationTooltip" xml:space="preserve">
+    <value>Určete, zda odložení mají používat UEM nebo vlastní oznámení</value>
+  </data>
+  <data name="InstallerDeferralNotificationUEM" xml:space="preserve">
+    <value>UEM</value>
+  </data>
+  <data name="InstallerPackageDeployment" xml:space="preserve">
+    <value>Nasazení instalačního balíčku</value>
+  </data>
+  <data name="InstallInProgress" xml:space="preserve">
+    <value>Probíhá instalace</value>
+  </data>
+  <data name="InstallOnSelectedDevices" xml:space="preserve">
+    <value>Tato aplikace bude nainstalována pouze do zařízení s platným přiřazením.</value>
+  </data>
+  <data name="InstallOnSelectedDevicesBspAlert" xml:space="preserve">
+    <value>Chystáte se instalovat aplikaci na všechna vybraná zařízení. Pokud jsou licence omezeny, některá zařízení nemusí aplikaci obdržet. Pokračujte kliknutím na tlačítko OK. Dostupné licence – on-line: {0}, off-line: {1}</value>
+  </data>
+  <data name="InstallStatusHeaderToolTip" xml:space="preserve">
+    <value>Toto je vyjádření dat získaných ze zařízení, do kterých patří podrobné informace o stavu instalace této aplikace a která nejsou vázána ke konkrétní verzi.</value>
+  </data>
+  <data name="InstallSuccess" xml:space="preserve">
+    <value>Instalace proběhla úspěšně</value>
+  </data>
+  <data name="IntelligenceOptInMessageForFeedbackArg" xml:space="preserve">
+    <value>Pokud si chcete prohlédnout zpětnou vazbu konfigurace aplikace, musíte být přihlášeni do služby Intelligence. {0}</value>
+  </data>
+  <data name="InternalAppAssignmentUpToDate" xml:space="preserve">
+    <value>Aktuální. Přiřazená verze aplikace je shodná s nainstalovanou verzí.</value>
+  </data>
+  <data name="InternalApplication" xml:space="preserve">
+    <value>Interní aplikace</value>
+  </data>
+  <data name="InternalApplications" xml:space="preserve">
+    <value>Interní aplikace</value>
+  </data>
+  <data name="InternalDomainsFieldError" xml:space="preserve">
+    <value>Seznam domén by měl být uzavřen hranatými závorkami. Například: [„xyz.com“,“abc.com“]</value>
+  </data>
+  <data name="InternalDomainsInfo" xml:space="preserve">
+    <value>Definujte domény, které jsou interní nebo povolené. Uživatel může deaktivovat upozornění pomocí nastavení „Potvrdit před odesláním“, pokud jsou definovány interní domény a nejsou nastaveni externí příjemci. Každou doménu zapište do uvozovek, jako oddělovací znak použijte čárku a seznam uzavřete hranatými závorkami. Například: [„xyz.com“, „abc.com“].</value>
+  </data>
+  <data name="InternalTriggerAccountVersion" xml:space="preserve">
+    <value>Zobrazuje podrobnosti poslední provedené akce na přiřazených zařízeních pro tuto verzi aplikace.</value>
+  </data>
+  <data name="InvalidAppAttributeVpnKey" xml:space="preserve">
+    <value>VPNUUID není platný pro atributy, konfigurujte místo něj tunelování aplikace</value>
+  </data>
+  <data name="InvalidApplicationBundleID" xml:space="preserve">
+    <value>Neplatné ID sady aplikací</value>
+  </data>
+  <data name="InvalidApplicationError" xml:space="preserve">
+    <value>Formát balíčku aplikace není podporován</value>
+  </data>
+  <data name="InvalidMultiStringValue" xml:space="preserve">
+    <value>Zadejte řetězce, které nemají uvozovky</value>
+  </data>
+  <data name="InvalidNsxEntryForApplication" xml:space="preserve">
+    <value>Neplatná položka NSX pro vybranou aplikaci</value>
+  </data>
+  <data name="InvalidPkgInfoFile" xml:space="preserve">
+    <value>Neplatná metadata. Vygenerujte soubor pomocí nástroje Admin Assistant Tool a zkuste jej nahrát znovu.</value>
+  </data>
+  <data name="InvalidPlayStoreUrlEnterValidUrlToContinue" xml:space="preserve">
+    <value>Neplatná adresa URL obchodu Play Store. Chcete-li pokračovat, zadejte platnou adresu URL obchodu-Play Store.</value>
+  </data>
+  <data name="InvalidRegistryPath" xml:space="preserve">
+    <value>Neplatná cesta registru</value>
+  </data>
+  <data name="InvalidThresholdId" xml:space="preserve">
+    <value>Neplatné ID mezní hodnoty</value>
+  </data>
+  <data name="IsBlockingAppsEnabled" xml:space="preserve">
+    <value>Blokování aplikací</value>
+  </data>
+  <data name="IsBlockingAppsEnabledTooltip" xml:space="preserve">
+    <value>Zapnutím možnosti Blokování aplikací dojde před zahájením instalace ke kontrole toho, zda není spuštěna některá z definovaných položek. Při deaktivaci možnosti Blokování aplikací bude přepsáno jakékoli nastavené chování blokování a instalace bude pokračovat.</value>
+  </data>
+  <data name="IsForceInstallAfterDateEnabled" xml:space="preserve">
+    <value>Vynutit instalaci po datu</value>
+  </data>
+  <data name="IsForceInstallAfterDateEnabledTooltip" xml:space="preserve">
+    <value>Určuje datum, kdy bude instalace vynucena, pokud položka nebyla ještě instalována. Tato možnost vynutí ukončení všech blokujících aplikací a vynutí také akci restartu, je-li definována.</value>
+  </data>
+  <data name="KeyEscrow" xml:space="preserve">
+    <value>Úschova klíče</value>
+  </data>
+  <data name="KeyHelpText" xml:space="preserve">
+    <value>Např. HKLM\Software\.. nebo HKCU\Software\.. nebo HKEY_LOCAL_MACHINE\Software.. nebo HKEY_CURRENT_USER\Software..
+
+Zadejte cestu registru s použitím zkráceného nebo úplného názvu pro podregistr nejvyšší úrovně.</value>
+  </data>
+  <data name="KeySupportedOnlyAtAccountLevel" xml:space="preserve">
+    <value>Klíč je podporován pouze na úrovni účtu.</value>
+  </data>
+  <data name="KeySupportedOnlyAtAppLevel" xml:space="preserve">
+    <value>Klíč je podporován pouze na úrovni aplikace.</value>
+  </data>
+  <data name="LastAction" xml:space="preserve">
+    <value>Poslední akce</value>
+  </data>
+  <data name="LastActionTaken" xml:space="preserve">
+    <value>Poslední provedená akce</value>
+  </data>
+  <data name="LastActionTimestamp" xml:space="preserve">
+    <value>Časové razítko poslední akce</value>
+  </data>
+  <data name="LastReportedTime" xml:space="preserve">
+    <value>Čas posledního hlášení</value>
+  </data>
+  <data name="LastServerAction" xml:space="preserve">
+    <value>Poslední akce serveru</value>
+  </data>
+  <data name="LatestInstallationEvent" xml:space="preserve">
+    <value>Poslední zaprotokolovaná událost instalace</value>
+  </data>
+  <data name="LatestInstallationEventTooltip" xml:space="preserve">
+    <value>Zobrazí poslední událost instalace zaprotokolovanou pro toto zařízení a aplikaci v části „poradce při potížích“. Jako události budou zachyceny pouze probíhající stavy instalace, nikoli dokončené stavy instalace. Zařízení nemusí hlásit každý stav instalace, v takovém případě se nebudou protokolovat žádné události.</value>
+  </data>
+  <data name="LatestInstallationStatus" xml:space="preserve">
+    <value>Poslední stav instalace</value>
+  </data>
+  <data name="LicenseDistribution" xml:space="preserve">
+    <value>Distribuce licencí</value>
+  </data>
+  <data name="LicenseSummary" xml:space="preserve">
+    <value>Přehled licence</value>
+  </data>
+  <data name="LogAggregationMode" xml:space="preserve">
+    <value>Režim agregace protokolů</value>
+  </data>
+  <data name="LogAggregationModeInfo" xml:space="preserve">
+    <value>Režim, ve kterém bude aplikace posílat soubor protokolu na koncový bod agregace protokolů.</value>
+  </data>
+  <data name="LogAggregationUrlInfo" xml:space="preserve">
+    <value>Adresa URL koncového bodu agregace protokolů.</value>
+  </data>
+  <data name="LowCriticality" xml:space="preserve">
+    <value>Nízká závažnost</value>
+  </data>
+  <data name="macOSDesiredStateManagement" xml:space="preserve">
+    <value>Správa požadovaného stavu</value>
+  </data>
+  <data name="Major" xml:space="preserve">
+    <value>Hlavní</value>
+  </data>
+  <data name="ManageAssignment" xml:space="preserve">
+    <value>Správa přiřazení</value>
+  </data>
+  <data name="ManageAssignmentForApplicationArgOpensDialog" xml:space="preserve">
+    <value>Příkaz Správa přiřazení pro aplikaci {0} otevře dialogové okno</value>
+    <comment>The placeholder in this label key will contain application name.</comment>
+  </data>
+  <data name="ManageAssignmentForArgOpensDialog" xml:space="preserve">
+    <value>Příkaz Správa přiřazení pro {0} otevře dialogové okno</value>
+    <comment>Placeholder in this label key is for application name.</comment>
+  </data>
+  <data name="ManagedAccess" xml:space="preserve">
+    <value>Spravovaný přístup</value>
+  </data>
+  <data name="ManagedAccessDescription" xml:space="preserve">
+    <value>Spravovaný přístup EMM definuje, která zařízení budou moci instalovat tuto aplikaci z centra Intelligent Hub.</value>
+  </data>
+  <data name="ManagedAccessOnlyEmmDevices" xml:space="preserve">
+    <value>Tuto aplikaci budou moci instalovat pouze zařízení spravovaná modulem EMM.</value>
+  </data>
+  <data name="ManagedAccessSecuredByWorkspace" xml:space="preserve">
+    <value>Pokud je tato aplikace zabezpečená prostředím Workspace ONE SDK ve verzi 20.10 nebo novější, bude přístup zablokován, dokud aplikace nebude spravována modulem EMM. Chcete-li zajistit správu této aplikace, na kartě Omezení aktivujte nastavení „Spravovat aplikaci v MDM, pokud je instalována uživatelem“.</value>
+  </data>
+  <data name="ManagedAccessSettingEnabled" xml:space="preserve">
+    <value>Pokud je toto nastavení aktivováno:</value>
+  </data>
+  <data name="ManagedAccessSettingEnabledOnlyEmm" xml:space="preserve">
+    <value>Pokud je toto nastavení aktivováno, budou moci tuto aplikaci instalovat pouze zařízení spravovaná modulem EMM.</value>
+  </data>
+  <data name="ManagedAccessSubDescription" xml:space="preserve">
+    <value>Pokud je toto nastavení deaktivováno, budou moci tuto aplikaci instalovat všechna registrovaná zařízení.</value>
+  </data>
+  <data name="ManagedAccessTitle" xml:space="preserve">
+    <value>Spravovaný přístup k EMM</value>
+  </data>
+  <data name="ManagedAppsTab" xml:space="preserve">
+    <value>Spravované aplikace</value>
+  </data>
+  <data name="ManagedConfigurationErrorMessage" xml:space="preserve">
+    <value>Chyby konfigurace</value>
+  </data>
+  <data name="ManagementAccess" xml:space="preserve">
+    <value>Spravovaný přístup</value>
+  </data>
+  <data name="ManagementIDToolTip" xml:space="preserve">
+    <value>Jedinečný identifikátor pro aplikaci a zařízení</value>
+  </data>
+  <data name="MaxAllowedDevicesException" xml:space="preserve">
+    <value>Vybraný počet zařízení převyšuje povolený počet zařízení, vyberte filtr.</value>
+  </data>
+  <data name="MaxAttachmentSize" xml:space="preserve">
+    <value>Maximální velikost přílohy</value>
+  </data>
+  <data name="MaxAttachmentSizeInfo" xml:space="preserve">
+    <value>Maximální velikost souboru (v bajtech), který může uživatel přiložit k odchozímu e-mailu</value>
+  </data>
+  <data name="MaxCalendarSyncWindow" xml:space="preserve">
+    <value>Maximální povolená doba synchronizace kalendáře</value>
+  </data>
+  <data name="MaxEmailSyncWindow" xml:space="preserve">
+    <value>Maximální povolená doba synchronizace e-mailu</value>
+  </data>
+  <data name="MaxFileSizeCDNMegabytes" xml:space="preserve">
+    <value>Maximální velikost souboru s CDN</value>
+  </data>
+  <data name="MaximumFileSizeWithCDNShouldBeLesserThanAppCapacity" xml:space="preserve">
+    <value>Maximální velikost souboru s CDN nemůže přesahovat celkovou kapacitu aplikace.</value>
+  </data>
+  <data name="MaxTabCountReached" xml:space="preserve">
+    <value>Podporovány jsou pouze tři spravované e-mailové účty</value>
+  </data>
+  <data name="MediumCriticality" xml:space="preserve">
+    <value>Střední závažnost</value>
+  </data>
+  <data name="MetadataFileContainsInvalidCharactersForNameKey" xml:space="preserve">
+    <value>Hodnota klíče Název v souboru metadat obsahuje neplatné znaky. Tato hodnota klíče může používat pouze alfanumerické znaky, podtržítka, mezery, spojovníky a tečky.</value>
+  </data>
+  <data name="MMAEmailSettingsInfoMsgInfo" xml:space="preserve">
+    <value>Konfiguraci více e-mailových účtů podporuje pouze aplikace Boxer verze 5.21 nebo vyšší a je třeba aktivovat jednotné přihlášení.</value>
+  </data>
+  <data name="MobileFlowsAuthenticationServerInfo" xml:space="preserve">
+    <value>Zadejte platnou adresu URL pro autentizaci uživatelů zařízení. Může se jednat o adresu URL serveru Workspace ONE Access</value>
+  </data>
+  <data name="MobileFlowsAutoEnableConnectorsInfo" xml:space="preserve">
+    <value>Pokud je možnost aktivována, dojde při zapnutí služby Mobile Flows automaticky k postupnému zapnutí všech konektorů. Doporučeno pouze v případě, kdy jsou všechny konektory federovány pomocí aplikace Workspace ONE Access</value>
+  </data>
+  <data name="MobileFlowsHostInfo" xml:space="preserve">
+    <value>Název hostitele pro server Mobile Flows</value>
+  </data>
+  <data name="MobileFlowsInfo" xml:space="preserve">
+    <value>Konfigurujte informace o serveru Mobile Flows, se kterými je možné integrovat aplikaci Boxer</value>
+  </data>
+  <data name="MobileFlowsSyncHoursInfo" xml:space="preserve">
+    <value>Nepožadovat karty Mobile Flow pro e-maily poslané dříve než v tuto hodnotu (v hodinách)</value>
+  </data>
+  <data name="ModifiedOnArgArgByArg" xml:space="preserve">
+    <value>Upraveno {0} uživatelem {1}</value>
+  </data>
+  <data name="MSTSelection" xml:space="preserve">
+    <value>Vybrat transformace aplikace</value>
+  </data>
+  <data name="MustBePositiveIntegerValue" xml:space="preserve">
+    <value>Musí být kladné celé číslo</value>
+  </data>
+  <data name="NewWorkflow" xml:space="preserve">
+    <value>Nový pracovní postup</value>
+  </data>
+  <data name="NoEventLogged" xml:space="preserve">
+    <value>Není protokolována žádná událost</value>
+  </data>
+  <data name="NotebookVersionMessage" xml:space="preserve">
+    <value>Níže uvedené zásady platí pouze pro aplikaci Poznámkový blok verze 1.4 a vyšší. U starších verzí přejděte na vlastní nastavení v profilu SDK přidruženém k této aplikaci.</value>
+  </data>
+  <data name="NotebookWarningToEditAllAssignments" xml:space="preserve">
+    <value>Konfigurace aplikace Poznámkový blok je připravená k nastavení. Před publikováním se ujistěte, že konfigurace, které byly přeneseny z vlastního nastavení profilu SDK přidruženého k této aplikaci, jsou správné.</value>
+  </data>
+  <data name="NotEvaluated" xml:space="preserve">
+    <value>Nehodnoceno</value>
+  </data>
+  <data name="NotificationsInfo" xml:space="preserve">
+    <value>Konfigurujte službu Email Notification Service (ENS) a její chování za účelem poskytování e-mailových oznámení v reálném čase.</value>
+  </data>
+  <data name="NotifyEmail" xml:space="preserve">
+    <value>E-mailové oznámení</value>
+  </data>
+  <data name="NumberOfApps" xml:space="preserve">
+    <value>Aplikace: {0}</value>
+  </data>
+  <data name="NumberOfCommandsQueued" xml:space="preserve">
+    <value>Počet příkazů ve frontě</value>
+  </data>
+  <data name="OCSP" xml:space="preserve">
+    <value>Zásady odvolávání certifikátu</value>
+  </data>
+  <data name="OfflineLicenseAvailableArgDevicesAllocation" xml:space="preserve">
+    <value>Dostupné licence v režimu off-line: {0}. Licence budou zařízením přidělovány podle pořadí žádostí.</value>
+  </data>
+  <data name="OnDemandAppAssignedButNotInstalled" xml:space="preserve">
+    <value>Aplikace přiřazená k nasazení na vyžádání není nainstalována.</value>
+  </data>
+  <data name="OnDemandAppAssignmentOutOfDate" xml:space="preserve">
+    <value>Nejnovější verze aplikace přiřazená k nasazení na vyžádání není instalována.</value>
+  </data>
+  <data name="OnDemandBootstrapPackageAssignedButNotInstalled" xml:space="preserve">
+    <value>Balíček spuštění je přiřazen k nasazení na vyžádání, ale nebyl vyžádán.</value>
+  </data>
+  <data name="OneDay" xml:space="preserve">
+    <value>1 den</value>
+  </data>
+  <data name="OnlineLicenseAvailableArgDevicesAllocation" xml:space="preserve">
+    <value>Dostupné licence v režimu on-line: {0}. Licence budou zařízením přidělovány podle pořadí žádostí.</value>
+  </data>
+  <data name="OrdersLicensesMenuTitle" xml:space="preserve">
+    <value>Prohlížejte a spravujte realizační kódy programu hromadného nákupu (VPP)</value>
+  </data>
+  <data name="OSVersionNotSetError" xml:space="preserve">
+    <value>Verze OS nesmí být nulová ani prázdná, pokud je zásada aktivována</value>
+  </data>
+  <data name="OsXParseError" xml:space="preserve">
+    <value>Při analýze souboru OsX došlo k chybě.</value>
+  </data>
+  <data name="OtherAttributes" xml:space="preserve">
+    <value>Další atributy</value>
+  </data>
+  <data name="PasswordNotCopied" xml:space="preserve">
+    <value>Hesla, která byla zadána během vaší konfigurace, nebyla kopírována společně s tímto profilem. Před uložením znovu zadejte správná hesla.</value>
+  </data>
+  <data name="Paused" xml:space="preserve">
+    <value>Pozastaveno</value>
+  </data>
+  <data name="PeerDistribution" xml:space="preserve">
+    <value>Peer Distribution</value>
+  </data>
+  <data name="PeerDistributionCacheBytes" xml:space="preserve">
+    <value>Bajty mezipaměti</value>
+  </data>
+  <data name="PeerDistributionCacheEnabled" xml:space="preserve">
+    <value>Mezipaměť povolena</value>
+  </data>
+  <data name="PeerDistributionCurrentClientMode" xml:space="preserve">
+    <value>Aktuální režim klienta</value>
+  </data>
+  <data name="PeerDistributionDetails" xml:space="preserve">
+    <value>Detaily partnerské distribuce</value>
+  </data>
+  <data name="PeerDistributionDetailsLearnMore" xml:space="preserve">
+    <value>DALŠÍ INFORMACE</value>
+  </data>
+  <data name="PeerDistributionDetailsToolTip" xml:space="preserve">
+    <value>Zobrazuje počet zařízení, která stáhla tuto aplikaci za použití partnerské distribuce, množství stažených dat a místa, odkud byla data stažena.</value>
+  </data>
+  <data name="PeerDistributionDevicesUtilizingPeerDistribution" xml:space="preserve">
+    <value>Zařízení využívající partnerskou distribuci</value>
+  </data>
+  <data name="PeerDistributionDevicesWithPeerDistributionOn" xml:space="preserve">
+    <value>Zařízení se zapnutou partnerskou distribucí</value>
+  </data>
+  <data name="PeerDistributionDownloadSource" xml:space="preserve">
+    <value>Zdroj stahování</value>
+  </data>
+  <data name="PeerDistributionHostedCacheServerList" xml:space="preserve">
+    <value>Seznam serverů hostované mezipaměti</value>
+  </data>
+  <data name="PeerDistributionNotUtilized" xml:space="preserve">
+    <value>Nevyužito</value>
+  </data>
+  <data name="PeerDistributionOff" xml:space="preserve">
+    <value>Vypnuto</value>
+  </data>
+  <data name="PeerDistributionOnNotUtilized" xml:space="preserve">
+    <value>Zapnuto/nevyužito</value>
+  </data>
+  <data name="PeerDistributionOnUtilized" xml:space="preserve">
+    <value>Zapnuto/využito</value>
+  </data>
+  <data name="PeerDistributionServerBytes" xml:space="preserve">
+    <value>Bajty serveru</value>
+  </data>
+  <data name="PeerDistributionSfdOriginTypeAW" xml:space="preserve">
+    <value>Služby zařízení</value>
+  </data>
+  <data name="PeerDistributionSfdOriginTypeCDN" xml:space="preserve">
+    <value>CDN</value>
+  </data>
+  <data name="PeerDistributionSfdOriginTypeNone" xml:space="preserve">
+    <value>Neupozorňovat</value>
+  </data>
+  <data name="PeerDistributionSfdOriginTypeP2P" xml:space="preserve">
+    <value>Adaptiva</value>
+  </data>
+  <data name="PeerDistributionSfdOriginTypeP2PBC" xml:space="preserve">
+    <value>CDN (se službami zařízení)</value>
+  </data>
+  <data name="PeerDistributionStatus" xml:space="preserve">
+    <value>Peer Distribution</value>
+  </data>
+  <data name="PeerDistributionTotalDeviceCount" xml:space="preserve">
+    <value>Celkový počet zařízení</value>
+  </data>
+  <data name="PeerDistributionTotalSavingBytes" xml:space="preserve">
+    <value>Celkový počet ušetřených bajtů</value>
+  </data>
+  <data name="PeerDistributionTotalSavingPercent" xml:space="preserve">
+    <value>Celkové procento úspor</value>
+  </data>
+  <data name="PeerDistributionTotalUtilizedCacheBytes" xml:space="preserve">
+    <value>Celkový počet využitých bajtů mezipaměti</value>
+  </data>
+  <data name="PeerDistributionTotalUtilizedServerBytes" xml:space="preserve">
+    <value>Celkový počet využitých bajtů serveru</value>
+  </data>
+  <data name="PeerDistributionUtilized" xml:space="preserve">
+    <value>Využito</value>
+  </data>
+  <data name="PersonalAppCounts" xml:space="preserve">
+    <value>Instalace bez přiřazení</value>
+  </data>
+  <data name="PersonalAppCountsToolTip" xml:space="preserve">
+    <value>Zobrazuje počet zařízení, na kterých jsou nainstalovány různé verze této aplikace, ale která nemají platné přiřazení, protože na nich buď tato aplikace byla paralelně načtena, nebo dříve měla tato zařízení přiřazení z platformy Workspace ONE.</value>
+  </data>
+  <data name="Pivd" xml:space="preserve">
+    <value>PIV-D</value>
+  </data>
+  <data name="PivdAndroidDerivedCredentialSmimeForFirstaccount" xml:space="preserve">
+    <value>PIV-D podporuje pouze jeden certifikát S/MIME. Tuto možnost vyberte pouze pro primární spravovaný e-mailový účet.</value>
+  </data>
+  <data name="PivdDerivedCredentialForFirstaccount" xml:space="preserve">
+    <value>PIV-D podporuje pouze jeden ověřovací certifikát. Tuto možnost vyberte pouze pro primární spravovaný e-mailový účet. 
+Pokud chcete použít aplikaci PIV-D s verzí aplikace Boxer nižší než 5.21, předejte vlastní KVP „PolicyDerivedCredentials“ v sekci Konfigurace aplikace.</value>
+  </data>
+  <data name="PlusAdd" xml:space="preserve">
+    <value>+ Přidat</value>
+  </data>
+  <data name="PolicyAllowActionArchive" xml:space="preserve">
+    <value>Akce archivu</value>
+  </data>
+  <data name="PolicyAllowActionSpam" xml:space="preserve">
+    <value>Povolit koncovému uživateli nahlásit spam</value>
+  </data>
+  <data name="PolicyAllowAttachments" xml:space="preserve">
+    <value>Povolit přílohy</value>
+  </data>
+  <data name="PolicyAllowAttachmentsDownload" xml:space="preserve">
+    <value>Povolit stažení přílohy</value>
+  </data>
+  <data name="PolicyAllowAttachmentsDownloadInfo" xml:space="preserve">
+    <value>Povolit nebo blokovat stahování a přeposílání příloh</value>
+  </data>
+  <data name="PolicyAllowAttachmentsInfo" xml:space="preserve">
+    <value>Povoluje uživateli přidávat/předávat přílohy</value>
+  </data>
+  <data name="PolicyAllowCallKitIdentification" xml:space="preserve">
+    <value>Aktivovat používání CallKit</value>
+  </data>
+  <data name="PolicyAllowCallKitIdentificationInfo" xml:space="preserve">
+    <value>Toto je pouze nastavení iOS a vyžaduje zásah uživatele, aby bylo aktivováno ID volajícího CallKit</value>
+  </data>
+  <data name="PolicyAllowCrashReporting" xml:space="preserve">
+    <value>Povolit nahlášení selhání</value>
+  </data>
+  <data name="PolicyAllowCustomKeyboards" xml:space="preserve">
+    <value>Povolit vlastní klávesnice</value>
+  </data>
+  <data name="PolicyAllowCustomKeyboardsTooltip" xml:space="preserve">
+    <value>Povolit uživatelům aktivovat klávesnice třetí strany</value>
+  </data>
+  <data name="PolicyAllowDocProviders" xml:space="preserve">
+    <value>Kontrola příloh od externích poskytovatelů</value>
+  </data>
+  <data name="PolicyAllowEnterpriseContent" xml:space="preserve">
+    <value>Podnikový obsah</value>
+  </data>
+  <data name="PolicyAllowLocalCalendars" xml:space="preserve">
+    <value>Místní kalendáře</value>
+  </data>
+  <data name="PolicyAllowLogging" xml:space="preserve">
+    <value>Povolí protokolování</value>
+  </data>
+  <data name="PolicyAllowLoggingInfo" xml:space="preserve">
+    <value>Tyto protokoly nejsou odeslány, pokud uživatel neprovede akci, která je odešle.</value>
+  </data>
+  <data name="PolicyAllowMailServerCiphers" xml:space="preserve">
+    <value>Povolené šifrování e-mailového serveru</value>
+  </data>
+  <data name="PolicyAllowMailServerCiphersInfo" xml:space="preserve">
+    <value>Přinutí aplikaci Boxer, aby během připojování k e-mailovému serveru během fáze handshake TLS používala pouze tato šifrování</value>
+  </data>
+  <data name="PolicyAllowMetrics" xml:space="preserve">
+    <value>Anonymní metrika</value>
+  </data>
+  <data name="PolicyAllowOpenIn" xml:space="preserve">
+    <value>Ovládat funkci Otevřít v aplikaci</value>
+  </data>
+  <data name="PolicyAllowPhotoAttachemetInfo" xml:space="preserve">
+    <value>Povolit nebo zablokovat možnost přiložit fotografie z kamery/fotogalerie</value>
+  </data>
+  <data name="PolicyAllowPhotoAttachment" xml:space="preserve">
+    <value>Povolit fotografickou přílohu</value>
+  </data>
+  <data name="PolicyAllowPrint" xml:space="preserve">
+    <value>Povolit tisk</value>
+  </data>
+  <data name="PolicyAllowPrintTooltip" xml:space="preserve">
+    <value>Deaktivací zablokovat tisk e-mailů a příloh</value>
+  </data>
+  <data name="PolicyAllowTouchID" xml:space="preserve">
+    <value>Biometrické ID</value>
+  </data>
+  <data name="PolicyAllowTouchInfo" xml:space="preserve">
+    <value>Aktivace této funkce uživatelům umožní používat na podporovaných zařízeních otisk prstu, Touch ID nebo Face ID.</value>
+  </data>
+  <data name="PolicyAllowUserAccountsInfo" xml:space="preserve">
+    <value>Umožňuje uživateli přidávat další účty, jako jsou účty Gmail, iCloud a další účty IMAP.</value>
+  </data>
+  <data name="PolicyCalendarMaxSyncPeriod" xml:space="preserve">
+    <value>Max. okno synchronizace kalendáře</value>
+  </data>
+  <data name="PolicyCalendarMaxSyncPeriodInfo" xml:space="preserve">
+    <value>Jak daleko směrem zpět může uživatel označit události v kalendáři pro synchronizaci.</value>
+  </data>
+  <data name="PolicyClassMarkings" xml:space="preserve">
+    <value>Náznaky</value>
+  </data>
+  <data name="PolicyClassMarkingsDefaultClass" xml:space="preserve">
+    <value>Výchozí klasifikace</value>
+  </data>
+  <data name="PolicyClassMarkingsDefaultClassInfo" xml:space="preserve">
+    <value>(Volitelné) Nastavte výchozí klasifikaci e-mailů. Hodnota musí odpovídat zobrazovanému názvu pocházejícímu z položky v hodnotě konfigurace PolicyClassMarkings.</value>
+  </data>
+  <data name="PolicyClassMarkingsEnabled" xml:space="preserve">
+    <value>Aktivuje nebo deaktivuje náznaky klasifikace</value>
+  </data>
+  <data name="PolicyClassMarkingsEnabledInfo" xml:space="preserve">
+    <value>Aktivovat nebo deaktivovat náznaky klasifikace</value>
+  </data>
+  <data name="PolicyClassMarkingsInfo" xml:space="preserve">
+    <value>Definuje hierarchický seznam klasifikací.</value>
+  </data>
+  <data name="PolicyClassMarkingsRankEnabled" xml:space="preserve">
+    <value>Aktivovat hodnocení</value>
+  </data>
+  <data name="PolicyClassMarkingsRankEnabledInfo" xml:space="preserve">
+    <value>(Volitelné) Povoluje hodnocení hierarchické klasifikace.</value>
+  </data>
+  <data name="PolicyClassMarkingsXHeader" xml:space="preserve">
+    <value>Definovat x-header</value>
+  </data>
+  <data name="PolicyClassMarkingsXHeaderInfo" xml:space="preserve">
+    <value>(Volitelné) Povoluje a definuje záhlaví x-header pro klasifikaci.</value>
+  </data>
+  <data name="PolicyClassVersion" xml:space="preserve">
+    <value>Verze</value>
+  </data>
+  <data name="PolicyClassVersionInfo" xml:space="preserve">
+    <value>Číslo verze pro funkci klasifikace</value>
+  </data>
+  <data name="PolicyCustomOnlineMeetingUrls" xml:space="preserve">
+    <value>Vlastní adresy URL QuickJoin</value>
+  </data>
+  <data name="PolicyDeleteOnSpamForward" xml:space="preserve">
+    <value>Odstranit nevyžádanou poštu</value>
+  </data>
+  <data name="PolicyDisableKeyEscrow" xml:space="preserve">
+    <value>Deaktivovat úschovu klíče (zapomenuté heslo)</value>
+  </data>
+  <data name="PolicyEmailMaxSyncPeriod" xml:space="preserve">
+    <value>Max. okno synchronizace e-mailu</value>
+  </data>
+  <data name="PolicyEnforceHTTPS" xml:space="preserve">
+    <value>Omezit nezabezpečená připojení HTTP</value>
+  </data>
+  <data name="PolicyEnforceHTTPSTooltip" xml:space="preserve">
+    <value>Omezuje načítání obsahu z nezabezpečených připojení (HTTP).</value>
+  </data>
+  <data name="PolicyLimitNotificationText" xml:space="preserve">
+    <value>Obsah oznámení</value>
+  </data>
+  <data name="PolicyLimitNotificationTextInfo" xml:space="preserve">
+    <value>Řídí, kolik informací je zveřejněno v každé výstraze oznámení.</value>
+  </data>
+  <data name="PolicyScepPendingMaxRetryAttempts" xml:space="preserve">
+    <value>Maximální počet opakování pro SCEP</value>
+  </data>
+  <data name="PolicyScepPendingRetryTimeout" xml:space="preserve">
+    <value>Interval mezi každým opakováním pro SCEP v sekundách.</value>
+  </data>
+  <data name="PolicySensitivityLabelsEmailClassificationInfo" xml:space="preserve">
+    <value>Uživatelé budou moci interagovat s popisky AIP.</value>
+  </data>
+  <data name="PolicySMIME" xml:space="preserve">
+    <value>Stav S/MIME</value>
+  </data>
+  <data name="PolicySMIMEConformingEncryptionAlgorithms" xml:space="preserve">
+    <value>Podporované šifrovací algoritmy</value>
+  </data>
+  <data name="PolicySMIMEConformingEncryptionAlgorithmsInfo" xml:space="preserve">
+    <value>Povoluje omezit šifrování S/MIME na konkrétní algoritmy. Šifrované e-maily, které nepoužívají schválený algoritmus, budou označeny upozorněním. Pokud nejsou zadány žádné platné hodnoty, budou považovány za přijatelné všechny algoritmy.</value>
+  </data>
+  <data name="PolicySMIMEConformingSigningAlgorithms" xml:space="preserve">
+    <value>Podporované algoritmy podepisování</value>
+  </data>
+  <data name="PolicySMIMEDefaultEncryptionAlgorithm" xml:space="preserve">
+    <value>Výchozí šifrovací algoritmus</value>
+  </data>
+  <data name="PolicySMIMEDefaultEncryptionAlgorithmInfo" xml:space="preserve">
+    <value>Umožňuje omezit šifrování S/MIME na konkrétní algoritmy. Šifrované e-maily, které nepoužívají schválený algoritmus, budou označeny upozorněním. Pokud nejsou zadány žádné platné hodnoty, budou považovány za přijatelné všechny algoritmy.</value>
+  </data>
+  <data name="PolicySMIMEDefaultSigningAlgorithm" xml:space="preserve">
+    <value>Výchozí podpisový algoritmus</value>
+  </data>
+  <data name="PolicySMIMEEnableRevocationCheck" xml:space="preserve">
+    <value>Povolit kontrolu odvolání S/MIME</value>
+  </data>
+  <data name="PolicySMIMEEnableRevocationCheckInfo" xml:space="preserve">
+    <value>Definuje zásady kontroly odvolání certifikátů S/MIME</value>
+  </data>
+  <data name="PolicySMIMERevocationCheckType" xml:space="preserve">
+    <value>Typ kontroly odvolání S/MIME</value>
+  </data>
+  <data name="PolicySMIMERevocationCheckTypeInfo" xml:space="preserve">
+    <value>Definuje zásady pro spuštění kontroly stavu odvolání pro celý řetěz certifikátů nebo pouze pro certifikát uživatele.</value>
+  </data>
+  <data name="PolicySMIMERevocationCheckUrl" xml:space="preserve">
+    <value>Adresa URL kontroly odvolání S/MIME</value>
+  </data>
+  <data name="PolicySMIMERevocationCheckUrlInfo" xml:space="preserve">
+    <value>Tato adresa URL slouží jako adresa URL respondéru OCSP</value>
+  </data>
+  <data name="PolicySMIMERevocationEnforceNonce" xml:space="preserve">
+    <value>Vynutit hodnotu Nonce v odvolání S/MIME</value>
+  </data>
+  <data name="PolicySMIMERevocationEnforceNonceInfo" xml:space="preserve">
+    <value>Pokud je možnost aktivována, bude v požadavcích protokolu OCSP vynucována hodnota Nonce</value>
+  </data>
+  <data name="PolicySMIMERevocationStrictness" xml:space="preserve">
+    <value>Přísnost odvolání S/MIME</value>
+  </data>
+  <data name="PolicySMIMERevocationStrictnessInfo" xml:space="preserve">
+    <value>Definuje stupeň přísnosti použitý k určení, zda je povoleno použití odvolaného certifikátu nebo ne</value>
+  </data>
+  <data name="PolicySMIMERevocationTTL" xml:space="preserve">
+    <value>TTL pro odvolání S/MIME</value>
+  </data>
+  <data name="PolicySMIMERevocationTTLinfo" xml:space="preserve">
+    <value>Definuje množství času ve dnech pro uchování dat odvolání</value>
+  </data>
+  <data name="PolicySMIMERevocationUseAIA" xml:space="preserve">
+    <value>Použít rozšíření Authority Information Access v odvolání S/MIME</value>
+  </data>
+  <data name="PolicySMIMERevocationUseAIAInfo" xml:space="preserve">
+    <value>Zásady týkající se použití rozšíření Authority Information Access v certifikátu</value>
+  </data>
+  <data name="PolicySMIMEStrictEKUCheck" xml:space="preserve">
+    <value>Vyžadovat kontrolu rozšíření EKU</value>
+  </data>
+  <data name="PolicySMIMEStrictEKUCheckInfo" xml:space="preserve">
+    <value>Definuje, zda je nutné zkontrolovat rozšíření EKU u certifikátů S/MIME. Pokud je nastaveno na hodnotu true, ověříme, že je v certifikátu přítomno rozšíření EKU a že má nastaven účel ochrany e-mailu.</value>
+  </data>
+  <data name="PolicySMIMETrustStore" xml:space="preserve">
+    <value>Důvěryhodné úložiště S/MIME</value>
+  </data>
+  <data name="PolicyStatus" xml:space="preserve">
+    <value>Stav zásady</value>
+  </data>
+  <data name="PolicyTLSEnableRevocationCheck" xml:space="preserve">
+    <value>Kontrola odvolání</value>
+  </data>
+  <data name="PolicyTLSEnableRevocationCheckInfo" xml:space="preserve">
+    <value>Aktivuje/deaktivuje kontroly odvolání TLS</value>
+  </data>
+  <data name="PolicyTLSRevocationCheckType" xml:space="preserve">
+    <value>Typ kontroly odvolání</value>
+  </data>
+  <data name="PolicyTLSRevocationCheckTypeInfo" xml:space="preserve">
+    <value>Určuje, zda mají být kontroly odvolání uplatněny na celý řetězec nebo pouze certifikát serveru. Tato zásada neúčinkuje, pokud je deaktivována možnost kontroly odvolání.</value>
+  </data>
+  <data name="PolicyTLSRevocationCheckUrl" xml:space="preserve">
+    <value>Adresa URL kontroly odvolání</value>
+  </data>
+  <data name="PolicyTLSRevocationCheckUrlInfo" xml:space="preserve">
+    <value>Adresa URL serveru OCSP. Tato zásada neúčinkuje, pokud je deaktivována možnost kontroly odvolání.</value>
+  </data>
+  <data name="PolicyTLSRevocationEnforceNonce" xml:space="preserve">
+    <value>Vynutit hodnotu Nonce</value>
+  </data>
+  <data name="PolicyTLSRevocationEnforceNonceInfo" xml:space="preserve">
+    <value>Pokud je možnost aktivována, vynutí hodnotu Nonce. Tato zásada neúčinkuje, pokud je deaktivována možnost kontroly odvolání.</value>
+  </data>
+  <data name="PolicyTLSRevocationStrictness" xml:space="preserve">
+    <value>Přísnost odvolání</value>
+  </data>
+  <data name="PolicyTLSRevocationStrictnessInfo" xml:space="preserve">
+    <value>Při nastavení na hodnotu Ignorovat jsou výsledky kontroly odvolání pouze protokolovány a neblokují připojení TLS. Při nastavení na hodnotu Přísné jsou připojení TLS zablokována, pokud je certifikát serveru odvolán nebo není dostupný server OCSP. Při nastavení na hodnotu Střední jsou připojení TLS zablokována, pokud je certifikát serveru odvolán. Pokud není server OCSP dostupný, použije se výsledek předchozí kontroly (je-li k dispozici). Tato zásada neúčinkuje, pokud je deaktivována možnost kontroly odvolání.</value>
+  </data>
+  <data name="PolicyTLSRevocationTTL" xml:space="preserve">
+    <value>Hodnota TTL pro odvolání (ve dnech)</value>
+  </data>
+  <data name="PolicyTLSRevocationTTLInfo" xml:space="preserve">
+    <value>Množství času ve dnech pro uchovávání dat odvolání. Záporné hodnoty a nula jsou ignorovány, pokud respondér neposkytuje hodnotu nextupdate. Pokud je KVP nastaveno, použijte hodnotu z tohoto KVP. Pokud KVP není nastaveno, je výchozí hodnota příští kontroly za 7 dní. Pokud respondér poskytuje hodnotu nextupdate.
+Pokud je KVP nastaveno – použijte hodnotu z této KVP, hodnota nextupdate z respondéru je ignorována. Pokud toto KVP není nastaveno – použijte hodnotu nextupdate z respondéru. Tato zásada neúčinkuje, pokud je deaktivována možnost kontroly odvolání.</value>
+  </data>
+  <data name="PolicyTLSRevocationUseAIA" xml:space="preserve">
+    <value>Odvolání použije AIA</value>
+  </data>
+  <data name="PolicyTLSRevocationUseAIAInfo" xml:space="preserve">
+    <value>Deaktivováno – nepoužívat pro stav odvolání adresu URL konfigurovanou uvnitř certifikátu, použít pouze adresu URL kontroly odvolání. Aktivováno – použít pro kontrolu stavu odvolání adresu URL konfigurovanou uvnitř certifikátu, není-li dostupná, použít adresu URL kontroly odvolání. Povinné – použít pro kontrolu stavu odvolání POUZE adresu URL konfigurovanou uvnitř certifikátu, ignorovat adresu URL kontroly odvolání. Tato zásada neúčinkuje, pokud je deaktivována možnost kontroly odvolání.</value>
+  </data>
+  <data name="PolicyTLSStrictTrustCheck" xml:space="preserve">
+    <value>Kontrola důvěryhodnosti TLS</value>
+  </data>
+  <data name="PolicyTLSStrictTrustCheckInfo" xml:space="preserve">
+    <value>Pokud je možnost nastavena na hodnotu true, aplikace Boxer bude provádět přísnější kontroly důvěryhodnosti certifikátů serveru TLS. Zkontrolujeme, zda jsou všechny certifikáty kořenové certifikační autority a zprostředkující certifikační autority, které tvoří celý řetěz certifikátů, nainstalovány v důvěryhodném úložišti, které vytvoříme na základě důvěryhodného úložiště konfigurace konzoly. Tento klíč platí pouze v případě, že byla aktivována možnost kontroly odvolání.</value>
+  </data>
+  <data name="PolicyTLSTrustStore" xml:space="preserve">
+    <value>Důvěryhodné úložiště</value>
+  </data>
+  <data name="PolicyTLSTrustStoreInfo" xml:space="preserve">
+    <value>Pokud je tato možnost deaktivována, používá se důvěryhodné úložiště zařízení a důvěryhodné úložiště aplikace Boxer. Je-li aktivována, bude používáno důvěryhodné úložiště aplikace Boxer. Výchozí nastavení je důvěryhodné úložiště zařízení + důvěryhodné úložiště aplikace Boxer. iOS: Pokud je deaktivována možnost kontroly odvolání, bude pro hodnotu „0“ v současnosti používáno pouze důvěryhodné úložiště zařízení. Jestliže jsou používány vlastní zprostředkující certifikační autority, které nejsou na zařízení předem zavedeny, je jedinou platnou hodnotou „1“, tj. Vždy používat důvěryhodné úložiště aplikace Boxer, a všechny zprostředkující certifikační autority musí být dostupné v důvěryhodném úložišti aplikace Boxer, aby mohly důvěřovat navázanému připojení. Android: Toto KVP neúčinkuje, pokud je deaktivována možnost kontroly odvolání. (V takovém případě bude k ověření řetězu certifikátů použito výchozí důvěryhodné úložiště zařízení. Úložiště aplikace Boxer nebude ověřovat žádné řetězy.)</value>
+  </data>
+  <data name="PolicyWatermarkColor" xml:space="preserve">
+    <value>Barva vodoznaku</value>
+  </data>
+  <data name="PolicyWatermarkColorInfo" xml:space="preserve">
+    <value>Definuje barvu textu v hexadecimálním formátu. Výchozí barva je modrá.</value>
+  </data>
+  <data name="PolicyWatermarkOpacity" xml:space="preserve">
+    <value>Průhlednost vodoznaku</value>
+  </data>
+  <data name="PolicyWatermarkOpacityInfo" xml:space="preserve">
+    <value>Definuje průhlednost textu. Můžete nastavit libovolné číslo od 0 do 100.</value>
+  </data>
+  <data name="PolicyWatermarkText" xml:space="preserve">
+    <value>Text vodoznaku</value>
+  </data>
+  <data name="PolicyWatermarkTextInfo" xml:space="preserve">
+    <value>Definuje text vodoznaku.</value>
+  </data>
+  <data name="PositiveIntegerRequired" xml:space="preserve">
+    <value>Zadejte kladné celé číslo</value>
+  </data>
+  <data name="PradeoAPIKey" xml:space="preserve">
+    <value>Klíč rozhraní API Pradeo</value>
+  </data>
+  <data name="PreReleaseVersionTooltip" xml:space="preserve">
+    <value>Pokud v seznamu chybí položka, kterou jste očekávali, je možné, že byla z tohoto podniku odstraněna nebo bylo její přiřazení zrušeno.</value>
+  </data>
+  <data name="PreventRemoval" xml:space="preserve">
+    <value>Zabránit odstranění</value>
+  </data>
+  <data name="PreventRemovalTooltip" xml:space="preserve">
+    <value>Po aktivaci nebude mít uživatel povoleno aplikaci odinstalovat. Vyžaduje iOS 14+.</value>
+  </data>
+  <data name="ProductApp" xml:space="preserve">
+    <value>Aplikace produktu</value>
+  </data>
+  <data name="ProductAppInstalled" xml:space="preserve">
+    <value>Aplikace na bázi produktu je přiřazena a nainstalována.</value>
+  </data>
+  <data name="ProductAppNotInstalled" xml:space="preserve">
+    <value>Aplikace na bázi produktu je přiřazena, ale není instalována.</value>
+  </data>
+  <data name="ProviderDisabledFileUploadMessage" xml:space="preserve">
+    <value>Zdá se, že jsou deaktivovány úložiště souborů a CDN nebo že databáze dosáhla maximální povolené velikosti pro tuto organizaci. Obraťte se na svého administrátora nebo aktivujte tyto položky a po kontrole databázového úložiště pokračujte.</value>
+  </data>
+  <data name="ProvisioningProfileExpirationExplainationArgDays" xml:space="preserve">
+    <value>Platnost profilu zajišťování souvisejícího s touto aplikací vyprší za {0} dní. Až profil zajišťování vyprší, nebudou mít stávající uživatelé přístup k aplikaci a noví uživatelé, kteří se pokusí o instalaci aplikace, ji nebudou moci nainstalovat. Vygenerujte profil zajišťování pro aplikaci a aktualizujte jej kliknutím na tlačítko Obnovit. U zařízení s již nainstalovanou aplikací se obnovením profilu zajišťování nahradí stávající profil v zařízení novým profilem přidaným bez opětovné instalace aplikace. U nově přihlášených zařízení nebo zařízení bez aplikace se instalací aplikace odešle přidaný nový profil zajišťování.</value>
+  </data>
+  <data name="PublicApplication" xml:space="preserve">
+    <value>Veřejná aplikace</value>
+  </data>
+  <data name="PublicApplications" xml:space="preserve">
+    <value>Veřejné aplikace</value>
+  </data>
+  <data name="PublisherAddedMultipleTimesInAppGroup" xml:space="preserve">
+    <value>V této skupině aplikací byl přidán stejný vydavatel několikrát</value>
+  </data>
+  <data name="PublisherExceptionAddedMultipleTimesInAppGroup" xml:space="preserve">
+    <value>Stejná aplikace byla přidána vícekrát jako výjimka pro vydavatele</value>
+  </data>
+  <data name="PurchasedApplication" xml:space="preserve">
+    <value>Zakoupená aplikace</value>
+  </data>
+  <data name="PurchasedApplications" xml:space="preserve">
+    <value>Zakoupené aplikace</value>
+  </data>
+  <data name="PurchasedAppLicenseAssignmentBySmartGroup" xml:space="preserve">
+    <value>Zakoupená přiřazení licence aplikace podle smart skupiny</value>
+  </data>
+  <data name="Purebred" xml:space="preserve">
+    <value>Purebred</value>
+  </data>
+  <data name="QuickReply" xml:space="preserve">
+    <value>Rychlá odpověď</value>
+  </data>
+  <data name="Ranking" xml:space="preserve">
+    <value>Pořadí</value>
+  </data>
+  <data name="Read/Unread" xml:space="preserve">
+    <value>Přečtené/nepřečtené</value>
+  </data>
+  <data name="ReasonsBreakdown" xml:space="preserve">
+    <value>Podrobnosti stavu instalace</value>
+  </data>
+  <data name="ReasonsBreakdownToolTip" xml:space="preserve">
+    <value>Toto je vyjádření dat získaných ze zařízení, do kterých patří podrobné informace o stavu instalace této aplikace a která nejsou vázána ke konkrétní verzi.</value>
+  </data>
+  <data name="RedeemingCode" xml:space="preserve">
+    <value>Uplatnění kódu</value>
+  </data>
+  <data name="RedemptionCode" xml:space="preserve">
+    <value>Realizační kód</value>
+  </data>
+  <data name="RedemptionCodes" xml:space="preserve">
+    <value>Realizační kódy</value>
+  </data>
+  <data name="RefreshApps" xml:space="preserve">
+    <value>Obnovit aplikace</value>
+  </data>
+  <data name="RemoveApplicationConfirmed" xml:space="preserve">
+    <value>Zařízení potvrdilo odebrání aplikace</value>
+  </data>
+  <data name="RemoveArgApplicationOpensDialog" xml:space="preserve">
+    <value>Příkaz Odebrat aplikaci {0} otevře dialogové okno</value>
+    <comment>Placeholder in this label key is for application name.</comment>
+  </data>
+  <data name="RemoveCommandDispatched" xml:space="preserve">
+    <value>Příkaz k odebrání byl odeslán</value>
+  </data>
+  <data name="RemoveCommandSuccessful" xml:space="preserve">
+    <value>Zařízením potvrzené odebrání</value>
+  </data>
+  <data name="RemovedByEmm" xml:space="preserve">
+    <value>Odstraněno modulem EMM</value>
+  </data>
+  <data name="RemovedByUser" xml:space="preserve">
+    <value>Odstraněno uživatelem</value>
+  </data>
+  <data name="RemoveFromSelectedDevices" xml:space="preserve">
+    <value>Tato aplikace bude odstraněna pouze v zařízeních, která mají aplikaci nainstalovanou a spravovanou modulem EMM.</value>
+  </data>
+  <data name="RemovePreviousValues" xml:space="preserve">
+    <value>Odstranit předchozí hodnoty</value>
+  </data>
+  <data name="RequireApprovalToInstall" xml:space="preserve">
+    <value>Vyžadovat povolení k instalaci</value>
+  </data>
+  <data name="RequireApprovalToInstallToolTip" xml:space="preserve">
+    <value>Uživatelé ve vybraných skupinách přiřazení budou muset získat svolení k přístupu do této aplikace.</value>
+  </data>
+  <data name="RequiredEmailSettings" xml:space="preserve">
+    <value>Přidejte {0} v záložce {1}</value>
+  </data>
+  <data name="RestartDeadlineInDays" xml:space="preserve">
+    <value>Počet dní, po kterých se zařízení automaticky restartuje</value>
+  </data>
+  <data name="RestrictScreenshotsInfo" xml:space="preserve">
+    <value>Zabraňuje uživateli v pořizování snímků obrazovek aplikace. (Pouze systém Android)</value>
+  </data>
+  <data name="ReviewRequestExpired" xml:space="preserve">
+    <value>Platnost požadavku na kontrolu skončila nebo požadavek neoprávněný. Aktualizujte prosím stránku a proveďte kontrolu znovu.</value>
+  </data>
+  <data name="ReviewSummaryBeforeAddingApp" xml:space="preserve">
+    <value>Před přidáním aplikace si prohlédněte přehled. Některá pole můžete upravit později prostřednictvím zobrazení seznamu aplikací.</value>
+  </data>
+  <data name="RevisionNumber" xml:space="preserve">
+    <value>Číslo revize</value>
+  </data>
+  <data name="RevisionVersion" xml:space="preserve">
+    <value>Zadejte platnou hodnotu do pole Verze revize</value>
+  </data>
+  <data name="S/MIMEPolicy" xml:space="preserve">
+    <value>Zásady S/MIME</value>
+  </data>
+  <data name="SaaSAppsIDMSetupArg" xml:space="preserve">
+    <value>Aplikace SaaS lze používat až po nastavení aplikace Workspace ONE. Přejděte do {0} a dokončete nastavení aplikace Workspace ONE. Až budete hotovi, odhlaste se, znovu se přihlaste a opakujte pokus.</value>
+  </data>
+  <data name="SameAssignmentExists" xml:space="preserve">
+    <value>K této aplikaci je již přiřazena jedna či více smart skupin v jiném přiřazení. Pokud chcete pokračovat, tyto smart skupiny odeberte.</value>
+  </data>
+  <data name="SaveConfiguration" xml:space="preserve">
+    <value>Uložit konfiguraci</value>
+  </data>
+  <data name="ScepPendingMaxRetryAttemptsInfo" xml:space="preserve">
+    <value>Konfiguruje maximální počet opětovných pokusů o načtení SCEP v SDK</value>
+  </data>
+  <data name="ScepPendingRetryTimeoutInfo" xml:space="preserve">
+    <value>Interval mezi jednotlivými opětovnými pokusy o načtení SCEP v SDK</value>
+  </data>
+  <data name="ScriptFileHelpText" xml:space="preserve">
+    <value>Vlastní skript k nahrání</value>
+  </data>
+  <data name="SecurityPatch" xml:space="preserve">
+    <value>Bezpečnostní oprava</value>
+  </data>
+  <data name="SecurityPatchDateNotSetError" xml:space="preserve">
+    <value>Datum bezpečnostní opravy nemůže být prázdné, je-li zásada aktivována.</value>
+  </data>
+  <data name="SelectedDeviceRequiresApprovalAlert" xml:space="preserve">
+    <value>Tato aplikace vyžaduje povolení k instalaci na tomto konkrétním zařízení. Žádost o povolení může odeslat koncový uživatel.</value>
+  </data>
+  <data name="SelectedDevicesRequireApprovalAlert" xml:space="preserve">
+    <value>Aplikace bude instalována na všechna zařízení s výjimkou těch, která vyžadují povolení přístupu k ní. Žádost o povolení může odeslat koncový uživatel.</value>
+  </data>
+  <data name="SendAppConfigDescription" xml:space="preserve">
+    <value>Nakonfigurujte tuto aplikaci pomocí nastavení poskytnutých vývojářem aplikace.</value>
+  </data>
+  <data name="SendAppConfiguration" xml:space="preserve">
+    <value>Poslat konfiguraci</value>
+  </data>
+  <data name="SendApplicationAttributes" xml:space="preserve">
+    <value>Poslat atributy aplikace</value>
+  </data>
+  <data name="SendAttibutes" xml:space="preserve">
+    <value>Poslat atributy</value>
+  </data>
+  <data name="SendInviteTooltip" xml:space="preserve">
+    <value>Je-li tato možnost aktivována, budou všechna zařízení iOS automaticky pozvána za účelem instalace aplikací VPP. Pokud aktivována není, budou zařízení pozvána při instalaci aplikací VPP.</value>
+  </data>
+  <data name="ShowCallKitOption" xml:space="preserve">
+    <value>Zobrazit možnost CallKit</value>
+  </data>
+  <data name="SideLoadedCount" xml:space="preserve">
+    <value>Paralelně načítané instalace</value>
+  </data>
+  <data name="SigningCertificateAuthority" xml:space="preserve">
+    <value>Podepisování certifikační autority</value>
+  </data>
+  <data name="SigningCertificateTemplate" xml:space="preserve">
+    <value>Podepisování certifikační šablony</value>
+  </data>
+  <data name="SmartGroupNotPresentInAssignment" xml:space="preserve">
+    <value>Smart skupina se nenachází v žádném z přiřazení přidružených k aplikaci.</value>
+  </data>
+  <data name="SmimeBoxerUserInfoMsg" xml:space="preserve">
+    <value>Uživatelé s již přiřazenými certifikáty S/MIME (Uživatel &gt; Pokročilé &gt; Certifikáty) je obdrží spolu s níže uvedenými zdroji. Zvolte certifikát přidružený k uživatelskému účtu nebo níže uvedený zdroj.</value>
+  </data>
+  <data name="SMIMEConformingEncryptionAlgorithmsInfo" xml:space="preserve">
+    <value>Umožňuje omezit šifrování S/MIME na konkrétní algoritmy. Šifrované e-maily, které nepoužívají schválený algoritmus, budou označeny upozorněním. Pokud nejsou zadány žádné platné hodnoty, budou považovány za přijatelné všechny algoritmy.</value>
+  </data>
+  <data name="SMIMEConformingSigningAlgorithmsInfo" xml:space="preserve">
+    <value>Umožňuje omezit podepisování S/MIME na konkrétní algoritmy. Podepsané e-maily, které nepoužívají schválený algoritmus, budou označeny upozorněním. Pokud nejsou zadány žádné platné hodnoty, budou považovány za přijatelné všechny algoritmy.</value>
+  </data>
+  <data name="SMIMEDefaultEncryptionAlgorithmInfo" xml:space="preserve">
+    <value>Určete algoritmus šifrování, který se použije pro příchozí a odchozí e-maily. Pokud není zadán platný algoritmus, je použit nejnižší podporovaný algoritmus (3DES).</value>
+  </data>
+  <data name="SMIMEDefaultSigningAlgorithmInfo" xml:space="preserve">
+    <value>Určete výchozí podpisový algoritmus S/MIME, který bude použit pro příchozí a odchozí e-maily. Pokud není zadán platný algoritmus, je použit nejnižší podporovaný algoritmus (SHA-1).</value>
+  </data>
+  <data name="SmimeInfo" xml:space="preserve">
+    <value>Konfigurovat S/MIME</value>
+  </data>
+  <data name="SMIMEStatusInfo" xml:space="preserve">
+    <value>Konfigurovat požadavky S/MIME</value>
+  </data>
+  <data name="SMIMEStrictEKUCheckInfo" xml:space="preserve">
+    <value>Definuje, zda je nutné zkontrolovat rozšíření EKU u certifikátů S/MIME. Pokud je nastaveno na hodnotu true, ověříme, že je v certifikátu přítomno rozšíření EKU a že má nastaven účel ochrany e-mailu.</value>
+  </data>
+  <data name="Spam" xml:space="preserve">
+    <value>Nevyžádaná položka</value>
+  </data>
+  <data name="SpamAndPhishingReporting" xml:space="preserve">
+    <value>Hlášení nevyžádané pošty a phishingového útoku</value>
+  </data>
+  <data name="SpamAndPhishingReportingInfo" xml:space="preserve">
+    <value>Konfigurujte akce, které budou provedeny na e-mailových zprávách označených za nevyžádané nebo za phishingový útok</value>
+  </data>
+  <data name="SpamReportConfigPositionChangeInfo" xml:space="preserve">
+    <value>V části Zásady aplikace &gt; Použitelnost nastavte, zda chcete, aby koncový uživatel mohl nahlásit spam.</value>
+  </data>
+  <data name="SpecificApplicationIsNotSupported" xml:space="preserve">
+    <value>Neplatná aplikace, nahrát pouze APK spouštěcího programu Workspace ONE Launcher</value>
+  </data>
+  <data name="SsoInfo" xml:space="preserve">
+    <value>Chcete-li aktivovat SSO v aplikaci Boxer, aktivujte tuto možnost a konfiguraci SSO na svém profilu SDK. Po aktivaci nelze jednotné přihlášení deaktivovat bez opětovné instalace aplikace Workspace ONE Boxer.</value>
+  </data>
+  <data name="StatusLastAction" xml:space="preserve">
+    <value>Stav – Poslední akce</value>
+  </data>
+  <data name="StokenExpiredMessage" xml:space="preserve">
+    <value>Platnost nahraného sTokenu pro tuto organizační skupinu vypršela. Obnovte sToken a opakujte nahrávání.</value>
+  </data>
+  <data name="StokenRevokedMessage" xml:space="preserve">
+    <value>sToken nahraný pro tuto organizační skupinu byl odvolán. Nahrajte nový sToken.</value>
+  </data>
+  <data name="Strict" xml:space="preserve">
+    <value>Přísné</value>
+  </data>
+  <data name="SupportedProcessorArchitectureHelp" xml:space="preserve">
+    <value>Vyberte typ architektury, který aplikace podporuje. Výběr hodnoty 32 bitů znamená, že aplikace bude publikována jak na 32bitová, tak 64bitová zařízení.</value>
+  </data>
+  <data name="SupportEmailAddress" xml:space="preserve">
+    <value>E-mailová adresa podpory</value>
+  </data>
+  <data name="SupportEmailAddressInfo" xml:space="preserve">
+    <value>E-mailová adresa specifikovaná při posílání protokolů přes nabídku podpory.</value>
+  </data>
+  <data name="SwipesLeftLongInfo" xml:space="preserve">
+    <value>Nastavte některou z níže uvedených hodnot, kterou určíte výchozí akci spuštěnou poté, co uživatel přejede prstem po e-mailu v zobrazení seznamu e-mailových zpráv. Poznámka: pokud uživatel změní toto nastavení, konzola jeho volbu nepřepíše.</value>
+  </data>
+  <data name="SwipesLeftShortInfo" xml:space="preserve">
+    <value>Nastavte některou z níže uvedených hodnot, kterou určíte výchozí akci spuštěnou poté, co uživatel přejede prstem po e-mailu v zobrazení seznamu e-mailových zpráv. Poznámka: pokud uživatel změní toto nastavení, konzola jeho volbu nepřepíše.</value>
+  </data>
+  <data name="SwipesRightLongInfo" xml:space="preserve">
+    <value>Nastavte některou z níže uvedených hodnot, kterou určíte výchozí akci spuštěnou poté, co uživatel přejede prstem po e-mailu v zobrazení seznamu e-mailových zpráv. Poznámka: pokud uživatel změní toto nastavení, konzola jeho volbu nepřepíše.</value>
+  </data>
+  <data name="SwipesRightShortInfo" xml:space="preserve">
+    <value>Nastavte některou z níže uvedených hodnot, kterou určíte výchozí akci spuštěnou poté, co uživatel přejede prstem po e-mailu v zobrazení seznamu e-mailových zpráv. Poznámka: pokud uživatel změní toto nastavení, konzola jeho volbu nepřepíše.</value>
+  </data>
+  <data name="SyncContact" xml:space="preserve">
+    <value>Synchronizovat kontakty</value>
+  </data>
+  <data name="SyncTunnelConfiguration" xml:space="preserve">
+    <value>Konfigurace synchronizace aplikace Tunnel</value>
+  </data>
+  <data name="TempUploadedPatch" xml:space="preserve">
+    <value>Nahraná oprava</value>
+  </data>
+  <data name="TempUploadedTransform" xml:space="preserve">
+    <value>Nahraná transformace</value>
+  </data>
+  <data name="TenantStorageCapacity" xml:space="preserve">
+    <value>Kapacita</value>
+  </data>
+  <data name="TenantStorageCapacityMegaBytes" xml:space="preserve">
+    <value>Kapacita (MB)</value>
+  </data>
+  <data name="TenantStorageGigaBytes" xml:space="preserve">
+    <value>GB</value>
+  </data>
+  <data name="TenantStorageMaxFileSize" xml:space="preserve">
+    <value>Maximální velikost souboru</value>
+  </data>
+  <data name="TenantStorageMaxFileSizeMegaBytes" xml:space="preserve">
+    <value>Max. velikost souboru (MB)</value>
+  </data>
+  <data name="TenantStorageMegaBytes" xml:space="preserve">
+    <value>MB</value>
+  </data>
+  <data name="TenantStorageOverageAllowed" xml:space="preserve">
+    <value>Povolené překročení limitu</value>
+  </data>
+  <data name="TenantStorageOverageAllowedMegaBytes" xml:space="preserve">
+    <value>Povolené překročení limitu (MB)</value>
+  </data>
+  <data name="ThisFieldIsRequired" xml:space="preserve">
+    <value>Toto pole je povinné</value>
+  </data>
+  <data name="ThreeDays" xml:space="preserve">
+    <value>3 dny</value>
+  </data>
+  <data name="TimeReceived" xml:space="preserve">
+    <value>Čas přijetí</value>
+  </data>
+  <data name="TimeStamp" xml:space="preserve">
+    <value>Časové razítko</value>
+  </data>
+  <data name="TLSInfo" xml:space="preserve">
+    <value>Konfigurace TLS</value>
+  </data>
+  <data name="TotalCount" xml:space="preserve">
+    <value>Celkový počet</value>
+  </data>
+  <data name="TotalRedeemedLicensesHelpText" xml:space="preserve">
+    <value>Celkový uplatněný počet je součtem licencí uplatněných pro tuto konzolu Workspace ONE UEM Console a licencí uplatněných mimo tuto konzolu Workspace ONE UEM Console. Tyto licence si nárokují zařízení a distribuovat je bude možné až po jejich odvolání.</value>
+  </data>
+  <data name="TriggerAccount" xml:space="preserve">
+    <value>Podrobnosti poslední akce</value>
+  </data>
+  <data name="TriggerAccountToolTip" xml:space="preserve">
+    <value>Zobrazuje podrobnosti poslední provedené akce na přiřazených zařízeních pro tuto aplikaci.</value>
+  </data>
+  <data name="TrustStore" xml:space="preserve">
+    <value>Důvěryhodné úložiště</value>
+  </data>
+  <data name="TunnelAndOtherAttributes" xml:space="preserve">
+    <value>Aplikace Tunnel a další atributy</value>
+  </data>
+  <data name="TunnelConfigGridBulkActionArg" xml:space="preserve">
+    <value>Konfigurace tunelu bude synchronizována na {0} zařízeních</value>
+  </data>
+  <data name="UemVersion" xml:space="preserve">
+    <value>Verze UEM</value>
+  </data>
+  <data name="UnPause" xml:space="preserve">
+    <value>Zrušit pozastavení</value>
+  </data>
+  <data name="Unpaused" xml:space="preserve">
+    <value>Pozastavení zrušeno</value>
+  </data>
+  <data name="UnPauseToSelectedDevice" xml:space="preserve">
+    <value>Touto akcí zrušíte pozastavení odebrání této aplikace u jakéhokoli zařízení, které již nemá oprávnění. Než budete pokračovat, ujistěte se, že jsou oprávnění správná. Pokud si přejete pokračovat, klikněte na OK.</value>
+  </data>
+  <data name="UnreleasedVersions" xml:space="preserve">
+    <value>Předběžná verze</value>
+  </data>
+  <data name="UpgradeApplication" xml:space="preserve">
+    <value>Upgrade aplikace</value>
+  </data>
+  <data name="UploadedPercentageFormat" xml:space="preserve">
+    <value>{0} %</value>
+    <comment>This should be changed to %{0} for languages supporting %# format for percentage</comment>
+  </data>
+  <data name="UploadedUemVersion" xml:space="preserve">
+    <value>Nahraná verze UEM</value>
+  </data>
+  <data name="UploadedVersion" xml:space="preserve">
+    <value>Nahraná verze</value>
+  </data>
+  <data name="UploadInProgressDoNotClose" xml:space="preserve">
+    <value>Probíhá nahrávání, nezavírejte modální okno ani neobnovujte stránku.</value>
+  </data>
+  <data name="UploadStillInProgress" xml:space="preserve">
+    <value>Nahrávání stále probíhá, nezavírejte modální okno ani neobnovujte stránku.</value>
+  </data>
+  <data name="UploadUninstallScript" xml:space="preserve">
+    <value>Nahrajte odinstalační skript pro aplikaci</value>
+  </data>
+  <data name="Usability" xml:space="preserve">
+    <value>Použitelnost</value>
+  </data>
+  <data name="UseEscrowGateway" xml:space="preserve">
+    <value>Použít bránu pro úschovu</value>
+  </data>
+  <data name="UseEscrowGatewayInfo" xml:space="preserve">
+    <value>Tato možnost se týká pouze aplikace Boxer verze 5.19 nebo vyšší a musí být nakonfigurována brána pro úschovu.</value>
+  </data>
+  <data name="UserAppRatingInfo" xml:space="preserve">
+    <value>Informace o uživatelském hodnocení aplikace</value>
+  </data>
+  <data name="UserCertificateOnly" xml:space="preserve">
+    <value>Pouze certifikát uživatele</value>
+  </data>
+  <data name="UserCertificateOptionalInfo" xml:space="preserve">
+    <value>Pokud uživatel nemá certifikát, budou tyto přihlašovací údaje přeskočeny a zbytek profilu bude doručen koncovým uživatelům. Je-li k dispozici, bude uživatelský certifikát vyžádán od konkrétního uživatele aplikace Workspace ONE. Certifikát lze nahrát ručně v podrobnostech o uživateli v konzole nebo samoobslužné službě.</value>
+  </data>
+  <data name="UserDeferredInstall" xml:space="preserve">
+    <value>Žádné (instalace aplikace byla odložena uživatelem)</value>
+  </data>
+  <data name="UserEngagedDeadline" xml:space="preserve">
+    <value>Konečný termín pro spuštění uživatelem</value>
+  </data>
+  <data name="UserEngagedRestart" xml:space="preserve">
+    <value>Uživatelem spuštěný restart</value>
+  </data>
+  <data name="UseSameSigningAndEncryptionCertificate" xml:space="preserve">
+    <value>Použít stejný podpisový a šifrovací certifikát</value>
+  </data>
+  <data name="UseSameSigningAndEncryptionCertificateInfo" xml:space="preserve">
+    <value>Pro podpis a šifrování bude použit stejný certifikát S/MIME, pokud není vybraný žádný jiný.</value>
+  </data>
+  <data name="ValidatingDependentApps" xml:space="preserve">
+    <value>Ověřování závislých aplikací</value>
+  </data>
+  <data name="ValidationAppConfiguration" xml:space="preserve">
+    <value>U vybraných aplikací nejsou definována žádná přiřazení. Vyberte jinou aplikaci nebo definujte alespoň jedno přiřazení a zkuste to znovu.</value>
+  </data>
+  <data name="ValidationDuplicateStep" xml:space="preserve">
+    <value>Existuje jiný krok s podobnou konfigurací.</value>
+  </data>
+  <data name="ValidationErrorMessage" xml:space="preserve">
+    <value>Změny nelze uložit. Před dalším pokusem se ujistěte, že je každé pole vyplněné a že se nevyskytly žádné chyby.</value>
+  </data>
+  <data name="VersionCodeAlreadyExistsInOG" xml:space="preserve">
+    <value>Kód verze pro tuto aplikaci Android je {0} a již existuje v organizační skupině, požádejte vývojáře o aktualizaci kódu verze. Již přidané kódy verze pro Identifikátor {1} v aktuální organizační skupině jsou {2}.</value>
+  </data>
+  <data name="Versions" xml:space="preserve">
+    <value>verze</value>
+  </data>
+  <data name="VersionsInstalled" xml:space="preserve">
+    <value>Intalované verze</value>
+  </data>
+  <data name="ViewCriteria" xml:space="preserve">
+    <value>Zobrazit kritéria</value>
+  </data>
+  <data name="ViewFlexeraApps" xml:space="preserve">
+    <value>Zobrazit aplikace</value>
+  </data>
+  <data name="ViewInstallStatusForApplication" xml:space="preserve">
+    <value>Zobrazit stav instalace pro {0}</value>
+  </data>
+  <data name="VirtualApplications" xml:space="preserve">
+    <value>Virtuální aplikace</value>
+  </data>
+  <data name="VirtualApplicationsHelp" xml:space="preserve">
+    <value>Řídí přístup ke konfiguraci virtuálních aplikací; týká se pouze adresářových administrátorů.</value>
+  </data>
+  <data name="VirtualApps" xml:space="preserve">
+    <value>Virtuální aplikace</value>
+  </data>
+  <data name="VirtualAppsHelp" xml:space="preserve">
+    <value>Prohlédněte si seznam virtuálních aplikací a desktopů, ke kterým mohou zaměstnanci přistupovat z katalogu Workspace ONE.</value>
+  </data>
+  <data name="VirtualAppsIDMSetupArg" xml:space="preserve">
+    <value>Virtuální aplikace lze používat až po nastavení aplikace Workspace ONE. Přejděte do části {0} a dokončete nastavení aplikace Workspace ONE. Až budete hotovi, odhlaste se, znovu se přihlaste a zkuste to znovu.</value>
+  </data>
+  <data name="VirtualAppsMenuDescription" xml:space="preserve">
+    <value>Prohlédněte si seznam virtuálních aplikací a desktopů, ke kterým mohou zaměstnanci přistupovat z katalogu Workspace ONE.</value>
+  </data>
+  <data name="VirtualBreadcrumbDescription" xml:space="preserve">
+    <value>Zobrazení a správa virtuálních aplikací a kolekcí.</value>
+  </data>
+  <data name="VMwareDocs" xml:space="preserve">
+    <value>VMware Docs</value>
+  </data>
+  <data name="VPPLicenseNotAvailable" xml:space="preserve">
+    <value>Žádné (licence není k dispozici)</value>
+  </data>
+  <data name="WaitingForEvent" xml:space="preserve">
+    <value>Čeká se na událost</value>
+  </data>
+  <data name="WaitingForSchedule" xml:space="preserve">
+    <value>Čeká se na plán</value>
+  </data>
+  <data name="WaitingForTimeWindow" xml:space="preserve">
+    <value>Čeká se na časové okno</value>
+  </data>
+  <data name="WaitingToBeRetried" xml:space="preserve">
+    <value>Čekání na opakování</value>
+  </data>
+  <data name="WantToContinue" xml:space="preserve">
+    <value>Přejete si pokračovat?</value>
+  </data>
+  <data name="WebLinkMenus" xml:space="preserve">
+    <value>Webové odkazy</value>
+  </data>
+  <data name="WindowsAppsRetireDescription" xml:space="preserve">
+    <value>Vyřazení verze aplikace odinstaluje aplikaci ze všech zařízení spravovaných aplikací Workspace ONE. Pokud je k dispozici a přiřazena další nižší verze aplikace, nebude provedena žádná akce, protože OS zařízení nepodporuje přechod na nižší verzi aplikace.</value>
+  </data>
+  <data name="WindowsProvisioningInstallContextWarning" xml:space="preserve">
+    <value>Tato aplikace vyžaduje ke své instalaci kontext uživatele. Nemůže být zahrnuta do exportovaného balíčku PPKG.</value>
+  </data>
+  <data name="WindowsProvisioningNoAppSelected" xml:space="preserve">
+    <value>Vyberte aplikace exportované do zřizovacího balíčku Windows</value>
+  </data>
+  <data name="WindowsProvisioningOGInheritedWarning" xml:space="preserve">
+    <value>Tato aplikace je zděděna z jiné organizační skupiny. Nemůže být zahrnuta do exportovaného balíčku PPKG.</value>
+  </data>
+  <data name="WindowsProvisioningPackageDeleteFailed" xml:space="preserve">
+    <value>Při odstraňování zřizovacího balíčku (PPKG) došlo k neočekávané chybě.</value>
+  </data>
+  <data name="WindowsProvisioningPackageDeleteSuccess" xml:space="preserve">
+    <value>Zřizovací balíček Windows (PPKG) úspěšně odstraněn.</value>
+  </data>
+  <data name="WindowsProvisioningPackageDeleteWarning" xml:space="preserve">
+    <value>Tento balíček zajišťování nelze odstranit, neboť je spravován ve vyšší organizační skupině nebo má jeho administrátor pouze přístup ke čtení.</value>
+  </data>
+  <data name="WindowsProvisioningPackageDownloadAction" xml:space="preserve">
+    <value>Stáhnout</value>
+  </data>
+  <data name="WindowsProvisioningPackageEditWarning" xml:space="preserve">
+    <value>Tento balíček zajišťování nelze upravovat, neboť je spravován ve vyšší organizační skupině nebo má jeho administrátor pouze přístup ke čtení.</value>
+  </data>
+  <data name="WindowsProvisioningPackageFailed" xml:space="preserve">
+    <value>Při požadavku na zajišťovací balíček (PPKG) došlo k neočekávané chybě.</value>
+  </data>
+  <data name="WindowsProvisioningPackageFailedMessage" xml:space="preserve">
+    <value>Selhal export zajišťovacího balíčku Windows (PPKG).</value>
+  </data>
+  <data name="WindowsProvisioningPackagePleaseWait" xml:space="preserve">
+    <value>Probíhá export stávajícího zajišťovacího balíčku Windows (PPKG). Počkejte, dokud nebude export dokončen.</value>
+  </data>
+  <data name="WindowsProvisioningPackageProgressActionMessage" xml:space="preserve">
+    <value>Zobrazit aplikace</value>
+  </data>
+  <data name="WindowsProvisioningPackageProgressMessage" xml:space="preserve">
+    <value>Probíhá export zajišťovacího balíčku Windows (PPKG).</value>
+  </data>
+  <data name="WindowsProvisioningPackageRequested" xml:space="preserve">
+    <value>Je úspěšně vyžádán export zajišťovacího balíčku Windows (PPKG). Až bude export PPKG dokončen, bude odesláno oznámení s odkazem pro stažení.</value>
+  </data>
+  <data name="WindowsProvisioningPackageStorageFailed" xml:space="preserve">
+    <value>Selhal export zajišťovacího balíčku Windows (PPKG) kvůli nedostatečnému volnému místu v úložišti.</value>
+  </data>
+  <data name="WindowsProvisioningPackageSuccessActionMessage" xml:space="preserve">
+    <value>Stáhnout</value>
+  </data>
+  <data name="WindowsProvisioningPackageSuccessMessage" xml:space="preserve">
+    <value>Exportovaný zajišťovací balíček Windows (PPKG) je dostupný ke stažení.</value>
+  </data>
+  <data name="WindowsProvisioningPackageTitle" xml:space="preserve">
+    <value>Zřizovací balíček Windows</value>
+  </data>
+  <data name="WindowsProvisioningSFDReUploadWarning" xml:space="preserve">
+    <value>Tuto aplikaci je nutné po aktivaci Nasazení softwarových balíčků v Nastavení nahrát, aby ji šlo začlenit do exportovaného balíčku PPKG.</value>
+  </data>
+  <data name="WinRTDesiredStateManagementTooltip" xml:space="preserve">
+    <value>Týká se pouze aplikací spravovaných v MDM, které jsou nasazeny pomocí metody automatického doručení. Je-li zapnuto, aplikace bude po rozpoznání odinstalace automaticky znovu nainstalována. Je-li vypnuto, aplikace nebude po rozpoznání odinstalace znovu nainstalována.</value>
+  </data>
+  <data name="WorkflowDefinitionDesc" xml:space="preserve">
+    <value>Zadejte popisný název a popis pracovního postupu.</value>
+  </data>
+  <data name="WorkflowRebootPlaceholder" xml:space="preserve">
+    <value>Zařízení bude restartováno, než budete pokračovat dalším krokem (pokud existuje).</value>
+  </data>
+  <data name="Workflows" xml:space="preserve">
+    <value>Pracovní postupy</value>
+  </data>
+  <data name="WorkflowStepsDesc" xml:space="preserve">
+    <value>Zde vyhledejte a přidejte aplikace a podmínky pro vytvoření pracovního postupu. Pracovní postup bude proveden v níže uvedeném pořadí. Přetažením položek můžete pořadí změnit.</value>
+  </data>
+  <data name="WorkflowStepsPlaceholder" xml:space="preserve">
+    <value>Začněte přidáváním aplikací nebo podmínek</value>
+  </data>
+  <data name="WorkflowSummaryDesc" xml:space="preserve">
+    <value>Před uložením zkontrolujte podrobnosti pracovního postupu a jeho jednotlivé kroky.</value>
+  </data>
+  <data name="WorkspaceOneAdminAssistantForMacOs" xml:space="preserve">
+    <value>Workspace ONE Admin Assistant pro macOS</value>
+  </data>
+  <data name="X64AppDependencies" xml:space="preserve">
+    <value>Závislosti X64</value>
+  </data>
+  <data name="X86AppDependencies" xml:space="preserve">
+    <value>Závislosti X86</value>
+  </data>
+  <data name="ZeroOrPositiveIntegerRequired" xml:space="preserve">
+    <value>Hodnota by měla být nula nebo kladné celé číslo</value>
+  </data>
+</root>

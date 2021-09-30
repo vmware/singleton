@@ -1,0 +1,1004 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AboutFreestyleOrchestrator" xml:space="preserve">
+    <value>O aplikaci Freestyle Orchestrator</value>
+  </data>
+  <data name="AddEditFreestyle" xml:space="preserve">
+    <value>Přidat/upravit Freestyle</value>
+  </data>
+  <data name="AddEditFreestyleHelp" xml:space="preserve">
+    <value>Řídí přístup k vytváření, úpravám a publikování Freestyle a typů zdrojů, jako jsou aplikace, profily a skripty</value>
+  </data>
+  <data name="AddressWidth" xml:space="preserve">
+    <value>Šířka adresy</value>
+  </data>
+  <data name="ApplicationDoesNotExist" xml:space="preserve">
+    <value>Aplikace neexistuje</value>
+  </data>
+  <data name="ApplicationExists" xml:space="preserve">
+    <value>Aplikace existuje</value>
+  </data>
+  <data name="AppResultsDescription" xml:space="preserve">
+    <value>Skutečný počet potenciálně kvalifikovaných aplikací může být větší, než je zobrazeno.</value>
+  </data>
+  <data name="AppsOfArg" xml:space="preserve">
+    <value>Aplikace {0}–{1} z {2}</value>
+  </data>
+  <data name="Archived" xml:space="preserve">
+    <value>Archivované</value>
+  </data>
+  <data name="AssignmentDoesNotExistOrMightBeDeleted" xml:space="preserve">
+    <value>Přiřazení neexistuje nebo bylo pravděpodobně odstraněno.</value>
+  </data>
+  <data name="AssignmentsCouldNotBeRetrieved" xml:space="preserve">
+    <value>Nelze načíst přiřazení.</value>
+  </data>
+  <data name="Attributes" xml:space="preserve">
+    <value>Atributy</value>
+  </data>
+  <data name="AutoDeploy" xml:space="preserve">
+    <value>Automatické nasazení</value>
+  </data>
+  <data name="AutoDeployAndShowInAppCatalog" xml:space="preserve">
+    <value>Automatické nasazení a zobrazení v katalogu aplikací</value>
+  </data>
+  <data name="BackoffRate" xml:space="preserve">
+    <value>Míra odstupů</value>
+  </data>
+  <data name="BackoffRateDesc" xml:space="preserve">
+    <value>Násobitel, který určuje interval mezi následujícími pokusy.</value>
+  </data>
+  <data name="BankLocator" xml:space="preserve">
+    <value>Vyhledávač banky</value>
+  </data>
+  <data name="BaseTimeHelpText" xml:space="preserve">
+    <value>Vyhodnoceno na základě místního času zařízení</value>
+  </data>
+  <data name="BiosPayloadWarning" xml:space="preserve">
+    <value>Před publikováním se ujistěte, že je do pracovního postupu přidána aplikace Dell Command Monitor.</value>
+  </data>
+  <data name="Bitlocker" xml:space="preserve">
+    <value>BitLocker</value>
+  </data>
+  <data name="BrowserExtension" xml:space="preserve">
+    <value>Rozšíření prohlížeče</value>
+  </data>
+  <data name="BrowserName" xml:space="preserve">
+    <value>Název prohlížeče</value>
+  </data>
+  <data name="Capacity" xml:space="preserve">
+    <value>Kapacita</value>
+  </data>
+  <data name="Caption" xml:space="preserve">
+    <value>Titulek</value>
+  </data>
+  <data name="CatalogIconRecommendationAndLimit" xml:space="preserve">
+    <value>PNG, JPG or GIF, 1 MB maximum, 512 by 512 px recommended.</value>
+  </data>
+  <data name="ChangeAttribute" xml:space="preserve">
+    <value>Změnit</value>
+    <comment>edi change attribute confirm button text</comment>
+  </data>
+  <data name="ChangeAttributeConfirmationDescription" xml:space="preserve">
+    <value>Změnou tohoto výběru vymažete všechny atributy související s aktuálním výběrem.</value>
+    <comment>edi change attribute confirm model body description</comment>
+  </data>
+  <data name="ChangeAttributeConfirmationTitle" xml:space="preserve">
+    <value>Změnit výběr</value>
+    <comment>edi change attribute confirm model title</comment>
+  </data>
+  <data name="ChangePlatform" xml:space="preserve">
+    <value>Změnit platformu</value>
+  </data>
+  <data name="ChasisType" xml:space="preserve">
+    <value>Typ šasi</value>
+  </data>
+  <data name="ClockSpeed" xml:space="preserve">
+    <value>Taktovací rychlost</value>
+  </data>
+  <data name="CodeName" xml:space="preserve">
+    <value>Název kódu</value>
+  </data>
+  <data name="CompletedWithException" xml:space="preserve">
+    <value>Dokončeno s výjimkou</value>
+  </data>
+  <data name="Compute" xml:space="preserve">
+    <value>Vypočítat</value>
+  </data>
+  <data name="ConfigurationOptionTooltipMsg" xml:space="preserve">
+    <value>Výběrem platformy přidáte další kroky do pracovního postupu.</value>
+  </data>
+  <data name="ConfirmDeleteArg" xml:space="preserve">
+    <value>Odstranit {0}</value>
+    <comment>{0} will be Workflow name</comment>
+  </data>
+  <data name="ConfirmDeleteWorkflowContent" xml:space="preserve">
+    <value>Odstraněním tohoto pracovního postupu se odstraní přiřazení zdrojů ze zařízení v tomto pracovním postupu. Tuto akci nelze vrátit zpět. Zdroje aktuálně instalované na zařízení budou zachovány, dokud nebudou ručně odebrány.</value>
+  </data>
+  <data name="ConfirmPauseArg" xml:space="preserve">
+    <value>Pozastavit {0}</value>
+  </data>
+  <data name="ConfirmPauseWorkflowContent" xml:space="preserve">
+    <value>Tato akce zastaví spuštění pracovního postupu na nových zařízeních, dokud jej neobnovíte. Zařízení, která již spustila nebo na nich je momentálně spuštěný tento pracovní postup, nebudou ovlivněna.</value>
+  </data>
+  <data name="ConnectionId" xml:space="preserve">
+    <value>ID připojení</value>
+  </data>
+  <data name="Cores" xml:space="preserve">
+    <value>Jádra</value>
+  </data>
+  <data name="CPU" xml:space="preserve">
+    <value>Procesor</value>
+  </data>
+  <data name="CPUBrand" xml:space="preserve">
+    <value>Značka procesoru</value>
+  </data>
+  <data name="CPUID" xml:space="preserve">
+    <value>ID procesoru</value>
+  </data>
+  <data name="CPUModel" xml:space="preserve">
+    <value>Model procesoru</value>
+  </data>
+  <data name="CPUSubType" xml:space="preserve">
+    <value>Podtyp procesoru</value>
+  </data>
+  <data name="CPUType" xml:space="preserve">
+    <value>Typ procesoru</value>
+  </data>
+  <data name="CreatedOnByArg" xml:space="preserve">
+    <value>Vytvořeno {0} uživatelem {1}</value>
+  </data>
+  <data name="CreateWorkflowsInfo" xml:space="preserve">
+    <value>Jakmile budete připraveni, klikněte na Začínáme, vytvořte a publikujte pracovní postupy s využitím zdrojů, které jste konfigurovali.</value>
+  </data>
+  <data name="CreateYourWorkflows" xml:space="preserve">
+    <value>Vytvoření pracovních postupů</value>
+  </data>
+  <data name="CustomLastDays" xml:space="preserve">
+    <value>Poslední(ch) {0} den (dní)</value>
+  </data>
+  <data name="CustomLastHours" xml:space="preserve">
+    <value>Poslední(ch) {0} hodina (hodin)</value>
+  </data>
+  <data name="CustomLastMonths" xml:space="preserve">
+    <value>Poslední(ch) {0} měsíc (měsíců)</value>
+  </data>
+  <data name="CustomLastWeeks" xml:space="preserve">
+    <value>Poslední(ch) {0} týden (týdnů)</value>
+  </data>
+  <data name="DataWidth" xml:space="preserve">
+    <value>Šířka dat</value>
+  </data>
+  <data name="DeleteFreestyle" xml:space="preserve">
+    <value>Odstranit Freestyle</value>
+  </data>
+  <data name="DeleteFreestyleHelp" xml:space="preserve">
+    <value>Řídí přístup k odstraňování Freestyle a typů zdrojů, jako jsou aplikace, profily a skripty</value>
+  </data>
+  <data name="DeleteWorkflow" xml:space="preserve">
+    <value>Odstranit pracovní postup</value>
+  </data>
+  <data name="DeleteWorkflowAdditionalContent" xml:space="preserve">
+    <value>Chcete-li odstranit instalované zdroje, přejděte do zobrazení detailů zařízení pro každé zařízení, nebo zobrazte přiřazená zařízení pro každý zdroj.</value>
+  </data>
+  <data name="DeploymentSettings" xml:space="preserve">
+    <value>Nastavení nasazení</value>
+  </data>
+  <data name="DeviceBreakdown" xml:space="preserve">
+    <value>Přehled o zařízení</value>
+  </data>
+  <data name="DeviceDistributionUnavailable" xml:space="preserve">
+    <value>Distribuce zařízení není dostupná.</value>
+  </data>
+  <data name="DeviceExecutionStatusInfo" xml:space="preserve">
+    <value>Na základě platformy a výběrů smart skupin</value>
+  </data>
+  <data name="DeviceLocator" xml:space="preserve">
+    <value>Vyhledávač zařízení</value>
+  </data>
+  <data name="DeviceNotAssignedToWorkflow" xml:space="preserve">
+    <value>Zařízení není přiřazeno k tomuto pracovnímu postupu.</value>
+  </data>
+  <data name="DeviceWithStatusArg" xml:space="preserve">
+    <value>Zařízení se stavem {0}</value>
+  </data>
+  <data name="DeviceWorkflowStatusInfo" xml:space="preserve">
+    <value>Stav každého kroku v tomto pracovním postupu pro toto zařízení je uveden níže.</value>
+  </data>
+  <data name="DiskIndex" xml:space="preserve">
+    <value>Index disku</value>
+  </data>
+  <data name="DNSDomain" xml:space="preserve">
+    <value>Doména DNS</value>
+  </data>
+  <data name="DNSServerSearchOrder" xml:space="preserve">
+    <value>Pořadí vyhledávání serveru DNS</value>
+  </data>
+  <data name="DoYouWantToContinue" xml:space="preserve">
+    <value>Přejete si pokračovat?</value>
+  </data>
+  <data name="DriverDate" xml:space="preserve">
+    <value>Datum ovladače</value>
+  </data>
+  <data name="DriverKey" xml:space="preserve">
+    <value>Klíč ovladače</value>
+  </data>
+  <data name="DriverSigned" xml:space="preserve">
+    <value>Podepsaný ovladač</value>
+  </data>
+  <data name="DWord32Bit" xml:space="preserve">
+    <value>DWORD</value>
+  </data>
+  <data name="EdiSelectFurther" xml:space="preserve">
+    <value>Vybrat atribut</value>
+    <comment>edi sencondary selection default text.</comment>
+  </data>
+  <data name="EmptyStepStatus" xml:space="preserve">
+    <value>Nebyly nahlášeny žádné stavy zařízení. Počet zařízení se aktualizuje, jakmile bude k dispozici více dat.</value>
+  </data>
+  <data name="EnterNumber" xml:space="preserve">
+    <value>Zadejte číslo</value>
+  </data>
+  <data name="EnterNumberForCustomRange" xml:space="preserve">
+    <value>Zadejte číslo pro vlastní rozsah</value>
+  </data>
+  <data name="EntryBlock" xml:space="preserve">
+    <value>Nastavení pracovního postupu</value>
+  </data>
+  <data name="ErrorHandling" xml:space="preserve">
+    <value>Zpracování chyb</value>
+  </data>
+  <data name="ErrorLoadingCategories" xml:space="preserve">
+    <value>Nelze načíst kategorie aplikací. Pokud problém přetrvává, obraťte se na administrátora systému.</value>
+  </data>
+  <data name="EulaSettings" xml:space="preserve">
+    <value>Nastavení EULA</value>
+  </data>
+  <data name="ExcludedSmartGroupAssignmentError" xml:space="preserve">
+    <value>Vyloučené smart skupiny by neměly být součástí přiřazení smart skupin u jakýchkoli pracovních postupů, které tuto aplikaci obsahují.</value>
+  </data>
+  <data name="ExecutionRate" xml:space="preserve">
+    <value>Rychlost provedení</value>
+  </data>
+  <data name="Exists" xml:space="preserve">
+    <value>Existuje</value>
+  </data>
+  <data name="ExpandableString" xml:space="preserve">
+    <value>Rozšiřitelný řetězec</value>
+  </data>
+  <data name="ExtensionName" xml:space="preserve">
+    <value>Název rozšíření</value>
+  </data>
+  <data name="FileSystem" xml:space="preserve">
+    <value>Systém souborů</value>
+  </data>
+  <data name="Filters" xml:space="preserve">
+    <value>Filtry</value>
+  </data>
+  <data name="FindOutMore" xml:space="preserve">
+    <value>Další informace najdete na</value>
+  </data>
+  <data name="FirstRetryAfter" xml:space="preserve">
+    <value>První opakování po</value>
+  </data>
+  <data name="FourthRetryAfter" xml:space="preserve">
+    <value>Čtvrté opakování po</value>
+  </data>
+  <data name="FreeSpace" xml:space="preserve">
+    <value>Volné místo</value>
+  </data>
+  <data name="Freestyle" xml:space="preserve">
+    <value>Freestyle</value>
+  </data>
+  <data name="FreestyleContext" xml:space="preserve">
+    <value>Kontext</value>
+  </data>
+  <data name="FreestyleHeader" xml:space="preserve">
+    <value>Vytváří pracovní postupy, které vyhovují vašim potřebám.</value>
+  </data>
+  <data name="FreestyleInfo" xml:space="preserve">
+    <value>Workspace ONE Freestyle Orchestrator je bezkódová orchestrační IT platforma, která poskytuje flexibilitu při vytváření pracovních postupů pro zdroje, jako jsou aplikace, profily a skripty, a aplikuje je na zařízení na základě podrobnějších kritérií.</value>
+  </data>
+  <data name="FreestyleNote" xml:space="preserve">
+    <value>Aktuálně k dispozici pouze pro platformy Windows 10 a macOS.</value>
+  </data>
+  <data name="FreestyleOrchestrator" xml:space="preserve">
+    <value>Freestyle Orchestrator</value>
+  </data>
+  <data name="FreestyleOrchestratorInfo" xml:space="preserve">
+    <value>Vytvořte pracovní postupy pro zdroje, jako jsou aplikace, profily a skripty, a aplikujte je na zařízení na základě podrobnějších kritérií.</value>
+  </data>
+  <data name="FreestyleOrchestratorPreview" xml:space="preserve">
+    <value>Freestyle Orchestrator (náhled)</value>
+  </data>
+  <data name="FreestyleWelcomeWindowDescription" xml:space="preserve">
+    <value>Freestyle Orchestrator je orchestrační IT platforma s nízkoúrovňovým kódem, která poskytuje flexibilitu při vytváření pracovních postupů pro zdroje, jako jsou aplikace, profily a skripty, a aplikuje je na zařízení na základě podrobnějších kritérií.</value>
+  </data>
+  <data name="FreestyleWelcomeWindowDescriptionInfo" xml:space="preserve">
+    <value>Freestyle Orchestrator je momentálně k dispozici pro platformy Windows 10 a macOS.</value>
+  </data>
+  <data name="FreestyleWorkflow" xml:space="preserve">
+    <value>Pracovní postup Freestyle</value>
+  </data>
+  <data name="FreestyleWorkflowDescription" xml:space="preserve">
+    <value>Můžete předávat objekty nebo provádět konkrétní akce na zařízeních na základě kritérií.</value>
+  </data>
+  <data name="GettingStartedWithWorkflows" xml:space="preserve">
+    <value>Začínáme s pracovními postupy</value>
+  </data>
+  <data name="HardwareSerial" xml:space="preserve">
+    <value>Sériové číslo hardwaru</value>
+  </data>
+  <data name="HardwareVendor" xml:space="preserve">
+    <value>Dodavatel hardwaru</value>
+  </data>
+  <data name="HardwareVersion" xml:space="preserve">
+    <value>Verze hardwaru</value>
+  </data>
+  <data name="Hotfix" xml:space="preserve">
+    <value>Oprava hotfix</value>
+  </data>
+  <data name="HotfixKBId" xml:space="preserve">
+    <value>ID článku KB opravy hotfix</value>
+  </data>
+  <data name="Includes" xml:space="preserve">
+    <value>Zahrnuje</value>
+  </data>
+  <data name="InitialValueIsActivated" xml:space="preserve">
+    <value>Počáteční hodnota je aktivována</value>
+  </data>
+  <data name="InitialValueIsEnabled" xml:space="preserve">
+    <value>Počáteční hodnota je povolena</value>
+  </data>
+  <data name="InitialValueIsOwned" xml:space="preserve">
+    <value>Počáteční hodnota je vlastněna</value>
+  </data>
+  <data name="InstallationState" xml:space="preserve">
+    <value>Stav instalace</value>
+  </data>
+  <data name="InstalledBy" xml:space="preserve">
+    <value>Nainstaloval/a</value>
+  </data>
+  <data name="InstalledOn" xml:space="preserve">
+    <value>Instalováno</value>
+  </data>
+  <data name="InstallLocation" xml:space="preserve">
+    <value>Umístění instalace</value>
+  </data>
+  <data name="InstallSource" xml:space="preserve">
+    <value>Zdroj instalace</value>
+  </data>
+  <data name="IntroducingFreestyleOrchestrator" xml:space="preserve">
+    <value>Představujeme Freestyle Orchestrator</value>
+  </data>
+  <data name="IsBootable" xml:space="preserve">
+    <value>Je spouštěcí</value>
+  </data>
+  <data name="IsFramework" xml:space="preserve">
+    <value>Je rámec</value>
+  </data>
+  <data name="KioskPayloadWarning" xml:space="preserve">
+    <value>Před publikováním zkontrolujte, zda jsou do pracovního postupu přidány aplikace z datové části kiosku.</value>
+  </data>
+  <data name="LastFortyFiveDays" xml:space="preserve">
+    <value>Posledních 45 dní</value>
+  </data>
+  <data name="LastFortyFiveDaysNumeric" xml:space="preserve">
+    <value>Posledních 45 dnů</value>
+  </data>
+  <data name="LastFourteenDays" xml:space="preserve">
+    <value>Posledních 14 dní</value>
+  </data>
+  <data name="LastFourteenDaysNumeric" xml:space="preserve">
+    <value>Posledních 14 dnů</value>
+  </data>
+  <data name="LastSevenDaysNumeric" xml:space="preserve">
+    <value>Posledních 7 dnů</value>
+  </data>
+  <data name="LastSixtyDays" xml:space="preserve">
+    <value>Posledních 60 dní</value>
+  </data>
+  <data name="LastSixtyDaysNumeric" xml:space="preserve">
+    <value>Posledních 60 dnů</value>
+  </data>
+  <data name="LastThirtyDaysNumeric" xml:space="preserve">
+    <value>Posledních 30 dnů</value>
+  </data>
+  <data name="Latest" xml:space="preserve">
+    <value>Nejnovější</value>
+  </data>
+  <data name="LatestAvailable" xml:space="preserve">
+    <value>Nejpozději dostupné</value>
+  </data>
+  <data name="LocalTimeZone" xml:space="preserve">
+    <value>Místní časové pásmo</value>
+  </data>
+  <data name="LogicalDrives" xml:space="preserve">
+    <value>Logické jednotky</value>
+  </data>
+  <data name="ManufacturerId" xml:space="preserve">
+    <value>ID výrobce</value>
+  </data>
+  <data name="ManufacturerVersion" xml:space="preserve">
+    <value>Verze výrobce</value>
+  </data>
+  <data name="ManufacturerVersionInfo" xml:space="preserve">
+    <value>Informace o verzi výrobce</value>
+  </data>
+  <data name="MatchesFound" xml:space="preserve">
+    <value>Počet nalezených shod: {0}</value>
+  </data>
+  <data name="MaxClockSpeed" xml:space="preserve">
+    <value>Maximální taktovací rychlost</value>
+  </data>
+  <data name="MaximumRetries" xml:space="preserve">
+    <value>Maximální počet opakování</value>
+  </data>
+  <data name="MayNotBeFiltered" xml:space="preserve">
+    <value>Výsledky nemusí obsahovat</value>
+  </data>
+  <data name="MayNotBeFilteredDesc" xml:space="preserve">
+    <value>Alfanumerické verze aplikace jsou filtrovány s použitím operátorů „větší než“ nebo „menší než“.</value>
+  </data>
+  <data name="MemoryType" xml:space="preserve">
+    <value>Typ paměti</value>
+  </data>
+  <data name="ModifiedOnByArg" xml:space="preserve">
+    <value>Upraveno {0} uživatelem {1}</value>
+  </data>
+  <data name="MonitorPerformance" xml:space="preserve">
+    <value>Monitorování výkonu</value>
+  </data>
+  <data name="MonitorWorkflowPerformanceInfo" xml:space="preserve">
+    <value>Monitorujte a získejte přehled o publikovaných pracovních postupech, zobrazte metriky výkonnosti a spravujte uložené a archivované pracovní postupy.</value>
+  </data>
+  <data name="MultipleValueHelpText" xml:space="preserve">
+    <value>Více hodnot oddělte čárkami.</value>
+  </data>
+  <data name="MustBeBetweenArgs" xml:space="preserve">
+    <value>Musí být v rozmezí {0} až {1}</value>
+  </data>
+  <data name="NavigationFreestyle" xml:space="preserve">
+    <value>Navigace Freestyle</value>
+  </data>
+  <data name="NavigationFreestyleHelp" xml:space="preserve">
+    <value>Řídí přístup do postranní nabídky Freestyle</value>
+  </data>
+  <data name="NavigationResources" xml:space="preserve">
+    <value>Zdroje navigace</value>
+  </data>
+  <data name="NavigationResourcesHelp" xml:space="preserve">
+    <value>Řídí přístup do postranní nabídky zdrojů</value>
+  </data>
+  <data name="NetworkAdapter" xml:space="preserve">
+    <value>Síťový adaptér</value>
+  </data>
+  <data name="NoDefaultPolicyForVersion" xml:space="preserve">
+    <value>Verze aplikace nemá žádné výchozí zásady. Nastavte je před publikováním.</value>
+  </data>
+  <data name="NoStepStatus" xml:space="preserve">
+    <value>U tohoto kroku není žádný stav k nahlášení. Zvolte další krok k zobrazení přehledu o zařízení.</value>
+  </data>
+  <data name="NotBetween" xml:space="preserve">
+    <value>Není mezi</value>
+  </data>
+  <data name="NotEquals" xml:space="preserve">
+    <value>Není rovno</value>
+  </data>
+  <data name="NotIn" xml:space="preserve">
+    <value>Není v</value>
+  </data>
+  <data name="OemUpdatesPayloadWarning" xml:space="preserve">
+    <value>Před publikováním se ujistěte, že je do pracovního postupu přidána aplikace Dell Command Update.</value>
+  </data>
+  <data name="OverallDeviceExecutionStatus" xml:space="preserve">
+    <value>Celkový stav spuštění zařízení</value>
+  </data>
+  <data name="Overwritten" xml:space="preserve">
+    <value>Přepsáno</value>
+  </data>
+  <data name="Partitions" xml:space="preserve">
+    <value>Oddíly</value>
+  </data>
+  <data name="PhysicalPresenceVersion" xml:space="preserve">
+    <value>Verze fyzické přítomnosti</value>
+  </data>
+  <data name="PlatformChangeConfirmationDescription" xml:space="preserve">
+    <value>Změnou platformy budou vymazány všechny ostatní zdroje, kroky a akce, které jste zadali do pracovního postupu. Opravdu chcete pokračovat?</value>
+  </data>
+  <data name="PlatformChangeConfirmationTitle" xml:space="preserve">
+    <value>Upozornění – Změna platformy</value>
+  </data>
+  <data name="PlatformDescription" xml:space="preserve">
+    <value>Zdroje jsou filtrovány na základě typu platformy.</value>
+  </data>
+  <data name="PlatformRole" xml:space="preserve">
+    <value>Role platformy</value>
+  </data>
+  <data name="PlayDemo" xml:space="preserve">
+    <value>Přehrát ukázku</value>
+  </data>
+  <data name="PotentiallyImpactedApplications" xml:space="preserve">
+    <value>Potencionálně kvalifikované aplikace</value>
+  </data>
+  <data name="ProceedToNextStepConditionFailedError" xml:space="preserve">
+    <value>Krok „else“ není správně nastaven nebo chybí, když se má pokračovat dalším krokem.</value>
+  </data>
+  <data name="ProductIdentificationNumber" xml:space="preserve">
+    <value>Identifikační číslo produktu</value>
+  </data>
+  <data name="ProfilesAndBaselines" xml:space="preserve">
+    <value>Profily a standardní hodnoty</value>
+  </data>
+  <data name="Program" xml:space="preserve">
+    <value>Program</value>
+  </data>
+  <data name="PropertyFile" xml:space="preserve">
+    <value>Soubor vlastností</value>
+  </data>
+  <data name="ProtectionStatus" xml:space="preserve">
+    <value>Stav ochrany</value>
+  </data>
+  <data name="PublishedOnByArg" xml:space="preserve">
+    <value>Publikováno dne {0} uživatelem {1}</value>
+  </data>
+  <data name="PublishedStateDescription" xml:space="preserve">
+    <value>Aktualizace dat na základě přihlášení zařízení může trvat až 4 hodiny. Chcete-li nyní synchronizovat pracovní postup se zařízeními, přejděte do části Detaily zařízení, klikněte na možnost Další akce a vyberte možnost Pracovní postupy.</value>
+  </data>
+  <data name="Publisher" xml:space="preserve">
+    <value>Vydavatel</value>
+  </data>
+  <data name="PublisherId" xml:space="preserve">
+    <value>ID vydavatele</value>
+  </data>
+  <data name="QWord64Bit" xml:space="preserve">
+    <value>QWORD</value>
+  </data>
+  <data name="ReevaluateCondition" xml:space="preserve">
+    <value>Znovu vyhodnotit podmínku</value>
+  </data>
+  <data name="ReevaluateConditionDesc" xml:space="preserve">
+    <value>Každých 15 minut provede celý pracovní postup, aby zařízení zůstalo v požadovaném stavu.</value>
+  </data>
+  <data name="Registry" xml:space="preserve">
+    <value>Registr</value>
+  </data>
+  <data name="RegistryDoesNotExistAt" xml:space="preserve">
+    <value>Registr neexistuje:</value>
+  </data>
+  <data name="RegistryExistsAt" xml:space="preserve">
+    <value>Registr existuje:</value>
+  </data>
+  <data name="RegistryPath" xml:space="preserve">
+    <value>Cesta registru</value>
+  </data>
+  <data name="ReinstallIfRemoved" xml:space="preserve">
+    <value>Opětovná instalace při odebrání</value>
+  </data>
+  <data name="ReinstallIfRemovedDesc" xml:space="preserve">
+    <value>Přeinstalujte tento zdroj, pokud je odstraněn ze zařízení.</value>
+  </data>
+  <data name="ResourceCount" xml:space="preserve">
+    <value>Počet zdrojů</value>
+  </data>
+  <data name="ResourcesWelcomeWindowDescription" xml:space="preserve">
+    <value>Změnili jsme uspořádání levého navigačního podokna (hlavní nabídky) tak, aby zahrnovala novou kartu Zdroje, abyste mohli snadněji přistupovat a spravovat běžně používané vlastnosti. Na kartě Zdroje najdete aplikace, profily, podmínky a další.</value>
+  </data>
+  <data name="ResourceUnauthorizedAccessContactSystemAdmin" xml:space="preserve">
+    <value>Nemáte oprávnění pro přístup k tomuto zdroji. Potřebujete-li pomoc, obraťte se na administrátora systému.</value>
+  </data>
+  <data name="RestoreToDefault" xml:space="preserve">
+    <value>Obnovit výchozí nastavení</value>
+  </data>
+  <data name="Results" xml:space="preserve">
+    <value>Výsledky</value>
+  </data>
+  <data name="RetryAfter" xml:space="preserve">
+    <value>Opakovat po</value>
+  </data>
+  <data name="RetryAfterDesc" xml:space="preserve">
+    <value>Časový interval, po kterém se zopakují kroky pracovního postupu s chybami.</value>
+  </data>
+  <data name="RetryIntervalDesc" xml:space="preserve">
+    <value>Produkt možností Opakovat po, Počet opakování a Míra odstupů.</value>
+  </data>
+  <data name="RunScript" xml:space="preserve">
+    <value>Spustit skript</value>
+  </data>
+  <data name="SavedFailedContactAdmin" xml:space="preserve">
+    <value>Nelze uložit. Zkuste to znovu. Pokud bude problém přetrvávat, obraťte se na administrátora systému.</value>
+  </data>
+  <data name="SavedStateDescription" xml:space="preserve">
+    <value>Publikujte svůj pracovní postup k přiřazení zařízení. Data se aktualizují po přihlášení přiřazených zařízení.</value>
+  </data>
+  <data name="SaveSuccessPublishFailedTryAgain" xml:space="preserve">
+    <value>Nepodařilo se publikovat pracovní postup. Pracovní postup byl uložen, zkuste jej publikovat znovu.</value>
+  </data>
+  <data name="SearchAndSelect" xml:space="preserve">
+    <value>Vyhledat a vybrat</value>
+  </data>
+  <data name="SearchExistingApp" xml:space="preserve">
+    <value>Hledat existující aplikaci</value>
+  </data>
+  <data name="SearchExistingProfile" xml:space="preserve">
+    <value>Hledat existující profil</value>
+  </data>
+  <data name="SearchScript" xml:space="preserve">
+    <value>Hledat skript</value>
+  </data>
+  <data name="SecondRetryAfter" xml:space="preserve">
+    <value>Druhé opakování po</value>
+  </data>
+  <data name="SelectSmartGroupMessage" xml:space="preserve">
+    <value>Vyberte Smart skupiny, které budou přiřazeny k tomuto pracovnímu postupu, a určete, jak ho doručit.</value>
+  </data>
+  <data name="SelectVersion" xml:space="preserve">
+    <value>Vybrat verzi</value>
+  </data>
+  <data name="SensorBaseTimeInfo" xml:space="preserve">
+    <value>Zvolte časové pásmo, které chcete použít pro tuto podmínku senzoru: místní čas zařízení nebo čas serveru (UTC).</value>
+  </data>
+  <data name="SetDefaultPolicy" xml:space="preserve">
+    <value>Nastavit výchozí zásady</value>
+  </data>
+  <data name="SetRegistryData" xml:space="preserve">
+    <value>Nastavit data registru</value>
+  </data>
+  <data name="SetRegistryValue" xml:space="preserve">
+    <value>Nastavit hodnotu registru</value>
+  </data>
+  <data name="SettingsRetrievalError" xml:space="preserve">
+    <value>Při načítání nastavení pracovního postupu došlo k chybě.</value>
+  </data>
+  <data name="SettingsSavedSuccessfully" xml:space="preserve">
+    <value>Nastavení pracovního postupu úspěšně uloženo</value>
+  </data>
+  <data name="SettingsSaveFailedTryAgain" xml:space="preserve">
+    <value>Při ukládání nastavení pracovního postupu došlo k chybě. Zkuste to znovu.</value>
+  </data>
+  <data name="Shares" xml:space="preserve">
+    <value>Sdílení</value>
+  </data>
+  <data name="Showing" xml:space="preserve">
+    <value>Zobrazeno</value>
+  </data>
+  <data name="ShowingResultsArg" xml:space="preserve">
+    <value>Zobrazeno výsledků: {0}</value>
+  </data>
+  <data name="SkipWorkflow" xml:space="preserve">
+    <value>Přeskočit krok pracovního postupu</value>
+  </data>
+  <data name="SkipWorkflowDesc" xml:space="preserve">
+    <value>Přeskočte krok pracovního postupu, který selhal, a ohlaste chybu, ale pokračujte v pracovním postupu.</value>
+  </data>
+  <data name="SocketDesignation" xml:space="preserve">
+    <value>Označení soketu</value>
+  </data>
+  <data name="SpecVersion" xml:space="preserve">
+    <value>Verze specifikace</value>
+  </data>
+  <data name="StageWorkflowInfo" xml:space="preserve">
+    <value>Přejděte na zdroje a konfigurujte aplikace, profily, skripty a senzory, aby odkazovaly v rámci pracovního postupu.</value>
+  </data>
+  <data name="StageWorkflowResources" xml:space="preserve">
+    <value>Uspořádat zdroje pracovního postupu</value>
+  </data>
+  <data name="StartExploringFreestyleOrchestrator" xml:space="preserve">
+    <value>Začínáme zkoumat Freestyle Orchestrator</value>
+  </data>
+  <data name="StartType" xml:space="preserve">
+    <value>Typ spuštění</value>
+  </data>
+  <data name="StateName" xml:space="preserve">
+    <value>Název stavu</value>
+  </data>
+  <data name="StepStatus" xml:space="preserve">
+    <value>Stav kroku</value>
+  </data>
+  <data name="StopWorkflow" xml:space="preserve">
+    <value>Zastavit pracovní postup</value>
+  </data>
+  <data name="StopWorkflowDesc" xml:space="preserve">
+    <value>Zastavte pracovní postup v kroku, který selhal, a ohlaste stav selhání.</value>
+  </data>
+  <data name="SwitchToTimeWindow" xml:space="preserve">
+    <value>Nahradit časovým oknem</value>
+  </data>
+  <data name="SwitchToTimeWindowConfirmation" xml:space="preserve">
+    <value>Chcete tuto podmínku nahradit časovým oknem?</value>
+  </data>
+  <data name="SwitchToTimeWindowWarning" xml:space="preserve">
+    <value>Podmínku časového okna nelze kombinovat s dalšími podmínkami. Přidání časového okna nahradí stávající kritéria.</value>
+  </data>
+  <data name="SystemEnclosure" xml:space="preserve">
+    <value>Skříň systému</value>
+  </data>
+  <data name="TemplateSelectionQuestion" xml:space="preserve">
+    <value>Pro co chcete vytvořit pracovní postup?</value>
+  </data>
+  <data name="ThirdRetryAfter" xml:space="preserve">
+    <value>Třetí opakování po</value>
+  </data>
+  <data name="TimeDurationDay" xml:space="preserve">
+    <value>Den</value>
+  </data>
+  <data name="TimeDurationDays" xml:space="preserve">
+    <value>Dny/dní</value>
+  </data>
+  <data name="TimeDurationHour" xml:space="preserve">
+    <value>hod.</value>
+  </data>
+  <data name="TimeDurationHours" xml:space="preserve">
+    <value>Hodiny/hodin</value>
+  </data>
+  <data name="TimeDurationMinute" xml:space="preserve">
+    <value>Minuta</value>
+  </data>
+  <data name="TimeDurationMinutes" xml:space="preserve">
+    <value>Minuty/minut</value>
+  </data>
+  <data name="TimeoutDesc" xml:space="preserve">
+    <value>Maximální doba čekání na dokončení kroku pracovního postupu.</value>
+  </data>
+  <data name="TimeReported" xml:space="preserve">
+    <value>Čas ohlášení</value>
+  </data>
+  <data name="TimeWindowRuleDescription" xml:space="preserve">
+    <value>Podmínka se bude přehodnocovat v nastaveném intervalu, dokud ji zařízení nebude splňovat. Větve ELSE nejsou povoleny.</value>
+  </data>
+  <data name="TimeWindowRuleDescriptionArg" xml:space="preserve">
+    <value>Podmínka se bude přehodnocovat v nastaveném intervalu ({0}), dokud ji zařízení nebude splňovat. Větve ELSE nejsou povoleny.</value>
+  </data>
+  <data name="TimeWindowStateSupport" xml:space="preserve">
+    <value>Správu stavu nelze použít na podmínku časového okna.</value>
+  </data>
+  <data name="ToLearnMore" xml:space="preserve">
+    <value>Další informace</value>
+  </data>
+  <data name="TotalEligibleDevices" xml:space="preserve">
+    <value>Celkem způsobilých zařízení</value>
+  </data>
+  <data name="Troubleshoot" xml:space="preserve">
+    <value>Řešení potíží</value>
+  </data>
+  <data name="TrustedPlatformModule" xml:space="preserve">
+    <value>Čip TPM</value>
+  </data>
+  <data name="UnauthorizedAccessResource" xml:space="preserve">
+    <value>Nemáte oprávnění pro přístup k tomuto zdroji. Potřebujete-li pomoc, obraťte se na administrátora IT.</value>
+  </data>
+  <data name="UninstallerFilePath" xml:space="preserve">
+    <value>Cesta k souboru odinstalačního programu</value>
+  </data>
+  <data name="Universallyuniqueidentifier" xml:space="preserve">
+    <value>Globálně jedinečný identifikátor</value>
+  </data>
+  <data name="UnsupportedProfilePayloadEcrow" xml:space="preserve">
+    <value>Pracovní postup nemůže obsahovat profil s datovou částí úschovy. Vyberte jiný profil.</value>
+  </data>
+  <data name="UnsupportedProfilePayloadEWSOutlook" xml:space="preserve">
+    <value>Pracovní postup nemůže obsahovat profil macOS s datovou částí EWS Outlook. Vyberte jiný profil.</value>
+  </data>
+  <data name="UpdateAgent" xml:space="preserve">
+    <value>Aktualizovat agenta</value>
+  </data>
+  <data name="Uuid" xml:space="preserve">
+    <value>UUID</value>
+  </data>
+  <data name="VersionUUID" xml:space="preserve">
+    <value>UUID verze</value>
+  </data>
+  <data name="VersionValidationMessage" xml:space="preserve">
+    <value>Zadejte verzi jako čísla oddělená tečkami (1.0, 1.0.1, 1.0.1.1).</value>
+  </data>
+  <data name="ViewDocs" xml:space="preserve">
+    <value>Zobrazit dokumenty</value>
+  </data>
+  <data name="ViewFreestyle" xml:space="preserve">
+    <value>Zobrazit Freestyle</value>
+  </data>
+  <data name="ViewFreestyleHelp" xml:space="preserve">
+    <value>Řídí přístup k zobrazení detailů Freestyle a typů zdrojů, jako jsou aplikace, profily a skripty</value>
+  </data>
+  <data name="ViewInModal" xml:space="preserve">
+    <value>Zobrazit v modálním okně</value>
+  </data>
+  <data name="ViewItemDetails" xml:space="preserve">
+    <value>Zobrazit detaily</value>
+  </data>
+  <data name="ViewResults" xml:space="preserve">
+    <value>Zobrazit výsledky</value>
+  </data>
+  <data name="VirtualAppsCollections" xml:space="preserve">
+    <value>Kolekce virtuálních aplikací</value>
+  </data>
+  <data name="VirtualCPU" xml:space="preserve">
+    <value>Virtuální procesor</value>
+  </data>
+  <data name="VirtualCPUs" xml:space="preserve">
+    <value>Virtuální procesory</value>
+  </data>
+  <data name="WfEmptyStepCountError" xml:space="preserve">
+    <value>Pracovní postup musí mít nejméně jeden krok.</value>
+  </data>
+  <data name="WfNameEmptyError" xml:space="preserve">
+    <value>Není zadán žádný název pro pracovní postup. Zadejte název a zkuste to znovu.</value>
+  </data>
+  <data name="WfTypeEmptyError" xml:space="preserve">
+    <value>Uložení selhalo. Nebyl zadán žádný typ pro pracovní postup.</value>
+  </data>
+  <data name="WhenRetriesExhausted" xml:space="preserve">
+    <value>Když jsou pokusy vyčerpány</value>
+  </data>
+  <data name="WindowsOptionalFeatures" xml:space="preserve">
+    <value>Volitelné funkce systému Windows</value>
+  </data>
+  <data name="WiredNetwork" xml:space="preserve">
+    <value>Drátová síť</value>
+  </data>
+  <data name="WorkflowDisabledCatalogTooltip" xml:space="preserve">
+    <value>Vyberte Smart skupinu pro upravení těchto nastavení.</value>
+  </data>
+  <data name="WorkflowDoesNotExistOrMightBeDeleted" xml:space="preserve">
+    <value>Pracovní postup neexistuje nebo byl pravděpodobně odstraněn.</value>
+  </data>
+  <data name="WorkflowExecutionStatus" xml:space="preserve">
+    <value>Stav provádění pracovního postupu</value>
+  </data>
+  <data name="WorkflowPausedSuccessfully" xml:space="preserve">
+    <value>Pracovní postup úspěšně pozastaven</value>
+  </data>
+  <data name="WorkflowPauseFailedTryAgain" xml:space="preserve">
+    <value>Pozastavení pracovního postupu selhalo. Zkuste to znovu.</value>
+  </data>
+  <data name="WorkflowRestoreDefaults" xml:space="preserve">
+    <value>Obnovit výchozí nastavení</value>
+  </data>
+  <data name="WorkflowResumedSuccessfully" xml:space="preserve">
+    <value>Pracovní postup úspěšně obnoven</value>
+  </data>
+  <data name="WorkflowResumeFailedTryAgain" xml:space="preserve">
+    <value>Obnovení pracovního postupu selhalo. Zkuste to znovu.</value>
+  </data>
+  <data name="WorkflowRetryInterval" xml:space="preserve">
+    <value>Interval opakovaných pokusů</value>
+  </data>
+  <data name="WorkflowSettings" xml:space="preserve">
+    <value>Nastavení pracovního postupu</value>
+  </data>
+  <data name="WorkflowSettingsDesc" xml:space="preserve">
+    <value>Konfigurace výchozího nastavení pracovních postupů. Tato nastavení lze přepsat v individuálních pracovních postupech.</value>
+  </data>
+  <data name="WorkflowSmartGroupDescription" xml:space="preserve">
+    <value>Zařízení po přihlášení spustí pracovní postup.</value>
+  </data>
+  <data name="WorkflowStatusNotEvaluatedInfo" xml:space="preserve">
+    <value>Zařízení obdrželo pracovní postup, ale ještě neoznámilo stav kroku pracovního postupu.</value>
+  </data>
+  <data name="WorkflowStep" xml:space="preserve">
+    <value>Krok pracovního postupu</value>
+  </data>
+  <data name="WorkflowTimeout" xml:space="preserve">
+    <value>Časový limit</value>
+  </data>
+  <data name="WorkflowWarningExactVersionSelected" xml:space="preserve">
+    <value>Tento krok pracovního postupu může selhat, pokud je vybrána konkrétní verze a k zařízení je přiřazena také novější verze</value>
+  </data>
+</root>

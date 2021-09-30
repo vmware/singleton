@@ -1,0 +1,2555 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AboutToPerformResumeBitlocker" xml:space="preserve">
+    <value>Du er ved at udføre handlingen Fortsæt BitLocker-kryptering. Gennemgå venligst alle oplysninger herunder, inden du fortsætter.</value>
+  </data>
+  <data name="ActivateBacklight" xml:space="preserve">
+    <value>Aktiver baggrundsbelysning</value>
+  </data>
+  <data name="ActivationLockClearFailure" xml:space="preserve">
+    <value>Deaktiver aktiveringslås mislykket</value>
+  </data>
+  <data name="ActivationLockClearRequested" xml:space="preserve">
+    <value>Deaktiver aktiveringslås anmodet</value>
+  </data>
+  <data name="ActivationLockClearSuccess" xml:space="preserve">
+    <value>Deaktiver aktiveringslås fuldført</value>
+  </data>
+  <data name="ActivationLockCommandWarning" xml:space="preserve">
+    <value>Aktiveringslås er aktiveret for denne enhed. Det Apple-id og den adgangskode, der bruges til at aktivere denne funktion, kræves for at aktivere enheden igen. Hvis du ikke kender Apple-id'et og adgangskoden, skal du vælge kommandoen Ryd aktiveringslås nedenfor.</value>
+  </data>
+  <data name="ActivationLockEnabledSuccessfully" xml:space="preserve">
+    <value>Aktiveringslås er aktiveret</value>
+  </data>
+  <data name="ActivationLockWarning" xml:space="preserve">
+    <value>Der registreres at Aktiveringslås blev aktiveret via Find My iPhone funktionen. Selv efter en fabrik sletning kan enheden ikke aktiveres igen uden iCloud Apple-id adgangskoden der blev anvendt til aktivering af Aktiveringslås.</value>
+  </data>
+  <data name="AddDropShipDevice" xml:space="preserve">
+    <value>Tilføj Drop Ship-enhed</value>
+  </data>
+  <data name="AddNewSchedule" xml:space="preserve">
+    <value>Tilføj ny tidsplan</value>
+  </data>
+  <data name="AddSideLoadingKey" xml:space="preserve">
+    <value>Tilføj sideindlæsningsnøgle</value>
+  </data>
+  <data name="AffectedDeviceTagManagementMessage" xml:space="preserve">
+    <value>De markerede mærker vil blive brugt til alle enheder</value>
+  </data>
+  <data name="AgentEnrollmentUrl" xml:space="preserve">
+    <value>URL-adresse for agenttilmelding</value>
+  </data>
+  <data name="AirWatchHuaweiService" xml:space="preserve">
+    <value>AirWatch Huawei-tjeneste</value>
+  </data>
+  <data name="AirWatchInterrogatorQueueMonitor" xml:space="preserve">
+    <value>Tjenesten Interrogator-køovervågning aflæser de oplysninger, der skrives til køerne af Interrogator-serveren, og skriver disse oplysninger i databasen.</value>
+  </data>
+  <data name="AirWatchInterrogatorServer" xml:space="preserve">
+    <value>Interrogator-serveren er en socket-server, der modtager indgående enhedsdata via port 8087.</value>
+  </data>
+  <data name="AndroidAvailableFileActions" xml:space="preserve">
+    <value>Download og upload af filer.</value>
+  </data>
+  <data name="AndroidDeviceLogSourceToolTipText" xml:space="preserve">
+    <value>Vælg "Hub" for at indsamle logfiler genereret af Workspace ONE Intelligent Hub.
+
+Vælg "System" for at indsamle en komplet systemlog til ældre Android-enheder med en OEM-platformstjeneste installeret. Der indsamles en fejlrapport, hvis enheden er Android Work-administreret og kører Android 7.0 eller nyere.
+
+Vælg "netværk" for at indsamle en log over netværkshændelser på enheden.
+
+Vælg "sikkerhed" for at indsamle både sikkerhedslogfiler før og efter opstart. Logfiler uploades til konsollen, når de bliver tilgængelige på enheden.</value>
+  </data>
+  <data name="AndroidEnterpriseCancelMigration" xml:space="preserve">
+    <value>Kommando til at annullere Android Enterprise-overførsel.</value>
+  </data>
+  <data name="AndroidEnterpriseMigration" xml:space="preserve">
+    <value>Kommando til at starte Android Legacy-overførsel til AFW.</value>
+  </data>
+  <data name="AndroidManagement" xml:space="preserve">
+    <value>Android-administration</value>
+  </data>
+  <data name="AndroidRequestDeviceLogSettingsInformation" xml:space="preserve">
+    <value>Tilpas din logføringsanmodning herunder. Gå til Enhedsoplysninger &gt; Flere &gt; Vedhæftede filer &gt; Dokumenter for at gennemgå logfilerne. Det kan tage op til 90 minutter at modtage netværks- eller sikkerhedslogfilerne. Nogle indstillinger er muligvis ikke tilgængelige, hvis de ikke understøttes af enheden.</value>
+  </data>
+  <data name="AndroidWorkProfileEndUserMessageSetupHelp" xml:space="preserve">
+    <value>Denne valgfri meddelelse vises for slutbrugere på Android-enheder for at forklare, hvorfor deres arbejdsprofil er fjernet.</value>
+  </data>
+  <data name="AndroidWorkProfileEndUserWipeMessage" xml:space="preserve">
+    <value>Meddelelse til slutbrugere om sletning af Android-arbejdsprofil</value>
+  </data>
+  <data name="AndroidWorkSharedDeviceModeNotReported" xml:space="preserve">
+    <value>Ikke rapporteret</value>
+  </data>
+  <data name="ApnsMessageForRemoteView" xml:space="preserve">
+    <value>Din administrator vil gerne kunne fjernse din enheds skærm. Gå til dit iOS-kontrolpanel for at sende din enheds skærm.</value>
+  </data>
+  <data name="ApnsMessageNotSent" xml:space="preserve">
+    <value>Der opstod en fejl under afsendelse af fjernvisningsmeddelelse. Kontakt support for at få hjælp.</value>
+  </data>
+  <data name="ApnsMessageSentForRemoteView" xml:space="preserve">
+    <value>Meddelelse sendt til enheden med anmodning om, at brugeren starter en fjernvisningssession.</value>
+  </data>
+  <data name="AppAssignmentEditWarning" xml:space="preserve">
+    <value>Redigering af den konfiguration, der er associeret med denne app, vil anvende disse ændringer på andre enheder i disse arbejdsprocesser.</value>
+  </data>
+  <data name="AppleBusinessManager" xml:space="preserve">
+    <value>Apple Business Manager</value>
+  </data>
+  <data name="AppleBusinessManagerFetchFail" xml:space="preserve">
+    <value>Hentning af Apple Business Manager mislykkedes</value>
+  </data>
+  <data name="AppleBusinessManagerFetchSuccess" xml:space="preserve">
+    <value>Apple Business Manager blev hentet</value>
+  </data>
+  <data name="AppleBusinessManagerSyncFail" xml:space="preserve">
+    <value>Synkronisering af Apple Business Manager mislykkedes</value>
+  </data>
+  <data name="AppleBusinessManagerSyncSuccess" xml:space="preserve">
+    <value>Apple Business Manager blev synkroniset</value>
+  </data>
+  <data name="ApplicationConfigurationConfirmed" xml:space="preserve">
+    <value>Konfiguration af applikation bekræftet</value>
+  </data>
+  <data name="ApplicationConfigurationFailed" xml:space="preserve">
+    <value>Konfiguration af applikation slog fejl</value>
+  </data>
+  <data name="ApplicationConfigurationRefused" xml:space="preserve">
+    <value>Konfiguration af applikation afvist</value>
+  </data>
+  <data name="ApplyTimeWindow" xml:space="preserve">
+    <value>For at anvende tidsvinduet på en enhed skal du henvise til det som en arbejdsprocestilstand.</value>
+  </data>
+  <data name="ApplyToAllAdmin" xml:space="preserve">
+    <value>Anvend på alle administratorer i denne organisationsgruppe eller derunder</value>
+  </data>
+  <data name="ApprovedByClassification" xml:space="preserve">
+    <value>Godkendt af klassifikation</value>
+  </data>
+  <data name="ApprovedByRevisionAndClassification" xml:space="preserve">
+    <value>Godkendt efter revision og klassifikation</value>
+  </data>
+  <data name="ApproveWipe" xml:space="preserve">
+    <value>Godkend sletning</value>
+  </data>
+  <data name="ApproveWipeConfirm" xml:space="preserve">
+    <value>Approve wipe successful</value>
+  </data>
+  <data name="AssignedTags" xml:space="preserve">
+    <value>Tildelte mærker</value>
+  </data>
+  <data name="AssignmentName" xml:space="preserve">
+    <value>Tildelingsnavn</value>
+  </data>
+  <data name="Athena" xml:space="preserve">
+    <value>Athena</value>
+  </data>
+  <data name="AttributesNotPresent" xml:space="preserve">
+    <value>Enhedsattributter ikke til stede.</value>
+  </data>
+  <data name="Auto_Detect" xml:space="preserve">
+    <value>Automatisk registrering</value>
+  </data>
+  <data name="AutoInstall" xml:space="preserve">
+    <value>Automatisk installation</value>
+  </data>
+  <data name="AutoUpdateStatus" xml:space="preserve">
+    <value>Automatisk opdateringsstatus</value>
+  </data>
+  <data name="AutoUpdateStatusFail" xml:space="preserve">
+    <value>Automatisk opdateringsstatus mislykkedes</value>
+  </data>
+  <data name="AutoUpdateStatusPass" xml:space="preserve">
+    <value>Automatisk opdateringsstatus lykkedes</value>
+  </data>
+  <data name="AutoUpdateStatusUnknown" xml:space="preserve">
+    <value>Automatisk opdateringsstatus ukendt</value>
+  </data>
+  <data name="AvailableByApple" xml:space="preserve">
+    <value>Tilgængelig fra Apple</value>
+  </data>
+  <data name="Bash" xml:space="preserve">
+    <value>Bash</value>
+  </data>
+  <data name="BatchImportCustomAttributesExplanation" xml:space="preserve">
+    <value>Brugerdefineret attribut masseimport funktionen kan anvendes når brugerdefinerede attributter og tilsvarende værdier masse overføres til systemet. Hver kolonne svarer til et brugerdefineret attribut og hver række svarer til forskellige parametre i det brugerdefinerede attribut.</value>
+  </data>
+  <data name="BeginRollOut" xml:space="preserve">
+    <value>Start udrulning</value>
+  </data>
+  <data name="BiosAttestationFailed" xml:space="preserve">
+    <value>BIOS-verificering mislykkedes</value>
+  </data>
+  <data name="BiosAttestationPassed" xml:space="preserve">
+    <value>BIOS-verificering lykkedes</value>
+  </data>
+  <data name="BiosAttestationStatus" xml:space="preserve">
+    <value>BIOS-verificering</value>
+  </data>
+  <data name="BiosAttestationStatusUnknown" xml:space="preserve">
+    <value>BIOS-verificeringsstatus ukendt</value>
+  </data>
+  <data name="BiosDate" xml:space="preserve">
+    <value>BIOS-dato</value>
+  </data>
+  <data name="BiosVendor" xml:space="preserve">
+    <value>BIOS-leverandør</value>
+  </data>
+  <data name="BiosVerificationCheck" xml:space="preserve">
+    <value>BIOS-verificering</value>
+  </data>
+  <data name="BitLockerCipherMismatch" xml:space="preserve">
+    <value>Krypteringsstyrken på enheden stemmer ikke overens med profilen</value>
+  </data>
+  <data name="BitLockerCipherStrengthMismatch" xml:space="preserve">
+    <value>Krypteringsstyrke på profil: {0}, på enhed: {1}.</value>
+  </data>
+  <data name="BitLockerDriveStatusDecryptionInProgress" xml:space="preserve">
+    <value>Dekryptering i gang</value>
+  </data>
+  <data name="BitLockerDriveStatusEncrypted" xml:space="preserve">
+    <value>Krypteret</value>
+  </data>
+  <data name="BitLockerDriveStatusEncryptionInProgress" xml:space="preserve">
+    <value>Kryptering i gang</value>
+  </data>
+  <data name="BitLockerDriveStatusNotEncrypted" xml:space="preserve">
+    <value>Ikke krypteret</value>
+  </data>
+  <data name="BitLockerDriveStatusSuspended" xml:space="preserve">
+    <value>Suspenderet</value>
+  </data>
+  <data name="BitLockerDriveStatusSuspendedScheduled" xml:space="preserve">
+    <value>Stoppet midlertidigt (pr. profiltidsplan)</value>
+  </data>
+  <data name="BitLockerDriveStatusSuspendedWithRebootCount" xml:space="preserve">
+    <value>Stoppet midlertidigt ({0} genstart(er) tilbage)</value>
+  </data>
+  <data name="BitLockerDriveStatusUnknown" xml:space="preserve">
+    <value>Ukendt</value>
+  </data>
+  <data name="BitLockerEncryptionResumed" xml:space="preserve">
+    <value>BitLocker-kryptering genoptaget</value>
+  </data>
+  <data name="BitLockerProtection" xml:space="preserve">
+    <value>BitLocker-beskyttelse</value>
+  </data>
+  <data name="BitLockerRecoveryKeyModalHelpText" xml:space="preserve">
+    <value>Anvend genoprettelsesnøglen til at låse op for en enhed, der er krypteret med BitLocker.</value>
+  </data>
+  <data name="BitLockerRecoveryKeyModalText" xml:space="preserve">
+    <value>Brug genoprettelsesnøglen til at låse en enhed, der er krypteret med BitLocker, op. Nøgler til statisk gendannelse er kun tilgængelige, hvis de føjes til profilen.</value>
+  </data>
+  <data name="BitlockerResume" xml:space="preserve">
+    <value>Genoptag BitLocker</value>
+  </data>
+  <data name="BitLockerStatusDecryptionInProgress" xml:space="preserve">
+    <value>BitLocker status: Dekryptering i gang</value>
+  </data>
+  <data name="BitLockerStatusEncrypted" xml:space="preserve">
+    <value>BitLocker status: krypteret</value>
+  </data>
+  <data name="BitLockerStatusEncryptionInProgress" xml:space="preserve">
+    <value>BitLocker status: kryptering i gang</value>
+  </data>
+  <data name="BitLockerStatusNotEncrypted" xml:space="preserve">
+    <value>BitLocker status: ikke krypteret</value>
+  </data>
+  <data name="BitLockerStatusPartiallyProtected" xml:space="preserve">
+    <value>BitLocker status: delvist beskyttet</value>
+  </data>
+  <data name="BitLockerStatusSuspended" xml:space="preserve">
+    <value>BitLocker-status: stoppet midlertidigt ({0} genstart(er) tilbage)</value>
+  </data>
+  <data name="BitLockerStatusSuspendedScheduled" xml:space="preserve">
+    <value>BitLocker-status: stoppet midlertidigt (pr. profiltidsplan)</value>
+  </data>
+  <data name="BitLockerStatusUnknown" xml:space="preserve">
+    <value>BitLocker status: ukendt</value>
+  </data>
+  <data name="BitLockerSuspendedPerProfileSchedule" xml:space="preserve">
+    <value>BitLocker-kryptering stoppet midlertidigt iht. profiltidsplan</value>
+  </data>
+  <data name="Blueprints" xml:space="preserve">
+    <value>Blueprints</value>
+  </data>
+  <data name="BuildOrRevisionNumber" xml:space="preserve">
+    <value>Build-version/-revisionsnummer</value>
+  </data>
+  <data name="BulkActivationLockCommandWarning" xml:space="preserve">
+    <value>Aktiveringslås er aktiveret for en eller flere valgte enheder. Det Apple-id og den adgangskode, der bruges til at aktivere denne funktion, kræves for at aktivere enhedener igen. Hvis du ikke kender Apple-id'et og adgangskoden, skal du vælge kommandoen Ryd aktiveringslås nedenfor.</value>
+  </data>
+  <data name="BulkApiAction" xml:space="preserve">
+    <value>Bulk API-handling</value>
+  </data>
+  <data name="BulkTagManagementSelectTipArg" xml:space="preserve">
+    <value>{0} enhed(er) markeret</value>
+  </data>
+  <data name="BusinessHours" xml:space="preserve">
+    <value>Åbningstider</value>
+  </data>
+  <data name="CancelFirmwareUpdate" xml:space="preserve">
+    <value>Annuller opdatering</value>
+  </data>
+  <data name="CancelSchedule" xml:space="preserve">
+    <value>Annuller tidsplan</value>
+  </data>
+  <data name="CanNotDeleteTagBecauseAssignedToSmartGroup" xml:space="preserve">
+    <value>Kunne ikke slette tag, da det er tildelt følgende Smart-grupper: {0}</value>
+  </data>
+  <data name="CertificateInfo" xml:space="preserve">
+    <value>Certifikatoplysninger</value>
+  </data>
+  <data name="CertificateSerialNumber" xml:space="preserve">
+    <value>Certifikatserienummer</value>
+  </data>
+  <data name="ChangePasscodeMsgSamsung" xml:space="preserve">
+    <value>På Android-enheder (Legacy) vil ændring af adgangskoden kun fungere på Samsung-enheder, eller hvis en adgangskode endnu ikke er indstillet på enheden</value>
+  </data>
+  <data name="ChangeWorkProfilePasscodeNote" xml:space="preserve">
+    <value>Denne handling fremtvinger en ny adgangskode for Work-profil på brugeren. Den angivne adgangskode skal være compliant med de nuværende installerede begrænsninger for adgangskodepolitiker, undtagen for adgangskodehistorikken. Hvis den ikke opfylder disse begrænsninger, vil den blive afvist.</value>
+  </data>
+  <data name="CheckInDevice" xml:space="preserve">
+    <value>Check-in enhed</value>
+  </data>
+  <data name="CheckInDeviceFailed" xml:space="preserve">
+    <value>Check-in enhed mislykkedes</value>
+  </data>
+  <data name="CheckInDeviceRequested" xml:space="preserve">
+    <value>Check-in enhed anmodet</value>
+  </data>
+  <data name="CheckInDeviceSucceeded" xml:space="preserve">
+    <value>Check-in enhed lykkedes</value>
+  </data>
+  <data name="ChromeOSDeviceDisableLostMode" xml:space="preserve">
+    <value>Chrome OS-enhed forbliver tilmeldt, men bliver helt deaktiveret og vil vise den brugerdefinerede meddelelse, som er konfigureret i Chrome OS-Enhedsprofil &gt; Sikkerhed og privatliv &gt; Mistet tilstand, når Mistet tilstand aktiveres. Deaktiver Mistet tilstand for at låse Chrome OS-enheden op.</value>
+  </data>
+  <data name="ChromeOSDeviceEnableLostMode" xml:space="preserve">
+    <value>Chrome OS-enhed forbliver tilmeldt, men bliver helt deaktiveret og vil vise den brugerdefinerede meddelelse, som er konfigureret i Chrome OS-Enhedsprofil &gt; Sikkerhed og privatliv &gt; Mistet tilstand, når Mistet tilstand aktiveres. Aktiver Mistet tilstand for at låse Chrome OS-enheden op.</value>
+  </data>
+  <data name="ChromeOsEnterpriseWipeReason" xml:space="preserve">
+    <value>Årsag til Chrome OS Enterprise slet</value>
+  </data>
+  <data name="ClearAndroidDevicePasscodeConfirmation" xml:space="preserve">
+    <value>Er du sikker på, at du vil rydde enhedens adgangskode?</value>
+  </data>
+  <data name="ClearAndroidWorkProfilePasscode" xml:space="preserve">
+    <value>Ryd Work-adgangskode</value>
+  </data>
+  <data name="ClearAndroidWorkProfilePasscodeConfirmation" xml:space="preserve">
+    <value>Er du sikker på, at du vil rydde enhedens Work-adgangskode?</value>
+  </data>
+  <data name="ClearApplicationPasscode" xml:space="preserve">
+    <value>Ryd adgangskode for app</value>
+  </data>
+  <data name="ClearPasscodeLockDevice" xml:space="preserve">
+    <value>Ryd enhedens adgangskode/Lås enhed/Luk/Genstart</value>
+  </data>
+  <data name="CommandDisableActivationLockComment" xml:space="preserve">
+    <value>Når aktiveringslåsen er aktiveret på en iOS- eller macOS-enhed, skal du angive Apple-id'et og adgangskoden eller enhedens adgangskode, før du slår Find min iPhone(Mac) fra, sletter indholdet på enheden eller genaktiverer og bruger enheden.
+
+Vælg Deaktiver for at rydde aktiveringslåsen på enheden.</value>
+  </data>
+  <data name="CommandDisableActivationLockCommentBypass" xml:space="preserve">
+    <value>Som et alternativ til at deaktivere aktiveringslåsen kan du angive følgende tilsidesættelseskode på enheden under kørsel af indstillingsassistenten. Angiv denne tilsidesættelseskode som adgangskode til aktiveringslåsen, og lad feltet til brugernavnet til dit Apple-id være tomt.</value>
+  </data>
+  <data name="CompromisedDevicesChartDescription" xml:space="preserve">
+    <value>{0} kompromitterede enheder. {1} kompromitterede enheder i alt.</value>
+  </data>
+  <data name="CompromisedDevicesChartTitle" xml:space="preserve">
+    <value>Kransediagram over kompromitterede enheder. </value>
+  </data>
+  <data name="ConditionError" xml:space="preserve">
+    <value>En eller flere tilstande i denne arbejdsgang har ikke en efterfølgende handling. Tilføj en handling for at fortsætte.</value>
+  </data>
+  <data name="ConfigureLocationGroup" xml:space="preserve">
+    <value>Konfigurer organisationsgruppe</value>
+  </data>
+  <data name="ConfigureLoginCredentials" xml:space="preserve">
+    <value>Konfigurer loginoplysninger</value>
+  </data>
+  <data name="ConfirmDeleteDevice" xml:space="preserve">
+    <value>Slet enhed? Alle enhedsdetaljer oprettet for denne bliver også slettet.</value>
+  </data>
+  <data name="ConfirmDeleteDeviceWithRecoveryKey" xml:space="preserve">
+    <value>Slet enhed? Alle enhedsoplysninger, der er oprettet for dette, vil også blive slettet. Advarsel: Krypteringsgenoprettelsesnøgle vil også blive slettet. Tab af data kan forekomme.</value>
+  </data>
+  <data name="ConfirmDeviceRebootAfterHubRepair" xml:space="preserve">
+    <value>Denne handling vil reparere Hub-løsningsproblemer såsom HMAC-fejl, stoppede tjenester eller beskadigede eller manglende filer. Den kan opgradere Hub på enheden til den seneste tilgængelige version i din konsol. I visse tilfælde kan denne handling starte en genstart</value>
+  </data>
+  <data name="ConfirmPauseTitle" xml:space="preserve">
+    <value>Bekræft pause</value>
+  </data>
+  <data name="ConfirmResumeTitle" xml:space="preserve">
+    <value>Bekræft fortsættelse</value>
+  </data>
+  <data name="ConfirmUnenrollDeleteDeviceWithRecoveryKey" xml:space="preserve">
+    <value>Denne enhed er stadig tilmeldt. Sletning af enheden vil afmelde den. Advarsel: genoprettelsesnøglen for kryptering vil også blive slettet. Tab af data kan forekomme.</value>
+  </data>
+  <data name="ConfirmUpdateRollOutContent" xml:space="preserve">
+    <value>Start udrulning starter udrulningen af opdateringer, hvis den aldrig er blevet startet, og genoptager udrulningen af opdateringer, hvis den er blevet stoppet tidligere. Er du sikker på at du ønsker at udrulle opdateringen?</value>
+  </data>
+  <data name="ConfirmUpdateRollOutTitle" xml:space="preserve">
+    <value>Bekræft udrulning</value>
+  </data>
+  <data name="ConnectDeviceToWifiPriorToEnrollment" xml:space="preserve">
+    <value>Slut enheden til Wi-Fi (WPA/WPA2) før tilmelding</value>
+  </data>
+  <data name="ConnectionState" xml:space="preserve">
+    <value>Forbindelsestilstand</value>
+    <comment>Either Connected or Disconnected</comment>
+  </data>
+  <data name="COPEDeviceInfoMessage" xml:space="preserve">
+    <value>Komplet enhedsstyring forbliver intakt. Medarbejdere vil modtage en arbejdsprofil for at få adgang til virksomhedens apps og har adgang til deres personlige Google Play Store uden for arbejdsprofilen. Denne indstilling er tilgængelig til Android-versioner 8.0 og nyere.</value>
+  </data>
+  <data name="CouldNotStartRemoteViewSession" xml:space="preserve">
+    <value>Vi kunne ikke starte sessionen for enheden med UDID {0} med fjernvisningssystemet. Kontakt support for at få hjælp.</value>
+  </data>
+  <data name="CpuTitle" xml:space="preserve">
+    <value>CPU-arkitektur</value>
+  </data>
+  <data name="CpuTooltip" xml:space="preserve">
+    <value>Dette kriterium filtrerer enheder efter CPU-arkitektur. Denne filtrering gælder kun for Windows- og macOS-enheder. Hvis du ikke vælger nogen indstilling, anvendes filtreringskriterier ikke.</value>
+  </data>
+  <data name="CreateDevice" xml:space="preserve">
+    <value>Opret</value>
+  </data>
+  <data name="CreateNewUserMessageArg" xml:space="preserve">
+    <value>Hvis brugeren, som du leder efter, ikke bliver fundet, kan du oprette en ny bruger her: {0}</value>
+    <comment>{0} will be replaced by a hyperlink with text Create New User</comment>
+  </data>
+  <data name="CreateTimeWindow" xml:space="preserve">
+    <value>Opret tidsvindue</value>
+  </data>
+  <data name="CriteriaPreviewNote" xml:space="preserve">
+    <value>Den aktuelle forhåndsvisning genereres kun baseret på app-navnet, men betingelsesevalueringen på enhederne vil inkludere kriterieoperatoren.</value>
+  </data>
+  <data name="CustomDateRange" xml:space="preserve">
+    <value>Brugerdefineret</value>
+  </data>
+  <data name="CustomFieldAdded" xml:space="preserve">
+    <value>Brugerdefineret felt tilføjet</value>
+  </data>
+  <data name="CustomFieldDeleted" xml:space="preserve">
+    <value>Brugerdefineret felt slettet</value>
+  </data>
+  <data name="CustomFieldModified" xml:space="preserve">
+    <value>Brugerdefineret felt ændret</value>
+  </data>
+  <data name="DailyArg" xml:space="preserve">
+    <value>Dagligt {0} - {1} ({2})</value>
+    <comment>Placehoders: 0 - StartTime, 1 - EndTime, 2 - Duration.
+Example: Daily 11:00 PM - 4:30 AM (5 hours 30 mins)</comment>
+  </data>
+  <data name="DataCompromisedOrCorrupted" xml:space="preserve">
+    <value>Data kan være blevet kompromitteret eller beskadiget. Kontakt it-administratoren.</value>
+  </data>
+  <data name="DataNotCollectedDueToPrivacySettings" xml:space="preserve">
+    <value>GPS-data ikke tilgængelig. For at få vist GPS-data skal du opdatere indstillingerne for beskyttelse af personlige oplysninger for at indsamle og vise placeringsdata</value>
+  </data>
+  <data name="DataValidationFailed" xml:space="preserve">
+    <value>Lagring mislykkedes. Prøv igen.</value>
+  </data>
+  <data name="DateEncrypted" xml:space="preserve">
+    <value>Dato for kryptering</value>
+  </data>
+  <data name="DateLabel" xml:space="preserve">
+    <value>Dato &amp; Tid</value>
+  </data>
+  <data name="DateLastSeen" xml:space="preserve">
+    <value>Dato sidst set</value>
+  </data>
+  <data name="DateMustBeInFuture" xml:space="preserve">
+    <value>Dato skal være i fremtiden</value>
+  </data>
+  <data name="DayAgo" xml:space="preserve">
+    <value>for en dag siden</value>
+  </data>
+  <data name="DefineAssignmentAndSelectSmartGroups" xml:space="preserve">
+    <value>Definer tildeling, og vælg Smart-grupper</value>
+  </data>
+  <data name="DefineDeploymentDateTimeAndMethod" xml:space="preserve">
+    <value>Definer udrulningsdato/-tidspunkt og -metode</value>
+  </data>
+  <data name="DeleteDeviceConfirmation" xml:space="preserve">
+    <value>Bekræftelse af sletning af enheder</value>
+  </data>
+  <data name="DeleteSensor" xml:space="preserve">
+    <value>Slet sensor</value>
+  </data>
+  <data name="DeleteSensorConfirmArg" xml:space="preserve">
+    <value>Er du sikker på, at du ønsker at slette sensor "{0}"?</value>
+  </data>
+  <data name="DeleteTimeWindowConfirmation" xml:space="preserve">
+    <value>Er du sikker på, at du vil slette dette tidsvindue?</value>
+  </data>
+  <data name="DeleteTimeWindowTitle" xml:space="preserve">
+    <value>Slet tidsvindue</value>
+  </data>
+  <data name="DeleteUserConfirmation" xml:space="preserve">
+    <value>Kommandoen Slet bruger gennemtvinger sletning af brugeren fra enheden, selvom brugeren har data, der skal synkroniseres. Er du sikker på, at du vil fortsætte?</value>
+  </data>
+  <data name="DeleteUserConfirmed" xml:space="preserve">
+    <value>Slet bruger bekræftet</value>
+  </data>
+  <data name="DeleteUserFailed" xml:space="preserve">
+    <value>Kommandoen Slet bruger kunne ikke sendes.</value>
+  </data>
+  <data name="DeleteUserRefused" xml:space="preserve">
+    <value>Slet bruger nægtet</value>
+  </data>
+  <data name="DeleteUserRequested" xml:space="preserve">
+    <value>Slet bruger anmodet</value>
+  </data>
+  <data name="DeleteUserSuccess" xml:space="preserve">
+    <value>Kommandoen Slet bruger blev sendt.</value>
+  </data>
+  <data name="DEPAdminPasswordRotationJob" xml:space="preserve">
+    <value>Rotationsjob for DEP-administratoradgangskode</value>
+  </data>
+  <data name="DeploymentAlreadyExists" xml:space="preserve">
+    <value>Udrulningen med lignende egenskaber findes allerede</value>
+  </data>
+  <data name="DeploymentBegins" xml:space="preserve">
+    <value>Udrulningen begynder</value>
+  </data>
+  <data name="DeploymentDownloadAndInstall" xml:space="preserve">
+    <value>Download og installér</value>
+  </data>
+  <data name="DeploymentDownloadOnly" xml:space="preserve">
+    <value>Download kun</value>
+  </data>
+  <data name="DeploymentForDeviceUpdateNotFound" xml:space="preserve">
+    <value>Ingen udrulning fundet for denne enhedsopdatering.</value>
+  </data>
+  <data name="DeploymentInstallOnly" xml:space="preserve">
+    <value>Installér kun</value>
+  </data>
+  <data name="DeploymentMethod" xml:space="preserve">
+    <value>Udrulningsmetode</value>
+  </data>
+  <data name="DeploymentStartAfterUpdateExpiry" xml:space="preserve">
+    <value>Udrulningens starttidspunkt kan ikke være efter opdateringens udløbsdato og -tidspunkt.</value>
+  </data>
+  <data name="DeploymentStartTime" xml:space="preserve">
+    <value>Startdato for udrulning</value>
+  </data>
+  <data name="DescriptionofQRCodeEnrollment" xml:space="preserve">
+    <value>På Android-enheder, der kører 7.0+, initieres QR-kodetilmelding på Android-velkomstskærmbilledet efter nulstilling til fabriksindstillinger ved at trykke et vilkårligt sted på skærmen 6 gange. Baseret på den anvendte enhed vises der muligvis en prompt om tilslutning til et wi-fi-netværk før QR-skanningen.</value>
+  </data>
+  <data name="DestinationPath" xml:space="preserve">
+    <value>Destinationssti</value>
+  </data>
+  <data name="DeviceAlreadyLocked" xml:space="preserve">
+    <value>Enheden er allerede låst.</value>
+  </data>
+  <data name="DeviceBatchSizeHelp" xml:space="preserve">
+    <value>Antal enheder, som Policy Engine kører på.</value>
+  </data>
+  <data name="DeviceBulkManagementForceBiosPasswordReset" xml:space="preserve">
+    <value>Bulk-management af enheder gennemtvinge nulstilling af BIOS-adgangskode</value>
+  </data>
+  <data name="DeviceBulkManagementForceBiosPasswordResetHelp" xml:space="preserve">
+    <value>Giver brugeren mulighed for at gennemtvinge nulstilling af BIOS-adgangskode på en eller flere enheder ad gangen</value>
+  </data>
+  <data name="DeviceCapability" xml:space="preserve">
+    <value>Enhedsegenskab</value>
+  </data>
+  <data name="DeviceCICOCheckIn" xml:space="preserve">
+    <value>Enhed CICO CheckIn</value>
+  </data>
+  <data name="DeviceCICOCheckInHelp" xml:space="preserve">
+    <value>Giver tilladelse til at tjekke en enhed tilbage til dens flertrinsbruger fra Console</value>
+  </data>
+  <data name="DeviceDeferralDate" xml:space="preserve">
+    <value>Udsættelsesdato</value>
+  </data>
+  <data name="DeviceDenylist" xml:space="preserve">
+    <value>Forbudt-liste over handlinger på enhed</value>
+  </data>
+  <data name="DeviceDetailsApplicationSdkAppComplianceBanner" xml:space="preserve">
+    <value>SDK-app-compliance blev senest rapporteret af {0}. Du kan navigere til appen på listen nedenfor for at få flere oplysninger.</value>
+    <comment>{0} will be replaced by a ApplicationName (Application Bundle Identifier).</comment>
+  </data>
+  <data name="DeviceDetailsComplianceSdkAppComplianceBanner" xml:space="preserve">
+    <value>Der er tildelt politikker for SDK-app-compliance til denne enhed. Gå til fanen Apps under enhedsoplysningerne for at få vist status for SDK-app-compliance.</value>
+  </data>
+  <data name="DeviceDetailsNumberOfApprovedUpdatesArg" xml:space="preserve">
+    <value>{0} Nye opdateringer godkendt</value>
+  </data>
+  <data name="DeviceDetailsNumberOfAvailableUpdatesArg" xml:space="preserve">
+    <value>{0} Nye opdateringer tilgængelige</value>
+  </data>
+  <data name="DeviceDetailsNumberOfInstalledUpdatesArg" xml:space="preserve">
+    <value>{0} Samlet antal opdateringer installeret</value>
+  </data>
+  <data name="DeviceDoesNotExistOrMightBeDeleted" xml:space="preserve">
+    <value>Enhed eksisterer ikke eller er måske blevet slettet.</value>
+  </data>
+  <data name="DeviceDomainJoinResourceCreationJob" xml:space="preserve">
+    <value>Enheds-domænejoin ressourceoprettelsesjob</value>
+  </data>
+  <data name="DeviceEnrolled" xml:space="preserve">
+    <value>Enhed tilmeldt</value>
+  </data>
+  <data name="DeviceEnrollmentChartDescription" xml:space="preserve">
+    <value>{0}</value>
+  </data>
+  <data name="DeviceEnrollmentChartTitle" xml:space="preserve">
+    <value>Stablet søjlediagram over enhedstilmelding. </value>
+  </data>
+  <data name="DeviceHasBeenOverriddenSuccessfully" xml:space="preserve">
+    <value>Afsendelse af kommando lykkedes</value>
+  </data>
+  <data name="DeviceListCannotBeEmpty" xml:space="preserve">
+    <value>Enhedsliste må ikke være tom.</value>
+  </data>
+  <data name="DeviceLocationGroupChangeFailed" xml:space="preserve">
+    <value>Ændring af enhedsorganisationsgruppe mislykkedes. Sørg for, at målorganisationsgruppen har et gruppe-ID og er i eller under tilmeldingsbrugerens organisationsgruppehierarki.</value>
+  </data>
+  <data name="DeviceLogSourceToolTipText" xml:space="preserve">
+    <value>Vælg "Hub" for at indsamle logs genereret af Workspace ONE Intelligent Hub. Vælg "System" for at indsamle en fuld systemlog for enheder med en OEM-platformstjeneste installeret. Der indsamles en fejlrapport, hvis enheden er Android for Work-styret og kører Android 7.0 eller nyere. En systemlog og en fejlrapport kan blive indsamlet, hvis enheden er Android for Work-styret, og en OEM-platformstjeneste er installeret</value>
+  </data>
+  <data name="DeviceLogTypeToolTipText" xml:space="preserve">
+    <value>Vælg "Snapshot" for at hente de seneste logoptegnelser, som kan fås fra enheder. Vælg "Tidsperiode" for at indsamle en løbende logfil over en angivet tidsperiode. Der kan sendes flere logfiler til Workspace ONE UEM.</value>
+  </data>
+  <data name="DeviceNameMaxCharacters" xml:space="preserve">
+    <value>Enhedsnavnet må højst være på 512 tegn</value>
+  </data>
+  <data name="DeviceNotFound" xml:space="preserve">
+    <value>Enheden blev ikke fundet</value>
+  </data>
+  <data name="DeviceNotRegisteredForRemoteView" xml:space="preserve">
+    <value>Enheden med UDID {0} er ikke registreret til fjernvisning. Klik på knappen Registrer enhed nedenfor for at registrere enheden.</value>
+  </data>
+  <data name="DeviceOfflineDomainJoinBlobCreationFailed" xml:space="preserve">
+    <value>Offline-domænejoin blob-oprettelse slog fejl</value>
+  </data>
+  <data name="DeviceOfflineDomainJoinFailed" xml:space="preserve">
+    <value>Offline-domænejoin slog fejl</value>
+  </data>
+  <data name="DeviceOwnerEnrollmentMode" xml:space="preserve">
+    <value>Styringsstilstand for virksomhedsenheder</value>
+  </data>
+  <data name="DeviceOwnershipChartDescription" xml:space="preserve">
+    <value>{0}</value>
+  </data>
+  <data name="DeviceOwnershipChartTitle" xml:space="preserve">
+    <value>Stablet søjlediagram over enhedsejerskab. </value>
+  </data>
+  <data name="DevicePolicyJobAuditing" xml:space="preserve">
+    <value>Politikjobrevision af enhed</value>
+  </data>
+  <data name="DevicePolicyJobAuditingHelp" xml:space="preserve">
+    <value>Hvis aktiveret, lagres behandlede produktjob i politikjobrevision.</value>
+  </data>
+  <data name="DeviceReadiness" xml:space="preserve">
+    <value>Enhedens parathed</value>
+  </data>
+  <data name="DeviceRegisteredForRemoteView" xml:space="preserve">
+    <value>Enheden med UDID {0} er registreret til fjernse.</value>
+  </data>
+  <data name="DeviceSavedSuccessfully" xml:space="preserve">
+    <value>Enhed gemt</value>
+  </data>
+  <data name="DeviceShutdownFailed" xml:space="preserve">
+    <value>Lukning af enhed mislykkedes</value>
+  </data>
+  <data name="DeviceShutdownSuccess" xml:space="preserve">
+    <value>Lukning af enhed gennemført</value>
+  </data>
+  <data name="DevicesSeenInLastDay" xml:space="preserve">
+    <value>Enhed set i de sidste 24 timer</value>
+  </data>
+  <data name="DevicesSettings" xml:space="preserve">
+    <value>Enhedsindstillinger</value>
+  </data>
+  <data name="DevicesStagingMenuTitle" xml:space="preserve">
+    <value>Staging</value>
+  </data>
+  <data name="DeviceStateAndSearchHubConfigurationErrorMessage" xml:space="preserve">
+    <value>Kunne ikke hente data, da den underliggende tjeneste er nede eller ikke konfigureret</value>
+  </data>
+  <data name="DeviceSyncInitiated" xml:space="preserve">
+    <value>Enhedssynkronisering startet</value>
+  </data>
+  <data name="DeviceTime" xml:space="preserve">
+    <value>Enhedsklokkeslæt</value>
+  </data>
+  <data name="DeviceTimeWindowCardEmpty" xml:space="preserve">
+    <value>Ingen tilgængelige tidsplaner.</value>
+  </data>
+  <data name="DeviceTimeWindowCardNote" xml:space="preserve">
+    <value>Viser den seneste gang, Windows konfigurerede på konsollen for denne enhed.</value>
+  </data>
+  <data name="DeviceTimeWindowCardTitle" xml:space="preserve">
+    <value>Dagens tidsvinduer</value>
+  </data>
+  <data name="DeviceUnenrollmentRequested" xml:space="preserve">
+    <value>Afmelding af enhed anmodet</value>
+  </data>
+  <data name="DeviceUpdateDeferralDate" xml:space="preserve">
+    <value>Maks. udsættelsesdato</value>
+  </data>
+  <data name="DeviceUpdateExpirationDate" xml:space="preserve">
+    <value>Udløbsdato</value>
+  </data>
+  <data name="DeviceUpdateInstallInProgress" xml:space="preserve">
+    <value>Installation i gang</value>
+  </data>
+  <data name="DeviceUpdateName" xml:space="preserve">
+    <value>Opdatering</value>
+  </data>
+  <data name="DeviceUpdatePublish" xml:space="preserve">
+    <value>Enhed – opdateringsudgivelse</value>
+  </data>
+  <data name="DeviceUpdateReasonTooltipInfo" xml:space="preserve">
+    <value>Kun svar fra berettigede iOS-enheder kan filtreres.</value>
+  </data>
+  <data name="DeviceUpdateReleaseDate" xml:space="preserve">
+    <value>Frigivelsesdato</value>
+  </data>
+  <data name="DeviceUpdates" xml:space="preserve">
+    <value>Enhedsopdatering</value>
+  </data>
+  <data name="DeviceUpdateStatus" xml:space="preserve">
+    <value>Opdateringsstatus</value>
+  </data>
+  <data name="DeviceUpdateType" xml:space="preserve">
+    <value>Opdater type</value>
+  </data>
+  <data name="DeviceUpdateUUIDNotFound" xml:space="preserve">
+    <value>Enhedsopdatering med det angivne UUID blev ikke fundet</value>
+  </data>
+  <data name="DeviceWipeDescription" xml:space="preserve">
+    <value>Sletning af enhed fjerner alle apps, data, e-mails, profiler og MDM-funktionaliteter, og enheden nulstilles til fabrikstandarden. Dette gælder også for alle personlige brugeroplysninger, hvis relevant. Denne handling kan ikke fortrydes. Gå venligst forsigtigt til værks.</value>
+  </data>
+  <data name="DeviceWipeDescriptionForMac" xml:space="preserve">
+    <value>Sletning af enhed fjerner all apps, data, e-mail, profiler og MDM-funktionalitet samt macOS-styresystemet. Dette gælder også for alle personlige brugeroplysninger, hvis relevant. Denne handling kan ikke fortrydes. Gå venligst forsigtigt til værks.</value>
+  </data>
+  <data name="DeviceWipeEmailNotification" xml:space="preserve">
+    <value>Notifikation om e-mail om sletning af enhed</value>
+  </data>
+  <data name="DevUnlockCommand" xml:space="preserve">
+    <value>Enheds lås op-kommando</value>
+  </data>
+  <data name="DirectoryOrFilePathExample" xml:space="preserve">
+    <value>Indtast mappe eller filsti</value>
+  </data>
+  <data name="DisableActivationLock" xml:space="preserve">
+    <value>Deaktiver aktiveringslås</value>
+  </data>
+  <data name="DisableManagedApplication" xml:space="preserve">
+    <value>Deaktiver administreret app</value>
+  </data>
+  <data name="DisallowProximitySetup" xml:space="preserve">
+    <value>Forbyd nærhedsopsætning</value>
+  </data>
+  <data name="DisallowProximitySetupTooltip" xml:space="preserve">
+    <value>Når aktiveret, springes skærmbilledet Nærhedsopsætning over i HP Setup Assistant ved næste genstart af enheden.</value>
+  </data>
+  <data name="DomainJoinConfigAssignmentCreated" xml:space="preserve">
+    <value>Domænejoin-konfigurationstildeling oprettet</value>
+  </data>
+  <data name="DomainJoinConfigAssignmentDeleted" xml:space="preserve">
+    <value>Domænejoin-konfigurationstildeling slettet</value>
+  </data>
+  <data name="DomainJoinConfigAssignmentUpdated" xml:space="preserve">
+    <value>Domænejoin-konfigurationstildeling opdateret</value>
+  </data>
+  <data name="DomainJoinConfigCreated" xml:space="preserve">
+    <value>Domænejoin-konfiguration oprettet</value>
+  </data>
+  <data name="DomainJoinConfigDeleted" xml:space="preserve">
+    <value>Domænejoin-konfiguration slettet</value>
+  </data>
+  <data name="DomainJoinConfigUpdated" xml:space="preserve">
+    <value>Domænejoin-konfiguration opdateret</value>
+  </data>
+  <data name="DomainJoinConfigurationError" xml:space="preserve">
+    <value>Konfigurationsfejl for domænejoin</value>
+  </data>
+  <data name="DomainJoinDescription" xml:space="preserve">
+    <value>Domænejoin</value>
+  </data>
+  <data name="DownloadAndInstall" xml:space="preserve">
+    <value>Download og installér</value>
+  </data>
+  <data name="DownloadAndInstallDesc" xml:space="preserve">
+    <value>Opdatering vil blive downloadet og installeret på enheder</value>
+  </data>
+  <data name="DownloadAndInstallNow" xml:space="preserve">
+    <value>Download og installer nu</value>
+  </data>
+  <data name="DownloadInsufficientNetwork" xml:space="preserve">
+    <value>Download – utilstrækkeligt netværk</value>
+  </data>
+  <data name="DownloadInsufficientPower" xml:space="preserve">
+    <value>Download – utilstrækkelig strøm</value>
+  </data>
+  <data name="DownloadInsufficientSpace" xml:space="preserve">
+    <value>Download – utilstrækkelig plads</value>
+  </data>
+  <data name="DownloadNow" xml:space="preserve">
+    <value>Download nu</value>
+  </data>
+  <data name="DownloadOnly" xml:space="preserve">
+    <value>Download kun</value>
+  </data>
+  <data name="DownloadOnlyDesc" xml:space="preserve">
+    <value>Opdatering vil kun blive downloadet på enheder</value>
+  </data>
+  <data name="DownloadRequiresComputer" xml:space="preserve">
+    <value>Download kræver computer</value>
+  </data>
+  <data name="Drive" xml:space="preserve">
+    <value>Drev</value>
+  </data>
+  <data name="DriveLetter" xml:space="preserve">
+    <value>Drevbogstav</value>
+  </data>
+  <data name="DropshipDeviceName" xml:space="preserve">
+    <value>Enhedsnavn</value>
+  </data>
+  <data name="DropshipDeviceNameToolTip" xml:space="preserve">
+    <value>Enhedsnavn, der kan læses af mennesker</value>
+  </data>
+  <data name="DropshipModelNumber" xml:space="preserve">
+    <value>Modelnummer</value>
+  </data>
+  <data name="DropshipModelNumberToolTip" xml:space="preserve">
+    <value>OEM-enhedsmodel</value>
+  </data>
+  <data name="DropshipOptional" xml:space="preserve">
+    <value>Valgfrit</value>
+  </data>
+  <data name="DropshipOrganizationGroup" xml:space="preserve">
+    <value>Organisationsgruppe</value>
+  </data>
+  <data name="DropshipOwnership" xml:space="preserve">
+    <value>Ejerskab</value>
+  </data>
+  <data name="DropshipOwnershipToolTip" xml:space="preserve">
+    <value>Virksomhed/BYOD</value>
+  </data>
+  <data name="DropShipProvisioningMenuTitle" xml:space="preserve">
+    <value>Klargøring af Drop Ship</value>
+  </data>
+  <data name="DropshipSerialNumber" xml:space="preserve">
+    <value>Serienummer</value>
+  </data>
+  <data name="DropshipSerialNumberToolTip" xml:space="preserve">
+    <value>Serienummer for OEM-leveret enhed</value>
+  </data>
+  <data name="DropshipSyncDeviceSuccessful" xml:space="preserve">
+    <value>Enheder synkroniseret</value>
+  </data>
+  <data name="DropshipSyncDeviceUnsuccessful" xml:space="preserve">
+    <value>Kan ikke starte synkronisering på nuværende tidspunkt</value>
+  </data>
+  <data name="DropshipTag" xml:space="preserve">
+    <value>Mærke</value>
+  </data>
+  <data name="DropshipTagToolTip" xml:space="preserve">
+    <value>DropShip-mærke til logisk gruppering af enheder</value>
+  </data>
+  <data name="DynamicActionFailed" xml:space="preserve">
+    <value>Systemet kunne ikke sende kommando til enheden. Forbindelsen er ikke tilgængelig, eller der opstod en fejl på enheden.</value>
+  </data>
+  <data name="EasSample" xml:space="preserve">
+    <value>EAS stikprøve</value>
+  </data>
+  <data name="EditDeviceArgOpensDialog" xml:space="preserve">
+    <value>Rediger enhed {0} åbner dialogboks</value>
+    <comment>The placeholder in this label key contains device friendly name.</comment>
+  </data>
+  <data name="EditTimeWindow" xml:space="preserve">
+    <value>Rediger tidsvindue</value>
+  </data>
+  <data name="EfotaCancelScheduleMessage" xml:space="preserve">
+    <value>Enheder modtager ikke længere denne opdatering fra dette tidspunkt. Tidligere opdateringer i denne tidsplan kan ikke tilbagekaldes. Vil du annullere denne planlagte opdatering?</value>
+  </data>
+  <data name="EfotaDeliveryMethod" xml:space="preserve">
+    <value>Installationsmetode</value>
+  </data>
+  <data name="EfotaInstallOnDemandPublishMessage" xml:space="preserve">
+    <value>Brugere vil blive bedt om at acceptere firmwareopdateringen, før den installeres på deres enhed.</value>
+  </data>
+  <data name="Eligible" xml:space="preserve">
+    <value>Berettiget</value>
+  </data>
+  <data name="EligibleHoverText" xml:space="preserve">
+    <value>Berettiget
+Inkluderer alle understøttede, DEP- og overvågede enheder</value>
+  </data>
+  <data name="EnableActivationLock" xml:space="preserve">
+    <value>Aktivér aktiveringslås</value>
+  </data>
+  <data name="EnableManagedApplication" xml:space="preserve">
+    <value>Aktiver administreret app</value>
+  </data>
+  <data name="EndDateLessThanStartDate" xml:space="preserve">
+    <value>Startdatoen og -klokkeslættet må ikke være senere end den planlagte dato og det planlagte klokkeslæt for afslutning.</value>
+  </data>
+  <data name="EndDateSameAsStartDate" xml:space="preserve">
+    <value>Start- og slutdatoen og -klokkeslættet må ikke være ens.</value>
+  </data>
+  <data name="EndUserWipeMessage" xml:space="preserve">
+    <value>Meddelelse til slutbrugere om sletning af Android-arbejdsprofil</value>
+  </data>
+  <data name="EnrollmentConfigurationWizard" xml:space="preserve">
+    <value>Konfigurationsguide til tilmelding</value>
+  </data>
+  <data name="EnrollmentDetail" xml:space="preserve">
+    <value>Tilmeldingsoplysninger</value>
+  </data>
+  <data name="EnrollmentID" xml:space="preserve">
+    <value>Tilmelding ID</value>
+  </data>
+  <data name="EnterAssignmentName" xml:space="preserve">
+    <value>Indtast tildelingsnavn</value>
+  </data>
+  <data name="EnterDeviceName" xml:space="preserve">
+    <value>Indtast enhedsnavn</value>
+  </data>
+  <data name="EnterModelNumber" xml:space="preserve">
+    <value>Indtast modelnummer</value>
+  </data>
+  <data name="EnterpriseWipeWarningAADDevices" xml:space="preserve">
+    <value>For enheder, der er tilmeldt Azure Active Directory, skal du sørge for, at der findes en lokal administratorkonto, før kommandoen Enterprise slet sendes, da dette vil fjerne Azure AD-kontoen. Hvis den lokale administratorkonto ikke findes, skal enheden derefter nulstilles til fabriksindstillingerne for at genoprette den.</value>
+  </data>
+  <data name="EnterSerialNumber" xml:space="preserve">
+    <value>Indtast serienummer</value>
+  </data>
+  <data name="EnvironmentVariables" xml:space="preserve">
+    <value>Miljøvariabler</value>
+  </data>
+  <data name="ErrorGeneratingAppToken" xml:space="preserve">
+    <value>Der opstod en fejl under oprettelse af App-token. Prøv igen.</value>
+  </data>
+  <data name="ErrorInitiatingDeviceSync" xml:space="preserve">
+    <value>Ukendt fejl under start af enhedssynkronisering</value>
+  </data>
+  <data name="ErrorResolvingDeviceGroupArg" xml:space="preserve">
+    <value>Fejl under løsning af Enhedsgruppe {0}</value>
+  </data>
+  <data name="ErrorWhileSendingEmailNotification" xml:space="preserve">
+    <value>Fejl under afsendelse af e-mail-meddelelse. Prøv igen.</value>
+  </data>
+  <data name="EsimUrl" xml:space="preserve">
+    <value>eSIM URL-adresse</value>
+  </data>
+  <data name="EsimUrlTooltip" xml:space="preserve">
+    <value>ESIM URL-adressen er udbyderens eSIM Server URL-adresse for enheden til at forespørge om at opdatere dit mobilabonnement.</value>
+  </data>
+  <data name="EveryArg" xml:space="preserve">
+    <value>Hver {0} {1} - {2} ({3})</value>
+    <comment>Placehoders: 0 - Days on which schedule is repeated, 1 - StartTime, 2 - EndTime, 3 - Duration.
+Example: Every Mon/Tue 11:00 PM - 4:30 AM (5 hours 30 mins)</comment>
+  </data>
+  <data name="EveryWeekdayArg" xml:space="preserve">
+    <value>Hver ugedag {0} - {1} ({2})</value>
+    <comment>Placehoders: 0 - StartTime, 1 - EndTime, 2 - Duration.
+Example: Every Weekday 11:00 PM - 4:30 AM (5 hours 30 mins)</comment>
+  </data>
+  <data name="ExecutionContext" xml:space="preserve">
+    <value>Udførelseskontekst</value>
+  </data>
+  <data name="Existing" xml:space="preserve">
+    <value>Eksisterende</value>
+  </data>
+  <data name="ExistingDeviceUpdatedInDeviceState" xml:space="preserve">
+    <value>Eksisterende enhed opdateret i enhedstilstand</value>
+  </data>
+  <data name="Expires" xml:space="preserve">
+    <value>Udløber</value>
+  </data>
+  <data name="ExportPPKGWindowsMoved" xml:space="preserve">
+    <value>Eksportpakke til klargøring</value>
+  </data>
+  <data name="ExportPPKGWindowsMovedMessage" xml:space="preserve">
+    <value>Denne handling vil føre dig til staging-sektionen, hvor du kan eksportere apps for at oprette en klargøringspakke. Ønsker du at fortsætte?</value>
+  </data>
+  <data name="ExtendedDeviceInventory" xml:space="preserve">
+    <value>Udvidet enhedsinventar</value>
+  </data>
+  <data name="ExternalBootStatusAllowed" xml:space="preserve">
+    <value>Status for ekstern start-– Tilladt</value>
+  </data>
+  <data name="ExternalBootStatusDisallowed" xml:space="preserve">
+    <value>Status for ekstern start – Ikke tilladt</value>
+  </data>
+  <data name="ExternalBootStatusNotSupported" xml:space="preserve">
+    <value>Status for ekstern start – Ikke understøttet</value>
+  </data>
+  <data name="ExternalStorage" xml:space="preserve">
+    <value>Eksternt lager</value>
+  </data>
+  <data name="FailedItemsBackOffTime" xml:space="preserve">
+    <value>Back Off-tid for mislykkede elementer</value>
+  </data>
+  <data name="FailedItemsMaxTryCount" xml:space="preserve">
+    <value>Maksimalt antal forsøg for mislykkede elementer</value>
+  </data>
+  <data name="FewSecondsAgo" xml:space="preserve">
+    <value>for få sekunder siden</value>
+  </data>
+  <data name="FileActionNoNewFileEntities" xml:space="preserve">
+    <value>Der blev ikke fundet nye filenheder.</value>
+  </data>
+  <data name="FilePathOnFileServerExample" xml:space="preserve">
+    <value>Angiv filstien på filserveren</value>
+  </data>
+  <data name="FileServer" xml:space="preserve">
+    <value>Filserver</value>
+  </data>
+  <data name="FileUploadInfoMessage" xml:space="preserve">
+    <value>Filerne overføres til dynamisk genererede underordnede mapper for hver tildelt enhed. Hvis flere filoverførselshandlinger bruger samme navngivningsregler for destinationsmapper, vil filer med lignende navne muligvis overskrive hinanden, og derfor anbefales det at bruge entydige navne.</value>
+  </data>
+  <data name="FindDeviceAlarmSoundMessage" xml:space="preserve">
+    <value>Alarmen vil blive afgivet med enhedens konfigurerede ringetone, som kan gentages vedvarende, indtil alarmen deaktiveres, ved at trykke på notifikationen på enheden.</value>
+  </data>
+  <data name="FirmwareUpdateDeploymentEndDateTime" xml:space="preserve">
+    <value>Slut på udrulning</value>
+  </data>
+  <data name="FirmwareUpdateDeploymentStartDateTime" xml:space="preserve">
+    <value>Start på udrulning</value>
+  </data>
+  <data name="FolderNaming" xml:space="preserve">
+    <value>Navngivning af mapper</value>
+  </data>
+  <data name="FollowingAssignmentArgWillBeDeleted" xml:space="preserve">
+    <value>Er du sikker på, at du ønsker at slette tildeling "{0}"?</value>
+  </data>
+  <data name="FollowingDeploymentsWillBeDeleted" xml:space="preserve">
+    <value>Er du sikker på, at du vil slette denne tildeling? Dette vil forhindre enheder i at hente denne opdatering. Det vil dog ikke fjerne denne opdatering fra de enheder, der allerede har modtaget den.</value>
+  </data>
+  <data name="ForceAospDisabledPromtText" xml:space="preserve">
+    <value>Enheden vil blive tilmeldt baseret på den arbejdsadministrerede tilmeldingstype, der er indstillet i Android-tilmeldingsindstillingerne</value>
+  </data>
+  <data name="ForceAospEnabledPromtText" xml:space="preserve">
+    <value>Enheden tilmeldes som AOSP/lukket netværk, uanset den arbejdsadministrerede tilmeldingstype, der er oprettet i Android-tilmeldingsindstillingerne</value>
+  </data>
+  <data name="ForceBiosPasswordReset" xml:space="preserve">
+    <value>Gennemtving nulstilling af BIOS-adgangskode</value>
+  </data>
+  <data name="ForceBiosPasswordResetFailure" xml:space="preserve">
+    <value>BIOS-nulstilling af adgangskode slog fejl.</value>
+  </data>
+  <data name="ForceBiosPasswordResetHelp" xml:space="preserve">
+    <value>Tilladelse til at gennemtvinge nulstilling af BIOS-adgangskode på siden Enhedsoplysninger.</value>
+  </data>
+  <data name="ForceBiosPasswordResetMessage" xml:space="preserve">
+    <value>Denne handling udføres, når enheden tjekker ind til Workspace ONE UEM. Enheden skal have en BIOS-profil og være en kompatibel, understøttet enhedstype. Indtast din sikkerhedspinkode for at fortsætte.</value>
+  </data>
+  <data name="ForceBiosPasswordResetRestricted" xml:space="preserve">
+    <value>Gennemtving nulstilling af BIOS-adgangskode</value>
+  </data>
+  <data name="ForceBiosPasswordResetSuccess" xml:space="preserve">
+    <value>Nulstilling af BIOS-adgangskode er anmodet for denne enhed.</value>
+  </data>
+  <data name="ForceDeviceReportAppConfigFeedbackSuccess" xml:space="preserve">
+    <value>Feedback anmodet. Det kan tage et par minutter, før der er en ny feedback tilgængelig.</value>
+  </data>
+  <data name="ForceDeviceReportAppConfigFeedbackTitle" xml:space="preserve">
+    <value>Anmod om feedback på app-konfigurationen</value>
+  </data>
+  <data name="ForceRequestFeedbackConfirmationMessage" xml:space="preserve">
+    <value>Ny feedback for apps, hvis tilgængelig, vil blive rapporteret af enheden og kan vises i kolonnen App og bøger &gt; Applikationer &gt; Detaljevisning &gt; Enheder &gt; Tildelt konfiguration eller ved at klikke på app-navnet her og gå til fanen App-konfiguration.</value>
+  </data>
+  <data name="ForceRequestFeedbackConfirmationMessageSecond" xml:space="preserve">
+    <value>Denne anmodning kan kun sendes 3 gange pr. dag. Er du sikker på, at du ønsker at sende anmodningen?</value>
+  </data>
+  <data name="ForceRequestFeedbackTitle" xml:space="preserve">
+    <value>Anmod om feedback på app-konfigurationen</value>
+  </data>
+  <data name="FreshDeviceCreatedInDeviceState" xml:space="preserve">
+    <value>Ny enhed oprettet i enhedstilstand</value>
+  </data>
+  <data name="GenerateNewCode" xml:space="preserve">
+    <value>Generér ny kode</value>
+  </data>
+  <data name="GetSensor" xml:space="preserve">
+    <value>Get(Sensor)</value>
+  </data>
+  <data name="GoogleApiError" xml:space="preserve">
+    <value>Google API-undtagelse/-fejl.</value>
+  </data>
+  <data name="GooglePlayServiceDisable" xml:space="preserve">
+    <value>Den installerede version af Google Play-tjenester er blevet deaktiveret på denne enhed</value>
+  </data>
+  <data name="GooglePlayServiceMissing" xml:space="preserve">
+    <value>Google Play-tjenester mangler på denne enhed</value>
+  </data>
+  <data name="GooglePlayServiceUpdateRequired" xml:space="preserve">
+    <value>Den installerede version af Google Play-tjenester er forældet.</value>
+  </data>
+  <data name="GooglePlayServiceUpdating" xml:space="preserve">
+    <value>Google Play-tjenesten er i øjeblikket ved at blive opdateret på denne enhed</value>
+  </data>
+  <data name="GoToAppleBusinessManager" xml:space="preserve">
+    <value>Apple Business Manager</value>
+  </data>
+  <data name="GoToWorkflowList" xml:space="preserve">
+    <value>Gå til arbejdsprocesser</value>
+  </data>
+  <data name="GPSDataCollectionNotEnabledForDeviceType" xml:space="preserve">
+    <value>Indsamling af placeringsdata er ikke aktiveret for denne enhedstype</value>
+  </data>
+  <data name="GracePeriodRecoveryKey" xml:space="preserve">
+    <value>Genoprettelsesnøgle for udvidet periode</value>
+  </data>
+  <data name="HealthAttestationStatus" xml:space="preserve">
+    <value>Tilstandsatteststatus</value>
+  </data>
+  <data name="HmacRecovery" xml:space="preserve">
+    <value>HMAC-genoprettelse</value>
+  </data>
+  <data name="HostedOnAnExternalURL" xml:space="preserve">
+    <value>Hostet på en ekstern URL</value>
+  </data>
+  <data name="HourAgo" xml:space="preserve">
+    <value>for en time siden</value>
+  </data>
+  <data name="HubEnrollmentUrl" xml:space="preserve">
+    <value>URL-adresse for tilmelding til Hub</value>
+  </data>
+  <data name="HubRepair" xml:space="preserve">
+    <value>Reparer Hub</value>
+  </data>
+  <data name="HumanReadableName" xml:space="preserve">
+    <value>Rapporteret opdatering</value>
+  </data>
+  <data name="Idle" xml:space="preserve">
+    <value>Inaktiv</value>
+  </data>
+  <data name="IGEL_THIN_CLIENT" xml:space="preserve">
+    <value>IGEL OS</value>
+  </data>
+  <data name="IMSI" xml:space="preserve">
+    <value>IMSI</value>
+  </data>
+  <data name="IncorrectFilter" xml:space="preserve">
+    <value>Forkert filter</value>
+  </data>
+  <data name="InstallComplete" xml:space="preserve">
+    <value>Installation fuldført</value>
+  </data>
+  <data name="InstallEventAction" xml:space="preserve">
+    <value>Installer begivenhedshandling</value>
+  </data>
+  <data name="InstallInsufficientPower" xml:space="preserve">
+    <value>Installer – utilstrækkelig strøm</value>
+  </data>
+  <data name="InstallInsufficientSpace" xml:space="preserve">
+    <value>Installer – utilstrækkelig plads</value>
+  </data>
+  <data name="InstallNow" xml:space="preserve">
+    <value>Installer nu</value>
+  </data>
+  <data name="InstallOnDemand" xml:space="preserve">
+    <value>Installer on-demand</value>
+  </data>
+  <data name="InstallOnly" xml:space="preserve">
+    <value>Installér kun</value>
+  </data>
+  <data name="InstallOnlyDesc" xml:space="preserve">
+    <value>Allerede downloadede opdateringer vil blive installeret på enheder</value>
+  </data>
+  <data name="InstallPackage" xml:space="preserve">
+    <value>Installer pakke</value>
+  </data>
+  <data name="InstallPhoneCallInProgress" xml:space="preserve">
+    <value>Installer – telefonopkald i gang</value>
+  </data>
+  <data name="InternalStorage" xml:space="preserve">
+    <value>Internt lager</value>
+  </data>
+  <data name="Interrogator" xml:space="preserve">
+    <value>Interrogator</value>
+  </data>
+  <data name="InterrogatorIntervalRequired" xml:space="preserve">
+    <value>Interrogator-interval påkrævet</value>
+  </data>
+  <data name="InterrogatorIntervalSeconds" xml:space="preserve">
+    <value>Interrogator-interval (sek)</value>
+  </data>
+  <data name="InterrogatorPort" xml:space="preserve">
+    <value>Interrogator-port</value>
+  </data>
+  <data name="InterrogatorQueueService" xml:space="preserve">
+    <value>AirWatch Interrogator-køovervågning</value>
+  </data>
+  <data name="InterrogatorService" xml:space="preserve">
+    <value>AirWatch Interrogator-server</value>
+  </data>
+  <data name="InterrogatorSettings" xml:space="preserve">
+    <value>Interrogator-indstillinger</value>
+  </data>
+  <data name="InvalidGooglePlayService" xml:space="preserve">
+    <value>Den version af Google Play-tjenester, der er installeret på denne enhed, er ikke autentisk</value>
+  </data>
+  <data name="InvalidGroupIdentifier" xml:space="preserve">
+    <value>Den valgte organisationsgruppe har ikke en gyldig gruppe-ID.</value>
+  </data>
+  <data name="InvalidPeriodEnd" xml:space="preserve">
+    <value>Ugyldig slutværdi</value>
+  </data>
+  <data name="InvalidSuspendBitLockerRebootCount" xml:space="preserve">
+    <value>Værdien for antal genstarter skal være mellem 1 og 15.</value>
+  </data>
+  <data name="InvalidTargetedLoggingFilterFormat" xml:space="preserve">
+    <value>Ugyldigt format for målrettet logføringsfilter.</value>
+  </data>
+  <data name="IosCodeSigningChecks" xml:space="preserve">
+    <value>Kontrol af systemkodesignering er deaktiveret.</value>
+  </data>
+  <data name="IosDebugChecks" xml:space="preserve">
+    <value>Appen fejlfindes aktivt.</value>
+  </data>
+  <data name="IosDisallowedOperationChecks" xml:space="preserve">
+    <value>Enhedens integritet er kompromitteret.</value>
+  </data>
+  <data name="IosEnvironmentChecks" xml:space="preserve">
+    <value>Appen kører i et miljø, der ikke styres af enhedsleverandøren.</value>
+  </data>
+  <data name="IosMountCheck" xml:space="preserve">
+    <value>Enheden indeholder potentielt farlige og/eller kompromitterede tilknytninger.</value>
+  </data>
+  <data name="Iospost103managementcapabilityunavailable" xml:space="preserve">
+    <value>Denne enhed er ikke overvåget. Du kan ikke foretage handlinger på opdateringerne.</value>
+  </data>
+  <data name="Iospre103managementcapabilityunavailable" xml:space="preserve">
+    <value>Denne enhed er ikke DEP-tilmeldt og -overvåget. Du kan ikke foretage handlinger på opdateringerne.</value>
+  </data>
+  <data name="IosProhibitedFileExistenceChecks" xml:space="preserve">
+    <value>Appen indeholder eller bruger ikke-tilladte biblioteker.</value>
+  </data>
+  <data name="IosQueryStatusTooltip" xml:space="preserve">
+    <value>Forespørg status for opdateringer til denne enhed. Der kan kun forespørges om opdateringer, som er planlagt af Workspace ONE.</value>
+  </data>
+  <data name="IosUpdateDeviceCountWarning" xml:space="preserve">
+    <value>Du er ved at sende en iOS-opdateringsanmodning til {0} enhed(er). Denne anmodning sendes kun til iOS 10.3+-enheder, hvis de er overvågede, og til iOS 9+-enheder, hvis de er overvågede med DEP-tilmelding.</value>
+  </data>
+  <data name="iPad7" xml:space="preserve">
+    <value>iPad 7th Generation</value>
+  </data>
+  <data name="iPadMini4" xml:space="preserve">
+    <value>iPad Mini 4</value>
+  </data>
+  <data name="iPadPro11inch2" xml:space="preserve">
+    <value>iPad Pro 11 tommer 2. generation</value>
+  </data>
+  <data name="iPadPro12.9inch4" xml:space="preserve">
+    <value>iPad Pro 12,9 tommer 4. generation</value>
+  </data>
+  <data name="iPhone11" xml:space="preserve">
+    <value>iPhone 11</value>
+  </data>
+  <data name="iPhone11Pro" xml:space="preserve">
+    <value>iPhone 11 Pro</value>
+  </data>
+  <data name="iPhone11ProMax" xml:space="preserve">
+    <value>iPhone 11 Pro Max</value>
+  </data>
+  <data name="iPhoneSE2" xml:space="preserve">
+    <value>iPhone SE 2. generation</value>
+  </data>
+  <data name="iPhoneX" xml:space="preserve">
+    <value>iPhone X</value>
+  </data>
+  <data name="iPhoneXʀ" xml:space="preserve">
+    <value>iPhone Xʀ</value>
+  </data>
+  <data name="iPhoneXs" xml:space="preserve">
+    <value>iPhone Xs</value>
+  </data>
+  <data name="iPhoneXsMax" xml:space="preserve">
+    <value>iPhone Xs Max</value>
+  </data>
+  <data name="IsDataPreferred" xml:space="preserve">
+    <value>Er data foretrukket</value>
+  </data>
+  <data name="IsNotEnabledSIP" xml:space="preserve">
+    <value>Er deaktiveret</value>
+  </data>
+  <data name="IsSecurityPatchUpdate" xml:space="preserve">
+    <value>Sikkerhedsopdatering?</value>
+  </data>
+  <data name="IsVoicePreferred" xml:space="preserve">
+    <value>Er tale foretrukket</value>
+  </data>
+  <data name="KeepAppsOnDevice" xml:space="preserve">
+    <value>Behold apps på enhed</value>
+  </data>
+  <data name="KeyCopied" xml:space="preserve">
+    <value>Nøgle kopieret</value>
+  </data>
+  <data name="KeyRotationRequestFailed" xml:space="preserve">
+    <value>Kan ikke anmode om nøglerotation for {0} på nuværende tidspunkt.</value>
+  </data>
+  <data name="KeyRotationSuccessfullyRequested" xml:space="preserve">
+    <value>Der blev anmodet om nøglerotation for {0}.</value>
+  </data>
+  <data name="KeyShouldNotBeEmpty" xml:space="preserve">
+    <value>Nøgle kan ikke være tom</value>
+  </data>
+  <data name="LastApplied" xml:space="preserve">
+    <value>Sidst anvendt</value>
+  </data>
+  <data name="LastAppliedPassword" xml:space="preserve">
+    <value>Seneste adgangskode anvendt</value>
+  </data>
+  <data name="LastAppliedPasswordTooltip" xml:space="preserve">
+    <value>Dette er den sidste BIOS-adgangskode, der blev bekræftet, da den blev anvendt på enheden.</value>
+  </data>
+  <data name="LastLoggedInTime" xml:space="preserve">
+    <value>Tidspunkt for sidste logon</value>
+  </data>
+  <data name="LastReboot" xml:space="preserve">
+    <value>Sidste genstart</value>
+  </data>
+  <data name="LastSeenBreakdownChartDescription" xml:space="preserve">
+    <value>{0}</value>
+  </data>
+  <data name="LastSeenBreakdownChartTitle" xml:space="preserve">
+    <value>Søjlediagram med oversigt over sidst set. </value>
+  </data>
+  <data name="LastSeenDays" xml:space="preserve">
+    <value>Sidst set (dage)</value>
+  </data>
+  <data name="LastSeenOverviewChartDescription" xml:space="preserve">
+    <value> {0} enheder set de seneste 24 timer. {1} enheder sidst set.</value>
+  </data>
+  <data name="LastSeenOverviewChartTitle" xml:space="preserve">
+    <value>Oversigt over sidst set. </value>
+  </data>
+  <data name="LastSevenDays" xml:space="preserve">
+    <value>Seneste syv dage</value>
+  </data>
+  <data name="LastSixMonths" xml:space="preserve">
+    <value>Seneste seks måneder</value>
+  </data>
+  <data name="LastSubmittedPassword" xml:space="preserve">
+    <value>Seneste adgangskode sendt</value>
+  </data>
+  <data name="LastSubmittedPasswordTooltip" xml:space="preserve">
+    <value>Dette er den sidste BIOS-adgangskode, der blev sendt til enheden, som en opdatering under automatisk eller planlagt rotation, eller under Gennemtving opdatering. Hvis der ikke blev sendt en anmodning om opdatering af adgangskode, vises "ingen".</value>
+  </data>
+  <data name="LastSuccessfulScan" xml:space="preserve">
+    <value>Sidste vellykkede skanning</value>
+  </data>
+  <data name="LastSuccessfulSync" xml:space="preserve">
+    <value>Sidste gennemførte synkronisering</value>
+  </data>
+  <data name="LastThirtyDays" xml:space="preserve">
+    <value>Seneste 30 dage</value>
+  </data>
+  <data name="LastUsername" xml:space="preserve">
+    <value>Seneste brugernavn</value>
+  </data>
+  <data name="LatestAgent" xml:space="preserve">
+    <value>Seneste Hub</value>
+  </data>
+  <data name="LatestAvailableOsUpdate" xml:space="preserve">
+    <value>Seneste tilgængelige opdatering af operativsystemet</value>
+  </data>
+  <data name="LauncherImageWarningMessage" xml:space="preserve">
+    <value>AirWatch Agent 8.2 eller nyere, Workspace ONE Intelligent Hub 9.0 eller nyere og AirWatch Launcher 3.4 eller nyere er nødvendig for at implementere et billede af høj kvalitet.</value>
+  </data>
+  <data name="LicensedUntil" xml:space="preserve">
+    <value>Licenseret indtil {0}</value>
+  </data>
+  <data name="LicenseSample" xml:space="preserve">
+    <value>Eksempel på licens</value>
+  </data>
+  <data name="LocationDataHasNotBeenReceived" xml:space="preserve">
+    <value>Placeringsdata er ikke modtaget</value>
+  </data>
+  <data name="LogoutUserConfirmation" xml:space="preserve">
+    <value>Er du sikker på, at du vil logge den bruger af enheden, der er logget på i øjeblikket?</value>
+  </data>
+  <data name="LostMessage" xml:space="preserve">
+    <value>Mistet meddelelse</value>
+  </data>
+  <data name="LostMessageTooltip" xml:space="preserve">
+    <value>Mistet meddelelse, der skal vises på enheden.</value>
+  </data>
+  <data name="LostModeDisabledMessage" xml:space="preserve">
+    <value>Mistet tilstand er deaktiveret.</value>
+  </data>
+  <data name="LostModeDisableFailedMessage" xml:space="preserve">
+    <value>Kunne ikke deaktivere mistet tilstand. Prøv venligst igen</value>
+  </data>
+  <data name="LostModeEnabledMessage" xml:space="preserve">
+    <value>Mistet tilstand er aktiveret.</value>
+  </data>
+  <data name="LostModeEnableFailedMessage" xml:space="preserve">
+    <value>Kunne ikke aktivere mistet tilstand. Prøv venligst igen.</value>
+  </data>
+  <data name="LTE" xml:space="preserve">
+    <value>LTE</value>
+    <comment>Cellular technology</comment>
+  </data>
+  <data name="MacOsDeviceLogLevelInfo" xml:space="preserve">
+    <value>Vælg niveau for indsamling af logføringsdata. Vælg "Info" for at indsamle logfiler i deres standardtilstand. Vælg "Fejlfinding" for at aktivere yderligere logføring og dataindsamling.</value>
+  </data>
+  <data name="MacOsHostName" xml:space="preserve">
+    <value>Værtsnavn</value>
+  </data>
+  <data name="MacOsLocalHostName" xml:space="preserve">
+    <value>Lokalt værtsnavn</value>
+  </data>
+  <data name="MacOsRequestDeviceLogSettingsInformation" xml:space="preserve">
+    <value>Tilpas din logningsanmodning nedenfor. Gå til Enhedsoplysninger &amp;gt; Mere &amp;gt; Vedhæftede filer &amp;gt; Dokumenter for at gennemgå logfilerne. </value>
+  </data>
+  <data name="MacOsViewLocalAdminPassword" xml:space="preserve">
+    <value>Vis adminadgangskode</value>
+  </data>
+  <data name="MaintenanceHours" xml:space="preserve">
+    <value>Vedligeholdelsestimer</value>
+  </data>
+  <data name="ManageAssignments" xml:space="preserve">
+    <value>Administrer tildelinger</value>
+  </data>
+  <data name="ManagedAdminPasswordAccessed" xml:space="preserve">
+    <value>Adgang til styret administratoradgangskode</value>
+  </data>
+  <data name="ManagedAdminPasswordRotationInformation" xml:space="preserve">
+    <value>Af sikkerhedsmæssige årsager vil en kommando til at rotere denne adgangskode blive indstillet om 8 timer</value>
+  </data>
+  <data name="ManagedAdminStaticPasswordRotationInformation" xml:space="preserve">
+    <value>Tilfældig administratoradgangskode er ikke aktiveret for den anvendte enhedstilmeldingsprofil. Denne adgangskode bliver ikke roteret</value>
+  </data>
+  <data name="ManagedAdminUser" xml:space="preserve">
+    <value>Styret adminbruger</value>
+  </data>
+  <data name="ManagedApplicationAttributesConfirmed" xml:space="preserve">
+    <value>Styrede app-attributter bekræftet</value>
+  </data>
+  <data name="ManagedApplicationAttributesFailed" xml:space="preserve">
+    <value>Styrede app-attributter mislykket</value>
+  </data>
+  <data name="ManagedApplicationAttributesRefused" xml:space="preserve">
+    <value>Styrede app-attributter afvist</value>
+  </data>
+  <data name="ManagedApplicationAttributesRequested" xml:space="preserve">
+    <value>Styrede app-attributter anmodet</value>
+  </data>
+  <data name="ManageTags" xml:space="preserve">
+    <value>Styr mærker</value>
+  </data>
+  <data name="ManageUpdate" xml:space="preserve">
+    <value>Administrer opdatering</value>
+  </data>
+  <data name="MaxArgCharacters" xml:space="preserve">
+    <value>Maks. {0} tegn</value>
+  </data>
+  <data name="MEID" xml:space="preserve">
+    <value>MEID</value>
+  </data>
+  <data name="MemorySize" xml:space="preserve">
+    <value>Hukommelsesstørrelse</value>
+  </data>
+  <data name="MinOrMaxCannotBeLessThanZero" xml:space="preserve">
+    <value>Min. eller maks. værdien må ikke være mindre end 0.</value>
+  </data>
+  <data name="MinuteAgo" xml:space="preserve">
+    <value>for et minut siden</value>
+  </data>
+  <data name="MinValCannotBeGreaterThanMaxVal" xml:space="preserve">
+    <value>Minimumsværdien må ikke være større end maksimumværdien.</value>
+  </data>
+  <data name="ModelDetailSearchHelpText" xml:space="preserve">
+    <value>Indtast for at søge efter model</value>
+  </data>
+  <data name="ModelNotSupported" xml:space="preserve">
+    <value>Model understøttes ikke</value>
+  </data>
+  <data name="ModelNumberMaxCharacters" xml:space="preserve">
+    <value>Modelnummer må være på maks. 500 tegn</value>
+  </data>
+  <data name="MonitorFilter" xml:space="preserve">
+    <value>Monitor-filter</value>
+  </data>
+  <data name="MonitorIdentifier" xml:space="preserve">
+    <value>Monitor-identifikator</value>
+  </data>
+  <data name="MultiuserDeviceRegistrationNotAllowed" xml:space="preserve">
+    <value>Enhedsregistrering for flere brugere er ikke tilladt.</value>
+  </data>
+  <data name="NavigateToNextDevice" xml:space="preserve">
+    <value>Enhedsdetaljer – Næste-pil</value>
+  </data>
+  <data name="NavigateToPreviousDevice" xml:space="preserve">
+    <value>Enhedsdetaljer – Forrige-pil</value>
+  </data>
+  <data name="NetworkErrorOccurredPleaseRefresh" xml:space="preserve">
+    <value>En netværksfejl er opstået. Opdater browseren og prøv igen.</value>
+  </data>
+  <data name="NewAssignment" xml:space="preserve">
+    <value>Ny tildeling</value>
+  </data>
+  <data name="NewFileServer" xml:space="preserve">
+    <value>Ny filserver</value>
+  </data>
+  <data name="NewRoutine" xml:space="preserve">
+    <value>Ny tidsplan</value>
+  </data>
+  <data name="NewScript" xml:space="preserve">
+    <value>Nyt script</value>
+  </data>
+  <data name="NewTimeWindow" xml:space="preserve">
+    <value>Nyt tidsvindue</value>
+  </data>
+  <data name="NextReTry" xml:space="preserve">
+    <value>Næste nye forsøg</value>
+  </data>
+  <data name="NextSevenDays" xml:space="preserve">
+    <value>Næste syv dage</value>
+  </data>
+  <data name="NextSixMonths" xml:space="preserve">
+    <value>Næste seks måneder</value>
+  </data>
+  <data name="NextThirtyDays" xml:space="preserve">
+    <value>Næste 30 dage</value>
+  </data>
+  <data name="NextThreeMonths" xml:space="preserve">
+    <value>Næste tre måneder</value>
+  </data>
+  <data name="NoAssignedTagsFound" xml:space="preserve">
+    <value>Ingen tildelte mærker fundet</value>
+  </data>
+  <data name="NoAssignmentsFound" xml:space="preserve">
+    <value>Ingen tildelinger fundet</value>
+  </data>
+  <data name="NoAvailableTagsFound" xml:space="preserve">
+    <value>Ingen tilgængelige mærker fundet</value>
+  </data>
+  <data name="NoDeploymentFound" xml:space="preserve">
+    <value>Ingen udrulning fundet for enhedsopdatering under den aktuelle organisationsgruppe.</value>
+  </data>
+  <data name="NoDeviceUpdatesMsg" xml:space="preserve">
+    <value>Ingen enhedsopdateringer er tilgængelige</value>
+  </data>
+  <data name="NoGroupIdAtEnrollmentOg" xml:space="preserve">
+    <value>Tilmelding for OG har intet gruppe-ID</value>
+  </data>
+  <data name="NonceError" xml:space="preserve">
+    <value>Fejlgenerering.</value>
+  </data>
+  <data name="NoPasscodeDevicesChartDescription" xml:space="preserve">
+    <value>{0} enheder uden adgangskode. {1} enheder uden adgangskode i alt.</value>
+  </data>
+  <data name="NoPasscodeDevicesChartTitle" xml:space="preserve">
+    <value>Kransediagram over enheder uden adgangskode. </value>
+  </data>
+  <data name="NoRemovableDrivesInOG" xml:space="preserve">
+    <value>Ingen flytbare drev er tilgængelige</value>
+  </data>
+  <data name="NoSafetyNetScanData" xml:space="preserve">
+    <value>Ingen tidligere skanningsdata</value>
+  </data>
+  <data name="NoSmartGroupsFound" xml:space="preserve">
+    <value>Der blev ikke fundet en smart-gruppe</value>
+  </data>
+  <data name="NotDepOrSupervised" xml:space="preserve">
+    <value>Ikke DEP eller overvåget</value>
+  </data>
+  <data name="NoteKeepAppsOnDevice" xml:space="preserve">
+    <value>Forhåndsvisning af enheden kan bruges til at finde enheder, der ikke har den version af Intelligent Hub, der kræves for at understøtte denne indstilling, ved at søge efter "ikke understøttet".</value>
+  </data>
+  <data name="NotEligible" xml:space="preserve">
+    <value>Ikke berettiget</value>
+  </data>
+  <data name="NotEligibleHoverText" xml:space="preserve">
+    <value>Ikke berettiget
+Inkluderer alle enheder, der ikke er på denne version eller en højere version, og som ikke understøttes, er overvåget eller DEP</value>
+  </data>
+  <data name="NotEncryptedDevicesChartDescription" xml:space="preserve">
+    <value>{0} ikke-krypterede enheder. {1} ikke-krypterede enheder i alt.</value>
+  </data>
+  <data name="NotEncryptedDevicesChartTitle" xml:space="preserve">
+    <value>Kransediagram over ikke-krypterede enheder.</value>
+  </data>
+  <data name="NotificationForDownloadSuccess" xml:space="preserve">
+    <value>Meddelelse om fuldført download</value>
+  </data>
+  <data name="NotificationForInstallSuccess" xml:space="preserve">
+    <value>Meddelelse om fuldført installation</value>
+  </data>
+  <data name="NotificationType" xml:space="preserve">
+    <value>Meddelelsestype</value>
+  </data>
+  <data name="NotifyVidmConfigChange" xml:space="preserve">
+    <value>Giv besked til konfigurationsændring af Workspace ONE Access</value>
+  </data>
+  <data name="NumberOfReboots" xml:space="preserve">
+    <value>Antal genstarter</value>
+  </data>
+  <data name="OemUpdateSampleProcessorJob" xml:space="preserve">
+    <value>OemUpdate oversigt, processorjob</value>
+  </data>
+  <data name="OfflineDomainJoin" xml:space="preserve">
+    <value>Offlinedomænejoin</value>
+  </data>
+  <data name="OneTime" xml:space="preserve">
+    <value>Én gang</value>
+  </data>
+  <data name="OneTimeOnly" xml:space="preserve">
+    <value>Kun én gang</value>
+  </data>
+  <data name="OneTimeOnlyArg" xml:space="preserve">
+    <value>Kun én gang {0} - {1} ({2})</value>
+    <comment>Placehoders: 0 - StartTime, 1 - EndTime, 2 - Duration.
+Example: One Time Only 11:00 PM - 4:30 AM (5 hours 30 mins)</comment>
+  </data>
+  <data name="OneTimeTitleArg" xml:space="preserve">
+    <value>{0} - {1} ({2})</value>
+    <comment>Placehoders: 0 - StartTime, 1 - EndTime, 2 - Duration.
+Example: 11:00 PM - 4:30 AM (5 hours 30 mins)</comment>
+  </data>
+  <data name="OnHigherVersion" xml:space="preserve">
+    <value>På højere version</value>
+  </data>
+  <data name="OnHigherVersionHoverText" xml:space="preserve">
+    <value>På højere version
+Inkluderer alle enheder på en højere version uanset berettigelse </value>
+  </data>
+  <data name="OnThisVersion" xml:space="preserve">
+    <value>På denne version</value>
+  </data>
+  <data name="OnThisVersionHoverText" xml:space="preserve">
+    <value>På denne version
+Inkluderer alle enheder på denne version uanset berettigelse</value>
+  </data>
+  <data name="OpenWiFi" xml:space="preserve">
+    <value>Åbent Wi-Fi</value>
+  </data>
+  <data name="OperatingSystemBreakDownChartDescription" xml:space="preserve">
+    <value>{0} Søjlediagram. {1}</value>
+  </data>
+  <data name="OperatingSystemBreakDownChartTitle" xml:space="preserve">
+    <value>Operativsystem opdeling </value>
+  </data>
+  <data name="OrganizationUnits" xml:space="preserve">
+    <value>Organisationsenheder</value>
+  </data>
+  <data name="OrganizationUnitsHelpMessage" xml:space="preserve">
+    <value>Fuldt entydigt navn på organisationsenhed (OU) hvor computerobjekter skal oprettes</value>
+  </data>
+  <data name="OsUpdateEditAssignment" xml:space="preserve">
+    <value>Rediger tildeling</value>
+  </data>
+  <data name="OutOfDateState" xml:space="preserve">
+    <value>Forældet</value>
+  </data>
+  <data name="OutOfDateStatus" xml:space="preserve">
+    <value>Forældet</value>
+  </data>
+  <data name="OverrideDeviceUpdatesContentArg" xml:space="preserve">
+    <value>Denne handling vil tilsidesætte alle planlagte tildelingsvalg for denne enhed. Der kan også opstå en potentiel afbrydelse af slutbrugeren, hvis en installationskommando pushes. Er du sikker på, at du vil [{0}]?</value>
+  </data>
+  <data name="OverrideJobLogLevelConfirmation" xml:space="preserve">
+    <value>Bekræftelse på tilsidesættelse af joblogføringsniveau</value>
+  </data>
+  <data name="OverrideWarning" xml:space="preserve">
+    <value>Tilsidesæt advarsel</value>
+  </data>
+  <data name="OwnershipAndPlatformChangeNotAllowed" xml:space="preserve">
+    <value>Ændringer til ejerskab og platform er ikke tilladt.</value>
+  </data>
+  <data name="PasswordSetOn" xml:space="preserve">
+    <value>Adgangskodeindstilling til</value>
+  </data>
+  <data name="Pause" xml:space="preserve">
+    <value>Pause</value>
+  </data>
+  <data name="PausedSuccessfully" xml:space="preserve">
+    <value>Midlertidigt afbrudt</value>
+  </data>
+  <data name="PauseUpdatesContent" xml:space="preserve">
+    <value>Pause vil ikke stoppe enheder, der allerede har downloadet denne opdatering. Den vil dog stoppe alle tildelte fremtidige downloads af opdateringen. Du kan styre eksisterende tildelinger, men ændringer træder først i kraft, når opdateringen er genoptaget. Er du sikker på, at du ønsker at sætte opdateringen på pause?</value>
+  </data>
+  <data name="PendingSync" xml:space="preserve">
+    <value>Afventer synkronisering</value>
+  </data>
+  <data name="PendingSystemUpdate" xml:space="preserve">
+    <value>Afventende systemopdatering</value>
+  </data>
+  <data name="PerAppVpnProfile" xml:space="preserve">
+    <value>VPN profil pr. app</value>
+  </data>
+  <data name="Periodically" xml:space="preserve">
+    <value>Periodisk</value>
+  </data>
+  <data name="PhoneNumberIsRequiredField" xml:space="preserve">
+    <value>Telefonnummer er et påkrævet felt</value>
+  </data>
+  <data name="PlatformsChartDescription" xml:space="preserve">
+    <value>{0}</value>
+  </data>
+  <data name="PlatformsChartTitle" xml:space="preserve">
+    <value>Søjlediagram over platforme. </value>
+  </data>
+  <data name="PlayAirPlayErrorMessage" xml:space="preserve">
+    <value>Der opstod en fejl under forsøg på AirPlay til denne enhed. Tjek dine indstillinger, og prøv igen.</value>
+  </data>
+  <data name="PleaseEnterValidIPAddress" xml:space="preserve">
+    <value>Indtast en gyldig IP-adresse</value>
+  </data>
+  <data name="PolicyEngineBackoffHelp" xml:space="preserve">
+    <value>Hvor ofte, i minutter, Policy Engine vil prøve et element.</value>
+  </data>
+  <data name="PolicyEngineMaxTryCountHelp" xml:space="preserve">
+    <value>Antal gange Policy Engine vil prøve et element.</value>
+  </data>
+  <data name="PolicyEngineQueueAuditing" xml:space="preserve">
+    <value>Revisionskø for Policy Engine</value>
+  </data>
+  <data name="PolicyEngineQueueAuditingHelp" xml:space="preserve">
+    <value>Hvis aktiveret, bliver behandlede elementer i Policy Engine-køen gemt i Policy Engine-kørevisionen.</value>
+  </data>
+  <data name="PollOnLogin" xml:space="preserve">
+    <value>Afstemning ved login</value>
+  </data>
+  <data name="PreserveDataPlan" xml:space="preserve">
+    <value>Bevar dataplan</value>
+  </data>
+  <data name="PreserveDataPlanTooltip" xml:space="preserve">
+    <value>Når funktionen er aktiveret, og en dataplan findes på enheden, bliver den pågældende dataplan bevaret efter at enheden er blevet slettet.</value>
+  </data>
+  <data name="PreviousPassword" xml:space="preserve">
+    <value>Tidligere adgangskode</value>
+  </data>
+  <data name="ProductProvisioningAWCMThrottle" xml:space="preserve">
+    <value>Produktklargøring AWCM-regulator</value>
+  </data>
+  <data name="ProductProvisioningAwcmThrottleHelp" xml:space="preserve">
+    <value>Hvis aktiveret, bruger produktklargøring AWCM udgående kø til AWCM-notifikationer.</value>
+  </data>
+  <data name="ProductProvisioningAWCMThrottleRate" xml:space="preserve">
+    <value>Produktklargøring, AWCM-regulatorhastighed</value>
+  </data>
+  <data name="ProductProvisioningAwcmThrottleRateHelp" xml:space="preserve">
+    <value>Antal sendte AWCM-notifikationer pr. sekund.</value>
+  </data>
+  <data name="ProductProvisioningBatchReleaseJob" xml:space="preserve">
+    <value>Produktklargøring, batchudløsningsjob</value>
+  </data>
+  <data name="ProductProvisioningCommandReleaseBatchSize" xml:space="preserve">
+    <value>Produktklargøring, batchstørrelse for udløsning af kommando</value>
+  </data>
+  <data name="ProductProvisioningCommandReleaseBatchSizeHelp" xml:space="preserve">
+    <value>Antal kommandoer, der udløses fra enhedens kommandokø pr. jobinterval for batchudløsningsplanlægger for produktklargøring.</value>
+  </data>
+  <data name="ProductsBatchSizeHelp" xml:space="preserve">
+    <value>Antal produkter, som Policy Engine kører på.</value>
+  </data>
+  <data name="ProvisioningDescription" xml:space="preserve">
+    <value>Klargøring anvendes til at auto-tilmelde enheder og sikre avanceret styringsfunktionalitet</value>
+  </data>
+  <data name="PublishDummyFirmware" xml:space="preserve">
+    <value>Udgiv dummy-firmware</value>
+  </data>
+  <data name="Python" xml:space="preserve">
+    <value>Python 3</value>
+  </data>
+  <data name="QRCodeConfiguredComponents" xml:space="preserve">
+    <value>Du har konfigureret følgende komponenter. Bemærk, at disse data ikke bliver gemt, så sørg for, at konfigurationen er korrekt, før du lukker dette vindue. Hvis du har brug for at foretage ændringer, efter at du har lukket vinduet, skal du gennemgå guiden igen.</value>
+  </data>
+  <data name="QRCodeEnrollmentDetailsMessage" xml:space="preserve">
+    <value>Hvis du vil bruge token-baseret godkendelse, skal du lade de to første indstillinger nedenfor deaktiveret</value>
+  </data>
+  <data name="QRCodeEnrollmentWiFiHelpText" xml:space="preserve">
+    <value>Wi-fi-indstillingerne er konfigureret efter scanning af QR-koden. Enheder med en forudinstalleret QR-læser skal bruge wi-fi-indstillinger, hvis mobildata ikke er tilgængelige. Enheder uden en forudinstalleret QR-læser skal bruge en separat netværksforbindelse, som er konfigureret til at downloade og installere læseren. Når QR-læseren er installeret, bruges dette netværk til at registrere enheden. Kun WPA/WPA2-godkendelse understøttes.</value>
+  </data>
+  <data name="QRCodePromptForEnteringLoginCredentials" xml:space="preserve">
+    <value>Brugeren bliver bedt om at indtaste loginoplysninger</value>
+  </data>
+  <data name="QRCodePromptForEnteringOG" xml:space="preserve">
+    <value>Brugeren bliver bedt om at indtaste organisationsgruppe eller tilmeldingstoken</value>
+  </data>
+  <data name="QRcodeSheetTitle" xml:space="preserve">
+    <value>QR-kode genereret af Airwatch</value>
+  </data>
+  <data name="QRCodeWizardCloseConfirmation" xml:space="preserve">
+    <value>Kontrollér, at du har gemt QR-koden, før du lukker dette vindue, da konfigurationen ikke bliver gemt i Console. Vil du fortsætte?</value>
+  </data>
+  <data name="Quality" xml:space="preserve">
+    <value>Kvalitet</value>
+  </data>
+  <data name="QueriedSuccessfully" xml:space="preserve">
+    <value>Forespørgslen lykkedes</value>
+  </data>
+  <data name="QueryDeviceSecurity" xml:space="preserve">
+    <value>Spørg om enhedssikkerhed</value>
+  </data>
+  <data name="Querystatus" xml:space="preserve">
+    <value>Forespørg om opdateringsstatus</value>
+  </data>
+  <data name="Querystatustooltip" xml:space="preserve">
+    <value>Forespørg om status for opdateringer til denne enhed.</value>
+  </data>
+  <data name="RebootCount" xml:space="preserve">
+    <value>Antal genstarter</value>
+  </data>
+  <data name="RecommendedTasks" xml:space="preserve">
+    <value>Anbefalede opgaver</value>
+  </data>
+  <data name="RecoveryID" xml:space="preserve">
+    <value>Genoprettelses-ID</value>
+  </data>
+  <data name="RecurringScheduleCondition" xml:space="preserve">
+    <value>Planlæg dine handlinger, så de finder sted på et gentaget tidspunkt.</value>
+  </data>
+  <data name="ReDeviceLogFailedToSendToDevice" xml:space="preserve">
+    <value>Forespørgsel om enhedslogfil blev ikke sendt til enheden.</value>
+  </data>
+  <data name="Refreshed" xml:space="preserve">
+    <value>Opdateret</value>
+  </data>
+  <data name="RefreshEsim" xml:space="preserve">
+    <value>Opdater eSIM</value>
+  </data>
+  <data name="RegisterRemoteManagement" xml:space="preserve">
+    <value>Registrer fjernstyring</value>
+  </data>
+  <data name="RegisterRemoteViewCommandAlreadyOnQueue" xml:space="preserve">
+    <value>Kommandoen til registrering af enheden til fjernvisning er allerede i kommandokøen og samles op, når enheden tjekkes ind på Console.</value>
+  </data>
+  <data name="RegisterRemoteViewCommandCouldNotBeQueued" xml:space="preserve">
+    <value>Kommandoen til registrering af enheden til fjernvisning kunne ikke sendes. Kontakt support for at få hjælp.</value>
+  </data>
+  <data name="RegisterRemoteViewCommandQueued" xml:space="preserve">
+    <value>Kommandoen til registrering af enheden til fjernvisning er blevet sat i kø.</value>
+  </data>
+  <data name="RegistryOperation" xml:space="preserve">
+    <value>Registreringsdatabaseoperation</value>
+  </data>
+  <data name="RejectWipe" xml:space="preserve">
+    <value>Afvis sletning</value>
+  </data>
+  <data name="RejectWipeConfirm" xml:space="preserve">
+    <value>Reject wipe successful</value>
+  </data>
+  <data name="RelayServerContactDelayHelp" xml:space="preserve">
+    <value>Hvor ofte i minutter, at Content Delivery Service behandler indholdstjenesteelementer for en relæserver ved fejl/ugyldig tilstand.</value>
+  </data>
+  <data name="RelayServerTestConnectionResultsExportFailed" xml:space="preserve">
+    <value>Eksport af testforbindelsesresultater mislykkedes.</value>
+  </data>
+  <data name="RemoteFindWindowsDevice" xml:space="preserve">
+    <value>Fjernsøg Windows-enhed</value>
+  </data>
+  <data name="RemovableDrives" xml:space="preserve">
+    <value>Flytbare drev</value>
+  </data>
+  <data name="RemovableDrivesMessage" xml:space="preserve">
+    <value>Flytbare drev krypteret med BitLocker.</value>
+  </data>
+  <data name="RemoveEnterpriseFactoryProtection" xml:space="preserve">
+    <value>Fjern Enterprise Factory Reset Protection før sletning?</value>
+  </data>
+  <data name="RemoveEventAction" xml:space="preserve">
+    <value>Fjern begivenhedshandling</value>
+  </data>
+  <data name="RemoveUpdate" xml:space="preserve">
+    <value>Fjern opdatering</value>
+  </data>
+  <data name="RepeatDaily" xml:space="preserve">
+    <value>Gentag dagligt</value>
+  </data>
+  <data name="RepeatDailyArg" xml:space="preserve">
+    <value>Gentag dagligt {0} - {1} ({2})</value>
+    <comment>Placehoders: 0 - StartTime, 1 - EndTime, 2 - Duration.
+Example: Repeat Daily 11:00 PM - 4:30 AM (5 hours 30 mins)</comment>
+  </data>
+  <data name="RepeatEvery" xml:space="preserve">
+    <value>Gentag hver</value>
+  </data>
+  <data name="RepeatEveryArg" xml:space="preserve">
+    <value>Gentag hver {0} {1} - {2} ({3})</value>
+    <comment>Placehoders: 0 - Days, 1 - StartTime, 2 - EndTime, 3 - Duration.
+Example: Repeat Every Mon/Wed 11:00 PM - 4:30 AM (5 hours 30 mins)</comment>
+  </data>
+  <data name="RepeatEveryWeekdayArg" xml:space="preserve">
+    <value>Gentag hver ugedag {0} - {1} ({2})</value>
+    <comment>Placehoders: 0 - StartTime, 1 - EndTime, 2 - Duration.
+Example: Repeat Every Weekday 11:00 PM - 4:30 AM (5 hours 30 mins)</comment>
+  </data>
+  <data name="RepeatWeekly" xml:space="preserve">
+    <value>Gentag ugentligt</value>
+  </data>
+  <data name="Requestcompliancecheckmtd" xml:space="preserve">
+    <value>Standard HTML-meddelelsesskabelon, der anmoder brugeren om at starte Workspace ONE Intelligent Hub for at lade enheden tjekke ind og køre en kompromitteret skanning.</value>
+  </data>
+  <data name="RequestError" xml:space="preserve">
+    <value>Godkendelseanmodningsfejl</value>
+  </data>
+  <data name="RequestExpired" xml:space="preserve">
+    <value>Godkendelsesanmodning udløbet</value>
+  </data>
+  <data name="RequestFailed" xml:space="preserve">
+    <value>Anmodningen mislykkedes</value>
+  </data>
+  <data name="RequestHubLogs" xml:space="preserve">
+    <value>Anmod om Intelligent Hub-logfiler</value>
+  </data>
+  <data name="RequestHubRepairFailure" xml:space="preserve">
+    <value>Kunne ikke sætte kommando til reparation af Hub i kø</value>
+  </data>
+  <data name="RequestHubRepairSuccess" xml:space="preserve">
+    <value>Kommandoen til reparation af Hub er sat i kø</value>
+  </data>
+  <data name="RequestLimitHasBeenReached" xml:space="preserve">
+    <value>Anmodningsgrænsen er nået. Vent venligst et par minutter, og prøv igen.</value>
+  </data>
+  <data name="RequestRejected" xml:space="preserve">
+    <value>Godkendelsesanmodning afvist</value>
+  </data>
+  <data name="RequestUserConsent" xml:space="preserve">
+    <value>Anmod om brugersamtykke</value>
+  </data>
+  <data name="RequestUserConsentInfo" xml:space="preserve">
+    <value>Når dette er aktiveret, vil brugeren blive anmodet om en privatlivs-prompt for at tillade logføringsindsamling. Privatlivs-prompten vil indeholde information om hvilke data, der indsamles i logfilerne, og påkræver accept af brugeren, før logfilerne overføres.</value>
+  </data>
+  <data name="RequestUserListFailed" xml:space="preserve">
+    <value>Anmodning om brugerliste mislykkedes</value>
+  </data>
+  <data name="ResetAndroidWorkProfilePasscode" xml:space="preserve">
+    <value>Skift adgangskode for Work</value>
+  </data>
+  <data name="ResetBiosPassword" xml:space="preserve">
+    <value>Nulstil BIOS-adgangskode</value>
+  </data>
+  <data name="ResponseDataType" xml:space="preserve">
+    <value>Svarbindingstype</value>
+  </data>
+  <data name="Resume" xml:space="preserve">
+    <value>Genoptag</value>
+  </data>
+  <data name="ResumeBitLocker" xml:space="preserve">
+    <value>Genoptag BitLocker</value>
+  </data>
+  <data name="ResumeBitLockerConfirmed" xml:space="preserve">
+    <value>BitLocker genoptaget</value>
+  </data>
+  <data name="ResumeBitlockerEncryption" xml:space="preserve">
+    <value>Fortsæt BitLocker-kryptering</value>
+  </data>
+  <data name="ResumeBitlockerEncryptionMessage" xml:space="preserve">
+    <value>Bekræft, at du ønsker at fortsætte med BitLocker-kryptering.</value>
+  </data>
+  <data name="ResumeBitlockerEncryptionRestricted" xml:space="preserve">
+    <value>Midlertidigt stop af BitLocker-kryptering er begrænset</value>
+  </data>
+  <data name="ResumeBitLockerFailed" xml:space="preserve">
+    <value>Kan ikke genoptage BitLocker på nuværende tidspunkt</value>
+  </data>
+  <data name="ResumeBitLockerFailure" xml:space="preserve">
+    <value>Fortsættelse af BitLocker slog fejl.</value>
+  </data>
+  <data name="ResumeBitLockerRequested" xml:space="preserve">
+    <value>Anmodning om genoptagelse af BitLocker</value>
+  </data>
+  <data name="ResumeBitLockerSuccess" xml:space="preserve">
+    <value>Der er anmodet om genoptagelse af BitLocker for denne enhed.</value>
+  </data>
+  <data name="ResumeSuccessfully" xml:space="preserve">
+    <value>Genoptag fuldført</value>
+  </data>
+  <data name="ResumeUpdatesContent" xml:space="preserve">
+    <value>Genoptag starter udrulningen af opdateringer, hvis de aldrig er blevet startet, og genoptager udrulningen af opdateringer, hvis de er blevet stoppet tidligere. Er du sikker på, at du ønsker at genoptage udrulningen af opdateringen?</value>
+  </data>
+  <data name="RevocationDate" xml:space="preserve">
+    <value>Tilbagekaldelsesdato</value>
+  </data>
+  <data name="RevocationError" xml:space="preserve">
+    <value>Tilbagekaldelsesfejl</value>
+  </data>
+  <data name="RevocationPending" xml:space="preserve">
+    <value>Tilbagekaldelse afventer</value>
+  </data>
+  <data name="RevocationReason" xml:space="preserve">
+    <value>Tilbagekaldelsesårsag</value>
+  </data>
+  <data name="RevokeGoogleRefreshToken" xml:space="preserve">
+    <value>Tilbagekald G Suite Tokens</value>
+  </data>
+  <data name="RotateBitLockerRecoveryKey" xml:space="preserve">
+    <value>Roter genoprettelsesnøgle til BitLocker</value>
+  </data>
+  <data name="RotateBitLockerRecoveryKeyConfirmed" xml:space="preserve">
+    <value>Roter genoprettelsesnøgle til BitLocker bekræftet</value>
+  </data>
+  <data name="RotateBitLockerRecoveryKeyFailed" xml:space="preserve">
+    <value>Roter genoprettelsesnøgle til BitLocker mislykkedes</value>
+  </data>
+  <data name="RotateBitLockerRecoveryKeyRefused" xml:space="preserve">
+    <value>Roter genoprettelsesnøgle til BitLocker afvist</value>
+  </data>
+  <data name="RotateBitLockerRecoveryKeyRequested" xml:space="preserve">
+    <value>Roter genoprettelsesnøgle af BitLocker anmodet</value>
+  </data>
+  <data name="RotateDEPAdminPassword" xml:space="preserve">
+    <value>Roter adminadgangskode for DEP</value>
+  </data>
+  <data name="RotateDEPAdminPasswordConfirmed" xml:space="preserve">
+    <value>Rotation af adminadgangskode for DEP bekræftet</value>
+  </data>
+  <data name="RotateDEPAdminPasswordFailed" xml:space="preserve">
+    <value>Rotation af adminadgangskode for DEP mislykkedes</value>
+  </data>
+  <data name="RotateDEPAdminPasswordRequested" xml:space="preserve">
+    <value>Rotation af adminadgangskode for DEP anmodet</value>
+  </data>
+  <data name="RotateDeviceRecoveryKeyConfirmed" xml:space="preserve">
+    <value>Genoprettelsesnøglen for kryptering af diskenhed modtaget</value>
+  </data>
+  <data name="RuntimeInformation" xml:space="preserve">
+    <value>Kørselsoplysninger</value>
+  </data>
+  <data name="SafetyNetAttestationError" xml:space="preserve">
+    <value>SafetyNet attesteringsfejl.</value>
+  </data>
+  <data name="SafetyNetBasicIntegrityFailure" xml:space="preserve">
+    <value>Safetynet Basic Integrity-fejl.</value>
+  </data>
+  <data name="SafetyNetCtsNotCompatible" xml:space="preserve">
+    <value>SafetyNet CTS inkompatibel.</value>
+  </data>
+  <data name="SafetyNetResponseValidationFailed" xml:space="preserve">
+    <value>SafetyNet Response Validation mislykkedes.</value>
+  </data>
+  <data name="SafetyNetStatementInvalid" xml:space="preserve">
+    <value>SafetyNet Attestation-skanning er ugyldig.</value>
+  </data>
+  <data name="SamsungEFOTAPublishUpdateTimeZoneInfo" xml:space="preserve">
+    <value>Vælg tidsrammen for planlægning af denne opdatering herunder. Opdateringer kan højst planlægges 30 dage i forvejen med et maksimalt opdateringsvindue på 7 dage. Opdateringer inden for dette vindue bliver udgivet til enheder hver 4. time i serverens tidszone.</value>
+  </data>
+  <data name="SaveAsEncrypted" xml:space="preserve">
+    <value>Gem som krypteret</value>
+  </data>
+  <data name="SavePriority" xml:space="preserve">
+    <value>Gem prioritet</value>
+  </data>
+  <data name="ScanTimeInSeconds" xml:space="preserve">
+    <value>Skanningstid</value>
+  </data>
+  <data name="ScheduledRotateDEPAdminPasswordRequested" xml:space="preserve">
+    <value>Planlagt rotation af adminadgangskode for DEP anmodet</value>
+  </data>
+  <data name="ScriptCommand" xml:space="preserve">
+    <value>Scriptkommando</value>
+  </data>
+  <data name="ScriptCommandTooltipText" xml:space="preserve">
+    <value>Upload af et nyt script vil overskrive eksisterende script-kommandoer.</value>
+  </data>
+  <data name="ScriptsAssignmentWizardDefinitionTabDesc" xml:space="preserve">
+    <value>Konfigurer nøglenavnet, beskrivelsen og andre generelle oplysninger for scriptet</value>
+  </data>
+  <data name="ScriptsAssignmentWizardDeploymentTabDesc" xml:space="preserve">
+    <value>Konfigurer nøglenavnet, beskrivelsen og andre generelle oplysninger for scriptet</value>
+  </data>
+  <data name="ScriptsMenuDescription" xml:space="preserve">
+    <value>Scripts definerer brugerdefinerede, avancerede handlinger for desktopenhed</value>
+  </data>
+  <data name="SearchAssignedTags" xml:space="preserve">
+    <value>Søg i tildelte mærker</value>
+  </data>
+  <data name="SearchAvailableTags" xml:space="preserve">
+    <value>Søg i tilgængelige mærker</value>
+  </data>
+  <data name="SearchOrganizationUnits" xml:space="preserve">
+    <value>Søg i organisationsenheder</value>
+  </data>
+  <data name="SecureBootStatusFull" xml:space="preserve">
+    <value>Status for sikker start – Fuld</value>
+  </data>
+  <data name="SecureBootStatusMedium" xml:space="preserve">
+    <value>Status for sikker start – Middel</value>
+  </data>
+  <data name="SecureBootStatusNotSupported" xml:space="preserve">
+    <value>Status for sikker start – Ikke understøttet</value>
+  </data>
+  <data name="SecureBootStatusOff" xml:space="preserve">
+    <value>Status for sikker start – Slået fra</value>
+  </data>
+  <data name="SecureWiFI" xml:space="preserve">
+    <value>Sikkert (WPA/WPA2)</value>
+  </data>
+  <data name="SelectAndroidAgentVersionToInstall" xml:space="preserve">
+    <value>Vælg den version af Android Hub, der skal installeres på enheden</value>
+  </data>
+  <data name="SelectNotifications" xml:space="preserve">
+    <value>Vælg meddelelser</value>
+  </data>
+  <data name="SerialNumberCannotHaveSpecialCharacters" xml:space="preserve">
+    <value>Ugyldigt serienummer/numre. Serienumre kan kun indeholde bogstaver og tal. Korriger filen, og upload kurven igen.</value>
+  </data>
+  <data name="SerialNumberMaxCharacters" xml:space="preserve">
+    <value>Serienummer kan maksimalt være på 200 tegn</value>
+  </data>
+  <data name="ServerTimeUTC" xml:space="preserve">
+    <value>Servertid (UTC)</value>
+  </data>
+  <data name="ServerTimeZone" xml:space="preserve">
+    <value>Servertidszone:</value>
+  </data>
+  <data name="Set" xml:space="preserve">
+    <value>Angiv</value>
+  </data>
+  <data name="SetBitLockerRecoveryKey" xml:space="preserve">
+    <value>Indstil genoprettelsesnøgle til BitLocker</value>
+  </data>
+  <data name="SetUpConfiguration" xml:space="preserve">
+    <value>Opsætningskonfiguration</value>
+  </data>
+  <data name="SetupScriptParameters" xml:space="preserve">
+    <value>Konfigurer en eller flere miljøvariabler for dynamiske eller følsomme oplysninger i dette script</value>
+  </data>
+  <data name="SharedIpad" xml:space="preserve">
+    <value>Delt iPad</value>
+  </data>
+  <data name="SIMCardArg" xml:space="preserve">
+    <value>SIM-kort {0}</value>
+    <comment>{0} will be replaced with the SIM card number</comment>
+  </data>
+  <data name="SimLabel" xml:space="preserve">
+    <value>Etiket</value>
+  </data>
+  <data name="SimLabelID" xml:space="preserve">
+    <value>Etiket-id</value>
+  </data>
+  <data name="Slot" xml:space="preserve">
+    <value>Slot</value>
+  </data>
+  <data name="SmartGroupAssignmentError" xml:space="preserve">
+    <value>En smart-gruppe kan kun tildeles til en domænejoin.</value>
+  </data>
+  <data name="SmsSettingsAreNotConfigured" xml:space="preserve">
+    <value>SMS-indstillinger er ikke konfigureret. Konfigurer dem i Alle indstillinger &gt; System &gt; Enterprise Integration &gt; SMS</value>
+  </data>
+  <data name="StagingListView" xml:space="preserve">
+    <value>Listevisning</value>
+  </data>
+  <data name="StagingWindows" xml:space="preserve">
+    <value>Windows</value>
+  </data>
+  <data name="StartedSuccessfully" xml:space="preserve">
+    <value>Blev startet</value>
+  </data>
+  <data name="StopDeviceUpdate" xml:space="preserve">
+    <value>Stop enhedsopdatering</value>
+  </data>
+  <data name="SubRuleType" xml:space="preserve">
+    <value>Type for underordnet regel</value>
+  </data>
+  <data name="Supported" xml:space="preserve">
+    <value>Understøttet</value>
+  </data>
+  <data name="SupportedDevicesInfoText" xml:space="preserve">
+    <value>Inkluderer berettigede og ikke-berettigede enheder fra denne organisationsgruppe og derunder såvel som status for opdateringer udløst fra en tildeling. </value>
+  </data>
+  <data name="SuspendBitLocker" xml:space="preserve">
+    <value>Stop BitLocker midlertidigt</value>
+  </data>
+  <data name="SuspendBitLockerConfirmed" xml:space="preserve">
+    <value>BitLocker stoppet midlertidigt</value>
+  </data>
+  <data name="SuspendBitlockerEncryption" xml:space="preserve">
+    <value>Stop BitLocker-kryptering midlertidigt</value>
+  </data>
+  <data name="SuspendBitlockerEncryptionMessage" xml:space="preserve">
+    <value>Midlertidigt stop af BitLocker deaktiverer beskyttelse, indtil det angivne antal genstarter er foretaget, eller administratoren genoptager beskyttelsen. Systemet forbliver krypteret.</value>
+  </data>
+  <data name="SuspendBitlockerEncryptionRestricted" xml:space="preserve">
+    <value>Midlertidigt stop af BitLocker-kryptering er begrænset</value>
+  </data>
+  <data name="SuspendBitLockerFailed" xml:space="preserve">
+    <value>Kan ikke stoppe BitLocker midlertidigt på nuværende tidspunkt</value>
+  </data>
+  <data name="SuspendBitLockerFailure" xml:space="preserve">
+    <value>Kan ikke stoppe BitLocker midlertidigt på nuværende tidspunkt.</value>
+  </data>
+  <data name="SuspendBitLockerRequested" xml:space="preserve">
+    <value>Midlertidigt stop af BitLocker anmodet</value>
+  </data>
+  <data name="SuspendBitLockerSuccess" xml:space="preserve">
+    <value>Der er blevet anmodet om et midlertidigt stop af BitLocker for denne enhed.</value>
+  </data>
+  <data name="SuspendDevice" xml:space="preserve">
+    <value>Suspender enhed</value>
+  </data>
+  <data name="SyncEntitlements" xml:space="preserve">
+    <value>Synkroniser berettigelser</value>
+  </data>
+  <data name="SyncUpdates" xml:space="preserve">
+    <value>Synkroniser opdateringer</value>
+  </data>
+  <data name="SystemApps" xml:space="preserve">
+    <value>Systemapps</value>
+  </data>
+  <data name="SystemManufacturerAndModel" xml:space="preserve">
+    <value>Systemproducent og model</value>
+  </data>
+  <data name="SystemManufacturerAndModelTooltip" xml:space="preserve">
+    <value>Producent og modelfilter for Smart-gruppe</value>
+  </data>
+  <data name="Systemunlocked" xml:space="preserve">
+    <value>System låst op.</value>
+  </data>
+  <data name="SystemUpdateReceivedTime" xml:space="preserve">
+    <value>Opdatering tilgængelig siden</value>
+  </data>
+  <data name="TagAssignmentHelp" xml:space="preserve">
+    <value>Vælg mærke(r) til enhedstildeling</value>
+  </data>
+  <data name="TagRemovalHelp" xml:space="preserve">
+    <value>Vælg mærke(r), der skal fjernes</value>
+  </data>
+  <data name="TargetedLoggingDeviceId" xml:space="preserve">
+    <value>Åbn i et af formaterne for at aktivere målrettet logføring for de givne enheds-id'er. 
+			 1. {deviceId1},{deviceId2},.. 
+			 2. {deviceId1}|{Timestamp},{deviceId2}|{Timestamp},..
+			 Tidsstemplet skal være i formatet åååå-MM-dd TT:mm:ss, f.eks. 100|2018-12-30 18:30:00. 8 timer er standardperioden for målrettet logføring.</value>
+  </data>
+  <data name="TargetedLoggingNeedsAtleastOneDeviceIdFilter" xml:space="preserve">
+    <value>Angiv mindst ét enheds-ID for målrettet logføring.</value>
+  </data>
+  <data name="TestPrint" xml:space="preserve">
+    <value>Testudskrift</value>
+  </data>
+  <data name="TestPrintConfirmation" xml:space="preserve">
+    <value>Bekræftelse af testudskrift</value>
+  </data>
+  <data name="TheUserShouldLockDeviceBootloader" xml:space="preserve">
+    <value>Brugeren skal låse deres enheds bootloader</value>
+  </data>
+  <data name="TheUserShouldRestoreDeviceToCleanFactoryROM" xml:space="preserve">
+    <value>Brugeren skal gendanne deres enhed til en ren factory-ROM</value>
+  </data>
+  <data name="ThirdPartyRemoteManagement" xml:space="preserve">
+    <value>Fjernadministration af tredjepart</value>
+  </data>
+  <data name="Throttled" xml:space="preserve">
+    <value>Begrænset</value>
+    <comment>One of the Device Command Queue status</comment>
+  </data>
+  <data name="TimeWindow" xml:space="preserve">
+    <value>Tidsvindue</value>
+  </data>
+  <data name="TimeWindowBannerDescription" xml:space="preserve">
+    <value>Brug tidsvinduer i dine arbejdsgange til at planlægge opdateringer og levere ressourcer på det rette tidspunkt for din virksomhed.</value>
+  </data>
+  <data name="TimeWindowBannerTitle" xml:space="preserve">
+    <value>Strømlin arbejdsgange med tidsvinduer</value>
+  </data>
+  <data name="TimeWindowBaseTimeInfo" xml:space="preserve">
+    <value>Vælg den tidszone, der skal bruges til dette tidsvindue: enhedens lokale tid eller servertid (UTC).</value>
+  </data>
+  <data name="TimeWindowCategoryInfo" xml:space="preserve">
+    <value>Vælg en tidsvinduekategori – åbningstider eller vedligeholdelsestimer.</value>
+  </data>
+  <data name="TimeWindowGroupRestriction" xml:space="preserve">
+    <value>Dette tidsvindue kan ikke redigeres eller slettes, da det enten styres af en højere organisationsgruppe, eller admin har skrivebeskyttet adgang.</value>
+  </data>
+  <data name="TimeWindowMenuDescription" xml:space="preserve">
+    <value>Administrer tidsvinduer</value>
+  </data>
+  <data name="TimeWindowMenuItem" xml:space="preserve">
+    <value>Tidsvinduer</value>
+  </data>
+  <data name="TimeWindowStepDesc1" xml:space="preserve">
+    <value>Opret en "Tidsplan for ugentlig vedligeholdelse i Q1", der passer til virksomheds unikke behov.</value>
+  </data>
+  <data name="TimeWindowStepDesc2" xml:space="preserve">
+    <value>Opret en ugentlig tidsplan, der gentages hver tirsdag fra kl. 21 til 04.</value>
+  </data>
+  <data name="TimeWindowStepDesc3" xml:space="preserve">
+    <value>Henvis til "Tidsplan for ugentlig vedligeholdelse i Q1" for at pushe opdateringer i arbejdsgangen.</value>
+  </data>
+  <data name="TimeWindowSteps" xml:space="preserve">
+    <value>Start med disse trin</value>
+  </data>
+  <data name="TimeWindowStepTitle1" xml:space="preserve">
+    <value>Vælg en tidsvinduekategori – åbningstider eller vedligeholdelsestimer</value>
+  </data>
+  <data name="TimeWindowStepTitle2" xml:space="preserve">
+    <value>Opret en tidsplan for at håndtere gentagelse</value>
+  </data>
+  <data name="TimeWindowStepTitle3" xml:space="preserve">
+    <value>Anvend som arbejdsgangstilstand</value>
+  </data>
+  <data name="Tools" xml:space="preserve">
+    <value>Værktøjer</value>
+  </data>
+  <data name="ToolTipKeepAppsOnDevice" xml:space="preserve">
+    <value>Vælg denne indstilling for at tillade, at eksisterende administrerede apps og deres cachelagrede data forbliver på enheden. Enheder med en tidligere agentversion end 2105 bliver ikke enterprise-slettet, hvis denne indstilling vælges.</value>
+  </data>
+  <data name="TotalDevicesArg" xml:space="preserve">
+    <value>Samlet antal enheder: {0}</value>
+  </data>
+  <data name="TotalEligibleDevicesArg" xml:space="preserve">
+    <value>Samlet antal berettigede enheder: {0}</value>
+  </data>
+  <data name="ToViewGPSDataInstallAirwatchAgent" xml:space="preserve">
+    <value>For at få vist GPS-data skal du installere VMware AirWatch Agent fra Microsoft Store.</value>
+  </data>
+  <data name="Trigger" xml:space="preserve">
+    <value>Udløser</value>
+  </data>
+  <data name="UnitId" xml:space="preserve">
+    <value>Enheds-id</value>
+  </data>
+  <data name="Unlicensed" xml:space="preserve">
+    <value>Ikke licenseret</value>
+  </data>
+  <data name="UpdateAgentApplication" xml:space="preserve">
+    <value>Opdater agent-app</value>
+  </data>
+  <data name="UpdateInstallPendingReboot" xml:space="preserve">
+    <value>Opdatering installeres ved genstart</value>
+  </data>
+  <data name="UpdateNoLongerAvailable" xml:space="preserve">
+    <value>Denne opdatering er ikke længere tilgængelig. Der bliver ikke udført yderligere handlinger i forbindelse med denne opdatering på nogen enheder.</value>
+  </data>
+  <data name="UpdatesLastSync" xml:space="preserve">
+    <value>Sidste synkronisering:</value>
+  </data>
+  <data name="UpdatesNextSync" xml:space="preserve">
+    <value>Næste synkronisering:</value>
+  </data>
+  <data name="UptoDateStatus" xml:space="preserve">
+    <value>Opdateret</value>
+  </data>
+  <data name="UseCDSV1" xml:space="preserve">
+    <value>Content Delivery Service version 1</value>
+  </data>
+  <data name="UseLatestAirWatchAgent" xml:space="preserve">
+    <value>Brug seneste Workspace ONE Intelligent Hub</value>
+  </data>
+  <data name="UseLegacyCDSLogicHelp" xml:space="preserve">
+    <value>Hvis aktiveret, bruges en ældre version af Content Delivery Service-logikken.</value>
+  </data>
+  <data name="UsePolicyEngineV1" xml:space="preserve">
+    <value>Policy Engine version 1</value>
+  </data>
+  <data name="UserBasedAccountDescription" xml:space="preserve">
+    <value>Den Google-konto, der er oprettet for denne enhed, vil være den samme på tværs af alle enheder tilmeldt af denne medarbejder. Tilmeldingstypen er at foretrække for medarbejdere, der er tilknyttet enheder, men ikke for staging-tilmeldinger. Der kan gælde enhedsgrænser for hver brugerkonto.</value>
+  </data>
+  <data name="UserGroupAssignmentsWithEmptyGroupIDWarning" xml:space="preserve">
+    <value>En organisationsgruppe uden gruppe-id'er vil resultere i, at tilmeldingen af de tildelte brugergrupper mislykkes. For at undgå dette skal de manglende gruppe-id(er) for hver organisationsgruppe opdateres.</value>
+  </data>
+  <data name="UserRemovableDrivesMessage" xml:space="preserve">
+    <value>Flytbare drev krypteret med BitLocker.</value>
+  </data>
+  <data name="UserSwitch" xml:space="preserve">
+    <value>Brugerskift</value>
+  </data>
+  <data name="ValueShouldNotBeEmpty" xml:space="preserve">
+    <value>	Værdi kan ikke være tom</value>
+  </data>
+  <data name="VerifyResponseError" xml:space="preserve">
+    <value>Bekræft responsfejl.</value>
+  </data>
+  <data name="ViewBiosPassword" xml:space="preserve">
+    <value>Vis BIOS-adgangskode</value>
+  </data>
+  <data name="ViewBiosPasswordHeader" xml:space="preserve">
+    <value>BIOS adgangskode</value>
+  </data>
+  <data name="ViewBiosPasswordHelp" xml:space="preserve">
+    <value>Tilladelse til at vise BIOS-adgangskode på siden Enhedsoplysninger.</value>
+  </data>
+  <data name="ViewBypassCode" xml:space="preserve">
+    <value>Vis tilsidesættelseskode</value>
+  </data>
+  <data name="ViewManagedAdminPassword" xml:space="preserve">
+    <value>Vis styret adminadgangskode</value>
+  </data>
+  <data name="ViewManagedAppConfigFeedback" xml:space="preserve">
+    <value>Vis feedback</value>
+  </data>
+  <data name="ViewRecoveryKeyRotationInformation" xml:space="preserve">
+    <value>Af sikkerhedsmæssige årsager vil en kommando til at rotere denne nøgle blive placeret om 15 minutter.</value>
+  </data>
+  <data name="VolumeIdentifier" xml:space="preserve">
+    <value>Volumenidentifikator</value>
+  </data>
+  <data name="WiFiConfiguration" xml:space="preserve">
+    <value>Konfigurer valgfri Wi-Fi, for at enheden opretter forbindelse før tilmelding</value>
+  </data>
+  <data name="WifiOnly" xml:space="preserve">
+    <value>Kun Wi-Fi</value>
+  </data>
+  <data name="WiFiSsid" xml:space="preserve">
+    <value>Wi-Fi SSID</value>
+  </data>
+  <data name="Windows10KioskPublishingProcessorJob" xml:space="preserve">
+    <value>Windows10 Kiosk Publishing Processor-job</value>
+  </data>
+  <data name="WindowsCompromisedRuleWarning" xml:space="preserve">
+    <value>Denne politik er kun tilgængelig for TPM 2.0-kompatible Windows 10-enheder. TPM 2.0-kompatibilitet gælder ikke for BIOS-bekræftelseskontrollen.</value>
+  </data>
+  <data name="WindowsDevicePowerOffWarningMessage" xml:space="preserve">
+    <value>Windows 10-enheder genstarter inden for 5 minutter for at give brugeren mulighed for at afslutte eventuelt aktivt arbejde.</value>
+  </data>
+  <data name="WindowsDhaBiosAttestationFailed" xml:space="preserve">
+    <value>Kræver BIOS-bekræftelsesværktøj fra Dell. Gælder kun for udvalgte Dell-enheder. TPM 2.0-kompatibilitet gælder ikke for BIOS-bekræftelseskontrollen.</value>
+  </data>
+  <data name="WindowsProvisioningPackageServiceProcessorJob" xml:space="preserve">
+    <value>Windows Provisioning Package Service Processor-job</value>
+  </data>
+  <data name="WinRTEnterpriseResetDescription" xml:space="preserve">
+    <value>Enterprise Reset gendanner en enhed til en tilstand, hvori den kan arbejde, når en enhed er beskadiget eller har fejl i programmer. Det geninstallerer Windows-operativsystemet og bevarer samtidig brugerdata, brugerkonti og administrerede programmer. Enheden vil gensynkronisere automatisk udløste virksomhedsindstillinger, politikker og apps efter nulstillingen, idet den stadig administreres af Workspace ONE.</value>
+  </data>
+  <data name="WipeDeviceStorage" xml:space="preserve">
+    <value>Slet enhedslager</value>
+  </data>
+  <data name="WipeLogDescription" xml:space="preserve">
+    <value>Se enheder, som er blevet slettet, gennemgå kommandoer for sletning på hold, og nulstil tælleren til sletningsgrænse.</value>
+  </data>
+  <data name="WipeRemovableStorage" xml:space="preserve">
+    <value>Slet flytbart lager</value>
+  </data>
+  <data name="WipeThresholdMessage" xml:space="preserve">
+    <value>Sletningsgrænsen, der er indstillet på siden {0}, er nået. Ingen andre enheder bliver Enterprise- eller enhedsslettet, før systemet er låst op.</value>
+  </data>
+  <data name="WizardQRCodesummarycongratulations" xml:space="preserve">
+    <value>Konfigurationen er fuldført, og QR-koden er tilgængelig til download. QR-koden er i almindelig tekst og kan aflæses af en QR-læser/dekoder. Tag de nødvendige forholdsregler for at undgå offentliggørelse af følsomme oplysninger.</value>
+  </data>
+  <data name="WorkflowAssignments" xml:space="preserve">
+    <value>Arbejdsgangstildelinger</value>
+  </data>
+  <data name="WorkManagedDeviceInfoMessage" xml:space="preserve">
+    <value>En fuldt styret og låst enhed. Medarbejdere har kun adgang til virksomhedens apps og ingen adgang til personlige apps via Google Play Store.</value>
+  </data>
+  <data name="WorkManagedEnrollmentType" xml:space="preserve">
+    <value>Oprettelse af Google konto til virksomhedsenheder</value>
+  </data>
+  <data name="WorkProfileStatus" xml:space="preserve">
+    <value>Arbejdsprofil</value>
+  </data>
+  <data name="Zsh" xml:space="preserve">
+    <value>Zsh</value>
+  </data>
+</root>

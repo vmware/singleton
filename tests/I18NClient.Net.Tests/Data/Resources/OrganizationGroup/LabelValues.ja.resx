@@ -1,0 +1,211 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AboutActiveDevices" xml:space="preserve">
+    <value>アクティブ デバイスは、過去 8 時間以内にチェックインしたデバイスです。</value>
+  </data>
+  <data name="AboutInactiveDevices" xml:space="preserve">
+    <value>非アクティブ デバイスは、前回のチェックインから 8 時間以上経過しているデバイスです。</value>
+  </data>
+  <data name="AddEditLocationStatus" xml:space="preserve">
+    <value>ロケーション状態の追加/編集</value>
+  </data>
+  <data name="AddEditLocationType" xml:space="preserve">
+    <value>ロケーション タイプの追加/編集</value>
+  </data>
+  <data name="ArgOrganizationGroupDropDownMenu" xml:space="preserve">
+    <value>{0} 組織グループドロップダウンメニュー</value>
+  </data>
+  <data name="BatchImportNetworkRangesExplanation" xml:space="preserve">
+    <value>ネットワーク範囲インポート機能を使用して複数のネットワーク範囲をシステムに一括ロードすることができます。ネットワーク範囲は組織グループと関連付けされている必要があります。
+
+[テンプレートのダウンロード]をクリックして参考にしてください。</value>
+  </data>
+  <data name="ChangeOGAboveOGBulkOperation" xml:space="preserve">
+    <value>変更組織グループは、一括操作が実行された組織グループよりも上にあります</value>
+  </data>
+  <data name="CustomerIndustry" xml:space="preserve">
+    <value>カスタマーの業種</value>
+  </data>
+  <data name="EgressTenantAdaptorSyncJob" xml:space="preserve">
+    <value>組織グループは、出力テナント アダプタ ジョブと同期します。</value>
+  </data>
+  <data name="ErrorMatchingAvailableOG" xml:space="preserve">
+    <value>利用可能な組織グループの照合中にエラーが発生しました</value>
+  </data>
+  <data name="ErrorResolvingDefaultLocationForArg" xml:space="preserve">
+    <value>組織グループ {0} の既定ロケーションの解決中にエラーが発生しました</value>
+  </data>
+  <data name="ErrorResolvingValidCustomerCodeForOGArg" xml:space="preserve">
+    <value>組織グループ {0} の有効な CustomerCode の解決中にエラーが発生しました</value>
+  </data>
+  <data name="ErrorValidatingCustomerCodeArgAgainstOGArg" xml:space="preserve">
+    <value>組織グループ {1} に対する CustomerCode {0} の検証中にエラーが発生しました</value>
+  </data>
+  <data name="GroupIDCannotBeEmptyForPermission" xml:space="preserve">
+    <value>権限のグループ ID は空白にできないため、{0} はスキップされました</value>
+  </data>
+  <data name="LocationStatuses" xml:space="preserve">
+    <value>ロケーション状態</value>
+  </data>
+  <data name="LocationTypes" xml:space="preserve">
+    <value>ロケーションタイプ</value>
+  </data>
+  <data name="OGRequiredOrInvalid" xml:space="preserve">
+    <value>組織グループが必須とされているか、この組織グループが有効ではありません</value>
+  </data>
+  <data name="OrganizationGroupAssignmentToUserGroupHelpMessage" xml:space="preserve">
+    <value>この割り当ては、{2} で {1} として {0} が選択されている場合にのみ有効です</value>
+  </data>
+  <data name="OrganizationGroupDeleteDescription" xml:space="preserve">
+    <value>組織グループを削除すると、組織グループとすべての関連リソースが Workspace ONE UEM から削除されます。
+ロールがこの組織グループのみの管理者も削除されます。他にもロールがある管理者は、必要に応じてそのいずれかに移行されます。
+この処理は元に戻せません。注意して続行してください。</value>
+  </data>
+  <data name="OrganizationGroupDetails" xml:space="preserve">
+    <value>組織グループ詳細</value>
+  </data>
+  <data name="OrganizationGroups" xml:space="preserve">
+    <value>組織グループ</value>
+  </data>
+  <data name="OrganizationUUIDNotFound" xml:space="preserve">
+    <value>UUID が「{0}」の組織グループが見つかりません</value>
+  </data>
+  <data name="PermissionOGNotChildOfCurrentOG" xml:space="preserve">
+    <value>この権限組織グループが現在の組織グループの子ではないため、{0} はスキップされました</value>
+  </data>
+  <data name="PermissionOGNotChildOfUserGroupsRootOG" xml:space="preserve">
+    <value>この権限組織グループがユーザー グループのルート組織グループの子ではないため、{0} はスキップされました</value>
+  </data>
+  <data name="PermissionOGNotValid" xml:space="preserve">
+    <value>この権限組織グループが有効でないか利用可能でないため、{0} はスキップされました</value>
+  </data>
+  <data name="PleaseSelectCustomerIndustry" xml:space="preserve">
+    <value>カスタマーの業種を選択してください</value>
+  </data>
+  <data name="RestrictedCharacterInOrganizationGroupName" xml:space="preserve">
+    <value>組織グループ名に 1 つ以上の禁止文字が含まれています</value>
+  </data>
+  <data name="Types" xml:space="preserve">
+    <value>タイプ</value>
+  </data>
+  <data name="UnauthorizedOgAccessContactSystemAdmin" xml:space="preserve">
+    <value>この組織グループにアクセスする権限がありません。サポートが必要な場合は、システム管理者までお問い合わせください。</value>
+  </data>
+</root>

@@ -1,0 +1,485 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Android7Zebra" xml:space="preserve">
+    <value>Migrace v systému Android 7 a vyšším</value>
+  </data>
+  <data name="Android7ZebraDescription" xml:space="preserve">
+    <value>Migrace na spravovaný režim Work vyžaduje, aby byl v zařízeních Zebra nainstalován systém Android verze 7 a vyšší. Než budete v migraci pokračovat, aktualizujte svá zařízení.</value>
+  </data>
+  <data name="AndroidEnterpriseUserAccountCreationFailed" xml:space="preserve">
+    <value>Vytvoření podnikového uživatelského účtu Android se nezdařilo</value>
+  </data>
+  <data name="ApprovePublicApps" xml:space="preserve">
+    <value>Schválit veřejné aplikace</value>
+  </data>
+  <data name="CertificateUpload" xml:space="preserve">
+    <value>Nahrát</value>
+  </data>
+  <data name="CheckNetworkSettings" xml:space="preserve">
+    <value>Zkontrolujte v nastavení sítě, zda je navázáno spojení mezi aplikací Workspace ONE a obchodem Google Play Store. {0}</value>
+    <comment>{0} will be replaced by another key with text 'here'.</comment>
+  </data>
+  <data name="ChooseMigrationType" xml:space="preserve">
+    <value>Vyberte typ starší migrace systému Android, který chcete vytvořit.</value>
+  </data>
+  <data name="ClickValidate" xml:space="preserve">
+    <value>Kliknutím na možnost Ověřit načtete počet zařízení oprávněných k migraci</value>
+  </data>
+  <data name="CommandNotSent" xml:space="preserve">
+    <value>Příkaz nebyl odeslán</value>
+  </data>
+  <data name="CommandQueued" xml:space="preserve">
+    <value>Příkaz byl zařazen do fronty</value>
+  </data>
+  <data name="ConfirmDeleteMigrationContent" xml:space="preserve">
+    <value>Odstraněním této migrace zabráníte zařízením ve frontě v migraci ze staršího systému Android odvoláním trvalého upozornění. Aplikace Android Enterprise nebude odstraněna ze zařízení, která již byla migrována. Opravdu chcete odstranit tuto migraci?</value>
+  </data>
+  <data name="ConfirmDeleteMigrationTitle" xml:space="preserve">
+    <value>Potvrdit odstranění – {0}</value>
+    <comment>{0} will be replaced by the name of a migration</comment>
+  </data>
+  <data name="ConfirmMigrationCancel" xml:space="preserve">
+    <value>Opravdu chcete tuto migraci zrušit?</value>
+  </data>
+  <data name="ConsistentDeviceManagement" xml:space="preserve">
+    <value>Konzistentní správa zařízení</value>
+  </data>
+  <data name="CurateApps" xml:space="preserve">
+    <value>Organizovat aplikace v obchodu Google Play Store</value>
+  </data>
+  <data name="DeviceCountEdit" xml:space="preserve">
+    <value>K migraci je oprávněno {0} z {1} nových zařízení</value>
+    <comment>{0} and {1} will be replaced by a number</comment>
+  </data>
+  <data name="DeviceCountStatistic" xml:space="preserve">
+    <value>K migraci je oprávněno {0} z {1} zařízení</value>
+    <comment>{0} and {1} will be replaced by a number. 
+e.g.  4 out of 9 devices are eligible for migration</comment>
+  </data>
+  <data name="DevicePreviewDescription" xml:space="preserve">
+    <value>Způsobilým zařízením ve vybraných smart skupinách bude posláno oznámení, které zaměstnance informuje o migraci a vyzve je k provedení akce, aby mohli pokračovat. Jejich průběh lze monitorovat na stránce migrace starších verzí systému Android.</value>
+  </data>
+  <data name="DevicesMigrated" xml:space="preserve">
+    <value>Zařízení migrována</value>
+  </data>
+  <data name="DevicesNotMigratedAreNeverEffected" xml:space="preserve">
+    <value>Zařízení, která nejsou právě migrována, nejsou nikdy ovlivněna.</value>
+  </data>
+  <data name="EasierLegacyAndroidMigration" xml:space="preserve">
+    <value>Migrace starší správy systému Android na spravovaný režim Work nebo pracovní profily je snazší než kdy dřív!</value>
+  </data>
+  <data name="EligibilityStatus" xml:space="preserve">
+    <value>Stav způsobilosti</value>
+  </data>
+  <data name="EveryFeatureWorks" xml:space="preserve">
+    <value>Zajistěte, aby všechny funkce fungovaly stejně ve všech zařízeních OEM.</value>
+  </data>
+  <data name="ExprtMigrationDeviceDetail" xml:space="preserve">
+    <value>Exportujte podrobnosti</value>
+  </data>
+  <data name="HowToGetStartedLegacyAndroidMigration" xml:space="preserve">
+    <value>Jak začít</value>
+  </data>
+  <data name="IncreaseProductivity" xml:space="preserve">
+    <value>Zvyšte produktivitu zaměstnanců</value>
+  </data>
+  <data name="InitiatedDate" xml:space="preserve">
+    <value>Iniciované datum</value>
+  </data>
+  <data name="InvalidOgUUIDFormat" xml:space="preserve">
+    <value>Neplatný formát identifikátoru UUID organizační skupiny</value>
+  </data>
+  <data name="LearnHowToEnsureLink" xml:space="preserve">
+    <value>zjistěte jak</value>
+    <comment>this text is part of MakeSureToApprovePublicApps {1}</comment>
+  </data>
+  <data name="LegacyAdministrationRemainsIntact" xml:space="preserve">
+    <value>Správa starších verzí zůstane nedotčena, dokud se migrace nedokončí.</value>
+  </data>
+  <data name="LegacyAndroidMigrationDeviceExport" xml:space="preserve">
+    <value>Když byly vybrány smart skupiny uvedené výše, zařízení uvedená níže byla ve správě starších systémů. Všechna zařízení přidaná do těchto smart skupin se v budoucnosti budou zobrazovat jako nově nalezená zařízení. {0}, chcete-li zobrazit rozpis všech zařízení, která byla migrována, včetně zařízení ze smart skupin, která mohla být odstraněna.</value>
+    <comment>{0} will be replaced by another key with text 'Export Details'.</comment>
+  </data>
+  <data name="LegacyAndroidMigrationGotEasier" xml:space="preserve">
+    <value>Migrace a sledování správy starších verzí systému Android v pracovních profilech je jednodušší!</value>
+  </data>
+  <data name="LegacyAndroidMigrationHelpText" xml:space="preserve">
+    <value>Pomoc s migrací starší verze systému Android</value>
+  </data>
+  <data name="LegacyAndroidMigrationTitle" xml:space="preserve">
+    <value>Migrace starších verzí systému Android</value>
+  </data>
+  <data name="LegacyAndroidMigrationWelcomeWindowDescription" xml:space="preserve">
+    <value>Migrujte nyní a získejte více kontroly a konzistence napříč všemi zařízeními OEM díky lepšímu zabezpečení a celkově lepším funkcím pro zaměstnance používající vlastní zařízení (BYOD).</value>
+  </data>
+  <data name="LockDownAllowWorkApps" xml:space="preserve">
+    <value>Pomocí aplikace Launcher a pokročilých omezení zařízení můžete uzamknout zařízení ve spravovaném režimu Work. U zařízení vlastněných zaměstnanci povolte oddělené ukládání pracovních aplikací a dat.</value>
+  </data>
+  <data name="MakeSureLink" xml:space="preserve">
+    <value>veřejná aplikace</value>
+    <comment>this text is part of MakeSureToApprovePublicApps {0}</comment>
+  </data>
+  <data name="MakeSureToApprovePublicApps" xml:space="preserve">
+    <value>V dokumentu {0} jsou uvedeny pokyny, jak ověřit, že je každá veřejná aplikace pro vaši organizaci schválena, a jak zajistit, aby zaměstnanci měli vše potřebné k udržení produktivity {1}.</value>
+    <comment>{0} and {1} will be replaced by another key with text 'here'.</comment>
+  </data>
+  <data name="MakeSureToApprovePublicAppsWorkManaged" xml:space="preserve">
+    <value>Ověřte, že je každá {0} pro vaši organizaci schválena, a {1} jak zajistit, aby zaměstnanci měli vše potřebné k udržení produktivity.</value>
+    <comment>{0} will be replaced by key MakeSureLink, {1} by LearnHowToEnsureLink</comment>
+  </data>
+  <data name="ManageBothApps" xml:space="preserve">
+    <value>Spravujte veřejné a interní aplikace</value>
+  </data>
+  <data name="MigrateEveryFeature" xml:space="preserve">
+    <value>Migrujte zařízení bez nutnosti obnovení do továrního nastavení nebo restartu a snadno se ujistěte, že všechny funkce fungují na všech zařízeních OEM stejně.</value>
+  </data>
+  <data name="MigrateMoreControl" xml:space="preserve">
+    <value>Migrujte s větší kontrolou a konzistencí</value>
+  </data>
+  <data name="MigrateWithConfidence" xml:space="preserve">
+    <value>Migrujte s důvěrou</value>
+  </data>
+  <data name="Migrating" xml:space="preserve">
+    <value>Probíhá migrace</value>
+  </data>
+  <data name="MigrationAllCompatible" xml:space="preserve">
+    <value>Všechna starší zařízení Android ({0}) ve vybraných Smart skupinách jsou způsobilá pro migraci.</value>
+    <comment>{0} will be replaced by a number.</comment>
+  </data>
+  <data name="MigrationCertificate" xml:space="preserve">
+    <value>Certifikát migrace</value>
+  </data>
+  <data name="MigrationDeleteSuccessMessage" xml:space="preserve">
+    <value>{0} bylo úspěšně odstraněno.</value>
+    <comment>{0} will be replaced by a migration name</comment>
+  </data>
+  <data name="MigrationDescription" xml:space="preserve">
+    <value>Jakmile si zaměstnanci zvolí upgrade na službu Android Enterprise, tato zpráva je informuje o migraci a vyzve je k akci potřebné pro pokračování.</value>
+  </data>
+  <data name="MigrationLimitReached" xml:space="preserve">
+    <value>Migrace může mít maximálně 10 přiřazených smart skupin</value>
+  </data>
+  <data name="MigrationMessageDescription" xml:space="preserve">
+    <value>Jakmile si zaměstnanci zvolí upgrade na službu Android Enterprise, tato zpráva je informuje o migraci a vyzve je k akci potřebné pro pokračování.</value>
+  </data>
+  <data name="MigrationMessagePlaceholder" xml:space="preserve">
+    <value>Upgradujte na službu Android Enterprise ještě dnes a získejte snadný a zabezpečený přístup ke všem aplikacím na jednom místě. Pokud se rozhodnete, že tato funkce není pro vás, můžete ji kdykoli vypnout. Přejděte do nabídky Nastavení &gt; Účty &gt; Nastavení pracovního profilu.</value>
+  </data>
+  <data name="MigrationNoDevicesCompatible" xml:space="preserve">
+    <value>Žádná zařízení ve vybraných Smart skupinách nejsou způsobilá k migraci. Pokračujte výběrem Smart skupin, které obsahují starší zařízení Android.</value>
+  </data>
+  <data name="MigrationNotFound" xml:space="preserve">
+    <value>Migrace nebyla nalezena.</value>
+  </data>
+  <data name="MigrationSomeDevicesCompatible" xml:space="preserve">
+    <value>Některá ({0} z {1}) starší zařízení Android ve vybraných Smart skupinách jsou způsobilá pro migraci. Pokud budete pokračovat, použije se migrace pouze na tato zařízení.</value>
+    <comment>{0} and {1} will be replaced by a number.</comment>
+  </data>
+  <data name="MigrationSuccessMessage" xml:space="preserve">
+    <value>{0} byl úspěšně vytvořen.</value>
+    <comment>{0} will be replaced by a string containing the name of a new migration</comment>
+  </data>
+  <data name="MigrationTitlePlaceholder" xml:space="preserve">
+    <value>Udržte svůj osobní a pracovní život oddělené v jednom zařízení</value>
+  </data>
+  <data name="MigrationType" xml:space="preserve">
+    <value>Typ migrace</value>
+  </data>
+  <data name="MissingCertificateError" xml:space="preserve">
+    <value>Nahrajte certifikát migrace</value>
+  </data>
+  <data name="MonitoringLegacyAndroidMigration" xml:space="preserve">
+    <value>Monitorování</value>
+  </data>
+  <data name="MoreControlAndConstistency" xml:space="preserve">
+    <value>Větší míra řízení a konzistence</value>
+  </data>
+  <data name="NeedsAttention" xml:space="preserve">
+    <value>Potřebuje pozornost</value>
+  </data>
+  <data name="NewLegacyAndroidMigration" xml:space="preserve">
+    <value>Nová migrace</value>
+  </data>
+  <data name="NewMigrationTitle" xml:space="preserve">
+    <value>Nová migrace</value>
+  </data>
+  <data name="NoDevicesError" xml:space="preserve">
+    <value>Žádná zařízení ve vybraných smart skupinách nejsou kompatibilní s migrací. Než budete pokračovat, zvolte kompatibilní zařízení.</value>
+  </data>
+  <data name="NoEligibleDevices" xml:space="preserve">
+    <value>Nebyla nalezena žádná oprávněná zařízení se staršími verzemi systému Android</value>
+  </data>
+  <data name="NoEligibleDevicesEdit" xml:space="preserve">
+    <value>Nebyla nalezena žádná nová oprávněná zařízení se staršími verzemi systému Android</value>
+  </data>
+  <data name="NoImpactOnExistingDevices" xml:space="preserve">
+    <value>Žádný vliv na existující zařízení</value>
+  </data>
+  <data name="NoNewDevices" xml:space="preserve">
+    <value>Ve vybraných smart skupinách nebylo nalezeno žádné nové oprávněné zařízení se starší verzí systému Android.</value>
+  </data>
+  <data name="NoOgFound" xml:space="preserve">
+    <value>Nebyla nalezena žádná organizační skupina pro daný identifikátor UUID organizační skupiny.</value>
+  </data>
+  <data name="NotCompatible" xml:space="preserve">
+    <value>Nekompatibilní</value>
+  </data>
+  <data name="NotCompleteDeviceControl" xml:space="preserve">
+    <value>Úplné řízení zařízení není zapotřebí, protože pracovní aplikace a data se ukládají a spravují odděleně od osobních aplikací.</value>
+  </data>
+  <data name="PreparingCommand" xml:space="preserve">
+    <value>Příkaz se připravuje</value>
+  </data>
+  <data name="Prerequisites" xml:space="preserve">
+    <value>Předběžné požadavky</value>
+  </data>
+  <data name="PrerequisitesDescription" xml:space="preserve">
+    <value>Před migrací se ujistěte, že jste zajistili následující požadované předpoklady pro hladkou migraci. Pokud je nedokončíte, může to vést k neúspěšné migraci nebo k tomu, že uživatelé nebudou mít přístup ke všem potřebným aplikacím.</value>
+  </data>
+  <data name="ProvideUnifiedAppExperience" xml:space="preserve">
+    <value>Zajistěte zaměstnancům ucelenější a spolehlivější prostředí a umožněte bezobslužnou instalaci veřejných aplikací na jakékoli zařízení. Zařízení ve spravovaném režimu Work mohou bezobslužně instalovat také interní aplikace.</value>
+  </data>
+  <data name="PublishedAsAPrivateApp" xml:space="preserve">
+    <value>soukromá aplikace</value>
+    <comment>this text is pat of PublishInternalAppsInPlayStoreWorkManaged {0}</comment>
+  </data>
+  <data name="PublishInternalApps" xml:space="preserve">
+    <value>Publikovat interní aplikace</value>
+  </data>
+  <data name="PublishInternalAppsInPlayStore" xml:space="preserve">
+    <value>Přesvědčte se, že jsou všechny interní aplikace publikované v obchodě Google Play {0} jako soukromé. {1}</value>
+    <comment>{0} will be replaced by another key with text 'here'. 
+{1} will be replaced by another key with text 'Learn More'.</comment>
+  </data>
+  <data name="PublishInternalAppsInPlayStoreWorkManaged" xml:space="preserve">
+    <value>Ujistěte se, že je každá interní aplikace v obchodě Google Play Store pro zařízení s pracovním profilem publikována jako {0}. Interní aplikace lze pomocí aplikace Workspace ONE UEM u zařízení ve spravovaném režimu Work instalovat bezobslužně. {1}</value>
+    <comment>{0} will be replaced by another key with text 'private app'. 
+{1} will be replaced by another key with text 'Learn More'.</comment>
+  </data>
+  <data name="PushMigrationOut" xml:space="preserve">
+    <value>Po úspěšně fázovaných migracích pošlete migraci do zbytku vaší organizace.</value>
+  </data>
+  <data name="RecreateLegacyProfiles" xml:space="preserve">
+    <value>starší profily</value>
+    <comment>this text is part of RecreateLegacyProfilesProductsToNew {0}</comment>
+  </data>
+  <data name="RecreateLegacyProfilesProductsToNew" xml:space="preserve">
+    <value>Před provedením migrace znovu vytvořte {0} jako nové profily a snadno znovu vytvořte {1} se staršími profily pro zařízení ve spravovaném režimu Work.</value>
+    <comment>{0} will be replaced by RecreateLegacyProfiles and {1} by RecreateProducts</comment>
+  </data>
+  <data name="RecreateLegacyProfilesToNew" xml:space="preserve">
+    <value>{0} znovu vytvořte starší profily jako nové profily před migrací.</value>
+    <comment>{0} will be replaced by another key with text 'here'.</comment>
+  </data>
+  <data name="RecreateProducts" xml:space="preserve">
+    <value>produkty</value>
+    <comment>this text is part of RecreateLegacyProfilesProductsToNew {1}</comment>
+  </data>
+  <data name="RecreateProfiles" xml:space="preserve">
+    <value>Znovu vytvořit profily</value>
+  </data>
+  <data name="RecreateProfilesAndProducts" xml:space="preserve">
+    <value>Znovu vytvořte profily a produkty</value>
+  </data>
+  <data name="RetrieveMigrationCertificate" xml:space="preserve">
+    <value>Načtěte certifikát migrace</value>
+  </data>
+  <data name="RetrieveMigrationCertificateDescription" xml:space="preserve">
+    <value>K zajištění integrity migrace je vyžadován certifikát. Požádejte zástupce společnosti Zebra o vytvoření certifikátu pro vaši společnost.</value>
+  </data>
+  <data name="RetryMigrationSuccess" xml:space="preserve">
+    <value>Na vybraná zařízení budou odeslána oznámení o migraci a výzva uživatelům k provedení akce, aby mohli pokračovat.</value>
+  </data>
+  <data name="SeeDevicesCompleteInprogressAssigned" xml:space="preserve">
+    <value>Podívejte se, která zařízení jsou úplná, u kterých probíhá příprava a která jsou přiřazena.</value>
+  </data>
+  <data name="SelectMigrationSmartGroups" xml:space="preserve">
+    <value>Vyberte smart skupiny, které chcete migrovat.</value>
+  </data>
+  <data name="SelectMigrationType" xml:space="preserve">
+    <value>Vyberte typ migrace</value>
+  </data>
+  <data name="SeparateWorkAndPersonalApps" xml:space="preserve">
+    <value>Udržujte pracovní a osobní aplikace oddělené a zabezpečené</value>
+  </data>
+  <data name="SetUpLegacyAndroidMigration" xml:space="preserve">
+    <value>Migrace a monitorování je snadné díky nástrojům, které potřebujete k maximalizaci kontroly a konzistence.</value>
+  </data>
+  <data name="SmartGroupInAccessible" xml:space="preserve">
+    <value>Smart skupina nebyla nalezena nebo k ní uživatel nemá přístup</value>
+  </data>
+  <data name="SmartGroupMore" xml:space="preserve">
+    <value>o {0} více</value>
+    <comment>{0} will be replaced by a number. 
+e.g.  + 5 More</comment>
+  </data>
+  <data name="TestFewDevices" xml:space="preserve">
+    <value>Otestujte několik zařízení, abyste měli jistotu, že zařízení zaměstnanců byla úspěšně migrována.</value>
+  </data>
+  <data name="TestingLegacyAndroidMigration" xml:space="preserve">
+    <value>Testování</value>
+  </data>
+  <data name="TrackDeviceProgressLegacyAndroidMigration" xml:space="preserve">
+    <value>Sledujte postup přípravy a stav migrace zařízení před tím, než je odešlete do celé organizace.</value>
+  </data>
+  <data name="TrackProgressAndTakeAction" xml:space="preserve">
+    <value>Sledujte průběh a konejte</value>
+  </data>
+  <data name="UnassignedDevices" xml:space="preserve">
+    <value>Na základě aktuálního výběru smart skupiny bude odebráno {0} zařízení.</value>
+    <comment>{0} will be replaced by a number</comment>
+  </data>
+  <data name="UnifiedAppExperience" xml:space="preserve">
+    <value>Poskytněte zaměstnancům jednotné a spolehlivé prostředí aplikací.</value>
+  </data>
+  <data name="UploadCertificateHelpText" xml:space="preserve">
+    <value>Vyberte certifikát migrace, který chcete nahrát</value>
+  </data>
+  <data name="UserEmailCannotBeNullOrWhitespace" xml:space="preserve">
+    <value>Pole androidWorkUserEmail nemůže být prázdné nebo nulové</value>
+  </data>
+  <data name="UserPasswordCannotBeNullOrWhitepsace" xml:space="preserve">
+    <value>Pole androidWorkUserPassword nemůže být prázdné nebo nulové</value>
+  </data>
+  <data name="Validate" xml:space="preserve">
+    <value>Potvrdit</value>
+  </data>
+  <data name="ValidateTooltip" xml:space="preserve">
+    <value>Ověří, jestli ve vybraných smart skupinách existují nebo neexistují zařízení se staršími verzemi systému Android</value>
+  </data>
+  <data name="VerifyNetworkSettings" xml:space="preserve">
+    <value>Ověřit nastavení sítě</value>
+  </data>
+  <data name="WaitingOnUser" xml:space="preserve">
+    <value>Čekání na uživatele</value>
+  </data>
+  <data name="WhatIsMigrationFor" xml:space="preserve">
+    <value>K čemu je migrace určena?</value>
+  </data>
+  <data name="WhatToExpect" xml:space="preserve">
+    <value>Co čekat?</value>
+  </data>
+  <data name="WorkManagedMigrationDescription" xml:space="preserve">
+    <value>Proveďte migraci zařízení vlastněných podnikem z administrátora zařízení na spravovaný režim Work. Vyžaduje zařízení Zebra se systémem Android 7 a novějším.</value>
+  </data>
+  <data name="WorkProfileMigrationDescription" xml:space="preserve">
+    <value>Migrujte osobně vlastněná zařízení z administrátora zařízení do pracovního profilu.</value>
+  </data>
+</root>

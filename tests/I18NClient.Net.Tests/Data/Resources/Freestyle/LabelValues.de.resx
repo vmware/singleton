@@ -1,0 +1,1004 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AboutFreestyleOrchestrator" xml:space="preserve">
+    <value>Über Freestyle Orchestrator</value>
+  </data>
+  <data name="AddEditFreestyle" xml:space="preserve">
+    <value>Freestyle hinzufügen/bearbeiten</value>
+  </data>
+  <data name="AddEditFreestyleHelp" xml:space="preserve">
+    <value>Steuert den Zugriff zum Erstellen, Bearbeiten und Veröffentlichen von Freestyle und Ressourcentypen wie Apps, Profilen und Skripts</value>
+  </data>
+  <data name="AddressWidth" xml:space="preserve">
+    <value>Adressenbreite</value>
+  </data>
+  <data name="ApplicationDoesNotExist" xml:space="preserve">
+    <value>Anwendung ist nicht vorhanden</value>
+  </data>
+  <data name="ApplicationExists" xml:space="preserve">
+    <value>Anwendung vorhanden</value>
+  </data>
+  <data name="AppResultsDescription" xml:space="preserve">
+    <value>Die tatsächliche Zahl der potenziell qualifizierten Apps ist möglicherweise größer als die angezeigte.</value>
+  </data>
+  <data name="AppsOfArg" xml:space="preserve">
+    <value>Apps {0} - {1} von {2}</value>
+  </data>
+  <data name="Archived" xml:space="preserve">
+    <value>Archiviert</value>
+  </data>
+  <data name="AssignmentDoesNotExistOrMightBeDeleted" xml:space="preserve">
+    <value>Die Zuweisung ist nicht vorhanden oder wurde möglicherweise gelöscht.</value>
+  </data>
+  <data name="AssignmentsCouldNotBeRetrieved" xml:space="preserve">
+    <value>Zuweisungen konnten nicht abgerufen werden.</value>
+  </data>
+  <data name="Attributes" xml:space="preserve">
+    <value>Attribute</value>
+  </data>
+  <data name="AutoDeploy" xml:space="preserve">
+    <value>Automatisch bereitstellen</value>
+  </data>
+  <data name="AutoDeployAndShowInAppCatalog" xml:space="preserve">
+    <value>Automatisch bereitstellen und in App-Katalog anzeigen</value>
+  </data>
+  <data name="BackoffRate" xml:space="preserve">
+    <value>Backoff-Rate</value>
+  </data>
+  <data name="BackoffRateDesc" xml:space="preserve">
+    <value>Multiplikator, der das Intervall zwischen nachfolgenden Wiederholungsversuchen festlegt.</value>
+  </data>
+  <data name="BankLocator" xml:space="preserve">
+    <value>Bank-Finder</value>
+  </data>
+  <data name="BaseTimeHelpText" xml:space="preserve">
+    <value>Ausgewertet basierend auf der lokalen Gerätezeit</value>
+  </data>
+  <data name="BiosPayloadWarning" xml:space="preserve">
+    <value>Stellen Sie sicher, dass die Dell Command Monitor-Anwendung dem Workflow vor der Veröffentlichung hinzugefügt wird.</value>
+  </data>
+  <data name="Bitlocker" xml:space="preserve">
+    <value>BitLocker</value>
+  </data>
+  <data name="BrowserExtension" xml:space="preserve">
+    <value>Browsererweiterung</value>
+  </data>
+  <data name="BrowserName" xml:space="preserve">
+    <value>Browserername</value>
+  </data>
+  <data name="Capacity" xml:space="preserve">
+    <value>Kapazität</value>
+  </data>
+  <data name="Caption" xml:space="preserve">
+    <value>Bildunterschrift</value>
+  </data>
+  <data name="CatalogIconRecommendationAndLimit" xml:space="preserve">
+    <value>PNG, JPG or GIF, 1 MB maximum, 512 by 512 px recommended.</value>
+  </data>
+  <data name="ChangeAttribute" xml:space="preserve">
+    <value>Ändern</value>
+    <comment>edi change attribute confirm button text</comment>
+  </data>
+  <data name="ChangeAttributeConfirmationDescription" xml:space="preserve">
+    <value>Wenn Sie diese Auswahl ändern, werden alle Attribute gelöscht, die mit der aktuellen Auswahl verknüpft sind.</value>
+    <comment>edi change attribute confirm model body description</comment>
+  </data>
+  <data name="ChangeAttributeConfirmationTitle" xml:space="preserve">
+    <value>Auswahl ändern</value>
+    <comment>edi change attribute confirm model title</comment>
+  </data>
+  <data name="ChangePlatform" xml:space="preserve">
+    <value>Plattform ändern</value>
+  </data>
+  <data name="ChasisType" xml:space="preserve">
+    <value>Gehäuseart</value>
+  </data>
+  <data name="ClockSpeed" xml:space="preserve">
+    <value>Taktfrequenz</value>
+  </data>
+  <data name="CodeName" xml:space="preserve">
+    <value>Codename</value>
+  </data>
+  <data name="CompletedWithException" xml:space="preserve">
+    <value>Abgeschlossen mit Ausnahme</value>
+  </data>
+  <data name="Compute" xml:space="preserve">
+    <value>Berechnen</value>
+  </data>
+  <data name="ConfigurationOptionTooltipMsg" xml:space="preserve">
+    <value>Wählen Sie Plattform aus, um dem Workflow weitere Schritte hinzuzufügen.</value>
+  </data>
+  <data name="ConfirmDeleteArg" xml:space="preserve">
+    <value>{0} löschen</value>
+    <comment>{0} will be Workflow name</comment>
+  </data>
+  <data name="ConfirmDeleteWorkflowContent" xml:space="preserve">
+    <value>Durch das Löschen dieses Workflows wird die Ressourcenzuweisung von den Geräten in diesem Workflow entfernt. Diese Aktion kann nicht rückgängig gemacht werden. Die derzeit auf den Geräten installierten Ressourcen bleiben bestehen, sofern Sie nicht manuell entfernt werden.</value>
+  </data>
+  <data name="ConfirmPauseArg" xml:space="preserve">
+    <value>{0} anhalten</value>
+  </data>
+  <data name="ConfirmPauseWorkflowContent" xml:space="preserve">
+    <value>Mit dieser Aktion wird so lange verhindert, dass der Workflow auf neuen Geräten ausgeführt wird, bis Sie den Vorgang fortsetzen. Geräte, die den Workflow ausgeführt haben oder derzeit ausführen, sind davon nicht betroffen.</value>
+  </data>
+  <data name="ConnectionId" xml:space="preserve">
+    <value>Verbindungs-ID</value>
+  </data>
+  <data name="Cores" xml:space="preserve">
+    <value>Kerne</value>
+  </data>
+  <data name="CPU" xml:space="preserve">
+    <value>CPU</value>
+  </data>
+  <data name="CPUBrand" xml:space="preserve">
+    <value>CPU-Marke</value>
+  </data>
+  <data name="CPUID" xml:space="preserve">
+    <value>CPU-ID</value>
+  </data>
+  <data name="CPUModel" xml:space="preserve">
+    <value>CPU-Modell</value>
+  </data>
+  <data name="CPUSubType" xml:space="preserve">
+    <value>CPU-SubType</value>
+  </data>
+  <data name="CPUType" xml:space="preserve">
+    <value>CPU-Typ</value>
+  </data>
+  <data name="CreatedOnByArg" xml:space="preserve">
+    <value>Erstellt am {0} von {1}</value>
+  </data>
+  <data name="CreateWorkflowsInfo" xml:space="preserve">
+    <value>Wenn Sie bereit sind, klicken Sie auf „Erste Schritte“, um Workflows mit den von Ihnen konfigurierten Ressourcen zu erstellen und zu veröffentlichen.</value>
+  </data>
+  <data name="CreateYourWorkflows" xml:space="preserve">
+    <value>Workflows erstellen</value>
+  </data>
+  <data name="CustomLastDays" xml:space="preserve">
+    <value>Letzte(r) {0} Tag(e)</value>
+  </data>
+  <data name="CustomLastHours" xml:space="preserve">
+    <value>Letzte {0} Stunde(n)</value>
+  </data>
+  <data name="CustomLastMonths" xml:space="preserve">
+    <value>Letzte(r) {0} Monat(e)</value>
+  </data>
+  <data name="CustomLastWeeks" xml:space="preserve">
+    <value>Letzte {0} Woche(n)</value>
+  </data>
+  <data name="DataWidth" xml:space="preserve">
+    <value>Datenbreite</value>
+  </data>
+  <data name="DeleteFreestyle" xml:space="preserve">
+    <value>Freestyle löschen</value>
+  </data>
+  <data name="DeleteFreestyleHelp" xml:space="preserve">
+    <value>Steuert den Zugriff zum Löschen von Freestyle und Ressourcentypen wie Apps, Profilen und Skripts</value>
+  </data>
+  <data name="DeleteWorkflow" xml:space="preserve">
+    <value>Workflow löschen</value>
+  </data>
+  <data name="DeleteWorkflowAdditionalContent" xml:space="preserve">
+    <value>Um die installierten Ressourcen zu entfernen, navigieren Sie zur Ansicht „Gerätedetails“ für jedes Gerät oder zur Ansicht „Zugewiesene Geräte“ für jede Ressource.</value>
+  </data>
+  <data name="DeploymentSettings" xml:space="preserve">
+    <value>Bereitstellungseinstellungen</value>
+  </data>
+  <data name="DeviceBreakdown" xml:space="preserve">
+    <value>Geräteraufschlüsselung</value>
+  </data>
+  <data name="DeviceDistributionUnavailable" xml:space="preserve">
+    <value>Geräteverteilung ist nicht verfügbar.</value>
+  </data>
+  <data name="DeviceExecutionStatusInfo" xml:space="preserve">
+    <value>Basierend auf den Auswahlmöglichkeiten für Plattform und Smartgroup</value>
+  </data>
+  <data name="DeviceLocator" xml:space="preserve">
+    <value>Geräte-Finder</value>
+  </data>
+  <data name="DeviceNotAssignedToWorkflow" xml:space="preserve">
+    <value>Gerät ist diesem Workflow nicht zugewiesen.</value>
+  </data>
+  <data name="DeviceWithStatusArg" xml:space="preserve">
+    <value>Gerät mit Status {0}</value>
+  </data>
+  <data name="DeviceWorkflowStatusInfo" xml:space="preserve">
+    <value>Der Status der einzelnen Schritte in diesem Workflow für dieses Gerät wird unten aufgeführt.</value>
+  </data>
+  <data name="DiskIndex" xml:space="preserve">
+    <value>Datenträger-Index</value>
+  </data>
+  <data name="DNSDomain" xml:space="preserve">
+    <value>DNS-Domäne</value>
+  </data>
+  <data name="DNSServerSearchOrder" xml:space="preserve">
+    <value>Suchauftrag für DNS-Server</value>
+  </data>
+  <data name="DoYouWantToContinue" xml:space="preserve">
+    <value>Möchten Sie fortfahren?</value>
+  </data>
+  <data name="DriverDate" xml:space="preserve">
+    <value>Treiberdatum</value>
+  </data>
+  <data name="DriverKey" xml:space="preserve">
+    <value>Treiberschlüssel</value>
+  </data>
+  <data name="DriverSigned" xml:space="preserve">
+    <value>Treiber signiert</value>
+  </data>
+  <data name="DWord32Bit" xml:space="preserve">
+    <value>DWORD</value>
+  </data>
+  <data name="EdiSelectFurther" xml:space="preserve">
+    <value>Attribut auswählen</value>
+    <comment>edi sencondary selection default text.</comment>
+  </data>
+  <data name="EmptyStepStatus" xml:space="preserve">
+    <value>Keine Gerätestatus gemeldet. Die Geräteanzahl wird aktualisiert, wenn mehr Daten verfügbar sind.</value>
+  </data>
+  <data name="EnterNumber" xml:space="preserve">
+    <value>Geben Sie eine Ziffer ein</value>
+  </data>
+  <data name="EnterNumberForCustomRange" xml:space="preserve">
+    <value>Geben Sie eine Zahl für den benutzerdefinierten Bereich ein</value>
+  </data>
+  <data name="EntryBlock" xml:space="preserve">
+    <value>Workfloweinstellungen</value>
+  </data>
+  <data name="ErrorHandling" xml:space="preserve">
+    <value>Fehlerbehandlung</value>
+  </data>
+  <data name="ErrorLoadingCategories" xml:space="preserve">
+    <value>Anwendungskategorien konnten nicht abgerufen werden. Wenn dieses Problem weiterhin auftritt, wenden Sie sich an Ihren Systemadministrator.</value>
+  </data>
+  <data name="EulaSettings" xml:space="preserve">
+    <value>EULA-Einstellungen</value>
+  </data>
+  <data name="ExcludedSmartGroupAssignmentError" xml:space="preserve">
+    <value>Ausgeschlossene Smartgroup(s) dürfen nicht Teil der Smartgroup-Zuweisungen von Workflows sein, die diese Anwendung enthalten.</value>
+  </data>
+  <data name="ExecutionRate" xml:space="preserve">
+    <value>Ausführungsrate</value>
+  </data>
+  <data name="Exists" xml:space="preserve">
+    <value>Vorhanden</value>
+  </data>
+  <data name="ExpandableString" xml:space="preserve">
+    <value>Erweiterbare Zeichenfolge</value>
+  </data>
+  <data name="ExtensionName" xml:space="preserve">
+    <value>Name der Erweiterung</value>
+  </data>
+  <data name="FileSystem" xml:space="preserve">
+    <value>Dateisystem</value>
+  </data>
+  <data name="Filters" xml:space="preserve">
+    <value>Filter</value>
+  </data>
+  <data name="FindOutMore" xml:space="preserve">
+    <value>Weitere Informationen finden Sie unter</value>
+  </data>
+  <data name="FirstRetryAfter" xml:space="preserve">
+    <value>Erster Wiederholungsversuch nach</value>
+  </data>
+  <data name="FourthRetryAfter" xml:space="preserve">
+    <value>Vierter Wiederholungsversuch nach</value>
+  </data>
+  <data name="FreeSpace" xml:space="preserve">
+    <value>Freier Speicherplatz</value>
+  </data>
+  <data name="Freestyle" xml:space="preserve">
+    <value>Freestyle</value>
+  </data>
+  <data name="FreestyleContext" xml:space="preserve">
+    <value>Kontext</value>
+  </data>
+  <data name="FreestyleHeader" xml:space="preserve">
+    <value>Erstellen von Workflows, die Ihren Anforderungen entsprechen</value>
+  </data>
+  <data name="FreestyleInfo" xml:space="preserve">
+    <value>Der Workspace ONE Freestyle Orchestrator ist eine Orchestrierungsplattform ohne Code, mit der Sie flexibel Workflows für Ressourcen wie Anwendungen, Profile und Skripts erstellen und diese auf Geräte basierend auf Granulationskriterien anwenden können.</value>
+  </data>
+  <data name="FreestyleNote" xml:space="preserve">
+    <value>Aktuell nur für Windows 10- und macOS-Plattformen verfügbar.</value>
+  </data>
+  <data name="FreestyleOrchestrator" xml:space="preserve">
+    <value>Freestyle Orchestrator</value>
+  </data>
+  <data name="FreestyleOrchestratorInfo" xml:space="preserve">
+    <value>Erstellen Sie Workflows für Ressourcen, wie z. B. Apps, Profile und Skripts, und wenden Sie diese auf Geräte basierend auf Granulationskriterien an.</value>
+  </data>
+  <data name="FreestyleOrchestratorPreview" xml:space="preserve">
+    <value>Freestyle Orchestrator (Vorschau)</value>
+  </data>
+  <data name="FreestyleWelcomeWindowDescription" xml:space="preserve">
+    <value>Freestyle Orchestrator ist eine codearme IT-Orchestrierungsplattform, mit der Sie flexibel Workflows für Ressourcen wie Apps, Profile und Skripts erstellen und diese auf Geräten basierend auf Granulationskriterien anwenden können.</value>
+  </data>
+  <data name="FreestyleWelcomeWindowDescriptionInfo" xml:space="preserve">
+    <value>Freestyle Orchestrator ist zurzeit für Windows 10 und macOS-Plattformen verfügbar.</value>
+  </data>
+  <data name="FreestyleWorkflow" xml:space="preserve">
+    <value>Freestyle-Workflow</value>
+  </data>
+  <data name="FreestyleWorkflowDescription" xml:space="preserve">
+    <value>Kriterienbasiertes Bereitstellen von Objekten oder Durchführen bestimmter Maßnahmen an Geräten.</value>
+  </data>
+  <data name="GettingStartedWithWorkflows" xml:space="preserve">
+    <value>Erste Schritte mit Workflows</value>
+  </data>
+  <data name="HardwareSerial" xml:space="preserve">
+    <value>Hardware-Seriennummer</value>
+  </data>
+  <data name="HardwareVendor" xml:space="preserve">
+    <value>Hardwareanbieter</value>
+  </data>
+  <data name="HardwareVersion" xml:space="preserve">
+    <value>Hardwareversion</value>
+  </data>
+  <data name="Hotfix" xml:space="preserve">
+    <value>Hotfix</value>
+  </data>
+  <data name="HotfixKBId" xml:space="preserve">
+    <value>Hotfix KB-ID</value>
+  </data>
+  <data name="Includes" xml:space="preserve">
+    <value>Enthält</value>
+  </data>
+  <data name="InitialValueIsActivated" xml:space="preserve">
+    <value>Anfangswert ist aktiviert</value>
+  </data>
+  <data name="InitialValueIsEnabled" xml:space="preserve">
+    <value>Anfangswert ist aktiv</value>
+  </data>
+  <data name="InitialValueIsOwned" xml:space="preserve">
+    <value>Anfangswert ist „in Besitz“</value>
+  </data>
+  <data name="InstallationState" xml:space="preserve">
+    <value>Installationszustand</value>
+  </data>
+  <data name="InstalledBy" xml:space="preserve">
+    <value>Installiert von</value>
+  </data>
+  <data name="InstalledOn" xml:space="preserve">
+    <value>Installiert am</value>
+  </data>
+  <data name="InstallLocation" xml:space="preserve">
+    <value>Installationsverzeichnis</value>
+  </data>
+  <data name="InstallSource" xml:space="preserve">
+    <value>Installationsquelle</value>
+  </data>
+  <data name="IntroducingFreestyleOrchestrator" xml:space="preserve">
+    <value>Einführung von Freestyle Orchestrator</value>
+  </data>
+  <data name="IsBootable" xml:space="preserve">
+    <value>Ist bootfähig</value>
+  </data>
+  <data name="IsFramework" xml:space="preserve">
+    <value>Ist Framework</value>
+  </data>
+  <data name="KioskPayloadWarning" xml:space="preserve">
+    <value>Stellen Sie sicher, dass Anwendungen aus der Kiosknutzlast dem Workflow vor der Veröffentlichung hinzugefügt werden.</value>
+  </data>
+  <data name="LastFortyFiveDays" xml:space="preserve">
+    <value>Letzte 45 Tage</value>
+  </data>
+  <data name="LastFortyFiveDaysNumeric" xml:space="preserve">
+    <value>Letzte 45 Tage</value>
+  </data>
+  <data name="LastFourteenDays" xml:space="preserve">
+    <value>Letzte 14 Tage</value>
+  </data>
+  <data name="LastFourteenDaysNumeric" xml:space="preserve">
+    <value>Letzte 14 Tage</value>
+  </data>
+  <data name="LastSevenDaysNumeric" xml:space="preserve">
+    <value>Letzte 7 Tage</value>
+  </data>
+  <data name="LastSixtyDays" xml:space="preserve">
+    <value>Letzte 60 Tage</value>
+  </data>
+  <data name="LastSixtyDaysNumeric" xml:space="preserve">
+    <value>Letzte 60 Tage</value>
+  </data>
+  <data name="LastThirtyDaysNumeric" xml:space="preserve">
+    <value>Letzte 30 Tage</value>
+  </data>
+  <data name="Latest" xml:space="preserve">
+    <value>Neueste</value>
+  </data>
+  <data name="LatestAvailable" xml:space="preserve">
+    <value>Neueste verfügbar</value>
+  </data>
+  <data name="LocalTimeZone" xml:space="preserve">
+    <value>Lokale Zeitzone</value>
+  </data>
+  <data name="LogicalDrives" xml:space="preserve">
+    <value>Logische Laufwerke</value>
+  </data>
+  <data name="ManufacturerId" xml:space="preserve">
+    <value>Hersteller-ID</value>
+  </data>
+  <data name="ManufacturerVersion" xml:space="preserve">
+    <value>Herstellerversion</value>
+  </data>
+  <data name="ManufacturerVersionInfo" xml:space="preserve">
+    <value>Versionsinformation des Herstellers</value>
+  </data>
+  <data name="MatchesFound" xml:space="preserve">
+    <value>{0} Übereinstimmung(en) gefunden</value>
+  </data>
+  <data name="MaxClockSpeed" xml:space="preserve">
+    <value>Maximale Taktfrequenz</value>
+  </data>
+  <data name="MaximumRetries" xml:space="preserve">
+    <value>Maximale Wiederholungsversuche</value>
+  </data>
+  <data name="MayNotBeFiltered" xml:space="preserve">
+    <value>Ergebnisse möglicherweise nicht enthalten</value>
+  </data>
+  <data name="MayNotBeFilteredDesc" xml:space="preserve">
+    <value>Alphanumerische App-Versionen werden mithilfe der Operatoren „Größer als“ oder „Kleiner als“ gefiltert.</value>
+  </data>
+  <data name="MemoryType" xml:space="preserve">
+    <value>Arbeitsspeicher-Typ</value>
+  </data>
+  <data name="ModifiedOnByArg" xml:space="preserve">
+    <value>Geändert am {0} von {1}</value>
+  </data>
+  <data name="MonitorPerformance" xml:space="preserve">
+    <value>Leistungsüberwachung</value>
+  </data>
+  <data name="MonitorWorkflowPerformanceInfo" xml:space="preserve">
+    <value>Überwachen Sie veröffentlichte Workflows und gewinnen Sie Erkenntnisse daraus, zeigen Sie Leistungsmetriken an und verwalten Sie gespeicherte und archivierte Workflows.</value>
+  </data>
+  <data name="MultipleValueHelpText" xml:space="preserve">
+    <value>Mehrfache Werte durch Kommas trennen.</value>
+  </data>
+  <data name="MustBeBetweenArgs" xml:space="preserve">
+    <value>Muss zwischen {0} und {1} liegen</value>
+  </data>
+  <data name="NavigationFreestyle" xml:space="preserve">
+    <value>Freestyle für die Navigation</value>
+  </data>
+  <data name="NavigationFreestyleHelp" xml:space="preserve">
+    <value>Zugriffssteuerung auf das Freestyle-Seitenmenü</value>
+  </data>
+  <data name="NavigationResources" xml:space="preserve">
+    <value>Navigationsressourcen</value>
+  </data>
+  <data name="NavigationResourcesHelp" xml:space="preserve">
+    <value>Zugriffssteuerung auf das Ressourcen-Seitenmenü</value>
+  </data>
+  <data name="NetworkAdapter" xml:space="preserve">
+    <value>Netzwerkadapter</value>
+  </data>
+  <data name="NoDefaultPolicyForVersion" xml:space="preserve">
+    <value>Die Version der App weist keine Standardrichtlinien auf. Richten Sie vor der Veröffentlichung eine Standardrichtlinie ein.</value>
+  </data>
+  <data name="NoStepStatus" xml:space="preserve">
+    <value>Für diesen Schritt ist kein Status zu melden. Wählen Sie einen anderen Schritt aus, um die Geräteaufschlüsselung anzuzeigen.</value>
+  </data>
+  <data name="NotBetween" xml:space="preserve">
+    <value>Nicht zwischen</value>
+  </data>
+  <data name="NotEquals" xml:space="preserve">
+    <value>Nicht gleich</value>
+  </data>
+  <data name="NotIn" xml:space="preserve">
+    <value>Außerhalb</value>
+  </data>
+  <data name="OemUpdatesPayloadWarning" xml:space="preserve">
+    <value>Stellen Sie sicher, dass die Dell Command Update-Anwendung dem Workflow vor der Veröffentlichung hinzugefügt wird.</value>
+  </data>
+  <data name="OverallDeviceExecutionStatus" xml:space="preserve">
+    <value>Gesamtstatus der Geräteausführung</value>
+  </data>
+  <data name="Overwritten" xml:space="preserve">
+    <value>Überschrieben</value>
+  </data>
+  <data name="Partitions" xml:space="preserve">
+    <value>Partitionen</value>
+  </data>
+  <data name="PhysicalPresenceVersion" xml:space="preserve">
+    <value>Version der physischen Präsenz</value>
+  </data>
+  <data name="PlatformChangeConfirmationDescription" xml:space="preserve">
+    <value>Durch das Ändern der Plattform werden alle anderen Ressourcen, Schritte, Aktionen, die Sie in den Workflow eingegeben haben, gelöscht. Möchten Sie wirklich fortfahren?</value>
+  </data>
+  <data name="PlatformChangeConfirmationTitle" xml:space="preserve">
+    <value>Warnung – Plattformänderung</value>
+  </data>
+  <data name="PlatformDescription" xml:space="preserve">
+    <value>Ressourcen werden basierend auf dem Plattformtyp gefiltert.</value>
+  </data>
+  <data name="PlatformRole" xml:space="preserve">
+    <value>Plattform-Rolle</value>
+  </data>
+  <data name="PlayDemo" xml:space="preserve">
+    <value>Demo abspielen</value>
+  </data>
+  <data name="PotentiallyImpactedApplications" xml:space="preserve">
+    <value>Potenziell qualifizierte Apps</value>
+  </data>
+  <data name="ProceedToNextStepConditionFailedError" xml:space="preserve">
+    <value>Andernfalls ist der Schritt nicht korrekt festgelegt oder fehlt, wenn Sie mit dem nächsten Schritt fortfahren.</value>
+  </data>
+  <data name="ProductIdentificationNumber" xml:space="preserve">
+    <value>Produktidentifikationsnummer</value>
+  </data>
+  <data name="ProfilesAndBaselines" xml:space="preserve">
+    <value>Profile und Baselines</value>
+  </data>
+  <data name="Program" xml:space="preserve">
+    <value>Programm</value>
+  </data>
+  <data name="PropertyFile" xml:space="preserve">
+    <value>Eigenschafts-Datei</value>
+  </data>
+  <data name="ProtectionStatus" xml:space="preserve">
+    <value>Schutzstatus</value>
+  </data>
+  <data name="PublishedOnByArg" xml:space="preserve">
+    <value>Veröffentlicht am {0} von {1}</value>
+  </data>
+  <data name="PublishedStateDescription" xml:space="preserve">
+    <value>Die Aktualisierung der Daten kann je nach Einchecken der Geräte bis zu 4 Stunden dauern. Um Ihren Workflow jetzt mit Geräten zu synchronisieren, navigieren Sie zu „Gerätedetails“, klicken Sie auf „Weitere Aktionen“ und wählen Sie „Workflows“ aus.</value>
+  </data>
+  <data name="Publisher" xml:space="preserve">
+    <value>Veröffentlicht von:</value>
+  </data>
+  <data name="PublisherId" xml:space="preserve">
+    <value>ID des Veröffentlichers</value>
+  </data>
+  <data name="QWord64Bit" xml:space="preserve">
+    <value>QWORD</value>
+  </data>
+  <data name="ReevaluateCondition" xml:space="preserve">
+    <value>Bedingung neu bewerten</value>
+  </data>
+  <data name="ReevaluateConditionDesc" xml:space="preserve">
+    <value>Führt alle 15 Minuten den gesamten Workflow aus, um sicherzustellen, dass das Gerät den gewünschten Zustand behält.</value>
+  </data>
+  <data name="Registry" xml:space="preserve">
+    <value>Registrierung</value>
+  </data>
+  <data name="RegistryDoesNotExistAt" xml:space="preserve">
+    <value>Registrierung nicht vorhanden unter</value>
+  </data>
+  <data name="RegistryExistsAt" xml:space="preserve">
+    <value>Registrierung vorhanden unter</value>
+  </data>
+  <data name="RegistryPath" xml:space="preserve">
+    <value>Registrierungspfad</value>
+  </data>
+  <data name="ReinstallIfRemoved" xml:space="preserve">
+    <value>Erneut installieren, wenn entfernt</value>
+  </data>
+  <data name="ReinstallIfRemovedDesc" xml:space="preserve">
+    <value>Installieren Sie diese Ressource neu, wenn Sie von einem Gerät entfernt wird.</value>
+  </data>
+  <data name="ResourceCount" xml:space="preserve">
+    <value>Anzahl der Ressourcen</value>
+  </data>
+  <data name="ResourcesWelcomeWindowDescription" xml:space="preserve">
+    <value>Wir haben den linken Navigationsbereich (Hauptmenü) neu organisiert und eine neue Registerkarte „Ressourcen“ eingefügt, sodass Sie besser auf häufig verwendete Funktionen zugreifen und diese einfacher verwalten können. Unter „Ressourcen“ finden Sie Apps, Profile, Bedingungen und mehr.</value>
+  </data>
+  <data name="ResourceUnauthorizedAccessContactSystemAdmin" xml:space="preserve">
+    <value>Sie sind nicht berechtigt, auf diese Ressource zuzugreifen. Wenden Sie sich an Ihren Systemadministrator.</value>
+  </data>
+  <data name="RestoreToDefault" xml:space="preserve">
+    <value>Standardeinstellung wiederherstellen</value>
+  </data>
+  <data name="Results" xml:space="preserve">
+    <value>Ergebnisse</value>
+  </data>
+  <data name="RetryAfter" xml:space="preserve">
+    <value>Erneut versuchen nach</value>
+  </data>
+  <data name="RetryAfterDesc" xml:space="preserve">
+    <value>Zeitintervall, nach dem die fehlerhaften Workflow-Schritte erneut versucht werden.</value>
+  </data>
+  <data name="RetryIntervalDesc" xml:space="preserve">
+    <value>Ergibt sich aus den Optionen „Erneut versuchen nach“, „Wiederholungsversuche“ und „Backoff-Rate“.</value>
+  </data>
+  <data name="RunScript" xml:space="preserve">
+    <value>Skript ausführen</value>
+  </data>
+  <data name="SavedFailedContactAdmin" xml:space="preserve">
+    <value>Speichern fehlgeschlagen. Wiederholen Sie den Vorgang. Falls das Problem weiterhin auftritt, wenden Sie sich an Ihren Systemadministrator.</value>
+  </data>
+  <data name="SavedStateDescription" xml:space="preserve">
+    <value>Veröffentlichen Sie Ihren Workflow, um Geräte zu zuweisen. Die Daten werden aktualisiert, sobald zugewiesene Geräte einchecken.</value>
+  </data>
+  <data name="SaveSuccessPublishFailedTryAgain" xml:space="preserve">
+    <value>Der Workflow konnte nicht veröffentlicht werden. Der Workflow wurde gespeichert. Versuchen Sie, ihn erneut zu veröffentlichen.</value>
+  </data>
+  <data name="SearchAndSelect" xml:space="preserve">
+    <value>Suchen und auswählen</value>
+  </data>
+  <data name="SearchExistingApp" xml:space="preserve">
+    <value>Nach einer vorhandenen Anwendung suchen</value>
+  </data>
+  <data name="SearchExistingProfile" xml:space="preserve">
+    <value>Nach einem vorhandenen Profil suchen</value>
+  </data>
+  <data name="SearchScript" xml:space="preserve">
+    <value>Skript suchen</value>
+  </data>
+  <data name="SecondRetryAfter" xml:space="preserve">
+    <value>Zweiter Wiederholungsversuch nach</value>
+  </data>
+  <data name="SelectSmartGroupMessage" xml:space="preserve">
+    <value>Wählen Sie die Smartgroups aus, die diesem Workflow zugewiesen werden, und wählen Sie aus, wie dieser bereitgestellt werden soll.</value>
+  </data>
+  <data name="SelectVersion" xml:space="preserve">
+    <value>Version auswählen</value>
+  </data>
+  <data name="SensorBaseTimeInfo" xml:space="preserve">
+    <value>Wählen Sie die Zeitzone aus, die für diese Sensorbedingung verwendet werden soll: Geräte-Ortszeit oder Serverzeit (UTC).</value>
+  </data>
+  <data name="SetDefaultPolicy" xml:space="preserve">
+    <value>Standardrichtlinie festlegen</value>
+  </data>
+  <data name="SetRegistryData" xml:space="preserve">
+    <value>Registrierungsdaten festlegen</value>
+  </data>
+  <data name="SetRegistryValue" xml:space="preserve">
+    <value>Registrierungswert festlegen</value>
+  </data>
+  <data name="SettingsRetrievalError" xml:space="preserve">
+    <value>Beim Abrufen der Workflow-Einstellungen ist ein Fehler aufgetreten</value>
+  </data>
+  <data name="SettingsSavedSuccessfully" xml:space="preserve">
+    <value>Workflow-Einstellungen wurden erfolgreich gespeichert</value>
+  </data>
+  <data name="SettingsSaveFailedTryAgain" xml:space="preserve">
+    <value>Beim Speichern der Workflow-Einstellungen ist ein Fehler aufgetreten. Versuchen Sie es erneut.</value>
+  </data>
+  <data name="Shares" xml:space="preserve">
+    <value>Anzahl gemeinsamer Nutzungen</value>
+  </data>
+  <data name="Showing" xml:space="preserve">
+    <value>Wird angezeigt</value>
+  </data>
+  <data name="ShowingResultsArg" xml:space="preserve">
+    <value>{0} Ergebnisse werden angezeigt</value>
+  </data>
+  <data name="SkipWorkflow" xml:space="preserve">
+    <value>Workflowschritt überspringen</value>
+  </data>
+  <data name="SkipWorkflowDesc" xml:space="preserve">
+    <value>Überspringen Sie den fehlgeschlagenen Workflowschritt und melden Sie einen Fehler, aber setzen Sie den Workflow fort</value>
+  </data>
+  <data name="SocketDesignation" xml:space="preserve">
+    <value>Socket-Zuweisung</value>
+  </data>
+  <data name="SpecVersion" xml:space="preserve">
+    <value>Spezifikations-Version</value>
+  </data>
+  <data name="StageWorkflowInfo" xml:space="preserve">
+    <value>Navigieren Sie zu Ressourcen und konfigurieren Sie Apps, Profile, Skripts und Sensoren zur Referenz in einem Workflow.</value>
+  </data>
+  <data name="StageWorkflowResources" xml:space="preserve">
+    <value>Workflowressourcen bereitstellen</value>
+  </data>
+  <data name="StartExploringFreestyleOrchestrator" xml:space="preserve">
+    <value>Weitere Infos zu Freestyle Orchestrator</value>
+  </data>
+  <data name="StartType" xml:space="preserve">
+    <value>Starttyp</value>
+  </data>
+  <data name="StateName" xml:space="preserve">
+    <value>Zustandsname</value>
+  </data>
+  <data name="StepStatus" xml:space="preserve">
+    <value>Schrittstatus</value>
+  </data>
+  <data name="StopWorkflow" xml:space="preserve">
+    <value>Workflow stoppen</value>
+  </data>
+  <data name="StopWorkflowDesc" xml:space="preserve">
+    <value>Stoppen Sie den Workflow beim fehlgeschlagenen Schritt und melden Sie einen Statusfehler.</value>
+  </data>
+  <data name="SwitchToTimeWindow" xml:space="preserve">
+    <value>Durch Zeitfenster ersetzen</value>
+  </data>
+  <data name="SwitchToTimeWindowConfirmation" xml:space="preserve">
+    <value>Möchten Sie diese Bedingung durch ein Zeitfenster ersetzen?</value>
+  </data>
+  <data name="SwitchToTimeWindowWarning" xml:space="preserve">
+    <value>Eine Zeitfensterbedingung kann nicht mit anderen Bedingungen kombiniert werden. Durch das Hinzufügen eines Zeitfensters werden vorhandene Kriterien ersetzt.</value>
+  </data>
+  <data name="SystemEnclosure" xml:space="preserve">
+    <value>Systemgehäuse</value>
+  </data>
+  <data name="TemplateSelectionQuestion" xml:space="preserve">
+    <value>Wofür möchten Sie einen Workflow erstellen?</value>
+  </data>
+  <data name="ThirdRetryAfter" xml:space="preserve">
+    <value>Dritter Wiederholungsversuch nach</value>
+  </data>
+  <data name="TimeDurationDay" xml:space="preserve">
+    <value>Tag</value>
+  </data>
+  <data name="TimeDurationDays" xml:space="preserve">
+    <value>Tag(e)</value>
+  </data>
+  <data name="TimeDurationHour" xml:space="preserve">
+    <value>Stunde</value>
+  </data>
+  <data name="TimeDurationHours" xml:space="preserve">
+    <value>Stunde(n)</value>
+  </data>
+  <data name="TimeDurationMinute" xml:space="preserve">
+    <value>Minute</value>
+  </data>
+  <data name="TimeDurationMinutes" xml:space="preserve">
+    <value>Minute(n)</value>
+  </data>
+  <data name="TimeoutDesc" xml:space="preserve">
+    <value>Maximale Wartezeit, bis ein Workflow-Schritt abgeschlossen ist.</value>
+  </data>
+  <data name="TimeReported" xml:space="preserve">
+    <value>Uhrzeit der Meldung</value>
+  </data>
+  <data name="TimeWindowRuleDescription" xml:space="preserve">
+    <value>Die Bedingung wird in einem konfigurierten Intervall solange neu ausgewertet, bis das Gerät sie erfüllt. ELSE-Verzweigungen sind nicht zulässig.</value>
+  </data>
+  <data name="TimeWindowRuleDescriptionArg" xml:space="preserve">
+    <value>Die Bedingung wird in einem konfigurierten Intervall ({0}) solange neu ausgewertet, bis das Gerät sie erfüllt. ELSE-Verzweigungen sind nicht zulässig.</value>
+  </data>
+  <data name="TimeWindowStateSupport" xml:space="preserve">
+    <value>Die Zustandsverwaltung kann nicht auf eine Zeitfensterbedingung angewendet werden.</value>
+  </data>
+  <data name="ToLearnMore" xml:space="preserve">
+    <value>Weitere Informationen</value>
+  </data>
+  <data name="TotalEligibleDevices" xml:space="preserve">
+    <value>Berechtigte Geräte insgesamt</value>
+  </data>
+  <data name="Troubleshoot" xml:space="preserve">
+    <value>Fehlerbehebung</value>
+  </data>
+  <data name="TrustedPlatformModule" xml:space="preserve">
+    <value>Trusted Platform Module</value>
+  </data>
+  <data name="UnauthorizedAccessResource" xml:space="preserve">
+    <value>Sie sind nicht berechtigt, auf diese Ressource zuzugreifen. Wenden Sie sich an Ihren IT-Administrator.</value>
+  </data>
+  <data name="UninstallerFilePath" xml:space="preserve">
+    <value>Dateipfad des Deinstallationsprogramms</value>
+  </data>
+  <data name="Universallyuniqueidentifier" xml:space="preserve">
+    <value>Universally Unique Identifier (eindeutige Kennung)</value>
+  </data>
+  <data name="UnsupportedProfilePayloadEcrow" xml:space="preserve">
+    <value>Der Workflow darf kein Profil mit einer Hinterlegungsnutzlast enthalten. Wählen Sie ein anderes Profil aus.</value>
+  </data>
+  <data name="UnsupportedProfilePayloadEWSOutlook" xml:space="preserve">
+    <value>Der Workflow darf kein MacOS Profil mit einer EWS Outlook Nutzlast enthalten. Wählen Sie ein anderes Profil aus.</value>
+  </data>
+  <data name="UpdateAgent" xml:space="preserve">
+    <value>Agenten aktualisieren</value>
+  </data>
+  <data name="Uuid" xml:space="preserve">
+    <value>UUID</value>
+  </data>
+  <data name="VersionUUID" xml:space="preserve">
+    <value>UUID der Version</value>
+  </data>
+  <data name="VersionValidationMessage" xml:space="preserve">
+    <value>Geben Sie die Version als Ziffern ein, die durch Punkte getrennt sind (1.0, 1.0.1, 1.0.1.1).</value>
+  </data>
+  <data name="ViewDocs" xml:space="preserve">
+    <value>Dokumente anzeigen</value>
+  </data>
+  <data name="ViewFreestyle" xml:space="preserve">
+    <value>Freestyle anzeigen</value>
+  </data>
+  <data name="ViewFreestyleHelp" xml:space="preserve">
+    <value>Steuert den Zugriff zum Anzeigen von Freestyle-Details und Ressourcentypen wie Apps, Profilen und Skripts</value>
+  </data>
+  <data name="ViewInModal" xml:space="preserve">
+    <value>Im Dialogfeld anzeigen</value>
+  </data>
+  <data name="ViewItemDetails" xml:space="preserve">
+    <value>Details anzeigen</value>
+  </data>
+  <data name="ViewResults" xml:space="preserve">
+    <value>Ergebnisse anzeigen</value>
+  </data>
+  <data name="VirtualAppsCollections" xml:space="preserve">
+    <value>Sammlungen virtueller Apps</value>
+  </data>
+  <data name="VirtualCPU" xml:space="preserve">
+    <value>Virtuelle CPU</value>
+  </data>
+  <data name="VirtualCPUs" xml:space="preserve">
+    <value>Virtuelle CPUs</value>
+  </data>
+  <data name="WfEmptyStepCountError" xml:space="preserve">
+    <value>Der Workflow muss mindestens einen Schritt aufweisen.</value>
+  </data>
+  <data name="WfNameEmptyError" xml:space="preserve">
+    <value>Kein Name für Workflow angegeben. Geben Sie einen Namen an und versuchen Sie es erneut.</value>
+  </data>
+  <data name="WfTypeEmptyError" xml:space="preserve">
+    <value>Speichern fehlgeschlagen. Für den Workflow wurde kein Typ angegeben.</value>
+  </data>
+  <data name="WhenRetriesExhausted" xml:space="preserve">
+    <value>Wenn alle Wiederholungsversuche erfolglos waren</value>
+  </data>
+  <data name="WindowsOptionalFeatures" xml:space="preserve">
+    <value>optionale Funktionen von Windows</value>
+  </data>
+  <data name="WiredNetwork" xml:space="preserve">
+    <value>Kabelnetzwerk</value>
+  </data>
+  <data name="WorkflowDisabledCatalogTooltip" xml:space="preserve">
+    <value>Wählen Sie eine Smartgroup aus, um diese Einstellungen zu ändern.</value>
+  </data>
+  <data name="WorkflowDoesNotExistOrMightBeDeleted" xml:space="preserve">
+    <value>Der Workflow ist nicht vorhanden oder wurde möglicherweise gelöscht.</value>
+  </data>
+  <data name="WorkflowExecutionStatus" xml:space="preserve">
+    <value>Status der Workflowausführung</value>
+  </data>
+  <data name="WorkflowPausedSuccessfully" xml:space="preserve">
+    <value>Workflow erfolgreich angehalten</value>
+  </data>
+  <data name="WorkflowPauseFailedTryAgain" xml:space="preserve">
+    <value>Anhalten des Workflows fehlgeschlagen. Wiederholen.</value>
+  </data>
+  <data name="WorkflowRestoreDefaults" xml:space="preserve">
+    <value>Standardeinstellungen wiederherstellen</value>
+  </data>
+  <data name="WorkflowResumedSuccessfully" xml:space="preserve">
+    <value>Workflow erfolgreich fortgesetzt</value>
+  </data>
+  <data name="WorkflowResumeFailedTryAgain" xml:space="preserve">
+    <value>Fortsetzen des Workflows fehlgeschlagen. Wiederholen.</value>
+  </data>
+  <data name="WorkflowRetryInterval" xml:space="preserve">
+    <value>Neuversuchsintervall</value>
+  </data>
+  <data name="WorkflowSettings" xml:space="preserve">
+    <value>Workfloweinstellungen</value>
+  </data>
+  <data name="WorkflowSettingsDesc" xml:space="preserve">
+    <value>Konfigurieren Sie die Standardeinstellungen für Workflows. Sie können diese Einstellungen in einzelnen Workflows überschreiben.</value>
+  </data>
+  <data name="WorkflowSmartGroupDescription" xml:space="preserve">
+    <value>Geräte führen den Workflow nach dem Check-in aus.</value>
+  </data>
+  <data name="WorkflowStatusNotEvaluatedInfo" xml:space="preserve">
+    <value>Das Gerät hat den Workflow erhalten, hat aber noch keinen Status für den Workflowschritt gemeldet</value>
+  </data>
+  <data name="WorkflowStep" xml:space="preserve">
+    <value>Workflowschritt</value>
+  </data>
+  <data name="WorkflowTimeout" xml:space="preserve">
+    <value>Zeitüberschreitung</value>
+  </data>
+  <data name="WorkflowWarningExactVersionSelected" xml:space="preserve">
+    <value>Dieser Workflowschritt kann fehlschlagen, wenn eine bestimmte Version ausgewählt und dem Gerät darüber hinaus eine neuere Version zugewiesen wird.</value>
+  </data>
+</root>

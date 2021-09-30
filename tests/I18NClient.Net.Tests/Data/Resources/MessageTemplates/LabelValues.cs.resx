@@ -1,0 +1,1035 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="MessageTemplates_Content_AccessFileAndCommentNavigateToSSPSection" xml:space="preserve">
+    <value>K tomuto souboru a jeho komentáři můžete přistupovat v části Samoobslužný portál</value>
+  </data>
+  <data name="MessageTemplates_Content_AccessFolderNavigateToSSPSection" xml:space="preserve">
+    <value>K této složce můžete přistupovat v části Samoobslužný portál</value>
+  </data>
+  <data name="MessageTemplates_Content_AccountEnabledActivateDeviceUsingBrowserNavigateTo" xml:space="preserve">
+    <value>Váš účet Workspace ONE UEM byl povolen a můžete aktivovat své zařízení. Pomocí prohlížeče v zařízení přejděte do části:</value>
+  </data>
+  <data name="MessageTemplates_Content_AccountEnabledFollowStepsToEnrollDevice" xml:space="preserve">
+    <value>Blahopřejeme! Váš účet Workspace ONE UEM byl povolen. Při registraci zařízení použijte následující postup.</value>
+  </data>
+  <data name="MessageTemplates_Content_AccountExpirationExpirationDate" xml:space="preserve">
+    <value>Konec platnosti účtu: {ExpirationDate}</value>
+  </data>
+  <data name="MessageTemplates_Content_AdminConsole" xml:space="preserve">
+    <value>Konzola administrátora Workspace ONE UEM:</value>
+  </data>
+  <data name="MessageTemplates_Content_AdminCreatedLogIntoConsoleUsingCredential" xml:space="preserve">
+    <value>Váš účet administrátora Workspace ONE UEM byl vytvořen a nyní se můžete pomocí následujících přihlašovacích údajů přihlásit do konzoly administrátora Workspace ONE UEM:</value>
+  </data>
+  <data name="MessageTemplates_Content_AdminCreatedWithDetails" xml:space="preserve">
+    <value>Váš účet administrátora Workspace ONE UEM byl vytvořen. Konzola: {ConsoleUrl} Uživatelské jméno: {AdminUserName} Heslo: {AdminPassword}</value>
+  </data>
+  <data name="MessageTemplates_Content_AdminFirstNameAdminLastName" xml:space="preserve">
+    <value>{AdminFirstName} {AdminLastName},</value>
+  </data>
+  <data name="MessageTemplates_Content_AdminInfoUpdatedLogIntoConsoleToConfirm" xml:space="preserve">
+    <value>Vaše údaje administrátora Workspace ONE UEM byly aktualizovány. Přihlaste se do konzoly a potvrďte své údaje účtu.</value>
+  </data>
+  <data name="MessageTemplates_Content_AdminPasswordReset" xml:space="preserve">
+    <value>Buď vy, nebo jiný administrátor zahájil proces opětovného nastavení hesla. Pokud k tomu nemělo dojít, obraťte se na administrátora se žádostí o další informace. Následující odkaz vás vrátí na náš web a umožní vám změnit své heslo:</value>
+  </data>
+  <data name="MessageTemplates_Content_AdminPasswordUpdated" xml:space="preserve">
+    <value>Vaše heslo Workspace ONE UEM bylo aktualizováno.</value>
+  </data>
+  <data name="MessageTemplates_Content_AdminPasswordWillExpireInDays" xml:space="preserve">
+    <value>Platnost vašeho hesla administrátora pro účet „{AdminUserName}“ konzoly Workspace ONE UEM Console vyprší za následující počet dní: {DaysToBasicAdminPasswordExpiry}.</value>
+  </data>
+  <data name="MessageTemplates_Content_AdminStatusChanged" xml:space="preserve">
+    <value>Váš stav administrátora Workspace ONE UEM byl změněn na {AdminStatus}.</value>
+  </data>
+  <data name="MessageTemplates_Content_AlternativelyScanQrCodeToBeginEnrollment" xml:space="preserve">
+    <value>Další možností je naskenovat kód QR a zahájit tak registraci:</value>
+  </data>
+  <data name="MessageTemplates_Content_AppAssignedAccessInternalAppPageReviewPublish" xml:space="preserve">
+    <value>{ApplicationName} bylo přiřazeno zařízením a nyní je možné do těchto zařízení publikovat. K této aplikaci se dostanete ze stránky Interní aplikace v konzole Workspace ONE UEM Console. Zkontrolujte přiřazení zařízení a aplikaci publikujte. Podrobnosti o aplikaci jsou uvedeny níže:</value>
+  </data>
+  <data name="MessageTemplates_Content_AppAvailableForDownloadFromUem" xml:space="preserve">
+    <value>{ApplicationName} je nyní možné stáhnout do vašeho zařízení z katalogu aplikací Workspace ONE UEM.</value>
+  </data>
+  <data name="MessageTemplates_Content_AppAvailableForDownloadFromUemWithDetails" xml:space="preserve">
+    <value>{ApplicationName} je nyní možné stáhnout do vašeho zařízení z katalogu aplikací Workspace ONE UEM. Podrobnosti o aplikaci jsou uvedeny níže:</value>
+  </data>
+  <data name="MessageTemplates_Content_AppCreatedAccessInternalAppPage" xml:space="preserve">
+    <value>Byla vytvořena aplikace s názvem {ApplicationName}. K této aplikaci se dostanete ze stránky Interní aplikace v konzole Workspace ONE UEM Console. Podrobnosti o aplikaci jsou uvedeny níže:</value>
+  </data>
+  <data name="MessageTemplates_Content_AppCreatedAccessInternalAppPageReviewSubmit" xml:space="preserve">
+    <value>Byla vytvořena aplikace {ApplicationName} a je ji nyní možné zkontrolovat. K této aplikaci se dostanete ze stránky Interní aplikace v konzole Workspace ONE UEM Console. Zkontrolujte ji a odešlete k přiřazení. Podrobnosti o aplikaci jsou uvedeny níže:</value>
+  </data>
+  <data name="MessageTemplates_Content_AppErrorFindLogFile" xml:space="preserve">
+    <value>Aplikace {ApplicationName} vrátila chybu. Viz přiložený soubor protokolu.</value>
+  </data>
+  <data name="MessageTemplates_Content_AppEulaUpdatedAcceptanceRequired" xml:space="preserve">
+    <value>Podmínky vaší smlouvy s uživatelem aplikace byly aktualizovány a je potřeba, abyste je přijali.</value>
+  </data>
+  <data name="MessageTemplates_Content_AppEulaUpdatedAcceptanceRequiredBeforeGracePeriod" xml:space="preserve">
+    <value>Podmínky vaší smlouvy s uživatelem aplikace byly aktualizovány a před vypršením poskytnuté lhůty je potřeba, abyste je přijali.</value>
+  </data>
+  <data name="MessageTemplates_Content_AppEulaUpdatedAcceptanceRequiredLogInToAppCatalogToAccept" xml:space="preserve">
+    <value>Podmínky vaší smlouvy s uživatelem aplikace byly aktualizovány a je potřeba, abyste je přijali. Přihlaste se ke katalogu aplikací Workspace ONE UEM a podmínky přijměte.</value>
+  </data>
+  <data name="MessageTemplates_Content_AppGroupCreatedNavigateToSettingsPageToAccessAppGroups" xml:space="preserve">
+    <value>V důsledku synchronizace se serverem {VendorName} bylo vytvořeno {CountOfApplicationGroups} skupin aplikací . Podrobnosti o těchto skupinách aplikací se nacházejí v příloze. K těmto skupinám aplikací máte přístup na stránce Skupiny aplikací v části Aplikace a knihy &gt; Nastavení aplikací v konzole Workspace ONE UEM Console.</value>
+  </data>
+  <data name="MessageTemplates_Content_AppHasBeenPurchasedOpenHubToDownload" xml:space="preserve">
+    <value>Vaším jménem bylo zakoupeno {ApplicationName} a nyní je možné ho stáhnout. Otevřete centrum Workspace ONE Intelligent Hub a zde stáhněte zakoupenou aplikaci.</value>
+  </data>
+  <data name="MessageTemplates_Content_AppNameAppVersion" xml:space="preserve">
+    <value>{ApplicationName}, {ApplicationVersion}</value>
+  </data>
+  <data name="MessageTemplates_Content_AppReputationAnalysisCompletedForApp" xml:space="preserve">
+    <value>Byla dokončena analýza reputace aplikace pro aplikaci {ApplicationName} a nyní jsou k dispozici výsledky.</value>
+  </data>
+  <data name="MessageTemplates_Content_AppReviewedAccessInternalAppPageAssignSubmit" xml:space="preserve">
+    <value>Aplikace {ApplicationName} byla zkontrolována a nyní je možné ji přiřadit k zařízením. K této aplikaci se dostanete ze stránky Interní aplikace v konzole Workspace ONE UEM Console. Přiřaďte ji k zařízením a odešlete na publikování. Podrobnosti o aplikaci jsou uvedeny níže:</value>
+  </data>
+  <data name="MessageTemplates_Content_AuthenticationRequiredCredentialsBelow" xml:space="preserve">
+    <value>Může být potřeba ověření. Vaše jedinečné přihlašovací údaje jsou uvedeny níže:</value>
+  </data>
+  <data name="MessageTemplates_Content_ClickHere" xml:space="preserve">
+    <value>klikněte sem</value>
+  </data>
+  <data name="MessageTemplates_Content_ClickInstallAcceptPrompts" xml:space="preserve">
+    <value>Klikněte na možnost „Instalovat“ a přijměte výzvy k pokračování v konfiguraci.</value>
+  </data>
+  <data name="MessageTemplates_Content_ConsoleURL" xml:space="preserve">
+    <value>Adresa URL konzoly:</value>
+  </data>
+  <data name="MessageTemplates_Content_ContactItHelpDeskIfHaveQuestions" xml:space="preserve">
+    <value>Máte-li jakékoli dotazy, obraťte se na své oddělení podpory IT:</value>
+  </data>
+  <data name="MessageTemplates_Content_ContentComment" xml:space="preserve">
+    <value>„{Comment}“</value>
+  </data>
+  <data name="MessageTemplates_Content_ContentShareUserFirstNameLastName" xml:space="preserve">
+    <value>{ContentShareUserFirstName} {ContentShareUserLastName}</value>
+  </data>
+  <data name="MessageTemplates_Content_ContentUserIsUsingContentLocker" xml:space="preserve">
+    <value>Aplikace {ContentShareUserFirstName} používá ke snadnému a bezpečnému sdílení souborů s vámi řešení Workspace ONE UEM Content Locker.</value>
+  </data>
+  <data name="Messagetemplates_Content_DearAdministrator" xml:space="preserve">
+    <value>Vážený administrátore,</value>
+  </data>
+  <data name="MessageTemplates_Content_DeviceApprovedForAccessUsingBrowserNavigateTo" xml:space="preserve">
+    <value>Vaše zařízení bylo schváleno pro mobilní přístup. Pomocí webového prohlížeče svého zařízení přejděte do části</value>
+  </data>
+  <data name="MessageTemplates_Content_DeviceBlockedFromEnrollmentForReason" xml:space="preserve">
+    <value>Registrace vašeho zařízení {DevicePlatform} {DeviceModel} byla zablokována z následujícího důvodu:</value>
+  </data>
+  <data name="MessageTemplates_Content_DeviceEnrollmentUsingCredentials" xml:space="preserve">
+    <value>Vaše zařízení {DeviceFriendlyName} úspěšně dokončilo registraci do aplikace Workspace ONE UEM pomocí přihlašovacích údajů uživatele {EnrollmentUser}.</value>
+  </data>
+  <data name="MessageTemplates_Content_DeviceHasNotReportedComplianceToUemLaunchHubToCheckIn" xml:space="preserve">
+    <value>Vaše zařízení neoznámilo aplikaci Workspace ONE UEM svůj stav konformity v požadovaném časovém rámci. Spusťte v zařízení na svém zařízení centrum Workspace ONE Intelligent Hub a přihlaste se.</value>
+  </data>
+  <data name="MessageTemplates_Content_DeviceInViolationOfOrgCompliancePolicy" xml:space="preserve">
+    <value>Vaše zařízení {DeviceFriendlyName} v tomto okamžiku porušuje zásady konformity vaší organizace:</value>
+  </data>
+  <data name="MessageTemplates_Content_DeviceInViolationOfPolicyActionTakenIfNonCompliant" xml:space="preserve">
+    <value>Vaše zařízení je v rozporu se zásadou konformity „{PolicyName}“. Pokud zařízení zůstane nekonformní, bude provedena další akce.</value>
+  </data>
+  <data name="MessageTemplates_Content_DeviceLostCallMe" xml:space="preserve">
+    <value>Toto zařízení bylo ztraceno. Zavolejte mi, prosím.</value>
+  </data>
+  <data name="MessageTemplates_Content_DeviceNoAccessData" xml:space="preserve">
+    <value>Toto zařízení již nemá přístup k nastavením, aplikacím a obsahu zavedenému při registraci.</value>
+  </data>
+  <data name="MessageTemplates_Content_DeviceNonCompliantActionsInEffect" xml:space="preserve">
+    <value>Pokud vaše zařízení není konformní, budou na něj uplatněny následující akce:</value>
+  </data>
+  <data name="MessageTemplates_Content_DevicesWipedWithinLastMinutes" xml:space="preserve">
+    <value>Všimli jsme si, že během posledních {EnterpriseWipeInterval} minut došlo u neobvykle velkého počtu zařízení k podnikovému výmazu nebo výmazu zařízení.</value>
+  </data>
+  <data name="MessageTemplates_Content_DevicesWithAppExceededLimitRemovalOnHoldUntilConfirm" xml:space="preserve">
+    <value>Počet zařízení s aplikací {BundleID} překročil váš limit pro odebrání aplikací. Odebrání těchto aplikací bylo pozastaveno, dokud nepotvrdíte množství a to, jestli chcete vydat všechny příkazy na odstranění pro tuto aplikaci nebo ne.</value>
+  </data>
+  <data name="MessageTemplates_Content_DeviceUnenrolled" xml:space="preserve">
+    <value>Byla zrušena registrace vašeho zařízení {DeviceFriendlyName}.</value>
+  </data>
+  <data name="MessageTemplates_Content_DoNotEnterInfoUntilInContainerApp" xml:space="preserve">
+    <value>Nezadávejte žádné osobní informace ani informace specifické pro organizaci, dokud se bezpečně nedostanete do aplikace Workspace ONE UEM Container, jak je zobrazeno níže:</value>
+  </data>
+  <data name="MessageTemplates_Content_DoNotEnterInfoUntilInHubApp" xml:space="preserve">
+    <value>Nezadávejte žádné osobní informace ani informace specifické pro organizaci, dokud se bezpečně nedostanete do aplikace Workspace ONE Intelligent Hub, jak je zobrazeno níže:</value>
+  </data>
+  <data name="MessageTemplates_Content_DownloadHubApp" xml:space="preserve">
+    <value>Stáhněte si aplikaci Workspace ONE Intelligent Hub</value>
+  </data>
+  <data name="MessageTemplates_Content_DownloadHubAppOnDeviceYouWantToEnrollAt" xml:space="preserve">
+    <value>Stáhněte si aplikaci Workspace ONE Intelligent Hub na zařízení, které chcete zaregistrovat, na adrese</value>
+  </data>
+  <data name="MessageTemplates_Content_EmailDomainConfirmedUserWithSameDomainEnrolledInto" xml:space="preserve">
+    <value>Po potvrzení vaší e-mailové domény budou uživatelé, kteří se registrují pomocí e-mailové adresy se stejnou doménou, zaregistrováni do následující adresy URL a ID skupiny:</value>
+  </data>
+  <data name="MessageTemplates_Content_EmailDomainRegisteredVerifyEmailAddress" xml:space="preserve">
+    <value>Vaše e-mailová doména byla zaregistrována pro registraci na bázi e-mailu. Ověřte svou e-mailovou adresu kliknutím na níže uvedený odkaz:</value>
+  </data>
+  <data name="MessageTemplates_Content_EnrollmentURL" xml:space="preserve">
+    <value>Adresa URL registrace:</value>
+  </data>
+  <data name="MessageTemplates_Content_EnrollYourDevice" xml:space="preserve">
+    <value>Zaregistrujte své zařízení.</value>
+  </data>
+  <data name="MessageTemplates_Content_EnterCredentialsToAuthenticateDevice" xml:space="preserve">
+    <value>Prosím, zadejte Vaše přihlašovací údaje pro ověření Vašeho zařízení.</value>
+  </data>
+  <data name="MessageTemplates_Content_EnterTokenBelowInAppToResetPasscode" xml:space="preserve">
+    <value>Chcete-li obnovit heslo, zadejte při použití možnosti „Zapomenuté heslo“ v aplikaci níže uvedený token.</value>
+  </data>
+  <data name="MessageTemplates_Content_EnterTokenWhenPromptedDuringAuth" xml:space="preserve">
+    <value>Po zobrazení výzvy při ověřování katalogu aplikací zadejte níže uvedený token.</value>
+  </data>
+  <data name="MessageTemplates_Content_EnterTokenWhenPromptedWithDetails" xml:space="preserve">
+    <value>Po zobrazení výzvy při ověřování katalogu aplikací zadejte níže uvedený token. Token: {AppCatalogToken}</value>
+  </data>
+  <data name="MessageTemplates_Content_EulaUpdatedAcceptanceRequired" xml:space="preserve">
+    <value>Podmínky vašich podmínek použití aplikace Workspace ONE UEM byly aktualizovány a je nutné, abyste je přijali.</value>
+  </data>
+  <data name="MessageTemplates_Content_ExpirationDateTokenExpirationDate" xml:space="preserve">
+    <value>Datum konce platnosti: {TokenExpirationDate}</value>
+  </data>
+  <data name="MessageTemplates_Content_FileAccessibleInContentLockerOrContentLockerSync" xml:space="preserve">
+    <value>Kromě toho bude soubor dostupný ve službě Content Locker ve vašem mobilním zařízení nebo v nástroji Content Locker Sync, pokud je nainstalovaný ve vašem počítači.</value>
+  </data>
+  <data name="MessageTemplates_Content_FinalNoticeAppEulaUpdatedLogInToUemToAccept" xml:space="preserve">
+    <value>POSLEDNÍ UPOZORNĚNÍ: Podmínky použití vaší aplikace byly aktualizovány. Přihlaste se do katalogu aplikací Workspace ONE UEM a podmínky přijměte.</value>
+  </data>
+  <data name="MessageTemplates_Content_FinalNotificationIfRejectAppRemoved" xml:space="preserve">
+    <value>Toto je poslední upozornění. Pokud podmínky použití odmítnete, aplikace bude z vašeho zařízení odstraněna.</value>
+  </data>
+  <data name="MessageTemplates_Content_FirstNameLastName" xml:space="preserve">
+    <value>{FirstName} {LastName},</value>
+  </data>
+  <data name="MessageTemplates_Content_FolderAccessibleInContentLockerOrContentLockerSync" xml:space="preserve">
+    <value>Kromě toho bude složka dostupná ve službě Content Locker ve vašem mobilním zařízení nebo v nástroji Content Locker Sync, pokud je nainstalovaný ve vašem počítači.</value>
+  </data>
+  <data name="MessageTemplates_Content_FollowPromptsToSetupPasswordAt" xml:space="preserve">
+    <value>Podle výzev nastavte heslo na</value>
+  </data>
+  <data name="MessageTemplates_Content_ForFutureAccessRequireCredentials" xml:space="preserve">
+    <value>Při budoucím přístupu ke složkám můžou být potřeba níže uvedené přihlašovací údaje.</value>
+  </data>
+  <data name="MessageTemplates_Content_GoToAppRemovalLogPageToSeeDevicesCanChangeAppRemovalLimitSettings" xml:space="preserve">
+    <value>Přejděte na stránku {AppRemovalLog} a prohlédněte si seznam všech zařízení, kterých se problém týká. Nastavení mezní hodnoty počtu odebraných aplikací můžete zvýšit nebo snížit v části {AppRemovalProtection}.</value>
+  </data>
+  <data name="MessageTemplates_Content_GoToContainerEnrollmentUrlToActivateDevice" xml:space="preserve">
+    <value>Aktivujte své zařízení v části {ContainerEnrollmentUrl}</value>
+  </data>
+  <data name="MessageTemplates_Content_GoToHubEnrollmentUrlToActivateDevice" xml:space="preserve">
+    <value>Aktivujte své zařízení v části {HubEnrollmentUrl}</value>
+  </data>
+  <data name="MessageTemplates_Content_GrantedFollowingAdminRoles" xml:space="preserve">
+    <value>Byl vám udělen přístup k následujícím rolím administrátora:</value>
+  </data>
+  <data name="MessageTemplates_Content_GroupIdGroupIdentifier" xml:space="preserve">
+    <value>ID skupiny: {GroupIdentifier}</value>
+  </data>
+  <data name="MessageTemplates_Content_HasMentionedYouInCommentOnFile" xml:space="preserve">
+    <value>vás zmínil v komentáři k souboru</value>
+  </data>
+  <data name="MessageTemplates_Content_HasSharedYouFolder" xml:space="preserve">
+    <value>vám sdílel složku</value>
+  </data>
+  <data name="MessageTemplates_Content_HaveNewFolderSharesNavigateToSSPSection" xml:space="preserve">
+    <value>Máte nové sdílené složky. Chcete-li se k nim dostat, přejděte do samoobslužného portálu</value>
+  </data>
+  <data name="MessageTemplates_Content_HoldOnWipeUntilConfirm" xml:space="preserve">
+    <value>Všechny budoucí příkazy pro výmaz jsme pozastavili, dokud nevyhodnotíte důvod zvýšeného počtu výmazů a nepotvrdíte, že chcete všechny budoucí příkazy pro výmaz spustit.</value>
+  </data>
+  <data name="MessageTemplates_Content_IfPasswordExpiresForcedToReset" xml:space="preserve">
+    <value>Pokud platnost hesla účtu vyprší, budete nuceni před přihlášením heslo resetovat.</value>
+  </data>
+  <data name="MessageTemplates_Content_IfRejectDeviceUnenrolledRemovalOfData" xml:space="preserve">
+    <value>Pokud odmítnete podmínky použití, bude odebrána registrace vašeho zařízení z aplikace Workspace ONE UEM, což povede k odstranění všech dat specifických pro organizaci z vašeho zařízení.</value>
+  </data>
+  <data name="MessageTemplates_Content_IfRejectOrNotAcceptRemoveApp" xml:space="preserve">
+    <value>Pokud odmítnete podmínky použití nebo je v poskytnuté lhůtě nepřijmete, aplikace bude ze zařízení odstraněna.</value>
+  </data>
+  <data name="MessageTemplates_Content_Important" xml:space="preserve">
+    <value>Důležité:</value>
+  </data>
+  <data name="MessageTemplates_Content_LinkAboveWillExpireOn" xml:space="preserve">
+    <value>Platnost výše uvedeného odkazu vyprší dne</value>
+  </data>
+  <data name="MessageTemplates_Content_LinkExpiredContactItHelpDeskToRequestAt" xml:space="preserve">
+    <value>Pokud platnost odkazu vypršela, obraťte se na své oddělení podpory IT a požádejte o nový registrační e-mail na adrese</value>
+  </data>
+  <data name="MessageTemplates_Content_LogIntoConsoleToImplementCompliancePolicies" xml:space="preserve">
+    <value>Přihlaste se do konzoly Workspace ONE UEM Console, abyste mohli implementovat zásady konformity, které používá ke sledování nekonformních zařízení {VendorName} skupin aplikací.</value>
+  </data>
+  <data name="MessageTemplates_Content_LogIntoConsoleToResetPassword" xml:space="preserve">
+    <value>Přihlaste se do konzoly správce Workspace ONE UEM a resetujte své heslo výběrem svého jména v pravém horním rohu a poté volbou „Spravovat nastavení účtu“.</value>
+  </data>
+  <data name="MessageTemplates_Content_LogIntoSSPToReviewAcceptUpdatedTermsAt" xml:space="preserve">
+    <value>Přihlaste se do samoobslužného portálu, kde si můžete prohlédnout a přijmout aktualizované podmínky na adrese</value>
+  </data>
+  <data name="MessageTemplates_Content_LogIntoUemToAcceptChangesForApp" xml:space="preserve">
+    <value>Přihlaste se z vašeho zařízení do katalogu aplikací Workspace ONE UEM a přijměte změny pro následující aplikaci:</value>
+  </data>
+  <data name="MessageTemplates_Content_MyContent" xml:space="preserve">
+    <value>Osobní obsah</value>
+  </data>
+  <data name="MessageTemplates_Content_OnlyDownloadFromOfficialAppStore" xml:space="preserve">
+    <value>Stahujte pouze z oficiálního obchodu App Store svého zařízení</value>
+  </data>
+  <data name="MessageTemplates_Content_OrContactComplianceSupportPhone" xml:space="preserve">
+    <value>nebo kontaktní telefon: {ComplianceSupportPhone}</value>
+  </data>
+  <data name="MessageTemplates_Content_OrContactEnrollmentSupportPhone" xml:space="preserve">
+    <value>nebo kontaktní telefon: {EnrollmentSupportPhone}.</value>
+  </data>
+  <data name="MessageTemplates_Content_OurWebsite" xml:space="preserve">
+    <value>náš web</value>
+  </data>
+  <data name="MessageTemplates_Content_PasswordEnrollmentPassword" xml:space="preserve">
+    <value>Heslo: {EnrollmentPassword}</value>
+  </data>
+  <data name="MessageTemplates_Content_PasswordResetLink" xml:space="preserve">
+    <value>Odkaz pro resetování hesla:</value>
+  </data>
+  <data name="MessageTemplates_Content_PasswordResetLinkExpiration" xml:space="preserve">
+    <value>Doba platnosti odkazu pro resetování hesla:</value>
+  </data>
+  <data name="MessageTemplates_Content_PolicyNamePolicyDescription" xml:space="preserve">
+    <value>{PolicyName}: {PolicyDescription}</value>
+  </data>
+  <data name="MessageTemplates_Content_ProvisioningPackageRequestStatusChangedLogIntoConsoleToSee" xml:space="preserve">
+    <value>Stav vašeho požadavku na vytvoření zřizovacího balíčku Windows se změnil. Přihlaste se do konzoly a prohlédněte si podrobnosti v upozornění.</value>
+  </data>
+  <data name="MessageTemplates_Content_RedirectedToContainerAppOrToDownloadContainerApp" xml:space="preserve">
+    <value>Pokud je v zařízení nainstalována aplikace Workspace ONE UEM Container, budete přesměrováni na ni. Pokud ne, budete přesměrováni do oficiálního obchodu s aplikacemi svého zařízení, abyste si tuto aplikaci mohli stáhnout.</value>
+  </data>
+  <data name="MessageTemplates_Content_RedirectedToHubAppOrToDownloadHubApp" xml:space="preserve">
+    <value>Pokud je v zařízení nainstalována aplikace Workspace ONE Intelligent Hub, budete přesměrováni na ni. Pokud ne, budete přesměrováni do oficiálního obchodu s aplikacemi svého zařízení, abyste si tuto aplikaci mohli stáhnout.</value>
+  </data>
+  <data name="MessageTemplates_Content_Regards" xml:space="preserve">
+    <value>Pokud jde o,</value>
+  </data>
+  <data name="MessageTemplates_Content_RegisteringEnableDownloadAppPurchasedByOrg" xml:space="preserve">
+    <value>Registrace pro program vám umožní stahovat aplikace zakoupené vaší organizací vaším jménem.</value>
+  </data>
+  <data name="MessageTemplates_Content_RegistrationTokenRevoked" xml:space="preserve">
+    <value>Registrační token pro vaše zařízení byl odvolán.</value>
+  </data>
+  <data name="MessageTemplates_Content_RegistrationTokenRevokedCannotBeActivated" xml:space="preserve">
+    <value>Registrační token pro vaše zařízení byl odvolán a již jej nebudete moci v aplikaci Workspace ONE UEM aktivovat.</value>
+  </data>
+  <data name="MessageTemplates_Content_ResetUrlExpirationText" xml:space="preserve">
+    <value>Výše uvedený odkaz vyprší za {PasswordResetUrlExpiration} hod.</value>
+  </data>
+  <data name="MessageTemplates_Content_ResetUrlRetryText" xml:space="preserve">
+    <value>Pokud tento odkaz nefunguje, zkuste zkopírovat a vložit do prohlížeče následující odkaz.</value>
+  </data>
+  <data name="MessageTemplates_Content_ResetUrlText" xml:space="preserve">
+    <value>Resetovat heslo teď</value>
+  </data>
+  <data name="MessageTemplates_Content_RestrictionsLiftedWhenCompliant" xml:space="preserve">
+    <value>Omezení vašeho zařízení budou zrušena, až vaše zařízení začne být opět konformní.</value>
+  </data>
+  <data name="MessageTemplates_Content_SeeAppReputationAnalysisReportForApp" xml:space="preserve">
+    <value>Viz přiložená podrobná sestava analýzy reputace aplikace pro aplikaci {ApplicationName}{ApplicationVersion}.</value>
+  </data>
+  <data name="MessageTemplates_Content_SeeDeviceWipeDetailsNavigateTo" xml:space="preserve">
+    <value>Chcete-li si prohlédnout seznam všech zařízení, která byla vymazána nebo čekají na vymazání, podívejte se, co aktivovalo jednotlivé akce, a stanovte, jestli chcete jednotlivé akce odstranit nebo v nich pokračovat v části</value>
+  </data>
+  <data name="MessageTemplates_Content_SetUemPassword" xml:space="preserve">
+    <value>Nastavte své heslo Workspace ONE UEM.</value>
+  </data>
+  <data name="MessageTemplates_Content_TempAdminCreatedOrModifiedLogIntoConsole" xml:space="preserve">
+    <value>Váš dočasný účet administrátora Workspace ONE UEM byl vytvořen či upraven a nyní se můžete pomocí následujících přihlašovacích údajů přihlásit do konzoly administrátora Workspace ONE UEM:</value>
+  </data>
+  <data name="MessageTemplates_Content_ToActivateAndAccessContent" xml:space="preserve">
+    <value>Chcete-li aktivovat svůj účet a získat přístup k obsahu, který je sdílen s vámi, postupujte takto:</value>
+  </data>
+  <data name="MessageTemplates_Content_ToComplyWithPolicyAddressViolations" xml:space="preserve">
+    <value>Chcete-li tyto zásady dodržovat, musíte vyřešit následující narušení:</value>
+  </data>
+  <data name="MessageTemplates_Content_TokenAppCatalogToken" xml:space="preserve">
+    <value>Token: {AppCatalogToken}</value>
+  </data>
+  <data name="MessageTemplates_Content_TokenApplicationAuthenticationToken" xml:space="preserve">
+    <value>Token: {ApplicationAuthenticationToken}</value>
+  </data>
+  <data name="MessageTemplates_Content_ToLearnMoreVisit" xml:space="preserve">
+    <value>Další informace se nacházejí na</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAdminAccountActivationTitle" xml:space="preserve">
+    <value>Aktivace účtu administrátora Workspace ONE UEM – {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAdminPasswordExpiryNotificationTitle" xml:space="preserve">
+    <value>Oznámení o vypršení platnosti hesla administrátora Workspace ONE UEM – {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAdminPasswordResetTitle" xml:space="preserve">
+    <value>Opětovné nastavení hesla administrátora Workspace ONE UEM – {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAdminPasswordUpdatedTitle" xml:space="preserve">
+    <value>Heslo administrátora Workspace ONE UEM bylo aktualizováno – {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAdminPersonalInfoUpdatedTitle" xml:space="preserve">
+    <value>Osobní údaje administrátora Workspace ONE UEM byly aktualizovány – {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAdminStatusUpdatedTitle" xml:space="preserve">
+    <value>Stav administrátora Workspace ONE UEM byl aktualizován – {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAppCatalogTokenNotificationTitle" xml:space="preserve">
+    <value>Oznámení tokenu katalogu aplikací Workspace ONE UEM – {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAppEulaUpdateNotificationTitle" xml:space="preserve">
+    <value>Oznámení o aktualizaci podmínek použití aplikace Workspace ONE UEM – {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAppForgotPasscodeTokenNotificationTitle" xml:space="preserve">
+    <value>Oznámení o tokenu zapomenutého hesla aplikace Workspace ONE UEM – {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAppGroupCreationNotificationTitle" xml:space="preserve">
+    <value>Oznámení o vytvoření skupiny aplikace Workspace ONE UEM – {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAppLogNotificationTitle" xml:space="preserve">
+    <value>Oznámení protokolu aplikace Workspace ONE UEM – {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAppNotificationTitle" xml:space="preserve">
+    <value>Oznámení aplikace Workspace ONE UEM – {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAppPurchaseTitle" xml:space="preserve">
+    <value>Nákup aplikace Workspace ONE UEM – {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAppRemovalNotificationTitle" xml:space="preserve">
+    <value>Oznámení o odstranění aplikace Workspace ONE UEM – {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAppReputationAnalysisTitle" xml:space="preserve">
+    <value>Analýza reputace aplikace Workspace ONE UEM – {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAppWorkflowAppAssignmentNotificationTitle" xml:space="preserve">
+    <value>Pracovní postup aplikace Workspace ONE UEM – oznámení přiřazení aplikace – {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAppWorkflowAppCreatedNotificationTitle" xml:space="preserve">
+    <value>Pracovní postup aplikace Workspace ONE UEM – oznámení o vytvoření aplikace – {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAppWorkflowAppPublishNotificationTitle" xml:space="preserve">
+    <value>Pracovní postup aplikace Workspace ONE UEM – oznámení o publikování aplikace – {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAppWorkflowAppReviewNotificationTitle" xml:space="preserve">
+    <value>Pracovní postup aplikace Workspace ONE UEM – oznámení o kontrole aplikace – {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemContentNotificationTitle" xml:space="preserve">
+    <value>Oznámení obsahu Workspace ONE UEM – {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemDeviceActivationTitle" xml:space="preserve">
+    <value>Aktivace zařízení Workspace ONE UEM – {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemDeviceBlockedByEnrollmentRestrictionTitle" xml:space="preserve">
+    <value>Zařízení Workspace ONE UEM zablokováno omezením registrace – {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemDeviceComplianceViolationTitle" xml:space="preserve">
+    <value>Porušení konformity zařízení Workspace ONE UEM – {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemDeviceEnrolledTitle" xml:space="preserve">
+    <value>Zařízení Workspace ONE UEM bylo úspěšně zaregistrováno – {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemDeviceRemovalTitle" xml:space="preserve">
+    <value>Odstranění zařízení Workspace ONE UEM – {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemDeviceUnenrolledTitle" xml:space="preserve">
+    <value>Zrušení registrace zařízení Workspace ONE UEM – {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemEmailDomainRegistrationTitle" xml:space="preserve">
+    <value>Registrace e-mailové domény Workspace ONE UEM – {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemEulaUpdateTitle" xml:space="preserve">
+    <value>Aktualizace podmínek použití Workspace ONE UEM – {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemFinalNoticeAppEulaUpdateTitle" xml:space="preserve">
+    <value>POSLEDNÍ UPOZORNĚNÍ – Aktualizace podmínek použití aplikace Workspace ONE UEM – {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemLicenseBasedVppNotificationTitle" xml:space="preserve">
+    <value>Upozornění plánu VPP na bázi licence Workspace ONE UEM – {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemProvisioningPackageTitle" xml:space="preserve">
+    <value>Zajišťovací balíček Workspace ONE UEM – {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemTempAdminActivationTitle" xml:space="preserve">
+    <value>Aktivace dočasného účtu administrátora Workspace ONE UEM – {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemUserActivationTitle" xml:space="preserve">
+    <value>Aktivace uživatele Workspace ONE UEM – {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemWipeProtectionNotificationTitle" xml:space="preserve">
+    <value>Upozornění na ochranu před výmazem Workspace ONE UEM – {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UnenrollmentReason" xml:space="preserve">
+    <value>Příčina: {ServerActionSource}</value>
+  </data>
+  <data name="MessageTemplates_Content_UserCommentsForApp" xml:space="preserve">
+    <value>Komentáře uživatelů k aplikaci jsou uvedeny níže:</value>
+  </data>
+  <data name="MessageTemplates_Content_UserHasSharedFolder" xml:space="preserve">
+    <value>{ContentShareUserFirstName} {ContentShareUserLastName} ({ContentShareUserEmail}) s vámi sdílel složku „{ContentFolderName}“.</value>
+  </data>
+  <data name="MessageTemplates_Content_UserNameAdminUserName" xml:space="preserve">
+    <value>Uživatelské jméno: {AdminUserName}</value>
+  </data>
+  <data name="MessageTemplates_Content_UserNameEmailAddress" xml:space="preserve">
+    <value>Uživatelské jméno: {EmailAddress}</value>
+  </data>
+  <data name="MessageTemplates_Content_UserNameEnrollmentUserName" xml:space="preserve">
+    <value>Uživatelské jméno: {EnrollmentUserName}</value>
+  </data>
+  <data name="MessageTemplates_Content_UsingBrowserToRegisterVppProgramNavigateTo" xml:space="preserve">
+    <value>Pomocí prohlížeče vašeho zařízení se systémem iOS 7 zaregistrujte program VPP na bázi licencí společnosti Apple, přejděte na</value>
+  </data>
+  <data name="Messagetemplates_Content_WelcomeToWorkspaceOneUEM" xml:space="preserve">
+    <value>Vítá vás Workspace ONE UEM</value>
+  </data>
+  <data name="MessageTemplates_Content_WhenPromptedEnterUseNamePassword" xml:space="preserve">
+    <value>Po zobrazení výzvy zadejte uživatelské jméno a heslo pro registraci:</value>
+  </data>
+  <data name="MessageTemplates_Content_WipeLogPage" xml:space="preserve">
+    <value>Stránka výmazu protokolu</value>
+  </data>
+  <data name="MessageTemplates_Content_WorkspaceOneUem" xml:space="preserve">
+    <value>Workspace ONE UEM</value>
+  </data>
+  <data name="Messagetemplates_Content_WorkspaceOneUEMUser" xml:space="preserve">
+    <value>Uživatel Workspace ONE UEM</value>
+  </data>
+  <data name="Messagetemplates_Description_AdminAccountActivation" xml:space="preserve">
+    <value>Výchozí šablona zprávy pro situaci, kdy jiný administrátor přidá z konzoly dalšího administrátora.</value>
+  </data>
+  <data name="Messagetemplates_Description_AdminPasswordChange" xml:space="preserve">
+    <value>Výchozí šablona zprávy upozorňující administrátora, že bylo změněno jeho heslo. Tato zpráva je automatizována a z bezpečnostních důvodů se vždy odešle.</value>
+  </data>
+  <data name="Messagetemplates_Description_AdminPasswordExpiryNotification" xml:space="preserve">
+    <value>Výchozí šablona zprávy, která oznámí administrátorovi, že platnost jeho hesla brzy skončí a že musí své heslo resetovat.</value>
+  </data>
+  <data name="Messagetemplates_Description_AdminPasswordReset" xml:space="preserve">
+    <value>Výchozí šablona zprávy upozorňující administrátora, že bylo změněno jeho heslo. Tato zpráva je automatizována a z bezpečnostních důvodů se vždy odešle.</value>
+  </data>
+  <data name="Messagetemplates_Description_AdminPersonalInformationChange" xml:space="preserve">
+    <value>Výchozí šablona zprávy upozorňující administrátora, že byly změněny jeho osobní údaje. Tato zpráva je automatizována a z bezpečnostních důvodů se vždy odešle.</value>
+  </data>
+  <data name="Messagetemplates_Description_AdminPersonalInformationChangeViaApi" xml:space="preserve">
+    <value>Výchozí šablona zprávy upozorňující administrátora, že byly prostřednictvím rozhraní API změněny jeho osobní údaje. Tato zpráva je automatizována a z bezpečnostních důvodů se vždy odešle.</value>
+  </data>
+  <data name="Messagetemplates_Description_AdminStatusChange" xml:space="preserve">
+    <value>Výchozí šablona zprávy upozorňující administrátora, že byl deaktivován nebo znovu aktivován. Tato zpráva je automatizována a z bezpečnostních důvodů se vždy odešle.</value>
+  </data>
+  <data name="Messagetemplates_Description_AppCatalogTokenNotification" xml:space="preserve">
+    <value>Výchozí šablona zprávy pro odeslání informací o tokenu uživateli, pokud poprvé přistupuje ke katalogu aplikací. Zpráva bude odeslána, pokud je zařízení v organizační skupině nakonfigurováno pro autentizaci pomocí tokenu.</value>
+  </data>
+  <data name="Messagetemplates_Description_ApplicationAssignmentNotification" xml:space="preserve">
+    <value>Výchozí šablona zprávy upozorňující administrátora, že je pro přiřazení připravena nová aplikace.</value>
+  </data>
+  <data name="Messagetemplates_Description_ApplicationCreationNotification" xml:space="preserve">
+    <value>Výchozí šablona zprávy upozorňující administrátora, že byla vytvořena nová aplikace.</value>
+  </data>
+  <data name="Messagetemplates_Description_ApplicationEulaFinalNotification" xml:space="preserve">
+    <value>Výchozí šablona zprávy přinášející poslední varování uživatelům, že musí souhlasit s aktualizovanými nebo přidanými podmínkami použití aplikace, jinak bude aplikace odebrána.</value>
+  </data>
+  <data name="Messagetemplates_Description_ApplicationEulaNotification" xml:space="preserve">
+    <value>Výchozí šablona zprávy upozorňující uživatele na přidání nebo aktualizaci podmínek použití. Nabádá je, aby přidání nebo změnu přijali.</value>
+  </data>
+  <data name="Messagetemplates_Description_ApplicationLogNotification" xml:space="preserve">
+    <value>Výchozí šablona zprávy pro situaci, kdy aplikace SDK generuje protokol o selhání a aplikace smí automaticky odesílat protokoly o selhání na e-mail vývojáře.</value>
+  </data>
+  <data name="Messagetemplates_Description_ApplicationNotification" xml:space="preserve">
+    <value>Výchozí šablona zprávy upozorňující uživatele, že je v katalogu aplikací k dispozici ke stažení nová aplikace.</value>
+  </data>
+  <data name="Messagetemplates_Description_ApplicationPublishNotification" xml:space="preserve">
+    <value>Výchozí šablona zprávy upozorňující administrátora, že je k publikování připravena nová aplikace.</value>
+  </data>
+  <data name="Messagetemplates_Description_ApplicationReviewNotification" xml:space="preserve">
+    <value>Výchozí šablona zprávy upozorňující administrátora, že je ke kontrole připravena nová aplikace.</value>
+  </data>
+  <data name="Messagetemplates_Description_ApplicationScanDetailResult" xml:space="preserve">
+    <value>Výchozí šablona zprávy upozorňující vývojáře na podrobnou zprávu o analýze reputace aplikace.</value>
+  </data>
+  <data name="Messagetemplates_Description_ApplicationScanNotification" xml:space="preserve">
+    <value>Oznámení o dokončení analýzy reputace aplikace</value>
+  </data>
+  <data name="Messagetemplates_Description_AppRemoveNotification" xml:space="preserve">
+    <value>Šablona zprávy oznamující zařízením, že bylo spuštěno odebrání aplikací z velkého počtu zařízení a během krátké doby.</value>
+  </data>
+  <data name="Messagetemplates_Description_AppVersionUpdateNotification" xml:space="preserve">
+    <value>Během procesu registrace lze zprávu, která se zobrazí jako výzva při instalaci profilu MDM, upravit.</value>
+  </data>
+  <data name="Messagetemplates_Description_AuthenticationAppTokenNotification" xml:space="preserve">
+    <value>Šablona pro poslání tokenu uživatelům e-mailem kvůli obnovení v aplikaci SDK na zařízení.</value>
+  </data>
+  <data name="Messagetemplates_Description_ComplianceViolationAdministratorNotification" xml:space="preserve">
+    <value>Výchozí šablona zprávy upozorňující administrátora, že zařízení porušuje zásady konformity a uživatel musí přijmout opatření, aby je dodržoval.</value>
+  </data>
+  <data name="Messagetemplates_Description_ComplianceViolationUserNotification" xml:space="preserve">
+    <value>Výchozí šablona zprávy upozorňující uživatele, že porušuje dodržování zásad a musí přijmout opatření, aby je dodržoval.</value>
+  </data>
+  <data name="Messagetemplates_Description_DeviceActivation" xml:space="preserve">
+    <value>Výchozí šablona zprávy upozorňující uživatele, že mohou své zařízení přihlásit.</value>
+  </data>
+  <data name="Messagetemplates_Description_DeviceBlockedByRestriction" xml:space="preserve">
+    <value>Výchozí šablona zprávy upozorňující uživatele, že jejich zařízení bylo zablokováno omezením.</value>
+  </data>
+  <data name="Messagetemplates_Description_DeviceEnrolled" xml:space="preserve">
+    <value>Výchozí šablona zprávy upozorňující uživatele, že jejich zařízení bylo úspěšně zaregistrováno.</value>
+  </data>
+  <data name="Messagetemplates_Description_DeviceEnrollmentProgramCustomPrompt" xml:space="preserve">
+    <value>Dle potřeb upravte text zobrazený v pod-okně nastavení autentizace Asistenta instalace, a to těm zařízením, která mají přiřazen profil programu registrace zařízení.</value>
+  </data>
+  <data name="Messagetemplates_Description_DeviceLockScreenMessageiOS7" xml:space="preserve">
+    <value>Šablona výchozí zprávy, která se zobrazí po odeslání příkazu zobrazit zprávu o zamknuté obrazovce do ztraceného zařízení.</value>
+  </data>
+  <data name="Messagetemplates_Description_DeviceOutofDateCompliance" xml:space="preserve">
+    <value>Výchozí šablona zprávy, která požaduje, aby uživatel spustil aplikaci Workspace ONE Intelligent Hub umožňující přihlášení zařízení a spuštění částečného skenování.</value>
+  </data>
+  <data name="Messagetemplates_Description_DeviceUnenrolled" xml:space="preserve">
+    <value>Výchozí šablona zprávy upozorňující uživatele, že registrace jejich zařízení byla zrušena.</value>
+  </data>
+  <data name="Messagetemplates_Description_DeviceWipeEmailNotification" xml:space="preserve">
+    <value>Výchozí šablona zprávy upozorňující administrátora, že u velkého počtu zařízení došlo v krátkém časovém období k firemnímu výmazu nebo výmazu zařízení.</value>
+  </data>
+  <data name="Messagetemplates_Description_EmailDomainRegistration" xml:space="preserve">
+    <value>Výchozí šablona zprávy sloužící k ověření e-mailové domény, která se bude používat při zjednodušeném procesu registrace.</value>
+  </data>
+  <data name="Messagetemplates_Description_EulaNotification" xml:space="preserve">
+    <value>Výchozí šablona zprávy upozorňující uživatele, že byly přidány nebo aktualizovány podmínky použití, a dává jim pokyn, aby přidání nebo změnu přijali.</value>
+  </data>
+  <data name="Messagetemplates_Description_ExternalUserActivation" xml:space="preserve">
+    <value>Výchozí šablona zprávy upozorňující externí uživatele na aktivaci účtu, pokud je složka sdílena.</value>
+  </data>
+  <data name="Messagetemplates_Description_LicenseBasedPurchasedApplicationInvitation" xml:space="preserve">
+    <value>Výchozí šablona zprávy upozorňující uživatele na registraci licence VPP u společnosti Apple.</value>
+  </data>
+  <data name="Messagetemplates_Description_MamEnrollmentUserActivation" xml:space="preserve">
+    <value>Výchozí šablona zprávy pro situaci, kdy administrátor přidá nového uživatele z konzoly do organizační skupiny nakonfigurované pro registraci MAM.</value>
+  </data>
+  <data name="Messagetemplates_Description_MamNewUserActivation" xml:space="preserve">
+    <value>Výchozí šablona zprávy pro situaci, kdy se uživatel zaregistruje do organizační skupiny nakonfigurované pro registraci MAM.</value>
+  </data>
+  <data name="Messagetemplates_Description_MentionedCommentNotification" xml:space="preserve">
+    <value>Zmíněno v komentáři</value>
+  </data>
+  <data name="Messagetemplates_Description_NewlyAddedUserToUserGroupNotification" xml:space="preserve">
+    <value>Výchozí šablona zprávy upozorňující uživatele nově přidané do skupiny uživatelů na dříve sdílenou složku.</value>
+  </data>
+  <data name="Messagetemplates_Description_NewSharedFolderNotification" xml:space="preserve">
+    <value>Oznámení sdílené složky</value>
+  </data>
+  <data name="Messagetemplates_Description_ProvisioningPackageNotification" xml:space="preserve">
+    <value>Výchozí šablona zprávy upozorňující administrátora, že byl vytvořen balíček zajišťování a je možné ho stáhnout.</value>
+  </data>
+  <data name="Messagetemplates_Description_PurchasedApplication" xml:space="preserve">
+    <value>Výchozí šablona zprávy upozorňující uživatele, že jeho jménem byla zakoupena aplikace a je k dispozici ke stažení.</value>
+  </data>
+  <data name="Messagetemplates_Description_TempAdminActivation" xml:space="preserve">
+    <value>Výchozí šablona zprávy pro situaci, kdy jiný administrátor přidá z konzoly dočasného administrátora.</value>
+  </data>
+  <data name="Messagetemplates_Description_UnRegisterDevice" xml:space="preserve">
+    <value>Výchozí šablona zprávy upozorňující uživatele, že registrace jeho zařízení byla zrušena a budou odstraněna data týkající se organizace.</value>
+  </data>
+  <data name="Messagetemplates_Description_UserActivation" xml:space="preserve">
+    <value>Výchozí šablona zprávy upozorňující uživatele, že byl přidán jako uživatel EMM a může zaregistrovat své zařízení.</value>
+  </data>
+  <data name="Messagetemplates_Description_VendorApplicationGroupCreationNotification" xml:space="preserve">
+    <value>Výchozí šablona zprávy upozorňující uživatele, že byla vytvořena aplikační skupina dodavatele a je k dispozici pro zavedení zásad konformity.</value>
+  </data>
+  <data name="Messagetemplates_Description_WorkSpaceDeviceActivation" xml:space="preserve">
+    <value>Výchozí šablona zprávy upozorňující uživatele, že mohou své zařízení přihlásit.</value>
+  </data>
+  <data name="Messagetemplates_Name_AdminAccountActivation" xml:space="preserve">
+    <value>Aktivace administrátora</value>
+  </data>
+  <data name="Messagetemplates_Name_AdminPasswordChange" xml:space="preserve">
+    <value>Změna hesla administrátora</value>
+  </data>
+  <data name="Messagetemplates_Name_AdminPasswordExpiryNotification" xml:space="preserve">
+    <value>Oznámení o vypršení hesla administrátora</value>
+  </data>
+  <data name="Messagetemplates_Name_AdminPasswordReset" xml:space="preserve">
+    <value>Změna hesla administrátora</value>
+  </data>
+  <data name="Messagetemplates_Name_AdminPersonalInformationChange" xml:space="preserve">
+    <value>Změna osobních informací administrátora</value>
+  </data>
+  <data name="Messagetemplates_Name_AdminPersonalInformationChangeViaApi" xml:space="preserve">
+    <value>Změna osobních informací administrátora prostřednictvím rozhraní API</value>
+  </data>
+  <data name="Messagetemplates_Name_AdminStatusChange" xml:space="preserve">
+    <value>Změna stavu administrátora</value>
+  </data>
+  <data name="Messagetemplates_Name_AppCatalogTokenNotification" xml:space="preserve">
+    <value>Potvrzení tokenu App Catalogu</value>
+  </data>
+  <data name="Messagetemplates_Name_ApplicationAssignmentNotification" xml:space="preserve">
+    <value>Pracovní postup aplikace – oznámení o přiřazení</value>
+  </data>
+  <data name="Messagetemplates_Name_ApplicationCreationNotification" xml:space="preserve">
+    <value>Pracovní postup aplikace – oznámení o vytvoření</value>
+  </data>
+  <data name="Messagetemplates_Name_ApplicationEulaFinalNotification" xml:space="preserve">
+    <value>Podmínky použití aplikace – poslední upozornění</value>
+  </data>
+  <data name="Messagetemplates_Name_ApplicationEulaNotification" xml:space="preserve">
+    <value>Podmínky použití aplikace – oznámení o aktualizaci</value>
+  </data>
+  <data name="Messagetemplates_Name_ApplicationLogNotification" xml:space="preserve">
+    <value>Oznámení protokolu aplikace pro SDK</value>
+  </data>
+  <data name="Messagetemplates_Name_ApplicationNotification" xml:space="preserve">
+    <value>Oznámení aplikace</value>
+  </data>
+  <data name="Messagetemplates_Name_ApplicationPublishNotification" xml:space="preserve">
+    <value>Pracovní postup aplikace – oznámení o publikování</value>
+  </data>
+  <data name="Messagetemplates_Name_ApplicationReviewNotification" xml:space="preserve">
+    <value>Pracovní postup aplikace – oznámení o kontrole</value>
+  </data>
+  <data name="Messagetemplates_Name_ApplicationScanDetailResult" xml:space="preserve">
+    <value>Podrobnosti analýzy reputace aplikace</value>
+  </data>
+  <data name="Messagetemplates_Name_ApplicationScanNotification" xml:space="preserve">
+    <value>Oznámení o dokončení analýzy reputace aplikace</value>
+  </data>
+  <data name="Messagetemplates_Name_AppRemoveNotification" xml:space="preserve">
+    <value>Oznámení o dosažení limitu pro odebrání aplikací</value>
+  </data>
+  <data name="Messagetemplates_Name_AppVersionUpdateNotification" xml:space="preserve">
+    <value>Instalace MDM profilu (pouze iOS)</value>
+  </data>
+  <data name="Messagetemplates_Name_AuthenticationAppTokenNotification" xml:space="preserve">
+    <value>Oznámení tokenu zapomenutého hesla aplikace</value>
+  </data>
+  <data name="Messagetemplates_Name_ComplianceViolationAdministratorNotification" xml:space="preserve">
+    <value>Oznámení administrátora o porušení konformity</value>
+  </data>
+  <data name="Messagetemplates_Name_ComplianceViolationUserNotification" xml:space="preserve">
+    <value>Oznámení uživatele o porušení konformity</value>
+  </data>
+  <data name="Messagetemplates_Name_DeviceActivation" xml:space="preserve">
+    <value>Aktivace zařízení</value>
+  </data>
+  <data name="Messagetemplates_Name_DeviceBlockedByRestriction" xml:space="preserve">
+    <value>Zařízení je blokováno registračním omezením.</value>
+  </data>
+  <data name="Messagetemplates_Name_DeviceEnrolled" xml:space="preserve">
+    <value>Zařízení bylo úspěšně zaregistrováno</value>
+  </data>
+  <data name="Messagetemplates_Name_DeviceEnrollmentProgramCustomPrompt" xml:space="preserve">
+    <value>Program registrace zařízení - vlastní výzva</value>
+  </data>
+  <data name="Messagetemplates_Name_DeviceLockScreenMessageiOS7" xml:space="preserve">
+    <value>Zpráva o uzamknutí obrazovky ztraceného zařízení (jen iOS 7)</value>
+  </data>
+  <data name="Messagetemplates_Name_DeviceOutofDateCompliance" xml:space="preserve">
+    <value>Vyžádat kontrolu konformity</value>
+  </data>
+  <data name="Messagetemplates_Name_DeviceUnenrolled" xml:space="preserve">
+    <value>Zařízení bylo odregistrováno.</value>
+  </data>
+  <data name="Messagetemplates_Name_DeviceWipeEmailNotification" xml:space="preserve">
+    <value>Oznámení ochrany před výmazem</value>
+  </data>
+  <data name="Messagetemplates_Name_EmailDomainRegistration" xml:space="preserve">
+    <value>Registrace e-mailové domény</value>
+  </data>
+  <data name="Messagetemplates_Name_EulaNotification" xml:space="preserve">
+    <value>Oznámení podmínek použití</value>
+  </data>
+  <data name="Messagetemplates_Name_ExternalUserActivation" xml:space="preserve">
+    <value>Aktivace externího uživatele</value>
+  </data>
+  <data name="Messagetemplates_Name_LicenseBasedPurchasedApplicationInvitation" xml:space="preserve">
+    <value>Oznámení VPP založené na licenci</value>
+  </data>
+  <data name="Messagetemplates_Name_MamEnrollmentUserActivation" xml:space="preserve">
+    <value>MAM aktivace uživatelské registrace</value>
+  </data>
+  <data name="Messagetemplates_Name_MamNewUserActivation" xml:space="preserve">
+    <value>MAM aktivace nového uživatele</value>
+  </data>
+  <data name="Messagetemplates_Name_MentionedCommentNotification" xml:space="preserve">
+    <value>Zmínka v komentáři</value>
+  </data>
+  <data name="Messagetemplates_Name_NewlyAddedUserToUserGroupNotification" xml:space="preserve">
+    <value>Sdílet oznámení pro nově přidaného uživatele v uživatelské skupině</value>
+  </data>
+  <data name="Messagetemplates_Name_NewSharedFolderNotification" xml:space="preserve">
+    <value>Nová sdílená složka</value>
+  </data>
+  <data name="Messagetemplates_Name_ProvisioningPackageNotification" xml:space="preserve">
+    <value>Oznámení o stavu zřizovacího balíčku</value>
+  </data>
+  <data name="Messagetemplates_Name_PurchasedApplication" xml:space="preserve">
+    <value>Zakoupení aplikace</value>
+  </data>
+  <data name="Messagetemplates_Name_TempAdminActivation" xml:space="preserve">
+    <value>Dočasná aktivace administrátora</value>
+  </data>
+  <data name="Messagetemplates_Name_UnRegisterDevice" xml:space="preserve">
+    <value>Zrušit registraci zařízení</value>
+  </data>
+  <data name="Messagetemplates_Name_UserActivation" xml:space="preserve">
+    <value>Aktivace uživatele</value>
+  </data>
+  <data name="Messagetemplates_Name_VendorApplicationGroupCreationNotification" xml:space="preserve">
+    <value>Upozornění na skupinové vytváření aplikací dodavatele</value>
+  </data>
+  <data name="Messagetemplates_Name_WorkSpaceDeviceActivation" xml:space="preserve">
+    <value>Aktivace zařízení za pomoci kontejneru</value>
+  </data>
+  <data name="Messagetemplates_Subject_AdminAccountActivation" xml:space="preserve">
+    <value>Aktivace účtu administrátora aplikace Workspace ONE UEM</value>
+  </data>
+  <data name="Messagetemplates_Subject_AdminPasswordChange" xml:space="preserve">
+    <value>Heslo administrátora aplikace Workspace ONE UEM bylo aktualizováno</value>
+  </data>
+  <data name="Messagetemplates_Subject_AdminPasswordExpiryNotification" xml:space="preserve">
+    <value>Oznámení o vypršení platnosti hesla administrátora</value>
+  </data>
+  <data name="Messagetemplates_Subject_AdminPasswordReset" xml:space="preserve">
+    <value>Opětovné nastavení hesla administrátora Workspace ONE UEM</value>
+  </data>
+  <data name="Messagetemplates_Subject_AdminPersonalInformationChange" xml:space="preserve">
+    <value>Osobní údaje administrátora aplikace Workspace ONE UEM byly aktualizovány</value>
+  </data>
+  <data name="Messagetemplates_Subject_AdminPersonalInformationChangeViaApi" xml:space="preserve">
+    <value>Osobní údaje administrátora aplikace Workspace ONE UEM byly aktualizovány</value>
+  </data>
+  <data name="Messagetemplates_Subject_AdminStatusChange" xml:space="preserve">
+    <value>Stav administrátora aplikace Workspace ONE UEM byl aktualizován</value>
+  </data>
+  <data name="Messagetemplates_Subject_AppCatalogTokenNotification" xml:space="preserve">
+    <value>Token katalogu aplikací Workspace ONE UEM</value>
+  </data>
+  <data name="Messagetemplates_Subject_ApplicationAssignmentNotification" xml:space="preserve">
+    <value>Workspace ONE UEM – aplikace je k dispozici pro přiřazení</value>
+  </data>
+  <data name="Messagetemplates_Subject_ApplicationCreationNotification" xml:space="preserve">
+    <value>Workspace ONE UEM – nová aplikace vytvořena</value>
+  </data>
+  <data name="Messagetemplates_Subject_ApplicationEulaFinalNotification" xml:space="preserve">
+    <value>POSLEDNÍ UPOZORNĚNÍ – Aktualizace podmínek použití aplikace Workspace ONE UEM</value>
+  </data>
+  <data name="Messagetemplates_Subject_ApplicationEulaNotification" xml:space="preserve">
+    <value>Aktualizace podmínek použití aplikace</value>
+  </data>
+  <data name="Messagetemplates_Subject_ApplicationLogNotification" xml:space="preserve">
+    <value>Protokol chyb aplikace Workspace ONE UEM</value>
+  </data>
+  <data name="Messagetemplates_Subject_ApplicationNotification" xml:space="preserve">
+    <value>Workspace ONE UEM – aplikace je k dispozici ke stažení</value>
+  </data>
+  <data name="Messagetemplates_Subject_ApplicationPublishNotification" xml:space="preserve">
+    <value>Workspace ONE UEM – aplikace je k dispozici pro publikování</value>
+  </data>
+  <data name="Messagetemplates_Subject_ApplicationReviewNotification" xml:space="preserve">
+    <value>Workspace ONE UEM – oznámení o kontrole aplikace</value>
+  </data>
+  <data name="Messagetemplates_Subject_ApplicationScanDetailResult" xml:space="preserve">
+    <value>Workspace ONE UEM – zpráva o analýze reputace aplikace</value>
+  </data>
+  <data name="Messagetemplates_Subject_ApplicationScanNotification" xml:space="preserve">
+    <value>Analýza reputace aplikace dokončena</value>
+  </data>
+  <data name="Messagetemplates_Subject_AppRemoveNotification" xml:space="preserve">
+    <value>Upozornění: byl překročen limit odstranění aplikací</value>
+  </data>
+  <data name="Messagetemplates_Subject_AuthenticationAppTokenNotification" xml:space="preserve">
+    <value>Token zapomenutého hesla</value>
+  </data>
+  <data name="Messagetemplates_Subject_ComplianceViolationAdministratorNotification" xml:space="preserve">
+    <value>Vyžadován zásah: porušení podmínek konformity zařízení Workspace ONE UEM</value>
+  </data>
+  <data name="Messagetemplates_Subject_ComplianceViolationUserNotification" xml:space="preserve">
+    <value>Vyžadován zásah: porušení podmínek konformity zařízení Workspace ONE UEM</value>
+  </data>
+  <data name="Messagetemplates_Subject_DeviceActivation" xml:space="preserve">
+    <value>Aktivace zařízení Workspace ONE UEM</value>
+  </data>
+  <data name="Messagetemplates_Subject_DeviceBlockedByRestriction" xml:space="preserve">
+    <value>Workspace ONE UEM – zařízení zablokováno omezením registrace</value>
+  </data>
+  <data name="Messagetemplates_Subject_DeviceEnrolled" xml:space="preserve">
+    <value>Workspace ONE UEM – zařízení úspěšně zaregistrováno</value>
+  </data>
+  <data name="Messagetemplates_Subject_DeviceEnrollmentProgramCustomPrompt" xml:space="preserve">
+    <value>Program registrace zařízení - vlastní výzva</value>
+  </data>
+  <data name="Messagetemplates_Subject_DeviceLockScreenMessageiOS7" xml:space="preserve">
+    <value>Zpráva uzamknutí zařízení – iOS 7</value>
+  </data>
+  <data name="Messagetemplates_Subject_DeviceOutofDateCompliance" xml:space="preserve">
+    <value>Workspace ONE UEM – Požadavek na kontrolu konformity</value>
+  </data>
+  <data name="Messagetemplates_Subject_DeviceUnenrolled" xml:space="preserve">
+    <value>Workspace ONE UEM – registrace zařízení zrušena</value>
+  </data>
+  <data name="Messagetemplates_Subject_DeviceWipeEmailNotification" xml:space="preserve">
+    <value>Překročen limit výmazu aplikace Workspace ONE UEM</value>
+  </data>
+  <data name="Messagetemplates_Subject_EmailDomainRegistration" xml:space="preserve">
+    <value>Registrace e-mailové domény aplikace Workspace ONE UEM</value>
+  </data>
+  <data name="Messagetemplates_Subject_EulaNotification" xml:space="preserve">
+    <value>Aktualizace podmínek použití aplikace Workspace ONE UEM</value>
+  </data>
+  <data name="Messagetemplates_Subject_ExternalUserActivation" xml:space="preserve">
+    <value>Uživatel {ContentShareUserFirstName} {ContentShareUserLastName} s vámi sdílí složku ve Workspace ONE UEM</value>
+  </data>
+  <data name="Messagetemplates_Subject_LicenseBasedPurchasedApplicationInvitation" xml:space="preserve">
+    <value>Workspace ONE UEM – odkaz na registraci u společnosti Apple pro licencované VPP</value>
+  </data>
+  <data name="Messagetemplates_Subject_MamEnrollmentUserActivation" xml:space="preserve">
+    <value>Aktivace uživatele Workspace ONE UEM</value>
+  </data>
+  <data name="Messagetemplates_Subject_MamNewUserActivation" xml:space="preserve">
+    <value>Aktivace uživatele Workspace ONE UEM</value>
+  </data>
+  <data name="Messagetemplates_Subject_MentionedCommentNotification" xml:space="preserve">
+    <value>Uživatel {Commenter} vás zmínil v komentáři k souboru "{ContentName}"</value>
+  </data>
+  <data name="Messagetemplates_Subject_NewlyAddedUserToUserGroupNotification" xml:space="preserve">
+    <value>Jsou s vámi sdíleny nové složky obsahu</value>
+  </data>
+  <data name="Messagetemplates_Subject_NewSharedFolderNotification" xml:space="preserve">
+    <value>Uživatel {ContentShareUserFirstName} s vámi sdílel složku {ContentFolderName}"</value>
+  </data>
+  <data name="Messagetemplates_Subject_ProvisioningPackageNotification" xml:space="preserve">
+    <value>Vytvořen zajišťovací balíček Workspace ONE UEM</value>
+  </data>
+  <data name="Messagetemplates_Subject_PurchasedApplication" xml:space="preserve">
+    <value>Nákup aplikace Workspace ONE UEM</value>
+  </data>
+  <data name="Messagetemplates_Subject_TempAdminActivation" xml:space="preserve">
+    <value>Aktivace dočasného účtu administrátora aplikace Workspace ONE UEM</value>
+  </data>
+  <data name="Messagetemplates_Subject_UnRegisterDevice" xml:space="preserve">
+    <value>Odstranění zařízení aplikace Workspace ONE UEM</value>
+  </data>
+  <data name="Messagetemplates_Subject_UserActivation" xml:space="preserve">
+    <value>Aktivace uživatele Workspace ONE UEM</value>
+  </data>
+  <data name="Messagetemplates_Subject_VendorApplicationGroupCreationNotification" xml:space="preserve">
+    <value>Workspace ONE UEM – vytvořena nová skupina aplikací</value>
+  </data>
+  <data name="Messagetemplates_Subject_WorkSpaceDeviceActivation" xml:space="preserve">
+    <value>Aktivace zařízení Workspace ONE UEM</value>
+  </data>
+</root>

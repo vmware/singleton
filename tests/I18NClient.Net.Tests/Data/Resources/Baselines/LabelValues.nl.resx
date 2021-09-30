@@ -1,0 +1,486 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AddedPolices" xml:space="preserve">
+    <value>Beleid toegevoegd</value>
+  </data>
+  <data name="AssignBaseline" xml:space="preserve">
+    <value>Uitgangswaarde toewijzen</value>
+  </data>
+  <data name="AssignBaselineDescription" xml:space="preserve">
+    <value>Selecteer de Smart group(s) om de uitgangswaarde toe te wijzen.</value>
+  </data>
+  <data name="AssignBaselineDescription2" xml:space="preserve">
+    <value>Selecteer de smart group(s) om de uitgangswaarde toe te wijzen. Selecteer Uitsluitingen om specifieke groepen uit te sluiten. Als u een uitsluiting toevoegt aan een gepubliceerde uitgangswaarde, wordt de uitgangswaarde verwijderd uit de uitgesloten apparaten.</value>
+  </data>
+  <data name="AssignBaselineLocationGroupNotFound" xml:space="preserve">
+    <value>Kan de uitgangswaarde niet toewijzen omdat de organisatiegroep niet kan worden gevonden.</value>
+  </data>
+  <data name="AssignBaselineNotFound" xml:space="preserve">
+    <value>Kan de uitgangswaarde niet toewijzen omdat de uitgangswaarde niet kan worden gevonden.</value>
+  </data>
+  <data name="AssignedDevicesArg" xml:space="preserve">
+    <value>Toegewezen: {0} toestellen</value>
+  </data>
+  <data name="Assignments" xml:space="preserve">
+    <value>Toewijzingen</value>
+  </data>
+  <data name="Baseline" xml:space="preserve">
+    <value>Uitgangswaarde</value>
+  </data>
+  <data name="BaselineAssigned" xml:space="preserve">
+    <value>Uitgangswaarde toegewezen</value>
+  </data>
+  <data name="BaselineAssignmentFailed" xml:space="preserve">
+    <value>Kan de uitgangswaarde niet toewijzen. Probeer het opnieuw.</value>
+  </data>
+  <data name="BaselineAssignmentSuccessful" xml:space="preserve">
+    <value>De uitgangswaarde is gepubliceerd naar de bijgewerkte toewijzing.</value>
+  </data>
+  <data name="BaselineBlobFailed" xml:space="preserve">
+    <value>Kan geen uitgangswaarde maken, omdat het pakket niet kan worden gecreëerd.</value>
+  </data>
+  <data name="BaselineCombinedBlobFailed" xml:space="preserve">
+    <value>Kan geen uitgangswaarde maken, omdat het pakket met aanpassingen niet kan worden gecreëerd.</value>
+  </data>
+  <data name="BaselineContainsExe" xml:space="preserve">
+    <value>Uw aangepaste uitgangswaarde bevat uitvoerbare bestanden. Verwijder deze en probeer het opnieuw.</value>
+  </data>
+  <data name="BaselineCopyFailed" xml:space="preserve">
+    <value>Kan de geselecteerde uitgangswaarde niet kopiëren.</value>
+  </data>
+  <data name="BaselineCopySuccessful" xml:space="preserve">
+    <value>De geselecteerde uitgangswaarde is gekopieerd.</value>
+  </data>
+  <data name="BaselineCreated" xml:space="preserve">
+    <value>Uitgangswaarde gemaakt</value>
+  </data>
+  <data name="BaselineCreationFailed" xml:space="preserve">
+    <value>Kan geen uitgangswaarde maken.</value>
+  </data>
+  <data name="BaselineCreationSuccessful" xml:space="preserve">
+    <value>De uitgangswaarde is opgeslagen.</value>
+  </data>
+  <data name="BaselineCustomizationFailed" xml:space="preserve">
+    <value>Kan geen uitgangswaarde maken, omdat aanpassingen niet kunnen worden toegepast.</value>
+  </data>
+  <data name="BaselineDeleted" xml:space="preserve">
+    <value>Uitgangswaarde verwijderd</value>
+  </data>
+  <data name="BaselineDeleteFailed" xml:space="preserve">
+    <value>Kan uitgangswaarde niet verwijderen. Probeer het opnieuw.</value>
+  </data>
+  <data name="BaselineDeleteSuccessful" xml:space="preserve">
+    <value>Uitgangswaarde is verwijderd.</value>
+  </data>
+  <data name="BaselineDetails" xml:space="preserve">
+    <value>Naam en versie van uitgangswaarde</value>
+  </data>
+  <data name="BaselineErrorCode" xml:space="preserve">
+    <value>Foutcode toestel</value>
+  </data>
+  <data name="BaselineErrorMessage" xml:space="preserve">
+    <value>Foutmelding</value>
+  </data>
+  <data name="BaselineFileCorrupt" xml:space="preserve">
+    <value>Uw aangepaste uitgangswaarde is geen geldig zip-bestand.</value>
+  </data>
+  <data name="BaselineFileEmpty" xml:space="preserve">
+    <value>Uw aangepaste uitgangswaarde lijkt leeg te zijn. Probeer het opnieuw met een geldig bestand.</value>
+  </data>
+  <data name="BaselineFileMissingPolicies" xml:space="preserve">
+    <value>Bestand geselecteerd voor aangepaste uitgangswaarde komt niet overeen met aanbevolen specificaties. Raadpleeg de documentatie om te wijzigen.</value>
+  </data>
+  <data name="BaselineFileSizeError" xml:space="preserve">
+    <value>Uw aangepaste uitgangswaarde overschrijdt de maximale grootte van 5 MB.</value>
+  </data>
+  <data name="BaselineGetPolicyTreeFailed" xml:space="preserve">
+    <value>Kan het beleid voor aanpassing niet laden. Probeer het later opnieuw.</value>
+  </data>
+  <data name="BaselineInvalidRequest" xml:space="preserve">
+    <value>Zorg ervoor dat alle verplichte velden zijn ingevuld.</value>
+  </data>
+  <data name="BaselineMissingPolicies" xml:space="preserve">
+    <value>Kan geen uitgangswaarde maken, omdat een of meer beleidsregels verwijderd of niet beschikbaar zijn</value>
+  </data>
+  <data name="BaselineModified" xml:space="preserve">
+    <value>Uitgangswaarde aangepast</value>
+  </data>
+  <data name="BaselineName" xml:space="preserve">
+    <value>Naam uitgangswaarde</value>
+  </data>
+  <data name="BaselinePendingReboot" xml:space="preserve">
+    <value>Opnieuw opstarten in behandeling</value>
+  </data>
+  <data name="BaselinePolicyFieldError" xml:space="preserve">
+    <value>Kan geen uitgangswaarde maken, omdat een of meer beleidsregels ongeldige waarden hebben</value>
+  </data>
+  <data name="BaselinePolicyGenerationFailed" xml:space="preserve">
+    <value>Kan geen uitgangswaarde maken, omdat een of meer beleidsregels niet kunnen worden gegenereerd</value>
+  </data>
+  <data name="Baselines" xml:space="preserve">
+    <value>Uitgangswaarden</value>
+  </data>
+  <data name="BaselinesBlobID" xml:space="preserve">
+    <value>Uitgangswaarde-blob-ID</value>
+  </data>
+  <data name="BaselinesCount" xml:space="preserve">
+    <value>Uitgangswaarde-teller</value>
+  </data>
+  <data name="BaselineServiceUnavailable" xml:space="preserve">
+    <value>Kan geen verbinding maken met de service van de uitgangswaarde "https://www.vmwarebaselines.com". Controleer de connectiviteit en logboeken voor meer informatie.</value>
+  </data>
+  <data name="BaselinesMenuDescription" xml:space="preserve">
+    <value>Uitgangswaarden weergeven</value>
+  </data>
+  <data name="BaselineStatusCallFailed" xml:space="preserve">
+    <value>Kan de status van de uitgangswaarde niet ophalen. Probeer het later opnieuw</value>
+  </data>
+  <data name="BaselineTooltipCis" xml:space="preserve">
+    <value>Gebruik de aanbevolen instellingen voor de CIS-benchmark voor de geselecteerde versie en het geselecteerde niveau.</value>
+  </data>
+  <data name="BaselineTooltipCustom" xml:space="preserve">
+    <value>Upload een back-up van het aangepaste groepsbeleidsobject (GPO) om op apparaten te kunnen toepassen. De back-up van het GPO moet een zip-bestand zijn van minder dan 5 MB.</value>
+  </data>
+  <data name="BaselineTooltipWindows" xml:space="preserve">
+    <value>De Security Baseline-onderdelen ('SBC') van de Microsoft Security Toolkit worden door Microsoft ontworpen en worden alleen beschikbaar gesteld voor het beheer van Windows 10-apparaten. De SBC wordt geleverd 'as is' en zonder enige garantie van VMware of Microsoft. Meer informatie over het SBC is beschikbaar op {0}.</value>
+  </data>
+  <data name="BaselineUUID" xml:space="preserve">
+    <value>Uitgangswaarde-UUID</value>
+  </data>
+  <data name="BlankBaseline" xml:space="preserve">
+    <value>Uw eigen maken</value>
+  </data>
+  <data name="BlankBaselineDescription" xml:space="preserve">
+    <value>Maak uw eigen uitgangswaarde door te kiezen uit onze catalogus met beleidsregels.</value>
+  </data>
+  <data name="ChooseTemplate" xml:space="preserve">
+    <value>Kies uitgangswaarde</value>
+  </data>
+  <data name="ComplianceDataMissing" xml:space="preserve">
+    <value>Conformiteitsgegevens zijn nog niet beschikbaar voor deze uitgangswaarde. Publiceer de uitgangswaarde opnieuw naar de toegewezen toestellen om een steekproefrapportage voor naleving van netwerkbeleid te activeren.</value>
+  </data>
+  <data name="ConfirmCancelBaseline" xml:space="preserve">
+    <value>Uw wijzigingen in deze uitgangswaarde zijn niet opgeslagen. Wilt u de wijzigingen annuleren?</value>
+  </data>
+  <data name="ConfirmCloudDescription" xml:space="preserve">
+    <value>Door Workspace ONE-uitgangswaarden te gebruiken, hebt u toegang tot gegevens die extern zijn opgeslagen door VMware. Klik op Annuleren als u niet wilt doorgaan.</value>
+  </data>
+  <data name="ConfirmCloudTitle" xml:space="preserve">
+    <value>Toegang tot externe gegevens</value>
+  </data>
+  <data name="ConfirmDeleteBaseline" xml:space="preserve">
+    <value>Als deze uitgangswaarde is toegewezen, wordt deze verwijderd van alle apparaten. Wilt u doorgaan?</value>
+  </data>
+  <data name="CopyBaseline" xml:space="preserve">
+      <value>Uitgangswaarde kopiëren</value>
+  </data>
+  <data name="CustomBaseline" xml:space="preserve">
+    <value>Aangepaste uitgangswaarde</value>
+  </data>
+  <data name="CustomBaselineCompliance" xml:space="preserve">
+    <value>Conformiteitsgegevens voor aangepaste uitgangswaarden worden geëvalueerd op basis van het beleid dat is toegevoegd aan de uitgangswaarde, niet op het ingepakte beleid.</value>
+  </data>
+  <data name="CustomBaselineComplianceDataMissing" xml:space="preserve">
+    <value>Conformiteitsgegevens zijn niet beschikbaar of onvolledig voor aangepaste uitgangswaarden omdat het gezipte beleid niet kan worden gecontroleerd.</value>
+  </data>
+  <data name="CustomBaselineError" xml:space="preserve">
+    <value>Selecteer een bestand voor de aangepaste uitgangswaarde</value>
+  </data>
+  <data name="CustomBaselineHelpLink" xml:space="preserve">
+    <value>Bekijk GPO-uploadinstructies</value>
+  </data>
+  <data name="CustomizeSelectPolicy" xml:space="preserve">
+    <value>Selecteer een beleid om de instellingen ervan weer te geven.</value>
+  </data>
+  <data name="CustomizeStepDescription" xml:space="preserve">
+    <value>U kunt het beleid van {0} controleren of aanpassen, zodat het voldoet aan uw behoeften.</value>
+  </data>
+  <data name="DefinitionStepDescription" xml:space="preserve">
+    <value>Geef de uitgangswaarde een naam en beschrijving.</value>
+  </data>
+  <data name="DeleteBaseline" xml:space="preserve">
+    <value>Uitgangswaarde verwijderen</value>
+  </data>
+  <data name="DeviceBaselineLocationGroupNotFound" xml:space="preserve">
+    <value>Kan geen toestellen ophalen voor de uitgangswaarde omdat de organisatiegroep niet kan worden gevonden.</value>
+  </data>
+  <data name="DeviceBaselineNotFound" xml:space="preserve">
+    <value>Kan geen toestellen ophalen voor de uitgangswaarde omdat de uitgangswaarde niet kan worden gevonden.</value>
+  </data>
+  <data name="DiscardAndExit" xml:space="preserve">
+    <value>Annuleren en afsluiten</value>
+  </data>
+  <data name="EditBaseline" xml:space="preserve">
+    <value>Uitgangswaarde bewerken</value>
+  </data>
+  <data name="EditRequestError" xml:space="preserve">
+    <value>De geselecteerde uitgangswaarde-versie is niet meer beschikbaar. Maak een nieuwe.</value>
+  </data>
+  <data name="EmptyBaselineList" xml:space="preserve">
+    <value>Geen uitgangswaarden gevonden</value>
+  </data>
+  <data name="EmptyDeviceList" xml:space="preserve">
+    <value>Geen toestellen gevonden</value>
+  </data>
+  <data name="EmptyListInput" xml:space="preserve">
+    <value>Vereist een of meer vermeldingen</value>
+  </data>
+  <data name="EmptyPolicyList" xml:space="preserve">
+    <value>Er is nog geen beleid toegevoegd</value>
+  </data>
+  <data name="ErrorBaselineDeviceException" xml:space="preserve">
+    <value>Kan uitgangswaarden niet toepassen, controleer de logs om dit te corrigeren.</value>
+  </data>
+  <data name="ErrorDownloadBlobFailed" xml:space="preserve">
+    <value>Kan geen toegang tot uitgangswaarden krijgen. Controleer de logs om dit te corrigeren.</value>
+  </data>
+  <data name="ErrorInvalidExecutable" xml:space="preserve">
+    <value>LGPO.exe is niet geldig. Probeer het uitvoerbare bestand te wijzigen.</value>
+  </data>
+  <data name="ErrorLGPOBackupFailed" xml:space="preserve">
+    <value>Kan uitgangswaarden niet toepassen, controleer de logs om dit te corrigeren.</value>
+  </data>
+  <data name="ErrorMissingLGPO" xml:space="preserve">
+    <value>LGPO.exe is niet beschikbaar om uitgangswaarden toe te passen.</value>
+  </data>
+  <data name="ErrorSavingFileInFolder" xml:space="preserve">
+    <value>Kan uitgangswaarden niet opslaan. Controleer de logs om dit te corrigeren.</value>
+  </data>
+  <data name="ErrorUpdatingDatabase" xml:space="preserve">
+    <value>Status uitgangswaarde onbekend. Controleer de logs voor meer informatie.</value>
+  </data>
+  <data name="ErrorZipExtractionFailed" xml:space="preserve">
+    <value>Kan uitgangswaarden niet uitpakken. Controleer de logs om dit te corrigeren.</value>
+  </data>
+  <data name="ExcludedSmartGroups" xml:space="preserve">
+    <value>Uitgesloten Smart Groups</value>
+  </data>
+  <data name="Exclusions" xml:space="preserve">
+    <value>Uitsluitingen</value>
+  </data>
+  <data name="FailedInstall" xml:space="preserve">
+    <value>Installatie mislukt</value>
+  </data>
+  <data name="FailedRemoval" xml:space="preserve">
+    <value>Verwijderen mislukt</value>
+  </data>
+  <data name="IntermediateDescription" xml:space="preserve">
+    <value>Toestellen die van {0}% tot {1}% conform zijn, worden als gedeeltelijk conform geclassificeerd.</value>
+  </data>
+  <data name="MaxValueArg" xml:space="preserve">
+    <value>Moet kleiner dan of gelijk zijn aan {0}</value>
+  </data>
+  <data name="MinValueArg" xml:space="preserve">
+    <value>Moet groter dan of gelijk zijn aan {0}</value>
+  </data>
+  <data name="NewBaseline" xml:space="preserve">
+    <value>Nieuwe uitgangswaarde</value>
+  </data>
+  <data name="NoActiveOSVersion" xml:space="preserve">
+    <value>Geen OS-versies gevonden. Probeer het later opnieuw.</value>
+  </data>
+  <data name="NoCustomizationSupport" xml:space="preserve">
+    <value>Aanpassing is momenteel niet beschikbaar voor de geselecteerde uitgangswaarde.</value>
+  </data>
+  <data name="NoFileSelected" xml:space="preserve">
+    <value>Geen bestand geselecteerd.</value>
+  </data>
+  <data name="NonEnglishSearchResult" xml:space="preserve">
+    <value>Geen resultaten gevonden voor "{0}". U kunt de zoekopdracht opnieuw proberen in het Engels om te zien of het beleid beschikbaar is.</value>
+  </data>
+  <data name="NoResultsFoundForArg" xml:space="preserve">
+    <value>Geen resultaten gevonden voor "{0}"</value>
+  </data>
+  <data name="NoSmartGroupsSelected" xml:space="preserve">
+    <value>Geen smart group(s) geselecteerd</value>
+  </data>
+  <data name="PolicyNotFound" xml:space="preserve">
+    <value>Geen beleidsdetails gevonden</value>
+  </data>
+  <data name="PolicyStepDescription" xml:space="preserve">
+    <value>Zoek en voeg beleid toe vanuit de catalogus.</value>
+  </data>
+  <data name="Proceed" xml:space="preserve">
+    <value>Doorgaan</value>
+  </data>
+  <data name="RemovalFailed" xml:space="preserve">
+    <value>Verwijderen mislukt</value>
+  </data>
+  <data name="RequiredFieldError" xml:space="preserve">
+    <value>Voer een naam in voor de uitgangswaarde.</value>
+  </data>
+  <data name="SaveAndPublish" xml:space="preserve">
+    <value>Opslaan en publiceren</value>
+  </data>
+  <data name="SearchPolicyPlaceholder" xml:space="preserve">
+    <value>Begin met typen om te zoeken naar een beleid</value>
+  </data>
+  <data name="SearchSmartGroupPlaceholder" xml:space="preserve">
+    <value>Begin met typen om te zoeken naar een Smart Group</value>
+  </data>
+  <data name="SelectedSmartGroups" xml:space="preserve">
+    <value>Geselecteerde Smart Groups</value>
+  </data>
+  <data name="SelectTypeDescription" xml:space="preserve">
+    <value>Kies een type uitgangswaarde om toe te voegen.</value>
+  </data>
+  <data name="SelectTypeTitle" xml:space="preserve">
+    <value>Type uitgangswaarde selecteren</value>
+  </data>
+  <data name="SmartGroupAtLeastOneValidationDescription" xml:space="preserve">
+    <value>Ten minste één Smart Group op het tabblad Toewijzingen is vereist.</value>
+  </data>
+  <data name="SummaryStepDescription" xml:space="preserve">
+    <value>Controleer de samenvatting voordat u deze uitgangswaarde opslaat.</value>
+  </data>
+  <data name="TemplateStepDescription" xml:space="preserve">
+    <value>Selecteer een vooraf geconfigureerde uitgangswaarde en versie.</value>
+  </data>
+  <data name="TextareaMaxLinesError" xml:space="preserve">
+    <value>Overschrijdt maximum aantal regels</value>
+  </data>
+  <data name="TextareaMaxSentenceError" xml:space="preserve">
+    <value>Een of meer zinnen overschrijden de maximale lengte</value>
+  </data>
+  <data name="TotalInstalledArg" xml:space="preserve">
+    <value>Totaal geïnstalleerd: {0}</value>
+  </data>
+  <data name="UnabletoLoadDevices" xml:space="preserve">
+    <value>Kan de lijst met toestellen niet laden. Probeer het later opnieuw.</value>
+  </data>
+  <data name="UnsavedChanges" xml:space="preserve">
+    <value>Niet-opgeslagen wijzigingen</value>
+  </data>
+  <data name="UnsupportedLanguageError" xml:space="preserve">
+    <value>Fout: de geselecteerde taal wordt niet ondersteund.</value>
+  </data>
+  <data name="UseBaselineTemplate" xml:space="preserve">
+      <value>Sjabloon gebruiken</value>
+  </data>
+  <data name="UseTemplateDescription" xml:space="preserve">
+    <value>Gebruik sjablonen die voldoen aan industriestandaarden om de uitgangswaarde in te stellen.</value>
+  </data>
+  <data name="VersionBreakdown" xml:space="preserve">
+    <value>Overzicht van versie</value>
+  </data>
+  <data name="ViewBaselineDevicesTitle" xml:space="preserve">
+    <value>Toestellen bekijken - uitgangswaarden</value>
+  </data>
+</root>

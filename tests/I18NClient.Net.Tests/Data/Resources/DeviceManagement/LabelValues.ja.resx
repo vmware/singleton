@@ -1,0 +1,805 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AboutEnrollment" xml:space="preserve">
+    <value>加入状態の詳細:</value>
+  </data>
+  <data name="AboutTotalDeployment" xml:space="preserve">
+    <value>展開済みとしてカウントするには、デバイスを加入させる必要があります。企業情報ワイプなど、アクションが保留中のデバイスは、アクションが完了するまではカウントされます。登録済みのデバイスは、加入するまでカウントされません。</value>
+  </data>
+  <data name="AddTag" xml:space="preserve">
+    <value>タグを作成</value>
+  </data>
+  <data name="AddTagHelp" xml:space="preserve">
+    <value>新しいタグを作成する権限を与えます</value>
+  </data>
+  <data name="AdminModePasscodeHelpText" xml:space="preserve">
+    <value>デバイスを管理者モードでトラブルシューティングするための英数字のパスコードを指定します。管理者モードにアクセスするには、ログイン画面の Hub アイコンを 5 回タップします。</value>
+  </data>
+  <data name="AirwatchCannotSeeYourPersonalContent" xml:space="preserve">
+    <value>VMware Workspace ONE Intelligent Hub はセキュアな企業アクセスを提供するために必要な情報のみを収集します</value>
+  </data>
+  <data name="AllowPinAtStartup" xml:space="preserve">
+    <value>起動時の暗証番号を許可</value>
+  </data>
+  <data name="AndroidSharedDeviceAdminModePasscode" xml:space="preserve">
+    <value>管理者モードのパスコード</value>
+  </data>
+  <data name="AndroidSharedDeviceMode" xml:space="preserve">
+    <value>Android の共有デバイス モード</value>
+  </data>
+  <data name="AndroidSharedDeviceModeHelpText" xml:space="preserve">
+    <value>ネイティブの Android 機能または Workspace ONE Launcher を使用して、共有 Android デバイスをチェックインおよびチェックアウトします。ネイティブの Android は、カスタマイズをあまり必要としない、よりシンプルなユース ケースをサポートしています。Launcher は、より複雑なユース ケース向けにユーザー インターフェイスのカスタマイズをサポートしています。</value>
+  </data>
+  <data name="AppCatalogSupport" xml:space="preserve">
+    <value>App Catalog のサポート</value>
+  </data>
+  <data name="AssignTags" xml:space="preserve">
+    <value>タグの割り当て</value>
+  </data>
+  <data name="BluetoothDeviceMessageLabelAny" xml:space="preserve">
+    <value>Bluetooth デバイス</value>
+  </data>
+  <data name="BulkAndroidWipeAddition" xml:space="preserve">
+    <value>これらのデバイスが Workspace ONE に再加入すると、新しい UDID が作成され、デバイス レコードが重複します。</value>
+  </data>
+  <data name="BulkEnterpriseWipeDescription" xml:space="preserve">
+    <value>企業情報ワイプはアプリケーション、プロファイルを含むすべての管理された企業リソースを選択したデバイスから削除し、加入解除状態に戻します。
+この操作は元に戻すことができず、再度 Workspace ONE によるデバイス管理が必要な場合、再加入が必要になります。</value>
+  </data>
+  <data name="CallUsageMessageLabelAny" xml:space="preserve">
+    <value>通話使用</value>
+  </data>
+  <data name="CannotDeleteUsersWithRegistrationRecord" xml:space="preserve">
+    <value>DEP 登録レコードがあるユーザーまたは DEP プロファイルに関連付けられているユーザーは削除できません</value>
+  </data>
+  <data name="CarrierCountryCodeMessageLabelAny" xml:space="preserve">
+    <value>キャリア国コード</value>
+  </data>
+  <data name="CellularDataUsageMessageLabelAny" xml:space="preserve">
+    <value>セルラー データ使用量</value>
+  </data>
+  <data name="ChromeOsDeviceCleanup" xml:space="preserve">
+    <value>Chrome OS デバイスの削除</value>
+  </data>
+  <data name="ClearAndroidAccounts" xml:space="preserve">
+    <value>Android アカウントをクリア</value>
+  </data>
+  <data name="ClearAndroidAccountsHelpInfo" xml:space="preserve">
+    <value>Android アカウントをクリアすると、一部のアプリが自動的にログインに使用しているアカウントが削除されます。Google アカウントのクリアには Android 8+ が必要です。Google 以外のアカウントのクリアには Android 9+ が必要です。ネイティブ メソッドでは常にすべてのアカウントがクリアされるため、この設定は、Android 共有デバイスの Launcher メソッドにのみ適用されます。</value>
+  </data>
+  <data name="ClearDevicePasscodeDevicePageHelpInfo" xml:space="preserve">
+    <value>セキュア起動オプションを有効または無効にします。これには、デバイスを起動するための初期暗証番号の入力が必要です。セキュア起動がすでに無効になっている場合は、デバイスを工場出荷状態にリセットしてこのオプションを有効にする必要があります。この機能は、ファイルベースの暗号化が行われていない Android デバイスにのみ適用されます。</value>
+  </data>
+  <data name="ClearDevicePasscodeSharedSettingsHelpInfo" xml:space="preserve">
+    <value>Android セキュア起動を有効または無効にします。これには、デバイスを起動するための初期暗証番号の入力が必要です。無効にすると、ユーザーはパスコードのセットアップ時にセキュア起動を有効にできません。セキュア起動がデバイスですでに無効になっている場合は、デバイスを工場出荷状態にリセットしてこのオプションを有効にする必要があります。この機能は、ファイルベースの暗号化が行われていない Android デバイスにのみ適用されます。</value>
+  </data>
+  <data name="ConfirmAndroidSharedDeviceAdminModePasscode" xml:space="preserve">
+    <value>管理者モードのパスコードを確認</value>
+  </data>
+  <data name="ConfirmEnterpriseWipeDeviceMessageChromeOs" xml:space="preserve">
+    <value>このアクションを実行すると、選択したデバイスから、すべての管理対象エンタープライズ リソース (アプリケーションとプロファイルを含む) が加入解除および削除されます。このアクションを取り消すには、このデバイスを再加入させる必要があります。</value>
+  </data>
+  <data name="ConfirmExport" xml:space="preserve">
+    <value>はい、エクスポートします</value>
+  </data>
+  <data name="ConfirmOverwrite" xml:space="preserve">
+    <value>上書きの確認</value>
+  </data>
+  <data name="ConfirmOverwriteMessage" xml:space="preserve">
+    <value>この PPKG をエクスポートすると、完成したテンプレートの任意の PPKG が上書きされます。エクスポートする前に以前の PPKG をダウンロードしたことを確認してください。操作を続行しますか?</value>
+  </data>
+  <data name="ContactAdminPrivacyNotice" xml:space="preserve">
+    <value>上の収集エリアは VMware Workspace ONE Intelligent Hub に固有であり、企業デバイスと個人デバイスでは異なる可能性があります。
+
+サードパーティ製アプリによって詳細な個人情報が社内に表示されてしまう問題、および適用されるすべての社内ポリシーについては、IT 管理者に問い合わせてください。</value>
+  </data>
+  <data name="DependencyApplications" xml:space="preserve">
+    <value>依存関係アプリケーション</value>
+  </data>
+  <data name="DeviceBulkManagementAddTags" xml:space="preserve">
+    <value>デバイス一括管理タグ割り当て</value>
+  </data>
+  <data name="DeviceBulkManagementAddTagsHelp" xml:space="preserve">
+    <value>ユーザーがデバイスに対してタグを一括割り当てできるようにします。</value>
+  </data>
+  <data name="DeviceDeleteWhiteSpaceReason" xml:space="preserve">
+    <value>理由を空にすることはできません。</value>
+  </data>
+  <data name="DevicePhoneNumberMessageLabelAny" xml:space="preserve">
+    <value>デバイス電話番号</value>
+  </data>
+  <data name="DeviceProvisioningMenuDescription" xml:space="preserve">
+    <value>デバイス プロビジョニング パッケージの管理</value>
+  </data>
+  <data name="DeviceProvisioningMenuTitle" xml:space="preserve">
+    <value>プロビジョニング</value>
+  </data>
+  <data name="DevicesCountExcludesUnenrolled" xml:space="preserve">
+    <value>展開総数に含まれるデバイスは、加入解除したデバイスを除外するように更新されました。</value>
+  </data>
+  <data name="DeviceViewWorkflowsList" xml:space="preserve">
+    <value>デバイス表示 - ワークフロー リスト</value>
+  </data>
+  <data name="DeviceViewWorkflowsListHelp" xml:space="preserve">
+    <value>[デバイス詳細] ページにある [ワークフロー] タブへのアクセスを管理します。</value>
+  </data>
+  <data name="DifferentModelReplacement" xml:space="preserve">
+    <value>別のモデルへの交換</value>
+  </data>
+  <data name="DownloadEncryptedPackage" xml:space="preserve">
+    <value>暗号化されたパッケージをダウンロード</value>
+  </data>
+  <data name="DownloadProvisioningFiles" xml:space="preserve">
+    <value>プロビジョニング ファイルをダウンロード</value>
+  </data>
+  <data name="DownloadWindowsPhoneAgent" xml:space="preserve">
+    <value>Windows Phone Agent をダウンロード</value>
+  </data>
+  <data name="DuplicatePackageFound" xml:space="preserve">
+    <value>この名前はすでに使用されています。別の名前を選択してください。</value>
+  </data>
+  <data name="EditProvisioningPackage" xml:space="preserve">
+    <value>プロビジョニング パッケージの編集</value>
+  </data>
+  <data name="EducationCertificateRenewalJob" xml:space="preserve">
+    <value>教育証明書の更新ジョブ</value>
+  </data>
+  <data name="EmailDiscovery" xml:space="preserve">
+    <value>E メール自動検出</value>
+  </data>
+  <data name="EmailDomainRegistrationFailure" xml:space="preserve">
+    <value>E メール ドメイン登録失敗</value>
+  </data>
+  <data name="EmailDomainRegistrationSuccess" xml:space="preserve">
+    <value>E メール ドメイン登録成功</value>
+  </data>
+  <data name="EmptyApplicationList" xml:space="preserve">
+    <value>アプリケーションは見つかりませんでした。</value>
+  </data>
+  <data name="EmptyEnrollmentSessionPleaseTryAgain" xml:space="preserve">
+    <value>加入セッションが空です。再試行してください。</value>
+  </data>
+  <data name="EmptyPackageList" xml:space="preserve">
+    <value>新しいプロビジョニング パッケージがここに表示されます。</value>
+  </data>
+  <data name="EncryptedPackageDescription" xml:space="preserve">
+    <value>単一の暗号化された PPKG バンドルをエクスポートして、ローカル デバイスを構成、設定、およびアプリでプロビジョニングします。</value>
+  </data>
+  <data name="EncryptedPackageTitle" xml:space="preserve">
+    <value>暗号化されたパッケージ</value>
+  </data>
+  <data name="Enrollmentemailaddress" xml:space="preserve">
+    <value>メール アドレス</value>
+  </data>
+  <data name="Enrollmentemailusername" xml:space="preserve">
+    <value>E メールのユーザー名</value>
+  </data>
+  <data name="EnterCharactersShownAbove" xml:space="preserve">
+    <value>上に表示されている文字を入力します</value>
+  </data>
+  <data name="EnterpriseWipeFailed" xml:space="preserve">
+    <value>企業情報ワイプに失敗しました。</value>
+  </data>
+  <data name="EnterpriseWipeReasonRequired" xml:space="preserve">
+    <value>企業情報ワイプを要求する場合、[理由] フィールドは必須です。</value>
+  </data>
+  <data name="EnterpriseWipeSucceeded" xml:space="preserve">
+    <value>企業情報ワイプに成功しました。</value>
+  </data>
+  <data name="ExportInProgress" xml:space="preserve">
+    <value>エクスポート中...</value>
+  </data>
+  <data name="ExportLater" xml:space="preserve">
+    <value>別のプロビジョニング パッケージのエクスポートがすでに進行中です。テンプレートを保存して後でエクスポートするか、他のエクスポートが完了するまでお待ちください。</value>
+  </data>
+  <data name="FailedLoadingUnmanagedProfilePayload" xml:space="preserve">
+    <value>管理されていないプロファイル ペイロードのロードに失敗しました</value>
+  </data>
+  <data name="FailedToDownload" xml:space="preserve">
+    <value>ダウンロード要求が失敗しました。後で再試行してください。</value>
+  </data>
+  <data name="FailedToExport" xml:space="preserve">
+    <value>エクスポートに失敗しました</value>
+  </data>
+  <data name="FeatureNotSupported" xml:space="preserve">
+    <value>この機能は現在サポートされていません。</value>
+  </data>
+  <data name="GPSMessageLabelAny" xml:space="preserve">
+    <value>GPS</value>
+  </data>
+  <data name="GroupIDAndEmailRequired" xml:space="preserve">
+    <value>メールアドレスとグループ ID の両方が必要です</value>
+  </data>
+  <data name="InactiveAppsFound" xml:space="preserve">
+    <value>このパッケージを作成後、一部のアプリケーションは削除または変更されました。選択したアプリケーションのリストを確認して、完了していることを確認してください。</value>
+  </data>
+  <data name="InvokeAgent" xml:space="preserve">
+    <value>エージェントを呼び出す</value>
+  </data>
+  <data name="LauncherSharedDeviceMode" xml:space="preserve">
+    <value>Launcher</value>
+  </data>
+  <data name="ManagedInstallations" xml:space="preserve">
+    <value>管理対象のインストール</value>
+  </data>
+  <data name="MultipleEnrollmentUsersForEmail" xml:space="preserve">
+    <value>複数の加入ユーザーがこのメール アドレスに関連付けられています</value>
+  </data>
+  <data name="NativeSharedDeviceMode" xml:space="preserve">
+    <value>ネイティブ</value>
+  </data>
+  <data name="NewProvisioningPackage" xml:space="preserve">
+    <value>新しいプロビジョニング パッケージ</value>
+  </data>
+  <data name="NoEnrollmentUserForEmail" xml:space="preserve">
+    <value>このメール アドレスに関連付けられた加入ユーザーはいません</value>
+  </data>
+  <data name="NoOrganizationGroupForGroupId" xml:space="preserve">
+    <value>入力されたグループ ID の組織グループが見つかりませんでした</value>
+  </data>
+  <data name="NoTransformSelected" xml:space="preserve">
+    <value>変換が選択されていません</value>
+  </data>
+  <data name="NotWorking" xml:space="preserve">
+    <value>機能していませんか?</value>
+  </data>
+  <data name="OEMProvisioningDescription" xml:space="preserve">
+    <value>PPKG と XML の各ファイルをエクスポートして、OEM 設備で構成、設定、およびアプリをデバイスにプリロードします。</value>
+  </data>
+  <data name="OEMProvisioningTitle" xml:space="preserve">
+    <value>工場出荷時のプロビジョニング</value>
+  </data>
+  <data name="OnboardingMethod" xml:space="preserve">
+    <value>オンボーディング方法</value>
+  </data>
+  <data name="OnboardingMethods" xml:space="preserve">
+    <value>オンボーディング方法</value>
+  </data>
+  <data name="OrganizationGroupInvalidForEnrollmentUser" xml:space="preserve">
+    <value>ユーザーはこの組織グループで加入する権限がありません</value>
+  </data>
+  <data name="PackageInProgress" xml:space="preserve">
+    <value>既存の Windows プロビジョニング パッケージ (PPKG) のエクスポート要求が処理中です。エクスポートが完了するまでお待ちください。</value>
+  </data>
+  <data name="PackageSaved" xml:space="preserve">
+    <value>成功しました。プロビジョニング パッケージの作成が処理中です。後でダウンロード リンクを確認してください。</value>
+  </data>
+  <data name="PersonalApplicationMessageLabelAny" xml:space="preserve">
+    <value>個人アプリケーション</value>
+  </data>
+  <data name="PersonalAppsCollected" xml:space="preserve">
+    <value>インストールされている個人アプリケーション情報が収集されますが、これは、個人データと企業データに害を与える悪意あるアプリがないことを確認するためです。利用可能になるのは、インストールされたアプリケーションのリストのみです。個人アプリケーションのコンテンツ/データが Workspace ONE と共有されることはありません。</value>
+  </data>
+  <data name="PlatformConfirmation" xml:space="preserve">
+    <value>プラットフォームの確認</value>
+  </data>
+  <data name="PromptForiPadandMAC" xml:space="preserve">
+    <value>アプリケーションの登録とインストールの問題を回避するために iPad を使用しているかどうかを確認します。</value>
+  </data>
+  <data name="RemoteControlAccess" xml:space="preserve">
+    <value>リモート操作アクセス</value>
+  </data>
+  <data name="Replaced" xml:space="preserve">
+    <value>交換済み</value>
+  </data>
+  <data name="Requested" xml:space="preserve">
+    <value>要求済み</value>
+  </data>
+  <data name="RetiringDevice" xml:space="preserve">
+    <value>デバイスの回収中</value>
+  </data>
+  <data name="RoamingStatusMessageLabelAny" xml:space="preserve">
+    <value>ローミング状態</value>
+  </data>
+  <data name="SameModelReplacement" xml:space="preserve">
+    <value>同じモデルへの交換</value>
+  </data>
+  <data name="SaveAndExport" xml:space="preserve">
+    <value>保存してエクスポート</value>
+  </data>
+  <data name="SaveForLater" xml:space="preserve">
+    <value>いいえ、後で保存します</value>
+  </data>
+  <data name="SelectedApplications" xml:space="preserve">
+    <value>選択したアプリケーション</value>
+  </data>
+  <data name="SelectStagingMode" xml:space="preserve">
+    <value>代理セットアップ モードを選択</value>
+  </data>
+  <data name="SingleAndroidWipeAddition" xml:space="preserve">
+    <value>このデバイスが Workspace ONE に再加入すると、新しい UDID が作成され、デバイス レコードが重複します。</value>
+  </data>
+  <data name="SingleEnterpriseWipeDescription" xml:space="preserve">
+    <value>企業情報ワイプはアプリケーション、プロファイルを含むすべての管理された企業リソースを選択したデバイスから削除し、加入解除状態に戻します。
+この操作は元に戻すことができず、再度 Workspace ONE によるデバイス管理が必要な場合、再加入が必要になります。</value>
+  </data>
+  <data name="SMSUsageMessageLabelAny" xml:space="preserve">
+    <value>SMS 使用量</value>
+  </data>
+  <data name="StagingIsEnabledForEnrollmentUser" xml:space="preserve">
+    <value>この加入ユーザーに対して代理セットアップが有効になっています</value>
+  </data>
+  <data name="SystemAppsToggleHelpText" xml:space="preserve">
+    <value>エンド ユーザーにシステム アプリへのアクセスを許可</value>
+  </data>
+  <data name="SystemLogs" xml:space="preserve">
+    <value>システム ログ</value>
+  </data>
+  <data name="SystemLogsPrivacyNoticeMessageLabel" xml:space="preserve">
+    <value>システム ログのプライバシー通知</value>
+  </data>
+  <data name="TapHereToRetry" xml:space="preserve">
+    <value>ここをタップして再試行</value>
+  </data>
+  <data name="TermsAndConditions" xml:space="preserve">
+    <value>利用規約</value>
+  </data>
+  <data name="TransformLabel" xml:space="preserve">
+    <value>アプリ インストーラ変換</value>
+  </data>
+  <data name="TransformToolTipText" xml:space="preserve">
+    <value>変換は、MSI のインストールに適用される一連の変更です。インストール時に使用する利用可能な変換ファイル (MST) を選択します。</value>
+  </data>
+  <data name="TransformToolTipTitle" xml:space="preserve">
+    <value>変換</value>
+  </data>
+  <data name="UnattendAdJoinLabel" xml:space="preserve">
+    <value>Active Directory タイプ</value>
+  </data>
+  <data name="UnattendAdJoinText" xml:space="preserve">
+    <value>使用する AD Join のタイプを選択します。この選択に基づいて、次のフォームが、特定の AD Join unattend.xml を促進します</value>
+  </data>
+  <data name="UnattendAutoAdminLogonLabel" xml:space="preserve">
+    <value>自動管理者ログオン</value>
+  </data>
+  <data name="UnattendAutoAdminLogonText" xml:space="preserve">
+    <value>デバイスを加入するには、1 回限りの管理者ログオンが必要です。自動管理者ログオンがオンになっており、ローカル管理者アカウントがセットアップされている必要があります</value>
+  </data>
+  <data name="UnattendBuildConfigFile" xml:space="preserve">
+    <value>構成ファイルのビルド</value>
+  </data>
+  <data name="UnattendBuildInAdminText" xml:space="preserve">
+    <value>これは、管理者アカウントのパスワードです</value>
+  </data>
+  <data name="UnattendBuiltInAdminLabel" xml:space="preserve">
+    <value>管理者パスワード</value>
+  </data>
+  <data name="UnattendComputerNameLabel" xml:space="preserve">
+    <value>コンピュータ名</value>
+  </data>
+  <data name="UnattendComputerNamePlaceholder" xml:space="preserve">
+    <value>コンピュータ名 (ランダム)</value>
+  </data>
+  <data name="UnattendCreateLocalUserLabel" xml:space="preserve">
+    <value>ローカル ユーザーの作成</value>
+  </data>
+  <data name="UnattendCreateLocalUserText" xml:space="preserve">
+    <value>[はい] を選択すると、ローカル ユーザー アカウントが事前に作成されます。[いいえ] を選択すると、OOBE 中に作成するようにユーザーが指示されます。</value>
+  </data>
+  <data name="UnattendDomainNameLabel" xml:space="preserve">
+    <value>ドメイン名</value>
+  </data>
+  <data name="UnattendDomainNameText" xml:space="preserve">
+    <value>これは、クライアントが参加するドメインの名前です</value>
+  </data>
+  <data name="UnattendDomainOuLabel" xml:space="preserve">
+    <value>AD 組織ユニット (OU)</value>
+  </data>
+  <data name="UnattendDomainOuText" xml:space="preserve">
+    <value>「OU=,OU=,DC=Company,DC=com」の形式にする必要があります</value>
+  </data>
+  <data name="UnattendDomainPasswordLabel" xml:space="preserve">
+    <value>ドメイン パスワード</value>
+  </data>
+  <data name="UnattendDomainPasswordText" xml:space="preserve">
+    <value>Active Directory ドメイン参加アカウントのパスワードを入力します。</value>
+  </data>
+  <data name="UnattendDomainUserLabel" xml:space="preserve">
+    <value>ドメインのユーザー名</value>
+  </data>
+  <data name="UnattendDomainUserText" xml:space="preserve">
+    <value>ドメイン参加権限を持つ Active Directory アカウントのユーザー名を入力します。</value>
+  </data>
+  <data name="UnattendDownloadMarkup" xml:space="preserve">
+    <value>自動 XML</value>
+  </data>
+  <data name="UnattendDownloadPackage" xml:space="preserve">
+    <value>PPKG</value>
+  </data>
+  <data name="UnattendEnableBuiltInAdminLabel" xml:space="preserve">
+    <value>管理者アカウントを有効にする</value>
+  </data>
+  <data name="UnattendEnableBuiltInAdminText" xml:space="preserve">
+    <value>ビルトインの管理者アカウントを有効にします。このアカウントはデフォルトでは無効になっています。自動管理者ログオンを使用する場合は、デフォルトの管理者アカウントを有効にする必要があります</value>
+  </data>
+  <data name="UnattendFirstLogonCmdLabel" xml:space="preserve">
+    <value>最初のログオン コマンド</value>
+  </data>
+  <data name="UnattendFirstLogonCmdText" xml:space="preserve">
+    <value>ユーザーが初めてログオンするときに自動的に実行されるコマンドを追加することができます (ユーザーがローカル管理者権限を持っている必要があります)</value>
+  </data>
+  <data name="UnattendLocaleChineseHongKong" xml:space="preserve">
+    <value>中国語（香港）</value>
+  </data>
+  <data name="UnattendLocaleChinesePrc" xml:space="preserve">
+    <value>中国語（中国）</value>
+  </data>
+  <data name="UnattendLocaleChineseSimplified" xml:space="preserve">
+    <value>中国語（簡体字）</value>
+  </data>
+  <data name="UnattendLocaleChineseTaiwan" xml:space="preserve">
+    <value>中国語（台湾）</value>
+  </data>
+  <data name="UnattendLocaleChineseTraditional" xml:space="preserve">
+    <value>中国語（繁体字）</value>
+  </data>
+  <data name="UnattendLocaleEnglish" xml:space="preserve">
+    <value>英語</value>
+  </data>
+  <data name="UnattendLocaleEnglishUk" xml:space="preserve">
+    <value>英語 - 英国</value>
+  </data>
+  <data name="UnattendLocaleEnglishUs" xml:space="preserve">
+    <value>英語 - 米国</value>
+  </data>
+  <data name="UnattendLocaleFrench" xml:space="preserve">
+    <value>フランス語</value>
+  </data>
+  <data name="UnattendLocaleFrenchCanada" xml:space="preserve">
+    <value>フランス語 - カナダ</value>
+  </data>
+  <data name="UnattendLocaleFrenchFrance" xml:space="preserve">
+    <value>フランス語 - フランス</value>
+  </data>
+  <data name="UnattendLocaleGerman" xml:space="preserve">
+    <value>ドイツ語</value>
+  </data>
+  <data name="UnattendLocaleItalian" xml:space="preserve">
+    <value>イタリア語</value>
+  </data>
+  <data name="UnattendLocaleJapanese" xml:space="preserve">
+    <value>日本語</value>
+  </data>
+  <data name="UnattendLocaleKorean" xml:space="preserve">
+    <value>韓国語</value>
+  </data>
+  <data name="UnattendLocaleLabel" xml:space="preserve">
+    <value>地域とキーボード</value>
+  </data>
+  <data name="UnattendLocalePortuguese" xml:space="preserve">
+    <value>ポルトガル語</value>
+  </data>
+  <data name="UnattendLocalePortugueseBrazil" xml:space="preserve">
+    <value>ポルトガル語（ブラジル）</value>
+  </data>
+  <data name="UnattendLocalePortuguesePortugal" xml:space="preserve">
+    <value>ポルトガル語（ポルトガル）</value>
+  </data>
+  <data name="UnattendLocaleSpanish" xml:space="preserve">
+    <value>スペイン語</value>
+  </data>
+  <data name="UnattendLocaleSpanishMexico" xml:space="preserve">
+    <value>スペイン語 - メキシコ</value>
+  </data>
+  <data name="UnattendLocaleSpanishSpain" xml:space="preserve">
+    <value>スペイン語 - スペイン</value>
+  </data>
+  <data name="UnattendLocaleText" xml:space="preserve">
+    <value>上で選択したオペレーティング システムの言語に基づいて、使用可能な入力言語とキーボードのレイアウトを指定します。</value>
+  </data>
+  <data name="UnattendLocalUserAdminLabel" xml:space="preserve">
+    <value>管理者にする</value>
+  </data>
+  <data name="UnattendLocalUserAdminText" xml:space="preserve">
+    <value>AirWatch 加入を自動的に開始するには、[はい] を選択する必要があります。ログイン時に、加入資格情報を入力するための AirWatch ウィンドウがユーザーに表示されます</value>
+  </data>
+  <data name="UnattendLocalUserNameLabel" xml:space="preserve">
+    <value>ローカルのユーザー名</value>
+  </data>
+  <data name="UnattendLocalUserNameText" xml:space="preserve">
+    <value>これは、ローカル ユーザーのユーザー名です</value>
+  </data>
+  <data name="UnattendLocalUserPasswordLabel" xml:space="preserve">
+    <value>ローカル ユーザーのパスワード</value>
+  </data>
+  <data name="UnattendLocalUserPasswordText" xml:space="preserve">
+    <value>パスワードが指定されていない場合は、最初のサインインでパスワードを変更するようにユーザーが指示されます</value>
+  </data>
+  <data name="UnattendMediaLanguageLabel" xml:space="preserve">
+    <value>オペレーティング システムの言語</value>
+  </data>
+  <data name="UnattendMediaLanguageText" xml:space="preserve">
+    <value>OEM に提供されているオペレーティング システムのインストール メディアの言語を選択します</value>
+  </data>
+  <data name="UnattendModeAzureAdNoPrem" xml:space="preserve">
+    <value>Azure Active Directory - プレミアムなし</value>
+  </data>
+  <data name="UnattendModeAzureAdPrem" xml:space="preserve">
+    <value>Azure Active Directory - プレミアム</value>
+  </data>
+  <data name="UnattendModeWorkgroup" xml:space="preserve">
+    <value>ワークグループ</value>
+  </data>
+  <data name="UnattendNewCmdLabel" xml:space="preserve">
+    <value>新規コマンド</value>
+  </data>
+  <data name="UnattendOnPremAdJoin" xml:space="preserve">
+    <value>オンプレミスの Active Directory 参加</value>
+  </data>
+  <data name="UnattendOobeSectionLabel" xml:space="preserve">
+    <value>OOBE 構成</value>
+  </data>
+  <data name="UnattendProductKeyLabel" xml:space="preserve">
+    <value>プロダクト キー</value>
+  </data>
+  <data name="UnattendProductKeyText" xml:space="preserve">
+    <value>Windows プロダクト キーでは、5 つの文字または数字の連続が、5 回繰り返され、ダッシュで区切られています。例: 「 12345-54CDE-XYZ78-ONM98-456TY」</value>
+  </data>
+  <data name="UnattendRegisteredOrgLabel" xml:space="preserve">
+    <value>登録済み組織</value>
+  </data>
+  <data name="UnattendRegisteredOrgText" xml:space="preserve">
+    <value>これは、システム情報に表示されます。</value>
+  </data>
+  <data name="UnattendRegisteredOwnerLabel" xml:space="preserve">
+    <value>登録済み所有者</value>
+  </data>
+  <data name="UnattendRegisteredOwnerText" xml:space="preserve">
+    <value>これは、システム情報に表示されます</value>
+  </data>
+  <data name="UnattendRemoveConsumerAppsLabel" xml:space="preserve">
+    <value>Windows 10 コンシューマ アプリの削除</value>
+  </data>
+  <data name="UnattendRemoveConsumerAppsText" xml:space="preserve">
+    <value>これを有効にすると、コンシューマ アプリ (キャンディー クラッシュなど) が Windows 10 に表示されなくなります。これは下にエンタープライズまたは教育用のプロダクト キーを入力することでのみサポートされます。Windows バージョン 1511 以降が必要です</value>
+  </data>
+  <data name="UnattendSaveFailed" xml:space="preserve">
+    <value>パッケージの保存に失敗しました。フォームを確認して、再試行してください。</value>
+  </data>
+  <data name="UnattendShowEulaLabel" xml:space="preserve">
+    <value>エンド ユーザー使用許諾契約書ページ</value>
+  </data>
+  <data name="UnattendShowEulaText" xml:space="preserve">
+    <value>[表示] を選択すると、OOBE 中に Microsoft ソフトウェア ライセンス利用規約ページが表示されます</value>
+  </data>
+  <data name="UnattendShowLocaleSettingsLabel" xml:space="preserve">
+    <value>地域とキーボードの設定</value>
+  </data>
+  <data name="UnattendShowLocaleSettingsText" xml:space="preserve">
+    <value>[表示] を選択すると、OOBE 中に [地域とキーボードの設定] ページが表示されます。[非表示] を選択すると、そのページが非表示になり、下のドロップダウンで使用可能なロケールの中から選択する必要があります。</value>
+  </data>
+  <data name="UnattendShowOnlineAccountLabel" xml:space="preserve">
+    <value>オンライン アカウントの設定</value>
+  </data>
+  <data name="UnattendShowOnlineAccountText" xml:space="preserve">
+    <value>[表示] を選択すると、オンライン アカウント画面が表示されます。この画面で、Microsoft アカウントを使用してサインインすることができます。</value>
+  </data>
+  <data name="UnattendShowPrivacyLabel" xml:space="preserve">
+    <value>プライバシー設定</value>
+  </data>
+  <data name="UnattendShowPrivacyText" xml:space="preserve">
+    <value>[表示] を選択すると、OOBE 中にプライバシー設定を選択するようにユーザーが指示されます。[非表示] を選択すると、Express 設定が使用され、非表示になります。</value>
+  </data>
+  <data name="UnattendSyncCmdLabel" xml:space="preserve">
+    <value>追加の同期コマンド</value>
+  </data>
+  <data name="UnattendSyncCmdText" xml:space="preserve">
+    <value>Windows のセットアップ プロセスの終了時にユーザーがログインする前に自動的に実行されるコマンドを追加することができます</value>
+  </data>
+  <data name="UnattendSystemConfigurationSection" xml:space="preserve">
+    <value>システム構成</value>
+  </data>
+  <data name="UnattendUacAlwaysNotify" xml:space="preserve">
+    <value>常に通知</value>
+  </data>
+  <data name="UnattendUacDefault" xml:space="preserve">
+    <value>既定</value>
+  </data>
+  <data name="UnattendUacDisabled" xml:space="preserve">
+    <value>無効</value>
+  </data>
+  <data name="UnattendUacEnableButDoNotNotify" xml:space="preserve">
+    <value>通知なしで有効化</value>
+  </data>
+  <data name="UnattendUacLabel" xml:space="preserve">
+    <value>ユーザー アカウント制御</value>
+  </data>
+  <data name="UnattendUacNotifyWithoutDimmingDesktop" xml:space="preserve">
+    <value>デスクトップを暗くせずに通知する</value>
+  </data>
+  <data name="UnattendUacText" xml:space="preserve">
+    <value>ユーザー アカウント制御のタイプを選択します</value>
+  </data>
+  <data name="UnattendValidationInvalidInput" xml:space="preserve">
+    <value>入力が無効です</value>
+  </data>
+  <data name="UnattendValidationMaxLength" xml:space="preserve">
+    <value>このフィールドは必須であり、{0} 文字以内にする必要があります</value>
+  </data>
+  <data name="UnattendValidationNoAdminUser" xml:space="preserve">
+    <value>管理者グループのメンバーであるローカル ユーザーを作成するか、ビルトインの管理者を有効にする必要があります</value>
+  </data>
+  <data name="UnattendValidationProductKey" xml:space="preserve">
+    <value>プロダクト キーが無効です</value>
+  </data>
+  <data name="UnattendValidationRequired" xml:space="preserve">
+    <value>このフィールドを空白にすることはできません</value>
+  </data>
+  <data name="UnattendWelcome" xml:space="preserve">
+    <value>プロビジョニングのための構成ツールへようこそ。[構成ファイルのビルド] ボタンを有効にするために、すべての必須フィールドに値を入力してください</value>
+  </data>
+  <data name="UnattendWorkgroupLabel" xml:space="preserve">
+    <value>ワークグループ</value>
+  </data>
+  <data name="UnattendWorkgroupText" xml:space="preserve">
+    <value>これは、クライアントが参加するワークグループの名前です</value>
+  </data>
+  <data name="UnattendWs1OgLabel" xml:space="preserve">
+    <value>加入組織グループ</value>
+  </data>
+  <data name="UnattendWs1OgText" xml:space="preserve">
+    <value>これは加入組織グループ ID です。SAML をオンにしている場合は、SAML をオフにして、別の「代理セットアップ」組織グループをセットアップしてください。Workspace ONE Console の最上位の組織グループにマウスを置くと、グループ ID を取得できます。</value>
+  </data>
+  <data name="UnattendWs1Section" xml:space="preserve">
+    <value>Workspace ONE 加入</value>
+  </data>
+  <data name="UnattendWs1ServerLabel" xml:space="preserve">
+    <value>加入サーバ</value>
+  </data>
+  <data name="UnattendWs1ServerText" xml:space="preserve">
+    <value>これは加入サーバの URL です。これは、[すべての設定] &gt; [システム] &gt; [高度な設定] &gt; [サイトの URL] の [MDM 加入 URL] の下にあります。コア URL のみが含まれます (例: https://vmwarelab.awmdm.com)</value>
+  </data>
+  <data name="UnattendWs1StagingAccountLabel" xml:space="preserve">
+    <value>代理セットアップ アカウント</value>
+  </data>
+  <data name="UnattendWs1StagingAccountPasswordLabel" xml:space="preserve">
+    <value>代理セットアップ パスワード</value>
+  </data>
+  <data name="UnattendWs1StagingAccountPasswordText" xml:space="preserve">
+    <value>代理セットアップ アカウントと同じページに指定されている代理セットアップ アカウントの「パスワード」。パスワードに特殊文字 (&amp;、&gt;、または &lt;) が含まれている場合、このアカウントを登録に使用する、工場出荷時のプロビジョニングのワークフローは失敗します。パスワードを変更するには、[ユーザー] ページに移動します。</value>
+  </data>
+  <data name="UnattendWs1StagingAccountText" xml:space="preserve">
+    <value>これは、[すべての設定] &gt; [デバイスとユーザー] &gt; [Windows] &gt; [Windows デスクトップ] &gt; [代理加入セットアップとプロビジョニング] の [UPN] フィールドに表示される代理セットアップ アカウントです</value>
+  </data>
+  <data name="UnmanagedProfilesMessageLabelAny" xml:space="preserve">
+    <value>管理されていないプロファイル</value>
+  </data>
+  <data name="USBDeviceMessageLabelAny" xml:space="preserve">
+    <value>USBデバイス</value>
+  </data>
+  <data name="UserEnrollmentAndEnter" xml:space="preserve">
+    <value>グループ ID はありますか?</value>
+  </data>
+  <data name="UserEnrollmentNotEnabledInOg" xml:space="preserve">
+    <value>指定された組織グループでは User Enrollment が有効になっていません</value>
+  </data>
+  <data name="UserEnrollmentSettingsMessage" xml:space="preserve">
+    <value>「設定」アプリで、[組織に加入] を見つけてタップします。</value>
+  </data>
+  <data name="UserEnrollmentUseEmailAddress" xml:space="preserve">
+    <value>メール アドレスを使用</value>
+  </data>
+  <data name="UserPasswordIsRequired" xml:space="preserve">
+    <value>パスワードは必須です</value>
+  </data>
+  <data name="Workappsprivacynoticemessagelabel" xml:space="preserve">
+    <value>レポート作成のために、Workspace ONE を通して配信されたすべての業務アプリのアプリ名、バージョン、インストール状態のリストがデバイスから収集されます。</value>
+  </data>
+</root>

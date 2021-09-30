@@ -1,0 +1,3410 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AdaptivaSetup" xml:space="preserve">
+    <value>Konfiguracja serwera Adaptiva</value>
+  </data>
+  <data name="AdaptivaSetupHelp" xml:space="preserve">
+    <value>Konfiguracja zasobu dla partnera P2P — Adaptiva</value>
+  </data>
+  <data name="AdaptiveManagement" xml:space="preserve">
+    <value>Zarządzanie adaptacyjne</value>
+  </data>
+  <data name="AdaptiveManagementHelp" xml:space="preserve">
+    <value>Możliwość wyświetlania i ustawiania poziomu zarządzania adaptacyjnego na podstawie zasad aplikacji</value>
+  </data>
+  <data name="AddApplicationWorkflowHelp" xml:space="preserve">
+    <value>Udziela programiście uprawnienia do przesyłania aplikacji</value>
+  </data>
+  <data name="AddCartHelp" xml:space="preserve">
+    <value>Przesyłanie CSV z numerami seryjnymi urządzeń dla urządzeń udostępnionych. </value>
+  </data>
+  <data name="AddCustomReportSubscriptionHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do dodawania subskrypcji raportu niestandardowego. Przejdź do sekcji Hub\Raporty i analizy\Raporty niestandardowe\Subskrypcje</value>
+  </data>
+  <data name="AddDeviceUserAccounts" xml:space="preserve">
+    <value>Dodaj urządzenie</value>
+  </data>
+  <data name="AddDeviceUserAccountsHelp" xml:space="preserve">
+    <value>Dodaj urządzenia do kont użytkowników</value>
+  </data>
+  <data name="AddEditAdminAccount" xml:space="preserve">
+    <value>Dodaj/edytuj</value>
+  </data>
+  <data name="AddEditAdminAccountHelp" xml:space="preserve">
+    <value>Dodaj lub edytuj konta administratora</value>
+  </data>
+  <data name="AddEditAdminGroup" xml:space="preserve">
+    <value>Dodaj/edytuj</value>
+  </data>
+  <data name="AddEditAdminGroupHelp" xml:space="preserve">
+    <value>Dodaj lub edytuj grupy administratora.</value>
+  </data>
+  <data name="AddEditAdminRoles" xml:space="preserve">
+    <value>Dodaj/edytuj</value>
+  </data>
+  <data name="AddEditAdminRolesHelp" xml:space="preserve">
+    <value>Dodaj, edytuj lub usuń role administratorów.</value>
+  </data>
+  <data name="AddEditDeviceManufacturerDetails" xml:space="preserve">
+    <value>Dodaj informacje o edycji producenta urządzenia</value>
+  </data>
+  <data name="AddEditDeviceManufacturerDetailsHelp" xml:space="preserve">
+    <value>Dodaj nowego producenta urządzenia do konsoli lub edytuj istniejącego producenta przez interfejs API</value>
+  </data>
+  <data name="AddEditDeviceModelDetails" xml:space="preserve">
+    <value>Dodaj informacje o edycji modelu urządzenia</value>
+  </data>
+  <data name="AddEditDeviceModelDetailsHelp" xml:space="preserve">
+    <value>Dodaj nowy model urządzenia lub edytuj istniejący model na konsoli przez interfejs API</value>
+  </data>
+  <data name="AddEditUG" xml:space="preserve">
+    <value>Dodaj/edytuj</value>
+  </data>
+  <data name="AddEditUGHelp" xml:space="preserve">
+    <value>Dodaj, edytuj lub usuń grupy użytkowników.</value>
+  </data>
+  <data name="AddEditUserAccount" xml:space="preserve">
+    <value>Dodaj/edytuj</value>
+  </data>
+  <data name="AddEditUserAccountHelp" xml:space="preserve">
+    <value>Dodaj lub edytuj konta administratorów.</value>
+  </data>
+  <data name="AddEditUserCat" xml:space="preserve">
+    <value>Dodaj/edytuj</value>
+  </data>
+  <data name="AddEditUserCatHelp" xml:space="preserve">
+    <value>Dodaj, edytuj lub usuń kategorie użytkownika rejestracji.</value>
+  </data>
+  <data name="AddEditUserRoles" xml:space="preserve">
+    <value>Dodaj/edytuj</value>
+  </data>
+  <data name="AddEditUserRolesHelp" xml:space="preserve">
+    <value>Dodaj lub edytuj role użytkownika.</value>
+  </data>
+  <data name="AddEditWindowsTemplateHelp" xml:space="preserve">
+    <value>Umożliwia administratorowi skonfigurowanie ustawień dodawania lub edytowania szablonów systemu Windows na pulpicie nawigacyjnym aplikacji Console</value>
+  </data>
+  <data name="AddFileServerConfiguration" xml:space="preserve">
+    <value>Dodaj konfigurację serwera plików</value>
+  </data>
+  <data name="AddFileServerConfigurationHelp" xml:space="preserve">
+    <value>Daje użytkownikowi uprawnienia do dodawania siatki i szczegółów serwerów plików</value>
+  </data>
+  <data name="AddNoteHelp" xml:space="preserve">
+    <value>Udziela uprawnienia na dodanie nowej notatki</value>
+  </data>
+  <data name="AdminAd" xml:space="preserve">
+    <value>Administrator</value>
+  </data>
+  <data name="AdminAdHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do stron docelowych w obszarze Ustawienia systemu, do modułu alertów, strony Definicje pól niestandardowych, strony Pomoc w obszarze Ustawienia systemu oraz strony Profile RADIUS.</value>
+  </data>
+  <data name="AdminOptIn" xml:space="preserve">
+    <value>ADMINISTRACYJNA ZGODA WSTĘPNA</value>
+  </data>
+  <data name="AdminSaaSNotifications" xml:space="preserve">
+    <value>Powiadomienia SaaS</value>
+  </data>
+  <data name="AdminSaaSNotificationsHelp" xml:space="preserve">
+    <value>Kontrola dostępu do strony ustawień powiadomień SaaS</value>
+  </data>
+  <data name="AdminsRESTSystem" xml:space="preserve">
+    <value>Administratorzy</value>
+  </data>
+  <data name="AdminsRESTSystemHelp" xml:space="preserve">
+    <value>Interfejsy REST API dla kont administratorów</value>
+  </data>
+  <data name="AdvancedEm" xml:space="preserve">
+    <value>Zaawansowane</value>
+  </data>
+  <data name="AdvancedEmHelp" xml:space="preserve">
+    <value>Kontroluje zaawansowane ustawienia poczty e-mail.</value>
+  </data>
+  <data name="AdvancedHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do podmenu 'Zaawansowane'.</value>
+  </data>
+  <data name="AdvancedIn" xml:space="preserve">
+    <value>Zaawansowane</value>
+  </data>
+  <data name="AdvancedInHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do zaawansowanych ustawień instalacji.</value>
+  </data>
+  <data name="AdvancedSet" xml:space="preserve">
+    <value>Zaawansowane</value>
+  </data>
+  <data name="AdvancedSetHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do zaawansowanych stron w Ustawieniach systemu.</value>
+  </data>
+  <data name="AdvancedSOaP" xml:space="preserve">
+    <value>Zaawansowane</value>
+  </data>
+  <data name="AdvancedSOaPHelp" xml:space="preserve">
+    <value>Użyj zaawansowanych interfejsów API, na przykład do usunięcia danych z urządzenia i usunięcia danych firmowych.</value>
+  </data>
+  <data name="AdvancedSys" xml:space="preserve">
+    <value>Zaawansowane</value>
+  </data>
+  <data name="AdvancedSysHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do strony Zaawansowane w menu System.</value>
+  </data>
+  <data name="AfterArg" xml:space="preserve">
+    <value>Po {0}</value>
+  </data>
+  <data name="AgentApplicationAn" xml:space="preserve">
+    <value>Aplikacja Hub</value>
+  </data>
+  <data name="AgentApplicationAnHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do strony aplikacji Hub w menu Android.</value>
+  </data>
+  <data name="AgentPackageAdd" xml:space="preserve">
+    <value>Dodaj pakiet Hub</value>
+  </data>
+  <data name="AgentPackageAddHelp" xml:space="preserve">
+    <value>Daje uprawnienie do przekazania pliku .apf aplikacji Hub do wstępnej rejestracji w zastrzeganiu produktu.</value>
+  </data>
+  <data name="AgentPackageDelete" xml:space="preserve">
+    <value>Usuń pakiet Hub</value>
+  </data>
+  <data name="AgentPackageDeleteHelp" xml:space="preserve">
+    <value>Daje uprawnienia do usuwania pliku .apf Hub, który nie będzie dostępny do użycia we wstępnej rejestracji aprowizacji produktu.</value>
+  </data>
+  <data name="AgentPackagePPN" xml:space="preserve">
+    <value>Pakiet Hub</value>
+  </data>
+  <data name="AgentPackagePPNHelp" xml:space="preserve">
+    <value>Daje uprawnienia do dodawania/aktualizacji/usuwania plików .apf Hub we wstępnej rejestracji aprowizacji produktu.</value>
+  </data>
+  <data name="AgentPackageView" xml:space="preserve">
+    <value>Widok pakietu Hub</value>
+  </data>
+  <data name="AgentPackageViewHelp" xml:space="preserve">
+    <value>Daje uprawnienia do wyświetlania listy dostępnych plików .apf Hub na ekranie pakietów Hub, które mogą zostać użyte do wstępnej rejestracji przy aprowizacji produktu.</value>
+  </data>
+  <data name="AgentSettingsAn" xml:space="preserve">
+    <value>Ustawienia aplikacji Intelligent Hub</value>
+  </data>
+  <data name="AgentSettingsAnHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do strony ustawień aplikacji Intelligent Hub w systemie Android.</value>
+  </data>
+  <data name="AgentSettingsApple" xml:space="preserve">
+    <value>Ustawienia aplikacji Hub</value>
+  </data>
+  <data name="AgentSettingsAppleHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do ustawień aplikacji iOS Hub w systemie iOS.</value>
+  </data>
+  <data name="AgentSettingsLinuxHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do ustawień systemu Linux Intelligent Hub w systemie Linux.</value>
+  </data>
+  <data name="AirwatchEmailClientSet" xml:space="preserve">
+    <value>Klient poczty e-mail aplikacji AirWatch</value>
+  </data>
+  <data name="AirwatchEmailClientSetHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do strony AirWatch Email Client w kategorii Aplikacje.</value>
+  </data>
+  <data name="AirWatchHelpAd" xml:space="preserve">
+    <value>Pomoc AirWatch</value>
+  </data>
+  <data name="AirWatchHelpAdHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do Pomoc AirWatch.</value>
+  </data>
+  <data name="AirWatchTunnelHelp" xml:space="preserve">
+    <value>Pozwala na konfigurowanie aplikacji AirWatch Tunnel</value>
+  </data>
+  <data name="AkamaiSetting" xml:space="preserve">
+    <value>Akamai</value>
+  </data>
+  <data name="AkamaiSettingHelp" xml:space="preserve">
+    <value>Ustawienia konfiguracji Akamai jako dostawcy CDN</value>
+  </data>
+  <data name="AlertCreationPoliciesViewHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do wyświetlania zasad tworzenia ustawiania alertów. 
+</value>
+  </data>
+  <data name="AlertDD" xml:space="preserve">
+    <value>Alerty</value>
+  </data>
+  <data name="AlertDDHelp" xml:space="preserve">
+    <value>Uzyskaj dostęp do alertów związanych z urządzeniem.</value>
+  </data>
+  <data name="AlertsPM" xml:space="preserve">
+    <value>Alerty</value>
+  </data>
+  <data name="AlertsPMHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do strony Alerty drukarki</value>
+  </data>
+  <data name="AndroidFileManagerDM" xml:space="preserve">
+    <value>Menadżer plików Android</value>
+  </data>
+  <data name="AndroidFileManagerDMHelp" xml:space="preserve">
+    <value>Zdalnie zarządzaj plikami i folderami Android ze strony Szczegóły urządzenia.</value>
+  </data>
+  <data name="AndroidForWorkHelp" xml:space="preserve">
+    <value>AndroidForWork</value>
+  </data>
+  <data name="AndroidServiceApplicationsAn" xml:space="preserve">
+    <value>Aplikacje usług systemu Android</value>
+  </data>
+  <data name="AndroidServiceApplicationsAnHelp" xml:space="preserve">
+    <value>Zezwala na przeglądanie i edycję aplikacji usług.</value>
+  </data>
+  <data name="ApnsApp" xml:space="preserve">
+    <value>APNs</value>
+  </data>
+  <data name="ApnsAppHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do APNs dla stron aplikacji w menu iOS.</value>
+  </data>
+  <data name="ApnsSet" xml:space="preserve">
+    <value>APNs</value>
+  </data>
+  <data name="ApnsSetHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do strony z nazwami punktów dostępu (APN) w ustawieniach systemu.</value>
+  </data>
+  <data name="AppCatalogHelp" xml:space="preserve">
+    <value>zasób katalogu aplikacji</value>
+  </data>
+  <data name="AppConfigurationSet" xml:space="preserve">
+    <value>Konfiguracja aplikacji</value>
+  </data>
+  <data name="AppConfigurationSetHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do strony konfiguracji aplikacji.</value>
+  </data>
+  <data name="AppCrashLogsHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do dzienników awarii aplikacji. 
+</value>
+  </data>
+  <data name="AppleConfiguratorSet" xml:space="preserve">
+    <value>Apple Configurator</value>
+  </data>
+  <data name="AppleConfiguratorSetHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do strony Apple Configurator w menu iOS.</value>
+  </data>
+  <data name="AppleEducation" xml:space="preserve">
+    <value>Edukacja</value>
+  </data>
+  <data name="AppleEducationHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do strony Apple Education</value>
+  </data>
+  <data name="ApplicationCatalogEdit" xml:space="preserve">
+    <value>Edycja katalogu aplikacji</value>
+  </data>
+  <data name="ApplicationCatalogEditHelp" xml:space="preserve">
+    <value>Do edytowania strony ustawień katalogu aplikacji</value>
+  </data>
+  <data name="ApplicationCategoriesAb" xml:space="preserve">
+    <value>Kategorie aplikacji</value>
+  </data>
+  <data name="ApplicationCategoriesAbHelp" xml:space="preserve">
+    <value>Wyświetl i zarządzaj kategoriami aplikacji</value>
+  </data>
+  <data name="ApplicationGroupsAb" xml:space="preserve">
+    <value>Grupy aplikacji</value>
+  </data>
+  <data name="ApplicationGroupsAbHelp" xml:space="preserve">
+    <value>Wyświetl i zarządzaj grupami aplikacji.</value>
+  </data>
+  <data name="ApplicationIntegrationSet" xml:space="preserve">
+    <value>Integracja aplikacji</value>
+  </data>
+  <data name="ApplicationIntegrationSetHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do ekranu Ustawienia integracji aplikacji.</value>
+  </data>
+  <data name="ApplicationPPN" xml:space="preserve">
+    <value>Aplikacja</value>
+  </data>
+  <data name="ApplicationPPNHelp" xml:space="preserve">
+    <value>Uzyskaj dostęp do strony dostarczania aplikacji.</value>
+  </data>
+  <data name="ApplicationProfilesAb" xml:space="preserve">
+    <value>Profile aplikacji</value>
+  </data>
+  <data name="ApplicationProfilesAbHelp" xml:space="preserve">
+    <value>Wyświetl i zrządzaj profilami aplikacji.</value>
+  </data>
+  <data name="ApplicationPublishAb" xml:space="preserve">
+    <value>Publikowanie aplikacji</value>
+  </data>
+  <data name="ApplicationPublishAbHelp" xml:space="preserve">
+    <value>Opublikuj dodane aplikacje.</value>
+  </data>
+  <data name="ApplicationsAb" xml:space="preserve">
+    <value>Aplikacje</value>
+  </data>
+  <data name="ApplicationsAbHelp" xml:space="preserve">
+    <value>Uzyskaj dostęp do strony zarządzania aplikacjami mobilnymi.</value>
+  </data>
+  <data name="ApplicationsDD" xml:space="preserve">
+    <value>Aplikacje</value>
+  </data>
+  <data name="ApplicationsDDHelp" xml:space="preserve">
+    <value>Zdalnie zainstaluj i usuń aplikacje z urządzeń zarządzanych.</value>
+  </data>
+  <data name="ApplicationsDM" xml:space="preserve">
+    <value>Aplikacje</value>
+  </data>
+  <data name="ApplicationsDMHelp" xml:space="preserve">
+    <value>Zażądaj dzienników i zarządzaj opinii o aplikacji.</value>
+  </data>
+  <data name="ApplicationsHub" xml:space="preserve">
+    <value>Aplikacje</value>
+  </data>
+  <data name="ApplicationsHubHelp" xml:space="preserve">
+    <value>Generuj raporty dla aplikacji urządzenia.</value>
+  </data>
+  <data name="ApplicationsSet" xml:space="preserve">
+    <value>Aplikacje</value>
+  </data>
+  <data name="ApplicationsSetHelp" xml:space="preserve">
+    <value>Uzyskaj dostęp do stron ustawień dla aplikacji zarządzania zawartością.</value>
+  </data>
+  <data name="ApplicationWorkflowAb" xml:space="preserve">
+    <value>Przepływ pracy aplikacji</value>
+  </data>
+  <data name="ApplicationWorkflowAbHelp" xml:space="preserve">
+    <value>Przekaż, przejrzyj, przypisz i opublikuj aplikacje.</value>
+  </data>
+  <data name="ApplicationWrappingAb" xml:space="preserve">
+    <value>Pakowanie aplikacji</value>
+  </data>
+  <data name="ApplicationWrappingAbHelp" xml:space="preserve">
+    <value>Uzyskaj dostęp do pakowania aplikacji.</value>
+  </data>
+  <data name="AppRemovalProtectionHelp" xml:space="preserve">
+    <value>Do wyświetlania opcji włączenia ochrony przed usunięciem aplikacji</value>
+  </data>
+  <data name="AppRemovalProtectionLogEditHelp" xml:space="preserve">
+    <value>Zasób służący do kontrolowania dostępu umożliwiającego „edytowanie” strony dzienników ochrony przed usunięciem aplikacji.</value>
+  </data>
+  <data name="AppRemovalProtectionLogViewHelp" xml:space="preserve">
+    <value>Zasób służący do kontrolowania dostępu umożliwiającego „wyświetlanie” strony dzienników ochrony przed usunięciem aplikacji.</value>
+  </data>
+  <data name="ApproveAndUnapproveUpdates" xml:space="preserve">
+    <value>Zatwierdzaj i cofaj zatwierdzenia aktualizacji</value>
+  </data>
+  <data name="ApproveUpdate" xml:space="preserve">
+    <value>Zatwierdź aktualizację</value>
+  </data>
+  <data name="ApproveUpdateHelp" xml:space="preserve">
+    <value>Daje uprawnienia do wydawania urządzeniom polecenia zatwierdzania aktualizacji.</value>
+  </data>
+  <data name="ApproveUpdates" xml:space="preserve">
+    <value>Zatwierdź aktualizacje</value>
+  </data>
+  <data name="AppsRESTMam" xml:space="preserve">
+    <value>Aplikacje</value>
+  </data>
+  <data name="AppsRESTMamHelp" xml:space="preserve">
+    <value>Interfejsy REST API dla aplikacji</value>
+  </data>
+  <data name="AppUserCommentsAb" xml:space="preserve">
+    <value>Komentarze użytkowników aplikacji</value>
+  </data>
+  <data name="AppUserCommentsAbHelp" xml:space="preserve">
+    <value>Wyświetl i zarządzaj ustawieniami komentarzy użytkownika.</value>
+  </data>
+  <data name="AssetBatchImportSys" xml:space="preserve">
+    <value>Import partii zasobów</value>
+  </data>
+  <data name="AssetBatchImportSysHelp" xml:space="preserve">
+    <value>Importuj listę zbiorczą zasobów telekomunikacji.</value>
+  </data>
+  <data name="AssetManagementO" xml:space="preserve">
+    <value>Zarządzanie zasobami</value>
+  </data>
+  <data name="AssetManagementOHelp" xml:space="preserve">
+    <value>Wyszukaj, dodaj i modyfikuj zasoby.</value>
+  </data>
+  <data name="AssetTrackingDM" xml:space="preserve">
+    <value>Śledzenie wyposażenia</value>
+  </data>
+  <data name="AssetTrackingDMHelp" xml:space="preserve">
+    <value>Uzyskaj dostęp do strony śledzenia zasobów w obszarze Zarządzanie urządzeniami.</value>
+  </data>
+  <data name="AssetUserTrackingO" xml:space="preserve">
+    <value>Śledzenie użytkownika zasobów</value>
+  </data>
+  <data name="AssetUserTrackingOHelp" xml:space="preserve">
+    <value>Uzyskaj dostęp do strony śledzenia użytkownika, w tym kart 'Zamelduj się' i 'Wymelduj się'.</value>
+  </data>
+  <data name="AssignDeviceEnrollmentProgram" xml:space="preserve">
+    <value>Program rejestracji – przypisz profile</value>
+  </data>
+  <data name="AssignDeviceEnrollmentProgramHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do możliwości przypisywania profili DEP do urządzeń. Przejdź na stronę stanu rejestracji</value>
+  </data>
+  <data name="AssignmentRulesAdd" xml:space="preserve">
+    <value>Dodawanie reguł przypisania</value>
+  </data>
+  <data name="AssignmentRulesAddHelp" xml:space="preserve">
+    <value>Dodaj reguły przypisania urządzenia.</value>
+  </data>
+  <data name="AssignmentRulesDelete" xml:space="preserve">
+    <value>Usuwanie reguł przypisania</value>
+  </data>
+  <data name="AssignmentRulesDeleteHelp" xml:space="preserve">
+    <value>Usuń reguły przypisania urządzeń.</value>
+  </data>
+  <data name="AssignmentRulesEdit" xml:space="preserve">
+    <value>Edytowanie reguł przypisania</value>
+  </data>
+  <data name="AssignmentRulesEditHelp" xml:space="preserve">
+    <value>Edytuj reguły przypisania urządzeń</value>
+  </data>
+  <data name="AssignmentSys" xml:space="preserve">
+    <value>Przypisanie</value>
+  </data>
+  <data name="AssignmentSysHelp" xml:space="preserve">
+    <value>Edytuj przypisania statyczne i dynamiczne telekomunikacyjnych planów taryfowych.</value>
+  </data>
+  <data name="Assist" xml:space="preserve">
+    <value>Assist</value>
+  </data>
+  <data name="AssistFileManager" xml:space="preserve">
+    <value>Menadżer plików</value>
+  </data>
+  <data name="AssistFileManagerHelp" xml:space="preserve">
+    <value>Umożliwia zarządzanie plikami na urządzeniu zdalnym</value>
+  </data>
+  <data name="AssistHelp" xml:space="preserve">
+    <value>Zarządzaj zdalnymi rolami zarządzania</value>
+  </data>
+  <data name="AssistRegistryEditor" xml:space="preserve">
+    <value>Edytor rejestru</value>
+  </data>
+  <data name="AssistRegistryEditorHelp" xml:space="preserve">
+    <value>Umożliwia wprowadzanie zmian w rejestrze na urządzeniach mobilnych z systemem Windows</value>
+  </data>
+  <data name="AssistRemoteControl" xml:space="preserve">
+    <value>Zdalne sterowanie</value>
+  </data>
+  <data name="AssistRemoteControlHelp" xml:space="preserve">
+    <value>Umożliwia wyświetlenie i kontrolowanie urządzenia zdalnego</value>
+  </data>
+  <data name="AssistRemoteShell" xml:space="preserve">
+    <value>Powłoka zdalna</value>
+  </data>
+  <data name="AssistRemoteShellHelp" xml:space="preserve">
+    <value>Zapewnia dostęp do wykonywania poleceń za pośrednictwem interfejsu wiersza poleceń urządzenia zdalnego</value>
+  </data>
+  <data name="AssistRemoteView" xml:space="preserve">
+    <value>Widok zdalny</value>
+  </data>
+  <data name="AssistRemoteViewHelp" xml:space="preserve">
+    <value>Zapewnia dostęp do podglądu tylko urządzenia zdalnego. Jeśli opcje Widok zdalny i Sterowanie są włączone, sesja jest inicjowana jako tylko do wyświetlania, ale użytkownik może zostać poproszony o dostęp do ekranu sterowania</value>
+  </data>
+  <data name="AssistSessionCollaboration" xml:space="preserve">
+    <value>Współpraca sesyjna</value>
+  </data>
+  <data name="AssistSessionCollaborationHelp" xml:space="preserve">
+    <value>Umożliwia użytkownikowi konsoli zapraszanie dodatkowych uczestników do sesji zdalnej pomocy</value>
+  </data>
+  <data name="AssistUnattendedAccess" xml:space="preserve">
+    <value>Dostęp nienadzorowany</value>
+  </data>
+  <data name="AssistUnattendedAccessHelp" xml:space="preserve">
+    <value>Zapewnia dostęp do urządzenia w trybie nienadzorowanym</value>
+  </data>
+  <data name="AttachmentsDD" xml:space="preserve">
+    <value>Załączniki</value>
+  </data>
+  <data name="AttachmentsDDHelp" xml:space="preserve">
+    <value>Dodaj i usuń załączniki z urządzeń w Szczegóły urządzenia.</value>
+  </data>
+  <data name="AutoDiscoveryIns" xml:space="preserve">
+    <value>Autowykrywanie</value>
+  </data>
+  <data name="AutoDiscoveryInsHelp" xml:space="preserve">
+    <value>Steruje dostępem do strony autowykrywania w obszarze Instalacja.</value>
+  </data>
+  <data name="AutoEnrollmentHelp" xml:space="preserve">
+    <value>Automatyczna rejestracja</value>
+  </data>
+  <data name="AutomationHelp" xml:space="preserve">
+    <value>Ten zasób wersji poglądowej zapewnia dostęp do naszej platformy automatyzacji za pomocą strony Hub Overview.</value>
+  </data>
+  <data name="AwcmDD" xml:space="preserve">
+    <value>AWCM</value>
+  </data>
+  <data name="AwcmDDHelp" xml:space="preserve">
+    <value>Rozpocznij i zakończ połączenie AirWatch Cloud Manager ze strony Szczegóły urządzenia.</value>
+  </data>
+  <data name="AWProDeviceClearPasscode" xml:space="preserve">
+    <value>Hasło czyszczenia urządzenia AW Pro</value>
+  </data>
+  <data name="AWProDeviceClearPasscodeHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do usuwania hasła/hasła włączania zasilania w AirWatch Pro.</value>
+  </data>
+  <data name="AWProDeviceSendMessage" xml:space="preserve">
+    <value>AW Pro – wyślij wiadomość do urządzenia</value>
+  </data>
+  <data name="AWProDeviceSendMessageHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do wysyłania wiadomości do urządzenia w AW Pro.</value>
+  </data>
+  <data name="AWProGenerateNewCertificate" xml:space="preserve">
+    <value>AW Pro – wygeneruj nowy certyfikat</value>
+  </data>
+  <data name="AWProGenerateNewCertificateHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do generowania nowego certyfikatu</value>
+  </data>
+  <data name="AwProResCategory" xml:space="preserve">
+    <value>AW Pro</value>
+  </data>
+  <data name="AwProResCategoryHelp" xml:space="preserve">
+    <value>Pełny dostęp do AW Pro Console</value>
+  </data>
+  <data name="BatchImportAccounts" xml:space="preserve">
+    <value>Import zbiorczy</value>
+  </data>
+  <data name="BatchImportAccountsHelp" xml:space="preserve">
+    <value>Import partii kont administracyjnych.</value>
+  </data>
+  <data name="BatchImportDM" xml:space="preserve">
+    <value>Import zbiorczy</value>
+  </data>
+  <data name="BatchImportDMHelp" xml:space="preserve">
+    <value>Import partii profili urządzenia.</value>
+  </data>
+  <data name="BatchImportUG" xml:space="preserve">
+    <value>Import zbiorczy</value>
+  </data>
+  <data name="BatchImportUGHelp" xml:space="preserve">
+    <value>Import partii grup użytkowników rejestracji.</value>
+  </data>
+  <data name="BatchImportUserAccount" xml:space="preserve">
+    <value>Import zbiorczy</value>
+  </data>
+  <data name="BatchImportUserAccountHelp" xml:space="preserve">
+    <value>Uzyskaj dostęp do importu partii dla użytkowników rejestracji.</value>
+  </data>
+  <data name="BatchSizeBySmartGroupHelp" xml:space="preserve">
+    <value>Określa liczbę urządzeń, które zostaną uwzględnione w każdej partii w trakcie wewnętrznego wdrażania aplikacji.</value>
+  </data>
+  <data name="BatchStatusAdminGeneral" xml:space="preserve">
+    <value>Stan partii</value>
+  </data>
+  <data name="BatchStatusAdminGeneralHelp" xml:space="preserve">
+    <value>Wyświetl stan importów zbiorczych użytkownika administratora.</value>
+  </data>
+  <data name="BatchStatusUserGeneral" xml:space="preserve">
+    <value>Stan partii</value>
+  </data>
+  <data name="BatchStatusUserGeneralHelp" xml:space="preserve">
+    <value>Uzyskaj dostęp do stanu partii importów zbiorczej rejestracji użytkownika.</value>
+  </data>
+  <data name="BeforeArg" xml:space="preserve">
+    <value>Przed {0}</value>
+  </data>
+  <data name="BESResCategory" xml:space="preserve">
+    <value>BES</value>
+  </data>
+  <data name="BESResCategoryHelp" xml:space="preserve">
+    <value>Włącza ikonę rejestracji BES na stronach pulpitu nawigacyjnego.</value>
+  </data>
+  <data name="BillingBi" xml:space="preserve">
+    <value>Rozliczenia</value>
+  </data>
+  <data name="BillingBiHelp" xml:space="preserve">
+    <value>Zarządzaj stroną szczegółów rozliczeń.</value>
+  </data>
+  <data name="BIOSManagement" xml:space="preserve">
+    <value>Zarządzanie systemem BIOS</value>
+  </data>
+  <data name="BIOSManagementHelp" xml:space="preserve">
+    <value>Zasoby zarządzania systemem BIOS</value>
+  </data>
+  <data name="BooksAb" xml:space="preserve">
+    <value>Książki</value>
+  </data>
+  <data name="BooksAbHelp" xml:space="preserve">
+    <value>Udziela dostępu do modułu Książki w obszarze Aplikacje i książki.</value>
+  </data>
+  <data name="BoxerConfigReadWrite" xml:space="preserve">
+    <value>Konfiguracja aplikacji Boxer</value>
+  </data>
+  <data name="BoxerConfigReadWriteHelp" xml:space="preserve">
+    <value>Do konfiguracji ustawień aplikacji Boxer przekazanej jako aplikacja publiczna</value>
+  </data>
+  <data name="BranchCacheSetup" xml:space="preserve">
+    <value>Konfiguracja pamięci podręcznej oddziału</value>
+  </data>
+  <data name="BranchCacheSetupHelp" xml:space="preserve">
+    <value>Ustawienia konfiguracji i konfiguracji natywnej funkcji dystrybucji aplikacji sieci równorzędnej w Workspace ONE dla systemu Windows 10</value>
+  </data>
+  <data name="BrandingSys" xml:space="preserve">
+    <value>Branding</value>
+  </data>
+  <data name="BrandingSysHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do strony Branding w menu Ogólne.</value>
+  </data>
+  <data name="BrowserDM" xml:space="preserve">
+    <value>Browser</value>
+  </data>
+  <data name="BrowserDMHelp" xml:space="preserve">
+    <value>Konfiguruj zasady przeglądarki w zarządzaniu urządzeniami.</value>
+  </data>
+  <data name="BulkActionUserAccounts" xml:space="preserve">
+    <value>Działanie zbiorcze</value>
+  </data>
+  <data name="BulkActionUserAccountsHelp" xml:space="preserve">
+    <value>Wykonaj działania zbiorcze na kontach użytkownika, takie jak Wyślij wiadomość.</value>
+  </data>
+  <data name="BulkImportCM" xml:space="preserve">
+    <value>Import zbiorczy</value>
+  </data>
+  <data name="BulkImportCMHelp" xml:space="preserve">
+    <value>Importuj zawartość zbiorczo w widoku całej zawartości.</value>
+  </data>
+  <data name="BulkManagementAd" xml:space="preserve">
+    <value>Zarządzanie zbiorcze</value>
+  </data>
+  <data name="BulkManagementAdHelp" xml:space="preserve">
+    <value>Wyświetl i edytuj ustawienia zarządzania zbiorczego.</value>
+  </data>
+  <data name="BulkManagementDM" xml:space="preserve">
+    <value>Zarządzanie zbiorcze</value>
+  </data>
+  <data name="BulkManagementDMHelp" xml:space="preserve">
+    <value>Wykonaj działania zbiorcze na urządzeniach z widoku listy urządzeń.</value>
+  </data>
+  <data name="CatalogSet" xml:space="preserve">
+    <value>Katalog</value>
+  </data>
+  <data name="CatalogSetHelp" xml:space="preserve">
+    <value>Zezwala na dostęp do stron katalogu aplikacji w ustawieniach systemu.</value>
+  </data>
+  <data name="CategoriesCM" xml:space="preserve">
+    <value>Kategorie</value>
+  </data>
+  <data name="CategoriesCMHelp" xml:space="preserve">
+    <value>Utwórz i edytuj kategorie zawartości.</value>
+  </data>
+  <data name="CDNSetupHelp" xml:space="preserve">
+    <value>Ustawienie systemowe CDN</value>
+  </data>
+  <data name="CertificateAuthoritiesApple" xml:space="preserve">
+    <value>Urzędy certyfikacji</value>
+  </data>
+  <data name="CertificateAuthoritiesAppleHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do strony Urzędy certyfikacji w iOS.</value>
+  </data>
+  <data name="CertificateAuthorityCM" xml:space="preserve">
+    <value>Urząd certyfikacji</value>
+  </data>
+  <data name="CertificateAuthorityCMHelp" xml:space="preserve">
+    <value>Uzyskaj dostęp do sekcji urzędu certyfikacji i szablonów certyfikatów.</value>
+  </data>
+  <data name="CertificateManagementDM" xml:space="preserve">
+    <value>Zarządzanie certyfikatami</value>
+  </data>
+  <data name="CertificateManagementDMHelp" xml:space="preserve">
+    <value>Wyświetl i zarządzaj certyfikatami w Zarządzanie urządzeniami.</value>
+  </data>
+  <data name="CertificatesDD" xml:space="preserve">
+    <value>Certyfikaty</value>
+  </data>
+  <data name="CertificatesDDHelp" xml:space="preserve">
+    <value>Wyświetl certyfikaty związane z urządzeniami w Szczegółach urządzenia.</value>
+  </data>
+  <data name="CertificatesExpired" xml:space="preserve">
+    <value>Certyfikaty wygasły</value>
+  </data>
+  <data name="CertificatesRevoked" xml:space="preserve">
+    <value>Unieważniono certyfikaty</value>
+  </data>
+  <data name="ChangePasswordAdminAccounts" xml:space="preserve">
+    <value>Zmień hasło</value>
+  </data>
+  <data name="ChangePasswordAdminAccountsHelp" xml:space="preserve">
+    <value>Zmień hasła administracyjne.</value>
+  </data>
+  <data name="ChromebookSet" xml:space="preserve">
+    <value>Chromebook</value>
+  </data>
+  <data name="ChromebookSetHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do strony Ustawienia agenta w Chromebook.</value>
+  </data>
+  <data name="CloudContentPlatformHelp" xml:space="preserve">
+    <value>Zasób do włączenia opcji UEM w celu uruchomienia usług zawartości w chmurze</value>
+  </data>
+  <data name="CollapsedAriaLabel" xml:space="preserve">
+    <value>zwinięto</value>
+  </data>
+  <data name="CommaSeparatedEmailInfo" xml:space="preserve">
+    <value>Użyj przecinka, aby oddzielić poszczególne adresy e-mail.</value>
+  </data>
+  <data name="ComplianceDD" xml:space="preserve">
+    <value>Zgodność</value>
+  </data>
+  <data name="ComplianceDDHelp" xml:space="preserve">
+    <value>Wyświetl reguły zgodności i stany w Szczegółach urządzenia.</value>
+  </data>
+  <data name="ComplianceDM" xml:space="preserve">
+    <value>Zgodność</value>
+  </data>
+  <data name="ComplianceDMHelp" xml:space="preserve">
+    <value>Wyświetl i zarządzaj zasadami zgodności w Zarządzanie urządzeniami.</value>
+  </data>
+  <data name="ComplianceHub" xml:space="preserve">
+    <value>Zgodność</value>
+  </data>
+  <data name="ComplianceHubHelp" xml:space="preserve">
+    <value>Generuj raporty dla zgodności urządzenia.</value>
+  </data>
+  <data name="CompliancePoliciesEM" xml:space="preserve">
+    <value>Zasady zgodności</value>
+  </data>
+  <data name="CompliancePoliciesEMHelp" xml:space="preserve">
+    <value>Zarządzaj zasadami zgodności zarządzania pocztą e-mail.</value>
+  </data>
+  <data name="ConditionalAccessIntegrations" xml:space="preserve">
+    <value>Integracja dostępu warunkowego</value>
+  </data>
+  <data name="ConditionalAccessIntegrationsHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do udostępniania stanu zgodności urządzenia ze stroną trzecią do celów konfigurowania zasad dostępu warunkowego</value>
+  </data>
+  <data name="ConditionsPPN" xml:space="preserve">
+    <value>Warunki</value>
+  </data>
+  <data name="ConditionsPPNHelp" xml:space="preserve">
+    <value>Utwórz i zarządzaj warunkami zastrzegania dla zasad zastrzegania.</value>
+  </data>
+  <data name="ConsoleSecurityAd" xml:space="preserve">
+    <value>Zabezpieczenia Console</value>
+  </data>
+  <data name="ConsoleSecurityAdHelp" xml:space="preserve">
+    <value>Wyświetl strony zabezpieczeń Console i zarządzaj z globalnej Grupy Organizacyjnej.</value>
+  </data>
+  <data name="ContentDashboard" xml:space="preserve">
+    <value>Pulpit nawigacyjny zawartości</value>
+  </data>
+  <data name="ContentDashboardHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do wyświetlania strony Pulpitu nawigacyjnego zawartości. Przejdź do Menu\Zawartość\Pulpit</value>
+  </data>
+  <data name="ContentDD" xml:space="preserve">
+    <value>Zawartość</value>
+  </data>
+  <data name="ContentDDHelp" xml:space="preserve">
+    <value>Uzyskaj dostęp i zarządzaj zawartością dla urządzenia w Szczegóły urządzenia.</value>
+  </data>
+  <data name="ContentDeliveryServiceHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do ustawień usługi dostarczania zawartości</value>
+  </data>
+  <data name="ContentHub" xml:space="preserve">
+    <value>Zawartość</value>
+  </data>
+  <data name="ContentHubHelp" xml:space="preserve">
+    <value>Generuj raporty dla zawartości urządzenia.</value>
+  </data>
+  <data name="ContentRightsManagementHelp" xml:space="preserve">
+    <value>Ustawienia związane z konfiguracją ochrony funkcji Zarządzania prawami Azure w aplikacji Content.</value>
+  </data>
+  <data name="ContentViewerHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do ustawień przeglądarki Content (przeglądarki HTML5)</value>
+  </data>
+  <data name="CreationPoliciesGr" xml:space="preserve">
+    <value>Zasady tworzenia</value>
+  </data>
+  <data name="CreationPoliciesGrHelp" xml:space="preserve">
+    <value>Wyświetl i zarządzaj zasadami tworzenia alertów.</value>
+  </data>
+  <data name="CustomAttributeAssignmentRulesHelp" xml:space="preserve">
+    <value>Ekran widoku listy pozwalający wyświetlić bieżące reguły przypisywania atrybutów niestandardowych</value>
+  </data>
+  <data name="CustomAttributesSet" xml:space="preserve">
+    <value>Atrybuty niestandardowe</value>
+  </data>
+  <data name="CustomAttributesSetHelp" xml:space="preserve">
+    <value>Wyświetl i zarządzaj atrybutami niestandardowymi w ustawieniach systemu.</value>
+  </data>
+  <data name="CustomFieldsDM" xml:space="preserve">
+    <value>Pola niestandardowe</value>
+  </data>
+  <data name="CustomFieldsDMHelp" xml:space="preserve">
+    <value>Edytuj zmienne niestandardowe w obszarze Konfiguracja urządzeń.</value>
+  </data>
+  <data name="CustomizationAd" xml:space="preserve">
+    <value>Dostosowywanie</value>
+  </data>
+  <data name="CustomizationAdHelp" xml:space="preserve">
+    <value>Udziel zezwolenia na dostosowanie obsługiwanych siatek.</value>
+  </data>
+  <data name="CustomizationHelp" xml:space="preserve">
+    <value>Zezwalaj na dostosowanie obsługiwanych siatek z poziomu użytkownika.
+</value>
+  </data>
+  <data name="CustomMdmCommandHelp" xml:space="preserve">
+    <value>Kontroluje włączanie funkcji wysyłania poleceń do urządzeń iOS, tvOS i macOS przez wklejenie kodu XML polecenia</value>
+  </data>
+  <data name="DataPurgingD" xml:space="preserve">
+    <value>Czyszczenie danych</value>
+  </data>
+  <data name="DataPurgingDHelp" xml:space="preserve">
+    <value>Udziela zezwolenia do modyfikacji ustawień Czyszczenia danych.</value>
+  </data>
+  <data name="DataSamplesAd" xml:space="preserve">
+    <value>Próbki danych</value>
+  </data>
+  <data name="DataSamplesAdHelp" xml:space="preserve">
+    <value>Kontroluje inspekcje historii próbek danych w tabelach bazy danych.</value>
+  </data>
+  <data name="DataSecuritySec" xml:space="preserve">
+    <value>Bezpieczeństwo danych</value>
+  </data>
+  <data name="DataSecuritySecHelp" xml:space="preserve">
+    <value>Zezwala na przeglądanie ekranu Bezpieczeństwo danych.</value>
+  </data>
+  <data name="DeleteCartHelp" xml:space="preserve">
+    <value>Usuwanie pakietów umożliwia administratorowi usunięcie listy numerów seryjnych używanych przez urządzenia udostępnione.</value>
+  </data>
+  <data name="DeleteCustomReportSubscriptionHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do usuwania subskrypcji raportu niestandardowego. Przejdź do sekcji Hub\Reports &amp; Analytics\Custom Reports\Subscriptions</value>
+  </data>
+  <data name="DeleteDeviceDD" xml:space="preserve">
+    <value>Usuń urządzenie</value>
+  </data>
+  <data name="DeleteDeviceDDHelp" xml:space="preserve">
+    <value>Usuń zapisy urządzenia ze strony Szczegóły urządzenia.</value>
+  </data>
+  <data name="DeleteFileServerConfiguration" xml:space="preserve">
+    <value>Usuń konfigurację serwera plików</value>
+  </data>
+  <data name="DeleteFileServerConfigurationHelp" xml:space="preserve">
+    <value>Daje użytkownikowi uprawnienia do usuwania siatki i szczegółów serwerów plików</value>
+  </data>
+  <data name="DeleteNoteHelp" xml:space="preserve">
+    <value>Udziela uprawnienia do usuwania notatek</value>
+  </data>
+  <data name="DeleteTagHelp" xml:space="preserve">
+    <value>Zezwala na usuwanie znacznika</value>
+  </data>
+  <data name="DeleteUnmanagedEM" xml:space="preserve">
+    <value>Usuń niezarządzane</value>
+  </data>
+  <data name="DeleteUnmanagedEMHelp" xml:space="preserve">
+    <value>Usuń urządzenia niezarządzane z pulpitu nawigacyjnego zarządzania pocztą e-mail.</value>
+  </data>
+  <data name="DeleteWindowsTemplateHelp" xml:space="preserve">
+    <value>Umożliwia administratorowi konfigurowanie ustawień usuwania szablonów systemu Windows na pulpicie nawigacyjnym aplikacji Console</value>
+  </data>
+  <data name="DesignateRecipients" xml:space="preserve">
+    <value>WYZNACZ ODBIORCÓW</value>
+  </data>
+  <data name="DetailsPM" xml:space="preserve">
+    <value>Szczegóły</value>
+  </data>
+  <data name="DetailsPMHelp" xml:space="preserve">
+    <value>Wyświetl strony szczegółów drukarki.</value>
+  </data>
+  <data name="DeviceBulkManagementRebootDeviceHelp" xml:space="preserve">
+    <value>Zezwala użytkownikom na ponowne uruchamianie urządzeń w trybie zarządzania zbiorczego</value>
+  </data>
+  <data name="DeviceDetailsHub" xml:space="preserve">
+    <value>Szczegóły urządzenia</value>
+  </data>
+  <data name="DeviceDetailsHubHelp" xml:space="preserve">
+    <value>Generuj raporty dla szczegółów urządzenia.</value>
+  </data>
+  <data name="DeviceDetailsQueryHealthAttestationHelp" xml:space="preserve">
+    <value>Zapytanie o certyfikat zaświadczenia o kondycji BLOB na żądanie</value>
+  </data>
+  <data name="DeviceDetailsQueryOSUpdates" xml:space="preserve">
+    <value>Szczegóły urządzenia – aktualizacje kwerendy systemu operacyjnego</value>
+  </data>
+  <data name="DeviceDetailsQueryOSUpdatesHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do kwerendy informacji o aktualizacji systemu operacyjnego z urządzenia ze strony Szczegóły urządzenia</value>
+  </data>
+  <data name="DeviceEnterpriseReset" xml:space="preserve">
+    <value>Reset firmowy</value>
+  </data>
+  <data name="DeviceEnterpriseResetHelp" xml:space="preserve">
+    <value>Daje uprawnienia do fabrycznego usuwania danych, jednocześnie zachowując rejestrację AirWatch i inne dane firmowe</value>
+  </data>
+  <data name="DeviceGroupsDM" xml:space="preserve">
+    <value>Grupy urządzeń</value>
+  </data>
+  <data name="DeviceGroupsDMHelp" xml:space="preserve">
+    <value>Utwórz i zarządzaj grupami urządzeń w zarządzaniu urządzeniami.</value>
+  </data>
+  <data name="DeviceGroupsSet" xml:space="preserve">
+    <value>Grupy urządzeń</value>
+  </data>
+  <data name="DeviceGroupsSetHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do grup urządzeń w ustawieniach systemu.</value>
+  </data>
+  <data name="DeviceInventoryHub" xml:space="preserve">
+    <value>Spis urządzeń</value>
+  </data>
+  <data name="DeviceInventoryHubHelp" xml:space="preserve">
+    <value>Generuj raporty dla spisu urządzeń.</value>
+  </data>
+  <data name="DeviceLimitRestrictionEdit" xml:space="preserve">
+    <value>Edytuj ograniczenie limitu urządzeń</value>
+  </data>
+  <data name="DeviceLimitRestrictionEditHelp" xml:space="preserve">
+    <value>Daje uprawnienia do modyfikowania i odczytywania limitu urządzeń w sekcji Ustawienia / Urządzenia i użytkownicy / Ogólne / Rejestracja / Ograniczenia</value>
+  </data>
+  <data name="DevicePM" xml:space="preserve">
+    <value>Urządzenie</value>
+  </data>
+  <data name="DevicePMHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do strony Urządzenie drukarki</value>
+  </data>
+  <data name="DevicesHub" xml:space="preserve">
+    <value>Urządzenia</value>
+  </data>
+  <data name="DevicesHubHelp" xml:space="preserve">
+    <value>Generuj raporty dla grupowania i metryk urządzeń.</value>
+  </data>
+  <data name="DevicesRESTMdm" xml:space="preserve">
+    <value>Urządzenia</value>
+  </data>
+  <data name="DevicesRESTMdmHelp" xml:space="preserve">
+    <value>Interfejsy REST API dla zarządzania urządzeniami</value>
+  </data>
+  <data name="DeviceWipeDD" xml:space="preserve">
+    <value>Czyszczenie danych z urządzenia</value>
+  </data>
+  <data name="DeviceWipeDDHelp" xml:space="preserve">
+    <value>Zdalnie usuń dane urządzenia ze strony Szczegóły urządzenia, przywracając je do ustawień fabrycznych.</value>
+  </data>
+  <data name="DeviceWipeHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do usuwania danych z urządzenia.</value>
+  </data>
+  <data name="DeviceWipesSet" xml:space="preserve">
+    <value>Usuwanie danych z urządzenia</value>
+  </data>
+  <data name="DeviceWipesSetHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do zarządzania cyklem życia urządzenia w Ustawienia systemu.</value>
+  </data>
+  <data name="DiagnosticsAd" xml:space="preserve">
+    <value>Diagnostyka</value>
+  </data>
+  <data name="DiagnosticsAdHelp" xml:space="preserve">
+    <value>Zarządzaj ustawieniami diagnostyki w ustawieniach systemu.</value>
+  </data>
+  <data name="DisableActivationLockBypassCodeHelp" xml:space="preserve">
+    <value>Umożliwia administratorowi wyłączenie kodu obejścia blokady aktywacji na urządzeniu z systemem iOS. Przejdź do sekcji Urządzenia/Szczegóły/Podsumowanie/ albo do sekcji Urządzenia/Lista, wybierz urządzenie i kliknij Więcej.</value>
+  </data>
+  <data name="DisableActivationLockBypassDD" xml:space="preserve">
+    <value>Wyłącz obejście blokady aktywacji</value>
+  </data>
+  <data name="DisableActivationLockBypassDDHelp" xml:space="preserve">
+    <value>Wyłącz kod obejścia blokady aktywacji na urządzeniu iOS.</value>
+  </data>
+  <data name="DisplayVideoImportHelp" xml:space="preserve">
+    <value>Importowanie wideo w aplikacji AirWatch przy użyciu Wistia</value>
+  </data>
+  <data name="DisplayVideoViewHelp" xml:space="preserve">
+    <value>Wyświetl listę plików wideo</value>
+  </data>
+  <data name="DistributionDM" xml:space="preserve">
+    <value>Dystrybucja</value>
+  </data>
+  <data name="DistributionDMHelp" xml:space="preserve">
+    <value>Uzyskaj dostęp do ścieżki serwera dystrybucji na stronach edycji lokalizacji i szczegółu lokalizacji.</value>
+  </data>
+  <data name="DomainJoinConfigEdit" xml:space="preserve">
+    <value>Edytuj</value>
+  </data>
+  <data name="DomainJoinConfigEditHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do konfiguracji Dodaj/Edytuj/Przypisz/Usuń domenę.</value>
+  </data>
+  <data name="DownloadContentCM" xml:space="preserve">
+    <value>Pobierz zawartość</value>
+  </data>
+  <data name="DownloadContentCMHelp" xml:space="preserve">
+    <value>Pobierz zawartość w widoku Cała zawartość.</value>
+  </data>
+  <data name="DownloadLinuxPullServiceInstallerHelp" xml:space="preserve">
+    <value>Daje uprawnienia do pobierania Instalatora usługi pobierania w systemie Linux</value>
+  </data>
+  <data name="DownloadWindowsPullServiceInstallerHelp" xml:space="preserve">
+    <value>Daje uprawnienia do pobierania Instalatora usługi pobierania w systemie Windows</value>
+  </data>
+  <data name="DropshipProvisioningEdit" xml:space="preserve">
+    <value>Edytuj ustawienia funkcji fabrycznego przydzielania zasobów</value>
+  </data>
+  <data name="DropshipProvisioningHelp" xml:space="preserve">
+    <value>Kontroluj dostęp do włączania funkcji fabrycznego przydzielania zasobów</value>
+  </data>
+  <data name="DxModeEM" xml:space="preserve">
+    <value>Tryb Dx</value>
+  </data>
+  <data name="DxModeEMHelp" xml:space="preserve">
+    <value>Włącz i wyłącz tryb Dx w celu rozwiązywania problemów urządzenia z pulpitu nawigacyjnego zarządzania pocztą e-mail.</value>
+  </data>
+  <data name="EasIntegrationEm" xml:space="preserve">
+    <value>Integracja EAS</value>
+  </data>
+  <data name="EasIntegrationEmHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do strony Mobile E-mail Gateway w kategorii Ogólne.</value>
+  </data>
+  <data name="EditAdminGroupHelp" xml:space="preserve">
+    <value>Uprawnienia do edycji grupy administratorów. 
+</value>
+  </data>
+  <data name="EditDD" xml:space="preserve">
+    <value>Edytuj</value>
+  </data>
+  <data name="EditDDHelp" xml:space="preserve">
+    <value>Edytuj informacje o urządzeniu, takie jak przyjazna nazwa, numer zasobu itd.</value>
+  </data>
+  <data name="EditFileServerConfiguration" xml:space="preserve">
+    <value>Edytuj konfigurację serwera plików</value>
+  </data>
+  <data name="EditFileServerConfigurationHelp" xml:space="preserve">
+    <value>Daje użytkownikowi uprawnienia do edytowania siatki i szczegółów serwerów plików </value>
+  </data>
+  <data name="EditNoteHelp" xml:space="preserve">
+    <value>Udziela uprawnienia do edytowania notatki</value>
+  </data>
+  <data name="EditTagHelp" xml:space="preserve">
+    <value>Udziela uprawnienia do edytowania znaczników</value>
+  </data>
+  <data name="EditTypeGr" xml:space="preserve">
+    <value>Edytuj typ</value>
+  </data>
+  <data name="EditUserAccounts" xml:space="preserve">
+    <value>Edytuj</value>
+  </data>
+  <data name="EditUserAccountsHelp" xml:space="preserve">
+    <value>Edytuj konta użytkowników rejestracji.</value>
+  </data>
+  <data name="EmailAddressAlreadyExists" xml:space="preserve">
+    <value>Adres e-mail już istnieje</value>
+  </data>
+  <data name="EmailDM" xml:space="preserve">
+    <value>E-mail</value>
+  </data>
+  <data name="EmailDMHelp" xml:space="preserve">
+    <value>Zablokuj i zezwalaj na żądania ActiveSync.</value>
+  </data>
+  <data name="EmailManagementHub" xml:space="preserve">
+    <value>Zarządzanie pocztą e-mail</value>
+  </data>
+  <data name="EmailManagementHubHelp" xml:space="preserve">
+    <value>Generuj raporty dla zarządzania pocztą e-mail.</value>
+  </data>
+  <data name="EMDashboardMigrateDevice" xml:space="preserve">
+    <value>Pulpit nawigacyjny zarządzania pocztą e-mail — migracja urządzenia</value>
+  </data>
+  <data name="EMDashboardMigrateDeviceHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do przenoszenia jednego lub wielu urządzeń pomiędzy konfiguracjami MEM</value>
+  </data>
+  <data name="EnableDigitalExperienceTelemetry" xml:space="preserve">
+    <value>Włącz cyfrową telemetrię</value>
+  </data>
+  <data name="EnableDigitalExperienceTelemetryHelp" xml:space="preserve">
+    <value>Włącz zbieranie i przesyłanie danych cyfrowej telemetrii do Workspace ONE Intelligence.</value>
+  </data>
+  <data name="EnableDisableAd" xml:space="preserve">
+    <value>Włącz/wyłącz</value>
+  </data>
+  <data name="EnableDisableAdHelp" xml:space="preserve">
+    <value>Włącz lub wyłącz opcję Memcache.</value>
+  </data>
+  <data name="EnableSystemSettingsAuditHelp" xml:space="preserve">
+    <value>Włącza/wyłącza audyt ustawień przez kody systemowe.
+</value>
+  </data>
+  <data name="EncryptionKeyManagementHelp" xml:space="preserve">
+    <value>Daje uprawnienia do wykonywania Zarządzania kluczami szyfrowania. Przejdź do sekcji System \ Zabezpieczenia \ Zarządzanie kluczami szyfrowania</value>
+  </data>
+  <data name="EnrollmentDM" xml:space="preserve">
+    <value>Rejestracja</value>
+  </data>
+  <data name="EnrollmentDMHelp" xml:space="preserve">
+    <value>Zmodyfikuj ograniczenia rejestracji.</value>
+  </data>
+  <data name="EnrollmentProgramSet" xml:space="preserve">
+    <value>Program rejestracji</value>
+  </data>
+  <data name="EnrollmentProgramSetHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do programu rejestracji urządzenia.</value>
+  </data>
+  <data name="EnrollmentProgramUserGen" xml:space="preserve">
+    <value>Program rejestracji</value>
+  </data>
+  <data name="EnrollmentProgramUserGenHelp" xml:space="preserve">
+    <value>Uzyskaj dostęp do profili Programu rejestracji urządzeń dla urządzeń.</value>
+  </data>
+  <data name="EnrollmentSet" xml:space="preserve">
+    <value>Rejestracja</value>
+  </data>
+  <data name="EnrollmentSetHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do strony rejestracji w menu Ogólne.</value>
+  </data>
+  <data name="EnrollOffline" xml:space="preserve">
+    <value>Zarejestruj w trybie Offline</value>
+  </data>
+  <data name="EnrollOfflineHelp" xml:space="preserve">
+    <value>Ten zasób zezwala każdemu administratorowi z określoną rolą na rejestrację zarejestrowanych urządzeń w trybie offline</value>
+  </data>
+  <data name="EnterAdminModeHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do polecenia wejścia w tryb administratora dla aplikacji Launcher</value>
+  </data>
+  <data name="EnterEmailAddressToDesignateRecipients" xml:space="preserve">
+    <value>Wprowadź adresy e-mail, aby wyznaczyć odbiorców</value>
+  </data>
+  <data name="EnterpriseIntegrationSys" xml:space="preserve">
+    <value>Integracja systemowa firmowy</value>
+  </data>
+  <data name="EnterpriseIntegrationSysHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do integracji systemowej firmy</value>
+  </data>
+  <data name="EnterpriseResourceAddHelp" xml:space="preserve">
+    <value>Daje uprawnienia do dodawania nowych zasobów firmy.</value>
+  </data>
+  <data name="EnterpriseResourceHelp" xml:space="preserve">
+    <value>Udziela dostępu do strony 'zasoby firmy'.</value>
+  </data>
+  <data name="EnterpriseWipeDD" xml:space="preserve">
+    <value>Usunięcie danych firmowych</value>
+  </data>
+  <data name="EnterpriseWipeDDHelp" xml:space="preserve">
+    <value>Zezwala na wyrejestrowanie urządzenia na stronie Szczegóły urządzenia, usuwając wszystkie dane i ustawienia firmowe.</value>
+  </data>
+  <data name="EnterpriseWipeDM" xml:space="preserve">
+    <value>Usunięcie danych firmowych</value>
+  </data>
+  <data name="EnterpriseWipeDMHelp" xml:space="preserve">
+    <value>Zezwala na wyrejestrowanie urządzenia, usuwając wszystkie dane i ustawienia firmowe.</value>
+  </data>
+  <data name="EquipmentEq" xml:space="preserve">
+    <value>Sprzęt</value>
+  </data>
+  <data name="EquipmentEqHelp" xml:space="preserve">
+    <value>Zarządzanie sprzętem. Przejdź do Menu/Sprzęt.</value>
+  </data>
+  <data name="ESignature" xml:space="preserve">
+    <value>Podpis elektroniczny</value>
+  </data>
+  <data name="ESignatureHelp" xml:space="preserve">
+    <value>Ustawienia podpisów elektronicznych pod zawartością. Przejdź do sekcji Ustawienia\Zawartość\Zaawansowane\Podpis elektroniczny</value>
+  </data>
+  <data name="ESignatures" xml:space="preserve">
+    <value>Podpisy elektroniczne</value>
+  </data>
+  <data name="EulDD" xml:space="preserve">
+    <value>EULA</value>
+  </data>
+  <data name="EulDDHelp" xml:space="preserve">
+    <value>Wyświetl przeszłe i obecne warunki użytkowania dla urządzenia w szczegółach urządzenia.</value>
+  </data>
+  <data name="EventLogAd" xml:space="preserve">
+    <value>Dziennik zdarzeń</value>
+  </data>
+  <data name="EventLogAdHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do dzienników zdarzeń Console.</value>
+  </data>
+  <data name="EventLogHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do odczytu dzienników zdarzeń 
+</value>
+  </data>
+  <data name="EventsPM" xml:space="preserve">
+    <value>Zdarzenia</value>
+  </data>
+  <data name="EventsPMHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do strony Dzienniki zdarzeń drukarki.</value>
+  </data>
+  <data name="ExitAdminModeHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do polecenia Wyjdź z trybu administratora</value>
+  </data>
+  <data name="ExitAirWatchLauncherHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do polecenia Wyjdź z programu Launcher</value>
+  </data>
+  <data name="ExpandedAriaLabel" xml:space="preserve">
+    <value>rozwinięto</value>
+  </data>
+  <data name="ExpireAllUsersGr" xml:space="preserve">
+    <value>Wygasa dla wszystkich użytkowników</value>
+  </data>
+  <data name="ExpireAllUsersGrHelp" xml:space="preserve">
+    <value>Włącza przycisk „Wygaś wszystkie hasła użytkowników”.</value>
+  </data>
+  <data name="ExportUG" xml:space="preserve">
+    <value>Eksportuj</value>
+  </data>
+  <data name="ExportUGHelp" xml:space="preserve">
+    <value>Eksportuj grupy użytkowników.</value>
+  </data>
+  <data name="ExportUserAccounts" xml:space="preserve">
+    <value>Eksportuj</value>
+  </data>
+  <data name="ExportUserAccountsHelp" xml:space="preserve">
+    <value>Eksportuje konta użytkowników.</value>
+  </data>
+  <data name="ExportUserCategories" xml:space="preserve">
+    <value>Eksportuj</value>
+  </data>
+  <data name="ExportUserCategoriesHelp" xml:space="preserve">
+    <value>Eksportuj kategorie rejestracji kont użytkownika.</value>
+  </data>
+  <data name="ExportUserRoles" xml:space="preserve">
+    <value>Eksportuj</value>
+  </data>
+  <data name="ExportUserRolesHelp" xml:space="preserve">
+    <value>Eksportuj role użytkowników.</value>
+  </data>
+  <data name="FeatureFlagEdit" xml:space="preserve">
+    <value>Edytuj flagę funkcji</value>
+  </data>
+  <data name="FeatureFlagEditHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do funkcji edytowania i aktualizowania flag funkcji.</value>
+  </data>
+  <data name="FeatureFlagRead" xml:space="preserve">
+    <value>Odczytaj flagę funkcji</value>
+  </data>
+  <data name="FeatureFlagReadHelp" xml:space="preserve">
+    <value>Kontroluje możliwość odczytywania stanu flagi funkcji.</value>
+  </data>
+  <data name="FileActionsPPN" xml:space="preserve">
+    <value>Działania dotyczące pliku</value>
+  </data>
+  <data name="FileActionsPPNHelp" xml:space="preserve">
+    <value>Utwórz i zarządzaj działaniami pliku dla zasad zastrzegania.</value>
+  </data>
+  <data name="FileEncryptionStats" xml:space="preserve">
+    <value>Statystyki szyfrowania plików</value>
+  </data>
+  <data name="FileEncryptionStatsHelp" xml:space="preserve">
+    <value>Ustawienia magazynu dzierżawcy: TenantStorage.FileEncryptionStats</value>
+  </data>
+  <data name="FileManagerHelp" xml:space="preserve">
+    <value>Udziela uprawnienia zdalnego dostępu do plików urządzeń z Windows Mobile
+</value>
+  </data>
+  <data name="FilepathIns" xml:space="preserve">
+    <value>Ścieżka pliku</value>
+  </data>
+  <data name="FilepathInsHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do strony Synchronizacja plików w obszarze Zaawansowane.</value>
+  </data>
+  <data name="FilesPM" xml:space="preserve">
+    <value>Pliki</value>
+  </data>
+  <data name="FilesPMHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do strony Pliki drukarki.</value>
+  </data>
+  <data name="FilesPr" xml:space="preserve">
+    <value>Pliki</value>
+  </data>
+  <data name="FilesPrHelp" xml:space="preserve">
+    <value>Zarządzaj plikami drukarki.</value>
+  </data>
+  <data name="FindDeviceDD" xml:space="preserve">
+    <value>Znajdź urządzenie</value>
+  </data>
+  <data name="FindDeviceDDHelp" xml:space="preserve">
+    <value>Ustaw stan urządzenia, aby rozpocząć alerty dźwiękowe w celu odnalezienia go przez użytkownika. Dostępne w szczegółach urządzenia.</value>
+  </data>
+  <data name="FindDeviceHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do ustawienia stanu urządzenia, aby rozpocząć ostrzeżenia dźwiękowe, które pozwolą użytkownikowi na lokalizację urządzenia. Dostępne w HTML5 na ekranie Szczegóły urządzenia.</value>
+  </data>
+  <data name="FriendlyNameSet" xml:space="preserve">
+    <value>Przyjazna nazwa</value>
+  </data>
+  <data name="FriendlyNameSetHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do strony Przyjazna nazwa w obszarze Ogólne.</value>
+  </data>
+  <data name="GatewayStatusEm" xml:space="preserve">
+    <value>Stan bramy</value>
+  </data>
+  <data name="GatewayStatusEmHelp" xml:space="preserve">
+    <value>Kontroluje ustawienia stanu bramy poczty e-mail.</value>
+  </data>
+  <data name="GeneralDD" xml:space="preserve">
+    <value>Ogólne</value>
+  </data>
+  <data name="GeneralDDHelp" xml:space="preserve">
+    <value>Kontroluj różne, podstawowe funkcje strony Szczegóły urządzenia.</value>
+  </data>
+  <data name="GeneralHub" xml:space="preserve">
+    <value>Ogólne</value>
+  </data>
+  <data name="GeneralHubHelp" xml:space="preserve">
+    <value>Uzyskaj dostęp do modułu raportów.</value>
+  </data>
+  <data name="GeneralPM" xml:space="preserve">
+    <value>Ogólne</value>
+  </data>
+  <data name="GeneralPMHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do strony ogólnej drukarki.</value>
+  </data>
+  <data name="GeneralSettingsEm" xml:space="preserve">
+    <value>Ustawienia ogólne</value>
+  </data>
+  <data name="GeneralSettingsEmHelp" xml:space="preserve">
+    <value>Kontroluje ogólne ustawienia poczty e-mail.</value>
+  </data>
+  <data name="GeneralSOaP" xml:space="preserve">
+    <value>Ogólne</value>
+  </data>
+  <data name="GeneralSOaPHelp" xml:space="preserve">
+    <value>Uzyskaj dostęp do wszystkich interfejsów API usług AirWatch poza poleceniami usunięcia.</value>
+  </data>
+  <data name="GeneralSys" xml:space="preserve">
+    <value>Ogólne</value>
+  </data>
+  <data name="GeneralSysHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do strony Ogólne w obszarze System.</value>
+  </data>
+  <data name="GeofencingAreaDM" xml:space="preserve">
+    <value>Obszar geofencingu</value>
+  </data>
+  <data name="GeofencingAreaDMHelp" xml:space="preserve">
+    <value>Zarządzaj ustawieniami funkcji geofencingu dla profili.</value>
+  </data>
+  <data name="GeofencingHelp" xml:space="preserve">
+    <value>Daje uprawnienia do Wyświetl/Edytuj ustawienia geofencingu. 
+</value>
+  </data>
+  <data name="GeofencingSet" xml:space="preserve">
+    <value>Geofencing</value>
+  </data>
+  <data name="GeofencingSetHelp" xml:space="preserve">
+    <value>Daje uprawnienia do Wyświetl/Edytuj ustawienia geofencingu.</value>
+  </data>
+  <data name="GettingStartedApplicationHelp" xml:space="preserve">
+    <value>Kontroluje ścieżkę Wprowadzenie dla Mobile Application Management</value>
+  </data>
+  <data name="GettingStartedSys" xml:space="preserve">
+    <value>Wprowadzenie</value>
+  </data>
+  <data name="GettingStartedSysHelp" xml:space="preserve">
+    <value>Zezwala na przeglądanie przewodnika Wprowadzenie.</value>
+  </data>
+  <data name="GooglePlayIntegrationAn" xml:space="preserve">
+    <value>Integracja z Google Play</value>
+  </data>
+  <data name="GooglePlayIntegrationAnHelp" xml:space="preserve">
+    <value>Zezwala na przeglądanie i edycję integracji z Android Market.</value>
+  </data>
+  <data name="GroupsRESTSystem" xml:space="preserve">
+    <value>Grupy</value>
+  </data>
+  <data name="GroupsRESTSystemHelp" xml:space="preserve">
+    <value>Interfejsy REST API dla zarządzania grupami</value>
+  </data>
+  <data name="GSuiteRotatePasswordAction" xml:space="preserve">
+    <value>Rotacja hasła G Suite</value>
+  </data>
+  <data name="GSuiteRotatePasswordActionHelp" xml:space="preserve">
+    <value>Możliwość rotacji podstawowego hasła G Suite oraz profili poczty e-mail.</value>
+  </data>
+  <data name="HeroCards" xml:space="preserve">
+    <value>Mobile Flows</value>
+  </data>
+  <data name="HeroCardsHelp" xml:space="preserve">
+    <value>Interfejs użytkownika konfiguracji dla zapleczy i usług Mobile Flows</value>
+  </data>
+  <data name="HorizonWorkspaceSettings" xml:space="preserve">
+    <value>Ustawienia Horizon Workspace</value>
+  </data>
+  <data name="HorizonWorkspaceSettingsHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do przeglądania i edycji ustawień Workspace Horizon. Ścieżka nawigacji: Ustawienia \ Aplikacje \ Integracja aplikacji \ Horizon Workspace</value>
+  </data>
+  <data name="HyperLinkDeleteAd" xml:space="preserve">
+    <value>Usuwanie hiperlinku</value>
+  </data>
+  <data name="HyperLinkDeleteAdHelp" xml:space="preserve">
+    <value>Zezwala na usuwanie załączników hiperlinków ze strony szczegółów urządzenia</value>
+  </data>
+  <data name="InProductSupport" xml:space="preserve">
+    <value>Pomoc techniczna w produkcie</value>
+  </data>
+  <data name="InProductSupportHelp" xml:space="preserve">
+    <value>Dostęp do narzędzia obsługi w produkcie, za pomocą którego administratorzy mogą przeszukiwać dokumentację i uzyskiwać pomoc bezpośrednio w UEM.</value>
+  </data>
+  <data name="InstallationAdvancedIns" xml:space="preserve">
+    <value>Instalacja zaawansowana</value>
+  </data>
+  <data name="InstallationAdvancedInsHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do strony Zaawansowane w obszarze Instalacja.</value>
+  </data>
+  <data name="InstallationIns" xml:space="preserve">
+    <value>Instalacja</value>
+  </data>
+  <data name="InstallationInsHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do strony Instalacja.</value>
+  </data>
+  <data name="InstallFontsApple" xml:space="preserve">
+    <value>Zainstaluj czcionki</value>
+  </data>
+  <data name="InstallFontsAppleHelp" xml:space="preserve">
+    <value>Włącza Zainstaluj czcionki w Ustawieniach.</value>
+  </data>
+  <data name="InstallIntelligentHub" xml:space="preserve">
+    <value>Zainstaluj Intelligent Hub</value>
+  </data>
+  <data name="InstallIntelligentHubHelp" xml:space="preserve">
+    <value>Zapewnia dostęp do zdalnej instalacji aplikacji Intelligent Hub na zarejestrowanym urządzeniu</value>
+  </data>
+  <data name="InsufficientResourceToSaveAdmin" xml:space="preserve">
+    <value>Nie można zapisać. Twoje konto administratora nie ma wystarczających uprawnień, aby zmodyfikować ten zapis.</value>
+  </data>
+  <data name="Intelligence" xml:space="preserve">
+    <value>Intelligence</value>
+  </data>
+  <data name="IntelligenceHelp" xml:space="preserve">
+    <value>Dostęp do strony Intelligence.</value>
+  </data>
+  <data name="InternalAppsAb" xml:space="preserve">
+    <value>Aplikacje wewnętrzne</value>
+  </data>
+  <data name="InternalAppsAbHelp" xml:space="preserve">
+    <value>Przekaż i zarządzaj aplikacjami utworzonymi wewnętrznie.</value>
+  </data>
+  <data name="LanguageManagementAd" xml:space="preserve">
+    <value>Zarządzanie językami</value>
+  </data>
+  <data name="LanguageManagementAdHelp" xml:space="preserve">
+    <value>Wyświetl element menu dla Zarządzania językiem i uzyskaj dostęp do strony aktywacji edytora lokalizacji i pakietu językowego.</value>
+  </data>
+  <data name="LearnMoreAccess" xml:space="preserve">
+    <value>Dostęp do sekcji Dowiedz się więcej</value>
+  </data>
+  <data name="LearnMoreAccessContact" xml:space="preserve">
+    <value>Kontakt dot. dostępu do sekcji Dowiedz się więcej</value>
+  </data>
+  <data name="LearnMoreAccessContactHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do kontaktów w sekcji Informacje i aktualizacja</value>
+  </data>
+  <data name="LearnMoreAccessHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do sekcji Informacje i aktualizacja</value>
+  </data>
+  <data name="LegacyAndroidMigration" xml:space="preserve">
+    <value>Migracja w starszych wersjach systemu Android</value>
+  </data>
+  <data name="LegacyAndroidMigrationHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do starszej strony migracji w systemie Android w celu zmigrowania starszych urządzeń z systemem Android do systemu Android Enterprise z profilem firmowym.</value>
+  </data>
+  <data name="LicensesAd" xml:space="preserve">
+    <value>Licencje</value>
+  </data>
+  <data name="LicensesAdHelp" xml:space="preserve">
+    <value>Przypisuje uprawnienia do modyfikacji licencji.</value>
+  </data>
+  <data name="LinuxHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do stron ustawień w ustawieniach systemu Linux.</value>
+  </data>
+  <data name="LocalizationSys" xml:space="preserve">
+    <value>Lokalizacja</value>
+  </data>
+  <data name="LocalizationSysHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do ustawień Lokalizacji.</value>
+  </data>
+  <data name="LocationCodeGr" xml:space="preserve">
+    <value>Kod lokalizacji</value>
+  </data>
+  <data name="LocationCodeGrHelp" xml:space="preserve">
+    <value>Edytuj kod lokalizacji na stronach Dodaj/Edytuj lokalizację.</value>
+  </data>
+  <data name="LocationDD" xml:space="preserve">
+    <value>Lokalizacja</value>
+  </data>
+  <data name="LocationDDHelp" xml:space="preserve">
+    <value>Wyświetl lokalizację i dane Breadcrumbs dla urządzeń.</value>
+  </data>
+  <data name="LocationGroupTypeHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do strony Typ Grupy organizacyjnej.
+</value>
+  </data>
+  <data name="LocationsGr" xml:space="preserve">
+    <value>Lokalizacje</value>
+  </data>
+  <data name="LocationsGrHelp" xml:space="preserve">
+    <value>Wyświetl lokalizacje na potrzeby grup organizacyjnych i zarządzaj nimi.</value>
+  </data>
+  <data name="LocationsHub" xml:space="preserve">
+    <value>Lokalizacje</value>
+  </data>
+  <data name="LocationsHubHelp" xml:space="preserve">
+    <value>Generuj raporty dla lokalizacji.</value>
+  </data>
+  <data name="LocationStatusHelp" xml:space="preserve">
+    <value>Kontroluje dostęp to linka Statusu lokalizacji. Kontroluje dostęp do dodawania nowego statusu lokalizacji.
+</value>
+  </data>
+  <data name="LocationTypeHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do strony Typ lokalizacji
+</value>
+  </data>
+  <data name="LocationZonesGr" xml:space="preserve">
+    <value>Strefy lokalizacji</value>
+  </data>
+  <data name="LocationZonesGrHelp" xml:space="preserve">
+    <value>Dodaj i edytuj strefy lokalizacji do lokalizacji.</value>
+  </data>
+  <data name="LockDD" xml:space="preserve">
+    <value>Zablokuj</value>
+  </data>
+  <data name="LockDDHelp" xml:space="preserve">
+    <value>Zdalnie zablokuj urządzenie lub zablokuj funkcję jednokrotnego logowania (SSO) do aplikacji.</value>
+  </data>
+  <data name="LogDD" xml:space="preserve">
+    <value>Dziennik</value>
+  </data>
+  <data name="LogDDHelp" xml:space="preserve">
+    <value>Wyświetl dzienniki w szczegółach urządzenia.</value>
+  </data>
+  <data name="LoggingAd" xml:space="preserve">
+    <value>Rejestrowanie</value>
+  </data>
+  <data name="LoggingAdHelp" xml:space="preserve">
+    <value>Zezwala na wyświetlanie ustawień dziennika zdarzeń.</value>
+  </data>
+  <data name="LoggingAdL" xml:space="preserve">
+    <value>Rejestrowanie</value>
+  </data>
+  <data name="LoggingAdLHelp" xml:space="preserve">
+    <value>Wyświetl i edytuj ustawienia rejestrowania dla dziennika systemowego i rejestrowania docelowego.</value>
+  </data>
+  <data name="LoginHistoryAdminGen" xml:space="preserve">
+    <value>Historia logowania</value>
+  </data>
+  <data name="LoginHistoryAdminGenHelp" xml:space="preserve">
+    <value>Uzyskaj dostęp do strony Historia logowania na stronie Konta administratora i Preferencje użytkownika.</value>
+  </data>
+  <data name="LookupFields" xml:space="preserve">
+    <value>Pola wyszukiwania</value>
+  </data>
+  <data name="LookupFieldsHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do strony Pola wyszukiwania w obszarze Ogólne.</value>
+  </data>
+  <data name="MacOsXApple" xml:space="preserve">
+    <value>macOS</value>
+  </data>
+  <data name="MacOsXAppleHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do stron ustawień macOS w ustawieniach systemu.</value>
+  </data>
+  <data name="MailRecipient" xml:space="preserve">
+    <value>Odbiorca poczty</value>
+  </data>
+  <data name="MaintenanceUpgradeNotificationInfo" xml:space="preserve">
+    <value>Wybierz opcję, która zostanie użyta do określenia odbiorców powiadomień Workspace ONE UEM i Workspace ONE Assist. W przypadku wyboru opcji Administracyjna zgoda wstępna administratorzy zobaczą opcję Konserwacja i aktualizacja w obszarze Ustawienia konta &gt; Powiadomienia.</value>
+  </data>
+  <data name="MaintenanceUpgradeNotifications" xml:space="preserve">
+    <value>Powiadomienia o konserwacji i aktualizacji</value>
+  </data>
+  <data name="ManageAdminGroups" xml:space="preserve">
+    <value>Zarządzaj</value>
+  </data>
+  <data name="ManageAdminGroupsHelp" xml:space="preserve">
+    <value>Wykonaj działania w grupach administratorów, takie jak synchronizacja lub scalanie.</value>
+  </data>
+  <data name="ManageBaselines" xml:space="preserve">
+    <value>Zarządzanie liniami bazowymi</value>
+  </data>
+  <data name="ManageBaselinesHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do zarządzania liniami bazowymi, w tym uprawnień do dodawania nowych, edytowania i przypisywania linii bazowej.</value>
+  </data>
+  <data name="ManageContentCM" xml:space="preserve">
+    <value>Zarządzaj zawartością</value>
+  </data>
+  <data name="ManageContentCMHelp" xml:space="preserve">
+    <value>Dodaj nową zawartość i zarządzaj zawartością istniejącą.</value>
+  </data>
+  <data name="ManageDevicesCM" xml:space="preserve">
+    <value>Zarządzaj urządzeniami</value>
+  </data>
+  <data name="ManageDevicesCMHelp" xml:space="preserve">
+    <value>Zdalnie zainstaluj i usuń zawartość na urządzeniach zarządzanych.</value>
+  </data>
+  <data name="ManageDeviceSensors" xml:space="preserve">
+    <value>Zarządzaj czujnikami urządzeń</value>
+  </data>
+  <data name="ManageDeviceSensorsHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do dodawania, edycji, przypisywania lub usuwania czujników urządzenia</value>
+  </data>
+  <data name="ManageDM" xml:space="preserve">
+    <value>Zarządzaj</value>
+  </data>
+  <data name="ManageDMHelp" xml:space="preserve">
+    <value>Zarządzaj profilami urządzenia.</value>
+  </data>
+  <data name="ManagedSettingsApple" xml:space="preserve">
+    <value>Ustawienia zarządzane</value>
+  </data>
+  <data name="ManagedSettingsAppleHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do Ustawienia zarządzane w iOS.</value>
+  </data>
+  <data name="ManageGr" xml:space="preserve">
+    <value>Zarządzaj</value>
+  </data>
+  <data name="ManageGrHelp" xml:space="preserve">
+    <value>Zarządzaj Grupami Organizacyjnymi.</value>
+  </data>
+  <data name="ManageNodeAd" xml:space="preserve">
+    <value>Zarządzaj węzłami</value>
+  </data>
+  <data name="ManageNodeAdHelp" xml:space="preserve">
+    <value>Dodaj, edytuj, usuń i opróżnij węzły Memcached.</value>
+  </data>
+  <data name="ManagePM" xml:space="preserve">
+    <value>Zarządzaj</value>
+  </data>
+  <data name="ManagePMHelp" xml:space="preserve">
+    <value>Wyślij zdalne polecenia i kwerendy do drukarki.</value>
+  </data>
+  <data name="ManageTimeWindow" xml:space="preserve">
+    <value>Zarządzanie przedziałem czasu</value>
+  </data>
+  <data name="ManageTimeWindowHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do zarządzania przedziałem czasu, w tym uprawnień do dodawania nowego, edytowania i przypisywania przedziału czasu.</value>
+  </data>
+  <data name="ManageUG" xml:space="preserve">
+    <value>Zarządzaj</value>
+  </data>
+  <data name="ManageUGHelp" xml:space="preserve">
+    <value>Wykonaj działania dla grup użytkowników rejestracji, takie jak synchronizacja lub scalanie.</value>
+  </data>
+  <data name="MapsIns" xml:space="preserve">
+    <value>Mapy</value>
+  </data>
+  <data name="MapsInsHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do strony Mapy w obszarze Instalacja.</value>
+  </data>
+  <data name="MembersAdminGroup" xml:space="preserve">
+    <value>Członkowie</value>
+  </data>
+  <data name="MembersAdminGroupHelp" xml:space="preserve">
+    <value>Wyświetl członków grupy administratorów.</value>
+  </data>
+  <data name="MembersUG" xml:space="preserve">
+    <value>Członkowie</value>
+  </data>
+  <data name="MembersUGHelp" xml:space="preserve">
+    <value>Uzyskaj dostęp do listy członków grupy użytkowników.</value>
+  </data>
+  <data name="MenuLinkForTagHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do menu znaczników</value>
+  </data>
+  <data name="MessageTemplatesSet" xml:space="preserve">
+    <value>Szablony wiadomości</value>
+  </data>
+  <data name="MessageTemplatesSetHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do szablonów wiadomości.</value>
+  </data>
+  <data name="MessagingDD" xml:space="preserve">
+    <value>Wiadomości</value>
+  </data>
+  <data name="MessagingDDHelp" xml:space="preserve">
+    <value>Wyślij wiadomości e-mail, powiadomienia Push lub wiadomości SMS do urządzeń.</value>
+  </data>
+  <data name="MessagingSet" xml:space="preserve">
+    <value>Wiadomości</value>
+  </data>
+  <data name="MessagingSetHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do strony Wiadomości w obszarze Ogólne.</value>
+  </data>
+  <data name="MigrateUserAccounts" xml:space="preserve">
+    <value>Migracja</value>
+  </data>
+  <data name="MigrateUserAccountsHelp" xml:space="preserve">
+    <value>Wykonaj migrację kont użytkownika z rejestracji podstawowej do LDAP.</value>
+  </data>
+  <data name="MirrorPM" xml:space="preserve">
+    <value>Dublowanie</value>
+  </data>
+  <data name="MirrorPMHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do strony Dublowanie drukarki</value>
+  </data>
+  <data name="MobileFlowsAuthToken" xml:space="preserve">
+    <value>Token uwierzytelniania elementów Mobile Flows</value>
+  </data>
+  <data name="MobileFlowsAuthTokenHelp" xml:space="preserve">
+    <value>Generowanie certyfikatu JWT, który ma być używany przez serwer Mobile Flow</value>
+  </data>
+  <data name="MobileFlowsServerUrl" xml:space="preserve">
+    <value>Adres URL serwera Mobile Flows</value>
+  </data>
+  <data name="MobileFlowsServerUrlHelp" xml:space="preserve">
+    <value>Adres URL serwera Mobile Flows</value>
+  </data>
+  <data name="MobileFlowsTenantAdd" xml:space="preserve">
+    <value>Dodaj dzierżawcę Mobile Flows</value>
+  </data>
+  <data name="MobileFlowsTenantAddHelp" xml:space="preserve">
+    <value>Zastrzeganie dzierżawcy klienta do usługi w chmurze Mobile Flow</value>
+  </data>
+  <data name="ModifyAgentSet" xml:space="preserve">
+    <value>Modyfikuj Hub</value>
+  </data>
+  <data name="ModifyAgentSetHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do ustawień Modyfikuj Hub.</value>
+  </data>
+  <data name="MonitoringAd" xml:space="preserve">
+    <value>Monitorowanie</value>
+  </data>
+  <data name="MonitoringAdHelp" xml:space="preserve">
+    <value>Daje uprawnienia do edycji i dostępu do ustawień monitorowania.</value>
+  </data>
+  <data name="MoreHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do menu „Więcej”.  
+</value>
+  </data>
+  <data name="NacIntegrationSys" xml:space="preserve">
+    <value>Integracja z NAC</value>
+  </data>
+  <data name="NacIntegrationSysHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do strony Integracja kontroli dostępu sieciowego (NAC) w obszarze Ogólne.</value>
+  </data>
+  <data name="NavigateExportStatusHelp" xml:space="preserve">
+    <value>Dostęp do strony stanu eksportu w celu wyświetlania i pobierania siatki eksportów.</value>
+  </data>
+  <data name="NavigationO" xml:space="preserve">
+    <value>Nawigacja</value>
+  </data>
+  <data name="NavigationOHelp" xml:space="preserve">
+    <value>Uzyskaj dostęp do menu Zaawansowane.</value>
+  </data>
+  <data name="NetworkAccessControlIntegrationHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do strony Integracja kontroli dostępu sieciowego (NAC) w obszarze Ogólne. 
+</value>
+  </data>
+  <data name="NetworkDD" xml:space="preserve">
+    <value>Sieć</value>
+  </data>
+  <data name="NetworkDDHelp" xml:space="preserve">
+    <value>Uzyskaj dostęp do strony Sieć w szczegółach urządzenia.</value>
+  </data>
+  <data name="NetworkRangeGr" xml:space="preserve">
+    <value>Zasięg sieci</value>
+  </data>
+  <data name="NetworkRangeGrHelp" xml:space="preserve">
+    <value>Zarządzaj zasięgami sieci dla grup organizacyjnych i importuj je.</value>
+  </data>
+  <data name="NetworkRangeHelp" xml:space="preserve">
+    <value>Udziela uprawnienia do wyświetlania ekranu Zasięgu sieci</value>
+  </data>
+  <data name="NoFiltersSelected" xml:space="preserve">
+    <value>Nie wybrano filtrów</value>
+  </data>
+  <data name="NotesDD" xml:space="preserve">
+    <value>Uwagi</value>
+  </data>
+  <data name="NotesDDHelp" xml:space="preserve">
+    <value>Dodaj, edytuj i usuń notatki z urządzenia w szczegółach urządzenia.</value>
+  </data>
+  <data name="NotificationRecipients" xml:space="preserve">
+    <value>Odbiorcy powiadomień</value>
+  </data>
+  <data name="NotificationsAd" xml:space="preserve">
+    <value>Powiadomienia</value>
+  </data>
+  <data name="NotificationsAdHelp" xml:space="preserve">
+    <value>Wyświetl i edytuj ustawienia powiadomień o wydarzeniu.</value>
+  </data>
+  <data name="NotifyAb" xml:space="preserve">
+    <value>Powiadom</value>
+  </data>
+  <data name="NotifyAbHelp" xml:space="preserve">
+    <value>Wyślij powiadomienia przez aplikacje urządzeń.</value>
+  </data>
+  <data name="Office365MamIntegrationSettings" xml:space="preserve">
+    <value>Ustawienia integracji Office365</value>
+  </data>
+  <data name="Office365MamIntegrationSettingsHelp" xml:space="preserve">
+    <value>Zasób do kontrolowania ekranu ustawień systemu pod kątem dodawania domyślnych zasad DLP do aplikacji pakietu Office 365</value>
+  </data>
+  <data name="Old" xml:space="preserve">
+    <value>Stare</value>
+  </data>
+  <data name="OldPPO" xml:space="preserve">
+    <value>Stare</value>
+  </data>
+  <data name="OldPPOHelp" xml:space="preserve">
+    <value>Uzyskaj dostęp do starszych ustawień dla profili zastrzegania.</value>
+  </data>
+  <data name="OrganizationGroupChangeAd" xml:space="preserve">
+    <value>Zmiana Grupy organizacyjnej</value>
+  </data>
+  <data name="OrganizationGroupChangeAdHelp" xml:space="preserve">
+    <value>Zezwala na zmianę grup organizacyjnych przy użyciu menu rozwijanego</value>
+  </data>
+  <data name="OrganizationGroupCodeGr" xml:space="preserve">
+    <value>Identyfikator grupy organizacyjnej</value>
+  </data>
+  <data name="OrganizationGroupCodeGrHelp" xml:space="preserve">
+    <value>Edytuj identyfikator grupy organizacyjnej.</value>
+  </data>
+  <data name="OsUpdateStatusHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do sprawdzania stanu aktualizacji systemu operacyjnego na urządzeniach. Przejdź kolejno do Urządzenia / Wyświetl szczegóły</value>
+  </data>
+  <data name="OutlookAddinSet" xml:space="preserve">
+    <value>Dodatek Outlook</value>
+  </data>
+  <data name="OutlookAddinSetHelp" xml:space="preserve">
+    <value>Włącz i wyłącz wtyczkę dodatku Outlook</value>
+  </data>
+  <data name="OverrideJobLogLevelHelp" xml:space="preserve">
+    <value>Daje użytkownikowi uprawnienia do zastępowania poziomu dziennika zadań za pośrednictwem DeviceDetails, gdy urządzenia obsługują tę funkcję.</value>
+  </data>
+  <data name="OverviewHub" xml:space="preserve">
+    <value>Przegląd</value>
+  </data>
+  <data name="OverviewHubHelp" xml:space="preserve">
+    <value>Uzyskaj dostęp do strony przeglądu monitora.</value>
+  </data>
+  <data name="P2PSetupHelp" xml:space="preserve">
+    <value>Strona ustawień zawierająca podsekcje różnych dostawców P2P</value>
+  </data>
+  <data name="PasscodeDD" xml:space="preserve">
+    <value>Kod dostępu</value>
+  </data>
+  <data name="PasscodeDDHelp" xml:space="preserve">
+    <value>Wyczyść i zresetuj hasła dla urządzeń i aplikacji.</value>
+  </data>
+  <data name="PerformanceTuningHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do parametrów Dostrajania wydajności w Ustawienia systemu.
+</value>
+  </data>
+  <data name="PerformanceTuningIns" xml:space="preserve">
+    <value>Dostrajanie wydajności</value>
+  </data>
+  <data name="PerformanceTuningInsHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do parametrów Dostrajania wydajności w Ustawienia systemu.</value>
+  </data>
+  <data name="PersonalContentSet" xml:space="preserve">
+    <value>Zawartość osobista</value>
+  </data>
+  <data name="PersonalContentSetHelp" xml:space="preserve">
+    <value>Zezwala na modyfikację ustawień dotyczących Zawartości osobistej</value>
+  </data>
+  <data name="PlansTel" xml:space="preserve">
+    <value>Plany taryfowe</value>
+  </data>
+  <data name="PlansTelHelp" xml:space="preserve">
+    <value>Zarządzaj skonfigurowane telekomunikacyjne plany taryfowe dla Grupy organizacyjnej.</value>
+  </data>
+  <data name="PoliciesPPN" xml:space="preserve">
+    <value>Zasady</value>
+  </data>
+  <data name="PoliciesPPNHelp" xml:space="preserve">
+    <value>Utwórz i zarządzaj zasadami zastrzegania.</value>
+  </data>
+  <data name="PolicyEngineSettingsEditHelp" xml:space="preserve">
+    <value>Pozwolenie na edycję ustawień aparatu zasad. Przejdź do sekcji Konfiguracja\Ustawienia\Administrator\Ustawienia aparatu zasad</value>
+  </data>
+  <data name="PolicyEngineSettingsViewHelp" xml:space="preserve">
+    <value>Daje uprawnienia do wyświetlania ustawień aparatu zasad.</value>
+  </data>
+  <data name="PolicyOverrideEM" xml:space="preserve">
+    <value>Zastąpienie zasad</value>
+  </data>
+  <data name="PolicyOverrideEMHelp" xml:space="preserve">
+    <value>Zastąp zasady poczty e-mail, aby umieścić urządzenia na liście dozwolonych lub niedozwolonych.</value>
+  </data>
+  <data name="PolicySigningCertificateHelp" xml:space="preserve">
+    <value>Daje uprawnienia do ładowania certyfikatu ECC. Przejdź do sekcji System \ Zaawansowane \ Certyfikat podpisywania zasad</value>
+  </data>
+  <data name="PowerPM" xml:space="preserve">
+    <value>Zasilanie</value>
+  </data>
+  <data name="PowerPMHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do strony Zasilanie drukarki</value>
+  </data>
+  <data name="PrinterManagementProfile" xml:space="preserve">
+    <value>Profil zarządzania drukarką</value>
+  </data>
+  <data name="PrinterManagementProfiles" xml:space="preserve">
+    <value>Profile zarządzania drukarką</value>
+  </data>
+  <data name="PrinterProfiles" xml:space="preserve">
+    <value>Profile drukarki</value>
+  </data>
+  <data name="PrinterProfilesHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do wyświetlania siatki profili drukarki. Przejdź do Menu\Zarządzanie drukarki\Profile</value>
+  </data>
+  <data name="PrinterServersPM" xml:space="preserve">
+    <value>Serwery wydruku</value>
+  </data>
+  <data name="PrinterServersPMHelp" xml:space="preserve">
+    <value>Wyświetl, dodaj i usuń serwery wydruku na stronie ustawień drukarki.</value>
+  </data>
+  <data name="PrinterTestPrint" xml:space="preserve">
+    <value>Wydruk próbny</value>
+  </data>
+  <data name="PrinterTestPrintHelp" xml:space="preserve">
+    <value>Zezwala na przesłanie wydruku próbnego.</value>
+  </data>
+  <data name="PrinterViewAveryDennisonGeneralHelp" xml:space="preserve">
+    <value>Karta „Ogólne” na stronie szczegółów urządzenia Avery Dennison. </value>
+  </data>
+  <data name="PrinterViewCpclPM" xml:space="preserve">
+    <value>CPCL</value>
+  </data>
+  <data name="PrinterViewCpclPMHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do strony CPCL drukarki.</value>
+  </data>
+  <data name="PrinterViewDataMaxONeilAutoUpdateHelp" xml:space="preserve">
+    <value>Karta „Automatyczna aktualizacja” dla strony szczegółów urządzenia Datamax. </value>
+  </data>
+  <data name="PrinterViewDataMaxONeilBatteryHelp" xml:space="preserve">
+    <value>Karta „Akumulator” na stronie szczegółów urządzenia drukarki Datamax. </value>
+  </data>
+  <data name="PrinterViewDataMaxONeilBluetoothHelp" xml:space="preserve">
+    <value>Karta „Bluetooth” na stronie szczegółów urządzenia Datamax. </value>
+  </data>
+  <data name="PrinterViewDataMaxONeilCustomSettingsHelp" xml:space="preserve">
+    <value>Umożliwia wyświetlanie karty Ustawienia niestandardowe na stronie szczegółów urządzenia Datamax-O'Neil. </value>
+  </data>
+  <data name="PrinterViewDataMaxONeilGeneralHelp" xml:space="preserve">
+    <value>Karta Ogólne na stronie szczegółów urządzenia Datamax.  </value>
+  </data>
+  <data name="PrinterViewDataMaxONeilGeneralNetworkHelp" xml:space="preserve">
+    <value>Karta „Ustawienia ogólne sieci” na stronie szczegółów urządzenia Datamax. </value>
+  </data>
+  <data name="PrinterViewDataMaxONeilMediaLabelHelp" xml:space="preserve">
+    <value>Karta „Etykieta nośnika” na stronie szczegółów urządzenia Datamax. </value>
+  </data>
+  <data name="PrinterViewDataMaxONeilMiscellaneousHelp" xml:space="preserve">
+    <value>Karta „Różne” na stronie szczegółów urządzenia Datamax. </value>
+  </data>
+  <data name="PrinterViewDataMaxONeilPrintControlHelp" xml:space="preserve">
+    <value>Karta „Sterowanie drukowaniem” na stronie szczegółów urządzenia Datamax. </value>
+  </data>
+  <data name="PrinterViewDataMaxONeilRS232Help" xml:space="preserve">
+    <value>Karta „RS232” na stronie szczegółów urządzenia Datamax. </value>
+  </data>
+  <data name="PrinterViewDataMaxONeilSystemSettingsHelp" xml:space="preserve">
+    <value>Karta „Ustawienia systemu” na stronie szczegółów urządzenia Datamax. </value>
+  </data>
+  <data name="PrinterViewDataMaxONeilWifiHelp" xml:space="preserve">
+    <value>Karta „Wi-Fi” dla strony szczegółów urządzenia Datamax. </value>
+  </data>
+  <data name="PrinterViewEpsonGeneral" xml:space="preserve">
+    <value>Wyświetl szczegóły drukarki firmy Epson: Karta Ogólne</value>
+  </data>
+  <data name="PrinterViewEpsonGeneralHelp" xml:space="preserve">
+    <value>Wyświetl szczegóły drukarki firmy Epson</value>
+  </data>
+  <data name="PrinterViewEpsonPrintSettingsHelp" xml:space="preserve">
+    <value>Zezwala użytkownikowi na dostęp do ustawień drukowania Epson</value>
+  </data>
+  <data name="PrivacySet" xml:space="preserve">
+    <value>Prywatność</value>
+  </data>
+  <data name="PrivacySetHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do strony Prywatność w menu Ogólne.</value>
+  </data>
+  <data name="ProductImprovementProgramSettings" xml:space="preserve">
+    <value>Ustawienia programu udoskonalania produktów</value>
+  </data>
+  <data name="ProductImprovementProgramSettingsHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do strony ustawień programów udoskonalania produktów w sekcji Ustawienia &gt; Administrator &gt; Programy udoskonalania produktów.</value>
+  </data>
+  <data name="ProductivityAppsAb" xml:space="preserve">
+    <value>Aplikacje zwiększające produktywność</value>
+  </data>
+  <data name="ProductProvisioningHub" xml:space="preserve">
+    <value>Przydzielanie produktów</value>
+  </data>
+  <data name="ProductProvisioningHubHelp" xml:space="preserve">
+    <value>Generuj raporty dla zastrzegania produktu.</value>
+  </data>
+  <data name="ProductProvisioningSettingsHelp" xml:space="preserve">
+    <value>Konfigurowanie określonych funkcji zastrzegania produktów.</value>
+  </data>
+  <data name="ProductSetsHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do zestawów produktów w obszarze Produkty Nowe</value>
+  </data>
+  <data name="ProfileEncryptAndExportXmlDM" xml:space="preserve">
+    <value>Szyfrowanie profilu i eksport pliku XML</value>
+  </data>
+  <data name="ProfileEncryptAndExportXmlDMHelp" xml:space="preserve">
+    <value>Przekaż certyfikaty dla szyfrowania profilu i eksportowania profilu XML.</value>
+  </data>
+  <data name="ProfilesApple" xml:space="preserve">
+    <value>Profile</value>
+  </data>
+  <data name="ProfilesAppleHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do strony Profile w iOS.</value>
+  </data>
+  <data name="ProfilesDD" xml:space="preserve">
+    <value>Profile</value>
+  </data>
+  <data name="ProfilesDDHelp" xml:space="preserve">
+    <value>Wyświetl i zarządzaj profilami konfiguracyjnymi w szczegółach urządzenia.</value>
+  </data>
+  <data name="ProfilesHub" xml:space="preserve">
+    <value>Profile</value>
+  </data>
+  <data name="ProfilesHubHelp" xml:space="preserve">
+    <value>Generuj raporty dla profili urządzenia.</value>
+  </data>
+  <data name="ProfilesPM" xml:space="preserve">
+    <value>Profile</value>
+  </data>
+  <data name="ProfilesPMHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do strony Profile drukarki</value>
+  </data>
+  <data name="ProfilesPPN" xml:space="preserve">
+    <value>Profile</value>
+  </data>
+  <data name="ProfilesPPNHelp" xml:space="preserve">
+    <value>Uzyskaj dostęp do strony profili zastrzegania.</value>
+  </data>
+  <data name="ProfilesPr" xml:space="preserve">
+    <value>Profile</value>
+  </data>
+  <data name="ProfilesPrHelp" xml:space="preserve">
+    <value>Zarządzaj profilami drukarki.</value>
+  </data>
+  <data name="ProfilesRESTMdm" xml:space="preserve">
+    <value>Profile</value>
+  </data>
+  <data name="ProfilesRESTMdmHelp" xml:space="preserve">
+    <value>Interfejsy REST API dla profili urządzenia</value>
+  </data>
+  <data name="ProvisioningHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do strony zastrzegania WinMo.</value>
+  </data>
+  <data name="ProvisioningPolicyConditionCopyHelp" xml:space="preserve">
+    <value>Daje użytkownikowi uprawnienia do kopiowania warunku.</value>
+  </data>
+  <data name="ProvisioningPolicyFileActionCopyHelp" xml:space="preserve">
+    <value>Daje użytkownikowi uprawnienia do kopiowania pliku lub działania zastrzegania.</value>
+  </data>
+  <data name="ProxiesAndTunnelHelp" xml:space="preserve">
+    <value>Zezwala na wyświetlanie i edycję serwerów proxy i ustawień aplikacji Tunnel</value>
+  </data>
+  <data name="ProxyIns" xml:space="preserve">
+    <value>Proxy</value>
+  </data>
+  <data name="ProxyInsHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do strony Ustawienia proxy w obszarze Ogólne.</value>
+  </data>
+  <data name="PublicAppsAb" xml:space="preserve">
+    <value>Aplikacje publiczne</value>
+  </data>
+  <data name="PublicAppsAbHelp" xml:space="preserve">
+    <value>Przypisz i zarządzaj aplikacjami ze sklepu publicznego.</value>
+  </data>
+  <data name="PullServiceInstallersPPN" xml:space="preserve">
+    <value>Instalatory usługi pobierania</value>
+  </data>
+  <data name="PullServiceInstallersPPNHelp" xml:space="preserve">
+    <value>Wyświetl i pobierz instalatory usługi Pull.</value>
+  </data>
+  <data name="PurchasedApplicationsAb" xml:space="preserve">
+    <value>Aplikacje zakupione</value>
+  </data>
+  <data name="PurchasedApplicationsAbHelp" xml:space="preserve">
+    <value>Importuj zakupione zbiorczo licencje aplikacji i zarządzaj ich dystrybucją.</value>
+  </data>
+  <data name="QnxSet" xml:space="preserve">
+    <value>QNX</value>
+  </data>
+  <data name="QnxSetHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do strony Ustawienia agenta w systemie QNX.</value>
+  </data>
+  <data name="QRCodeHelp" xml:space="preserve">
+    <value>Konfiguracja rejestracji kodu QR</value>
+  </data>
+  <data name="QueryDD" xml:space="preserve">
+    <value>Kwerenda</value>
+  </data>
+  <data name="QueryDDHelp" xml:space="preserve">
+    <value>Kwerenduj urządzenia, aby aktualizować informacje o ich stanie.</value>
+  </data>
+  <data name="ReadDeviceManufacturerDetails" xml:space="preserve">
+    <value>Przeczytaj informacje o producencie urządzenia</value>
+  </data>
+  <data name="ReadDeviceManufacturerDetailsHelp" xml:space="preserve">
+    <value>Przeczytaj informacje o producencie urządzenia przez interfejs API</value>
+  </data>
+  <data name="ReadDeviceModelDetails" xml:space="preserve">
+    <value>Przeczytaj informacje o modelu urządzenia</value>
+  </data>
+  <data name="ReadDeviceModelDetailsHelp" xml:space="preserve">
+    <value>Przeczytaj informacje o modelu urządzenia przez interfejs API</value>
+  </data>
+  <data name="RefreshEsimHelp" xml:space="preserve">
+    <value>Daje uprawnienia do aktualizacji planu komórkowego karty eSIM</value>
+  </data>
+  <data name="RegistryManagerHelp" xml:space="preserve">
+    <value>Udziela uprawnienia zdalnego dostępu do rejestru urządzeń WinMo.
+</value>
+  </data>
+  <data name="RelayServerBatching" xml:space="preserve">
+    <value>Tworzenie partii serwerów przekazujących</value>
+  </data>
+  <data name="RelayServerBatchingHelp" xml:space="preserve">
+    <value>Steruje dostępem do zbiorczego importowania i stanu partii serwera przekazującego</value>
+  </data>
+  <data name="RelayServerRemoteFileList" xml:space="preserve">
+    <value>Lista plików zdalnych serwera przekazującego</value>
+  </data>
+  <data name="RelayServerRemoteFileListHelp" xml:space="preserve">
+    <value>Steruje dostępem do listy plików zdalnych serwera przekazującego</value>
+  </data>
+  <data name="RelayServersPPN" xml:space="preserve">
+    <value>Serwery przekazujące</value>
+  </data>
+  <data name="RelayServersPPNHelp" xml:space="preserve">
+    <value>Wyświetl i zarządzaj zastrzeganiem serwerów przekazujących</value>
+  </data>
+  <data name="RemoteControlDD" xml:space="preserve">
+    <value>Zdalne sterowanie</value>
+  </data>
+  <data name="RemoteControlDDHelp" xml:space="preserve">
+    <value>Zdalnie steruj urządzeniem.</value>
+  </data>
+  <data name="RemoteManagementSettingsEditHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do edytowania strony zarządzania zdalnego w ramach integracji systemowej firmy. Przejdź do sekcji Konfiguracja\Ustawienia\Integracja systemowa firmy\Zarządzanie zdalne</value>
+  </data>
+  <data name="RemoteSet" xml:space="preserve">
+    <value>Zdalny</value>
+  </data>
+  <data name="RemoteSetHelp" xml:space="preserve">
+    <value>Daje uprawnienia do modyfikacji ustawień związanych z Magazynem zdalnym.</value>
+  </data>
+  <data name="RemoveDeviceEnrollmentProgram" xml:space="preserve">
+    <value>Program rejestracji – usuń profil</value>
+  </data>
+  <data name="RemoveDeviceEnrollmentProgramHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do usuwania profili DEP z urządzeń. Przejdź na stronę Stan rejestracji.</value>
+  </data>
+  <data name="RenameDeviceHelp" xml:space="preserve">
+    <value>Polecenie zmiany nazwy urządzenia. </value>
+  </data>
+  <data name="RenewCertificateHelp" xml:space="preserve">
+    <value>Udziela uprawnienia do odnowienia certyfikatu. 
+</value>
+  </data>
+  <data name="RepairHub" xml:space="preserve">
+    <value>Naprawianie aplikacji Hub</value>
+  </data>
+  <data name="RepairHubHelp" xml:space="preserve">
+    <value>Daje uprawnienia do naprawy Hub na urządzeniu.</value>
+  </data>
+  <data name="ReportIOS7Compatability" xml:space="preserve">
+    <value>Zgodność z iOS 7</value>
+  </data>
+  <data name="ReportIOS7CompatabilityHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do raportu zgodności iOS 7</value>
+  </data>
+  <data name="ReportsAlertsSys" xml:space="preserve">
+    <value>Raporty i alerty</value>
+  </data>
+  <data name="ReportsAlertsSysHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do strony Raporty i Alerty.</value>
+  </data>
+  <data name="ReportsIns" xml:space="preserve">
+    <value>Raporty</value>
+  </data>
+  <data name="ReportsInsHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do strony Raporty w obszarze Instalacja.</value>
+  </data>
+  <data name="RepositoriesCM" xml:space="preserve">
+    <value>Repozytoria</value>
+  </data>
+  <data name="RepositoriesCMHelp" xml:space="preserve">
+    <value>Dodaj, edytuj i usuń repozytoria zawartości.</value>
+  </data>
+  <data name="ReputationAnalysisAb" xml:space="preserve">
+    <value>Analiza reputacji</value>
+  </data>
+  <data name="ReputationAnalysisAbHelp" xml:space="preserve">
+    <value>Uruchom analizę reputacji aplikacji i wyświetl jej wyniki.</value>
+  </data>
+  <data name="RequestCheckinDD" xml:space="preserve">
+    <value>Zażądaj zaewidencjonowania</value>
+  </data>
+  <data name="RequestCheckinDDHelp" xml:space="preserve">
+    <value>Wyślij wiadomość do urządzenia z żądaniem zaewidencjonowania. Dostępne w szczegółach urządzenia.</value>
+  </data>
+  <data name="ResBlueprints" xml:space="preserve">
+    <value>Blueprinty</value>
+  </data>
+  <data name="ResBlueprintsHelp" xml:space="preserve">
+    <value>Utwórz jedną lokalizację, aby dodawać i powiązywać aplikacje, zasoby i zasady ograniczania do użytkowników i urządzeń.</value>
+  </data>
+  <data name="ResCompliancePolicy" xml:space="preserve">
+    <value>Zasady zgodności</value>
+  </data>
+  <data name="ResCompliancePolicyHelp" xml:space="preserve">
+    <value>Uzyskaj dostęp do informacji dotyczących zasad zgodności przez interfejsy REST API</value>
+  </data>
+  <data name="ResConsoleNotifications" xml:space="preserve">
+    <value>Powiadomienia Console</value>
+  </data>
+  <data name="ResConsoleNotificationsHelp" xml:space="preserve">
+    <value>Przeglądaj i współdziałaj z administracyjnymi powiadomieniami z Console</value>
+  </data>
+  <data name="ResCustomAttributes" xml:space="preserve">
+    <value>Atrybuty niestandardowe</value>
+  </data>
+  <data name="ResCustomAttributesHelp" xml:space="preserve">
+    <value>REST API, aby umożliwić dostęp do atrybutów niestandardowych</value>
+  </data>
+  <data name="ResCustomReports" xml:space="preserve">
+    <value>Raporty niestandardowe</value>
+  </data>
+  <data name="ResCustomReportsHelp" xml:space="preserve">
+    <value>Uzyskaj dostęp do strony raportów niestandardowych.</value>
+  </data>
+  <data name="ResDirectMEMAdvLog" xml:space="preserve">
+    <value>Zaawansowane rejestrowanie bezpośredniego MEM</value>
+  </data>
+  <data name="ResDirectMEMAdvLogHelp" xml:space="preserve">
+    <value>Użycie tej funkcji przez pulpit nawigacyjny MEM umożliwia wyświetlanie zaawansowanej kolejki rejestracji MEG w Console konsoli na podstawie każdego urządzenia.</value>
+  </data>
+  <data name="ResEmailNotification" xml:space="preserve">
+    <value>Ustawienia usługi powiadomień poczty e-mail</value>
+  </data>
+  <data name="ResEmailNotificationHelp" xml:space="preserve">
+    <value>Zarządzaj ustawieniami ENS.</value>
+  </data>
+  <data name="ResGlobalServiceExchange" xml:space="preserve">
+    <value>AppleCare</value>
+  </data>
+  <data name="ResGlobalServiceExchangeHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do strony AppleCare w sekcji Apple.</value>
+  </data>
+  <data name="ResJasperIntegration" xml:space="preserve">
+    <value>Integracja z Jasper</value>
+  </data>
+  <data name="ResJasperIntegrationHelp" xml:space="preserve">
+    <value>Zarządzaj ustawieniami integracji z Jasper.</value>
+  </data>
+  <data name="ResLifecycleNotifications" xml:space="preserve">
+    <value>Powiadomienia dotyczące cyklu życia</value>
+  </data>
+  <data name="ResLifecycleNotificationsHelp" xml:space="preserve">
+    <value>Uzyskaj dostęp do powiadomień cyklu życia w szczegółach urządzenia.</value>
+  </data>
+  <data name="ResMutualTlsAuthentication" xml:space="preserve">
+    <value>Wzajemne uwierzytelnianie TLS</value>
+  </data>
+  <data name="ResMutualTlsAuthenticationHelp" xml:space="preserve">
+    <value>Konfiguracja wzajemnego uwierzytelniania TLS pomiędzy Workspace ONE Intelligent Hub i serwerem Workspace ONE UEM</value>
+  </data>
+  <data name="ResNotifications" xml:space="preserve">
+    <value>Powiadomienia</value>
+  </data>
+  <data name="ResNotificationsHelp" xml:space="preserve">
+    <value>Przeglądaj i współdziałaj z administracyjnymi powiadomieniami z Console</value>
+  </data>
+  <data name="ResOverrideJobLogLevel" xml:space="preserve">
+    <value>Zastąpienie poziomu dziennika zadań</value>
+  </data>
+  <data name="ResOverrideJobLogLevelHelp" xml:space="preserve">
+    <value>Uzyskaj dostęp do ustawień zastąpienia poziomu dziennika zadań.</value>
+  </data>
+  <data name="ResProductProvisioning" xml:space="preserve">
+    <value>Przydzielanie produktów</value>
+  </data>
+  <data name="ResProductProvisioningHelp" xml:space="preserve">
+    <value>Zarządzaj ustawieniami zastrzegania produktu na poziomie grupy.</value>
+  </data>
+  <data name="ResProducts" xml:space="preserve">
+    <value>Produkty</value>
+  </data>
+  <data name="ResProductSets" xml:space="preserve">
+    <value>Zestawy produktów</value>
+  </data>
+  <data name="ResProductSetsHelp" xml:space="preserve">
+    <value>Możliwość przeglądania i zarządzania zestawami produktów.</value>
+  </data>
+  <data name="ResProductsHelp" xml:space="preserve">
+    <value>Umożliwia dostęp do kolekcji produktów za pomocą interfejsów API REST w Console.</value>
+  </data>
+  <data name="RestAPIAirWatchEducationWrite" xml:space="preserve">
+    <value>REST API Education settings Write</value>
+  </data>
+  <data name="RestAPIAirWatchEducationWriteHelp" xml:space="preserve">
+    <value>REST API do zapisywania i edycji ustawień Edukacji</value>
+  </data>
+  <data name="RestApiCartDelete" xml:space="preserve">
+    <value>REST API Cart Delete</value>
+  </data>
+  <data name="RestApiCartDeleteHelp" xml:space="preserve">
+    <value>REST API do usuwania danych Pakietu</value>
+  </data>
+  <data name="RestApiCartWrite" xml:space="preserve">
+    <value>REST API Cart Write</value>
+  </data>
+  <data name="RestApiCartWriteHelp" xml:space="preserve">
+    <value>REST API do zapisywania i edycji danych Pakietu</value>
+  </data>
+  <data name="RestApiClassAssignmentSave" xml:space="preserve">
+    <value>REST API Class Assignments Save</value>
+  </data>
+  <data name="RestApiClassAssignmentSaveHelp" xml:space="preserve">
+    <value>REST API połączeniowe umożliwiające zapisanie przypisania klasy</value>
+  </data>
+  <data name="RestAPIClassDelete" xml:space="preserve">
+    <value>REST API Class Delete</value>
+  </data>
+  <data name="RestAPIClassDeleteHelp" xml:space="preserve">
+    <value>REST API do usuwania danych klasy</value>
+  </data>
+  <data name="RestAPIClassLoad" xml:space="preserve">
+    <value>REST API Class Read</value>
+  </data>
+  <data name="RestAPIClassLoadHelp" xml:space="preserve">
+    <value>REST API do wyświetlania danych klasy</value>
+  </data>
+  <data name="RestAPIClassWrite" xml:space="preserve">
+    <value>REST API Class Write</value>
+  </data>
+  <data name="RestAPIClassWriteHelp" xml:space="preserve">
+    <value>REST API do zapisywania i edycji danych klasy</value>
+  </data>
+  <data name="RestApiEduAppsForDeviceRead" xml:space="preserve">
+    <value>REST API Apps For Device Read</value>
+  </data>
+  <data name="RestApiEduAppsForDeviceReadhelp" xml:space="preserve">
+    <value>REST API do uzyskiwania listy aplikacji kwalifikujących się dla urządzenia</value>
+  </data>
+  <data name="RestAPILoadEducation" xml:space="preserve">
+    <value>REST API Education settings Read</value>
+  </data>
+  <data name="RestAPILoadEducationHelp" xml:space="preserve">
+    <value>REST API do wyświetlenia ustawień Edukacji</value>
+  </data>
+  <data name="RestApiPersonEnrollmentUserMapWrite" xml:space="preserve">
+    <value>REST API Apple School Manager map</value>
+  </data>
+  <data name="RestApiPersonEnrollmentUserMapWriteHelp" xml:space="preserve">
+    <value>REST API do mapowania rejestracji użytkownika do członkostwa w Apple School Manager</value>
+  </data>
+  <data name="RestApiRosterSyncRead" xml:space="preserve">
+    <value>REST API Apple School Manager Sync Read</value>
+  </data>
+  <data name="RestApiRosterSyncReadHelp" xml:space="preserve">
+    <value>REST API do sprawdzania stanu synchronizacji Apple School Manager</value>
+  </data>
+  <data name="RestApiRosterSyncWrite" xml:space="preserve">
+    <value>REST API Apple School Manager Write</value>
+  </data>
+  <data name="RestApiRosterSyncWriteHelp" xml:space="preserve">
+    <value>REST API do inicjowania synchronizacji Apple School Manager</value>
+  </data>
+  <data name="RestApiUpdatesPolicyDelete" xml:space="preserve">
+    <value>Dostęp do funkcji usuwania zasad aktualizacji</value>
+  </data>
+  <data name="RestApiUpdatesPolicyDeleteHelp" xml:space="preserve">
+    <value>Umożliwia dostęp do wszystkich interfejsów API DELETE w kolekcji zasad aktualizacji.</value>
+  </data>
+  <data name="RestApiUpdatesPolicyExecute" xml:space="preserve">
+    <value>Dostęp do wykonania zasad aktualizacji</value>
+  </data>
+  <data name="RestApiUpdatesPolicyExecuteHelp" xml:space="preserve">
+    <value>Umożliwia dostęp do wszystkich interfejsów API EXECUTE w kolekcji zasad aktualizacji.</value>
+  </data>
+  <data name="RestApiUpdatesPolicyRead" xml:space="preserve">
+    <value>Dostęp do odczytu zasad aktualizacji</value>
+  </data>
+  <data name="RestApiUpdatesPolicyReadHelp" xml:space="preserve">
+    <value>Umożliwia dostęp do wszystkich interfejsów API READ only w kolekcji zasad aktualizacji</value>
+  </data>
+  <data name="RestApiUpdatesPolicyWrite" xml:space="preserve">
+    <value>Dostęp do zapisu zasad aktualizacji</value>
+  </data>
+  <data name="RestApiUpdatesPolicyWriteHelp" xml:space="preserve">
+    <value>Umożliwia dostęp do wszystkich interfejsów API WRITE w kolekcji zasad aktualizacji</value>
+  </data>
+  <data name="RestEnterpiseIntegration" xml:space="preserve">
+    <value>Integracja systemowa firmy REST</value>
+  </data>
+  <data name="RestEnterpiseIntegrationHelp" xml:space="preserve">
+    <value>REST API do integracji systemowej firmy</value>
+  </data>
+  <data name="RestrictedActionsSec" xml:space="preserve">
+    <value>Działania ograniczone</value>
+  </data>
+  <data name="RestrictedActionsSecHelp" xml:space="preserve">
+    <value>Zezwala na przeglądanie ekranu Działania ograniczone.</value>
+  </data>
+  <data name="RestrictionsDD" xml:space="preserve">
+    <value>Ograniczenia</value>
+  </data>
+  <data name="RestrictionsDDHelp" xml:space="preserve">
+    <value>Zażądaj aktualnych ograniczeń narzuconych na urządzenie.</value>
+  </data>
+  <data name="ResVideo" xml:space="preserve">
+    <value>Wideo</value>
+  </data>
+  <data name="ResVideoHelp" xml:space="preserve">
+    <value>Zarządzaj ustawieniami dla aplikacji wideo</value>
+  </data>
+  <data name="ResWebApps" xml:space="preserve">
+    <value>Aplikacje sieci Web</value>
+  </data>
+  <data name="ResWebAppsHelp" xml:space="preserve">
+    <value>Przypisz i zarządzaj aplikacjami sieci Web</value>
+  </data>
+  <data name="RetentionAd" xml:space="preserve">
+    <value>Przechowywanie</value>
+  </data>
+  <data name="RetentionAdHelp" xml:space="preserve">
+    <value>Daje uprawnienia do przeczyszczania alertów.</value>
+  </data>
+  <data name="RevokeCertificateHelp" xml:space="preserve">
+    <value>Udziela uprawnienia do odwołania certyfikatu. 
+</value>
+  </data>
+  <data name="RotateRecoveryKeyHelp" xml:space="preserve">
+    <value>Daje administratorom dostęp do rotowania na żądanie osobistego zaszyfrowanego klucza odzyskiwania urządzenia z systemem macOS.</value>
+  </data>
+  <data name="RoutingPoliciesHub" xml:space="preserve">
+    <value>Zasady routingu</value>
+  </data>
+  <data name="RoutingPoliciesHubHelp" xml:space="preserve">
+    <value>Wyświetl i zarządzaj alertami zasad routingu.</value>
+  </data>
+  <data name="SaveListViewFilters" xml:space="preserve">
+    <value>Zapisz filtry widoku listy</value>
+  </data>
+  <data name="SaveListViewFiltersHelp" xml:space="preserve">
+    <value>Umożliwia administratorowi zapisywanie filtrów na stronach widoku listy</value>
+  </data>
+  <data name="ScepApple" xml:space="preserve">
+    <value>SCEP</value>
+  </data>
+  <data name="ScepAppleHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do strony SCEP w iOS.</value>
+  </data>
+  <data name="ScepCertificateHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do narzędzia certyfikatu SCEP. </value>
+  </data>
+  <data name="SdkAnalyticsAb" xml:space="preserve">
+    <value>Analiza SDK</value>
+  </data>
+  <data name="SdkAnalyticsAbHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do strony Analizy SDK dla zarządzania aplikacjami.</value>
+  </data>
+  <data name="SdkIos" xml:space="preserve">
+    <value>SDK</value>
+  </data>
+  <data name="SdkIosHelp" xml:space="preserve">
+    <value>Ustawienia do konfiguracji zabezpieczeń aplikacji SDK.</value>
+  </data>
+  <data name="SearchDevicesDM" xml:space="preserve">
+    <value>Wyszukaj urządzenia</value>
+  </data>
+  <data name="SearchDevicesDMHelp" xml:space="preserve">
+    <value>Uzyskaj dostęp do menu wyszukiwania urządzeń w zarządzaniu urządzeniami.</value>
+  </data>
+  <data name="SearchNotesHelp" xml:space="preserve">
+    <value>Udziela uprawnienia do wyszukiwania notatek i znaczników</value>
+  </data>
+  <data name="SearchUserAccounts" xml:space="preserve">
+    <value>Wyszukaj</value>
+  </data>
+  <data name="SearchUserAccountsHelp" xml:space="preserve">
+    <value>Uzyskaj dostęp do opcji użytkownika paska szybkiego wyszukiwania.</value>
+  </data>
+  <data name="SecureChannelCertificateHelp" xml:space="preserve">
+    <value>Przekazuje certyfikat, aby zabezpieczyć kanał.
+</value>
+  </data>
+  <data name="SecurityInfoDD" xml:space="preserve">
+    <value>Informacje o zabezpieczeniach</value>
+  </data>
+  <data name="SecurityInfoDDHelp" xml:space="preserve">
+    <value>Uzyskaj dostęp do informacji audytu bezpieczeństwa dla urządzenia.</value>
+  </data>
+  <data name="SecuritySec" xml:space="preserve">
+    <value>Zabezpieczenia</value>
+  </data>
+  <data name="SecuritySecHelp" xml:space="preserve">
+    <value>Zezwala na przeglądanie ekranu Zabezpieczenia.</value>
+  </data>
+  <data name="ServiceUrlsHelp" xml:space="preserve">
+    <value>Udziela uprawnienia do edycji usługi adresów URL, np. punkty końcowe dostawcy zarządzania tożsamościami.
+</value>
+  </data>
+  <data name="SettingsAndPoliciesSet" xml:space="preserve">
+    <value>Ustawienia i zasady</value>
+  </data>
+  <data name="SettingsAndPoliciesSetHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do stron ustawień aplikacji i zasad.</value>
+  </data>
+  <data name="SettingsAttributeHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do strony Atrybut w sekcji Ogólne. Przejdź do Konfiguracja\System</value>
+  </data>
+  <data name="SettingsAuditAd" xml:space="preserve">
+    <value>Inspekcja ustawień</value>
+  </data>
+  <data name="SettingsAuditAdHelp" xml:space="preserve">
+    <value>Włącza/wyłącza audyt ustawień przez kody systemowe.</value>
+  </data>
+  <data name="SettingsDeviceAdvanced" xml:space="preserve">
+    <value>Zaawansowane ustawienia urządzenia</value>
+  </data>
+  <data name="SettingsDeviceAdvancedHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do strony Zaawansowane w sekcji Urządzenia i użytkownicy. Przejdź do Konfiguracja\Ustawienia systemu\Urządzenie i użytkownicy\Zaawansowane</value>
+  </data>
+  <data name="SettingsDeviceEnrollmentProgramHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do programu rejestracji urządzeń. Przejdź do sekcji Konfiguracja\Ustawienia\Urządzenie\Apple</value>
+  </data>
+  <data name="SettingsDeviceGeneralAdvanced" xml:space="preserve">
+    <value>Zaawansowane ogólne ustawienia urządzenia</value>
+  </data>
+  <data name="SettingsDeviceGeneralAdvancedHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do stron zaawansowanych w menu Ogólne. Przejdź do Ustawienia\Użytkownicy i Urządzenia\Ogólne\Zaawansowane</value>
+  </data>
+  <data name="SettingsEm" xml:space="preserve">
+    <value>Ustawienia</value>
+  </data>
+  <data name="SettingsEmHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do ustawień poczty e-mail.</value>
+  </data>
+  <data name="SettingsEnrollmentUserPasswordPolicyEditHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do edycji strony Ustawienia haseł w obszarze Urządzenia i użytkownicy. Przejdź do sekcji Konfiguracja\Ustawienia urządzeń i użytkowników\Ogólne\Zabezpieczenia\Hasła</value>
+  </data>
+  <data name="SettingsEnrollmentUserPasswordPolicyViewHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do wyświetlania strony Ustawienia haseł w obszarze Urządzenia i użytkownicy. Przejdź do sekcji Konfiguracja\Ustawienia urządzeń i użytkowników\Ogólne\Zabezpieczenia\Hasła</value>
+  </data>
+  <data name="SettingsHeaderBasedAuthenticationHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do strony Uwierzytelnianie zewnętrzne w ramach opcji Integracja systemowa firmy. Przejdź do sekcji Ustawienia\System\Integracja systemowa firmy</value>
+  </data>
+  <data name="SettingsLinux" xml:space="preserve">
+    <value>Ustawienia Linux</value>
+  </data>
+  <data name="SettingsLinuxAgentApplication" xml:space="preserve">
+    <value>Ustawienia Intelligent Hub w systemie Linux</value>
+  </data>
+  <data name="SettingsLinuxAgentApplicationHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do strony ustawień aplikacji Intelligent Hub w systemie Linux</value>
+  </data>
+  <data name="SettingsLinuxAgentSettings" xml:space="preserve">
+    <value>Ustawienia Linux dla Intelligent Hub</value>
+  </data>
+  <data name="SettingsLinuxAgentSettingsHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do strony ustawień Intelligent Hub w systemie Linux. Przejdź do obszaru Ustawienia\Urządzenia i użytkownicy\Linux</value>
+  </data>
+  <data name="SettingsLinuxHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do strony ustawień Intelligent Hub w systemie Linux. Przejdź do obszaru Ustawienia\Urządzenia i użytkownicy\Linux</value>
+  </data>
+  <data name="SettingsOnlyValidAtPartnerOrCustomer" xml:space="preserve">
+    <value>Powiadomień SaaS nie można wyświetlić na bieżącym poziomie grupy organizacyjnej. Aby wyświetlić powiadomienia SaaS, wybierz grupę organizacyjną na poziomie klienta lub partnera.</value>
+  </data>
+  <data name="SettingsOverridesAd" xml:space="preserve">
+    <value>Zastąpienia ustawień</value>
+  </data>
+  <data name="SettingsOverridesAdHelp" xml:space="preserve">
+    <value>Wyświetl i edytuj zastąpienie dziennika zdarzenia.</value>
+  </data>
+  <data name="SettingsQnxAgentSettingsHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do strony ustawień agenta w systemie Qnx. Przejdź do Konfiguracji\Ustawienia systemu\Urządzenie\Qnx</value>
+  </data>
+  <data name="SharedDevicesSet" xml:space="preserve">
+    <value>Urządzenia udostępnione</value>
+  </data>
+  <data name="SharedDevicesSetHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do strony Urządzenia udostępnione</value>
+  </data>
+  <data name="SmartGroupsAb" xml:space="preserve">
+    <value>Grupy Smart</value>
+  </data>
+  <data name="SmartGroupsAbHelp" xml:space="preserve">
+    <value>Edytuj przypisania grup Smart aplikacji.</value>
+  </data>
+  <data name="SmartGroupsGr" xml:space="preserve">
+    <value>Grupy Smart</value>
+  </data>
+  <data name="SmartGroupsGrHelp" xml:space="preserve">
+    <value>Wyświetl, edytuj i usuń grupy Smart.</value>
+  </data>
+  <data name="SoftwareInventoryWM" xml:space="preserve">
+    <value>Spis oprogramowania</value>
+  </data>
+  <data name="SoftwareInventoryWMHelp" xml:space="preserve">
+    <value>Uzyskaj dostęp do strony spisu oprogramowania WinMo.</value>
+  </data>
+  <data name="SslPinningSec" xml:space="preserve">
+    <value>Przypinanie SSL</value>
+  </data>
+  <data name="SslPinningSecHelp" xml:space="preserve">
+    <value>Zezwala na przeglądanie ekranu Przypinanie SSL.</value>
+  </data>
+  <data name="StagingPPN" xml:space="preserve">
+    <value>Wstępna rejestracja</value>
+  </data>
+  <data name="StagingPPNHelp" xml:space="preserve">
+    <value>Zarządzaj definicjami wstępnej rejestracji dla zasad aprowizacji.</value>
+  </data>
+  <data name="StartAwcm" xml:space="preserve">
+    <value>Uruchom AWCM</value>
+  </data>
+  <data name="StatusHistoryDD" xml:space="preserve">
+    <value>Historia stanu</value>
+  </data>
+  <data name="StatusHistoryDDHelp" xml:space="preserve">
+    <value>Wyświetl historię stanu rejestracji i zgodności dla urządzenia.</value>
+  </data>
+  <data name="StopAwcm" xml:space="preserve">
+    <value>Zatrzymaj AWCM</value>
+  </data>
+  <data name="SummaryInfoPM" xml:space="preserve">
+    <value>Podsumowanie</value>
+  </data>
+  <data name="SummaryInfoPMHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do strony podsumowania informacji o drukarce</value>
+  </data>
+  <data name="SuspendBitlockerEncryptionHelp" xml:space="preserve">
+    <value>Do konfiguracji wstrzymania szyfrowania funkcji BitLocker na stronie szczegółów urządzenia</value>
+  </data>
+  <data name="SymbianDev" xml:space="preserve">
+    <value>Symbian</value>
+  </data>
+  <data name="SymbianDevHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do strony Symbian w Urządzenia.</value>
+  </data>
+  <data name="SyncDD" xml:space="preserve">
+    <value>Synchronizuj ustawienia urządzenia</value>
+  </data>
+  <data name="SyncDDHelp" xml:space="preserve">
+    <value>Zdalnie synchronizuj ustawienia urządzenia, takie jak profile i aplikacje.</value>
+  </data>
+  <data name="SyncDeviceEnrollmentProgram" xml:space="preserve">
+    <value>Program rejestracji – synchronizuj urządzenia</value>
+  </data>
+  <data name="SyncDeviceEnrollmentProgramHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do synchronizacji urządzeń DEP. Przejdź na stronę Stan rejestracji.</value>
+  </data>
+  <data name="SyncDeviceSensors" xml:space="preserve">
+    <value>Synchronizuj czujniki urządzeń</value>
+  </data>
+  <data name="SyncDeviceSensorsHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do żądania odświeżenia danych czujnika z urządzenia</value>
+  </data>
+  <data name="SystemCodeAuditAd" xml:space="preserve">
+    <value>Inspekcja kodu systemowego</value>
+  </data>
+  <data name="SystemCodeAuditAdHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do audytu kodów systemu.</value>
+  </data>
+  <data name="SystemHealthSettingsAd" xml:space="preserve">
+    <value>Ustawienia kondycji systemu</value>
+  </data>
+  <data name="SystemHealthSettingsAdHelp" xml:space="preserve">
+    <value>Wyświetl i edytuj ustawienia kondycji systemu.</value>
+  </data>
+  <data name="SystemHealthSettingsEditHelp" xml:space="preserve">
+    <value>Udziela uprawnienia do edytowania ustawień sekcji Kondycja systemu. Przejdź do: Menu\Konfiguracja\Ustawienia systemu\Administrator\Diagnostyka\Kondycja systemu</value>
+  </data>
+  <data name="SystemHealthSettingsViewHelp" xml:space="preserve">
+    <value>Udziela uprawnienia do wyświetlania ustawień sekcji Kondycja systemu. Przejdź do: Menu\Konfiguracja\Ustawienia systemu\Administrator\Diagnostyka\Kondycja systemu</value>
+  </data>
+  <data name="SystemInternalHub" xml:space="preserve">
+    <value>System wewnętrzny</value>
+  </data>
+  <data name="SystemInternalHubHelp" xml:space="preserve">
+    <value>Generuj wewnętrzne raporty rozliczeniowe.</value>
+  </data>
+  <data name="TagManagementViewHelp" xml:space="preserve">
+    <value>Udziela uprawnienia do wyświetlania zarządzania znacznikami</value>
+  </data>
+  <data name="TagsApi" xml:space="preserve">
+    <value>Tagi</value>
+  </data>
+  <data name="TagsApiHelp" xml:space="preserve">
+    <value>Uzyskaj dostęp do interfejsów API wszystkich znaczników.</value>
+  </data>
+  <data name="TagsDev" xml:space="preserve">
+    <value>Tagi</value>
+  </data>
+  <data name="TagsDevHelp" xml:space="preserve">
+    <value>Zezwala na uzyskanie dostępu do zarządzania tagami.</value>
+  </data>
+  <data name="TargetedLogDeviceEditHelp" xml:space="preserve">
+    <value>Udziela uprawnień do edytowania docelowego rejestrowania urządzenia. Przejdź do sekcji Pulpity nawigacyjne\Pulpit nawigacyjny urządzenia</value>
+  </data>
+  <data name="TargetedLogDeviceViewHelp" xml:space="preserve">
+    <value>Udziela uprawnień do wyświetlania docelowego rejestrowania urządzenia. Przejdź do sekcji Pulpity nawigacyjne\Pulpit nawigacyjny urządzenia</value>
+  </data>
+  <data name="TelecomBasicSettingsViewHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do kreatora podstawowej konfiguracji telekomunikacji</value>
+  </data>
+  <data name="TelecomDD" xml:space="preserve">
+    <value>Telekomunikacja</value>
+  </data>
+  <data name="TelecomDDHelp" xml:space="preserve">
+    <value>Uzyskaj dostęp do danych telekomunikacyjnych w szczegółach urządzenia.</value>
+  </data>
+  <data name="TelecomHub" xml:space="preserve">
+    <value>Telekomunikacja</value>
+  </data>
+  <data name="TelecomHubHelp" xml:space="preserve">
+    <value>Generuj raporty dla zarządzania telekomunikacją.</value>
+  </data>
+  <data name="TelecomManagementTel" xml:space="preserve">
+    <value>Zarządzanie telekomunikacją</value>
+  </data>
+  <data name="TelecomManagementTelHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do modułu telekomunikacji. Pokazuje dostępne elementy menu w Telekomunikacja.</value>
+  </data>
+  <data name="TelecomSettingsSys" xml:space="preserve">
+    <value>Ustawienia telekomunikacji</value>
+  </data>
+  <data name="TelecomSettingsSysHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do strony Ustawienia telekomunikacji.</value>
+  </data>
+  <data name="TenantStorageGr" xml:space="preserve">
+    <value>Magazyn dzierżawcy</value>
+  </data>
+  <data name="TenantStorageGrHelp" xml:space="preserve">
+    <value>Do użytku wewnętrznego: kontroluje dostęp do strony Magazyn dzierżawcy.</value>
+  </data>
+  <data name="TenantStorageHelp" xml:space="preserve">
+    <value>Do użytku wewnętrznego, obszar widoczny tylko dla administratora systemu. Kontroluje dostęp do strony Ustawienia/Administrator/Pamięć dla magazynu dzierżawcy.</value>
+  </data>
+  <data name="TermsOfUseAdmin" xml:space="preserve">
+    <value>Warunki użytkowania</value>
+  </data>
+  <data name="TermsOfUseAdminHelp" xml:space="preserve">
+    <value>Wyświetl warunki użytkowania konta administratora.</value>
+  </data>
+  <data name="TermsOfUseSys" xml:space="preserve">
+    <value>Warunki użytkowania</value>
+  </data>
+  <data name="TermsOfUseSysHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do strony Warunki użytkowania w Ustawienia systemu i Rejestracja urządzenia.</value>
+  </data>
+  <data name="TestModeEM" xml:space="preserve">
+    <value>Tryb testowy</value>
+  </data>
+  <data name="TestModeEMHelp" xml:space="preserve">
+    <value>Edytuj tryb testowy dla zasad zgodności zarządzania pocztą e-mail.</value>
+  </data>
+  <data name="TimeScheduleDM" xml:space="preserve">
+    <value>Harmonogram czasowy</value>
+  </data>
+  <data name="TimeScheduleDMHelp" xml:space="preserve">
+    <value>Wyświetl i edytuj harmonogramy czasowe dla profili.</value>
+  </data>
+  <data name="TimeScheduleHelp" xml:space="preserve">
+    <value>Udziela uprawnienia do wyświetlania/edycji ustawień harmonogramu. 
+</value>
+  </data>
+  <data name="TroubleshootingSys" xml:space="preserve">
+    <value>Rozwiązywanie problemów</value>
+  </data>
+  <data name="TroubleshootingSysHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do stron Dzienniki i Rozwiązywanie problemów.</value>
+  </data>
+  <data name="UemNotificationsInfo" xml:space="preserve">
+    <value>Obejmuje powiadomienia dla Workspace ONE UEM i Workspace ONE Assist.</value>
+  </data>
+  <data name="UnApproveUpdate" xml:space="preserve">
+    <value>Cofnij zatwierdzenie aktualizacji</value>
+  </data>
+  <data name="UnApproveUpdateHelp" xml:space="preserve">
+    <value>Daje uprawnienia do wydawania polecenia cofnięcia zatwierdzenia aktualizacji do urządzeń.</value>
+  </data>
+  <data name="UnApproveUpdates" xml:space="preserve">
+    <value>Cofnij zatwierdzenie aktualizacji</value>
+  </data>
+  <data name="UnManagedWipeProtectionHelp" xml:space="preserve">
+    <value>Ustawienia ochrony przed usunięciem urządzenia niezarządzanego</value>
+  </data>
+  <data name="UpdateEditAssignment" xml:space="preserve">
+    <value>Zaktualizuj edycję przypisania</value>
+  </data>
+  <data name="UpdateEditAssignmentHelp" xml:space="preserve">
+    <value>Daje uprawnienia do edytowania przypisania aktualizacji do grup Smart.</value>
+  </data>
+  <data name="UploadCctk" xml:space="preserve">
+    <value>Przekaż Cctk</value>
+  </data>
+  <data name="UploadCctkHelp" xml:space="preserve">
+    <value>Umożliwia administratorowi załadowanie pliku pakietu CCTK w celu skonfigurowania wdrożenia do konfiguracji systemu BIOS.</value>
+  </data>
+  <data name="UploadUnattendXml" xml:space="preserve">
+    <value>Przekaż nienadzorowany XML</value>
+  </data>
+  <data name="UploadUnattendXmlHelp" xml:space="preserve">
+    <value>Zezwala administratorowi na przesłanie nienadzorowanego pliku XML w celu skonfigurowania wdrożenia.</value>
+  </data>
+  <data name="UsageTel" xml:space="preserve">
+    <value>Użycie</value>
+  </data>
+  <data name="UsageTelHelp" xml:space="preserve">
+    <value>Wyświetl szczegóły użycia i pulpit nawigacyjny telekomunikacji.</value>
+  </data>
+  <data name="UserCategoriesDU" xml:space="preserve">
+    <value>Kategorie użytkowników</value>
+  </data>
+  <data name="UserCategoriesDUHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do kategorii użytkowników w ustawieniach systemu.</value>
+  </data>
+  <data name="UserDetailUserAccounts" xml:space="preserve">
+    <value>Szczegóły użytkownika</value>
+  </data>
+  <data name="UserDetailUserAccountsHelp" xml:space="preserve">
+    <value>Uzyskaj dostęp do strony Wyświetl szczegóły użytkownika.</value>
+  </data>
+  <data name="UserInfoDD" xml:space="preserve">
+    <value>Informacje o użytkowniku</value>
+  </data>
+  <data name="UserInfoDDHelp" xml:space="preserve">
+    <value>Uzyskaj dostęp do informacji o użytkowniku w szczegółach urządzenia.</value>
+  </data>
+  <data name="UserManagementHub" xml:space="preserve">
+    <value>Zarządzanie użytkownikami</value>
+  </data>
+  <data name="UserManagementHubHelp" xml:space="preserve">
+    <value>Generuj raporty dla zarządzania użytkowaniami.</value>
+  </data>
+  <data name="UserMigrationHelp" xml:space="preserve">
+    <value>Udziela uprawnienia do wyświetlenia użytkowników podstawowej rejestracji, którzy mogą dokonać migracji do użytkowników LDAP. 
+</value>
+  </data>
+  <data name="UserRegistrationDashboard" xml:space="preserve">
+    <value>Rejestracja użytkownika</value>
+  </data>
+  <data name="UserRegistrationDashboardHelp" xml:space="preserve">
+    <value>Uzyskaj dostęp do linku stanu rejestracji ze stron Pulpit nawigacyjny i Konta użytkowników.</value>
+  </data>
+  <data name="UserRegistrationEnrollmentStatus" xml:space="preserve">
+    <value>Rejestracja użytkownika</value>
+  </data>
+  <data name="UserRegistrationEnrollmentStatusHelp" xml:space="preserve">
+    <value>Uzyskaj dostęp do zapisywania użytkownika na stronie Stan rejestracji.</value>
+  </data>
+  <data name="UserRegistrationHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do linku rejestracji użytkownika na stronie kont użytkowników.</value>
+  </data>
+  <data name="UserRoleHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do ról w Kontach użytkowników.
+</value>
+  </data>
+  <data name="UsersRESTSystem" xml:space="preserve">
+    <value>Użytkownicy</value>
+  </data>
+  <data name="UsersRESTSystemHelp" xml:space="preserve">
+    <value>Interfejsy REST API dla kont użytkownika rejestracji</value>
+  </data>
+  <data name="UserStorageSet" xml:space="preserve">
+    <value>Magazyn użytkownika</value>
+  </data>
+  <data name="UserStorageSetHelp" xml:space="preserve">
+    <value>Zarządzaj ustawieniami pamięci zawartości dla użytkowników końcowych.</value>
+  </data>
+  <data name="UserTrackingHub" xml:space="preserve">
+    <value>Śledzenie użytkownika</value>
+  </data>
+  <data name="UserTrackingHubHelp" xml:space="preserve">
+    <value>Generuj raporty dla śledzenia użytkowników.</value>
+  </data>
+  <data name="VideoManagementSet" xml:space="preserve">
+    <value>Zarządzanie wideo</value>
+  </data>
+  <data name="VideoManagementSetHelp" xml:space="preserve">
+    <value>Dodaj wideo do kanałów</value>
+  </data>
+  <data name="ViewAd" xml:space="preserve">
+    <value>Wyświetl</value>
+  </data>
+  <data name="ViewAdHelp" xml:space="preserve">
+    <value>Zezwala na wyświetlanie ustawień pamięci podręcznej.</value>
+  </data>
+  <data name="ViewAdminAccount" xml:space="preserve">
+    <value>Wyświetl</value>
+  </data>
+  <data name="ViewAdminAccountHelp" xml:space="preserve">
+    <value>Wyświetl konta administratora.</value>
+  </data>
+  <data name="ViewAdminGroup" xml:space="preserve">
+    <value>Wyświetl</value>
+  </data>
+  <data name="ViewAdminGroupHelp" xml:space="preserve">
+    <value>Wyświetl stronę grupy administratorów.</value>
+  </data>
+  <data name="ViewAdminRoles" xml:space="preserve">
+    <value>Wyświetl</value>
+  </data>
+  <data name="ViewAdminRolesHelp" xml:space="preserve">
+    <value>Wyświetl stronę ról administratora.</value>
+  </data>
+  <data name="ViewAn" xml:space="preserve">
+    <value>Wyświetl</value>
+  </data>
+  <data name="ViewAnHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do strony Android w menu Urządzenie.</value>
+  </data>
+  <data name="ViewApple" xml:space="preserve">
+    <value>Wyświetl</value>
+  </data>
+  <data name="ViewAppleHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do strony Apple w Urządzenia.</value>
+  </data>
+  <data name="ViewBaselines" xml:space="preserve">
+    <value>Wyświetl punkty odniesienia</value>
+  </data>
+  <data name="ViewBaselinesHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do wyświetlania linii podstawowych</value>
+  </data>
+  <data name="ViewCM" xml:space="preserve">
+    <value>Wyświetl</value>
+  </data>
+  <data name="ViewCMHelp" xml:space="preserve">
+    <value>Wyświetl strony Zarządzanie zawartością.</value>
+  </data>
+  <data name="ViewCustomReportSubscriptionHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do wyświetlania subskrypcji raportów niestandardowych. Przejdź do sekcji Hub\Raporty i analizy\Raporty niestandardowe\Subskrypcje</value>
+  </data>
+  <data name="ViewDashboardDM" xml:space="preserve">
+    <value>Wyświetl pulpit nawigacyjny</value>
+  </data>
+  <data name="ViewDashboardDMHelp" xml:space="preserve">
+    <value>Wyświetl stronę Pulpit nawigacyjny urządzenia w Zarządzanie urządzeniami.</value>
+  </data>
+  <data name="ViewDeviceManagement" xml:space="preserve">
+    <value>Wyświetl</value>
+  </data>
+  <data name="ViewDeviceManagementHelp" xml:space="preserve">
+    <value>Wyświetl moduł zarządzania urządzeniami.</value>
+  </data>
+  <data name="ViewDevicesAb" xml:space="preserve">
+    <value>Wyświetl urządzenia</value>
+  </data>
+  <data name="ViewDevicesAbHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do wyświetlania urządzeń związanych z aplikacją.</value>
+  </data>
+  <data name="ViewDevicesCM" xml:space="preserve">
+    <value>Wyświetl urządzenia</value>
+  </data>
+  <data name="ViewDevicesCMHelp" xml:space="preserve">
+    <value>Wyświetl urządzenia wg przypisanej zawartości na stronie Zarządzanie zawartością.</value>
+  </data>
+  <data name="ViewDevicesDM" xml:space="preserve">
+    <value>Wyświetl urządzenia</value>
+  </data>
+  <data name="ViewDevicesDMHelp" xml:space="preserve">
+    <value>Uzyskaj dostęp do wyświetlania ikony urządzeń w Profile.</value>
+  </data>
+  <data name="ViewDeviceSensors" xml:space="preserve">
+    <value>Wyświetl czujniki urządzeń</value>
+  </data>
+  <data name="ViewDeviceSensorsHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do wyświetlania szczegółów i konfiguracji czujnika urządzenia</value>
+  </data>
+  <data name="ViewDeviceWnsStatus" xml:space="preserve">
+    <value>Wyświetl stan WNS urządzenia</value>
+  </data>
+  <data name="ViewDeviceWnsStatusHelp" xml:space="preserve">
+    <value>Możliwość wyświetlenia stanu WNS urządzenia.</value>
+  </data>
+  <data name="ViewDM" xml:space="preserve">
+    <value>Wyświetl</value>
+  </data>
+  <data name="ViewDMHelp" xml:space="preserve">
+    <value>Wyświetl stronę profili w Zarządzanie urządzeniami.</value>
+  </data>
+  <data name="ViewEducationOverviewHelp" xml:space="preserve">
+    <value>Wyświetl stronę przeglądu edukacji      </value>
+  </data>
+  <data name="ViewEM" xml:space="preserve">
+    <value>Wyświetl</value>
+  </data>
+  <data name="ViewEMHelp" xml:space="preserve">
+    <value>Uzyskaj dostęp do elementu z menu zarządzania pocztą e-mail.</value>
+  </data>
+  <data name="ViewExtendedDeviceInventory" xml:space="preserve">
+    <value>Wyświetl rozszerzony spis urządzeń</value>
+  </data>
+  <data name="ViewExtendedDeviceInventoryHelp" xml:space="preserve">
+    <value>Kontroluj dostęp do wyświetlania rozszerzonego spisu urządzeń.</value>
+  </data>
+  <data name="ViewExtendedDeviceInventoryOnDeviceDetail" xml:space="preserve">
+    <value>Wyświetl rozszerzony spis urządzeń na stronie szczegółów urządzenia</value>
+  </data>
+  <data name="ViewExtendedDeviceInventoryOnDeviceDetailHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do wyświetlania rozszerzonego spisu urządzeń na stronie szczegółów urządzenia.</value>
+  </data>
+  <data name="ViewFileServerConfiguration" xml:space="preserve">
+    <value>Wyświetl konfigurację serwera plików</value>
+  </data>
+  <data name="ViewFileServerConfigurationHelp" xml:space="preserve">
+    <value>Daje użytkownikowi uprawnienia do wyświetlania siatki i szczegółów serwerów plików</value>
+  </data>
+  <data name="ViewGen" xml:space="preserve">
+    <value>Wyświetl</value>
+  </data>
+  <data name="ViewGenHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do stron Urządzenia w Ustawieniach systemu.</value>
+  </data>
+  <data name="ViewGr" xml:space="preserve">
+    <value>Wyświetl</value>
+  </data>
+  <data name="ViewGrHelp" xml:space="preserve">
+    <value>Uzyskaj dostęp do stron Grupy organizacyjnej.</value>
+  </data>
+  <data name="ViewHA" xml:space="preserve">
+    <value>Wyświetl</value>
+  </data>
+  <data name="ViewHAHelp" xml:space="preserve">
+    <value>Uzyskaj dostęp do modułu alertów.</value>
+  </data>
+  <data name="ViewIos" xml:space="preserve">
+    <value>Wyświetl</value>
+  </data>
+  <data name="ViewIosHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do strony iOS w menu Urządzenie.</value>
+  </data>
+  <data name="ViewLinux" xml:space="preserve">
+    <value>Wyświetl</value>
+  </data>
+  <data name="ViewLinuxHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do strony Linux w menu Urządzenie.</value>
+  </data>
+  <data name="ViewNotesHelp" xml:space="preserve">
+    <value>Udziela uprawnienia na wyświetlanie notatek</value>
+  </data>
+  <data name="ViewOemUpdates" xml:space="preserve">
+    <value>Wyświetl aktualizacje OEM</value>
+  </data>
+  <data name="ViewOemUpdatesHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do wyświetlania pulpitu nawigacyjnego aktualizacji OEM. Przejdź do sekcji Menu\Urządzenia\Aktualizacja OEM</value>
+  </data>
+  <data name="ViewPM" xml:space="preserve">
+    <value>Wyświetl</value>
+  </data>
+  <data name="ViewPMHelp" xml:space="preserve">
+    <value>Uzyskaj dostęp do stron ustawień urządzeń zewnętrznych.</value>
+  </data>
+  <data name="ViewProvisioningPackages" xml:space="preserve">
+    <value>Wyświetl pakiety przydzielania zasobów</value>
+  </data>
+  <data name="ViewProvisioningPackagesHelp" xml:space="preserve">
+    <value>Zarządzaj dostępem do wyświetlania pakietów przydzielania zasobów</value>
+  </data>
+  <data name="ViewSet" xml:space="preserve">
+    <value>Wyświetl</value>
+  </data>
+  <data name="ViewSetHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do stron Aplikacje w ustawieniach systemu</value>
+  </data>
+  <data name="ViewSys" xml:space="preserve">
+    <value>Wyświetl</value>
+  </data>
+  <data name="ViewSysHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do ustawień systemu.</value>
+  </data>
+  <data name="ViewTagHelp" xml:space="preserve">
+    <value>Udziela uprawnienia do wyświetlania znacznika</value>
+  </data>
+  <data name="ViewTimeWindow" xml:space="preserve">
+    <value>Wyświetl przedział czasu</value>
+  </data>
+  <data name="ViewTimeWindowHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do wyświetlania przedziału czasu.</value>
+  </data>
+  <data name="ViewTimeWindowOnDeviceDetail" xml:space="preserve">
+    <value>Wyświetl przedział czasu na stronie szczegółów urządzenia</value>
+  </data>
+  <data name="ViewTimeWindowOnDeviceDetailHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do wyświetlania przedziału czasu na stronie szczegółów urządzenia.</value>
+  </data>
+  <data name="ViewUG" xml:space="preserve">
+    <value>Wyświetl</value>
+  </data>
+  <data name="ViewUGHelp" xml:space="preserve">
+    <value>Uzyskaj dostęp do strony Grupa użytkowników.</value>
+  </data>
+  <data name="ViewUpdateDevices" xml:space="preserve">
+    <value>Wyświetl aktualizacje urządzeń</value>
+  </data>
+  <data name="ViewUpdateDevicesHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do wyświetlania urządzeń na podstawie ich stanu aktualizacji. Przejdź do sekcji Menu\Urządzenia\Aktualizacje</value>
+  </data>
+  <data name="ViewUpdatesHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do wyświetlania pulpitu nawigacyjnego aktualizacji. Przejdź do sekcji Menu\Urządzenia\Aktualizacje</value>
+  </data>
+  <data name="ViewUserAccounts" xml:space="preserve">
+    <value>Wyświetl</value>
+  </data>
+  <data name="ViewUserAccountsHelp" xml:space="preserve">
+    <value>Wyświetl konta użytkowników.</value>
+  </data>
+  <data name="ViewUserCategories" xml:space="preserve">
+    <value>Wyświetl</value>
+  </data>
+  <data name="ViewUserCategoriesHelp" xml:space="preserve">
+    <value>Uzyskaj dostęp do kategorii dla kont użytkownika.</value>
+  </data>
+  <data name="ViewUserDetails" xml:space="preserve">
+    <value>Wyświetl szczegóły użytkownika</value>
+  </data>
+  <data name="ViewUserDetailsHelp" xml:space="preserve">
+    <value>Wyświetl przypisania użytkowników dla profili użytkownika systemu Chrome OS.</value>
+  </data>
+  <data name="ViewUserRoles" xml:space="preserve">
+    <value>Wyświetl</value>
+  </data>
+  <data name="ViewUserRolesHelp" xml:space="preserve">
+    <value>Wyświetl role użytkowników.</value>
+  </data>
+  <data name="ViewWin" xml:space="preserve">
+    <value>Wyświetl</value>
+  </data>
+  <data name="ViewWindowsTemplateDevicesHelp" xml:space="preserve">
+    <value>Umożliwia administratorowi skonfigurowanie ustawień w celu wyświetlania urządzeń, do których zastosowano pakiet zastrzegania szablonów Windows na pulpicie nawigacyjnym aplikacji Console</value>
+  </data>
+  <data name="ViewWindowsTemplatesHelp" xml:space="preserve">
+    <value>Umożliwia administratorowi konfigurowanie ustawień wyświetlania szablonów systemu Windows na pulpicie nawigacyjnym aplikacji Console</value>
+  </data>
+  <data name="ViewWinHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do strony Windows w menu Urządzenie.</value>
+  </data>
+  <data name="ViewXmlDM" xml:space="preserve">
+    <value>Wyświetl XML</value>
+  </data>
+  <data name="ViewXmlDMHelp" xml:space="preserve">
+    <value>Uzyskaj dostęp do wyświetlania ikony XML w Profile.</value>
+  </data>
+  <data name="VmInstanceLockHelp" xml:space="preserve">
+    <value>Zablokuj instancje maszyny wirtualnej zarządzane przez Horizon FLEX</value>
+  </data>
+  <data name="VmInstanceUnlockHelp" xml:space="preserve">
+    <value>Odblokuj instancje maszyny wirtualnej zarządzane przez Horizon FLEX</value>
+  </data>
+  <data name="VmInstanceWipeHelp" xml:space="preserve">
+    <value>Usuń instancje maszyny wirtualnej zarządzane przez Horizon FLEX</value>
+  </data>
+  <data name="VMwareEmployeeLoginNotification" xml:space="preserve">
+    <value>Powiadomienie o logowaniu pracownika VMware</value>
+  </data>
+  <data name="VMwareEmployeeLoginNotificationInfo" xml:space="preserve">
+    <value>Włącz powiadamianie wyznaczonych odbiorców, gdy pracownik VMware uzyskuje dostęp do grupy organizacyjnej klienta lub partnera.</value>
+  </data>
+  <data name="WebConsoleLogHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do dzienników awarii sieci. 
+</value>
+  </data>
+  <data name="WeblinkPM" xml:space="preserve">
+    <value>Link sieci Web</value>
+  </data>
+  <data name="WeblinkPMHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do strony Link internetowy drukarki</value>
+  </data>
+  <data name="WebsiteFiltersSettingsHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do wyświetlania i edycji ekranu ustawień filtrów witryny sieci Web. Ścieżka nawigacji to Ustawienia\Aplikacje\Integracja aplikacji\Filtr witryny sieci Web</value>
+  </data>
+  <data name="WiFiPM" xml:space="preserve">
+    <value>Wi-Fi</value>
+  </data>
+  <data name="WiFiPMHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do strony Sieć Wi-Fi drukarki</value>
+  </data>
+  <data name="Windows8RtWin" xml:space="preserve">
+    <value>Windows 8 / RT</value>
+  </data>
+  <data name="Windows8RtWinHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do ustawień WinRT.</value>
+  </data>
+  <data name="WindowsAppDeploymentsEditHelp" xml:space="preserve">
+    <value>Ten zasób umożliwia administratorom konfigurowanie ustawień wdrożeń aplikacji w Console</value>
+  </data>
+  <data name="WindowsAutoDiscoverySettingsEditHelp" xml:space="preserve">
+    <value>Ten zasób umożliwia administratorowi konfigurowanie trybu autowykrywania na poziomie lokalnym lub hostowanym w chmurze i zarejestrowanie określonej domeny dla autowykrywania Windows</value>
+  </data>
+  <data name="WindowsAutoEnrollmentSettings" xml:space="preserve">
+    <value>Ustawienia automatycznej rejestracji w systemie Windows</value>
+  </data>
+  <data name="WindowsAutoEnrollmentSettingsHelp" xml:space="preserve">
+    <value>Ten zasób pozwala administratorom skonfigurować ustawienia, które będą stosowane do agenta zastrzegania działającego na urządzeniach z systemem Windows. </value>
+  </data>
+  <data name="WindowsMobileDD" xml:space="preserve">
+    <value>Windows Mobile</value>
+  </data>
+  <data name="WindowsMobileDDHelp" xml:space="preserve">
+    <value>Zarządzaj urządzeniami systemu Windows Mobile w szczegółach urządzenia.</value>
+  </data>
+  <data name="WindowsMobileWm" xml:space="preserve">
+    <value>Windows Mobile</value>
+  </data>
+  <data name="WindowsMobileWmHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do strony Windows Mobile w menu Urządzenie.</value>
+  </data>
+  <data name="WindowsPcSet" xml:space="preserve">
+    <value>Komputer z systemem Windows</value>
+  </data>
+  <data name="WindowsPcSetHelp" xml:space="preserve">
+    <value>Steruje dostępem do stron Windows PC w menu Urządzenie.</value>
+  </data>
+  <data name="WindowsPhone8Win" xml:space="preserve">
+    <value>Windows Phone 8</value>
+  </data>
+  <data name="WindowsPhone8WinHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do ustawień Windows Phone.</value>
+  </data>
+  <data name="WindowsPhoneHealthAttestationEdit" xml:space="preserve">
+    <value>Edytuj zaświadczenie o kondycji urządzenia z systemem Windows Phone</value>
+  </data>
+  <data name="WindowsPhoneHealthAttestationEditHelp" xml:space="preserve">
+    <value>Ten zasób zezwala administratorowi na konfigurację ustawień kondycji zdrowia dla urządzeń mobilnych z systemem Windows 10</value>
+  </data>
+  <data name="WindowsPhoneWin" xml:space="preserve">
+    <value>Windows Phone</value>
+  </data>
+  <data name="WindowsPhoneWinHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do stron Windows Phone w Ustawienia systemu.</value>
+  </data>
+  <data name="WindowsRuntimeProvisioningHelp" xml:space="preserve">
+    <value>Te ustawienia pozwalają administratorowi wyświetlić informacje o wstępnej rejestracji wymagane do zbiorczego przydzielania urządzeń z systemem Windows do użytkowników końcowych. Pomagają również skonfigurować informacje rozruchowe dla wszystkich urządzeń.</value>
+  </data>
+  <data name="WindowsSampleScheduleHelp" xml:space="preserve">
+    <value>Ta grupa ustawień umożliwia administratorowi ustawienie interwałów zbierania próbek danych i ustawień MDM.</value>
+  </data>
+  <data name="WinmoSWInventoryHub" xml:space="preserve">
+    <value>Spis oprogramowania WinMo</value>
+  </data>
+  <data name="WinmoSWInventoryHubHelp" xml:space="preserve">
+    <value>Generuj raporty dla spisu S/W WinMo.</value>
+  </data>
+  <data name="WipeProtectionDU" xml:space="preserve">
+    <value>Ochrona przed usunięciem danych</value>
+  </data>
+  <data name="WipeProtectionDUHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do strony Ochrona przed usunięciem danych w Zaawansowane.</value>
+  </data>
+  <data name="WorkflowsDD" xml:space="preserve">
+    <value>Przepływy pracy</value>
+  </data>
+  <data name="WorkflowsDDHelp" xml:space="preserve">
+    <value>Wyświetl stan wykonywania przepływów pracy na urządzeniu.</value>
+  </data>
+  <data name="WorkspaceSet" xml:space="preserve">
+    <value>Kontener</value>
+  </data>
+  <data name="WorkspaceSetHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do strony Kontener w obszarze Ogólne.</value>
+  </data>
+  <data name="ZonesGr" xml:space="preserve">
+    <value>Strefy</value>
+  </data>
+  <data name="ZonesGrHelp" xml:space="preserve">
+    <value>Zarządzaj strefami lokalizacji na potrzeby grup organizacyjnych.</value>
+  </data>
+  <data name="ZplPM" xml:space="preserve">
+    <value>ZPL</value>
+  </data>
+  <data name="ZplPMHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do strony ZPL drukarki</value>
+  </data>
+</root>

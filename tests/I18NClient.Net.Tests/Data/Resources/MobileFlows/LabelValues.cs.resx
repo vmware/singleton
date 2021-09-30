@@ -1,0 +1,643 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AboutMobileFlows" xml:space="preserve">
+    <value>O službě Mobile Flows</value>
+  </data>
+  <data name="AddArgMobileFlow" xml:space="preserve">
+    <value>Přidat tok {0}</value>
+    <comment>String will be passed in for {0}. Examples: 'Add Salesforce Flow', 'Add ServiceNow Flow' etc.</comment>
+  </data>
+  <data name="AddKeyValuePairs" xml:space="preserve">
+    <value>Přidat všechny použitelné páry klíč-hodnota</value>
+  </data>
+  <data name="AddNewMobileFlow" xml:space="preserve">
+    <value>Přidat nový Mobile Flow</value>
+  </data>
+  <data name="AdobeSignDescription" xml:space="preserve">
+    <value>Konektor Adobe pro podepisování dokumentů</value>
+  </data>
+  <data name="AdobeSignTitle" xml:space="preserve">
+    <value>Adobe Sign</value>
+  </data>
+  <data name="Algorithm" xml:space="preserve">
+    <value>Algoritmus</value>
+  </data>
+  <data name="Approvals" xml:space="preserve">
+    <value>Schválení</value>
+  </data>
+  <data name="AreYouSureToCancel" xml:space="preserve">
+    <value>Jste si jistí, že chcete ukončit?</value>
+  </data>
+  <data name="ArgCatalogConnector" xml:space="preserve">
+    <value>Konektor katalogu {0}</value>
+  </data>
+  <data name="ArgCatalogConnectors" xml:space="preserve">
+    <value>Konektory katalogu {0}</value>
+  </data>
+  <data name="ArgMobileFlow" xml:space="preserve">
+    <value>Mobile Flow: {0}</value>
+    <comment>Numeric one will be passed in for {0}</comment>
+  </data>
+  <data name="ArgMobileFlows" xml:space="preserve">
+    <value>Mobile Flows: {0}</value>
+    <comment>Numeric value will be passed for {0}</comment>
+  </data>
+  <data name="AuthenticationHeader" xml:space="preserve">
+    <value>Záhlaví autentizace</value>
+  </data>
+  <data name="BaseURL" xml:space="preserve">
+    <value>Základní adresa URL</value>
+  </data>
+  <data name="BasicInformation" xml:space="preserve">
+    <value>Základní informace</value>
+  </data>
+  <data name="BoxNotesDescription" xml:space="preserve">
+    <value>Konektor Box Notes pro oznámení na základě zmínky @</value>
+  </data>
+  <data name="BoxNotesTitle" xml:space="preserve">
+    <value>Box Notes</value>
+  </data>
+  <data name="ClientCredentials" xml:space="preserve">
+    <value>Přihlašovací údaje klienta</value>
+  </data>
+  <data name="ConcurDescription" xml:space="preserve">
+    <value>Konektor Concur pro schválení požadavku na výdaje</value>
+  </data>
+  <data name="ConcurTitle" xml:space="preserve">
+    <value>Concur</value>
+  </data>
+  <data name="ConcurTravelDescription" xml:space="preserve">
+    <value>Konektor Concur pro schválení požadavku na cestu</value>
+  </data>
+  <data name="ConcurTravelTitle" xml:space="preserve">
+    <value>Concur Travel</value>
+  </data>
+  <data name="ConfirmConnectorDelete" xml:space="preserve">
+    <value>Jste si jisti, že chcete tento konektor odstranit?</value>
+  </data>
+  <data name="ConnectionStatus" xml:space="preserve">
+    <value>Stav připojení</value>
+  </data>
+  <data name="ConnectorAuthConfigError" xml:space="preserve">
+    <value>Typ ověření je chybný, nebo je vadný konektor. V otázce prošetření problému se obraťte na svého administrátora IT.</value>
+  </data>
+  <data name="ConnectorAuthenticationTypeHelp" xml:space="preserve">
+    <value>V rozevíracím seznamu zvolte typ autentizace, jejíž použití klientem back-endová služba očekává.</value>
+  </data>
+  <data name="ConnectorBaseUrlConfigError" xml:space="preserve">
+    <value>Konektor je vadný. V otázce prošetření problému se obraťte na svého administrátora IT.</value>
+  </data>
+  <data name="ConnectorBaseURLHelp" xml:space="preserve">
+    <value>Adresa URL back-endové služby konektoru služby Mobile Flows. Toto je povinné pouze pro konektory VMware. To znamená, jestliže používáte VMware Salesforce Connector, zadejte sem adresu URL služby Salesforce vaší organizace.</value>
+  </data>
+  <data name="ConnectorDeleteWarning" xml:space="preserve">
+    <value>Touto akcí konektor trvale odstraníte.</value>
+  </data>
+  <data name="ConnectorDiscoveryApiError" xml:space="preserve">
+    <value>Adresu URL služby zjišťování se nepodařilo ověřit</value>
+  </data>
+  <data name="ConnectorDiscoveryError" xml:space="preserve">
+    <value>Tento konektor nebyl nalezen. V otázce prošetření problému se obraťte na svého administrátora IT.</value>
+  </data>
+  <data name="ConnectorDiscoveryInvalidResponse" xml:space="preserve">
+    <value>Odpověď zjišťování konektoru není platná</value>
+  </data>
+  <data name="ConnectorDiscoveryURLHelp" xml:space="preserve">
+    <value>Tuto aplikaci používá server Mobile Flows k určení schopností zavedeného konektoru. Pokud máte konektor hostovaný v cloudu, použije se veřejně přístupná adresa URL. Pokud je konektor hostovaný za rozhraním API nebo hraniční bránou, k přesměrování na samotný konektor se po jeho ověření použije adresa URL s úplnou cestou. Odpověď adresy URL musí odpovídat očekávanému formátu, který je definovaný v průvodci Card Connectors Guide.</value>
+  </data>
+  <data name="ConnectorIDHelp" xml:space="preserve">
+    <value>Zadejte prosím ID, které jednoznačně identifikuje konektory vaší organizace.</value>
+  </data>
+  <data name="ConnectorIsNotFound" xml:space="preserve">
+    <value>Konektor nebyl nalezen</value>
+  </data>
+  <data name="ConnectorKeyValueHelp" xml:space="preserve">
+    <value>Toto jsou pole vyžadovaná k autentizaci uživatele pro back-endový systém konektoru. Zde by se měla podle potřeby uvést pole OAuth 2.0. Podrobnosti najdete v průvodci Card Connectors Guide.</value>
+  </data>
+  <data name="ConnectorLoginURLHelp" xml:space="preserve">
+    <value>Adresa URL použitá klientem k autentizaci u back-endové služby a poskytnutí přístupového tokenu. Například https://login.salesforce.com</value>
+  </data>
+  <data name="ConnectorName" xml:space="preserve">
+    <value>Název konektoru</value>
+  </data>
+  <data name="ConnectorNameHelp" xml:space="preserve">
+    <value>Zadejte prosím název identifikující konektor. Budou ho používat jak koncoví uživatelé k povolení služeb na klientovi, tak administrátoři služby Mobile Flows k rozlišování mezi různými konektory.</value>
+  </data>
+  <data name="ConnectorProviderHelp" xml:space="preserve">
+    <value>Zvolte, zda budete nasazovat konektor, který poskytuje VMware, nebo konektor hostovaný interně pro vaší organizaci.</value>
+  </data>
+  <data name="ConnectorServiceHelp" xml:space="preserve">
+    <value>Z rozevíracího seznamu vyberte prosím konektor VMware, který chcete nasadit.</value>
+  </data>
+  <data name="ConnectorStatusHelp" xml:space="preserve">
+    <value>Deaktivujte konektor, pokud chcete zabránit všem uživatelům v přístupu k informacím Mobile Flow na jejich zařízení pro tento konektor.</value>
+  </data>
+  <data name="ConnectorType" xml:space="preserve">
+    <value>Druh</value>
+  </data>
+  <data name="CoupaDescription" xml:space="preserve">
+    <value>Konektor Coupa pro schválení požadavku k vydání</value>
+  </data>
+  <data name="CoupaTitle" xml:space="preserve">
+    <value>Coupa</value>
+  </data>
+  <data name="DeveloperGuide" xml:space="preserve">
+    <value>Příručka vývojáře</value>
+  </data>
+  <data name="DiscoveryURL" xml:space="preserve">
+    <value>Adresa URL služby zjišťování</value>
+  </data>
+  <data name="DiscoveryURLChanged" xml:space="preserve">
+    <value>Adresa URL služby zjišťování se změnila</value>
+  </data>
+  <data name="EditMobileFlow" xml:space="preserve">
+    <value>Upravit Mobile Flow</value>
+  </data>
+  <data name="FieldCannotContainWhiteSpaces" xml:space="preserve">
+    <value>Pole nesmí obsahovat prázdné znaky.</value>
+  </data>
+  <data name="FieldIsRequired" xml:space="preserve">
+    <value>Toto pole je povinné.</value>
+  </data>
+  <data name="FieldMaxLength" xml:space="preserve">
+    <value>Pole nesmí obsahovat více než {0} znaků.</value>
+  </data>
+  <data name="FieldMinLength" xml:space="preserve">
+    <value>Pole musí obsahovat alespoň tento počet znaků: {0}.</value>
+  </data>
+  <data name="FieldShouldBeValidHttpsURL" xml:space="preserve">
+    <value>Pole by mělo mít platnou adresu URL https</value>
+  </data>
+  <data name="FieldShouldBeValidURL" xml:space="preserve">
+    <value>Pole musí obsahovat platnou adresu URL.</value>
+  </data>
+  <data name="GitHubPage" xml:space="preserve">
+    <value>Stránka GitHub</value>
+  </data>
+  <data name="GoogleDocsDescription" xml:space="preserve">
+    <value>Konektor Google Docs pro oznámení na základě zmínky @</value>
+  </data>
+  <data name="GoogleDocsTitle" xml:space="preserve">
+    <value>Google Docs</value>
+  </data>
+  <data name="GrantType" xml:space="preserve">
+    <value>Typ přidělení</value>
+  </data>
+  <data name="GrantTypeHelp" xml:space="preserve">
+    <value>V rozevíracím seznamu zvolte způsob získání přístupového tokenu. Autorizační kód je používán důvěrnými a veřejnými klienty k výměně autorizačního kódu pro přístupový token. Toto se někdy v konfiguraci OAuth 2.0 označuje jako „webová aplikace“ nebo „webový server“. Klientské přihlašovací údaje jsou používány klienty k získání přístupového tokenu mimo kontext uživatele. To se hodí, pokud váš poskytovatel OAuth 2.0 nabízí typ přidělení Klientské přihlašovací údaje s oprávněními účtu služby. Heslo používají klienti výrobce k výměně uživatelských přihlašovacích údajů pro přístupový token. To se hodí, pokud váš poskytovatel OAuth 2.0 nabízí typ přidělení Heslo a máte účet služby, který chcete použít.</value>
+  </data>
+  <data name="HideAdvancedOAuth2Options" xml:space="preserve">
+    <value>Skrýt rozšířené možnosti</value>
+  </data>
+  <data name="HowMobileFlowsWork" xml:space="preserve">
+    <value>Jak to funguje</value>
+  </data>
+  <data name="HowMobileFlowsWorkDescription" xml:space="preserve">
+    <value>Služba Mobile Flows vám umožňuje, aby vaši zaměstnanci mohli povolit nebo zakázat základní upozornění ze svých mobilních aplikací, a to pomocí konektorů pro každý obchodní systém, který chcete připojit. Jakmile je název každého konektoru namapován na veřejnou adresu URL každého konektoru, zaměstnanci budou mít snadný přístup k upozorněním ve svých firemních aplikacích.</value>
+  </data>
+  <data name="HubSpotDealsDescription" xml:space="preserve">
+    <value>Konektor HubSpot pro nová přiřazení obchodů</value>
+  </data>
+  <data name="HubSpotDealsTitle" xml:space="preserve">
+    <value>HubSpot – Obchody</value>
+  </data>
+  <data name="HubSpotTicketsDescription" xml:space="preserve">
+    <value>Konektor HubSpot pro nová přiřazení servisních požadavků</value>
+  </data>
+  <data name="HubSpotTicketsTitle" xml:space="preserve">
+    <value>HubSpot – Servisní požadavky</value>
+  </data>
+  <data name="JiraServiceDeskDescription" xml:space="preserve">
+    <value>Konektor JIRA Service Desk pro schválení servisního požadavku</value>
+  </data>
+  <data name="JiraServiceDeskTitle" xml:space="preserve">
+    <value>Jira Service Desk</value>
+  </data>
+  <data name="KeyValuePair" xml:space="preserve">
+    <value>Přidat pár klíč-hodnota</value>
+  </data>
+  <data name="LinkedInLearningChatbotDescription" xml:space="preserve">
+    <value>Konektor LinkedIn Learning k vyhledávání školení pomocí aplikace Hub Assistant</value>
+  </data>
+  <data name="LinkedInLearningChatbotTitle" xml:space="preserve">
+    <value>Chatbot LinkedIn Learning</value>
+  </data>
+  <data name="LinkedInLearningDescription" xml:space="preserve">
+    <value>Konektor LinkedIn Learning pro oznámení nových školení</value>
+  </data>
+  <data name="LinkedInLearningTitle" xml:space="preserve">
+    <value>LinkedIn Learning</value>
+  </data>
+  <data name="MicrosoftDynamicsCaseResolutionDescription" xml:space="preserve">
+    <value>Konektor Microsoft Dynamics pro nová přiřazení případů</value>
+  </data>
+  <data name="MicrosoftDynamicsCaseResolutionTitle" xml:space="preserve">
+    <value>Microsoft Dynamics – Řešení případu</value>
+  </data>
+  <data name="MicrosoftDynamicsDescription" xml:space="preserve">
+    <value>Konektor Microsoft Dynamics pro oznámení nově přiřazených účtů</value>
+  </data>
+  <data name="MicrosoftDynamicsTasksDescription" xml:space="preserve">
+    <value>Konektor Microsoft Dynamics pro nová přiřazení úloh</value>
+  </data>
+  <data name="MicrosoftDynamicsTasksTitle" xml:space="preserve">
+    <value>Microsoft Dynamics – Úlohy</value>
+  </data>
+  <data name="MicrosoftDynamicsTitle" xml:space="preserve">
+    <value>Microsoft Dynamics</value>
+  </data>
+  <data name="MicrosoftOneDriveDescription" xml:space="preserve">
+    <value>Konektor Microsoft OneDrive pro schvalování přístupu do souboru/složky</value>
+  </data>
+  <data name="MicrosoftOneDriveTitle" xml:space="preserve">
+    <value>Microsoft OneDrive</value>
+  </data>
+  <data name="MicrosoftPlannerDescription" xml:space="preserve">
+    <value>Konektor Microsoft Planner pro oznámení nově přiřazených úkolů</value>
+  </data>
+  <data name="MicrosoftPlannerTitle" xml:space="preserve">
+    <value>Microsoft Planner</value>
+  </data>
+  <data name="MicrosoftTeamsDescription" xml:space="preserve">
+    <value>Konektor Microsoft Teams pro oznámení na základě zmínky @</value>
+  </data>
+  <data name="MicrosoftTeamsTitle" xml:space="preserve">
+    <value>Microsoft Teams</value>
+  </data>
+  <data name="MobileFlow" xml:space="preserve">
+    <value>Mobile Flow</value>
+  </data>
+  <data name="MobileFlowAPIURL" xml:space="preserve">
+    <value>Adresa URL API Mobile Flows</value>
+  </data>
+  <data name="MobileFlowBestPracticesDescription" xml:space="preserve">
+    <value>Doporučené postupy služby Mobile Flows najdete na Wiki umístěné na webu VMware GitHub: https://github.com/vmwaresamples/card-connectors-guide/wiki.</value>
+  </data>
+  <data name="MobileFlowDescription" xml:space="preserve">
+    <value>Zobrazit a spravovat všechny konektory</value>
+  </data>
+  <data name="MobileFlows" xml:space="preserve">
+    <value>Mobile Flows</value>
+  </data>
+  <data name="MobileFlowsAddConnectors" xml:space="preserve">
+    <value>Přidání konektorů</value>
+  </data>
+  <data name="MobileFlowsAdminNoAccessToOG" xml:space="preserve">
+    <value>Ke službě Mobile Flows mají přístup administrátoři spravovaní v této organizační skupině. Požádejte administrátora systému o přiřazení požadované role a o uložení tohoto administrátora v této organizační skupině. Poté se znovu přihlaste a využijte tuto roli pro přístup ke službě Mobile Flows v této organizační skupině.</value>
+  </data>
+  <data name="MobileFlowsAPIURL" xml:space="preserve">
+    <value>Adresa URL API Mobile Flows</value>
+  </data>
+  <data name="MobileFlowsApiUrlNotFound" xml:space="preserve">
+    <value>Cloudová služba Mobile Flows není k dispozici.</value>
+  </data>
+  <data name="MobileFlowsApiUrlNotProvisioned" xml:space="preserve">
+    <value>Ujistěte se, že je pro aktuální organizační skupinu konfigurována adresa URL API Mobile Flows, kterou najdete v oddíle Adresy URL webu. Bude-li problém přetrvávat, obraťte se na správce systému.</value>
+  </data>
+  <data name="MobileFlowsBestPractices" xml:space="preserve">
+    <value>Doporučené postupy služby Mobile Flows</value>
+  </data>
+  <data name="MobileFlowsCatalogDescription" xml:space="preserve">
+    <value>Začněte používat Workspace ONE Mobile Flows výběrem z netradičních (OOTB) konektorů a pracovních postupů níže. Stačí přidat, nakonfigurovat a zadat několik dalších detailů a jste hotovi!</value>
+  </data>
+  <data name="MobileFlowsCloudServiceDescription" xml:space="preserve">
+    <value>Mobile Flows je cloudová služba propojená s aplikacemi VMware Intelligent Hub a Boxer a poskytuje zaměstnancům základní upozornění pro zvýšení jejich produktivity.</value>
+  </data>
+  <data name="MobileFlowsConnectingToCloudService" xml:space="preserve">
+    <value>Připojení ke cloudové službě Mobile Flows</value>
+  </data>
+  <data name="MobileFlowsConnectorGuideWikiArg" xml:space="preserve">
+    <value>Přečtěte si {0} a naučte se vytvořit konektory</value>
+    <comment>Html string will be passed in for {0}. Example: &lt;label for='open-connectors-guide-wiki' class='wiki-link'&gt;developer guide&lt;/label&gt;`.</comment>
+  </data>
+  <data name="MobileFlowsDescription" xml:space="preserve">
+    <value>Zobrazit a spravovat Mobile Flows</value>
+  </data>
+  <data name="MobileFlowsDirectoryBasicAdminError" xml:space="preserve">
+    <value>Nemáte přístup k aplikaci Workspace ONE Access. Přístup k Workspace ONE Access vyžaduje, abyste měli oprávnění správce adresáře konfigurovaného v této organizační skupině.</value>
+  </data>
+  <data name="MobileFlowsIDMNotConfigured" xml:space="preserve">
+    <value>Nelze získat přístup k aplikaci Workspace ONE Access. Zkontrolujte prosím svá přístupová oprávnění a ujistěte se, že jsou správně nakonfigurována.</value>
+  </data>
+  <data name="MobileFlowsIDMSetupArg" xml:space="preserve">
+    <value>Aplikace Workspace ONE Access musí být konfigurována před přístupem ke službě Mobile Flows. Přejděte na {0} a připojte se k aplikaci Workspace ONE Access. Po dokončení se odhlaste, znovu přihlaste a opakujte pokus.</value>
+  </data>
+  <data name="MobileFlowsIDMSetupRequired" xml:space="preserve">
+    <value>Aplikace Workspace ONE musí být nastavena předtím, než bude možné získat přístup ke službě Mobile Flows. Přejděte do části Začínáme a dokončete nastavení aplikace Workspace ONE. Po dokončení se odhlaste a zkuste se znovu přihlásit.</value>
+  </data>
+  <data name="MobileFlowsNoAccessToIDM" xml:space="preserve">
+    <value>Nemáte přístup k aplikaci Workspace ONE Access. Abyste mohli přistupovat k aplikaci Workspace ONE Access, musíte být správcem adresáře.</value>
+  </data>
+  <data name="MobileFlowsNoAccessToOrganizationGroup" xml:space="preserve">
+    <value>Tento uživatel nepatří do této organizační skupiny.</value>
+  </data>
+  <data name="MobileFlowsNotCustomerTypeOrganizationGroup" xml:space="preserve">
+    <value>Klient cloudu může být registrován pouze v organizační skupině zákaznického typu.</value>
+  </data>
+  <data name="MobileFlowsProductivityDescription" xml:space="preserve">
+    <value>Propojením přizpůsobených pracovních prostředí a shromažďováním dat z různých obchodních systémů služba Mobile Flows umožňuje zaměstnancům zůstat ve spojení se všemi svými aplikacemi v jediné aplikaci.</value>
+  </data>
+  <data name="MobileFlowsRegisteringTenant" xml:space="preserve">
+    <value>Odeslání a registrace dat zákazníka na adresu URL</value>
+  </data>
+  <data name="MobileFlowsSampleConnectorWikiArg" xml:space="preserve">
+    <value>Na stránce {0} najdete předem vytvořené konektory</value>
+    <comment>Html string will be passed in for {0}. Example: &lt;label for='open-sample-connectors-wiki' class='wiki-link'&gt;GitHub page&lt;/label&gt;`.</comment>
+  </data>
+  <data name="MobileFlowsTenantAlreadyExists" xml:space="preserve">
+    <value>Tento klient cloudu již v cloudové službě Mobile Flows existuje.</value>
+  </data>
+  <data name="MobileFlowsTenantProvisioning" xml:space="preserve">
+    <value>Začnete registrací klientu zákazníka, aby se mohl připojit ke cloudové službě Mobile Flows.</value>
+  </data>
+  <data name="MobileFlowsTenantProvisioningError" xml:space="preserve">
+    <value>Něco není v pořádku…</value>
+  </data>
+  <data name="MobileFlowsTenantProvisioningFailed" xml:space="preserve">
+    <value>Klienta cloudu se nepodařilo zaregistrovat.</value>
+  </data>
+  <data name="MobileFlowsTenantProvisioningSuccess" xml:space="preserve">
+    <value>Úspěšně připojeno ke cloudové službě Mobile Flows!</value>
+  </data>
+  <data name="MobileFlowsVidmNotConfigured" xml:space="preserve">
+    <value>Aplikace Workspace ONE Access pro tuto organizační skupinu nebyla konfigurována.</value>
+  </data>
+  <data name="MobileFlowTroubleshootDocs" xml:space="preserve">
+    <value>Podívejte se prosím do příručky konektoru služby Mobile Flows na webu GitHub: https://github.com/vmwaresamples/card-connectors-guide.</value>
+  </data>
+  <data name="MultiTenantParameters" xml:space="preserve">
+    <value>Parametry více uživatelů</value>
+  </data>
+  <data name="MyFlows" xml:space="preserve">
+    <value>Moje toky</value>
+  </data>
+  <data name="NoMobileFlowsCatalogFound" xml:space="preserve">
+    <value>Nebyly nalezeny žádné dostupné toky</value>
+  </data>
+  <data name="NoMobileFlowsFound" xml:space="preserve">
+    <value>Vypadá to, že jste ještě nevytvořili žádné mobilní toky.</value>
+  </data>
+  <data name="NotificationMethod" xml:space="preserve">
+    <value>Metoda oznámení</value>
+  </data>
+  <data name="NotificationMethodPoll" xml:space="preserve">
+    <value>Metoda oznámení – dotazování</value>
+  </data>
+  <data name="NotificationMethodPush" xml:space="preserve">
+    <value>Metoda oznámení – poslat bez vyzvání</value>
+  </data>
+  <data name="NotificationMethodPushInfo" xml:space="preserve">
+    <value>Tuto informaci použijte pro nastavení oznámení posílaných bez vyzvání ve zdrojovém podnikovém systému.</value>
+  </data>
+  <data name="NotificationPollPushDifference" xml:space="preserve">
+    <value>Oznámení z podnikových systémů mohou být dotazována nebo posílána bez vyzvání:
+Dotazovaná – server Mobile Flows v hodinových intervalech dotazuje backendové podnikové systémy na nová oznámení. 
+Posílaná bez vyzvání – pokud backendový podnikový systém podporuje mechanismus posílání bez vyzvání, může služba Mobile Flows vygenerovat koncový bod, který se bude volat, jakmile budou oznámení připravena.</value>
+  </data>
+  <data name="NoVmwareServicesFound" xml:space="preserve">
+    <value>Nebyly nalezeny žádné služby VMware.</value>
+  </data>
+  <data name="OAuth2Parameters" xml:space="preserve">
+    <value>Parametry OAuth 2.0</value>
+  </data>
+  <data name="OopsSomethingWentWrong" xml:space="preserve">
+    <value>Došlo k nějaké chybě.</value>
+  </data>
+  <data name="PollingInterval" xml:space="preserve">
+    <value>Interval dotazování</value>
+  </data>
+  <data name="PushNotificationInfo" xml:space="preserve">
+    <value>Po uložení bude vygenerována adresa URL pro posílání bez vyzvání, kterou najdete na stránce podrobností konektoru. Tuto informaci použijte k nastavení oznámení posílaných bez vyzvání ve zdrojovém podnikovém systému. Tato nastavení lze zobrazit a upravit v části Moje toky &gt; Upravit.</value>
+  </data>
+  <data name="PushURL" xml:space="preserve">
+    <value>Adresa URL pro posílání bez vyzvání</value>
+  </data>
+  <data name="RegenerateSecret" xml:space="preserve">
+    <value>Chcete znovu vygenerovat tajný klíč?</value>
+  </data>
+  <data name="RegenerateSecretConfirm" xml:space="preserve">
+    <value>Opravdu chcete tajný klíč znovu vygenerovat? Po opětovném vygenerování již předchozí klíč nebude fungovat. Nezapomeňte ve zdrojovém podnikovém systému odpovídajícím způsobem zaktualizovat nastavení oznámení posílaných bez vyzvání.</value>
+  </data>
+  <data name="SabaDescription" xml:space="preserve">
+    <value>Konektor Saba pro nová výuková oznámení</value>
+  </data>
+  <data name="SabaTitle" xml:space="preserve">
+    <value>Saba</value>
+  </data>
+  <data name="SalesforceCaseResolutionDescription" xml:space="preserve">
+    <value>Konektor Salesforce pro nová přiřazení případů</value>
+  </data>
+  <data name="SalesforceCaseResolutionTitle" xml:space="preserve">
+    <value>Salesforce – Řešení případu</value>
+  </data>
+  <data name="SalesforceDescription" xml:space="preserve">
+    <value>Konektor Salesforce pro schvalování požadavku na slevu</value>
+  </data>
+  <data name="SalesforceLeadsDescription" xml:space="preserve">
+    <value>Konektor Salesforce pro oznámení o nově přiřazených potenciálních zákaznících</value>
+  </data>
+  <data name="SalesforceLeadsTitle" xml:space="preserve">
+    <value>Potenciální zákazníci ve službě Salesforce</value>
+  </data>
+  <data name="SalesforceTasksDescription" xml:space="preserve">
+    <value>Konektor Salesforce pro nová přiřazení úloh</value>
+  </data>
+  <data name="SalesforceTasksTitle" xml:space="preserve">
+    <value>Salesforce – Úlohy</value>
+  </data>
+  <data name="SalesforceTitle" xml:space="preserve">
+    <value>Salesforce</value>
+  </data>
+  <data name="ServiceAccountCredential" xml:space="preserve">
+    <value>Přihlašovací údaje účtu služby</value>
+  </data>
+  <data name="ServiceAccountCredentialHelp" xml:space="preserve">
+    <value>Zadejte přihlašovací údaje účtu služby, u kterých back-endová služba očekává, že je klient použije.</value>
+  </data>
+  <data name="ServiceNowChatbotDescription" xml:space="preserve">
+    <value>Konektor ServiceNow pro vytváření servisních požadavků, jejich zobrazování a objednávání zařízení pomocí aplikace Hub Assistant</value>
+  </data>
+  <data name="ServiceNowChatbotTitle" xml:space="preserve">
+    <value>Chatbot ServiceNow</value>
+  </data>
+  <data name="ServiceNowDescription" xml:space="preserve">
+    <value>Konektor ServiceNow pro schválení požadavku k vydání</value>
+  </data>
+  <data name="ServiceNowTitle" xml:space="preserve">
+    <value>ServiceNow</value>
+  </data>
+  <data name="ShowAdvancedOAuth2Options" xml:space="preserve">
+    <value>Zobrazit rozšířené možnosti</value>
+  </data>
+  <data name="TokenServerHints" xml:space="preserve">
+    <value>Tipy pro server tokenu</value>
+  </data>
+  <data name="TokenUriBodyParameters" xml:space="preserve">
+    <value>Parametry těla URI tokenu</value>
+  </data>
+  <data name="UEMChatbotDescription" xml:space="preserve">
+    <value>Konektor UEM pro synchronizaci zařízení pomocí aplikace Hub Assistant</value>
+  </data>
+  <data name="UEMChatbotTitle" xml:space="preserve">
+    <value>Chatbot UEM</value>
+  </data>
+  <data name="UseCase" xml:space="preserve">
+    <value>Případ použití</value>
+  </data>
+  <data name="VirtualAssistant" xml:space="preserve">
+    <value>Virtuální asistent</value>
+  </data>
+  <data name="WhatIsMobileFlow" xml:space="preserve">
+    <value>Co je služba Mobile Flows?</value>
+  </data>
+  <data name="WhatIsMobileFlowDescription" xml:space="preserve">
+    <value>Mobile Flows nabízí inteligentní a aktivní oznámení reagující na vzdálené systémy v aplikaci Boxer a dalších podnikových aplikacích a přispívá k vyšší efektivnosti a produktivitě zaměstnanců. Správci tady mohou konfigurovat a nasazovat konektory a toky, které chtějí povolit koncovým uživatelům.</value>
+  </data>
+  <data name="Wiki" xml:space="preserve">
+    <value>Wiki</value>
+  </data>
+  <data name="WorkdayDescription" xml:space="preserve">
+    <value>Konektor Workday pro schválení PTO</value>
+  </data>
+  <data name="WorkdayTitle" xml:space="preserve">
+    <value>Workday</value>
+  </data>
+  <data name="WorkspaceONEHub" xml:space="preserve">
+    <value>Centrum Workspace ONE Hub</value>
+  </data>
+  <data name="ZendeskTasksDescription" xml:space="preserve">
+    <value>Konektor Zendesk pro schvalování úloh</value>
+  </data>
+  <data name="ZendeskTasksTitle" xml:space="preserve">
+    <value>Zendesk – Úlohy</value>
+  </data>
+  <data name="ZendeskTicketResolutionDescription" xml:space="preserve">
+    <value>Konektor Zendesk pro nová přiřazení servisních požadavků</value>
+  </data>
+  <data name="ZendeskTicketResolutionTitle" xml:space="preserve">
+    <value>Zendesk – Řešení případu</value>
+  </data>
+  <data name="ZoomRecordingsDescription" xml:space="preserve">
+    <value>Konektor Zoom pro oznámení nové nahrávky</value>
+  </data>
+  <data name="ZoomRecordingsTitle" xml:space="preserve">
+    <value>Nahrávky ze služby Zoom</value>
+  </data>
+</root>

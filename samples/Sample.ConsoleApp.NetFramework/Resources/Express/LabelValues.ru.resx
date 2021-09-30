@@ -1,0 +1,235 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ApproveAndPublishPublicApps" xml:space="preserve">
+    <value>Утвердить и опубликовать общедоступные приложения</value>
+  </data>
+  <data name="ApproveAndPublishPublicAppsDescription" xml:space="preserve">
+    <value>Повторно добавьте любое общедоступное приложение из существующих схем элементов, которые были опубликованы перед регистрацией Android EMM, для их подтверждения и публикации на своих устаревших устройствах и устройствах Android Enterprise.</value>
+  </data>
+  <data name="ArgDevicesRemovedBasedOnGroupSelection" xml:space="preserve">
+    <value>Устройства {0} будут удалены в соответствии с текущим выбором групп.</value>
+    <comment>{0} will be replaced by a number</comment>
+  </data>
+  <data name="ArgOutOfArgLegacyAndroidMigrationNotification" xml:space="preserve">
+    <value>Подходят для миграции: {0} из {1} устр. со старыми версиями Android в выбранных группах. В случае продолжения миграция будет выполнена только для этих устройств.</value>
+    <comment>{0} and {1} will be replaced by a number.</comment>
+  </data>
+  <data name="CollectDeviceLocationData" xml:space="preserve">
+    <value>Собрать данные о местоположении устройства</value>
+  </data>
+  <data name="DevicesInBlueprintArg" xml:space="preserve">
+    <value>Устройства в схеме элементов {0}</value>
+  </data>
+  <data name="DevicesSelectionTooltipText" xml:space="preserve">
+    <value>В настоящее время можно выбрать только устройства пользователей, назначенных для схем элементов. Кроме того, можно выполнить миграцию всех устройств одновременно, выбрав вариант "Все устройства".</value>
+  </data>
+  <data name="DistributeAppCatalogToDevices" xml:space="preserve">
+    <value>Распределить каталог приложений на устройства</value>
+  </data>
+  <data name="ExpressLegacyAndroidMigrationDeviceExportArg" xml:space="preserve">
+    <value>При выборе указанных выше групп перечисленные ниже устройства относились к администрированию в старой версии. Все устройства, добавляемые в эти группы в будущем, будут отображаться как недавно обнаруженные устройства. {0}, чтобы видеть разбивку всех перенесенных устройств (включая устройства из групп, которые могли быть удалены).</value>
+    <comment>{0} will be replaced by another key with text 'Export Details'.</comment>
+  </data>
+  <data name="ExpressMigrationAllCompatible" xml:space="preserve">
+    <value>Все устройства со старыми версиями Android (всего: {0}) в выбранных группах подходят для миграции.</value>
+    <comment>{0} will be replaced by a number.</comment>
+  </data>
+  <data name="ExpressMigrationLimitReached" xml:space="preserve">
+    <value>Миграция не может содержать более 10 групповых назначений.</value>
+  </data>
+  <data name="ExpressMigrationNoDevicesCompatible" xml:space="preserve">
+    <value>В выбранных группах нет устройств, подходящих для миграции. Для продолжения выберите группы, в которых есть устройства со старыми версиями Android.</value>
+  </data>
+  <data name="ExpressNoNewDevices" xml:space="preserve">
+    <value>Новые подходящие устройства со старыми версиями Android не найдены в выбранных группах.</value>
+  </data>
+  <data name="ExpressWelcomeMessageHeader" xml:space="preserve">
+    <value>Все необходимое для защиты и администрирования мобильных устройств вашей компании находится здесь. Вы можете:</value>
+  </data>
+  <data name="IsAfwRequired" xml:space="preserve">
+    <value>Ваши сотрудники будут использовать устройства Apple?</value>
+  </data>
+  <data name="NoGroupFound" xml:space="preserve">
+    <value>Группа пользователей с таким именем не найдена.</value>
+  </data>
+  <data name="NotificationDevicePreviewAndroidLegacyMigration" xml:space="preserve">
+    <value>На подходящие устройства в выбранных группах будет отправлено уведомление о миграции с предложением принять меры для продолжения. Ход выполнения можно отслеживать на странице "Миграция со старой версии Android".</value>
+  </data>
+  <data name="NoUserFound" xml:space="preserve">
+    <value>Пользователь с таким именем не найден.</value>
+  </data>
+  <data name="QuestionnaireDescription" xml:space="preserve">
+    <value>Ответьте на несколько вопросов, чтобы помочь нам выполнить установку:</value>
+  </data>
+  <data name="ResaveYourPolicies" xml:space="preserve">
+    <value>Повторное сохранение политик</value>
+  </data>
+  <data name="ResaveYourPoliciesDescription" xml:space="preserve">
+    <value>Измените и повторно сохраните раздел "Политики" для всех существующих схем элементов, которые были опубликованы перед регистрацией Android EMM.</value>
+  </data>
+  <data name="ResaveYourResources" xml:space="preserve">
+    <value>Повторно сохранить ресурсы</value>
+  </data>
+  <data name="ResaveYourResourcesDescription" xml:space="preserve">
+    <value>Измените и повторно сохраните все электронные письма и ресурсы Wi-Fi, настроенные в существующих схемах элементов, которые были опубликованы до регистрации Android EMM.</value>
+  </data>
+  <data name="SearchCurrentGroups" xml:space="preserve">
+    <value>Поиск в текущих группах</value>
+  </data>
+  <data name="SearchCurrentUsers" xml:space="preserve">
+    <value>Поиск текущих пользователей</value>
+  </data>
+  <data name="SelectMigrationDevices" xml:space="preserve">
+    <value>Выберите устройства для миграции.</value>
+  </data>
+  <data name="StartTypingToAddGroups" xml:space="preserve">
+    <value>Начните ввод, чтобы добавить группы</value>
+  </data>
+  <data name="WantToCollectDeviceLocationData" xml:space="preserve">
+    <value>Собрать данные о местоположении устройства?</value>
+  </data>
+  <data name="WantToDistributeAppCatalogToDevices" xml:space="preserve">
+    <value>Распределить каталог приложений на ваши устройства?</value>
+  </data>
+  <data name="WarningForNotCollectingLocationData" xml:space="preserve">
+    <value>Конечно. Если вы хотите изменить какой-либо ответ, вы можете в любой момент открыть анкету этого опроса в меню "Начало работы".</value>
+  </data>
+  <data name="WarningForNotConfiguringAd" xml:space="preserve">
+    <value>Это нормально. Если вы передумаете, Active Directory можно будет настроить позже в меню "Настройки".</value>
+  </data>
+  <data name="WarningForNotConfiguringAfw" xml:space="preserve">
+    <value>Если вы планируете регистрировать устройства Android в будущем, можно в любой момент позже настроить регистрацию Android EMM в меню "Настройки".</value>
+  </data>
+  <data name="WarningForNotConfiguringApns" xml:space="preserve">
+    <value>Если вы планируете регистрировать устройства Apple в будущем, можно в любой момент позже настроить сертификат APNs в меню "Настройки".</value>
+  </data>
+  <data name="WarningForNotConfiguringVpp" xml:space="preserve">
+    <value>Хорошо. Если вы позже решите настроить учетную запись Apple VPP, перейдите в меню "Настройки".</value>
+  </data>
+  <data name="WarningForNotDistributingAppCatalog" xml:space="preserve">
+    <value>Понятно. Если вы захотите изменить свой ответ, вы можете в любой момент вернуться к этому опросу в меню "Начало работы".</value>
+  </data>
+  <data name="WorkspaceOneExpress" xml:space="preserve">
+    <value>Workspace ONE Express</value>
+  </data>
+  <data name="WorkspaceOneExpressSetupTrackInfo" xml:space="preserve">
+    <value>Выполните настройку, чтобы начать регистрировать, защищать и администрировать устройства, а также предоставлять сотрудникам корпоративные ресурсы.</value>
+  </data>
+</root>

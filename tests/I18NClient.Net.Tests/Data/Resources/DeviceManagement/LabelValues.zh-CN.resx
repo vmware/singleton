@@ -1,0 +1,805 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AboutEnrollment" xml:space="preserve">
+    <value>了解有关注册状态的更多信息:</value>
+  </data>
+  <data name="AboutTotalDeployment" xml:space="preserve">
+    <value>设备必须注册才能被计为已部署。将对企业擦除等设备待处理操作进行计数，直至操作完成。已登记的设备在注册后才会进行计数。</value>
+  </data>
+  <data name="AddTag" xml:space="preserve">
+    <value>创建标记</value>
+  </data>
+  <data name="AddTagHelp" xml:space="preserve">
+    <value>授予创建新标记的权限</value>
+  </data>
+  <data name="AdminModePasscodeHelpText" xml:space="preserve">
+    <value>指定字母数字密码以在管理模式下对设备进行故障排除。点击登录屏幕上的 Hub 图标 5 次以访问管理模式。</value>
+  </data>
+  <data name="AirwatchCannotSeeYourPersonalContent" xml:space="preserve">
+    <value>VMware Workspace ONE Intelligent Hub 仅收集提供安全企业访问所需的信息</value>
+  </data>
+  <data name="AllowPinAtStartup" xml:space="preserve">
+    <value>启动时允许 PIN</value>
+  </data>
+  <data name="AndroidSharedDeviceAdminModePasscode" xml:space="preserve">
+    <value>管理模式密码</value>
+  </data>
+  <data name="AndroidSharedDeviceMode" xml:space="preserve">
+    <value>Android 共享设备模式</value>
+  </data>
+  <data name="AndroidSharedDeviceModeHelpText" xml:space="preserve">
+    <value>使用本机 Android 功能或 Workspace ONE Launcher。签入和签出共享 Android 设备。本机 Android 支持无需太多自定义的较简单用例。Launcher 支持更复杂用例的 UI 自定义。</value>
+  </data>
+  <data name="AppCatalogSupport" xml:space="preserve">
+    <value>应用目录支持</value>
+  </data>
+  <data name="AssignTags" xml:space="preserve">
+    <value>分配标记</value>
+  </data>
+  <data name="BluetoothDeviceMessageLabelAny" xml:space="preserve">
+    <value>蓝牙设备</value>
+  </data>
+  <data name="BulkAndroidWipeAddition" xml:space="preserve">
+    <value>如果其中任何设备重新注册到 Workspace ONE，则将创建一个新的 UDID，这会导致设备记录重复。</value>
+  </data>
+  <data name="BulkEnterpriseWipeDescription" xml:space="preserve">
+    <value>企业擦除操作将会取消所选设备的注册并移除其中所有的纳管企业资源，包括应用程序和配置文件。
+此操作不可撤消，且这些设备必须重新注册才能重新被纳入 Workspace ONE 的管理。</value>
+  </data>
+  <data name="CallUsageMessageLabelAny" xml:space="preserve">
+    <value>通话量</value>
+  </data>
+  <data name="CannotDeleteUsersWithRegistrationRecord" xml:space="preserve">
+    <value>如果某用户具有 DEP 注册记录或者其与某个 DEP 配置文件相关联，则无法将其删除</value>
+  </data>
+  <data name="CarrierCountryCodeMessageLabelAny" xml:space="preserve">
+    <value>运营商国家/地区代码</value>
+  </data>
+  <data name="CellularDataUsageMessageLabelAny" xml:space="preserve">
+    <value>手机网络数据使用量</value>
+  </data>
+  <data name="ChromeOsDeviceCleanup" xml:space="preserve">
+    <value>Chrome 操作系统设备移除</value>
+  </data>
+  <data name="ClearAndroidAccounts" xml:space="preserve">
+    <value>清除 Android 帐户</value>
+  </data>
+  <data name="ClearAndroidAccountsHelpInfo" xml:space="preserve">
+    <value>清除 Android 帐户会移除某些应用可用于自动登录的帐户。Google 帐户清除需要 Android 8+，而非 Google 帐户清除需要 Android 9+。此设置仅适用于 Android 共享设备的 Launcher 方法，因为本机方法始终清除每个帐户。</value>
+  </data>
+  <data name="ClearDevicePasscodeDevicePageHelpInfo" xml:space="preserve">
+    <value>启用或禁用“安全启动”选项，其需要使用初始 PIN 条目引导设备。如果已禁用“安全启动”，则设备必须进行出厂重置才能将其启用。此功能仅适用于不具有基于文件的加密的 Android 设备。</value>
+  </data>
+  <data name="ClearDevicePasscodeSharedSettingsHelpInfo" xml:space="preserve">
+    <value>启用或禁用 Android 安全启动，其需要使用初始 PIN 条目引导设备。如果禁用，则用户无法在密码设置过程中启用“安全启动”。如果设备上已禁用“安全启动”，则设备必须进行出厂重置才能将其启用。此功能仅适用于不具有基于文件的加密的 Android 设备。</value>
+  </data>
+  <data name="ConfirmAndroidSharedDeviceAdminModePasscode" xml:space="preserve">
+    <value>确认管理模式密码</value>
+  </data>
+  <data name="ConfirmEnterpriseWipeDeviceMessageChromeOs" xml:space="preserve">
+    <value>此操作会取消选定设备的注册并从中移除所有受管企业资源，包括应用程序和配置文件。如果不重新注册该设备，则无法撤消此操作。</value>
+  </data>
+  <data name="ConfirmExport" xml:space="preserve">
+    <value>是，导出</value>
+  </data>
+  <data name="ConfirmOverwrite" xml:space="preserve">
+    <value>覆盖确认</value>
+  </data>
+  <data name="ConfirmOverwriteMessage" xml:space="preserve">
+    <value>导出此 PPKG 将覆盖已完成模板的任何 PPKG。请确保先下载先前的 PPKG，然后再导出此 PPKG。是否确定要继续?</value>
+  </data>
+  <data name="ContactAdminPrivacyNotice" xml:space="preserve">
+    <value>以上收集区域特定于 VMware Workspace ONE Intelligent Hub，可能因企业和个人设备而异。
+
+若要了解可能允许您的公司查看其他个人/私人信息的任何第三方应用程序，以及获取所有适用的内部策略的副本，请联系您的 IT 管理员。</value>
+  </data>
+  <data name="DependencyApplications" xml:space="preserve">
+    <value>依赖项应用程序</value>
+  </data>
+  <data name="DeviceBulkManagementAddTags" xml:space="preserve">
+    <value>设备批量管理 - 分配标记</value>
+  </data>
+  <data name="DeviceBulkManagementAddTagsHelp" xml:space="preserve">
+    <value>允许用户批量向设备分配标记。</value>
+  </data>
+  <data name="DeviceDeleteWhiteSpaceReason" xml:space="preserve">
+    <value>空白空间无法用作原因。</value>
+  </data>
+  <data name="DevicePhoneNumberMessageLabelAny" xml:space="preserve">
+    <value>设备电话号码</value>
+  </data>
+  <data name="DeviceProvisioningMenuDescription" xml:space="preserve">
+    <value>管理设备置备软件包</value>
+  </data>
+  <data name="DeviceProvisioningMenuTitle" xml:space="preserve">
+    <value>预置</value>
+  </data>
+  <data name="DevicesCountExcludesUnenrolled" xml:space="preserve">
+    <value>已更新计入部署总数的设备，以排除未注册的设备。</value>
+  </data>
+  <data name="DeviceViewWorkflowsList" xml:space="preserve">
+    <value>设备视图工作流列表</value>
+  </data>
+  <data name="DeviceViewWorkflowsListHelp" xml:space="preserve">
+    <value>控制访问“设备详细信息”页面中可用的“工作流”选项卡。</value>
+  </data>
+  <data name="DifferentModelReplacement" xml:space="preserve">
+    <value>不同型号替换</value>
+  </data>
+  <data name="DownloadEncryptedPackage" xml:space="preserve">
+    <value>下载加密的软件包</value>
+  </data>
+  <data name="DownloadProvisioningFiles" xml:space="preserve">
+    <value>下载置备文件</value>
+  </data>
+  <data name="DownloadWindowsPhoneAgent" xml:space="preserve">
+    <value>下载 Windows Phone 代理</value>
+  </data>
+  <data name="DuplicatePackageFound" xml:space="preserve">
+    <value>此名称已在使用中。请选择其他名称。</value>
+  </data>
+  <data name="EditProvisioningPackage" xml:space="preserve">
+    <value>编辑置备软件包</value>
+  </data>
+  <data name="EducationCertificateRenewalJob" xml:space="preserve">
+    <value>教育证书续订作业</value>
+  </data>
+  <data name="EmailDiscovery" xml:space="preserve">
+    <value>电子邮件自动发现</value>
+  </data>
+  <data name="EmailDomainRegistrationFailure" xml:space="preserve">
+    <value>电子邮件域注册失败</value>
+  </data>
+  <data name="EmailDomainRegistrationSuccess" xml:space="preserve">
+    <value>电子邮件域注册成功</value>
+  </data>
+  <data name="EmptyApplicationList" xml:space="preserve">
+    <value>找不到应用程序。</value>
+  </data>
+  <data name="EmptyEnrollmentSessionPleaseTryAgain" xml:space="preserve">
+    <value>空注册会话。请重试。</value>
+  </data>
+  <data name="EmptyPackageList" xml:space="preserve">
+    <value>您的新预置软件包将显示在此处。</value>
+  </data>
+  <data name="EncryptedPackageDescription" xml:space="preserve">
+    <value>导出单个加密的 PPKG 包，以便使用配置、设置和应用程序置备本地设备。</value>
+  </data>
+  <data name="EncryptedPackageTitle" xml:space="preserve">
+    <value>加密的软件包</value>
+  </data>
+  <data name="Enrollmentemailaddress" xml:space="preserve">
+    <value>电子邮件地址</value>
+  </data>
+  <data name="Enrollmentemailusername" xml:space="preserve">
+    <value>电子邮件用户名</value>
+  </data>
+  <data name="EnterCharactersShownAbove" xml:space="preserve">
+    <value>输入上面显示的字符</value>
+  </data>
+  <data name="EnterpriseWipeFailed" xml:space="preserve">
+    <value>企业擦除失败。</value>
+  </data>
+  <data name="EnterpriseWipeReasonRequired" xml:space="preserve">
+    <value>请求企业擦除时，“原因”字段是必填字段。</value>
+  </data>
+  <data name="EnterpriseWipeSucceeded" xml:space="preserve">
+    <value>企业擦除成功。</value>
+  </data>
+  <data name="ExportInProgress" xml:space="preserve">
+    <value>正在导出...</value>
+  </data>
+  <data name="ExportLater" xml:space="preserve">
+    <value>已在导出另一个置备包。请保存模板并稍后导出，或者等待其他导出操作完成。</value>
+  </data>
+  <data name="FailedLoadingUnmanagedProfilePayload" xml:space="preserve">
+    <value>加载未纳管配置文件负载失败</value>
+  </data>
+  <data name="FailedToDownload" xml:space="preserve">
+    <value>下载请求失败，请稍后再试。</value>
+  </data>
+  <data name="FailedToExport" xml:space="preserve">
+    <value>无法导出</value>
+  </data>
+  <data name="FeatureNotSupported" xml:space="preserve">
+    <value>当前不支持此功能。</value>
+  </data>
+  <data name="GPSMessageLabelAny" xml:space="preserve">
+    <value>GPS</value>
+  </data>
+  <data name="GroupIDAndEmailRequired" xml:space="preserve">
+    <value>必须填写电子邮件地址和组 ID</value>
+  </data>
+  <data name="InactiveAppsFound" xml:space="preserve">
+    <value>创建此软件包后，某些应用程序已删除或修改。请检查所选应用程序的列表以确保其已完成。</value>
+  </data>
+  <data name="InvokeAgent" xml:space="preserve">
+    <value>调用代理</value>
+  </data>
+  <data name="LauncherSharedDeviceMode" xml:space="preserve">
+    <value>Launcher</value>
+  </data>
+  <data name="ManagedInstallations" xml:space="preserve">
+    <value>纳管安装</value>
+  </data>
+  <data name="MultipleEnrollmentUsersForEmail" xml:space="preserve">
+    <value>多个注册用户与给定电子邮件地址关联</value>
+  </data>
+  <data name="NativeSharedDeviceMode" xml:space="preserve">
+    <value>本机</value>
+  </data>
+  <data name="NewProvisioningPackage" xml:space="preserve">
+    <value>新建置备软件包</value>
+  </data>
+  <data name="NoEnrollmentUserForEmail" xml:space="preserve">
+    <value>没有注册用户与给定电子邮件地址关联</value>
+  </data>
+  <data name="NoOrganizationGroupForGroupId" xml:space="preserve">
+    <value>未找到输入的组 ID 的组织组</value>
+  </data>
+  <data name="NoTransformSelected" xml:space="preserve">
+    <value>未选择转换</value>
+  </data>
+  <data name="NotWorking" xml:space="preserve">
+    <value>无法正常工作?</value>
+  </data>
+  <data name="OEMProvisioningDescription" xml:space="preserve">
+    <value>导出 PPKG 和 XML 文件，以便在 OEM 设施中预加载设备以及配置、设置和应用程序。</value>
+  </data>
+  <data name="OEMProvisioningTitle" xml:space="preserve">
+    <value>出厂置备</value>
+  </data>
+  <data name="OnboardingMethod" xml:space="preserve">
+    <value>载入方法</value>
+  </data>
+  <data name="OnboardingMethods" xml:space="preserve">
+    <value>启动方法</value>
+  </data>
+  <data name="OrganizationGroupInvalidForEnrollmentUser" xml:space="preserve">
+    <value>未授权用户在给定的组织组中进行注册</value>
+  </data>
+  <data name="PackageInProgress" xml:space="preserve">
+    <value>有一个现有的 Windows 置备软件包 (PPKG) 导出请求正在进行中。请等待导出完成。</value>
+  </data>
+  <data name="PackageSaved" xml:space="preserve">
+    <value>成功! 正在创建置备软件包。请稍后返回查看下载链接。</value>
+  </data>
+  <data name="PersonalApplicationMessageLabelAny" xml:space="preserve">
+    <value>个人应用程序</value>
+  </data>
+  <data name="PersonalAppsCollected" xml:space="preserve">
+    <value>收集所安装的个人应用程序是为了确保没有对您的个人和企业数据有恶意和有害的应用。只会提供一份已安装应用程序的列表。不会与 Workspace ONE 共享个人应用程序的内容/数据。</value>
+  </data>
+  <data name="PlatformConfirmation" xml:space="preserve">
+    <value>平台确认</value>
+  </data>
+  <data name="PromptForiPadandMAC" xml:space="preserve">
+    <value>确认您是否在使用 iPad 以避免注册和安装应用时出现问题。</value>
+  </data>
+  <data name="RemoteControlAccess" xml:space="preserve">
+    <value>远程控制访问</value>
+  </data>
+  <data name="Replaced" xml:space="preserve">
+    <value>已替换</value>
+  </data>
+  <data name="Requested" xml:space="preserve">
+    <value>已请求</value>
+  </data>
+  <data name="RetiringDevice" xml:space="preserve">
+    <value>停用设备</value>
+  </data>
+  <data name="RoamingStatusMessageLabelAny" xml:space="preserve">
+    <value>漫游状态</value>
+  </data>
+  <data name="SameModelReplacement" xml:space="preserve">
+    <value>相同型号替换</value>
+  </data>
+  <data name="SaveAndExport" xml:space="preserve">
+    <value>保存并导出</value>
+  </data>
+  <data name="SaveForLater" xml:space="preserve">
+    <value>否，保存以供稍后使用</value>
+  </data>
+  <data name="SelectedApplications" xml:space="preserve">
+    <value>选定应用程序</value>
+  </data>
+  <data name="SelectStagingMode" xml:space="preserve">
+    <value>选择注册预备模式</value>
+  </data>
+  <data name="SingleAndroidWipeAddition" xml:space="preserve">
+    <value>如果此设备重新注册到 Workspace ONE，则将创建一个新的 UDID，这会导致设备记录重复。</value>
+  </data>
+  <data name="SingleEnterpriseWipeDescription" xml:space="preserve">
+    <value>企业擦除操作将会取消所选设备的注册并移除其中所有的纳管企业资源，包括应用程序和配置文件。
+此操作不可撤消，且此设备必须重新注册才能重新被纳入 Workspace ONE 的管理。</value>
+  </data>
+  <data name="SMSUsageMessageLabelAny" xml:space="preserve">
+    <value>短信使用量</value>
+  </data>
+  <data name="StagingIsEnabledForEnrollmentUser" xml:space="preserve">
+    <value>已为给定的注册用户启用注册预备</value>
+  </data>
+  <data name="SystemAppsToggleHelpText" xml:space="preserve">
+    <value>允许最终用户访问系统应用</value>
+  </data>
+  <data name="SystemLogs" xml:space="preserve">
+    <value>系统日志</value>
+  </data>
+  <data name="SystemLogsPrivacyNoticeMessageLabel" xml:space="preserve">
+    <value>系统日志隐私声明</value>
+  </data>
+  <data name="TapHereToRetry" xml:space="preserve">
+    <value>点击此处重试</value>
+  </data>
+  <data name="TermsAndConditions" xml:space="preserve">
+    <value>条款和条件</value>
+  </data>
+  <data name="TransformLabel" xml:space="preserve">
+    <value>应用安装程序转换</value>
+  </data>
+  <data name="TransformToolTipText" xml:space="preserve">
+    <value>转换是应用于 MSI 安装的更改集合。请选择将在安装期间使用的可用转换文件 (MST)。</value>
+  </data>
+  <data name="TransformToolTipTitle" xml:space="preserve">
+    <value>转换</value>
+  </data>
+  <data name="UnattendAdJoinLabel" xml:space="preserve">
+    <value>Active Directory 类型</value>
+  </data>
+  <data name="UnattendAdJoinText" xml:space="preserve">
+    <value>选择要使用的 AD 加入类型。根据此选择，下面的表单将提供特定的 AD 加入 unattend.xml</value>
+  </data>
+  <data name="UnattendAutoAdminLogonLabel" xml:space="preserve">
+    <value>自动管理员登录</value>
+  </data>
+  <data name="UnattendAutoAdminLogonText" xml:space="preserve">
+    <value>需要以管理员身份登录一次才能注册设备。已启用自动管理员登录，现在需要设置本地管理员帐户</value>
+  </data>
+  <data name="UnattendBuildConfigFile" xml:space="preserve">
+    <value>构建配置文件</value>
+  </data>
+  <data name="UnattendBuildInAdminText" xml:space="preserve">
+    <value>这是管理员帐户的密码</value>
+  </data>
+  <data name="UnattendBuiltInAdminLabel" xml:space="preserve">
+    <value>管理员密码</value>
+  </data>
+  <data name="UnattendComputerNameLabel" xml:space="preserve">
+    <value>计算机名称</value>
+  </data>
+  <data name="UnattendComputerNamePlaceholder" xml:space="preserve">
+    <value>计算机名称 (随机)</value>
+  </data>
+  <data name="UnattendCreateLocalUserLabel" xml:space="preserve">
+    <value>创建本地用户</value>
+  </data>
+  <data name="UnattendCreateLocalUserText" xml:space="preserve">
+    <value>选择“是”将预创建本地用户帐户。选择“否”将在 OOBE 期间提示用户创建一个帐户。</value>
+  </data>
+  <data name="UnattendDomainNameLabel" xml:space="preserve">
+    <value>域名</value>
+  </data>
+  <data name="UnattendDomainNameText" xml:space="preserve">
+    <value>这是客户端将加入的域的名称</value>
+  </data>
+  <data name="UnattendDomainOuLabel" xml:space="preserve">
+    <value>AD 组织单位 (OU)</value>
+  </data>
+  <data name="UnattendDomainOuText" xml:space="preserve">
+    <value>格式必须为“OU=,OU=,DC=Company,DC=com”</value>
+  </data>
+  <data name="UnattendDomainPasswordLabel" xml:space="preserve">
+    <value>域密码</value>
+  </data>
+  <data name="UnattendDomainPasswordText" xml:space="preserve">
+    <value>输入 Active Directory 域加入帐户的密码。</value>
+  </data>
+  <data name="UnattendDomainUserLabel" xml:space="preserve">
+    <value>域用户名</value>
+  </data>
+  <data name="UnattendDomainUserText" xml:space="preserve">
+    <value>输入具有域加入权限的 Active Directory 帐户的用户名。</value>
+  </data>
+  <data name="UnattendDownloadMarkup" xml:space="preserve">
+    <value>Unattend XML</value>
+  </data>
+  <data name="UnattendDownloadPackage" xml:space="preserve">
+    <value>PPKG</value>
+  </data>
+  <data name="UnattendEnableBuiltInAdminLabel" xml:space="preserve">
+    <value>启用管理员帐户</value>
+  </data>
+  <data name="UnattendEnableBuiltInAdminText" xml:space="preserve">
+    <value>启用内置管理员帐户。此帐户默认禁用。当使用自动管理员登录时，必须启用默认管理员帐户</value>
+  </data>
+  <data name="UnattendFirstLogonCmdLabel" xml:space="preserve">
+    <value>首次登录命令</value>
+  </data>
+  <data name="UnattendFirstLogonCmdText" xml:space="preserve">
+    <value>您可以添加在用户首次登录时自动运行的命令（要求用户具有本地管理员权限）</value>
+  </data>
+  <data name="UnattendLocaleChineseHongKong" xml:space="preserve">
+    <value>中文 (香港)</value>
+  </data>
+  <data name="UnattendLocaleChinesePrc" xml:space="preserve">
+    <value>中文 (中国)</value>
+  </data>
+  <data name="UnattendLocaleChineseSimplified" xml:space="preserve">
+    <value>中文 (简体)</value>
+  </data>
+  <data name="UnattendLocaleChineseTaiwan" xml:space="preserve">
+    <value>中文 (台湾)</value>
+  </data>
+  <data name="UnattendLocaleChineseTraditional" xml:space="preserve">
+    <value>中文 (繁体)</value>
+  </data>
+  <data name="UnattendLocaleEnglish" xml:space="preserve">
+    <value>英语</value>
+  </data>
+  <data name="UnattendLocaleEnglishUk" xml:space="preserve">
+    <value>英语 - UK</value>
+  </data>
+  <data name="UnattendLocaleEnglishUs" xml:space="preserve">
+    <value>英语 - US</value>
+  </data>
+  <data name="UnattendLocaleFrench" xml:space="preserve">
+    <value>法语</value>
+  </data>
+  <data name="UnattendLocaleFrenchCanada" xml:space="preserve">
+    <value>法语 - 加拿大</value>
+  </data>
+  <data name="UnattendLocaleFrenchFrance" xml:space="preserve">
+    <value>法语 - 法国</value>
+  </data>
+  <data name="UnattendLocaleGerman" xml:space="preserve">
+    <value>德语</value>
+  </data>
+  <data name="UnattendLocaleItalian" xml:space="preserve">
+    <value>意大利语</value>
+  </data>
+  <data name="UnattendLocaleJapanese" xml:space="preserve">
+    <value>日语</value>
+  </data>
+  <data name="UnattendLocaleKorean" xml:space="preserve">
+    <value>朝鲜语</value>
+  </data>
+  <data name="UnattendLocaleLabel" xml:space="preserve">
+    <value>区域和键盘</value>
+  </data>
+  <data name="UnattendLocalePortuguese" xml:space="preserve">
+    <value>葡萄牙语</value>
+  </data>
+  <data name="UnattendLocalePortugueseBrazil" xml:space="preserve">
+    <value>葡萄牙语 (巴西)</value>
+  </data>
+  <data name="UnattendLocalePortuguesePortugal" xml:space="preserve">
+    <value>葡萄牙语 (葡萄牙)</value>
+  </data>
+  <data name="UnattendLocaleSpanish" xml:space="preserve">
+    <value>西班牙语</value>
+  </data>
+  <data name="UnattendLocaleSpanishMexico" xml:space="preserve">
+    <value>西班牙语 - 墨西哥</value>
+  </data>
+  <data name="UnattendLocaleSpanishSpain" xml:space="preserve">
+    <value>西班牙语 - 西班牙</value>
+  </data>
+  <data name="UnattendLocaleText" xml:space="preserve">
+    <value>基于上面选择的操作系统语言指定可用的输入语言和键盘布局。</value>
+  </data>
+  <data name="UnattendLocalUserAdminLabel" xml:space="preserve">
+    <value>设为管理员</value>
+  </data>
+  <data name="UnattendLocalUserAdminText" xml:space="preserve">
+    <value>对于 AirWatch 注册自动启动是必需的。在登录期间，用户将看到 AirWatch 弹出窗口，可在其中输入注册凭证</value>
+  </data>
+  <data name="UnattendLocalUserNameLabel" xml:space="preserve">
+    <value>本地用户名</value>
+  </data>
+  <data name="UnattendLocalUserNameText" xml:space="preserve">
+    <value>这是本地用户的用户名</value>
+  </data>
+  <data name="UnattendLocalUserPasswordLabel" xml:space="preserve">
+    <value>本地用户密码</value>
+  </data>
+  <data name="UnattendLocalUserPasswordText" xml:space="preserve">
+    <value>如果未指定密码，则在首次登录时，系统将提示用户更改密码</value>
+  </data>
+  <data name="UnattendMediaLanguageLabel" xml:space="preserve">
+    <value>操作系统语言</value>
+  </data>
+  <data name="UnattendMediaLanguageText" xml:space="preserve">
+    <value>选择提供给 OEM 的操作系统安装介质的语言</value>
+  </data>
+  <data name="UnattendModeAzureAdNoPrem" xml:space="preserve">
+    <value>Azure Active Directory - 无高级版</value>
+  </data>
+  <data name="UnattendModeAzureAdPrem" xml:space="preserve">
+    <value>Azure Active Directory - 高级版</value>
+  </data>
+  <data name="UnattendModeWorkgroup" xml:space="preserve">
+    <value>工作组</value>
+  </data>
+  <data name="UnattendNewCmdLabel" xml:space="preserve">
+    <value>新命令</value>
+  </data>
+  <data name="UnattendOnPremAdJoin" xml:space="preserve">
+    <value>本地 Active Directory 加入</value>
+  </data>
+  <data name="UnattendOobeSectionLabel" xml:space="preserve">
+    <value>OOBE 配置</value>
+  </data>
+  <data name="UnattendProductKeyLabel" xml:space="preserve">
+    <value>产品密钥</value>
+  </data>
+  <data name="UnattendProductKeyText" xml:space="preserve">
+    <value>Windows 产品密钥是由五个字母或数字组成的序列，重复五次并用短划线分隔。例如:“12345-54CDE-XYZ78-ONM98-456TY”</value>
+  </data>
+  <data name="UnattendRegisteredOrgLabel" xml:space="preserve">
+    <value>注册组织</value>
+  </data>
+  <data name="UnattendRegisteredOrgText" xml:space="preserve">
+    <value>这将显示在系统信息中。</value>
+  </data>
+  <data name="UnattendRegisteredOwnerLabel" xml:space="preserve">
+    <value>注册所有者</value>
+  </data>
+  <data name="UnattendRegisteredOwnerText" xml:space="preserve">
+    <value>这将显示在系统信息中</value>
+  </data>
+  <data name="UnattendRemoveConsumerAppsLabel" xml:space="preserve">
+    <value>移除 Windows 10 使用者应用</value>
+  </data>
+  <data name="UnattendRemoveConsumerAppsText" xml:space="preserve">
+    <value>启用此项可防止使用者应用（如 Candy Crush）出现在 Windows 10 中。只有在下面输入企业版或教育版产品密钥才能支持它。需要 Windows 1511 或更高版本</value>
+  </data>
+  <data name="UnattendSaveFailed" xml:space="preserve">
+    <value>无法保存软件包，请验证表单并重试。</value>
+  </data>
+  <data name="UnattendShowEulaLabel" xml:space="preserve">
+    <value>EULA 页</value>
+  </data>
+  <data name="UnattendShowEulaText" xml:space="preserve">
+    <value>选择“显示”将在 OOBE 期间显示 Microsoft 软件许可条款页面</value>
+  </data>
+  <data name="UnattendShowLocaleSettingsLabel" xml:space="preserve">
+    <value>区域和键盘设置</value>
+  </data>
+  <data name="UnattendShowLocaleSettingsText" xml:space="preserve">
+    <value>选择“显示”将在 OOBE 期间显示“区域和键盘设置”页面。选择“隐藏”将隐藏该页面，并要求您从下面的下拉列表中选择可用的区域设置。</value>
+  </data>
+  <data name="UnattendShowOnlineAccountLabel" xml:space="preserve">
+    <value>联机帐户设置</value>
+  </data>
+  <data name="UnattendShowOnlineAccountText" xml:space="preserve">
+    <value>选择“显示”将显示联机帐户屏幕。这允许您使用 Microsoft 帐户登录。</value>
+  </data>
+  <data name="UnattendShowPrivacyLabel" xml:space="preserve">
+    <value>隐私设置</value>
+  </data>
+  <data name="UnattendShowPrivacyText" xml:space="preserve">
+    <value>选择“显示”将提示用户在 OOBE 期间选择隐私设置。选择“隐藏”将使用 Express 设置并隐藏它。</value>
+  </data>
+  <data name="UnattendSyncCmdLabel" xml:space="preserve">
+    <value>其他同步命令</value>
+  </data>
+  <data name="UnattendSyncCmdText" xml:space="preserve">
+    <value>您可以添加在 Windows 安装过程结束时任何用户登录之前自动运行的命令</value>
+  </data>
+  <data name="UnattendSystemConfigurationSection" xml:space="preserve">
+    <value>系统配置</value>
+  </data>
+  <data name="UnattendUacAlwaysNotify" xml:space="preserve">
+    <value>始终通知</value>
+  </data>
+  <data name="UnattendUacDefault" xml:space="preserve">
+    <value>默认</value>
+  </data>
+  <data name="UnattendUacDisabled" xml:space="preserve">
+    <value>被禁用</value>
+  </data>
+  <data name="UnattendUacEnableButDoNotNotify" xml:space="preserve">
+    <value>启用但不通知</value>
+  </data>
+  <data name="UnattendUacLabel" xml:space="preserve">
+    <value>用户帐户控制</value>
+  </data>
+  <data name="UnattendUacNotifyWithoutDimmingDesktop" xml:space="preserve">
+    <value>通知但不调暗桌面</value>
+  </data>
+  <data name="UnattendUacText" xml:space="preserve">
+    <value>选择用户帐户控制的类型</value>
+  </data>
+  <data name="UnattendValidationInvalidInput" xml:space="preserve">
+    <value>输入无效</value>
+  </data>
+  <data name="UnattendValidationMaxLength" xml:space="preserve">
+    <value>此字段是必填字段，不能超过 {0} 个字符</value>
+  </data>
+  <data name="UnattendValidationNoAdminUser" xml:space="preserve">
+    <value>您必须创建属于管理员组成员的本地用户，或启用内置管理员</value>
+  </data>
+  <data name="UnattendValidationProductKey" xml:space="preserve">
+    <value>产品密钥无效</value>
+  </data>
+  <data name="UnattendValidationRequired" xml:space="preserve">
+    <value>此字段不能为空</value>
+  </data>
+  <data name="UnattendWelcome" xml:space="preserve">
+    <value>欢迎使用适用于置备的配置工具。请确保为所有必填字段提供值以启用“构建配置文件”按钮</value>
+  </data>
+  <data name="UnattendWorkgroupLabel" xml:space="preserve">
+    <value>工作组</value>
+  </data>
+  <data name="UnattendWorkgroupText" xml:space="preserve">
+    <value>这是客户端将加入的工作组的名称</value>
+  </data>
+  <data name="UnattendWs1OgLabel" xml:space="preserve">
+    <value>注册组织组</value>
+  </data>
+  <data name="UnattendWs1OgText" xml:space="preserve">
+    <value>这是您的注册组织组 ID。如果已启用 SAML，请确保在 SAML 关闭的情况下设置单独的“注册预备”组织组。您可以将鼠标悬停在 Workspace ONE console 顶部的组织组上以获取组 ID。</value>
+  </data>
+  <data name="UnattendWs1Section" xml:space="preserve">
+    <value>Workspace ONE 注册</value>
+  </data>
+  <data name="UnattendWs1ServerLabel" xml:space="preserve">
+    <value>注册服务器</value>
+  </data>
+  <data name="UnattendWs1ServerText" xml:space="preserve">
+    <value>这是您的注册服务器 URL。它位于“所有设置”-&gt;“系统”-&gt;“高级”-&gt;“MDM 注册 URL”下的“网站 URL”中。仅包含核心 URL。例如 https://vmwarelab.awmdm.com</value>
+  </data>
+  <data name="UnattendWs1StagingAccountLabel" xml:space="preserve">
+    <value>注册预备帐户</value>
+  </data>
+  <data name="UnattendWs1StagingAccountPasswordLabel" xml:space="preserve">
+    <value>注册预备密码</value>
+  </data>
+  <data name="UnattendWs1StagingAccountPasswordText" xml:space="preserve">
+    <value>在与注册预备帐户相同的页面上指定注册预备帐户“密码”。如果密码包含特殊字符 (“&amp;”、“&gt;”或“&lt;”)，则使用此帐户进行注册的出厂置备工作流将失败。要更改密码，请转到“用户”页面。</value>
+  </data>
+  <data name="UnattendWs1StagingAccountText" xml:space="preserve">
+    <value>这是注册预备帐户，位于“所有设置”--&gt;“设备与用户”--&gt;“Windows”--&gt;“Windows 桌面”--&gt;“注册预备和置备”的“UPN”字段中</value>
+  </data>
+  <data name="UnmanagedProfilesMessageLabelAny" xml:space="preserve">
+    <value>未纳管的配置文件</value>
+  </data>
+  <data name="USBDeviceMessageLabelAny" xml:space="preserve">
+    <value>USB 设备</value>
+  </data>
+  <data name="UserEnrollmentAndEnter" xml:space="preserve">
+    <value>具有组 ID?</value>
+  </data>
+  <data name="UserEnrollmentNotEnabledInOg" xml:space="preserve">
+    <value>未在指定的组织组中启用用户注册</value>
+  </data>
+  <data name="UserEnrollmentSettingsMessage" xml:space="preserve">
+    <value>在“设置”应用中，找到并点击“在您的公司中注册”</value>
+  </data>
+  <data name="UserEnrollmentUseEmailAddress" xml:space="preserve">
+    <value>使用电子邮件地址</value>
+  </data>
+  <data name="UserPasswordIsRequired" xml:space="preserve">
+    <value>必须提供密码</value>
+  </data>
+  <data name="Workappsprivacynoticemessagelabel" xml:space="preserve">
+    <value>从设备上收集一份所有通过 Workspace ONE 交付的工作应用的应用名称、版本和安装状态的列表，供编制报表使用。</value>
+  </data>
+</root>

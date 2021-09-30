@@ -1,0 +1,486 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AddedPolices" xml:space="preserve">
+    <value>Políticas agregadas</value>
+  </data>
+  <data name="AssignBaseline" xml:space="preserve">
+    <value>Asignar valor referencia</value>
+  </data>
+  <data name="AssignBaselineDescription" xml:space="preserve">
+    <value>Seleccione los grupos inteligentes para asignar el valor de referencia.</value>
+  </data>
+  <data name="AssignBaselineDescription2" xml:space="preserve">
+    <value>Seleccione los grupos inteligentes que se van a asignar a la línea de base. Seleccione Exclusiones para excluir grupos específicos. Si agrega una exclusión a una línea de base publicada, la línea de base se eliminará de los dispositivos excluidos.</value>
+  </data>
+  <data name="AssignBaselineLocationGroupNotFound" xml:space="preserve">
+    <value>No se ha podido asignar el valor de referencia porque no se ha encontrado el grupo organizativo.</value>
+  </data>
+  <data name="AssignBaselineNotFound" xml:space="preserve">
+    <value>No se ha podido asignar el valor de referencia porque no se ha encontrado el valor de referencia.</value>
+  </data>
+  <data name="AssignedDevicesArg" xml:space="preserve">
+    <value>Asignado: {0} dispositivos</value>
+  </data>
+  <data name="Assignments" xml:space="preserve">
+    <value>Asignaciones</value>
+  </data>
+  <data name="Baseline" xml:space="preserve">
+    <value>Valor de referencia</value>
+  </data>
+  <data name="BaselineAssigned" xml:space="preserve">
+    <value>Línea de base asignada</value>
+  </data>
+  <data name="BaselineAssignmentFailed" xml:space="preserve">
+    <value>No se ha podido asignar el valor de referencia. Inténtelo de nuevo.</value>
+  </data>
+  <data name="BaselineAssignmentSuccessful" xml:space="preserve">
+    <value>Se ha publicado correctamente la línea de base en la asignación actualizada.</value>
+  </data>
+  <data name="BaselineBlobFailed" xml:space="preserve">
+    <value>Error al crear la línea de base, ya que no se ha podido crear el paquete.</value>
+  </data>
+  <data name="BaselineCombinedBlobFailed" xml:space="preserve">
+    <value>Error al crear la línea de base, ya que no se ha podido crear el paquete que contiene las personalizaciones.</value>
+  </data>
+  <data name="BaselineContainsExe" xml:space="preserve">
+    <value>La línea de base personalizada contiene ejecutables. Elimínelos e inténtelo de nuevo.</value>
+  </data>
+  <data name="BaselineCopyFailed" xml:space="preserve">
+    <value>No se ha podido copiar la línea base seleccionada.</value>
+  </data>
+  <data name="BaselineCopySuccessful" xml:space="preserve">
+    <value>La línea base seleccionada se ha copiado correctamente.</value>
+  </data>
+  <data name="BaselineCreated" xml:space="preserve">
+    <value>Línea de base creada</value>
+  </data>
+  <data name="BaselineCreationFailed" xml:space="preserve">
+    <value>No se pudo crear el valor de referencia.</value>
+  </data>
+  <data name="BaselineCreationSuccessful" xml:space="preserve">
+    <value>El valor de referencia se ha guardado correctamente.</value>
+  </data>
+  <data name="BaselineCustomizationFailed" xml:space="preserve">
+    <value>Error al crear la línea de base, ya que no se han podido aplicar las personalizaciones.</value>
+  </data>
+  <data name="BaselineDeleted" xml:space="preserve">
+    <value>Línea de base eliminada</value>
+  </data>
+  <data name="BaselineDeleteFailed" xml:space="preserve">
+    <value>Error al eliminar la línea de base. Vuelva a intentarlo.</value>
+  </data>
+  <data name="BaselineDeleteSuccessful" xml:space="preserve">
+    <value>La línea de base se ha eliminado correctamente.</value>
+  </data>
+  <data name="BaselineDetails" xml:space="preserve">
+    <value>Nombre y versión de la línea de base</value>
+  </data>
+  <data name="BaselineErrorCode" xml:space="preserve">
+    <value>Código de error del dispositivo</value>
+  </data>
+  <data name="BaselineErrorMessage" xml:space="preserve">
+    <value>Mensaje de error</value>
+  </data>
+  <data name="BaselineFileCorrupt" xml:space="preserve">
+    <value>La línea de base personalizada no es un archivo zip válido.</value>
+  </data>
+  <data name="BaselineFileEmpty" xml:space="preserve">
+    <value>La línea de base personalizada parece estar en blanco. Inténtelo de nuevo con un archivo válido.</value>
+  </data>
+  <data name="BaselineFileMissingPolicies" xml:space="preserve">
+    <value>El archivo seleccionado para la línea de base personalizada no sigue las especificaciones recomendadas. Consulte la documentación para revisar.</value>
+  </data>
+  <data name="BaselineFileSizeError" xml:space="preserve">
+    <value>La línea de base personalizada excede el límite de tamaño máximo de 5 MB.</value>
+  </data>
+  <data name="BaselineGetPolicyTreeFailed" xml:space="preserve">
+    <value>No se pueden cargar las políticas para la personalización. Inténtelo más tarde.</value>
+  </data>
+  <data name="BaselineInvalidRequest" xml:space="preserve">
+    <value>Asegúrese de que ha llenado todos los campos requeridos.</value>
+  </data>
+  <data name="BaselineMissingPolicies" xml:space="preserve">
+    <value>Error al crear la línea de base, ya que una o varias políticas se han eliminado o no están disponibles</value>
+  </data>
+  <data name="BaselineModified" xml:space="preserve">
+    <value>Línea de base modificada</value>
+  </data>
+  <data name="BaselineName" xml:space="preserve">
+    <value>Nombre del valor de referencia</value>
+  </data>
+  <data name="BaselinePendingReboot" xml:space="preserve">
+    <value>Reinicio pendiente</value>
+  </data>
+  <data name="BaselinePolicyFieldError" xml:space="preserve">
+    <value>Error al crear la línea de base, ya que una o varias políticas tienen valores no válidos</value>
+  </data>
+  <data name="BaselinePolicyGenerationFailed" xml:space="preserve">
+    <value>Error al crear la línea de base, ya que una o varias políticas no se han podido generar</value>
+  </data>
+  <data name="Baselines" xml:space="preserve">
+    <value>Valores de referencia</value>
+  </data>
+  <data name="BaselinesBlobID" xml:space="preserve">
+    <value>ID de blob de línea de base</value>
+  </data>
+  <data name="BaselinesCount" xml:space="preserve">
+    <value>Recuento de línea de base</value>
+  </data>
+  <data name="BaselineServiceUnavailable" xml:space="preserve">
+    <value>No se puede conectar con el servicio de línea base "https://www.vmwarebaselines.com". Revise la conectividad y los registros para obtener más información.</value>
+  </data>
+  <data name="BaselinesMenuDescription" xml:space="preserve">
+    <value>Ver valores de referencia</value>
+  </data>
+  <data name="BaselineStatusCallFailed" xml:space="preserve">
+    <value>No se pueden recuperar los estados de líneas de base. Inténtelo de nuevo más tarde</value>
+  </data>
+  <data name="BaselineTooltipCis" xml:space="preserve">
+    <value>Utilizar los ajustes recomendados del banco de pruebas de CIS para la versión y el nivel seleccionados.</value>
+  </data>
+  <data name="BaselineTooltipCustom" xml:space="preserve">
+    <value>Cargue una copia de seguridad personalizada de un objeto de directiva de grupo (GPO) para aplicarla a los dispositivos. La copia de seguridad del GPO debe ser un archivo zip de un tamaño inferior a 5 MB.</value>
+  </data>
+  <data name="BaselineTooltipWindows" xml:space="preserve">
+    <value>Los componentes de valor de referencia de seguridad ("SBC") del Kit de herramientas de seguridad de Microsoft han sido creados por Microsoft y están disponibles para su uso exclusivo para la administración de dispositivos con Windows 10. SBC se proporciona TAL CUAL y sin garantía de ningún tipo de VMware o Microsoft. Podrá encontrar más información sobre el SBC disponible en {0}.</value>
+  </data>
+  <data name="BaselineUUID" xml:space="preserve">
+    <value>UUID de línea de base</value>
+  </data>
+  <data name="BlankBaseline" xml:space="preserve">
+    <value>Crear una propia</value>
+  </data>
+  <data name="BlankBaselineDescription" xml:space="preserve">
+    <value>Cree su propia línea base eligiéndola en nuestro catálogo de políticas.</value>
+  </data>
+  <data name="ChooseTemplate" xml:space="preserve">
+    <value>Seleccionar línea de base</value>
+  </data>
+  <data name="ComplianceDataMissing" xml:space="preserve">
+    <value>Los datos de conformidad aún no están disponibles para esta línea de base. Vuelva a publicar la línea de base en los dispositivos asignados para activar el informe de muestra de conformidad.</value>
+  </data>
+  <data name="ConfirmCancelBaseline" xml:space="preserve">
+    <value>Los cambios realizados en este valor de referencia no se guardan. ¿Desea descartar los cambios?</value>
+  </data>
+  <data name="ConfirmCloudDescription" xml:space="preserve">
+    <value>Al utilizar las líneas base de Workspace ONE, accederá a los datos que se almacenan de forma remota en VMware. Si no desea continuar, haga clic en Cancelar.</value>
+  </data>
+  <data name="ConfirmCloudTitle" xml:space="preserve">
+    <value>Acceso remoto a datos</value>
+  </data>
+  <data name="ConfirmDeleteBaseline" xml:space="preserve">
+    <value>Si se asigna esta línea de base, al suprimirla se eliminará de todos los dispositivos. ¿Desea continuar?</value>
+  </data>
+  <data name="CopyBaseline" xml:space="preserve">
+      <value>Copiar línea base</value>
+  </data>
+  <data name="CustomBaseline" xml:space="preserve">
+    <value>Personalizar línea de base</value>
+  </data>
+  <data name="CustomBaselineCompliance" xml:space="preserve">
+    <value>Los datos de conformidad de las líneas de base personalizadas se evalúan en función de las directivas agregadas a la línea de base, y no de las directivas comprimidas.</value>
+  </data>
+  <data name="CustomBaselineComplianceDataMissing" xml:space="preserve">
+    <value>Los datos de conformidad no están disponibles o son incompletos para las líneas de base personalizadas, porque no se han podido revisar las directivas comprimidas.</value>
+  </data>
+  <data name="CustomBaselineError" xml:space="preserve">
+    <value>Seleccione un archivo para la línea de base personalizada</value>
+  </data>
+  <data name="CustomBaselineHelpLink" xml:space="preserve">
+    <value>Ver instrucciones para cargar GPO</value>
+  </data>
+  <data name="CustomizeSelectPolicy" xml:space="preserve">
+    <value>Seleccione una política para ver su configuración.</value>
+  </data>
+  <data name="CustomizeStepDescription" xml:space="preserve">
+    <value>Puede revisar o personalizar las políticas desde {0} para satisfacer sus necesidades.</value>
+  </data>
+  <data name="DefinitionStepDescription" xml:space="preserve">
+    <value>Introduzca un nombre y una descripción para la línea de base.</value>
+  </data>
+  <data name="DeleteBaseline" xml:space="preserve">
+    <value>Eliminar línea de base</value>
+  </data>
+  <data name="DeviceBaselineLocationGroupNotFound" xml:space="preserve">
+    <value>No se han podido recuperar dispositivos para la línea de base porque no se ha encontrado el grupo organizativo.</value>
+  </data>
+  <data name="DeviceBaselineNotFound" xml:space="preserve">
+    <value>No se han podido recuperar dispositivos para la línea de base porque no se ha encontrado la línea de base.</value>
+  </data>
+  <data name="DiscardAndExit" xml:space="preserve">
+    <value>Descartar y salir</value>
+  </data>
+  <data name="EditBaseline" xml:space="preserve">
+    <value>Editar línea base</value>
+  </data>
+  <data name="EditRequestError" xml:space="preserve">
+    <value>La versión de línea base seleccionada ya no está disponible. Cree una nueva.</value>
+  </data>
+  <data name="EmptyBaselineList" xml:space="preserve">
+    <value>No se han encontrado valores de referencia</value>
+  </data>
+  <data name="EmptyDeviceList" xml:space="preserve">
+    <value>No se ha encontrado ningún dispositivo</value>
+  </data>
+  <data name="EmptyListInput" xml:space="preserve">
+    <value>Requiere una o más entradas</value>
+  </data>
+  <data name="EmptyPolicyList" xml:space="preserve">
+    <value>Aún no se ha agregado ninguna política</value>
+  </data>
+  <data name="ErrorBaselineDeviceException" xml:space="preserve">
+    <value>No se han podido aplicar las líneas de base, compruebe los registros para corregir el problema.</value>
+  </data>
+  <data name="ErrorDownloadBlobFailed" xml:space="preserve">
+    <value>No se ha podido acceder a las líneas de base, compruebe los registros para corregir el problema.</value>
+  </data>
+  <data name="ErrorInvalidExecutable" xml:space="preserve">
+    <value>LGPO.exe no es válido, intente cambiar el ejecutable para corregir el problema.</value>
+  </data>
+  <data name="ErrorLGPOBackupFailed" xml:space="preserve">
+    <value>No se han podido aplicar las líneas de base, compruebe los registros para corregir el problema.</value>
+  </data>
+  <data name="ErrorMissingLGPO" xml:space="preserve">
+    <value>LGPO.exe no está disponible para aplicar líneas de base.</value>
+  </data>
+  <data name="ErrorSavingFileInFolder" xml:space="preserve">
+    <value>No se han podido guardar las líneas de base, compruebe los registros para corregir el problema.</value>
+  </data>
+  <data name="ErrorUpdatingDatabase" xml:space="preserve">
+    <value>El estado de las líneas de base es desconocido, compruebe los registros para obtener más información.</value>
+  </data>
+  <data name="ErrorZipExtractionFailed" xml:space="preserve">
+    <value>No se han podido extraer las líneas de base, compruebe los registros para corregir el problema.</value>
+  </data>
+  <data name="ExcludedSmartGroups" xml:space="preserve">
+    <value>Grupos inteligentes excluidos</value>
+  </data>
+  <data name="Exclusions" xml:space="preserve">
+    <value>Exclusiones</value>
+  </data>
+  <data name="FailedInstall" xml:space="preserve">
+    <value>No se pudo instalar</value>
+  </data>
+  <data name="FailedRemoval" xml:space="preserve">
+    <value>No se pudo eliminar</value>
+  </data>
+  <data name="IntermediateDescription" xml:space="preserve">
+    <value>Los dispositivos que se muestran conformes con la normativa entre el {0}% y {1}% se clasifican como intermedios.</value>
+  </data>
+  <data name="MaxValueArg" xml:space="preserve">
+    <value>Tiene que ser menor o igual que {0}</value>
+  </data>
+  <data name="MinValueArg" xml:space="preserve">
+    <value>Tiene que ser mayor o igual que {0}</value>
+  </data>
+  <data name="NewBaseline" xml:space="preserve">
+    <value>Nuevo valor de referencia</value>
+  </data>
+  <data name="NoActiveOSVersion" xml:space="preserve">
+    <value>No se han encontrado versiones de SO. Inténtelo de nuevo más tarde.</value>
+  </data>
+  <data name="NoCustomizationSupport" xml:space="preserve">
+    <value>La personalización no está disponible actualmente para la línea base seleccionada.</value>
+  </data>
+  <data name="NoFileSelected" xml:space="preserve">
+    <value>No hay ningún archivo seleccionado.</value>
+  </data>
+  <data name="NonEnglishSearchResult" xml:space="preserve">
+    <value>No se encontraron resultados para "{0}". Puede volver a realizar la búsqueda en inglés para ver si la directiva está disponible.</value>
+  </data>
+  <data name="NoResultsFoundForArg" xml:space="preserve">
+    <value>No se han encontrado resultados para "{0}"</value>
+  </data>
+  <data name="NoSmartGroupsSelected" xml:space="preserve">
+    <value>No se ha seleccionado ningún grupo inteligente</value>
+  </data>
+  <data name="PolicyNotFound" xml:space="preserve">
+    <value>No se encontraron detalles de la política</value>
+  </data>
+  <data name="PolicyStepDescription" xml:space="preserve">
+    <value>Busque y agregue políticas del catálogo.</value>
+  </data>
+  <data name="Proceed" xml:space="preserve">
+    <value>Continuar</value>
+  </data>
+  <data name="RemovalFailed" xml:space="preserve">
+    <value>Fallo al eliminar</value>
+  </data>
+  <data name="RequiredFieldError" xml:space="preserve">
+    <value>Introduzca un nombre para la línea de base.</value>
+  </data>
+  <data name="SaveAndPublish" xml:space="preserve">
+    <value>Guardar y publicar</value>
+  </data>
+  <data name="SearchPolicyPlaceholder" xml:space="preserve">
+    <value>Comience a escribir para buscar una directiva</value>
+  </data>
+  <data name="SearchSmartGroupPlaceholder" xml:space="preserve">
+    <value>Comience a escribir para buscar un grupo inteligente</value>
+  </data>
+  <data name="SelectedSmartGroups" xml:space="preserve">
+    <value>Grupos inteligentes seleccionados</value>
+  </data>
+  <data name="SelectTypeDescription" xml:space="preserve">
+    <value>Seleccione un tipo de línea base para agregar.</value>
+  </data>
+  <data name="SelectTypeTitle" xml:space="preserve">
+    <value>Seleccionar tipo de línea base</value>
+  </data>
+  <data name="SmartGroupAtLeastOneValidationDescription" xml:space="preserve">
+    <value>Se requiere al menos un grupo inteligente en la pestaña Asignaciones.</value>
+  </data>
+  <data name="SummaryStepDescription" xml:space="preserve">
+    <value>Revise el resumen antes de guardar este valor de referencia.</value>
+  </data>
+  <data name="TemplateStepDescription" xml:space="preserve">
+    <value>Seleccione una línea de base y una versión preconfiguradas.</value>
+  </data>
+  <data name="TextareaMaxLinesError" xml:space="preserve">
+    <value>Excede el número máximo de líneas</value>
+  </data>
+  <data name="TextareaMaxSentenceError" xml:space="preserve">
+    <value>Una o más frases exceden la longitud máxima</value>
+  </data>
+  <data name="TotalInstalledArg" xml:space="preserve">
+    <value>Total de instalaciones: {0}</value>
+  </data>
+  <data name="UnabletoLoadDevices" xml:space="preserve">
+    <value>No se puede cargar la lista de dispositivos. Inténtelo de nuevo más tarde.</value>
+  </data>
+  <data name="UnsavedChanges" xml:space="preserve">
+    <value>Cambios sin guardar</value>
+  </data>
+  <data name="UnsupportedLanguageError" xml:space="preserve">
+    <value>Error: el idioma seleccionado no es compatible.</value>
+  </data>
+  <data name="UseBaselineTemplate" xml:space="preserve">
+      <value>Usar plantilla</value>
+  </data>
+  <data name="UseTemplateDescription" xml:space="preserve">
+    <value>Use las plantillas estándar del sector para configurar la línea base.</value>
+  </data>
+  <data name="VersionBreakdown" xml:space="preserve">
+    <value>Desglose de versiones</value>
+  </data>
+  <data name="ViewBaselineDevicesTitle" xml:space="preserve">
+    <value>Ver dispositivos - Líneas de base</value>
+  </data>
+</root>

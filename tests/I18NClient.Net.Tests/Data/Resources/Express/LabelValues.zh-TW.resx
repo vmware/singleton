@@ -1,0 +1,235 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ApproveAndPublishPublicApps" xml:space="preserve">
+    <value>核准及發佈公用應用程式</value>
+  </data>
+  <data name="ApproveAndPublishPublicAppsDescription" xml:space="preserve">
+    <value>重新新增您在向 Android EMM 註冊之前所發佈之現有藍圖中的任何公用應用程式，以便核准並將其發佈到舊版和 Android Enterprise 裝置。</value>
+  </data>
+  <data name="ArgDevicesRemovedBasedOnGroupSelection" xml:space="preserve">
+    <value>根據目前的群組選取項目將移除 {0} 個裝置。</value>
+    <comment>{0} will be replaced by a number</comment>
+  </data>
+  <data name="ArgOutOfArgLegacyAndroidMigrationNotification" xml:space="preserve">
+    <value>在所選群組的 {1} 個舊版 Android 裝置中，有 {0} 個符合移轉資格。若您繼續進行，移轉將僅套用於這些裝置。</value>
+    <comment>{0} and {1} will be replaced by a number.</comment>
+  </data>
+  <data name="CollectDeviceLocationData" xml:space="preserve">
+    <value>收集裝置位置資料</value>
+  </data>
+  <data name="DevicesInBlueprintArg" xml:space="preserve">
+    <value>藍圖 {0} 中的裝置</value>
+  </data>
+  <data name="DevicesSelectionTooltipText" xml:space="preserve">
+    <value>目前只能選取已指派至藍圖的使用者裝置。您也可以選取 [所有裝置]，選擇一次移轉所有的裝置。</value>
+  </data>
+  <data name="DistributeAppCatalogToDevices" xml:space="preserve">
+    <value>將應用程式目錄散佈至裝置</value>
+  </data>
+  <data name="ExpressLegacyAndroidMigrationDeviceExportArg" xml:space="preserve">
+    <value>下方所列的裝置在選取上述群組時為舊版管理。未來任何新增至這些群組的裝置將會顯示為新探索到的裝置。{0}以查看所有已移轉裝置的明細，包括在可能已遭移除之群組中的裝置。</value>
+    <comment>{0} will be replaced by another key with text 'Export Details'.</comment>
+  </data>
+  <data name="ExpressMigrationAllCompatible" xml:space="preserve">
+    <value>在所選群組中的所有 {0} 個舊版 Android 裝置都可以移轉。</value>
+    <comment>{0} will be replaced by a number.</comment>
+  </data>
+  <data name="ExpressMigrationLimitReached" xml:space="preserve">
+    <value>移轉可擁有最多 10 個群組指派。</value>
+  </data>
+  <data name="ExpressMigrationNoDevicesCompatible" xml:space="preserve">
+    <value>在所選的群組中沒有裝置符合移轉資格。請選取包含舊版 Android 裝置的群組以繼續進行。</value>
+  </data>
+  <data name="ExpressNoNewDevices" xml:space="preserve">
+    <value>在所選群組中找不到新的符合資格的舊版 Android 裝置。</value>
+  </data>
+  <data name="ExpressWelcomeMessageHeader" xml:space="preserve">
+    <value>用來保全和管理貴公司行動裝置的各項要件都在此處。您可以：</value>
+  </data>
+  <data name="IsAfwRequired" xml:space="preserve">
+    <value>您的員工將使用 Android 裝置嗎?</value>
+  </data>
+  <data name="NoGroupFound" xml:space="preserve">
+    <value>找不到與該名稱有關的使用者群組。</value>
+  </data>
+  <data name="NotificationDevicePreviewAndroidLegacyMigration" xml:space="preserve">
+    <value>通知將寄送到所選群組中符合資格的裝置，告知員工有關該移轉的相關事項，並提示他們採取動作以繼續進行。您可以在 [舊版 Android 移轉] 頁面上監控他們的作業進度。</value>
+  </data>
+  <data name="NoUserFound" xml:space="preserve">
+    <value>找不到與該名稱有關的使用者。</value>
+  </data>
+  <data name="QuestionnaireDescription" xml:space="preserve">
+    <value>回答幾個簡單的問題，以協助您進行設定:</value>
+  </data>
+  <data name="ResaveYourPolicies" xml:space="preserve">
+    <value>重新儲存您的原則</value>
+  </data>
+  <data name="ResaveYourPoliciesDescription" xml:space="preserve">
+    <value>編輯並重新儲存您在向 Android EMM 註冊之前所發佈之任何現有藍圖的 [原則] 區段。</value>
+  </data>
+  <data name="ResaveYourResources" xml:space="preserve">
+    <value>重新儲存您的資源</value>
+  </data>
+  <data name="ResaveYourResourcesDescription" xml:space="preserve">
+    <value>編輯並重新儲存您在向 Android EMM 註冊之前所發佈之現有藍圖中所設定的任何電子郵件和 Wi-Fi 資源。</value>
+  </data>
+  <data name="SearchCurrentGroups" xml:space="preserve">
+    <value>搜尋目前的群組</value>
+  </data>
+  <data name="SearchCurrentUsers" xml:space="preserve">
+    <value>搜尋目前的使用者</value>
+  </data>
+  <data name="SelectMigrationDevices" xml:space="preserve">
+    <value>選取您要移轉的裝置。</value>
+  </data>
+  <data name="StartTypingToAddGroups" xml:space="preserve">
+    <value>開始輸入以新增群組</value>
+  </data>
+  <data name="WantToCollectDeviceLocationData" xml:space="preserve">
+    <value>是否要收集裝置位置資料?</value>
+  </data>
+  <data name="WantToDistributeAppCatalogToDevices" xml:space="preserve">
+    <value>是否要將應用程式目錄散佈到您的裝置?</value>
+  </data>
+  <data name="WarningForNotCollectingLocationData" xml:space="preserve">
+    <value>當然。若您想變更答案，可隨時從 [使用入門] 功能表返回此調查。</value>
+  </data>
+  <data name="WarningForNotConfiguringAd" xml:space="preserve">
+    <value>沒關係。如果您改變心意，稍後可從 [設定] 功能表設定 Active Directory。</value>
+  </data>
+  <data name="WarningForNotConfiguringAfw" xml:space="preserve">
+    <value>如果您未來計劃註冊 Android 裝置，稍後可隨時透過 [設定] 功能表來設定 Android EMM 登錄資訊。</value>
+  </data>
+  <data name="WarningForNotConfiguringApns" xml:space="preserve">
+    <value>如果您未來計劃註冊 Apple 裝置，稍後可隨時透過 [設定] 功能表來設定 APN 憑證資訊。</value>
+  </data>
+  <data name="WarningForNotConfiguringVpp" xml:space="preserve">
+    <value>好的。若您決定稍後再設定 Apple VPP 帳戶，可隨時前往 [設定] 功能表進行設定。</value>
+  </data>
+  <data name="WarningForNotDistributingAppCatalog" xml:space="preserve">
+    <value>知道了。如果您想要變更答案，可隨時從 [使用入門] 功能表返回此調查。</value>
+  </data>
+  <data name="WorkspaceOneExpress" xml:space="preserve">
+    <value>Workspace ONE Express</value>
+  </data>
+  <data name="WorkspaceOneExpressSetupTrackInfo" xml:space="preserve">
+    <value>進行設定以開始註冊、保護和管理裝置，並且提供企業資源給員工。</value>
+  </data>
+</root>

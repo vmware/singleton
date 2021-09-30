@@ -1,0 +1,1002 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AadCustomAttributeLookupFailed" xml:space="preserve">
+    <value>L'ajout d'une recherche d'attributs personnalisés a échoué.</value>
+  </data>
+  <data name="ActionStatus" xml:space="preserve">
+    <value>État de l'action</value>
+  </data>
+  <data name="ActionUuid" xml:space="preserve">
+    <value>UUID de l'action</value>
+  </data>
+  <data name="ActivationLockBypassCodeConfirmed" xml:space="preserve">
+    <value>Code de contournement du verrouillage d'activation confirmé</value>
+  </data>
+  <data name="ActivationLockBypassCodeFailed" xml:space="preserve">
+    <value>Échec du code de contournement du verrouillage d'activation</value>
+  </data>
+  <data name="ActivationLockBypassCodeRefused" xml:space="preserve">
+    <value>Code de contournement du verrouillage d'activation refusé</value>
+  </data>
+  <data name="ActivationLockBypassCodeRequested" xml:space="preserve">
+    <value>Code de contournement du verrouillage d'activation demandé</value>
+  </data>
+  <data name="AdminAppAuthTokenIssued" xml:space="preserve">
+    <value>Jeton d'authentification de l'application Admin émis</value>
+  </data>
+  <data name="AdminGroupDirectorySyncCompleted" xml:space="preserve">
+    <value>Synchronisation du répertoire du groupe d'administrateurs terminée</value>
+  </data>
+  <data name="AdminPasswordRotationConfirmed" xml:space="preserve">
+    <value>Rotation du mot de passe administrateur confirmée</value>
+  </data>
+  <data name="AdminPasswordRotationFailed" xml:space="preserve">
+    <value>Échec de la rotation du mot de passe administrateur</value>
+  </data>
+  <data name="AdminPasswordRotationRequested" xml:space="preserve">
+    <value>Rotation du mot de passe administrateur demandée</value>
+  </data>
+  <data name="AndroidHeartbeatIntervalSettingChangedFailed" xml:space="preserve">
+    <value>Échec de la modification du paramètre d'intervalle de pulsation Android</value>
+  </data>
+  <data name="AndroidHeartbeatIntervalSettingChangedSuccess" xml:space="preserve">
+    <value>Le paramètre d'intervalle de pulsation Android a été modifié</value>
+  </data>
+  <data name="AndroidSyncPerAppVpnAssociations" xml:space="preserve">
+    <value>Synchroniser les associations de VPN par application</value>
+  </data>
+  <data name="AndroidSyncPerAppVpnAssociationsConfirmed" xml:space="preserve">
+    <value>Commande de synchronisation des associations VPN par application confirmée</value>
+  </data>
+  <data name="AndroidSyncPerAppVpnAssociationsRequested" xml:space="preserve">
+    <value>Commande de synchronisation des associations VPN par application demandée</value>
+  </data>
+  <data name="AppleMdmSampleScheduleSettingChangedFailed" xml:space="preserve">
+    <value>La modification des paramètres de planification d'échantillons MDM d'Apple a échoué.</value>
+  </data>
+  <data name="AppleMdmSampleScheduleSettingChangedSuccess" xml:space="preserve">
+    <value>La modification des paramètres de planification d'échantillons MDM d'Apple a réussi.</value>
+  </data>
+  <data name="AppleProfileSigningCertificateChangedFailure" xml:space="preserve">
+    <value>Échec de la modification du paramètre de certificat de signature du profil Apple</value>
+  </data>
+  <data name="AppleProfileSigningCertificateChangedSuccess" xml:space="preserve">
+    <value>Le paramètre de certificat de signature du profil Apple a été modifié</value>
+  </data>
+  <data name="ApplicationDeploymentCriteriaMissing" xml:space="preserve">
+    <value>Critères de déploiement d'application manquants</value>
+  </data>
+  <data name="ApplicationDownloadFailed" xml:space="preserve">
+    <value>Échec du téléchargement de l'application</value>
+  </data>
+  <data name="ApplicationInstalling" xml:space="preserve">
+    <value>Installation de l'application</value>
+  </data>
+  <data name="AppLogsDescription" xml:space="preserve">
+    <value>View and download available log files.</value>
+  </data>
+  <data name="ApproveRemoval" xml:space="preserve">
+    <value>Approuver la suppression</value>
+  </data>
+  <data name="ApproveRemovalDescription" xml:space="preserve">
+    <value>Cette action approuve la suppression de l'application des terminaux potentiellement affectés. Aucune action supplémentaire n'est requise pour ajuster l'attribution d'application.</value>
+  </data>
+  <data name="ApproveRemovalTitle" xml:space="preserve">
+    <value>Approuver la suppression d'application</value>
+  </data>
+  <data name="BaselineInstallConfirmed" xml:space="preserve">
+    <value>Installation de la ligne de base confirmée</value>
+  </data>
+  <data name="BaselineInstallFailed" xml:space="preserve">
+    <value>Échec de l'installation de la ligne de base</value>
+  </data>
+  <data name="BaselineMissingHash" xml:space="preserve">
+    <value>Mise à jour du hachage de ligne de base demandée</value>
+  </data>
+  <data name="BaselineQueryConfirmed" xml:space="preserve">
+    <value>Requête de la ligne de base confirmée</value>
+  </data>
+  <data name="BaselineQueryFailed" xml:space="preserve">
+    <value>Échec de la requête de la ligne de base</value>
+  </data>
+  <data name="BaselineQueryRequested" xml:space="preserve">
+    <value>Requête de la ligne de base demandée</value>
+  </data>
+  <data name="BaselineReapplyFailed" xml:space="preserve">
+    <value>Échec de la nouvelle application de la ligne de base</value>
+  </data>
+  <data name="BaselineRemovalConfirmed" xml:space="preserve">
+    <value>Suppression de la ligne de base confirmée</value>
+  </data>
+  <data name="BaselineRemovalFailed" xml:space="preserve">
+    <value>Échec de la suppression de la ligne de base</value>
+  </data>
+  <data name="BaselineStatusUpdateFailed" xml:space="preserve">
+    <value>Échec de la mise à jour de l'état de la ligne de base</value>
+  </data>
+  <data name="BootstrapTokenEscrowed" xml:space="preserve">
+    <value>BootstrapToken en séquestre</value>
+  </data>
+  <data name="BootstrapTokenRemoved" xml:space="preserve">
+    <value>Jeton de démarrage supprimé</value>
+  </data>
+  <data name="CartCreationFailed" xml:space="preserve">
+    <value>La création du chariot a échoué.</value>
+  </data>
+  <data name="CertificateMissingInSample" xml:space="preserve">
+    <value>Manquant dans l'échantillon</value>
+  </data>
+  <data name="CertificateNoLongerInUse" xml:space="preserve">
+    <value>Non utilisé</value>
+  </data>
+  <data name="CertificatePinningDisable" xml:space="preserve">
+    <value>Désactivation de l'épinglage de certificat</value>
+  </data>
+  <data name="CertificateReinstated" xml:space="preserve">
+    <value>Certificat réintégré</value>
+  </data>
+  <data name="CheckInCheckOut" xml:space="preserve">
+    <value>Check-in/Check-out</value>
+  </data>
+  <data name="ComplianceBrokerRequest" xml:space="preserve">
+    <value>Demande de broker de conformité</value>
+  </data>
+  <data name="ComplianceEvaluationTime" xml:space="preserve">
+    <value>Temps d'évaluation de la conformité</value>
+  </data>
+  <data name="CompliancePolicyParsing" xml:space="preserve">
+    <value>Analyse de la stratégie de conformité</value>
+  </data>
+  <data name="ConditionalAccessDeviceRegistration" xml:space="preserve">
+    <value>Enregistrement du terminal d'accès conditionnel</value>
+  </data>
+  <data name="ConditionalAccessDeviceStateChange" xml:space="preserve">
+    <value>Modification de l'état du terminal d'accès conditionnel</value>
+  </data>
+  <data name="ConditionalAccessPartnerType" xml:space="preserve">
+    <value>Type du partenaire d'accès conditionnel</value>
+  </data>
+  <data name="ConfigurationReceivedToRestrictAppOrProcess" xml:space="preserve">
+    <value>Configuration reçue pour limiter les applications ou le processus</value>
+  </data>
+  <data name="ConsoleEvent" xml:space="preserve">
+    <value>Événement de la console</value>
+  </data>
+  <data name="ConsoleEventLogSearchFilterDateRange" xml:space="preserve">
+    <value>La fonctionnalité permettant d'afficher les événements de la console selon de nombreuses plages de dates, telles que « Toute » et « Le mois dernier » a été désactivée dans Global. Sélectionnez une plage de dates plus restreinte pour afficher les événements de la console ou accédez à un groupe organisationnel (OG) enfant.</value>
+  </data>
+  <data name="ConsoleEventLogSearchLimitExceeded" xml:space="preserve">
+    <value>La plage de dates sélectionnée pour les événements relatifs à la console est trop large. Veuillez sélectionner une plage de dates plus réduite pour afficher les événements relatif à la console.</value>
+  </data>
+  <data name="ConsoleEvents" xml:space="preserve">
+    <value>Événements de la console</value>
+  </data>
+  <data name="ConsoleSessionTimeOutChangedFailure" xml:space="preserve">
+    <value>Échec de la modification du délai d'expiration de la session de la console</value>
+  </data>
+  <data name="ConsoleSessionTimeOutChangedSuccess" xml:space="preserve">
+    <value>Le délai d'expiration de la session de la console a été modifié</value>
+  </data>
+  <data name="CreateWnsChannelCommandRequestConfirmed" xml:space="preserve">
+    <value>Confirmation de la création de la demande de commande de canal Wns</value>
+  </data>
+  <data name="CreateWnsChannelCommandRequestFailed" xml:space="preserve">
+    <value>Échec de la création de la demande de commande de canal Wns</value>
+  </data>
+  <data name="DateTimeLabel" xml:space="preserve">
+    <value>Date et heure</value>
+  </data>
+  <data name="DeviceActionFailed" xml:space="preserve">
+    <value>Échec de l'action du terminal</value>
+  </data>
+  <data name="DeviceActionInprogress" xml:space="preserve">
+    <value>Action du terminal en cours</value>
+  </data>
+  <data name="DeviceActionProcessed" xml:space="preserve">
+    <value>Action du terminal traitée</value>
+  </data>
+  <data name="DeviceActionRequested" xml:space="preserve">
+    <value>Action du terminal demandée</value>
+  </data>
+  <data name="DeviceAddedToAppleDep" xml:space="preserve">
+    <value>Terminal ajouté à Apple DEP</value>
+  </data>
+  <data name="DeviceAddedToEnrollmentWhiteList" xml:space="preserve">
+    <value>Terminal ajouté à la liste d'enrôlement autorisée</value>
+  </data>
+  <data name="DeviceAllMangedApplicationDisable" xml:space="preserve">
+    <value>Toutes les applications gérées par le terminal ont été désactivées</value>
+  </data>
+  <data name="DeviceAttributeAssetNumberModified" xml:space="preserve">
+    <value>Numéro d'actif de l'attribut de terminal modifié</value>
+  </data>
+  <data name="DeviceAttributeOperatingSystem" xml:space="preserve">
+    <value>Système d'exploitation de l'attribut de terminal</value>
+  </data>
+  <data name="DeviceAttributeUserEmailAddressModified" xml:space="preserve">
+    <value>Adresse e-mail de l'utilisateur de l'attribut de terminal modifié</value>
+  </data>
+  <data name="DeviceCheckInWihtNotEnrolledUser" xml:space="preserve">
+    <value>Check-in du terminal avec utilisateur non enrôlé</value>
+  </data>
+  <data name="DeviceConfiguredFailed" xml:space="preserve">
+    <value>Échec de la configuration du terminal</value>
+  </data>
+  <data name="DeviceConfiguredRefused" xml:space="preserve">
+    <value>Configuration du terminal refusée</value>
+  </data>
+  <data name="DeviceConsoleEvent" xml:space="preserve">
+    <value>Événement du terminal et de la console</value>
+  </data>
+  <data name="DeviceConsoleEvents" xml:space="preserve">
+    <value>Événements du terminal et de la console</value>
+  </data>
+  <data name="DeviceCpuInfoChanged" xml:space="preserve">
+    <value>Informations sur le CPU du terminal modifiées</value>
+  </data>
+  <data name="DeviceData" xml:space="preserve">
+    <value>Données du terminal</value>
+  </data>
+  <data name="DeviceEvent" xml:space="preserve">
+    <value>Événement du terminal</value>
+  </data>
+  <data name="DeviceEventLogSearchFilterDateRange" xml:space="preserve">
+    <value>La fonctionnalité permettant d'afficher les événements du terminal par grandes plages de dates, telles que 'Toutes' et 'Le mois dernier' a été désactivée dans Global. Sélectionnez une plage de dates plus courte pour afficher les événements du terminal ou accéder à un groupe organisationnel (OG) enfant.</value>
+  </data>
+  <data name="DeviceEventLogSearchLimitExceeded" xml:space="preserve">
+    <value>La plage de dates sélectionnée pour les événements relatifs aux terminaux est trop large. Veuillez sélectionner une plage de dates plus réduite pour afficher les événements relatifs aux terminaux.</value>
+  </data>
+  <data name="DeviceEvents" xml:space="preserve">
+    <value>Événements du terminal</value>
+  </data>
+  <data name="DeviceEventsDescription" xml:space="preserve">
+    <value>Afficher les informations détaillées sur les événements du terminal</value>
+  </data>
+  <data name="DeviceLimitPerOrganizationGroupEnabled" xml:space="preserve">
+    <value>Limite de terminaux par groupe organisationnel autorisé</value>
+  </data>
+  <data name="DeviceLocationFailed" xml:space="preserve">
+    <value>Échec de localisation du terminal</value>
+  </data>
+  <data name="DeviceLocationRefused" xml:space="preserve">
+    <value>Localisation du terminal refusée</value>
+  </data>
+  <data name="DeviceManagementStatus" xml:space="preserve">
+    <value>État de la gestion du terminal</value>
+  </data>
+  <data name="DeviceMangedApplicationDisable" xml:space="preserve">
+    <value>Application gérée par le terminal désactivée</value>
+  </data>
+  <data name="DeviceModelChanged" xml:space="preserve">
+    <value>Modèle de terminal modifié</value>
+  </data>
+  <data name="DeviceOemChanged" xml:space="preserve">
+    <value>Le fabricant de l'équipement d'origine du terminal a été modifié</value>
+  </data>
+  <data name="DeviceOfflineDomainJoinConfigCreationFailed" xml:space="preserve">
+    <value>Échec de la création de la configuration de jonction de domaine hors ligne du terminal</value>
+  </data>
+  <data name="DeviceScriptSampleSentFailed" xml:space="preserve">
+    <value>Échec de l'envoi de l'échantillon du script de terminal</value>
+  </data>
+  <data name="DeviceServicesAutoDiscoverySync" xml:space="preserve">
+    <value>Synchronisation de la détection automatique des services de terminaux</value>
+  </data>
+  <data name="DeviceTimeWindowStatusSampleCompleted" xml:space="preserve">
+    <value>Exemple d'état de la fenêtre de temps du terminal terminée</value>
+  </data>
+  <data name="DeviceTimeWindowStatusSampleFailed" xml:space="preserve">
+    <value>Échec de l'exemple d'état de la fenêtre de temps du terminal</value>
+  </data>
+  <data name="DeviceTimeWindowSync" xml:space="preserve">
+    <value>Synchronisation de la fenêtre de temps du terminal</value>
+  </data>
+  <data name="DeviceUserCheckOutFailed" xml:space="preserve">
+    <value>Échec du check-out de l'utilisateur du terminal</value>
+  </data>
+  <data name="DeviceUUID" xml:space="preserve">
+    <value>UUID de terminal</value>
+  </data>
+  <data name="DeviceWorkflowComplete" xml:space="preserve">
+    <value>Workflow du terminal terminé</value>
+  </data>
+  <data name="DeviceWorkflowFailed" xml:space="preserve">
+    <value>Échec du workflow du terminal</value>
+  </data>
+  <data name="DeviceWorkflowSync" xml:space="preserve">
+    <value>Synchronisation du workflow du terminal</value>
+  </data>
+  <data name="DisableLostModeRefused" xml:space="preserve">
+    <value>Désactivation du mode Perdu refusée</value>
+  </data>
+  <data name="DoNotShowAgain" xml:space="preserve">
+    <value>Ne plus afficher</value>
+  </data>
+  <data name="EnableActivationLockFailed" xml:space="preserve">
+    <value>Échec de l'activation du verrouillage d'activation</value>
+  </data>
+  <data name="EnableActivationLockSucceeded" xml:space="preserve">
+    <value>Activation du verrouillage d'activation réussie</value>
+  </data>
+  <data name="EnableLostModeRefused" xml:space="preserve">
+    <value>Activation du mode Perdu refusée</value>
+  </data>
+  <data name="EnrollmentAuthenticationSettingChanged" xml:space="preserve">
+    <value>Modification du paramètre d'authentification de l'inscription</value>
+  </data>
+  <data name="FileVaultRecoveryKeyRotationRequested" xml:space="preserve">
+    <value>Rotation des clés de récupération FileVault demandée</value>
+  </data>
+  <data name="FromDeviceDetailsPage" xml:space="preserve">
+    <value>Depuis la page Détails terminal</value>
+  </data>
+  <data name="FromSSPDetailsPage" xml:space="preserve">
+    <value>Depuis la page Détails SSP</value>
+  </data>
+  <data name="GetBootstrapTokenRequested" xml:space="preserve">
+    <value>GetBootstrapToken demandé</value>
+  </data>
+  <data name="GetBootstrapTokenRequestProcessed" xml:space="preserve">
+    <value>Demande de GetBootstrapToken traitée</value>
+  </data>
+  <data name="GlobalThresholdMessage" xml:space="preserve">
+    <value>Seuls les événements de la dernière heure peuvent être affichés dans Global. Accédez à un groupe organisationnel enfant pour afficher des plages de temps plus longues</value>
+  </data>
+  <data name="GuestUserLogin" xml:space="preserve">
+    <value>Connexion de l'utilisateur invité</value>
+  </data>
+  <data name="ImpactedDevices" xml:space="preserve">
+    <value>Terminaux affectés</value>
+  </data>
+  <data name="InitiateAutoDiscoveryPinningSync" xml:space="preserve">
+    <value>Lancement de la synchronisation de l'épinglage de la détection automatique</value>
+  </data>
+  <data name="InstallIntelligentHubRequestFailure" xml:space="preserve">
+    <value>Échec de la mise en file d'attente de la commande pour installer Intelligent Hub</value>
+  </data>
+  <data name="InstallIntelligentHubRequestSuccess" xml:space="preserve">
+    <value>Mise en file d'attente réussie de la commande pour installer Intelligent Hub</value>
+  </data>
+  <data name="InstallMacOSBootstrapPkgFailed" xml:space="preserve">
+    <value>Échec de l'installation de module de démarrage macOS</value>
+  </data>
+  <data name="InstallMacOSBootstrapPkgRefused" xml:space="preserve">
+    <value>Refus de l'installation de module de démarrage macOS</value>
+  </data>
+  <data name="InstallOnFilteredSuccess" xml:space="preserve">
+    <value>Réussite de l'installation sur les éléments filtrés</value>
+  </data>
+  <data name="InstallPackagedMacOsXAgentConfirmed" xml:space="preserve">
+    <value>Installation de l'agent macOS confirmée</value>
+  </data>
+  <data name="InstallPackagedMacOsXAgentFailed" xml:space="preserve">
+    <value>Échec de l'installation de l'agent macOS</value>
+  </data>
+  <data name="InstallPackagedMacOsXAgentRefused" xml:space="preserve">
+    <value>Installation de l'agent macOS refusée</value>
+  </data>
+  <data name="InstallPackagedMacOsXAgentRequested" xml:space="preserve">
+    <value>Installation de l'agent macOS demandée</value>
+  </data>
+  <data name="LogOutUserConfirmed" xml:space="preserve">
+    <value>Déconnexion de l'utilisateur confirmée</value>
+  </data>
+  <data name="LogoutUserFailed" xml:space="preserve">
+    <value>Échec de la déconnexion de l'utilisateur</value>
+  </data>
+  <data name="LogOutUserRefused" xml:space="preserve">
+    <value>Déconnexion de l'utilisateur refusée</value>
+  </data>
+  <data name="LogOutUserRequested" xml:space="preserve">
+    <value>Déconnexion de l'utilisateur demandée</value>
+  </data>
+  <data name="ManagedAdminPasswordRotationRequested" xml:space="preserve">
+    <value>Rotation du mot de passe de passe de l'administrateur géré demandée</value>
+  </data>
+  <data name="ManagedSettings" xml:space="preserve">
+    <value>Paramètres gérés</value>
+  </data>
+  <data name="ManagedSettingsConfirmed" xml:space="preserve">
+    <value>Paramètres gérés confirmés</value>
+  </data>
+  <data name="ManagedSettingsFailed" xml:space="preserve">
+    <value>Échec des paramètres gérés</value>
+  </data>
+  <data name="ManagedSettingsRefused" xml:space="preserve">
+    <value>Paramètres gérés refusés</value>
+  </data>
+  <data name="ManagedSettingsRequested" xml:space="preserve">
+    <value>Paramètres gérés demandés</value>
+  </data>
+  <data name="MembershipSyncRequestSent" xml:space="preserve">
+    <value>Demande de synchronisation de l'appartenance envoyée</value>
+  </data>
+  <data name="NotNowInAwaitConfiguration" xml:space="preserve">
+    <value>Configuration en attente de Pas maintenant</value>
+  </data>
+  <data name="P2PTrueUpGenericError" xml:space="preserve">
+    <value>Erreur générique de régularisation de P2P</value>
+  </data>
+  <data name="PCRefreshConfirmed" xml:space="preserve">
+    <value>Actualisation de Windows Desktop confirmée</value>
+  </data>
+  <data name="PCRefreshFailed" xml:space="preserve">
+    <value>Échec de l'actualisation de Windows Desktop</value>
+  </data>
+  <data name="PeerDistributionStatistics" xml:space="preserve">
+    <value>Statistiques Peer Distribution</value>
+  </data>
+  <data name="PinnedCertificateDelete" xml:space="preserve">
+    <value>Suppression du certificat épinglé</value>
+  </data>
+  <data name="PinnedHostDelete" xml:space="preserve">
+    <value>Suppression de l'hôte épinglé</value>
+  </data>
+  <data name="PinnedHostDisable" xml:space="preserve">
+    <value>Désactivation de l'hôte épinglé</value>
+  </data>
+  <data name="PinnedHostEdit" xml:space="preserve">
+    <value>Modification de l'hôte épinglé</value>
+  </data>
+  <data name="PinnedHostEnable" xml:space="preserve">
+    <value>Activation de l'hôte épinglé</value>
+  </data>
+  <data name="PolicySigningCertificateSettingChangedFailure" xml:space="preserve">
+    <value>Échec de la modification du paramètre de certificat de signature de stratégie</value>
+  </data>
+  <data name="PolicySigningCertificateSettingChangedSuccess" xml:space="preserve">
+    <value>Le paramètre de certificat de signature de stratégie a été modifié</value>
+  </data>
+  <data name="ProfilesPerformActionAgain" xml:space="preserve">
+    <value>Échec de la création/mise à jour/suppression des profils. Veuillez relancer l'action.</value>
+  </data>
+  <data name="ProvisioningAgentQueryFailed" xml:space="preserve">
+    <value>Échec de la requête de l'agent de provisionnement</value>
+  </data>
+  <data name="ProvisioningPackageCreated" xml:space="preserve">
+    <value>Création du module de provisionnement</value>
+  </data>
+  <data name="ProvisioningPackageInstallConfirmed" xml:space="preserve">
+    <value>Confirmation de l'installation du module de provisionnement</value>
+  </data>
+  <data name="ProvisioningPackageInstallFailed" xml:space="preserve">
+    <value>Échec de l'installation du module de provisionnement</value>
+  </data>
+  <data name="RecordDeleted" xml:space="preserve">
+    <value>Record deleted.</value>
+  </data>
+  <data name="RefreshEsimConfirmed" xml:space="preserve">
+    <value>Confirmation de l'actualisation de l'eSIM</value>
+  </data>
+  <data name="RefreshEsimFailed" xml:space="preserve">
+    <value>Échec de l'actualisation de l'eSIM</value>
+  </data>
+  <data name="RefreshEsimRefused" xml:space="preserve">
+    <value>Refus d'actualisation de l'eSIM</value>
+  </data>
+  <data name="RefreshEsimRequested" xml:space="preserve">
+    <value>Demande d'actualisation de l'eSIM</value>
+  </data>
+  <data name="RejectRemoval" xml:space="preserve">
+    <value>Rejeter la suppression</value>
+  </data>
+  <data name="RejectRemovalDescription" xml:space="preserve">
+    <value>Cette action effacera la commande de suppression de l'application des terminaux potentiellement affectés. Assurez-vous que l'application est active et attribuée aux terminaux pour empêcher que la suppression de l'application se déclenche de nouveau.</value>
+  </data>
+  <data name="RejectRemovalTitle" xml:space="preserve">
+    <value>Rejeter la suppression de l'application</value>
+  </data>
+  <data name="RemovableDriveRecoveryKeyAccessed" xml:space="preserve">
+    <value>Accès à la clé de récupération du chiffrement du disque</value>
+  </data>
+  <data name="RemoveBootstrapTokenRequested" xml:space="preserve">
+    <value>Suppression du jeton de démarrage demandée</value>
+  </data>
+  <data name="RemoveLockConfirmed" xml:space="preserve">
+    <value>Suppression du verrouillage confirmée</value>
+  </data>
+  <data name="RequestLogConfirmed" xml:space="preserve">
+    <value>Journal des demandes du terminal confirmé</value>
+  </data>
+  <data name="RequestLogFailed" xml:space="preserve">
+    <value>Échec du journal des demandes du terminal</value>
+  </data>
+  <data name="RequestLogRefused" xml:space="preserve">
+    <value>Journal des demandes du terminal refusé</value>
+  </data>
+  <data name="RequestLogRequested" xml:space="preserve">
+    <value>Journal du terminal demandé</value>
+  </data>
+  <data name="ResourceUuid" xml:space="preserve">
+    <value>UUID de la ressource</value>
+  </data>
+  <data name="ResourceVersion" xml:space="preserve">
+    <value>Version de la ressource</value>
+  </data>
+  <data name="RestrictedAppOrProcessDetected" xml:space="preserve">
+    <value>Application ou processus restreint(e) détecté(e)</value>
+  </data>
+  <data name="RestrictedAppOrProcessRemediated" xml:space="preserve">
+    <value>Application ou processus restreint(e) corrigé(e)</value>
+  </data>
+  <data name="RotateDeviceRecoveryKey" xml:space="preserve">
+    <value>Faire pivoter la clé de récupération du terminal</value>
+  </data>
+  <data name="RotateDeviceRecoveryKeyRequested" xml:space="preserve">
+    <value>Rotation des clés de récupération demandée</value>
+  </data>
+  <data name="SampleResponseListReceived" xml:space="preserve">
+    <value>Exemple de liste de réponses reçue</value>
+  </data>
+  <data name="ScheduledAdminPasswordRotationRequested" xml:space="preserve">
+    <value>Rotation planifiée du mot de passe administrateur demandée</value>
+  </data>
+  <data name="ScheduledRotateDeviceRecoveryKeyRequested" xml:space="preserve">
+    <value>Rotation des clés de récupération planifiée demandée</value>
+  </data>
+  <data name="ScheduleOSUpdateScanFailed" xml:space="preserve">
+    <value>Planification de l'analyse de la mise à jour du système d'exploitation demandée</value>
+  </data>
+  <data name="ScimProvisioningFailure" xml:space="preserve">
+    <value>Échec du provisionnement SCIM</value>
+  </data>
+  <data name="ScriptFailedToExecuteOnDevice" xml:space="preserve">
+    <value>Échec de l'exécution du script sur le terminal</value>
+  </data>
+  <data name="ScriptPersistedInDeviceState" xml:space="preserve">
+    <value>Script conservé dans l'état du terminal</value>
+  </data>
+  <data name="ScriptResourceRequestedByDevice" xml:space="preserve">
+    <value>Ressource de script demandée par le terminal</value>
+  </data>
+  <data name="ScriptSampleNotPersisted" xml:space="preserve">
+    <value>Échantillon de script non conservé dans l'état du terminal</value>
+  </data>
+  <data name="ScriptSamplePersistedInDeviceState" xml:space="preserve">
+    <value>Échantillon de script conservé dans l'état du terminal</value>
+  </data>
+  <data name="ScriptSampleReceived" xml:space="preserve">
+    <value>Échantillon de script reçu</value>
+  </data>
+  <data name="ScriptSampleReceivedWithErrors" xml:space="preserve">
+    <value>Échantillon de script reçu avec des erreurs</value>
+  </data>
+  <data name="ScriptSampleSentFailed" xml:space="preserve">
+    <value>Échec de l'envoi de l'échantillon du script de terminal</value>
+  </data>
+  <data name="SdkComplianceSettings" xml:space="preserve">
+    <value>Paramètres de conformité de l'application SDK</value>
+  </data>
+  <data name="SdkComplianceSettingsChanged" xml:space="preserve">
+    <value>Les paramètres de conformité de l'application SDK ont été modifiés</value>
+  </data>
+  <data name="ServerKeyUtilityKeyInstallationFailure" xml:space="preserve">
+    <value>Échec de l'installation de la clé d'utilitaire de clé de serveur</value>
+  </data>
+  <data name="ServerKeyUtilityKeyInstallationSuccess" xml:space="preserve">
+    <value>Réussite de l'installation de la clé d'utilitaire de clé de serveur</value>
+  </data>
+  <data name="SetBootstrapTokenRequested" xml:space="preserve">
+    <value>SetBootstrapToken demandé</value>
+  </data>
+  <data name="SetUpConfigurationConfirmed" xml:space="preserve">
+    <value>Configuration de l'installation confirmée</value>
+  </data>
+  <data name="SetUpConfigurationFailed" xml:space="preserve">
+    <value>Échec de la configuration de l'installation</value>
+  </data>
+  <data name="SetUpConfigurationRefused" xml:space="preserve">
+    <value>Configuration de l'installation refusée</value>
+  </data>
+  <data name="SetUpConfigurationRequested" xml:space="preserve">
+    <value>Configuration de l'installation demandée</value>
+  </data>
+  <data name="SigningServiceCertificateRotationFailedEvent" xml:space="preserve">
+    <value>Événement d'échec de la rotation du certificat de service de signature</value>
+  </data>
+  <data name="SoapApiClearClientCertificate" xml:space="preserve">
+    <value>Certificat client de l'API SOAP effacé</value>
+  </data>
+  <data name="SoapApiExportClientCertificate" xml:space="preserve">
+    <value>Certificat client de l'API SOAP exporté</value>
+  </data>
+  <data name="SoapApiGenerateClientCertificate" xml:space="preserve">
+    <value>Certificat client de l'API SOAP généré</value>
+  </data>
+  <data name="StopLogRequested" xml:space="preserve">
+    <value>Journal d'arrêt demandé</value>
+  </data>
+  <data name="SyncAssetsAppDeleted" xml:space="preserve">
+    <value>Application Synchronisation des ressources supprimée</value>
+  </data>
+  <data name="SyncAssetsAppVppInfoRemoved" xml:space="preserve">
+    <value>Informations VPP de l'application Synchronisation des ressources supprimées</value>
+  </data>
+  <data name="SyncEntitlementsConfirmed" xml:space="preserve">
+    <value>Synchronisation des droits confirmée</value>
+  </data>
+  <data name="SyncEntitlementsFailed" xml:space="preserve">
+    <value>Synchronisation des droits échouée</value>
+  </data>
+  <data name="SyncEntitlementsRefused" xml:space="preserve">
+    <value>Synchronisation des droits refusée</value>
+  </data>
+  <data name="SyncEntitlementsRequested" xml:space="preserve">
+    <value>Synchronisation des droits demandée</value>
+  </data>
+  <data name="TimeMachineEnabled" xml:space="preserve">
+    <value>Time Machine activé</value>
+  </data>
+  <data name="TimeWindowAssignmentDeleted" xml:space="preserve">
+    <value>Attribution de fenêtre de temps supprimée</value>
+  </data>
+  <data name="TimeWindowAssignmentUpdated" xml:space="preserve">
+    <value>Attribution de la fenêtre de temps mise à jour</value>
+  </data>
+  <data name="TimeWindowAssignmentUpdateFailed" xml:space="preserve">
+    <value>Échec de la mise à jour de l'attribution de fenêtre de temps</value>
+  </data>
+  <data name="TimeWindowCreated" xml:space="preserve">
+    <value>Fenêtre de temps créée</value>
+  </data>
+  <data name="TimeWindowDeleted" xml:space="preserve">
+    <value>Fenêtre de temps supprimée</value>
+  </data>
+  <data name="TimeWindowIdentifiers" xml:space="preserve">
+    <value>Identifiants de fenêtre de temps</value>
+  </data>
+  <data name="TimeWindows" xml:space="preserve">
+    <value>Fenêtre de temps</value>
+  </data>
+  <data name="TimeWindowUpdated" xml:space="preserve">
+    <value>Fenêtre de temps mise à jour</value>
+  </data>
+  <data name="TimeWindowUpdateFailed" xml:space="preserve">
+    <value>Échec de la mise à jour de la fenêtre de temps</value>
+  </data>
+  <data name="UpdateAssignmentCreated" xml:space="preserve">
+    <value>Attribution de la mise à jour créée</value>
+  </data>
+  <data name="UpdateAssignmentModified" xml:space="preserve">
+    <value>Attribution de la mise à jour modifiée</value>
+  </data>
+  <data name="UpdateAssignmentRemoved" xml:space="preserve">
+    <value>Attribution de la mise à jour supprimée</value>
+  </data>
+  <data name="UserEnrollmentAuthenticationFailure" xml:space="preserve">
+    <value>Échec de l'authentification d'inscription de l'utilisateur</value>
+  </data>
+  <data name="UserEnrollmentName" xml:space="preserve">
+    <value>Nom d'utilisateur d'enrôlement</value>
+  </data>
+  <data name="UserFriendlyPrivacyPolicy" xml:space="preserve">
+    <value>Politique de confidentialité conviviale</value>
+  </data>
+  <data name="UserListConfirmed" xml:space="preserve">
+    <value>Liste d'utilisateurs confirmée</value>
+  </data>
+  <data name="UserListFailed" xml:space="preserve">
+    <value>Échec de la liste d'utilisateurs</value>
+  </data>
+  <data name="UserListRefused" xml:space="preserve">
+    <value>Liste d'utilisateurs refusée</value>
+  </data>
+  <data name="UserListRequested" xml:space="preserve">
+    <value>Liste d'utilisateurs demandée</value>
+  </data>
+  <data name="VmLockConfirmed" xml:space="preserve">
+    <value>Verrouillage de la VM confirmé</value>
+  </data>
+  <data name="VmLockFailed" xml:space="preserve">
+    <value>Échec du verrouillage de la VM</value>
+  </data>
+  <data name="VmLockRefused" xml:space="preserve">
+    <value>Verrouillage de la VM refusé</value>
+  </data>
+  <data name="VmLockRequested" xml:space="preserve">
+    <value>Verrouillage de la VM demandé</value>
+  </data>
+  <data name="VmUnlockConfirmed" xml:space="preserve">
+    <value>Déverrouillage de la VM confirmé</value>
+  </data>
+  <data name="VmUnlockRefused" xml:space="preserve">
+    <value>Déverrouillage de la VM refusé</value>
+  </data>
+  <data name="VmUnlockRequested" xml:space="preserve">
+    <value>Déverrouillage de la VM demandé</value>
+  </data>
+  <data name="VmWipeConfirmed" xml:space="preserve">
+    <value>Effacement de la VM confirmé</value>
+  </data>
+  <data name="VmWipeFailed" xml:space="preserve">
+    <value>Échec de l'effacement de la VM</value>
+  </data>
+  <data name="VmWipeRefused" xml:space="preserve">
+    <value>Effacement de la VM refusé</value>
+  </data>
+  <data name="VmWipeRequested" xml:space="preserve">
+    <value>Effacement de la VM demandé</value>
+  </data>
+  <data name="Windows10InvalidOdjSyncAlert" xml:space="preserve">
+    <value>Alerte de synchronisation ODJ non valide dans Windows 10</value>
+  </data>
+  <data name="WindowsDeviceCheckInMode" xml:space="preserve">
+    <value>Mode check-in du terminal Windows</value>
+  </data>
+  <data name="WindowsOobeAccountProvisioningComplete" xml:space="preserve">
+    <value>Provisionnement OOBE terminé pour l'utilisateur</value>
+  </data>
+  <data name="WindowsOobeDeviceProvisioningComplete" xml:space="preserve">
+    <value>Provisionnement OOBE terminé pour le terminal</value>
+  </data>
+  <data name="WindowsOobeProvisioningRequested" xml:space="preserve">
+    <value>Provisionnement OOBE demandé</value>
+  </data>
+  <data name="WorkAccessibilityServicesPermittedAppIds" xml:space="preserve">
+    <value>Services d'accessibilité - Applications autorisées</value>
+  </data>
+  <data name="WorkAllowAccountChanges" xml:space="preserve">
+    <value>Autoriser l'ajout de comptes Google</value>
+  </data>
+  <data name="WorkAllowBluetoothContactSharing" xml:space="preserve">
+    <value>Partager les contacts de l'entreprise avec les terminaux Bluetooth</value>
+  </data>
+  <data name="WorkAllowCamera" xml:space="preserve">
+    <value>Autoriser l'utilisation de l'appareil photo</value>
+  </data>
+  <data name="WorkAllowChrome" xml:space="preserve">
+    <value>Autoriser le navigateur Chrome</value>
+  </data>
+  <data name="WorkAllowContacts" xml:space="preserve">
+    <value>Autoriser l'ajout des contacts professionnels à l'application de contacts personnels.</value>
+  </data>
+  <data name="WorkAllowDisableAppVerify" xml:space="preserve">
+    <value>Autoriser la désactivation de la vérification d'application</value>
+  </data>
+  <data name="WorkAllowGooglePlay" xml:space="preserve">
+    <value>Autoriser Google Play</value>
+  </data>
+  <data name="WorkAllowInstallingApps" xml:space="preserve">
+    <value>Autoriser l'installation d'applications</value>
+  </data>
+  <data name="WorkAllowKeyguardFingerprint" xml:space="preserve">
+    <value>Autoriser le capteur d'empreinte Keyguard</value>
+  </data>
+  <data name="WorkAllowKeyguardTrustAgent" xml:space="preserve">
+    <value>Autoriser le statut Keyguard Trust Agent</value>
+  </data>
+  <data name="WorkAllowKeyguardUnredacted" xml:space="preserve">
+    <value>Autoriser les notifications non rédigées Keyguard</value>
+  </data>
+  <data name="WorkAllowNFC" xml:space="preserve">
+    <value>Autoriser la communication en champ proche (NFC)</value>
+  </data>
+  <data name="WorkAllowNonGoogleAccounts" xml:space="preserve">
+    <value>Autoriser l'ajout/la suppression de comptes</value>
+  </data>
+  <data name="WorkAllowNonMarketAppInstall" xml:space="preserve">
+    <value>Autoriser l'installation des applications non disponibles dans les magasins publics</value>
+  </data>
+  <data name="WorkAllowOutgoingBluetoothConnections" xml:space="preserve">
+    <value>Autoriser les connexions Bluetooth sortantes</value>
+  </data>
+  <data name="WorkAllowPersonalShareWithWork" xml:space="preserve">
+    <value>Autoriser les applications personnelles à partager des documents avec les applications professionnelles</value>
+  </data>
+  <data name="WorkAllowPersonalToAccessWork" xml:space="preserve">
+    <value>Autoriser les applications personnelles à accéder aux documents depuis les applications professionnelles</value>
+  </data>
+  <data name="WorkAllowScreenCapture" xml:space="preserve">
+    <value>Autoriser les captures d'écran</value>
+  </data>
+  <data name="WorkAllowUninstallingApps" xml:space="preserve">
+    <value>Autoriser la désinstallation d'applications</value>
+  </data>
+  <data name="WorkAllowUSBDebugging" xml:space="preserve">
+    <value>Autoriser le débogage USB</value>
+  </data>
+  <data name="WorkAllowWorkContactsInPhone" xml:space="preserve">
+    <value>Autoriser l'affichage des coordonnées professionnelles de l'appelant sur le cadran du téléphone</value>
+  </data>
+  <data name="WorkAllowWorkPersonalPaste" xml:space="preserve">
+    <value>Autoriser la copie du presse-papiers entre les applications professionnelles et personnelles</value>
+  </data>
+  <data name="WorkAllowWorkShareWithPersonal" xml:space="preserve">
+    <value>Autoriser les applications professionnelles à partager des documents avec les applications personnelles</value>
+  </data>
+  <data name="WorkAllowWorkToAccessPersonal" xml:space="preserve">
+    <value>Autoriser les applications professionnelles à accéder aux documents depuis les applications personnelles</value>
+  </data>
+  <data name="WorkflowAssignmentDeleted" xml:space="preserve">
+    <value>Attribution du workflow supprimée</value>
+  </data>
+  <data name="WorkflowAssignmentUpdated" xml:space="preserve">
+    <value>Attribution du workflow mise à jour</value>
+  </data>
+  <data name="WorkflowCreated" xml:space="preserve">
+    <value>Workflow créé</value>
+  </data>
+  <data name="WorkflowDeleted" xml:space="preserve">
+    <value>Workflow supprimé</value>
+  </data>
+  <data name="WorkflowUpdated" xml:space="preserve">
+    <value>Workflow mis à jour</value>
+  </data>
+  <data name="WorkflowUpdatedDueToResourceUpdate" xml:space="preserve">
+    <value>Workflow mis à jour en raison de la mise à jour des ressources</value>
+  </data>
+  <data name="WorkflowUpdateFailed" xml:space="preserve">
+    <value>Échec de la mise à jour du Workflow</value>
+  </data>
+  <data name="WorkflowUuid" xml:space="preserve">
+    <value>Identifiant du workflow</value>
+  </data>
+  <data name="WorkManagedApplication" xml:space="preserve">
+    <value>Application gérée par Work</value>
+  </data>
+  <data name="WorkManagedBluetooth" xml:space="preserve">
+    <value>Bluetooth géré par Work</value>
+  </data>
+  <data name="WorkManagedDeviceFunctionality" xml:space="preserve">
+    <value>Fonctionnalité de terminal gérée par Work</value>
+  </data>
+  <data name="WorkManagedHardwareRestrictions" xml:space="preserve">
+    <value>Restrictions du matériel géré par Work</value>
+  </data>
+  <data name="WorkManagedMmsRestrictions" xml:space="preserve">
+    <value>Restrictions relatives aux MMS gérés par Work</value>
+  </data>
+  <data name="WorkManagedNetwork" xml:space="preserve">
+    <value>Réseau géré par Work</value>
+  </data>
+  <data name="WorkManagedPhoneAndData" xml:space="preserve">
+    <value>Téléphone et données gérés par Work</value>
+  </data>
+  <data name="WorkManagedRoaming" xml:space="preserve">
+    <value>Itinérance gérée par Work</value>
+  </data>
+  <data name="WorkManagedSecurity" xml:space="preserve">
+    <value>Sécurité gérée par Work</value>
+  </data>
+  <data name="WorkManagedSyncAndStorage" xml:space="preserve">
+    <value>Synchronisation et stockage gérés par Work</value>
+  </data>
+  <data name="WorkManagedTethering" xml:space="preserve">
+    <value>Partage de connexions géré par Work</value>
+  </data>
+  <data name="WorkProfileApplication" xml:space="preserve">
+    <value>Application de profil Work</value>
+  </data>
+  <data name="WorkProfileDeviceFunctionality" xml:space="preserve">
+    <value>Fonctionnalité de terminal de profil Work</value>
+  </data>
+  <data name="WorkProfileNetwork" xml:space="preserve">
+    <value>Réseau de profil Work</value>
+  </data>
+  <data name="WorkProfileSyncAndStorage" xml:space="preserve">
+    <value>Synchronisation et stockage de profil Work</value>
+  </data>
+  <data name="WorkProfileWorkAndPersonal" xml:space="preserve">
+    <value>Profil Work professionnel et personnel</value>
+  </data>
+  <data name="WorkWhitelistPermittedAccessibilityServices" xml:space="preserve">
+    <value>Autoriser les services d'accessibilité</value>
+  </data>
+</root>

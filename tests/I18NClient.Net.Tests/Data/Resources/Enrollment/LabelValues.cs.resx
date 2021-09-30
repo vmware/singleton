@@ -1,0 +1,584 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AMAPIEnrollmentFeatureNotSupported" xml:space="preserve">
+    <value>Registrační funkce rozhraní Android Management API není pro vaši organizaci podporována. Obraťte se na svého administrátora.</value>
+  </data>
+  <data name="AMAPIEnrollmentNotAllowed" xml:space="preserve">
+    <value>Nastavení rozhraní Android Management API nebylo aktivováno u organizace zařízení.</value>
+  </data>
+  <data name="AMAPIRegistration" xml:space="preserve">
+    <value>Registrace rozhraní Android Management API</value>
+  </data>
+  <data name="AndroidEnterpriseNotAllowed" xml:space="preserve">
+    <value>Registrace do služby Android Enterprise není u tohoto zařízení povolena.</value>
+  </data>
+  <data name="AndroidEnterpriseNotFound" xml:space="preserve">
+    <value>Nastavení služby Android Enterprise nebylo aktivováno u organizace zařízení.</value>
+  </data>
+  <data name="AndroidLegacyEnrollmentNotAllowed" xml:space="preserve">
+    <value>Registrace starších verzí Androidu není povolena v režimu vlastníka zařízení.</value>
+  </data>
+  <data name="AndroidManagementAPI" xml:space="preserve">
+    <value>Rozhraní Android Management API</value>
+  </data>
+  <data name="AndroidWorkEnrollmentUserAddError" xml:space="preserve">
+    <value>Do sady GSuite nelze přidat uživatele registrace. Obraťte se na administrátora nebo to zkuste znovu.</value>
+  </data>
+  <data name="AndroidWorkEnrollmentUserEmailNotFound" xml:space="preserve">
+    <value>Nepodařilo se nám najít váš účet, obraťte se na svého administrátora nebo to zkuste znovu.</value>
+  </data>
+  <data name="AndroidWorkEnrollmentUserNotFound" xml:space="preserve">
+    <value>Toto je neplatný účet Google.</value>
+  </data>
+  <data name="AndroidWorkProfileEnrollmentNotAllowed" xml:space="preserve">
+    <value>Zadaný server a ID skupiny nepovolují registraci pracovního profilu. Pokud máte nějaké otázky, obraťte se na svého administrátora.</value>
+  </data>
+  <data name="AndroidWorkUserEmailDomainNotASubDomain" xml:space="preserve">
+    <value>Použitá doména není registrovanou poddoménou. Obraťte se, prosím, na svého administrátora.</value>
+  </data>
+  <data name="ApplicationIsNotAllowedToRegister" xml:space="preserve">
+    <value>Registrace aplikace není povolena.</value>
+  </data>
+  <data name="AssignUserRole" xml:space="preserve">
+    <value>Přiřadit roli uživatele</value>
+  </data>
+  <data name="AutoEnrollmentDisabled" xml:space="preserve">
+    <value>Automatická registrace není pro poskytnutou organizační skupinu povolena. Obraťte se na administrátora nebo to zkuste znovu.</value>
+  </data>
+  <data name="CannotChangeOGForDEPTokenArg" xml:space="preserve">
+    <value>Nelze změnit organizační skupinu pro token DEP {0}.</value>
+  </data>
+  <data name="CannotUseStagingUserForCustomDep" xml:space="preserve">
+    <value>Uživatelé fázování nejsou podporováni. Obraťte se na svého administrátora.</value>
+  </data>
+  <data name="CaptchaText" xml:space="preserve">
+    <value>Captcha</value>
+  </data>
+  <data name="ChangeRankOrOrganizationGroup" xml:space="preserve">
+    <value>Změnit pořadí nebo organizační skupinu</value>
+  </data>
+  <data name="ChangeRankOrOrganizationGroupForUserGroup" xml:space="preserve">
+    <value>Změnit pořadí nebo organizační skupinu pro uživatelskou skupinu</value>
+  </data>
+  <data name="ChangeRankOrUserRole" xml:space="preserve">
+    <value>Změnit pořadí nebo uživatelskou roli</value>
+  </data>
+  <data name="ChangeRankOrUserRoleForUserGroup" xml:space="preserve">
+    <value>Změnit pořadí nebo uživatelskou roli pro uživatelskou skupinu</value>
+  </data>
+  <data name="ChangeUserRoleAssignmentRankUsingEdit" xml:space="preserve">
+    <value>Pokud chcete změnit pořadí nebo uživatelskou roli pro uživatelskou skupinu, klikněte na tlačítko úprav, které se nachází vedle záznamu.</value>
+  </data>
+  <data name="ConfirmEnterpriseWipeDeviceTitleMessage" xml:space="preserve">
+    <value>Tato akce odregistruje a odebere všechny spravované podnikové zdroje z vybraného zařízení (včetně aplikací a profilů). Tuto akci nelze vrátit zpět bez opětovné registrace tohoto zařízení.</value>
+  </data>
+  <data name="CopeEnrollmentNotSupported" xml:space="preserve">
+    <value>Registrace byla zablokována z důvodu nepodporované verze aplikace Workspace ONE Intelligent Hub</value>
+  </data>
+  <data name="CopyEMMToken" xml:space="preserve">
+    <value>3. Zkopírujte poskytnutý token EMM, který použijete v dalším kroku.</value>
+  </data>
+  <data name="CustomEnrollmentFeatureNotEnabled" xml:space="preserve">
+    <value>Vlastní registrace byla pro vaši organizaci deaktivována. Chcete-li znovu uložit registrační profil tohoto zařízení a zkusit se znovu zaregistrovat, obraťte se na administrátora.</value>
+  </data>
+  <data name="DefaultActionForInactiveUsersChanged" xml:space="preserve">
+    <value>Výchozí akce pro neaktivní uživatele se změnila</value>
+  </data>
+  <data name="DefaultDeviceOwnershipChanged" xml:space="preserve">
+    <value>Výchozí vlastnictví zařízení se změnilo</value>
+  </data>
+  <data name="DefaultDeviceUserRoleChanged" xml:space="preserve">
+    <value>Výchozí role uživatele zařízení se změnila</value>
+  </data>
+  <data name="DeleteDeviceCountMessage" xml:space="preserve">
+    <value>Počet zařízení, která budou permanentně odstraněna:</value>
+  </data>
+  <data name="DepFetchInfoMessage" xml:space="preserve">
+    <value>Možnost Načíst všechna zařízení synchronizuje všechna zařízení přiřazená tomuto tokenu v programu Apple Business Manager s konzolou UEM včetně zařízení, která jsou již synchronizována. Tuto možnost lze použít pouze jako poslední alternativu k úplnému obnovení a opětovné synchronizaci všech zařízení z programu Apple Business Manager.</value>
+  </data>
+  <data name="DepFetchInfoMessageSchool" xml:space="preserve">
+    <value>Možnost Načíst všechna zařízení synchronizuje všechna zařízení přiřazená tomuto tokenu v programu Apple School Manager s konzolou UEM včetně zařízení, která jsou již synchronizována. Tuto možnost lze použít pouze jako poslední alternativu k úplnému obnovení a opětovné synchronizaci všech zařízení z programu Apple School Manager.</value>
+  </data>
+  <data name="DEPTokenArgCannotBeDeleted" xml:space="preserve">
+    <value>Token DEP {0} nelze odstranit.</value>
+  </data>
+  <data name="DEPTokenArgCannotBeRevoked" xml:space="preserve">
+    <value>Token DEP {0} nemůže být zrušen.</value>
+  </data>
+  <data name="DeviceEnrolledArg" xml:space="preserve">
+    <value>Zařízení odregistrováno # {0}</value>
+  </data>
+  <data name="DeviceMacAddressDenylisted" xml:space="preserve">
+    <value>Zařízení nemůže být registrováno, protože adresa MAC zařízení je zakázaná.</value>
+  </data>
+  <data name="DeviceManagementRemoved" xml:space="preserve">
+    <value>Správa zařízení byla odebrána administrátorem Workspace ONE UEM.</value>
+  </data>
+  <data name="DeviceNotAllowlisted" xml:space="preserve">
+    <value>Typ modelu zařízení není povolen anebo není povolen OS zařízení.</value>
+  </data>
+  <data name="DeviceNotAllowlistedManufacturererNotAllowed" xml:space="preserve">
+    <value>Zařízení není povoleno anebo není povolen výrobce.</value>
+  </data>
+  <data name="DeviceNotAllowlistedModelNotAllowed" xml:space="preserve">
+    <value>Typ modelu zařízení není povolen.</value>
+  </data>
+  <data name="DeviceNotEnrolled" xml:space="preserve">
+    <value>Zařízení není zaregistrováno</value>
+  </data>
+  <data name="DeviceNotRegistered" xml:space="preserve">
+    <value>Zařízení není zaregistrováno. Neplatný typ modelu zařízení a/nebo OS</value>
+  </data>
+  <data name="DeviceSNArgNotExistsForArgToken" xml:space="preserve">
+    <value>Sériové číslo zařízení {0} neexistuje pro token {1}.</value>
+  </data>
+  <data name="DeviceStateIsAndroidEnterprise" xml:space="preserve">
+    <value>Zařízení je již ve službě Android Enterprise zaregistrováno</value>
+  </data>
+  <data name="DeviceUserNotFound" xml:space="preserve">
+    <value>Uživatel registrace nebyl u zařízení nalezen</value>
+  </data>
+  <data name="DirectoryGroupBasedMappingChanged" xml:space="preserve">
+    <value>Nastavení Aktivovat adresářové mapování na základě skupin se změnilo</value>
+  </data>
+  <data name="DropshipProvisioning" xml:space="preserve">
+    <value>Drop Ship Provisioning</value>
+  </data>
+  <data name="EMMToken" xml:space="preserve">
+    <value>Token EMM</value>
+  </data>
+  <data name="EmptyDeviceIdentifierPleaseTryAgain" xml:space="preserve">
+    <value>V požadavku na registraci se nenachází hodnota UDID zařízení. Obraťte se na administrátora nebo to zkuste znovu.</value>
+  </data>
+  <data name="EmptyPasswordPleaseTryAgain" xml:space="preserve">
+    <value>V požadavku na registraci se nenachází heslo. Obraťte se na administrátora nebo to zkuste znovu.</value>
+  </data>
+  <data name="EmptyUserNameOrEmailAddressPleaseTryAgain" xml:space="preserve">
+    <value>V požadavku na registraci se nenachází uživatelské jméno nebo e-mailová adresa. Obraťte se na administrátora nebo to zkuste znovu.</value>
+  </data>
+  <data name="EnableDropShipProvisioning" xml:space="preserve">
+    <value>Aktivovat Workspace ONE Drop Ship Provisioning</value>
+  </data>
+  <data name="EnrollmentDisabled" xml:space="preserve">
+    <value>Registrace je zakázána, protože se v SKU nepodařilo najít objednávku MDM.</value>
+  </data>
+  <data name="EnrollmentSecurityTypeNotSupported" xml:space="preserve">
+    <value>Byl proveden pokus o registraci s nepodporovaným typem zabezpečení. obraťte se na administrátora nebo to zkuste znovu.</value>
+  </data>
+  <data name="EnrollmentTypeCriteriaMustContainOneEnrollmentType" xml:space="preserve">
+    <value>Kritéria typu registrace musí obsahovat nejméně jeden typ registrace</value>
+  </data>
+  <data name="EnrollmentUserNotFound" xml:space="preserve">
+    <value>Uživatel registrace nebyl nalezen. Zadejte existujícího uživatele.</value>
+  </data>
+  <data name="EnrollmentWelcomeMessageBody" xml:space="preserve">
+    <value>Workspace ONE UEM pomůže vašemu IT oddělení vybavit zařízení bezpečným přístupem k podnikovým zdrojům. Následující proces vás provede krok za krokem úvodním nastavením, které zajistí, že bude zařízení konformní se zásadami.</value>
+  </data>
+  <data name="EnrollmentWelcomeMessageHeader" xml:space="preserve">
+    <value>Vítá vás Workspace ONE UEM!</value>
+  </data>
+  <data name="EnterpriseWipeDeviceCountMessage" xml:space="preserve">
+    <value>Zařízení: {0}</value>
+  </data>
+  <data name="EnterpriseWipeDeviceCountTitle" xml:space="preserve">
+    <value>Počet zařízení, která projdou firemním výmazem:</value>
+  </data>
+  <data name="ErrorAddingUserAccount" xml:space="preserve">
+    <value>Chyba při automatickém přidávání uživatelského účtu. Obraťte se na administrátora nebo to zkuste znovu.</value>
+  </data>
+  <data name="ErrorThrownWhenResolvingDeviceIdentifier" xml:space="preserve">
+    <value>Při pokusu o vyřešení identifikátoru zařízení došlo k chybě.</value>
+  </data>
+  <data name="ExistingClientIDDontMatch" xml:space="preserve">
+    <value>Změny nelze uložit, protože textová pole musí odpovídat existujícím hodnotám registrace. Upravit lze pouze certifikát.</value>
+  </data>
+  <data name="ExternalAccessRole" xml:space="preserve">
+    <value>Role s externím přístupem</value>
+  </data>
+  <data name="FailedToCreateAgentInstallUrl" xml:space="preserve">
+    <value>Nepodařilo se vytvořit adresu URL instalace aplikace Agent. Obraťte se na administrátora nebo to zkuste znovu.</value>
+  </data>
+  <data name="FailedToCreateDeviceAuthenticationToken" xml:space="preserve">
+    <value>Nepodařilo se vytvořit ověřovací token zařízení. Obraťte se na administrátora nebo to zkuste znovu.</value>
+  </data>
+  <data name="FailedToDisplayAgentAppStoreLink" xml:space="preserve">
+    <value>Nepodařilo se zobrazit odkaz obchodu App Store aplikace Agent. Obraťte se na administrátora nebo to zkuste znovu.</value>
+  </data>
+  <data name="FailedToDisplayWelcomeMessage" xml:space="preserve">
+    <value>Zobrazení uvítací zprávy se nezdařilo. Obraťte se na administrátora nebo to zkuste znovu.</value>
+  </data>
+  <data name="FailedToProcessDisplayMdmInstallationMessage" xml:space="preserve">
+    <value>Zobrazení zprávy instalace MDM se nezdařilo. Obraťte se na administrátora nebo to zkuste znovu.</value>
+  </data>
+  <data name="FailedToRedirectToAgentInstallUrl" xml:space="preserve">
+    <value>Přesměrování na adresu URL instalace agenta se nezdařilo. Obraťte se na administrátora nebo to zkuste znovu.</value>
+  </data>
+  <data name="FailedToRedirectToMdmInstallUrl" xml:space="preserve">
+    <value>Přesměrování na adresu URL instalace MDM se nezdařilo. Obraťte se na administrátora nebo to zkuste znovu.</value>
+  </data>
+  <data name="FailedToRedirectToWorkspaceSchema" xml:space="preserve">
+    <value>Přesměrování na schéma pracovního prostor se nezdařilo. Obraťte se na administrátora nebo to zkuste znovu.</value>
+  </data>
+  <data name="FailedToRegisterApplication" xml:space="preserve">
+    <value>Registrace aplikace se nezdařila. Obraťte se na administrátora nebo to zkuste znovu.</value>
+  </data>
+  <data name="FailedToRetrieveNextStep" xml:space="preserve">
+    <value>Načtení dalšího kroku registrace se nezdařilo. Obraťte se na administrátora nebo to zkuste znovu.</value>
+  </data>
+  <data name="FailedToRetrieveSessionId" xml:space="preserve">
+    <value>Načtení ID relace registrace zařízení se nezdařilo. Obraťte se na administrátora nebo to zkuste znovu.</value>
+  </data>
+  <data name="FailedToValidateDeviceRestrictions" xml:space="preserve">
+    <value>Ověření omezení registrace zařízení se nezdařilo. Obraťte se na administrátora nebo to zkuste znovu.</value>
+  </data>
+  <data name="FailedToValidateEmailAddress" xml:space="preserve">
+    <value>Ověření e-mailové adresy uživatele registrace se nezdařilo. Obraťte se na administrátora nebo to zkuste znovu.</value>
+  </data>
+  <data name="FailedValidatingDeviceIdentifier" xml:space="preserve">
+    <value>Ověření hodnoty UDID zařízení se nezdařilo. Obraťte se na administrátora nebo to zkuste znovu.</value>
+  </data>
+  <data name="FailedValidatingStagingMode" xml:space="preserve">
+    <value>Ověření režimu fázování se nezdařilo. Obraťte se na administrátora nebo to zkuste znovu.</value>
+  </data>
+  <data name="FieldMustBeOfArgCharacters" xml:space="preserve">
+    <value>Pole musí mít tento počet znaků: {0}.</value>
+  </data>
+  <data name="FollowingTokensOwnershipWillNotChange" xml:space="preserve">
+    <value>Následující vlastnictví tokenů se nezmění</value>
+  </data>
+  <data name="ForceAospEnrollment" xml:space="preserve">
+    <value>Vynutit registraci v AOSP / uzavřené síti</value>
+  </data>
+  <data name="GeneralCheckIn" xml:space="preserve">
+    <value>Přihlásit</value>
+  </data>
+  <data name="GetStarted:" xml:space="preserve">
+    <value>Začínáme:</value>
+  </data>
+  <data name="GetSuccessfully" xml:space="preserve">
+    <value>Adresa URL serveru MDM byla úspěšně načtena</value>
+  </data>
+  <data name="GoogleAdminConsole" xml:space="preserve">
+    <value>Administrační konzola Googlu</value>
+  </data>
+  <data name="GoogleDeviceIdRequired" xml:space="preserve">
+    <value>Je nutné zadat ID zařízení Google.</value>
+  </data>
+  <data name="GoogleUserIdRequired" xml:space="preserve">
+    <value>Je nutné zadat ID uživatele Google.</value>
+  </data>
+  <data name="GoToThe" xml:space="preserve">
+    <value>1. Přejděte na </value>
+  </data>
+  <data name="GroupIdAssignmentModeChanged" xml:space="preserve">
+    <value>Režim přiřazení ID skupiny se změnil</value>
+  </data>
+  <data name="HubRegistered" xml:space="preserve">
+    <value>Centrum Hub bylo zaregistrováno</value>
+  </data>
+  <data name="IntelligentHubManaged" xml:space="preserve">
+    <value>Spravované centrum Intelligent Hub</value>
+  </data>
+  <data name="InvalidDeviceAttributes" xml:space="preserve">
+    <value>Vložte jeden z následujících atributů zařízení: sériové číslo / IMEI / UDID</value>
+  </data>
+  <data name="InvalidDeviceModel" xml:space="preserve">
+    <value>Zařízení není zaregistrováno. Neplatný typ modelu zařízení</value>
+  </data>
+  <data name="InvalidDeviceOS" xml:space="preserve">
+    <value>Zařízení není zaregistrováno. Neplatný operační systém zařízení</value>
+  </data>
+  <data name="InvalidDeviceType" xml:space="preserve">
+    <value>Neplatný typ zařízení</value>
+  </data>
+  <data name="InvalidHeaderUsedInTemplate" xml:space="preserve">
+    <value>V šabloně bylo použito neplatné záhlaví. Stáhněte a použijte šablonu uvedenou v okně Upravit přiřazení.</value>
+  </data>
+  <data name="InvalidImeiAttributeArgs" xml:space="preserve">
+    <value>Identifikátor IMEI se musí skládat z čísel a musí obsahovat přesně 15 znaků.</value>
+  </data>
+  <data name="InvalidMigrationRequest" xml:space="preserve">
+    <value>Identifikátor UDID zařízení je prázdný</value>
+  </data>
+  <data name="InvalidOrganizationGroupFromVidm" xml:space="preserve">
+    <value>Uživatel registrace není součástí poskytnuté organizační skupiny přiřazené programem Workspace ONE Access.</value>
+  </data>
+  <data name="InvalidSerialNumberAttributeArgs" xml:space="preserve">
+    <value>Délka sériového čísla musí být menší než {0} znaků.</value>
+  </data>
+  <data name="InvalidSerialNumberValuesFoundArgs" xml:space="preserve">
+    <value>Délka každého sériového čísla má být menší než {0}</value>
+  </data>
+  <data name="InvalidTokenDetails" xml:space="preserve">
+    <value>Ověření se nezdařilo z důvodu neplatných údajů tokenu.</value>
+  </data>
+  <data name="InvalidUdidAttributeArgs" xml:space="preserve">
+    <value>Délka UDID musí být menší než {0} znaků.</value>
+  </data>
+  <data name="InvalidUDIDValuesFoundArgs" xml:space="preserve">
+    <value>Délka každého UDID má být menší než {0}.</value>
+  </data>
+  <data name="IosProfileDownloadHeaderTitle" xml:space="preserve">
+    <value>Postup stažení profilu</value>
+  </data>
+  <data name="IosProfileDownloadSteps" xml:space="preserve">
+    <value>1. Jakmile budete vyzváni ke stažení profilu, klepněte na {0}
+
+2. Po dokončení stahování klepněte na {1}</value>
+  </data>
+  <data name="LaforgeUserCreationFailed" xml:space="preserve">
+    <value>Vytvoření uživatele služby Android Enterprise se nezdařilo</value>
+  </data>
+  <data name="LinkToConfigurationTab" xml:space="preserve">
+    <value>Odkaz na kartu Konfigurace</value>
+  </data>
+  <data name="MigrationFeatureDisabled" xml:space="preserve">
+    <value>Migrační funkce služby Android Enterprise není pro vaši organizaci podporována. Obraťte se na svého administrátora.</value>
+  </data>
+  <data name="MoveDevicesToUserOrOGBAsedOnIPOrCA" xml:space="preserve">
+    <value>Přiřazení zařízení k uživateli nebo organizační skupině na základě přiřazení rozsahu IP nebo přiřazení zařízení k organizační skupině na základě pravidel vlastních atributů. Pravidla přiřazení zařízení nemohou být aktivována, pokud je pro libovolnou organizační skupinu v hierarchii vybrána možnost Organizační skupina podle rozsahu IP nebo Organizační skupina podle vlastních atributů. Pravidla přiřazení zařízení však mohou být aktivována, pokud je v hierarchii vybrána možnost Uživatelské jméno podle druhu rozsahu IP.</value>
+  </data>
+  <data name="MultiuserFFSetup" xml:space="preserve">
+    <value>Registrace více uživatelů byla zablokována, protože funkce není správně nastavena.</value>
+  </data>
+  <data name="MultiuserNonMdmSupport" xml:space="preserve">
+    <value>Registrace více uživatelů není podporována u použitého registračního protokolu.</value>
+  </data>
+  <data name="NoMDMOrderFound" xml:space="preserve">
+    <value>Registrace je pozastavena, protože se v SKU nepodařilo najít objednávku MDM.</value>
+  </data>
+  <data name="NotAuthorizedToCreateEnrollmentUser" xml:space="preserve">
+    <value>Uživatel nemá oprávnění vytvářet uživatele registrace.</value>
+  </data>
+  <data name="OperationNotAuthorized" xml:space="preserve">
+    <value>Není oprávnění k provedení této operace</value>
+  </data>
+  <data name="OrganizationGroupInherited" xml:space="preserve">
+    <value>Zděděná organizační skupina</value>
+  </data>
+  <data name="PasscodeExpired" xml:space="preserve">
+    <value>Platnost hesla vypršela</value>
+  </data>
+  <data name="PhoneNumberPrivacyCheck" xml:space="preserve">
+    <value>Kontrola soukromí u telefonního čísla</value>
+  </data>
+  <data name="PreventReEnrollmentMessage" xml:space="preserve">
+    <value>Zaškrtnutím políčka „Zamezit opětovné registraci“ zařízení umístíte na seznam zakázaných a zabráníte uživateli, aby se znovu zaregistroval do Workspace ONE UEM.  Administrátor může v případě potřeby toto zařízení odstranit ze seznamu zakázaných později.</value>
+  </data>
+  <data name="PrivacyNotificationDisabled" xml:space="preserve">
+    <value>Oznámení o ochraně dat je deaktivováno</value>
+  </data>
+  <data name="PromptToBeginDownloadMessageForAppleOsX" xml:space="preserve">
+    <value>Probíhá stahování aplikace Intelligent Hub a její automatická instalace do počítače. V závislosti na rychlosti síťového připojení by to mělo trvat 1–5 minut. Po instalaci aplikace Agent pokračujte klepnutím a dokončete registraci.</value>
+  </data>
+  <data name="RegisterAMAPI" xml:space="preserve">
+    <value>Zaregistrujte rozhraní AMAPI. {0}</value>
+  </data>
+  <data name="RegisterAMAPIAtParentOG" xml:space="preserve">
+    <value>Zaregistrujte rozhraní AMAPI v organizační skupině, kde je konfigurována registrace Android EMM. {0}</value>
+  </data>
+  <data name="RegisterAMAPIHelpText" xml:space="preserve">
+    <value>Rozhraní Android Management API (AMAPI) je nutné registrovat dříve, než jej lze použít s touto organizační skupinou.</value>
+  </data>
+  <data name="RegisteredOrAppEnrolled" xml:space="preserve">
+    <value>Registrovaná nebo samostatná registrovaná aplikace</value>
+  </data>
+  <data name="RegisterManagedDomain" xml:space="preserve">
+    <value>2. Zaregistrujte spravovanou doménu Google, pokud neexistuje.</value>
+  </data>
+  <data name="RegisterMultiuserDeviceConfirmationMessage" xml:space="preserve">
+    <value>Uživatelské informace spojené s registrací zařízení budou pro zařízení se systémem Windows vymazány.</value>
+  </data>
+  <data name="Requirements" xml:space="preserve">
+    <value>Požadavky</value>
+  </data>
+  <data name="RequireSharedDeviceEnrollmentEulaAcceptance" xml:space="preserve">
+    <value>Vždy upozornit na to, že Podmínky použití nelze aktivovat, dokud nebudou vytvořeny Podmínky použití registrace. Chcete-li vytvořit podmínky použití, přejděte na kartu Skupiny a nastavení &gt; Zařízení a uživatelé &gt; Obecné &gt; Registrace &gt; Podmínky použití.</value>
+  </data>
+  <data name="SerialNumberAssignmentFailed" xml:space="preserve">
+    <value>Přiřazení sériového čísla se nezdařilo.</value>
+  </data>
+  <data name="SetUpDirectoryServices" xml:space="preserve">
+    <value>Nastavit adresářové služby</value>
+  </data>
+  <data name="SubOrganizationGroup" xml:space="preserve">
+    <value>Podřízená organizační skupina </value>
+  </data>
+  <data name="SubsequentUserEnrollmentBlocked" xml:space="preserve">
+    <value>Následující registrace uživatele byla zablokována.</value>
+  </data>
+  <data name="TapHereIfNotPromptedAutomatically" xml:space="preserve">
+    <value>Klepněte sem, jestliže nebudete okamžitě vyzváni</value>
+  </data>
+  <data name="TapHereWhenDownloadFinishes" xml:space="preserve">
+    <value>Klepněte sem, jakmile bude stahování dokončeno</value>
+  </data>
+  <data name="TargetOwnershipRestrictedByDefaultPolicyAtGivenOG" xml:space="preserve">
+    <value>Vlastnictví cíle je v dané organizační skupině omezeno výchozí zásadou.</value>
+  </data>
+  <data name="TokenSaveFailed" xml:space="preserve">
+    <value>Uložení tokenu se nezdařilo.</value>
+  </data>
+  <data name="UemManaged" xml:space="preserve">
+    <value>Spravováno UEM</value>
+  </data>
+  <data name="UnapprovedUser" xml:space="preserve">
+    <value>Uživatel je externím ověřeným uživatelem SAML a nemá povolení registrovat. Obraťte se na administrátora nebo to zkuste znovu.</value>
+  </data>
+  <data name="UploadedCertMisMatch" xml:space="preserve">
+    <value>Chybí certifikát. Chcete-li pokračovat, nahrajte platný certifikát.</value>
+  </data>
+  <data name="UserEnrolled" xml:space="preserve">
+    <value>Uživatel je zaregistrován</value>
+  </data>
+  <data name="UserEnrollmentFeatureNotEnabled" xml:space="preserve">
+    <value>Registrace uživatele byla pro vaši organizaci deaktivována. Obraťte se na administrátora, aby aktivoval registraci uživatele, a zkuste to znovu.</value>
+  </data>
+  <data name="UserHasExceededMaxAllowedDevices" xml:space="preserve">
+    <value>Uživatel překročil maximální počet povolených zařízení.</value>
+  </data>
+  <data name="UsernameAlreadyExists" xml:space="preserve">
+    <value>Uživatelské jméno již existuje pro jiného uživatele. Zkuste to znovu.</value>
+  </data>
+  <data name="UserSetup" xml:space="preserve">
+    <value>Nastavení uživatele</value>
+  </data>
+  <data name="ValidatePhoneNumberFailed" xml:space="preserve">
+    <value>Ověření telefonního čísla uživatele registrace se nezdařilo. Obraťte se na administrátora nebo to zkuste znovu.</value>
+  </data>
+  <data name="WipeInitiated" xml:space="preserve">
+    <value>Vymazání zahájeno</value>
+  </data>
+  <data name="WipeInitiatedTooltip" xml:space="preserve">
+    <value>Vymazání bylo zahájeno</value>
+  </data>
+  <data name="WorkProfileManagementMode" xml:space="preserve">
+    <value>Režim správy pracovního profilu</value>
+  </data>
+  <data name="WorkProfileManagementModeInfoMessage" xml:space="preserve">
+    <value>Určuje, zda nově registrovaná zařízení budou spravována pomocí centra Intelligent Hub nebo rozhraní Android Management API. Doporučujeme rozhraní AMAPI. Centrum Intelligent Hub bude na zařízení stále přítomno, ale možnosti správy budou předány do nativního operačního systému Android. Na stávající zaregistrovaná zařízení to nebude mít žádný vliv.</value>
+  </data>
+  <data name="WorkProfileManagementModeToggleSuccessfulMessage" xml:space="preserve">
+    <value>Registrace proběhla úspěšně! Režim správy byl aktualizován na rozhraní Android Management API. Zobrazení nebo úpravy konfigurovaného režimu správy lze provést v části Nastavení registrace.</value>
+  </data>
+  <data name="Ws1RealTimeUserGroupSyncChanged" xml:space="preserve">
+    <value>Nastavení synchronizace uživatelských skupin Workspace ONE v reálném čase se změnilo</value>
+  </data>
+</root>

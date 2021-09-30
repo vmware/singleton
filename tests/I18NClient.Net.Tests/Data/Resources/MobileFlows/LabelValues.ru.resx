@@ -1,0 +1,643 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AboutMobileFlows" xml:space="preserve">
+    <value>О программе Mobile Flows</value>
+  </data>
+  <data name="AddArgMobileFlow" xml:space="preserve">
+    <value>Добавить поток {0}</value>
+    <comment>String will be passed in for {0}. Examples: 'Add Salesforce Flow', 'Add ServiceNow Flow' etc.</comment>
+  </data>
+  <data name="AddKeyValuePairs" xml:space="preserve">
+    <value>Добавить все применимые пары «ключ-значение»</value>
+  </data>
+  <data name="AddNewMobileFlow" xml:space="preserve">
+    <value>Добавить новый Mobile Flow</value>
+  </data>
+  <data name="AdobeSignDescription" xml:space="preserve">
+    <value>Соединитель Adobe для подписания документов</value>
+  </data>
+  <data name="AdobeSignTitle" xml:space="preserve">
+    <value>Adobe Sign</value>
+  </data>
+  <data name="Algorithm" xml:space="preserve">
+    <value>Алгоритм</value>
+  </data>
+  <data name="Approvals" xml:space="preserve">
+    <value>Утверждения</value>
+  </data>
+  <data name="AreYouSureToCancel" xml:space="preserve">
+    <value>Вы уверены, что хотите отменить?</value>
+  </data>
+  <data name="ArgCatalogConnector" xml:space="preserve">
+    <value>Соединитель каталога {0}</value>
+  </data>
+  <data name="ArgCatalogConnectors" xml:space="preserve">
+    <value>Соединители каталога {0}</value>
+  </data>
+  <data name="ArgMobileFlow" xml:space="preserve">
+    <value>{0} Mobile Flow</value>
+    <comment>Numeric one will be passed in for {0}</comment>
+  </data>
+  <data name="ArgMobileFlows" xml:space="preserve">
+    <value>{0} Mobile Flows</value>
+    <comment>Numeric value will be passed for {0}</comment>
+  </data>
+  <data name="AuthenticationHeader" xml:space="preserve">
+    <value>Заголовок аутентификации</value>
+  </data>
+  <data name="BaseURL" xml:space="preserve">
+    <value>Базовый URL-адрес</value>
+  </data>
+  <data name="BasicInformation" xml:space="preserve">
+    <value>Основные сведения</value>
+  </data>
+  <data name="BoxNotesDescription" xml:space="preserve">
+    <value>Соединитель Box Notes для получения уведомлений с упоминаниями @</value>
+  </data>
+  <data name="BoxNotesTitle" xml:space="preserve">
+    <value>Box Notes</value>
+  </data>
+  <data name="ClientCredentials" xml:space="preserve">
+    <value>Учетные данные клиента</value>
+  </data>
+  <data name="ConcurDescription" xml:space="preserve">
+    <value>Соединитель Concur для утверждения запроса на расходы</value>
+  </data>
+  <data name="ConcurTitle" xml:space="preserve">
+    <value>Concur</value>
+  </data>
+  <data name="ConcurTravelDescription" xml:space="preserve">
+    <value>Соединитель Concur для утверждения запроса на командировку</value>
+  </data>
+  <data name="ConcurTravelTitle" xml:space="preserve">
+    <value>Concur Travel</value>
+  </data>
+  <data name="ConfirmConnectorDelete" xml:space="preserve">
+    <value>Вы хотите удалить этот соединитель?</value>
+  </data>
+  <data name="ConnectionStatus" xml:space="preserve">
+    <value>Статус подключения</value>
+  </data>
+  <data name="ConnectorAuthConfigError" xml:space="preserve">
+    <value>Неправильный тип проверки подлинности или неисправный коннектор. Обратитесь к ИТ-администратору для изучения и исправления этой проблемы.</value>
+  </data>
+  <data name="ConnectorAuthenticationTypeHelp" xml:space="preserve">
+    <value>В раскрывающемся списке выберите тип проверки подлинности, который внутренняя служба предусматривает для клиента.</value>
+  </data>
+  <data name="ConnectorBaseUrlConfigError" xml:space="preserve">
+    <value>Неисправный коннектор. Обратитесь к ИТ-администратору для изучения и исправления этой проблемы.</value>
+  </data>
+  <data name="ConnectorBaseURLHelp" xml:space="preserve">
+    <value>URL-адрес внутренней службы соединителя Mobile Flows. Он требуется только для соединителей VMware. Например, если вы используете соединитель Salesforce для VMware, введите здесь URL-адрес Salesforce своей организации.</value>
+  </data>
+  <data name="ConnectorDeleteWarning" xml:space="preserve">
+    <value>Это безвозвратно удалит соединитель</value>
+  </data>
+  <data name="ConnectorDiscoveryApiError" xml:space="preserve">
+    <value>Не удалось проверить URL-адрес обнаружения</value>
+  </data>
+  <data name="ConnectorDiscoveryError" xml:space="preserve">
+    <value>Коннектор не найден. Обратитесь к ИТ-администратору для изучения и исправления этой проблемы.</value>
+  </data>
+  <data name="ConnectorDiscoveryInvalidResponse" xml:space="preserve">
+    <value>Недопустимый ответ на обнаружение соединителя</value>
+  </data>
+  <data name="ConnectorDiscoveryURLHelp" xml:space="preserve">
+    <value>Данный URL-адрес используется сервером Mobile Flows для определения возможностей развертываемого соединителя. Если соединитель размещен в облаке, будет использоваться общедоступный URL-адрес. Полный URL-адрес шлюза необходим, чтобы после аутентификации перенаправить подключение на соединитель, размещенный за шлюзом API-интерфейса или граничным шлюзом. Ответ этого URL-адреса должен соответствовать ожидаемому формату, указанному в руководстве по соединителям для карт.</value>
+  </data>
+  <data name="ConnectorIDHelp" xml:space="preserve">
+    <value>Введите идентификатор, который однозначно определяет соединители вашей организации</value>
+  </data>
+  <data name="ConnectorIsNotFound" xml:space="preserve">
+    <value>Соединитель не найден</value>
+  </data>
+  <data name="ConnectorKeyValueHelp" xml:space="preserve">
+    <value>Это поля, требуемые для проверки подлинности пользователя во внутренней системе соединителя. При необходимости здесь будут включены поля OAuth 2.0. Подробнее см. в руководстве по соединителям для карт.</value>
+  </data>
+  <data name="ConnectorLoginURLHelp" xml:space="preserve">
+    <value>URL-адрес, с помощью которого клиент выполняет аутентификацию во внутренней службе и предоставляет маркер доступа. Например, https://login.salesforce.com</value>
+  </data>
+  <data name="ConnectorName" xml:space="preserve">
+    <value>Имя соединителя</value>
+  </data>
+  <data name="ConnectorNameHelp" xml:space="preserve">
+    <value>Введите имя для идентификации соединителя. Это имя необходимо пользователям, чтобы включать службы в клиенте, а администраторам Mobile Flows — чтобы различать соединители.</value>
+  </data>
+  <data name="ConnectorProviderHelp" xml:space="preserve">
+    <value>Выберите соединитель для развертывания: предоставленный VMware или размещенный во внутренней сети организации.</value>
+  </data>
+  <data name="ConnectorServiceHelp" xml:space="preserve">
+    <value>В раскрывающемся меню выберите соединитель VMware для развертывания</value>
+  </data>
+  <data name="ConnectorStatusHelp" xml:space="preserve">
+    <value>Отключите коннектор, чтобы запретить доступ всем пользователям к информации Mobile Flow на их устройствах для данного коннектора.</value>
+  </data>
+  <data name="ConnectorType" xml:space="preserve">
+    <value>Тип</value>
+  </data>
+  <data name="CoupaDescription" xml:space="preserve">
+    <value>Соединитель Coupa для утверждения запроса заявки</value>
+  </data>
+  <data name="CoupaTitle" xml:space="preserve">
+    <value>Coupa</value>
+  </data>
+  <data name="DeveloperGuide" xml:space="preserve">
+    <value>руководство разработчика</value>
+  </data>
+  <data name="DiscoveryURL" xml:space="preserve">
+    <value>URL-адрес обнаружения</value>
+  </data>
+  <data name="DiscoveryURLChanged" xml:space="preserve">
+    <value>URL-адрес обнаружения изменен</value>
+  </data>
+  <data name="EditMobileFlow" xml:space="preserve">
+    <value>Изменить Mobile Flow</value>
+  </data>
+  <data name="FieldCannotContainWhiteSpaces" xml:space="preserve">
+    <value>Поле не может содержать пробелы</value>
+  </data>
+  <data name="FieldIsRequired" xml:space="preserve">
+    <value>Обязательное поле</value>
+  </data>
+  <data name="FieldMaxLength" xml:space="preserve">
+    <value>Максимальная длина поля — {0} симв.</value>
+  </data>
+  <data name="FieldMinLength" xml:space="preserve">
+    <value>Минимальная длина поля — {0} симв.</value>
+  </data>
+  <data name="FieldShouldBeValidHttpsURL" xml:space="preserve">
+    <value>Поле должно содержать действительный URL-адрес HTTPS</value>
+  </data>
+  <data name="FieldShouldBeValidURL" xml:space="preserve">
+    <value>В этом поле необходимо указать допустимый URL-адрес</value>
+  </data>
+  <data name="GitHubPage" xml:space="preserve">
+    <value>Страница GitHub</value>
+  </data>
+  <data name="GoogleDocsDescription" xml:space="preserve">
+    <value>Соединитель Google Документы для получения уведомлений с упоминаниями @</value>
+  </data>
+  <data name="GoogleDocsTitle" xml:space="preserve">
+    <value>Google Документы</value>
+  </data>
+  <data name="GrantType" xml:space="preserve">
+    <value>Тип предоставления</value>
+  </data>
+  <data name="GrantTypeHelp" xml:space="preserve">
+    <value>Выберите из раскрывающегося списка метод получения маркера доступа. Код авторизации используется конфиденциальными и общедоступными клиентами для обмена на маркер доступа. Это иногда называется веб-приложением или веб-сервером в конфигурации OAuth 2.0. Клиентские учетные данные используются клиентами для получения маркера доступа вне контекста пользователя. Это удобно, если поставщик OAuth 2.0 поддерживает тип предоставления «Учетные данные клиента» с привилегиями служебной учетной записи. Пароль используется производителем для обмена учетных данных пользователя на маркер доступа. Это удобно, если поставщик OAuth 2.0 поддерживает тип предоставления «Пароль», а у вас есть служебная учетная запись, которую необходимо использовать.</value>
+  </data>
+  <data name="HideAdvancedOAuth2Options" xml:space="preserve">
+    <value>Скрыть дополнительные параметры</value>
+  </data>
+  <data name="HowMobileFlowsWork" xml:space="preserve">
+    <value>Принцип работы</value>
+  </data>
+  <data name="HowMobileFlowsWorkDescription" xml:space="preserve">
+    <value>Сервис Mobile Flows позволяет предоставлять сотрудникам возможность включать или отключать практически значимые уведомления в мобильных приложениях путем развертывания соединителей для каждой подключаемой бизнес-системы. Имя каждого соединителя сопоставляется с общедоступным URL-адресом для каждого соединителя, после чего сотрудники могут легко получать доступ к уведомлениям об их корпоративных приложениях.</value>
+  </data>
+  <data name="HubSpotDealsDescription" xml:space="preserve">
+    <value>Соединитель HubSpot для новых назначений предложений</value>
+  </data>
+  <data name="HubSpotDealsTitle" xml:space="preserve">
+    <value>HubSpot — предложения</value>
+  </data>
+  <data name="HubSpotTicketsDescription" xml:space="preserve">
+    <value>Соединитель HubSpot для новых назначений запросов в службу поддержки</value>
+  </data>
+  <data name="HubSpotTicketsTitle" xml:space="preserve">
+    <value>HubSpot — запросы в службу поддержки</value>
+  </data>
+  <data name="JiraServiceDeskDescription" xml:space="preserve">
+    <value>Соединитель Jira Service Desk для утверждения запроса в службу поддержки</value>
+  </data>
+  <data name="JiraServiceDeskTitle" xml:space="preserve">
+    <value>Jira Service Desk</value>
+  </data>
+  <data name="KeyValuePair" xml:space="preserve">
+    <value>Добавить пару «ключ-значение»</value>
+  </data>
+  <data name="LinkedInLearningChatbotDescription" xml:space="preserve">
+    <value>Соединитель LinkedIn Learning для поиска учебных курсов с помощью Hub Assistant</value>
+  </data>
+  <data name="LinkedInLearningChatbotTitle" xml:space="preserve">
+    <value>Чат-бот LinkedIn Learning</value>
+  </data>
+  <data name="LinkedInLearningDescription" xml:space="preserve">
+    <value>Соединитель LinkedIn Learning для получения уведомлений о новых учебных курсах</value>
+  </data>
+  <data name="LinkedInLearningTitle" xml:space="preserve">
+    <value>LinkedIn Learning</value>
+  </data>
+  <data name="MicrosoftDynamicsCaseResolutionDescription" xml:space="preserve">
+    <value>Соединитель Microsoft Dynamics для новых назначений обращений</value>
+  </data>
+  <data name="MicrosoftDynamicsCaseResolutionTitle" xml:space="preserve">
+    <value>Microsoft Dynamics — разрешение обращения</value>
+  </data>
+  <data name="MicrosoftDynamicsDescription" xml:space="preserve">
+    <value>Соединитель Microsoft Dynamics для получения уведомлений о новых назначенных учетных записях</value>
+  </data>
+  <data name="MicrosoftDynamicsTasksDescription" xml:space="preserve">
+    <value>Cоединитель Microsoft Dynamics для назначения новых задач</value>
+  </data>
+  <data name="MicrosoftDynamicsTasksTitle" xml:space="preserve">
+    <value>Microsoft Dynamics — задачи</value>
+  </data>
+  <data name="MicrosoftDynamicsTitle" xml:space="preserve">
+    <value>Microsoft Dynamics</value>
+  </data>
+  <data name="MicrosoftOneDriveDescription" xml:space="preserve">
+    <value>Соединитель Microsoft OneDrive для утверждения доступа к файлам и папкам</value>
+  </data>
+  <data name="MicrosoftOneDriveTitle" xml:space="preserve">
+    <value>Microsoft OneDrive</value>
+  </data>
+  <data name="MicrosoftPlannerDescription" xml:space="preserve">
+    <value>Соединитель Microsoft Planner для получения уведомлений о новых назначенных задачах</value>
+  </data>
+  <data name="MicrosoftPlannerTitle" xml:space="preserve">
+    <value>Microsoft Planner</value>
+  </data>
+  <data name="MicrosoftTeamsDescription" xml:space="preserve">
+    <value>Соединитель Microsoft Teams для получения уведомлений с упоминаниями @</value>
+  </data>
+  <data name="MicrosoftTeamsTitle" xml:space="preserve">
+    <value>Microsoft Teams</value>
+  </data>
+  <data name="MobileFlow" xml:space="preserve">
+    <value>Mobile Flow</value>
+  </data>
+  <data name="MobileFlowAPIURL" xml:space="preserve">
+    <value>URL-адрес API-интерфейса Mobile Flows</value>
+  </data>
+  <data name="MobileFlowBestPracticesDescription" xml:space="preserve">
+    <value>Передовые способы использования Mobile Flows можно найти в разделе Wiki на сайте VMware GitHub: https://github.com/vmwaresamples/card-connectors-guide/wiki.</value>
+  </data>
+  <data name="MobileFlowDescription" xml:space="preserve">
+    <value>Просмотр и администрирование всех соединителей</value>
+  </data>
+  <data name="MobileFlows" xml:space="preserve">
+    <value>Mobile Flows</value>
+  </data>
+  <data name="MobileFlowsAddConnectors" xml:space="preserve">
+    <value>Добавить коннекторы</value>
+  </data>
+  <data name="MobileFlowsAdminNoAccessToOG" xml:space="preserve">
+    <value>Доступ к Mobile Flows могут получить администраторы, управляемые этой организационной группе. Попросите своего системного администратора назначить требуемую роль и сохранить этого администратора в этой организационной группе. Затем снова выполните вход и используйте эту роль для доступа к Mobile Flows в этой организационной группе.</value>
+  </data>
+  <data name="MobileFlowsAPIURL" xml:space="preserve">
+    <value>URL-адрес API-интерфейса Mobile Flows</value>
+  </data>
+  <data name="MobileFlowsApiUrlNotFound" xml:space="preserve">
+    <value>Облачная служба Mobile Flows недоступна.</value>
+  </data>
+  <data name="MobileFlowsApiUrlNotProvisioned" xml:space="preserve">
+    <value>Убедитесь, что URL-адрес API-интерфейса Mobile Flows настроен в текущей организационной группе, которую можно найти в разделе URL-адресов сайта. Если проблема не устранена, обратитесь к системному администратору.</value>
+  </data>
+  <data name="MobileFlowsBestPractices" xml:space="preserve">
+    <value>Передовые практики для Mobile Flows</value>
+  </data>
+  <data name="MobileFlowsCatalogDescription" xml:space="preserve">
+    <value>Чтобы начать использовать Workspace ONE Mobile Flows прямо сейчас, выберите один из готовых соединителей и рабочих процессов ниже. Достаточно просто добавить его, настроить и ввести дополнительные сведения.</value>
+  </data>
+  <data name="MobileFlowsCloudServiceDescription" xml:space="preserve">
+    <value>Mobile Flows — это облачный сервис, который интегрируется с VMware Intelligent Hub и Boxer и предоставляет сотрудникам практически значимые уведомления, которые им требуются для повышения продуктивности работы.</value>
+  </data>
+  <data name="MobileFlowsConnectingToCloudService" xml:space="preserve">
+    <value>Подключение к облачной службе Mobile Flows</value>
+  </data>
+  <data name="MobileFlowsConnectorGuideWikiArg" xml:space="preserve">
+    <value>Научиться создавать соединители можно здесь ({0})</value>
+    <comment>Html string will be passed in for {0}. Example: &lt;label for='open-connectors-guide-wiki' class='wiki-link'&gt;developer guide&lt;/label&gt;`.</comment>
+  </data>
+  <data name="MobileFlowsDescription" xml:space="preserve">
+    <value>Просмотр и управление Mobile Flows</value>
+  </data>
+  <data name="MobileFlowsDirectoryBasicAdminError" xml:space="preserve">
+    <value>У вас нет доступа к Workspace ONE Access. Для доступа к Workspace ONE Access вы должны быть администратором каталога в каталоге, настроенном в этой организационной группе.</value>
+  </data>
+  <data name="MobileFlowsIDMNotConfigured" xml:space="preserve">
+    <value>Не удалось получить доступ к Workspace ONE Access. Проверьте, правильно ли настроены ваши права доступа</value>
+  </data>
+  <data name="MobileFlowsIDMSetupArg" xml:space="preserve">
+    <value>Необходимо настроить Workspace ONE Access перед доступом к Mobile Flows. Перейдите в {0} и подключитесь к Workspace ONE Access. После завершения выполните выход и снова войдите в систему, чтобы повторить попытку.</value>
+  </data>
+  <data name="MobileFlowsIDMSetupRequired" xml:space="preserve">
+    <value>Необходимо настроить Workspace ONE, чтобы получить возможность доступа к Mobile Flows. Выберите «Начало работы» и выполните настройку Workspace ONE. После завершения установки выйдите и снова войдите в систему и повторите попытку.</value>
+  </data>
+  <data name="MobileFlowsNoAccessToIDM" xml:space="preserve">
+    <value>У вас нет доступа к Workspace ONE Access. Для доступа к Workspace ONE Access вы должны быть администратором каталога.</value>
+  </data>
+  <data name="MobileFlowsNoAccessToOrganizationGroup" xml:space="preserve">
+    <value>Данный пользователь не принадлежит этой организационной группе.</value>
+  </data>
+  <data name="MobileFlowsNotCustomerTypeOrganizationGroup" xml:space="preserve">
+    <value>Облачный арендатор может быть зарегистрирован только в организационной группе клиентского типа.</value>
+  </data>
+  <data name="MobileFlowsProductivityDescription" xml:space="preserve">
+    <value>Сервис Mobile Flows визуализирует персонализированные рабочие процессы сотрудников и агрегирует данные из разрозненных бизнес-систем, чтобы упростить сотрудникам подключение ко всем офисным приложениям из одного приложения.</value>
+  </data>
+  <data name="MobileFlowsRegisteringTenant" xml:space="preserve">
+    <value>Отправка и регистрация данных клиента по URL-адресу</value>
+  </data>
+  <data name="MobileFlowsSampleConnectorWikiArg" xml:space="preserve">
+    <value>Готовые соединители можно получить здесь ({0})</value>
+    <comment>Html string will be passed in for {0}. Example: &lt;label for='open-sample-connectors-wiki' class='wiki-link'&gt;GitHub page&lt;/label&gt;`.</comment>
+  </data>
+  <data name="MobileFlowsTenantAlreadyExists" xml:space="preserve">
+    <value>Этот облачный арендатор уже существует в облачной службе Mobile Flows.</value>
+  </data>
+  <data name="MobileFlowsTenantProvisioning" xml:space="preserve">
+    <value>Сначала зарегистрируйте арендатора клиента для подключения облачной службы Mobile Flows.</value>
+  </data>
+  <data name="MobileFlowsTenantProvisioningError" xml:space="preserve">
+    <value>Что-то не так…</value>
+  </data>
+  <data name="MobileFlowsTenantProvisioningFailed" xml:space="preserve">
+    <value>Не удалось зарегистрировать облачного арендатора.</value>
+  </data>
+  <data name="MobileFlowsTenantProvisioningSuccess" xml:space="preserve">
+    <value>Успешное подключение к облачной службе Mobile Flows.</value>
+  </data>
+  <data name="MobileFlowsVidmNotConfigured" xml:space="preserve">
+    <value>Workspace ONE Access не настроен для этой организационной группы.</value>
+  </data>
+  <data name="MobileFlowTroubleshootDocs" xml:space="preserve">
+    <value>Руководство по соединителям для Mobile Flows см. на сайте GitHub: https://github.com/vmwaresamples/card-connectors-guide.</value>
+  </data>
+  <data name="MultiTenantParameters" xml:space="preserve">
+    <value>Параметры мультитенантного режима</value>
+  </data>
+  <data name="MyFlows" xml:space="preserve">
+    <value>Мои потоки</value>
+  </data>
+  <data name="NoMobileFlowsCatalogFound" xml:space="preserve">
+    <value>Доступные потоки не найдены</value>
+  </data>
+  <data name="NoMobileFlowsFound" xml:space="preserve">
+    <value>Вы еще не создали мобильные потоки.</value>
+  </data>
+  <data name="NotificationMethod" xml:space="preserve">
+    <value>Метод уведомления</value>
+  </data>
+  <data name="NotificationMethodPoll" xml:space="preserve">
+    <value>Метод уведомления — опрос</value>
+  </data>
+  <data name="NotificationMethodPush" xml:space="preserve">
+    <value>Метод уведомления — отправить</value>
+  </data>
+  <data name="NotificationMethodPushInfo" xml:space="preserve">
+    <value>Используйте эту информацию для настройки параметров push-уведомлений в исходной бизнес-системе.</value>
+  </data>
+  <data name="NotificationPollPushDifference" xml:space="preserve">
+    <value>Уведомления из бизнес-систем могут быть опрошены или отправлены:
+Опрос: сервер Mobile Flows опрашивает внутренние бизнес-системы с интервалом в 1 час для проверки новых уведомлений. 
+Отправка: если внутренняя бизнес-система поддерживается механизм push-уведомлений, Mobile Flows может создать конечную точку для вызова службы, когда уведомления будут готовы.</value>
+  </data>
+  <data name="NoVmwareServicesFound" xml:space="preserve">
+    <value>Службы VMware не найдены.</value>
+  </data>
+  <data name="OAuth2Parameters" xml:space="preserve">
+    <value>Параметры OAuth 2.0</value>
+  </data>
+  <data name="OopsSomethingWentWrong" xml:space="preserve">
+    <value>Ошибка. Что-то пошло не так.</value>
+  </data>
+  <data name="PollingInterval" xml:space="preserve">
+    <value>Интервал опроса</value>
+  </data>
+  <data name="PushNotificationInfo" xml:space="preserve">
+    <value>После сохранения будет создан URL-адрес push-уведомления, который можно найти на странице сведений о соединителе. Используйте эту информацию для настройки параметров push-уведомлений в исходной бизнес-системе. Эти настройки можно просмотреть и изменить в разделе «Мои потоки &gt; Изменить».</value>
+  </data>
+  <data name="PushURL" xml:space="preserve">
+    <value>URL-адрес push-уведомлений</value>
+  </data>
+  <data name="RegenerateSecret" xml:space="preserve">
+    <value>Создать секрет повторно?</value>
+  </data>
+  <data name="RegenerateSecretConfirm" xml:space="preserve">
+    <value>Действительно повторно создать секрет? После повторного создания предыдущий элемент больше не будет работать. Обновите настройки push-уведомлений в исходной бизнес-системе соответствующим образом.</value>
+  </data>
+  <data name="SabaDescription" xml:space="preserve">
+    <value>Соединитель Saba для новых уведомлений об обучении</value>
+  </data>
+  <data name="SabaTitle" xml:space="preserve">
+    <value>Saba</value>
+  </data>
+  <data name="SalesforceCaseResolutionDescription" xml:space="preserve">
+    <value>Соединитель Salesforce для новых назначений обращений</value>
+  </data>
+  <data name="SalesforceCaseResolutionTitle" xml:space="preserve">
+    <value>Salesforce — разрешение обращений</value>
+  </data>
+  <data name="SalesforceDescription" xml:space="preserve">
+    <value>Соединитель Salesforce для утверждения запроса на скидку</value>
+  </data>
+  <data name="SalesforceLeadsDescription" xml:space="preserve">
+    <value>Соединитель Salesforce для получения уведомлений о новых назначенных потенциальных клиентах</value>
+  </data>
+  <data name="SalesforceLeadsTitle" xml:space="preserve">
+    <value>Потенциальные клиенты Salesforce</value>
+  </data>
+  <data name="SalesforceTasksDescription" xml:space="preserve">
+    <value>Соединитель Salesforce для назначения новых задач</value>
+  </data>
+  <data name="SalesforceTasksTitle" xml:space="preserve">
+    <value>Salesforce — задачи</value>
+  </data>
+  <data name="SalesforceTitle" xml:space="preserve">
+    <value>Salesforce</value>
+  </data>
+  <data name="ServiceAccountCredential" xml:space="preserve">
+    <value>Данные служебной учетной записи</value>
+  </data>
+  <data name="ServiceAccountCredentialHelp" xml:space="preserve">
+    <value>Введите данные служебной учетной записи, которые внутренняя служба предусматривает для клиента.</value>
+  </data>
+  <data name="ServiceNowChatbotDescription" xml:space="preserve">
+    <value>Соединитель ServiceNow для создания и просмотра запросов в службу поддержки и заказа устройств с помощью Hub Assistant</value>
+  </data>
+  <data name="ServiceNowChatbotTitle" xml:space="preserve">
+    <value>Чат-бот ServiceNow</value>
+  </data>
+  <data name="ServiceNowDescription" xml:space="preserve">
+    <value>Соединитель ServiceNow для утверждения запроса заявки</value>
+  </data>
+  <data name="ServiceNowTitle" xml:space="preserve">
+    <value>ServiceNow</value>
+  </data>
+  <data name="ShowAdvancedOAuth2Options" xml:space="preserve">
+    <value>Показать дополнительные параметры</value>
+  </data>
+  <data name="TokenServerHints" xml:space="preserve">
+    <value>Подсказки для сервера маркеров</value>
+  </data>
+  <data name="TokenUriBodyParameters" xml:space="preserve">
+    <value>Параметры текста URI маркера</value>
+  </data>
+  <data name="UEMChatbotDescription" xml:space="preserve">
+    <value>Соединитель UEM для синхронизации устройств с помощью Hub Assistant</value>
+  </data>
+  <data name="UEMChatbotTitle" xml:space="preserve">
+    <value>Чат-бот UEM</value>
+  </data>
+  <data name="UseCase" xml:space="preserve">
+    <value>Сценарий использования</value>
+  </data>
+  <data name="VirtualAssistant" xml:space="preserve">
+    <value>Виртуальный помощник</value>
+  </data>
+  <data name="WhatIsMobileFlow" xml:space="preserve">
+    <value>Что такое Mobile Flows?</value>
+  </data>
+  <data name="WhatIsMobileFlowDescription" xml:space="preserve">
+    <value>Mobile Flows позволяет формировать интеллектуальные и действенные уведомления при использовании удаленных систем в Boxer и других корпоративных приложениях. Это повышает эффективность работы сотрудников. Здесь администраторы могут настраивать и проводить развертывания соединителей и потоков для конечных пользователей.</value>
+  </data>
+  <data name="Wiki" xml:space="preserve">
+    <value>Вики-сайт</value>
+  </data>
+  <data name="WorkdayDescription" xml:space="preserve">
+    <value>Соединитель Workday для утверждения PTO</value>
+  </data>
+  <data name="WorkdayTitle" xml:space="preserve">
+    <value>Workday</value>
+  </data>
+  <data name="WorkspaceONEHub" xml:space="preserve">
+    <value>Workspace ONE Hub</value>
+  </data>
+  <data name="ZendeskTasksDescription" xml:space="preserve">
+    <value>Соединитель Zendesk для утверждений задач</value>
+  </data>
+  <data name="ZendeskTasksTitle" xml:space="preserve">
+    <value>Zendesk — задачи</value>
+  </data>
+  <data name="ZendeskTicketResolutionDescription" xml:space="preserve">
+    <value>Соединитель Zendesk для новых запросов в службу поддержки</value>
+  </data>
+  <data name="ZendeskTicketResolutionTitle" xml:space="preserve">
+    <value>Zendesk — разрешение запросов в службу поддержки</value>
+  </data>
+  <data name="ZoomRecordingsDescription" xml:space="preserve">
+    <value>Соединитель Zoom для получения уведомлений о новых записях</value>
+  </data>
+  <data name="ZoomRecordingsTitle" xml:space="preserve">
+    <value>Записи Zoom</value>
+  </data>
+</root>

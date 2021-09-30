@@ -1,0 +1,967 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AC" xml:space="preserve">
+    <value>Электросеть</value>
+  </data>
+  <data name="AccessToDeviceReprocessProductsMenuTooltip" xml:space="preserve">
+    <value>Предоставляет сотрудникам доступ к меню повторной обработки продуктов для ускорения поиска и устранения неисправностей.</value>
+  </data>
+  <data name="ACorFullBattery" xml:space="preserve">
+    <value>Электросеть или полностью заряженный аккумулятор</value>
+  </data>
+  <data name="ACPowerCondition" xml:space="preserve">
+    <value>Запланируйте выполнение действий на период времени, когда устройство подключено к питанию (например, когда оно установлено на базу и подключено к электропитанию)</value>
+  </data>
+  <data name="AddAgentPackages" xml:space="preserve">
+    <value>Добавить пакет Hub/Agent</value>
+  </data>
+  <data name="AddFileServer" xml:space="preserve">
+    <value>Добавить файловый сервер</value>
+  </data>
+  <data name="AddPinnedAppsHelp" xml:space="preserve">
+    <value>В случае добавления строки "Закрепленные приложения" принудительно включается параметр "Свернуть строку заголовка" из-за ограничения пространства на главном экране устройства.</value>
+  </data>
+  <data name="AddPinnedAppsRow" xml:space="preserve">
+    <value>Добавить строку для закрепленных приложений</value>
+  </data>
+  <data name="AddToLauncher" xml:space="preserve">
+    <value>Добавить в средство запуска</value>
+  </data>
+  <data name="AfterDurationExceeded" xml:space="preserve">
+    <value>После превышения длительности</value>
+  </data>
+  <data name="AgentPackages" xml:space="preserve">
+    <value>Пакеты Hub/Agent</value>
+  </data>
+  <data name="AgentPackagesMenuTitle" xml:space="preserve">
+    <value>Просмотр и добавление пакетов Hub/Agent</value>
+  </data>
+  <data name="AirwatchMdmAgentUpgrade" xml:space="preserve">
+    <value>Обновление AirWatch MDM Agent</value>
+  </data>
+  <data name="Airwatchmdmagentupgradefile" xml:space="preserve">
+    <value>Файл обновления AirWatch MDM Agent</value>
+  </data>
+  <data name="AndroidAvailableSystemActions" xml:space="preserve">
+    <value>Запустить намерение, перезагрузить, применить настраиваемые параметры, выйти из Launcher.</value>
+  </data>
+  <data name="AndroidFile" xml:space="preserve">
+    <value>Файл</value>
+  </data>
+  <data name="ApplicationAssignmentsCount" xml:space="preserve">
+    <value>Назначения</value>
+  </data>
+  <data name="AssistCommandLine" xml:space="preserve">
+    <value>Командная строка</value>
+  </data>
+  <data name="AssistManageFiles" xml:space="preserve">
+    <value>Управление файлами</value>
+  </data>
+  <data name="AssistRemoteAssist" xml:space="preserve">
+    <value>Удаленная помощь</value>
+  </data>
+  <data name="AssistRemoteViewIosTooltip" xml:space="preserve">
+    <value>Поддерживает удаленный просмотр и контроль для всех платформ (кроме iOS, в которой поддерживается только удаленный просмотр).</value>
+  </data>
+  <data name="AssistShareScreen" xml:space="preserve">
+    <value>Общий доступ к экрану</value>
+  </data>
+  <data name="AtleastOneCustomAttributeAndAttributeValueIsRequired" xml:space="preserve">
+    <value>Требуется указать как минимум один настраиваемый атрибут и одно значение атрибута</value>
+  </data>
+  <data name="AutoRetry" xml:space="preserve">
+    <value>Автоматически повторить попытку</value>
+  </data>
+  <data name="BackgroundApplication" xml:space="preserve">
+    <value>Фоновое приложение</value>
+  </data>
+  <data name="Batchimportrelayserverexplanation" xml:space="preserve">
+    <value>Функция импорта сервера ретрансляции может использоваться для загрузки серверов ретрансляции в систему в пакетном режиме. Пользователи серверов ретрансляции должны быть связанны с организационной группой.
+
+Для справки нажмите "Загрузить шаблон".</value>
+  </data>
+  <data name="BulkEnterpriseResetDescription" xml:space="preserve">
+    <value>Имейте ввиду, что это действие относится только к прочным устройствам Zebra или Honeywell с ОС Android и Windows Mobile, которые были зарегистрированы через процесс регистрации промежуточного хранения с помощью клиента быстрого развертывания VMware. Это действие осуществит очистку устройства и перезагрузку. После перезагрузки, устройство все еще будет зарегистрировано в Workspace ONE и перестроится в нужное, заранее настроенное состояние.</value>
+  </data>
+  <data name="CannotActivatePolicy_DeactivationDateIsInPast" xml:space="preserve">
+    <value>Невозможно активировать политику. Дата деактивации уже прошла.</value>
+  </data>
+  <data name="CannotBeEmptyArg" xml:space="preserve">
+    <value>{0}, не может иметь значение null или пустое значение</value>
+  </data>
+  <data name="CannotDeactivatePolicy_ActivationDateIsInThePast" xml:space="preserve">
+    <value>Невозможно деактивировать политику. Дата активации уже прошла.</value>
+  </data>
+  <data name="CannotSavePolicySmartGroupNotAssigned" xml:space="preserve">
+    <value>Невозможно сохранить автоматически активируемую политику. Не назначена смарт-группа</value>
+  </data>
+  <data name="CASettingsCannotBeConfiguredAtThisOg" xml:space="preserve">
+    <value>Параметры настраиваемого атрибута нельзя настроить в этой организационной группе.</value>
+  </data>
+  <data name="CDNShouldBeEnabled" xml:space="preserve">
+    <value>Прежде чем включить разрешение загрузки продуктов по сети CDN, включите и сохраните настройки CDN</value>
+  </data>
+  <data name="CharactersAreRestrictedInProductName" xml:space="preserve">
+    <value>Имя продукта не должно содержать символы {0}</value>
+  </data>
+  <data name="CloudRelayConnectionShouldFollowFormat" xml:space="preserve">
+    <value>Подключение Cloud Relay должно иметь формат "/Требуемая_папка/Temp"</value>
+  </data>
+  <data name="ConditionActionAfterDurationHelp" xml:space="preserve">
+    <value>Определяет, как действовать после выполнения условия длительности.</value>
+  </data>
+  <data name="ConditionDurationHelp" xml:space="preserve">
+    <value>Устанавливает длительность, в течение которой это условие будет выполнять данное действие.</value>
+  </data>
+  <data name="ConditionFileNameHelp" xml:space="preserve">
+    <value>Чтобы задать условие, введите путь к устройству и имя файла для проверки перед загрузкой и/или установкой компонентов продукта на устройства.</value>
+  </data>
+  <data name="ConditionFrequencyHelp" xml:space="preserve">
+    <value>Определяет, как часто устройства будут запускать это условие, чтобы проверить, был ли найден этот файл.</value>
+  </data>
+  <data name="ConditionMetWhen" xml:space="preserve">
+    <value>Условие выполнено, когда</value>
+  </data>
+  <data name="ConditionTestTypeHelp" xml:space="preserve">
+    <value>Определяет, загружать и/или устанавливать компоненты продукта, когда этот файл найден или не найден на устройствах.</value>
+  </data>
+  <data name="ConfigureAgentTakesToSettingsConfiguration" xml:space="preserve">
+    <value>При выборе пункта "Настроить агент" открывается страница "Настройки" для выполнения последующих действий</value>
+  </data>
+  <data name="ConfigureWinmoAgent" xml:space="preserve">
+    <value>Настроить агент</value>
+  </data>
+  <data name="ConfirmContinueWithPreviousActivationDate" xml:space="preserve">
+    <value>Вы попытались изменить дату и время активации. Дату активации нельзя обновить для активного продукта. Чтобы изменить дату активации, отмените изменения и деактивируйте продукт. Отредактируйте продукт, чтобы указать требуемую дату, а затем сохраните изменения и активируйте продукт. Чтобы сохранить предыдущую дату активации для этого активного продукта, выберите "ОК".</value>
+  </data>
+  <data name="ConfirmDeactivateDependentPolicy" xml:space="preserve">
+    <value>Этот продукт является зависимым для другого продукта. Отключение этого продукта влияет на возможность запуска следующих продуктов: {0}</value>
+  </data>
+  <data name="ConsoleConnectionShouldFollowFormat" xml:space="preserve">
+    <value>Путь подключения к Console должен соответствовать формату /НужнаяПапка/Temp</value>
+  </data>
+  <data name="ContentPull" xml:space="preserve">
+    <value>Извлечение содержимого</value>
+  </data>
+  <data name="CopyRelayServer" xml:space="preserve">
+    <value>Копировать сервер ретрансляции</value>
+  </data>
+  <data name="CopyStaging" xml:space="preserve">
+    <value>Копировать промежуточное хранение</value>
+  </data>
+  <data name="CouldNotEstablishConnectionToRemoteManagementHost" xml:space="preserve">
+    <value>Произошла ошибка при подключении к узлу удаленного управления.</value>
+  </data>
+  <data name="CustomAttributeDoesNotExist" xml:space="preserve">
+    <value>Настраиваемый атрибут, который вы пытаетесь вызвать, не существует.</value>
+  </data>
+  <data name="CustomAttributeNameIsRequired" xml:space="preserve">
+    <value>Требуется указать имя настраиваемого атрибута</value>
+  </data>
+  <data name="CustomAttributesFieldsRequired" xml:space="preserve">
+    <value>Все поля являются обязательными</value>
+  </data>
+  <data name="CustomAttributesOnlyExplanation" xml:space="preserve">
+    <value>Используйте этот тип пакетного импорта для добавления или обновления настраиваемых атрибутов и их настроек (примечание: требуется как минимум одно значение настраиваемого атрибута).</value>
+  </data>
+  <data name="DailyInterval" xml:space="preserve">
+    <value>Суточный интервал</value>
+  </data>
+  <data name="DailyIntervalPlaceholder" xml:space="preserve">
+    <value>Введите число от 1 до 7</value>
+  </data>
+  <data name="DateTimeIsNotInAllowedRange" xml:space="preserve">
+    <value>Разрешаются только даты и время в диапазоне от {0} до {1}.</value>
+  </data>
+  <data name="DeleteApplicationWithLinkedPoliciesWarning" xml:space="preserve">
+    <value>Невозможно удалить это приложение, так как оно в данный момент используется в одном или нескольких продуктах. Отсоедините приложение от продукта, изменив его. После этого можно будет удалить это приложение.</value>
+  </data>
+  <data name="DeleteApplicationWithLinkedStagingWarning" xml:space="preserve">
+    <value>Невозможно удалить это приложение, так как оно в данный момент используется в одном или нескольких определениях промежуточного хранения. Выберите другое приложение, изменив определение промежуточного хранения, или удалите определение промежуточного хранения. После этого можно будет удалить это приложение.</value>
+  </data>
+  <data name="DeleteAttributesWithLinkedRegisteredDevicesWarning" xml:space="preserve">
+    <value>Настраиваемые атрибуты, которые в настоящее время связаны с записанными устройствами, не могут быть удалены. Сначала отсоедините атрибуты от записанных устройств.</value>
+  </data>
+  <data name="DeleteEventActionWithLinkedPoliciesWarning" xml:space="preserve">
+    <value>Невозможно удалить это действие события, так как оно в данный момент используется в одном или нескольких продуктах. Отсоедините действие события от продукта, изменив его. После этого можно будет удалить это действие события.</value>
+  </data>
+  <data name="DeleteEventActionWithLinkedStagingWarning" xml:space="preserve">
+    <value>Невозможно удалить это действие события, так как оно в данный момент используется в одном или нескольких определениях промежуточного хранения. Выберите другое действие события, изменив определение промежуточного хранения, или удалите определение промежуточного хранения. После этого можно будет удалить это действие события.</value>
+  </data>
+  <data name="DeleteFileActionWithLinkedPoliciesWarning" xml:space="preserve">
+    <value>Невозможно удалить этот файл/действие, так как он в данный момент используется в одном или нескольких продуктах. Отсоедините файл/действие от продукта, изменив его. После этого можно будет удалить этот файл/действие.</value>
+  </data>
+  <data name="DeleteFileActionWithLinkedStagingWarning" xml:space="preserve">
+    <value>Невозможно удалить этот файл/действие, так как он в данный момент используется в одном или нескольких определениях промежуточного хранения. Выберите другой файл/действие, изменив определение промежуточного хранения, или удалите определение промежуточного хранения. После этого можно будет удалить этот файл/действие.</value>
+  </data>
+  <data name="DeleteProductWithAppTunnelingEnabledError" xml:space="preserve">
+    <value>Не удалось удалить этот продукт, так как один или несколько манифестов установки приложений настроены с туннелированием приложений. Удалите эту конфигурацию и повторите попытку.</value>
+  </data>
+  <data name="DeleteProfileWithLinkedPoliciesWarning" xml:space="preserve">
+    <value>Невозможно удалить этот профиль, так как он в данный момент используется в одном или нескольких продуктах. Отсоедините профиль от продукта, изменив его. После этого можно будет удалить этот профиль.</value>
+  </data>
+  <data name="DeleteProfileWithLinkedStagingWarning" xml:space="preserve">
+    <value>Невозможно удалить этот профиль, так как он в данный момент используется в одном или нескольких определениях промежуточного хранения. Выберите другой профиль, изменив определение промежуточного хранения, или удалите определение промежуточного хранения. После этого можно будет удалить этот профиль.</value>
+  </data>
+  <data name="DeploymentMode" xml:space="preserve">
+    <value>Режим развертывания</value>
+  </data>
+  <data name="DestinationMustBeDirectoryPath" xml:space="preserve">
+    <value>В качестве назначения необходимо указать путь к каталогу</value>
+  </data>
+  <data name="DeviceConnectionShouldFollowFormat" xml:space="preserve">
+    <value>Путь подключения устройства должен соответствовать формату /НужнаяПапка/Temp</value>
+  </data>
+  <data name="DeviceFriendlyNameLookUpText" xml:space="preserve">
+    <value>Понятное имя устройства</value>
+  </data>
+  <data name="DevicePlatformID" xml:space="preserve">
+    <value>Идентификатор платформы устройства</value>
+  </data>
+  <data name="DevicePolicyJobStatusNoJobs" xml:space="preserve">
+    <value>Нет заданий</value>
+  </data>
+  <data name="DeviceReprocess" xml:space="preserve">
+    <value>Повторная обработка устройства</value>
+  </data>
+  <data name="DeviceReprocessTooltip" xml:space="preserve">
+    <value>Позволяет сотрудникам повторно обрабатывать продукты.</value>
+  </data>
+  <data name="DeviceTypeOfTheFileIsInvalid" xml:space="preserve">
+    <value>Недопустимое значение DeviceType для файла. В параметре DeviceType должна быть указана платформа устройства, например Android, Apple и т. д.</value>
+  </data>
+  <data name="DeviceWillNeedToBePluggedIn" xml:space="preserve">
+    <value>Для выполнения этого действия устройство должно быть подключено к сети питания или достаточно заряжено. Поля "сообщение" и "задержка" не применяются, если это условие является частью любого события или действия.</value>
+  </data>
+  <data name="DoubleQuotesForCommandLineIsRequired" xml:space="preserve">
+    <value>Для командной строки требуются двойные кавычки</value>
+  </data>
+  <data name="DownloadAndDeployMotoDcCabFile" xml:space="preserve">
+    <value>Для создания отчетов о показателях на устройствах Motorola загрузите и разверните файл MotoDC.cab из</value>
+  </data>
+  <data name="DownloadFiles" xml:space="preserve">
+    <value>Загрузить файлы</value>
+  </data>
+  <data name="DownloadPullServiceConfig" xml:space="preserve">
+    <value>Загрузить конфигурацию службы опрашивания</value>
+  </data>
+  <data name="EditFileServer" xml:space="preserve">
+    <value>Изменить файловый сервер</value>
+  </data>
+  <data name="EditStaging" xml:space="preserve">
+    <value>Изменить промежуточное хранение</value>
+  </data>
+  <data name="EndDay" xml:space="preserve">
+    <value>День окончания</value>
+  </data>
+  <data name="EndHour" xml:space="preserve">
+    <value>Часы окончания</value>
+  </data>
+  <data name="EndMinute" xml:space="preserve">
+    <value>Минуты окончания</value>
+  </data>
+  <data name="EndMonth" xml:space="preserve">
+    <value>Месяц окончания</value>
+  </data>
+  <data name="EndTimeShouldBeLaterThanStartTime" xml:space="preserve">
+    <value>Время окончания должно наступать позже времени начала</value>
+  </data>
+  <data name="EndTimeUtc" xml:space="preserve">
+    <value>Время окончания (UTC)</value>
+  </data>
+  <data name="EndYear" xml:space="preserve">
+    <value>Год окончания</value>
+  </data>
+  <data name="EnterAdminModeConfirmed" xml:space="preserve">
+    <value>Начало работы в режиме администрирования подтверждено</value>
+  </data>
+  <data name="EnterAdminModeFailed" xml:space="preserve">
+    <value>Не удалось начать работу в режиме администрирования</value>
+  </data>
+  <data name="EnterAdminModeRefused" xml:space="preserve">
+    <value>Отказано в начале работы в режиме администрирования</value>
+  </data>
+  <data name="EnterAdminModeRequested" xml:space="preserve">
+    <value>Запрошено начало работы в режиме администрирования</value>
+  </data>
+  <data name="EnterAdminModeSuccess" xml:space="preserve">
+    <value>Успешный переход в режим администрирования</value>
+  </data>
+  <data name="ErrorParsingRemoteFeature" xml:space="preserve">
+    <value>Ошибка при анализе функции удаленной помощи "{0}"</value>
+  </data>
+  <data name="ErrorReturnedFromHoneywellServer" xml:space="preserve">
+    <value>От сервера Honeywell возвращена ошибка</value>
+  </data>
+  <data name="ErrorReturnedFromZebraServer" xml:space="preserve">
+    <value>Ошибка, возвращенная сервером Zebra</value>
+  </data>
+  <data name="EventActionAndroidPrerequisite" xml:space="preserve">
+    <value>Добавьте хотя бы одно условие для инициирования действия (действий). Можно добавить ранее созданные условия или создать здесь новые условия при помощи кнопки "Добавить условие". Одновременно можно выбрать несколько типов условий, но может быть выбрано только одно условие конкретного типа. Если выбрать условие того же типа, что и выбранное ранее, оно заменит выбранное ранее условие. Допустимый тип условия: "Пороговое значение аккумулятора", "Регулярное расписание" и "Питание от сети".</value>
+  </data>
+  <data name="EventActionLinkedToPolicyOrStagingAndCanNotBeMovedToNonAccessibleOgs" xml:space="preserve">
+    <value>Действие события связано с некоторыми продуктами или пакетами промежуточного хранения. Поэтому действие события нельзя переместить в те ОГ, которые недоступны для связанных компонентов.</value>
+  </data>
+  <data name="ExitAdminModeConfirmed" xml:space="preserve">
+    <value>Завершение работы в режиме администрирования подтверждено</value>
+  </data>
+  <data name="ExitAdminModeFailed" xml:space="preserve">
+    <value>Не удалось завершить работу в режиме администрирования</value>
+  </data>
+  <data name="ExitAdminModeRefused" xml:space="preserve">
+    <value>Отказано в завершении работы в режиме администрирования</value>
+  </data>
+  <data name="ExitAdminModeRequested" xml:space="preserve">
+    <value>Запрос на завершение работы в режиме администрирования</value>
+  </data>
+  <data name="ExitAdminModeSuccess" xml:space="preserve">
+    <value>Успешный выход из режима администрирования</value>
+  </data>
+  <data name="ExitAirwatchLauncher" xml:space="preserve">
+    <value>Выход из Launcher</value>
+  </data>
+  <data name="ExitAirwatchLauncherConfirmed" xml:space="preserve">
+    <value>Завершение работы Launcher подтверждено</value>
+  </data>
+  <data name="ExitAirwatchLauncherFailed" xml:space="preserve">
+    <value>Не удалось завершить работу Launcher</value>
+  </data>
+  <data name="ExitAirwatchLauncherRefused" xml:space="preserve">
+    <value>Отказано в завершении работы Launcher</value>
+  </data>
+  <data name="ExitAirwatchLauncherRequested" xml:space="preserve">
+    <value>Запрошено завершение работы Launcher</value>
+  </data>
+  <data name="ExitAirWatchLauncherSuccess" xml:space="preserve">
+    <value>Успешный выход из Launcher</value>
+  </data>
+  <data name="Expedited" xml:space="preserve">
+    <value>Ускоренно</value>
+  </data>
+  <data name="ExpeditedProductTooltip" xml:space="preserve">
+    <value>Чтобы изменить этот параметр, необходимо деактивировать продукт.</value>
+  </data>
+  <data name="ExpeditedProvisioningPolicyEdit" xml:space="preserve">
+    <value>Ускоренное изменение политики предоставления</value>
+  </data>
+  <data name="ExpeditedProvisioningPolicyEditHelp" xml:space="preserve">
+    <value>Управляет доступом к редактированию параметра ускоренного развертывания в политике предоставления.</value>
+  </data>
+  <data name="FileActionLinkedToPolicyOrStagingAndCanNotBeMovedToNonAccessibleOgs" xml:space="preserve">
+    <value>Действие с файлом связано с некоторыми продуктами или пакетами промежуточного хранения. Поэтому действие события нельзя переместить в те ОГ, которые недоступны для связанных компонентов.</value>
+  </data>
+  <data name="FileActionsFilePathError" xml:space="preserve">
+    <value>Общая длина имени и пути к загрузке не должна превышать 255 символов</value>
+  </data>
+  <data name="FileFound" xml:space="preserve">
+    <value>Файл найден</value>
+  </data>
+  <data name="FileServerAssociatedWithEventActionArgs" xml:space="preserve">
+    <value>Файловый сервер {0} используется с {1}</value>
+  </data>
+  <data name="FileServerDeleteFailed" xml:space="preserve">
+    <value>Вы не можете удалить этот файловый сервер, так как в настоящее время он используется в следующих действиях событий. Пожалуйста, отключите файловый сервер от действия события, отредактировав его. После завершения вы можете удалить файловый сервер.</value>
+  </data>
+  <data name="FileServerDeleteSuccessful" xml:space="preserve">
+    <value>Файловый сервер успешно удален</value>
+  </data>
+  <data name="FileServerDetails" xml:space="preserve">
+    <value>Сведения о файловом сервере</value>
+  </data>
+  <data name="FileServerNameIsRequired" xml:space="preserve">
+    <value>Требуется имя файлового сервера</value>
+  </data>
+  <data name="FileServers" xml:space="preserve">
+    <value>Файловые серверы</value>
+  </data>
+  <data name="FileServerUsernameIsRequired" xml:space="preserve">
+    <value>Требуется имя пользователя файлового сервера</value>
+  </data>
+  <data name="FileSyncDownload" xml:space="preserve">
+    <value>Загрузка синхронизации файлов</value>
+  </data>
+  <data name="FileSyncUpload" xml:space="preserve">
+    <value>Синхронизация файлов — отправка</value>
+  </data>
+  <data name="FirstFieldShouldBeSmallerThanSecondField" xml:space="preserve">
+    <value>Недопустимые значения. Значение первого поля должно быть меньше значения второго поля.</value>
+  </data>
+  <data name="FiveDays" xml:space="preserve">
+    <value>5 дней</value>
+  </data>
+  <data name="GenerateHoneywellBarcode" xml:space="preserve">
+    <value>Создать штрихкод Honeywell</value>
+  </data>
+  <data name="GenerateHoneywellBarcodeDisclaimerText" xml:space="preserve">
+    <value>Здесь выполняется вызов генератора штрихкодов Honeywell Enterprise Provisioner, который создает штрихкоды для выбранных на этой странице данных.
+
+VMware не контролирует этот сайт и явно отказывается от любой ответственности за его содержимое. Вы несете полную ответственность за создание штрихкодов на этой странице.</value>
+  </data>
+  <data name="HideActionBar" xml:space="preserve">
+    <value>Свернуть строку заголовка</value>
+  </data>
+  <data name="Honeywell" xml:space="preserve">
+    <value>Honeywell Enterprise Provisioner</value>
+  </data>
+  <data name="HoneywellBarcode" xml:space="preserve">
+    <value>Штрихкод Honeywell</value>
+  </data>
+  <data name="HoneywellEP" xml:space="preserve">
+    <value>Honeywell Enterprise Provisioner</value>
+  </data>
+  <data name="HoneywellEPUrl" xml:space="preserve">
+    <value>URL-адрес Honeywell Enterprise Provisioner</value>
+  </data>
+  <data name="HostPlaceHolder" xml:space="preserve">
+    <value>* или 1.2.3.4, или 10.0.0.0–10.0.0.255</value>
+  </data>
+  <data name="HourlyInterval" xml:space="preserve">
+    <value>Часовой интервал</value>
+  </data>
+  <data name="HourlyIntervalPlaceholder" xml:space="preserve">
+    <value>Введите число от 1 до 24</value>
+  </data>
+  <data name="HttpsNotSupportedForPushRelayServers" xml:space="preserve">
+    <value>Протокол HTTPS для подключения устройств не поддерживается для сервера push-ретрансляции</value>
+  </data>
+  <data name="HubPackageAlreadyExists" xml:space="preserve">
+    <value>Пакет Hub с таким именем файла ИЛИ именем пакета и версией уже существует</value>
+  </data>
+  <data name="IntelligentHub" xml:space="preserve">
+    <value>Intelligent Hub</value>
+  </data>
+  <data name="InvalidDateTimeInputs" xml:space="preserve">
+    <value>Введены недопустимые или неполные данные DateTime. Введите правильные данные.</value>
+  </data>
+  <data name="InvalidHoneywellRelayServerProtocol" xml:space="preserve">
+    <value>Honeywell не поддерживает этот протокол сервера ретрансляции</value>
+  </data>
+  <data name="InvalidOrganizationGroupsForStagingAndProductionServers" xml:space="preserve">
+    <value>Недопустимые организационные группы для промежуточных и производственных серверов</value>
+  </data>
+  <data name="IOTGateway" xml:space="preserve">
+    <value>Шлюз Интернета вещей</value>
+  </data>
+  <data name="IsExpedited" xml:space="preserve">
+    <value>Ускорить развертывание</value>
+  </data>
+  <data name="LastContactDate" xml:space="preserve">
+    <value>Дата последнего контакта</value>
+  </data>
+  <data name="LastErrorCode" xml:space="preserve">
+    <value>Код последней ошибки</value>
+  </data>
+  <data name="Launcher" xml:space="preserve">
+    <value>Launcher</value>
+  </data>
+  <data name="LauncherAction" xml:space="preserve">
+    <value>Launcher</value>
+  </data>
+  <data name="LauncherCheckInCheckOutCondtion" xml:space="preserve">
+    <value>Выполняйте действия при взятии и возврате Launcher.</value>
+  </data>
+  <data name="LauncherLogout" xml:space="preserve">
+    <value>Выход из Launcher</value>
+  </data>
+  <data name="LauncherMiscAppWildcardRuleInfo" xml:space="preserve">
+    <value>Можно использовать подстановочный знак "*", чтобы автоматически разрешать приложения, соответствующие этому шаблону. Пример: com.example.*</value>
+  </data>
+  <data name="LegacyAgent" xml:space="preserve">
+    <value>Агент</value>
+  </data>
+  <data name="LegacyAirwatchAgent" xml:space="preserve">
+    <value>AirWatch Agent</value>
+  </data>
+  <data name="LinkIsRequired" xml:space="preserve">
+    <value>Требуется ссылка на файловый сервер</value>
+  </data>
+  <data name="LowMemCondition" xml:space="preserve">
+    <value>Недостаточно памяти</value>
+  </data>
+  <data name="ManifestItemAlreadyExists" xml:space="preserve">
+    <value>Манифест уже существует. Выберите другой элемент.</value>
+  </data>
+  <data name="MaxPullConnections" xml:space="preserve">
+    <value>Максимальное количество подключений для извлечения</value>
+  </data>
+  <data name="MaxPullConnectionsValueCannotBeNullOrInvalid" xml:space="preserve">
+    <value>Значение "Максимальное количество подключений для извлечения" не может быть неопределенным или недействительным</value>
+  </data>
+  <data name="MaxPushConnections" xml:space="preserve">
+    <value>Максимальное количество подключений для передачи</value>
+  </data>
+  <data name="MaxPushConnectionsValueCannotBeNullOrInvalid" xml:space="preserve">
+    <value>Значение "Максимальное количество подключений для передачи" не может быть неопределенным или недействительным</value>
+  </data>
+  <data name="MaxRSCCPushConnectionHelpText" xml:space="preserve">
+    <value>Измените это значение, чтобы настроить максимальное количество одновременных подключений, используемых для передачи содержимого серверам ретрансляции. Значение по умолчанию: 50 подключений</value>
+  </data>
+  <data name="NoContentAddedToProduct" xml:space="preserve">
+    <value>В продукт не добавляются действия с файлами или приложениями.</value>
+  </data>
+  <data name="NotTested" xml:space="preserve">
+    <value>Не проверено</value>
+  </data>
+  <data name="NoVPNProfileSelected" xml:space="preserve">
+    <value>Выберите профиль VPN, чтобы настроить PerAppVPN</value>
+  </data>
+  <data name="OemBuildRuleHelpText" xml:space="preserve">
+    <value>Правило назначения с версией OEM-сборки и "&gt;" и "&lt;" действительно только в том случае, если версии имеют одинаковый формат и сравниваются в кодировке ASCII</value>
+  </data>
+  <data name="OemBuildVersionShouldHaveDeviceManufacturerRule" xml:space="preserve">
+    <value>При использовании операторов "&gt;" и "&lt;" правило с версией OEM-сборки также должно иметь атрибут производителя устройства (допускается только условие AND)</value>
+  </data>
+  <data name="OGDeleteWarningForProducts" xml:space="preserve">
+    <value>Компоненты, связанные с этой организационной группой, могут быть привязаны к одним или нескольким продуктам, связанным с одной или несколькими родительскими организационными группами. Удаление этой организационной группы сделает недействительными эти продукты в одной или нескольких родительских организационных группах. Рекомендуется либо удалить связь компонентов перед удалением этой организационной группы, либо удалить также родительские продукты.</value>
+  </data>
+  <data name="OnlyAppWithSpecifiedVersionWillBeUninstalled" xml:space="preserve">
+    <value>Выбранная версия приложения будет удалена. Все другие версии приложения останутся на устройстве.</value>
+  </data>
+  <data name="OnlyFileServersWithCGCanBeAdded" xml:space="preserve">
+    <value>Файловые серверы должны иметь Content Gateway, настроенный для отображения в этом списке, и должны быть добавлены в действие события</value>
+  </data>
+  <data name="OnlyNumericValuesAreAllowedForSpecificOperators" xml:space="preserve">
+    <value>Для операторов "&gt;", "&gt;=", "&lt;", "&lt;=" и "BETWEEN" допускаются только числовые значения</value>
+  </data>
+  <data name="OrganizationGroupIsRequired" xml:space="preserve">
+    <value>Требуется организационная группа</value>
+  </data>
+  <data name="OutRanked" xml:space="preserve">
+    <value>С более высоким рейтингом</value>
+  </data>
+  <data name="PasswordForPullServiceCertificate" xml:space="preserve">
+    <value>Пароль для сертификата службы опрашивания</value>
+  </data>
+  <data name="PasswordIsRequired" xml:space="preserve">
+    <value>Требуется пароль файлового сервера</value>
+  </data>
+  <data name="PinnedApps" xml:space="preserve">
+    <value>Закрепленные приложения</value>
+  </data>
+  <data name="PleaseEnterValidURL" xml:space="preserve">
+    <value>Введите действительный URL-адрес</value>
+  </data>
+  <data name="PolicyEngineQueue" xml:space="preserve">
+    <value>Очередь модуля политик</value>
+  </data>
+  <data name="PolicyEngineQueueMenuTitle" xml:space="preserve">
+    <value>Очередь модуля политик</value>
+  </data>
+  <data name="PolicyId" xml:space="preserve">
+    <value>Идентификатор политики</value>
+  </data>
+  <data name="PortPlaceHolder" xml:space="preserve">
+    <value>* или 80, или 8080–8085</value>
+  </data>
+  <data name="ProductDeviceForceReprocessFailed" xml:space="preserve">
+    <value>Не удалось принудительно повторно обработать устройство продукта</value>
+  </data>
+  <data name="ProductDownloadsThroughCDN" xml:space="preserve">
+    <value>Загрузка продуктов по сети CDN</value>
+  </data>
+  <data name="ProductionServerDescription" xml:space="preserve">
+    <value>Производственный сервер настроен для получения производственного содержимого, например действий с файлами и приложений.</value>
+  </data>
+  <data name="ProductProvisioning_ColdBoot" xml:space="preserve">
+    <value>Холодная перезагрузка</value>
+  </data>
+  <data name="ProductProvisioning_InstallApplication" xml:space="preserve">
+    <value>Приложение — установка</value>
+  </data>
+  <data name="ProductProvisioning_InstallEventAction" xml:space="preserve">
+    <value>Действие события — установка</value>
+  </data>
+  <data name="ProductProvisioning_InstallFilesActions" xml:space="preserve">
+    <value>Файл/действие — установка</value>
+  </data>
+  <data name="ProductProvisioning_InstallProduct" xml:space="preserve">
+    <value>Продукт — установка</value>
+  </data>
+  <data name="ProductProvisioning_InstallProfile" xml:space="preserve">
+    <value>Профиль — установка</value>
+  </data>
+  <data name="ProductProvisioning_Reboot" xml:space="preserve">
+    <value>Перезагрузить</value>
+  </data>
+  <data name="ProductProvisioning_UninstallApplication" xml:space="preserve">
+    <value>Приложение — удаление</value>
+  </data>
+  <data name="ProductProvisioning_UninstallEventAction" xml:space="preserve">
+    <value>Действие события — удаление</value>
+  </data>
+  <data name="ProductProvisioning_UninstallFilesActions" xml:space="preserve">
+    <value>Файл/действие — удаление</value>
+  </data>
+  <data name="ProductProvisioning_UninstallProduct" xml:space="preserve">
+    <value>Продукт — удаление</value>
+  </data>
+  <data name="ProductProvisioning_UninstallProfile" xml:space="preserve">
+    <value>Профиль — удаление</value>
+  </data>
+  <data name="ProductProvisioning_WarmBoot" xml:space="preserve">
+    <value>Горячая перезагрузка</value>
+  </data>
+  <data name="ProductProvisioningDeviceConnectionHttpsSupportFeatureDisabled" xml:space="preserve">
+    <value>Протокол HTTPS для компонента подключения устройств отключен</value>
+  </data>
+  <data name="ProductSetForceReprocess" xml:space="preserve">
+    <value>Принудительная повторная переработка</value>
+  </data>
+  <data name="ProductSetNameArgAlreadyExistsPleaseChooseAnother" xml:space="preserve">
+    <value>Набор продуктов с именем {0} уже существует. Выберите другое имя.</value>
+  </data>
+  <data name="ProfileLinkedToPolicyOrStagingAndCanNotBeMovedToNonAccessibleOgs" xml:space="preserve">
+    <value>Профиль связан с некоторыми продуктами или пакетами промежуточного хранения. Поэтому действие события нельзя переместить в те ОГ, которые недоступны для связанных компонентов.</value>
+  </data>
+  <data name="ProvisioningCommandDeleted" xml:space="preserve">
+    <value>Команда предоставления удалена</value>
+  </data>
+  <data name="ProvisioningEventAction" xml:space="preserve">
+    <value>Действие события</value>
+  </data>
+  <data name="ProvisioningEventActions" xml:space="preserve">
+    <value>Действия события</value>
+  </data>
+  <data name="PublishOnRelayServers" xml:space="preserve">
+    <value>Опубликовать на серверах ретрансляции</value>
+  </data>
+  <data name="PullRelayServerNotAllowed" xml:space="preserve">
+    <value>Выбран недопустимый тип сервера ретрансляции</value>
+  </data>
+  <data name="QueueContentOnRelayServer" xml:space="preserve">
+    <value>Добавить в очередь содержимое на серверах ретрансляции без назначенных устройств</value>
+  </data>
+  <data name="RelayServerCloudConnector" xml:space="preserve">
+    <value>Cloud Connector для сервера ретрансляции</value>
+  </data>
+  <data name="RelayServerCloudConnectorBatchSize" xml:space="preserve">
+    <value>Размер пакета Cloud Connector для серверов ретрансляции</value>
+  </data>
+  <data name="RelayServerCloudConnectorBatchSizeHelp" xml:space="preserve">
+    <value>Максимальное количество инструкций содержимого, которое можно загрузить с WS1 Server в одном пакете. Инструкции сверх этого количества обрабатываются в последующих пакетах.</value>
+  </data>
+  <data name="RelayServerCloudConnectorEnableHelp" xml:space="preserve">
+    <value>Если включить этот параметр, Cloud Connector Relay будет настроен для получения контента из VMware Cloud и отправки на серверы ретрансляции в вашей сети.</value>
+  </data>
+  <data name="RelayServerCloudRelayAlreadyExists" xml:space="preserve">
+    <value>Значения "Имя узла", "Порт", "Пользователь" и "Путь" для подключения Cloud Relay такие же, как для другого сервера ретрансляции.</value>
+  </data>
+  <data name="RelayServerCloudRelayConnection" xml:space="preserve">
+    <value>Подключение Cloud Relay</value>
+  </data>
+  <data name="RelayServerCountConfirm" xml:space="preserve">
+    <value>Содержимое будет добавлено в очередь на серверах ретрансляции ({0}). Продолжить?</value>
+  </data>
+  <data name="RelayServerDoesNotExists" xml:space="preserve">
+    <value>В выбранной ОГ не существует сервера ретрансляции.</value>
+  </data>
+  <data name="RelayServerDomainUserFormat" xml:space="preserve">
+    <value>Допустимые форматы для пользователей домена: username@domain, домен \ пользователь</value>
+  </data>
+  <data name="RelayServerDomainUserFormatError" xml:space="preserve">
+    <value>Ошибка в формате пользователя домена</value>
+  </data>
+  <data name="RelayServerId" xml:space="preserve">
+    <value>ID сервера ретрансляции</value>
+  </data>
+  <data name="RelayServerOnly" xml:space="preserve">
+    <value>Только сервер ретрансляции</value>
+  </data>
+  <data name="RelayServerOnlyHelp" xml:space="preserve">
+    <value>Убедитесь, что сервер ретрансляции настроен для всех устройств, назначенных данному продукту.</value>
+  </data>
+  <data name="RelayServerProtocolHTTPS" xml:space="preserve">
+    <value>HTTPS</value>
+  </data>
+  <data name="RelayServerPullConnectionInvalidPullDiscoveryText" xml:space="preserve">
+    <value>Текст обнаружения опрашивания не должен содержать 127.0.0.1</value>
+  </data>
+  <data name="RelayServerPushOrCloudRelay" xml:space="preserve">
+    <value>Отправка/облачный ретранслятор</value>
+  </data>
+  <data name="RelayServerTypeCloudRelay" xml:space="preserve">
+    <value>Cloud Relay</value>
+  </data>
+  <data name="RelayServerUserRestrictionError" xml:space="preserve">
+    <value>В имени пользователя и пароле нельзя использовать символ ":".</value>
+  </data>
+  <data name="RelayServerWithDeviceServicesBackup" xml:space="preserve">
+    <value>Сервер ретрансляции с сервером Workspace ONE для резервного копирования</value>
+  </data>
+  <data name="RemoveFromLauncher" xml:space="preserve">
+    <value>Удалить из Launcher</value>
+  </data>
+  <data name="ReportStatusBatchSize" xml:space="preserve">
+    <value>Размер пакета статусов в отчете</value>
+  </data>
+  <data name="ReportStatusBatchSizeValueCannotBeNullOrInvalid" xml:space="preserve">
+    <value>Значение "Размер пакета статусов в отчете" не может быть неопределенным или недействительным</value>
+  </data>
+  <data name="RequestDeviceServicesPinsNumberOfCertificatesReturned" xml:space="preserve">
+    <value>Запросить PIN-коды служб устройств: количество возвращенных сертификатов</value>
+  </data>
+  <data name="RequestDeviceServicesPinsNumberOfHostsReturned" xml:space="preserve">
+    <value>Запросить PIN-коды служб устройств: количество возвращенных узлов</value>
+  </data>
+  <data name="RequestDeviceServicesPinsUpdated" xml:space="preserve">
+    <value>Запрос PIN-кодов служб устройств обновлен</value>
+  </data>
+  <data name="RestartAirWatchAgent" xml:space="preserve">
+    <value>Перезапустить AirWatch Agent</value>
+  </data>
+  <data name="RSCCReportBatchSizeHelpText" xml:space="preserve">
+    <value>По мере того как содержимое распределяется на целевые серверы ретрансляции, Cloud Relay передает статус переноса каждого сервера ретрансляции в Workspace ONE Cloud. Измените это значение, чтобы настроить количество статусов серверов ретрансляции, включаемых в каждый пакет. Значение по умолчанию: 25 статусов на пакет</value>
+  </data>
+  <data name="RSFileSize" xml:space="preserve">
+    <value>Размер файла (в байтах)</value>
+  </data>
+  <data name="Selectawifiproile" xml:space="preserve">
+    <value>Выберите профиль Wi-Fi, с помощью которого устройства будут подключаться к одному или нескольким FTP-серверам после сканирования штрихкода для загрузки {0}.</value>
+  </data>
+  <data name="Selectfrompreviouslyconfiguredpackages" xml:space="preserve">
+    <value>Выберите ранее настроенные пакеты {0} или загрузите последние пакеты с портала ресурсов Workspace ONE UEM</value>
+  </data>
+  <data name="SelectProductFilter" xml:space="preserve">
+    <value>Выберите продукты для фильтрации</value>
+  </data>
+  <data name="Sideloadprereqs1" xml:space="preserve">
+    <value>1. Если нужно использовать последнюю версию {0}, загрузите ее с Портала ресурсов MyAirWatch и отправьте.</value>
+  </data>
+  <data name="Sideloadstagingallowsyoutodownloadandinstall" xml:space="preserve">
+    <value>Метод промежуточного хранения с передачей файлов позволяет загрузить и установить {0} на устройство, чтобы начать автоматическую регистрацию. Это упрощает регистрацию, поскольку все необходимые компоненты собраны в одном файле, загружаемом на устройство.</value>
+  </data>
+  <data name="SingleAppModeWildcardRule" xml:space="preserve">
+    <value>Правило с подстановочными знаками "Разные приложения" можно добавить только на вкладку "Скрытые приложения" для профиля "Режим одного приложения".</value>
+  </data>
+  <data name="SmartGroupNotAssignedForAnActiveProduct" xml:space="preserve">
+    <value>Для активных продуктов требуется назначения смарт-групп. Добавьте смарт-группы или деактивируйте продукт перед удалением всех назначений смарт-групп.</value>
+  </data>
+  <data name="SourceLocalizationKey" xml:space="preserve">
+    <value>Источник</value>
+  </data>
+  <data name="StagingAddManifestInfo" xml:space="preserve">
+    <value>Функция добавления манифеста определяет дополнительные материалы и команды, которые необходимо применить во время промежуточного хранения. Компоненты, такие как приложения, профили и файлы/действия, должны создаваться в меню Предоставление &gt; Компоненты перед выбором каких-либо действий для выполнения.</value>
+  </data>
+  <data name="StagingPackageNameLengthExceeded" xml:space="preserve">
+    <value>Длина имени пакета промежуточного хранения превышает максимально допустимое значение ({0} символов). Измените имя и снова сохраните пакет промежуточного хранения.</value>
+  </data>
+  <data name="StagingPackageNameShouldNotContainTheFollowingCharacters" xml:space="preserve">
+    <value>Имя пакета промежуточного хранения не должно содержать символы {0}</value>
+  </data>
+  <data name="StagingServerDescription" xml:space="preserve">
+    <value>Сервер промежуточного хранения настроен для получения содержимого для промежуточного хранения, включая пакет Hub и расширенные настройки в процессе регистрации.</value>
+  </data>
+  <data name="StartDay" xml:space="preserve">
+    <value>День начала</value>
+  </data>
+  <data name="StartHour" xml:space="preserve">
+    <value>Часы начала</value>
+  </data>
+  <data name="StartMinute" xml:space="preserve">
+    <value>Минуты начала</value>
+  </data>
+  <data name="StartMonth" xml:space="preserve">
+    <value>Месяц начала</value>
+  </data>
+  <data name="StartTimeUtc" xml:space="preserve">
+    <value>Время начала (UTC)</value>
+  </data>
+  <data name="StartYear" xml:space="preserve">
+    <value>Год начала</value>
+  </data>
+  <data name="StopACMRequested" xml:space="preserve">
+    <value>Остановить запрошенную ACM</value>
+  </data>
+  <data name="StoreOsUpdatesFilesOnRelayServer" xml:space="preserve">
+    <value>Сохранить файлы обновления ОС на сервере ретрансляции</value>
+  </data>
+  <data name="StoreOsUpdatesFilesOnRelayServerHelp" xml:space="preserve">
+    <value>Эта функция может использоваться для мобильных устройств Windows с недостаточным свободным местом для улучшения обновления ОС. При установке флажка все большие файлы изображений останутся на сервере ретрансляции. Утилита OSUPDATE на устройстве будет скачивать их по очереди в процессе обновления. Если флажок не установлен, все файлы будут скопированы на устройство, и утилита обновления ОС запустит их локально.</value>
+  </data>
+  <data name="Tags" xml:space="preserve">
+    <value>Теги</value>
+  </data>
+  <data name="TemplateModeWildcardRule" xml:space="preserve">
+    <value>Правило с подстановочными знаками "Разные приложения" можно добавить только на вкладку "Скрытые приложения" для профиля "Режим шаблона".</value>
+  </data>
+  <data name="TestConnectionStatus" xml:space="preserve">
+    <value>Состояние проверки соединения</value>
+  </data>
+  <data name="TimeFormatPlaceholder" xml:space="preserve">
+    <value>ЧЧ:ММ</value>
+  </data>
+  <data name="Typetoselectanagentpackage" xml:space="preserve">
+    <value>Выбрать {0}</value>
+  </data>
+  <data name="VersionIncrementMessage" xml:space="preserve">
+    <value>Отображение текущей версии. Это число будет инкрементно увеличиваться после сохранения изменений.</value>
+  </data>
+  <data name="ViewAndManageCustomAttributeAssignmentRules" xml:space="preserve">
+    <value>Просмотр и управление правилами назначения настраиваемых атрибутов</value>
+  </data>
+  <data name="ViewApplicationAssignments" xml:space="preserve">
+    <value>Просмотреть назначения приложений</value>
+  </data>
+  <data name="ViewAttribute" xml:space="preserve">
+    <value>Просмотр атрибута</value>
+  </data>
+  <data name="ViewCondition" xml:space="preserve">
+    <value>Условие View</value>
+  </data>
+  <data name="ViewRelayServer" xml:space="preserve">
+    <value>Просмотр сервера ретрансляции</value>
+  </data>
+  <data name="ViewStaging" xml:space="preserve">
+    <value>Просмотр промежуточного хранения</value>
+  </data>
+  <data name="VmwareResourcePortal" xml:space="preserve">
+    <value>портал ресурсов vmware</value>
+  </data>
+  <data name="VPNAccessNotApplicableInfoMessage" xml:space="preserve">
+    <value>Для параметра "VPN-доступ" будет задано значение "Не применимо", если приложение используется в манифесте удаления приложения для какого-либо продукта</value>
+  </data>
+  <data name="WeeklyInterval" xml:space="preserve">
+    <value>Недельный интервал</value>
+  </data>
+  <data name="WeeklyIntervalPlaceholder" xml:space="preserve">
+    <value>Введите число от 1 до 52</value>
+  </data>
+  <data name="Wizardenrollmentcomments" xml:space="preserve">
+    <value>Следуйте этим пошаговым инструкциям в мастере, чтобы настроить сервер ретрансляции, профиль Wi-Fi, {0}, промежуточное хранение пользователя и конфигурацию штрихкода. После завершения при необходимости вы получите штрихкоды для регистрации устройств и доступа к дополнительным справочным ресурсам.</value>
+  </data>
+  <data name="Wizardsideloadenrollmentcomments" xml:space="preserve">
+    <value>Следуйте этим пошаговым инструкциям в мастере, чтобы настроить {0}, промежуточное хранение пользователя и конфигурацию передачи файлов. После завершения при необходимости вы получите файл для передачи на устройства и доступ к дополнительным справочным ресурсам.</value>
+  </data>
+  <data name="Wizardwebenrollmentcomments" xml:space="preserve">
+    <value>Следуйте этим пошаговым инструкциям в мастере, чтобы настроить AirWatch Agent для регистрации. После завершения при необходимости вы получите доступ к дополнительным справочным ресурсам.</value>
+  </data>
+  <data name="WorkSpaceONECertificate" xml:space="preserve">
+    <value>Сертификат Workspace ONE</value>
+  </data>
+  <data name="WorkSpaceOneLauncher" xml:space="preserve">
+    <value>Workspace ONE Launcher</value>
+  </data>
+  <data name="ZQ510" xml:space="preserve">
+    <value>ZQ510</value>
+  </data>
+  <data name="ZQ520" xml:space="preserve">
+    <value>ZQ520</value>
+  </data>
+</root>

@@ -1,0 +1,606 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AMAPIEnrollmentFeatureNotSupported" xml:space="preserve">
+    <value>Android Management API Enrollment Feature is not supported for your organization. Please contact your administrator.</value>
+  </data>
+  <data name="AMAPIEnrollmentNotAllowed" xml:space="preserve">
+    <value>Android Management API settings has not been enabled at the device's Organization.</value>
+  </data>
+  <data name="AMAPIRegistration" xml:space="preserve">
+    <value>Android Management API Registration</value>
+  </data>
+  <data name="AndroidEnterpriseNotAllowed" xml:space="preserve">
+    <value>Android Enterprise Enrollment is not allowed for the device.</value>
+  </data>
+  <data name="AndroidEnterpriseNotFound" xml:space="preserve">
+    <value>Android Enterprise settings has not been enabled at the device's Organization</value>
+  </data>
+  <data name="AndroidLegacyEnrollmentNotAllowed" xml:space="preserve">
+    <value>Android Legacy enrollment is not allowed in Device Owner mode.</value>
+  </data>
+  <data name="AndroidManagementAPI" xml:space="preserve">
+    <value>Android Management API</value>
+  </data>
+  <data name="AndroidWorkEnrollmentUserAddError" xml:space="preserve">
+    <value>Enrollment User could not be added into GSuite. Please contact your administrator or try again.</value>
+  </data>
+  <data name="AndroidWorkEnrollmentUserEmailNotFound" xml:space="preserve">
+    <value>We couldn't find your account, please contact your administrator or try again.</value>
+  </data>
+  <data name="AndroidWorkEnrollmentUserNotFound" xml:space="preserve">
+    <value>This is an invalid Google account.</value>
+  </data>
+  <data name="AndroidWorkProfileEnrollmentNotAllowed" xml:space="preserve">
+    <value>The server and group ID provided do not permit Work Profile enrollment. Please contact your Administrator if you have any questions.</value>
+  </data>
+  <data name="AndroidWorkUserEmailDomainNotASubDomain" xml:space="preserve">
+    <value>The domain being used is not a registered sub domain. Please contact your administrator.</value>
+  </data>
+  <data name="ApplicationIsNotAllowedToRegister" xml:space="preserve">
+    <value>Application is not allowed to register.</value>
+  </data>
+  <data name="AssignUserRole" xml:space="preserve">
+    <value>Assign User Role</value>
+  </data>
+  <data name="AutoEnrollmentDisabled" xml:space="preserve">
+    <value>Auto enrollment is not enabled for the Organization Group provided. Please contact your administrator or try again.</value>
+  </data>
+  <data name="CannotChangeOGForDEPTokenArg" xml:space="preserve">
+    <value>Cannot change organization group for DEP token {0}</value>
+  </data>
+  <data name="CannotUseStagingUserForCustomDep" xml:space="preserve">
+    <value>Staging users are not supported. Please contact your administrator.</value>
+  </data>
+  <data name="CaptchaText" xml:space="preserve">
+    <value>Captcha</value>
+  </data>
+  <data name="ChangeRankOrOrganizationGroup" xml:space="preserve">
+    <value>Change the rank or the Organization Group</value>
+  </data>
+  <data name="ChangeRankOrOrganizationGroupForUserGroup" xml:space="preserve">
+    <value>Change the rank or the Organization Group for an User Group</value>
+  </data>
+  <data name="ChangeRankOrUserRole" xml:space="preserve">
+    <value>Change the rank or the User Role</value>
+  </data>
+  <data name="ChangeRankOrUserRoleForUserGroup" xml:space="preserve">
+    <value>Change the rank or the User Role for an User Group</value>
+  </data>
+  <data name="ChangeUserRoleAssignmentRankUsingEdit" xml:space="preserve">
+    <value>In order to change the rank or the User Role for an User Group, click on the edit button next to the record</value>
+  </data>
+  <data name="ConfirmEnterpriseWipeDeviceTitleMessage" xml:space="preserve">
+    <value>This action unenrolls and removes all managed enterprise resources from the selected device (including applications and profiles).  You cannot undo this action without re-enrolling this device.</value>
+  </data>
+  <data name="CopeEnrollmentNotSupported" xml:space="preserve">
+    <value>Enrollment blocked due to unsupported Workspace ONE Intelligent Hub version</value>
+  </data>
+  <data name="CopyEMMToken" xml:space="preserve">
+    <value>3. Copy the EMM token provided to use in the next step.</value>
+  </data>
+  <data name="CustomEnrollmentFeatureNotEnabled" xml:space="preserve">
+    <value>Custom enrollment has been disabled for your organization. Please contact your administrator to re-save this device’s enrollment profile and attempt to re-enroll.</value>
+  </data>
+  <data name="DefaultActionForInactiveUsersChanged" xml:space="preserve">
+    <value>Default action for inactive users changed</value>
+  </data>
+  <data name="DefaultDeviceOwnershipChanged" xml:space="preserve">
+    <value>Default device ownership changed</value>
+  </data>
+  <data name="DefaultDeviceUserRoleChanged" xml:space="preserve">
+    <value>Default device user role changed</value>
+  </data>
+  <data name="DeleteDeviceCountMessage" xml:space="preserve">
+    <value>Number of devices that will be permanently deleted:</value>
+  </data>
+  <data name="DepFetchInfoMessage" xml:space="preserve">
+    <value>The Fetch All Devices option synchronizes all the devices assigned to this token in Apple Business Manager with the UEM console, including the devices that are already synchronized. This option must only be used as a final alternative to fully refresh and resynchronize all your devices from Apple Business Manager.</value>
+  </data>
+  <data name="DepFetchInfoMessageSchool" xml:space="preserve">
+    <value>The Fetch All Devices option synchronizes all the devices assigned to this token in Apple School Manager with the UEM console, including the devices that are already synchronized. This option must only be used as a final alternative to fully refresh and resynchronize all your devices from Apple School Manager.</value>
+  </data>
+  <data name="DEPTokenArgCannotBeDeleted" xml:space="preserve">
+    <value>DEP token {0} cannot be deleted</value>
+  </data>
+  <data name="DEPTokenArgCannotBeRevoked" xml:space="preserve">
+    <value>DEP token {0} cannot be revoked</value>
+  </data>
+  <data name="DeviceEnrolledArg" xml:space="preserve">
+    <value>Device Unenrolled # {0}</value>
+  </data>
+  <data name="DeviceMacAddressDenylisted" xml:space="preserve">
+    <value>The device cannot be enrolled as the device's MAC address is denied.</value>
+  </data>
+  <data name="DeviceManagementRemoved" xml:space="preserve">
+    <value>Device Management has been removed by Workspace ONE UEM Administrator</value>
+  </data>
+  <data name="DeviceNotAllowlisted" xml:space="preserve">
+    <value>Device Model Type not allowed and/or Device OS not allowed.</value>
+  </data>
+  <data name="DeviceNotAllowlistedManufacturererNotAllowed" xml:space="preserve">
+    <value>Device is not allowed and/or Manufacturer is not allowed.</value>
+  </data>
+  <data name="DeviceNotAllowlistedModelNotAllowed" xml:space="preserve">
+    <value>Device Model Type not allowed.</value>
+  </data>
+  <data name="DeviceNotEnrolled" xml:space="preserve">
+    <value>Device is not Enrolled</value>
+  </data>
+  <data name="DeviceNotRegistered" xml:space="preserve">
+    <value>Device not registered. Invalid Device Model Type and/or OS</value>
+  </data>
+  <data name="DeviceSNArgNotExistsForArgToken" xml:space="preserve">
+    <value>The device serial number {0} does not exist for {1} Token</value>
+  </data>
+  <data name="DeviceStateIsAndroidEnterprise" xml:space="preserve">
+    <value>Device is already enrolled in AndroidEnterprise</value>
+  </data>
+  <data name="DeviceUserNotFound" xml:space="preserve">
+    <value>Enrollment User not found for the device</value>
+  </data>
+  <data name="DirectoryGroupBasedMappingChanged" xml:space="preserve">
+    <value>Enable directory group based mapping setting changed</value>
+  </data>
+  <data name="DropshipAddDeviceError" xml:space="preserve">
+    <value>Could not save the device record. Try saving again.</value>
+  </data>
+  <data name="DropshipAddTagError" xml:space="preserve">
+    <value>Could not add the tag. Try saving again.</value>
+  </data>
+  <data name="DropshipConfigLoadError" xml:space="preserve">
+    <value>Could not load the configuration because an error occured (Error {0}). Try loading again.</value>
+    <comment>Placeholder: 0 - Error code</comment>
+  </data>
+  <data name="DropshipDeleteDeviceError" xml:space="preserve">
+    <value>Could not delete the device record. Try deleting again.</value>
+  </data>
+  <data name="DropshipEnabledSuccess" xml:space="preserve">
+    <value>Dropship Provisioning enabled successfully.</value>
+  </data>
+  <data name="DropshipEnableSaveError" xml:space="preserve">
+    <value>Could not save the configuration. Try saving again.</value>
+  </data>
+  <data name="DropshipEnableServiceError" xml:space="preserve">
+    <value>Could not save the configuration because an error occured in the Provisioning Service. Try saving again.</value>
+  </data>
+  <data name="DropshipOPSServiceUnreachableError" xml:space="preserve">
+    <value>Could not save the configuration because the Provisioning Service could not be reached. Try saving again.</value>
+  </data>
+  <data name="DropshipProvisioning" xml:space="preserve">
+    <value>Drop Ship Provisioning</value>
+  </data>
+  <data name="EMMToken" xml:space="preserve">
+    <value>EMM Token</value>
+  </data>
+  <data name="EmptyDeviceIdentifierPleaseTryAgain" xml:space="preserve">
+    <value>The device's UDID is not present in the enrollment request. Please contact your administrator or try again.</value>
+  </data>
+  <data name="EmptyPasswordPleaseTryAgain" xml:space="preserve">
+    <value>The password is not present in the enrollment request. Please contact your administrator or try again.</value>
+  </data>
+  <data name="EmptyUserNameOrEmailAddressPleaseTryAgain" xml:space="preserve">
+    <value>The username or email address is not present in the enrollment request. Please contact your administrator or try again.</value>
+  </data>
+  <data name="EnableChildOrganizationGroups" xml:space="preserve">
+    <value>Enable Child Organization Groups</value>
+  </data>
+  <data name="EnableDropShipProvisioning" xml:space="preserve">
+    <value>Enable Workspace ONE Drop Ship Provisioning</value>
+  </data>
+  <data name="EnrollmentDisabled" xml:space="preserve">
+    <value>Enrollment is disabled as the MDM order cannot be found in the SKU.</value>
+  </data>
+  <data name="EnrollmentSecurityTypeNotSupported" xml:space="preserve">
+    <value>Enrollment attempted with an unsupported security type. Please contact your administrator or try again.</value>
+  </data>
+  <data name="EnrollmentTypeCriteriaMustContainOneEnrollmentType" xml:space="preserve">
+    <value>Enrollment Type Criteria must contain at least one enrollment type</value>
+  </data>
+  <data name="EnrollmentUserNotFound" xml:space="preserve">
+    <value>Enrollment user is not found. Please provide an existing user.</value>
+  </data>
+  <data name="EnrollmentWelcomeMessageBody" xml:space="preserve">
+    <value>Workspace ONE UEM helps your IT Department provide your device with secure access to resources. The following step-by-step process will guide you through configuring your device and ensure it is compliant with policies.</value>
+  </data>
+  <data name="EnrollmentWelcomeMessageHeader" xml:space="preserve">
+    <value>Welcome to Workspace ONE UEM!</value>
+  </data>
+  <data name="EnterpriseWipeDeviceCountMessage" xml:space="preserve">
+    <value>{0} device(s)</value>
+  </data>
+  <data name="EnterpriseWipeDeviceCountTitle" xml:space="preserve">
+    <value>Number of devices that will be enterprise wiped:</value>
+  </data>
+  <data name="ErrorAddingUserAccount" xml:space="preserve">
+    <value>Error adding a user account automatically. Please contact your administrator or try again.</value>
+  </data>
+  <data name="ErrorThrownWhenResolvingDeviceIdentifier" xml:space="preserve">
+    <value>Error thrown attempting to resolve device identifier</value>
+  </data>
+  <data name="ExistingClientIDDontMatch" xml:space="preserve">
+    <value>Unable to save changes because text fields must match existing registration values. Only the certificate can be edited.</value>
+  </data>
+  <data name="ExternalAccessRole" xml:space="preserve">
+    <value>External Access Role</value>
+  </data>
+  <data name="FailedToCreateAgentInstallUrl" xml:space="preserve">
+    <value>Failed to create the Agent Install URL. Please contact your administrator or try again.</value>
+  </data>
+  <data name="FailedToCreateDeviceAuthenticationToken" xml:space="preserve">
+    <value>Failed to create the device's authentication token. Please contact your administrator or try again.</value>
+  </data>
+  <data name="FailedToDisplayAgentAppStoreLink" xml:space="preserve">
+    <value>Failed to display the Agent App Store Link. Please contact your administrator or try again.</value>
+  </data>
+  <data name="FailedToDisplayWelcomeMessage" xml:space="preserve">
+    <value>Failed to display the welcome message. Please contact your administrator or try again.</value>
+  </data>
+  <data name="FailedToProcessDisplayMdmInstallationMessage" xml:space="preserve">
+    <value>Failed to display the MDM installation message. Please contact your administrator or try again.</value>
+  </data>
+  <data name="FailedToRedirectToAgentInstallUrl" xml:space="preserve">
+    <value>Failed to redirect to the agent install URL. Please contact your administrator or try again.</value>
+  </data>
+  <data name="FailedToRedirectToMdmInstallUrl" xml:space="preserve">
+    <value>Failed to redirect to the MDM install URL. Please contact your administrator or try again.</value>
+  </data>
+  <data name="FailedToRedirectToWorkspaceSchema" xml:space="preserve">
+    <value>Failed to redirect to the workspace schema. Please contact your administrator or try again.</value>
+  </data>
+  <data name="FailedToRegisterApplication" xml:space="preserve">
+    <value>Failed to register the application. Please contact your administrator or try again.</value>
+  </data>
+  <data name="FailedToRetrieveNextStep" xml:space="preserve">
+    <value>Failed to retrieve the next enrollment step. Please contact your administrator or try again.</value>
+  </data>
+  <data name="FailedToRetrieveSessionId" xml:space="preserve">
+    <value>Failed to retrieve the device's enrollment session ID. Please contact your administrator or try again.</value>
+  </data>
+  <data name="FailedToValidateDeviceRestrictions" xml:space="preserve">
+    <value>Failed to validate the device's enrollment restrictions. Please contact your administrator or try again.</value>
+  </data>
+  <data name="FailedToValidateEmailAddress" xml:space="preserve">
+    <value>Failed to validate the enrollment user's email address. Please contact your administrator or try again.</value>
+  </data>
+  <data name="FailedValidatingDeviceIdentifier" xml:space="preserve">
+    <value>Failed to validate the device's UDID. Please contact your administrator or try again.</value>
+  </data>
+  <data name="FailedValidatingStagingMode" xml:space="preserve">
+    <value>Failed to validate the staging mode. Please contact your administrator or try again.</value>
+  </data>
+  <data name="FieldMustBeOfArgCharacters" xml:space="preserve">
+    <value>Field must be of {0} character(s).</value>
+  </data>
+  <data name="FollowingTokensOwnershipWillNotChange" xml:space="preserve">
+    <value>Following tokens' ownership will not change</value>
+  </data>
+  <data name="ForceAospEnrollment" xml:space="preserve">
+    <value>Force AOSP/ Closed Network Enrollment</value>
+  </data>
+  <data name="GeneralCheckIn" xml:space="preserve">
+    <value>Check In</value>
+  </data>
+  <data name="GetStarted:" xml:space="preserve">
+    <value>Get Started :</value>
+  </data>
+  <data name="GetSuccessfully" xml:space="preserve">
+    <value>MDM server URL successfully retrieved</value>
+  </data>
+  <data name="GoogleAdminConsole" xml:space="preserve">
+    <value>Google Admin Console.</value>
+  </data>
+  <data name="GoogleDeviceIdRequired" xml:space="preserve">
+    <value>The Google device ID is required.</value>
+  </data>
+  <data name="GoogleUserIdRequired" xml:space="preserve">
+    <value>The Google user ID is required.</value>
+  </data>
+  <data name="GoToThe" xml:space="preserve">
+    <value>1. Go to the </value>
+  </data>
+  <data name="GroupIdAssignmentModeChanged" xml:space="preserve">
+    <value>Group ID assignment mode changed</value>
+  </data>
+  <data name="HubRegistered" xml:space="preserve">
+    <value>Hub Registered</value>
+  </data>
+  <data name="IntelligentHubManaged" xml:space="preserve">
+    <value>Intelligent Hub Managed</value>
+  </data>
+  <data name="InvalidDeviceAttributes" xml:space="preserve">
+    <value>Please enter one of the following device attributes: Serial Number / IMEI / UDID</value>
+  </data>
+  <data name="InvalidDeviceModel" xml:space="preserve">
+    <value>Device not registered. Invalid Device Model Type</value>
+  </data>
+  <data name="InvalidDeviceOS" xml:space="preserve">
+    <value>Device not registered. Invalid Device OS</value>
+  </data>
+  <data name="InvalidDeviceType" xml:space="preserve">
+    <value>Invalid Device Type</value>
+  </data>
+  <data name="InvalidHeaderUsedInTemplate" xml:space="preserve">
+    <value>Invalid header used in the template. Please download and use the template provided on the Edit Assignment window.</value>
+  </data>
+  <data name="InvalidImeiAttributeArgs" xml:space="preserve">
+    <value>IMEI must be numeric and exactly 15 characters long.</value>
+  </data>
+  <data name="InvalidMigrationRequest" xml:space="preserve">
+    <value>Device UDID is empty</value>
+  </data>
+  <data name="InvalidOrganizationGroupFromVidm" xml:space="preserve">
+    <value>The enrollment user is not in the provided Workspace ONE Access assigned Organization Group.</value>
+  </data>
+  <data name="InvalidSerialNumberAttributeArgs" xml:space="preserve">
+    <value>Serial Number length must be less than {0} characters long.</value>
+  </data>
+  <data name="InvalidSerialNumberValuesFoundArgs" xml:space="preserve">
+    <value>Length of each Serial Number should be less than {0}</value>
+  </data>
+  <data name="InvalidTokenDetails" xml:space="preserve">
+    <value>Authentication failed due to invalid token details.</value>
+  </data>
+  <data name="InvalidUdidAttributeArgs" xml:space="preserve">
+    <value>UDID length must be less than {0} characters long.</value>
+  </data>
+  <data name="InvalidUDIDValuesFoundArgs" xml:space="preserve">
+    <value>Length of each UDID should be less than {0}.</value>
+  </data>
+  <data name="IosProfileDownloadHeaderTitle" xml:space="preserve">
+    <value>Steps to download profile</value>
+  </data>
+  <data name="IosProfileDownloadSteps" xml:space="preserve">
+    <value>1.  When prompted to download the profile, tap on {0}
+
+2.  After the download is complete, tap on {1}</value>
+  </data>
+  <data name="LaforgeUserCreationFailed" xml:space="preserve">
+    <value>Android Enterprise User Creation Failed</value>
+  </data>
+  <data name="LinkToConfigurationTab" xml:space="preserve">
+    <value>Link to Configuration tab</value>
+  </data>
+  <data name="MigrationFeatureDisabled" xml:space="preserve">
+    <value>Android Enterprise Migration Feature is not supported for your organization. Please contact your administrator.</value>
+  </data>
+  <data name="MoveDevicesToUserOrOGBAsedOnIPOrCA" xml:space="preserve">
+    <value>Assign devices to a user or Organization Group based on an IP range assignment or assign devices to an Organization Group based on custom attribute rules. Device assignment rules cannot be enabled if Organization Group By IP Range or Organization Group By Custom Attribute is selected for any one Organization Group in the hierarchy. However, device assignment rules can be enabled if the User name by IP Range type is selected in the hierarchy.</value>
+  </data>
+  <data name="MultiuserFFSetup" xml:space="preserve">
+    <value>Multiuser enrollment blocked as the feature is not properly setup.</value>
+  </data>
+  <data name="MultiuserNonMdmSupport" xml:space="preserve">
+    <value>Multiuser enrollment is not supported for the enrollment protocol used.</value>
+  </data>
+  <data name="NoMDMOrderFound" xml:space="preserve">
+    <value>Enrollment is suspended as the MDM order cannot be found in the SKU.</value>
+  </data>
+  <data name="NotAuthorizedToCreateEnrollmentUser" xml:space="preserve">
+    <value>User is not authorized to create enrollment user.</value>
+  </data>
+  <data name="OperationNotAuthorized" xml:space="preserve">
+    <value>Not Authorized to perform this operation</value>
+  </data>
+  <data name="PasscodeExpired" xml:space="preserve">
+    <value>The passcode has expired</value>
+  </data>
+  <data name="PhoneNumberPrivacyCheck" xml:space="preserve">
+    <value>Privacy Check for Phone Number</value>
+  </data>
+  <data name="PreventReEnrollmentMessage" xml:space="preserve">
+    <value>Selecting the “Prevent Re-enrollment” checkbox below places it on a device denylist and prevents the user from re-enrolling it into Workspace ONE UEM.  An administrator has the ability to remove this device from the denylist at a later time, if needed.</value>
+  </data>
+  <data name="PrivacyNotificationDisabled" xml:space="preserve">
+    <value>User Friendly Privacy Notice is disabled</value>
+  </data>
+  <data name="PromptToBeginDownloadMessageForAppleOsX" xml:space="preserve">
+    <value>The Intelligent Hub is being downloaded and installed automatically to your computer. Depending on your network connection this should take between 1-5 minutes. Tap continue once the Agent is installed to complete the enrollment process.</value>
+  </data>
+  <data name="RegisterAMAPI" xml:space="preserve">
+    <value>Register AMAPI. {0}</value>
+  </data>
+  <data name="RegisterAMAPIAtParentOG" xml:space="preserve">
+    <value>Register AMAPI at the organization group where Android EMM Registration is configured. {0}</value>
+  </data>
+  <data name="RegisterAMAPIHelpText" xml:space="preserve">
+    <value>Android Management API (AMAPI) registration is required before it can be used with this Organization Group.</value>
+  </data>
+  <data name="RegisteredOrAppEnrolled" xml:space="preserve">
+    <value>Registered or Stand Alone App Enrolled</value>
+  </data>
+  <data name="RegisterManagedDomain" xml:space="preserve">
+    <value>2. Register a managed Google domain if one does not exist.</value>
+  </data>
+  <data name="RegisterMultiuserDeviceConfirmationMessage" xml:space="preserve">
+    <value>User information tied to the device registration will be deleted for Windows devices.</value>
+  </data>
+  <data name="Requirements" xml:space="preserve">
+    <value>Requirements</value>
+  </data>
+  <data name="RequireSharedDeviceEnrollmentEulaAcceptance" xml:space="preserve">
+    <value>Always prompt for Terms of Use cannot be enabled until enrollment Terms of Use has been created. Go to  Groups &amp; Settings&gt;Devices &amp; Users&gt;General&gt;Enrollment&gt;Terms of Use Tab to create a TOU.</value>
+  </data>
+  <data name="SerialNumberAssignmentFailed" xml:space="preserve">
+    <value>Serial number assignment failed.</value>
+  </data>
+  <data name="SetUpDirectoryServices" xml:space="preserve">
+    <value>Set up directory services</value>
+  </data>
+  <data name="SubsequentUserEnrollmentBlocked" xml:space="preserve">
+    <value>Subsequent user enrollment has been blocked.</value>
+  </data>
+  <data name="TapHereIfNotPromptedAutomatically" xml:space="preserve">
+    <value>Tap here if you are not prompted automatically</value>
+  </data>
+  <data name="TapHereWhenDownloadFinishes" xml:space="preserve">
+    <value>Tap here when download finishes</value>
+  </data>
+  <data name="TargetOwnershipRestrictedByDefaultPolicyAtGivenOG" xml:space="preserve">
+    <value>Target ownership is restricted by the default policy at the given Organization Group</value>
+  </data>
+  <data name="TokenSaveFailed" xml:space="preserve">
+    <value>Token Save Failed.</value>
+  </data>
+  <data name="UemManaged" xml:space="preserve">
+    <value>UEM Managed</value>
+  </data>
+  <data name="UnapprovedUser" xml:space="preserve">
+    <value>The user is an external SAML authenticated user and is not allowed to enroll. Please contact your administrator or try again.</value>
+  </data>
+  <data name="UploadedCertMisMatch" xml:space="preserve">
+    <value>Certificate missing. Upload a valid certificate to proceed.</value>
+  </data>
+  <data name="UserEnrolled" xml:space="preserve">
+    <value>User Enrolled</value>
+  </data>
+  <data name="UserEnrollmentFeatureNotEnabled" xml:space="preserve">
+    <value>User enrollment has been disabled for your organization. Please contact your administrator to enable user enrollment and try again.</value>
+  </data>
+  <data name="UserHasExceededMaxAllowedDevices" xml:space="preserve">
+    <value>The user has exceeded the maximum allowed devices.</value>
+  </data>
+  <data name="UsernameAlreadyExists" xml:space="preserve">
+    <value>Username already exists for a different user. Please try again.</value>
+  </data>
+  <data name="UserSetup" xml:space="preserve">
+    <value>User Setup</value>
+  </data>
+  <data name="ValidatePhoneNumberFailed" xml:space="preserve">
+    <value>Failed to validate the enrollment user's phone number. Please contact your administrator or try again.</value>
+  </data>
+  <data name="WipeInitiated" xml:space="preserve">
+    <value>Wipe Initiated</value>
+  </data>
+  <data name="WipeInitiatedTooltip" xml:space="preserve">
+    <value>Wipe has been initiated</value>
+  </data>
+  <data name="WorkProfileManagementMode" xml:space="preserve">
+    <value>Work Profile Management Mode</value>
+  </data>
+  <data name="WorkProfileManagementModeInfoMessage" xml:space="preserve">
+    <value>Specifies whether newly enrolled devices will be managed by Intelligent Hub or Android Management API. AMAPI is recommended. Intelligent Hub will still be present on the device, but management capabilities will be delegated to the native Android OS. Existing enrolled devices will not be impacted.</value>
+  </data>
+  <data name="WorkProfileManagementModeToggleSuccessfulMessage" xml:space="preserve">
+    <value>Registration Successful! Management mode has been updated to Android Management API. See Enrollment Settings to view or edit the configured management mode.</value>
+  </data>
+  <data name="Ws1RealTimeUserGroupSyncChanged" xml:space="preserve">
+    <value>Workspace ONE real time user group sync setting changed</value>
+  </data>
+</root>

@@ -1,0 +1,1035 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="MessageTemplates_Content_AccessFileAndCommentNavigateToSSPSection" xml:space="preserve">
+    <value>Доступ к этому файлу и его комментарию можно получить, перейдя в раздел "Портал самообслуживания"</value>
+  </data>
+  <data name="MessageTemplates_Content_AccessFolderNavigateToSSPSection" xml:space="preserve">
+    <value>Доступ к этой папке можно получить, перейдя в раздел "Портал самообслуживания"</value>
+  </data>
+  <data name="MessageTemplates_Content_AccountEnabledActivateDeviceUsingBrowserNavigateTo" xml:space="preserve">
+    <value>Ваша учетная запись Workspace ONE UEM включена, и вы можете активировать устройство. С помощью браузера устройства перейдите по следующему адресу:</value>
+  </data>
+  <data name="MessageTemplates_Content_AccountEnabledFollowStepsToEnrollDevice" xml:space="preserve">
+    <value>Поздравляем! Ваша учетная запись Workspace ONE UEM включена. Выполните указанные ниже действия, чтобы зарегистрировать устройство.</value>
+  </data>
+  <data name="MessageTemplates_Content_AccountExpirationExpirationDate" xml:space="preserve">
+    <value>Срок действия учетной записи: до {ExpirationDate}</value>
+  </data>
+  <data name="MessageTemplates_Content_AdminConsole" xml:space="preserve">
+    <value>Консоль администратора Workspace ONE UEM:</value>
+  </data>
+  <data name="MessageTemplates_Content_AdminCreatedLogIntoConsoleUsingCredential" xml:space="preserve">
+    <value>Ваша учетная запись администратора Workspace ONE UEM создана. Теперь можно войти в консоль администратора Workspace ONE UEM, используя следующие учетные данные:</value>
+  </data>
+  <data name="MessageTemplates_Content_AdminCreatedWithDetails" xml:space="preserve">
+    <value>Создана ваша учетная запись администратора Workspace ONE UEM. Консоль: {ConsoleUrl}, имя пользователя: {AdminUserName}, пароль: {AdminPassword}</value>
+  </data>
+  <data name="MessageTemplates_Content_AdminFirstNameAdminLastName" xml:space="preserve">
+    <value>{AdminFirstName} {AdminLastName},</value>
+  </data>
+  <data name="MessageTemplates_Content_AdminInfoUpdatedLogIntoConsoleToConfirm" xml:space="preserve">
+    <value>Обновлена информация об администраторе Workspace ONE UEM. Войдите в консоль, чтобы подтвердить сведения о своей учетной записи.</value>
+  </data>
+  <data name="MessageTemplates_Content_AdminPasswordReset" xml:space="preserve">
+    <value>Сброс пароля инициирован либо вами, либо другим администратором. Если это не так, обратитесь к администратору за дополнительными сведениями. По приведенной ниже ссылке можно вернуться на наш веб-сайт и изменить пароль:</value>
+  </data>
+  <data name="MessageTemplates_Content_AdminPasswordUpdated" xml:space="preserve">
+    <value>Пароль Workspace ONE UEM обновлен.</value>
+  </data>
+  <data name="MessageTemplates_Content_AdminPasswordWillExpireInDays" xml:space="preserve">
+    <value>Срок действия пароля администратора для учетной записи "{AdminUserName}" на Workspace ONE UEM Console истекает через {DaysToBasicAdminPasswordExpiry} дн.</value>
+  </data>
+  <data name="MessageTemplates_Content_AdminStatusChanged" xml:space="preserve">
+    <value>Статус администратора Workspace ONE UEM изменился на {AdminStatus}.</value>
+  </data>
+  <data name="MessageTemplates_Content_AlternativelyScanQrCodeToBeginEnrollment" xml:space="preserve">
+    <value>Или просканируйте QR-код, чтобы начать регистрацию.</value>
+  </data>
+  <data name="MessageTemplates_Content_AppAssignedAccessInternalAppPageReviewPublish" xml:space="preserve">
+    <value>Приложение {ApplicationName} назначено устройствам и теперь доступно для распространения на этих устройствах. Чтобы получить доступ к этому приложению, перейдите на страницу "Внутренние приложения" в Workspace ONE UEM Console. Проверьте назначение устройства и опубликуйте приложение. Сведения о приложении приведены ниже.</value>
+  </data>
+  <data name="MessageTemplates_Content_AppAvailableForDownloadFromUem" xml:space="preserve">
+    <value>Теперь приложение {ApplicationName} доступно для загрузки на устройство из каталога приложений Workspace ONE UEM.</value>
+  </data>
+  <data name="MessageTemplates_Content_AppAvailableForDownloadFromUemWithDetails" xml:space="preserve">
+    <value>Теперь приложение {ApplicationName} доступно для загрузки на устройство из каталога приложений Workspace ONE UEM. Сведения о приложении приведены ниже.</value>
+  </data>
+  <data name="MessageTemplates_Content_AppCreatedAccessInternalAppPage" xml:space="preserve">
+    <value>Создано приложение {ApplicationName}. Чтобы получить доступ к этому приложению, перейдите на страницу "Внутренние приложения" в Workspace ONE UEM Console. Сведения о приложении приведены ниже.</value>
+  </data>
+  <data name="MessageTemplates_Content_AppCreatedAccessInternalAppPageReviewSubmit" xml:space="preserve">
+    <value>Приложение {ApplicationName} создано и теперь доступно для проверки. Чтобы получить доступ к этому приложению, перейдите на страницу "Внутренние приложения" в Workspace ONE UEM Console. Проверьте и отправьте его для назначения. Сведения о приложении приведены ниже.</value>
+  </data>
+  <data name="MessageTemplates_Content_AppErrorFindLogFile" xml:space="preserve">
+    <value>Приложение {ApplicationName} возвратило ошибку. Найдите приложенный файл журнала.</value>
+  </data>
+  <data name="MessageTemplates_Content_AppEulaUpdatedAcceptanceRequired" xml:space="preserve">
+    <value>Условия пользовательского соглашения для вашего приложения обновлены. Вы должны их принять.</value>
+  </data>
+  <data name="MessageTemplates_Content_AppEulaUpdatedAcceptanceRequiredBeforeGracePeriod" xml:space="preserve">
+    <value>Условия пользовательского соглашения для вашего приложения обновлены. Вы должны принять их до истечения льготного периода.</value>
+  </data>
+  <data name="MessageTemplates_Content_AppEulaUpdatedAcceptanceRequiredLogInToAppCatalogToAccept" xml:space="preserve">
+    <value>Условия пользовательского соглашения для вашего приложения обновлены. Вы должны их принять. Войдите в каталог приложений Workspace ONE UEM и примите условия.</value>
+  </data>
+  <data name="MessageTemplates_Content_AppGroupCreatedNavigateToSettingsPageToAccessAppGroups" xml:space="preserve">
+    <value>В результате синхронизации с {CountOfApplicationGroups} созданы группы приложений ({VendorName}). Сведения об этих группах приложений можно найти во вложении. Доступ к этим группам приложений можно получить, перейдя к группам приложений на странице "Приложения и книги &gt; Параметры приложения" в Workspace ONE UEM Console.</value>
+  </data>
+  <data name="MessageTemplates_Content_AppHasBeenPurchasedOpenHubToDownload" xml:space="preserve">
+    <value>Приложение {ApplicationName} приобретено от вашего имени и теперь доступен для загрузки. Откройте VMware Workspace ONE Intelligent Hub, чтобы загрузить приобретенное приложение.</value>
+  </data>
+  <data name="MessageTemplates_Content_AppNameAppVersion" xml:space="preserve">
+    <value>{ApplicationName}, {ApplicationVersion}</value>
+  </data>
+  <data name="MessageTemplates_Content_AppReputationAnalysisCompletedForApp" xml:space="preserve">
+    <value>Для {ApplicationName} проанализирована репутация приложений. Теперь результаты доступны.</value>
+  </data>
+  <data name="MessageTemplates_Content_AppReviewedAccessInternalAppPageAssignSubmit" xml:space="preserve">
+    <value>Приложение {ApplicationName} проверено и теперь доступно для назначения устройствам. Чтобы получить доступ к этому приложению, перейдите на страницу "Внутренние приложения" в Workspace ONE UEM Console. Назначьте его устройствам и отправьте для распространения. Сведения о приложении приведены ниже.</value>
+  </data>
+  <data name="MessageTemplates_Content_AuthenticationRequiredCredentialsBelow" xml:space="preserve">
+    <value>Может потребоваться проверка подлинности. Ниже приведены ваши уникальные учетные данные:</value>
+  </data>
+  <data name="MessageTemplates_Content_ClickHere" xml:space="preserve">
+    <value>нажмите здесь</value>
+  </data>
+  <data name="MessageTemplates_Content_ClickInstallAcceptPrompts" xml:space="preserve">
+    <value>Нажмите кнопку "Установить" и примите последующие запросы конфигурации.</value>
+  </data>
+  <data name="MessageTemplates_Content_ConsoleURL" xml:space="preserve">
+    <value>URL-адрес консоли:</value>
+  </data>
+  <data name="MessageTemplates_Content_ContactItHelpDeskIfHaveQuestions" xml:space="preserve">
+    <value>Если возникли вопросы, обратитесь в службу технической поддержки.</value>
+  </data>
+  <data name="MessageTemplates_Content_ContentComment" xml:space="preserve">
+    <value>"{Comment}"</value>
+  </data>
+  <data name="MessageTemplates_Content_ContentShareUserFirstNameLastName" xml:space="preserve">
+    <value>{ContentShareUserFirstName} {ContentShareUserLastName}</value>
+  </data>
+  <data name="MessageTemplates_Content_ContentUserIsUsingContentLocker" xml:space="preserve">
+    <value>Пользователь {ContentShareUserFirstName} использует решение Workspace ONE UEM Content Locker, чтобы легко и безопасно предоставить вам общий доступ к файлам.</value>
+  </data>
+  <data name="Messagetemplates_Content_DearAdministrator" xml:space="preserve">
+    <value>Уважаемый Администратор!</value>
+  </data>
+  <data name="MessageTemplates_Content_DeviceApprovedForAccessUsingBrowserNavigateTo" xml:space="preserve">
+    <value>Ваше устройство утверждено для мобильного доступа. С помощью веб-браузера устройства перейдите к</value>
+  </data>
+  <data name="MessageTemplates_Content_DeviceBlockedFromEnrollmentForReason" xml:space="preserve">
+    <value>Регистрация устройства {DevicePlatform} {DeviceModel} заблокирована по следующей причине:</value>
+  </data>
+  <data name="MessageTemplates_Content_DeviceEnrollmentUsingCredentials" xml:space="preserve">
+    <value>Устройство {DeviceFriendlyName} успешно завершило регистрацию Workspace ONE UEM, используя учетные данные {EnrollmentUser}.</value>
+  </data>
+  <data name="MessageTemplates_Content_DeviceHasNotReportedComplianceToUemLaunchHubToCheckIn" xml:space="preserve">
+    <value>Устройство не сообщило о своем статусе соответствия программе Workspace ONE UEM в течение требуемого временного интервала. Запустите VMware Workspace ONE Intelligent Hub на устройстве, чтобы его разрегистрировать.</value>
+  </data>
+  <data name="MessageTemplates_Content_DeviceInViolationOfOrgCompliancePolicy" xml:space="preserve">
+    <value>Ваше устройство {DeviceFriendlyName} в настоящее время нарушает политику соответствия вашей организации.</value>
+  </data>
+  <data name="MessageTemplates_Content_DeviceInViolationOfPolicyActionTakenIfNonCompliant" xml:space="preserve">
+    <value>Ваше устройство нарушает политику соответствия "{PolicyName}". Если это состояние продолжится, будут предприняты дальнейшие действия.</value>
+  </data>
+  <data name="MessageTemplates_Content_DeviceLostCallMe" xml:space="preserve">
+    <value>Это устройство потеряно. Позвоните мне.</value>
+  </data>
+  <data name="MessageTemplates_Content_DeviceNoAccessData" xml:space="preserve">
+    <value>У этого устройства больше нет доступа к параметрам, приложениям и содержимому, развернутым во время регистрации.</value>
+  </data>
+  <data name="MessageTemplates_Content_DeviceNonCompliantActionsInEffect" xml:space="preserve">
+    <value>Если устройство не соответствует требованиям, в устройстве будут предприняты следующие действия:</value>
+  </data>
+  <data name="MessageTemplates_Content_DevicesWipedWithinLastMinutes" xml:space="preserve">
+    <value>Мы отметили, что за последние {EnterpriseWipeInterval} мин. на большом количестве устройств выполнена очистка корпоративных данных или очистка устройства.</value>
+  </data>
+  <data name="MessageTemplates_Content_DevicesWithAppExceededLimitRemovalOnHoldUntilConfirm" xml:space="preserve">
+    <value>Количество устройств с приложением {BundleID} превысило предел удаления приложений. Удаление этих приложений приостановлено, пока не подтвердите данное количество и свое желание использовать все команды удаления для этого приложения.</value>
+  </data>
+  <data name="MessageTemplates_Content_DeviceUnenrolled" xml:space="preserve">
+    <value>Регистрация устройства {DeviceFriendlyName} отменена.</value>
+  </data>
+  <data name="MessageTemplates_Content_DoNotEnterInfoUntilInContainerApp" xml:space="preserve">
+    <value>Вводите личные сведения или сведения об организации только после безопасного размещения в приложении Workspace ONE UEM Container, которое показано ниже.</value>
+  </data>
+  <data name="MessageTemplates_Content_DoNotEnterInfoUntilInHubApp" xml:space="preserve">
+    <value>Вводите личные сведения или сведения об организации только после безопасного входа в приложение Workspace ONE Intelligent Hub, которое показано ниже:</value>
+  </data>
+  <data name="MessageTemplates_Content_DownloadHubApp" xml:space="preserve">
+    <value>Загрузите приложение Workspace ONE Intelligent Hub.</value>
+  </data>
+  <data name="MessageTemplates_Content_DownloadHubAppOnDeviceYouWantToEnrollAt" xml:space="preserve">
+    <value>Загрузите приложение VMware Workspace ONE Intelligent Hub на устройство, которое вы хотите зарегистрировать, по адресу</value>
+  </data>
+  <data name="MessageTemplates_Content_EmailDomainConfirmedUserWithSameDomainEnrolledInto" xml:space="preserve">
+    <value>После подтверждения домена электронной почты пользователи, которые используют для регистрации адреса электронной почты с тем же доменом, будут зарегистрированы со следующим URL-адресом и идентификатором группы:</value>
+  </data>
+  <data name="MessageTemplates_Content_EmailDomainRegisteredVerifyEmailAddress" xml:space="preserve">
+    <value>Домен электронной почты зарегистрирован в рамках регистрации с использованием электронной почты. Проверьте адрес электронной почты, нажав на следующую ссылку:</value>
+  </data>
+  <data name="MessageTemplates_Content_EnrollmentURL" xml:space="preserve">
+    <value>URL-адрес для регистрации:</value>
+  </data>
+  <data name="MessageTemplates_Content_EnrollYourDevice" xml:space="preserve">
+    <value>Зарегистрируйте свое устройство.</value>
+  </data>
+  <data name="MessageTemplates_Content_EnterCredentialsToAuthenticateDevice" xml:space="preserve">
+    <value>Введите учетные данные для выполнения аутентификации устройства.</value>
+  </data>
+  <data name="MessageTemplates_Content_EnterTokenBelowInAppToResetPasscode" xml:space="preserve">
+    <value>Во время сброса секретного кода в приложении с помощью функции "Забыли секретный код" введите указанный ниже маркер.</value>
+  </data>
+  <data name="MessageTemplates_Content_EnterTokenWhenPromptedDuringAuth" xml:space="preserve">
+    <value>При появлении соответствующего запроса во время проверки подлинности каталога приложений введите указанный ниже маркер.</value>
+  </data>
+  <data name="MessageTemplates_Content_EnterTokenWhenPromptedWithDetails" xml:space="preserve">
+    <value>При появлении соответствующего запроса во время проверки подлинности каталога приложений введите указанный ниже маркер. Маркер: {AppCatalogToken}</value>
+  </data>
+  <data name="MessageTemplates_Content_EulaUpdatedAcceptanceRequired" xml:space="preserve">
+    <value>Условия пользовательского соглашения Workspace ONE UEM обновлены. Вы должны их принять.</value>
+  </data>
+  <data name="MessageTemplates_Content_ExpirationDateTokenExpirationDate" xml:space="preserve">
+    <value>Срок действия: {TokenExpirationDate}</value>
+  </data>
+  <data name="MessageTemplates_Content_FileAccessibleInContentLockerOrContentLockerSync" xml:space="preserve">
+    <value>Кроме того, если файл установлен на компьютере, он будет доступен в Content Locker на мобильном устройстве или в Content Locker Sync.</value>
+  </data>
+  <data name="MessageTemplates_Content_FinalNoticeAppEulaUpdatedLogInToUemToAccept" xml:space="preserve">
+    <value>ПОСЛЕДНЕЕ УВЕДОМЛЕНИЕ. Условия пользовательского соглашения для вашего приложения обновлены. Войдите в каталог приложений Workspace ONE UEM и примите условия.</value>
+  </data>
+  <data name="MessageTemplates_Content_FinalNotificationIfRejectAppRemoved" xml:space="preserve">
+    <value>Это последнее уведомление. Если вы отклоните условия пользовательского соглашения, приложение будет удалено с вашего устройства.</value>
+  </data>
+  <data name="MessageTemplates_Content_FirstNameLastName" xml:space="preserve">
+    <value>{FirstName} {LastName},</value>
+  </data>
+  <data name="MessageTemplates_Content_FolderAccessibleInContentLockerOrContentLockerSync" xml:space="preserve">
+    <value>Кроме того, папка будет доступна в Content Locker на мобильном устройстве или в Content Locker Sync (если это приложение установлено на вашем компьютере).</value>
+  </data>
+  <data name="MessageTemplates_Content_FollowPromptsToSetupPasswordAt" xml:space="preserve">
+    <value>Следуйте инструкциям, чтобы настроить пароль в</value>
+  </data>
+  <data name="MessageTemplates_Content_ForFutureAccessRequireCredentials" xml:space="preserve">
+    <value>Для доступа к папкам в будущем могут потребоваться указанные ниже учетные данные.</value>
+  </data>
+  <data name="MessageTemplates_Content_GoToAppRemovalLogPageToSeeDevicesCanChangeAppRemovalLimitSettings" xml:space="preserve">
+    <value>Перейдите на страницу {AppRemovalLog}, чтобы просмотреть список всех затронутых устройств. Предел удаления приложений можно увеличить или уменьшить в {AppRemovalProtection}.</value>
+  </data>
+  <data name="MessageTemplates_Content_GoToContainerEnrollmentUrlToActivateDevice" xml:space="preserve">
+    <value>Перейдите по адресу {ContainerEnrollmentUrl}, чтобы активировать устройство</value>
+  </data>
+  <data name="MessageTemplates_Content_GoToHubEnrollmentUrlToActivateDevice" xml:space="preserve">
+    <value>Перейдите по адресу {HubEnrollmentUrl}, чтобы активировать устройство</value>
+  </data>
+  <data name="MessageTemplates_Content_GrantedFollowingAdminRoles" xml:space="preserve">
+    <value>Вам предоставлен доступ к следующим ролям администратора:</value>
+  </data>
+  <data name="MessageTemplates_Content_GroupIdGroupIdentifier" xml:space="preserve">
+    <value>ID группы: {GroupIdentifier}</value>
+  </data>
+  <data name="MessageTemplates_Content_HasMentionedYouInCommentOnFile" xml:space="preserve">
+    <value>упомянул вас в комментарием к данному файлу</value>
+  </data>
+  <data name="MessageTemplates_Content_HasSharedYouFolder" xml:space="preserve">
+    <value>предоставил вам общий доступ к этой папке</value>
+  </data>
+  <data name="MessageTemplates_Content_HaveNewFolderSharesNavigateToSSPSection" xml:space="preserve">
+    <value>Вам предоставлен общий доступ к новым папкам. Для доступа перейдите в раздел "Портал самообслуживания"</value>
+  </data>
+  <data name="MessageTemplates_Content_HoldOnWipeUntilConfirm" xml:space="preserve">
+    <value>Все будущие команды очистки будут приостановлены до тех пор, пока вы не определите причину увеличения числа очисток и не подтвердите, что хотите разблокировать все будущие команды очистки.</value>
+  </data>
+  <data name="MessageTemplates_Content_IfPasswordExpiresForcedToReset" xml:space="preserve">
+    <value>Если срок действия пароля учетной записи истек, требуется сбросить пароль перед входом в систему.</value>
+  </data>
+  <data name="MessageTemplates_Content_IfRejectDeviceUnenrolledRemovalOfData" xml:space="preserve">
+    <value>Если вы отклоните условия пользовательского соглашения, регистрация вашего устройства в Workspace ONE UEM будет отменена с удалением всех данных организации с устройства.</value>
+  </data>
+  <data name="MessageTemplates_Content_IfRejectOrNotAcceptRemoveApp" xml:space="preserve">
+    <value>Если вы отклоните условия пользовательского соглашения или не примете их в течение льготного периода, приложение будет удалено с вашего устройства.</value>
+  </data>
+  <data name="MessageTemplates_Content_Important" xml:space="preserve">
+    <value>Важно!</value>
+  </data>
+  <data name="MessageTemplates_Content_LinkAboveWillExpireOn" xml:space="preserve">
+    <value>Срок действия указанной выше ссылки истекает</value>
+  </data>
+  <data name="MessageTemplates_Content_LinkExpiredContactItHelpDeskToRequestAt" xml:space="preserve">
+    <value>Если срок действия ссылки истек, свяжитесь со свой службой ИТ-поддержки для запроса нового электронного письма о регистрации по адресу</value>
+  </data>
+  <data name="MessageTemplates_Content_LogIntoConsoleToImplementCompliancePolicies" xml:space="preserve">
+    <value>Войдите в Workspace ONE UEM Console, чтобы применить политики соответствия, использующие группы приложений {VendorName}, для отслеживания устройств, которые не соответствуют требованиям.</value>
+  </data>
+  <data name="MessageTemplates_Content_LogIntoConsoleToResetPassword" xml:space="preserve">
+    <value>Войдите в консоль администратора Workspace ONE UEM и сбросьте пароль. Для этого выберите свое имя в правом верхнем углу и нажмите "Управление настройками учетной записи".</value>
+  </data>
+  <data name="MessageTemplates_Content_LogIntoSSPToReviewAcceptUpdatedTermsAt" xml:space="preserve">
+    <value>Войдите в портал самообслуживания, чтобы просмотреть и принять обновленные условия по адресу</value>
+  </data>
+  <data name="MessageTemplates_Content_LogIntoUemToAcceptChangesForApp" xml:space="preserve">
+    <value>Войдите в каталог приложений Workspace ONE UEM со своего устройства, чтобы принять изменения следующего приложения:</value>
+  </data>
+  <data name="MessageTemplates_Content_MyContent" xml:space="preserve">
+    <value>Мой контент</value>
+  </data>
+  <data name="MessageTemplates_Content_OnlyDownloadFromOfficialAppStore" xml:space="preserve">
+    <value>Загружайте только из официального магазина приложений вашего устройства</value>
+  </data>
+  <data name="MessageTemplates_Content_OrContactComplianceSupportPhone" xml:space="preserve">
+    <value>или контактный телефон: {ComplianceSupportPhone}</value>
+  </data>
+  <data name="MessageTemplates_Content_OrContactEnrollmentSupportPhone" xml:space="preserve">
+    <value>или контактный телефон: {EnrollmentSupportPhone}.</value>
+  </data>
+  <data name="MessageTemplates_Content_OurWebsite" xml:space="preserve">
+    <value>наш веб-сайт</value>
+  </data>
+  <data name="MessageTemplates_Content_PasswordEnrollmentPassword" xml:space="preserve">
+    <value>Пароль: {EnrollmentPassword}</value>
+  </data>
+  <data name="MessageTemplates_Content_PasswordResetLink" xml:space="preserve">
+    <value>Ссылка для сброса пароля:</value>
+  </data>
+  <data name="MessageTemplates_Content_PasswordResetLinkExpiration" xml:space="preserve">
+    <value>Срок действия ссылки для сброса пароля:</value>
+  </data>
+  <data name="MessageTemplates_Content_PolicyNamePolicyDescription" xml:space="preserve">
+    <value>{PolicyName}: {PolicyDescription}</value>
+  </data>
+  <data name="MessageTemplates_Content_ProvisioningPackageRequestStatusChangedLogIntoConsoleToSee" xml:space="preserve">
+    <value>Изменился статус запроса на создание пакета подготовки Windows. Чтобы получить дополнительные сведения, войдите в консоль и просмотрите уведомления.</value>
+  </data>
+  <data name="MessageTemplates_Content_RedirectedToContainerAppOrToDownloadContainerApp" xml:space="preserve">
+    <value>Если в устройстве установлено приложение Workspace ONE UEM Container, выполнятся перенаправление к нему. В противном случае вы будете перенаправлены в официальный магазин приложений вашего устройства, чтобы загрузить его.</value>
+  </data>
+  <data name="MessageTemplates_Content_RedirectedToHubAppOrToDownloadHubApp" xml:space="preserve">
+    <value>Если в устройстве установлено приложение Workspace ONE Intelligent Hub, выполнятся перенаправление к нему. В противном случае вы будете перенаправлены в официальный магазин приложений вашего устройства, чтобы загрузить его.</value>
+  </data>
+  <data name="MessageTemplates_Content_Regards" xml:space="preserve">
+    <value>С уважением,</value>
+  </data>
+  <data name="MessageTemplates_Content_RegisteringEnableDownloadAppPurchasedByOrg" xml:space="preserve">
+    <value>Регистрация в этой программе позволит загружать приложения, приобретенные вашей организацией от вашего имени.</value>
+  </data>
+  <data name="MessageTemplates_Content_RegistrationTokenRevoked" xml:space="preserve">
+    <value>Отозван маркер регистрации вашего устройства.</value>
+  </data>
+  <data name="MessageTemplates_Content_RegistrationTokenRevokedCannotBeActivated" xml:space="preserve">
+    <value>Маркер регистрации вашего устройства отозван, и вы больше не сможете активировать его в Workspace ONE UEM.</value>
+  </data>
+  <data name="MessageTemplates_Content_ResetUrlExpirationText" xml:space="preserve">
+    <value>Срок действия указанной выше ссылки истекает через {PasswordResetUrlExpiration} ч.</value>
+  </data>
+  <data name="MessageTemplates_Content_ResetUrlRetryText" xml:space="preserve">
+    <value>Если эта ссылка не работает, попробуйте скопировать и вставить следующую ссылку в адресную строку браузера.</value>
+  </data>
+  <data name="MessageTemplates_Content_ResetUrlText" xml:space="preserve">
+    <value>Сбросить пароль сейчас</value>
+  </data>
+  <data name="MessageTemplates_Content_RestrictionsLiftedWhenCompliant" xml:space="preserve">
+    <value>Когда устройство снова соответствует требованиям, наложенные на него ограничения снимаются.</value>
+  </data>
+  <data name="MessageTemplates_Content_SeeAppReputationAnalysisReportForApp" xml:space="preserve">
+    <value>См. приложенный подробный отчет об анализе репутации приложений для приложения {ApplicationName}{ApplicationVersion}.</value>
+  </data>
+  <data name="MessageTemplates_Content_SeeDeviceWipeDetailsNavigateTo" xml:space="preserve">
+    <value>Чтобы просмотреть список всех очищенных или ожидающих очистки устройств, проверить, что вызывало каждое действие, и выбрать удаление или продолжение для каждого действия, перейдите в</value>
+  </data>
+  <data name="MessageTemplates_Content_SetUemPassword" xml:space="preserve">
+    <value>Задайте пароль для Workspace ONE UEM.</value>
+  </data>
+  <data name="MessageTemplates_Content_TempAdminCreatedOrModifiedLogIntoConsole" xml:space="preserve">
+    <value>Ваша временная учетная запись администратора Workspace ONE UEM создана или изменена. Теперь можно войти в консоль администратора Workspace ONE UEM, используя следующие учетные данные:</value>
+  </data>
+  <data name="MessageTemplates_Content_ToActivateAndAccessContent" xml:space="preserve">
+    <value>Чтобы активировать свою учетную запись и получить доступ к содержимому, к которому вам предоставлен общий доступ,</value>
+  </data>
+  <data name="MessageTemplates_Content_ToComplyWithPolicyAddressViolations" xml:space="preserve">
+    <value>Для соответствия данной политике необходимо устранить следующие нарушения:</value>
+  </data>
+  <data name="MessageTemplates_Content_TokenAppCatalogToken" xml:space="preserve">
+    <value>Маркер: {AppCatalogToken}</value>
+  </data>
+  <data name="MessageTemplates_Content_TokenApplicationAuthenticationToken" xml:space="preserve">
+    <value>Маркер: {ApplicationAuthenticationToken}</value>
+  </data>
+  <data name="MessageTemplates_Content_ToLearnMoreVisit" xml:space="preserve">
+    <value>Чтобы узнать больше, посетите</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAdminAccountActivationTitle" xml:space="preserve">
+    <value>Активация учетной записи администратора Workspace ONE UEM — {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAdminPasswordExpiryNotificationTitle" xml:space="preserve">
+    <value>Уведомление об истечении срока действия пароля администратора Workspace ONE UEM: {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAdminPasswordResetTitle" xml:space="preserve">
+    <value>Сброс пароля администратора Workspace ONE UEM — {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAdminPasswordUpdatedTitle" xml:space="preserve">
+    <value>Пароль администратора Workspace ONE UEM обновлен: {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAdminPersonalInfoUpdatedTitle" xml:space="preserve">
+    <value>Обновлены личные данные администратора Workspace ONE UEM: {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAdminStatusUpdatedTitle" xml:space="preserve">
+    <value>Статус администратора Workspace ONE UEM обновлен: {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAppCatalogTokenNotificationTitle" xml:space="preserve">
+    <value>Уведомление о маркере каталога приложений Workspace ONE UEM: {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAppEulaUpdateNotificationTitle" xml:space="preserve">
+    <value>Уведомление об обновлении условий использования приложений Workspace ONE UEM: {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAppForgotPasscodeTokenNotificationTitle" xml:space="preserve">
+    <value>Уведомление о маркере функции "Забыли секретный код" приложения Workspace ONE UEM: {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAppGroupCreationNotificationTitle" xml:space="preserve">
+    <value>Уведомления о создании группы приложений Workspace ONE UEM: {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAppLogNotificationTitle" xml:space="preserve">
+    <value>Уведомление о журнале приложений Workspace ONE UEM: {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAppNotificationTitle" xml:space="preserve">
+    <value>Уведомление о приложении Workspace ONE UEM: {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAppPurchaseTitle" xml:space="preserve">
+    <value>Покупка приложения Workspace ONE UEM: {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAppRemovalNotificationTitle" xml:space="preserve">
+    <value>Уведомление об удалении приложения Workspace ONE UEM: {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAppReputationAnalysisTitle" xml:space="preserve">
+    <value>Анализ репутации приложений Workspace ONE UEM: {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAppWorkflowAppAssignmentNotificationTitle" xml:space="preserve">
+    <value>Рабочий процесс приложения Workspace ONE UEM — уведомление о назначении приложения: {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAppWorkflowAppCreatedNotificationTitle" xml:space="preserve">
+    <value>Рабочий процесс приложения Workspace ONE UEM — уведомление о создании приложения: {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAppWorkflowAppPublishNotificationTitle" xml:space="preserve">
+    <value>Рабочий процесс приложения Workspace ONE UEM — уведомление о публикации приложения: {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAppWorkflowAppReviewNotificationTitle" xml:space="preserve">
+    <value>Рабочий процесс приложения Workspace ONE UEM — уведомление о проверке приложения: {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemContentNotificationTitle" xml:space="preserve">
+    <value>Уведомления о содержимом Workspace ONE UEM: {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemDeviceActivationTitle" xml:space="preserve">
+    <value>Активация устройства Workspace ONE UEM: {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemDeviceBlockedByEnrollmentRestrictionTitle" xml:space="preserve">
+    <value>Устройство Workspace ONE UEM заблокировано путем ограничения регистрации: {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemDeviceComplianceViolationTitle" xml:space="preserve">
+    <value>Нарушение соответствия устройства Workspace ONE UEM: {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemDeviceEnrolledTitle" xml:space="preserve">
+    <value>Устройство Workspace ONE UEM успешно зарегистрировано: {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemDeviceRemovalTitle" xml:space="preserve">
+    <value>Удаление устройства Workspace ONE UEM: {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemDeviceUnenrolledTitle" xml:space="preserve">
+    <value>Отмена регистрации устройства Workspace ONE UEM: {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemEmailDomainRegistrationTitle" xml:space="preserve">
+    <value>Регистрация домена электронной почты Workspace ONE UEM: {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemEulaUpdateTitle" xml:space="preserve">
+    <value>Обновление условий использования Workspace ONE UEM: {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemFinalNoticeAppEulaUpdateTitle" xml:space="preserve">
+    <value>ПОСЛЕДНЕЕ УВЕДОМЛЕНИЕ. Обновление условий использования приложений Workspace ONE UEM: {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemLicenseBasedVppNotificationTitle" xml:space="preserve">
+    <value>Уведомление VPP на основе лицензии Workspace ON UEM: {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemProvisioningPackageTitle" xml:space="preserve">
+    <value>Пакет подготовки Workspace ONE UEM: {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemTempAdminActivationTitle" xml:space="preserve">
+    <value>Активация временной учетной записи администратора Workspace ONE UEM: {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemUserActivationTitle" xml:space="preserve">
+    <value>Активация пользователя Workspace ONE UEM: {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemWipeProtectionNotificationTitle" xml:space="preserve">
+    <value>Уведомление о защите от очистки Workspace ONE UEM: {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UnenrollmentReason" xml:space="preserve">
+    <value>Причина: {ServerActionSource}</value>
+  </data>
+  <data name="MessageTemplates_Content_UserCommentsForApp" xml:space="preserve">
+    <value>Комментарии пользователя для приложения приведены ниже:</value>
+  </data>
+  <data name="MessageTemplates_Content_UserHasSharedFolder" xml:space="preserve">
+    <value>Пользователь {ContentShareUserFirstName} {ContentShareUserLastName} ({ContentShareUserEmail}) предоставил вам общий доступ к папке "{ContentFolderName}".</value>
+  </data>
+  <data name="MessageTemplates_Content_UserNameAdminUserName" xml:space="preserve">
+    <value>Имя пользователя: {AdminUserName}</value>
+  </data>
+  <data name="MessageTemplates_Content_UserNameEmailAddress" xml:space="preserve">
+    <value>Имя пользователя: {EmailAddress}</value>
+  </data>
+  <data name="MessageTemplates_Content_UserNameEnrollmentUserName" xml:space="preserve">
+    <value>Имя пользователя: {EnrollmentUserName}</value>
+  </data>
+  <data name="MessageTemplates_Content_UsingBrowserToRegisterVppProgramNavigateTo" xml:space="preserve">
+    <value>Используя браузер устройства iOS 7 для регистрации в программе VPP на основе лицензий Apple, перейдите в</value>
+  </data>
+  <data name="Messagetemplates_Content_WelcomeToWorkspaceOneUEM" xml:space="preserve">
+    <value>Добро пожаловать в Workspace ONE UEM</value>
+  </data>
+  <data name="MessageTemplates_Content_WhenPromptedEnterUseNamePassword" xml:space="preserve">
+    <value>При появлении соответствующего запроса введите имя пользователя и пароль для регистрации:</value>
+  </data>
+  <data name="MessageTemplates_Content_WipeLogPage" xml:space="preserve">
+    <value>Страница журнала очистки</value>
+  </data>
+  <data name="MessageTemplates_Content_WorkspaceOneUem" xml:space="preserve">
+    <value>Workspace ONE UEM</value>
+  </data>
+  <data name="Messagetemplates_Content_WorkspaceOneUEMUser" xml:space="preserve">
+    <value>Пользователь Workspace ONE UEM</value>
+  </data>
+  <data name="Messagetemplates_Description_AdminAccountActivation" xml:space="preserve">
+    <value>Шаблон сообщения по умолчанию, отправляемого, когда один администратор добавляет с консоли другого администратора.</value>
+  </data>
+  <data name="Messagetemplates_Description_AdminPasswordChange" xml:space="preserve">
+    <value>Шаблон сообщения по умолчанию, которое уведомляет администратора о том, что его пароль был изменен. Это автоматизированное сообщение будет отправляться всегда для обеспечения безопасности.</value>
+  </data>
+  <data name="Messagetemplates_Description_AdminPasswordExpiryNotification" xml:space="preserve">
+    <value>Шаблон сообщения по умолчанию, уведомляющего администратора о скором истечении срока действия пароля и необходимости предпринять действия для сброса пароля</value>
+  </data>
+  <data name="Messagetemplates_Description_AdminPasswordReset" xml:space="preserve">
+    <value>Шаблон сообщения по умолчанию, которое уведомляет администратора о том, что его пароль был изменен. Это автоматизированное сообщение будет отправляться всегда для обеспечения безопасности.</value>
+  </data>
+  <data name="Messagetemplates_Description_AdminPersonalInformationChange" xml:space="preserve">
+    <value>Шаблон сообщения по умолчанию, служащего для уведомления администратора об изменении его личных данных. Это автоматизированное сообщение будет отправляться всегда для обеспечения безопасности.</value>
+  </data>
+  <data name="Messagetemplates_Description_AdminPersonalInformationChangeViaApi" xml:space="preserve">
+    <value>Шаблон сообщения по умолчанию для уведомления администратора об изменении его личных данных посредством API-интерфейса. Это сообщение отправляется автоматически всегда для обеспечения безопасности.</value>
+  </data>
+  <data name="Messagetemplates_Description_AdminStatusChange" xml:space="preserve">
+    <value>Шаблон сообщения по умолчанию, которое уведомляет администратора о том, что он деактивирован или повторно активирован. Это автоматизированное сообщение будет отправляться всегда для обеспечения безопасности.</value>
+  </data>
+  <data name="Messagetemplates_Description_AppCatalogTokenNotification" xml:space="preserve">
+    <value>Шаблон сообщения по умолчанию, служащего для отправки информации о маркере пользователям, когда они впервые получают доступ к приложению Catalog. Будет отправлено только в случае, если устройства находятся в организационной группе, настроенной для проверки подлинности с помощью маркера.</value>
+  </data>
+  <data name="Messagetemplates_Description_ApplicationAssignmentNotification" xml:space="preserve">
+    <value>Шаблон сообщения по умолчанию, которое уведомляет администратора о том, что новое приложение готово к назначению.</value>
+  </data>
+  <data name="Messagetemplates_Description_ApplicationCreationNotification" xml:space="preserve">
+    <value>Шаблон сообщения по умолчанию, которое уведомляет администратора о том, что создано новое приложение.</value>
+  </data>
+  <data name="Messagetemplates_Description_ApplicationEulaFinalNotification" xml:space="preserve">
+    <value>Шаблон сообщения по умолчанию, отправляемого, как последнее предупреждение пользователям о том, что им необходимо принять обновленные или дополненные Условия использования приложения, или приложение будет удалено.</value>
+  </data>
+  <data name="Messagetemplates_Description_ApplicationEulaNotification" xml:space="preserve">
+    <value>Шаблон сообщения по умолчанию, которое уведомляет пользователей о том, что Условия использования приложения были дополнены или изменены. Оно инструктирует пользователей принять эти дополнения или изменения.</value>
+  </data>
+  <data name="Messagetemplates_Description_ApplicationLogNotification" xml:space="preserve">
+    <value>Шаблон сообщения по умолчанию, отправляемого, когда приложение с поддержкой SDK создало журнал сбоев (если для приложения установлен флажок автоматически отправлять журналы сбоев на адрес электронный почты разработчика).</value>
+  </data>
+  <data name="Messagetemplates_Description_ApplicationNotification" xml:space="preserve">
+    <value>Шаблон сообщения по умолчанию, которое уведомляет пользователя о том, что в приложении Catalog доступно новое приложение для загрузки.</value>
+  </data>
+  <data name="Messagetemplates_Description_ApplicationPublishNotification" xml:space="preserve">
+    <value>Шаблон сообщения по умолчанию, которое уведомляет администратора о том, что новое приложение готово к публикации.</value>
+  </data>
+  <data name="Messagetemplates_Description_ApplicationReviewNotification" xml:space="preserve">
+    <value>Шаблон сообщения по умолчанию, которое уведомляет администратора о том, что новое приложение готово к проверке.</value>
+  </data>
+  <data name="Messagetemplates_Description_ApplicationScanDetailResult" xml:space="preserve">
+    <value>Шаблон сообщения по умолчанию, которое уведомляет разработчиков о подробном отчете с анализом репутации приложений.</value>
+  </data>
+  <data name="Messagetemplates_Description_ApplicationScanNotification" xml:space="preserve">
+    <value>Уведомление о завершении анализа репутации приложений</value>
+  </data>
+  <data name="Messagetemplates_Description_AppRemoveNotification" xml:space="preserve">
+    <value>Этот шаблон сообщения используется для уведомления администраторов о том, что запущено удаление приложения на большом количестве устройств за короткий промежуток времени.</value>
+  </data>
+  <data name="Messagetemplates_Description_AppVersionUpdateNotification" xml:space="preserve">
+    <value>Во время процесса регистрации настройте сообщение, отображаемое в командной строке установки MDM.</value>
+  </data>
+  <data name="Messagetemplates_Description_AuthenticationAppTokenNotification" xml:space="preserve">
+    <value>Шаблон для отправки по электронной почте пользователям маркера, который позволяет сбросить секретный код в приложении SDK на устройстве.</value>
+  </data>
+  <data name="Messagetemplates_Description_ComplianceViolationAdministratorNotification" xml:space="preserve">
+    <value>Шаблон сообщения по умолчанию, которое уведомляет администратора о том, что устройство нарушает политику соответствия, и пользователю необходимо предпринять действие для обеспечения соответствия нормативным требованиям.</value>
+  </data>
+  <data name="Messagetemplates_Description_ComplianceViolationUserNotification" xml:space="preserve">
+    <value>Шаблон сообщения по умолчанию, которое уведомляет пользователя о том, что он нарушает политику соответствия, и ему необходимо предпринять действие для обеспечения соответствия.</value>
+  </data>
+  <data name="Messagetemplates_Description_DeviceActivation" xml:space="preserve">
+    <value>Шаблон сообщения по умолчанию, которое уведомляет пользователей о том, что они могут зарегистрировать свое устройство.</value>
+  </data>
+  <data name="Messagetemplates_Description_DeviceBlockedByRestriction" xml:space="preserve">
+    <value>Шаблон сообщения по умолчанию, которое уведомляет пользователя о том, что его устройство заблокировано в связи с ограничением.</value>
+  </data>
+  <data name="Messagetemplates_Description_DeviceEnrolled" xml:space="preserve">
+    <value>Шаблон сообщения по умолчанию, которое уведомляет пользователя о том, что его устройство успешно зарегистрировано.</value>
+  </data>
+  <data name="Messagetemplates_Description_DeviceEnrollmentProgramCustomPrompt" xml:space="preserve">
+    <value>Настройте текст, который появляется на панели проверки подлинности помощника по установке для устройств, на которых назначен профиль Программы регистрации устройств.</value>
+  </data>
+  <data name="Messagetemplates_Description_DeviceLockScreenMessageiOS7" xml:space="preserve">
+    <value>Шаблон HTML-сообщения по умолчанию, которое отображается на экране блокировки при отправке команды на утерянное устройство.</value>
+  </data>
+  <data name="Messagetemplates_Description_DeviceOutofDateCompliance" xml:space="preserve">
+    <value>Шаблон сообщения по умолчанию отправляется пользователю с запросом запустить Workspace ONE Intelligent Hub, чтобы разрешить устройству зарегистрироваться и выполнить сканирование на наличие уязвимости.</value>
+  </data>
+  <data name="Messagetemplates_Description_DeviceUnenrolled" xml:space="preserve">
+    <value>Шаблон сообщения по умолчанию, которое уведомляет пользователя о том, что регистрация его устройства успешно отменена.</value>
+  </data>
+  <data name="Messagetemplates_Description_DeviceWipeEmailNotification" xml:space="preserve">
+    <value>Шаблон сообщения по умолчанию, уведомляющего администратора о том, что на большом количестве устройств выполнена очистка корпоративных данных или очистка устройства за короткий период времени.</value>
+  </data>
+  <data name="Messagetemplates_Description_EmailDomainRegistration" xml:space="preserve">
+    <value>Шаблон сообщения по умолчанию, используемого для проверки домена электронной почты, который будет использоваться в процессе упрощенной регистрации.</value>
+  </data>
+  <data name="Messagetemplates_Description_EulaNotification" xml:space="preserve">
+    <value>Шаблон сообщения по умолчанию, которое уведомляет пользователей о том, что Условия использования были дополнены или изменены, и им нужно принять эти дополнения или изменения.</value>
+  </data>
+  <data name="Messagetemplates_Description_ExternalUserActivation" xml:space="preserve">
+    <value>Шаблон сообщения по умолчанию, которое уведомляет внешних пользователей об активации учетной записи при предоставлении доступа к папке.</value>
+  </data>
+  <data name="Messagetemplates_Description_LicenseBasedPurchasedApplicationInvitation" xml:space="preserve">
+    <value>Шаблон сообщения по умолчанию, которое уведомляет зарегистрированных пользователей о том, что необходимо зарегистрироваться в Apple для VPP по лицензии.</value>
+  </data>
+  <data name="Messagetemplates_Description_MamEnrollmentUserActivation" xml:space="preserve">
+    <value>Шаблон сообщения по умолчанию для уведомления, когда администратор добавляет нового пользователя с консоли в ОГ, настроенную для регистрации MAM.</value>
+  </data>
+  <data name="Messagetemplates_Description_MamNewUserActivation" xml:space="preserve">
+    <value>Шаблон сообщения по умолчанию, отправляемого, когда пользователь зарегистрировался в ОГ, настроенной для регистрации MAM.</value>
+  </data>
+  <data name="Messagetemplates_Description_MentionedCommentNotification" xml:space="preserve">
+    <value>Упомянуто в уведомлении о комментарии</value>
+  </data>
+  <data name="Messagetemplates_Description_NewlyAddedUserToUserGroupNotification" xml:space="preserve">
+    <value>Шаблон сообщения по умолчанию, уведомляющего только что добавленных в группу пользователей об общей папке, к которой ранее был предоставлен общий доступ.</value>
+  </data>
+  <data name="Messagetemplates_Description_NewSharedFolderNotification" xml:space="preserve">
+    <value>Уведомление об общем доступе к папке</value>
+  </data>
+  <data name="Messagetemplates_Description_ProvisioningPackageNotification" xml:space="preserve">
+    <value>Шаблон сообщения по умолчанию, которое уведомляет администратора о том, что пакет подготовки создан и доступен для загрузки.</value>
+  </data>
+  <data name="Messagetemplates_Description_PurchasedApplication" xml:space="preserve">
+    <value>Шаблон сообщения по умолчанию, которое уведомляет пользователя о том, что приложение приобретено от его имени и доступно для загрузки.</value>
+  </data>
+  <data name="Messagetemplates_Description_TempAdminActivation" xml:space="preserve">
+    <value>Шаблон сообщения по умолчанию, отправляемого, когда один администратор добавляет с консоли другого временного администратора.</value>
+  </data>
+  <data name="Messagetemplates_Description_UnRegisterDevice" xml:space="preserve">
+    <value>Шаблон сообщения по умолчанию, которое уведомляет пользователя о том, что регистрация его устройства отменена, и все данные, относящиеся к организации, будут удалены.</value>
+  </data>
+  <data name="Messagetemplates_Description_UserActivation" xml:space="preserve">
+    <value>Шаблон сообщения по умолчанию, которое уведомляет пользователей о том, что они были добавлены в качестве пользователей EMM и могут зарегистрировать свои устройства.</value>
+  </data>
+  <data name="Messagetemplates_Description_VendorApplicationGroupCreationNotification" xml:space="preserve">
+    <value>Шаблон сообщения по умолчанию, которое уведомляет пользователя о том, что группы приложений поставщика созданы и готовы к применению политик соответствия.</value>
+  </data>
+  <data name="Messagetemplates_Description_WorkSpaceDeviceActivation" xml:space="preserve">
+    <value>Шаблон сообщения по умолчанию, которое уведомляет пользователей о том, что они могут зарегистрировать свое устройство.</value>
+  </data>
+  <data name="Messagetemplates_Name_AdminAccountActivation" xml:space="preserve">
+    <value>Активация администратора</value>
+  </data>
+  <data name="Messagetemplates_Name_AdminPasswordChange" xml:space="preserve">
+    <value>Изменение пароля администратора</value>
+  </data>
+  <data name="Messagetemplates_Name_AdminPasswordExpiryNotification" xml:space="preserve">
+    <value>Уведомление об истечении срока действия пароля администратора</value>
+  </data>
+  <data name="Messagetemplates_Name_AdminPasswordReset" xml:space="preserve">
+    <value>Изменение пароля администратора</value>
+  </data>
+  <data name="Messagetemplates_Name_AdminPersonalInformationChange" xml:space="preserve">
+    <value>Изменение личной информации администратора</value>
+  </data>
+  <data name="Messagetemplates_Name_AdminPersonalInformationChangeViaApi" xml:space="preserve">
+    <value>Изменение личной информации администратора с помощью API-интерфейса</value>
+  </data>
+  <data name="Messagetemplates_Name_AdminStatusChange" xml:space="preserve">
+    <value>Изменение статуса администратора</value>
+  </data>
+  <data name="Messagetemplates_Name_AppCatalogTokenNotification" xml:space="preserve">
+    <value>Маркер уведомления App Catalog</value>
+  </data>
+  <data name="Messagetemplates_Name_ApplicationAssignmentNotification" xml:space="preserve">
+    <value>Рабочий процесс приложения — уведомление о назначении</value>
+  </data>
+  <data name="Messagetemplates_Name_ApplicationCreationNotification" xml:space="preserve">
+    <value>Рабочий процесс приложения — уведомление о создании</value>
+  </data>
+  <data name="Messagetemplates_Name_ApplicationEulaFinalNotification" xml:space="preserve">
+    <value>Условия использования приложения — последнее уведомление</value>
+  </data>
+  <data name="Messagetemplates_Name_ApplicationEulaNotification" xml:space="preserve">
+    <value>Условия использования приложения — обновить уведомление</value>
+  </data>
+  <data name="Messagetemplates_Name_ApplicationLogNotification" xml:space="preserve">
+    <value>Уведомление о журнале приложений для SDK</value>
+  </data>
+  <data name="Messagetemplates_Name_ApplicationNotification" xml:space="preserve">
+    <value>Оповещение приложения</value>
+  </data>
+  <data name="Messagetemplates_Name_ApplicationPublishNotification" xml:space="preserve">
+    <value>Рабочий процесс приложения — уведомление о публикации</value>
+  </data>
+  <data name="Messagetemplates_Name_ApplicationReviewNotification" xml:space="preserve">
+    <value>Рабочий процесс приложения — уведомление о проверке</value>
+  </data>
+  <data name="Messagetemplates_Name_ApplicationScanDetailResult" xml:space="preserve">
+    <value>Сведения об анализе репутации приложений</value>
+  </data>
+  <data name="Messagetemplates_Name_ApplicationScanNotification" xml:space="preserve">
+    <value>Уведомление о завершении анализа репутации приложения</value>
+  </data>
+  <data name="Messagetemplates_Name_AppRemoveNotification" xml:space="preserve">
+    <value>Уведомление о достижении предела удаления приложений</value>
+  </data>
+  <data name="Messagetemplates_Name_AppVersionUpdateNotification" xml:space="preserve">
+    <value>Установка профиля MDM (только для iOS)</value>
+  </data>
+  <data name="Messagetemplates_Name_AuthenticationAppTokenNotification" xml:space="preserve">
+    <value>Уведомление о маркере функции "Забыли секретный код" приложения</value>
+  </data>
+  <data name="Messagetemplates_Name_ComplianceViolationAdministratorNotification" xml:space="preserve">
+    <value>Уведомление администратору о нарушении правил соответствия нормативным требованиям</value>
+  </data>
+  <data name="Messagetemplates_Name_ComplianceViolationUserNotification" xml:space="preserve">
+    <value>Уведомление пользователю о нарушении правил соответствия нормативным требованиям</value>
+  </data>
+  <data name="Messagetemplates_Name_DeviceActivation" xml:space="preserve">
+    <value>Активация устройства</value>
+  </data>
+  <data name="Messagetemplates_Name_DeviceBlockedByRestriction" xml:space="preserve">
+    <value>Устройство заблокировано ограничением регистрации</value>
+  </data>
+  <data name="Messagetemplates_Name_DeviceEnrolled" xml:space="preserve">
+    <value>Устройство зарегистрировано</value>
+  </data>
+  <data name="Messagetemplates_Name_DeviceEnrollmentProgramCustomPrompt" xml:space="preserve">
+    <value>Настраиваемое приглашение программы регистрации устройств</value>
+  </data>
+  <data name="Messagetemplates_Name_DeviceLockScreenMessageiOS7" xml:space="preserve">
+    <value>Сообщение на экране блокировки потерянного устройства (только для iOS 7)</value>
+  </data>
+  <data name="Messagetemplates_Name_DeviceOutofDateCompliance" xml:space="preserve">
+    <value>Запросить проверку на соответствие нормативным требованиям</value>
+  </data>
+  <data name="Messagetemplates_Name_DeviceUnenrolled" xml:space="preserve">
+    <value>Регистрация устройства отменена</value>
+  </data>
+  <data name="Messagetemplates_Name_DeviceWipeEmailNotification" xml:space="preserve">
+    <value>Уведомление о защите от очистки</value>
+  </data>
+  <data name="Messagetemplates_Name_EmailDomainRegistration" xml:space="preserve">
+    <value>Регистрация домена эл. почты</value>
+  </data>
+  <data name="Messagetemplates_Name_EulaNotification" xml:space="preserve">
+    <value>Уведомление об Условиях использования</value>
+  </data>
+  <data name="Messagetemplates_Name_ExternalUserActivation" xml:space="preserve">
+    <value>Активация внешнего пользователя</value>
+  </data>
+  <data name="Messagetemplates_Name_LicenseBasedPurchasedApplicationInvitation" xml:space="preserve">
+    <value>Уведомление о приглашении в VPP по лицензиям</value>
+  </data>
+  <data name="Messagetemplates_Name_MamEnrollmentUserActivation" xml:space="preserve">
+    <value>Активация нового пользователя, инициированная MAM-администратором</value>
+  </data>
+  <data name="Messagetemplates_Name_MamNewUserActivation" xml:space="preserve">
+    <value>Активация нового пользователя, инициированная MAM-пользователем</value>
+  </data>
+  <data name="Messagetemplates_Name_MentionedCommentNotification" xml:space="preserve">
+    <value>Упомянуть в комментарии</value>
+  </data>
+  <data name="Messagetemplates_Name_NewlyAddedUserToUserGroupNotification" xml:space="preserve">
+    <value>Уведомление об общем доступе для добавленного пользователя в группе пользователей</value>
+  </data>
+  <data name="Messagetemplates_Name_NewSharedFolderNotification" xml:space="preserve">
+    <value>Новая общая папка</value>
+  </data>
+  <data name="Messagetemplates_Name_ProvisioningPackageNotification" xml:space="preserve">
+    <value>Уведомление о состоянии пакета подготовки</value>
+  </data>
+  <data name="Messagetemplates_Name_PurchasedApplication" xml:space="preserve">
+    <value>Покупка приложения</value>
+  </data>
+  <data name="Messagetemplates_Name_TempAdminActivation" xml:space="preserve">
+    <value>Временная активация администратора</value>
+  </data>
+  <data name="Messagetemplates_Name_UnRegisterDevice" xml:space="preserve">
+    <value>Отменить регистрацию устройства</value>
+  </data>
+  <data name="Messagetemplates_Name_UserActivation" xml:space="preserve">
+    <value>Активация пользователя</value>
+  </data>
+  <data name="Messagetemplates_Name_VendorApplicationGroupCreationNotification" xml:space="preserve">
+    <value>Уведомление о создании группы приложений поставщика</value>
+  </data>
+  <data name="Messagetemplates_Name_WorkSpaceDeviceActivation" xml:space="preserve">
+    <value>Активация устройства с помощью Container</value>
+  </data>
+  <data name="Messagetemplates_Subject_AdminAccountActivation" xml:space="preserve">
+    <value>Workspace ONE UEM — активация учетной записи администратора</value>
+  </data>
+  <data name="Messagetemplates_Subject_AdminPasswordChange" xml:space="preserve">
+    <value>Workspace ONE UEM — пароль администратора обновлен</value>
+  </data>
+  <data name="Messagetemplates_Subject_AdminPasswordExpiryNotification" xml:space="preserve">
+    <value>Уведомление об истечении срока действия пароля администратора</value>
+  </data>
+  <data name="Messagetemplates_Subject_AdminPasswordReset" xml:space="preserve">
+    <value>Сброс пароля администратора Workspace ONE UEM</value>
+  </data>
+  <data name="Messagetemplates_Subject_AdminPersonalInformationChange" xml:space="preserve">
+    <value>Workspace ONE UEM — обновлены личные данные администратора</value>
+  </data>
+  <data name="Messagetemplates_Subject_AdminPersonalInformationChangeViaApi" xml:space="preserve">
+    <value>Workspace ONE UEM — обновлены личные данные администратора</value>
+  </data>
+  <data name="Messagetemplates_Subject_AdminStatusChange" xml:space="preserve">
+    <value>Workspace ONE UEM — статус администратора обновлен</value>
+  </data>
+  <data name="Messagetemplates_Subject_AppCatalogTokenNotification" xml:space="preserve">
+    <value>Workspace ONE UEM — маркер каталога приложений</value>
+  </data>
+  <data name="Messagetemplates_Subject_ApplicationAssignmentNotification" xml:space="preserve">
+    <value>Workspace ONE UEM — приложение доступно для назначения</value>
+  </data>
+  <data name="Messagetemplates_Subject_ApplicationCreationNotification" xml:space="preserve">
+    <value>Workspace ONE UEM — создано новое приложение</value>
+  </data>
+  <data name="Messagetemplates_Subject_ApplicationEulaFinalNotification" xml:space="preserve">
+    <value>ПОСЛЕДНЕЕ УВЕДОМЛЕНИЕ. Обновление условий использования приложений Workspace ONE UEM</value>
+  </data>
+  <data name="Messagetemplates_Subject_ApplicationEulaNotification" xml:space="preserve">
+    <value>Изменение условий использования приложения</value>
+  </data>
+  <data name="Messagetemplates_Subject_ApplicationLogNotification" xml:space="preserve">
+    <value>Workspace ONE UEM — журнал ошибок приложений</value>
+  </data>
+  <data name="Messagetemplates_Subject_ApplicationNotification" xml:space="preserve">
+    <value>Workspace ONE UEM — приложение доступно для загрузки</value>
+  </data>
+  <data name="Messagetemplates_Subject_ApplicationPublishNotification" xml:space="preserve">
+    <value>Workspace ONE UEM — приложение доступно для публикации</value>
+  </data>
+  <data name="Messagetemplates_Subject_ApplicationReviewNotification" xml:space="preserve">
+    <value>Workspace ONE UEM — уведомление о проверке приложения</value>
+  </data>
+  <data name="Messagetemplates_Subject_ApplicationScanDetailResult" xml:space="preserve">
+    <value>Workspace ONE UEM — отчет об анализе репутации приложений</value>
+  </data>
+  <data name="Messagetemplates_Subject_ApplicationScanNotification" xml:space="preserve">
+    <value>Анализ репутации приложений выполнен</value>
+  </data>
+  <data name="Messagetemplates_Subject_AppRemoveNotification" xml:space="preserve">
+    <value>Внимание! Превышен предел удаления приложений</value>
+  </data>
+  <data name="Messagetemplates_Subject_AuthenticationAppTokenNotification" xml:space="preserve">
+    <value>Маркер "Забыли секретный код"</value>
+  </data>
+  <data name="Messagetemplates_Subject_ComplianceViolationAdministratorNotification" xml:space="preserve">
+    <value>Требуется действие: нарушение соответствия устройства Workspace ONE UEM</value>
+  </data>
+  <data name="Messagetemplates_Subject_ComplianceViolationUserNotification" xml:space="preserve">
+    <value>Требуется действие: нарушение соответствия устройства Workspace ONE UEM</value>
+  </data>
+  <data name="Messagetemplates_Subject_DeviceActivation" xml:space="preserve">
+    <value>Активация устройства Workspace ONE UEM</value>
+  </data>
+  <data name="Messagetemplates_Subject_DeviceBlockedByRestriction" xml:space="preserve">
+    <value>Workspace ONE UEM — устройство заблокировано ограничением регистрации</value>
+  </data>
+  <data name="Messagetemplates_Subject_DeviceEnrolled" xml:space="preserve">
+    <value>Workspace ONE UEM — устройство успешно зарегистрировано</value>
+  </data>
+  <data name="Messagetemplates_Subject_DeviceEnrollmentProgramCustomPrompt" xml:space="preserve">
+    <value>Настраиваемое приглашение программы регистрации устройств</value>
+  </data>
+  <data name="Messagetemplates_Subject_DeviceLockScreenMessageiOS7" xml:space="preserve">
+    <value>Сообщение на экране блокировки устройства для iOS 7</value>
+  </data>
+  <data name="Messagetemplates_Subject_DeviceOutofDateCompliance" xml:space="preserve">
+    <value>Запрос проверки соответствия для Workspace ONE UEM</value>
+  </data>
+  <data name="Messagetemplates_Subject_DeviceUnenrolled" xml:space="preserve">
+    <value>Workspace ONE UEM — регистрация устройства отменена</value>
+  </data>
+  <data name="Messagetemplates_Subject_DeviceWipeEmailNotification" xml:space="preserve">
+    <value>Workspace ONE UEM — превышен предел очистки</value>
+  </data>
+  <data name="Messagetemplates_Subject_EmailDomainRegistration" xml:space="preserve">
+    <value>Workspace ONE UEM — регистрация домена электронной почты</value>
+  </data>
+  <data name="Messagetemplates_Subject_EulaNotification" xml:space="preserve">
+    <value>Workspace ONE UEM — обновление условий использования</value>
+  </data>
+  <data name="Messagetemplates_Subject_ExternalUserActivation" xml:space="preserve">
+    <value>Пользователь {ContentShareUserFirstName} {ContentShareUserLastName} предоставил вам доступ к папке в Workspace ONE UEM</value>
+  </data>
+  <data name="Messagetemplates_Subject_LicenseBasedPurchasedApplicationInvitation" xml:space="preserve">
+    <value>Workspace ONE UEM — ссылка для регистрации с помощью Apple для VPP на основе лицензии</value>
+  </data>
+  <data name="Messagetemplates_Subject_MamEnrollmentUserActivation" xml:space="preserve">
+    <value>Активация пользователя Workspace ONE UEM</value>
+  </data>
+  <data name="Messagetemplates_Subject_MamNewUserActivation" xml:space="preserve">
+    <value>Активация пользователя Workspace ONE UEM</value>
+  </data>
+  <data name="Messagetemplates_Subject_MentionedCommentNotification" xml:space="preserve">
+    <value>{Commenter} упомянул вас в комментарии к файлу "{ContentName}"</value>
+  </data>
+  <data name="Messagetemplates_Subject_NewlyAddedUserToUserGroupNotification" xml:space="preserve">
+    <value>Новые папки, к которым вам предоставлен общий доступ</value>
+  </data>
+  <data name="Messagetemplates_Subject_NewSharedFolderNotification" xml:space="preserve">
+    <value>Пользователь ({ContentShareUserFirstName}) предоставил вам общий доступ к папке "{ContentFolderName}".</value>
+  </data>
+  <data name="Messagetemplates_Subject_ProvisioningPackageNotification" xml:space="preserve">
+    <value>Создан пакет подготовки Workspace ONE UEM</value>
+  </data>
+  <data name="Messagetemplates_Subject_PurchasedApplication" xml:space="preserve">
+    <value>Покупка приложения Workspace ONE UEM</value>
+  </data>
+  <data name="Messagetemplates_Subject_TempAdminActivation" xml:space="preserve">
+    <value>Workspace ONE UEM — активация временной учетной записи администратора</value>
+  </data>
+  <data name="Messagetemplates_Subject_UnRegisterDevice" xml:space="preserve">
+    <value>Workspace ONE UEM — удаление устройства</value>
+  </data>
+  <data name="Messagetemplates_Subject_UserActivation" xml:space="preserve">
+    <value>Активация пользователя Workspace ONE UEM</value>
+  </data>
+  <data name="Messagetemplates_Subject_VendorApplicationGroupCreationNotification" xml:space="preserve">
+    <value>Workspace ONE UEM — создана новая группа приложений</value>
+  </data>
+  <data name="Messagetemplates_Subject_WorkSpaceDeviceActivation" xml:space="preserve">
+    <value>Активация устройства Workspace ONE UEM</value>
+  </data>
+</root>

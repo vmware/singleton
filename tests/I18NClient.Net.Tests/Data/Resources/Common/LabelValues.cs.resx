@@ -1,0 +1,636 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AntiXssErrorMessage" xml:space="preserve">
+    <value>Tělo požadavku API obsahuje znaky, které jsou v ověřování XSS zakázány.</value>
+  </data>
+  <data name="ArgAccountDropDownMenu" xml:space="preserve">
+    <value>Rozevírací nabídka účtu {0}</value>
+    <comment>Placeholder in this label key will contain admin username.</comment>
+  </data>
+  <data name="ArgCharacters" xml:space="preserve">
+    <value>{0} znaků</value>
+  </data>
+  <data name="ArgGoToPrevOrNextSlide" xml:space="preserve">
+    <value>Přejít na {0}. snímek</value>
+    <comment>Placeholder in this label key will contain the link text localized value.</comment>
+  </data>
+  <data name="ArgGoToSpecificSlide" xml:space="preserve">
+    <value>Přejít na snímek č. {0}</value>
+    <comment>Placeholder in this label key will contain the link text localized value.</comment>
+  </data>
+  <data name="ArgOpensDialog" xml:space="preserve">
+    <value>{0} otevře dialogové okno</value>
+    <comment>Placeholder in this label key will contain the link text localized value.</comment>
+  </data>
+  <data name="ArgPlatformLabel" xml:space="preserve">
+    <value>Platforma {0}</value>
+    <comment>Placeholder in this label key will contain the link text localized value.</comment>
+  </data>
+  <data name="AuthenticationAppTokenNotification" xml:space="preserve">
+    <value>Ověřovací oznámení tokenu aplikace</value>
+  </data>
+  <data name="BatchImportCsvTemplateColumnFormatInfo" xml:space="preserve">
+    <value>Pokud je šablona ve formátu CSV upravována pomocí nástroje Microsoft Excel, ujistěte se, že je formát sloupce nastaven na hodnotu „Text“, aby se předešlo ztrátě informací z důvodu převodu formátu.</value>
+  </data>
+  <data name="CheckforDependencyToolTip" xml:space="preserve">
+    <value>Přidejte závislost modulu forge, pokud existuje.</value>
+  </data>
+  <data name="CloseDialog" xml:space="preserve">
+    <value>Zavřít dialogové okno</value>
+  </data>
+  <data name="CompanyLogoWithUrl" xml:space="preserve">
+    <value>Logo společnosti směruje na firemní web</value>
+  </data>
+  <data name="CSV" xml:space="preserve">
+    <value>CSV</value>
+  </data>
+  <data name="CurrentOrgLevelArg" xml:space="preserve">
+    <value>Aktuální organizační skupina je {0}</value>
+    <comment>Placeholder in this label key will contain the link text localized value.</comment>
+  </data>
+  <data name="CustomIngestionServiceIsMissing" xml:space="preserve">
+    <value>Chybí jedna ze služeb požadovaných ke spuštění vlastních sestav. Obraťte se na svého administrátora.</value>
+  </data>
+  <data name="DataInRowInvalid" xml:space="preserve">
+    <value>Data v řádku nejsou platná</value>
+  </data>
+  <data name="DCUApplicationError" xml:space="preserve">
+    <value>Chyba nástroje Dell Command Update</value>
+  </data>
+  <data name="DeviceBiosVerificationFailed" xml:space="preserve">
+    <value>Ověření systému BIOS zařízení selhalo</value>
+  </data>
+  <data name="DeviceBiosVerificationUnknown" xml:space="preserve">
+    <value>Ověření systému BIOS zařízení má neznámý stav</value>
+  </data>
+  <data name="DismissAll" xml:space="preserve">
+    <value>Zrušit vše</value>
+  </data>
+  <data name="DismissAllNotificationsConfirmation" xml:space="preserve">
+    <value>Všechna oznámení budou zrušena. Opravdu chcete pokračovat?</value>
+  </data>
+  <data name="DoorIsLocked" xml:space="preserve">
+    <value>Tyto dveře jsou zamčené</value>
+  </data>
+  <data name="DuplicateRequest" xml:space="preserve">
+    <value>Nahrávání souboru bylo zrušeno, jelikož jsme ho identifikovali jako duplicitní požadavek. Pokud bude problém přetrvávat, kontaktujte administrátora.</value>
+  </data>
+  <data name="EnforceManifest" xml:space="preserve">
+    <value>Vynutit manifest</value>
+  </data>
+  <data name="EnforceManifestToolTip" xml:space="preserve">
+    <value>Znovu se použije v intervalu přenosu dat, pokud byl odstraněn koncovým uživatelem.</value>
+  </data>
+  <data name="EnterPositiveIntegerValue" xml:space="preserve">
+    <value>Zadejte kladné celé číslo.</value>
+  </data>
+  <data name="ErrorOccuredWhilePostingBindingDetailsToIntelligence" xml:space="preserve">
+    <value>Během odesílání podrobností o vazbách klientů do aplikace Intelligence došlo k chybě. Obraťte se na administrátora.</value>
+  </data>
+  <data name="Export" xml:space="preserve">
+    <value>Export</value>
+  </data>
+  <data name="Exports" xml:space="preserve">
+    <value>Exporty</value>
+  </data>
+  <data name="ExternalOAuthIntegration" xml:space="preserve">
+    <value>Integrace externího standardu OAuth</value>
+  </data>
+  <data name="ExternalOAuthIntegrationHelp" xml:space="preserve">
+    <value>Oprávnění k zajištění externího klienta OAuth v aplikaci UEM pro účely ověřování.</value>
+  </data>
+  <data name="ExternalServiceIntegration" xml:space="preserve">
+    <value>Integrace externí služby</value>
+  </data>
+  <data name="ExternalServiceIntegrationHelp" xml:space="preserve">
+    <value>Oprávnění k zajištění jakékoli externí služby VMware, jako je WS1 Intelligence v UEM.</value>
+  </data>
+  <data name="GlobalSearch" xml:space="preserve">
+    <value>Globální vyhledávání</value>
+  </data>
+  <data name="GmtMinusEightTimeZoneFirst" xml:space="preserve">
+    <value>(GMT-08:00) Tichomořská časová zóna (USA a Kanada)</value>
+  </data>
+  <data name="GmtMinusEightTimeZoneSecond" xml:space="preserve">
+    <value>(GMT-08:00) Baja California</value>
+  </data>
+  <data name="GmtMinusElevenTimeZone" xml:space="preserve">
+    <value>(GMT-11:00) Americká Samoa, Niue</value>
+  </data>
+  <data name="GmtMinusFiveTimeZoneFirst" xml:space="preserve">
+    <value>(GMT-05:00) Východní čas (USA a Kanada)</value>
+  </data>
+  <data name="GmtMinusFiveTimeZoneSecond" xml:space="preserve">
+    <value>(GMT-05:00) Bogotá, Lima, Quito, Rio Branco</value>
+  </data>
+  <data name="GmtMinusFiveTimeZoneThird" xml:space="preserve">
+    <value>(GMT-05:00) Kajmanské ostrovy, Jamajka, Panama</value>
+  </data>
+  <data name="GmtMinusFourAndHalfTimeZoneFifth" xml:space="preserve">
+    <value>(GMT-04:00) Caracas</value>
+  </data>
+  <data name="GmtMinusFourTimeZoneFifth" xml:space="preserve">
+    <value>(GMT-04:00) Santiago</value>
+  </data>
+  <data name="GmtMinusFourTimeZoneFirst" xml:space="preserve">
+    <value>(GMT-04:00) Atlantik – časová zóna (Kanada)</value>
+  </data>
+  <data name="GmtMinusFourTimeZoneFourth" xml:space="preserve">
+    <value>(GMT-04:00) Georgetown, La Paz, Manaus, San Juan</value>
+  </data>
+  <data name="GmtMinusFourTimeZoneSecond" xml:space="preserve">
+    <value>(GMT-04:00) Atlantický čas (Bermudy)</value>
+  </data>
+  <data name="GmtMinusFourTimeZoneSixth" xml:space="preserve">
+    <value>(GMT-04:00) Asunción</value>
+  </data>
+  <data name="GmtMinusFourTimeZoneThird" xml:space="preserve">
+    <value>(GMT-04:00) Aruba, Barbados, Curacao, Dominikánská republika</value>
+  </data>
+  <data name="GmtMinusNineThirtyTimeZone" xml:space="preserve">
+    <value>(GMT-09:30) Markézy (Francouzská Polynésie)</value>
+  </data>
+  <data name="GmtMinusNineTimeZone" xml:space="preserve">
+    <value>(GMT-09:00) Aljaška</value>
+  </data>
+  <data name="GmtMinusNineTimeZoneSecond" xml:space="preserve">
+    <value>(GMT-09:00) Gambierovy ostrovy (Francouzská Polynésie)</value>
+  </data>
+  <data name="GmtMinusOneTimeZoneFirst" xml:space="preserve">
+    <value>(GMT-01:00) Azory</value>
+  </data>
+  <data name="GmtMinusOneTimeZoneSecond" xml:space="preserve">
+    <value>(GMT-01:00) Kapverdy</value>
+  </data>
+  <data name="GmtMinusSevenTimeZoneFirst" xml:space="preserve">
+    <value>(GMT-07:00) Horská časová zóna (USA a Kanada)</value>
+  </data>
+  <data name="GmtMinusSevenTimeZoneSecond" xml:space="preserve">
+    <value>(GMT-07:00) Chihuahua, La Paz, Mazatlán</value>
+  </data>
+  <data name="GmtMinusSevenTimeZoneThird" xml:space="preserve">
+    <value>(GMT-07:00) Arizona (USA)</value>
+  </data>
+  <data name="GmtMinusSixTimeZoneFirst" xml:space="preserve">
+    <value>(GMT-06:00) Centrální časová zóna (USA a Kanada)</value>
+  </data>
+  <data name="GmtMinusSixTimeZoneFourth" xml:space="preserve">
+    <value>(GMT-06:00) Belize, Kostarika, Guatemala, Honduras</value>
+  </data>
+  <data name="GmtMinusSixTimeZoneSecond" xml:space="preserve">
+    <value>(GMT-06:00) Guadalajara, Mexiko, Monterrey</value>
+  </data>
+  <data name="GmtMinusSixTimeZoneThird" xml:space="preserve">
+    <value>(GMT-06:00) Saskatchewan</value>
+  </data>
+  <data name="GmtMinusTenTimeZone" xml:space="preserve">
+    <value>(GMT-10:00) Hawaii, Tahiti (French Polynesia)</value>
+  </data>
+  <data name="GmtMinusThreeTimeZoneFifth" xml:space="preserve">
+    <value>(GMT-03:00) Nuuk (Grónsko)</value>
+  </data>
+  <data name="GmtMinusThreeTimeZoneFirst" xml:space="preserve">
+    <value>(GMT-03:00) Brasilia</value>
+  </data>
+  <data name="GmtMinusThreeTimeZoneFourth" xml:space="preserve">
+    <value>(GMT-03:30) Newfoundland</value>
+  </data>
+  <data name="GmtMinusThreeTimeZoneSecond" xml:space="preserve">
+    <value>(GMT-03:00) Cayenne, Fortaleza, Paramaribo</value>
+  </data>
+  <data name="GmtMinusThreeTimeZoneThird" xml:space="preserve">
+    <value>(GMT-03:00) Argentina</value>
+  </data>
+  <data name="GmtMinusTwelveTimeZone" xml:space="preserve">
+    <value>(GMT-12:00) Mezinárodní datová linie – západ</value>
+  </data>
+  <data name="GmtMinusTwoTimeZone" xml:space="preserve">
+    <value>(GMT-02:00) Jižní Georgia a Jižní Sandwichovy ostrovy</value>
+  </data>
+  <data name="GmtPlusEightTimeZoneFifth" xml:space="preserve">
+    <value>(GMT +08:00) Singapur</value>
+  </data>
+  <data name="GmtPlusEightTimeZoneFirst" xml:space="preserve">
+    <value>(GMT+08:00) Perth</value>
+  </data>
+  <data name="GmtPlusEightTimeZoneFourth" xml:space="preserve">
+    <value>(GMT+08:00) Kuala Lumpur</value>
+  </data>
+  <data name="GmtPlusEightTimeZoneSecond" xml:space="preserve">
+    <value>(GMT+08:00) Ulánbátar</value>
+  </data>
+  <data name="GmtPlusEightTimeZoneSeventh" xml:space="preserve">
+    <value>(GMT+08:00) Peking, Čchung-čching, Hongkong, Urumči</value>
+  </data>
+  <data name="GmtPlusEightTimeZoneSixth" xml:space="preserve">
+    <value>(GMT+08:00) Tchaj-pej</value>
+  </data>
+  <data name="GmtPlusEightTimeZoneThird" xml:space="preserve">
+    <value>(GMT +08:00) Filipíny</value>
+  </data>
+  <data name="GmtPlusElevenTimeZone" xml:space="preserve">
+    <value>(GMT+11:00) Šalamounovy ostrovy, Nová Kaledonie</value>
+  </data>
+  <data name="GmtPlusElevenTimeZoneSecond" xml:space="preserve">
+    <value>(GMT+11:00) Bougainville</value>
+  </data>
+  <data name="GmtPlusFiveTimeZoneFifth" xml:space="preserve">
+    <value>(GMT+05:00) Ašchabad, Taškent</value>
+  </data>
+  <data name="GmtPlusFiveTimeZoneFirst" xml:space="preserve">
+    <value>(GMT+05:45) Káthmándú</value>
+  </data>
+  <data name="GmtPlusFiveTimeZoneFourth" xml:space="preserve">
+    <value>(GMT+05:00) Islámábád, Karáčí</value>
+  </data>
+  <data name="GmtPlusFiveTimeZoneSecond" xml:space="preserve">
+    <value>(GMT+05:30) Čennai, Kalkata, Bombaj, Nové Dillí, Šrí Džajavardanapura</value>
+  </data>
+  <data name="GmtPlusFiveTimeZoneThird" xml:space="preserve">
+    <value>(GMT +05:00) Maledivy</value>
+  </data>
+  <data name="GmtPlusFourteenTimeZone" xml:space="preserve">
+    <value>(GMT+14:00) Kiritimati</value>
+  </data>
+  <data name="GmtPlusFourTimeZoneFirst" xml:space="preserve">
+    <value>(GMT+04:30) Kábul</value>
+  </data>
+  <data name="GmtPlusFourTimeZoneSecond" xml:space="preserve">
+    <value>(GMT+04:00) Baku</value>
+  </data>
+  <data name="GmtPlusFourTimeZoneThird" xml:space="preserve">
+    <value>(GMT+04:00) Abú Zabí, Muscat, Port Louis</value>
+  </data>
+  <data name="GmtPlusNineTimeThird" xml:space="preserve">
+    <value>(GMT+09:00) Ósaka, Sapporo, Tokio</value>
+  </data>
+  <data name="GmtPlusNineTimeZoneFifth" xml:space="preserve">
+    <value>(GMT+09:00) Palau, Východní Timor</value>
+  </data>
+  <data name="GmtPlusNineTimeZoneFirst" xml:space="preserve">
+    <value>(GMT+09:30) Adelaide</value>
+  </data>
+  <data name="GmtPlusNineTimeZoneFourth" xml:space="preserve">
+    <value>(GMT+09:00) Soul</value>
+  </data>
+  <data name="GmtPlusNineTimeZoneSecond" xml:space="preserve">
+    <value>(GMT+09:30) Darwin</value>
+  </data>
+  <data name="GmtPlusNineTimeZoneSixth" xml:space="preserve">
+    <value>(GMT +09:00) Čita, Jakutsk, Blagověščensk</value>
+  </data>
+  <data name="GmtPlusOneTimeZoneFifth" xml:space="preserve">
+    <value>(GMT+01:00) Kodaň, Oslo, Stockholm</value>
+  </data>
+  <data name="GmtPlusOneTimeZoneFirst" xml:space="preserve">
+    <value>(GMT+01:00) Sarajevo, Skopje, Varšava, Záhřeb</value>
+  </data>
+  <data name="GmtPlusOneTimeZoneFourth" xml:space="preserve">
+    <value>(GMT+01:00) Bělehrad, Bratislava, Budapešť, Lublaň, Praha</value>
+  </data>
+  <data name="GmtPlusOneTimeZoneSecond" xml:space="preserve">
+    <value>(GMT+01:00) Brusel, Kodaň, Madrid, Paříž</value>
+  </data>
+  <data name="GmtPlusOneTimeZoneSeventh" xml:space="preserve">
+    <value>(GMT+01:00) Alžírsko, Angola, Kongo, Nigérie, Tunisko</value>
+  </data>
+  <data name="GmtPlusOneTimeZoneSixth" xml:space="preserve">
+    <value>(GMT+01:00) Windhoek</value>
+  </data>
+  <data name="GmtPlusOneTimeZoneThird" xml:space="preserve">
+    <value>(GMT+01:00) Amsterdam, Berlín, Bern, Řím, Stockholm, Vídeň</value>
+  </data>
+  <data name="GmtPlusSevenTimeZoneFirst" xml:space="preserve">
+    <value>(GMT+07:00) Novosibirsk</value>
+  </data>
+  <data name="GmtPlusSevenTimeZoneSecond" xml:space="preserve">
+    <value>(GMT+07:00) Bangkok, Hanoj, Jakarta</value>
+  </data>
+  <data name="GmtPlusSixTimeZoneFifth" xml:space="preserve">
+    <value>(GMT+06:00) Omsk</value>
+  </data>
+  <data name="GmtPlusSixTimeZoneFirst" xml:space="preserve">
+    <value>(GMT+06:30) Rangún, Kokosové (Keelingovy) ostrovy</value>
+  </data>
+  <data name="GmtPlusSixTimeZoneFourth" xml:space="preserve">
+    <value>(GMT+06:00) Biškek</value>
+  </data>
+  <data name="GmtPlusSixTimeZoneSecond" xml:space="preserve">
+    <value>(GMT+06:00) Dháka</value>
+  </data>
+  <data name="GmtPlusSixTimeZoneThird" xml:space="preserve">
+    <value>(GMT+06:00) Astana</value>
+  </data>
+  <data name="GmtPlusTenTimeZoneFifth" xml:space="preserve">
+    <value>(GMT+10:00) Guam, Port Moresby</value>
+  </data>
+  <data name="GmtPlusTenTimeZoneSecond" xml:space="preserve">
+    <value>(GMT+10:00) Canberra, Melbourne, Sydney</value>
+  </data>
+  <data name="GmtPlusTenTimeZoneSixth" xml:space="preserve">
+    <value>(GMT+10:00) Brisbane</value>
+  </data>
+  <data name="GmtPlusTenTimeZoneThird" xml:space="preserve">
+    <value>(GMT+10:00) Hobart</value>
+  </data>
+  <data name="GmtPlusThirteenTimeZoneFirst" xml:space="preserve">
+    <value>(GMT+13:00) Samoa</value>
+  </data>
+  <data name="GmtPlusThirteenTimeZoneSecond" xml:space="preserve">
+    <value>(GMT+13:00) Nuku'alofa</value>
+  </data>
+  <data name="GmtPlusThirteenTimeZoneThird" xml:space="preserve">
+    <value>(GMT+13:00) Tokelau</value>
+  </data>
+  <data name="GmtPlusThreeTimeZoneEighth" xml:space="preserve">
+    <value>(GMT+03:00) Istanbul</value>
+  </data>
+  <data name="GmtPlusThreeTimeZoneFifth" xml:space="preserve">
+    <value>(GMT+03:00) Rijád, Kuvajt, Dauhá, Manáma</value>
+  </data>
+  <data name="GmtPlusThreeTimeZoneFirst" xml:space="preserve">
+    <value>(GMT+03:30) Teherán</value>
+  </data>
+  <data name="GmtPlusThreeTimeZoneFourth" xml:space="preserve">
+    <value>(GMT+03:00) Nairobi</value>
+  </data>
+  <data name="GmtPlusThreeTimeZoneSecond" xml:space="preserve">
+    <value>(GMT+03:00) Minsk</value>
+  </data>
+  <data name="GmtPlusThreeTimeZoneSeventh" xml:space="preserve">
+    <value>(GMT+03:00) Moskva, Petrohrad, Volgograd</value>
+  </data>
+  <data name="GmtPlusThreeTimeZoneSixth" xml:space="preserve">
+    <value>(GMT+03:00) Bagdád</value>
+  </data>
+  <data name="GmtPlusThreeTimeZoneThird" xml:space="preserve">
+    <value>(GMT+03:00) Madagaskar</value>
+  </data>
+  <data name="GmtPlusTwelveFortyFiveTimeZone" xml:space="preserve">
+    <value>(GMT+12:45) Chathamské ostrovy</value>
+  </data>
+  <data name="GmtPlusTwelveTimeZoneFirst" xml:space="preserve">
+    <value>(GMT+12:00) Fidži</value>
+  </data>
+  <data name="GmtPlusTwelveTimeZoneSecond" xml:space="preserve">
+    <value>(GMT +12:00) Kiribati, Marshallovy ostrovy, Tuvalu</value>
+  </data>
+  <data name="GmtPlusTwelveTimeZoneThird" xml:space="preserve">
+    <value>(GMT+12:00) Auckland, Wellington</value>
+  </data>
+  <data name="GmtPlusTwoTimeZoneEighth" xml:space="preserve">
+    <value>(GMT+02:00) Tripolis</value>
+  </data>
+  <data name="GmtPlusTwoTimeZoneFifth" xml:space="preserve">
+    <value>(GMT+02:00) Kyjev</value>
+  </data>
+  <data name="GmtPlusTwoTimeZoneFirst" xml:space="preserve">
+    <value>(GMT+02:00) Kišiněv, Atény, Bukurešť, Nikósie </value>
+  </data>
+  <data name="GmtPlusTwoTimeZoneFourth" xml:space="preserve">
+    <value>(GMT+02:00) Helsinky, Kyjev, Riga, Sofie, Tallinn, Vilnius</value>
+  </data>
+  <data name="GmtPlusTwoTimeZoneSecond" xml:space="preserve">
+    <value>(GMT+02:00) Jeruzalém</value>
+  </data>
+  <data name="GmtPlusTwoTimeZoneSeventh" xml:space="preserve">
+    <value>(GMT+02:00) Harare, Pretoria</value>
+  </data>
+  <data name="GmtPlusTwoTimeZoneSixth" xml:space="preserve">
+    <value>(GMT+02:00) Káhira</value>
+  </data>
+  <data name="GmtPlusTwoTimeZoneThird" xml:space="preserve">
+    <value>(GMT+02:00) Ammán, Bejrút, Damašek</value>
+  </data>
+  <data name="GmtTimeZoneFirst" xml:space="preserve">
+    <value>(GMT+00:00) Dublin, Edinburgh, Lisabon, Londýn</value>
+  </data>
+  <data name="GmtTimeZoneForth" xml:space="preserve">
+    <value>(GMT+00:00) Casablanca</value>
+  </data>
+  <data name="GmtTimeZoneSecond" xml:space="preserve">
+    <value>(GMT+00:00) Reykjavík</value>
+  </data>
+  <data name="GmtTimeZoneThird" xml:space="preserve">
+    <value>(GMT+00:00) Monrovia, Ouagadougou, Dakar, Yamoussoukro</value>
+  </data>
+  <data name="InstallManifestToolTip" xml:space="preserve">
+    <value>Provede se při použití profilu.</value>
+  </data>
+  <data name="IUnderstand" xml:space="preserve">
+    <value>Rozumím</value>
+  </data>
+  <data name="LearnAndUpgrade" xml:space="preserve">
+    <value>Informace a upgrade</value>
+  </data>
+  <data name="LearnMoreAboutCloudServices" xml:space="preserve">
+    <value>Další informace o cloudových službách</value>
+  </data>
+  <data name="LoginToCustomerTypeOgForDataIntegration" xml:space="preserve">
+    <value>Chcete-li pokračovat, přihlaste se do organizační skupiny zákaznického typu.</value>
+  </data>
+  <data name="MyServices" xml:space="preserve">
+    <value>Moje služby</value>
+  </data>
+  <data name="NoDataFound" xml:space="preserve">
+    <value>Zdá se, že nemáte žádná data</value>
+  </data>
+  <data name="NoteYouWillNeedToSaveTheFileAsA_csvBeforeImporting" xml:space="preserve">
+    <value>Poznámka: soubor musíte uložit ve formátu .csv před tím, než ho importujete.</value>
+  </data>
+  <data name="OperationNotSupported" xml:space="preserve">
+    <value>Operace není podporována</value>
+  </data>
+  <data name="ProvisioningPackageNotification" xml:space="preserve">
+    <value>Oznámení zřizovacího balíčku</value>
+  </data>
+  <data name="Remember" xml:space="preserve">
+    <value>Zapamatovat</value>
+  </data>
+  <data name="RemoveManifest" xml:space="preserve">
+    <value>Odstranit manifest</value>
+  </data>
+  <data name="RemoveManifestToolTip" xml:space="preserve">
+    <value>Provede se při odebrání profilu.</value>
+  </data>
+  <data name="ResetBiosPasswordConfirmed" xml:space="preserve">
+    <value>Resetování hesla systému BIOS potvrzeno</value>
+  </data>
+  <data name="ResetBiosPasswordFailed" xml:space="preserve">
+    <value>Resetování hesla systému BIOS se nezdařilo</value>
+  </data>
+  <data name="ResetBiosPasswordRefused" xml:space="preserve">
+    <value>Resetování hesla systému BIOS odmítnuto</value>
+  </data>
+  <data name="ResetBiosPasswordRequested" xml:space="preserve">
+    <value>Resetování hesla systému BIOS vyžádáno</value>
+  </data>
+  <data name="SearchInArgListView" xml:space="preserve">
+    <value>Hledat v zobrazení seznamu {0}</value>
+  </data>
+  <data name="UEM" xml:space="preserve">
+    <value>UEM</value>
+  </data>
+  <data name="UnAuthorizedAccessWarningMessage" xml:space="preserve">
+    <value>Nejste oprávněni přistupovat k tomuto zdroji. Pokud se domníváte, že jste tuto zprávu obdrželi omylem, kontaktujte vašeho IT administrátora.</value>
+  </data>
+  <data name="UnrecoverableErrorDescription" xml:space="preserve">
+    <value>Objevila se neočekávaná chyba. Pokud problém bude přetrvávat, kontaktujte svého IT administrátora.</value>
+  </data>
+  <data name="WorkspaceOneUemDataIntegration" xml:space="preserve">
+    <value>Integrace dat aplikace Workspace ONE UEM</value>
+  </data>
+  <data name="WorkspaceOneUemDataIntegrationDescription1" xml:space="preserve">
+    <value>Integrace s aplikací Workspace ONE Intelligence vyžaduje data uživatelů a událostí z aplikace Workspace ONE UEM.</value>
+  </data>
+  <data name="WorkspaceOneUemDataIntegrationDescription2" xml:space="preserve">
+    <value>V případě souhlasu autorizujete zasílání těchto dat z aplikace Workspace ONE UEM do aplikace Workspace ONE Intelligence a budete přesměrováni do aplikace Workspace ONE Intelligence.</value>
+  </data>
+  <data name="WorkspaceOneUemDataIntegrationDescription3" xml:space="preserve">
+    <value>V případě odmítnutí budete přesměrováni do aplikace Workspace ONE Intelligence bez integrace dat z aplikace Workspace ONE UEM.</value>
+  </data>
+  <data name="WorkspaceOneUemIsAlreadyBoundToIntelligence" xml:space="preserve">
+    <value>Zadaný klient platformy Workspace ONE UEM již byl vázán na klienta Intelligence.</value>
+  </data>
+  <data name="WS1CloudPlatform" xml:space="preserve">
+    <value>Workspace ONE</value>
+  </data>
+  <data name="WS1HubServices" xml:space="preserve">
+    <value>Služby Workspace ONE Hub</value>
+  </data>
+  <data name="WS1IdentityManager" xml:space="preserve">
+    <value>Workspace ONE Access</value>
+  </data>
+  <data name="WS1Intelligence" xml:space="preserve">
+    <value>Workspace ONE Intelligence</value>
+  </data>
+  <data name="WS1OneUEM" xml:space="preserve">
+    <value>Workspace ONE UEM</value>
+  </data>
+  <data name="WUChoosePolicySource" xml:space="preserve">
+    <value>Aktualizace systému Windows – Zvolte zdroj zásad</value>
+  </data>
+  <data name="WUSelectPolicySource" xml:space="preserve">
+    <value>Aktualizace systému Windows – Vyberte zdroj zásad</value>
+  </data>
+  <data name="XLSX" xml:space="preserve">
+    <value>XLSX</value>
+  </data>
+</root>

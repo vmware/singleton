@@ -1,0 +1,805 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AboutEnrollment" xml:space="preserve">
+    <value>Meer informatie over inschrijvingsstatussen:</value>
+  </data>
+  <data name="AboutTotalDeployment" xml:space="preserve">
+    <value>Toestellen moeten zijn ingeschreven om tot de geïmplementeerde toestellen gerekend te worden. Toestellen die in afwachting zijn van acties, zoals het wissen van bedrijfsgegevens, worden meegeteld totdat de actie is voltooid. Geregistreerde toestellen worden niet meegeteld totdat ze zijn ingeschreven.</value>
+  </data>
+  <data name="AddTag" xml:space="preserve">
+    <value>Label maken</value>
+  </data>
+  <data name="AddTagHelp" xml:space="preserve">
+    <value>Geeft toestemming om een nieuw label te maken</value>
+  </data>
+  <data name="AdminModePasscodeHelpText" xml:space="preserve">
+    <value>Geef een alfanumerieke toegangscode op om problemen met een toestel op te lossen in de beheermodus. Tik vijf keer op het Hub-pictogram op het inlogscherm om de beheerdersmodus te openen.</value>
+  </data>
+  <data name="AirwatchCannotSeeYourPersonalContent" xml:space="preserve">
+    <value>VMware Workspace ONE Intelligent Hub verzamelt alleen informatie die nodig is om veilig toegang tot bedrijfssystemen te geven</value>
+  </data>
+  <data name="AllowPinAtStartup" xml:space="preserve">
+    <value>PIN toestaan bij opstarten</value>
+  </data>
+  <data name="AndroidSharedDeviceAdminModePasscode" xml:space="preserve">
+    <value>Wachtwoord voor beheerdersmodus</value>
+  </data>
+  <data name="AndroidSharedDeviceMode" xml:space="preserve">
+    <value>Android-modus Gedeeld toestel</value>
+  </data>
+  <data name="AndroidSharedDeviceModeHelpText" xml:space="preserve">
+    <value>Check gedeelde Android-toestellen in en uit met de systeemeigen Android-functie of Workspace ONE Launcher. Systeemeigen Android ondersteunt eenvoudigere gebruiksscenario's waarvoor niet veel aanpassingen zijn vereist. Launcher ondersteunt UI-aanpassing voor complexere gebruiksscenario's.</value>
+  </data>
+  <data name="AppCatalogSupport" xml:space="preserve">
+    <value>Ondersteuning voor app-catalogus</value>
+  </data>
+  <data name="AssignTags" xml:space="preserve">
+    <value>Labels toewijzen</value>
+  </data>
+  <data name="BluetoothDeviceMessageLabelAny" xml:space="preserve">
+    <value>Bluetooth-apparaat</value>
+  </data>
+  <data name="BulkAndroidWipeAddition" xml:space="preserve">
+    <value>Als een of meer van deze toestellen opnieuw in Workspace ONE worden ingeschreven, wordt een nieuwe UDID aangemaakt, wat resulteert in dubbele toestelmappen.</value>
+  </data>
+  <data name="BulkEnterpriseWipeDescription" xml:space="preserve">
+    <value>Het wissen van de bedrijfsgegevens zal alle beheerde bedrijfsbronnen uitschrijven en van het (de) geselecteerde toestel(len) verwijderen, met inbegrip van applicaties en profielen.
+Deze actie kan niet ongedaan gemaakt worden en herinschrijving in Workspace ONE is vereist om dit (deze) toestel(len) opnieuw te beheren.</value>
+  </data>
+  <data name="CallUsageMessageLabelAny" xml:space="preserve">
+    <value>Gebruik van oproepen</value>
+  </data>
+  <data name="CannotDeleteUsersWithRegistrationRecord" xml:space="preserve">
+    <value>Kan geen gebruiker verwijderen die een DEP-registratierecord heeft of gekoppeld is aan een DEP-profiel</value>
+  </data>
+  <data name="CarrierCountryCodeMessageLabelAny" xml:space="preserve">
+    <value>Landcode van provider</value>
+  </data>
+  <data name="CellularDataUsageMessageLabelAny" xml:space="preserve">
+    <value>Mobiel dataverbruik</value>
+  </data>
+  <data name="ChromeOsDeviceCleanup" xml:space="preserve">
+    <value>Chrome OS-apparaat verwijderen</value>
+  </data>
+  <data name="ClearAndroidAccounts" xml:space="preserve">
+    <value>Android-accounts wissen</value>
+  </data>
+  <data name="ClearAndroidAccountsHelpInfo" xml:space="preserve">
+    <value>Als u Android-accounts wist, worden accounts verwijderd die sommige applicaties gebruiken om automatisch in te loggen. Voor het wissen van een Google-account is Android 8+ vereist en voor het wissen van een niet-Google-account is Android 9+ vereist. Deze instelling is alleen van toepassing op de Launcher-methode van een gedeeld Android-toestel, aangezien de systeemeigen methode altijd alle accounts wist.</value>
+  </data>
+  <data name="ClearDevicePasscodeDevicePageHelpInfo" xml:space="preserve">
+    <value>Schakel de optie Veilig opstarten in of uit, waarvoor een eerste PIN-invoer vereist is om het toestel op te starten. Als Veilig opstarten al is uitgeschakeld, moeten de fabrieksinstellingen worden hersteld om de optie in te schakelen. Deze functie is alleen van toepassing op Android-toestellen die geen bestandsversleuteling hebben.</value>
+  </data>
+  <data name="ClearDevicePasscodeSharedSettingsHelpInfo" xml:space="preserve">
+    <value>Schakel Android veilig opstarten in of uit, waarvoor een eerste PIN-invoer vereist is om het toestel op te starten. Als deze optie is uitgeschakeld, kunnen gebruikers Veilig opstarten niet inschakelen tijdens het instellen van de toegangscode. Als Veilig opstarten al op het toestel is uitgeschakeld, moeten de fabrieksinstellingen worden hersteld om de optie in te schakelen. Deze functie is alleen van toepassing op Android-toestellen die geen bestandsversleuteling hebben.</value>
+  </data>
+  <data name="ConfirmAndroidSharedDeviceAdminModePasscode" xml:space="preserve">
+    <value>Wachtwoord voor beheerdersmodus bevestigen</value>
+  </data>
+  <data name="ConfirmEnterpriseWipeDeviceMessageChromeOs" xml:space="preserve">
+    <value>Met deze actie schrijft u alle beheerde zakelijke resources uit en verwijdert u die van het geselecteerde toestel (inclusief applicaties en profielen). U kunt deze actie niet ongedaan maken zonder dit toestel opnieuw in te schrijven.</value>
+  </data>
+  <data name="ConfirmExport" xml:space="preserve">
+    <value>Ja, exporteren</value>
+  </data>
+  <data name="ConfirmOverwrite" xml:space="preserve">
+    <value>Bevestiging overschrijven</value>
+  </data>
+  <data name="ConfirmOverwriteMessage" xml:space="preserve">
+    <value>Als u deze PPKG exporteert, worden alle PPKG's voor voltooide sjablonen overschreven. Zorg dat u de vorige PPKG downloadt voordat u deze exporteert. Weet u zeker dat u wilt doorgaan?</value>
+  </data>
+  <data name="ContactAdminPrivacyNotice" xml:space="preserve">
+    <value>De bovenstaande verzamelgebieden hebben betrekking op de VMware Workspace ONE Intelligent Hub en kunnen per type toestel (zakelijk of privé) verschillen.
+
+Vraag uw systeembeheerder met welke applicaties van derden uw bedrijf aanvullende persoonlijke/privégegevens kan zien. Vraag tevens om een kopie van het document waarin het interne beleid staat beschreven.</value>
+  </data>
+  <data name="DependencyApplications" xml:space="preserve">
+    <value>Afhankelijkheidsapplicaties</value>
+  </data>
+  <data name="DeviceBulkManagementAddTags" xml:space="preserve">
+    <value>Toestelbeheer in bulk - Labels toewijzen</value>
+  </data>
+  <data name="DeviceBulkManagementAddTagsHelp" xml:space="preserve">
+    <value>Hiermee kunnen gebruiker labels in bulk toewijzen aan toestellen.</value>
+  </data>
+  <data name="DeviceDeleteWhiteSpaceReason" xml:space="preserve">
+    <value>Een lege ruimte kan niet worden gebruikt als reden.</value>
+  </data>
+  <data name="DevicePhoneNumberMessageLabelAny" xml:space="preserve">
+    <value>Toestel telefoonnummer</value>
+  </data>
+  <data name="DeviceProvisioningMenuDescription" xml:space="preserve">
+    <value>Toestelprovisioningpakketten beheren</value>
+  </data>
+  <data name="DeviceProvisioningMenuTitle" xml:space="preserve">
+    <value>Provisioning</value>
+  </data>
+  <data name="DevicesCountExcludesUnenrolled" xml:space="preserve">
+    <value>Toestellen die worden meegeteld in de totale implementatie zijn bijgewerkt om uitgeschreven toestellen uit te sluiten.</value>
+  </data>
+  <data name="DeviceViewWorkflowsList" xml:space="preserve">
+    <value>Toestelweergave werkstroomlijst</value>
+  </data>
+  <data name="DeviceViewWorkflowsListHelp" xml:space="preserve">
+    <value>Beheert de toegang tot het tabblad Werkstromen op de pagina Toestelgegevens</value>
+  </data>
+  <data name="DifferentModelReplacement" xml:space="preserve">
+    <value>Vervanging door ander model</value>
+  </data>
+  <data name="DownloadEncryptedPackage" xml:space="preserve">
+    <value>Versleuteld pakket downloaden</value>
+  </data>
+  <data name="DownloadProvisioningFiles" xml:space="preserve">
+    <value>Provisioningbestanden downloaden</value>
+  </data>
+  <data name="DownloadWindowsPhoneAgent" xml:space="preserve">
+    <value>Windows Phone Agent downloaden</value>
+  </data>
+  <data name="DuplicatePackageFound" xml:space="preserve">
+    <value>Deze naam wordt al gebruikt. Kies een andere naam.</value>
+  </data>
+  <data name="EditProvisioningPackage" xml:space="preserve">
+    <value>Provisioningpakket bewerken</value>
+  </data>
+  <data name="EducationCertificateRenewalJob" xml:space="preserve">
+    <value>Taak voor vernieuwen van educatiecertificaat</value>
+  </data>
+  <data name="EmailDiscovery" xml:space="preserve">
+    <value>Automatische e-maildetectie</value>
+  </data>
+  <data name="EmailDomainRegistrationFailure" xml:space="preserve">
+    <value>Registratie e-maildomein mislukt</value>
+  </data>
+  <data name="EmailDomainRegistrationSuccess" xml:space="preserve">
+    <value>Registratie e-maildomein geslaagd</value>
+  </data>
+  <data name="EmptyApplicationList" xml:space="preserve">
+    <value>Geen applicaties gevonden.</value>
+  </data>
+  <data name="EmptyEnrollmentSessionPleaseTryAgain" xml:space="preserve">
+    <value>Lege inschrijvingssessie. Probeer het opnieuw.</value>
+  </data>
+  <data name="EmptyPackageList" xml:space="preserve">
+    <value>Uw nieuwe provisioningpakketten worden hier weergegeven.</value>
+  </data>
+  <data name="EncryptedPackageDescription" xml:space="preserve">
+    <value>Exporteer één versleutelde PPKG-bundel om lokale apparaten in te richten met configuraties, instellingen en applicaties.</value>
+  </data>
+  <data name="EncryptedPackageTitle" xml:space="preserve">
+    <value>Versleuteld pakket</value>
+  </data>
+  <data name="Enrollmentemailaddress" xml:space="preserve">
+    <value>E-mailadres</value>
+  </data>
+  <data name="Enrollmentemailusername" xml:space="preserve">
+    <value>E-mail-gebruikersnaam</value>
+  </data>
+  <data name="EnterCharactersShownAbove" xml:space="preserve">
+    <value>Voer de hierboven vermelde tekens in</value>
+  </data>
+  <data name="EnterpriseWipeFailed" xml:space="preserve">
+    <value>Bedrijfsgegevens wissen is mislukt.</value>
+  </data>
+  <data name="EnterpriseWipeReasonRequired" xml:space="preserve">
+    <value>Het veld Reden is vereist bij het aanvragen van bedrijfsgegevens wissen.</value>
+  </data>
+  <data name="EnterpriseWipeSucceeded" xml:space="preserve">
+    <value>Bedrijfsgegevens wissen is geslaagd.</value>
+  </data>
+  <data name="ExportInProgress" xml:space="preserve">
+    <value>Exporteren...</value>
+  </data>
+  <data name="ExportLater" xml:space="preserve">
+    <value>Er wordt al een ander provisioningpakket geëxporteerd. Sla uw sjabloon op en exporteer deze later of wacht tot de andere export is voltooid.</value>
+  </data>
+  <data name="FailedLoadingUnmanagedProfilePayload" xml:space="preserve">
+    <value>Datalading van niet-beheerd profiel laden is mislukt</value>
+  </data>
+  <data name="FailedToDownload" xml:space="preserve">
+    <value>Downloadverzoek mislukt. Probeer het later opnieuw.</value>
+  </data>
+  <data name="FailedToExport" xml:space="preserve">
+    <value>Kan niet exporteren</value>
+  </data>
+  <data name="FeatureNotSupported" xml:space="preserve">
+    <value>Deze functie wordt momenteel niet ondersteund.</value>
+  </data>
+  <data name="GPSMessageLabelAny" xml:space="preserve">
+    <value>GPS</value>
+  </data>
+  <data name="GroupIDAndEmailRequired" xml:space="preserve">
+    <value>E-mailadres en groeps-ID zijn vereist</value>
+  </data>
+  <data name="InactiveAppsFound" xml:space="preserve">
+    <value>Sommige applicaties zijn verwijderd of gewijzigd nadat dit pakket is gemaakt. Controleer de lijst met geselecteerde applicaties om er zeker van te zijn dat deze is voltooid.</value>
+  </data>
+  <data name="InvokeAgent" xml:space="preserve">
+    <value>Agent starten</value>
+  </data>
+  <data name="LauncherSharedDeviceMode" xml:space="preserve">
+    <value>Launcher</value>
+  </data>
+  <data name="ManagedInstallations" xml:space="preserve">
+    <value>Beheerde installaties</value>
+  </data>
+  <data name="MultipleEnrollmentUsersForEmail" xml:space="preserve">
+    <value>Meerdere inschrijvingsgebruikers gekoppeld aan het opgegeven e-mailadres</value>
+  </data>
+  <data name="NativeSharedDeviceMode" xml:space="preserve">
+    <value>Systeemeigen</value>
+  </data>
+  <data name="NewProvisioningPackage" xml:space="preserve">
+    <value>Nieuw provisioningpakket</value>
+  </data>
+  <data name="NoEnrollmentUserForEmail" xml:space="preserve">
+    <value>Geen inschrijvingsgebruiker gekoppeld aan het opgegeven e-mailadres</value>
+  </data>
+  <data name="NoOrganizationGroupForGroupId" xml:space="preserve">
+    <value>Er is geen organisatiegroep gevonden voor de ingevoerde groeps-ID</value>
+  </data>
+  <data name="NoTransformSelected" xml:space="preserve">
+    <value>Geen transformatie geselecteerd</value>
+  </data>
+  <data name="NotWorking" xml:space="preserve">
+    <value>Werkt het niet?</value>
+  </data>
+  <data name="OEMProvisioningDescription" xml:space="preserve">
+    <value>Exporteer PPKG- en XML-bestanden om apparaten vooraf te laden met configuraties, instellingen en applicaties in de OEM-fabriek.</value>
+  </data>
+  <data name="OEMProvisioningTitle" xml:space="preserve">
+    <value>Fabrieksprovisioning</value>
+  </data>
+  <data name="OnboardingMethod" xml:space="preserve">
+    <value>Onboarding-methode</value>
+  </data>
+  <data name="OnboardingMethods" xml:space="preserve">
+    <value>Onboarding-methoden</value>
+  </data>
+  <data name="OrganizationGroupInvalidForEnrollmentUser" xml:space="preserve">
+    <value>De gebruiker is niet gemachtigd om in te schrijven bij de opgegeven organisatiegroep</value>
+  </data>
+  <data name="PackageInProgress" xml:space="preserve">
+    <value>Een bestaande Windows Provisioning Package (PPKG)-exportaanvraag is bezig. Wacht tot de export is voltooid.</value>
+  </data>
+  <data name="PackageSaved" xml:space="preserve">
+    <value>Gelukt! Bezig met het maken van provisioningpakketten. Kom later terug voor de downloadlink.</value>
+  </data>
+  <data name="PersonalApplicationMessageLabelAny" xml:space="preserve">
+    <value>Persoonlijke applicatie</value>
+  </data>
+  <data name="PersonalAppsCollected" xml:space="preserve">
+    <value>Informatie over geïnstalleerde persoonlijke applicaties wordt verzameld om ervoor te zorgen dat er geen kwaadaardige of schadelijke applicaties zijn die uw persoonlijke en bedrijfsgegevens kunnen beschadigen. Er wordt alleen een lijst met geïnstalleerde applicaties beschikbaar gemaakt; er wordt geen inhoud of data van de persoonlijke applicatie met Workspace ONE gedeeld.</value>
+  </data>
+  <data name="PlatformConfirmation" xml:space="preserve">
+    <value>Platform bevestigen</value>
+  </data>
+  <data name="PromptForiPadandMAC" xml:space="preserve">
+    <value>Bevestig of u een iPad gebruikt om problemen bij het registreren en installeren van apps te voorkomen.</value>
+  </data>
+  <data name="RemoteControlAccess" xml:space="preserve">
+    <value>Toegang voor controle op afstand</value>
+  </data>
+  <data name="Replaced" xml:space="preserve">
+    <value>Vervangen</value>
+  </data>
+  <data name="Requested" xml:space="preserve">
+    <value>Aangevraagd</value>
+  </data>
+  <data name="RetiringDevice" xml:space="preserve">
+    <value>Toestel wordt buiten gebruik gesteld</value>
+  </data>
+  <data name="RoamingStatusMessageLabelAny" xml:space="preserve">
+    <value>Roamingstatus</value>
+  </data>
+  <data name="SameModelReplacement" xml:space="preserve">
+    <value>Vervanging door hetzelfde model</value>
+  </data>
+  <data name="SaveAndExport" xml:space="preserve">
+    <value>Opslaan en exporteren</value>
+  </data>
+  <data name="SaveForLater" xml:space="preserve">
+    <value>Nee, opslaan voor later</value>
+  </data>
+  <data name="SelectedApplications" xml:space="preserve">
+    <value>Geselecteerde applicaties</value>
+  </data>
+  <data name="SelectStagingMode" xml:space="preserve">
+    <value>Modus voorbereide inrichting selecteren</value>
+  </data>
+  <data name="SingleAndroidWipeAddition" xml:space="preserve">
+    <value>Als dit toestel opnieuw in Workspace ONE wordt ingeschreven, wordt een nieuwe UDID aangemaakt, wat resulteert in dubbele toestelmappen.</value>
+  </data>
+  <data name="SingleEnterpriseWipeDescription" xml:space="preserve">
+    <value>Het wissen van de bedrijfsgegevens zal alle beheerde bedrijfsbronnen uitschrijven en van het geselecteerde toestel verwijderen, met inbegrip van applicaties en profielen.
+Deze actie kan niet ongedaan gemaakt worden en herinschrijving in Workspace ONE is vereist om dit (deze) toestel(len) opnieuw te beheren.</value>
+  </data>
+  <data name="SMSUsageMessageLabelAny" xml:space="preserve">
+    <value>SMS-gebruik</value>
+  </data>
+  <data name="StagingIsEnabledForEnrollmentUser" xml:space="preserve">
+    <value>Voorbereide inrichting is ingeschakeld voor de opgegeven inschrijvingsgebruiker</value>
+  </data>
+  <data name="SystemAppsToggleHelpText" xml:space="preserve">
+    <value>Eindgebruikers toegang geven tot systeem-apps</value>
+  </data>
+  <data name="SystemLogs" xml:space="preserve">
+    <value>Systeemlogboeken</value>
+  </data>
+  <data name="SystemLogsPrivacyNoticeMessageLabel" xml:space="preserve">
+    <value>Privacyverklaring systeemlogboeken</value>
+  </data>
+  <data name="TapHereToRetry" xml:space="preserve">
+    <value>Tik hier om opnieuw te proberen</value>
+  </data>
+  <data name="TermsAndConditions" xml:space="preserve">
+    <value>Voorwaarden</value>
+  </data>
+  <data name="TransformLabel" xml:space="preserve">
+    <value>Transformatie app-installatieprogramma</value>
+  </data>
+  <data name="TransformToolTipText" xml:space="preserve">
+    <value>Een transformatie is een verzameling wijzigingen die wordt toegepast op een installatie van een MSI. Selecteer een beschikbaar transformatiebestand (MST) dat tijdens de installatie wordt gebruikt.</value>
+  </data>
+  <data name="TransformToolTipTitle" xml:space="preserve">
+    <value>Transformeren</value>
+  </data>
+  <data name="UnattendAdJoinLabel" xml:space="preserve">
+    <value>Type Active Directory</value>
+  </data>
+  <data name="UnattendAdJoinText" xml:space="preserve">
+    <value>Selecteer het type AD Join dat u wilt gebruiken. Op basis van deze selectie zal het onderstaande formulier unattend.xml voor een bepaalde AD Join genereren</value>
+  </data>
+  <data name="UnattendAutoAdminLogonLabel" xml:space="preserve">
+    <value>Automatisch beheerder aanmelden</value>
+  </data>
+  <data name="UnattendAutoAdminLogonText" xml:space="preserve">
+    <value>Beheerders moeten zich eenmalig aanmelden om het toestel in te schrijven. Automatisch beheerder aanmelden is ingeschakeld en de lokale beheerdersaccount moet nu worden ingesteld</value>
+  </data>
+  <data name="UnattendBuildConfigFile" xml:space="preserve">
+    <value>Configuratiebestandversie</value>
+  </data>
+  <data name="UnattendBuildInAdminText" xml:space="preserve">
+    <value>Dit is het wachtwoord voor de beheerdersaccount</value>
+  </data>
+  <data name="UnattendBuiltInAdminLabel" xml:space="preserve">
+    <value>Beheerderswachtwoord</value>
+  </data>
+  <data name="UnattendComputerNameLabel" xml:space="preserve">
+    <value>Computernaam</value>
+  </data>
+  <data name="UnattendComputerNamePlaceholder" xml:space="preserve">
+    <value>Computernaam (willekeurig)</value>
+  </data>
+  <data name="UnattendCreateLocalUserLabel" xml:space="preserve">
+    <value>Lokale gebruiker maken</value>
+  </data>
+  <data name="UnattendCreateLocalUserText" xml:space="preserve">
+    <value>Als u "Ja" selecteert wordt er vooraf een lokale gebruikersaccount maken. Als u "Nee" selecteert, wordt de gebruiker gevraagd om er een te maken tijdens OOBE.</value>
+  </data>
+  <data name="UnattendDomainNameLabel" xml:space="preserve">
+    <value>Domeinnaam</value>
+  </data>
+  <data name="UnattendDomainNameText" xml:space="preserve">
+    <value>Dit is de naam van het domein waaraan de client gaat deelnemen</value>
+  </data>
+  <data name="UnattendDomainOuLabel" xml:space="preserve">
+    <value>AD Organisatie-eenheid (OU)</value>
+  </data>
+  <data name="UnattendDomainOuText" xml:space="preserve">
+    <value>Moet in de indeling "OU=,OU=,DC=company,DC=com" zijn</value>
+  </data>
+  <data name="UnattendDomainPasswordLabel" xml:space="preserve">
+    <value>Domeinwachtwoord</value>
+  </data>
+  <data name="UnattendDomainPasswordText" xml:space="preserve">
+    <value>Voer het wachtwoord van het Active Directory-domeinaccount in.</value>
+  </data>
+  <data name="UnattendDomainUserLabel" xml:space="preserve">
+    <value>Domein-gebruikersnaam</value>
+  </data>
+  <data name="UnattendDomainUserText" xml:space="preserve">
+    <value>Voer de gebruikersnaam in van een Active Directory-account met machtigingen om deel te nemen aan het domein.</value>
+  </data>
+  <data name="UnattendDownloadMarkup" xml:space="preserve">
+    <value>Onbeheerde XML</value>
+  </data>
+  <data name="UnattendDownloadPackage" xml:space="preserve">
+    <value>PPKG</value>
+  </data>
+  <data name="UnattendEnableBuiltInAdminLabel" xml:space="preserve">
+    <value>Beheerdersaccount inschakelen</value>
+  </data>
+  <data name="UnattendEnableBuiltInAdminText" xml:space="preserve">
+    <value>Schakel de ingebouwde beheerdersaccount in. Dit account is standaard uitgeschakeld. Wanneer u Automatisch beheerder aanmelden gebruikt, moet het standaard beheerdersaccount ingeschakeld zijn</value>
+  </data>
+  <data name="UnattendFirstLogonCmdLabel" xml:space="preserve">
+    <value>Commando's bij eerste login</value>
+  </data>
+  <data name="UnattendFirstLogonCmdText" xml:space="preserve">
+    <value>U kunt commando's toevoegen die automatisch worden uitgevoerd wanneer een gebruiker voor de eerste keer inlogt (de gebruiker heeft lokale beheerdersrechten nodig)</value>
+  </data>
+  <data name="UnattendLocaleChineseHongKong" xml:space="preserve">
+    <value>Chinees (Hongkong)</value>
+  </data>
+  <data name="UnattendLocaleChinesePrc" xml:space="preserve">
+    <value>Chinees (China)</value>
+  </data>
+  <data name="UnattendLocaleChineseSimplified" xml:space="preserve">
+    <value>Chinees (Vereenvoudigd)</value>
+  </data>
+  <data name="UnattendLocaleChineseTaiwan" xml:space="preserve">
+    <value>Chinees (Taiwan)</value>
+  </data>
+  <data name="UnattendLocaleChineseTraditional" xml:space="preserve">
+    <value>Chinees (Traditioneel)</value>
+  </data>
+  <data name="UnattendLocaleEnglish" xml:space="preserve">
+    <value>Engels</value>
+  </data>
+  <data name="UnattendLocaleEnglishUk" xml:space="preserve">
+    <value>Engels - VK</value>
+  </data>
+  <data name="UnattendLocaleEnglishUs" xml:space="preserve">
+    <value>Engels - VS</value>
+  </data>
+  <data name="UnattendLocaleFrench" xml:space="preserve">
+    <value>Frans</value>
+  </data>
+  <data name="UnattendLocaleFrenchCanada" xml:space="preserve">
+    <value>Frans - Canada</value>
+  </data>
+  <data name="UnattendLocaleFrenchFrance" xml:space="preserve">
+    <value>Frans - Frankrijk</value>
+  </data>
+  <data name="UnattendLocaleGerman" xml:space="preserve">
+    <value>Duits</value>
+  </data>
+  <data name="UnattendLocaleItalian" xml:space="preserve">
+    <value>Italiaans</value>
+  </data>
+  <data name="UnattendLocaleJapanese" xml:space="preserve">
+    <value>Japans</value>
+  </data>
+  <data name="UnattendLocaleKorean" xml:space="preserve">
+    <value>Koreaans</value>
+  </data>
+  <data name="UnattendLocaleLabel" xml:space="preserve">
+    <value>Regio en toetsenbord</value>
+  </data>
+  <data name="UnattendLocalePortuguese" xml:space="preserve">
+    <value>Portugees</value>
+  </data>
+  <data name="UnattendLocalePortugueseBrazil" xml:space="preserve">
+    <value>Portugees (Brazilië)</value>
+  </data>
+  <data name="UnattendLocalePortuguesePortugal" xml:space="preserve">
+    <value>Portugees (Portugal)</value>
+  </data>
+  <data name="UnattendLocaleSpanish" xml:space="preserve">
+    <value>Spaans</value>
+  </data>
+  <data name="UnattendLocaleSpanishMexico" xml:space="preserve">
+    <value>Spaans - Mexico</value>
+  </data>
+  <data name="UnattendLocaleSpanishSpain" xml:space="preserve">
+    <value>Spaans - Spanje</value>
+  </data>
+  <data name="UnattendLocaleText" xml:space="preserve">
+    <value>Hiermee geeft u de invoertaal en toetsenbordindeling aan die beschikbaar is op basis van het hierboven geselecteerde besturingssysteem.</value>
+  </data>
+  <data name="UnattendLocalUserAdminLabel" xml:space="preserve">
+    <value>Beheerder maken</value>
+  </data>
+  <data name="UnattendLocalUserAdminText" xml:space="preserve">
+    <value>"Ja" is vereist zodat AirWatch-inschrijving automatisch kan starten. Tijdens de aanmelding ziet de gebruiker een AirWatch-pop-upvenster om inschrijvingsgegegevens in te voeren</value>
+  </data>
+  <data name="UnattendLocalUserNameLabel" xml:space="preserve">
+    <value>Lokale gebruikersnaam</value>
+  </data>
+  <data name="UnattendLocalUserNameText" xml:space="preserve">
+    <value>Dit is de gebruikersnaam van de lokale gebruiker.</value>
+  </data>
+  <data name="UnattendLocalUserPasswordLabel" xml:space="preserve">
+    <value>Wachtwoord lokale gebruiker</value>
+  </data>
+  <data name="UnattendLocalUserPasswordText" xml:space="preserve">
+    <value>Als er geen wachtwoord is opgegeven, wordt de gebruiker gevraagd het wachtwoord te wijzigen bij de eerste keer inloggen bij</value>
+  </data>
+  <data name="UnattendMediaLanguageLabel" xml:space="preserve">
+    <value>Taal besturingssysteem</value>
+  </data>
+  <data name="UnattendMediaLanguageText" xml:space="preserve">
+    <value>Selecteer de taal van de installatiemedia van het besturingssysteem dat aan OEM is geleverd</value>
+  </data>
+  <data name="UnattendModeAzureAdNoPrem" xml:space="preserve">
+    <value>Azure Active Directory - niet premium</value>
+  </data>
+  <data name="UnattendModeAzureAdPrem" xml:space="preserve">
+    <value>Azure Active Directory - premium</value>
+  </data>
+  <data name="UnattendModeWorkgroup" xml:space="preserve">
+    <value>Werkgroep</value>
+  </data>
+  <data name="UnattendNewCmdLabel" xml:space="preserve">
+    <value>Nieuw commando</value>
+  </data>
+  <data name="UnattendOnPremAdJoin" xml:space="preserve">
+    <value>Interne Active Directory Join</value>
+  </data>
+  <data name="UnattendOobeSectionLabel" xml:space="preserve">
+    <value>OOBE-configuratie</value>
+  </data>
+  <data name="UnattendProductKeyLabel" xml:space="preserve">
+    <value>Productcode</value>
+  </data>
+  <data name="UnattendProductKeyText" xml:space="preserve">
+    <value>Een Windows-productcode is een reeks van vijf letters of cijfers, vijf keer herhaald en gescheiden door streepjes. Voorbeeld: "12345-54CDE-XYZ78-ONM98-456TY"</value>
+  </data>
+  <data name="UnattendRegisteredOrgLabel" xml:space="preserve">
+    <value>Geregistreerde organisatie</value>
+  </data>
+  <data name="UnattendRegisteredOrgText" xml:space="preserve">
+    <value>Dit wordt weergegeven in systeeminformatie.</value>
+  </data>
+  <data name="UnattendRegisteredOwnerLabel" xml:space="preserve">
+    <value>Geregistreerde eigenaar</value>
+  </data>
+  <data name="UnattendRegisteredOwnerText" xml:space="preserve">
+    <value>Dit wordt weergegeven in systeeminformatie</value>
+  </data>
+  <data name="UnattendRemoveConsumerAppsLabel" xml:space="preserve">
+    <value>Consumenten-apps in Windows 10 verwijderen</value>
+  </data>
+  <data name="UnattendRemoveConsumerAppsText" xml:space="preserve">
+    <value>Hierdoor wordt voorkomen dat consumenten-apps (bijv. Candy Crush) in Windows 10 verschijnen. Dit wordt alleen ondersteund als er een Bedrijfs- of Onderwijs-productcode hieronder wordt ingevoerd. Windows versie 1511 of hoger is vereist</value>
+  </data>
+  <data name="UnattendSaveFailed" xml:space="preserve">
+    <value>Kan het pakket niet opslaan. Controleer het formulier en probeer het opnieuw.</value>
+  </data>
+  <data name="UnattendShowEulaLabel" xml:space="preserve">
+    <value>Gebruikersovereenkomstpagina</value>
+  </data>
+  <data name="UnattendShowEulaText" xml:space="preserve">
+    <value>Selecteer "Weergeven" om de voorwaarden van de Microsoft-softwarelicentie tijdens OOBE te tonen</value>
+  </data>
+  <data name="UnattendShowLocaleSettingsLabel" xml:space="preserve">
+    <value>Instellingen voor regio en toetsenbord</value>
+  </data>
+  <data name="UnattendShowLocaleSettingsText" xml:space="preserve">
+    <value>Als u "Weergeven" selecteert, worden de pagina's van het Regio en toetsenbord weergegeven. Als u "Verbergen" selecteert, moet u de beschikbare regio in de vervolgkeuzelijst selecteren.</value>
+  </data>
+  <data name="UnattendShowOnlineAccountLabel" xml:space="preserve">
+    <value>Online-accountinstellingen</value>
+  </data>
+  <data name="UnattendShowOnlineAccountText" xml:space="preserve">
+    <value>Selecteer Weergeven om het online-accountscherm weer te geven. Hiermee kunt u inloggen met een Microsoft-account.</value>
+  </data>
+  <data name="UnattendShowPrivacyLabel" xml:space="preserve">
+    <value>Privacyinstellingen</value>
+  </data>
+  <data name="UnattendShowPrivacyText" xml:space="preserve">
+    <value>Selecteer "Weergeven" om de gebruiker te vragen privacyinstellingen te selecteren tijdens OOBE. Als u "Verbergen" selecteert, worden de Express-instellingen gebruikt en worden ze verborgen.</value>
+  </data>
+  <data name="UnattendSyncCmdLabel" xml:space="preserve">
+    <value>Extra synchrone commando's</value>
+  </data>
+  <data name="UnattendSyncCmdText" xml:space="preserve">
+    <value>U kunt commando's toevoegen die automatisch aan het einde van het Windows-installatieprogramma worden uitgevoerd, maar voordat een gebruiker zich aanmeldt</value>
+  </data>
+  <data name="UnattendSystemConfigurationSection" xml:space="preserve">
+    <value>Systeemconfiguratie</value>
+  </data>
+  <data name="UnattendUacAlwaysNotify" xml:space="preserve">
+    <value>Altijd waarschuwen</value>
+  </data>
+  <data name="UnattendUacDefault" xml:space="preserve">
+    <value>Standaard</value>
+  </data>
+  <data name="UnattendUacDisabled" xml:space="preserve">
+    <value>Uitgeschakeld</value>
+  </data>
+  <data name="UnattendUacEnableButDoNotNotify" xml:space="preserve">
+    <value>Ingeschakeld, maar niet melden</value>
+  </data>
+  <data name="UnattendUacLabel" xml:space="preserve">
+    <value>Gebruikersaccountbeheer</value>
+  </data>
+  <data name="UnattendUacNotifyWithoutDimmingDesktop" xml:space="preserve">
+    <value>Melden zonder bureaublad te dimmen</value>
+  </data>
+  <data name="UnattendUacText" xml:space="preserve">
+    <value>Selecteer het type Gebruikersaccountbeheer</value>
+  </data>
+  <data name="UnattendValidationInvalidInput" xml:space="preserve">
+    <value>Ongeldige invoer</value>
+  </data>
+  <data name="UnattendValidationMaxLength" xml:space="preserve">
+    <value>Dit veld is vereist en mag niet meer dan {0} tekens bevatten</value>
+  </data>
+  <data name="UnattendValidationNoAdminUser" xml:space="preserve">
+    <value>U moet een lokale gebruiker maken die lid is van de groep beheerders of de ingebouwde beheerder inschakelen</value>
+  </data>
+  <data name="UnattendValidationProductKey" xml:space="preserve">
+    <value>Ongeldige productcode</value>
+  </data>
+  <data name="UnattendValidationRequired" xml:space="preserve">
+    <value>Dit veld mag niet leeg zijn</value>
+  </data>
+  <data name="UnattendWelcome" xml:space="preserve">
+    <value>Welkom bij het Configuratieprogramma voor Provisioning. Zorg ervoor dat u waarden voor alle vereiste velden opgeeft, zodat de knop configuratiebestandversie wordt ingeschakeld</value>
+  </data>
+  <data name="UnattendWorkgroupLabel" xml:space="preserve">
+    <value>Werkgroep</value>
+  </data>
+  <data name="UnattendWorkgroupText" xml:space="preserve">
+    <value>Dit is de naam van de werkgroep waaraan de client gaat deelnemen</value>
+  </data>
+  <data name="UnattendWs1OgLabel" xml:space="preserve">
+    <value>Inschrijving-organisatiegroep</value>
+  </data>
+  <data name="UnattendWs1OgText" xml:space="preserve">
+    <value>Dit is de ID van uw inschrijving-organisatiegroep (OG). Als u SAML hebt ingeschakeld, zorg ervoor dat u een aparte "voorbereide inrichting"-OG hebt ingesteld met SAML is uitgeschakeld. U kunt de muis over de OG boven aan de Workspace ONE Console bewegen om de groep-ID te krijgen.</value>
+  </data>
+  <data name="UnattendWs1Section" xml:space="preserve">
+    <value>Workspace ONE-inschrijving</value>
+  </data>
+  <data name="UnattendWs1ServerLabel" xml:space="preserve">
+    <value>Inschrijvingsserver</value>
+  </data>
+  <data name="UnattendWs1ServerText" xml:space="preserve">
+    <value>Dit is de URL van uw inschrijvingsserver. U kunt deze vinden bij Alle instellingen --&gt; Systeem --&gt; Geavanceerd --&gt; Website-URL's onder URL voor MDM-inschrijving. Neem alleen de kern-URL op, bijvoorbeeld https://vmwarelab.awmdm.com</value>
+  </data>
+  <data name="UnattendWs1StagingAccountLabel" xml:space="preserve">
+    <value>Staging-account</value>
+  </data>
+  <data name="UnattendWs1StagingAccountPasswordLabel" xml:space="preserve">
+    <value>Staging-wachtwoord</value>
+  </data>
+  <data name="UnattendWs1StagingAccountPasswordText" xml:space="preserve">
+    <value>"Wachtwoord" voor voorbereide inrichting zoals opgegeven op dezelfde pagina als het staging-account. Als het wachtwoord speciale tekens bevat (' &amp; ', ' &gt; ' of ' &lt; '), mislukken fabrieksprovisioning-werkstromen die dit account gebruiken voor inschrijving. Ga naar de pagina Gebruikers om het wachtwoord te wijzigen.</value>
+  </data>
+  <data name="UnattendWs1StagingAccountText" xml:space="preserve">
+    <value>Dit is het staging-account dat u vindt in Alle instellingen --&gt; Apparaten en gebruikers --&gt; Windows --&gt; Windows Desktop --&gt; Voorbereide inrichting en provisioning in het veld UPN</value>
+  </data>
+  <data name="UnmanagedProfilesMessageLabelAny" xml:space="preserve">
+    <value>Onbeheerde profielen</value>
+  </data>
+  <data name="USBDeviceMessageLabelAny" xml:space="preserve">
+    <value>USB-apparaat</value>
+  </data>
+  <data name="UserEnrollmentAndEnter" xml:space="preserve">
+    <value>Hebt u een groeps-ID?</value>
+  </data>
+  <data name="UserEnrollmentNotEnabledInOg" xml:space="preserve">
+    <value>Gebruikersinschrijving is niet ingeschakeld in de opgegeven organisatiegroep</value>
+  </data>
+  <data name="UserEnrollmentSettingsMessage" xml:space="preserve">
+    <value>Ga naar de app 'Instellingen' en tik op "Inschrijven in uw bedrijf"</value>
+  </data>
+  <data name="UserEnrollmentUseEmailAddress" xml:space="preserve">
+    <value>E-mailadres gebruiken</value>
+  </data>
+  <data name="UserPasswordIsRequired" xml:space="preserve">
+    <value>Wacht woord is vereist</value>
+  </data>
+  <data name="Workappsprivacynoticemessagelabel" xml:space="preserve">
+    <value>Ten behoeve van rapportage verzamelt AirWatch een lijst van het toestel met de applicatienaam, de versie en de installatiestatus voor alle zakelijke applicaties die via Workspace ONE worden aangeleverd.</value>
+  </data>
+</root>

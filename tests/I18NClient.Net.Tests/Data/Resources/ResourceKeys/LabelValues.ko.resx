@@ -1,0 +1,3410 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AdaptivaSetup" xml:space="preserve">
+    <value>Adaptiva 설정</value>
+  </data>
+  <data name="AdaptivaSetupHelp" xml:space="preserve">
+    <value>P2P 파트너 Adaptiva에 대한 설정 리소스</value>
+  </data>
+  <data name="AdaptiveManagement" xml:space="preserve">
+    <value>적응형 관리</value>
+  </data>
+  <data name="AdaptiveManagementHelp" xml:space="preserve">
+    <value>애플리케이션 정책에 따라 적응형 관리 수준을 보고 설정하는 기능</value>
+  </data>
+  <data name="AddApplicationWorkflowHelp" xml:space="preserve">
+    <value>개발자에게 애플리케이션을 업로드하기 위한 사용 권한을 제공</value>
+  </data>
+  <data name="AddCartHelp" xml:space="preserve">
+    <value>공유 장치의 장치 일련번호 CSV를 업로드합니다. </value>
+  </data>
+  <data name="AddCustomReportSubscriptionHelp" xml:space="preserve">
+    <value>사용자 지정 보고서 구독을 추가할 수 있는 액세스를 제어합니다. Hub\보고서 및 분석 자료\사용자 지정 보고서\구독으로 이동</value>
+  </data>
+  <data name="AddDeviceUserAccounts" xml:space="preserve">
+    <value>장치 추가</value>
+  </data>
+  <data name="AddDeviceUserAccountsHelp" xml:space="preserve">
+    <value>사용자 계정을 위해 장치 추가.</value>
+  </data>
+  <data name="AddEditAdminAccount" xml:space="preserve">
+    <value>추가/편집</value>
+  </data>
+  <data name="AddEditAdminAccountHelp" xml:space="preserve">
+    <value>관리자 계정을 추가 또는 편집</value>
+  </data>
+  <data name="AddEditAdminGroup" xml:space="preserve">
+    <value>추가/편집</value>
+  </data>
+  <data name="AddEditAdminGroupHelp" xml:space="preserve">
+    <value>관리자 그룹 추가 또는 편집.</value>
+  </data>
+  <data name="AddEditAdminRoles" xml:space="preserve">
+    <value>추가/편집</value>
+  </data>
+  <data name="AddEditAdminRolesHelp" xml:space="preserve">
+    <value>관리자 역할을 추가, 편집, 및 삭제.</value>
+  </data>
+  <data name="AddEditDeviceManufacturerDetails" xml:space="preserve">
+    <value>장치 제조업체 세부 정보 추가 편집</value>
+  </data>
+  <data name="AddEditDeviceManufacturerDetailsHelp" xml:space="preserve">
+    <value>API를 통해 Console에서 새 장치 제조업체를 추가하거나 기존 제조업체를 편집합니다.</value>
+  </data>
+  <data name="AddEditDeviceModelDetails" xml:space="preserve">
+    <value>장치 모델 세부 정보 추가 편집</value>
+  </data>
+  <data name="AddEditDeviceModelDetailsHelp" xml:space="preserve">
+    <value>API를 통해 Console에서 새 장치 모델을 추가하거나 기존 모델을 편집합니다.</value>
+  </data>
+  <data name="AddEditUG" xml:space="preserve">
+    <value>추가/편집</value>
+  </data>
+  <data name="AddEditUGHelp" xml:space="preserve">
+    <value>사용자 그룹을 추가, 편집 및 삭제합니다.</value>
+  </data>
+  <data name="AddEditUserAccount" xml:space="preserve">
+    <value>추가/편집</value>
+  </data>
+  <data name="AddEditUserAccountHelp" xml:space="preserve">
+    <value>사용자 계정을 추가 또는 편집.</value>
+  </data>
+  <data name="AddEditUserCat" xml:space="preserve">
+    <value>추가/편집</value>
+  </data>
+  <data name="AddEditUserCatHelp" xml:space="preserve">
+    <value>등록 사용자 카테고리 추가, 편집, 및 삭제.</value>
+  </data>
+  <data name="AddEditUserRoles" xml:space="preserve">
+    <value>추가/편집</value>
+  </data>
+  <data name="AddEditUserRolesHelp" xml:space="preserve">
+    <value>사용자 역할 추가 및 편집</value>
+  </data>
+  <data name="AddEditWindowsTemplateHelp" xml:space="preserve">
+    <value>관리자에게 Console 대시보드에서 Windows 템플릿을 추가 및/또는 편집하는 설정 구성 허용</value>
+  </data>
+  <data name="AddFileServerConfiguration" xml:space="preserve">
+    <value>파일 서버 구성 추가</value>
+  </data>
+  <data name="AddFileServerConfigurationHelp" xml:space="preserve">
+    <value>파일 서버 그리드 및 세부 정보를 추가할 수 있는 사용자 권한 제공</value>
+  </data>
+  <data name="AddNoteHelp" xml:space="preserve">
+    <value>새 메모를 추가하기 위한 사용 권한을 제공합니다.</value>
+  </data>
+  <data name="AdminAd" xml:space="preserve">
+    <value>관리자</value>
+  </data>
+  <data name="AdminAdHelp" xml:space="preserve">
+    <value>시스템 설정에 있는 초기 페이지, 경고 모듈, 사용자 지정 필드 정의 페이지, 시스템 설정에 있는 도움말 페이지, 및 RADIUS 프로필 페이지에 대한 액세스를 제어합니다.</value>
+  </data>
+  <data name="AdminOptIn" xml:space="preserve">
+    <value>관리자 옵트인</value>
+  </data>
+  <data name="AdminSaaSNotifications" xml:space="preserve">
+    <value>SaaS 알림</value>
+  </data>
+  <data name="AdminSaaSNotificationsHelp" xml:space="preserve">
+    <value>SaaS 알림 설정 페이지 액세스 제어</value>
+  </data>
+  <data name="AdminsRESTSystem" xml:space="preserve">
+    <value>관리자</value>
+  </data>
+  <data name="AdminsRESTSystemHelp" xml:space="preserve">
+    <value>관리자 계정을 위한 REST API</value>
+  </data>
+  <data name="AdvancedEm" xml:space="preserve">
+    <value>고급</value>
+  </data>
+  <data name="AdvancedEmHelp" xml:space="preserve">
+    <value>이메일 고급 설정을 제어합니다.</value>
+  </data>
+  <data name="AdvancedHelp" xml:space="preserve">
+    <value>고급 하위 메뉴에 액세스를 제어합니다.</value>
+  </data>
+  <data name="AdvancedIn" xml:space="preserve">
+    <value>고급</value>
+  </data>
+  <data name="AdvancedInHelp" xml:space="preserve">
+    <value>고급 설치 설정에 액세스를 제어.</value>
+  </data>
+  <data name="AdvancedSet" xml:space="preserve">
+    <value>고급</value>
+  </data>
+  <data name="AdvancedSetHelp" xml:space="preserve">
+    <value>시스템 설정에서 고급 페이지에 액세스를 제어합니다.</value>
+  </data>
+  <data name="AdvancedSOaP" xml:space="preserve">
+    <value>고급</value>
+  </data>
+  <data name="AdvancedSOaPHelp" xml:space="preserve">
+    <value>장치 초기화 및 엔터프라이즈 초기화와 같은 고급 API를 사용합니다.</value>
+  </data>
+  <data name="AdvancedSys" xml:space="preserve">
+    <value>고급</value>
+  </data>
+  <data name="AdvancedSysHelp" xml:space="preserve">
+    <value>[시스템] 아래의 [고급] 페이지에 대한 액세스를 제어합니다.</value>
+  </data>
+  <data name="AfterArg" xml:space="preserve">
+    <value>{0} 이후</value>
+  </data>
+  <data name="AgentApplicationAn" xml:space="preserve">
+    <value>Hub 애플리케이션</value>
+  </data>
+  <data name="AgentApplicationAnHelp" xml:space="preserve">
+    <value>Android에 있는 Hub 애플리케이션 페이지에 대한 액세스를 제어합니다.</value>
+  </data>
+  <data name="AgentPackageAdd" xml:space="preserve">
+    <value>Hub 패키지 추가</value>
+  </data>
+  <data name="AgentPackageAddHelp" xml:space="preserve">
+    <value>제품 프로비저닝에서 스테이징을 위한 Hub .apf 파일을 업로드하기 위한 사용 권한을 제공합니다.</value>
+  </data>
+  <data name="AgentPackageDelete" xml:space="preserve">
+    <value>Hub 패키지 삭제</value>
+  </data>
+  <data name="AgentPackageDeleteHelp" xml:space="preserve">
+    <value>제품 프로비저닝에서 스테이징을 위해 사용할 수 없으므로 Hub .apf를 삭제하기 위한 사용 권한을 제공합니다.</value>
+  </data>
+  <data name="AgentPackagePPN" xml:space="preserve">
+    <value>Hub 패키지</value>
+  </data>
+  <data name="AgentPackagePPNHelp" xml:space="preserve">
+    <value>제품 프로비저닝에서 스테이징을 위한 Hub .apf 파일을 추가/업데이트/삭제하기 위한 사용 권한을 제공합니다.</value>
+  </data>
+  <data name="AgentPackageView" xml:space="preserve">
+    <value>Hub 패키지 보기</value>
+  </data>
+  <data name="AgentPackageViewHelp" xml:space="preserve">
+    <value>제품 프로비저닝에서 스테이징을 위해 사용할 수 있는 Hub .apf 파일 목록을 Hub 패키지 화면에서 보기 위한 사용 권한을 제공합니다.</value>
+  </data>
+  <data name="AgentSettingsAn" xml:space="preserve">
+    <value>Intelligent Hub 설정</value>
+  </data>
+  <data name="AgentSettingsAnHelp" xml:space="preserve">
+    <value>Android에 있는 Intelligent Hub 설정 페이지에 대한 액세스를 제어합니다.</value>
+  </data>
+  <data name="AgentSettingsApple" xml:space="preserve">
+    <value>Hub 설정</value>
+  </data>
+  <data name="AgentSettingsAppleHelp" xml:space="preserve">
+    <value>iOS에 있는 iOS Hub 설정에 대한 액세스를 제어합니다.</value>
+  </data>
+  <data name="AgentSettingsLinuxHelp" xml:space="preserve">
+    <value>Linux에서 Linux Intelligent Hub 설정에 대한 액세스를 제어합니다.</value>
+  </data>
+  <data name="AirwatchEmailClientSet" xml:space="preserve">
+    <value>AirWatch Email Client</value>
+  </data>
+  <data name="AirwatchEmailClientSetHelp" xml:space="preserve">
+    <value>앱 아래에서 AirWatch Email Client 페이지에 대한 액세스를 제어합니다.</value>
+  </data>
+  <data name="AirWatchHelpAd" xml:space="preserve">
+    <value>AirWatch 도움말</value>
+  </data>
+  <data name="AirWatchHelpAdHelp" xml:space="preserve">
+    <value>AirWatch Help에 액세스를 제어합니다.</value>
+  </data>
+  <data name="AirWatchTunnelHelp" xml:space="preserve">
+    <value>AirWatch Tunnel 구성 사용 권한 부여</value>
+  </data>
+  <data name="AkamaiSetting" xml:space="preserve">
+    <value>Akamai</value>
+  </data>
+  <data name="AkamaiSettingHelp" xml:space="preserve">
+    <value>Akamai를 CDN 공급자로 구성하기 위한 설정</value>
+  </data>
+  <data name="AlertCreationPoliciesViewHelp" xml:space="preserve">
+    <value>경고 설정의 작성 정책 보기에 액세스를 제어합니다. 
+</value>
+  </data>
+  <data name="AlertDD" xml:space="preserve">
+    <value>경고</value>
+  </data>
+  <data name="AlertDDHelp" xml:space="preserve">
+    <value>장치와 관련된 경고에 액세스.</value>
+  </data>
+  <data name="AlertsPM" xml:space="preserve">
+    <value>경고</value>
+  </data>
+  <data name="AlertsPMHelp" xml:space="preserve">
+    <value>[프린터 경고] 페이지에 대한 액세스를 제어합니다.</value>
+  </data>
+  <data name="AndroidFileManagerDM" xml:space="preserve">
+    <value>Android 파일 관리자</value>
+  </data>
+  <data name="AndroidFileManagerDMHelp" xml:space="preserve">
+    <value>장치 세부 정보 페이지에서 원격으로 관리되는 Android 파일과 폴더.</value>
+  </data>
+  <data name="AndroidForWorkHelp" xml:space="preserve">
+    <value>AndroidForWork</value>
+  </data>
+  <data name="AndroidServiceApplicationsAn" xml:space="preserve">
+    <value>Android 서비스 애플리케이션</value>
+  </data>
+  <data name="AndroidServiceApplicationsAnHelp" xml:space="preserve">
+    <value>서비스 애플리케이션을 보고 편집하기 위한 사용 권한을 제공합니다.</value>
+  </data>
+  <data name="ApnsApp" xml:space="preserve">
+    <value>APNs</value>
+  </data>
+  <data name="ApnsAppHelp" xml:space="preserve">
+    <value>iOS에 있는 애플리케이션을 위한 APN 페이지에 대한 액세스를 제어합니다.</value>
+  </data>
+  <data name="ApnsSet" xml:space="preserve">
+    <value>APNs</value>
+  </data>
+  <data name="ApnsSetHelp" xml:space="preserve">
+    <value>시스템 설정에서 APN 페이지에 액세스를 제어합니다.</value>
+  </data>
+  <data name="AppCatalogHelp" xml:space="preserve">
+    <value>애플리케이션 카탈로그에 대한 리소스</value>
+  </data>
+  <data name="AppConfigurationSet" xml:space="preserve">
+    <value>앱 구성</value>
+  </data>
+  <data name="AppConfigurationSetHelp" xml:space="preserve">
+    <value>앱 구성 페이지에 액세스를 제어합니다.</value>
+  </data>
+  <data name="AppCrashLogsHelp" xml:space="preserve">
+    <value>애플리케이션 크래시 로그에 대한 액세스를 제어합니다. 
+</value>
+  </data>
+  <data name="AppleConfiguratorSet" xml:space="preserve">
+    <value>Apple Configurator</value>
+  </data>
+  <data name="AppleConfiguratorSetHelp" xml:space="preserve">
+    <value>iOS에 있는 Apple Configurator 페이지에 대한 액세스를 제어합니다.</value>
+  </data>
+  <data name="AppleEducation" xml:space="preserve">
+    <value>교육</value>
+  </data>
+  <data name="AppleEducationHelp" xml:space="preserve">
+    <value>Apple Education 페이지에 대한 액세스 제어</value>
+  </data>
+  <data name="ApplicationCatalogEdit" xml:space="preserve">
+    <value>애플리케이션 카탈로그 편집</value>
+  </data>
+  <data name="ApplicationCatalogEditHelp" xml:space="preserve">
+    <value>애플리케이션 카탈로그 설정 페이지 편집용</value>
+  </data>
+  <data name="ApplicationCategoriesAb" xml:space="preserve">
+    <value>애플리케이션 카테고리</value>
+  </data>
+  <data name="ApplicationCategoriesAbHelp" xml:space="preserve">
+    <value>애플리케이션 카테고리를 보고 관리.</value>
+  </data>
+  <data name="ApplicationGroupsAb" xml:space="preserve">
+    <value>애플리케이션 그룹</value>
+  </data>
+  <data name="ApplicationGroupsAbHelp" xml:space="preserve">
+    <value>애플리케이션 그룹을 보고 관리.</value>
+  </data>
+  <data name="ApplicationIntegrationSet" xml:space="preserve">
+    <value>애플리케이션 통합</value>
+  </data>
+  <data name="ApplicationIntegrationSetHelp" xml:space="preserve">
+    <value>애플리케이션 통합 설정 화면에 대한 액세스를 제어합니다.</value>
+  </data>
+  <data name="ApplicationPPN" xml:space="preserve">
+    <value>애플리케이션</value>
+  </data>
+  <data name="ApplicationPPNHelp" xml:space="preserve">
+    <value>프로비저닝 애플리케이션 페이지에 액세스.</value>
+  </data>
+  <data name="ApplicationProfilesAb" xml:space="preserve">
+    <value>애플리케이션 프로필</value>
+  </data>
+  <data name="ApplicationProfilesAbHelp" xml:space="preserve">
+    <value>애플리케이션 프로필을 보고 관리.</value>
+  </data>
+  <data name="ApplicationPublishAb" xml:space="preserve">
+    <value>애플리케이션 게시</value>
+  </data>
+  <data name="ApplicationPublishAbHelp" xml:space="preserve">
+    <value>추가된 애플리케이션 게시</value>
+  </data>
+  <data name="ApplicationsAb" xml:space="preserve">
+    <value>애플리케이션</value>
+  </data>
+  <data name="ApplicationsAbHelp" xml:space="preserve">
+    <value>모바일 애플리케이션 관리 페이지에 액세스.</value>
+  </data>
+  <data name="ApplicationsDD" xml:space="preserve">
+    <value>애플리케이션</value>
+  </data>
+  <data name="ApplicationsDDHelp" xml:space="preserve">
+    <value>관리되는 장치에서 애플리케이션을 원격 설치하고 제거.</value>
+  </data>
+  <data name="ApplicationsDM" xml:space="preserve">
+    <value>애플리케이션</value>
+  </data>
+  <data name="ApplicationsDMHelp" xml:space="preserve">
+    <value>로그를 요청하고 애플리케이션 피드백을 관리.</value>
+  </data>
+  <data name="ApplicationsHub" xml:space="preserve">
+    <value>애플리케이션</value>
+  </data>
+  <data name="ApplicationsHubHelp" xml:space="preserve">
+    <value>장치 애플리케이션에 관한 보고서를 생성합니다.</value>
+  </data>
+  <data name="ApplicationsSet" xml:space="preserve">
+    <value>애플리케이션</value>
+  </data>
+  <data name="ApplicationsSetHelp" xml:space="preserve">
+    <value>컨텐츠 관리 애플리케이션을 위해 설정 페이지에 액세스.</value>
+  </data>
+  <data name="ApplicationWorkflowAb" xml:space="preserve">
+    <value>애플리케이션 워크플로</value>
+  </data>
+  <data name="ApplicationWorkflowAbHelp" xml:space="preserve">
+    <value>앱 업로드, 검토, 할당 및 게시</value>
+  </data>
+  <data name="ApplicationWrappingAb" xml:space="preserve">
+    <value>애플리케이션 래핑</value>
+  </data>
+  <data name="ApplicationWrappingAbHelp" xml:space="preserve">
+    <value>애플리케이션 래핑 액세스</value>
+  </data>
+  <data name="AppRemovalProtectionHelp" xml:space="preserve">
+    <value>애플리케이션 제거 보호를 활성화하는 옵션을 표시하는 방법</value>
+  </data>
+  <data name="AppRemovalProtectionLogEditHelp" xml:space="preserve">
+    <value>애플리케이션 제거 보호 로그 페이지에 대한 '편집' 액세스를 제어하기 위한 리소스</value>
+  </data>
+  <data name="AppRemovalProtectionLogViewHelp" xml:space="preserve">
+    <value>애플리케이션 제거 보호 로그 페이지에 대한 '보기' 액세스를 제어하기 위한 리소스</value>
+  </data>
+  <data name="ApproveAndUnapproveUpdates" xml:space="preserve">
+    <value>업데이트 승인 및 승인 거부</value>
+  </data>
+  <data name="ApproveUpdate" xml:space="preserve">
+    <value>업데이트 승인</value>
+  </data>
+  <data name="ApproveUpdateHelp" xml:space="preserve">
+    <value>장치에 업데이트 승인 명령을 실행할 수 있는 사용 권한을 부여합니다.</value>
+  </data>
+  <data name="ApproveUpdates" xml:space="preserve">
+    <value>업데이트 승인</value>
+  </data>
+  <data name="AppsRESTMam" xml:space="preserve">
+    <value>애플리케이션</value>
+  </data>
+  <data name="AppsRESTMamHelp" xml:space="preserve">
+    <value>애플리케이션을 위한 REST API</value>
+  </data>
+  <data name="AppUserCommentsAb" xml:space="preserve">
+    <value>앱 사용자 메모</value>
+  </data>
+  <data name="AppUserCommentsAbHelp" xml:space="preserve">
+    <value>사용자 메모 설정을 보고 관리.</value>
+  </data>
+  <data name="AssetBatchImportSys" xml:space="preserve">
+    <value>자산 일괄 가져오기</value>
+  </data>
+  <data name="AssetBatchImportSysHelp" xml:space="preserve">
+    <value>통신 자산의 대량 목록 가져오기</value>
+  </data>
+  <data name="AssetManagementO" xml:space="preserve">
+    <value>자산 관리</value>
+  </data>
+  <data name="AssetManagementOHelp" xml:space="preserve">
+    <value>자산 검색, 추가, 및 수정</value>
+  </data>
+  <data name="AssetTrackingDM" xml:space="preserve">
+    <value>자산 추적</value>
+  </data>
+  <data name="AssetTrackingDMHelp" xml:space="preserve">
+    <value>장치 관리에 있는 자산 추적 페이지에 액세스.</value>
+  </data>
+  <data name="AssetUserTrackingO" xml:space="preserve">
+    <value>자산 사용자 추적</value>
+  </data>
+  <data name="AssetUserTrackingOHelp" xml:space="preserve">
+    <value>'체크인' 및 '체크아웃' 탭을 포함한 사용자 추적 페이지에 액세스.</value>
+  </data>
+  <data name="AssignDeviceEnrollmentProgram" xml:space="preserve">
+    <value>등록 프로그램 할당 프로필</value>
+  </data>
+  <data name="AssignDeviceEnrollmentProgramHelp" xml:space="preserve">
+    <value>장치에 DEP 프로필을 할당하도록 액세스를 제어합니다. 등록 상태 페이지로 이동</value>
+  </data>
+  <data name="AssignmentRulesAdd" xml:space="preserve">
+    <value>할당 규칙 추가</value>
+  </data>
+  <data name="AssignmentRulesAddHelp" xml:space="preserve">
+    <value>장치 할당 규칙을 추가합니다.</value>
+  </data>
+  <data name="AssignmentRulesDelete" xml:space="preserve">
+    <value>할당 규칙 삭제</value>
+  </data>
+  <data name="AssignmentRulesDeleteHelp" xml:space="preserve">
+    <value>장치 할당 규칙을 삭제합니다.</value>
+  </data>
+  <data name="AssignmentRulesEdit" xml:space="preserve">
+    <value>할당 규칙 편집</value>
+  </data>
+  <data name="AssignmentRulesEditHelp" xml:space="preserve">
+    <value>장치 할당 규칙을 편집합니다.</value>
+  </data>
+  <data name="AssignmentSys" xml:space="preserve">
+    <value>할당</value>
+  </data>
+  <data name="AssignmentSysHelp" xml:space="preserve">
+    <value>고정 통신 계획 및 동적 할당 편집.</value>
+  </data>
+  <data name="Assist" xml:space="preserve">
+    <value>Assist</value>
+  </data>
+  <data name="AssistFileManager" xml:space="preserve">
+    <value>파일 관리자</value>
+  </data>
+  <data name="AssistFileManagerHelp" xml:space="preserve">
+    <value>원격 장치에서 파일을 관리할 수 있는 액세스 권한을 제공합니다.</value>
+  </data>
+  <data name="AssistHelp" xml:space="preserve">
+    <value>원격 관리 역할 관리</value>
+  </data>
+  <data name="AssistRegistryEditor" xml:space="preserve">
+    <value>레지스트리 편집기</value>
+  </data>
+  <data name="AssistRegistryEditorHelp" xml:space="preserve">
+    <value>Windows Mobile 장치에서 레지스트리를 변경하는 데 필요한 액세스 권한을 제공합니다.</value>
+  </data>
+  <data name="AssistRemoteControl" xml:space="preserve">
+    <value>원격 제어</value>
+  </data>
+  <data name="AssistRemoteControlHelp" xml:space="preserve">
+    <value>원격 장치를 보고 제어할 수 있는 액세스 권한을 제공합니다.</value>
+  </data>
+  <data name="AssistRemoteShell" xml:space="preserve">
+    <value>원격 셸</value>
+  </data>
+  <data name="AssistRemoteShellHelp" xml:space="preserve">
+    <value>원격 장치의 명령줄 인터페이스를 통해 명령을 실행할 수 있는 액세스 권한을 제공합니다.</value>
+  </data>
+  <data name="AssistRemoteView" xml:space="preserve">
+    <value>원격 보기</value>
+  </data>
+  <data name="AssistRemoteViewHelp" xml:space="preserve">
+    <value>원격 장치만 볼 수 있는 액세스 권한을 제공합니다. 원격 보기 및 제어를 사용하도록 설정하면 세션이 보기 전용으로만 시작되지만 사용자가 제어 화면에 액세스하도록 요청할 수 있습니다.</value>
+  </data>
+  <data name="AssistSessionCollaboration" xml:space="preserve">
+    <value>세션 공동 작업</value>
+  </data>
+  <data name="AssistSessionCollaborationHelp" xml:space="preserve">
+    <value>콘솔 사용자가 원격 지원 세션에 추가 참가자를 초대할 수 있도록 합니다</value>
+  </data>
+  <data name="AssistUnattendedAccess" xml:space="preserve">
+    <value>무인 액세스</value>
+  </data>
+  <data name="AssistUnattendedAccessHelp" xml:space="preserve">
+    <value>무인 모드에서 장치에 대한 액세스 제공</value>
+  </data>
+  <data name="AttachmentsDD" xml:space="preserve">
+    <value>첨부 파일</value>
+  </data>
+  <data name="AttachmentsDDHelp" xml:space="preserve">
+    <value>장치 세부 정보에서 첨부 파일 추가 및 제거</value>
+  </data>
+  <data name="AutoDiscoveryIns" xml:space="preserve">
+    <value>자동 검색</value>
+  </data>
+  <data name="AutoDiscoveryInsHelp" xml:space="preserve">
+    <value>설치 아래에서 자동 검색 페이지에 대한 액세스를 제어합니다.</value>
+  </data>
+  <data name="AutoEnrollmentHelp" xml:space="preserve">
+    <value>자동 등록</value>
+  </data>
+  <data name="AutomationHelp" xml:space="preserve">
+    <value>이 기술 미리보기 리소스는 Hub 개요 페이지를 통해 자동화 플랫폼에 대한 액세스를 제공합니다.</value>
+  </data>
+  <data name="AwcmDD" xml:space="preserve">
+    <value>AWCM</value>
+  </data>
+  <data name="AwcmDDHelp" xml:space="preserve">
+    <value>장치 세부 정보 페이지에서 AirWatch Cloud Manager 연결을 시작하고 중지.</value>
+  </data>
+  <data name="AWProDeviceClearPasscode" xml:space="preserve">
+    <value>AW Pro 장치 암호 지우기</value>
+  </data>
+  <data name="AWProDeviceClearPasscodeHelp" xml:space="preserve">
+    <value>AirWatch Pro에서 암호/전원 켜기 암호를 지울 수 있는 권한을 제어합니다.</value>
+  </data>
+  <data name="AWProDeviceSendMessage" xml:space="preserve">
+    <value>AW Pro 장치 메시지 보내기</value>
+  </data>
+  <data name="AWProDeviceSendMessageHelp" xml:space="preserve">
+    <value>AW Pro에서 메시지를 전송할 수 있는 액세스를 제어합니다.</value>
+  </data>
+  <data name="AWProGenerateNewCertificate" xml:space="preserve">
+    <value>AW Pro 새 인증서 생성</value>
+  </data>
+  <data name="AWProGenerateNewCertificateHelp" xml:space="preserve">
+    <value>새 인증서를 생성하는 액세스를 제어합니다.</value>
+  </data>
+  <data name="AwProResCategory" xml:space="preserve">
+    <value>AW Pro</value>
+  </data>
+  <data name="AwProResCategoryHelp" xml:space="preserve">
+    <value>AW Pro Console에 완전한 액세스.</value>
+  </data>
+  <data name="BatchImportAccounts" xml:space="preserve">
+    <value>일괄 가져오기</value>
+  </data>
+  <data name="BatchImportAccountsHelp" xml:space="preserve">
+    <value>관리 계정 일괄 처리 가져오기</value>
+  </data>
+  <data name="BatchImportDM" xml:space="preserve">
+    <value>일괄 가져오기</value>
+  </data>
+  <data name="BatchImportDMHelp" xml:space="preserve">
+    <value>장치 프로필 일괄 처리 가져오기.</value>
+  </data>
+  <data name="BatchImportUG" xml:space="preserve">
+    <value>일괄 가져오기</value>
+  </data>
+  <data name="BatchImportUGHelp" xml:space="preserve">
+    <value>등록 사용자 그룹을 일괄 처리 가져오기.</value>
+  </data>
+  <data name="BatchImportUserAccount" xml:space="preserve">
+    <value>일괄 가져오기</value>
+  </data>
+  <data name="BatchImportUserAccountHelp" xml:space="preserve">
+    <value>등록 사용자를 위해 일괄 처리에 액세스</value>
+  </data>
+  <data name="BatchSizeBySmartGroupHelp" xml:space="preserve">
+    <value>내부 애플리케이션 배포를 위해 각 일괄 처리에 포함될 장치의 수를 지정합니다.</value>
+  </data>
+  <data name="BatchStatusAdminGeneral" xml:space="preserve">
+    <value>일괄 처리 상태</value>
+  </data>
+  <data name="BatchStatusAdminGeneralHelp" xml:space="preserve">
+    <value>관리자 일괄 가져오기 상태 보기.</value>
+  </data>
+  <data name="BatchStatusUserGeneral" xml:space="preserve">
+    <value>일괄 처리 상태</value>
+  </data>
+  <data name="BatchStatusUserGeneralHelp" xml:space="preserve">
+    <value>대량 등록 사용자 가져오기의 일괄 처리 상태에 액세스.</value>
+  </data>
+  <data name="BeforeArg" xml:space="preserve">
+    <value>{0} 이전</value>
+  </data>
+  <data name="BESResCategory" xml:space="preserve">
+    <value>BES</value>
+  </data>
+  <data name="BESResCategoryHelp" xml:space="preserve">
+    <value>대시보드 페이지에서 BES 등록 아이콘을 활성화.</value>
+  </data>
+  <data name="BillingBi" xml:space="preserve">
+    <value>청구</value>
+  </data>
+  <data name="BillingBiHelp" xml:space="preserve">
+    <value>청구 세부 정보 페이지 관리</value>
+  </data>
+  <data name="BIOSManagement" xml:space="preserve">
+    <value>BIOS 관리</value>
+  </data>
+  <data name="BIOSManagementHelp" xml:space="preserve">
+    <value>BIOS 관리 리소스</value>
+  </data>
+  <data name="BooksAb" xml:space="preserve">
+    <value>책</value>
+  </data>
+  <data name="BooksAbHelp" xml:space="preserve">
+    <value>앱 및 책 아래에 있는 책 모듈에 액세스를 제공.</value>
+  </data>
+  <data name="BoxerConfigReadWrite" xml:space="preserve">
+    <value>Boxer 애플리케이션 구성</value>
+  </data>
+  <data name="BoxerConfigReadWriteHelp" xml:space="preserve">
+    <value>공용으로 업로드되었을 경우 구성하기 위한 Boxer 설정</value>
+  </data>
+  <data name="BranchCacheSetup" xml:space="preserve">
+    <value>분기 캐시 설정</value>
+  </data>
+  <data name="BranchCacheSetupHelp" xml:space="preserve">
+    <value>Windows 10용 Workspace ONE 내에서 기본 피어 투 피어 애플리케이션 배포 기능을 설정 및 구성하는 설정</value>
+  </data>
+  <data name="BrandingSys" xml:space="preserve">
+    <value>브랜딩</value>
+  </data>
+  <data name="BrandingSysHelp" xml:space="preserve">
+    <value>일반 아래의 브랜딩 베이지에 대한 액세스를 제어합니다.</value>
+  </data>
+  <data name="BrowserDM" xml:space="preserve">
+    <value>브라우저</value>
+  </data>
+  <data name="BrowserDMHelp" xml:space="preserve">
+    <value>장치 관리로 브라우저 정책을 구성.</value>
+  </data>
+  <data name="BulkActionUserAccounts" xml:space="preserve">
+    <value>대량 작업</value>
+  </data>
+  <data name="BulkActionUserAccountsHelp" xml:space="preserve">
+    <value>메시지 전송과 같은 대량 작업을 사용자 계정에서 수행합니다.</value>
+  </data>
+  <data name="BulkImportCM" xml:space="preserve">
+    <value>일괄 가져오기</value>
+  </data>
+  <data name="BulkImportCMHelp" xml:space="preserve">
+    <value>모든 컨텐츠 보기에서 컨텐츠 일괄 가져오기.</value>
+  </data>
+  <data name="BulkManagementAd" xml:space="preserve">
+    <value>대량 관리</value>
+  </data>
+  <data name="BulkManagementAdHelp" xml:space="preserve">
+    <value>대량 관리 설정을 보고 편집</value>
+  </data>
+  <data name="BulkManagementDM" xml:space="preserve">
+    <value>대량 관리</value>
+  </data>
+  <data name="BulkManagementDMHelp" xml:space="preserve">
+    <value>장치 목록 보기에 있는 장치에 대량 작업을 수행합니다.</value>
+  </data>
+  <data name="CatalogSet" xml:space="preserve">
+    <value>카탈로그</value>
+  </data>
+  <data name="CatalogSetHelp" xml:space="preserve">
+    <value>시스템 설정에 있는 애플리케이션 카탈로그 페이지에 액세스하기 위한 사용 권한을 제공합니다.</value>
+  </data>
+  <data name="CategoriesCM" xml:space="preserve">
+    <value>카테고리</value>
+  </data>
+  <data name="CategoriesCMHelp" xml:space="preserve">
+    <value>컨텐츠 카테고리 생성 및 편집.</value>
+  </data>
+  <data name="CDNSetupHelp" xml:space="preserve">
+    <value>CDN에 대한 시스템 설정</value>
+  </data>
+  <data name="CertificateAuthoritiesApple" xml:space="preserve">
+    <value>인증 기관</value>
+  </data>
+  <data name="CertificateAuthoritiesAppleHelp" xml:space="preserve">
+    <value>iOS 아래 있는 인증서 기관 페이지에 대한 액세스를 제어합니다.</value>
+  </data>
+  <data name="CertificateAuthorityCM" xml:space="preserve">
+    <value>인증 기관</value>
+  </data>
+  <data name="CertificateAuthorityCMHelp" xml:space="preserve">
+    <value>인증서 기관과 인증서 템플릿 섹션에 액세스.</value>
+  </data>
+  <data name="CertificateManagementDM" xml:space="preserve">
+    <value>인증서 관리</value>
+  </data>
+  <data name="CertificateManagementDMHelp" xml:space="preserve">
+    <value>장치 관리에서 인증서 보기 및 관리</value>
+  </data>
+  <data name="CertificatesDD" xml:space="preserve">
+    <value>인증서</value>
+  </data>
+  <data name="CertificatesDDHelp" xml:space="preserve">
+    <value>장치 세부 정보에서 장치와 연결된 인증서 보기</value>
+  </data>
+  <data name="CertificatesExpired" xml:space="preserve">
+    <value>인증서 만료됨</value>
+  </data>
+  <data name="CertificatesRevoked" xml:space="preserve">
+    <value>인증서 해지됨</value>
+  </data>
+  <data name="ChangePasswordAdminAccounts" xml:space="preserve">
+    <value>비밀번호 변경</value>
+  </data>
+  <data name="ChangePasswordAdminAccountsHelp" xml:space="preserve">
+    <value>관리 비밀번호 변경.</value>
+  </data>
+  <data name="ChromebookSet" xml:space="preserve">
+    <value>ChromeBook</value>
+  </data>
+  <data name="ChromebookSetHelp" xml:space="preserve">
+    <value>ChromeBook 아래 있는 Agent 설정 페이지 액세스를 제어합니다.</value>
+  </data>
+  <data name="CloudContentPlatformHelp" xml:space="preserve">
+    <value>클라우드 콘텐츠 서비스를 시작하는 UEM 옵션을 활성화하는 리소스</value>
+  </data>
+  <data name="CollapsedAriaLabel" xml:space="preserve">
+    <value>축소됨</value>
+  </data>
+  <data name="CommaSeparatedEmailInfo" xml:space="preserve">
+    <value>쉼표를 사용하여 여러 이메일 주소를 구분합니다.</value>
+  </data>
+  <data name="ComplianceDD" xml:space="preserve">
+    <value>규정 준수</value>
+  </data>
+  <data name="ComplianceDDHelp" xml:space="preserve">
+    <value>장치 세부 정보에서 준수 규칙과 상태 보기.</value>
+  </data>
+  <data name="ComplianceDM" xml:space="preserve">
+    <value>규정 준수</value>
+  </data>
+  <data name="ComplianceDMHelp" xml:space="preserve">
+    <value>장치 관리에서 규정 준수 정책 보기 및 관리</value>
+  </data>
+  <data name="ComplianceHub" xml:space="preserve">
+    <value>규정 준수</value>
+  </data>
+  <data name="ComplianceHubHelp" xml:space="preserve">
+    <value>장치 규정 준수에 대한 보고서를 생성합니다.</value>
+  </data>
+  <data name="CompliancePoliciesEM" xml:space="preserve">
+    <value>규정 준수 정책</value>
+  </data>
+  <data name="CompliancePoliciesEMHelp" xml:space="preserve">
+    <value>이메일 관리 규정 준수 정책을 관리합니다.</value>
+  </data>
+  <data name="ConditionalAccessIntegrations" xml:space="preserve">
+    <value>조건부 액세스 통합</value>
+  </data>
+  <data name="ConditionalAccessIntegrationsHelp" xml:space="preserve">
+    <value>조건부 액세스 정책을 구성할 목적으로 장치의 규정 준수 상태를 타사와 공유하는 액세스를 제어합니다.</value>
+  </data>
+  <data name="ConditionsPPN" xml:space="preserve">
+    <value>조건</value>
+  </data>
+  <data name="ConditionsPPNHelp" xml:space="preserve">
+    <value>프로비저닝 정책을 위해 프로비저닝 조건을 만들고 관리.</value>
+  </data>
+  <data name="ConsoleSecurityAd" xml:space="preserve">
+    <value>Console 보안</value>
+  </data>
+  <data name="ConsoleSecurityAdHelp" xml:space="preserve">
+    <value>Console 보안 페이지를 보고 글로벌 조직 그룹에서 관리.</value>
+  </data>
+  <data name="ContentDashboard" xml:space="preserve">
+    <value>컨텐츠 대시보드</value>
+  </data>
+  <data name="ContentDashboardHelp" xml:space="preserve">
+    <value>컨텐츠 대시보드 페이지를 볼 수 있는 권한을 제어합니다. 메뉴\컨텐츠\대시보드로 이동하십시오.</value>
+  </data>
+  <data name="ContentDD" xml:space="preserve">
+    <value>컨텐츠</value>
+  </data>
+  <data name="ContentDDHelp" xml:space="preserve">
+    <value>장치 세부 정보에서 장치 컨텐츠에 액세스하고 관리하기</value>
+  </data>
+  <data name="ContentDeliveryServiceHelp" xml:space="preserve">
+    <value>컨텐츠 배포 서비스 설정에 대한 액세스 제어</value>
+  </data>
+  <data name="ContentHub" xml:space="preserve">
+    <value>컨텐츠</value>
+  </data>
+  <data name="ContentHubHelp" xml:space="preserve">
+    <value>장치 컨텐츠에 대한 보고서를 생성합니다.</value>
+  </data>
+  <data name="ContentRightsManagementHelp" xml:space="preserve">
+    <value>컨텐츠에 대한 Azure 권한 관리 보호 구성과 관련된 설정입니다.</value>
+  </data>
+  <data name="ContentViewerHelp" xml:space="preserve">
+    <value>컨텐츠 뷰어(HTML5 뷰어) 설정에 대한 액세스 제어</value>
+  </data>
+  <data name="CreationPoliciesGr" xml:space="preserve">
+    <value>생성 정책</value>
+  </data>
+  <data name="CreationPoliciesGrHelp" xml:space="preserve">
+    <value>경고 생성 정책 보고 관리</value>
+  </data>
+  <data name="CustomAttributeAssignmentRulesHelp" xml:space="preserve">
+    <value>현재 사용자 지정 특성 할당 규칙을 볼 수 있는 목록 보기 화면</value>
+  </data>
+  <data name="CustomAttributesSet" xml:space="preserve">
+    <value>사용자 지정 속성</value>
+  </data>
+  <data name="CustomAttributesSetHelp" xml:space="preserve">
+    <value>시스템 설정에서 사용자 지정 특성을 보고 관리</value>
+  </data>
+  <data name="CustomFieldsDM" xml:space="preserve">
+    <value>사용자 지정 필드</value>
+  </data>
+  <data name="CustomFieldsDMHelp" xml:space="preserve">
+    <value>장치 설정에서 사용자 지정 변수 편집.</value>
+  </data>
+  <data name="CustomizationAd" xml:space="preserve">
+    <value>사용자 지정</value>
+  </data>
+  <data name="CustomizationAdHelp" xml:space="preserve">
+    <value>지원되는 그리드를 사용자 정의하기 위한 사용 권한을 제공합니다.</value>
+  </data>
+  <data name="CustomizationHelp" xml:space="preserve">
+    <value>사용자 수준에 지원된 눈금을 사용자 지정하기 위한 사용 권한을 제공합니다.
+</value>
+  </data>
+  <data name="CustomMdmCommandHelp" xml:space="preserve">
+    <value>명령의 XML을 붙여넣어 iOS, tvOS 및 macOS에 명령을 전송할 수 있도록 하는 기능을 제어</value>
+  </data>
+  <data name="DataPurgingD" xml:space="preserve">
+    <value>데이터 삭제</value>
+  </data>
+  <data name="DataPurgingDHelp" xml:space="preserve">
+    <value>데이터 삭제 설정을 수정할 수 있는 사용 권한을 제공합니다.</value>
+  </data>
+  <data name="DataSamplesAd" xml:space="preserve">
+    <value>데이터 샘플</value>
+  </data>
+  <data name="DataSamplesAdHelp" xml:space="preserve">
+    <value>데이터베이스 테이블에 있는 장치 샘플 기록의 감사를 제어.</value>
+  </data>
+  <data name="DataSecuritySec" xml:space="preserve">
+    <value>데이터 보안</value>
+  </data>
+  <data name="DataSecuritySecHelp" xml:space="preserve">
+    <value>데이터 보안 화면을 보기 위한 사용 권한을 제공합니다.</value>
+  </data>
+  <data name="DeleteCartHelp" xml:space="preserve">
+    <value>카트를 삭제하면 관리자가 공유 장치에서 사용할 일련번호 목록을 제거할 수 있습니다.</value>
+  </data>
+  <data name="DeleteCustomReportSubscriptionHelp" xml:space="preserve">
+    <value>사용자 지정 보고서 구독을 삭제할 수 있는 액세스를 제어합니다. Hub\보고서 및 분석 자료\사용자 지정 보고서\구독으로 이동</value>
+  </data>
+  <data name="DeleteDeviceDD" xml:space="preserve">
+    <value>장치 삭제</value>
+  </data>
+  <data name="DeleteDeviceDDHelp" xml:space="preserve">
+    <value>장치 세부 정보 페이지에서 장치 기록 삭제</value>
+  </data>
+  <data name="DeleteFileServerConfiguration" xml:space="preserve">
+    <value>파일 서버 구성 삭제</value>
+  </data>
+  <data name="DeleteFileServerConfigurationHelp" xml:space="preserve">
+    <value>파일 서버 그리드 및 세부 정보를 삭제할 수 있는 사용자 권한 제공</value>
+  </data>
+  <data name="DeleteNoteHelp" xml:space="preserve">
+    <value>메모를 삭제하기 위한 사용 권한을 제공합니다.</value>
+  </data>
+  <data name="DeleteTagHelp" xml:space="preserve">
+    <value>태그를 삭제하기 위한 사용 권한을 제공합니다.</value>
+  </data>
+  <data name="DeleteUnmanagedEM" xml:space="preserve">
+    <value>관리되지 않는 항목 삭제</value>
+  </data>
+  <data name="DeleteUnmanagedEMHelp" xml:space="preserve">
+    <value>이메일 관리 대시보드에서 관리되지 않는 장치를 삭제합니다.</value>
+  </data>
+  <data name="DeleteWindowsTemplateHelp" xml:space="preserve">
+    <value>관리자에게 Console 대시보드에서 Windows 템플릿을 삭제하는 설정 구성 허용</value>
+  </data>
+  <data name="DesignateRecipients" xml:space="preserve">
+    <value>수신자 지정</value>
+  </data>
+  <data name="DetailsPM" xml:space="preserve">
+    <value>세부 정보</value>
+  </data>
+  <data name="DetailsPMHelp" xml:space="preserve">
+    <value>프린터 세부 정보 페이지 보기.</value>
+  </data>
+  <data name="DeviceBulkManagementRebootDeviceHelp" xml:space="preserve">
+    <value>사용자가 장치를 대량으로 재부팅할 수 있도록 허용</value>
+  </data>
+  <data name="DeviceDetailsHub" xml:space="preserve">
+    <value>장치 세부 정보</value>
+  </data>
+  <data name="DeviceDetailsHubHelp" xml:space="preserve">
+    <value>장치 세부 정보를 위해 보고서를 생성.</value>
+  </data>
+  <data name="DeviceDetailsQueryHealthAttestationHelp" xml:space="preserve">
+    <value>요청 시 상태 증명 인증서 Blob 쿼리</value>
+  </data>
+  <data name="DeviceDetailsQueryOSUpdates" xml:space="preserve">
+    <value>장치 세부 정보 쿼리 OS 업데이트</value>
+  </data>
+  <data name="DeviceDetailsQueryOSUpdatesHelp" xml:space="preserve">
+    <value>장치 세부 정보 페이지에서 장치로부터 OS 업데이트 정보를 쿼리할 수 있는 액세스 권한을 제어합니다.</value>
+  </data>
+  <data name="DeviceEnterpriseReset" xml:space="preserve">
+    <value>엔터프라이즈 재설정</value>
+  </data>
+  <data name="DeviceEnterpriseResetHelp" xml:space="preserve">
+    <value>AirWatch 등록과 다른 기업 데이터를 유지하면서 장치를 공장 초기화하기 위한 사용 권한을 제공합니다.</value>
+  </data>
+  <data name="DeviceGroupsDM" xml:space="preserve">
+    <value>장치 그룹</value>
+  </data>
+  <data name="DeviceGroupsDMHelp" xml:space="preserve">
+    <value>장치 관리로 장치 그룹을 만들고 관리.</value>
+  </data>
+  <data name="DeviceGroupsSet" xml:space="preserve">
+    <value>장치 그룹</value>
+  </data>
+  <data name="DeviceGroupsSetHelp" xml:space="preserve">
+    <value>시스템 설정에서 장치 그룹에 액세스를 제어합니다.</value>
+  </data>
+  <data name="DeviceInventoryHub" xml:space="preserve">
+    <value>장치 인벤토리</value>
+  </data>
+  <data name="DeviceInventoryHubHelp" xml:space="preserve">
+    <value>장치 인벤토리를 위해 보고서를 생성.</value>
+  </data>
+  <data name="DeviceLimitRestrictionEdit" xml:space="preserve">
+    <value>장치 한도 제한 편집</value>
+  </data>
+  <data name="DeviceLimitRestrictionEditHelp" xml:space="preserve">
+    <value>설정 / 장치 및 사용자 / 일반 / 등록 / 제한 아래에서 장치 제한을 수정 / 읽을 수 있는 사용 권한 부여</value>
+  </data>
+  <data name="DevicePM" xml:space="preserve">
+    <value>장치</value>
+  </data>
+  <data name="DevicePMHelp" xml:space="preserve">
+    <value>프린터 장치 페이지에 대한 액세스를 제어합니다.</value>
+  </data>
+  <data name="DevicesHub" xml:space="preserve">
+    <value>장치</value>
+  </data>
+  <data name="DevicesHubHelp" xml:space="preserve">
+    <value>장치 그룹과 매트릭을 위해 보고서 생성.</value>
+  </data>
+  <data name="DevicesRESTMdm" xml:space="preserve">
+    <value>장치</value>
+  </data>
+  <data name="DevicesRESTMdmHelp" xml:space="preserve">
+    <value>장치 관리를 위한 REST API</value>
+  </data>
+  <data name="DeviceWipeDD" xml:space="preserve">
+    <value>장치 초기화</value>
+  </data>
+  <data name="DeviceWipeDDHelp" xml:space="preserve">
+    <value>장치 세부 정보에서 장치를 원격으로 초기화하여 장치를 공장 설정으로 복원합니다.</value>
+  </data>
+  <data name="DeviceWipeHelp" xml:space="preserve">
+    <value>장치를 초기화하도록 액세스를 제어합니다.</value>
+  </data>
+  <data name="DeviceWipesSet" xml:space="preserve">
+    <value>장치 초기화</value>
+  </data>
+  <data name="DeviceWipesSetHelp" xml:space="preserve">
+    <value>시스템 설정에 있는 장치 수명 주기 관리에 액세스를 제어합니다.</value>
+  </data>
+  <data name="DiagnosticsAd" xml:space="preserve">
+    <value>진단</value>
+  </data>
+  <data name="DiagnosticsAdHelp" xml:space="preserve">
+    <value>시스템 설정에서 진단 설정 관리.</value>
+  </data>
+  <data name="DisableActivationLockBypassCodeHelp" xml:space="preserve">
+    <value>관리자가 iOS 장치에서 활성화 잠금 바이패스 코드를 비활성화할 수 있는 권한을 부여합니다. 장치/세부 정보/요약/ 또는 장치/목록으로 이동하여 장치를 선택하고 추가를 클릭합니다.</value>
+  </data>
+  <data name="DisableActivationLockBypassDD" xml:space="preserve">
+    <value>활성화 잠금 바이패스 비활성화</value>
+  </data>
+  <data name="DisableActivationLockBypassDDHelp" xml:space="preserve">
+    <value>iOS 장치에서 활성화 잠금 바이패스 코드를 비활성화.</value>
+  </data>
+  <data name="DisplayVideoImportHelp" xml:space="preserve">
+    <value>Wistia를 사용하여 AirWatch에서 동영상 가져오기</value>
+  </data>
+  <data name="DisplayVideoViewHelp" xml:space="preserve">
+    <value>동영상 목록 보기</value>
+  </data>
+  <data name="DistributionDM" xml:space="preserve">
+    <value>배포</value>
+  </data>
+  <data name="DistributionDMHelp" xml:space="preserve">
+    <value>위치 편집 및 위치 세부 정보 페이지에서 배포 서버 경로에 액세스.</value>
+  </data>
+  <data name="DomainJoinConfigEdit" xml:space="preserve">
+    <value>편집</value>
+  </data>
+  <data name="DomainJoinConfigEditHelp" xml:space="preserve">
+    <value>도메인 가입 구성 추가/편집/할당/삭제에 액세스를 제어합니다.</value>
+  </data>
+  <data name="DownloadContentCM" xml:space="preserve">
+    <value>컨텐츠 다운로드</value>
+  </data>
+  <data name="DownloadContentCMHelp" xml:space="preserve">
+    <value>모든 컨텐츠 보기에서 컨텐츠 다운로드.</value>
+  </data>
+  <data name="DownloadLinuxPullServiceInstallerHelp" xml:space="preserve">
+    <value>Linux 요청 서비스 설치 프로그램을 다운로드할 수 있는 사용 권한을 부여</value>
+  </data>
+  <data name="DownloadWindowsPullServiceInstallerHelp" xml:space="preserve">
+    <value>Windows 요청 서비스 설치 프로그램을 다운로드할 수 있는 사용 권한을 부여</value>
+  </data>
+  <data name="DropshipProvisioningEdit" xml:space="preserve">
+    <value>Drop Ship Provisioning 설정 편집</value>
+  </data>
+  <data name="DropshipProvisioningHelp" xml:space="preserve">
+    <value>Drop Ship Provisioning을 사용하도록 설정하는 액세스 제어</value>
+  </data>
+  <data name="DxModeEM" xml:space="preserve">
+    <value>DxMode</value>
+  </data>
+  <data name="DxModeEMHelp" xml:space="preserve">
+    <value>이메일 관리 대시보드에서 장치 문제 해결을 위해 DxMode를 활성화 및 비활성화합니다.</value>
+  </data>
+  <data name="EasIntegrationEm" xml:space="preserve">
+    <value>EAS 통합</value>
+  </data>
+  <data name="EasIntegrationEmHelp" xml:space="preserve">
+    <value>일반 아래의 모바일 이메일 게이트웨이 페이지 액세스를 제어합니다.</value>
+  </data>
+  <data name="EditAdminGroupHelp" xml:space="preserve">
+    <value>관리자 그룹을 편집하도록 권한을 제공합니다. 
+</value>
+  </data>
+  <data name="EditDD" xml:space="preserve">
+    <value>편집</value>
+  </data>
+  <data name="EditDDHelp" xml:space="preserve">
+    <value>식별 이름, 자산 번호, 등과 같은 장치 정보를 편집합니다.</value>
+  </data>
+  <data name="EditFileServerConfiguration" xml:space="preserve">
+    <value>파일 서버 구성 편집</value>
+  </data>
+  <data name="EditFileServerConfigurationHelp" xml:space="preserve">
+    <value>파일 서버 그리드 및 세부 정보를 편집할 수 있는 사용자 권한을 부여 </value>
+  </data>
+  <data name="EditNoteHelp" xml:space="preserve">
+    <value>메모를 편집하기 위한 사용 권한을 제공합니다.</value>
+  </data>
+  <data name="EditTagHelp" xml:space="preserve">
+    <value>태그를 편집하기 위한 사용 권한을 제공합니다.</value>
+  </data>
+  <data name="EditTypeGr" xml:space="preserve">
+    <value>유형 편집</value>
+  </data>
+  <data name="EditUserAccounts" xml:space="preserve">
+    <value>편집</value>
+  </data>
+  <data name="EditUserAccountsHelp" xml:space="preserve">
+    <value>등록 사용자 계정 편집.</value>
+  </data>
+  <data name="EmailAddressAlreadyExists" xml:space="preserve">
+    <value>이메일 주소가 이미 존재함</value>
+  </data>
+  <data name="EmailDM" xml:space="preserve">
+    <value>이메일</value>
+  </data>
+  <data name="EmailDMHelp" xml:space="preserve">
+    <value>ActiveSync 요청 차단 및 허용.</value>
+  </data>
+  <data name="EmailManagementHub" xml:space="preserve">
+    <value>이메일 관리</value>
+  </data>
+  <data name="EmailManagementHubHelp" xml:space="preserve">
+    <value>이메일 관리용 보고서를 생성합니다.</value>
+  </data>
+  <data name="EMDashboardMigrateDevice" xml:space="preserve">
+    <value>이메일 관리 대시보드 마이그레이션 장치</value>
+  </data>
+  <data name="EMDashboardMigrateDeviceHelp" xml:space="preserve">
+    <value>하나 이상의 장치를 MEM 구성 간에 이동하는 액세스를 제어합니다.</value>
+  </data>
+  <data name="EnableDigitalExperienceTelemetry" xml:space="preserve">
+    <value>디지털 환경 원격 분석 활성화</value>
+  </data>
+  <data name="EnableDigitalExperienceTelemetryHelp" xml:space="preserve">
+    <value>Workspace ONE Intelligence로 디지털 환경 원격 분석 수집 및 전송을 활성화합니다.</value>
+  </data>
+  <data name="EnableDisableAd" xml:space="preserve">
+    <value>활성화/비활성화</value>
+  </data>
+  <data name="EnableDisableAdHelp" xml:space="preserve">
+    <value>메모리 캐시를 활성화 또는 비활성화합니다.</value>
+  </data>
+  <data name="EnableSystemSettingsAuditHelp" xml:space="preserve">
+    <value>시스템 코드를 통해 설정 감사를 활성화/비활성화합니다.
+</value>
+  </data>
+  <data name="EncryptionKeyManagementHelp" xml:space="preserve">
+    <value>암호화 키 관리를 수행할 수 있는 사용 권한을 부여합니다. 시스템 \ 보안 \ 암호화 키 관리로 이동</value>
+  </data>
+  <data name="EnrollmentDM" xml:space="preserve">
+    <value>등록</value>
+  </data>
+  <data name="EnrollmentDMHelp" xml:space="preserve">
+    <value>등록 제한 수정.</value>
+  </data>
+  <data name="EnrollmentProgramSet" xml:space="preserve">
+    <value>등록 프로그램</value>
+  </data>
+  <data name="EnrollmentProgramSetHelp" xml:space="preserve">
+    <value>장치 등록 프로그램에 액세스를 제어합니다.</value>
+  </data>
+  <data name="EnrollmentProgramUserGen" xml:space="preserve">
+    <value>등록 프로그램</value>
+  </data>
+  <data name="EnrollmentProgramUserGenHelp" xml:space="preserve">
+    <value>장치를 위해 장치 등록 프로그램 프로필에 액세스.</value>
+  </data>
+  <data name="EnrollmentSet" xml:space="preserve">
+    <value>등록</value>
+  </data>
+  <data name="EnrollmentSetHelp" xml:space="preserve">
+    <value>[일반] 아래의 [등록] 페이지에 대한 액세스를 제어합니다.</value>
+  </data>
+  <data name="EnrollOffline" xml:space="preserve">
+    <value>오프라인 등록</value>
+  </data>
+  <data name="EnrollOfflineHelp" xml:space="preserve">
+    <value>이 리소스는 지정된 역할이 있는 모든 관리자가 등록된 장치를 오프라인 등록할 수 있도록 허용합니다.</value>
+  </data>
+  <data name="EnterAdminModeHelp" xml:space="preserve">
+    <value>시작 관리자의 관리 모드 진입 명령에 대한 액세스 제어</value>
+  </data>
+  <data name="EnterEmailAddressToDesignateRecipients" xml:space="preserve">
+    <value>이메일 주소를 입력하여 수신자 지정</value>
+  </data>
+  <data name="EnterpriseIntegrationSys" xml:space="preserve">
+    <value>엔터프라이즈 통합</value>
+  </data>
+  <data name="EnterpriseIntegrationSysHelp" xml:space="preserve">
+    <value>엔터프라이즈 통합 액세스를 제어합니다.</value>
+  </data>
+  <data name="EnterpriseResourceAddHelp" xml:space="preserve">
+    <value>새 엔터프라이즈 리소스를 추가할 사용 권한을 제공합니다.</value>
+  </data>
+  <data name="EnterpriseResourceHelp" xml:space="preserve">
+    <value>엔터프라이즈 리소스 페이지에 액세스를 제공합니다.</value>
+  </data>
+  <data name="EnterpriseWipeDD" xml:space="preserve">
+    <value>엔터프라이즈 초기화</value>
+  </data>
+  <data name="EnterpriseWipeDDHelp" xml:space="preserve">
+    <value>장치 세부 정보 페이지에서 장치를 등록 취소하여 모든 기업 데이터 및 설정을 제거할 수 있는 사용 권한을 제공합니다.</value>
+  </data>
+  <data name="EnterpriseWipeDM" xml:space="preserve">
+    <value>엔터프라이즈 초기화</value>
+  </data>
+  <data name="EnterpriseWipeDMHelp" xml:space="preserve">
+    <value>장치를 등록 취소하여 모든 기업 데이터 및 설정을 제거할 수 있는 사용 권한을 제공합니다.</value>
+  </data>
+  <data name="EquipmentEq" xml:space="preserve">
+    <value>장비</value>
+  </data>
+  <data name="EquipmentEqHelp" xml:space="preserve">
+    <value>장비 관리. 메뉴\장비로 이동하십시오.</value>
+  </data>
+  <data name="ESignature" xml:space="preserve">
+    <value>전자서명</value>
+  </data>
+  <data name="ESignatureHelp" xml:space="preserve">
+    <value>컨텐츠 아래에 전자서명 설정이 있습니다. 설정\컨텐츠\고급\전자서명으로 이동하십시오.</value>
+  </data>
+  <data name="ESignatures" xml:space="preserve">
+    <value>전자서명</value>
+  </data>
+  <data name="EulDD" xml:space="preserve">
+    <value>EULA</value>
+  </data>
+  <data name="EulDDHelp" xml:space="preserve">
+    <value>장치 세부 정보에서 장치의 과거 및 현재 사용 약관 보기.</value>
+  </data>
+  <data name="EventLogAd" xml:space="preserve">
+    <value>이벤트 로그</value>
+  </data>
+  <data name="EventLogAdHelp" xml:space="preserve">
+    <value>Console 이벤트 로그에 액세스를 제어합니다.</value>
+  </data>
+  <data name="EventLogHelp" xml:space="preserve">
+    <value>이벤트 로그를 읽는 액세스를 제어합니다. 
+</value>
+  </data>
+  <data name="EventsPM" xml:space="preserve">
+    <value>이벤트</value>
+  </data>
+  <data name="EventsPMHelp" xml:space="preserve">
+    <value>프린터 이벤트 로그 페이지에 액세스를 제어합니다.</value>
+  </data>
+  <data name="ExitAdminModeHelp" xml:space="preserve">
+    <value>관리 모드 종료 명령에 대한 액세스 제어</value>
+  </data>
+  <data name="ExitAirWatchLauncherHelp" xml:space="preserve">
+    <value>시작 관리자 종료 명령에 대한 액세스 제어</value>
+  </data>
+  <data name="ExpandedAriaLabel" xml:space="preserve">
+    <value>확장됨</value>
+  </data>
+  <data name="ExpireAllUsersGr" xml:space="preserve">
+    <value>모든 사용자 만료</value>
+  </data>
+  <data name="ExpireAllUsersGrHelp" xml:space="preserve">
+    <value>"모든 사용자 비밀번호 만료" 버튼을 활성화합니다.</value>
+  </data>
+  <data name="ExportUG" xml:space="preserve">
+    <value>내보내기</value>
+  </data>
+  <data name="ExportUGHelp" xml:space="preserve">
+    <value>사용자 그룹 내보내기.</value>
+  </data>
+  <data name="ExportUserAccounts" xml:space="preserve">
+    <value>내보내기</value>
+  </data>
+  <data name="ExportUserAccountsHelp" xml:space="preserve">
+    <value>사용자 계정 내보내기.</value>
+  </data>
+  <data name="ExportUserCategories" xml:space="preserve">
+    <value>내보내기</value>
+  </data>
+  <data name="ExportUserCategoriesHelp" xml:space="preserve">
+    <value>등록 사용자 계정 카테고리 내보내기.</value>
+  </data>
+  <data name="ExportUserRoles" xml:space="preserve">
+    <value>내보내기</value>
+  </data>
+  <data name="ExportUserRolesHelp" xml:space="preserve">
+    <value>사용자 역할 내보내기.</value>
+  </data>
+  <data name="FeatureFlagEdit" xml:space="preserve">
+    <value>기능 플래그 편집</value>
+  </data>
+  <data name="FeatureFlagEditHelp" xml:space="preserve">
+    <value>기능 플래그 편집 및 업데이트에 대한 액세스를 제어합니다.</value>
+  </data>
+  <data name="FeatureFlagRead" xml:space="preserve">
+    <value>기능 플래그 읽기</value>
+  </data>
+  <data name="FeatureFlagReadHelp" xml:space="preserve">
+    <value>기능 플래그 상태를 읽는 기능을 제어합니다.</value>
+  </data>
+  <data name="FileActionsPPN" xml:space="preserve">
+    <value>파일 작업</value>
+  </data>
+  <data name="FileActionsPPNHelp" xml:space="preserve">
+    <value>프로비저닝 정책을 위해 파일 작업을 만들고 관리.</value>
+  </data>
+  <data name="FileEncryptionStats" xml:space="preserve">
+    <value>파일 암호화 통계</value>
+  </data>
+  <data name="FileEncryptionStatsHelp" xml:space="preserve">
+    <value>테넌트 스토리지 설정: FileEncryptionStats</value>
+  </data>
+  <data name="FileManagerHelp" xml:space="preserve">
+    <value>원격적으로 WinMo 장치의 파일을 액세스하기 위한 사용 권한을 제공합니다.
+</value>
+  </data>
+  <data name="FilepathIns" xml:space="preserve">
+    <value>파일 경로</value>
+  </data>
+  <data name="FilepathInsHelp" xml:space="preserve">
+    <value>[고급] 아래의 [파일 동기화] 페이지에 대한 액세스를 제어합니다.</value>
+  </data>
+  <data name="FilesPM" xml:space="preserve">
+    <value>파일</value>
+  </data>
+  <data name="FilesPMHelp" xml:space="preserve">
+    <value>[프린터 파일] 페이지에 대한 액세스를 제어합니다.</value>
+  </data>
+  <data name="FilesPr" xml:space="preserve">
+    <value>파일</value>
+  </data>
+  <data name="FilesPrHelp" xml:space="preserve">
+    <value>프린터 파일 관리.</value>
+  </data>
+  <data name="FindDeviceDD" xml:space="preserve">
+    <value>장치 찾기</value>
+  </data>
+  <data name="FindDeviceDDHelp" xml:space="preserve">
+    <value>사용자가 장치 위치를 추적할 수 있도록 장치 상태를 오디오 알림 시작으로 설정하십시오. 장치 세부 정보에서 액세스할 수 있음.</value>
+  </data>
+  <data name="FindDeviceHelp" xml:space="preserve">
+    <value>사용자가 장치를 찾을 수 있게 장치의 상태를 오디오 알림으로 설정하도록 액세스를 제어합니다. 장치 세부 정보 HTML5 화면에 사용 가능합니다.</value>
+  </data>
+  <data name="FriendlyNameSet" xml:space="preserve">
+    <value>식별 이름</value>
+  </data>
+  <data name="FriendlyNameSetHelp" xml:space="preserve">
+    <value>[일반] 아래의 [식별 이름] 페이지에 대한 액세스를 제어합니다.</value>
+  </data>
+  <data name="GatewayStatusEm" xml:space="preserve">
+    <value>게이트웨이 상태</value>
+  </data>
+  <data name="GatewayStatusEmHelp" xml:space="preserve">
+    <value>이메일 게이트웨이 상태 설정을 제어합니다.</value>
+  </data>
+  <data name="GeneralDD" xml:space="preserve">
+    <value>일반</value>
+  </data>
+  <data name="GeneralDDHelp" xml:space="preserve">
+    <value>장치 세부 정보 페이지의 분류된 기본 기능을 제어.</value>
+  </data>
+  <data name="GeneralHub" xml:space="preserve">
+    <value>일반</value>
+  </data>
+  <data name="GeneralHubHelp" xml:space="preserve">
+    <value>보고서 모듈에 액세스.</value>
+  </data>
+  <data name="GeneralPM" xml:space="preserve">
+    <value>일반</value>
+  </data>
+  <data name="GeneralPMHelp" xml:space="preserve">
+    <value>프린터 일반 페이지에 대한 액세스를 제어합니다.</value>
+  </data>
+  <data name="GeneralSettingsEm" xml:space="preserve">
+    <value>일반 설정</value>
+  </data>
+  <data name="GeneralSettingsEmHelp" xml:space="preserve">
+    <value>이메일 일반 설정을 제어합니다.</value>
+  </data>
+  <data name="GeneralSOaP" xml:space="preserve">
+    <value>일반</value>
+  </data>
+  <data name="GeneralSOaPHelp" xml:space="preserve">
+    <value>초기화 명령만 빼고 모든 AirWatch 서비스 API에 액세스.</value>
+  </data>
+  <data name="GeneralSys" xml:space="preserve">
+    <value>일반</value>
+  </data>
+  <data name="GeneralSysHelp" xml:space="preserve">
+    <value>[시스템] 아래의 [일반] 페이지에 대한 액세스를 제어합니다.</value>
+  </data>
+  <data name="GeofencingAreaDM" xml:space="preserve">
+    <value>지오펜싱 영역</value>
+  </data>
+  <data name="GeofencingAreaDMHelp" xml:space="preserve">
+    <value>프로필을 위해 지오펜싱 설정 관리.</value>
+  </data>
+  <data name="GeofencingHelp" xml:space="preserve">
+    <value>지오펜싱 설정 보기/편집 사용 권한을 제공합니다. 
+</value>
+  </data>
+  <data name="GeofencingSet" xml:space="preserve">
+    <value>지오펜싱</value>
+  </data>
+  <data name="GeofencingSetHelp" xml:space="preserve">
+    <value>지오펜싱 설정 보기/편집 사용 권한을 제공합니다.</value>
+  </data>
+  <data name="GettingStartedApplicationHelp" xml:space="preserve">
+    <value>모바일 애플리케이션 관리의 시작하기 진행 제어</value>
+  </data>
+  <data name="GettingStartedSys" xml:space="preserve">
+    <value>시작하기</value>
+  </data>
+  <data name="GettingStartedSysHelp" xml:space="preserve">
+    <value>시작 가이드를 보기 위한 사용 권한을 제공합니다.</value>
+  </data>
+  <data name="GooglePlayIntegrationAn" xml:space="preserve">
+    <value>Google Play 통합</value>
+  </data>
+  <data name="GooglePlayIntegrationAnHelp" xml:space="preserve">
+    <value>Google Play 통합을 보고 편집하기 위한 사용 권한을 제공합니다.</value>
+  </data>
+  <data name="GroupsRESTSystem" xml:space="preserve">
+    <value>그룹</value>
+  </data>
+  <data name="GroupsRESTSystemHelp" xml:space="preserve">
+    <value>그룹 관리를 위한 REST API</value>
+  </data>
+  <data name="GSuiteRotatePasswordAction" xml:space="preserve">
+    <value>G Suite 비밀번호 순환</value>
+  </data>
+  <data name="GSuiteRotatePasswordActionHelp" xml:space="preserve">
+    <value>G Suite 기본 비밀번호와 이메일 프로필을 순환하는 기능입니다.</value>
+  </data>
+  <data name="HeroCards" xml:space="preserve">
+    <value>Mobile Flows</value>
+  </data>
+  <data name="HeroCardsHelp" xml:space="preserve">
+    <value>Mobile Flows 백엔드 및 서비스에 대한 구성 UI</value>
+  </data>
+  <data name="HorizonWorkspaceSettings" xml:space="preserve">
+    <value>Horizon Workspace 설정</value>
+  </data>
+  <data name="HorizonWorkspaceSettingsHelp" xml:space="preserve">
+    <value>Horizon Workspace 설정을 보기와 편집에 대한 액세스를 제어합니다. 탐색 경로는 통합\애플리케이션\Workspace 내 설정\앱\애플리케이션입니다.</value>
+  </data>
+  <data name="HyperLinkDeleteAd" xml:space="preserve">
+    <value>하이퍼링크 삭제</value>
+  </data>
+  <data name="HyperLinkDeleteAdHelp" xml:space="preserve">
+    <value>장치 세부 정보 페이지에서 하이퍼링크 첨부 파일을 제거하기 위한 사용 권한을 제공합니다.</value>
+  </data>
+  <data name="InProductSupport" xml:space="preserve">
+    <value>제품 내 지원</value>
+  </data>
+  <data name="InProductSupportHelp" xml:space="preserve">
+    <value>관리자가 문서를 검색하고 UEM에서 직접 도움말을 볼 수 있는 제품 내 지원 도구에 액세스합니다.</value>
+  </data>
+  <data name="InstallationAdvancedIns" xml:space="preserve">
+    <value>설치(고급)</value>
+  </data>
+  <data name="InstallationAdvancedInsHelp" xml:space="preserve">
+    <value>설치 아래의 고급 페이지에 대한 액세스를 제어합니다.</value>
+  </data>
+  <data name="InstallationIns" xml:space="preserve">
+    <value>설치</value>
+  </data>
+  <data name="InstallationInsHelp" xml:space="preserve">
+    <value>설치 페이지에 대한 액세스를 제어합니다.</value>
+  </data>
+  <data name="InstallFontsApple" xml:space="preserve">
+    <value>글꼴 설치</value>
+  </data>
+  <data name="InstallFontsAppleHelp" xml:space="preserve">
+    <value>설정에서 글꼴 설치 섹션을 활성화</value>
+  </data>
+  <data name="InstallIntelligentHub" xml:space="preserve">
+    <value>Intelligent Hub 설치</value>
+  </data>
+  <data name="InstallIntelligentHubHelp" xml:space="preserve">
+    <value>등록된 장치에 Intelligent Hub를 원격으로 설치하기 위한 액세스 제공</value>
+  </data>
+  <data name="InsufficientResourceToSaveAdmin" xml:space="preserve">
+    <value>저장할 수 없습니다. 관리자 계정에 이 레코드를 수정할 수 있는 충분한 권한이 없습니다.</value>
+  </data>
+  <data name="Intelligence" xml:space="preserve">
+    <value>Intelligence</value>
+  </data>
+  <data name="IntelligenceHelp" xml:space="preserve">
+    <value>[Intelligence] 페이지에 액세스합니다.</value>
+  </data>
+  <data name="InternalAppsAb" xml:space="preserve">
+    <value>내부 앱</value>
+  </data>
+  <data name="InternalAppsAbHelp" xml:space="preserve">
+    <value>내부에서 개발된 애플리케이션을 업로드하고 관리.</value>
+  </data>
+  <data name="LanguageManagementAd" xml:space="preserve">
+    <value>언어 관리</value>
+  </data>
+  <data name="LanguageManagementAdHelp" xml:space="preserve">
+    <value>언어 관리를 위해 메뉴 항목 보고 현지화 편집기 및 언어 팩 활성화 페이지에 액세스합니다.</value>
+  </data>
+  <data name="LearnMoreAccess" xml:space="preserve">
+    <value>더 알아보기 액세스</value>
+  </data>
+  <data name="LearnMoreAccessContact" xml:space="preserve">
+    <value>더 알아보기 연락처 액세스</value>
+  </data>
+  <data name="LearnMoreAccessContactHelp" xml:space="preserve">
+    <value>정보 및 업그레이드 섹션의 연락처 섹션에 대한 액세스 제어</value>
+  </data>
+  <data name="LearnMoreAccessHelp" xml:space="preserve">
+    <value>정보 및 업그레이드 섹션에 대한 액세스 제어</value>
+  </data>
+  <data name="LegacyAndroidMigration" xml:space="preserve">
+    <value>레거시 Android 마이그레이션</value>
+  </data>
+  <data name="LegacyAndroidMigrationHelp" xml:space="preserve">
+    <value>작업 프로필이 있는 Android Enterprise로 레거시 Android 장치를 마이그레이션하기 위해 레거시 Android 마이그레이션 페이지에 대한 액세스를 제어</value>
+  </data>
+  <data name="LicensesAd" xml:space="preserve">
+    <value>라이센스</value>
+  </data>
+  <data name="LicensesAdHelp" xml:space="preserve">
+    <value>라이센스를 수정하기 위한 사용 권한을 제공합니다.</value>
+  </data>
+  <data name="LinuxHelp" xml:space="preserve">
+    <value>시스템 설정에 있는 Linux 설정 페이지에 대한 액세스를 제어합니다.</value>
+  </data>
+  <data name="LocalizationSys" xml:space="preserve">
+    <value>현지화</value>
+  </data>
+  <data name="LocalizationSysHelp" xml:space="preserve">
+    <value>현지화 설정 액세스를 제어합니다.</value>
+  </data>
+  <data name="LocationCodeGr" xml:space="preserve">
+    <value>위치 코드</value>
+  </data>
+  <data name="LocationCodeGrHelp" xml:space="preserve">
+    <value>위치 추가/편집 페이지에 위치 코드를 편집.</value>
+  </data>
+  <data name="LocationDD" xml:space="preserve">
+    <value>위치</value>
+  </data>
+  <data name="LocationDDHelp" xml:space="preserve">
+    <value>장치를 위해 위치 및 이동 경로 데이터 보기.</value>
+  </data>
+  <data name="LocationGroupTypeHelp" xml:space="preserve">
+    <value>조직 그룹 유형 페이지 액세스를 제어합니다.
+</value>
+  </data>
+  <data name="LocationsGr" xml:space="preserve">
+    <value>위치</value>
+  </data>
+  <data name="LocationsGrHelp" xml:space="preserve">
+    <value>조직 그룹을 위해 위치를 보고 관리.</value>
+  </data>
+  <data name="LocationsHub" xml:space="preserve">
+    <value>위치</value>
+  </data>
+  <data name="LocationsHubHelp" xml:space="preserve">
+    <value>위치에 대한 보고서 생성.</value>
+  </data>
+  <data name="LocationStatusHelp" xml:space="preserve">
+    <value>위치 상태 링크에 액세스를 제어합니다. 새 위치 상태를 추가하여 액세스를 제어합니다.
+</value>
+  </data>
+  <data name="LocationTypeHelp" xml:space="preserve">
+    <value>위치 유형 페이지로 액세스를 제어합니다.
+</value>
+  </data>
+  <data name="LocationZonesGr" xml:space="preserve">
+    <value>위치 영역</value>
+  </data>
+  <data name="LocationZonesGrHelp" xml:space="preserve">
+    <value>위치에 위치 영역을 추가하고 편집합니다.</value>
+  </data>
+  <data name="LockDD" xml:space="preserve">
+    <value>잠금</value>
+  </data>
+  <data name="LockDDHelp" xml:space="preserve">
+    <value>장치를 원격으로 잠그거나 앱 Single Sign-On을 잠급니다.</value>
+  </data>
+  <data name="LogDD" xml:space="preserve">
+    <value>로그</value>
+  </data>
+  <data name="LogDDHelp" xml:space="preserve">
+    <value>장치 세부 정보에서 로그 보기</value>
+  </data>
+  <data name="LoggingAd" xml:space="preserve">
+    <value>로깅</value>
+  </data>
+  <data name="LoggingAdHelp" xml:space="preserve">
+    <value>이벤트 로그 설정을 보기 위한 사용 권한을 제공합니다.</value>
+  </data>
+  <data name="LoggingAdL" xml:space="preserve">
+    <value>로깅</value>
+  </data>
+  <data name="LoggingAdLHelp" xml:space="preserve">
+    <value>Syslog와 대상 된 로깅을 위해 로깅 설정을 보고 편집합니다.</value>
+  </data>
+  <data name="LoginHistoryAdminGen" xml:space="preserve">
+    <value>로그인 기록</value>
+  </data>
+  <data name="LoginHistoryAdminGenHelp" xml:space="preserve">
+    <value>관리자 계정 페이지 및 사용자 환경 설정 페이지에서 로그인 기록 페이지에 액세스.</value>
+  </data>
+  <data name="LookupFields" xml:space="preserve">
+    <value>조회 필드</value>
+  </data>
+  <data name="LookupFieldsHelp" xml:space="preserve">
+    <value>[일반] 아래의 [조회 필드] 페이지에 대한 액세스를 제어합니다.</value>
+  </data>
+  <data name="MacOsXApple" xml:space="preserve">
+    <value>macOS</value>
+  </data>
+  <data name="MacOsXAppleHelp" xml:space="preserve">
+    <value>시스템 설정에 있는 macOS 설정 페이지에 대한 액세스를 제어합니다.</value>
+  </data>
+  <data name="MailRecipient" xml:space="preserve">
+    <value>메일 수신자</value>
+  </data>
+  <data name="MaintenanceUpgradeNotificationInfo" xml:space="preserve">
+    <value>사용할 옵션을 선택하여 Workspace ONE UEM 및 Workspace ONE Assist 알림을 수신할 대상을 지정합니다. 관리자 옵트인을 선택할 경우 관리자가 계정 설정 &gt; 알림에서 유지 관리 및 업그레이드 옵션을 봅니다.</value>
+  </data>
+  <data name="MaintenanceUpgradeNotifications" xml:space="preserve">
+    <value>유지 보수 및 업그레이드 알림</value>
+  </data>
+  <data name="ManageAdminGroups" xml:space="preserve">
+    <value>관리</value>
+  </data>
+  <data name="ManageAdminGroupsHelp" xml:space="preserve">
+    <value>동기화 또는 병합과 같은 작업을 관리자 그룹에 수행.</value>
+  </data>
+  <data name="ManageBaselines" xml:space="preserve">
+    <value>기준선 관리</value>
+  </data>
+  <data name="ManageBaselinesHelp" xml:space="preserve">
+    <value>기준선 새로 추가, 편집, 할당 사용 권한을 포함한 기준선 관리 액세스 컨트롤</value>
+  </data>
+  <data name="ManageContentCM" xml:space="preserve">
+    <value>컨텐츠 관리</value>
+  </data>
+  <data name="ManageContentCMHelp" xml:space="preserve">
+    <value>새 컨텐츠 추가하고 기존 컨텐츠 관리.</value>
+  </data>
+  <data name="ManageDevicesCM" xml:space="preserve">
+    <value>장치 관리</value>
+  </data>
+  <data name="ManageDevicesCMHelp" xml:space="preserve">
+    <value>관리되는 장치에서 컨텐츠를 원격 설치하고 삭제.</value>
+  </data>
+  <data name="ManageDeviceSensors" xml:space="preserve">
+    <value>장치 센서 관리</value>
+  </data>
+  <data name="ManageDeviceSensorsHelp" xml:space="preserve">
+    <value>장치 센서를 추가, 편집, 할당 또는 삭제하기 위한 액세스 권한 제어</value>
+  </data>
+  <data name="ManageDM" xml:space="preserve">
+    <value>관리</value>
+  </data>
+  <data name="ManageDMHelp" xml:space="preserve">
+    <value>장치 프로필 관리.</value>
+  </data>
+  <data name="ManagedSettingsApple" xml:space="preserve">
+    <value>관리되는 설정</value>
+  </data>
+  <data name="ManagedSettingsAppleHelp" xml:space="preserve">
+    <value>iOS를 위한 관리중인 설정에 액세스를 제어합니다.</value>
+  </data>
+  <data name="ManageGr" xml:space="preserve">
+    <value>관리</value>
+  </data>
+  <data name="ManageGrHelp" xml:space="preserve">
+    <value>조직 그룹 관리.</value>
+  </data>
+  <data name="ManageNodeAd" xml:space="preserve">
+    <value>노드 관리</value>
+  </data>
+  <data name="ManageNodeAdHelp" xml:space="preserve">
+    <value>Memcached 노드 추가, 편집, 삭제, 및 플러시</value>
+  </data>
+  <data name="ManagePM" xml:space="preserve">
+    <value>관리</value>
+  </data>
+  <data name="ManagePMHelp" xml:space="preserve">
+    <value>프린터에 원격 명령 및 쿼리 전송.</value>
+  </data>
+  <data name="ManageTimeWindow" xml:space="preserve">
+    <value>시간대 관리</value>
+  </data>
+  <data name="ManageTimeWindowHelp" xml:space="preserve">
+    <value>시간대 새로 추가, 편집, 할당 사용 권한을 포함한 시간대 관리 액세스 컨트롤</value>
+  </data>
+  <data name="ManageUG" xml:space="preserve">
+    <value>관리</value>
+  </data>
+  <data name="ManageUGHelp" xml:space="preserve">
+    <value>동기화 또는 병합과 같은 등록 사용자 그룹에 작업을 수행.</value>
+  </data>
+  <data name="MapsIns" xml:space="preserve">
+    <value>지도</value>
+  </data>
+  <data name="MapsInsHelp" xml:space="preserve">
+    <value>[설치] 아래의 [지도] 페이지에 대한 액세스를 제어합니다.</value>
+  </data>
+  <data name="MembersAdminGroup" xml:space="preserve">
+    <value>멤버</value>
+  </data>
+  <data name="MembersAdminGroupHelp" xml:space="preserve">
+    <value>관리자 그룹 멤버 보기.</value>
+  </data>
+  <data name="MembersUG" xml:space="preserve">
+    <value>멤버</value>
+  </data>
+  <data name="MembersUGHelp" xml:space="preserve">
+    <value>사용자 그룹 멤버 목록에 액세스합니다.</value>
+  </data>
+  <data name="MenuLinkForTagHelp" xml:space="preserve">
+    <value>태그 메뉴에 액세스를 제어합니다.</value>
+  </data>
+  <data name="MessageTemplatesSet" xml:space="preserve">
+    <value>메시지 템플릿</value>
+  </data>
+  <data name="MessageTemplatesSetHelp" xml:space="preserve">
+    <value>메시지 템플릿에 대한 액세스를 제어합니다.</value>
+  </data>
+  <data name="MessagingDD" xml:space="preserve">
+    <value>메시징</value>
+  </data>
+  <data name="MessagingDDHelp" xml:space="preserve">
+    <value>장치로 이메일, 푸시 알림, SMS 메시지 보내기</value>
+  </data>
+  <data name="MessagingSet" xml:space="preserve">
+    <value>메시징</value>
+  </data>
+  <data name="MessagingSetHelp" xml:space="preserve">
+    <value>[일반] 아래의 [메시징] 페이지에 대한 액세스를 제어합니다.</value>
+  </data>
+  <data name="MigrateUserAccounts" xml:space="preserve">
+    <value>마이그레이션</value>
+  </data>
+  <data name="MigrateUserAccountsHelp" xml:space="preserve">
+    <value>등록 사용자 계정을 기본 등록에서 LDAP 등록으로 마이그레이션합니다.</value>
+  </data>
+  <data name="MirrorPM" xml:space="preserve">
+    <value>미러</value>
+  </data>
+  <data name="MirrorPMHelp" xml:space="preserve">
+    <value>프린터 미러 페이지에 액세스를 제어합니다.</value>
+  </data>
+  <data name="MobileFlowsAuthToken" xml:space="preserve">
+    <value>Mobile Flows 인증 토큰</value>
+  </data>
+  <data name="MobileFlowsAuthTokenHelp" xml:space="preserve">
+    <value>Mobile Flows 서버에서 사용되는 JWT 인증서 생성</value>
+  </data>
+  <data name="MobileFlowsServerUrl" xml:space="preserve">
+    <value>Mobile Flows 서버 URL</value>
+  </data>
+  <data name="MobileFlowsServerUrlHelp" xml:space="preserve">
+    <value>Mobile Flows 서버 URL</value>
+  </data>
+  <data name="MobileFlowsTenantAdd" xml:space="preserve">
+    <value>Mobile Flows 테넌트 추가</value>
+  </data>
+  <data name="MobileFlowsTenantAddHelp" xml:space="preserve">
+    <value>Mobile Flows 클라우드 서비스에 고객 테넌트 프로비저닝</value>
+  </data>
+  <data name="ModifyAgentSet" xml:space="preserve">
+    <value>Hub 수정</value>
+  </data>
+  <data name="ModifyAgentSetHelp" xml:space="preserve">
+    <value>Hub 설정을 수정할 수 있는 액세스를 제어합니다.</value>
+  </data>
+  <data name="MonitoringAd" xml:space="preserve">
+    <value>모니터링</value>
+  </data>
+  <data name="MonitoringAdHelp" xml:space="preserve">
+    <value>모니터링 설정에 액세스하고 편집하기 위한 사용 권한을 제공합니다.</value>
+  </data>
+  <data name="MoreHelp" xml:space="preserve">
+    <value>기타 메뉴에 액세스를 제어합니다.  
+</value>
+  </data>
+  <data name="NacIntegrationSys" xml:space="preserve">
+    <value>NAC 통합</value>
+  </data>
+  <data name="NacIntegrationSysHelp" xml:space="preserve">
+    <value>일반에 있는 네트워크 액세스 제어 통합 페이지에 대한 액세스를 제어합니다.</value>
+  </data>
+  <data name="NavigateExportStatusHelp" xml:space="preserve">
+    <value>내보내기 그리드를 조회하고 다운로드하기 위한 내보내기 상태 페이지에 액세스하십시오.</value>
+  </data>
+  <data name="NavigationO" xml:space="preserve">
+    <value>탐색</value>
+  </data>
+  <data name="NavigationOHelp" xml:space="preserve">
+    <value>고급 메뉴에 액세스</value>
+  </data>
+  <data name="NetworkAccessControlIntegrationHelp" xml:space="preserve">
+    <value>일반에 있는 네트워크 액세스 제어 통합 페이지에 대한 액세스를 제어합니다. 
+</value>
+  </data>
+  <data name="NetworkDD" xml:space="preserve">
+    <value>네트워크</value>
+  </data>
+  <data name="NetworkDDHelp" xml:space="preserve">
+    <value>장치 세부 정보에서 네트워크 페이지에 액세스하기</value>
+  </data>
+  <data name="NetworkRangeGr" xml:space="preserve">
+    <value>네트워크 범위</value>
+  </data>
+  <data name="NetworkRangeGrHelp" xml:space="preserve">
+    <value>조직 그룹을 위해 네트워크 범위를 관리하고 가져오기.</value>
+  </data>
+  <data name="NetworkRangeHelp" xml:space="preserve">
+    <value>네트워크 범위 화면을 보기 위한 사용 권한을 제공합니다.</value>
+  </data>
+  <data name="NoFiltersSelected" xml:space="preserve">
+    <value>선택한 필터 없음</value>
+  </data>
+  <data name="NotesDD" xml:space="preserve">
+    <value>메모</value>
+  </data>
+  <data name="NotesDDHelp" xml:space="preserve">
+    <value>장치 세부 정보에서 장치 메모 추가, 편집 및 제거합니다.</value>
+  </data>
+  <data name="NotificationRecipients" xml:space="preserve">
+    <value>알림 수신자</value>
+  </data>
+  <data name="NotificationsAd" xml:space="preserve">
+    <value>알림</value>
+  </data>
+  <data name="NotificationsAdHelp" xml:space="preserve">
+    <value>이벤트 알림 설정을 보고 편집합니다.</value>
+  </data>
+  <data name="NotifyAb" xml:space="preserve">
+    <value>알림</value>
+  </data>
+  <data name="NotifyAbHelp" xml:space="preserve">
+    <value>장치 애플리케이션을 통해 알림 전송합니다.</value>
+  </data>
+  <data name="Office365MamIntegrationSettings" xml:space="preserve">
+    <value>Office365 통합 설정</value>
+  </data>
+  <data name="Office365MamIntegrationSettingsHelp" xml:space="preserve">
+    <value>Office 365용 애플리케이션에 기본 DLP 정책 추가를 위한 시스템 설정 화면 제어용 리소스</value>
+  </data>
+  <data name="Old" xml:space="preserve">
+    <value>오래됨</value>
+  </data>
+  <data name="OldPPO" xml:space="preserve">
+    <value>오래됨</value>
+  </data>
+  <data name="OldPPOHelp" xml:space="preserve">
+    <value>프로비저닝 프로필을 위해 레거시 설정에 액세스합니다.</value>
+  </data>
+  <data name="OrganizationGroupChangeAd" xml:space="preserve">
+    <value>조직 그룹 변경</value>
+  </data>
+  <data name="OrganizationGroupChangeAdHelp" xml:space="preserve">
+    <value>드롭다운을 통해 조직 그룹을 변경하기 위한 사용 권한을 제공합니다.</value>
+  </data>
+  <data name="OrganizationGroupCodeGr" xml:space="preserve">
+    <value>조직 그룹 ID</value>
+  </data>
+  <data name="OrganizationGroupCodeGrHelp" xml:space="preserve">
+    <value>조직 그룹 ID를 편집합니다.</value>
+  </data>
+  <data name="OsUpdateStatusHelp" xml:space="preserve">
+    <value>장치에서 OS 업데이트 상태를 가져오기 위한 액세스를 제어합니다. 장치/세부 정보 보기로 이동</value>
+  </data>
+  <data name="OutlookAddinSet" xml:space="preserve">
+    <value>Outlook 추가 기능</value>
+  </data>
+  <data name="OutlookAddinSetHelp" xml:space="preserve">
+    <value>Outlook 추가 기능 플러그인 활성화 및 비활성화</value>
+  </data>
+  <data name="OverrideJobLogLevelHelp" xml:space="preserve">
+    <value>장치가 기능을 지원할 때 DeviceDetails를 통해 작업 로그 수준을 재정의할 수 있는 사용 권한을 사용자에게 부여합니다.</value>
+  </data>
+  <data name="OverviewHub" xml:space="preserve">
+    <value>개요</value>
+  </data>
+  <data name="OverviewHubHelp" xml:space="preserve">
+    <value>모니터 개요 페이지에 액세스합니다.</value>
+  </data>
+  <data name="P2PSetupHelp" xml:space="preserve">
+    <value>다양한 P2P 벤더의 하위 섹션이 포함된 설정 페이지</value>
+  </data>
+  <data name="PasscodeDD" xml:space="preserve">
+    <value>암호</value>
+  </data>
+  <data name="PasscodeDDHelp" xml:space="preserve">
+    <value>장치와 앱의 암호를 삭제하고 재설정합니다.</value>
+  </data>
+  <data name="PerformanceTuningHelp" xml:space="preserve">
+    <value>시스템 설정에 있는 성능 조정 매개 변수에 대한 액세스를 제어합니다.
+</value>
+  </data>
+  <data name="PerformanceTuningIns" xml:space="preserve">
+    <value>성능 조정</value>
+  </data>
+  <data name="PerformanceTuningInsHelp" xml:space="preserve">
+    <value>시스템 설정에 있는 성능 조정 매개 변수에 대한 액세스를 제어합니다.</value>
+  </data>
+  <data name="PersonalContentSet" xml:space="preserve">
+    <value>개인 컨텐츠</value>
+  </data>
+  <data name="PersonalContentSetHelp" xml:space="preserve">
+    <value>개인 컨텐츠와 관련된 설정을 수정하기 위한 사용 권한을 제공합니다.</value>
+  </data>
+  <data name="PlansTel" xml:space="preserve">
+    <value>플랜</value>
+  </data>
+  <data name="PlansTelHelp" xml:space="preserve">
+    <value>조직 그룹의 구성된 통신 요금제 관리</value>
+  </data>
+  <data name="PoliciesPPN" xml:space="preserve">
+    <value>정책</value>
+  </data>
+  <data name="PoliciesPPNHelp" xml:space="preserve">
+    <value>프로비저닝 정책을 만들고 관리합니다.</value>
+  </data>
+  <data name="PolicyEngineSettingsEditHelp" xml:space="preserve">
+    <value>정책 엔진 설정을 편집할 수 있는 사용 권한을 부여합니다. 구성\설정\관리자\정책 엔진 설정으로 이동</value>
+  </data>
+  <data name="PolicyEngineSettingsViewHelp" xml:space="preserve">
+    <value>정책 엔진 설정을 볼 수 있는 사용 권한을 부여합니다.</value>
+  </data>
+  <data name="PolicyOverrideEM" xml:space="preserve">
+    <value>정책 재정의</value>
+  </data>
+  <data name="PolicyOverrideEMHelp" xml:space="preserve">
+    <value>장치를 허용 및 거부하는 이메일 정책을 재정의합니다.</value>
+  </data>
+  <data name="PolicySigningCertificateHelp" xml:space="preserve">
+    <value>ECC 인증서를 업로드할 수 있는 사용 권한을 부여합니다. 시스템 \ 고급 \ 정책 서명 인증서로 이동</value>
+  </data>
+  <data name="PowerPM" xml:space="preserve">
+    <value>전원</value>
+  </data>
+  <data name="PowerPMHelp" xml:space="preserve">
+    <value>[프린터 전원] 페이지에 대한 액세스를 제어합니다.</value>
+  </data>
+  <data name="PrinterManagementProfile" xml:space="preserve">
+    <value>프린터 관리 프로필</value>
+  </data>
+  <data name="PrinterManagementProfiles" xml:space="preserve">
+    <value>프린터 관리 프로필</value>
+  </data>
+  <data name="PrinterProfiles" xml:space="preserve">
+    <value>프린터 프로필</value>
+  </data>
+  <data name="PrinterProfilesHelp" xml:space="preserve">
+    <value>프린터 프로필 그리드를 볼 수 있는 액세스를 제어합니다. 메뉴\프린터 관리\프로필로 이동하십시오.</value>
+  </data>
+  <data name="PrinterServersPM" xml:space="preserve">
+    <value>프린터 서버</value>
+  </data>
+  <data name="PrinterServersPMHelp" xml:space="preserve">
+    <value>프린터 설정 페이지에서 프린터 서버를 보기, 추가, 및 삭제합니다.</value>
+  </data>
+  <data name="PrinterTestPrint" xml:space="preserve">
+    <value>프린터 테스트 인쇄</value>
+  </data>
+  <data name="PrinterTestPrintHelp" xml:space="preserve">
+    <value>프린터 테스트 인쇄를 제출하기 위한 사용 권한을 제공합니다.</value>
+  </data>
+  <data name="PrinterViewAveryDennisonGeneralHelp" xml:space="preserve">
+    <value>Avery Dennison의 ‘장치 세부 정보’ 페이지의 일반 탭입니다. </value>
+  </data>
+  <data name="PrinterViewCpclPM" xml:space="preserve">
+    <value>CPCL</value>
+  </data>
+  <data name="PrinterViewCpclPMHelp" xml:space="preserve">
+    <value>프린터 CPCL 페이지에 대한 액세스를 제어합니다.</value>
+  </data>
+  <data name="PrinterViewDataMaxONeilAutoUpdateHelp" xml:space="preserve">
+    <value>Datamax 장치 세부 정보 페이지에 대한 '자동 업데이트' 탭입니다. </value>
+  </data>
+  <data name="PrinterViewDataMaxONeilBatteryHelp" xml:space="preserve">
+    <value>Datamax 프린터의 '장치 세부 정보' 페이지의 '배터리' 탭입니다. </value>
+  </data>
+  <data name="PrinterViewDataMaxONeilBluetoothHelp" xml:space="preserve">
+    <value>Datamax 장치 세부 정보 페이지에 대한 '블루투스' 탭입니다. </value>
+  </data>
+  <data name="PrinterViewDataMaxONeilCustomSettingsHelp" xml:space="preserve">
+    <value>Datamax-O'Neil 장치 세부 정보 페이지의 사용자 지정 설정 탭을 보는 방법입니다. </value>
+  </data>
+  <data name="PrinterViewDataMaxONeilGeneralHelp" xml:space="preserve">
+    <value>Datamax '장치 세부 정보' 페이지의 일반 탭입니다.  </value>
+  </data>
+  <data name="PrinterViewDataMaxONeilGeneralNetworkHelp" xml:space="preserve">
+    <value>Datamax 장치 세부 정보 페이지에 대한 '일반 네트워크' 탭입니다. </value>
+  </data>
+  <data name="PrinterViewDataMaxONeilMediaLabelHelp" xml:space="preserve">
+    <value>Datamax '장치 세부 정보' 페이지의 '미디어 레이블' 탭입니다. </value>
+  </data>
+  <data name="PrinterViewDataMaxONeilMiscellaneousHelp" xml:space="preserve">
+    <value>Datamax '장치 세부 정보' 페이지의 '기타' 탭입니다. </value>
+  </data>
+  <data name="PrinterViewDataMaxONeilPrintControlHelp" xml:space="preserve">
+    <value>Datamax '장치 세부 정보' 페이지의 '인쇄 제어' 탭입니다. </value>
+  </data>
+  <data name="PrinterViewDataMaxONeilRS232Help" xml:space="preserve">
+    <value>Datamax '장치 세부 정보' 페이지에 대한 'RS232' 탭입니다. </value>
+  </data>
+  <data name="PrinterViewDataMaxONeilSystemSettingsHelp" xml:space="preserve">
+    <value>Datamax '장치 세부 정보' 페이지의 '시스템 설정' 탭입니다. </value>
+  </data>
+  <data name="PrinterViewDataMaxONeilWifiHelp" xml:space="preserve">
+    <value>Datamax 장치 세부 정보 페이지에 대한 'Wifi' 탭입니다. </value>
+  </data>
+  <data name="PrinterViewEpsonGeneral" xml:space="preserve">
+    <value>Epson 프린터 세부 정보 보기: 일반 탭</value>
+  </data>
+  <data name="PrinterViewEpsonGeneralHelp" xml:space="preserve">
+    <value>Epson 프린터 장치 세부 정보 보기</value>
+  </data>
+  <data name="PrinterViewEpsonPrintSettingsHelp" xml:space="preserve">
+    <value>사용자가 Epson 인쇄 설정에 액세스할 수 있도록 허용</value>
+  </data>
+  <data name="PrivacySet" xml:space="preserve">
+    <value>개인정보</value>
+  </data>
+  <data name="PrivacySetHelp" xml:space="preserve">
+    <value>일반에 있는 프라이버시 페이지에 액세스를 제어합니다.</value>
+  </data>
+  <data name="ProductImprovementProgramSettings" xml:space="preserve">
+    <value>제품 개선 프로그램 설정</value>
+  </data>
+  <data name="ProductImprovementProgramSettingsHelp" xml:space="preserve">
+    <value>설정 &gt; 관리 &gt; 제품 개선 프로그램에 있는 제품 개선 프로그램 설정 페이지에 대한 액세스를 제어합니다.</value>
+  </data>
+  <data name="ProductivityAppsAb" xml:space="preserve">
+    <value>생산성 애플리케이션</value>
+  </data>
+  <data name="ProductProvisioningHub" xml:space="preserve">
+    <value>제품 프로비저닝</value>
+  </data>
+  <data name="ProductProvisioningHubHelp" xml:space="preserve">
+    <value>제품 프로비저닝을 위해 보고서를 생성합니다.</value>
+  </data>
+  <data name="ProductProvisioningSettingsHelp" xml:space="preserve">
+    <value>제품 프로비저닝을 위한 특정 기능을 구성합니다.</value>
+  </data>
+  <data name="ProductSetsHelp" xml:space="preserve">
+    <value>제품 신규 아래 제품군에 대한 액세스 제어</value>
+  </data>
+  <data name="ProfileEncryptAndExportXmlDM" xml:space="preserve">
+    <value>프로필 암호화 및 XML 내보내기</value>
+  </data>
+  <data name="ProfileEncryptAndExportXmlDMHelp" xml:space="preserve">
+    <value>프로필 암호화를 위해 인증서를 업로드하고 프로필 XML을 내보내기.</value>
+  </data>
+  <data name="ProfilesApple" xml:space="preserve">
+    <value>프로필</value>
+  </data>
+  <data name="ProfilesAppleHelp" xml:space="preserve">
+    <value>[iOS] 아래의 [프로필] 페이지에 대한 액세스를 제어합니다.</value>
+  </data>
+  <data name="ProfilesDD" xml:space="preserve">
+    <value>프로필</value>
+  </data>
+  <data name="ProfilesDDHelp" xml:space="preserve">
+    <value>장치 세부 정보에서 구성 프로필 보기 및 관리합니다.</value>
+  </data>
+  <data name="ProfilesHub" xml:space="preserve">
+    <value>프로필</value>
+  </data>
+  <data name="ProfilesHubHelp" xml:space="preserve">
+    <value>장치 프로필을 위해 보고서 생성.</value>
+  </data>
+  <data name="ProfilesPM" xml:space="preserve">
+    <value>프로필</value>
+  </data>
+  <data name="ProfilesPMHelp" xml:space="preserve">
+    <value>[프린터 프로필] 페이지에 대한 액세스를 제어합니다.</value>
+  </data>
+  <data name="ProfilesPPN" xml:space="preserve">
+    <value>프로필</value>
+  </data>
+  <data name="ProfilesPPNHelp" xml:space="preserve">
+    <value>프로비저닝 프로필 페이지에 액세스합니다.</value>
+  </data>
+  <data name="ProfilesPr" xml:space="preserve">
+    <value>프로필</value>
+  </data>
+  <data name="ProfilesPrHelp" xml:space="preserve">
+    <value>프린터 프로필을 관리합니다.</value>
+  </data>
+  <data name="ProfilesRESTMdm" xml:space="preserve">
+    <value>프로필</value>
+  </data>
+  <data name="ProfilesRESTMdmHelp" xml:space="preserve">
+    <value>장치 프로필을 위한 REST API</value>
+  </data>
+  <data name="ProvisioningHelp" xml:space="preserve">
+    <value>WinMo 프로비저닝 페이지로 액세스를 제어합니다.</value>
+  </data>
+  <data name="ProvisioningPolicyConditionCopyHelp" xml:space="preserve">
+    <value>조건을 복사할 수 있는 사용자 권한을 부여합니다.</value>
+  </data>
+  <data name="ProvisioningPolicyFileActionCopyHelp" xml:space="preserve">
+    <value>프로비저닝 파일/작업을 복사할 수 있는 사용 권한을 사용자에게 부여합니다.</value>
+  </data>
+  <data name="ProxiesAndTunnelHelp" xml:space="preserve">
+    <value>프록시 및 Tunnel 설정 보기 및 편집 권한 부여</value>
+  </data>
+  <data name="ProxyIns" xml:space="preserve">
+    <value>프록시</value>
+  </data>
+  <data name="ProxyInsHelp" xml:space="preserve">
+    <value>[일반] 아래의 [프록시 설정] 페이지에 대한 액세스를 제어합니다.</value>
+  </data>
+  <data name="PublicAppsAb" xml:space="preserve">
+    <value>공용 앱</value>
+  </data>
+  <data name="PublicAppsAbHelp" xml:space="preserve">
+    <value>공용 스토어의 애플리케이션을 할당하고 관리합니다.</value>
+  </data>
+  <data name="PullServiceInstallersPPN" xml:space="preserve">
+    <value>요청 서비스 설치 프로그램</value>
+  </data>
+  <data name="PullServiceInstallersPPNHelp" xml:space="preserve">
+    <value>요청 서비스 설치 프로그램을 보고 다운로드합니다.</value>
+  </data>
+  <data name="PurchasedApplicationsAb" xml:space="preserve">
+    <value>구매한 애플리케이션</value>
+  </data>
+  <data name="PurchasedApplicationsAbHelp" xml:space="preserve">
+    <value>대량으로 구매된 애플리케이션 라이센스를 가져오고 라이센스 배포를 관리합니다.</value>
+  </data>
+  <data name="QnxSet" xml:space="preserve">
+    <value>QNX</value>
+  </data>
+  <data name="QnxSetHelp" xml:space="preserve">
+    <value>QNX 아래 있는 Agent 설정 액세스를 제어합니다.</value>
+  </data>
+  <data name="QRCodeHelp" xml:space="preserve">
+    <value>QR 코드 등록 구성</value>
+  </data>
+  <data name="QueryDD" xml:space="preserve">
+    <value>쿼리</value>
+  </data>
+  <data name="QueryDDHelp" xml:space="preserve">
+    <value>장치 상태 정보를 업데이트하려면 장치를 쿼리.</value>
+  </data>
+  <data name="ReadDeviceManufacturerDetails" xml:space="preserve">
+    <value>장치 제조업체 세부 정보 읽기</value>
+  </data>
+  <data name="ReadDeviceManufacturerDetailsHelp" xml:space="preserve">
+    <value>API를 통해 장치 제조업체 세부 정보 읽기</value>
+  </data>
+  <data name="ReadDeviceModelDetails" xml:space="preserve">
+    <value>장치 모델 세부 정보 읽기</value>
+  </data>
+  <data name="ReadDeviceModelDetailsHelp" xml:space="preserve">
+    <value>API를 통해 장치 모델 세부 정보 읽기</value>
+  </data>
+  <data name="RefreshEsimHelp" xml:space="preserve">
+    <value>eSIM 셀룰러 요금제를 업데이트할 수 있는 사용 권한 부여</value>
+  </data>
+  <data name="RegistryManagerHelp" xml:space="preserve">
+    <value>WinMo 장치의 레지스트리에 원격적으로 액세스하기 위한 사용 권한을 제공합니다.
+</value>
+  </data>
+  <data name="RelayServerBatching" xml:space="preserve">
+    <value>릴레이 서버 일괄 처리</value>
+  </data>
+  <data name="RelayServerBatchingHelp" xml:space="preserve">
+    <value>릴레이 서버 일괄 처리 가져오기 및 일괄 처리 상태에 대한 액세스를 제어합니다.</value>
+  </data>
+  <data name="RelayServerRemoteFileList" xml:space="preserve">
+    <value>릴레이 서버 원격 파일 목록</value>
+  </data>
+  <data name="RelayServerRemoteFileListHelp" xml:space="preserve">
+    <value>릴레이 서버 원격 파일 목록에 대한 액세스를 제어합니다.</value>
+  </data>
+  <data name="RelayServersPPN" xml:space="preserve">
+    <value>릴레이 서버</value>
+  </data>
+  <data name="RelayServersPPNHelp" xml:space="preserve">
+    <value>프로비저닝 릴레이 서버를 보고 관리합니다.</value>
+  </data>
+  <data name="RemoteControlDD" xml:space="preserve">
+    <value>원격 제어</value>
+  </data>
+  <data name="RemoteControlDDHelp" xml:space="preserve">
+    <value>장치를 원격으로 제어합니다.</value>
+  </data>
+  <data name="RemoteManagementSettingsEditHelp" xml:space="preserve">
+    <value>엔터프라이즈 통합에서 원격 관리 페이지에 대한 액세스 편집을 제어합니다. 구성\시스템 설정\엔터프라이즈 통합\원격 관리로 이동</value>
+  </data>
+  <data name="RemoteSet" xml:space="preserve">
+    <value>원격</value>
+  </data>
+  <data name="RemoteSetHelp" xml:space="preserve">
+    <value>원격 스토리지와 관련된 설정을 수정하기 위한 사용 권한을 제공합니다.</value>
+  </data>
+  <data name="RemoveDeviceEnrollmentProgram" xml:space="preserve">
+    <value>등록 프로그램 제거 프로필</value>
+  </data>
+  <data name="RemoveDeviceEnrollmentProgramHelp" xml:space="preserve">
+    <value>장치에서 DEP 프로필을 제거하도록 액세스를 제어합니다. 등록 상태 페이지로 이동</value>
+  </data>
+  <data name="RenameDeviceHelp" xml:space="preserve">
+    <value>장치 이름을 변경하는 명령입니다. </value>
+  </data>
+  <data name="RenewCertificateHelp" xml:space="preserve">
+    <value>인증서를 갱신하기 위한 사용 권한을 제공합니다. 
+</value>
+  </data>
+  <data name="RepairHub" xml:space="preserve">
+    <value>Hub 복구</value>
+  </data>
+  <data name="RepairHubHelp" xml:space="preserve">
+    <value>장치에서 Hub를 복구하기 위한 사용 권한을 제공합니다.</value>
+  </data>
+  <data name="ReportIOS7Compatability" xml:space="preserve">
+    <value>iOS 7 호환성</value>
+  </data>
+  <data name="ReportIOS7CompatabilityHelp" xml:space="preserve">
+    <value>iOS 7 호환성 보고서에 액세스를 제공</value>
+  </data>
+  <data name="ReportsAlertsSys" xml:space="preserve">
+    <value>보고서 및 경고</value>
+  </data>
+  <data name="ReportsAlertsSysHelp" xml:space="preserve">
+    <value>보고 및 알림에 대한 액세스를 제어합니다.</value>
+  </data>
+  <data name="ReportsIns" xml:space="preserve">
+    <value>보고서</value>
+  </data>
+  <data name="ReportsInsHelp" xml:space="preserve">
+    <value>설치 아래 있는 보고서 페이지에 대한 액세스를 제어합니다.</value>
+  </data>
+  <data name="RepositoriesCM" xml:space="preserve">
+    <value>저장소</value>
+  </data>
+  <data name="RepositoriesCMHelp" xml:space="preserve">
+    <value>컨텐츠 저장소를 추가, 편집, 삭제합니다.</value>
+  </data>
+  <data name="ReputationAnalysisAb" xml:space="preserve">
+    <value>평판 분석</value>
+  </data>
+  <data name="ReputationAnalysisAbHelp" xml:space="preserve">
+    <value>앱 평판 분석을 실행하고 결과를 봅니다.</value>
+  </data>
+  <data name="RequestCheckinDD" xml:space="preserve">
+    <value>체크인 요청</value>
+  </data>
+  <data name="RequestCheckinDDHelp" xml:space="preserve">
+    <value>체크인을 요청하는 장치로 메시지 전송합니다. 장치 세부 정보에서 사용할 수 있습니다.</value>
+  </data>
+  <data name="ResBlueprints" xml:space="preserve">
+    <value>청사진</value>
+  </data>
+  <data name="ResBlueprintsHelp" xml:space="preserve">
+    <value>단일 위치에서 앱, 리소스 및 제한 정책을 사용자와 장치에 추가하고 결부시킵니다.</value>
+  </data>
+  <data name="ResCompliancePolicy" xml:space="preserve">
+    <value>규정 준수 정책</value>
+  </data>
+  <data name="ResCompliancePolicyHelp" xml:space="preserve">
+    <value>REST API를 통해 준수 정책에 액세스하십시오.</value>
+  </data>
+  <data name="ResConsoleNotifications" xml:space="preserve">
+    <value>Console 알림</value>
+  </data>
+  <data name="ResConsoleNotificationsHelp" xml:space="preserve">
+    <value>Console 전반의 관리자 알림을 보고 이들과 상호작용</value>
+  </data>
+  <data name="ResCustomAttributes" xml:space="preserve">
+    <value>사용자 지정 속성</value>
+  </data>
+  <data name="ResCustomAttributesHelp" xml:space="preserve">
+    <value>사용자 지정 속성에 액세스를 제공하기 위한 REST API</value>
+  </data>
+  <data name="ResCustomReports" xml:space="preserve">
+    <value>사용자 지정 보고서</value>
+  </data>
+  <data name="ResCustomReportsHelp" xml:space="preserve">
+    <value>사용자 지정 보고서 페이지 액세스.</value>
+  </data>
+  <data name="ResDirectMEMAdvLog" xml:space="preserve">
+    <value>다이렉트 MEM 고급 로깅</value>
+  </data>
+  <data name="ResDirectMEMAdvLogHelp" xml:space="preserve">
+    <value>MEM 대시보드를 통해서 액세스가 되는 이 기능은 Console을 통해 장치 하나씩 고급 MEG 대기열 로깅을 볼 수 있게 허용합니다.</value>
+  </data>
+  <data name="ResEmailNotification" xml:space="preserve">
+    <value>이메일 알림 서비스 설정</value>
+  </data>
+  <data name="ResEmailNotificationHelp" xml:space="preserve">
+    <value>ENS 설정 관리</value>
+  </data>
+  <data name="ResGlobalServiceExchange" xml:space="preserve">
+    <value>AppleCare</value>
+  </data>
+  <data name="ResGlobalServiceExchangeHelp" xml:space="preserve">
+    <value>Apple의 AppleCare 페이지로 액세스를 제어합니다.</value>
+  </data>
+  <data name="ResJasperIntegration" xml:space="preserve">
+    <value>Jasper 통합</value>
+  </data>
+  <data name="ResJasperIntegrationHelp" xml:space="preserve">
+    <value>Jasper 통합 설정 관리</value>
+  </data>
+  <data name="ResLifecycleNotifications" xml:space="preserve">
+    <value>수명 주기 알림</value>
+  </data>
+  <data name="ResLifecycleNotificationsHelp" xml:space="preserve">
+    <value>장치 세부 정보에서 수명 주기 알림을 액세스하십시오.</value>
+  </data>
+  <data name="ResMutualTlsAuthentication" xml:space="preserve">
+    <value>상호 TLS 인증</value>
+  </data>
+  <data name="ResMutualTlsAuthenticationHelp" xml:space="preserve">
+    <value>Workspace ONE Intelligent Hub와 Workspace ONE UEM 서버 간 상호 TLS 인증 설정을 구성합니다.</value>
+  </data>
+  <data name="ResNotifications" xml:space="preserve">
+    <value>알림</value>
+  </data>
+  <data name="ResNotificationsHelp" xml:space="preserve">
+    <value>Console 전반의 관리자 알림을 보고 이들과 상호작용</value>
+  </data>
+  <data name="ResOverrideJobLogLevel" xml:space="preserve">
+    <value>작업 로그 수준 재정의</value>
+  </data>
+  <data name="ResOverrideJobLogLevelHelp" xml:space="preserve">
+    <value>작업 로그 수준 재정의 설정 액세스</value>
+  </data>
+  <data name="ResProductProvisioning" xml:space="preserve">
+    <value>제품 프로비저닝</value>
+  </data>
+  <data name="ResProductProvisioningHelp" xml:space="preserve">
+    <value>그룹 수준에서 제품 프로비저닝 설정 관리</value>
+  </data>
+  <data name="ResProducts" xml:space="preserve">
+    <value>제품</value>
+  </data>
+  <data name="ResProductSets" xml:space="preserve">
+    <value>제품 세트</value>
+  </data>
+  <data name="ResProductSetsHelp" xml:space="preserve">
+    <value>제품 세트를 보고 관리할 수 있는 기능입니다.</value>
+  </data>
+  <data name="ResProductsHelp" xml:space="preserve">
+    <value>Console REST API를 통해 제품 컬렉션에 대한 액세스를 활성화합니다.</value>
+  </data>
+  <data name="RestAPIAirWatchEducationWrite" xml:space="preserve">
+    <value>REST API Education 설정 쓰기</value>
+  </data>
+  <data name="RestAPIAirWatchEducationWriteHelp" xml:space="preserve">
+    <value>Education 설정 저장 및 편집을 위한 REST API</value>
+  </data>
+  <data name="RestApiCartDelete" xml:space="preserve">
+    <value>REST API 카트 삭제</value>
+  </data>
+  <data name="RestApiCartDeleteHelp" xml:space="preserve">
+    <value>카트 데이터를 삭제하기 위한 REST API</value>
+  </data>
+  <data name="RestApiCartWrite" xml:space="preserve">
+    <value>REST API Cart 쓰기</value>
+  </data>
+  <data name="RestApiCartWriteHelp" xml:space="preserve">
+    <value>카트 데이터 저장 및 편집을 위한 REST API</value>
+  </data>
+  <data name="RestApiClassAssignmentSave" xml:space="preserve">
+    <value>REST API 클래스 할당 저장</value>
+  </data>
+  <data name="RestApiClassAssignmentSaveHelp" xml:space="preserve">
+    <value>클래스 할당을 저장하기 위한 REST API 호출</value>
+  </data>
+  <data name="RestAPIClassDelete" xml:space="preserve">
+    <value>REST API 클래스 삭제</value>
+  </data>
+  <data name="RestAPIClassDeleteHelp" xml:space="preserve">
+    <value>클래스 데이터 삭제를 위한 REST API</value>
+  </data>
+  <data name="RestAPIClassLoad" xml:space="preserve">
+    <value>REST API 클래스 읽기</value>
+  </data>
+  <data name="RestAPIClassLoadHelp" xml:space="preserve">
+    <value>클래스 데이터 보기를 위한 REST API</value>
+  </data>
+  <data name="RestAPIClassWrite" xml:space="preserve">
+    <value>REST API 클래스 쓰기</value>
+  </data>
+  <data name="RestAPIClassWriteHelp" xml:space="preserve">
+    <value>클래스 데이터 저장 및 편집을 위한 REST API</value>
+  </data>
+  <data name="RestApiEduAppsForDeviceRead" xml:space="preserve">
+    <value>장치 읽기를 위한 REST API 애플리케이션</value>
+  </data>
+  <data name="RestApiEduAppsForDeviceReadhelp" xml:space="preserve">
+    <value>장치에 적합한 앱 목록을 가져오기 위한 REST API</value>
+  </data>
+  <data name="RestAPILoadEducation" xml:space="preserve">
+    <value>REST API 교육 설정 읽기</value>
+  </data>
+  <data name="RestAPILoadEducationHelp" xml:space="preserve">
+    <value>Education 설정 보기를 위한 REST API</value>
+  </data>
+  <data name="RestApiPersonEnrollmentUserMapWrite" xml:space="preserve">
+    <value>REST API Apple School Manager 매핑</value>
+  </data>
+  <data name="RestApiPersonEnrollmentUserMapWriteHelp" xml:space="preserve">
+    <value>사용자를 Apple School Manager의 멤버로 매핑하기 위한 REST API</value>
+  </data>
+  <data name="RestApiRosterSyncRead" xml:space="preserve">
+    <value>REST API Apple School Manager 동기화 읽기</value>
+  </data>
+  <data name="RestApiRosterSyncReadHelp" xml:space="preserve">
+    <value>Apple School Manager 동기화 상태 확인을 위한 REST API</value>
+  </data>
+  <data name="RestApiRosterSyncWrite" xml:space="preserve">
+    <value>REST API Apple School Manager 쓰기</value>
+  </data>
+  <data name="RestApiRosterSyncWriteHelp" xml:space="preserve">
+    <value>Apple School Manager 동기화 시작을 위한 REST API</value>
+  </data>
+  <data name="RestApiUpdatesPolicyDelete" xml:space="preserve">
+    <value>업데이트 정책 삭제 액세스</value>
+  </data>
+  <data name="RestApiUpdatesPolicyDeleteHelp" xml:space="preserve">
+    <value>업데이트 정책 모음 내 모든 삭제 API에 대한 액세스를 사용하도록 설정합니다.</value>
+  </data>
+  <data name="RestApiUpdatesPolicyExecute" xml:space="preserve">
+    <value>업데이트 정책 실행 액세스</value>
+  </data>
+  <data name="RestApiUpdatesPolicyExecuteHelp" xml:space="preserve">
+    <value>업데이트 정책 모음 내 모든 실행 API에 대한 액세스를 사용하도록 설정합니다.</value>
+  </data>
+  <data name="RestApiUpdatesPolicyRead" xml:space="preserve">
+    <value>업데이트 정책 읽기 액세스</value>
+  </data>
+  <data name="RestApiUpdatesPolicyReadHelp" xml:space="preserve">
+    <value>업데이트 정책 모음 내 모든 읽기 전용 API에 대한 액세스를 사용하도록 설정합니다.</value>
+  </data>
+  <data name="RestApiUpdatesPolicyWrite" xml:space="preserve">
+    <value>업데이트 정책 쓰기 액세스</value>
+  </data>
+  <data name="RestApiUpdatesPolicyWriteHelp" xml:space="preserve">
+    <value>업데이트 정책 모음 내 모든 쓰기 API에 대한 액세스를 사용하도록 설정합니다.</value>
+  </data>
+  <data name="RestEnterpiseIntegration" xml:space="preserve">
+    <value>REST 엔터프라이즈 통합</value>
+  </data>
+  <data name="RestEnterpiseIntegrationHelp" xml:space="preserve">
+    <value>엔터프라이즈 통합을 위한 REST API</value>
+  </data>
+  <data name="RestrictedActionsSec" xml:space="preserve">
+    <value>제한된 작업</value>
+  </data>
+  <data name="RestrictedActionsSecHelp" xml:space="preserve">
+    <value>제한된 작업 화면을 보기 위한 사용 권한을 제공합니다.</value>
+  </data>
+  <data name="RestrictionsDD" xml:space="preserve">
+    <value>제한</value>
+  </data>
+  <data name="RestrictionsDDHelp" xml:space="preserve">
+    <value>장치에 설정된 현재 제한을 요청합니다.</value>
+  </data>
+  <data name="ResVideo" xml:space="preserve">
+    <value>동영상</value>
+  </data>
+  <data name="ResVideoHelp" xml:space="preserve">
+    <value>동영상 앱 설정 관리</value>
+  </data>
+  <data name="ResWebApps" xml:space="preserve">
+    <value>웹 앱</value>
+  </data>
+  <data name="ResWebAppsHelp" xml:space="preserve">
+    <value>웹 애플리케이션 할당 및 관리</value>
+  </data>
+  <data name="RetentionAd" xml:space="preserve">
+    <value>보존</value>
+  </data>
+  <data name="RetentionAdHelp" xml:space="preserve">
+    <value>경고를 해제하기 위한 사용 권한을 제공합니다.</value>
+  </data>
+  <data name="RevokeCertificateHelp" xml:space="preserve">
+    <value>인증서를 해지하기 위한 사용 권한을 제공합니다. 
+</value>
+  </data>
+  <data name="RotateRecoveryKeyHelp" xml:space="preserve">
+    <value>요청 시 암호화된 macOS 장치 개인 복구 키를 순환하는 관리자 액세스 권한을 부여합니다.</value>
+  </data>
+  <data name="RoutingPoliciesHub" xml:space="preserve">
+    <value>라우팅 정책</value>
+  </data>
+  <data name="RoutingPoliciesHubHelp" xml:space="preserve">
+    <value>경고 라우팅 정책을 보고 관리합니다.</value>
+  </data>
+  <data name="SaveListViewFilters" xml:space="preserve">
+    <value>목록 보기 필터 저장</value>
+  </data>
+  <data name="SaveListViewFiltersHelp" xml:space="preserve">
+    <value>관리자가 목록 보기 페이지에 필터를 저장할 수 있도록 허용</value>
+  </data>
+  <data name="ScepApple" xml:space="preserve">
+    <value>SCEP</value>
+  </data>
+  <data name="ScepAppleHelp" xml:space="preserve">
+    <value>[iOS] 아래의 [SCEP] 페이지에 대한 액세스를 제어합니다.</value>
+  </data>
+  <data name="ScepCertificateHelp" xml:space="preserve">
+    <value>SCEP 인증서 도구에 대한 액세스를 제어합니다. </value>
+  </data>
+  <data name="SdkAnalyticsAb" xml:space="preserve">
+    <value>SDK 분석</value>
+  </data>
+  <data name="SdkAnalyticsAbHelp" xml:space="preserve">
+    <value>애플리케이션 관리를 위해 SDK 분석 페이지에 액세스를 제어합니다.</value>
+  </data>
+  <data name="SdkIos" xml:space="preserve">
+    <value>SDK</value>
+  </data>
+  <data name="SdkIosHelp" xml:space="preserve">
+    <value>SDK 애플리케이션 보안을 구성하는 설정</value>
+  </data>
+  <data name="SearchDevicesDM" xml:space="preserve">
+    <value>장치 검색</value>
+  </data>
+  <data name="SearchDevicesDMHelp" xml:space="preserve">
+    <value>장치 관리로 장치 메뉴 검색에 액세스.</value>
+  </data>
+  <data name="SearchNotesHelp" xml:space="preserve">
+    <value>메모 및 태그를 검색하기 위한 사용 권한을 제공합니다.</value>
+  </data>
+  <data name="SearchUserAccounts" xml:space="preserve">
+    <value>검색</value>
+  </data>
+  <data name="SearchUserAccountsHelp" xml:space="preserve">
+    <value>빠른 검색 바의 사용자 옵션에 액세스합니다.</value>
+  </data>
+  <data name="SecureChannelCertificateHelp" xml:space="preserve">
+    <value>채널을 보안하기 위해 인증서를 업로드 하십시오.
+</value>
+  </data>
+  <data name="SecurityInfoDD" xml:space="preserve">
+    <value>보안 정보</value>
+  </data>
+  <data name="SecurityInfoDDHelp" xml:space="preserve">
+    <value>장치를 위해 보안 감사 정보에 액세스합니다.</value>
+  </data>
+  <data name="SecuritySec" xml:space="preserve">
+    <value>보안</value>
+  </data>
+  <data name="SecuritySecHelp" xml:space="preserve">
+    <value>보안 화면을 보기 위한 사용 권한을 제공합니다.</value>
+  </data>
+  <data name="ServiceUrlsHelp" xml:space="preserve">
+    <value>서비스 URL을 편집할 사용 권한을 제공합니다(예: ID 관리 제공자 끝점).
+</value>
+  </data>
+  <data name="SettingsAndPoliciesSet" xml:space="preserve">
+    <value>설정 및 정책</value>
+  </data>
+  <data name="SettingsAndPoliciesSetHelp" xml:space="preserve">
+    <value>앱 설정 및 정책 페이지에 액세스를 제어합니다.</value>
+  </data>
+  <data name="SettingsAttributeHelp" xml:space="preserve">
+    <value>일반에 있는 특성 페이지에 대한 액세스를 제어합니다. 구성\시스템 설정\장치\일반으로 이동</value>
+  </data>
+  <data name="SettingsAuditAd" xml:space="preserve">
+    <value>설정 감사</value>
+  </data>
+  <data name="SettingsAuditAdHelp" xml:space="preserve">
+    <value>시스템 코드를 통해 설정 감사를 활성화/비활성화합니다.</value>
+  </data>
+  <data name="SettingsDeviceAdvanced" xml:space="preserve">
+    <value>설정 장치 고급</value>
+  </data>
+  <data name="SettingsDeviceAdvancedHelp" xml:space="preserve">
+    <value>장치 및 사용자에 있는 고급 페이지로 액세스를 제어합니다. 구성\시스템 설정\장치 및 사용자\고급으로 이동합니다.</value>
+  </data>
+  <data name="SettingsDeviceEnrollmentProgramHelp" xml:space="preserve">
+    <value>장치 등록 프로그램에 대한 액세스를 제어합니다. 구성\시스템 설정\장치\Apple로 이동</value>
+  </data>
+  <data name="SettingsDeviceGeneralAdvanced" xml:space="preserve">
+    <value>설정 장치 일반 고급</value>
+  </data>
+  <data name="SettingsDeviceGeneralAdvancedHelp" xml:space="preserve">
+    <value>일반에 있는 고급 페이지로 액세스를 제어합니다. 설정\장치사용자\일반\고급으로 이동합니다.</value>
+  </data>
+  <data name="SettingsEm" xml:space="preserve">
+    <value>설정</value>
+  </data>
+  <data name="SettingsEmHelp" xml:space="preserve">
+    <value>이메일 설정 액세스를 제어합니다.</value>
+  </data>
+  <data name="SettingsEnrollmentUserPasswordPolicyEditHelp" xml:space="preserve">
+    <value>장치 및 사용자에 있는 비밀번호 설정 페이지에 대한 편집 액세스를 제어합니다. 구성\장치 및 사용자 설정\일반\보안\비밀번호로 이동</value>
+  </data>
+  <data name="SettingsEnrollmentUserPasswordPolicyViewHelp" xml:space="preserve">
+    <value>장치 및 사용자에 있는 비밀번호 설정 페이지에 대한 보기 액세스를 제어합니다. 구성\장치 및 사용자 설정\일반\보안\비밀번호로 이동</value>
+  </data>
+  <data name="SettingsHeaderBasedAuthenticationHelp" xml:space="preserve">
+    <value>엔터프라이즈 통합에 있는 외부 인증 페이지에 대한 엑세스를 제어합니다. 설정\시스템\엔터프라이즈 통합으로 이동</value>
+  </data>
+  <data name="SettingsLinux" xml:space="preserve">
+    <value>Linux 설정</value>
+  </data>
+  <data name="SettingsLinuxAgentApplication" xml:space="preserve">
+    <value>Linux 애플리케이션용 Intelligent Hub 설정</value>
+  </data>
+  <data name="SettingsLinuxAgentApplicationHelp" xml:space="preserve">
+    <value>Linux 애플리케이션용 Intelligent Hub 설정 페이지에 대한 액세스 제어</value>
+  </data>
+  <data name="SettingsLinuxAgentSettings" xml:space="preserve">
+    <value>Intelligent Hub에 대한 Linux 설정</value>
+  </data>
+  <data name="SettingsLinuxAgentSettingsHelp" xml:space="preserve">
+    <value>Linux의 Intelligent Hub 설정에 대한 액세스를 제어합니다. 설정\장치 및 사용자\Linux로 이동</value>
+  </data>
+  <data name="SettingsLinuxHelp" xml:space="preserve">
+    <value>Linux의 Intelligent Hub 설정에 대한 액세스를 제어합니다. 설정\장치 및 사용자\Linux로 이동</value>
+  </data>
+  <data name="SettingsOnlyValidAtPartnerOrCustomer" xml:space="preserve">
+    <value>현재 조직 그룹 수준에서는 SaaS 알림을 볼 수 없습니다. SaaS 알림을 보려면 고객 또는 파트너 수준에서 OG를 선택합니다.</value>
+  </data>
+  <data name="SettingsOverridesAd" xml:space="preserve">
+    <value>설정 재정의</value>
+  </data>
+  <data name="SettingsOverridesAdHelp" xml:space="preserve">
+    <value>이벤트 로그 재정의 보기 및 편집합니다.</value>
+  </data>
+  <data name="SettingsQnxAgentSettingsHelp" xml:space="preserve">
+    <value>Qnx에 있는 Agent 설정 페이지에 대한 액세스를 제어합니다. 구성\시스템 설정\장치\Qnx로 이동</value>
+  </data>
+  <data name="SharedDevicesSet" xml:space="preserve">
+    <value>공유 장치</value>
+  </data>
+  <data name="SharedDevicesSetHelp" xml:space="preserve">
+    <value>공유 장치 페이지에 액세스를 제어합니다.</value>
+  </data>
+  <data name="SmartGroupsAb" xml:space="preserve">
+    <value>스마트 그룹</value>
+  </data>
+  <data name="SmartGroupsAbHelp" xml:space="preserve">
+    <value>애플리케이션 스마트 그룹 할당 편집.</value>
+  </data>
+  <data name="SmartGroupsGr" xml:space="preserve">
+    <value>스마트 그룹</value>
+  </data>
+  <data name="SmartGroupsGrHelp" xml:space="preserve">
+    <value>스마트 그룹 보기, 편집, 및 삭제</value>
+  </data>
+  <data name="SoftwareInventoryWM" xml:space="preserve">
+    <value>소프트웨어 인벤토리</value>
+  </data>
+  <data name="SoftwareInventoryWMHelp" xml:space="preserve">
+    <value>WinMo 소프트웨어 인벤토리 페이지에 액세스.</value>
+  </data>
+  <data name="SslPinningSec" xml:space="preserve">
+    <value>SSL 고정</value>
+  </data>
+  <data name="SslPinningSecHelp" xml:space="preserve">
+    <value>SSL 고정 화면을 보기 위한 사용 권한을 제공합니다.</value>
+  </data>
+  <data name="StagingPPN" xml:space="preserve">
+    <value>스테이징</value>
+  </data>
+  <data name="StagingPPNHelp" xml:space="preserve">
+    <value>프로비저닝 정책을 위해 스테이징 정의를 관리.</value>
+  </data>
+  <data name="StartAwcm" xml:space="preserve">
+    <value>AWCM 시작</value>
+  </data>
+  <data name="StatusHistoryDD" xml:space="preserve">
+    <value>상태 기록</value>
+  </data>
+  <data name="StatusHistoryDDHelp" xml:space="preserve">
+    <value>장치를 위해 등록 및 준수 상태 기록 보기.</value>
+  </data>
+  <data name="StopAwcm" xml:space="preserve">
+    <value>AWCM 중지</value>
+  </data>
+  <data name="SummaryInfoPM" xml:space="preserve">
+    <value>요약 정보</value>
+  </data>
+  <data name="SummaryInfoPMHelp" xml:space="preserve">
+    <value>프린터 요약 정보 페이지에 액세스를 제어합니다.</value>
+  </data>
+  <data name="SuspendBitlockerEncryptionHelp" xml:space="preserve">
+    <value>장치 세부 정보 페이지에서 Bitlocker 암호화 일시 중단 구성</value>
+  </data>
+  <data name="SymbianDev" xml:space="preserve">
+    <value>Symbian</value>
+  </data>
+  <data name="SymbianDevHelp" xml:space="preserve">
+    <value>장치에 있는 Symbian 페이지에 액세스를 제어합니다.</value>
+  </data>
+  <data name="SyncDD" xml:space="preserve">
+    <value>장치 설정 동기화</value>
+  </data>
+  <data name="SyncDDHelp" xml:space="preserve">
+    <value>프로필 및 앱과 같은 장치 설정을 원격으로 동기화.</value>
+  </data>
+  <data name="SyncDeviceEnrollmentProgram" xml:space="preserve">
+    <value>등록 프로그램 동기화 장치</value>
+  </data>
+  <data name="SyncDeviceEnrollmentProgramHelp" xml:space="preserve">
+    <value>DEP 장치를 동기화하도록 액세스를 제어합니다. 등록 상태 페이지로 이동</value>
+  </data>
+  <data name="SyncDeviceSensors" xml:space="preserve">
+    <value>장치 센서 동기화</value>
+  </data>
+  <data name="SyncDeviceSensorsHelp" xml:space="preserve">
+    <value>장치에서 센서 데이터 새로 고침을 요청하기 위한 액세스 권한 제어</value>
+  </data>
+  <data name="SystemCodeAuditAd" xml:space="preserve">
+    <value>시스템 코드 감사</value>
+  </data>
+  <data name="SystemCodeAuditAdHelp" xml:space="preserve">
+    <value>시스템 코드 감사에 액세스를 제어합니다.</value>
+  </data>
+  <data name="SystemHealthSettingsAd" xml:space="preserve">
+    <value>시스템 상태 설정</value>
+  </data>
+  <data name="SystemHealthSettingsAdHelp" xml:space="preserve">
+    <value>시스템 상태 설정을 보고 편집합니다.</value>
+  </data>
+  <data name="SystemHealthSettingsEditHelp" xml:space="preserve">
+    <value>시스템 상태 설정을 편집할 수 있는 사용 권한을 부여합니다. 메뉴\구성\시스템 설정\관리자\진단\시스템 상태로 이동</value>
+  </data>
+  <data name="SystemHealthSettingsViewHelp" xml:space="preserve">
+    <value>시스템 상태 설정을 볼 수 있는 사용 권한을 부여합니다. 메뉴\구성\시스템 설정\관리자\진단\시스템 상태로 이동</value>
+  </data>
+  <data name="SystemInternalHub" xml:space="preserve">
+    <value>시스템 내부</value>
+  </data>
+  <data name="SystemInternalHubHelp" xml:space="preserve">
+    <value>빌링 보고서 생성.</value>
+  </data>
+  <data name="TagManagementViewHelp" xml:space="preserve">
+    <value>태그 관리를 보기 위한 사용 권한을 제공합니다.</value>
+  </data>
+  <data name="TagsApi" xml:space="preserve">
+    <value>태그</value>
+  </data>
+  <data name="TagsApiHelp" xml:space="preserve">
+    <value>모든 태그 API에 액세스</value>
+  </data>
+  <data name="TagsDev" xml:space="preserve">
+    <value>태그</value>
+  </data>
+  <data name="TagsDevHelp" xml:space="preserve">
+    <value>태그 관리에 액세스하기 위한 사용 권한을 제공합니다,</value>
+  </data>
+  <data name="TargetedLogDeviceEditHelp" xml:space="preserve">
+    <value>대상 장치 로깅을 편집할 수 있는 사용 권한을 부여합니다. 대시보드\장치 대시보드로 이동</value>
+  </data>
+  <data name="TargetedLogDeviceViewHelp" xml:space="preserve">
+    <value>대상 장치 로깅을 볼 수 있는 사용 권한을 부여합니다. 대시보드\장치 대시보드로 이동</value>
+  </data>
+  <data name="TelecomBasicSettingsViewHelp" xml:space="preserve">
+    <value>통신 기본 구성 마법사에 액세스 제어</value>
+  </data>
+  <data name="TelecomDD" xml:space="preserve">
+    <value>통신</value>
+  </data>
+  <data name="TelecomDDHelp" xml:space="preserve">
+    <value>장치 세부 정보에서 장치 통신 액세스하기</value>
+  </data>
+  <data name="TelecomHub" xml:space="preserve">
+    <value>통신</value>
+  </data>
+  <data name="TelecomHubHelp" xml:space="preserve">
+    <value>통신 관리를 위해 보고서 생성.</value>
+  </data>
+  <data name="TelecomManagementTel" xml:space="preserve">
+    <value>통신 관리</value>
+  </data>
+  <data name="TelecomManagementTelHelp" xml:space="preserve">
+    <value>통신 모듈 액세스를 제어합니다. 통신 아래 있는 사용 가능한 메뉴 항목을 표시합니다.</value>
+  </data>
+  <data name="TelecomSettingsSys" xml:space="preserve">
+    <value>통신 설정</value>
+  </data>
+  <data name="TelecomSettingsSysHelp" xml:space="preserve">
+    <value>통신 설정 페이지 액세스를 제어합니다.</value>
+  </data>
+  <data name="TenantStorageGr" xml:space="preserve">
+    <value>테넌트 스토리지</value>
+  </data>
+  <data name="TenantStorageGrHelp" xml:space="preserve">
+    <value>내부 사용: 테넌트 스토리지 페이지에 대한 액세스를 제어합니다.</value>
+  </data>
+  <data name="TenantStorageHelp" xml:space="preserve">
+    <value>내부 사용을 위해 시스템 관리자 역할만 볼 수 있습니다. 테넌트 스토리지에 대한 설정/관리/스토리지 페이지에 대한 액세스 권한을 제어합니다.</value>
+  </data>
+  <data name="TermsOfUseAdmin" xml:space="preserve">
+    <value>사용 약관</value>
+  </data>
+  <data name="TermsOfUseAdminHelp" xml:space="preserve">
+    <value>관리자 계정 사용 약관 보기.</value>
+  </data>
+  <data name="TermsOfUseSys" xml:space="preserve">
+    <value>사용 약관</value>
+  </data>
+  <data name="TermsOfUseSysHelp" xml:space="preserve">
+    <value>시스템 설정 및 장치 등록에 있는 사용 약관 페이지 액세스를 제어합니다.</value>
+  </data>
+  <data name="TestModeEM" xml:space="preserve">
+    <value>테스트 모드</value>
+  </data>
+  <data name="TestModeEMHelp" xml:space="preserve">
+    <value>이메일 관리 규정 준수 정책을 위한 테스트 모드를 편집합니다.</value>
+  </data>
+  <data name="TimeScheduleDM" xml:space="preserve">
+    <value>일정</value>
+  </data>
+  <data name="TimeScheduleDMHelp" xml:space="preserve">
+    <value>프로필을 위해 시간 일정을 보고 편집.</value>
+  </data>
+  <data name="TimeScheduleHelp" xml:space="preserve">
+    <value>시간 일정 설정을 보거나 편집하기 위한 사용 권한을 제공합니다. 
+</value>
+  </data>
+  <data name="TroubleshootingSys" xml:space="preserve">
+    <value>문제 해결</value>
+  </data>
+  <data name="TroubleshootingSysHelp" xml:space="preserve">
+    <value>로그 및 문제 해결 페이지 액세스를 제어합니다.</value>
+  </data>
+  <data name="UemNotificationsInfo" xml:space="preserve">
+    <value>Workspace ONE UEM 및 Workspace ONE Assist에 대한 알림을 포함합니다.</value>
+  </data>
+  <data name="UnApproveUpdate" xml:space="preserve">
+    <value>업데이트 승인 거부</value>
+  </data>
+  <data name="UnApproveUpdateHelp" xml:space="preserve">
+    <value>장치에 대해 업데이트 미승인 명령을 실행할 수 있는 사용 권한을 부여합니다.</value>
+  </data>
+  <data name="UnApproveUpdates" xml:space="preserve">
+    <value>업데이트 승인 거부</value>
+  </data>
+  <data name="UnManagedWipeProtectionHelp" xml:space="preserve">
+    <value>관리되지 않은 장치 초기화 보호 설정</value>
+  </data>
+  <data name="UpdateEditAssignment" xml:space="preserve">
+    <value>할당 편집 업데이트</value>
+  </data>
+  <data name="UpdateEditAssignmentHelp" xml:space="preserve">
+    <value>스마트 그룹 업데이트 할당을 편집하기 위한 사용 권한 부여</value>
+  </data>
+  <data name="UploadCctk" xml:space="preserve">
+    <value>Cctk 업로드</value>
+  </data>
+  <data name="UploadCctkHelp" xml:space="preserve">
+    <value>관리자가 배포 구성을 위해 CCTK 패키지 파일을 업로드하여 BIOS를 구성할 수 있도록 허용합니다.</value>
+  </data>
+  <data name="UploadUnattendXml" xml:space="preserve">
+    <value>무인 Xml 업로드</value>
+  </data>
+  <data name="UploadUnattendXmlHelp" xml:space="preserve">
+    <value>관리자가 배포 구성을 위해 무인 XML 파일을 업로드할 수 있도록 허용합니다.</value>
+  </data>
+  <data name="UsageTel" xml:space="preserve">
+    <value>사용량</value>
+  </data>
+  <data name="UsageTelHelp" xml:space="preserve">
+    <value>통신 사용량 세부 정보 및 대시보드 보기</value>
+  </data>
+  <data name="UserCategoriesDU" xml:space="preserve">
+    <value>사용자 카테고리</value>
+  </data>
+  <data name="UserCategoriesDUHelp" xml:space="preserve">
+    <value>시스템 설정에서 사용자 카테고리에 액세스를 제어합니다.</value>
+  </data>
+  <data name="UserDetailUserAccounts" xml:space="preserve">
+    <value>사용자 세부 정보</value>
+  </data>
+  <data name="UserDetailUserAccountsHelp" xml:space="preserve">
+    <value>사용자 정보 페이지 보기에 액세스.</value>
+  </data>
+  <data name="UserInfoDD" xml:space="preserve">
+    <value>사용자 정보</value>
+  </data>
+  <data name="UserInfoDDHelp" xml:space="preserve">
+    <value>장치 세부 정보에서 사용자 정보 액세스하기</value>
+  </data>
+  <data name="UserManagementHub" xml:space="preserve">
+    <value>사용자 관리</value>
+  </data>
+  <data name="UserManagementHubHelp" xml:space="preserve">
+    <value>사용자 관리를 위해 보고서 생성.</value>
+  </data>
+  <data name="UserMigrationHelp" xml:space="preserve">
+    <value>LDAP 사용자로 마이그레이션 할 수 있는 기본 등록 사용자를 보기 위한 사용 권한을 제공합니다. 
+</value>
+  </data>
+  <data name="UserRegistrationDashboard" xml:space="preserve">
+    <value>사용자 등록</value>
+  </data>
+  <data name="UserRegistrationDashboardHelp" xml:space="preserve">
+    <value>대시보드와 사용자 계정 페이지에서 등록 상태 링크에 액세스.</value>
+  </data>
+  <data name="UserRegistrationEnrollmentStatus" xml:space="preserve">
+    <value>사용자 등록</value>
+  </data>
+  <data name="UserRegistrationEnrollmentStatusHelp" xml:space="preserve">
+    <value>등록 상태 페이지에서 사용자 레지스터에 액세스.</value>
+  </data>
+  <data name="UserRegistrationHelp" xml:space="preserve">
+    <value>대시보드 및 사용자 계정 페이지의 등록 상태 보기 링크에 대한 액세스를 제어합니다. 메뉴/관리/사용자 계정으로 이동하십시오.</value>
+  </data>
+  <data name="UserRoleHelp" xml:space="preserve">
+    <value>사용자 계정에 있는 역할로 액세스를 제어합니다.
+</value>
+  </data>
+  <data name="UsersRESTSystem" xml:space="preserve">
+    <value>사용자</value>
+  </data>
+  <data name="UsersRESTSystemHelp" xml:space="preserve">
+    <value>등록 사용자 계정을 위한 REST API</value>
+  </data>
+  <data name="UserStorageSet" xml:space="preserve">
+    <value>사용자 스토리지</value>
+  </data>
+  <data name="UserStorageSetHelp" xml:space="preserve">
+    <value>최종 사용자를 위해 컨텐츠 스토리지 설정을 관리.</value>
+  </data>
+  <data name="UserTrackingHub" xml:space="preserve">
+    <value>사용자 추적</value>
+  </data>
+  <data name="UserTrackingHubHelp" xml:space="preserve">
+    <value>사용자 추적을 위해 보고서 생성.</value>
+  </data>
+  <data name="VideoManagementSet" xml:space="preserve">
+    <value>동영상 관리</value>
+  </data>
+  <data name="VideoManagementSetHelp" xml:space="preserve">
+    <value>채널에 동영상 추가</value>
+  </data>
+  <data name="ViewAd" xml:space="preserve">
+    <value>보기</value>
+  </data>
+  <data name="ViewAdHelp" xml:space="preserve">
+    <value>캐시 설정을 보기 위한 사용 권한을 제공합니다.</value>
+  </data>
+  <data name="ViewAdminAccount" xml:space="preserve">
+    <value>보기</value>
+  </data>
+  <data name="ViewAdminAccountHelp" xml:space="preserve">
+    <value>관리자 계정 보기</value>
+  </data>
+  <data name="ViewAdminGroup" xml:space="preserve">
+    <value>보기</value>
+  </data>
+  <data name="ViewAdminGroupHelp" xml:space="preserve">
+    <value>관리자 그룹 페이지 보기.</value>
+  </data>
+  <data name="ViewAdminRoles" xml:space="preserve">
+    <value>보기</value>
+  </data>
+  <data name="ViewAdminRolesHelp" xml:space="preserve">
+    <value>관리자 역할 페이지 보기.</value>
+  </data>
+  <data name="ViewAn" xml:space="preserve">
+    <value>보기</value>
+  </data>
+  <data name="ViewAnHelp" xml:space="preserve">
+    <value>[장치] 아래의 [Android] 페이지에 대한 액세스를 제어합니다.</value>
+  </data>
+  <data name="ViewApple" xml:space="preserve">
+    <value>보기</value>
+  </data>
+  <data name="ViewAppleHelp" xml:space="preserve">
+    <value>장치에 있는 Apple 페이지에 액세스를 제어합니다.</value>
+  </data>
+  <data name="ViewBaselines" xml:space="preserve">
+    <value>기준선 보기</value>
+  </data>
+  <data name="ViewBaselinesHelp" xml:space="preserve">
+    <value>기준선에 액세스를 제어합니다.</value>
+  </data>
+  <data name="ViewCM" xml:space="preserve">
+    <value>보기</value>
+  </data>
+  <data name="ViewCMHelp" xml:space="preserve">
+    <value>컨텐츠 관리 페이지 보기.</value>
+  </data>
+  <data name="ViewCustomReportSubscriptionHelp" xml:space="preserve">
+    <value>사용자 지정 보고서의 구독을 볼 수 있는 액세스를 제어합니다. Hub\보고서 및 분석 자료\사용자 지정 보고서\구독으로 이동</value>
+  </data>
+  <data name="ViewDashboardDM" xml:space="preserve">
+    <value>대시보드 보기</value>
+  </data>
+  <data name="ViewDashboardDMHelp" xml:space="preserve">
+    <value>장치 관리로 장치 대시보드 페이지 보기.</value>
+  </data>
+  <data name="ViewDeviceManagement" xml:space="preserve">
+    <value>보기</value>
+  </data>
+  <data name="ViewDeviceManagementHelp" xml:space="preserve">
+    <value>장치 관리 모듈 보기.</value>
+  </data>
+  <data name="ViewDevicesAb" xml:space="preserve">
+    <value>장치 보기</value>
+  </data>
+  <data name="ViewDevicesAbHelp" xml:space="preserve">
+    <value>애플리케이션과 관련된 장치를 보는 액세스를 제어.</value>
+  </data>
+  <data name="ViewDevicesCM" xml:space="preserve">
+    <value>장치 보기</value>
+  </data>
+  <data name="ViewDevicesCMHelp" xml:space="preserve">
+    <value>컨텐츠 관리 페이지에 할당된 컨텐츠에 따라 장치를 보기.</value>
+  </data>
+  <data name="ViewDevicesDM" xml:space="preserve">
+    <value>장치 보기</value>
+  </data>
+  <data name="ViewDevicesDMHelp" xml:space="preserve">
+    <value>프로필 아래에 장치 아이콘 보기에 액세스.</value>
+  </data>
+  <data name="ViewDeviceSensors" xml:space="preserve">
+    <value>장치 센서 보기</value>
+  </data>
+  <data name="ViewDeviceSensorsHelp" xml:space="preserve">
+    <value>장치 센서 세부 정보 및 구성을 보기 위한 액세스 권한 제어</value>
+  </data>
+  <data name="ViewDeviceWnsStatus" xml:space="preserve">
+    <value>장치 WNS 상태 보기</value>
+  </data>
+  <data name="ViewDeviceWnsStatusHelp" xml:space="preserve">
+    <value>장치 WNS 상태를 볼 수 있는 기능입니다.</value>
+  </data>
+  <data name="ViewDM" xml:space="preserve">
+    <value>보기</value>
+  </data>
+  <data name="ViewDMHelp" xml:space="preserve">
+    <value>장치 관리로 프로필 페이지 보기.</value>
+  </data>
+  <data name="ViewEducationOverviewHelp" xml:space="preserve">
+    <value>교육 개요 페이지 보기      </value>
+  </data>
+  <data name="ViewEM" xml:space="preserve">
+    <value>보기</value>
+  </data>
+  <data name="ViewEMHelp" xml:space="preserve">
+    <value>이메일 관리 메뉴 항목에 액세스합니다.</value>
+  </data>
+  <data name="ViewExtendedDeviceInventory" xml:space="preserve">
+    <value>확장된 장치 인벤토리 보기</value>
+  </data>
+  <data name="ViewExtendedDeviceInventoryHelp" xml:space="preserve">
+    <value>확장된 장치 인벤토리를 보기 위한 액세스를 제어합니다.</value>
+  </data>
+  <data name="ViewExtendedDeviceInventoryOnDeviceDetail" xml:space="preserve">
+    <value>장치 세부 정보 페이지에서 확장된 장치 인벤토리 보기</value>
+  </data>
+  <data name="ViewExtendedDeviceInventoryOnDeviceDetailHelp" xml:space="preserve">
+    <value>장치 세부 정보 페이지에서 확장된 장치 인벤토리를 보기 위한 액세스를 제어합니다.</value>
+  </data>
+  <data name="ViewFileServerConfiguration" xml:space="preserve">
+    <value>파일 서버 구성 보기</value>
+  </data>
+  <data name="ViewFileServerConfigurationHelp" xml:space="preserve">
+    <value>파일 서버 그리드 및 세부 정보를 볼 수 있는 사용자 권한을 부여</value>
+  </data>
+  <data name="ViewGen" xml:space="preserve">
+    <value>보기</value>
+  </data>
+  <data name="ViewGenHelp" xml:space="preserve">
+    <value>시스템 설정에 있는 장치 페이지에 액세스를 제어합니다.</value>
+  </data>
+  <data name="ViewGr" xml:space="preserve">
+    <value>보기</value>
+  </data>
+  <data name="ViewGrHelp" xml:space="preserve">
+    <value>조직 그룹 페이지에 액세스합니다.</value>
+  </data>
+  <data name="ViewHA" xml:space="preserve">
+    <value>보기</value>
+  </data>
+  <data name="ViewHAHelp" xml:space="preserve">
+    <value>경고 모듈에 액세스합니다.</value>
+  </data>
+  <data name="ViewIos" xml:space="preserve">
+    <value>보기</value>
+  </data>
+  <data name="ViewIosHelp" xml:space="preserve">
+    <value>장치 아래의 iOS 페이지에 대한 액세스를 제어합니다.</value>
+  </data>
+  <data name="ViewLinux" xml:space="preserve">
+    <value>보기</value>
+  </data>
+  <data name="ViewLinuxHelp" xml:space="preserve">
+    <value>장치의 Linux 페이지에 대한 액세스 제어</value>
+  </data>
+  <data name="ViewNotesHelp" xml:space="preserve">
+    <value>메모를 보기 위한 사용 권한을 제공합니다.</value>
+  </data>
+  <data name="ViewOemUpdates" xml:space="preserve">
+    <value>Oem 업데이트 보기</value>
+  </data>
+  <data name="ViewOemUpdatesHelp" xml:space="preserve">
+    <value>OEM 업데이트 대시보드를 보기 위한 액세스를 제어합니다. 메뉴\장치\OEM업데이트로 이동</value>
+  </data>
+  <data name="ViewPM" xml:space="preserve">
+    <value>보기</value>
+  </data>
+  <data name="ViewPMHelp" xml:space="preserve">
+    <value>주변 장치 설정 페이지에 액세스합니다.</value>
+  </data>
+  <data name="ViewProvisioningPackages" xml:space="preserve">
+    <value>프로비저닝 패키지 보기</value>
+  </data>
+  <data name="ViewProvisioningPackagesHelp" xml:space="preserve">
+    <value>프로비저닝 패키지를 보기 위해 액세스 제어</value>
+  </data>
+  <data name="ViewSet" xml:space="preserve">
+    <value>보기</value>
+  </data>
+  <data name="ViewSetHelp" xml:space="preserve">
+    <value>시스템 설정에 있는 앱 페이지에 액세스를 제어합니다.</value>
+  </data>
+  <data name="ViewSys" xml:space="preserve">
+    <value>보기</value>
+  </data>
+  <data name="ViewSysHelp" xml:space="preserve">
+    <value>[시스템 설정]에 대한 액세스를 제어합니다.</value>
+  </data>
+  <data name="ViewTagHelp" xml:space="preserve">
+    <value>태그를 보기 위한 사용 권한을 제공합니다.</value>
+  </data>
+  <data name="ViewTimeWindow" xml:space="preserve">
+    <value>시간대 보기</value>
+  </data>
+  <data name="ViewTimeWindowHelp" xml:space="preserve">
+    <value>시간대를 보기 위한 액세스를 제어합니다.</value>
+  </data>
+  <data name="ViewTimeWindowOnDeviceDetail" xml:space="preserve">
+    <value>장치 세부 정보 페이지에서 시간대 보기</value>
+  </data>
+  <data name="ViewTimeWindowOnDeviceDetailHelp" xml:space="preserve">
+    <value>장치 세부 정보 페이지에서 시간대를 보기 위한 액세스를 제어합니다.</value>
+  </data>
+  <data name="ViewUG" xml:space="preserve">
+    <value>보기</value>
+  </data>
+  <data name="ViewUGHelp" xml:space="preserve">
+    <value>사용자 그룹 페이지에 액세스합니다.</value>
+  </data>
+  <data name="ViewUpdateDevices" xml:space="preserve">
+    <value>업데이트 장치 보기</value>
+  </data>
+  <data name="ViewUpdateDevicesHelp" xml:space="preserve">
+    <value>업데이트 상태에 따라 장치를 보기 위한 액세스를 제어합니다. 메뉴\장치\업데이트로 이동</value>
+  </data>
+  <data name="ViewUpdatesHelp" xml:space="preserve">
+    <value>업데이트 대시보드를 보기 위한 액세스를 제어합니다. 메뉴\장치\업데이트로 이동</value>
+  </data>
+  <data name="ViewUserAccounts" xml:space="preserve">
+    <value>보기</value>
+  </data>
+  <data name="ViewUserAccountsHelp" xml:space="preserve">
+    <value>사용자 계정 보기.</value>
+  </data>
+  <data name="ViewUserCategories" xml:space="preserve">
+    <value>보기</value>
+  </data>
+  <data name="ViewUserCategoriesHelp" xml:space="preserve">
+    <value>사용자 계정을 위해 카테고리에 액세스.</value>
+  </data>
+  <data name="ViewUserDetails" xml:space="preserve">
+    <value>사용자 세부 정보 보기</value>
+  </data>
+  <data name="ViewUserDetailsHelp" xml:space="preserve">
+    <value>Chrome OS 사용자 프로필에 대한 사용자 할당을 봅니다.</value>
+  </data>
+  <data name="ViewUserRoles" xml:space="preserve">
+    <value>보기</value>
+  </data>
+  <data name="ViewUserRolesHelp" xml:space="preserve">
+    <value>사용자 역할 보기</value>
+  </data>
+  <data name="ViewWin" xml:space="preserve">
+    <value>보기</value>
+  </data>
+  <data name="ViewWindowsTemplateDevicesHelp" xml:space="preserve">
+    <value>관리자가 Console 대시보드에서 Windows 템플릿 프로비저닝 패키지가 적용된 장치를 볼 수 있도록 설정을 구성하도록 허용</value>
+  </data>
+  <data name="ViewWindowsTemplatesHelp" xml:space="preserve">
+    <value>관리자가 Console 대시보드에서 Windows 탬플릿을 볼 수 있도록 설정을 구성하도록 허용</value>
+  </data>
+  <data name="ViewWinHelp" xml:space="preserve">
+    <value>장치에 있는 Windows 페이지에 액세스를 제어합니다.</value>
+  </data>
+  <data name="ViewXmlDM" xml:space="preserve">
+    <value>XML 보기</value>
+  </data>
+  <data name="ViewXmlDMHelp" xml:space="preserve">
+    <value>프로필 아래에 XML 아이콘 보기에 액세스.</value>
+  </data>
+  <data name="VmInstanceLockHelp" xml:space="preserve">
+    <value>Horizon FLEX에서 관리하는 가상 시스템 인스턴스 잠금</value>
+  </data>
+  <data name="VmInstanceUnlockHelp" xml:space="preserve">
+    <value>Horizon FLEX에서 관리하는 가상 시스템 인스턴스 잠금 해제</value>
+  </data>
+  <data name="VmInstanceWipeHelp" xml:space="preserve">
+    <value>Horizon FLEX에서 관리하는 가상 시스템 인스턴스 초기화</value>
+  </data>
+  <data name="VMwareEmployeeLoginNotification" xml:space="preserve">
+    <value>VMware 직원 로그인 알림</value>
+  </data>
+  <data name="VMwareEmployeeLoginNotificationInfo" xml:space="preserve">
+    <value>VMware 직원이 사용자의 고객 또는 파트너 OG에 액세스할 때 지정한 수신자에게 알리도록 활성화합니다.</value>
+  </data>
+  <data name="WebConsoleLogHelp" xml:space="preserve">
+    <value>웹 크래시 로그로 액세스를 제어합니다. 
+</value>
+  </data>
+  <data name="WeblinkPM" xml:space="preserve">
+    <value>웹링크</value>
+  </data>
+  <data name="WeblinkPMHelp" xml:space="preserve">
+    <value>[프린터 웹링크] 페이지에 대한 액세스를 제어합니다.</value>
+  </data>
+  <data name="WebsiteFiltersSettingsHelp" xml:space="preserve">
+    <value>웹사이트 필터 설정 화면 보기 및 편집에 대한 액세스를 제어합니다. 이동 경로는 설정\애플리케이션\애플리케이션 통합\웹사이트 필터</value>
+  </data>
+  <data name="WiFiPM" xml:space="preserve">
+    <value>Wi-Fi</value>
+  </data>
+  <data name="WiFiPMHelp" xml:space="preserve">
+    <value>프린터 Wi-Fi 페이지에 대한 액세스를 제어합니다.</value>
+  </data>
+  <data name="Windows8RtWin" xml:space="preserve">
+    <value>Windows 8/RT</value>
+  </data>
+  <data name="Windows8RtWinHelp" xml:space="preserve">
+    <value>WinRT 설정에 액세스를 제어합니다.</value>
+  </data>
+  <data name="WindowsAppDeploymentsEditHelp" xml:space="preserve">
+    <value>이 리소스를 사용하면 관리자가 콘솔에서 애플리케이션 배포 설정을 구성할 수 있음</value>
+  </data>
+  <data name="WindowsAutoDiscoverySettingsEditHelp" xml:space="preserve">
+    <value>이 리소스를 사용하면 관리자가 자동 검색 모드를 '온-프레미스' 또는 '클라우드 호스팅'으로 구성하고 Windows 자동 검색용으로 특정 도메인을 등록할 수 있음</value>
+  </data>
+  <data name="WindowsAutoEnrollmentSettings" xml:space="preserve">
+    <value>Windows 자동 등록 설정</value>
+  </data>
+  <data name="WindowsAutoEnrollmentSettingsHelp" xml:space="preserve">
+    <value>이 리소스를 사용하면 관리자가 Windows 장치에서 실행되는 프로비저닝 에이전트에 적용할 수 있는 설정을 구성할 수 있습니다. </value>
+  </data>
+  <data name="WindowsMobileDD" xml:space="preserve">
+    <value>Windows Mobile</value>
+  </data>
+  <data name="WindowsMobileDDHelp" xml:space="preserve">
+    <value>장치 세부 정보에서 Windows Mobile 특정 설정 관리.</value>
+  </data>
+  <data name="WindowsMobileWm" xml:space="preserve">
+    <value>Windows Mobile</value>
+  </data>
+  <data name="WindowsMobileWmHelp" xml:space="preserve">
+    <value>장치 아래의 Windows Mobile 페이지에 대한 액세스를 제어합니다.</value>
+  </data>
+  <data name="WindowsPcSet" xml:space="preserve">
+    <value>Windows PC</value>
+  </data>
+  <data name="WindowsPcSetHelp" xml:space="preserve">
+    <value>장치에 있는 Windows PC 페이지에 액세스를 제어합니다.</value>
+  </data>
+  <data name="WindowsPhone8Win" xml:space="preserve">
+    <value>Windows Phone 8</value>
+  </data>
+  <data name="WindowsPhone8WinHelp" xml:space="preserve">
+    <value>Windows Phone 설정에 대한 액세스를 제어합니다.</value>
+  </data>
+  <data name="WindowsPhoneHealthAttestationEdit" xml:space="preserve">
+    <value>WindowsPhone 상태 증명 편집</value>
+  </data>
+  <data name="WindowsPhoneHealthAttestationEditHelp" xml:space="preserve">
+    <value>이 리소스를 사용하면 관리자가 Windows 10 모바일 장치의 상태 증명 설정을 구성할 수 있도록 허용함</value>
+  </data>
+  <data name="WindowsPhoneWin" xml:space="preserve">
+    <value>Windows Phone</value>
+  </data>
+  <data name="WindowsPhoneWinHelp" xml:space="preserve">
+    <value>시스템 설정에 있는 Windows Phone 페이지에 액세스를 제어합니다.</value>
+  </data>
+  <data name="WindowsRuntimeProvisioningHelp" xml:space="preserve">
+    <value>이러한 설정을 사용하면 관리자가 Windows 장치를 최종 사용자에게 대량 프로비저닝하는 데 필요한 스테이징 정보를 볼 수 있습니다. 이렇게 하면 모든 장치에 대한 부트스트랩 정보를 설정하는 데에도 도움이 됩니다.</value>
+  </data>
+  <data name="WindowsSampleScheduleHelp" xml:space="preserve">
+    <value>이 설정 그룹을 사용하면 관리자가 MDM 데이터 및 설정의 샘플을 수집하는 간격을 설정할 수 있습니다.</value>
+  </data>
+  <data name="WinmoSWInventoryHub" xml:space="preserve">
+    <value>WinMo S/W 인벤터리</value>
+  </data>
+  <data name="WinmoSWInventoryHubHelp" xml:space="preserve">
+    <value>WinMo S/W 인벤토리를 위해 보고서 생성.</value>
+  </data>
+  <data name="WipeProtectionDU" xml:space="preserve">
+    <value>초기화 보호</value>
+  </data>
+  <data name="WipeProtectionDUHelp" xml:space="preserve">
+    <value>고급에 있는 초기화 보호 페이지에 액세스를 제어합니다.</value>
+  </data>
+  <data name="WorkflowsDD" xml:space="preserve">
+    <value>워크플로</value>
+  </data>
+  <data name="WorkflowsDDHelp" xml:space="preserve">
+    <value>장치에서 워크플로 실행 상태를 조회합니다.</value>
+  </data>
+  <data name="WorkspaceSet" xml:space="preserve">
+    <value>Container</value>
+  </data>
+  <data name="WorkspaceSetHelp" xml:space="preserve">
+    <value>일반 아래 있는 Container 페이지에 액세스를 제어합니다.</value>
+  </data>
+  <data name="ZonesGr" xml:space="preserve">
+    <value>영역</value>
+  </data>
+  <data name="ZonesGrHelp" xml:space="preserve">
+    <value>조직 그룹을 위해 위치 지대 관리.</value>
+  </data>
+  <data name="ZplPM" xml:space="preserve">
+    <value>Zpl</value>
+  </data>
+  <data name="ZplPMHelp" xml:space="preserve">
+    <value>프린터 Zpl 페이지에 대한 액세스를 제어합니다.</value>
+  </data>
+</root>

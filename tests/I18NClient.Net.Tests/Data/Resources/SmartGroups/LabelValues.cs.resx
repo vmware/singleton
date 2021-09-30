@@ -1,0 +1,260 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AADEnrolled" xml:space="preserve">
+    <value>Registrováno ve službě AAD</value>
+  </data>
+  <data name="AndroidAssignedSmartGroups" xml:space="preserve">
+    <value>Smart skupiny Android</value>
+  </data>
+  <data name="AndroidEnterprise" xml:space="preserve">
+    <value>Android Enterprise</value>
+  </data>
+  <data name="AnyBook" xml:space="preserve">
+    <value>Jakákoli kniha</value>
+  </data>
+  <data name="ApplicationManaged" xml:space="preserve">
+    <value>Spravovaný aplikací</value>
+  </data>
+  <data name="ArgNewSmartGroupDescription" xml:space="preserve">
+    <value>Zadejte název smart skupiny spravované uživatelem {0}</value>
+    <comment>Placeholder in this label key will contain the link text localized value.</comment>
+  </data>
+  <data name="AssignSmartGroup" xml:space="preserve">
+    <value>Přiřadit smart skupinu</value>
+  </data>
+  <data name="CannotDeleteAssignedEntities" xml:space="preserve">
+    <value>Smart skupiny nelze odebrat, pokud jsou přiřazeny k zásadě nebo se používají jako vyloučení přiřazení. Přejděte do sloupce Přiřazení níže a prohlédněte si tak všechny související zásady, u kterých je třeba zrušit přiřazení, aby bylo možné smart skupinu odstranit</value>
+  </data>
+  <data name="CloudProfile" xml:space="preserve">
+    <value>Cloudový profil</value>
+  </data>
+  <data name="DeleteFailure" xml:space="preserve">
+    <value>Odstranit</value>
+  </data>
+  <data name="DeleteSmartGroup" xml:space="preserve">
+    <value>Odstranit smart skupinu</value>
+  </data>
+  <data name="DepEnrolled" xml:space="preserve">
+    <value>Registrované v DEP</value>
+  </data>
+  <data name="DevicePreviewDisabled" xml:space="preserve">
+    <value>Náhled zařízení deaktivován</value>
+  </data>
+  <data name="DeviceSensorAttribute" xml:space="preserve">
+    <value>Atribut senzoru zařízení</value>
+  </data>
+  <data name="DeviceUpdate" xml:space="preserve">
+    <value>Aktualizace zařízení</value>
+  </data>
+  <data name="EditSmartGroupArgOpensDialog" xml:space="preserve">
+    <value>Příkaz Upravit Smart skupinu {0} otevře dialogové okno</value>
+  </data>
+  <data name="EduShared" xml:space="preserve">
+    <value>Sdílený EDU režim iPadu</value>
+  </data>
+  <data name="EnrollmentCategory" xml:space="preserve">
+    <value>Kategorie registrace</value>
+  </data>
+  <data name="EnrollmentCategoryToolTip" xml:space="preserve">
+    <value>Tento filtr kritérií se týká pouze zařízení se systémem Windows, Android a Apple (iOS, macOS a tvOS). Nevztahuje se na zařízení s jinými platformami.</value>
+  </data>
+  <data name="EntityReconcileService" xml:space="preserve">
+    <value>Služba uspořádání entity</value>
+  </data>
+  <data name="EntityType" xml:space="preserve">
+    <value>Typ entity</value>
+  </data>
+  <data name="ExternalApplication" xml:space="preserve">
+    <value>Externí aplikace</value>
+  </data>
+  <data name="ExternalBook" xml:space="preserve">
+    <value>Externí kniha</value>
+  </data>
+  <data name="IosAssignedSmartGroups" xml:space="preserve">
+    <value>Smart skupiny iOS</value>
+  </data>
+  <data name="IsExcluded" xml:space="preserve">
+    <value>Je vyloučeno</value>
+  </data>
+  <data name="ManagementType" xml:space="preserve">
+    <value>Typ správy</value>
+  </data>
+  <data name="ManagementTypeToolTip" xml:space="preserve">
+    <value>Toto kritérium filtruje zařízení podle vybraného typu správy. Pokud není učiněn žádný výběr, filtrovací kritéria nebudou uplatněna.</value>
+  </data>
+  <data name="ModelLegacy" xml:space="preserve">
+    <value>Model (starší verze)</value>
+  </data>
+  <data name="ModelNotFound" xml:space="preserve">
+    <value>Model nebyl nalezen</value>
+  </data>
+  <data name="OEMAndModel" xml:space="preserve">
+    <value>Výrobce OEM a model</value>
+  </data>
+  <data name="OEMAndModelTooltip" xml:space="preserve">
+    <value>Tato kritéria platí pouze pro zařízení Windows Desktop a Android a filtrují zařízení podle výrobce OEM a vybraného modelu. Výběry v rozevírací nabídce modelu budou založeny na modelech registrovaných ve vašem prostředí. Pokud není proveden žádný výběr, nebudou tato kritéria filtrování použita.</value>
+  </data>
+  <data name="PleaseSelectAtLeastOneApplicablePlatform" xml:space="preserve">
+    <value>Vyberte alespoň jednu vhodnou platformu</value>
+  </data>
+  <data name="ProductAssignment" xml:space="preserve">
+    <value>Přiřazení produktu</value>
+  </data>
+  <data name="PurchasedBook" xml:space="preserve">
+    <value>Zakoupená kniha</value>
+  </data>
+  <data name="SelectManufacturer" xml:space="preserve">
+    <value>Vyberte výrobce</value>
+  </data>
+  <data name="SmartgroupAssignedToWorkflow" xml:space="preserve">
+    <value>Smart skupina již byla přidána pro přiřazení pracovního postupu.</value>
+  </data>
+  <data name="SmartGroupDeviceMapCleanupJob" xml:space="preserve">
+    <value>Úloha výmazu mapy zařízení smart skupiny</value>
+  </data>
+  <data name="SmartGroupPrivacyDisplay" xml:space="preserve">
+    <value>Některé zděděné skupiny přiřazení se nemusí z důvodu ochrany osobních údajů zobrazit.</value>
+  </data>
+  <data name="SmartGroupsCount" xml:space="preserve">
+    <value>Počet smart skupin</value>
+  </data>
+  <data name="SwitchBetweenCriteria" xml:space="preserve">
+    <value>VAROVÁNÍ: Po přepnutí z kritérií na výběr zařízení/uživatele přijdete o všechna kritéria výběru použitá ke generování seznamu zařízení na aktuální stránce a všechny zásady nebo aplikace přiřazené těmto zařízením. Po přepnutí zpět nebudou kritéria výběru znovu sama naplněna. Opravdu chcete pokračovat?</value>
+  </data>
+  <data name="SwitchFromDevicesToCriteria" xml:space="preserve">
+    <value>VAROVÁNÍ: Po přepnutí z výběru zařízení/uživatele na kritéria přijdete o všechna kritéria výběru použitá ke generování seznamu zařízení na aktuální stránce a všechny zásady nebo aplikace přiřazené těmto zařízením. Po přepnutí zpět nebudou kritéria výběru znovu sama vyplněna. Opravdu chcete pokračovat?</value>
+  </data>
+  <data name="TypeToSearchModel" xml:space="preserve">
+    <value>Chcete-li hledat modely, začněte psát</value>
+  </data>
+  <data name="UserApprovedMdmEnrolled" xml:space="preserve">
+    <value>Registrace MDM – schváleno uživatelem</value>
+  </data>
+  <data name="ViewAssignmentForSmartGroupArgOpensDialog" xml:space="preserve">
+    <value>Příkaz Zobrazit přiřazení pro Smart skupinu {0} otevře dialogové okno</value>
+    <comment>The placeholder in this label key will contain smart group name.</comment>
+  </data>
+  <data name="WhomDoYouAssign" xml:space="preserve">
+    <value>Komu chcete tuto aplikaci přiřadit?</value>
+  </data>
+  <data name="WindowsAssignedSmartGroups" xml:space="preserve">
+    <value>Smart skupiny Windows</value>
+  </data>
+</root>

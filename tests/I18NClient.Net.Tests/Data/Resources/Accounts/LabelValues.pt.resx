@@ -1,0 +1,1042 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AadAsIdpAttributeRequired" xml:space="preserve">
+    <value>O “atributo de mapeamento do Azure Active Directory” é obrigatório quando o diretório é definido como Nenhum e o Azure AD para serviços de identidade está habilitado na página de configurações dos serviços de diretório.</value>
+  </data>
+  <data name="AadAttributeMapping" xml:space="preserve">
+    <value>Atributo de mapeamento do Azure Active Directory</value>
+  </data>
+  <data name="AccountLocked" xml:space="preserve">
+    <value>Sua conta do Workspace ONE UEM foi bloqueada. {0} para desbloquear a conta ou entre em contato com o administrador de TI.</value>
+    <comment>{0} will be replaced with url to reset password</comment>
+  </data>
+  <data name="AccountLockedSubject" xml:space="preserve">
+    <value>A conta do Workspace ONE UEM está bloqueada</value>
+  </data>
+  <data name="AccountUnlocked" xml:space="preserve">
+    <value>Sua conta do Workspace ONE UEM foi desbloqueada. {0} para acessar o Workspace ONE UEM Console.</value>
+    <comment>{0} will be replaced with url to login</comment>
+  </data>
+  <data name="AccountUnlockedSubject" xml:space="preserve">
+    <value>A conta do Workspace ONE UEM está desbloqueada</value>
+  </data>
+  <data name="AddCloudServicesAdmin" xml:space="preserve">
+    <value>Adicionar um administrador de serviços na nuvem</value>
+  </data>
+  <data name="AddCloudServicesAdminPlaceHolder" xml:space="preserve">
+    <value>{0}</value>
+  </data>
+  <data name="AddSelectedUsersToUserGroup" xml:space="preserve">
+    <value>Adicionar usuários selecionados ao grupo de usuários</value>
+  </data>
+  <data name="AdminAccountLocked" xml:space="preserve">
+    <value>Conta de administrador bloqueada</value>
+  </data>
+  <data name="AdminAccountUnlocked" xml:space="preserve">
+    <value>Conta de administrador desbloqueada</value>
+  </data>
+  <data name="AdminApiAuthenticationWarningText" xml:space="preserve">
+    <value>O Console usará as credenciais do usuário como padrão, a menos que um certificado de cliente tenha sido gerado.</value>
+  </data>
+  <data name="AdminGroupMembersExport" xml:space="preserve">
+    <value>Exportação de membros do grupo de administradores</value>
+  </data>
+  <data name="AdminGroupMembersExportHelp" xml:space="preserve">
+    <value>Controla o acesso aos membros do grupo de administração de exportação. Navegue em Menu\Contas\Administradores\Grupos de administradores</value>
+  </data>
+  <data name="Administrators" xml:space="preserve">
+    <value>Administradores</value>
+  </data>
+  <data name="AdministratorsSettings" xml:space="preserve">
+    <value>Configurações dos administradores</value>
+  </data>
+  <data name="AdminNotificationArgForSamlConfiguration" xml:space="preserve">
+    <value>Necessário para autenticar os administradores com segurança no Console, o atributo "{0}" está faltando na resposta SAML do provedor de identidade.</value>
+  </data>
+  <data name="AdminPasswordReset" xml:space="preserve">
+    <value>Redefinição de senha do administrador</value>
+  </data>
+  <data name="AdminUserPasswordResetAction" xml:space="preserve">
+    <value>Essa ação disparará um e-mail de redefinição de senha para o administrador seguinte. Verifique o endereço de e-mail corretamente e prossiga.</value>
+    <comment>This action corresponds to triggering password reset for admin user from the admin list view grid</comment>
+  </data>
+  <data name="AdminUserPasswordResetEmailTriggered" xml:space="preserve">
+    <value>E-mail de redefinição de senha do usuário administrador disparado</value>
+  </data>
+  <data name="AgentSettingsPublish" xml:space="preserve">
+    <value>Publicar as definições do agente</value>
+  </data>
+  <data name="AllAdministratorsSettings" xml:space="preserve">
+    <value>Todas as configurações dos administradores</value>
+  </data>
+  <data name="AllAppsBooksSettings" xml:space="preserve">
+    <value>Configurações de todos os aplicativos e livros</value>
+  </data>
+  <data name="AllowedDevicesDescription" xml:space="preserve">
+    <value>Importe dispositivos pré-aprovados por IMEI, número de série ou UDID. Use essa opção para importar uma lista de dispositivos conhecidos (por exemplo, dispositivos corporativos). A propriedade e a ID de grupo associada a esse dispositivo serão aplicados automaticamente ao dispositivo durante a inscrição.</value>
+  </data>
+  <data name="AllUsersSettings" xml:space="preserve">
+    <value>Todas as configurações dos usuários</value>
+  </data>
+  <data name="AndroidEfotaApproveUpdate" xml:space="preserve">
+    <value>Aprovar atualização do Efota para Android</value>
+  </data>
+  <data name="ApiQuotaReachedNotification" xml:space="preserve">
+    <value>Utilização da API</value>
+  </data>
+  <data name="ApiQuotaThresholdReachedAction" xml:space="preserve">
+    <value>Exibir utilização da API</value>
+  </data>
+  <data name="ApiQuotaThresholdReachedMessage" xml:space="preserve">
+    <value>Você atingiu{0}% do seu limite de API diário, que será redefinido em {1}</value>
+    <comment>{0} will be replaced with a numeric value indicating what percentage of api calls have been utilized for that day. {1} will be replaced with the localized time in which the api usage resets</comment>
+  </data>
+  <data name="ApiQuotaThresholdReachedTitle" xml:space="preserve">
+    <value>Utilização da API</value>
+  </data>
+  <data name="ArgCannotBeMappedAppleIdArgAsArgNotFoundInOgArg" xml:space="preserve">
+    <value>{0} não pode ser mapeado para Apple ID gerenciada {1} porque {2} não foi encontrado na hierarquia {3} no grupo organizacional</value>
+  </data>
+  <data name="ArgCannotBeMappedToEnrollmentUserAppleAlreadyPresent" xml:space="preserve">
+    <value>{0} já existe no arquivo CSV, portanto, não foi adicionado novamente.</value>
+  </data>
+  <data name="ArgCannotBeMappedToEnrollmentUserAppleIDNotFound" xml:space="preserve">
+    <value>{0} não pode ser mapeada para o usuário da inscrição porque esta Apple ID não foi encontrada no sistema</value>
+  </data>
+  <data name="ArgCannotBeMappedToEnrollmentUserKeyboardLayoutInValid" xml:space="preserve">
+    <value>{0} não pode ser mapeado para o usuário da inscrição porque este layout de teclado não é válido</value>
+  </data>
+  <data name="ArgCannotBeMappedToEnrollmentUserMissingAppleID" xml:space="preserve">
+    <value>{0} não pode ser mapeado para o usuário da inscrição porque esta Apple ID está faltando no arquivo CSV</value>
+  </data>
+  <data name="ArgCannotBeMappedToUserArgAsAlreadyMapped" xml:space="preserve">
+    <value>{fileProcessorDataContext.Person.ManagedAppleIdentifier} não pode ser mapeado para o usuário da inscrição {username} porque esse usuário da inscrição já está mapeado para outro membro</value>
+  </data>
+  <data name="ArgDefinedAboveGivenOG" xml:space="preserve">
+    <value>{0} é definido em um nível acima do grupo organizacional especificado</value>
+  </data>
+  <data name="ArgHasAlreadyMapped" xml:space="preserve">
+    <value>{0} já foi mapeado</value>
+  </data>
+  <data name="BackToLoginPage" xml:space="preserve">
+    <value>Voltar ao login</value>
+  </data>
+  <data name="BatchImportAdminUsersExplanation" xml:space="preserve">
+    <value>O recurso de importação de usuário administrador é usado para carregar em massa os usuários administradores no sistema. Os usuários administradores devem ser associados a um grupo organizacional.</value>
+  </data>
+  <data name="BatchImportCancelled" xml:space="preserve">
+    <value>Importação em massa cancelada.</value>
+  </data>
+  <data name="BatchImportDescription" xml:space="preserve">
+    <value>O recurso de importação em massa pode ser usado para carregar de uma só vez os usuários e seus dispositivos no sistema. Os modelos CSV podem ser encontrados abaixo. Se o modelo estiver sendo editado com o utilitário do Microsoft Excel, certifique-se de que o formato da coluna está definido como "Texto" para evitar perda de informações devido à conversão de formato e salvar como um arquivo CSV.</value>
+  </data>
+  <data name="BatchImportErrors" xml:space="preserve">
+    <value>Erros de importação em massa</value>
+  </data>
+  <data name="BatchImportSuccessful" xml:space="preserve">
+    <value>A importação em massa foi bem-sucedida.</value>
+  </data>
+  <data name="BatchImportUserGroupsExplanation" xml:space="preserve">
+    <value>Este recurso de importação em massa pode ser usado para carregar vários grupos de usuários no sistema.</value>
+  </data>
+  <data name="BatchImportUsersDevicesExplanation" xml:space="preserve">
+    <value>O recurso "Importar em lote" pode ser usado para carregar de uma só vez um arquivo com vários usuários e os seus dispositivos. Um modelo de tal arquivo para fazer este tipo de importação está disponível abaixo.</value>
+  </data>
+  <data name="BeAtleastArgCharactersLong" xml:space="preserve">
+    <value>ter no mínimo {0} caracteres</value>
+    <comment>{0} will be replaced by a number</comment>
+  </data>
+  <data name="CancelBatchImport" xml:space="preserve">
+    <value>Cancelar importação em massanlc</value>
+  </data>
+  <data name="CancelBatchImportWarning" xml:space="preserve">
+    <value>Essa ação cancelará o processo de importação em massa.</value>
+  </data>
+  <data name="CanNotDeleteUserGroupBecauseAssignedToSmartGroup" xml:space="preserve">
+    <value>Não é possível excluir o grupo de usuários devido à atribuição a este(s) Grupo(s) inteligente(s) – {0}</value>
+  </data>
+  <data name="CartPublish" xml:space="preserve">
+    <value>Publicar carrinho</value>
+  </data>
+  <data name="CertificateBasedApiAuthenticationWarningText" xml:space="preserve">
+    <value>Gerar e exportar o certificado do cliente para autenticação de API.</value>
+  </data>
+  <data name="CertificateProvisioning" xml:space="preserve">
+    <value>Provisionamento de certificados</value>
+  </data>
+  <data name="ChallengeClientCertificate" xml:space="preserve">
+    <value>Desafiar certificado de cliente</value>
+    <comment>Client certificate for authenticating the retrieval of a SCEP challenge</comment>
+  </data>
+  <data name="CheckGroup" xml:space="preserve">
+    <value>Verificar grupo</value>
+  </data>
+  <data name="ClickedResetPasswordNotifyAdmin" xml:space="preserve">
+    <value>Uma redefinição de senha foi iniciada por você ou outro administrador. Se isso estiver incorreto, entre em contato com o administrador para obter mais informações</value>
+  </data>
+  <data name="ClickHereToLogin" xml:space="preserve">
+    <value>fazer login</value>
+  </data>
+  <data name="ColumnsInSpreadsheetDoesNotMatchTemplate" xml:space="preserve">
+    <value>As colunas na planilha não correspondem ao modelo.</value>
+  </data>
+  <data name="CompleteWithErrors" xml:space="preserve">
+    <value>Concluído com erros</value>
+  </data>
+  <data name="CompliancePoliciesView" xml:space="preserve">
+    <value>Visualização de Políticas de conformidade</value>
+  </data>
+  <data name="CompliancePoliciesViewHelp" xml:space="preserve">
+    <value>Controla o acesso para visualizar as Políticas de conformidade. Navegue em Dispositivos\Políticas de conformidade\Visualização de Lista</value>
+  </data>
+  <data name="CompromiseDetectionForWindows10Device" xml:space="preserve">
+    <value>Compromete a detecção de dispositivo do Windows 10</value>
+  </data>
+  <data name="ContactAdministratorIfYouHaveDirectoryAccount" xml:space="preserve">
+    <value>Se você tiver uma conta de diretório, entre em contato com o administrador para redefinir sua senha.</value>
+    <comment>Used in conjuction with "PasswordResetIsNotAvailableForDirectoryAccounts" in telling a user that a directory account cannot use the WS1 password reset flow.</comment>
+  </data>
+  <data name="ContactAdministratorIfYouHaveExternalAccount" xml:space="preserve">
+    <value>Se você tiver uma conta de diretório, entre em contato com seu administrador para redefinir a senha. Se você tiver uma conta do VMware Cloud Services, poderá redefinir sua senha em https://cloud.vmware.com/br</value>
+    <comment>Message shown during touble loggingIn flow for an account</comment>
+  </data>
+  <data name="ContentRightsManagement" xml:space="preserve">
+    <value>Gestão de direitos de conteúdo</value>
+  </data>
+  <data name="CreateAdminAccountsFromCSPPortal" xml:space="preserve">
+    <value>Este tenant está ativado com o Workspace ONE Cloud Admin Hub. Os administradores criados no UEM só terão acesso ao UEM. Adicione o administrador nos Serviços na nuvem para ativar o acesso aos serviços do Workspace ONE. {0}</value>
+  </data>
+  <data name="Date&amp;Time" xml:space="preserve">
+    <value>Data e hora</value>
+  </data>
+  <data name="DecryptionFailedFieldName" xml:space="preserve">
+    <value>Field Name</value>
+  </data>
+  <data name="DeleteDepSharedMdmProfile" xml:space="preserve">
+    <value>Excluir perfil de Mdm compartilhado do Dep</value>
+  </data>
+  <data name="DeniedDevices" xml:space="preserve">
+    <value>Dispositivos bloqueados</value>
+  </data>
+  <data name="DeniedDevicesDescription" xml:space="preserve">
+    <value>Importar dispositivos bloqueados por IMEI, número de série ou UDID. Use esta opção para importar uma lista de dispositivos não compatíveis. Dispositivos bloqueados não poderão ser inscritos. Se um dispositivo bloqueado for inscrito, ele será automaticamente excluído quando a importação for processada. A plataforma, o OS e o modelo aqui especificados não serão considerados durante a inscrição.</value>
+  </data>
+  <data name="DeviceBasedVppAppUpdate" xml:space="preserve">
+    <value>Atualização de aplicativo Vpp com base no dispositivo</value>
+  </data>
+  <data name="DeviceBulkManagementDeviceViewGps" xml:space="preserve">
+    <value>Gerenciamento em massa de dispositivos - Localização da visualização de dispositivo</value>
+  </data>
+  <data name="DeviceBulkManagementDeviceViewGpsHelp" xml:space="preserve">
+    <value>Permite que o usuário visualize a localização do(s) dispositivo(s) em massa.</value>
+  </data>
+  <data name="Devicebulkmanagementrebootdevice" xml:space="preserve">
+    <value>Dispositivo de reinicialização em massa</value>
+  </data>
+  <data name="DeviceEditionNotAllowedAsUserArgNotManagedAtOG" xml:space="preserve">
+    <value>A edição do dispositivo não é permitida porque o usuário {0} não é gerenciado neste grupo organizacional</value>
+  </data>
+  <data name="DeviceLgCannotBeParentUserDefaultLg" xml:space="preserve">
+    <value>O grupo organizacional do dispositivo não pode ser o grupo organizacional padrão do usuário principal.</value>
+  </data>
+  <data name="DirectoryAccountsToBePushedBySCIMProvisioning" xml:space="preserve">
+    <value>As contas do Directory somente podem ser criadas pela interface de programação de aplicativos de provisionamento do SCIM</value>
+  </data>
+  <data name="DirectoryNameIsInvalid" xml:space="preserve">
+    <value>O nome do diretório é inválido. O nome do diretório não deve incluir espaços.</value>
+  </data>
+  <data name="DirectorySync" xml:space="preserve">
+    <value>Sincronização de diretório</value>
+  </data>
+  <data name="DisableDepConfiguration" xml:space="preserve">
+    <value>Desativar a configuração do Dep</value>
+  </data>
+  <data name="DisplayVideoImport" xml:space="preserve">
+    <value>Exibir importação de vídeo</value>
+  </data>
+  <data name="DisplayVideoView" xml:space="preserve">
+    <value>Exibir visualização de vídeo</value>
+  </data>
+  <data name="DomainMappingIsNotFoundForGivenDomain" xml:space="preserve">
+    <value>Nenhum redirecionamento de domínio associado ao domínio fornecido.</value>
+  </data>
+  <data name="DownloadAdvancedTemplateForUsersAndDevices" xml:space="preserve">
+    <value>Baixar modelo avançado para usuários e dispositivos</value>
+  </data>
+  <data name="DownloadSimpleTemplateForUsersAndDevices" xml:space="preserve">
+    <value>Baixar modelo simples para usuários e dispositivos</value>
+  </data>
+  <data name="DownloadTemplateForAllowedDevices" xml:space="preserve">
+    <value>Baixar modelo para dispositivos bloqueados</value>
+  </data>
+  <data name="DuplicateAdminUserFound" xml:space="preserve">
+    <value>Usuário administrador duplicado foi encontrado.</value>
+  </data>
+  <data name="DuplicateDirectoryUserGroupMessage" xml:space="preserve">
+    <value>O grupo de usuários do diretório com ID '{0}' já existe.</value>
+  </data>
+  <data name="DuplicateExcludedUserGroupInSmartGroup" xml:space="preserve">
+    <value>O mesmo grupo de usuários não pode ser adicionado a listas de exclusão e adição. Remova este grupo de usuários da lista de adição para excluí-lo.</value>
+  </data>
+  <data name="DuplicateUserGroupMessage" xml:space="preserve">
+    <value>O grupo de usuários com Nome amigável "{0}" já existe. Forneça um Nome amigável diferente.</value>
+  </data>
+  <data name="EARAppUpdateAvailableNotification" xml:space="preserve">
+    <value>Atualizações do repositório de aplicativos corporativos</value>
+  </data>
+  <data name="EditAdmin" xml:space="preserve">
+    <value>Editar administrador</value>
+  </data>
+  <data name="EditCustomReportsGettingStarted" xml:space="preserve">
+    <value>Como começar a usar o Intelligence</value>
+  </data>
+  <data name="EditCustomReportsGettingStartedHelp" xml:space="preserve">
+    <value>Oferece acesso completo ao Intelligence.</value>
+  </data>
+  <data name="EditDepSharedMdmProfile" xml:space="preserve">
+    <value>Editar perfil Mdm compartilhado do Dep</value>
+  </data>
+  <data name="EditTemporaryAdmin" xml:space="preserve">
+    <value>Editar administrador temporário</value>
+  </data>
+  <data name="EditTypeGrHelp" xml:space="preserve">
+    <value>Exibir e editar o tipo de grupo organizacional para grupos organizacionais.</value>
+  </data>
+  <data name="EditUserArgOpensDialog" xml:space="preserve">
+    <value>Editar o usuário {0} abre a caixa de diálogo</value>
+    <comment>The placeholder in this label key contains username.</comment>
+  </data>
+  <data name="EMAdvancedLogging" xml:space="preserve">
+    <value>EMAdvancedLogging</value>
+  </data>
+  <data name="EMAdvancedLoggingHelp" xml:space="preserve">
+    <value>Janela de log de evento avançado para dispositivos em uma implementação direta de MEM.</value>
+  </data>
+  <data name="EncounteredErrorLoadingAvailableLocationGroup" xml:space="preserve">
+    <value>Erro ao carregar os grupos organizacionais disponíveis.</value>
+  </data>
+  <data name="EnrollmentOgInvalidOrUnauthorized" xml:space="preserve">
+    <value>O grupo organizacional de inscrição é inválido ou não autorizado.</value>
+  </data>
+  <data name="EnrollmentRestrictNewUserForScimProvisioning" xml:space="preserve">
+    <value>Sua conta não foi aprovisionada no UEM e, portanto, não pode ser inscrita. Entre em contato com o administrador para obter assistência.</value>
+  </data>
+  <data name="EnrollmentUserTenancyNotification" xml:space="preserve">
+    <value>Não será permitida a criação de usuários e grupos de usuários para inscrição fora dos OGs do cliente no final de 2021.</value>
+  </data>
+  <data name="EnterSearchTerm" xml:space="preserve">
+    <value>Digite um termo de pesquisa</value>
+  </data>
+  <data name="ErrorOccuredBulkOperation" xml:space="preserve">
+    <value>Ocorreu um erro durante a operação em massa</value>
+  </data>
+  <data name="ErrorOccuredDuringMergeOfNewUserGroup" xml:space="preserve">
+    <value>Ocorreu um erro durante a mesclagem/sincronização do novo grupo de usuários. {0}</value>
+  </data>
+  <data name="ErrorOccuredForUserGroups" xml:space="preserve">
+    <value>Ocorreu um erro ao procurar grupos dos quais o usuário faz parte</value>
+  </data>
+  <data name="ErrorOccuredWhileMergingGroups" xml:space="preserve">
+    <value>Ocorreu um erro ao mesclar os grupos</value>
+  </data>
+  <data name="ErrorResolvingValidOgForUser" xml:space="preserve">
+    <value>Erro ao solucionar problemas de grupos de organizações válidos para o usuário</value>
+  </data>
+  <data name="ExcludedUserGroups" xml:space="preserve">
+    <value>Grupos de usuários excluídos</value>
+  </data>
+  <data name="ExcludedUserGroupsToolTip" xml:space="preserve">
+    <value>Esse critério fornece uma maneira de excluir dispositivos que pertencem aos usuários de um grupo de usuários específico da lista de dispositivos gerada pela aplicação dos demais critérios.</value>
+  </data>
+  <data name="ExpressSetupEdit" xml:space="preserve">
+    <value>Edição de configuração expressa</value>
+  </data>
+  <data name="ExpressSetupEditHelp" xml:space="preserve">
+    <value>Fornece aos administradores acesso de edição para configurar partes de integração do console no AirWatch Express.</value>
+  </data>
+  <data name="ExpressSetupRead" xml:space="preserve">
+    <value>Leitura de configuração expressa</value>
+  </data>
+  <data name="ExpressSetupReadHelp" xml:space="preserve">
+    <value>Fornece aos administradores acesso de leitura à configuração simplificada das partes de integração de console no AirWatch Express.</value>
+  </data>
+  <data name="ExternalIdArgDNArgMismatch" xml:space="preserve">
+    <value>O ID externo {0} não pertence ao nome distinto {1}.</value>
+  </data>
+  <data name="FailedToCheckDirectoryGroup" xml:space="preserve">
+    <value>Falha ao verificar o grupo do diretório</value>
+  </data>
+  <data name="FailedToSaveTheAdminGroup" xml:space="preserve">
+    <value>Não é possível salvar o grupo de administradores</value>
+  </data>
+  <data name="FailedToSendResetPasswordEmail" xml:space="preserve">
+    <value>Falha ao enviar o e-mail de redefinição de senha.</value>
+    <comment>When admin tries to trigger a reset password email for an admin.</comment>
+  </data>
+  <data name="FileInvalidErrorText" xml:space="preserve">
+    <value>O tipo de arquivo deve ser CSV.</value>
+  </data>
+  <data name="FileTypeHelperText" xml:space="preserve">
+    <value>Deve ser um arquivo CSV seguindo as especificações do modelo</value>
+  </data>
+  <data name="FirstNameFirstTwoLetters" xml:space="preserve">
+    <value>Nome (primeiras 2 letras)</value>
+  </data>
+  <data name="FirstNameInitial" xml:space="preserve">
+    <value>Inicial do nome</value>
+  </data>
+  <data name="FollowingUsersWillBeUnlocked" xml:space="preserve">
+    <value>Os seguintes usuários serão desbloqueados:</value>
+  </data>
+  <data name="ForgotUserName" xml:space="preserve">
+    <value>Esqueceu o nome de usuário</value>
+  </data>
+  <data name="GeneralFailure" xml:space="preserve">
+    <value>Falha ao enviar o e-mail de redefinição de senha. Verifique as configurações do servidor SMTP e tente novamente.</value>
+  </data>
+  <data name="GeofenceAreaEdit" xml:space="preserve">
+    <value>Editar área Geofence</value>
+  </data>
+  <data name="GivenDistinguishedNameNotFoundUserCannotAdd" xml:space="preserve">
+    <value>O nome distinto especificado não foi encontrado. Usuário não pode ser adicionado.</value>
+  </data>
+  <data name="GivenOgCustomerCodeInvalid" xml:space="preserve">
+    <value>O código do cliente do grupo organizacional fornecido é inválido.</value>
+  </data>
+  <data name="GivenSecurityTypeNotConfigured" xml:space="preserve">
+    <value>Não há suporte para o tipo de segurança configurado.</value>
+  </data>
+  <data name="GivenSecurityTypeNotSupported" xml:space="preserve">
+    <value>Não há suporte para o tipo de segurança fornecido.</value>
+  </data>
+  <data name="GroupNameRequired" xml:space="preserve">
+    <value>O nome do grupo é necessário</value>
+  </data>
+  <data name="HideTemplatesAndGuidelines" xml:space="preserve">
+    <value>Ocultar diretrizes e modelos</value>
+  </data>
+  <data name="IBeaconGroupEdit" xml:space="preserve">
+    <value>Editar grupo IBeacon</value>
+  </data>
+  <data name="IfExistsAnEmailWillBeSentToTheAddressOnFile" xml:space="preserve">
+    <value>Um e-mail com mais instruções foi enviado para o endereço de e-mail que temos arquivado.</value>
+    <comment>When a user requests a "forgot password" reset link via email, this is the message given regardless of whether the user name is valid or not.</comment>
+  </data>
+  <data name="IfTroubleClickingCopyAndPasteLink" xml:space="preserve">
+    <value>Se este link não funcionar, tente copiar e colar o link seguinte no seu navegador.</value>
+  </data>
+  <data name="IncorrectPasswordAnswerAttemptWarning" xml:space="preserve">
+    <value>Você tem mais 1 tentativa. Responda a todas as perguntas corretamente ou será bloqueado.</value>
+  </data>
+  <data name="IncorrectPasswordAnswerAttemptWarningPlural" xml:space="preserve">
+    <value>Você tem mais {0} tentativas. Responda todas as perguntas corretamente ou será bloqueado.</value>
+  </data>
+  <data name="InstallAppOnAll" xml:space="preserve">
+    <value>Instalar o aplicativo em tudo</value>
+  </data>
+  <data name="InstallMdmProfile" xml:space="preserve">
+    <value>Instalar o perfil de Mdm</value>
+  </data>
+  <data name="InstallOnFiltered" xml:space="preserve">
+    <value>Instalar em Filtrado</value>
+  </data>
+  <data name="InvalidDataEntered" xml:space="preserve">
+    <value>Dados inválidos</value>
+  </data>
+  <data name="InvalidDeviceGroupId" xml:space="preserve">
+    <value>O ID do grupo de dispositivos é inválido.</value>
+  </data>
+  <data name="InvalidGroupBaseDN" xml:space="preserve">
+    <value>O Grupo Base DN Padrão ou Fornecido - {0} não é válido</value>
+  </data>
+  <data name="InvalidSession" xml:space="preserve">
+    <value>Sessão inválida</value>
+  </data>
+  <data name="InvalidTemplate" xml:space="preserve">
+    <value>Modelo inválido. Baixe o modelo mais recente</value>
+  </data>
+  <data name="InvalidUserCredentialsPleaseTryAgain" xml:space="preserve">
+    <value>Credenciais inválidas. Tente novamente.</value>
+  </data>
+  <data name="IsRequiredArg" xml:space="preserve">
+    <value>O argumento é obrigatório.</value>
+  </data>
+  <data name="IssueCertificate" xml:space="preserve">
+    <value>Emitir certificado</value>
+  </data>
+  <data name="JITSettings" xml:space="preserve">
+    <value>Configurações do JIT</value>
+    <comment>Resource for JIT Settings</comment>
+  </data>
+  <data name="JITSettingsHelp" xml:space="preserve">
+    <value>Controla o acesso para OBTER e ATUALIZAR os endpoints para o JIT.</value>
+  </data>
+  <data name="LastNameFirstTwoLetters" xml:space="preserve">
+    <value>Sobrenome (primeiras 2 letras)</value>
+  </data>
+  <data name="LastNameInitial" xml:space="preserve">
+    <value>Inicial do sobrenome</value>
+  </data>
+  <data name="LdapNotDefinedUserCannotAdd" xml:space="preserve">
+    <value>O LDAP não foi definido para o grupo organizacional fornecido. Não foi possível adicionar um usuário administrador.</value>
+  </data>
+  <data name="LocalSync" xml:space="preserve">
+    <value>Sincronização local</value>
+  </data>
+  <data name="LoginAsDifferentUser" xml:space="preserve">
+    <value>Fazer login como outro usuário</value>
+  </data>
+  <data name="LoginPasswordIsRequired" xml:space="preserve">
+    <value>É necessário inserir senha</value>
+  </data>
+  <data name="MailboxBusy" xml:space="preserve">
+    <value>A ação de e-mail solicitada não pôde ser concluída. Erro de protocolo SMTP: caixa de correio não disponível. Tente novamente.</value>
+  </data>
+  <data name="MailboxUnavailable" xml:space="preserve">
+    <value>Falha ao enviar o e-mail de redefinição de senha. Erro de protocolo SMTP: caixa de correio não disponível.</value>
+  </data>
+  <data name="MEMRotateGSuitePassword" xml:space="preserve">
+    <value>Alternar senha do G Suite</value>
+  </data>
+  <data name="MEMRotateGSuitePasswordConfirmation" xml:space="preserve">
+    <value>Confirmação de rotação de senha do G Suite</value>
+  </data>
+  <data name="MEMRotateGSuitePasswordFailed" xml:space="preserve">
+    <value>Falha na alternância de senha do G Suite</value>
+  </data>
+  <data name="MEMRotateGSuitePasswordInfoMessage" xml:space="preserve">
+    <value>Essa ação redefinirá a senha do usuário e atualizará todos os perfis de e-mail associados nos dispositivos do usuário. Esta ação não pode ser desfeita.</value>
+  </data>
+  <data name="MergeFailedRetry" xml:space="preserve">
+    <value>Falha na mesclagem - Tentar novamente</value>
+  </data>
+  <data name="MessageTemplateCouldNotBeRetrieved" xml:space="preserve">
+    <value>Não foi possível recuperar o modelo da mensagem.</value>
+  </data>
+  <data name="MigrateWarning" xml:space="preserve">
+    <value>A ação de migração transfere configurações do dispositivo e do usuário de contas de usuário de proxy básico e de autenticação para a conta de usuário de diretório selecionada. As contas de usuário de proxy básico e de autenticação serão excluídas após a conclusão da migração e não poderão mais ser utilizadas para inscrever dispositivos.
+
+Deseja continuar?</value>
+  </data>
+  <data name="NetworkRanges" xml:space="preserve">
+    <value>Intervalos de rede</value>
+  </data>
+  <data name="NoCommonCustomUserGroupsForSelectedUsers" xml:space="preserve">
+    <value>Não há nenhum grupo de usuários personalizados comuns para os usuários selecionados.</value>
+  </data>
+  <data name="NoPasswordQuestionContactAdminMessage" xml:space="preserve">
+    <value>Você não especificou uma pergunta de recuperação de senha, portanto, não é possível redefinir sua senha. Entre em contato com um administrador.</value>
+  </data>
+  <data name="NotifyDevicesEnrolledHubApp" xml:space="preserve">
+    <value>Notificar dispositivos inscritos no aplicativo do Hub</value>
+  </data>
+  <data name="NumberOfChangesShouldBePositive" xml:space="preserve">
+    <value>O número de alterações deve ser um número inteiro positivo</value>
+  </data>
+  <data name="NumberOfObjects" xml:space="preserve">
+    <value>{0} objetos</value>
+  </data>
+  <data name="OfflineCompliancePolicy" xml:space="preserve">
+    <value>Política de conformidade off-line</value>
+  </data>
+  <data name="OGGroupIdNotInCurrentHierarchy" xml:space="preserve">
+    <value>Falha na importação. O grupo organizacional (ID: {0}) não está na hierarquia atual.</value>
+  </data>
+  <data name="OGNotInCurrentHierarchy" xml:space="preserve">
+    <value>Falha na importação. O grupo organizacional não está na hierarquia atual.</value>
+  </data>
+  <data name="OneAttemptRemaining" xml:space="preserve">
+    <value>1 tentativa restante.</value>
+  </data>
+  <data name="P2PPublish" xml:space="preserve">
+    <value>Publicar P2P</value>
+  </data>
+  <data name="PasswordNotificationPeriodDays" xml:space="preserve">
+    <value>Período de notificação de senha (dias)</value>
+  </data>
+  <data name="PasswordResetIsNotAvailableForDirectoryAccounts" xml:space="preserve">
+    <value>A redefinição de senha não está disponível para contas de diretório.</value>
+  </data>
+  <data name="PasswordResetIsNotAvailableForExternalAccounts" xml:space="preserve">
+    <value>A redefinição de senha está indisponível para contas de diretório ou do VMware Cloud Services</value>
+    <comment>Message shown during trouble loggingIn flow for an account</comment>
+  </data>
+  <data name="PasswordShouldBeAtleastArgCharactersLong" xml:space="preserve">
+    <value>A senha deve ter pelo menos {0} caracteres</value>
+    <comment>{0} will be relaced by a number</comment>
+  </data>
+  <data name="PermissionColumnIsEmply" xml:space="preserve">
+    <value>A coluna de permissão está vazia. Adicionando a permissão padrão para o grupo de usuários</value>
+  </data>
+  <data name="PermissonArgDoesnotConformWithTemplate" xml:space="preserve">
+    <value>A permissão {0} não está de acordo com o modelo; deste modo, foi ignorada</value>
+  </data>
+  <data name="PleaseCheckDirectoryUsername" xml:space="preserve">
+    <value>Verifique o nome de usuário do diretório</value>
+  </data>
+  <data name="ProvisioningPackagePublish" xml:space="preserve">
+    <value>Publicar pacote de provisionamento</value>
+  </data>
+  <data name="PublishAndroidWorkPublicApp" xml:space="preserve">
+    <value>Publicar aplicativo público de trabalho Android</value>
+  </data>
+  <data name="PublishAreaProfile" xml:space="preserve">
+    <value>Publicar perfil de área</value>
+  </data>
+  <data name="PublishBrowserSettings" xml:space="preserve">
+    <value>Publicar definições do navegador</value>
+  </data>
+  <data name="RemoteViewDD" xml:space="preserve">
+    <value>Visualização remota - detalhes do dispositivo</value>
+  </data>
+  <data name="RemoteViewDDHelp" xml:space="preserve">
+    <value>Habilitar a capacidade de captura remota de tela da tela do dispositivo.</value>
+  </data>
+  <data name="RemoveDepRegisteredDevices" xml:space="preserve">
+    <value>Remover dispositivos registrados do Dep</value>
+  </data>
+  <data name="RemoveSelectedUsersFromUserGroup" xml:space="preserve">
+    <value>Remover usuários selecionados do grupo de usuários</value>
+  </data>
+  <data name="ReportAppleMDM" xml:space="preserve">
+    <value>Relatório Apple MDM </value>
+  </data>
+  <data name="ReportAppleMDMHelp" xml:space="preserve">
+    <value>Controla o acesso para visualizar o relatório Apple MDM.</value>
+  </data>
+  <data name="ReportProductCompliance" xml:space="preserve">
+    <value>Relatório de Conformidade do Produto</value>
+  </data>
+  <data name="ReportProductComplianceHelp" xml:space="preserve">
+    <value>Controla o acesso a visualização do relatório de conformidade do produto.</value>
+  </data>
+  <data name="ReportProductDeploymentSummary" xml:space="preserve">
+    <value>Relatório do resumo de implementação do produto</value>
+  </data>
+  <data name="ReportProductDeploymentSummaryHelp" xml:space="preserve">
+    <value>Controla o acesso à exibição do relatório Resumo de implantação do produto.</value>
+  </data>
+  <data name="ReportProvisioningProductAssigned" xml:space="preserve">
+    <value>Detalhe de provisionamento atribuído atualmente - produtos (Novo)</value>
+  </data>
+  <data name="ResetPassword" xml:space="preserve">
+    <value>Redefinir senha</value>
+    <comment>To be used to trigger reset password for core user.</comment>
+  </data>
+  <data name="ResetYourPassword" xml:space="preserve">
+    <value>redefinir sua senha</value>
+  </data>
+  <data name="ResetYourPasswordNow" xml:space="preserve">
+    <value>Redefinir sua senha agora</value>
+  </data>
+  <data name="RestApiCustomAttriutesDelete" xml:space="preserve">
+    <value>Apagar atributos personalizados da API REST</value>
+  </data>
+  <data name="RestApiCustomAttriutesDeleteHelp" xml:space="preserve">
+    <value>Habilita o acesso à remoção de todas as APIs na coleção de atributos personalizados</value>
+  </data>
+  <data name="RestApiEnterpriseIntegrationRead" xml:space="preserve">
+    <value>APIs REST para leitura de integração empresarial</value>
+  </data>
+  <data name="RestApiEnterpriseIntegrationReadHelp" xml:space="preserve">
+    <value>Habilita o acesso a todas as APIs como somente para leitura na integração empresarial </value>
+  </data>
+  <data name="Restapimamapps" xml:space="preserve">
+    <value>Aplicativos API Rest MAM</value>
+  </data>
+  <data name="RestapimamappsHelp" xml:space="preserve">
+    <value>Acesso a aplicativos gerenciados</value>
+  </data>
+  <data name="Restapimamblob" xml:space="preserve">
+    <value>Blob REST API MAM</value>
+  </data>
+  <data name="RestapimamblobHelp" xml:space="preserve">
+    <value>Carregar/fazer o download de conteúdo</value>
+  </data>
+  <data name="Restapimdmdevices" xml:space="preserve">
+    <value>Dispositivos API REST MDM</value>
+  </data>
+  <data name="RestapimdmdevicesHelp" xml:space="preserve">
+    <value>Enviar comandos de bloqueio/desbloqueio</value>
+  </data>
+  <data name="Restapimdmprofiles" xml:space="preserve">
+    <value>Perfis API REST MDM</value>
+  </data>
+  <data name="RestapimdmprofilesHelp" xml:space="preserve">
+    <value>Enviar comandos de bloqueio/desbloqueio</value>
+  </data>
+  <data name="Restapimdmsmartgroups" xml:space="preserve">
+    <value>Grupos inteligentes API REST MDM</value>
+  </data>
+  <data name="RestapimdmsmartgroupsHelp" xml:space="preserve">
+    <value>Acesso à informação do grupo inteligente</value>
+  </data>
+  <data name="Restapimdmusergroups" xml:space="preserve">
+    <value>Grupos de usuários API REST MDM</value>
+  </data>
+  <data name="RestapimdmusergroupsHelp" xml:space="preserve">
+    <value>Acesso aos grupos de usuários</value>
+  </data>
+  <data name="Restapisystemadmin" xml:space="preserve">
+    <value>Administração de sistemas API REST</value>
+  </data>
+  <data name="RestapisystemadminHelp" xml:space="preserve">
+    <value>Acesso à informação administrativa</value>
+  </data>
+  <data name="Restapisystemgroups" xml:space="preserve">
+    <value>Grupos de sistemas API REST</value>
+  </data>
+  <data name="RestapisystemgroupsHelp" xml:space="preserve">
+    <value>Acesso à informação do grupo organizacional</value>
+  </data>
+  <data name="Restapisystemusers" xml:space="preserve">
+    <value>Usuários do sistema API REST</value>
+  </data>
+  <data name="RestapisystemusersHelp" xml:space="preserve">
+    <value>Acesso à informação do usuário</value>
+  </data>
+  <data name="RevokeAzureADUserTokensOnDeviceWipe" xml:space="preserve">
+    <value>Revogar automaticamente tokens de usuário ao limpar dispositivos</value>
+  </data>
+  <data name="RevokeAzureADUserTokensToolTip" xml:space="preserve">
+    <value>Permite que o UEM do Workspace ONE revogue os tokens do usuário do Microsoft Azure AD quando um dispositivo ou uma limpeza empresarial for executada. Nota: desativar este recurso não é recomendado, pois reduzirá a postura de segurança de sua configuração. Se um dispositivo apagado for perdido, ele ainda poderá conter um token de autenticação AAD válido</value>
+  </data>
+  <data name="RoleId" xml:space="preserve">
+    <value>Id de função</value>
+  </data>
+  <data name="Roles" xml:space="preserve">
+    <value>Funções</value>
+  </data>
+  <data name="SaveDepRegisteredDevices" xml:space="preserve">
+    <value>Salvar dispositivos registrados do Dep</value>
+  </data>
+  <data name="Scheduler" xml:space="preserve">
+    <value>Agendador</value>
+  </data>
+  <data name="SchedulerApple" xml:space="preserve">
+    <value>Agendador</value>
+  </data>
+  <data name="SchedulerAppleHelp" xml:space="preserve">
+    <value>Controla o acesso à página do Programador de MDM</value>
+  </data>
+  <data name="SchedulerHelp" xml:space="preserve">
+    <value>Controla o acesso à página do Programador de configurações</value>
+  </data>
+  <data name="ScimEnabledOGCannotBatchImportDirectoryTypes" xml:space="preserve">
+    <value>Esse grupo organizacional usa o SCIM para provisionar usuários, administradores e grupos. Os usuários e grupos do diretório não podem ser importados em massa.</value>
+  </data>
+  <data name="SecurityTypeIsRequired" xml:space="preserve">
+    <value>O tipo de segurança é obrigatório.</value>
+  </data>
+  <data name="SelectedUsersDoNotExistOrHaveAlreadyBeenDeleted" xml:space="preserve">
+    <value>Os usuários selecionados não existem, pois podem já ter sido excluídos. Feche esta mensagem pop-up e atualize a lista de usuários.</value>
+  </data>
+  <data name="SelectFileLabel" xml:space="preserve">
+    <value>Selecionar arquivo</value>
+  </data>
+  <data name="SelectMemConfigLabel" xml:space="preserve">
+    <value>Configuração MEM</value>
+  </data>
+  <data name="SendApplicationConfigurationRequest" xml:space="preserve">
+    <value>Enviar solicitação de configuração do aplicativo</value>
+  </data>
+  <data name="SendFeedback" xml:space="preserve">
+    <value>Enviar comentários</value>
+  </data>
+  <data name="SendsEmail" xml:space="preserve">
+    <value>Enviar e-mail</value>
+  </data>
+  <data name="ServerError" xml:space="preserve">
+    <value>Erro do servidor</value>
+  </data>
+  <data name="SettingsEnrollmentCustomization" xml:space="preserve">
+    <value>Personalização das configurações de inscrição</value>
+  </data>
+  <data name="SettingsEnrollmentCustomizationHelp" xml:space="preserve">
+    <value>Permissão para acessar e modificar a guia de personalização (Dispositivos\Configurações do dispositivo\Dispositivos e usuários\Geral\Inscrição)</value>
+  </data>
+  <data name="SettingsEnrollmentOptionalPrompt" xml:space="preserve">
+    <value>Prompt opcional das configurações de inscrição</value>
+  </data>
+  <data name="SettingsEnrollmentOptionalPromptHelp" xml:space="preserve">
+    <value>Permissão para acessar e modificar a guia Prompt opcional (Dispositivos\Configurações do dispositivo\Dispositivos e usuários\Geral\Inscrição)</value>
+  </data>
+  <data name="SettingsHeaderBasedAuthentication" xml:space="preserve">
+    <value>Settings Header Based Authentication</value>
+  </data>
+  <data name="SettingsMDMSampleSchedule" xml:space="preserve">
+    <value>Configurações do agendamento de amostra de MDM</value>
+  </data>
+  <data name="SettingsMDMSampleScheduleHelp" xml:space="preserve">
+    <value>Fornece acesso à página Agenda de amostra de MDM</value>
+  </data>
+  <data name="SettingsScheduler" xml:space="preserve">
+    <value>Agendador das configurações</value>
+  </data>
+  <data name="SettingsSchedulerHelp" xml:space="preserve">
+    <value>Fornece acesso à pagina do Agendador</value>
+  </data>
+  <data name="ShareYourFeedback" xml:space="preserve">
+    <value>Compartilhe seu feedback</value>
+  </data>
+  <data name="ShowBatchTypeTemplates" xml:space="preserve">
+    <value>Mostrar modelos do tipo de lote</value>
+  </data>
+  <data name="SingleAppModeProfileRemove" xml:space="preserve">
+    <value>Remover perfil de modo único do aplicativo</value>
+  </data>
+  <data name="SyncDirectoryGroup" xml:space="preserve">
+    <value>Sincronizar grupo de diretórios</value>
+  </data>
+  <data name="TargetLgCannotParentUserLg" xml:space="preserve">
+    <value>O grupo organizacional de destino não pode ser principal do grupo organizacional do usuário.</value>
+  </data>
+  <data name="ThresholdAdminActionRequest" xml:space="preserve">
+    <value>Solicitação de ação do administrador de limite</value>
+  </data>
+  <data name="TimedOut" xml:space="preserve">
+    <value>Tempo limite atingido</value>
+  </data>
+  <data name="TokenNotCreatedDeviceIdentifiersSpecifiersNotProvided" xml:space="preserve">
+    <value>Token não criado! As informações do dispositivo não foram encontradas.</value>
+  </data>
+  <data name="TransactionFailed" xml:space="preserve">
+    <value>Falha ao enviar o e-mail de redefinição de senha. Verifique o endereço de e-mail do destinatário e tente novamente.</value>
+  </data>
+  <data name="TroubleLoggingIn" xml:space="preserve">
+    <value>Problema no login</value>
+  </data>
+  <data name="TwoFactorAuthenticationMethodNotValidOrNotAllowed" xml:space="preserve">
+    <value>O método de autenticação de dois fatores não é válido ou não é permitido.</value>
+  </data>
+  <data name="TwoMoreLgCannotSameCustomerCode" xml:space="preserve">
+    <value>Dois ou mais grupos organizacionais não podem ter o mesmo código de cliente.</value>
+  </data>
+  <data name="UnableToFindCertificate" xml:space="preserve">
+    <value>Não foi possível localizar o certificado.</value>
+  </data>
+  <data name="UninstallAppFromAll" xml:space="preserve">
+    <value>Desinstalar aplicativo em todos</value>
+  </data>
+  <data name="UniqueIdentifierArgNotProvidedForNewAdmin" xml:space="preserve">
+    <value>Identificador único "{0}" não fornecido para novo Administrador.</value>
+  </data>
+  <data name="UniqueIdentifierArgNotProvidedForNewUser" xml:space="preserve">
+    <value>Identificador único "{0}" não fornecido para novo usuário</value>
+  </data>
+  <data name="UpdatePublish" xml:space="preserve">
+    <value>Publicar atualização</value>
+  </data>
+  <data name="UserAccountUnlocked" xml:space="preserve">
+    <value>A conta do usuário está desbloqueada</value>
+  </data>
+  <data name="UserAndroidWorkAppsSync" xml:space="preserve">
+    <value>Sincronização de aplicativos de trabalho Android do usuário</value>
+  </data>
+  <data name="UserArgCannotBeEditedUserResidesAtBelowImportingOG" xml:space="preserve">
+    <value>O usuário {0} não pode ser editado/gerenciado, pois o usuário fica fora ou abaixo da importação do grupo organizacional</value>
+  </data>
+  <data name="UserArgCannotBeMoved" xml:space="preserve">
+    <value>O usuário {0} não pode ser movido devido ao OG principal de um ou mais dispositivos estar(em) acima do grupo organizacional de destino</value>
+  </data>
+  <data name="UserArgEditNotAllowedForFollowingSecurityType" xml:space="preserve">
+    <value>A edição do usuário {0} não é permitida para o seguinte tipo de segurança</value>
+  </data>
+  <data name="UserArgEditNotAllowedNoPermission" xml:space="preserve">
+    <value>A edição do usuário {0} não é permitida porque o usuário não está autorizado neste OG</value>
+  </data>
+  <data name="UserArgNotCreatedAsNotFoundInAD" xml:space="preserve">
+    <value>O usuário {0} não foi criado porque não foi encontrado no AD</value>
+  </data>
+  <data name="UserArgWasNotFoundatLG" xml:space="preserve">
+    <value>O usuário {0} não foi encontrado no grupo de localização específico ou não é um usuário básico</value>
+  </data>
+  <data name="UserCannotAssignedToParentLg" xml:space="preserve">
+    <value>O usuário não pode ser atribuído a um grupo organizacional principal.</value>
+  </data>
+  <data name="UserDataCorruptedErrorMessage" xml:space="preserve">
+    <value>Houve um problema ao descriptografar as informações do usuário. Visualize os logs de evento para descobrir quais campos e usuários foram impactados. Resolva o problema selecionando editar e inserindo novamente as informações corretas para cada usuário afetado.</value>
+    <comment>Error message shown during the User List View in case Decryption fails for some of the Personal info of any Users.</comment>
+  </data>
+  <data name="UserDecryptionFailed" xml:space="preserve">
+    <value>Falha ao descriptografar dados do usuário</value>
+  </data>
+  <data name="UserGroupsNotPermittedAtGivenOG" xml:space="preserve">
+    <value>Os grupos de usuários não têm permissão para serem adicionados ao grupo organizacional específico</value>
+  </data>
+  <data name="UserInformationPrivacySettingWarning" xml:space="preserve">
+    <value>As configurações de Privacidade de Informações do usuário não se aplicam ao utilitário de conexão de teste na página de configurações de Serviços de diretório em Sistema &gt; Integração empresarial.</value>
+  </data>
+  <data name="UserLockedOut" xml:space="preserve">
+    <value>A conta do usuário está bloqueada</value>
+  </data>
+  <data name="UsernameAndPassword" xml:space="preserve">
+    <value>Nome de usuário e senha</value>
+  </data>
+  <data name="UserNoAccessForOGArg" xml:space="preserve">
+    <value>O usuário não tem permissões de acesso para o grupo organizacional {0}</value>
+  </data>
+  <data name="UserNotFoundAd" xml:space="preserve">
+    <value>O usuário não foi encontrado nos serviços de diretório. O usuário não pode ser adicionado.</value>
+  </data>
+  <data name="UserQuestionsNotAuthenticated" xml:space="preserve">
+    <value>Sua senha não poderá ser redefinida até que sua pergunta de segurança seja respondida corretamente. Consulte o e-mail de recuperação de senha que você recebeu para obter instruções de como proceder.</value>
+    <comment>Only appears if someone tries to directly hit the "reset password" page without first answering their security questions.</comment>
+  </data>
+  <data name="UserRoleNotValid" xml:space="preserve">
+    <value>A função do usuário não é válida.</value>
+  </data>
+  <data name="UsersSettings" xml:space="preserve">
+    <value>Configurações dos usuários</value>
+  </data>
+  <data name="UserTypeRequiredFieldValueDirectoryBasicArg" xml:space="preserve">
+    <value>O valor do campo de tipo de usuário deve ser {0} ou {1}.</value>
+  </data>
+  <data name="VideoImport" xml:space="preserve">
+    <value>Importação de vídeo</value>
+  </data>
+  <data name="ViewCustomReportsGettingStarted" xml:space="preserve">
+    <value>Como começar a usar o Intelligence</value>
+  </data>
+  <data name="ViewCustomReportsGettingStartedHelp" xml:space="preserve">
+    <value>Oferece acesso somente leitura ao Como começar a usar o Intelligence.</value>
+  </data>
+  <data name="ViewEducationOverview" xml:space="preserve">
+    <value>Exibir a visão geral de educação</value>
+  </data>
+  <data name="ViewManagedAdminPasswordHelp" xml:space="preserve">
+    <value>Controla o acesso à exibição de senhas de administrador gerenciado</value>
+  </data>
+  <data name="ViewUserGroup.Plural" xml:space="preserve">
+    <value>Visualizar grupos de usuários</value>
+  </data>
+  <data name="WebAppEntitlements" xml:space="preserve">
+    <value>Direitos de aplicativo da Web</value>
+  </data>
+  <data name="Websitefilterssettings" xml:space="preserve">
+    <value>Configurações de filtros de site</value>
+  </data>
+  <data name="WindowsBspTenantIdDelete" xml:space="preserve">
+    <value>Excluir TenantId de Bsp do Windows</value>
+  </data>
+  <data name="WorkspaceOneCloudAccessDeniesErrorMessage" xml:space="preserve">
+    <value>Você deve ter uma conta VMware Cloud Services para acessar o Workspace ONE. Entre em contato com o administrador para obter assistência. {0}</value>
+  </data>
+</root>

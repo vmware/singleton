@@ -1,0 +1,486 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AddedPolices" xml:space="preserve">
+    <value>Добавленные политики</value>
+  </data>
+  <data name="AssignBaseline" xml:space="preserve">
+    <value>Назначить базовые показатели</value>
+  </data>
+  <data name="AssignBaselineDescription" xml:space="preserve">
+    <value>Выберите смарт-группы, чтобы назначить базовые показатели.</value>
+  </data>
+  <data name="AssignBaselineDescription2" xml:space="preserve">
+    <value>Выберите смарт-группы, чтобы назначить базовые показатели. Выберите "Исключения", чтобы исключить конкретные группы. При добавлении исключения к опубликованным базовым показателям, базовые показатели будут удалены из исключенных устройств.</value>
+  </data>
+  <data name="AssignBaselineLocationGroupNotFound" xml:space="preserve">
+    <value>Невозможно назначить базовый показатель, т.к. невозможно найти организационную группу.</value>
+  </data>
+  <data name="AssignBaselineNotFound" xml:space="preserve">
+    <value>Невозможно назначить базовый показатель, т.к. невозможно найти базовый показатель.</value>
+  </data>
+  <data name="AssignedDevicesArg" xml:space="preserve">
+    <value>Назначено: {0} устр.</value>
+  </data>
+  <data name="Assignments" xml:space="preserve">
+    <value>Назначения</value>
+  </data>
+  <data name="Baseline" xml:space="preserve">
+    <value>Базовые показатели</value>
+  </data>
+  <data name="BaselineAssigned" xml:space="preserve">
+    <value>Назначены базовые показатели</value>
+  </data>
+  <data name="BaselineAssignmentFailed" xml:space="preserve">
+    <value>Невозможно назначить базовый показатель. Повторите попытку.</value>
+  </data>
+  <data name="BaselineAssignmentSuccessful" xml:space="preserve">
+    <value>Базовые показатели успешно опубликованы в обновленном назначении.</value>
+  </data>
+  <data name="BaselineBlobFailed" xml:space="preserve">
+    <value>Не удалось создать базовые показатели, так как не удалось создать пакет.</value>
+  </data>
+  <data name="BaselineCombinedBlobFailed" xml:space="preserve">
+    <value>Не удалось создать базовые показатели, так как не удалось создать пакет, содержащий настройки.</value>
+  </data>
+  <data name="BaselineContainsExe" xml:space="preserve">
+    <value>Ваши настраиваемые базовые показатели содержат исполняемые файлы. Удалите их и повторите попытку.</value>
+  </data>
+  <data name="BaselineCopyFailed" xml:space="preserve">
+    <value>Не удалось скопировать выбранные базовые показатели.</value>
+  </data>
+  <data name="BaselineCopySuccessful" xml:space="preserve">
+    <value>Выбранные базовые показатели скопированы.</value>
+  </data>
+  <data name="BaselineCreated" xml:space="preserve">
+    <value>Создан базовый показатель</value>
+  </data>
+  <data name="BaselineCreationFailed" xml:space="preserve">
+    <value>Не удалось создать базовые показатели.</value>
+  </data>
+  <data name="BaselineCreationSuccessful" xml:space="preserve">
+    <value>Базовый показатель сохранен.</value>
+  </data>
+  <data name="BaselineCustomizationFailed" xml:space="preserve">
+    <value>Не удалось создать базовые показатели, так как не удалось применить настройки.</value>
+  </data>
+  <data name="BaselineDeleted" xml:space="preserve">
+    <value>Удален базовый показатель</value>
+  </data>
+  <data name="BaselineDeleteFailed" xml:space="preserve">
+    <value>Не удалось удалить базовые показатели. Повторите попытку.</value>
+  </data>
+  <data name="BaselineDeleteSuccessful" xml:space="preserve">
+    <value>Базовые показатели успешно удалены.</value>
+  </data>
+  <data name="BaselineDetails" xml:space="preserve">
+    <value>Имя и версия базовых показателей</value>
+  </data>
+  <data name="BaselineErrorCode" xml:space="preserve">
+    <value>Код ошибки устройства</value>
+  </data>
+  <data name="BaselineErrorMessage" xml:space="preserve">
+    <value>Сообщение об ошибке</value>
+  </data>
+  <data name="BaselineFileCorrupt" xml:space="preserve">
+    <value>Файл для настраиваемых базовых показателей не является действительным zip-файлом.</value>
+  </data>
+  <data name="BaselineFileEmpty" xml:space="preserve">
+    <value>Файл для настраиваемых базовых показателей пуст. Выберите действительный файл и повторите попытку.</value>
+  </data>
+  <data name="BaselineFileMissingPolicies" xml:space="preserve">
+    <value>Файл, выбранный для настраиваемых базовых показателей, не соответствует рекомендуемым спецификациям. См. документацию для получения необходимой информации.</value>
+  </data>
+  <data name="BaselineFileSizeError" xml:space="preserve">
+    <value>Файл для настраиваемых базовых показателей превышает максимальный размер 5 МБ.</value>
+  </data>
+  <data name="BaselineGetPolicyTreeFailed" xml:space="preserve">
+    <value>Не удалось загрузить политики для настройки. Повторите попытку позже.</value>
+  </data>
+  <data name="BaselineInvalidRequest" xml:space="preserve">
+    <value>Убедитесь, что все обязательные поля заполнены.</value>
+  </data>
+  <data name="BaselineMissingPolicies" xml:space="preserve">
+    <value>Не удалось создать базовые показатели, так как одна или несколько политик недоступны или были удалены</value>
+  </data>
+  <data name="BaselineModified" xml:space="preserve">
+    <value>Изменен базовый показатель</value>
+  </data>
+  <data name="BaselineName" xml:space="preserve">
+    <value>Имя базовых показателей</value>
+  </data>
+  <data name="BaselinePendingReboot" xml:space="preserve">
+    <value>Ожидается перезагрузка</value>
+  </data>
+  <data name="BaselinePolicyFieldError" xml:space="preserve">
+    <value>Не удалось создать базовые показатели, так как одна или несколько политик имеют недопустимые значения</value>
+  </data>
+  <data name="BaselinePolicyGenerationFailed" xml:space="preserve">
+    <value>Не удалось создать базовые показатели, так как не удалось создать одну или несколько политик</value>
+  </data>
+  <data name="Baselines" xml:space="preserve">
+    <value>Базовые показатели</value>
+  </data>
+  <data name="BaselinesBlobID" xml:space="preserve">
+    <value>Идентификатор Blob базовых показателей</value>
+  </data>
+  <data name="BaselinesCount" xml:space="preserve">
+    <value>Количество базовых показателей</value>
+  </data>
+  <data name="BaselineServiceUnavailable" xml:space="preserve">
+    <value>Не удается подключиться к службе базовых показателей "https://www.vmwarebaselines.com". Проверьте подключение и просмотрите записи в журналах для получения дополнительных сведений.</value>
+  </data>
+  <data name="BaselinesMenuDescription" xml:space="preserve">
+    <value>Просмотр базовых показателей</value>
+  </data>
+  <data name="BaselineStatusCallFailed" xml:space="preserve">
+    <value>Не удалось получить статус базовых показателей. Повторите попытку позже</value>
+  </data>
+  <data name="BaselineTooltipCis" xml:space="preserve">
+    <value>Используйте рекомендованные настройки теста производительности CIS для выбранной версии и уровня.</value>
+  </data>
+  <data name="BaselineTooltipCustom" xml:space="preserve">
+    <value>Отправьте резервную копию настраиваемого объекта групповой политики (GPO) для установки на устройства. Резервная копия GPO должна быть ZIP-файлом размером менее 5 МБ.</value>
+  </data>
+  <data name="BaselineTooltipWindows" xml:space="preserve">
+    <value>Компоненты SBC (Security Baseline Components) набора Microsoft Security Toolkit разработаны корпорацией Microsoft и могут быть использованы только для управления устройствами Windows 10. Компоненты SBC предоставляются "как есть" и без каких либо гарантий от VMware или Microsoft. Дополнительные сведения о компонентах SBC можно найти в {0}.</value>
+  </data>
+  <data name="BaselineUUID" xml:space="preserve">
+    <value>UUID базовых показателей</value>
+  </data>
+  <data name="BlankBaseline" xml:space="preserve">
+    <value>Создать собственные</value>
+  </data>
+  <data name="BlankBaselineDescription" xml:space="preserve">
+    <value>Создайте собственные базовые показатели, выбрав их в нашем каталоге политик.</value>
+  </data>
+  <data name="ChooseTemplate" xml:space="preserve">
+    <value>Выбрать базовые показатели</value>
+  </data>
+  <data name="ComplianceDataMissing" xml:space="preserve">
+    <value>Данные о соответствии нормативным требованиям еще не доступны для этих базовых показателей. Еще раз опубликуйте эти базовые показатели на назначенных устройствах, чтобы создать образец отчета о соответствии.</value>
+  </data>
+  <data name="ConfirmCancelBaseline" xml:space="preserve">
+    <value>Изменения в этих базовых показателях не сохранены. Отменить изменения?</value>
+  </data>
+  <data name="ConfirmCloudDescription" xml:space="preserve">
+    <value>Использование базовых показателей Workspace ONE позволяет получить доступ к данным, удаленно хранящимся в VMware. Нажмите кнопку "Отмена", если вы не хотите продолжать.</value>
+  </data>
+  <data name="ConfirmCloudTitle" xml:space="preserve">
+    <value>Удаленный доступ к данным</value>
+  </data>
+  <data name="ConfirmDeleteBaseline" xml:space="preserve">
+    <value>Если эти базовые показатели назначены, их удаление приведет к тому, что они будут удалены со всех устройств. Продолжить?</value>
+  </data>
+  <data name="CopyBaseline" xml:space="preserve">
+      <value>Копировать базовые показатели</value>
+  </data>
+  <data name="CustomBaseline" xml:space="preserve">
+    <value>Настраиваемые базовые показатели</value>
+  </data>
+  <data name="CustomBaselineCompliance" xml:space="preserve">
+    <value>Данные о соответствии нормативным требованиям для настраиваемых базовых показателей создаются на основе политик, добавленных к базовым показателям, а не политик в ZIP-архиве.</value>
+  </data>
+  <data name="CustomBaselineComplianceDataMissing" xml:space="preserve">
+    <value>Данные о соответствии нормативным требованиям для настраиваемых базовых показателей недоступны или неполны, так как не удалось проверить политики из ZIP-архива.</value>
+  </data>
+  <data name="CustomBaselineError" xml:space="preserve">
+    <value>Выберите файл для настраиваемых базовых показателей</value>
+  </data>
+  <data name="CustomBaselineHelpLink" xml:space="preserve">
+    <value>Просмотреть инструкции по отправке GPO</value>
+  </data>
+  <data name="CustomizeSelectPolicy" xml:space="preserve">
+    <value>Выберите политику, чтобы просмотреть ее настройки.</value>
+  </data>
+  <data name="CustomizeStepDescription" xml:space="preserve">
+    <value>Можно проверить или настроить политики из "{0}" в соответствии с потребностями.</value>
+  </data>
+  <data name="DefinitionStepDescription" xml:space="preserve">
+    <value>Введите имя и описание базового показателя.</value>
+  </data>
+  <data name="DeleteBaseline" xml:space="preserve">
+    <value>Удалить базовые показатели</value>
+  </data>
+  <data name="DeviceBaselineLocationGroupNotFound" xml:space="preserve">
+    <value>Невозможно извлечь устройства для базовых показателей, т.к. не удается найти организационную группу.</value>
+  </data>
+  <data name="DeviceBaselineNotFound" xml:space="preserve">
+    <value>Невозможно извлечь устройства для базовых показателей, т.к. не удается найти базовые показатели.</value>
+  </data>
+  <data name="DiscardAndExit" xml:space="preserve">
+    <value>Отменить и выйти</value>
+  </data>
+  <data name="EditBaseline" xml:space="preserve">
+    <value>Изменить базовые показатели</value>
+  </data>
+  <data name="EditRequestError" xml:space="preserve">
+    <value>Выбранная базовая версия больше не доступна. Создайте новую.</value>
+  </data>
+  <data name="EmptyBaselineList" xml:space="preserve">
+    <value>Базовые показатели не найдены</value>
+  </data>
+  <data name="EmptyDeviceList" xml:space="preserve">
+    <value>Устройства не найдены</value>
+  </data>
+  <data name="EmptyListInput" xml:space="preserve">
+    <value>Требуется одна или несколько записей</value>
+  </data>
+  <data name="EmptyPolicyList" xml:space="preserve">
+    <value>Никакие политики еще не добавлены</value>
+  </data>
+  <data name="ErrorBaselineDeviceException" xml:space="preserve">
+    <value>Не удалось применить базовые показатели, проверьте журналы, чтобы устранить проблему.</value>
+  </data>
+  <data name="ErrorDownloadBlobFailed" xml:space="preserve">
+    <value>Не удалось получить доступ к базовым данным, проверьте журналы, чтобы устранить проблему.</value>
+  </data>
+  <data name="ErrorInvalidExecutable" xml:space="preserve">
+    <value>LGPO.exe недействителен, попробуйте изменить исполняемый файл, чтобы исправить его.</value>
+  </data>
+  <data name="ErrorLGPOBackupFailed" xml:space="preserve">
+    <value>Не удалось применить базовые показатели, проверьте журналы, чтобы устранить проблему.</value>
+  </data>
+  <data name="ErrorMissingLGPO" xml:space="preserve">
+    <value>LGPO.exe недоступен для применения базовых показателей.</value>
+  </data>
+  <data name="ErrorSavingFileInFolder" xml:space="preserve">
+    <value>Не удалось сохранить базовые показатели, проверьте журналы, чтобы устранить проблему.</value>
+  </data>
+  <data name="ErrorUpdatingDatabase" xml:space="preserve">
+    <value>Статус базовых показателей неизвестен, проверьте журналы для получения дополнительной информации.</value>
+  </data>
+  <data name="ErrorZipExtractionFailed" xml:space="preserve">
+    <value>Не удалось извлечь базовые показатели, проверьте журналы, чтобы устранить проблему.</value>
+  </data>
+  <data name="ExcludedSmartGroups" xml:space="preserve">
+    <value>Исключенные смарт-группы</value>
+  </data>
+  <data name="Exclusions" xml:space="preserve">
+    <value>Исключения</value>
+  </data>
+  <data name="FailedInstall" xml:space="preserve">
+    <value>Сбой установки</value>
+  </data>
+  <data name="FailedRemoval" xml:space="preserve">
+    <value>Не удалось удалить</value>
+  </data>
+  <data name="IntermediateDescription" xml:space="preserve">
+    <value>Устройства, которые соответствуют {0}% и {1}%, классифицируются как промежуточные.</value>
+  </data>
+  <data name="MaxValueArg" xml:space="preserve">
+    <value>Должно быть меньше или равно {0}</value>
+  </data>
+  <data name="MinValueArg" xml:space="preserve">
+    <value>Должно быть больше или равно {0}</value>
+  </data>
+  <data name="NewBaseline" xml:space="preserve">
+    <value>Новые базовые показатели</value>
+  </data>
+  <data name="NoActiveOSVersion" xml:space="preserve">
+    <value>Версии ОС не найдены. Повторите попытку позже.</value>
+  </data>
+  <data name="NoCustomizationSupport" xml:space="preserve">
+    <value>В данный момент настройка для выбранных базовых показателей недоступна.</value>
+  </data>
+  <data name="NoFileSelected" xml:space="preserve">
+    <value>Файл не выбран.</value>
+  </data>
+  <data name="NonEnglishSearchResult" xml:space="preserve">
+    <value>Не найдены результаты для "{0}". Попробуйте проверить доступность политики, повторив поиск на английском языке.</value>
+  </data>
+  <data name="NoResultsFoundForArg" xml:space="preserve">
+    <value>Не найдены результаты для «{0}»</value>
+  </data>
+  <data name="NoSmartGroupsSelected" xml:space="preserve">
+    <value>Смарт-группы не выбраны</value>
+  </data>
+  <data name="PolicyNotFound" xml:space="preserve">
+    <value>Сведения о политике не найдены</value>
+  </data>
+  <data name="PolicyStepDescription" xml:space="preserve">
+    <value>Выполните поиск политик в каталоге и добавьте их.</value>
+  </data>
+  <data name="Proceed" xml:space="preserve">
+    <value>Продолжить</value>
+  </data>
+  <data name="RemovalFailed" xml:space="preserve">
+    <value>Сбой удаления</value>
+  </data>
+  <data name="RequiredFieldError" xml:space="preserve">
+    <value>Введите имя для базовых показателей.</value>
+  </data>
+  <data name="SaveAndPublish" xml:space="preserve">
+    <value>Сохранить и опубликовать</value>
+  </data>
+  <data name="SearchPolicyPlaceholder" xml:space="preserve">
+    <value>Начните вводить текст, чтобы найти политику</value>
+  </data>
+  <data name="SearchSmartGroupPlaceholder" xml:space="preserve">
+    <value>Начните вводить текст для поиска смарт-групп</value>
+  </data>
+  <data name="SelectedSmartGroups" xml:space="preserve">
+    <value>Выбранные смарт-группы</value>
+  </data>
+  <data name="SelectTypeDescription" xml:space="preserve">
+    <value>Выберите тип базовых показателей для добавления.</value>
+  </data>
+  <data name="SelectTypeTitle" xml:space="preserve">
+    <value>Выбрать тип базовых показателей</value>
+  </data>
+  <data name="SmartGroupAtLeastOneValidationDescription" xml:space="preserve">
+    <value>На вкладке "Назначения" требуется указать хотя бы одну смарт-группу.</value>
+  </data>
+  <data name="SummaryStepDescription" xml:space="preserve">
+    <value>Просмотрите сводку перед сохранением этих базовых показателей.</value>
+  </data>
+  <data name="TemplateStepDescription" xml:space="preserve">
+    <value>Выберите предварительно настроенные базовые показатели и версию.</value>
+  </data>
+  <data name="TextareaMaxLinesError" xml:space="preserve">
+    <value>Превышает максимальное количество строк</value>
+  </data>
+  <data name="TextareaMaxSentenceError" xml:space="preserve">
+    <value>Длина одного или нескольких предложений превышает максимальную длину</value>
+  </data>
+  <data name="TotalInstalledArg" xml:space="preserve">
+    <value>Всего установлено: {0}</value>
+  </data>
+  <data name="UnabletoLoadDevices" xml:space="preserve">
+    <value>Не удалось загрузить список устройств. Повторите попытку позже.</value>
+  </data>
+  <data name="UnsavedChanges" xml:space="preserve">
+    <value>Несохраненные изменения</value>
+  </data>
+  <data name="UnsupportedLanguageError" xml:space="preserve">
+    <value>Ошибка: выбранный язык не поддерживается.</value>
+  </data>
+  <data name="UseBaselineTemplate" xml:space="preserve">
+      <value>Использовать шаблон</value>
+  </data>
+  <data name="UseTemplateDescription" xml:space="preserve">
+    <value>Используйте стандартные отраслевые шаблоны для настройки базовых показателей.</value>
+  </data>
+  <data name="VersionBreakdown" xml:space="preserve">
+    <value>Разбивка по версиям</value>
+  </data>
+  <data name="ViewBaselineDevicesTitle" xml:space="preserve">
+    <value>Просмотр устройств ‑ Базовые показатели</value>
+  </data>
+</root>

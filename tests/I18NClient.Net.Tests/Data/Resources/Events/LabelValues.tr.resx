@@ -1,0 +1,1002 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AadCustomAttributeLookupFailed" xml:space="preserve">
+    <value>Özel Öznitelik Arama Ekleme Başarısız Oldu</value>
+  </data>
+  <data name="ActionStatus" xml:space="preserve">
+    <value>Eylem Durumu</value>
+  </data>
+  <data name="ActionUuid" xml:space="preserve">
+    <value>Eylem Evrensel Benzersiz Tanımlayıcısı (UUID)</value>
+  </data>
+  <data name="ActivationLockBypassCodeConfirmed" xml:space="preserve">
+    <value>Etkinleştirme Kilidi Atlama Kodu Onaylandı</value>
+  </data>
+  <data name="ActivationLockBypassCodeFailed" xml:space="preserve">
+    <value>Etkinleştirme Kilidi Atlama Kodu Başarısız Oldu</value>
+  </data>
+  <data name="ActivationLockBypassCodeRefused" xml:space="preserve">
+    <value>Etkinleştirme Kilidi Atlama Kodu Reddedildi</value>
+  </data>
+  <data name="ActivationLockBypassCodeRequested" xml:space="preserve">
+    <value>Etkinleştirme Kilidi Atlama Kodu İsteği Gönderildi</value>
+  </data>
+  <data name="AdminAppAuthTokenIssued" xml:space="preserve">
+    <value>Yönetici Uygulama Kimlik Doğrulaması Belirteci Yayınlandı</value>
+  </data>
+  <data name="AdminGroupDirectorySyncCompleted" xml:space="preserve">
+    <value>Yönetici Grubu Dizin Eşitleme Tamamlandı</value>
+  </data>
+  <data name="AdminPasswordRotationConfirmed" xml:space="preserve">
+    <value>Yönetici Parolasını Döndürme Onaylandı</value>
+  </data>
+  <data name="AdminPasswordRotationFailed" xml:space="preserve">
+    <value>Yönetici Parolasını Döndürme Başarısız</value>
+  </data>
+  <data name="AdminPasswordRotationRequested" xml:space="preserve">
+    <value>Yönetici Parolasını Döndürme İsteği Gönderildi</value>
+  </data>
+  <data name="AndroidHeartbeatIntervalSettingChangedFailed" xml:space="preserve">
+    <value>Android Heartbeat Aralığı Ayarı Değiştirilemedi</value>
+  </data>
+  <data name="AndroidHeartbeatIntervalSettingChangedSuccess" xml:space="preserve">
+    <value>Android Heartbeat Aralığı Ayarı Başarıyla Değiştirildi</value>
+  </data>
+  <data name="AndroidSyncPerAppVpnAssociations" xml:space="preserve">
+    <value>Uygulama VPN İlişkilendirmeleri Başına Eşitleme</value>
+  </data>
+  <data name="AndroidSyncPerAppVpnAssociationsConfirmed" xml:space="preserve">
+    <value>Uygulama VPN İlişkilendirmeleri Başına Eşitleme Komutu Onaylandı</value>
+  </data>
+  <data name="AndroidSyncPerAppVpnAssociationsRequested" xml:space="preserve">
+    <value>Uygulama VPN İlişkilendirmeleri Başına Eşitleme Komutu İsteği Gönderildi</value>
+  </data>
+  <data name="AppleMdmSampleScheduleSettingChangedFailed" xml:space="preserve">
+    <value>Apple Mdm Örnek Zamanlaması Ayarı Değiştirilemedi</value>
+  </data>
+  <data name="AppleMdmSampleScheduleSettingChangedSuccess" xml:space="preserve">
+    <value>Apple Mdm Örnek Zamanlaması Ayarı Başarıyla Değiştirildi</value>
+  </data>
+  <data name="AppleProfileSigningCertificateChangedFailure" xml:space="preserve">
+    <value>Apple Profil İmzalama Sertifikası Ayarı Değiştirilemedi</value>
+  </data>
+  <data name="AppleProfileSigningCertificateChangedSuccess" xml:space="preserve">
+    <value>Apple Profil İmzalama Sertifikası Ayarı Başarıyla Değiştirildi</value>
+  </data>
+  <data name="ApplicationDeploymentCriteriaMissing" xml:space="preserve">
+    <value>Uygulama Dağıtım Ölçütleri Eksik</value>
+  </data>
+  <data name="ApplicationDownloadFailed" xml:space="preserve">
+    <value>Uygulama İndirme Başarısız Oldu</value>
+  </data>
+  <data name="ApplicationInstalling" xml:space="preserve">
+    <value>Uygulama Yükleniyor</value>
+  </data>
+  <data name="AppLogsDescription" xml:space="preserve">
+    <value>View and download available log files.</value>
+  </data>
+  <data name="ApproveRemoval" xml:space="preserve">
+    <value>Kaldırmayı Onayla</value>
+  </data>
+  <data name="ApproveRemovalDescription" xml:space="preserve">
+    <value>Bu eylem, potansiyel olarak etkilenmiş aygıtlardan uygulama kaldırmayı onaylar. Uygulama atamasını ayarlamak için ek bir eyleme gerek yoktur.</value>
+  </data>
+  <data name="ApproveRemovalTitle" xml:space="preserve">
+    <value>Uygulama Kaldırmayı Onayla</value>
+  </data>
+  <data name="BaselineInstallConfirmed" xml:space="preserve">
+    <value>Taban Çizgisi Kurulumu Onaylandı</value>
+  </data>
+  <data name="BaselineInstallFailed" xml:space="preserve">
+    <value>Taban Çizgisi Kurulumu Başarısız Oldu</value>
+  </data>
+  <data name="BaselineMissingHash" xml:space="preserve">
+    <value>Taban çizgisi karma değeri güncellemesi istendi</value>
+  </data>
+  <data name="BaselineQueryConfirmed" xml:space="preserve">
+    <value>Taban Çizgisi Sorgulama Onaylandı</value>
+  </data>
+  <data name="BaselineQueryFailed" xml:space="preserve">
+    <value>Taban Çizgisi Sorgulama Başarısız Oldu</value>
+  </data>
+  <data name="BaselineQueryRequested" xml:space="preserve">
+    <value>Taban Çizgisi Sorgulama İsteği Gönderildi</value>
+  </data>
+  <data name="BaselineReapplyFailed" xml:space="preserve">
+    <value>Taban çizgisi yeniden uygulanamadı</value>
+  </data>
+  <data name="BaselineRemovalConfirmed" xml:space="preserve">
+    <value>Taban Çizgisi Kaldırma Onaylandı</value>
+  </data>
+  <data name="BaselineRemovalFailed" xml:space="preserve">
+    <value>Taban Çizgisi Kaldırma Başarısız Oldu</value>
+  </data>
+  <data name="BaselineStatusUpdateFailed" xml:space="preserve">
+    <value>Taban Çizgisi Durum Güncellemesi Başarısız Oldu</value>
+  </data>
+  <data name="BootstrapTokenEscrowed" xml:space="preserve">
+    <value>BootstrapToken Emanete Alındı</value>
+  </data>
+  <data name="BootstrapTokenRemoved" xml:space="preserve">
+    <value>Önyükleme Belirteci Kaldırıldı</value>
+  </data>
+  <data name="CartCreationFailed" xml:space="preserve">
+    <value>Sepet Oluşturma Başarısız Oldu</value>
+  </data>
+  <data name="CertificateMissingInSample" xml:space="preserve">
+    <value>Örnekte Eksik</value>
+  </data>
+  <data name="CertificateNoLongerInUse" xml:space="preserve">
+    <value>Kullanımda Değil</value>
+  </data>
+  <data name="CertificatePinningDisable" xml:space="preserve">
+    <value>Sertifika Sabitleme Devre Dışı Bırakıldı</value>
+  </data>
+  <data name="CertificateReinstated" xml:space="preserve">
+    <value>Sertifika Yeniden Alındı</value>
+  </data>
+  <data name="CheckInCheckOut" xml:space="preserve">
+    <value>Teslim etme/Teslim alma</value>
+  </data>
+  <data name="ComplianceBrokerRequest" xml:space="preserve">
+    <value>Uyumluluk Aracısı Talebi</value>
+  </data>
+  <data name="ComplianceEvaluationTime" xml:space="preserve">
+    <value>Uyumluluk Değerlendirme Süresi</value>
+  </data>
+  <data name="CompliancePolicyParsing" xml:space="preserve">
+    <value>Uyumluluk İlkesi Ayrıştırma</value>
+  </data>
+  <data name="ConditionalAccessDeviceRegistration" xml:space="preserve">
+    <value>Koşullu Erişim Aygıt Kaydı</value>
+  </data>
+  <data name="ConditionalAccessDeviceStateChange" xml:space="preserve">
+    <value>Koşullu Erişim Aygıt Durumu Değişikliği</value>
+  </data>
+  <data name="ConditionalAccessPartnerType" xml:space="preserve">
+    <value>Koşullu Erişim Ortağı Türü</value>
+  </data>
+  <data name="ConfigurationReceivedToRestrictAppOrProcess" xml:space="preserve">
+    <value>Uygulamaları veya İşlemi Kısıtlamak İçin Yapılandırma Alındı</value>
+  </data>
+  <data name="ConsoleEvent" xml:space="preserve">
+    <value>Konsol Etkinliği</value>
+  </data>
+  <data name="ConsoleEventLogSearchFilterDateRange" xml:space="preserve">
+    <value>"Herhangi Biri" ve "Geçen Ay" gibi geniş tarih aralıklarında konsol olaylarını gösterebilme, Global'de devre dışı bırakılmıştır. Konsol olaylarını görüntülemek veya alt OG'ye gitmek için lütfen daha kısa zaman aralığı seçin.</value>
+  </data>
+  <data name="ConsoleEventLogSearchLimitExceeded" xml:space="preserve">
+    <value>Konsol olayları için seçilen tarih aralığı çok geniş. Konsol olaylarını görüntülemek için lütfen daha kısa bir tarih aralığı seçin.</value>
+  </data>
+  <data name="ConsoleEvents" xml:space="preserve">
+    <value>Konsol Olayları</value>
+  </data>
+  <data name="ConsoleSessionTimeOutChangedFailure" xml:space="preserve">
+    <value>Konsol Oturumu Zaman Aşımı Değiştirilemedi</value>
+  </data>
+  <data name="ConsoleSessionTimeOutChangedSuccess" xml:space="preserve">
+    <value>Konsol Oturumu Zaman Aşımı Başarıyla Değiştirildi</value>
+  </data>
+  <data name="CreateWnsChannelCommandRequestConfirmed" xml:space="preserve">
+    <value>Wns Kanalı Oluştur Komutu İsteği Onaylandı</value>
+  </data>
+  <data name="CreateWnsChannelCommandRequestFailed" xml:space="preserve">
+    <value>Wns Kanalı Oluştur Komutu İsteği Başarısız Oldu</value>
+  </data>
+  <data name="DateTimeLabel" xml:space="preserve">
+    <value>Tarih &amp; Zaman</value>
+  </data>
+  <data name="DeviceActionFailed" xml:space="preserve">
+    <value>Aygıt Eylemi Başarısız Oldu</value>
+  </data>
+  <data name="DeviceActionInprogress" xml:space="preserve">
+    <value>Aygıt Eylemi Sürüyor</value>
+  </data>
+  <data name="DeviceActionProcessed" xml:space="preserve">
+    <value>Aygıt Eylemi İşlendi</value>
+  </data>
+  <data name="DeviceActionRequested" xml:space="preserve">
+    <value>Aygıt Eylemi İsteği Gönderildi</value>
+  </data>
+  <data name="DeviceAddedToAppleDep" xml:space="preserve">
+    <value>Aygıt, Apple DEP'ye Eklendi</value>
+  </data>
+  <data name="DeviceAddedToEnrollmentWhiteList" xml:space="preserve">
+    <value>Aygıt, Kayıt İzin Verilenler Listesine Eklendi</value>
+  </data>
+  <data name="DeviceAllMangedApplicationDisable" xml:space="preserve">
+    <value>Aygıtın Yönettiği Tüm Uygulamalar Devre Dışı Bırakıldı</value>
+  </data>
+  <data name="DeviceAttributeAssetNumberModified" xml:space="preserve">
+    <value>Aygıt Özniteliği Varlık Numarası Değiştirildi</value>
+  </data>
+  <data name="DeviceAttributeOperatingSystem" xml:space="preserve">
+    <value>Aygıt Özniteliği İşletim Sistemi</value>
+  </data>
+  <data name="DeviceAttributeUserEmailAddressModified" xml:space="preserve">
+    <value>Aygıt Özniteliği Kullanıcı E-Posta Adresi Değiştirildi</value>
+  </data>
+  <data name="DeviceCheckInWihtNotEnrolledUser" xml:space="preserve">
+    <value>Kayıtlı Olmayan Kullanıcıyla Aygıt Teslim Etme İşlemi</value>
+  </data>
+  <data name="DeviceConfiguredFailed" xml:space="preserve">
+    <value>Aygıt Yeniden Yapılandırma Başarısız Oldu</value>
+  </data>
+  <data name="DeviceConfiguredRefused" xml:space="preserve">
+    <value>Aygıt Yapılandırma Reddedildi</value>
+  </data>
+  <data name="DeviceConsoleEvent" xml:space="preserve">
+    <value>Aygıt ve Konsol olayı</value>
+  </data>
+  <data name="DeviceConsoleEvents" xml:space="preserve">
+    <value>Aygıt ve Konsol olayları</value>
+  </data>
+  <data name="DeviceCpuInfoChanged" xml:space="preserve">
+    <value>Aygıt CPU bilgisi değiştirildi</value>
+  </data>
+  <data name="DeviceData" xml:space="preserve">
+    <value>Aygıt Verileri</value>
+  </data>
+  <data name="DeviceEvent" xml:space="preserve">
+    <value>Aygıt Etkinliği</value>
+  </data>
+  <data name="DeviceEventLogSearchFilterDateRange" xml:space="preserve">
+    <value>"Herhangi Biri" ve "Geçen Ay" gibi geniş tarih aralıklarında Aygıt olaylarını gösterebilme, Global olarak devre dışı bırakılmıştır. Aygıt olaylarını görüntülemek veya alt OG'ye gitmek için lütfen daha dar bir zaman aralığı seçin.</value>
+  </data>
+  <data name="DeviceEventLogSearchLimitExceeded" xml:space="preserve">
+    <value>Aygıt olayları için seçilen tarih aralığı çok geniş. Aygıt olaylarını görüntülemek için lütfen daha kısa bir tarih aralığı seçin.</value>
+  </data>
+  <data name="DeviceEvents" xml:space="preserve">
+    <value>Aygıt Olayları</value>
+  </data>
+  <data name="DeviceEventsDescription" xml:space="preserve">
+    <value>Ayrıntılı aygıt etkinlik bilgilerini görüntüle</value>
+  </data>
+  <data name="DeviceLimitPerOrganizationGroupEnabled" xml:space="preserve">
+    <value>Her Bir Etkin Organizasyon Grubu için Aygıt Sınırı</value>
+  </data>
+  <data name="DeviceLocationFailed" xml:space="preserve">
+    <value>Aygıt Konumu Başarısız Oldu</value>
+  </data>
+  <data name="DeviceLocationRefused" xml:space="preserve">
+    <value>Aygıt Konumu Reddedildi</value>
+  </data>
+  <data name="DeviceManagementStatus" xml:space="preserve">
+    <value>Aygıt Yönetim Durumu</value>
+  </data>
+  <data name="DeviceMangedApplicationDisable" xml:space="preserve">
+    <value>Aygıtın Yönettiği Uygulama Devre Dışı Bırakıldı</value>
+  </data>
+  <data name="DeviceModelChanged" xml:space="preserve">
+    <value>Aygıt Modeli Değiştirildi</value>
+  </data>
+  <data name="DeviceOemChanged" xml:space="preserve">
+    <value>Aygıt Orijinal Donanım Üreticisi Değiştirildi</value>
+  </data>
+  <data name="DeviceOfflineDomainJoinConfigCreationFailed" xml:space="preserve">
+    <value>Aygıt Çevrimdışı Etki Alanına Katılım Yapılandırması Oluşturma Başarısız Oldu</value>
+  </data>
+  <data name="DeviceScriptSampleSentFailed" xml:space="preserve">
+    <value>Aygıt komut dosyası örneği gönderilemedi</value>
+  </data>
+  <data name="DeviceServicesAutoDiscoverySync" xml:space="preserve">
+    <value>Aygıt Hizmetleri Otomatik Bulma Eşitlemesi</value>
+  </data>
+  <data name="DeviceTimeWindowStatusSampleCompleted" xml:space="preserve">
+    <value>Aygıt Zaman Penceresi Durumu Örneği Tamamlandı</value>
+  </data>
+  <data name="DeviceTimeWindowStatusSampleFailed" xml:space="preserve">
+    <value>Aygıt Zaman Penceresi Durumu Örneği Başarısız Oldu</value>
+  </data>
+  <data name="DeviceTimeWindowSync" xml:space="preserve">
+    <value>Aygıt Zaman Penceresi Eşitleme</value>
+  </data>
+  <data name="DeviceUserCheckOutFailed" xml:space="preserve">
+    <value>Aygıt Kullanıcısı Teslim Alma İşlemi Başarısız Oldu</value>
+  </data>
+  <data name="DeviceUUID" xml:space="preserve">
+    <value>Aygıt Evrensel Benzersiz Tanımlayıcısı (UUID)</value>
+  </data>
+  <data name="DeviceWorkflowComplete" xml:space="preserve">
+    <value>Aygıt İş Akışı Tamamlandı</value>
+  </data>
+  <data name="DeviceWorkflowFailed" xml:space="preserve">
+    <value>Aygıt İş Akışı Başarısız Oldu</value>
+  </data>
+  <data name="DeviceWorkflowSync" xml:space="preserve">
+    <value>Aygıt İş Akışı Eşitleme</value>
+  </data>
+  <data name="DisableLostModeRefused" xml:space="preserve">
+    <value>Kayıp Modunu Devre Dışı Bırakma Reddedildi</value>
+  </data>
+  <data name="DoNotShowAgain" xml:space="preserve">
+    <value>Bir daha gösterme</value>
+  </data>
+  <data name="EnableActivationLockFailed" xml:space="preserve">
+    <value>Etkinleştirme Kilidini Etkinleştirme İşlemi Başarısız Oldu</value>
+  </data>
+  <data name="EnableActivationLockSucceeded" xml:space="preserve">
+    <value>Etkinleştirme Kilidini Etkinleştirme İşlemi Başarılı Oldu</value>
+  </data>
+  <data name="EnableLostModeRefused" xml:space="preserve">
+    <value>Kayıp Modunu Etkinleştirme Reddedildi</value>
+  </data>
+  <data name="EnrollmentAuthenticationSettingChanged" xml:space="preserve">
+    <value>Kayıt Kimlik Doğrulaması Ayarı Değiştirildi</value>
+  </data>
+  <data name="FileVaultRecoveryKeyRotationRequested" xml:space="preserve">
+    <value>FileVault Kurtarma Anahtarı Döndürme İsteği Gönderildi</value>
+  </data>
+  <data name="FromDeviceDetailsPage" xml:space="preserve">
+    <value>Aygıt Ayrıntıları Sayfasından</value>
+  </data>
+  <data name="FromSSPDetailsPage" xml:space="preserve">
+    <value>SSP Ayrıntıları Sayfasından</value>
+  </data>
+  <data name="GetBootstrapTokenRequested" xml:space="preserve">
+    <value>GetBootstrapToken İsteği Gönderildi</value>
+  </data>
+  <data name="GetBootstrapTokenRequestProcessed" xml:space="preserve">
+    <value>GetBootstrapToken İsteği İşlendi</value>
+  </data>
+  <data name="GlobalThresholdMessage" xml:space="preserve">
+    <value>Global'de sadece son saatteki etkinlikler görüntülenebiliyor. Daha geniş zaman aralıklarını görmek için alt organizasyon grubuna gidin</value>
+  </data>
+  <data name="GuestUserLogin" xml:space="preserve">
+    <value>Konuk Kullanıcı Oturumu Açma</value>
+  </data>
+  <data name="ImpactedDevices" xml:space="preserve">
+    <value>Etkilenen Aygıtlar</value>
+  </data>
+  <data name="InitiateAutoDiscoveryPinningSync" xml:space="preserve">
+    <value>Otomatik Bulma Sabitleme Eşitlemesini Başlat</value>
+  </data>
+  <data name="InstallIntelligentHubRequestFailure" xml:space="preserve">
+    <value>Intelligent Hub'ı Yükleme Komutu Sıraya Alınamadı</value>
+  </data>
+  <data name="InstallIntelligentHubRequestSuccess" xml:space="preserve">
+    <value>Intelligent Hub'ı Yükleme Komutu Başarıyla Sıraya Alındı</value>
+  </data>
+  <data name="InstallMacOSBootstrapPkgFailed" xml:space="preserve">
+    <value>macOS Önyükleme Paketi Yükleme İşlemi Başarısız Oldu</value>
+  </data>
+  <data name="InstallMacOSBootstrapPkgRefused" xml:space="preserve">
+    <value>macOS Önyükleme Paketi Yükleme Reddedildi</value>
+  </data>
+  <data name="InstallOnFilteredSuccess" xml:space="preserve">
+    <value>Filtrelenenlere Yükleme Başarılı</value>
+  </data>
+  <data name="InstallPackagedMacOsXAgentConfirmed" xml:space="preserve">
+    <value>macOS Aracısını Yükleme Onaylandı</value>
+  </data>
+  <data name="InstallPackagedMacOsXAgentFailed" xml:space="preserve">
+    <value>macOS Aracısı Yüklenemedi</value>
+  </data>
+  <data name="InstallPackagedMacOsXAgentRefused" xml:space="preserve">
+    <value>macOS Aracısını Yükleme Reddedildi</value>
+  </data>
+  <data name="InstallPackagedMacOsXAgentRequested" xml:space="preserve">
+    <value>macOS Aracısını Yükleme İsteği Gönderildi</value>
+  </data>
+  <data name="LogOutUserConfirmed" xml:space="preserve">
+    <value>Kullanıcının Oturumunu Kapatma Onaylandı</value>
+  </data>
+  <data name="LogoutUserFailed" xml:space="preserve">
+    <value>Kullanıcının Oturumunu Kapatma Başarısız Oldu</value>
+  </data>
+  <data name="LogOutUserRefused" xml:space="preserve">
+    <value>Kullanıcının Oturumunu Kapatma Reddedildi</value>
+  </data>
+  <data name="LogOutUserRequested" xml:space="preserve">
+    <value>Kullanıcının Oturumunu Kapatma İsteği Gönderildi</value>
+  </data>
+  <data name="ManagedAdminPasswordRotationRequested" xml:space="preserve">
+    <value>Yönetilen Yönetici Parolasını Döndürme İsteği Gönderildi</value>
+  </data>
+  <data name="ManagedSettings" xml:space="preserve">
+    <value>Yönetilen Ayarlar</value>
+  </data>
+  <data name="ManagedSettingsConfirmed" xml:space="preserve">
+    <value>Yönetilen Ayarlar Onaylandı</value>
+  </data>
+  <data name="ManagedSettingsFailed" xml:space="preserve">
+    <value>Yönetilen Ayarlar Başarısız Oldu</value>
+  </data>
+  <data name="ManagedSettingsRefused" xml:space="preserve">
+    <value>Yönetilen Ayarlar Reddedildi</value>
+  </data>
+  <data name="ManagedSettingsRequested" xml:space="preserve">
+    <value>Yönetilen Ayarlar İsteği Gönderildi</value>
+  </data>
+  <data name="MembershipSyncRequestSent" xml:space="preserve">
+    <value>Üyelik Eşitleme İsteği Gönderildi</value>
+  </data>
+  <data name="NotNowInAwaitConfiguration" xml:space="preserve">
+    <value>Şimdi Değil, Yapılandırma Bekleniyor</value>
+  </data>
+  <data name="P2PTrueUpGenericError" xml:space="preserve">
+    <value>P2P Doğrulama Genel Hatası</value>
+  </data>
+  <data name="PCRefreshConfirmed" xml:space="preserve">
+    <value>Windows Masaüstü Yenileme Onaylandı</value>
+  </data>
+  <data name="PCRefreshFailed" xml:space="preserve">
+    <value>Windows Masaüstü Yenileme Başarısız Oldu</value>
+  </data>
+  <data name="PeerDistributionStatistics" xml:space="preserve">
+    <value>Eşler Arası Dağıtım İstatistikleri</value>
+  </data>
+  <data name="PinnedCertificateDelete" xml:space="preserve">
+    <value>Sabitlenmiş Sertifikayı Sil</value>
+  </data>
+  <data name="PinnedHostDelete" xml:space="preserve">
+    <value>Sabitlenmiş Ana Bilgisayarı Sil</value>
+  </data>
+  <data name="PinnedHostDisable" xml:space="preserve">
+    <value>Sabitlenmiş Ana Bilgisayar Devre Dışı Bırakıldı</value>
+  </data>
+  <data name="PinnedHostEdit" xml:space="preserve">
+    <value>Sabitlenmiş Ana Bilgisayarı Düzenle</value>
+  </data>
+  <data name="PinnedHostEnable" xml:space="preserve">
+    <value>Sabitlenmiş Ana Bilgisayar Etkinleştirildi</value>
+  </data>
+  <data name="PolicySigningCertificateSettingChangedFailure" xml:space="preserve">
+    <value>İlke İmzalama Sertifikası Ayarı Değiştirilemedi</value>
+  </data>
+  <data name="PolicySigningCertificateSettingChangedSuccess" xml:space="preserve">
+    <value>İlke İmzalama Sertifikası Ayarı Başarıyla Değiştirildi</value>
+  </data>
+  <data name="ProfilesPerformActionAgain" xml:space="preserve">
+    <value>Profil oluşturma/güncelleme/silme başarısız oldu. Lütfen eylemi tekrar gerçekleştirin.</value>
+  </data>
+  <data name="ProvisioningAgentQueryFailed" xml:space="preserve">
+    <value>Aracı Provizyonlama Sorgusu Başarısız Oldu</value>
+  </data>
+  <data name="ProvisioningPackageCreated" xml:space="preserve">
+    <value>Provizyonlama Paketi Oluşturuldu</value>
+  </data>
+  <data name="ProvisioningPackageInstallConfirmed" xml:space="preserve">
+    <value>Provizyonlama Paketi Yükleme Onaylandı</value>
+  </data>
+  <data name="ProvisioningPackageInstallFailed" xml:space="preserve">
+    <value>Provizyonlama Paketi Yükleme İşlemi Başarısız Oldu</value>
+  </data>
+  <data name="RecordDeleted" xml:space="preserve">
+    <value>Record deleted.</value>
+  </data>
+  <data name="RefreshEsimConfirmed" xml:space="preserve">
+    <value>eSIM Yenilemesi Onaylandı</value>
+  </data>
+  <data name="RefreshEsimFailed" xml:space="preserve">
+    <value>eSIM Yenilemesi Başarısız Oldu</value>
+  </data>
+  <data name="RefreshEsimRefused" xml:space="preserve">
+    <value>eSIM Yenilemesi Reddedildi</value>
+  </data>
+  <data name="RefreshEsimRequested" xml:space="preserve">
+    <value>eSIM Yenilemesi İsteği Gönderildi</value>
+  </data>
+  <data name="RejectRemoval" xml:space="preserve">
+    <value>Kaldırma İşlemini Reddet</value>
+  </data>
+  <data name="RejectRemovalDescription" xml:space="preserve">
+    <value>Bu eylem, uygulama kaldırma komutunu etkilenme olasılığı bulunan aygıtlardan kaldırır. Uygulama kaldırma işleminin tekrar tetiklenmesini önlemek için uygulamanın etkin olduğundan ve aygıtlara atalı olduğundan emin olun.</value>
+  </data>
+  <data name="RejectRemovalTitle" xml:space="preserve">
+    <value>Uygulamayı Kaldırma İşlemini Reddet</value>
+  </data>
+  <data name="RemovableDriveRecoveryKeyAccessed" xml:space="preserve">
+    <value>Disk Şifreleme Kurtarma Anahtarına erişildi</value>
+  </data>
+  <data name="RemoveBootstrapTokenRequested" xml:space="preserve">
+    <value>Önyükleme Belirtecini Kaldırma İsteği Gönderildi</value>
+  </data>
+  <data name="RemoveLockConfirmed" xml:space="preserve">
+    <value>Kilidi Kaldırma Onaylandı</value>
+  </data>
+  <data name="RequestLogConfirmed" xml:space="preserve">
+    <value>Aygıt İstek Günlüğü Onaylandı</value>
+  </data>
+  <data name="RequestLogFailed" xml:space="preserve">
+    <value>Aygıt İstek Günlüğü Başarısız Oldu</value>
+  </data>
+  <data name="RequestLogRefused" xml:space="preserve">
+    <value>Aygıt İstek Günlüğü Reddedildi</value>
+  </data>
+  <data name="RequestLogRequested" xml:space="preserve">
+    <value>Aygıt Günlüğü İsteği Gönderildi</value>
+  </data>
+  <data name="ResourceUuid" xml:space="preserve">
+    <value>Kaynak Evrensel Benzersiz Tanımlayıcısı (UUID)</value>
+  </data>
+  <data name="ResourceVersion" xml:space="preserve">
+    <value>Kaynak Sürümü</value>
+  </data>
+  <data name="RestrictedAppOrProcessDetected" xml:space="preserve">
+    <value>Kısıtlanmış Uygulama veya İşlem Tespit Edildi</value>
+  </data>
+  <data name="RestrictedAppOrProcessRemediated" xml:space="preserve">
+    <value>Kısıtlanmış Uygulama veya İşlem Düzeltildi</value>
+  </data>
+  <data name="RotateDeviceRecoveryKey" xml:space="preserve">
+    <value>Aygıt Kurtarma Anahtarını Döndür</value>
+  </data>
+  <data name="RotateDeviceRecoveryKeyRequested" xml:space="preserve">
+    <value>Kurtarma Anahtarı Döndürme İsteği Gönderildi</value>
+  </data>
+  <data name="SampleResponseListReceived" xml:space="preserve">
+    <value>Örnek Yanıt Listesi Alındı</value>
+  </data>
+  <data name="ScheduledAdminPasswordRotationRequested" xml:space="preserve">
+    <value>Zamanlanmış Yönetici Parolasını Döndürme İsteği Gönderildi</value>
+  </data>
+  <data name="ScheduledRotateDeviceRecoveryKeyRequested" xml:space="preserve">
+    <value>Planlı Kurtarma Anahtarı Döndürme İsteği Gönderildi</value>
+  </data>
+  <data name="ScheduleOSUpdateScanFailed" xml:space="preserve">
+    <value>İS Güncelleme Taraması Planlaması Başarısız Oldu</value>
+  </data>
+  <data name="ScimProvisioningFailure" xml:space="preserve">
+    <value>SCIM Provizyonlama Hatası</value>
+  </data>
+  <data name="ScriptFailedToExecuteOnDevice" xml:space="preserve">
+    <value>Komut dosyası aygıtta yürütülemedi</value>
+  </data>
+  <data name="ScriptPersistedInDeviceState" xml:space="preserve">
+    <value>Komut dosyası aygıt durumunda kalıcı</value>
+  </data>
+  <data name="ScriptResourceRequestedByDevice" xml:space="preserve">
+    <value>Aygıt tarafından komut dosyası kaynağı talep edildi</value>
+  </data>
+  <data name="ScriptSampleNotPersisted" xml:space="preserve">
+    <value>Komut dosyası örneği aygıt durumunda kalıcı değil</value>
+  </data>
+  <data name="ScriptSamplePersistedInDeviceState" xml:space="preserve">
+    <value>Komut dosyası örneği aygıt durumunda kalıcı</value>
+  </data>
+  <data name="ScriptSampleReceived" xml:space="preserve">
+    <value>Komut dosyası örneği alındı</value>
+  </data>
+  <data name="ScriptSampleReceivedWithErrors" xml:space="preserve">
+    <value>Komut dosyası örneği hatalarla birlikte alındı</value>
+  </data>
+  <data name="ScriptSampleSentFailed" xml:space="preserve">
+    <value>Aygıt komut dosyası örneği gönderilemedi</value>
+  </data>
+  <data name="SdkComplianceSettings" xml:space="preserve">
+    <value>Yazılım Geliştirme Seti (SDK) uygulama uyumluluk ayarları</value>
+  </data>
+  <data name="SdkComplianceSettingsChanged" xml:space="preserve">
+    <value>Yazılım Geliştirme Seti (SDK) uygulama uyumluluk ayarları değiştirildi</value>
+  </data>
+  <data name="ServerKeyUtilityKeyInstallationFailure" xml:space="preserve">
+    <value>Sunucu Anahtar Yardımcı Anahtarını Yükleme Hatası</value>
+  </data>
+  <data name="ServerKeyUtilityKeyInstallationSuccess" xml:space="preserve">
+    <value>Sunucu Anahtar Yardımcı Anahtarını Yükleme Başarılı</value>
+  </data>
+  <data name="SetBootstrapTokenRequested" xml:space="preserve">
+    <value>SetBootstrapToken İsteği Gönderildi</value>
+  </data>
+  <data name="SetUpConfigurationConfirmed" xml:space="preserve">
+    <value>SetUp Yapılandırması Onaylandı</value>
+  </data>
+  <data name="SetUpConfigurationFailed" xml:space="preserve">
+    <value>SetUp Yapılandırması Başarısız</value>
+  </data>
+  <data name="SetUpConfigurationRefused" xml:space="preserve">
+    <value>SetUp Yapılandırması Reddedildi</value>
+  </data>
+  <data name="SetUpConfigurationRequested" xml:space="preserve">
+    <value>SetUp Yapılandırması İsteği Gönderildi</value>
+  </data>
+  <data name="SigningServiceCertificateRotationFailedEvent" xml:space="preserve">
+    <value>Hizmet Sertifikası Döndürme İmzalama Başarısızlık Etkinliği</value>
+  </data>
+  <data name="SoapApiClearClientCertificate" xml:space="preserve">
+    <value>Basit Nesne Erişim Protokolü (SOAP) Uygulama Programı Arabirimi (API) İstemci Sertifikasına İzin Verildi</value>
+  </data>
+  <data name="SoapApiExportClientCertificate" xml:space="preserve">
+    <value>Basit Nesne Erişim Protokolü (SOAP) Uygulama Programı Arabirimi (API) İstemci Sertifikası Dışarı Aktarıldı</value>
+  </data>
+  <data name="SoapApiGenerateClientCertificate" xml:space="preserve">
+    <value>Basit Nesne Erişim Protokolü (SOAP) Uygulama Programı Arabirimi (API) İstemci Sertifikası Oluşturuldu</value>
+  </data>
+  <data name="StopLogRequested" xml:space="preserve">
+    <value>Günlüğü Durdurma İsteği Gönderildi</value>
+  </data>
+  <data name="SyncAssetsAppDeleted" xml:space="preserve">
+    <value>Varlıkları Eşitleme Uygulaması Silindi</value>
+  </data>
+  <data name="SyncAssetsAppVppInfoRemoved" xml:space="preserve">
+    <value>Varlıkları Eşitleme Uygulaması Toplu Satın Alma Programı (VPP) Bilgileri Kaldırıldı</value>
+  </data>
+  <data name="SyncEntitlementsConfirmed" xml:space="preserve">
+    <value>Destek Hakkı Eşitleme Onaylandı</value>
+  </data>
+  <data name="SyncEntitlementsFailed" xml:space="preserve">
+    <value>Destek Hakkı Eşitleme Başarısız Oldu</value>
+  </data>
+  <data name="SyncEntitlementsRefused" xml:space="preserve">
+    <value>Destek Hakkı Eşitleme Reddedildi</value>
+  </data>
+  <data name="SyncEntitlementsRequested" xml:space="preserve">
+    <value>Destek Hakkı Eşitleme İsteği Gönderildi</value>
+  </data>
+  <data name="TimeMachineEnabled" xml:space="preserve">
+    <value>Zaman Makinesi Etkinleştirildi</value>
+  </data>
+  <data name="TimeWindowAssignmentDeleted" xml:space="preserve">
+    <value>Zaman Penceresi Ataması Silindi</value>
+  </data>
+  <data name="TimeWindowAssignmentUpdated" xml:space="preserve">
+    <value>Zaman Penceresi Ataması Güncellendi</value>
+  </data>
+  <data name="TimeWindowAssignmentUpdateFailed" xml:space="preserve">
+    <value>Zaman Penceresi Ataması Güncelleme Başarısız Oldu</value>
+  </data>
+  <data name="TimeWindowCreated" xml:space="preserve">
+    <value>Zaman Penceresi Oluşturuldu</value>
+  </data>
+  <data name="TimeWindowDeleted" xml:space="preserve">
+    <value>Zaman Penceresi Silindi</value>
+  </data>
+  <data name="TimeWindowIdentifiers" xml:space="preserve">
+    <value>Zaman Penceresi Tanımlayıcıları</value>
+  </data>
+  <data name="TimeWindows" xml:space="preserve">
+    <value>Zaman Pencereleri</value>
+  </data>
+  <data name="TimeWindowUpdated" xml:space="preserve">
+    <value>Zaman Penceresi Güncellendi</value>
+  </data>
+  <data name="TimeWindowUpdateFailed" xml:space="preserve">
+    <value>Zaman Penceresi Güncellemesi Başarısız Oldu</value>
+  </data>
+  <data name="UpdateAssignmentCreated" xml:space="preserve">
+    <value>Güncelleme Ataması Oluşturuldu</value>
+  </data>
+  <data name="UpdateAssignmentModified" xml:space="preserve">
+    <value>Güncelleme Ataması Değiştirildi</value>
+  </data>
+  <data name="UpdateAssignmentRemoved" xml:space="preserve">
+    <value>Güncelleme Ataması Kaldırıldı</value>
+  </data>
+  <data name="UserEnrollmentAuthenticationFailure" xml:space="preserve">
+    <value>Kullanıcı Kaydı Kimlik Doğrulama Hatası</value>
+  </data>
+  <data name="UserEnrollmentName" xml:space="preserve">
+    <value>Kayıt Kullanıcı Adı</value>
+  </data>
+  <data name="UserFriendlyPrivacyPolicy" xml:space="preserve">
+    <value>Kullanımı Kolay Gizlilik İlkesi</value>
+  </data>
+  <data name="UserListConfirmed" xml:space="preserve">
+    <value>Kullanıcı Listesi Onaylandı</value>
+  </data>
+  <data name="UserListFailed" xml:space="preserve">
+    <value>Kullanıcı Listesi Başarısız Oldu</value>
+  </data>
+  <data name="UserListRefused" xml:space="preserve">
+    <value>Kullanıcı Listesi Reddedildi</value>
+  </data>
+  <data name="UserListRequested" xml:space="preserve">
+    <value>Kullanıcı Listesi İsteği Gönderildi</value>
+  </data>
+  <data name="VmLockConfirmed" xml:space="preserve">
+    <value>Vm Kilitleme Onaylandı</value>
+  </data>
+  <data name="VmLockFailed" xml:space="preserve">
+    <value>Vm Kilitleme Başarısız Oldu</value>
+  </data>
+  <data name="VmLockRefused" xml:space="preserve">
+    <value>Vm Kilitleme Reddedildi</value>
+  </data>
+  <data name="VmLockRequested" xml:space="preserve">
+    <value>Vm Kilitleme İsteği Gönderildi</value>
+  </data>
+  <data name="VmUnlockConfirmed" xml:space="preserve">
+    <value>Vm Kilit Açma Onaylandı</value>
+  </data>
+  <data name="VmUnlockRefused" xml:space="preserve">
+    <value>Vm Kilit Açma Reddedildi</value>
+  </data>
+  <data name="VmUnlockRequested" xml:space="preserve">
+    <value>Vm Kilit Açma İsteği Gönderildi</value>
+  </data>
+  <data name="VmWipeConfirmed" xml:space="preserve">
+    <value>Vm Silme Onaylandı</value>
+  </data>
+  <data name="VmWipeFailed" xml:space="preserve">
+    <value>Vm Silme Başarısız Oldu</value>
+  </data>
+  <data name="VmWipeRefused" xml:space="preserve">
+    <value>Vm Silme Reddedildi</value>
+  </data>
+  <data name="VmWipeRequested" xml:space="preserve">
+    <value>Vm Silme İsteği Gönderildi</value>
+  </data>
+  <data name="Windows10InvalidOdjSyncAlert" xml:space="preserve">
+    <value>Windows 10 Geçersiz Odj Eşitleme Uyarısı</value>
+  </data>
+  <data name="WindowsDeviceCheckInMode" xml:space="preserve">
+    <value>Windows Aygıtı Teslim Modu</value>
+  </data>
+  <data name="WindowsOobeAccountProvisioningComplete" xml:space="preserve">
+    <value>Kullanıcı İçin OOBE Provizyonlama Tamamlandı</value>
+  </data>
+  <data name="WindowsOobeDeviceProvisioningComplete" xml:space="preserve">
+    <value>Aygıt İçin OOBE Provizyonlama Tamamlandı</value>
+  </data>
+  <data name="WindowsOobeProvisioningRequested" xml:space="preserve">
+    <value>OOBE Provizyonlama İsteği Gönderildi</value>
+  </data>
+  <data name="WorkAccessibilityServicesPermittedAppIds" xml:space="preserve">
+    <value>Erişilebilirlik Hizmetleri İzin Verilen Uygulamalar</value>
+  </data>
+  <data name="WorkAllowAccountChanges" xml:space="preserve">
+    <value>Google hesapları eklemeye izin ver</value>
+  </data>
+  <data name="WorkAllowBluetoothContactSharing" xml:space="preserve">
+    <value>Kurumsal Kişileri Bluetooth Aygıtlarla Paylaş</value>
+  </data>
+  <data name="WorkAllowCamera" xml:space="preserve">
+    <value>Kameraya İzin Ver</value>
+  </data>
+  <data name="WorkAllowChrome" xml:space="preserve">
+    <value>Chrome Browser'a İzin Ver</value>
+  </data>
+  <data name="WorkAllowContacts" xml:space="preserve">
+    <value>Özel Kişiler Uygulaması'nda Özel Kişilere İzin Ver</value>
+  </data>
+  <data name="WorkAllowDisableAppVerify" xml:space="preserve">
+    <value>Uygulama Doğrulamayı Devre Dışı Bırakmaya İzin Ver</value>
+  </data>
+  <data name="WorkAllowGooglePlay" xml:space="preserve">
+    <value>Google Play'e İzin Ver</value>
+  </data>
+  <data name="WorkAllowInstallingApps" xml:space="preserve">
+    <value>Uygulamaları Yüklemeye İzin Ver</value>
+  </data>
+  <data name="WorkAllowKeyguardFingerprint" xml:space="preserve">
+    <value>Parmak İzi Sensöründen Tuş Kilidine İzin Ver</value>
+  </data>
+  <data name="WorkAllowKeyguardTrustAgent" xml:space="preserve">
+    <value>Güven Aracı Durumundan Tuş Kilidine İzin Ver</value>
+  </data>
+  <data name="WorkAllowKeyguardUnredacted" xml:space="preserve">
+    <value>Denetlenmeyen Bildirimlerden Tuş Kilidine İzin Ver</value>
+  </data>
+  <data name="WorkAllowNFC" xml:space="preserve">
+    <value>NFC’ye İzin Ver</value>
+  </data>
+  <data name="WorkAllowNonGoogleAccounts" xml:space="preserve">
+    <value>Hesap eklemeye/silmeye izin ver</value>
+  </data>
+  <data name="WorkAllowNonMarketAppInstall" xml:space="preserve">
+    <value>Market Dışı Uygulama Kurulumuna İzin Ver</value>
+  </data>
+  <data name="WorkAllowOutgoingBluetoothConnections" xml:space="preserve">
+    <value>Giden Bluetooth Bağlantılarına İzin Ver</value>
+  </data>
+  <data name="WorkAllowPersonalShareWithWork" xml:space="preserve">
+    <value>Kişisel uygulamaların, iş uygulamalarıyla belge paylaşımına izin ver</value>
+  </data>
+  <data name="WorkAllowPersonalToAccessWork" xml:space="preserve">
+    <value>Kişisel uygulamalara, iş uygulamalarından belgelere erişim izni ver</value>
+  </data>
+  <data name="WorkAllowScreenCapture" xml:space="preserve">
+    <value>Ekran Görüntüsü Yakalamaya İzin Ver</value>
+  </data>
+  <data name="WorkAllowUninstallingApps" xml:space="preserve">
+    <value>Uygulamaları Kaldırmaya İzin Ver</value>
+  </data>
+  <data name="WorkAllowUSBDebugging" xml:space="preserve">
+    <value>USB Hata Ayıklama İzni Ver</value>
+  </data>
+  <data name="WorkAllowWorkContactsInPhone" xml:space="preserve">
+    <value>Numara Çeviricisinde İş Kontağı Arayan Kimlik bilgisinin gösterilmesine izin ver</value>
+  </data>
+  <data name="WorkAllowWorkPersonalPaste" xml:space="preserve">
+    <value>İş ve kişisel uygulamalar arasında panodakileri yapıştırmaya izin ver</value>
+  </data>
+  <data name="WorkAllowWorkShareWithPersonal" xml:space="preserve">
+    <value>İş uygulamalarına belgeleri kişisel uygulamalarla paylaşma izni ver</value>
+  </data>
+  <data name="WorkAllowWorkToAccessPersonal" xml:space="preserve">
+    <value>İş Uygulamalarına kişisel uygulamalardan belgelere erişim izni ver</value>
+  </data>
+  <data name="WorkflowAssignmentDeleted" xml:space="preserve">
+    <value>İş Akışı Ataması Silindi</value>
+  </data>
+  <data name="WorkflowAssignmentUpdated" xml:space="preserve">
+    <value>İş Akışı Ataması Güncellendi</value>
+  </data>
+  <data name="WorkflowCreated" xml:space="preserve">
+    <value>İş Akışı Oluşturuldu</value>
+  </data>
+  <data name="WorkflowDeleted" xml:space="preserve">
+    <value>İş Akışı Silindi</value>
+  </data>
+  <data name="WorkflowUpdated" xml:space="preserve">
+    <value>İş Akışı Güncellendi</value>
+  </data>
+  <data name="WorkflowUpdatedDueToResourceUpdate" xml:space="preserve">
+    <value>Kaynak Güncellemesi Nedeniyle İş Akışı Güncellendi</value>
+  </data>
+  <data name="WorkflowUpdateFailed" xml:space="preserve">
+    <value>İş Akışı Güncellemesi Başarısız Oldu</value>
+  </data>
+  <data name="WorkflowUuid" xml:space="preserve">
+    <value>İş Akışı Tanımlayıcısı</value>
+  </data>
+  <data name="WorkManagedApplication" xml:space="preserve">
+    <value>İş Tarafından Yönetilen Uygulama</value>
+  </data>
+  <data name="WorkManagedBluetooth" xml:space="preserve">
+    <value>İş Tarafından Yönetilen Bluetooth</value>
+  </data>
+  <data name="WorkManagedDeviceFunctionality" xml:space="preserve">
+    <value>İş Tarafından Yönetilen Aygıt İşlevselliği</value>
+  </data>
+  <data name="WorkManagedHardwareRestrictions" xml:space="preserve">
+    <value>İş Tarafından Yönetilen Donanım Kısıtlamaları</value>
+  </data>
+  <data name="WorkManagedMmsRestrictions" xml:space="preserve">
+    <value>İş Tarafından Yönetilen MMS Kısıtlamaları</value>
+  </data>
+  <data name="WorkManagedNetwork" xml:space="preserve">
+    <value>İş Tarafından Yönetilen Ağ</value>
+  </data>
+  <data name="WorkManagedPhoneAndData" xml:space="preserve">
+    <value>İş Tarafından Yönetilen Telefon ve Veriler</value>
+  </data>
+  <data name="WorkManagedRoaming" xml:space="preserve">
+    <value>İş Tarafından Yönetilen Dolaşım</value>
+  </data>
+  <data name="WorkManagedSecurity" xml:space="preserve">
+    <value>İş Tarafından Yönetilen Güvenlik</value>
+  </data>
+  <data name="WorkManagedSyncAndStorage" xml:space="preserve">
+    <value>İş Tarafından Yönetilen Eşitleme ve Depolama</value>
+  </data>
+  <data name="WorkManagedTethering" xml:space="preserve">
+    <value>İş Tarafından Yönetilen Paylaşım</value>
+  </data>
+  <data name="WorkProfileApplication" xml:space="preserve">
+    <value>İş Profili Uygulama</value>
+  </data>
+  <data name="WorkProfileDeviceFunctionality" xml:space="preserve">
+    <value>İş Profili Aygıt İşlevselliği</value>
+  </data>
+  <data name="WorkProfileNetwork" xml:space="preserve">
+    <value>İş Profili Ağ</value>
+  </data>
+  <data name="WorkProfileSyncAndStorage" xml:space="preserve">
+    <value>İş Profili Eşitleme ve Depolama</value>
+  </data>
+  <data name="WorkProfileWorkAndPersonal" xml:space="preserve">
+    <value>İş Profili İş ve Kişisel</value>
+  </data>
+  <data name="WorkWhitelistPermittedAccessibilityServices" xml:space="preserve">
+    <value>İzin Verilenler Listesi Erişilebilirlik Hizmetleri</value>
+  </data>
+</root>

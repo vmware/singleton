@@ -1,0 +1,485 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Android7Zebra" xml:space="preserve">
+    <value>Overfør Android 7 og højere</value>
+  </data>
+  <data name="Android7ZebraDescription" xml:space="preserve">
+    <value>Overførelse til arbejdsstyret kræver, at Zebra-enheder er på Android 7 og højere. Opdater dine enheder, før du fortsætter med overførslen.</value>
+  </data>
+  <data name="AndroidEnterpriseUserAccountCreationFailed" xml:space="preserve">
+    <value>Oprettelse af Android Enterprise-brugerkonto mislykkedes</value>
+  </data>
+  <data name="ApprovePublicApps" xml:space="preserve">
+    <value>Godkend offentlige apps</value>
+  </data>
+  <data name="CertificateUpload" xml:space="preserve">
+    <value>Upload</value>
+  </data>
+  <data name="CheckNetworkSettings" xml:space="preserve">
+    <value>Kontroller dine netværksindstillinger for at sikre, at en forbindelse mellem Workspace ONE og Google Play-butikken er oprettet. {0}</value>
+    <comment>{0} will be replaced by another key with text 'here'.</comment>
+  </data>
+  <data name="ChooseMigrationType" xml:space="preserve">
+    <value>Vælg typen for Legacy Android-overførsel, som du ønsker at oprette.</value>
+  </data>
+  <data name="ClickValidate" xml:space="preserve">
+    <value>Klik på Valider for at hente antallet af enheder, der er berettiget til overførsel</value>
+  </data>
+  <data name="CommandNotSent" xml:space="preserve">
+    <value>Kommando ikke sendt</value>
+  </data>
+  <data name="CommandQueued" xml:space="preserve">
+    <value>Kommando sat i kø</value>
+  </data>
+  <data name="ConfirmDeleteMigrationContent" xml:space="preserve">
+    <value>Sletning af denne overførsel vil forhindre enheder i kø fra at blive overført fra Legacy Android ved at fjerne den vedvarende notifikation. Android Enterprise vil ikke blive fjernet fra enheder, der allerede er overført. Er du sikker på, at du vil slette denne overførsel?</value>
+  </data>
+  <data name="ConfirmDeleteMigrationTitle" xml:space="preserve">
+    <value>Bekræft sletning - {0}</value>
+    <comment>{0} will be replaced by the name of a migration</comment>
+  </data>
+  <data name="ConfirmMigrationCancel" xml:space="preserve">
+    <value>Er du sikker på, at du vil annullere denne overførsel?</value>
+  </data>
+  <data name="ConsistentDeviceManagement" xml:space="preserve">
+    <value>Konsekvent enhedshåndtering</value>
+  </data>
+  <data name="CurateApps" xml:space="preserve">
+    <value>Udvælg apps i Google Play Store</value>
+  </data>
+  <data name="DeviceCountEdit" xml:space="preserve">
+    <value>{0} ud af {1} nye enheder er berettiget til overførsel</value>
+    <comment>{0} and {1} will be replaced by a number</comment>
+  </data>
+  <data name="DeviceCountStatistic" xml:space="preserve">
+    <value>{0} ud af {1} enheder er berettiget til overførsel</value>
+    <comment>{0} and {1} will be replaced by a number. 
+e.g.  4 out of 9 devices are eligible for migration</comment>
+  </data>
+  <data name="DevicePreviewDescription" xml:space="preserve">
+    <value>Der bliver sendt en notifikation til berettigede enheder i de valgte Smart-grupper, der informerer medarbejdere om overførsel og anmoder dem om at foretage handlinger for at fortsætte. Du kan overvåge status på Legacy Android-overførselssiden.</value>
+  </data>
+  <data name="DevicesMigrated" xml:space="preserve">
+    <value>Enheder overført</value>
+  </data>
+  <data name="DevicesNotMigratedAreNeverEffected" xml:space="preserve">
+    <value>Enheder, der ikke overføres, vil aldrig blive påvirket.</value>
+  </data>
+  <data name="EasierLegacyAndroidMigration" xml:space="preserve">
+    <value>Overførsel af din Legacy Android-administration til arbejdsstyring eller arbejdsprofiler er nemmere end nogensinde!</value>
+  </data>
+  <data name="EligibilityStatus" xml:space="preserve">
+    <value>Berettigelsesstatus</value>
+  </data>
+  <data name="EveryFeatureWorks" xml:space="preserve">
+    <value>Sørg for, at alle funktioner fungerer på tværs af alle OEM-enheder.</value>
+  </data>
+  <data name="ExprtMigrationDeviceDetail" xml:space="preserve">
+    <value>Eksportér oplysninger</value>
+  </data>
+  <data name="HowToGetStartedLegacyAndroidMigration" xml:space="preserve">
+    <value>Sådan kommer du i gang</value>
+  </data>
+  <data name="IncreaseProductivity" xml:space="preserve">
+    <value>Forøg medarbejderproduktiviteten</value>
+  </data>
+  <data name="InitiatedDate" xml:space="preserve">
+    <value>Startdato</value>
+  </data>
+  <data name="InvalidOgUUIDFormat" xml:space="preserve">
+    <value>Ugyldigt UUID-format for organisationsgruppe</value>
+  </data>
+  <data name="LearnHowToEnsureLink" xml:space="preserve">
+    <value>lær nur</value>
+    <comment>this text is part of MakeSureToApprovePublicApps {1}</comment>
+  </data>
+  <data name="LegacyAdministrationRemainsIntact" xml:space="preserve">
+    <value>Din gamle administration forbliver intakt, indtil overførslen er fuldført.</value>
+  </data>
+  <data name="LegacyAndroidMigrationDeviceExport" xml:space="preserve">
+    <value>Enheder på listen herunder var på Legacy-administration, da Smart-grupperne blev valgt. Enheder, der tilføjes til disse Smart-grupper i fremtiden, vises som nyligt opdagede enheder. Vælg {0} for at se opdeling af alle enheder, der blev overført, inklusive enheder fra Smart-grupper, der kan være blevet fjernet.</value>
+    <comment>{0} will be replaced by another key with text 'Export Details'.</comment>
+  </data>
+  <data name="LegacyAndroidMigrationGotEasier" xml:space="preserve">
+    <value>Overførelse og overvågning af din Legacy Android-administration til arbejdsprofiler er blevet nemmere!</value>
+  </data>
+  <data name="LegacyAndroidMigrationHelpText" xml:space="preserve">
+    <value>Hjælp til Legacy Android-overførsel</value>
+  </data>
+  <data name="LegacyAndroidMigrationTitle" xml:space="preserve">
+    <value>Legacy Android-overførsel</value>
+  </data>
+  <data name="LegacyAndroidMigrationWelcomeWindowDescription" xml:space="preserve">
+    <value>Overfør nu for at få mere kontrol og ensartethed på tværs af alle OEM-enheder med forbedret sikkerhed og en bedre overordnet oplevelse for medarbejdere med BYOD-enheder.</value>
+  </data>
+  <data name="LockDownAllowWorkApps" xml:space="preserve">
+    <value>Lås arbejdsstyrede enheder med Launcher og avancerede enhedsbegrænsninger. Tillad, at arbejds-apps og -data gemmes separat for medarbejderejede enheder.</value>
+  </data>
+  <data name="MakeSureLink" xml:space="preserve">
+    <value>offentlig app</value>
+    <comment>this text is part of MakeSureToApprovePublicApps {0}</comment>
+  </data>
+  <data name="MakeSureToApprovePublicApps" xml:space="preserve">
+    <value>Sørg for, at alle offentlige apps er godkendt for din organisation {0}, og lær, hvordan man sikrer, at medarbejdere har alt, hvad de behøver for at forblive produktive {1}.</value>
+    <comment>{0} and {1} will be replaced by another key with text 'here'.</comment>
+  </data>
+  <data name="MakeSureToApprovePublicAppsWorkManaged" xml:space="preserve">
+    <value>Sørg for, at alle {0} er godkendt for din organisation og {1} for at sikre, at medarbejdere har alt, hvad de behøver for at forblive produktive.</value>
+    <comment>{0} will be replaced by key MakeSureLink, {1} by LearnHowToEnsureLink</comment>
+  </data>
+  <data name="ManageBothApps" xml:space="preserve">
+    <value>Styr offentlige og interne apps</value>
+  </data>
+  <data name="MigrateEveryFeature" xml:space="preserve">
+    <value>Overfør enheder uden behov for nulstilling af fabriksindstilling eller genstart og sørg for, at alle funktioner fungerer på tværs af alle OEM-enheder med lethed.</value>
+  </data>
+  <data name="MigrateMoreControl" xml:space="preserve">
+    <value>Overfør med mere styring og ensartethed</value>
+  </data>
+  <data name="MigrateWithConfidence" xml:space="preserve">
+    <value>Overfør med tillid</value>
+  </data>
+  <data name="Migrating" xml:space="preserve">
+    <value>Overførsel</value>
+  </data>
+  <data name="MigrationAllCompatible" xml:space="preserve">
+    <value>Alle {0} Legacy Android-enheder i de valgte smart-grupper er berettiget til overførsel.</value>
+    <comment>{0} will be replaced by a number.</comment>
+  </data>
+  <data name="MigrationCertificate" xml:space="preserve">
+    <value>Overførselscertifikat</value>
+  </data>
+  <data name="MigrationDeleteSuccessMessage" xml:space="preserve">
+    <value>{0} er blevet slettet.</value>
+    <comment>{0} will be replaced by a migration name</comment>
+  </data>
+  <data name="MigrationDescription" xml:space="preserve">
+    <value>Når de ansatte har valgt at opgradere til Android Enterprise, vil denne meddelelse give dem besked om overførslen og anmode dem om at foretage handlinger for at fortsætte</value>
+  </data>
+  <data name="MigrationLimitReached" xml:space="preserve">
+    <value>Overførsel kan højst have 10 SmartGroup-tildelinger</value>
+  </data>
+  <data name="MigrationMessageDescription" xml:space="preserve">
+    <value>Når de ansatte har valgt at opgradere til Android Enterprise, vil denne meddelelse give dem besked om overførslen og anmode dem om at foretage handlinger for at fortsætte.</value>
+  </data>
+  <data name="MigrationMessagePlaceholder" xml:space="preserve">
+    <value>Opgrader til Android Enterprise nu for nem og sikker adgang til alle dine apps på ét sted. Hvis du beslutter, at det ikke er for dig, kan du til enhver tid slå denne funktion fra. Gå til Indstillinger &gt; Konti &gt; Indstillinger for arbejdsprofil.</value>
+  </data>
+  <data name="MigrationNoDevicesCompatible" xml:space="preserve">
+    <value>Ingen enheder i de valgte smart-grupper er berettiget til overførsel. Vælg smart-grupper, der inkluderer Legacy Android-enheder, for at fortsætte.</value>
+  </data>
+  <data name="MigrationNotFound" xml:space="preserve">
+    <value>Overførsel ikke fundet.</value>
+  </data>
+  <data name="MigrationSomeDevicesCompatible" xml:space="preserve">
+    <value>{0} ud af {1} Legacy Android-enheder i de valgte smart-grupper er berettiget til overførsel. Hvis du fortsætter, vil overførsel kun blive anvendt på disse enheder.</value>
+    <comment>{0} and {1} will be replaced by a number.</comment>
+  </data>
+  <data name="MigrationSuccessMessage" xml:space="preserve">
+    <value>{0} er blevet oprettet.</value>
+    <comment>{0} will be replaced by a string containing the name of a new migration</comment>
+  </data>
+  <data name="MigrationTitlePlaceholder" xml:space="preserve">
+    <value>Hold dit personlige liv og dit arbejdsliv adskilt, på samme enhed</value>
+  </data>
+  <data name="MigrationType" xml:space="preserve">
+    <value>Overførselstype</value>
+  </data>
+  <data name="MissingCertificateError" xml:space="preserve">
+    <value>Upload venligst et overførselscertifikat</value>
+  </data>
+  <data name="MonitoringLegacyAndroidMigration" xml:space="preserve">
+    <value>Overvågning</value>
+  </data>
+  <data name="MoreControlAndConstistency" xml:space="preserve">
+    <value>Mere kontrol og ensartethed</value>
+  </data>
+  <data name="NeedsAttention" xml:space="preserve">
+    <value>Kræver opmærksomhed</value>
+  </data>
+  <data name="NewLegacyAndroidMigration" xml:space="preserve">
+    <value>Ny overførsel</value>
+  </data>
+  <data name="NewMigrationTitle" xml:space="preserve">
+    <value>Ny overførsel</value>
+  </data>
+  <data name="NoDevicesError" xml:space="preserve">
+    <value>Ingen enheder i de valgte smart-grupper er kompatible med henblik på overførsel. Vælg venligst kompatible enheder, før du fortsætter.</value>
+  </data>
+  <data name="NoEligibleDevices" xml:space="preserve">
+    <value>Der blev ikke fundet nogen berettigede Legacy Android-enheder</value>
+  </data>
+  <data name="NoEligibleDevicesEdit" xml:space="preserve">
+    <value>Der blev ikke fundet nogen nye berettigede Legacy Android-enheder</value>
+  </data>
+  <data name="NoImpactOnExistingDevices" xml:space="preserve">
+    <value>Ingen indflydelse på eksisterende enheder</value>
+  </data>
+  <data name="NoNewDevices" xml:space="preserve">
+    <value>Der blev  ikke fundet nogen nye understøttende Legacy Android-enheder i de valgte Smart-grupper.</value>
+  </data>
+  <data name="NoOgFound" xml:space="preserve">
+    <value>Der blev ikke fundet en organisationsgruppe for den angivne organisationsgruppes UUID.</value>
+  </data>
+  <data name="NotCompatible" xml:space="preserve">
+    <value>Ikke kompatibel</value>
+  </data>
+  <data name="NotCompleteDeviceControl" xml:space="preserve">
+    <value>Det er ikke nødvendigt at fuldføre enhedsstyring, da arbejdsapps og deres data gemmes og styres separat fra personlige apps.</value>
+  </data>
+  <data name="PreparingCommand" xml:space="preserve">
+    <value>Forbereder kommando</value>
+  </data>
+  <data name="Prerequisites" xml:space="preserve">
+    <value>Forudsætninger</value>
+  </data>
+  <data name="PrerequisitesDescription" xml:space="preserve">
+    <value>Før du overfører, skal du sørge for, at du har fuldført de påkrævede forudsætninger for at sikre, at overførslen går igennem uden problemer. Ellers kan det føre til enten mislykkede overførsler eller at brugerne ikke får adgang til alle de apps, de har behov for.</value>
+  </data>
+  <data name="ProvideUnifiedAppExperience" xml:space="preserve">
+    <value>Giv medarbejdere en mere ensartet og pålidelig oplevelse, og tillad at offentlige apps kan installeres lydløst på enhver enhed. Arbejdsadministrerede enheder kan også lydløst installere interne apps.</value>
+  </data>
+  <data name="PublishedAsAPrivateApp" xml:space="preserve">
+    <value>privat app</value>
+    <comment>this text is pat of PublishInternalAppsInPlayStoreWorkManaged {0}</comment>
+  </data>
+  <data name="PublishInternalApps" xml:space="preserve">
+    <value>Udgiv interne apps</value>
+  </data>
+  <data name="PublishInternalAppsInPlayStore" xml:space="preserve">
+    <value>Sørg for, at alle interne apps udgives som en privat app i Google Play Store {0}. {1}</value>
+    <comment>{0} will be replaced by another key with text 'here'. 
+{1} will be replaced by another key with text 'Learn More'.</comment>
+  </data>
+  <data name="PublishInternalAppsInPlayStoreWorkManaged" xml:space="preserve">
+    <value>Sørg for, at alle interne apps udgives som en {0} i Google Play-butikkem for arbejdsprofilenheder. Interne apps kan installeres lydløst med Workspace One UEM for arbejdsadministrerede enheder. {1}</value>
+    <comment>{0} will be replaced by another key with text 'private app'. 
+{1} will be replaced by another key with text 'Learn More'.</comment>
+  </data>
+  <data name="PushMigrationOut" xml:space="preserve">
+    <value>Efter gennemførte, faseinddelte overførsler skal du pushe din overførsel til resten af din organisation.</value>
+  </data>
+  <data name="RecreateLegacyProfiles" xml:space="preserve">
+    <value>Legacy-profiler</value>
+    <comment>this text is part of RecreateLegacyProfilesProductsToNew {0}</comment>
+  </data>
+  <data name="RecreateLegacyProfilesProductsToNew" xml:space="preserve">
+    <value>Opret {0} som nye profiler, og opret nemt {1} med legacy-profiler for arbejdsstyrede enheder, inden du overfører.</value>
+    <comment>{0} will be replaced by RecreateLegacyProfiles and {1} by RecreateProducts</comment>
+  </data>
+  <data name="RecreateLegacyProfilesToNew" xml:space="preserve">
+    <value>Genopret Legacy-profiler som nye profiler {0} før overførsel.</value>
+    <comment>{0} will be replaced by another key with text 'here'.</comment>
+  </data>
+  <data name="RecreateProducts" xml:space="preserve">
+    <value>produkter</value>
+    <comment>this text is part of RecreateLegacyProfilesProductsToNew {1}</comment>
+  </data>
+  <data name="RecreateProfiles" xml:space="preserve">
+    <value>Opret profiler igen</value>
+  </data>
+  <data name="RecreateProfilesAndProducts" xml:space="preserve">
+    <value>Opret profiler og produkter igen</value>
+  </data>
+  <data name="RetrieveMigrationCertificate" xml:space="preserve">
+    <value>Hent overførselscertifikat</value>
+  </data>
+  <data name="RetrieveMigrationCertificateDescription" xml:space="preserve">
+    <value>Et certifikat er påkrævet for at sikre overførselsintegritet. Kontakt din Zebra-repræsentant for at generere et certifikat for din virksomhed.</value>
+  </data>
+  <data name="RetryMigrationSuccess" xml:space="preserve">
+    <value>En meddelelse bliver sendt til valgte enheder om overførslen, og anmoder dem om at foretage handlinger for at fortsætte.</value>
+  </data>
+  <data name="SeeDevicesCompleteInprogressAssigned" xml:space="preserve">
+    <value>Se, hvilke enheder der er fuldført, i gang og tildelt.</value>
+  </data>
+  <data name="SelectMigrationSmartGroups" xml:space="preserve">
+    <value>Vælg de smart-grupper, som du ønsker at overføre.</value>
+  </data>
+  <data name="SelectMigrationType" xml:space="preserve">
+    <value>Vælg overførselstype</value>
+  </data>
+  <data name="SeparateWorkAndPersonalApps" xml:space="preserve">
+    <value>Hold arbejdsapps og personlige apps separate og sikre</value>
+  </data>
+  <data name="SetUpLegacyAndroidMigration" xml:space="preserve">
+    <value>Migrering og overvågning bliver enklere med de værktøjer, du har brug for til at maksimere styring og konsistens.</value>
+  </data>
+  <data name="SmartGroupInAccessible" xml:space="preserve">
+    <value>Smart-gruppen blev ikke fundet, eller brugeren har ikke adgang til den</value>
+  </data>
+  <data name="SmartGroupMore" xml:space="preserve">
+    <value>+{0} Flere</value>
+    <comment>{0} will be replaced by a number. 
+e.g.  + 5 More</comment>
+  </data>
+  <data name="TestFewDevices" xml:space="preserve">
+    <value>Test et par enheder for at sikre, at ansattes enheder er blevet overført.</value>
+  </data>
+  <data name="TestingLegacyAndroidMigration" xml:space="preserve">
+    <value>Tester</value>
+  </data>
+  <data name="TrackDeviceProgressLegacyAndroidMigration" xml:space="preserve">
+    <value>Overvåg enheders fremskridt og overførselstilstand, før du pusher dem til organisationen.</value>
+  </data>
+  <data name="TrackProgressAndTakeAction" xml:space="preserve">
+    <value>Overvåg status og foretag handling</value>
+  </data>
+  <data name="UnassignedDevices" xml:space="preserve">
+    <value>{0} enheder vil blive fjernet baseret på det aktuelle valg af Smart-gruppe.</value>
+    <comment>{0} will be replaced by a number</comment>
+  </data>
+  <data name="UnifiedAppExperience" xml:space="preserve">
+    <value>Giv medarbejdere en ensartet og mere pålidelig appoplevelse.</value>
+  </data>
+  <data name="UploadCertificateHelpText" xml:space="preserve">
+    <value>Vælg overførselscertifikat til upload</value>
+  </data>
+  <data name="UserEmailCannotBeNullOrWhitespace" xml:space="preserve">
+    <value>Feltet androidWorkUserEmail må ikke være null eller tomt</value>
+  </data>
+  <data name="UserPasswordCannotBeNullOrWhitepsace" xml:space="preserve">
+    <value>Feltet androidWorkUserPassword må ikke være null eller tomt</value>
+  </data>
+  <data name="Validate" xml:space="preserve">
+    <value>Validere</value>
+  </data>
+  <data name="ValidateTooltip" xml:space="preserve">
+    <value>Validerer, hvorvidt der findes Legacy Android-enheder i de valgte Smart-grupper</value>
+  </data>
+  <data name="VerifyNetworkSettings" xml:space="preserve">
+    <value>Bekræft netværksindstillinger</value>
+  </data>
+  <data name="WaitingOnUser" xml:space="preserve">
+    <value>Venter på Bruger</value>
+  </data>
+  <data name="WhatIsMigrationFor" xml:space="preserve">
+    <value>Hvad gør denne overførsel?</value>
+  </data>
+  <data name="WhatToExpect" xml:space="preserve">
+    <value>Hvad der kan forventes</value>
+  </data>
+  <data name="WorkManagedMigrationDescription" xml:space="preserve">
+    <value>Overfør virksomhedsejede enheder fra enhedsadministrator for arbejdsstyret. Kræver Zebra-enheder med Android 7 og højere.</value>
+  </data>
+  <data name="WorkProfileMigrationDescription" xml:space="preserve">
+    <value>Overfør personligt ejet enheder fra enhedsadministrator til arbejdsprofil.</value>
+  </data>
+</root>

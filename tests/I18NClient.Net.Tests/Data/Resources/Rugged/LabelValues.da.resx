@@ -1,0 +1,965 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AC" xml:space="preserve">
+    <value>Vekselstrøm</value>
+  </data>
+  <data name="AccessToDeviceReprocessProductsMenuTooltip" xml:space="preserve">
+    <value>Giver medarbejdere adgang til produktmenuen Genbehandling for hurtigere fejlfinding.</value>
+  </data>
+  <data name="ACorFullBattery" xml:space="preserve">
+    <value>AC eller fuldt batteri</value>
+  </data>
+  <data name="ACPowerCondition" xml:space="preserve">
+    <value>Planlæg dine handlinger, så de udføres, når enheden er sluttet til strøm (f.eks. når den placeres i en holder eller sættes i stikkontakten)</value>
+  </data>
+  <data name="AddAgentPackages" xml:space="preserve">
+    <value>Tilføj Hub-/Agent-pakke</value>
+  </data>
+  <data name="AddFileServer" xml:space="preserve">
+    <value>Tilføj filserver</value>
+  </data>
+  <data name="AddPinnedAppsHelp" xml:space="preserve">
+    <value>Tilføjelse af en række med fastgjorte apps vil gennemtvinge en minimering af titellinjen på grund af pladsbegrænsninger på enhedens startskærm.</value>
+  </data>
+  <data name="AddPinnedAppsRow" xml:space="preserve">
+    <value>Tilføj række for fastgjorte apps</value>
+  </data>
+  <data name="AddToLauncher" xml:space="preserve">
+    <value>Føj til startprogram</value>
+  </data>
+  <data name="AfterDurationExceeded" xml:space="preserve">
+    <value>Efter varighed er overskredet</value>
+  </data>
+  <data name="AgentPackages" xml:space="preserve">
+    <value>Hub-/Agent-pakker</value>
+  </data>
+  <data name="AgentPackagesMenuTitle" xml:space="preserve">
+    <value>Vis og tilføj Hub-/Agent-pakker</value>
+  </data>
+  <data name="AirwatchMdmAgentUpgrade" xml:space="preserve">
+    <value>AirWatch MDM Agent-opgradering</value>
+  </data>
+  <data name="Airwatchmdmagentupgradefile" xml:space="preserve">
+    <value>AirWatch MDM Agent-opgraderingsfil</value>
+  </data>
+  <data name="AndroidAvailableSystemActions" xml:space="preserve">
+    <value>Kør formål, Genstart, Anvend brugerdefinerede indstillinger, Launcher-logout.</value>
+  </data>
+  <data name="AndroidFile" xml:space="preserve">
+    <value>Fil</value>
+  </data>
+  <data name="ApplicationAssignmentsCount" xml:space="preserve">
+    <value>Opgaver</value>
+  </data>
+  <data name="AssistCommandLine" xml:space="preserve">
+    <value>Kommandolinje</value>
+  </data>
+  <data name="AssistManageFiles" xml:space="preserve">
+    <value>Administrer filer</value>
+  </data>
+  <data name="AssistRemoteAssist" xml:space="preserve">
+    <value>Remote Assist</value>
+  </data>
+  <data name="AssistRemoteViewIosTooltip" xml:space="preserve">
+    <value>Understøtter Fjernvisning og -styring for alle platforme, undtagen iOS, som kun understøtter Fjernvisning.</value>
+  </data>
+  <data name="AssistShareScreen" xml:space="preserve">
+    <value>Del din skærm</value>
+  </data>
+  <data name="AtleastOneCustomAttributeAndAttributeValueIsRequired" xml:space="preserve">
+    <value>Mindst én brugerdefineret attribut og attributværdi er påkrævet</value>
+  </data>
+  <data name="AutoRetry" xml:space="preserve">
+    <value>Prøv igen automatisk</value>
+  </data>
+  <data name="BackgroundApplication" xml:space="preserve">
+    <value>Baggrundsapplikation</value>
+  </data>
+  <data name="Batchimportrelayserverexplanation" xml:space="preserve">
+    <value>Relæ-serverens importfunktion kan anvendes til masseindlæsning af relæserver(e) i systemet. Brugere af relæservere bør tilknyttes en organisationsgruppe. Som reference, klik Download skabelon.</value>
+  </data>
+  <data name="BulkEnterpriseResetDescription" xml:space="preserve">
+    <value>Bemærk venligst, at denne handling kun kan anvendes for Zebra- eller Honeywell Rugged Android- og Windows Mobile-enheder, der blev tilmeldt under staging-tilmeldingsprocessen, som benytter VMware Rapid Deployment-klienten. Denne handling vil udføre sletning af enheden og derefter genstarte. Efter genstart er enheden stadig tilmeldt Workspace ONE, og den vil genopbygge sig selv til en ønsket og foruddefineret tilstand.</value>
+  </data>
+  <data name="CannotActivatePolicy_DeactivationDateIsInPast" xml:space="preserve">
+    <value>Politikken kan ikke aktiveres. Deaktivering af dato er i fortiden.</value>
+  </data>
+  <data name="CannotBeEmptyArg" xml:space="preserve">
+    <value>{0}, kan ikke være null eller tomt</value>
+  </data>
+  <data name="CannotDeactivatePolicy_ActivationDateIsInThePast" xml:space="preserve">
+    <value>Politikken kan ikke deaktiveres. Aktiveringsdatoen er i fortiden.</value>
+  </data>
+  <data name="CannotSavePolicySmartGroupNotAssigned" xml:space="preserve">
+    <value>Kan ikke gemme automatisk aktivering af politikken. Smart-gruppen er ikke tildelt.</value>
+  </data>
+  <data name="CASettingsCannotBeConfiguredAtThisOg" xml:space="preserve">
+    <value>Brugerdefinerede attributindstillinger kan ikke konfigureres ved denne organisationsgruppe.</value>
+  </data>
+  <data name="CDNShouldBeEnabled" xml:space="preserve">
+    <value>Aktiver og Gem CDN-indstillinger før aktivering af Tillad produktdownload gennem CDN-indstillinger</value>
+  </data>
+  <data name="CharactersAreRestrictedInProductName" xml:space="preserve">
+    <value>Produktnavnet må ikke indeholde tegnene {0}</value>
+  </data>
+  <data name="CloudRelayConnectionShouldFollowFormat" xml:space="preserve">
+    <value>Cloud Relay-forbindelsen skal følge formatet /DesiredFolder/Temp</value>
+  </data>
+  <data name="ConditionActionAfterDurationHelp" xml:space="preserve">
+    <value>Bestemmer, hvordan der fortsættes, efter varighed for tilstand er opfyldt.</value>
+  </data>
+  <data name="ConditionDurationHelp" xml:space="preserve">
+    <value>Angiver varigheden for, hvor længe denne tilstand vil udføre denne handling.</value>
+  </data>
+  <data name="ConditionFileNameHelp" xml:space="preserve">
+    <value>For at indstille tilstanden skal du indtaste enhedsstien og filnavnet, der skal tjekkes, før download og/eller installation af produktkomponenter på enheder.</value>
+  </data>
+  <data name="ConditionFrequencyHelp" xml:space="preserve">
+    <value>Bestemmer, hvor ofte enheder skal køre denne tilstand for at tjekke, om denne fil er blevet fundet eller ej.</value>
+  </data>
+  <data name="ConditionMetWhen" xml:space="preserve">
+    <value>Betingelse er opfyldt, når</value>
+  </data>
+  <data name="ConditionTestTypeHelp" xml:space="preserve">
+    <value>Bestemmer, om der skal downloades og/eller installeres produktkomponenter, når denne fil er fundet, eller når denne fil ikke blev fundet på enheder.</value>
+  </data>
+  <data name="ConfigureAgentTakesToSettingsConfiguration" xml:space="preserve">
+    <value>"Konfigurer Agent" videresender dig til konfigurationssiden for indstillinger for udførelse af de næste trin</value>
+  </data>
+  <data name="ConfigureWinmoAgent" xml:space="preserve">
+    <value>Konfigurer Agent</value>
+  </data>
+  <data name="ConfirmContinueWithPreviousActivationDate" xml:space="preserve">
+    <value>Du har forsøgt at ændre aktiveringsdatoen og klokkeslættet. Aktiveringsdatoen kan ikke opdateres på et aktivt produkt. Hvis du vil ændre aktiveringsdatoen, skal du annullere ændringerne og derefter deaktivere produktet. Rediger produktet, så datoen er som ønsket, og gem og aktiver derefter produktet. For at bevare den tidligere aktiveringsdato på dette aktive produkt, skal du vælge OK.</value>
+  </data>
+  <data name="ConfirmDeactivateDependentPolicy" xml:space="preserve">
+    <value>Dette produkt er afhængigt af et andet produkt. Hvis det deaktiveres, vil det have indflydelse på, hvornår følgende produkter kan køre: {0}</value>
+  </data>
+  <data name="ConsoleConnectionShouldFollowFormat" xml:space="preserve">
+    <value>Console-forbindelsesstien skal følge formatet /DesiredFolder/Temp</value>
+  </data>
+  <data name="ContentPull" xml:space="preserve">
+    <value>Content Pull</value>
+  </data>
+  <data name="CopyRelayServer" xml:space="preserve">
+    <value>Kopiér relæserver</value>
+  </data>
+  <data name="CopyStaging" xml:space="preserve">
+    <value>Kopiér staging</value>
+  </data>
+  <data name="CouldNotEstablishConnectionToRemoteManagementHost" xml:space="preserve">
+    <value>Der opstod en fejl under oprettelse af forbindelse til fjernstyringsagent.</value>
+  </data>
+  <data name="CustomAttributeDoesNotExist" xml:space="preserve">
+    <value>Den brugerdefinerede attribut, som du forsøger at få adgang til, findes ikke.</value>
+  </data>
+  <data name="CustomAttributeNameIsRequired" xml:space="preserve">
+    <value>Brugerdefineret attributnavn er påkrævet</value>
+  </data>
+  <data name="CustomAttributesFieldsRequired" xml:space="preserve">
+    <value>Alle felter skal udfyldes</value>
+  </data>
+  <data name="CustomAttributesOnlyExplanation" xml:space="preserve">
+    <value>Anvend denne batch-importtype til at tilføje eller opdatere brugerdefinerede attributter og deres indstillinger (Bemærk: Der kræves mindst én brugerdefineret attributværdi).</value>
+  </data>
+  <data name="DailyInterval" xml:space="preserve">
+    <value>Dagligt interval</value>
+  </data>
+  <data name="DailyIntervalPlaceholder" xml:space="preserve">
+    <value>Indtast et tal mellem 1 og 7</value>
+  </data>
+  <data name="DateTimeIsNotInAllowedRange" xml:space="preserve">
+    <value>Kun dato og tidspunkt mellem {0} og {1} bør være tilladt.</value>
+  </data>
+  <data name="DeleteApplicationWithLinkedPoliciesWarning" xml:space="preserve">
+    <value>Du kan ikke slette denne app, fordi den bliver anvendt i et eller flere produkt(er) lige nu. Fjern venligst appen fra produktet ved at redigere den. Når redigeringen er afsluttet, kan du slette appen.</value>
+  </data>
+  <data name="DeleteApplicationWithLinkedStagingWarning" xml:space="preserve">
+    <value>Du kan ikke slette dette program, fordi det anvendes i en eller flere staging-definition(er) lige nu. Vælg venligst et andet program ved at redigere staging-definitionen eller ved at slette staging-definitionen. Når dette er udført, kan du slette programmet.</value>
+  </data>
+  <data name="DeleteAttributesWithLinkedRegisteredDevicesWarning" xml:space="preserve">
+    <value>Brugerdefinerede attributter, der aktuelt er linket til registrerede enheder, kan ikke slettes. Fjern først attributterne fra de registrerede enheder.</value>
+  </data>
+  <data name="DeleteEventActionWithLinkedPoliciesWarning" xml:space="preserve">
+    <value>Du kan ikke slette denne Begivenhedshandling, da den aktuelt anvendes i et eller flere Produkt(er). Frakobl venligst Begivenhedshandlingen fra Produktet ved at redigere den. Når den er redigeret, kan du slette Begivenhedshandlingen.</value>
+  </data>
+  <data name="DeleteEventActionWithLinkedStagingWarning" xml:space="preserve">
+    <value>Du kan ikke slette denne EventAction, fordi den anvendes i en eller flere staging-definition(er) lige nu. Vælg venligst en anden EventAction ved at redigere staging-definitionen eller ved at slette staging-definitionen. Når dette er udført, kan du slette denne EventAction.</value>
+  </data>
+  <data name="DeleteFileActionWithLinkedPoliciesWarning" xml:space="preserve">
+    <value>Du kan ikke slette denne fil/handling, fordi den anvendes i et eller flere produkt(er) lige nu. Fjern venligst filen/handlingen fra produktet ved at redigere den. Når redigeringen er afsluttet, kan du fjerne filen/handlingen.</value>
+  </data>
+  <data name="DeleteFileActionWithLinkedStagingWarning" xml:space="preserve">
+    <value>Du kan ikke slette denne fil/handling, fordi den anvendes i en eller flere staging-definition(er) lige nu. Vælg venligst en anden fil/handling ved at redigere Staging-definitionen eller ved at slette Staging-definitionen. Når dette er fuldført, kan du slette filen/handlingen.</value>
+  </data>
+  <data name="DeleteProductWithAppTunnelingEnabledError" xml:space="preserve">
+    <value>Kan ikke slette dette produkt, fordi et eller flere Installer app-manifester er konfigureret med app-tunnelføring. Fjern konfigurationen, og prøv igen</value>
+  </data>
+  <data name="DeleteProfileWithLinkedPoliciesWarning" xml:space="preserve">
+    <value>Du kan ikke slette denne profil, fordi den anvendes i et eller flere produkt(er) lige nu. Fjern venligst profilen fra produktet ved at redigere den. Når redigering er afsluttet, kan du slette profilen.</value>
+  </data>
+  <data name="DeleteProfileWithLinkedStagingWarning" xml:space="preserve">
+    <value>Du kan ikke slette denne profil, fordi den anvendes i en eller flere staging-definition(er) lige nu. Vælg venligst en anden profil ved at redigere staging-definitionen eller ved at slette staging-definitionen. Når dette er udført, kan du slette profilen.</value>
+  </data>
+  <data name="DeploymentMode" xml:space="preserve">
+    <value>Udrulningstilstand</value>
+  </data>
+  <data name="DestinationMustBeDirectoryPath" xml:space="preserve">
+    <value>Destination skal være en mappesti</value>
+  </data>
+  <data name="DeviceConnectionShouldFollowFormat" xml:space="preserve">
+    <value>Enhedsforbindelsesstien skal følge formatet /DesiredFolder/Temp</value>
+  </data>
+  <data name="DeviceFriendlyNameLookUpText" xml:space="preserve">
+    <value>Enhedsnavn</value>
+  </data>
+  <data name="DevicePlatformID" xml:space="preserve">
+    <value>Identifikator for enhedsplatform</value>
+  </data>
+  <data name="DevicePolicyJobStatusNoJobs" xml:space="preserve">
+    <value>Ingen opdaver</value>
+  </data>
+  <data name="DeviceReprocess" xml:space="preserve">
+    <value>Enhedsgenbehandling</value>
+  </data>
+  <data name="DeviceReprocessTooltip" xml:space="preserve">
+    <value>Giver medarbejderne mulighed for at genbehandle produkter.</value>
+  </data>
+  <data name="DeviceTypeOfTheFileIsInvalid" xml:space="preserve">
+    <value>Enhedstypen for filen er ugyldig. Enhedstypen bør være en enhedsplatform som f.eks. Android, Apple osv.</value>
+  </data>
+  <data name="DeviceWillNeedToBePluggedIn" xml:space="preserve">
+    <value>Enheden skal være tilsluttet eller være tilstrækkeligt opladet, for at handlingen kan finde sted. Felterne for meddelelse og forskydning gælder ikke, når denne tilstand er en del af en begivenhed/handling.</value>
+  </data>
+  <data name="DoubleQuotesForCommandLineIsRequired" xml:space="preserve">
+    <value>Der kræves dobbelte anførselstegn for kommandolinjen</value>
+  </data>
+  <data name="DownloadAndDeployMotoDcCabFile" xml:space="preserve">
+    <value>For rapportering af metrikker på Motorola-enheder skal du downloade og udrulle MotoDC.cab-filen fra</value>
+  </data>
+  <data name="DownloadFiles" xml:space="preserve">
+    <value>Download filer</value>
+  </data>
+  <data name="DownloadPullServiceConfig" xml:space="preserve">
+    <value>Download konfiguration for pull-tjeneste</value>
+  </data>
+  <data name="EditFileServer" xml:space="preserve">
+    <value>Rediger filserver</value>
+  </data>
+  <data name="EditStaging" xml:space="preserve">
+    <value>Rediger staging</value>
+  </data>
+  <data name="EndDay" xml:space="preserve">
+    <value>Slutdato</value>
+  </data>
+  <data name="EndHour" xml:space="preserve">
+    <value>Sluttime</value>
+  </data>
+  <data name="EndMinute" xml:space="preserve">
+    <value>Slutminut</value>
+  </data>
+  <data name="EndMonth" xml:space="preserve">
+    <value>Slutmåned</value>
+  </data>
+  <data name="EndTimeShouldBeLaterThanStartTime" xml:space="preserve">
+    <value>Sluttidspunktet skal være senere end starttidspunktet</value>
+  </data>
+  <data name="EndTimeUtc" xml:space="preserve">
+    <value>Sluttidspunkt (UTC)</value>
+  </data>
+  <data name="EndYear" xml:space="preserve">
+    <value>Slutår</value>
+  </data>
+  <data name="EnterAdminModeConfirmed" xml:space="preserve">
+    <value>Åbn admin-tilstand bekræftet</value>
+  </data>
+  <data name="EnterAdminModeFailed" xml:space="preserve">
+    <value>Åbn admin-tilstand mislykket</value>
+  </data>
+  <data name="EnterAdminModeRefused" xml:space="preserve">
+    <value>Åbn admin-tilstand afvist</value>
+  </data>
+  <data name="EnterAdminModeRequested" xml:space="preserve">
+    <value>Åbn admin-tilstand anmodet</value>
+  </data>
+  <data name="EnterAdminModeSuccess" xml:space="preserve">
+    <value>Åbn admin-tilstand lykkedes</value>
+  </data>
+  <data name="ErrorParsingRemoteFeature" xml:space="preserve">
+    <value>Der opstod en fejl under parsing af Remote Assist-featuren "{0}"</value>
+  </data>
+  <data name="ErrorReturnedFromHoneywellServer" xml:space="preserve">
+    <value>Der blev returneret en fejl fra Honeywell Server</value>
+  </data>
+  <data name="ErrorReturnedFromZebraServer" xml:space="preserve">
+    <value>Der blev returneret en fejl fra Zebra-serveren</value>
+  </data>
+  <data name="EventActionAndroidPrerequisite" xml:space="preserve">
+    <value>Tilføj mindst én betingelse for at udløse handling(er). Du kan tilføje tidligere oprettede betingelser eller oprette nye betingelser her med valgmuligheden "Tilføj betingelse". Der kan vælges mere end én type betingelse ad gangen, men kun én betingelse for en bestemt type kan vælges. Hvis en betingelse er valgt med samme type som en, der allerede er valgt, vil den erstatte den tidligere valgte. Tilladt betingelsestype er batterigrænse, tilbagevendende tidsplan og vekselstrøm.</value>
+  </data>
+  <data name="EventActionLinkedToPolicyOrStagingAndCanNotBeMovedToNonAccessibleOgs" xml:space="preserve">
+    <value>Begivenhedshandling er knyttet til nogle produkter eller staging-pakker. Derfor kan begivenhedshandlingen ikke flyttes til OG'er, som ikke er tilgængelige for sammenkædede komponenter.</value>
+  </data>
+  <data name="ExitAdminModeConfirmed" xml:space="preserve">
+    <value>Luk admin-tilstand bekræftet</value>
+  </data>
+  <data name="ExitAdminModeFailed" xml:space="preserve">
+    <value>Luk admin-tilstand mislykket</value>
+  </data>
+  <data name="ExitAdminModeRefused" xml:space="preserve">
+    <value>Luk admin-tilstand afvist</value>
+  </data>
+  <data name="ExitAdminModeRequested" xml:space="preserve">
+    <value>Luk admin-tilstand anmodet</value>
+  </data>
+  <data name="ExitAdminModeSuccess" xml:space="preserve">
+    <value>Luk admin-tilstand lykkedes</value>
+  </data>
+  <data name="ExitAirwatchLauncher" xml:space="preserve">
+    <value>Afslut Launcher</value>
+  </data>
+  <data name="ExitAirwatchLauncherConfirmed" xml:space="preserve">
+    <value>Afslut Launcher bekræftet</value>
+  </data>
+  <data name="ExitAirwatchLauncherFailed" xml:space="preserve">
+    <value>Afslut Launcher mislykket</value>
+  </data>
+  <data name="ExitAirwatchLauncherRefused" xml:space="preserve">
+    <value>Afslut Launcher afvist</value>
+  </data>
+  <data name="ExitAirwatchLauncherRequested" xml:space="preserve">
+    <value>Afslut Launcher anmodet</value>
+  </data>
+  <data name="ExitAirWatchLauncherSuccess" xml:space="preserve">
+    <value>Afslut Launcher lykkedes</value>
+  </data>
+  <data name="Expedited" xml:space="preserve">
+    <value>Fremskyndet</value>
+  </data>
+  <data name="ExpeditedProductTooltip" xml:space="preserve">
+    <value>Produktet skal deaktiveres for at kunne redigere denne indstilling.</value>
+  </data>
+  <data name="ExpeditedProvisioningPolicyEdit" xml:space="preserve">
+    <value>Redigering af fremskyndet klargøringspolitik</value>
+  </data>
+  <data name="ExpeditedProvisioningPolicyEditHelp" xml:space="preserve">
+    <value>Styrer adgang til at redigere indstilling for fremskyndet udrulning i Klargøringspolitik.</value>
+  </data>
+  <data name="FileActionLinkedToPolicyOrStagingAndCanNotBeMovedToNonAccessibleOgs" xml:space="preserve">
+    <value>File Action er knyttet til nogle produkter eller staging-pakker. Derfor kan den ikke flyttes til OG'er, som ikke er tilgængelige for sammenkædede komponenter.</value>
+  </data>
+  <data name="FileActionsFilePathError" xml:space="preserve">
+    <value>Navn og downloadsti må sammenlagt maksimalt være 255 tegn</value>
+  </data>
+  <data name="FileFound" xml:space="preserve">
+    <value>Fil fundet</value>
+  </data>
+  <data name="FileServerAssociatedWithEventActionArgs" xml:space="preserve">
+    <value>{0} filserver bruges med {1}</value>
+  </data>
+  <data name="FileServerDeleteFailed" xml:space="preserve">
+    <value>Du kan ikke slette denne filserver, da den aktuelt anvendes i følgende begivenhedshandling(er). Frakobl venligst filserveren fra begivenhedshandlingen ved at redigere den. Når den er redigeret, kan du slette filserveren</value>
+  </data>
+  <data name="FileServerDeleteSuccessful" xml:space="preserve">
+    <value>Filserver blev slettet</value>
+  </data>
+  <data name="FileServerDetails" xml:space="preserve">
+    <value>Oplysninger om filserver</value>
+  </data>
+  <data name="FileServerNameIsRequired" xml:space="preserve">
+    <value>Filservernavn skal udfyldes</value>
+  </data>
+  <data name="FileServers" xml:space="preserve">
+    <value>Filservere</value>
+  </data>
+  <data name="FileServerUsernameIsRequired" xml:space="preserve">
+    <value>Brugernavn til filserver skal angives</value>
+  </data>
+  <data name="FileSyncDownload" xml:space="preserve">
+    <value>Download af filsynkronisering</value>
+  </data>
+  <data name="FileSyncUpload" xml:space="preserve">
+    <value>Upload af synkronisering af filer</value>
+  </data>
+  <data name="FirstFieldShouldBeSmallerThanSecondField" xml:space="preserve">
+    <value>Ugyldige værdier. Sørg for, at det første felt indeholder et lavere tal end det andet felt.</value>
+  </data>
+  <data name="FiveDays" xml:space="preserve">
+    <value>5 dage</value>
+  </data>
+  <data name="GenerateHoneywellBarcode" xml:space="preserve">
+    <value>Generer Honeywell-stregkode</value>
+  </data>
+  <data name="GenerateHoneywellBarcodeDisclaimerText" xml:space="preserve">
+    <value>Derved foretages der et opkald til Honeywell Enterprise Provisioner-stregkodegeneratoren om at oprette stregkoder, der repræsenterer de data, som er valgt på denne side.
+
+VMware styrer ikke dette websted og frasiger sig udtrykkeligt ethvert ansvar for indholdet. Hvis du opretter stregkoder fra denne side, sker det på egen risiko.</value>
+  </data>
+  <data name="HideActionBar" xml:space="preserve">
+    <value>Minimer titellinje</value>
+  </data>
+  <data name="Honeywell" xml:space="preserve">
+    <value>Honeywell Enterprise Provisioner</value>
+  </data>
+  <data name="HoneywellBarcode" xml:space="preserve">
+    <value>Honeywell-stregkode</value>
+  </data>
+  <data name="HoneywellEP" xml:space="preserve">
+    <value>Honeywell Enterprise Provisioner</value>
+  </data>
+  <data name="HoneywellEPUrl" xml:space="preserve">
+    <value>Honeywell Enterprise Provisioner-URL-adresse</value>
+  </data>
+  <data name="HostPlaceHolder" xml:space="preserve">
+    <value>* eller 1.2.3.4 eller 10.0.0.0-10.0.0.255</value>
+  </data>
+  <data name="HourlyInterval" xml:space="preserve">
+    <value>Timeinterval</value>
+  </data>
+  <data name="HourlyIntervalPlaceholder" xml:space="preserve">
+    <value>Indtast et tal mellem 1 og 24</value>
+  </data>
+  <data name="HttpsNotSupportedForPushRelayServers" xml:space="preserve">
+    <value>Https-protokol for enhedsforbindelse understøttes ikke på push-relæserver</value>
+  </data>
+  <data name="HubPackageAlreadyExists" xml:space="preserve">
+    <value>Hub-pakke med samme filnavn ELLER pakkenavn og version findes allerede</value>
+  </data>
+  <data name="IntelligentHub" xml:space="preserve">
+    <value>Intelligent Hub</value>
+  </data>
+  <data name="InvalidDateTimeInputs" xml:space="preserve">
+    <value>Input om dato og tidspunkt er ugyldigt eller ufuldstændigt. Indtast korrekt input.</value>
+  </data>
+  <data name="InvalidHoneywellRelayServerProtocol" xml:space="preserve">
+    <value>Honeywell understøtter ikke denne relæserverprotokol.</value>
+  </data>
+  <data name="InvalidOrganizationGroupsForStagingAndProductionServers" xml:space="preserve">
+    <value>Ugyldige organisationsgrupper for staging og produktionsservere</value>
+  </data>
+  <data name="IOTGateway" xml:space="preserve">
+    <value>IOT-gateway</value>
+  </data>
+  <data name="IsExpedited" xml:space="preserve">
+    <value>Fremskynd udrulning</value>
+  </data>
+  <data name="LastContactDate" xml:space="preserve">
+    <value>Seneste kontaktdato</value>
+  </data>
+  <data name="LastErrorCode" xml:space="preserve">
+    <value>Seneste fejlkode</value>
+  </data>
+  <data name="Launcher" xml:space="preserve">
+    <value>Launcher</value>
+  </data>
+  <data name="LauncherAction" xml:space="preserve">
+    <value>Launcher</value>
+  </data>
+  <data name="LauncherCheckInCheckOutCondtion" xml:space="preserve">
+    <value>Udfør handlinger, når Launcher er tjekket ind eller ud.</value>
+  </data>
+  <data name="LauncherLogout" xml:space="preserve">
+    <value>Log af Launcher</value>
+  </data>
+  <data name="LauncherMiscAppWildcardRuleInfo" xml:space="preserve">
+    <value>Du kan anvende tegnet '*' til automatisk at tillade apps, hvis de passer til det pågældende mønster. Eksempel: com.example.*</value>
+  </data>
+  <data name="LegacyAgent" xml:space="preserve">
+    <value>Agent</value>
+  </data>
+  <data name="LegacyAirwatchAgent" xml:space="preserve">
+    <value>AirWatch Agent</value>
+  </data>
+  <data name="LinkIsRequired" xml:space="preserve">
+    <value>Filserverlink er påkrævet</value>
+  </data>
+  <data name="LowMemCondition" xml:space="preserve">
+    <value>Lav hukommelsestilstand</value>
+  </data>
+  <data name="ManifestItemAlreadyExists" xml:space="preserve">
+    <value>Manifestelementet eksisterer allerede. Vælg et andet.</value>
+  </data>
+  <data name="MaxPullConnections" xml:space="preserve">
+    <value>Maks. antal pull-forbindelser</value>
+  </data>
+  <data name="MaxPullConnectionsValueCannotBeNullOrInvalid" xml:space="preserve">
+    <value>Maks. antal pull-forbindelser kan ikke være nul eller ugyldigt</value>
+  </data>
+  <data name="MaxPushConnections" xml:space="preserve">
+    <value>Maks. antal push-forbindelser</value>
+  </data>
+  <data name="MaxPushConnectionsValueCannotBeNullOrInvalid" xml:space="preserve">
+    <value>Maks. antal push-forbindelser værdi kan ikke være nul eller ugyldigt</value>
+  </data>
+  <data name="MaxRSCCPushConnectionHelpText" xml:space="preserve">
+    <value>Rediger denne værdi for at begrænse det maksimale antal samtidige forbindelser, der bruges til at skubbe indhold til relæservere. Standardværdi: 50 forbindelser</value>
+  </data>
+  <data name="NoContentAddedToProduct" xml:space="preserve">
+    <value>Der tilføjes ingen applikations- eller filhandling til produktet.</value>
+  </data>
+  <data name="NotTested" xml:space="preserve">
+    <value>Ikke testet</value>
+  </data>
+  <data name="NoVPNProfileSelected" xml:space="preserve">
+    <value>Vælg venligst en VPN-profil for at konfigurere PerAppVPN</value>
+  </data>
+  <data name="OemBuildRuleHelpText" xml:space="preserve">
+    <value>Tildelingsregel med OEM Build-version og "&gt;" og "&lt;" er kun gyldig, når versionerne har det samme format og sammenlignes med ASCII</value>
+  </data>
+  <data name="OemBuildVersionShouldHaveDeviceManufacturerRule" xml:space="preserve">
+    <value>Regel med OEM-build-version skal også have enhedens producentattribut (kun AND-tilstand tilladt) ved brug af operatorerne "&gt;" og "&lt;".</value>
+  </data>
+  <data name="OGDeleteWarningForProducts" xml:space="preserve">
+    <value>Komponenter, der er associeret med denne organisationsgruppe, kan være knyttet til et eller flere produkter, som er associeret med en eller flere overordnede organisationsgrupper. Hvis du sletter denne organisationsgruppe, gøres disse produkter i en eller flere overordnede organisationsgrupper ugyldige. Det anbefales at du fjerner sammenkædningen af komponenterne, før du sletter denne organisationsgruppe, eller at du også sletter de overordnede produkter.</value>
+  </data>
+  <data name="OnlyAppWithSpecifiedVersionWillBeUninstalled" xml:space="preserve">
+    <value>Den valgte programversion vil blive afinstalleret. Andre versioner af denne app vil forblive på enheden.</value>
+  </data>
+  <data name="OnlyFileServersWithCGCanBeAdded" xml:space="preserve">
+    <value>Filservere skal have en Content Gateway konfigureret for at vises på denne liste og føjes til en hændelse</value>
+  </data>
+  <data name="OnlyNumericValuesAreAllowedForSpecificOperators" xml:space="preserve">
+    <value>Kun numeriske værdier er tilladt for operatører såsom &gt;, &gt;=, &lt;, &lt;= og MELLEM</value>
+  </data>
+  <data name="OrganizationGroupIsRequired" xml:space="preserve">
+    <value>Organisationsgruppe er påkrævet</value>
+  </data>
+  <data name="OutRanked" xml:space="preserve">
+    <value>Højere rang</value>
+  </data>
+  <data name="PasswordForPullServiceCertificate" xml:space="preserve">
+    <value>Adgangskode til certifikat for pull-tjeneste</value>
+  </data>
+  <data name="PasswordIsRequired" xml:space="preserve">
+    <value>Filserveradgangskode kræves</value>
+  </data>
+  <data name="PinnedApps" xml:space="preserve">
+    <value>Fastgjorte apps</value>
+  </data>
+  <data name="PleaseEnterValidURL" xml:space="preserve">
+    <value>Indtast en gyldig URL</value>
+  </data>
+  <data name="PolicyEngineQueue" xml:space="preserve">
+    <value>Kø for politikgenerator</value>
+  </data>
+  <data name="PolicyEngineQueueMenuTitle" xml:space="preserve">
+    <value>Kø for politikgenerator</value>
+  </data>
+  <data name="PolicyId" xml:space="preserve">
+    <value>Identifikator for politik</value>
+  </data>
+  <data name="PortPlaceHolder" xml:space="preserve">
+    <value>* eller 80 eller 8080-8085</value>
+  </data>
+  <data name="ProductDeviceForceReprocessFailed" xml:space="preserve">
+    <value>Gennemtving genbehandling af produktenhed mislykkedes</value>
+  </data>
+  <data name="ProductDownloadsThroughCDN" xml:space="preserve">
+    <value>Produkt-downloads via CDN</value>
+  </data>
+  <data name="ProductionServerDescription" xml:space="preserve">
+    <value>Produktionsserver er konfigureret til at modtage produktionsindhold såsom: fil-handlinger og apps.</value>
+  </data>
+  <data name="ProductProvisioning_ColdBoot" xml:space="preserve">
+    <value>Koldstart</value>
+  </data>
+  <data name="ProductProvisioning_InstallApplication" xml:space="preserve">
+    <value>App – Installer</value>
+  </data>
+  <data name="ProductProvisioning_InstallEventAction" xml:space="preserve">
+    <value>Begivenhedshandling – Installer</value>
+  </data>
+  <data name="ProductProvisioning_InstallFilesActions" xml:space="preserve">
+    <value>Fil/handling – Installer</value>
+  </data>
+  <data name="ProductProvisioning_InstallProduct" xml:space="preserve">
+    <value>Produkt – Installer</value>
+  </data>
+  <data name="ProductProvisioning_InstallProfile" xml:space="preserve">
+    <value>Profil – Installer</value>
+  </data>
+  <data name="ProductProvisioning_Reboot" xml:space="preserve">
+    <value>Genstart</value>
+  </data>
+  <data name="ProductProvisioning_UninstallApplication" xml:space="preserve">
+    <value>App – Afinstaller</value>
+  </data>
+  <data name="ProductProvisioning_UninstallEventAction" xml:space="preserve">
+    <value>Begivenhedshandling – Afinstaller</value>
+  </data>
+  <data name="ProductProvisioning_UninstallFilesActions" xml:space="preserve">
+    <value>Fil/handling – Afinstaller</value>
+  </data>
+  <data name="ProductProvisioning_UninstallProduct" xml:space="preserve">
+    <value>Produkt – Afinstaller</value>
+  </data>
+  <data name="ProductProvisioning_UninstallProfile" xml:space="preserve">
+    <value>Profil – Afinstaller</value>
+  </data>
+  <data name="ProductProvisioning_WarmBoot" xml:space="preserve">
+    <value>Varmstart</value>
+  </data>
+  <data name="ProductProvisioningDeviceConnectionHttpsSupportFeatureDisabled" xml:space="preserve">
+    <value>Https-protokol for enhedsforbindelsesfunktion er deaktiveret</value>
+  </data>
+  <data name="ProductSetForceReprocess" xml:space="preserve">
+    <value>Gennemtving behandling igen</value>
+  </data>
+  <data name="ProductSetNameArgAlreadyExistsPleaseChooseAnother" xml:space="preserve">
+    <value>Der findes allerede et produktsæt med navnet {0}. Vælg venligst et andet navn.</value>
+  </data>
+  <data name="ProfileLinkedToPolicyOrStagingAndCanNotBeMovedToNonAccessibleOgs" xml:space="preserve">
+    <value>Profilen er knyttet til nogle produkter eller staging-pakker. Derfor kan profilen ikke flyttes til OG'er, som ikke er tilgængelige for sammenkædede komponenter.</value>
+  </data>
+  <data name="ProvisioningCommandDeleted" xml:space="preserve">
+    <value>Klargøringskommando slettet</value>
+  </data>
+  <data name="ProvisioningEventAction" xml:space="preserve">
+    <value>Begivenhedshandling</value>
+  </data>
+  <data name="ProvisioningEventActions" xml:space="preserve">
+    <value>Hændelseshandlinger</value>
+  </data>
+  <data name="PublishOnRelayServers" xml:space="preserve">
+    <value>Udgiv på relæservere</value>
+  </data>
+  <data name="PullRelayServerNotAllowed" xml:space="preserve">
+    <value>Den valgte relæservertype er ugyldig</value>
+  </data>
+  <data name="QueueContentOnRelayServer" xml:space="preserve">
+    <value>Køindhold på relæservere uden tildelte enheder</value>
+  </data>
+  <data name="RelayServerCloudConnector" xml:space="preserve">
+    <value>Cloud Connector til relæserver</value>
+  </data>
+  <data name="RelayServerCloudConnectorBatchSize" xml:space="preserve">
+    <value>Batchstørrelse for Cloud Connector-relæserver</value>
+  </data>
+  <data name="RelayServerCloudConnectorBatchSizeHelp" xml:space="preserve">
+    <value>Maks. antal indholdsinstrukser, der downloades fra WS1-serveren pr. batch. Yderligere instrukser vil blive behandlet i efterfølgende batches.</value>
+  </data>
+  <data name="RelayServerCloudConnectorEnableHelp" xml:space="preserve">
+    <value>Aktivering af denne indstilling konfigurerer Cloud Connector-relæet til at hente indhold fra VMware Cloud og pushe til relæservere på dit netværk.</value>
+  </data>
+  <data name="RelayServerCloudRelayAlreadyExists" xml:space="preserve">
+    <value>Værtsnavn, port, bruger og sti til Cloud relæ-forbindelsen er alle de samme som en anden relæserver.</value>
+  </data>
+  <data name="RelayServerCloudRelayConnection" xml:space="preserve">
+    <value>Cloud Relay-forbindelse</value>
+  </data>
+  <data name="RelayServerCountConfirm" xml:space="preserve">
+    <value>Content sættes i kø til {0} relæservere. Er du sikker på, at du vil fortsætte?</value>
+  </data>
+  <data name="RelayServerDoesNotExists" xml:space="preserve">
+    <value>Der findes ingen relæserver i den valgte OG.</value>
+  </data>
+  <data name="RelayServerDomainUserFormat" xml:space="preserve">
+    <value>Accepterede formater for domænebrugere: username@domain, domæne\bruger</value>
+  </data>
+  <data name="RelayServerDomainUserFormatError" xml:space="preserve">
+    <value>Fejl i domænebrugerformat</value>
+  </data>
+  <data name="RelayServerId" xml:space="preserve">
+    <value>Relæserver-id</value>
+  </data>
+  <data name="RelayServerOnly" xml:space="preserve">
+    <value>Kun relæserver</value>
+  </data>
+  <data name="RelayServerOnlyHelp" xml:space="preserve">
+    <value>Sørg for at relæserver er konfigureret for alle enheder, der er knyttet til dette produkt.</value>
+  </data>
+  <data name="RelayServerProtocolHTTPS" xml:space="preserve">
+    <value>HTTPS</value>
+  </data>
+  <data name="RelayServerPullConnectionInvalidPullDiscoveryText" xml:space="preserve">
+    <value>Pull-registreringstekst bør ikke indeholde 127.0.0.1</value>
+  </data>
+  <data name="RelayServerPushOrCloudRelay" xml:space="preserve">
+    <value>Push/Cloud Relay</value>
+  </data>
+  <data name="RelayServerTypeCloudRelay" xml:space="preserve">
+    <value>Cloud Relay</value>
+  </data>
+  <data name="RelayServerUserRestrictionError" xml:space="preserve">
+    <value>":"-tegn er ikke tilladt i brugernavn/adgangskode.</value>
+  </data>
+  <data name="RelayServerWithDeviceServicesBackup" xml:space="preserve">
+    <value>Relæserver med Workspace ONE-server som sikkerhedskopi</value>
+  </data>
+  <data name="RemoveFromLauncher" xml:space="preserve">
+    <value>Fjern fra Launcher</value>
+  </data>
+  <data name="ReportStatusBatchSize" xml:space="preserve">
+    <value>Rapportstatus batchstørrelse</value>
+  </data>
+  <data name="ReportStatusBatchSizeValueCannotBeNullOrInvalid" xml:space="preserve">
+    <value>Rapportstatusværdi for batchstørrelse kan ikke være nul eller ugyldig</value>
+  </data>
+  <data name="RequestDeviceServicesPinsNumberOfCertificatesReturned" xml:space="preserve">
+    <value>Pinkoder til anmodning om enhedstjenester: Antal returnerede certifikater</value>
+  </data>
+  <data name="RequestDeviceServicesPinsNumberOfHostsReturned" xml:space="preserve">
+    <value>Pinkoder til anmodning om enhedstjenester: Antal returnerede værter</value>
+  </data>
+  <data name="RequestDeviceServicesPinsUpdated" xml:space="preserve">
+    <value>Opdaterede pinkoder til anmodning om enhedstjenester</value>
+  </data>
+  <data name="RestartAirWatchAgent" xml:space="preserve">
+    <value>Genstart AirWatch Agent</value>
+  </data>
+  <data name="RSCCReportBatchSizeHelpText" xml:space="preserve">
+    <value>Når indhold distribueres til målrettede relæservere, vil Cloud Relay rapportere overførselsstatus for hver relæserver til Workspace ONE Cloud. Rediger denne værdi for at regulere antallet af relæserverstatusser, der skal inkluderes i hvert batch. Standardværdi: 25 statusser pr. batch</value>
+  </data>
+  <data name="RSFileSize" xml:space="preserve">
+    <value>Filstørrelse i byte</value>
+  </data>
+  <data name="Selectawifiproile" xml:space="preserve">
+    <value>Vælg en Wi-Fi-profil, som enheder skal bruge til at oprette forbindelse til en eller flere FTP-servere, efter der er skannet en stregkode for at downloade {0}.</value>
+  </data>
+  <data name="Selectfrompreviouslyconfiguredpackages" xml:space="preserve">
+    <value>Vælg fra tidligere konfigurerede {0}-pakker, eller download det nyeste fra Workspace ONE UEM Resources Portal</value>
+  </data>
+  <data name="SelectProductFilter" xml:space="preserve">
+    <value>Vælg produkter, der skal filtreres</value>
+  </data>
+  <data name="Sideloadprereqs1" xml:space="preserve">
+    <value>1. Hvis du vælger at anvende den seneste version af {0}, skal du downloade den fra MyAirWatch Resources Portal og uploade den.</value>
+  </data>
+  <data name="Sideloadstagingallowsyoutodownloadandinstall" xml:space="preserve">
+    <value>Stagingmetoden for sideindlæsning giver dig mulighed for at downloade og installere {0} på en enhed for at starte den automatiske tilmeldingsproces. Dette forenkler udrulningsprocessen ved at kombinere alle påkrævede komponenter i en fil, som sideindlæses på enheden.</value>
+  </data>
+  <data name="SingleAppModeWildcardRule" xml:space="preserve">
+    <value>Miscellaneous App-jokertegn-reglen kan kun føjes til fanen Skjult app for en profil i Single App-tilstand.</value>
+  </data>
+  <data name="SmartGroupNotAssignedForAnActiveProduct" xml:space="preserve">
+    <value>Smart-gruppetildeling(er), der skal bruges til aktive produkter. Tilføj smart-gruppe(r), eller deaktiver produktet, inden du fjerner alle smart-gruppeopgaver.</value>
+  </data>
+  <data name="SourceLocalizationKey" xml:space="preserve">
+    <value>Kilde</value>
+  </data>
+  <data name="StagingAddManifestInfo" xml:space="preserve">
+    <value>Tilføj manifest definerer ekstraindhold og kommandoer, der skal anvendes under staging. Komponenter som f.eks. applikationer, profiler og filer/handlinger skal være oprettet i menuen Klargøring&gt;komponenter, før der vælges en handling, der skal udføres.</value>
+  </data>
+  <data name="StagingPackageNameLengthExceeded" xml:space="preserve">
+    <value>Staging-pakkens navn overskrider den maksimale grænse på {0} tegn. Omdøb og gem staging-pakken igen.</value>
+  </data>
+  <data name="StagingPackageNameShouldNotContainTheFollowingCharacters" xml:space="preserve">
+    <value>Staging-pakkenavnet må ikke indeholde tegnene {0}</value>
+  </data>
+  <data name="StagingServerDescription" xml:space="preserve">
+    <value>Staging-server er konfigureret til at modtage staging-indhold, såsom: Hubpakke og avancerede staging-konfigurationer under tilmelding.</value>
+  </data>
+  <data name="StartDay" xml:space="preserve">
+    <value>Startdato</value>
+  </data>
+  <data name="StartHour" xml:space="preserve">
+    <value>Starttime</value>
+  </data>
+  <data name="StartMinute" xml:space="preserve">
+    <value>Startminut</value>
+  </data>
+  <data name="StartMonth" xml:space="preserve">
+    <value>Startmåned</value>
+  </data>
+  <data name="StartTimeUtc" xml:space="preserve">
+    <value>Starttidspunkt (UTC)</value>
+  </data>
+  <data name="StartYear" xml:space="preserve">
+    <value>Startår</value>
+  </data>
+  <data name="StopACMRequested" xml:space="preserve">
+    <value>Stop ACM anmodet</value>
+  </data>
+  <data name="StoreOsUpdatesFilesOnRelayServer" xml:space="preserve">
+    <value>Gem OS-opdateringsfiler på relæserver</value>
+  </data>
+  <data name="StoreOsUpdatesFilesOnRelayServerHelp" xml:space="preserve">
+    <value>Denne funktion kan bruges til Windows Mobile-enheder med utilstrækkelig plads til at forbedre OS-opdateringer. Med flagsættet forbliver alle de store billedfiler på relæserveren. OSUPDATE-hjælpeprogrammet på enheden trækker dem ned en ad gangen under opdateringsprocessen. Når flaget ikke er indstillet, kopieres alle filerne til enheden, og OS-opdateringsværktøjet kører dem lokalt.</value>
+  </data>
+  <data name="Tags" xml:space="preserve">
+    <value>Mærker</value>
+  </data>
+  <data name="TemplateModeWildcardRule" xml:space="preserve">
+    <value>Jokertegn-reglen for diverse apps kan kun føjes til fanen Skjult app for en profil i skabelontilstand.</value>
+  </data>
+  <data name="TestConnectionStatus" xml:space="preserve">
+    <value>Testforbindelsesstatus</value>
+  </data>
+  <data name="TimeFormatPlaceholder" xml:space="preserve">
+    <value>TT:MM</value>
+  </data>
+  <data name="Typetoselectanagentpackage" xml:space="preserve">
+    <value>Vælg {0}</value>
+  </data>
+  <data name="VersionIncrementMessage" xml:space="preserve">
+    <value>Viser den aktuelle version. Dette tal forøges gradvist, når ændringer er gemt.</value>
+  </data>
+  <data name="ViewAndManageCustomAttributeAssignmentRules" xml:space="preserve">
+    <value>Vis og administrer regler for tildeling af brugerdefinerede attributter</value>
+  </data>
+  <data name="ViewApplicationAssignments" xml:space="preserve">
+    <value>Vis app-tildelinger</value>
+  </data>
+  <data name="ViewAttribute" xml:space="preserve">
+    <value>Vis attribut</value>
+  </data>
+  <data name="ViewCondition" xml:space="preserve">
+    <value>Vis betingelse</value>
+  </data>
+  <data name="ViewRelayServer" xml:space="preserve">
+    <value>Vis relæserver</value>
+  </data>
+  <data name="ViewStaging" xml:space="preserve">
+    <value>Vis staging</value>
+  </data>
+  <data name="VmwareResourcePortal" xml:space="preserve">
+    <value>VMware-ressourceportal</value>
+  </data>
+  <data name="VPNAccessNotApplicableInfoMessage" xml:space="preserve">
+    <value>VPN-konfigureret vil blive indstillet til "ikke tilgængelig", hvis appen anvendes i afinstallationsprogrammet til et produkt</value>
+  </data>
+  <data name="WeeklyInterval" xml:space="preserve">
+    <value>Ugentligt interval</value>
+  </data>
+  <data name="WeeklyIntervalPlaceholder" xml:space="preserve">
+    <value>Indtast et tal mellem 1 og 52</value>
+  </data>
+  <data name="Wizardenrollmentcomments" xml:space="preserve">
+    <value>Følg blot denne trinvise guide for at opsætte din relæserver, Wi-Fi-profil, {0}, brugerstaging og stregkodekonfiguration. Når du er færdig, vil du modtage stregkoderne til at tilmelde dine enheder og få adgang til yderligere hjælp, hvis det er nødvendigt.</value>
+  </data>
+  <data name="Wizardsideloadenrollmentcomments" xml:space="preserve">
+    <value>Følg blot denne guide for at opsætte din {0}, brugerstaging og sideindlæsningskonfiguration. Når du er færdig, vil du modtage en sideindlæsningsfil til indlæsning på dine enheder og få adgang til yderligere hjælp, hvis det er nødvendigt.</value>
+  </data>
+  <data name="Wizardwebenrollmentcomments" xml:space="preserve">
+    <value>Følg blot denne guide for at konfigurere AirWatch Agent for tilmelding. Når du er færdig, vil du få adgang til yderligere hjælp, hvis det er nødvendigt.</value>
+  </data>
+  <data name="WorkSpaceONECertificate" xml:space="preserve">
+    <value>Workspace ONE-certifikat</value>
+  </data>
+  <data name="WorkSpaceOneLauncher" xml:space="preserve">
+    <value>Workspace ONE Launcher</value>
+  </data>
+  <data name="ZQ510" xml:space="preserve">
+    <value>ZQ510</value>
+  </data>
+  <data name="ZQ520" xml:space="preserve">
+    <value>ZQ520</value>
+  </data>
+</root>

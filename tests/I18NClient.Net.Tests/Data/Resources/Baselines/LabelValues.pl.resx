@@ -1,0 +1,486 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AddedPolices" xml:space="preserve">
+    <value>Dodane zasady</value>
+  </data>
+  <data name="AssignBaseline" xml:space="preserve">
+    <value>Przypisz linię podstawową</value>
+  </data>
+  <data name="AssignBaselineDescription" xml:space="preserve">
+    <value>Wybierz grupy Smart, aby przypisać linię bazową.</value>
+  </data>
+  <data name="AssignBaselineDescription2" xml:space="preserve">
+    <value>Wybierz grupy Smart, aby przypisać linię bazową. Wybierz wykluczenia, aby wykluczyć określone grupy. W przypadku dodania wykluczenia do opublikowanej linii bazowej zostanie ona usunięta z wykluczonych urządzeń.</value>
+  </data>
+  <data name="AssignBaselineLocationGroupNotFound" xml:space="preserve">
+    <value>Nie można przypisać linii bazowej, ponieważ nie można znaleźć Grupy organizacyjnej.</value>
+  </data>
+  <data name="AssignBaselineNotFound" xml:space="preserve">
+    <value>Nie można przypisać linii bazowej, ponieważ nie można jej odnaleźć.</value>
+  </data>
+  <data name="AssignedDevicesArg" xml:space="preserve">
+    <value>Przypisano urządzeń: {0}</value>
+  </data>
+  <data name="Assignments" xml:space="preserve">
+    <value>Przypisania</value>
+  </data>
+  <data name="Baseline" xml:space="preserve">
+    <value>Linia bazowa</value>
+  </data>
+  <data name="BaselineAssigned" xml:space="preserve">
+    <value>Przypisano linię bazową</value>
+  </data>
+  <data name="BaselineAssignmentFailed" xml:space="preserve">
+    <value>Nie można przypisać linii bazowej. Spróbuj ponownie.</value>
+  </data>
+  <data name="BaselineAssignmentSuccessful" xml:space="preserve">
+    <value>Pomyślnie opublikowano linię bazową w zaktualizowanym przypisaniu.</value>
+  </data>
+  <data name="BaselineBlobFailed" xml:space="preserve">
+    <value>Nie można utworzyć linii bazowej, ponieważ nie można utworzyć pakietu.</value>
+  </data>
+  <data name="BaselineCombinedBlobFailed" xml:space="preserve">
+    <value>Nie można utworzyć linii bazowej, ponieważ nie można utworzyć pakietu zawierającego ustawienia niestandardowe.</value>
+  </data>
+  <data name="BaselineContainsExe" xml:space="preserve">
+    <value>Twoja niestandardowa linia bazowa zawiera pliki wykonywalne. Usuń je i spróbuj ponownie.</value>
+  </data>
+  <data name="BaselineCopyFailed" xml:space="preserve">
+    <value>Kopiowanie wybranej linii bazowej nie powiodło się.</value>
+  </data>
+  <data name="BaselineCopySuccessful" xml:space="preserve">
+    <value>Pomyślnie skopiowano wybraną linię bazową.</value>
+  </data>
+  <data name="BaselineCreated" xml:space="preserve">
+    <value>Utworzono linię bazową</value>
+  </data>
+  <data name="BaselineCreationFailed" xml:space="preserve">
+    <value>Nie można utworzyć linii bazowej.</value>
+  </data>
+  <data name="BaselineCreationSuccessful" xml:space="preserve">
+    <value>Zapisywanie linii bazowej zakończone.</value>
+  </data>
+  <data name="BaselineCustomizationFailed" xml:space="preserve">
+    <value>Nie można utworzyć linii bazowej, ponieważ nie można zastosować dostosowań.</value>
+  </data>
+  <data name="BaselineDeleted" xml:space="preserve">
+    <value>Usunięto linię bazową</value>
+  </data>
+  <data name="BaselineDeleteFailed" xml:space="preserve">
+    <value>Nie można usunąć linii bazowej. Spróbuj ponownie później.</value>
+  </data>
+  <data name="BaselineDeleteSuccessful" xml:space="preserve">
+    <value>Usuwanie linii bazowej zakończone.</value>
+  </data>
+  <data name="BaselineDetails" xml:space="preserve">
+    <value>Nazwa i wersja linii bazowej</value>
+  </data>
+  <data name="BaselineErrorCode" xml:space="preserve">
+    <value>Kod błędu urządzenia</value>
+  </data>
+  <data name="BaselineErrorMessage" xml:space="preserve">
+    <value>Komunikat o błędzie</value>
+  </data>
+  <data name="BaselineFileCorrupt" xml:space="preserve">
+    <value>Twoja niestandardowa linia bazowa nie jest prawidłowym plikiem zip.</value>
+  </data>
+  <data name="BaselineFileEmpty" xml:space="preserve">
+    <value>Twoja niestandardowa linia bazowa jest pusta. Spróbuj ponownie za pomocą prawidłowego pliku.</value>
+  </data>
+  <data name="BaselineFileMissingPolicies" xml:space="preserve">
+    <value>Plik wybrany dla niestandardowej linii bazowej nie spełnia zalecanych specyfikacji. Zapoznaj się z dokumentacją.</value>
+  </data>
+  <data name="BaselineFileSizeError" xml:space="preserve">
+    <value>Twoja niestandardowa linia bazowa przekracza maksymalny dopuszczalny rozmiar 5 MB.</value>
+  </data>
+  <data name="BaselineGetPolicyTreeFailed" xml:space="preserve">
+    <value>Nie można załadować zasad dostosowywania, spróbuj ponownie później.</value>
+  </data>
+  <data name="BaselineInvalidRequest" xml:space="preserve">
+    <value>Upewnij się, że wszystkie wymagane pola zostały wypełnione.</value>
+  </data>
+  <data name="BaselineMissingPolicies" xml:space="preserve">
+    <value>Nie można utworzyć linii bazowej, ponieważ jedna lub więcej zasad została usunięta lub jest niedostępna.</value>
+  </data>
+  <data name="BaselineModified" xml:space="preserve">
+    <value>Zmodyfikowano linię bazową</value>
+  </data>
+  <data name="BaselineName" xml:space="preserve">
+    <value>Nazwa linii bazowej</value>
+  </data>
+  <data name="BaselinePendingReboot" xml:space="preserve">
+    <value>Oczekiwanie na ponowne uruchomienie</value>
+  </data>
+  <data name="BaselinePolicyFieldError" xml:space="preserve">
+    <value>Nie można utworzyć linii bazowej, ponieważ jedna lub więcej zasad ma nieprawidłowe wartości</value>
+  </data>
+  <data name="BaselinePolicyGenerationFailed" xml:space="preserve">
+    <value>Nie można utworzyć linii bazowej, ponieważ nie można wygenerować jednej lub więcej zasad</value>
+  </data>
+  <data name="Baselines" xml:space="preserve">
+    <value>Linie bazowe</value>
+  </data>
+  <data name="BaselinesBlobID" xml:space="preserve">
+    <value>Blob ID linii bazowej</value>
+  </data>
+  <data name="BaselinesCount" xml:space="preserve">
+    <value>Liczba linii bazowych</value>
+  </data>
+  <data name="BaselineServiceUnavailable" xml:space="preserve">
+    <value>Nie można połączyć się z usługą linii bazowej „https://www.vmwarebaselines.com”. Prosimy sprawdzić łączność i dzienniki, aby uzyskać więcej informacji.</value>
+  </data>
+  <data name="BaselinesMenuDescription" xml:space="preserve">
+    <value>Wyświetl punkty odniesienia</value>
+  </data>
+  <data name="BaselineStatusCallFailed" xml:space="preserve">
+    <value>Nie można odzyskać stanu linii bazowych. Spróbuj ponownie później</value>
+  </data>
+  <data name="BaselineTooltipCis" xml:space="preserve">
+    <value>Użyj zalecanych ustawień testu porównawczego CIS Benchmark dla wybranej wersji i poziomu.</value>
+  </data>
+  <data name="BaselineTooltipCustom" xml:space="preserve">
+    <value>Prześlij kopię zapasową niestandardowego obiektu zasad grupy (GPO), aby zastosować go w urządzeniach. Kopia zapasowa GPO musi być plikiem ZIP mniejszym niż 5 MB.</value>
+  </data>
+  <data name="BaselineTooltipWindows" xml:space="preserve">
+    <value>Komponenty bazowego bezpieczeństwa (ang. Security Baseline Components, SBC) pakietu Microsoft Security Toolkit są tworzone przez firmę Microsoft i dostępne do użytku wyłącznie w celu zarządzania urządzeniami z systemem Windows 10. Komponenty SBC są dostarczane w stanie, w jakim są, bez jakiejkolwiek gwarancji firmy VMware lub Microsoft. Więcej informacji o komponentach SBC jest dostępnych pod adresem {0}.</value>
+  </data>
+  <data name="BaselineUUID" xml:space="preserve">
+    <value>UUID linii podstawowej</value>
+  </data>
+  <data name="BlankBaseline" xml:space="preserve">
+    <value>Utwórz własne</value>
+  </data>
+  <data name="BlankBaselineDescription" xml:space="preserve">
+    <value>Utwórz własną linię bazową, wybierając z naszego katalogu zasad.</value>
+  </data>
+  <data name="ChooseTemplate" xml:space="preserve">
+    <value>Wybierz linię bazową</value>
+  </data>
+  <data name="ComplianceDataMissing" xml:space="preserve">
+    <value>Dane zgodności nie są jeszcze dostępne dla tej linii bazowej. Opublikuj ponownie linię bazową dla przypisanych urządzeń, aby wyzwolić raportowanie próbek zgodności.</value>
+  </data>
+  <data name="ConfirmCancelBaseline" xml:space="preserve">
+    <value>Zmiany w tej linii bazowej nie są zapisane. Czy chcesz odrzucić zmiany?</value>
+  </data>
+  <data name="ConfirmCloudDescription" xml:space="preserve">
+    <value>Korzystając z funkcji linii bazowej aplikacji Workspace ONE, użytkownik uzyskuje dostęp do danych przechowywanych zdalnie przez VMware. Kliknij przycisk Anuluj, jeśli nie chcesz kontynuować.</value>
+  </data>
+  <data name="ConfirmCloudTitle" xml:space="preserve">
+    <value>Zdalny dostęp do danych</value>
+  </data>
+  <data name="ConfirmDeleteBaseline" xml:space="preserve">
+    <value>Jeśli ta linia bazowa jest przypisana, usunięcie jej wykasują ją ze wszystkich urządzeń. Czy chcesz kontynuować?</value>
+  </data>
+  <data name="CopyBaseline" xml:space="preserve">
+      <value>Kopiuj linię bazową</value>
+  </data>
+  <data name="CustomBaseline" xml:space="preserve">
+    <value>Niestandardowa linia bazowa</value>
+  </data>
+  <data name="CustomBaselineCompliance" xml:space="preserve">
+    <value>Dane zgodności z niestandardowymi liniami bazowymi są oceniane na podstawie zasad dodanych do linii bazowej, a nie do zasad skompresowanych.</value>
+  </data>
+  <data name="CustomBaselineComplianceDataMissing" xml:space="preserve">
+    <value>Dane zgodności są niedostępne lub niekompletne w odniesieniu do niestandardowych linii bazowych, ponieważ nie można było zweryfikować zasad skompresowanych.</value>
+  </data>
+  <data name="CustomBaselineError" xml:space="preserve">
+    <value>Wybierz plik dla niestandardowej linii bazowej</value>
+  </data>
+  <data name="CustomBaselineHelpLink" xml:space="preserve">
+    <value>Wyświetl instrukcje dotyczące przesyłania GPO</value>
+  </data>
+  <data name="CustomizeSelectPolicy" xml:space="preserve">
+    <value>Wybierz zasadę, aby wyświetlić jej ustawienia.</value>
+  </data>
+  <data name="CustomizeStepDescription" xml:space="preserve">
+    <value>Możesz przejrzeć lub dostosować zasady z {0} zgodnie z potrzebami.</value>
+  </data>
+  <data name="DefinitionStepDescription" xml:space="preserve">
+    <value>Podaj nazwę i opis linii bazowej.</value>
+  </data>
+  <data name="DeleteBaseline" xml:space="preserve">
+    <value>Usuń linię bazową</value>
+  </data>
+  <data name="DeviceBaselineLocationGroupNotFound" xml:space="preserve">
+    <value>Nie można pobrać urządzeń linii bazowej, ponieważ nie znaleziono grupy organizacyjnej.</value>
+  </data>
+  <data name="DeviceBaselineNotFound" xml:space="preserve">
+    <value>Nie można pobrać urządzeń linii bazowej — nie można jej odnaleźć.</value>
+  </data>
+  <data name="DiscardAndExit" xml:space="preserve">
+    <value>Odrzuć i wyjdź</value>
+  </data>
+  <data name="EditBaseline" xml:space="preserve">
+    <value>Edytuj linię bazową</value>
+  </data>
+  <data name="EditRequestError" xml:space="preserve">
+    <value>Wybrana wersja linii bazowej nie jest już dostępna. Utwórz nową wersję.</value>
+  </data>
+  <data name="EmptyBaselineList" xml:space="preserve">
+    <value>Nie znaleziono linii bazowych</value>
+  </data>
+  <data name="EmptyDeviceList" xml:space="preserve">
+    <value>Nie znaleziono urządzeń</value>
+  </data>
+  <data name="EmptyListInput" xml:space="preserve">
+    <value>Wymaga co najmniej jednego wpisu</value>
+  </data>
+  <data name="EmptyPolicyList" xml:space="preserve">
+    <value>Nie dodano jeszcze żadnych zasad</value>
+  </data>
+  <data name="ErrorBaselineDeviceException" xml:space="preserve">
+    <value>Nie można zastosować linii bazowych, sprawdź i skoryguj dzienniki.</value>
+  </data>
+  <data name="ErrorDownloadBlobFailed" xml:space="preserve">
+    <value>Nie można uzyskać dostępu do linii bazowych, sprawdź i skoryguj dzienniki.</value>
+  </data>
+  <data name="ErrorInvalidExecutable" xml:space="preserve">
+    <value>Narzędzie LGPO.exe jest nieprawidłowe, spróbuj zmienić plik wykonywalny, aby to skorygować.</value>
+  </data>
+  <data name="ErrorLGPOBackupFailed" xml:space="preserve">
+    <value>Nie można zastosować linii bazowych, sprawdź i skoryguj dzienniki.</value>
+  </data>
+  <data name="ErrorMissingLGPO" xml:space="preserve">
+    <value>Narzędzie LGPO.exe nie może zastosować linii bazowych.</value>
+  </data>
+  <data name="ErrorSavingFileInFolder" xml:space="preserve">
+    <value>Nie można zapisać linii bazowych, sprawdź i skoryguj dzienniki.</value>
+  </data>
+  <data name="ErrorUpdatingDatabase" xml:space="preserve">
+    <value>Nieznany stan linii bazowej, sprawdź dzienniki, aby uzyskać więcej informacji.</value>
+  </data>
+  <data name="ErrorZipExtractionFailed" xml:space="preserve">
+    <value>Nie można wyodrębnić linii bazowych, sprawdź i skoryguj dzienniki.</value>
+  </data>
+  <data name="ExcludedSmartGroups" xml:space="preserve">
+    <value>Wykluczone grupy Smart</value>
+  </data>
+  <data name="Exclusions" xml:space="preserve">
+    <value>Wykluczenia</value>
+  </data>
+  <data name="FailedInstall" xml:space="preserve">
+    <value>Instalacja nieudana</value>
+  </data>
+  <data name="FailedRemoval" xml:space="preserve">
+    <value>Usuwanie nieudane</value>
+  </data>
+  <data name="IntermediateDescription" xml:space="preserve">
+    <value>Urządzenia zgodne w od {0}% do {1}%, są sklasyfikowane jako pośrednie.</value>
+  </data>
+  <data name="MaxValueArg" xml:space="preserve">
+    <value>Wartość musi być większa niż lub równa {0}</value>
+  </data>
+  <data name="MinValueArg" xml:space="preserve">
+    <value>Musi być większa niż lub równa {0}</value>
+  </data>
+  <data name="NewBaseline" xml:space="preserve">
+    <value>Nowa linia bazowa</value>
+  </data>
+  <data name="NoActiveOSVersion" xml:space="preserve">
+    <value>Nie znaleziono wersji systemu operacyjnego. Spróbuj ponownie później.</value>
+  </data>
+  <data name="NoCustomizationSupport" xml:space="preserve">
+    <value>Dostosowywanie wybranej linii podstawowej jest obecnie niedostępne.</value>
+  </data>
+  <data name="NoFileSelected" xml:space="preserve">
+    <value>Nie wybrano żadnego pliku.</value>
+  </data>
+  <data name="NonEnglishSearchResult" xml:space="preserve">
+    <value>Nie znaleziono wyników dla „{0}”. Możesz ponowić próbę wyszukiwania w języku angielskim, aby sprawdzić, czy zasada ta jest dostępna.</value>
+  </data>
+  <data name="NoResultsFoundForArg" xml:space="preserve">
+    <value>Nie znaleziono wyników dla „{0}”</value>
+  </data>
+  <data name="NoSmartGroupsSelected" xml:space="preserve">
+    <value>Nie wybrano grup Smart.</value>
+  </data>
+  <data name="PolicyNotFound" xml:space="preserve">
+    <value>Nie znaleziono szczegółów zasad</value>
+  </data>
+  <data name="PolicyStepDescription" xml:space="preserve">
+    <value>Wyszukaj i dodaj zasady z katalogu.</value>
+  </data>
+  <data name="Proceed" xml:space="preserve">
+    <value>Kontynuuj</value>
+  </data>
+  <data name="RemovalFailed" xml:space="preserve">
+    <value>Usuwanie nieudane</value>
+  </data>
+  <data name="RequiredFieldError" xml:space="preserve">
+    <value>Wprowadź nazwę dla linii bazowej.</value>
+  </data>
+  <data name="SaveAndPublish" xml:space="preserve">
+    <value>Zapisz i opublikuj</value>
+  </data>
+  <data name="SearchPolicyPlaceholder" xml:space="preserve">
+    <value>Zacznij pisać, aby wyszukać zasady</value>
+  </data>
+  <data name="SearchSmartGroupPlaceholder" xml:space="preserve">
+    <value>Zacznij wpisywać, aby wyszukać grupę Smart</value>
+  </data>
+  <data name="SelectedSmartGroups" xml:space="preserve">
+    <value>Wybrane grupy Smart</value>
+  </data>
+  <data name="SelectTypeDescription" xml:space="preserve">
+    <value>Wybierz typ linii bazowej do dodania.</value>
+  </data>
+  <data name="SelectTypeTitle" xml:space="preserve">
+    <value>Wybierz typ linii bazowej</value>
+  </data>
+  <data name="SmartGroupAtLeastOneValidationDescription" xml:space="preserve">
+    <value>Wymagana jest co najmniej jedna grupa Smart na karcie przypisań.</value>
+  </data>
+  <data name="SummaryStepDescription" xml:space="preserve">
+    <value>Przejrzyj podsumowanie przed zapisaniem tej linii bazowej.</value>
+  </data>
+  <data name="TemplateStepDescription" xml:space="preserve">
+    <value>Wybierz wstępnie skonfigurowaną linię bazową oraz wersję.</value>
+  </data>
+  <data name="TextareaMaxLinesError" xml:space="preserve">
+    <value>Przekracza maksymalną liczbę wierszy</value>
+  </data>
+  <data name="TextareaMaxSentenceError" xml:space="preserve">
+    <value>Jedno lub więcej zdań przekracza maksymalną długość</value>
+  </data>
+  <data name="TotalInstalledArg" xml:space="preserve">
+    <value>Całkowita liczba instalacji: {0}</value>
+  </data>
+  <data name="UnabletoLoadDevices" xml:space="preserve">
+    <value>Nie można załadować listy urządzeń, spróbuj ponownie później.</value>
+  </data>
+  <data name="UnsavedChanges" xml:space="preserve">
+    <value>Niezapisane zmiany</value>
+  </data>
+  <data name="UnsupportedLanguageError" xml:space="preserve">
+    <value>Błąd: wybrany język nie jest obsługiwany.</value>
+  </data>
+  <data name="UseBaselineTemplate" xml:space="preserve">
+      <value>Użyj szablonu</value>
+  </data>
+  <data name="UseTemplateDescription" xml:space="preserve">
+    <value>Użyj standardowych szablonów branżowych, aby skonfigurować linię bazową.</value>
+  </data>
+  <data name="VersionBreakdown" xml:space="preserve">
+    <value>Podział wersji</value>
+  </data>
+  <data name="ViewBaselineDevicesTitle" xml:space="preserve">
+    <value>Wyświetl urządzenia — Linie bazowe</value>
+  </data>
+</root>

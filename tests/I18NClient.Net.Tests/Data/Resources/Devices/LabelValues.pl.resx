@@ -1,0 +1,2555 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AboutToPerformResumeBitlocker" xml:space="preserve">
+    <value>Zaraz wykonasz działanie wznowienia szyfrowania BitLocker. Przed kontynuowaniem prosimy uważnie zapoznać się z wszystkimi poniższymi informacjami.</value>
+  </data>
+  <data name="ActivateBacklight" xml:space="preserve">
+    <value>Włącz podświetlenie</value>
+  </data>
+  <data name="ActivationLockClearFailure" xml:space="preserve">
+    <value>Wyłączenie blokady aktywacji nie powiodło się</value>
+  </data>
+  <data name="ActivationLockClearRequested" xml:space="preserve">
+    <value>Zażądano wyłączenia blokady aktywacji</value>
+  </data>
+  <data name="ActivationLockClearSuccess" xml:space="preserve">
+    <value>Wyłączenie blokady aktywacji powiodło się</value>
+  </data>
+  <data name="ActivationLockCommandWarning" xml:space="preserve">
+    <value>Na tym urządzeniu włączona jest blokada aktywacji. Ponowne aktywowanie urządzenia wymaga wprowadzenia identyfikatora Apple ID i hasła użytych do aktywowania tej funkcji. Jeśli nie znasz identyfikatora Apple ID lub hasła, wybierz polecenie Wyłącz blokadę aktywacji poniżej.</value>
+  </data>
+  <data name="ActivationLockEnabledSuccessfully" xml:space="preserve">
+    <value>Blokadę aktywacji włączono pomyślnie</value>
+  </data>
+  <data name="ActivationLockWarning" xml:space="preserve">
+    <value>Wykryto, że funkcja Blokada aktywacji została włączona za pomocą aplikacji Znajdź mój iPhone. Nawet po fabrycznym wyczyszczeniu urządzenie nie może być ponownie aktywowane bez ID i hasła iCloud, których użyto do włączenia funkcji Blokada aktywacji.</value>
+  </data>
+  <data name="AddDropShipDevice" xml:space="preserve">
+    <value>Dodaj urządzenie drop ship</value>
+  </data>
+  <data name="AddNewSchedule" xml:space="preserve">
+    <value>Dodaj nowy harmonogram</value>
+  </data>
+  <data name="AddSideLoadingKey" xml:space="preserve">
+    <value>Dodaj klucz ładowania z boku</value>
+  </data>
+  <data name="AffectedDeviceTagManagementMessage" xml:space="preserve">
+    <value>Wybrane znaczniki zostaną zastosowane do wszystkich wybranych urządzeń</value>
+  </data>
+  <data name="AgentEnrollmentUrl" xml:space="preserve">
+    <value>URL rejestracji Agenta</value>
+  </data>
+  <data name="AirWatchHuaweiService" xml:space="preserve">
+    <value>Usługa AirWatch Huawei</value>
+  </data>
+  <data name="AirWatchInterrogatorQueueMonitor" xml:space="preserve">
+    <value>Usługa monitorowania kolejki odczytuje informacje zapisane w kolejkach przez serwer interrogatora i zapisuje je w bazie danych.</value>
+  </data>
+  <data name="AirWatchInterrogatorServer" xml:space="preserve">
+    <value>Serwer interrogatora to serwer z gniazdem, który odbiera przychodzące dane urządzenia przez port 8087.</value>
+  </data>
+  <data name="AndroidAvailableFileActions" xml:space="preserve">
+    <value>Pobieranie i przekazywanie plików.</value>
+  </data>
+  <data name="AndroidDeviceLogSourceToolTipText" xml:space="preserve">
+    <value>Wybierz „Hub”, aby zbierać dzienniki wygenerowane przez Workspace ONE Intelligent Hub.
+
+Wybierz „System”, aby zgromadzić pełny dziennik systemowy dla starszych urządzeń z systemem Android z zainstalowaną usługą OEM platformy. Raport błędu będzie zbierany, jeśli urządzenie jest zarządzane pod kontrolą Android Work i systemem Android 7.0 lub nowszym.
+
+Wybierz „Sieć”, aby gromadzić dziennik zdarzeń sieciowych na urządzeniu.
+
+Wybierz „Zabezpieczenia”, aby zbierać dzienniki zabezpieczeń przed i po rozruchu. Dzienniki są załadowane do konsoli, gdy staną się dostępne na urządzeniu.</value>
+  </data>
+  <data name="AndroidEnterpriseCancelMigration" xml:space="preserve">
+    <value>Polecenie anulowania migracji z systemu Android Enterprise.</value>
+  </data>
+  <data name="AndroidEnterpriseMigration" xml:space="preserve">
+    <value>Polecenie rozpoczęcia migracji ze starszej wersji systemu Android do AFW.</value>
+  </data>
+  <data name="AndroidManagement" xml:space="preserve">
+    <value>Zarządzanie systemem Android</value>
+  </data>
+  <data name="AndroidRequestDeviceLogSettingsInformation" xml:space="preserve">
+    <value>Poniżej dostosuj żądanie dotyczące dziennika. Aby wyświetlić pliki dziennika, przejdź do ekranu Szczegóły urządzenia &gt; Więcej &gt; Załączniki &gt; Dokumenty. Uzyskanie dzienników sieciowych lub zabezpieczeń może potrwać do 90 minut. Niektóre opcje mogą być niedostępne, jeśli nie są obsługiwane przez urządzenie.</value>
+  </data>
+  <data name="AndroidWorkProfileEndUserMessageSetupHelp" xml:space="preserve">
+    <value>Ten opcjonalny komunikat zostanie wyświetlony użytkownikom korzystającym z urządzeń z systemem Android w celu wyjaśnienia, dlaczego ich profil służbowy został usunięty.</value>
+  </data>
+  <data name="AndroidWorkProfileEndUserWipeMessage" xml:space="preserve">
+    <value>Profil służbowy w systemie Android — komunikat o usunięciu danych użytkownika</value>
+  </data>
+  <data name="AndroidWorkSharedDeviceModeNotReported" xml:space="preserve">
+    <value>Niezgłoszony</value>
+  </data>
+  <data name="ApnsMessageForRemoteView" xml:space="preserve">
+    <value>Administrator chce zdalnie wyświetlić ekran Twojego urządzenia. Przejdź do centrum kontroli systemu iOS, aby rozpocząć emisję zawartości ekranu urządzenia.</value>
+  </data>
+  <data name="ApnsMessageNotSent" xml:space="preserve">
+    <value>Wystąpił błąd podczas próby wysłania wiadomości o widoku zdalnym. Aby uzyskać pomoc, skontaktuj się z działem pomocy technicznej.</value>
+  </data>
+  <data name="ApnsMessageSentForRemoteView" xml:space="preserve">
+    <value>Wiadomość została pomyślnie wysłana do urządzenia, aby powiadomić użytkownika o zainicjowaniu sesji zdalnego widoku.</value>
+  </data>
+  <data name="AppAssignmentEditWarning" xml:space="preserve">
+    <value>Edycja konfiguracji skojarzonej z tą aplikacją spowoduje zastosowanie zmian w innych urządzeniach dla tych przepływów pracy.</value>
+  </data>
+  <data name="AppleBusinessManager" xml:space="preserve">
+    <value>Apple Business Manager</value>
+  </data>
+  <data name="AppleBusinessManagerFetchFail" xml:space="preserve">
+    <value>Pobieranie Apple Business Manager nie powiodło się</value>
+  </data>
+  <data name="AppleBusinessManagerFetchSuccess" xml:space="preserve">
+    <value>Pomyślnie pobrano Apple Business Manager</value>
+  </data>
+  <data name="AppleBusinessManagerSyncFail" xml:space="preserve">
+    <value>Synchronizacja Apple Business Manager nie powiodła się</value>
+  </data>
+  <data name="AppleBusinessManagerSyncSuccess" xml:space="preserve">
+    <value>Pomyślnie zsynchronizowano Apple Business Manager</value>
+  </data>
+  <data name="ApplicationConfigurationConfirmed" xml:space="preserve">
+    <value>Konfiguracja aplikacji potwierdzona</value>
+  </data>
+  <data name="ApplicationConfigurationFailed" xml:space="preserve">
+    <value>Konfiguracja aplikacji nieudana</value>
+  </data>
+  <data name="ApplicationConfigurationRefused" xml:space="preserve">
+    <value>Odmówiono konfiguracji aplikacji</value>
+  </data>
+  <data name="ApplyTimeWindow" xml:space="preserve">
+    <value>Aby zastosować przedział czasu do urządzenia, należy odwołać się do niego jako warunku przepływu pracy.</value>
+  </data>
+  <data name="ApplyToAllAdmin" xml:space="preserve">
+    <value>Zastosuj do wszystkich administratorów w tej grupie organizacyjnej lub poniżej</value>
+  </data>
+  <data name="ApprovedByClassification" xml:space="preserve">
+    <value>Zatwierdzone przez klasyfikację</value>
+  </data>
+  <data name="ApprovedByRevisionAndClassification" xml:space="preserve">
+    <value>Zatwierdzone po przeglądzie i klasyfikacji</value>
+  </data>
+  <data name="ApproveWipe" xml:space="preserve">
+    <value>Zatwierdź czyszczenie</value>
+  </data>
+  <data name="ApproveWipeConfirm" xml:space="preserve">
+    <value>Approve wipe successful</value>
+  </data>
+  <data name="AssignedTags" xml:space="preserve">
+    <value>Przypisane znaczniki</value>
+  </data>
+  <data name="AssignmentName" xml:space="preserve">
+    <value>Nazwa przypisania</value>
+  </data>
+  <data name="Athena" xml:space="preserve">
+    <value>Athena</value>
+  </data>
+  <data name="AttributesNotPresent" xml:space="preserve">
+    <value>Atrybuty urządzenia nie są obecne.</value>
+  </data>
+  <data name="Auto_Detect" xml:space="preserve">
+    <value>Automatyczne wykrywanie</value>
+  </data>
+  <data name="AutoInstall" xml:space="preserve">
+    <value>Automatyczna instalacja</value>
+  </data>
+  <data name="AutoUpdateStatus" xml:space="preserve">
+    <value>Stan automatycznej aktualizacji</value>
+  </data>
+  <data name="AutoUpdateStatusFail" xml:space="preserve">
+    <value>Stan automatycznej aktualizacji – niepowodzenie</value>
+  </data>
+  <data name="AutoUpdateStatusPass" xml:space="preserve">
+    <value>Stan automatycznej aktualizacji – ukończono</value>
+  </data>
+  <data name="AutoUpdateStatusUnknown" xml:space="preserve">
+    <value>Stan automatycznej aktualizacji – nieznany</value>
+  </data>
+  <data name="AvailableByApple" xml:space="preserve">
+    <value>Dostępne przez Apple</value>
+  </data>
+  <data name="Bash" xml:space="preserve">
+    <value>Bash</value>
+  </data>
+  <data name="BatchImportCustomAttributesExplanation" xml:space="preserve">
+    <value>Funkcja importu partii niestandardowego atrybutu może zostać użyta do załadowania atrybutów niestandardowych I odpowiadających im wartości zbiorczo w systemie. Każda kolumna odpowiada jednemu atrybutowi niestandardowemu, a każdy rząd odpowiada różnym parametrom atrybutów niestandardowych.</value>
+  </data>
+  <data name="BeginRollOut" xml:space="preserve">
+    <value>Rozpocznij wprowadzanie</value>
+  </data>
+  <data name="BiosAttestationFailed" xml:space="preserve">
+    <value>Weryfikacja systemu BIOS nie powiodła się</value>
+  </data>
+  <data name="BiosAttestationPassed" xml:space="preserve">
+    <value>Weryfikacja systemu BIOS powiodła się</value>
+  </data>
+  <data name="BiosAttestationStatus" xml:space="preserve">
+    <value>Weryfikacja systemu BIOS</value>
+  </data>
+  <data name="BiosAttestationStatusUnknown" xml:space="preserve">
+    <value>Nieznany stan weryfikacji systemu BIOS</value>
+  </data>
+  <data name="BiosDate" xml:space="preserve">
+    <value>Data BIOS</value>
+  </data>
+  <data name="BiosVendor" xml:space="preserve">
+    <value>Dostawca systemu BIOS</value>
+  </data>
+  <data name="BiosVerificationCheck" xml:space="preserve">
+    <value>Weryfikacja systemu BIOS</value>
+  </data>
+  <data name="BitLockerCipherMismatch" xml:space="preserve">
+    <value>Siła szyfrowania na urządzeniu nie pasuje do profilu</value>
+  </data>
+  <data name="BitLockerCipherStrengthMismatch" xml:space="preserve">
+    <value>Siła szyfrowania na profilu: {0}, na urządzeniu: {1}.</value>
+  </data>
+  <data name="BitLockerDriveStatusDecryptionInProgress" xml:space="preserve">
+    <value>Trwa odszyfrowywanie</value>
+  </data>
+  <data name="BitLockerDriveStatusEncrypted" xml:space="preserve">
+    <value>Zaszyfrowane</value>
+  </data>
+  <data name="BitLockerDriveStatusEncryptionInProgress" xml:space="preserve">
+    <value>Trwa szyfrowanie</value>
+  </data>
+  <data name="BitLockerDriveStatusNotEncrypted" xml:space="preserve">
+    <value>Niezaszyfrowane</value>
+  </data>
+  <data name="BitLockerDriveStatusSuspended" xml:space="preserve">
+    <value>Wstrzymano</value>
+  </data>
+  <data name="BitLockerDriveStatusSuspendedScheduled" xml:space="preserve">
+    <value>Wstrzymano (według harmonogramu profilu)</value>
+  </data>
+  <data name="BitLockerDriveStatusSuspendedWithRebootCount" xml:space="preserve">
+    <value>Wstrzymano (pozostałe ponowne rozruchy: {0})</value>
+  </data>
+  <data name="BitLockerDriveStatusUnknown" xml:space="preserve">
+    <value>Nieznana</value>
+  </data>
+  <data name="BitLockerEncryptionResumed" xml:space="preserve">
+    <value>Wznowiono szyfrowanie BitLocker</value>
+  </data>
+  <data name="BitLockerProtection" xml:space="preserve">
+    <value>Ochrona BitLocker</value>
+  </data>
+  <data name="BitLockerRecoveryKeyModalHelpText" xml:space="preserve">
+    <value>Użyj klucza odzyskiwania, aby odblokować urządzenie zaszyfrowane za pomocą BitLocker.</value>
+  </data>
+  <data name="BitLockerRecoveryKeyModalText" xml:space="preserve">
+    <value>Użyj klucza odzyskiwania, aby odblokować urządzenie zaszyfrowane za pomocą funkcji BitLocker. Statyczne klucze odzyskiwania są dostępne tylko wtedy, gdy zostaną dodane do profilu.</value>
+  </data>
+  <data name="BitlockerResume" xml:space="preserve">
+    <value>Wznów funkcję BitLocker</value>
+  </data>
+  <data name="BitLockerStatusDecryptionInProgress" xml:space="preserve">
+    <value>Stan funkcji BitLocker: trwa odszyfrowywanie</value>
+  </data>
+  <data name="BitLockerStatusEncrypted" xml:space="preserve">
+    <value>Stan funkcji BitLocker: zaszyfrowane</value>
+  </data>
+  <data name="BitLockerStatusEncryptionInProgress" xml:space="preserve">
+    <value>Stan funkcji BitLocker: trwa szyfrowanie</value>
+  </data>
+  <data name="BitLockerStatusNotEncrypted" xml:space="preserve">
+    <value>Stan funkcji BitLocker: niezaszyfrowane</value>
+  </data>
+  <data name="BitLockerStatusPartiallyProtected" xml:space="preserve">
+    <value>Stan funkcji BitLocker: częściowo chronione</value>
+  </data>
+  <data name="BitLockerStatusSuspended" xml:space="preserve">
+    <value>Stan funkcji BitLocker: wstrzymano (pozostałe ponowne rozruchy: {0})</value>
+  </data>
+  <data name="BitLockerStatusSuspendedScheduled" xml:space="preserve">
+    <value>Stan funkcji BitLocker: wstrzymano (według harmonogramu profilu)</value>
+  </data>
+  <data name="BitLockerStatusUnknown" xml:space="preserve">
+    <value>Stan funkcji BitLocker: nieznane</value>
+  </data>
+  <data name="BitLockerSuspendedPerProfileSchedule" xml:space="preserve">
+    <value>Wstrzymano szyfrowanie BitLocker według harmonogramu profilu</value>
+  </data>
+  <data name="Blueprints" xml:space="preserve">
+    <value>Blueprinty</value>
+  </data>
+  <data name="BuildOrRevisionNumber" xml:space="preserve">
+    <value>Wersja kompilacji / Numer wersji</value>
+  </data>
+  <data name="BulkActivationLockCommandWarning" xml:space="preserve">
+    <value>Na co najmniej jednym wybranym urządzeniu włączona jest blokada aktywacji. Ponowne aktywowanie urządzenia wymaga wprowadzenia identyfikatora Apple ID i hasła użytych do aktywowania tej funkcji. Jeśli nie znasz identyfikatora Apple ID lub hasła, wybierz polecenie Wyłącz blokadę aktywacji poniżej.</value>
+  </data>
+  <data name="BulkApiAction" xml:space="preserve">
+    <value>Działanie zbiorcze API</value>
+  </data>
+  <data name="BulkTagManagementSelectTipArg" xml:space="preserve">
+    <value>Wybrane urządzenia: {0}</value>
+  </data>
+  <data name="BusinessHours" xml:space="preserve">
+    <value>Godziny pracy</value>
+  </data>
+  <data name="CancelFirmwareUpdate" xml:space="preserve">
+    <value>Anuluj aktualizację</value>
+  </data>
+  <data name="CancelSchedule" xml:space="preserve">
+    <value>Anuluj harmonogram</value>
+  </data>
+  <data name="CanNotDeleteTagBecauseAssignedToSmartGroup" xml:space="preserve">
+    <value>Nie można usunąć tagu, ponieważ został on przypisany do następujących grup Smart: {0}</value>
+  </data>
+  <data name="CertificateInfo" xml:space="preserve">
+    <value>Informacje o certyfikacie</value>
+  </data>
+  <data name="CertificateSerialNumber" xml:space="preserve">
+    <value>Numer seryjny certyfikatu</value>
+  </data>
+  <data name="ChangePasscodeMsgSamsung" xml:space="preserve">
+    <value>W przypadku urządzeń z systemem Android (w starszej wersji) opcja Zmień hasło będzie działać tylko na urządzeniach Samsung lub jeśli hasło nie jest jeszcze ustawione na urządzeniu</value>
+  </data>
+  <data name="ChangeWorkProfilePasscodeNote" xml:space="preserve">
+    <value>To działanie wymaga od użytkownika ustawienia nowego hasła odblokowywania profilu służbowego. Podane hasło musi być zgodne z aktualnie obowiązującymi ograniczeniami dotyczącymi zasad tworzenia haseł z wyjątkiem historii haseł. Jeśli hasło nie spełnia tych ograniczeń, zostanie ono odrzucone.</value>
+  </data>
+  <data name="CheckInDevice" xml:space="preserve">
+    <value>Zameldowanie urządzenia</value>
+  </data>
+  <data name="CheckInDeviceFailed" xml:space="preserve">
+    <value>Meldowanie urządzenia nieudane</value>
+  </data>
+  <data name="CheckInDeviceRequested" xml:space="preserve">
+    <value>Zażądano zameldowania urządzenia</value>
+  </data>
+  <data name="CheckInDeviceSucceeded" xml:space="preserve">
+    <value>Zameldowanie urządzenia powiodło się</value>
+  </data>
+  <data name="ChromeOSDeviceDisableLostMode" xml:space="preserve">
+    <value>Urządzenie z systemem operacyjnym Chrome pozostanie zarejestrowane, ale zostanie całkowicie wyłączone. Jeśli Tryb Utracony jest włączony, wyświetlony zostanie niestandardowy komunikat ustawiony w profilu urządzenia w systemie Chrome (Profil urządzenia w systemie Chrome &gt; Bezpieczeństwo i prywatność &gt; Komunikat Trybu Utraconego). Wyłącz Tryb Utracony, aby odblokować urządzenie z systemem operacyjnym Chrome.</value>
+  </data>
+  <data name="ChromeOSDeviceEnableLostMode" xml:space="preserve">
+    <value>Urządzenie z systemem operacyjnym Chrome pozostanie zarejestrowane, ale zostanie całkowicie wyłączone. Jeśli Tryb Utracony jest włączony, wyświetlony zostanie niestandardowy komunikat ustawiony w profilu urządzania w systemie Chrome (Profil urządzenia w systemie Chrome &gt; Bezpieczeństwo i prywatność &gt; Komunikat Trybu Utraconego). Włącz Tryb Utracony, aby zablokować urządzenie z systemem operacyjnym Chrome.</value>
+  </data>
+  <data name="ChromeOsEnterpriseWipeReason" xml:space="preserve">
+    <value>Przyczyna usunięcia danych firmowych Chrome OS</value>
+  </data>
+  <data name="ClearAndroidDevicePasscodeConfirmation" xml:space="preserve">
+    <value>Czy na pewno chcesz wyczyścić hasło urządzenia?</value>
+  </data>
+  <data name="ClearAndroidWorkProfilePasscode" xml:space="preserve">
+    <value>Wyczyść hasło służbowe</value>
+  </data>
+  <data name="ClearAndroidWorkProfilePasscodeConfirmation" xml:space="preserve">
+    <value>Czy na pewno chcesz wyczyścić hasło służbowe urządzenia?</value>
+  </data>
+  <data name="ClearApplicationPasscode" xml:space="preserve">
+    <value>Wyczyść kod dostępu aplikacji</value>
+  </data>
+  <data name="ClearPasscodeLockDevice" xml:space="preserve">
+    <value>Wyczyść hasło urządzenia/zablokuj urządzenie/wyłącz/uruchom ponownie</value>
+  </data>
+  <data name="CommandDisableActivationLockComment" xml:space="preserve">
+    <value>Gdy na urządzeniu z systemem iOS lub macOS włączona jest blokada aktywacji, przed wyłączeniem funkcji Znajdź mój iPhone (Mac), usunięciem danych z urządzenia lub ponownym aktywowaniem i używaniem urządzenia konieczne jest wprowadzenie identyfikatora Apple ID oraz hasła lub hasła urządzenia.
+
+Wybierz opcję Dezaktywuj, aby wyłączyć blokadę aktywacji na urządzeniu.</value>
+  </data>
+  <data name="CommandDisableActivationLockCommentBypass" xml:space="preserve">
+    <value>Alternatywą dla wyłączenia blokady aktywacji jest wprowadzenie następującego kodu obejścia na urządzeniu podczas korzystania z Asystenta konfiguracji. Wprowadź ten kod obejścia jako hasło blokady aktywacji i pozostaw pole nazwy użytkownika Apple ID puste.</value>
+  </data>
+  <data name="CompromisedDevicesChartDescription" xml:space="preserve">
+    <value>Zagrożone urządzenia: {0}. Całkowita liczba zagrożonych urządzeń: {1}.</value>
+  </data>
+  <data name="CompromisedDevicesChartTitle" xml:space="preserve">
+    <value>Wykres pierścieniowy zagrożonych urządzeń. </value>
+  </data>
+  <data name="ConditionError" xml:space="preserve">
+    <value>Co najmniej jeden z warunków w tym przepływie pracy nie ma działania, które by po nim następowało. Aby kontynuować, dodaj działanie.</value>
+  </data>
+  <data name="ConfigureLocationGroup" xml:space="preserve">
+    <value>Skonfiguruj Grupę organizacyjną</value>
+  </data>
+  <data name="ConfigureLoginCredentials" xml:space="preserve">
+    <value>Skonfiguruj poświadczenia logowania</value>
+  </data>
+  <data name="ConfirmDeleteDevice" xml:space="preserve">
+    <value>Usunąć urządzenie? Wszystkie informacje tego urządzenia również zostaną usunięte.</value>
+  </data>
+  <data name="ConfirmDeleteDeviceWithRecoveryKey" xml:space="preserve">
+    <value>Usunąć urządzenie? Wszystkie informacje tego urządzenia również zostaną usunięte. Ostrzeżenie: klucz odzyskiwania szyfrowania zostanie również usunięty. Może nastąpić utrata danych.</value>
+  </data>
+  <data name="ConfirmDeviceRebootAfterHubRepair" xml:space="preserve">
+    <value>Działanie to stanowi rozwiązania naprawcze, dla takich błędów jak HMAC, zatrzymania usługi, uszkodzenia lub dla brakujących plików. Może on uaktualnić Hub na urządzeniu do najnowszej dostępnej wersji w konsoli. W niektórych przypadkach to działanie może inicjować ponowny rozruch.</value>
+  </data>
+  <data name="ConfirmPauseTitle" xml:space="preserve">
+    <value>Potwierdź wstrzymanie</value>
+  </data>
+  <data name="ConfirmResumeTitle" xml:space="preserve">
+    <value>Potwierdź wznawianie</value>
+  </data>
+  <data name="ConfirmUnenrollDeleteDeviceWithRecoveryKey" xml:space="preserve">
+    <value>To urządzenie jest wciąż zarejestrowane. Usunięcie urządzenia spowoduje jego wyrejestrowanie. Uwaga: klucz odzyskiwania szyfrowania również zostanie usunięty. Może nastąpić utrata danych.</value>
+  </data>
+  <data name="ConfirmUpdateRollOutContent" xml:space="preserve">
+    <value>Funkcja Rozpocznij wprowadzanie ma na celu rozpoczęcia wprowadzania aktualizacji, jeśli nigdy nie zostało to rozpoczęte, i wznowienie wprowadzania aktualizacji, jeśli zostało ono wcześniej zatrzymane. Czy na pewno chcesz wprowadzić aktualizację?</value>
+  </data>
+  <data name="ConfirmUpdateRollOutTitle" xml:space="preserve">
+    <value>Potwierdź wprowadzanie</value>
+  </data>
+  <data name="ConnectDeviceToWifiPriorToEnrollment" xml:space="preserve">
+    <value>Przed rozpoczęciem rejestracji podłącz urządzenie do sieci Wi-Fi (WPA/WPA2)</value>
+  </data>
+  <data name="ConnectionState" xml:space="preserve">
+    <value>Stan połączenia</value>
+    <comment>Either Connected or Disconnected</comment>
+  </data>
+  <data name="COPEDeviceInfoMessage" xml:space="preserve">
+    <value>Pełne zarządzanie urządzeniem pozostaje nienaruszone. Pracownicy otrzymają profil służbowy, aby uzyskać dostęp do aplikacji firmowych i mieć dostęp do swojego osobistego sklepu Google Play poza profilem służbowym. Ta opcja jest dostępna dla systemu Android w wersji 8.0 i nowszych.</value>
+  </data>
+  <data name="CouldNotStartRemoteViewSession" xml:space="preserve">
+    <value>Nie udało się uruchomić sesji z użyciem systemu widoku zdalnego dla urządzenia o identyfikatorze UDID {0}. Aby uzyskać pomoc, skontaktuj się z pomocą techniczną.</value>
+  </data>
+  <data name="CpuTitle" xml:space="preserve">
+    <value>Architektura CPU</value>
+  </data>
+  <data name="CpuTooltip" xml:space="preserve">
+    <value>Te kryteria filtrują urządzenia według architektury CPU. Filtrowanie to dotyczy tylko urządzeń z systemem Windows i macOS. Jeśli nie wybierzesz żadnej opcji kryteria filtrowania nie zostaną zastosowane.</value>
+  </data>
+  <data name="CreateDevice" xml:space="preserve">
+    <value>Utwórz</value>
+  </data>
+  <data name="CreateNewUserMessageArg" xml:space="preserve">
+    <value>Jeśli użytkownik, który jest wyszukiwany, nie zostanie znaleziony, należy utworzyć nowego użytkownika tutaj: {0}</value>
+    <comment>{0} will be replaced by a hyperlink with text Create New User</comment>
+  </data>
+  <data name="CreateTimeWindow" xml:space="preserve">
+    <value>Utwórz przedział czasu</value>
+  </data>
+  <data name="CriteriaPreviewNote" xml:space="preserve">
+    <value>Aktualna wersja podglądu jest generowana tylko na podstawie nazwy aplikacji, ale ocena kondycji urządzeń będzie zawierała kryteria operatora.</value>
+  </data>
+  <data name="CustomDateRange" xml:space="preserve">
+    <value>Niestandardowy</value>
+  </data>
+  <data name="CustomFieldAdded" xml:space="preserve">
+    <value>Pole niestandardowe dodane</value>
+  </data>
+  <data name="CustomFieldDeleted" xml:space="preserve">
+    <value>Pole niestandardowe usunięte</value>
+  </data>
+  <data name="CustomFieldModified" xml:space="preserve">
+    <value>Pole niestandardowe zmodyfikowane</value>
+  </data>
+  <data name="DailyArg" xml:space="preserve">
+    <value>Codziennie {0} ‒ {1} ({2})</value>
+    <comment>Placehoders: 0 - StartTime, 1 - EndTime, 2 - Duration.
+Example: Daily 11:00 PM - 4:30 AM (5 hours 30 mins)</comment>
+  </data>
+  <data name="DataCompromisedOrCorrupted" xml:space="preserve">
+    <value>Dane mogły zostać naruszone lub uszkodzone. Skontaktuj się z administratorem.</value>
+  </data>
+  <data name="DataNotCollectedDueToPrivacySettings" xml:space="preserve">
+    <value>Dane GPS są niedostępne. Aby wyświetlić dane GPS, zaktualizuj ustawienia prywatności dotyczące zbierania i wyświetlania danych lokalizacji</value>
+  </data>
+  <data name="DataValidationFailed" xml:space="preserve">
+    <value>Zapis się nie powiódł. Spróbuj ponownie.</value>
+  </data>
+  <data name="DateEncrypted" xml:space="preserve">
+    <value>Data zaszyfrowania</value>
+  </data>
+  <data name="DateLabel" xml:space="preserve">
+    <value>Data i czas</value>
+  </data>
+  <data name="DateLastSeen" xml:space="preserve">
+    <value>Data ostatniej obecności</value>
+  </data>
+  <data name="DateMustBeInFuture" xml:space="preserve">
+    <value>Data musi być w przyszłości</value>
+  </data>
+  <data name="DayAgo" xml:space="preserve">
+    <value>dni temu</value>
+  </data>
+  <data name="DefineAssignmentAndSelectSmartGroups" xml:space="preserve">
+    <value>Zdefiniuj przypisanie i Wybierz grupy Smart</value>
+  </data>
+  <data name="DefineDeploymentDateTimeAndMethod" xml:space="preserve">
+    <value>Zdefiniuj datę/godzinę i metodę wdrożenia</value>
+  </data>
+  <data name="DeleteDeviceConfirmation" xml:space="preserve">
+    <value>Potwierdzenie usunięcia urządzenia</value>
+  </data>
+  <data name="DeleteSensor" xml:space="preserve">
+    <value>Usuń czujnik</value>
+  </data>
+  <data name="DeleteSensorConfirmArg" xml:space="preserve">
+    <value>Czy na pewno chcesz usunąć czujnik „{0}”?</value>
+  </data>
+  <data name="DeleteTimeWindowConfirmation" xml:space="preserve">
+    <value>Czy na pewno chcesz usunąć ten przedział czasu?</value>
+  </data>
+  <data name="DeleteTimeWindowTitle" xml:space="preserve">
+    <value>Usuń przedział czasu</value>
+  </data>
+  <data name="DeleteUserConfirmation" xml:space="preserve">
+    <value>Polecenie Usuń użytkownika wymusi usunięcie użytkownika z urządzenia nawet wtedy, gdy użytkownik ma dane, które wymagają synchronizacji. Czy na pewno chcesz kontynuować?</value>
+  </data>
+  <data name="DeleteUserConfirmed" xml:space="preserve">
+    <value>Potwierdzono usunięcie użytkownika</value>
+  </data>
+  <data name="DeleteUserFailed" xml:space="preserve">
+    <value>Polecenie Usuń użytkownika nie może zostać wysłane pomyślnie.</value>
+  </data>
+  <data name="DeleteUserRefused" xml:space="preserve">
+    <value>Odmówiono usunięcia użytkownika</value>
+  </data>
+  <data name="DeleteUserRequested" xml:space="preserve">
+    <value>Zażądano usunięcia użytkownika</value>
+  </data>
+  <data name="DeleteUserSuccess" xml:space="preserve">
+    <value>Polecenie Usuń użytkownika zostało wysłane pomyślnie.</value>
+  </data>
+  <data name="DEPAdminPasswordRotationJob" xml:space="preserve">
+    <value>Zadanie rotacji hasła administratora DEP</value>
+  </data>
+  <data name="DeploymentAlreadyExists" xml:space="preserve">
+    <value>Wdrożenie o podobnych właściwościach już istnieje.</value>
+  </data>
+  <data name="DeploymentBegins" xml:space="preserve">
+    <value>Wdrożenie rozpocznie się</value>
+  </data>
+  <data name="DeploymentDownloadAndInstall" xml:space="preserve">
+    <value>Pobierz i zainstaluj</value>
+  </data>
+  <data name="DeploymentDownloadOnly" xml:space="preserve">
+    <value>Tylko pobieranie</value>
+  </data>
+  <data name="DeploymentForDeviceUpdateNotFound" xml:space="preserve">
+    <value>Nie znaleziono wdrożenia dla tej aktualizacji urządzenia.</value>
+  </data>
+  <data name="DeploymentInstallOnly" xml:space="preserve">
+    <value>Tylko zainstaluj</value>
+  </data>
+  <data name="DeploymentMethod" xml:space="preserve">
+    <value>Metoda wdrażania</value>
+  </data>
+  <data name="DeploymentStartAfterUpdateExpiry" xml:space="preserve">
+    <value>Czas rozpoczęcia wdrożenia nie może być późniejszy od daty i godziny ważności aktualizacji.</value>
+  </data>
+  <data name="DeploymentStartTime" xml:space="preserve">
+    <value>Data rozpoczęcia wdrożenia</value>
+  </data>
+  <data name="DescriptionofQRCodeEnrollment" xml:space="preserve">
+    <value>W przypadku urządzeń Android z systemem 7.0+ rejestracja z użyciem kodu QR jest inicjowana na ekranie powitalnym systemu Android po przywróceniu ustawień fabrycznych poprzez dotknięcie dowolnego miejsca na ekranie 6 razy. Zależnie od używanego urządzenia przed rozpoczęciem skanowania kodu QR może być wyświetlone zapytanie o połączenie z siecią Wi-Fi.</value>
+  </data>
+  <data name="DestinationPath" xml:space="preserve">
+    <value>Ścieżka docelowa</value>
+  </data>
+  <data name="DeviceAlreadyLocked" xml:space="preserve">
+    <value>Urządzenie jest już zablokowane.</value>
+  </data>
+  <data name="DeviceBatchSizeHelp" xml:space="preserve">
+    <value>Liczba urządzeń, na których będzie działać aparat zasad.</value>
+  </data>
+  <data name="DeviceBulkManagementForceBiosPasswordReset" xml:space="preserve">
+    <value>Zarządzanie zbiorcze urządzeniami — wymuszenie resetu hasła BIOS</value>
+  </data>
+  <data name="DeviceBulkManagementForceBiosPasswordResetHelp" xml:space="preserve">
+    <value>Zezwala użytkownikowi na wymuszenie zbiorczego resetu hasła BIOS urządzeń</value>
+  </data>
+  <data name="DeviceCapability" xml:space="preserve">
+    <value>Możliwości urządzenia</value>
+  </data>
+  <data name="DeviceCICOCheckIn" xml:space="preserve">
+    <value>Zameldowanie urządzenia CICO</value>
+  </data>
+  <data name="DeviceCICOCheckInHelp" xml:space="preserve">
+    <value>Daje uprawnienia do zameldowania urządzenia z powrotem do wieloetapowego użytkownika z poziomu Console</value>
+  </data>
+  <data name="DeviceDeferralDate" xml:space="preserve">
+    <value>Data odroczenia</value>
+  </data>
+  <data name="DeviceDenylist" xml:space="preserve">
+    <value>Działanie listy niedozwolonych urządzeń</value>
+  </data>
+  <data name="DeviceDetailsApplicationSdkAppComplianceBanner" xml:space="preserve">
+    <value>Zgodność aplikacji SDK została ostatnio zgłoszona przez {0}. Aby uzyskać więcej informacji, wybierz aplikację z listy poniżej.</value>
+    <comment>{0} will be replaced by a ApplicationName (Application Bundle Identifier).</comment>
+  </data>
+  <data name="DeviceDetailsComplianceSdkAppComplianceBanner" xml:space="preserve">
+    <value>Do tego urządzenia są przypisane zasady zgodności aplikacji SDK. Przejdź do karty Aplikacje w sekcji szczegółów urządzenia, aby wyświetlić stan zgodności aplikacji SDK.</value>
+  </data>
+  <data name="DeviceDetailsNumberOfApprovedUpdatesArg" xml:space="preserve">
+    <value>Nowe aktualizacje zatwierdzone: {0}</value>
+  </data>
+  <data name="DeviceDetailsNumberOfAvailableUpdatesArg" xml:space="preserve">
+    <value>Nowe aktualizacje dostępne: {0}</value>
+  </data>
+  <data name="DeviceDetailsNumberOfInstalledUpdatesArg" xml:space="preserve">
+    <value>Łączna liczba zainstalowanych aktualizacji: {0}</value>
+  </data>
+  <data name="DeviceDoesNotExistOrMightBeDeleted" xml:space="preserve">
+    <value>Urządzenie nie istnieje lub mogło zostać usunięte.</value>
+  </data>
+  <data name="DeviceDomainJoinResourceCreationJob" xml:space="preserve">
+    <value>Zadanie tworzenia zasobu dołączania do domeny urządzenia</value>
+  </data>
+  <data name="DeviceEnrolled" xml:space="preserve">
+    <value>Urządzenie zarejestrowano</value>
+  </data>
+  <data name="DeviceEnrollmentChartDescription" xml:space="preserve">
+    <value>{0}</value>
+  </data>
+  <data name="DeviceEnrollmentChartTitle" xml:space="preserve">
+    <value>Skumulowany wykres słupkowy rejestracji urządzenia. </value>
+  </data>
+  <data name="DeviceHasBeenOverriddenSuccessfully" xml:space="preserve">
+    <value>Polecenie wysłane pomyślnie</value>
+  </data>
+  <data name="DeviceListCannotBeEmpty" xml:space="preserve">
+    <value>Lista urządzeń nie może być pusta.</value>
+  </data>
+  <data name="DeviceLocationGroupChangeFailed" xml:space="preserve">
+    <value>Zmiana grupy organizacyjnej urządzenia nie powiodła się. Prosimy upewnić się, że docelowa grupa organizacyjna ma Identyfikator grupy i znajduje się w obecnej hierarchii grupy organizacyjnej użytkownika rejestracji lub poniżej.</value>
+  </data>
+  <data name="DeviceLogSourceToolTipText" xml:space="preserve">
+    <value>Wybierz opcję Hub, aby zgromadzić dzienniki wygenerowane przez Workspace ONE Intelligent Hub. Wybierz opcję System, aby zgromadzić pełny dziennik systemu urządzeń z zainstalowaną usługą platformy OEM. Raport o błędzie zostanie zebrany, jeśli urządzenie jest zarządzane przez Android for Work, a wersja zainstalowanego systemu to Android 7.0 lub nowszy. Dziennik systemu i raport o błędzie mogą być zbierane, jeśli urządzenie z systemem Android jest zarządzane w miejscu pracy i zainstalowana jest usługa platformy OEM.</value>
+  </data>
+  <data name="DeviceLogTypeToolTipText" xml:space="preserve">
+    <value>Wybierz opcję Migawka, aby pobrać najnowsze rekordy dziennika dostępne na urządzeniach. Wybierz opcję Okresowe, aby gromadzić ciągły dziennik z wybranego okresu. Do aplikacji Workspace ONE UEM można wysłać wiele plików dziennika.</value>
+  </data>
+  <data name="DeviceNameMaxCharacters" xml:space="preserve">
+    <value>Nazwa urządzenia może zawierać maksymalnie 512 znaków</value>
+  </data>
+  <data name="DeviceNotFound" xml:space="preserve">
+    <value>Nie znaleziono urządzenia</value>
+  </data>
+  <data name="DeviceNotRegisteredForRemoteView" xml:space="preserve">
+    <value>Urządzenie o identyfikatorze UDID {0} nie jest zarejestrowane do widoku zdalnego. Kliknij poniższy przycisk Zarejestruj urządzenie, aby zarejestrować urządzenie.</value>
+  </data>
+  <data name="DeviceOfflineDomainJoinBlobCreationFailed" xml:space="preserve">
+    <value>Tworzenie BLOB dołączania do domeny offline nie powiodło się</value>
+  </data>
+  <data name="DeviceOfflineDomainJoinFailed" xml:space="preserve">
+    <value>Nie udało się dołączyć do domeny w trybie offline</value>
+  </data>
+  <data name="DeviceOwnerEnrollmentMode" xml:space="preserve">
+    <value>Tryb zarządzania dla urządzeń firmowych</value>
+  </data>
+  <data name="DeviceOwnershipChartDescription" xml:space="preserve">
+    <value>{0}</value>
+  </data>
+  <data name="DeviceOwnershipChartTitle" xml:space="preserve">
+    <value>Skumulowany wykres słupkowy własności urządzenia. </value>
+  </data>
+  <data name="DevicePolicyJobAuditing" xml:space="preserve">
+    <value>Audyt zadania zasad urządzenia</value>
+  </data>
+  <data name="DevicePolicyJobAuditingHelp" xml:space="preserve">
+    <value>Jeśli opcja jest włączona, przetwarzane zadania produktów są przechowywane w audycie zadań zasad.</value>
+  </data>
+  <data name="DeviceReadiness" xml:space="preserve">
+    <value>Gotowość urządzenia</value>
+  </data>
+  <data name="DeviceRegisteredForRemoteView" xml:space="preserve">
+    <value>Urządzenie o identyfikatorze UDID {0} jest zarejestrowane do widoku zdalnego.</value>
+  </data>
+  <data name="DeviceSavedSuccessfully" xml:space="preserve">
+    <value>Urządzenie zostało zapisane pomyślnie</value>
+  </data>
+  <data name="DeviceShutdownFailed" xml:space="preserve">
+    <value>Wyłączenie urządzenia nieudane</value>
+  </data>
+  <data name="DeviceShutdownSuccess" xml:space="preserve">
+    <value>Urządzenie wyłączone</value>
+  </data>
+  <data name="DevicesSeenInLastDay" xml:space="preserve">
+    <value>Urządzenia widziane w ostatnich 24 godz.</value>
+  </data>
+  <data name="DevicesSettings" xml:space="preserve">
+    <value>Ustawienia urządzeń</value>
+  </data>
+  <data name="DevicesStagingMenuTitle" xml:space="preserve">
+    <value>Wstępna rejestracja</value>
+  </data>
+  <data name="DeviceStateAndSearchHubConfigurationErrorMessage" xml:space="preserve">
+    <value>Nie można pobrać danych, ponieważ podstawowa usługa nie działa lub nie jest skonfigurowana</value>
+  </data>
+  <data name="DeviceSyncInitiated" xml:space="preserve">
+    <value>Synchronizacja urządzenia została zainicjowana</value>
+  </data>
+  <data name="DeviceTime" xml:space="preserve">
+    <value>Czas urządzenia</value>
+  </data>
+  <data name="DeviceTimeWindowCardEmpty" xml:space="preserve">
+    <value>Brak dostępnych harmonogramów.</value>
+  </data>
+  <data name="DeviceTimeWindowCardNote" xml:space="preserve">
+    <value>Wyświetla ostatnie przedziały czasu skonfigurowane na konsoli dla tego urządzenia.</value>
+  </data>
+  <data name="DeviceTimeWindowCardTitle" xml:space="preserve">
+    <value>Dzisiejsze przedziały czasu</value>
+  </data>
+  <data name="DeviceUnenrollmentRequested" xml:space="preserve">
+    <value>Zażądano wyrejestrowania urządzenia</value>
+  </data>
+  <data name="DeviceUpdateDeferralDate" xml:space="preserve">
+    <value>Maksymalna data odroczenia</value>
+  </data>
+  <data name="DeviceUpdateExpirationDate" xml:space="preserve">
+    <value>Data wygaśnięcia</value>
+  </data>
+  <data name="DeviceUpdateInstallInProgress" xml:space="preserve">
+    <value>Instalacja w toku</value>
+  </data>
+  <data name="DeviceUpdateName" xml:space="preserve">
+    <value>Aktualizuj</value>
+  </data>
+  <data name="DeviceUpdatePublish" xml:space="preserve">
+    <value>Publikacja aktualizacji urządzenia</value>
+  </data>
+  <data name="DeviceUpdateReasonTooltipInfo" xml:space="preserve">
+    <value>Tylko odpowiedzi z uprawnionych urządzeń z systemem iOS mogą być filtrowane.</value>
+  </data>
+  <data name="DeviceUpdateReleaseDate" xml:space="preserve">
+    <value>Data wydania</value>
+  </data>
+  <data name="DeviceUpdates" xml:space="preserve">
+    <value>Aktualizacje urządzenia</value>
+  </data>
+  <data name="DeviceUpdateStatus" xml:space="preserve">
+    <value>Stan aktualizacji</value>
+  </data>
+  <data name="DeviceUpdateType" xml:space="preserve">
+    <value>Typ aktualizacji</value>
+  </data>
+  <data name="DeviceUpdateUUIDNotFound" xml:space="preserve">
+    <value>Nie znaleziono aktualizacji urządzenia z określonym identyfikatorem UUID</value>
+  </data>
+  <data name="DeviceWipeDescription" xml:space="preserve">
+    <value>Użycie funkcji Czyszczenie urządzenia spowoduje usunięcie wszystkich aplikacji, danych, poczty e-mail, profili oraz funkcji MDM, a urządzenie powróci do domyślnego stanu fabrycznego. Obejmuje to wszystkie informacje osobiste użytkownika. Tego działania nie można cofnąć. Należy postępować ostrożnie.</value>
+  </data>
+  <data name="DeviceWipeDescriptionForMac" xml:space="preserve">
+    <value>Użycie funkcji Czyszczenie urządzenia spowoduje usunięcie wszystkich aplikacji, danych, poczty e-mail, profili, funkcji MDM oraz systemu operacyjnego macOS. Obejmuje to wszystkie informacje osobiste użytkownika. Tego działania nie można cofnąć. Należy postępować ostrożnie.</value>
+  </data>
+  <data name="DeviceWipeEmailNotification" xml:space="preserve">
+    <value>Powiadomienie e-mail o usunięciu danych urządzenia</value>
+  </data>
+  <data name="DevUnlockCommand" xml:space="preserve">
+    <value>Polecenie odblokowania urządzenia</value>
+  </data>
+  <data name="DirectoryOrFilePathExample" xml:space="preserve">
+    <value>Wprowadź katalog lub ścieżkę pliku</value>
+  </data>
+  <data name="DisableActivationLock" xml:space="preserve">
+    <value>Wyłącz blokadę aktywacji</value>
+  </data>
+  <data name="DisableManagedApplication" xml:space="preserve">
+    <value>Wyłącz zarządzaną aplikację</value>
+  </data>
+  <data name="DisallowProximitySetup" xml:space="preserve">
+    <value>Nie zezwalaj na ustawienia zbliżeniowe</value>
+  </data>
+  <data name="DisallowProximitySetupTooltip" xml:space="preserve">
+    <value>Jeśli opcja jest włączona, ekran ustawień zbliżeniowych zostanie pominięty w asystencie konfiguracji przy kolejnym uruchomieniu urządzenia.</value>
+  </data>
+  <data name="DomainJoinConfigAssignmentCreated" xml:space="preserve">
+    <value>Utworzono przypisanie konfiguracji dołączania do domeny</value>
+  </data>
+  <data name="DomainJoinConfigAssignmentDeleted" xml:space="preserve">
+    <value>Usunięto przypisanie konfiguracji dołączania do domeny</value>
+  </data>
+  <data name="DomainJoinConfigAssignmentUpdated" xml:space="preserve">
+    <value>Zaktualizowano przypisanie konfiguracji dołączania do domeny</value>
+  </data>
+  <data name="DomainJoinConfigCreated" xml:space="preserve">
+    <value>Utworzono konfigurację dołączania do domeny</value>
+  </data>
+  <data name="DomainJoinConfigDeleted" xml:space="preserve">
+    <value>Usunięto konfigurację dołączania do domeny</value>
+  </data>
+  <data name="DomainJoinConfigUpdated" xml:space="preserve">
+    <value>Zaktualizowano konfigurację dołączania do domeny</value>
+  </data>
+  <data name="DomainJoinConfigurationError" xml:space="preserve">
+    <value>Błąd konfiguracji dołączania do domeny</value>
+  </data>
+  <data name="DomainJoinDescription" xml:space="preserve">
+    <value>Dołączenie do domeny</value>
+  </data>
+  <data name="DownloadAndInstall" xml:space="preserve">
+    <value>Pobierz i zainstaluj</value>
+  </data>
+  <data name="DownloadAndInstallDesc" xml:space="preserve">
+    <value>Aktualizacja zostanie pobrana i zainstalowana na urządzeniach</value>
+  </data>
+  <data name="DownloadAndInstallNow" xml:space="preserve">
+    <value>Pobierz i zainstaluj teraz</value>
+  </data>
+  <data name="DownloadInsufficientNetwork" xml:space="preserve">
+    <value>Pobieranie – niewystarczająca prędkość sieci</value>
+  </data>
+  <data name="DownloadInsufficientPower" xml:space="preserve">
+    <value>Pobieranie – niewystarczająca ilość energii</value>
+  </data>
+  <data name="DownloadInsufficientSpace" xml:space="preserve">
+    <value>Pobieranie – niewystarczająca ilość miejsca</value>
+  </data>
+  <data name="DownloadNow" xml:space="preserve">
+    <value>Pobierz teraz</value>
+  </data>
+  <data name="DownloadOnly" xml:space="preserve">
+    <value>Tylko pobieranie</value>
+  </data>
+  <data name="DownloadOnlyDesc" xml:space="preserve">
+    <value>Aktualizacja zostanie tylko pobrana na urządzenia</value>
+  </data>
+  <data name="DownloadRequiresComputer" xml:space="preserve">
+    <value>Pobieranie wymaga komputera</value>
+  </data>
+  <data name="Drive" xml:space="preserve">
+    <value>Dysk</value>
+  </data>
+  <data name="DriveLetter" xml:space="preserve">
+    <value>Litera dysku</value>
+  </data>
+  <data name="DropshipDeviceName" xml:space="preserve">
+    <value>Nazwa urządzenia</value>
+  </data>
+  <data name="DropshipDeviceNameToolTip" xml:space="preserve">
+    <value>Czytelna dla człowieka nazwa urządzenia</value>
+  </data>
+  <data name="DropshipModelNumber" xml:space="preserve">
+    <value>Numer modelu</value>
+  </data>
+  <data name="DropshipModelNumberToolTip" xml:space="preserve">
+    <value>Model urządzenia OEM</value>
+  </data>
+  <data name="DropshipOptional" xml:space="preserve">
+    <value>Opcjonalne</value>
+  </data>
+  <data name="DropshipOrganizationGroup" xml:space="preserve">
+    <value>Grupa organizacyjna</value>
+  </data>
+  <data name="DropshipOwnership" xml:space="preserve">
+    <value>Własność</value>
+  </data>
+  <data name="DropshipOwnershipToolTip" xml:space="preserve">
+    <value>Corp/BYOD</value>
+  </data>
+  <data name="DropShipProvisioningMenuTitle" xml:space="preserve">
+    <value>Fabryczne przydzielanie zasobów</value>
+  </data>
+  <data name="DropshipSerialNumber" xml:space="preserve">
+    <value>Numer seryjny</value>
+  </data>
+  <data name="DropshipSerialNumberToolTip" xml:space="preserve">
+    <value>Numer seryjny urządzenia dostarczony przez OEM</value>
+  </data>
+  <data name="DropshipSyncDeviceSuccessful" xml:space="preserve">
+    <value>Synchronizacja urządzeń powiodła się</value>
+  </data>
+  <data name="DropshipSyncDeviceUnsuccessful" xml:space="preserve">
+    <value>W tej chwili nie można zainicjować synchronizacji</value>
+  </data>
+  <data name="DropshipTag" xml:space="preserve">
+    <value>Znacznik</value>
+  </data>
+  <data name="DropshipTagToolTip" xml:space="preserve">
+    <value>Znacznik przydzielania logicznie grupuje urządzenia</value>
+  </data>
+  <data name="DynamicActionFailed" xml:space="preserve">
+    <value>System nie był w stanie wysłać polecenia do urządzenia. Połączenie nie jest dostępne lub istnieje błąd na urządzeniu.</value>
+  </data>
+  <data name="EasSample" xml:space="preserve">
+    <value>Próbka EAS</value>
+  </data>
+  <data name="EditDeviceArgOpensDialog" xml:space="preserve">
+    <value>Funkcja Edytuj urządzenie {0} otwiera okno dialogowe</value>
+    <comment>The placeholder in this label key contains device friendly name.</comment>
+  </data>
+  <data name="EditTimeWindow" xml:space="preserve">
+    <value>Edytuj przedział czasu</value>
+  </data>
+  <data name="EfotaCancelScheduleMessage" xml:space="preserve">
+    <value>Od tego momentu urządzenia nie będą już otrzymywać tej aktualizacji. Nie można wycofać poprzednich aktualizacji z tego harmonogramu. Czy chcesz anulować tę zaplanowaną aktualizację?</value>
+  </data>
+  <data name="EfotaDeliveryMethod" xml:space="preserve">
+    <value>Metoda instalacji</value>
+  </data>
+  <data name="EfotaInstallOnDemandPublishMessage" xml:space="preserve">
+    <value>Przed zainstalowaniem aktualizacji oprogramowania układowego na urządzeniu użytkownicy będą monitowani o jej zaakceptowanie.</value>
+  </data>
+  <data name="Eligible" xml:space="preserve">
+    <value>Uprawniony</value>
+  </data>
+  <data name="EligibleHoverText" xml:space="preserve">
+    <value>Uprawniony
+Zawiera wszystkie urządzenia obsługiwane, DEP i nadzorowane                                                                                           </value>
+  </data>
+  <data name="EnableActivationLock" xml:space="preserve">
+    <value>Włącz blokadę aktywacji</value>
+  </data>
+  <data name="EnableManagedApplication" xml:space="preserve">
+    <value>Włącz zarządzaną aplikację</value>
+  </data>
+  <data name="EndDateLessThanStartDate" xml:space="preserve">
+    <value>Data i godzina rozpoczęcia nie może być późniejsza od daty i godziny zakończenia harmonogramu.</value>
+  </data>
+  <data name="EndDateSameAsStartDate" xml:space="preserve">
+    <value>Data i godzina rozpoczęcia i zakończenia nie mogą być takie same.</value>
+  </data>
+  <data name="EndUserWipeMessage" xml:space="preserve">
+    <value>Profil służbowy w systemie Android — komunikat o usunięciu danych użytkownika</value>
+  </data>
+  <data name="EnrollmentConfigurationWizard" xml:space="preserve">
+    <value>Kreator konfigurowania rejestracji</value>
+  </data>
+  <data name="EnrollmentDetail" xml:space="preserve">
+    <value>Szczegóły rejestracji</value>
+  </data>
+  <data name="EnrollmentID" xml:space="preserve">
+    <value>Identyfikator rejestracji</value>
+  </data>
+  <data name="EnterAssignmentName" xml:space="preserve">
+    <value>Wprowadź nazwę przypisania</value>
+  </data>
+  <data name="EnterDeviceName" xml:space="preserve">
+    <value>Wprowadź nazwę urządzenia</value>
+  </data>
+  <data name="EnterModelNumber" xml:space="preserve">
+    <value>Wprowadź numer modelu</value>
+  </data>
+  <data name="EnterpriseWipeWarningAADDevices" xml:space="preserve">
+    <value>W przypadku urządzeń zarejestrowanych w usłudze Azure Active Directory przed wydaniem polecenia usunięcia danych firmowych upewnij się, że istnieje lokalne konto administratora, ponieważ polecenie to spowoduje usunięcie konta Azure AD. Jeśli lokalne konto administratora nie istnieje, w celu odzyskania go należy przywrócić urządzenie do ustawień fabrycznych.</value>
+  </data>
+  <data name="EnterSerialNumber" xml:space="preserve">
+    <value>Wprowadź numer seryjny</value>
+  </data>
+  <data name="EnvironmentVariables" xml:space="preserve">
+    <value>Zmienne środowiskowe</value>
+  </data>
+  <data name="ErrorGeneratingAppToken" xml:space="preserve">
+    <value>Wystąpił błąd podczas generowania tokena aplikacji. Spróbuj ponownie.</value>
+  </data>
+  <data name="ErrorInitiatingDeviceSync" xml:space="preserve">
+    <value>Nieznany błąd podczas inicjowania synchronizacji urządzenia</value>
+  </data>
+  <data name="ErrorResolvingDeviceGroupArg" xml:space="preserve">
+    <value>Błąd przy rozpoznawaniu grupy urządzeń {0}</value>
+  </data>
+  <data name="ErrorWhileSendingEmailNotification" xml:space="preserve">
+    <value>Wystąpił błąd podczas wysyłania powiadomienia e-mail. Spróbuj ponownie.</value>
+  </data>
+  <data name="EsimUrl" xml:space="preserve">
+    <value>Adres URL karty eSIM</value>
+  </data>
+  <data name="EsimUrlTooltip" xml:space="preserve">
+    <value>Adres URL karty eSIM to adres URL serwera karty eSIM operatora dla urządzenia do kwerendy w celu odświeżenia planu komórkowego.</value>
+  </data>
+  <data name="EveryArg" xml:space="preserve">
+    <value>Każdy {0} {1} – {2} ({3})</value>
+    <comment>Placehoders: 0 - Days on which schedule is repeated, 1 - StartTime, 2 - EndTime, 3 - Duration.
+Example: Every Mon/Tue 11:00 PM - 4:30 AM (5 hours 30 mins)</comment>
+  </data>
+  <data name="EveryWeekdayArg" xml:space="preserve">
+    <value>Każdy dzień tygodnia {0} – {1} ({2})</value>
+    <comment>Placehoders: 0 - StartTime, 1 - EndTime, 2 - Duration.
+Example: Every Weekday 11:00 PM - 4:30 AM (5 hours 30 mins)</comment>
+  </data>
+  <data name="ExecutionContext" xml:space="preserve">
+    <value>Kontekst wykonywania</value>
+  </data>
+  <data name="Existing" xml:space="preserve">
+    <value>Istniejące</value>
+  </data>
+  <data name="ExistingDeviceUpdatedInDeviceState" xml:space="preserve">
+    <value>Zaktualizowano istniejące urządzenie w stanie urządzenia</value>
+  </data>
+  <data name="Expires" xml:space="preserve">
+    <value>Wygasa</value>
+  </data>
+  <data name="ExportPPKGWindowsMoved" xml:space="preserve">
+    <value>Eksportuj pakiet aprowizacyjny</value>
+  </data>
+  <data name="ExportPPKGWindowsMovedMessage" xml:space="preserve">
+    <value>Czynność ta spowoduje przełączenie się do sekcji wstępnej rejestracji, gdzie można wyeksportować aplikacje, aby utworzyć pakiet aprowizacyjny. Czy chcesz kontynuować?</value>
+  </data>
+  <data name="ExtendedDeviceInventory" xml:space="preserve">
+    <value>Rozszerzony spis urządzeń</value>
+  </data>
+  <data name="ExternalBootStatusAllowed" xml:space="preserve">
+    <value>Stan zewnętrznego rozruchu — dozwolony</value>
+  </data>
+  <data name="ExternalBootStatusDisallowed" xml:space="preserve">
+    <value>Stan zewnętrznego rozruchu — niedozwolony</value>
+  </data>
+  <data name="ExternalBootStatusNotSupported" xml:space="preserve">
+    <value>Stan zewnętrznego rozruchu — nieobsługiwany</value>
+  </data>
+  <data name="ExternalStorage" xml:space="preserve">
+    <value>Pamięć zewnętrzna</value>
+  </data>
+  <data name="FailedItemsBackOffTime" xml:space="preserve">
+    <value>Czas wycofania dla pozycji zakończonych niepowodzeniem</value>
+  </data>
+  <data name="FailedItemsMaxTryCount" xml:space="preserve">
+    <value>Maksymalna liczba prób dla pozycji zakończonych niepowodzeniem</value>
+  </data>
+  <data name="FewSecondsAgo" xml:space="preserve">
+    <value>kilka sekund temu</value>
+  </data>
+  <data name="FileActionNoNewFileEntities" xml:space="preserve">
+    <value>Nie znaleziono nowych jednostek plików.</value>
+  </data>
+  <data name="FilePathOnFileServerExample" xml:space="preserve">
+    <value>Wprowadź ścieżkę pliku na serwerze plików</value>
+  </data>
+  <data name="FileServer" xml:space="preserve">
+    <value>Serwer plików</value>
+  </data>
+  <data name="FileUploadInfoMessage" xml:space="preserve">
+    <value>Pliki zostaną przekazane do dynamicznie generowanych folderów podrzędnych dla każdego przypisanego urządzenia. Jeśli wiele operacji przekazywania plików używa tych samych reguł nazywania folderów docelowych, podobnie nazwane pliki mogą być zastępowane, dlatego zaleca się nadawanie unikalnych nazw.</value>
+  </data>
+  <data name="FindDeviceAlarmSoundMessage" xml:space="preserve">
+    <value>Alarm będzie odtwarzał dźwięk będący skonfigurowanym dzwonkiem urządzenia, który może powtarzać się w trybie ciągłym do momentu wyłączenia alarmu przez wybranie powiadomienia na urządzeniu.</value>
+  </data>
+  <data name="FirmwareUpdateDeploymentEndDateTime" xml:space="preserve">
+    <value>Koniec wdrażania</value>
+  </data>
+  <data name="FirmwareUpdateDeploymentStartDateTime" xml:space="preserve">
+    <value>Początek wdrażania</value>
+  </data>
+  <data name="FolderNaming" xml:space="preserve">
+    <value>Nazywanie folderów</value>
+  </data>
+  <data name="FollowingAssignmentArgWillBeDeleted" xml:space="preserve">
+    <value>Czy na pewno chcesz usunąć przypisanie „{0}”?</value>
+  </data>
+  <data name="FollowingDeploymentsWillBeDeleted" xml:space="preserve">
+    <value>Czy na pewno chcesz usunąć to przypisanie? To działanie uniemożliwi urządzeniom uzyskanie tej aktualizacji. Nie usunie to jednak tej aktualizacji z urządzeń, które już ją otrzymały.</value>
+  </data>
+  <data name="ForceAospDisabledPromtText" xml:space="preserve">
+    <value>Urządzenie zostanie zarejestrowane na podstawie zarządzanego typu rejestracji określonego w ustawieniach rejestracji w systemie Android</value>
+  </data>
+  <data name="ForceAospEnabledPromtText" xml:space="preserve">
+    <value>Urządzenie zostanie zarejestrowane jako AOSP/sieć zamknięta bez względu na zarządzany typ rejestracji określony w ustawieniach rejestracji w systemie Android</value>
+  </data>
+  <data name="ForceBiosPasswordReset" xml:space="preserve">
+    <value>Wymuś resetowanie hasła BIOS</value>
+  </data>
+  <data name="ForceBiosPasswordResetFailure" xml:space="preserve">
+    <value>Resetowanie hasła BIOS nie powiodło się.</value>
+  </data>
+  <data name="ForceBiosPasswordResetHelp" xml:space="preserve">
+    <value>Uprawnienie do wymuszenia resetowania hasła BIOS znajduje się na stronie Szczegóły urządzenia.</value>
+  </data>
+  <data name="ForceBiosPasswordResetMessage" xml:space="preserve">
+    <value>To działanie występuje, gdy urządzenie zarejestruje się w Workspace ONE UEM. Urządzenie musi mieć profil systemu BIOS i być zgodnym, obsługiwanym typem urządzenia. Aby kontynuować, wprowadź kod PIN.</value>
+  </data>
+  <data name="ForceBiosPasswordResetRestricted" xml:space="preserve">
+    <value>Wymuś resetowanie hasła BIOS</value>
+  </data>
+  <data name="ForceBiosPasswordResetSuccess" xml:space="preserve">
+    <value>Zresetowanie hasła BIOS zostało pomyślnie przeprowadzone dla tego urządzenia.</value>
+  </data>
+  <data name="ForceDeviceReportAppConfigFeedbackSuccess" xml:space="preserve">
+    <value>Opinia została zażądana pomyślnie. Udostępnienie nowej opinii może potrwać kilka minut.</value>
+  </data>
+  <data name="ForceDeviceReportAppConfigFeedbackTitle" xml:space="preserve">
+    <value>Zażądaj opinii o konfiguracji aplikacji</value>
+  </data>
+  <data name="ForceRequestFeedbackConfirmationMessage" xml:space="preserve">
+    <value>Nowe opinie na temat aplikacji, jeśli są dostępne, będą raportowane przez urządzenie i mogą być wyświetlane w obszarze Aplikacje i książki &gt; Aplikacje &gt; Widok szczegółowy &gt; Urządzenia &gt; Przypisana konfiguracja. Można też kliknąć nazwę aplikacji w tym miejscu i przejść do karty konfiguracji aplikacji.</value>
+  </data>
+  <data name="ForceRequestFeedbackConfirmationMessageSecond" xml:space="preserve">
+    <value>To żądanie można wysłać tylko 3 razy dziennie. Czy na pewno chcesz zażądać?</value>
+  </data>
+  <data name="ForceRequestFeedbackTitle" xml:space="preserve">
+    <value>Zażądaj opinii o konfiguracji aplikacji</value>
+  </data>
+  <data name="FreshDeviceCreatedInDeviceState" xml:space="preserve">
+    <value>Utworzono nowe urządzenie w stanie urządzenia</value>
+  </data>
+  <data name="GenerateNewCode" xml:space="preserve">
+    <value>Wygeneruj nowy kod</value>
+  </data>
+  <data name="GetSensor" xml:space="preserve">
+    <value>Get(Sensor)</value>
+  </data>
+  <data name="GoogleApiError" xml:space="preserve">
+    <value>Wyjątek/błąd Google API.</value>
+  </data>
+  <data name="GooglePlayServiceDisable" xml:space="preserve">
+    <value>Zainstalowana wersja usług Google Play została wyłączona w tym urządzeniu</value>
+  </data>
+  <data name="GooglePlayServiceMissing" xml:space="preserve">
+    <value>Brak usług Google Play na tym urządzeniu</value>
+  </data>
+  <data name="GooglePlayServiceUpdateRequired" xml:space="preserve">
+    <value>Zainstalowana wersja usług Google Play jest nieaktualna.</value>
+  </data>
+  <data name="GooglePlayServiceUpdating" xml:space="preserve">
+    <value>Usługa Google Play jest aktualizowana na tym urządzeniu</value>
+  </data>
+  <data name="GoToAppleBusinessManager" xml:space="preserve">
+    <value>Apple Business Manager</value>
+  </data>
+  <data name="GoToWorkflowList" xml:space="preserve">
+    <value>Przejdź do przepływów pracy</value>
+  </data>
+  <data name="GPSDataCollectionNotEnabledForDeviceType" xml:space="preserve">
+    <value>Zbieranie danych lokalizacji nie zostało włączone dla tego typu urządzeń</value>
+  </data>
+  <data name="GracePeriodRecoveryKey" xml:space="preserve">
+    <value>Klucz odzyskiwania okresu prolongaty</value>
+  </data>
+  <data name="HealthAttestationStatus" xml:space="preserve">
+    <value>Stan zaświadczenia o kondycji</value>
+  </data>
+  <data name="HmacRecovery" xml:space="preserve">
+    <value>Odzyskiwanie Hmac</value>
+  </data>
+  <data name="HostedOnAnExternalURL" xml:space="preserve">
+    <value>Hostowane pod zewnętrznym adresem URL</value>
+  </data>
+  <data name="HourAgo" xml:space="preserve">
+    <value>godzinę temu</value>
+  </data>
+  <data name="HubEnrollmentUrl" xml:space="preserve">
+    <value>URL rejestracji Hub</value>
+  </data>
+  <data name="HubRepair" xml:space="preserve">
+    <value>Naprawianie aplikacji Hub</value>
+  </data>
+  <data name="HumanReadableName" xml:space="preserve">
+    <value>Zaraportowano aktualizację</value>
+  </data>
+  <data name="Idle" xml:space="preserve">
+    <value>Bezczynny</value>
+  </data>
+  <data name="IGEL_THIN_CLIENT" xml:space="preserve">
+    <value>System operacyjny IGEL</value>
+  </data>
+  <data name="IMSI" xml:space="preserve">
+    <value>IMSI</value>
+  </data>
+  <data name="IncorrectFilter" xml:space="preserve">
+    <value>Nieprawidłowy filtr</value>
+  </data>
+  <data name="InstallComplete" xml:space="preserve">
+    <value>Instalacja zakończona</value>
+  </data>
+  <data name="InstallEventAction" xml:space="preserve">
+    <value>Działanie dla zdarzenia instalacji</value>
+  </data>
+  <data name="InstallInsufficientPower" xml:space="preserve">
+    <value>Instalacja – niewystarczająca ilość energii</value>
+  </data>
+  <data name="InstallInsufficientSpace" xml:space="preserve">
+    <value>Instalacja – niewystarczająca ilość miejsca</value>
+  </data>
+  <data name="InstallNow" xml:space="preserve">
+    <value>Zainstaluj teraz</value>
+  </data>
+  <data name="InstallOnDemand" xml:space="preserve">
+    <value>Instalacja na żądanie</value>
+  </data>
+  <data name="InstallOnly" xml:space="preserve">
+    <value>Tylko zainstaluj</value>
+  </data>
+  <data name="InstallOnlyDesc" xml:space="preserve">
+    <value>Już pobrane aktualizacje zostaną zainstalowane na urządzeniach</value>
+  </data>
+  <data name="InstallPackage" xml:space="preserve">
+    <value>Zainstaluj pakiet</value>
+  </data>
+  <data name="InstallPhoneCallInProgress" xml:space="preserve">
+    <value>Instalacja – rozmowa telefoniczna w toku</value>
+  </data>
+  <data name="InternalStorage" xml:space="preserve">
+    <value>Pamięć wewnętrzna</value>
+  </data>
+  <data name="Interrogator" xml:space="preserve">
+    <value>Interrogator</value>
+  </data>
+  <data name="InterrogatorIntervalRequired" xml:space="preserve">
+    <value>Wymagany interwał interrogatora</value>
+  </data>
+  <data name="InterrogatorIntervalSeconds" xml:space="preserve">
+    <value>Odstęp czasowy interrogatora (s)</value>
+  </data>
+  <data name="InterrogatorPort" xml:space="preserve">
+    <value>Port interrogatora</value>
+  </data>
+  <data name="InterrogatorQueueService" xml:space="preserve">
+    <value>Monitor do obsługi kolejek interrogatora AirWatch</value>
+  </data>
+  <data name="InterrogatorService" xml:space="preserve">
+    <value>Serwer interrogatora AirWatch</value>
+  </data>
+  <data name="InterrogatorSettings" xml:space="preserve">
+    <value>Ustawienia interrogatora</value>
+  </data>
+  <data name="InvalidGooglePlayService" xml:space="preserve">
+    <value>Wersja usług Google Play zainstalowana na tym urządzeniu nie jest autentyczna</value>
+  </data>
+  <data name="InvalidGroupIdentifier" xml:space="preserve">
+    <value>Wybrana Grupa organizacyjna nie ma prawidłowego identyfikatora grupy.</value>
+  </data>
+  <data name="InvalidPeriodEnd" xml:space="preserve">
+    <value>Nieprawidłowa wartość końcowa</value>
+  </data>
+  <data name="InvalidSuspendBitLockerRebootCount" xml:space="preserve">
+    <value>Wartość zliczania ponownego uruchomienia musi zawierać się pomiędzy 1 i 15.</value>
+  </data>
+  <data name="InvalidTargetedLoggingFilterFormat" xml:space="preserve">
+    <value>Nieprawidłowy format dla filtra rejestrowania ukierunkowanego.</value>
+  </data>
+  <data name="IosCodeSigningChecks" xml:space="preserve">
+    <value>Weryfikacja testów podpisywania kodu systemu jest wyłączona.</value>
+  </data>
+  <data name="IosDebugChecks" xml:space="preserve">
+    <value>Aplikacja jest aktywnie debugowana.</value>
+  </data>
+  <data name="IosDisallowedOperationChecks" xml:space="preserve">
+    <value>Integralność tego urządzenia została naruszona.</value>
+  </data>
+  <data name="IosEnvironmentChecks" xml:space="preserve">
+    <value>Aplikacja jest uruchomiona w środowisku niekontrolowanym przez dostawcę urządzenia.</value>
+  </data>
+  <data name="IosMountCheck" xml:space="preserve">
+    <value>Urządzenie zawiera potencjalnie niebezpieczne i/lub zagrożone instalacje.</value>
+  </data>
+  <data name="Iospost103managementcapabilityunavailable" xml:space="preserve">
+    <value>To urządzenie nie jest nadzorowane. Nie możesz wykonać żadnych działań w odniesieniu do aktualizacji.</value>
+  </data>
+  <data name="Iospre103managementcapabilityunavailable" xml:space="preserve">
+    <value>To urządzenie nie jest zarejestrowane i nadzorowane przez DEP. Nie możesz wykonać żadnych działań w odniesieniu do aktualizacji.</value>
+  </data>
+  <data name="IosProhibitedFileExistenceChecks" xml:space="preserve">
+    <value>Aplikacja zawiera lub używa niedozwolonych bibliotek.</value>
+  </data>
+  <data name="IosQueryStatusTooltip" xml:space="preserve">
+    <value>Wyślij zapytanie o stan aktualizacji dla tego urządzenia. Zapytania można wysyłać jedynie do aktualizacji zaplanowanych przez Workspace ONE.</value>
+  </data>
+  <data name="IosUpdateDeviceCountWarning" xml:space="preserve">
+    <value>Zaraz wyślesz żądanie aktualizacji iOS do {0} urządzenia/urządzeń. Niniejsze żądanie zostanie wysłane tylko do nadzorowanych urządzeń z systemem operacyjnym iOS 10.3 (lub nowszym) oraz do nadzorowanych urządzeń z systemem iOS 9 (lub nowszym) zarejestrowanych z programem DEP.</value>
+  </data>
+  <data name="iPad7" xml:space="preserve">
+    <value>iPad 7. generacji</value>
+  </data>
+  <data name="iPadMini4" xml:space="preserve">
+    <value>iPad Mini 4</value>
+  </data>
+  <data name="iPadPro11inch2" xml:space="preserve">
+    <value>iPad Pro 11" 2. generacji</value>
+  </data>
+  <data name="iPadPro12.9inch4" xml:space="preserve">
+    <value>iPad Pro 12,9" 4. generacji</value>
+  </data>
+  <data name="iPhone11" xml:space="preserve">
+    <value>iPhone 11</value>
+  </data>
+  <data name="iPhone11Pro" xml:space="preserve">
+    <value>iPhone 11 Pro</value>
+  </data>
+  <data name="iPhone11ProMax" xml:space="preserve">
+    <value>iPhone 11 Pro Max</value>
+  </data>
+  <data name="iPhoneSE2" xml:space="preserve">
+    <value>iPhone SE 2. generacji</value>
+  </data>
+  <data name="iPhoneX" xml:space="preserve">
+    <value>iPhone X</value>
+  </data>
+  <data name="iPhoneXʀ" xml:space="preserve">
+    <value>iPhone Xʀ</value>
+  </data>
+  <data name="iPhoneXs" xml:space="preserve">
+    <value>iPhone Xs</value>
+  </data>
+  <data name="iPhoneXsMax" xml:space="preserve">
+    <value>iPhone Xs Max</value>
+  </data>
+  <data name="IsDataPreferred" xml:space="preserve">
+    <value>Preferowana obsługa danymi</value>
+  </data>
+  <data name="IsNotEnabledSIP" xml:space="preserve">
+    <value>Jest wyłączone</value>
+  </data>
+  <data name="IsSecurityPatchUpdate" xml:space="preserve">
+    <value>Zaktualizować zabezpieczenia?</value>
+  </data>
+  <data name="IsVoicePreferred" xml:space="preserve">
+    <value>Preferowana obsługa głosem</value>
+  </data>
+  <data name="KeepAppsOnDevice" xml:space="preserve">
+    <value>Przechowuj aplikacje na urządzeniu</value>
+  </data>
+  <data name="KeyCopied" xml:space="preserve">
+    <value>Skopiowano klucz</value>
+  </data>
+  <data name="KeyRotationRequestFailed" xml:space="preserve">
+    <value>W tej chwili nie można zażądać rotacji klucza dla {0}.</value>
+  </data>
+  <data name="KeyRotationSuccessfullyRequested" xml:space="preserve">
+    <value>Zażądano rotacji klucza dla {0}.</value>
+  </data>
+  <data name="KeyShouldNotBeEmpty" xml:space="preserve">
+    <value>Klucz nie może być pusty</value>
+  </data>
+  <data name="LastApplied" xml:space="preserve">
+    <value>Ostatnio zastosowany</value>
+  </data>
+  <data name="LastAppliedPassword" xml:space="preserve">
+    <value>Ostatnie zastosowane hasło</value>
+  </data>
+  <data name="LastAppliedPasswordTooltip" xml:space="preserve">
+    <value>To ostatnie hasło systemu BIOS, które zostało potwierdzone jako zastosowane do urządzenia.</value>
+  </data>
+  <data name="LastLoggedInTime" xml:space="preserve">
+    <value>Czas ostatniego logowania</value>
+  </data>
+  <data name="LastReboot" xml:space="preserve">
+    <value>Ostatnie ponowne uruchomienie</value>
+  </data>
+  <data name="LastSeenBreakdownChartDescription" xml:space="preserve">
+    <value>{0}</value>
+  </data>
+  <data name="LastSeenBreakdownChartTitle" xml:space="preserve">
+    <value>Ostatni widziany wykres słupkowy podziału. </value>
+  </data>
+  <data name="LastSeenDays" xml:space="preserve">
+    <value>Ostatnio widziano (dni)</value>
+  </data>
+  <data name="LastSeenOverviewChartDescription" xml:space="preserve">
+    <value> Urządzenia widziane w ciągu ostatnich 24 godzin: {0}. Ostatnio widziane urządzenia: {1}.</value>
+  </data>
+  <data name="LastSeenOverviewChartTitle" xml:space="preserve">
+    <value>Przegląd ostatnio widzianych. </value>
+  </data>
+  <data name="LastSevenDays" xml:space="preserve">
+    <value>Ostatnie siedem dni</value>
+  </data>
+  <data name="LastSixMonths" xml:space="preserve">
+    <value>Ostatnie sześć miesięcy</value>
+  </data>
+  <data name="LastSubmittedPassword" xml:space="preserve">
+    <value>Ostatnie przesłane hasło</value>
+  </data>
+  <data name="LastSubmittedPasswordTooltip" xml:space="preserve">
+    <value>To ostatnie hasło systemu BIOS przesłane do urządzenia jako aktualizacja podczas automatycznej lub planowanej rotacji lub podczas wymuszania aktualizacji. Jeśli żądanie aktualizacji hasła nie zostało przesłane, wyświetlany jest komunikat „Brak”.</value>
+  </data>
+  <data name="LastSuccessfulScan" xml:space="preserve">
+    <value>Ostatnie pomyślne skanowanie</value>
+  </data>
+  <data name="LastSuccessfulSync" xml:space="preserve">
+    <value>Ostatnia pomyślna synchronizacja</value>
+  </data>
+  <data name="LastThirtyDays" xml:space="preserve">
+    <value>Ostatnie trzydzieści dni</value>
+  </data>
+  <data name="LastUsername" xml:space="preserve">
+    <value>Ostatnia nazwa użytkownika</value>
+  </data>
+  <data name="LatestAgent" xml:space="preserve">
+    <value>Najnowszy Hub</value>
+  </data>
+  <data name="LatestAvailableOsUpdate" xml:space="preserve">
+    <value>Najnowsza dostępna aktualizacja systemu operacyjnego</value>
+  </data>
+  <data name="LauncherImageWarningMessage" xml:space="preserve">
+    <value>Aplikacja AirWatch Agent w wersji 8.2 lub nowszej, Workspace ONE Intelligent Hub w wersji 9.0 lub nowszej i AirWatch Launcher w wersji 3.4 lub nowszej są wymagane do wdrożenia wysokiej jakości obrazu.</value>
+  </data>
+  <data name="LicensedUntil" xml:space="preserve">
+    <value>Licencja ważna do {0}</value>
+  </data>
+  <data name="LicenseSample" xml:space="preserve">
+    <value>Próbka licencji</value>
+  </data>
+  <data name="LocationDataHasNotBeenReceived" xml:space="preserve">
+    <value>Nie otrzymano danych lokalizacji</value>
+  </data>
+  <data name="LogoutUserConfirmation" xml:space="preserve">
+    <value>Czy na pewno chcesz wylogować użytkownika obecnie zalogowanego na urządzeniu?</value>
+  </data>
+  <data name="LostMessage" xml:space="preserve">
+    <value>Komunikat o utraceniu</value>
+  </data>
+  <data name="LostMessageTooltip" xml:space="preserve">
+    <value>Komunikat o utraceniu wyświetlany na urządzeniu.</value>
+  </data>
+  <data name="LostModeDisabledMessage" xml:space="preserve">
+    <value>Tryb Utracony jest wyłączony.</value>
+  </data>
+  <data name="LostModeDisableFailedMessage" xml:space="preserve">
+    <value>Nie udało się wyłączyć Trybu Utraconego; spróbuj ponownie później</value>
+  </data>
+  <data name="LostModeEnabledMessage" xml:space="preserve">
+    <value>Tryb Utracony jest włączony.</value>
+  </data>
+  <data name="LostModeEnableFailedMessage" xml:space="preserve">
+    <value>Włączenie Trybu Utraconego nie powiodło się. Spróbuj ponownie.</value>
+  </data>
+  <data name="LTE" xml:space="preserve">
+    <value>LTE</value>
+    <comment>Cellular technology</comment>
+  </data>
+  <data name="MacOsDeviceLogLevelInfo" xml:space="preserve">
+    <value>Wybierz poziom rejestrowanych danych do zgromadzenia. Wybierz opcję „Informacje”, aby zebrać dzienniki w stanie domyślnym. Wybierz opcję „Debuguj”, aby włączyć dodatkowe rejestrowanie i zbieranie danych.</value>
+  </data>
+  <data name="MacOsHostName" xml:space="preserve">
+    <value>Nazwa hosta</value>
+  </data>
+  <data name="MacOsLocalHostName" xml:space="preserve">
+    <value>Nazwa lokalnego hosta</value>
+  </data>
+  <data name="MacOsRequestDeviceLogSettingsInformation" xml:space="preserve">
+    <value>Poniżej dostosuj żądanie dotyczące dziennika. Aby wyświetlić pliki dziennika, przejdź na ekran Szczegóły urządzenia &amp;gt; Więcej &amp;gt; Załączniki &amp;gt; Dokumenty. </value>
+  </data>
+  <data name="MacOsViewLocalAdminPassword" xml:space="preserve">
+    <value>Wyświetl hasło administratora</value>
+  </data>
+  <data name="MaintenanceHours" xml:space="preserve">
+    <value>Godziny konserwacji</value>
+  </data>
+  <data name="ManageAssignments" xml:space="preserve">
+    <value>Zarządzaj przypisaniami</value>
+  </data>
+  <data name="ManagedAdminPasswordAccessed" xml:space="preserve">
+    <value>Uzyskano dostęp do zarządzanego hasła administratora</value>
+  </data>
+  <data name="ManagedAdminPasswordRotationInformation" xml:space="preserve">
+    <value>Ze względów bezpieczeństwa polecenie rotacji tego hasła zostanie złożone za 8 godzin.</value>
+  </data>
+  <data name="ManagedAdminStaticPasswordRotationInformation" xml:space="preserve">
+    <value>Losowe hasło administratora nie jest włączone dla użytego profilu rejestracji urządzenia. Rotacja tego hasła jest niedostępna.</value>
+  </data>
+  <data name="ManagedAdminUser" xml:space="preserve">
+    <value>Zarządzany użytkownik z uprawnieniami administratora</value>
+  </data>
+  <data name="ManagedApplicationAttributesConfirmed" xml:space="preserve">
+    <value>Zarządzane atrybuty aplikacji potwierdzone</value>
+  </data>
+  <data name="ManagedApplicationAttributesFailed" xml:space="preserve">
+    <value>Niepowodzenie zarządzanych atrybutów aplikacji</value>
+  </data>
+  <data name="ManagedApplicationAttributesRefused" xml:space="preserve">
+    <value>Odrzucenie zarządzanych atrybutów aplikacji</value>
+  </data>
+  <data name="ManagedApplicationAttributesRequested" xml:space="preserve">
+    <value>Żądanie zarządzanych atrybutów aplikacji</value>
+  </data>
+  <data name="ManageTags" xml:space="preserve">
+    <value>Zarządzaj znacznikami</value>
+  </data>
+  <data name="ManageUpdate" xml:space="preserve">
+    <value>Zarządzaj aktualizacją</value>
+  </data>
+  <data name="MaxArgCharacters" xml:space="preserve">
+    <value>Maks. liczba znaków: {0}</value>
+  </data>
+  <data name="MEID" xml:space="preserve">
+    <value>MEID</value>
+  </data>
+  <data name="MemorySize" xml:space="preserve">
+    <value>Rozmiar pamięci</value>
+  </data>
+  <data name="MinOrMaxCannotBeLessThanZero" xml:space="preserve">
+    <value>Minimalna lub maksymalna wartość nie może być mniejsza niż 0.</value>
+  </data>
+  <data name="MinuteAgo" xml:space="preserve">
+    <value>minutę temu</value>
+  </data>
+  <data name="MinValCannotBeGreaterThanMaxVal" xml:space="preserve">
+    <value>Wartość minimalna nie może być większa niż wartość maksymalna.</value>
+  </data>
+  <data name="ModelDetailSearchHelpText" xml:space="preserve">
+    <value>Wpisz, aby wyszukać model</value>
+  </data>
+  <data name="ModelNotSupported" xml:space="preserve">
+    <value>Model nie jest obsługiwany</value>
+  </data>
+  <data name="ModelNumberMaxCharacters" xml:space="preserve">
+    <value>Numer modelu może zawierać maksymalnie 500 znaków</value>
+  </data>
+  <data name="MonitorFilter" xml:space="preserve">
+    <value>Monitor — filtr</value>
+  </data>
+  <data name="MonitorIdentifier" xml:space="preserve">
+    <value>Monitor — identyfikator</value>
+  </data>
+  <data name="MultiuserDeviceRegistrationNotAllowed" xml:space="preserve">
+    <value>Rejestracja urządzenia z wieloma użytkownikami nie jest dozwolona.</value>
+  </data>
+  <data name="NavigateToNextDevice" xml:space="preserve">
+    <value>Szczegóły urządzenia, strzałka Dalej urządzenia</value>
+  </data>
+  <data name="NavigateToPreviousDevice" xml:space="preserve">
+    <value>Szczegóły urządzenia, strzałka Wstecz</value>
+  </data>
+  <data name="NetworkErrorOccurredPleaseRefresh" xml:space="preserve">
+    <value>Wystąpił błąd połączenia sieciowego. Odśwież przeglądarkę i spróbuj ponownie.</value>
+  </data>
+  <data name="NewAssignment" xml:space="preserve">
+    <value>Nowe przypisanie</value>
+  </data>
+  <data name="NewFileServer" xml:space="preserve">
+    <value>Nowy serwer plików</value>
+  </data>
+  <data name="NewRoutine" xml:space="preserve">
+    <value>Nowy harmonogram</value>
+  </data>
+  <data name="NewScript" xml:space="preserve">
+    <value>Nowy skrypt</value>
+  </data>
+  <data name="NewTimeWindow" xml:space="preserve">
+    <value>Nowy przedział czasu</value>
+  </data>
+  <data name="NextReTry" xml:space="preserve">
+    <value>Następnie spróbuj ponownie</value>
+  </data>
+  <data name="NextSevenDays" xml:space="preserve">
+    <value>Następne siedem dni</value>
+  </data>
+  <data name="NextSixMonths" xml:space="preserve">
+    <value>Następne sześć miesięcy</value>
+  </data>
+  <data name="NextThirtyDays" xml:space="preserve">
+    <value>Następne trzydzieści dni</value>
+  </data>
+  <data name="NextThreeMonths" xml:space="preserve">
+    <value>Ostatnie trzy miesiące</value>
+  </data>
+  <data name="NoAssignedTagsFound" xml:space="preserve">
+    <value>Nie znaleziono przypisanych znaczników</value>
+  </data>
+  <data name="NoAssignmentsFound" xml:space="preserve">
+    <value>Nie znaleziono przypisań</value>
+  </data>
+  <data name="NoAvailableTagsFound" xml:space="preserve">
+    <value>Nie znaleziono dostępnych znaczników</value>
+  </data>
+  <data name="NoDeploymentFound" xml:space="preserve">
+    <value>Nie znaleziono wdrożenia dla aktualizacji urządzenia w bieżącej grupie organizacyjnej.</value>
+  </data>
+  <data name="NoDeviceUpdatesMsg" xml:space="preserve">
+    <value>Brak dostępnych aktualizacji urządzenia</value>
+  </data>
+  <data name="NoGroupIdAtEnrollmentOg" xml:space="preserve">
+    <value>Grupa organizacyjna rejestracji nie ma identyfikatora grupy</value>
+  </data>
+  <data name="NonceError" xml:space="preserve">
+    <value>Błąd generowania jednorazowego kodu.</value>
+  </data>
+  <data name="NoPasscodeDevicesChartDescription" xml:space="preserve">
+    <value>Urządzenia bez hasła: {0}. Całkowita liczba urządzeń bez hasła: {1}.</value>
+  </data>
+  <data name="NoPasscodeDevicesChartTitle" xml:space="preserve">
+    <value>Wykres pierścieniowy urządzeń bez hasła. </value>
+  </data>
+  <data name="NoRemovableDrivesInOG" xml:space="preserve">
+    <value>Brak dostępnych dysków wymiennych</value>
+  </data>
+  <data name="NoSafetyNetScanData" xml:space="preserve">
+    <value>Brak danych z poprzedniego skanowania</value>
+  </data>
+  <data name="NoSmartGroupsFound" xml:space="preserve">
+    <value>Nie znaleziono żadnej grupy Smart</value>
+  </data>
+  <data name="NotDepOrSupervised" xml:space="preserve">
+    <value>Nie DEP lub nadzorowany</value>
+  </data>
+  <data name="NoteKeepAppsOnDevice" xml:space="preserve">
+    <value>Podgląd urządzenia może być użyty do odnalezienia urządzeń, które nie mają wersji oprogramowania Intelligent Hub do obsługi tej opcji przez wyszukiwanie elementów, które nie są obsługiwane.</value>
+  </data>
+  <data name="NotEligible" xml:space="preserve">
+    <value>Nieuprawniony</value>
+  </data>
+  <data name="NotEligibleHoverText" xml:space="preserve">
+    <value>Nieuprawniony
+Zawiera wszystkie urządzenia, których nie ma w tej lub wyższej wersji i nie są obsługiwane, nadzorowane lub nie są urządzeniami DEP</value>
+  </data>
+  <data name="NotEncryptedDevicesChartDescription" xml:space="preserve">
+    <value>Urządzenia niezaszyfrowane: {0}. Całkowita liczba urządzeń niezaszyfrowanych: {1}.</value>
+  </data>
+  <data name="NotEncryptedDevicesChartTitle" xml:space="preserve">
+    <value>Wykres pierścieniowy niezaszyfrowanych urządzeń.</value>
+  </data>
+  <data name="NotificationForDownloadSuccess" xml:space="preserve">
+    <value>Powiadomienie o pomyślnym pobraniu</value>
+  </data>
+  <data name="NotificationForInstallSuccess" xml:space="preserve">
+    <value>Powiadomienie o pomyślnej instalacji</value>
+  </data>
+  <data name="NotificationType" xml:space="preserve">
+    <value>Typ powiadomienia</value>
+  </data>
+  <data name="NotifyVidmConfigChange" xml:space="preserve">
+    <value>Powiadom o zmianie konfiguracji Workspace ONE Access</value>
+  </data>
+  <data name="NumberOfReboots" xml:space="preserve">
+    <value>Liczba ponownych rozruchów</value>
+  </data>
+  <data name="OemUpdateSampleProcessorJob" xml:space="preserve">
+    <value>Zadanie procesora – Podsumowanie aktualizacji OemUpdate</value>
+  </data>
+  <data name="OfflineDomainJoin" xml:space="preserve">
+    <value>Dołączanie do domeny w trybie offline</value>
+  </data>
+  <data name="OneTime" xml:space="preserve">
+    <value>Jeden raz</value>
+  </data>
+  <data name="OneTimeOnly" xml:space="preserve">
+    <value>Tylko jeden raz</value>
+  </data>
+  <data name="OneTimeOnlyArg" xml:space="preserve">
+    <value>Tylko jeden raz {0} – {1} ({2})</value>
+    <comment>Placehoders: 0 - StartTime, 1 - EndTime, 2 - Duration.
+Example: One Time Only 11:00 PM - 4:30 AM (5 hours 30 mins)</comment>
+  </data>
+  <data name="OneTimeTitleArg" xml:space="preserve">
+    <value>{0} – {1} ({2})</value>
+    <comment>Placehoders: 0 - StartTime, 1 - EndTime, 2 - Duration.
+Example: 11:00 PM - 4:30 AM (5 hours 30 mins)</comment>
+  </data>
+  <data name="OnHigherVersion" xml:space="preserve">
+    <value>W wyższej wersji</value>
+  </data>
+  <data name="OnHigherVersionHoverText" xml:space="preserve">
+    <value>W wyższej wersji
+Obejmuje wszystkie urządzenia w wyższej wersji, bez względu na ich uprawnienia </value>
+  </data>
+  <data name="OnThisVersion" xml:space="preserve">
+    <value>W tej wersji</value>
+  </data>
+  <data name="OnThisVersionHoverText" xml:space="preserve">
+    <value>W tej wersji
+Zawiera wszystkie urządzenia w tej wersji, bez względu na ich uprawnienia</value>
+  </data>
+  <data name="OpenWiFi" xml:space="preserve">
+    <value>Otwórz sieć Wi-Fi</value>
+  </data>
+  <data name="OperatingSystemBreakDownChartDescription" xml:space="preserve">
+    <value>Wykres słupkowy {0}. {1}</value>
+  </data>
+  <data name="OperatingSystemBreakDownChartTitle" xml:space="preserve">
+    <value>Podział systemu operacyjnego </value>
+  </data>
+  <data name="OrganizationUnits" xml:space="preserve">
+    <value>Jednostki organizacyjne</value>
+  </data>
+  <data name="OrganizationUnitsHelpMessage" xml:space="preserve">
+    <value>Pełna nazwa wyróżniająca jednostki organizacyjnej, dla której muszą zostać utworzone obiekty komputera</value>
+  </data>
+  <data name="OsUpdateEditAssignment" xml:space="preserve">
+    <value>Edytuj przypisanie</value>
+  </data>
+  <data name="OutOfDateState" xml:space="preserve">
+    <value>Nieaktualne</value>
+  </data>
+  <data name="OutOfDateStatus" xml:space="preserve">
+    <value>Nieaktualne</value>
+  </data>
+  <data name="OverrideDeviceUpdatesContentArg" xml:space="preserve">
+    <value>To działanie zastąpi wszelkie opcje zaplanowanego przypisania dla tego urządzenia. Wykonanie polecenia instalacji może negatywnie wpłynąć na użytkownika. Czy na pewno chcesz [{0}]?</value>
+  </data>
+  <data name="OverrideJobLogLevelConfirmation" xml:space="preserve">
+    <value>Potwierdzenie zastąpienia poziomu dziennika zadań</value>
+  </data>
+  <data name="OverrideWarning" xml:space="preserve">
+    <value>Ostrzeżenie o zastąpieniu</value>
+  </data>
+  <data name="OwnershipAndPlatformChangeNotAllowed" xml:space="preserve">
+    <value>Zmiany własności i platformy nie są dozwolone.</value>
+  </data>
+  <data name="PasswordSetOn" xml:space="preserve">
+    <value>Hasło ustawione na</value>
+  </data>
+  <data name="Pause" xml:space="preserve">
+    <value>Wstrzymaj</value>
+  </data>
+  <data name="PausedSuccessfully" xml:space="preserve">
+    <value>Wstrzymano pomyślnie</value>
+  </data>
+  <data name="PauseUpdatesContent" xml:space="preserve">
+    <value>Wstrzymanie nie zatrzyma urządzeń, które wcześniej pobrały tę aktualizację. Wstrzyma to jednak wszystkie przypisane przyszłe pobrania aktualizacji. Możesz zarządzać istniejącymi przypisaniami, ale zmiany nie zostaną zastosowane do momentu wznowienia aktualizacji. Czy na pewno chcesz wstrzymać aktualizację?</value>
+  </data>
+  <data name="PendingSync" xml:space="preserve">
+    <value>Oczekiwanie na synchronizację</value>
+  </data>
+  <data name="PendingSystemUpdate" xml:space="preserve">
+    <value>Oczekiwanie na aktualizację systemu</value>
+  </data>
+  <data name="PerAppVpnProfile" xml:space="preserve">
+    <value>Profil Per App VPN</value>
+  </data>
+  <data name="Periodically" xml:space="preserve">
+    <value>Okresowo</value>
+  </data>
+  <data name="PhoneNumberIsRequiredField" xml:space="preserve">
+    <value>Numer telefonu jest polem wymaganym</value>
+  </data>
+  <data name="PlatformsChartDescription" xml:space="preserve">
+    <value>{0}</value>
+  </data>
+  <data name="PlatformsChartTitle" xml:space="preserve">
+    <value>Wykres słupkowy platform. </value>
+  </data>
+  <data name="PlayAirPlayErrorMessage" xml:space="preserve">
+    <value>Wystąpił błąd podczas próby AirPlay do tego urządzenia. Sprawdź ustawienia i spróbuj ponownie.</value>
+  </data>
+  <data name="PleaseEnterValidIPAddress" xml:space="preserve">
+    <value>Wprowadź prawidłowy adres IP</value>
+  </data>
+  <data name="PolicyEngineBackoffHelp" xml:space="preserve">
+    <value>Jak często, w minutach, aparat zasad będzie próbował ponownie zastosować element.</value>
+  </data>
+  <data name="PolicyEngineMaxTryCountHelp" xml:space="preserve">
+    <value>Liczba ponownych prób zastosowania elementu przez aparat zasad.</value>
+  </data>
+  <data name="PolicyEngineQueueAuditing" xml:space="preserve">
+    <value>Audyt kolejki aparatu zasad</value>
+  </data>
+  <data name="PolicyEngineQueueAuditingHelp" xml:space="preserve">
+    <value>Jeśli opcja jest włączona, przetwarzane pozycje kolejki aparatu zasad są przechowywane w audycie kolejki aparatu zasad.</value>
+  </data>
+  <data name="PollOnLogin" xml:space="preserve">
+    <value>Ankieta przy logowaniu</value>
+  </data>
+  <data name="PreserveDataPlan" xml:space="preserve">
+    <value>Zachowaj plan danych</value>
+  </data>
+  <data name="PreserveDataPlanTooltip" xml:space="preserve">
+    <value>Po włączeniu oraz gdy w urządzeniu istnieje plan danych, zostanie on zachowany po skasowaniu danych urządzenia.</value>
+  </data>
+  <data name="PreviousPassword" xml:space="preserve">
+    <value>Poprzednie hasło</value>
+  </data>
+  <data name="ProductProvisioningAWCMThrottle" xml:space="preserve">
+    <value>Ograniczenie AWCM zastrzegania produktów</value>
+  </data>
+  <data name="ProductProvisioningAwcmThrottleHelp" xml:space="preserve">
+    <value>Jeśli opcja ta jest włączona, zastrzeganie produktów będzie korzystać z kolejki wychodzącej AWCM dla powiadomień AWCM.</value>
+  </data>
+  <data name="ProductProvisioningAWCMThrottleRate" xml:space="preserve">
+    <value>Wskaźnik ograniczenia AWCM zastrzegania produktów</value>
+  </data>
+  <data name="ProductProvisioningAwcmThrottleRateHelp" xml:space="preserve">
+    <value>Liczba powiadomień AWCM wysyłanych na sekundę.</value>
+  </data>
+  <data name="ProductProvisioningBatchReleaseJob" xml:space="preserve">
+    <value>Zadanie zbiorczego zwolnienia zastrzegania produktów</value>
+  </data>
+  <data name="ProductProvisioningCommandReleaseBatchSize" xml:space="preserve">
+    <value>Rozmiar paczki poleceń zwolnienia zastrzegania produktów</value>
+  </data>
+  <data name="ProductProvisioningCommandReleaseBatchSizeHelp" xml:space="preserve">
+    <value>Liczba poleceń zwolnionych z kolejki poleceń urządzenia na interwał dla zadania harmonogramu zwolnienia zbiorczego zastrzegania produktów.</value>
+  </data>
+  <data name="ProductsBatchSizeHelp" xml:space="preserve">
+    <value>Liczba produktów, na których będzie działać aparat zasad.</value>
+  </data>
+  <data name="ProvisioningDescription" xml:space="preserve">
+    <value>Zastrzeganie służy do automatycznej rejestracji urządzeń i udostępnia funkcje zaawansowanego zarządzania.</value>
+  </data>
+  <data name="PublishDummyFirmware" xml:space="preserve">
+    <value>Opublikuj zastępczą wersję oprogramowania sprzętowego</value>
+  </data>
+  <data name="Python" xml:space="preserve">
+    <value>Python 3</value>
+  </data>
+  <data name="QRCodeConfiguredComponents" xml:space="preserve">
+    <value>Skonfigurowano następujące elementy. Należy pamiętać, że dane te nie są zapisywane, dlatego przed zamknięciem tego okna należy upewnić się, że konfiguracja jest prawidłowa. Aby wprowadzić zmiany po zamknięciu okna, należy ponownie przejść przez kreatora.</value>
+  </data>
+  <data name="QRCodeEnrollmentDetailsMessage" xml:space="preserve">
+    <value>Aby korzystać z uwierzytelniania opartego na tokenach, zostaw dwie pierwsze opcje podane poniżej wyłączone</value>
+  </data>
+  <data name="QRCodeEnrollmentWiFiHelpText" xml:space="preserve">
+    <value>Ustawienia Wi-Fi są konfigurowane po zeskanowaniu kodu QR. Urządzenia z fabrycznie zainstalowanym czytnikiem QR wymagają ustawień Wi-Fi, jeśli mobilna transmisja danych nie jest dostępna. Urządzenia, które nie posiadają zainstalowanego fabrycznie czytnika QR, wymagają oddzielnego połączenia sieciowego skonfigurowanego do pobierania i instalowania czytnika. Po zainstalowaniu czytnika QR sieć ta jest używana do rejestracji urządzenia. Obsługiwane jest tylko uwierzytelnianie WPA/WPA2.</value>
+  </data>
+  <data name="QRCodePromptForEnteringLoginCredentials" xml:space="preserve">
+    <value>Użytkownik zostanie poproszony o wprowadzenie danych logowania</value>
+  </data>
+  <data name="QRCodePromptForEnteringOG" xml:space="preserve">
+    <value>Użytkownik zostanie poproszony o wprowadzenie Grupy organizacyjnej lub tokena rejestracji</value>
+  </data>
+  <data name="QRcodeSheetTitle" xml:space="preserve">
+    <value>Kod QR generowany przez AirWatch</value>
+  </data>
+  <data name="QRCodeWizardCloseConfirmation" xml:space="preserve">
+    <value>Przed zamknięciem tego okna należy zapisać kod QR, ponieważ konfiguracja nie zostanie zapisana w Console. Czy chcesz kontynuować?</value>
+  </data>
+  <data name="Quality" xml:space="preserve">
+    <value>Jakość</value>
+  </data>
+  <data name="QueriedSuccessfully" xml:space="preserve">
+    <value>Kwerenda ukończona pomyślnie</value>
+  </data>
+  <data name="QueryDeviceSecurity" xml:space="preserve">
+    <value>Kweredna zabezpieczeń urządzenia</value>
+  </data>
+  <data name="Querystatus" xml:space="preserve">
+    <value>Sprawdź postęp aktualizacji</value>
+  </data>
+  <data name="Querystatustooltip" xml:space="preserve">
+    <value>Wyślij zapytanie o stan aktualizacji dla tego urządzenia.</value>
+  </data>
+  <data name="RebootCount" xml:space="preserve">
+    <value>Liczba ponownych uruchomień</value>
+  </data>
+  <data name="RecommendedTasks" xml:space="preserve">
+    <value>Zalecane zadania</value>
+  </data>
+  <data name="RecoveryID" xml:space="preserve">
+    <value>ID odzyskiwania</value>
+  </data>
+  <data name="RecurringScheduleCondition" xml:space="preserve">
+    <value>Zaplanuj swoje działania do powtarzanego wykonywania.</value>
+  </data>
+  <data name="ReDeviceLogFailedToSendToDevice" xml:space="preserve">
+    <value>Wysłanie żądania dziennika do urządzenia nieudane.</value>
+  </data>
+  <data name="Refreshed" xml:space="preserve">
+    <value>Odświeżono</value>
+  </data>
+  <data name="RefreshEsim" xml:space="preserve">
+    <value>Odśwież eSIM</value>
+  </data>
+  <data name="RegisterRemoteManagement" xml:space="preserve">
+    <value>Zarejestruj zarządzanie zdalne</value>
+  </data>
+  <data name="RegisterRemoteViewCommandAlreadyOnQueue" xml:space="preserve">
+    <value>Polecenie rejestracji urządzenia do widoku zdalnego jest już w kolejce poleceń i zostanie odebrane, gdy urządzenie zarejestruje się w Console.</value>
+  </data>
+  <data name="RegisterRemoteViewCommandCouldNotBeQueued" xml:space="preserve">
+    <value>Nie można wysłać polecenia rejestracji urządzenia do widoku zdalnego. Aby uzyskać pomoc, skontaktuj się z działem pomocy technicznej.</value>
+  </data>
+  <data name="RegisterRemoteViewCommandQueued" xml:space="preserve">
+    <value>Polecenie rejestracji urządzenia do widoku zdalnego zostało pomyślnie umieszczone w kolejce.</value>
+  </data>
+  <data name="RegistryOperation" xml:space="preserve">
+    <value>Operacja rejestru</value>
+  </data>
+  <data name="RejectWipe" xml:space="preserve">
+    <value>Odrzuć czyszczenie</value>
+  </data>
+  <data name="RejectWipeConfirm" xml:space="preserve">
+    <value>Reject wipe successful</value>
+  </data>
+  <data name="RelayServerContactDelayHelp" xml:space="preserve">
+    <value>Z jaką częstotliwością (w minutach) usługa dostarczania treści będzie przetwarzać pozycje usługi dla serwera przekazującego w stanie błędu/nieprawidłowości.</value>
+  </data>
+  <data name="RelayServerTestConnectionResultsExportFailed" xml:space="preserve">
+    <value>Eksportowanie wyników testu połączenia nieudane.</value>
+  </data>
+  <data name="RemoteFindWindowsDevice" xml:space="preserve">
+    <value>Zdalne znajdowanie urządzenia z systemem Windows</value>
+  </data>
+  <data name="RemovableDrives" xml:space="preserve">
+    <value>Dyski wymienne</value>
+  </data>
+  <data name="RemovableDrivesMessage" xml:space="preserve">
+    <value>Dyski wymienne zaszyfrowane za pomocą BitLocker.</value>
+  </data>
+  <data name="RemoveEnterpriseFactoryProtection" xml:space="preserve">
+    <value>Usunąć ochronę przed resetem fabrycznym urządzeń firmowych i usunąć?</value>
+  </data>
+  <data name="RemoveEventAction" xml:space="preserve">
+    <value>Usuń działanie przy wydarzeniu</value>
+  </data>
+  <data name="RemoveUpdate" xml:space="preserve">
+    <value>Usuń aktualizację</value>
+  </data>
+  <data name="RepeatDaily" xml:space="preserve">
+    <value>Powtarzaj codziennie</value>
+  </data>
+  <data name="RepeatDailyArg" xml:space="preserve">
+    <value>Powtarzaj codziennie {0} ‒ {1} ({2})</value>
+    <comment>Placehoders: 0 - StartTime, 1 - EndTime, 2 - Duration.
+Example: Repeat Daily 11:00 PM - 4:30 AM (5 hours 30 mins)</comment>
+  </data>
+  <data name="RepeatEvery" xml:space="preserve">
+    <value>Powtarzaj codziennie</value>
+  </data>
+  <data name="RepeatEveryArg" xml:space="preserve">
+    <value>Powtarzaj co {0} {1} ‒ {2} ({3})</value>
+    <comment>Placehoders: 0 - Days, 1 - StartTime, 2 - EndTime, 3 - Duration.
+Example: Repeat Every Mon/Wed 11:00 PM - 4:30 AM (5 hours 30 mins)</comment>
+  </data>
+  <data name="RepeatEveryWeekdayArg" xml:space="preserve">
+    <value>Powtarzaj w każdym dniu tygodnia {0} – {1} ({2})</value>
+    <comment>Placehoders: 0 - StartTime, 1 - EndTime, 2 - Duration.
+Example: Repeat Every Weekday 11:00 PM - 4:30 AM (5 hours 30 mins)</comment>
+  </data>
+  <data name="RepeatWeekly" xml:space="preserve">
+    <value>Powtarzaj co tydzień</value>
+  </data>
+  <data name="Requestcompliancecheckmtd" xml:space="preserve">
+    <value>Domyślny szablon wiadomości HTML żądającej, by użytkownik uruchomił Workspace ONE Intelligent Hub, aby zezwolić urządzeniu na zameldowanie się i uruchomienie skanowania zagrożonych.</value>
+  </data>
+  <data name="RequestError" xml:space="preserve">
+    <value>Błąd żądania zatwierdzenia</value>
+  </data>
+  <data name="RequestExpired" xml:space="preserve">
+    <value>Żądanie zatwierdzenia wygasło</value>
+  </data>
+  <data name="RequestFailed" xml:space="preserve">
+    <value>Żądanie nie powiodło się</value>
+  </data>
+  <data name="RequestHubLogs" xml:space="preserve">
+    <value>Żądanie dzienników Intelligent Hub</value>
+  </data>
+  <data name="RequestHubRepairFailure" xml:space="preserve">
+    <value>Nie udało się umieścić polecenia w kolejce w celu naprawienia Hub</value>
+  </data>
+  <data name="RequestHubRepairSuccess" xml:space="preserve">
+    <value>Pomyślnie umieszczono polecenie w kolejce, aby naprawić Hub</value>
+  </data>
+  <data name="RequestLimitHasBeenReached" xml:space="preserve">
+    <value>Osiągnięto limit żądań. Odczekaj kilka minut i spróbuj ponownie.</value>
+  </data>
+  <data name="RequestRejected" xml:space="preserve">
+    <value>Odrzucono żądanie zatwierdzenia</value>
+  </data>
+  <data name="RequestUserConsent" xml:space="preserve">
+    <value>Żądanie zgody użytkownika</value>
+  </data>
+  <data name="RequestUserConsentInfo" xml:space="preserve">
+    <value>Gdy opcja ta jest włączona, użytkownik zobaczy monit o poufności danych z zapytaniem o zgodę na zbieranie dzienników. Monit o poufności danych zawiera informacje o tym, jakie dane są zbierane w dziennikach i wymaga akceptacji użytkownika przed przesłaniem dzienników.</value>
+  </data>
+  <data name="RequestUserListFailed" xml:space="preserve">
+    <value>Żądanie kwerendy listy użytkowników nie powiodło się</value>
+  </data>
+  <data name="ResetAndroidWorkProfilePasscode" xml:space="preserve">
+    <value>Zmień hasło służbowe</value>
+  </data>
+  <data name="ResetBiosPassword" xml:space="preserve">
+    <value>Zresetuj hasło BIOS</value>
+  </data>
+  <data name="ResponseDataType" xml:space="preserve">
+    <value>Typ danych odpowiedzi</value>
+  </data>
+  <data name="Resume" xml:space="preserve">
+    <value>Wznów</value>
+  </data>
+  <data name="ResumeBitLocker" xml:space="preserve">
+    <value>Wznów funkcję BitLocker</value>
+  </data>
+  <data name="ResumeBitLockerConfirmed" xml:space="preserve">
+    <value>Wznowiono funkcję BitLocker</value>
+  </data>
+  <data name="ResumeBitlockerEncryption" xml:space="preserve">
+    <value>Wznów szyfrowanie BitLocker</value>
+  </data>
+  <data name="ResumeBitlockerEncryptionMessage" xml:space="preserve">
+    <value>Potwierdź, że chcesz wznowić szyfrowanie BitLocker.</value>
+  </data>
+  <data name="ResumeBitlockerEncryptionRestricted" xml:space="preserve">
+    <value>Ograniczenie wstrzymania szyfrowania BitLocker</value>
+  </data>
+  <data name="ResumeBitLockerFailed" xml:space="preserve">
+    <value>W tej chwili nie można wznowić funkcji BitLocker</value>
+  </data>
+  <data name="ResumeBitLockerFailure" xml:space="preserve">
+    <value>Wznowienie funkcji BitLocker nie powiodło się.</value>
+  </data>
+  <data name="ResumeBitLockerRequested" xml:space="preserve">
+    <value>Zażądano wznowienia funkcji BitLocker</value>
+  </data>
+  <data name="ResumeBitLockerSuccess" xml:space="preserve">
+    <value>Zażądano wznowienia funkcji BitLocker dla tego urządzenia.</value>
+  </data>
+  <data name="ResumeSuccessfully" xml:space="preserve">
+    <value>Wznowienie ukończone pomyślnie</value>
+  </data>
+  <data name="ResumeUpdatesContent" xml:space="preserve">
+    <value>Funkcja Wznów ma na celu rozpoczęcie wprowadzania aktualizacji, jeśli nigdy nie zostało ono rozpoczęte, i wznowienie wprowadzania aktualizacji, jeśli zostało ono wcześniej zatrzymane. Czy na pewno chcesz wznowić aktualizację?</value>
+  </data>
+  <data name="RevocationDate" xml:space="preserve">
+    <value>Data odwołania</value>
+  </data>
+  <data name="RevocationError" xml:space="preserve">
+    <value>Błąd unieważnienia</value>
+  </data>
+  <data name="RevocationPending" xml:space="preserve">
+    <value>Oczekiwanie na unieważnienie</value>
+  </data>
+  <data name="RevocationReason" xml:space="preserve">
+    <value>Powód unieważnienia</value>
+  </data>
+  <data name="RevokeGoogleRefreshToken" xml:space="preserve">
+    <value>Wycofaj tokeny G Suite</value>
+  </data>
+  <data name="RotateBitLockerRecoveryKey" xml:space="preserve">
+    <value>Rotacja klucza odzyskiwania BitLocker</value>
+  </data>
+  <data name="RotateBitLockerRecoveryKeyConfirmed" xml:space="preserve">
+    <value>Rotacja klucza odzyskiwania BitLocker potwierdzona</value>
+  </data>
+  <data name="RotateBitLockerRecoveryKeyFailed" xml:space="preserve">
+    <value>Rotacja klucza odzyskiwania BitLocker zakończona niepowodzeniem</value>
+  </data>
+  <data name="RotateBitLockerRecoveryKeyRefused" xml:space="preserve">
+    <value>Odrzucono rotację klucza odzyskiwania BitLocker</value>
+  </data>
+  <data name="RotateBitLockerRecoveryKeyRequested" xml:space="preserve">
+    <value>Zażądano obrócenia klucza odzyskiwania BitLocker</value>
+  </data>
+  <data name="RotateDEPAdminPassword" xml:space="preserve">
+    <value>Rotacja hasła administratora DEP</value>
+  </data>
+  <data name="RotateDEPAdminPasswordConfirmed" xml:space="preserve">
+    <value>Rotacja hasła administratora DEP potwierdzona</value>
+  </data>
+  <data name="RotateDEPAdminPasswordFailed" xml:space="preserve">
+    <value>Rotacja hasła administratora DEP zakończona niepowodzeniem</value>
+  </data>
+  <data name="RotateDEPAdminPasswordRequested" xml:space="preserve">
+    <value>Zażądano rotacji hasła administratora DEP</value>
+  </data>
+  <data name="RotateDeviceRecoveryKeyConfirmed" xml:space="preserve">
+    <value>Uzyskano klucz odzyskiwania do szyfrowania dysku</value>
+  </data>
+  <data name="RuntimeInformation" xml:space="preserve">
+    <value>Informacje o środowisku uruchomieniowym</value>
+  </data>
+  <data name="SafetyNetAttestationError" xml:space="preserve">
+    <value>Błąd atestacji SafetyNet.</value>
+  </data>
+  <data name="SafetyNetBasicIntegrityFailure" xml:space="preserve">
+    <value>Błąd integralności SafetyNet.</value>
+  </data>
+  <data name="SafetyNetCtsNotCompatible" xml:space="preserve">
+    <value>Niezgodność z SafetyNet CTS.</value>
+  </data>
+  <data name="SafetyNetResponseValidationFailed" xml:space="preserve">
+    <value>Niepowodzenie sprawdzania poprawności reakcji SafetyNet.</value>
+  </data>
+  <data name="SafetyNetStatementInvalid" xml:space="preserve">
+    <value>Nieprawidłowe skanowanie atestacji systemu SafetyNet.</value>
+  </data>
+  <data name="SamsungEFOTAPublishUpdateTimeZoneInfo" xml:space="preserve">
+    <value>Wybierz poniżej przedział czasowy, w którym chcesz zaplanować tę aktualizację. Aktualizacje można planować z maksymalnie 30-dniowym wyprzedzeniem i maksymalnie 7-dniowym okresem aktualizacji. Aktualizacje w tym czasie będą publikowane w urządzeniach co 4 godziny zgodnie ze strefą czasową serwera.</value>
+  </data>
+  <data name="SaveAsEncrypted" xml:space="preserve">
+    <value>Zapisz jako zaszyfrowany</value>
+  </data>
+  <data name="SavePriority" xml:space="preserve">
+    <value>Zapisz priorytet</value>
+  </data>
+  <data name="ScanTimeInSeconds" xml:space="preserve">
+    <value>Czas skanowania</value>
+  </data>
+  <data name="ScheduledRotateDEPAdminPasswordRequested" xml:space="preserve">
+    <value>Zażądano zaplanowanych rotacji hasła administratora DEP</value>
+  </data>
+  <data name="ScriptCommand" xml:space="preserve">
+    <value>Polecenie skryptowe</value>
+  </data>
+  <data name="ScriptCommandTooltipText" xml:space="preserve">
+    <value>Przekazanie nowego skryptu zastąpi wszelkie istniejące polecenia skryptu.</value>
+  </data>
+  <data name="ScriptsAssignmentWizardDefinitionTabDesc" xml:space="preserve">
+    <value>Skonfiguruj nazwę klucza, opis i inne ogólne informacje dla skryptu</value>
+  </data>
+  <data name="ScriptsAssignmentWizardDeploymentTabDesc" xml:space="preserve">
+    <value>Skonfiguruj nazwę klucza, opis i inne ogólne informacje dla skryptu</value>
+  </data>
+  <data name="ScriptsMenuDescription" xml:space="preserve">
+    <value>Skrypty definiują zaawansowane niestandardowe działania dla urządzenia stacjonarnego</value>
+  </data>
+  <data name="SearchAssignedTags" xml:space="preserve">
+    <value>Szukaj przypisanych znaczników</value>
+  </data>
+  <data name="SearchAvailableTags" xml:space="preserve">
+    <value>Szukaj dostępnych znaczników</value>
+  </data>
+  <data name="SearchOrganizationUnits" xml:space="preserve">
+    <value>Szukaj jednostek organizacyjnych</value>
+  </data>
+  <data name="SecureBootStatusFull" xml:space="preserve">
+    <value>Stan bezpiecznego rozruchu — pełny</value>
+  </data>
+  <data name="SecureBootStatusMedium" xml:space="preserve">
+    <value>Stan bezpiecznego rozruchu — średni</value>
+  </data>
+  <data name="SecureBootStatusNotSupported" xml:space="preserve">
+    <value>Stan bezpiecznego rozruchu — nieobsługiwany</value>
+  </data>
+  <data name="SecureBootStatusOff" xml:space="preserve">
+    <value>Stan bezpiecznego rozruchu — wyłączony</value>
+  </data>
+  <data name="SecureWiFI" xml:space="preserve">
+    <value>Bezpieczny (WPA/WPA2)</value>
+  </data>
+  <data name="SelectAndroidAgentVersionToInstall" xml:space="preserve">
+    <value>Wybierz wersję Hub systemu Android do zainstalowania w urządzeniu</value>
+  </data>
+  <data name="SelectNotifications" xml:space="preserve">
+    <value>Wybierz powiadomienia</value>
+  </data>
+  <data name="SerialNumberCannotHaveSpecialCharacters" xml:space="preserve">
+    <value>Nieprawidłowe numery seryjne. Numery seryjne mogą zawierać tylko litery i cyfry. Napraw plik i załaduj koszyk ponownie.</value>
+  </data>
+  <data name="SerialNumberMaxCharacters" xml:space="preserve">
+    <value>Numer seryjny może zawierać maksymalnie 200 znaków</value>
+  </data>
+  <data name="ServerTimeUTC" xml:space="preserve">
+    <value>Czas serwera (UTC)</value>
+  </data>
+  <data name="ServerTimeZone" xml:space="preserve">
+    <value>Strefa czasowa serwera:</value>
+  </data>
+  <data name="Set" xml:space="preserve">
+    <value>Ustaw</value>
+  </data>
+  <data name="SetBitLockerRecoveryKey" xml:space="preserve">
+    <value>Ustaw klucz odzyskiwania BitLocker</value>
+  </data>
+  <data name="SetUpConfiguration" xml:space="preserve">
+    <value>Konfiguracja</value>
+  </data>
+  <data name="SetupScriptParameters" xml:space="preserve">
+    <value>Ustaw jedną lub więcej zmiennych środowiskowych dla informacji dynamicznych lub poufnych w tym skrypcie</value>
+  </data>
+  <data name="SharedIpad" xml:space="preserve">
+    <value>Udostępniony iPad</value>
+  </data>
+  <data name="SIMCardArg" xml:space="preserve">
+    <value>Karta SIM {0}</value>
+    <comment>{0} will be replaced with the SIM card number</comment>
+  </data>
+  <data name="SimLabel" xml:space="preserve">
+    <value>Etykieta</value>
+  </data>
+  <data name="SimLabelID" xml:space="preserve">
+    <value>Identyfikator etykiety</value>
+  </data>
+  <data name="Slot" xml:space="preserve">
+    <value>Gniazdo</value>
+  </data>
+  <data name="SmartGroupAssignmentError" xml:space="preserve">
+    <value>Grupę Smart można przypisać tylko do jednego połączenia z domeną.</value>
+  </data>
+  <data name="SmsSettingsAreNotConfigured" xml:space="preserve">
+    <value>Ustawienia SMS nie są skonfigurowane. Skonfiguruj je, wybierając kolejno Wszystkie ustawienia &gt; System &gt; Integracja systemowa firmy &gt; SMS.</value>
+  </data>
+  <data name="StagingListView" xml:space="preserve">
+    <value>Widok listy</value>
+  </data>
+  <data name="StagingWindows" xml:space="preserve">
+    <value>Windows</value>
+  </data>
+  <data name="StartedSuccessfully" xml:space="preserve">
+    <value>Pomyślnie rozpoczęto</value>
+  </data>
+  <data name="StopDeviceUpdate" xml:space="preserve">
+    <value>Zatrzymaj aktualizację urządzenia</value>
+  </data>
+  <data name="SubRuleType" xml:space="preserve">
+    <value>Typ reguły podrzędnej</value>
+  </data>
+  <data name="Supported" xml:space="preserve">
+    <value>Obsługiwane</value>
+  </data>
+  <data name="SupportedDevicesInfoText" xml:space="preserve">
+    <value>Obejmuje urządzenia kwalifikujące się i niekwalifikujące się z tej grupy organizacyjnej i niższych oraz status aktualizacji uruchamianych po przypisaniu. </value>
+  </data>
+  <data name="SuspendBitLocker" xml:space="preserve">
+    <value>Wstrzymaj funkcję BitLocker</value>
+  </data>
+  <data name="SuspendBitLockerConfirmed" xml:space="preserve">
+    <value>Wstrzymano działanie funkcji BitLocker</value>
+  </data>
+  <data name="SuspendBitlockerEncryption" xml:space="preserve">
+    <value>Wstrzymaj szyfrowanie BitLocker</value>
+  </data>
+  <data name="SuspendBitlockerEncryptionMessage" xml:space="preserve">
+    <value>Wstrzymanie funkcji BitLocker wyłącza ochronę do momentu wystąpienia określonej liczby ponownych uruchomień lub wznowienia ochrony przez administratora. System pozostaje zaszyfrowany.</value>
+  </data>
+  <data name="SuspendBitlockerEncryptionRestricted" xml:space="preserve">
+    <value>Ograniczenie wstrzymania szyfrowania BitLocker</value>
+  </data>
+  <data name="SuspendBitLockerFailed" xml:space="preserve">
+    <value>W tej chwili nie można wstrzymać funkcji BitLocker</value>
+  </data>
+  <data name="SuspendBitLockerFailure" xml:space="preserve">
+    <value>W tej chwili nie można wstrzymać funkcji BitLocker.</value>
+  </data>
+  <data name="SuspendBitLockerRequested" xml:space="preserve">
+    <value>Zażądano wstrzymania funkcji BitLocker</value>
+  </data>
+  <data name="SuspendBitLockerSuccess" xml:space="preserve">
+    <value>Zażądano zawieszenia funkcji BitLocker dla tego urządzenia.</value>
+  </data>
+  <data name="SuspendDevice" xml:space="preserve">
+    <value>Zawieszenie urządzenia</value>
+  </data>
+  <data name="SyncEntitlements" xml:space="preserve">
+    <value>Upoważnienia synchronizacji</value>
+  </data>
+  <data name="SyncUpdates" xml:space="preserve">
+    <value>Synchronizuj aktualizacje</value>
+  </data>
+  <data name="SystemApps" xml:space="preserve">
+    <value>Aplikacje systemowe</value>
+  </data>
+  <data name="SystemManufacturerAndModel" xml:space="preserve">
+    <value>Producent i model systemu</value>
+  </data>
+  <data name="SystemManufacturerAndModelTooltip" xml:space="preserve">
+    <value>Filtr producenta i modelu dla grupy Smart</value>
+  </data>
+  <data name="Systemunlocked" xml:space="preserve">
+    <value>System odblokowany.</value>
+  </data>
+  <data name="SystemUpdateReceivedTime" xml:space="preserve">
+    <value>Aktualizacja jest dostępna od</value>
+  </data>
+  <data name="TagAssignmentHelp" xml:space="preserve">
+    <value>Wybierz znaczniki do przypisania urządzenia</value>
+  </data>
+  <data name="TagRemovalHelp" xml:space="preserve">
+    <value>Wybierz znaczniki do usunięcia</value>
+  </data>
+  <data name="TargetedLoggingDeviceId" xml:space="preserve">
+    <value>Wprowadź dowolny z poniższych dwóch formatów, aby włączyć rejestrowanie ukierunkowane dla podanych ID urządzeń.
+			 1. {deviceId1},{deviceId2},.. 
+			 2. {deviceId1}|{Timestamp},{deviceId2}|{Timestamp},..
+			 Znacznik czasu powinien być w formacie rrrr-MM-dd GG:mm:ss. np. 100|2018-12-30 18:30:00. 8 godzin to domyślny okres rejestracji ukierunkowanej.</value>
+  </data>
+  <data name="TargetedLoggingNeedsAtleastOneDeviceIdFilter" xml:space="preserve">
+    <value>Wprowadź co najmniej jeden identyfikator urządzenia dla rejestrowania ukierunkowanego.</value>
+  </data>
+  <data name="TestPrint" xml:space="preserve">
+    <value>Wydruk testowy</value>
+  </data>
+  <data name="TestPrintConfirmation" xml:space="preserve">
+    <value>Potwierdzenie wydruku testowego</value>
+  </data>
+  <data name="TheUserShouldLockDeviceBootloader" xml:space="preserve">
+    <value>Użytkownik powinien zablokować program ładujący urządzenia</value>
+  </data>
+  <data name="TheUserShouldRestoreDeviceToCleanFactoryROM" xml:space="preserve">
+    <value>Użytkownik powinien przywrócić urządzenie do czystej fabrycznej wersji ROM</value>
+  </data>
+  <data name="ThirdPartyRemoteManagement" xml:space="preserve">
+    <value>Zdalne zarządzanie innych firm</value>
+  </data>
+  <data name="Throttled" xml:space="preserve">
+    <value>Ograniczane</value>
+    <comment>One of the Device Command Queue status</comment>
+  </data>
+  <data name="TimeWindow" xml:space="preserve">
+    <value>Przedział czasu</value>
+  </data>
+  <data name="TimeWindowBannerDescription" xml:space="preserve">
+    <value>Użyj przedziałów czasu w przepływach pracy, aby zaplanować aktualizacje i dostarczać zasoby w czasie odpowiednim dla Twojej firmy.</value>
+  </data>
+  <data name="TimeWindowBannerTitle" xml:space="preserve">
+    <value>Usprawnij przepływy pracy przy użyciu przedziałów czasu</value>
+  </data>
+  <data name="TimeWindowBaseTimeInfo" xml:space="preserve">
+    <value>Wybierz strefę czasową do użycia dla tego przedziału czasu: czas lokalny urządzenia lub czas serwera (UTC).</value>
+  </data>
+  <data name="TimeWindowCategoryInfo" xml:space="preserve">
+    <value>Wybierz kategorię przedziału czasu — godziny pracy lub godziny konserwacji.</value>
+  </data>
+  <data name="TimeWindowGroupRestriction" xml:space="preserve">
+    <value>Tym razem okna nie można edytować lub usunąć, gdyż jest zarządzane przez wyższą grupę w organizacji lub administrator ma dostęp tylko do odczytu.</value>
+  </data>
+  <data name="TimeWindowMenuDescription" xml:space="preserve">
+    <value>Zarządzanie przedziałami czasu</value>
+  </data>
+  <data name="TimeWindowMenuItem" xml:space="preserve">
+    <value>Przedziały czasu</value>
+  </data>
+  <data name="TimeWindowStepDesc1" xml:space="preserve">
+    <value>Utwórz plan „Harmonogram konserwacji tygodniowej Q1”, aby spełnić wyjątkowe potrzeby swojej firmy.</value>
+  </data>
+  <data name="TimeWindowStepDesc2" xml:space="preserve">
+    <value>Utwórz tygodniowy plan, powtarzany w każdy wtorek od 9:00 do 16:00.</value>
+  </data>
+  <data name="TimeWindowStepDesc3" xml:space="preserve">
+    <value>Odwołuj się do planu „Harmonogram konserwacji tygodniowej Q1”, aby przesyłać aktualizacje w przepływie pracy.</value>
+  </data>
+  <data name="TimeWindowSteps" xml:space="preserve">
+    <value>Rozpocznij od tych działań</value>
+  </data>
+  <data name="TimeWindowStepTitle1" xml:space="preserve">
+    <value>Wybierz kategorię przedziału czasu — godziny pracy lub godziny konserwacji</value>
+  </data>
+  <data name="TimeWindowStepTitle2" xml:space="preserve">
+    <value>Utwórz harmonogram, aby obsłużyć cykl</value>
+  </data>
+  <data name="TimeWindowStepTitle3" xml:space="preserve">
+    <value>Użyj jako warunku przepływu pracy</value>
+  </data>
+  <data name="Tools" xml:space="preserve">
+    <value>Narzędzia</value>
+  </data>
+  <data name="ToolTipKeepAppsOnDevice" xml:space="preserve">
+    <value>Wybierz tę opcję, aby zezwolić, by istniejące zarządzane aplikacje i ich dane w pamięci podręcznej pozostały na urządzeniu. Urządzenia z wersją agenta wcześniejszą niż 2105 nie będą usuwane z danych firmowych, jeśli ta opcja jest wybrana.</value>
+  </data>
+  <data name="TotalDevicesArg" xml:space="preserve">
+    <value>Łączna liczba urządzeń: {0}</value>
+  </data>
+  <data name="TotalEligibleDevicesArg" xml:space="preserve">
+    <value>Łączna liczba kwalifikujących się urządzeń: {0}</value>
+  </data>
+  <data name="ToViewGPSDataInstallAirwatchAgent" xml:space="preserve">
+    <value>Aby wyświetlić dane GPS, zainstaluj aplikację VMware AirWatch Agent ze sklepu Microsoft</value>
+  </data>
+  <data name="Trigger" xml:space="preserve">
+    <value>Wyzwalacz</value>
+  </data>
+  <data name="UnitId" xml:space="preserve">
+    <value>ID jednostki</value>
+  </data>
+  <data name="Unlicensed" xml:space="preserve">
+    <value>Nielicencjonowane</value>
+  </data>
+  <data name="UpdateAgentApplication" xml:space="preserve">
+    <value>Zaktualizuj aplikację Agenta</value>
+  </data>
+  <data name="UpdateInstallPendingReboot" xml:space="preserve">
+    <value>Aktualizacja zostanie zakończona po ponownym uruchomieniu</value>
+  </data>
+  <data name="UpdateNoLongerAvailable" xml:space="preserve">
+    <value>Ta aktualizacja nie jest już dostępna. Dalsze działania związane z tą aktualizacją nie będą podejmowane.</value>
+  </data>
+  <data name="UpdatesLastSync" xml:space="preserve">
+    <value>Ostatnia synchronizacja:</value>
+  </data>
+  <data name="UpdatesNextSync" xml:space="preserve">
+    <value>Następna synchronizacja:</value>
+  </data>
+  <data name="UptoDateStatus" xml:space="preserve">
+    <value>Aktualny</value>
+  </data>
+  <data name="UseCDSV1" xml:space="preserve">
+    <value>Usługa dostarczania treści wer. 1</value>
+  </data>
+  <data name="UseLatestAirWatchAgent" xml:space="preserve">
+    <value>Użyj najnowszego Workspace ONE Intelligent Hub</value>
+  </data>
+  <data name="UseLegacyCDSLogicHelp" xml:space="preserve">
+    <value>Gdy opcja jest włączona, używana jest starsza wersji logiki usługi dostarczania treści.</value>
+  </data>
+  <data name="UsePolicyEngineV1" xml:space="preserve">
+    <value>Aparat zasad wer. 1</value>
+  </data>
+  <data name="UserBasedAccountDescription" xml:space="preserve">
+    <value>Konto Google utworzone dla tego urządzenia będzie identyczne dla wszystkich urządzeń zarejestrowanych przez tego pracownika. Ten typ rejestracji jest preferowany dla pracowników przydzielonych do urządzeń, ale nie w przypadku wstępnej rejestracji. Na konto użytkownika mogą obowiązywać limity urządzeń.</value>
+  </data>
+  <data name="UserGroupAssignmentsWithEmptyGroupIDWarning" xml:space="preserve">
+    <value>Każda Grupa organizacyjna z brakującymi identyfikatorami grup spowoduje niepowodzenie rejestracji dla przypisanych grup użytkowników. Aby uniknąć takiej sytuacji, należy zaktualizować brakujące identyfikatory grup dla każdej Grupy organizacyjnej.</value>
+  </data>
+  <data name="UserRemovableDrivesMessage" xml:space="preserve">
+    <value>Dyski wymienne zaszyfrowane za pomocą BitLocker.</value>
+  </data>
+  <data name="UserSwitch" xml:space="preserve">
+    <value>Przełącznik użytkownika</value>
+  </data>
+  <data name="ValueShouldNotBeEmpty" xml:space="preserve">
+    <value>Wartość nie powinna być pusta</value>
+  </data>
+  <data name="VerifyResponseError" xml:space="preserve">
+    <value>Weryfikuj błąd odpowiedzi.</value>
+  </data>
+  <data name="ViewBiosPassword" xml:space="preserve">
+    <value>Wyświetl hasło BIOS</value>
+  </data>
+  <data name="ViewBiosPasswordHeader" xml:space="preserve">
+    <value>Hasło BIOS</value>
+  </data>
+  <data name="ViewBiosPasswordHelp" xml:space="preserve">
+    <value>Uprawnienia do wyświetlania hasła systemu BIOS znajdują się na stronie Szczegóły urządzenia.</value>
+  </data>
+  <data name="ViewBypassCode" xml:space="preserve">
+    <value>Wyświetl kod obejścia</value>
+  </data>
+  <data name="ViewManagedAdminPassword" xml:space="preserve">
+    <value>Wyświetl hasło administratora zarządzanego</value>
+  </data>
+  <data name="ViewManagedAppConfigFeedback" xml:space="preserve">
+    <value>Wyświetl opinie</value>
+  </data>
+  <data name="ViewRecoveryKeyRotationInformation" xml:space="preserve">
+    <value>Ze względów bezpieczeństwa polecenie rotacji tego klucza zostanie złożone za 15 minut.</value>
+  </data>
+  <data name="VolumeIdentifier" xml:space="preserve">
+    <value>Identyfikator woluminu</value>
+  </data>
+  <data name="WiFiConfiguration" xml:space="preserve">
+    <value>Skonfiguruj opcjonalną sieć Wi-Fi, z którą urządzenie połączy się przed rejestracją</value>
+  </data>
+  <data name="WifiOnly" xml:space="preserve">
+    <value>Tylko sieć WiFi</value>
+  </data>
+  <data name="WiFiSsid" xml:space="preserve">
+    <value>Identyfikator SSID sieci Wi-Fi</value>
+  </data>
+  <data name="Windows10KioskPublishingProcessorJob" xml:space="preserve">
+    <value>Zadanie dotyczące procesora publikującego Windows 10 Kiosk</value>
+  </data>
+  <data name="WindowsCompromisedRuleWarning" xml:space="preserve">
+    <value>Zasady te mają zastosowanie do urządzeń z systemem Windows 10 zgodnych z TPM 2.0. Zgodność TPM 2.0 nie ma zastosowania do weryfikacji systemu BIOS.</value>
+  </data>
+  <data name="WindowsDevicePowerOffWarningMessage" xml:space="preserve">
+    <value>Urządzenia z systemem Windows 10 zostaną ponownie uruchomione w ciągu 5 minut, aby umożliwić użytkownikowi zakończenie bieżącej pracy.</value>
+  </data>
+  <data name="WindowsDhaBiosAttestationFailed" xml:space="preserve">
+    <value>Wymaga narzędzia do weryfikacji systemu BIOS firmy Dell. Dotyczy tylko wybranych urządzeń firmy Dell. Zgodność TPM 2.0 nie ma zastosowania do weryfikacji systemu BIOS.</value>
+  </data>
+  <data name="WindowsProvisioningPackageServiceProcessorJob" xml:space="preserve">
+    <value>Zadanie dotyczące procesora usługi pakietu zastrzegania systemu Windows</value>
+  </data>
+  <data name="WinRTEnterpriseResetDescription" xml:space="preserve">
+    <value>W przypadku uszkodzenia urządzenia lub awarii aplikacji funkcja Enterprise Reset przywraca urządzenie do stanu gotowości do pracy. Instaluje ponownie system operacyjny Windows, zachowując dane i konta użytkowników oraz zarządzane aplikacje. Po zresetowaniu urządzenie ponownie zsynchronizuje automatycznie wdrożone ustawienia, zasady i aplikacje przedsiębiorstwa, a przy tym pozostałe zarządzane przez Workspace ONE.</value>
+  </data>
+  <data name="WipeDeviceStorage" xml:space="preserve">
+    <value>Usuń magazyn urządzenia</value>
+  </data>
+  <data name="WipeLogDescription" xml:space="preserve">
+    <value>Wyświetl wymazane urządzenia, przejrzyj wstrzymane polecenia wymazania danych oraz zresetuj licznik wartości progowej czyszczenia.</value>
+  </data>
+  <data name="WipeRemovableStorage" xml:space="preserve">
+    <value>Usuń magazyn wymienny</value>
+  </data>
+  <data name="WipeThresholdMessage" xml:space="preserve">
+    <value>Osiągnięto wartość progową czyszczenia ustawioną na stronie {0}. Żadne dalsze urządzenia nie zostaną wymazane przez przedsiębiorstwa lub urządzenia, dopóki system nie zostanie odblokowany.</value>
+  </data>
+  <data name="WizardQRCodesummarycongratulations" xml:space="preserve">
+    <value>Konfiguracja jest zakończona, a kod QR jest dostępny do pobrania. Kod QR ma postać zwykłego tekstu i może być interpretowany przez każdy czytnik QR/dekoder. Podejmij odpowiednie środki ostrożności, aby uniknąć wycieku jakichkolwiek poufnych informacji.</value>
+  </data>
+  <data name="WorkflowAssignments" xml:space="preserve">
+    <value>Przypisania przepływu pracy</value>
+  </data>
+  <data name="WorkManagedDeviceInfoMessage" xml:space="preserve">
+    <value>W pełni zarządzane i zablokowane urządzenie. Pracownicy będą mieli dostęp tylko do aplikacji firmowych i nie będą mieli dostępu do aplikacji osobistych przez sklep Google Play.</value>
+  </data>
+  <data name="WorkManagedEnrollmentType" xml:space="preserve">
+    <value>Generowanie konta Google dla urządzeń firmowych</value>
+  </data>
+  <data name="WorkProfileStatus" xml:space="preserve">
+    <value>Profil do pracy</value>
+  </data>
+  <data name="Zsh" xml:space="preserve">
+    <value>Zsh</value>
+  </data>
+</root>

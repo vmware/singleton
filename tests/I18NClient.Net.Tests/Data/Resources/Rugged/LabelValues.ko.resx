@@ -1,0 +1,967 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AC" xml:space="preserve">
+    <value>AC</value>
+  </data>
+  <data name="AccessToDeviceReprocessProductsMenuTooltip" xml:space="preserve">
+    <value>빠른 문제 해결을 위해 직원에게 재처리 제품 메뉴에 액세스할 수 있는 권한을 제공하십시오.</value>
+  </data>
+  <data name="ACorFullBattery" xml:space="preserve">
+    <value>AC 또는 충전된 배터리</value>
+  </data>
+  <data name="ACPowerCondition" xml:space="preserve">
+    <value>장치가 전원에 연결될 때 작업을 수행하도록 예약합니다(예: 받침대에 놓을 때 전원에 연결).</value>
+  </data>
+  <data name="AddAgentPackages" xml:space="preserve">
+    <value>Hub/Agent 패키지 추가</value>
+  </data>
+  <data name="AddFileServer" xml:space="preserve">
+    <value>파일 서버 추가</value>
+  </data>
+  <data name="AddPinnedAppsHelp" xml:space="preserve">
+    <value>고정 애플리케이션 행을 추가하면 장치 홈 화면의 공간 제약으로 인해 제목 표시줄 최소화가 강제 적용됩니다.</value>
+  </data>
+  <data name="AddPinnedAppsRow" xml:space="preserve">
+    <value>고정 애플리케이션에 대한 행 추가</value>
+  </data>
+  <data name="AddToLauncher" xml:space="preserve">
+    <value>시작 관리자에 추가</value>
+  </data>
+  <data name="AfterDurationExceeded" xml:space="preserve">
+    <value>기간 초과 이후</value>
+  </data>
+  <data name="AgentPackages" xml:space="preserve">
+    <value>Hub/Agent 패키지</value>
+  </data>
+  <data name="AgentPackagesMenuTitle" xml:space="preserve">
+    <value>Hub/Agent 보기 및 추가</value>
+  </data>
+  <data name="AirwatchMdmAgentUpgrade" xml:space="preserve">
+    <value>AirWatch MDM Agent 업그레이드</value>
+  </data>
+  <data name="Airwatchmdmagentupgradefile" xml:space="preserve">
+    <value>AirWatch MDM Agent 업그레이드 파일</value>
+  </data>
+  <data name="AndroidAvailableSystemActions" xml:space="preserve">
+    <value>의도 실행, 재부팅, 사용자 지정 설정 적용, 시작 관리자 로그아웃.</value>
+  </data>
+  <data name="AndroidFile" xml:space="preserve">
+    <value>파일</value>
+  </data>
+  <data name="ApplicationAssignmentsCount" xml:space="preserve">
+    <value>할당</value>
+  </data>
+  <data name="AssistCommandLine" xml:space="preserve">
+    <value>명령줄</value>
+  </data>
+  <data name="AssistManageFiles" xml:space="preserve">
+    <value>파일 관리</value>
+  </data>
+  <data name="AssistRemoteAssist" xml:space="preserve">
+    <value>원격 지원</value>
+  </data>
+  <data name="AssistRemoteViewIosTooltip" xml:space="preserve">
+    <value>원격 보기만 지원하는 iOS를 제외한 모든 플랫폼에 대해 원격 보기 및 제어를 지원합니다.</value>
+  </data>
+  <data name="AssistShareScreen" xml:space="preserve">
+    <value>화면 공유</value>
+  </data>
+  <data name="AtleastOneCustomAttributeAndAttributeValueIsRequired" xml:space="preserve">
+    <value>하나 이상의 사용자 지정 특성 및 특성 값이 있어야 합니다.</value>
+  </data>
+  <data name="AutoRetry" xml:space="preserve">
+    <value>자동 재시도</value>
+  </data>
+  <data name="BackgroundApplication" xml:space="preserve">
+    <value>백그라운드 애플리케이션</value>
+  </data>
+  <data name="Batchimportrelayserverexplanation" xml:space="preserve">
+    <value>릴레이 서버 가져오기 기능은 대량으로 시스템에 릴레이 서버를 로드하도록 사용할 수 있습니다. 릴레이 서버는 조직 그룹과 연결되어야 합니다. 
+
+참고로 템플릿 다운로드를 클릭하십시오.</value>
+  </data>
+  <data name="BulkEnterpriseResetDescription" xml:space="preserve">
+    <value>이 작업은 VMware의 신속한 배포 클라이언트를 활용하여 스테이징 등록 과정을 통해 등록된 Zebra 또는 Honeywell Rugged Android 및 Windows 모바일 장치에 적용됩니다. 이 작업을 수행하면 장치가 초기화된 후 재부팅됩니다. 재부팅 시 장치는 Workspace ONE에 등록되어 있고 이전에 정의된 상태로 재구성됩니다.</value>
+  </data>
+  <data name="CannotActivatePolicy_DeactivationDateIsInPast" xml:space="preserve">
+    <value>정책을 활성화할 수 없습니다. 비활성화 날짜가 이전입니다.</value>
+  </data>
+  <data name="CannotBeEmptyArg" xml:space="preserve">
+    <value>{0}은(는) null이거나 비워둘 수 없습니다.</value>
+  </data>
+  <data name="CannotDeactivatePolicy_ActivationDateIsInThePast" xml:space="preserve">
+    <value>정책을 비활성화할 수 없습니다. 활성화 날짜가 이전입니다.</value>
+  </data>
+  <data name="CannotSavePolicySmartGroupNotAssigned" xml:space="preserve">
+    <value>자동 활성화 정책을 저장할 수 없습니다. 스마트 그룹이 할당되어 있지 않습니다.</value>
+  </data>
+  <data name="CASettingsCannotBeConfiguredAtThisOg" xml:space="preserve">
+    <value>이 조직 그룹에서 사용자 지정 특성 설정을 구성할 수 없습니다.</value>
+  </data>
+  <data name="CDNShouldBeEnabled" xml:space="preserve">
+    <value>CDN을 통해 제품 다운로드 허용 설정을 사용하기 전에 CDN 설정을 활성화하고 저장하십시오.</value>
+  </data>
+  <data name="CharactersAreRestrictedInProductName" xml:space="preserve">
+    <value>제품 이름에는 {0} 문자를 입력할 수 없습니다.</value>
+  </data>
+  <data name="CloudRelayConnectionShouldFollowFormat" xml:space="preserve">
+    <value>Cloud Relay 연결은 /DesiredFolder/Temp 형식을 따라야 합니다.</value>
+  </data>
+  <data name="ConditionActionAfterDurationHelp" xml:space="preserve">
+    <value>조건 기간 충족 후 처리 방법을 결정합니다.</value>
+  </data>
+  <data name="ConditionDurationHelp" xml:space="preserve">
+    <value>이 조건으로 이 작업이 수행되는 기간을 설정합니다.</value>
+  </data>
+  <data name="ConditionFileNameHelp" xml:space="preserve">
+    <value>조건을 설정하려면 장치 경로 및 파일 이름을 입력하여 확인한 후 장치에 제품 구성 요소를 다운로드 및/또는 설치합니다.</value>
+  </data>
+  <data name="ConditionFrequencyHelp" xml:space="preserve">
+    <value>이 파일이 있는지 여부를 확인하기 위해 장치가 이 조건을 실행하는 빈도를 결정합니다.</value>
+  </data>
+  <data name="ConditionMetWhen" xml:space="preserve">
+    <value>조건이 충족될 때</value>
+  </data>
+  <data name="ConditionTestTypeHelp" xml:space="preserve">
+    <value>장치에서 이 파일을 찾았을 때 또는 이 파일을 찾을 수 없을 때 제품 구성 요소를 다운로드 및/또는 설치할지 여부를 결정합니다.</value>
+  </data>
+  <data name="ConfigureAgentTakesToSettingsConfiguration" xml:space="preserve">
+    <value>"Agent 구성"을 선택하면 다음 단계의 설정 구성 페이지로 이동합니다.</value>
+  </data>
+  <data name="ConfigureWinmoAgent" xml:space="preserve">
+    <value>Agent 구성</value>
+  </data>
+  <data name="ConfirmContinueWithPreviousActivationDate" xml:space="preserve">
+    <value>활성화 날짜 및 시간을 변경하려고 했습니다. 활성 제품에서는 활성화 날짜를 업데이트할 수 없습니다. 활성화 날짜를 변경하려면 변경 내용을 취소한 후 제품을 비활성화하십시오. 제품을 편집하여 원하는 날짜로 변경한 다음 저장하고 제품을 활성화합니다. 이 활성 제품의 이전 활성화 날짜를 유지하려면 확인을 선택하십시오.</value>
+  </data>
+  <data name="ConfirmDeactivateDependentPolicy" xml:space="preserve">
+    <value>이 제품은 다른 제품의 종속 제품입니다. 이 제품을 비활성화하면 제품 {0}을(를) 실행할 수 있는 시점에 영향을 미칩니다.</value>
+  </data>
+  <data name="ConsoleConnectionShouldFollowFormat" xml:space="preserve">
+    <value>Console 연결 경로는 /DesiredFolder/Temp 형식을 따라야 합니다.</value>
+  </data>
+  <data name="ContentPull" xml:space="preserve">
+    <value>컨텐츠 가져오기</value>
+  </data>
+  <data name="CopyRelayServer" xml:space="preserve">
+    <value>릴레이 서버 복사</value>
+  </data>
+  <data name="CopyStaging" xml:space="preserve">
+    <value>스테이징 복사</value>
+  </data>
+  <data name="CouldNotEstablishConnectionToRemoteManagementHost" xml:space="preserve">
+    <value>원격 관리 호스트에 연결하는 중 오류가 발생했습니다.</value>
+  </data>
+  <data name="CustomAttributeDoesNotExist" xml:space="preserve">
+    <value>액세스하려는 사용자 지정 특성이 없습니다.</value>
+  </data>
+  <data name="CustomAttributeNameIsRequired" xml:space="preserve">
+    <value>사용자 지정 특성 이름은 필수입니다.</value>
+  </data>
+  <data name="CustomAttributesFieldsRequired" xml:space="preserve">
+    <value>모든 필드는 필수임</value>
+  </data>
+  <data name="CustomAttributesOnlyExplanation" xml:space="preserve">
+    <value>이 배치 가져오기 유형을 사용하여 사용자 지정 특성 및 해당 설정을 추가하거나 업데이트합니다(참고: 하나 이상의 사용자 지정 특성 값이 필요합니다).</value>
+  </data>
+  <data name="DailyInterval" xml:space="preserve">
+    <value>일별 간격</value>
+  </data>
+  <data name="DailyIntervalPlaceholder" xml:space="preserve">
+    <value>1에서 7 사이의 숫자를 입력하십시오.</value>
+  </data>
+  <data name="DateTimeIsNotInAllowedRange" xml:space="preserve">
+    <value>{0}부터 {1} 사이의 날짜시간만 허용되어야 합니다.</value>
+  </data>
+  <data name="DeleteApplicationWithLinkedPoliciesWarning" xml:space="preserve">
+    <value>이 애플리케이션은 현재 하나 이상의 제품에 사용하고 있기 때문에 삭제할 수 없습니다. 편집을 이용하여 애플리케이션을 제품에서 분리해주십시오. 분리가 완료되면, 애플리케이션을 삭제할 수 있습니다.</value>
+  </data>
+  <data name="DeleteApplicationWithLinkedStagingWarning" xml:space="preserve">
+    <value>이 애플리케이션은 현재 하나 이상의 스테이징 정의에서 사용되고 있기 때문에 삭제할 수 없습니다. 스테이징 정의를 편집하여 다른 애플리케이션을 선택하거나 스테이징 정의를 삭제하십시오. 이렇게 하면 애플리케이션을 삭제할 수 있습니다.</value>
+  </data>
+  <data name="DeleteAttributesWithLinkedRegisteredDevicesWarning" xml:space="preserve">
+    <value>현재 등록된 장치에 연결된 사용자 지정 속성은 삭제할 수 없습니다. 먼저 등록된 장치에서 속성을 분리하십시오.</value>
+  </data>
+  <data name="DeleteEventActionWithLinkedPoliciesWarning" xml:space="preserve">
+    <value>이 이벤트 작업은 현재 하나 이상의 제품에서 현재 사용되고 있기 때문에 삭제할 수 없습니다. 이벤트 작업을 편집하여 제품에서 분리하십시오. 이렇게 하면 이벤트 작업을 삭제할 수 있습니다.</value>
+  </data>
+  <data name="DeleteEventActionWithLinkedStagingWarning" xml:space="preserve">
+    <value>이 EventAction은 하나 이상의 스테이징 정의에서 사용되고 있기 때문에 삭제할 수 없습니다. 스테이징 정의를 편집하여 다른 EventAction을 선택하거나 스테이징 정의를 삭제하십시오. 이렇게 하면 EventAction을 삭제할 수 있습니다.</value>
+  </data>
+  <data name="DeleteFileActionWithLinkedPoliciesWarning" xml:space="preserve">
+    <value>이 파일/작업은 현재 하나 이상의 제품에 사용하고 있기 때문에 삭제할 수 없습니다. 편집을 이용하여 파일/작업을 제품에서 분리하십시오. 이렇게 하면 파일/작업을 삭제할 수 있습니다.</value>
+  </data>
+  <data name="DeleteFileActionWithLinkedStagingWarning" xml:space="preserve">
+    <value>이 파일/작업은 하나 이상의 스테이징 정의에서 사용되고 있기 때문에 삭제할 수 없습니다. 스테이징 정의를 편집하여 다른 파일/작업을 선택하거나 스테이징 정의를 삭제하십시오. 이렇게 하면 파일/작업을 삭제할 수 있습니다.</value>
+  </data>
+  <data name="DeleteProductWithAppTunnelingEnabledError" xml:space="preserve">
+    <value>하나 이상의 설치 애플리케이션 매니페스트가 앱 터널링을 사용하여 구성되어 있으므로 이 제품을 삭제할 수 없습니다. 구성을 제거하고 다시 시도하십시오.</value>
+  </data>
+  <data name="DeleteProfileWithLinkedPoliciesWarning" xml:space="preserve">
+    <value>이 프로필은 현재 하나 이상의 제품에 사용하고 있기 때문에 삭제할 수 없습니다. 편집을 이용하여 프로필을 제품에서 분리하십시오. 이렇게 하면 프로필을 삭제할 수 있습니다.</value>
+  </data>
+  <data name="DeleteProfileWithLinkedStagingWarning" xml:space="preserve">
+    <value>이 프로필은 하나 이상의 스테이징 정의에서 사용되고 있기 때문에 삭제할 수 없습니다. 스테이징 정의를 편집하여 다른 프로필을 선택하거나 스테이징 정의를 삭제하십시오. 이렇게 하면 프로필을 삭제할 수 있습니다.</value>
+  </data>
+  <data name="DeploymentMode" xml:space="preserve">
+    <value>배포 모드</value>
+  </data>
+  <data name="DestinationMustBeDirectoryPath" xml:space="preserve">
+    <value>대상은 디렉토리 경로여야 합니다.</value>
+  </data>
+  <data name="DeviceConnectionShouldFollowFormat" xml:space="preserve">
+    <value>장치 연결 경로는 /DesiredFolder/Temp 형식을 따라야 합니다.</value>
+  </data>
+  <data name="DeviceFriendlyNameLookUpText" xml:space="preserve">
+    <value>장치 식별 이름</value>
+  </data>
+  <data name="DevicePlatformID" xml:space="preserve">
+    <value>장치 플랫폼 식별자</value>
+  </data>
+  <data name="DevicePolicyJobStatusNoJobs" xml:space="preserve">
+    <value>작업 없음</value>
+  </data>
+  <data name="DeviceReprocess" xml:space="preserve">
+    <value>장치 재처리</value>
+  </data>
+  <data name="DeviceReprocessTooltip" xml:space="preserve">
+    <value>직원이 제품을 재처리할 수 있도록 허용합니다.</value>
+  </data>
+  <data name="DeviceTypeOfTheFileIsInvalid" xml:space="preserve">
+    <value>파일의 DeviceType이 잘못되었습니다. DeviceType은 Android, Apple 등의 장치 플랫폼이어야 합니다.</value>
+  </data>
+  <data name="DeviceWillNeedToBePluggedIn" xml:space="preserve">
+    <value>작업을 진행하려면 장치가 전원에 연결되어 있거나 충분히 충전되어 있어야 합니다. 이 조건이 이벤트/작업의 일부일 경우에는 메시지 및 지연 필드를 적용할 수 없습니다.</value>
+  </data>
+  <data name="DoubleQuotesForCommandLineIsRequired" xml:space="preserve">
+    <value>명령줄에 큰따옴표를 입력해야 합니다.</value>
+  </data>
+  <data name="DownloadAndDeployMotoDcCabFile" xml:space="preserve">
+    <value>Motorola 장치에 대한 메트릭을 보고하려면 다음 위치에서 MotoDC.cab 파일을 다음에서 다운로드하여 배포</value>
+  </data>
+  <data name="DownloadFiles" xml:space="preserve">
+    <value>파일 다운로드</value>
+  </data>
+  <data name="DownloadPullServiceConfig" xml:space="preserve">
+    <value>풀 서비스 구성 다운로드</value>
+  </data>
+  <data name="EditFileServer" xml:space="preserve">
+    <value>파일 서버 편집</value>
+  </data>
+  <data name="EditStaging" xml:space="preserve">
+    <value>스테이징 편집</value>
+  </data>
+  <data name="EndDay" xml:space="preserve">
+    <value>종료일</value>
+  </data>
+  <data name="EndHour" xml:space="preserve">
+    <value>종료 시간</value>
+  </data>
+  <data name="EndMinute" xml:space="preserve">
+    <value>종료 분</value>
+  </data>
+  <data name="EndMonth" xml:space="preserve">
+    <value>종료 월</value>
+  </data>
+  <data name="EndTimeShouldBeLaterThanStartTime" xml:space="preserve">
+    <value>종료 시간은 시작 시간 이후여야 합니다.</value>
+  </data>
+  <data name="EndTimeUtc" xml:space="preserve">
+    <value>종료 시간(UTC)</value>
+  </data>
+  <data name="EndYear" xml:space="preserve">
+    <value>종료 연도</value>
+  </data>
+  <data name="EnterAdminModeConfirmed" xml:space="preserve">
+    <value>관리자 모드로 들어가기 확인됨</value>
+  </data>
+  <data name="EnterAdminModeFailed" xml:space="preserve">
+    <value>관리자 모드로 들어가기 실패함</value>
+  </data>
+  <data name="EnterAdminModeRefused" xml:space="preserve">
+    <value>관리자 모드로 들어가기 거부됨</value>
+  </data>
+  <data name="EnterAdminModeRequested" xml:space="preserve">
+    <value>관리자 모드로 들어가기 요청됨</value>
+  </data>
+  <data name="EnterAdminModeSuccess" xml:space="preserve">
+    <value>관리자 모드로 들어가기 성공</value>
+  </data>
+  <data name="ErrorParsingRemoteFeature" xml:space="preserve">
+    <value>"{0}" 원격 지원 기능을 구문 분석하는 동안 오류 발생</value>
+  </data>
+  <data name="ErrorReturnedFromHoneywellServer" xml:space="preserve">
+    <value>Honeywell 서버에서 반환된 오류</value>
+  </data>
+  <data name="ErrorReturnedFromZebraServer" xml:space="preserve">
+    <value>Zebra 서버에서 반환된 오류</value>
+  </data>
+  <data name="EventActionAndroidPrerequisite" xml:space="preserve">
+    <value>작업을 트리거하기 위한 조건을 하나 이상 추가하십시오. 이전에 생성한 조건을 추가하거나 여기에서 "조건 추가" 옵션을 사용하여 새 조건을 생성할 수 있습니다. 둘 이상의 조건 유형을 한 번에 선택할 수 있지만 특정 유형의 조건을 하나만 선택할 수 있습니다. 이미 선택된 것과 같은 유형의 조건을 선택할 경우 이전에 선택된 조건은 이 조건으로 대체됩니다. 허용되는 조건 유형은 배터리 임계값, 되풀이되는 스케줄 및 AC 전원입니다.</value>
+  </data>
+  <data name="EventActionLinkedToPolicyOrStagingAndCanNotBeMovedToNonAccessibleOgs" xml:space="preserve">
+    <value>이벤트 작업은 일부 제품 또는 스테이징 패키지에 연결됩니다. 따라서 이벤트 작업을 연결된 구성 요소에 액세스할 수 없는 조직 그룹으로 이동할 수 없습니다.</value>
+  </data>
+  <data name="ExitAdminModeConfirmed" xml:space="preserve">
+    <value>관리자 모드 나가기 확인됨</value>
+  </data>
+  <data name="ExitAdminModeFailed" xml:space="preserve">
+    <value>관리자 모드 나가기 실패함</value>
+  </data>
+  <data name="ExitAdminModeRefused" xml:space="preserve">
+    <value>관리자 모드 나가기 거부됨</value>
+  </data>
+  <data name="ExitAdminModeRequested" xml:space="preserve">
+    <value>관리자 모드 나가기 요청됨</value>
+  </data>
+  <data name="ExitAdminModeSuccess" xml:space="preserve">
+    <value>관리자 모드 나가기 성공</value>
+  </data>
+  <data name="ExitAirwatchLauncher" xml:space="preserve">
+    <value>시작 관리자 나가기</value>
+  </data>
+  <data name="ExitAirwatchLauncherConfirmed" xml:space="preserve">
+    <value>시작 관리자 나가기 확인됨</value>
+  </data>
+  <data name="ExitAirwatchLauncherFailed" xml:space="preserve">
+    <value>시작 관리자 나가기 실패함</value>
+  </data>
+  <data name="ExitAirwatchLauncherRefused" xml:space="preserve">
+    <value>시작 관리자 나가기 거부됨</value>
+  </data>
+  <data name="ExitAirwatchLauncherRequested" xml:space="preserve">
+    <value>시작 관리자 나가기 요청됨</value>
+  </data>
+  <data name="ExitAirWatchLauncherSuccess" xml:space="preserve">
+    <value>시작 관리자 나가기 성공</value>
+  </data>
+  <data name="Expedited" xml:space="preserve">
+    <value>긴급</value>
+  </data>
+  <data name="ExpeditedProductTooltip" xml:space="preserve">
+    <value>이 옵션을 편집하려면 제품을 비활성화해야 합니다.</value>
+  </data>
+  <data name="ExpeditedProvisioningPolicyEdit" xml:space="preserve">
+    <value>긴급 프로비저닝 정책 편집</value>
+  </data>
+  <data name="ExpeditedProvisioningPolicyEditHelp" xml:space="preserve">
+    <value>프로비저닝 정책에서 긴급 배포 편집 옵션에 대한 액세스를 제어합니다.</value>
+  </data>
+  <data name="FileActionLinkedToPolicyOrStagingAndCanNotBeMovedToNonAccessibleOgs" xml:space="preserve">
+    <value>FileAction은 일부 제품 또는 스테이징 패키지에 연결됩니다. 따라서 FileAction을 연결된 구성 요소에 액세스할 수 없는 조직 그룹으로 이동할 수 없습니다.</value>
+  </data>
+  <data name="FileActionsFilePathError" xml:space="preserve">
+    <value>이름 및 다운로드 경로는 합해서 최대 255자입니다.</value>
+  </data>
+  <data name="FileFound" xml:space="preserve">
+    <value>파일 확인됨</value>
+  </data>
+  <data name="FileServerAssociatedWithEventActionArgs" xml:space="preserve">
+    <value>{0} 파일 서버가 {1}과(와) 함께 사용됨</value>
+  </data>
+  <data name="FileServerDeleteFailed" xml:space="preserve">
+    <value>다음 이벤트 작업에서 현재 사용 중이므로 이 파일 서버를 삭제할 수 없습니다. 파일 서버를 편집하여 이를 이벤트 작업에서 분리하십시오. 작업이 완료되면 파일 서버를 삭제할 수 있습니다.</value>
+  </data>
+  <data name="FileServerDeleteSuccessful" xml:space="preserve">
+    <value>파일 서버가 삭제됨</value>
+  </data>
+  <data name="FileServerDetails" xml:space="preserve">
+    <value>파일 서버 세부 사항</value>
+  </data>
+  <data name="FileServerNameIsRequired" xml:space="preserve">
+    <value>파일 서버 이름은 필수입니다.</value>
+  </data>
+  <data name="FileServers" xml:space="preserve">
+    <value>파일 서버</value>
+  </data>
+  <data name="FileServerUsernameIsRequired" xml:space="preserve">
+    <value>파일 서버 사용자 이름은 필수입니다.</value>
+  </data>
+  <data name="FileSyncDownload" xml:space="preserve">
+    <value>파일 동기화 다운로드</value>
+  </data>
+  <data name="FileSyncUpload" xml:space="preserve">
+    <value>파일 동기화 업로드</value>
+  </data>
+  <data name="FirstFieldShouldBeSmallerThanSecondField" xml:space="preserve">
+    <value>잘못된 값입니다. 첫 번째 필드가 두 번째 필드보다 적은 수여야 합니다.</value>
+  </data>
+  <data name="FiveDays" xml:space="preserve">
+    <value>5일</value>
+  </data>
+  <data name="GenerateHoneywellBarcode" xml:space="preserve">
+    <value>Honeywell 바코드 생성</value>
+  </data>
+  <data name="GenerateHoneywellBarcodeDisclaimerText" xml:space="preserve">
+    <value>이렇게 하면 Honeywell Enterprise Provisioner 바코드 생성기가 호출되어 이 페이지에서 선택한 데이터를 나타내는 바코드가 생성됩니다.
+
+VMware는 이 사이트를 제어하지 않으며 컨텐츠에 대한 책임을 명시적으로 거부합니다. 이 페이지에서 바코드를 생성하는 경우 모든 책임은 사용자에게 있습니다.</value>
+  </data>
+  <data name="HideActionBar" xml:space="preserve">
+    <value>제목 표시줄 최소화</value>
+  </data>
+  <data name="Honeywell" xml:space="preserve">
+    <value>Honeywell 엔터프라이즈 프로비저너</value>
+  </data>
+  <data name="HoneywellBarcode" xml:space="preserve">
+    <value>Honeywell 바코드</value>
+  </data>
+  <data name="HoneywellEP" xml:space="preserve">
+    <value>Honeywell 엔터프라이즈 프로비저너</value>
+  </data>
+  <data name="HoneywellEPUrl" xml:space="preserve">
+    <value>Honeywell 엔터프라이즈 프로비저너 URL</value>
+  </data>
+  <data name="HostPlaceHolder" xml:space="preserve">
+    <value>* 또는 1.2.3.4 또는 10.0.0.0-10.0.0.255</value>
+  </data>
+  <data name="HourlyInterval" xml:space="preserve">
+    <value>시간별 간격</value>
+  </data>
+  <data name="HourlyIntervalPlaceholder" xml:space="preserve">
+    <value>1에서 24 사이의 숫자를 입력하십시오.</value>
+  </data>
+  <data name="HttpsNotSupportedForPushRelayServers" xml:space="preserve">
+    <value>장치 연결을 위한 HTTPS 프로토콜은 푸시 릴레이 서버에 대해 지원되지 않습니다.</value>
+  </data>
+  <data name="HubPackageAlreadyExists" xml:space="preserve">
+    <value>동일한 파일 이름 또는 패키지 이름 및 버전의 Hub 패키지가 이미 있습니다.</value>
+  </data>
+  <data name="IntelligentHub" xml:space="preserve">
+    <value>Intelligent Hub</value>
+  </data>
+  <data name="InvalidDateTimeInputs" xml:space="preserve">
+    <value>제공한 날짜시간 입력이 잘못되었거나 완전하지 않습니다. 올바르게 입력하십시오.</value>
+  </data>
+  <data name="InvalidHoneywellRelayServerProtocol" xml:space="preserve">
+    <value>Honeywell은 이 릴레이 서버 프로토콜을 지원하지 않습니다.</value>
+  </data>
+  <data name="InvalidOrganizationGroupsForStagingAndProductionServers" xml:space="preserve">
+    <value>스테이징 및 운영 서버에 대한 잘못된 조직 그룹</value>
+  </data>
+  <data name="IOTGateway" xml:space="preserve">
+    <value>IOTGateway</value>
+  </data>
+  <data name="IsExpedited" xml:space="preserve">
+    <value>긴급 배포</value>
+  </data>
+  <data name="LastContactDate" xml:space="preserve">
+    <value>마지막 연락 날짜</value>
+  </data>
+  <data name="LastErrorCode" xml:space="preserve">
+    <value>마지막 오류 코드</value>
+  </data>
+  <data name="Launcher" xml:space="preserve">
+    <value>Launcher</value>
+  </data>
+  <data name="LauncherAction" xml:space="preserve">
+    <value>Launcher</value>
+  </data>
+  <data name="LauncherCheckInCheckOutCondtion" xml:space="preserve">
+    <value>Launcher를 체크인하거나 체크아웃할 때 작업을 수행합니다.</value>
+  </data>
+  <data name="LauncherLogout" xml:space="preserve">
+    <value>시작 관리자 로그아웃</value>
+  </data>
+  <data name="LauncherMiscAppWildcardRuleInfo" xml:space="preserve">
+    <value>'*' 문자를 사용하여 해당 패턴과 일치하는 애플리케이션을 자동으로 허용할 수 있습니다. 예: com.example.*</value>
+  </data>
+  <data name="LegacyAgent" xml:space="preserve">
+    <value>Agent</value>
+  </data>
+  <data name="LegacyAirwatchAgent" xml:space="preserve">
+    <value>AirWatch Agent</value>
+  </data>
+  <data name="LinkIsRequired" xml:space="preserve">
+    <value>파일 서버 링크는 필수입니다.</value>
+  </data>
+  <data name="LowMemCondition" xml:space="preserve">
+    <value>낮은 메모리 상황</value>
+  </data>
+  <data name="ManifestItemAlreadyExists" xml:space="preserve">
+    <value>매니페스트 항목이 이미 존재합니다. 다른 항목을 선택하십시오.</value>
+  </data>
+  <data name="MaxPullConnections" xml:space="preserve">
+    <value>최대 요청 연결 수</value>
+  </data>
+  <data name="MaxPullConnectionsValueCannotBeNullOrInvalid" xml:space="preserve">
+    <value>최대 요청 연결 수 값은 null이거나 잘못된 값일 수 없습니다.</value>
+  </data>
+  <data name="MaxPushConnections" xml:space="preserve">
+    <value>최대 푸시 연결 수</value>
+  </data>
+  <data name="MaxPushConnectionsValueCannotBeNullOrInvalid" xml:space="preserve">
+    <value>최대 푸시 연결 수 값은 null이거나 잘못된 값일 수 없습니다.</value>
+  </data>
+  <data name="MaxRSCCPushConnectionHelpText" xml:space="preserve">
+    <value>컨텐츠를 릴레이 서버로 푸시하는 데 사용되는 최대 동시 연결 수를 제한하려면 이 값을 수정합니다. 기본값은 50개의 연결입니다.</value>
+  </data>
+  <data name="NoContentAddedToProduct" xml:space="preserve">
+    <value>제품에 애플리케이션 또는 파일 작업이 추가되지 않았습니다.</value>
+  </data>
+  <data name="NotTested" xml:space="preserve">
+    <value>테스트되지 않음</value>
+  </data>
+  <data name="NoVPNProfileSelected" xml:space="preserve">
+    <value>PerAppVPN을 구성하려면 VPN 프로필을 선택하십시오.</value>
+  </data>
+  <data name="OemBuildRuleHelpText" xml:space="preserve">
+    <value>OEM 빌드 버전 및 "&gt;" 및 "&lt;"가 있는 할당 규칙은 버전의 형식이 같고 ASCII로 비교되는 경우에만 유효합니다.</value>
+  </data>
+  <data name="OemBuildVersionShouldHaveDeviceManufacturerRule" xml:space="preserve">
+    <value>OEM 빌드 버전을 사용하는 규칙에는 '&gt;' 및 '&lt;' 연산자를 사용할 때 장치 제조업체 특성(AND 조건만 허용됨)도 있어야 합니다.</value>
+  </data>
+  <data name="OGDeleteWarningForProducts" xml:space="preserve">
+    <value>이 조직 그룹과 연결된 구성 요소는 하나 이상의 상위 조직 그룹과 연관된 하나 이상의 제품에 연결될 수 있습니다. 이 조직 그룹을 삭제하면 하나 이상의 상위 조직 그룹에서 해당 제품이 유효하지 않게 됩니다. 이 조직 그룹이나 상위 제품을 삭제하기 전에 구성 요소의 연결을 해제하는 것이 좋습니다.</value>
+  </data>
+  <data name="OnlyAppWithSpecifiedVersionWillBeUninstalled" xml:space="preserve">
+    <value>선택한 애플리케이션 버전이 제거됩니다. 이 애플리케이션의 다른 모든 버전은 장치에 남게 됩니다.</value>
+  </data>
+  <data name="OnlyFileServersWithCGCanBeAdded" xml:space="preserve">
+    <value>파일 서버에는 이 목록에 표시되도록 구성된 Content Gateway가 있어야 하며 이벤트 작업에 파일 서버가 추가되어야 합니다</value>
+  </data>
+  <data name="OnlyNumericValuesAreAllowedForSpecificOperators" xml:space="preserve">
+    <value>연산자(예: &gt;, &gt;=, &lt;, &lt;= 및 BETWEEN)에는 숫자 값만 사용할 수 있습니다.</value>
+  </data>
+  <data name="OrganizationGroupIsRequired" xml:space="preserve">
+    <value>조직 그룹 필수</value>
+  </data>
+  <data name="OutRanked" xml:space="preserve">
+    <value>하위</value>
+  </data>
+  <data name="PasswordForPullServiceCertificate" xml:space="preserve">
+    <value>풀 서비스 인증서의 암호</value>
+  </data>
+  <data name="PasswordIsRequired" xml:space="preserve">
+    <value>파일 서버 비밀번호는 필수입니다.</value>
+  </data>
+  <data name="PinnedApps" xml:space="preserve">
+    <value>고정 애플리케이션</value>
+  </data>
+  <data name="PleaseEnterValidURL" xml:space="preserve">
+    <value>유효한 URL을 입력하십시오.</value>
+  </data>
+  <data name="PolicyEngineQueue" xml:space="preserve">
+    <value>정책 엔진 대기열</value>
+  </data>
+  <data name="PolicyEngineQueueMenuTitle" xml:space="preserve">
+    <value>정책 엔진 대기열</value>
+  </data>
+  <data name="PolicyId" xml:space="preserve">
+    <value>정책 식별자</value>
+  </data>
+  <data name="PortPlaceHolder" xml:space="preserve">
+    <value>* 또는 80 또는 8080-8085</value>
+  </data>
+  <data name="ProductDeviceForceReprocessFailed" xml:space="preserve">
+    <value>제품 장치 강제 재처리 실패</value>
+  </data>
+  <data name="ProductDownloadsThroughCDN" xml:space="preserve">
+    <value>CDN을 통해 제품 다운로드</value>
+  </data>
+  <data name="ProductionServerDescription" xml:space="preserve">
+    <value>생산 서버는 파일 작업 및 애플리케이션과 같은 생산 콘텐츠를 수신하도록 구성되어 있습니다.</value>
+  </data>
+  <data name="ProductProvisioning_ColdBoot" xml:space="preserve">
+    <value>콜드 부팅</value>
+  </data>
+  <data name="ProductProvisioning_InstallApplication" xml:space="preserve">
+    <value>애플리케이션 - 설치</value>
+  </data>
+  <data name="ProductProvisioning_InstallEventAction" xml:space="preserve">
+    <value>이벤트 작업 - 설치</value>
+  </data>
+  <data name="ProductProvisioning_InstallFilesActions" xml:space="preserve">
+    <value>파일/작업 - 설치</value>
+  </data>
+  <data name="ProductProvisioning_InstallProduct" xml:space="preserve">
+    <value>제품 - 설치</value>
+  </data>
+  <data name="ProductProvisioning_InstallProfile" xml:space="preserve">
+    <value>프로필 - 설치</value>
+  </data>
+  <data name="ProductProvisioning_Reboot" xml:space="preserve">
+    <value>재부팅</value>
+  </data>
+  <data name="ProductProvisioning_UninstallApplication" xml:space="preserve">
+    <value>애플리케이션 - 제거</value>
+  </data>
+  <data name="ProductProvisioning_UninstallEventAction" xml:space="preserve">
+    <value>이벤트 작업 - 제거</value>
+  </data>
+  <data name="ProductProvisioning_UninstallFilesActions" xml:space="preserve">
+    <value>파일/작업 - 제거</value>
+  </data>
+  <data name="ProductProvisioning_UninstallProduct" xml:space="preserve">
+    <value>제품 - 제거</value>
+  </data>
+  <data name="ProductProvisioning_UninstallProfile" xml:space="preserve">
+    <value>프로필 - 제거</value>
+  </data>
+  <data name="ProductProvisioning_WarmBoot" xml:space="preserve">
+    <value>웜 부팅</value>
+  </data>
+  <data name="ProductProvisioningDeviceConnectionHttpsSupportFeatureDisabled" xml:space="preserve">
+    <value>장치 연결 기능에 대한 HTTPS 프로토콜이 비활성화되어 있습니다.</value>
+  </data>
+  <data name="ProductSetForceReprocess" xml:space="preserve">
+    <value>강제 재처리</value>
+  </data>
+  <data name="ProductSetNameArgAlreadyExistsPleaseChooseAnother" xml:space="preserve">
+    <value>이름이 {0}인 제품 세트가 이미 존재합니다. 다른 이름을 선택하십시오.</value>
+  </data>
+  <data name="ProfileLinkedToPolicyOrStagingAndCanNotBeMovedToNonAccessibleOgs" xml:space="preserve">
+    <value>프로필은 일부 제품 또는 스테이징 패키지에 연결됩니다. 따라서 프로필을 연결된 구성 요소에 액세스할 수 없는 조직 그룹으로 이동할 수 없습니다.</value>
+  </data>
+  <data name="ProvisioningCommandDeleted" xml:space="preserve">
+    <value>프로비저닝 명령이 삭제됨</value>
+  </data>
+  <data name="ProvisioningEventAction" xml:space="preserve">
+    <value>이벤트 작업</value>
+  </data>
+  <data name="ProvisioningEventActions" xml:space="preserve">
+    <value>이벤트 작업</value>
+  </data>
+  <data name="PublishOnRelayServers" xml:space="preserve">
+    <value>릴레이 서버에 게시</value>
+  </data>
+  <data name="PullRelayServerNotAllowed" xml:space="preserve">
+    <value>선택한 릴레이 서버의 유형이 잘못되었습니다.</value>
+  </data>
+  <data name="QueueContentOnRelayServer" xml:space="preserve">
+    <value>할당된 장치가 없는 릴레이 서버에 콘텐츠 대기열 추가</value>
+  </data>
+  <data name="RelayServerCloudConnector" xml:space="preserve">
+    <value>릴레이 서버 클라우드 커넥터</value>
+  </data>
+  <data name="RelayServerCloudConnectorBatchSize" xml:space="preserve">
+    <value>릴레이 서버 Cloud Connector 일괄 처리 크기</value>
+  </data>
+  <data name="RelayServerCloudConnectorBatchSizeHelp" xml:space="preserve">
+    <value>일괄 처리당 WS1 서버에서 다운로드할 최대 콘텐츠 지침 수입니다. 추가 지침은 후속 배치에서 처리됩니다.</value>
+  </data>
+  <data name="RelayServerCloudConnectorEnableHelp" xml:space="preserve">
+    <value>이 설정을 사용하면 클라우드 커넥터 릴레이가 VMware 클라우드에서 콘텐츠를 가져와 네트워크 내의 릴레이 서버로 푸시하도록 구성됩니다.</value>
+  </data>
+  <data name="RelayServerCloudRelayAlreadyExists" xml:space="preserve">
+    <value>Cloud Relay 연결의 호스트 이름, 포트, 사용자, 경로가 모두 또 다른 릴레이 서버와 같습니다.</value>
+  </data>
+  <data name="RelayServerCloudRelayConnection" xml:space="preserve">
+    <value>Cloud Relay 연결</value>
+  </data>
+  <data name="RelayServerCountConfirm" xml:space="preserve">
+    <value>콘텐츠가 {0} 릴레이 서버에 대기 상태로 추가됩니다. 계속 진행하시겠습니까?</value>
+  </data>
+  <data name="RelayServerDoesNotExists" xml:space="preserve">
+    <value>선택한 OG에 릴레이 서버가 없습니다.</value>
+  </data>
+  <data name="RelayServerDomainUserFormat" xml:space="preserve">
+    <value>도메인 사용자에 대해 허용된 형식 : username@domain , domain\user</value>
+  </data>
+  <data name="RelayServerDomainUserFormatError" xml:space="preserve">
+    <value>도메인 사용자 형식 오류</value>
+  </data>
+  <data name="RelayServerId" xml:space="preserve">
+    <value>릴레이 서버 ID</value>
+  </data>
+  <data name="RelayServerOnly" xml:space="preserve">
+    <value>릴레이 서버 전용</value>
+  </data>
+  <data name="RelayServerOnlyHelp" xml:space="preserve">
+    <value>이 제품에 할당된 모든 장치에 대해 릴레이 서버가 구성되어 있는지 확인하십시오.</value>
+  </data>
+  <data name="RelayServerProtocolHTTPS" xml:space="preserve">
+    <value>HTTPS</value>
+  </data>
+  <data name="RelayServerPullConnectionInvalidPullDiscoveryText" xml:space="preserve">
+    <value>검색 텍스트 요청에는 127.0.0.1이 포함되어서는 안 됩니다.</value>
+  </data>
+  <data name="RelayServerPushOrCloudRelay" xml:space="preserve">
+    <value>푸시/Cloud Relay</value>
+  </data>
+  <data name="RelayServerTypeCloudRelay" xml:space="preserve">
+    <value>Cloud Relay</value>
+  </data>
+  <data name="RelayServerUserRestrictionError" xml:space="preserve">
+    <value>사용자 이름 및 비밀번호에는 ':' 문자를 사용할 수 없습니다.</value>
+  </data>
+  <data name="RelayServerWithDeviceServicesBackup" xml:space="preserve">
+    <value>Workspace ONE Server를 백업으로 사용하는 릴레이 서버</value>
+  </data>
+  <data name="RemoveFromLauncher" xml:space="preserve">
+    <value>Launcher에서 제거</value>
+  </data>
+  <data name="ReportStatusBatchSize" xml:space="preserve">
+    <value>보고서 상태 배치 크기</value>
+  </data>
+  <data name="ReportStatusBatchSizeValueCannotBeNullOrInvalid" xml:space="preserve">
+    <value>보고서 상태 배치 크기 값은 null이거나 잘못된 값일 수 없습니다.</value>
+  </data>
+  <data name="RequestDeviceServicesPinsNumberOfCertificatesReturned" xml:space="preserve">
+    <value>장치 서비스 핀 요청: 반환된 인증서 수</value>
+  </data>
+  <data name="RequestDeviceServicesPinsNumberOfHostsReturned" xml:space="preserve">
+    <value>장치 서비스 핀 요청: 반환된 호스트 수</value>
+  </data>
+  <data name="RequestDeviceServicesPinsUpdated" xml:space="preserve">
+    <value>장치 서비스 핀 요청 업데이트됨</value>
+  </data>
+  <data name="RestartAirWatchAgent" xml:space="preserve">
+    <value>AirWatch Agent 재시작</value>
+  </data>
+  <data name="RSCCReportBatchSizeHelpText" xml:space="preserve">
+    <value>컨텐츠가 대상 릴레이 서버에 배포될 때 Cloud Relay는 각 릴레이 서버의 전송 상태를 Workspace ONE Cloud에 보고합니다. 각 배치에 포함할 릴레이 서버 상태 수를 제한하려면 이 값을 수정합니다. 기본값은 배치당 25개의 상태입니다.</value>
+  </data>
+  <data name="RSFileSize" xml:space="preserve">
+    <value>바이트 단위의 파일 크기</value>
+  </data>
+  <data name="Selectawifiproile" xml:space="preserve">
+    <value>{0}을(를) 다운로드하기 위해서는 바코드를 스캔한 후 장치가 하나 이상의 FTP 서버에 연결될 때 사용하는 Wi-Fi 프로필을 선택합니다.</value>
+  </data>
+  <data name="Selectfrompreviouslyconfiguredpackages" xml:space="preserve">
+    <value>이전에 구성한 {0} 패키지 선택 또는 Workspace ONE UEM 리소스 포털에서 최신 버전 다운로드</value>
+  </data>
+  <data name="SelectProductFilter" xml:space="preserve">
+    <value>필터링할 제품 선택</value>
+  </data>
+  <data name="Sideloadprereqs1" xml:space="preserve">
+    <value>1. {0}의 최신 버전을 사용하려면 MyAirWatch 리소스 포털에서 최신 버전을 다운로드하여 업로드해야 합니다.</value>
+  </data>
+  <data name="Sideloadstagingallowsyoutodownloadandinstall" xml:space="preserve">
+    <value>사이드로드 스테이징 방법을 사용하면 {0}을(를) 장치에 다운로드하여 설치하고 자동 등록 프로세스를 시작할 수 있습니다. 이렇게 하면 모든 필수 구성 요소를 장치에 사이드로드되는 하나의 파일로 결합하여 등록이 간소화됩니다.</value>
+  </data>
+  <data name="SingleAppModeWildcardRule" xml:space="preserve">
+    <value>단일 애플리케이션 모드 프로필에 대해 숨겨진 애플리케이션 탭에만 기타 애플리케이션 와일드카드 규칙을 추가할 수 있습니다.</value>
+  </data>
+  <data name="SmartGroupNotAssignedForAnActiveProduct" xml:space="preserve">
+    <value>스마트 그룹 할당은 활성 제품에 필요합니다. 스마트 그룹 할당을 모두 제거하기 전에 스마트 그룹을 추가하거나 제품을 비활성화하십시오.</value>
+  </data>
+  <data name="SourceLocalizationKey" xml:space="preserve">
+    <value>소스</value>
+  </data>
+  <data name="StagingAddManifestInfo" xml:space="preserve">
+    <value>매니페스트 추가는 스테이징 중에 적용할 추가 컨텐츠 및 명령을 정의합니다. 애플리케이션, 프로파일 및 파일/작업과 같은 구성요소는 수행할 작업을 선택하기 전에 프로비저닝&gt;구성요소 메뉴에서 생성되어야 합니다.</value>
+  </data>
+  <data name="StagingPackageNameLengthExceeded" xml:space="preserve">
+    <value>스테이징 패키지 이름이 최대 한도인 {0}자를 초과합니다. 스테이징 패키지의 이름을 변경한 후 다시 저장하십시오.</value>
+  </data>
+  <data name="StagingPackageNameShouldNotContainTheFollowingCharacters" xml:space="preserve">
+    <value>스테이징 패키지 이름에는 {0} 문자를 입력할 수 없습니다.</value>
+  </data>
+  <data name="StagingServerDescription" xml:space="preserve">
+    <value>스테이징 서버는 다음과 같은 스테이징 콘텐츠를 받도록 구성됩니다. Hub 패키지 및 등록 중 고급 스테이징 구성</value>
+  </data>
+  <data name="StartDay" xml:space="preserve">
+    <value>시작일</value>
+  </data>
+  <data name="StartHour" xml:space="preserve">
+    <value>시작 시간</value>
+  </data>
+  <data name="StartMinute" xml:space="preserve">
+    <value>시작 분</value>
+  </data>
+  <data name="StartMonth" xml:space="preserve">
+    <value>시작 월</value>
+  </data>
+  <data name="StartTimeUtc" xml:space="preserve">
+    <value>시작 시간(UTC)</value>
+  </data>
+  <data name="StartYear" xml:space="preserve">
+    <value>시작 연도</value>
+  </data>
+  <data name="StopACMRequested" xml:space="preserve">
+    <value>ACM 중지 요청됨</value>
+  </data>
+  <data name="StoreOsUpdatesFilesOnRelayServer" xml:space="preserve">
+    <value>릴레이 서버에 OS 업데이트 파일 저장</value>
+  </data>
+  <data name="StoreOsUpdatesFilesOnRelayServerHelp" xml:space="preserve">
+    <value>이 기능은 OS 업데이트를 개선할 공간이 부족한 Windows Mobile 장치에 사용할 수 있습니다. 플래그가 설정되면 모든 대형 이미지 파일이 릴레이 서버에 남아있게 됩니다. 장치의 OSUPDATE 유틸리티는 업데이트 프로세스 중에 한 번에 하나씩 이 파일을 풀다운합니다. 플래그가 설정되어 있지 않으면 모든 파일이 장치로 복사되고 OS 업데이트 유틸리티가 해당 파일을 로컬에서 실행합니다.</value>
+  </data>
+  <data name="Tags" xml:space="preserve">
+    <value>태그</value>
+  </data>
+  <data name="TemplateModeWildcardRule" xml:space="preserve">
+    <value>템플릿 모드 프로필에 대해 숨겨진 애플리케이션 탭에만 기타 애플리케이션 와일드카드 규칙을 추가할 수 있습니다.</value>
+  </data>
+  <data name="TestConnectionStatus" xml:space="preserve">
+    <value>테스트 연결 상태</value>
+  </data>
+  <data name="TimeFormatPlaceholder" xml:space="preserve">
+    <value>HH:MM</value>
+  </data>
+  <data name="Typetoselectanagentpackage" xml:space="preserve">
+    <value>{0} 선택</value>
+  </data>
+  <data name="VersionIncrementMessage" xml:space="preserve">
+    <value>현재 버전을 표시합니다. 버전 번호는 변경 내용이 저장되면 증가합니다.</value>
+  </data>
+  <data name="ViewAndManageCustomAttributeAssignmentRules" xml:space="preserve">
+    <value>사용자 지정 특성 할당 규칙 보기 및 관리</value>
+  </data>
+  <data name="ViewApplicationAssignments" xml:space="preserve">
+    <value>애플리케이션 할당 보기</value>
+  </data>
+  <data name="ViewAttribute" xml:space="preserve">
+    <value>특성 보기</value>
+  </data>
+  <data name="ViewCondition" xml:space="preserve">
+    <value>보기 조건</value>
+  </data>
+  <data name="ViewRelayServer" xml:space="preserve">
+    <value>릴레이 서버 보기</value>
+  </data>
+  <data name="ViewStaging" xml:space="preserve">
+    <value>스테이징 보기</value>
+  </data>
+  <data name="VmwareResourcePortal" xml:space="preserve">
+    <value>VMware 리소스 포털</value>
+  </data>
+  <data name="VPNAccessNotApplicableInfoMessage" xml:space="preserve">
+    <value>애플리케이션을 제품에 대한 애플리케이션 설치 제거 매니페스트에 사용하는 경우 VPN 액세스가 "적용되지 않음"으로 설정됩니다.</value>
+  </data>
+  <data name="WeeklyInterval" xml:space="preserve">
+    <value>주별 간격</value>
+  </data>
+  <data name="WeeklyIntervalPlaceholder" xml:space="preserve">
+    <value>1에서 52 사이의 숫자를 입력하십시오.</value>
+  </data>
+  <data name="Wizardenrollmentcomments" xml:space="preserve">
+    <value>이 단계별 마법사에 따라 릴레이 서버, Wi-Fi 프로필, {0}, 사용자 스테이징, 바코드 구성을 설정합니다. 완료되면 장치를 등록하기 위한 바코드를 받고 필요한 경우 추가 도움말에 액세스합니다.</value>
+  </data>
+  <data name="Wizardsideloadenrollmentcomments" xml:space="preserve">
+    <value>단계별 마법사에 따라 {0}, 사용자 스테이징 및 사이드로드 구성을 설정하십시오. 완료되면 장치에 로드할 사이드로드 파일을 받고 필요 시 추가 도움을 이용할 수 있습니다.</value>
+  </data>
+  <data name="Wizardwebenrollmentcomments" xml:space="preserve">
+    <value>이 단계별 마법사에 따라 등록을 위한 AirWatch Agent를 올바르게 구성하십시오. 완료되면 필요한 경우 추가 지원을 위한 액세스를 받을 수 있습니다.</value>
+  </data>
+  <data name="WorkSpaceONECertificate" xml:space="preserve">
+    <value>Workspace ONE 인증서</value>
+  </data>
+  <data name="WorkSpaceOneLauncher" xml:space="preserve">
+    <value>Workspace ONE 시작 관리자</value>
+  </data>
+  <data name="ZQ510" xml:space="preserve">
+    <value>ZQ510</value>
+  </data>
+  <data name="ZQ520" xml:space="preserve">
+    <value>ZQ520</value>
+  </data>
+</root>

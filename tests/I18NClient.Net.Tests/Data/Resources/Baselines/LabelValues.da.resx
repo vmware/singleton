@@ -1,0 +1,486 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AddedPolices" xml:space="preserve">
+    <value>Tilføjede politikker</value>
+  </data>
+  <data name="AssignBaseline" xml:space="preserve">
+    <value>Tildel grundlinje</value>
+  </data>
+  <data name="AssignBaselineDescription" xml:space="preserve">
+    <value>Vælg smart-gruppe(r) for at tildele grundlinjen.</value>
+  </data>
+  <data name="AssignBaselineDescription2" xml:space="preserve">
+    <value>Vælg Smart-gruppe(r) for at tildele grundlinjen. Vælg undtagelser for at ekskludere specifikke grupper. Hvis du føjer en udeladelse til en udgivet grundlinje, vil grundlinjen blive fjernet fra ekskluderede enheder.</value>
+  </data>
+  <data name="AssignBaselineLocationGroupNotFound" xml:space="preserve">
+    <value>Kan ikke tildele grundlinjen, fordi organisationsgruppen ikke blev fundet.</value>
+  </data>
+  <data name="AssignBaselineNotFound" xml:space="preserve">
+    <value>Kan ikke tildele grundlinjen, fordi basislinjen ikke blev fundet.</value>
+  </data>
+  <data name="AssignedDevicesArg" xml:space="preserve">
+    <value>Tildelte: {0} enheder</value>
+  </data>
+  <data name="Assignments" xml:space="preserve">
+    <value>Opgaver</value>
+  </data>
+  <data name="Baseline" xml:space="preserve">
+    <value>Grundlinje</value>
+  </data>
+  <data name="BaselineAssigned" xml:space="preserve">
+    <value>Grundlinje tildelt</value>
+  </data>
+  <data name="BaselineAssignmentFailed" xml:space="preserve">
+    <value>Kan ikke tildele grundlinjen. Prøv igen.</value>
+  </data>
+  <data name="BaselineAssignmentSuccessful" xml:space="preserve">
+    <value>Grundlinje for den opdaterede tildeling er publiceret.</value>
+  </data>
+  <data name="BaselineBlobFailed" xml:space="preserve">
+    <value>Der kunne ikke oprettes grundlinje, fordi pakke ikke kunne oprettes.</value>
+  </data>
+  <data name="BaselineCombinedBlobFailed" xml:space="preserve">
+    <value>Der kunne ikke oprettes grundlinje, fordi pakke med tilpasninger ikke kunne oprettes.</value>
+  </data>
+  <data name="BaselineContainsExe" xml:space="preserve">
+    <value>Din brugerdefinerede grundlinje indeholder eksekverbare filer. Fjern dem og prøv igen.</value>
+  </data>
+  <data name="BaselineCopyFailed" xml:space="preserve">
+    <value>Kunne ikke kopiere den valgte grundlinje.</value>
+  </data>
+  <data name="BaselineCopySuccessful" xml:space="preserve">
+    <value>Den valgte grundlinje blev kopieret.</value>
+  </data>
+  <data name="BaselineCreated" xml:space="preserve">
+    <value>Grundlinje oprettet</value>
+  </data>
+  <data name="BaselineCreationFailed" xml:space="preserve">
+    <value>Kunne ikke oprette grundlinje.</value>
+  </data>
+  <data name="BaselineCreationSuccessful" xml:space="preserve">
+    <value>Grundlinjen blev gemt.</value>
+  </data>
+  <data name="BaselineCustomizationFailed" xml:space="preserve">
+    <value>Der kunne ikke oprettes grundlinje, fordi tilpasninger ikke kunne anvendes.</value>
+  </data>
+  <data name="BaselineDeleted" xml:space="preserve">
+    <value>Grundlinje slettet</value>
+  </data>
+  <data name="BaselineDeleteFailed" xml:space="preserve">
+    <value>Kunne ikke slette grundlinjen. Prøv venligst igen.</value>
+  </data>
+  <data name="BaselineDeleteSuccessful" xml:space="preserve">
+    <value>Grundlinjen blev slettet.</value>
+  </data>
+  <data name="BaselineDetails" xml:space="preserve">
+    <value>Navn på grundlinje og version</value>
+  </data>
+  <data name="BaselineErrorCode" xml:space="preserve">
+    <value>Fejlkode i enhed</value>
+  </data>
+  <data name="BaselineErrorMessage" xml:space="preserve">
+    <value>Fejlmeddelelse</value>
+  </data>
+  <data name="BaselineFileCorrupt" xml:space="preserve">
+    <value>Din brugerdefinerede grundlinje er ikke en gyldig zip-fil.</value>
+  </data>
+  <data name="BaselineFileEmpty" xml:space="preserve">
+    <value>Din brugerdefinerede grundlinje ser ud til at være tom. Prøv igen med en gyldig fil.</value>
+  </data>
+  <data name="BaselineFileMissingPolicies" xml:space="preserve">
+    <value>Filen, der er valgt til den brugerdefinerede grundlinje, følger ikke de anbefalede specifikationer. Se dokumentationen for at revidere.</value>
+  </data>
+  <data name="BaselineFileSizeError" xml:space="preserve">
+    <value>Din brugerdefinerede grundlinje overstiger den maksimale grænse på 5 MB.</value>
+  </data>
+  <data name="BaselineGetPolicyTreeFailed" xml:space="preserve">
+    <value>Kunne ikke indlæse politikker for tilpasning, prøv igen senere.</value>
+  </data>
+  <data name="BaselineInvalidRequest" xml:space="preserve">
+    <value>Sørg for, at alle obligatoriske felter er udfyldt.</value>
+  </data>
+  <data name="BaselineMissingPolicies" xml:space="preserve">
+    <value>Kunne ikke oprette grundlinje, fordi en eller flere politikker er blevet fjernet eller er utilgængelig</value>
+  </data>
+  <data name="BaselineModified" xml:space="preserve">
+    <value>Grundlinje ændret</value>
+  </data>
+  <data name="BaselineName" xml:space="preserve">
+    <value>Navn på grundlinje</value>
+  </data>
+  <data name="BaselinePendingReboot" xml:space="preserve">
+    <value>Genstart afventer</value>
+  </data>
+  <data name="BaselinePolicyFieldError" xml:space="preserve">
+    <value>Kunne ikke oprette grundlinje, fordi en eller flere politikker har ugyldige værdier</value>
+  </data>
+  <data name="BaselinePolicyGenerationFailed" xml:space="preserve">
+    <value>Kunne ikke oprette grundlinje, fordi en eller flere politikker ikke kunne oprettes</value>
+  </data>
+  <data name="Baselines" xml:space="preserve">
+    <value>Grundlinjer</value>
+  </data>
+  <data name="BaselinesBlobID" xml:space="preserve">
+    <value>Blob-id for grundlinje</value>
+  </data>
+  <data name="BaselinesCount" xml:space="preserve">
+    <value>Grundlinjetælling</value>
+  </data>
+  <data name="BaselineServiceUnavailable" xml:space="preserve">
+    <value>Kunne ikke oprette forbindelse til den grundlinjetjeneste "https://www.vmwarebaselines.com". Kontroller din forbindelse og logfiler for at få flere oplysninger.</value>
+  </data>
+  <data name="BaselinesMenuDescription" xml:space="preserve">
+    <value>Se grundlinjer</value>
+  </data>
+  <data name="BaselineStatusCallFailed" xml:space="preserve">
+    <value>Kan ikke hente status for grundlinjer. Prøv igen senere</value>
+  </data>
+  <data name="BaselineTooltipCis" xml:space="preserve">
+    <value>Brug anbefalede CIS Benchmark-indstillinger for den valgte version og niveau.</value>
+  </data>
+  <data name="BaselineTooltipCustom" xml:space="preserve">
+    <value>Upload en brugerdefineret GPO-sikkerhedskopi (Group Policy Object), der skal gælde for enheder. GPO-sikkerhedskopien skal være en ZIP-fil, der er mindre end 5 MB.</value>
+  </data>
+  <data name="BaselineTooltipWindows" xml:space="preserve">
+    <value>Sikkerhedsbasiskomponenter ("SBC") i Microsoft Security Toolkit er skrevet af Microsoft og bliver gjort tilgængelige til brug udelukkende til styring af Windows 10-enheder. SBC er angivet SOM DEN ER OG FOREFINDES og uden garanti af nogen art fra VMware eller Microsoft. Yderligere oplysninger om SBC er tilgængelig på {0}.</value>
+  </data>
+  <data name="BaselineUUID" xml:space="preserve">
+    <value>Grundlinje-UUID</value>
+  </data>
+  <data name="BlankBaseline" xml:space="preserve">
+    <value>Opret din egen</value>
+  </data>
+  <data name="BlankBaselineDescription" xml:space="preserve">
+    <value>Opret din egen grundlinje ved at vælge fra vores katalog over politikker.</value>
+  </data>
+  <data name="ChooseTemplate" xml:space="preserve">
+    <value>Vælg grundlinje</value>
+  </data>
+  <data name="ComplianceDataMissing" xml:space="preserve">
+    <value>Compliance-data er endnu ikke tilgængelige for denne grundlinje. Udgiv grundlinjen igen til de tildelte enheder for at udløse Compliance-stikprøverapportering.</value>
+  </data>
+  <data name="ConfirmCancelBaseline" xml:space="preserve">
+    <value>Dine ændringer i denne grundlinje blev ikke gemt. Ønsker du at fjerne ændringerne?</value>
+  </data>
+  <data name="ConfirmCloudDescription" xml:space="preserve">
+    <value>Ved at anvende Workspace ONE-grundlinjer får du adgang til data, som gemmes eksternt af VMware. Klik venligst på Annuller, hvis du ikke ønsker at fortsætte.</value>
+  </data>
+  <data name="ConfirmCloudTitle" xml:space="preserve">
+    <value>Fjernadgang til data</value>
+  </data>
+  <data name="ConfirmDeleteBaseline" xml:space="preserve">
+    <value>Hvis denne grundlinje er tildelt, vil sletning af den fjerne den fra alle enheder. Ønsker du at fortsætte?</value>
+  </data>
+  <data name="CopyBaseline" xml:space="preserve">
+      <value>Kopiér grundlinje</value>
+  </data>
+  <data name="CustomBaseline" xml:space="preserve">
+    <value>Brugerdefineret grundlinje</value>
+  </data>
+  <data name="CustomBaselineCompliance" xml:space="preserve">
+    <value>Compliance-data for brugerdefinerede grundlinjer evalueres baseret på de politikker, der blev føjet til grundlinjen, ikke de zippede politikker.</value>
+  </data>
+  <data name="CustomBaselineComplianceDataMissing" xml:space="preserve">
+    <value>Compliance-data er ikke tilgængelig eller er ufuldstændig for brugerdefinerede grundlinjer, fordi de zippede politikker ikke kunne gennemses.</value>
+  </data>
+  <data name="CustomBaselineError" xml:space="preserve">
+    <value>Vælg en fil for den brugerdefinerede grundlinje</value>
+  </data>
+  <data name="CustomBaselineHelpLink" xml:space="preserve">
+    <value>Se vejledning til upload af GPO</value>
+  </data>
+  <data name="CustomizeSelectPolicy" xml:space="preserve">
+    <value>Vælg en politik for at se dens indstillinger.</value>
+  </data>
+  <data name="CustomizeStepDescription" xml:space="preserve">
+    <value>Du kan gennemse eller tilpasse politikker fra {0} for at imødekomme dine behov.</value>
+  </data>
+  <data name="DefinitionStepDescription" xml:space="preserve">
+    <value>Giv grundlinjen et navn og en beskrivelse.</value>
+  </data>
+  <data name="DeleteBaseline" xml:space="preserve">
+    <value>Slet grundlinje</value>
+  </data>
+  <data name="DeviceBaselineLocationGroupNotFound" xml:space="preserve">
+    <value>Kan ikke hente enheder for grundlinjen, fordi organisationsgruppen ikke blev fundet.</value>
+  </data>
+  <data name="DeviceBaselineNotFound" xml:space="preserve">
+    <value>Kan ikke hente enheder for grundlinjen, fordi grundlinjen ikke blev fundet.</value>
+  </data>
+  <data name="DiscardAndExit" xml:space="preserve">
+    <value>Fjern og afslut</value>
+  </data>
+  <data name="EditBaseline" xml:space="preserve">
+    <value>Rediger grundlinje</value>
+  </data>
+  <data name="EditRequestError" xml:space="preserve">
+    <value>Den valgte grundlinjeversion er ikke længere tilgængelig. Opret en ny.</value>
+  </data>
+  <data name="EmptyBaselineList" xml:space="preserve">
+    <value>Der blev ikke fundet nogen grundlinjer</value>
+  </data>
+  <data name="EmptyDeviceList" xml:space="preserve">
+    <value>Ingen enheder fundet</value>
+  </data>
+  <data name="EmptyListInput" xml:space="preserve">
+    <value>Kræver en eller flere poster</value>
+  </data>
+  <data name="EmptyPolicyList" xml:space="preserve">
+    <value>Endnu ingen politikker tilføjet</value>
+  </data>
+  <data name="ErrorBaselineDeviceException" xml:space="preserve">
+    <value>Kan ikke anvende grundlinjer, kontrollér logfilerne for at løse problemet.</value>
+  </data>
+  <data name="ErrorDownloadBlobFailed" xml:space="preserve">
+    <value>Kan ikke få adgang til grundlinjer, kontrollér logfilerne for at løse problemet.</value>
+  </data>
+  <data name="ErrorInvalidExecutable" xml:space="preserve">
+    <value>LGPO.exe ikke er gyldig, prøv at ændre den eksekverbare fil for at løse problemet.</value>
+  </data>
+  <data name="ErrorLGPOBackupFailed" xml:space="preserve">
+    <value>Kan ikke anvende grundlinjer, kontrollér logfilerne for at løse problemet.</value>
+  </data>
+  <data name="ErrorMissingLGPO" xml:space="preserve">
+    <value>LGPO.exe er ikke tilgængelig til at anvende grundlinjer.</value>
+  </data>
+  <data name="ErrorSavingFileInFolder" xml:space="preserve">
+    <value>Kan ikke gemme grundlinjer, kontrollér logfilerne for at løse problemet.</value>
+  </data>
+  <data name="ErrorUpdatingDatabase" xml:space="preserve">
+    <value>Status for grundlinjer er ukendt, kontrollér logfilerne for at få flere oplysninger.</value>
+  </data>
+  <data name="ErrorZipExtractionFailed" xml:space="preserve">
+    <value>Kan ikke udtrække grundlinjer, kontrollér logfilerne for at løse problemet.</value>
+  </data>
+  <data name="ExcludedSmartGroups" xml:space="preserve">
+    <value>Ekskluderede smart-grupper</value>
+  </data>
+  <data name="Exclusions" xml:space="preserve">
+    <value>Ekskluderinger</value>
+  </data>
+  <data name="FailedInstall" xml:space="preserve">
+    <value>Mislykket installation</value>
+  </data>
+  <data name="FailedRemoval" xml:space="preserve">
+    <value>Mislykket fjernelse</value>
+  </data>
+  <data name="IntermediateDescription" xml:space="preserve">
+    <value>Enheder, der er {0} % til {1} % overensstemmende, klassificeres som mellemliggende.</value>
+  </data>
+  <data name="MaxValueArg" xml:space="preserve">
+    <value>Skal være mindre end eller lig med {0}</value>
+  </data>
+  <data name="MinValueArg" xml:space="preserve">
+    <value>Skal være større end eller lig med {0}</value>
+  </data>
+  <data name="NewBaseline" xml:space="preserve">
+    <value>Ny grundlinje</value>
+  </data>
+  <data name="NoActiveOSVersion" xml:space="preserve">
+    <value>Ingen operativsystemversioner fundet. Prøv igen senere.</value>
+  </data>
+  <data name="NoCustomizationSupport" xml:space="preserve">
+    <value>Tilpasning er ikke tilgængelig i øjeblikket for den valgte grundlinje.</value>
+  </data>
+  <data name="NoFileSelected" xml:space="preserve">
+    <value>Ingen fil er valgt.</value>
+  </data>
+  <data name="NonEnglishSearchResult" xml:space="preserve">
+    <value>Ingen resultater fundet for "{0}". Du kan prøve at søge igen på engelsk for at se, om politikken er tilgængelig.</value>
+  </data>
+  <data name="NoResultsFoundForArg" xml:space="preserve">
+    <value>Ingen resultater fundet for "{0}"</value>
+  </data>
+  <data name="NoSmartGroupsSelected" xml:space="preserve">
+    <value>Ingen smart-gruppe(r) valgt</value>
+  </data>
+  <data name="PolicyNotFound" xml:space="preserve">
+    <value>Ingen politikoplysninger fundet</value>
+  </data>
+  <data name="PolicyStepDescription" xml:space="preserve">
+    <value>Søg efter og tilføj politikker fra kataloget.</value>
+  </data>
+  <data name="Proceed" xml:space="preserve">
+    <value>Fortsæt</value>
+  </data>
+  <data name="RemovalFailed" xml:space="preserve">
+    <value>Fjernelse mislykkedes</value>
+  </data>
+  <data name="RequiredFieldError" xml:space="preserve">
+    <value>Indtast et navn på grundlinjen.</value>
+  </data>
+  <data name="SaveAndPublish" xml:space="preserve">
+    <value>Gem og udgiv</value>
+  </data>
+  <data name="SearchPolicyPlaceholder" xml:space="preserve">
+    <value>Begynd at skrive for at søge efter en politik</value>
+  </data>
+  <data name="SearchSmartGroupPlaceholder" xml:space="preserve">
+    <value>Begynd at skrive for at søge efter en smart-gruppe</value>
+  </data>
+  <data name="SelectedSmartGroups" xml:space="preserve">
+    <value>Valgte smart-grupper</value>
+  </data>
+  <data name="SelectTypeDescription" xml:space="preserve">
+    <value>Vælg en grundlinjetype, der skal tilføjes.</value>
+  </data>
+  <data name="SelectTypeTitle" xml:space="preserve">
+    <value>Vælg grundlinjetype</value>
+  </data>
+  <data name="SmartGroupAtLeastOneValidationDescription" xml:space="preserve">
+    <value>Mindst en smart-gruppe under fanen Tildelinger er påkrævet.</value>
+  </data>
+  <data name="SummaryStepDescription" xml:space="preserve">
+    <value>Gennemse oversigten, før du gemmer denne grundlinje.</value>
+  </data>
+  <data name="TemplateStepDescription" xml:space="preserve">
+    <value>Vælg en forudkonfigureret grundlinje og version.</value>
+  </data>
+  <data name="TextareaMaxLinesError" xml:space="preserve">
+    <value>Overskrider det maksimale antal linjer</value>
+  </data>
+  <data name="TextareaMaxSentenceError" xml:space="preserve">
+    <value>En eller flere sætninger overskrider den maksimale længde</value>
+  </data>
+  <data name="TotalInstalledArg" xml:space="preserve">
+    <value>Samlet antal installationer: {0}</value>
+  </data>
+  <data name="UnabletoLoadDevices" xml:space="preserve">
+    <value>Kunne ikke indlæse listen over enheder, prøv igen senere.</value>
+  </data>
+  <data name="UnsavedChanges" xml:space="preserve">
+    <value>Ændringer, der ikke blev gemt</value>
+  </data>
+  <data name="UnsupportedLanguageError" xml:space="preserve">
+    <value>Fejl: Det valgte sprog understøttes ikke.</value>
+  </data>
+  <data name="UseBaselineTemplate" xml:space="preserve">
+      <value>Anvend skabelon</value>
+  </data>
+  <data name="UseTemplateDescription" xml:space="preserve">
+    <value>Brug branchestandardskabeloner til at oprette grundlinje.</value>
+  </data>
+  <data name="VersionBreakdown" xml:space="preserve">
+    <value>Versionsopdeling</value>
+  </data>
+  <data name="ViewBaselineDevicesTitle" xml:space="preserve">
+    <value>Vis enheder – grundlinjer</value>
+  </data>
+</root>

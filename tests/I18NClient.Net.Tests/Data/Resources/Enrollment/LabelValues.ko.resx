@@ -1,0 +1,584 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AMAPIEnrollmentFeatureNotSupported" xml:space="preserve">
+    <value>사용자 조직에서 Android 관리 API 등록 기능이 지원되지 않습니다. 관리자에게 문의하십시오.</value>
+  </data>
+  <data name="AMAPIEnrollmentNotAllowed" xml:space="preserve">
+    <value>장치의 조직에서 Android 관리 API 설정이 사용되도록 설정되지 않았습니다.</value>
+  </data>
+  <data name="AMAPIRegistration" xml:space="preserve">
+    <value>Android 관리 API 등록</value>
+  </data>
+  <data name="AndroidEnterpriseNotAllowed" xml:space="preserve">
+    <value>장치에 Android 엔터프라이즈 등록이 허용되지 않습니다.</value>
+  </data>
+  <data name="AndroidEnterpriseNotFound" xml:space="preserve">
+    <value>장치의 조직에서 Android 엔터프라이즈 설정이 사용되도록 설정되지 않았습니다.</value>
+  </data>
+  <data name="AndroidLegacyEnrollmentNotAllowed" xml:space="preserve">
+    <value>장치 소유자 모드에서는 Android 레거시 등록이 허용되지 않습니다.</value>
+  </data>
+  <data name="AndroidManagementAPI" xml:space="preserve">
+    <value>Android 관리 API</value>
+  </data>
+  <data name="AndroidWorkEnrollmentUserAddError" xml:space="preserve">
+    <value>등록 사용자를 GSuite에 추가할 수 없습니다. 관리자에게 문의하거나 다시 시도하십시오.</value>
+  </data>
+  <data name="AndroidWorkEnrollmentUserEmailNotFound" xml:space="preserve">
+    <value>계정을 찾을 수 없습니다. 관리자에게 문의하거나 다시 시도하십시오.</value>
+  </data>
+  <data name="AndroidWorkEnrollmentUserNotFound" xml:space="preserve">
+    <value>잘못된 Google 계정입니다.</value>
+  </data>
+  <data name="AndroidWorkProfileEnrollmentNotAllowed" xml:space="preserve">
+    <value>제공된 서버 및 그룹 ID가 작업 프로필 등록을 허용하지 않습니다. 질문이 있는 경우 관리자에게 문의하십시오.</value>
+  </data>
+  <data name="AndroidWorkUserEmailDomainNotASubDomain" xml:space="preserve">
+    <value>사용 중인 도메인이 등록된 하위 도메인이 아닙니다. 관리자에게 문의하십시오.</value>
+  </data>
+  <data name="ApplicationIsNotAllowedToRegister" xml:space="preserve">
+    <value>애플리케이션 등록이 허용되지 않습니다.</value>
+  </data>
+  <data name="AssignUserRole" xml:space="preserve">
+    <value>사용자 역할 할당</value>
+  </data>
+  <data name="AutoEnrollmentDisabled" xml:space="preserve">
+    <value>제공된 조직 그룹에 대해 자동 등록이 사용되도록 설정되지 않았습니다. 관리자에게 문의하거나 다시 시도하십시오.</value>
+  </data>
+  <data name="CannotChangeOGForDEPTokenArg" xml:space="preserve">
+    <value>DEP 토큰 {0}에 대한 조직 그룹을 변경할 수 없음</value>
+  </data>
+  <data name="CannotUseStagingUserForCustomDep" xml:space="preserve">
+    <value>스테이징 사용자는 지원되지 않습니다. 관리자에게 문의하십시오.</value>
+  </data>
+  <data name="CaptchaText" xml:space="preserve">
+    <value>Captcha</value>
+  </data>
+  <data name="ChangeRankOrOrganizationGroup" xml:space="preserve">
+    <value>순위 또는 조직 그룹을 변경</value>
+  </data>
+  <data name="ChangeRankOrOrganizationGroupForUserGroup" xml:space="preserve">
+    <value>사용자 그룹의 순위 또는 조직 그룹을 변경</value>
+  </data>
+  <data name="ChangeRankOrUserRole" xml:space="preserve">
+    <value>순위 또는 사용자 역할을 변경</value>
+  </data>
+  <data name="ChangeRankOrUserRoleForUserGroup" xml:space="preserve">
+    <value>사용자 그룹의 순위 또는 사용자 역할을 변경</value>
+  </data>
+  <data name="ChangeUserRoleAssignmentRankUsingEdit" xml:space="preserve">
+    <value>사용자 그룹의 순위 또는 사용자 역할을 변경하려면 기록 옆의 편집 버튼을 클릭하십시오.</value>
+  </data>
+  <data name="ConfirmEnterpriseWipeDeviceTitleMessage" xml:space="preserve">
+    <value>이 작업을 수행하면 선택한 장치에서 모든 관리되는 엔터프라이즈 리소스(애플리케이션 및 프로필 포함)가 등록 취소되고 제거됩니다. 이 장치를 다시 등록하지 않는 한 이 작업을 실행 취소할 수 없습니다.</value>
+  </data>
+  <data name="CopeEnrollmentNotSupported" xml:space="preserve">
+    <value>지원되지 않는 Workspace ONE Intelligent Hub 버전으로 인해 등록이 차단되었습니다.</value>
+  </data>
+  <data name="CopyEMMToken" xml:space="preserve">
+    <value>3. 제공된 EMM 토큰을 복사하여 다음 단계에서 사용합니다.</value>
+  </data>
+  <data name="CustomEnrollmentFeatureNotEnabled" xml:space="preserve">
+    <value>사용자 지정 등록이 조직에서 사용되지 않도록 설정되었습니다. 관리자에게 문의하여 이 장치의 등록 프로필을 다시 저장하고 등록을 다시 시도하십시오.</value>
+  </data>
+  <data name="DefaultActionForInactiveUsersChanged" xml:space="preserve">
+    <value>비활성 사용자를 위한 기본 작업 변경됨</value>
+  </data>
+  <data name="DefaultDeviceOwnershipChanged" xml:space="preserve">
+    <value>기본 장치 소유권 변경됨</value>
+  </data>
+  <data name="DefaultDeviceUserRoleChanged" xml:space="preserve">
+    <value>기본 장치 사용자 역할 변경됨</value>
+  </data>
+  <data name="DeleteDeviceCountMessage" xml:space="preserve">
+    <value>영구적으로 삭제될 장치 수:</value>
+  </data>
+  <data name="DepFetchInfoMessage" xml:space="preserve">
+    <value>모든 장치 가져오기 옵션은 이미 동기화된 장치를 포함하여 Apple Business Manager에서 이 토큰에 할당된 모든 장치를 UEM console로 동기화합니다. 이 옵션은 Apple Business Manager에서 모든 장치를 완전히 새로 고침하고 다시 동기화하기 위한 최종 대체 수단으로만 사용해야 합니다.</value>
+  </data>
+  <data name="DepFetchInfoMessageSchool" xml:space="preserve">
+    <value>모든 장치 가져오기 옵션은 이미 동기화된 장치를 포함하여 Apple School Manager에서 이 토큰에 할당된 모든 장치를 UEM console로 동기화합니다. 이 옵션은 Apple School Manager에서 모든 장치를 완전히 새로 고침하고 다시 동기화하기 위한 최종 대체 수단으로만 사용해야 합니다.</value>
+  </data>
+  <data name="DEPTokenArgCannotBeDeleted" xml:space="preserve">
+    <value>DEP 토큰 {0}을(를) 삭제할 수 없음</value>
+  </data>
+  <data name="DEPTokenArgCannotBeRevoked" xml:space="preserve">
+    <value>DEP 토큰 {0}을(를) 해지할 수 없음</value>
+  </data>
+  <data name="DeviceEnrolledArg" xml:space="preserve">
+    <value>장치 등록 취소됨 # {0}</value>
+  </data>
+  <data name="DeviceMacAddressDenylisted" xml:space="preserve">
+    <value>장치의 MAC 주소가 거부되므로 장치를 등록할 수 없습니다.</value>
+  </data>
+  <data name="DeviceManagementRemoved" xml:space="preserve">
+    <value>Workspace ONE UEM 관리자가 장치 관리를 제거했습니다.</value>
+  </data>
+  <data name="DeviceNotAllowlisted" xml:space="preserve">
+    <value>장치 모델 유형이 허용되지 않거나 장치 OS가 허용되지 않습니다.</value>
+  </data>
+  <data name="DeviceNotAllowlistedManufacturererNotAllowed" xml:space="preserve">
+    <value>장치가 허용되지 않거나 제조업체가 허용하지 않습니다.</value>
+  </data>
+  <data name="DeviceNotAllowlistedModelNotAllowed" xml:space="preserve">
+    <value>장치 모델 유형이 허용되지 않음.</value>
+  </data>
+  <data name="DeviceNotEnrolled" xml:space="preserve">
+    <value>장치가 등록되지 않습니다.</value>
+  </data>
+  <data name="DeviceNotRegistered" xml:space="preserve">
+    <value>장치가 등록되지 않았습니다. 잘못된 장치 모델 유형 및/또는 OS</value>
+  </data>
+  <data name="DeviceSNArgNotExistsForArgToken" xml:space="preserve">
+    <value>{1} 토큰에 대한 장치 일련 번호 {0}이(가) 없음</value>
+  </data>
+  <data name="DeviceStateIsAndroidEnterprise" xml:space="preserve">
+    <value>장치가 이미 Android Enterprise에 등록되어 있습니다.</value>
+  </data>
+  <data name="DeviceUserNotFound" xml:space="preserve">
+    <value>장치에 대한 등록 사용자를 찾을 수 없습니다.</value>
+  </data>
+  <data name="DirectoryGroupBasedMappingChanged" xml:space="preserve">
+    <value>디렉토리 그룹 기반 매핑 설정 변경 활성화</value>
+  </data>
+  <data name="DropshipProvisioning" xml:space="preserve">
+    <value>Drop Ship Provisioning</value>
+  </data>
+  <data name="EMMToken" xml:space="preserve">
+    <value>EMM 토큰</value>
+  </data>
+  <data name="EmptyDeviceIdentifierPleaseTryAgain" xml:space="preserve">
+    <value>장치의 UDID가 등록 요청에 없습니다. 관리자에게 문의하거나 다시 시도하십시오.</value>
+  </data>
+  <data name="EmptyPasswordPleaseTryAgain" xml:space="preserve">
+    <value>비밀번호가 등록 요청에 없습니다. 관리자에게 문의하거나 다시 시도하십시오.</value>
+  </data>
+  <data name="EmptyUserNameOrEmailAddressPleaseTryAgain" xml:space="preserve">
+    <value>사용자 이름 또는 이메일 주소가 등록 요청에 없습니다. 관리자에게 문의하거나 다시 시도하십시오.</value>
+  </data>
+  <data name="EnableDropShipProvisioning" xml:space="preserve">
+    <value>Workspace ONE Drop Ship Provisioning을 사용하도록 설정</value>
+  </data>
+  <data name="EnrollmentDisabled" xml:space="preserve">
+    <value>SKU에서 MDM 주문을 찾을 수 없으므로 등록이 비활성화됩니다.</value>
+  </data>
+  <data name="EnrollmentSecurityTypeNotSupported" xml:space="preserve">
+    <value>지원되지 않는 보안 유형으로 등록을 시도했습니다. 관리자에게 문의하거나 다시 시도하십시오.</value>
+  </data>
+  <data name="EnrollmentTypeCriteriaMustContainOneEnrollmentType" xml:space="preserve">
+    <value>등록 유형 조건은 최소 하나 등록 유형이 있어야 합니다.</value>
+  </data>
+  <data name="EnrollmentUserNotFound" xml:space="preserve">
+    <value>등록 사용자를 찾을 수 없습니다. 기존 사용자를 입력하십시오.</value>
+  </data>
+  <data name="EnrollmentWelcomeMessageBody" xml:space="preserve">
+    <value>Workspace ONE UEM은 IT 부서가 장치를 안전하게 리소스에 액세스하는 데 도움을 줍니다. 다음 단계별 과정은 장치를 구성하고 장치가 규정을 준수할 수 있도록 합니다.</value>
+  </data>
+  <data name="EnrollmentWelcomeMessageHeader" xml:space="preserve">
+    <value>Workspace ONE UEM에 오신 것을 환영합니다!</value>
+  </data>
+  <data name="EnterpriseWipeDeviceCountMessage" xml:space="preserve">
+    <value>{0}개의 장치</value>
+  </data>
+  <data name="EnterpriseWipeDeviceCountTitle" xml:space="preserve">
+    <value>엔터프라이즈 초기화할 장치 수:</value>
+  </data>
+  <data name="ErrorAddingUserAccount" xml:space="preserve">
+    <value>사용자 계정을 자동으로 추가하는 중 오류가 발생했습니다. 관리자에게 문의하거나 다시 시도하십시오.</value>
+  </data>
+  <data name="ErrorThrownWhenResolvingDeviceIdentifier" xml:space="preserve">
+    <value>장치 식별자를 확인하는 동안 오류가 발생했음</value>
+  </data>
+  <data name="ExistingClientIDDontMatch" xml:space="preserve">
+    <value>텍스트 필드가 기존 등록 값과 일치해야 하기 때문에 변경 내용을 저장할 수 없습니다. 인증서만 편집할 수 있습니다.</value>
+  </data>
+  <data name="ExternalAccessRole" xml:space="preserve">
+    <value>외부 액세스 역할</value>
+  </data>
+  <data name="FailedToCreateAgentInstallUrl" xml:space="preserve">
+    <value>Agent 설치 URL을 생성하지 못했습니다. 관리자에게 문의하거나 다시 시도하십시오.</value>
+  </data>
+  <data name="FailedToCreateDeviceAuthenticationToken" xml:space="preserve">
+    <value>장치의 인증 토큰을 생성하지 못했습니다. 관리자에게 문의하거나 다시 시도하십시오.</value>
+  </data>
+  <data name="FailedToDisplayAgentAppStoreLink" xml:space="preserve">
+    <value>에이전트 App Store 링크를 표시하지 못했습니다. 관리자에게 문의하거나 다시 시도하십시오.</value>
+  </data>
+  <data name="FailedToDisplayWelcomeMessage" xml:space="preserve">
+    <value>환영 메시지를 표시하지 못했습니다. 관리자에게 문의하거나 다시 시도하십시오.</value>
+  </data>
+  <data name="FailedToProcessDisplayMdmInstallationMessage" xml:space="preserve">
+    <value>MDM 설치 메시지를 표시하지 못했습니다. 관리자에게 문의하거나 다시 시도하십시오.</value>
+  </data>
+  <data name="FailedToRedirectToAgentInstallUrl" xml:space="preserve">
+    <value>에이전트 설치 URL로 리디렉션하지 못했습니다. 관리자에게 문의하거나 다시 시도하십시오.</value>
+  </data>
+  <data name="FailedToRedirectToMdmInstallUrl" xml:space="preserve">
+    <value>MDM 설치 URL로 리디렉션하지 못했습니다. 관리자에게 문의하거나 다시 시도하십시오.</value>
+  </data>
+  <data name="FailedToRedirectToWorkspaceSchema" xml:space="preserve">
+    <value>업무 공간 스키마로 리디렉션하지 못했습니다. 관리자에게 문의하거나 다시 시도하십시오.</value>
+  </data>
+  <data name="FailedToRegisterApplication" xml:space="preserve">
+    <value>애플리케이션을 등록하지 못했습니다. 관리자에게 문의하거나 다시 시도하십시오.</value>
+  </data>
+  <data name="FailedToRetrieveNextStep" xml:space="preserve">
+    <value>다음 등록 단계를 검색하지 못했습니다. 관리자에게 문의하거나 다시 시도하십시오.</value>
+  </data>
+  <data name="FailedToRetrieveSessionId" xml:space="preserve">
+    <value>장치의 등록 세션 ID를 검색하지 못했습니다. 관리자에게 문의하거나 다시 시도하십시오.</value>
+  </data>
+  <data name="FailedToValidateDeviceRestrictions" xml:space="preserve">
+    <value>장치의 등록 제한을 검증하지 못했습니다. 관리자에게 문의하거나 다시 시도하십시오.</value>
+  </data>
+  <data name="FailedToValidateEmailAddress" xml:space="preserve">
+    <value>등록 사용자의 이메일 주소를 검증하지 못했습니다. 관리자에게 문의하거나 다시 시도하십시오.</value>
+  </data>
+  <data name="FailedValidatingDeviceIdentifier" xml:space="preserve">
+    <value>장치의 UDID를 검증하지 못했습니다. 관리자에게 문의하거나 다시 시도하십시오.</value>
+  </data>
+  <data name="FailedValidatingStagingMode" xml:space="preserve">
+    <value>스테이징 모드를 검증하지 못했습니다. 관리자에게 문의하거나 다시 시도하십시오.</value>
+  </data>
+  <data name="FieldMustBeOfArgCharacters" xml:space="preserve">
+    <value>필드는 {0}자여야 합니다.</value>
+  </data>
+  <data name="FollowingTokensOwnershipWillNotChange" xml:space="preserve">
+    <value>다음 토큰의 소유권이 변경되지 않습니다.</value>
+  </data>
+  <data name="ForceAospEnrollment" xml:space="preserve">
+    <value>AOSP/폐쇄 네트워크 등록 강제 적용</value>
+  </data>
+  <data name="GeneralCheckIn" xml:space="preserve">
+    <value>체크인</value>
+  </data>
+  <data name="GetStarted:" xml:space="preserve">
+    <value>시작하기:</value>
+  </data>
+  <data name="GetSuccessfully" xml:space="preserve">
+    <value>MDM 서버 URL이 성공적으로 검색됨</value>
+  </data>
+  <data name="GoogleAdminConsole" xml:space="preserve">
+    <value>Google 관리자 콘솔</value>
+  </data>
+  <data name="GoogleDeviceIdRequired" xml:space="preserve">
+    <value>Google 장치 ID는 필수입니다.</value>
+  </data>
+  <data name="GoogleUserIdRequired" xml:space="preserve">
+    <value>Google 사용자 ID는 필수입니다.</value>
+  </data>
+  <data name="GoToThe" xml:space="preserve">
+    <value>1. 다음으로 이동 </value>
+  </data>
+  <data name="GroupIdAssignmentModeChanged" xml:space="preserve">
+    <value>그룹 ID 할당 모드 변경됨</value>
+  </data>
+  <data name="HubRegistered" xml:space="preserve">
+    <value>Hub 등록됨</value>
+  </data>
+  <data name="IntelligentHubManaged" xml:space="preserve">
+    <value>Intelligent Hub 관리됨</value>
+  </data>
+  <data name="InvalidDeviceAttributes" xml:space="preserve">
+    <value>장치 특성인 일련 번호, IMEI, UDID 중 하나를 입력하십시오.</value>
+  </data>
+  <data name="InvalidDeviceModel" xml:space="preserve">
+    <value>장치가 등록되지 않았습니다. 잘못된 장치 모델 유형</value>
+  </data>
+  <data name="InvalidDeviceOS" xml:space="preserve">
+    <value>장치가 등록되지 않았습니다. 잘못된 장치 OS</value>
+  </data>
+  <data name="InvalidDeviceType" xml:space="preserve">
+    <value>잘못된 장치 유형</value>
+  </data>
+  <data name="InvalidHeaderUsedInTemplate" xml:space="preserve">
+    <value>템플릿에 잘못된 머리글이 사용되었습니다. 할당 편집 창에서 제공된 템플릿을 다운로드하여 사용하십시오.</value>
+  </data>
+  <data name="InvalidImeiAttributeArgs" xml:space="preserve">
+    <value>IMEI는 숫자여야 하며 정확히 15자여야 합니다.</value>
+  </data>
+  <data name="InvalidMigrationRequest" xml:space="preserve">
+    <value>장치 UDID가 비어 있습니다.</value>
+  </data>
+  <data name="InvalidOrganizationGroupFromVidm" xml:space="preserve">
+    <value>등록 사용자가 제공된 Workspace ONE Access 할당 조직 그룹에 없습니다.</value>
+  </data>
+  <data name="InvalidSerialNumberAttributeArgs" xml:space="preserve">
+    <value>일련 번호의 길이는 {0}자 이하여야 합니다.</value>
+  </data>
+  <data name="InvalidSerialNumberValuesFoundArgs" xml:space="preserve">
+    <value>각 일련 번호의 길이는 {0}자 이하여야 합니다.</value>
+  </data>
+  <data name="InvalidTokenDetails" xml:space="preserve">
+    <value>잘못된 토큰 세부 정보로 인해 인증에 실패했습니다.</value>
+  </data>
+  <data name="InvalidUdidAttributeArgs" xml:space="preserve">
+    <value>UDID의 길이는 {0}자 이하여야 합니다.</value>
+  </data>
+  <data name="InvalidUDIDValuesFoundArgs" xml:space="preserve">
+    <value>각 UDID의 길이는 {0}자 이하여야 합니다.</value>
+  </data>
+  <data name="IosProfileDownloadHeaderTitle" xml:space="preserve">
+    <value>프로필 다운로드 단계</value>
+  </data>
+  <data name="IosProfileDownloadSteps" xml:space="preserve">
+    <value>1.  프로필을 다운로드하라는 메시지가 표시되면 {0}을(를) 누릅니다.
+
+2.  다운로드가 완료되면 {1}을(를) 누릅니다.</value>
+  </data>
+  <data name="LaforgeUserCreationFailed" xml:space="preserve">
+    <value>Android 엔터프라이즈 사용자 생성 실패</value>
+  </data>
+  <data name="LinkToConfigurationTab" xml:space="preserve">
+    <value>구성 탭에 연결</value>
+  </data>
+  <data name="MigrationFeatureDisabled" xml:space="preserve">
+    <value>사용자 조직에서 Android 엔터프라이즈 마이그레이션 기능이 지원되지 않습니다. 관리자에게 문의하십시오.</value>
+  </data>
+  <data name="MoveDevicesToUserOrOGBAsedOnIPOrCA" xml:space="preserve">
+    <value>IP 범위에 근거하여 조직 그룹 또는 사용자에게 장치를 할당하거나 규칙을 기반으로 사용자 지정 특성에 근거하여 조직 그룹에 장치를 할당합니다. 계층의 조직 그룹 하나에 대해 IP 범위별 조직 그룹 또는 사용자 지정 특성별 조직 그룹을 선택하면 장치 할당 규칙을 사용할 수 없습니다. 그러나 IP 범위 유형별 사용자 이름이 계층에서 선택된 경우 장치 할당 규칙을 사용할 수 있습니다.</value>
+  </data>
+  <data name="MultiuserFFSetup" xml:space="preserve">
+    <value>기능이 적절하게 설정되지 않아 다중 사용자 등록이 차단되었습니다.</value>
+  </data>
+  <data name="MultiuserNonMdmSupport" xml:space="preserve">
+    <value>사용되는 등록 프로토콜에 대해 다중 사용자 등록이 지원되지 않습니다.</value>
+  </data>
+  <data name="NoMDMOrderFound" xml:space="preserve">
+    <value>SKU에서 MDM 순서를 찾을 수 없으므로 등록이 일시 중단되었습니다.</value>
+  </data>
+  <data name="NotAuthorizedToCreateEnrollmentUser" xml:space="preserve">
+    <value>사용자에게 등록 사용자를 생성할 수 있는 권한이 없습니다.</value>
+  </data>
+  <data name="OperationNotAuthorized" xml:space="preserve">
+    <value>이 작업을 수행할 수 있는 권한이 없음</value>
+  </data>
+  <data name="OrganizationGroupInherited" xml:space="preserve">
+    <value>조직 그룹 상속됨</value>
+  </data>
+  <data name="PasscodeExpired" xml:space="preserve">
+    <value>암호가 만료되었습니다.</value>
+  </data>
+  <data name="PhoneNumberPrivacyCheck" xml:space="preserve">
+    <value>전화번호에 대한 개인정보 확인</value>
+  </data>
+  <data name="PreventReEnrollmentMessage" xml:space="preserve">
+    <value>아래에서 "재등록 방지" 확인란을 선택하면 장치 거부 목록에 추가되어 사용자가 Workspace ONE UEM에 재등록 하는 것을 방지합니다. 관리자는 필요한 경우 나중에 거부 목록에서 이 장치를 제거할 수 있습니다.</value>
+  </data>
+  <data name="PrivacyNotificationDisabled" xml:space="preserve">
+    <value>사용자 친화적 개인정보 고지사항이 비활성화됨</value>
+  </data>
+  <data name="PromptToBeginDownloadMessageForAppleOsX" xml:space="preserve">
+    <value>Intelligent Hub가 컴퓨터에 자동으로 다운로드 및 설치됩니다. 네트워크 연결에 따라 1분에서 5분 정도 소요됩니다. Agent가 설치되면 계속을 눌러 등록 프로세스를 완료합니다.</value>
+  </data>
+  <data name="RegisterAMAPI" xml:space="preserve">
+    <value>AMAPI를 등록합니다. {0}</value>
+  </data>
+  <data name="RegisterAMAPIAtParentOG" xml:space="preserve">
+    <value>Android EMM 등록이 구성되어 있는 조직 그룹에 AMAPI를 등록합니다. {0}</value>
+  </data>
+  <data name="RegisterAMAPIHelpText" xml:space="preserve">
+    <value>이 조직 그룹에서 사용하려면 우선 AMAPI(Android Management API)를 등록해야 합니다.</value>
+  </data>
+  <data name="RegisteredOrAppEnrolled" xml:space="preserve">
+    <value>등록된 또는 독립 실행형 애플리케이션 등록됨</value>
+  </data>
+  <data name="RegisterManagedDomain" xml:space="preserve">
+    <value>2. 없는 경우 관리되는 Google 도메인을 등록합니다.</value>
+  </data>
+  <data name="RegisterMultiuserDeviceConfirmationMessage" xml:space="preserve">
+    <value>Windows 장치의 경우 장치 등록에 연결된 사용자 정보가 삭제됩니다.</value>
+  </data>
+  <data name="Requirements" xml:space="preserve">
+    <value>필수 요건</value>
+  </data>
+  <data name="RequireSharedDeviceEnrollmentEulaAcceptance" xml:space="preserve">
+    <value>사용 약관을 등록할 때까지 항상 사용 약관 프롬프트를 사용함으로 설정할 수 없습니다. 그룹 및 설정&gt;장치 및 사용자&gt;일반&gt;등록&gt;사용 약관 탭으로 이동하여 TOU를 생성하십시오.</value>
+  </data>
+  <data name="SerialNumberAssignmentFailed" xml:space="preserve">
+    <value>일련 번호를 할당하지 못했습니다.</value>
+  </data>
+  <data name="SetUpDirectoryServices" xml:space="preserve">
+    <value>디렉토리 서비스 설정</value>
+  </data>
+  <data name="SubOrganizationGroup" xml:space="preserve">
+    <value>하위 조직 그룹 </value>
+  </data>
+  <data name="SubsequentUserEnrollmentBlocked" xml:space="preserve">
+    <value>후속 사용자 등록이 차단되었습니다.</value>
+  </data>
+  <data name="TapHereIfNotPromptedAutomatically" xml:space="preserve">
+    <value>메시지가 자동으로 표시되지 않으면 여기를 누릅니다.</value>
+  </data>
+  <data name="TapHereWhenDownloadFinishes" xml:space="preserve">
+    <value>다운로드가 완료되면 여기를 누릅니다.</value>
+  </data>
+  <data name="TargetOwnershipRestrictedByDefaultPolicyAtGivenOG" xml:space="preserve">
+    <value>대상 소유권이 지정된 조직 그룹의 기본 정책으로 제한됨</value>
+  </data>
+  <data name="TokenSaveFailed" xml:space="preserve">
+    <value>토큰을 저장하지 못했습니다.</value>
+  </data>
+  <data name="UemManaged" xml:space="preserve">
+    <value>UEM 관리됨</value>
+  </data>
+  <data name="UnapprovedUser" xml:space="preserve">
+    <value>외부 SAML 인증 사용자이므로 등록할 수 없습니다. 관리자에게 문의하거나 다시 시도하십시오.</value>
+  </data>
+  <data name="UploadedCertMisMatch" xml:space="preserve">
+    <value>인증서가 없습니다. 계속하려면 올바른 인증서를 업로드하십시오.</value>
+  </data>
+  <data name="UserEnrolled" xml:space="preserve">
+    <value>사용자 등록됨</value>
+  </data>
+  <data name="UserEnrollmentFeatureNotEnabled" xml:space="preserve">
+    <value>사용자 등록이 조직에서 사용되지 않도록 설정되었습니다. 관리자에게 문의하여 사용자 등록을 사용하도록 설정하고 다시 시도하십시오.</value>
+  </data>
+  <data name="UserHasExceededMaxAllowedDevices" xml:space="preserve">
+    <value>사용자가 최대 허용 장치 수를 초과했습니다.</value>
+  </data>
+  <data name="UsernameAlreadyExists" xml:space="preserve">
+    <value>이미 존재하는 사용자 이름입니다. 다시 시도하십시오.</value>
+  </data>
+  <data name="UserSetup" xml:space="preserve">
+    <value>사용자 설치</value>
+  </data>
+  <data name="ValidatePhoneNumberFailed" xml:space="preserve">
+    <value>등록 사용자의 전화번호를 검증하지 못했습니다. 관리자에게 문의하거나 다시 시도하십시오.</value>
+  </data>
+  <data name="WipeInitiated" xml:space="preserve">
+    <value>지우기 시작</value>
+  </data>
+  <data name="WipeInitiatedTooltip" xml:space="preserve">
+    <value>지우기 시작</value>
+  </data>
+  <data name="WorkProfileManagementMode" xml:space="preserve">
+    <value>Work 프로필 관리 모드</value>
+  </data>
+  <data name="WorkProfileManagementModeInfoMessage" xml:space="preserve">
+    <value>새로 등록된 장치를 Intelligent Hub 혹은 Android 관리 API를 통해 관리할지 여부를 지정합니다. AMAPI가 권장됩니다. Intelligent Hub는 장치에 계속 남아있지만, 관리 기능은 기본 Android OS로 위임됩니다. 기존에 등록된 장치는 영향을 받지 않습니다.</value>
+  </data>
+  <data name="WorkProfileManagementModeToggleSuccessfulMessage" xml:space="preserve">
+    <value>등록 성공! 관리 모드가 Android 관리 API로 업데이트되었습니다. 구성된 관리 모드를 보거나 편집하려면 등록 설정을 참조하십시오.</value>
+  </data>
+  <data name="Ws1RealTimeUserGroupSyncChanged" xml:space="preserve">
+    <value>Workspace ONE 실시간 사용자 그룹 동기화 설정 변경됨</value>
+  </data>
+</root>

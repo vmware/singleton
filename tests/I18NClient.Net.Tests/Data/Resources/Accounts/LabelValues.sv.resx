@@ -1,0 +1,1042 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AadAsIdpAttributeRequired" xml:space="preserve">
+    <value>Du måste ange Azure Active Directory-mappningsattribut när du anger Katalog till Ingen och aktiverar Använd Azure AD för identitetstjänster på inställningssidan Katalogtjänster.</value>
+  </data>
+  <data name="AadAttributeMapping" xml:space="preserve">
+    <value>Azure Active Directory-mappningsattribut</value>
+  </data>
+  <data name="AccountLocked" xml:space="preserve">
+    <value>Ditt Workspace ONE UEM-konto har låsts. Vänligen {0} för att låsa upp ditt konto eller kontakta IT-administratören.</value>
+    <comment>{0} will be replaced with url to reset password</comment>
+  </data>
+  <data name="AccountLockedSubject" xml:space="preserve">
+    <value>Workspace ONE UEM-kontot är låst</value>
+  </data>
+  <data name="AccountUnlocked" xml:space="preserve">
+    <value>Ditt Workspace ONE UEM-konto har låsts upp. Vänligen {0} för att få åtkomst till Workspace ONE UEM Console.</value>
+    <comment>{0} will be replaced with url to login</comment>
+  </data>
+  <data name="AccountUnlockedSubject" xml:space="preserve">
+    <value>Workspace ONE UEM-konto är upplåst</value>
+  </data>
+  <data name="AddCloudServicesAdmin" xml:space="preserve">
+    <value>Lägg till en administratör för molntjänster</value>
+  </data>
+  <data name="AddCloudServicesAdminPlaceHolder" xml:space="preserve">
+    <value>{0}</value>
+  </data>
+  <data name="AddSelectedUsersToUserGroup" xml:space="preserve">
+    <value>Lägg till valda användare till användargrupp</value>
+  </data>
+  <data name="AdminAccountLocked" xml:space="preserve">
+    <value>Administratörskontot är låst</value>
+  </data>
+  <data name="AdminAccountUnlocked" xml:space="preserve">
+    <value>Administratörskontot är upplåst</value>
+  </data>
+  <data name="AdminApiAuthenticationWarningText" xml:space="preserve">
+    <value>Konsolen använder som standard användaruppgifterna såvida inte ett klientcertifikat har genererats.</value>
+  </data>
+  <data name="AdminGroupMembersExport" xml:space="preserve">
+    <value>Export av medlemmar i administratörsgrupp</value>
+  </data>
+  <data name="AdminGroupMembersExportHelp" xml:space="preserve">
+    <value>Styr åtkomsten till exportadmingruppmedlemmar. Navigera till Meny\Konton\Administratörer\Admin-grupper</value>
+  </data>
+  <data name="Administrators" xml:space="preserve">
+    <value>Administratörer</value>
+  </data>
+  <data name="AdministratorsSettings" xml:space="preserve">
+    <value>Admininställningar</value>
+  </data>
+  <data name="AdminNotificationArgForSamlConfiguration" xml:space="preserve">
+    <value>Attributet '{0}' som krävs för säker autentisering av administratörer i konsolen saknas i din identitetsleverantörs SAML-svar.</value>
+  </data>
+  <data name="AdminPasswordReset" xml:space="preserve">
+    <value>Återställ administratörslösenordet</value>
+  </data>
+  <data name="AdminUserPasswordResetAction" xml:space="preserve">
+    <value>Denna åtgärd utlöser ett e-postmeddelande med lösenordsåterställning för följande administratör. Kontrollera e-postadressen korrekt och gå sedan vidare.</value>
+    <comment>This action corresponds to triggering password reset for admin user from the admin list view grid</comment>
+  </data>
+  <data name="AdminUserPasswordResetEmailTriggered" xml:space="preserve">
+    <value>E-postmeddelande med lösenordsåterställning för adminanvändare har utlösts</value>
+  </data>
+  <data name="AgentSettingsPublish" xml:space="preserve">
+    <value>Publicera agentinställningar</value>
+  </data>
+  <data name="AllAdministratorsSettings" xml:space="preserve">
+    <value>Alla admininsträllningar</value>
+  </data>
+  <data name="AllAppsBooksSettings" xml:space="preserve">
+    <value>Inställningar för alla appar &amp; böcker</value>
+  </data>
+  <data name="AllowedDevicesDescription" xml:space="preserve">
+    <value>Importera redan godkända enheter efter IMEI, serienummer eller UDID. Använd den för att importera en lista över kända enheter (t.ex. företagets enheter). Ägarskap och grupp-ID som är kopplade till den här enheten tillämpas automatiskt på enheten vid registrering.</value>
+  </data>
+  <data name="AllUsersSettings" xml:space="preserve">
+    <value>Inställningar för alla användare</value>
+  </data>
+  <data name="AndroidEfotaApproveUpdate" xml:space="preserve">
+    <value>Godkänn Android Efota-uppdatering</value>
+  </data>
+  <data name="ApiQuotaReachedNotification" xml:space="preserve">
+    <value>API-användning</value>
+  </data>
+  <data name="ApiQuotaThresholdReachedAction" xml:space="preserve">
+    <value>Visa API-användning</value>
+  </data>
+  <data name="ApiQuotaThresholdReachedMessage" xml:space="preserve">
+    <value>Du har uppnått {0} % av din dagliga API-gräns, som återställs vid {1}</value>
+    <comment>{0} will be replaced with a numeric value indicating what percentage of api calls have been utilized for that day. {1} will be replaced with the localized time in which the api usage resets</comment>
+  </data>
+  <data name="ApiQuotaThresholdReachedTitle" xml:space="preserve">
+    <value>API-användning</value>
+  </data>
+  <data name="ArgCannotBeMappedAppleIdArgAsArgNotFoundInOgArg" xml:space="preserve">
+    <value>{0} kan inte mappas till hanterat Apple-ID {1} eftersom {2} inte hittas i organisationsgruppens {3}-hierarki</value>
+  </data>
+  <data name="ArgCannotBeMappedToEnrollmentUserAppleAlreadyPresent" xml:space="preserve">
+    <value>{0} finns redan i CSV-filen så den läggs inte till igen.</value>
+  </data>
+  <data name="ArgCannotBeMappedToEnrollmentUserAppleIDNotFound" xml:space="preserve">
+    <value>{0} kan inte mappas till registreringsanvändare eftersom detta Apple-ID inte hittas i systemet</value>
+  </data>
+  <data name="ArgCannotBeMappedToEnrollmentUserKeyboardLayoutInValid" xml:space="preserve">
+    <value>{0} kan inte mappas till registreringsanvändare eftersom tangentbordslayouten inte är giltig</value>
+  </data>
+  <data name="ArgCannotBeMappedToEnrollmentUserMissingAppleID" xml:space="preserve">
+    <value>{0} kan inte mappas till registreringsanvändare eftersom detta Apple-ID saknas i CSV-filen</value>
+  </data>
+  <data name="ArgCannotBeMappedToUserArgAsAlreadyMapped" xml:space="preserve">
+    <value>{fileProcessorDataContext.Person.ManagedAppleIdentifier} kan inte mappas till registreringsanvändare {username} eftersom den här registreringsanvändaren redan har mappats till en annan medlem</value>
+  </data>
+  <data name="ArgDefinedAboveGivenOG" xml:space="preserve">
+    <value>{0} har definierats ovanför den angivna organisationsgruppen</value>
+  </data>
+  <data name="ArgHasAlreadyMapped" xml:space="preserve">
+    <value>{0} har redan mappats</value>
+  </data>
+  <data name="BackToLoginPage" xml:space="preserve">
+    <value>Tillbaka till inloggningen</value>
+  </data>
+  <data name="BatchImportAdminUsersExplanation" xml:space="preserve">
+    <value>Importfunktionen för administratörsanvändare används för massinläsning av adminanvändare i systemet. Administratörsanvändare bör associeras med en organisationsgrupp.</value>
+  </data>
+  <data name="BatchImportCancelled" xml:space="preserve">
+    <value>Batchimportering avbröts.</value>
+  </data>
+  <data name="BatchImportDescription" xml:space="preserve">
+    <value>Funktionen batchimportering kan användas för massinläsning av användare och deras enheter i systemet. CSV-mallar finns nedan. Om mallen redigeras med Microsoft Excel-verktyget ska du kontrollera att kolumnformatet är inställt på "Text" för att undvika att information går förlorad på grund av konverteringsformat och sparas som CSV-fil.</value>
+  </data>
+  <data name="BatchImportErrors" xml:space="preserve">
+    <value>Fel vid batchimportering</value>
+  </data>
+  <data name="BatchImportSuccessful" xml:space="preserve">
+    <value>Batchimportering lyckades.</value>
+  </data>
+  <data name="BatchImportUserGroupsExplanation" xml:space="preserve">
+    <value>Funktionen för batchimport kan användas för massöverföring av användargrupper in i systemet.</value>
+  </data>
+  <data name="BatchImportUsersDevicesExplanation" xml:space="preserve">
+    <value>Funktionen för batchimport kan användas för massöverföring av användare och deras enheter in i systemet. En mall för importen har länkats nedan.</value>
+  </data>
+  <data name="BeAtleastArgCharactersLong" xml:space="preserve">
+    <value>måste bestå av minst {0} tecken</value>
+    <comment>{0} will be replaced by a number</comment>
+  </data>
+  <data name="CancelBatchImport" xml:space="preserve">
+    <value>Avbryt batchimportering</value>
+  </data>
+  <data name="CancelBatchImportWarning" xml:space="preserve">
+    <value>Den här åtgärden avbryter batchimportering.</value>
+  </data>
+  <data name="CanNotDeleteUserGroupBecauseAssignedToSmartGroup" xml:space="preserve">
+    <value>Det gick inte att ta bort användargruppen eftersom den tilldelats till följande Smartgrupp(er) - {0}</value>
+  </data>
+  <data name="CartPublish" xml:space="preserve">
+    <value>Publicera korg</value>
+  </data>
+  <data name="CertificateBasedApiAuthenticationWarningText" xml:space="preserve">
+    <value>Generera och exportera klientcertifikatet för API-autentisering.</value>
+  </data>
+  <data name="CertificateProvisioning" xml:space="preserve">
+    <value>Certifikatprovisionering</value>
+  </data>
+  <data name="ChallengeClientCertificate" xml:space="preserve">
+    <value>Kontrollfråga för klientcertifikat</value>
+    <comment>Client certificate for authenticating the retrieval of a SCEP challenge</comment>
+  </data>
+  <data name="CheckGroup" xml:space="preserve">
+    <value>Kontrollera grupp</value>
+  </data>
+  <data name="ClickedResetPasswordNotifyAdmin" xml:space="preserve">
+    <value>En lösenordsåterställning har initierats antingen av dig eller av en annan administratör. Om det här är felaktigt kontaktar du din administratör för mer information</value>
+  </data>
+  <data name="ClickHereToLogin" xml:space="preserve">
+    <value>logga in</value>
+  </data>
+  <data name="ColumnsInSpreadsheetDoesNotMatchTemplate" xml:space="preserve">
+    <value>Kolumnerna i kalkylbladet överensstämmer inte med mallen.</value>
+  </data>
+  <data name="CompleteWithErrors" xml:space="preserve">
+    <value>Klar med fel</value>
+  </data>
+  <data name="CompliancePoliciesView" xml:space="preserve">
+    <value>Vy för Efterlevnadspolicyer</value>
+  </data>
+  <data name="CompliancePoliciesViewHelp" xml:space="preserve">
+    <value>Styr åtkomst för att visa efterlevnadspolicyer. Navigera till Enheter\Efterlevnadspolicyer\Listvy</value>
+  </data>
+  <data name="CompromiseDetectionForWindows10Device" xml:space="preserve">
+    <value>Kompromissidentifiering för Windows 10-enheter</value>
+  </data>
+  <data name="ContactAdministratorIfYouHaveDirectoryAccount" xml:space="preserve">
+    <value>Om du har ett katalogkonto kontaktar du administratören för att återställa ditt lösenord.</value>
+    <comment>Used in conjuction with "PasswordResetIsNotAvailableForDirectoryAccounts" in telling a user that a directory account cannot use the WS1 password reset flow.</comment>
+  </data>
+  <data name="ContactAdministratorIfYouHaveExternalAccount" xml:space="preserve">
+    <value>Om du har ett katalogkonto kontaktar du administratören för att återställa ditt lösenord. Om du har ett VMware Cloud Services-konto kan du återställa ditt lösenord på cloud.vmware.com</value>
+    <comment>Message shown during touble loggingIn flow for an account</comment>
+  </data>
+  <data name="ContentRightsManagement" xml:space="preserve">
+    <value>Hantering av innehållsrättigheter</value>
+  </data>
+  <data name="CreateAdminAccountsFromCSPPortal" xml:space="preserve">
+    <value>Den här innehavaren är aktiverad med Workspace ONE Cloud Admin Hub. Administratörer som skapas i UEM har endast åtkomst till UEM. Lägg till administratören i Molntjänster för att aktivera åtkomst till Workspace ONE-tjänster. {0}</value>
+  </data>
+  <data name="Date&amp;Time" xml:space="preserve">
+    <value>Datum och tid</value>
+  </data>
+  <data name="DecryptionFailedFieldName" xml:space="preserve">
+    <value>Field Name</value>
+  </data>
+  <data name="DeleteDepSharedMdmProfile" xml:space="preserve">
+    <value>Ta bort DEP-delad MDM-profil</value>
+  </data>
+  <data name="DeniedDevices" xml:space="preserve">
+    <value>Blockerade enheter</value>
+  </data>
+  <data name="DeniedDevicesDescription" xml:space="preserve">
+    <value>Importera blockerade enheter efter IMEI, serienummer eller UDID. Använd denna för att importera en lista med enheter som inte uppfyller reglerna. Blockerade enheter kommer inte att kunna registreras. Om en blockerad enhet registreras kommer den att avregistreras automatiskt när importen bearbetas. Plattform, OS och modell som anges här beaktas inte vid registrering.</value>
+  </data>
+  <data name="DeviceBasedVppAppUpdate" xml:space="preserve">
+    <value>Uppdatera enhetsbaserad VPP-app</value>
+  </data>
+  <data name="DeviceBulkManagementDeviceViewGps" xml:space="preserve">
+    <value>Masshantering av enheter – visa enhetsplats</value>
+  </data>
+  <data name="DeviceBulkManagementDeviceViewGpsHelp" xml:space="preserve">
+    <value>Tillåter användare att visa plats för enhet(er) i grupp.</value>
+  </data>
+  <data name="Devicebulkmanagementrebootdevice" xml:space="preserve">
+    <value>Massomstart av enhet</value>
+  </data>
+  <data name="DeviceEditionNotAllowedAsUserArgNotManagedAtOG" xml:space="preserve">
+    <value>Enhetsversionen är inte tillåten eftersom användaren {0} inte hanteras i den här organisationsgruppen</value>
+  </data>
+  <data name="DeviceLgCannotBeParentUserDefaultLg" xml:space="preserve">
+    <value>Enhetens organisationsgrupp kan inte vara standard-organisationsgrupp för den överordnade användaren.</value>
+  </data>
+  <data name="DirectoryAccountsToBePushedBySCIMProvisioning" xml:space="preserve">
+    <value>Katalogkonton kan bara skapas genom SCIM-provisionerings-API:n</value>
+  </data>
+  <data name="DirectoryNameIsInvalid" xml:space="preserve">
+    <value>Katalognamnet är ogiltigt. Katalognamnet får inte innehålla blanksteg.</value>
+  </data>
+  <data name="DirectorySync" xml:space="preserve">
+    <value>Katalogsynkronisering</value>
+  </data>
+  <data name="DisableDepConfiguration" xml:space="preserve">
+    <value>Avaktivera DEP-konfiguration</value>
+  </data>
+  <data name="DisplayVideoImport" xml:space="preserve">
+    <value>Visa videoimportering</value>
+  </data>
+  <data name="DisplayVideoView" xml:space="preserve">
+    <value>Vy för visningsvideo</value>
+  </data>
+  <data name="DomainMappingIsNotFoundForGivenDomain" xml:space="preserve">
+    <value>Ingen domänmappning kunde hittas för den angivna domänen.</value>
+  </data>
+  <data name="DownloadAdvancedTemplateForUsersAndDevices" xml:space="preserve">
+    <value>Hämta avancerad mall för användare och enheter</value>
+  </data>
+  <data name="DownloadSimpleTemplateForUsersAndDevices" xml:space="preserve">
+    <value>Hämta enkel mall för användare och enheter</value>
+  </data>
+  <data name="DownloadTemplateForAllowedDevices" xml:space="preserve">
+    <value>Hämta mall för tillåtna enheter</value>
+  </data>
+  <data name="DuplicateAdminUserFound" xml:space="preserve">
+    <value>Duplicerade administratörsanvändare hittades.</value>
+  </data>
+  <data name="DuplicateDirectoryUserGroupMessage" xml:space="preserve">
+    <value>Kataloganvändargrupp med ID '{0}' finns redan.</value>
+  </data>
+  <data name="DuplicateExcludedUserGroupInSmartGroup" xml:space="preserve">
+    <value>Samma användargrupp kan inte läggas till i både exkluderande och inkluderande listor. Ta bort denna användargrupp från den inkluderande listan om du vill exkludera den.</value>
+  </data>
+  <data name="DuplicateUserGroupMessage" xml:space="preserve">
+    <value>En användargrupp med namnet '{0}' finns redan. Ange ett annat namn.</value>
+  </data>
+  <data name="EARAppUpdateAvailableNotification" xml:space="preserve">
+    <value>Uppdateringar av Enterprise-apparkiv</value>
+  </data>
+  <data name="EditAdmin" xml:space="preserve">
+    <value>Redigera administratör</value>
+  </data>
+  <data name="EditCustomReportsGettingStarted" xml:space="preserve">
+    <value>Komma igång med Intelligence</value>
+  </data>
+  <data name="EditCustomReportsGettingStartedHelp" xml:space="preserve">
+    <value>Ger full åtkomst att välja Intelligence.</value>
+  </data>
+  <data name="EditDepSharedMdmProfile" xml:space="preserve">
+    <value>Redigera DEP-delad MDM-profil</value>
+  </data>
+  <data name="EditTemporaryAdmin" xml:space="preserve">
+    <value>Redigera tillfällig admin</value>
+  </data>
+  <data name="EditTypeGrHelp" xml:space="preserve">
+    <value>Visa och redigera organisationsgruppstyp för organisationsgrupper.</value>
+  </data>
+  <data name="EditUserArgOpensDialog" xml:space="preserve">
+    <value>Redigera användare {0} öppnar dialogruta</value>
+    <comment>The placeholder in this label key contains username.</comment>
+  </data>
+  <data name="EMAdvancedLogging" xml:space="preserve">
+    <value>Avancerad EMA-logging</value>
+  </data>
+  <data name="EMAdvancedLoggingHelp" xml:space="preserve">
+    <value>Fönster för avancerad händelseloggning för driftsättning av MEM-enheter</value>
+  </data>
+  <data name="EncounteredErrorLoadingAvailableLocationGroup" xml:space="preserve">
+    <value>Fel vid inläsning av tillgängliga organisationsgrupper.</value>
+  </data>
+  <data name="EnrollmentOgInvalidOrUnauthorized" xml:space="preserve">
+    <value>Organisationsgruppen för inskrivning är ogiltig eller saknar behörighet.</value>
+  </data>
+  <data name="EnrollmentRestrictNewUserForScimProvisioning" xml:space="preserve">
+    <value>Ditt konto har inte provisionerats i UEM. Det går inte att registrera det. Om du behöver hjälp kontaktar du administratören.</value>
+  </data>
+  <data name="EnrollmentUserTenancyNotification" xml:space="preserve">
+    <value>Skapande av registreringsanvändare och användargrupper utanför kundorganisationer kommer inte att tillåtas i versioner som lanseras i slutet av 2021.</value>
+  </data>
+  <data name="EnterSearchTerm" xml:space="preserve">
+    <value>Ange sökord</value>
+  </data>
+  <data name="ErrorOccuredBulkOperation" xml:space="preserve">
+    <value>Ett fel uppstod under massåtgärden</value>
+  </data>
+  <data name="ErrorOccuredDuringMergeOfNewUserGroup" xml:space="preserve">
+    <value>Ett fel uppstod vid sammanfogning/synkronisering av den nya användargruppen. {0}</value>
+  </data>
+  <data name="ErrorOccuredForUserGroups" xml:space="preserve">
+    <value>Ett fel uppstod vid sökning efter grupper som användaren är en del av</value>
+  </data>
+  <data name="ErrorOccuredWhileMergingGroups" xml:space="preserve">
+    <value>Ett fel uppstod när grupperna skulle sammanfogas</value>
+  </data>
+  <data name="ErrorResolvingValidOgForUser" xml:space="preserve">
+    <value>Fel vid matchning av giltiga organisationsgrupper för användaren</value>
+  </data>
+  <data name="ExcludedUserGroups" xml:space="preserve">
+    <value>Exkluderade användargrupper</value>
+  </data>
+  <data name="ExcludedUserGroupsToolTip" xml:space="preserve">
+    <value>Med kriteriet kan enheter tillhörande användare i en specifik användargrupp exkluderas från den enhetslista som genereras genom att de återstående kriterierna tillämpas.</value>
+  </data>
+  <data name="ExpressSetupEdit" xml:space="preserve">
+    <value>Redigera Express-inställning</value>
+  </data>
+  <data name="ExpressSetupEditHelp" xml:space="preserve">
+    <value>Ger administratörer med redigeringsbehörighet åtkomst till konsolens integreringsdelar i AirWatch Express.</value>
+  </data>
+  <data name="ExpressSetupRead" xml:space="preserve">
+    <value>Inläsning av Express-inställning</value>
+  </data>
+  <data name="ExpressSetupReadHelp" xml:space="preserve">
+    <value>Ger administratörer med läsbehörighet åtkomst till förenklad inställning av konsolens integreringsdelar i AirWatch Express.</value>
+  </data>
+  <data name="ExternalIdArgDNArgMismatch" xml:space="preserve">
+    <value>Externt ID {0} tillhör inte det unika namnet {1}.</value>
+  </data>
+  <data name="FailedToCheckDirectoryGroup" xml:space="preserve">
+    <value>Det gick inte att kontrollera kataloggruppen</value>
+  </data>
+  <data name="FailedToSaveTheAdminGroup" xml:space="preserve">
+    <value>Kan inte spara administratörsgrupp</value>
+  </data>
+  <data name="FailedToSendResetPasswordEmail" xml:space="preserve">
+    <value>Det gick inte att skicka e-postmeddelande med lösenordsåterställning.</value>
+    <comment>When admin tries to trigger a reset password email for an admin.</comment>
+  </data>
+  <data name="FileInvalidErrorText" xml:space="preserve">
+    <value>Filtypen måste vara CSV.</value>
+  </data>
+  <data name="FileTypeHelperText" xml:space="preserve">
+    <value>Måste vara en CSV-fil enligt mallens specifikationer</value>
+  </data>
+  <data name="FirstNameFirstTwoLetters" xml:space="preserve">
+    <value>Förnamn (första 2 bokstäverna)</value>
+  </data>
+  <data name="FirstNameInitial" xml:space="preserve">
+    <value>Första bokstaven i förnamnet</value>
+  </data>
+  <data name="FollowingUsersWillBeUnlocked" xml:space="preserve">
+    <value>Följande användare kommer att låsas upp:</value>
+  </data>
+  <data name="ForgotUserName" xml:space="preserve">
+    <value>Glömt användarnamn</value>
+  </data>
+  <data name="GeneralFailure" xml:space="preserve">
+    <value>Det gick inte att skicka e-postmeddelandet med lösenordsåterställning. Kontrollera SMTP-serverkonfigurationsinställningarna och försök igen.</value>
+  </data>
+  <data name="GeofenceAreaEdit" xml:space="preserve">
+    <value>Redigera Geofence-område</value>
+  </data>
+  <data name="GivenDistinguishedNameNotFoundUserCannotAdd" xml:space="preserve">
+    <value>Det angivna unika namnet kunde inte hittas. Användaren kan inte lägga till.</value>
+  </data>
+  <data name="GivenOgCustomerCodeInvalid" xml:space="preserve">
+    <value>Den angivna organisationsgrupps-kundkoden är ogiltig.</value>
+  </data>
+  <data name="GivenSecurityTypeNotConfigured" xml:space="preserve">
+    <value>Den angivna säkerhetstypen har inte konfigurerats</value>
+  </data>
+  <data name="GivenSecurityTypeNotSupported" xml:space="preserve">
+    <value>Den angivna säkerhetstypen stöds inte</value>
+  </data>
+  <data name="GroupNameRequired" xml:space="preserve">
+    <value>Gruppnamn är obligatoriskt</value>
+  </data>
+  <data name="HideTemplatesAndGuidelines" xml:space="preserve">
+    <value>Dölj mallar och riktlinjer</value>
+  </data>
+  <data name="IBeaconGroupEdit" xml:space="preserve">
+    <value>Redigera IBeacon-grupp</value>
+  </data>
+  <data name="IfExistsAnEmailWillBeSentToTheAddressOnFile" xml:space="preserve">
+    <value>Ett e-postmeddelande med ytterligare instruktioner har skickats till den e-postadress som finns registrerad hos oss.</value>
+    <comment>When a user requests a "forgot password" reset link via email, this is the message given regardless of whether the user name is valid or not.</comment>
+  </data>
+  <data name="IfTroubleClickingCopyAndPasteLink" xml:space="preserve">
+    <value>Om den här länken inte fungerar kan du prova att kopiera och klistra in följande länk i webbläsaren.</value>
+  </data>
+  <data name="IncorrectPasswordAnswerAttemptWarning" xml:space="preserve">
+    <value>Du har 1 försök kvar. Svara rätt på alla frågorna annars blir du utelåst.</value>
+  </data>
+  <data name="IncorrectPasswordAnswerAttemptWarningPlural" xml:space="preserve">
+    <value>Du har {0} försök kvar. Svara rätt på alla frågorna annars blir du utelåst.</value>
+  </data>
+  <data name="InstallAppOnAll" xml:space="preserve">
+    <value>Installera appen på alla</value>
+  </data>
+  <data name="InstallMdmProfile" xml:space="preserve">
+    <value>Installera MDM-profil</value>
+  </data>
+  <data name="InstallOnFiltered" xml:space="preserve">
+    <value>Installera på filtrerade</value>
+  </data>
+  <data name="InvalidDataEntered" xml:space="preserve">
+    <value>Ogiltig data har matats in.</value>
+  </data>
+  <data name="InvalidDeviceGroupId" xml:space="preserve">
+    <value>Enhetsgrupps-id är ogiltigt.</value>
+  </data>
+  <data name="InvalidGroupBaseDN" xml:space="preserve">
+    <value>Standard- eller medföljande gruppbas-DN-{0} är inte giltigt</value>
+  </data>
+  <data name="InvalidSession" xml:space="preserve">
+    <value>Ogiltig session</value>
+  </data>
+  <data name="InvalidTemplate" xml:space="preserve">
+    <value>Ogiltig mall. Hämta den senaste mallen</value>
+  </data>
+  <data name="InvalidUserCredentialsPleaseTryAgain" xml:space="preserve">
+    <value>Ogiltiga inloggningsuppgifter. Försök igen.</value>
+  </data>
+  <data name="IsRequiredArg" xml:space="preserve">
+    <value>Argumentet är obligatoriskt.</value>
+  </data>
+  <data name="IssueCertificate" xml:space="preserve">
+    <value>Utförda certifikat</value>
+  </data>
+  <data name="JITSettings" xml:space="preserve">
+    <value>JIT-inställningar</value>
+    <comment>Resource for JIT Settings</comment>
+  </data>
+  <data name="JITSettingsHelp" xml:space="preserve">
+    <value>Hanterar åtkomst till slutpunkterna HÄMTA och UPPDATERA för JIT.</value>
+  </data>
+  <data name="LastNameFirstTwoLetters" xml:space="preserve">
+    <value>Efternamn (första 2 bokstäverna)</value>
+  </data>
+  <data name="LastNameInitial" xml:space="preserve">
+    <value>Första bokstaven i efternamnet</value>
+  </data>
+  <data name="LdapNotDefinedUserCannotAdd" xml:space="preserve">
+    <value>LDAP har inte definierats för den angivna organisationsgruppen. Adminanvändare kan inte läggas till.</value>
+  </data>
+  <data name="LocalSync" xml:space="preserve">
+    <value>Lokal synkronisering</value>
+  </data>
+  <data name="LoginAsDifferentUser" xml:space="preserve">
+    <value>Logga in som en annan användare</value>
+  </data>
+  <data name="LoginPasswordIsRequired" xml:space="preserve">
+    <value>Lösenord krävs</value>
+  </data>
+  <data name="MailboxBusy" xml:space="preserve">
+    <value>Den begärda e-poståtgärden kunde inte slutföras. SMTP-protokollfel: Postlåda är inte tillgänglig. Försök igen.</value>
+  </data>
+  <data name="MailboxUnavailable" xml:space="preserve">
+    <value>Det gick inte att skicka e-postmeddelandet med lösenordsåterställning. SMTP-protokollfel: Postlåda är inte tillgänglig.</value>
+  </data>
+  <data name="MEMRotateGSuitePassword" xml:space="preserve">
+    <value>Rotera G Suite-lösenord</value>
+  </data>
+  <data name="MEMRotateGSuitePasswordConfirmation" xml:space="preserve">
+    <value>Bekräfta att du vill rotera G Suite-lösenord</value>
+  </data>
+  <data name="MEMRotateGSuitePasswordFailed" xml:space="preserve">
+    <value>Rotera G Suite-lösenord misslyckades</value>
+  </data>
+  <data name="MEMRotateGSuitePasswordInfoMessage" xml:space="preserve">
+    <value>Återställ användarens lösenord och uppdatera eventuella associerade e-postprofiler på användarens enheter. Det går inte att ångra den här åtgärden.</value>
+  </data>
+  <data name="MergeFailedRetry" xml:space="preserve">
+    <value>Det gick inte att sammanfoga - försök igen</value>
+  </data>
+  <data name="MessageTemplateCouldNotBeRetrieved" xml:space="preserve">
+    <value>Meddelandemallen kunde inte hämtas.</value>
+  </data>
+  <data name="MigrateWarning" xml:space="preserve">
+    <value>Med migreringsåtgärden överförs enhets- och användarinställningar i standardanvändarkonton och användarkonton med autentiseringsproxy till det valda kataloganvändarkontot. Standardanvändarkontona och användarkontona med autentiseringsproxy anges som borttagna när migreringen har slutförts och de kan inte längre användas till att registrera enheter.
+
+Vill du fortsätta?</value>
+  </data>
+  <data name="NetworkRanges" xml:space="preserve">
+    <value>Nätverksintervall</value>
+  </data>
+  <data name="NoCommonCustomUserGroupsForSelectedUsers" xml:space="preserve">
+    <value>Det finns inga gemensamma anpassade användargrupper för de valda användarna.</value>
+  </data>
+  <data name="NoPasswordQuestionContactAdminMessage" xml:space="preserve">
+    <value>Du har inte angett en lösenordsåterställningsfråga, så den här sidan kan inte användas till att återställa lösenordet. Kontakta en administratör.</value>
+  </data>
+  <data name="NotifyDevicesEnrolledHubApp" xml:space="preserve">
+    <value>Meddela enheter som är registrerade i Hub-appen</value>
+  </data>
+  <data name="NumberOfChangesShouldBePositive" xml:space="preserve">
+    <value>Antalet ändringar ska vara ett positivt heltal</value>
+  </data>
+  <data name="NumberOfObjects" xml:space="preserve">
+    <value>{0} objekt</value>
+  </data>
+  <data name="OfflineCompliancePolicy" xml:space="preserve">
+    <value>Offlineefterlevnadspolicy</value>
+  </data>
+  <data name="OGGroupIdNotInCurrentHierarchy" xml:space="preserve">
+    <value>Importen misslyckades. Organisationsgruppen (ID: {0}) finns inte i den aktuella hierarkin.</value>
+  </data>
+  <data name="OGNotInCurrentHierarchy" xml:space="preserve">
+    <value>Importen misslyckades. Organisationsgruppen finns inte i den aktuella hierarkin.</value>
+  </data>
+  <data name="OneAttemptRemaining" xml:space="preserve">
+    <value>1 försök återstår.</value>
+  </data>
+  <data name="P2PPublish" xml:space="preserve">
+    <value>Publicera P2P</value>
+  </data>
+  <data name="PasswordNotificationPeriodDays" xml:space="preserve">
+    <value>Aviseringsperiod för lösenord (dagar)</value>
+  </data>
+  <data name="PasswordResetIsNotAvailableForDirectoryAccounts" xml:space="preserve">
+    <value>Lösenordåterställning är inte tillgängligt för katalogkonton.</value>
+  </data>
+  <data name="PasswordResetIsNotAvailableForExternalAccounts" xml:space="preserve">
+    <value>Lösenordsåterställning är inte tillgängligt för katalog- och VMware Cloud Services-konton</value>
+    <comment>Message shown during trouble loggingIn flow for an account</comment>
+  </data>
+  <data name="PasswordShouldBeAtleastArgCharactersLong" xml:space="preserve">
+    <value>Lösenordet måste innehålla minst {0} tecken.</value>
+    <comment>{0} will be relaced by a number</comment>
+  </data>
+  <data name="PermissionColumnIsEmply" xml:space="preserve">
+    <value>Behörighetskolumnen är tom, så standardbehörighet för användargruppen läggs till</value>
+  </data>
+  <data name="PermissonArgDoesnotConformWithTemplate" xml:space="preserve">
+    <value>Behörigheten {0} överensstämmer inte med mallen och hoppas alltså över</value>
+  </data>
+  <data name="PleaseCheckDirectoryUsername" xml:space="preserve">
+    <value>Kontrollera användarnamnet för katalogen</value>
+  </data>
+  <data name="ProvisioningPackagePublish" xml:space="preserve">
+    <value>Publicera provisioneringspaket</value>
+  </data>
+  <data name="PublishAndroidWorkPublicApp" xml:space="preserve">
+    <value>Publicera publik Android Work-app</value>
+  </data>
+  <data name="PublishAreaProfile" xml:space="preserve">
+    <value>Publicera områdesprofil</value>
+  </data>
+  <data name="PublishBrowserSettings" xml:space="preserve">
+    <value>Publicera webbläsarinställningar</value>
+  </data>
+  <data name="RemoteViewDD" xml:space="preserve">
+    <value>Fjärrvisning - Enhetsinformation</value>
+  </data>
+  <data name="RemoteViewDDHelp" xml:space="preserve">
+    <value>Aktiverar funktionen för att ta skärmavbilder av enhetsskärmar som fjärråtgärd.</value>
+  </data>
+  <data name="RemoveDepRegisteredDevices" xml:space="preserve">
+    <value>Ta bort DEP-registrerade enheter</value>
+  </data>
+  <data name="RemoveSelectedUsersFromUserGroup" xml:space="preserve">
+    <value>Ta bort valda användare från användargrupp</value>
+  </data>
+  <data name="ReportAppleMDM" xml:space="preserve">
+    <value>MDM-rapport för Apple </value>
+  </data>
+  <data name="ReportAppleMDMHelp" xml:space="preserve">
+    <value>Kontrollerar åtkomst till visning av MDM-rapporten för Apple</value>
+  </data>
+  <data name="ReportProductCompliance" xml:space="preserve">
+    <value>Rapport över produktefterlevnad</value>
+  </data>
+  <data name="ReportProductComplianceHelp" xml:space="preserve">
+    <value>Kontrollerar åtkomst till visning av rapporten över produktefterlevnad.</value>
+  </data>
+  <data name="ReportProductDeploymentSummary" xml:space="preserve">
+    <value>Sammanfattande rapport över produktdriftsättning</value>
+  </data>
+  <data name="ReportProductDeploymentSummaryHelp" xml:space="preserve">
+    <value>Kontrollerar åtkomst till visning av den sammanfattande rapporten över produktdriftsättning.</value>
+  </data>
+  <data name="ReportProvisioningProductAssigned" xml:space="preserve">
+    <value>För tillfället tilldelad provisioneringsinformation - Produkter (nya)</value>
+  </data>
+  <data name="ResetPassword" xml:space="preserve">
+    <value>Återställ lösenordet</value>
+    <comment>To be used to trigger reset password for core user.</comment>
+  </data>
+  <data name="ResetYourPassword" xml:space="preserve">
+    <value>återställ lösenordet</value>
+  </data>
+  <data name="ResetYourPasswordNow" xml:space="preserve">
+    <value>Återställ ditt lösenord nu</value>
+  </data>
+  <data name="RestApiCustomAttriutesDelete" xml:space="preserve">
+    <value>REST API för borttagning av anpassade attribut</value>
+  </data>
+  <data name="RestApiCustomAttriutesDeleteHelp" xml:space="preserve">
+    <value>Aktiverar åtkomst till alla API:er för borttagning i samlingen med anpassade attribut.</value>
+  </data>
+  <data name="RestApiEnterpriseIntegrationRead" xml:space="preserve">
+    <value>REST API:er för läsning av företagsintegration</value>
+  </data>
+  <data name="RestApiEnterpriseIntegrationReadHelp" xml:space="preserve">
+    <value>Aktiverar åtkomst till alla läs -API:er i företagsintegration. </value>
+  </data>
+  <data name="Restapimamapps" xml:space="preserve">
+    <value>REST API för appar i MAM</value>
+  </data>
+  <data name="RestapimamappsHelp" xml:space="preserve">
+    <value>Åtkomst till hanterade appar</value>
+  </data>
+  <data name="Restapimamblob" xml:space="preserve">
+    <value>REST API för BLOB i MAM</value>
+  </data>
+  <data name="RestapimamblobHelp" xml:space="preserve">
+    <value>Överför/hämta innehåll</value>
+  </data>
+  <data name="Restapimdmdevices" xml:space="preserve">
+    <value>REST API för enheter i MDM</value>
+  </data>
+  <data name="RestapimdmdevicesHelp" xml:space="preserve">
+    <value>Skicka kommandon för låsning/upplåsning</value>
+  </data>
+  <data name="Restapimdmprofiles" xml:space="preserve">
+    <value>REST API för MDM-profiler</value>
+  </data>
+  <data name="RestapimdmprofilesHelp" xml:space="preserve">
+    <value>Skicka kommandon för låsning/upplåsning</value>
+  </data>
+  <data name="Restapimdmsmartgroups" xml:space="preserve">
+    <value>REST API för smartgrupper i MDM</value>
+  </data>
+  <data name="RestapimdmsmartgroupsHelp" xml:space="preserve">
+    <value>Åtkomst till information om smartgrupper</value>
+  </data>
+  <data name="Restapimdmusergroups" xml:space="preserve">
+    <value>REST API för användargrupper i MDM</value>
+  </data>
+  <data name="RestapimdmusergroupsHelp" xml:space="preserve">
+    <value>Åtkomst till användargrupper</value>
+  </data>
+  <data name="Restapisystemadmin" xml:space="preserve">
+    <value>REST API för systemadmin</value>
+  </data>
+  <data name="RestapisystemadminHelp" xml:space="preserve">
+    <value>Åtkomst till admininfo</value>
+  </data>
+  <data name="Restapisystemgroups" xml:space="preserve">
+    <value>REST API för systemgrupper</value>
+  </data>
+  <data name="RestapisystemgroupsHelp" xml:space="preserve">
+    <value>Åtkomst till organisationsgruppsinfo</value>
+  </data>
+  <data name="Restapisystemusers" xml:space="preserve">
+    <value>REST API för systemanvändare</value>
+  </data>
+  <data name="RestapisystemusersHelp" xml:space="preserve">
+    <value>Åtkomst till användarinfo</value>
+  </data>
+  <data name="RevokeAzureADUserTokensOnDeviceWipe" xml:space="preserve">
+    <value>Återkalla användartoken automatiskt när enheter raderas</value>
+  </data>
+  <data name="RevokeAzureADUserTokensToolTip" xml:space="preserve">
+    <value>Tillåter att Workspace ONE UEM kan återkalla Microsoft Azure AD-användartoken när en enhets- eller företagsrensning körs. Obs! Avaktivering av den här funktionen rekommenderas inte eftersom det kan minska säkerhetsläget för din konfiguration. Om en raderad enhet förloras kan den fortfarande innehålla en giltig AAD-autentiseringstoken</value>
+  </data>
+  <data name="RoleId" xml:space="preserve">
+    <value>Roll-ID</value>
+  </data>
+  <data name="Roles" xml:space="preserve">
+    <value>Roller</value>
+  </data>
+  <data name="SaveDepRegisteredDevices" xml:space="preserve">
+    <value>Spara DEP-registrerade enheter</value>
+  </data>
+  <data name="Scheduler" xml:space="preserve">
+    <value>Schemaläggare</value>
+  </data>
+  <data name="SchedulerApple" xml:space="preserve">
+    <value>Schemaläggare</value>
+  </data>
+  <data name="SchedulerAppleHelp" xml:space="preserve">
+    <value>Hanterar åtkomst till sidan MDM-schemaläggare</value>
+  </data>
+  <data name="SchedulerHelp" xml:space="preserve">
+    <value>Hanterar åtkomst till sidan Inställningar för schemaläggare</value>
+  </data>
+  <data name="ScimEnabledOGCannotBatchImportDirectoryTypes" xml:space="preserve">
+    <value>För den här organisationsgruppen används SCIM för provisionering av användare, administratörer och grupper. Det går inte att massimportera kataloganvändare eller -grupper.</value>
+  </data>
+  <data name="SecurityTypeIsRequired" xml:space="preserve">
+    <value>Säkerhetstypen är obligatorisk.</value>
+  </data>
+  <data name="SelectedUsersDoNotExistOrHaveAlreadyBeenDeleted" xml:space="preserve">
+    <value>De valda användarna finns inte eftersom de kanske redan har tagits bort. Stäng det här popupmeddelandet och uppdatera användarlistan.</value>
+  </data>
+  <data name="SelectFileLabel" xml:space="preserve">
+    <value>Välj fil</value>
+  </data>
+  <data name="SelectMemConfigLabel" xml:space="preserve">
+    <value>MEM-konfiguration</value>
+  </data>
+  <data name="SendApplicationConfigurationRequest" xml:space="preserve">
+    <value>Skicka applikationskonfigurationsbegäran</value>
+  </data>
+  <data name="SendFeedback" xml:space="preserve">
+    <value>Skicka synpunkt</value>
+  </data>
+  <data name="SendsEmail" xml:space="preserve">
+    <value>Skicka e-post</value>
+  </data>
+  <data name="ServerError" xml:space="preserve">
+    <value>Serverfel</value>
+  </data>
+  <data name="SettingsEnrollmentCustomization" xml:space="preserve">
+    <value>Inställningar för anpassning vid registrering</value>
+  </data>
+  <data name="SettingsEnrollmentCustomizationHelp" xml:space="preserve">
+    <value>Behörigheter för åtkomst och ändringar (Enheter\Enhetsinställningar\Enheter och användare\Allmänt\Registrering) på fliken Anpassning</value>
+  </data>
+  <data name="SettingsEnrollmentOptionalPrompt" xml:space="preserve">
+    <value>Inställningar för valfri uppmaning vid registrering</value>
+  </data>
+  <data name="SettingsEnrollmentOptionalPromptHelp" xml:space="preserve">
+    <value>Behörigheter för åtkomst och ändringar (Enheter\Enhetsinställningar\Enheter och användare\Allmänt\Registrering) på fliken Valfri uppmaning</value>
+  </data>
+  <data name="SettingsHeaderBasedAuthentication" xml:space="preserve">
+    <value>Inställningar för rubrikbaserad autentisering</value>
+  </data>
+  <data name="SettingsMDMSampleSchedule" xml:space="preserve">
+    <value>Inställningar för Samplingsschema för MDM</value>
+  </data>
+  <data name="SettingsMDMSampleScheduleHelp" xml:space="preserve">
+    <value>Ger åtkomst till sidan MDM-samplingsschema</value>
+  </data>
+  <data name="SettingsScheduler" xml:space="preserve">
+    <value>Inställningar för schemaläggaren</value>
+  </data>
+  <data name="SettingsSchedulerHelp" xml:space="preserve">
+    <value>Ger åtkomst till sidan Schemaläggare</value>
+  </data>
+  <data name="ShareYourFeedback" xml:space="preserve">
+    <value>Dela med dig av dina synpunkter</value>
+  </data>
+  <data name="ShowBatchTypeTemplates" xml:space="preserve">
+    <value>Visa mallar för batchtyper</value>
+  </data>
+  <data name="SingleAppModeProfileRemove" xml:space="preserve">
+    <value>Ta bort enappslägesprofil</value>
+  </data>
+  <data name="SyncDirectoryGroup" xml:space="preserve">
+    <value>Synkronisera kataloggrupp</value>
+  </data>
+  <data name="TargetLgCannotParentUserLg" xml:space="preserve">
+    <value>Målorganisationsgrupp kan inte vara överordnad användarens organisationsgrupp.</value>
+  </data>
+  <data name="ThresholdAdminActionRequest" xml:space="preserve">
+    <value>Tröskel för administrationsåtgärdsbegäran</value>
+  </data>
+  <data name="TimedOut" xml:space="preserve">
+    <value>Tidsgräns uppnådd</value>
+  </data>
+  <data name="TokenNotCreatedDeviceIdentifiersSpecifiersNotProvided" xml:space="preserve">
+    <value>Token har inte skapats! Enhetsinformationen saknas.</value>
+  </data>
+  <data name="TransactionFailed" xml:space="preserve">
+    <value>Det gick inte att skicka e-postmeddelandet med lösenordsåterställning. Kontrollera mottagarens e-postadress och försök igen.</value>
+  </data>
+  <data name="TroubleLoggingIn" xml:space="preserve">
+    <value>Har du problem med att logga in?</value>
+  </data>
+  <data name="TwoFactorAuthenticationMethodNotValidOrNotAllowed" xml:space="preserve">
+    <value>Metoden för tvåfaktorautentisering är ogiltig eller inte tillåten.</value>
+  </data>
+  <data name="TwoMoreLgCannotSameCustomerCode" xml:space="preserve">
+    <value>Två eller flera organisationsgrupper kan inte ha samma kundkod.</value>
+  </data>
+  <data name="UnableToFindCertificate" xml:space="preserve">
+    <value>Det gick inte att hitta certifikatet.</value>
+  </data>
+  <data name="UninstallAppFromAll" xml:space="preserve">
+    <value>Avinstallera app från alla</value>
+  </data>
+  <data name="UniqueIdentifierArgNotProvidedForNewAdmin" xml:space="preserve">
+    <value>En unik identifierare ”{0}” har inte tilldelats för ny administratör.</value>
+  </data>
+  <data name="UniqueIdentifierArgNotProvidedForNewUser" xml:space="preserve">
+    <value>En unik identifierare ”{0}” har inte tilldelats för ny användare</value>
+  </data>
+  <data name="UpdatePublish" xml:space="preserve">
+    <value>Publicera uppdatering</value>
+  </data>
+  <data name="UserAccountUnlocked" xml:space="preserve">
+    <value>Användarkontot är upplåst</value>
+  </data>
+  <data name="UserAndroidWorkAppsSync" xml:space="preserve">
+    <value>Synkronisera Android Work-användarappar</value>
+  </data>
+  <data name="UserArgCannotBeEditedUserResidesAtBelowImportingOG" xml:space="preserve">
+    <value>Användaren {0} kan inte redigeras/hanteras eftersom användaren befinner sig utanför/nedanför importerande organisationsgrupp</value>
+  </data>
+  <data name="UserArgCannotBeMoved" xml:space="preserve">
+    <value>Användaren {0} kan inte flyttas på grund av att en eller flera enheters primära organisationsgrupp är ovanför målets organisationsgrupp</value>
+  </data>
+  <data name="UserArgEditNotAllowedForFollowingSecurityType" xml:space="preserve">
+    <value>Användarens {0}-version tillåts inte för följande säkerhetstyp</value>
+  </data>
+  <data name="UserArgEditNotAllowedNoPermission" xml:space="preserve">
+    <value>Användarens {0}-version tillåts inte på grund av att användaren inte är tillåten i denna OG</value>
+  </data>
+  <data name="UserArgNotCreatedAsNotFoundInAD" xml:space="preserve">
+    <value>Användaren {0} skapades inte eftersom den inte kunde hittas i AD</value>
+  </data>
+  <data name="UserArgWasNotFoundatLG" xml:space="preserve">
+    <value>Användaren {0} kunde inte hittas i den angivna platsgruppen eller är inte en grundläggande användare</value>
+  </data>
+  <data name="UserCannotAssignedToParentLg" xml:space="preserve">
+    <value>Användaren kan inte tilldelas till en överordnad organisationsgrupp.</value>
+  </data>
+  <data name="UserDataCorruptedErrorMessage" xml:space="preserve">
+    <value>Ett problem uppstod vid dekryptering av användarinformation. Visa händelseloggarna för att ta reda på vilka fält och användare som drabbats. Hantera problemet genom att välja redigera och ange rätt information för var och en av de berörda användarna.</value>
+    <comment>Error message shown during the User List View in case Decryption fails for some of the Personal info of any Users.</comment>
+  </data>
+  <data name="UserDecryptionFailed" xml:space="preserve">
+    <value>Dekryptering av användardata misslyckades</value>
+  </data>
+  <data name="UserGroupsNotPermittedAtGivenOG" xml:space="preserve">
+    <value>Användargrupper får inte läggas till i den angivna organisationsgruppen</value>
+  </data>
+  <data name="UserInformationPrivacySettingWarning" xml:space="preserve">
+    <value>Integritetsinställningarna för användarinformation tillämpas inte på testanslutningsverktyget på sidan för katalogtjänstinställningar under System &gt; Företagsintegration.</value>
+  </data>
+  <data name="UserLockedOut" xml:space="preserve">
+    <value>Användarkontot är låst</value>
+  </data>
+  <data name="UsernameAndPassword" xml:space="preserve">
+    <value>Användarnamn och lösenord</value>
+  </data>
+  <data name="UserNoAccessForOGArg" xml:space="preserve">
+    <value>Användaren har inte åtkomstbehörighet för organisationsgruppen {0}</value>
+  </data>
+  <data name="UserNotFoundAd" xml:space="preserve">
+    <value>Användaren hittades inte i katalogtjänster. Användaren kan inte läggas till.</value>
+  </data>
+  <data name="UserQuestionsNotAuthenticated" xml:space="preserve">
+    <value>Ditt lösenord kan inte återställas förrän din säkerhetsfråga har besvarats på rätt sätt. Se det e-postmeddelande med lösenordsåterställning som du fick för instruktioner om hur du går vidare.</value>
+    <comment>Only appears if someone tries to directly hit the "reset password" page without first answering their security questions.</comment>
+  </data>
+  <data name="UserRoleNotValid" xml:space="preserve">
+    <value>Användarrollen är ogiltig.</value>
+  </data>
+  <data name="UsersSettings" xml:space="preserve">
+    <value>Användarinställningar</value>
+  </data>
+  <data name="UserTypeRequiredFieldValueDirectoryBasicArg" xml:space="preserve">
+    <value>Värdet för fältet Användartyp måste vara antingen {0} eller {1}.</value>
+  </data>
+  <data name="VideoImport" xml:space="preserve">
+    <value>Videoimportering</value>
+  </data>
+  <data name="ViewCustomReportsGettingStarted" xml:space="preserve">
+    <value>Komma igång med Intelligence</value>
+  </data>
+  <data name="ViewCustomReportsGettingStartedHelp" xml:space="preserve">
+    <value>Ger skrivskyddad åtkomst till Komma igång med Intelligence.</value>
+  </data>
+  <data name="ViewEducationOverview" xml:space="preserve">
+    <value>Visa utbildningsöversikt</value>
+  </data>
+  <data name="ViewManagedAdminPasswordHelp" xml:space="preserve">
+    <value>Styr behörighet till visning av hanterade adminlösenord</value>
+  </data>
+  <data name="ViewUserGroup.Plural" xml:space="preserve">
+    <value>Visa användargrupper</value>
+  </data>
+  <data name="WebAppEntitlements" xml:space="preserve">
+    <value>Webbappsberättiganden</value>
+  </data>
+  <data name="Websitefilterssettings" xml:space="preserve">
+    <value>Filterinställningar för webbplatser</value>
+  </data>
+  <data name="WindowsBspTenantIdDelete" xml:space="preserve">
+    <value>Ta bort TenantId för Windows BSP</value>
+  </data>
+  <data name="WorkspaceOneCloudAccessDeniesErrorMessage" xml:space="preserve">
+    <value>Du måste ha ett VMware Cloud Services-konto för att komma åt Workspace ONE. Kontakta din administratör för hjälp. {0}</value>
+  </data>
+</root>

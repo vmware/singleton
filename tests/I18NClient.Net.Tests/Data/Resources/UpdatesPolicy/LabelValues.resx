@@ -1,0 +1,493 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="CreateDate" xml:space="preserve">
+    <value>Created Date</value>
+  </data>
+  <data name="WSUSDescription" xml:space="preserve">
+    <value>Configure policies and distribute updates from an on-premises system</value>
+  </data>
+  <data name="WUActiveHoursDDUI" xml:space="preserve">
+    <value>Active Hours</value>
+  </data>
+  <data name="WUActiveHoursMaxRangeDDUI" xml:space="preserve">
+    <value>Time Length</value>
+  </data>
+  <data name="WUActiveHoursStartDDUI" xml:space="preserve">
+    <value>Start Time</value>
+  </data>
+  <data name="WUAllowAutoUpdateSwitchDDUI" xml:space="preserve">
+    <value>Allow Auto Update</value>
+  </data>
+  <data name="WUAllowAutoWindowsUpdateDownloadOverMeteredNetworkDDUI" xml:space="preserve">
+    <value>Allow Auto Windows Update Download Over Metered Network</value>
+  </data>
+  <data name="WUAllowMUUpdateServiceDDUI" xml:space="preserve">
+    <value>Allow Microsoft Application Updates</value>
+  </data>
+  <data name="WUAllowNonMicrosoftSignedUpdateDDUI" xml:space="preserve">
+    <value>Allow Non-Microsoft Signed Update</value>
+  </data>
+  <data name="WUAllowNonMicrosoftSignedUpdateDDUITooltip" xml:space="preserve">
+    <value>Allow updates signed by entities other than Microsoft.</value>
+  </data>
+  <data name="WUAllowStandbyStatesWhenSleepingOnBatteryDDUI" xml:space="preserve">
+    <value>Allow Stand-by States When Sleeping On Battery</value>
+  </data>
+  <data name="WUAllowStandbyWhenSleepingPluggedInDDUI" xml:space="preserve">
+    <value>Allow Stand-by States When Sleeping Plugged-In</value>
+  </data>
+  <data name="WUAllowTelemetryDDUI" xml:space="preserve">
+    <value>Telemetry</value>
+  </data>
+  <data name="WUAllowTelemetryDDUITooltip" xml:space="preserve">
+    <value>Go to Microsoft documentation for the most current definitions</value>
+  </data>
+  <data name="WUAllowUpdateServiceDDUI" xml:space="preserve">
+    <value>Allow Windows Update Service</value>
+  </data>
+  <data name="WUAllowUpdateServiceDDUITooltip" xml:space="preserve">
+    <value>Allow devices to periodically retreive information from public Windows Update services.</value>
+  </data>
+  <data name="WUAutoRestartDeadlineDDUI" xml:space="preserve">
+    <value>Enable</value>
+  </data>
+  <data name="WUAutoRestartDeadlineFieldGroupDDUI" xml:space="preserve">
+    <value>Auto Restart Deadline</value>
+  </data>
+  <data name="WUAutoRestartDeadlinePeriodInDaysDDUI" xml:space="preserve">
+    <value>Quality Updates</value>
+  </data>
+  <data name="WUAutoRestartDeadlinePeriodInDaysDDUITooltip" xml:space="preserve">
+    <value>Go to Microsoft documentation for the most current definitions for feature and quality updates.</value>
+  </data>
+  <data name="WUAutoRestartDeadlinePeriodInDaysForFeatureUpdatesDDUI" xml:space="preserve">
+    <value>Feature Updates</value>
+  </data>
+  <data name="WUAutoRestartDeadlinePeriodInDaysForFeatureUpdatesDDUITooltip" xml:space="preserve">
+    <value>Go to Microsoft documentation for the most current definitions for feature and quality updates.</value>
+  </data>
+  <data name="WUAutoRestartNotificationScheduleDDUI" xml:space="preserve">
+    <value>Restart Reminder Notification</value>
+  </data>
+  <data name="WUAutoRestartRequiredNotificationDismissalDDUI" xml:space="preserve">
+    <value>Notification Dismissal</value>
+  </data>
+  <data name="WUChoosePolicySource" xml:space="preserve">
+    <value>Select Policy Source</value>
+  </data>
+  <data name="WUClassification" xml:space="preserve">
+    <value>Classification</value>
+  </data>
+  <data name="WUConfigurationDeadlineDDUI" xml:space="preserve">
+    <value>Configuration Deadline</value>
+  </data>
+  <data name="WUConfigureDeadlineForFeatureUpdatesDDUI" xml:space="preserve">
+    <value>Feature Updates</value>
+  </data>
+  <data name="WUConfigureDeadlineForFeatureUpdatesDDUITooltip" xml:space="preserve">
+    <value>Go to Microsoft documentation for the most current definitions for feature and quality updates.</value>
+  </data>
+  <data name="WUConfigureDeadlineForQualityUpdatesDDUI" xml:space="preserve">
+    <value>Quality Updates</value>
+  </data>
+  <data name="WUConfigureDeadlineForQualityUpdatesDDUITooltip" xml:space="preserve">
+    <value>Go to Microsoft documentation for the most current definitions for feature and quality updates.</value>
+  </data>
+  <data name="WUConfigureDeadlineGracePeriodDDUI" xml:space="preserve">
+    <value>Grace Period</value>
+  </data>
+  <data name="WUConfigureDeadlineGracePeriodDDUITooltip" xml:space="preserve">
+    <value>Enter a value to extend the effective deadline set based on device activity</value>
+  </data>
+  <data name="WUConfigureDeadlineNoAutoRebootDDUI" xml:space="preserve">
+    <value>Auto Reboot</value>
+  </data>
+  <data name="WUConfigureFeatureUpdateUninstallPeriodDDUI" xml:space="preserve">
+    <value>Feature Update Uninstall Period</value>
+  </data>
+  <data name="WUConfigureFeatureUpdateUninstallPeriodDDUITooltip" xml:space="preserve">
+    <value>This time period begins once an update completes installation.</value>
+  </data>
+  <data name="WUConfigureFeatureUpdateUninstallPeriodErrorMsgDDUI" xml:space="preserve">
+    <value>Input number of days ranging from 2 to 60</value>
+  </data>
+  <data name="WUConfirmDeleteText" xml:space="preserve">
+    <value>Type "delete" to proceed</value>
+  </data>
+  <data name="WUCriticalDescription" xml:space="preserve">
+    <value>Configure Critical policies and distribute an all devices</value>
+  </data>
+  <data name="WUCustomDescription" xml:space="preserve">
+    <value>Configure customized policies and distribute updates</value>
+  </data>
+  <data name="WUDDeliveryOptimizationStorageDDUI" xml:space="preserve">
+    <value>Storage</value>
+  </data>
+  <data name="WUDDOMonthlyUploadDataCapDDUI" xml:space="preserve">
+    <value>Monthly Upload Data Limit</value>
+  </data>
+  <data name="WUDDORestrictPeerSelectionByDDUI" xml:space="preserve">
+    <value>Restrict Peer Selection by Subnet</value>
+  </data>
+  <data name="WUDeferFeatureUpdatesPeriodInDaysDDUI" xml:space="preserve">
+    <value>Feature Updates</value>
+  </data>
+  <data name="WUDeferFeatureUpdatesPeriodInDaysDDUITooltip" xml:space="preserve">
+    <value>0-180 (Days) for 1607+
+0-365 (Days) for 1703+</value>
+  </data>
+  <data name="WUDeferFeatureUpdatesPeriodInDaysErrorMsgDDUI" xml:space="preserve">
+    <value>Input number of days ranging from 2 to 365</value>
+  </data>
+  <data name="WUDeferQualityUpdatesPeriodInDaysDDUI" xml:space="preserve">
+    <value>Quality Updates</value>
+  </data>
+  <data name="WUDeletePolicies" xml:space="preserve">
+    <value>Delete Policies</value>
+  </data>
+  <data name="WUDeletePolicyMessage" xml:space="preserve">
+    <value>Deleteing this will have following impact...</value>
+  </data>
+  <data name="WUDeliveryOptimizationCacheServerSourceDDUI" xml:space="preserve">
+    <value>Cache Server Source</value>
+  </data>
+  <data name="WUDeliveryOptimizationCachingDDUI" xml:space="preserve">
+    <value>Update Caching</value>
+  </data>
+  <data name="WUDeliveryOptimizationHttpSourceDDUI" xml:space="preserve">
+    <value>HTTP Source</value>
+  </data>
+  <data name="WUDeliveryOptimizationNetworkingDDUI" xml:space="preserve">
+    <value>Network</value>
+  </data>
+  <data name="WUDeliveryOptimizationSchedulingDDUI" xml:space="preserve">
+    <value>Scheduling</value>
+  </data>
+  <data name="WUDeliveryOptimizationSchedulingTimePeriodDDUI" xml:space="preserve">
+    <value>Time Period</value>
+  </data>
+  <data name="WUDeliveryOptimizationSchedulingTimePeriodForegroundDDUI" xml:space="preserve">
+    <value>Foreground Download Limit</value>
+  </data>
+  <data name="WUDetectionFrequencyDDUI" xml:space="preserve">
+    <value>Update Scan Frequency</value>
+  </data>
+  <data name="WUDisableDualScanDDUI" xml:space="preserve">
+    <value>Disable Dual Scan</value>
+  </data>
+  <data name="WUDisableWUfBSafeguardsDDUI" xml:space="preserve">
+    <value>Disable Safe Guard</value>
+  </data>
+  <data name="WUDiscardPolicyChanges" xml:space="preserve">
+    <value>Discard Policy Changes</value>
+  </data>
+  <data name="WUDOAllowVPNPeerCachingDDUI" xml:space="preserve">
+    <value>Allow VPN Peer Caching</value>
+  </data>
+  <data name="WUDOCacheHostDDUI" xml:space="preserve">
+    <value>Cache Host</value>
+  </data>
+  <data name="WUDOCacheHostSourceDDUI" xml:space="preserve">
+    <value>Cache Host Source</value>
+  </data>
+  <data name="WUDODelayBackgroundDownloadFromHttpDDUI" xml:space="preserve">
+    <value>Passive (Background)</value>
+  </data>
+  <data name="WUDODelayCacheServerFallbackBackgroundDDUI" xml:space="preserve">
+    <value>Delay Cache Server Fallback Background</value>
+  </data>
+  <data name="WUDODelayCacheServerFallbackForegroundDDUI" xml:space="preserve">
+    <value>Delay Cache Server Fallback Foreground</value>
+  </data>
+  <data name="WUDODelayForegroundDownloadFromHttpDDUI" xml:space="preserve">
+    <value>Interactive (Foreground)</value>
+  </data>
+  <data name="WUDODelayForegroundDownloadFromHttpPlaceholderDDUI" xml:space="preserve">
+    <value>Enter a value between 1-86400. Enter 0 for cloud service management.</value>
+  </data>
+  <data name="WUDODownloadModeDDUI" xml:space="preserve">
+    <value>Download Mode</value>
+  </data>
+  <data name="WUDOGroupIdDDUI" xml:space="preserve">
+    <value>Group ID</value>
+  </data>
+  <data name="WUDOGroupIdSourceDDUI" xml:space="preserve">
+    <value>Group ID Source</value>
+  </data>
+  <data name="WUDOMaxCacheAgeDDUI" xml:space="preserve">
+    <value>MAX Cache Age</value>
+  </data>
+  <data name="WUDOMaxCacheSizeDDUI" xml:space="preserve">
+    <value>Max Cache Size</value>
+  </data>
+  <data name="WUDOMaxDownloadBandwidthDDUI" xml:space="preserve">
+    <value>Background Download Bandwidth</value>
+  </data>
+  <data name="WUDOMaxForegroundDownloadBandwidthDDUI" xml:space="preserve">
+    <value>Foreground Download Bandwidth</value>
+  </data>
+  <data name="WUDOMinBackgroundQosDDUI" xml:space="preserve">
+    <value>Minimum Background QoS</value>
+  </data>
+  <data name="WUDOMinBatteryPercentageAllowedToUploadDDUI" xml:space="preserve">
+    <value>Minimum Battery Limit</value>
+  </data>
+  <data name="WUDOMinDiskSizeAllowedToPeerDDUI" xml:space="preserve">
+    <value>Minimum Available Storage</value>
+  </data>
+  <data name="WUDOMinFileSizeToCacheDDUI" xml:space="preserve">
+    <value>Minimal Size To Cache</value>
+  </data>
+  <data name="WUDOMinRAMAllowedToPeerDDUI" xml:space="preserve">
+    <value>Minimum Available Memory</value>
+  </data>
+  <data name="WUDOModifyCacheDriveDDUI" xml:space="preserve">
+    <value>Cache Drive</value>
+  </data>
+  <data name="WUDOSetHoursToLimitBackgroundDownloadBandwidthDDUI" xml:space="preserve">
+    <value>Background Download Limit</value>
+  </data>
+  <data name="WUDOSetHoursToLimitBackgroundDownloadBandwidthEnableDisableDDUI" xml:space="preserve">
+    <value>Specify a timeperiod to use for limiting daily device bandwidth usage during foreground and background peer networking downloads. Values entered represent a percentage of total bandwidth available to the device.</value>
+  </data>
+  <data name="WUDOSetHoursToLimitBackgroundDownloadBandwidthNonBusinessHourPlaceholderDDUI" xml:space="preserve">
+    <value>Outside of time period</value>
+  </data>
+  <data name="WUDOSetHoursToLimitBackgroundDownloadBandwidthPlaceholderDDUI" xml:space="preserve">
+    <value>During time period</value>
+  </data>
+  <data name="WUDOSetHoursToLimitForegroundDownloadBandwidthDDUI" xml:space="preserve">
+    <value>Foreground Download Limit</value>
+  </data>
+  <data name="WUEnableDeliveryOptimizationDDUI" xml:space="preserve">
+    <value>Enable Delivery Optimization</value>
+  </data>
+  <data name="WUExcludeWUDriversInQualityUpdateDDUI" xml:space="preserve">
+    <value>Exclude Windows Update Drivers</value>
+  </data>
+  <data name="WUFBDescription" xml:space="preserve">
+    <value>Configure policies and distribute updates through Microsoft services</value>
+  </data>
+  <data name="WUIgnoreMOAppDownloadLimitDDUI" xml:space="preserve">
+    <value>Ignore Cellular Data Downoad Limit for Application Updates</value>
+  </data>
+  <data name="WUIgnoreMOUpdateDownloadLimitDDUI" xml:space="preserve">
+    <value>Ignore Cellular Data Downoad Limit for System Updates</value>
+  </data>
+  <data name="WUIntelligentActiveHoursDDUI" xml:space="preserve">
+    <value>Intelligent Active Hours</value>
+  </data>
+  <data name="WUKb" xml:space="preserve">
+    <value>KB</value>
+  </data>
+  <data name="WULabelDefineUpdateBehaviorDDUI" xml:space="preserve">
+    <value>Define Behavior of Update</value>
+  </data>
+  <data name="WULabelDefinitionDDUI" xml:space="preserve">
+    <value>Define Policy &amp; Select Smart Groups</value>
+  </data>
+  <data name="WULabelDeliveryOptimizationDDUI" xml:space="preserve">
+    <value>Define Delivery Optimization</value>
+  </data>
+  <data name="WULabelDeviceBehaviorDDUI" xml:space="preserve">
+    <value>Device Behavior</value>
+  </data>
+  <data name="WULabelDeviceSchedulingDDUI" xml:space="preserve">
+    <value>Define Schedules of Devices</value>
+  </data>
+  <data name="WULegendBodyDefineUpdateBehaviorDDUI" xml:space="preserve">
+    <value>Message: Can you imagine what we will be downloading in 20 years?</value>
+  </data>
+  <data name="WUNonPeerDownloadDelayDDUI" xml:space="preserve">
+    <value>Non-Peer Download Delay</value>
+  </data>
+  <data name="WUOrganizationGroupCount" xml:space="preserve">
+    <value>Policies</value>
+  </data>
+  <data name="WUPilotDescription" xml:space="preserve">
+    <value>Configure Pilot policies and distribute updates on testing devices</value>
+  </data>
+  <data name="WUPolicyDescLabel" xml:space="preserve">
+    <value>Add description (optional)</value>
+  </data>
+  <data name="WUPolicyNameDDUI" xml:space="preserve">
+    <value>Policy Name</value>
+  </data>
+  <data name="WUPolicyNameLabel" xml:space="preserve">
+    <value>Name your Policy</value>
+  </data>
+  <data name="WUProductionDescription" xml:space="preserve">
+    <value>Configure Production policies and distribute updates on specific devices</value>
+  </data>
+  <data name="WUReleaseDate" xml:space="preserve">
+    <value>Release Date</value>
+  </data>
+  <data name="WURevision" xml:space="preserve">
+    <value>Revision</value>
+  </data>
+  <data name="WUSelectLidCloseActionOnBatteryDDUI" xml:space="preserve">
+    <value>Select Lid Close Action On Battery</value>
+  </data>
+  <data name="WUSelectLidCloseActionPluggedInDDUI" xml:space="preserve">
+    <value>Select Lid Close Action Plugged-In</value>
+  </data>
+  <data name="WUSelectPolicySource" xml:space="preserve">
+    <value>Select Template</value>
+  </data>
+  <data name="WUSetProxyBehaviorForUpdateDetectionDDUI" xml:space="preserve">
+    <value>Proxy Behavior</value>
+  </data>
+  <data name="WUSmartGroupCount" xml:space="preserve">
+    <value>Smart Groups Associated</value>
+  </data>
+  <data name="WUTabDefineUpdateBehaviorDDUI" xml:space="preserve">
+    <value>Update Behavior</value>
+  </data>
+  <data name="WUTabDefinitionDDUI" xml:space="preserve">
+    <value>Definition</value>
+  </data>
+  <data name="WUTabDeliveryOptimizationDDUI" xml:space="preserve">
+    <value>Delivery Optimization</value>
+  </data>
+  <data name="WUTabDeviceBehaviorDDUI" xml:space="preserve">
+    <value>Device Behavior</value>
+  </data>
+  <data name="WUTabDeviceSchedulingDDUI" xml:space="preserve">
+    <value>Device Scheduling</value>
+  </data>
+  <data name="WUUnsavedPolicyPrompt" xml:space="preserve">
+    <value>You have unsaved policy setting changes. Are you sure you want to leave this page?</value>
+  </data>
+  <data name="WUUpdateBranchDDUI" xml:space="preserve">
+    <value>Update Branch</value>
+  </data>
+  <data name="WUUpdateName" xml:space="preserve">
+    <value>Update Name</value>
+  </data>
+  <data name="WUUpdateServiceUrlDDUI" xml:space="preserve">
+    <value>WSUS Server URL</value>
+  </data>
+  <data name="WUUpdateSource" xml:space="preserve">
+    <value>Update Source</value>
+  </data>
+  <data name="WUWindowsPolicySetup" xml:space="preserve">
+    <value>Windows Policy Setup</value>
+  </data>
+</root>

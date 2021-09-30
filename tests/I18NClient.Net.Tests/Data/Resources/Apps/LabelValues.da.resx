@@ -1,0 +1,2908 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AccessDeniedForOG" xml:space="preserve">
+    <value>Den aktuelle organisations gruppe har ikke adgang til appen</value>
+  </data>
+  <data name="AccessPoliciesIDMSetupArg" xml:space="preserve">
+    <value>Workspace ONE skal opsættes, før der kan bruges adgangspolitikker. Gå til {0}, og udfør opsætning af Workspace ONE. Når du er færdig, skal du logge af og logge på igen for at prøve igen.</value>
+  </data>
+  <data name="AccountNameExample" xml:space="preserve">
+    <value>f.eks. VMware</value>
+  </data>
+  <data name="AccountNotifyEmail" xml:space="preserve">
+    <value>Indstilling for e-mailnotifikation</value>
+  </data>
+  <data name="AccountNotifyEmailInfo" xml:space="preserve">
+    <value>E-mailnotifikationer</value>
+  </data>
+  <data name="AccountNotifyPush" xml:space="preserve">
+    <value>ENS2</value>
+  </data>
+  <data name="AccountNotifyPushInfo" xml:space="preserve">
+    <value>Aktiverer eller deaktiverer e-mailnotifikationstjenesten.</value>
+  </data>
+  <data name="AccountSMIMESignByDefault" xml:space="preserve">
+    <value>Signer automatisk e-mail</value>
+  </data>
+  <data name="AccountSMIMESignByDefaultInfo" xml:space="preserve">
+    <value>Aktiverer S/MIME-signering som standard, når visning af meddelelse startes</value>
+  </data>
+  <data name="AccountSyncCalendar" xml:space="preserve">
+    <value>Indstilling for kalendersynkronisering</value>
+  </data>
+  <data name="AccountSyncCalendarInfo" xml:space="preserve">
+    <value>Deaktiver synkronisering af kalender til enheden</value>
+  </data>
+  <data name="AccountSyncContact" xml:space="preserve">
+    <value>Indstillinger for synkronisering af kontakter</value>
+  </data>
+  <data name="AccountSyncContactInfo" xml:space="preserve">
+    <value>Deaktiver synkronisering af kontakter til enheden</value>
+  </data>
+  <data name="AccountSyncEmail" xml:space="preserve">
+    <value>Indstilling for e-mailsynkronisering</value>
+  </data>
+  <data name="AccountSyncEmailInfo" xml:space="preserve">
+    <value>Deaktiver synkronisering af e-mail til enheden</value>
+  </data>
+  <data name="AccountUseOAuth" xml:space="preserve">
+    <value>Moderne godkendelse</value>
+  </data>
+  <data name="AccountUseOAuthInfo" xml:space="preserve">
+    <value>Når dette er aktiveret, bliver brugere omdirigeret til loginsiden for godkendelse under tilmelding</value>
+  </data>
+  <data name="ActionsGrid" xml:space="preserve">
+    <value>Handlingsgitter</value>
+  </data>
+  <data name="ActionsNotShownForProductBasedApps" xml:space="preserve">
+    <value>Individuelle installations- og fjernelseshandlinger er begrænset for apps, der er en del af en 'produkt'-pakke.</value>
+  </data>
+  <data name="ActivateApplication" xml:space="preserve">
+    <value>Aktiver app</value>
+  </data>
+  <data name="AddContingencies" xml:space="preserve">
+    <value>Tilføj uforudsete data</value>
+  </data>
+  <data name="AIPSensitivityLabels" xml:space="preserve">
+    <value>AIP-følsomhedsmærkater</value>
+  </data>
+  <data name="AllAppsImportedFromPlay" xml:space="preserve">
+    <value>Alle apps er allerede blevet importeret</value>
+  </data>
+  <data name="AllAppsTab" xml:space="preserve">
+    <value>Alle apps</value>
+  </data>
+  <data name="Alloted" xml:space="preserve">
+    <value>Tildelt</value>
+  </data>
+  <data name="AllowActionArchiveInfo" xml:space="preserve">
+    <value>Dette giver tilladelse til eller blokerer for muligheden til at arkivere e-mails</value>
+  </data>
+  <data name="AllowActionSpamInfo" xml:space="preserve">
+    <value>Hvis dette er deaktiveret, er indstillingen Spam ikke tilgængelig for slutbrugere i Workspace ONE Boxer. Hvis dette er aktiveret, og e-mailadressen til videresendelse ikke er angivet, flyttes spam-rapporterne til Uønsket e-mail.</value>
+  </data>
+  <data name="AllowAnnotations" xml:space="preserve">
+    <value>Tillad anmærkninger</value>
+  </data>
+  <data name="AllowAnnotationsTip" xml:space="preserve">
+    <value>Tillader brug af værktøjer til håndskrift og fremhævning.</value>
+  </data>
+  <data name="AllowAppRemovalsWithoutProtectionTimeWindowHelp" xml:space="preserve">
+    <value>Når administratorer har godkendt og genoptaget fjernelser, vil beskyttelse ikke blive udløst for den pågældende app for det interval, der er planlagt her, for at tillade fjernelseshandlingen. Efter intervallet udløber, vil beskyttelse igen blive udløst, hvis berørte enheder når det antal. der er konfigureret i 'arkiverede berørte enheder'.</value>
+  </data>
+  <data name="AllowArchivingEmails" xml:space="preserve">
+    <value>Tillad arkivering af e-mails</value>
+  </data>
+  <data name="AllowAttachmentsDownloadInfo" xml:space="preserve">
+    <value>Aktiverer eller deaktiverer download af vedhæftede filer.</value>
+  </data>
+  <data name="AllowAttachmentsInfo" xml:space="preserve">
+    <value>Aktiverer eller deaktiverer vedhæftede filer ved afsendelse af e-mail</value>
+  </data>
+  <data name="AllowAttachmentsTip" xml:space="preserve">
+    <value>Aktiverer eller deaktiverer funktionen til notevedhæftning. Når den er deaktiveret, er ingen vedhæftede filtyper tilladt.</value>
+  </data>
+  <data name="AllowCameraTip" xml:space="preserve">
+    <value>Aktiverer eller deaktiverer indstilling for enhedskamera.</value>
+  </data>
+  <data name="AllowCrashReportingInfo" xml:space="preserve">
+    <value>Som standard har Boxer tilladelse til at rapportere nedbrud anonymt. Vi anbefaler at lade dette være aktiveret, så vi kan registrere og udbedre nedbrud</value>
+  </data>
+  <data name="AllowDocProvidersInfo" xml:space="preserve">
+    <value>Aktiverer eller deaktiverer vedhæftede filer fra eksterne udbydere (iCloud, Dropbox, Google Drive, osv.) i Workspace ONE Boxer.</value>
+  </data>
+  <data name="AllowDocumentScanner" xml:space="preserve">
+    <value>Tillad dokumentscanner</value>
+  </data>
+  <data name="AllowDocumentScannerTip" xml:space="preserve">
+    <value>Aktiverer eller deaktiverer funktionen til dokumentscanning.</value>
+  </data>
+  <data name="AllowEnterpriseContentInfo" xml:space="preserve">
+    <value>Enterprise Content henter din lagerkonfiguration i Workspace ONE Content til Boxer for at kunne gemme og vise filer til og fra dine onlinelagre. SSO skal være aktiveret for denne konfiguration.</value>
+  </data>
+  <data name="AllowExchange" xml:space="preserve">
+    <value>Tillad Exchange</value>
+  </data>
+  <data name="AllowGallery" xml:space="preserve">
+    <value>Tillad galleri</value>
+  </data>
+  <data name="AllowGalleryTip" xml:space="preserve">
+    <value>Aktiverer eller deaktiverer adgang og brug af enhedens billedgalleri.</value>
+  </data>
+  <data name="AllowHyperlinksTip" xml:space="preserve">
+    <value>Tillad, at brugere kan angive hyperlinks.</value>
+  </data>
+  <data name="AllowList" xml:space="preserve">
+    <value>Tillad-liste</value>
+  </data>
+  <data name="AllowLocalCalendarsInfo" xml:space="preserve">
+    <value>Indstil til sandt for at aktivere lokale kalendere i Workspace ONE Boxer. Hvis dette er deaktiveret, er indstillingen Lokale kontakter i Workspace ONE Boxer ikke tilgængelig for slutbrugere.</value>
+  </data>
+  <data name="AllowMetricsInfo" xml:space="preserve">
+    <value>Vælg, om du ønsker at deaktivere indsamling af anonyme metrikker, der hjælper os med at træffe produktbeslutninger.</value>
+  </data>
+  <data name="AllowOpenInInfo" xml:space="preserve">
+    <value>Aktiverer eller deaktiverer vedhæftning af filer fra andre apps ved hjælp af åbn i eller del til Workspace ONE Boxer. Når åbn i eller deling af vedhæftede filer er deaktiveret, vises meddelelsen "Din administrator har begrænset vedhæftede filer fra eksterne apps".</value>
+  </data>
+  <data name="AllowRemovalsForDuration" xml:space="preserve">
+    <value>Tillad fjernelse uden beskyttelse (timer)</value>
+  </data>
+  <data name="AllowTextBoxes" xml:space="preserve">
+    <value>Tillad tekstfelter</value>
+  </data>
+  <data name="AllowTextBoxesTip" xml:space="preserve">
+    <value>Tillader tekstfelter.</value>
+  </data>
+  <data name="AllowUserInstallDeferralLabel" xml:space="preserve">
+    <value>Tillad udsættelse af brugerinstallation</value>
+  </data>
+  <data name="AllowUserInstallDeferralTooltip" xml:space="preserve">
+    <value>Aktivér for at give brugeren tilladelse til at udskyde installation af denne app</value>
+  </data>
+  <data name="AllowUserRegistrationMessage" xml:space="preserve">
+    <value>Gør det muligt for enhver bruger, der har adgang til din miljø-URL-adresse og dit gruppe-id at oprette en brugerkonto og få adgang til virksomhedsressourcer. Fravælg denne indstilling for at forhindre uautoriserede brugere i at få adgang, og gå til Konti &gt; Brugere &gt; Listevisning &gt; "Tilføj bruger" for at oprette brugerkonti.</value>
+  </data>
+  <data name="AllowVoiceRecordings" xml:space="preserve">
+    <value>Tillad stemmeoptagelser</value>
+  </data>
+  <data name="AllowVoiceRecordingsTip" xml:space="preserve">
+    <value>Aktiverer eller deaktiverer brugen af lydoptagelse.</value>
+  </data>
+  <data name="AndroidDerivedCredentialSmimeForFirstaccount" xml:space="preserve">
+    <value>{0} understøtter kun enkelt S/MIME certifikat. Vælg kun denne indstilling for primær styret e-mailkonto.</value>
+  </data>
+  <data name="AppAlreadyExistsUnderProductProvisioning" xml:space="preserve">
+    <value>Denne app findes allerede under "produktklargøring" og kan ikke uploades under "apps &amp; bøger". Du kan slette app-forekomsten fra "produktklargøring" og prøve at uploade igen. For at undgå app-fjernelser skal du sørge for, at enheder, der har ret til at beholde appen, alle er en del af tildelingen.</value>
+  </data>
+  <data name="AppAvatarsDefault" xml:space="preserve">
+    <value>Aktivér avatarer</value>
+  </data>
+  <data name="AppBulkAction" xml:space="preserve">
+    <value>App-bulkhandling</value>
+  </data>
+  <data name="AppCategories" xml:space="preserve">
+    <value>Appkategorier</value>
+  </data>
+  <data name="AppCompliance" xml:space="preserve">
+    <value>Appcompliance</value>
+  </data>
+  <data name="AppComplianceReportedCompliant" xml:space="preserve">
+    <value>App-compliance rapporteret som compliant</value>
+  </data>
+  <data name="AppComplianceReportedNonCompliant" xml:space="preserve">
+    <value>App-compliance rapporteret som Ikke-compliant</value>
+  </data>
+  <data name="AppComplianceReportedUnknown" xml:space="preserve">
+    <value>App-compliance rapporteret som ukendt</value>
+  </data>
+  <data name="AppConfigSectionMmaInfoMsg" xml:space="preserve">
+    <value>Sørg for, at denne KVP gælder på tværs af hele appen. Alle konfigurationer, der kun gælder for en bestemt e-mailkonto, skal flyttes til "brugerdefineret kontokonfiguration" i "E-mailindstillinger" for at undgå afbrydelser.</value>
+  </data>
+  <data name="AppConversationViewDefault" xml:space="preserve">
+    <value>Samtale-gruppering</value>
+  </data>
+  <data name="AppDefaultBrowser" xml:space="preserve">
+    <value>Begræns til standardbrowser</value>
+  </data>
+  <data name="AppDefaultBrowserExceptions" xml:space="preserve">
+    <value>Browser-undtagelser</value>
+  </data>
+  <data name="AppDefaultBrowserExceptionsInfo" xml:space="preserve">
+    <value>Hvis hyperlinks er begrænset i konsollen, kan du tilføje en liste over undtagelser for domæner/sites for altid at åbne i standardbrowseren eller den indbyggede browser. Hvis hyperlinks ikke er begrænsede, kan du tilføje en liste over undtagelser for domæner/sites, der altid skal åbnes i Workspace ONE Web. Undtagelsesliste vil kun matche jokertegn, underdomæner, domæner. Eksempel: AppDefaultBrowserExceptions = ["*.vmware.com", "jira*.vmware.com", "internal.vmware.com", "vmware.com"]</value>
+  </data>
+  <data name="AppDefaultBrowserTooltip" xml:space="preserve">
+    <value>Åbn alle links i standardbrowseren.</value>
+  </data>
+  <data name="AppDefaultCallerID" xml:space="preserve">
+    <value>Standardopkalds-ID</value>
+  </data>
+  <data name="AppDeploymentInlineHelpPublic" xml:space="preserve">
+    <value>Udrul applikationen automatisk (Auto) eller manuelt (On-demand) efter behov.</value>
+  </data>
+  <data name="AppDetails" xml:space="preserve">
+    <value>App-oplysninger</value>
+  </data>
+  <data name="AppDetailsView" xml:space="preserve">
+    <value>Vis appdetaljer</value>
+  </data>
+  <data name="AppDomainsInternal" xml:space="preserve">
+    <value>Liste over interne domæner</value>
+  </data>
+  <data name="AppDomainsWarning" xml:space="preserve">
+    <value>Advarsel om ekstern modtager</value>
+  </data>
+  <data name="AppDomainsWarningInfo" xml:space="preserve">
+    <value>Giver slutbrugeren besked, når vedkommende sender en besked til en ekstern modtager.</value>
+  </data>
+  <data name="AppEnableKeyWrappingOnlyMode" xml:space="preserve">
+    <value>Aktivér tilstand for udelukkende hurtig SDK-nøgle-wrapping</value>
+  </data>
+  <data name="AppEnableKeyWrappingOnlyModeInfo" xml:space="preserve">
+    <value>Hold aktiveret for at udnytte sikkerhedsfunktionerne for nøgle-wrapping fuldt ud</value>
+  </data>
+  <data name="AppForceActivateSSO" xml:space="preserve">
+    <value>Tillad Single Sign-On (SSO)</value>
+  </data>
+  <data name="AppForceActivateSSOInfo" xml:space="preserve">
+    <value>Dette aktiverer SSO, denne nøgle frarådes, når SSO altid er slået til. Dette er også påkrævet for flere funktioner, herunder Enterprise Content.</value>
+  </data>
+  <data name="AppGroup" xml:space="preserve">
+    <value>Appgruppe</value>
+  </data>
+  <data name="AppGroups" xml:space="preserve">
+    <value>Appgrupper</value>
+  </data>
+  <data name="AppInstallDeferred" xml:space="preserve">
+    <value>Installation er blevet udsat</value>
+  </data>
+  <data name="AppKeyWrappingOnlyMode" xml:space="preserve">
+    <value>Tilstand for udelukkende hurtig SDK-nøgle-wrapping</value>
+  </data>
+  <data name="AppleUpdateAvailableHelpText" xml:space="preserve">
+    <value>Denne kolonne angiver, om et program er på den seneste version, eller hvis der er en tilgængelig opdatering. Dette understøttes kun for apps i App Store.</value>
+  </data>
+  <data name="ApplicationApprovedFordeviceAssignment" xml:space="preserve">
+    <value>App gjort klar for enhedsbaseret tildeling. Bemærk venligst at alle iOS9+ og macOS 10.11+ enheder vil modtage en licens per enhed. Disse enheder vil ikke kræve brug af et Apple-id for modtagelse af appen.</value>
+  </data>
+  <data name="ApplicationApprovedFordeviceAssignmentWithTvOS" xml:space="preserve">
+    <value>App gjort klar for enhedsbaseret tildeling. Bemærk venligst, at alle iOS9+ og macOS 10.11+ enheder vil modtage en licens per enhed. Disse enheder vil ikke kræve brug af et Apple-id for modtagelse af appen. tvOS-enheder kan kun bruge enhedsbaserede licenser og kræver ikke handling fra adminstrator for at kunne bruges.</value>
+  </data>
+  <data name="ApplicationAttributes" xml:space="preserve">
+    <value>Attributter</value>
+  </data>
+  <data name="ApplicationAttributesTooltip" xml:space="preserve">
+    <value>App-attributter bruges til at give enhedsspecifikke oplysninger om apps, der skal anvendes under deres operation, f.eks. en liste over domæner, som er associeret med en bestemt organisation.</value>
+  </data>
+  <data name="ApplicationBundleId" xml:space="preserve">
+    <value>App bundt-id</value>
+  </data>
+  <data name="ApplicationCantDeleteRetireConfirmation" xml:space="preserve">
+    <value>Hvis du sletter denne app, fjernes den fra en eller flere tildelte enheder, hvor den er styret af Workspace ONE, og den udgår i konsollen. Vil du fortsætte?</value>
+  </data>
+  <data name="ApplicationConfigMigrationJob" xml:space="preserve">
+    <value>Appkonfigurationsoverførselsjob</value>
+  </data>
+  <data name="ApplicationDeactivateDescription" xml:space="preserve">
+    <value>Deaktivering af en app vil afinstallere alle versioner af appen fra alle app-enheder, hvor den er styret af Workspace ONE. Gå venligst forsigtigt til værks.</value>
+  </data>
+  <data name="ApplicationDeploymentStatusStaleTime" xml:space="preserve">
+    <value>Marker app UEM-kommando forældet efter</value>
+  </data>
+  <data name="ApplicationDeploymentStatusStaleTimeForAndroid" xml:space="preserve">
+    <value>Android</value>
+  </data>
+  <data name="ApplicationDeploymentStatusStaleTimeForIos" xml:space="preserve">
+    <value>iOS</value>
+  </data>
+  <data name="ApplicationDeploymentStatusStaleTimeForMacOs" xml:space="preserve">
+    <value>macOS</value>
+  </data>
+  <data name="ApplicationDeploymentStatusStaleTimeForWindows" xml:space="preserve">
+    <value>Windows</value>
+  </data>
+  <data name="ApplicationDeploymentStatusStaleTimeTooltip" xml:space="preserve">
+    <value>Indstil hvor mange minutter efter en enhed har bekræftet den sidste UEM-kommando (men ikke har fuldført handlingen) UEM-kommandoen skal markeres som "forældet." Forældede kommandoer vil blive genudløst, når apps udgives. App-kataloget vil ikke længere vise apps som "behandler" til slutbrugere, men i stedet aktivere handlingerne "Installer igen" eller "Opdater".</value>
+  </data>
+  <data name="ApplicationGroupActivated" xml:space="preserve">
+    <value>App-gruppe aktiveret</value>
+  </data>
+  <data name="ApplicationGroupDeactivated" xml:space="preserve">
+    <value>App-gruppe deaktiveret</value>
+  </data>
+  <data name="ApplicationGroupDeleted" xml:space="preserve">
+    <value>App-gruppe slettet</value>
+  </data>
+  <data name="ApplicationInKiosk" xml:space="preserve">
+    <value>BEMÆRK: Denne app er inkluderet i en kioskprofil. Opdater venligst profilen efter fjernelse af appen.</value>
+  </data>
+  <data name="ApplicationMaxFileSizeWithCdn" xml:space="preserve">
+    <value>Maksimal filstørrelse for app med CDN</value>
+  </data>
+  <data name="ApplicationMaxFileSizeWithCdnToolTip" xml:space="preserve">
+    <value>Når CDN er aktiveret, vil den største af værdierne "Maksimal filstørrelse" og "Maksimal filstørrelse med CDN" blive anvendt til upload for denne organisationsgruppe.</value>
+  </data>
+  <data name="ApplicationPublished" xml:space="preserve">
+    <value>Appudgivelse lykkedes</value>
+  </data>
+  <data name="ApplicationPublishFailed" xml:space="preserve">
+    <value>Appudgivelse slog fejl</value>
+  </data>
+  <data name="ApplicationPublishStarted" xml:space="preserve">
+    <value>Appudgivelse påbegyndt</value>
+  </data>
+  <data name="ApplicationReasonChange" xml:space="preserve">
+    <value>Årsag til ændring af app</value>
+  </data>
+  <data name="ApplicationRetireDescription" xml:space="preserve">
+    <value>Hvis du trækker en version af en app tilbage, vil denne version blive afinstalleret på alle enheder, hvor den er styret af Workspace ONE. Hvis den er tilgængelig, vil en tidligere version blive pushet ud på enhederne. Gå venligst forsigtigt til værks.</value>
+  </data>
+  <data name="ApplicationSample" xml:space="preserve">
+    <value>Appeksempel</value>
+  </data>
+  <data name="ApplicationSource" xml:space="preserve">
+    <value>Appkilde</value>
+  </data>
+  <data name="ApplicationsSetting" xml:space="preserve">
+    <value>Apps indstilling</value>
+  </data>
+  <data name="ApplicationsSettings" xml:space="preserve">
+    <value>Apps indstillinger</value>
+  </data>
+  <data name="ApplicationTransforms" xml:space="preserve">
+    <value>App-transformeringer</value>
+  </data>
+  <data name="ApplicationUemVersionAlreadyExists" xml:space="preserve">
+    <value>Appens UEM-version findes allerede.</value>
+  </data>
+  <data name="ApplicationUserAppRatingDescription" xml:space="preserve">
+    <value>Appen {0} – bruger-bedømmelser af appen {1} ud af 5 stjerner</value>
+    <comment>The first placeholder in the label key is for the application name and the second placeholder is for the app rating count by user.</comment>
+  </data>
+  <data name="ApplicationUUID" xml:space="preserve">
+    <value>App-UUID</value>
+  </data>
+  <data name="AppLogAggregationMode" xml:space="preserve">
+    <value>Logføring af aggregeringstilstand</value>
+  </data>
+  <data name="AppLogAggregationUrl" xml:space="preserve">
+    <value>Aggregerings-URL-adresse for logninger</value>
+  </data>
+  <data name="AppMobileFlowsAutoEnableConnectors" xml:space="preserve">
+    <value>Automatisk Mobile Flows-aktivering af konnektorer</value>
+  </data>
+  <data name="AppMobileFlowsEnabled" xml:space="preserve">
+    <value>Mobile Flows</value>
+  </data>
+  <data name="AppMobileFlowsEnabledInfo" xml:space="preserve">
+    <value>Konfigurer information om Mobile Flows-servere, som Boxer kan integrere med</value>
+  </data>
+  <data name="AppMobileFlowsHost" xml:space="preserve">
+    <value>Mobile Flows-vært</value>
+  </data>
+  <data name="AppMobileFlowsSyncTimeHours" xml:space="preserve">
+    <value>Mobil Flows-synkronisering, timer</value>
+  </data>
+  <data name="AppMobileFlowsSyncTimeHoursInfo" xml:space="preserve">
+    <value>Anmod ikke om Mobile Flow-kort for e-mails, der er sendt tidligere end denne værdi (i timer)</value>
+  </data>
+  <data name="AppMobileFlowsvIDM" xml:space="preserve">
+    <value>Godkendelsesserver til Mobile Flows</value>
+  </data>
+  <data name="AppNameIsRequired" xml:space="preserve">
+    <value>App-navn er påkrævet for at få vist resultater.</value>
+  </data>
+  <data name="AppNotExistOrUnauthorizedAccess" xml:space="preserve">
+    <value>App findes ikke, eller du har ikke tilladelse til at få adgang til den.</value>
+  </data>
+  <data name="AppPasscode" xml:space="preserve">
+    <value>App-adgangskode</value>
+  </data>
+  <data name="AppPatchUpdate" xml:space="preserve">
+    <value>App-patchopdatering</value>
+  </data>
+  <data name="AppPhishEmailAddress" xml:space="preserve">
+    <value>Rapportér phishing til</value>
+  </data>
+  <data name="AppPhishEmailAddressInfo" xml:space="preserve">
+    <value>Konfigurer e-mailadressen, der skal modtage den rapporterede phishing-e-mail</value>
+  </data>
+  <data name="AppPlainTextMode" xml:space="preserve">
+    <value>Almindelig teksttilstand</value>
+  </data>
+  <data name="AppPlainTextModeInfo" xml:space="preserve">
+    <value>Vælg, hvis du ønsker, at Boxer kun skal synkroniseres i almindelig teksttilstand. Intet HTML-indhold er tilladt</value>
+  </data>
+  <data name="AppPolicies" xml:space="preserve">
+    <value>App-politikker</value>
+  </data>
+  <data name="AppPurebredPackageName" xml:space="preserve">
+    <value>Purebred-app-id</value>
+  </data>
+  <data name="AppPurebredPackageNameInfo" xml:space="preserve">
+    <value>Pakke/bundt-id for Purebred-appen. Dette id vil blive anvendt til at bekræfte Purebred-appen på enheden til brug med Boxer.</value>
+  </data>
+  <data name="AppPurebredPublicKey" xml:space="preserve">
+    <value>Purebred-app-signatur</value>
+  </data>
+  <data name="AppPurebredPublicKeyInfo" xml:space="preserve">
+    <value>Den offentlige signatur for Purebred-appen. Denne nøgle vil blive anvendt til at bekræfte Purebred-appen på enheden til brug med Boxer.</value>
+  </data>
+  <data name="AppRefetchEmptyLinksUsingMime" xml:space="preserve">
+    <value>Hent igen tomme links med MIME</value>
+  </data>
+  <data name="AppRefetchEmptyLinksUsingMimeInfo" xml:space="preserve">
+    <value>For e-mails, der er hentet via HTML, som indeholder ikke-standardmæssige URL-skemaer (såsom RSA-appen), der peger på domæner uden server, erstatter Exchange URL-adressen med to mellemrum. KVP gør det muligt for Boxer at registrere denne hændelse og downloade den berørte tekst igen ved hjælp af MIME, som ikke er underlagt det samme problem for URL-adresseudskiftning.</value>
+  </data>
+  <data name="AppRemovalProtectionLogDevicesHeader" xml:space="preserve">
+    <value>Beskyttelse mod fjernelse af app fra enhed</value>
+  </data>
+  <data name="AppRetriesOnFailedInitialAuth" xml:space="preserve">
+    <value>Angiver antallet nye godkendelsesforsøg</value>
+  </data>
+  <data name="AppRetriesOnFailedInitialAuthInfo" xml:space="preserve">
+    <value>Angiver antallet af godkendelsesforsøg ved fejl</value>
+  </data>
+  <data name="AppSampleInformation" xml:space="preserve">
+    <value>Oplysninger om app-eksempel</value>
+  </data>
+  <data name="AppSampleLastSeen" xml:space="preserve">
+    <value>App-eksempel sidst set</value>
+  </data>
+  <data name="AppSequencingTab" xml:space="preserve">
+    <value>App-rækkefølge</value>
+  </data>
+  <data name="AppSkipTutorial" xml:space="preserve">
+    <value>Spring i app-selvstudiet over</value>
+  </data>
+  <data name="AppSkipTutorialTooltip" xml:space="preserve">
+    <value>Spring over i app-selvstudiet ved første opstart</value>
+  </data>
+  <data name="AppSpamForwardAddress" xml:space="preserve">
+    <value>Rapportér spam til</value>
+  </data>
+  <data name="AppSpamForwardAddressInfo" xml:space="preserve">
+    <value>Konfigurer e-mailadressen, der skal modtage den rapporterede spam-e-mail</value>
+  </data>
+  <data name="AppsTabSegregationFeatureInformation" xml:space="preserve">
+    <value>Fanen Styrede apps viser alle macOS-apps og softwareinstallationsprogrammer, der administreres i Workspace ONE UEM. Fanen Alle apps viser en skrivebeskyttet macOS-rapporteret liste over alle. app-pakker, der er installeret på enheden. Tilgængeligt indhold under fanen Alle apps konfigureres i UEM-konsollens privatlivsindstillinger for personlige apps.</value>
+  </data>
+  <data name="AppStatus" xml:space="preserve">
+    <value>App-status</value>
+  </data>
+  <data name="AppsTermsOfUseNotification" xml:space="preserve">
+    <value>App slutbrugerlicensaftale opdateringsnotifikation</value>
+  </data>
+  <data name="AppStore" xml:space="preserve">
+    <value>App-butik</value>
+  </data>
+  <data name="AppStoreAppSourceHelpText" xml:space="preserve">
+    <value>Denne kolonne angiver, om et program er tilgængeligt i App Store.</value>
+  </data>
+  <data name="AppSwipesLeftLongDefault" xml:space="preserve">
+    <value>Venstre langt strøg standard</value>
+  </data>
+  <data name="AppSwipesLeftShortDefault" xml:space="preserve">
+    <value>Venstre kort strøg standard</value>
+  </data>
+  <data name="AppSwipesRightLongDefault" xml:space="preserve">
+    <value>Højre langt strøg standard</value>
+  </data>
+  <data name="AppSwipesRightShortDefault" xml:space="preserve">
+    <value>Højre kort strøg standard</value>
+  </data>
+  <data name="AppsWithConfigurationErrors" xml:space="preserve">
+    <value>Apps med konfigurationsfejl</value>
+  </data>
+  <data name="AppUpdatedDate" xml:space="preserve">
+    <value>App-opdateringsdato</value>
+  </data>
+  <data name="AppUpdateSource" xml:space="preserve">
+    <value>App-opdateringskilde</value>
+  </data>
+  <data name="AppUrl" xml:space="preserve">
+    <value>App-URL</value>
+  </data>
+  <data name="AppVersionDetailsHelp" xml:space="preserve">
+    <value>Workspace ONE UEM bevarer en intern version for hver intern app-pakke. Dette felt udfyldes automatisk med app-versionen. Dette felt bruges til at identificere den nyeste version, der skal tildeles og udrulles til slutbrugerenheder.</value>
+  </data>
+  <data name="AppVersionInformationFourDecimal" xml:space="preserve">
+    <value>Alle felter er påkrævet og må ikke overskride maksimumværdien for et 32-bit heltal (2.147.483.647).</value>
+  </data>
+  <data name="AppVersionNeedsAssignment" xml:space="preserve">
+    <value>App-version skal tildeles</value>
+  </data>
+  <data name="AppVersionNeedsAssignmentInfo" xml:space="preserve">
+    <value>Den seneste app-version skal mindst have én tildeling.</value>
+  </data>
+  <data name="AppVersionNeedsAssignmentMessage" xml:space="preserve">
+    <value>Den seneste app-version har ikke en app-tildeling. Arbejdsgangstildelinger, der anvender denne app, vil fortsætte med at anvende den tidligere app-version og dens standardpolitik. For at anvende den nye app-version skal du oprette en app-tildeling.</value>
+  </data>
+  <data name="AppVersionUpdateNotification" xml:space="preserve">
+    <value>Notifikation om opdatering af App-version</value>
+  </data>
+  <data name="AppWorkflowsMenuDescription" xml:space="preserve">
+    <value>App-arbejdsprocesser</value>
+  </data>
+  <data name="AppWorkflowsMenuItem" xml:space="preserve">
+    <value>App-arbejdsprocesser</value>
+  </data>
+  <data name="Architecture" xml:space="preserve">
+    <value>Arkitektur</value>
+  </data>
+  <data name="ArgAssignedCount" xml:space="preserve">
+    <value>{0} Tildelt</value>
+  </data>
+  <data name="ArgInstalledCount" xml:space="preserve">
+    <value>{0} Installeret</value>
+  </data>
+  <data name="ArgNotInstalledCount" xml:space="preserve">
+    <value>{0} Ikke installeret</value>
+  </data>
+  <data name="ArgVersions" xml:space="preserve">
+    <value>{0} version(er)</value>
+  </data>
+  <data name="ARMAppDependencies" xml:space="preserve">
+    <value>ARM-afhængigheder</value>
+  </data>
+  <data name="ArpMessage" xml:space="preserve">
+    <value>Fjernelser af din app er sat på pause, fordi de nåede fjernelsesgrænsen.</value>
+  </data>
+  <data name="AssignedArgOutOfTotalInstalledArg" xml:space="preserve">
+    <value>{0} ud af {1} blev tildelt</value>
+  </data>
+  <data name="AssignedButNotInstalled" xml:space="preserve">
+    <value>Tildelt, men ikke installeret</value>
+  </data>
+  <data name="AssignedConfiguration" xml:space="preserve">
+    <value>Tildelt konfiguration</value>
+  </data>
+  <data name="AssignmentCannotBeRemovedForAnAppAssociatedWithWorkflow" xml:space="preserve">
+    <value>Tildeling kan ikke fjernes for en app, som er del af en arbejdsgang.</value>
+  </data>
+  <data name="AssignmentCopiedFrom" xml:space="preserve">
+    <value>Tildelinger kopieret fra</value>
+  </data>
+  <data name="AssignmentCopiedFromMessage" xml:space="preserve">
+    <value>Klik på opdateringsknappen herunder for at vise det versionsnummer, som tildelinger vil blive kopieret fra.</value>
+  </data>
+  <data name="AssignmentCreated" xml:space="preserve">
+    <value>App-tildeling oprettet</value>
+  </data>
+  <data name="AssignmentDeleted" xml:space="preserve">
+    <value>App-tildeling slettet</value>
+  </data>
+  <data name="AssignmentDescriptionPlaceholder" xml:space="preserve">
+    <value>Beskrivelse af tildeling</value>
+  </data>
+  <data name="AssignmentGroupingInfoMessage" xml:space="preserve">
+    <value>Nogle af Smart-grupperne i denne tildeling har forskellige app-konfigurations-nøgleværdier, app-attribut-nøgleværdier eller MST-transformeringsfiler, som er blevet separeret for at sikre præcision. Der vil ikke være nogen indflydelse på slutbrugeres enheder, og der er ikke behov for yderligere handlinger.</value>
+  </data>
+  <data name="AssignmentInformation" xml:space="preserve">
+    <value>Tildelingsoplysninger</value>
+  </data>
+  <data name="AssignmentInstallDetails" xml:space="preserve">
+    <value>Tildelings- og installationsoplysninger</value>
+  </data>
+  <data name="AssignmentInstallDetailsToolTip" xml:space="preserve">
+    <value>Installationsoplysninger for enheder, der har dette program tildelt fra Workspace ONE</value>
+  </data>
+  <data name="AssignmentNamePlaceholder" xml:space="preserve">
+    <value>Tildelingsnavn</value>
+  </data>
+  <data name="AssignmentOutOfDate" xml:space="preserve">
+    <value>Tildeling forældet</value>
+  </data>
+  <data name="AssignmentStatus" xml:space="preserve">
+    <value>Tildelingsstatus</value>
+  </data>
+  <data name="AssignmentUpdated" xml:space="preserve">
+    <value>Apptildeling opdateret</value>
+  </data>
+  <data name="AssignmentUpToDate" xml:space="preserve">
+    <value>Up-to-date. App tildelt og installeret</value>
+  </data>
+  <data name="AtleastOneActiveAssignmentIsRequired" xml:space="preserve">
+    <value>En eller flere tildelingsregler har ikke en aktiv smart-gruppe tilknyttet. Tilføj en smart-gruppe, eller slet tildelingsreglerne for at fortsætte.</value>
+  </data>
+  <data name="AtleastOneAssignmentIsRequired" xml:space="preserve">
+    <value>Mindst en smart-gruppe skal angives i tildelinger.</value>
+  </data>
+  <data name="AttachmentDownload" xml:space="preserve">
+    <value>Download af vedhæftet fil</value>
+  </data>
+  <data name="AttachmentsRestrictionMMAInfo" xml:space="preserve">
+    <value>Denne indstilling bestemmer, hvorvidt brugeren kan åbne e-mails eller vedhæftede filer i andre apps. Vælg "Kun forhåndsvisning" for at forhindre åbning i alle apps, "Tilladt-liste" for at angive tilladte apps eller "Ubegrænset" for at tillade alle apps.</value>
+  </data>
+  <data name="AttachPhotos" xml:space="preserve">
+    <value>Vedhæft billeder</value>
+  </data>
+  <data name="AuthenticateExchangeServerTooltip" xml:space="preserve">
+    <value>Konfigurer, hvordan man godkendes til din Exchange-server</value>
+  </data>
+  <data name="AuthenticationAdvancedSectionMessage" xml:space="preserve">
+    <value>Ingen avancerede konfigurationer tilgængelige for dine valg</value>
+  </data>
+  <data name="AuthenticationType" xml:space="preserve">
+    <value>Godkendelsestype</value>
+  </data>
+  <data name="AuthenticationTypeInfo" xml:space="preserve">
+    <value>Vælg Basis, når der godkendes med et brugernavn og en adgangskode, Certifikat, når der anvendes et certifikat, og Begge, hvis du kræver et certifikat og en adgangskode for at godkende med Exchange.</value>
+  </data>
+  <data name="AutoAppAssignedButNotInstalled" xml:space="preserve">
+    <value>Out-of-date. App tildelt, men ikke installeret</value>
+  </data>
+  <data name="AutoAppAssignmentOutOfDate" xml:space="preserve">
+    <value>Out-of-date. Appversion tildelt er ikke den samme som den version, der er installeret</value>
+  </data>
+  <data name="AutoBootstrapPackageAssignedButNotInstalled" xml:space="preserve">
+    <value>Bootstrap-pakke tildelt, men enheden var allerede tilmeldt. Den er tilgængelig til on-demand udrulning, men er ikke blevet anmodet om</value>
+  </data>
+  <data name="AvailablePatchCriticality" xml:space="preserve">
+    <value>Kritiskhed af tilgængelig patch</value>
+  </data>
+  <data name="AvatarsDefault" xml:space="preserve">
+    <value>Avatarer</value>
+  </data>
+  <data name="BackLinkEmailSettings" xml:space="preserve">
+    <value>&lt; E-mailindstillinger</value>
+  </data>
+  <data name="BadgeOnly" xml:space="preserve">
+    <value>Ingen (kun badge-antal)</value>
+  </data>
+  <data name="BasicAndCertificate" xml:space="preserve">
+    <value>Grundlæggende og certifikat</value>
+  </data>
+  <data name="BetaAppSourceHelpText" xml:space="preserve">
+    <value>Denne kolonne angiver, om et program er downloadet fra TestFlight og betragtes som en betaversion af appen.</value>
+  </data>
+  <data name="BlockingApplicationsInfoMessage" xml:space="preserve">
+    <value>Angiv eventuelle applikationer eller processer, der kan blokere en installation i sikkert at blive fuldført. Du kan også bruge denne til at forhindre applikationer i at afslutte, før du gemmer.</value>
+  </data>
+  <data name="BlockingApplicationsTooltip" xml:space="preserve">
+    <value>Angiv det navn på appen. Hvis appen er i mappen /Applikationer/, kan den angives som bare filnavnet, og stien vil automatisk blive opdaget.</value>
+  </data>
+  <data name="BookCategoriesHelp" xml:space="preserve">
+    <value>Kategoriser bog-pakken med foruddefinerede kategorier eller brugerdefinerede kategorier for at øge tilgængeligheden i Bogkataloget.</value>
+  </data>
+  <data name="BootstrapPackageAssignedAndInstallCommandAcknowledged" xml:space="preserve">
+    <value>Bootstrap-pakke tildelt og installationskommando bekræftet</value>
+  </data>
+  <data name="BootstrapPackageAssignedButInstallCommandNotAcknowledged" xml:space="preserve">
+    <value>Bootstrap-pakke tildelt, men installationskommando ikke bekræftet endnu</value>
+  </data>
+  <data name="BoxerSmimeInfoMsg" xml:space="preserve">
+    <value>Nedenstående konfiguration vil blive genkendt af Boxer-apps version 5.21 og højere. For ældre versioner skal du anvende nyttelasten for "legitimationsoplysninger" i den brugerdefinerede SDK-profil, der er associeret med denne app</value>
+  </data>
+  <data name="BoxerTrustStoreOnly" xml:space="preserve">
+    <value>Kun Boxer-trust store</value>
+  </data>
+  <data name="BuildNumber" xml:space="preserve">
+    <value>Buildnummer</value>
+  </data>
+  <data name="BulkActionExceptionMessage" xml:space="preserve">
+    <value>Vælg filter for at udføre handlingen på et stort antal enheder.</value>
+  </data>
+  <data name="BulkSyncTunnelConfigAlert" xml:space="preserve">
+    <value>Tunnel-konfiguration vil blive synkroniseret på enheder med gyldige tildelinger.</value>
+  </data>
+  <data name="Bundleidwarningforb2bapps" xml:space="preserve">
+    <value>Bundt-id er påkrævet for styret distribution og korrekt udrulning af brugerdefinerede apps</value>
+  </data>
+  <data name="CalendarMaxSyncPeriodInfo" xml:space="preserve">
+    <value>Hvor langt tilbage en bruger kan vælge at synkronisere sine kalenderbegivenheder.</value>
+  </data>
+  <data name="CannotAllotMoreThanArgLicenses" xml:space="preserve">
+    <value>Kan ikke tildele flere end {0} licenser</value>
+  </data>
+  <data name="CannotRevokeLicense" xml:space="preserve">
+    <value>App-licens kan ikke tilbagekaldes. Prøv med et gyldigt VPP konto-id.</value>
+  </data>
+  <data name="CardsVersionMessage" xml:space="preserve">
+    <value>Disse politikker gælder kun for Card-versioner 1.1 og nyere. For at styre Exchange-indstillinger for tidligere Card-versioner skal du gå til brugerdefinerede indstillinger i den SDK-profil, der er associeret med denne app.</value>
+  </data>
+  <data name="CardsWarningToEditAllAssignments" xml:space="preserve">
+    <value>Konfiguration af Cards er klar til opsætning. Sørg for, at konfigurationer, der blev overført fra brugerdefinerede indstillinger i den SDK-profil, der er associeret med denne app, er korrekte før udgivelsen.</value>
+  </data>
+  <data name="CertAuthenticationTip" xml:space="preserve">
+    <value>Konfigurer/upload-certifikat i SDK-profil for at godkende certifikat.</value>
+  </data>
+  <data name="CertificateTemplateInfo" xml:space="preserve">
+    <value>Når du konfigurerer flere administrerede e-mailkonti på dine enheder, fra samme Exchange Server, skal du konfigurere forskellige certifikatskabeloner med forskellige UPN.</value>
+  </data>
+  <data name="CertificateUrlOnly" xml:space="preserve">
+    <value>Kun certifikat-URL-adresse</value>
+  </data>
+  <data name="CertUrlWithFallback" xml:space="preserve">
+    <value>Certifikat-URL-adresse med fallback</value>
+  </data>
+  <data name="ChangeWhenToCallInstallComplete" xml:space="preserve">
+    <value>Rediger, hvornår installationen kaldes fuldført</value>
+  </data>
+  <data name="ChangeWhenToCallInstallCompleteDescription" xml:space="preserve">
+    <value>Hvis du ændrer kriterierne for, hvornår installationen skal kaldes fuldført, når en app er installeret på en enhed, vil det udløse genevaluering af appen på disse enheder. Hvis de nye kriterier ikke er opfyldt, vil appen blive fjernet fra disse enheder. På grund af den potentielle forstyrrelse, denne handling kan medføre, er en administratorpinkode påkrævet for at kunne ændre kriterierne.</value>
+  </data>
+  <data name="CheckingDeviceEligibility" xml:space="preserve">
+    <value>Tjekker enhedsberettigelse</value>
+  </data>
+  <data name="ClearConfigurationWarningText" xml:space="preserve">
+    <value>Sletning af denne konfiguration vil nulstille alle dens tidligere gemte værdier, som ikke vil kunne hentes igen.
+Er du sikker på, at du vil fortsætte?</value>
+  </data>
+  <data name="ClearConfigurationWarningTitleText" xml:space="preserve">
+    <value>Ryd konfigurationsadvarsel</value>
+  </data>
+  <data name="ClipboardEnabled" xml:space="preserve">
+    <value>Udklipsholder aktiveret</value>
+  </data>
+  <data name="ClipboardPasteActionEnabled" xml:space="preserve">
+    <value>Aktivér indsættelse af udklipsholder</value>
+  </data>
+  <data name="CollectionMenuDescription" xml:space="preserve">
+    <value>Integrerer Workspace ONE Access med virtuel app- og desktopinstallationer af Horizon, Horizon Cloud, Citrix eller ThinApp.</value>
+  </data>
+  <data name="Collections" xml:space="preserve">
+    <value>Samlinger</value>
+  </data>
+  <data name="CollectionsHelp" xml:space="preserve">
+    <value>Styrer adgang til virtuelle apps-samlinger. Gælder udelukkende katalogadministratorer</value>
+  </data>
+  <data name="CompromisedProtectionTooltip" xml:space="preserve">
+    <value>Aktiver for at automatisk udføre et Enterprise slet på kompromitteret enheder.</value>
+  </data>
+  <data name="ConditionIf" xml:space="preserve">
+    <value>Hvis</value>
+  </data>
+  <data name="ConditionIfArg" xml:space="preserve">
+    <value>Hvis {0}</value>
+  </data>
+  <data name="ConditionNotMet" xml:space="preserve">
+    <value>Betingelse er ikke opfyldt</value>
+  </data>
+  <data name="ConditionPrefix" xml:space="preserve">
+    <value>Filter (hvis)</value>
+  </data>
+  <data name="ConditionSuffix" xml:space="preserve">
+    <value>Handling (Så)</value>
+  </data>
+  <data name="ConditionSuffixUpgradeApp" xml:space="preserve">
+    <value>Handling (Så) Opgrader app</value>
+  </data>
+  <data name="ConditionThen" xml:space="preserve">
+    <value>Så</value>
+  </data>
+  <data name="ConditionThenArg" xml:space="preserve">
+    <value>Så {0}</value>
+  </data>
+  <data name="ConditionTitle" xml:space="preserve">
+    <value>Kontrollér tilstand</value>
+  </data>
+  <data name="ConfigurationFeedbackFor" xml:space="preserve">
+    <value>Konfigurationsfeedback for {0}</value>
+  </data>
+  <data name="ConfigurationPositionChangeNotice" xml:space="preserve">
+    <value>Besked om ændring af konfigurationsposition</value>
+  </data>
+  <data name="ConfigureDLPSettingsTooltip" xml:space="preserve">
+    <value>Konfigurer DLP-indstillinger for denne konto</value>
+  </data>
+  <data name="ConfiguredUrlOnly" xml:space="preserve">
+    <value>Kun konfigureret URL-adresse</value>
+  </data>
+  <data name="ConfigureEmailSeparationTooltip" xml:space="preserve">
+    <value>Konfigurer e-mailklassifikation for denne konto</value>
+  </data>
+  <data name="ConfigureRegistryData" xml:space="preserve">
+    <value>Konfigurer data til registreringsdatabase</value>
+  </data>
+  <data name="ConfigureRegistryDataHelpText" xml:space="preserve">
+    <value>Vælg for at søge efter en bestemt værdi i registreringsdatabasen</value>
+  </data>
+  <data name="ConfigureRegistryValues" xml:space="preserve">
+    <value>Konfigurer værdier for registreringsdatabase</value>
+  </data>
+  <data name="ConfigureRegistryValuesHelpText" xml:space="preserve">
+    <value>Lad dette stå tomt for kun at bekræfte tilstedeværelsen af stien</value>
+  </data>
+  <data name="ConfigureSyncEmailCalenderTooltip" xml:space="preserve">
+    <value>Konfigurer, hvordan man synkroniserer e-mail og kalender</value>
+  </data>
+  <data name="ConfigureVpnAtApplicationLevel" xml:space="preserve">
+    <value>Vælg en VPN-konfigurationsprofil, som du vil bruge til denne app. Denne indstilling er ikke tilgængelig for tvOS-enheder.</value>
+  </data>
+  <data name="ConfirmDeactivationApplicationRemoval" xml:space="preserve">
+    <value>Hvis du deaktiverer en app, fjernes alle versioner af denne app fra alle tildelte enheder, hvor den styres af Workspace ONE. Er du sikker på, at du vil deaktivere denne app?</value>
+  </data>
+  <data name="ConfirmRetirementApplicationRemoval" xml:space="preserve">
+    <value>Hvis du tilbagekalder en version af en app, fjernes den pågældende version af appen på alle enheder, hvor den er styret af Workspace ONE. Hvis den er aktiv, udrulles den næste lavere version af appen på de enheder, den er tildelt til. Er du sikker på, at du vil tilbagekalde denne app?</value>
+  </data>
+  <data name="ConversationThreading" xml:space="preserve">
+    <value>Samtaletrådning</value>
+  </data>
+  <data name="CopyOf" xml:space="preserve">
+    <value>Kopi af</value>
+  </data>
+  <data name="CopyOfArg" xml:space="preserve">
+    <value>Kopi af – {0}</value>
+  </data>
+  <data name="CouldnotRetrieveApp" xml:space="preserve">
+    <value>Kunne ikke hente app. Den eksisterer ikke længere, eller den kan være blevet slettet.</value>
+  </data>
+  <data name="CouldnotRetrieveAssignmentForApp" xml:space="preserve">
+    <value>Kunne ikke hente tildelinger for denne app. Den eksisterer ikke længere, eller den kan være blevet slettet.</value>
+  </data>
+  <data name="CrashReporting" xml:space="preserve">
+    <value>Rapportering af nedbrud</value>
+  </data>
+  <data name="CreatedOnArgArgByArg" xml:space="preserve">
+    <value>Oprettet den {0} af {1}</value>
+  </data>
+  <data name="CreateWorkflow" xml:space="preserve">
+    <value>Opret arbejdsproces</value>
+  </data>
+  <data name="CreateWorkflowBannerDescription" xml:space="preserve">
+    <value>Med app-arbejdsprocesser kan du håndtere flere app-udrulninger eller -opdateringer i en specifik rækkefølge baseret på kriterier, som du har defineret. Styring af komplekse udrulningskrav og opdatering af apps, der ikke opfylder dine sikkerheds- og compliance-politikker, er nemmere end nogensinde.</value>
+  </data>
+  <data name="CreateWorkflowBannerHeader" xml:space="preserve">
+    <value>Mere kontrol med app-udrulning og -opdateringer</value>
+  </data>
+  <data name="CreateWorkflowNote" xml:space="preserve">
+    <value>I øjeblikket kun tilgængelig til Windows desktop-enheder.</value>
+  </data>
+  <data name="CurrentActiveAppAndUEMVersionArgs" xml:space="preserve">
+    <value>Den aktuelle aktive app-version er: {0}, og appens UEM-version er: {1}.</value>
+  </data>
+  <data name="CurrentDeployment" xml:space="preserve">
+    <value>Aktuel udrulning</value>
+  </data>
+  <data name="CurrentUemVersion" xml:space="preserve">
+    <value>Aktuel UEM-version</value>
+  </data>
+  <data name="CustomAccountConfiguration" xml:space="preserve">
+    <value>Brugerdefineret kontokonfiguration</value>
+  </data>
+  <data name="CustomOnlineMeetingUrlsInfo" xml:space="preserve">
+    <value>Dette aktiverer QuickJoin-knappen, som findes i kalenderinvitationer, der har invitationer til onlinemøder, som er specifikt til møder, der ikke er i standardformatet, som anvendes af Cloud-versioner af onlinemøde-tjenester. Hvis du har en opsætning på stedet, kan du med fordel konfigurere dette til dine URL-adresser.</value>
+  </data>
+  <data name="DeactivateApplication" xml:space="preserve">
+    <value>Deaktiver app</value>
+  </data>
+  <data name="DefaultAppAvatarsInfo" xml:space="preserve">
+    <value>Slå avatarer til/fra</value>
+  </data>
+  <data name="DefaultAssignmentDescription" xml:space="preserve">
+    <value>Politikkerne fra denne tildeling vil nu blive anvendt som standard til arbejdsprocestildelinger.</value>
+  </data>
+  <data name="DefaultAssignmentPrompt" xml:space="preserve">
+    <value>Er du sikker på, at du vil anvende denne tildelingspolitik som standard i stedet?</value>
+  </data>
+  <data name="DefaultAssignmentPromptTitle" xml:space="preserve">
+    <value>Skift standardpolitikker</value>
+  </data>
+  <data name="DefaultAssignmentTooltip" xml:space="preserve">
+    <value>Når dette er aktiveret, vil enheder, der har denne app tildelt fra arbejdsprocesser, modtage disse politikker som standard, medmindre de tilsidesættes af en anden politiktildeling med højere prioritet for enhederne. Kun én politik kan angives som standard for en app.</value>
+  </data>
+  <data name="DefaultCalendarSyncPeriod" xml:space="preserve">
+    <value>Standardsynkroniseringsperiode for kalender</value>
+  </data>
+  <data name="DefaultCallerIDInfo" xml:space="preserve">
+    <value>Aktiver eksport af navne og telefonnumre på kontakter som standard. Denne indstilling kræver, at indstillingen Opkalds-ID i Workspace ONE UEM-konsollen er indstillet til Ubegrænset.</value>
+  </data>
+  <data name="DefaultConversationViewInfo" xml:space="preserve">
+    <value>Dette indstiller standard for samtalevisning til at gruppere e-mails eller ikke at gruppere e-mails efter samtale</value>
+  </data>
+  <data name="DefaultEmailSyncPeriod" xml:space="preserve">
+    <value>Standardsynkroniseringsperiode for e-mail</value>
+  </data>
+  <data name="DeleteEmailAccountContent" xml:space="preserve">
+    <value>Er du sikker på at du ønsker at slette denne e-mailkonto?</value>
+  </data>
+  <data name="DeleteEmailAccountTitle" xml:space="preserve">
+    <value>Slet e-mailkonto</value>
+  </data>
+  <data name="DeleteOnSpamForwardInfo" xml:space="preserve">
+    <value>Aktivér for at slette spam-e-mailen fra slutbrugerens enhed efter videresendelse.</value>
+  </data>
+  <data name="DeleteTabContentLabel" xml:space="preserve">
+    <value>Er du sikker på, at du vil slette denne instans? Denne konfiguration vil ikke længere blive anvendt til appen.</value>
+  </data>
+  <data name="DeleteTabTitleLabel" xml:space="preserve">
+    <value>Slet instans</value>
+  </data>
+  <data name="DependencyMissing" xml:space="preserve">
+    <value>Afhængighed mangler</value>
+  </data>
+  <data name="DependentAppValidationFailed" xml:space="preserve">
+    <value>Afhængig appvalidering mislykkedes</value>
+  </data>
+  <data name="DeploymentProgressToolTip" xml:space="preserve">
+    <value>Viser oplysninger om udrulningsstatus på de tildelte enheder for denne app-version.</value>
+  </data>
+  <data name="DeploymentStatus" xml:space="preserve">
+    <value>Status for udrulning</value>
+  </data>
+  <data name="DeploymentTimeInvalid" xml:space="preserve">
+    <value>Angiv venligst tid mellem {0}</value>
+    <comment>Please provide time between between 01:00 - 12:59</comment>
+  </data>
+  <data name="DeployX86FileToX64MachineInfo" xml:space="preserve">
+    <value>X86 arkitekturfil kan uploades til udrulning på X64 arkitekturmaskine</value>
+  </data>
+  <data name="DerivedCredentialForFirstaccount" xml:space="preserve">
+    <value>{0} understøtter kun enkelt godkendelsescertifikat. Vælg kun denne indstilling for en primært administreret e-mailkonto. 
+For at anvende {0} med Boxer-app-versioner lavere end 5.21 skal du sende den brugerdefinerede KVP "PolicyDerivedCredentials" fra sektionen "Appkonfiguration".</value>
+  </data>
+  <data name="DerivedCredentialSmimeForFirstaccount" xml:space="preserve">
+    <value>PIV-D understøtter kun enkelt S/MIME-certifikat. Vælg kun denne indstilling for en primært administreret e-mailkonto. 
+For at anvende PIV-D med Boxer-app-versioner lavere end 5.21 skal du sende den brugerdefinerede KVP "PolicyDerivedCredentials" fra sektionen "Appkonfiguration".</value>
+  </data>
+  <data name="Descriptions" xml:space="preserve">
+    <value>Beskrivelser</value>
+  </data>
+  <data name="DesiredStateManagementTooltip" xml:space="preserve">
+    <value>Hvis applikationen er aktiveret, og hvis slutbrugeren sletter appen, geninstalleres den automatisk under næste Hub-synkronisering.
+Hvis applikationen er deaktiveret, og hvis slutbrugeren sletter appen, geninstalleres den ikke automatisk, medmindre den pushes fra UEM Console eller Catalog.</value>
+  </data>
+  <data name="DeviceAndBoxerTrustStore" xml:space="preserve">
+    <value>Enheds- og Boxer-trust store</value>
+  </data>
+  <data name="DeviceArchitecture" xml:space="preserve">
+    <value>Enhedsarkitektur</value>
+  </data>
+  <data name="DeviceAssignmentEnableCountArg" xml:space="preserve">
+    <value>App berettiget til enhedsbaseret tildeling. Hvis du vælger at aktivere denne indstilling, modtager alle iOS 9+- og alle macOS 10.11+-enheder og nyere én licens pr. enhed. I øjeblikket har du {0} iOS 9+/macOS 10.11+ enheder tildelt. Disse enheder kræver ikke et Apple-id for at modtage appen.</value>
+  </data>
+  <data name="DeviceAssignmentEnableWithTvOSCountArg" xml:space="preserve">
+    <value>App berettiget til enhedsbaseret tildeling. Hvis du vælger at aktivere denne indstilling, modtager alle iOS 9+- og alle macOS 10.11+-enheder og nyere én licens pr. enhed. I øjeblikket har du {0} iOS 9+-/macOS 10.11+-enheder tildelt. Disse enheder kræver ikke et Apple-id for at modtage appen. tvOS-enheder kan kun bruge enhedsbaserede licenser og kræver ikke handling fra administrator for at kunne bruges.</value>
+  </data>
+  <data name="DeviceBasedVPPAppSourceHelpText" xml:space="preserve">
+    <value>Denne kolonne angiver, om et program blev installeret med enhedsbaserede licenser i forbindelse med mængdekøbsprogrammet.</value>
+  </data>
+  <data name="DeviceEligibilityCheckFailed" xml:space="preserve">
+    <value>Kontrol af enhedsberettigelse mislykkedes</value>
+  </data>
+  <data name="DeviceGuardErrorArg" xml:space="preserve">
+    <value>For aktivering af Device Guard er en Windows Enterprise-licensnøgle påkrævet i {0}.</value>
+  </data>
+  <data name="DeviceReportedReason" xml:space="preserve">
+    <value>Årsag til rapporteret enhed</value>
+  </data>
+  <data name="DeviceTrustStoreOnly" xml:space="preserve">
+    <value>Kun Device Trust Store</value>
+  </data>
+  <data name="DeviceUuIdLookUpText" xml:space="preserve">
+    <value>Enheds-UUID</value>
+  </data>
+  <data name="DisableAppConfiguration" xml:space="preserve">
+    <value>Deaktiver app-konfiguration</value>
+  </data>
+  <data name="DisableAppConfigWarning" xml:space="preserve">
+    <value>Deaktivering af app-konfiguration vil slette konfigurationen og kan fjerne eller ændre app-indstillingerne på enheden.</value>
+  </data>
+  <data name="DisableCDNWarning" xml:space="preserve">
+    <value>En app med en størrelse på mere end {0} MB uploades. Deaktivering af CDN er ikke tilladt.</value>
+  </data>
+  <data name="DisableKeyEscrowInfo" xml:space="preserve">
+    <value>Deaktiverer deponering af nøgle på serveren. Deaktivering af dette vil deaktivere funktionen "Glemt adgangskode" (når der anvendes SDK-loginflow).</value>
+  </data>
+  <data name="DisableKeyEscrowYesNoInfo" xml:space="preserve">
+    <value>Deaktiverer deponering af nøgle på serveren. Når det er indstillet til "Ja", vil dette deaktivere funktionen "Glemt adgangskode" (når der anvendes SDK-loginflow).</value>
+  </data>
+  <data name="DisplayInAppCatalog" xml:space="preserve">
+    <value>Vis i app-katalog</value>
+  </data>
+  <data name="DisplayInAppCatalogHelp" xml:space="preserve">
+    <value>Brug denne indstilling til at konfigurere appen til at blive vist eller skjult i Workspace ONE-appkataloget</value>
+  </data>
+  <data name="DlpHelpText" xml:space="preserve">
+    <value>DLP-politikker giver kontrolleret udveksling af data mellem styrede og ikke-styrede apps på enheden. For at forhindre tab af data på denne app skal du indstille til "styret adgang" og oprette "begrænsningsprofilpolitikker" for ønskede enhedstyper.</value>
+  </data>
+  <data name="DoNotCollectApplicationListWarningForCompliancePolicy" xml:space="preserve">
+    <value>Politikken til beskyttelse af personlige oplysninger for dit personlige program er indstillet til Indsaml ikke for mindst én organisationsgruppe i dit hierarki. De compliance-politikker der er associeret med programgrupperne for personlige programmer for disse enheder, vil ikke blive håndhævet.</value>
+  </data>
+  <data name="DownloadAutomaticallyAndInstall" xml:space="preserve">
+    <value>Denne app bliver downloadet automatisk og installeret på din enhed.</value>
+  </data>
+  <data name="DownloadAutomaticallyAndInstallInApplicationsFolder" xml:space="preserve">
+    <value>Appen vil blive downloadet automatisk og installeret i mappen Apps.</value>
+  </data>
+  <data name="DownloadFeedback" xml:space="preserve">
+    <value>Download feedback</value>
+  </data>
+  <data name="DoYouWantToDeletePpkg" xml:space="preserve">
+    <value>Vil du slette klargøringspakken (PPKG)?</value>
+  </data>
+  <data name="DuplicateAppConfigInTab" xml:space="preserve">
+    <value>Dupliker app-konfigurationen i fanen {0}</value>
+  </data>
+  <data name="DuplicateAssignmentName" xml:space="preserve">
+    <value>Der findes allerede en tildelingsregel med dette navn.</value>
+  </data>
+  <data name="DuplicateEmailSettings" xml:space="preserve">
+    <value>Duplikeret {0} konfigureret i fane {1}</value>
+  </data>
+  <data name="DuplicateVppSmartGroupPresent" xml:space="preserve">
+    <value>Kan ikke tilføje samme smart-gruppe to gange.</value>
+  </data>
+  <data name="E_FAIL" xml:space="preserve">
+    <value>Office-udrulningsværktøjet (ODT) kan ikke bruges til at installere Volume License</value>
+  </data>
+  <data name="E_UNEXPECTED" xml:space="preserve">
+    <value>Forsøgte at afinstallere, når der ikke er noget C2R Office på maskinen.</value>
+  </data>
+  <data name="EARAppUpdateAvailable" xml:space="preserve">
+    <value>Opdatering til EAR-app tilgængelig</value>
+  </data>
+  <data name="EARAppUpdateMode" xml:space="preserve">
+    <value>Opdater notifikationer</value>
+  </data>
+  <data name="EARAppUpdateModeHelp" xml:space="preserve">
+    <value>Aktiver denne indstilling for at få besked, hver gang en ny version af denne app bliver tilgængelig.</value>
+  </data>
+  <data name="EARNewAppVersionAvailable" xml:space="preserve">
+    <value>En ny version af {0} v{1} er nu tilgængelig til upload</value>
+  </data>
+  <data name="EasilyAddWindowsAppsFromEnterpriseAppRepository" xml:space="preserve">
+    <value>Tilføj nemt Windows-apps fra virksomhedslageret</value>
+  </data>
+  <data name="EditApp" xml:space="preserve">
+    <value>Rediger app</value>
+  </data>
+  <data name="EditApplicationArgOpensDialog" xml:space="preserve">
+    <value>Rediger app {0} åbner dialogboks</value>
+    <comment>The placeholder in this label key contains application name.</comment>
+  </data>
+  <data name="EditConfiguration" xml:space="preserve">
+    <value>Rediger konfiguration</value>
+  </data>
+  <data name="EditWarning" xml:space="preserve">
+    <value>Rediger advarsel</value>
+  </data>
+  <data name="EditWarningMessage" xml:space="preserve">
+    <value>Redigering af konfiguration i forbindelse med denne enhed vil gælde for alle andre enheder i {0} smart-grupper. Er du sikker på, at du vil fortsætte?</value>
+  </data>
+  <data name="EditWorkflow" xml:space="preserve">
+    <value>Rediger arbejdsproces</value>
+  </data>
+  <data name="EditWtcicCriteriaHelpText" xml:space="preserve">
+    <value>Klik på Rediger, og indtast din adminpinkode for at ændre kriterierne for, hvornår installationen kaldes fuldført, når appen er sat i kø eller installeret på en enhed. Bemærk, at appen fjernes fra enheder ved angivelse af forkerte kriterier.</value>
+  </data>
+  <data name="EmailClassification" xml:space="preserve">
+    <value>E-mailklassifikation</value>
+  </data>
+  <data name="EmailClassificationInfo" xml:space="preserve">
+    <value>Konfigurer e-mailklassifikation</value>
+  </data>
+  <data name="EmailMaxSyncPeriodInfo" xml:space="preserve">
+    <value>Hvor langt tilbage en bruger kan vælge at synkronisere sine e-mailmeddelelser.</value>
+  </data>
+  <data name="EmmManagedAccessHelpInfo" xml:space="preserve">
+    <value>Du kan stadig tilpasse {0} indstillinger for denne app uden at kræve EMM Managed Access-tilmelding.</value>
+  </data>
+  <data name="EnableClipboardPasteActionTip" xml:space="preserve">
+    <value>Indstil til sandt for at aktivere indsættelsesfunktionen. Indsæt understøttes som standard, hvis denne nøgle ikke er oprettet.</value>
+  </data>
+  <data name="EnableClipboardTip" xml:space="preserve">
+    <value>Indstil til sandt for kun at aktivere udklipsholder-funktionen mellem Workspace ONE-apps.</value>
+  </data>
+  <data name="EnableComplianceOnDeviceTooltip" xml:space="preserve">
+    <value>Når reglerne er aktiveret, vil de evalueres ved at understøtte SDK-apps.</value>
+  </data>
+  <data name="EnableDeviceAssignmentConfirmationBulk" xml:space="preserve">
+    <value>Er du sikker på at du ønsker at aktivere enhedsbaseret licenstildeling for de valgte apps?</value>
+  </data>
+  <data name="EnableDeviceGuard" xml:space="preserve">
+    <value>Aktivér Device Guard efter installation af applikationer</value>
+  </data>
+  <data name="EnableKeyEscrow" xml:space="preserve">
+    <value>Aktivér FastSync</value>
+  </data>
+  <data name="EnableKeyEscrowInfo" xml:space="preserve">
+    <value>FastSync forbedrer baggrundssynkronisering og hastighed for efterfølgende synkroniseringer. FastSync-indstillinger anvendes, når Email Notification Service er aktiveret og konfigureret</value>
+  </data>
+  <data name="EnableNewAuthEncoding" xml:space="preserve">
+    <value>Understøtter omlydstegn i adgangskode</value>
+  </data>
+  <data name="EnableNewAuthEncodingInfo" xml:space="preserve">
+    <value>Aktivér for at anvende ISO-8859-1-kodning til Boxer-adgangskode for at understøtte særlige tyske omlydstegn (ä og ß osv.).</value>
+  </data>
+  <data name="EnableOfflineAccessTooltip" xml:space="preserve">
+    <value>Når funktionen er deaktiveret, er offline-adgang begrænset. Når funktionen er aktiveret, og maksimale offlinefrist er indstillet til 0, er offlineadgang tilladt på ubestemt tid. Når funktionen er aktiveret, og ikke-nul, maksimal offlinefrist overskrides, bliver adgangen blokeret</value>
+  </data>
+  <data name="EnableOsVersionTooltip" xml:space="preserve">
+    <value>Når funktionen er aktiveret, vil appen vurdere OS-versionen af enheden i forhold til den konfigurerede regel og udføre handling, når opfyldt.</value>
+  </data>
+  <data name="EnableSecurityPatchDateTooltip" xml:space="preserve">
+    <value>Når appen er aktiveret, vil den evaluere sikkerhedsrettelsesdatoen på enheden til den konfigurerede regel og udføre handlinger, hvis rettelsen ikke er opdateret. Denne indstilling gælder kun for Android-enheder</value>
+  </data>
+  <data name="EncryptionCertificateAuthority" xml:space="preserve">
+    <value>Krypteringscertifikatautoritet</value>
+  </data>
+  <data name="EncryptionCertificateTemplate" xml:space="preserve">
+    <value>Krypteringscertifikatskabelon</value>
+  </data>
+  <data name="ENSAPIToken" xml:space="preserve">
+    <value>ENS2 API-token</value>
+  </data>
+  <data name="ENSAPITokenInfo" xml:space="preserve">
+    <value>API-token leveret af VMware til at aktivere Cloud ENS2-tjenesten.</value>
+  </data>
+  <data name="ENSFetchTokenInfo" xml:space="preserve">
+    <value>Hent et nyt token, når du indtaster en ny ENS2-serveradresse. Du kan ikke anvende et tidligere konfigureret token med en ny ENS2-serveradresse.</value>
+  </data>
+  <data name="ENSInvalidAPITokenMessage" xml:space="preserve">
+    <value>Kunne ikke hente token. Sørg for, at ENS2-serveradressen er korrekt, og at ENS2-serveren fungerer, og prøv igen. Hvis problemet fortsætter, skal du gennemse UEM Console-logfilerne og/eller ENS2-serverlogfilerne og kontakte VMware Support.</value>
+  </data>
+  <data name="ENSLinkAddress" xml:space="preserve">
+    <value>ENS2-serveradresse</value>
+  </data>
+  <data name="ENSLinkAddressInfo" xml:space="preserve">
+    <value>Adressen på ENS2-systemet, som brugere skal oprette forbindelse til.</value>
+  </data>
+  <data name="ENSRetrieveTokenBtnText" xml:space="preserve">
+    <value>Hent token</value>
+  </data>
+  <data name="ENSValidAPITokenMessage" xml:space="preserve">
+    <value>Hentet ENS2 API-token.</value>
+  </data>
+  <data name="EnterAppUrlFromGooglePlayStore" xml:space="preserve">
+    <value>Indtast app-URL fra Google Play store</value>
+  </data>
+  <data name="EnterKeyValuePairsForApplicationAttributes" xml:space="preserve">
+    <value>Indtast nøgleværdipar for at angive attributter til apps</value>
+  </data>
+  <data name="EnterKeyValuePairsToConfigureWhenAppNotSupport" xml:space="preserve">
+    <value>Denne app understøtter ikke app-konfiguration. Hvis du bruger SDK til at konfigurere appen, skal du indtaste nøgleværdipar nedenfor</value>
+  </data>
+  <data name="EnterNumberBetweenArgAndArg" xml:space="preserve">
+    <value>Indtast et tal mellem {0}-{1}.</value>
+  </data>
+  <data name="EnterpriseAppCatalogDetailsLegalTooltip" xml:space="preserve">
+    <value>Hvis du klikker på Fortsæt herunder, vil du downloade software fra et tredjepartswebsted. VMware indestår ikke for og giver ingen garanti vedrørende tredjepartssoftwarens kvalitet, indhold, pålidelighed eller sikkerhedspraksis, og VMware har intet erstatningsansvar, hvis du vælger at downloade og anvende tredjepartssoftwaren.</value>
+  </data>
+  <data name="EnterpriseAppCatalogFailedToLoad" xml:space="preserve">
+    <value>App-kataloget kunne ikke indlæses. Prøv venligst at genindlæse, og kontakt administratoren, hvis problemet fortsætter.</value>
+  </data>
+  <data name="EnterpriseAppCatalogNoApplications" xml:space="preserve">
+    <value>Ingen apps tilgængelige gennem katalog, prøv venligst at genindlæse, og kontakt administratoren, hvis problemet fortsætter.</value>
+  </data>
+  <data name="EnterpriseAppRepository" xml:space="preserve">
+    <value>Virksomheds-app-lager.</value>
+  </data>
+  <data name="EnterpriseAppRepositoryAddAppName" xml:space="preserve">
+    <value>Indtast navnet på appen, som det skal fremgå i Intelligent Hub-kataloget.</value>
+  </data>
+  <data name="EnterpriseAppRepositoryAppUpdateMode" xml:space="preserve">
+    <value>Opdater notifikationer</value>
+  </data>
+  <data name="EnterpriseAppRepositoryAppUpdateModeInfo" xml:space="preserve">
+    <value>Vælg en indstilling for app-opdateringer.</value>
+  </data>
+  <data name="EnterpriseAppRepositoryAppUpdateModeNone" xml:space="preserve">
+    <value>Ingen</value>
+  </data>
+  <data name="EnterpriseAppRepositoryAppUpdateModeNotify" xml:space="preserve">
+    <value>Giv besked</value>
+  </data>
+  <data name="EnterpriseAppSourceHelpText" xml:space="preserve">
+    <value>Denne kolonne angiver, om et program er signeret med et virksomhedssigneringscertifikat og ikke distribueret via App Store.</value>
+  </data>
+  <data name="EnterValidBuildVersion" xml:space="preserve">
+    <value>Indtast venligst en gyldig værdi i feltet Buildversion.</value>
+  </data>
+  <data name="EnterValidWhitelistedApplications" xml:space="preserve">
+    <value>Indtast gyldige tilladte apps</value>
+  </data>
+  <data name="EntireChain" xml:space="preserve">
+    <value>Hele kæden</value>
+  </data>
+  <data name="ERROR_ANOTHER_RUNNING_SCENARIO" xml:space="preserve">
+    <value>Et andet scenarie kører</value>
+  </data>
+  <data name="ERROR_COMPLETING_SCENARIO" xml:space="preserve">
+    <value>Processen kunne ikke fuldføres. Mulige årsager:
+
+    Installation annulleret af bruger
+    Installation annulleret af en anden installation
+    Der er ikke mere diskplads under installationen
+    Ukendt sprog-ID</value>
+  </data>
+  <data name="ERROR_COMPLETING_SCENARIO_NEED_CLEAN_UP" xml:space="preserve">
+    <value>Mulige årsager:
+
+    Ukendte SKU'er
+    Indhold findes ikke på CDN
+        såsom at prøve at installere en ikke-understøttet LAP, såsom zh-sg
+        CDN-problem, at indhold ikke er tilgængeligt
+    Problem med signaturtjek, såsom mislykket signaturtjek for indhold i Office
+    Bruger annullerede</value>
+  </data>
+  <data name="ERROR_HANDLING_COMMAND_LINE" xml:space="preserve">
+    <value>C2RClient-kommandolinjefejl</value>
+  </data>
+  <data name="ERROR_INSTALL_FAILURE" xml:space="preserve">
+    <value>Kunne ikke foretage forhåndskontrol.
+
+    SxS (forsøgte at installere, når 2016 MSI er installeret)
+    Bit-uoverensstemmelse mellem det aktuelt installerede Office og det Office, der blev forsøgt installeret (såsom når du forsøger at installere en 32-bit version, mens 64-bit versionen er installeret på nuværende tidspunkt).</value>
+  </data>
+  <data name="ERROR_INSTALL_USEREXIT" xml:space="preserve">
+    <value>Brugeren annullerede installationen</value>
+  </data>
+  <data name="ERROR_INVALID_DATA" xml:space="preserve">
+    <value>Kan ikke bekræfte signaturen i det hentede Office-udrulningsværktøj (ODT)</value>
+  </data>
+  <data name="ERROR_PROCESSPOOL_INITIALIZATION" xml:space="preserve">
+    <value>Kunne ikke starte C2RClient</value>
+  </data>
+  <data name="ERROR_QUEUE_SCENARIO" xml:space="preserve">
+    <value>Kunne ikke sætte installationsscenarie i kø i C2RClient</value>
+  </data>
+  <data name="ERROR_REMOVE_INSTALLATION_NEEDED" xml:space="preserve">
+    <value>Klienten anmoder om klientoprydning i et "Fjern installation"-scenarie</value>
+  </data>
+  <data name="ERROR_SCENARIO_CANCELLED" xml:space="preserve">
+    <value>Blokeret opdatering ved at køre apps</value>
+  </data>
+  <data name="ERROR_SCENARIO_CANCELLED_AS_PLANNED" xml:space="preserve">
+    <value>Scenarie annulleret som planlagt</value>
+  </data>
+  <data name="ERROR_TIMEOUT" xml:space="preserve">
+    <value>Kunne ikke downloade Office-udrulningsværktøjet (ODT)</value>
+  </data>
+  <data name="ErrorApplicationSyncJobAppPublish" xml:space="preserve">
+    <value>Der opstod en fejl i appsynkronisering efter udgivelsen af appen.</value>
+  </data>
+  <data name="EscrowExpiry" xml:space="preserve">
+    <value>FastSync udløb</value>
+  </data>
+  <data name="EscrowExpiryInfo" xml:space="preserve">
+    <value>Indstil udløbstiden i timer, når Workspace ONE Boxer ikke modtager FastSync-nøgle. FastSync-indstillinger anvendes, når Email Notification Service er aktiveret og konfigureret</value>
+  </data>
+  <data name="EscrowGatewayToolTipInfo" xml:space="preserve">
+    <value>Konfiguration af deponeringsgateway gælder kun, hvis gatewayen er konfigureret i dit miljø</value>
+  </data>
+  <data name="EventBased" xml:space="preserve">
+    <value>Begivenhedsbaseret</value>
+  </data>
+  <data name="EventTargeted" xml:space="preserve">
+    <value>Begivenhedsmålrettet</value>
+  </data>
+  <data name="EWSConfigPositionChangeInfo" xml:space="preserve">
+    <value>Konfigurer, om du vil indstille EWS-URL-adressen i sektionen "E-mailindstillinger".</value>
+  </data>
+  <data name="EWSUrl" xml:space="preserve">
+    <value>EWS URL-ADRESSE</value>
+  </data>
+  <data name="EWSUrlInfo" xml:space="preserve">
+    <value>Adresse på slutpunkt for EWS (eller SEG)</value>
+  </data>
+  <data name="EwsUrlInfoMsg" xml:space="preserve">
+    <value>EWS URL-adressekonfiguration er blevet flyttet til sektionen e-mailindstillinger</value>
+  </data>
+  <data name="ExchangeSettings" xml:space="preserve">
+    <value>Microsoft Exchange-indstillinger</value>
+  </data>
+  <data name="ExchangeURL" xml:space="preserve">
+    <value>Exchange-URL</value>
+  </data>
+  <data name="ExchangeUserName" xml:space="preserve">
+    <value>Exchange-brugernavn</value>
+  </data>
+  <data name="ExecutionFailed" xml:space="preserve">
+    <value>Eksekvering mislykkedes</value>
+  </data>
+  <data name="ExportFactoryPpkg" xml:space="preserve">
+    <value>Eksport</value>
+  </data>
+  <data name="ExportPpkgMessage" xml:space="preserve">
+    <value>Vælg applikationer fra en liste over understøttede applikationer og eksporter dem til en PPKG (Windows klargøringspakke). Når PPKG-eksporten er gennemført, vil der blive sendt en notifikation med et link til download.</value>
+  </data>
+  <data name="ExportPpkgWindowsNoAppsMessage" xml:space="preserve">
+    <value>Eksport af applikationer til en PPKG muliggør pakning af applikationer til fabriksinstallation. Upload nogle Windows-applikationer for at eksportere dem til en PPKG.</value>
+  </data>
+  <data name="ExternalApplicationIdInfo" xml:space="preserve">
+    <value>Dette er Apple App Stores unikke identifikator. Dette kan ses i appens URL-adresse for iTunes</value>
+  </data>
+  <data name="FactoryProvisioningServiceNotRunning" xml:space="preserve">
+    <value>Fabriksklargøringstjenesten er ikke konfigureret eller kører. Kontroller din Workspace ONE UEM-installation.</value>
+  </data>
+  <data name="FailedToUploadApplication" xml:space="preserve">
+    <value>Kunne ikke uploade programmet.</value>
+  </data>
+  <data name="FastAsyncConfigPositionChangeInfo" xml:space="preserve">
+    <value>Konfigurer, om du vil indstille EWS-URL-adressen i sektionen "E-mailindstillinger".
+Konfigurer, om du vil aktivere FastSync og dens udløbsdato i sektionen "App-politikker" &gt; "Avanceret".</value>
+  </data>
+  <data name="FeaturedApps" xml:space="preserve">
+    <value>Udvalgte apps</value>
+  </data>
+  <data name="FeedbackChannelDataNotAvailableMessage" xml:space="preserve">
+    <value>Denne enhed er ikke i gang med at rapportere feedback og kan være offline. Prøv igen senere.</value>
+  </data>
+  <data name="FeedbackChannelEditConfigurationMessage" xml:space="preserve">
+    <value>Konfigurationsændringer vil gælde på alle enheder, der tilhører følgende Smart-grupper:
+
+{0}.
+
+Er du sikker på, at du vil redigere?</value>
+  </data>
+  <data name="FeedbackDateTime" xml:space="preserve">
+    <value>Tidspunkt for enhedsrapportering</value>
+  </data>
+  <data name="FeedbackMessage" xml:space="preserve">
+    <value>Meddelelse</value>
+  </data>
+  <data name="FeedbackTitle" xml:space="preserve">
+    <value>Feedback-titel</value>
+  </data>
+  <data name="FeedbackTriggerValue" xml:space="preserve">
+    <value>Udløserværdi</value>
+  </data>
+  <data name="FieldShouldBeANumber" xml:space="preserve">
+    <value>Feltet skal indeholde et tal</value>
+  </data>
+  <data name="FieldShouldBeBetweenArgAndMaxInt" xml:space="preserve">
+    <value>Feltet skal indeholde et tal mellem {0} og {1}</value>
+  </data>
+  <data name="FieldShouldBeValidColourInHexFormat" xml:space="preserve">
+    <value>Dette felt kræver farve på teksten i hexadecimalt format</value>
+  </data>
+  <data name="FileFormatNotSupported" xml:space="preserve">
+    <value>Det valgte filformat understøttes ikke. Vælg venligst en XML-fil.</value>
+  </data>
+  <data name="FilterAppleSystemApps" xml:space="preserve">
+    <value>Vis com.apple.*-apps</value>
+  </data>
+  <data name="FilterBySmartGroup" xml:space="preserve">
+    <value>Filtrer efter Smart Group</value>
+  </data>
+  <data name="FinalDetectionFailed" xml:space="preserve">
+    <value>Sidste registrering mislykkedes</value>
+  </data>
+  <data name="FlexDeploymentNewMessage" xml:space="preserve">
+    <value>Enheder vil modtage applikation baseret på nedenstående konfiguration. Enheder med flere tildelinger vil modtage politikker i prioritetsrækkefølge. Justering af prioritet for en enkelt tildeling vil automatisk omprioritere andre tildelinger. Vælg tildelingen, der skal redigeres. Tilføjelse af en ny tildeling vil oprette en ny regel nederst på listen.</value>
+  </data>
+  <data name="FlexeraCriticalAppsArrived" xml:space="preserve">
+    <value>Nye Flexera SVM-patches er tilgængelige</value>
+  </data>
+  <data name="FlexeraSVM" xml:space="preserve">
+    <value>Flexera SVM</value>
+  </data>
+  <data name="ForwardAddAttachments" xml:space="preserve">
+    <value>Videresend/Tilføj vedhæftede filer</value>
+  </data>
+  <data name="FromEnterpriseCatalog" xml:space="preserve">
+    <value>Fra Enterprise App-lager</value>
+  </data>
+  <data name="GetStartedWithWorkflows" xml:space="preserve">
+    <value>Kom i gang med arbejdsprocesser</value>
+  </data>
+  <data name="GoToChromeWebStore" xml:space="preserve">
+    <value>Gå til Chrome Web Store</value>
+  </data>
+  <data name="HideNotificationsLabel" xml:space="preserve">
+    <value>Skjul notifikationer</value>
+  </data>
+  <data name="HideNotificationsTooltip" xml:space="preserve">
+    <value>Aktivér denne indstilling for at forhindre installations- og afinstallationsmeddelelser fra at blive vist for denne app. Dette gælder kun for automatisk udrullede apps.</value>
+  </data>
+  <data name="HighCriticality" xml:space="preserve">
+    <value>Høj kritiskhed</value>
+  </data>
+  <data name="IconFile" xml:space="preserve">
+    <value>Ikonfil</value>
+  </data>
+  <data name="InactiveAppAlreadyExistsinConsole" xml:space="preserve">
+    <value>Denne app er allerede føjet til konsollen og er i inaktiv tilstand. Genaktiver appen i applistevisningen for at fortsætte med tildelingen.</value>
+  </data>
+  <data name="IncorrectExchangeURL" xml:space="preserve">
+    <value>Anvend formatet https://server.domain.com/EWS/Exchange.asmx.</value>
+  </data>
+  <data name="IndividualAppSizeLimitMessage" xml:space="preserve">
+    <value>Maks. tilladte filstørrelse: {0} MB</value>
+  </data>
+  <data name="InstallAppExceptionMessage" xml:space="preserve">
+    <value>Vælg filter for at installere app på et stort antal enheder.</value>
+  </data>
+  <data name="InstallApplicationConfirmed" xml:space="preserve">
+    <value>Enhedsbekræftet installation af app</value>
+  </data>
+  <data name="InstallAppOnAllBspAlert" xml:space="preserve">
+    <value>Du er ved at installere appen på alle enheder. Hvis antallet af licenser er begrænset, vil nogle enheder muligvis ikke modtage appen. Klik på OK for at fortsætte. Tilgængelige licenser: {0} online, {1} offline</value>
+  </data>
+  <data name="InstallationStatus" xml:space="preserve">
+    <value>Installationsstatus</value>
+  </data>
+  <data name="InstallationStatusLastScan" xml:space="preserve">
+    <value>Installationsstatus på sidste scanning</value>
+  </data>
+  <data name="InstallCommandFailed" xml:space="preserve">
+    <value>Installation af kommando slog fejl</value>
+  </data>
+  <data name="InstalledAndFeedbackAvailable" xml:space="preserve">
+    <value>Installeret (konfigurationsfeedback tilgængelig)</value>
+  </data>
+  <data name="InstalledAppVersion" xml:space="preserve">
+    <value>Installeret app-version</value>
+  </data>
+  <data name="InstalledButHidden" xml:space="preserve">
+    <value>Installeret, men skjult</value>
+  </data>
+  <data name="InstalledByUser" xml:space="preserve">
+    <value>Installeret af bruger</value>
+  </data>
+  <data name="InstalledEqualsAssigned" xml:space="preserve">
+    <value>Installeret = tildelt</value>
+  </data>
+  <data name="InstalledNotEqualsAssigned" xml:space="preserve">
+    <value>Installeret &lt;&gt; tildelt</value>
+  </data>
+  <data name="InstalledPersonalApp" xml:space="preserve">
+    <value>Installeret personlig app</value>
+  </data>
+  <data name="InstalledSystemApp" xml:space="preserve">
+    <value>Installeret systemapp</value>
+  </data>
+  <data name="InstalledWithVersion" xml:space="preserve">
+    <value>Installeret ({0})</value>
+  </data>
+  <data name="InstallerDeferralExitCodeInvalid" xml:space="preserve">
+    <value>Lukningskode er ugyldig.</value>
+  </data>
+  <data name="InstallerDeferralExitCodeLabel" xml:space="preserve">
+    <value>Udsæt installation af lukkekode</value>
+  </data>
+  <data name="InstallerDeferralExitCodeRequired" xml:space="preserve">
+    <value>Lukkekode er påkrævet.</value>
+  </data>
+  <data name="InstallerDeferralExitCodeTooltip" xml:space="preserve">
+    <value>Angiv den heltalskode, der returneres af installationsprogrammet for at indikere, at app-installationen er udsat. Dette vil gøre det muligt at forsøge at udføre app-installationen igen ved næste installationsinterval</value>
+  </data>
+  <data name="InstallerDeferralIntervalLabel" xml:space="preserve">
+    <value>Interval for installationsudsættelse</value>
+  </data>
+  <data name="InstallerDeferralIntervalOption12Hours" xml:space="preserve">
+    <value>12 timer</value>
+  </data>
+  <data name="InstallerDeferralIntervalOption24Hours" xml:space="preserve">
+    <value>24 timer</value>
+  </data>
+  <data name="InstallerDeferralIntervalOption2Hours" xml:space="preserve">
+    <value>2 timer</value>
+  </data>
+  <data name="InstallerDeferralIntervalOption4Hours" xml:space="preserve">
+    <value>4 timer</value>
+  </data>
+  <data name="InstallerDeferralIntervalOption8Hours" xml:space="preserve">
+    <value>8 timer</value>
+  </data>
+  <data name="InstallerDeferralIntervalTooltip" xml:space="preserve">
+    <value>Angiv udsættelsestidsrammen</value>
+  </data>
+  <data name="InstallerDeferralNotificationCustom" xml:space="preserve">
+    <value>CUSTOM</value>
+  </data>
+  <data name="InstallerDeferralNotificationLabel" xml:space="preserve">
+    <value>Anvend UEM eller brugerdefinerede beskeder</value>
+  </data>
+  <data name="InstallerDeferralNotificationTooltip" xml:space="preserve">
+    <value>Angiv, om udsættelser skal anvende UEM eller brugerdefinerede beskeder</value>
+  </data>
+  <data name="InstallerDeferralNotificationUEM" xml:space="preserve">
+    <value>UEM</value>
+  </data>
+  <data name="InstallerPackageDeployment" xml:space="preserve">
+    <value>Installationspakkeudrulning</value>
+  </data>
+  <data name="InstallInProgress" xml:space="preserve">
+    <value>Installation er i gang</value>
+  </data>
+  <data name="InstallOnSelectedDevices" xml:space="preserve">
+    <value>Denne app vil kun blive installeret på enheder med gyldige tildelinger.</value>
+  </data>
+  <data name="InstallOnSelectedDevicesBspAlert" xml:space="preserve">
+    <value>Du er ved at installere appen på alle valgte enheder. Hvis antallet af licenser er begrænset, vil nogle enheder muligvis ikke modtage appen. Klik på OK for at fortsætte. Tilgængelige licenser: {0} online, {1} offline</value>
+  </data>
+  <data name="InstallStatusHeaderToolTip" xml:space="preserve">
+    <value>Dette er en repræsentation af de indberettede data fra enheder, der indeholder detaljerede oplysninger om installationsstatus for denne app og er ikke knyttet til en bestemt version.</value>
+  </data>
+  <data name="InstallSuccess" xml:space="preserve">
+    <value>Installation fuldført</value>
+  </data>
+  <data name="IntelligenceOptInMessageForFeedbackArg" xml:space="preserve">
+    <value>For at se appkonfigurationsfeedback skal du tilmelde til Intelligence. {0}</value>
+  </data>
+  <data name="InternalAppAssignmentUpToDate" xml:space="preserve">
+    <value>Up-to-date. Appversion tildelt er den samme som den version, der er installeret</value>
+  </data>
+  <data name="InternalApplication" xml:space="preserve">
+    <value>Intern app</value>
+  </data>
+  <data name="InternalApplications" xml:space="preserve">
+    <value>Interne apps</value>
+  </data>
+  <data name="InternalDomainsFieldError" xml:space="preserve">
+    <value>Domæneliste skal stå i kantede parenteser. For eksempel: ["xyz.com","abc.com"]</value>
+  </data>
+  <data name="InternalDomainsInfo" xml:space="preserve">
+    <value>Definer de domæner, som er interne eller tilladte. Brugeren kan deaktivere advarslen ved hjælp af "Bekræft, inden der sendes", når de interne domæner er defineret, og eksterne modtagere ikke er angivet. Inkluder hvert domæne i dobbelte anførselstegn, og anvend et komma som separator, og omslut listen med kantede parenteser. For eksempel: ["xyz.com","abc.com"].</value>
+  </data>
+  <data name="InternalTriggerAccountVersion" xml:space="preserve">
+    <value>Viser oplysninger om de nyeste tiltag på de tildelte enheder for denne app-version.</value>
+  </data>
+  <data name="InvalidAppAttributeVpnKey" xml:space="preserve">
+    <value>VPNUUID er ikke gyldig for attributter. Konfigurer venligst app-tunneling i stedet for</value>
+  </data>
+  <data name="InvalidApplicationBundleID" xml:space="preserve">
+    <value>Ugyldigt app bundt-id</value>
+  </data>
+  <data name="InvalidApplicationError" xml:space="preserve">
+    <value>App-pakkeformat understøttes ikke</value>
+  </data>
+  <data name="InvalidMultiStringValue" xml:space="preserve">
+    <value>Angiv strenge, der ikke har anførselstegn</value>
+  </data>
+  <data name="InvalidNsxEntryForApplication" xml:space="preserve">
+    <value>Ugyldig NSX-post for den valgte app</value>
+  </data>
+  <data name="InvalidPkgInfoFile" xml:space="preserve">
+    <value>Ugyldige metadata. Generer filen via Admin Assistant-værktøjet, og prøv at uploade igen.</value>
+  </data>
+  <data name="InvalidPlayStoreUrlEnterValidUrlToContinue" xml:space="preserve">
+    <value>Ugyldig URL-adresse for Play Store. Indtast venligst en gyldig Play Store URL-adresse for at fortsætte.</value>
+  </data>
+  <data name="InvalidRegistryPath" xml:space="preserve">
+    <value>Ugyldig registreringsdatabasesti</value>
+  </data>
+  <data name="InvalidThresholdId" xml:space="preserve">
+    <value>Ugyldigt grænse-id</value>
+  </data>
+  <data name="IsBlockingAppsEnabled" xml:space="preserve">
+    <value>Blokering af applikationer</value>
+  </data>
+  <data name="IsBlockingAppsEnabledTooltip" xml:space="preserve">
+    <value>Aktivering af Blokering af applikationer vil benytte alle definerede elementer for at kontrollere, om de kører, før du begynder installationen. Ved at deaktivere Blokering af applikationer vil dette overskrive alle blokeringsmåder og fortsætte installationen.</value>
+  </data>
+  <data name="IsForceInstallAfterDateEnabled" xml:space="preserve">
+    <value>Gennemtving Installation efter dato</value>
+  </data>
+  <data name="IsForceInstallAfterDateEnabledTooltip" xml:space="preserve">
+    <value>Angiv en dato til at gennemtvinge installationen, hvis elementet endnu ikke er blevet installeret. Dette tvinger eventuelle blokeringsapplikationer til at lukke og, hvis de er defineret, gennemtvinge genstartshandlingen.</value>
+  </data>
+  <data name="KeyEscrow" xml:space="preserve">
+    <value>Nøgledeponering</value>
+  </data>
+  <data name="KeyHelpText" xml:space="preserve">
+    <value>F.eks. HKLM\Software\.. eller HKCU\Software\.. eller HKEY_LOCAL_MACHINE\Software.. eller HKEY_CURRENT_USER\Software..
+
+Indtast registreringsdatabasestien med det forkortede eller fulde navn til registreringsdatabase-hiven på øverste niveau.</value>
+  </data>
+  <data name="KeySupportedOnlyAtAccountLevel" xml:space="preserve">
+    <value>Nøgle understøttes kun på kontoniveau</value>
+  </data>
+  <data name="KeySupportedOnlyAtAppLevel" xml:space="preserve">
+    <value>Nøgle understøttes kun på app-niveau</value>
+  </data>
+  <data name="LastAction" xml:space="preserve">
+    <value>Seneste handling</value>
+  </data>
+  <data name="LastActionTaken" xml:space="preserve">
+    <value>Seneste udførte handling</value>
+  </data>
+  <data name="LastActionTimestamp" xml:space="preserve">
+    <value>Tidsstempel for seneste handling</value>
+  </data>
+  <data name="LastReportedTime" xml:space="preserve">
+    <value>Tidspunkt for sidst rapporteret</value>
+  </data>
+  <data name="LastServerAction" xml:space="preserve">
+    <value>Sidste serverhandling</value>
+  </data>
+  <data name="LatestInstallationEvent" xml:space="preserve">
+    <value>Senest loggede installationshændelse</value>
+  </data>
+  <data name="LatestInstallationEventTooltip" xml:space="preserve">
+    <value>Viser den senest loggede installationshændelse for "fejlfinding" på denne enhed og app. Kun igangværende installationstilstande vil blive opfanget som hændelser, ikke fuldførte installationstilstande. Enheden rapporterer muligvis ikke hver eneste installationstilstand, og i så fald bliver ingen hændelser logget.</value>
+  </data>
+  <data name="LatestInstallationStatus" xml:space="preserve">
+    <value>Seneste installationsstatus</value>
+  </data>
+  <data name="LicenseDistribution" xml:space="preserve">
+    <value>Distribution af licens</value>
+  </data>
+  <data name="LicenseSummary" xml:space="preserve">
+    <value>Oversigt over licenser</value>
+  </data>
+  <data name="LogAggregationMode" xml:space="preserve">
+    <value>Logføring af aggregeringstilstand</value>
+  </data>
+  <data name="LogAggregationModeInfo" xml:space="preserve">
+    <value>Den tilstand, hvori appen vil sende logfilen for at logføre aggregeringsslutpunktet.</value>
+  </data>
+  <data name="LogAggregationUrlInfo" xml:space="preserve">
+    <value>URL-adressen til logfilens aggregeringsslutpunkt.</value>
+  </data>
+  <data name="LowCriticality" xml:space="preserve">
+    <value>Lav kritiskhed</value>
+  </data>
+  <data name="macOSDesiredStateManagement" xml:space="preserve">
+    <value>Ønsket tilstandsstyring</value>
+  </data>
+  <data name="Major" xml:space="preserve">
+    <value>Større</value>
+  </data>
+  <data name="ManageAssignment" xml:space="preserve">
+    <value>Administrer tildelinger</value>
+  </data>
+  <data name="ManageAssignmentForApplicationArgOpensDialog" xml:space="preserve">
+    <value>Styr tildeling for app {0} åbner dialogboksen</value>
+    <comment>The placeholder in this label key will contain application name.</comment>
+  </data>
+  <data name="ManageAssignmentForArgOpensDialog" xml:space="preserve">
+    <value>Styr tildeling for {0} åbner dialogboksen</value>
+    <comment>Placeholder in this label key is for application name.</comment>
+  </data>
+  <data name="ManagedAccess" xml:space="preserve">
+    <value>Styret adgang</value>
+  </data>
+  <data name="ManagedAccessDescription" xml:space="preserve">
+    <value>EMM-styret adgang definerer, hvilke enheder der kan installere denne app fra Intelligent Hub.</value>
+  </data>
+  <data name="ManagedAccessOnlyEmmDevices" xml:space="preserve">
+    <value>Kun EMM-styrede enheder vil kunne installere appen.</value>
+  </data>
+  <data name="ManagedAccessSecuredByWorkspace" xml:space="preserve">
+    <value>Hvis denne app er beskyttet af Workspace ONE SDK version 20.10 eller nyere, vil adgang være blokeret, medmindre appen administreres af EMM. For at sikre, at denne app er styret, skal du aktivere indstillingen "Gør app MDM-styret hvis installeret af bruger" under fanen Begrænsninger.</value>
+  </data>
+  <data name="ManagedAccessSettingEnabled" xml:space="preserve">
+    <value>Hvis denne indstilling er aktiveret:</value>
+  </data>
+  <data name="ManagedAccessSettingEnabledOnlyEmm" xml:space="preserve">
+    <value>Hvis denne indstilling er aktiveret, vil kun EMM-styrede enheder kunne installere denne app.</value>
+  </data>
+  <data name="ManagedAccessSubDescription" xml:space="preserve">
+    <value>Hvis denne indstilling er deaktiveret, vil alle registrerede enheder kunne installere denne app.</value>
+  </data>
+  <data name="ManagedAccessTitle" xml:space="preserve">
+    <value>EMM Managed Access</value>
+  </data>
+  <data name="ManagedAppsTab" xml:space="preserve">
+    <value>Styrede apps</value>
+  </data>
+  <data name="ManagedConfigurationErrorMessage" xml:space="preserve">
+    <value>Konfigurationsfejl</value>
+  </data>
+  <data name="ManagementAccess" xml:space="preserve">
+    <value>Management Access</value>
+  </data>
+  <data name="ManagementIDToolTip" xml:space="preserve">
+    <value>Entydigt id pr. app og enhed</value>
+  </data>
+  <data name="MaxAllowedDevicesException" xml:space="preserve">
+    <value>Antallet af enheder, der er valgt, overstiger antallet af tilladte enheder. Vælg filter.</value>
+  </data>
+  <data name="MaxAttachmentSize" xml:space="preserve">
+    <value>Maks størrelse på vedhæftede filer</value>
+  </data>
+  <data name="MaxAttachmentSizeInfo" xml:space="preserve">
+    <value>Maksimal filstørrelse i byte, som en bruger kan vedhæfte til en udgående e-mail</value>
+  </data>
+  <data name="MaxCalendarSyncWindow" xml:space="preserve">
+    <value>Maksimalt tilladte synkroniseringsperiode for kalender</value>
+  </data>
+  <data name="MaxEmailSyncWindow" xml:space="preserve">
+    <value>Maksimalt tilladte synkroniseringsperiode for e-mail</value>
+  </data>
+  <data name="MaxFileSizeCDNMegabytes" xml:space="preserve">
+    <value>Maksimal filstørrelse med CDN</value>
+  </data>
+  <data name="MaximumFileSizeWithCDNShouldBeLesserThanAppCapacity" xml:space="preserve">
+    <value>Maksimal filstørrelse med CDN kan ikke overskride appens samlede kapacitet.</value>
+  </data>
+  <data name="MaxTabCountReached" xml:space="preserve">
+    <value>Kun tre styrede e-mailkonti understøttes</value>
+  </data>
+  <data name="MediumCriticality" xml:space="preserve">
+    <value>Mellemstor kritiskhed</value>
+  </data>
+  <data name="MetadataFileContainsInvalidCharactersForNameKey" xml:space="preserve">
+    <value>Nøgleværdien i navnet i metadatafilen indeholder ugyldige tegn. Denne nøgleværdi kan kun bestå af alfanumeriske tegn, understregning, mellemrum, bindestreger og punktummer.</value>
+  </data>
+  <data name="MMAEmailSettingsInfoMsgInfo" xml:space="preserve">
+    <value>Konfiguration af flere e-mailkonti understøttes kun af Boxer-app version 5.21 eller højere, og single sign-on skal være aktiveret.</value>
+  </data>
+  <data name="MobileFlowsAuthenticationServerInfo" xml:space="preserve">
+    <value>Angiv en gyldig URL-adresse til godkendelse af enhedsbrugere. Det kan være adgangsserver-URL-adressen til Workspace ONE</value>
+  </data>
+  <data name="MobileFlowsAutoEnableConnectorsInfo" xml:space="preserve">
+    <value>Hvis det er aktiveret, når du slår Mobile Flows til, aktiveres alle konnektorerne automatisk efter hinanden. Anbefales kun, når alle konnektorer er i organisationsnetværket med Workspace ONE Access</value>
+  </data>
+  <data name="MobileFlowsHostInfo" xml:space="preserve">
+    <value>Værtsnavn til Mobile Flows-serveren</value>
+  </data>
+  <data name="MobileFlowsInfo" xml:space="preserve">
+    <value>Konfigurer information om Mobile Flows-servere, som Boxer kan integrere med</value>
+  </data>
+  <data name="MobileFlowsSyncHoursInfo" xml:space="preserve">
+    <value>Anmod ikke om Mobile Flow-kort for e-mails, der er sendt tidligere end denne værdi (i timer)</value>
+  </data>
+  <data name="ModifiedOnArgArgByArg" xml:space="preserve">
+    <value>Ændret den {0} af {1}</value>
+  </data>
+  <data name="MSTSelection" xml:space="preserve">
+    <value>Vælg app transformeringer</value>
+  </data>
+  <data name="MustBePositiveIntegerValue" xml:space="preserve">
+    <value>Skal være positiv heltalsværdi</value>
+  </data>
+  <data name="NewWorkflow" xml:space="preserve">
+    <value>Ny arbejdsproces</value>
+  </data>
+  <data name="NoEventLogged" xml:space="preserve">
+    <value>Ingen hændelse logført</value>
+  </data>
+  <data name="NotebookVersionMessage" xml:space="preserve">
+    <value>Politikkerne gælder kun for notesbogversion 1.4 og højere. For ældre versioner skal du gå til brugerdefinerede indstillinger i den SDK-profil, der er associeret med denne app.</value>
+  </data>
+  <data name="NotebookWarningToEditAllAssignments" xml:space="preserve">
+    <value>Konfiguration af notesbog er klar til opsætning. Sørg for, at konfigurationer, der blev overført fra brugerdefinerede indstillinger i den SDK-profil associeret med denne app, er korrekte før udgivelsen.</value>
+  </data>
+  <data name="NotEvaluated" xml:space="preserve">
+    <value>Ikke evalueret</value>
+  </data>
+  <data name="NotificationsInfo" xml:space="preserve">
+    <value>Konfigurer Email Notification Service (ENS) og dens funktion for at levere e-mailnotifikationer i realtid.</value>
+  </data>
+  <data name="NotifyEmail" xml:space="preserve">
+    <value>Giv besked om e-mail</value>
+  </data>
+  <data name="NumberOfApps" xml:space="preserve">
+    <value>{0} apps</value>
+  </data>
+  <data name="NumberOfCommandsQueued" xml:space="preserve">
+    <value>Antal kommandoer i kø</value>
+  </data>
+  <data name="OCSP" xml:space="preserve">
+    <value>Politikker for tilbagekaldelse af certifikater</value>
+  </data>
+  <data name="OfflineLicenseAvailableArgDevicesAllocation" xml:space="preserve">
+    <value>{0} offline licenser er tilgængelige. Enheder vil blive tildelt licenser efter først til mølle-princippet.</value>
+  </data>
+  <data name="OnDemandAppAssignedButNotInstalled" xml:space="preserve">
+    <value>App tildelt til on-demand-udrulning ikke installeret</value>
+  </data>
+  <data name="OnDemandAppAssignmentOutOfDate" xml:space="preserve">
+    <value>Seneste appversion tildelt til on-demand-udrulning ikke installeret</value>
+  </data>
+  <data name="OnDemandBootstrapPackageAssignedButNotInstalled" xml:space="preserve">
+    <value>Bootstrap-pakke er tildelt til on-demand udrulning, men er ikke blevet anmodet om</value>
+  </data>
+  <data name="OneDay" xml:space="preserve">
+    <value>1 dag</value>
+  </data>
+  <data name="OnlineLicenseAvailableArgDevicesAllocation" xml:space="preserve">
+    <value>{0}online-licenser er tilgængelige. Enhederne vil blive tildelt licenser efter først til mølle-princippet.</value>
+  </data>
+  <data name="OrdersLicensesMenuTitle" xml:space="preserve">
+    <value>Vis og styr VPP-indløsningskoder (Volume Purchase Plan)</value>
+  </data>
+  <data name="OSVersionNotSetError" xml:space="preserve">
+    <value>OsVesion må ikke være nul eller tom, hvis politik er aktiveret</value>
+  </data>
+  <data name="OsXParseError" xml:space="preserve">
+    <value>Der opstod en fejl under parsing af OsX-filen</value>
+  </data>
+  <data name="OtherAttributes" xml:space="preserve">
+    <value>Andre attributter</value>
+  </data>
+  <data name="PasswordNotCopied" xml:space="preserve">
+    <value>Adgangskoder, der blev indtastet under konfigurationen, blev ikke kopieret sammen med denne profil. Indtast de korrekte adgangskoder igen, før du gemmer.</value>
+  </data>
+  <data name="Paused" xml:space="preserve">
+    <value>Stoppet</value>
+  </data>
+  <data name="PeerDistribution" xml:space="preserve">
+    <value>Peer Distribution</value>
+  </data>
+  <data name="PeerDistributionCacheBytes" xml:space="preserve">
+    <value>Cachebyte</value>
+  </data>
+  <data name="PeerDistributionCacheEnabled" xml:space="preserve">
+    <value>Cacheaktiveret</value>
+  </data>
+  <data name="PeerDistributionCurrentClientMode" xml:space="preserve">
+    <value>Aktuel klienttilstand</value>
+  </data>
+  <data name="PeerDistributionDetails" xml:space="preserve">
+    <value>Peer-distributionsdetalje</value>
+  </data>
+  <data name="PeerDistributionDetailsLearnMore" xml:space="preserve">
+    <value>FÅ MERE AT VIDE</value>
+  </data>
+  <data name="PeerDistributionDetailsToolTip" xml:space="preserve">
+    <value>Viser antallet af enheder, der har downloadet denne app med peer-distribution, mængden af downloadede data, og hvor downloaddataen blev hentet</value>
+  </data>
+  <data name="PeerDistributionDevicesUtilizingPeerDistribution" xml:space="preserve">
+    <value>Enheder, der anvender peer-distribution</value>
+  </data>
+  <data name="PeerDistributionDevicesWithPeerDistributionOn" xml:space="preserve">
+    <value>Enheder med peer-distribution slået til</value>
+  </data>
+  <data name="PeerDistributionDownloadSource" xml:space="preserve">
+    <value>Download kilde</value>
+  </data>
+  <data name="PeerDistributionHostedCacheServerList" xml:space="preserve">
+    <value>Hosted liste over cacheserver</value>
+  </data>
+  <data name="PeerDistributionNotUtilized" xml:space="preserve">
+    <value>Ikke udnyttet</value>
+  </data>
+  <data name="PeerDistributionOff" xml:space="preserve">
+    <value>Slået fra</value>
+  </data>
+  <data name="PeerDistributionOnNotUtilized" xml:space="preserve">
+    <value>Slået til/ikke udnyttet</value>
+  </data>
+  <data name="PeerDistributionOnUtilized" xml:space="preserve">
+    <value>Slået til/udnyttet</value>
+  </data>
+  <data name="PeerDistributionServerBytes" xml:space="preserve">
+    <value>Serverbytes</value>
+  </data>
+  <data name="PeerDistributionSfdOriginTypeAW" xml:space="preserve">
+    <value>Enhedstjenester</value>
+  </data>
+  <data name="PeerDistributionSfdOriginTypeCDN" xml:space="preserve">
+    <value>CDN</value>
+  </data>
+  <data name="PeerDistributionSfdOriginTypeNone" xml:space="preserve">
+    <value>Ingen</value>
+  </data>
+  <data name="PeerDistributionSfdOriginTypeP2P" xml:space="preserve">
+    <value>Adaptiva</value>
+  </data>
+  <data name="PeerDistributionSfdOriginTypeP2PBC" xml:space="preserve">
+    <value>CDN (med enhedstjenester)</value>
+  </data>
+  <data name="PeerDistributionStatus" xml:space="preserve">
+    <value>Peer Distribution</value>
+  </data>
+  <data name="PeerDistributionTotalDeviceCount" xml:space="preserve">
+    <value>Samlet antal enheder</value>
+  </data>
+  <data name="PeerDistributionTotalSavingBytes" xml:space="preserve">
+    <value>Samlet antal lagringsbyte</value>
+  </data>
+  <data name="PeerDistributionTotalSavingPercent" xml:space="preserve">
+    <value>Samlet antal lagringsprocent</value>
+  </data>
+  <data name="PeerDistributionTotalUtilizedCacheBytes" xml:space="preserve">
+    <value>Samlet antal udnyttede cachebyte</value>
+  </data>
+  <data name="PeerDistributionTotalUtilizedServerBytes" xml:space="preserve">
+    <value>Samlet antal udnyttede serverbyte</value>
+  </data>
+  <data name="PeerDistributionUtilized" xml:space="preserve">
+    <value>Udnyttet</value>
+  </data>
+  <data name="PersonalAppCounts" xml:space="preserve">
+    <value>Installerer uden tildelinger</value>
+  </data>
+  <data name="PersonalAppCountsToolTip" xml:space="preserve">
+    <value>Viser antallet af enheder, der har forskellige versioner af denne app installeret, men som ikke har en gyldig tildeling, fordi de enten har haft denne app indlæst eksternt eller tidligere har haft en tildeling fra Workspace ONE.</value>
+  </data>
+  <data name="Pivd" xml:space="preserve">
+    <value>PIV-D</value>
+  </data>
+  <data name="PivdAndroidDerivedCredentialSmimeForFirstaccount" xml:space="preserve">
+    <value>PIV-D understøtter kun enkelt S/MIME-certifikat. Vælg kun denne indstilling for en primært administreret e-mailkonto.</value>
+  </data>
+  <data name="PivdDerivedCredentialForFirstaccount" xml:space="preserve">
+    <value>PIV-D understøtter kun enkelt S/MIME-certifikat. Vælg kun denne indstilling for en primært administreret e-mailkonto.
+For at anvende PIV-D med Boxer-app-versioner lavere end 5.21 skal du sende den brugerdefinerede KVP "PolicyDerivedCredentials" fra sektionen "Appkonfiguration".</value>
+  </data>
+  <data name="PlusAdd" xml:space="preserve">
+    <value>+ Tilføj</value>
+  </data>
+  <data name="PolicyAllowActionArchive" xml:space="preserve">
+    <value>Arkivér handling</value>
+  </data>
+  <data name="PolicyAllowActionSpam" xml:space="preserve">
+    <value>Tillad slutbruger at rapportere spam</value>
+  </data>
+  <data name="PolicyAllowAttachments" xml:space="preserve">
+    <value>Tillad vedhæftede filer</value>
+  </data>
+  <data name="PolicyAllowAttachmentsDownload" xml:space="preserve">
+    <value>Tillad download af vedhæftet fil</value>
+  </data>
+  <data name="PolicyAllowAttachmentsDownloadInfo" xml:space="preserve">
+    <value>Tillad eller bloker download og videresending af vedhæftede filer</value>
+  </data>
+  <data name="PolicyAllowAttachmentsInfo" xml:space="preserve">
+    <value>Giver brugeren tilladelse til at tilføje/videresende vedhæftede filer</value>
+  </data>
+  <data name="PolicyAllowCallKitIdentification" xml:space="preserve">
+    <value>Aktivér brugen af CallKit</value>
+  </data>
+  <data name="PolicyAllowCallKitIdentificationInfo" xml:space="preserve">
+    <value>Dette er kun en iOS-indstilling og kræver brugerinteraktion for at aktivere CallKit-opkalds-ID</value>
+  </data>
+  <data name="PolicyAllowCrashReporting" xml:space="preserve">
+    <value>Tillad nedbrudsrapportering</value>
+  </data>
+  <data name="PolicyAllowCustomKeyboards" xml:space="preserve">
+    <value>Tillad brugerdefinerede tastaturer</value>
+  </data>
+  <data name="PolicyAllowCustomKeyboardsTooltip" xml:space="preserve">
+    <value>Tillad, at dine brugere kan aktivere tredjepartstastaturer</value>
+  </data>
+  <data name="PolicyAllowDocProviders" xml:space="preserve">
+    <value>Styr vedhæftede filer fra eksterne udbydere</value>
+  </data>
+  <data name="PolicyAllowEnterpriseContent" xml:space="preserve">
+    <value>Virksomhedsindhold</value>
+  </data>
+  <data name="PolicyAllowLocalCalendars" xml:space="preserve">
+    <value>Lokale kalendere</value>
+  </data>
+  <data name="PolicyAllowLogging" xml:space="preserve">
+    <value>Tillader logføring</value>
+  </data>
+  <data name="PolicyAllowLoggingInfo" xml:space="preserve">
+    <value>Disse logfiler sendes ikke, medmindre brugeren foretager en handling for at sende dem.</value>
+  </data>
+  <data name="PolicyAllowMailServerCiphers" xml:space="preserve">
+    <value>Tilladte mailserver-krypteringer</value>
+  </data>
+  <data name="PolicyAllowMailServerCiphersInfo" xml:space="preserve">
+    <value>Tvinger Boxer til kun at anvende disse krypteringer under et TLS-handshake, når der oprettes forbindelse til en mailserver</value>
+  </data>
+  <data name="PolicyAllowMetrics" xml:space="preserve">
+    <value>Anonyme metrikker</value>
+  </data>
+  <data name="PolicyAllowOpenIn" xml:space="preserve">
+    <value>Styr Åbn i</value>
+  </data>
+  <data name="PolicyAllowPhotoAttachemetInfo" xml:space="preserve">
+    <value>Tillad eller bloker muligheden for at vedhæfte fotos fra kamera/fotogalleri</value>
+  </data>
+  <data name="PolicyAllowPhotoAttachment" xml:space="preserve">
+    <value>Tillad vedhæftet foto</value>
+  </data>
+  <data name="PolicyAllowPrint" xml:space="preserve">
+    <value>Tillad udskrivning</value>
+  </data>
+  <data name="PolicyAllowPrintTooltip" xml:space="preserve">
+    <value>Deaktiver for at blokere udskrivning af e-mails og vedhæftede filer</value>
+  </data>
+  <data name="PolicyAllowTouchID" xml:space="preserve">
+    <value>Biometrisk id</value>
+  </data>
+  <data name="PolicyAllowTouchInfo" xml:space="preserve">
+    <value>Hvis du aktiverer denne funktion, kan brugere anvende fingeraftryk, Touch ID eller Face ID på understøttede enheder.</value>
+  </data>
+  <data name="PolicyAllowUserAccountsInfo" xml:space="preserve">
+    <value>Tillad, at brugeren tilføjer andre konti såsom Gmail, iCloud og andre IMAP-konti.</value>
+  </data>
+  <data name="PolicyCalendarMaxSyncPeriod" xml:space="preserve">
+    <value>Maks. kalendersynkroniseringsvindue</value>
+  </data>
+  <data name="PolicyCalendarMaxSyncPeriodInfo" xml:space="preserve">
+    <value>Hvor langt tilbage en bruger kan vælge at synkronisere sine kalenderbegivenheder.</value>
+  </data>
+  <data name="PolicyClassMarkings" xml:space="preserve">
+    <value>Markeringer</value>
+  </data>
+  <data name="PolicyClassMarkingsDefaultClass" xml:space="preserve">
+    <value>Standardklassifikation</value>
+  </data>
+  <data name="PolicyClassMarkingsDefaultClassInfo" xml:space="preserve">
+    <value>(Valgfrit) Indstil standardklassifikation for e-mails. Værdien skal matche et vist navn fra en post i PolicyClassMarkings-konfigurationsværdien.</value>
+  </data>
+  <data name="PolicyClassMarkingsEnabled" xml:space="preserve">
+    <value>Aktiverer eller deaktiverer klassifikationsmarkeringer</value>
+  </data>
+  <data name="PolicyClassMarkingsEnabledInfo" xml:space="preserve">
+    <value>Aktivér eller deaktiver klassifikationsmarkeringer</value>
+  </data>
+  <data name="PolicyClassMarkingsInfo" xml:space="preserve">
+    <value>Definerer den hierarkiske liste over klassifikationer.</value>
+  </data>
+  <data name="PolicyClassMarkingsRankEnabled" xml:space="preserve">
+    <value>Aktivér rangering</value>
+  </data>
+  <data name="PolicyClassMarkingsRankEnabledInfo" xml:space="preserve">
+    <value>(Valgfrit) Aktiverer hierarkisk klassifikationsrangering.</value>
+  </data>
+  <data name="PolicyClassMarkingsXHeader" xml:space="preserve">
+    <value>Definer x-header</value>
+  </data>
+  <data name="PolicyClassMarkingsXHeaderInfo" xml:space="preserve">
+    <value>(Valgfrit) Aktiverer og definerer x-header for klassifikation.</value>
+  </data>
+  <data name="PolicyClassVersion" xml:space="preserve">
+    <value>Version</value>
+  </data>
+  <data name="PolicyClassVersionInfo" xml:space="preserve">
+    <value>Versionsnummer for klassifikationsfunktion</value>
+  </data>
+  <data name="PolicyCustomOnlineMeetingUrls" xml:space="preserve">
+    <value>Brugerdefinerede QuickJoin-URL-adresser</value>
+  </data>
+  <data name="PolicyDeleteOnSpamForward" xml:space="preserve">
+    <value>Slet spam</value>
+  </data>
+  <data name="PolicyDisableKeyEscrow" xml:space="preserve">
+    <value>Deaktiver deponering af nøgle (glemt adgangskode)</value>
+  </data>
+  <data name="PolicyEmailMaxSyncPeriod" xml:space="preserve">
+    <value>Maks. e-mailsynkroniseringsvindue</value>
+  </data>
+  <data name="PolicyEnforceHTTPS" xml:space="preserve">
+    <value>Begræns usikre HTTP-forbindelser</value>
+  </data>
+  <data name="PolicyEnforceHTTPSTooltip" xml:space="preserve">
+    <value>Begrænser indlæsning af indhold fra usikre (HTTP) forbindelser.</value>
+  </data>
+  <data name="PolicyLimitNotificationText" xml:space="preserve">
+    <value>Notifikationsindhold</value>
+  </data>
+  <data name="PolicyLimitNotificationTextInfo" xml:space="preserve">
+    <value>Styrer, hvor mange oplysninger der videregives i hver notifikationsadvarsel</value>
+  </data>
+  <data name="PolicyScepPendingMaxRetryAttempts" xml:space="preserve">
+    <value>Maks. antal nye forsøg for SCEP</value>
+  </data>
+  <data name="PolicyScepPendingRetryTimeout" xml:space="preserve">
+    <value>Interval i sekunder mellem hvert nyt forsøg for SCEP</value>
+  </data>
+  <data name="PolicySensitivityLabelsEmailClassificationInfo" xml:space="preserve">
+    <value>Brugere vil kunne interagere med AIP-mærkaterne</value>
+  </data>
+  <data name="PolicySMIME" xml:space="preserve">
+    <value>S/MIME-status</value>
+  </data>
+  <data name="PolicySMIMEConformingEncryptionAlgorithms" xml:space="preserve">
+    <value>Understøttede krypteringsalgoritmer</value>
+  </data>
+  <data name="PolicySMIMEConformingEncryptionAlgorithmsInfo" xml:space="preserve">
+    <value>Tillader begrænsning af S/MIME-kryptering til specifikke algoritmer. Krypterede e-mails, der ikke har anvendt en godkendt algoritme, vil blive markeret med en advarsel. Hvis der ikke angives nogen gyldige værdier, anses alle algoritmer for at være acceptable.</value>
+  </data>
+  <data name="PolicySMIMEConformingSigningAlgorithms" xml:space="preserve">
+    <value>Understøttede signeringsalgoritmer</value>
+  </data>
+  <data name="PolicySMIMEDefaultEncryptionAlgorithm" xml:space="preserve">
+    <value>Standardkrypteringsalgoritme</value>
+  </data>
+  <data name="PolicySMIMEDefaultEncryptionAlgorithmInfo" xml:space="preserve">
+    <value>Tillader begrænsning af S/MIME-kryptering til specifikke algoritmer. Krypterede e-mails, der ikke har anvendt en godkendt algoritme, vil blive markeret med en advarsel. Hvis der ikke angives nogen gyldige værdier, anses alle algoritmer for at være acceptable.</value>
+  </data>
+  <data name="PolicySMIMEDefaultSigningAlgorithm" xml:space="preserve">
+    <value>Standardsigneringsalgoritme</value>
+  </data>
+  <data name="PolicySMIMEEnableRevocationCheck" xml:space="preserve">
+    <value>S/MIME-aktivér tilbagekaldelseskontrol</value>
+  </data>
+  <data name="PolicySMIMEEnableRevocationCheckInfo" xml:space="preserve">
+    <value>Definerer politikken for kontrol af tilbagekaldelse af S/MIME-certifikater</value>
+  </data>
+  <data name="PolicySMIMERevocationCheckType" xml:space="preserve">
+    <value>Type af S/MIME-tilbagekaldelseskontrol</value>
+  </data>
+  <data name="PolicySMIMERevocationCheckTypeInfo" xml:space="preserve">
+    <value>Definerer politikken til at udføre kontrol af tilbagekaldelsesstatus for hele certifikatkæden eller kun for brugercertifikatet.</value>
+  </data>
+  <data name="PolicySMIMERevocationCheckUrl" xml:space="preserve">
+    <value>URL-adresse for S/MIME-tilbagekaldelseskontrol</value>
+  </data>
+  <data name="PolicySMIMERevocationCheckUrlInfo" xml:space="preserve">
+    <value>Denne URL-adresse bruges som URL-adresse til OCSP-svar</value>
+  </data>
+  <data name="PolicySMIMERevocationEnforceNonce" xml:space="preserve">
+    <value>Gennemtvingelse af nonce for S/MIME-tilbagekaldelse</value>
+  </data>
+  <data name="PolicySMIMERevocationEnforceNonceInfo" xml:space="preserve">
+    <value>Hvis det er aktiveret, vil nonce blive gennemtvunget i OCSP-anmodninger</value>
+  </data>
+  <data name="PolicySMIMERevocationStrictness" xml:space="preserve">
+    <value>Strenghed for S/MIME-tilbagekaldelse</value>
+  </data>
+  <data name="PolicySMIMERevocationStrictnessInfo" xml:space="preserve">
+    <value>Definerer strenghedsgraden, der skal anvendes til at fastslå, om et tilbagekaldt certifikat er tilladt at anvende eller ikke</value>
+  </data>
+  <data name="PolicySMIMERevocationTTL" xml:space="preserve">
+    <value>S/MIME-tilbagekaldelse TTL</value>
+  </data>
+  <data name="PolicySMIMERevocationTTLinfo" xml:space="preserve">
+    <value>Definerer den tidsmængde i dage, hvor tilbagekaldelsesdataet skal bevares</value>
+  </data>
+  <data name="PolicySMIMERevocationUseAIA" xml:space="preserve">
+    <value>S/MIME-tilbagekaldelse anvender adgang til autoritetsinformation</value>
+  </data>
+  <data name="PolicySMIMERevocationUseAIAInfo" xml:space="preserve">
+    <value>Politik vedrørende anvendelse af udvidelse af adgang til autoritetsinformation i certifikat</value>
+  </data>
+  <data name="PolicySMIMEStrictEKUCheck" xml:space="preserve">
+    <value>Kræver EKU-udvidelseskontrol</value>
+  </data>
+  <data name="PolicySMIMEStrictEKUCheckInfo" xml:space="preserve">
+    <value>Definerer, om vi skal kontrollere EKU-udvidelsen for S/MIME-certifikaterne. Hvis det er sat til sandt, validerer vi, at EKU-udvidelsen er til stede i certifikatet, og den har E-mail Protection-formålet indstillet.</value>
+  </data>
+  <data name="PolicySMIMETrustStore" xml:space="preserve">
+    <value>S/MIME-trust store</value>
+  </data>
+  <data name="PolicyStatus" xml:space="preserve">
+    <value>Status for politik</value>
+  </data>
+  <data name="PolicyTLSEnableRevocationCheck" xml:space="preserve">
+    <value>Tilbagekaldelseskontrol</value>
+  </data>
+  <data name="PolicyTLSEnableRevocationCheckInfo" xml:space="preserve">
+    <value>Aktiverer/deaktiverer kontrol af TLS-tilbagekaldelse</value>
+  </data>
+  <data name="PolicyTLSRevocationCheckType" xml:space="preserve">
+    <value>Type af tilbagekaldelseskontrol</value>
+  </data>
+  <data name="PolicyTLSRevocationCheckTypeInfo" xml:space="preserve">
+    <value>Angiver om tilbagekaldskontrol skal gælde for hele kæden eller blot serverens certifikat. Denne politik vil ikke have nogen effekt, hvis Tilbagekaldelseskontrol er deaktiveret.</value>
+  </data>
+  <data name="PolicyTLSRevocationCheckUrl" xml:space="preserve">
+    <value>URL-adresse for tilbagekaldskontrol</value>
+  </data>
+  <data name="PolicyTLSRevocationCheckUrlInfo" xml:space="preserve">
+    <value>URL-adresse for OCSP-server. Denne politik vil ikke have nogen effekt, hvis Tilbagekaldelseskontrol er deaktiveret.</value>
+  </data>
+  <data name="PolicyTLSRevocationEnforceNonce" xml:space="preserve">
+    <value>Gennemtving nonce</value>
+  </data>
+  <data name="PolicyTLSRevocationEnforceNonceInfo" xml:space="preserve">
+    <value>Gennemtving nonce, hvis det er aktiveret, anvend ellers ikke nonce. Denne politik vil ikke have nogen effekt, hvis Tilbagekaldelseskontrol er deaktiveret.</value>
+  </data>
+  <data name="PolicyTLSRevocationStrictness" xml:space="preserve">
+    <value>Strenghed for tilbagekaldelse</value>
+  </data>
+  <data name="PolicyTLSRevocationStrictnessInfo" xml:space="preserve">
+    <value>Når det er sat til at ignorere, logføres resultatet for tilbagekaldelseskontrol kun, og TLS-forbindelser blokeres ikke. Når det er indstillet til Streng, blokeres TLS-forbindelser, hvis serverens certifikat er tilbagekaldt, eller OCSP-serveren ikke kan kontaktes. Når det er indstillet til moderat, blokeres TLS-forbindelser, hvis serverens certifikat er tilbagekaldt. Hvis OCSP-serveren ikke kan nås, anvendes den forrige kontrols resultat (hvis den er tilgængelig). Denne politik vil ikke have nogen effekt, hvis Tilbagekaldelseskontrol er deaktiveret.</value>
+  </data>
+  <data name="PolicyTLSRevocationTTL" xml:space="preserve">
+    <value>Tilbagekalds-TTL (dage)</value>
+  </data>
+  <data name="PolicyTLSRevocationTTLInfo" xml:space="preserve">
+    <value>Varighed i dage, hvor tilbagekaldelsesdata bevares. Negativ værdi og nul ignoreres, hvis respondøren ikke angiver værdi for næste opdatering. Hvis KVP er angivet, skal du anvende værdien fra denne KVP. Hvis KVP ikke er angivet, er standard for næste kontrol 7 dage. Hvis respondøren angiver nextupdate. Hvis KVP er angivet – anvend værdien fra denne KVP, nextupdate-værdien fra respondøren ignoreres. Hvis denne KVP ikke er angivet – anvend nextupdate-værdi fra svareren. Denne politik vil ikke have nogen effekt, hvis Tilbagekaldelseskontrol er deaktiveret.</value>
+  </data>
+  <data name="PolicyTLSRevocationUseAIA" xml:space="preserve">
+    <value>Brug AIA til tilbagekaldelse</value>
+  </data>
+  <data name="PolicyTLSRevocationUseAIAInfo" xml:space="preserve">
+    <value>Deaktiveret – anvend ikke URL-adressen, der er konfigureret i certifikat til tilbagekaldelsesstatus, anvend kun URL-adresse for tilbagekaldskontrol. Aktiveret – anvend URL-adressen, der er konfigureret i certifikatet til kontrol af tilbagekaldelsesstatus, gå tilbage til URL-adressen til tilbagekaldelseskontrol, hvis den ikke er tilgængelig. Påkrævet – anvend KUN den URL-adresse, der er konfigureret i certifikatet, til at tjekke for tilbagekaldelsesstatus, ignorer URL-adresse for tilbagekaldskontrol. Denne politik vil ikke have nogen effekt, hvis Tilbagekaldelseskontrol er deaktiveret.</value>
+  </data>
+  <data name="PolicyTLSStrictTrustCheck" xml:space="preserve">
+    <value>TLS-tillidskontrol</value>
+  </data>
+  <data name="PolicyTLSStrictTrustCheckInfo" xml:space="preserve">
+    <value>Hvis den er indstillet til sand, vil Boxer udføre strengere tillidskontroller for TLS-servercertifikaterne. Vi kontrollerer, at alle rod-CA-certifikater og de mellemliggende CA-certifikater, som udgør hele certifikatkæden, er installeret i den trust store, vi opretter, baseret på konsolkonfigurationen Trust store. Denne nøgle spiller kun en rolle, hvis Tilbagekaldelseskontrol er blevet aktiveret.</value>
+  </data>
+  <data name="PolicyTLSTrustStore" xml:space="preserve">
+    <value>Trust store</value>
+  </data>
+  <data name="PolicyTLSTrustStoreInfo" xml:space="preserve">
+    <value>Når dette er deaktiveret, anvendes enheds-trust store og Boxer-trust store. Når det er aktiveret, anvendes Boxer-trust store. Standard er enheds-trust store + Boxer-trust store. iOS: Når Tilbagekaldelseskontrol er deaktiveret, vil der aktuelt kun anvendes enheds-trust store til værdien '0'. Når brugerdefinerede mellemliggende CA'er er involveret, der ikke er forudindlæst på enheden, vil den eneste gyldige indstilling for dette være "1". Brug altid Boxer-trust store, og alle mellemliggende CA'er skal være tilgængelige i Boxer-trust store til trust-forbindelser. Android: Denne KVP vil ikke have nogen effekt, hvis Tilbagekaldelseskontrol er deaktiveret (i dette tilfælde vil enhedens standard-trust store blive brugt til at validere certifikatkæden. Boxers store har ikke nogen links til at validere mod).</value>
+  </data>
+  <data name="PolicyWatermarkColor" xml:space="preserve">
+    <value>Vandmærkets farve</value>
+  </data>
+  <data name="PolicyWatermarkColorInfo" xml:space="preserve">
+    <value>Definerer tekstens farve i hexadecimalt format. Standardfarven er blå</value>
+  </data>
+  <data name="PolicyWatermarkOpacity" xml:space="preserve">
+    <value>Vandmærkets opacitet</value>
+  </data>
+  <data name="PolicyWatermarkOpacityInfo" xml:space="preserve">
+    <value>Definerer tekstens opacitet. Du kan indstille et tal fra 0 til 100</value>
+  </data>
+  <data name="PolicyWatermarkText" xml:space="preserve">
+    <value>Vandmærkets tekst</value>
+  </data>
+  <data name="PolicyWatermarkTextInfo" xml:space="preserve">
+    <value>Definerer vandmærkets tekst</value>
+  </data>
+  <data name="PositiveIntegerRequired" xml:space="preserve">
+    <value>Indtast en positiv heltalsværdi</value>
+  </data>
+  <data name="PradeoAPIKey" xml:space="preserve">
+    <value>Pradeo API-nøgle</value>
+  </data>
+  <data name="PreReleaseVersionTooltip" xml:space="preserve">
+    <value>Hvis en post mangler på denne liste, som du forventede at se, kan den være blevet slettet eller ikke tildelt til denne virksomhed.</value>
+  </data>
+  <data name="PreventRemoval" xml:space="preserve">
+    <value>Undgå fjernelse</value>
+  </data>
+  <data name="PreventRemovalTooltip" xml:space="preserve">
+    <value>Hvis dette er aktiveret, har brugeren ikke tilladelse til at afinstallere appen. kræver iOS 14+.</value>
+  </data>
+  <data name="ProductApp" xml:space="preserve">
+    <value>Produktapp</value>
+  </data>
+  <data name="ProductAppInstalled" xml:space="preserve">
+    <value>Produktbaseret app tildelt og installeret</value>
+  </data>
+  <data name="ProductAppNotInstalled" xml:space="preserve">
+    <value>Produktbaseret app tildelt, men ikke installeret</value>
+  </data>
+  <data name="ProviderDisabledFileUploadMessage" xml:space="preserve">
+    <value>Det ser ud til, at fillagring og CDN er deaktiveret, eller at størrelsen på databasen har nået maksimal kapacitet for denne organisation. Kontakt din administrator, eller aktiver disse elementer, og kontroller dit databaselager for at fortsætte.</value>
+  </data>
+  <data name="ProvisioningProfileExpirationExplainationArgDays" xml:space="preserve">
+    <value>Klargøringsprofilen, der er tilknyttet denne app, udløber om {0} dage. Når klargøringsprofilen udløber, vil de ikke kunne få adgang til appen længere, og nye brugere, der forsøger at installere appen, vil ikke kunne gøre det. Generer klargøringsprofilen for appen igen, og opdater den ved at klikke på knappen Forny nedenfor. For enheder, der allerede har appen installeret, vil fornyelse af klargøringsprofilen erstatte den eksisterende profil på enheden med den nye profil, som tilføjes uden at geninstallere appen. For nyligt tilmeldte enheder eller enheder, der ikke har appen, vil installation af appen sende den nye, tilføjede klargøringsprofil ned.</value>
+  </data>
+  <data name="PublicApplication" xml:space="preserve">
+    <value>Offentlig app</value>
+  </data>
+  <data name="PublicApplications" xml:space="preserve">
+    <value>Offentlige apps</value>
+  </data>
+  <data name="PublisherAddedMultipleTimesInAppGroup" xml:space="preserve">
+    <value>Den samme udgiver blev tilføjet til denne appgruppe flere gange</value>
+  </data>
+  <data name="PublisherExceptionAddedMultipleTimesInAppGroup" xml:space="preserve">
+    <value>Den samme app blev tilføjet flere gange som en undtagelse for en udgiver</value>
+  </data>
+  <data name="PurchasedApplication" xml:space="preserve">
+    <value>Købt app</value>
+  </data>
+  <data name="PurchasedApplications" xml:space="preserve">
+    <value>Købte apps</value>
+  </data>
+  <data name="PurchasedAppLicenseAssignmentBySmartGroup" xml:space="preserve">
+    <value>Købt app-licenstildeling via Smart-gruppe</value>
+  </data>
+  <data name="Purebred" xml:space="preserve">
+    <value>Purebred</value>
+  </data>
+  <data name="QuickReply" xml:space="preserve">
+    <value>Hurtigt svar</value>
+  </data>
+  <data name="Ranking" xml:space="preserve">
+    <value>Rangering</value>
+  </data>
+  <data name="Read/Unread" xml:space="preserve">
+    <value>Læst/Ulæst</value>
+  </data>
+  <data name="ReasonsBreakdown" xml:space="preserve">
+    <value>Oplysninger om installationsstatus</value>
+  </data>
+  <data name="ReasonsBreakdownToolTip" xml:space="preserve">
+    <value>Dette er en repræsentation af de indberettede data fra enheder, der indeholder detaljerede oplysninger om installationsstatus for denne app og er ikke knyttet til en bestemt version.</value>
+  </data>
+  <data name="RedeemingCode" xml:space="preserve">
+    <value>Indløsningskode</value>
+  </data>
+  <data name="RedemptionCode" xml:space="preserve">
+    <value>Indløsningskode</value>
+  </data>
+  <data name="RedemptionCodes" xml:space="preserve">
+    <value>Indløsningskoder</value>
+  </data>
+  <data name="RefreshApps" xml:space="preserve">
+    <value>Opdater apps</value>
+  </data>
+  <data name="RemoveApplicationConfirmed" xml:space="preserve">
+    <value>Enhedsbekræftet fjernelse af app</value>
+  </data>
+  <data name="RemoveArgApplicationOpensDialog" xml:space="preserve">
+    <value>Fjern appen {0} åbner dialogboksen</value>
+    <comment>Placeholder in this label key is for application name.</comment>
+  </data>
+  <data name="RemoveCommandDispatched" xml:space="preserve">
+    <value>Kommandoen Fjern udsendt</value>
+  </data>
+  <data name="RemoveCommandSuccessful" xml:space="preserve">
+    <value>Enheden har bekræftet sletningen</value>
+  </data>
+  <data name="RemovedByEmm" xml:space="preserve">
+    <value>Fjernet af EMM</value>
+  </data>
+  <data name="RemovedByUser" xml:space="preserve">
+    <value>Fjernet af bruger</value>
+  </data>
+  <data name="RemoveFromSelectedDevices" xml:space="preserve">
+    <value>Denne app vil kun blive fjernet på enheder, der har appen installeret og er styret af EMM.</value>
+  </data>
+  <data name="RemovePreviousValues" xml:space="preserve">
+    <value>Fjern tidligere værdier</value>
+  </data>
+  <data name="RequireApprovalToInstall" xml:space="preserve">
+    <value>Kræver godkendelse for at installere</value>
+  </data>
+  <data name="RequireApprovalToInstallToolTip" xml:space="preserve">
+    <value>Brugere i den valgte tildelingsgruppe skal indhente en godkendelse for at bruge denne app.</value>
+  </data>
+  <data name="RequiredEmailSettings" xml:space="preserve">
+    <value>Tilføj {0} i fanen {1}</value>
+  </data>
+  <data name="RestartDeadlineInDays" xml:space="preserve">
+    <value>Antal dage, hvorefter enheden genstarter automatisk</value>
+  </data>
+  <data name="RestrictScreenshotsInfo" xml:space="preserve">
+    <value>Forhindrer brugeren i at tage skærmbilleder af appen. (kun Android)</value>
+  </data>
+  <data name="ReviewRequestExpired" xml:space="preserve">
+    <value>Gennemsynsanmodning er uautoriseret eller udløbet. Opdater siden, og gennemse igen.</value>
+  </data>
+  <data name="ReviewSummaryBeforeAddingApp" xml:space="preserve">
+    <value>Gennemgå oversigten, før du tilføjer en app. Du kan redigere visse felter senere via app-listevisningen</value>
+  </data>
+  <data name="RevisionNumber" xml:space="preserve">
+    <value>Revisionsnummer</value>
+  </data>
+  <data name="RevisionVersion" xml:space="preserve">
+    <value>Indtast venligst en gyldig værdi i revisionsversionsfeltet.</value>
+  </data>
+  <data name="S/MIMEPolicy" xml:space="preserve">
+    <value>S/MIME-politik</value>
+  </data>
+  <data name="SaaSAppsIDMSetupArg" xml:space="preserve">
+    <value>Workspace ONE skal opsættes, før der kan bruges SaaS-applikationer. Gå til {0}, og udfør opsætning af Workspace ONE. Når du er færdig, skal du logge af og på igen for at prøve igen.</value>
+  </data>
+  <data name="SameAssignmentExists" xml:space="preserve">
+    <value>En eller flere smart-grupper er allerede tildelt til denne app i en anden tildeling. Fjern disse smart-grupper for at fortsætte.</value>
+  </data>
+  <data name="SaveConfiguration" xml:space="preserve">
+    <value>Gem konfiguration</value>
+  </data>
+  <data name="ScepPendingMaxRetryAttemptsInfo" xml:space="preserve">
+    <value>Konfigurerer det maksimale antal nye forsøg for en SCEP-hentning i SDK</value>
+  </data>
+  <data name="ScepPendingRetryTimeoutInfo" xml:space="preserve">
+    <value>Interval mellem hvert forsøg på SCEP-hentning i SDK</value>
+  </data>
+  <data name="ScriptFileHelpText" xml:space="preserve">
+    <value>Det brugerdefinerede script, der skal uploades</value>
+  </data>
+  <data name="SecurityPatch" xml:space="preserve">
+    <value>Sikkerhedsopdatering</value>
+  </data>
+  <data name="SecurityPatchDateNotSetError" xml:space="preserve">
+    <value>Dato for sikkerhedsrettelse må ikke stå tomt, hvis politik er aktiveret</value>
+  </data>
+  <data name="SelectedDeviceRequiresApprovalAlert" xml:space="preserve">
+    <value>Denne app kræver godkendelse for at installere på denne bestemte enhed. En godkendelsesanmodning kan initieres af slutbrugeren.</value>
+  </data>
+  <data name="SelectedDevicesRequireApprovalAlert" xml:space="preserve">
+    <value>Appen installeres på alle enheder, undtagen dem der kræver godkendelse for at få adgang til appen. En godkendelsesanmodning kan initieres af slutbrugeren.</value>
+  </data>
+  <data name="SendAppConfigDescription" xml:space="preserve">
+    <value>Konfigurer denne app ved hjælp af de indstillinger, som app-udvikleren har angivet.</value>
+  </data>
+  <data name="SendAppConfiguration" xml:space="preserve">
+    <value>Send konfiguration</value>
+  </data>
+  <data name="SendApplicationAttributes" xml:space="preserve">
+    <value>Send app-attributter</value>
+  </data>
+  <data name="SendAttibutes" xml:space="preserve">
+    <value>Send attributter</value>
+  </data>
+  <data name="SendInviteTooltip" xml:space="preserve">
+    <value>Når denne er aktiveret, vil alle iOS-enheder automatisk blive inviteret til at installere VPP-apps. Hvis ikke, vil enheder blive inviteret, når VPP apps er installeret.</value>
+  </data>
+  <data name="ShowCallKitOption" xml:space="preserve">
+    <value>Vis CallKit-indstillingen</value>
+  </data>
+  <data name="SideLoadedCount" xml:space="preserve">
+    <value>Eksternt indlæste installationer</value>
+  </data>
+  <data name="SigningCertificateAuthority" xml:space="preserve">
+    <value>Signeringscertifikatautoritet</value>
+  </data>
+  <data name="SigningCertificateTemplate" xml:space="preserve">
+    <value>Signeringscertifikatskabelon</value>
+  </data>
+  <data name="SmartGroupNotPresentInAssignment" xml:space="preserve">
+    <value>Smart-gruppen er ikke tilstede i nogen af de tildelinger, der er knyttet til denne app.</value>
+  </data>
+  <data name="SmimeBoxerUserInfoMsg" xml:space="preserve">
+    <value>Brugere med S/MIME-certifikater er allerede associeret, Bruger &gt; Avancerede &gt; Certifikater, vil modtage dem sammen med kilderne herunder. Vælg enten det certifikat, der er associeret med brugerkontoen, eller kilden herunder</value>
+  </data>
+  <data name="SMIMEConformingEncryptionAlgorithmsInfo" xml:space="preserve">
+    <value>Tillader begrænsning af S/MIME-kryptering til specifikke algoritmer. Krypterede e-mails, der ikke har anvendt en godkendt algoritme, vil blive markeret med en advarsel. Hvis der ikke angives nogen gyldige værdier, anses alle algoritmer for at være acceptable.</value>
+  </data>
+  <data name="SMIMEConformingSigningAlgorithmsInfo" xml:space="preserve">
+    <value>Tillader begrænsning af S/MIME-signering til specifikke algoritmer. Signerede e-mails, der ikke anvender en godkendt algoritme, vil blive markeret med en advarsel. Hvis der ikke angives nogen gyldige værdier, anses alle algoritmer for at være acceptable.</value>
+  </data>
+  <data name="SMIMEDefaultEncryptionAlgorithmInfo" xml:space="preserve">
+    <value>Angiv en krypteringsalgoritme, der skal anvendes til indgående og udgående e-mails. Hvis der ikke angives en gyldig algoritme, anvendes den laveste understøttede algoritme (3DES).</value>
+  </data>
+  <data name="SMIMEDefaultSigningAlgorithmInfo" xml:space="preserve">
+    <value>Angiv en standard-S/MIME-signeringsalgoritme, der skal anvendes til indgående og udgående e-mails. Hvis der ikke angives en gyldig algoritme, anvendes den laveste understøttede algoritme (SHA-1).</value>
+  </data>
+  <data name="SmimeInfo" xml:space="preserve">
+    <value>Konfigurer S/MIME</value>
+  </data>
+  <data name="SMIMEStatusInfo" xml:space="preserve">
+    <value>Konfigurer S/MIME-krav</value>
+  </data>
+  <data name="SMIMEStrictEKUCheckInfo" xml:space="preserve">
+    <value>Definerer, om vi skal kontrollere EKU-udvidelsen for S/MIME-certifikaterne. Hvis det er sat til sandt, validerer vi, at EKU-udvidelsen er til stede i certifikatet, og den har E-mail Protection-formålet indstillet.</value>
+  </data>
+  <data name="Spam" xml:space="preserve">
+    <value>Spam</value>
+  </data>
+  <data name="SpamAndPhishingReporting" xml:space="preserve">
+    <value>Rapportering af spam og phishing</value>
+  </data>
+  <data name="SpamAndPhishingReportingInfo" xml:space="preserve">
+    <value>Konfigurer handlinger, der skal udføres på e-mail, som er identificeret som spam eller phishing-angreb</value>
+  </data>
+  <data name="SpamReportConfigPositionChangeInfo" xml:space="preserve">
+    <value>Konfigurer, om du vil tillade slutbrugeren at rapportere spam, i afsnittet "App-politikker" &gt; "Anvendelighed"</value>
+  </data>
+  <data name="SpecificApplicationIsNotSupported" xml:space="preserve">
+    <value>Ugyldig applikation, upload kun Workspace ONE Launcher APK</value>
+  </data>
+  <data name="SsoInfo" xml:space="preserve">
+    <value>For at aktivere SSO på Boxer skal du aktivere denne indstilling og SSO-konfigurationen på din SDK profil. Når dette er aktiveret, kan SSO ikke deaktiveres uden at geninstallere Workspace ONE Boxer.</value>
+  </data>
+  <data name="StatusLastAction" xml:space="preserve">
+    <value>Status - Seneste handling</value>
+  </data>
+  <data name="StokenExpiredMessage" xml:space="preserve">
+    <value>Det uploadede sToken for denne organisationsgruppe er udløbet. Forny sToken, og upload igen.</value>
+  </data>
+  <data name="StokenRevokedMessage" xml:space="preserve">
+    <value>Det uploadede sToken for denne organisationsgruppe er blevet tilbagekaldt. Upload et nyt sToken.</value>
+  </data>
+  <data name="Strict" xml:space="preserve">
+    <value>Streng</value>
+  </data>
+  <data name="SupportedProcessorArchitectureHelp" xml:space="preserve">
+    <value>Vælg den arkitekturtype, som applikationen understøtter. Valg af 32-bit vil offentliggøre dette program til både 32-bit- og 64-bit-enheder.</value>
+  </data>
+  <data name="SupportEmailAddress" xml:space="preserve">
+    <value>Support-e-mailadresse</value>
+  </data>
+  <data name="SupportEmailAddressInfo" xml:space="preserve">
+    <value>E-mailadresse, der skal angives, når der sendes logfiler via supportmenuen.</value>
+  </data>
+  <data name="SwipesLeftLongInfo" xml:space="preserve">
+    <value>Indstil værdien til en af disse herunder for at indstille standardhandlingen, når en bruger gennemgår en e-mail i e-maillistevisningen. Bemærk, at hvis brugeren ændrer denne indstilling, vil konsollen ikke tilsidesætte vedkommendes valg</value>
+  </data>
+  <data name="SwipesLeftShortInfo" xml:space="preserve">
+    <value>Indstil værdien til en af disse herunder for at indstille standardhandlingen, når en bruger gennemgår en e-mail i e-maillistevisningen. Bemærk, at hvis brugeren ændrer denne indstilling, vil konsollen ikke tilsidesætte vedkommendes valg</value>
+  </data>
+  <data name="SwipesRightLongInfo" xml:space="preserve">
+    <value>Indstil værdien til en af disse herunder for at indstille standardhandlingen, når en bruger gennemgår en e-mail i e-maillistevisningen. Bemærk, at hvis brugeren ændrer denne indstilling, vil konsollen ikke tilsidesætte vedkommendes valg</value>
+  </data>
+  <data name="SwipesRightShortInfo" xml:space="preserve">
+    <value>Indstil værdien til en af disse herunder for at indstille standardhandlingen, når en bruger gennemgår en e-mail i e-maillistevisningen. Bemærk, at hvis brugeren ændrer denne indstilling, vil konsollen ikke tilsidesætte vedkommendes valg</value>
+  </data>
+  <data name="SyncContact" xml:space="preserve">
+    <value>Synk kontakter</value>
+  </data>
+  <data name="SyncTunnelConfiguration" xml:space="preserve">
+    <value>Sync Tunnel Configuration</value>
+  </data>
+  <data name="TempUploadedPatch" xml:space="preserve">
+    <value>Uploadet patch</value>
+  </data>
+  <data name="TempUploadedTransform" xml:space="preserve">
+    <value>Uploadet transformation</value>
+  </data>
+  <data name="TenantStorageCapacity" xml:space="preserve">
+    <value>Kapacitet</value>
+  </data>
+  <data name="TenantStorageCapacityMegaBytes" xml:space="preserve">
+    <value>Kapacitet (MB)</value>
+  </data>
+  <data name="TenantStorageGigaBytes" xml:space="preserve">
+    <value>GB</value>
+  </data>
+  <data name="TenantStorageMaxFileSize" xml:space="preserve">
+    <value>Maksimal filstørrelse</value>
+  </data>
+  <data name="TenantStorageMaxFileSizeMegaBytes" xml:space="preserve">
+    <value>Maks filstørrelse (MB)</value>
+  </data>
+  <data name="TenantStorageMegaBytes" xml:space="preserve">
+    <value>MB</value>
+  </data>
+  <data name="TenantStorageOverageAllowed" xml:space="preserve">
+    <value>Tilladt tillæg</value>
+  </data>
+  <data name="TenantStorageOverageAllowedMegaBytes" xml:space="preserve">
+    <value>Tilladt tillæg (MB)</value>
+  </data>
+  <data name="ThisFieldIsRequired" xml:space="preserve">
+    <value>Dette felt er obligatorisk</value>
+  </data>
+  <data name="ThreeDays" xml:space="preserve">
+    <value>3 dage</value>
+  </data>
+  <data name="TimeReceived" xml:space="preserve">
+    <value>Tid modtaget</value>
+  </data>
+  <data name="TimeStamp" xml:space="preserve">
+    <value>Tidsstempel</value>
+  </data>
+  <data name="TLSInfo" xml:space="preserve">
+    <value>Konfigurer TLS</value>
+  </data>
+  <data name="TotalCount" xml:space="preserve">
+    <value>Samlet antal</value>
+  </data>
+  <data name="TotalRedeemedLicensesHelpText" xml:space="preserve">
+    <value>Det samlede indløste antal er summen af licenser, der er indløst af denne Workspace ONE UEM Console, og licenser, der er indløst udenfor Workspace ONE UEM Console. Disse licenser er optaget af enheder og skal tilbagekaldes, før de kan distribueres.</value>
+  </data>
+  <data name="TriggerAccount" xml:space="preserve">
+    <value>Oplysninger om seneste handling</value>
+  </data>
+  <data name="TriggerAccountToolTip" xml:space="preserve">
+    <value>Viser oplysninger om seneste handling for de tildelte enheder for denne app.</value>
+  </data>
+  <data name="TrustStore" xml:space="preserve">
+    <value>Trust store</value>
+  </data>
+  <data name="TunnelAndOtherAttributes" xml:space="preserve">
+    <value>Tunnel &amp; andre attributter</value>
+  </data>
+  <data name="TunnelConfigGridBulkActionArg" xml:space="preserve">
+    <value>Tunnelkonfiguration synkroniseres på {0} enheder</value>
+  </data>
+  <data name="UemVersion" xml:space="preserve">
+    <value>UEM-version</value>
+  </data>
+  <data name="UnPause" xml:space="preserve">
+    <value>Ophæv pause</value>
+  </data>
+  <data name="Unpaused" xml:space="preserve">
+    <value>Pause ophævet</value>
+  </data>
+  <data name="UnPauseToSelectedDevice" xml:space="preserve">
+    <value>Når du gør dette, vil du ophæve pausen for fjernelser for denne applikation for alle enheder, der ikke længere har rettighederne. Sørg for, at alle rettigheder er korrekte, før du fortsætter. Klik på "OK", hvis du vil fortsætte.</value>
+  </data>
+  <data name="UnreleasedVersions" xml:space="preserve">
+    <value>Foreløbig version</value>
+  </data>
+  <data name="UpgradeApplication" xml:space="preserve">
+    <value>Opgrader app</value>
+  </data>
+  <data name="UploadedPercentageFormat" xml:space="preserve">
+    <value>{0} %</value>
+    <comment>This should be changed to %{0} for languages supporting %# format for percentage</comment>
+  </data>
+  <data name="UploadedUemVersion" xml:space="preserve">
+    <value>Uploadet UEM-version</value>
+  </data>
+  <data name="UploadedVersion" xml:space="preserve">
+    <value>Uploadet version</value>
+  </data>
+  <data name="UploadInProgressDoNotClose" xml:space="preserve">
+    <value>Upload er i gang – undlad at lukke den modale side eller at opdatere siden.</value>
+  </data>
+  <data name="UploadStillInProgress" xml:space="preserve">
+    <value>Upload er stadig i gang – undlad at lukke modale side eller at opdatere siden.</value>
+  </data>
+  <data name="UploadUninstallScript" xml:space="preserve">
+    <value>Upload venligst afinstallationsscriptet til appen</value>
+  </data>
+  <data name="Usability" xml:space="preserve">
+    <value>Anvendelighed</value>
+  </data>
+  <data name="UseEscrowGateway" xml:space="preserve">
+    <value>Brug Escrow Gateway</value>
+  </data>
+  <data name="UseEscrowGatewayInfo" xml:space="preserve">
+    <value>Denne indstilling kan kun anvendes på Boxer 5.19 eller en højere version, og når Escrow Gateway er konfigureret.</value>
+  </data>
+  <data name="UserAppRatingInfo" xml:space="preserve">
+    <value>Brugeroplysninger om app-bedømmelse</value>
+  </data>
+  <data name="UserCertificateOnly" xml:space="preserve">
+    <value>Kun brugercertifikat</value>
+  </data>
+  <data name="UserCertificateOptionalInfo" xml:space="preserve">
+    <value>Hvis brugeren ikke har et certifikat, springes disse legitimationsoplysninger over, og resten af profilen leveres til slutbrugere. Hvis det er tilgængeligt, hentes brugercertifikatet fra den specifikke Workspace ONE-bruger. Certifikatet kan uploades manuelt via brugeroplysningerne i konsollen eller selvbetjeningen.</value>
+  </data>
+  <data name="UserDeferredInstall" xml:space="preserve">
+    <value>Ingen (app-installation er udskudt af bruger)</value>
+  </data>
+  <data name="UserEngagedDeadline" xml:space="preserve">
+    <value>Brugeranvendt deadline</value>
+  </data>
+  <data name="UserEngagedRestart" xml:space="preserve">
+    <value>Brugeranvendt genstart</value>
+  </data>
+  <data name="UseSameSigningAndEncryptionCertificate" xml:space="preserve">
+    <value>Brug samme signerings- og krypteringscertifikat</value>
+  </data>
+  <data name="UseSameSigningAndEncryptionCertificateInfo" xml:space="preserve">
+    <value>Det samme S/MIME-certifikat anvendes til signering og kryptering, medmindre nej er valgt.</value>
+  </data>
+  <data name="ValidatingDependentApps" xml:space="preserve">
+    <value>Validerer afhængige apps</value>
+  </data>
+  <data name="ValidationAppConfiguration" xml:space="preserve">
+    <value>Den valgte app har ingen definerede tildelinger. Vælg en anden app, eller definer mindst én tildeling, og prøv igen.</value>
+  </data>
+  <data name="ValidationDuplicateStep" xml:space="preserve">
+    <value>Der findes et andet trin med lignende konfiguration.</value>
+  </data>
+  <data name="ValidationErrorMessage" xml:space="preserve">
+    <value>Kunne ikke gemme ændringer. Sørg for, at alle felter er udfyldt, og at der ikke er nogen fejl, før du prøver igen.</value>
+  </data>
+  <data name="VersionCodeAlreadyExistsInOG" xml:space="preserve">
+    <value>Versionskode for denne Android-applikation er {0}, og den findes allerede i organisationsgruppen. Bed din udvikler om at opdatere versionskoden. Versionskoder, der allerede er tilføjet for identifikatoren {1} i den aktuelle organisationsgruppe, er {2}.</value>
+  </data>
+  <data name="Versions" xml:space="preserve">
+    <value>Version(er)</value>
+  </data>
+  <data name="VersionsInstalled" xml:space="preserve">
+    <value>Versioner installeret</value>
+  </data>
+  <data name="ViewCriteria" xml:space="preserve">
+    <value>Vis kriterier</value>
+  </data>
+  <data name="ViewFlexeraApps" xml:space="preserve">
+    <value>Se apps</value>
+  </data>
+  <data name="ViewInstallStatusForApplication" xml:space="preserve">
+    <value>Vis Installationsstatus for {0}</value>
+  </data>
+  <data name="VirtualApplications" xml:space="preserve">
+    <value>Virtuelle applikationer</value>
+  </data>
+  <data name="VirtualApplicationsHelp" xml:space="preserve">
+    <value>Styrer adgang til virtuel konfiguration af applikationer. Gælder udelukkende katalogadministratorer</value>
+  </data>
+  <data name="VirtualApps" xml:space="preserve">
+    <value>Virtuelle apps</value>
+  </data>
+  <data name="VirtualAppsHelp" xml:space="preserve">
+    <value>Se en liste over virtuelle apps og desktops, som medarbejderne kan få adgang til fra Workspace ONE-kataloget.</value>
+  </data>
+  <data name="VirtualAppsIDMSetupArg" xml:space="preserve">
+    <value>Workspace ONE skal opsættes, før der kan bruges virtuelle apps. Gå til {0}, og udfør opsætning af Workspace ONE. Når du er færdig, skal du logge af og på igen for at prøve igen.</value>
+  </data>
+  <data name="VirtualAppsMenuDescription" xml:space="preserve">
+    <value>Se en liste over virtuelle apps og desktops, som medarbejderne kan få adgang til fra Workspace ONE-kataloget.</value>
+  </data>
+  <data name="VirtualBreadcrumbDescription" xml:space="preserve">
+    <value>Se og administrer virtuelle apps og samlinger.</value>
+  </data>
+  <data name="VMwareDocs" xml:space="preserve">
+    <value>VMware Docs</value>
+  </data>
+  <data name="VPPLicenseNotAvailable" xml:space="preserve">
+    <value>Ingen (licens ikke tilgængelig)</value>
+  </data>
+  <data name="WaitingForEvent" xml:space="preserve">
+    <value>Venter på begivenhed</value>
+  </data>
+  <data name="WaitingForSchedule" xml:space="preserve">
+    <value>Venter på tidsplan</value>
+  </data>
+  <data name="WaitingForTimeWindow" xml:space="preserve">
+    <value>Venter på tidsvindue.</value>
+  </data>
+  <data name="WaitingToBeRetried" xml:space="preserve">
+    <value>Venter på nyt forsøg</value>
+  </data>
+  <data name="WantToContinue" xml:space="preserve">
+    <value>Vil du fortsætte?</value>
+  </data>
+  <data name="WebLinkMenus" xml:space="preserve">
+    <value>Weblinks</value>
+  </data>
+  <data name="WindowsAppsRetireDescription" xml:space="preserve">
+    <value>Hvis du trækker en version af en app tilbage, fjernes appen fra alle enheder, der styres af Workspace ONE. Hvis den næste lavere version af appen er tilgængelig og tildelt, udføres der ikke nogen handlinger, fordi enhedens OS ikke understøtter nedgradering af appen.</value>
+  </data>
+  <data name="WindowsProvisioningInstallContextWarning" xml:space="preserve">
+    <value>Dette program kræver en brugerkontekst til installation. Den kan ikke inkluderes i den eksporterede PPKG</value>
+  </data>
+  <data name="WindowsProvisioningNoAppSelected" xml:space="preserve">
+    <value>Vælg den/de app(s), der skal eksporteres til en Windows-klargøringspakke</value>
+  </data>
+  <data name="WindowsProvisioningOGInheritedWarning" xml:space="preserve">
+    <value>Denne applikation er nedarvet fra en anden organisationsgruppe. Den kan ikke inkluderes i den eksporterede PPKG.</value>
+  </data>
+  <data name="WindowsProvisioningPackageDeleteFailed" xml:space="preserve">
+    <value>Der opstod en uventet fejl under sletning af klargøringspakke (PPKG).</value>
+  </data>
+  <data name="WindowsProvisioningPackageDeleteSuccess" xml:space="preserve">
+    <value>Windows-klargøringspakke (PPKG) blev slettet.</value>
+  </data>
+  <data name="WindowsProvisioningPackageDeleteWarning" xml:space="preserve">
+    <value>Denne klargøringspakke kan ikke slettes, da den enten styres af en højere organisationsgruppe, eller admin har skrivebeskyttet adgang.</value>
+  </data>
+  <data name="WindowsProvisioningPackageDownloadAction" xml:space="preserve">
+    <value>Download</value>
+  </data>
+  <data name="WindowsProvisioningPackageEditWarning" xml:space="preserve">
+    <value>Denne klargøringspakke kan ikke redigeres, da den enten styres af en højere organisationsgruppe, eller admin har skrivebeskyttet adgang.</value>
+  </data>
+  <data name="WindowsProvisioningPackageFailed" xml:space="preserve">
+    <value>Der opstod en uventet fejl under anmodning om klargøringspakke (PPKG).</value>
+  </data>
+  <data name="WindowsProvisioningPackageFailedMessage" xml:space="preserve">
+    <value>Kunne ikke eksportere PPKG</value>
+  </data>
+  <data name="WindowsProvisioningPackagePleaseWait" xml:space="preserve">
+    <value>En eksisterende PPKG-eksportanmodningen er i gang. Vent indtil eksporten er afsluttet.</value>
+  </data>
+  <data name="WindowsProvisioningPackageProgressActionMessage" xml:space="preserve">
+    <value>Se apps</value>
+  </data>
+  <data name="WindowsProvisioningPackageProgressMessage" xml:space="preserve">
+    <value>En PPKG eksporteres.</value>
+  </data>
+  <data name="WindowsProvisioningPackageRequested" xml:space="preserve">
+    <value>PPKG-eksporten er anmodet. Når PPKG-eksporten er gennemført, vil der blive sendt en notifikation med et link til download.</value>
+  </data>
+  <data name="WindowsProvisioningPackageStorageFailed" xml:space="preserve">
+    <value>Kunne ikke eksportere Windows klargøringspakken (PPKG) pga. utilstrækkelig lagerplads</value>
+  </data>
+  <data name="WindowsProvisioningPackageSuccessActionMessage" xml:space="preserve">
+    <value>Download</value>
+  </data>
+  <data name="WindowsProvisioningPackageSuccessMessage" xml:space="preserve">
+    <value>Den eksporterede PPKG kan downloades.</value>
+  </data>
+  <data name="WindowsProvisioningPackageTitle" xml:space="preserve">
+    <value>Windows klargøringspakke</value>
+  </data>
+  <data name="WindowsProvisioningSFDReUploadWarning" xml:space="preserve">
+    <value>Denne applikation skal uploades efter aktivering af Softwarepakkeudrulning i indstillingerne, for at den kan inkluderes i den eksporterede PPKG</value>
+  </data>
+  <data name="WinRTDesiredStateManagementTooltip" xml:space="preserve">
+    <value>Gælder kun for MDM-styrede apps, der er udrullet ved hjælp af metoden for automatisk levering. Når dette er aktiveret, installeres applikationen automatisk igen, når en afinstallation registreres. Når dette deaktiveres, installeres applikationen ikke igen, når en afinstallation registreres.</value>
+  </data>
+  <data name="WorkflowDefinitionDesc" xml:space="preserve">
+    <value>Giv arbejdsgangen et kaldenavn og en beskrivelse.</value>
+  </data>
+  <data name="WorkflowRebootPlaceholder" xml:space="preserve">
+    <value>Enheden genstartes, før der fortsættes til næste trin, hvis der er et.</value>
+  </data>
+  <data name="Workflows" xml:space="preserve">
+    <value>Arbejdsgange</value>
+  </data>
+  <data name="WorkflowStepsDesc" xml:space="preserve">
+    <value>Søg efter og tilføj apps, betingelser her for at oprette din arbejdsgang. Arbejdsgangen udføres i nedenstående rækkefølge. Træk for at omarrangere.</value>
+  </data>
+  <data name="WorkflowStepsPlaceholder" xml:space="preserve">
+    <value>Start med at tilføje apps eller betingelser</value>
+  </data>
+  <data name="WorkflowSummaryDesc" xml:space="preserve">
+    <value>Gennemgå arbejdsgangsoplysninger og trin før lagring.</value>
+  </data>
+  <data name="WorkspaceOneAdminAssistantForMacOs" xml:space="preserve">
+    <value>Workspace ONE-admin-assistent til macOS</value>
+  </data>
+  <data name="X64AppDependencies" xml:space="preserve">
+    <value>X64 afhængigheder</value>
+  </data>
+  <data name="X86AppDependencies" xml:space="preserve">
+    <value>X86 afhængigheder</value>
+  </data>
+  <data name="ZeroOrPositiveIntegerRequired" xml:space="preserve">
+    <value>Værdien skal være nul eller et positivt heltal</value>
+  </data>
+</root>

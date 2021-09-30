@@ -1,0 +1,1002 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AadCustomAttributeLookupFailed" xml:space="preserve">
+    <value>カスタム属性検索の追加に失敗しました</value>
+  </data>
+  <data name="ActionStatus" xml:space="preserve">
+    <value>アクション ステータス</value>
+  </data>
+  <data name="ActionUuid" xml:space="preserve">
+    <value>アクション UUID</value>
+  </data>
+  <data name="ActivationLockBypassCodeConfirmed" xml:space="preserve">
+    <value>アクティベーション ロックのバイパス コードが確認されました</value>
+  </data>
+  <data name="ActivationLockBypassCodeFailed" xml:space="preserve">
+    <value>アクティベーション ロックのバイパス コードが失敗しました</value>
+  </data>
+  <data name="ActivationLockBypassCodeRefused" xml:space="preserve">
+    <value>アクティベーション ロックのバイパス コードが拒否されました</value>
+  </data>
+  <data name="ActivationLockBypassCodeRequested" xml:space="preserve">
+    <value>アクティベーション ロックのバイパス コードが要求されました</value>
+  </data>
+  <data name="AdminAppAuthTokenIssued" xml:space="preserve">
+    <value>管理アプリケーションの認証トークンが発行されました</value>
+  </data>
+  <data name="AdminGroupDirectorySyncCompleted" xml:space="preserve">
+    <value>管理者グループのディレクトリ同期が完了しました</value>
+  </data>
+  <data name="AdminPasswordRotationConfirmed" xml:space="preserve">
+    <value>管理者パスワードのローテーションを確認しました</value>
+  </data>
+  <data name="AdminPasswordRotationFailed" xml:space="preserve">
+    <value>管理者パスワードのローテーションに失敗しました</value>
+  </data>
+  <data name="AdminPasswordRotationRequested" xml:space="preserve">
+    <value>管理者パスワードのローテーションがリクエストされました</value>
+  </data>
+  <data name="AndroidHeartbeatIntervalSettingChangedFailed" xml:space="preserve">
+    <value>Android ハートビート間隔設定の変更に失敗しました</value>
+  </data>
+  <data name="AndroidHeartbeatIntervalSettingChangedSuccess" xml:space="preserve">
+    <value>Android ハートビート間隔設定が変更されました</value>
+  </data>
+  <data name="AndroidSyncPerAppVpnAssociations" xml:space="preserve">
+    <value>アプリベース VPN の関連付けを同期</value>
+  </data>
+  <data name="AndroidSyncPerAppVpnAssociationsConfirmed" xml:space="preserve">
+    <value>アプリベース VPN の関連付けを同期するコマンドが確認されました</value>
+  </data>
+  <data name="AndroidSyncPerAppVpnAssociationsRequested" xml:space="preserve">
+    <value>アプリベース VPN の関連付けを同期するコマンドが要求されました</value>
+  </data>
+  <data name="AppleMdmSampleScheduleSettingChangedFailed" xml:space="preserve">
+    <value>Apple Mdm のサンプル スケジュール設定の変更に失敗しました</value>
+  </data>
+  <data name="AppleMdmSampleScheduleSettingChangedSuccess" xml:space="preserve">
+    <value>Apple Mdm のサンプル スケジュール設定が変更されました</value>
+  </data>
+  <data name="AppleProfileSigningCertificateChangedFailure" xml:space="preserve">
+    <value>Apple プロファイル署名証明書の設定の変更に失敗しました</value>
+  </data>
+  <data name="AppleProfileSigningCertificateChangedSuccess" xml:space="preserve">
+    <value>Apple プロファイル署名証明書の設定を変更しました</value>
+  </data>
+  <data name="ApplicationDeploymentCriteriaMissing" xml:space="preserve">
+    <value>アプリケーション展開条件がありません</value>
+  </data>
+  <data name="ApplicationDownloadFailed" xml:space="preserve">
+    <value>アプリケーションのダウンロードに失敗しました</value>
+  </data>
+  <data name="ApplicationInstalling" xml:space="preserve">
+    <value>アプリケーションのインストール中</value>
+  </data>
+  <data name="AppLogsDescription" xml:space="preserve">
+    <value>View and download available log files.</value>
+  </data>
+  <data name="ApproveRemoval" xml:space="preserve">
+    <value>削除を承認</value>
+  </data>
+  <data name="ApproveRemovalDescription" xml:space="preserve">
+    <value>このアクションにより、影響を受ける可能性があるデバイスからのアプリ削除が承認されます。アプリ割り当てを調整する追加のアクションは必要ありません。</value>
+  </data>
+  <data name="ApproveRemovalTitle" xml:space="preserve">
+    <value>アプリ削除を承認</value>
+  </data>
+  <data name="BaselineInstallConfirmed" xml:space="preserve">
+    <value>ベースライン インストールが確認されました</value>
+  </data>
+  <data name="BaselineInstallFailed" xml:space="preserve">
+    <value>ベースライン インストールに失敗しました</value>
+  </data>
+  <data name="BaselineMissingHash" xml:space="preserve">
+    <value>ベースライン ハッシュの更新が要求されました</value>
+  </data>
+  <data name="BaselineQueryConfirmed" xml:space="preserve">
+    <value>ベースライン クエリが確認されました</value>
+  </data>
+  <data name="BaselineQueryFailed" xml:space="preserve">
+    <value>ベースライン クエリに失敗しました</value>
+  </data>
+  <data name="BaselineQueryRequested" xml:space="preserve">
+    <value>ベースライン クエリが要求されました</value>
+  </data>
+  <data name="BaselineReapplyFailed" xml:space="preserve">
+    <value>ベースラインを再適用できませんでした</value>
+  </data>
+  <data name="BaselineRemovalConfirmed" xml:space="preserve">
+    <value>ベースラインの削除が確認されました</value>
+  </data>
+  <data name="BaselineRemovalFailed" xml:space="preserve">
+    <value>ベースラインの削除に失敗しました</value>
+  </data>
+  <data name="BaselineStatusUpdateFailed" xml:space="preserve">
+    <value>ベースラインの状態の更新に失敗しました</value>
+  </data>
+  <data name="BootstrapTokenEscrowed" xml:space="preserve">
+    <value>エスクローされた BootstrapToken</value>
+  </data>
+  <data name="BootstrapTokenRemoved" xml:space="preserve">
+    <value>ブートストラップ トークンが削除されました</value>
+  </data>
+  <data name="CartCreationFailed" xml:space="preserve">
+    <value>カート作成に失敗しました</value>
+  </data>
+  <data name="CertificateMissingInSample" xml:space="preserve">
+    <value>サンプル内にありません</value>
+  </data>
+  <data name="CertificateNoLongerInUse" xml:space="preserve">
+    <value>使用されていません</value>
+  </data>
+  <data name="CertificatePinningDisable" xml:space="preserve">
+    <value>証明書のピン留めを無効化しました</value>
+  </data>
+  <data name="CertificateReinstated" xml:space="preserve">
+    <value>証明書が復元されました</value>
+  </data>
+  <data name="CheckInCheckOut" xml:space="preserve">
+    <value>返却と貸し出し</value>
+  </data>
+  <data name="ComplianceBrokerRequest" xml:space="preserve">
+    <value>順守ブローカ要求</value>
+  </data>
+  <data name="ComplianceEvaluationTime" xml:space="preserve">
+    <value>順守評価時間</value>
+  </data>
+  <data name="CompliancePolicyParsing" xml:space="preserve">
+    <value>順守ポリシーの解析</value>
+  </data>
+  <data name="ConditionalAccessDeviceRegistration" xml:space="preserve">
+    <value>条件付きアクセスのデバイス登録</value>
+  </data>
+  <data name="ConditionalAccessDeviceStateChange" xml:space="preserve">
+    <value>条件付きアクセスのデバイス状態変更</value>
+  </data>
+  <data name="ConditionalAccessPartnerType" xml:space="preserve">
+    <value>条件付きアクセスのパートナー タイプ</value>
+  </data>
+  <data name="ConfigurationReceivedToRestrictAppOrProcess" xml:space="preserve">
+    <value>アプリケーションまたはプロセス制限用の構成を受信しました</value>
+  </data>
+  <data name="ConsoleEvent" xml:space="preserve">
+    <value>Console イベント</value>
+  </data>
+  <data name="ConsoleEventLogSearchFilterDateRange" xml:space="preserve">
+    <value>グローバルでは、[任意] や [先月] などの広い日付範囲に対してコンソール イベントを表示する機能が無効になっています。より狭い日付範囲を選択してコンソール イベントを表示するか、サブ組織グループに移動してください。</value>
+  </data>
+  <data name="ConsoleEventLogSearchLimitExceeded" xml:space="preserve">
+    <value>コンソール イベントに選択した日付範囲が広すぎます。より狭い日付範囲を選択してコンソール イベントを表示してください。</value>
+  </data>
+  <data name="ConsoleEvents" xml:space="preserve">
+    <value>Console イベント</value>
+  </data>
+  <data name="ConsoleSessionTimeOutChangedFailure" xml:space="preserve">
+    <value>Console セッションのタイムアウトの変更に失敗しました</value>
+  </data>
+  <data name="ConsoleSessionTimeOutChangedSuccess" xml:space="preserve">
+    <value>Console セッションのタイムアウトが変更されました</value>
+  </data>
+  <data name="CreateWnsChannelCommandRequestConfirmed" xml:space="preserve">
+    <value>Wns チャンネル コマンド要求の作成が確認されました</value>
+  </data>
+  <data name="CreateWnsChannelCommandRequestFailed" xml:space="preserve">
+    <value>Wns チャンネル コマンド要求の作成に失敗しました</value>
+  </data>
+  <data name="DateTimeLabel" xml:space="preserve">
+    <value>日付と時刻</value>
+  </data>
+  <data name="DeviceActionFailed" xml:space="preserve">
+    <value>デバイスのアクションが失敗しました</value>
+  </data>
+  <data name="DeviceActionInprogress" xml:space="preserve">
+    <value>デバイスのアクションを実行中です</value>
+  </data>
+  <data name="DeviceActionProcessed" xml:space="preserve">
+    <value>デバイスのアクションが処理されました</value>
+  </data>
+  <data name="DeviceActionRequested" xml:space="preserve">
+    <value>デバイスのアクションが要求されました</value>
+  </data>
+  <data name="DeviceAddedToAppleDep" xml:space="preserve">
+    <value>デバイスが Apple DEP に追加されました</value>
+  </data>
+  <data name="DeviceAddedToEnrollmentWhiteList" xml:space="preserve">
+    <value>デバイスが加入許可リストに追加されました</value>
+  </data>
+  <data name="DeviceAllMangedApplicationDisable" xml:space="preserve">
+    <value>すべてのデバイス管理対象アプリケーションが無効になりました</value>
+  </data>
+  <data name="DeviceAttributeAssetNumberModified" xml:space="preserve">
+    <value>デバイス属性アセット番号が変更されました</value>
+  </data>
+  <data name="DeviceAttributeOperatingSystem" xml:space="preserve">
+    <value>デバイス属性オペレーティング システム</value>
+  </data>
+  <data name="DeviceAttributeUserEmailAddressModified" xml:space="preserve">
+    <value>デバイス属性のユーザーの E メール アドレスが変更されました</value>
+  </data>
+  <data name="DeviceCheckInWihtNotEnrolledUser" xml:space="preserve">
+    <value>登録されていないユーザーによるデバイスのチェックイン</value>
+  </data>
+  <data name="DeviceConfiguredFailed" xml:space="preserve">
+    <value>デバイス構成に失敗しました</value>
+  </data>
+  <data name="DeviceConfiguredRefused" xml:space="preserve">
+    <value>デバイス構成が拒否されました</value>
+  </data>
+  <data name="DeviceConsoleEvent" xml:space="preserve">
+    <value>デバイスとコンソール イベント</value>
+  </data>
+  <data name="DeviceConsoleEvents" xml:space="preserve">
+    <value>デバイスとコンソール イベント</value>
+  </data>
+  <data name="DeviceCpuInfoChanged" xml:space="preserve">
+    <value>デバイスの CPU 情報が変更されました</value>
+  </data>
+  <data name="DeviceData" xml:space="preserve">
+    <value>デバイス データ</value>
+  </data>
+  <data name="DeviceEvent" xml:space="preserve">
+    <value>デバイス イベント</value>
+  </data>
+  <data name="DeviceEventLogSearchFilterDateRange" xml:space="preserve">
+    <value>グローバルでは、[任意] や [先月] などの広い日付範囲に対してデバイス イベントを表示する機能が無効になっています。より狭い日付範囲を選択してデバイス イベントを表示するか、サブ組織グループに移動してください。</value>
+  </data>
+  <data name="DeviceEventLogSearchLimitExceeded" xml:space="preserve">
+    <value>デバイス イベントに選択した日付範囲が広すぎます。より狭い日付範囲を選択してデバイス イベントを表示してください。</value>
+  </data>
+  <data name="DeviceEvents" xml:space="preserve">
+    <value>デバイス イベント</value>
+  </data>
+  <data name="DeviceEventsDescription" xml:space="preserve">
+    <value>詳細なデバイス イベント情報を表示</value>
+  </data>
+  <data name="DeviceLimitPerOrganizationGroupEnabled" xml:space="preserve">
+    <value>有効な組織グループごとのデバイス数上限が有効になりました</value>
+  </data>
+  <data name="DeviceLocationFailed" xml:space="preserve">
+    <value>デバイス ロケーションに失敗しました</value>
+  </data>
+  <data name="DeviceLocationRefused" xml:space="preserve">
+    <value>デバイス ロケーションが拒否されました</value>
+  </data>
+  <data name="DeviceManagementStatus" xml:space="preserve">
+    <value>デバイス管理状態</value>
+  </data>
+  <data name="DeviceMangedApplicationDisable" xml:space="preserve">
+    <value>デバイス管理対象アプリケーションが無効になりました</value>
+  </data>
+  <data name="DeviceModelChanged" xml:space="preserve">
+    <value>デバイス モデルが変更されました</value>
+  </data>
+  <data name="DeviceOemChanged" xml:space="preserve">
+    <value>デバイスの元の機器メーカーが変更されました</value>
+  </data>
+  <data name="DeviceOfflineDomainJoinConfigCreationFailed" xml:space="preserve">
+    <value>デバイスの [オフラインでドメイン参加] の構成作成に失敗しました</value>
+  </data>
+  <data name="DeviceScriptSampleSentFailed" xml:space="preserve">
+    <value>デバイス スクリプト サンプルの送信に失敗しました</value>
+  </data>
+  <data name="DeviceServicesAutoDiscoverySync" xml:space="preserve">
+    <value>デバイス サービスの自動検出同期</value>
+  </data>
+  <data name="DeviceTimeWindowStatusSampleCompleted" xml:space="preserve">
+    <value>デバイス時間枠状態サンプルが完了しました</value>
+  </data>
+  <data name="DeviceTimeWindowStatusSampleFailed" xml:space="preserve">
+    <value>デバイス時間枠状態サンプルに失敗しました</value>
+  </data>
+  <data name="DeviceTimeWindowSync" xml:space="preserve">
+    <value>デバイス時間枠の同期</value>
+  </data>
+  <data name="DeviceUserCheckOutFailed" xml:space="preserve">
+    <value>デバイス ユーザーのチェックアウトに失敗しました</value>
+  </data>
+  <data name="DeviceUUID" xml:space="preserve">
+    <value>デバイス UUID</value>
+  </data>
+  <data name="DeviceWorkflowComplete" xml:space="preserve">
+    <value>デバイス ワークフロー完了</value>
+  </data>
+  <data name="DeviceWorkflowFailed" xml:space="preserve">
+    <value>デバイス ワークフローが失敗しました</value>
+  </data>
+  <data name="DeviceWorkflowSync" xml:space="preserve">
+    <value>デバイス ワークフローの同期</value>
+  </data>
+  <data name="DisableLostModeRefused" xml:space="preserve">
+    <value>紛失モード無効化が拒否されました</value>
+  </data>
+  <data name="DoNotShowAgain" xml:space="preserve">
+    <value>今後は表示しない</value>
+  </data>
+  <data name="EnableActivationLockFailed" xml:space="preserve">
+    <value>アクティベーション ロックの有効化に失敗しました</value>
+  </data>
+  <data name="EnableActivationLockSucceeded" xml:space="preserve">
+    <value>アクティベーション ロックの有効化が成功しました</value>
+  </data>
+  <data name="EnableLostModeRefused" xml:space="preserve">
+    <value>紛失モード有効化が拒否されました</value>
+  </data>
+  <data name="EnrollmentAuthenticationSettingChanged" xml:space="preserve">
+    <value>加入認証設定が変更されました</value>
+  </data>
+  <data name="FileVaultRecoveryKeyRotationRequested" xml:space="preserve">
+    <value>FileVault リカバリ キー ローテーションがリクエストされました</value>
+  </data>
+  <data name="FromDeviceDetailsPage" xml:space="preserve">
+    <value>デバイス詳細画面から</value>
+  </data>
+  <data name="FromSSPDetailsPage" xml:space="preserve">
+    <value>SSP 詳細ページから</value>
+  </data>
+  <data name="GetBootstrapTokenRequested" xml:space="preserve">
+    <value>要求された GetBootstrapToken</value>
+  </data>
+  <data name="GetBootstrapTokenRequestProcessed" xml:space="preserve">
+    <value>要求の処理がされた GetBootstrapToken</value>
+  </data>
+  <data name="GlobalThresholdMessage" xml:space="preserve">
+    <value>[グローバル] では、最後の 1 時間のイベントのみを表示できます。より広い時間範囲を確認するには、サブ組織グループに移動してください</value>
+  </data>
+  <data name="GuestUserLogin" xml:space="preserve">
+    <value>ゲスト ユーザー ログイン</value>
+  </data>
+  <data name="ImpactedDevices" xml:space="preserve">
+    <value>影響を受けるデバイス</value>
+  </data>
+  <data name="InitiateAutoDiscoveryPinningSync" xml:space="preserve">
+    <value>自動検出のピン留め同期の開始</value>
+  </data>
+  <data name="InstallIntelligentHubRequestFailure" xml:space="preserve">
+    <value>Intelligent Hub をインストールするコマンドのキューに失敗しました</value>
+  </data>
+  <data name="InstallIntelligentHubRequestSuccess" xml:space="preserve">
+    <value>Intelligent Hub をインストールするコマンドが正常にキューに追加されました</value>
+  </data>
+  <data name="InstallMacOSBootstrapPkgFailed" xml:space="preserve">
+    <value>macOS ブートストラップ パッケージのインストールに失敗しました</value>
+  </data>
+  <data name="InstallMacOSBootstrapPkgRefused" xml:space="preserve">
+    <value>macOS ブートストラップ パッケージのインストールが拒否されました</value>
+  </data>
+  <data name="InstallOnFilteredSuccess" xml:space="preserve">
+    <value>フィルタにインストール成功</value>
+  </data>
+  <data name="InstallPackagedMacOsXAgentConfirmed" xml:space="preserve">
+    <value>macOS エージェントのインストールを確認しました</value>
+  </data>
+  <data name="InstallPackagedMacOsXAgentFailed" xml:space="preserve">
+    <value>macOS エージェントをインストールできませんでした</value>
+  </data>
+  <data name="InstallPackagedMacOsXAgentRefused" xml:space="preserve">
+    <value>macOS エージェントのインストールが拒否されました</value>
+  </data>
+  <data name="InstallPackagedMacOsXAgentRequested" xml:space="preserve">
+    <value>macOS エージェントのインストールが要求されました</value>
+  </data>
+  <data name="LogOutUserConfirmed" xml:space="preserve">
+    <value>ユーザーのログアウトを確認しました</value>
+  </data>
+  <data name="LogoutUserFailed" xml:space="preserve">
+    <value>ユーザーのログアウトに失敗しました</value>
+  </data>
+  <data name="LogOutUserRefused" xml:space="preserve">
+    <value>ユーザーのログアウトが拒否されました</value>
+  </data>
+  <data name="LogOutUserRequested" xml:space="preserve">
+    <value>ユーザーのログアウトが要求されました</value>
+  </data>
+  <data name="ManagedAdminPasswordRotationRequested" xml:space="preserve">
+    <value>管理対象管理者パスワードのローテーションがリクエストされました</value>
+  </data>
+  <data name="ManagedSettings" xml:space="preserve">
+    <value>管理設定</value>
+  </data>
+  <data name="ManagedSettingsConfirmed" xml:space="preserve">
+    <value>管理設定が確認されました</value>
+  </data>
+  <data name="ManagedSettingsFailed" xml:space="preserve">
+    <value>管理設定に失敗しました</value>
+  </data>
+  <data name="ManagedSettingsRefused" xml:space="preserve">
+    <value>管理設定が拒否されました</value>
+  </data>
+  <data name="ManagedSettingsRequested" xml:space="preserve">
+    <value>管理設定が要求されました</value>
+  </data>
+  <data name="MembershipSyncRequestSent" xml:space="preserve">
+    <value>メンバーシップの同期リクエストが送信されました</value>
+  </data>
+  <data name="NotNowInAwaitConfiguration" xml:space="preserve">
+    <value>今は構成を必要としません</value>
+  </data>
+  <data name="P2PTrueUpGenericError" xml:space="preserve">
+    <value>ピアツーピア調整の一般エラー</value>
+  </data>
+  <data name="PCRefreshConfirmed" xml:space="preserve">
+    <value>Windows デスクトップの更新が確認されました</value>
+  </data>
+  <data name="PCRefreshFailed" xml:space="preserve">
+    <value>Windows デスクトップの更新に失敗しました</value>
+  </data>
+  <data name="PeerDistributionStatistics" xml:space="preserve">
+    <value>ピアツーピア統計情報</value>
+  </data>
+  <data name="PinnedCertificateDelete" xml:space="preserve">
+    <value>ピン留めされた証明書削除</value>
+  </data>
+  <data name="PinnedHostDelete" xml:space="preserve">
+    <value>ピン留めされたホスト削除</value>
+  </data>
+  <data name="PinnedHostDisable" xml:space="preserve">
+    <value>ピン留めされたホスト無効化</value>
+  </data>
+  <data name="PinnedHostEdit" xml:space="preserve">
+    <value>ピン留めされたホスト編集</value>
+  </data>
+  <data name="PinnedHostEnable" xml:space="preserve">
+    <value>ピン留めされたホスト有効化</value>
+  </data>
+  <data name="PolicySigningCertificateSettingChangedFailure" xml:space="preserve">
+    <value>ポリシー署名証明書の設定の変更に失敗しました</value>
+  </data>
+  <data name="PolicySigningCertificateSettingChangedSuccess" xml:space="preserve">
+    <value>ポリシー署名証明書の設定を変更しました</value>
+  </data>
+  <data name="ProfilesPerformActionAgain" xml:space="preserve">
+    <value>プロファイルの作成/更新/削除に失敗しました。操作を再度実行してください。</value>
+  </data>
+  <data name="ProvisioningAgentQueryFailed" xml:space="preserve">
+    <value>プロビジョニング エージェントのクエリに失敗しました</value>
+  </data>
+  <data name="ProvisioningPackageCreated" xml:space="preserve">
+    <value>プロビジョニング パッケージが作成されました</value>
+  </data>
+  <data name="ProvisioningPackageInstallConfirmed" xml:space="preserve">
+    <value>プロビジョニング パッケージのインストールが確認されました</value>
+  </data>
+  <data name="ProvisioningPackageInstallFailed" xml:space="preserve">
+    <value>プロビジョニング パッケージのインストールに失敗しました</value>
+  </data>
+  <data name="RecordDeleted" xml:space="preserve">
+    <value>Record deleted.</value>
+  </data>
+  <data name="RefreshEsimConfirmed" xml:space="preserve">
+    <value>eSIM の更新を確認しました</value>
+  </data>
+  <data name="RefreshEsimFailed" xml:space="preserve">
+    <value>eSIM の更新に失敗しました</value>
+  </data>
+  <data name="RefreshEsimRefused" xml:space="preserve">
+    <value>eSIM の更新が拒否されました</value>
+  </data>
+  <data name="RefreshEsimRequested" xml:space="preserve">
+    <value>eSIM の更新がリクエストされました</value>
+  </data>
+  <data name="RejectRemoval" xml:space="preserve">
+    <value>削除を拒否</value>
+  </data>
+  <data name="RejectRemovalDescription" xml:space="preserve">
+    <value>このアクションにより、影響を受ける可能性のあるデバイスからアプリ削除コマンドが消去されます。アプリ削除が再度トリガされることを防止するには、確実にアプリがアクティブであるように、およびデバイスに割り当てられているようにしてください。</value>
+  </data>
+  <data name="RejectRemovalTitle" xml:space="preserve">
+    <value>アプリ削除を拒否</value>
+  </data>
+  <data name="RemovableDriveRecoveryKeyAccessed" xml:space="preserve">
+    <value>ディスク暗号化リカバリ キーにアクセスしました</value>
+  </data>
+  <data name="RemoveBootstrapTokenRequested" xml:space="preserve">
+    <value>ブートストラップ トークンの削除が要求されました</value>
+  </data>
+  <data name="RemoveLockConfirmed" xml:space="preserve">
+    <value>ロック削除を確認しました</value>
+  </data>
+  <data name="RequestLogConfirmed" xml:space="preserve">
+    <value>デバイス リクエスト ログを確認しました</value>
+  </data>
+  <data name="RequestLogFailed" xml:space="preserve">
+    <value>デバイス リクエスト ログに失敗しました</value>
+  </data>
+  <data name="RequestLogRefused" xml:space="preserve">
+    <value>デバイス リクエスト ログが拒否されました</value>
+  </data>
+  <data name="RequestLogRequested" xml:space="preserve">
+    <value>デバイスのログが要求されました</value>
+  </data>
+  <data name="ResourceUuid" xml:space="preserve">
+    <value>リソース UUID</value>
+  </data>
+  <data name="ResourceVersion" xml:space="preserve">
+    <value>リソース バージョン</value>
+  </data>
+  <data name="RestrictedAppOrProcessDetected" xml:space="preserve">
+    <value>制限されたアプリケーションまたはプロセスが検出されました</value>
+  </data>
+  <data name="RestrictedAppOrProcessRemediated" xml:space="preserve">
+    <value>制限されたアプリケーションまたはプロセスが修正されました</value>
+  </data>
+  <data name="RotateDeviceRecoveryKey" xml:space="preserve">
+    <value>デバイス リカバリ キーを変更</value>
+  </data>
+  <data name="RotateDeviceRecoveryKeyRequested" xml:space="preserve">
+    <value>リカバリ キー ローテーションがリクエストされました</value>
+  </data>
+  <data name="SampleResponseListReceived" xml:space="preserve">
+    <value>サンプル応答リストを受信しました</value>
+  </data>
+  <data name="ScheduledAdminPasswordRotationRequested" xml:space="preserve">
+    <value>スケジュールされた管理者パスワードのローテーションがリクエストされました</value>
+  </data>
+  <data name="ScheduledRotateDeviceRecoveryKeyRequested" xml:space="preserve">
+    <value>スケジュールされたリカバリ キー ローテーションがリクエストされました</value>
+  </data>
+  <data name="ScheduleOSUpdateScanFailed" xml:space="preserve">
+    <value>OS 更新スキャン スケジュール 失敗</value>
+  </data>
+  <data name="ScimProvisioningFailure" xml:space="preserve">
+    <value>SCIM プロビジョニング失敗</value>
+  </data>
+  <data name="ScriptFailedToExecuteOnDevice" xml:space="preserve">
+    <value>デバイスでスクリプトを実行できませんでした</value>
+  </data>
+  <data name="ScriptPersistedInDeviceState" xml:space="preserve">
+    <value>デバイス状態でスクリプトが保持されています</value>
+  </data>
+  <data name="ScriptResourceRequestedByDevice" xml:space="preserve">
+    <value>デバイスによって要求されたスクリプト リソース</value>
+  </data>
+  <data name="ScriptSampleNotPersisted" xml:space="preserve">
+    <value>デバイス状態でスクリプト サンプルが保持されていません</value>
+  </data>
+  <data name="ScriptSamplePersistedInDeviceState" xml:space="preserve">
+    <value>デバイス状態でスクリプト サンプルが保持されています</value>
+  </data>
+  <data name="ScriptSampleReceived" xml:space="preserve">
+    <value>スクリプト サンプルを受信しました</value>
+  </data>
+  <data name="ScriptSampleReceivedWithErrors" xml:space="preserve">
+    <value>スクリプト サンプルの受信でエラーが発生しました</value>
+  </data>
+  <data name="ScriptSampleSentFailed" xml:space="preserve">
+    <value>デバイス スクリプト サンプルの送信に失敗しました</value>
+  </data>
+  <data name="SdkComplianceSettings" xml:space="preserve">
+    <value>SDK アプリの順守設定</value>
+  </data>
+  <data name="SdkComplianceSettingsChanged" xml:space="preserve">
+    <value>SDK アプリの順守設定が変更されました</value>
+  </data>
+  <data name="ServerKeyUtilityKeyInstallationFailure" xml:space="preserve">
+    <value>サーバ キー ユーティリティ キーのインストール失敗</value>
+  </data>
+  <data name="ServerKeyUtilityKeyInstallationSuccess" xml:space="preserve">
+    <value>サーバ キー ユーティリティ キーのインストール成功</value>
+  </data>
+  <data name="SetBootstrapTokenRequested" xml:space="preserve">
+    <value>要求された SetBootstrapToken</value>
+  </data>
+  <data name="SetUpConfigurationConfirmed" xml:space="preserve">
+    <value>構成のセットアップを確認しました</value>
+  </data>
+  <data name="SetUpConfigurationFailed" xml:space="preserve">
+    <value>構成のセットアップに失敗しました</value>
+  </data>
+  <data name="SetUpConfigurationRefused" xml:space="preserve">
+    <value>構成のセットアップが拒否されました</value>
+  </data>
+  <data name="SetUpConfigurationRequested" xml:space="preserve">
+    <value>構成のセットアップがリクエストされました</value>
+  </data>
+  <data name="SigningServiceCertificateRotationFailedEvent" xml:space="preserve">
+    <value>署名サービス証明書ローテーションの失敗イベント</value>
+  </data>
+  <data name="SoapApiClearClientCertificate" xml:space="preserve">
+    <value>SOAP API クライアント証明書 消去済み</value>
+  </data>
+  <data name="SoapApiExportClientCertificate" xml:space="preserve">
+    <value>SOAP API クライアント証明書 エクスポート済み</value>
+  </data>
+  <data name="SoapApiGenerateClientCertificate" xml:space="preserve">
+    <value>SOAP API クライアント証明書 生成済み</value>
+  </data>
+  <data name="StopLogRequested" xml:space="preserve">
+    <value>「ログを停止」が要求されました</value>
+  </data>
+  <data name="SyncAssetsAppDeleted" xml:space="preserve">
+    <value>アセットの同期でアプリケーションが削除されました</value>
+  </data>
+  <data name="SyncAssetsAppVppInfoRemoved" xml:space="preserve">
+    <value>アセットの同期でアプリケーション VPP 情報が削除されました</value>
+  </data>
+  <data name="SyncEntitlementsConfirmed" xml:space="preserve">
+    <value>資格同期確認済み</value>
+  </data>
+  <data name="SyncEntitlementsFailed" xml:space="preserve">
+    <value>資格同期失敗</value>
+  </data>
+  <data name="SyncEntitlementsRefused" xml:space="preserve">
+    <value>資格同期拒否</value>
+  </data>
+  <data name="SyncEntitlementsRequested" xml:space="preserve">
+    <value>資格同期要求済み</value>
+  </data>
+  <data name="TimeMachineEnabled" xml:space="preserve">
+    <value>Time Machine が有効化されました</value>
+  </data>
+  <data name="TimeWindowAssignmentDeleted" xml:space="preserve">
+    <value>時間枠の割り当てが削除されました</value>
+  </data>
+  <data name="TimeWindowAssignmentUpdated" xml:space="preserve">
+    <value>時間枠の割り当てが更新されました</value>
+  </data>
+  <data name="TimeWindowAssignmentUpdateFailed" xml:space="preserve">
+    <value>時間枠の割り当ての更新に失敗しました</value>
+  </data>
+  <data name="TimeWindowCreated" xml:space="preserve">
+    <value>時間枠が作成されました</value>
+  </data>
+  <data name="TimeWindowDeleted" xml:space="preserve">
+    <value>時間枠が削除されました</value>
+  </data>
+  <data name="TimeWindowIdentifiers" xml:space="preserve">
+    <value>時間枠識別子</value>
+  </data>
+  <data name="TimeWindows" xml:space="preserve">
+    <value>時間枠</value>
+  </data>
+  <data name="TimeWindowUpdated" xml:space="preserve">
+    <value>時間枠が更新されました</value>
+  </data>
+  <data name="TimeWindowUpdateFailed" xml:space="preserve">
+    <value>時間枠の更新に失敗しました</value>
+  </data>
+  <data name="UpdateAssignmentCreated" xml:space="preserve">
+    <value>更新プログラム割り当て 作成済み</value>
+  </data>
+  <data name="UpdateAssignmentModified" xml:space="preserve">
+    <value>更新プログラム割り当て 変更済み</value>
+  </data>
+  <data name="UpdateAssignmentRemoved" xml:space="preserve">
+    <value>更新プログラム割り当て 削除済み</value>
+  </data>
+  <data name="UserEnrollmentAuthenticationFailure" xml:space="preserve">
+    <value>User Enrollment 認証失敗</value>
+  </data>
+  <data name="UserEnrollmentName" xml:space="preserve">
+    <value>加入のユーザー名</value>
+  </data>
+  <data name="UserFriendlyPrivacyPolicy" xml:space="preserve">
+    <value>ユーザーフレンドリなプライバシー ポリシー</value>
+  </data>
+  <data name="UserListConfirmed" xml:space="preserve">
+    <value>ユーザー リストを確認しました</value>
+  </data>
+  <data name="UserListFailed" xml:space="preserve">
+    <value>ユーザー リストに失敗しました</value>
+  </data>
+  <data name="UserListRefused" xml:space="preserve">
+    <value>ユーザー リストが拒否されました</value>
+  </data>
+  <data name="UserListRequested" xml:space="preserve">
+    <value>ユーザー リストが要求されました</value>
+  </data>
+  <data name="VmLockConfirmed" xml:space="preserve">
+    <value>仮想マシンのロックを確認しました</value>
+  </data>
+  <data name="VmLockFailed" xml:space="preserve">
+    <value>仮想マシンのロックに失敗しました</value>
+  </data>
+  <data name="VmLockRefused" xml:space="preserve">
+    <value>仮想マシンのロックが拒否されました</value>
+  </data>
+  <data name="VmLockRequested" xml:space="preserve">
+    <value>仮想マシンのロックが要求されました</value>
+  </data>
+  <data name="VmUnlockConfirmed" xml:space="preserve">
+    <value>仮想マシンのロック解除を確認しました</value>
+  </data>
+  <data name="VmUnlockRefused" xml:space="preserve">
+    <value>仮想マシンのロック解除が拒否されました</value>
+  </data>
+  <data name="VmUnlockRequested" xml:space="preserve">
+    <value>仮想マシンのロック解除が要求されました</value>
+  </data>
+  <data name="VmWipeConfirmed" xml:space="preserve">
+    <value>仮想マシンのワイプが確認されました</value>
+  </data>
+  <data name="VmWipeFailed" xml:space="preserve">
+    <value>仮想マシンのワイプに失敗しました</value>
+  </data>
+  <data name="VmWipeRefused" xml:space="preserve">
+    <value>仮想マシンのワイプが拒否されました</value>
+  </data>
+  <data name="VmWipeRequested" xml:space="preserve">
+    <value>仮想マシンのワイプが要求されました</value>
+  </data>
+  <data name="Windows10InvalidOdjSyncAlert" xml:space="preserve">
+    <value>Windows 10 の無効な Odj 同期アラート</value>
+  </data>
+  <data name="WindowsDeviceCheckInMode" xml:space="preserve">
+    <value>Windows デバイスのチェックイン モード</value>
+  </data>
+  <data name="WindowsOobeAccountProvisioningComplete" xml:space="preserve">
+    <value>ユーザーの OOBE プロビジョニングが完了しました</value>
+  </data>
+  <data name="WindowsOobeDeviceProvisioningComplete" xml:space="preserve">
+    <value>デバイスの OOBE プロビジョニングが完了しました</value>
+  </data>
+  <data name="WindowsOobeProvisioningRequested" xml:space="preserve">
+    <value>OOBE プロビジョニングが要求されました</value>
+  </data>
+  <data name="WorkAccessibilityServicesPermittedAppIds" xml:space="preserve">
+    <value>アクセシビリティ サービスの許可されたアプリケーション</value>
+  </data>
+  <data name="WorkAllowAccountChanges" xml:space="preserve">
+    <value>Google アカウントの追加を許可する</value>
+  </data>
+  <data name="WorkAllowBluetoothContactSharing" xml:space="preserve">
+    <value>企業の連絡先を Bluetooth デバイスに共有する</value>
+  </data>
+  <data name="WorkAllowCamera" xml:space="preserve">
+    <value>カメラを許可</value>
+  </data>
+  <data name="WorkAllowChrome" xml:space="preserve">
+    <value>Chrome ブラウザを許可する</value>
+  </data>
+  <data name="WorkAllowContacts" xml:space="preserve">
+    <value>個人用連絡先アプリへの仕事用連絡先の入力を許可する</value>
+  </data>
+  <data name="WorkAllowDisableAppVerify" xml:space="preserve">
+    <value>アプリケーション認証の無効化を許可する</value>
+  </data>
+  <data name="WorkAllowGooglePlay" xml:space="preserve">
+    <value>Google Play を許可</value>
+  </data>
+  <data name="WorkAllowInstallingApps" xml:space="preserve">
+    <value>アプリケーションのインストールを許可する</value>
+  </data>
+  <data name="WorkAllowKeyguardFingerprint" xml:space="preserve">
+    <value>キーガード使用中、指紋センサーを許可する</value>
+  </data>
+  <data name="WorkAllowKeyguardTrustAgent" xml:space="preserve">
+    <value>キーガード使用中、Trust Agent State を許可する</value>
+  </data>
+  <data name="WorkAllowKeyguardUnredacted" xml:space="preserve">
+    <value>キーガード使用中、未編集通知を許可する</value>
+  </data>
+  <data name="WorkAllowNFC" xml:space="preserve">
+    <value>NFC を許可</value>
+  </data>
+  <data name="WorkAllowNonGoogleAccounts" xml:space="preserve">
+    <value>アカウントの追加/削除を許可する</value>
+  </data>
+  <data name="WorkAllowNonMarketAppInstall" xml:space="preserve">
+    <value>アプリストア外のアプリケーションのインストールを許可</value>
+  </data>
+  <data name="WorkAllowOutgoingBluetoothConnections" xml:space="preserve">
+    <value>発信 Bluetooth 接続を許可</value>
+  </data>
+  <data name="WorkAllowPersonalShareWithWork" xml:space="preserve">
+    <value>個人アプリが業務アプリとファイルを共有することを許可する</value>
+  </data>
+  <data name="WorkAllowPersonalToAccessWork" xml:space="preserve">
+    <value>個人アプリが業務アプリのファイルへアクセスすることを許可する</value>
+  </data>
+  <data name="WorkAllowScreenCapture" xml:space="preserve">
+    <value>スクリーン キャプチャを許可</value>
+  </data>
+  <data name="WorkAllowUninstallingApps" xml:space="preserve">
+    <value>アプリケーションのアンインストールを許可する</value>
+  </data>
+  <data name="WorkAllowUSBDebugging" xml:space="preserve">
+    <value>USB のデバッグを許可</value>
+  </data>
+  <data name="WorkAllowWorkContactsInPhone" xml:space="preserve">
+    <value>業務用コンタクトの発信者 ID を電話画面に表示することを許可する</value>
+  </data>
+  <data name="WorkAllowWorkPersonalPaste" xml:space="preserve">
+    <value>業務用と個人用のアプリ間でクリップボードの貼り付けを許可する</value>
+  </data>
+  <data name="WorkAllowWorkShareWithPersonal" xml:space="preserve">
+    <value>業務アプリが個人アプリとファイルを共有することを許可する</value>
+  </data>
+  <data name="WorkAllowWorkToAccessPersonal" xml:space="preserve">
+    <value>業務アプリが個人アプリのファイルにアクセスすることを許可する</value>
+  </data>
+  <data name="WorkflowAssignmentDeleted" xml:space="preserve">
+    <value>ワークフロー割り当てが削除されました</value>
+  </data>
+  <data name="WorkflowAssignmentUpdated" xml:space="preserve">
+    <value>ワークフロー割り当てが更新されました</value>
+  </data>
+  <data name="WorkflowCreated" xml:space="preserve">
+    <value>ワークフローが作成されました</value>
+  </data>
+  <data name="WorkflowDeleted" xml:space="preserve">
+    <value>ワークフローが削除されました</value>
+  </data>
+  <data name="WorkflowUpdated" xml:space="preserve">
+    <value>ワークフローが更新されました</value>
+  </data>
+  <data name="WorkflowUpdatedDueToResourceUpdate" xml:space="preserve">
+    <value>リソースの更新によってワークフローが更新されました</value>
+  </data>
+  <data name="WorkflowUpdateFailed" xml:space="preserve">
+    <value>ワークフローの更新に失敗しました</value>
+  </data>
+  <data name="WorkflowUuid" xml:space="preserve">
+    <value>ワークフロー識別子</value>
+  </data>
+  <data name="WorkManagedApplication" xml:space="preserve">
+    <value>Work 管理対象アプリケーション</value>
+  </data>
+  <data name="WorkManagedBluetooth" xml:space="preserve">
+    <value>Work 管理対象 Bluetooth</value>
+  </data>
+  <data name="WorkManagedDeviceFunctionality" xml:space="preserve">
+    <value>Work 管理対象デバイスの機能</value>
+  </data>
+  <data name="WorkManagedHardwareRestrictions" xml:space="preserve">
+    <value>Work 管理対象ハードウェアの制限</value>
+  </data>
+  <data name="WorkManagedMmsRestrictions" xml:space="preserve">
+    <value>Work 管理対象 MMS の制限</value>
+  </data>
+  <data name="WorkManagedNetwork" xml:space="preserve">
+    <value>Work 管理対象ネットワーク</value>
+  </data>
+  <data name="WorkManagedPhoneAndData" xml:space="preserve">
+    <value>Work 管理対象電話およびデータ</value>
+  </data>
+  <data name="WorkManagedRoaming" xml:space="preserve">
+    <value>Work 管理対象ローミング</value>
+  </data>
+  <data name="WorkManagedSecurity" xml:space="preserve">
+    <value>Work 管理対象セキュリティ</value>
+  </data>
+  <data name="WorkManagedSyncAndStorage" xml:space="preserve">
+    <value>Work 管理対象同期およびストレージ</value>
+  </data>
+  <data name="WorkManagedTethering" xml:space="preserve">
+    <value>Work 管理対象テザリング</value>
+  </data>
+  <data name="WorkProfileApplication" xml:space="preserve">
+    <value>Work プロファイル アプリケーション</value>
+  </data>
+  <data name="WorkProfileDeviceFunctionality" xml:space="preserve">
+    <value>Work プロファイル デバイスの機能</value>
+  </data>
+  <data name="WorkProfileNetwork" xml:space="preserve">
+    <value>Work プロファイル ネットワーク</value>
+  </data>
+  <data name="WorkProfileSyncAndStorage" xml:space="preserve">
+    <value>Work プロファイル同期およびストレージ</value>
+  </data>
+  <data name="WorkProfileWorkAndPersonal" xml:space="preserve">
+    <value>Work プロファイル仕事用および個人用</value>
+  </data>
+  <data name="WorkWhitelistPermittedAccessibilityServices" xml:space="preserve">
+    <value>アクセシビリティ サービスを許可</value>
+  </data>
+</root>

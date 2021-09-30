@@ -1,0 +1,556 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ActivateHubServices" xml:space="preserve">
+    <value>Aktywacja usług Hub Services</value>
+  </data>
+  <data name="ActivateHubServicesDescription" xml:space="preserve">
+    <value>Usługi Hub Services są obsługiwane przez oprogramowanie Workspace ONE Access w chmurze. Aby ją aktywować, podaj szczegółowe informacje o dzierżawcy chmury Workspace ONE Access Cloud lub poproś o nie poniżej. Jeśli nie znasz swojego dzierżawcy chmury, możesz znaleźć te informacje w wiadomości e-mail otrzymanej od firmy VMware lub przesłać zgłoszenie pomocy technicznej, jeśli nie możesz znaleźć tych informacji.</value>
+  </data>
+  <data name="ActivateHubServicesGeneralDescription" xml:space="preserve">
+    <value>Usługi Hub Services są zlokalizowane w tym samym miejscu co Workspace ONE Access. Aby je skonfigurować, poniżej podaj szczegółowe informacje o dzierżawcy Workspace ONE Access. Jeśli nie znasz swojego dzierżawcy, możesz znaleźć te informacje w wiadomości e-mail otrzymanej od firmy VMware lub przesłać zgłoszenie pomocy technicznej, jeśli nie możesz znaleźć tych informacji.</value>
+  </data>
+  <data name="ActivateHubServicesGeneralNote" xml:space="preserve">
+    <value>Uwaga: możesz korzystać z określonych funkcji usług aplikacji Hub bez konfigurowania Workspace ONE Access.</value>
+  </data>
+  <data name="ActivateHubServicesNote" xml:space="preserve">
+    <value>Uwaga: funkcje katalogu Hub są dostępne bez konfigurowania łączników i synchronizowania usługi Active Directory.</value>
+  </data>
+  <data name="AdministratorDetails" xml:space="preserve">
+    <value>Dane administratora</value>
+  </data>
+  <data name="ArgOrganizationGroups" xml:space="preserve">
+    <value>{0} Grupy organizacyjne</value>
+    <comment>{0} will be integer</comment>
+  </data>
+  <data name="AuthenticationSourceSettingsFetchFailedError" xml:space="preserve">
+    <value>Nie można uzyskać ustawień źródła uwierzytelniania.</value>
+  </data>
+  <data name="Avenger" xml:space="preserve">
+    <value>Android Avenger</value>
+  </data>
+  <data name="BluetoothLocationServiceHubPassport" xml:space="preserve">
+    <value>*Aby uzyskać najlepsze rezultaty, funkcja Bluetooth musi być włączona na urządzeniach pracowników i w usługach lokalizacji.</value>
+  </data>
+  <data name="CatalogSettings" xml:space="preserve">
+    <value>Ustawienia katalogu</value>
+  </data>
+  <data name="CatalogSettingsDescription" xml:space="preserve">
+    <value>Hub wyświetli zintegrowany katalog aplikacji w oparciu o poniższe ustawienia.</value>
+  </data>
+  <data name="CloudTenant" xml:space="preserve">
+    <value>Dzierżawca chmury</value>
+  </data>
+  <data name="CloudTenantAlreadyConfigured" xml:space="preserve">
+    <value>Dzierżawca chmury został już skonfigurowany dla Workspace ONE Access.</value>
+  </data>
+  <data name="CloudTenantHelpText" xml:space="preserve">
+    <value>Nie masz dzierżawcy chmury? Możesz teraz poprosić o dzierżawcę chmury Workspace ONE Access.</value>
+  </data>
+  <data name="CloudTenantHostedInOneOfTheRegion" xml:space="preserve">
+    <value>Dzierżawca chmury może być hostowany w jednym z poniższych regionów. Wybierz ten, który najlepiej spełnia wymagania firmy w zakresie zgodności, bezpieczeństwa i ogólnych potrzeb biznesowych.</value>
+  </data>
+  <data name="CloudTenantSameAsExisting" xml:space="preserve">
+    <value>Ten dzierżawca chmury jest taki sam jak istniejący. Zapisz, aby kontynuować.</value>
+  </data>
+  <data name="CloudTenantSuccessfullyCreatedActivateHubServices" xml:space="preserve">
+    <value>Twój dzierżawca chmury został pomyślnie utworzony. Aby aktywować usługi Hub Services, kliknij opcję Rozpocznij i podaj szczegółowe informacje o dzierżawcy chmury Workspace ONE Access, które powinny zostać dostarczone pocztą e-mail.</value>
+  </data>
+  <data name="CloudTenantUrl" xml:space="preserve">
+    <value>Adres URL dzierżawcy chmury</value>
+  </data>
+  <data name="CollectLocationDataTooltip" xml:space="preserve">
+    <value>Monituj pracowników o zezwolenie na zbieranie danych lokalizacji GPS.</value>
+  </data>
+  <data name="ConfigurationOverwrite" xml:space="preserve">
+    <value>Zastąpienie konfiguracji</value>
+  </data>
+  <data name="ConsiderUpdatingArgLanguage" xml:space="preserve">
+    <value>Rozważ odpowiednią aktualizację języka {0} wyświetlanego dla pracowników.</value>
+    <comment>{0} will be "Terms of Use"</comment>
+  </data>
+  <data name="DeviceDatafromGoogleNotReceived" xml:space="preserve">
+    <value>Nie otrzymano danych urządzenia z Google. Skontaktuj się z administratorem IT, aby rozwiązać problem.</value>
+  </data>
+  <data name="DifferentVidmTenantConfiguredAtCurrentOg" xml:space="preserve">
+    <value>W tej grupie organizacji został skonfigurowany inny dzierżawca programu Workspace ONE Access.</value>
+  </data>
+  <data name="DisabledByDefault" xml:space="preserve">
+    <value>Domyślnie wyłączone</value>
+  </data>
+  <data name="DisableManagedAppNotAcceptable" xml:space="preserve">
+    <value>Wprowadź prawidłowy identyfikator aplikacji.</value>
+  </data>
+  <data name="DisplayPrivacyDialogTooltip" xml:space="preserve">
+    <value>Po pierwszym uruchomieniu wyświetla standardowy ekran prywatności.</value>
+  </data>
+  <data name="DownloadLatestMacOsHubVersion" xml:space="preserve">
+    <value>Pobierz najnowszą wersję</value>
+  </data>
+  <data name="EditHidPassportServiceSettings" xml:space="preserve">
+    <value>Edytuj ustawienia usługi paszportu HID</value>
+  </data>
+  <data name="EditHidPassportServiceSettingsHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do edycji ustawień usługi paszportu HID.</value>
+  </data>
+  <data name="EnableAutomaticUpdates" xml:space="preserve">
+    <value>Automatyczne aktualizacje</value>
+  </data>
+  <data name="EnableAutomaticUpdatesTooltip" xml:space="preserve">
+    <value>Automatycznie sprawdza dostępność aktualizacji. Gdy ta opcja jest wyłączona, pracownicy muszą ręcznie sprawdzać dostępność aktualizacji w aplikacji Hub.</value>
+  </data>
+  <data name="EnableAwcmTooltip" xml:space="preserve">
+    <value>AirWatch Cloud Messaging (AWCM) umożliwia komunikację w czasie rzeczywistym między serwerem i aplikacją Hub. Gdy ta opcja jest wyłączona, polecenia i próbki nie będą odbierane przez Hub do następnego zaplanowanego okresowego ewidencjonowania.</value>
+  </data>
+  <data name="EnableConfigureHubPassportDescription" xml:space="preserve">
+    <value>Włącz i skonfiguruj paszport Hub w usługach Hub, aby umożliwić pracownikom dostęp do biur firmowych przy użyciu urządzeń z systemem iOS i Android jako wirtualnych kart identyfikacyjnych dostępu.</value>
+  </data>
+  <data name="EnabledByDefault" xml:space="preserve">
+    <value>Domyślnie włączone</value>
+  </data>
+  <data name="EnableHubExperienceModeInfo" xml:space="preserve">
+    <value>Wybierz opcję Włączone, aby zezwolić urządzeniom w tej grupie organizacyjnej na łączenie się z usługami Workspace ONE Hub w celu korzystania z funkcji takich jak katalog aplikacji App Catalog i People.</value>
+  </data>
+  <data name="EnableMacOsHubDownloadAfterEnrollment" xml:space="preserve">
+    <value>Zainstaluj aplikację Hub po zarejestrowaniu</value>
+  </data>
+  <data name="EnableMacOsHubDownloadAfterEnrollmentTooltip" xml:space="preserve">
+    <value>Automatycznie instaluje aplikację Hub na urządzeniach po zarejestrowaniu za pomocą DEP lub sieci Web.</value>
+  </data>
+  <data name="EnforcePasscodePolicyTooltip" xml:space="preserve">
+    <value>Monituje pracowników o utworzenie nowego hasła, które spełnia wymagania profilu MDM. Gdy ta opcja jest wyłączona, pracownicy będą monitowani tylko po wylogowaniu się i ponownym zalogowaniu.</value>
+  </data>
+  <data name="ExcludesOrganizationGroups" xml:space="preserve">
+    <value>Wykluczone grupy organizacyjne</value>
+  </data>
+  <data name="FailedToRetrieveAvailableHostingRegionsContactSupport" xml:space="preserve">
+    <value>Nie można pobrać dostępnych regionów hostingu dla dzierżawcy programu Workspace ONE Access. Spróbuj ponownie później. Jeśli problem nie ustąpi, skontaktuj się z pomocą techniczną.</value>
+  </data>
+  <data name="GeneratingCloudTenant" xml:space="preserve">
+    <value>Generowanie dzierżawcy chmury</value>
+  </data>
+  <data name="HubCatalogAndroid" xml:space="preserve">
+    <value>Katalog aplikacji Hub (Android)</value>
+  </data>
+  <data name="HubCatalogIos" xml:space="preserve">
+    <value>Katalog aplikacji Hub (iOS)</value>
+  </data>
+  <data name="HubCatalogMacos" xml:space="preserve">
+    <value>Katalog aplikacji Hub (macOS)</value>
+  </data>
+  <data name="HubCatalogSettingsFetchFailedError" xml:space="preserve">
+    <value>Nie można uzyskać ustawień trybu uruchamiania katalogu Hub.</value>
+  </data>
+  <data name="HubCatalogWinRT" xml:space="preserve">
+    <value>Katalog aplikacji Hub (Windows)</value>
+  </data>
+  <data name="HubEnabledSelectedOg" xml:space="preserve">
+    <value>Ustawienia paszportu Hub są już włączone dla wybranej grupy organizacyjnej.</value>
+  </data>
+  <data name="HubIntegration" xml:space="preserve">
+    <value>Integracja aplikacji Hub</value>
+  </data>
+  <data name="HubPassport" xml:space="preserve">
+    <value>Paszport Hub</value>
+  </data>
+  <data name="HubPassportDescription" xml:space="preserve">
+    <value>Paszport Hub umożliwia pracownikom dostęp do biur firmowych przy użyciu urządzeń z systemem iOS i Android jako wirtualnych kart identyfikacyjnych dostępu i musi być włączony w usługach Hub. Wybierz grupy organizacyjne, aby zarządzać dostępem do tej funkcji.</value>
+  </data>
+  <data name="HubPassportEnabledAtChildArgOgInfo" xml:space="preserve">
+    <value>Obiekty podrzędne wybranej grupy organizacyjnej już znajdują się w zaznaczeniu. Usuń {0}, aby wybrać obiekt nadrzędny.</value>
+    <comment>{0} will be list of Organization groups name</comment>
+  </data>
+  <data name="HubPassportEnabledAtParentArgOgInfo" xml:space="preserve">
+    <value>Wybrana grupa organizacyjna jest już zawarta jako grupa podrzędna dla {0}.</value>
+    <comment>{0} will be Organization group name</comment>
+  </data>
+  <data name="HubPassportSettingChildOgDescription" xml:space="preserve">
+    <value>Po włączeniu funkcja paszportu Hub zostanie domyślnie automatycznie zastosowana do grupy organizacyjnej i wszystkich jej elementów podrzędnych. Można jednak ograniczyć tę funkcję do określonych grup organizacyjnych, wybierając je poniżej.</value>
+  </data>
+  <data name="HubServicesActivatedLaunchHubServicesToConfigure" xml:space="preserve">
+    <value>Usługi aplikacji Hub zostały pomyślnie aktywowane. Można teraz uruchomić usługi aplikacji Hub, aby je skonfigurować.</value>
+  </data>
+  <data name="HubServicesActivationInfo" xml:space="preserve">
+    <value>Skonfiguruj usługi Hub Services za pośrednictwem strony konfiguracyjnej Intelligent Hub, aby włączyć poniższe opcje integracji.</value>
+  </data>
+  <data name="HubServicesFeature" xml:space="preserve">
+    <value>Użyj funkcji usług Hub Services w aplikacji Intelligent Hub</value>
+  </data>
+  <data name="HubServicesFeaturesSettingsFetchFailedError" xml:space="preserve">
+    <value>Nie można uzyskać dostępu do ustawień funkcji usług Hub</value>
+  </data>
+  <data name="HubServicesGeneralNote" xml:space="preserve">
+    <value>Uwaga: funkcje powiadomień i kontaktów są dostępne tylko w usługach aplikacji Hub w chmurze i dzierżawcy dostępu.</value>
+  </data>
+  <data name="HubServicesHostingDescription" xml:space="preserve">
+    <value>Usługi Hub Services są obsługiwane przez oprogramowanie Workspace ONE Access w chmurze.</value>
+  </data>
+  <data name="HubServicesHostingGeneralDescription" xml:space="preserve">
+    <value>Usługi Hub Services są zlokalizowane w tym samym miejscu co Workspace ONE Access.</value>
+  </data>
+  <data name="HubServicesSuccessfullyReactivatedLaunchHubServicesToConfigureIntelligentHubExperience" xml:space="preserve">
+    <value>Usługi Hub Services zostały pomyślnie ponownie aktywowane. Można teraz uruchomić te usługi, aby skonfigurować obsługę Intelligent Hub.</value>
+  </data>
+  <data name="HubServicesURL" xml:space="preserve">
+    <value>URL usług Hub Services</value>
+  </data>
+  <data name="HubServicesURLSaveError" xml:space="preserve">
+    <value>Nie można zapisać adresu URL konfiguracji usług Hub Services.</value>
+  </data>
+  <data name="HubSettingsConfiguredSuccess" xml:space="preserve">
+    <value>Pomyślnie zapisano ustawienia paszportu Hub.</value>
+  </data>
+  <data name="HubSettingsInvalidInputError" xml:space="preserve">
+    <value>Nie znaleziono zasobów dla tej grupy organizacyjnej lub ten użytkownik nie ma dostępu do tej grupy organizacyjnej.</value>
+  </data>
+  <data name="HubSettingsUnauthorizedAccessError" xml:space="preserve">
+    <value>Nieuprawniony dostęp.</value>
+  </data>
+  <data name="IDMAuthentication" xml:space="preserve">
+    <value>Workspace ONE Access</value>
+  </data>
+  <data name="IncorrectEmailAddress" xml:space="preserve">
+    <value>Nieprawidłowy adres e-mail. Sprawdź format adresu e-mail i spróbuj ponownie.</value>
+  </data>
+  <data name="InvalidCloudTenantUrl" xml:space="preserve">
+    <value>Nieprawidłowy adres URL. Aby kontynuować, wprowadź adres URL dzierżawcy chmury Workspace ONE Access.</value>
+  </data>
+  <data name="InvalidFirstName" xml:space="preserve">
+    <value>Nieprawidłowe imię. Spróbuj ponownie.</value>
+  </data>
+  <data name="InvalidLastName" xml:space="preserve">
+    <value>Nieprawidłowe nazwisko. Spróbuj ponownie.</value>
+  </data>
+  <data name="InvalidPasswordTryAgain" xml:space="preserve">
+    <value>Nieprawidłowe hasło. Spróbuj ponownie.</value>
+  </data>
+  <data name="InvalidUserNameErrorMessage" xml:space="preserve">
+    <value>Nieprawidłowa nazwa użytkownika. Zmodyfikuj nazwę użytkownika i spróbuj ponownie.</value>
+  </data>
+  <data name="InvalidUserNamePleaseTryAgain" xml:space="preserve">
+    <value>Nieprawidłowa nazwa użytkownika. Spróbuj ponownie.</value>
+  </data>
+  <data name="InvalidUsernameTryAgain" xml:space="preserve">
+    <value>Nieprawidłowa nazwa użytkownika. Spróbuj ponownie.</value>
+  </data>
+  <data name="macOSCheckInIntervalTooltip" xml:space="preserve">
+    <value>Ustawia częstotliwość, z jaką aplikacja Hub ewidencjonuje się na serwerze, aby otrzymywać nowe polecenia.</value>
+  </data>
+  <data name="MacOsCollectAnalytics" xml:space="preserve">
+    <value>Zbierz dane analityczne</value>
+  </data>
+  <data name="MacOsCollectCrashReports" xml:space="preserve">
+    <value>Żądanie zbierania raportów o awariach</value>
+  </data>
+  <data name="MacOsCollectLocationData" xml:space="preserve">
+    <value>Żądanie zbierania danych o lokalizacji</value>
+  </data>
+  <data name="macOsEnforcePasscode" xml:space="preserve">
+    <value>Wymuś hasło</value>
+  </data>
+  <data name="MacOsPrivacyLink" xml:space="preserve">
+    <value>Łącze prywatności</value>
+  </data>
+  <data name="MacOsRequestPermission" xml:space="preserve">
+    <value>Żądanie pozwolenia</value>
+  </data>
+  <data name="macOSSampleIntervalTooltip" xml:space="preserve">
+    <value>Ustawia częstotliwość, z jaką aplikacja Hub będzie skanować urządzenia w celu zebrania danych, takich jak stan zaopatrzenia w produkt, stan szyfrowania dysku, atrybuty niestandardowe, lokalizacja GPS i inne podstawowe informacje o systemie.</value>
+  </data>
+  <data name="MacOsShowPrivacyScreen" xml:space="preserve">
+    <value>Pokaż ekran prywatności</value>
+  </data>
+  <data name="macOSTransmitIntervalTooltip" xml:space="preserve">
+    <value>Ustawia częstotliwość, z jaką aplikacja Hub będzie wysyłać próbki danych do serwera UEM Hub.</value>
+  </data>
+  <data name="MacOsUninstallHub" xml:space="preserve">
+    <value>Odinstaluj uprawnienia</value>
+  </data>
+  <data name="MacOsVMwareWorkspaceONEIntelligentHub" xml:space="preserve">
+    <value>VMware Workspace ONE Intelligent Hub</value>
+  </data>
+  <data name="ManagementModeDescription" xml:space="preserve">
+    <value>Umożliwia rejestrowanie urządzeń bez zarządzania MDM (rejestracja obszaru roboczego).</value>
+  </data>
+  <data name="ManagementModeSettingsFetchFailedError" xml:space="preserve">
+    <value>Nie można uzyskać ustawień trybu kontenera.</value>
+  </data>
+  <data name="OptInFlowAlreadyCompletedInformationMessage" xml:space="preserve">
+    <value>Program Workspace ONE Access został już skonfigurowany dla bieżącej grupy organizacyjnej. Skontaktuj się z administratorem IT.</value>
+  </data>
+  <data name="OrganizationGroupNotFoundError" xml:space="preserve">
+    <value>Nie znaleziono grupy organizacyjnej.</value>
+  </data>
+  <data name="OrganizationGroupRestrictedError" xml:space="preserve">
+    <value>Nie znaleziono zasobów dla tej grupy organizacyjnej lub ten użytkownik nie ma dostępu do tej grupy organizacyjnej.</value>
+  </data>
+  <data name="PickARegion" xml:space="preserve">
+    <value>Wybierz region</value>
+  </data>
+  <data name="PickDataCenterLocation" xml:space="preserve">
+    <value>Wybierz lokalizację centrum danych</value>
+  </data>
+  <data name="PleaseWaitWhileYourCloudTenantIsCreated" xml:space="preserve">
+    <value>Poczekaj kilka minut, aż zostanie utworzony dzierżawca chmury.</value>
+  </data>
+  <data name="PolicyAllowCrashReportingTooltip" xml:space="preserve">
+    <value>Zbiera raporty o awariach i automatycznie wysyła je do serwera.</value>
+  </data>
+  <data name="PrivacyPolicyLinkTooltip" xml:space="preserve">
+    <value>Przekierowuje ekran prywatności do innego łącza niż oficjalna strona prywatności VMware.</value>
+  </data>
+  <data name="ProvideInformationBelowToRequestAdministratorAccessAndvIDMCloudTenant" xml:space="preserve">
+    <value>Podaj poniższe informacje, aby poprosić o dostęp administratora, a także dzierżawcę chmury Workspace ONE Access; otrzymasz je pocztą e-mail w ciągu kilku minut.</value>
+  </data>
+  <data name="ReadAndAcceptHubServicesTOS" xml:space="preserve">
+    <value>Aby korzystać z usług Hub Services, należy przeczytać i zaakceptować poniższe warunki użytkowania.</value>
+  </data>
+  <data name="ReconfigureHubServices" xml:space="preserve">
+    <value>Skonfiguruj ponownie usługi Hub Services</value>
+  </data>
+  <data name="ReconfigureHubServicesDescription" xml:space="preserve">
+    <value>Usługi Hub Services są obsługiwane przez oprogramowanie Workspace ONE Access w chmurze. Aby zmienić ich konfigurację, poniżej podaj szczegółowe informacje o dzierżawcy chmury Workspace ONE Access Cloud. Jeśli nie znasz swojego dzierżawcy chmury, możesz znaleźć te informacje w wiadomości e-mail otrzymanej od firmy VMware lub przesłać zgłoszenie pomocy technicznej, jeśli nie możesz znaleźć tych informacji.</value>
+  </data>
+  <data name="ReconfigureHubServicesGeneralDescription" xml:space="preserve">
+    <value>Usługi Hub Services są zlokalizowane w tym samym miejscu co Workspace ONE Access. Aby zmienić ich konfigurację, poniżej podaj szczegółowe informacje o dzierżawcy Workspace ONE Access. Jeśli nie znasz swojego dzierżawcy, możesz znaleźć te informacje w wiadomości e-mail otrzymanej od firmy VMware lub przesłać zgłoszenie pomocy technicznej, jeśli nie możesz znaleźć tych informacji.</value>
+  </data>
+  <data name="RequestCloudTenant" xml:space="preserve">
+    <value>Poproś o dzierżawcę chmury</value>
+  </data>
+  <data name="RequestCloudTenantInfo" xml:space="preserve">
+    <value>Uwaga: w przypadku dzierżawcy chmury wymagane jest połączenie z centrum danych, które może różnić się od aktualnego dostawcy usług centrum danych i może znajdować się w innym kraju.</value>
+  </data>
+  <data name="RequireGroupIdForVidmWithoutLink" xml:space="preserve">
+    <value>Grupa organizacyjna nie ma ID grupy, który jest wymagany do skonfigurowania programu Workspace ONE Access. ID grupy można dodać na stronie szczegółowych informacji grupy organizacyjnej.</value>
+  </data>
+  <data name="SaveFailedTryAgain" xml:space="preserve">
+    <value>Zapisywanie nie powiodło się. Spróbuj ponownie.</value>
+  </data>
+  <data name="SdkProfileV2" xml:space="preserve">
+    <value>Profil SDK</value>
+  </data>
+  <data name="SourceOfAuthentication" xml:space="preserve">
+    <value>Źródło uwierzytelniania</value>
+  </data>
+  <data name="SourceOfAuthenticationDescription" xml:space="preserve">
+    <value>Aplikacja Hub będzie korzystać z wybranego poniżej dostawcy w celu uwierzytelniania.</value>
+  </data>
+  <data name="SourceOfAuthenticationForHub" xml:space="preserve">
+    <value>Źródło uwierzytelniania dla aplikacji Hub</value>
+  </data>
+  <data name="StartTypeToAddGroup" xml:space="preserve">
+    <value>Zacznij pisać, aby dodać grupę</value>
+  </data>
+  <data name="TechnicalErrorOccurredPleaseContactAdministrator" xml:space="preserve">
+    <value>Wystąpił błąd techniczny. Spróbuj ponownie. Jeśli problem będzie się powtarzać, skontaktuj się z administratorem IT.</value>
+  </data>
+  <data name="TenantAlreadyConfigured" xml:space="preserve">
+    <value>Dzierżawca został już skonfigurowany dla Workspace ONE Access.</value>
+  </data>
+  <data name="TenantNameWillBeCreatedBasedOnOG" xml:space="preserve">
+    <value>Nazwa najemcy, która zostanie utworzona na podstawie nazwy użytkownika aktualnie zalogowanego w grupie organizacyjnej, znajduje się poniżej.</value>
+  </data>
+  <data name="TenantUrlLabel" xml:space="preserve">
+    <value>Adres URL dzierżawcy</value>
+  </data>
+  <data name="TermsOfService" xml:space="preserve">
+    <value>Warunki użytkowania usługi</value>
+  </data>
+  <data name="TermsOfServices" xml:space="preserve">
+    <value>Warunki korzystania z usługi</value>
+  </data>
+  <data name="UEMAirwatch" xml:space="preserve">
+    <value>UEM (AirWatch)</value>
+  </data>
+  <data name="UninstallAgentTooltip" xml:space="preserve">
+    <value>Umożliwia pracownikom odinstalowanie aplikacji Hub z ich urządzeń.</value>
+  </data>
+  <data name="UpgradeSilentlyTooltip" xml:space="preserve">
+    <value>Uaktualnienia będą instalowane automatycznie w tle bez monitowania pracowników. Po wyłączeniu tej opcji pracownicy będą monitowani o uaktualnienie, gdy nowe uaktualnienia będą dostępne.</value>
+  </data>
+  <data name="UseHubServicesFeatures" xml:space="preserve">
+    <value>Korzystanie z funkcji usług Hub Services</value>
+  </data>
+  <data name="UserNameLabel" xml:space="preserve">
+    <value>Nazwa użytkownika</value>
+  </data>
+  <data name="VidmConfigOverwriteNote" xml:space="preserve">
+    <value>Uwaga: w przypadku korzystania z aplikacji Workspace ONE z bieżącą konfiguracją zarejestrowani pracownicy nie zostaną objęci zmianami. Nowi pracownicy z kolei będą mogli korzystać wyłącznie z aplikacji Intelligent Hub.</value>
+  </data>
+  <data name="VidmConfigRemoveWarning" xml:space="preserve">
+    <value>Bieżąca konfiguracja programu Workspace ONE Access zostanie zastąpiona nowo wprowadzonymi informacjami.</value>
+  </data>
+  <data name="VidmConfigRemoveWarningDescription" xml:space="preserve">
+    <value>W przypadku korzystania z aplikacji Workspace ONE z bieżącą konfiguracją zarejestrowani pracownicy nie zostaną objęci zmianami. Jednak nowi pracownicy będą mogli korzystać tylko z aplikacji Intelligent Hub.</value>
+  </data>
+  <data name="VidmConfigReplacedWithNewCloudTenantWarning" xml:space="preserve">
+    <value>Konfiguracja oprogramowania Workspace ONE Access zostanie zastąpiona przez dzierżawcę usługi Cloud po zakończeniu realizacji tego żądania.</value>
+  </data>
+  <data name="VIDMConfigureCertificateError" xml:space="preserve">
+    <value>Nie można utworzyć certyfikatu dla konta usługi Workspace ONE UEM. Nie można skonfigurować ustawień Workspace ONE Access.</value>
+  </data>
+  <data name="VIDMConfigureExistingUEMSettingError" xml:space="preserve">
+    <value>Wygląda na to, że przy pobieraniu szczegółów konfiguracji Workspace ONE UEM z Twojego dzierżawcy Workspace ONE Access wystąpił błąd. Sprawdź te ustawienia i spróbuj ponownie, aby kontynuować.</value>
+  </data>
+  <data name="VIDMConfigureUEMSettingsError" xml:space="preserve">
+    <value>Wygląda na to, że przy konfigurowaniu ustawień Workspace ONE UEM w Twoim dzierżawcy Workspace ONE Access wystąpił błąd. Spróbuj ponownie, aby kontynuować.</value>
+  </data>
+  <data name="VidmImpactedConfigDescription" xml:space="preserve">
+    <value>Aby skorzystać z funkcji Hub Services wymagającej programu Workspace ONE Access, należy ponownie skonfigurować nową instancję programu Workspace ONE Access ze wszystkimi odpowiednimi konfiguracjami. Aby uzyskać pełną listę konfiguracji objętych zmianami, zobacz temat {0} w podręczniku Workspace ONE Hub Services Guide.</value>
+  </data>
+  <data name="VIDMInvalidOGTypeError" xml:space="preserve">
+    <value>Program Workspace ONE Access można skonfigurować tylko dla klientów grupy organizacyjnej.</value>
+  </data>
+  <data name="VIDMInvalidSettingsError" xml:space="preserve">
+    <value>Nieprawidłowe poświadczenia dzierżawcy chmury Workspace ONE Access. Powinna zostać do Ciebie wysłana wiadomość e-mail z poświadczeniami od firmy VMware. Jeśli nie możesz znaleźć tych informacji, wyślij zgłoszenie do pomocy technicznej.</value>
+  </data>
+  <data name="VidmNotConfiguredError" xml:space="preserve">
+    <value>Program Workspace ONE Access nie jest skonfigurowany dla żądanej grupy organizacyjnej.</value>
+  </data>
+  <data name="VidmTenantRemoveFailed" xml:space="preserve">
+    <value>Nie można usunąć istniejącej konfiguracji dzierżawcy programu Workspace ONE Access.</value>
+  </data>
+  <data name="ViewHidPassportServiceSettings" xml:space="preserve">
+    <value>Wyświetl ustawienia usługi paszportu HID</value>
+  </data>
+  <data name="ViewHidPassportServiceSettingsHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do wyświetlania ustawień usługi paszportu HID.</value>
+  </data>
+  <data name="ViewTermsOfServiceAndAccept" xml:space="preserve">
+    <value>Wyświetl warunki usługi {0}, a następnie zaakceptuj poniżej.</value>
+  </data>
+  <data name="VMwarePrivacyNotice" xml:space="preserve">
+    <value>Informacja o ochronie prywatności od VMware</value>
+  </data>
+  <data name="WantToUseSameCloudTenant" xml:space="preserve">
+    <value>Czy chcesz użyć tego samego dzierżawcy chmury do aktywacji usługi Hub?</value>
+  </data>
+  <data name="WantToUseSameTenant" xml:space="preserve">
+    <value>Czy chcesz użyć tego samego dzierżawcy do aktywacji usługi Hub?</value>
+  </data>
+  <data name="WindowsDesktopCollectAnalytics" xml:space="preserve">
+    <value>Zbierz dane analityczne</value>
+  </data>
+  <data name="WindowsDesktopPrivacyLink" xml:space="preserve">
+    <value>Łącze prywatności</value>
+  </data>
+  <data name="WindowsDesktopShowPrivacyScreen" xml:space="preserve">
+    <value>Pokaż ekran prywatności</value>
+  </data>
+</root>

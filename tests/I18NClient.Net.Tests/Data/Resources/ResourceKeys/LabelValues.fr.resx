@@ -1,0 +1,3411 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AdaptivaSetup" xml:space="preserve">
+    <value>Configuration d'Adaptiva</value>
+  </data>
+  <data name="AdaptivaSetupHelp" xml:space="preserve">
+    <value>Configurer la ressource pour le partenaire P2P, Adaptiva</value>
+  </data>
+  <data name="AdaptiveManagement" xml:space="preserve">
+    <value>Gestion adaptative</value>
+  </data>
+  <data name="AdaptiveManagementHelp" xml:space="preserve">
+    <value>Possibilité d'afficher et de définir le niveau de gestion adaptative en fonction des stratégies d'application</value>
+  </data>
+  <data name="AddApplicationWorkflowHelp" xml:space="preserve">
+    <value>Permet à un développeur de télécharger une application</value>
+  </data>
+  <data name="AddCartHelp" xml:space="preserve">
+    <value>Téléchargez un fichier CSV de numéros de série de terminaux pour les terminaux partagés. </value>
+  </data>
+  <data name="AddCustomReportSubscriptionHelp" xml:space="preserve">
+    <value>Contrôle l'accès à l'ajout de l'abonnement aux rapports personnalisés. Accédez à Hub\Rapports et analyses\Rapports personnalisés\Abonnements</value>
+  </data>
+  <data name="AddDeviceUserAccounts" xml:space="preserve">
+    <value>Ajouter un terminal</value>
+  </data>
+  <data name="AddDeviceUserAccountsHelp" xml:space="preserve">
+    <value>Ajouter des terminaux pour les comptes utilisateur.</value>
+  </data>
+  <data name="AddEditAdminAccount" xml:space="preserve">
+    <value>Ajouter/Modifier</value>
+  </data>
+  <data name="AddEditAdminAccountHelp" xml:space="preserve">
+    <value>Ajouter ou modifier des comptes administrateur.</value>
+  </data>
+  <data name="AddEditAdminGroup" xml:space="preserve">
+    <value>Ajouter/Modifier</value>
+  </data>
+  <data name="AddEditAdminGroupHelp" xml:space="preserve">
+    <value>Ajoutez ou modifiez les groupes d'administrateurs.</value>
+  </data>
+  <data name="AddEditAdminRoles" xml:space="preserve">
+    <value>Ajouter/Modifier</value>
+  </data>
+  <data name="AddEditAdminRolesHelp" xml:space="preserve">
+    <value>Ajouter, modifier et supprimer les rôles d'administrateurs.</value>
+  </data>
+  <data name="AddEditDeviceManufacturerDetails" xml:space="preserve">
+    <value>Ajouter Modifier les détails du fabricant du terminal</value>
+  </data>
+  <data name="AddEditDeviceManufacturerDetailsHelp" xml:space="preserve">
+    <value>Ajouter un nouveau fabricant de terminal à ou modifier un fabricant existant sur la console via l'API</value>
+  </data>
+  <data name="AddEditDeviceModelDetails" xml:space="preserve">
+    <value>Ajouter Modifier les détails du modèle de terminal</value>
+  </data>
+  <data name="AddEditDeviceModelDetailsHelp" xml:space="preserve">
+    <value>Ajouter un nouveau modèle de terminal à ou modifier un modèle existant sur la console via l'API</value>
+  </data>
+  <data name="AddEditUG" xml:space="preserve">
+    <value>Ajouter/Modifier</value>
+  </data>
+  <data name="AddEditUGHelp" xml:space="preserve">
+    <value>Ajoutez, modifiez et supprimez des groupes d'utilisateurs.</value>
+  </data>
+  <data name="AddEditUserAccount" xml:space="preserve">
+    <value>Ajouter/Modifier</value>
+  </data>
+  <data name="AddEditUserAccountHelp" xml:space="preserve">
+    <value>Ajoutez ou modifiez des comptes utilisateur.</value>
+  </data>
+  <data name="AddEditUserCat" xml:space="preserve">
+    <value>Ajouter/Modifier</value>
+  </data>
+  <data name="AddEditUserCatHelp" xml:space="preserve">
+    <value>Ajouter, modifier et supprimer les catégories d'inscription des utilisateurs.</value>
+  </data>
+  <data name="AddEditUserRoles" xml:space="preserve">
+    <value>Ajouter/Modifier</value>
+  </data>
+  <data name="AddEditUserRolesHelp" xml:space="preserve">
+    <value>Ajoutez et modifiez des rôles utilisateur.</value>
+  </data>
+  <data name="AddEditWindowsTemplateHelp" xml:space="preserve">
+    <value>Permet à l'administrateur de configurer les paramètres pour ajouter et/ou modifier un modèle Windows sur le tableau de bord de la console</value>
+  </data>
+  <data name="AddFileServerConfiguration" xml:space="preserve">
+    <value>Ajouter une configuration de serveur de fichiers</value>
+  </data>
+  <data name="AddFileServerConfigurationHelp" xml:space="preserve">
+    <value>Permet aux utilisateurs d'ajouter la grille des serveurs de fichiers et les détails</value>
+  </data>
+  <data name="AddNoteHelp" xml:space="preserve">
+    <value>Autorise à ajouter une nouvelle note</value>
+  </data>
+  <data name="AdminAd" xml:space="preserve">
+    <value>Admin</value>
+  </data>
+  <data name="AdminAdHelp" xml:space="preserve">
+    <value>Contrôler l'accès aux pages d'arrivée dans la section Paramètre système, au module d'alerte, à la page de définitions des champs personnalisés, à la page d'aide dans la section Paramètre système et à la page de profils RADIUS.</value>
+  </data>
+  <data name="AdminOptIn" xml:space="preserve">
+    <value>ACTIVATION DE L'ADMINISTRATEUR</value>
+  </data>
+  <data name="AdminSaaSNotifications" xml:space="preserve">
+    <value>Notifications SaaS</value>
+  </data>
+  <data name="AdminSaaSNotificationsHelp" xml:space="preserve">
+    <value>Contrôle l'accès à la page Paramètres des notifications SaaS</value>
+  </data>
+  <data name="AdminsRESTSystem" xml:space="preserve">
+    <value>Admin</value>
+  </data>
+  <data name="AdminsRESTSystemHelp" xml:space="preserve">
+    <value>API REST des comptes administrateur</value>
+  </data>
+  <data name="AdvancedEm" xml:space="preserve">
+    <value>Avancé</value>
+  </data>
+  <data name="AdvancedEmHelp" xml:space="preserve">
+    <value>Contrôle les paramètres de la messagerie avancés.</value>
+  </data>
+  <data name="AdvancedHelp" xml:space="preserve">
+    <value>Permet d'accéder au sous-menu Avancé.</value>
+  </data>
+  <data name="AdvancedIn" xml:space="preserve">
+    <value>Avancé</value>
+  </data>
+  <data name="AdvancedInHelp" xml:space="preserve">
+    <value>Gère l'accès aux paramètres avancés d'installation.</value>
+  </data>
+  <data name="AdvancedSet" xml:space="preserve">
+    <value>Avancé</value>
+  </data>
+  <data name="AdvancedSetHelp" xml:space="preserve">
+    <value>Contrôle l'accès aux pages de paramètres avancées dans la section Paramètres système.</value>
+  </data>
+  <data name="AdvancedSOaP" xml:space="preserve">
+    <value>Avancé</value>
+  </data>
+  <data name="AdvancedSOaPHelp" xml:space="preserve">
+    <value>Utiliser des API avancés comme l'effacement de terminaux ou l'effacement des données professionnelles.</value>
+  </data>
+  <data name="AdvancedSys" xml:space="preserve">
+    <value>Avancé</value>
+  </data>
+  <data name="AdvancedSysHelp" xml:space="preserve">
+    <value>Gère l'accès à la page Avancé sous Système.</value>
+  </data>
+  <data name="AfterArg" xml:space="preserve">
+    <value>Après {0}</value>
+  </data>
+  <data name="AgentApplicationAn" xml:space="preserve">
+    <value>Application du Hub</value>
+  </data>
+  <data name="AgentApplicationAnHelp" xml:space="preserve">
+    <value>Contrôle l'accès à la page des applications du Hub sous Android.</value>
+  </data>
+  <data name="AgentPackageAdd" xml:space="preserve">
+    <value>Ajout d'un module de Hub</value>
+  </data>
+  <data name="AgentPackageAddHelp" xml:space="preserve">
+    <value>Autorise le téléchargement d'un fichier .apf de Hub pour le préenrôlement dans le provisionnement du produit.</value>
+  </data>
+  <data name="AgentPackageDelete" xml:space="preserve">
+    <value>Suppression d'un module de Hub</value>
+  </data>
+  <data name="AgentPackageDeleteHelp" xml:space="preserve">
+    <value>Autorise la suppression d'un fichier .apf de Hub qui sera indisponible pour le préenrôlement dans le provisionnement du produit.</value>
+  </data>
+  <data name="AgentPackagePPN" xml:space="preserve">
+    <value>Module de Hub</value>
+  </data>
+  <data name="AgentPackagePPNHelp" xml:space="preserve">
+    <value>Autorise l'ajout/la mise à jour/la suppression de fichiers .apf de Hub pour le préenrôlement dans le provisionnement du produit.</value>
+  </data>
+  <data name="AgentPackageView" xml:space="preserve">
+    <value>Affichage d'un module de Hub</value>
+  </data>
+  <data name="AgentPackageViewHelp" xml:space="preserve">
+    <value>Autorise l'affichage d'une liste de fichiers .apf de Hub sur l'écran Package de Hub qui peut être utilisé pour le préenrôlement dans le provisionnement du produit.</value>
+  </data>
+  <data name="AgentSettingsAn" xml:space="preserve">
+    <value>Réglages du Intelligent Hub</value>
+  </data>
+  <data name="AgentSettingsAnHelp" xml:space="preserve">
+    <value>Contrôle l'accès à la page des paramètres du Intelligent Hub sous Android.</value>
+  </data>
+  <data name="AgentSettingsApple" xml:space="preserve">
+    <value>Réglages du Hub</value>
+  </data>
+  <data name="AgentSettingsAppleHelp" xml:space="preserve">
+    <value>Contrôle l'accès aux paramètres du Hub iOS sous iOS.</value>
+  </data>
+  <data name="AgentSettingsLinuxHelp" xml:space="preserve">
+    <value>Contrôle l'accès aux paramètres de Linux Intelligent Hub sous Linux.</value>
+  </data>
+  <data name="AirwatchEmailClientSet" xml:space="preserve">
+    <value>Client de messagerie AirWatch</value>
+  </data>
+  <data name="AirwatchEmailClientSetHelp" xml:space="preserve">
+    <value>Gère l'accès à la page Client de messagerie AirWatch sous Applications.</value>
+  </data>
+  <data name="AirWatchHelpAd" xml:space="preserve">
+    <value>Aide AirWatch</value>
+  </data>
+  <data name="AirWatchHelpAdHelp" xml:space="preserve">
+    <value>Contrôle l'accès à l'aide AirWatch.</value>
+  </data>
+  <data name="AirWatchTunnelHelp" xml:space="preserve">
+    <value>Autoriser à configurer AirWatch Tunnel</value>
+  </data>
+  <data name="AkamaiSetting" xml:space="preserve">
+    <value>Akamai</value>
+  </data>
+  <data name="AkamaiSettingHelp" xml:space="preserve">
+    <value>Paramètres de configuration d'Akamai en tant que fournisseur CDN</value>
+  </data>
+  <data name="AlertCreationPoliciesViewHelp" xml:space="preserve">
+    <value>Gère l'accès à la page Stratégie de création dans Configuration des alertes. 
+</value>
+  </data>
+  <data name="AlertDD" xml:space="preserve">
+    <value>Alertes</value>
+  </data>
+  <data name="AlertDDHelp" xml:space="preserve">
+    <value>Accédez aux alertes associées à un terminal.</value>
+  </data>
+  <data name="AlertsPM" xml:space="preserve">
+    <value>Alertes</value>
+  </data>
+  <data name="AlertsPMHelp" xml:space="preserve">
+    <value>Contrôle l'accès à la page des alertes de l'imprimante</value>
+  </data>
+  <data name="AndroidFileManagerDM" xml:space="preserve">
+    <value>Gestionnaire de fichiers Android</value>
+  </data>
+  <data name="AndroidFileManagerDMHelp" xml:space="preserve">
+    <value>Gérez à distance les fichiers et dossiers Android depuis la page de détails du terminal.</value>
+  </data>
+  <data name="AndroidForWorkHelp" xml:space="preserve">
+    <value>AndroidForWork</value>
+  </data>
+  <data name="AndroidServiceApplicationsAn" xml:space="preserve">
+    <value>Applications du service Android</value>
+  </data>
+  <data name="AndroidServiceApplicationsAnHelp" xml:space="preserve">
+    <value>Permet d'afficher et de modifier les applications de service.</value>
+  </data>
+  <data name="ApnsApp" xml:space="preserve">
+    <value>APNs</value>
+  </data>
+  <data name="ApnsAppHelp" xml:space="preserve">
+    <value>Permet d'accéder à APNs pour la page d'applications sous iOS.</value>
+  </data>
+  <data name="ApnsSet" xml:space="preserve">
+    <value>APNs</value>
+  </data>
+  <data name="ApnsSetHelp" xml:space="preserve">
+    <value>Contrôle l'accès à la page d'APNs dans la section Paramètres système.</value>
+  </data>
+  <data name="AppCatalogHelp" xml:space="preserve">
+    <value>ressource pour le catalogue d'applications</value>
+  </data>
+  <data name="AppConfigurationSet" xml:space="preserve">
+    <value>Configuration des applications</value>
+  </data>
+  <data name="AppConfigurationSetHelp" xml:space="preserve">
+    <value>Contrôle l'accès à la page de configuration de l'application.</value>
+  </data>
+  <data name="AppCrashLogsHelp" xml:space="preserve">
+    <value>Permet d'accéder aux journaux d'incident des applications. 
+</value>
+  </data>
+  <data name="AppleConfiguratorSet" xml:space="preserve">
+    <value>Apple Configurator</value>
+  </data>
+  <data name="AppleConfiguratorSetHelp" xml:space="preserve">
+    <value>Permet d'accéder à la page d'Apple Configurator sous iOS.</value>
+  </data>
+  <data name="AppleEducation" xml:space="preserve">
+    <value>Éducation</value>
+  </data>
+  <data name="AppleEducationHelp" xml:space="preserve">
+    <value>Contrôle l'accès à la page Apple Education</value>
+  </data>
+  <data name="ApplicationCatalogEdit" xml:space="preserve">
+    <value>Modifier le catalogue d'applications</value>
+  </data>
+  <data name="ApplicationCatalogEditHelp" xml:space="preserve">
+    <value>Pour modifier la page des paramètres du catalogue d'applications</value>
+  </data>
+  <data name="ApplicationCategoriesAb" xml:space="preserve">
+    <value>Catégories d'applications</value>
+  </data>
+  <data name="ApplicationCategoriesAbHelp" xml:space="preserve">
+    <value>Affichez et gérez les catégories d'applications.</value>
+  </data>
+  <data name="ApplicationGroupsAb" xml:space="preserve">
+    <value>Groupes d'applications</value>
+  </data>
+  <data name="ApplicationGroupsAbHelp" xml:space="preserve">
+    <value>Afficher et gérer les groupes d'applications.</value>
+  </data>
+  <data name="ApplicationIntegrationSet" xml:space="preserve">
+    <value>Intégration d'applications</value>
+  </data>
+  <data name="ApplicationIntegrationSetHelp" xml:space="preserve">
+    <value>Contrôle l'accès à l'écran de paramètres d'intégration d'une application.</value>
+  </data>
+  <data name="ApplicationPPN" xml:space="preserve">
+    <value>Application</value>
+  </data>
+  <data name="ApplicationPPNHelp" xml:space="preserve">
+    <value>Accédez à la page de provisionnement d'applications.</value>
+  </data>
+  <data name="ApplicationProfilesAb" xml:space="preserve">
+    <value>Profils d'applications</value>
+  </data>
+  <data name="ApplicationProfilesAbHelp" xml:space="preserve">
+    <value>Affichez et gérez les profils d'applications.</value>
+  </data>
+  <data name="ApplicationPublishAb" xml:space="preserve">
+    <value>Publication d'application</value>
+  </data>
+  <data name="ApplicationPublishAbHelp" xml:space="preserve">
+    <value>Publiez les applications ajoutées.</value>
+  </data>
+  <data name="ApplicationsAb" xml:space="preserve">
+    <value>Applications</value>
+  </data>
+  <data name="ApplicationsAbHelp" xml:space="preserve">
+    <value>Accédez à la page de gestion d'applications mobiles.</value>
+  </data>
+  <data name="ApplicationsDD" xml:space="preserve">
+    <value>Applications</value>
+  </data>
+  <data name="ApplicationsDDHelp" xml:space="preserve">
+    <value>Installer et supprimer à distance les applications à partir des terminaux gérés.</value>
+  </data>
+  <data name="ApplicationsDM" xml:space="preserve">
+    <value>Applications</value>
+  </data>
+  <data name="ApplicationsDMHelp" xml:space="preserve">
+    <value>Demandez des journaux et gérez les commentaires des applications.</value>
+  </data>
+  <data name="ApplicationsHub" xml:space="preserve">
+    <value>Applications</value>
+  </data>
+  <data name="ApplicationsHubHelp" xml:space="preserve">
+    <value>Générez des rapports sur les applications des terminaux.</value>
+  </data>
+  <data name="ApplicationsSet" xml:space="preserve">
+    <value>Applications</value>
+  </data>
+  <data name="ApplicationsSetHelp" xml:space="preserve">
+    <value>Accéder aux pages de paramètres pour les applications de gestion de contenu.</value>
+  </data>
+  <data name="ApplicationWorkflowAb" xml:space="preserve">
+    <value>Workflow d'applications</value>
+  </data>
+  <data name="ApplicationWorkflowAbHelp" xml:space="preserve">
+    <value>Téléchargez, vérifiez, attribuez et publiez des applications.</value>
+  </data>
+  <data name="ApplicationWrappingAb" xml:space="preserve">
+    <value>Encapsulation d'applications</value>
+  </data>
+  <data name="ApplicationWrappingAbHelp" xml:space="preserve">
+    <value>Accédez à l'encapsulation d'applications.</value>
+  </data>
+  <data name="AppRemovalProtectionHelp" xml:space="preserve">
+    <value>Pour afficher l'option permettant d'activer la protection contre la suppression des applications</value>
+  </data>
+  <data name="AppRemovalProtectionLogEditHelp" xml:space="preserve">
+    <value>Ressource de contrôle de l'accès en modification à la page des journaux de protection contre la suppression des applications</value>
+  </data>
+  <data name="AppRemovalProtectionLogViewHelp" xml:space="preserve">
+    <value>Ressource de contrôle de l'accès à l'affichage de la page des journaux de protection contre la suppression des applications</value>
+  </data>
+  <data name="ApproveAndUnapproveUpdates" xml:space="preserve">
+    <value>Approuver et désapprouver les mises à jour</value>
+  </data>
+  <data name="ApproveUpdate" xml:space="preserve">
+    <value>Approuver la mise à jour</value>
+  </data>
+  <data name="ApproveUpdateHelp" xml:space="preserve">
+    <value>Permet d'émettre une commande d'approbation de mise à jour sur les terminaux.</value>
+  </data>
+  <data name="ApproveUpdates" xml:space="preserve">
+    <value>Approuver la mise à jour</value>
+  </data>
+  <data name="AppsRESTMam" xml:space="preserve">
+    <value>Applications</value>
+  </data>
+  <data name="AppsRESTMamHelp" xml:space="preserve">
+    <value>API REST des applications</value>
+  </data>
+  <data name="AppUserCommentsAb" xml:space="preserve">
+    <value>Commentaires des utilisateurs d'applications</value>
+  </data>
+  <data name="AppUserCommentsAbHelp" xml:space="preserve">
+    <value>Affichez et gérez les paramètres des commentaires utilisateur.</value>
+  </data>
+  <data name="AssetBatchImportSys" xml:space="preserve">
+    <value>Importation par lots des actifs</value>
+  </data>
+  <data name="AssetBatchImportSysHelp" xml:space="preserve">
+    <value>Importation en masse d'actifs télécom.</value>
+  </data>
+  <data name="AssetManagementO" xml:space="preserve">
+    <value>Gestion des actifs</value>
+  </data>
+  <data name="AssetManagementOHelp" xml:space="preserve">
+    <value>Rechercher, ajouter et modifier les actifs.</value>
+  </data>
+  <data name="AssetTrackingDM" xml:space="preserve">
+    <value>Suivi des actifs</value>
+  </data>
+  <data name="AssetTrackingDMHelp" xml:space="preserve">
+    <value>Accédez à la page de suivi des actifs depuis la gestion de terminaux.</value>
+  </data>
+  <data name="AssetUserTrackingO" xml:space="preserve">
+    <value>Suivi des utilisateurs d'actifs</value>
+  </data>
+  <data name="AssetUserTrackingOHelp" xml:space="preserve">
+    <value>Accédez à la page de suivi de l'utilisateur, notamment aux onglets de connexion à un terminal et de déconnexion de celui-ci.</value>
+  </data>
+  <data name="AssignDeviceEnrollmentProgram" xml:space="preserve">
+    <value>Attribution de profils du programme d'inscription</value>
+  </data>
+  <data name="AssignDeviceEnrollmentProgramHelp" xml:space="preserve">
+    <value>Contrôle l'accès aux profils DEP attribués aux terminaux. Naviguer vers la page de l'état d'inscription</value>
+  </data>
+  <data name="AssignmentRulesAdd" xml:space="preserve">
+    <value>Ajout de règles d'attribution</value>
+  </data>
+  <data name="AssignmentRulesAddHelp" xml:space="preserve">
+    <value>Ajoutez des règles d'attribution de terminaux.</value>
+  </data>
+  <data name="AssignmentRulesDelete" xml:space="preserve">
+    <value>Suppression de règles d'attribution</value>
+  </data>
+  <data name="AssignmentRulesDeleteHelp" xml:space="preserve">
+    <value>Supprimez des règles d'attribution de terminaux.</value>
+  </data>
+  <data name="AssignmentRulesEdit" xml:space="preserve">
+    <value>Modification de règles d'attribution</value>
+  </data>
+  <data name="AssignmentRulesEditHelp" xml:space="preserve">
+    <value>Modifiez des règles d'attribution de terminaux.</value>
+  </data>
+  <data name="AssignmentSys" xml:space="preserve">
+    <value>Attribution</value>
+  </data>
+  <data name="AssignmentSysHelp" xml:space="preserve">
+    <value>Modifier les attributions dynamiques et statiques des forfaits télécoms.</value>
+  </data>
+  <data name="Assist" xml:space="preserve">
+    <value>Assist</value>
+  </data>
+  <data name="AssistFileManager" xml:space="preserve">
+    <value>Gestionnaire de fichiers</value>
+  </data>
+  <data name="AssistFileManagerHelp" xml:space="preserve">
+    <value>Fournit un accès pour gérer les fichiers sur le terminal à distance</value>
+  </data>
+  <data name="AssistHelp" xml:space="preserve">
+    <value>Gérez les rôles de gestion à distance</value>
+  </data>
+  <data name="AssistRegistryEditor" xml:space="preserve">
+    <value>Éditeur du registre</value>
+  </data>
+  <data name="AssistRegistryEditorHelp" xml:space="preserve">
+    <value>Fournit un accès pour apporter des modifications au registre sur les terminaux mobiles Windows</value>
+  </data>
+  <data name="AssistRemoteControl" xml:space="preserve">
+    <value>Contrôle à distance</value>
+  </data>
+  <data name="AssistRemoteControlHelp" xml:space="preserve">
+    <value>Fournit un accès pour afficher et contrôler un terminal distant</value>
+  </data>
+  <data name="AssistRemoteShell" xml:space="preserve">
+    <value>Shell distant</value>
+  </data>
+  <data name="AssistRemoteShellHelp" xml:space="preserve">
+    <value>Fournit un accès pour exécuter des commandes via l'interface de ligne de commande sur un terminal à distance</value>
+  </data>
+  <data name="AssistRemoteView" xml:space="preserve">
+    <value>Affichage à distance</value>
+  </data>
+  <data name="AssistRemoteViewHelp" xml:space="preserve">
+    <value>Fournit un accès pour afficher uniquement un terminal à distance. Si l'affichage et le contrôle à distance sont activés, une session en affichage seul est lancée, mais l'utilisateur peut être invité à accéder à l'écran de contrôle</value>
+  </data>
+  <data name="AssistSessionCollaboration" xml:space="preserve">
+    <value>Collaboration de session</value>
+  </data>
+  <data name="AssistSessionCollaborationHelp" xml:space="preserve">
+    <value>Permet à un utilisateur de console d'inviter des participants supplémentaires dans une session d'assistance à distance</value>
+  </data>
+  <data name="AssistUnattendedAccess" xml:space="preserve">
+    <value>Accès sans surveillance</value>
+  </data>
+  <data name="AssistUnattendedAccessHelp" xml:space="preserve">
+    <value>Donne accès au terminal en mode sans surveillance.</value>
+  </data>
+  <data name="AttachmentsDD" xml:space="preserve">
+    <value>Pièces jointes</value>
+  </data>
+  <data name="AttachmentsDDHelp" xml:space="preserve">
+    <value>Ajouter et supprimer les pièces jointes des terminaux dans Détails du terminal.</value>
+  </data>
+  <data name="AutoDiscoveryIns" xml:space="preserve">
+    <value>Détection automatique</value>
+  </data>
+  <data name="AutoDiscoveryInsHelp" xml:space="preserve">
+    <value>Permet d'accéder à la page Détection automatique sous Installation.</value>
+  </data>
+  <data name="AutoEnrollmentHelp" xml:space="preserve">
+    <value>Auto-inscription</value>
+  </data>
+  <data name="AutomationHelp" xml:space="preserve">
+    <value>Cette ressource Tech Preview permet d'accéder à notre plate-forme d'automatisation via la page de présentation du Hub</value>
+  </data>
+  <data name="AwcmDD" xml:space="preserve">
+    <value>AWCM</value>
+  </data>
+  <data name="AwcmDDHelp" xml:space="preserve">
+    <value>Démarrez et arrêtez la connexion à AirWatch Cloud Manager depuis la page de détails du terminal.</value>
+  </data>
+  <data name="AWProDeviceClearPasscode" xml:space="preserve">
+    <value>Effacement du code secret de terminal AW Pro</value>
+  </data>
+  <data name="AWProDeviceClearPasscodeHelp" xml:space="preserve">
+    <value>Permet d'effacer le code secret/le mot de passe de mise sous tension dans AirWatch Pro.</value>
+  </data>
+  <data name="AWProDeviceSendMessage" xml:space="preserve">
+    <value>Envoi de message au terminal AW Pro</value>
+  </data>
+  <data name="AWProDeviceSendMessageHelp" xml:space="preserve">
+    <value>Gère l'accès à l'envoi de message dans AW Pro</value>
+  </data>
+  <data name="AWProGenerateNewCertificate" xml:space="preserve">
+    <value>Générer un nouveau certificat pour AW Pro</value>
+  </data>
+  <data name="AWProGenerateNewCertificateHelp" xml:space="preserve">
+    <value>Gère l'accès à la création d'un nouveau certificat</value>
+  </data>
+  <data name="AwProResCategory" xml:space="preserve">
+    <value>AW Pro</value>
+  </data>
+  <data name="AwProResCategoryHelp" xml:space="preserve">
+    <value>Accès total à la console AW Pro</value>
+  </data>
+  <data name="BatchImportAccounts" xml:space="preserve">
+    <value>Importation par lots</value>
+  </data>
+  <data name="BatchImportAccountsHelp" xml:space="preserve">
+    <value>Importation par lots de comptes administrateur.</value>
+  </data>
+  <data name="BatchImportDM" xml:space="preserve">
+    <value>Importation par lots</value>
+  </data>
+  <data name="BatchImportDMHelp" xml:space="preserve">
+    <value>Importez en lot des profils de terminal.</value>
+  </data>
+  <data name="BatchImportUG" xml:space="preserve">
+    <value>Importation par lots</value>
+  </data>
+  <data name="BatchImportUGHelp" xml:space="preserve">
+    <value>Importation par lots de groupes d'utilisateurs pour l'inscription</value>
+  </data>
+  <data name="BatchImportUserAccount" xml:space="preserve">
+    <value>Importation par lots</value>
+  </data>
+  <data name="BatchImportUserAccountHelp" xml:space="preserve">
+    <value>Accéder à l'importation par lots des utilisateurs à enrôler.</value>
+  </data>
+  <data name="BatchSizeBySmartGroupHelp" xml:space="preserve">
+    <value>Spécifie le nombre de terminaux qui seront inclus dans chaque lot pour le déploiement d'applications internes.</value>
+  </data>
+  <data name="BatchStatusAdminGeneral" xml:space="preserve">
+    <value>État des lots</value>
+  </data>
+  <data name="BatchStatusAdminGeneralHelp" xml:space="preserve">
+    <value>Afficher l'état des importations par lots effectuées par les utilisateurs admin</value>
+  </data>
+  <data name="BatchStatusUserGeneral" xml:space="preserve">
+    <value>État des lots</value>
+  </data>
+  <data name="BatchStatusUserGeneralHelp" xml:space="preserve">
+    <value>Accédez aux états des lots des importations d'utilisateurs pour l'inscription.</value>
+  </data>
+  <data name="BeforeArg" xml:space="preserve">
+    <value>Avant {0}</value>
+  </data>
+  <data name="BESResCategory" xml:space="preserve">
+    <value>BES</value>
+  </data>
+  <data name="BESResCategoryHelp" xml:space="preserve">
+    <value>Active l'icône d'inscription au BlackBerry Enterprise Server (BES) sur les pages de tableau de bord.</value>
+  </data>
+  <data name="BillingBi" xml:space="preserve">
+    <value>Facturation</value>
+  </data>
+  <data name="BillingBiHelp" xml:space="preserve">
+    <value>Gérer la page des détails de facturation.</value>
+  </data>
+  <data name="BIOSManagement" xml:space="preserve">
+    <value>Gestion du BIOS</value>
+  </data>
+  <data name="BIOSManagementHelp" xml:space="preserve">
+    <value>Ressources de gestion du BIOS</value>
+  </data>
+  <data name="BooksAb" xml:space="preserve">
+    <value>Livres</value>
+  </data>
+  <data name="BooksAbHelp" xml:space="preserve">
+    <value>Donne accès au module Livres dans la section Applications et Livres.</value>
+  </data>
+  <data name="BoxerConfigReadWrite" xml:space="preserve">
+    <value>Configuration de l'application Boxer</value>
+  </data>
+  <data name="BoxerConfigReadWriteHelp" xml:space="preserve">
+    <value>Pour la configuration des paramètres de Boxer importé comme une application publique.</value>
+  </data>
+  <data name="BranchCacheSetup" xml:space="preserve">
+    <value>Configuration du cache de la succursale</value>
+  </data>
+  <data name="BranchCacheSetupHelp" xml:space="preserve">
+    <value>Paramètres d'installation et de configuration de la fonctionnalité de distribution d'applications natives pair à pair dans Workspace ONE pour Windows 10</value>
+  </data>
+  <data name="BrandingSys" xml:space="preserve">
+    <value>Personnalisation d'apparence</value>
+  </data>
+  <data name="BrandingSysHelp" xml:space="preserve">
+    <value>Permet d'accéder à la page Personnalisation de l'apparence sous Général.</value>
+  </data>
+  <data name="BrowserDM" xml:space="preserve">
+    <value>Navigateur</value>
+  </data>
+  <data name="BrowserDMHelp" xml:space="preserve">
+    <value>Configurez les politiques de navigateur dans la gestion des terminaux.</value>
+  </data>
+  <data name="BulkActionUserAccounts" xml:space="preserve">
+    <value>Action en masse</value>
+  </data>
+  <data name="BulkActionUserAccountsHelp" xml:space="preserve">
+    <value>Effectuez des actions en masse sur les comptes d'utilisateurs, comme l'envoi d'un message.</value>
+  </data>
+  <data name="BulkImportCM" xml:space="preserve">
+    <value>Importation par lots</value>
+  </data>
+  <data name="BulkImportCMHelp" xml:space="preserve">
+    <value>Importer du contenu par lots depuis l'affichage Tout le contenu</value>
+  </data>
+  <data name="BulkManagementAd" xml:space="preserve">
+    <value>Gestion en masse</value>
+  </data>
+  <data name="BulkManagementAdHelp" xml:space="preserve">
+    <value>Affichez et modifiez les paramètres de gestion en masse.</value>
+  </data>
+  <data name="BulkManagementDM" xml:space="preserve">
+    <value>Gestion en masse</value>
+  </data>
+  <data name="BulkManagementDMHelp" xml:space="preserve">
+    <value>Effectuez des actions en masse sur les terminaux depuis l'affichage en liste des terminaux.</value>
+  </data>
+  <data name="CatalogSet" xml:space="preserve">
+    <value>Catalogue</value>
+  </data>
+  <data name="CatalogSetHelp" xml:space="preserve">
+    <value>Permet d'accéder aux pages du catalogue d'applications dans les paramètres système.</value>
+  </data>
+  <data name="CategoriesCM" xml:space="preserve">
+    <value>Catégories</value>
+  </data>
+  <data name="CategoriesCMHelp" xml:space="preserve">
+    <value>Créez et modifiez des catégories de contenu.</value>
+  </data>
+  <data name="CDNSetupHelp" xml:space="preserve">
+    <value>Paramètre système pour CDN</value>
+  </data>
+  <data name="CertificateAuthoritiesApple" xml:space="preserve">
+    <value>Autorités de certification</value>
+  </data>
+  <data name="CertificateAuthoritiesAppleHelp" xml:space="preserve">
+    <value>Permet d'accéder à la page Autorité de certification sous iOS.</value>
+  </data>
+  <data name="CertificateAuthorityCM" xml:space="preserve">
+    <value>Autorité de certification</value>
+  </data>
+  <data name="CertificateAuthorityCMHelp" xml:space="preserve">
+    <value>Accédez aux sections Autorité de certification et Modèle de certification.</value>
+  </data>
+  <data name="CertificateManagementDM" xml:space="preserve">
+    <value>Gestion de certificat</value>
+  </data>
+  <data name="CertificateManagementDMHelp" xml:space="preserve">
+    <value>Affichez et gérez les certificats dans la gestion de terminaux.</value>
+  </data>
+  <data name="CertificatesDD" xml:space="preserve">
+    <value>Certificats</value>
+  </data>
+  <data name="CertificatesDDHelp" xml:space="preserve">
+    <value>Affichez les certificats associés aux terminaux dans les détails du terminal.</value>
+  </data>
+  <data name="CertificatesExpired" xml:space="preserve">
+    <value>Certificats expirés</value>
+  </data>
+  <data name="CertificatesRevoked" xml:space="preserve">
+    <value>Certificats révoqués</value>
+  </data>
+  <data name="ChangePasswordAdminAccounts" xml:space="preserve">
+    <value>Modifier le mot de passe</value>
+  </data>
+  <data name="ChangePasswordAdminAccountsHelp" xml:space="preserve">
+    <value>Modifier les mots de passe d'administration</value>
+  </data>
+  <data name="ChromebookSet" xml:space="preserve">
+    <value>ChromeBook</value>
+  </data>
+  <data name="ChromebookSetHelp" xml:space="preserve">
+    <value>Contrôle l'accès à la page des paramètres de l'Agent sous ChromeBook.</value>
+  </data>
+  <data name="CloudContentPlatformHelp" xml:space="preserve">
+    <value>Ressource permettant d'activer les options UEM pour lancer des services de contenu Cloud</value>
+  </data>
+  <data name="CollapsedAriaLabel" xml:space="preserve">
+    <value>réduit</value>
+  </data>
+  <data name="CommaSeparatedEmailInfo" xml:space="preserve">
+    <value>Utilisez une virgule pour séparer plusieurs adresses e-mail.</value>
+  </data>
+  <data name="ComplianceDD" xml:space="preserve">
+    <value>Conformité</value>
+  </data>
+  <data name="ComplianceDDHelp" xml:space="preserve">
+    <value>Affichez les règles et les statuts de conformité dans les détails du terminal.</value>
+  </data>
+  <data name="ComplianceDM" xml:space="preserve">
+    <value>Conformité</value>
+  </data>
+  <data name="ComplianceDMHelp" xml:space="preserve">
+    <value>Affichez et gérez les politiques de conformité des terminaux dans la gestion des terminaux.</value>
+  </data>
+  <data name="ComplianceHub" xml:space="preserve">
+    <value>Conformité</value>
+  </data>
+  <data name="ComplianceHubHelp" xml:space="preserve">
+    <value>Générez des rapports sur la conformité des terminaux.</value>
+  </data>
+  <data name="CompliancePoliciesEM" xml:space="preserve">
+    <value>Politiques de conformité</value>
+  </data>
+  <data name="CompliancePoliciesEMHelp" xml:space="preserve">
+    <value>Gérez les politiques de conformité de la gestion des e-mails.</value>
+  </data>
+  <data name="ConditionalAccessIntegrations" xml:space="preserve">
+    <value>Intégrations d'accès conditionnel</value>
+  </data>
+  <data name="ConditionalAccessIntegrationsHelp" xml:space="preserve">
+    <value>Contrôle l'accès au partage de l'état de conformité du terminal avec un tiers pour configurer des stratégies d'accès conditionnel</value>
+  </data>
+  <data name="ConditionsPPN" xml:space="preserve">
+    <value>Conditions</value>
+  </data>
+  <data name="ConditionsPPNHelp" xml:space="preserve">
+    <value>Créez et gérez les conditions de déploiement pour les politiques d'approvisionnement.</value>
+  </data>
+  <data name="ConsoleSecurityAd" xml:space="preserve">
+    <value>Sécurité de la console</value>
+  </data>
+  <data name="ConsoleSecurityAdHelp" xml:space="preserve">
+    <value>Affichez les pages de sécurité de la console et gérez-les depuis le groupe organisationnel Global.</value>
+  </data>
+  <data name="ContentDashboard" xml:space="preserve">
+    <value>Tableau de bord du contenu</value>
+  </data>
+  <data name="ContentDashboardHelp" xml:space="preserve">
+    <value>Permet d'afficher la page du tableau de bord du contenu. Naviguer vers Menu\Contenu\Tableau de bord</value>
+  </data>
+  <data name="ContentDD" xml:space="preserve">
+    <value>Contenu</value>
+  </data>
+  <data name="ContentDDHelp" xml:space="preserve">
+    <value>Accédez et gérez le contenu d'un terminal dans les détails du terminal.</value>
+  </data>
+  <data name="ContentDeliveryServiceHelp" xml:space="preserve">
+    <value>Contrôle l'accès aux paramètres du service de livraison de contenu</value>
+  </data>
+  <data name="ContentHub" xml:space="preserve">
+    <value>Contenu</value>
+  </data>
+  <data name="ContentHubHelp" xml:space="preserve">
+    <value>Générez des rapports sur le contenu des terminaux.</value>
+  </data>
+  <data name="ContentRightsManagementHelp" xml:space="preserve">
+    <value>Paramètres liés à la configuration de la protection de la gestion des droits Azure pour Content.</value>
+  </data>
+  <data name="ContentViewerHelp" xml:space="preserve">
+    <value>Contrôle l'accès aux paramètres de la visionneuse de contenu (visionneuse HTML5)</value>
+  </data>
+  <data name="CreationPoliciesGr" xml:space="preserve">
+    <value>Politiques de création</value>
+  </data>
+  <data name="CreationPoliciesGrHelp" xml:space="preserve">
+    <value>Affichez et gérez les politiques de création d'alerte.</value>
+  </data>
+  <data name="CustomAttributeAssignmentRulesHelp" xml:space="preserve">
+    <value>Écran Affichage en liste permettant d'afficher les règles d'attribution d'attribut personnalisé actuelles</value>
+  </data>
+  <data name="CustomAttributesSet" xml:space="preserve">
+    <value>Personnaliser les attributs</value>
+  </data>
+  <data name="CustomAttributesSetHelp" xml:space="preserve">
+    <value>Affichez et gérez les attributs personnalisés des paramètres système.</value>
+  </data>
+  <data name="CustomFieldsDM" xml:space="preserve">
+    <value>Champs personnalisés</value>
+  </data>
+  <data name="CustomFieldsDMHelp" xml:space="preserve">
+    <value>Modifiez les variables personnalisées dans la configuration du terminal.</value>
+  </data>
+  <data name="CustomizationAd" xml:space="preserve">
+    <value>Personnalisation</value>
+  </data>
+  <data name="CustomizationAdHelp" xml:space="preserve">
+    <value>Autorise la personnalisation des grilles prises en charge.</value>
+  </data>
+  <data name="CustomizationHelp" xml:space="preserve">
+    <value>Autoriser la personnalisation des grilles personnalisées au niveau de l'utilisateur
+</value>
+  </data>
+  <data name="CustomMdmCommandHelp" xml:space="preserve">
+    <value>Contrôle l'activation de la fonctionnalité permettant d'envoyer des commandes à iOS, tvOS et macOS en collant le code XML de la commande</value>
+  </data>
+  <data name="DataPurgingD" xml:space="preserve">
+    <value>Purge des données</value>
+  </data>
+  <data name="DataPurgingDHelp" xml:space="preserve">
+    <value>Donne l'autorisation de modifier les paramètres de purge des données.</value>
+  </data>
+  <data name="DataSamplesAd" xml:space="preserve">
+    <value>Échantillons de données</value>
+  </data>
+  <data name="DataSamplesAdHelp" xml:space="preserve">
+    <value>Contrôle l'audit de l'historique des échantillons de terminaux dans les tableaux de bases de données.</value>
+  </data>
+  <data name="DataSecuritySec" xml:space="preserve">
+    <value>Sécurité des données</value>
+  </data>
+  <data name="DataSecuritySecHelp" xml:space="preserve">
+    <value>Autorise l'affichage de l'écran de sécurité des données.</value>
+  </data>
+  <data name="DeleteCartHelp" xml:space="preserve">
+    <value>La suppression de paniers permet à l'administrateur de supprimer une liste de numéros de série à utiliser avec des terminaux partagés.</value>
+  </data>
+  <data name="DeleteCustomReportSubscriptionHelp" xml:space="preserve">
+    <value>Contrôle l'accès à la suppression de l'abonnement aux rapports personnalisés. Accédez à Hub\Rapports et analyses\Rapports personnalisés\Abonnements</value>
+  </data>
+  <data name="DeleteDeviceDD" xml:space="preserve">
+    <value>Supprimer le terminal</value>
+  </data>
+  <data name="DeleteDeviceDDHelp" xml:space="preserve">
+    <value>Supprimez es enregistrements des terminaux depuis la page de détails du terminal.</value>
+  </data>
+  <data name="DeleteFileServerConfiguration" xml:space="preserve">
+    <value>Supprimer la configuration du serveur de fichiers</value>
+  </data>
+  <data name="DeleteFileServerConfigurationHelp" xml:space="preserve">
+    <value>Permet aux utilisateurs de supprimer la grille des serveurs de fichiers et les détails</value>
+  </data>
+  <data name="DeleteNoteHelp" xml:space="preserve">
+    <value>Autorise à supprimer une note</value>
+  </data>
+  <data name="DeleteTagHelp" xml:space="preserve">
+    <value>Permet de supprimer une étiquette</value>
+  </data>
+  <data name="DeleteUnmanagedEM" xml:space="preserve">
+    <value>Supprimer les éléments non gérés</value>
+  </data>
+  <data name="DeleteUnmanagedEMHelp" xml:space="preserve">
+    <value>Supprimer les terminaux non gérés du tableau de bord de gestion des e-mails.</value>
+  </data>
+  <data name="DeleteWindowsTemplateHelp" xml:space="preserve">
+    <value>Permet à l'administrateur de configurer les paramètres pour supprimer un modèle Windows sur le tableau de bord de la console</value>
+  </data>
+  <data name="DesignateRecipients" xml:space="preserve">
+    <value>DÉSIGNER LES DESTINATAIRES</value>
+  </data>
+  <data name="DetailsPM" xml:space="preserve">
+    <value>Détails</value>
+  </data>
+  <data name="DetailsPMHelp" xml:space="preserve">
+    <value>Afficher les pages de détails des imprimantes.</value>
+  </data>
+  <data name="DeviceBulkManagementRebootDeviceHelp" xml:space="preserve">
+    <value>Permet à l'utilisateur de redémarrer les terminaux par lot</value>
+  </data>
+  <data name="DeviceDetailsHub" xml:space="preserve">
+    <value>Détails du terminal</value>
+  </data>
+  <data name="DeviceDetailsHubHelp" xml:space="preserve">
+    <value>Générez des rapports sur les détails des terminaux.</value>
+  </data>
+  <data name="DeviceDetailsQueryHealthAttestationHelp" xml:space="preserve">
+    <value>Interroger le blob de certificat d'attestation de santé à la demande</value>
+  </data>
+  <data name="DeviceDetailsQueryOSUpdates" xml:space="preserve">
+    <value>Requête d'information de mises à jour du système d'exploitation</value>
+  </data>
+  <data name="DeviceDetailsQueryOSUpdatesHelp" xml:space="preserve">
+    <value>Gère l'accès aux informations de mises à jour du système d'exploitation des terminaux depuis la page Détails du terminal.</value>
+  </data>
+  <data name="DeviceEnterpriseReset" xml:space="preserve">
+    <value>Réinitialisation des données d'entreprise</value>
+  </data>
+  <data name="DeviceEnterpriseResetHelp" xml:space="preserve">
+    <value>Autorise l'effacement du terminal tout en maintenant d'autres données professionnelles et l'inscription dans AirWatch</value>
+  </data>
+  <data name="DeviceGroupsDM" xml:space="preserve">
+    <value>Groupes de terminaux</value>
+  </data>
+  <data name="DeviceGroupsDMHelp" xml:space="preserve">
+    <value>Créez et gérez les groupes de terminaux grâce à la gestion de terminaux.</value>
+  </data>
+  <data name="DeviceGroupsSet" xml:space="preserve">
+    <value>Groupes de terminaux</value>
+  </data>
+  <data name="DeviceGroupsSetHelp" xml:space="preserve">
+    <value>Contrôle l'accès aux groupes de terminaux dans les paramètres système.</value>
+  </data>
+  <data name="DeviceInventoryHub" xml:space="preserve">
+    <value>Inventaire des terminaux</value>
+  </data>
+  <data name="DeviceInventoryHubHelp" xml:space="preserve">
+    <value>Générez des rapports sur l'inventaire des terminaux.</value>
+  </data>
+  <data name="DeviceLimitRestrictionEdit" xml:space="preserve">
+    <value>Modifier la restriction de limite du terminal</value>
+  </data>
+  <data name="DeviceLimitRestrictionEditHelp" xml:space="preserve">
+    <value>Permet de modifier/lire la limite du terminal sous Paramètres / Terminaux et utilisateurs / Général / Enrôlement / Restriction</value>
+  </data>
+  <data name="DevicePM" xml:space="preserve">
+    <value>Terminal</value>
+  </data>
+  <data name="DevicePMHelp" xml:space="preserve">
+    <value>Contrôle l'accès à la page de l'imprimante</value>
+  </data>
+  <data name="DevicesHub" xml:space="preserve">
+    <value>Terminaux</value>
+  </data>
+  <data name="DevicesHubHelp" xml:space="preserve">
+    <value>Générez des rapports sur les regroupement de terminaux et les mesures.</value>
+  </data>
+  <data name="DevicesRESTMdm" xml:space="preserve">
+    <value>Terminaux</value>
+  </data>
+  <data name="DevicesRESTMdmHelp" xml:space="preserve">
+    <value>API REST pour la gestion de terminaux</value>
+  </data>
+  <data name="DeviceWipeDD" xml:space="preserve">
+    <value>Effacement du terminal</value>
+  </data>
+  <data name="DeviceWipeDDHelp" xml:space="preserve">
+    <value>Effacez un terminal à distance depuis les détails du terminal afin d'en rétablir les paramètres d'usine.</value>
+  </data>
+  <data name="DeviceWipeHelp" xml:space="preserve">
+    <value>Permet d'effacer le terminal.</value>
+  </data>
+  <data name="DeviceWipesSet" xml:space="preserve">
+    <value>Réinitialisation des terminaux</value>
+  </data>
+  <data name="DeviceWipesSetHelp" xml:space="preserve">
+    <value>Contrôle l'accès à la gestion du cycle de vie dans la section Paramètres système.</value>
+  </data>
+  <data name="DiagnosticsAd" xml:space="preserve">
+    <value>Diagnostics</value>
+  </data>
+  <data name="DiagnosticsAdHelp" xml:space="preserve">
+    <value>Gérez les paramètres de diagnostic dans les paramètres système.</value>
+  </data>
+  <data name="DisableActivationLockBypassCodeHelp" xml:space="preserve">
+    <value>Permet à l'utilisateur Admin de désactiver le code de contournement du verrouillage d'activation sur un terminal iOS. Accédez à Terminal/Détails/Résumé/ ou Terminal/Liste, sélectionnez un terminal et cliquez sur Plus.</value>
+  </data>
+  <data name="DisableActivationLockBypassDD" xml:space="preserve">
+    <value>Désactiver le contournement du verrouillage d'activation</value>
+  </data>
+  <data name="DisableActivationLockBypassDDHelp" xml:space="preserve">
+    <value>Supprimez le code de contournement du verrouillage d'activation sur un terminal iOS.</value>
+  </data>
+  <data name="DisplayVideoImportHelp" xml:space="preserve">
+    <value>Importation d'une vidéo dans AirWatch à l'aide de Wistia</value>
+  </data>
+  <data name="DisplayVideoViewHelp" xml:space="preserve">
+    <value>Afficher la liste des vidéos</value>
+  </data>
+  <data name="DistributionDM" xml:space="preserve">
+    <value>Distribution</value>
+  </data>
+  <data name="DistributionDMHelp" xml:space="preserve">
+    <value>Accédez au chemin du serveur de distribution depuis les pages de modification de l'emplacement et de détails de l'emplacement.</value>
+  </data>
+  <data name="DomainJoinConfigEdit" xml:space="preserve">
+    <value>Modifier</value>
+  </data>
+  <data name="DomainJoinConfigEditHelp" xml:space="preserve">
+    <value>Permet d'ajouter/modifier/attribuer/supprimer la configuration de la jonction de domaine.</value>
+  </data>
+  <data name="DownloadContentCM" xml:space="preserve">
+    <value>Télécharger le contenu</value>
+  </data>
+  <data name="DownloadContentCMHelp" xml:space="preserve">
+    <value>Téléchargez du contenu depuis l'affichage Tout le contenu.</value>
+  </data>
+  <data name="DownloadLinuxPullServiceInstallerHelp" xml:space="preserve">
+    <value>Permet de télécharger le programme d'installation des services de collecte pour Linux</value>
+  </data>
+  <data name="DownloadWindowsPullServiceInstallerHelp" xml:space="preserve">
+    <value>Permet de télécharger le programme d'installation des services de collecte pour Windows</value>
+  </data>
+  <data name="DropshipProvisioningEdit" xml:space="preserve">
+    <value>Modifier les paramètres Drop Ship Provisioning</value>
+  </data>
+  <data name="DropshipProvisioningHelp" xml:space="preserve">
+    <value>Contrôler l'accès pour activer Drop Ship Provisioning</value>
+  </data>
+  <data name="DxModeEM" xml:space="preserve">
+    <value>Mode diagnostic</value>
+  </data>
+  <data name="DxModeEMHelp" xml:space="preserve">
+    <value>Activer et désactiver le mode de diagnostic pour le dépannage des terminaux depuis le tableau de bord de gestion des e-mails.</value>
+  </data>
+  <data name="EasIntegrationEm" xml:space="preserve">
+    <value>Intégration EAS</value>
+  </data>
+  <data name="EasIntegrationEmHelp" xml:space="preserve">
+    <value>Gère l'accès à la page de la passerelle de messagerie mobile sous Général.</value>
+  </data>
+  <data name="EditAdminGroupHelp" xml:space="preserve">
+    <value>Autorisation de modifier un groupe administrateur. 
+</value>
+  </data>
+  <data name="EditDD" xml:space="preserve">
+    <value>Modifier</value>
+  </data>
+  <data name="EditDDHelp" xml:space="preserve">
+    <value>Modifiez les informations du terminal comme son nom convivial, son numéro d'actif, etc.</value>
+  </data>
+  <data name="EditFileServerConfiguration" xml:space="preserve">
+    <value>Modifier la configuration du serveur de fichiers</value>
+  </data>
+  <data name="EditFileServerConfigurationHelp" xml:space="preserve">
+    <value>Permet à l'utilisateur de modifier la grille des serveurs de fichiers et les détails </value>
+  </data>
+  <data name="EditNoteHelp" xml:space="preserve">
+    <value>Autorise la modification d'une note</value>
+  </data>
+  <data name="EditTagHelp" xml:space="preserve">
+    <value>Autorise la modification d'une étiquette</value>
+  </data>
+  <data name="EditTypeGr" xml:space="preserve">
+    <value>Modifier le type</value>
+  </data>
+  <data name="EditUserAccounts" xml:space="preserve">
+    <value>Modifier</value>
+  </data>
+  <data name="EditUserAccountsHelp" xml:space="preserve">
+    <value>Modifier les comptes utilisateur pour l'inscription.</value>
+  </data>
+  <data name="EmailAddressAlreadyExists" xml:space="preserve">
+    <value>L'adresse e-mail existe déjà</value>
+  </data>
+  <data name="EmailDM" xml:space="preserve">
+    <value>E-mail</value>
+  </data>
+  <data name="EmailDMHelp" xml:space="preserve">
+    <value>Bloquez et autorisez les requêtes ActiveSync.</value>
+  </data>
+  <data name="EmailManagementHub" xml:space="preserve">
+    <value>Gestion de la messagerie</value>
+  </data>
+  <data name="EmailManagementHubHelp" xml:space="preserve">
+    <value>Générez des rapports pour la gestion des e-mails.</value>
+  </data>
+  <data name="EMDashboardMigrateDevice" xml:space="preserve">
+    <value>Tableau de bord de gestion des e-mails Migrer le terminal</value>
+  </data>
+  <data name="EMDashboardMigrateDeviceHelp" xml:space="preserve">
+    <value>Contrôle l'accès pour déplacer un ou plusieurs terminaux entre les configurations MEM</value>
+  </data>
+  <data name="EnableDigitalExperienceTelemetry" xml:space="preserve">
+    <value>Activer la télémétrie de l'expérience numérique</value>
+  </data>
+  <data name="EnableDigitalExperienceTelemetryHelp" xml:space="preserve">
+    <value>Activez la collecte et la transmission de la télémétrie de l'expérience numérique sur Workspace ONE Intelligence.</value>
+  </data>
+  <data name="EnableDisableAd" xml:space="preserve">
+    <value>Activer/Désactiver</value>
+  </data>
+  <data name="EnableDisableAdHelp" xml:space="preserve">
+    <value>Activez ou désactivez la mise en mémoire cache.</value>
+  </data>
+  <data name="EnableSystemSettingsAuditHelp" xml:space="preserve">
+    <value>Active/Désactive l'audit des paramètres à travers les codes systèmes.
+</value>
+  </data>
+  <data name="EncryptionKeyManagementHelp" xml:space="preserve">
+    <value>Permet d'effectuer la gestion des clés de chiffrement. Accédez à Système \ Sécurité \ Gestion des clés de chiffrement</value>
+  </data>
+  <data name="EnrollmentDM" xml:space="preserve">
+    <value>Inscription</value>
+  </data>
+  <data name="EnrollmentDMHelp" xml:space="preserve">
+    <value>Modifiez les restrictions d'inscription.</value>
+  </data>
+  <data name="EnrollmentProgramSet" xml:space="preserve">
+    <value>Programme d'inscription</value>
+  </data>
+  <data name="EnrollmentProgramSetHelp" xml:space="preserve">
+    <value>Contrôle l'accès au programme d'inscription des terminaux.</value>
+  </data>
+  <data name="EnrollmentProgramUserGen" xml:space="preserve">
+    <value>Programme d'inscription</value>
+  </data>
+  <data name="EnrollmentProgramUserGenHelp" xml:space="preserve">
+    <value>Accéder aux profils du programme d'inscription de terminaux.</value>
+  </data>
+  <data name="EnrollmentSet" xml:space="preserve">
+    <value>Inscription</value>
+  </data>
+  <data name="EnrollmentSetHelp" xml:space="preserve">
+    <value>Contrôle l'accès à la page d'inscription dans la section Général.</value>
+  </data>
+  <data name="EnrollOffline" xml:space="preserve">
+    <value>S'enrôler hors ligne</value>
+  </data>
+  <data name="EnrollOfflineHelp" xml:space="preserve">
+    <value>Cette ressource permet à tout administrateur avec le rôle spécifié d'enrôler des terminaux enregistrés hors ligne</value>
+  </data>
+  <data name="EnterAdminModeHelp" xml:space="preserve">
+    <value>Contrôle l'accès à la commande Saisir le mode administrateur pour Launcher</value>
+  </data>
+  <data name="EnterEmailAddressToDesignateRecipients" xml:space="preserve">
+    <value>Entrer les adresses e-mail pour désigner des destinataires</value>
+  </data>
+  <data name="EnterpriseIntegrationSys" xml:space="preserve">
+    <value>Intégration d'entreprise</value>
+  </data>
+  <data name="EnterpriseIntegrationSysHelp" xml:space="preserve">
+    <value>Contrôle l'accès à l'intégration entreprise</value>
+  </data>
+  <data name="EnterpriseResourceAddHelp" xml:space="preserve">
+    <value>Permet d'ajouter une nouvelle ressource d'entreprise</value>
+  </data>
+  <data name="EnterpriseResourceHelp" xml:space="preserve">
+    <value>Permet d'accéder à la page Ressources d'entreprise.</value>
+  </data>
+  <data name="EnterpriseWipeDD" xml:space="preserve">
+    <value>Effacement des données d'entreprise</value>
+  </data>
+  <data name="EnterpriseWipeDDHelp" xml:space="preserve">
+    <value>Permet de désenrôler un terminal dans la page de détails du terminal, en supprimant l'ensemble des données et paramètres d'entreprise.</value>
+  </data>
+  <data name="EnterpriseWipeDM" xml:space="preserve">
+    <value>Effacement des données d'entreprise</value>
+  </data>
+  <data name="EnterpriseWipeDMHelp" xml:space="preserve">
+    <value>Permet de désenrôler un terminal en supprimant l'ensemble des données et paramètres d'entreprise.</value>
+  </data>
+  <data name="EquipmentEq" xml:space="preserve">
+    <value>Équipement</value>
+  </data>
+  <data name="EquipmentEqHelp" xml:space="preserve">
+    <value>Gestion de l'équipement. Naviguer vers Menu\Équipement.</value>
+  </data>
+  <data name="ESignature" xml:space="preserve">
+    <value>Signature électronique</value>
+  </data>
+  <data name="ESignatureHelp" xml:space="preserve">
+    <value>Les paramètres permettant la configuration de la signature électronique se trouve dans la section Contenu. Naviguez vers Paramètres\Contenu\Avancé\Signature électronique.</value>
+  </data>
+  <data name="ESignatures" xml:space="preserve">
+    <value>Signatures électroniques</value>
+  </data>
+  <data name="EulDD" xml:space="preserve">
+    <value>Conditions générales d'utilisation</value>
+  </data>
+  <data name="EulDDHelp" xml:space="preserve">
+    <value>Affichez les conditions d'utilisation passées et présentes pour un terminal particulier depuis la page de détails du terminal.</value>
+  </data>
+  <data name="EventLogAd" xml:space="preserve">
+    <value>Journal des événements</value>
+  </data>
+  <data name="EventLogAdHelp" xml:space="preserve">
+    <value>Contrôle l'accès aux journaux des événements de la console.</value>
+  </data>
+  <data name="EventLogHelp" xml:space="preserve">
+    <value>Permet de lire les journaux des événements. 
+</value>
+  </data>
+  <data name="EventsPM" xml:space="preserve">
+    <value>Événements</value>
+  </data>
+  <data name="EventsPMHelp" xml:space="preserve">
+    <value>Contrôle l'accès à la page des journaux des événements de l'imprimante</value>
+  </data>
+  <data name="ExitAdminModeHelp" xml:space="preserve">
+    <value>Contrôle l'accès à la commande Quitter le mode administrateur</value>
+  </data>
+  <data name="ExitAirWatchLauncherHelp" xml:space="preserve">
+    <value>Contrôle l'accès à la commande Quitter Launcher</value>
+  </data>
+  <data name="ExpandedAriaLabel" xml:space="preserve">
+    <value>développé</value>
+  </data>
+  <data name="ExpireAllUsersGr" xml:space="preserve">
+    <value>Expire tous les utilisateurs</value>
+  </data>
+  <data name="ExpireAllUsersGrHelp" xml:space="preserve">
+    <value>Active le bouton "Faire expirer les mots de passe de tous les utilisateurs".</value>
+  </data>
+  <data name="ExportUG" xml:space="preserve">
+    <value>Exporter</value>
+  </data>
+  <data name="ExportUGHelp" xml:space="preserve">
+    <value>Exportez les groupes d'utilisateurs.</value>
+  </data>
+  <data name="ExportUserAccounts" xml:space="preserve">
+    <value>Exporter</value>
+  </data>
+  <data name="ExportUserAccountsHelp" xml:space="preserve">
+    <value>Exportez les comptes d'utilisateurs.</value>
+  </data>
+  <data name="ExportUserCategories" xml:space="preserve">
+    <value>Exporter</value>
+  </data>
+  <data name="ExportUserCategoriesHelp" xml:space="preserve">
+    <value>Exporter les catégories de comptes utilisateur pour l'enrpolement.</value>
+  </data>
+  <data name="ExportUserRoles" xml:space="preserve">
+    <value>Exporter</value>
+  </data>
+  <data name="ExportUserRolesHelp" xml:space="preserve">
+    <value>Exportez les rôles d'utilisateurs.</value>
+  </data>
+  <data name="FeatureFlagEdit" xml:space="preserve">
+    <value>Modifier l'indicateur de fonctionnalité</value>
+  </data>
+  <data name="FeatureFlagEditHelp" xml:space="preserve">
+    <value>Contrôle l'accès à la modification et la mise à jour des indicateurs de fonctionnalité.</value>
+  </data>
+  <data name="FeatureFlagRead" xml:space="preserve">
+    <value>Lire l'indicateur de fonctionnalité</value>
+  </data>
+  <data name="FeatureFlagReadHelp" xml:space="preserve">
+    <value>Contrôle la capacité à lire l'état des indicateurs de fonctionnalité.</value>
+  </data>
+  <data name="FileActionsPPN" xml:space="preserve">
+    <value>Actions de fichier</value>
+  </data>
+  <data name="FileActionsPPNHelp" xml:space="preserve">
+    <value>Créez et gérez des actions de fichier pour les politiques d'approvisionnement.</value>
+  </data>
+  <data name="FileEncryptionStats" xml:space="preserve">
+    <value>Statistiques de chiffrement des fichiers</value>
+  </data>
+  <data name="FileEncryptionStatsHelp" xml:space="preserve">
+    <value>Paramètres de stockage du locataire : TenantStorage.FileEncryptionStats</value>
+  </data>
+  <data name="FileManagerHelp" xml:space="preserve">
+    <value>Permet d'accéder aux fichiers des terminaux WinMo à distance.
+</value>
+  </data>
+  <data name="FilepathIns" xml:space="preserve">
+    <value>Chemin d'accès au fichier</value>
+  </data>
+  <data name="FilepathInsHelp" xml:space="preserve">
+    <value>Contrôle l'accès à la page de synchronisation des fichiers dans l'option Avancé.</value>
+  </data>
+  <data name="FilesPM" xml:space="preserve">
+    <value>Fichiers</value>
+  </data>
+  <data name="FilesPMHelp" xml:space="preserve">
+    <value>Contrôle l'accès à la page des fichiers de l'imprimante</value>
+  </data>
+  <data name="FilesPr" xml:space="preserve">
+    <value>Fichiers</value>
+  </data>
+  <data name="FilesPrHelp" xml:space="preserve">
+    <value>Gérer les fichiers d'impression.</value>
+  </data>
+  <data name="FindDeviceDD" xml:space="preserve">
+    <value>Localiser le terminal</value>
+  </data>
+  <data name="FindDeviceDDHelp" xml:space="preserve">
+    <value>Configurez le terminal pour qu'il émette un signal sonore afin que l'utilisateur puisse le localiser. Disponible depuis les détails du terminal.</value>
+  </data>
+  <data name="FindDeviceHelp" xml:space="preserve">
+    <value>Permet de démarrer les alertes sonores pour aider un utilisateur à trouver le terminal. Disponible sur l'écran HTML5 des détails du terminal.</value>
+  </data>
+  <data name="FriendlyNameSet" xml:space="preserve">
+    <value>Nom convivial</value>
+  </data>
+  <data name="FriendlyNameSetHelp" xml:space="preserve">
+    <value>Contrôle l'accès à la page du nom convivial dans la section Général.</value>
+  </data>
+  <data name="GatewayStatusEm" xml:space="preserve">
+    <value>État de la passerelle</value>
+  </data>
+  <data name="GatewayStatusEmHelp" xml:space="preserve">
+    <value>Gère les paramètres d'état de la passerelle de messagerie.</value>
+  </data>
+  <data name="GeneralDD" xml:space="preserve">
+    <value>Général</value>
+  </data>
+  <data name="GeneralDDHelp" xml:space="preserve">
+    <value>Contrôlez des ensembles de fonctions de base sur la page de détails du terminal.</value>
+  </data>
+  <data name="GeneralHub" xml:space="preserve">
+    <value>Général</value>
+  </data>
+  <data name="GeneralHubHelp" xml:space="preserve">
+    <value>Accédez au module de rapports.</value>
+  </data>
+  <data name="GeneralPM" xml:space="preserve">
+    <value>Général</value>
+  </data>
+  <data name="GeneralPMHelp" xml:space="preserve">
+    <value>Contrôle l'accès à la page générale de l'imprimante</value>
+  </data>
+  <data name="GeneralSettingsEm" xml:space="preserve">
+    <value>Paramètres généraux</value>
+  </data>
+  <data name="GeneralSettingsEmHelp" xml:space="preserve">
+    <value>Contrôle les paramètres généraux de la messagerie.</value>
+  </data>
+  <data name="GeneralSOaP" xml:space="preserve">
+    <value>Général</value>
+  </data>
+  <data name="GeneralSOaPHelp" xml:space="preserve">
+    <value>Accédez à tous les API de services AirWatch à l'exception des commandes d'effacement.</value>
+  </data>
+  <data name="GeneralSys" xml:space="preserve">
+    <value>Général</value>
+  </data>
+  <data name="GeneralSysHelp" xml:space="preserve">
+    <value>Contrôle l'accès à la page Général sous Sytème.</value>
+  </data>
+  <data name="GeofencingAreaDM" xml:space="preserve">
+    <value>Zone de géo-barrière</value>
+  </data>
+  <data name="GeofencingAreaDMHelp" xml:space="preserve">
+    <value>Gérez les paramètres de géo-barrières pour les profils.</value>
+  </data>
+  <data name="GeofencingHelp" xml:space="preserve">
+    <value>Permet d'afficher/modifier les paramètres de géo-barrières. 
+</value>
+  </data>
+  <data name="GeofencingSet" xml:space="preserve">
+    <value>Géo-barrière</value>
+  </data>
+  <data name="GeofencingSetHelp" xml:space="preserve">
+    <value>Permet d'afficher/modifier les paramètres de géo-barrières.</value>
+  </data>
+  <data name="GettingStartedApplicationHelp" xml:space="preserve">
+    <value>Contrôle l'assistant de démarrage de la gestion des applications mobiles</value>
+  </data>
+  <data name="GettingStartedSys" xml:space="preserve">
+    <value>Assistant de démarrage</value>
+  </data>
+  <data name="GettingStartedSysHelp" xml:space="preserve">
+    <value>Autorise l'affichage du guide de démarrage.</value>
+  </data>
+  <data name="GooglePlayIntegrationAn" xml:space="preserve">
+    <value>Intégration de Google Play</value>
+  </data>
+  <data name="GooglePlayIntegrationAnHelp" xml:space="preserve">
+    <value>Permet d'afficher et de modifier l'intégration d'Android Market.</value>
+  </data>
+  <data name="GroupsRESTSystem" xml:space="preserve">
+    <value>Groupes</value>
+  </data>
+  <data name="GroupsRESTSystemHelp" xml:space="preserve">
+    <value>API REST pour la gestion des groupes</value>
+  </data>
+  <data name="GSuiteRotatePasswordAction" xml:space="preserve">
+    <value>Rotation du mot de passe G Suite</value>
+  </data>
+  <data name="GSuiteRotatePasswordActionHelp" xml:space="preserve">
+    <value>Possibilité de rotation du mot de passe de base G Suite et des profils de messagerie.</value>
+  </data>
+  <data name="HeroCards" xml:space="preserve">
+    <value>Mobile Flows</value>
+  </data>
+  <data name="HeroCardsHelp" xml:space="preserve">
+    <value>Configuration de l'UI pour des serveurs principaux et des services Mobile Flows</value>
+  </data>
+  <data name="HorizonWorkspaceSettings" xml:space="preserve">
+    <value>Paramètres Horizon Workspace</value>
+  </data>
+  <data name="HorizonWorkspaceSettingsHelp" xml:space="preserve">
+    <value>Contrôle l'accès pour afficher et modifier les paramètres Horizon Workspace. Le chemin de navigation est Paramètres\Applications\Intégration d'applications\Horizon Workspace.</value>
+  </data>
+  <data name="HyperLinkDeleteAd" xml:space="preserve">
+    <value>Suppression des liens hypertextes</value>
+  </data>
+  <data name="HyperLinkDeleteAdHelp" xml:space="preserve">
+    <value>Permet de supprimer les pièces jointes sous forme de liens hypertextes depuis la page de détails du terminal</value>
+  </data>
+  <data name="InProductSupport" xml:space="preserve">
+    <value>Support intégré au produit</value>
+  </data>
+  <data name="InProductSupportHelp" xml:space="preserve">
+    <value>Accès à l'outil de support intégré au produit où les administrateurs peuvent rechercher de la documentation et obtenir de l'aide directement dans UEM.</value>
+  </data>
+  <data name="InstallationAdvancedIns" xml:space="preserve">
+    <value>Installation avancée</value>
+  </data>
+  <data name="InstallationAdvancedInsHelp" xml:space="preserve">
+    <value>Permet d'accéder à la page Avancé sous Installation.</value>
+  </data>
+  <data name="InstallationIns" xml:space="preserve">
+    <value>Installation</value>
+  </data>
+  <data name="InstallationInsHelp" xml:space="preserve">
+    <value>Permet d'accéder à la page Installation.</value>
+  </data>
+  <data name="InstallFontsApple" xml:space="preserve">
+    <value>Installer les polices</value>
+  </data>
+  <data name="InstallFontsAppleHelp" xml:space="preserve">
+    <value>Active la section d'installation des polices dans la section Paramètres.</value>
+  </data>
+  <data name="InstallIntelligentHub" xml:space="preserve">
+    <value>Installer Intelligent Hub</value>
+  </data>
+  <data name="InstallIntelligentHubHelp" xml:space="preserve">
+    <value>Fournit un accès pour installer à distance Intelligent Hub sur un terminal enrôlé</value>
+  </data>
+  <data name="InsufficientResourceToSaveAdmin" xml:space="preserve">
+    <value>Enregistrement impossible. Votre compte d’administrateur ne dispose pas des autorisations suffisantes pour modifier cet enregistrement.</value>
+  </data>
+  <data name="Intelligence" xml:space="preserve">
+    <value>Intelligence</value>
+  </data>
+  <data name="IntelligenceHelp" xml:space="preserve">
+    <value>Accédez à la page Intelligence.</value>
+  </data>
+  <data name="InternalAppsAb" xml:space="preserve">
+    <value>Applications internes</value>
+  </data>
+  <data name="InternalAppsAbHelp" xml:space="preserve">
+    <value>Téléchargez et gérez des applications développées en interne.</value>
+  </data>
+  <data name="LanguageManagementAd" xml:space="preserve">
+    <value>Gestion des langues</value>
+  </data>
+  <data name="LanguageManagementAdHelp" xml:space="preserve">
+    <value>Affichez l'élément de menu pour la gestion des langues et accédez à la page d'activation du pack de langues et de l'éditeur de localisation.</value>
+  </data>
+  <data name="LearnMoreAccess" xml:space="preserve">
+    <value>Accès à la section En savoir plus</value>
+  </data>
+  <data name="LearnMoreAccessContact" xml:space="preserve">
+    <value>Accès au contact de la section En savoir plus</value>
+  </data>
+  <data name="LearnMoreAccessContactHelp" xml:space="preserve">
+    <value>Gère l'accès à la section Contact de la section Infos et mise à niveau</value>
+  </data>
+  <data name="LearnMoreAccessHelp" xml:space="preserve">
+    <value>Gère l'accès à la section Infos et mise à niveau
+</value>
+  </data>
+  <data name="LegacyAndroidMigration" xml:space="preserve">
+    <value>Migration Android héritée</value>
+  </data>
+  <data name="LegacyAndroidMigrationHelp" xml:space="preserve">
+    <value>Contrôle l'accès à la page Migration Android héritée pour migrer des terminaux Android hérités vers Android Enterprise avec un profil Work</value>
+  </data>
+  <data name="LicensesAd" xml:space="preserve">
+    <value>Licences</value>
+  </data>
+  <data name="LicensesAdHelp" xml:space="preserve">
+    <value>Permet de modifier les licences.</value>
+  </data>
+  <data name="LinuxHelp" xml:space="preserve">
+    <value>Contrôle l'accès aux pages des paramètres Linux dans les paramètres système.</value>
+  </data>
+  <data name="LocalizationSys" xml:space="preserve">
+    <value>Localisation</value>
+  </data>
+  <data name="LocalizationSysHelp" xml:space="preserve">
+    <value>Contrôle l'accès aux paramètres de localisation</value>
+  </data>
+  <data name="LocationCodeGr" xml:space="preserve">
+    <value>Code d'emplacement</value>
+  </data>
+  <data name="LocationCodeGrHelp" xml:space="preserve">
+    <value>Modifiez un code emplacement sur les pages Ajouter/Modifier un emplacement.</value>
+  </data>
+  <data name="LocationDD" xml:space="preserve">
+    <value>Localisation</value>
+  </data>
+  <data name="LocationDDHelp" xml:space="preserve">
+    <value>Affichez la localisation et les données de navigation du terminal.</value>
+  </data>
+  <data name="LocationGroupTypeHelp" xml:space="preserve">
+    <value>Permet d'accéder à la page Type de Groupe d'organisations.
+</value>
+  </data>
+  <data name="LocationsGr" xml:space="preserve">
+    <value>Emplacements</value>
+  </data>
+  <data name="LocationsGrHelp" xml:space="preserve">
+    <value>Afficher et gérer les emplacements pour les groupes organisationnels.</value>
+  </data>
+  <data name="LocationsHub" xml:space="preserve">
+    <value>Emplacements</value>
+  </data>
+  <data name="LocationsHubHelp" xml:space="preserve">
+    <value>Générez des rapports sur les emplacements.</value>
+  </data>
+  <data name="LocationStatusHelp" xml:space="preserve">
+    <value>Permet d'accéder au lien de l'état de localisation. Permet d'ajouter un nouveà l'état de localisation.
+</value>
+  </data>
+  <data name="LocationTypeHelp" xml:space="preserve">
+    <value>Permet d'accéder à la page Type de site.
+</value>
+  </data>
+  <data name="LocationZonesGr" xml:space="preserve">
+    <value>Zones d'emplacement</value>
+  </data>
+  <data name="LocationZonesGrHelp" xml:space="preserve">
+    <value>Ajoutez et modifiez des zones d'emplacement pour un emplacement.</value>
+  </data>
+  <data name="LockDD" xml:space="preserve">
+    <value>Verrouiller</value>
+  </data>
+  <data name="LockDDHelp" xml:space="preserve">
+    <value>Verrouillez à distance le terminal ou Single Sign-On d'application.</value>
+  </data>
+  <data name="LogDD" xml:space="preserve">
+    <value>Journal</value>
+  </data>
+  <data name="LogDDHelp" xml:space="preserve">
+    <value>Afficher les journaux dans les détails du terminal.</value>
+  </data>
+  <data name="LoggingAd" xml:space="preserve">
+    <value>Journalisation</value>
+  </data>
+  <data name="LoggingAdHelp" xml:space="preserve">
+    <value>Permet d'afficher les paramètres des journaux d’événements.</value>
+  </data>
+  <data name="LoggingAdL" xml:space="preserve">
+    <value>Journalisation</value>
+  </data>
+  <data name="LoggingAdLHelp" xml:space="preserve">
+    <value>Affichez et modifiez les paramètres de journalisation pour Syslog et la journalisation ciblée.</value>
+  </data>
+  <data name="LoginHistoryAdminGen" xml:space="preserve">
+    <value>Historique de connexions</value>
+  </data>
+  <data name="LoginHistoryAdminGenHelp" xml:space="preserve">
+    <value>Accédez à la page d'historique des connexion sur la page des comptes administrateur et des préférences utilisateur.</value>
+  </data>
+  <data name="LookupFields" xml:space="preserve">
+    <value>Champs de recherche</value>
+  </data>
+  <data name="LookupFieldsHelp" xml:space="preserve">
+    <value>Contrôle l'accès à la page des champs de recherche depuis la page Général.</value>
+  </data>
+  <data name="MacOsXApple" xml:space="preserve">
+    <value>macOS</value>
+  </data>
+  <data name="MacOsXAppleHelp" xml:space="preserve">
+    <value>Contrôle l'accès aux pages des paramètres macOS dans les paramètres système.</value>
+  </data>
+  <data name="MailRecipient" xml:space="preserve">
+    <value>Destinataire du message</value>
+  </data>
+  <data name="MaintenanceUpgradeNotificationInfo" xml:space="preserve">
+    <value>Sélectionnez l'option à utiliser pour déterminer les destinataires des notifications Workspace ONE UEM et Workspace ONE Assist. Si l'option Activation de l'administrateur est sélectionnée, l'option Maintenance et mise à niveau s'affiche pour les administrateurs sous Paramètres du compte &gt; Notifications.</value>
+  </data>
+  <data name="MaintenanceUpgradeNotifications" xml:space="preserve">
+    <value>Notifications de maintenance et de mise à niveau</value>
+  </data>
+  <data name="ManageAdminGroups" xml:space="preserve">
+    <value>Gérer</value>
+  </data>
+  <data name="ManageAdminGroupsHelp" xml:space="preserve">
+    <value>Effectuez des actions sur les groupes d'administrateurs comme la synchronisation ou la fusion.</value>
+  </data>
+  <data name="ManageBaselines" xml:space="preserve">
+    <value>Gérer les lignes de base</value>
+  </data>
+  <data name="ManageBaselinesHelp" xml:space="preserve">
+    <value>Permet d'accéder à la gestion des lignes de base, y compris aux autorisations pour ajouter, modifier et attribuer une ligne de base</value>
+  </data>
+  <data name="ManageContentCM" xml:space="preserve">
+    <value>Gérer le contenu</value>
+  </data>
+  <data name="ManageContentCMHelp" xml:space="preserve">
+    <value>Ajoutez du contenu et gérez les fichiers existants.</value>
+  </data>
+  <data name="ManageDevicesCM" xml:space="preserve">
+    <value>Gérer les terminaux</value>
+  </data>
+  <data name="ManageDevicesCMHelp" xml:space="preserve">
+    <value>Installer et supprimer à distance les contenus de terminaux gérés.</value>
+  </data>
+  <data name="ManageDeviceSensors" xml:space="preserve">
+    <value>Gérer les capteurs de terminal</value>
+  </data>
+  <data name="ManageDeviceSensorsHelp" xml:space="preserve">
+    <value>Contrôle l'accès à l'ajout, à la modification, à l'attribution ou à la suppression des capteurs de terminaux.</value>
+  </data>
+  <data name="ManageDM" xml:space="preserve">
+    <value>Gérer</value>
+  </data>
+  <data name="ManageDMHelp" xml:space="preserve">
+    <value>Gérez les profils de terminal.</value>
+  </data>
+  <data name="ManagedSettingsApple" xml:space="preserve">
+    <value>Paramètres gérés</value>
+  </data>
+  <data name="ManagedSettingsAppleHelp" xml:space="preserve">
+    <value>Contrôle l'accès aux paramètres gérés pour iOS.</value>
+  </data>
+  <data name="ManageGr" xml:space="preserve">
+    <value>Gérer</value>
+  </data>
+  <data name="ManageGrHelp" xml:space="preserve">
+    <value>Gérez les groupes organisationnels.</value>
+  </data>
+  <data name="ManageNodeAd" xml:space="preserve">
+    <value>Gérer le nœud</value>
+  </data>
+  <data name="ManageNodeAdHelp" xml:space="preserve">
+    <value>Ajoutez, modifiez, supprimez et videz les nœuds de mise en mémoire cache.</value>
+  </data>
+  <data name="ManagePM" xml:space="preserve">
+    <value>Gérer</value>
+  </data>
+  <data name="ManagePMHelp" xml:space="preserve">
+    <value>Envoyer des commandes et des requêtes à distance aux imprimantes.</value>
+  </data>
+  <data name="ManageTimeWindow" xml:space="preserve">
+    <value>Fenêtre de temps de gestion</value>
+  </data>
+  <data name="ManageTimeWindowHelp" xml:space="preserve">
+    <value>Permet d'accéder à la gestion des fenêtres de temps, y compris aux autorisations pour ajouter, modifier et attribuer une fenêtre de temps.</value>
+  </data>
+  <data name="ManageUG" xml:space="preserve">
+    <value>Gérer</value>
+  </data>
+  <data name="ManageUGHelp" xml:space="preserve">
+    <value>Effectuer des actions telles que Synchroniser ou Fusionner les groupes d'utilisateurs pour l'inscription.</value>
+  </data>
+  <data name="MapsIns" xml:space="preserve">
+    <value>Cartes</value>
+  </data>
+  <data name="MapsInsHelp" xml:space="preserve">
+    <value>Contrôle l'accès à la page des cartes dans la section Installation.</value>
+  </data>
+  <data name="MembersAdminGroup" xml:space="preserve">
+    <value>Membres</value>
+  </data>
+  <data name="MembersAdminGroupHelp" xml:space="preserve">
+    <value>Afficher les membres des groupes d'administrateurs</value>
+  </data>
+  <data name="MembersUG" xml:space="preserve">
+    <value>Membres</value>
+  </data>
+  <data name="MembersUGHelp" xml:space="preserve">
+    <value>Accédez à la liste des membres des groupes d'utilisateurs.</value>
+  </data>
+  <data name="MenuLinkForTagHelp" xml:space="preserve">
+    <value>Gère l'accès au menu des étiquettes</value>
+  </data>
+  <data name="MessageTemplatesSet" xml:space="preserve">
+    <value>Modèles de message</value>
+  </data>
+  <data name="MessageTemplatesSetHelp" xml:space="preserve">
+    <value>Contrôle l'accès aux modèles de message.</value>
+  </data>
+  <data name="MessagingDD" xml:space="preserve">
+    <value>Messagerie</value>
+  </data>
+  <data name="MessagingDDHelp" xml:space="preserve">
+    <value>Envoyez des e-mails, des notifications Push ou des SMS aux terminaux.</value>
+  </data>
+  <data name="MessagingSet" xml:space="preserve">
+    <value>Messagerie</value>
+  </data>
+  <data name="MessagingSetHelp" xml:space="preserve">
+    <value>Contrôle l'accès à la page de messagerie dans la section Général.</value>
+  </data>
+  <data name="MigrateUserAccounts" xml:space="preserve">
+    <value>Migration</value>
+  </data>
+  <data name="MigrateUserAccountsHelp" xml:space="preserve">
+    <value>Transférer les comptes utilisateur de l'inscription basique vers l'inscription LDAP.</value>
+  </data>
+  <data name="MirrorPM" xml:space="preserve">
+    <value>Miroir</value>
+  </data>
+  <data name="MirrorPMHelp" xml:space="preserve">
+    <value>Contrôle l'accès à la page miroir de l'imprimante.</value>
+  </data>
+  <data name="MobileFlowsAuthToken" xml:space="preserve">
+    <value>Jeton d'authentification de Mobile Flows</value>
+  </data>
+  <data name="MobileFlowsAuthTokenHelp" xml:space="preserve">
+    <value>Génère un certificat JWT qu'utilisera le serveur Mobile Flows.</value>
+  </data>
+  <data name="MobileFlowsServerUrl" xml:space="preserve">
+    <value>URL du serveur Mobile Flows</value>
+  </data>
+  <data name="MobileFlowsServerUrlHelp" xml:space="preserve">
+    <value>URL du serveur Mobile Flows</value>
+  </data>
+  <data name="MobileFlowsTenantAdd" xml:space="preserve">
+    <value>Ajouter un locataire Mobile Flows</value>
+  </data>
+  <data name="MobileFlowsTenantAddHelp" xml:space="preserve">
+    <value>Provisionner un locataire client dans le service Cloud Mobile Flows</value>
+  </data>
+  <data name="ModifyAgentSet" xml:space="preserve">
+    <value>Modifier le Hub</value>
+  </data>
+  <data name="ModifyAgentSetHelp" xml:space="preserve">
+    <value>Contrôle l'accès aux paramètres de modification du Hub.</value>
+  </data>
+  <data name="MonitoringAd" xml:space="preserve">
+    <value>Surveillance</value>
+  </data>
+  <data name="MonitoringAdHelp" xml:space="preserve">
+    <value>Permet d'accéder aux paramètres de surveillance et de les modifier.</value>
+  </data>
+  <data name="MoreHelp" xml:space="preserve">
+    <value>Permet d'accéder au menu Plus.  
+</value>
+  </data>
+  <data name="NacIntegrationSys" xml:space="preserve">
+    <value>Intégration NAC</value>
+  </data>
+  <data name="NacIntegrationSysHelp" xml:space="preserve">
+    <value>Permet d'accéder à la page Intégration du contrôle d'accès réseau sous Général.</value>
+  </data>
+  <data name="NavigateExportStatusHelp" xml:space="preserve">
+    <value>Accéder à la page d'état de l'exportation pour afficher et télécharger les données d'exportation de la grille</value>
+  </data>
+  <data name="NavigationO" xml:space="preserve">
+    <value>Navigation</value>
+  </data>
+  <data name="NavigationOHelp" xml:space="preserve">
+    <value>Menus d'accès avancé</value>
+  </data>
+  <data name="NetworkAccessControlIntegrationHelp" xml:space="preserve">
+    <value>Permet d'accéder à la page Intégration du contrôle d'accès réseau sous Général. 
+</value>
+  </data>
+  <data name="NetworkDD" xml:space="preserve">
+    <value>Réseau</value>
+  </data>
+  <data name="NetworkDDHelp" xml:space="preserve">
+    <value>Accédez à la page de réseau dans les détails du terminal.</value>
+  </data>
+  <data name="NetworkRangeGr" xml:space="preserve">
+    <value>Plage réseau</value>
+  </data>
+  <data name="NetworkRangeGrHelp" xml:space="preserve">
+    <value>Gérer et importer les plages réseau pour les groupes organisationnels.</value>
+  </data>
+  <data name="NetworkRangeHelp" xml:space="preserve">
+    <value>Permet de consulter l'écran Plage réseau.</value>
+  </data>
+  <data name="NoFiltersSelected" xml:space="preserve">
+    <value>Aucun filtre sélectionné</value>
+  </data>
+  <data name="NotesDD" xml:space="preserve">
+    <value>Notes</value>
+  </data>
+  <data name="NotesDDHelp" xml:space="preserve">
+    <value>Ajoutez, modifiez et supprimez des remarques concernant le terminal dans les détails du terminal.</value>
+  </data>
+  <data name="NotificationRecipients" xml:space="preserve">
+    <value>Destinataires des notifications</value>
+  </data>
+  <data name="NotificationsAd" xml:space="preserve">
+    <value>Notifications</value>
+  </data>
+  <data name="NotificationsAdHelp" xml:space="preserve">
+    <value>Affichez et modifiez les paramètres de notification d'événement.</value>
+  </data>
+  <data name="NotifyAb" xml:space="preserve">
+    <value>Notification</value>
+  </data>
+  <data name="NotifyAbHelp" xml:space="preserve">
+    <value>Envoyez des notifications via les applications de terminaux.</value>
+  </data>
+  <data name="Office365MamIntegrationSettings" xml:space="preserve">
+    <value>Paramètres d'intégration Office365</value>
+  </data>
+  <data name="Office365MamIntegrationSettingsHelp" xml:space="preserve">
+    <value>Ressource de contrôle de l'écran des paramètres système pour l'ajout de stratégies DLP par défaut pour les applications Office 365</value>
+  </data>
+  <data name="Old" xml:space="preserve">
+    <value>Ancien</value>
+  </data>
+  <data name="OldPPO" xml:space="preserve">
+    <value>Ancien</value>
+  </data>
+  <data name="OldPPOHelp" xml:space="preserve">
+    <value>Accédez aux anciens paramètres des profils d'approvisionnement.</value>
+  </data>
+  <data name="OrganizationGroupChangeAd" xml:space="preserve">
+    <value>Changement de Groupe d'organisation</value>
+  </data>
+  <data name="OrganizationGroupChangeAdHelp" xml:space="preserve">
+    <value>Permet de modifier les groupes organisationnels par le biais d'une liste déroulante.</value>
+  </data>
+  <data name="OrganizationGroupCodeGr" xml:space="preserve">
+    <value>ID du groupe organisationnel</value>
+  </data>
+  <data name="OrganizationGroupCodeGrHelp" xml:space="preserve">
+    <value>Modifiez l'ID de groupe organisationnel.</value>
+  </data>
+  <data name="OsUpdateStatusHelp" xml:space="preserve">
+    <value>Contrôle l'accès pour obtenir l'état d'une mise à jour du système d'exploitation sur les terminaux. Accédez à Terminaux / Affichage des détails.</value>
+  </data>
+  <data name="OutlookAddinSet" xml:space="preserve">
+    <value>Complément Outlook</value>
+  </data>
+  <data name="OutlookAddinSetHelp" xml:space="preserve">
+    <value>Activez et désactivez le plug-in du complément Outlook.</value>
+  </data>
+  <data name="OverrideJobLogLevelHelp" xml:space="preserve">
+    <value>Permet à l'utilisateur de remplacer le niveau de journalisation des tâches via Détails du terminal lorsque les terminaux prennent en charge la fonctionnalité.</value>
+  </data>
+  <data name="OverviewHub" xml:space="preserve">
+    <value>Aperçu</value>
+  </data>
+  <data name="OverviewHubHelp" xml:space="preserve">
+    <value>Accédez à la page d'aperçu du moniteur.</value>
+  </data>
+  <data name="P2PSetupHelp" xml:space="preserve">
+    <value>Page des paramètres qui contient des sous-sections des différents fournisseurs P2P</value>
+  </data>
+  <data name="PasscodeDD" xml:space="preserve">
+    <value>Code secret</value>
+  </data>
+  <data name="PasscodeDDHelp" xml:space="preserve">
+    <value>Effacez et réinitialisez les codes d'accès des terminaux et des applications.</value>
+  </data>
+  <data name="PerformanceTuningHelp" xml:space="preserve">
+    <value>Permet d'accéder aux paramètres de réglages des performances dans le menu Paramètres système.
+</value>
+  </data>
+  <data name="PerformanceTuningIns" xml:space="preserve">
+    <value>Réglage des performances</value>
+  </data>
+  <data name="PerformanceTuningInsHelp" xml:space="preserve">
+    <value>Permet d'accéder aux paramètres de réglages des performances dans le menu Paramètres système.</value>
+  </data>
+  <data name="PersonalContentSet" xml:space="preserve">
+    <value>Contenu personnel</value>
+  </data>
+  <data name="PersonalContentSetHelp" xml:space="preserve">
+    <value>Autorise la modification des paramètres relatifs au contenu personnel</value>
+  </data>
+  <data name="PlansTel" xml:space="preserve">
+    <value>Plans</value>
+  </data>
+  <data name="PlansTelHelp" xml:space="preserve">
+    <value>Gérer les forfaits télécom configurés pour un groupe organisationnel.</value>
+  </data>
+  <data name="PoliciesPPN" xml:space="preserve">
+    <value>Politiques</value>
+  </data>
+  <data name="PoliciesPPNHelp" xml:space="preserve">
+    <value>Créez et gérez des politiques d'approvisionnement.</value>
+  </data>
+  <data name="PolicyEngineSettingsEditHelp" xml:space="preserve">
+    <value>Permet de modifier les paramètres du moteur de stratégie. Accédez à Configurer\Paramètres\Admin\Paramètres du moteur de stratégie</value>
+  </data>
+  <data name="PolicyEngineSettingsViewHelp" xml:space="preserve">
+    <value>Permet d'afficher les paramètres du moteur de stratégie.</value>
+  </data>
+  <data name="PolicyOverrideEM" xml:space="preserve">
+    <value>Remplacement de la stratégie</value>
+  </data>
+  <data name="PolicyOverrideEMHelp" xml:space="preserve">
+    <value>Remplacer les politiques d'e-mail pour les terminaux autorisés et bloqués.</value>
+  </data>
+  <data name="PolicySigningCertificateHelp" xml:space="preserve">
+    <value>Permet de télécharger un certificat ECC. Accédez à Système \ Avancé \ Certificat de signature de stratégie</value>
+  </data>
+  <data name="PowerPM" xml:space="preserve">
+    <value>Alimentation</value>
+  </data>
+  <data name="PowerPMHelp" xml:space="preserve">
+    <value>Contrôle l'accès à la page d'alimentation de l'imprimante</value>
+  </data>
+  <data name="PrinterManagementProfile" xml:space="preserve">
+    <value>Profil de gestion d'imprimante</value>
+  </data>
+  <data name="PrinterManagementProfiles" xml:space="preserve">
+    <value>Profils de gestion d'imprimante</value>
+  </data>
+  <data name="PrinterProfiles" xml:space="preserve">
+    <value>Profils d'impression</value>
+  </data>
+  <data name="PrinterProfilesHelp" xml:space="preserve">
+    <value>Permet d'afficher la grille des fichiers de l'imprimante. Naviguer vers Menu\Gestionnaire d'imprimante\Profils</value>
+  </data>
+  <data name="PrinterServersPM" xml:space="preserve">
+    <value>Serveurs d'impression</value>
+  </data>
+  <data name="PrinterServersPMHelp" xml:space="preserve">
+    <value>Affichez, ajoutez et supprimez les serveurs d'imprimante depuis la page des paramètres de l'imprimante.</value>
+  </data>
+  <data name="PrinterTestPrint" xml:space="preserve">
+    <value>Impression du test de l'imprimante</value>
+  </data>
+  <data name="PrinterTestPrintHelp" xml:space="preserve">
+    <value>Accorde l'autorisation d'envoyer une impression du test de l'imprimante.</value>
+  </data>
+  <data name="PrinterViewAveryDennisonGeneralHelp" xml:space="preserve">
+    <value>L'onglet Général de la page Détails du terminal Avery Dennison. </value>
+  </data>
+  <data name="PrinterViewCpclPM" xml:space="preserve">
+    <value>CPCL</value>
+  </data>
+  <data name="PrinterViewCpclPMHelp" xml:space="preserve">
+    <value>Contrôle l'accès à la page CPCL de l'imprimante.</value>
+  </data>
+  <data name="PrinterViewDataMaxONeilAutoUpdateHelp" xml:space="preserve">
+    <value>L'onglet Mise à jour automatique de la page Détails du terminal Datamax. </value>
+  </data>
+  <data name="PrinterViewDataMaxONeilBatteryHelp" xml:space="preserve">
+    <value>L'onglet Batterie de la page Détails du terminal de l'imprimante Datamax. </value>
+  </data>
+  <data name="PrinterViewDataMaxONeilBluetoothHelp" xml:space="preserve">
+    <value>L'onglet Bluetooth de la page Détails du terminal Datamax. </value>
+  </data>
+  <data name="PrinterViewDataMaxONeilCustomSettingsHelp" xml:space="preserve">
+    <value>Pour afficher l'onglet Paramètres personnalisés de la page Détails du terminal Datamax-O'Neil. </value>
+  </data>
+  <data name="PrinterViewDataMaxONeilGeneralHelp" xml:space="preserve">
+    <value>L'onglet Général de la page Détails du terminal Datamax.  </value>
+  </data>
+  <data name="PrinterViewDataMaxONeilGeneralNetworkHelp" xml:space="preserve">
+    <value>L'onglet Réseau général de la page Détails du terminal Datamax. </value>
+  </data>
+  <data name="PrinterViewDataMaxONeilMediaLabelHelp" xml:space="preserve">
+    <value>L'onglet Étiquette multimédia de la page Détails du terminal Datamax. </value>
+  </data>
+  <data name="PrinterViewDataMaxONeilMiscellaneousHelp" xml:space="preserve">
+    <value>L'onglet Divers de la page Détails du terminal Datamax. </value>
+  </data>
+  <data name="PrinterViewDataMaxONeilPrintControlHelp" xml:space="preserve">
+    <value>L'onglet Contrôle de l'impression de la page Détails du terminal Datamax. </value>
+  </data>
+  <data name="PrinterViewDataMaxONeilRS232Help" xml:space="preserve">
+    <value>L'onglet RS232 de la page Détails du terminal Datamax. </value>
+  </data>
+  <data name="PrinterViewDataMaxONeilSystemSettingsHelp" xml:space="preserve">
+    <value>L'onglet Paramètres système de la page Détails du terminal Datamax. </value>
+  </data>
+  <data name="PrinterViewDataMaxONeilWifiHelp" xml:space="preserve">
+    <value>L'onglet WiFi de la page Détails du terminal Datamax. </value>
+  </data>
+  <data name="PrinterViewEpsonGeneral" xml:space="preserve">
+    <value>Afficher les détails de l'imprimante Epson : onglet Général</value>
+  </data>
+  <data name="PrinterViewEpsonGeneralHelp" xml:space="preserve">
+    <value>Afficher les détails de l'imprimante Epson</value>
+  </data>
+  <data name="PrinterViewEpsonPrintSettingsHelp" xml:space="preserve">
+    <value>Permet à l'utilisateur d'accéder aux paramètres d'impression Epson</value>
+  </data>
+  <data name="PrivacySet" xml:space="preserve">
+    <value>Confidentialité</value>
+  </data>
+  <data name="PrivacySetHelp" xml:space="preserve">
+    <value>Contrôle l'accès à la page de confidentialité depuis la page Général.</value>
+  </data>
+  <data name="ProductImprovementProgramSettings" xml:space="preserve">
+    <value>Paramètres du programme d'amélioration produit</value>
+  </data>
+  <data name="ProductImprovementProgramSettingsHelp" xml:space="preserve">
+    <value>Contrôle l'accès à la page Paramètres des programmes d'amélioration produit disponible dans Paramètres &gt; Administration &gt; Programmes d'amélioration du produit.</value>
+  </data>
+  <data name="ProductivityAppsAb" xml:space="preserve">
+    <value>Applications de productivité</value>
+  </data>
+  <data name="ProductProvisioningHub" xml:space="preserve">
+    <value>Provisionnement de produit</value>
+  </data>
+  <data name="ProductProvisioningHubHelp" xml:space="preserve">
+    <value>Générez des rapports sur le provisionnement des produits.</value>
+  </data>
+  <data name="ProductProvisioningSettingsHelp" xml:space="preserve">
+    <value>Configurez certaines fonctionnalités pour le provisionnement de produit.</value>
+  </data>
+  <data name="ProductSetsHelp" xml:space="preserve">
+    <value>Contrôle l'accès aux ensembles de produits dans la section Nouveaux produits</value>
+  </data>
+  <data name="ProfileEncryptAndExportXmlDM" xml:space="preserve">
+    <value>Chiffrement de profil et XML d'export</value>
+  </data>
+  <data name="ProfileEncryptAndExportXmlDMHelp" xml:space="preserve">
+    <value>Téléchargez des certificats pour le chiffrement de profil et le code XML de profil d'export.</value>
+  </data>
+  <data name="ProfilesApple" xml:space="preserve">
+    <value>Profils</value>
+  </data>
+  <data name="ProfilesAppleHelp" xml:space="preserve">
+    <value>Contrôle l'accès à la page Profils sous l'option iOS.</value>
+  </data>
+  <data name="ProfilesDD" xml:space="preserve">
+    <value>Profils</value>
+  </data>
+  <data name="ProfilesDDHelp" xml:space="preserve">
+    <value>Affichez et gérez les profils de configuration depuis les détails du terminal.</value>
+  </data>
+  <data name="ProfilesHub" xml:space="preserve">
+    <value>Profils</value>
+  </data>
+  <data name="ProfilesHubHelp" xml:space="preserve">
+    <value>Générez des rapports pour les profils de terminaux.</value>
+  </data>
+  <data name="ProfilesPM" xml:space="preserve">
+    <value>Profils</value>
+  </data>
+  <data name="ProfilesPMHelp" xml:space="preserve">
+    <value>Contrôle l'accès à la page des profils de l'imprimante</value>
+  </data>
+  <data name="ProfilesPPN" xml:space="preserve">
+    <value>Profils</value>
+  </data>
+  <data name="ProfilesPPNHelp" xml:space="preserve">
+    <value>Accédez à la page de profils d'approvisionnement.</value>
+  </data>
+  <data name="ProfilesPr" xml:space="preserve">
+    <value>Profils</value>
+  </data>
+  <data name="ProfilesPrHelp" xml:space="preserve">
+    <value>Gérer les profils d'imprimante.</value>
+  </data>
+  <data name="ProfilesRESTMdm" xml:space="preserve">
+    <value>Profils</value>
+  </data>
+  <data name="ProfilesRESTMdmHelp" xml:space="preserve">
+    <value>API REST pour les profils de terminaux</value>
+  </data>
+  <data name="ProvisioningHelp" xml:space="preserve">
+    <value>Permet d'accéder à la page Approvisionnement de Windows Mobile.</value>
+  </data>
+  <data name="ProvisioningPolicyConditionCopyHelp" xml:space="preserve">
+    <value>Permet à l'utilisateur de copier une condition.</value>
+  </data>
+  <data name="ProvisioningPolicyFileActionCopyHelp" xml:space="preserve">
+    <value>Permet à un utilisateur de copier un fichier/une action de provisionnement.</value>
+  </data>
+  <data name="ProxiesAndTunnelHelp" xml:space="preserve">
+    <value>Permet d'afficher et de modifier les paramètres des proxies et des tunnels</value>
+  </data>
+  <data name="ProxyIns" xml:space="preserve">
+    <value>Proxy</value>
+  </data>
+  <data name="ProxyInsHelp" xml:space="preserve">
+    <value>Contrôle l'accès à la page de paramètres du Proxy dans l'option Général.</value>
+  </data>
+  <data name="PublicAppsAb" xml:space="preserve">
+    <value>Applications publiques</value>
+  </data>
+  <data name="PublicAppsAbHelp" xml:space="preserve">
+    <value>Attribuez et gérez les applications du magasin public.</value>
+  </data>
+  <data name="PullServiceInstallersPPN" xml:space="preserve">
+    <value>Programmes d'installation des services d'extraction</value>
+  </data>
+  <data name="PullServiceInstallersPPNHelp" xml:space="preserve">
+    <value>Affichez et téléchargez les programmes d'installation des services d'extraction.</value>
+  </data>
+  <data name="PurchasedApplicationsAb" xml:space="preserve">
+    <value>Applications achetées</value>
+  </data>
+  <data name="PurchasedApplicationsAbHelp" xml:space="preserve">
+    <value>Importez les licences d'application achetées en masse et gérez la distribution des licences gérées.</value>
+  </data>
+  <data name="QnxSet" xml:space="preserve">
+    <value>QNX</value>
+  </data>
+  <data name="QnxSetHelp" xml:space="preserve">
+    <value>Contrôle l’accès à la page des paramètres de l’Agent dans l’option QNX.</value>
+  </data>
+  <data name="QRCodeHelp" xml:space="preserve">
+    <value>Configuration de l'inscription du code QR</value>
+  </data>
+  <data name="QueryDD" xml:space="preserve">
+    <value>Envoyer une requête</value>
+  </data>
+  <data name="QueryDDHelp" xml:space="preserve">
+    <value>Envoyez une requête aux terminaux pour mettre à jour les informations relatives à leur statut.</value>
+  </data>
+  <data name="ReadDeviceManufacturerDetails" xml:space="preserve">
+    <value>Lire les détails du fabricant du terminal</value>
+  </data>
+  <data name="ReadDeviceManufacturerDetailsHelp" xml:space="preserve">
+    <value>Lire les détails du fabricant du terminal via l'API</value>
+  </data>
+  <data name="ReadDeviceModelDetails" xml:space="preserve">
+    <value>Lire les détails du modèle de terminal</value>
+  </data>
+  <data name="ReadDeviceModelDetailsHelp" xml:space="preserve">
+    <value>Lire les détails du modèle de terminal via l'API</value>
+  </data>
+  <data name="RefreshEsimHelp" xml:space="preserve">
+    <value>Accorde l'autorisation de mettre à jour le forfait mobile de l'eSIM</value>
+  </data>
+  <data name="RegistryManagerHelp" xml:space="preserve">
+    <value>Permet d'accéder au registre des terminaux WinMo à distance.
+</value>
+  </data>
+  <data name="RelayServerBatching" xml:space="preserve">
+    <value>Création de lots pour le serveur de relais</value>
+  </data>
+  <data name="RelayServerBatchingHelp" xml:space="preserve">
+    <value>Contrôle l'accès à l'importation de lots pour le serveur de relais et à l'état de lots</value>
+  </data>
+  <data name="RelayServerRemoteFileList" xml:space="preserve">
+    <value>Liste des fichiers distants du serveur de relais</value>
+  </data>
+  <data name="RelayServerRemoteFileListHelp" xml:space="preserve">
+    <value>Contrôle l'accès à la liste des fichiers distants du serveur de relais</value>
+  </data>
+  <data name="RelayServersPPN" xml:space="preserve">
+    <value>Serveurs relais</value>
+  </data>
+  <data name="RelayServersPPNHelp" xml:space="preserve">
+    <value>Affichez et gérez les serveurs relais d'approvisionnement.</value>
+  </data>
+  <data name="RemoteControlDD" xml:space="preserve">
+    <value>Contrôle à distance</value>
+  </data>
+  <data name="RemoteControlDDHelp" xml:space="preserve">
+    <value>Contrôlez un terminal à distance.</value>
+  </data>
+  <data name="RemoteManagementSettingsEditHelp" xml:space="preserve">
+    <value>Contrôle l'accès en modification à la page Gestion à distance sous Intégration d'entreprise. Accédez à Configuration\Paramètres système\Intégration d'entreprise\Gestion à distance</value>
+  </data>
+  <data name="RemoteSet" xml:space="preserve">
+    <value>À distance</value>
+  </data>
+  <data name="RemoteSetHelp" xml:space="preserve">
+    <value>Permet de modifier les paramètres relatifs au stockage à distance.</value>
+  </data>
+  <data name="RemoveDeviceEnrollmentProgram" xml:space="preserve">
+    <value>Programme d'inscription - Suppression de profil</value>
+  </data>
+  <data name="RemoveDeviceEnrollmentProgramHelp" xml:space="preserve">
+    <value>Contrôle l'accès à la suppression des profils DEP des terminaux. Accédez à la page Statut d'enrôlement</value>
+  </data>
+  <data name="RenameDeviceHelp" xml:space="preserve">
+    <value>Commande permettant de renommer un terminal. </value>
+  </data>
+  <data name="RenewCertificateHelp" xml:space="preserve">
+    <value>Permet de renouveler un certificat. 
+</value>
+  </data>
+  <data name="RepairHub" xml:space="preserve">
+    <value>Réparer le Hub</value>
+  </data>
+  <data name="RepairHubHelp" xml:space="preserve">
+    <value>Donne l'autorisation de réparer le Hub sur le terminal.</value>
+  </data>
+  <data name="ReportIOS7Compatability" xml:space="preserve">
+    <value>Compatibilité iOS 7</value>
+  </data>
+  <data name="ReportIOS7CompatabilityHelp" xml:space="preserve">
+    <value>Autorise l'accès au rapport de compatibilité des terminaux iOS 7</value>
+  </data>
+  <data name="ReportsAlertsSys" xml:space="preserve">
+    <value>Rapports et alertes</value>
+  </data>
+  <data name="ReportsAlertsSysHelp" xml:space="preserve">
+    <value>Contrôle l'accès aux rapports et aux alertes.</value>
+  </data>
+  <data name="ReportsIns" xml:space="preserve">
+    <value>Rapports</value>
+  </data>
+  <data name="ReportsInsHelp" xml:space="preserve">
+    <value>Permet d'accéder à la page Rapports sous Installation.</value>
+  </data>
+  <data name="RepositoriesCM" xml:space="preserve">
+    <value>Référentiels</value>
+  </data>
+  <data name="RepositoriesCMHelp" xml:space="preserve">
+    <value>Ajoutez, modifiez et supprimez des référentiels de contenu.</value>
+  </data>
+  <data name="ReputationAnalysisAb" xml:space="preserve">
+    <value>Analyse de la réputation</value>
+  </data>
+  <data name="ReputationAnalysisAbHelp" xml:space="preserve">
+    <value>Exécutez l'analyse de réputation des applications et affichez-en les résultats.</value>
+  </data>
+  <data name="RequestCheckinDD" xml:space="preserve">
+    <value>Demander la déconnexion de l'utilisateur</value>
+  </data>
+  <data name="RequestCheckinDDHelp" xml:space="preserve">
+    <value>Envoyez un message au terminal pour demander à l'utilisateur de s'en déconnecter. Disponible dans les détails du terminal.</value>
+  </data>
+  <data name="ResBlueprints" xml:space="preserve">
+    <value>Blueprints</value>
+  </data>
+  <data name="ResBlueprintsHelp" xml:space="preserve">
+    <value>Créez un seul emplacement pour ajouter et associer les applications, ressources, et politiques de restriction aux utilisateurs et aux terminaux.</value>
+  </data>
+  <data name="ResCompliancePolicy" xml:space="preserve">
+    <value>Stratégie de conformité</value>
+  </data>
+  <data name="ResCompliancePolicyHelp" xml:space="preserve">
+    <value>Accéder aux détails de la stratégie de conformité via les API REST</value>
+  </data>
+  <data name="ResConsoleNotifications" xml:space="preserve">
+    <value>Notifications de la console</value>
+  </data>
+  <data name="ResConsoleNotificationsHelp" xml:space="preserve">
+    <value>Afficher et interagir avec les notifications administratives à l'échelle de la console</value>
+  </data>
+  <data name="ResCustomAttributes" xml:space="preserve">
+    <value>Personnaliser les attributs</value>
+  </data>
+  <data name="ResCustomAttributesHelp" xml:space="preserve">
+    <value>API REST pour donner accès aux attributs personnalisés</value>
+  </data>
+  <data name="ResCustomReports" xml:space="preserve">
+    <value>Rapports personnalisés</value>
+  </data>
+  <data name="ResCustomReportsHelp" xml:space="preserve">
+    <value>Accéder à la page des rapports personnalisés</value>
+  </data>
+  <data name="ResDirectMEMAdvLog" xml:space="preserve">
+    <value>Journalisation avancée MEM directe</value>
+  </data>
+  <data name="ResDirectMEMAdvLogHelp" xml:space="preserve">
+    <value>Accessible via le tableau de bord MEM, cette fonctionnalité permet d'afficher les journalisations avancées des files d'attente MEG par terminal via la console.</value>
+  </data>
+  <data name="ResEmailNotification" xml:space="preserve">
+    <value>Paramètres du service de notifications par e-mails</value>
+  </data>
+  <data name="ResEmailNotificationHelp" xml:space="preserve">
+    <value>Gérer les paramètres ENS</value>
+  </data>
+  <data name="ResGlobalServiceExchange" xml:space="preserve">
+    <value>AppleCare</value>
+  </data>
+  <data name="ResGlobalServiceExchangeHelp" xml:space="preserve">
+    <value>Contrôle l'accès à la page AppleCare dans la rubrique Apple.</value>
+  </data>
+  <data name="ResJasperIntegration" xml:space="preserve">
+    <value>Intégration Jasper</value>
+  </data>
+  <data name="ResJasperIntegrationHelp" xml:space="preserve">
+    <value>Gérez les paramètres d'intégration Jasper.</value>
+  </data>
+  <data name="ResLifecycleNotifications" xml:space="preserve">
+    <value>Notifications relatives au cycle de vie</value>
+  </data>
+  <data name="ResLifecycleNotificationsHelp" xml:space="preserve">
+    <value>Accéder aux notifications du cycle de vie dans Détails du terminal.</value>
+  </data>
+  <data name="ResMutualTlsAuthentication" xml:space="preserve">
+    <value>Authentification Mutual TLS</value>
+  </data>
+  <data name="ResMutualTlsAuthenticationHelp" xml:space="preserve">
+    <value>Configurer les paramètres d'authentification TLS mutuelle entre Workspace ONE Intelligent Hub et le serveur Workspace ONE UEM</value>
+  </data>
+  <data name="ResNotifications" xml:space="preserve">
+    <value>Notifications</value>
+  </data>
+  <data name="ResNotificationsHelp" xml:space="preserve">
+    <value>Afficher et interagir avec les notifications administratives à l'échelle de la console</value>
+  </data>
+  <data name="ResOverrideJobLogLevel" xml:space="preserve">
+    <value>Remplacer le niveau de journalisation des tâches</value>
+  </data>
+  <data name="ResOverrideJobLogLevelHelp" xml:space="preserve">
+    <value>Accéder aux paramètres du niveau de journalisation de la tâche de remplacement</value>
+  </data>
+  <data name="ResProductProvisioning" xml:space="preserve">
+    <value>Provisionnement de produit</value>
+  </data>
+  <data name="ResProductProvisioningHelp" xml:space="preserve">
+    <value>Gérer les paramètres de provisionnement du produit au niveau du groupe.</value>
+  </data>
+  <data name="ResProducts" xml:space="preserve">
+    <value>Produits</value>
+  </data>
+  <data name="ResProductSets" xml:space="preserve">
+    <value>Ensembles de produits</value>
+  </data>
+  <data name="ResProductSetsHelp" xml:space="preserve">
+    <value>Possibilité d'afficher et de gérer les ensembles de produits.</value>
+  </data>
+  <data name="ResProductsHelp" xml:space="preserve">
+    <value>Permet d'accéder à la collection de produits via les API REST de la console.</value>
+  </data>
+  <data name="RestAPIAirWatchEducationWrite" xml:space="preserve">
+    <value>API REST d'écriture des paramètres Éducation</value>
+  </data>
+  <data name="RestAPIAirWatchEducationWriteHelp" xml:space="preserve">
+    <value>API REST d'enregistrement et de modification des paramètres Education</value>
+  </data>
+  <data name="RestApiCartDelete" xml:space="preserve">
+    <value>API REST de suppression de chariot</value>
+  </data>
+  <data name="RestApiCartDeleteHelp" xml:space="preserve">
+    <value>API REST pour la suppression des données du chariot</value>
+  </data>
+  <data name="RestApiCartWrite" xml:space="preserve">
+    <value>API REST d'écriture de chariot</value>
+  </data>
+  <data name="RestApiCartWriteHelp" xml:space="preserve">
+    <value>API REST pour l'enregistrement et la modification des données du chariot</value>
+  </data>
+  <data name="RestApiClassAssignmentSave" xml:space="preserve">
+    <value>API REST d'enregistrement des attributions de cours</value>
+  </data>
+  <data name="RestApiClassAssignmentSaveHelp" xml:space="preserve">
+    <value>Appel de l'API REST pour enregistrer les attributions de cours</value>
+  </data>
+  <data name="RestAPIClassDelete" xml:space="preserve">
+    <value>API REST de suppression de cours</value>
+  </data>
+  <data name="RestAPIClassDeleteHelp" xml:space="preserve">
+    <value>API REST de suppression des données d'un cours</value>
+  </data>
+  <data name="RestAPIClassLoad" xml:space="preserve">
+    <value>API REST de lecture de cours</value>
+  </data>
+  <data name="RestAPIClassLoadHelp" xml:space="preserve">
+    <value>API REST d'affichage des données d'un cours</value>
+  </data>
+  <data name="RestAPIClassWrite" xml:space="preserve">
+    <value>API REST d'écriture de cours</value>
+  </data>
+  <data name="RestAPIClassWriteHelp" xml:space="preserve">
+    <value>API REST d'enregistrement et de modification des données d'un cours</value>
+  </data>
+  <data name="RestApiEduAppsForDeviceRead" xml:space="preserve">
+    <value>Applications de l'API REST pour la lecture de terminal</value>
+  </data>
+  <data name="RestApiEduAppsForDeviceReadhelp" xml:space="preserve">
+    <value>API REST pour l'obtention d'une liste d'applications valables pour un terminal</value>
+  </data>
+  <data name="RestAPILoadEducation" xml:space="preserve">
+    <value>API REST de lecture des paramètres Éducation</value>
+  </data>
+  <data name="RestAPILoadEducationHelp" xml:space="preserve">
+    <value>REST API d'affichage des paramètres Education</value>
+  </data>
+  <data name="RestApiPersonEnrollmentUserMapWrite" xml:space="preserve">
+    <value>API REST de mappage d'Apple School Manager</value>
+  </data>
+  <data name="RestApiPersonEnrollmentUserMapWriteHelp" xml:space="preserve">
+    <value>API REST pour le mappage d'un utilisateur d'inscription avec un membre d'Apple School Manager</value>
+  </data>
+  <data name="RestApiRosterSyncRead" xml:space="preserve">
+    <value>API REST de lecture de la synchronisation d'Apple School Manager</value>
+  </data>
+  <data name="RestApiRosterSyncReadHelp" xml:space="preserve">
+    <value>API REST pour la vérification de l'état de synchronisation d'Apple School Manager</value>
+  </data>
+  <data name="RestApiRosterSyncWrite" xml:space="preserve">
+    <value>API REST d'écriture Apple School Manager</value>
+  </data>
+  <data name="RestApiRosterSyncWriteHelp" xml:space="preserve">
+    <value>API REST pour l'initialisation de la synchronisation d'Apple School Manager</value>
+  </data>
+  <data name="RestApiUpdatesPolicyDelete" xml:space="preserve">
+    <value>Accès à la suppression des stratégies de mise à jour</value>
+  </data>
+  <data name="RestApiUpdatesPolicyDeleteHelp" xml:space="preserve">
+    <value>Autorise l'accès à toutes les API SUPPRIMER dans la collecte de stratégies de mise à jour.</value>
+  </data>
+  <data name="RestApiUpdatesPolicyExecute" xml:space="preserve">
+    <value>Accès à l'exécution des stratégies de mise à jour</value>
+  </data>
+  <data name="RestApiUpdatesPolicyExecuteHelp" xml:space="preserve">
+    <value>Autorise l'accès à toutes les API EXÉCUTER dans la collecte de stratégies de mise à jour.</value>
+  </data>
+  <data name="RestApiUpdatesPolicyRead" xml:space="preserve">
+    <value>Accès en lecture des stratégies de mise à jour</value>
+  </data>
+  <data name="RestApiUpdatesPolicyReadHelp" xml:space="preserve">
+    <value>Autorise l'accès à toutes les API LECTURE seule dans la collecte de stratégies de mise à jour.</value>
+  </data>
+  <data name="RestApiUpdatesPolicyWrite" xml:space="preserve">
+    <value>Accès en écriture des stratégies de mise à jour</value>
+  </data>
+  <data name="RestApiUpdatesPolicyWriteHelp" xml:space="preserve">
+    <value>Autorise l'accès à toutes les API ÉCRITURE dans la collecte de stratégies de mise à jour.</value>
+  </data>
+  <data name="RestEnterpiseIntegration" xml:space="preserve">
+    <value>REST de l'intégration d'entreprise</value>
+  </data>
+  <data name="RestEnterpiseIntegrationHelp" xml:space="preserve">
+    <value>API REST pour l'intégration d'entreprise</value>
+  </data>
+  <data name="RestrictedActionsSec" xml:space="preserve">
+    <value>Actions restreintes</value>
+  </data>
+  <data name="RestrictedActionsSecHelp" xml:space="preserve">
+    <value>Autorise l'affichage de l'écran d'actions restreintes.</value>
+  </data>
+  <data name="RestrictionsDD" xml:space="preserve">
+    <value>Restrictions</value>
+  </data>
+  <data name="RestrictionsDDHelp" xml:space="preserve">
+    <value>Demandez les restrictions actuellement imposées à un terminal.</value>
+  </data>
+  <data name="ResVideo" xml:space="preserve">
+    <value>Vidéo</value>
+  </data>
+  <data name="ResVideoHelp" xml:space="preserve">
+    <value>Gérer les paramètres de l'application vidéo</value>
+  </data>
+  <data name="ResWebApps" xml:space="preserve">
+    <value>Applications Web</value>
+  </data>
+  <data name="ResWebAppsHelp" xml:space="preserve">
+    <value>Attribuer et gérer les applications Web</value>
+  </data>
+  <data name="RetentionAd" xml:space="preserve">
+    <value>Rétention</value>
+  </data>
+  <data name="RetentionAdHelp" xml:space="preserve">
+    <value>Permet de purger les alertes</value>
+  </data>
+  <data name="RevokeCertificateHelp" xml:space="preserve">
+    <value>Permet d'annuler un certificat. 
+</value>
+  </data>
+  <data name="RotateRecoveryKeyHelp" xml:space="preserve">
+    <value>Permet aux administrateurs d'accéder à la rotation à la demande d'une clé de récupération personnelle de terminal macOS chiffré.</value>
+  </data>
+  <data name="RoutingPoliciesHub" xml:space="preserve">
+    <value>Politiques de routage</value>
+  </data>
+  <data name="RoutingPoliciesHubHelp" xml:space="preserve">
+    <value>Affichez et gérez les politiques de routage des alertes.</value>
+  </data>
+  <data name="SaveListViewFilters" xml:space="preserve">
+    <value>Enregistrer les filtres de l'affichage en liste</value>
+  </data>
+  <data name="SaveListViewFiltersHelp" xml:space="preserve">
+    <value>Permet à l'administrateur d'enregistrer des filtres sur les pages d'affichage en liste</value>
+  </data>
+  <data name="ScepApple" xml:space="preserve">
+    <value>SCEP</value>
+  </data>
+  <data name="ScepAppleHelp" xml:space="preserve">
+    <value>Contrôle l'accès à la page SCEP sous l'option iOS.</value>
+  </data>
+  <data name="ScepCertificateHelp" xml:space="preserve">
+    <value>Permet d'accéder à l'outil de certificat SCEP. </value>
+  </data>
+  <data name="SdkAnalyticsAb" xml:space="preserve">
+    <value>Analyse SDK</value>
+  </data>
+  <data name="SdkAnalyticsAbHelp" xml:space="preserve">
+    <value>Contrôle l'accès à la page Analyse SDK pour la gestion d'applications.</value>
+  </data>
+  <data name="SdkIos" xml:space="preserve">
+    <value>SDK</value>
+  </data>
+  <data name="SdkIosHelp" xml:space="preserve">
+    <value>Paramètres de configuration de la sécurité de l'application SDK.</value>
+  </data>
+  <data name="SearchDevicesDM" xml:space="preserve">
+    <value>Rechercher des terminaux</value>
+  </data>
+  <data name="SearchDevicesDMHelp" xml:space="preserve">
+    <value>Accédez au menu de recherche de terminaux via la gestion de terminaux.</value>
+  </data>
+  <data name="SearchNotesHelp" xml:space="preserve">
+    <value>Autorise la recherche de notes et d'étiquettes</value>
+  </data>
+  <data name="SearchUserAccounts" xml:space="preserve">
+    <value>Rechercher</value>
+  </data>
+  <data name="SearchUserAccountsHelp" xml:space="preserve">
+    <value>Accéder à l'option Utilisateur de la barre de recherche rapide.</value>
+  </data>
+  <data name="SecureChannelCertificateHelp" xml:space="preserve">
+    <value>Télécharger le certificat pour sécuriser le canal.
+</value>
+  </data>
+  <data name="SecurityInfoDD" xml:space="preserve">
+    <value>Informations de sécurité</value>
+  </data>
+  <data name="SecurityInfoDDHelp" xml:space="preserve">
+    <value>Accédez aux informations d'audit de sécurité relatives à un terminal.</value>
+  </data>
+  <data name="SecuritySec" xml:space="preserve">
+    <value>Sécurité</value>
+  </data>
+  <data name="SecuritySecHelp" xml:space="preserve">
+    <value>Autorise l'affichage de l'écran de sécurité.</value>
+  </data>
+  <data name="ServiceUrlsHelp" xml:space="preserve">
+    <value>Permet de modifier les URL de service, par exemple, les points de terminaison du fournisseur d'identités.
+</value>
+  </data>
+  <data name="SettingsAndPoliciesSet" xml:space="preserve">
+    <value>Paramètres et politiques</value>
+  </data>
+  <data name="SettingsAndPoliciesSetHelp" xml:space="preserve">
+    <value>Contrôle l'accès aux pages de politiques et paramètres des applications.</value>
+  </data>
+  <data name="SettingsAttributeHelp" xml:space="preserve">
+    <value>Contrôle l'accès à la page Attribut sous Général. Accédez à Configuration\Paramètres système\Terminal\Général</value>
+  </data>
+  <data name="SettingsAuditAd" xml:space="preserve">
+    <value>Audit des paramètres</value>
+  </data>
+  <data name="SettingsAuditAdHelp" xml:space="preserve">
+    <value>Active/Désactive l'audit des paramètres à travers les codes systèmes.</value>
+  </data>
+  <data name="SettingsDeviceAdvanced" xml:space="preserve">
+    <value>Réglages avancés des terminaux</value>
+  </data>
+  <data name="SettingsDeviceAdvancedHelp" xml:space="preserve">
+    <value>Permet d'accéder à la page des paramètres avancés sous Terminaux et utilisateurs. Accédez à la page Configuration\Paramètres Système\Terminaux et utilisateurs\Avancé.</value>
+  </data>
+  <data name="SettingsDeviceEnrollmentProgramHelp" xml:space="preserve">
+    <value>Contrôle l'accès à Programme d'inscription des terminaux. Accédez à Configuration\Paramètres système\Terminal\Apple</value>
+  </data>
+  <data name="SettingsDeviceGeneralAdvanced" xml:space="preserve">
+    <value>Paramètres généraux avancés des terminaux</value>
+  </data>
+  <data name="SettingsDeviceGeneralAdvancedHelp" xml:space="preserve">
+    <value>Permet d'accéder à la page Avancé sous Général. Accédez à la page Paramètres\Terminaux et utilisateurs\Général\Avancé</value>
+  </data>
+  <data name="SettingsEm" xml:space="preserve">
+    <value>Paramètres</value>
+  </data>
+  <data name="SettingsEmHelp" xml:space="preserve">
+    <value>Gère l'accès aux paramètres de messagerie.</value>
+  </data>
+  <data name="SettingsEnrollmentUserPasswordPolicyEditHelp" xml:space="preserve">
+    <value>Contrôle l'accès en modification à la page Paramètres des mots de passe sous Terminaux et utilisateurs. Accédez à Configuration \ Paramètres des terminaux et des utilisateurs\Général\Sécurité \Mots de passe</value>
+  </data>
+  <data name="SettingsEnrollmentUserPasswordPolicyViewHelp" xml:space="preserve">
+    <value>Contrôle l'accès à l'affichage de la page Paramètres des mots de passe sous Terminaux et utilisateurs. Accédez à Configuration \ Paramètres des terminaux et des utilisateurs\Général\Sécurité \Mots de passe</value>
+  </data>
+  <data name="SettingsHeaderBasedAuthenticationHelp" xml:space="preserve">
+    <value>Permet l'accès à la page Authentification externe sous Intégration d'entreprise. Accédez à Paramètres\Système\Intégration d'entreprise</value>
+  </data>
+  <data name="SettingsLinux" xml:space="preserve">
+    <value>Paramètres Linux</value>
+  </data>
+  <data name="SettingsLinuxAgentApplication" xml:space="preserve">
+    <value>Paramètres d'Intelligent Hub pour l'application Linux</value>
+  </data>
+  <data name="SettingsLinuxAgentApplicationHelp" xml:space="preserve">
+    <value>Contrôle l'accès à la page des paramètres de l'application Intelligent Hub pour Linux</value>
+  </data>
+  <data name="SettingsLinuxAgentSettings" xml:space="preserve">
+    <value>Paramètres Linux pour Intelligent Hub</value>
+  </data>
+  <data name="SettingsLinuxAgentSettingsHelp" xml:space="preserve">
+    <value>Contrôle l'accès à la page des paramètres d'Intelligent Hub sous Linux. Accédez à Paramètres\Terminaux et utilisateurs\Linux</value>
+  </data>
+  <data name="SettingsLinuxHelp" xml:space="preserve">
+    <value>Contrôle l'accès à la page des paramètres d'Intelligent Hub sous Linux. Accédez à Paramètres\Terminaux et utilisateurs\Linux</value>
+  </data>
+  <data name="SettingsOnlyValidAtPartnerOrCustomer" xml:space="preserve">
+    <value>Les notifications SaaS ne peuvent pas être affichées au niveau du groupe organisationnel actuel. Sélectionnez un groupe au niveau du client ou du partenaire pour afficher les notifications SaaS.</value>
+  </data>
+  <data name="SettingsOverridesAd" xml:space="preserve">
+    <value>Remplacements des paramètres</value>
+  </data>
+  <data name="SettingsOverridesAdHelp" xml:space="preserve">
+    <value>Afficher et modifier les remplacements des journaux d'événements.</value>
+  </data>
+  <data name="SettingsQnxAgentSettingsHelp" xml:space="preserve">
+    <value>Contrôle l'accès à la page des paramètres de l'Agent sous Qnx. Accédez à Configuration\Paramètres système\Terminal\Qnx</value>
+  </data>
+  <data name="SharedDevicesSet" xml:space="preserve">
+    <value>Terminaux partagés</value>
+  </data>
+  <data name="SharedDevicesSetHelp" xml:space="preserve">
+    <value>Contrôle l'accès à la page de terminaux partagés</value>
+  </data>
+  <data name="SmartGroupsAb" xml:space="preserve">
+    <value>Smart Groups</value>
+  </data>
+  <data name="SmartGroupsAbHelp" xml:space="preserve">
+    <value>Modifiez les attributions des Smart Groups d'applications.</value>
+  </data>
+  <data name="SmartGroupsGr" xml:space="preserve">
+    <value>Smart Groups</value>
+  </data>
+  <data name="SmartGroupsGrHelp" xml:space="preserve">
+    <value>Affichez, modifiez et supprimez des Smart Groups.</value>
+  </data>
+  <data name="SoftwareInventoryWM" xml:space="preserve">
+    <value>Inventaire des logiciels</value>
+  </data>
+  <data name="SoftwareInventoryWMHelp" xml:space="preserve">
+    <value>Accédez à la page d'inventaire logiciel WinMo.</value>
+  </data>
+  <data name="SslPinningSec" xml:space="preserve">
+    <value>Épinglage SSL</value>
+  </data>
+  <data name="SslPinningSecHelp" xml:space="preserve">
+    <value>Autorise l'affichage de l'écran d'épinglage SSL.</value>
+  </data>
+  <data name="StagingPPN" xml:space="preserve">
+    <value>Préenrôlement</value>
+  </data>
+  <data name="StagingPPNHelp" xml:space="preserve">
+    <value>Gérez les définitions de préenrôlement pour les politiques de provisionnement.</value>
+  </data>
+  <data name="StartAwcm" xml:space="preserve">
+    <value>Démarrer AWCM</value>
+  </data>
+  <data name="StatusHistoryDD" xml:space="preserve">
+    <value>Historique d'état</value>
+  </data>
+  <data name="StatusHistoryDDHelp" xml:space="preserve">
+    <value>Affichez l'historique des états d'inscription et de conformité pour un terminal.</value>
+  </data>
+  <data name="StopAwcm" xml:space="preserve">
+    <value>Arrêter AWCM</value>
+  </data>
+  <data name="SummaryInfoPM" xml:space="preserve">
+    <value>Informations récapitulatives</value>
+  </data>
+  <data name="SummaryInfoPMHelp" xml:space="preserve">
+    <value>Contrôle l'accès à la page des informations récapitulatives de l'imprimante</value>
+  </data>
+  <data name="SuspendBitlockerEncryptionHelp" xml:space="preserve">
+    <value>Pour la configuration, suspendez le chiffrement BitLocker sur la page Détails du terminal</value>
+  </data>
+  <data name="SymbianDev" xml:space="preserve">
+    <value>Symbian</value>
+  </data>
+  <data name="SymbianDevHelp" xml:space="preserve">
+    <value>Permet d'accéder à la page Symbian sous Terminal.</value>
+  </data>
+  <data name="SyncDD" xml:space="preserve">
+    <value>Paramètres de synchronisation du terminal</value>
+  </data>
+  <data name="SyncDDHelp" xml:space="preserve">
+    <value>Synchronisez à distance les paramètres du terminal, comme les profils et les applications.</value>
+  </data>
+  <data name="SyncDeviceEnrollmentProgram" xml:space="preserve">
+    <value>Programme d'inscription - Synchronisation des terminaux</value>
+  </data>
+  <data name="SyncDeviceEnrollmentProgramHelp" xml:space="preserve">
+    <value>Contrôle l'accès à la synchronisation des terminaux DEP. Accédez à la page Statut d'enrôlement</value>
+  </data>
+  <data name="SyncDeviceSensors" xml:space="preserve">
+    <value>Synchroniser les capteurs de terminal</value>
+  </data>
+  <data name="SyncDeviceSensorsHelp" xml:space="preserve">
+    <value>Contrôle l'accès aux demandes d'actualisation des données de capteur depuis le terminal.</value>
+  </data>
+  <data name="SystemCodeAuditAd" xml:space="preserve">
+    <value>Audit du code système</value>
+  </data>
+  <data name="SystemCodeAuditAdHelp" xml:space="preserve">
+    <value>Contrôle l'accès à l'audit du code système.</value>
+  </data>
+  <data name="SystemHealthSettingsAd" xml:space="preserve">
+    <value>Paramètres de la santé du système</value>
+  </data>
+  <data name="SystemHealthSettingsAdHelp" xml:space="preserve">
+    <value>Affichez et modifiez les paramètres de la santé du système.</value>
+  </data>
+  <data name="SystemHealthSettingsEditHelp" xml:space="preserve">
+    <value>Permet de modifier les paramètres Santé du système. Accédez à : Menu\Configuration\Paramètres système\Admin\Diagnostics\Santé du système</value>
+  </data>
+  <data name="SystemHealthSettingsViewHelp" xml:space="preserve">
+    <value>Permet d'afficher les paramètres Santé du système. Accédez à : Menu\Configuration\Paramètres système\Admin\Diagnostics\Santé du système</value>
+  </data>
+  <data name="SystemInternalHub" xml:space="preserve">
+    <value>Système interne</value>
+  </data>
+  <data name="SystemInternalHubHelp" xml:space="preserve">
+    <value>Générez des rapports de facturation interne.</value>
+  </data>
+  <data name="TagManagementViewHelp" xml:space="preserve">
+    <value>Permet d'afficher la gestion des étiquettes</value>
+  </data>
+  <data name="TagsApi" xml:space="preserve">
+    <value>Balises</value>
+  </data>
+  <data name="TagsApiHelp" xml:space="preserve">
+    <value>Accédez à toutes les API d'étiquette.</value>
+  </data>
+  <data name="TagsDev" xml:space="preserve">
+    <value>Balises</value>
+  </data>
+  <data name="TagsDevHelp" xml:space="preserve">
+    <value>Autorise l'accès à la gestion des étiquettes.</value>
+  </data>
+  <data name="TargetedLogDeviceEditHelp" xml:space="preserve">
+    <value>Permet de modifier la journalisation ciblée du terminal. Accédez à Tableaux de bord\Tableau de bord des terminaux</value>
+  </data>
+  <data name="TargetedLogDeviceViewHelp" xml:space="preserve">
+    <value>Permet d'afficher la journalisation ciblée du terminal. Accédez à Tableaux de bord\Tableau de bord des terminaux</value>
+  </data>
+  <data name="TelecomBasicSettingsViewHelp" xml:space="preserve">
+    <value>Gère l'accès à l'assistant de configuration des paramètres basiques des télécoms</value>
+  </data>
+  <data name="TelecomDD" xml:space="preserve">
+    <value>Télécoms</value>
+  </data>
+  <data name="TelecomDDHelp" xml:space="preserve">
+    <value>Accédez aux données de télécommunication du terminal dans les détails du terminal.</value>
+  </data>
+  <data name="TelecomHub" xml:space="preserve">
+    <value>Télécoms</value>
+  </data>
+  <data name="TelecomHubHelp" xml:space="preserve">
+    <value>Générez des rapports pour la gestion des télécoms.</value>
+  </data>
+  <data name="TelecomManagementTel" xml:space="preserve">
+    <value>Gestion des télécoms</value>
+  </data>
+  <data name="TelecomManagementTelHelp" xml:space="preserve">
+    <value>Permet d'accéder au module de télécom. Affiche les éléments du menu disponibles sous Télécom.</value>
+  </data>
+  <data name="TelecomSettingsSys" xml:space="preserve">
+    <value>Paramètres des télécoms</value>
+  </data>
+  <data name="TelecomSettingsSysHelp" xml:space="preserve">
+    <value>Gère l'accès à la page des paramètres Télécom.</value>
+  </data>
+  <data name="TenantStorageGr" xml:space="preserve">
+    <value>Stockage de l'utilisateur</value>
+  </data>
+  <data name="TenantStorageGrHelp" xml:space="preserve">
+    <value>Pour usage interne : contrôle l'accès à la page Stockage du locataire.</value>
+  </data>
+  <data name="TenantStorageHelp" xml:space="preserve">
+    <value>Pour usage interne, visible uniquement par le rôle d'administrateur système. Contrôle l'accès à la page Paramètres/Admin/Stockage pour le stockage du locataire.</value>
+  </data>
+  <data name="TermsOfUseAdmin" xml:space="preserve">
+    <value>Conditions d'utilisation</value>
+  </data>
+  <data name="TermsOfUseAdminHelp" xml:space="preserve">
+    <value>Afficher les conditions d'utilisation du compte administrateur</value>
+  </data>
+  <data name="TermsOfUseSys" xml:space="preserve">
+    <value>Conditions d'utilisation</value>
+  </data>
+  <data name="TermsOfUseSysHelp" xml:space="preserve">
+    <value>Gère l'accès à la page des conditions d'utilisation dans Paramètres Système et Inscription de terminaux.</value>
+  </data>
+  <data name="TestModeEM" xml:space="preserve">
+    <value>Mode Test</value>
+  </data>
+  <data name="TestModeEMHelp" xml:space="preserve">
+    <value>Modifiez le mode Test pour les politiques de conformité de la gestion des e-mails.</value>
+  </data>
+  <data name="TimeScheduleDM" xml:space="preserve">
+    <value>Horaire</value>
+  </data>
+  <data name="TimeScheduleDMHelp" xml:space="preserve">
+    <value>Affichez et modifiez les calendriers des profils.</value>
+  </data>
+  <data name="TimeScheduleHelp" xml:space="preserve">
+    <value>Permet d'afficher/de modifier les paramètres d'horaire. 
+</value>
+  </data>
+  <data name="TroubleshootingSys" xml:space="preserve">
+    <value>Dépannage</value>
+  </data>
+  <data name="TroubleshootingSysHelp" xml:space="preserve">
+    <value>Contrôle l'accès aux pages de journaux et du dépannage.</value>
+  </data>
+  <data name="UemNotificationsInfo" xml:space="preserve">
+    <value>Inclut des notifications pour Workspace ONE UEM et Workspace ONE Assist.</value>
+  </data>
+  <data name="UnApproveUpdate" xml:space="preserve">
+    <value>Désapprouver la mise à jour</value>
+  </data>
+  <data name="UnApproveUpdateHelp" xml:space="preserve">
+    <value>Permet d'émettre une commande de désapprobation de mise à jour sur les terminaux.</value>
+  </data>
+  <data name="UnApproveUpdates" xml:space="preserve">
+    <value>Désapprouver la mise à jour</value>
+  </data>
+  <data name="UnManagedWipeProtectionHelp" xml:space="preserve">
+    <value>Paramètres de protection contre l'effacement des terminaux non gérés</value>
+  </data>
+  <data name="UpdateEditAssignment" xml:space="preserve">
+    <value>Mettre à jour la modification d'attribution</value>
+  </data>
+  <data name="UpdateEditAssignmentHelp" xml:space="preserve">
+    <value>Permet de modifier l'attribution de la mise à jour aux Smart Groups</value>
+  </data>
+  <data name="UploadCctk" xml:space="preserve">
+    <value>Télécharger Cctk</value>
+  </data>
+  <data name="UploadCctkHelp" xml:space="preserve">
+    <value>Permet à un administrateur de télécharger un fichier de module CCTK pour la configuration du déploiement afin de configurer le BIOS.</value>
+  </data>
+  <data name="UploadUnattendXml" xml:space="preserve">
+    <value>Télécharger Xml sans surveillance</value>
+  </data>
+  <data name="UploadUnattendXmlHelp" xml:space="preserve">
+    <value>Permet à un administrateur de télécharger un fichier XML sans assistance pour la configuration du déploiement.</value>
+  </data>
+  <data name="UsageTel" xml:space="preserve">
+    <value>Utilisation</value>
+  </data>
+  <data name="UsageTelHelp" xml:space="preserve">
+    <value>Afficher les détails d'utilisation télécom et le tableau de bord</value>
+  </data>
+  <data name="UserCategoriesDU" xml:space="preserve">
+    <value>Catégories d'utilisateurs</value>
+  </data>
+  <data name="UserCategoriesDUHelp" xml:space="preserve">
+    <value>Contrôle l'accès aux catégories d'utilisateurs dans les paramètres du système.</value>
+  </data>
+  <data name="UserDetailUserAccounts" xml:space="preserve">
+    <value>Détails de l'utilisateur</value>
+  </data>
+  <data name="UserDetailUserAccountsHelp" xml:space="preserve">
+    <value>Accédez à la page Afficher les détails de l'utilisateur.</value>
+  </data>
+  <data name="UserInfoDD" xml:space="preserve">
+    <value>Informations sur l'utilisateur</value>
+  </data>
+  <data name="UserInfoDDHelp" xml:space="preserve">
+    <value>Accédez aux informations utilisateur dans les détails du terminal.</value>
+  </data>
+  <data name="UserManagementHub" xml:space="preserve">
+    <value>Gestion des utilisateurs</value>
+  </data>
+  <data name="UserManagementHubHelp" xml:space="preserve">
+    <value>Générez des rapports sur la gestion des utilisateurs.</value>
+  </data>
+  <data name="UserMigrationHelp" xml:space="preserve">
+    <value>Permet d'afficher les utilisateurs d'inscription simple qui peuvent être migrés vers un compte LDAP. 
+</value>
+  </data>
+  <data name="UserRegistrationDashboard" xml:space="preserve">
+    <value>Inscription d'utilisateur</value>
+  </data>
+  <data name="UserRegistrationDashboardHelp" xml:space="preserve">
+    <value>Accéder au lien de l'état d'inscription depuis les pages Tableau de bord et Comptes utilisateur.</value>
+  </data>
+  <data name="UserRegistrationEnrollmentStatus" xml:space="preserve">
+    <value>Inscription d'utilisateur</value>
+  </data>
+  <data name="UserRegistrationEnrollmentStatusHelp" xml:space="preserve">
+    <value>Accéder à l'inscription des utilisateurs sur la page de l'état d'enrôlement.</value>
+  </data>
+  <data name="UserRegistrationHelp" xml:space="preserve">
+    <value>Permet d'accéder au lien d'inscription d'utilisateur sur la page Comptes utilisateurs.</value>
+  </data>
+  <data name="UserRoleHelp" xml:space="preserve">
+    <value>Permet d'accéder aux rôles dans la page comptes d'utilisateurs.
+</value>
+  </data>
+  <data name="UsersRESTSystem" xml:space="preserve">
+    <value>Utilisateurs</value>
+  </data>
+  <data name="UsersRESTSystemHelp" xml:space="preserve">
+    <value>API REST des comptes utilisateur pour l'inscription</value>
+  </data>
+  <data name="UserStorageSet" xml:space="preserve">
+    <value>Stockage de l'utilisateur</value>
+  </data>
+  <data name="UserStorageSetHelp" xml:space="preserve">
+    <value>Gérez les paramètres de stockage du contenu des utilisateurs finaux.</value>
+  </data>
+  <data name="UserTrackingHub" xml:space="preserve">
+    <value>Suivi des utilisateurs</value>
+  </data>
+  <data name="UserTrackingHubHelp" xml:space="preserve">
+    <value>Générez des rapports pour le suivi utilisateur.</value>
+  </data>
+  <data name="VideoManagementSet" xml:space="preserve">
+    <value>Gestion des vidéos</value>
+  </data>
+  <data name="VideoManagementSetHelp" xml:space="preserve">
+    <value>Ajouter des vidéos aux chaînes</value>
+  </data>
+  <data name="ViewAd" xml:space="preserve">
+    <value>Afficher</value>
+  </data>
+  <data name="ViewAdHelp" xml:space="preserve">
+    <value>Permet d'afficher les paramètres du cache.</value>
+  </data>
+  <data name="ViewAdminAccount" xml:space="preserve">
+    <value>Afficher</value>
+  </data>
+  <data name="ViewAdminAccountHelp" xml:space="preserve">
+    <value>Affichage de comptes administrateur</value>
+  </data>
+  <data name="ViewAdminGroup" xml:space="preserve">
+    <value>Afficher</value>
+  </data>
+  <data name="ViewAdminGroupHelp" xml:space="preserve">
+    <value>Afficher la page des groupes d'administrateurs.</value>
+  </data>
+  <data name="ViewAdminRoles" xml:space="preserve">
+    <value>Afficher</value>
+  </data>
+  <data name="ViewAdminRolesHelp" xml:space="preserve">
+    <value>Afficher la page des rôles des administrateurs.</value>
+  </data>
+  <data name="ViewAn" xml:space="preserve">
+    <value>Afficher</value>
+  </data>
+  <data name="ViewAnHelp" xml:space="preserve">
+    <value>Contrôle l'accès à la page Android dans la section Terminal.</value>
+  </data>
+  <data name="ViewApple" xml:space="preserve">
+    <value>Afficher</value>
+  </data>
+  <data name="ViewAppleHelp" xml:space="preserve">
+    <value>Contrôle l'accès à la page Apple depuis la page Terminal.</value>
+  </data>
+  <data name="ViewBaselines" xml:space="preserve">
+    <value>Afficher les lignes de base</value>
+  </data>
+  <data name="ViewBaselinesHelp" xml:space="preserve">
+    <value>Permet d'accéder à l'affichage des lignes de base.</value>
+  </data>
+  <data name="ViewCM" xml:space="preserve">
+    <value>Afficher</value>
+  </data>
+  <data name="ViewCMHelp" xml:space="preserve">
+    <value>Affichez la page de gestion de contenu.</value>
+  </data>
+  <data name="ViewCustomReportSubscriptionHelp" xml:space="preserve">
+    <value>Contrôle l'accès à l'affichage de l'abonnement des rapports personnalisés. Accédez à Hub\Rapports et analyses\Rapports personnalisés\Abonnements</value>
+  </data>
+  <data name="ViewDashboardDM" xml:space="preserve">
+    <value>Afficher le tableau de bord</value>
+  </data>
+  <data name="ViewDashboardDMHelp" xml:space="preserve">
+    <value>Affichez la page du tableau de bord des terminaux dans la gestion de terminaux.</value>
+  </data>
+  <data name="ViewDeviceManagement" xml:space="preserve">
+    <value>Afficher</value>
+  </data>
+  <data name="ViewDeviceManagementHelp" xml:space="preserve">
+    <value>Affichez le module de gestion de terminaux.</value>
+  </data>
+  <data name="ViewDevicesAb" xml:space="preserve">
+    <value>Afficher les terminaux</value>
+  </data>
+  <data name="ViewDevicesAbHelp" xml:space="preserve">
+    <value>Contrôle l'accès à l'affichage des terminaux associés à une application.</value>
+  </data>
+  <data name="ViewDevicesCM" xml:space="preserve">
+    <value>Afficher les terminaux</value>
+  </data>
+  <data name="ViewDevicesCMHelp" xml:space="preserve">
+    <value>Affichez les terminaux par contenu attribué dans la page de gestion de contenu.</value>
+  </data>
+  <data name="ViewDevicesDM" xml:space="preserve">
+    <value>Afficher les terminaux</value>
+  </data>
+  <data name="ViewDevicesDMHelp" xml:space="preserve">
+    <value>Accédez à l'icône d'affichage des terminaux dans les profils.</value>
+  </data>
+  <data name="ViewDeviceSensors" xml:space="preserve">
+    <value>Afficher les capteurs de terminal</value>
+  </data>
+  <data name="ViewDeviceSensorsHelp" xml:space="preserve">
+    <value>Contrôle l'accès à l'affichage et à la configuration des détails du capteur de terminal.</value>
+  </data>
+  <data name="ViewDeviceWnsStatus" xml:space="preserve">
+    <value>Afficher l'état WNS du terminal</value>
+  </data>
+  <data name="ViewDeviceWnsStatusHelp" xml:space="preserve">
+    <value>Option permettant d'afficher l'état WNS du terminal.</value>
+  </data>
+  <data name="ViewDM" xml:space="preserve">
+    <value>Afficher</value>
+  </data>
+  <data name="ViewDMHelp" xml:space="preserve">
+    <value>Affichez la page de profils via la gestion de terminaux.</value>
+  </data>
+  <data name="ViewEducationOverviewHelp" xml:space="preserve">
+    <value>Afficher la page d'aperçu d'éducation      </value>
+  </data>
+  <data name="ViewEM" xml:space="preserve">
+    <value>Afficher</value>
+  </data>
+  <data name="ViewEMHelp" xml:space="preserve">
+    <value>Accédez à l'option de menu Gestion des e-mails.</value>
+  </data>
+  <data name="ViewExtendedDeviceInventory" xml:space="preserve">
+    <value>Afficher l'inventaire de terminal complet</value>
+  </data>
+  <data name="ViewExtendedDeviceInventoryHelp" xml:space="preserve">
+    <value>Contrôlez l'accès à l'affichage de l'inventaire de terminal complet.</value>
+  </data>
+  <data name="ViewExtendedDeviceInventoryOnDeviceDetail" xml:space="preserve">
+    <value>Afficher l'inventaire de terminal complet sur la page Détails du terminal</value>
+  </data>
+  <data name="ViewExtendedDeviceInventoryOnDeviceDetailHelp" xml:space="preserve">
+    <value>Contrôlez l'accès à l'affichage de l'inventaire de terminal complet sur la page Détails du terminal.</value>
+  </data>
+  <data name="ViewFileServerConfiguration" xml:space="preserve">
+    <value>Afficher la configuration du serveur de fichiers</value>
+  </data>
+  <data name="ViewFileServerConfigurationHelp" xml:space="preserve">
+    <value>Permet à l'utilisateur d'afficher la grille des serveurs de fichiers et les détails</value>
+  </data>
+  <data name="ViewGen" xml:space="preserve">
+    <value>Afficher</value>
+  </data>
+  <data name="ViewGenHelp" xml:space="preserve">
+    <value>Contrôle l'accès aux pages des terminaux dans les paramètres système.</value>
+  </data>
+  <data name="ViewGr" xml:space="preserve">
+    <value>Afficher</value>
+  </data>
+  <data name="ViewGrHelp" xml:space="preserve">
+    <value>Accéder aux pages de groupe organisationnel.</value>
+  </data>
+  <data name="ViewHA" xml:space="preserve">
+    <value>Afficher</value>
+  </data>
+  <data name="ViewHAHelp" xml:space="preserve">
+    <value>Accédez au module d'alertes.</value>
+  </data>
+  <data name="ViewIos" xml:space="preserve">
+    <value>Afficher</value>
+  </data>
+  <data name="ViewIosHelp" xml:space="preserve">
+    <value>Permet d'accéder à la page iOS sous Terminal.</value>
+  </data>
+  <data name="ViewLinux" xml:space="preserve">
+    <value>Afficher</value>
+  </data>
+  <data name="ViewLinuxHelp" xml:space="preserve">
+    <value>Contrôle l'accès à la page Linux sous Terminal.</value>
+  </data>
+  <data name="ViewNotesHelp" xml:space="preserve">
+    <value>Autorise l'affichage des notes</value>
+  </data>
+  <data name="ViewOemUpdates" xml:space="preserve">
+    <value>Afficher les mises à jour OEM</value>
+  </data>
+  <data name="ViewOemUpdatesHelp" xml:space="preserve">
+    <value>Contrôle l'accès à l'affichage du tableau de bord des mises à jour OEM. Accédez à Menu\Terminaux\Mises à jour OEM</value>
+  </data>
+  <data name="ViewPM" xml:space="preserve">
+    <value>Afficher</value>
+  </data>
+  <data name="ViewPMHelp" xml:space="preserve">
+    <value>Accédez aux pages des paramètres de périphériques.</value>
+  </data>
+  <data name="ViewProvisioningPackages" xml:space="preserve">
+    <value>Afficher les modules de provisionnement</value>
+  </data>
+  <data name="ViewProvisioningPackagesHelp" xml:space="preserve">
+    <value>Contrôler l'accès pour afficher les modules de provisionnement</value>
+  </data>
+  <data name="ViewSet" xml:space="preserve">
+    <value>Afficher</value>
+  </data>
+  <data name="ViewSetHelp" xml:space="preserve">
+    <value>Contrôle l'accès aux pages d'applications dans les paramètres du système.</value>
+  </data>
+  <data name="ViewSys" xml:space="preserve">
+    <value>Afficher</value>
+  </data>
+  <data name="ViewSysHelp" xml:space="preserve">
+    <value>Contrôle l'accès aux paramètres système</value>
+  </data>
+  <data name="ViewTagHelp" xml:space="preserve">
+    <value>Autoriser l'affichage d'une étiquette</value>
+  </data>
+  <data name="ViewTimeWindow" xml:space="preserve">
+    <value>Afficher la fenêtre de temps</value>
+  </data>
+  <data name="ViewTimeWindowHelp" xml:space="preserve">
+    <value>Contrôlez l'accès à l'affichage de la fenêtre de temps.</value>
+  </data>
+  <data name="ViewTimeWindowOnDeviceDetail" xml:space="preserve">
+    <value>Afficher la fenêtre de temps sur la page Détails du terminal</value>
+  </data>
+  <data name="ViewTimeWindowOnDeviceDetailHelp" xml:space="preserve">
+    <value>Contrôlez l'accès à l'affichage de la fenêtre de temps sur la page Détails du terminal.</value>
+  </data>
+  <data name="ViewUG" xml:space="preserve">
+    <value>Afficher</value>
+  </data>
+  <data name="ViewUGHelp" xml:space="preserve">
+    <value>Accédez à la page Groupe d'utilisateurs.</value>
+  </data>
+  <data name="ViewUpdateDevices" xml:space="preserve">
+    <value>Afficher les terminaux à mettre à jour</value>
+  </data>
+  <data name="ViewUpdateDevicesHelp" xml:space="preserve">
+    <value>Contrôle l'accès à l'affichage des terminaux par état de mise à jour. Accédez à Menu\Terminaux\Mise à jour</value>
+  </data>
+  <data name="ViewUpdatesHelp" xml:space="preserve">
+    <value>Contrôle l'accès à l'affichage du tableau de bord des mises à jour. Accédez à Menu\Terminaux\Mises à jour</value>
+  </data>
+  <data name="ViewUserAccounts" xml:space="preserve">
+    <value>Afficher</value>
+  </data>
+  <data name="ViewUserAccountsHelp" xml:space="preserve">
+    <value>Affichez les comptes d'utilisateurs.</value>
+  </data>
+  <data name="ViewUserCategories" xml:space="preserve">
+    <value>Afficher</value>
+  </data>
+  <data name="ViewUserCategoriesHelp" xml:space="preserve">
+    <value>Accédez aux catégories pour les comptes d'utilisateur.</value>
+  </data>
+  <data name="ViewUserDetails" xml:space="preserve">
+    <value>Afficher les détails de l'utilisateur</value>
+  </data>
+  <data name="ViewUserDetailsHelp" xml:space="preserve">
+    <value>Affichez les attributions d'utilisateurs pour les profils utilisateur Chrome OS.</value>
+  </data>
+  <data name="ViewUserRoles" xml:space="preserve">
+    <value>Afficher</value>
+  </data>
+  <data name="ViewUserRolesHelp" xml:space="preserve">
+    <value>Affichez les rôles utilisateur.</value>
+  </data>
+  <data name="ViewWin" xml:space="preserve">
+    <value>Afficher</value>
+  </data>
+  <data name="ViewWindowsTemplateDevicesHelp" xml:space="preserve">
+    <value>Permet à l'administrateur de configurer les paramètres pour afficher sur le tableau de bord de la console les périphériques sur lesquels le module de provisionnement du modèle Windows a été appliqué</value>
+  </data>
+  <data name="ViewWindowsTemplatesHelp" xml:space="preserve">
+    <value>Permet à l'administrateur de configurer les paramètres pour afficher le modèle Windows sur le tableau de bord de la console</value>
+  </data>
+  <data name="ViewWinHelp" xml:space="preserve">
+    <value>Contrôle l'accès à la page Windows depuis la page Terminal.</value>
+  </data>
+  <data name="ViewXmlDM" xml:space="preserve">
+    <value>Afficher le XML</value>
+  </data>
+  <data name="ViewXmlDMHelp" xml:space="preserve">
+    <value>Accédez à l'icône d'affichage du code XML dans les profils.</value>
+  </data>
+  <data name="VmInstanceLockHelp" xml:space="preserve">
+    <value>Verrouiller les instances de machine virtuelle gérées par Horizon FLEX</value>
+  </data>
+  <data name="VmInstanceUnlockHelp" xml:space="preserve">
+    <value>Déverrouiller les instances de machine virtuelle gérées par Horizon FLEX</value>
+  </data>
+  <data name="VmInstanceWipeHelp" xml:space="preserve">
+    <value>Effacer les instances de machine virtuelle gérées par Horizon FLEX</value>
+  </data>
+  <data name="VMwareEmployeeLoginNotification" xml:space="preserve">
+    <value>Notification de connexion d'un employé VMware</value>
+  </data>
+  <data name="VMwareEmployeeLoginNotificationInfo" xml:space="preserve">
+    <value>Activez cette option pour informer les destinataires désignés lorsqu'un employé VMware accède à votre groupe organisationnel client ou partenaire.</value>
+  </data>
+  <data name="WebConsoleLogHelp" xml:space="preserve">
+    <value>Permet d'accéder au journaux d'incident web. 
+</value>
+  </data>
+  <data name="WeblinkPM" xml:space="preserve">
+    <value>Lien Web</value>
+  </data>
+  <data name="WeblinkPMHelp" xml:space="preserve">
+    <value>Contrôle l'accès à la page du lien Web de l'imprimante</value>
+  </data>
+  <data name="WebsiteFiltersSettingsHelp" xml:space="preserve">
+    <value>Contrôle l'accès à l'affichage et la modification des paramètres Filtres de site. Le chemin de navigation est Paramètres\Applications\Intégration d'applications\Filtres de site</value>
+  </data>
+  <data name="WiFiPM" xml:space="preserve">
+    <value>Wi-Fi</value>
+  </data>
+  <data name="WiFiPMHelp" xml:space="preserve">
+    <value>Contrôle l'accès à la page Wi-Fi de l'imprimante</value>
+  </data>
+  <data name="Windows8RtWin" xml:space="preserve">
+    <value>Windows 8/RT</value>
+  </data>
+  <data name="Windows8RtWinHelp" xml:space="preserve">
+    <value>Contrôle l'accès aux paramètres WinRT.</value>
+  </data>
+  <data name="WindowsAppDeploymentsEditHelp" xml:space="preserve">
+    <value>Cette ressource permet aux administrateurs de configurer les paramètres des déploiements d'applications sur la console</value>
+  </data>
+  <data name="WindowsAutoDiscoverySettingsEditHelp" xml:space="preserve">
+    <value>Cette ressource permet à l'administrateur de configurer le mode de détection automatique sur Sur site ou Hébergé dans le Cloud et d'enregistrer un domaine spécifique pour la détection automatique Windows</value>
+  </data>
+  <data name="WindowsAutoEnrollmentSettings" xml:space="preserve">
+    <value>Paramètres d'inscription automatique de Windows</value>
+  </data>
+  <data name="WindowsAutoEnrollmentSettingsHelp" xml:space="preserve">
+    <value>Cette ressource permet aux administrateurs de configurer les paramètres qui s'appliqueront à l'agent de provisionnement qui s'exécute sur le ou les terminaux Windows. </value>
+  </data>
+  <data name="WindowsMobileDD" xml:space="preserve">
+    <value>Windows Mobile</value>
+  </data>
+  <data name="WindowsMobileDDHelp" xml:space="preserve">
+    <value>Gérez les paramètres propres à Windows Mobile dans les détails du terminal.</value>
+  </data>
+  <data name="WindowsMobileWm" xml:space="preserve">
+    <value>Windows Mobile</value>
+  </data>
+  <data name="WindowsMobileWmHelp" xml:space="preserve">
+    <value>Permet d'accéder à la page Windows Mobile sous Terminal.</value>
+  </data>
+  <data name="WindowsPcSet" xml:space="preserve">
+    <value>PC Windows</value>
+  </data>
+  <data name="WindowsPcSetHelp" xml:space="preserve">
+    <value>Contrôle l'accès aux pages PC Windows depuis la page Terminaux.</value>
+  </data>
+  <data name="WindowsPhone8Win" xml:space="preserve">
+    <value>Windows Phone 8</value>
+  </data>
+  <data name="WindowsPhone8WinHelp" xml:space="preserve">
+    <value>Permet d'accéder aux paramètres de Windows Phone</value>
+  </data>
+  <data name="WindowsPhoneHealthAttestationEdit" xml:space="preserve">
+    <value>Modifier l'attestation de santé de WindowsPhone</value>
+  </data>
+  <data name="WindowsPhoneHealthAttestationEditHelp" xml:space="preserve">
+    <value>Cette ressource permet à l'administrateur de configurer les paramètres d'attestation de santé pour les terminaux mobiles Windows 10</value>
+  </data>
+  <data name="WindowsPhoneWin" xml:space="preserve">
+    <value>Windows Phone</value>
+  </data>
+  <data name="WindowsPhoneWinHelp" xml:space="preserve">
+    <value>Contrôle l'accès aux pages Windows Phone dans les paramètres système.</value>
+  </data>
+  <data name="WindowsRuntimeProvisioningHelp" xml:space="preserve">
+    <value>Ces paramètres permettent à un administrateur d'afficher les informations de préparation requises pour le provisionnement en masse des terminaux Windows aux utilisateurs finaux. Cela aide également à configurer les informations de démarrage de tous les terminaux.</value>
+  </data>
+  <data name="WindowsSampleScheduleHelp" xml:space="preserve">
+    <value>Ce groupe de paramètres permet à l'administrateur de définir les intervalles de collecte d'échantillons de données et de paramètres MDM.</value>
+  </data>
+  <data name="WinmoSWInventoryHub" xml:space="preserve">
+    <value>Inventaire S/W de WinMo</value>
+  </data>
+  <data name="WinmoSWInventoryHubHelp" xml:space="preserve">
+    <value>Génère des rapports d'inventaire logiciel WinMo</value>
+  </data>
+  <data name="WipeProtectionDU" xml:space="preserve">
+    <value>Protection contre l'effacement</value>
+  </data>
+  <data name="WipeProtectionDUHelp" xml:space="preserve">
+    <value>Contrôle l'accès à la page de protection contre l'effacement depuis la page Avancé.</value>
+  </data>
+  <data name="WorkflowsDD" xml:space="preserve">
+    <value>Workflows</value>
+  </data>
+  <data name="WorkflowsDDHelp" xml:space="preserve">
+    <value>Affichez l'état de l'exécution des workflows sur le terminal.</value>
+  </data>
+  <data name="WorkspaceSet" xml:space="preserve">
+    <value>Conteneur</value>
+  </data>
+  <data name="WorkspaceSetHelp" xml:space="preserve">
+    <value>Contrôle l'accès au Container dans l'onglet Général.</value>
+  </data>
+  <data name="ZonesGr" xml:space="preserve">
+    <value>Zones</value>
+  </data>
+  <data name="ZonesGrHelp" xml:space="preserve">
+    <value>Gérer les zones d'emplacement pour les groupes organisationnels.</value>
+  </data>
+  <data name="ZplPM" xml:space="preserve">
+    <value>ZPL</value>
+  </data>
+  <data name="ZplPMHelp" xml:space="preserve">
+    <value>Permet d'accéder à la page ZPL de l'imprimante.</value>
+  </data>
+</root>

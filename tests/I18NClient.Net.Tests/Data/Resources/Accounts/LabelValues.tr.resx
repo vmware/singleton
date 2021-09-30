@@ -1,0 +1,1042 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AadAsIdpAttributeRequired" xml:space="preserve">
+    <value>Dizin Hizmetleri ayarları sayfasında Kimlik Hizmetleri için Azure AD etkinleştirildiğinde ve Dizin Yok olarak ayarlandığında "Azure Active Directory Eşleme Özniteliği" zorunludur.</value>
+  </data>
+  <data name="AadAttributeMapping" xml:space="preserve">
+    <value>Azure Active Directory Eşleme Özniteliği</value>
+  </data>
+  <data name="AccountLocked" xml:space="preserve">
+    <value>Workspace ONE UEM hesabınız kilitlendi. Lütfen hesabınızın kilidini açmak için {0} işlemini gerçekleştirin veya IT Yöneticinize başvurun.</value>
+    <comment>{0} will be replaced with url to reset password</comment>
+  </data>
+  <data name="AccountLockedSubject" xml:space="preserve">
+    <value>Workspace ONE UEM hesabı kilitli</value>
+  </data>
+  <data name="AccountUnlocked" xml:space="preserve">
+    <value>Workspace ONE UEM hesabınızın kilidi açıldı. Workspace ONE UEM Console'a erişmek için lütfen {0} işlemini gerçekleştirin.</value>
+    <comment>{0} will be replaced with url to login</comment>
+  </data>
+  <data name="AccountUnlockedSubject" xml:space="preserve">
+    <value>Workspace ONE UEM hesabının kilidi açık</value>
+  </data>
+  <data name="AddCloudServicesAdmin" xml:space="preserve">
+    <value>Bir Cloud Hizmetleri Yöneticisi Ekle</value>
+  </data>
+  <data name="AddCloudServicesAdminPlaceHolder" xml:space="preserve">
+    <value>{0}</value>
+  </data>
+  <data name="AddSelectedUsersToUserGroup" xml:space="preserve">
+    <value>Seçilen Kullanıcıları Kullanıcı Grubuna Ekle</value>
+  </data>
+  <data name="AdminAccountLocked" xml:space="preserve">
+    <value>Yönetici Hesabı Kilitli</value>
+  </data>
+  <data name="AdminAccountUnlocked" xml:space="preserve">
+    <value>Yönetici Hesabının Kilidi Açık</value>
+  </data>
+  <data name="AdminApiAuthenticationWarningText" xml:space="preserve">
+    <value>Bir istemci sertifikası oluşturulmadıkça konsolda varsayılan olarak kullanıcı giriş bilgileri kullanılacak.</value>
+  </data>
+  <data name="AdminGroupMembersExport" xml:space="preserve">
+    <value>Yönetici Grubu Üyelerini İndir</value>
+  </data>
+  <data name="AdminGroupMembersExportHelp" xml:space="preserve">
+    <value>Yönetici grubu üyelerini aktarma erişimi denetler. Menü\Hesaplar\Yöneticiler\Yönetici Grupları'na gidin</value>
+  </data>
+  <data name="Administrators" xml:space="preserve">
+    <value>Yöneticiler</value>
+  </data>
+  <data name="AdministratorsSettings" xml:space="preserve">
+    <value>Yöneticiler İçin Ayarlar</value>
+  </data>
+  <data name="AdminNotificationArgForSamlConfiguration" xml:space="preserve">
+    <value>Yöneticilerin Console'da kimliklerini güvenli bir şekilde doğrulamak için gerekli olan "{0}" özniteliği, Kimlik Sağlayıcı SAML yanıtınızda yok.</value>
+  </data>
+  <data name="AdminPasswordReset" xml:space="preserve">
+    <value>Yönetici Parolasını Sıfırla</value>
+  </data>
+  <data name="AdminUserPasswordResetAction" xml:space="preserve">
+    <value>Bu işlem sonucunda aşağıdaki yönetici için bir parola sıfırlama e-postası gönderilecek. Lütfen e-posta adresini doğrulayın ve işleme devam edin.</value>
+    <comment>This action corresponds to triggering password reset for admin user from the admin list view grid</comment>
+  </data>
+  <data name="AdminUserPasswordResetEmailTriggered" xml:space="preserve">
+    <value>Yönetici Olan Kullanıcı Parolası Sıfırlama E-Postası Tetiklendi</value>
+  </data>
+  <data name="AgentSettingsPublish" xml:space="preserve">
+    <value>Aracı Ayarlarının Yayınlama</value>
+  </data>
+  <data name="AllAdministratorsSettings" xml:space="preserve">
+    <value>Tüm Yönetici Ayarları</value>
+  </data>
+  <data name="AllAppsBooksSettings" xml:space="preserve">
+    <value>Tüm Uygulama ve Kitap Ayarları</value>
+  </data>
+  <data name="AllowedDevicesDescription" xml:space="preserve">
+    <value>Önceden onaylanmış aygıtları IMEI, Seri Numarası veya UDID ile içe aktarın. Bilinen aygıtların (örneğin, şirkete ait aygıtlar) bir listesini içeri aktarmak için bunu kullanın. Bu aygıta ilişkin sahiplik ve Grup Kimliği, kayıt işlemi sırasında aygıta otomatik olarak uygulanacaktır.</value>
+  </data>
+  <data name="AllUsersSettings" xml:space="preserve">
+    <value>Tüm Kullanıcı Ayarları</value>
+  </data>
+  <data name="AndroidEfotaApproveUpdate" xml:space="preserve">
+    <value>Android EFOTA Onayını Güncellenme</value>
+  </data>
+  <data name="ApiQuotaReachedNotification" xml:space="preserve">
+    <value>Uygulama Programı Arabirimi (API) Kullanımı</value>
+  </data>
+  <data name="ApiQuotaThresholdReachedAction" xml:space="preserve">
+    <value>Uygulama Programı Arabirimi (API) Kullanımını Görüntüle</value>
+  </data>
+  <data name="ApiQuotaThresholdReachedMessage" xml:space="preserve">
+    <value>Saat {1} itibarıyla sıfırlanacak olan günlük Uygulama Programı Arabirimi (API) limitinizin %{0} kadarına ulaştınız</value>
+    <comment>{0} will be replaced with a numeric value indicating what percentage of api calls have been utilized for that day. {1} will be replaced with the localized time in which the api usage resets</comment>
+  </data>
+  <data name="ApiQuotaThresholdReachedTitle" xml:space="preserve">
+    <value>Uygulama Programı Arabirimi (API) Kullanımı</value>
+  </data>
+  <data name="ArgCannotBeMappedAppleIdArgAsArgNotFoundInOgArg" xml:space="preserve">
+    <value>{2}, Organizasyon grubunun {3} hiyerarşisinde bulunamadığı için {0}, Yönetilen Apple kimliği {1} ile eşlenemiyor</value>
+  </data>
+  <data name="ArgCannotBeMappedToEnrollmentUserAppleAlreadyPresent" xml:space="preserve">
+    <value>{0}, zaten csv dosyasında yer aldığı için tekrar eklenmedi.</value>
+  </data>
+  <data name="ArgCannotBeMappedToEnrollmentUserAppleIDNotFound" xml:space="preserve">
+    <value>{0}, bu Apple kimliği sistemde bulunamadığı için kayıt kullanıcısıyla eşlenemiyor</value>
+  </data>
+  <data name="ArgCannotBeMappedToEnrollmentUserKeyboardLayoutInValid" xml:space="preserve">
+    <value>{0}, bu klavye düzeni geçersiz olduğu için kayıt kullanıcısıyla eşlenemiyor</value>
+  </data>
+  <data name="ArgCannotBeMappedToEnrollmentUserMissingAppleID" xml:space="preserve">
+    <value>{0}, csv dosyasında bu Apple kimliği olmadığı için kayıt kullanıcısıyla eşlenemiyor</value>
+  </data>
+  <data name="ArgCannotBeMappedToUserArgAsAlreadyMapped" xml:space="preserve">
+    <value>{username} kayıt kullanıcısı zaten başka bir üyeyle eşlendiği için {fileProcessorDataContext.Person.ManagedAppleIdentifier} bu kayıt kullanıcısıyla eşlenemiyor</value>
+  </data>
+  <data name="ArgDefinedAboveGivenOG" xml:space="preserve">
+    <value>{0}, verilen Organizasyon grubunun üzerinde tanımlandı</value>
+  </data>
+  <data name="ArgHasAlreadyMapped" xml:space="preserve">
+    <value>{0} zaten eşlendi</value>
+  </data>
+  <data name="BackToLoginPage" xml:space="preserve">
+    <value>Oturum açma sayfasına geri git</value>
+  </data>
+  <data name="BatchImportAdminUsersExplanation" xml:space="preserve">
+    <value>Yönetici olan kullanıcıları sisteme yüklemek için Yönetici Olan Kullanıcıyı Karşıdan Yükleme özelliği kullanılır. Yönetici olan kullanıcılar bir Organizasyon Grubuyla ilişkilendirilmelidir.</value>
+  </data>
+  <data name="BatchImportCancelled" xml:space="preserve">
+    <value>Toplu Olarak İçe Aktarma işlemi iptal edildi.</value>
+  </data>
+  <data name="BatchImportDescription" xml:space="preserve">
+    <value>Toplu Olarak İçe Aktarma özelliği kullanıcıları ve aygıtlarını sisteme toplu olarak yüklemek için kullanılabilir. CSV şablonları aşağıda bulunabilir. Şablon Microsoft Excel yardımcı programı kullanılarak düzenleniyorsa format dönüştürmeden dolayı oluşacak bilgi kaybını önlemek ve CSV dosyası olarak kaydetmek için sütun formatlarının "Metin" şeklinde ayarlanmış olduğundan emin olun.</value>
+  </data>
+  <data name="BatchImportErrors" xml:space="preserve">
+    <value>Toplu Olarak İçe Aktarma Hataları</value>
+  </data>
+  <data name="BatchImportSuccessful" xml:space="preserve">
+    <value>Toplu Olarak İçe Aktarma işlemi başarılı oldu.</value>
+  </data>
+  <data name="BatchImportUserGroupsExplanation" xml:space="preserve">
+    <value>Bu Toplu Karşıya Yükleme Özelliği, kullanıcı gruplarını sisteme toplu olarak yüklemek için kullanılabilir.</value>
+  </data>
+  <data name="BatchImportUsersDevicesExplanation" xml:space="preserve">
+    <value>Bu grup alma özelliği kullanıcılar ve aygıtlarının sisteme toplu olarak yüklenmesi için kullanılabilir. Bu alım için bir şablon, aşağıda link ile verilmiştir.</value>
+  </data>
+  <data name="BeAtleastArgCharactersLong" xml:space="preserve">
+    <value>en az {0} karakter uzunluğunda olmalı</value>
+    <comment>{0} will be replaced by a number</comment>
+  </data>
+  <data name="CancelBatchImport" xml:space="preserve">
+    <value>Toplu Olarak İçe Aktarma işlemini İptal Et</value>
+  </data>
+  <data name="CancelBatchImportWarning" xml:space="preserve">
+    <value>Bu eylem toplu olarak içe aktarma işlemini iptal eder.</value>
+  </data>
+  <data name="CanNotDeleteUserGroupBecauseAssignedToSmartGroup" xml:space="preserve">
+    <value>Kullanıcı grubu şu Akıllı Gruplara atandığı için silinemiyor - {0}</value>
+  </data>
+  <data name="CartPublish" xml:space="preserve">
+    <value>Sepet Yayınlama</value>
+  </data>
+  <data name="CertificateBasedApiAuthenticationWarningText" xml:space="preserve">
+    <value>Uygulama Programı Arabirimi (API) Kimlik Doğrulama için istemci sertifikası oluşturun ve dışa aktarın.</value>
+  </data>
+  <data name="CertificateProvisioning" xml:space="preserve">
+    <value>Sertifika Provizyonlama</value>
+  </data>
+  <data name="ChallengeClientCertificate" xml:space="preserve">
+    <value>İstemci Sertifikası Sınama</value>
+    <comment>Client certificate for authenticating the retrieval of a SCEP challenge</comment>
+  </data>
+  <data name="CheckGroup" xml:space="preserve">
+    <value>Grubu kontrol et</value>
+  </data>
+  <data name="ClickedResetPasswordNotifyAdmin" xml:space="preserve">
+    <value>Sizin tarafınızdan ya da başka bir yönetici tarafından bir parola sıfırlama işlemi başlatılmış. Bu hatalıysa daha fazla bilgi için lütfen yöneticinizle iletişime geçin</value>
+  </data>
+  <data name="ClickHereToLogin" xml:space="preserve">
+    <value>oturum aç</value>
+  </data>
+  <data name="ColumnsInSpreadsheetDoesNotMatchTemplate" xml:space="preserve">
+    <value>Çalışma sayfasındaki sütunlar şablondakilerle eşleşmiyor.</value>
+  </data>
+  <data name="CompleteWithErrors" xml:space="preserve">
+    <value>Hatalarla tamamla</value>
+  </data>
+  <data name="CompliancePoliciesView" xml:space="preserve">
+    <value>Uyumluluk İlkelerini Görüntüle</value>
+  </data>
+  <data name="CompliancePoliciesViewHelp" xml:space="preserve">
+    <value>Uyumluluk İlkelerini görüntüleme erişimini denetler. Aygıt\Uyumluluk İlkeleri\Liste Görünümü'ne gidin</value>
+  </data>
+  <data name="CompromiseDetectionForWindows10Device" xml:space="preserve">
+    <value>Windows 10 Aygıtı için Güvenilirliği Kaybetme Durumunu Algılama</value>
+  </data>
+  <data name="ContactAdministratorIfYouHaveDirectoryAccount" xml:space="preserve">
+    <value>Dizin hesabınız varsa parolanızı sıfırlamak için yöneticinizle iletişime geçin.</value>
+    <comment>Used in conjuction with "PasswordResetIsNotAvailableForDirectoryAccounts" in telling a user that a directory account cannot use the WS1 password reset flow.</comment>
+  </data>
+  <data name="ContactAdministratorIfYouHaveExternalAccount" xml:space="preserve">
+    <value>Dizin hesabınız varsa parolanızı sıfırlamak için yöneticinizle iletişime geçin. VMware Cloud Services hesabınız varsa cloud.vmware.com adresinden parolanızı sıfırlayabilirsiniz</value>
+    <comment>Message shown during touble loggingIn flow for an account</comment>
+  </data>
+  <data name="ContentRightsManagement" xml:space="preserve">
+    <value>İçerik Hakları Yönetimi</value>
+  </data>
+  <data name="CreateAdminAccountsFromCSPPortal" xml:space="preserve">
+    <value>Bu kiracı, Workspace ONE Cloud Yönetici Hub'ı ile etkinleştirildi. UEM'de oluşturulan yöneticiler yalnızca UEM konsoluna erişebilir. Workspace ONE hizmetlerine erişimi etkinleştirmek için yöneticiyi Cloud Hizmetlerinden ekleyin. {0}</value>
+  </data>
+  <data name="Date&amp;Time" xml:space="preserve">
+    <value>Tarih &amp; Zaman</value>
+  </data>
+  <data name="DecryptionFailedFieldName" xml:space="preserve">
+    <value>Field Name</value>
+  </data>
+  <data name="DeleteDepSharedMdmProfile" xml:space="preserve">
+    <value>DEP Paylaşılan MDM Profilini Sil</value>
+  </data>
+  <data name="DeniedDevices" xml:space="preserve">
+    <value>İzin Verilmeyen Aygıtlar</value>
+  </data>
+  <data name="DeniedDevicesDescription" xml:space="preserve">
+    <value>İzin verilmeyen aygıtları IMEI, Seri Numarası veya UDID ile içe aktarın.  Bilinen uyumsuz aygıtların bir listesini içeri aktarmak için bunu kullanın. İzin verilmeyen aygıtların kayıt yaptırmasına izin verilmez. İzin verilmeyen bir aygıt kayıtlıysa içe aktarma işlemi sonlandığı anda kaydı otomatik olarak silinecektir. Burada belirtilen Platform, İS ve Model, kayıt sırasında dikkate alınmayacaktır.</value>
+  </data>
+  <data name="DeviceBasedVppAppUpdate" xml:space="preserve">
+    <value>Aygıt Tabanlı Toplu Satın Alma Programı (VPP) Uygulama Güncellemesi</value>
+  </data>
+  <data name="DeviceBulkManagementDeviceViewGps" xml:space="preserve">
+    <value>Aygıt Toplu Yönetimi Aygıt Görüntüle Konumu</value>
+  </data>
+  <data name="DeviceBulkManagementDeviceViewGpsHelp" xml:space="preserve">
+    <value>Kullanıcının toplu olarak aygıt(lar)ın konumunu görüntülemesine izin verir.</value>
+  </data>
+  <data name="Devicebulkmanagementrebootdevice" xml:space="preserve">
+    <value>Aygıtı Toplu Olarak Yeniden Başlat</value>
+  </data>
+  <data name="DeviceEditionNotAllowedAsUserArgNotManagedAtOG" xml:space="preserve">
+    <value>{0} kullanıcısı bu Organizasyon grubunda yönetilmediği için aygıt sürümüne izin verilmiyor</value>
+  </data>
+  <data name="DeviceLgCannotBeParentUserDefaultLg" xml:space="preserve">
+    <value>Aygıt organizasyon grubu, üst kullanıcının varsayılan organizasyon grubu olamaz.</value>
+  </data>
+  <data name="DirectoryAccountsToBePushedBySCIMProvisioning" xml:space="preserve">
+    <value>Dizin Hesapları sadece SCIM provizyonlama API'si tarafından oluşturulabilir.</value>
+  </data>
+  <data name="DirectoryNameIsInvalid" xml:space="preserve">
+    <value>Dizin adı geçersiz. Dizin adı boşluk içermemelidir.</value>
+  </data>
+  <data name="DirectorySync" xml:space="preserve">
+    <value>Dizin Eşitleme</value>
+  </data>
+  <data name="DisableDepConfiguration" xml:space="preserve">
+    <value>DEP Yapılandırmasını Devre Dışı Bırak</value>
+  </data>
+  <data name="DisplayVideoImport" xml:space="preserve">
+    <value>Video İçeri Aktarımını Göster</value>
+  </data>
+  <data name="DisplayVideoView" xml:space="preserve">
+    <value>Video Görünümünü Görüntüle</value>
+  </data>
+  <data name="DomainMappingIsNotFoundForGivenDomain" xml:space="preserve">
+    <value>Verilen etki alanı için Etki Alanı Eşleme bulunamadı.</value>
+  </data>
+  <data name="DownloadAdvancedTemplateForUsersAndDevices" xml:space="preserve">
+    <value>Kullanıcılar ve Aygıtlar için gelişmiş şablonu indir</value>
+  </data>
+  <data name="DownloadSimpleTemplateForUsersAndDevices" xml:space="preserve">
+    <value>Kullanıcılar ve Aygıtlar için basit şablonu indir</value>
+  </data>
+  <data name="DownloadTemplateForAllowedDevices" xml:space="preserve">
+    <value>İzin Verilen Aygıtlar için şablonu indir</value>
+  </data>
+  <data name="DuplicateAdminUserFound" xml:space="preserve">
+    <value>Yinelenen Yönetici Kullanıcı Bulundu.</value>
+  </data>
+  <data name="DuplicateDirectoryUserGroupMessage" xml:space="preserve">
+    <value>"{0}" kimliğine sahip Dizin Kullanıcı Grubu zaten mevcut.</value>
+  </data>
+  <data name="DuplicateExcludedUserGroupInSmartGroup" xml:space="preserve">
+    <value>Aynı kullanıcı grubu hem dışlama hem de ekleme listelerine eklenemez. Bu kullanıcı grubunu dışlamak istiyorsanız ekleme listesinden çıkarın.</value>
+  </data>
+  <data name="DuplicateUserGroupMessage" xml:space="preserve">
+    <value>"{0}" Kolay İsimli Kullanıcı Grubu zaten mevcut. Lütfen başka bir Kolay İsim girin.</value>
+  </data>
+  <data name="EARAppUpdateAvailableNotification" xml:space="preserve">
+    <value>Kurumsal Uygulama Deposu Güncellemeleri</value>
+  </data>
+  <data name="EditAdmin" xml:space="preserve">
+    <value>Yöneticiyi Düzenle</value>
+  </data>
+  <data name="EditCustomReportsGettingStarted" xml:space="preserve">
+    <value>İstihbarata Başlarken</value>
+  </data>
+  <data name="EditCustomReportsGettingStartedHelp" xml:space="preserve">
+    <value>İstihbaratı kabul etmek için tam erişim sağlar</value>
+  </data>
+  <data name="EditDepSharedMdmProfile" xml:space="preserve">
+    <value>DEP Paylaşılan MDM Profilini Düzenle</value>
+  </data>
+  <data name="EditTemporaryAdmin" xml:space="preserve">
+    <value>Geçici Yöneticiyi Düzenle</value>
+  </data>
+  <data name="EditTypeGrHelp" xml:space="preserve">
+    <value>Organizasyon gruplarının organizasyon grubu türünü görüntüleyin ve düzenleyin.</value>
+  </data>
+  <data name="EditUserArgOpensDialog" xml:space="preserve">
+    <value>{0} Kullanıcısını Düzenle İletişim Kutusunu Açar</value>
+    <comment>The placeholder in this label key contains username.</comment>
+  </data>
+  <data name="EMAdvancedLogging" xml:space="preserve">
+    <value>EM Gelişmiş Günlük Kaydı</value>
+  </data>
+  <data name="EMAdvancedLoggingHelp" xml:space="preserve">
+    <value>Doğrudan bir MEM dağıtımında aygıtlar için Gelişmiş etkinlik günlüğüne kaydetme penceresi</value>
+  </data>
+  <data name="EncounteredErrorLoadingAvailableLocationGroup" xml:space="preserve">
+    <value>Kullanılabilir Organizasyon Grupları yüklenirken hata oluştu.</value>
+  </data>
+  <data name="EnrollmentOgInvalidOrUnauthorized" xml:space="preserve">
+    <value>Kayıt organizasyonu geçersiz veya yetkisiz.</value>
+  </data>
+  <data name="EnrollmentRestrictNewUserForScimProvisioning" xml:space="preserve">
+    <value>Hesabınız UEM'de provizyonlanmadığından kaydedilemiyor. Daha fazla yardım için lütfen yöneticinizle iletişime geçin.</value>
+  </data>
+  <data name="EnrollmentUserTenancyNotification" xml:space="preserve">
+    <value>2021 sonlarından sonra çıkacak olan sürümlerde müşteri OG'leri dışında Kayıt Kullanıcıları ve Kullanıcı Gruplarının oluşturulmasına izin verilmeyecektir.</value>
+  </data>
+  <data name="EnterSearchTerm" xml:space="preserve">
+    <value>Arama terimi girin</value>
+  </data>
+  <data name="ErrorOccuredBulkOperation" xml:space="preserve">
+    <value>Toplu işlem sırasında hata oluştu</value>
+  </data>
+  <data name="ErrorOccuredDuringMergeOfNewUserGroup" xml:space="preserve">
+    <value>Yeni kullanıcı grubunun birleştirilmesi/eşitlenmesi sırasında hata oluştu. {0}</value>
+  </data>
+  <data name="ErrorOccuredForUserGroups" xml:space="preserve">
+    <value>Kullanıcının parçası olduğu gruplar aranırken hata oluştu</value>
+  </data>
+  <data name="ErrorOccuredWhileMergingGroups" xml:space="preserve">
+    <value>Gruplar birleştirilirken hata oluştu</value>
+  </data>
+  <data name="ErrorResolvingValidOgForUser" xml:space="preserve">
+    <value>Kullanıcı için geçerli Organizasyon grupları çözümlenirken hata oluştu</value>
+  </data>
+  <data name="ExcludedUserGroups" xml:space="preserve">
+    <value>Hariç Tutulan Kullanıcı Grupları</value>
+  </data>
+  <data name="ExcludedUserGroupsToolTip" xml:space="preserve">
+    <value>Bu kriter, bu filtreleme kriterinin geri kalanı uygulanarak oluşturulmuş aygıt listesinden belirli bir kullanıcı grubuna ait aygıtları hariç tutma imkanı sunar.</value>
+  </data>
+  <data name="ExpressSetupEdit" xml:space="preserve">
+    <value>Hızlı Kurulum Düzenleme</value>
+  </data>
+  <data name="ExpressSetupEditHelp" xml:space="preserve">
+    <value>Yöneticilerin AirWatch Express'teki konsol entegrasyonu parçalarının kurulumuna düzenleme erişimi sağlar.</value>
+  </data>
+  <data name="ExpressSetupRead" xml:space="preserve">
+    <value>Hızlı Kurulum Okuma</value>
+  </data>
+  <data name="ExpressSetupReadHelp" xml:space="preserve">
+    <value>Yöneticilerin AirWatch Express'teki konsol entegrasyonu parçalarının basitleştirilmiş kurulumuna okuma erişimi sağlar.</value>
+  </data>
+  <data name="ExternalIdArgDNArgMismatch" xml:space="preserve">
+    <value>{0} harici kimliği, {1} Ayırt Edici Adına ait değil.</value>
+  </data>
+  <data name="FailedToCheckDirectoryGroup" xml:space="preserve">
+    <value>Dizin grubu denetimi başarısız oldu</value>
+  </data>
+  <data name="FailedToSaveTheAdminGroup" xml:space="preserve">
+    <value>Yönetici Grubu kaydedilemiyor</value>
+  </data>
+  <data name="FailedToSendResetPasswordEmail" xml:space="preserve">
+    <value>Parola sıfırlama e-postası gönderilemedi.</value>
+    <comment>When admin tries to trigger a reset password email for an admin.</comment>
+  </data>
+  <data name="FileInvalidErrorText" xml:space="preserve">
+    <value>Dosya türü CSV olmalıdır.</value>
+  </data>
+  <data name="FileTypeHelperText" xml:space="preserve">
+    <value>Şablon özelliklerini takip eden bir CSV dosyası olması gerekir</value>
+  </data>
+  <data name="FirstNameFirstTwoLetters" xml:space="preserve">
+    <value>Ad (İlk 2 Harf)</value>
+  </data>
+  <data name="FirstNameInitial" xml:space="preserve">
+    <value>Ad İlk Harfi</value>
+  </data>
+  <data name="FollowingUsersWillBeUnlocked" xml:space="preserve">
+    <value>Aşağıdaki kullanıcıların kilidi açılacak:</value>
+  </data>
+  <data name="ForgotUserName" xml:space="preserve">
+    <value>Kullanıcı adımı unuttum</value>
+  </data>
+  <data name="GeneralFailure" xml:space="preserve">
+    <value>Parola sıfırlama e-postası gönderilemedi. Lütfen SMTP sunucusu yapılandırma ayarlarını doğrulayın ve tekrar deneyin.</value>
+  </data>
+  <data name="GeofenceAreaEdit" xml:space="preserve">
+    <value>Bölge Sınırı Alanını Düzenleme</value>
+  </data>
+  <data name="GivenDistinguishedNameNotFoundUserCannotAdd" xml:space="preserve">
+    <value>Belirtilen ayırt edici ad bulunamadı. Kullanıcı eklenemiyor.</value>
+  </data>
+  <data name="GivenOgCustomerCodeInvalid" xml:space="preserve">
+    <value>Verilen organizasyon grubu müşteri kodu geçersiz.</value>
+  </data>
+  <data name="GivenSecurityTypeNotConfigured" xml:space="preserve">
+    <value>Verilen güvenlik türü yapılandırılmamış.</value>
+  </data>
+  <data name="GivenSecurityTypeNotSupported" xml:space="preserve">
+    <value>Verilen güvenlik türü desteklenmiyor.</value>
+  </data>
+  <data name="GroupNameRequired" xml:space="preserve">
+    <value>Grup Adı gereklidir</value>
+  </data>
+  <data name="HideTemplatesAndGuidelines" xml:space="preserve">
+    <value>Şablonları ve ilkeleri gizle</value>
+  </data>
+  <data name="IBeaconGroupEdit" xml:space="preserve">
+    <value>IBeacon Grubunu Düzenleme</value>
+  </data>
+  <data name="IfExistsAnEmailWillBeSentToTheAddressOnFile" xml:space="preserve">
+    <value>Dosyada bulunan e-posta adresinize daha fazla talimat içeren bir e-posta  gönderildi.</value>
+    <comment>When a user requests a "forgot password" reset link via email, this is the message given regardless of whether the user name is valid or not.</comment>
+  </data>
+  <data name="IfTroubleClickingCopyAndPasteLink" xml:space="preserve">
+    <value>Bu bağlantı çalışmazsa aşağıdaki bağlantıyı tarayıcınıza kopyalayıp yapıştırmayı deneyin.</value>
+  </data>
+  <data name="IncorrectPasswordAnswerAttemptWarning" xml:space="preserve">
+    <value>1 deneme hakkınız kaldı. Lütfen tüm soruları doğru şekilde yanıtlayın; aksi halde hesabınız kilitlenir.</value>
+  </data>
+  <data name="IncorrectPasswordAnswerAttemptWarningPlural" xml:space="preserve">
+    <value>{0} deneme hakkınız kaldı. Lütfen tüm soruları doğru şekilde yanıtlayın, aksi halde hesabınız kilitlenir.</value>
+  </data>
+  <data name="InstallAppOnAll" xml:space="preserve">
+    <value>Uygulamayı Tümüne Yükle</value>
+  </data>
+  <data name="InstallMdmProfile" xml:space="preserve">
+    <value>MDM Profilini Yükle</value>
+  </data>
+  <data name="InstallOnFiltered" xml:space="preserve">
+    <value>Filtrelenenlere Yükle</value>
+  </data>
+  <data name="InvalidDataEntered" xml:space="preserve">
+    <value>Geçersiz Veri Girildi.</value>
+  </data>
+  <data name="InvalidDeviceGroupId" xml:space="preserve">
+    <value>Aygıt grup kimliği geçersiz.</value>
+  </data>
+  <data name="InvalidGroupBaseDN" xml:space="preserve">
+    <value>Varsayılan veya Sağlanan Grup Temel DN - {0} geçerli değil</value>
+  </data>
+  <data name="InvalidSession" xml:space="preserve">
+    <value>Geçersiz Oturum</value>
+  </data>
+  <data name="InvalidTemplate" xml:space="preserve">
+    <value>Geçersiz şablon. En son şablonu indirin</value>
+  </data>
+  <data name="InvalidUserCredentialsPleaseTryAgain" xml:space="preserve">
+    <value>Geçersiz kimlik bilgileri. Tekrar deneyin.</value>
+  </data>
+  <data name="IsRequiredArg" xml:space="preserve">
+    <value>Bağımsız değişken gereklidir.</value>
+  </data>
+  <data name="IssueCertificate" xml:space="preserve">
+    <value>Sertifika Yayınla</value>
+  </data>
+  <data name="JITSettings" xml:space="preserve">
+    <value>JIT Ayarları</value>
+    <comment>Resource for JIT Settings</comment>
+  </data>
+  <data name="JITSettingsHelp" xml:space="preserve">
+    <value>JIT için uç noktaları ALMAK ve GÜNCELLEMEK için erişimi kontrol eder.</value>
+  </data>
+  <data name="LastNameFirstTwoLetters" xml:space="preserve">
+    <value>Soyadı (İlk 2 harf)</value>
+  </data>
+  <data name="LastNameInitial" xml:space="preserve">
+    <value>Soyadı İlk Harfi</value>
+  </data>
+  <data name="LdapNotDefinedUserCannotAdd" xml:space="preserve">
+    <value>Basit Dizin Erişimi Protokolü (LDAP), verilen organizasyon grubu için tanımlı değil. Yönetici olan kullanıcı eklenemez.</value>
+  </data>
+  <data name="LocalSync" xml:space="preserve">
+    <value>Yerel Eşitleme</value>
+  </data>
+  <data name="LoginAsDifferentUser" xml:space="preserve">
+    <value>Farklı bir kullanıcı olarak oturum aç</value>
+  </data>
+  <data name="LoginPasswordIsRequired" xml:space="preserve">
+    <value>Parola gerekli</value>
+  </data>
+  <data name="MailboxBusy" xml:space="preserve">
+    <value>İstenen e-posta eylemi tamamlanamadı. SMTP protokolü hatası: Posta Kutusu Kullanılmıyor. Lütfen tekrar deneyin.</value>
+  </data>
+  <data name="MailboxUnavailable" xml:space="preserve">
+    <value>Parola sıfırlama e-postası gönderilemedi. SMTP protokolü hatası: Posta Kutusu Kullanılmıyor.</value>
+  </data>
+  <data name="MEMRotateGSuitePassword" xml:space="preserve">
+    <value>G Suite Parolasını Döndür</value>
+  </data>
+  <data name="MEMRotateGSuitePasswordConfirmation" xml:space="preserve">
+    <value>G Suite Parola Onayını Döndür</value>
+  </data>
+  <data name="MEMRotateGSuitePasswordFailed" xml:space="preserve">
+    <value>G Suite Parola Onayını Döndürme Başarısız</value>
+  </data>
+  <data name="MEMRotateGSuitePasswordInfoMessage" xml:space="preserve">
+    <value>Bu eylem kullanıcının parolasını sıfırlar ve kullanıcı aygıtlarında ilişkili tüm e-posta profillerini yeniler. Bu eylem geri alınamaz.</value>
+  </data>
+  <data name="MergeFailedRetry" xml:space="preserve">
+    <value>Birleştirme Başarısız Oldu - Yeniden dene</value>
+  </data>
+  <data name="MessageTemplateCouldNotBeRetrieved" xml:space="preserve">
+    <value>Mesaj şablonu alınamadı.</value>
+  </data>
+  <data name="MigrateWarning" xml:space="preserve">
+    <value>Geçiş eylemi, aygıt ve kullanıcı ayarlarını Temel ve Kimlik Doğrulama Proxy kullanıcı hesabından seçili Dizin kullanıcısı hesabına aktarır. Temel ve Kimlik Doğrulama Proxy kullanıcı hesapları, geçiş tamamlandığında silinir ve bundan sonra aygıt kaydı yapmak üzere kullanılamaz.
+
+Devam etmek istiyor musunuz?</value>
+  </data>
+  <data name="NetworkRanges" xml:space="preserve">
+    <value>Ağ Aralıkları</value>
+  </data>
+  <data name="NoCommonCustomUserGroupsForSelectedUsers" xml:space="preserve">
+    <value>Seçili kullanıcılar için ortak özel kullanıcı grupları yok.</value>
+  </data>
+  <data name="NoPasswordQuestionContactAdminMessage" xml:space="preserve">
+    <value>Parola kurtarma sorusu belirlemediğiniz için parolanızı sıfırlamanız mümkün değildir. Lütfen bir yönetici ile iletişime geçin.</value>
+  </data>
+  <data name="NotifyDevicesEnrolledHubApp" xml:space="preserve">
+    <value>Hub Uygulamasıyla Kayıtlı Aygıtlara Bildir</value>
+  </data>
+  <data name="NumberOfChangesShouldBePositive" xml:space="preserve">
+    <value>Değişiklik Sayısı, pozitif bir tamsayı olmalıdır</value>
+  </data>
+  <data name="NumberOfObjects" xml:space="preserve">
+    <value>{0} nesne</value>
+  </data>
+  <data name="OfflineCompliancePolicy" xml:space="preserve">
+    <value>Çevrimdışı Uyumluluk İlkesi</value>
+  </data>
+  <data name="OGGroupIdNotInCurrentHierarchy" xml:space="preserve">
+    <value>İçe aktarma başarısız oldu. Organizasyon Grubu (ID: {0}) geçerli hiyerarşide değil.</value>
+  </data>
+  <data name="OGNotInCurrentHierarchy" xml:space="preserve">
+    <value>İçe aktarma başarısız oldu. Organizasyon Grubu geçerli hiyerarşide değil.</value>
+  </data>
+  <data name="OneAttemptRemaining" xml:space="preserve">
+    <value>1 deneme hakkınız kaldı.</value>
+  </data>
+  <data name="P2PPublish" xml:space="preserve">
+    <value>P2P Yayınlama</value>
+  </data>
+  <data name="PasswordNotificationPeriodDays" xml:space="preserve">
+    <value>Parola Bildirim Dönemi (gün)</value>
+  </data>
+  <data name="PasswordResetIsNotAvailableForDirectoryAccounts" xml:space="preserve">
+    <value>Parola sıfırlama dizin hesapları için kullanılmaz.</value>
+  </data>
+  <data name="PasswordResetIsNotAvailableForExternalAccounts" xml:space="preserve">
+    <value>Dizin veya VMware Cloud Services hesapları için parola sıfırlama kullanılmaz</value>
+    <comment>Message shown during trouble loggingIn flow for an account</comment>
+  </data>
+  <data name="PasswordShouldBeAtleastArgCharactersLong" xml:space="preserve">
+    <value>Parolanız en az {0} karakter uzunluğunda olmalıdır</value>
+    <comment>{0} will be relaced by a number</comment>
+  </data>
+  <data name="PermissionColumnIsEmply" xml:space="preserve">
+    <value>İzin sütunu boş, bu nedenle kullanıcı grubu için varsayılan izin ekleniyor</value>
+  </data>
+  <data name="PermissonArgDoesnotConformWithTemplate" xml:space="preserve">
+    <value>{0} izni şablonla uyumlu değil, bu nedenle atlandı</value>
+  </data>
+  <data name="PleaseCheckDirectoryUsername" xml:space="preserve">
+    <value>Lütfen dizin Kullanıcı Adını kontrol edin</value>
+  </data>
+  <data name="ProvisioningPackagePublish" xml:space="preserve">
+    <value>Provizyonlama Paketi Yayınlama</value>
+  </data>
+  <data name="PublishAndroidWorkPublicApp" xml:space="preserve">
+    <value>İş İçin Android Ortak Uygulamasını Yayınla</value>
+  </data>
+  <data name="PublishAreaProfile" xml:space="preserve">
+    <value>Alan Profilini Yayınla</value>
+  </data>
+  <data name="PublishBrowserSettings" xml:space="preserve">
+    <value>Tarayıcı Ayarlarını Yayınla</value>
+  </data>
+  <data name="RemoteViewDD" xml:space="preserve">
+    <value>Uzaktan Görünüm - Aygıt Detayları</value>
+  </data>
+  <data name="RemoteViewDDHelp" xml:space="preserve">
+    <value>Bir aygıt ekranın uzaktan ekran görüntüsünü çekebilme özelliğini etkinleştir</value>
+  </data>
+  <data name="RemoveDepRegisteredDevices" xml:space="preserve">
+    <value>DEP Kayıtlı Aygıtları Kaldır</value>
+  </data>
+  <data name="RemoveSelectedUsersFromUserGroup" xml:space="preserve">
+    <value>Seçilen Kullanıcıları Kullanıcı Grubundan Çıkar</value>
+  </data>
+  <data name="ReportAppleMDM" xml:space="preserve">
+    <value>Apple MDM'i Rapor Et </value>
+  </data>
+  <data name="ReportAppleMDMHelp" xml:space="preserve">
+    <value>Apple MDM raporunu görüntülemek için gereken erişimi kontrol eder</value>
+  </data>
+  <data name="ReportProductCompliance" xml:space="preserve">
+    <value>Ürün Uyumluluğunu Rapor Et</value>
+  </data>
+  <data name="ReportProductComplianceHelp" xml:space="preserve">
+    <value>Ürün Uyumluluk raporunu görüntülemek için erişimi kontrol eder</value>
+  </data>
+  <data name="ReportProductDeploymentSummary" xml:space="preserve">
+    <value>Ürün Dağıtım Özetini Rapor Et</value>
+  </data>
+  <data name="ReportProductDeploymentSummaryHelp" xml:space="preserve">
+    <value>Ürün Dağıtım Özeti raporunu görüntülemek için erişimi kontrol eder</value>
+  </data>
+  <data name="ReportProvisioningProductAssigned" xml:space="preserve">
+    <value>Şu anda Atanan Detayı Provizyonlama - Ürünler(Yeni)</value>
+  </data>
+  <data name="ResetPassword" xml:space="preserve">
+    <value>Parolayı Sıfırla</value>
+    <comment>To be used to trigger reset password for core user.</comment>
+  </data>
+  <data name="ResetYourPassword" xml:space="preserve">
+    <value>parolanızı sıfırlayın</value>
+  </data>
+  <data name="ResetYourPasswordNow" xml:space="preserve">
+    <value>Parolanızı şimdi sıfırlayın</value>
+  </data>
+  <data name="RestApiCustomAttriutesDelete" xml:space="preserve">
+    <value>REST API Özel Öznitelikler - Sil</value>
+  </data>
+  <data name="RestApiCustomAttriutesDeleteHelp" xml:space="preserve">
+    <value>Özel Öznitelikler koleksiyonunda Silme özelliğine sahip API'lere erişim sağlar</value>
+  </data>
+  <data name="RestApiEnterpriseIntegrationRead" xml:space="preserve">
+    <value>Rest API Kurumsal Entegrasyon - Oku</value>
+  </data>
+  <data name="RestApiEnterpriseIntegrationReadHelp" xml:space="preserve">
+    <value>Kurumsal Entegrasyonda sadece OKU işlevini içeren tüm API'lere erişimi sağlar </value>
+  </data>
+  <data name="Restapimamapps" xml:space="preserve">
+    <value>Rest API MAM Uygulamalar</value>
+  </data>
+  <data name="RestapimamappsHelp" xml:space="preserve">
+    <value>Yönetilen uygulamalara erişim</value>
+  </data>
+  <data name="Restapimamblob" xml:space="preserve">
+    <value>REST API MAM Blob</value>
+  </data>
+  <data name="RestapimamblobHelp" xml:space="preserve">
+    <value>İçeriği Karşıya Yükle/İndir</value>
+  </data>
+  <data name="Restapimdmdevices" xml:space="preserve">
+    <value>REST API MDM Aygıtlar</value>
+  </data>
+  <data name="RestapimdmdevicesHelp" xml:space="preserve">
+    <value>kilitle/kilidi aç komutlarını gönder</value>
+  </data>
+  <data name="Restapimdmprofiles" xml:space="preserve">
+    <value>REST API MDM Profiller</value>
+  </data>
+  <data name="RestapimdmprofilesHelp" xml:space="preserve">
+    <value>Kilitle/Kilidi Aç Komutlarını Gönder</value>
+  </data>
+  <data name="Restapimdmsmartgroups" xml:space="preserve">
+    <value>REST API MDM Akıllı Gruplar</value>
+  </data>
+  <data name="RestapimdmsmartgroupsHelp" xml:space="preserve">
+    <value>Akıllı grup bilgisine erişim sağla</value>
+  </data>
+  <data name="Restapimdmusergroups" xml:space="preserve">
+    <value>REST API MDM Kullanıcı Grupları</value>
+  </data>
+  <data name="RestapimdmusergroupsHelp" xml:space="preserve">
+    <value>Kullanıcı Gruplarına Erişim Sağla</value>
+  </data>
+  <data name="Restapisystemadmin" xml:space="preserve">
+    <value>REST API Sistem Yöneticisi</value>
+  </data>
+  <data name="RestapisystemadminHelp" xml:space="preserve">
+    <value>Yönetici bilgisine erişim sağla</value>
+  </data>
+  <data name="Restapisystemgroups" xml:space="preserve">
+    <value>REST API Sistem Grupları</value>
+  </data>
+  <data name="RestapisystemgroupsHelp" xml:space="preserve">
+    <value>Organizasyon Grubu bilgisine erişim sağla</value>
+  </data>
+  <data name="Restapisystemusers" xml:space="preserve">
+    <value>REST API Sistem Kullanıcıları</value>
+  </data>
+  <data name="RestapisystemusersHelp" xml:space="preserve">
+    <value>Kullanıcı Bilgisine Erişim Sağla</value>
+  </data>
+  <data name="RevokeAzureADUserTokensOnDeviceWipe" xml:space="preserve">
+    <value>Aygıtlar silinirken kullanıcı belirteçlerini otomatik olarak iptal et</value>
+  </data>
+  <data name="RevokeAzureADUserTokensToolTip" xml:space="preserve">
+    <value>Aygıt veya şirket verilerini silme işlemi yürütüldüğünde Workspace ONE UEM'nin Microsoft Azure AD kullanıcı belirteçlerini iptal etmesine izin verir. Not: Yapılandırmanızın güvenliğini azaltacağından bu özelliğin devre dışı bırakılması önerilmez. Silinmiş bir aygıt kaybolursa hala geçerli bir AAD kimlik doğrulama belirteci içerebilir</value>
+  </data>
+  <data name="RoleId" xml:space="preserve">
+    <value>Rol Kimliği</value>
+  </data>
+  <data name="Roles" xml:space="preserve">
+    <value>Roller</value>
+  </data>
+  <data name="SaveDepRegisteredDevices" xml:space="preserve">
+    <value>DEP Kayıtlı Aygıtları Kaydet</value>
+  </data>
+  <data name="Scheduler" xml:space="preserve">
+    <value>Zamanlayıcı</value>
+  </data>
+  <data name="SchedulerApple" xml:space="preserve">
+    <value>Zamanlayıcı</value>
+  </data>
+  <data name="SchedulerAppleHelp" xml:space="preserve">
+    <value>MDM Planlayıcı sayfasına erişimi denetler</value>
+  </data>
+  <data name="SchedulerHelp" xml:space="preserve">
+    <value>Planlayıcı Ayarları sayfasına erişimi denetler</value>
+  </data>
+  <data name="ScimEnabledOGCannotBatchImportDirectoryTypes" xml:space="preserve">
+    <value>Bu Organizasyon Grubu kullanıcıları, yöneticileri ve grupları provizyonlamak için SCIM kullanır. Dizin kullanıcıları ve grupları toplu olarak içeri aktarılamaz.</value>
+  </data>
+  <data name="SecurityTypeIsRequired" xml:space="preserve">
+    <value>Güvenlik türü gereklidir.</value>
+  </data>
+  <data name="SelectedUsersDoNotExistOrHaveAlreadyBeenDeleted" xml:space="preserve">
+    <value>Seçili kullanıcılar zaten silinmiş olabileceğinden mevcut değildir. Lütfen bu açılır pencere mesajını kapatıp kullanıcılar listesi sayfasını yenileyin.</value>
+  </data>
+  <data name="SelectFileLabel" xml:space="preserve">
+    <value>Dosyayı Seç</value>
+  </data>
+  <data name="SelectMemConfigLabel" xml:space="preserve">
+    <value>MEM Yapılandırması</value>
+  </data>
+  <data name="SendApplicationConfigurationRequest" xml:space="preserve">
+    <value>Uygulama Yapılandırma İsteği Gönder</value>
+  </data>
+  <data name="SendFeedback" xml:space="preserve">
+    <value>Geri Bildirim Gönder</value>
+  </data>
+  <data name="SendsEmail" xml:space="preserve">
+    <value>E-posta Gönder</value>
+  </data>
+  <data name="ServerError" xml:space="preserve">
+    <value>Sunucu Hatası</value>
+  </data>
+  <data name="SettingsEnrollmentCustomization" xml:space="preserve">
+    <value>Ayarlar Kayıt Özelleştirme</value>
+  </data>
+  <data name="SettingsEnrollmentCustomizationHelp" xml:space="preserve">
+    <value>Özelleştirme sekmesine (Aygıtlar\Aygıt Ayarları\Aygıtlar ve Kullanıcılar\Genel\Kayıt) erişmek ve sekmeyi değiştirmek için gerekli izin</value>
+  </data>
+  <data name="SettingsEnrollmentOptionalPrompt" xml:space="preserve">
+    <value>Ayarlar Kayıt İsteğe bağlı Komut İstemi</value>
+  </data>
+  <data name="SettingsEnrollmentOptionalPromptHelp" xml:space="preserve">
+    <value>İsteğe Bağlı Komut İstemi (Aygıtlar\Aygıt Ayarları\Aygıtlar ve Kullanıcılar\Genel\Kayıt) sekmesine erişmek ve sekmeyi değiştirmek için gerekli izin</value>
+  </data>
+  <data name="SettingsHeaderBasedAuthentication" xml:space="preserve">
+    <value>Ayarlar Üst Bilgisi Tabanlı Kimlik Doğrulama</value>
+  </data>
+  <data name="SettingsMDMSampleSchedule" xml:space="preserve">
+    <value>MDM Örnek Zamanlaması Ayarları</value>
+  </data>
+  <data name="SettingsMDMSampleScheduleHelp" xml:space="preserve">
+    <value>MDM Örnek Planlama sayfasına erişim sağlar</value>
+  </data>
+  <data name="SettingsScheduler" xml:space="preserve">
+    <value>Planlayıcı Ayarları</value>
+  </data>
+  <data name="SettingsSchedulerHelp" xml:space="preserve">
+    <value>Planlayıcı sayfasına erişim sağlar</value>
+  </data>
+  <data name="ShareYourFeedback" xml:space="preserve">
+    <value>Geri Bildiriminizi Paylaşın</value>
+  </data>
+  <data name="ShowBatchTypeTemplates" xml:space="preserve">
+    <value>Toplu İşlem Türü Şablonlarını Göster</value>
+  </data>
+  <data name="SingleAppModeProfileRemove" xml:space="preserve">
+    <value>Tek Uygulama Modu Profilini Kaldırma</value>
+  </data>
+  <data name="SyncDirectoryGroup" xml:space="preserve">
+    <value>Dizin Grubunu Eşitle</value>
+  </data>
+  <data name="TargetLgCannotParentUserLg" xml:space="preserve">
+    <value>Hedef organizasyon grubu, kullanıcı organizasyon grubunun üst öğesi olamaz.</value>
+  </data>
+  <data name="ThresholdAdminActionRequest" xml:space="preserve">
+    <value>Eşik Yöneticisi İçin Eylem İsteği</value>
+  </data>
+  <data name="TimedOut" xml:space="preserve">
+    <value>Zaman Aşımına Uğradı</value>
+  </data>
+  <data name="TokenNotCreatedDeviceIdentifiersSpecifiersNotProvided" xml:space="preserve">
+    <value>Belirteç oluşturulmadı! Aygıt bilgisi eksik.</value>
+  </data>
+  <data name="TransactionFailed" xml:space="preserve">
+    <value>Parola sıfırlama e-postası gönderilemedi. Lütfen alıcının e-posta adresini doğrulayın ve tekrar deneyin.</value>
+  </data>
+  <data name="TroubleLoggingIn" xml:space="preserve">
+    <value>Oturum açarken sorun oluştu</value>
+  </data>
+  <data name="TwoFactorAuthenticationMethodNotValidOrNotAllowed" xml:space="preserve">
+    <value>İki öğeli kimlik doğrulama yöntemi geçerli değil veya yönteme izin verilmiyor.</value>
+  </data>
+  <data name="TwoMoreLgCannotSameCustomerCode" xml:space="preserve">
+    <value>İki veya daha fazla organizasyon grubu, aynı müşteri koduna sahip olamaz.</value>
+  </data>
+  <data name="UnableToFindCertificate" xml:space="preserve">
+    <value>Sertifika bulunamıyor.</value>
+  </data>
+  <data name="UninstallAppFromAll" xml:space="preserve">
+    <value>Uygulamayı Tümünden Kaldır</value>
+  </data>
+  <data name="UniqueIdentifierArgNotProvidedForNewAdmin" xml:space="preserve">
+    <value>Yeni Yönetici için Benzersiz Tanımlayıcı "{0}" verilmemiş.</value>
+  </data>
+  <data name="UniqueIdentifierArgNotProvidedForNewUser" xml:space="preserve">
+    <value>Yeni Kullanıcı için Benzersiz Tanımlayıcı "{0}" verilmemiş</value>
+  </data>
+  <data name="UpdatePublish" xml:space="preserve">
+    <value>Güncelleme Yayınlama</value>
+  </data>
+  <data name="UserAccountUnlocked" xml:space="preserve">
+    <value>Kullanıcı hesabının kilidi açık</value>
+  </data>
+  <data name="UserAndroidWorkAppsSync" xml:space="preserve">
+    <value>Kullanıcı İş İçin Android Uygulamalarını Eşitleme</value>
+  </data>
+  <data name="UserArgCannotBeEditedUserResidesAtBelowImportingOG" xml:space="preserve">
+    <value>{0} kullanıcısı, içe aktaran Organizasyon grubunda/grubunun altında dışarıda yer aldığı için düzenlenemiyor/yönetilemiyor</value>
+  </data>
+  <data name="UserArgCannotBeMoved" xml:space="preserve">
+    <value>{0} kullanıcısı, bir/daha fazla aygıtın birincil OG'si, hedef Organizasyon grubunun üzerinde yer aldığı için taşınamıyor</value>
+  </data>
+  <data name="UserArgEditNotAllowedForFollowingSecurityType" xml:space="preserve">
+    <value>Aşağıdaki güvenlik türü için Kullanıcı {0} sürümüne izin verilmiyor</value>
+  </data>
+  <data name="UserArgEditNotAllowedNoPermission" xml:space="preserve">
+    <value>Kullanıcıya bu OG'de izin verilmediğinden Kullanıcı {0} sürümüne izin verilmiyor</value>
+  </data>
+  <data name="UserArgNotCreatedAsNotFoundInAD" xml:space="preserve">
+    <value>{0} kullanıcısı, AD'de bulunamadığı için oluşturulamadı</value>
+  </data>
+  <data name="UserArgWasNotFoundatLG" xml:space="preserve">
+    <value>{0} kullanıcısı, verilen konum grubunda bulunamadı ya da temel kullanıcı değil</value>
+  </data>
+  <data name="UserCannotAssignedToParentLg" xml:space="preserve">
+    <value>Kullanıcı, bir üst organizasyon grubuna atanamıyor.</value>
+  </data>
+  <data name="UserDataCorruptedErrorMessage" xml:space="preserve">
+    <value>Kullanıcı bilgisini çözme işleminde bir sorun oluştu. Hangi alan ve kullanıcıların etkilendiğini görmek için olay günlüklerini görüntüleyin. Bu sorunu düzenle öğesini seçip etkilenen her kullanıcı için doğru bilgiyi yeniden girerek düzeltin.</value>
+    <comment>Error message shown during the User List View in case Decryption fails for some of the Personal info of any Users.</comment>
+  </data>
+  <data name="UserDecryptionFailed" xml:space="preserve">
+    <value>Kullanıcı Verilerini Çözme İşlemi Başarısız Oldu</value>
+  </data>
+  <data name="UserGroupsNotPermittedAtGivenOG" xml:space="preserve">
+    <value>Kullanıcı Gruplarının, verilen Organizasyon grubuna eklenmesine izin verilmiyor</value>
+  </data>
+  <data name="UserInformationPrivacySettingWarning" xml:space="preserve">
+    <value>Kullanıcı Bilgileri için Gizlilik ayarları, Sistem &gt; Kurumsal Entegrasyon altındaki Dizin Hizmetleri ayarları sayfasında bağlantı sınama yardımcı programına uygulanmaz.</value>
+  </data>
+  <data name="UserLockedOut" xml:space="preserve">
+    <value>Kullanıcı hesabı Kilitli</value>
+  </data>
+  <data name="UsernameAndPassword" xml:space="preserve">
+    <value>Kullanıcı Adı ve Parola</value>
+  </data>
+  <data name="UserNoAccessForOGArg" xml:space="preserve">
+    <value>Kullanıcının, Organizasyon grubu {0} için erişim izni yok</value>
+  </data>
+  <data name="UserNotFoundAd" xml:space="preserve">
+    <value>Kullanıcı, dizin hizmetlerinde bulunamadı. Kullanıcı eklenemiyor.</value>
+  </data>
+  <data name="UserQuestionsNotAuthenticated" xml:space="preserve">
+    <value>Güvenlik sorusunu doğru cevaplayana kadar parolanızı sıfırlayamazsınız. Ne yapmanız gerektiği hakkında talimatlar için size gönderilen parola kurtarma e-postasına başvurun.</value>
+    <comment>Only appears if someone tries to directly hit the "reset password" page without first answering their security questions.</comment>
+  </data>
+  <data name="UserRoleNotValid" xml:space="preserve">
+    <value>Kullanıcı rolü geçersiz.</value>
+  </data>
+  <data name="UsersSettings" xml:space="preserve">
+    <value>Kullanıcılar İçin Ayarlar</value>
+  </data>
+  <data name="UserTypeRequiredFieldValueDirectoryBasicArg" xml:space="preserve">
+    <value>Kullanıcı Türü alanı değeri {0} ya da {1} olmalıdır.</value>
+  </data>
+  <data name="VideoImport" xml:space="preserve">
+    <value>Video İçeri Aktarımı</value>
+  </data>
+  <data name="ViewCustomReportsGettingStarted" xml:space="preserve">
+    <value>İstihbarata Başlarken</value>
+  </data>
+  <data name="ViewCustomReportsGettingStartedHelp" xml:space="preserve">
+    <value>İstihbarata Başlarken sayfasına salt okunur erişim sağlar.</value>
+  </data>
+  <data name="ViewEducationOverview" xml:space="preserve">
+    <value>Eğitime Genel Bakışı Görüntüle</value>
+  </data>
+  <data name="ViewManagedAdminPasswordHelp" xml:space="preserve">
+    <value>Yönetilen yönetici parolalarını görüntüleme erişimini kontrol eder</value>
+  </data>
+  <data name="ViewUserGroup.Plural" xml:space="preserve">
+    <value>Kullanıcı Gruplarını Görüntüle</value>
+  </data>
+  <data name="WebAppEntitlements" xml:space="preserve">
+    <value>Web Uygulaması Destek Hakları</value>
+  </data>
+  <data name="Websitefilterssettings" xml:space="preserve">
+    <value>Web Sayfası Filtre Ayarları</value>
+  </data>
+  <data name="WindowsBspTenantIdDelete" xml:space="preserve">
+    <value>Windows BSP TenantId Silme</value>
+  </data>
+  <data name="WorkspaceOneCloudAccessDeniesErrorMessage" xml:space="preserve">
+    <value>Workspace ONE'a erişmek için bir VMware Cloud Hizmetleri hesabınız olmalıdır. Yardım için yöneticinizle iletişime geçin. {0}</value>
+  </data>
+</root>

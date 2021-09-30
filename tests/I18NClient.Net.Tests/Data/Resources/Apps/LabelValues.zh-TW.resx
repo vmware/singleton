@@ -1,0 +1,2908 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AccessDeniedForOG" xml:space="preserve">
+    <value>目前的企業群組沒有應用程式的存取權限</value>
+  </data>
+  <data name="AccessPoliciesIDMSetupArg" xml:space="preserve">
+    <value>需要先設定 Workspace ONE，才能使用存取原則。請前往 {0} 並完成 Workspace ONE 設定。完成後，請登出並再次登入，然後再試一次。</value>
+  </data>
+  <data name="AccountNameExample" xml:space="preserve">
+    <value>例如 VMware</value>
+  </data>
+  <data name="AccountNotifyEmail" xml:space="preserve">
+    <value>通知電子郵件設定</value>
+  </data>
+  <data name="AccountNotifyEmailInfo" xml:space="preserve">
+    <value>電子郵件通知</value>
+  </data>
+  <data name="AccountNotifyPush" xml:space="preserve">
+    <value>ENS2</value>
+  </data>
+  <data name="AccountNotifyPushInfo" xml:space="preserve">
+    <value>啟用或停用電子郵件通知服務。</value>
+  </data>
+  <data name="AccountSMIMESignByDefault" xml:space="preserve">
+    <value>自動簽署電子郵件</value>
+  </data>
+  <data name="AccountSMIMESignByDefaultInfo" xml:space="preserve">
+    <value>撰寫視圖啟動時，依預設會啟用 S/MIME 簽署</value>
+  </data>
+  <data name="AccountSyncCalendar" xml:space="preserve">
+    <value>同步行事曆設定</value>
+  </data>
+  <data name="AccountSyncCalendarInfo" xml:space="preserve">
+    <value>停用同步行事曆至裝置</value>
+  </data>
+  <data name="AccountSyncContact" xml:space="preserve">
+    <value>同步聯絡人設定</value>
+  </data>
+  <data name="AccountSyncContactInfo" xml:space="preserve">
+    <value>停用同步聯絡人至裝置</value>
+  </data>
+  <data name="AccountSyncEmail" xml:space="preserve">
+    <value>同步電子郵件設定</value>
+  </data>
+  <data name="AccountSyncEmailInfo" xml:space="preserve">
+    <value>停用同步電子郵件至裝置</value>
+  </data>
+  <data name="AccountUseOAuth" xml:space="preserve">
+    <value>新式驗證</value>
+  </data>
+  <data name="AccountUseOAuthInfo" xml:space="preserve">
+    <value>啟用時，在註冊期間，使用者會重新導向至登入頁面以進行驗證</value>
+  </data>
+  <data name="ActionsGrid" xml:space="preserve">
+    <value>動作網格</value>
+  </data>
+  <data name="ActionsNotShownForProductBasedApps" xml:space="preserve">
+    <value>屬於產品套件一部分的應用程式，其個別安裝和移除動作會受到限制。</value>
+  </data>
+  <data name="ActivateApplication" xml:space="preserve">
+    <value>啟用應用程式</value>
+  </data>
+  <data name="AddContingencies" xml:space="preserve">
+    <value>新增不確定因素</value>
+  </data>
+  <data name="AIPSensitivityLabels" xml:space="preserve">
+    <value>AIP 敏感度標籤</value>
+  </data>
+  <data name="AllAppsImportedFromPlay" xml:space="preserve">
+    <value>所有應用程式已匯入</value>
+  </data>
+  <data name="AllAppsTab" xml:space="preserve">
+    <value>所有 APP</value>
+  </data>
+  <data name="Alloted" xml:space="preserve">
+    <value>已分配</value>
+  </data>
+  <data name="AllowActionArchiveInfo" xml:space="preserve">
+    <value>這可以允許或封鎖封存電子郵件的功能</value>
+  </data>
+  <data name="AllowActionSpamInfo" xml:space="preserve">
+    <value>若停用，終端使用者將無法使用 Workspace ONE Boxer 中的 [垃圾郵件] 選項。如果已啟用且未提供轉寄電子郵件地址，則垃圾郵件報告將會移至 [垃圾郵件]。</value>
+  </data>
+  <data name="AllowAnnotations" xml:space="preserve">
+    <value>允許註釋</value>
+  </data>
+  <data name="AllowAnnotationsTip" xml:space="preserve">
+    <value>允許使用手寫和螢光筆工具。</value>
+  </data>
+  <data name="AllowAppRemovalsWithoutProtectionTimeWindowHelp" xml:space="preserve">
+    <value>一旦管理員核准並決定繼續移除後，系統便不會對該應用程式觸發保護，以便根據此處設定的間隔時間順利執行移除動作。時間間隔過後，如果受影響的裝置達到「受影響的裝置」中設定的數量，則會再次觸發保護。</value>
+  </data>
+  <data name="AllowArchivingEmails" xml:space="preserve">
+    <value>允許封存電子郵件</value>
+  </data>
+  <data name="AllowAttachmentsDownloadInfo" xml:space="preserve">
+    <value>啟用或停用附件的下載。</value>
+  </data>
+  <data name="AllowAttachmentsInfo" xml:space="preserve">
+    <value>啟用或停用傳送郵件的附件</value>
+  </data>
+  <data name="AllowAttachmentsTip" xml:space="preserve">
+    <value>啟用或停用筆記附件功能。停用時，不允許任何附件類型。</value>
+  </data>
+  <data name="AllowCameraTip" xml:space="preserve">
+    <value>啟用或停用裝置相機選項。</value>
+  </data>
+  <data name="AllowCrashReportingInfo" xml:space="preserve">
+    <value>依預設，Boxer 允許匿名報告當機。建議將此功能維持啟用，允許我們能夠看見並修正當機問題</value>
+  </data>
+  <data name="AllowDocProvidersInfo" xml:space="preserve">
+    <value>在 Workspace ONE Boxer 中啟用或停用外部提供者 (iCloud、Dropbox、Google Drive 等) 的附件。</value>
+  </data>
+  <data name="AllowDocumentScanner" xml:space="preserve">
+    <value>允許文件掃描器</value>
+  </data>
+  <data name="AllowDocumentScannerTip" xml:space="preserve">
+    <value>啟用或停用文件掃描功能。</value>
+  </data>
+  <data name="AllowEnterpriseContentInfo" xml:space="preserve">
+    <value>企業內容功能將您的 Workspace ONE Content 存放庫設定帶入 Boxer，以便儲存和檢視線上存放庫中的檔案。需要為此組態啟用 SSO。</value>
+  </data>
+  <data name="AllowExchange" xml:space="preserve">
+    <value>允許 Exchange</value>
+  </data>
+  <data name="AllowGallery" xml:space="preserve">
+    <value>允許圖庫</value>
+  </data>
+  <data name="AllowGalleryTip" xml:space="preserve">
+    <value>啟用或停用裝置影像圖庫的存取和使用。</value>
+  </data>
+  <data name="AllowHyperlinksTip" xml:space="preserve">
+    <value>允許使用者輸入超連結。</value>
+  </data>
+  <data name="AllowList" xml:space="preserve">
+    <value>允許清單</value>
+  </data>
+  <data name="AllowLocalCalendarsInfo" xml:space="preserve">
+    <value>設定為 True 可在 Workspace ONE Boxer 中啟用本機行事曆。如果停用，則終端使用者無法使用 Workspace ONE Boxer 中的本機聯絡人選項。</value>
+  </data>
+  <data name="AllowMetricsInfo" xml:space="preserve">
+    <value>如果想要停用匿名指標收集，請選擇此項。這些指標可協助我們做出產品開發決策。</value>
+  </data>
+  <data name="AllowOpenInInfo" xml:space="preserve">
+    <value>啟用或停用從其他應用程式使用「開啟於」或「共用」的方式將檔案附加到 Workspace ONE Boxer。若停用附件的「開啟於」或「共用」功能，則會顯示訊息「您的管理員已限制外部應用程式的附件」。</value>
+  </data>
+  <data name="AllowRemovalsForDuration" xml:space="preserve">
+    <value>允許移除不受保護的項目 (小時)</value>
+  </data>
+  <data name="AllowTextBoxes" xml:space="preserve">
+    <value>允許文字方塊</value>
+  </data>
+  <data name="AllowTextBoxesTip" xml:space="preserve">
+    <value>允許文字方塊。</value>
+  </data>
+  <data name="AllowUserInstallDeferralLabel" xml:space="preserve">
+    <value>允許使用者延遲安裝</value>
+  </data>
+  <data name="AllowUserInstallDeferralTooltip" xml:space="preserve">
+    <value>啟用此選項以允許使用者延遲安裝此應用程式</value>
+  </data>
+  <data name="AllowUserRegistrationMessage" xml:space="preserve">
+    <value>可讓任何具有您環境 URL 和群組 ID 存取權的使用者建立使用者帳戶，以及獲得企業資源存取權。若要協助防止未經授權的使用者獲得存取權，請取消選取此選項，然後前往 [帳戶] &gt; [使用者] &gt; [清單視圖] &gt; [新增使用者] 來建立使用者帳戶。</value>
+  </data>
+  <data name="AllowVoiceRecordings" xml:space="preserve">
+    <value>允許錄音</value>
+  </data>
+  <data name="AllowVoiceRecordingsTip" xml:space="preserve">
+    <value>啟用或停用錄音功能。</value>
+  </data>
+  <data name="AndroidDerivedCredentialSmimeForFirstaccount" xml:space="preserve">
+    <value>{0} 僅支援單一 S/MIME 憑證。僅針對主要受管理電子郵件帳戶選取此選項。</value>
+  </data>
+  <data name="AppAlreadyExistsUnderProductProvisioning" xml:space="preserve">
+    <value>此應用程式已存在於 [產品佈建] 之下，並且無法在 [應用程式和書籍] 底下進行上傳。您可以從 [產品佈建] 刪除該應用程式執行個體，並且重試上傳。若要避免應用程式遭到移除，請確認裝置有權保留屬於該指派所有部分的應用程式。</value>
+  </data>
+  <data name="AppAvatarsDefault" xml:space="preserve">
+    <value>啟用顯示圖片</value>
+  </data>
+  <data name="AppBulkAction" xml:space="preserve">
+    <value>應用程式大量動作</value>
+  </data>
+  <data name="AppCategories" xml:space="preserve">
+    <value>APP 類別</value>
+  </data>
+  <data name="AppCompliance" xml:space="preserve">
+    <value>APP 合規性</value>
+  </data>
+  <data name="AppComplianceReportedCompliant" xml:space="preserve">
+    <value>應用程式符合性已報告為合規</value>
+  </data>
+  <data name="AppComplianceReportedNonCompliant" xml:space="preserve">
+    <value>應用程式符合性已報告為不合規</value>
+  </data>
+  <data name="AppComplianceReportedUnknown" xml:space="preserve">
+    <value>應用程式符合性已報告為不明</value>
+  </data>
+  <data name="AppConfigSectionMmaInfoMsg" xml:space="preserve">
+    <value>確保此 KVP 會套用至整個應用程式中。任何僅適用於特定電子郵件帳戶的組態，都應移至「電子郵件設定」中的「自訂帳戶組態」，以避免中斷。</value>
+  </data>
+  <data name="AppConversationViewDefault" xml:space="preserve">
+    <value>對話分組</value>
+  </data>
+  <data name="AppDefaultBrowser" xml:space="preserve">
+    <value>限制為預設瀏覽器</value>
+  </data>
+  <data name="AppDefaultBrowserExceptions" xml:space="preserve">
+    <value>瀏覽器例外狀況</value>
+  </data>
+  <data name="AppDefaultBrowserExceptionsInfo" xml:space="preserve">
+    <value>如果在 Console 中已限制超連結，則可新增例外狀況清單，列舉一律在預設/原生瀏覽器中開啟的網域和站台。如果未限制超連結，則可新增例外狀況清單，列舉一律在 Workspace ONE Web 中開啟的網域/站台。例外狀況清單僅會比對萬用字元、子網域和網域。範例：AppDefaultBrowserExceptions = ["*.vmware.com", "jira*.vmware.com", "internal.vmware.com", "vmware.com"]</value>
+  </data>
+  <data name="AppDefaultBrowserTooltip" xml:space="preserve">
+    <value>在預設瀏覽器中開啟所有連結。</value>
+  </data>
+  <data name="AppDefaultCallerID" xml:space="preserve">
+    <value>預設來電顯示</value>
+  </data>
+  <data name="AppDeploymentInlineHelpPublic" xml:space="preserve">
+    <value>自動 (自動) 部署該應用程式，或者在需要時手動 (隨選) 部署。</value>
+  </data>
+  <data name="AppDetails" xml:space="preserve">
+    <value>應用程式詳細資料</value>
+  </data>
+  <data name="AppDetailsView" xml:space="preserve">
+    <value>應用程式詳細資料視圖</value>
+  </data>
+  <data name="AppDomainsInternal" xml:space="preserve">
+    <value>內部網域清單</value>
+  </data>
+  <data name="AppDomainsWarning" xml:space="preserve">
+    <value>外部收件者警告</value>
+  </data>
+  <data name="AppDomainsWarningInfo" xml:space="preserve">
+    <value>在傳送訊息給外部收件者時通知終端使用者。</value>
+  </data>
+  <data name="AppEnableKeyWrappingOnlyMode" xml:space="preserve">
+    <value>啟用僅限 Swift SDK 金鑰包裝的模式</value>
+  </data>
+  <data name="AppEnableKeyWrappingOnlyModeInfo" xml:space="preserve">
+    <value>保持啟用以充分發揮金鑰包裝安全性功能</value>
+  </data>
+  <data name="AppForceActivateSSO" xml:space="preserve">
+    <value>啟用 Single Sign-On (SSO)</value>
+  </data>
+  <data name="AppForceActivateSSOInfo" xml:space="preserve">
+    <value>這會啟用 SSO，由於 SSO 一律啟用，因此金鑰將受到取代。許多功能 (包括企業內容) 均須啟用此功能。</value>
+  </data>
+  <data name="AppGroup" xml:space="preserve">
+    <value>APP 群組</value>
+  </data>
+  <data name="AppGroups" xml:space="preserve">
+    <value>APP 群組</value>
+  </data>
+  <data name="AppInstallDeferred" xml:space="preserve">
+    <value>安裝已延後</value>
+  </data>
+  <data name="AppKeyWrappingOnlyMode" xml:space="preserve">
+    <value>啟用僅限 Swift SDK 金鑰包裝的模式</value>
+  </data>
+  <data name="AppleUpdateAvailableHelpText" xml:space="preserve">
+    <value>此欄可判斷應用程式是否為最新版，或是否有可用的更新。僅支援可在 App Store 中取得的應用程式。</value>
+  </data>
+  <data name="ApplicationApprovedFordeviceAssignment" xml:space="preserve">
+    <value>應用程式已為裝置型指派啟用。請注意，所有 iOS9+ 和 macOS 10.11+ 裝置都會各收到一組授權。這些裝置不需要 Apple ID 來接收應用程式。</value>
+  </data>
+  <data name="ApplicationApprovedFordeviceAssignmentWithTvOS" xml:space="preserve">
+    <value>應用程式已為裝置型指派啟用。請注意，所有 iOS 9+ 和 macOS 10.11+ 裝置都會各收到一組授權。這些裝置不需要 Apple ID 來接收應用程式。tvOS 裝置只能使用裝置型授權，不需要管理員動作即可使用。</value>
+  </data>
+  <data name="ApplicationAttributes" xml:space="preserve">
+    <value>屬性</value>
+  </data>
+  <data name="ApplicationAttributesTooltip" xml:space="preserve">
+    <value>應用程式屬性提供應用程式在作業期間所用的裝置特定詳細資料，例如與不同組織相關聯的網域清單。</value>
+  </data>
+  <data name="ApplicationBundleId" xml:space="preserve">
+    <value>應用程式服務包 ID</value>
+  </data>
+  <data name="ApplicationCantDeleteRetireConfirmation" xml:space="preserve">
+    <value>若此應用程式是由 Workspace ONE 管理，刪除應用程式會同時將其從一或多個獲指派裝置中移除，並於主控台中將其淘汰。您要繼續嗎?</value>
+  </data>
+  <data name="ApplicationConfigMigrationJob" xml:space="preserve">
+    <value>應用程式組態遷移工作</value>
+  </data>
+  <data name="ApplicationDeactivateDescription" xml:space="preserve">
+    <value>在停用某應用程式的同時，會將該應用程式的所有版本從受 Workspace ONE 管理的所有裝置上解除安裝。所以請謹慎進行。</value>
+  </data>
+  <data name="ApplicationDeploymentStatusStaleTime" xml:space="preserve">
+    <value>此時間過後將應用程式 UEM 指令標記為過時:</value>
+  </data>
+  <data name="ApplicationDeploymentStatusStaleTimeForAndroid" xml:space="preserve">
+    <value>Android</value>
+  </data>
+  <data name="ApplicationDeploymentStatusStaleTimeForIos" xml:space="preserve">
+    <value>iOS</value>
+  </data>
+  <data name="ApplicationDeploymentStatusStaleTimeForMacOs" xml:space="preserve">
+    <value>macOS</value>
+  </data>
+  <data name="ApplicationDeploymentStatusStaleTimeForWindows" xml:space="preserve">
+    <value>Windows</value>
+  </data>
+  <data name="ApplicationDeploymentStatusStaleTimeTooltip" xml:space="preserve">
+    <value>設定裝置在認可最後一個 UEM 指令 (但尚未完成動作) 後幾分鐘會將 UEM 指令標記為「過時」。過時的指令會在應用程式發佈時重新觸發。應用程式目錄將不再向終端使用者顯示應用程式為「處理中」，而是重新啟用「安裝」或「更新」動作。</value>
+  </data>
+  <data name="ApplicationGroupActivated" xml:space="preserve">
+    <value>已啟動應用程式群組</value>
+  </data>
+  <data name="ApplicationGroupDeactivated" xml:space="preserve">
+    <value>已停用應用程式群組</value>
+  </data>
+  <data name="ApplicationGroupDeleted" xml:space="preserve">
+    <value>已刪除應用程式群組</value>
+  </data>
+  <data name="ApplicationInKiosk" xml:space="preserve">
+    <value>注意：此應用程式包含在 Kiosk 設定檔中。請在應用程式移除後更新設定檔。</value>
+  </data>
+  <data name="ApplicationMaxFileSizeWithCdn" xml:space="preserve">
+    <value>使用 CDN 的應用程式檔案大小上限</value>
+  </data>
+  <data name="ApplicationMaxFileSizeWithCdnToolTip" xml:space="preserve">
+    <value>啟用 CDN 時，將使用此企業群組的「檔案大小上限」和「使用 CDN 的檔案大小上限」的較大值來處理上傳作業。</value>
+  </data>
+  <data name="ApplicationPublished" xml:space="preserve">
+    <value>應用程式發佈成功</value>
+  </data>
+  <data name="ApplicationPublishFailed" xml:space="preserve">
+    <value>應用程式發佈失敗</value>
+  </data>
+  <data name="ApplicationPublishStarted" xml:space="preserve">
+    <value>應用程式發佈已啟動</value>
+  </data>
+  <data name="ApplicationReasonChange" xml:space="preserve">
+    <value>應用程式原因變更</value>
+  </data>
+  <data name="ApplicationRetireDescription" xml:space="preserve">
+    <value>在淘汰某個應用程式版本的同時，會將該應用程式的版本從受 Workspace ONE 管理的所有裝置上解除安裝。在適用的情況下，前一個舊版的應用程式將會被推送到裝置上，所以請謹慎進行。</value>
+  </data>
+  <data name="ApplicationSample" xml:space="preserve">
+    <value>應用程式樣本</value>
+  </data>
+  <data name="ApplicationSource" xml:space="preserve">
+    <value>應用程式來源</value>
+  </data>
+  <data name="ApplicationsSetting" xml:space="preserve">
+    <value>應用程式設定</value>
+  </data>
+  <data name="ApplicationsSettings" xml:space="preserve">
+    <value>應用程式設定</value>
+  </data>
+  <data name="ApplicationTransforms" xml:space="preserve">
+    <value>應用程式轉換</value>
+  </data>
+  <data name="ApplicationUemVersionAlreadyExists" xml:space="preserve">
+    <value>應用程式 UEM 版本已經存在</value>
+  </data>
+  <data name="ApplicationUserAppRatingDescription" xml:space="preserve">
+    <value>{0} 應用程式的使用者應用程式評等在 5 星中得了 {1} 星</value>
+    <comment>The first placeholder in the label key is for the application name and the second placeholder is for the app rating count by user.</comment>
+  </data>
+  <data name="ApplicationUUID" xml:space="preserve">
+    <value>應用程式 UUID</value>
+  </data>
+  <data name="AppLogAggregationMode" xml:space="preserve">
+    <value>記錄彙總模式</value>
+  </data>
+  <data name="AppLogAggregationUrl" xml:space="preserve">
+    <value>記錄彙總 URL</value>
+  </data>
+  <data name="AppMobileFlowsAutoEnableConnectors" xml:space="preserve">
+    <value>自動啟用 Mobile Flows 連接器</value>
+  </data>
+  <data name="AppMobileFlowsEnabled" xml:space="preserve">
+    <value>Mobile Flows</value>
+  </data>
+  <data name="AppMobileFlowsEnabledInfo" xml:space="preserve">
+    <value>設定 Boxer 可整合的 Mobile Flows 伺服器資訊</value>
+  </data>
+  <data name="AppMobileFlowsHost" xml:space="preserve">
+    <value>Mobile Flows 主機</value>
+  </data>
+  <data name="AppMobileFlowsSyncTimeHours" xml:space="preserve">
+    <value>Mobile Flows 同步小時</value>
+  </data>
+  <data name="AppMobileFlowsSyncTimeHoursInfo" xml:space="preserve">
+    <value>在此值 (以小時為單位) 之前傳送的電子郵件，不要求 Mobile Flow 卡片</value>
+  </data>
+  <data name="AppMobileFlowsvIDM" xml:space="preserve">
+    <value>Mobile Flows 驗證伺服器</value>
+  </data>
+  <data name="AppNameIsRequired" xml:space="preserve">
+    <value>需要有應用程式名稱才能檢視結果。</value>
+  </data>
+  <data name="AppNotExistOrUnauthorizedAccess" xml:space="preserve">
+    <value>應用程式不存在，或您無權存取。</value>
+  </data>
+  <data name="AppPasscode" xml:space="preserve">
+    <value>應用程式密碼</value>
+  </data>
+  <data name="AppPatchUpdate" xml:space="preserve">
+    <value>應用程式修補程式更新</value>
+  </data>
+  <data name="AppPhishEmailAddress" xml:space="preserve">
+    <value>回報網路釣魚至</value>
+  </data>
+  <data name="AppPhishEmailAddressInfo" xml:space="preserve">
+    <value>設定電子郵件地址來接收舉報的網路釣魚電子郵件</value>
+  </data>
+  <data name="AppPlainTextMode" xml:space="preserve">
+    <value>純文字模式</value>
+  </data>
+  <data name="AppPlainTextModeInfo" xml:space="preserve">
+    <value>如果想要 Boxer 僅以純文字模式同步，請選取此選項。不允許 HTML 內容</value>
+  </data>
+  <data name="AppPolicies" xml:space="preserve">
+    <value>應用程式原則</value>
+  </data>
+  <data name="AppPurebredPackageName" xml:space="preserve">
+    <value>Purebred 應用程式 ID</value>
+  </data>
+  <data name="AppPurebredPackageNameInfo" xml:space="preserve">
+    <value>Purebred 應用程式的套件/服務包 ID。此 ID 將用於驗證裝置上的 Purebred 應用程式，以搭配 Boxer 使用。</value>
+  </data>
+  <data name="AppPurebredPublicKey" xml:space="preserve">
+    <value>Purebred 應用程式簽章</value>
+  </data>
+  <data name="AppPurebredPublicKeyInfo" xml:space="preserve">
+    <value>Purebred 應用程式的公開簽章。此金鑰將用於驗證裝置上的 Purebred 應用程式，以搭配 Boxer 使用。</value>
+  </data>
+  <data name="AppRefetchEmptyLinksUsingMime" xml:space="preserve">
+    <value>使用 Mime 重新擷取空白連結</value>
+  </data>
+  <data name="AppRefetchEmptyLinksUsingMimeInfo" xml:space="preserve">
+    <value>若是透過含有非標準 URL 配置 (例如 RSA 應用程式) 指向非伺服器網域的 HTML 擷取電子郵件，Exchange 會將 URL 取代為兩格空格。KVP 讓 Boxer 能偵測此事件，並使用 MIME (不受限於同樣的 URL 取代問題) 重新下載受影響的內文。</value>
+  </data>
+  <data name="AppRemovalProtectionLogDevicesHeader" xml:space="preserve">
+    <value>應用程式移除保護記錄裝置</value>
+  </data>
+  <data name="AppRetriesOnFailedInitialAuth" xml:space="preserve">
+    <value>指定驗證重試次數</value>
+  </data>
+  <data name="AppRetriesOnFailedInitialAuthInfo" xml:space="preserve">
+    <value>指定驗證失敗時的重試次數</value>
+  </data>
+  <data name="AppSampleInformation" xml:space="preserve">
+    <value>應用程式樣本資訊</value>
+  </data>
+  <data name="AppSampleLastSeen" xml:space="preserve">
+    <value>應用程式樣本最後上線時間</value>
+  </data>
+  <data name="AppSequencingTab" xml:space="preserve">
+    <value>應用程式排序中</value>
+  </data>
+  <data name="AppSkipTutorial" xml:space="preserve">
+    <value>略過應用程式內教學課程</value>
+  </data>
+  <data name="AppSkipTutorialTooltip" xml:space="preserve">
+    <value>略過應用程式首次啟動的教學課程</value>
+  </data>
+  <data name="AppSpamForwardAddress" xml:space="preserve">
+    <value>回報垃圾郵件至</value>
+  </data>
+  <data name="AppSpamForwardAddressInfo" xml:space="preserve">
+    <value>設定電子郵件地址來接收舉報垃圾郵件的電子郵件</value>
+  </data>
+  <data name="AppsTabSegregationFeatureInformation" xml:space="preserve">
+    <value>[受管理的應用程式] 索引標籤會顯示 Workspace ONE UEM 所管理的所有 macOS 應用程式和軟體安裝程式。[所有應用程式] 索引標籤會顯示一個唯讀的 macOS 報告清單，列出所有已安裝在裝置上的 .app 服務包。[所有應用程式] 索引標籤中的內容可用性是在個人應用程式的 UEM Console 隱私權設定中進行設定。</value>
+  </data>
+  <data name="AppStatus" xml:space="preserve">
+    <value>應用程式狀態</value>
+  </data>
+  <data name="AppsTermsOfUseNotification" xml:space="preserve">
+    <value>應用程式使用條款更新通知</value>
+  </data>
+  <data name="AppStore" xml:space="preserve">
+    <value>App Store</value>
+  </data>
+  <data name="AppStoreAppSourceHelpText" xml:space="preserve">
+    <value>此欄可判斷應用程式是否已可在 App Store 中取得。</value>
+  </data>
+  <data name="AppSwipesLeftLongDefault" xml:space="preserve">
+    <value>左長滑預設</value>
+  </data>
+  <data name="AppSwipesLeftShortDefault" xml:space="preserve">
+    <value>左短滑預設</value>
+  </data>
+  <data name="AppSwipesRightLongDefault" xml:space="preserve">
+    <value>右長滑預設</value>
+  </data>
+  <data name="AppSwipesRightShortDefault" xml:space="preserve">
+    <value>右短滑預設</value>
+  </data>
+  <data name="AppsWithConfigurationErrors" xml:space="preserve">
+    <value>發生組態錯誤的應用程式</value>
+  </data>
+  <data name="AppUpdatedDate" xml:space="preserve">
+    <value>應用程式更新日期</value>
+  </data>
+  <data name="AppUpdateSource" xml:space="preserve">
+    <value>應用程式更新來源</value>
+  </data>
+  <data name="AppUrl" xml:space="preserve">
+    <value>應用程式 URL</value>
+  </data>
+  <data name="AppVersionDetailsHelp" xml:space="preserve">
+    <value>Workspace ONE UEM 會維護各內部應用程式套件的內部版本。此欄位會自動填入「應用程式版本」。此欄位用於辨識需指派並部署至終端使用者裝置的最新版本。</value>
+  </data>
+  <data name="AppVersionInformationFourDecimal" xml:space="preserve">
+    <value>每個欄位為必填，且不能超過 32 位元整數 (2147483647) 的最大值。</value>
+  </data>
+  <data name="AppVersionNeedsAssignment" xml:space="preserve">
+    <value>應用程式版本需要指派</value>
+  </data>
+  <data name="AppVersionNeedsAssignmentInfo" xml:space="preserve">
+    <value>最新的應用程式版本至少需要一個指派。</value>
+  </data>
+  <data name="AppVersionNeedsAssignmentMessage" xml:space="preserve">
+    <value>最新的應用程式版本沒有應用程式指派。使用此應用程式的工作流程指派將繼續使用先前的應用程式版本及其預設原則。若要使用新的應用程式版本，請建立應用程式指派。</value>
+  </data>
+  <data name="AppVersionUpdateNotification" xml:space="preserve">
+    <value>應用程式版本更新通知</value>
+  </data>
+  <data name="AppWorkflowsMenuDescription" xml:space="preserve">
+    <value>應用程式工作流程</value>
+  </data>
+  <data name="AppWorkflowsMenuItem" xml:space="preserve">
+    <value>應用程式工作流程</value>
+  </data>
+  <data name="Architecture" xml:space="preserve">
+    <value>架構</value>
+  </data>
+  <data name="ArgAssignedCount" xml:space="preserve">
+    <value>{0} 已指派</value>
+  </data>
+  <data name="ArgInstalledCount" xml:space="preserve">
+    <value>{0} 已安裝</value>
+  </data>
+  <data name="ArgNotInstalledCount" xml:space="preserve">
+    <value>{0} 未安裝</value>
+  </data>
+  <data name="ArgVersions" xml:space="preserve">
+    <value>{0} 個版本</value>
+  </data>
+  <data name="ARMAppDependencies" xml:space="preserve">
+    <value>ARM 相依性</value>
+  </data>
+  <data name="ArpMessage" xml:space="preserve">
+    <value>應用程式的移除已暫停，因為它們已達到移除臨界值。</value>
+  </data>
+  <data name="AssignedArgOutOfTotalInstalledArg" xml:space="preserve">
+    <value>已指派 {0} 個，共 {1} 個</value>
+  </data>
+  <data name="AssignedButNotInstalled" xml:space="preserve">
+    <value>已指派但未安裝</value>
+  </data>
+  <data name="AssignedConfiguration" xml:space="preserve">
+    <value>已指派組態</value>
+  </data>
+  <data name="AssignmentCannotBeRemovedForAnAppAssociatedWithWorkflow" xml:space="preserve">
+    <value>無法移除屬於工作流程一部分的應用程式指派。</value>
+  </data>
+  <data name="AssignmentCopiedFrom" xml:space="preserve">
+    <value>指派的複製來源</value>
+  </data>
+  <data name="AssignmentCopiedFromMessage" xml:space="preserve">
+    <value>按一下下方的 [重新整理] 按鈕，以顯示將從中複製的版本號碼指派。</value>
+  </data>
+  <data name="AssignmentCreated" xml:space="preserve">
+    <value>已建立應用程式指派</value>
+  </data>
+  <data name="AssignmentDeleted" xml:space="preserve">
+    <value>已刪除應用程式指派</value>
+  </data>
+  <data name="AssignmentDescriptionPlaceholder" xml:space="preserve">
+    <value>指派說明</value>
+  </data>
+  <data name="AssignmentGroupingInfoMessage" xml:space="preserve">
+    <value>此指派中的部分智慧群組具有不同的應用程式組態、應用程式屬性金鑰值或 MST 轉換檔案，系統已將這些項目分開以確保準確性。這不會對終端使用者的裝置產生任何影響，也不需要執行進一步動作。</value>
+  </data>
+  <data name="AssignmentInformation" xml:space="preserve">
+    <value>指派資訊</value>
+  </data>
+  <data name="AssignmentInstallDetails" xml:space="preserve">
+    <value>指派及安裝詳細資訊</value>
+  </data>
+  <data name="AssignmentInstallDetailsToolTip" xml:space="preserve">
+    <value>從 Workspace ONE 受指派此應用程式的裝置之安裝詳細資訊</value>
+  </data>
+  <data name="AssignmentNamePlaceholder" xml:space="preserve">
+    <value>指派名稱</value>
+  </data>
+  <data name="AssignmentOutOfDate" xml:space="preserve">
+    <value>指派已過期</value>
+  </data>
+  <data name="AssignmentStatus" xml:space="preserve">
+    <value>指派狀態</value>
+  </data>
+  <data name="AssignmentUpdated" xml:space="preserve">
+    <value>已更新應用程式指派</value>
+  </data>
+  <data name="AssignmentUpToDate" xml:space="preserve">
+    <value>最新。已指派應用程式並安裝</value>
+  </data>
+  <data name="AtleastOneActiveAssignmentIsRequired" xml:space="preserve">
+    <value>一或多個指派規則沒有相關聯的啟用中智慧群組。新增智慧群組或刪除指派規則以繼續。</value>
+  </data>
+  <data name="AtleastOneAssignmentIsRequired" xml:space="preserve">
+    <value>在指派中必須指定至少一個智慧群組。</value>
+  </data>
+  <data name="AttachmentDownload" xml:space="preserve">
+    <value>附件下載</value>
+  </data>
+  <data name="AttachmentsRestrictionMMAInfo" xml:space="preserve">
+    <value>此設定決定使用者是否可以在其他的應用程式中開啟電子郵件和其附件。選擇 [僅限預覽] 避免在任何應用程式中開啟，選擇 [允許清單] 來指明所允許的應用程式，或是指明 [未限制] 來允許使用任何應用程式。</value>
+  </data>
+  <data name="AttachPhotos" xml:space="preserve">
+    <value>連結相片</value>
+  </data>
+  <data name="AuthenticateExchangeServerTooltip" xml:space="preserve">
+    <value>設定如何向您的 Exchange 伺服器進行驗證</value>
+  </data>
+  <data name="AuthenticationAdvancedSectionMessage" xml:space="preserve">
+    <value>沒有可供您選取的進階組態</value>
+  </data>
+  <data name="AuthenticationType" xml:space="preserve">
+    <value>驗證類型</value>
+  </data>
+  <data name="AuthenticationTypeInfo" xml:space="preserve">
+    <value>當您以使用者名稱及密碼進行驗證時，請選擇 [基本]；以憑證進行驗證時請選擇 [憑證]；如果需要憑證及密碼以使用 Exchange 進行驗證，則選擇 [兩者]。</value>
+  </data>
+  <data name="AutoAppAssignedButNotInstalled" xml:space="preserve">
+    <value>逾期。已指派應用程式但未安裝</value>
+  </data>
+  <data name="AutoAppAssignmentOutOfDate" xml:space="preserve">
+    <value>逾期。指派的應用程式版本與安裝的版本不同</value>
+  </data>
+  <data name="AutoBootstrapPackageAssignedButNotInstalled" xml:space="preserve">
+    <value>已指派執行啟動程序套件，但裝置已註冊。可用於隨選部署，但尚未收到要求</value>
+  </data>
+  <data name="AvailablePatchCriticality" xml:space="preserve">
+    <value>可用的修補程式嚴重度</value>
+  </data>
+  <data name="AvatarsDefault" xml:space="preserve">
+    <value>顯示圖片</value>
+  </data>
+  <data name="BackLinkEmailSettings" xml:space="preserve">
+    <value>&lt; 電子郵件設定</value>
+  </data>
+  <data name="BadgeOnly" xml:space="preserve">
+    <value>無 (僅限徽章計數)</value>
+  </data>
+  <data name="BasicAndCertificate" xml:space="preserve">
+    <value>基本和憑證</value>
+  </data>
+  <data name="BetaAppSourceHelpText" xml:space="preserve">
+    <value>此欄可判斷應用程式是否已從 TestFlight 下載，而且被視為應用程式的 Beta 版本。</value>
+  </data>
+  <data name="BlockingApplicationsInfoMessage" xml:space="preserve">
+    <value>定義可能封鎖安全完成安裝的任何應用程式或程序。您也可以將其用來防止應用程式在儲存前結束。</value>
+  </data>
+  <data name="BlockingApplicationsTooltip" xml:space="preserve">
+    <value>定義應用程式的名稱。如果應用程式位於 /Applications/ 資料夾，則可以僅用檔案名稱定義，系統會自動探索路徑。</value>
+  </data>
+  <data name="BookCategoriesHelp" xml:space="preserve">
+    <value>利用預先定義的類別或自訂的類別來將書籍套件分門別類，以便在書籍目錄中進行存取</value>
+  </data>
+  <data name="BootstrapPackageAssignedAndInstallCommandAcknowledged" xml:space="preserve">
+    <value>已指派執行啟動程序套件，且已確認安裝命令</value>
+  </data>
+  <data name="BootstrapPackageAssignedButInstallCommandNotAcknowledged" xml:space="preserve">
+    <value>已指派執行啟動程序套件，但尚未確認安裝命令</value>
+  </data>
+  <data name="BoxerSmimeInfoMsg" xml:space="preserve">
+    <value>Boxer 應用程式 5.21 版及更高版本會辨識下方的組態。對於較舊的版本，請在與此應用程式相關聯的自訂 SDK 設定檔中使用「認證」裝載</value>
+  </data>
+  <data name="BoxerTrustStoreOnly" xml:space="preserve">
+    <value>僅限 Boxer 信任存放區</value>
+  </data>
+  <data name="BuildNumber" xml:space="preserve">
+    <value>組建編號</value>
+  </data>
+  <data name="BulkActionExceptionMessage" xml:space="preserve">
+    <value>請選取篩選器，在大量裝置上執行作業。</value>
+  </data>
+  <data name="BulkSyncTunnelConfigAlert" xml:space="preserve">
+    <value>Tunnel 組態會在具有有效指派的裝置上同步。</value>
+  </data>
+  <data name="Bundleidwarningforb2bapps" xml:space="preserve">
+    <value>受管理的散發和精確部署自訂應用程式需要服務包 ID</value>
+  </data>
+  <data name="CalendarMaxSyncPeriodInfo" xml:space="preserve">
+    <value>使用者同步行事曆事件時可選擇的最早起始日期。</value>
+  </data>
+  <data name="CannotAllotMoreThanArgLicenses" xml:space="preserve">
+    <value>無法分配超過 {0} 個授權</value>
+  </data>
+  <data name="CannotRevokeLicense" xml:space="preserve">
+    <value>無法撤銷應用程式授權。請使用有效的 VPP 帳戶 ID。</value>
+  </data>
+  <data name="CardsVersionMessage" xml:space="preserve">
+    <value>這些原則僅適用於 Card 1.1 版及更高版本。若要管理舊版 Card 的 Exchange 設定，請前往與此應用程式相關聯的 SDK 設定檔中的 [自訂設定]。</value>
+  </data>
+  <data name="CardsWarningToEditAllAssignments" xml:space="preserve">
+    <value>Cards 組態已準備就緒，可進行設定。發佈前，請確定從與此應用程式相關聯之 SDK 設定檔的自訂設定中進行的組態正確無誤。</value>
+  </data>
+  <data name="CertAuthenticationTip" xml:space="preserve">
+    <value>若要進行憑證驗證，請在 SDK 設定檔中設定/上傳憑證。</value>
+  </data>
+  <data name="CertificateTemplateInfo" xml:space="preserve">
+    <value>在您的裝置上設定多個受管理的電子郵件帳戶時，請從相同的 exchange 伺服器使用不同 UPN 來設定不同的憑證範本。</value>
+  </data>
+  <data name="CertificateUrlOnly" xml:space="preserve">
+    <value>僅限憑證 URL</value>
+  </data>
+  <data name="CertUrlWithFallback" xml:space="preserve">
+    <value>憑證 URL 及後援</value>
+  </data>
+  <data name="ChangeWhenToCallInstallComplete" xml:space="preserve">
+    <value>變更「何時為安裝完成」</value>
+  </data>
+  <data name="ChangeWhenToCallInstallCompleteDescription" xml:space="preserve">
+    <value>在任何裝置上安裝應用程式後變更「何時為安裝完成」準則，會觸發重新評估這些裝置上的應用程式。如果不符合新準則，則會從這些裝置中移除應用程式。由於此動作可能會造成潛在的中斷，所以需要管理員 PIN 碼才能啟用準則變更。</value>
+  </data>
+  <data name="CheckingDeviceEligibility" xml:space="preserve">
+    <value>檢查裝置適用性</value>
+  </data>
+  <data name="ClearConfigurationWarningText" xml:space="preserve">
+    <value>清除此組態將會重設先前儲存的所有值，您將無法再擷取這些值。
+您確定要繼續嗎?</value>
+  </data>
+  <data name="ClearConfigurationWarningTitleText" xml:space="preserve">
+    <value>清除組態警告</value>
+  </data>
+  <data name="ClipboardEnabled" xml:space="preserve">
+    <value>已啟用剪貼簿</value>
+  </data>
+  <data name="ClipboardPasteActionEnabled" xml:space="preserve">
+    <value>啟用剪貼簿貼上</value>
+  </data>
+  <data name="CollectionMenuDescription" xml:space="preserve">
+    <value>將 Workspace ONE Access、虛擬應用程式與 Horizon、Horizon Cloud、Citrix 或 ThinApp 的桌面部署整合在一起。</value>
+  </data>
+  <data name="Collections" xml:space="preserve">
+    <value>集合</value>
+  </data>
+  <data name="CollectionsHelp" xml:space="preserve">
+    <value>控制虛擬應用程式集合的存取；僅適用於目錄管理</value>
+  </data>
+  <data name="CompromisedProtectionTooltip" xml:space="preserve">
+    <value>啟用此項，自動在被破解的裝置上執行企業抹除。</value>
+  </data>
+  <data name="ConditionIf" xml:space="preserve">
+    <value>如果</value>
+  </data>
+  <data name="ConditionIfArg" xml:space="preserve">
+    <value>如果 {0}</value>
+  </data>
+  <data name="ConditionNotMet" xml:space="preserve">
+    <value>條件不符合</value>
+  </data>
+  <data name="ConditionPrefix" xml:space="preserve">
+    <value>篩選器 (如果)</value>
+  </data>
+  <data name="ConditionSuffix" xml:space="preserve">
+    <value>動作 (則)</value>
+  </data>
+  <data name="ConditionSuffixUpgradeApp" xml:space="preserve">
+    <value>動作 (則) 升級應用程式</value>
+  </data>
+  <data name="ConditionThen" xml:space="preserve">
+    <value>則</value>
+  </data>
+  <data name="ConditionThenArg" xml:space="preserve">
+    <value>則 {0}</value>
+  </data>
+  <data name="ConditionTitle" xml:space="preserve">
+    <value>檢查條件</value>
+  </data>
+  <data name="ConfigurationFeedbackFor" xml:space="preserve">
+    <value>針對 {0} 的組態意見反應</value>
+  </data>
+  <data name="ConfigurationPositionChangeNotice" xml:space="preserve">
+    <value>組態位置變更通知</value>
+  </data>
+  <data name="ConfigureDLPSettingsTooltip" xml:space="preserve">
+    <value>設定此帳戶的 DLP 設定</value>
+  </data>
+  <data name="ConfiguredUrlOnly" xml:space="preserve">
+    <value>僅限設定的 URL</value>
+  </data>
+  <data name="ConfigureEmailSeparationTooltip" xml:space="preserve">
+    <value>設定此帳戶的電子郵件分類</value>
+  </data>
+  <data name="ConfigureRegistryData" xml:space="preserve">
+    <value>設定登錄資料</value>
+  </data>
+  <data name="ConfigureRegistryDataHelpText" xml:space="preserve">
+    <value>選取以檢查是否有特定的登錄值</value>
+  </data>
+  <data name="ConfigureRegistryValues" xml:space="preserve">
+    <value>設定登錄值</value>
+  </data>
+  <data name="ConfigureRegistryValuesHelpText" xml:space="preserve">
+    <value>不勾選此選項，即可只驗證路徑的存在</value>
+  </data>
+  <data name="ConfigureSyncEmailCalenderTooltip" xml:space="preserve">
+    <value>設定如何同步電子郵件和行事曆</value>
+  </data>
+  <data name="ConfigureVpnAtApplicationLevel" xml:space="preserve">
+    <value>選取您想要用於此應用程式的 VPN 組態設定檔。此設定不適用於 tvOS 裝置。</value>
+  </data>
+  <data name="ConfirmDeactivationApplicationRemoval" xml:space="preserve">
+    <value>若應用程式是由 Workspace ONE 管理，將其停用會同時將該應用程式的各個版本從所有裝置上解除安裝。您確定要停用此應用程式嗎?</value>
+  </data>
+  <data name="ConfirmRetirementApplicationRemoval" xml:space="preserve">
+    <value>若應用程式是由 Workspace ONE 管理，淘汰一應用程式版本，會於所有裝置上解除安裝該應用程式版本。若是「作用中」，則會將下一個較低版本的應用程式推播到其所指派的裝置上。您確定要淘汰此應用程式嗎?</value>
+  </data>
+  <data name="ConversationThreading" xml:space="preserve">
+    <value>對話執行緒</value>
+  </data>
+  <data name="CopyOf" xml:space="preserve">
+    <value>以下項目的複本:</value>
+  </data>
+  <data name="CopyOfArg" xml:space="preserve">
+    <value>以下項目的複本: {0}</value>
+  </data>
+  <data name="CouldnotRetrieveApp" xml:space="preserve">
+    <value>無法擷取應用程式。此應用程式已不存在，或已遭到刪除。</value>
+  </data>
+  <data name="CouldnotRetrieveAssignmentForApp" xml:space="preserve">
+    <value>無法擷取此應用程式的指派。應用程式已不存在，或已遭到刪除。</value>
+  </data>
+  <data name="CrashReporting" xml:space="preserve">
+    <value>當機報告</value>
+  </data>
+  <data name="CreatedOnArgArgByArg" xml:space="preserve">
+    <value>由 {1} 在 {0} 建立</value>
+  </data>
+  <data name="CreateWorkflow" xml:space="preserve">
+    <value>建立工作流程</value>
+  </data>
+  <data name="CreateWorkflowBannerDescription" xml:space="preserve">
+    <value>應用程式工作流程可讓您根據所定義的準則，以特定順序處理多個應用程式部署或更新。管理複雜的部署需求，與更新不符合安全性和合規性原則的應用程式，比以往更容易。</value>
+  </data>
+  <data name="CreateWorkflowBannerHeader" xml:space="preserve">
+    <value>更妥善控制應用程式部署和更新</value>
+  </data>
+  <data name="CreateWorkflowNote" xml:space="preserve">
+    <value>目前僅適用於 Windows 桌面版裝置。</value>
+  </data>
+  <data name="CurrentActiveAppAndUEMVersionArgs" xml:space="preserve">
+    <value>目前的作用中應用程式版本為：{0}，應用程式的 UEM 版本為：{1}。</value>
+  </data>
+  <data name="CurrentDeployment" xml:space="preserve">
+    <value>目前部署</value>
+  </data>
+  <data name="CurrentUemVersion" xml:space="preserve">
+    <value>目前的 UEM 版本</value>
+  </data>
+  <data name="CustomAccountConfiguration" xml:space="preserve">
+    <value>自訂帳戶組態</value>
+  </data>
+  <data name="CustomOnlineMeetingUrlsInfo" xml:space="preserve">
+    <value>這可在包含線上會議邀請的行事曆邀請中啟用 [QuickJoin] 按鈕，特別針對不符合線上會議服務雲端版本所使用之標準格式的會議。如果您有內部部署的設定，請於此設定您的 URL。</value>
+  </data>
+  <data name="DeactivateApplication" xml:space="preserve">
+    <value>停用應用程式</value>
+  </data>
+  <data name="DefaultAppAvatarsInfo" xml:space="preserve">
+    <value>切換顯示圖片</value>
+  </data>
+  <data name="DefaultAssignmentDescription" xml:space="preserve">
+    <value>此指派中的原則現在將依預設用於工作流程指派。</value>
+  </data>
+  <data name="DefaultAssignmentPrompt" xml:space="preserve">
+    <value>您確定要將此指派的原則改為預設值嗎?</value>
+  </data>
+  <data name="DefaultAssignmentPromptTitle" xml:space="preserve">
+    <value>變更預設原則</value>
+  </data>
+  <data name="DefaultAssignmentTooltip" xml:space="preserve">
+    <value>啟用後，除非裝置中其他優先順序較高的原則指派覆寫這些原則，否則從工作流程指派此應用程式的裝置將會依預設接收這些原則。一項應用程式只能將一個原則標記為預設原則。</value>
+  </data>
+  <data name="DefaultCalendarSyncPeriod" xml:space="preserve">
+    <value>預設行事曆同步期間</value>
+  </data>
+  <data name="DefaultCallerIDInfo" xml:space="preserve">
+    <value>依預設啟用匯出聯絡人姓名及電話號碼。此設定需要將 Workspace ONE UEM console 中的來電顯示選項設定為 [未限制]。</value>
+  </data>
+  <data name="DefaultConversationViewInfo" xml:space="preserve">
+    <value>此選項會將對話視圖預設為將電子郵件分組或不依對話串將電子郵件分組</value>
+  </data>
+  <data name="DefaultEmailSyncPeriod" xml:space="preserve">
+    <value>預設電子郵件同步期間</value>
+  </data>
+  <data name="DeleteEmailAccountContent" xml:space="preserve">
+    <value>確定要移除此電子郵件帳戶嗎?</value>
+  </data>
+  <data name="DeleteEmailAccountTitle" xml:space="preserve">
+    <value>刪除電子郵件帳戶</value>
+  </data>
+  <data name="DeleteOnSpamForwardInfo" xml:space="preserve">
+    <value>啟用此功能可在轉送後從終端使用者的裝置中刪除垃圾電子郵件。</value>
+  </data>
+  <data name="DeleteTabContentLabel" xml:space="preserve">
+    <value>是否確定要刪除此執行個體? 此組態將不再套用到應用程式。</value>
+  </data>
+  <data name="DeleteTabTitleLabel" xml:space="preserve">
+    <value>刪除執行個體</value>
+  </data>
+  <data name="DependencyMissing" xml:space="preserve">
+    <value>相依性遺失</value>
+  </data>
+  <data name="DependentAppValidationFailed" xml:space="preserve">
+    <value>相依應用程式驗證失敗</value>
+  </data>
+  <data name="DeploymentProgressToolTip" xml:space="preserve">
+    <value>顯示詳細資訊，說明針對此應用程式版本，對指派裝置的部署進度。</value>
+  </data>
+  <data name="DeploymentStatus" xml:space="preserve">
+    <value>部署狀態</value>
+  </data>
+  <data name="DeploymentTimeInvalid" xml:space="preserve">
+    <value>請提供介於 {0} 之間的時間</value>
+    <comment>Please provide time between between 01:00 - 12:59</comment>
+  </data>
+  <data name="DeployX86FileToX64MachineInfo" xml:space="preserve">
+    <value>可上傳 X86 架構檔，以於 X64 架構機器上部署</value>
+  </data>
+  <data name="DerivedCredentialForFirstaccount" xml:space="preserve">
+    <value>{0} 僅支援單一驗證憑證。僅針對主要受管理的電子郵件帳戶選取此選項。
+若要在 Boxer 應用程式版本低於 5.21 的情況下使用 {0}，請從 [應用程式組態] 區段傳遞自訂 KVP「PolicyDerivedCredentials」。</value>
+  </data>
+  <data name="DerivedCredentialSmimeForFirstaccount" xml:space="preserve">
+    <value>PIV-D 僅支援單一 S/MIME 憑證。僅針對主要受管理的電子郵件帳戶選取此選項。
+若要在 Boxer 應用程式版本低於 5.21 的情況下使用 PIV-D，請從 [應用程式組態] 區段傳遞自訂 KVP「PolicyDerivedCredentials」。</value>
+  </data>
+  <data name="Descriptions" xml:space="preserve">
+    <value>描述</value>
+  </data>
+  <data name="DesiredStateManagementTooltip" xml:space="preserve">
+    <value>在已啟用的情況下，若使用者刪除應用程式，則下次 Hub 同步期間將會自動重新安裝該應用程式。
+在已停用的情況下，若使用者刪除應用程式，則除非該應用程式是從 UEM Console 或 Catalog 推送，否則不會自動重新安裝該應用程式。</value>
+  </data>
+  <data name="DeviceAndBoxerTrustStore" xml:space="preserve">
+    <value>裝置和 Boxer 信任存放區</value>
+  </data>
+  <data name="DeviceArchitecture" xml:space="preserve">
+    <value>裝置架構</value>
+  </data>
+  <data name="DeviceAssignmentEnableCountArg" xml:space="preserve">
+    <value>適合裝置型指派的應用程式。如果您選擇啟用此選項，則所有 iOS 9+ 及 macOS 10.11+ 裝置都會收到授權 (每個裝置一個授權)。目前，您已經指派 {0} 個 iOS 9+/macOS 10.11+ 裝置。這些裝置不需要 Apple ID 即可收到應用程式。</value>
+  </data>
+  <data name="DeviceAssignmentEnableWithTvOSCountArg" xml:space="preserve">
+    <value>適合裝置型指派的應用程式。如果您選擇啟用此選項，則所有 iOS 9+ 及 macOS 10.11+ 裝置都會收到授權 (每個裝置一個授權)。目前，您已經指派 {0} 個 iOS 9+/macOS 10.11+ 裝置。這些裝置不需要 Apple ID 即可收到應用程式。tvOS 裝置只能使用裝置型授權，不需要管理員動作即可使用。</value>
+  </data>
+  <data name="DeviceBasedVPPAppSourceHelpText" xml:space="preserve">
+    <value>此欄可判斷應用程式是否已使用裝置型授權並搭配大量採購方案以進行安裝。</value>
+  </data>
+  <data name="DeviceEligibilityCheckFailed" xml:space="preserve">
+    <value>裝置適用性檢查失敗</value>
+  </data>
+  <data name="DeviceGuardErrorArg" xml:space="preserve">
+    <value>若要啟用裝置防護，{0} 中需具備 Windows 企業版授權金鑰。</value>
+  </data>
+  <data name="DeviceReportedReason" xml:space="preserve">
+    <value>裝置報告原因</value>
+  </data>
+  <data name="DeviceTrustStoreOnly" xml:space="preserve">
+    <value>僅限裝置信任存放區</value>
+  </data>
+  <data name="DeviceUuIdLookUpText" xml:space="preserve">
+    <value>裝置 UUID</value>
+  </data>
+  <data name="DisableAppConfiguration" xml:space="preserve">
+    <value>停用應用程式組態</value>
+  </data>
+  <data name="DisableAppConfigWarning" xml:space="preserve">
+    <value>停用應用程式組態將會刪除組態，並可能會移除或變更裝置上的應用程式設定。</value>
+  </data>
+  <data name="DisableCDNWarning" xml:space="preserve">
+    <value>已上傳大小超過 {0} MB 的應用程式。不允許停用 CDN。</value>
+  </data>
+  <data name="DisableKeyEscrowInfo" xml:space="preserve">
+    <value>停用委付金鑰給伺服器。停用此選項即停用 [忘記密碼] 功能 (使用 SDK 登入流程時)。</value>
+  </data>
+  <data name="DisableKeyEscrowYesNoInfo" xml:space="preserve">
+    <value>停用委付金鑰至伺服器。使用 SDK 登入流程時設定為 [是]，會停用 [忘記密碼] 功能。</value>
+  </data>
+  <data name="DisplayInAppCatalog" xml:space="preserve">
+    <value>在應用程式目錄中顯示</value>
+  </data>
+  <data name="DisplayInAppCatalogHelp" xml:space="preserve">
+    <value>使用此設定將此應用程式設定為在 Workspace ONE 應用程式的目錄中顯示或隱藏</value>
+  </data>
+  <data name="DlpHelpText" xml:space="preserve">
+    <value>DLP 原則在裝置上受管及未受管應用程式間提供受控管的資料交換。若要防止此應用程式的資料遺失，請設定為 [管理存取] 並為想要的裝置類型建立 [限制] 設定檔原則。</value>
+  </data>
+  <data name="DoNotCollectApplicationListWarningForCompliancePolicy" xml:space="preserve">
+    <value>在您的階層中，已針對至少一個企業群組的至少一個裝置，將您的個人應用程式隱私權政策設為 [不收集]。與這些裝置之個人應用程式的應用程式群組建立關聯的合規原則，則不會強制執行。</value>
+  </data>
+  <data name="DownloadAutomaticallyAndInstall" xml:space="preserve">
+    <value>應用程式將自動下載並安裝在您的裝置上。</value>
+  </data>
+  <data name="DownloadAutomaticallyAndInstallInApplicationsFolder" xml:space="preserve">
+    <value>應用程式將自動下載並安裝在 [應用程式] 資料夾。</value>
+  </data>
+  <data name="DownloadFeedback" xml:space="preserve">
+    <value>下載意見反應</value>
+  </data>
+  <data name="DoYouWantToDeletePpkg" xml:space="preserve">
+    <value>您要刪除佈建套件 (PPKG) 嗎?</value>
+  </data>
+  <data name="DuplicateAppConfigInTab" xml:space="preserve">
+    <value>{0} 索引標籤中有重複的應用程式組態</value>
+  </data>
+  <data name="DuplicateAssignmentName" xml:space="preserve">
+    <value>已存在具有此名稱的指派規則。</value>
+  </data>
+  <data name="DuplicateEmailSettings" xml:space="preserve">
+    <value>在 {1} 索引標籤中，重複設定的 {0}</value>
+  </data>
+  <data name="DuplicateVppSmartGroupPresent" xml:space="preserve">
+    <value>無法新增相同的智慧群組兩次。</value>
+  </data>
+  <data name="E_FAIL" xml:space="preserve">
+    <value>Office 部署工具 (ODT) 無法用來安裝大量授權</value>
+  </data>
+  <data name="E_UNEXPECTED" xml:space="preserve">
+    <value>當機器上沒有 C2R Office 時已嘗試解除安裝。</value>
+  </data>
+  <data name="EARAppUpdateAvailable" xml:space="preserve">
+    <value>有 EAR 應用程式更新可用</value>
+  </data>
+  <data name="EARAppUpdateMode" xml:space="preserve">
+    <value>更新通知</value>
+  </data>
+  <data name="EARAppUpdateModeHelp" xml:space="preserve">
+    <value>啟用此選項，則每次此應用程式有新版本可用時，均會收到通知。</value>
+  </data>
+  <data name="EARNewAppVersionAvailable" xml:space="preserve">
+    <value>新版本的 {0} v{1} 現在可供上傳</value>
+  </data>
+  <data name="EasilyAddWindowsAppsFromEnterpriseAppRepository" xml:space="preserve">
+    <value>從企業應用程式存放庫輕鬆新增 Windows 應用程式</value>
+  </data>
+  <data name="EditApp" xml:space="preserve">
+    <value>編輯應用程式</value>
+  </data>
+  <data name="EditApplicationArgOpensDialog" xml:space="preserve">
+    <value>編輯應用程式 {0} 開啟對話方塊</value>
+    <comment>The placeholder in this label key contains application name.</comment>
+  </data>
+  <data name="EditConfiguration" xml:space="preserve">
+    <value>編輯組態</value>
+  </data>
+  <data name="EditWarning" xml:space="preserve">
+    <value>編輯警告</value>
+  </data>
+  <data name="EditWarningMessage" xml:space="preserve">
+    <value>若編輯與此裝置相關聯的組態，會將這些變更套用到 {0} 智慧群組中所有其他裝置。您確定要繼續嗎?</value>
+  </data>
+  <data name="EditWorkflow" xml:space="preserve">
+    <value>編輯工作流程</value>
+  </data>
+  <data name="EditWtcicCriteriaHelpText" xml:space="preserve">
+    <value>按一下 [編輯] 並輸入您的管理員 PIN 碼，以便在應用程式排入佇列或安裝在任何裝置上後，變更「何時為安裝完成」準則。請注意，指定不正確的準則會從裝置中移除應用程式。</value>
+  </data>
+  <data name="EmailClassification" xml:space="preserve">
+    <value>電子郵件分類</value>
+  </data>
+  <data name="EmailClassificationInfo" xml:space="preserve">
+    <value>設定電子郵件分類</value>
+  </data>
+  <data name="EmailMaxSyncPeriodInfo" xml:space="preserve">
+    <value>使用者同步電子郵件訊息時可選擇的最早起始日期。</value>
+  </data>
+  <data name="EmmManagedAccessHelpInfo" xml:space="preserve">
+    <value>您仍可以自訂此應用程式的 {0} 設定，而不需要註冊 EMM 管理存取。</value>
+  </data>
+  <data name="EnableClipboardPasteActionTip" xml:space="preserve">
+    <value>設定為 True 可啟用貼上功能。如果未設定此金鑰，則預設支援貼上功能。</value>
+  </data>
+  <data name="EnableClipboardTip" xml:space="preserve">
+    <value>設定為 True 僅在 Workspace ONE 應用程式之間啟用剪貼簿功能。</value>
+  </data>
+  <data name="EnableComplianceOnDeviceTooltip" xml:space="preserve">
+    <value>啟用時，支援的 SDK 應用程式會評估規則。</value>
+  </data>
+  <data name="EnableDeviceAssignmentConfirmationBulk" xml:space="preserve">
+    <value>您確定要啟用所選應用程式的裝置型授權指派?</value>
+  </data>
+  <data name="EnableDeviceGuard" xml:space="preserve">
+    <value>安裝應用程式後啟用裝置防護</value>
+  </data>
+  <data name="EnableKeyEscrow" xml:space="preserve">
+    <value>啟用 FastSync</value>
+  </data>
+  <data name="EnableKeyEscrowInfo" xml:space="preserve">
+    <value>FastSync 可改善背景同步和後續同步的速度。當電子郵件通知服務已啟用和設定時，會套用 FastSync 設定</value>
+  </data>
+  <data name="EnableNewAuthEncoding" xml:space="preserve">
+    <value>密碼支援母音變音符</value>
+  </data>
+  <data name="EnableNewAuthEncodingInfo" xml:space="preserve">
+    <value>啟用此選項可在 Boxer 密碼使用 ISO-8859-1 編碼，以支援特殊德文母音變音符 (如 ä 和 ß 等) 字元。</value>
+  </data>
+  <data name="EnableOfflineAccessTooltip" xml:space="preserve">
+    <value>停用時，離線存取會受到限制。如啟用且 [允許離線的最長時間] 設定為 0，則不限制允許離線存取的時間。當啟用且超過非零的允許離線的最長時間時，存取會遭封鎖</value>
+  </data>
+  <data name="EnableOsVersionTooltip" xml:space="preserve">
+    <value>啟用時，應用程式會針對所設定的規則評估裝置作業系統版本，並在滿意時執行動作。</value>
+  </data>
+  <data name="EnableSecurityPatchDateTooltip" xml:space="preserve">
+    <value>啟用時，應用程式會針對所設定的規則評估裝置上的安全性修補程式日期，如果不是最新的修補程式，即會執行動作。這個設定僅適用於 Android 裝置</value>
+  </data>
+  <data name="EncryptionCertificateAuthority" xml:space="preserve">
+    <value>加密憑證授權機構</value>
+  </data>
+  <data name="EncryptionCertificateTemplate" xml:space="preserve">
+    <value>加密憑證範本</value>
+  </data>
+  <data name="ENSAPIToken" xml:space="preserve">
+    <value>ENS2 API Token</value>
+  </data>
+  <data name="ENSAPITokenInfo" xml:space="preserve">
+    <value>VMware 提供 API Token 用於啟用雲端 ENS2 服務。</value>
+  </data>
+  <data name="ENSFetchTokenInfo" xml:space="preserve">
+    <value>當您輸入新的 ENS2 伺服器位址時，請擷取新的 Token。您無法將先前設定的 Token 與新的 ENS2 伺服器位址搭配使用。</value>
+  </data>
+  <data name="ENSInvalidAPITokenMessage" xml:space="preserve">
+    <value>無法擷取 Token。請確認 ENS2 伺服器位址正確且 ENS2 伺服器正常運作，然後再試一次。如果問題仍然存在，請檢閱 UEM Console 記錄和/或 ENS2 伺服器記錄，並聯絡 VMware 支援。</value>
+  </data>
+  <data name="ENSLinkAddress" xml:space="preserve">
+    <value>ENS2 伺服器位址</value>
+  </data>
+  <data name="ENSLinkAddressInfo" xml:space="preserve">
+    <value>供使用者連線的 ENS2 系統位址。</value>
+  </data>
+  <data name="ENSRetrieveTokenBtnText" xml:space="preserve">
+    <value>擷取 Token</value>
+  </data>
+  <data name="ENSValidAPITokenMessage" xml:space="preserve">
+    <value>已擷取 ENS2 API Token。</value>
+  </data>
+  <data name="EnterAppUrlFromGooglePlayStore" xml:space="preserve">
+    <value>輸入 Google Play 商店的應用程式 URL</value>
+  </data>
+  <data name="EnterKeyValuePairsForApplicationAttributes" xml:space="preserve">
+    <value>輸入金鑰值組來為應用程式提供屬性</value>
+  </data>
+  <data name="EnterKeyValuePairsToConfigureWhenAppNotSupport" xml:space="preserve">
+    <value>此應用程式不支援應用程式組態。若使用 SDK 設定應用程式，請在下方輸入金鑰值對</value>
+  </data>
+  <data name="EnterNumberBetweenArgAndArg" xml:space="preserve">
+    <value>輸入介於 {0} 到 {1} 之間的數字。</value>
+  </data>
+  <data name="EnterpriseAppCatalogDetailsLegalTooltip" xml:space="preserve">
+    <value>按一下下方的 [繼續]，您將會從第三方網站下載軟體。如果您選擇下載並使用第三方軟體，VMware 不會對第三方軟體的品質、內容、可靠性或安全性做法做任何聲明或擔保，且不承擔任何責任。</value>
+  </data>
+  <data name="EnterpriseAppCatalogFailedToLoad" xml:space="preserve">
+    <value>無法載入應用程式目錄，請嘗試重新載入，如果問題持續發生，請聯絡管理員。</value>
+  </data>
+  <data name="EnterpriseAppCatalogNoApplications" xml:space="preserve">
+    <value>沒有可透過目錄提供的應用程式，請嘗試重新載入，如果問題持續發生，請聯絡管理員。</value>
+  </data>
+  <data name="EnterpriseAppRepository" xml:space="preserve">
+    <value>企業應用程式存放庫。</value>
+  </data>
+  <data name="EnterpriseAppRepositoryAddAppName" xml:space="preserve">
+    <value>輸入應在 Intelligent Hub 目錄中出現的應用程式顯示名稱。</value>
+  </data>
+  <data name="EnterpriseAppRepositoryAppUpdateMode" xml:space="preserve">
+    <value>更新通知</value>
+  </data>
+  <data name="EnterpriseAppRepositoryAppUpdateModeInfo" xml:space="preserve">
+    <value>選取應用程式更新的選項。</value>
+  </data>
+  <data name="EnterpriseAppRepositoryAppUpdateModeNone" xml:space="preserve">
+    <value>無</value>
+  </data>
+  <data name="EnterpriseAppRepositoryAppUpdateModeNotify" xml:space="preserve">
+    <value>通知</value>
+  </data>
+  <data name="EnterpriseAppSourceHelpText" xml:space="preserve">
+    <value>此欄可判斷應用程式是否使用企業簽署憑證進行簽署，且未透過 App Store 散佈。</value>
+  </data>
+  <data name="EnterValidBuildVersion" xml:space="preserve">
+    <value>請在 [組建編號版本] 欄位中輸入有效的值</value>
+  </data>
+  <data name="EnterValidWhitelistedApplications" xml:space="preserve">
+    <value>輸入有效且允許的應用程式</value>
+  </data>
+  <data name="EntireChain" xml:space="preserve">
+    <value>整個鏈結</value>
+  </data>
+  <data name="ERROR_ANOTHER_RUNNING_SCENARIO" xml:space="preserve">
+    <value>正在執行另一個案例</value>
+  </data>
+  <data name="ERROR_COMPLETING_SCENARIO" xml:space="preserve">
+    <value>無法完成此程序。可能的原因:
+
+    使用者已取消安裝
+    另一個安裝已取消安裝
+    安裝期間磁碟空間不足
+    未知的語言 ID</value>
+  </data>
+  <data name="ERROR_COMPLETING_SCENARIO_NEED_CLEAN_UP" xml:space="preserve">
+    <value>可能的原因:
+
+    未知的 SKU
+    內容不存在於 CDN
+        例如，嘗試安裝未受支援的 LAP，如 zh-sg
+        發生內容無法使用的 CDN 問題
+    發生簽章檢查問題，例如 Office 內容的簽章檢查失敗
+    使用者已取消</value>
+  </data>
+  <data name="ERROR_HANDLING_COMMAND_LINE" xml:space="preserve">
+    <value>C2RClient 命令列錯誤</value>
+  </data>
+  <data name="ERROR_INSTALL_FAILURE" xml:space="preserve">
+    <value>無法執行任何必要條件檢查。
+
+    SxS (在已安裝 2016 MSI 時已嘗試安裝)
+    目前已安裝的 Office 和嘗試安裝的 Office 位元不相符 (例如，目前已安裝 64 位元版本，但您嘗試安裝 32 位元版本)。</value>
+  </data>
+  <data name="ERROR_INSTALL_USEREXIT" xml:space="preserve">
+    <value>使用者已取消安裝</value>
+  </data>
+  <data name="ERROR_INVALID_DATA" xml:space="preserve">
+    <value>無法驗證已下載之 Office 部署工具 (ODT) 的簽章</value>
+  </data>
+  <data name="ERROR_PROCESSPOOL_INITIALIZATION" xml:space="preserve">
+    <value>無法啟動 C2RClient</value>
+  </data>
+  <data name="ERROR_QUEUE_SCENARIO" xml:space="preserve">
+    <value>無法在 C2RClient 中佇列安裝案例</value>
+  </data>
+  <data name="ERROR_REMOVE_INSTALLATION_NEEDED" xml:space="preserve">
+    <value>用戶端要求在「移除安裝」案例中執行用戶端清除</value>
+  </data>
+  <data name="ERROR_SCENARIO_CANCELLED" xml:space="preserve">
+    <value>執行中的應用程式已封鎖更新</value>
+  </data>
+  <data name="ERROR_SCENARIO_CANCELLED_AS_PLANNED" xml:space="preserve">
+    <value>已按照計劃取消案例</value>
+  </data>
+  <data name="ERROR_TIMEOUT" xml:space="preserve">
+    <value>無法下載 Office 部署工具 (ODT)</value>
+  </data>
+  <data name="ErrorApplicationSyncJobAppPublish" xml:space="preserve">
+    <value>應用程式發佈後，應用程式同步工作發生錯誤。</value>
+  </data>
+  <data name="EscrowExpiry" xml:space="preserve">
+    <value>FastSync 到期</value>
+  </data>
+  <data name="EscrowExpiryInfo" xml:space="preserve">
+    <value>設定 Workspace ONE Boxer 未收到 FastSync 金鑰時的到期時間 (以小時為單位)。當電子郵件通知服務已啟用和設定時，會套用 FastSync 設定</value>
+  </data>
+  <data name="EscrowGatewayToolTipInfo" xml:space="preserve">
+    <value>僅在您的環境中設定閘道時，才會套用委付閘道組態</value>
+  </data>
+  <data name="EventBased" xml:space="preserve">
+    <value>事件根據</value>
+  </data>
+  <data name="EventTargeted" xml:space="preserve">
+    <value>事件目標</value>
+  </data>
+  <data name="EWSConfigPositionChangeInfo" xml:space="preserve">
+    <value>在 [電子郵件設定] 區段中，設定是否要設定 EWS URL。</value>
+  </data>
+  <data name="EWSUrl" xml:space="preserve">
+    <value>EWS URL</value>
+  </data>
+  <data name="EWSUrlInfo" xml:space="preserve">
+    <value>EWS (或 SEG) 端點位址</value>
+  </data>
+  <data name="EwsUrlInfoMsg" xml:space="preserve">
+    <value>EWS URL 組態已移至電子郵件設定區段</value>
+  </data>
+  <data name="ExchangeSettings" xml:space="preserve">
+    <value>Microsoft Exchange 設定</value>
+  </data>
+  <data name="ExchangeURL" xml:space="preserve">
+    <value>Exchange URL</value>
+  </data>
+  <data name="ExchangeUserName" xml:space="preserve">
+    <value>Exchange 使用者名稱</value>
+  </data>
+  <data name="ExecutionFailed" xml:space="preserve">
+    <value>執行失敗</value>
+  </data>
+  <data name="ExportFactoryPpkg" xml:space="preserve">
+    <value>匯出</value>
+  </data>
+  <data name="ExportPpkgMessage" xml:space="preserve">
+    <value>從支援的應用程式清單中選取應用程式，然後將其匯出到 Windows 佈建套件 (PPKG)。匯出 PPKG 完成後，會傳送內含下載連結的通知。</value>
+  </data>
+  <data name="ExportPpkgWindowsNoAppsMessage" xml:space="preserve">
+    <value>將應用程式匯出到 Windows 佈建套件 (PPKG) 可封裝應用程式以供原廠安裝。請上傳部分 Windows 應用程式以將其匯出至 PPKG。</value>
+  </data>
+  <data name="ExternalApplicationIdInfo" xml:space="preserve">
+    <value>這是 Apple App Store 的唯一識別碼，會出現在應用程式的 iTunes URL 中</value>
+  </data>
+  <data name="FactoryProvisioningServiceNotRunning" xml:space="preserve">
+    <value>未設定或執行原廠佈建服務。請檢查您的 Workspace ONE UEM 安裝是否正確。</value>
+  </data>
+  <data name="FailedToUploadApplication" xml:space="preserve">
+    <value>無法上傳應用程式。</value>
+  </data>
+  <data name="FastAsyncConfigPositionChangeInfo" xml:space="preserve">
+    <value>在 [電子郵件設定] 區段中，設定是否要設定 EWS URL。
+在 [應用程式原則] &gt; [進階] 區段中，設定是否要啟用 FastSync 及其到期日。</value>
+  </data>
+  <data name="FeaturedApps" xml:space="preserve">
+    <value>精選 APP</value>
+  </data>
+  <data name="FeedbackChannelDataNotAvailableMessage" xml:space="preserve">
+    <value>此裝置目前並未回報意見反應，並可能處於離線狀態。請稍後再試。</value>
+  </data>
+  <data name="FeedbackChannelEditConfigurationMessage" xml:space="preserve">
+    <value>組態變更將會套用到屬於下列智慧群組的所有裝置上：
+
+{0}。
+
+您確定要編輯嗎?</value>
+  </data>
+  <data name="FeedbackDateTime" xml:space="preserve">
+    <value>裝置報告時間</value>
+  </data>
+  <data name="FeedbackMessage" xml:space="preserve">
+    <value>訊息</value>
+  </data>
+  <data name="FeedbackTitle" xml:space="preserve">
+    <value>意見反應標題</value>
+  </data>
+  <data name="FeedbackTriggerValue" xml:space="preserve">
+    <value>觸發值</value>
+  </data>
+  <data name="FieldShouldBeANumber" xml:space="preserve">
+    <value>此欄位應填寫數字</value>
+  </data>
+  <data name="FieldShouldBeBetweenArgAndMaxInt" xml:space="preserve">
+    <value>此欄位應填寫 {0} 到 {1} 之間的數字</value>
+  </data>
+  <data name="FieldShouldBeValidColourInHexFormat" xml:space="preserve">
+    <value>此欄位需要十六進位格式的文字色彩</value>
+  </data>
+  <data name="FileFormatNotSupported" xml:space="preserve">
+    <value>不支援選取的檔案格式，請選取 xml 檔案。</value>
+  </data>
+  <data name="FilterAppleSystemApps" xml:space="preserve">
+    <value>顯示 com.apple.* 應用程式</value>
+  </data>
+  <data name="FilterBySmartGroup" xml:space="preserve">
+    <value>依據智慧群組篩選</value>
+  </data>
+  <data name="FinalDetectionFailed" xml:space="preserve">
+    <value>最終偵測失敗</value>
+  </data>
+  <data name="FlexDeploymentNewMessage" xml:space="preserve">
+    <value>裝置會根據以下組態接收應用程式。具有多個指派的裝置會依照優先順序接收原則。調整單一指派的優先順序將會自動重新排列其他指派的優先順序。選取要編輯的指派。新增指派會在清單的底部建立新的規則。</value>
+  </data>
+  <data name="FlexeraCriticalAppsArrived" xml:space="preserve">
+    <value>有新的 Flexera SVM 修補程式可供使用</value>
+  </data>
+  <data name="FlexeraSVM" xml:space="preserve">
+    <value>Flexera SVM</value>
+  </data>
+  <data name="ForwardAddAttachments" xml:space="preserve">
+    <value>轉寄/新增附件</value>
+  </data>
+  <data name="FromEnterpriseCatalog" xml:space="preserve">
+    <value>從企業應用程式存放庫</value>
+  </data>
+  <data name="GetStartedWithWorkflows" xml:space="preserve">
+    <value>開始工作流程</value>
+  </data>
+  <data name="GoToChromeWebStore" xml:space="preserve">
+    <value>前往 Chrome 線上應用程式商店</value>
+  </data>
+  <data name="HideNotificationsLabel" xml:space="preserve">
+    <value>隱藏通知</value>
+  </data>
+  <data name="HideNotificationsTooltip" xml:space="preserve">
+    <value>啟用此設定，以防止針對此應用程式顯示安裝和解除安裝通知。這僅適用於自動部署的應用程式。</value>
+  </data>
+  <data name="HighCriticality" xml:space="preserve">
+    <value>高嚴重度</value>
+  </data>
+  <data name="IconFile" xml:space="preserve">
+    <value>圖示檔案</value>
+  </data>
+  <data name="InactiveAppAlreadyExistsinConsole" xml:space="preserve">
+    <value>此應用程式已新增至主控台，且處於非作用中狀態。請在應用程式清單視圖中重新啟用應用程式，以便繼續進行指派。</value>
+  </data>
+  <data name="IncorrectExchangeURL" xml:space="preserve">
+    <value>使用 https://server.domain.com/EWS/Exchange.asmx 格式。</value>
+  </data>
+  <data name="IndividualAppSizeLimitMessage" xml:space="preserve">
+    <value>允許的檔案大小上限：{0} MB</value>
+  </data>
+  <data name="InstallAppExceptionMessage" xml:space="preserve">
+    <value>請選取篩選器，將應用程式安裝在大量裝置上。</value>
+  </data>
+  <data name="InstallApplicationConfirmed" xml:space="preserve">
+    <value>裝置確認應用程式安裝</value>
+  </data>
+  <data name="InstallAppOnAllBspAlert" xml:space="preserve">
+    <value>您即將在所有裝置上安裝此應用程式。如果授權有限，部分裝置可能無法獲取該應用程式。請按一下 [確定] 以繼續。可用的授權: {0} 個線上，{1} 個離線</value>
+  </data>
+  <data name="InstallationStatus" xml:space="preserve">
+    <value>安裝狀態</value>
+  </data>
+  <data name="InstallationStatusLastScan" xml:space="preserve">
+    <value>安裝狀態上次掃描時間</value>
+  </data>
+  <data name="InstallCommandFailed" xml:space="preserve">
+    <value>安裝指令失敗</value>
+  </data>
+  <data name="InstalledAndFeedbackAvailable" xml:space="preserve">
+    <value>已安裝 (有組態意見反應)</value>
+  </data>
+  <data name="InstalledAppVersion" xml:space="preserve">
+    <value>已安裝的應用程式版本</value>
+  </data>
+  <data name="InstalledButHidden" xml:space="preserve">
+    <value>已安裝但隱藏</value>
+  </data>
+  <data name="InstalledByUser" xml:space="preserve">
+    <value>由使用者安裝</value>
+  </data>
+  <data name="InstalledEqualsAssigned" xml:space="preserve">
+    <value>已安裝 = 已指派</value>
+  </data>
+  <data name="InstalledNotEqualsAssigned" xml:space="preserve">
+    <value>已安裝 &lt;&gt; 已指派</value>
+  </data>
+  <data name="InstalledPersonalApp" xml:space="preserve">
+    <value>已安裝的個人應用程式</value>
+  </data>
+  <data name="InstalledSystemApp" xml:space="preserve">
+    <value>已安裝的系統應用程式</value>
+  </data>
+  <data name="InstalledWithVersion" xml:space="preserve">
+    <value>已安裝 ({0})</value>
+  </data>
+  <data name="InstallerDeferralExitCodeInvalid" xml:space="preserve">
+    <value>結束代碼無效。</value>
+  </data>
+  <data name="InstallerDeferralExitCodeLabel" xml:space="preserve">
+    <value>安裝程式延遲結束代碼</value>
+  </data>
+  <data name="InstallerDeferralExitCodeRequired" xml:space="preserve">
+    <value>結束代碼為必填。</value>
+  </data>
+  <data name="InstallerDeferralExitCodeTooltip" xml:space="preserve">
+    <value>指定由安裝程式返回的整數代碼，以指示應用程式安裝已延期。這將允許應用程式安裝在下次安裝時間間隔內重試。</value>
+  </data>
+  <data name="InstallerDeferralIntervalLabel" xml:space="preserve">
+    <value>安裝程式延遲間隔</value>
+  </data>
+  <data name="InstallerDeferralIntervalOption12Hours" xml:space="preserve">
+    <value>12 小時</value>
+  </data>
+  <data name="InstallerDeferralIntervalOption24Hours" xml:space="preserve">
+    <value>24 小時</value>
+  </data>
+  <data name="InstallerDeferralIntervalOption2Hours" xml:space="preserve">
+    <value>2 小時</value>
+  </data>
+  <data name="InstallerDeferralIntervalOption4Hours" xml:space="preserve">
+    <value>4 小時</value>
+  </data>
+  <data name="InstallerDeferralIntervalOption8Hours" xml:space="preserve">
+    <value>8 小時</value>
+  </data>
+  <data name="InstallerDeferralIntervalTooltip" xml:space="preserve">
+    <value>指定延遲時間範圍</value>
+  </data>
+  <data name="InstallerDeferralNotificationCustom" xml:space="preserve">
+    <value>自訂</value>
+  </data>
+  <data name="InstallerDeferralNotificationLabel" xml:space="preserve">
+    <value>使用 UEM 或自訂通知</value>
+  </data>
+  <data name="InstallerDeferralNotificationTooltip" xml:space="preserve">
+    <value>指定延遲是否應使用 UEM 或自訂通知</value>
+  </data>
+  <data name="InstallerDeferralNotificationUEM" xml:space="preserve">
+    <value>UEM</value>
+  </data>
+  <data name="InstallerPackageDeployment" xml:space="preserve">
+    <value>安裝程式套件部署</value>
+  </data>
+  <data name="InstallInProgress" xml:space="preserve">
+    <value>安裝進行中</value>
+  </data>
+  <data name="InstallOnSelectedDevices" xml:space="preserve">
+    <value>此應用程式將僅在具有有效指派的裝置上安裝。</value>
+  </data>
+  <data name="InstallOnSelectedDevicesBspAlert" xml:space="preserve">
+    <value>您即將在所有選擇的裝置上安裝此應用程式。如果授權有限，部分裝置可能無法獲取該應用程式。請按一下 [確定] 以繼續。可用的授權: {0} 個線上，{1} 個離線</value>
+  </data>
+  <data name="InstallStatusHeaderToolTip" xml:space="preserve">
+    <value>此處展示裝置回報的資料，包含此應用程式安裝狀態等相關詳細資訊，不限於特定版本。</value>
+  </data>
+  <data name="InstallSuccess" xml:space="preserve">
+    <value>安裝成功</value>
+  </data>
+  <data name="IntelligenceOptInMessageForFeedbackArg" xml:space="preserve">
+    <value>若要檢視應用程式組態意見反應，您必須選擇加入以使用 Intelligence。{0}</value>
+  </data>
+  <data name="InternalAppAssignmentUpToDate" xml:space="preserve">
+    <value>最新。指派的應用程式版本與安裝的版本相同</value>
+  </data>
+  <data name="InternalApplication" xml:space="preserve">
+    <value>內部用應用程式</value>
+  </data>
+  <data name="InternalApplications" xml:space="preserve">
+    <value>內部用應用程式</value>
+  </data>
+  <data name="InternalDomainsFieldError" xml:space="preserve">
+    <value>網域清單應使用方括弧括住。例如：[“xyz.com”,”abc.com”]</value>
+  </data>
+  <data name="InternalDomainsInfo" xml:space="preserve">
+    <value>定義內部或允許的網域。當內部網域已定義，且未設定外部收件者時，使用者可以使用「傳送前確認」來停用警告。在雙引號中加入每個網域，並使用逗號做為分隔符號，並使用方括弧括住清單。例如：[“xyz.com”,”abc.com”]。</value>
+  </data>
+  <data name="InternalTriggerAccountVersion" xml:space="preserve">
+    <value>顯示詳細資訊，說明針對此應用程式版本，對指派裝置所採取的最新動作。</value>
+  </data>
+  <data name="InvalidAppAttributeVpnKey" xml:space="preserve">
+    <value>VPNUUID 不是有效的屬性，請改為設定應用程式通道</value>
+  </data>
+  <data name="InvalidApplicationBundleID" xml:space="preserve">
+    <value>無效的應用程式服務包 ID</value>
+  </data>
+  <data name="InvalidApplicationError" xml:space="preserve">
+    <value>不支援應用程式套件格式</value>
+  </data>
+  <data name="InvalidMultiStringValue" xml:space="preserve">
+    <value>請指定不含引號的字串</value>
+  </data>
+  <data name="InvalidNsxEntryForApplication" xml:space="preserve">
+    <value>所選應用程式的 NSX 項目無效</value>
+  </data>
+  <data name="InvalidPkgInfoFile" xml:space="preserve">
+    <value>無效的中繼資料。請透過 Admin Assistant 工具產生檔案，然後嘗試再次上傳。</value>
+  </data>
+  <data name="InvalidPlayStoreUrlEnterValidUrlToContinue" xml:space="preserve">
+    <value>無效的 Play 商店 URL。請輸入有效的 Play 商店 URL 以繼續進行。</value>
+  </data>
+  <data name="InvalidRegistryPath" xml:space="preserve">
+    <value>無效的登錄路徑</value>
+  </data>
+  <data name="InvalidThresholdId" xml:space="preserve">
+    <value>無效的臨界值 ID</value>
+  </data>
+  <data name="IsBlockingAppsEnabled" xml:space="preserve">
+    <value>封鎖應用程式</value>
+  </data>
+  <data name="IsBlockingAppsEnabledTooltip" xml:space="preserve">
+    <value>啟用 [封鎖應用程式] 會使用定義的任何項目來檢查開始安裝前應用程式是否正在執行。停用 [封鎖應用程式] 則會覆寫任何封鎖行為並繼續進行安裝。</value>
+  </data>
+  <data name="IsForceInstallAfterDateEnabled" xml:space="preserve">
+    <value>在指定日期後強制安裝</value>
+  </data>
+  <data name="IsForceInstallAfterDateEnabledTooltip" xml:space="preserve">
+    <value>如果項目尚未安裝，指定一個日期以強制安裝。這將會強制關閉任何封鎖的應用程式，且如有定義，即會強制重新啟動動作。</value>
+  </data>
+  <data name="KeyEscrow" xml:space="preserve">
+    <value>金鑰委付</value>
+  </data>
+  <data name="KeyHelpText" xml:space="preserve">
+    <value>例如: HKLM\Software\.. 或 HKCU\Software\.. 或 HKEY_LOCAL_MACHINE\Software.. 或 HKEY_CURRENT_USER\Software..
+
+使用最上層登錄區的縮寫或完整名稱來輸入登錄路徑。</value>
+  </data>
+  <data name="KeySupportedOnlyAtAccountLevel" xml:space="preserve">
+    <value>僅於帳戶層級支援的金鑰</value>
+  </data>
+  <data name="KeySupportedOnlyAtAppLevel" xml:space="preserve">
+    <value>僅於應用程式層級支援的金鑰</value>
+  </data>
+  <data name="LastAction" xml:space="preserve">
+    <value>上次動作</value>
+  </data>
+  <data name="LastActionTaken" xml:space="preserve">
+    <value>上次採取動作</value>
+  </data>
+  <data name="LastActionTimestamp" xml:space="preserve">
+    <value>上次動作時間戳記</value>
+  </data>
+  <data name="LastReportedTime" xml:space="preserve">
+    <value>上次報告時間</value>
+  </data>
+  <data name="LastServerAction" xml:space="preserve">
+    <value>上一個伺服器動作</value>
+  </data>
+  <data name="LatestInstallationEvent" xml:space="preserve">
+    <value>已記錄最新的安裝事件</value>
+  </data>
+  <data name="LatestInstallationEventTooltip" xml:space="preserve">
+    <value>「疑難排解」區段會顯示針對此裝置和應用程式所記錄的最新安裝事件。只有進行中的安裝狀態會擷取為事件，而非完成的安裝狀態。裝置可能不會報告每個安裝狀態，在此情況下不會記錄任何事件。</value>
+  </data>
+  <data name="LatestInstallationStatus" xml:space="preserve">
+    <value>最新的安裝狀態</value>
+  </data>
+  <data name="LicenseDistribution" xml:space="preserve">
+    <value>授權散發</value>
+  </data>
+  <data name="LicenseSummary" xml:space="preserve">
+    <value>授權摘要</value>
+  </data>
+  <data name="LogAggregationMode" xml:space="preserve">
+    <value>記錄彙總模式</value>
+  </data>
+  <data name="LogAggregationModeInfo" xml:space="preserve">
+    <value>應用程式將記錄檔傳送到記錄彙總端點時使用的模式。</value>
+  </data>
+  <data name="LogAggregationUrlInfo" xml:space="preserve">
+    <value>記錄彙總端點的 URL。</value>
+  </data>
+  <data name="LowCriticality" xml:space="preserve">
+    <value>低嚴重度</value>
+  </data>
+  <data name="macOSDesiredStateManagement" xml:space="preserve">
+    <value>需要的狀態管理</value>
+  </data>
+  <data name="Major" xml:space="preserve">
+    <value>主要</value>
+  </data>
+  <data name="ManageAssignment" xml:space="preserve">
+    <value>管理指派</value>
+  </data>
+  <data name="ManageAssignmentForApplicationArgOpensDialog" xml:space="preserve">
+    <value>管理應用程式 {0} 的指派開啟對話方塊</value>
+    <comment>The placeholder in this label key will contain application name.</comment>
+  </data>
+  <data name="ManageAssignmentForArgOpensDialog" xml:space="preserve">
+    <value>管理 {0} 的指派開啟對話方塊</value>
+    <comment>Placeholder in this label key is for application name.</comment>
+  </data>
+  <data name="ManagedAccess" xml:space="preserve">
+    <value>需要使用者註冊</value>
+  </data>
+  <data name="ManagedAccessDescription" xml:space="preserve">
+    <value>EMM 管理存取會定義哪些裝置將能夠從 Intelligent Hub 安裝此應用程式。</value>
+  </data>
+  <data name="ManagedAccessOnlyEmmDevices" xml:space="preserve">
+    <value>只有 EMM 管理的裝置才能安裝此應用程式。</value>
+  </data>
+  <data name="ManagedAccessSecuredByWorkspace" xml:space="preserve">
+    <value>如果此應用程式受到 Workspace ONE SDK 20.10 版或更新版本保護，除非應用程式由 EMM 管理，否則將會封鎖存取。若要確保此應用程式受管理，請在 [限制] 索引標籤上啟用「由 MDM 來管理使用者安裝的應用程式」設定。</value>
+  </data>
+  <data name="ManagedAccessSettingEnabled" xml:space="preserve">
+    <value>如果啟用此設定：</value>
+  </data>
+  <data name="ManagedAccessSettingEnabledOnlyEmm" xml:space="preserve">
+    <value>如果啟用此設定，則只有 EMM 管理的裝置才能安裝此應用程式。</value>
+  </data>
+  <data name="ManagedAccessSubDescription" xml:space="preserve">
+    <value>如果停用此設定，所有已登錄的裝置將能夠安裝此應用程式。</value>
+  </data>
+  <data name="ManagedAccessTitle" xml:space="preserve">
+    <value>EMM 管理存取</value>
+  </data>
+  <data name="ManagedAppsTab" xml:space="preserve">
+    <value>受管理的應用程式</value>
+  </data>
+  <data name="ManagedConfigurationErrorMessage" xml:space="preserve">
+    <value>組態錯誤</value>
+  </data>
+  <data name="ManagementAccess" xml:space="preserve">
+    <value>管理存取</value>
+  </data>
+  <data name="ManagementIDToolTip" xml:space="preserve">
+    <value>每個應用程式與裝置的唯一識別碼</value>
+  </data>
+  <data name="MaxAllowedDevicesException" xml:space="preserve">
+    <value>所選的裝置數目已超過允許的裝置數目，請選取篩選器。</value>
+  </data>
+  <data name="MaxAttachmentSize" xml:space="preserve">
+    <value>附件大小上限</value>
+  </data>
+  <data name="MaxAttachmentSizeInfo" xml:space="preserve">
+    <value>使用者可附加到傳出電子郵件的檔案大小上限 (以位元組為單位)</value>
+  </data>
+  <data name="MaxCalendarSyncWindow" xml:space="preserve">
+    <value>允許的行事曆同步期間上限</value>
+  </data>
+  <data name="MaxEmailSyncWindow" xml:space="preserve">
+    <value>允許的電子郵件同步期間上限</value>
+  </data>
+  <data name="MaxFileSizeCDNMegabytes" xml:space="preserve">
+    <value>使用 CDN 的檔案大小上限</value>
+  </data>
+  <data name="MaximumFileSizeWithCDNShouldBeLesserThanAppCapacity" xml:space="preserve">
+    <value>使用 CDN 的檔案大小上限不能超過應用程式的總容量。</value>
+  </data>
+  <data name="MaxTabCountReached" xml:space="preserve">
+    <value>僅支援三個受管理的電子郵件帳戶</value>
+  </data>
+  <data name="MediumCriticality" xml:space="preserve">
+    <value>中嚴重度</value>
+  </data>
+  <data name="MetadataFileContainsInvalidCharactersForNameKey" xml:space="preserve">
+    <value>中繼資料檔案內的名稱金鑰值含有無效字元。此金鑰值僅限使用英數字元、底線、空格、連字號和句點。</value>
+  </data>
+  <data name="MMAEmailSettingsInfoMsgInfo" xml:space="preserve">
+    <value>僅 Boxer 應用程式 5.21 版或更高版本才支援多個電子郵件帳戶組態，且需要啟用 Single Sign-On。</value>
+  </data>
+  <data name="MobileFlowsAuthenticationServerInfo" xml:space="preserve">
+    <value>提供有效的 URL 來驗證裝置使用者。這可以是 Workspace ONE Access 的伺服器 URL</value>
+  </data>
+  <data name="MobileFlowsAutoEnableConnectorsInfo" xml:space="preserve">
+    <value>如果啟用，則在開啟 Mobile Flows 時，會自動逐一開啟所有連接器。建議僅用於所有連接器均與 Workspace ONE Access 聯合時</value>
+  </data>
+  <data name="MobileFlowsHostInfo" xml:space="preserve">
+    <value>Mobile Flows 伺服器的主機名稱</value>
+  </data>
+  <data name="MobileFlowsInfo" xml:space="preserve">
+    <value>設定 Boxer 可整合的 Mobile Flows 伺服器資訊</value>
+  </data>
+  <data name="MobileFlowsSyncHoursInfo" xml:space="preserve">
+    <value>在此值 (以小時為單位) 之前傳送的電子郵件，不要求 Mobile Flow 卡片</value>
+  </data>
+  <data name="ModifiedOnArgArgByArg" xml:space="preserve">
+    <value>由 {1} 在 {0} 修改</value>
+  </data>
+  <data name="MSTSelection" xml:space="preserve">
+    <value>選取應用程式轉換</value>
+  </data>
+  <data name="MustBePositiveIntegerValue" xml:space="preserve">
+    <value>必須是一個正整數值</value>
+  </data>
+  <data name="NewWorkflow" xml:space="preserve">
+    <value>新的工作流程</value>
+  </data>
+  <data name="NoEventLogged" xml:space="preserve">
+    <value>無已記錄事件</value>
+  </data>
+  <data name="NotebookVersionMessage" xml:space="preserve">
+    <value>以下原則僅適用於版本 1.4 及更高版本的 Notebook。對於較舊的版本，請前往與此應用程式相關聯之 SDK 設定檔中的自訂設定。</value>
+  </data>
+  <data name="NotebookWarningToEditAllAssignments" xml:space="preserve">
+    <value>Notebook 組態已準備就緒，可進行設定。發佈前，請確定從與此應用程式相關聯之 SDK 設定檔的自訂設定中進行的組態正確無誤。</value>
+  </data>
+  <data name="NotEvaluated" xml:space="preserve">
+    <value>未評估</value>
+  </data>
+  <data name="NotificationsInfo" xml:space="preserve">
+    <value>設定電子郵件通知服務 (ENS) 及其行為，以提供即時電子郵件通知。</value>
+  </data>
+  <data name="NotifyEmail" xml:space="preserve">
+    <value>通知電子郵件</value>
+  </data>
+  <data name="NumberOfApps" xml:space="preserve">
+    <value>{0} 個應用程式</value>
+  </data>
+  <data name="NumberOfCommandsQueued" xml:space="preserve">
+    <value>佇列指定數量</value>
+  </data>
+  <data name="OCSP" xml:space="preserve">
+    <value>憑證撤銷原則</value>
+  </data>
+  <data name="OfflineLicenseAvailableArgDevicesAllocation" xml:space="preserve">
+    <value>有 {0} 個可用的離線授權。系統會以先到先處理的基礎來為裝置配置授權。</value>
+  </data>
+  <data name="OnDemandAppAssignedButNotInstalled" xml:space="preserve">
+    <value>指派給隨選部署的應用程式尚未安裝</value>
+  </data>
+  <data name="OnDemandAppAssignmentOutOfDate" xml:space="preserve">
+    <value>指派給隨選部署的最新應用程式版本尚未安裝</value>
+  </data>
+  <data name="OnDemandBootstrapPackageAssignedButNotInstalled" xml:space="preserve">
+    <value>已指派隨選部署的執行啟動程序套件，但尚未收到要求</value>
+  </data>
+  <data name="OneDay" xml:space="preserve">
+    <value>1 天</value>
+  </data>
+  <data name="OnlineLicenseAvailableArgDevicesAllocation" xml:space="preserve">
+    <value>有 {0} 個可用的線上授權。系統會以先到先處理的基礎來為裝置配置授權。</value>
+  </data>
+  <data name="OrdersLicensesMenuTitle" xml:space="preserve">
+    <value>檢視並管理大量採購方案 (VPP) 兌換碼</value>
+  </data>
+  <data name="OSVersionNotSetError" xml:space="preserve">
+    <value>如果已啟用原則，作業系統版本不可為零或空白</value>
+  </data>
+  <data name="OsXParseError" xml:space="preserve">
+    <value>剖析 OsX 檔案時發生錯誤</value>
+  </data>
+  <data name="OtherAttributes" xml:space="preserve">
+    <value>其他屬性</value>
+  </data>
+  <data name="PasswordNotCopied" xml:space="preserve">
+    <value>組態期間輸入的密碼並未與這個設定檔一起複製。請先重新輸入正確的密碼，再進行儲存。</value>
+  </data>
+  <data name="Paused" xml:space="preserve">
+    <value>已暫停</value>
+  </data>
+  <data name="PeerDistribution" xml:space="preserve">
+    <value>對等式發佈</value>
+  </data>
+  <data name="PeerDistributionCacheBytes" xml:space="preserve">
+    <value>快取位元組</value>
+  </data>
+  <data name="PeerDistributionCacheEnabled" xml:space="preserve">
+    <value>已啟用快取</value>
+  </data>
+  <data name="PeerDistributionCurrentClientMode" xml:space="preserve">
+    <value>目前用戶端模式</value>
+  </data>
+  <data name="PeerDistributionDetails" xml:space="preserve">
+    <value>對等式發佈統計詳情</value>
+  </data>
+  <data name="PeerDistributionDetailsLearnMore" xml:space="preserve">
+    <value>進一步瞭解</value>
+  </data>
+  <data name="PeerDistributionDetailsToolTip" xml:space="preserve">
+    <value>顯示使用對等式發佈下載此應用程式的裝置數目、下載的資料數量與下載資料儲存的位置</value>
+  </data>
+  <data name="PeerDistributionDevicesUtilizingPeerDistribution" xml:space="preserve">
+    <value>使用對等式發佈的裝置</value>
+  </data>
+  <data name="PeerDistributionDevicesWithPeerDistributionOn" xml:space="preserve">
+    <value>開啟對等式發佈的裝置</value>
+  </data>
+  <data name="PeerDistributionDownloadSource" xml:space="preserve">
+    <value>下載資源</value>
+  </data>
+  <data name="PeerDistributionHostedCacheServerList" xml:space="preserve">
+    <value>託管快取伺服器清單</value>
+  </data>
+  <data name="PeerDistributionNotUtilized" xml:space="preserve">
+    <value>未使用</value>
+  </data>
+  <data name="PeerDistributionOff" xml:space="preserve">
+    <value>關閉</value>
+  </data>
+  <data name="PeerDistributionOnNotUtilized" xml:space="preserve">
+    <value>開啟/未使用</value>
+  </data>
+  <data name="PeerDistributionOnUtilized" xml:space="preserve">
+    <value>開啟/已使用</value>
+  </data>
+  <data name="PeerDistributionServerBytes" xml:space="preserve">
+    <value>快取位元組</value>
+  </data>
+  <data name="PeerDistributionSfdOriginTypeAW" xml:space="preserve">
+    <value>裝置服務</value>
+  </data>
+  <data name="PeerDistributionSfdOriginTypeCDN" xml:space="preserve">
+    <value>CDN</value>
+  </data>
+  <data name="PeerDistributionSfdOriginTypeNone" xml:space="preserve">
+    <value>無</value>
+  </data>
+  <data name="PeerDistributionSfdOriginTypeP2P" xml:space="preserve">
+    <value>Adaptiva</value>
+  </data>
+  <data name="PeerDistributionSfdOriginTypeP2PBC" xml:space="preserve">
+    <value>CDN (有裝置服務)</value>
+  </data>
+  <data name="PeerDistributionStatus" xml:space="preserve">
+    <value>對等式發佈</value>
+  </data>
+  <data name="PeerDistributionTotalDeviceCount" xml:space="preserve">
+    <value>裝置總計數</value>
+  </data>
+  <data name="PeerDistributionTotalSavingBytes" xml:space="preserve">
+    <value>儲存位元組總計</value>
+  </data>
+  <data name="PeerDistributionTotalSavingPercent" xml:space="preserve">
+    <value>儲存百分比總計</value>
+  </data>
+  <data name="PeerDistributionTotalUtilizedCacheBytes" xml:space="preserve">
+    <value>使用快取位元組總計</value>
+  </data>
+  <data name="PeerDistributionTotalUtilizedServerBytes" xml:space="preserve">
+    <value>使用伺服器位元組總計</value>
+  </data>
+  <data name="PeerDistributionUtilized" xml:space="preserve">
+    <value>已使用</value>
+  </data>
+  <data name="PersonalAppCounts" xml:space="preserve">
+    <value>無指派之安裝</value>
+  </data>
+  <data name="PersonalAppCountsToolTip" xml:space="preserve">
+    <value>顯示已安裝此應用程式不同版本但不具有效指派之裝置數，原因可能是此應用程式是側載安裝，或先前有來自 Workspace ONE 的指派。</value>
+  </data>
+  <data name="Pivd" xml:space="preserve">
+    <value>PIV-D</value>
+  </data>
+  <data name="PivdAndroidDerivedCredentialSmimeForFirstaccount" xml:space="preserve">
+    <value>PIV-D 僅支援單一 S/MIME 憑證。僅針對主要受管理的電子郵件帳戶選取此選項。</value>
+  </data>
+  <data name="PivdDerivedCredentialForFirstaccount" xml:space="preserve">
+    <value>PIV-D 僅支援單一驗證憑證。僅針對主要受管理的電子郵件帳戶選取此選項。
+若要在 Boxer 應用程式版本低於 5.21 的情況下使用 PIV-D，請從 [應用程式組態] 區段傳遞自訂 KVP「PolicyDerivedCredentials」。</value>
+  </data>
+  <data name="PlusAdd" xml:space="preserve">
+    <value>+ 新增</value>
+  </data>
+  <data name="PolicyAllowActionArchive" xml:space="preserve">
+    <value>封存動作</value>
+  </data>
+  <data name="PolicyAllowActionSpam" xml:space="preserve">
+    <value>允許終端使用者回報垃圾郵件</value>
+  </data>
+  <data name="PolicyAllowAttachments" xml:space="preserve">
+    <value>允許附件</value>
+  </data>
+  <data name="PolicyAllowAttachmentsDownload" xml:space="preserve">
+    <value>允許下載附件</value>
+  </data>
+  <data name="PolicyAllowAttachmentsDownloadInfo" xml:space="preserve">
+    <value>允許或封鎖附件的下載和轉寄</value>
+  </data>
+  <data name="PolicyAllowAttachmentsInfo" xml:space="preserve">
+    <value>允許使用者新增/轉寄附件</value>
+  </data>
+  <data name="PolicyAllowCallKitIdentification" xml:space="preserve">
+    <value>允許使用 CallKit</value>
+  </data>
+  <data name="PolicyAllowCallKitIdentificationInfo" xml:space="preserve">
+    <value>此設定僅用於 iOS，且需使用者互動才能啟用 CallKit 來電顯示</value>
+  </data>
+  <data name="PolicyAllowCrashReporting" xml:space="preserve">
+    <value>允許當機報告</value>
+  </data>
+  <data name="PolicyAllowCustomKeyboards" xml:space="preserve">
+    <value>允許自訂的鍵盤</value>
+  </data>
+  <data name="PolicyAllowCustomKeyboardsTooltip" xml:space="preserve">
+    <value>允許您的使用者啟用第三方鍵盤</value>
+  </data>
+  <data name="PolicyAllowDocProviders" xml:space="preserve">
+    <value>控制來自外部提供者的附件</value>
+  </data>
+  <data name="PolicyAllowEnterpriseContent" xml:space="preserve">
+    <value>企業內容</value>
+  </data>
+  <data name="PolicyAllowLocalCalendars" xml:space="preserve">
+    <value>本機行事曆</value>
+  </data>
+  <data name="PolicyAllowLogging" xml:space="preserve">
+    <value>允許記錄</value>
+  </data>
+  <data name="PolicyAllowLoggingInfo" xml:space="preserve">
+    <value>除非使用者採取動作傳送這些記錄，否則不會傳送。</value>
+  </data>
+  <data name="PolicyAllowMailServerCiphers" xml:space="preserve">
+    <value>允許的郵件伺服器加密方式</value>
+  </data>
+  <data name="PolicyAllowMailServerCiphersInfo" xml:space="preserve">
+    <value>強制 Boxer 在連線至郵件伺服器的 TLS 信號交換期間僅使用這些加密方式</value>
+  </data>
+  <data name="PolicyAllowMetrics" xml:space="preserve">
+    <value>匿名指標</value>
+  </data>
+  <data name="PolicyAllowOpenIn" xml:space="preserve">
+    <value>控制開啟於</value>
+  </data>
+  <data name="PolicyAllowPhotoAttachemetInfo" xml:space="preserve">
+    <value>允許或封鎖從相機/相片圖庫附加相片的功能</value>
+  </data>
+  <data name="PolicyAllowPhotoAttachment" xml:space="preserve">
+    <value>允許相片附件</value>
+  </data>
+  <data name="PolicyAllowPrint" xml:space="preserve">
+    <value>允許列印</value>
+  </data>
+  <data name="PolicyAllowPrintTooltip" xml:space="preserve">
+    <value>停用以封鎖列印電子郵件和附件</value>
+  </data>
+  <data name="PolicyAllowTouchID" xml:space="preserve">
+    <value>生物辨識 ID</value>
+  </data>
+  <data name="PolicyAllowTouchInfo" xml:space="preserve">
+    <value>啟用此功能可讓使用者在受支援的裝置上使用指紋辨識、Touch ID 或 Face ID。</value>
+  </data>
+  <data name="PolicyAllowUserAccountsInfo" xml:space="preserve">
+    <value>允許使用者新增其他帳戶，例如 Gmail、iCloud 和其他 IMAP 帳戶。</value>
+  </data>
+  <data name="PolicyCalendarMaxSyncPeriod" xml:space="preserve">
+    <value>最大行事曆同步週期</value>
+  </data>
+  <data name="PolicyCalendarMaxSyncPeriodInfo" xml:space="preserve">
+    <value>使用者同步行事曆事件時可選擇的最早起始日期。</value>
+  </data>
+  <data name="PolicyClassMarkings" xml:space="preserve">
+    <value>標記</value>
+  </data>
+  <data name="PolicyClassMarkingsDefaultClass" xml:space="preserve">
+    <value>預設分類</value>
+  </data>
+  <data name="PolicyClassMarkingsDefaultClassInfo" xml:space="preserve">
+    <value>(可選) 設定電子郵件的預設分類。此值必須符合 PolicyClassMarkings 組態值中的項目顯示名稱。</value>
+  </data>
+  <data name="PolicyClassMarkingsEnabled" xml:space="preserve">
+    <value>啟用或停用分類標記</value>
+  </data>
+  <data name="PolicyClassMarkingsEnabledInfo" xml:space="preserve">
+    <value>啟用或停用分類標記</value>
+  </data>
+  <data name="PolicyClassMarkingsInfo" xml:space="preserve">
+    <value>定義階層式分類清單。</value>
+  </data>
+  <data name="PolicyClassMarkingsRankEnabled" xml:space="preserve">
+    <value>啟用排名</value>
+  </data>
+  <data name="PolicyClassMarkingsRankEnabledInfo" xml:space="preserve">
+    <value>(可選) 啟用階層式分類排名。</value>
+  </data>
+  <data name="PolicyClassMarkingsXHeader" xml:space="preserve">
+    <value>定義 X 標頭</value>
+  </data>
+  <data name="PolicyClassMarkingsXHeaderInfo" xml:space="preserve">
+    <value>(可選) 啟用並定義分類的 X 標頭。</value>
+  </data>
+  <data name="PolicyClassVersion" xml:space="preserve">
+    <value>版本</value>
+  </data>
+  <data name="PolicyClassVersionInfo" xml:space="preserve">
+    <value>分類功能的版本號碼</value>
+  </data>
+  <data name="PolicyCustomOnlineMeetingUrls" xml:space="preserve">
+    <value>QuickJoin 自訂 URL</value>
+  </data>
+  <data name="PolicyDeleteOnSpamForward" xml:space="preserve">
+    <value>刪除垃圾郵件</value>
+  </data>
+  <data name="PolicyDisableKeyEscrow" xml:space="preserve">
+    <value>停用金鑰委付 (忘記密碼)</value>
+  </data>
+  <data name="PolicyEmailMaxSyncPeriod" xml:space="preserve">
+    <value>最大電子郵件同步週期</value>
+  </data>
+  <data name="PolicyEnforceHTTPS" xml:space="preserve">
+    <value>限制不安全的 HTTP 連線</value>
+  </data>
+  <data name="PolicyEnforceHTTPSTooltip" xml:space="preserve">
+    <value>限制從不安全的 (HTTP) 連線載入內容。</value>
+  </data>
+  <data name="PolicyLimitNotificationText" xml:space="preserve">
+    <value>通知內容</value>
+  </data>
+  <data name="PolicyLimitNotificationTextInfo" xml:space="preserve">
+    <value>控制每個通知警示中公開的資訊量</value>
+  </data>
+  <data name="PolicyScepPendingMaxRetryAttempts" xml:space="preserve">
+    <value>SCEP 的重試次數上限</value>
+  </data>
+  <data name="PolicyScepPendingRetryTimeout" xml:space="preserve">
+    <value>SCEP 每次重試之間的間隔，以秒為單位</value>
+  </data>
+  <data name="PolicySensitivityLabelsEmailClassificationInfo" xml:space="preserve">
+    <value>使用者將能與 AIP 標籤互動</value>
+  </data>
+  <data name="PolicySMIME" xml:space="preserve">
+    <value>S/MIME 狀態</value>
+  </data>
+  <data name="PolicySMIMEConformingEncryptionAlgorithms" xml:space="preserve">
+    <value>支援的加密演算法</value>
+  </data>
+  <data name="PolicySMIMEConformingEncryptionAlgorithmsInfo" xml:space="preserve">
+    <value>允許限制 S/MIME 加密使用特定演算法。未使用核可演算法的加密電子郵件將標示警告。 如果未提供有效的值，則視為接受所有演算法。</value>
+  </data>
+  <data name="PolicySMIMEConformingSigningAlgorithms" xml:space="preserve">
+    <value>支援的簽署演算法</value>
+  </data>
+  <data name="PolicySMIMEDefaultEncryptionAlgorithm" xml:space="preserve">
+    <value>預設加密演算法</value>
+  </data>
+  <data name="PolicySMIMEDefaultEncryptionAlgorithmInfo" xml:space="preserve">
+    <value>允許限制 S/MIME 加密使用特定演算法。未使用核可演算法的加密電子郵件將標示警告。如果未提供有效的值，則視為接受所有演算法。</value>
+  </data>
+  <data name="PolicySMIMEDefaultSigningAlgorithm" xml:space="preserve">
+    <value>預設簽署演算法</value>
+  </data>
+  <data name="PolicySMIMEEnableRevocationCheck" xml:space="preserve">
+    <value>啟用 S/MIME 撤銷檢查</value>
+  </data>
+  <data name="PolicySMIMEEnableRevocationCheckInfo" xml:space="preserve">
+    <value>定義用於 S/MIME 憑證撤銷檢查的原則</value>
+  </data>
+  <data name="PolicySMIMERevocationCheckType" xml:space="preserve">
+    <value>S/MIME 撤銷檢查類型</value>
+  </data>
+  <data name="PolicySMIMERevocationCheckTypeInfo" xml:space="preserve">
+    <value>定義原則執行撤銷狀態檢查時，應檢查整個憑證鏈結或僅檢查使用者憑證。</value>
+  </data>
+  <data name="PolicySMIMERevocationCheckUrl" xml:space="preserve">
+    <value>S/MIME 撤銷檢查 URL</value>
+  </data>
+  <data name="PolicySMIMERevocationCheckUrlInfo" xml:space="preserve">
+    <value>此 URL 用來作為 OCSP 回應程式 URL</value>
+  </data>
+  <data name="PolicySMIMERevocationEnforceNonce" xml:space="preserve">
+    <value>強制適用於 S/MIME 撤銷的 Nonce</value>
+  </data>
+  <data name="PolicySMIMERevocationEnforceNonceInfo" xml:space="preserve">
+    <value>如果啟用，則 OCSP 要求中強制使用 Nonce</value>
+  </data>
+  <data name="PolicySMIMERevocationStrictness" xml:space="preserve">
+    <value>S/MIME 撤銷嚴謹度</value>
+  </data>
+  <data name="PolicySMIMERevocationStrictnessInfo" xml:space="preserve">
+    <value>定義在判斷已撤銷的憑證是否允許使用時所採用的嚴謹度</value>
+  </data>
+  <data name="PolicySMIMERevocationTTL" xml:space="preserve">
+    <value>S/MIME 撤銷 TTL</value>
+  </data>
+  <data name="PolicySMIMERevocationTTLinfo" xml:space="preserve">
+    <value>定義撤銷資料保留的期間 (以天為單位)</value>
+  </data>
+  <data name="PolicySMIMERevocationUseAIA" xml:space="preserve">
+    <value>使用適用於 S/MIME 撤銷的授權資訊存取</value>
+  </data>
+  <data name="PolicySMIMERevocationUseAIAInfo" xml:space="preserve">
+    <value>關於在憑證中使用授權資訊存取延伸的原則</value>
+  </data>
+  <data name="PolicySMIMEStrictEKUCheck" xml:space="preserve">
+    <value>需要 EKU 延伸檢查</value>
+  </data>
+  <data name="PolicySMIMEStrictEKUCheckInfo" xml:space="preserve">
+    <value>定義是否需要檢查 S/MIME 憑證的 EKU 延伸。如果設定為 True，即會驗證 EKU 延伸是否存在於憑證中，且其中已設定電子郵件保護用途。</value>
+  </data>
+  <data name="PolicySMIMETrustStore" xml:space="preserve">
+    <value>S/MIME 信任存放區</value>
+  </data>
+  <data name="PolicyStatus" xml:space="preserve">
+    <value>原則狀態</value>
+  </data>
+  <data name="PolicyTLSEnableRevocationCheck" xml:space="preserve">
+    <value>撤銷檢查</value>
+  </data>
+  <data name="PolicyTLSEnableRevocationCheckInfo" xml:space="preserve">
+    <value>啟用/停用 TLS 撤銷檢查</value>
+  </data>
+  <data name="PolicyTLSRevocationCheckType" xml:space="preserve">
+    <value>撤銷檢查類型</value>
+  </data>
+  <data name="PolicyTLSRevocationCheckTypeInfo" xml:space="preserve">
+    <value>指定撤銷檢查是否應套用到整個鏈結或僅適用於伺服器的憑證。如果停用撤銷檢查，則此原則將不受影響。</value>
+  </data>
+  <data name="PolicyTLSRevocationCheckUrl" xml:space="preserve">
+    <value>撤銷檢查 URL</value>
+  </data>
+  <data name="PolicyTLSRevocationCheckUrlInfo" xml:space="preserve">
+    <value>OCSP 伺服器 URL。如果停用撤銷檢查，則此原則將不受影響。</value>
+  </data>
+  <data name="PolicyTLSRevocationEnforceNonce" xml:space="preserve">
+    <value>強制執行 Nonce</value>
+  </data>
+  <data name="PolicyTLSRevocationEnforceNonceInfo" xml:space="preserve">
+    <value>如果啟用，則強制執行 Nonce，否則不使用 Nonce。如果停用撤銷檢查，則此原則將不受影響。</value>
+  </data>
+  <data name="PolicyTLSRevocationStrictness" xml:space="preserve">
+    <value>撤銷嚴謹度</value>
+  </data>
+  <data name="PolicyTLSRevocationStrictnessInfo" xml:space="preserve">
+    <value>設定為 [忽略] 時，僅會記錄撤銷檢查結果且不會封鎖 TLS 連線。設定為 [嚴格] 時，如果伺服器的憑證已撤銷，或無法連線到 OCSP 伺服器，則會封鎖 TLS 連線。設定為 [中等] 時，如果伺服器的憑證已撤銷，則封鎖 TLS 連線。如果無法連線到 OCSP 伺服器，則會使用先前檢查的結果 (如果可用)。如果停用撤銷檢查，則此原則將不受影響。</value>
+  </data>
+  <data name="PolicyTLSRevocationTTL" xml:space="preserve">
+    <value>撤銷 TTL (天)</value>
+  </data>
+  <data name="PolicyTLSRevocationTTLInfo" xml:space="preserve">
+    <value>保留撤銷資料的時間 (以天為單位)。忽略負值和零。如果回應者不提供 nextupdate 值。如果已設定 KVP，則使用此 KVP 的值。如果未設定 KVP，則預設下一次檢查為 7 天。如果回應者提供 nextupdate。如果已設定 KVP - 使用此 KVP 的值，忽略回應者的 nextupdate 值。如果未設定 KVP - 則使用來自回應者的 nextupdate 值。如果停用撤銷檢查，則此原則將不受影響。</value>
+  </data>
+  <data name="PolicyTLSRevocationUseAIA" xml:space="preserve">
+    <value>撤銷使用 AIA</value>
+  </data>
+  <data name="PolicyTLSRevocationUseAIAInfo" xml:space="preserve">
+    <value>停用 - 撤銷狀態不使用憑證內設定的 URL，僅使用撤銷檢查 URL。啟用 - 使用憑證內設定的 URL 檢查撤銷狀態，如果無法使用則改用撤銷檢查 URL。必要 - 僅使用憑證內設定的 URL 來檢查撤銷狀態，忽略撤銷檢查 URL。如果停用撤銷檢查，則此原則將不受影響。</value>
+  </data>
+  <data name="PolicyTLSStrictTrustCheck" xml:space="preserve">
+    <value>TLS 信任檢查</value>
+  </data>
+  <data name="PolicyTLSStrictTrustCheckInfo" xml:space="preserve">
+    <value>如果設定為 True，則 Boxer 將對 TLS 伺服器憑證執行較嚴格的信任檢查。我們會確認構成整個憑證鏈結的所有根 CA 憑證和中間 CA 憑證均已安裝於我們根據主控台組態「Trust Store」所建立的信任存放區。只有在啟用撤銷檢查時，此金鑰才有作用。</value>
+  </data>
+  <data name="PolicyTLSTrustStore" xml:space="preserve">
+    <value>信任存放區</value>
+  </data>
+  <data name="PolicyTLSTrustStoreInfo" xml:space="preserve">
+    <value>停用時，使用裝置信任存放區和 Boxer 信任存放區。啟用時，使用 Boxer 信任存放區。預設為裝置信任存放區 + Boxer 信任存放區。iOS：當撤銷檢查停用時，目前僅會在「0」值使用信任存放區。如果用到自訂中間 CA 但未預先載入於裝置，則此選項唯一有效值為「1」，即一律使用 Boxer 信任存放區，且所有中間 CA 必須存在於 Boxer 信任存放區中，始可信任連線。Android：如果停用撤銷檢查，則此 KVP 將不受影響。(在此情況中，裝置的預設信任存放區將用來驗證憑證鏈結。Boxer 的存放區將沒有任何鏈結可比對驗證)</value>
+  </data>
+  <data name="PolicyWatermarkColor" xml:space="preserve">
+    <value>浮水印色彩</value>
+  </data>
+  <data name="PolicyWatermarkColorInfo" xml:space="preserve">
+    <value>以十六進位格式定義文字顏色。預設顏色為藍色</value>
+  </data>
+  <data name="PolicyWatermarkOpacity" xml:space="preserve">
+    <value>浮水印透明度</value>
+  </data>
+  <data name="PolicyWatermarkOpacityInfo" xml:space="preserve">
+    <value>定義文字的透明度。您可以設定從 0 到 100 的任何數字</value>
+  </data>
+  <data name="PolicyWatermarkText" xml:space="preserve">
+    <value>浮水印文字</value>
+  </data>
+  <data name="PolicyWatermarkTextInfo" xml:space="preserve">
+    <value>定義浮水印文字</value>
+  </data>
+  <data name="PositiveIntegerRequired" xml:space="preserve">
+    <value>輸入正整數值</value>
+  </data>
+  <data name="PradeoAPIKey" xml:space="preserve">
+    <value>Pradeo API 金鑰</value>
+  </data>
+  <data name="PreReleaseVersionTooltip" xml:space="preserve">
+    <value>如果此清單遺失您預期會看到的項目，此項目可能已遭刪除或從此企業取消指派。</value>
+  </data>
+  <data name="PreventRemoval" xml:space="preserve">
+    <value>禁止移除</value>
+  </data>
+  <data name="PreventRemovalTooltip" xml:space="preserve">
+    <value>如果啟用，則不允許使用者解除安裝應用程式。需要 iOS 14 以上版本。</value>
+  </data>
+  <data name="ProductApp" xml:space="preserve">
+    <value>產品應用程式</value>
+  </data>
+  <data name="ProductAppInstalled" xml:space="preserve">
+    <value>產品型應用程式已指派且已安裝</value>
+  </data>
+  <data name="ProductAppNotInstalled" xml:space="preserve">
+    <value>產品型應用程式已指派但尚未安裝</value>
+  </data>
+  <data name="ProviderDisabledFileUploadMessage" xml:space="preserve">
+    <value>檔案儲存空間及 CDN 似乎已停用，或資料庫大小已達此組織的最大容量。請聯絡管理員或啟用這些項目，並檢查資料庫儲存空間以繼續。</value>
+  </data>
+  <data name="ProvisioningProfileExpirationExplainationArgDays" xml:space="preserve">
+    <value>與此應用程式相關聯的佈建設定檔將於 {0} 天內過期。佈建設定檔過期後，將無法存取應用程式，且嘗試安裝此應用程式的新使用者，將無法安裝。請按下方提供的 [更新] 按鈕，為應用程式重新產生佈建設定檔並更新應用程式。針對已安裝此應用程式的裝置，更新佈建設定檔時，會以新增的設定檔取代裝置上既有的設定檔，而不會重新安裝應用程式。針對新註冊的裝置或未安裝此應用程式的裝置，安裝應用程式時，會傳送新增的佈建設定檔。</value>
+  </data>
+  <data name="PublicApplication" xml:space="preserve">
+    <value>公用應用程式</value>
+  </data>
+  <data name="PublicApplications" xml:space="preserve">
+    <value>公用應用程式</value>
+  </data>
+  <data name="PublisherAddedMultipleTimesInAppGroup" xml:space="preserve">
+    <value>相同的發行者已數次被加入此應用程式群組</value>
+  </data>
+  <data name="PublisherExceptionAddedMultipleTimesInAppGroup" xml:space="preserve">
+    <value>相同的應用程式已數次以發行者的例外狀況被加入</value>
+  </data>
+  <data name="PurchasedApplication" xml:space="preserve">
+    <value>已購買的應用程式</value>
+  </data>
+  <data name="PurchasedApplications" xml:space="preserve">
+    <value>已購買的應用程式</value>
+  </data>
+  <data name="PurchasedAppLicenseAssignmentBySmartGroup" xml:space="preserve">
+    <value>依智慧群組購買的應用程式授權指派</value>
+  </data>
+  <data name="Purebred" xml:space="preserve">
+    <value>Purebred</value>
+  </data>
+  <data name="QuickReply" xml:space="preserve">
+    <value>快速回覆</value>
+  </data>
+  <data name="Ranking" xml:space="preserve">
+    <value>排名</value>
+  </data>
+  <data name="Read/Unread" xml:space="preserve">
+    <value>已讀取/未讀取</value>
+  </data>
+  <data name="ReasonsBreakdown" xml:space="preserve">
+    <value>安裝狀態詳細資料</value>
+  </data>
+  <data name="ReasonsBreakdownToolTip" xml:space="preserve">
+    <value>此處展示裝置回報的資料，包含此應用程式安裝狀態等相關詳細資訊，不限於特定版本。</value>
+  </data>
+  <data name="RedeemingCode" xml:space="preserve">
+    <value>兌換碼</value>
+  </data>
+  <data name="RedemptionCode" xml:space="preserve">
+    <value>兌換碼</value>
+  </data>
+  <data name="RedemptionCodes" xml:space="preserve">
+    <value>兌換碼</value>
+  </data>
+  <data name="RefreshApps" xml:space="preserve">
+    <value>重新整理應用程式</value>
+  </data>
+  <data name="RemoveApplicationConfirmed" xml:space="preserve">
+    <value>裝置確認應用程式移除</value>
+  </data>
+  <data name="RemoveArgApplicationOpensDialog" xml:space="preserve">
+    <value>移除 {0} 應用程式開啟對話方塊</value>
+    <comment>Placeholder in this label key is for application name.</comment>
+  </data>
+  <data name="RemoveCommandDispatched" xml:space="preserve">
+    <value>已送發移除指令</value>
+  </data>
+  <data name="RemoveCommandSuccessful" xml:space="preserve">
+    <value>裝置確認移除</value>
+  </data>
+  <data name="RemovedByEmm" xml:space="preserve">
+    <value>由 EMM 移除</value>
+  </data>
+  <data name="RemovedByUser" xml:space="preserve">
+    <value>由使用者移除</value>
+  </data>
+  <data name="RemoveFromSelectedDevices" xml:space="preserve">
+    <value>此應用程式將僅在已安裝該應用程式且由 EMM 管理的裝置上移除。</value>
+  </data>
+  <data name="RemovePreviousValues" xml:space="preserve">
+    <value>移除先前的值</value>
+  </data>
+  <data name="RequireApprovalToInstall" xml:space="preserve">
+    <value>需要核准才能安裝</value>
+  </data>
+  <data name="RequireApprovalToInstallToolTip" xml:space="preserve">
+    <value>在所選指派群組中的使用者需要取得核准才能存取此應用程式。</value>
+  </data>
+  <data name="RequiredEmailSettings" xml:space="preserve">
+    <value>請在 {1} 索引標籤中新增 {0}</value>
+  </data>
+  <data name="RestartDeadlineInDays" xml:space="preserve">
+    <value>距離裝置自動重新開機的天數</value>
+  </data>
+  <data name="RestrictScreenshotsInfo" xml:space="preserve">
+    <value>防止使用者拍攝應用程式的螢幕擷取畫面。(僅限 Android)</value>
+  </data>
+  <data name="ReviewRequestExpired" xml:space="preserve">
+    <value>檢視要求未授權或已到期。請重新整理頁面並再次檢視。</value>
+  </data>
+  <data name="ReviewSummaryBeforeAddingApp" xml:space="preserve">
+    <value>在新增應用程式之前，請先檢視摘要。您稍後可以透過應用程式清單視圖編輯部分欄位</value>
+  </data>
+  <data name="RevisionNumber" xml:space="preserve">
+    <value>修訂版編號</value>
+  </data>
+  <data name="RevisionVersion" xml:space="preserve">
+    <value>請在 [修訂版本] 欄位中輸入有效的值</value>
+  </data>
+  <data name="S/MIMEPolicy" xml:space="preserve">
+    <value>S/MIME 原則</value>
+  </data>
+  <data name="SaaSAppsIDMSetupArg" xml:space="preserve">
+    <value>需要先設定 Workspace ONE，才能使用 SaaS 應用程式。請前往 {0} 並完成 Workspace ONE 設定。完成後，請登出並再次登入，然後再試一次。</value>
+  </data>
+  <data name="SameAssignmentExists" xml:space="preserve">
+    <value>一或多個智慧群組已指派給另一個指派中的此應用程式。請移除這些智慧群組以繼續。</value>
+  </data>
+  <data name="SaveConfiguration" xml:space="preserve">
+    <value>儲存組態</value>
+  </data>
+  <data name="ScepPendingMaxRetryAttemptsInfo" xml:space="preserve">
+    <value>設定在 SDK 中的 SCEP 擷取重試次數上限</value>
+  </data>
+  <data name="ScepPendingRetryTimeoutInfo" xml:space="preserve">
+    <value>SDK 中每次重試 SCEP 擷取的間隔</value>
+  </data>
+  <data name="ScriptFileHelpText" xml:space="preserve">
+    <value>要上傳的自訂指令碼</value>
+  </data>
+  <data name="SecurityPatch" xml:space="preserve">
+    <value>安全性修補程式</value>
+  </data>
+  <data name="SecurityPatchDateNotSetError" xml:space="preserve">
+    <value>如果已啟用原則，安全性修補程式日期不可為空白</value>
+  </data>
+  <data name="SelectedDeviceRequiresApprovalAlert" xml:space="preserve">
+    <value>此應用程式需要核准才能安裝在此特定裝置上。核准要求可由終端使用者提出。</value>
+  </data>
+  <data name="SelectedDevicesRequireApprovalAlert" xml:space="preserve">
+    <value>應用程式將安裝於所有裝置上，但需要核准才能存取應用程式的裝置除外。核准要求可由終端使用者提出。</value>
+  </data>
+  <data name="SendAppConfigDescription" xml:space="preserve">
+    <value>使用應用程式開發人員提供的設定來設定此應用程式。</value>
+  </data>
+  <data name="SendAppConfiguration" xml:space="preserve">
+    <value>傳送配置</value>
+  </data>
+  <data name="SendApplicationAttributes" xml:space="preserve">
+    <value>傳送應用程式屬性</value>
+  </data>
+  <data name="SendAttibutes" xml:space="preserve">
+    <value>傳送屬性</value>
+  </data>
+  <data name="SendInviteTooltip" xml:space="preserve">
+    <value>啟用時，系統會自動邀請所有 iOS 裝置安裝 VPP 應用程式。若未安裝，則會在安裝 VPP 應用程式時邀請裝置進行安裝。</value>
+  </data>
+  <data name="ShowCallKitOption" xml:space="preserve">
+    <value>顯示 CallKit 選項</value>
+  </data>
+  <data name="SideLoadedCount" xml:space="preserve">
+    <value>側載安裝</value>
+  </data>
+  <data name="SigningCertificateAuthority" xml:space="preserve">
+    <value>簽署憑證授權機構</value>
+  </data>
+  <data name="SigningCertificateTemplate" xml:space="preserve">
+    <value>簽署憑證範本</value>
+  </data>
+  <data name="SmartGroupNotPresentInAssignment" xml:space="preserve">
+    <value>與應用程式相關的任何指派中都沒有智慧群組。</value>
+  </data>
+  <data name="SmimeBoxerUserInfoMsg" xml:space="preserve">
+    <value>已關聯擁有 S/MIME 憑證的使用者 ([使用者] &gt; [進階] &gt; [憑證])，將會收到以下來源及上述憑證。請選取與使用者帳戶相關聯的憑證或以下來源</value>
+  </data>
+  <data name="SMIMEConformingEncryptionAlgorithmsInfo" xml:space="preserve">
+    <value>允許限制 S/MIME 加密使用特定演算法。未使用核可演算法的加密電子郵件將標示警告。如果未提供有效的值，則視為接受所有演算法。</value>
+  </data>
+  <data name="SMIMEConformingSigningAlgorithmsInfo" xml:space="preserve">
+    <value>允許限制 S/MIME 簽署使用特定演算法。未使用核可演算法的已簽署電子郵件將標示警告。如果未提供有效的值，則視為接受所有演算法。</value>
+  </data>
+  <data name="SMIMEDefaultEncryptionAlgorithmInfo" xml:space="preserve">
+    <value>指定用於傳入和傳出電子郵件的加密演算法。如果未提供有效的演算法，則會使用最低支援的演算法 (3DES)。</value>
+  </data>
+  <data name="SMIMEDefaultSigningAlgorithmInfo" xml:space="preserve">
+    <value>指定用於傳入和傳出電子郵件的預設 S/MIME 簽署演算法。如果未提供有效的演算法，則會使用最低支援的演算法 (SHA-1)。</value>
+  </data>
+  <data name="SmimeInfo" xml:space="preserve">
+    <value>設定 S/MIME</value>
+  </data>
+  <data name="SMIMEStatusInfo" xml:space="preserve">
+    <value>設定 S/MIME 需求</value>
+  </data>
+  <data name="SMIMEStrictEKUCheckInfo" xml:space="preserve">
+    <value>定義是否需要檢查 S/MIME 憑證的 EKU 延伸。如果設定為 True，即會驗證 EKU 延伸是否存在於憑證中，且其中已設定電子郵件保護用途。</value>
+  </data>
+  <data name="Spam" xml:space="preserve">
+    <value>垃圾郵件</value>
+  </data>
+  <data name="SpamAndPhishingReporting" xml:space="preserve">
+    <value>垃圾郵件及網路釣魚回報</value>
+  </data>
+  <data name="SpamAndPhishingReportingInfo" xml:space="preserve">
+    <value>設定電子郵件經識別為垃圾郵件或網路釣魚攻擊後，應採取的行動</value>
+  </data>
+  <data name="SpamReportConfigPositionChangeInfo" xml:space="preserve">
+    <value>設定是否要允許終端使用者在 [應用程式原則] &gt; [可用性] 區段中回報垃圾郵件</value>
+  </data>
+  <data name="SpecificApplicationIsNotSupported" xml:space="preserve">
+    <value>無效的應用程式，僅上傳 Workspace ONE Launcher APK</value>
+  </data>
+  <data name="SsoInfo" xml:space="preserve">
+    <value>若要在 Boxer 上啟用 SSO，請在 SDK 設定檔上啟用此選項和 SSO 組態。啟用後，如要停用 SSO，需要先重新安裝 Workspace ONE Boxer。</value>
+  </data>
+  <data name="StatusLastAction" xml:space="preserve">
+    <value>狀態 - 上一個動作</value>
+  </data>
+  <data name="StokenExpiredMessage" xml:space="preserve">
+    <value>上傳供此企業群組使用的 sToken 已到期。請更新 sToken，然後再次上傳。</value>
+  </data>
+  <data name="StokenRevokedMessage" xml:space="preserve">
+    <value>上傳供此企業群組使用的 sToken 已撤銷。請上傳新的 sToken。</value>
+  </data>
+  <data name="Strict" xml:space="preserve">
+    <value>嚴格</value>
+  </data>
+  <data name="SupportedProcessorArchitectureHelp" xml:space="preserve">
+    <value>請選擇應用程式支援的架構類型。選擇 32 位元會將此應用程式發佈至 32 位元及 64 位元裝置。</value>
+  </data>
+  <data name="SupportEmailAddress" xml:space="preserve">
+    <value>支援電子郵件地址</value>
+  </data>
+  <data name="SupportEmailAddressInfo" xml:space="preserve">
+    <value>透過支援功能表傳送記錄時要指定的電子郵件地址。</value>
+  </data>
+  <data name="SwipesLeftLongInfo" xml:space="preserve">
+    <value>將值設定為下列其中一項，作為使用者於電子郵件清單視圖中滑動電子郵件時的預設動作。請注意若使用者變更此設定，主控台並不會覆寫其選擇</value>
+  </data>
+  <data name="SwipesLeftShortInfo" xml:space="preserve">
+    <value>將值設定為下列其中一項，作為使用者於電子郵件清單視圖中滑動電子郵件時的預設動作。請注意若使用者變更此設定，主控台並不會覆寫其選擇</value>
+  </data>
+  <data name="SwipesRightLongInfo" xml:space="preserve">
+    <value>將值設定為下列其中一項，作為使用者於電子郵件清單視圖中滑動電子郵件時的預設動作。請注意若使用者變更此設定，主控台並不會覆寫其選擇</value>
+  </data>
+  <data name="SwipesRightShortInfo" xml:space="preserve">
+    <value>將值設定為下列其中一項，作為使用者於電子郵件清單視圖中滑動電子郵件時的預設動作。請注意若使用者變更此設定，主控台並不會覆寫其選擇</value>
+  </data>
+  <data name="SyncContact" xml:space="preserve">
+    <value>聯絡人同步</value>
+  </data>
+  <data name="SyncTunnelConfiguration" xml:space="preserve">
+    <value>同步 Tunnel 組態</value>
+  </data>
+  <data name="TempUploadedPatch" xml:space="preserve">
+    <value>上傳的修補程式</value>
+  </data>
+  <data name="TempUploadedTransform" xml:space="preserve">
+    <value>上傳的轉換</value>
+  </data>
+  <data name="TenantStorageCapacity" xml:space="preserve">
+    <value>容量</value>
+  </data>
+  <data name="TenantStorageCapacityMegaBytes" xml:space="preserve">
+    <value>容量 (MB)</value>
+  </data>
+  <data name="TenantStorageGigaBytes" xml:space="preserve">
+    <value>GB</value>
+  </data>
+  <data name="TenantStorageMaxFileSize" xml:space="preserve">
+    <value>檔案大小上限</value>
+  </data>
+  <data name="TenantStorageMaxFileSizeMegaBytes" xml:space="preserve">
+    <value>檔案大小上限 (MB)</value>
+  </data>
+  <data name="TenantStorageMegaBytes" xml:space="preserve">
+    <value>MB</value>
+  </data>
+  <data name="TenantStorageOverageAllowed" xml:space="preserve">
+    <value>允許超出的用量</value>
+  </data>
+  <data name="TenantStorageOverageAllowedMegaBytes" xml:space="preserve">
+    <value>允許超出的用量 (MB)</value>
+  </data>
+  <data name="ThisFieldIsRequired" xml:space="preserve">
+    <value>此欄位為必填</value>
+  </data>
+  <data name="ThreeDays" xml:space="preserve">
+    <value>3 天</value>
+  </data>
+  <data name="TimeReceived" xml:space="preserve">
+    <value>收到時間</value>
+  </data>
+  <data name="TimeStamp" xml:space="preserve">
+    <value>時間戳記</value>
+  </data>
+  <data name="TLSInfo" xml:space="preserve">
+    <value>設定 TLS</value>
+  </data>
+  <data name="TotalCount" xml:space="preserve">
+    <value>總計數</value>
+  </data>
+  <data name="TotalRedeemedLicensesHelpText" xml:space="preserve">
+    <value>總兌換計數是此 Workspace ONE UEM Console 所兌換的授權數，以及在此 Workspace ONE UEM Console 之外兌換的授權數的總和。這些授權已被裝置宣告，必須先撤銷後才能散佈。</value>
+  </data>
+  <data name="TriggerAccount" xml:space="preserve">
+    <value>上次動作詳細資料</value>
+  </data>
+  <data name="TriggerAccountToolTip" xml:space="preserve">
+    <value>顯示詳細資訊，說明針對此應用程式，對指派裝置所採取的最新動作。</value>
+  </data>
+  <data name="TrustStore" xml:space="preserve">
+    <value>信任存放區</value>
+  </data>
+  <data name="TunnelAndOtherAttributes" xml:space="preserve">
+    <value>Tunnel 和其他屬性</value>
+  </data>
+  <data name="TunnelConfigGridBulkActionArg" xml:space="preserve">
+    <value>將同步處理 {0} 個裝置上的 Tunnel 組態</value>
+  </data>
+  <data name="UemVersion" xml:space="preserve">
+    <value>UEM 版本</value>
+  </data>
+  <data name="UnPause" xml:space="preserve">
+    <value>取消暫停</value>
+  </data>
+  <data name="Unpaused" xml:space="preserve">
+    <value>已取消未暫停</value>
+  </data>
+  <data name="UnPauseToSelectedDevice" xml:space="preserve">
+    <value>若採取此動作，將針對不再具有權限的任何裝置，取消暫停移除此應用程式。請確定權限全部正確無誤，然後再繼續。若要繼續，請按一下 [確定]。</value>
+  </data>
+  <data name="UnreleasedVersions" xml:space="preserve">
+    <value>發行前版本</value>
+  </data>
+  <data name="UpgradeApplication" xml:space="preserve">
+    <value>升級應用程式</value>
+  </data>
+  <data name="UploadedPercentageFormat" xml:space="preserve">
+    <value>{0}%</value>
+    <comment>This should be changed to %{0} for languages supporting %# format for percentage</comment>
+  </data>
+  <data name="UploadedUemVersion" xml:space="preserve">
+    <value>已上傳的 UEM 版本</value>
+  </data>
+  <data name="UploadedVersion" xml:space="preserve">
+    <value>已上傳版本</value>
+  </data>
+  <data name="UploadInProgressDoNotClose" xml:space="preserve">
+    <value>上傳正在進行中，請勿關閉模式或重新整理頁面。</value>
+  </data>
+  <data name="UploadStillInProgress" xml:space="preserve">
+    <value>上傳仍在進行中，請勿關閉模式或重新整理頁面。</value>
+  </data>
+  <data name="UploadUninstallScript" xml:space="preserve">
+    <value>請上傳應用程式的解除安裝指令碼</value>
+  </data>
+  <data name="Usability" xml:space="preserve">
+    <value>可用性</value>
+  </data>
+  <data name="UseEscrowGateway" xml:space="preserve">
+    <value>使用委付閘道</value>
+  </data>
+  <data name="UseEscrowGatewayInfo" xml:space="preserve">
+    <value>此選項僅適用於 Boxer 5.19 或更高版本，以及設定了委付閘道時。</value>
+  </data>
+  <data name="UserAppRatingInfo" xml:space="preserve">
+    <value>使用者應用程式評分資訊</value>
+  </data>
+  <data name="UserCertificateOnly" xml:space="preserve">
+    <value>僅限使用者憑證</value>
+  </data>
+  <data name="UserCertificateOptionalInfo" xml:space="preserve">
+    <value>如果使用者沒有憑證，則會略過此認證，其餘的設定檔將會傳送給終端使用者。如果有憑證，則會從特定的 Workspace ONE 使用者中提取使用者憑證。您可以透過主控台或自助服務中的使用者詳細資料，手動上傳憑證。</value>
+  </data>
+  <data name="UserDeferredInstall" xml:space="preserve">
+    <value>無 (使用者延期應用程式安裝)</value>
+  </data>
+  <data name="UserEngagedDeadline" xml:space="preserve">
+    <value>使用者參與期限</value>
+  </data>
+  <data name="UserEngagedRestart" xml:space="preserve">
+    <value>使用者參與的重新啟動</value>
+  </data>
+  <data name="UseSameSigningAndEncryptionCertificate" xml:space="preserve">
+    <value>使用相同的簽署和加密憑證</value>
+  </data>
+  <data name="UseSameSigningAndEncryptionCertificateInfo" xml:space="preserve">
+    <value>除非選取 [否]，否則會使用相同的 S/MIME 憑證進行簽署和加密。</value>
+  </data>
+  <data name="ValidatingDependentApps" xml:space="preserve">
+    <value>驗證相依的應用程式</value>
+  </data>
+  <data name="ValidationAppConfiguration" xml:space="preserve">
+    <value>選取的應用程式不含任何已定義的指派。請選擇不同的應用程式，或定義至少一個指派，然後再試一次。</value>
+  </data>
+  <data name="ValidationDuplicateStep" xml:space="preserve">
+    <value>存在具備類似組態的另一個步驟。</value>
+  </data>
+  <data name="ValidationErrorMessage" xml:space="preserve">
+    <value>無法儲存變更。請確保每個欄位都已完成，且在再次嘗試前沒有出現任何錯誤。</value>
+  </data>
+  <data name="VersionCodeAlreadyExistsInOG" xml:space="preserve">
+    <value>此 Android 應用程式的版本代碼為 {0}，且已存在 OG 中，請要求您的開發者更新版本代碼。在目前 OG 中已針對識別碼 {1} 新增的版本代碼為 {2}。</value>
+  </data>
+  <data name="Versions" xml:space="preserve">
+    <value>版本</value>
+  </data>
+  <data name="VersionsInstalled" xml:space="preserve">
+    <value>已安裝版本</value>
+  </data>
+  <data name="ViewCriteria" xml:space="preserve">
+    <value>檢視準則</value>
+  </data>
+  <data name="ViewFlexeraApps" xml:space="preserve">
+    <value>檢視應用程式</value>
+  </data>
+  <data name="ViewInstallStatusForApplication" xml:space="preserve">
+    <value>檢視 {0} 的安裝狀態</value>
+  </data>
+  <data name="VirtualApplications" xml:space="preserve">
+    <value>虛擬應用程式</value>
+  </data>
+  <data name="VirtualApplicationsHelp" xml:space="preserve">
+    <value>控制虛擬應用程式組態的存取；僅適用於目錄管理</value>
+  </data>
+  <data name="VirtualApps" xml:space="preserve">
+    <value>虛擬應用程式</value>
+  </data>
+  <data name="VirtualAppsHelp" xml:space="preserve">
+    <value>查看可供員工從 Workspace ONE 目錄存取的虛擬應用程式與桌面清單。</value>
+  </data>
+  <data name="VirtualAppsIDMSetupArg" xml:space="preserve">
+    <value>需要先設定 Workspace ONE，才能使用虛擬應用程式。請前往 {0} 並完成 Workspace ONE 設定。完成後，請登出並再次登入，然後再試一次。</value>
+  </data>
+  <data name="VirtualAppsMenuDescription" xml:space="preserve">
+    <value>查看可供員工從 Workspace ONE 目錄存取的虛擬應用程式與桌面清單。</value>
+  </data>
+  <data name="VirtualBreadcrumbDescription" xml:space="preserve">
+    <value>檢視並管理虛擬應用程式與集合。</value>
+  </data>
+  <data name="VMwareDocs" xml:space="preserve">
+    <value>VMware Docs</value>
+  </data>
+  <data name="VPPLicenseNotAvailable" xml:space="preserve">
+    <value>無 (無法使用授權)</value>
+  </data>
+  <data name="WaitingForEvent" xml:space="preserve">
+    <value>正在等待事件</value>
+  </data>
+  <data name="WaitingForSchedule" xml:space="preserve">
+    <value>正在等待排程</value>
+  </data>
+  <data name="WaitingForTimeWindow" xml:space="preserve">
+    <value>等待時間範圍</value>
+  </data>
+  <data name="WaitingToBeRetried" xml:space="preserve">
+    <value>正在等待重試</value>
+  </data>
+  <data name="WantToContinue" xml:space="preserve">
+    <value>是否要繼續?</value>
+  </data>
+  <data name="WebLinkMenus" xml:space="preserve">
+    <value>Web 連結</value>
+  </data>
+  <data name="WindowsAppsRetireDescription" xml:space="preserve">
+    <value>淘汰應用程式的某一版本將會從 Workspace ONE 管理的所有裝置中解除安裝應用程式。如果應用程式的下一個較低版本可供使用且已指派，則不會採取任何動作，因為裝置作業系統不支援將應用程式降級。</value>
+  </data>
+  <data name="WindowsProvisioningInstallContextWarning" xml:space="preserve">
+    <value>此應用程式需要使用者內容以進行安裝，無法包含在匯出的 PPKG 中</value>
+  </data>
+  <data name="WindowsProvisioningNoAppSelected" xml:space="preserve">
+    <value>請選擇要匯出到 Windows 佈建套件的應用程式</value>
+  </data>
+  <data name="WindowsProvisioningOGInheritedWarning" xml:space="preserve">
+    <value>此應用程式繼承自另一個企業群組，無法包含在匯出的 PPKG 中。</value>
+  </data>
+  <data name="WindowsProvisioningPackageDeleteFailed" xml:space="preserve">
+    <value>刪除佈建套件 (PPKG) 時發生非預期錯誤。</value>
+  </data>
+  <data name="WindowsProvisioningPackageDeleteSuccess" xml:space="preserve">
+    <value>Windows 佈建套件 (PPKG) 已成功刪除。</value>
+  </data>
+  <data name="WindowsProvisioningPackageDeleteWarning" xml:space="preserve">
+    <value>由於此設定檔是由更高階層的企業群組管理，又或管理員僅具讀取權限，因此無法刪除。</value>
+  </data>
+  <data name="WindowsProvisioningPackageDownloadAction" xml:space="preserve">
+    <value>下載</value>
+  </data>
+  <data name="WindowsProvisioningPackageEditWarning" xml:space="preserve">
+    <value>由於此設定檔是由更高階層的企業群組管理，又或管理員僅具讀取權限，因此無法編輯。</value>
+  </data>
+  <data name="WindowsProvisioningPackageFailed" xml:space="preserve">
+    <value>要求佈建套件 (PPKG) 時發生非預期錯誤。</value>
+  </data>
+  <data name="WindowsProvisioningPackageFailedMessage" xml:space="preserve">
+    <value>無法匯出 Windows 佈建套件 (PPKG)</value>
+  </data>
+  <data name="WindowsProvisioningPackagePleaseWait" xml:space="preserve">
+    <value>現有的 Windows 佈建套件 (PPKG) 匯出要求正在進行中。請等候匯出完成。</value>
+  </data>
+  <data name="WindowsProvisioningPackageProgressActionMessage" xml:space="preserve">
+    <value>檢視應用程式</value>
+  </data>
+  <data name="WindowsProvisioningPackageProgressMessage" xml:space="preserve">
+    <value>正在匯出 Windows 佈建套件 (PPKG)。</value>
+  </data>
+  <data name="WindowsProvisioningPackageRequested" xml:space="preserve">
+    <value>已成功要求匯出 Windows 佈建套件 (PPKG)。匯出 PPKG 完成後，會傳送內含下載連結的通知。</value>
+  </data>
+  <data name="WindowsProvisioningPackageStorageFailed" xml:space="preserve">
+    <value>由於儲存區不足，無法匯出 Windows 佈建套件 (PPKG)</value>
+  </data>
+  <data name="WindowsProvisioningPackageSuccessActionMessage" xml:space="preserve">
+    <value>下載</value>
+  </data>
+  <data name="WindowsProvisioningPackageSuccessMessage" xml:space="preserve">
+    <value>匯出的 Windows 佈建套件 (PPKG) 已可下載。</value>
+  </data>
+  <data name="WindowsProvisioningPackageTitle" xml:space="preserve">
+    <value>Windows 佈建套件</value>
+  </data>
+  <data name="WindowsProvisioningSFDReUploadWarning" xml:space="preserve">
+    <value>啟用 [設定] 中的 [軟體套件部署] 後，必須將此應用程式上傳，才能將其包含在匯出的 PPKG 中</value>
+  </data>
+  <data name="WinRTDesiredStateManagementTooltip" xml:space="preserve">
+    <value>僅適用於使用自動傳送方法部署的 MDM 受管理應用程式。啟用時，系統會在偵測到解除安裝時，自動重新安裝應用程式。停用時，系統不會在偵測到解除安裝時，重新安裝應用程式。</value>
+  </data>
+  <data name="WorkflowDefinitionDesc" xml:space="preserve">
+    <value>為工作流程提供暱稱和說明。</value>
+  </data>
+  <data name="WorkflowRebootPlaceholder" xml:space="preserve">
+    <value>裝置將會重新開機，然後再繼續進行下一個步驟 (如有)。</value>
+  </data>
+  <data name="Workflows" xml:space="preserve">
+    <value>工作流程</value>
+  </data>
+  <data name="WorkflowStepsDesc" xml:space="preserve">
+    <value>在此處搜尋並新增應用程式、條件，以建立您的工作流程。工作流程將按照下列順序執行。拖曳以重新排序。</value>
+  </data>
+  <data name="WorkflowStepsPlaceholder" xml:space="preserve">
+    <value>透過新增應用程式或條件來啟動</value>
+  </data>
+  <data name="WorkflowSummaryDesc" xml:space="preserve">
+    <value>儲存前，請先檢查工作流程詳細資料和步驟。</value>
+  </data>
+  <data name="WorkspaceOneAdminAssistantForMacOs" xml:space="preserve">
+    <value>適用於 macOS 的 Workspace ONE Admin Assistant</value>
+  </data>
+  <data name="X64AppDependencies" xml:space="preserve">
+    <value>X64 相依性</value>
+  </data>
+  <data name="X86AppDependencies" xml:space="preserve">
+    <value>X86 相依性</value>
+  </data>
+  <data name="ZeroOrPositiveIntegerRequired" xml:space="preserve">
+    <value>值應為零或正整數</value>
+  </data>
+</root>

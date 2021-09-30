@@ -1,0 +1,357 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ACCAndActiveDirectory" xml:space="preserve">
+    <value>AirWatch Cloud Connector (ACC) og Directory</value>
+  </data>
+  <data name="ACCAndActiveDirectoryDescription" xml:space="preserve">
+    <value>Tillad, at AirWatch Cloud Connector-tjenester (ACC) har sikker adgang til din virksomheds ressourcer uden at udsætte dit netværk for risici. Opret en sikker forbindelse til dit Actice Directory (AD) for at importere brugere og grupper fra din virksomheds Active Directory.</value>
+  </data>
+  <data name="ACCInstallerDownloaded" xml:space="preserve">
+    <value>Installationsprogrammet til AirWatch Cloud Connector (ACC) er downloadet</value>
+  </data>
+  <data name="ACCSetup" xml:space="preserve">
+    <value>AirWatch Cloud Connector (ACC) opsætning</value>
+  </data>
+  <data name="ACCSetupDetailsArg" xml:space="preserve">
+    <value>Følg disse simple trin for at give AirWatch Cloud Connector (ACC) mulighed for at oprette sikker adgang til din organisations ressourcer uden at foretage ændringer i din netværksfirewall. En liste over hardware- og softwarekrav samt yderligere oplysninger om ændring af AirWatch Cloud Connector-arkitekturen (ACC) findes på {0}.</value>
+  </data>
+  <data name="ActiveDirectoryBasicDescription" xml:space="preserve">
+    <value>Active Directory (Basic) understøtter en enkelt mappe, der kun er konfigureret på det øverste niveau af kundens organisationsgruppe. Aktivér for at gøre det muligt at synkronisere brugere til Workspace ONE Access uden at skulle installere Workspace ONE Access Connector. Anbefales ikke til store, komplekse virksomhedsinstallationer.</value>
+  </data>
+  <data name="AirWatchCloudConnectorWithAbbreviation" xml:space="preserve">
+    <value>AirWatch Cloud Connector (ACC)</value>
+  </data>
+  <data name="AndroidAppsPermissionAutoApproved" xml:space="preserve">
+    <value>Android-apps og tilknyttede tilladelser vil automatisk blive godkendt og opdateret på din Google Play butik-konto.</value>
+  </data>
+  <data name="CompleteConnectToVIDMStep" xml:space="preserve">
+    <value>Konfigurer Workspace ONE Access for at låse op.</value>
+  </data>
+  <data name="ConfigureAd" xml:space="preserve">
+    <value>Brug nedenstående formularer til at give AirWatch adgang til dit Active Directory, og begynd derefter at importere brugere.</value>
+  </data>
+  <data name="ConfiguredSuccessfully" xml:space="preserve">
+    <value>Konfigurationen er udført</value>
+  </data>
+  <data name="ConnectorAndDirectoryOverviewDescription1" xml:space="preserve">
+    <value>Når en connector er blevet konfigureret, opretter den en udelukkende udgående forbindelse kun til Workspace ONE. Denne guide hjælper dig med at:</value>
+  </data>
+  <data name="ConnectorAndDirectoryOverviewDescription2" xml:space="preserve">
+    <value>installere og konfigurere en connectorpakke til AirWatch Cloud Connector (ACC)</value>
+  </data>
+  <data name="ConnectorAndDirectoryOverviewDescription3" xml:space="preserve">
+    <value>implementere connectorer for at synkronisere Workspace ONE UEM med dit Active Directory</value>
+  </data>
+  <data name="ConnectorAndDirectoryOverviewDescription4" xml:space="preserve">
+    <value>Gå til {0} console for at implementere connectorer, der synkroniserer Workspace ONE Access med dit Active Directory (anbefales på det kraftigste).</value>
+  </data>
+  <data name="ConnectorAndDirectoryOverviewHeader" xml:space="preserve">
+    <value>For at give virksomhedsbrugere adgang til Workspace ONE skal der først oprettes en forbindelse mellem Workspace ONE UEM og dit Active Directory (AD) på dit interne netværk.</value>
+  </data>
+  <data name="ConnectorAndDirectoryOverviewImageDescription" xml:space="preserve">
+    <value>Du kan bruge AirWatch Cloud Connector-tjenester (ACC) til at synkronisere dit Active Directory med de respektive tjenester hver for sig. Denne guide hjælper dig udelukkende med at konfigurere forbindelsen mellem Workspace ONE UEM og dit Active Directory.</value>
+  </data>
+  <data name="ConnectorAndDirectoryOverviewNote" xml:space="preserve">
+    <value>Bemærk: Connectorer er påkrævet ved lokale installationer, hvor Workspace ONE-tjenester implementeres i DMZ. Connectorkonfigurationer er nødvendige, for at SaaS-udrulninger kan kommunikere med dit Active Directory. Se {0} for yderligere oplysninger.</value>
+  </data>
+  <data name="ConnectToIdentityManagerDescription" xml:space="preserve">
+    <value>Tillad, at Workspace ONE UEM kan kommunikere med Workspace ONE Access i forbindelse med identitetsbaserede funktioner som f.eks. Unified Catalog, Mobile SSO og Device Trust.</value>
+  </data>
+  <data name="Credentials" xml:space="preserve">
+    <value>Legitimationsoplysninger</value>
+  </data>
+  <data name="DeleteConfiguration" xml:space="preserve">
+    <value>Slet konfiguration</value>
+  </data>
+  <data name="DeleteVidmConfiguration" xml:space="preserve">
+    <value>Slet Workspace ONE Access Configuration</value>
+  </data>
+  <data name="DeleteVidmDescription" xml:space="preserve">
+    <value>Denne handling vil fjerne al kommunikation mellem Workspace ONE Access og Workspace ONE UEM. Dette vil forhindre funktioner som f.eks. samlet katalog og enhedscompliance-godkendelsesadapteren i at fungere, indtil den aktiveres igen.</value>
+  </data>
+  <data name="DeploymentGuide" xml:space="preserve">
+    <value>Udrulningsvejledning</value>
+  </data>
+  <data name="DeviceEnrollment" xml:space="preserve">
+    <value>Enhedstilmelding</value>
+  </data>
+  <data name="DownloadACCInstaller" xml:space="preserve">
+    <value>Download installationsprogrammet til AirWatch Cloud Connector (ACC)</value>
+  </data>
+  <data name="DownloadACCInstallerDescription" xml:space="preserve">
+    <value>Opret en adgangskode for dit AirWatch Cloud Connector-certifikat (ACC) herunder. Du skal bruge adgangskoden til dit certifikat, når du starter installationsprogrammet til AirWatch Cloud Connector (ACC) i næste trin.</value>
+  </data>
+  <data name="EmployeeEmailTemplateDescription" xml:space="preserve">
+    <value>Download en e-mailskabelon til at introducere medarbejderne for Workspace ONE, og hvordan de kommer i gang.</value>
+  </data>
+  <data name="EnableGettingStartedDescription" xml:space="preserve">
+    <value>Kom i gang er en nem måde at blive guidet gennem de installationstrin, du skal udføre. Vil du aktivere det nu?</value>
+  </data>
+  <data name="FailedToEnableDirectoryAuthentication" xml:space="preserve">
+    <value>Kunne ikke aktivere Directory-godkendelse</value>
+  </data>
+  <data name="FailedToSetWorkspaceOneMode" xml:space="preserve">
+    <value>Der opstod tilsyneladende en fejl under opdatering af Workspace One Catalog-tilstanden på Workspace ONE Access. Marker venligst dette felt i Workspace ONE Access og prøv igen for at fortsætte.</value>
+  </data>
+  <data name="FollowStepsToCompleteAccInstallation" xml:space="preserve">
+    <value>Følg trinnene herunder for at fuldføre din installation af AirWatch Cloud Connector (ACC).</value>
+  </data>
+  <data name="ForMoreInformation" xml:space="preserve">
+    <value>{0|Click here} for at få flere oplysninger.</value>
+  </data>
+  <data name="GettingStartedNotEnabled" xml:space="preserve">
+    <value>Kom i gang er ikke aktiveret.</value>
+  </data>
+  <data name="IdentityAndAccessManagement" xml:space="preserve">
+    <value>Identitets- og adgangsstyring</value>
+  </data>
+  <data name="InstallAcc" xml:space="preserve">
+    <value>Installér AirWatch Cloud Connector (ACC).</value>
+  </data>
+  <data name="InvalidStagedDataPleaseReinitiateVidmConfiguration" xml:space="preserve">
+    <value>Ugyldige trinvise data. Genstart konfigurationen af Workspace ONE Access.</value>
+  </data>
+  <data name="NextStepsDescription1" xml:space="preserve">
+    <value>Hvis du vil aktivere Workspace ONE Access Connector og synkronisere Active Directory med Workspace ONE Access, skal du gå til {0} for at downloade installationspakken og derefter følge nedenstående trin</value>
+  </data>
+  <data name="NextStepsDescription2" xml:space="preserve">
+    <value>Synkronisering af Workspace ONE UEM og Workspace ONE Access med Active Directory giver mulighed for identitetsbaserede funktioner som f.eks. Mobile SSO, Conditional Access, Federated Applications osv.</value>
+  </data>
+  <data name="NextStepsDescription3" xml:space="preserve">
+    <value>Gå til {0|Workspace ONE Access}, og klik på 'Tilføj connector' for at få en aktiveringsstreng</value>
+  </data>
+  <data name="NextStepsDescription4" xml:space="preserve">
+    <value>Indtast aktiveringsstrengen i Workspace ONE Access Connector</value>
+  </data>
+  <data name="NextStepsDescription5" xml:space="preserve">
+    <value>Konfigurer Active Directory på Workspace ONE Access Admin Console. Påmindelse: Det anbefales at konfigurere de samme bruger- og gruppesynkroniseringsindstillinger for Workspace ONE Access, som blev konfigureret til Workspace ONE UEM i guiden.</value>
+  </data>
+  <data name="NextStepsDescription6" xml:space="preserve">
+    <value>Workspace ONE Access Connector synkroniserer dine Active Directory-brugere og -grupper med Workspace ONE Access og understøtter kun udgående tilstand for synkronisering, hvilket ikke kræver indgående porte til virksomhedens netværk.</value>
+  </data>
+  <data name="NextStepsHeader" xml:space="preserve">
+    <value>Næste trin:</value>
+  </data>
+  <data name="NextStepsStronglyRecommend" xml:space="preserve">
+    <value>Næste trin (anbefales på det kraftigste)</value>
+  </data>
+  <data name="OptionOfAddingAppsFromPublicAppsPage" xml:space="preserve">
+    <value>Du har også mulighed for at tilføje apps fra siden Offentlige apps for at se tilladelser og godkende manuelt.</value>
+  </data>
+  <data name="PasswordForAccCertificate" xml:space="preserve">
+    <value>Adgangskode til AirWatch Cloud Connector (ACC)-certifikatet. Du skal bruge denne for at importere indstillingerne til en AirWatch Cloud Connector (ACC)-server.</value>
+  </data>
+  <data name="RequireGroupIdForVidm" xml:space="preserve">
+    <value>Denne organisationsgruppe har ikke et gruppe-id, som er nødvendigt for installation af Workspace ONE Access. Du kan tilføje gruppe-id'et på siden {0}</value>
+  </data>
+  <data name="RunAccInstaller" xml:space="preserve">
+    <value>Kør installationsprogrammet til AirWatch Cloud Connector (ACC).</value>
+  </data>
+  <data name="SeemsToBeSomeError" xml:space="preserve">
+    <value>Der opstod en serverfejl. Prøv venligst igen senere. Kontakt din IT-administrator, hvis problemet fortsætter.</value>
+  </data>
+  <data name="SetupCertificateAuthority" xml:space="preserve">
+    <value>Følg disse enkle trin for automatisk at konfigurere mobil single sign-on vha. AirWatch Certificate Authority. Klik på Næste for at starte.</value>
+  </data>
+  <data name="StartAccInstallShield" xml:space="preserve">
+    <value>Start AirWatch Cloud Connector (ACC) InstallShield-guiden.</value>
+  </data>
+  <data name="StartAccInstallShieldInstruction1" xml:space="preserve">
+    <value>1. Log på den server, du ønsker at bruge til AirWatch Cloud Connector (ACC).</value>
+  </data>
+  <data name="StartAccInstallShieldInstruction2" xml:space="preserve">
+    <value>2. Overfør AirWatch Cloud Connector (ACC)-installationsprogramfilen til din server og åbn den.</value>
+  </data>
+  <data name="StartAccInstallShieldInstruction3" xml:space="preserve">
+    <value>3. Når velkomstskærmen vises, vælg Næste.</value>
+  </data>
+  <data name="StartAccInstallShieldInstruction4" xml:space="preserve">
+    <value>4. Accepter licensaftalen og derefter Næste.</value>
+  </data>
+  <data name="StartAccInstallShieldInstruction5" xml:space="preserve">
+    <value>5 Vælg "Skift...” for at vælge installationsmappen og derefter Næste.</value>
+  </data>
+  <data name="StartAccInstallShieldInstruction6" xml:space="preserve">
+    <value>6. Indtast den certifikatadgangskode, som du oprettede i Trin 1 (før du downloadede AirWatch Cloud Connector (ACC)-installationsprogrammet) og vælg derefter Næste.</value>
+  </data>
+  <data name="TestConnectionToAccServer" xml:space="preserve">
+    <value>Test forbindelsen til AirWatch Cloud Connector (ACC)</value>
+  </data>
+  <data name="vIDM" xml:space="preserve">
+    <value>Workspace ONE Access</value>
+  </data>
+  <data name="VidmCertificateDescription" xml:space="preserve">
+    <value>Aktiver Workspace ONE UEM-certifikatklargøring til anvendelse med Workspace ONE Access og mobil-SSO. Eksporter udstedercertifikatet på denne side, så du kan skabe tillid til Workspace ONE Access-godkendelsesadapterer.</value>
+  </data>
+  <data name="VidmConfigurationDescription" xml:space="preserve">
+    <value>Skab tillid mellem brugere, enheder og den hybride cloud for at skabe en ubesværet brugeroplevelse og stærk betinget adgang til et samlet app-katalog med web, oprindelige og virtuelle apps.</value>
+  </data>
+  <data name="VidmConnector" xml:space="preserve">
+    <value>Workspace ONE Access Connector</value>
+  </data>
+  <data name="VidmDescriptionText" xml:space="preserve">
+    <value>Aktiver AirWatch certifikatklargøring for anvendelse med Workspace ONE Access og mobil single sign-on. Eksporter udstedercertifikatet på denne side, så du kan skabe tillid til Workspace ONE Access-godkendelsesadapterer.</value>
+  </data>
+  <data name="VidmInfoMessage" xml:space="preserve">
+    <value>Dette vil gøre det nemmere at oprette forbindelsen mellem VMware Unified Endpoint Management og Workspace ONE Access.</value>
+  </data>
+  <data name="VidmOverviewDescription" xml:space="preserve">
+    <value>Når du har etableret kommunikation mellem Workspace ONE Access og Unified Endpoint Management (UEM), kan du implementere:</value>
+  </data>
+  <data name="VidmOverviewDescription1" xml:space="preserve">
+    <value>et universalt appkatalog, herunder webapps, native apps og virtuelle apps</value>
+  </data>
+  <data name="VidmOverviewDescription2" xml:space="preserve">
+    <value>mobilt Single Sign-On (SSO)	</value>
+  </data>
+  <data name="VidmOverviewDescription3" xml:space="preserve">
+    <value>betinget adgang til applikationer, herunder enhedsstyring og compliance</value>
+  </data>
+  <data name="VidmOverviewDescription4" xml:space="preserve">
+    <value>Mobile Flows</value>
+  </data>
+  <data name="VidmOverviewDescription5" xml:space="preserve">
+    <value>People Search</value>
+  </data>
+  <data name="VidmOverviewHeader" xml:space="preserve">
+    <value>Workspace ONE Access er identitets- og adgangsstyringskomponenten i Workspace ONE, som giver brugerne Single Sign-On og sikker adgang til apps.</value>
+  </data>
+  <data name="VidmOverviewImageInfo" xml:space="preserve">
+    <value>Etabler kommunikation mellem Workspace ONE Access og VMware Unified Endpoint Management for at administrere identitetsrelaterede komponenter.</value>
+  </data>
+  <data name="VidmPasswordRecoveryMessage" xml:space="preserve">
+    <value>Hvis du har glemt din adgangskode, kan du genoprette den på {0} logonsiden. Hvis din adgangskode er udløbet, bedes du kontakte Workspace ONE UEM-support.</value>
+  </data>
+  <data name="VidmTenantAlreadyConfigured" xml:space="preserve">
+    <value>Din Workspace ONE Access-tenant er allerede konfigureret med en anden Workspace ONE UEM-tenant eller organisationsgruppe. Gå til Identitets- og adgangsstyring &gt; Installation &gt; AirWatch for at opdatere din tenant manuelt med Workspace ONE UEM-oplysninger. Se side 14 i {0} for at få oplysninger om konfiguration.</value>
+  </data>
+  <data name="VidmTestConnectionDesc" xml:space="preserve">
+    <value>Test for at kontrollere, at kommunikationen mellem Workspace ONE UEM og Workspace ONE Access er sikker.</value>
+  </data>
+  <data name="VmwareEnterpriseSystemsConnectorGuide" xml:space="preserve">
+    <value>VMware Enterprise Systems Connector Guide</value>
+  </data>
+  <data name="VmwareIdm" xml:space="preserve">
+    <value>VMware Workspace ONE Access</value>
+  </data>
+  <data name="WhyIsItImportant" xml:space="preserve">
+    <value>Hvorfor er det vigtigt?</value>
+  </data>
+</root>

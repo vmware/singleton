@@ -1,0 +1,358 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ACCAndActiveDirectory" xml:space="preserve">
+    <value>AirWatch Cloud Connector (ACC) a adresář</value>
+  </data>
+  <data name="ACCAndActiveDirectoryDescription" xml:space="preserve">
+    <value>Po umožnění služeb AirWatch Cloud Connector (ACC) můžete bezpečně přistupovat k podnikovým zdrojům vaší společnosti, aniž byste odhalovali svou síť. Vytvořte zabezpečené připojení ke službě Active Directory (AD) a naimportujte uživatele a skupiny z adresáře vaší společnosti.</value>
+  </data>
+  <data name="ACCInstallerDownloaded" xml:space="preserve">
+    <value>Instalační program AirWatch Cloud Connector (ACC) byl stažen</value>
+  </data>
+  <data name="ACCSetup" xml:space="preserve">
+    <value>Nastavení konektoru AirWatch Cloud Connector (ACC)</value>
+  </data>
+  <data name="ACCSetupDetailsArg" xml:space="preserve">
+    <value>Pomocí těchto jednoduchých kroků povolte službě AirWatch Cloud Connector (ACC) bezpečný přístup k podnikovým zdrojům vaší organizace, aniž by bylo nutné provádět změny síťové brány firewall. Seznam hardwarových a softwarových požadavků a další informace o změnách architektury AirWatch Cloud Connector (ACC) se nacházejí zde: {0}.</value>
+  </data>
+  <data name="ActiveDirectoryBasicDescription" xml:space="preserve">
+    <value>Active Directory (základní) bude podporovat jediný adresář, konfigurovaný jen u organizační skupiny zákazníka nejvyšší úrovně. Zapnutím aktivujete synchronizaci uživatelů 
+do aplikace Workspace ONE Access bez nutnosti instalovat konektor Workspace ONE Access Connector. Nedoporučujeme pro rozsáhlé komplexní podnikové instalace.</value>
+  </data>
+  <data name="AirWatchCloudConnectorWithAbbreviation" xml:space="preserve">
+    <value>AirWatch Cloud Connector (ACC)</value>
+  </data>
+  <data name="AndroidAppsPermissionAutoApproved" xml:space="preserve">
+    <value>Aplikace systému Android a všechna přidružená oprávnění budou automaticky schválena a aktualizována v účtu obchodu Google Play.</value>
+  </data>
+  <data name="CompleteConnectToVIDMStep" xml:space="preserve">
+    <value>Konfigurujte aplikaci Workspace ONE Access k odemknutí.</value>
+  </data>
+  <data name="ConfigureAd" xml:space="preserve">
+    <value>Pomocí formulářů níže udělte službě AirWatch přístup ke službě Active Directory, potom začněte importovat uživatele.</value>
+  </data>
+  <data name="ConfiguredSuccessfully" xml:space="preserve">
+    <value>Úspěšně nakonfigurováno</value>
+  </data>
+  <data name="ConnectorAndDirectoryOverviewDescription1" xml:space="preserve">
+    <value>Po konfiguraci konektoru se vytvoří pouze odchozí připojení k aplikaci Workspace ONE. Tento průvodce vám pomůže:</value>
+  </data>
+  <data name="ConnectorAndDirectoryOverviewDescription2" xml:space="preserve">
+    <value>Nainstalujte a nakonfigurujte balíček konektoru pro službu AirWatch Cloud Connector (ACC).</value>
+  </data>
+  <data name="ConnectorAndDirectoryOverviewDescription3" xml:space="preserve">
+    <value>Zavedením konektorů synchronizujte aplikaci Workspace ONE UEM s vaší službou AD.</value>
+  </data>
+  <data name="ConnectorAndDirectoryOverviewDescription4" xml:space="preserve">
+    <value>Přejděte do konzoly {0} a zaveďte konektory, které synchronizují aplikaci Workspace ONE Access s vaší službou AD (důrazně doporučujeme).</value>
+  </data>
+  <data name="ConnectorAndDirectoryOverviewHeader" xml:space="preserve">
+    <value>Abyste poskytli podnikovým uživatelům přístup k aplikaci Workspace ONE, je nutné nejprve navázat připojení mezi aplikací Workspace ONE UEM a službou Active Directory (AD) ve vaší interní síti.</value>
+  </data>
+  <data name="ConnectorAndDirectoryOverviewImageDescription" xml:space="preserve">
+    <value>Služby AirWatch Cloud Connector (ACC) pomáhají synchronizovat vaši službu Active Directory nezávisle s příslušnou službou. Tento průvodce vám pomáhá nakonfigurovat připojení pouze mezi aplikací Workspace ONE UEM a vaší službou AD.</value>
+  </data>
+  <data name="ConnectorAndDirectoryOverviewNote" xml:space="preserve">
+    <value>Poznámka: Pro instalace na pracovišti, kde jsou služby Workspace ONE zavedeny v zóně DMZ, se vyžadují konektory. Aby mohla zavedení SaaS komunikovat s vaší službou AD, jsou nutné konfigurace konektorů. Další podrobnosti viz {0}.</value>
+  </data>
+  <data name="ConnectToIdentityManagerDescription" xml:space="preserve">
+    <value>Po povolení aplikace Workspace ONE UEM budete moci komunikovat s programem Workspace ONE Access a zavést funkce na bázi totožnosti, například sjednocený katalog, Mobile SSO a důvěryhodnost zařízení.</value>
+  </data>
+  <data name="Credentials" xml:space="preserve">
+    <value>Přihlašovací údaje</value>
+  </data>
+  <data name="DeleteConfiguration" xml:space="preserve">
+    <value>Odstranit konfiguraci</value>
+  </data>
+  <data name="DeleteVidmConfiguration" xml:space="preserve">
+    <value>Odstranit konfiguraci Workspace ONE Access</value>
+  </data>
+  <data name="DeleteVidmDescription" xml:space="preserve">
+    <value>Tato akce odstraní veškerou komunikaci mezi aplikacemi Workspace ONE Access a Workspace ONE UEM. Až do opětovného zapnutí nebudou fungovat některé funkce, například jednotný katalog a adaptér autentizace konformity zařízení.</value>
+  </data>
+  <data name="DeploymentGuide" xml:space="preserve">
+    <value>Průvodce nasazením</value>
+  </data>
+  <data name="DeviceEnrollment" xml:space="preserve">
+    <value>Registrace zařízení</value>
+  </data>
+  <data name="DownloadACCInstaller" xml:space="preserve">
+    <value>Stáhnout instalační program AirWatch Cloud Connector (ACC)</value>
+  </data>
+  <data name="DownloadACCInstallerDescription" xml:space="preserve">
+    <value>Vytvořte heslo pro svůj certifikát AirWatch Cloud Connector (ACC) níže. Při spuštění instalačního programu AirWatch Cloud Connector (ACC) v příštím kroku budete heslo certifikátu potřebovat.</value>
+  </data>
+  <data name="EmployeeEmailTemplateDescription" xml:space="preserve">
+    <value>Stáhněte si šablonu e-mailu pro seznámení zaměstnanců s platformou Workspace ONE a návod, jak začít.</value>
+  </data>
+  <data name="EnableGettingStartedDescription" xml:space="preserve">
+    <value>Funkce Začínáme je způsob, jak se snadno nechat provést nastavením, které je třeba konfigurovat. Přejete si nyní tuto funkci aktivovat?</value>
+  </data>
+  <data name="FailedToEnableDirectoryAuthentication" xml:space="preserve">
+    <value>Povolení autentizace adresáře se nezdařilo</value>
+  </data>
+  <data name="FailedToSetWorkspaceOneMode" xml:space="preserve">
+    <value>Zdá se, že došlo k chybě při aktualizování režimu katalogu Workspace ONE v aplikaci Workspace ONE Access. Zkontrolujte toto pole v aplikaci Workspace ONE Access, zkuste to znovu a pokračujte.</value>
+  </data>
+  <data name="FollowStepsToCompleteAccInstallation" xml:space="preserve">
+    <value>Podle níže uvedených kroků dokončete instalaci konektoru AirWatch Cloud Connector (ACC).</value>
+  </data>
+  <data name="ForMoreInformation" xml:space="preserve">
+    <value>Kliknutím sem {0|Click here} získáte další informace.</value>
+  </data>
+  <data name="GettingStartedNotEnabled" xml:space="preserve">
+    <value>Funkce Začínáme není aktivována.</value>
+  </data>
+  <data name="IdentityAndAccessManagement" xml:space="preserve">
+    <value>Totožnost a správa přístupu</value>
+  </data>
+  <data name="InstallAcc" xml:space="preserve">
+    <value>Instalace konektoru AirWatch Cloud Connector (ACC).</value>
+  </data>
+  <data name="InvalidStagedDataPleaseReinitiateVidmConfiguration" xml:space="preserve">
+    <value>Neplatná fázovaná data. Inicializujte znovu konfiguraci Workspace ONE Access.</value>
+  </data>
+  <data name="NextStepsDescription1" xml:space="preserve">
+    <value>Pokud chcete aktivovat konektor Workspace ONE Access Connector a synchronizovat službu Active Directory s programem Workspace ONE Access, přejděte na umístění {0}, stáhněte instalační balíček a poté postupujte podle níže uvedených kroků.</value>
+  </data>
+  <data name="NextStepsDescription2" xml:space="preserve">
+    <value>Synchronizace aplikace Workspace ONE UEM a programu Workspace ONE Access se službou Active Directory umožňuje funkce na bázi totožnosti, například Mobile SSO, podmíněný přístup, sjednocené aplikace a další.</value>
+  </data>
+  <data name="NextStepsDescription3" xml:space="preserve">
+    <value>Přejděte k programu {0|Workspace ONE Access} a kliknutím na možnost „Přidat konektor“ získejte aktivační řetězec.</value>
+  </data>
+  <data name="NextStepsDescription4" xml:space="preserve">
+    <value>Zadejte aktivační řetězec na konektoru Workspace ONE Access Connector.</value>
+  </data>
+  <data name="NextStepsDescription5" xml:space="preserve">
+    <value>Nakonfigurujte Active Directory v konzole správce Workspace ONE Access. Připomínka: Pro program Workspace ONE Access se doporučuje nastavit stejná nastavení synchronizace uživatele a skupiny, jako byla nakonfigurovaná v průvodci pro program Workspace ONE UEM.</value>
+  </data>
+  <data name="NextStepsDescription6" xml:space="preserve">
+    <value>Konektor Workspace ONE Access Connector synchronizuje vaše uživatele a skupiny Active Directory s programem Workspace ONE Access a podporuje při synchronizaci pouze odchozí režim, takže nevyžaduje žádné příchozí porty do vaší firemní sítě.</value>
+  </data>
+  <data name="NextStepsHeader" xml:space="preserve">
+    <value>Další kroky:</value>
+  </data>
+  <data name="NextStepsStronglyRecommend" xml:space="preserve">
+    <value>Další kroky (silně doporučeno)</value>
+  </data>
+  <data name="OptionOfAddingAppsFromPublicAppsPage" xml:space="preserve">
+    <value>Máte také možnost přidávat aplikace ze stránky veřejných aplikací, zobrazovat oprávnění a schvalovat je ručně.</value>
+  </data>
+  <data name="PasswordForAccCertificate" xml:space="preserve">
+    <value>Heslo pro certifikát AirWatch Cloud Connector (ACC). Budete ho potřebovat při importu nastavení na server AirWatch Cloud Connector (ACC).</value>
+  </data>
+  <data name="RequireGroupIdForVidm" xml:space="preserve">
+    <value>Tato organizační skupina nemá ID skupiny, které je nezbytné pro nastavení aplikace Workspace ONE Access. ID skupiny můžete přidat na stránce {0}.</value>
+  </data>
+  <data name="RunAccInstaller" xml:space="preserve">
+    <value>Spusťte instalační program AirWatch Cloud Connector (ACC)</value>
+  </data>
+  <data name="SeemsToBeSomeError" xml:space="preserve">
+    <value>Došlo k chybě serveru, zkuste to později. Pokud potíže přetrvávají, obraťte se na administrátora IT.</value>
+  </data>
+  <data name="SetupCertificateAuthority" xml:space="preserve">
+    <value>Pomocí jednoduchých kroků proveďte automatickou konfiguraci jednotného přihlášení s využitím certifikační autority AirWatch. Kliknutím níže na tlačítko Pokračovat zahajte nastavení.</value>
+  </data>
+  <data name="StartAccInstallShield" xml:space="preserve">
+    <value>Spusťte průvodce AirWatch Cloud Connector (ACC) InstallShield Wizard.</value>
+  </data>
+  <data name="StartAccInstallShieldInstruction1" xml:space="preserve">
+    <value>1. Přihlaste se k serveru, který budete používat pro konektor AirWatch Cloud Connector.</value>
+  </data>
+  <data name="StartAccInstallShieldInstruction2" xml:space="preserve">
+    <value>2. Přesuňte instalační soubor AirWatch Cloud Connector do svého serveru a otevřete jej.</value>
+  </data>
+  <data name="StartAccInstallShieldInstruction3" xml:space="preserve">
+    <value>3. Když se zobrazí uvítací obrazovka, zvolte Další.</value>
+  </data>
+  <data name="StartAccInstallShieldInstruction4" xml:space="preserve">
+    <value>4. Přijměte licenční smlouvu a poté zvolte Další.</value>
+  </data>
+  <data name="StartAccInstallShieldInstruction5" xml:space="preserve">
+    <value>5. Zvolte „Změnit...“, poté vyberte instalační adresář a klikněte na tlačítko Další.</value>
+  </data>
+  <data name="StartAccInstallShieldInstruction6" xml:space="preserve">
+    <value>6. Zadejte heslo certifikátu, které jste vytvořili v kroku 1 (před stažením instalačního souboru pro AirWatch Cloud Connector), a zvolte možnost Další.</value>
+  </data>
+  <data name="TestConnectionToAccServer" xml:space="preserve">
+    <value>Otestujte připojení ke konektoru AirWatch Cloud Connector (ACC)</value>
+  </data>
+  <data name="vIDM" xml:space="preserve">
+    <value>Workspace ONE Access</value>
+  </data>
+  <data name="VidmCertificateDescription" xml:space="preserve">
+    <value>Aktivujte zajišťování certifikátu Workspace ONE UEM za účelem použití nástroje Workspace ONE Access a mobilního jednotného přihlášení. Vydavatele certifikátu na této stránce exportujte, abyste mohli vytvořit vztah důvěryhodnosti s autentizačními adaptéry Workspace ONE Access.</value>
+  </data>
+  <data name="VidmConfigurationDescription" xml:space="preserve">
+    <value>Navažte vztahy důvěryhodnosti mezi uživateli, zařízeními a hybridním cloudem, abyste dosáhli bezproblémové práce uživatelů a výkonného podmíněného přístupu k jednotnému katalogu s webovými, nativními a virtuálními aplikacemi.</value>
+  </data>
+  <data name="VidmConnector" xml:space="preserve">
+    <value>Konektor Workspace ONE Access Connector</value>
+  </data>
+  <data name="VidmDescriptionText" xml:space="preserve">
+    <value>Aktivovat zřizování certifikátu AirWatch za účelem použití aplikace Workspace ONE Access a mobilního jednotného přihlášení. Vydavatele certifikátu na této stránce exportujte, abyste mohli vytvořit vztah důvěryhodnosti s autentizačními adaptéry Workspace ONE Access.</value>
+  </data>
+  <data name="VidmInfoMessage" xml:space="preserve">
+    <value>Toto vám pomůže navázat připojení mezi programy VMware Unified Endpoint Management a Workspace ONE Access.</value>
+  </data>
+  <data name="VidmOverviewDescription" xml:space="preserve">
+    <value>Po navázání komunikace mezi programy Workspace ONE Access a Unified Endpoint Management (UEM) budete moci zavést:</value>
+  </data>
+  <data name="VidmOverviewDescription1" xml:space="preserve">
+    <value>Univerzální katalog aplikací, včetně webových, nativních a virtuálních aplikací</value>
+  </data>
+  <data name="VidmOverviewDescription2" xml:space="preserve">
+    <value>Mobilní jednotné přihlášení (SSO)	</value>
+  </data>
+  <data name="VidmOverviewDescription3" xml:space="preserve">
+    <value>Podmíněný přístup k aplikacím včetně správy zařízení a shody</value>
+  </data>
+  <data name="VidmOverviewDescription4" xml:space="preserve">
+    <value>Mobile Flows</value>
+  </data>
+  <data name="VidmOverviewDescription5" xml:space="preserve">
+    <value>People Search</value>
+  </data>
+  <data name="VidmOverviewHeader" xml:space="preserve">
+    <value>Workspace ONE Access je komponenta správy totožnosti a přístupu aplikace Workspace ONE, která poskytuje uživatelům jednotné přihlášení a zabezpečený přístup k aplikacím.</value>
+  </data>
+  <data name="VidmOverviewImageInfo" xml:space="preserve">
+    <value>Navažte komunikaci mezi programy Workspace ONE Access a VMware Unified Endpoint Management, abyste mohli spravovat komponenty související s totožností.</value>
+  </data>
+  <data name="VidmPasswordRecoveryMessage" xml:space="preserve">
+    <value>Jestliže jste zapomněli heslo, můžete ho obnovit na přihlašovací stránce {0}. Dojde-li k vypršení platnosti odkazu nového hesla, obraťte se na podporu Workspace ONE UEM.</value>
+  </data>
+  <data name="VidmTenantAlreadyConfigured" xml:space="preserve">
+    <value>Váš klient Workspace ONE Access již byl konfigurován s jiným klientem Workspace ONE UEM nebo organizační skupinou. V části Totožnost a správa přístupu &gt; Nastavení &gt; AirWatch můžete ručně aktualizovat svého klienta o podrobnosti týkající se aplikace Workspace ONE UEM. Podrobnosti o konfiguraci naleznete na straně 14 v dokumentu {0}.</value>
+  </data>
+  <data name="VidmTestConnectionDesc" xml:space="preserve">
+    <value>Vyzkoušejte a ověřte, jestli programy Workspace ONE UEM a Workspace ONE Access komunikují zabezpečeně.</value>
+  </data>
+  <data name="VmwareEnterpriseSystemsConnectorGuide" xml:space="preserve">
+    <value>Příručka VMware Enterprise Systems Connector Guide</value>
+  </data>
+  <data name="VmwareIdm" xml:space="preserve">
+    <value>VMware Workspace ONE Access</value>
+  </data>
+  <data name="WhyIsItImportant" xml:space="preserve">
+    <value>Proč je to důležité?</value>
+  </data>
+</root>

@@ -1,0 +1,486 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AddedPolices" xml:space="preserve">
+    <value>Tillagda policyer</value>
+  </data>
+  <data name="AssignBaseline" xml:space="preserve">
+    <value>Tilldela baslinje</value>
+  </data>
+  <data name="AssignBaselineDescription" xml:space="preserve">
+    <value>Välj Smartgrupp(er) för att tilldela baslinjen.</value>
+  </data>
+  <data name="AssignBaselineDescription2" xml:space="preserve">
+    <value>Välj de smartgrupper du vill tilldela baslinjen till. Om du vill undanta vissa grupper väljer du Undantag. Om du lägger till undantag till publicerade baslinjer tas de bort från de undantagna enheterna.</value>
+  </data>
+  <data name="AssignBaselineLocationGroupNotFound" xml:space="preserve">
+    <value>Det går inte att tilldela baslinjen eftersom Organisationsgrupp inte kunde hittas.</value>
+  </data>
+  <data name="AssignBaselineNotFound" xml:space="preserve">
+    <value>Det går inte att tilldela baslinjen eftersom baslinjen inte kunde hittas.</value>
+  </data>
+  <data name="AssignedDevicesArg" xml:space="preserve">
+    <value>Tilldelat: {0} enheter</value>
+  </data>
+  <data name="Assignments" xml:space="preserve">
+    <value>Tilldelningar</value>
+  </data>
+  <data name="Baseline" xml:space="preserve">
+    <value>Baslinje</value>
+  </data>
+  <data name="BaselineAssigned" xml:space="preserve">
+    <value>Tilldelad baslinje</value>
+  </data>
+  <data name="BaselineAssignmentFailed" xml:space="preserve">
+    <value>Det går inte att tilldela baslinjen. Försök igen.</value>
+  </data>
+  <data name="BaselineAssignmentSuccessful" xml:space="preserve">
+    <value>Baslinjen publicerades till den uppdaterade tilldelningen.</value>
+  </data>
+  <data name="BaselineBlobFailed" xml:space="preserve">
+    <value>Det gick inte att skapa baslinje eftersom paketet inte kunde skapas.</value>
+  </data>
+  <data name="BaselineCombinedBlobFailed" xml:space="preserve">
+    <value>Det gick inte att skapa baslinje eftersom paket innehållande anpassningar inte kunde skapas.</value>
+  </data>
+  <data name="BaselineContainsExe" xml:space="preserve">
+    <value>Din anpassade baslinje innehåller exekverbara filer. Ta bort dem och försök igen.</value>
+  </data>
+  <data name="BaselineCopyFailed" xml:space="preserve">
+    <value>Det gick inte att kopiera den valda baslinjen.</value>
+  </data>
+  <data name="BaselineCopySuccessful" xml:space="preserve">
+    <value>Den valda baslinjen har kopierats.</value>
+  </data>
+  <data name="BaselineCreated" xml:space="preserve">
+    <value>Baslinje har skapats</value>
+  </data>
+  <data name="BaselineCreationFailed" xml:space="preserve">
+    <value>Det gick inte att skapa baslinjen.</value>
+  </data>
+  <data name="BaselineCreationSuccessful" xml:space="preserve">
+    <value>Baslinjen är sparad.</value>
+  </data>
+  <data name="BaselineCustomizationFailed" xml:space="preserve">
+    <value>Det gick inte att skapa baslinje eftersom anpassningar inte kunde tillämpas.</value>
+  </data>
+  <data name="BaselineDeleted" xml:space="preserve">
+    <value>Baslinje borttagen</value>
+  </data>
+  <data name="BaselineDeleteFailed" xml:space="preserve">
+    <value>Det gick inte att ta bort baslinjen. Försök igen.</value>
+  </data>
+  <data name="BaselineDeleteSuccessful" xml:space="preserve">
+    <value>Baslinjen har tagits bort.</value>
+  </data>
+  <data name="BaselineDetails" xml:space="preserve">
+    <value>Baslinjens namn och version</value>
+  </data>
+  <data name="BaselineErrorCode" xml:space="preserve">
+    <value>Enhetsfelkod</value>
+  </data>
+  <data name="BaselineErrorMessage" xml:space="preserve">
+    <value>Felmeddelande</value>
+  </data>
+  <data name="BaselineFileCorrupt" xml:space="preserve">
+    <value>Din anpassade baslinje är inte en giltig zip-fil.</value>
+  </data>
+  <data name="BaselineFileEmpty" xml:space="preserve">
+    <value>Din anpassade baslinje verkar vara tom. Försök igen med en giltig fil.</value>
+  </data>
+  <data name="BaselineFileMissingPolicies" xml:space="preserve">
+    <value>Vald fil för den anpassade baslinjen följer inte rekommenderade specifikationer. Läs mer i dokumentationen och revidera.</value>
+  </data>
+  <data name="BaselineFileSizeError" xml:space="preserve">
+    <value>Din anpassade baslinje överskrider den maximala storleken på 5 MB.</value>
+  </data>
+  <data name="BaselineGetPolicyTreeFailed" xml:space="preserve">
+    <value>Det gick inte att ladda policyer för anpassning, försök igen senare.</value>
+  </data>
+  <data name="BaselineInvalidRequest" xml:space="preserve">
+    <value>Se till att alla obligatoriska fält har fyllts i.</value>
+  </data>
+  <data name="BaselineMissingPolicies" xml:space="preserve">
+    <value>Det gick inte att skapa baslinje eftersom en eller flera policyer har tagits bort eller är otillgängliga.</value>
+  </data>
+  <data name="BaselineModified" xml:space="preserve">
+    <value>Baslinje ändrad</value>
+  </data>
+  <data name="BaselineName" xml:space="preserve">
+    <value>Baslinjenamn</value>
+  </data>
+  <data name="BaselinePendingReboot" xml:space="preserve">
+    <value>Väntar på omstart</value>
+  </data>
+  <data name="BaselinePolicyFieldError" xml:space="preserve">
+    <value>Det gick inte att skapa baslinje eftersom en eller flera policyer har ogiltiga värden</value>
+  </data>
+  <data name="BaselinePolicyGenerationFailed" xml:space="preserve">
+    <value>Det gick inte att skapa baslinje eftersom en eller flera policyer inte kunde skapas</value>
+  </data>
+  <data name="Baselines" xml:space="preserve">
+    <value>Baslinjer</value>
+  </data>
+  <data name="BaselinesBlobID" xml:space="preserve">
+    <value>Blob-ID för baslinje</value>
+  </data>
+  <data name="BaselinesCount" xml:space="preserve">
+    <value>Antal baslinjer</value>
+  </data>
+  <data name="BaselineServiceUnavailable" xml:space="preserve">
+    <value>Det gick inte att ansluta till baslinjetjänsten "https://www.vmwarebaselines.com". Kontrollera anslutningen och loggarna för mer information.</value>
+  </data>
+  <data name="BaselinesMenuDescription" xml:space="preserve">
+    <value>Visa baslinjer</value>
+  </data>
+  <data name="BaselineStatusCallFailed" xml:space="preserve">
+    <value>Det gick inte att hämta baslinjestatusen. Försök igen senare</value>
+  </data>
+  <data name="BaselineTooltipCis" xml:space="preserve">
+    <value>Använd CIS Benchmark-rekommenderade inställningar för vald version och nivå.</value>
+  </data>
+  <data name="BaselineTooltipCustom" xml:space="preserve">
+    <value>Överför en egen GPO-säkerhetskopia (Group Policy Object) som ska användas på enheter. GPO-säkerhetskopian måste vara en ZIP-fil som är mindre än 5 MB.</value>
+  </data>
+  <data name="BaselineTooltipWindows" xml:space="preserve">
+    <value>Säkerhetsbaslinjekomponenterna (”SBC”) i Microsoft Security Toolkit har skapats av Microsoft och är tillgängliga för användning endast för hantering av Windows 10-enheter. SBC tillhandahålls i befintligt skick och utan några garantier från VMware eller Microsoft. Mer information om SBC finns på {0}.</value>
+  </data>
+  <data name="BaselineUUID" xml:space="preserve">
+    <value>Baslinje-UUID</value>
+  </data>
+  <data name="BlankBaseline" xml:space="preserve">
+    <value>Skapa din egen</value>
+  </data>
+  <data name="BlankBaselineDescription" xml:space="preserve">
+    <value>Skapa din egen baslinje genom att välja från vår policykatalog.</value>
+  </data>
+  <data name="ChooseTemplate" xml:space="preserve">
+    <value>Välj baslinje</value>
+  </data>
+  <data name="ComplianceDataMissing" xml:space="preserve">
+    <value>Det finns inga tillgängliga efterlevnadsdata för den här baslinjeen. Om du vill utlösa efterlevnadsprovrapportering publicerar du baslinjen till de tilldelade enheterna igen.</value>
+  </data>
+  <data name="ConfirmCancelBaseline" xml:space="preserve">
+    <value>Dina ändringar av den här baslinjen sparas inte. Vill du ignorera ändringarna?</value>
+  </data>
+  <data name="ConfirmCloudDescription" xml:space="preserve">
+    <value>Genom att använda Workspace ONE-baslinjer kommer du åt data som fjärrlagras av VMware. Klicka på Avbryt om du inte vill fortsätta.</value>
+  </data>
+  <data name="ConfirmCloudTitle" xml:space="preserve">
+    <value>Fjärrdataåtkomst</value>
+  </data>
+  <data name="ConfirmDeleteBaseline" xml:space="preserve">
+    <value>Om baslinjen har tilldelats gör borttagning att den tas bort från alla enheter. Vill du fortsätta?</value>
+  </data>
+  <data name="CopyBaseline" xml:space="preserve">
+      <value>Kopiera baslinje</value>
+  </data>
+  <data name="CustomBaseline" xml:space="preserve">
+    <value>Anpassad baslinje</value>
+  </data>
+  <data name="CustomBaselineCompliance" xml:space="preserve">
+    <value>Efterlevnadsdata för anpassade baslinjer beräknas från de policyer du lägger till till baslinjen, inte från de komprimerade policyerna.</value>
+  </data>
+  <data name="CustomBaselineComplianceDataMissing" xml:space="preserve">
+    <value>Efterlevnadsdata är inte tillgängliga eller ofullständiga för de anpassade baslinjerna eftersom det inte gick att granska de komprimerade policyerna.</value>
+  </data>
+  <data name="CustomBaselineError" xml:space="preserve">
+    <value>Välj en fil för den anpassade baslinjen</value>
+  </data>
+  <data name="CustomBaselineHelpLink" xml:space="preserve">
+    <value>Visa överföringsinstruktioner för GPO</value>
+  </data>
+  <data name="CustomizeSelectPolicy" xml:space="preserve">
+    <value>Välj en policy för att visa dess inställningar</value>
+  </data>
+  <data name="CustomizeStepDescription" xml:space="preserve">
+    <value>Du kan granska eller anpassa policyerna från {0} för att uppfylla dina behov.</value>
+  </data>
+  <data name="DefinitionStepDescription" xml:space="preserve">
+    <value>Ge baslinjen ett namn och en beskrivning.</value>
+  </data>
+  <data name="DeleteBaseline" xml:space="preserve">
+    <value>Ta bort baslinje</value>
+  </data>
+  <data name="DeviceBaselineLocationGroupNotFound" xml:space="preserve">
+    <value>Det går inte att hämta enheter för baslinjen eftersom Organisationsgrupp inte kunde hittas.</value>
+  </data>
+  <data name="DeviceBaselineNotFound" xml:space="preserve">
+    <value>Det går inte att hämta enheter för baslinjen eftersom baslinjen inte kunde hittas.</value>
+  </data>
+  <data name="DiscardAndExit" xml:space="preserve">
+    <value>Ignorera och avsluta</value>
+  </data>
+  <data name="EditBaseline" xml:space="preserve">
+    <value>Ändra baslinje</value>
+  </data>
+  <data name="EditRequestError" xml:space="preserve">
+    <value>Den valda baslinjeversionen är inte längre tillgänglig. Skapa en ny.</value>
+  </data>
+  <data name="EmptyBaselineList" xml:space="preserve">
+    <value>Inga baslinjer hittades inte</value>
+  </data>
+  <data name="EmptyDeviceList" xml:space="preserve">
+    <value>Det gick inte att hitta några enheter</value>
+  </data>
+  <data name="EmptyListInput" xml:space="preserve">
+    <value>Kräver en eller flera poster</value>
+  </data>
+  <data name="EmptyPolicyList" xml:space="preserve">
+    <value>Inga policys tillagda än</value>
+  </data>
+  <data name="ErrorBaselineDeviceException" xml:space="preserve">
+    <value>Det gick inte att tillämpa baslinjer, läs mer i loggarna och åtgärda.</value>
+  </data>
+  <data name="ErrorDownloadBlobFailed" xml:space="preserve">
+    <value>Det gick inte att komma åt baslinjer, läs mer i loggarna och åtgärda.</value>
+  </data>
+  <data name="ErrorInvalidExecutable" xml:space="preserve">
+    <value>LGPO.exe är ogiltig, pröva att åtgärda genom att ändra den exekverbara filen.</value>
+  </data>
+  <data name="ErrorLGPOBackupFailed" xml:space="preserve">
+    <value>Det gick inte att tillämpa baslinjer, läs mer i loggarna och åtgärda.</value>
+  </data>
+  <data name="ErrorMissingLGPO" xml:space="preserve">
+    <value>LGPO.exe är inte tillgänglig för att tillämpa baslinjer.</value>
+  </data>
+  <data name="ErrorSavingFileInFolder" xml:space="preserve">
+    <value>Det gick inte att spara baslinjer, läs mer i loggarna och åtgärda.</value>
+  </data>
+  <data name="ErrorUpdatingDatabase" xml:space="preserve">
+    <value>Okänd baslinjestatus, mer information finns i loggarna.</value>
+  </data>
+  <data name="ErrorZipExtractionFailed" xml:space="preserve">
+    <value>Det gick inte att extrahera baslinjer, läs mer i loggarna och åtgärda.</value>
+  </data>
+  <data name="ExcludedSmartGroups" xml:space="preserve">
+    <value>Undantagna smartgrupper</value>
+  </data>
+  <data name="Exclusions" xml:space="preserve">
+    <value>Undantag</value>
+  </data>
+  <data name="FailedInstall" xml:space="preserve">
+    <value>Installationen misslyckades</value>
+  </data>
+  <data name="FailedRemoval" xml:space="preserve">
+    <value>Borttagningen misslyckades</value>
+  </data>
+  <data name="IntermediateDescription" xml:space="preserve">
+    <value>Enheter som överensstämmer mellan {0} och {1} % klassificeras som mellanliggande.</value>
+  </data>
+  <data name="MaxValueArg" xml:space="preserve">
+    <value>Måste vara mindre än eller lika med {0}</value>
+  </data>
+  <data name="MinValueArg" xml:space="preserve">
+    <value>Måste vara större än eller lika med {0}</value>
+  </data>
+  <data name="NewBaseline" xml:space="preserve">
+    <value>Ny baslinje</value>
+  </data>
+  <data name="NoActiveOSVersion" xml:space="preserve">
+    <value>Inga operativsystemsversioner hittades. Försök igen senare.</value>
+  </data>
+  <data name="NoCustomizationSupport" xml:space="preserve">
+    <value>Anpassning är för närvarande inte tillgänglig för den valda baslinjen.</value>
+  </data>
+  <data name="NoFileSelected" xml:space="preserve">
+    <value>Ingen fil är vald.</value>
+  </data>
+  <data name="NonEnglishSearchResult" xml:space="preserve">
+    <value>Hittade inga resultat för ”{0}”. Du kan försöka söka igen på engelska för att se om policyn är tillgänglig.</value>
+  </data>
+  <data name="NoResultsFoundForArg" xml:space="preserve">
+    <value>Inga resultat hittades för ”{0}”</value>
+  </data>
+  <data name="NoSmartGroupsSelected" xml:space="preserve">
+    <value>Det finns inga smarta grupper valda</value>
+  </data>
+  <data name="PolicyNotFound" xml:space="preserve">
+    <value>Ingen policyinformation kunde hittas</value>
+  </data>
+  <data name="PolicyStepDescription" xml:space="preserve">
+    <value>Sök och lägg till policyer från katalogen.</value>
+  </data>
+  <data name="Proceed" xml:space="preserve">
+    <value>Fortsätt</value>
+  </data>
+  <data name="RemovalFailed" xml:space="preserve">
+    <value>Borttagningen misslyckades</value>
+  </data>
+  <data name="RequiredFieldError" xml:space="preserve">
+    <value>Ange ett namn på baslinjen.</value>
+  </data>
+  <data name="SaveAndPublish" xml:space="preserve">
+    <value>Spara och publicera</value>
+  </data>
+  <data name="SearchPolicyPlaceholder" xml:space="preserve">
+    <value>Börja skriva för att söka efter en policy</value>
+  </data>
+  <data name="SearchSmartGroupPlaceholder" xml:space="preserve">
+    <value>Börja skriva för att söka efter en smartgrupp</value>
+  </data>
+  <data name="SelectedSmartGroups" xml:space="preserve">
+    <value>Välj smartgrupper</value>
+  </data>
+  <data name="SelectTypeDescription" xml:space="preserve">
+    <value>Välj vilken typ av baslinje du vill lägga till.</value>
+  </data>
+  <data name="SelectTypeTitle" xml:space="preserve">
+    <value>Välj baslinjetyp</value>
+  </data>
+  <data name="SmartGroupAtLeastOneValidationDescription" xml:space="preserve">
+    <value>Du måste ange minst en smartgrupp på fliken Tilldelningar.</value>
+  </data>
+  <data name="SummaryStepDescription" xml:space="preserve">
+    <value>Gå igenom summeringen innan du sparar denna baslinje.</value>
+  </data>
+  <data name="TemplateStepDescription" xml:space="preserve">
+    <value>Välj en förkonfigurerad baslinje och version.</value>
+  </data>
+  <data name="TextareaMaxLinesError" xml:space="preserve">
+    <value>Överskrider maximalt antal rader</value>
+  </data>
+  <data name="TextareaMaxSentenceError" xml:space="preserve">
+    <value>En eller flera meningar överskrider maximal längd</value>
+  </data>
+  <data name="TotalInstalledArg" xml:space="preserve">
+    <value>Totalt antal installerade: {0}</value>
+  </data>
+  <data name="UnabletoLoadDevices" xml:space="preserve">
+    <value>Det gick inte att ladda enhetslistan, försök igen senare.</value>
+  </data>
+  <data name="UnsavedChanges" xml:space="preserve">
+    <value>Osparade ändringar</value>
+  </data>
+  <data name="UnsupportedLanguageError" xml:space="preserve">
+    <value>Fel: Det valda språket stöds inte.</value>
+  </data>
+  <data name="UseBaselineTemplate" xml:space="preserve">
+      <value>Använd mall</value>
+  </data>
+  <data name="UseTemplateDescription" xml:space="preserve">
+    <value>Använd branschstandardmallar för att konfigurera baslinje.</value>
+  </data>
+  <data name="VersionBreakdown" xml:space="preserve">
+    <value>Versionsuppdelning</value>
+  </data>
+  <data name="ViewBaselineDevicesTitle" xml:space="preserve">
+    <value>Visa enheter – Baslinjer</value>
+  </data>
+</root>

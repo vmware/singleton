@@ -1,0 +1,486 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AddedPolices" xml:space="preserve">
+    <value>新增的原則</value>
+  </data>
+  <data name="AssignBaseline" xml:space="preserve">
+    <value>指派基準</value>
+  </data>
+  <data name="AssignBaselineDescription" xml:space="preserve">
+    <value>選擇要指派基準的智慧群組。</value>
+  </data>
+  <data name="AssignBaselineDescription2" xml:space="preserve">
+    <value>選取智慧群組來指派基準。選取 [排除項目] 來排除特定群組。如果您新增排除項目至已發佈的基準，基準將會從排除的裝置中移除。</value>
+  </data>
+  <data name="AssignBaselineLocationGroupNotFound" xml:space="preserve">
+    <value>無法指派基準，因為無法找到企業群組。</value>
+  </data>
+  <data name="AssignBaselineNotFound" xml:space="preserve">
+    <value>無法指派基準，因為無法找到基準。</value>
+  </data>
+  <data name="AssignedDevicesArg" xml:space="preserve">
+    <value>已指派: {0} 裝置</value>
+  </data>
+  <data name="Assignments" xml:space="preserve">
+    <value>指派</value>
+  </data>
+  <data name="Baseline" xml:space="preserve">
+    <value>基準</value>
+  </data>
+  <data name="BaselineAssigned" xml:space="preserve">
+    <value>已指派基準</value>
+  </data>
+  <data name="BaselineAssignmentFailed" xml:space="preserve">
+    <value>無法指派基準，請再試一次。</value>
+  </data>
+  <data name="BaselineAssignmentSuccessful" xml:space="preserve">
+    <value>成功發佈基準至更新的指派。</value>
+  </data>
+  <data name="BaselineBlobFailed" xml:space="preserve">
+    <value>建立基準失敗，因為無法建立套件。</value>
+  </data>
+  <data name="BaselineCombinedBlobFailed" xml:space="preserve">
+    <value>建立基準失敗，因為無法建立包含自訂的套件。</value>
+  </data>
+  <data name="BaselineContainsExe" xml:space="preserve">
+    <value>您的自訂基準包含可執行檔。請將其移除後再試一次。</value>
+  </data>
+  <data name="BaselineCopyFailed" xml:space="preserve">
+    <value>無法複製已選取的基準。</value>
+  </data>
+  <data name="BaselineCopySuccessful" xml:space="preserve">
+    <value>已成功複製已選取的基準。</value>
+  </data>
+  <data name="BaselineCreated" xml:space="preserve">
+    <value>已建立基準</value>
+  </data>
+  <data name="BaselineCreationFailed" xml:space="preserve">
+    <value>無法建立基準。</value>
+  </data>
+  <data name="BaselineCreationSuccessful" xml:space="preserve">
+    <value>成功儲存基準。</value>
+  </data>
+  <data name="BaselineCustomizationFailed" xml:space="preserve">
+    <value>建立基準失敗，因為無法套用自訂。</value>
+  </data>
+  <data name="BaselineDeleted" xml:space="preserve">
+    <value>已刪除基準</value>
+  </data>
+  <data name="BaselineDeleteFailed" xml:space="preserve">
+    <value>無法刪除基準。請再試一次。</value>
+  </data>
+  <data name="BaselineDeleteSuccessful" xml:space="preserve">
+    <value>已成功刪除基準。</value>
+  </data>
+  <data name="BaselineDetails" xml:space="preserve">
+    <value>基準名稱和版本</value>
+  </data>
+  <data name="BaselineErrorCode" xml:space="preserve">
+    <value>裝置錯誤碼</value>
+  </data>
+  <data name="BaselineErrorMessage" xml:space="preserve">
+    <value>錯誤訊息</value>
+  </data>
+  <data name="BaselineFileCorrupt" xml:space="preserve">
+    <value>您的自訂基準不是有效的 ZIP 檔。</value>
+  </data>
+  <data name="BaselineFileEmpty" xml:space="preserve">
+    <value>您的自訂基準似乎是空白檔案。請以有效檔案再試一次。</value>
+  </data>
+  <data name="BaselineFileMissingPolicies" xml:space="preserve">
+    <value>選取的自訂基準檔案沒有遵循建議的規格。請參考說明文件後加以修訂。</value>
+  </data>
+  <data name="BaselineFileSizeError" xml:space="preserve">
+    <value>您的自訂基準大小超過 5MB 上限。</value>
+  </data>
+  <data name="BaselineGetPolicyTreeFailed" xml:space="preserve">
+    <value>無法載入自訂原則。請稍後再試。</value>
+  </data>
+  <data name="BaselineInvalidRequest" xml:space="preserve">
+    <value>請務必填妥所有必填欄位。</value>
+  </data>
+  <data name="BaselineMissingPolicies" xml:space="preserve">
+    <value>建立基準失敗，因為有一或多個原則已經移除或無法使用</value>
+  </data>
+  <data name="BaselineModified" xml:space="preserve">
+    <value>已修改基準</value>
+  </data>
+  <data name="BaselineName" xml:space="preserve">
+    <value>基準名稱</value>
+  </data>
+  <data name="BaselinePendingReboot" xml:space="preserve">
+    <value>重新開機擱置中</value>
+  </data>
+  <data name="BaselinePolicyFieldError" xml:space="preserve">
+    <value>建立基準失敗，因為有一或多個原則的值無效</value>
+  </data>
+  <data name="BaselinePolicyGenerationFailed" xml:space="preserve">
+    <value>建立基準失敗，因為無法產生一或多個原則</value>
+  </data>
+  <data name="Baselines" xml:space="preserve">
+    <value>基準</value>
+  </data>
+  <data name="BaselinesBlobID" xml:space="preserve">
+    <value>基準 Blob ID</value>
+  </data>
+  <data name="BaselinesCount" xml:space="preserve">
+    <value>基準計數</value>
+  </data>
+  <data name="BaselineServiceUnavailable" xml:space="preserve">
+    <value>無法連線至基準服務「https://www.vmwarebaselines.com」。請檢查您的連線和記錄以取得更多資訊。</value>
+  </data>
+  <data name="BaselinesMenuDescription" xml:space="preserve">
+    <value>檢視基準</value>
+  </data>
+  <data name="BaselineStatusCallFailed" xml:space="preserve">
+    <value>無法擷取基準狀態。請稍後再試</value>
+  </data>
+  <data name="BaselineTooltipCis" xml:space="preserve">
+    <value>針對選取的版本與層級使用 CIS 基準建議的設定。</value>
+  </data>
+  <data name="BaselineTooltipCustom" xml:space="preserve">
+    <value>上傳自訂群組原則物件 (GPO) 備份以套用至裝置。GPO 備份必須是小於 5MB 的 ZIP 檔案。</value>
+  </data>
+  <data name="BaselineTooltipWindows" xml:space="preserve">
+    <value>Microsoft 安全性工具組的安全性基準元件 (「SBC」) 是由 Microsoft 製作，且僅供您用於管理 Windows 10 裝置。SBC 係按「現狀」提供，且 VMware 或 Microsoft 不提供任何擔保。如需 SBC 的詳細資訊，請至 {0}。</value>
+  </data>
+  <data name="BaselineUUID" xml:space="preserve">
+    <value>基準 UUID</value>
+  </data>
+  <data name="BlankBaseline" xml:space="preserve">
+    <value>自行建立</value>
+  </data>
+  <data name="BlankBaselineDescription" xml:space="preserve">
+    <value>從原則目錄中選取所需項目，建立自己的基準。</value>
+  </data>
+  <data name="ChooseTemplate" xml:space="preserve">
+    <value>選擇基準</value>
+  </data>
+  <data name="ComplianceDataMissing" xml:space="preserve">
+    <value>此基準尚無可用的合規性資料，重新發佈基準到指派的裝置，以觸發合規性範例報告。</value>
+  </data>
+  <data name="ConfirmCancelBaseline" xml:space="preserve">
+    <value>您對此基準的變更並未儲存。是否要捨棄變更?</value>
+  </data>
+  <data name="ConfirmCloudDescription" xml:space="preserve">
+    <value>若使用 Workspace ONE 基準，您將存取由 VMware 遠端儲存的資料。若您不想繼續，請按一下 [取消]。</value>
+  </data>
+  <data name="ConfirmCloudTitle" xml:space="preserve">
+    <value>遠端資料存取</value>
+  </data>
+  <data name="ConfirmDeleteBaseline" xml:space="preserve">
+    <value>如果此基準已被指派，則刪除此基準也會從所有裝置中將其移除。您要繼續嗎?</value>
+  </data>
+  <data name="CopyBaseline" xml:space="preserve">
+      <value>複製基準</value>
+  </data>
+  <data name="CustomBaseline" xml:space="preserve">
+    <value>自訂基準</value>
+  </data>
+  <data name="CustomBaselineCompliance" xml:space="preserve">
+    <value>自訂基準的合規性資料是根據新增至基準的原則來評估，而非壓縮的原則。</value>
+  </data>
+  <data name="CustomBaselineComplianceDataMissing" xml:space="preserve">
+    <value>自訂基準的合規性資料不可用或不完整，因為無法檢閱壓縮的原則。</value>
+  </data>
+  <data name="CustomBaselineError" xml:space="preserve">
+    <value>請為自訂基準選取一個檔案</value>
+  </data>
+  <data name="CustomBaselineHelpLink" xml:space="preserve">
+    <value>檢視 GPO 上傳指示</value>
+  </data>
+  <data name="CustomizeSelectPolicy" xml:space="preserve">
+    <value>選取原則以檢視其設定。</value>
+  </data>
+  <data name="CustomizeStepDescription" xml:space="preserve">
+    <value>您可以從 {0} 檢閱或自訂原則以符合您的需求。</value>
+  </data>
+  <data name="DefinitionStepDescription" xml:space="preserve">
+    <value>為基準提供名稱和描述。</value>
+  </data>
+  <data name="DeleteBaseline" xml:space="preserve">
+    <value>刪除基準</value>
+  </data>
+  <data name="DeviceBaselineLocationGroupNotFound" xml:space="preserve">
+    <value>無法擷取基準所需的裝置，因為找不到企業群組。</value>
+  </data>
+  <data name="DeviceBaselineNotFound" xml:space="preserve">
+    <value>無法擷取基準所需的裝置，因為找不到基準。</value>
+  </data>
+  <data name="DiscardAndExit" xml:space="preserve">
+    <value>捨棄並退出</value>
+  </data>
+  <data name="EditBaseline" xml:space="preserve">
+    <value>編輯基準</value>
+  </data>
+  <data name="EditRequestError" xml:space="preserve">
+    <value>選取的基準版本已無法使用，請建立新版本。</value>
+  </data>
+  <data name="EmptyBaselineList" xml:space="preserve">
+    <value>找不到任何基準</value>
+  </data>
+  <data name="EmptyDeviceList" xml:space="preserve">
+    <value>找不到裝置</value>
+  </data>
+  <data name="EmptyListInput" xml:space="preserve">
+    <value>需要一或多個項目</value>
+  </data>
+  <data name="EmptyPolicyList" xml:space="preserve">
+    <value>尚未新增任何原則</value>
+  </data>
+  <data name="ErrorBaselineDeviceException" xml:space="preserve">
+    <value>無法套用基準，請檢查記錄檔以進行修復。</value>
+  </data>
+  <data name="ErrorDownloadBlobFailed" xml:space="preserve">
+    <value>無法存取基準，請檢查記錄檔以進行修復。</value>
+  </data>
+  <data name="ErrorInvalidExecutable" xml:space="preserve">
+    <value>LGPO.exe 無效。請嘗試以變更可執行檔的方式進行修復。</value>
+  </data>
+  <data name="ErrorLGPOBackupFailed" xml:space="preserve">
+    <value>無法套用基準，請檢查記錄檔以進行修復。</value>
+  </data>
+  <data name="ErrorMissingLGPO" xml:space="preserve">
+    <value>無法使用 LGPO.exe，因此無法套用基準。</value>
+  </data>
+  <data name="ErrorSavingFileInFolder" xml:space="preserve">
+    <value>無法儲存基準，請檢查記錄檔以進行修復。</value>
+  </data>
+  <data name="ErrorUpdatingDatabase" xml:space="preserve">
+    <value>基準狀態不明，請檢查記錄檔以取得更多資訊。</value>
+  </data>
+  <data name="ErrorZipExtractionFailed" xml:space="preserve">
+    <value>無法擷取基準，請檢查記錄檔以進行修復。</value>
+  </data>
+  <data name="ExcludedSmartGroups" xml:space="preserve">
+    <value>排除的智慧群組</value>
+  </data>
+  <data name="Exclusions" xml:space="preserve">
+    <value>排除項目</value>
+  </data>
+  <data name="FailedInstall" xml:space="preserve">
+    <value>安裝失敗</value>
+  </data>
+  <data name="FailedRemoval" xml:space="preserve">
+    <value>移除失敗</value>
+  </data>
+  <data name="IntermediateDescription" xml:space="preserve">
+    <value>將合規程度為 {0}% 到 {1}% 的裝置分類為中級。</value>
+  </data>
+  <data name="MaxValueArg" xml:space="preserve">
+    <value>必須小於或等於 {0}</value>
+  </data>
+  <data name="MinValueArg" xml:space="preserve">
+    <value>必須大於或等於 {0}</value>
+  </data>
+  <data name="NewBaseline" xml:space="preserve">
+    <value>新基準</value>
+  </data>
+  <data name="NoActiveOSVersion" xml:space="preserve">
+    <value>找不到作業系統版本。請稍後再試。</value>
+  </data>
+  <data name="NoCustomizationSupport" xml:space="preserve">
+    <value>選取的基準目前無法使用自訂。</value>
+  </data>
+  <data name="NoFileSelected" xml:space="preserve">
+    <value>未選取任何檔案。</value>
+  </data>
+  <data name="NonEnglishSearchResult" xml:space="preserve">
+    <value>找不到「{0}」的結果。您可以使用英文重試搜尋，看看是否有可用的原則。</value>
+  </data>
+  <data name="NoResultsFoundForArg" xml:space="preserve">
+    <value>針對「{0}」，找不到結果</value>
+  </data>
+  <data name="NoSmartGroupsSelected" xml:space="preserve">
+    <value>未選擇任何智慧群組</value>
+  </data>
+  <data name="PolicyNotFound" xml:space="preserve">
+    <value>找不到原則詳細資料</value>
+  </data>
+  <data name="PolicyStepDescription" xml:space="preserve">
+    <value>從目錄中搜尋並新增原則。</value>
+  </data>
+  <data name="Proceed" xml:space="preserve">
+    <value>繼續</value>
+  </data>
+  <data name="RemovalFailed" xml:space="preserve">
+    <value>移除失敗</value>
+  </data>
+  <data name="RequiredFieldError" xml:space="preserve">
+    <value>請輸入基準的名稱。</value>
+  </data>
+  <data name="SaveAndPublish" xml:space="preserve">
+    <value>儲存並發佈</value>
+  </data>
+  <data name="SearchPolicyPlaceholder" xml:space="preserve">
+    <value>開始輸入以搜尋原則</value>
+  </data>
+  <data name="SearchSmartGroupPlaceholder" xml:space="preserve">
+    <value>開始輸入以搜尋智慧群組</value>
+  </data>
+  <data name="SelectedSmartGroups" xml:space="preserve">
+    <value>選取的智慧群組</value>
+  </data>
+  <data name="SelectTypeDescription" xml:space="preserve">
+    <value>選擇要新增的基準類型。</value>
+  </data>
+  <data name="SelectTypeTitle" xml:space="preserve">
+    <value>選擇基準類型</value>
+  </data>
+  <data name="SmartGroupAtLeastOneValidationDescription" xml:space="preserve">
+    <value>[指派] 索引標籤中必須有至少一個智慧群組。</value>
+  </data>
+  <data name="SummaryStepDescription" xml:space="preserve">
+    <value>儲存此基準前先檢閱摘要。</value>
+  </data>
+  <data name="TemplateStepDescription" xml:space="preserve">
+    <value>選取預先設定的基準與版本。</value>
+  </data>
+  <data name="TextareaMaxLinesError" xml:space="preserve">
+    <value>超過最大行數</value>
+  </data>
+  <data name="TextareaMaxSentenceError" xml:space="preserve">
+    <value>一或多個句子超過最大長度</value>
+  </data>
+  <data name="TotalInstalledArg" xml:space="preserve">
+    <value>已安裝總數: {0}</value>
+  </data>
+  <data name="UnabletoLoadDevices" xml:space="preserve">
+    <value>無法載入裝置清單。請稍後再試。</value>
+  </data>
+  <data name="UnsavedChanges" xml:space="preserve">
+    <value>未儲存的變更</value>
+  </data>
+  <data name="UnsupportedLanguageError" xml:space="preserve">
+    <value>錯誤: 不支援選取的語言。</value>
+  </data>
+  <data name="UseBaselineTemplate" xml:space="preserve">
+      <value>使用範本</value>
+  </data>
+  <data name="UseTemplateDescription" xml:space="preserve">
+    <value>使用業界標準範本來設定基準。</value>
+  </data>
+  <data name="VersionBreakdown" xml:space="preserve">
+    <value>版本明細</value>
+  </data>
+  <data name="ViewBaselineDevicesTitle" xml:space="preserve">
+    <value>檢視裝置 - 基準</value>
+  </data>
+</root>

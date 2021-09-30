@@ -1,0 +1,584 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AMAPIEnrollmentFeatureNotSupported" xml:space="preserve">
+    <value>您的组织不支持 Android 管理 API 注册功能。请联系您的管理员。</value>
+  </data>
+  <data name="AMAPIEnrollmentNotAllowed" xml:space="preserve">
+    <value>尚未在设备的组织中启用 Android 管理 API 设置。</value>
+  </data>
+  <data name="AMAPIRegistration" xml:space="preserve">
+    <value>Android 管理 API 注册</value>
+  </data>
+  <data name="AndroidEnterpriseNotAllowed" xml:space="preserve">
+    <value>设备不允许 Android Enterprise 注册。</value>
+  </data>
+  <data name="AndroidEnterpriseNotFound" xml:space="preserve">
+    <value>尚未在设备的组织中启用 Android Enterprise 设置</value>
+  </data>
+  <data name="AndroidLegacyEnrollmentNotAllowed" xml:space="preserve">
+    <value>不允许在设备所有者模式下使用 Android 旧版注册。</value>
+  </data>
+  <data name="AndroidManagementAPI" xml:space="preserve">
+    <value>Android 管理 API</value>
+  </data>
+  <data name="AndroidWorkEnrollmentUserAddError" xml:space="preserve">
+    <value>无法将注册用户添加到 GSuite 中。请联系您的管理员或重试。</value>
+  </data>
+  <data name="AndroidWorkEnrollmentUserEmailNotFound" xml:space="preserve">
+    <value>无法找到您的帐户，请联系您的管理员或重试。</value>
+  </data>
+  <data name="AndroidWorkEnrollmentUserNotFound" xml:space="preserve">
+    <value>此 Google 帐户无效。</value>
+  </data>
+  <data name="AndroidWorkProfileEnrollmentNotAllowed" xml:space="preserve">
+    <value>提供的服务器和组 ID 不允许工作配置文件注册。如果有任何问题，请联系您的管理员。</value>
+  </data>
+  <data name="AndroidWorkUserEmailDomainNotASubDomain" xml:space="preserve">
+    <value>所用的域并非注册的子域。请联系您的管理员。</value>
+  </data>
+  <data name="ApplicationIsNotAllowedToRegister" xml:space="preserve">
+    <value>不允许应用程序注册。</value>
+  </data>
+  <data name="AssignUserRole" xml:space="preserve">
+    <value>分配用户角色</value>
+  </data>
+  <data name="AutoEnrollmentDisabled" xml:space="preserve">
+    <value>没有为提供的组织组启用自动注册。请联系您的管理员或重试。</value>
+  </data>
+  <data name="CannotChangeOGForDEPTokenArg" xml:space="preserve">
+    <value>无法更改 DEP 令牌 {0} 的组织组</value>
+  </data>
+  <data name="CannotUseStagingUserForCustomDep" xml:space="preserve">
+    <value>不支持注册预备用户。请联系您的管理员。</value>
+  </data>
+  <data name="CaptchaText" xml:space="preserve">
+    <value>验证码</value>
+  </data>
+  <data name="ChangeRankOrOrganizationGroup" xml:space="preserve">
+    <value>更改级别或组织组</value>
+  </data>
+  <data name="ChangeRankOrOrganizationGroupForUserGroup" xml:space="preserve">
+    <value>更改用户组的级别或组织组</value>
+  </data>
+  <data name="ChangeRankOrUserRole" xml:space="preserve">
+    <value>更改级别或用户角色</value>
+  </data>
+  <data name="ChangeRankOrUserRoleForUserGroup" xml:space="preserve">
+    <value>更改用户组的级别或用户角色</value>
+  </data>
+  <data name="ChangeUserRoleAssignmentRankUsingEdit" xml:space="preserve">
+    <value>要更改某一用户组的级别或用户角色，请单击相应记录旁边的“编辑”按钮</value>
+  </data>
+  <data name="ConfirmEnterpriseWipeDeviceTitleMessage" xml:space="preserve">
+    <value>此操作会取消选定设备的注册并从中移除所有受管企业资源，包括应用程序和配置文件。如果不重新注册该设备，则无法撤消此操作。</value>
+  </data>
+  <data name="CopeEnrollmentNotSupported" xml:space="preserve">
+    <value>由于 Workspace ONE Intelligent Hub 版本不受支持，注册被阻止</value>
+  </data>
+  <data name="CopyEMMToken" xml:space="preserve">
+    <value>3. 复制提供的 EMM 令牌以在下一步使用。</value>
+  </data>
+  <data name="CustomEnrollmentFeatureNotEnabled" xml:space="preserve">
+    <value>已为您的组织禁用自定义注册。请联系您的管理员以重新保存此设备的注册配置文件，然后尝试重新注册。</value>
+  </data>
+  <data name="DefaultActionForInactiveUsersChanged" xml:space="preserve">
+    <value>非活动用户的默认操作已更改</value>
+  </data>
+  <data name="DefaultDeviceOwnershipChanged" xml:space="preserve">
+    <value>默认设备所有权已更改</value>
+  </data>
+  <data name="DefaultDeviceUserRoleChanged" xml:space="preserve">
+    <value>默认设备用户角色已更改</value>
+  </data>
+  <data name="DeleteDeviceCountMessage" xml:space="preserve">
+    <value>将被永久删除的设备数:</value>
+  </data>
+  <data name="DepFetchInfoMessage" xml:space="preserve">
+    <value>“获取所有设备”选项可将 Apple 商务管理中分配给此令牌的所有设备与 UEM console 同步，其中包括已同步的设备。此选项只能用作从 Apple 商务管理完全更新和重新同步所有设备的最终替代方案。</value>
+  </data>
+  <data name="DepFetchInfoMessageSchool" xml:space="preserve">
+    <value>“获取所有设备”选项可将 Apple 校园教务管理中分配给此令牌的所有设备与 UEM console 同步，其中包括已同步的设备。此选项只能用作从 Apple 校园教务管理完全更新和重新同步所有设备的最终替代方案。</value>
+  </data>
+  <data name="DEPTokenArgCannotBeDeleted" xml:space="preserve">
+    <value>无法删除 DEP 令牌 {0}</value>
+  </data>
+  <data name="DEPTokenArgCannotBeRevoked" xml:space="preserve">
+    <value>无法撤销 DEP 令牌 {0}</value>
+  </data>
+  <data name="DeviceEnrolledArg" xml:space="preserve">
+    <value>已取消注册的设备编号 {0}</value>
+  </data>
+  <data name="DeviceMacAddressDenylisted" xml:space="preserve">
+    <value>无法注册设备，因为设备的 MAC 地址被拒绝。</value>
+  </data>
+  <data name="DeviceManagementRemoved" xml:space="preserve">
+    <value>Workspace ONE UEM 管理员已移除设备管理</value>
+  </data>
+  <data name="DeviceNotAllowlisted" xml:space="preserve">
+    <value>设备型号类型未被允许和/或设备 OS 未被允许。</value>
+  </data>
+  <data name="DeviceNotAllowlistedManufacturererNotAllowed" xml:space="preserve">
+    <value>设备未被允许和/或制造商未被允许。</value>
+  </data>
+  <data name="DeviceNotAllowlistedModelNotAllowed" xml:space="preserve">
+    <value>设备型号类型未被允许。</value>
+  </data>
+  <data name="DeviceNotEnrolled" xml:space="preserve">
+    <value>设备未注册</value>
+  </data>
+  <data name="DeviceNotRegistered" xml:space="preserve">
+    <value>设备未登记。设备型号类型和/或操作系统无效</value>
+  </data>
+  <data name="DeviceSNArgNotExistsForArgToken" xml:space="preserve">
+    <value>{1} 令牌的设备序列号 {0} 不存在</value>
+  </data>
+  <data name="DeviceStateIsAndroidEnterprise" xml:space="preserve">
+    <value>设备已在 Android Enterprise 中注册</value>
+  </data>
+  <data name="DeviceUserNotFound" xml:space="preserve">
+    <value>找不到设备的注册用户</value>
+  </data>
+  <data name="DirectoryGroupBasedMappingChanged" xml:space="preserve">
+    <value>“启用基于目录组的映射”设置已更改</value>
+  </data>
+  <data name="DropshipProvisioning" xml:space="preserve">
+    <value>Drop Ship Provisioning</value>
+  </data>
+  <data name="EMMToken" xml:space="preserve">
+    <value>EMM 令牌</value>
+  </data>
+  <data name="EmptyDeviceIdentifierPleaseTryAgain" xml:space="preserve">
+    <value>注册请求中不存在设备的 UDID。请联系您的管理员或重试。</value>
+  </data>
+  <data name="EmptyPasswordPleaseTryAgain" xml:space="preserve">
+    <value>注册请求中不存在密码。请联系您的管理员或重试。</value>
+  </data>
+  <data name="EmptyUserNameOrEmailAddressPleaseTryAgain" xml:space="preserve">
+    <value>注册请求中不存在用户名或电子邮件地址。请联系您的管理员或重试。</value>
+  </data>
+  <data name="EnableDropShipProvisioning" xml:space="preserve">
+    <value>启用 Workspace ONE Drop Ship Provisioning</value>
+  </data>
+  <data name="EnrollmentDisabled" xml:space="preserve">
+    <value>注册已禁用，因为在 SKU 中找不到 MDM 订单。</value>
+  </data>
+  <data name="EnrollmentSecurityTypeNotSupported" xml:space="preserve">
+    <value>已尝试使用不受支持的安全类型注册。请联系您的管理员或重试。</value>
+  </data>
+  <data name="EnrollmentTypeCriteriaMustContainOneEnrollmentType" xml:space="preserve">
+    <value>注册类型标准必须包含至少一种注册类型</value>
+  </data>
+  <data name="EnrollmentUserNotFound" xml:space="preserve">
+    <value>找不到注册用户。请提供现有用户。</value>
+  </data>
+  <data name="EnrollmentWelcomeMessageBody" xml:space="preserve">
+    <value>Workspace ONE UEM 可帮助贵企业 IT 部门为您的设备提供安全访问资源的保障。下面的分步过程将引导您配置您的设备，并确保设备符合相关策略。</value>
+  </data>
+  <data name="EnrollmentWelcomeMessageHeader" xml:space="preserve">
+    <value>欢迎使用 Workspace ONE UEM!</value>
+  </data>
+  <data name="EnterpriseWipeDeviceCountMessage" xml:space="preserve">
+    <value>{0} 台设备</value>
+  </data>
+  <data name="EnterpriseWipeDeviceCountTitle" xml:space="preserve">
+    <value>将执行企业擦除的设备数:</value>
+  </data>
+  <data name="ErrorAddingUserAccount" xml:space="preserve">
+    <value>自动添加用户帐户时出错。请联系您的管理员或重试。</value>
+  </data>
+  <data name="ErrorThrownWhenResolvingDeviceIdentifier" xml:space="preserve">
+    <value>尝试解析设备标识符时出错</value>
+  </data>
+  <data name="ExistingClientIDDontMatch" xml:space="preserve">
+    <value>无法保存更改，因为文本字段必须匹配现有的注册值。只能编辑证书。</value>
+  </data>
+  <data name="ExternalAccessRole" xml:space="preserve">
+    <value>外部访问角色</value>
+  </data>
+  <data name="FailedToCreateAgentInstallUrl" xml:space="preserve">
+    <value>无法创建 Agent 安装 URL。请联系您的管理员或重试。</value>
+  </data>
+  <data name="FailedToCreateDeviceAuthenticationToken" xml:space="preserve">
+    <value>无法创建设备的身份验证令牌。请联系您的管理员或重试。</value>
+  </data>
+  <data name="FailedToDisplayAgentAppStoreLink" xml:space="preserve">
+    <value>无法显示代理 App Store 链接。请联系您的管理员或重试。</value>
+  </data>
+  <data name="FailedToDisplayWelcomeMessage" xml:space="preserve">
+    <value>无法显示欢迎消息。请联系您的管理员或重试。</value>
+  </data>
+  <data name="FailedToProcessDisplayMdmInstallationMessage" xml:space="preserve">
+    <value>无法显示 MDM 安装消息。请联系您的管理员或重试。</value>
+  </data>
+  <data name="FailedToRedirectToAgentInstallUrl" xml:space="preserve">
+    <value>无法重定向到代理安装 URL。请联系您的管理员或重试。</value>
+  </data>
+  <data name="FailedToRedirectToMdmInstallUrl" xml:space="preserve">
+    <value>无法重定向到 MDM 安装 URL。请联系您的管理员或重试。</value>
+  </data>
+  <data name="FailedToRedirectToWorkspaceSchema" xml:space="preserve">
+    <value>无法重定向到工作区架构。请联系您的管理员或重试。</value>
+  </data>
+  <data name="FailedToRegisterApplication" xml:space="preserve">
+    <value>无法注册应用程序。请联系您的管理员或重试。</value>
+  </data>
+  <data name="FailedToRetrieveNextStep" xml:space="preserve">
+    <value>无法检索下一个注册步骤。请联系您的管理员或重试。</value>
+  </data>
+  <data name="FailedToRetrieveSessionId" xml:space="preserve">
+    <value>无法检索设备的注册会话 ID。请联系您的管理员或重试。</value>
+  </data>
+  <data name="FailedToValidateDeviceRestrictions" xml:space="preserve">
+    <value>无法验证设备的注册限制。请联系您的管理员或重试。</value>
+  </data>
+  <data name="FailedToValidateEmailAddress" xml:space="preserve">
+    <value>无法验证注册用户的电子邮件地址。请联系您的管理员或重试。</value>
+  </data>
+  <data name="FailedValidatingDeviceIdentifier" xml:space="preserve">
+    <value>无法验证设备的 UDID。请联系您的管理员或重试。</value>
+  </data>
+  <data name="FailedValidatingStagingMode" xml:space="preserve">
+    <value>无法验证注册预备模式。请联系您的管理员或重试。</value>
+  </data>
+  <data name="FieldMustBeOfArgCharacters" xml:space="preserve">
+    <value>字段的长度必须为 {0} 个字符。</value>
+  </data>
+  <data name="FollowingTokensOwnershipWillNotChange" xml:space="preserve">
+    <value>以下令牌的所有权不会更改</value>
+  </data>
+  <data name="ForceAospEnrollment" xml:space="preserve">
+    <value>强制执行 AOSP/封闭式网络注册</value>
+  </data>
+  <data name="GeneralCheckIn" xml:space="preserve">
+    <value>签入</value>
+  </data>
+  <data name="GetStarted:" xml:space="preserve">
+    <value>开始使用:</value>
+  </data>
+  <data name="GetSuccessfully" xml:space="preserve">
+    <value>已成功检索 MDM 服务器 URL</value>
+  </data>
+  <data name="GoogleAdminConsole" xml:space="preserve">
+    <value>Google 管理控制台。</value>
+  </data>
+  <data name="GoogleDeviceIdRequired" xml:space="preserve">
+    <value>Google 设备 ID 为必填项。</value>
+  </data>
+  <data name="GoogleUserIdRequired" xml:space="preserve">
+    <value>Google 用户 ID 为必填项。</value>
+  </data>
+  <data name="GoToThe" xml:space="preserve">
+    <value>1. 转到</value>
+  </data>
+  <data name="GroupIdAssignmentModeChanged" xml:space="preserve">
+    <value>组 ID 分配模式已更改</value>
+  </data>
+  <data name="HubRegistered" xml:space="preserve">
+    <value>已注册 Hub</value>
+  </data>
+  <data name="IntelligentHubManaged" xml:space="preserve">
+    <value>Intelligent Hub 受管</value>
+  </data>
+  <data name="InvalidDeviceAttributes" xml:space="preserve">
+    <value>请输入以下设备属性之一: 序列号/IMEI/UDID</value>
+  </data>
+  <data name="InvalidDeviceModel" xml:space="preserve">
+    <value>设备未登记。设备型号类型无效</value>
+  </data>
+  <data name="InvalidDeviceOS" xml:space="preserve">
+    <value>设备未登记。设备操作系统无效</value>
+  </data>
+  <data name="InvalidDeviceType" xml:space="preserve">
+    <value>设备类型无效</value>
+  </data>
+  <data name="InvalidHeaderUsedInTemplate" xml:space="preserve">
+    <value>模板中使用的标头无效。请下载并使用“编辑分配”窗口上提供的模板。</value>
+  </data>
+  <data name="InvalidImeiAttributeArgs" xml:space="preserve">
+    <value>IMEI 必须是数字且长度正好为 15 个字符。</value>
+  </data>
+  <data name="InvalidMigrationRequest" xml:space="preserve">
+    <value>设备 UDID 为空</value>
+  </data>
+  <data name="InvalidOrganizationGroupFromVidm" xml:space="preserve">
+    <value>注册用户不在提供的 Workspace ONE Access 已分配组织组中。</value>
+  </data>
+  <data name="InvalidSerialNumberAttributeArgs" xml:space="preserve">
+    <value>序列号长度必须少于 {0} 个字符。</value>
+  </data>
+  <data name="InvalidSerialNumberValuesFoundArgs" xml:space="preserve">
+    <value>每个序列号的长度应小于 {0}</value>
+  </data>
+  <data name="InvalidTokenDetails" xml:space="preserve">
+    <value>由于令牌详细信息无效，身份验证失败。</value>
+  </data>
+  <data name="InvalidUdidAttributeArgs" xml:space="preserve">
+    <value>UDID 长度必须少于 {0} 个字符。</value>
+  </data>
+  <data name="InvalidUDIDValuesFoundArgs" xml:space="preserve">
+    <value>每个 UDID 的长度应小于 {0}。</value>
+  </data>
+  <data name="IosProfileDownloadHeaderTitle" xml:space="preserve">
+    <value>下载配置文件的步骤</value>
+  </data>
+  <data name="IosProfileDownloadSteps" xml:space="preserve">
+    <value>1. 当系统提示下载配置文件时，点击 {0}
+
+2. 下载完成后，点击 {1}</value>
+  </data>
+  <data name="LaforgeUserCreationFailed" xml:space="preserve">
+    <value>Android Enterprise 用户创建失败</value>
+  </data>
+  <data name="LinkToConfigurationTab" xml:space="preserve">
+    <value>链接到“配置”选项卡</value>
+  </data>
+  <data name="MigrationFeatureDisabled" xml:space="preserve">
+    <value>您的组织不支持 Android Enterprise 迁移功能。请联系您的管理员。</value>
+  </data>
+  <data name="MoveDevicesToUserOrOGBAsedOnIPOrCA" xml:space="preserve">
+    <value>根据 IP 范围分配向用户或组织组分配设备，或者根据自定义属性规则向组织组分配设备。如果为层次结构中的任何一个组织组选择了“组织组 (按 IP 范围)”或“组织组 (按自定义属性)”，则无法启用设备分配规则。但是，如果在层次结构中选择了“用户名 (按 IP 范围)”类型，则可以启用设备分配规则。</value>
+  </data>
+  <data name="MultiuserFFSetup" xml:space="preserve">
+    <value>由于未正确设置该功能，已阻止多用户注册。</value>
+  </data>
+  <data name="MultiuserNonMdmSupport" xml:space="preserve">
+    <value>使用的注册协议不支持多用户注册。</value>
+  </data>
+  <data name="NoMDMOrderFound" xml:space="preserve">
+    <value>注册被暂停，因为在 SKU 中找不到 MDM 命令。</value>
+  </data>
+  <data name="NotAuthorizedToCreateEnrollmentUser" xml:space="preserve">
+    <value>未授权用户创建注册用户。</value>
+  </data>
+  <data name="OperationNotAuthorized" xml:space="preserve">
+    <value>未授权执行此操作</value>
+  </data>
+  <data name="OrganizationGroupInherited" xml:space="preserve">
+    <value>继承的组织组</value>
+  </data>
+  <data name="PasscodeExpired" xml:space="preserve">
+    <value>密码已过期</value>
+  </data>
+  <data name="PhoneNumberPrivacyCheck" xml:space="preserve">
+    <value>电话号码的隐私检查</value>
+  </data>
+  <data name="PreventReEnrollmentMessage" xml:space="preserve">
+    <value>选中下方的“禁止重新注册”复选框会将其置于设备拒绝列表中，并禁止用户将其重新注册到 Workspace ONE UEM。将来管理员能够根据需要将此设备从拒绝列表中移除。</value>
+  </data>
+  <data name="PrivacyNotificationDisabled" xml:space="preserve">
+    <value>用户友好的隐私声明已禁用</value>
+  </data>
+  <data name="PromptToBeginDownloadMessageForAppleOsX" xml:space="preserve">
+    <value>Intelligent Hub 正在自动下载并安装到您的计算机中。此过程大概需要 1-5 分钟，具体视网络连接状况而定。Agent 安装之后，请点击“继续”以完成注册流程。</value>
+  </data>
+  <data name="RegisterAMAPI" xml:space="preserve">
+    <value>注册 AMAPI。{0}</value>
+  </data>
+  <data name="RegisterAMAPIAtParentOG" xml:space="preserve">
+    <value>在配置了 Android EMM 注册的组织组中注册 AMAPI。{0}</value>
+  </data>
+  <data name="RegisterAMAPIHelpText" xml:space="preserve">
+    <value>必须先注册 Android 管理 API (AMAPI)，然后才能将其用于此组织组。</value>
+  </data>
+  <data name="RegisteredOrAppEnrolled" xml:space="preserve">
+    <value>已登记或已注册独立应用</value>
+  </data>
+  <data name="RegisterManagedDomain" xml:space="preserve">
+    <value>2. 注册受管 Google 域 (如果不存在)。</value>
+  </data>
+  <data name="RegisterMultiuserDeviceConfirmationMessage" xml:space="preserve">
+    <value>对于 Windows 设备，与设备注册相关的用户信息将被删除。</value>
+  </data>
+  <data name="Requirements" xml:space="preserve">
+    <value>要求</value>
+  </data>
+  <data name="RequireSharedDeviceEnrollmentEulaAcceptance" xml:space="preserve">
+    <value>只有在创建注册使用条款后，才能启用始终提示使用条款功能。请转到“组与设置”&gt;“设备与用户”&gt;“常规”&gt;“注册”&gt;“使用条款”选项卡以创建 TOU。</value>
+  </data>
+  <data name="SerialNumberAssignmentFailed" xml:space="preserve">
+    <value>序列号分配失败。</value>
+  </data>
+  <data name="SetUpDirectoryServices" xml:space="preserve">
+    <value>设置目录服务</value>
+  </data>
+  <data name="SubOrganizationGroup" xml:space="preserve">
+    <value>子组织组</value>
+  </data>
+  <data name="SubsequentUserEnrollmentBlocked" xml:space="preserve">
+    <value>已阻止后续用户注册。</value>
+  </data>
+  <data name="TapHereIfNotPromptedAutomatically" xml:space="preserve">
+    <value>如果没有自动提示弹出，请点击这里</value>
+  </data>
+  <data name="TapHereWhenDownloadFinishes" xml:space="preserve">
+    <value>下载完成后点击此处</value>
+  </data>
+  <data name="TargetOwnershipRestrictedByDefaultPolicyAtGivenOG" xml:space="preserve">
+    <value>目标所有权受给定组织组默认策略的限制</value>
+  </data>
+  <data name="TokenSaveFailed" xml:space="preserve">
+    <value>令牌保存失败。</value>
+  </data>
+  <data name="UemManaged" xml:space="preserve">
+    <value>UEM 纳管</value>
+  </data>
+  <data name="UnapprovedUser" xml:space="preserve">
+    <value>用户是已进行外部 SAML 身份验证的用户，不允许注册。请联系您的管理员或重试。</value>
+  </data>
+  <data name="UploadedCertMisMatch" xml:space="preserve">
+    <value>缺少证书。请上载有效的证书以继续。</value>
+  </data>
+  <data name="UserEnrolled" xml:space="preserve">
+    <value>已注册的用户</value>
+  </data>
+  <data name="UserEnrollmentFeatureNotEnabled" xml:space="preserve">
+    <value>已为您的组织禁用用户注册。请联系您的管理员以启用用户注册，然后重试。</value>
+  </data>
+  <data name="UserHasExceededMaxAllowedDevices" xml:space="preserve">
+    <value>用户已超过允许的最大设备数。</value>
+  </data>
+  <data name="UsernameAlreadyExists" xml:space="preserve">
+    <value>用户名已存于其他用户。请重试。</value>
+  </data>
+  <data name="UserSetup" xml:space="preserve">
+    <value>用户设置</value>
+  </data>
+  <data name="ValidatePhoneNumberFailed" xml:space="preserve">
+    <value>无法验证注册用户的电话号码。请联系您的管理员或重试。</value>
+  </data>
+  <data name="WipeInitiated" xml:space="preserve">
+    <value>已启动擦除</value>
+  </data>
+  <data name="WipeInitiatedTooltip" xml:space="preserve">
+    <value>已启动擦除</value>
+  </data>
+  <data name="WorkProfileManagementMode" xml:space="preserve">
+    <value>工作配置文件管理模式</value>
+  </data>
+  <data name="WorkProfileManagementModeInfoMessage" xml:space="preserve">
+    <value>指定新注册的设备是否将由 Intelligent Hub 或 Android 管理 API 管理。建议使用 AMAPI。Intelligent Hub 仍将存在于设备上，但管理功能将委派给本机 Android OS。现有注册的设备不会受到影响。</value>
+  </data>
+  <data name="WorkProfileManagementModeToggleSuccessfulMessage" xml:space="preserve">
+    <value>注册成功! 管理模式已更新到 Android 管理 API。请参阅“注册设置”以查看或编辑配置的管理模式。</value>
+  </data>
+  <data name="Ws1RealTimeUserGroupSyncChanged" xml:space="preserve">
+    <value>Workspace ONE 实时用户组同步设置已更改</value>
+  </data>
+</root>

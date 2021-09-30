@@ -1,0 +1,1002 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AadCustomAttributeLookupFailed" xml:space="preserve">
+    <value>Přidat vlastní atribut – Vyhledání selhalo</value>
+  </data>
+  <data name="ActionStatus" xml:space="preserve">
+    <value>Stav akce</value>
+  </data>
+  <data name="ActionUuid" xml:space="preserve">
+    <value>UUID akce</value>
+  </data>
+  <data name="ActivationLockBypassCodeConfirmed" xml:space="preserve">
+    <value>Kód na obejití zámku aktivace byl potvrzen</value>
+  </data>
+  <data name="ActivationLockBypassCodeFailed" xml:space="preserve">
+    <value>Kód na obejití zámku aktivace selhal</value>
+  </data>
+  <data name="ActivationLockBypassCodeRefused" xml:space="preserve">
+    <value>Kód na obejití zámku aktivace byl odmítnut</value>
+  </data>
+  <data name="ActivationLockBypassCodeRequested" xml:space="preserve">
+    <value>Byl vyžádán kód na obejití zámku aktivace</value>
+  </data>
+  <data name="AdminAppAuthTokenIssued" xml:space="preserve">
+    <value>Aplikace správce – Ověřovací token vydán</value>
+  </data>
+  <data name="AdminGroupDirectorySyncCompleted" xml:space="preserve">
+    <value>Synchronizace adresáře administrátorské skupiny dokončena</value>
+  </data>
+  <data name="AdminPasswordRotationConfirmed" xml:space="preserve">
+    <value>Potvrzena rotace hesla administrátora</value>
+  </data>
+  <data name="AdminPasswordRotationFailed" xml:space="preserve">
+    <value>Rotace hesla administrátora se nezdařila</value>
+  </data>
+  <data name="AdminPasswordRotationRequested" xml:space="preserve">
+    <value>Vyžadována rotace hesla administrátora</value>
+  </data>
+  <data name="AndroidHeartbeatIntervalSettingChangedFailed" xml:space="preserve">
+    <value>Změna nastavení intervalu prezenčního signálu Android se nezdařila.</value>
+  </data>
+  <data name="AndroidHeartbeatIntervalSettingChangedSuccess" xml:space="preserve">
+    <value>Změna nastavení intervalu prezenčního signálu Android proběhla úspěšně</value>
+  </data>
+  <data name="AndroidSyncPerAppVpnAssociations" xml:space="preserve">
+    <value>Synchronizovat přidružení VPN podle aplikace</value>
+  </data>
+  <data name="AndroidSyncPerAppVpnAssociationsConfirmed" xml:space="preserve">
+    <value>Potvrzen příkaz Synchronizovat přidružení VPN podle aplikace</value>
+  </data>
+  <data name="AndroidSyncPerAppVpnAssociationsRequested" xml:space="preserve">
+    <value>Vyžádán příkaz Synchronizovat přidružení VPN podle aplikace</value>
+  </data>
+  <data name="AppleMdmSampleScheduleSettingChangedFailed" xml:space="preserve">
+    <value>Změna nastavení ukázkového plánu Apple MDM selhala</value>
+  </data>
+  <data name="AppleMdmSampleScheduleSettingChangedSuccess" xml:space="preserve">
+    <value>Změna nastavení ukázkového plánu Apple MDM byla úspěšná</value>
+  </data>
+  <data name="AppleProfileSigningCertificateChangedFailure" xml:space="preserve">
+    <value>Změna nastavení podpisového certifikátu profilu Apple se nezdařila</value>
+  </data>
+  <data name="AppleProfileSigningCertificateChangedSuccess" xml:space="preserve">
+    <value>Nastavení podpisového certifikátu profilu Apple bylo úspěšně změněno</value>
+  </data>
+  <data name="ApplicationDeploymentCriteriaMissing" xml:space="preserve">
+    <value>Chybí kritéria zavádění aplikace</value>
+  </data>
+  <data name="ApplicationDownloadFailed" xml:space="preserve">
+    <value>Stažení aplikace selhalo</value>
+  </data>
+  <data name="ApplicationInstalling" xml:space="preserve">
+    <value>Aplikace se instaluje</value>
+  </data>
+  <data name="AppLogsDescription" xml:space="preserve">
+    <value>View and download available log files.</value>
+  </data>
+  <data name="ApproveRemoval" xml:space="preserve">
+    <value>Schválit odstranění</value>
+  </data>
+  <data name="ApproveRemovalDescription" xml:space="preserve">
+    <value>Tato akce schvaluje odstranění aplikace z potenciálně dotčených zařízení. K úpravě přiřazení aplikace není nutná žádná další akce.</value>
+  </data>
+  <data name="ApproveRemovalTitle" xml:space="preserve">
+    <value>Schválit odstranění aplikace</value>
+  </data>
+  <data name="BaselineInstallConfirmed" xml:space="preserve">
+    <value>Instalace standardních hodnot potvrzena</value>
+  </data>
+  <data name="BaselineInstallFailed" xml:space="preserve">
+    <value>Instalace standardních hodnot selhala</value>
+  </data>
+  <data name="BaselineMissingHash" xml:space="preserve">
+    <value>Vyžádána aktualizace standardní hodnoty hash</value>
+  </data>
+  <data name="BaselineQueryConfirmed" xml:space="preserve">
+    <value>Dotaz na standardní hodnoty potvrzen</value>
+  </data>
+  <data name="BaselineQueryFailed" xml:space="preserve">
+    <value>Dotaz na standardní hodnoty selhal</value>
+  </data>
+  <data name="BaselineQueryRequested" xml:space="preserve">
+    <value>Vyžádán dotaz na standardní hodnoty</value>
+  </data>
+  <data name="BaselineReapplyFailed" xml:space="preserve">
+    <value>Opakované použití standardní hodnoty se nezdařilo</value>
+  </data>
+  <data name="BaselineRemovalConfirmed" xml:space="preserve">
+    <value>Odebrání standardních hodnot potvrzeno</value>
+  </data>
+  <data name="BaselineRemovalFailed" xml:space="preserve">
+    <value>Odebrání standardních hodnot selhalo</value>
+  </data>
+  <data name="BaselineStatusUpdateFailed" xml:space="preserve">
+    <value>Aktualizace stavu standardních hodnot selhala</value>
+  </data>
+  <data name="BootstrapTokenEscrowed" xml:space="preserve">
+    <value>BootstrapToken uschován</value>
+  </data>
+  <data name="BootstrapTokenRemoved" xml:space="preserve">
+    <value>Token spuštění odstraněn</value>
+  </data>
+  <data name="CartCreationFailed" xml:space="preserve">
+    <value>Vytvoření košíku selhalo</value>
+  </data>
+  <data name="CertificateMissingInSample" xml:space="preserve">
+    <value>Chybí ve vzorku</value>
+  </data>
+  <data name="CertificateNoLongerInUse" xml:space="preserve">
+    <value>Nepoužívá se</value>
+  </data>
+  <data name="CertificatePinningDisable" xml:space="preserve">
+    <value>Připnutí certifikátu deaktivováno</value>
+  </data>
+  <data name="CertificateReinstated" xml:space="preserve">
+    <value>Certifikát byl obnoven</value>
+  </data>
+  <data name="CheckInCheckOut" xml:space="preserve">
+    <value>Přihlášení/odhlášení</value>
+  </data>
+  <data name="ComplianceBrokerRequest" xml:space="preserve">
+    <value>Požadavek na zprostředkovatele shody</value>
+  </data>
+  <data name="ComplianceEvaluationTime" xml:space="preserve">
+    <value>Doba hodnocení konformity</value>
+  </data>
+  <data name="CompliancePolicyParsing" xml:space="preserve">
+    <value>Analýza zásad konformity</value>
+  </data>
+  <data name="ConditionalAccessDeviceRegistration" xml:space="preserve">
+    <value>Registrace zařízení s podmíněným přístupem</value>
+  </data>
+  <data name="ConditionalAccessDeviceStateChange" xml:space="preserve">
+    <value>Změna stavu zařízení s podmíněným přístupem</value>
+  </data>
+  <data name="ConditionalAccessPartnerType" xml:space="preserve">
+    <value>Typ partnera s podmíněným přístupem</value>
+  </data>
+  <data name="ConfigurationReceivedToRestrictAppOrProcess" xml:space="preserve">
+    <value>Byla přijata konfigurace omezující aplikace nebo procesy</value>
+  </data>
+  <data name="ConsoleEvent" xml:space="preserve">
+    <value>Událost konzoly</value>
+  </data>
+  <data name="ConsoleEventLogSearchFilterDateRange" xml:space="preserve">
+    <value>Schopnost zobrazovat události konzoly pro velké rozsahy dat, jako jsou „Kdykoli“ a „Minulý měsíc“, byla na globální úrovni zakázána. Pokud chcete zobrazit události konzoly, vyberte menší rozsah dat nebo přejděte k podřízené organizační skupině.</value>
+  </data>
+  <data name="ConsoleEventLogSearchLimitExceeded" xml:space="preserve">
+    <value>Časové rozpětí vybrané pro události konzoly je příliš velké. Chcete-li zobrazit události konzoly, vyberte menší časové rozpětí.</value>
+  </data>
+  <data name="ConsoleEvents" xml:space="preserve">
+    <value>Události konzoly</value>
+  </data>
+  <data name="ConsoleSessionTimeOutChangedFailure" xml:space="preserve">
+    <value>Změna doby vypršení časového limitu relace konzoly se nezdařila</value>
+  </data>
+  <data name="ConsoleSessionTimeOutChangedSuccess" xml:space="preserve">
+    <value>Změna doby vypršení časového limitu relace konzoly proběhla úspěšně</value>
+  </data>
+  <data name="CreateWnsChannelCommandRequestConfirmed" xml:space="preserve">
+    <value>Požadavek příkazu k vytvoření kanálu WNS potvrzen.</value>
+  </data>
+  <data name="CreateWnsChannelCommandRequestFailed" xml:space="preserve">
+    <value>Požadavek příkazu k vytvoření kanálu WNS se nezdařil.</value>
+  </data>
+  <data name="DateTimeLabel" xml:space="preserve">
+    <value>Datum a čas</value>
+  </data>
+  <data name="DeviceActionFailed" xml:space="preserve">
+    <value>Akce zařízení se nezdařila</value>
+  </data>
+  <data name="DeviceActionInprogress" xml:space="preserve">
+    <value>Akce zařízení probíhá</value>
+  </data>
+  <data name="DeviceActionProcessed" xml:space="preserve">
+    <value>Akce zařízení zpracována</value>
+  </data>
+  <data name="DeviceActionRequested" xml:space="preserve">
+    <value>Vyžádána akce zařízení</value>
+  </data>
+  <data name="DeviceAddedToAppleDep" xml:space="preserve">
+    <value>Zařízení přidáno do programu Apple DEP</value>
+  </data>
+  <data name="DeviceAddedToEnrollmentWhiteList" xml:space="preserve">
+    <value>Zařízení přidáno do seznamu povolených registrací</value>
+  </data>
+  <data name="DeviceAllMangedApplicationDisable" xml:space="preserve">
+    <value>Všechny aplikace spravované na zařízení byly deaktivovány</value>
+  </data>
+  <data name="DeviceAttributeAssetNumberModified" xml:space="preserve">
+    <value>Atribut zařízení Číslo aktiva změněn</value>
+  </data>
+  <data name="DeviceAttributeOperatingSystem" xml:space="preserve">
+    <value>Atribut zařízení Operační systém</value>
+  </data>
+  <data name="DeviceAttributeUserEmailAddressModified" xml:space="preserve">
+    <value>Atribut zařízení E-mailová adresa uživatele změněn</value>
+  </data>
+  <data name="DeviceCheckInWihtNotEnrolledUser" xml:space="preserve">
+    <value>Zařízení přihlášeno, ale uživatel není registrován</value>
+  </data>
+  <data name="DeviceConfiguredFailed" xml:space="preserve">
+    <value>Konfigurace zařízení selhala</value>
+  </data>
+  <data name="DeviceConfiguredRefused" xml:space="preserve">
+    <value>Konfigurace zařízení odmítnuta</value>
+  </data>
+  <data name="DeviceConsoleEvent" xml:space="preserve">
+    <value>Událost zařízení a konzoly</value>
+  </data>
+  <data name="DeviceConsoleEvents" xml:space="preserve">
+    <value>Události zařízení a konzoly</value>
+  </data>
+  <data name="DeviceCpuInfoChanged" xml:space="preserve">
+    <value>Informace o procesoru zařízení se změnily</value>
+  </data>
+  <data name="DeviceData" xml:space="preserve">
+    <value>Data zařízení</value>
+  </data>
+  <data name="DeviceEvent" xml:space="preserve">
+    <value>Událost zařízení</value>
+  </data>
+  <data name="DeviceEventLogSearchFilterDateRange" xml:space="preserve">
+    <value>Schopnost zobrazovat události zařízení pro velké rozsahy dat, jako jsou „Kdykoli“ a „Minulý měsíc“, byla na globální úrovni zakázána. Pokud chcete zobrazit události zařízení, vyberte menší rozsah dat nebo přejděte k podřízené organizační skupině.</value>
+  </data>
+  <data name="DeviceEventLogSearchLimitExceeded" xml:space="preserve">
+    <value>Časové rozpětí vybrané pro události zařízení je příliš velké. Chcete-li zobrazit události zařízení, vyberte menší časové rozpětí.</value>
+  </data>
+  <data name="DeviceEvents" xml:space="preserve">
+    <value>Události zařízení</value>
+  </data>
+  <data name="DeviceEventsDescription" xml:space="preserve">
+    <value>Zobrazit detailní informace o události zařízení</value>
+  </data>
+  <data name="DeviceLimitPerOrganizationGroupEnabled" xml:space="preserve">
+    <value>Omezení počtu zařízení na jednu organizační skupinu povoleno</value>
+  </data>
+  <data name="DeviceLocationFailed" xml:space="preserve">
+    <value>Umístění zařízení selhalo</value>
+  </data>
+  <data name="DeviceLocationRefused" xml:space="preserve">
+    <value>Umístění zařízení odmítnuto</value>
+  </data>
+  <data name="DeviceManagementStatus" xml:space="preserve">
+    <value>Stav správy zařízení</value>
+  </data>
+  <data name="DeviceMangedApplicationDisable" xml:space="preserve">
+    <value>Aplikace spravovaná na zařízení byla deaktivována</value>
+  </data>
+  <data name="DeviceModelChanged" xml:space="preserve">
+    <value>Model zařízení byl změněn</value>
+  </data>
+  <data name="DeviceOemChanged" xml:space="preserve">
+    <value>Výrobce OEM zařízení byl změněn</value>
+  </data>
+  <data name="DeviceOfflineDomainJoinConfigCreationFailed" xml:space="preserve">
+    <value>Vytvoření konfigurace připojení zařízení k off-line doméně se nezdařilo</value>
+  </data>
+  <data name="DeviceScriptSampleSentFailed" xml:space="preserve">
+    <value>Odeslání vzorku skriptu zařízení se nezdařilo</value>
+  </data>
+  <data name="DeviceServicesAutoDiscoverySync" xml:space="preserve">
+    <value>Synchronizace automatického zjišťování služeb zařízení</value>
+  </data>
+  <data name="DeviceTimeWindowStatusSampleCompleted" xml:space="preserve">
+    <value>Vzorek stavu časového okna zařízení byl dokončen</value>
+  </data>
+  <data name="DeviceTimeWindowStatusSampleFailed" xml:space="preserve">
+    <value>Vzorek stavu časového okna zařízení se nezdařil</value>
+  </data>
+  <data name="DeviceTimeWindowSync" xml:space="preserve">
+    <value>Synchronizace časového okna zařízení</value>
+  </data>
+  <data name="DeviceUserCheckOutFailed" xml:space="preserve">
+    <value>Odhlášení uživatele zařízení selhalo</value>
+  </data>
+  <data name="DeviceUUID" xml:space="preserve">
+    <value>UUID zařízení</value>
+  </data>
+  <data name="DeviceWorkflowComplete" xml:space="preserve">
+    <value>Byl dokončen pracovní postup zařízení</value>
+  </data>
+  <data name="DeviceWorkflowFailed" xml:space="preserve">
+    <value>Pracovní postup zařízení selhal</value>
+  </data>
+  <data name="DeviceWorkflowSync" xml:space="preserve">
+    <value>Synchronizace pracovního postupu zařízení</value>
+  </data>
+  <data name="DisableLostModeRefused" xml:space="preserve">
+    <value>Deaktivace režimu ztraceného zařízení odmítnuta</value>
+  </data>
+  <data name="DoNotShowAgain" xml:space="preserve">
+    <value>Znovu nezobrazovat</value>
+  </data>
+  <data name="EnableActivationLockFailed" xml:space="preserve">
+    <value>Aktivace zámku aktivace se nezdařila</value>
+  </data>
+  <data name="EnableActivationLockSucceeded" xml:space="preserve">
+    <value>Aktivace zámku aktivace byla úspěšná</value>
+  </data>
+  <data name="EnableLostModeRefused" xml:space="preserve">
+    <value>Aktivace režimu ztraceného zařízení odmítnuta</value>
+  </data>
+  <data name="EnrollmentAuthenticationSettingChanged" xml:space="preserve">
+    <value>Nastavení autentizace registrace bylo změněno.</value>
+  </data>
+  <data name="FileVaultRecoveryKeyRotationRequested" xml:space="preserve">
+    <value>Vyžadována rotace obnovovacích klíčů pro FileVault</value>
+  </data>
+  <data name="FromDeviceDetailsPage" xml:space="preserve">
+    <value>Ze stránky detailů zařízení</value>
+  </data>
+  <data name="FromSSPDetailsPage" xml:space="preserve">
+    <value>Ze stránky podrobností SSP</value>
+  </data>
+  <data name="GetBootstrapTokenRequested" xml:space="preserve">
+    <value>GetBootstrapToken vyžádán</value>
+  </data>
+  <data name="GetBootstrapTokenRequestProcessed" xml:space="preserve">
+    <value>Požadavek GetBootstrapToken zpracován</value>
+  </data>
+  <data name="GlobalThresholdMessage" xml:space="preserve">
+    <value>Na globální úrovni lze zobrazit pouze události za poslední hodinu. Pokud chcete zobrazit větší časové rozsahy, přejděte k podřízené organizační skupině</value>
+  </data>
+  <data name="GuestUserLogin" xml:space="preserve">
+    <value>Přihlášení uživatele typu host</value>
+  </data>
+  <data name="ImpactedDevices" xml:space="preserve">
+    <value>Dotčená zařízení</value>
+  </data>
+  <data name="InitiateAutoDiscoveryPinningSync" xml:space="preserve">
+    <value>Zahájit synchronizaci připnutí automatického zjišťování</value>
+  </data>
+  <data name="InstallIntelligentHubRequestFailure" xml:space="preserve">
+    <value>Zařazení příkazu pro instalaci centra Intelligent Hub do fronty se nezdařilo</value>
+  </data>
+  <data name="InstallIntelligentHubRequestSuccess" xml:space="preserve">
+    <value>Příkaz pro instalaci centra Intelligent Hub byl úspěšně zařazen do fronty</value>
+  </data>
+  <data name="InstallMacOSBootstrapPkgFailed" xml:space="preserve">
+    <value>Instalace spouštěcího balíčku pro macOS se nezdařila.</value>
+  </data>
+  <data name="InstallMacOSBootstrapPkgRefused" xml:space="preserve">
+    <value>Instalace spouštěcího balíčku pro macOS byla zamítnuta.</value>
+  </data>
+  <data name="InstallOnFilteredSuccess" xml:space="preserve">
+    <value>Instalovat filtrovaným – úspěch</value>
+  </data>
+  <data name="InstallPackagedMacOsXAgentConfirmed" xml:space="preserve">
+    <value>Instalace agenta macOS potvrzena</value>
+  </data>
+  <data name="InstallPackagedMacOsXAgentFailed" xml:space="preserve">
+    <value>Instalace agenta macOS se nezdařila</value>
+  </data>
+  <data name="InstallPackagedMacOsXAgentRefused" xml:space="preserve">
+    <value>Instalace agenta macOS zamítnuta</value>
+  </data>
+  <data name="InstallPackagedMacOsXAgentRequested" xml:space="preserve">
+    <value>Instalace agenta macOS vyžádána</value>
+  </data>
+  <data name="LogOutUserConfirmed" xml:space="preserve">
+    <value>Odhlášení uživatele potvrzeno</value>
+  </data>
+  <data name="LogoutUserFailed" xml:space="preserve">
+    <value>Odhlášení uživatele selhalo</value>
+  </data>
+  <data name="LogOutUserRefused" xml:space="preserve">
+    <value>Odhlášení uživatele odmítnuto</value>
+  </data>
+  <data name="LogOutUserRequested" xml:space="preserve">
+    <value>Odhlášení uživatele požadováno</value>
+  </data>
+  <data name="ManagedAdminPasswordRotationRequested" xml:space="preserve">
+    <value>Vyžadována rotace spravovaného hesla správce</value>
+  </data>
+  <data name="ManagedSettings" xml:space="preserve">
+    <value>Spravovaná nastavení</value>
+  </data>
+  <data name="ManagedSettingsConfirmed" xml:space="preserve">
+    <value>Spravovaná nastavení byla potvrzena</value>
+  </data>
+  <data name="ManagedSettingsFailed" xml:space="preserve">
+    <value>Spravovaná nastavení selhala</value>
+  </data>
+  <data name="ManagedSettingsRefused" xml:space="preserve">
+    <value>Spravovaná nastavení byla odmítnuta</value>
+  </data>
+  <data name="ManagedSettingsRequested" xml:space="preserve">
+    <value>Byla vyžádána spravovaná nastavení</value>
+  </data>
+  <data name="MembershipSyncRequestSent" xml:space="preserve">
+    <value>Odeslán požadavek na synchronizaci členství</value>
+  </data>
+  <data name="NotNowInAwaitConfiguration" xml:space="preserve">
+    <value>Zpráva Nyní ne ve stavu Počkejte na konfiguraci</value>
+  </data>
+  <data name="P2PTrueUpGenericError" xml:space="preserve">
+    <value>Skutečná obecná chyba P2P</value>
+  </data>
+  <data name="PCRefreshConfirmed" xml:space="preserve">
+    <value>Obnova desktopu Windows potvrzena</value>
+  </data>
+  <data name="PCRefreshFailed" xml:space="preserve">
+    <value>Obnova desktopu Windows selhala</value>
+  </data>
+  <data name="PeerDistributionStatistics" xml:space="preserve">
+    <value>Statistiky doplňku Peer Distribution</value>
+  </data>
+  <data name="PinnedCertificateDelete" xml:space="preserve">
+    <value>Připnutý certifikát smazán</value>
+  </data>
+  <data name="PinnedHostDelete" xml:space="preserve">
+    <value>Připnutý hostitel smazán</value>
+  </data>
+  <data name="PinnedHostDisable" xml:space="preserve">
+    <value>Připnutý hostitel deaktivován</value>
+  </data>
+  <data name="PinnedHostEdit" xml:space="preserve">
+    <value>Připnutý hostitel upraven</value>
+  </data>
+  <data name="PinnedHostEnable" xml:space="preserve">
+    <value>Připnutý hostitel aktivován</value>
+  </data>
+  <data name="PolicySigningCertificateSettingChangedFailure" xml:space="preserve">
+    <value>Změna nastavení podpisového certifikátu zásady se nezdařila.</value>
+  </data>
+  <data name="PolicySigningCertificateSettingChangedSuccess" xml:space="preserve">
+    <value>Změna nastavení podpisového certifikátu zásady proběhla úspěšně</value>
+  </data>
+  <data name="ProfilesPerformActionAgain" xml:space="preserve">
+    <value>Vytvoření/aktualizace/odstranění profilů se nezdařilo. Proveďte akci znovu.</value>
+  </data>
+  <data name="ProvisioningAgentQueryFailed" xml:space="preserve">
+    <value>Dotaz agenta zajišťování se nezdařil.</value>
+  </data>
+  <data name="ProvisioningPackageCreated" xml:space="preserve">
+    <value>Balíček zajišťování vytvořen.</value>
+  </data>
+  <data name="ProvisioningPackageInstallConfirmed" xml:space="preserve">
+    <value>Instalace balíčku zajišťování potvrzena.</value>
+  </data>
+  <data name="ProvisioningPackageInstallFailed" xml:space="preserve">
+    <value>Instalace balíčku zajišťování se nezdařila.</value>
+  </data>
+  <data name="RecordDeleted" xml:space="preserve">
+    <value>Record deleted.</value>
+  </data>
+  <data name="RefreshEsimConfirmed" xml:space="preserve">
+    <value>Obnovení eSIM karty potvrzeno</value>
+  </data>
+  <data name="RefreshEsimFailed" xml:space="preserve">
+    <value>Obnovení eSIM karty selhalo</value>
+  </data>
+  <data name="RefreshEsimRefused" xml:space="preserve">
+    <value>Obnovení eSIM karty odmítnuto</value>
+  </data>
+  <data name="RefreshEsimRequested" xml:space="preserve">
+    <value>Obnovení eSIM karty požadováno</value>
+  </data>
+  <data name="RejectRemoval" xml:space="preserve">
+    <value>Odmítnout odstranění</value>
+  </data>
+  <data name="RejectRemovalDescription" xml:space="preserve">
+    <value>Tato akce vymaže příkaz k odstranění aplikace z potenciálně dotčených zařízení. Ujistěte se, že je aplikace aktivní a přiřazená k zařízením, aby se zabránilo dalšímu spuštění odstranění aplikace.</value>
+  </data>
+  <data name="RejectRemovalTitle" xml:space="preserve">
+    <value>Odmítnout odstranění aplikace</value>
+  </data>
+  <data name="RemovableDriveRecoveryKeyAccessed" xml:space="preserve">
+    <value>Získán přístup k obnovovacímu klíči šifrování disku</value>
+  </data>
+  <data name="RemoveBootstrapTokenRequested" xml:space="preserve">
+    <value>Vyžádáno odstranění tokenu spuštění</value>
+  </data>
+  <data name="RemoveLockConfirmed" xml:space="preserve">
+    <value>Odstranění zámku potvrzeno</value>
+  </data>
+  <data name="RequestLogConfirmed" xml:space="preserve">
+    <value>Vyžádání protokolu zařízení potvrzeno</value>
+  </data>
+  <data name="RequestLogFailed" xml:space="preserve">
+    <value>Vyžádání protokolu zařízení se nezdařilo</value>
+  </data>
+  <data name="RequestLogRefused" xml:space="preserve">
+    <value>Vyžádání protokolu zařízení odmítnuto</value>
+  </data>
+  <data name="RequestLogRequested" xml:space="preserve">
+    <value>Vyžádán protokol zařízení</value>
+  </data>
+  <data name="ResourceUuid" xml:space="preserve">
+    <value>UUID zdroje</value>
+  </data>
+  <data name="ResourceVersion" xml:space="preserve">
+    <value>Verze zdroje</value>
+  </data>
+  <data name="RestrictedAppOrProcessDetected" xml:space="preserve">
+    <value>Detekována omezená aplikace nebo proces</value>
+  </data>
+  <data name="RestrictedAppOrProcessRemediated" xml:space="preserve">
+    <value>Opravena omezená aplikace nebo proces</value>
+  </data>
+  <data name="RotateDeviceRecoveryKey" xml:space="preserve">
+    <value>Rotace obnovovacího klíče zařízení</value>
+  </data>
+  <data name="RotateDeviceRecoveryKeyRequested" xml:space="preserve">
+    <value>Vyžadována rotace obnovovacích klíčů</value>
+  </data>
+  <data name="SampleResponseListReceived" xml:space="preserve">
+    <value>Byl přijat vzorový seznam odpovědí</value>
+  </data>
+  <data name="ScheduledAdminPasswordRotationRequested" xml:space="preserve">
+    <value>Vyžadována rotace spravovaného hesla administrátora</value>
+  </data>
+  <data name="ScheduledRotateDeviceRecoveryKeyRequested" xml:space="preserve">
+    <value>Vyžadována naplánovaná rotace obnovovacích klíčů</value>
+  </data>
+  <data name="ScheduleOSUpdateScanFailed" xml:space="preserve">
+    <value>Plánování hledání aktualizací OS se nezdařilo</value>
+  </data>
+  <data name="ScimProvisioningFailure" xml:space="preserve">
+    <value>Selhání zajišťování SCIM</value>
+  </data>
+  <data name="ScriptFailedToExecuteOnDevice" xml:space="preserve">
+    <value>Spuštění skriptu na zařízení se nezdařilo</value>
+  </data>
+  <data name="ScriptPersistedInDeviceState" xml:space="preserve">
+    <value>Skript zachován ve stavu zařízení</value>
+  </data>
+  <data name="ScriptResourceRequestedByDevice" xml:space="preserve">
+    <value>Zdroj skriptu vyžádán zařízením</value>
+  </data>
+  <data name="ScriptSampleNotPersisted" xml:space="preserve">
+    <value>Vzorek skriptu nezachován ve stavu zařízení</value>
+  </data>
+  <data name="ScriptSamplePersistedInDeviceState" xml:space="preserve">
+    <value>Vzorek skriptu zachován ve stavu zařízení</value>
+  </data>
+  <data name="ScriptSampleReceived" xml:space="preserve">
+    <value>Vzorek skriptu přijat</value>
+  </data>
+  <data name="ScriptSampleReceivedWithErrors" xml:space="preserve">
+    <value>Vzorek skriptu přijat s chybami</value>
+  </data>
+  <data name="ScriptSampleSentFailed" xml:space="preserve">
+    <value>Odeslání vzorku skriptu zařízení se nezdařilo</value>
+  </data>
+  <data name="SdkComplianceSettings" xml:space="preserve">
+    <value>Nastavení dodržování zásad aplikací SDK</value>
+  </data>
+  <data name="SdkComplianceSettingsChanged" xml:space="preserve">
+    <value>Nastavení dodržování zásad aplikací SDK se změnilo</value>
+  </data>
+  <data name="ServerKeyUtilityKeyInstallationFailure" xml:space="preserve">
+    <value>Instalace klíče nástroje klíč serveru selhala.</value>
+  </data>
+  <data name="ServerKeyUtilityKeyInstallationSuccess" xml:space="preserve">
+    <value>Instalace klíče nástroje klíč serveru se zdařila.</value>
+  </data>
+  <data name="SetBootstrapTokenRequested" xml:space="preserve">
+    <value>SetBootstrapToken vyžádán</value>
+  </data>
+  <data name="SetUpConfigurationConfirmed" xml:space="preserve">
+    <value>Konfigurace nastavení potvrzena</value>
+  </data>
+  <data name="SetUpConfigurationFailed" xml:space="preserve">
+    <value>Konfigurace nastavení se nezdařila</value>
+  </data>
+  <data name="SetUpConfigurationRefused" xml:space="preserve">
+    <value>Konfigurace nastavení odmítnuta</value>
+  </data>
+  <data name="SetUpConfigurationRequested" xml:space="preserve">
+    <value>Vyžadována konfigurace nastavení</value>
+  </data>
+  <data name="SigningServiceCertificateRotationFailedEvent" xml:space="preserve">
+    <value>Rotace certifikátů podpisové služby se nezdařila – událost</value>
+  </data>
+  <data name="SoapApiClearClientCertificate" xml:space="preserve">
+    <value>Smazán certifikát klienta API SOAP.</value>
+  </data>
+  <data name="SoapApiExportClientCertificate" xml:space="preserve">
+    <value>Exportován certifikát klienta API SOAP.</value>
+  </data>
+  <data name="SoapApiGenerateClientCertificate" xml:space="preserve">
+    <value>Vygenerován certifikát klienta API SOAP.</value>
+  </data>
+  <data name="StopLogRequested" xml:space="preserve">
+    <value>Vyžádáno zastavení protokolu</value>
+  </data>
+  <data name="SyncAssetsAppDeleted" xml:space="preserve">
+    <value>Byla odstraněna aplikace Synchronizace majetku</value>
+  </data>
+  <data name="SyncAssetsAppVppInfoRemoved" xml:space="preserve">
+    <value>Byly odstraněny informace VPP aplikace Synchronizace majetku</value>
+  </data>
+  <data name="SyncEntitlementsConfirmed" xml:space="preserve">
+    <value>Synchronizace oprávnění potvrzena</value>
+  </data>
+  <data name="SyncEntitlementsFailed" xml:space="preserve">
+    <value>Synchronizace oprávnění selhala</value>
+  </data>
+  <data name="SyncEntitlementsRefused" xml:space="preserve">
+    <value>Synchronizace oprávnění odmítnuta</value>
+  </data>
+  <data name="SyncEntitlementsRequested" xml:space="preserve">
+    <value>Synchronizace oprávnění vyžádána</value>
+  </data>
+  <data name="TimeMachineEnabled" xml:space="preserve">
+    <value>Funkce Time Machine aktivována</value>
+  </data>
+  <data name="TimeWindowAssignmentDeleted" xml:space="preserve">
+    <value>Přiřazení časového okna odstraněno</value>
+  </data>
+  <data name="TimeWindowAssignmentUpdated" xml:space="preserve">
+    <value>Přiřazení časového okna aktualizováno</value>
+  </data>
+  <data name="TimeWindowAssignmentUpdateFailed" xml:space="preserve">
+    <value>Aktualizace přiřazení časového okna se nezdařila</value>
+  </data>
+  <data name="TimeWindowCreated" xml:space="preserve">
+    <value>Časové okno vytvořeno</value>
+  </data>
+  <data name="TimeWindowDeleted" xml:space="preserve">
+    <value>Časové okno odstraněno</value>
+  </data>
+  <data name="TimeWindowIdentifiers" xml:space="preserve">
+    <value>Identifikátory časového okna</value>
+  </data>
+  <data name="TimeWindows" xml:space="preserve">
+    <value>Časová okna</value>
+  </data>
+  <data name="TimeWindowUpdated" xml:space="preserve">
+    <value>Časové okno aktualizováno</value>
+  </data>
+  <data name="TimeWindowUpdateFailed" xml:space="preserve">
+    <value>Aktualizace časového okna se nezdařila</value>
+  </data>
+  <data name="UpdateAssignmentCreated" xml:space="preserve">
+    <value>Přiřazení aktualizací bylo vytvořeno.</value>
+  </data>
+  <data name="UpdateAssignmentModified" xml:space="preserve">
+    <value>Přiřazení aktualizací bylo modifikováno.</value>
+  </data>
+  <data name="UpdateAssignmentRemoved" xml:space="preserve">
+    <value>Přiřazení aktualizací bylo odstraněno.</value>
+  </data>
+  <data name="UserEnrollmentAuthenticationFailure" xml:space="preserve">
+    <value>Autentizace registrace uživatele selhala.</value>
+  </data>
+  <data name="UserEnrollmentName" xml:space="preserve">
+    <value>Uživatelské jméno registrace</value>
+  </data>
+  <data name="UserFriendlyPrivacyPolicy" xml:space="preserve">
+    <value>Zásady ochrany dat</value>
+  </data>
+  <data name="UserListConfirmed" xml:space="preserve">
+    <value>Seznam uživatelů potvrzen</value>
+  </data>
+  <data name="UserListFailed" xml:space="preserve">
+    <value>Seznam uživatelů selhal</value>
+  </data>
+  <data name="UserListRefused" xml:space="preserve">
+    <value>Seznam uživatelů odmítnut</value>
+  </data>
+  <data name="UserListRequested" xml:space="preserve">
+    <value>Seznam uživatelů požadován</value>
+  </data>
+  <data name="VmLockConfirmed" xml:space="preserve">
+    <value>Uzamknutí VM potvrzeno</value>
+  </data>
+  <data name="VmLockFailed" xml:space="preserve">
+    <value>Uzamknutí VM selhalo</value>
+  </data>
+  <data name="VmLockRefused" xml:space="preserve">
+    <value>Uzamknutí VM odmítnuto</value>
+  </data>
+  <data name="VmLockRequested" xml:space="preserve">
+    <value>Uzamknutí VM vyžádáno</value>
+  </data>
+  <data name="VmUnlockConfirmed" xml:space="preserve">
+    <value>Odemknutí VM potvrzeno</value>
+  </data>
+  <data name="VmUnlockRefused" xml:space="preserve">
+    <value>Odemknutí VM odmítnuto</value>
+  </data>
+  <data name="VmUnlockRequested" xml:space="preserve">
+    <value>Odemknutí VM vyžádáno</value>
+  </data>
+  <data name="VmWipeConfirmed" xml:space="preserve">
+    <value>Výmaz VM potvrzen</value>
+  </data>
+  <data name="VmWipeFailed" xml:space="preserve">
+    <value>Výmaz VM selhal</value>
+  </data>
+  <data name="VmWipeRefused" xml:space="preserve">
+    <value>Výmaz VM odmítnut</value>
+  </data>
+  <data name="VmWipeRequested" xml:space="preserve">
+    <value>Výmaz VM požadován</value>
+  </data>
+  <data name="Windows10InvalidOdjSyncAlert" xml:space="preserve">
+    <value>Windows 10 – výstraha synchronizace neplatné úlohy ODJ</value>
+  </data>
+  <data name="WindowsDeviceCheckInMode" xml:space="preserve">
+    <value>Režim přihlášení zařízení Windows</value>
+  </data>
+  <data name="WindowsOobeAccountProvisioningComplete" xml:space="preserve">
+    <value>Zajišťování OOBE dokončeno pro uživatele</value>
+  </data>
+  <data name="WindowsOobeDeviceProvisioningComplete" xml:space="preserve">
+    <value>Zajišťování OOBE dokončeno pro zařízení</value>
+  </data>
+  <data name="WindowsOobeProvisioningRequested" xml:space="preserve">
+    <value>Vyžaduje se zajišťování OOBE</value>
+  </data>
+  <data name="WorkAccessibilityServicesPermittedAppIds" xml:space="preserve">
+    <value>Povolené aplikace služeb usnadnění</value>
+  </data>
+  <data name="WorkAllowAccountChanges" xml:space="preserve">
+    <value>Povolit přidávání účtu Googlu</value>
+  </data>
+  <data name="WorkAllowBluetoothContactSharing" xml:space="preserve">
+    <value>Sdílejte firemní kontakty se zařízeními Bluetooth.</value>
+  </data>
+  <data name="WorkAllowCamera" xml:space="preserve">
+    <value>Povolit kameru</value>
+  </data>
+  <data name="WorkAllowChrome" xml:space="preserve">
+    <value>Povolit Chrom prohlížeč</value>
+  </data>
+  <data name="WorkAllowContacts" xml:space="preserve">
+    <value>Povolit pracovní kontakty v aplikaci Osobní kontakty</value>
+  </data>
+  <data name="WorkAllowDisableAppVerify" xml:space="preserve">
+    <value>Povolit deaktivaci ověřování aplikace</value>
+  </data>
+  <data name="WorkAllowGooglePlay" xml:space="preserve">
+    <value>Povolit Google Play</value>
+  </data>
+  <data name="WorkAllowInstallingApps" xml:space="preserve">
+    <value>Povolit instalaci aplikací</value>
+  </data>
+  <data name="WorkAllowKeyguardFingerprint" xml:space="preserve">
+    <value>Povolit zamykání obrazovky - sensor otisků prstů</value>
+  </data>
+  <data name="WorkAllowKeyguardTrustAgent" xml:space="preserve">
+    <value>Povolit zamykání obrazovky - stav důvěryhodného agenta</value>
+  </data>
+  <data name="WorkAllowKeyguardUnredacted" xml:space="preserve">
+    <value>Povolit zamykání obrazovky – detailní oznámení</value>
+  </data>
+  <data name="WorkAllowNFC" xml:space="preserve">
+    <value>Povolit NFC</value>
+  </data>
+  <data name="WorkAllowNonGoogleAccounts" xml:space="preserve">
+    <value>Povolit přidávání/odstraňování účtů</value>
+  </data>
+  <data name="WorkAllowNonMarketAppInstall" xml:space="preserve">
+    <value>Povolit instalace aplikací mimo Market</value>
+  </data>
+  <data name="WorkAllowOutgoingBluetoothConnections" xml:space="preserve">
+    <value>Povolit odchozí připojení Bluetooth</value>
+  </data>
+  <data name="WorkAllowPersonalShareWithWork" xml:space="preserve">
+    <value>Soukromým aplikacím povolit sdílení dokumentů s pracovními aplikacemi</value>
+  </data>
+  <data name="WorkAllowPersonalToAccessWork" xml:space="preserve">
+    <value>Soukromým aplikacím povolit přístup k dokumentům z pracovních aplikací</value>
+  </data>
+  <data name="WorkAllowScreenCapture" xml:space="preserve">
+    <value>Povolit vytváření snímků obrazovky</value>
+  </data>
+  <data name="WorkAllowUninstallingApps" xml:space="preserve">
+    <value>Povolit odinstalování aplikací</value>
+  </data>
+  <data name="WorkAllowUSBDebugging" xml:space="preserve">
+    <value>Povolit USB ladění</value>
+  </data>
+  <data name="WorkAllowWorkContactsInPhone" xml:space="preserve">
+    <value>v číselníku vytáčení povolit zobrazení ID pracovního volajícího kontaktu</value>
+  </data>
+  <data name="WorkAllowWorkPersonalPaste" xml:space="preserve">
+    <value>Povolit vkládání ze schránky mezi pracovními a soukromými aplikacemi</value>
+  </data>
+  <data name="WorkAllowWorkShareWithPersonal" xml:space="preserve">
+    <value>Pracovním aplikacím povolit sdílení dokumentů s osobními aplikaceni</value>
+  </data>
+  <data name="WorkAllowWorkToAccessPersonal" xml:space="preserve">
+    <value>Pracovním aplikacím povolit přístupz osobních aplikací</value>
+  </data>
+  <data name="WorkflowAssignmentDeleted" xml:space="preserve">
+    <value>Přiřazení pracovního postupu bylo odstraněno</value>
+  </data>
+  <data name="WorkflowAssignmentUpdated" xml:space="preserve">
+    <value>Přiřazení pracovního postupu bylo aktualizováno</value>
+  </data>
+  <data name="WorkflowCreated" xml:space="preserve">
+    <value>Byl vytvořen pracovní postup</value>
+  </data>
+  <data name="WorkflowDeleted" xml:space="preserve">
+    <value>Pracovní postup byl odstraněn</value>
+  </data>
+  <data name="WorkflowUpdated" xml:space="preserve">
+    <value>Pracovní postup byl aktualizován</value>
+  </data>
+  <data name="WorkflowUpdatedDueToResourceUpdate" xml:space="preserve">
+    <value>Pracovní postup byl aktualizován z důvodu aktualizace zdroje</value>
+  </data>
+  <data name="WorkflowUpdateFailed" xml:space="preserve">
+    <value>Aktualizace pracovního postupu se nezdařila</value>
+  </data>
+  <data name="WorkflowUuid" xml:space="preserve">
+    <value>Identifikátor pracovního postupu</value>
+  </data>
+  <data name="WorkManagedApplication" xml:space="preserve">
+    <value>Aplikace ve spravovaném režimu Work</value>
+  </data>
+  <data name="WorkManagedBluetooth" xml:space="preserve">
+    <value>Bluetooth ve spravovaném režimu Work</value>
+  </data>
+  <data name="WorkManagedDeviceFunctionality" xml:space="preserve">
+    <value>Funkčnost zařízení ve spravovaném režimu Work</value>
+  </data>
+  <data name="WorkManagedHardwareRestrictions" xml:space="preserve">
+    <value>Omezení hardwaru ve spravovaném režimu Work</value>
+  </data>
+  <data name="WorkManagedMmsRestrictions" xml:space="preserve">
+    <value>Omezení MMS ve spravovaném režimu Work</value>
+  </data>
+  <data name="WorkManagedNetwork" xml:space="preserve">
+    <value>Síť ve spravovaném režimu Work</value>
+  </data>
+  <data name="WorkManagedPhoneAndData" xml:space="preserve">
+    <value>Telefon a data ve spravovaném režimu Work</value>
+  </data>
+  <data name="WorkManagedRoaming" xml:space="preserve">
+    <value>Roaming ve spravovaném režimu Work</value>
+  </data>
+  <data name="WorkManagedSecurity" xml:space="preserve">
+    <value>Zabezpečení ve spravovaném režimu Work</value>
+  </data>
+  <data name="WorkManagedSyncAndStorage" xml:space="preserve">
+    <value>Synchronizace a úložiště ve spravovaném režimu Work</value>
+  </data>
+  <data name="WorkManagedTethering" xml:space="preserve">
+    <value>Sdílení internetového připojení ve spravovaném režimu Work</value>
+  </data>
+  <data name="WorkProfileApplication" xml:space="preserve">
+    <value>Aplikace v pracovním profilu</value>
+  </data>
+  <data name="WorkProfileDeviceFunctionality" xml:space="preserve">
+    <value>Funkčnost zařízení v pracovním profilu</value>
+  </data>
+  <data name="WorkProfileNetwork" xml:space="preserve">
+    <value>Síť v pracovním profilu</value>
+  </data>
+  <data name="WorkProfileSyncAndStorage" xml:space="preserve">
+    <value>Synchronizace a úložiště v pracovním profilu</value>
+  </data>
+  <data name="WorkProfileWorkAndPersonal" xml:space="preserve">
+    <value>Pracovní a osobní záležitosti v pracovním profilu</value>
+  </data>
+  <data name="WorkWhitelistPermittedAccessibilityServices" xml:space="preserve">
+    <value>Povolit služby přístupu</value>
+  </data>
+</root>

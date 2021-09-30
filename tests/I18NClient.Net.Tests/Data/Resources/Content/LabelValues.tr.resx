@@ -1,0 +1,431 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Acknowledged" xml:space="preserve">
+    <value>Alındı</value>
+  </data>
+  <data name="AcknowledgedNotRequired" xml:space="preserve">
+    <value>Onay, sadece gerekli içerik için Smartfolio'ya uygulanır.</value>
+  </data>
+  <data name="AdminRepositoryContent" xml:space="preserve">
+    <value>Yönetici Havuzu İçeriği</value>
+  </data>
+  <data name="AllowCorporateFileServerViewing" xml:space="preserve">
+    <value>Kurumsal Dosya Sunucularının görüntülenmesi için izin verin</value>
+  </data>
+  <data name="AllowFileActions" xml:space="preserve">
+    <value>Dosya Eylemlerine İzin Ver</value>
+  </data>
+  <data name="AllowFileActionsTooltip" xml:space="preserve">
+    <value>Son kullanıcıların Content Locker uygulamasını kullanarak doğrudan SharePoint Online sistemleri üzerinden içerik silmesine, taşımasına ve içeriği yeniden adlandırmasına imkan tanır.</value>
+  </data>
+  <data name="ArgFilesLargerThanMaximumAllowedArgMessage" xml:space="preserve">
+    <value>İzin verilen maksimum {1} MB boyutundan daha büyük {0} dosyayı karşıya yüklemeye çalışıyorsunuz. Maksimum dosya boyutunu, varsayılan değerlerden farklı şekilde ayarlamak için Ayarlar &gt; Yönetici &gt; Depolama öğesine bakın. Depolama seçeneğini göremiyorsanız erişiminiz bulunmuyordur. İstenilen değişiklikleri yapmak için izinleri daha yüksek olan bir yöneticiyle iletişime geçmeniz gerekir.</value>
+  </data>
+  <data name="AutoSyncAdminRepositories" xml:space="preserve">
+    <value>Yönetici Havuzlarını Otomatik Eşitlem</value>
+  </data>
+  <data name="AutoTemplateDescription" xml:space="preserve">
+    <value>Açıklama</value>
+  </data>
+  <data name="BatchImportContentLockerExplanation" xml:space="preserve">
+    <value>Bu Toplu Alma Özelliği, yığın içindeki sisteme belgeleri yüklemek için kullanılabilir. Bu alma işlemi için bir şablon referans olmak üzere aşağıya linklenmiştir.</value>
+  </data>
+  <data name="CCPCanBeEnabledAtCustomerOgOnly" xml:space="preserve">
+    <value>Bulut İçerik Platformu sadece müşteri OG'sinde etkinleştirilebilir</value>
+  </data>
+  <data name="CellDataUsageExceedsArg" xml:space="preserve">
+    <value>Hücre Veri Kullanımı Şunu Aşıyor: {0} {1}</value>
+    <comment>{0} and {1} will be replaced by Data Usage and unit. Ex: 10 MB</comment>
+  </data>
+  <data name="CellDataUsageExceedsArgOfTotalPlan" xml:space="preserve">
+    <value>Hücre Veri Kullanımı Toplam Planda Şunu Aşıyor: {0}</value>
+    <comment>{0} will be replaced by Cell Data Usage Percentage</comment>
+  </data>
+  <data name="CertificateAuthentication" xml:space="preserve">
+    <value>Sertifika Kimlik Doğrulaması</value>
+  </data>
+  <data name="CertificateBasedAuthenticationTooltip" xml:space="preserve">
+    <value>PIV-D Türetilmiş Kimlik Bilgilerinin kullanımını etkinleştirmek, Content Gateway ayarlarından Kerberos'un yapılandırılmasını gerektirir.</value>
+  </data>
+  <data name="CGPublicSslCertificateTooltip" xml:space="preserve">
+    <value>Aygıtların Content Gateway'e güvenmesi için bir üçüncü taraf genel Güvenli Yuva Katmanı (SSL) sertifikasını karşıya yükleyin (".pfx" biçiminde olmalı; genel ve özel anahtar çiftlerinizi içermelidir).</value>
+  </data>
+  <data name="ChangeRepositoryName" xml:space="preserve">
+    <value>Yönetilen İçerik İçin Havuz Adını Değiştir</value>
+  </data>
+  <data name="ClientCertificateChain" xml:space="preserve">
+    <value>Müşteri Sertifika Zinciri</value>
+  </data>
+  <data name="CloudContentPlatform" xml:space="preserve">
+    <value>Bulut İçerik platformu</value>
+  </data>
+  <data name="CloudContentPlatformConfigured" xml:space="preserve">
+    <value>Bu müşteri OG'si için Bulut İçerik Platformu zaten yapılandırıldı. Platform ile etkileşimde bulunmak için istemci Uygulama Programı Arabirimleri (API) kullanılabilir</value>
+  </data>
+  <data name="CloudContentPlatformDescription" xml:space="preserve">
+    <value>Bulut İçerik platformu</value>
+  </data>
+  <data name="CloudContentPlatformInfo" xml:space="preserve">
+    <value>İçerik Platformu, son kullanıcının içeriğine verilerin kalıcı olabileceği çeşitli kurumsal havuzlarda birleşik erişim sağlar. CCP uç noktalarını kullanacak şekilde bu müşteri OG'sini yapılandırmak için Başlat düğmesine tıklayın.</value>
+  </data>
+  <data name="ConfigureContentGateway" xml:space="preserve">
+    <value>Content Gateway yapılandırılmadı. {0} ayarlarını yapılandır.</value>
+  </data>
+  <data name="ContentAdvancedCorporateFileServers" xml:space="preserve">
+    <value>Content Gelişmiş Kurumsal Dosya Sunucuları</value>
+  </data>
+  <data name="ContentAdvancedCorporateFileServersHelp" xml:space="preserve">
+    <value>Harici içerik havuzunun eşitlenmesini kontrol eder.</value>
+  </data>
+  <data name="ContentDevice" xml:space="preserve">
+    <value>Content Aygıtı</value>
+  </data>
+  <data name="ContentGatewayConfigurationNotSelected" xml:space="preserve">
+    <value>Lütfen Content Gateway yapılandırmasını seçin</value>
+  </data>
+  <data name="ContentGatewayConfigurationUid" xml:space="preserve">
+    <value>Content Gateway Yapılandırması UID'si</value>
+  </data>
+  <data name="ContentGatewayPublicSslCertificate" xml:space="preserve">
+    <value>Genel SSL Sertifikası (Linux dağıtımları için gerekli)</value>
+  </data>
+  <data name="ContentLocker" xml:space="preserve">
+    <value>Workspace ONE Content Uygulaması</value>
+  </data>
+  <data name="ContentSSLCertificate" xml:space="preserve">
+    <value>Content Güvenli Yuva Katmanı (SSL) Sertifikası</value>
+  </data>
+  <data name="CorporateFileServerDefaultMessage" xml:space="preserve">
+    <value>Bu özellik yaklaşan bir yayında kullanımdan kalkacaktır. {0} Bu değişiklik üzerine geri bildiriminizi paylaşın.</value>
+    <comment>{0} will be replaced with Ideas Portal link.</comment>
+  </data>
+  <data name="CustomGatewaySettingID" xml:space="preserve">
+    <value>Özel Ağ Geçidi Ayar Kimliği</value>
+  </data>
+  <data name="CustomGatewaySettingInvalidDataType" xml:space="preserve">
+    <value>{0} anahtarlar için seçilen tür ve değer eşleşmiyor.</value>
+  </data>
+  <data name="CustomGatewaySettings" xml:space="preserve">
+    <value>Özel Ağ Geçidi Ayarları</value>
+  </data>
+  <data name="DeletedSucessfully" xml:space="preserve">
+    <value>Başarı İle Silindi</value>
+  </data>
+  <data name="DenyList" xml:space="preserve">
+    <value>Reddedilenler Listesi</value>
+  </data>
+  <data name="DomainController" xml:space="preserve">
+    <value>Etki Alanı Denetleyicisi</value>
+  </data>
+  <data name="DomainControllerTooltip" xml:space="preserve">
+    <value>Etki alanı için etki alanı denetleyicisinin ana bilgisayar adı veya IP adresi.</value>
+  </data>
+  <data name="DownloadContentGatewayConfiguration" xml:space="preserve">
+    <value>Content Gateway Yapılandırmasını İndir</value>
+  </data>
+  <data name="DownloadContentViewerConfiguration" xml:space="preserve">
+    <value>İçerik Görüntüleyici Yapılandırmasını İndir</value>
+  </data>
+  <data name="DownloadSuccessful" xml:space="preserve">
+    <value>İndirme Başarılı</value>
+  </data>
+  <data name="Eb" xml:space="preserve">
+    <value>EB</value>
+  </data>
+  <data name="ExternalRepositorySyncDeprecationMessage" xml:space="preserve">
+    <value>Etkinleştirmek için {0} sayfasına gidin. Bu özellik, yakında çıkacak bir sürümde kullanımdan kalkacaktır.</value>
+    <comment>{0} will be replaced with CorporateFileServer settings.</comment>
+  </data>
+  <data name="ExternalRepositorySyncShareFeedbackMessage" xml:space="preserve">
+    <value>{0} üzerinde yapılan bu değişiklik hakkındaki geri bildiriminizi paylaşın.</value>
+    <comment>{0} will be replaced with Ideas Portal link.</comment>
+  </data>
+  <data name="Failure" xml:space="preserve">
+    <value>Hata</value>
+  </data>
+  <data name="FeatureIsDisabled" xml:space="preserve">
+    <value>Bu özellik devre dışı bırakıldı</value>
+  </data>
+  <data name="FileSizeExceededForMultiDownload" xml:space="preserve">
+    <value>Birden fazla indirme işlemi için toplam dosya boyutu (6 GB) aşıldı.</value>
+  </data>
+  <data name="FileStatus" xml:space="preserve">
+    <value>Dosya Durumu</value>
+  </data>
+  <data name="FileStorageInformationMessageWithArg" xml:space="preserve">
+    <value>Workspace ONE UEM, SaaS müşterileri için dosya depolamayı otomatik olarak yapılandırır. Şirket içi müşteriler için {0}, dahili uygulamalar ve yönetilen içeriğe tahsis edilmiş bir sunucu yapılandırın. Bu, Workspace ONE UEM veritabanının genel yükünü azaltır ve performansı artırır. Dosya depolama sunucunuzu mevcut içeriklerinin geçişini sağlamadan değiştirmeyin.</value>
+  </data>
+  <data name="IdeasPortal" xml:space="preserve">
+    <value>Fikirler portalı</value>
+  </data>
+  <data name="InvalidBlacklistLink" xml:space="preserve">
+    <value>{0} için geçersiz şablon veya izin verilmeyenler listesi</value>
+  </data>
+  <data name="InvalidCategoryAssignment" xml:space="preserve">
+    <value>{0} kategorisi, atanan Organizasyon Grubu hiyerarşilerinden hiçbirine ait değil</value>
+  </data>
+  <data name="InvalidResponseFormat" xml:space="preserve">
+    <value>Geçersiz yanıt biçimi</value>
+  </data>
+  <data name="KcdDomainTooltip" xml:space="preserve">
+    <value>Kullanıcıları içeren AD'deki etki alanı adı. Etki alanı, UPN sonekiyle eşleşmelidir. (ör. corp.test.com ve user@corp.test.com) </value>
+  </data>
+  <data name="KerberosAuthenticationError" xml:space="preserve">
+    <value>Kerberos kimlik doğrulama hatası. Lütfen verilen Kullanıcı Asıl Adını (UPN) kontrol edin.</value>
+  </data>
+  <data name="KerberosConfigurationError" xml:space="preserve">
+    <value>Kerberos yapılandırma hatası. Lütfen KDC ana bilgisayar, etki alanı adı ve hizmet hesap bilgilerini kontrol edin.</value>
+  </data>
+  <data name="LabelCorporateFileServers" xml:space="preserve">
+    <value>Kurumsal Dosya Sunucuları</value>
+  </data>
+  <data name="ManagedContent" xml:space="preserve">
+    <value>Yönetilen İçerik</value>
+  </data>
+  <data name="ManagedContentDelete" xml:space="preserve">
+    <value>Yönetilen İçeriği Silme</value>
+  </data>
+  <data name="ManualTemplateBlacklistedLinks" xml:space="preserve">
+    <value>Reddedilen Bağlantılar</value>
+  </data>
+  <data name="ManualTemplateLink" xml:space="preserve">
+    <value>Bağlantı</value>
+  </data>
+  <data name="ManualTemplateLinkAdd" xml:space="preserve">
+    <value>Ekle</value>
+  </data>
+  <data name="ManualTemplateRepoEndPoints" xml:space="preserve">
+    <value>Havuz Uç Noktaları</value>
+  </data>
+  <data name="ManualTemplateType" xml:space="preserve">
+    <value>Tür</value>
+  </data>
+  <data name="MaxSelectedFileCountExceeded" xml:space="preserve">
+    <value>Seçilen maksimum dosya sayısı (10) aşıldı.</value>
+  </data>
+  <data name="MemConfigurationUId" xml:space="preserve">
+    <value>Mem Yapılandırması UID'Si</value>
+  </data>
+  <data name="MyRepositoryDeprecationWarning" xml:space="preserve">
+    <value>Bu sayfa gelecek bir sürümde kaldırılacaktır. Havuzlarınızı yönetmek için lütfen Content Uygulamasını kullanın.</value>
+  </data>
+  <data name="NullValue" xml:space="preserve">
+    <value>NullValue</value>
+  </data>
+  <data name="Pb" xml:space="preserve">
+    <value>PB</value>
+  </data>
+  <data name="Permissions" xml:space="preserve">
+    <value>İzinler</value>
+  </data>
+  <data name="PersonalContentCanOnlyBeEnabledAtCustomerLg" xml:space="preserve">
+    <value>Kişisel İçerik yalnızca bir "Müşteri" Organizasyon Grubu türünde veya altında etkinleştirilebilir.</value>
+  </data>
+  <data name="PIVDDerivedCredentials" xml:space="preserve">
+    <value>Türetilmiş Kimlik Bilgilerini Kullan</value>
+  </data>
+  <data name="PlatformLinux" xml:space="preserve">
+    <value>Linux (Eski)</value>
+  </data>
+  <data name="PlatformUag" xml:space="preserve">
+    <value>Unified Access Gateway</value>
+  </data>
+  <data name="PlatformWindows" xml:space="preserve">
+    <value>Windows (Eski)</value>
+  </data>
+  <data name="PleaseEnterContentRepositoryTemplateName" xml:space="preserve">
+    <value>Lütfen ad girin.</value>
+  </data>
+  <data name="PleaseEnterUserRepositoryName" xml:space="preserve">
+    <value>Lütfen kullanıcı havuzu adını girin.</value>
+  </data>
+  <data name="PleaseSelectContentGatewayWithKcdSettings" xml:space="preserve">
+    <value>Lütfen KCD ayarlarıyla Content Gateway'i seçin.</value>
+  </data>
+  <data name="ProvideADUserUPN" xml:space="preserve">
+    <value>Harici havuz ile eşitlenen AD kullanıcısı için Kullanıcı Asıl Adı sağlayın.</value>
+  </data>
+  <data name="Repositories" xml:space="preserve">
+    <value>Havuzlar</value>
+  </data>
+  <data name="Repository" xml:space="preserve">
+    <value>Havuz</value>
+  </data>
+  <data name="RepositoryTestConnectionFailed" xml:space="preserve">
+    <value>Havuz testi bağlantısı başarısız.</value>
+  </data>
+  <data name="RFSSSLCertificateRequiredWarning" xml:space="preserve">
+    <value>Güvenli bağlantıya sahip RFS için Genel bir Güvenli Yuva Katmanı (SSL) sertifikası gereklidir. Lütfen tam sertifika zincirini ".pfx" formatında karşıya yükleyin.</value>
+  </data>
+  <data name="SearchSignatureRequests" xml:space="preserve">
+    <value>İmza İstekleri Ara</value>
+  </data>
+  <data name="SecureContentLockerSettingsCustomizeMessage" xml:space="preserve">
+    <value>Content, seçilen Profillerde tanımlanan ayarları kullanır. Uygulamalar &gt; Ayarlar ve İlkeler &gt; {0} bölümüne giderek Profilinizi yapılandırın</value>
+    <comment>{0} will be replaced with a link to Profiles settings page under Apps &gt;Settings and Policies with the text "Profiles"</comment>
+  </data>
+  <data name="SecureContentLockerSettingsDefaultMessage" xml:space="preserve">
+    <value>Content, takip eden sayfalarda tanımlanan varsayılan Uygulama Ayarlarını &amp; İlkelerini kullanacak:</value>
+  </data>
+  <data name="StorageTypeDatabase" xml:space="preserve">
+    <value>AirWatch Tarafından Yönetilen Veritabanı</value>
+  </data>
+  <data name="StorageTypeInternal" xml:space="preserve">
+    <value>UEM Tarafından Yönetilen</value>
+  </data>
+  <data name="StoreYourReports" xml:space="preserve">
+    <value>raporları depolama</value>
+  </data>
+  <data name="Tb" xml:space="preserve">
+    <value>TB</value>
+  </data>
+  <data name="TermsOfUseMessage" xml:space="preserve">
+    <value>Content, aşağıdaki alandaki seçili Kullanım Şartlarını görüntüler. Sistem &gt; {0} bölümüne giderek kendi Kullanım Şartlarınızı oluşturun</value>
+    <comment>{0} will be replaced with a link to Terms of use settings page with the text "Terms of Use" </comment>
+  </data>
+  <data name="TunnelConfigurationUid" xml:space="preserve">
+    <value>Tunnel Yapılandırması UID'si</value>
+  </data>
+  <data name="Uaginfomessage" xml:space="preserve">
+    <value>Content Gateway Hizmetleri artık yalnızca Unified Access Gateway ile kullanılabilir. Content Gateway'in eski Linux ve Windows sürümleri artık desteklenmemektedir.
+</value>
+  </data>
+  <data name="UnableToDelete" xml:space="preserve">
+    <value>Silinemiyor</value>
+  </data>
+  <data name="UploadNotAllowedOverQuota" xml:space="preserve">
+    <value>Karşıya yüklemeye izin verilmiyor, dosya boyutu kullanılabilir depolama alanını aşıyor.</value>
+  </data>
+  <data name="UploadNotPermittedEmptyFile" xml:space="preserve">
+    <value>Boş dosya yüklemeye izin verilmiyor</value>
+  </data>
+  <data name="Viewed" xml:space="preserve">
+    <value>Görüntülendi</value>
+  </data>
+  <data name="WorkspaceONEContentApp" xml:space="preserve">
+    <value>Workspace ONE Content Uygulaması</value>
+  </data>
+  <data name="Yb" xml:space="preserve">
+    <value>YB</value>
+  </data>
+  <data name="Zb" xml:space="preserve">
+    <value>ZB</value>
+  </data>
+</root>

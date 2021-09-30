@@ -1,0 +1,2555 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AboutToPerformResumeBitlocker" xml:space="preserve">
+    <value>Chystáte se provést akci Pokračovat v šifrování BitLocker. Než budete pokračovat, pečlivě zkontrolujte níže uvedené informace.</value>
+  </data>
+  <data name="ActivateBacklight" xml:space="preserve">
+    <value>Aktivovat zadní světlo</value>
+  </data>
+  <data name="ActivationLockClearFailure" xml:space="preserve">
+    <value>Deaktivace zámku aktivace se nezdařila</value>
+  </data>
+  <data name="ActivationLockClearRequested" xml:space="preserve">
+    <value>Vyžádána deaktivace zámku aktivace</value>
+  </data>
+  <data name="ActivationLockClearSuccess" xml:space="preserve">
+    <value>Deaktivace zámku aktivace byla úspěšná</value>
+  </data>
+  <data name="ActivationLockCommandWarning" xml:space="preserve">
+    <value>Pro toto zařízení je povolen zámek aktivace. K opětovné aktivaci zařízení je požadováno Apple ID a heslo sloužící k aktivaci této funkce. Pokud Apple ID a heslo neznáte, vyberte níže příkaz Deaktivovat zámek aktivace.</value>
+  </data>
+  <data name="ActivationLockEnabledSuccessfully" xml:space="preserve">
+    <value>Zámek aktivace byl úspěšně aktivován</value>
+  </data>
+  <data name="ActivationLockWarning" xml:space="preserve">
+    <value>Bylo zjištěno, že byl aktivován Zámek aktivace přes službu Hledat iPhone. I po továrním resetu zařízení zařízení nemůže být znovu aktivováno bez iCloud Apple ID hesla, které bylo použito aktivaci funkce Zámek aktivace.</value>
+  </data>
+  <data name="AddDropShipDevice" xml:space="preserve">
+    <value>Přidat zařízení pro dropshipping</value>
+  </data>
+  <data name="AddNewSchedule" xml:space="preserve">
+    <value>Přidat nový plán</value>
+  </data>
+  <data name="AddSideLoadingKey" xml:space="preserve">
+    <value>Přidat klíč sideloadingu</value>
+  </data>
+  <data name="AffectedDeviceTagManagementMessage" xml:space="preserve">
+    <value>Tyto vybrané štítky budou uplatněny na všechna vybraná zařízení</value>
+  </data>
+  <data name="AgentEnrollmentUrl" xml:space="preserve">
+    <value>URL registrace agenta</value>
+  </data>
+  <data name="AirWatchHuaweiService" xml:space="preserve">
+    <value>Služba AirWatch Huawei Service</value>
+  </data>
+  <data name="AirWatchInterrogatorQueueMonitor" xml:space="preserve">
+    <value>Služba interogátoru Queue Monitor Service čte informace zapsané do front serverem interogátoru a zapisuje tyto informace do databáze.</value>
+  </data>
+  <data name="AirWatchInterrogatorServer" xml:space="preserve">
+    <value>Serverem interogátoru je Socket Server, který přijímá příchozí data zařízení na portu 8087.</value>
+  </data>
+  <data name="AndroidAvailableFileActions" xml:space="preserve">
+    <value>Stažení a nahrání souborů.</value>
+  </data>
+  <data name="AndroidDeviceLogSourceToolTipText" xml:space="preserve">
+    <value>Výběrem položky „Hub“ shromáždíte protokoly vytvořené aplikací Workspace ONE Intelligent Hub.
+
+Chcete-li shromažďovat kompletní systémový protokol pro starší zařízení Android s nainstalovanou službou Platform OEM, vyberte možnost „Systém“. Pokud je zařízení ve spravovaném režimu Android for Work a je na něm spuštěn systém Android 7.0 nebo novější, bude shromažďována zpráva o chybě.
+
+Výběrem možnosti „Síť“ shromáždíte protokol událostí sítě na zařízení.
+
+Výběrem možnosti „Zabezpečení“ shromáždíte protokoly zabezpečení před spuštěním i po něm. Protokoly se nahrají do konzoly, jakmile jsou k dispozici na zařízení.</value>
+  </data>
+  <data name="AndroidEnterpriseCancelMigration" xml:space="preserve">
+    <value>Příkaz pro zrušení migrace služby Android Enterprise.</value>
+  </data>
+  <data name="AndroidEnterpriseMigration" xml:space="preserve">
+    <value>Příkaz k zahájení migrace starších verzí systému Android na režim AFW.</value>
+  </data>
+  <data name="AndroidManagement" xml:space="preserve">
+    <value>Správa systému Android</value>
+  </data>
+  <data name="AndroidRequestDeviceLogSettingsInformation" xml:space="preserve">
+    <value>Níže si nastavte vlastní žádost o protokolování. Přejděte do nabídky Detaily zařízení &gt; Další &gt; Přílohy &gt; Dokumenty a prohlédněte si soubory protokolů. Příjem protokolů sítě nebo zabezpečení může trvat až 90 minut. Některé možnosti nemusí být dostupné, pokud je zařízení nepodporuje.</value>
+  </data>
+  <data name="AndroidWorkProfileEndUserMessageSetupHelp" xml:space="preserve">
+    <value>Tato volitelná zpráva bude zobrazena koncovým uživatelům na zařízeních Android za účelem vysvětlení, proč byl jejich pracovní profil odstraněn.</value>
+  </data>
+  <data name="AndroidWorkProfileEndUserWipeMessage" xml:space="preserve">
+    <value>Zpráva pro koncového uživatele o výmazu pracovního profilu Android</value>
+  </data>
+  <data name="AndroidWorkSharedDeviceModeNotReported" xml:space="preserve">
+    <value>Nebylo nahlášeno.</value>
+  </data>
+  <data name="ApnsMessageForRemoteView" xml:space="preserve">
+    <value>Váš správce by chtěl vzdáleně zobrazit obrazovku vašeho zařízení. Přejděte do řídicího centra iOS a zahajte vysílání obrazovky svého zařízení.</value>
+  </data>
+  <data name="ApnsMessageNotSent" xml:space="preserve">
+    <value>Při pokusu o odeslání zprávy vzdáleného zobrazení došlo k chybě. Obraťte se na oddělení podpory.</value>
+  </data>
+  <data name="ApnsMessageSentForRemoteView" xml:space="preserve">
+    <value>Zpráva úspěšně odeslána na zařízení, kde vyzve uživatele k zahájení relace zobrazení na dálku.</value>
+  </data>
+  <data name="AppAssignmentEditWarning" xml:space="preserve">
+    <value>Úprava konfigurace přidružené k této aplikaci způsobí, že změny budou použity i u ostatních zařízení v těchto pracovních postupech.</value>
+  </data>
+  <data name="AppleBusinessManager" xml:space="preserve">
+    <value>Apple Business Manager</value>
+  </data>
+  <data name="AppleBusinessManagerFetchFail" xml:space="preserve">
+    <value>Načtení aplikace Apple Business Manager se nezdařilo</value>
+  </data>
+  <data name="AppleBusinessManagerFetchSuccess" xml:space="preserve">
+    <value>Načtení aplikace Apple Business Manager proběhlo úspěšně</value>
+  </data>
+  <data name="AppleBusinessManagerSyncFail" xml:space="preserve">
+    <value>Synchronizace aplikace Apple Business Manager se nezdařila</value>
+  </data>
+  <data name="AppleBusinessManagerSyncSuccess" xml:space="preserve">
+    <value>Synchronizace aplikace Apple Business Manager proběhla úspěšně</value>
+  </data>
+  <data name="ApplicationConfigurationConfirmed" xml:space="preserve">
+    <value>Konfigurace aplikace potvrzena</value>
+  </data>
+  <data name="ApplicationConfigurationFailed" xml:space="preserve">
+    <value>Konfigurace aplikace se nezdařila</value>
+  </data>
+  <data name="ApplicationConfigurationRefused" xml:space="preserve">
+    <value>Konfigurace aplikace byla odmítnuta</value>
+  </data>
+  <data name="ApplyTimeWindow" xml:space="preserve">
+    <value>Chcete-li aplikovat časové okno na zařízení, musíte jej použít jako podmínku pracovního postupu.</value>
+  </data>
+  <data name="ApplyToAllAdmin" xml:space="preserve">
+    <value>Uplatnit na všechny administrátory v této organizační skupině nebo v nižších organizačních skupinách</value>
+  </data>
+  <data name="ApprovedByClassification" xml:space="preserve">
+    <value>Schváleno klasifikací</value>
+  </data>
+  <data name="ApprovedByRevisionAndClassification" xml:space="preserve">
+    <value>Schváleno revizí a klasifikací</value>
+  </data>
+  <data name="ApproveWipe" xml:space="preserve">
+    <value>Schválit vymazání</value>
+  </data>
+  <data name="ApproveWipeConfirm" xml:space="preserve">
+    <value>Approve wipe successful</value>
+  </data>
+  <data name="AssignedTags" xml:space="preserve">
+    <value>Přiřazené štítky</value>
+  </data>
+  <data name="AssignmentName" xml:space="preserve">
+    <value>Název přiřazení</value>
+  </data>
+  <data name="Athena" xml:space="preserve">
+    <value>Athena</value>
+  </data>
+  <data name="AttributesNotPresent" xml:space="preserve">
+    <value>Atributy zařízení nejsou přítomné.</value>
+  </data>
+  <data name="Auto_Detect" xml:space="preserve">
+    <value>Automatická detekce</value>
+  </data>
+  <data name="AutoInstall" xml:space="preserve">
+    <value>Automatická instalace</value>
+  </data>
+  <data name="AutoUpdateStatus" xml:space="preserve">
+    <value>Stav automatické aktualizace</value>
+  </data>
+  <data name="AutoUpdateStatusFail" xml:space="preserve">
+    <value>Stav automatické aktualizace – Selhání</value>
+  </data>
+  <data name="AutoUpdateStatusPass" xml:space="preserve">
+    <value>Stav automatické aktualizace – Proběhla</value>
+  </data>
+  <data name="AutoUpdateStatusUnknown" xml:space="preserve">
+    <value>Stav automatické aktualizace – Neznámý</value>
+  </data>
+  <data name="AvailableByApple" xml:space="preserve">
+    <value>Dodává společnost Apple</value>
+  </data>
+  <data name="Bash" xml:space="preserve">
+    <value>Bash</value>
+  </data>
+  <data name="BatchImportCustomAttributesExplanation" xml:space="preserve">
+    <value>Funkce vlastní atribut hromadného importu může být použit k hromadnému nahrání vlastních atributů a odpovídajících hodnot do systému hromadně; každý sloupec odpovídá jednomu vlastnímu atributu a každý řádek různým parametrům vlastího atributu.</value>
+  </data>
+  <data name="BeginRollOut" xml:space="preserve">
+    <value>Zahájit zavádění</value>
+  </data>
+  <data name="BiosAttestationFailed" xml:space="preserve">
+    <value>Ověření systému BIOS selhalo</value>
+  </data>
+  <data name="BiosAttestationPassed" xml:space="preserve">
+    <value>Ověření systému BIOS se zdařilo</value>
+  </data>
+  <data name="BiosAttestationStatus" xml:space="preserve">
+    <value>Ověření systému BIOS</value>
+  </data>
+  <data name="BiosAttestationStatusUnknown" xml:space="preserve">
+    <value>Neznámý stav ověření systému BIOS</value>
+  </data>
+  <data name="BiosDate" xml:space="preserve">
+    <value>Datum systému BIOS</value>
+  </data>
+  <data name="BiosVendor" xml:space="preserve">
+    <value>Dodavatel systému BIOS</value>
+  </data>
+  <data name="BiosVerificationCheck" xml:space="preserve">
+    <value>Ověření systému BIOS</value>
+  </data>
+  <data name="BitLockerCipherMismatch" xml:space="preserve">
+    <value>Síla šifrování na zařízení se neshoduje s profilem.</value>
+  </data>
+  <data name="BitLockerCipherStrengthMismatch" xml:space="preserve">
+    <value>Síla šifrování na profilu: {0}, v zařízení: {1}.</value>
+  </data>
+  <data name="BitLockerDriveStatusDecryptionInProgress" xml:space="preserve">
+    <value>Probíhá dešifrování</value>
+  </data>
+  <data name="BitLockerDriveStatusEncrypted" xml:space="preserve">
+    <value>Šifrováno</value>
+  </data>
+  <data name="BitLockerDriveStatusEncryptionInProgress" xml:space="preserve">
+    <value>Šifrování probíhá</value>
+  </data>
+  <data name="BitLockerDriveStatusNotEncrypted" xml:space="preserve">
+    <value>Nešifrováno</value>
+  </data>
+  <data name="BitLockerDriveStatusSuspended" xml:space="preserve">
+    <value>Pozastaveno</value>
+  </data>
+  <data name="BitLockerDriveStatusSuspendedScheduled" xml:space="preserve">
+    <value>Pozastaveno (dle plánu profilu)</value>
+  </data>
+  <data name="BitLockerDriveStatusSuspendedWithRebootCount" xml:space="preserve">
+    <value>Pozastaveno (zbývající restarty: {0})</value>
+  </data>
+  <data name="BitLockerDriveStatusUnknown" xml:space="preserve">
+    <value>Neznámé</value>
+  </data>
+  <data name="BitLockerEncryptionResumed" xml:space="preserve">
+    <value>Šifrování BitLocker znovu spuštěno</value>
+  </data>
+  <data name="BitLockerProtection" xml:space="preserve">
+    <value>Ochrana nástrojem BitLocker</value>
+  </data>
+  <data name="BitLockerRecoveryKeyModalHelpText" xml:space="preserve">
+    <value>K odemknutí zařízení šifrovaného nástrojem BitLocker použijte obnovovací klíč.</value>
+  </data>
+  <data name="BitLockerRecoveryKeyModalText" xml:space="preserve">
+    <value>Použijte obnovovací klíč k odemknutí zařízení šifrovaného nástrojem BitLocker. Statické obnovovací klíče jsou k dispozici pouze v případě, že jsou přidány do profilu.</value>
+  </data>
+  <data name="BitlockerResume" xml:space="preserve">
+    <value>Pokračovat v nástroji BitLocker</value>
+  </data>
+  <data name="BitLockerStatusDecryptionInProgress" xml:space="preserve">
+    <value>Stav BitLocker: probíhá dešifrování.</value>
+  </data>
+  <data name="BitLockerStatusEncrypted" xml:space="preserve">
+    <value>Stav BitLocker: zašifrováno.</value>
+  </data>
+  <data name="BitLockerStatusEncryptionInProgress" xml:space="preserve">
+    <value>Stav BitLocker: probíhá šifrování.</value>
+  </data>
+  <data name="BitLockerStatusNotEncrypted" xml:space="preserve">
+    <value>Stav BitLocker: nešifrováno.</value>
+  </data>
+  <data name="BitLockerStatusPartiallyProtected" xml:space="preserve">
+    <value>Stav BitLocker: částečně chráněno.</value>
+  </data>
+  <data name="BitLockerStatusSuspended" xml:space="preserve">
+    <value>Stav BitLocker: pozastaveno (zbývající restarty: {0}).</value>
+  </data>
+  <data name="BitLockerStatusSuspendedScheduled" xml:space="preserve">
+    <value>Stav BitLocker: pozastaveno (dle plánu profilu).</value>
+  </data>
+  <data name="BitLockerStatusUnknown" xml:space="preserve">
+    <value>Stav BitLocker: neznámý.</value>
+  </data>
+  <data name="BitLockerSuspendedPerProfileSchedule" xml:space="preserve">
+    <value>Šifrování BitLocker pozastaveno dle plánu profilu</value>
+  </data>
+  <data name="Blueprints" xml:space="preserve">
+    <value>Projekty</value>
+  </data>
+  <data name="BuildOrRevisionNumber" xml:space="preserve">
+    <value>Verze sestavení / číslo revize</value>
+  </data>
+  <data name="BulkActivationLockCommandWarning" xml:space="preserve">
+    <value>Pro jedno či více vybraných zařízení je aktivován zámek aktivace. K opětovné aktivaci zařízení je požadováno Apple ID a heslo sloužící k aktivaci této funkce. Pokud Apple ID a heslo neznáte, vyberte níže příkaz Deaktivovat zámek aktivace.</value>
+  </data>
+  <data name="BulkApiAction" xml:space="preserve">
+    <value>Akce hromadného rozhraní API</value>
+  </data>
+  <data name="BulkTagManagementSelectTipArg" xml:space="preserve">
+    <value>Počet vybraných zařízení: {0}</value>
+  </data>
+  <data name="BusinessHours" xml:space="preserve">
+    <value>Pracovní doba</value>
+  </data>
+  <data name="CancelFirmwareUpdate" xml:space="preserve">
+    <value>Zrušit aktualizaci</value>
+  </data>
+  <data name="CancelSchedule" xml:space="preserve">
+    <value>Zrušit plán</value>
+  </data>
+  <data name="CanNotDeleteTagBecauseAssignedToSmartGroup" xml:space="preserve">
+    <value>Štítek nelze odstranit, protože je přiřazen k následujícím smart skupinám: {0}</value>
+  </data>
+  <data name="CertificateInfo" xml:space="preserve">
+    <value>Informace o certifikátu</value>
+  </data>
+  <data name="CertificateSerialNumber" xml:space="preserve">
+    <value>Sériové číslo certifikátu</value>
+  </data>
+  <data name="ChangePasscodeMsgSamsung" xml:space="preserve">
+    <value>Změna hesla na zařízeních Android (ve starších verzích) bude fungovat pouze na zařízeních Samsung nebo pokud není na zařízení ještě nastaveno heslo.</value>
+  </data>
+  <data name="ChangeWorkProfilePasscodeNote" xml:space="preserve">
+    <value>Tato akce vynutí na uživateli nové heslo pro odemknutí pracovního profilu. Dané heslo musí splňovat aktuální nainstalovaná omezení týkající se zásad pro hesla, s výjimkou historie hesel. Pokud tato omezení nesplňuje, bude odmítnuto.</value>
+  </data>
+  <data name="CheckInDevice" xml:space="preserve">
+    <value>Přihlášení zařízení</value>
+  </data>
+  <data name="CheckInDeviceFailed" xml:space="preserve">
+    <value>Přihlášení zařízení – selhalo</value>
+  </data>
+  <data name="CheckInDeviceRequested" xml:space="preserve">
+    <value>Přihlášení zařízení – vyžádáno</value>
+  </data>
+  <data name="CheckInDeviceSucceeded" xml:space="preserve">
+    <value>Přihlášení zařízení – úspěšné</value>
+  </data>
+  <data name="ChromeOSDeviceDisableLostMode" xml:space="preserve">
+    <value>Zařízení se systémem Chrome OS zůstane zaregistrováno, ale bude zcela deaktivováno a po aktivaci režimu ztraceného zařízení zobrazí v nabídce Profil zařízení &gt; Zabezpečení a soukromí &gt; Zpráva režimu ztraceného zařízení systému Chrome OS vlastní sadu zpráv. Chcete-li zařízení se systémem Chrome OS odemknout, deaktivujte režim ztraceného zařízení.</value>
+  </data>
+  <data name="ChromeOSDeviceEnableLostMode" xml:space="preserve">
+    <value>Zařízení se systémem Chrome OS zůstane zaregistrováno, ale bude zcela deaktivováno a po aktivaci režimu ztraceného zařízení zobrazí v nabídce Profil zařízení &gt; Zabezpečení a soukromí &gt; Zpráva režimu ztraceného zařízení systému Chrome OS vlastní sadu zpráv. Chcete-li zařízení se systémem Chrome OS zamknout, aktivujte režim ztraceného zařízení.</value>
+  </data>
+  <data name="ChromeOsEnterpriseWipeReason" xml:space="preserve">
+    <value>Důvod firemního výmazu systému Chrome OS</value>
+  </data>
+  <data name="ClearAndroidDevicePasscodeConfirmation" xml:space="preserve">
+    <value>Opravdu chcete vymazat heslo zařízení?</value>
+  </data>
+  <data name="ClearAndroidWorkProfilePasscode" xml:space="preserve">
+    <value>Vymazat pracovní heslo</value>
+  </data>
+  <data name="ClearAndroidWorkProfilePasscodeConfirmation" xml:space="preserve">
+    <value>Opravdu chcete vymazat pracovní heslo zařízení?</value>
+  </data>
+  <data name="ClearApplicationPasscode" xml:space="preserve">
+    <value>Vymazat heslo aplikace</value>
+  </data>
+  <data name="ClearPasscodeLockDevice" xml:space="preserve">
+    <value>Vymazat heslo zařízení / Zamknout zařízení / Vypnout / Restartovat</value>
+  </data>
+  <data name="CommandDisableActivationLockComment" xml:space="preserve">
+    <value>Když je na zařízení iOS nebo macOS aktivován zámek aktivace, je před vypnutím služby Najít iPhone (Mac), smazáním zařízení nebo opětovnou aktivací a používáním zařízení vyžadováno Apple ID a heslo nebo kód zařízení.
+
+Výběrem možnosti Deaktivovat zámek aktivace na zařízení deaktivujete.</value>
+  </data>
+  <data name="CommandDisableActivationLockCommentBypass" xml:space="preserve">
+    <value>Alternativou k deaktivaci zámku aktivace je zadání následujícího kódu pro obejití na zařízení v průběhu Průvodce nastavením. Zadejte tento kód pro obejití jako heslo zámku aktivace a ponechte pole s uživatelským jménem Apple ID prázdné.</value>
+  </data>
+  <data name="CompromisedDevicesChartDescription" xml:space="preserve">
+    <value>Počet kompromitovaných zařízení: {0}. Celkový počet kompromitovaných zařízení: {1}.</value>
+  </data>
+  <data name="CompromisedDevicesChartTitle" xml:space="preserve">
+    <value>Prstencový graf kompromitovaných zařízení. </value>
+  </data>
+  <data name="ConditionError" xml:space="preserve">
+    <value>Jedna nebo více podmínek v tomto pracovním postupu nemají následující akci. Pokud chcete pokračovat, přidejte akci.</value>
+  </data>
+  <data name="ConfigureLocationGroup" xml:space="preserve">
+    <value>Konfigurovat organizační skupinu</value>
+  </data>
+  <data name="ConfigureLoginCredentials" xml:space="preserve">
+    <value>Konfigurovat přihlašovací údaje</value>
+  </data>
+  <data name="ConfirmDeleteDevice" xml:space="preserve">
+    <value>Chcete odstranit zařízení? Jakékoli vytvořené informace o zařízení budou také odstraněny.</value>
+  </data>
+  <data name="ConfirmDeleteDeviceWithRecoveryKey" xml:space="preserve">
+    <value>Chcete odstranit zařízení? Jakékoli vytvořené informace o zařízení budou také odstraněny. Varování: Bude odstraněn také obnovovací klíč šifrování. Může dojít ke ztrátě dat.</value>
+  </data>
+  <data name="ConfirmDeviceRebootAfterHubRepair" xml:space="preserve">
+    <value>Tato akce opraví problémy centra Hub, jako jsou chyby HMAC, zastavené služby nebo poškozené či chybějící soubory. Může upgradovat centrum Hub na zařízení na nejnovější verzi, která je v konzole k dispozici. V některých případech může tato akce iniciovat restart zařízení.</value>
+  </data>
+  <data name="ConfirmPauseTitle" xml:space="preserve">
+    <value>Potvrdit pozastavení</value>
+  </data>
+  <data name="ConfirmResumeTitle" xml:space="preserve">
+    <value>Potvrdit pokračování</value>
+  </data>
+  <data name="ConfirmUnenrollDeleteDeviceWithRecoveryKey" xml:space="preserve">
+    <value>Toto zařízení je stále přihlášeno. Odstraněním zařízení je odhlásíte. Varování: Bude odstraněn také obnovovací klíč šifrování. Může dojít ke ztrátě dat.</value>
+  </data>
+  <data name="ConfirmUpdateRollOutContent" xml:space="preserve">
+    <value>Příkaz Zahájit zavádění bude sloužit k zahájení zavádění aktualizací (pokud nebyl nikdy spuštěn) nebo obnovení zavádění aktualizací (pokud byl dříve zastaven). Jste si jisti, že chcete zavést aktualizaci?</value>
+  </data>
+  <data name="ConfirmUpdateRollOutTitle" xml:space="preserve">
+    <value>Potvrdit zavádění</value>
+  </data>
+  <data name="ConnectDeviceToWifiPriorToEnrollment" xml:space="preserve">
+    <value>Před registrací zařízení připojit k síti Wi-Fi (WPA/WPA2)</value>
+  </data>
+  <data name="ConnectionState" xml:space="preserve">
+    <value>Stav připojení</value>
+    <comment>Either Connected or Disconnected</comment>
+  </data>
+  <data name="COPEDeviceInfoMessage" xml:space="preserve">
+    <value>Úplná správa zařízení zůstává nedotčena. Zaměstnanci obdrží pracovní profil pro přístup k podnikovým aplikacím a budou mít přístup k osobnímu obchodu Google Play mimo pracovní profil. Tato možnost je dostupná pro systém Android 8.0 a novější verze.</value>
+  </data>
+  <data name="CouldNotStartRemoteViewSession" xml:space="preserve">
+    <value>Nepodařilo se spustit relaci pro zařízení s identifikátorem UDID {0} pomocí systému vzdáleného zobrazení. Obraťte se na oddělení podpory.</value>
+  </data>
+  <data name="CpuTitle" xml:space="preserve">
+    <value>Architektura procesoru</value>
+  </data>
+  <data name="CpuTooltip" xml:space="preserve">
+    <value>Toto kritérium filtruje zařízení podle architektury procesoru. Filtrování se týká pouze zařízení se systémem Windows a macOS. Pokud nevyberete žádnou možnost, kritéria filtrování nebudou uplatněna.</value>
+  </data>
+  <data name="CreateDevice" xml:space="preserve">
+    <value>Vytvořit</value>
+  </data>
+  <data name="CreateNewUserMessageArg" xml:space="preserve">
+    <value>Pokud nebyl hledaný uživatel nalezen, vytvořte nového uživatele zde: {0}</value>
+    <comment>{0} will be replaced by a hyperlink with text Create New User</comment>
+  </data>
+  <data name="CreateTimeWindow" xml:space="preserve">
+    <value>Vytvořit časové okno</value>
+  </data>
+  <data name="CriteriaPreviewNote" xml:space="preserve">
+    <value>Aktuální náhled je generován pouze na základě názvu aplikace, ale vyhodnocení podmínky na zařízeních bude zahrnovat operátora kritérií.</value>
+  </data>
+  <data name="CustomDateRange" xml:space="preserve">
+    <value>Definováno uživatelem</value>
+  </data>
+  <data name="CustomFieldAdded" xml:space="preserve">
+    <value>Vlastní pole přidáno</value>
+  </data>
+  <data name="CustomFieldDeleted" xml:space="preserve">
+    <value>Vlastní pole odstraněno</value>
+  </data>
+  <data name="CustomFieldModified" xml:space="preserve">
+    <value>Vlastní pole upraveno</value>
+  </data>
+  <data name="DailyArg" xml:space="preserve">
+    <value>Denně v {0}–{1} ({2})</value>
+    <comment>Placehoders: 0 - StartTime, 1 - EndTime, 2 - Duration.
+Example: Daily 11:00 PM - 4:30 AM (5 hours 30 mins)</comment>
+  </data>
+  <data name="DataCompromisedOrCorrupted" xml:space="preserve">
+    <value>Data mohou být napadená nebo poškozená. Obraťte se na svého administrátora IT.</value>
+  </data>
+  <data name="DataNotCollectedDueToPrivacySettings" xml:space="preserve">
+    <value>Data GPS nejsou dostupná. Chcete-li zobrazit data GPS, aktualizujte nastavení ochrany osobních údajů zapnutím volby Shromažďovat a zobrazovat umístění</value>
+  </data>
+  <data name="DataValidationFailed" xml:space="preserve">
+    <value>Uložení se nezdařilo. Opakujte pokus.</value>
+  </data>
+  <data name="DateEncrypted" xml:space="preserve">
+    <value>Datum zašifrování</value>
+  </data>
+  <data name="DateLabel" xml:space="preserve">
+    <value>Datum a čas</value>
+  </data>
+  <data name="DateLastSeen" xml:space="preserve">
+    <value>Datum posledního zobrazení</value>
+  </data>
+  <data name="DateMustBeInFuture" xml:space="preserve">
+    <value>Datum musí být v budoucnosti</value>
+  </data>
+  <data name="DayAgo" xml:space="preserve">
+    <value>před 1 dnem</value>
+  </data>
+  <data name="DefineAssignmentAndSelectSmartGroups" xml:space="preserve">
+    <value>Definovat přiřazení a vybrat smart skupiny</value>
+  </data>
+  <data name="DefineDeploymentDateTimeAndMethod" xml:space="preserve">
+    <value>Definovat datum/čas a metodu zavádění</value>
+  </data>
+  <data name="DeleteDeviceConfirmation" xml:space="preserve">
+    <value>Odstranit potvrzení zařízení</value>
+  </data>
+  <data name="DeleteSensor" xml:space="preserve">
+    <value>Odstranit senzor</value>
+  </data>
+  <data name="DeleteSensorConfirmArg" xml:space="preserve">
+    <value>Opravdu chcete odstranit senzor „{0}“?</value>
+  </data>
+  <data name="DeleteTimeWindowConfirmation" xml:space="preserve">
+    <value>Opravdu chcete toto časové okno odstranit?</value>
+  </data>
+  <data name="DeleteTimeWindowTitle" xml:space="preserve">
+    <value>Odstranit časové okno</value>
+  </data>
+  <data name="DeleteUserConfirmation" xml:space="preserve">
+    <value>Příkaz Odstranit uživatele nuceně odstraní uživatele ze zařízení, a to i v případě, že má uživatel data k synchronizaci. Opravdu chcete pokračovat?</value>
+  </data>
+  <data name="DeleteUserConfirmed" xml:space="preserve">
+    <value>Odstranění uživatele potvrzeno</value>
+  </data>
+  <data name="DeleteUserFailed" xml:space="preserve">
+    <value>Příkaz k odstranění uživatele nebylo možné úspěšně odeslat.</value>
+  </data>
+  <data name="DeleteUserRefused" xml:space="preserve">
+    <value>Odstranění uživatele zamítnuto</value>
+  </data>
+  <data name="DeleteUserRequested" xml:space="preserve">
+    <value>Požadováno odstranění uživatele</value>
+  </data>
+  <data name="DeleteUserSuccess" xml:space="preserve">
+    <value>Příkaz Odstranit uživatele byl úspěšně odeslán.</value>
+  </data>
+  <data name="DEPAdminPasswordRotationJob" xml:space="preserve">
+    <value>Úloha rotace hesla správce DEP</value>
+  </data>
+  <data name="DeploymentAlreadyExists" xml:space="preserve">
+    <value>Nasazení s podobnými vlastnostmi již existuje</value>
+  </data>
+  <data name="DeploymentBegins" xml:space="preserve">
+    <value>Nasazení začne</value>
+  </data>
+  <data name="DeploymentDownloadAndInstall" xml:space="preserve">
+    <value>Stáhnout a instalovat</value>
+  </data>
+  <data name="DeploymentDownloadOnly" xml:space="preserve">
+    <value>Pouze stáhnout</value>
+  </data>
+  <data name="DeploymentForDeviceUpdateNotFound" xml:space="preserve">
+    <value>Pro tuto aktualizaci zařízení se nenašlo žádné nasazení.</value>
+  </data>
+  <data name="DeploymentInstallOnly" xml:space="preserve">
+    <value>Pouze instalovat</value>
+  </data>
+  <data name="DeploymentMethod" xml:space="preserve">
+    <value>Metoda zavádění</value>
+  </data>
+  <data name="DeploymentStartAfterUpdateExpiry" xml:space="preserve">
+    <value>Čas zahájení zavádění nemůže být pozdější než datum a čas vypršení aktualizace.</value>
+  </data>
+  <data name="DeploymentStartTime" xml:space="preserve">
+    <value>Počáteční datum zavádění</value>
+  </data>
+  <data name="DescriptionofQRCodeEnrollment" xml:space="preserve">
+    <value>Na zařízeních Android s verzí 7.0+ se po obnovení do továrního stavu zahájí na uvítací obrazovce Android registrace kódem QR poté, co kdekoliv na obrazovce šestkrát klepnete. Podle toho, jaké zařízení se používá, se před nasnímáním kódu QR může zobrazit výzva k připojení k síti Wi-Fi.</value>
+  </data>
+  <data name="DestinationPath" xml:space="preserve">
+    <value>Cesta k cíli</value>
+  </data>
+  <data name="DeviceAlreadyLocked" xml:space="preserve">
+    <value>Zařízení je již uzamčeno.</value>
+  </data>
+  <data name="DeviceBatchSizeHelp" xml:space="preserve">
+    <value>Počet zařízení, na kterých bude modul zásad působit.</value>
+  </data>
+  <data name="DeviceBulkManagementForceBiosPasswordReset" xml:space="preserve">
+    <value>Správa hromadných akcí zařízení – Vynutit resetování hesla systému BIOS</value>
+  </data>
+  <data name="DeviceBulkManagementForceBiosPasswordResetHelp" xml:space="preserve">
+    <value>Umožňuje uživateli hromadně vynutit resetování hesla systému BIOS na zařízeních</value>
+  </data>
+  <data name="DeviceCapability" xml:space="preserve">
+    <value>Schopnost zařízení</value>
+  </data>
+  <data name="DeviceCICOCheckIn" xml:space="preserve">
+    <value>Přihlášení CICO zařízení</value>
+  </data>
+  <data name="DeviceCICOCheckInHelp" xml:space="preserve">
+    <value>Uděluje oprávnění k přihlášení zařízení zpět do jeho stavu fázování pro více uživatelů z konzole.</value>
+  </data>
+  <data name="DeviceDeferralDate" xml:space="preserve">
+    <value>Datum odložení</value>
+  </data>
+  <data name="DeviceDenylist" xml:space="preserve">
+    <value>Akce seznamu odmítnutí zařízení</value>
+  </data>
+  <data name="DeviceDetailsApplicationSdkAppComplianceBanner" xml:space="preserve">
+    <value>Zásadu konformity aplikace SDK naposledy nahlásil(a) {0}. Další podrobnosti najdete po přechodu k aplikaci v níže uvedeném seznamu.</value>
+    <comment>{0} will be replaced by a ApplicationName (Application Bundle Identifier).</comment>
+  </data>
+  <data name="DeviceDetailsComplianceSdkAppComplianceBanner" xml:space="preserve">
+    <value>K tomuto zařízení jsou přiřazeny zásady konformity aplikace SDK. Přejděte v podrobnostech o zařízení na kartu Aplikace, kde lze zobrazit stav konformity aplikace SDK.</value>
+  </data>
+  <data name="DeviceDetailsNumberOfApprovedUpdatesArg" xml:space="preserve">
+    <value>Počet schválených nových aktualizací: {0}</value>
+  </data>
+  <data name="DeviceDetailsNumberOfAvailableUpdatesArg" xml:space="preserve">
+    <value>Počet dostupných nových aktualizací: {0}</value>
+  </data>
+  <data name="DeviceDetailsNumberOfInstalledUpdatesArg" xml:space="preserve">
+    <value>Celkový počet instalovaných aktualizací: {0}</value>
+  </data>
+  <data name="DeviceDoesNotExistOrMightBeDeleted" xml:space="preserve">
+    <value>Zařízení neexistuje, nebo bylo pravděpodobně odstraněno.</value>
+  </data>
+  <data name="DeviceDomainJoinResourceCreationJob" xml:space="preserve">
+    <value>Úloha vytvoření zdroje pro připojení k doméně zařízení</value>
+  </data>
+  <data name="DeviceEnrolled" xml:space="preserve">
+    <value>Zařízení zaregistrováno</value>
+  </data>
+  <data name="DeviceEnrollmentChartDescription" xml:space="preserve">
+    <value>{0}</value>
+  </data>
+  <data name="DeviceEnrollmentChartTitle" xml:space="preserve">
+    <value>Skládaný pruhový graf registrace zařízení. </value>
+  </data>
+  <data name="DeviceHasBeenOverriddenSuccessfully" xml:space="preserve">
+    <value>Příkaz byl úspěšně odeslán</value>
+  </data>
+  <data name="DeviceListCannotBeEmpty" xml:space="preserve">
+    <value>Seznam zařízení nemůže být prázdný.</value>
+  </data>
+  <data name="DeviceLocationGroupChangeFailed" xml:space="preserve">
+    <value>Změna organizační skupiny zařízení se nezdařila. Ujistěte se, že má cílová organizační skupina ID skupiny a je na hierarchii uživatelské organizační skupiny registrace nebo pod ní.</value>
+  </data>
+  <data name="DeviceLogSourceToolTipText" xml:space="preserve">
+    <value>Vyberte „Centrum Hub“, chcete-li shromažďovat protokoly generované centrem Workspace ONE Intelligent Hub. Chcete-li shromažďovat kompletní systémový protokol pro zařízení s nainstalovanou službou Platform OEM, vyberte možnost „Systém“. Pokud je zařízení ve spravovaném režimu Android for Work a je na něm spuštěn systém Android 7.0 nebo novější, bude shromažďována zpráva o chybě. Pokud je zařízení ve spravovaném režimu Android for Work a je nainstalována služba Platform OEM, mohou se shromažďovat systémový protokol a zpráva o chybě.</value>
+  </data>
+  <data name="DeviceLogTypeToolTipText" xml:space="preserve">
+    <value>Výběrem položky „Snímek“ načtete nejnovější záznamy protokolů dostupné ze zařízení. Výběrem položky „Časové období“ získáte protokol zaznamenaný za určité časové období. Do aplikace Workspace ONE UEM může být odesláno více souborů protokolů.</value>
+  </data>
+  <data name="DeviceNameMaxCharacters" xml:space="preserve">
+    <value>Název zařízení může mít maximálně 512 znaků</value>
+  </data>
+  <data name="DeviceNotFound" xml:space="preserve">
+    <value>Zařízení nenalezeno</value>
+  </data>
+  <data name="DeviceNotRegisteredForRemoteView" xml:space="preserve">
+    <value>Zařízení s identifikátorem UDID {0} není zaregistrováno pro vzdálené zobrazení. Zařízení zaregistrujte kliknutím na tlačítko Registrovat zařízení.</value>
+  </data>
+  <data name="DeviceOfflineDomainJoinBlobCreationFailed" xml:space="preserve">
+    <value>Selhalo vytvoření objektu BLOB připojení k off-line doméně</value>
+  </data>
+  <data name="DeviceOfflineDomainJoinFailed" xml:space="preserve">
+    <value>Připojení k off-line doméně selhalo</value>
+  </data>
+  <data name="DeviceOwnerEnrollmentMode" xml:space="preserve">
+    <value>Režim správy firemních zařízení</value>
+  </data>
+  <data name="DeviceOwnershipChartDescription" xml:space="preserve">
+    <value>{0}</value>
+  </data>
+  <data name="DeviceOwnershipChartTitle" xml:space="preserve">
+    <value>Skládaný pruhový graf vlastnictví zařízení. </value>
+  </data>
+  <data name="DevicePolicyJobAuditing" xml:space="preserve">
+    <value>Provést audit úlohy zásad zařízení</value>
+  </data>
+  <data name="DevicePolicyJobAuditingHelp" xml:space="preserve">
+    <value>Pokud je tato možnost povolena, zpracovávané úlohy produktu se ukládají do auditu úlohy zásad.</value>
+  </data>
+  <data name="DeviceReadiness" xml:space="preserve">
+    <value>Připravenost zařízení</value>
+  </data>
+  <data name="DeviceRegisteredForRemoteView" xml:space="preserve">
+    <value>Zařízení s identifikátorem UDID {0} je registrováno pro vzdálené zobrazení.</value>
+  </data>
+  <data name="DeviceSavedSuccessfully" xml:space="preserve">
+    <value>Zařízení bylo úspěšně uloženo</value>
+  </data>
+  <data name="DeviceShutdownFailed" xml:space="preserve">
+    <value>Vypnutí zařízení selhalo</value>
+  </data>
+  <data name="DeviceShutdownSuccess" xml:space="preserve">
+    <value>Vypnutí zařízení bylo úspěšné</value>
+  </data>
+  <data name="DevicesSeenInLastDay" xml:space="preserve">
+    <value>Zařízení spatřená za posledních 24 hodin</value>
+  </data>
+  <data name="DevicesSettings" xml:space="preserve">
+    <value>Nastavení zařízení</value>
+  </data>
+  <data name="DevicesStagingMenuTitle" xml:space="preserve">
+    <value>Fázování</value>
+  </data>
+  <data name="DeviceStateAndSearchHubConfigurationErrorMessage" xml:space="preserve">
+    <value>Nepodařilo se načíst data, protože základní služba není v provozu nebo není nakonfigurována.</value>
+  </data>
+  <data name="DeviceSyncInitiated" xml:space="preserve">
+    <value>Probíhá inicializace synchronizace zařízení</value>
+  </data>
+  <data name="DeviceTime" xml:space="preserve">
+    <value>Čas zařízení</value>
+  </data>
+  <data name="DeviceTimeWindowCardEmpty" xml:space="preserve">
+    <value>Žádné dostupné plány.</value>
+  </data>
+  <data name="DeviceTimeWindowCardNote" xml:space="preserve">
+    <value>Zobrazuje poslední časová okna konfigurovaná v konzole tohoto zařízení.</value>
+  </data>
+  <data name="DeviceTimeWindowCardTitle" xml:space="preserve">
+    <value>Dnešní časová okna</value>
+  </data>
+  <data name="DeviceUnenrollmentRequested" xml:space="preserve">
+    <value>Je vyžadováno odregistrování zařízení</value>
+  </data>
+  <data name="DeviceUpdateDeferralDate" xml:space="preserve">
+    <value>Max. datum odkladu</value>
+  </data>
+  <data name="DeviceUpdateExpirationDate" xml:space="preserve">
+    <value>Datum vypršení platnosti</value>
+  </data>
+  <data name="DeviceUpdateInstallInProgress" xml:space="preserve">
+    <value>Probíhá instalace</value>
+  </data>
+  <data name="DeviceUpdateName" xml:space="preserve">
+    <value>Aktualizace</value>
+  </data>
+  <data name="DeviceUpdatePublish" xml:space="preserve">
+    <value>Publikování aktualizace zařízení</value>
+  </data>
+  <data name="DeviceUpdateReasonTooltipInfo" xml:space="preserve">
+    <value>Filtrovat lze pouze odpovědi ze způsobilých zařízení iOS.</value>
+  </data>
+  <data name="DeviceUpdateReleaseDate" xml:space="preserve">
+    <value>Datum vydání</value>
+  </data>
+  <data name="DeviceUpdates" xml:space="preserve">
+    <value>Aktualizace zařízení</value>
+  </data>
+  <data name="DeviceUpdateStatus" xml:space="preserve">
+    <value>Stav aktualizace</value>
+  </data>
+  <data name="DeviceUpdateType" xml:space="preserve">
+    <value>Aktualizovat druh</value>
+  </data>
+  <data name="DeviceUpdateUUIDNotFound" xml:space="preserve">
+    <value>Aktualizace zařízení se zadaným identifikátorem UUID nebyla nalezena.</value>
+  </data>
+  <data name="DeviceWipeDescription" xml:space="preserve">
+    <value>Výmaz zařízení odebere všechny aplikace, data, e-maily, profily a možnosti MDM a vrátí zařízení do výchozího továrního nastavení. Toto zahrnuje všechny osobní informace uživatele, pokud jsou k dispozici. Akce je nevratná. Pokračujte uvážlivě.</value>
+  </data>
+  <data name="DeviceWipeDescriptionForMac" xml:space="preserve">
+    <value>Výmaz zařízení odebere všechny aplikace, data, e-maily, profily, možnosti MDM a operační systém macOS. Toto zahrnuje všechny osobní informace uživatele, pokud jsou k dispozici. Akce je nevratná. Pokračujte uvážlivě.</value>
+  </data>
+  <data name="DeviceWipeEmailNotification" xml:space="preserve">
+    <value>E-mailové oznámení o výmazu zařízení</value>
+  </data>
+  <data name="DevUnlockCommand" xml:space="preserve">
+    <value>Příkaz k odemknutí zařízení</value>
+  </data>
+  <data name="DirectoryOrFilePathExample" xml:space="preserve">
+    <value>Zadejte cestu k adresáři nebo souboru</value>
+  </data>
+  <data name="DisableActivationLock" xml:space="preserve">
+    <value>Deaktivovat zámek aktivace</value>
+  </data>
+  <data name="DisableManagedApplication" xml:space="preserve">
+    <value>Deaktivovat spravovanou aplikaci</value>
+  </data>
+  <data name="DisallowProximitySetup" xml:space="preserve">
+    <value>Zakázat nastavení blízkosti</value>
+  </data>
+  <data name="DisallowProximitySetupTooltip" xml:space="preserve">
+    <value>Je-li povoleno, bude obrazovka nastavení blízkosti při příštím restartu zařízení v Asistentu instalace přeskočena.</value>
+  </data>
+  <data name="DomainJoinConfigAssignmentCreated" xml:space="preserve">
+    <value>Konfigurace připojení k doméně – Přiřazení vytvořeno</value>
+  </data>
+  <data name="DomainJoinConfigAssignmentDeleted" xml:space="preserve">
+    <value>Konfigurace připojení k doméně – Přiřazení odstraněno</value>
+  </data>
+  <data name="DomainJoinConfigAssignmentUpdated" xml:space="preserve">
+    <value>Konfigurace připojení k doméně – Přiřazení aktualizováno</value>
+  </data>
+  <data name="DomainJoinConfigCreated" xml:space="preserve">
+    <value>Konfigurace připojení k doméně vytvořena</value>
+  </data>
+  <data name="DomainJoinConfigDeleted" xml:space="preserve">
+    <value>Konfigurace připojení k doméně odstraněna</value>
+  </data>
+  <data name="DomainJoinConfigUpdated" xml:space="preserve">
+    <value>Konfigurace připojení k doméně aktualizována</value>
+  </data>
+  <data name="DomainJoinConfigurationError" xml:space="preserve">
+    <value>Chyba konfigurace připojení k doméně</value>
+  </data>
+  <data name="DomainJoinDescription" xml:space="preserve">
+    <value>Připojení k doméně</value>
+  </data>
+  <data name="DownloadAndInstall" xml:space="preserve">
+    <value>Stáhnout a instalovat</value>
+  </data>
+  <data name="DownloadAndInstallDesc" xml:space="preserve">
+    <value>Aktualizace bude stažena a nainstalována v zařízeních</value>
+  </data>
+  <data name="DownloadAndInstallNow" xml:space="preserve">
+    <value>Stáhnout a instalovat nyní</value>
+  </data>
+  <data name="DownloadInsufficientNetwork" xml:space="preserve">
+    <value>Nedostatečné připojení k síti pro stažení</value>
+  </data>
+  <data name="DownloadInsufficientPower" xml:space="preserve">
+    <value>Nedostatečné napájení pro stažení</value>
+  </data>
+  <data name="DownloadInsufficientSpace" xml:space="preserve">
+    <value>Nedostatek místa pro stažení</value>
+  </data>
+  <data name="DownloadNow" xml:space="preserve">
+    <value>Stáhnout nyní</value>
+  </data>
+  <data name="DownloadOnly" xml:space="preserve">
+    <value>Pouze stáhnout</value>
+  </data>
+  <data name="DownloadOnlyDesc" xml:space="preserve">
+    <value>Aktualizace bude pouze stažena v zařízeních</value>
+  </data>
+  <data name="DownloadRequiresComputer" xml:space="preserve">
+    <value>Stažení vyžaduje počítač</value>
+  </data>
+  <data name="Drive" xml:space="preserve">
+    <value>Jednotka</value>
+  </data>
+  <data name="DriveLetter" xml:space="preserve">
+    <value>Písmeno jednotky</value>
+  </data>
+  <data name="DropshipDeviceName" xml:space="preserve">
+    <value>Název zařízení</value>
+  </data>
+  <data name="DropshipDeviceNameToolTip" xml:space="preserve">
+    <value>Název zařízení čitelný pro lidi</value>
+  </data>
+  <data name="DropshipModelNumber" xml:space="preserve">
+    <value>Číslo modelu</value>
+  </data>
+  <data name="DropshipModelNumberToolTip" xml:space="preserve">
+    <value>Model zařízení OEM</value>
+  </data>
+  <data name="DropshipOptional" xml:space="preserve">
+    <value>Volitelné</value>
+  </data>
+  <data name="DropshipOrganizationGroup" xml:space="preserve">
+    <value>Organizační skupina</value>
+  </data>
+  <data name="DropshipOwnership" xml:space="preserve">
+    <value>Vlastnictví</value>
+  </data>
+  <data name="DropshipOwnershipToolTip" xml:space="preserve">
+    <value>Firemní/BYOD</value>
+  </data>
+  <data name="DropShipProvisioningMenuTitle" xml:space="preserve">
+    <value>Drop Ship Provisioning</value>
+  </data>
+  <data name="DropshipSerialNumber" xml:space="preserve">
+    <value>Sériové číslo</value>
+  </data>
+  <data name="DropshipSerialNumberToolTip" xml:space="preserve">
+    <value>Sériové číslo zařízení poskytnuté výrobcem OEM</value>
+  </data>
+  <data name="DropshipSyncDeviceSuccessful" xml:space="preserve">
+    <value>Synchronizace zařízení byla úspěšná</value>
+  </data>
+  <data name="DropshipSyncDeviceUnsuccessful" xml:space="preserve">
+    <value>V tuto chvíli se nepodařilo zahájit synchronizaci</value>
+  </data>
+  <data name="DropshipTag" xml:space="preserve">
+    <value>Štítek</value>
+  </data>
+  <data name="DropshipTagToolTip" xml:space="preserve">
+    <value>Štítek DropShip k logickému seskupení zařízení</value>
+  </data>
+  <data name="DynamicActionFailed" xml:space="preserve">
+    <value>Systému se nepodařilo odeslat příkaz do zařízení. Připojení není dostupné nebo na zařízení došlo k chybě.</value>
+  </data>
+  <data name="EasSample" xml:space="preserve">
+    <value>Vzorek EAS</value>
+  </data>
+  <data name="EditDeviceArgOpensDialog" xml:space="preserve">
+    <value>Příkaz Upravit zařízení {0} otevře dialogové okno</value>
+    <comment>The placeholder in this label key contains device friendly name.</comment>
+  </data>
+  <data name="EditTimeWindow" xml:space="preserve">
+    <value>Upravit časové okno</value>
+  </data>
+  <data name="EfotaCancelScheduleMessage" xml:space="preserve">
+    <value>Odteď již zařízení nebudou tuto aktualizaci nadále dostávat. Předchozí aktualizace v tomto plánu nelze odvolat. Přejete si zrušit tuto plánovanou aktualizaci?</value>
+  </data>
+  <data name="EfotaDeliveryMethod" xml:space="preserve">
+    <value>Způsob instalace</value>
+  </data>
+  <data name="EfotaInstallOnDemandPublishMessage" xml:space="preserve">
+    <value>Uživatelům se zobrazí výzva k přijetí aktualizace firmwaru předtím, než se nainstaluje na jejich zařízení.</value>
+  </data>
+  <data name="Eligible" xml:space="preserve">
+    <value>Způsobilé</value>
+  </data>
+  <data name="EligibleHoverText" xml:space="preserve">
+    <value>Způsobilé
+Zahrnuje všechna podporovaná a monitorovaná zařízení a zařízení DEP                                                                                           </value>
+  </data>
+  <data name="EnableActivationLock" xml:space="preserve">
+    <value>Aktivovat zámek aktivace</value>
+  </data>
+  <data name="EnableManagedApplication" xml:space="preserve">
+    <value>Aktivovat spravovanou aplikaci</value>
+  </data>
+  <data name="EndDateLessThanStartDate" xml:space="preserve">
+    <value>Datum a čas zahájení nesmí být větší než datum a čas plánovaného ukončení.</value>
+  </data>
+  <data name="EndDateSameAsStartDate" xml:space="preserve">
+    <value>Datum a čas zahájení a ukončení nemohou být stejné.</value>
+  </data>
+  <data name="EndUserWipeMessage" xml:space="preserve">
+    <value>Zpráva pro koncového uživatele o výmazu pracovního profilu Android</value>
+  </data>
+  <data name="EnrollmentConfigurationWizard" xml:space="preserve">
+    <value>Průvodce konfigurací registrace</value>
+  </data>
+  <data name="EnrollmentDetail" xml:space="preserve">
+    <value>Podrobnosti registrace</value>
+  </data>
+  <data name="EnrollmentID" xml:space="preserve">
+    <value>ID registrace</value>
+  </data>
+  <data name="EnterAssignmentName" xml:space="preserve">
+    <value>Zadejte název přiřazení</value>
+  </data>
+  <data name="EnterDeviceName" xml:space="preserve">
+    <value>Zadejte název zařízení</value>
+  </data>
+  <data name="EnterModelNumber" xml:space="preserve">
+    <value>Zadejte číslo modelu</value>
+  </data>
+  <data name="EnterpriseWipeWarningAADDevices" xml:space="preserve">
+    <value>U zařízení registrovaných ke službě Azure Active Directory se ujistěte, že existuje účet místního administrátora, než vydáte příkaz k firemnímu výmazu, jelikož při něm dojde k odstranění účtu Azure AD. Pokud účet místního administrátora neexistuje, bude pak možné zařízení obnovit jedině pomocí obnovení do továrního nastavení.</value>
+  </data>
+  <data name="EnterSerialNumber" xml:space="preserve">
+    <value>Zadejte sériové číslo</value>
+  </data>
+  <data name="EnvironmentVariables" xml:space="preserve">
+    <value>Proměnné prostředí</value>
+  </data>
+  <data name="ErrorGeneratingAppToken" xml:space="preserve">
+    <value>Chyba při generování tokenu aplikace. Opakujte pokus.</value>
+  </data>
+  <data name="ErrorInitiatingDeviceSync" xml:space="preserve">
+    <value>Neznámá chyba během inicializace synchronizace zařízení</value>
+  </data>
+  <data name="ErrorResolvingDeviceGroupArg" xml:space="preserve">
+    <value>Chyba při analýze skupiny zařízení {0}</value>
+  </data>
+  <data name="ErrorWhileSendingEmailNotification" xml:space="preserve">
+    <value>Chyba při odeslání oznámení e-mailem. Opakujte pokus.</value>
+  </data>
+  <data name="EsimUrl" xml:space="preserve">
+    <value>Adresa URL eSIM karty</value>
+  </data>
+  <data name="EsimUrlTooltip" xml:space="preserve">
+    <value>Adresa URL eSIM karty je adresa URL serveru eSIM karet operátora, na kterou zařízení odesílá dotazy kvůli aktualizaci svého mobilního plánu.</value>
+  </data>
+  <data name="EveryArg" xml:space="preserve">
+    <value>Vždy v následující den: {0}, v {1}–{2} ({3})</value>
+    <comment>Placehoders: 0 - Days on which schedule is repeated, 1 - StartTime, 2 - EndTime, 3 - Duration.
+Example: Every Mon/Tue 11:00 PM - 4:30 AM (5 hours 30 mins)</comment>
+  </data>
+  <data name="EveryWeekdayArg" xml:space="preserve">
+    <value>Každý všední den v {0}–{1} ({2})</value>
+    <comment>Placehoders: 0 - StartTime, 1 - EndTime, 2 - Duration.
+Example: Every Weekday 11:00 PM - 4:30 AM (5 hours 30 mins)</comment>
+  </data>
+  <data name="ExecutionContext" xml:space="preserve">
+    <value>Kontext spuštění</value>
+  </data>
+  <data name="Existing" xml:space="preserve">
+    <value>Stávající</value>
+  </data>
+  <data name="ExistingDeviceUpdatedInDeviceState" xml:space="preserve">
+    <value>Stávající zařízení aktualizováno ve stavu zařízení</value>
+  </data>
+  <data name="Expires" xml:space="preserve">
+    <value>Platnost skončí</value>
+  </data>
+  <data name="ExportPPKGWindowsMoved" xml:space="preserve">
+    <value>Exportovat balíček zajišťování</value>
+  </data>
+  <data name="ExportPPKGWindowsMovedMessage" xml:space="preserve">
+    <value>Tato akce přejde do části fázování, kde můžete exportovat aplikace za účelem vytvoření balíčku zajišťování. Chcete pokračovat?</value>
+  </data>
+  <data name="ExtendedDeviceInventory" xml:space="preserve">
+    <value>Rozšířený sklad zařízení</value>
+  </data>
+  <data name="ExternalBootStatusAllowed" xml:space="preserve">
+    <value>Stav externího spouštění – povoleno</value>
+  </data>
+  <data name="ExternalBootStatusDisallowed" xml:space="preserve">
+    <value>Stav externího spouštění – nepovoleno</value>
+  </data>
+  <data name="ExternalBootStatusNotSupported" xml:space="preserve">
+    <value>Stav externího spouštění – nepodporováno</value>
+  </data>
+  <data name="ExternalStorage" xml:space="preserve">
+    <value>Externí úložiště</value>
+  </data>
+  <data name="FailedItemsBackOffTime" xml:space="preserve">
+    <value>Doba nezasahování pro chybové položky</value>
+  </data>
+  <data name="FailedItemsMaxTryCount" xml:space="preserve">
+    <value>Maximální počet pokusů pro chybové položky</value>
+  </data>
+  <data name="FewSecondsAgo" xml:space="preserve">
+    <value>před pár sekundami</value>
+  </data>
+  <data name="FileActionNoNewFileEntities" xml:space="preserve">
+    <value>Nebyly nalezeny žádné nové souborové entity.</value>
+  </data>
+  <data name="FilePathOnFileServerExample" xml:space="preserve">
+    <value>Zadejte cestu souboru na souborovém serveru</value>
+  </data>
+  <data name="FileServer" xml:space="preserve">
+    <value>Souborový server</value>
+  </data>
+  <data name="FileUploadInfoMessage" xml:space="preserve">
+    <value>Soubory se budou nahrávat do dynamicky generovaných podřízených složek na jednotlivých přiřazených zařízeních. Jestliže více akcí Nahrát soubory používá shodná pravidla pojmenování cílové složky, mohou se podobně pojmenované soubory navzájem přepsat, takže se doporučuje používat jedinečný název.</value>
+  </data>
+  <data name="FindDeviceAlarmSoundMessage" xml:space="preserve">
+    <value>Zvukové připomenutí bude používat konfigurovaný vyzváněcí tón zařízení, který může být nepřetržitě opakován, dokud nebude připomenutí vypnuto klepnutím na oznámení na zařízení.</value>
+  </data>
+  <data name="FirmwareUpdateDeploymentEndDateTime" xml:space="preserve">
+    <value>Ukončení nasazení</value>
+  </data>
+  <data name="FirmwareUpdateDeploymentStartDateTime" xml:space="preserve">
+    <value>Zahájení nasazení</value>
+  </data>
+  <data name="FolderNaming" xml:space="preserve">
+    <value>Pojmenování složky</value>
+  </data>
+  <data name="FollowingAssignmentArgWillBeDeleted" xml:space="preserve">
+    <value>Opravdu chcete odstranit přiřazení „{0}“?</value>
+  </data>
+  <data name="FollowingDeploymentsWillBeDeleted" xml:space="preserve">
+    <value>Opravdu chcete odstranit toto přiřazení? Zabráníte tak zařízením, aby získaly tuto aktualizaci. Tato aktualizace ale nebude odebrána ze zařízení, která ji již přijala.</value>
+  </data>
+  <data name="ForceAospDisabledPromtText" xml:space="preserve">
+    <value>Zařízení se registruje na základě typu registrace ve spravovaném režimu Work, zadaného v nastavení registrace systému Android</value>
+  </data>
+  <data name="ForceAospEnabledPromtText" xml:space="preserve">
+    <value>Zařízení se registruje jako AOSP / uzavřená síť nezávisle na typu registrace ve spravovaném režimu Work, zadaném v nastavení registrace systému Android</value>
+  </data>
+  <data name="ForceBiosPasswordReset" xml:space="preserve">
+    <value>Vynutit resetování hesla systému BIOS</value>
+  </data>
+  <data name="ForceBiosPasswordResetFailure" xml:space="preserve">
+    <value>Resetování hesla systému BIOS se nezdařilo.</value>
+  </data>
+  <data name="ForceBiosPasswordResetHelp" xml:space="preserve">
+    <value>Oprávnění k vynucení nového nastavení hesla systému BIOS na stránce Detaily zařízení.</value>
+  </data>
+  <data name="ForceBiosPasswordResetMessage" xml:space="preserve">
+    <value>K této akci dojde, když se zařízení přihlásí do aplikace Workspace ONE UEM. Zařízení musí mít profil systému BIOS a být kompatibilním, podporovaným typem zařízení. Chcete-li pokračovat, zadejte bezpečnostní kód PIN.</value>
+  </data>
+  <data name="ForceBiosPasswordResetRestricted" xml:space="preserve">
+    <value>Vynutit nové nastavení hesla systému BIOS</value>
+  </data>
+  <data name="ForceBiosPasswordResetSuccess" xml:space="preserve">
+    <value>U tohoto zařízení bylo úspěšně vyžádáno resetování hesla systému BIOS.</value>
+  </data>
+  <data name="ForceDeviceReportAppConfigFeedbackSuccess" xml:space="preserve">
+    <value>Zpětná vazba byla úspěšně vyžádána. Může trvat několik minut, než bude nová zpětná vazba k dispozici.</value>
+  </data>
+  <data name="ForceDeviceReportAppConfigFeedbackTitle" xml:space="preserve">
+    <value>Požádat o zpětnou vazbu konfigurace aplikace</value>
+  </data>
+  <data name="ForceRequestFeedbackConfirmationMessage" xml:space="preserve">
+    <value>Nová zpětná vazba pro aplikace, pokud je k dispozici, bude ohlášena zařízením a lze ji zobrazit v nabídce Aplikace a knihy &gt; Aplikace &gt; Zobrazení detailů &gt; Zařízení &gt; sloupec Přiřazená konfigurace nebo kliknutím na zde uvedený Název aplikace a přechodem na kartu Konfigurace aplikace.</value>
+  </data>
+  <data name="ForceRequestFeedbackConfirmationMessageSecond" xml:space="preserve">
+    <value>Tento požadavek může být odeslán pouze třikrát za den. Opravdu ho chcete odeslat?</value>
+  </data>
+  <data name="ForceRequestFeedbackTitle" xml:space="preserve">
+    <value>Požádat o zpětnou vazbu konfigurace aplikace</value>
+  </data>
+  <data name="FreshDeviceCreatedInDeviceState" xml:space="preserve">
+    <value>Nové zařízení vytvořeno ve stavu zařízení</value>
+  </data>
+  <data name="GenerateNewCode" xml:space="preserve">
+    <value>Vygenerovat nový kód</value>
+  </data>
+  <data name="GetSensor" xml:space="preserve">
+    <value>Get(Sensor)</value>
+  </data>
+  <data name="GoogleApiError" xml:space="preserve">
+    <value>Výjimka/chyba Google API.</value>
+  </data>
+  <data name="GooglePlayServiceDisable" xml:space="preserve">
+    <value>Instalovaná verze služeb Google Play byla na tomto zařízení zakázána.</value>
+  </data>
+  <data name="GooglePlayServiceMissing" xml:space="preserve">
+    <value>Na tomto zařízení nejsou služby Google Play.</value>
+  </data>
+  <data name="GooglePlayServiceUpdateRequired" xml:space="preserve">
+    <value>Instalovaná verze služeb Google Play je zastaralá.</value>
+  </data>
+  <data name="GooglePlayServiceUpdating" xml:space="preserve">
+    <value>Služby Google Play jsou právě na tomto zařízení aktualizovány.</value>
+  </data>
+  <data name="GoToAppleBusinessManager" xml:space="preserve">
+    <value>Apple Business Manager</value>
+  </data>
+  <data name="GoToWorkflowList" xml:space="preserve">
+    <value>Přejít na pracovní postupy</value>
+  </data>
+  <data name="GPSDataCollectionNotEnabledForDeviceType" xml:space="preserve">
+    <value>Sběr dat o poloze nebyl aktivován pro tento druh zařízení.</value>
+  </data>
+  <data name="GracePeriodRecoveryKey" xml:space="preserve">
+    <value>Klíč obnovení poskytnuté lhůty</value>
+  </data>
+  <data name="HealthAttestationStatus" xml:space="preserve">
+    <value>Stav atestace zdravotního stavu</value>
+  </data>
+  <data name="HmacRecovery" xml:space="preserve">
+    <value>Obnovení Hmac</value>
+  </data>
+  <data name="HostedOnAnExternalURL" xml:space="preserve">
+    <value>Hostováno na externí adrese URL</value>
+  </data>
+  <data name="HourAgo" xml:space="preserve">
+    <value>před hodinou</value>
+  </data>
+  <data name="HubEnrollmentUrl" xml:space="preserve">
+    <value>URL registrace centra Hub</value>
+  </data>
+  <data name="HubRepair" xml:space="preserve">
+    <value>Opravit centrum Hub</value>
+  </data>
+  <data name="HumanReadableName" xml:space="preserve">
+    <value>Nahlášená aktualizace</value>
+  </data>
+  <data name="Idle" xml:space="preserve">
+    <value>Nečinné</value>
+  </data>
+  <data name="IGEL_THIN_CLIENT" xml:space="preserve">
+    <value>IGEL OS</value>
+  </data>
+  <data name="IMSI" xml:space="preserve">
+    <value>IMSI</value>
+  </data>
+  <data name="IncorrectFilter" xml:space="preserve">
+    <value>Nesprávný filtr</value>
+  </data>
+  <data name="InstallComplete" xml:space="preserve">
+    <value>Instalace dokončena</value>
+  </data>
+  <data name="InstallEventAction" xml:space="preserve">
+    <value>Instalovat akci události</value>
+  </data>
+  <data name="InstallInsufficientPower" xml:space="preserve">
+    <value>Nedostatečné napájení pro instalaci</value>
+  </data>
+  <data name="InstallInsufficientSpace" xml:space="preserve">
+    <value>Nedostatek místa pro instalaci</value>
+  </data>
+  <data name="InstallNow" xml:space="preserve">
+    <value>Instalovat nyní</value>
+  </data>
+  <data name="InstallOnDemand" xml:space="preserve">
+    <value>Instalace na vyžádání</value>
+  </data>
+  <data name="InstallOnly" xml:space="preserve">
+    <value>Pouze instalovat</value>
+  </data>
+  <data name="InstallOnlyDesc" xml:space="preserve">
+    <value>Již stažené aktualizace budou instalovány v zařízeních</value>
+  </data>
+  <data name="InstallPackage" xml:space="preserve">
+    <value>Instalovat balíček</value>
+  </data>
+  <data name="InstallPhoneCallInProgress" xml:space="preserve">
+    <value>Instalace – probíhá telefonní hovor</value>
+  </data>
+  <data name="InternalStorage" xml:space="preserve">
+    <value>Interní úložiště</value>
+  </data>
+  <data name="Interrogator" xml:space="preserve">
+    <value>Interogátor</value>
+  </data>
+  <data name="InterrogatorIntervalRequired" xml:space="preserve">
+    <value>Interval interogátoru je povinný</value>
+  </data>
+  <data name="InterrogatorIntervalSeconds" xml:space="preserve">
+    <value>Interval interogátoru (s)</value>
+  </data>
+  <data name="InterrogatorPort" xml:space="preserve">
+    <value>Port interogátoru</value>
+  </data>
+  <data name="InterrogatorQueueService" xml:space="preserve">
+    <value>Monitor fronty interogátoru AirWatch</value>
+  </data>
+  <data name="InterrogatorService" xml:space="preserve">
+    <value>Server interogátoru AirWatch</value>
+  </data>
+  <data name="InterrogatorSettings" xml:space="preserve">
+    <value>Nastavení interogátoru</value>
+  </data>
+  <data name="InvalidGooglePlayService" xml:space="preserve">
+    <value>Verze služeb Google Play instalovaná na tomto zařízení není autentická.</value>
+  </data>
+  <data name="InvalidGroupIdentifier" xml:space="preserve">
+    <value>Vybraná organizační skupina nemá platné ID skupiny.</value>
+  </data>
+  <data name="InvalidPeriodEnd" xml:space="preserve">
+    <value>Neplatná koncová hodnota</value>
+  </data>
+  <data name="InvalidSuspendBitLockerRebootCount" xml:space="preserve">
+    <value>Hodnota počtu restartování musí být mezi 1 a 15.</value>
+  </data>
+  <data name="InvalidTargetedLoggingFilterFormat" xml:space="preserve">
+    <value>Neplatný formát pro filtr cíleného protokolování.</value>
+  </data>
+  <data name="IosCodeSigningChecks" xml:space="preserve">
+    <value>Kontrola podpisu systémového kódu je deaktivována.</value>
+  </data>
+  <data name="IosDebugChecks" xml:space="preserve">
+    <value>Aplikace se aktivně ladí.</value>
+  </data>
+  <data name="IosDisallowedOperationChecks" xml:space="preserve">
+    <value>Integrita zařízení je ohrožena.</value>
+  </data>
+  <data name="IosEnvironmentChecks" xml:space="preserve">
+    <value>Aplikace je spuštěna v prostředí, které není kontrolováno dodavatelem zařízení.</value>
+  </data>
+  <data name="IosMountCheck" xml:space="preserve">
+    <value>Zařízení obsahuje potenciálně nebezpečné nebo ohrožené přípojné body.</value>
+  </data>
+  <data name="Iospost103managementcapabilityunavailable" xml:space="preserve">
+    <value>Toto zařízení není pod dohledem. Nemůžete provádět žádnou akci s aktualizacemi.</value>
+  </data>
+  <data name="Iospre103managementcapabilityunavailable" xml:space="preserve">
+    <value>Toto zařízení není registrováno v DEP a není pod dohledem. Nemůžete provádět žádnou akci s aktualizacemi.</value>
+  </data>
+  <data name="IosProhibitedFileExistenceChecks" xml:space="preserve">
+    <value>Aplikace obsahuje nebo používá zakázané knihovny.</value>
+  </data>
+  <data name="IosQueryStatusTooltip" xml:space="preserve">
+    <value>Zjistěte stav aktualizací pro toto zařízení. Lze se dotazovat pouze na aktualizace, které byly naplánovány aplikací Workspace ONE.</value>
+  </data>
+  <data name="IosUpdateDeviceCountWarning" xml:space="preserve">
+    <value>Chystáte se odeslat požadavek na aktualizaci iOS na následující počet zařízení: {0}. Tento požadavek se zašle na zařízení s iOS 10.3+ pouze tehdy, když budou pod dohledem, a na zařízení s iOS 9+, pokud budou pod dohledem a registrována v DEP.</value>
+  </data>
+  <data name="iPad7" xml:space="preserve">
+    <value>iPad 7. generace</value>
+  </data>
+  <data name="iPadMini4" xml:space="preserve">
+    <value>iPad Mini 4</value>
+  </data>
+  <data name="iPadPro11inch2" xml:space="preserve">
+    <value>iPad Pro 11“, 2. generace</value>
+  </data>
+  <data name="iPadPro12.9inch4" xml:space="preserve">
+    <value>iPad Pro 12,9“, 4. generace</value>
+  </data>
+  <data name="iPhone11" xml:space="preserve">
+    <value>iPhone 11</value>
+  </data>
+  <data name="iPhone11Pro" xml:space="preserve">
+    <value>iPhone 11 Pro</value>
+  </data>
+  <data name="iPhone11ProMax" xml:space="preserve">
+    <value>iPhone 11 Pro Max</value>
+  </data>
+  <data name="iPhoneSE2" xml:space="preserve">
+    <value>iPhone SE, 2. generace</value>
+  </data>
+  <data name="iPhoneX" xml:space="preserve">
+    <value>iPhone X</value>
+  </data>
+  <data name="iPhoneXʀ" xml:space="preserve">
+    <value>iPhone Xʀ</value>
+  </data>
+  <data name="iPhoneXs" xml:space="preserve">
+    <value>iPhone Xs</value>
+  </data>
+  <data name="iPhoneXsMax" xml:space="preserve">
+    <value>iPhone Xs Max</value>
+  </data>
+  <data name="IsDataPreferred" xml:space="preserve">
+    <value>Jsou upřednostňována data</value>
+  </data>
+  <data name="IsNotEnabledSIP" xml:space="preserve">
+    <value>Je vypnuto</value>
+  </data>
+  <data name="IsSecurityPatchUpdate" xml:space="preserve">
+    <value>Aktualizovat zabezpečení?</value>
+  </data>
+  <data name="IsVoicePreferred" xml:space="preserve">
+    <value>Je upřednostňováno hlasové volání</value>
+  </data>
+  <data name="KeepAppsOnDevice" xml:space="preserve">
+    <value>Ponechat aplikace v zařízení</value>
+  </data>
+  <data name="KeyCopied" xml:space="preserve">
+    <value>Klíč zkopírován</value>
+  </data>
+  <data name="KeyRotationRequestFailed" xml:space="preserve">
+    <value>V tuto chvíli nelze žádat o rotaci klíče pro {0}.</value>
+  </data>
+  <data name="KeyRotationSuccessfullyRequested" xml:space="preserve">
+    <value>Rotace klíče pro {0} byla úspěšně vyžádána.</value>
+  </data>
+  <data name="KeyShouldNotBeEmpty" xml:space="preserve">
+    <value>Pole Klíč by nemělo zůstat prázdné</value>
+  </data>
+  <data name="LastApplied" xml:space="preserve">
+    <value>Naposledy použito</value>
+  </data>
+  <data name="LastAppliedPassword" xml:space="preserve">
+    <value>Naposledy použité heslo</value>
+  </data>
+  <data name="LastAppliedPasswordTooltip" xml:space="preserve">
+    <value>Toto je poslední heslo systému BIOS, které bylo potvrzeno jako použité v zařízení.</value>
+  </data>
+  <data name="LastLoggedInTime" xml:space="preserve">
+    <value>Čas posledního přihlášení</value>
+  </data>
+  <data name="LastReboot" xml:space="preserve">
+    <value>Poslední restart</value>
+  </data>
+  <data name="LastSeenBreakdownChartDescription" xml:space="preserve">
+    <value>{0}</value>
+  </data>
+  <data name="LastSeenBreakdownChartTitle" xml:space="preserve">
+    <value>Pruhový graf přehledu o naposledy spatřených zařízeních. </value>
+  </data>
+  <data name="LastSeenDays" xml:space="preserve">
+    <value>Naposledy spatřeno (dny)</value>
+  </data>
+  <data name="LastSeenOverviewChartDescription" xml:space="preserve">
+    <value> Počet zařízení spatřených za posledních 24 hodin: {0}. Počet naposledy spatřených zařízení: {1}.</value>
+  </data>
+  <data name="LastSeenOverviewChartTitle" xml:space="preserve">
+    <value>Přehled o naposledy spatřených zařízeních. </value>
+  </data>
+  <data name="LastSevenDays" xml:space="preserve">
+    <value>Posledních sedm dní</value>
+  </data>
+  <data name="LastSixMonths" xml:space="preserve">
+    <value>Posledních šest měsíců</value>
+  </data>
+  <data name="LastSubmittedPassword" xml:space="preserve">
+    <value>Naposledy odeslané heslo</value>
+  </data>
+  <data name="LastSubmittedPasswordTooltip" xml:space="preserve">
+    <value>Toto je poslední heslo systému BIOS, které bylo odesláno na zařízení jako aktualizace během automatického nebo plánovaného otočení, nebo během vynucené aktualizace. Pokud nebyl požadavek na aktualizaci hesla odeslán, zobrazí se „Žádné“.</value>
+  </data>
+  <data name="LastSuccessfulScan" xml:space="preserve">
+    <value>Poslední úspěšný sken</value>
+  </data>
+  <data name="LastSuccessfulSync" xml:space="preserve">
+    <value>Poslední úspěšná synchronizace</value>
+  </data>
+  <data name="LastThirtyDays" xml:space="preserve">
+    <value>Posledních třicet dní</value>
+  </data>
+  <data name="LastUsername" xml:space="preserve">
+    <value>Poslední uživatelské jméno</value>
+  </data>
+  <data name="LatestAgent" xml:space="preserve">
+    <value>Nejnovější centrum Hub</value>
+  </data>
+  <data name="LatestAvailableOsUpdate" xml:space="preserve">
+    <value>Nejnovější dostupná aktualizace OS</value>
+  </data>
+  <data name="LauncherImageWarningMessage" xml:space="preserve">
+    <value>K zavedení vysoce kvalitního obrazu jsou nutné aplikace AirWatch Agent 8.2 nebo novější, Workspace ONE Intelligent Hub 9.0 nebo novější a AirWatch Launcher 3.4 nebo novější.</value>
+  </data>
+  <data name="LicensedUntil" xml:space="preserve">
+    <value>Licencováno do {0}</value>
+  </data>
+  <data name="LicenseSample" xml:space="preserve">
+    <value>Příklad licence</value>
+  </data>
+  <data name="LocationDataHasNotBeenReceived" xml:space="preserve">
+    <value>Data umístění nebyla přijata</value>
+  </data>
+  <data name="LogoutUserConfirmation" xml:space="preserve">
+    <value>Jste si jisti, že chcete odhlásit aktuálně přihlášeného uživatele na zařízení?</value>
+  </data>
+  <data name="LostMessage" xml:space="preserve">
+    <value>Ztracená zpráva</value>
+  </data>
+  <data name="LostMessageTooltip" xml:space="preserve">
+    <value>Ztracená zpráva, která se má zobrazit na zařízení.</value>
+  </data>
+  <data name="LostModeDisabledMessage" xml:space="preserve">
+    <value>Režim ztraceného zařízení je deaktivován.</value>
+  </data>
+  <data name="LostModeDisableFailedMessage" xml:space="preserve">
+    <value>Deaktivace režimu ztraceného zařízení se nezdařila, zkuste to znovu</value>
+  </data>
+  <data name="LostModeEnabledMessage" xml:space="preserve">
+    <value>Režim ztraceného zařízení je aktivován.</value>
+  </data>
+  <data name="LostModeEnableFailedMessage" xml:space="preserve">
+    <value>Aktivace režimu ztraceného zařízení se nezdařila, zkuste to znovu.</value>
+  </data>
+  <data name="LTE" xml:space="preserve">
+    <value>LTE</value>
+    <comment>Cellular technology</comment>
+  </data>
+  <data name="MacOsDeviceLogLevelInfo" xml:space="preserve">
+    <value>Zvolte úroveň protokolování dat, která se mají shromažďovat. Vyberte možnost „Informace“, chcete-li shromažďovat protokoly v jejich výchozím stavu. Výběrem položky „Ladění“ aktivujete přídavné protokolování a sběr dat.</value>
+  </data>
+  <data name="MacOsHostName" xml:space="preserve">
+    <value>Hostitelské jméno</value>
+  </data>
+  <data name="MacOsLocalHostName" xml:space="preserve">
+    <value>Název místního hostitele</value>
+  </data>
+  <data name="MacOsRequestDeviceLogSettingsInformation" xml:space="preserve">
+    <value>Níže si nastavte vlastní žádost o protokolování. Přejděte do nabídky Detaily zařízení &amp;gt; Více &amp;gt; Přílohy &amp;gt; Dokumenty a prohlédněte si soubory protokolů. </value>
+  </data>
+  <data name="MacOsViewLocalAdminPassword" xml:space="preserve">
+    <value>Zobrazit heslo administrátora</value>
+  </data>
+  <data name="MaintenanceHours" xml:space="preserve">
+    <value>Doba údržby</value>
+  </data>
+  <data name="ManageAssignments" xml:space="preserve">
+    <value>Správa přiřazení</value>
+  </data>
+  <data name="ManagedAdminPasswordAccessed" xml:space="preserve">
+    <value>Přístup k spravovanému heslu administrátora</value>
+  </data>
+  <data name="ManagedAdminPasswordRotationInformation" xml:space="preserve">
+    <value>Z bezpečnostních důvodů bude za 8 hodin zadán příkaz pro otočení tohoto hesla</value>
+  </data>
+  <data name="ManagedAdminStaticPasswordRotationInformation" xml:space="preserve">
+    <value>Pro použitý registrační profil zařízení není aktivováno náhodné heslo administrátora. Toto heslo nebude otočeno.</value>
+  </data>
+  <data name="ManagedAdminUser" xml:space="preserve">
+    <value>Spravovaný uživatel – administrátor</value>
+  </data>
+  <data name="ManagedApplicationAttributesConfirmed" xml:space="preserve">
+    <value>Atributy spravovaných aplikací potvrzeny</value>
+  </data>
+  <data name="ManagedApplicationAttributesFailed" xml:space="preserve">
+    <value>Atributy spravovaných aplikací selhaly</value>
+  </data>
+  <data name="ManagedApplicationAttributesRefused" xml:space="preserve">
+    <value>Atributy spravovaných aplikací odmítnuty</value>
+  </data>
+  <data name="ManagedApplicationAttributesRequested" xml:space="preserve">
+    <value>Atributy spravovaných aplikací vyžádány</value>
+  </data>
+  <data name="ManageTags" xml:space="preserve">
+    <value>Spravovat štítky</value>
+  </data>
+  <data name="ManageUpdate" xml:space="preserve">
+    <value>Správa aktualizací</value>
+  </data>
+  <data name="MaxArgCharacters" xml:space="preserve">
+    <value>Max. počet znaků: {0}</value>
+  </data>
+  <data name="MEID" xml:space="preserve">
+    <value>MEID</value>
+  </data>
+  <data name="MemorySize" xml:space="preserve">
+    <value>Velikost paměti</value>
+  </data>
+  <data name="MinOrMaxCannotBeLessThanZero" xml:space="preserve">
+    <value>Minimální nebo maximální hodnota nesmí být menší než 0.</value>
+  </data>
+  <data name="MinuteAgo" xml:space="preserve">
+    <value>před minutou</value>
+  </data>
+  <data name="MinValCannotBeGreaterThanMaxVal" xml:space="preserve">
+    <value>Minimální hodnota nesmí být větší než maximální hodnota.</value>
+  </data>
+  <data name="ModelDetailSearchHelpText" xml:space="preserve">
+    <value>Chcete-li hledat model, začněte psát</value>
+  </data>
+  <data name="ModelNotSupported" xml:space="preserve">
+    <value>Model není podporován</value>
+  </data>
+  <data name="ModelNumberMaxCharacters" xml:space="preserve">
+    <value>Číslo modelu může mít maximálně 500 znaků</value>
+  </data>
+  <data name="MonitorFilter" xml:space="preserve">
+    <value>Monitor – filtr</value>
+  </data>
+  <data name="MonitorIdentifier" xml:space="preserve">
+    <value>Monitor – identifikátor</value>
+  </data>
+  <data name="MultiuserDeviceRegistrationNotAllowed" xml:space="preserve">
+    <value>Registrace zařízení pro více uživatelů není povolena.</value>
+  </data>
+  <data name="NavigateToNextDevice" xml:space="preserve">
+    <value>Detaily zařízení – šipka Další</value>
+  </data>
+  <data name="NavigateToPreviousDevice" xml:space="preserve">
+    <value>Detaily zařízení – šipka Předchozí</value>
+  </data>
+  <data name="NetworkErrorOccurredPleaseRefresh" xml:space="preserve">
+    <value>Došlo k chybě síťového připojení. Obnovte prohlížeč a opakujte pokus.</value>
+  </data>
+  <data name="NewAssignment" xml:space="preserve">
+    <value>Nové přiřazení</value>
+  </data>
+  <data name="NewFileServer" xml:space="preserve">
+    <value>Nový souborový server</value>
+  </data>
+  <data name="NewRoutine" xml:space="preserve">
+    <value>Nový plán</value>
+  </data>
+  <data name="NewScript" xml:space="preserve">
+    <value>Nový skript</value>
+  </data>
+  <data name="NewTimeWindow" xml:space="preserve">
+    <value>Nové časové okno</value>
+  </data>
+  <data name="NextReTry" xml:space="preserve">
+    <value>Další opakování</value>
+  </data>
+  <data name="NextSevenDays" xml:space="preserve">
+    <value>Příštích sedm dní</value>
+  </data>
+  <data name="NextSixMonths" xml:space="preserve">
+    <value>Příštích šest měsíců</value>
+  </data>
+  <data name="NextThirtyDays" xml:space="preserve">
+    <value>Příštích třicet dnů</value>
+  </data>
+  <data name="NextThreeMonths" xml:space="preserve">
+    <value>Příští tři měsíce</value>
+  </data>
+  <data name="NoAssignedTagsFound" xml:space="preserve">
+    <value>Nebyly nalezeny žádné přiřazené značky</value>
+  </data>
+  <data name="NoAssignmentsFound" xml:space="preserve">
+    <value>Nebyla nalezena žádná přiřazení</value>
+  </data>
+  <data name="NoAvailableTagsFound" xml:space="preserve">
+    <value>Nebyly nalezeny žádné dostupné značky</value>
+  </data>
+  <data name="NoDeploymentFound" xml:space="preserve">
+    <value>V aktuální organizační skupině nebylo nalezeno žádné zavedení pro aktualizaci zařízení.</value>
+  </data>
+  <data name="NoDeviceUpdatesMsg" xml:space="preserve">
+    <value>Nejsou dostupné žádné aktualizace zařízení</value>
+  </data>
+  <data name="NoGroupIdAtEnrollmentOg" xml:space="preserve">
+    <value>Organizační skupina registrace nemá žádné ID skupiny</value>
+  </data>
+  <data name="NonceError" xml:space="preserve">
+    <value>Chyba generování hodnoty Nonce.</value>
+  </data>
+  <data name="NoPasscodeDevicesChartDescription" xml:space="preserve">
+    <value>Počet zařízení bez hesla: {0}. Celkový počet zařízení bez hesla: {1}.</value>
+  </data>
+  <data name="NoPasscodeDevicesChartTitle" xml:space="preserve">
+    <value>Prstencový graf zařízení bez hesla. </value>
+  </data>
+  <data name="NoRemovableDrivesInOG" xml:space="preserve">
+    <value>Nejsou k dispozici žádné vyměnitelné jednotky</value>
+  </data>
+  <data name="NoSafetyNetScanData" xml:space="preserve">
+    <value>Žádná předchozí data skenování</value>
+  </data>
+  <data name="NoSmartGroupsFound" xml:space="preserve">
+    <value>Nebyla nalezena žádná smart skupina</value>
+  </data>
+  <data name="NotDepOrSupervised" xml:space="preserve">
+    <value>Není DEP nebo pod dohledem</value>
+  </data>
+  <data name="NoteKeepAppsOnDevice" xml:space="preserve">
+    <value>Náhled zařízení může být použit k vyhledání zařízení, která nevyžadují verzi sady Intelligent Hub pro podporu této možnosti, pomocí výrazu „Není podporováno“.</value>
+  </data>
+  <data name="NotEligible" xml:space="preserve">
+    <value>Nezpůsobilé</value>
+  </data>
+  <data name="NotEligibleHoverText" xml:space="preserve">
+    <value>Nezpůsobilé
+Zahrnuje všechna zařízení, která nejsou v této nebo vyšší verzi a nejsou podporována, monitorována nebo DEP</value>
+  </data>
+  <data name="NotEncryptedDevicesChartDescription" xml:space="preserve">
+    <value>Počet nešifrovaných zařízení: {0}. Celkový počet nešifrovaných zařízení: {1}.</value>
+  </data>
+  <data name="NotEncryptedDevicesChartTitle" xml:space="preserve">
+    <value>Prstencový graf nešifrovaných zařízení.</value>
+  </data>
+  <data name="NotificationForDownloadSuccess" xml:space="preserve">
+    <value>Oznámení o úspěšném stahování</value>
+  </data>
+  <data name="NotificationForInstallSuccess" xml:space="preserve">
+    <value>Oznámení o úspěšné instalaci</value>
+  </data>
+  <data name="NotificationType" xml:space="preserve">
+    <value>Typ oznámení</value>
+  </data>
+  <data name="NotifyVidmConfigChange" xml:space="preserve">
+    <value>Oznámit změnu konfigurace Workspace ONE Access</value>
+  </data>
+  <data name="NumberOfReboots" xml:space="preserve">
+    <value>Počet restartů</value>
+  </data>
+  <data name="OemUpdateSampleProcessorJob" xml:space="preserve">
+    <value>Úloha procesoru shrnutí OemUpdate</value>
+  </data>
+  <data name="OfflineDomainJoin" xml:space="preserve">
+    <value>Připojení k off-line doméně</value>
+  </data>
+  <data name="OneTime" xml:space="preserve">
+    <value>Jen jednou</value>
+  </data>
+  <data name="OneTimeOnly" xml:space="preserve">
+    <value>Pouze jednou</value>
+  </data>
+  <data name="OneTimeOnlyArg" xml:space="preserve">
+    <value>Pouze jednou v {0}–{1} ({2})</value>
+    <comment>Placehoders: 0 - StartTime, 1 - EndTime, 2 - Duration.
+Example: One Time Only 11:00 PM - 4:30 AM (5 hours 30 mins)</comment>
+  </data>
+  <data name="OneTimeTitleArg" xml:space="preserve">
+    <value>{0}–{1} ({2})</value>
+    <comment>Placehoders: 0 - StartTime, 1 - EndTime, 2 - Duration.
+Example: 11:00 PM - 4:30 AM (5 hours 30 mins)</comment>
+  </data>
+  <data name="OnHigherVersion" xml:space="preserve">
+    <value>Ve vyšší verzi</value>
+  </data>
+  <data name="OnHigherVersionHoverText" xml:space="preserve">
+    <value>Ve vyšší verzi
+Zahrnuje všechna zařízení ve vyšší verzi bez ohledu na způsobilost </value>
+  </data>
+  <data name="OnThisVersion" xml:space="preserve">
+    <value>V této verzi</value>
+  </data>
+  <data name="OnThisVersionHoverText" xml:space="preserve">
+    <value>V této verzi
+Zahrnuje všechna zařízení v této verzi bez ohledu na způsobilost</value>
+  </data>
+  <data name="OpenWiFi" xml:space="preserve">
+    <value>Otevřít Wi-Fi</value>
+  </data>
+  <data name="OperatingSystemBreakDownChartDescription" xml:space="preserve">
+    <value>{0} pruhový graf. {1}</value>
+  </data>
+  <data name="OperatingSystemBreakDownChartTitle" xml:space="preserve">
+    <value>Přehled o operačním systému </value>
+  </data>
+  <data name="OrganizationUnits" xml:space="preserve">
+    <value>Organizační jednotky</value>
+  </data>
+  <data name="OrganizationUnitsHelpMessage" xml:space="preserve">
+    <value>Úplný rozlišující název organizační jednotky, kde musí být vytvořeny objekty počítače.</value>
+  </data>
+  <data name="OsUpdateEditAssignment" xml:space="preserve">
+    <value>Upravit přiřazení</value>
+  </data>
+  <data name="OutOfDateState" xml:space="preserve">
+    <value>Zastaralé</value>
+  </data>
+  <data name="OutOfDateStatus" xml:space="preserve">
+    <value>Zastaralé</value>
+  </data>
+  <data name="OverrideDeviceUpdatesContentArg" xml:space="preserve">
+    <value>Tato akce přepíše jakékoli možnosti naplánovaného přiřazení pro toto zařízení. Pokud je instalační příkaz poslán, může také dojít k výpadku pro koncového uživatele. Jste si jisti, že chcete [{0}]?</value>
+  </data>
+  <data name="OverrideJobLogLevelConfirmation" xml:space="preserve">
+    <value>Potvrzení přepisu úrovně protokolu úloh</value>
+  </data>
+  <data name="OverrideWarning" xml:space="preserve">
+    <value>Upozornění na přepsání</value>
+  </data>
+  <data name="OwnershipAndPlatformChangeNotAllowed" xml:space="preserve">
+    <value>Změny vlastnictví a platformy nejsou povoleny.</value>
+  </data>
+  <data name="PasswordSetOn" xml:space="preserve">
+    <value>Heslo nastaveno na</value>
+  </data>
+  <data name="Pause" xml:space="preserve">
+    <value>Pozastavit</value>
+  </data>
+  <data name="PausedSuccessfully" xml:space="preserve">
+    <value>Pozastaveno úspěšně</value>
+  </data>
+  <data name="PauseUpdatesContent" xml:space="preserve">
+    <value>Při pozastavení se nezastaví zařízení, která již tuto aktualizaci stáhla. Budou však pozastavena všechna budoucí stahování aktualizace. Existující přiřazení můžete spravovat, ale změny se projeví až po obnovení aktualizace. Jste si jisti, že chcete aktualizaci pozastavit?</value>
+  </data>
+  <data name="PendingSync" xml:space="preserve">
+    <value>Čekání na synchronizaci</value>
+  </data>
+  <data name="PendingSystemUpdate" xml:space="preserve">
+    <value>Čekající aktualizace systému</value>
+  </data>
+  <data name="PerAppVpnProfile" xml:space="preserve">
+    <value>Profil VPN dle aplikace</value>
+  </data>
+  <data name="Periodically" xml:space="preserve">
+    <value>Periodicky</value>
+  </data>
+  <data name="PhoneNumberIsRequiredField" xml:space="preserve">
+    <value>Telefonní číslo je povinné pole</value>
+  </data>
+  <data name="PlatformsChartDescription" xml:space="preserve">
+    <value>{0}</value>
+  </data>
+  <data name="PlatformsChartTitle" xml:space="preserve">
+    <value>Pruhový graf platforem. </value>
+  </data>
+  <data name="PlayAirPlayErrorMessage" xml:space="preserve">
+    <value>Při pokusu o přenos AirPlay na toto zařízení došlo k chybě. Zkontrolujte nastavení a zkuste to znovu.</value>
+  </data>
+  <data name="PleaseEnterValidIPAddress" xml:space="preserve">
+    <value>Zadejte platnou adresu IP.</value>
+  </data>
+  <data name="PolicyEngineBackoffHelp" xml:space="preserve">
+    <value>Po kolika minutách bude modul zásad znovu načítat položku.</value>
+  </data>
+  <data name="PolicyEngineMaxTryCountHelp" xml:space="preserve">
+    <value>Kolikrát bude modul zásad znovu načítat položku.</value>
+  </data>
+  <data name="PolicyEngineQueueAuditing" xml:space="preserve">
+    <value>Provést audit fronty modulu zásad</value>
+  </data>
+  <data name="PolicyEngineQueueAuditingHelp" xml:space="preserve">
+    <value>Po povolení se zpracované položky fronty modulu zásad uloží do auditu fronty modulu zásad.</value>
+  </data>
+  <data name="PollOnLogin" xml:space="preserve">
+    <value>Dotazovat se během přihlášení</value>
+  </data>
+  <data name="PreserveDataPlan" xml:space="preserve">
+    <value>Zachovat datový tarif</value>
+  </data>
+  <data name="PreserveDataPlanTooltip" xml:space="preserve">
+    <value>Je-li povoleno a pokud na zařízení existuje datový tarif, bude tento datový tarif zachován po vymazání zařízení.</value>
+  </data>
+  <data name="PreviousPassword" xml:space="preserve">
+    <value>Předchozí heslo</value>
+  </data>
+  <data name="ProductProvisioningAWCMThrottle" xml:space="preserve">
+    <value>Omezení AWCM zajišťování produktu</value>
+  </data>
+  <data name="ProductProvisioningAwcmThrottleHelp" xml:space="preserve">
+    <value>Po povolení bude zajišťování produktu pro oznámení AWCM používat odchozí frontu AWCM.</value>
+  </data>
+  <data name="ProductProvisioningAWCMThrottleRate" xml:space="preserve">
+    <value>Omezení AWCM zajišťování produktu</value>
+  </data>
+  <data name="ProductProvisioningAwcmThrottleRateHelp" xml:space="preserve">
+    <value>Počet oznámení AWCM odesílaných za sekundu</value>
+  </data>
+  <data name="ProductProvisioningBatchReleaseJob" xml:space="preserve">
+    <value>Úloha vydání dávky zajišťování produktu</value>
+  </data>
+  <data name="ProductProvisioningCommandReleaseBatchSize" xml:space="preserve">
+    <value>Velikost dávky vydání příkazu zajišťování produktu</value>
+  </data>
+  <data name="ProductProvisioningCommandReleaseBatchSizeHelp" xml:space="preserve">
+    <value>Počet příkazů vydaných z fronty příkazů zařízení na jeden interval úlohy plánovače vydání dávky zajišťování produktů.</value>
+  </data>
+  <data name="ProductsBatchSizeHelp" xml:space="preserve">
+    <value>Počet produktů, na kterých bude modul zásad působit.</value>
+  </data>
+  <data name="ProvisioningDescription" xml:space="preserve">
+    <value>Zřizování je používáno na auto-registraci zařízení a poskytuje pokročilé funkce správy</value>
+  </data>
+  <data name="PublishDummyFirmware" xml:space="preserve">
+    <value>Publikovat zástupný firmware</value>
+  </data>
+  <data name="Python" xml:space="preserve">
+    <value>Python 3</value>
+  </data>
+  <data name="QRCodeConfiguredComponents" xml:space="preserve">
+    <value>Nakonfigurovali jste následující komponenty. Tato data nejsou uložená, proto se před zavřením tohoto okna přesvědčte, že je konfigurace správná. Jestliže potřebujete provést změnu po zavření tohoto okna, budete muset projít celým průvodcem znovu.</value>
+  </data>
+  <data name="QRCodeEnrollmentDetailsMessage" xml:space="preserve">
+    <value>Pokud chcete používat autentizaci na bázi tokenu, ponechte první dvě možnosti níže zakázané.</value>
+  </data>
+  <data name="QRCodeEnrollmentWiFiHelpText" xml:space="preserve">
+    <value>Nastavení Wi-Fi se konfigurují po nasnímání kódu QR. Zařízení s předinstalovanou čtečkou QR potřebují nastavení Wi-Fi, jestliže není dostupné mobilní připojení. Zařízení, která nemají předinstalovanou čtečku QR, potřebují samostatné síťové připojení, aby mohly čtečku stáhnout a nainstalovat. Po instalaci čtečky QR se tato síť použije k registraci zařízení. Podporováno je pouze ověření WPA/WPA2.</value>
+  </data>
+  <data name="QRCodePromptForEnteringLoginCredentials" xml:space="preserve">
+    <value>Uživatel bude vyzván k zadání přihlašovacích údajů.</value>
+  </data>
+  <data name="QRCodePromptForEnteringOG" xml:space="preserve">
+    <value>Uživatel bude vyzván k zadání organizační skupiny a tokenu registrace</value>
+  </data>
+  <data name="QRcodeSheetTitle" xml:space="preserve">
+    <value>Kód QR vygenerovaný službou Airwatch</value>
+  </data>
+  <data name="QRCodeWizardCloseConfirmation" xml:space="preserve">
+    <value>Přesvědčte se, že jste před uzavřením tohoto okna kód QR uložili, protože konfigurace se neuloží do konzoly. Přejete si pokračovat?</value>
+  </data>
+  <data name="Quality" xml:space="preserve">
+    <value>Kvalita</value>
+  </data>
+  <data name="QueriedSuccessfully" xml:space="preserve">
+    <value>Dotaz byl úspěšně proveden</value>
+  </data>
+  <data name="QueryDeviceSecurity" xml:space="preserve">
+    <value>Dotaz na zabezpečení zařízení</value>
+  </data>
+  <data name="Querystatus" xml:space="preserve">
+    <value>Dotaz na průběh aktualizací</value>
+  </data>
+  <data name="Querystatustooltip" xml:space="preserve">
+    <value>Zjistěte stav aktualizací pro toto zařízení.</value>
+  </data>
+  <data name="RebootCount" xml:space="preserve">
+    <value>Počet restartů</value>
+  </data>
+  <data name="RecommendedTasks" xml:space="preserve">
+    <value>Doporučené úlohy</value>
+  </data>
+  <data name="RecoveryID" xml:space="preserve">
+    <value>ID obnovení</value>
+  </data>
+  <data name="RecurringScheduleCondition" xml:space="preserve">
+    <value>Plánujte akce tak, aby probíhaly opakovaně dle zadané časové podmínky.</value>
+  </data>
+  <data name="ReDeviceLogFailedToSendToDevice" xml:space="preserve">
+    <value>Selhalo odeslání požadavku na protokol zařízení do zařízení.</value>
+  </data>
+  <data name="Refreshed" xml:space="preserve">
+    <value>Obnoveno</value>
+  </data>
+  <data name="RefreshEsim" xml:space="preserve">
+    <value>Obnovit eSIM kartu</value>
+  </data>
+  <data name="RegisterRemoteManagement" xml:space="preserve">
+    <value>Registrovat vzdálenou správu</value>
+  </data>
+  <data name="RegisterRemoteViewCommandAlreadyOnQueue" xml:space="preserve">
+    <value>Příkaz k registraci zařízení pro vzdálené zobrazení je již ve frontě příkazů a vyzvedne se, až se zařízení přihlásí ke konzole.</value>
+  </data>
+  <data name="RegisterRemoteViewCommandCouldNotBeQueued" xml:space="preserve">
+    <value>Příkaz k registraci zařízení pro vzdálené zobrazení nebylo možné odeslat. Obraťte se na oddělení podpory.</value>
+  </data>
+  <data name="RegisterRemoteViewCommandQueued" xml:space="preserve">
+    <value>Příkaz k registraci zařízení pro vzdálené zobrazení byl úspěšně zařazen do fronty.</value>
+  </data>
+  <data name="RegistryOperation" xml:space="preserve">
+    <value>Provoz registru</value>
+  </data>
+  <data name="RejectWipe" xml:space="preserve">
+    <value>Odmítnout vymazání</value>
+  </data>
+  <data name="RejectWipeConfirm" xml:space="preserve">
+    <value>Reject wipe successful</value>
+  </data>
+  <data name="RelayServerContactDelayHelp" xml:space="preserve">
+    <value>Jak často (v minutách) služba doručení obsahu zpracuje položky služby obsahu pro synchronizační server v chybovém/špatném stavu.</value>
+  </data>
+  <data name="RelayServerTestConnectionResultsExportFailed" xml:space="preserve">
+    <value>Export výsledků testovacího připojení se nezdařil.</value>
+  </data>
+  <data name="RemoteFindWindowsDevice" xml:space="preserve">
+    <value>Vzdálené hledání zařízení Windows</value>
+  </data>
+  <data name="RemovableDrives" xml:space="preserve">
+    <value>Vyměnitelné jednotky</value>
+  </data>
+  <data name="RemovableDrivesMessage" xml:space="preserve">
+    <value>Vyměnitelné jednotky šifrované nástrojem BitLocker.</value>
+  </data>
+  <data name="RemoveEnterpriseFactoryProtection" xml:space="preserve">
+    <value>Odstranit před vymazáním ochranu Enterprise Factory Reset Protection?</value>
+  </data>
+  <data name="RemoveEventAction" xml:space="preserve">
+    <value>Odstranit akci události</value>
+  </data>
+  <data name="RemoveUpdate" xml:space="preserve">
+    <value>Odstranit aktualizaci</value>
+  </data>
+  <data name="RepeatDaily" xml:space="preserve">
+    <value>Opakovat denně</value>
+  </data>
+  <data name="RepeatDailyArg" xml:space="preserve">
+    <value>Opakovat denně v {0}–{1} ({2})</value>
+    <comment>Placehoders: 0 - StartTime, 1 - EndTime, 2 - Duration.
+Example: Repeat Daily 11:00 PM - 4:30 AM (5 hours 30 mins)</comment>
+  </data>
+  <data name="RepeatEvery" xml:space="preserve">
+    <value>Opakovat každé</value>
+  </data>
+  <data name="RepeatEveryArg" xml:space="preserve">
+    <value>Opakovat vždy v následující den: {0}, v {1}–{2} ({3})</value>
+    <comment>Placehoders: 0 - Days, 1 - StartTime, 2 - EndTime, 3 - Duration.
+Example: Repeat Every Mon/Wed 11:00 PM - 4:30 AM (5 hours 30 mins)</comment>
+  </data>
+  <data name="RepeatEveryWeekdayArg" xml:space="preserve">
+    <value>Opakovat každý všední den v {0}–{1} ({2})</value>
+    <comment>Placehoders: 0 - StartTime, 1 - EndTime, 2 - Duration.
+Example: Repeat Every Weekday 11:00 PM - 4:30 AM (5 hours 30 mins)</comment>
+  </data>
+  <data name="RepeatWeekly" xml:space="preserve">
+    <value>Opakovat každý týden</value>
+  </data>
+  <data name="Requestcompliancecheckmtd" xml:space="preserve">
+    <value>Šablona výchozí HTML zprávy, která požaduje, aby uživatel spustil aplikaci Workspace ONE Intelligent Hub umožňující registraci zařízení a spuštění částečného skenování.</value>
+  </data>
+  <data name="RequestError" xml:space="preserve">
+    <value>Požadavek na schválení – Chyba</value>
+  </data>
+  <data name="RequestExpired" xml:space="preserve">
+    <value>Požadavek na schválení – Konec platnosti</value>
+  </data>
+  <data name="RequestFailed" xml:space="preserve">
+    <value>Požadavek se nezdařil</value>
+  </data>
+  <data name="RequestHubLogs" xml:space="preserve">
+    <value>Vyžádat protokoly centra Intelligent Hub</value>
+  </data>
+  <data name="RequestHubRepairFailure" xml:space="preserve">
+    <value>Selhalo zařazení příkazu pro opravu centra Hub do fronty</value>
+  </data>
+  <data name="RequestHubRepairSuccess" xml:space="preserve">
+    <value>Příkaz pro opravu centra Hub byl úspěšně zařazen do fronty</value>
+  </data>
+  <data name="RequestLimitHasBeenReached" xml:space="preserve">
+    <value>Bylo dosaženo limitu požadavků. Počkejte několik minut a zkuste to znovu.</value>
+  </data>
+  <data name="RequestRejected" xml:space="preserve">
+    <value>Požadavek na schválení – Odmítnut</value>
+  </data>
+  <data name="RequestUserConsent" xml:space="preserve">
+    <value>Vyžadovat souhlas uživatele</value>
+  </data>
+  <data name="RequestUserConsentInfo" xml:space="preserve">
+    <value>Je-li tato možnost aktivována, bude uživatel prostřednictvím výzvy k ochraně osobních údajů vyzván k povolení shromažďování protokolů. Výzva k ochraně osobních údajů bude obsahovat informace o tom, jaká data budou v protokolech shromažďována, a před přenosem protokolů bude vyžadovat souhlas uživatele.</value>
+  </data>
+  <data name="RequestUserListFailed" xml:space="preserve">
+    <value>Požadavek dotazu na seznam uživatelů se nezdařil</value>
+  </data>
+  <data name="ResetAndroidWorkProfilePasscode" xml:space="preserve">
+    <value>Změnit pracovní heslo</value>
+  </data>
+  <data name="ResetBiosPassword" xml:space="preserve">
+    <value>Resetovat heslo systému BIOS</value>
+  </data>
+  <data name="ResponseDataType" xml:space="preserve">
+    <value>Typ dat odpovědi</value>
+  </data>
+  <data name="Resume" xml:space="preserve">
+    <value>Pokračovat</value>
+  </data>
+  <data name="ResumeBitLocker" xml:space="preserve">
+    <value>Pokračovat v nástroji BitLocker</value>
+  </data>
+  <data name="ResumeBitLockerConfirmed" xml:space="preserve">
+    <value>Nástroj BitLocker znovu spuštěn</value>
+  </data>
+  <data name="ResumeBitlockerEncryption" xml:space="preserve">
+    <value>Pokračovat v šifrování BitLocker</value>
+  </data>
+  <data name="ResumeBitlockerEncryptionMessage" xml:space="preserve">
+    <value>Potvrďte, že chcete pokračovat v šifrování BitLocker.</value>
+  </data>
+  <data name="ResumeBitlockerEncryptionRestricted" xml:space="preserve">
+    <value>Pozastavení šifrování BitLocker omezeno</value>
+  </data>
+  <data name="ResumeBitLockerFailed" xml:space="preserve">
+    <value>BitLocker se v tuto chvíli nepodařilo znovu spustit</value>
+  </data>
+  <data name="ResumeBitLockerFailure" xml:space="preserve">
+    <value>Pokračování v nástroji BitLocker se nezdařilo.</value>
+  </data>
+  <data name="ResumeBitLockerRequested" xml:space="preserve">
+    <value>Vyžádáno pokračování v nástroji BitLocker</value>
+  </data>
+  <data name="ResumeBitLockerSuccess" xml:space="preserve">
+    <value>Na tomto zařízení bylo vyžádáno pokračování v nástroji BitLocker.</value>
+  </data>
+  <data name="ResumeSuccessfully" xml:space="preserve">
+    <value>Příkaz Pokračovat proveden úspěšně</value>
+  </data>
+  <data name="ResumeUpdatesContent" xml:space="preserve">
+    <value>Příkaz Pokračovat bude sloužit k zahájení zavádění aktualizací (pokud nebyl nikdy spuštěn) nebo obnovení zavádění aktualizací (pokud byl dříve zastaven). Opravdu chcete v aktualizaci pokračovat?</value>
+  </data>
+  <data name="RevocationDate" xml:space="preserve">
+    <value>Datum odvolání</value>
+  </data>
+  <data name="RevocationError" xml:space="preserve">
+    <value>Chyba odvolání</value>
+  </data>
+  <data name="RevocationPending" xml:space="preserve">
+    <value>Odvolání čeká na vyřízení</value>
+  </data>
+  <data name="RevocationReason" xml:space="preserve">
+    <value>Důvod odvolání</value>
+  </data>
+  <data name="RevokeGoogleRefreshToken" xml:space="preserve">
+    <value>Odmítnout tokeny sady G Suite</value>
+  </data>
+  <data name="RotateBitLockerRecoveryKey" xml:space="preserve">
+    <value>Rotace obnovovacího klíče nástroje BitLocker</value>
+  </data>
+  <data name="RotateBitLockerRecoveryKeyConfirmed" xml:space="preserve">
+    <value>Rotace obnovovacího klíče nástroje BitLocker potvrzena</value>
+  </data>
+  <data name="RotateBitLockerRecoveryKeyFailed" xml:space="preserve">
+    <value>Rotace obnovovacího klíče nástroje BitLocker se nezdařila</value>
+  </data>
+  <data name="RotateBitLockerRecoveryKeyRefused" xml:space="preserve">
+    <value>Rotace obnovovacího klíče nástroje BitLocker odmítnuta</value>
+  </data>
+  <data name="RotateBitLockerRecoveryKeyRequested" xml:space="preserve">
+    <value>Rotace obnovovacího klíče nástroje BitLocker vyžádána</value>
+  </data>
+  <data name="RotateDEPAdminPassword" xml:space="preserve">
+    <value>Otočit heslo administrátora DEP</value>
+  </data>
+  <data name="RotateDEPAdminPasswordConfirmed" xml:space="preserve">
+    <value>Otočení hesla administrátora DEP potvrzeno</value>
+  </data>
+  <data name="RotateDEPAdminPasswordFailed" xml:space="preserve">
+    <value>Otočení hesla administrátora DEP selhalo</value>
+  </data>
+  <data name="RotateDEPAdminPasswordRequested" xml:space="preserve">
+    <value>Otočení hesla administrátora DEP vyžádáno</value>
+  </data>
+  <data name="RotateDeviceRecoveryKeyConfirmed" xml:space="preserve">
+    <value>Obnovovací klíč šifrování disku byl přijat</value>
+  </data>
+  <data name="RuntimeInformation" xml:space="preserve">
+    <value>Informace o spuštění</value>
+  </data>
+  <data name="SafetyNetAttestationError" xml:space="preserve">
+    <value>Chyba atestace SafetyNet.</value>
+  </data>
+  <data name="SafetyNetBasicIntegrityFailure" xml:space="preserve">
+    <value>Selhání základní integrity SafetyNet.</value>
+  </data>
+  <data name="SafetyNetCtsNotCompatible" xml:space="preserve">
+    <value>Nekompatibilní CTS SafetyNet.</value>
+  </data>
+  <data name="SafetyNetResponseValidationFailed" xml:space="preserve">
+    <value>Selhalo ověření odpovědi SafetyNet.</value>
+  </data>
+  <data name="SafetyNetStatementInvalid" xml:space="preserve">
+    <value>Neplatný sken atestace SafetyNet.</value>
+  </data>
+  <data name="SamsungEFOTAPublishUpdateTimeZoneInfo" xml:space="preserve">
+    <value>Níže vyberte časový rámec pro plánování této aktualizace. Aktualizace nelze plánovat více než 30 dní předem s maximálně 7denním oknem aktualizace. Aktualizace v tomto okně se publikují na zařízeních každé 4 hodiny v časovém pásmu serveru.</value>
+  </data>
+  <data name="SaveAsEncrypted" xml:space="preserve">
+    <value>Uložit jako šifrované</value>
+  </data>
+  <data name="SavePriority" xml:space="preserve">
+    <value>Uložit prioritu</value>
+  </data>
+  <data name="ScanTimeInSeconds" xml:space="preserve">
+    <value>Doba trvání skenování</value>
+  </data>
+  <data name="ScheduledRotateDEPAdminPasswordRequested" xml:space="preserve">
+    <value>Plánované otočení hesla administrátora DEP vyžádáno</value>
+  </data>
+  <data name="ScriptCommand" xml:space="preserve">
+    <value>Příkaz skriptu</value>
+  </data>
+  <data name="ScriptCommandTooltipText" xml:space="preserve">
+    <value>Po nahrání nového skriptu budou přepsány všechny stávající příkazy skriptu.</value>
+  </data>
+  <data name="ScriptsAssignmentWizardDefinitionTabDesc" xml:space="preserve">
+    <value>Konfigurovat název klíče, popis a další obecné informace pro skript</value>
+  </data>
+  <data name="ScriptsAssignmentWizardDeploymentTabDesc" xml:space="preserve">
+    <value>Konfigurovat název klíče, popis a další obecné informace pro skript</value>
+  </data>
+  <data name="ScriptsMenuDescription" xml:space="preserve">
+    <value>Skripty definují vlastní pokročilé akce pro desktopové zařízení</value>
+  </data>
+  <data name="SearchAssignedTags" xml:space="preserve">
+    <value>Hledat přiřazené značky</value>
+  </data>
+  <data name="SearchAvailableTags" xml:space="preserve">
+    <value>Hledat dostupné značky</value>
+  </data>
+  <data name="SearchOrganizationUnits" xml:space="preserve">
+    <value>Hledat organizační jednotky</value>
+  </data>
+  <data name="SecureBootStatusFull" xml:space="preserve">
+    <value>Stav zabezpečeného spouštění – úplné</value>
+  </data>
+  <data name="SecureBootStatusMedium" xml:space="preserve">
+    <value>Stav zabezpečeného spouštění – střední</value>
+  </data>
+  <data name="SecureBootStatusNotSupported" xml:space="preserve">
+    <value>Stav zabezpečeného spouštění – nepodporováno</value>
+  </data>
+  <data name="SecureBootStatusOff" xml:space="preserve">
+    <value>Stav zabezpečeného spouštění – vypnuto</value>
+  </data>
+  <data name="SecureWiFI" xml:space="preserve">
+    <value>Zabezpečené (WPA/WPA2)</value>
+  </data>
+  <data name="SelectAndroidAgentVersionToInstall" xml:space="preserve">
+    <value>Vybrat verzi centra Hub pro Android, která se má na zařízení nainstalovat</value>
+  </data>
+  <data name="SelectNotifications" xml:space="preserve">
+    <value>Vybrat oznámení</value>
+  </data>
+  <data name="SerialNumberCannotHaveSpecialCharacters" xml:space="preserve">
+    <value>Neplatné sériové číslo/čísla. Sériová čísla mohou obsahovat pouze písmena a číslice. Opravte soubor a znovu nahrajte košík.</value>
+  </data>
+  <data name="SerialNumberMaxCharacters" xml:space="preserve">
+    <value>Sériové číslo může mít maximálně 200 znaků</value>
+  </data>
+  <data name="ServerTimeUTC" xml:space="preserve">
+    <value>Čas serveru (UTC)</value>
+  </data>
+  <data name="ServerTimeZone" xml:space="preserve">
+    <value>Časové pásmo serveru:</value>
+  </data>
+  <data name="Set" xml:space="preserve">
+    <value>Nastavit</value>
+  </data>
+  <data name="SetBitLockerRecoveryKey" xml:space="preserve">
+    <value>Nastavit obnovovací klíč nástroje BitLocker</value>
+  </data>
+  <data name="SetUpConfiguration" xml:space="preserve">
+    <value>Konfigurace instalačního programu </value>
+  </data>
+  <data name="SetupScriptParameters" xml:space="preserve">
+    <value>Nastavte jednu nebo více proměnných prostředí pro dynamické nebo citlivé informace v tomto skriptu</value>
+  </data>
+  <data name="SharedIpad" xml:space="preserve">
+    <value>Sdílený iPad</value>
+  </data>
+  <data name="SIMCardArg" xml:space="preserve">
+    <value>SIM karta {0}</value>
+    <comment>{0} will be replaced with the SIM card number</comment>
+  </data>
+  <data name="SimLabel" xml:space="preserve">
+    <value>Popisek</value>
+  </data>
+  <data name="SimLabelID" xml:space="preserve">
+    <value>ID popisku</value>
+  </data>
+  <data name="Slot" xml:space="preserve">
+    <value>Blok</value>
+  </data>
+  <data name="SmartGroupAssignmentError" xml:space="preserve">
+    <value>Smart skupinu lze přiřadit pouze k jednomu připojení k doméně.</value>
+  </data>
+  <data name="SmsSettingsAreNotConfigured" xml:space="preserve">
+    <value>Nastavení SMS nejsou nakonfigurována. Nakonfigurujte je v nabídce Všechna nastavení &gt; Systém &gt; Podniková integrace &gt; SMS</value>
+  </data>
+  <data name="StagingListView" xml:space="preserve">
+    <value>Seznam</value>
+  </data>
+  <data name="StagingWindows" xml:space="preserve">
+    <value>Windows</value>
+  </data>
+  <data name="StartedSuccessfully" xml:space="preserve">
+    <value>Úspěšně spuštěno</value>
+  </data>
+  <data name="StopDeviceUpdate" xml:space="preserve">
+    <value>Zastavit aktualizaci zařízení</value>
+  </data>
+  <data name="SubRuleType" xml:space="preserve">
+    <value>Typ dílčího pravidla</value>
+  </data>
+  <data name="Supported" xml:space="preserve">
+    <value>Podporováno</value>
+  </data>
+  <data name="SupportedDevicesInfoText" xml:space="preserve">
+    <value>Zahrnuje způsobilá i nezpůsobilá zařízení z této organizační skupiny a jí podřízených skupin a také stav aktualizací spuštěných z přiřazení. </value>
+  </data>
+  <data name="SuspendBitLocker" xml:space="preserve">
+    <value>Pozastavit BitLocker</value>
+  </data>
+  <data name="SuspendBitLockerConfirmed" xml:space="preserve">
+    <value>BitLocker byl pozastaven</value>
+  </data>
+  <data name="SuspendBitlockerEncryption" xml:space="preserve">
+    <value>Pozastavit šifrování BitLocker</value>
+  </data>
+  <data name="SuspendBitlockerEncryptionMessage" xml:space="preserve">
+    <value>Pozastavením nástroje BitLocker se ochrana deaktivuje, dokud nedojde k zadanému počtu restartů nebo dokud administrátor ochranu neobnoví. Systém zůstane zašifrován.</value>
+  </data>
+  <data name="SuspendBitlockerEncryptionRestricted" xml:space="preserve">
+    <value>Pozastavení šifrování BitLocker omezeno</value>
+  </data>
+  <data name="SuspendBitLockerFailed" xml:space="preserve">
+    <value>BitLocker v tuto chvíli nelze pozastavit</value>
+  </data>
+  <data name="SuspendBitLockerFailure" xml:space="preserve">
+    <value>V tuto chvíli nelze nástroj BitLocker pozastavit.</value>
+  </data>
+  <data name="SuspendBitLockerRequested" xml:space="preserve">
+    <value>Požádáno o pozastavení nástroje BitLocker</value>
+  </data>
+  <data name="SuspendBitLockerSuccess" xml:space="preserve">
+    <value>Na tomto zařízení bylo vyžádáno pozastavení nástroje BitLocker.</value>
+  </data>
+  <data name="SuspendDevice" xml:space="preserve">
+    <value>Pozastavit zařízení</value>
+  </data>
+  <data name="SyncEntitlements" xml:space="preserve">
+    <value>Synchronizovat oprávnění</value>
+  </data>
+  <data name="SyncUpdates" xml:space="preserve">
+    <value>Synchronizovat aktualizace</value>
+  </data>
+  <data name="SystemApps" xml:space="preserve">
+    <value>Systémové aplikace</value>
+  </data>
+  <data name="SystemManufacturerAndModel" xml:space="preserve">
+    <value>Výrobce systému a model</value>
+  </data>
+  <data name="SystemManufacturerAndModelTooltip" xml:space="preserve">
+    <value>Výrobce a filtr modelu pro Smart skupinu</value>
+  </data>
+  <data name="Systemunlocked" xml:space="preserve">
+    <value>Systém je odemknut.</value>
+  </data>
+  <data name="SystemUpdateReceivedTime" xml:space="preserve">
+    <value>Aktualizace je dostupná od</value>
+  </data>
+  <data name="TagAssignmentHelp" xml:space="preserve">
+    <value>Vyberte značky pro přiřazení zařízení</value>
+  </data>
+  <data name="TagRemovalHelp" xml:space="preserve">
+    <value>Vyberte značky, které se mají odstranit</value>
+  </data>
+  <data name="TargetedLoggingDeviceId" xml:space="preserve">
+    <value>Zadejte některý z formátů, který umožní cílené protokolování pro dané identifikátory ID zařízení.
+			 1. {deviceId1},{deviceId2},..
+			 2. {deviceId1}|{Timestamp},{deviceId2}|{Timestamp},..
+			 Časové razítko musí být ve formátu rrrr-MM-dd HH:mm:ss, např. 100|2018-12-30 18:30:00. Výchozí doba cíleného protokolování je 8 hodin.</value>
+  </data>
+  <data name="TargetedLoggingNeedsAtleastOneDeviceIdFilter" xml:space="preserve">
+    <value>Zadejte nejméně jedno ID zařízení pro cílené protokolování.</value>
+  </data>
+  <data name="TestPrint" xml:space="preserve">
+    <value>Zkušební tisk</value>
+  </data>
+  <data name="TestPrintConfirmation" xml:space="preserve">
+    <value>Potvrzení testovacího tisku</value>
+  </data>
+  <data name="TheUserShouldLockDeviceBootloader" xml:space="preserve">
+    <value>Uživatel by měl zamknout spouštěcí zavaděč svého zařízení.</value>
+  </data>
+  <data name="TheUserShouldRestoreDeviceToCleanFactoryROM" xml:space="preserve">
+    <value>Uživatel by měl obnovit tovární ROM.</value>
+  </data>
+  <data name="ThirdPartyRemoteManagement" xml:space="preserve">
+    <value>Vzdálená správa třetí strany</value>
+  </data>
+  <data name="Throttled" xml:space="preserve">
+    <value>Omezeno</value>
+    <comment>One of the Device Command Queue status</comment>
+  </data>
+  <data name="TimeWindow" xml:space="preserve">
+    <value>Časové okno</value>
+  </data>
+  <data name="TimeWindowBannerDescription" xml:space="preserve">
+    <value>Pomocí časových oken v pracovních postupech můžete plánovat aktualizace a dodávat zdroje v čase, který je pro vaši firmu ideální.</value>
+  </data>
+  <data name="TimeWindowBannerTitle" xml:space="preserve">
+    <value>Zvýšení efektivity pracovních postupů pomocí časových oken</value>
+  </data>
+  <data name="TimeWindowBaseTimeInfo" xml:space="preserve">
+    <value>Zvolte časové pásmo, které chcete použít pro toto časové okno: místní čas zařízení nebo čas serveru (UTC).</value>
+  </data>
+  <data name="TimeWindowCategoryInfo" xml:space="preserve">
+    <value>Vyberte kategorii časového okna – Pracovní doba nebo Doba údržby.</value>
+  </data>
+  <data name="TimeWindowGroupRestriction" xml:space="preserve">
+    <value>Toto časové okno nelze upravit nebo odstranit, protože je spravováno ve vyšší organizační skupině nebo má jeho administrátor pouze přístup ke čtení.</value>
+  </data>
+  <data name="TimeWindowMenuDescription" xml:space="preserve">
+    <value>Správa časových oken</value>
+  </data>
+  <data name="TimeWindowMenuItem" xml:space="preserve">
+    <value>Časová okna</value>
+  </data>
+  <data name="TimeWindowStepDesc1" xml:space="preserve">
+    <value>Vytvořte „Týdenní plán údržby Q1“, který poslouží jedinečným potřebám vaší společnosti.</value>
+  </data>
+  <data name="TimeWindowStepDesc2" xml:space="preserve">
+    <value>Vytvořte týdenní plán, který se opakuje každé úterý od 21:00 do středečních 4:00.</value>
+  </data>
+  <data name="TimeWindowStepDesc3" xml:space="preserve">
+    <value>Odkazováním na „Týdenní plán údržby“ můžete doručit aktualizace do pracovního postupu.</value>
+  </data>
+  <data name="TimeWindowSteps" xml:space="preserve">
+    <value>Začněte tímto postupem</value>
+  </data>
+  <data name="TimeWindowStepTitle1" xml:space="preserve">
+    <value>Vyberte kategorii časového okna – Pracovní doba nebo Doba údržby</value>
+  </data>
+  <data name="TimeWindowStepTitle2" xml:space="preserve">
+    <value>Vytvořte plán pro zpracování opakování</value>
+  </data>
+  <data name="TimeWindowStepTitle3" xml:space="preserve">
+    <value>Využití jako podmínka pracovního postupu</value>
+  </data>
+  <data name="Tools" xml:space="preserve">
+    <value>Nástroje</value>
+  </data>
+  <data name="ToolTipKeepAppsOnDevice" xml:space="preserve">
+    <value>Tuto možnost vyberte, chcete-li stávajícím spravovaným aplikacím a jejich datům v mezipaměti povolit, aby zůstaly na zařízení. Zařízení s verzí agenta starší než 2105 neprojdou firemním výmazem, pokud je vybrána tato možnost.</value>
+  </data>
+  <data name="TotalDevicesArg" xml:space="preserve">
+    <value>Celkem zařízení: {0}</value>
+  </data>
+  <data name="TotalEligibleDevicesArg" xml:space="preserve">
+    <value>Celkem způsobilých zařízení: {0}</value>
+  </data>
+  <data name="ToViewGPSDataInstallAirwatchAgent" xml:space="preserve">
+    <value>Chcete-li zobrazit data GPS, instalujte aplikaci VMware AirWatch Agent z obchodu Microsoft Store.</value>
+  </data>
+  <data name="Trigger" xml:space="preserve">
+    <value>Spouštěč</value>
+  </data>
+  <data name="UnitId" xml:space="preserve">
+    <value>ID jednotky</value>
+  </data>
+  <data name="Unlicensed" xml:space="preserve">
+    <value>Nelicencované</value>
+  </data>
+  <data name="UpdateAgentApplication" xml:space="preserve">
+    <value>Aktualizovat aplikaci agenta</value>
+  </data>
+  <data name="UpdateInstallPendingReboot" xml:space="preserve">
+    <value>Nainstalovaná aktualizace čeká na restart</value>
+  </data>
+  <data name="UpdateNoLongerAvailable" xml:space="preserve">
+    <value>Tato aktualizace již není k dispozici. Na žádném zařízení nebudou provedeny žádné další akce související s touto aktualizací.</value>
+  </data>
+  <data name="UpdatesLastSync" xml:space="preserve">
+    <value>Poslední synchronizace:</value>
+  </data>
+  <data name="UpdatesNextSync" xml:space="preserve">
+    <value>Další synchronizace:</value>
+  </data>
+  <data name="UptoDateStatus" xml:space="preserve">
+    <value>Aktuální</value>
+  </data>
+  <data name="UseCDSV1" xml:space="preserve">
+    <value>Služba doručení obsahu V1</value>
+  </data>
+  <data name="UseLatestAirWatchAgent" xml:space="preserve">
+    <value>Použití nejnovější verze aplikace Workspace ONE Intelligent Hub</value>
+  </data>
+  <data name="UseLegacyCDSLogicHelp" xml:space="preserve">
+    <value>Po povolení používá starší verzi logiky služby doručování obsahu.</value>
+  </data>
+  <data name="UsePolicyEngineV1" xml:space="preserve">
+    <value>Modul zásad V1</value>
+  </data>
+  <data name="UserBasedAccountDescription" xml:space="preserve">
+    <value>Účet Google vytvořený pro toto zařízení bude stejný na všech zařízeních registrovaných tímto zaměstnancem. Tento typ registrace je upřednostňován u zaměstnanců přiřazených k zařízením, ale ne u registrace po fázích. Počet zařízení na uživatelský účet může být omezený.</value>
+  </data>
+  <data name="UserGroupAssignmentsWithEmptyGroupIDWarning" xml:space="preserve">
+    <value>Všechny organizační skupiny, kterým schází identifikátory ID skupiny, způsobí, že se registrace u přiřazených skupin uživatelů nezdaří. Aby k tomu nedošlo, aktualizujte scházející identifikátory ID skupiny pro všechny organizační skupiny.</value>
+  </data>
+  <data name="UserRemovableDrivesMessage" xml:space="preserve">
+    <value>Vyměnitelné jednotky šifrované nástrojem BitLocker.</value>
+  </data>
+  <data name="UserSwitch" xml:space="preserve">
+    <value>Přepnutí uživatele</value>
+  </data>
+  <data name="ValueShouldNotBeEmpty" xml:space="preserve">
+    <value>Pole Hodnota by nemělo zůstat prázdné</value>
+  </data>
+  <data name="VerifyResponseError" xml:space="preserve">
+    <value>Chyba ověření odpovědi.</value>
+  </data>
+  <data name="ViewBiosPassword" xml:space="preserve">
+    <value>Zobrazit heslo systému BIOS</value>
+  </data>
+  <data name="ViewBiosPasswordHeader" xml:space="preserve">
+    <value>Heslo BIOS</value>
+  </data>
+  <data name="ViewBiosPasswordHelp" xml:space="preserve">
+    <value>Oprávnění k zobrazení hesla systému BIOS na stránce Detaily zařízení.</value>
+  </data>
+  <data name="ViewBypassCode" xml:space="preserve">
+    <value>Zobrazit kód pro obejití</value>
+  </data>
+  <data name="ViewManagedAdminPassword" xml:space="preserve">
+    <value>Zobrazit heslo spravovaného administrátora</value>
+  </data>
+  <data name="ViewManagedAppConfigFeedback" xml:space="preserve">
+    <value>Zobrazit odezvu</value>
+  </data>
+  <data name="ViewRecoveryKeyRotationInformation" xml:space="preserve">
+    <value>Z bezpečnostních důvodů bude za 15 minut zadán příkaz pro otočení tohoto klíče.</value>
+  </data>
+  <data name="VolumeIdentifier" xml:space="preserve">
+    <value>Identifikátor svazku</value>
+  </data>
+  <data name="WiFiConfiguration" xml:space="preserve">
+    <value>Konfigurujte volitelné Wi-Fi u zařízení, sloužící k připojení před registrací.</value>
+  </data>
+  <data name="WifiOnly" xml:space="preserve">
+    <value>Pouze Wi-Fi</value>
+  </data>
+  <data name="WiFiSsid" xml:space="preserve">
+    <value>SSID sítě Wi-Fi</value>
+  </data>
+  <data name="Windows10KioskPublishingProcessorJob" xml:space="preserve">
+    <value>Úloha procesoru publikování v režimu kiosku Windows10</value>
+  </data>
+  <data name="WindowsCompromisedRuleWarning" xml:space="preserve">
+    <value>Tyto zásady platí pouze pro zařízení s Windows 10, které je kompatibilní s TPM 2.0. Kompatibilita s čipem TPM 2.0 se netýká ověřování systému BIOS.</value>
+  </data>
+  <data name="WindowsDevicePowerOffWarningMessage" xml:space="preserve">
+    <value>Zařízení se systémem Windows 10 se restartují za 5 minut, aby uživateli umožnila dokončit aktivní práci.</value>
+  </data>
+  <data name="WindowsDhaBiosAttestationFailed" xml:space="preserve">
+    <value>Vyžaduje nástroj pro ověřování systému BIOS od společnosti Dell. Platí pouze pro vybrané zařízení Dell. Kompatibilita s čipem TPM 2.0 se netýká ověřování systému BIOS.</value>
+  </data>
+  <data name="WindowsProvisioningPackageServiceProcessorJob" xml:space="preserve">
+    <value>Úloha procesoru služby zajišťování balíčku Windows</value>
+  </data>
+  <data name="WinRTEnterpriseResetDescription" xml:space="preserve">
+    <value>Akce Firemní reset obnoví zařízení do stavu připravenosti k práci, je-li zařízení poškozeno nebo když některé jeho aplikace nefungují správně. Znovu nainstaluje OS Windows, přičemž data uživatelů, účty uživatelů a spravované aplikace zůstanou zachovány. Zařízení po resetu znovu synchronizuje nastavení podnikového automatického nasazení, zásady a aplikace a přitom bude nadále spravováno prostřednictvím Workspace ONE.</value>
+  </data>
+  <data name="WipeDeviceStorage" xml:space="preserve">
+    <value>Vymazat úložiště zařízení</value>
+  </data>
+  <data name="WipeLogDescription" xml:space="preserve">
+    <value>Zobrazte si zařízení, která byla vymazána, prohlédněte si přidržené příkazy k vymazání a resetujte práh pro vymazání.</value>
+  </data>
+  <data name="WipeRemovableStorage" xml:space="preserve">
+    <value>Vymazat vyměnitelné úložiště</value>
+  </data>
+  <data name="WipeThresholdMessage" xml:space="preserve">
+    <value>Bylo dosaženo prahu pro vymazání nastaveného na stránce {0}. U žádných dalších zařízení se nebude provádět firemní výmaz nebo výmaz zařízení, dokud nebude systém odemknut.</value>
+  </data>
+  <data name="WizardQRCodesummarycongratulations" xml:space="preserve">
+    <value>Konfigurace je hotová a je možné stáhnout kód QR. Kód QR je v prostém textu a dokáže ho interpretovat libovolná čtečka či dekodér QR. Proveďte všechna nezbytná opatření, aby se zabránilo úniku jakýchkoliv citlivých informací.</value>
+  </data>
+  <data name="WorkflowAssignments" xml:space="preserve">
+    <value>Přiřazení pracovních postupů</value>
+  </data>
+  <data name="WorkManagedDeviceInfoMessage" xml:space="preserve">
+    <value>Plně spravované a uzamknuté zařízení. Zaměstnanci budou mít přístup pouze k firemním aplikacím a nebudou mít přístup k osobním aplikacím přes obchod Google Play.</value>
+  </data>
+  <data name="WorkManagedEnrollmentType" xml:space="preserve">
+    <value>Generování účtu Google pro podniková zařízení</value>
+  </data>
+  <data name="WorkProfileStatus" xml:space="preserve">
+    <value>Pracovní profil</value>
+  </data>
+  <data name="Zsh" xml:space="preserve">
+    <value>Zsh</value>
+  </data>
+</root>

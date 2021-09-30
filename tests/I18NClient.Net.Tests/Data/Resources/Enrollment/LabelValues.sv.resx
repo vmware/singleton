@@ -1,0 +1,584 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AMAPIEnrollmentFeatureNotSupported" xml:space="preserve">
+    <value>Android Management API-registreringsfunktionen stöds inte för organisationen. Kontakta administratören.</value>
+  </data>
+  <data name="AMAPIEnrollmentNotAllowed" xml:space="preserve">
+    <value>Android Management API-inställningarna är inte aktiverade för enhetens organisation.</value>
+  </data>
+  <data name="AMAPIRegistration" xml:space="preserve">
+    <value>Registrering av Android Management API</value>
+  </data>
+  <data name="AndroidEnterpriseNotAllowed" xml:space="preserve">
+    <value>Android Enterprise-registrering är inte tillåtet för enheten.</value>
+  </data>
+  <data name="AndroidEnterpriseNotFound" xml:space="preserve">
+    <value>Android Enterprise-inställningarna är inte aktiverade för enhetens organisation</value>
+  </data>
+  <data name="AndroidLegacyEnrollmentNotAllowed" xml:space="preserve">
+    <value>Äldre Android-registrering är inte tillåten i läget för enhetsägare.</value>
+  </data>
+  <data name="AndroidManagementAPI" xml:space="preserve">
+    <value>Android Management API</value>
+  </data>
+  <data name="AndroidWorkEnrollmentUserAddError" xml:space="preserve">
+    <value>Registreringsanvändare kunde inte läggas till i GSuite. Kontakta din administratör eller försök igen.</value>
+  </data>
+  <data name="AndroidWorkEnrollmentUserEmailNotFound" xml:space="preserve">
+    <value>Vi kunde inte hitta ditt konto. Kontakta administratören eller försök igen.</value>
+  </data>
+  <data name="AndroidWorkEnrollmentUserNotFound" xml:space="preserve">
+    <value>Det här är ett ogiltig Google-konto.</value>
+  </data>
+  <data name="AndroidWorkProfileEnrollmentNotAllowed" xml:space="preserve">
+    <value>Det angivna server- och grupp-ID:t tillåter inte registrering Work Profile-registrering. Kontakta din administratör om du har några frågor.</value>
+  </data>
+  <data name="AndroidWorkUserEmailDomainNotASubDomain" xml:space="preserve">
+    <value>Domänen som används är inte en registrerad subdomän. Kontakta din administratör.</value>
+  </data>
+  <data name="ApplicationIsNotAllowedToRegister" xml:space="preserve">
+    <value>Applikationen är inte behörig att registrera.</value>
+  </data>
+  <data name="AssignUserRole" xml:space="preserve">
+    <value>Tilldela användarroll</value>
+  </data>
+  <data name="AutoEnrollmentDisabled" xml:space="preserve">
+    <value>Automatisk registrering är inte aktiverat för den angivna organisationsgruppen. Kontakta din administratör eller försök igen.</value>
+  </data>
+  <data name="CannotChangeOGForDEPTokenArg" xml:space="preserve">
+    <value>Det går inte att ändra organisationsgrupp för DEP-token {0}</value>
+  </data>
+  <data name="CannotUseStagingUserForCustomDep" xml:space="preserve">
+    <value>Användare med mellanlagring stöds inte. Kontakta din administratör.</value>
+  </data>
+  <data name="CaptchaText" xml:space="preserve">
+    <value>Captcha</value>
+  </data>
+  <data name="ChangeRankOrOrganizationGroup" xml:space="preserve">
+    <value>Ändra rang eller organisationsgrupp</value>
+  </data>
+  <data name="ChangeRankOrOrganizationGroupForUserGroup" xml:space="preserve">
+    <value>Ändra rang eller organisationsgrupp för en användargrupp</value>
+  </data>
+  <data name="ChangeRankOrUserRole" xml:space="preserve">
+    <value>Ändra rang eller användarroll</value>
+  </data>
+  <data name="ChangeRankOrUserRoleForUserGroup" xml:space="preserve">
+    <value>Ändra rang eller användarroll för en användargrupp</value>
+  </data>
+  <data name="ChangeUserRoleAssignmentRankUsingEdit" xml:space="preserve">
+    <value>Klicka på redigeringsknappen intill posten för att redigera rang eller användarroll för en användargrupp</value>
+  </data>
+  <data name="ConfirmEnterpriseWipeDeviceTitleMessage" xml:space="preserve">
+    <value>Den här åtgärden avregistrerar och tar bort alla hanterade företagsresurser från den valda enheten (inklusive appar och profiler). Du kan inte ångra åtgärden utan att registrera om enheten.</value>
+  </data>
+  <data name="CopeEnrollmentNotSupported" xml:space="preserve">
+    <value>Registrering blockerades på grund av att Workspace ONE Intelligent Hub-versionen inte stöds</value>
+  </data>
+  <data name="CopyEMMToken" xml:space="preserve">
+    <value>3. Kopiera det EMM-token som tillhandahålls för användning i nästa steg.</value>
+  </data>
+  <data name="CustomEnrollmentFeatureNotEnabled" xml:space="preserve">
+    <value>Anpassad registrering har avaktiverats för din organisation. Kontakta din administratör för att spara om enhetens registreringsprofil och försök att registrera på nytt.</value>
+  </data>
+  <data name="DefaultActionForInactiveUsersChanged" xml:space="preserve">
+    <value>Standardåtgärden för inaktiva användare ändrades</value>
+  </data>
+  <data name="DefaultDeviceOwnershipChanged" xml:space="preserve">
+    <value>Standardägande för enheter ändrades</value>
+  </data>
+  <data name="DefaultDeviceUserRoleChanged" xml:space="preserve">
+    <value>Standardrollen för enhetsanvändare ändrades</value>
+  </data>
+  <data name="DeleteDeviceCountMessage" xml:space="preserve">
+    <value>Antal enheter som kommer att tas bort permanent:</value>
+  </data>
+  <data name="DepFetchInfoMessage" xml:space="preserve">
+    <value>Med alternativet Hämta alla enheter synkroniseras alla enheter du har tilldelat det här tokenet till i Apple Business Manager med UEM-konsolen, inklusive enheter du redan har synkroniserat. Du får endast använda det här alternativet som ett sista alternativ för att uppdatera och synkronisera alla dina enheter från Apple Business Manager.</value>
+  </data>
+  <data name="DepFetchInfoMessageSchool" xml:space="preserve">
+    <value>Med alternativet Hämta alla enheter synkroniseras alla enheter du har tilldelat det här tokenet till i Apple School Manager med UEM-konsolen, inklusive enheter du redan har synkroniserat. Du får endast använda det här alternativet som ett sista alternativ för att uppdatera och synkronisera alla dina enheter från Apple School Manager.</value>
+  </data>
+  <data name="DEPTokenArgCannotBeDeleted" xml:space="preserve">
+    <value>DEP-token {0} kan inte tas bort</value>
+  </data>
+  <data name="DEPTokenArgCannotBeRevoked" xml:space="preserve">
+    <value>DEP-token {0} kan inte återkallas</value>
+  </data>
+  <data name="DeviceEnrolledArg" xml:space="preserve">
+    <value>Avregistrerad enhet nr {0}</value>
+  </data>
+  <data name="DeviceMacAddressDenylisted" xml:space="preserve">
+    <value>Enheten kan inte registreras eftersom enhetens MAC-adress är blockerad.</value>
+  </data>
+  <data name="DeviceManagementRemoved" xml:space="preserve">
+    <value>Enhetshantering har tagits bort av Workspace ONE UEM-administratör</value>
+  </data>
+  <data name="DeviceNotAllowlisted" xml:space="preserve">
+    <value>Enhetsmodelltypen är inte tillåten och/eller så är enhetens operativsystem inte tillåtet.</value>
+  </data>
+  <data name="DeviceNotAllowlistedManufacturererNotAllowed" xml:space="preserve">
+    <value>Enheten är inte tillåten och/eller så tillåts inte tillverkaren.</value>
+  </data>
+  <data name="DeviceNotAllowlistedModelNotAllowed" xml:space="preserve">
+    <value>Enhetsmodelltypen är inte tillåten.</value>
+  </data>
+  <data name="DeviceNotEnrolled" xml:space="preserve">
+    <value>Enheten är inte registrerad</value>
+  </data>
+  <data name="DeviceNotRegistered" xml:space="preserve">
+    <value>Enheten har inte registrerats. Ogiltig enhetsmodelltyp eller OS</value>
+  </data>
+  <data name="DeviceSNArgNotExistsForArgToken" xml:space="preserve">
+    <value>Enhetens serienummer {0} finns inte för {1}-token</value>
+  </data>
+  <data name="DeviceStateIsAndroidEnterprise" xml:space="preserve">
+    <value>Enheten är inte registrerad för Android Enterprise</value>
+  </data>
+  <data name="DeviceUserNotFound" xml:space="preserve">
+    <value>Det gick inte att hitta registreringsanvändare för enheten</value>
+  </data>
+  <data name="DirectoryGroupBasedMappingChanged" xml:space="preserve">
+    <value>Inställningen för aktivering av kataloggruppsbaserad mappning ändrades</value>
+  </data>
+  <data name="DropshipProvisioning" xml:space="preserve">
+    <value>Drop Ship-provisionering</value>
+  </data>
+  <data name="EMMToken" xml:space="preserve">
+    <value>EMM-token</value>
+  </data>
+  <data name="EmptyDeviceIdentifierPleaseTryAgain" xml:space="preserve">
+    <value>Enhetens UDID finns inte i registreringsbegäran. Kontakta din administratör eller försök igen.</value>
+  </data>
+  <data name="EmptyPasswordPleaseTryAgain" xml:space="preserve">
+    <value>Lösenordet finns inte i registreringsbegäran. Kontakta din administratör eller försök igen.</value>
+  </data>
+  <data name="EmptyUserNameOrEmailAddressPleaseTryAgain" xml:space="preserve">
+    <value>Användarnamnet eller e-postadressen finns inte i registreringsbegäran. Kontakta din administratör eller försök igen.</value>
+  </data>
+  <data name="EnableDropShipProvisioning" xml:space="preserve">
+    <value>Aktivera Workspace ONE Drop Ship Provisioning</value>
+  </data>
+  <data name="EnrollmentDisabled" xml:space="preserve">
+    <value>Registrering är avaktiverat eftersom MDM-ordern inte kan hittas i SKU.</value>
+  </data>
+  <data name="EnrollmentSecurityTypeNotSupported" xml:space="preserve">
+    <value>Ett försök gjordes att utföra registrering med en säkerhetstyp som inte stöds. Kontakta din administratör eller försök igen.</value>
+  </data>
+  <data name="EnrollmentTypeCriteriaMustContainOneEnrollmentType" xml:space="preserve">
+    <value>Kriterier för registreringstyp måste innehålla minst en registreringstyp</value>
+  </data>
+  <data name="EnrollmentUserNotFound" xml:space="preserve">
+    <value>Registreringsanvändaren kunde inte hittas. Ange en befintlig användare.</value>
+  </data>
+  <data name="EnrollmentWelcomeMessageBody" xml:space="preserve">
+    <value>Workspace ONE UEM gör att it-avdelningen kan ge säker åtkomst till resurser från din enhet. I den här processen får du hjälp att konfigurera enheten steg för steg och se till att den uppfyller företagets policyer.</value>
+  </data>
+  <data name="EnrollmentWelcomeMessageHeader" xml:space="preserve">
+    <value>Välkommen till Workspace ONE UEM!</value>
+  </data>
+  <data name="EnterpriseWipeDeviceCountMessage" xml:space="preserve">
+    <value>{0} enhet(er)</value>
+  </data>
+  <data name="EnterpriseWipeDeviceCountTitle" xml:space="preserve">
+    <value>Antal enheter som kommer att företagsrensas:</value>
+  </data>
+  <data name="ErrorAddingUserAccount" xml:space="preserve">
+    <value>Fel uppstod när ett användarkonto skulle läggas till automatiskt. Kontakta din administratör eller försök igen.</value>
+  </data>
+  <data name="ErrorThrownWhenResolvingDeviceIdentifier" xml:space="preserve">
+    <value>Ett fel inträffade vid försök att lösa enhetsidentifierare</value>
+  </data>
+  <data name="ExistingClientIDDontMatch" xml:space="preserve">
+    <value>Det går inte att spara ändringarna eftersom textfälten måste matcha befintliga registreringsvärden. Endast certifikatet kan redigeras.</value>
+  </data>
+  <data name="ExternalAccessRole" xml:space="preserve">
+    <value>Extern åtkomstroll</value>
+  </data>
+  <data name="FailedToCreateAgentInstallUrl" xml:space="preserve">
+    <value>Det gick inte att skapa installations-URL för Agent. Kontakta din administratör eller försök igen.</value>
+  </data>
+  <data name="FailedToCreateDeviceAuthenticationToken" xml:space="preserve">
+    <value>Det gick inte att skapa enhetens autentiseringstoken. Kontakta din administratör eller försök igen.</value>
+  </data>
+  <data name="FailedToDisplayAgentAppStoreLink" xml:space="preserve">
+    <value>Det gick inte att visa agentens App Store-länk. Kontakta din administratör eller försök igen.</value>
+  </data>
+  <data name="FailedToDisplayWelcomeMessage" xml:space="preserve">
+    <value>Det gick inte att visa välkomstmeddelandet. Kontakta din administratör eller försök igen.</value>
+  </data>
+  <data name="FailedToProcessDisplayMdmInstallationMessage" xml:space="preserve">
+    <value>Det gick inte att visa MDM-installationsmeddelandet. Kontakta din administratör eller försök igen.</value>
+  </data>
+  <data name="FailedToRedirectToAgentInstallUrl" xml:space="preserve">
+    <value>Det gick inte att omdirigera till agentens installations-URL. Kontakta din administratör eller försök igen.</value>
+  </data>
+  <data name="FailedToRedirectToMdmInstallUrl" xml:space="preserve">
+    <value>Det gick inte att omdirigera till URL:en för MDM-installation. Kontakta din administratör eller försök igen.</value>
+  </data>
+  <data name="FailedToRedirectToWorkspaceSchema" xml:space="preserve">
+    <value>Det gick inte att omdirigera till arbetsstationsschemat. Kontakta din administratör eller försök igen.</value>
+  </data>
+  <data name="FailedToRegisterApplication" xml:space="preserve">
+    <value>Det gick inte att registrera applikationen. Kontakta din administratör eller försök igen.</value>
+  </data>
+  <data name="FailedToRetrieveNextStep" xml:space="preserve">
+    <value>Det gick inte att hämta nästa registreringssteg. Kontakta din administratör eller försök igen.</value>
+  </data>
+  <data name="FailedToRetrieveSessionId" xml:space="preserve">
+    <value>Det gick inte att hämta enhetens ID för registreringssession. Kontakta din administratör eller försök igen.</value>
+  </data>
+  <data name="FailedToValidateDeviceRestrictions" xml:space="preserve">
+    <value>Det gick inte att validera enhetens registreringsbegränsningar. Kontakta din administratör eller försök igen.</value>
+  </data>
+  <data name="FailedToValidateEmailAddress" xml:space="preserve">
+    <value>Det gick inte att validera registreringsanvändarens e-postadress. Kontakta din administratör eller försök igen.</value>
+  </data>
+  <data name="FailedValidatingDeviceIdentifier" xml:space="preserve">
+    <value>Det gick inte att validera enhetens UDID. Kontakta din administratör eller försök igen.</value>
+  </data>
+  <data name="FailedValidatingStagingMode" xml:space="preserve">
+    <value>Det gick inte att validera mellanlagringsläget. Kontakta din administratör eller försök igen.</value>
+  </data>
+  <data name="FieldMustBeOfArgCharacters" xml:space="preserve">
+    <value>Fältet måste innehålla {0} tecken.</value>
+  </data>
+  <data name="FollowingTokensOwnershipWillNotChange" xml:space="preserve">
+    <value>Följande tokens ägarskap ändras inte</value>
+  </data>
+  <data name="ForceAospEnrollment" xml:space="preserve">
+    <value>Tvinga AOSP-registrering/registrering av slutet nätverk</value>
+  </data>
+  <data name="GeneralCheckIn" xml:space="preserve">
+    <value>Incheckning</value>
+  </data>
+  <data name="GetStarted:" xml:space="preserve">
+    <value>Komma igång:</value>
+  </data>
+  <data name="GetSuccessfully" xml:space="preserve">
+    <value>Webbadress för MDM-servern har hämtats</value>
+  </data>
+  <data name="GoogleAdminConsole" xml:space="preserve">
+    <value>Google Admin Console.</value>
+  </data>
+  <data name="GoogleDeviceIdRequired" xml:space="preserve">
+    <value>Du måste ange ett Google-enhets-ID krävs.</value>
+  </data>
+  <data name="GoogleUserIdRequired" xml:space="preserve">
+    <value>Du måste ange ett Google-användar-ID.</value>
+  </data>
+  <data name="GoToThe" xml:space="preserve">
+    <value>1. Gå till </value>
+  </data>
+  <data name="GroupIdAssignmentModeChanged" xml:space="preserve">
+    <value>Tilldelningsläge för grupp-ID ändrades</value>
+  </data>
+  <data name="HubRegistered" xml:space="preserve">
+    <value>Hub har registrerats</value>
+  </data>
+  <data name="IntelligentHubManaged" xml:space="preserve">
+    <value>Intelligent Hub-hanterad</value>
+  </data>
+  <data name="InvalidDeviceAttributes" xml:space="preserve">
+    <value>Ange ett av följande enhetsattribut: serienummer/IMEI/UDID</value>
+  </data>
+  <data name="InvalidDeviceModel" xml:space="preserve">
+    <value>Enheten har inte registrerats. Ogiltig enhetsmodelltyp</value>
+  </data>
+  <data name="InvalidDeviceOS" xml:space="preserve">
+    <value>Enheten har inte registrerats. Ogiltigt enhets-OS</value>
+  </data>
+  <data name="InvalidDeviceType" xml:space="preserve">
+    <value>Ogiltigt enhetstyp</value>
+  </data>
+  <data name="InvalidHeaderUsedInTemplate" xml:space="preserve">
+    <value>Ogiltigt sidhuvud används i mallen. Hämta och använd mallen som finns i fönstret Redigera tilldelning.</value>
+  </data>
+  <data name="InvalidImeiAttributeArgs" xml:space="preserve">
+    <value>IMEI-numret måste vara numeriskt och exakt 15 tecken.</value>
+  </data>
+  <data name="InvalidMigrationRequest" xml:space="preserve">
+    <value>Enhets-UDID:t tomt</value>
+  </data>
+  <data name="InvalidOrganizationGroupFromVidm" xml:space="preserve">
+    <value>Registreringsanvändaren finns inte i den angivna Workspace ONE Access-tilldelade organisationsgruppen.</value>
+  </data>
+  <data name="InvalidSerialNumberAttributeArgs" xml:space="preserve">
+    <value>Serienumret måste vara högst {0} tecken.</value>
+  </data>
+  <data name="InvalidSerialNumberValuesFoundArgs" xml:space="preserve">
+    <value>Serienumret måste vara högst {0}</value>
+  </data>
+  <data name="InvalidTokenDetails" xml:space="preserve">
+    <value>Autentiseringen misslyckades på grund av ogiltig tokeninformation.</value>
+  </data>
+  <data name="InvalidUdidAttributeArgs" xml:space="preserve">
+    <value>UDID-längden måste vara högst {0} tecken.</value>
+  </data>
+  <data name="InvalidUDIDValuesFoundArgs" xml:space="preserve">
+    <value>Längden på varje UDID måste vara mindre än {0}.</value>
+  </data>
+  <data name="IosProfileDownloadHeaderTitle" xml:space="preserve">
+    <value>Steg för att hämta profil</value>
+  </data>
+  <data name="IosProfileDownloadSteps" xml:space="preserve">
+    <value>1. När du tillfrågas om du vill hämta profilen trycker du på {0}
+
+2. När hämtningen är färdig trycker du på {1}</value>
+  </data>
+  <data name="LaforgeUserCreationFailed" xml:space="preserve">
+    <value>Kunde inte skapa Android Enterprise-användaren</value>
+  </data>
+  <data name="LinkToConfigurationTab" xml:space="preserve">
+    <value>Länk till konfigurationsfliken</value>
+  </data>
+  <data name="MigrationFeatureDisabled" xml:space="preserve">
+    <value>Android Enterprise-migreringsfunktionen stöds inte för organisationen. Kontakta administratören.</value>
+  </data>
+  <data name="MoveDevicesToUserOrOGBAsedOnIPOrCA" xml:space="preserve">
+    <value>Tilldela enheter till en användare eller organisationsgrupp baserat på en tilldelning av IP-intervall eller tilldela enheter till en organisationsgrupp baserat på regler för anpassat attribut. Enhetstilldelningsregler kan inte aktiveras om en organisationsgrupp efter IP-intervall eller organisationsgrupp efter anpassat attribut har valts för en organisationsgrupp i hierarkin. Regler för enhetstilldelningar kan dock aktiveras om användarnamnet efter IP-intervall väljs i hierarkin.</value>
+  </data>
+  <data name="MultiuserFFSetup" xml:space="preserve">
+    <value>Registrering med flera användare har blockerats eftersom funktionen inte är korrekt konfigurerad.</value>
+  </data>
+  <data name="MultiuserNonMdmSupport" xml:space="preserve">
+    <value>Registrering med flera enheter stöds inte för det registreringsprotokoll som används.</value>
+  </data>
+  <data name="NoMDMOrderFound" xml:space="preserve">
+    <value>Registreringen är pausad eftersom MDM-ordern inte kan hittas i SKU.</value>
+  </data>
+  <data name="NotAuthorizedToCreateEnrollmentUser" xml:space="preserve">
+    <value>Användaren är inte behörig att skapa registreringsanvändare.</value>
+  </data>
+  <data name="OperationNotAuthorized" xml:space="preserve">
+    <value>Inte behörig att utföra den här åtgärden</value>
+  </data>
+  <data name="OrganizationGroupInherited" xml:space="preserve">
+    <value>Ärvd organisationsgrupp</value>
+  </data>
+  <data name="PasscodeExpired" xml:space="preserve">
+    <value>Lösenkoden har gått ut</value>
+  </data>
+  <data name="PhoneNumberPrivacyCheck" xml:space="preserve">
+    <value>Sekretesskontroll för telefonnummer</value>
+  </data>
+  <data name="PreventReEnrollmentMessage" xml:space="preserve">
+    <value>Om du markerar kryssrutan "Förhindra omregistrering" nedan så hamnar den på en blockeralista för enheter och användaren kan inte omregistrera den på Workspace ONE UEM. En administratör kan ta bort enheten från blockeralistan vid ett senare tillfälle om så krävs.</value>
+  </data>
+  <data name="PrivacyNotificationDisabled" xml:space="preserve">
+    <value>Användarvänliga integritetsnotiser är avaktiverade</value>
+  </data>
+  <data name="PromptToBeginDownloadMessageForAppleOsX" xml:space="preserve">
+    <value>Intelligent Hub håller på att laddas ned på datorn och installeras automatiskt. Beroende på nätverksanslutning tar detta 1–5 minuter. Klicka på Fortsätt när agenten väl har installerats för att avsluta registreringsprocessen.</value>
+  </data>
+  <data name="RegisterAMAPI" xml:space="preserve">
+    <value>Registrera AMAPI. {0}</value>
+  </data>
+  <data name="RegisterAMAPIAtParentOG" xml:space="preserve">
+    <value>Registrera AMAPI för organisationsgruppen som Android EMM-registreringen är konfigurerad för. {0}</value>
+  </data>
+  <data name="RegisterAMAPIHelpText" xml:space="preserve">
+    <value>Du måste registrera dig för AMAPI (Android Management API) innan det kan användas med den här organisationsgruppen.</value>
+  </data>
+  <data name="RegisteredOrAppEnrolled" xml:space="preserve">
+    <value>Registrerad eller fristående app ///registrerad</value>
+  </data>
+  <data name="RegisterManagedDomain" xml:space="preserve">
+    <value>2. Registrera en hanterad Google-domän om en domän inte finns.</value>
+  </data>
+  <data name="RegisterMultiuserDeviceConfirmationMessage" xml:space="preserve">
+    <value>Användarinformation som är kopplad till enhetsregistreringen kommer att tas bort för Windows-enheter.</value>
+  </data>
+  <data name="Requirements" xml:space="preserve">
+    <value>Krav</value>
+  </data>
+  <data name="RequireSharedDeviceEnrollmentEulaAcceptance" xml:space="preserve">
+    <value>Det går inte att aktivera Visa alltid användarvillkoren förrän du har skapat användarvillkor för registrering. Om du vill skapa användarvillkor går du till Grupper och inställningar &gt; Enheter och användare &gt; Allmänt &gt; Registrering och klickar på fliken Användarvillkor.</value>
+  </data>
+  <data name="SerialNumberAssignmentFailed" xml:space="preserve">
+    <value>Tilldelning av serienummer misslyckades.</value>
+  </data>
+  <data name="SetUpDirectoryServices" xml:space="preserve">
+    <value>Konfigurera katalogtjänster</value>
+  </data>
+  <data name="SubOrganizationGroup" xml:space="preserve">
+    <value>Underordnad organisationsgrupp </value>
+  </data>
+  <data name="SubsequentUserEnrollmentBlocked" xml:space="preserve">
+    <value>Efterföljande användarregistrering har blockerats.</value>
+  </data>
+  <data name="TapHereIfNotPromptedAutomatically" xml:space="preserve">
+    <value>Klicka här om du inte tillfrågas automatiskt</value>
+  </data>
+  <data name="TapHereWhenDownloadFinishes" xml:space="preserve">
+    <value>Tryck här när hämtningen är slutförd</value>
+  </data>
+  <data name="TargetOwnershipRestrictedByDefaultPolicyAtGivenOG" xml:space="preserve">
+    <value>Målägarskap begränsas av standardpolicyn i den angivna organisationsgruppen.</value>
+  </data>
+  <data name="TokenSaveFailed" xml:space="preserve">
+    <value>Det gick inte att spara token.</value>
+  </data>
+  <data name="UemManaged" xml:space="preserve">
+    <value>Hanterad UEM</value>
+  </data>
+  <data name="UnapprovedUser" xml:space="preserve">
+    <value>Användaren är en extern SAML-autentiserad användare och har inte tillåtelse att registrera. Kontakta din administratör eller försök igen.</value>
+  </data>
+  <data name="UploadedCertMisMatch" xml:space="preserve">
+    <value>Certifikat saknas. Överför ett giltigt certifikat för att fortsätta.</value>
+  </data>
+  <data name="UserEnrolled" xml:space="preserve">
+    <value>Användare registrerad</value>
+  </data>
+  <data name="UserEnrollmentFeatureNotEnabled" xml:space="preserve">
+    <value>Användarregistrering har avaktiverats för din organisation. Kontakta din administratör för att aktivera användarregistrering och försök igen.</value>
+  </data>
+  <data name="UserHasExceededMaxAllowedDevices" xml:space="preserve">
+    <value>Användaren har överskridit det tillåtna antalet enheter.</value>
+  </data>
+  <data name="UsernameAlreadyExists" xml:space="preserve">
+    <value>Användarnamnet finns redan för en annan användare. Försök igen.</value>
+  </data>
+  <data name="UserSetup" xml:space="preserve">
+    <value>Inställning av användare</value>
+  </data>
+  <data name="ValidatePhoneNumberFailed" xml:space="preserve">
+    <value>Det gick inte att validera registreringsanvändarens telefonnummer. Kontakta din administratör eller försök igen.</value>
+  </data>
+  <data name="WipeInitiated" xml:space="preserve">
+    <value>Rensning påbörjad</value>
+  </data>
+  <data name="WipeInitiatedTooltip" xml:space="preserve">
+    <value>Rensning har påbörjats</value>
+  </data>
+  <data name="WorkProfileManagementMode" xml:space="preserve">
+    <value>Hanteringsläge för arbetsprofil</value>
+  </data>
+  <data name="WorkProfileManagementModeInfoMessage" xml:space="preserve">
+    <value>Anger om nyligen registrerade enheter ska hanteras av Intelligent Hub eller Android Management API. AMAPI rekommenderas. Intelligent Hub finns kvar på enheten men hanteringsfunktionerna delegeras till det ursprungliga Android OS. Redan registrerade enheter påverkas inte.</value>
+  </data>
+  <data name="WorkProfileManagementModeToggleSuccessfulMessage" xml:space="preserve">
+    <value>Registreringen har slutförts! Hanteringsläget har uppdaterats till Android Management API. Gå till registreringsinställningarna för att visa eller ändra det konfigurerade hanteringsläget.</value>
+  </data>
+  <data name="Ws1RealTimeUserGroupSyncChanged" xml:space="preserve">
+    <value>Workspace ONE-inställningen för synkronisering av användargrupper i realtid ändrades</value>
+  </data>
+</root>

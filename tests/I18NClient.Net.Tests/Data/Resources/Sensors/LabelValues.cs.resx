@@ -1,0 +1,498 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AdminExecutionContext" xml:space="preserve">
+    <value>Administrátor</value>
+  </data>
+  <data name="AirWatchDataPlatformService" xml:space="preserve">
+    <value>Služba AirWatch DataPlatform Service</value>
+  </data>
+  <data name="Always32BitArchitecture" xml:space="preserve">
+    <value>32bitová verze (vynuceno)</value>
+  </data>
+  <data name="AssignedDeviceSensorRequested" xml:space="preserve">
+    <value>Vyžádáno přiřazení senzoru zařízení</value>
+  </data>
+  <data name="AssignmentLabel" xml:space="preserve">
+    <value>Přiřazení</value>
+  </data>
+  <data name="AssignSensor" xml:space="preserve">
+    <value>Přiřadit senzor ke smart skupinám</value>
+  </data>
+  <data name="BackButtonLabel" xml:space="preserve">
+    <value>Zpět</value>
+  </data>
+  <data name="BooleanType" xml:space="preserve">
+    <value>Boolean (logická hodnota)</value>
+  </data>
+  <data name="CannotDeleteWorkflowResource" xml:space="preserve">
+    <value>Zdroje přiřazené k pracovnímu postupu nelze odstranit.</value>
+  </data>
+  <data name="DataTypeLabel" xml:space="preserve">
+    <value>Datový typ</value>
+  </data>
+  <data name="DateTimeType" xml:space="preserve">
+    <value>Datum Čas</value>
+  </data>
+  <data name="DefineQueryLabel" xml:space="preserve">
+    <value>Definovat dotaz</value>
+  </data>
+  <data name="DeviceScriptAssignmentGroup" xml:space="preserve">
+    <value>Skupina přiřazení skriptu zařízení</value>
+  </data>
+  <data name="DeviceSensor" xml:space="preserve">
+    <value>Senzor zařízení</value>
+  </data>
+  <data name="DeviceSensorAssignmenGroupRankingUpdated" xml:space="preserve">
+    <value>Bylo aktualizováno hodnocení skupiny přiřazení senzoru zařízení</value>
+  </data>
+  <data name="DeviceSensorAssignmentGroup" xml:space="preserve">
+    <value>Skupina přiřazení senzoru zařízení</value>
+  </data>
+  <data name="DeviceSensorAssignmentGroupAdded" xml:space="preserve">
+    <value>Byla přidána skupina přiřazení senzoru zařízení</value>
+  </data>
+  <data name="DeviceSensorAssignmentGroupDeleted" xml:space="preserve">
+    <value>Byla odstraněna skupina přiřazení senzoru zařízení</value>
+  </data>
+  <data name="DeviceSensorAssignmentGroupEdited" xml:space="preserve">
+    <value>Byla upravena skupina přiřazení senzoru zařízení</value>
+  </data>
+  <data name="DeviceSensorAssignmentGroupName" xml:space="preserve">
+    <value>Název přiřazení senzoru zařízení</value>
+  </data>
+  <data name="DeviceSensorCreated" xml:space="preserve">
+    <value>Senzor zařízení vytvořen</value>
+  </data>
+  <data name="DeviceSensorDeleted" xml:space="preserve">
+    <value>Senzor zařízení odstraněn</value>
+  </data>
+  <data name="DeviceSensorDeletedSuccessfully" xml:space="preserve">
+    <value>Senzor zařízení úspěšně odstraněn</value>
+  </data>
+  <data name="DeviceSensorEdited" xml:space="preserve">
+    <value>Senzor zařízen upraven</value>
+  </data>
+  <data name="DeviceSensorIdentifiers" xml:space="preserve">
+    <value>Identifikátory senzoru zařízení</value>
+  </data>
+  <data name="DeviceSensorListViewTitle" xml:space="preserve">
+    <value>Prohlížení v seznamu senzorů</value>
+  </data>
+  <data name="DeviceSensorName" xml:space="preserve">
+    <value>Název senzoru zařízení</value>
+  </data>
+  <data name="DeviceSensorNotSupportedForEmployeeOwnedDevice" xml:space="preserve">
+    <value>Zařízení vlastněné zaměstnancem: nejsou vyžadovány údaje o senzoru zařízení</value>
+  </data>
+  <data name="DeviceSensorOg" xml:space="preserve">
+    <value>Organizační skupina senzoru zařízení</value>
+  </data>
+  <data name="DeviceSensorPersistedInDeviceState" xml:space="preserve">
+    <value>Vzorek senzoru uložený ve stavu zařízení</value>
+  </data>
+  <data name="DeviceSensorPersistedInIntelligence" xml:space="preserve">
+    <value>Vzorek senzoru uložený ve službě Intelligence</value>
+  </data>
+  <data name="DeviceSensorSampleReceived" xml:space="preserve">
+    <value>Byl přijat vzorek senzoru zařízení</value>
+  </data>
+  <data name="DeviceSensorSampleReceivedWithErrors" xml:space="preserve">
+    <value>Vzorek přijat s chybami</value>
+  </data>
+  <data name="DeviceSensorSampleSentFailed" xml:space="preserve">
+    <value>Nepodařilo se odeslat hodnotu vzorku ze senzoru.</value>
+  </data>
+  <data name="DeviceSensorSampleSentSuccess" xml:space="preserve">
+    <value>Hodnota vzorku ze senzoru byla úspěšně odeslána.</value>
+  </data>
+  <data name="DeviceSensorSmartGroupAssigned" xml:space="preserve">
+    <value>Senzor zařízení byl přiřazen ke smart skupině.</value>
+  </data>
+  <data name="EditSensor" xml:space="preserve">
+    <value>Upravit senzor</value>
+  </data>
+  <data name="Either32Or64BitArchitecture" xml:space="preserve">
+    <value>Automatické</value>
+  </data>
+  <data name="EmployeeOwnedDevicesWillNotSupportSensors" xml:space="preserve">
+    <value>Zařízení s typem vlastnictví, kdy jsou vlastněna zaměstnancem, budou z důvodu ochrany osobních údajů uživatele z přiřazení senzoru automaticky vyloučena.</value>
+  </data>
+  <data name="ExecutionArchitecture" xml:space="preserve">
+    <value>Prováděcí architektura</value>
+  </data>
+  <data name="ExecutionArchitectureInfo" xml:space="preserve">
+    <value>
+32bitová verze (vynuceno): Spustí se jako 32bitová bez ohledu na architekturu cílového zařízení.
+32bitová verze: Spustí se pouze na 32bitových zařízeních.
+64bitová verze: Spustí se pouze na 64bitových zařízeních.
+Auto: Spustí se podle architektury cílového zařízení.</value>
+  </data>
+  <data name="ExecutionContextLabel" xml:space="preserve">
+    <value>Kontext spuštění</value>
+  </data>
+  <data name="FinishButtonLabel" xml:space="preserve">
+    <value>Dokončit</value>
+  </data>
+  <data name="ImportCodeButtonText" xml:space="preserve">
+    <value>Importovat z knihovny šablon VMware</value>
+  </data>
+  <data name="IncludeInSmartGroupLabel" xml:space="preserve">
+    <value>Zahrnout do smart skupin</value>
+  </data>
+  <data name="IntegerType" xml:space="preserve">
+    <value>Celé číslo (integer)</value>
+  </data>
+  <data name="LastExecutedDate" xml:space="preserve">
+    <value>Datum posledního spuštění</value>
+  </data>
+  <data name="MacOsPeriodicTriggerInfoText" xml:space="preserve">
+    <value>Spouštět pravidelně na základě konfigurovaného časového plánu intervalu vzorkování dat centra Intelligent Hub, které je definováno v nabídce Nastavení &gt; Zařízení a uživatelé &gt; Apple &gt; Apple macOS &gt; Nastavení centra Intelligent Hub</value>
+  </data>
+  <data name="ManageEndpointResources" xml:space="preserve">
+    <value>Správa zdrojů koncových bodů</value>
+  </data>
+  <data name="ManageEndpointResourcesInfo" xml:space="preserve">
+    <value>Hodnoty senzoru lze použít jako podmínky ve Freestyle za účelem správy zdrojů koncových bodů na základě vlastních kritérií.</value>
+  </data>
+  <data name="NetworkChangeTriggerInfo" xml:space="preserve">
+    <value>Spustit při každé změně sítě v zařízení (například přepnutí z Ethernetu na Wi-Fi)</value>
+  </data>
+  <data name="NewSensor" xml:space="preserve">
+    <value>Nový senzor</value>
+  </data>
+  <data name="NextButtonLabel" xml:space="preserve">
+    <value>Pokračovat</value>
+  </data>
+  <data name="NoRecordsFound" xml:space="preserve">
+    <value>Nebyly nalezeny žádné skripty, vytvořte nový a začněte.</value>
+  </data>
+  <data name="NoSensorsFound" xml:space="preserve">
+    <value>Nebyly nalezeny žádné senzory, vytvořte nový a začněte.</value>
+  </data>
+  <data name="NotRunLabel" xml:space="preserve">
+    <value>Nespuštěno</value>
+  </data>
+  <data name="Only32BitArchitecture" xml:space="preserve">
+    <value>32bitová verze</value>
+  </data>
+  <data name="Only64BitArchitecture" xml:space="preserve">
+    <value>64bitová verze</value>
+  </data>
+  <data name="PlatformLabel" xml:space="preserve">
+    <value>Platforma</value>
+  </data>
+  <data name="QueryType" xml:space="preserve">
+    <value>Typ dotazu</value>
+  </data>
+  <data name="QueryTypeHelpText" xml:space="preserve">
+    <value>Toto nastavení určuje cíl dotazování zařízení.</value>
+  </data>
+  <data name="QueryTypeNotSetError" xml:space="preserve">
+    <value>Typ dotazu nemůže být prázdný</value>
+  </data>
+  <data name="ReplaceWarningForScriptUpload" xml:space="preserve">
+    <value>
+	Nahráním skriptu se v editoru nahradí veškerý stávající obsah.
+
+	Poznámka: U všech senzorů budou uloženy celkem 4 kB dat na zařízení.
+	Poznámka: Nebude-li skript dokončen do 5 minut, vyprší jeho časový limit.
+	</value>
+  </data>
+  <data name="RequestSensorsSyncFailed" xml:space="preserve">
+    <value>Zařazení příkazu zařízení pro synchronizaci senzorů do fronty selhalo</value>
+  </data>
+  <data name="RequestSensorsSyncSuccess" xml:space="preserve">
+    <value>Příkaz zařízení pro synchronizaci senzorů byl zařazen do fronty</value>
+  </data>
+  <data name="ResponseLabel" xml:space="preserve">
+    <value>Odpověď</value>
+  </data>
+  <data name="RunButtonText" xml:space="preserve">
+    <value>Spustit</value>
+  </data>
+  <data name="ScheduleTriggerInfo" xml:space="preserve">
+    <value>Je-li spouštěč nastaven na Plán, bude tento senzor shromažďovat a přenášet data na základě plánu senzoru, který je konfigurován na stránce nastavení Rozvrh vzorku Windows.</value>
+  </data>
+  <data name="ScriptExecutedAt" xml:space="preserve">
+    <value>Provedeno</value>
+  </data>
+  <data name="ScriptLabel" xml:space="preserve">
+    <value>Skript/příkaz</value>
+  </data>
+  <data name="SelectSmartGroupToAssignSensor" xml:space="preserve">
+    <value>Vyberte smart skupiny, ke kterým bude tento senzor přiřazen.</value>
+  </data>
+  <data name="Sensor" xml:space="preserve">
+    <value>Senzor</value>
+  </data>
+  <data name="SensorAssignmentDeploymentTabDesc" xml:space="preserve">
+    <value>Zvolte, které spouštěče mají zahájit funkci tohoto senzoru na přiřazených zařízeních.</value>
+  </data>
+  <data name="SensorAssignmentGroups" xml:space="preserve">
+    <value>Senzory</value>
+  </data>
+  <data name="SensorDellCustomBIOSQuery" xml:space="preserve">
+    <value>Vlastní BIOS společnosti Dell</value>
+  </data>
+  <data name="SensorDuplicateNameError" xml:space="preserve">
+    <value>Senzor se stejným názvem již existuje. Použijte jiný název.</value>
+  </data>
+  <data name="SensorEventSelectionError" xml:space="preserve">
+    <value>Pro pokračování vyberte jeden či více druhů událostí.</value>
+  </data>
+  <data name="SensorEventTrigger" xml:space="preserve">
+    <value>Událost</value>
+  </data>
+  <data name="SensorGoToOptIn" xml:space="preserve">
+    <value>Kliknutím sem se přidejte.</value>
+  </data>
+  <data name="SensorLoginEvent" xml:space="preserve">
+    <value>Přihlášení</value>
+  </data>
+  <data name="SensorLogoutEvent" xml:space="preserve">
+    <value>Odhlásit</value>
+  </data>
+  <data name="SensorMenuDescription" xml:space="preserve">
+    <value>Popis nabídky senzoru</value>
+  </data>
+  <data name="SensorName" xml:space="preserve">
+    <value>Název senzoru</value>
+  </data>
+  <data name="SensorNameFormatError" xml:space="preserve">
+    <value>Musí mít 2 až 64 znaků. Použít můžete pouze kombinaci malých písmen, číslic a podtržítek. První znak musí být malé písmeno.</value>
+  </data>
+  <data name="SensorNameHelpText" xml:space="preserve">
+    <value>Název senzoru slouží jako klíč k datům vráceným ze zařízení, když je spuštěný skript nebo dotaz senzoru. Klíč a hodnota jsou vráceny a uloženy do platformy Workspace ONE Intelligence a lze je použít ve zprávách, grafech a automatizacích.</value>
+  </data>
+  <data name="SensorNameNotSetError" xml:space="preserve">
+    <value>Název senzoru nemůže být prázdný</value>
+  </data>
+  <data name="SensorOGNotOptedInfo" xml:space="preserve">
+    <value>Nastavení senzorů vyžaduje platformu Workspace ONE Intelligence. Přidejte se do platformy Workspace ONE Intelligence a vraťte se na tuto stránku pro vytvoření senzorů.</value>
+  </data>
+  <data name="SensorPowershellQuery" xml:space="preserve">
+    <value>PowerShell</value>
+  </data>
+  <data name="Sensors" xml:space="preserve">
+    <value>Senzory</value>
+  </data>
+  <data name="SensorScheduleTrigger" xml:space="preserve">
+    <value>Plán</value>
+  </data>
+  <data name="SensorsCreateReports" xml:space="preserve">
+    <value>Vytváření zpráv a řídicích panelů</value>
+  </data>
+  <data name="SensorsCreateReportsInfo" xml:space="preserve">
+    <value>K vytvoření zpráv a řídicích panelů na základě dat senzoru použijte aplikaci Workspace ONE Intelligence. </value>
+  </data>
+  <data name="SensorScriptHash" xml:space="preserve">
+    <value>Sensor Script Hash</value>
+  </data>
+  <data name="SensorScriptInvalid" xml:space="preserve">
+    <value>Skript/příkaz je požadovaná hodnota. Pro uložení tohoto senzoru zadejte platný skript.</value>
+  </data>
+  <data name="SensorsDD" xml:space="preserve">
+    <value>Senzory</value>
+  </data>
+  <data name="SensorsDDHelp" xml:space="preserve">
+    <value>Řídí přístup k zobrazování hodnot senzoru zařízení a vyžadování synchronizace</value>
+  </data>
+  <data name="SensorsHeader" xml:space="preserve">
+    <value>Automatizované shromažďování dat koncového bodu</value>
+  </data>
+  <data name="SensorsHelp" xml:space="preserve">
+    <value>Řídí přístup k zobrazování a správě senzorů zařízení</value>
+  </data>
+  <data name="SensorsInfo" xml:space="preserve">
+    <value>Rychle a bezpečně automatizujte sběr dat z vašich koncových bodů za použití běžných skriptovacích jazyků. Více o senzorech si přečtěte zde:</value>
+  </data>
+  <data name="SensorsPurpose" xml:space="preserve">
+    <value>Co se dá dělat se senzory?</value>
+  </data>
+  <data name="SensorsRetrieveDeviceData" xml:space="preserve">
+    <value>Načíst data zařízení</value>
+  </data>
+  <data name="SensorsRetrieveDeviceDataInfo" xml:space="preserve">
+    <value>Pomocí běžných skriptovacích jazyků a zabezpečených proměnných prostředí můžete načíst data z desktopových zařízení.</value>
+  </data>
+  <data name="SensorsSync" xml:space="preserve">
+    <value>Senzory</value>
+  </data>
+  <data name="SensorStartupEvent" xml:space="preserve">
+    <value>Spuštění</value>
+  </data>
+  <data name="SensorStepDefinition" xml:space="preserve">
+    <value>Konfigurujte název klíče, popis a spouštěče pro data, která senzor vrátí.</value>
+  </data>
+  <data name="SensorUserSwitchEvent" xml:space="preserve">
+    <value>Přepnutí uživatele</value>
+  </data>
+  <data name="SensorValue" xml:space="preserve">
+    <value>Hodnota senzoru</value>
+  </data>
+  <data name="SetupScriptParametersMac" xml:space="preserve">
+    <value>Vytvořte proměnné, které budou při provádění k dispozici v rámci prostředí skriptu.
+Skripty prostředí mohou odkazovat na proměnné přímo podle názvu (např. $myvariable) a skripty Python 3 mohou odkazovat na proměnné pomocí modulu OS (např. os.getenv('myvariable')).</value>
+  </data>
+  <data name="SetupScriptParametersWindow" xml:space="preserve">
+    <value>Vytvořte proměnné, které budou předány se skriptem jako proměnné prostředí.
+Skripty PowerShell mohou odkazovat na zde definované proměnné voláním $env:key, kde „key“ je pole klíče definované níže.</value>
+  </data>
+  <data name="SmartGroupCannotBeAssignedToMultipleAssignmentGroups" xml:space="preserve">
+    <value>Duplicitní smart skupiny nelze přiřadit k více skupinám přiřazení.</value>
+  </data>
+  <data name="StringType" xml:space="preserve">
+    <value>Řetězec</value>
+  </data>
+  <data name="SyncSensors" xml:space="preserve">
+    <value>Synchronizovat senzory</value>
+    <comment>Label key for DeviceCommand</comment>
+  </data>
+  <data name="SystemExecutionContext" xml:space="preserve">
+    <value>Systém</value>
+  </data>
+  <data name="Triggers" xml:space="preserve">
+    <value>Spouštěče</value>
+  </data>
+  <data name="TriggerTypeHelpText" xml:space="preserve">
+    <value>Je-li spouštěč nastaven na hodnotu Plán, bude tento senzor shromažďovat a přenášet data na základě plánu senzoru, který je nakonfigurován na stránce nastavení Rozvrh vzorku Windows. Při výběru hodnoty Událost se budou data shromažďovat na základě zvolených událostí zařízení a budou se přenášet v závislosti na nastaveních nakonfigurovaných na stránce nastavení Rozvrh vzorku Windows.</value>
+  </data>
+  <data name="TriggerTypeLabel" xml:space="preserve">
+    <value>Typ spouštěče</value>
+  </data>
+  <data name="UseInLookUpLabel" xml:space="preserve">
+    <value>Použít coby vyhledávací hodnotu</value>
+  </data>
+  <data name="UserExecutionContext" xml:space="preserve">
+    <value>Současný uživatel</value>
+  </data>
+  <data name="ValueTypeHelpText" xml:space="preserve">
+    <value>Typ hodnoty určí datový typ nashromážděného vzorku. To platformě Workspace ONE pomůže určit, jaké operátory a příkazy je pro tento datový typ nutné zajistit.</value>
+  </data>
+  <data name="ValueTypeLabel" xml:space="preserve">
+    <value>Typ hodnoty</value>
+  </data>
+  <data name="ValueTypeNotSetError" xml:space="preserve">
+    <value>Typ hodnoty nemůže být prázdný</value>
+  </data>
+  <data name="WindowsPeriodicTriggerInfoText" xml:space="preserve">
+    <value>Spouštět pravidelně na základě konfigurovaného časového plánu intervalu vzorkování dat centra Intelligent Hub, které je definováno v nabídce Nastavení &gt; Zařízení a uživatelé &gt; Windows &gt; Windows Desktop &gt; Nastavení centra Intelligent Hub</value>
+  </data>
+</root>

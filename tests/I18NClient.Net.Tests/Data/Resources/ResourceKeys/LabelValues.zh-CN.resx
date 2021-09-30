@@ -1,0 +1,3387 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AdaptivaSetup" xml:space="preserve">
+    <value>Adaptiva 设置</value>
+  </data>
+  <data name="AdaptivaSetupHelp" xml:space="preserve">
+    <value>设置 P2P 合作伙伴的资源，Adaptiva</value>
+  </data>
+  <data name="AdaptiveManagement" xml:space="preserve">
+    <value>自适应管理</value>
+  </data>
+  <data name="AdaptiveManagementHelp" xml:space="preserve">
+    <value>能够根据应用策略查看和设置自适应管理级别</value>
+  </data>
+  <data name="AddApplicationWorkflowHelp" xml:space="preserve">
+    <value>向开发人员授予上载应用程序的权限</value>
+  </data>
+  <data name="AddCartHelp" xml:space="preserve">
+    <value>上载共享设备的设备序列号 CSV。</value>
+  </data>
+  <data name="AddCustomReportSubscriptionHelp" xml:space="preserve">
+    <value>控制添加自定义报告订阅的访问权限。导航到: Hub\报告与分析\自定义报告\订阅</value>
+  </data>
+  <data name="AddDeviceUserAccounts" xml:space="preserve">
+    <value>添加设备</value>
+  </data>
+  <data name="AddDeviceUserAccountsHelp" xml:space="preserve">
+    <value>为用户帐户添加设备。</value>
+  </data>
+  <data name="AddEditAdminAccount" xml:space="preserve">
+    <value>添加/编辑</value>
+  </data>
+  <data name="AddEditAdminAccountHelp" xml:space="preserve">
+    <value>添加或编辑管理员帐户</value>
+  </data>
+  <data name="AddEditAdminGroup" xml:space="preserve">
+    <value>添加/编辑</value>
+  </data>
+  <data name="AddEditAdminGroupHelp" xml:space="preserve">
+    <value>添加或编辑管理员组</value>
+  </data>
+  <data name="AddEditAdminRoles" xml:space="preserve">
+    <value>添加/编辑</value>
+  </data>
+  <data name="AddEditAdminRolesHelp" xml:space="preserve">
+    <value>添加、编辑和删除管理员角色</value>
+  </data>
+  <data name="AddEditDeviceManufacturerDetails" xml:space="preserve">
+    <value>添加或编辑设备制造商详细信息</value>
+  </data>
+  <data name="AddEditDeviceManufacturerDetailsHelp" xml:space="preserve">
+    <value>通过 API 将新设备制造商添加到控制台或在控制台上编辑现有制造商</value>
+  </data>
+  <data name="AddEditDeviceModelDetails" xml:space="preserve">
+    <value>添加或编辑设备型号详细信息</value>
+  </data>
+  <data name="AddEditDeviceModelDetailsHelp" xml:space="preserve">
+    <value>通过 API 将新的设备型号添加到控制台或在控制台上编辑现有型号</value>
+  </data>
+  <data name="AddEditUG" xml:space="preserve">
+    <value>添加/编辑</value>
+  </data>
+  <data name="AddEditUGHelp" xml:space="preserve">
+    <value>添加、编辑和删除用户组。</value>
+  </data>
+  <data name="AddEditUserAccount" xml:space="preserve">
+    <value>添加/编辑</value>
+  </data>
+  <data name="AddEditUserAccountHelp" xml:space="preserve">
+    <value>添加或编辑用户帐户。</value>
+  </data>
+  <data name="AddEditUserCat" xml:space="preserve">
+    <value>添加/编辑</value>
+  </data>
+  <data name="AddEditUserCatHelp" xml:space="preserve">
+    <value>添加、编辑和删除注册用户类别。</value>
+  </data>
+  <data name="AddEditUserRoles" xml:space="preserve">
+    <value>添加/编辑</value>
+  </data>
+  <data name="AddEditUserRolesHelp" xml:space="preserve">
+    <value>添加和编辑用户角色。</value>
+  </data>
+  <data name="AddEditWindowsTemplateHelp" xml:space="preserve">
+    <value>允许管理员配置设置，以在控制台仪表板上添加和/或编辑 Windows 模板</value>
+  </data>
+  <data name="AddFileServerConfiguration" xml:space="preserve">
+    <value>添加文件服务器配置</value>
+  </data>
+  <data name="AddFileServerConfigurationHelp" xml:space="preserve">
+    <value>授予用户添加文件服务器网格和详细信息的权限</value>
+  </data>
+  <data name="AddNoteHelp" xml:space="preserve">
+    <value>授予添加新注释的权限</value>
+  </data>
+  <data name="AdminAd" xml:space="preserve">
+    <value>管理员</value>
+  </data>
+  <data name="AdminAdHelp" xml:space="preserve">
+    <value>控制访问系统设置中的登陆页面、警报模块、自定义字段定义页面、系统设置中的帮助页面，以及 RADIUS 配置文件页面。</value>
+  </data>
+  <data name="AdminOptIn" xml:space="preserve">
+    <value>管理员选择加入</value>
+  </data>
+  <data name="AdminSaaSNotifications" xml:space="preserve">
+    <value>SaaS 通知</value>
+  </data>
+  <data name="AdminSaaSNotificationsHelp" xml:space="preserve">
+    <value>控制对“SaaS 通知设置”页面的访问</value>
+  </data>
+  <data name="AdminsRESTSystem" xml:space="preserve">
+    <value>管理员</value>
+  </data>
+  <data name="AdminsRESTSystemHelp" xml:space="preserve">
+    <value>管理员帐户的 REST API</value>
+  </data>
+  <data name="AdvancedEm" xml:space="preserve">
+    <value>高级</value>
+  </data>
+  <data name="AdvancedEmHelp" xml:space="preserve">
+    <value>控制电子邮件高级设置。</value>
+  </data>
+  <data name="AdvancedHelp" xml:space="preserve">
+    <value>控制访问“高级”子菜单。</value>
+  </data>
+  <data name="AdvancedIn" xml:space="preserve">
+    <value>高级</value>
+  </data>
+  <data name="AdvancedInHelp" xml:space="preserve">
+    <value>控制访问高级安装设置。</value>
+  </data>
+  <data name="AdvancedSet" xml:space="preserve">
+    <value>高级</value>
+  </data>
+  <data name="AdvancedSetHelp" xml:space="preserve">
+    <value>控制对系统设置内高级页面的访问。</value>
+  </data>
+  <data name="AdvancedSOaP" xml:space="preserve">
+    <value>高级</value>
+  </data>
+  <data name="AdvancedSOaPHelp" xml:space="preserve">
+    <value>使用高级 API，如设备擦除和企业擦除等。</value>
+  </data>
+  <data name="AdvancedSys" xml:space="preserve">
+    <value>高级</value>
+  </data>
+  <data name="AdvancedSysHelp" xml:space="preserve">
+    <value>控制访问“系统”项下的“高级”页面。</value>
+  </data>
+  <data name="AfterArg" xml:space="preserve">
+    <value>{0} 之后</value>
+  </data>
+  <data name="AgentApplicationAn" xml:space="preserve">
+    <value>Hub 应用程序</value>
+  </data>
+  <data name="AgentApplicationAnHelp" xml:space="preserve">
+    <value>控制对 Android 下的“Hub 应用程序”页面的访问权限。</value>
+  </data>
+  <data name="AgentPackageAdd" xml:space="preserve">
+    <value>Hub 软件包添加</value>
+  </data>
+  <data name="AgentPackageAddHelp" xml:space="preserve">
+    <value>授予在产品预置中为了注册预备而上载 Hub .apf 文件的权限。</value>
+  </data>
+  <data name="AgentPackageDelete" xml:space="preserve">
+    <value>Hub 软件包删除</value>
+  </data>
+  <data name="AgentPackageDeleteHelp" xml:space="preserve">
+    <value>授予删除 Hub .apf 文件的权限，因为该文件无法在产品预置中被用来进行注册预备。</value>
+  </data>
+  <data name="AgentPackagePPN" xml:space="preserve">
+    <value>Hub 软件包</value>
+  </data>
+  <data name="AgentPackagePPNHelp" xml:space="preserve">
+    <value>授予在产品预置中为了注册预备而添加/更新/删除 Hub .apf 文件的权限。</value>
+  </data>
+  <data name="AgentPackageView" xml:space="preserve">
+    <value>Hub 软件包查看</value>
+  </data>
+  <data name="AgentPackageViewHelp" xml:space="preserve">
+    <value>授予在 Hub 软件包屏幕上查看可用 Hub .apf 文件列表的权限，这些文件可被用来在产品预置中进行注册预备。</value>
+  </data>
+  <data name="AgentSettingsAn" xml:space="preserve">
+    <value>Intelligent Hub 设置</value>
+  </data>
+  <data name="AgentSettingsAnHelp" xml:space="preserve">
+    <value>控制对 Android 下的“Intelligent Hub 设置”页面的访问。</value>
+  </data>
+  <data name="AgentSettingsApple" xml:space="preserve">
+    <value>Hub 设置</value>
+  </data>
+  <data name="AgentSettingsAppleHelp" xml:space="preserve">
+    <value>控制对 iOS 下“iOS Hub 设置”的访问。</value>
+  </data>
+  <data name="AgentSettingsLinuxHelp" xml:space="preserve">
+    <value>控制对 Linux 下“Linux Intelligent Hub 设置”的访问。</value>
+  </data>
+  <data name="AirwatchEmailClientSet" xml:space="preserve">
+    <value>AirWatch 电子邮件客户端</value>
+  </data>
+  <data name="AirwatchEmailClientSetHelp" xml:space="preserve">
+    <value>控制访问应用项下的 AirWatch 电子邮件客户端页面。</value>
+  </data>
+  <data name="AirWatchHelpAd" xml:space="preserve">
+    <value>AirWatch 帮助</value>
+  </data>
+  <data name="AirWatchHelpAdHelp" xml:space="preserve">
+    <value>控制访问 AirWatch 帮助。</value>
+  </data>
+  <data name="AirWatchTunnelHelp" xml:space="preserve">
+    <value>授予配置 AirWatch Tunnel 的权限</value>
+  </data>
+  <data name="AkamaiSetting" xml:space="preserve">
+    <value>Akamai</value>
+  </data>
+  <data name="AkamaiSettingHelp" xml:space="preserve">
+    <value>用于将 Akamai 配置为 CDN 提供程序的设置</value>
+  </data>
+  <data name="AlertCreationPoliciesViewHelp" xml:space="preserve">
+    <value>控制访问“警报设置”的“创建策略”视图。</value>
+  </data>
+  <data name="AlertDD" xml:space="preserve">
+    <value>警报</value>
+  </data>
+  <data name="AlertDDHelp" xml:space="preserve">
+    <value>访问与某一设备相关联的警报。</value>
+  </data>
+  <data name="AlertsPM" xml:space="preserve">
+    <value>警报</value>
+  </data>
+  <data name="AlertsPMHelp" xml:space="preserve">
+    <value>控制访问打印机警报页面</value>
+  </data>
+  <data name="AndroidFileManagerDM" xml:space="preserve">
+    <value>Android 文件管理器</value>
+  </data>
+  <data name="AndroidFileManagerDMHelp" xml:space="preserve">
+    <value>从设备详细信息页面远程管理 Android 文件和文件夹。</value>
+  </data>
+  <data name="AndroidForWorkHelp" xml:space="preserve">
+    <value>AndroidForWork</value>
+  </data>
+  <data name="AndroidServiceApplicationsAn" xml:space="preserve">
+    <value>Android 服务应用程序</value>
+  </data>
+  <data name="AndroidServiceApplicationsAnHelp" xml:space="preserve">
+    <value>授予权限查看和编辑服务应用程序。</value>
+  </data>
+  <data name="ApnsApp" xml:space="preserve">
+    <value>APNs</value>
+  </data>
+  <data name="ApnsAppHelp" xml:space="preserve">
+    <value>控制访问 iOS 中“应用程序”页面的 APNs。</value>
+  </data>
+  <data name="ApnsSet" xml:space="preserve">
+    <value>APNs</value>
+  </data>
+  <data name="ApnsSetHelp" xml:space="preserve">
+    <value>控制对系统设置中 APNs 页面的访问。</value>
+  </data>
+  <data name="AppCatalogHelp" xml:space="preserve">
+    <value>应用目录的资源</value>
+  </data>
+  <data name="AppConfigurationSet" xml:space="preserve">
+    <value>应用配置</value>
+  </data>
+  <data name="AppConfigurationSetHelp" xml:space="preserve">
+    <value>控制访问应用配置页面。</value>
+  </data>
+  <data name="AppCrashLogsHelp" xml:space="preserve">
+    <value>控制访问“应用程序故障日志”。</value>
+  </data>
+  <data name="AppleConfiguratorSet" xml:space="preserve">
+    <value>Apple Configurator</value>
+  </data>
+  <data name="AppleConfiguratorSetHelp" xml:space="preserve">
+    <value>控制访问 iOS 项下的“Apple Configurator”页面。</value>
+  </data>
+  <data name="AppleEducation" xml:space="preserve">
+    <value>教育</value>
+  </data>
+  <data name="AppleEducationHelp" xml:space="preserve">
+    <value>控制对 Apple Education 页面的访问</value>
+  </data>
+  <data name="ApplicationCatalogEdit" xml:space="preserve">
+    <value>编辑应用程序目录</value>
+  </data>
+  <data name="ApplicationCatalogEditHelp" xml:space="preserve">
+    <value>用于编辑应用目录设置页面</value>
+  </data>
+  <data name="ApplicationCategoriesAb" xml:space="preserve">
+    <value>应用程序类别</value>
+  </data>
+  <data name="ApplicationCategoriesAbHelp" xml:space="preserve">
+    <value>查看和管理应用程序类别。</value>
+  </data>
+  <data name="ApplicationGroupsAb" xml:space="preserve">
+    <value>应用程序组</value>
+  </data>
+  <data name="ApplicationGroupsAbHelp" xml:space="preserve">
+    <value>查看和管理应用程序组。</value>
+  </data>
+  <data name="ApplicationIntegrationSet" xml:space="preserve">
+    <value>应用程序集成</value>
+  </data>
+  <data name="ApplicationIntegrationSetHelp" xml:space="preserve">
+    <value>控制对“应用程序集成设置”屏幕的访问。</value>
+  </data>
+  <data name="ApplicationPPN" xml:space="preserve">
+    <value>应用程序</value>
+  </data>
+  <data name="ApplicationPPNHelp" xml:space="preserve">
+    <value>访问预置应用程序页面。</value>
+  </data>
+  <data name="ApplicationProfilesAb" xml:space="preserve">
+    <value>应用程序配置文件</value>
+  </data>
+  <data name="ApplicationProfilesAbHelp" xml:space="preserve">
+    <value>查看和管理应用程序配置文件。</value>
+  </data>
+  <data name="ApplicationPublishAb" xml:space="preserve">
+    <value>应用程序发布</value>
+  </data>
+  <data name="ApplicationPublishAbHelp" xml:space="preserve">
+    <value>发布添加的应用程序。</value>
+  </data>
+  <data name="ApplicationsAb" xml:space="preserve">
+    <value>应用程序</value>
+  </data>
+  <data name="ApplicationsAbHelp" xml:space="preserve">
+    <value>访问移动应用管理页面。</value>
+  </data>
+  <data name="ApplicationsDD" xml:space="preserve">
+    <value>应用程序</value>
+  </data>
+  <data name="ApplicationsDDHelp" xml:space="preserve">
+    <value>远程安装并从纳管设备移除应用程序。</value>
+  </data>
+  <data name="ApplicationsDM" xml:space="preserve">
+    <value>应用程序</value>
+  </data>
+  <data name="ApplicationsDMHelp" xml:space="preserve">
+    <value>请求日志并管理应用程序反馈。</value>
+  </data>
+  <data name="ApplicationsHub" xml:space="preserve">
+    <value>应用程序</value>
+  </data>
+  <data name="ApplicationsHubHelp" xml:space="preserve">
+    <value>生成设备应用程序报表。</value>
+  </data>
+  <data name="ApplicationsSet" xml:space="preserve">
+    <value>应用程序</value>
+  </data>
+  <data name="ApplicationsSetHelp" xml:space="preserve">
+    <value>访问内容管理应用程序的设置页面。</value>
+  </data>
+  <data name="ApplicationWorkflowAb" xml:space="preserve">
+    <value>应用程序工作流</value>
+  </data>
+  <data name="ApplicationWorkflowAbHelp" xml:space="preserve">
+    <value>上载、审核、分配和发布应用。</value>
+  </data>
+  <data name="ApplicationWrappingAb" xml:space="preserve">
+    <value>应用程序打包</value>
+  </data>
+  <data name="ApplicationWrappingAbHelp" xml:space="preserve">
+    <value>访问应用程序打包</value>
+  </data>
+  <data name="AppRemovalProtectionHelp" xml:space="preserve">
+    <value>显示用于启用应用移除保护的选项</value>
+  </data>
+  <data name="AppRemovalProtectionLogEditHelp" xml:space="preserve">
+    <value>用于控制对应用程序移除保护日志页面的“编辑”访问权限的资源</value>
+  </data>
+  <data name="AppRemovalProtectionLogViewHelp" xml:space="preserve">
+    <value>用于控制对应用程序移除保护日志页面的“查看”访问权限的资源</value>
+  </data>
+  <data name="ApproveAndUnapproveUpdates" xml:space="preserve">
+    <value>批准和取消批准更新</value>
+  </data>
+  <data name="ApproveUpdate" xml:space="preserve">
+    <value>批准更新</value>
+  </data>
+  <data name="ApproveUpdateHelp" xml:space="preserve">
+    <value>授予向设备发出更新批准命令的权限。</value>
+  </data>
+  <data name="ApproveUpdates" xml:space="preserve">
+    <value>批准更新</value>
+  </data>
+  <data name="AppsRESTMam" xml:space="preserve">
+    <value>应用</value>
+  </data>
+  <data name="AppsRESTMamHelp" xml:space="preserve">
+    <value>应用程序的 REST API</value>
+  </data>
+  <data name="AppUserCommentsAb" xml:space="preserve">
+    <value>应用用户批注</value>
+  </data>
+  <data name="AppUserCommentsAbHelp" xml:space="preserve">
+    <value>查看和管理用户批注设置</value>
+  </data>
+  <data name="AssetBatchImportSys" xml:space="preserve">
+    <value>资产批量导入</value>
+  </data>
+  <data name="AssetBatchImportSysHelp" xml:space="preserve">
+    <value>导入电信资产的批处理列表。</value>
+  </data>
+  <data name="AssetManagementO" xml:space="preserve">
+    <value>资产管理</value>
+  </data>
+  <data name="AssetManagementOHelp" xml:space="preserve">
+    <value>搜索、添加和修改资产。</value>
+  </data>
+  <data name="AssetTrackingDM" xml:space="preserve">
+    <value>资产跟踪</value>
+  </data>
+  <data name="AssetTrackingDMHelp" xml:space="preserve">
+    <value>访问设备管理下的资产跟踪页面。</value>
+  </data>
+  <data name="AssetUserTrackingO" xml:space="preserve">
+    <value>资产用户跟踪</value>
+  </data>
+  <data name="AssetUserTrackingOHelp" xml:space="preserve">
+    <value>访问用户跟踪页面，包括‘签入’和‘签出’标签页。</value>
+  </data>
+  <data name="AssignDeviceEnrollmentProgram" xml:space="preserve">
+    <value>注册计划 - 分配配置文件</value>
+  </data>
+  <data name="AssignDeviceEnrollmentProgramHelp" xml:space="preserve">
+    <value>控制向设备分配 DEP 配置文件的访问权限。导航到“注册状态”页面</value>
+  </data>
+  <data name="AssignmentRulesAdd" xml:space="preserve">
+    <value>分配规则添加</value>
+  </data>
+  <data name="AssignmentRulesAddHelp" xml:space="preserve">
+    <value>添加设备分配规则。</value>
+  </data>
+  <data name="AssignmentRulesDelete" xml:space="preserve">
+    <value>分配规则删除</value>
+  </data>
+  <data name="AssignmentRulesDeleteHelp" xml:space="preserve">
+    <value>删除设备分配规则。</value>
+  </data>
+  <data name="AssignmentRulesEdit" xml:space="preserve">
+    <value>分配规则编辑</value>
+  </data>
+  <data name="AssignmentRulesEditHelp" xml:space="preserve">
+    <value>编辑设备分配规则。</value>
+  </data>
+  <data name="AssignmentSys" xml:space="preserve">
+    <value>分配</value>
+  </data>
+  <data name="AssignmentSysHelp" xml:space="preserve">
+    <value>编辑电信计划的静态和动态分配。</value>
+  </data>
+  <data name="Assist" xml:space="preserve">
+    <value>Assist</value>
+  </data>
+  <data name="AssistFileManager" xml:space="preserve">
+    <value>文件管理器</value>
+  </data>
+  <data name="AssistFileManagerHelp" xml:space="preserve">
+    <value>提供相应访问权限，以便管理远程设备上的文件</value>
+  </data>
+  <data name="AssistHelp" xml:space="preserve">
+    <value>管理远程管理角色</value>
+  </data>
+  <data name="AssistRegistryEditor" xml:space="preserve">
+    <value>注册表编辑器</value>
+  </data>
+  <data name="AssistRegistryEditorHelp" xml:space="preserve">
+    <value>提供相应访问权限，以便在 Windows 移动设备上进行注册表更改</value>
+  </data>
+  <data name="AssistRemoteControl" xml:space="preserve">
+    <value>远程控制</value>
+  </data>
+  <data name="AssistRemoteControlHelp" xml:space="preserve">
+    <value>提供相应访问权限，以便查看和控制远程设备</value>
+  </data>
+  <data name="AssistRemoteShell" xml:space="preserve">
+    <value>远程 Shell</value>
+  </data>
+  <data name="AssistRemoteShellHelp" xml:space="preserve">
+    <value>提供相应访问权限，以便通过远程设备上的命令行界面执行命令</value>
+  </data>
+  <data name="AssistRemoteView" xml:space="preserve">
+    <value>远程视图</value>
+  </data>
+  <data name="AssistRemoteViewHelp" xml:space="preserve">
+    <value>提供相应访问权限，以便仅查看远程设备。如果启用了远程查看和控制，则会话启动时只具有查看权限，但用户可以请求相应访问权限来控制屏幕</value>
+  </data>
+  <data name="AssistSessionCollaboration" xml:space="preserve">
+    <value>会话协作</value>
+  </data>
+  <data name="AssistSessionCollaborationHelp" xml:space="preserve">
+    <value>允许控制台用户邀请其他参与者加入 Remote Assist 会话</value>
+  </data>
+  <data name="AssistUnattendedAccess" xml:space="preserve">
+    <value>无人参与访问</value>
+  </data>
+  <data name="AssistUnattendedAccessHelp" xml:space="preserve">
+    <value>在无人参与模式下提供对设备的访问</value>
+  </data>
+  <data name="AttachmentsDD" xml:space="preserve">
+    <value>附件</value>
+  </data>
+  <data name="AttachmentsDDHelp" xml:space="preserve">
+    <value>在设备详细信息页面为设备添加和移除附件。</value>
+  </data>
+  <data name="AutoDiscoveryIns" xml:space="preserve">
+    <value>自动发现</value>
+  </data>
+  <data name="AutoDiscoveryInsHelp" xml:space="preserve">
+    <value>控制对“安装”项下的“自动发现”页面的访问权限。</value>
+  </data>
+  <data name="AutoEnrollmentHelp" xml:space="preserve">
+    <value>自动注册</value>
+  </data>
+  <data name="AutomationHelp" xml:space="preserve">
+    <value>此技术预览版资源通过“Hub 概览”页面提供对自动化平台的访问权限</value>
+  </data>
+  <data name="AwcmDD" xml:space="preserve">
+    <value>AWCM</value>
+  </data>
+  <data name="AwcmDDHelp" xml:space="preserve">
+    <value>从设备详细信息页面启动和停止 AirWatch 云管理器连接</value>
+  </data>
+  <data name="AWProDeviceClearPasscode" xml:space="preserve">
+    <value>AW Pro 设备：清除密码</value>
+  </data>
+  <data name="AWProDeviceClearPasscodeHelp" xml:space="preserve">
+    <value>控制访问以清除 AirWatch Pro 中的“密码/开机密码”。</value>
+  </data>
+  <data name="AWProDeviceSendMessage" xml:space="preserve">
+    <value>AW Pro 设备：发送消息</value>
+  </data>
+  <data name="AWProDeviceSendMessageHelp" xml:space="preserve">
+    <value>控制访问在 AW Pro 发送消息</value>
+  </data>
+  <data name="AWProGenerateNewCertificate" xml:space="preserve">
+    <value>AW Pro 生成新证书</value>
+  </data>
+  <data name="AWProGenerateNewCertificateHelp" xml:space="preserve">
+    <value>控制对生成新证书的访问</value>
+  </data>
+  <data name="AwProResCategory" xml:space="preserve">
+    <value>AW Pro</value>
+  </data>
+  <data name="AwProResCategoryHelp" xml:space="preserve">
+    <value>对 AW Pro 控制台的完全访问权。</value>
+  </data>
+  <data name="BatchImportAccounts" xml:space="preserve">
+    <value>批量导入</value>
+  </data>
+  <data name="BatchImportAccountsHelp" xml:space="preserve">
+    <value>批量导入管理员帐户</value>
+  </data>
+  <data name="BatchImportDM" xml:space="preserve">
+    <value>批量导入</value>
+  </data>
+  <data name="BatchImportDMHelp" xml:space="preserve">
+    <value>批量导入设备配置文件。</value>
+  </data>
+  <data name="BatchImportUG" xml:space="preserve">
+    <value>批量导入</value>
+  </data>
+  <data name="BatchImportUGHelp" xml:space="preserve">
+    <value>批量导入注册用户组。</value>
+  </data>
+  <data name="BatchImportUserAccount" xml:space="preserve">
+    <value>批量导入</value>
+  </data>
+  <data name="BatchImportUserAccountHelp" xml:space="preserve">
+    <value>访问批量导入注册用户功能。</value>
+  </data>
+  <data name="BatchSizeBySmartGroupHelp" xml:space="preserve">
+    <value>指定内部应用程序部署的每个批次中将包含的设备数。</value>
+  </data>
+  <data name="BatchStatusAdminGeneral" xml:space="preserve">
+    <value>批处理状态</value>
+  </data>
+  <data name="BatchStatusAdminGeneralHelp" xml:space="preserve">
+    <value>查看管理员用户批量导入状态。</value>
+  </data>
+  <data name="BatchStatusUserGeneral" xml:space="preserve">
+    <value>批处理状态</value>
+  </data>
+  <data name="BatchStatusUserGeneralHelp" xml:space="preserve">
+    <value>访问批量注册用户导入的批处理状态。</value>
+  </data>
+  <data name="BeforeArg" xml:space="preserve">
+    <value>{0} 之前</value>
+  </data>
+  <data name="BESResCategory" xml:space="preserve">
+    <value>BES</value>
+  </data>
+  <data name="BESResCategoryHelp" xml:space="preserve">
+    <value>启用仪表板页面上的 BES 注册图标。</value>
+  </data>
+  <data name="BillingBi" xml:space="preserve">
+    <value>计费</value>
+  </data>
+  <data name="BillingBiHelp" xml:space="preserve">
+    <value>管理计费详细信息页面</value>
+  </data>
+  <data name="BIOSManagement" xml:space="preserve">
+    <value>BIOS 管理</value>
+  </data>
+  <data name="BIOSManagementHelp" xml:space="preserve">
+    <value>BIOS 管理资源</value>
+  </data>
+  <data name="BooksAb" xml:space="preserve">
+    <value>图书</value>
+  </data>
+  <data name="BooksAbHelp" xml:space="preserve">
+    <value>授予权限访问“应用与图书”下的图书模块。</value>
+  </data>
+  <data name="BoxerConfigReadWrite" xml:space="preserve">
+    <value>Boxer 应用配置</value>
+  </data>
+  <data name="BoxerConfigReadWriteHelp" xml:space="preserve">
+    <value>用于作为公共应用上载时配置 Boxer 设置</value>
+  </data>
+  <data name="BranchCacheSetup" xml:space="preserve">
+    <value>分支缓存设置</value>
+  </data>
+  <data name="BranchCacheSetupHelp" xml:space="preserve">
+    <value>设置用于在适用于 Windows 10 的 Workspace ONE 中设置和配置本机对等应用分发功能</value>
+  </data>
+  <data name="BrandingSys" xml:space="preserve">
+    <value>品牌化</value>
+  </data>
+  <data name="BrandingSysHelp" xml:space="preserve">
+    <value>控制访问“常规”项下的“品牌化”页面。</value>
+  </data>
+  <data name="BrowserDM" xml:space="preserve">
+    <value>浏览器</value>
+  </data>
+  <data name="BrowserDMHelp" xml:space="preserve">
+    <value>在设备管理内配置浏览器策略。</value>
+  </data>
+  <data name="BulkActionUserAccounts" xml:space="preserve">
+    <value>批处理操作</value>
+  </data>
+  <data name="BulkActionUserAccountsHelp" xml:space="preserve">
+    <value>对用户帐户执行发送消息等批处理操作。</value>
+  </data>
+  <data name="BulkImportCM" xml:space="preserve">
+    <value>批量导入</value>
+  </data>
+  <data name="BulkImportCMHelp" xml:space="preserve">
+    <value>在所有内容视图内批量导入内容</value>
+  </data>
+  <data name="BulkManagementAd" xml:space="preserve">
+    <value>批量管理</value>
+  </data>
+  <data name="BulkManagementAdHelp" xml:space="preserve">
+    <value>查看和编辑批量管理设置。</value>
+  </data>
+  <data name="BulkManagementDM" xml:space="preserve">
+    <value>批量管理</value>
+  </data>
+  <data name="BulkManagementDMHelp" xml:space="preserve">
+    <value>从设备列表视图对设备执行批处理操作</value>
+  </data>
+  <data name="CatalogSet" xml:space="preserve">
+    <value>目录</value>
+  </data>
+  <data name="CatalogSetHelp" xml:space="preserve">
+    <value>授予权限访问系统设置中的应用程序目录页面。</value>
+  </data>
+  <data name="CategoriesCM" xml:space="preserve">
+    <value>类别</value>
+  </data>
+  <data name="CategoriesCMHelp" xml:space="preserve">
+    <value>创建和编辑内容类别</value>
+  </data>
+  <data name="CDNSetupHelp" xml:space="preserve">
+    <value>CDN 的系统设置</value>
+  </data>
+  <data name="CertificateAuthoritiesApple" xml:space="preserve">
+    <value>证书颁发机构</value>
+  </data>
+  <data name="CertificateAuthoritiesAppleHelp" xml:space="preserve">
+    <value>控制对“iOS”项下的“证书颁发机构”页面的访问。</value>
+  </data>
+  <data name="CertificateAuthorityCM" xml:space="preserve">
+    <value>证书颁发机构</value>
+  </data>
+  <data name="CertificateAuthorityCMHelp" xml:space="preserve">
+    <value>访问证书颁发机构和证书模板部分。</value>
+  </data>
+  <data name="CertificateManagementDM" xml:space="preserve">
+    <value>证书管理</value>
+  </data>
+  <data name="CertificateManagementDMHelp" xml:space="preserve">
+    <value>查看和管理设备管理下的证书。</value>
+  </data>
+  <data name="CertificatesDD" xml:space="preserve">
+    <value>证书</value>
+  </data>
+  <data name="CertificatesDDHelp" xml:space="preserve">
+    <value>在设备详细信息页面查看与设备相关联的证书。</value>
+  </data>
+  <data name="CertificatesExpired" xml:space="preserve">
+    <value>证书已过期</value>
+  </data>
+  <data name="CertificatesRevoked" xml:space="preserve">
+    <value>证书已吊销</value>
+  </data>
+  <data name="ChangePasswordAdminAccounts" xml:space="preserve">
+    <value>更改密码</value>
+  </data>
+  <data name="ChangePasswordAdminAccountsHelp" xml:space="preserve">
+    <value>更改管理员密码</value>
+  </data>
+  <data name="ChromebookSet" xml:space="preserve">
+    <value>ChromeBook</value>
+  </data>
+  <data name="ChromebookSetHelp" xml:space="preserve">
+    <value>控制访问 ChromeBook 项下的“Agent 设置”页面。</value>
+  </data>
+  <data name="CloudContentPlatformHelp" xml:space="preserve">
+    <value>启用 UEM 选项以启动云内容服务的资源</value>
+  </data>
+  <data name="CollapsedAriaLabel" xml:space="preserve">
+    <value>已折叠</value>
+  </data>
+  <data name="CommaSeparatedEmailInfo" xml:space="preserve">
+    <value>使用逗号分隔多个电子邮件地址。</value>
+  </data>
+  <data name="ComplianceDD" xml:space="preserve">
+    <value>合规性</value>
+  </data>
+  <data name="ComplianceDDHelp" xml:space="preserve">
+    <value>在设备详细信息页面查看合规规则和状态。</value>
+  </data>
+  <data name="ComplianceDM" xml:space="preserve">
+    <value>合规性</value>
+  </data>
+  <data name="ComplianceDMHelp" xml:space="preserve">
+    <value>查看和管理设备管理下的设备合规策略。</value>
+  </data>
+  <data name="ComplianceHub" xml:space="preserve">
+    <value>合规性</value>
+  </data>
+  <data name="ComplianceHubHelp" xml:space="preserve">
+    <value>生成设备合规报表。</value>
+  </data>
+  <data name="CompliancePoliciesEM" xml:space="preserve">
+    <value>合规策略</value>
+  </data>
+  <data name="CompliancePoliciesEMHelp" xml:space="preserve">
+    <value>管理电子邮件管理合规策略。</value>
+  </data>
+  <data name="ConditionalAccessIntegrations" xml:space="preserve">
+    <value>条件访问集成</value>
+  </data>
+  <data name="ConditionalAccessIntegrationsHelp" xml:space="preserve">
+    <value>控制访问权限以与第三方共享设备的合规性状态，从而配置条件访问策略</value>
+  </data>
+  <data name="ConditionsPPN" xml:space="preserve">
+    <value>条件</value>
+  </data>
+  <data name="ConditionsPPNHelp" xml:space="preserve">
+    <value>创建和管理预置策略的预置条件。</value>
+  </data>
+  <data name="ConsoleSecurityAd" xml:space="preserve">
+    <value>控制台安全性</value>
+  </data>
+  <data name="ConsoleSecurityAdHelp" xml:space="preserve">
+    <value>查看控制台安全性页面并从全局组织组进行管理。</value>
+  </data>
+  <data name="ContentDashboard" xml:space="preserve">
+    <value>内容仪表板</value>
+  </data>
+  <data name="ContentDashboardHelp" xml:space="preserve">
+    <value>控制访问查看“内容仪表板”页面。导航到：菜单\内容\仪表板\</value>
+  </data>
+  <data name="ContentDD" xml:space="preserve">
+    <value>内容</value>
+  </data>
+  <data name="ContentDDHelp" xml:space="preserve">
+    <value>在设备详细信息页面访问和管理设备内容。</value>
+  </data>
+  <data name="ContentDeliveryServiceHelp" xml:space="preserve">
+    <value>控制对“内容交付服务”设置的访问</value>
+  </data>
+  <data name="ContentHub" xml:space="preserve">
+    <value>内容</value>
+  </data>
+  <data name="ContentHubHelp" xml:space="preserve">
+    <value>生成设备内容报表。</value>
+  </data>
+  <data name="ContentRightsManagementHelp" xml:space="preserve">
+    <value>与为内容配置 Azure 权限管理保护相关的设置。</value>
+  </data>
+  <data name="ContentViewerHelp" xml:space="preserve">
+    <value>控制对内容查看器 (HTML5 查看器) 设置的访问</value>
+  </data>
+  <data name="CreationPoliciesGr" xml:space="preserve">
+    <value>创建策略</value>
+  </data>
+  <data name="CreationPoliciesGrHelp" xml:space="preserve">
+    <value>查看和管理警报创建策略。</value>
+  </data>
+  <data name="CustomAttributeAssignmentRulesHelp" xml:space="preserve">
+    <value>用于查看当前自定义属性分配规则的列表视图屏幕</value>
+  </data>
+  <data name="CustomAttributesSet" xml:space="preserve">
+    <value>自定义属性</value>
+  </data>
+  <data name="CustomAttributesSetHelp" xml:space="preserve">
+    <value>查看和管理系统设置内的自定义属性。</value>
+  </data>
+  <data name="CustomFieldsDM" xml:space="preserve">
+    <value>自定义字段</value>
+  </data>
+  <data name="CustomFieldsDMHelp" xml:space="preserve">
+    <value>编辑设备设置下的自定义变量。</value>
+  </data>
+  <data name="CustomizationAd" xml:space="preserve">
+    <value>自定义</value>
+  </data>
+  <data name="CustomizationAdHelp" xml:space="preserve">
+    <value>授予权限自定义受支持的网格。</value>
+  </data>
+  <data name="CustomizationHelp" xml:space="preserve">
+    <value>授予权限在用户级别自定义受支持的网格。</value>
+  </data>
+  <data name="CustomMdmCommandHelp" xml:space="preserve">
+    <value>控制通过粘贴命令的 XML 来启用将命令发送到 iOS、tvOS 和 macOS 的功能</value>
+  </data>
+  <data name="DataPurgingD" xml:space="preserve">
+    <value>数据清除</value>
+  </data>
+  <data name="DataPurgingDHelp" xml:space="preserve">
+    <value>授予权限修改数据清除设置。</value>
+  </data>
+  <data name="DataSamplesAd" xml:space="preserve">
+    <value>数据样本</value>
+  </data>
+  <data name="DataSamplesAdHelp" xml:space="preserve">
+    <value>控制对数据库表中设备采样历史记录的审核。</value>
+  </data>
+  <data name="DataSecuritySec" xml:space="preserve">
+    <value>数据安全</value>
+  </data>
+  <data name="DataSecuritySecHelp" xml:space="preserve">
+    <value>授予权限查看“数据安全”屏幕。</value>
+  </data>
+  <data name="DeleteCartHelp" xml:space="preserve">
+    <value>通过删除购物车，管理员可以移除要用于共享设备的序列号列表。</value>
+  </data>
+  <data name="DeleteCustomReportSubscriptionHelp" xml:space="preserve">
+    <value>控制删除自定义报告订阅的访问权限。导航到: Hub\报告与分析\自定义报告\订阅</value>
+  </data>
+  <data name="DeleteDeviceDD" xml:space="preserve">
+    <value>删除设备</value>
+  </data>
+  <data name="DeleteDeviceDDHelp" xml:space="preserve">
+    <value>从设备详细信息页面删除设备记录。</value>
+  </data>
+  <data name="DeleteFileServerConfiguration" xml:space="preserve">
+    <value>删除文件服务器配置</value>
+  </data>
+  <data name="DeleteFileServerConfigurationHelp" xml:space="preserve">
+    <value>授予用户删除文件服务器网格和详细信息的权限</value>
+  </data>
+  <data name="DeleteNoteHelp" xml:space="preserve">
+    <value>授予删除注释的权限</value>
+  </data>
+  <data name="DeleteTagHelp" xml:space="preserve">
+    <value>授予删除标记的权限</value>
+  </data>
+  <data name="DeleteUnmanagedEM" xml:space="preserve">
+    <value>删除未纳管项</value>
+  </data>
+  <data name="DeleteUnmanagedEMHelp" xml:space="preserve">
+    <value>从电子邮件管理仪表板中删除非受管设备。</value>
+  </data>
+  <data name="DeleteWindowsTemplateHelp" xml:space="preserve">
+    <value>允许管理员配置设置，以在控制台仪表板上删除 Windows 模板</value>
+  </data>
+  <data name="DesignateRecipients" xml:space="preserve">
+    <value>指定收件人</value>
+  </data>
+  <data name="DetailsPM" xml:space="preserve">
+    <value>详细信息</value>
+  </data>
+  <data name="DetailsPMHelp" xml:space="preserve">
+    <value>查看打印机详细信息页面。</value>
+  </data>
+  <data name="DeviceBulkManagementRebootDeviceHelp" xml:space="preserve">
+    <value>允许用户批量重新引导设备</value>
+  </data>
+  <data name="DeviceDetailsHub" xml:space="preserve">
+    <value>设备详细信息</value>
+  </data>
+  <data name="DeviceDetailsHubHelp" xml:space="preserve">
+    <value>生成设备详细信息报表。</value>
+  </data>
+  <data name="DeviceDetailsQueryHealthAttestationHelp" xml:space="preserve">
+    <value>按需查询运行状况证明证书 blob</value>
+  </data>
+  <data name="DeviceDetailsQueryOSUpdates" xml:space="preserve">
+    <value>设备详细信息: 查询操作系统更新</value>
+  </data>
+  <data name="DeviceDetailsQueryOSUpdatesHelp" xml:space="preserve">
+    <value>控制访问在“设备详细信息”页面向设备查询操作系统更新信息</value>
+  </data>
+  <data name="DeviceEnterpriseReset" xml:space="preserve">
+    <value>企业重置</value>
+  </data>
+  <data name="DeviceEnterpriseResetHelp" xml:space="preserve">
+    <value>在保持 AirWatch 注册状态并保留其他企业数据的同时，授予出厂擦除设备的权限</value>
+  </data>
+  <data name="DeviceGroupsDM" xml:space="preserve">
+    <value>设备组</value>
+  </data>
+  <data name="DeviceGroupsDMHelp" xml:space="preserve">
+    <value>创建和管理设备管理内的设备组。</value>
+  </data>
+  <data name="DeviceGroupsSet" xml:space="preserve">
+    <value>设备组</value>
+  </data>
+  <data name="DeviceGroupsSetHelp" xml:space="preserve">
+    <value>控制访问系统设置内的设备组。</value>
+  </data>
+  <data name="DeviceInventoryHub" xml:space="preserve">
+    <value>设备清单</value>
+  </data>
+  <data name="DeviceInventoryHubHelp" xml:space="preserve">
+    <value>生成设备清单报表。</value>
+  </data>
+  <data name="DeviceLimitRestrictionEdit" xml:space="preserve">
+    <value>编辑设备受限限制</value>
+  </data>
+  <data name="DeviceLimitRestrictionEditHelp" xml:space="preserve">
+    <value>授予在“设置/设备与用户/常规/注册/限制”下修改/读取设备限制的权限</value>
+  </data>
+  <data name="DevicePM" xml:space="preserve">
+    <value>设备</value>
+  </data>
+  <data name="DevicePMHelp" xml:space="preserve">
+    <value>控制访问打印机设备页面</value>
+  </data>
+  <data name="DevicesHub" xml:space="preserve">
+    <value>设备</value>
+  </data>
+  <data name="DevicesHubHelp" xml:space="preserve">
+    <value>生成设备编组与度量的报告。</value>
+  </data>
+  <data name="DevicesRESTMdm" xml:space="preserve">
+    <value>设备</value>
+  </data>
+  <data name="DevicesRESTMdmHelp" xml:space="preserve">
+    <value>设备管理的 REST API</value>
+  </data>
+  <data name="DeviceWipeDD" xml:space="preserve">
+    <value>设备擦除</value>
+  </data>
+  <data name="DeviceWipeDDHelp" xml:space="preserve">
+    <value>从设备详细信息页面远程擦除设备，将设备恢复到出厂设置。</value>
+  </data>
+  <data name="DeviceWipeHelp" xml:space="preserve">
+    <value>控制访问擦除设备功能。</value>
+  </data>
+  <data name="DeviceWipesSet" xml:space="preserve">
+    <value>设备擦除</value>
+  </data>
+  <data name="DeviceWipesSetHelp" xml:space="preserve">
+    <value>控制访问系统设置中的设备生命周期管理页面。</value>
+  </data>
+  <data name="DiagnosticsAd" xml:space="preserve">
+    <value>诊断</value>
+  </data>
+  <data name="DiagnosticsAdHelp" xml:space="preserve">
+    <value>管理系统设置中的诊断设置。</value>
+  </data>
+  <data name="DisableActivationLockBypassCodeHelp" xml:space="preserve">
+    <value>允许管理员用户在 iOS 设备上禁用激活锁绕过码。导航到“设备/详细信息/摘要/”或“设备/列表”，选择设备，然后单击“更多”。</value>
+  </data>
+  <data name="DisableActivationLockBypassDD" xml:space="preserve">
+    <value>禁用激活锁绕过</value>
+  </data>
+  <data name="DisableActivationLockBypassDDHelp" xml:space="preserve">
+    <value>禁用 iOS 设备上的激活锁绕过码。</value>
+  </data>
+  <data name="DisplayVideoImportHelp" xml:space="preserve">
+    <value>使用 Wistia 在 AirWatch 中导入视频</value>
+  </data>
+  <data name="DisplayVideoViewHelp" xml:space="preserve">
+    <value>查看视频列表</value>
+  </data>
+  <data name="DistributionDM" xml:space="preserve">
+    <value>分发</value>
+  </data>
+  <data name="DistributionDMHelp" xml:space="preserve">
+    <value>访问位置编辑和位置详情页面的分发服务器路径。</value>
+  </data>
+  <data name="DomainJoinConfigEdit" xml:space="preserve">
+    <value>编辑</value>
+  </data>
+  <data name="DomainJoinConfigEditHelp" xml:space="preserve">
+    <value>控制访问添加/编辑/分配/删除域加入配置。</value>
+  </data>
+  <data name="DownloadContentCM" xml:space="preserve">
+    <value>下载内容</value>
+  </data>
+  <data name="DownloadContentCMHelp" xml:space="preserve">
+    <value>在“全部内容”视图内下载内容</value>
+  </data>
+  <data name="DownloadLinuxPullServiceInstallerHelp" xml:space="preserve">
+    <value>授予下载 Linux 拉取服务安装程序的权限</value>
+  </data>
+  <data name="DownloadWindowsPullServiceInstallerHelp" xml:space="preserve">
+    <value>授予下载 Windows 拉取服务安装程序的权限</value>
+  </data>
+  <data name="DropshipProvisioningEdit" xml:space="preserve">
+    <value>编辑 dropship 置备设置</value>
+  </data>
+  <data name="DropshipProvisioningHelp" xml:space="preserve">
+    <value>控制访问启用 Drop Ship Provisioning</value>
+  </data>
+  <data name="DxModeEM" xml:space="preserve">
+    <value>DxMode</value>
+  </data>
+  <data name="DxModeEMHelp" xml:space="preserve">
+    <value>从电子邮件管理仪表板中启用和禁用用于设备故障排除的 DxMode。</value>
+  </data>
+  <data name="EasIntegrationEm" xml:space="preserve">
+    <value>EAS 集成</value>
+  </data>
+  <data name="EasIntegrationEmHelp" xml:space="preserve">
+    <value>控制访问“常规”下的“移动电子邮件网关”页面。</value>
+  </data>
+  <data name="EditAdminGroupHelp" xml:space="preserve">
+    <value>允许编辑管理员组。</value>
+  </data>
+  <data name="EditDD" xml:space="preserve">
+    <value>编辑</value>
+  </data>
+  <data name="EditDDHelp" xml:space="preserve">
+    <value>编辑友好名称、资产编号等设备信息。</value>
+  </data>
+  <data name="EditFileServerConfiguration" xml:space="preserve">
+    <value>编辑文件服务器配置</value>
+  </data>
+  <data name="EditFileServerConfigurationHelp" xml:space="preserve">
+    <value>授予用户编辑文件服务器网格和详细信息的权限</value>
+  </data>
+  <data name="EditNoteHelp" xml:space="preserve">
+    <value>授予编辑注释的权限</value>
+  </data>
+  <data name="EditTagHelp" xml:space="preserve">
+    <value>授予编辑标记的权限</value>
+  </data>
+  <data name="EditTypeGr" xml:space="preserve">
+    <value>编辑类型</value>
+  </data>
+  <data name="EditUserAccounts" xml:space="preserve">
+    <value>编辑</value>
+  </data>
+  <data name="EditUserAccountsHelp" xml:space="preserve">
+    <value>编辑注册用户帐户。</value>
+  </data>
+  <data name="EmailAddressAlreadyExists" xml:space="preserve">
+    <value>电子邮件地址已存在</value>
+  </data>
+  <data name="EmailDM" xml:space="preserve">
+    <value>电子邮件</value>
+  </data>
+  <data name="EmailDMHelp" xml:space="preserve">
+    <value>屏蔽和允许 ActiveSync 请求。</value>
+  </data>
+  <data name="EmailManagementHub" xml:space="preserve">
+    <value>电子邮件管理</value>
+  </data>
+  <data name="EmailManagementHubHelp" xml:space="preserve">
+    <value>生成电子邮件管理报表。</value>
+  </data>
+  <data name="EMDashboardMigrateDevice" xml:space="preserve">
+    <value>电子邮件管理仪表板迁移设备</value>
+  </data>
+  <data name="EMDashboardMigrateDeviceHelp" xml:space="preserve">
+    <value>控制在 MEM 配置之间移动一台或多台设备的访问权限</value>
+  </data>
+  <data name="EnableDigitalExperienceTelemetry" xml:space="preserve">
+    <value>启用数字体验遥测</value>
+  </data>
+  <data name="EnableDigitalExperienceTelemetryHelp" xml:space="preserve">
+    <value>启用收集数字体验遥测并将其传输到 Workspace ONE Intelligence 的功能。</value>
+  </data>
+  <data name="EnableDisableAd" xml:space="preserve">
+    <value>启用/禁用</value>
+  </data>
+  <data name="EnableDisableAdHelp" xml:space="preserve">
+    <value>启用或禁用内存缓存。</value>
+  </data>
+  <data name="EnableSystemSettingsAuditHelp" xml:space="preserve">
+    <value>通过“系统代码”启用/禁用“设置审核”</value>
+  </data>
+  <data name="EncryptionKeyManagementHelp" xml:space="preserve">
+    <value>授予执行加密密钥管理的权限。导航到: 系统\安全\加密密钥管理</value>
+  </data>
+  <data name="EnrollmentDM" xml:space="preserve">
+    <value>注册</value>
+  </data>
+  <data name="EnrollmentDMHelp" xml:space="preserve">
+    <value>修改注册限制。</value>
+  </data>
+  <data name="EnrollmentProgramSet" xml:space="preserve">
+    <value>注册计划</value>
+  </data>
+  <data name="EnrollmentProgramSetHelp" xml:space="preserve">
+    <value>控制对设备注册机会的访问。</value>
+  </data>
+  <data name="EnrollmentProgramUserGen" xml:space="preserve">
+    <value>注册计划</value>
+  </data>
+  <data name="EnrollmentProgramUserGenHelp" xml:space="preserve">
+    <value>访问设备的“设备注册计划”配置文件。</value>
+  </data>
+  <data name="EnrollmentSet" xml:space="preserve">
+    <value>注册</value>
+  </data>
+  <data name="EnrollmentSetHelp" xml:space="preserve">
+    <value>控制对“常规”项下的“注册”页面的访问。</value>
+  </data>
+  <data name="EnrollOffline" xml:space="preserve">
+    <value>脱机注册</value>
+  </data>
+  <data name="EnrollOfflineHelp" xml:space="preserve">
+    <value>此资源允许任何具有指定角色的管理员脱机注册已登记的设备</value>
+  </data>
+  <data name="EnterAdminModeHelp" xml:space="preserve">
+    <value>控制对“进入 Launcher 管理员模式”命令的访问</value>
+  </data>
+  <data name="EnterEmailAddressToDesignateRecipients" xml:space="preserve">
+    <value>输入电子邮件地址以指定收件人</value>
+  </data>
+  <data name="EnterpriseIntegrationSys" xml:space="preserve">
+    <value>企业集成</value>
+  </data>
+  <data name="EnterpriseIntegrationSysHelp" xml:space="preserve">
+    <value>控制访问“企业集成”。</value>
+  </data>
+  <data name="EnterpriseResourceAddHelp" xml:space="preserve">
+    <value>授予权限添加新“企业资源”。</value>
+  </data>
+  <data name="EnterpriseResourceHelp" xml:space="preserve">
+    <value>允许访问“企业资源”页面。</value>
+  </data>
+  <data name="EnterpriseWipeDD" xml:space="preserve">
+    <value>企业擦除</value>
+  </data>
+  <data name="EnterpriseWipeDDHelp" xml:space="preserve">
+    <value>授予权限在设备详细信息页面取消设备注册，移除所有企业数据和设置。</value>
+  </data>
+  <data name="EnterpriseWipeDM" xml:space="preserve">
+    <value>企业擦除</value>
+  </data>
+  <data name="EnterpriseWipeDMHelp" xml:space="preserve">
+    <value>授予权限取消设备注册，并移除其中的所有启用数据和设置。</value>
+  </data>
+  <data name="EquipmentEq" xml:space="preserve">
+    <value>装置</value>
+  </data>
+  <data name="EquipmentEqHelp" xml:space="preserve">
+    <value>装置管理。导航到：菜单\装置。</value>
+  </data>
+  <data name="ESignature" xml:space="preserve">
+    <value>eSignature</value>
+  </data>
+  <data name="ESignatureHelp" xml:space="preserve">
+    <value>内容项下的 eSignatures 设置。导航到设置\内容\高级\eSignature</value>
+  </data>
+  <data name="ESignatures" xml:space="preserve">
+    <value>eSignatures</value>
+  </data>
+  <data name="EulDD" xml:space="preserve">
+    <value>EULA</value>
+  </data>
+  <data name="EulDDHelp" xml:space="preserve">
+    <value>在设备详细信息页面查看过去和现在的使用条款。</value>
+  </data>
+  <data name="EventLogAd" xml:space="preserve">
+    <value>事件日志</value>
+  </data>
+  <data name="EventLogAdHelp" xml:space="preserve">
+    <value>控制访问控制台事件日志。</value>
+  </data>
+  <data name="EventLogHelp" xml:space="preserve">
+    <value>控制访问阅读事件日志。</value>
+  </data>
+  <data name="EventsPM" xml:space="preserve">
+    <value>事件</value>
+  </data>
+  <data name="EventsPMHelp" xml:space="preserve">
+    <value>控制访问打印机事件日志页面</value>
+  </data>
+  <data name="ExitAdminModeHelp" xml:space="preserve">
+    <value>控制对“退出管理员模式”命令的访问</value>
+  </data>
+  <data name="ExitAirWatchLauncherHelp" xml:space="preserve">
+    <value>控制对“退出 Launcher”命令的访问</value>
+  </data>
+  <data name="ExpandedAriaLabel" xml:space="preserve">
+    <value>已展开</value>
+  </data>
+  <data name="ExpireAllUsersGr" xml:space="preserve">
+    <value>使所有用户过期</value>
+  </data>
+  <data name="ExpireAllUsersGrHelp" xml:space="preserve">
+    <value>启用“使所有用户密码过期”按钮。</value>
+  </data>
+  <data name="ExportUG" xml:space="preserve">
+    <value>导出</value>
+  </data>
+  <data name="ExportUGHelp" xml:space="preserve">
+    <value>导出用户组。</value>
+  </data>
+  <data name="ExportUserAccounts" xml:space="preserve">
+    <value>导出</value>
+  </data>
+  <data name="ExportUserAccountsHelp" xml:space="preserve">
+    <value>导出用户帐户。</value>
+  </data>
+  <data name="ExportUserCategories" xml:space="preserve">
+    <value>导出</value>
+  </data>
+  <data name="ExportUserCategoriesHelp" xml:space="preserve">
+    <value>导出注册用户帐户类别。</value>
+  </data>
+  <data name="ExportUserRoles" xml:space="preserve">
+    <value>导出</value>
+  </data>
+  <data name="ExportUserRolesHelp" xml:space="preserve">
+    <value>导出用户角色。</value>
+  </data>
+  <data name="FeatureFlagEdit" xml:space="preserve">
+    <value>编辑功能标记</value>
+  </data>
+  <data name="FeatureFlagEditHelp" xml:space="preserve">
+    <value>控制编辑和更新功能标记的访问权限。</value>
+  </data>
+  <data name="FeatureFlagRead" xml:space="preserve">
+    <value>读取功能标记</value>
+  </data>
+  <data name="FeatureFlagReadHelp" xml:space="preserve">
+    <value>控制读取功能标记状态的功能。</value>
+  </data>
+  <data name="FileActionsPPN" xml:space="preserve">
+    <value>文件操作</value>
+  </data>
+  <data name="FileActionsPPNHelp" xml:space="preserve">
+    <value>创建和管理预置策略的文件操作。</value>
+  </data>
+  <data name="FileEncryptionStats" xml:space="preserve">
+    <value>文件加密统计信息</value>
+  </data>
+  <data name="FileEncryptionStatsHelp" xml:space="preserve">
+    <value>租户存储设置: TenantStorage.FileEncryptionStats</value>
+  </data>
+  <data name="FileManagerHelp" xml:space="preserve">
+    <value>授予权限远程访问 WinMo 设备的文件。</value>
+  </data>
+  <data name="FilepathIns" xml:space="preserve">
+    <value>文件路径</value>
+  </data>
+  <data name="FilepathInsHelp" xml:space="preserve">
+    <value>控制访问“高级”项下的“文件同步”页面。</value>
+  </data>
+  <data name="FilesPM" xml:space="preserve">
+    <value>文件</value>
+  </data>
+  <data name="FilesPMHelp" xml:space="preserve">
+    <value>控制访问打印机文件页面</value>
+  </data>
+  <data name="FilesPr" xml:space="preserve">
+    <value>文件</value>
+  </data>
+  <data name="FilesPrHelp" xml:space="preserve">
+    <value>管理打印机文件。</value>
+  </data>
+  <data name="FindDeviceDD" xml:space="preserve">
+    <value>查找设备</value>
+  </data>
+  <data name="FindDeviceDDHelp" xml:space="preserve">
+    <value>将设备状态设为启动音频警报，使用户能够找到设备。可从设备详细信息页面访问此功能。</value>
+  </data>
+  <data name="FindDeviceHelp" xml:space="preserve">
+    <value>控制访问将设备状态设为启动音频报警，以便于用户查找设备。此功能在设备详细信息 HTML5 屏幕上提供。</value>
+  </data>
+  <data name="FriendlyNameSet" xml:space="preserve">
+    <value>友好名称</value>
+  </data>
+  <data name="FriendlyNameSetHelp" xml:space="preserve">
+    <value>控制对“常规”项下的“友好名称”页面的访问。</value>
+  </data>
+  <data name="GatewayStatusEm" xml:space="preserve">
+    <value>网关状态</value>
+  </data>
+  <data name="GatewayStatusEmHelp" xml:space="preserve">
+    <value>控制电子邮件网关状态设置。</value>
+  </data>
+  <data name="GeneralDD" xml:space="preserve">
+    <value>常规</value>
+  </data>
+  <data name="GeneralDDHelp" xml:space="preserve">
+    <value>控制设备详细信息页面中的各种基本功能。</value>
+  </data>
+  <data name="GeneralHub" xml:space="preserve">
+    <value>常规</value>
+  </data>
+  <data name="GeneralHubHelp" xml:space="preserve">
+    <value>访问报表模块。</value>
+  </data>
+  <data name="GeneralPM" xml:space="preserve">
+    <value>常规</value>
+  </data>
+  <data name="GeneralPMHelp" xml:space="preserve">
+    <value>控制访问打印机常规页面</value>
+  </data>
+  <data name="GeneralSettingsEm" xml:space="preserve">
+    <value>常规设置</value>
+  </data>
+  <data name="GeneralSettingsEmHelp" xml:space="preserve">
+    <value>控制电子邮件常规设置。</value>
+  </data>
+  <data name="GeneralSOaP" xml:space="preserve">
+    <value>常规</value>
+  </data>
+  <data name="GeneralSOaPHelp" xml:space="preserve">
+    <value>访问除擦除命令以外的所有 AirWatch 服务 API。</value>
+  </data>
+  <data name="GeneralSys" xml:space="preserve">
+    <value>常规</value>
+  </data>
+  <data name="GeneralSysHelp" xml:space="preserve">
+    <value>控制访问“系统”项下的“常规”页面。</value>
+  </data>
+  <data name="GeofencingAreaDM" xml:space="preserve">
+    <value>地理围栏区域</value>
+  </data>
+  <data name="GeofencingAreaDMHelp" xml:space="preserve">
+    <value>管理配置文件的地理围栏设置。</value>
+  </data>
+  <data name="GeofencingHelp" xml:space="preserve">
+    <value>授予权限查看/编辑地理围栏设置。</value>
+  </data>
+  <data name="GeofencingSet" xml:space="preserve">
+    <value>地理围栏</value>
+  </data>
+  <data name="GeofencingSetHelp" xml:space="preserve">
+    <value>授予权限查看/编辑地理围栏设置。</value>
+  </data>
+  <data name="GettingStartedApplicationHelp" xml:space="preserve">
+    <value>控制移动应用管理的“开始使用”进程</value>
+  </data>
+  <data name="GettingStartedSys" xml:space="preserve">
+    <value>开始使用</value>
+  </data>
+  <data name="GettingStartedSysHelp" xml:space="preserve">
+    <value>授予权限查看“开始使用”指南。</value>
+  </data>
+  <data name="GooglePlayIntegrationAn" xml:space="preserve">
+    <value>Google Play 集成</value>
+  </data>
+  <data name="GooglePlayIntegrationAnHelp" xml:space="preserve">
+    <value>授予权限查看和编辑 Android 市场集成。</value>
+  </data>
+  <data name="GroupsRESTSystem" xml:space="preserve">
+    <value>组</value>
+  </data>
+  <data name="GroupsRESTSystemHelp" xml:space="preserve">
+    <value>组管理的 REST API</value>
+  </data>
+  <data name="GSuiteRotatePasswordAction" xml:space="preserve">
+    <value>G Suite 密码轮换</value>
+  </data>
+  <data name="GSuiteRotatePasswordActionHelp" xml:space="preserve">
+    <value>能够轮换 G Suite 基本密码并轮换电子邮件配置文件。</value>
+  </data>
+  <data name="HeroCards" xml:space="preserve">
+    <value>Mobile Flows</value>
+  </data>
+  <data name="HeroCardsHelp" xml:space="preserve">
+    <value>Mobile Flows 后端和服务的配置 UI</value>
+  </data>
+  <data name="HorizonWorkspaceSettings" xml:space="preserve">
+    <value>Horizon Workspace 设置</value>
+  </data>
+  <data name="HorizonWorkspaceSettingsHelp" xml:space="preserve">
+    <value>控制对查看和编辑 Horizon Workspace 设置的访问。导航路径为：设置\应用\应用程序集成\Horizon Workspace</value>
+  </data>
+  <data name="HyperLinkDeleteAd" xml:space="preserve">
+    <value>超链接 - 删除</value>
+  </data>
+  <data name="HyperLinkDeleteAdHelp" xml:space="preserve">
+    <value>授予权限从“设备详细信息”页面移除超链接附件</value>
+  </data>
+  <data name="InProductSupport" xml:space="preserve">
+    <value>产品内支持</value>
+  </data>
+  <data name="InProductSupportHelp" xml:space="preserve">
+    <value>访问产品内支持工具，管理员可以在其中搜索文档并直接从 UEM 中获取帮助。</value>
+  </data>
+  <data name="InstallationAdvancedIns" xml:space="preserve">
+    <value>安装 - 高级</value>
+  </data>
+  <data name="InstallationAdvancedInsHelp" xml:space="preserve">
+    <value>控制访问“安装”项下的“高级”页面。</value>
+  </data>
+  <data name="InstallationIns" xml:space="preserve">
+    <value>安装</value>
+  </data>
+  <data name="InstallationInsHelp" xml:space="preserve">
+    <value>控制访问“安装”页面。</value>
+  </data>
+  <data name="InstallFontsApple" xml:space="preserve">
+    <value>安装字体</value>
+  </data>
+  <data name="InstallFontsAppleHelp" xml:space="preserve">
+    <value>启用设置中的安装字体部分。</value>
+  </data>
+  <data name="InstallIntelligentHub" xml:space="preserve">
+    <value>安装 Intelligent Hub</value>
+  </data>
+  <data name="InstallIntelligentHubHelp" xml:space="preserve">
+    <value>提供在已注册设备上远程安装 Intelligent Hub 的访问权限</value>
+  </data>
+  <data name="InsufficientResourceToSaveAdmin" xml:space="preserve">
+    <value>无法保存。您的管理员帐户没有足够的权限，无法修改此记录。</value>
+  </data>
+  <data name="Intelligence" xml:space="preserve">
+    <value>Intelligence</value>
+  </data>
+  <data name="IntelligenceHelp" xml:space="preserve">
+    <value>访问 Intelligence 页面。</value>
+  </data>
+  <data name="InternalAppsAb" xml:space="preserve">
+    <value>内部应用</value>
+  </data>
+  <data name="InternalAppsAbHelp" xml:space="preserve">
+    <value>上载和管理内部开发的应用程序。</value>
+  </data>
+  <data name="LanguageManagementAd" xml:space="preserve">
+    <value>语言管理</value>
+  </data>
+  <data name="LanguageManagementAdHelp" xml:space="preserve">
+    <value>查看语言管理的菜单项目并访问本地化编辑器和语言包激活页面。</value>
+  </data>
+  <data name="LearnMoreAccess" xml:space="preserve">
+    <value>详细了解访问</value>
+  </data>
+  <data name="LearnMoreAccessContact" xml:space="preserve">
+    <value>详细了解联系人访问</value>
+  </data>
+  <data name="LearnMoreAccessContactHelp" xml:space="preserve">
+    <value>控制对“信息与升级”部分“联系人”小节的访问</value>
+  </data>
+  <data name="LearnMoreAccessHelp" xml:space="preserve">
+    <value>控制对“信息与升级”部分的访问</value>
+  </data>
+  <data name="LegacyAndroidMigration" xml:space="preserve">
+    <value>旧版 Android 迁移</value>
+  </data>
+  <data name="LegacyAndroidMigrationHelp" xml:space="preserve">
+    <value>控制对“旧版 Android 迁移”页面的访问，以使用工作配置文件将旧版 Android 设备迁移到 Android Enterprise</value>
+  </data>
+  <data name="LicensesAd" xml:space="preserve">
+    <value>许可证</value>
+  </data>
+  <data name="LicensesAdHelp" xml:space="preserve">
+    <value>授予权限修改许可证。</value>
+  </data>
+  <data name="LinuxHelp" xml:space="preserve">
+    <value>控制对系统设置中 Linux 设置页面的访问。</value>
+  </data>
+  <data name="LocalizationSys" xml:space="preserve">
+    <value>本地化</value>
+  </data>
+  <data name="LocalizationSysHelp" xml:space="preserve">
+    <value>控制访问“本地化设置”。</value>
+  </data>
+  <data name="LocationCodeGr" xml:space="preserve">
+    <value>位置代码</value>
+  </data>
+  <data name="LocationCodeGrHelp" xml:space="preserve">
+    <value>在位置添加/编辑页面编辑位置代码</value>
+  </data>
+  <data name="LocationDD" xml:space="preserve">
+    <value>位置</value>
+  </data>
+  <data name="LocationDDHelp" xml:space="preserve">
+    <value>查看设备位置和痕迹导航数据</value>
+  </data>
+  <data name="LocationGroupTypeHelp" xml:space="preserve">
+    <value>控制访问“组织组类型”页面。</value>
+  </data>
+  <data name="LocationsGr" xml:space="preserve">
+    <value>位置</value>
+  </data>
+  <data name="LocationsGrHelp" xml:space="preserve">
+    <value>查看和管理组织组的位置</value>
+  </data>
+  <data name="LocationsHub" xml:space="preserve">
+    <value>位置</value>
+  </data>
+  <data name="LocationsHubHelp" xml:space="preserve">
+    <value>生成位置报表。</value>
+  </data>
+  <data name="LocationStatusHelp" xml:space="preserve">
+    <value>控制访问“位置组状态”链接。控制访问添加新“位置状态”。</value>
+  </data>
+  <data name="LocationTypeHelp" xml:space="preserve">
+    <value>控制访问“位置类型”页面。</value>
+  </data>
+  <data name="LocationZonesGr" xml:space="preserve">
+    <value>位置区域</value>
+  </data>
+  <data name="LocationZonesGrHelp" xml:space="preserve">
+    <value>添加和编辑位置的位置区域。</value>
+  </data>
+  <data name="LockDD" xml:space="preserve">
+    <value>锁定</value>
+  </data>
+  <data name="LockDDHelp" xml:space="preserve">
+    <value>远程锁定设备或锁定应用单点登录。</value>
+  </data>
+  <data name="LogDD" xml:space="preserve">
+    <value>日志</value>
+  </data>
+  <data name="LogDDHelp" xml:space="preserve">
+    <value>查看设备详细信息页面中的日志</value>
+  </data>
+  <data name="LoggingAd" xml:space="preserve">
+    <value>日志记录</value>
+  </data>
+  <data name="LoggingAdHelp" xml:space="preserve">
+    <value>授予权限查看事件日志设置。</value>
+  </data>
+  <data name="LoggingAdL" xml:space="preserve">
+    <value>日志记录</value>
+  </data>
+  <data name="LoggingAdLHelp" xml:space="preserve">
+    <value>查看和编辑 syslog 的日志记录设置及目标日志记录。</value>
+  </data>
+  <data name="LoginHistoryAdminGen" xml:space="preserve">
+    <value>登录历史记录</value>
+  </data>
+  <data name="LoginHistoryAdminGenHelp" xml:space="preserve">
+    <value>在管理员帐户页面和用户首选项页面访问登录历史记录页面。</value>
+  </data>
+  <data name="LookupFields" xml:space="preserve">
+    <value>查找字段</value>
+  </data>
+  <data name="LookupFieldsHelp" xml:space="preserve">
+    <value>控制对“常规”项下的“查找字段”页面的访问。</value>
+  </data>
+  <data name="MacOsXApple" xml:space="preserve">
+    <value>macOS</value>
+  </data>
+  <data name="MacOsXAppleHelp" xml:space="preserve">
+    <value>控制访问系统设置中的 macOS 设置页面。</value>
+  </data>
+  <data name="MailRecipient" xml:space="preserve">
+    <value>邮件收件人</value>
+  </data>
+  <data name="MaintenanceUpgradeNotificationInfo" xml:space="preserve">
+    <value>选择用于确定谁接收 Workspace ONE UEM 和 Workspace ONE Assist 通知的选项。如果选择“管理员选择加入”，则管理员将在“帐户设置”&gt;“通知”下看到维护和升级选项。</value>
+  </data>
+  <data name="MaintenanceUpgradeNotifications" xml:space="preserve">
+    <value>维护和升级通知</value>
+  </data>
+  <data name="ManageAdminGroups" xml:space="preserve">
+    <value>管理</value>
+  </data>
+  <data name="ManageAdminGroupsHelp" xml:space="preserve">
+    <value>对管理员组执行同步或合并等操作。</value>
+  </data>
+  <data name="ManageBaselines" xml:space="preserve">
+    <value>管理基准</value>
+  </data>
+  <data name="ManageBaselinesHelp" xml:space="preserve">
+    <value>控制对管理基准的访问权限，包括添加新基准、编辑基准和分配基准的权限</value>
+  </data>
+  <data name="ManageContentCM" xml:space="preserve">
+    <value>管理内容</value>
+  </data>
+  <data name="ManageContentCMHelp" xml:space="preserve">
+    <value>添加新内容并管理现有内容。</value>
+  </data>
+  <data name="ManageDevicesCM" xml:space="preserve">
+    <value>管理设备</value>
+  </data>
+  <data name="ManageDevicesCMHelp" xml:space="preserve">
+    <value>远程安装和删除纳管设备上的内容</value>
+  </data>
+  <data name="ManageDeviceSensors" xml:space="preserve">
+    <value>管理设备传感器</value>
+  </data>
+  <data name="ManageDeviceSensorsHelp" xml:space="preserve">
+    <value>控制对添加、编辑、分配或删除设备传感器的访问权限</value>
+  </data>
+  <data name="ManageDM" xml:space="preserve">
+    <value>管理</value>
+  </data>
+  <data name="ManageDMHelp" xml:space="preserve">
+    <value>管理设备配置文件。</value>
+  </data>
+  <data name="ManagedSettingsApple" xml:space="preserve">
+    <value>受管设置</value>
+  </data>
+  <data name="ManagedSettingsAppleHelp" xml:space="preserve">
+    <value>控制对 iOS 纳管设置的访问。</value>
+  </data>
+  <data name="ManageGr" xml:space="preserve">
+    <value>管理</value>
+  </data>
+  <data name="ManageGrHelp" xml:space="preserve">
+    <value>管理组织组。</value>
+  </data>
+  <data name="ManageNodeAd" xml:space="preserve">
+    <value>管理节点</value>
+  </data>
+  <data name="ManageNodeAdHelp" xml:space="preserve">
+    <value>添加、编辑、删除和清除内存缓存节点。</value>
+  </data>
+  <data name="ManagePM" xml:space="preserve">
+    <value>管理</value>
+  </data>
+  <data name="ManagePMHelp" xml:space="preserve">
+    <value>向打印机发送远程命令和查询。</value>
+  </data>
+  <data name="ManageTimeWindow" xml:space="preserve">
+    <value>管理时间段</value>
+  </data>
+  <data name="ManageTimeWindowHelp" xml:space="preserve">
+    <value>控制管理时间段的访问权限，包括添加新时间段、编辑时间段和分配时间段的权限。</value>
+  </data>
+  <data name="ManageUG" xml:space="preserve">
+    <value>管理</value>
+  </data>
+  <data name="ManageUGHelp" xml:space="preserve">
+    <value>对注册用户组执行同步或合并等操作。</value>
+  </data>
+  <data name="MapsIns" xml:space="preserve">
+    <value>地图</value>
+  </data>
+  <data name="MapsInsHelp" xml:space="preserve">
+    <value>控制对“安装”项下的“地图”页面的访问。</value>
+  </data>
+  <data name="MembersAdminGroup" xml:space="preserve">
+    <value>成员</value>
+  </data>
+  <data name="MembersAdminGroupHelp" xml:space="preserve">
+    <value>查看管理员组成员。</value>
+  </data>
+  <data name="MembersUG" xml:space="preserve">
+    <value>成员</value>
+  </data>
+  <data name="MembersUGHelp" xml:space="preserve">
+    <value>访问用户组成员列表。</value>
+  </data>
+  <data name="MenuLinkForTagHelp" xml:space="preserve">
+    <value>控制访问标记菜单</value>
+  </data>
+  <data name="MessageTemplatesSet" xml:space="preserve">
+    <value>消息模板</value>
+  </data>
+  <data name="MessageTemplatesSetHelp" xml:space="preserve">
+    <value>控制对“消息模板”的访问。</value>
+  </data>
+  <data name="MessagingDD" xml:space="preserve">
+    <value>消息传送</value>
+  </data>
+  <data name="MessagingDDHelp" xml:space="preserve">
+    <value>向设备发送电子邮件、推送通知或短信。</value>
+  </data>
+  <data name="MessagingSet" xml:space="preserve">
+    <value>消息传送</value>
+  </data>
+  <data name="MessagingSetHelp" xml:space="preserve">
+    <value>控制对“常规”项下的“消息”页面的访问。</value>
+  </data>
+  <data name="MigrateUserAccounts" xml:space="preserve">
+    <value>迁移</value>
+  </data>
+  <data name="MigrateUserAccountsHelp" xml:space="preserve">
+    <value>将注册用户帐户从基本注册迁移到 LDAP 注册。</value>
+  </data>
+  <data name="MirrorPM" xml:space="preserve">
+    <value>镜像</value>
+  </data>
+  <data name="MirrorPMHelp" xml:space="preserve">
+    <value>控制对“打印机镜像”页面的访问</value>
+  </data>
+  <data name="MobileFlowsAuthToken" xml:space="preserve">
+    <value>Mobile Flows 身份验证令牌</value>
+  </data>
+  <data name="MobileFlowsAuthTokenHelp" xml:space="preserve">
+    <value>生成要由 Mobile Flows 服务器使用的证书 JWT</value>
+  </data>
+  <data name="MobileFlowsServerUrl" xml:space="preserve">
+    <value>Mobile Flows 服务器 URL</value>
+  </data>
+  <data name="MobileFlowsServerUrlHelp" xml:space="preserve">
+    <value>Mobile Flows 服务器 URL</value>
+  </data>
+  <data name="MobileFlowsTenantAdd" xml:space="preserve">
+    <value>添加 Mobile Flows 租户</value>
+  </data>
+  <data name="MobileFlowsTenantAddHelp" xml:space="preserve">
+    <value>在 Mobile Flows 云服务中置备客户租户</value>
+  </data>
+  <data name="ModifyAgentSet" xml:space="preserve">
+    <value>修改 Hub</value>
+  </data>
+  <data name="ModifyAgentSetHelp" xml:space="preserve">
+    <value>控制访问权限以修改 Hub 设置。</value>
+  </data>
+  <data name="MonitoringAd" xml:space="preserve">
+    <value>监控</value>
+  </data>
+  <data name="MonitoringAdHelp" xml:space="preserve">
+    <value>授予权限访问和编辑监控设置。</value>
+  </data>
+  <data name="MoreHelp" xml:space="preserve">
+    <value>控制访问“更多”菜单。</value>
+  </data>
+  <data name="NacIntegrationSys" xml:space="preserve">
+    <value>NAC 集成</value>
+  </data>
+  <data name="NacIntegrationSysHelp" xml:space="preserve">
+    <value>控制访问“常规”项下的“网络访问控制集成”页面。</value>
+  </data>
+  <data name="NavigateExportStatusHelp" xml:space="preserve">
+    <value>访问导出状态页面以查看和下载网格导出项。</value>
+  </data>
+  <data name="NavigationO" xml:space="preserve">
+    <value>导航</value>
+  </data>
+  <data name="NavigationOHelp" xml:space="preserve">
+    <value>访问高级菜单。</value>
+  </data>
+  <data name="NetworkAccessControlIntegrationHelp" xml:space="preserve">
+    <value>控制访问“常规”项下的“网络访问控制集成”页面。</value>
+  </data>
+  <data name="NetworkDD" xml:space="preserve">
+    <value>网络</value>
+  </data>
+  <data name="NetworkDDHelp" xml:space="preserve">
+    <value>访问“设备详细信息”中的网络页面。</value>
+  </data>
+  <data name="NetworkRangeGr" xml:space="preserve">
+    <value>网络范围</value>
+  </data>
+  <data name="NetworkRangeGrHelp" xml:space="preserve">
+    <value>管理和导入组织组的网络范围</value>
+  </data>
+  <data name="NetworkRangeHelp" xml:space="preserve">
+    <value>授予权限查看“网络范围”屏幕</value>
+  </data>
+  <data name="NoFiltersSelected" xml:space="preserve">
+    <value>未选择筛选器</value>
+  </data>
+  <data name="NotesDD" xml:space="preserve">
+    <value>注释</value>
+  </data>
+  <data name="NotesDDHelp" xml:space="preserve">
+    <value>在设备详细信息页面添加、编辑和移除设备注释。</value>
+  </data>
+  <data name="NotificationRecipients" xml:space="preserve">
+    <value>通知收件人</value>
+  </data>
+  <data name="NotificationsAd" xml:space="preserve">
+    <value>通知</value>
+  </data>
+  <data name="NotificationsAdHelp" xml:space="preserve">
+    <value>查看和编辑事件通知设置。</value>
+  </data>
+  <data name="NotifyAb" xml:space="preserve">
+    <value>通知</value>
+  </data>
+  <data name="NotifyAbHelp" xml:space="preserve">
+    <value>通过设备应用程序发送通知。</value>
+  </data>
+  <data name="Office365MamIntegrationSettings" xml:space="preserve">
+    <value>Office365 集成设置</value>
+  </data>
+  <data name="Office365MamIntegrationSettingsHelp" xml:space="preserve">
+    <value>用于控制系统设置屏幕的资源，以为 Office 365 应用添加默认 DLP 策略</value>
+  </data>
+  <data name="Old" xml:space="preserve">
+    <value>旧</value>
+  </data>
+  <data name="OldPPO" xml:space="preserve">
+    <value>旧</value>
+  </data>
+  <data name="OldPPOHelp" xml:space="preserve">
+    <value>访问预置配置文件的旧设置。</value>
+  </data>
+  <data name="OrganizationGroupChangeAd" xml:space="preserve">
+    <value>组织组更改</value>
+  </data>
+  <data name="OrganizationGroupChangeAdHelp" xml:space="preserve">
+    <value>授予通过下拉菜单更改组织组的权限</value>
+  </data>
+  <data name="OrganizationGroupCodeGr" xml:space="preserve">
+    <value>组织组 ID</value>
+  </data>
+  <data name="OrganizationGroupCodeGrHelp" xml:space="preserve">
+    <value>编辑组织组 ID。</value>
+  </data>
+  <data name="OsUpdateStatusHelp" xml:space="preserve">
+    <value>控制访问权限以获取设备上操作系统更新的状态。请导航到设备/详细信息视图</value>
+  </data>
+  <data name="OutlookAddinSet" xml:space="preserve">
+    <value>Outlook 加载项</value>
+  </data>
+  <data name="OutlookAddinSetHelp" xml:space="preserve">
+    <value>启用和禁用 Outlook 加载项插件</value>
+  </data>
+  <data name="OverrideJobLogLevelHelp" xml:space="preserve">
+    <value>当设备支持此功能时，授予用户通过设备详细信息覆盖作业日志级别的权限。</value>
+  </data>
+  <data name="OverviewHub" xml:space="preserve">
+    <value>概览</value>
+  </data>
+  <data name="OverviewHubHelp" xml:space="preserve">
+    <value>访问监控器概览页面。</value>
+  </data>
+  <data name="P2PSetupHelp" xml:space="preserve">
+    <value>包含各种 P2P 供应商子部分的设置页面</value>
+  </data>
+  <data name="PasscodeDD" xml:space="preserve">
+    <value>密码</value>
+  </data>
+  <data name="PasscodeDDHelp" xml:space="preserve">
+    <value>清除和重置设备与应用密码。</value>
+  </data>
+  <data name="PerformanceTuningHelp" xml:space="preserve">
+    <value>控制访问“系统设置”中的“性能调整”参数。</value>
+  </data>
+  <data name="PerformanceTuningIns" xml:space="preserve">
+    <value>性能调整</value>
+  </data>
+  <data name="PerformanceTuningInsHelp" xml:space="preserve">
+    <value>控制访问“系统设置”中的“性能调整”参数。</value>
+  </data>
+  <data name="PersonalContentSet" xml:space="preserve">
+    <value>个人内容</value>
+  </data>
+  <data name="PersonalContentSetHelp" xml:space="preserve">
+    <value>授予权限修改与个人内容相关的设置</value>
+  </data>
+  <data name="PlansTel" xml:space="preserve">
+    <value>计划</value>
+  </data>
+  <data name="PlansTelHelp" xml:space="preserve">
+    <value>管理为某一组织组配置的电信计划。</value>
+  </data>
+  <data name="PoliciesPPN" xml:space="preserve">
+    <value>策略</value>
+  </data>
+  <data name="PoliciesPPNHelp" xml:space="preserve">
+    <value>创建和管理预置策略。</value>
+  </data>
+  <data name="PolicyEngineSettingsEditHelp" xml:space="preserve">
+    <value>编辑策略引擎设置的权限。导航到: 配置\设置\管理\策略引擎设置</value>
+  </data>
+  <data name="PolicyEngineSettingsViewHelp" xml:space="preserve">
+    <value>授予查看策略引擎设置的权限。</value>
+  </data>
+  <data name="PolicyOverrideEM" xml:space="preserve">
+    <value>策略覆盖</value>
+  </data>
+  <data name="PolicyOverrideEMHelp" xml:space="preserve">
+    <value>覆盖电子邮件策略以便允许和拒绝设备。</value>
+  </data>
+  <data name="PolicySigningCertificateHelp" xml:space="preserve">
+    <value>授予上载 ECC 证书的权限。导航到: 系统\高级\策略签名证书</value>
+  </data>
+  <data name="PowerPM" xml:space="preserve">
+    <value>电源</value>
+  </data>
+  <data name="PowerPMHelp" xml:space="preserve">
+    <value>控制访问打印机电源页面</value>
+  </data>
+  <data name="PrinterManagementProfile" xml:space="preserve">
+    <value>打印机管理配置文件</value>
+  </data>
+  <data name="PrinterManagementProfiles" xml:space="preserve">
+    <value>打印机管理配置文件</value>
+  </data>
+  <data name="PrinterProfiles" xml:space="preserve">
+    <value>打印机配置文件</value>
+  </data>
+  <data name="PrinterProfilesHelp" xml:space="preserve">
+    <value>控制访问查看打印机配置文件网格。刀砍：菜单\打印机管理\配置文件</value>
+  </data>
+  <data name="PrinterServersPM" xml:space="preserve">
+    <value>打印机服务器</value>
+  </data>
+  <data name="PrinterServersPMHelp" xml:space="preserve">
+    <value>查看、添加和删除打印机设置页面的打印机服务器。</value>
+  </data>
+  <data name="PrinterTestPrint" xml:space="preserve">
+    <value>打印机测试打印</value>
+  </data>
+  <data name="PrinterTestPrintHelp" xml:space="preserve">
+    <value>授予提交打印机测试打印的权限。</value>
+  </data>
+  <data name="PrinterViewAveryDennisonGeneralHelp" xml:space="preserve">
+    <value>Avery Dennison“设备详细信息”页面上的“常规”标签页。</value>
+  </data>
+  <data name="PrinterViewCpclPM" xml:space="preserve">
+    <value>CPCL</value>
+  </data>
+  <data name="PrinterViewCpclPMHelp" xml:space="preserve">
+    <value>控制访问打印机 CPCL 页面</value>
+  </data>
+  <data name="PrinterViewDataMaxONeilAutoUpdateHelp" xml:space="preserve">
+    <value>Datamax“设备详细信息”页面上的“自动更新”标签页。</value>
+  </data>
+  <data name="PrinterViewDataMaxONeilBatteryHelp" xml:space="preserve">
+    <value>Datamax 打印机“设备详细信息”页面上的“电池”标签页。</value>
+  </data>
+  <data name="PrinterViewDataMaxONeilBluetoothHelp" xml:space="preserve">
+    <value>Datamax“设备详细信息”页面上的“蓝牙”标签页。</value>
+  </data>
+  <data name="PrinterViewDataMaxONeilCustomSettingsHelp" xml:space="preserve">
+    <value>查看 Datamax-O'Neil“设备详细信息”页面上的“自定义设置”标签页。</value>
+  </data>
+  <data name="PrinterViewDataMaxONeilGeneralHelp" xml:space="preserve">
+    <value>Datamax“设备详细信息”页面上的“常规”标签页。</value>
+  </data>
+  <data name="PrinterViewDataMaxONeilGeneralNetworkHelp" xml:space="preserve">
+    <value>Datamax“设备详细信息”页面上的“通用网络”标签页。</value>
+  </data>
+  <data name="PrinterViewDataMaxONeilMediaLabelHelp" xml:space="preserve">
+    <value>Datamax“设备详细信息”页面上的“标签纸标签”标签页。</value>
+  </data>
+  <data name="PrinterViewDataMaxONeilMiscellaneousHelp" xml:space="preserve">
+    <value>Datamax“设备详细信息”页面上的“杂项”标签页。</value>
+  </data>
+  <data name="PrinterViewDataMaxONeilPrintControlHelp" xml:space="preserve">
+    <value>Datamax“设备详细信息”页面上的“打印控制”标签页。</value>
+  </data>
+  <data name="PrinterViewDataMaxONeilRS232Help" xml:space="preserve">
+    <value>Datamax“设备详细信息”页面上的“RS232”标签页。</value>
+  </data>
+  <data name="PrinterViewDataMaxONeilSystemSettingsHelp" xml:space="preserve">
+    <value>Datamax“设备详细信息”页面上的“系统设置”标签页。</value>
+  </data>
+  <data name="PrinterViewDataMaxONeilWifiHelp" xml:space="preserve">
+    <value>Datamax“设备详细信息”页面上的“WiFi”标签页。</value>
+  </data>
+  <data name="PrinterViewEpsonGeneral" xml:space="preserve">
+    <value>查看 Epson 打印机详细信息：常规标签页</value>
+  </data>
+  <data name="PrinterViewEpsonGeneralHelp" xml:space="preserve">
+    <value>查看 Epson 打印机设备详细信息</value>
+  </data>
+  <data name="PrinterViewEpsonPrintSettingsHelp" xml:space="preserve">
+    <value>允许用户访问 Epson 打印设置</value>
+  </data>
+  <data name="PrivacySet" xml:space="preserve">
+    <value>隐私</value>
+  </data>
+  <data name="PrivacySetHelp" xml:space="preserve">
+    <value>控制对常规项下隐私页面的访问。</value>
+  </data>
+  <data name="ProductImprovementProgramSettings" xml:space="preserve">
+    <value>产品改进计划设置</value>
+  </data>
+  <data name="ProductImprovementProgramSettingsHelp" xml:space="preserve">
+    <value>控制对在“设置”&gt;“管理”&gt;“产品改进计划”中找到的产品改进计划设置页面的访问。</value>
+  </data>
+  <data name="ProductivityAppsAb" xml:space="preserve">
+    <value>生产力应用</value>
+  </data>
+  <data name="ProductProvisioningHub" xml:space="preserve">
+    <value>产品预置</value>
+  </data>
+  <data name="ProductProvisioningHubHelp" xml:space="preserve">
+    <value>生成产品预置报表。</value>
+  </data>
+  <data name="ProductProvisioningSettingsHelp" xml:space="preserve">
+    <value>配置产品置备的某些功能。</value>
+  </data>
+  <data name="ProductSetsHelp" xml:space="preserve">
+    <value>控制产品（新）项下产品集的访问</value>
+  </data>
+  <data name="ProfileEncryptAndExportXmlDM" xml:space="preserve">
+    <value>配置文件加密并导出 XML</value>
+  </data>
+  <data name="ProfileEncryptAndExportXmlDMHelp" xml:space="preserve">
+    <value>上载配置文件加密的证书并导出配置文件 XML。</value>
+  </data>
+  <data name="ProfilesApple" xml:space="preserve">
+    <value>配置文件</value>
+  </data>
+  <data name="ProfilesAppleHelp" xml:space="preserve">
+    <value>控制对“iOS”项下的“配置文件”页面的访问。</value>
+  </data>
+  <data name="ProfilesDD" xml:space="preserve">
+    <value>配置文件</value>
+  </data>
+  <data name="ProfilesDDHelp" xml:space="preserve">
+    <value>在设备详细信息页面查看和管理配置配置文件。</value>
+  </data>
+  <data name="ProfilesHub" xml:space="preserve">
+    <value>配置文件</value>
+  </data>
+  <data name="ProfilesHubHelp" xml:space="preserve">
+    <value>生成设备配置文件报表。</value>
+  </data>
+  <data name="ProfilesPM" xml:space="preserve">
+    <value>配置文件</value>
+  </data>
+  <data name="ProfilesPMHelp" xml:space="preserve">
+    <value>控制访问打印机配置文件页面</value>
+  </data>
+  <data name="ProfilesPPN" xml:space="preserve">
+    <value>配置文件</value>
+  </data>
+  <data name="ProfilesPPNHelp" xml:space="preserve">
+    <value>访问预置配置文件页面。</value>
+  </data>
+  <data name="ProfilesPr" xml:space="preserve">
+    <value>配置文件</value>
+  </data>
+  <data name="ProfilesPrHelp" xml:space="preserve">
+    <value>管理打印机配置文件。</value>
+  </data>
+  <data name="ProfilesRESTMdm" xml:space="preserve">
+    <value>配置文件</value>
+  </data>
+  <data name="ProfilesRESTMdmHelp" xml:space="preserve">
+    <value>设备配置文件的 REST API</value>
+  </data>
+  <data name="ProvisioningHelp" xml:space="preserve">
+    <value>控制访问 WinMo 预置页。</value>
+  </data>
+  <data name="ProvisioningPolicyConditionCopyHelp" xml:space="preserve">
+    <value>授予用户复制条件的权限。</value>
+  </data>
+  <data name="ProvisioningPolicyFileActionCopyHelp" xml:space="preserve">
+    <value>授予用户复制置备文件/操作的权限。</value>
+  </data>
+  <data name="ProxiesAndTunnelHelp" xml:space="preserve">
+    <value>授予查看和编辑代理和 Tunnel 设置的权限</value>
+  </data>
+  <data name="ProxyIns" xml:space="preserve">
+    <value>代理</value>
+  </data>
+  <data name="ProxyInsHelp" xml:space="preserve">
+    <value>控制对“常规”项下的“代理服务器设置”页面的访问。</value>
+  </data>
+  <data name="PublicAppsAb" xml:space="preserve">
+    <value>公共应用</value>
+  </data>
+  <data name="PublicAppsAbHelp" xml:space="preserve">
+    <value>分配和管理来自公共商店的应用程序。</value>
+  </data>
+  <data name="PullServiceInstallersPPN" xml:space="preserve">
+    <value>拉取服务安装程序</value>
+  </data>
+  <data name="PullServiceInstallersPPNHelp" xml:space="preserve">
+    <value>查看和下载拉取服务安装程序。</value>
+  </data>
+  <data name="PurchasedApplicationsAb" xml:space="preserve">
+    <value>已购应用程序</value>
+  </data>
+  <data name="PurchasedApplicationsAbHelp" xml:space="preserve">
+    <value>批量导入已购应用程序许可证，并管理许可证分发。</value>
+  </data>
+  <data name="QnxSet" xml:space="preserve">
+    <value>QNX</value>
+  </data>
+  <data name="QnxSetHelp" xml:space="preserve">
+    <value>控制对 QNX 下的“Agent 设置”页面的访问。</value>
+  </data>
+  <data name="QRCodeHelp" xml:space="preserve">
+    <value>二维码注册配置</value>
+  </data>
+  <data name="QueryDD" xml:space="preserve">
+    <value>查询</value>
+  </data>
+  <data name="QueryDDHelp" xml:space="preserve">
+    <value>查询设备以更新设备状态信息。</value>
+  </data>
+  <data name="ReadDeviceManufacturerDetails" xml:space="preserve">
+    <value>读取设备制造商详细信息</value>
+  </data>
+  <data name="ReadDeviceManufacturerDetailsHelp" xml:space="preserve">
+    <value>通过 API 读取设备制造商详细信息</value>
+  </data>
+  <data name="ReadDeviceModelDetails" xml:space="preserve">
+    <value>读取设备型号详细信息</value>
+  </data>
+  <data name="ReadDeviceModelDetailsHelp" xml:space="preserve">
+    <value>通过 API 读取设备型号详细信息</value>
+  </data>
+  <data name="RefreshEsimHelp" xml:space="preserve">
+    <value>授予更新 eSIM 流量套餐的权限</value>
+  </data>
+  <data name="RegistryManagerHelp" xml:space="preserve">
+    <value>授予权限远程访问 WinMo 设备的注册表。</value>
+  </data>
+  <data name="RelayServerBatching" xml:space="preserve">
+    <value>中继服务器批处理</value>
+  </data>
+  <data name="RelayServerBatchingHelp" xml:space="preserve">
+    <value>控制对中继服务器批处理导入和批处理状态的访问权限</value>
+  </data>
+  <data name="RelayServerRemoteFileList" xml:space="preserve">
+    <value>中继服务器远程文件列表</value>
+  </data>
+  <data name="RelayServerRemoteFileListHelp" xml:space="preserve">
+    <value>控制对中继服务器远程文件列表的访问权限</value>
+  </data>
+  <data name="RelayServersPPN" xml:space="preserve">
+    <value>中继服务器</value>
+  </data>
+  <data name="RelayServersPPNHelp" xml:space="preserve">
+    <value>查看和管理预置中继服务器。</value>
+  </data>
+  <data name="RemoteControlDD" xml:space="preserve">
+    <value>远程控制</value>
+  </data>
+  <data name="RemoteControlDDHelp" xml:space="preserve">
+    <value>远程控制设备</value>
+  </data>
+  <data name="RemoteManagementSettingsEditHelp" xml:space="preserve">
+    <value>控制对“企业集成”下“远程管理”页面的编辑访问权限。导航到: 配置\系统设置\企业集成\远程管理</value>
+  </data>
+  <data name="RemoteSet" xml:space="preserve">
+    <value>远程</value>
+  </data>
+  <data name="RemoteSetHelp" xml:space="preserve">
+    <value>授予权限修改与远程存储相关的设置</value>
+  </data>
+  <data name="RemoveDeviceEnrollmentProgram" xml:space="preserve">
+    <value>注册计划 - 移除配置文件</value>
+  </data>
+  <data name="RemoveDeviceEnrollmentProgramHelp" xml:space="preserve">
+    <value>控制从设备中移除 DEP 配置文件的访问权限。导航到“注册状态”页面</value>
+  </data>
+  <data name="RenameDeviceHelp" xml:space="preserve">
+    <value>用于重命名设备的命令。</value>
+  </data>
+  <data name="RenewCertificateHelp" xml:space="preserve">
+    <value>授予权限更新证书。</value>
+  </data>
+  <data name="RepairHub" xml:space="preserve">
+    <value>修复 Hub</value>
+  </data>
+  <data name="RepairHubHelp" xml:space="preserve">
+    <value>授予在设备上修复 Hub 的权限。</value>
+  </data>
+  <data name="ReportIOS7Compatability" xml:space="preserve">
+    <value>iOS 7 兼容性</value>
+  </data>
+  <data name="ReportIOS7CompatabilityHelp" xml:space="preserve">
+    <value>允许访问 iOS 7 兼容性报表</value>
+  </data>
+  <data name="ReportsAlertsSys" xml:space="preserve">
+    <value>报表与警报</value>
+  </data>
+  <data name="ReportsAlertsSysHelp" xml:space="preserve">
+    <value>控制访问“报表与警报”。</value>
+  </data>
+  <data name="ReportsIns" xml:space="preserve">
+    <value>报表</value>
+  </data>
+  <data name="ReportsInsHelp" xml:space="preserve">
+    <value>控制访问“安装”项下的“报表”页面。</value>
+  </data>
+  <data name="RepositoriesCM" xml:space="preserve">
+    <value>存储库</value>
+  </data>
+  <data name="RepositoriesCMHelp" xml:space="preserve">
+    <value>添加、编辑和删除内容存储库。</value>
+  </data>
+  <data name="ReputationAnalysisAb" xml:space="preserve">
+    <value>信誉分析</value>
+  </data>
+  <data name="ReputationAnalysisAbHelp" xml:space="preserve">
+    <value>运行应用信誉分析并查看结果。</value>
+  </data>
+  <data name="RequestCheckinDD" xml:space="preserve">
+    <value>请求签入</value>
+  </data>
+  <data name="RequestCheckinDDHelp" xml:space="preserve">
+    <value>向设备发送消息，请求设备签入。此功能在设备详细信息页面可用。</value>
+  </data>
+  <data name="ResBlueprints" xml:space="preserve">
+    <value>蓝图</value>
+  </data>
+  <data name="ResBlueprintsHelp" xml:space="preserve">
+    <value>创建添加并关联应用、资源和用户与设备限制策略的单一位置。</value>
+  </data>
+  <data name="ResCompliancePolicy" xml:space="preserve">
+    <value>合规策略</value>
+  </data>
+  <data name="ResCompliancePolicyHelp" xml:space="preserve">
+    <value>通过 REST API 访问合规策略信息</value>
+  </data>
+  <data name="ResConsoleNotifications" xml:space="preserve">
+    <value>控制台通知</value>
+  </data>
+  <data name="ResConsoleNotificationsHelp" xml:space="preserve">
+    <value>查看并与全控制台的管理通知互动</value>
+  </data>
+  <data name="ResCustomAttributes" xml:space="preserve">
+    <value>自定义属性</value>
+  </data>
+  <data name="ResCustomAttributesHelp" xml:space="preserve">
+    <value>以 REST API 提供对自定义属性的访问</value>
+  </data>
+  <data name="ResCustomReports" xml:space="preserve">
+    <value>自定义报告</value>
+  </data>
+  <data name="ResCustomReportsHelp" xml:space="preserve">
+    <value>访问自定义报告页面。</value>
+  </data>
+  <data name="ResDirectMEMAdvLog" xml:space="preserve">
+    <value>直接 MEM 高级登录</value>
+  </data>
+  <data name="ResDirectMEMAdvLogHelp" xml:space="preserve">
+    <value>在 MEM 仪表板上看到的这些功能让您能够通过登录控制台查看每台设备的高级 MEG 队列情况。</value>
+  </data>
+  <data name="ResEmailNotification" xml:space="preserve">
+    <value>电子邮件通知服务设置</value>
+  </data>
+  <data name="ResEmailNotificationHelp" xml:space="preserve">
+    <value>管理 ENS 设置。</value>
+  </data>
+  <data name="ResGlobalServiceExchange" xml:space="preserve">
+    <value>AppleCare</value>
+  </data>
+  <data name="ResGlobalServiceExchangeHelp" xml:space="preserve">
+    <value>控制访问 Apple 项下的 AppleCare 页面。</value>
+  </data>
+  <data name="ResJasperIntegration" xml:space="preserve">
+    <value>Jasper 集成</value>
+  </data>
+  <data name="ResJasperIntegrationHelp" xml:space="preserve">
+    <value>管理 Jasper 集成设置</value>
+  </data>
+  <data name="ResLifecycleNotifications" xml:space="preserve">
+    <value>生命周期通知</value>
+  </data>
+  <data name="ResLifecycleNotificationsHelp" xml:space="preserve">
+    <value>服务设备详细信息中的“生命周期通知”。</value>
+  </data>
+  <data name="ResMutualTlsAuthentication" xml:space="preserve">
+    <value>相互 TLS 身份验证</value>
+  </data>
+  <data name="ResMutualTlsAuthenticationHelp" xml:space="preserve">
+    <value>在 Workspace ONE Intelligent Hub 和 Workspace ONE UEM 服务器之间配置相互 TLS 身份验证设置</value>
+  </data>
+  <data name="ResNotifications" xml:space="preserve">
+    <value>通知</value>
+  </data>
+  <data name="ResNotificationsHelp" xml:space="preserve">
+    <value>查看并与全控制台的管理通知互动</value>
+  </data>
+  <data name="ResOverrideJobLogLevel" xml:space="preserve">
+    <value>覆盖作业日志级别</value>
+  </data>
+  <data name="ResOverrideJobLogLevelHelp" xml:space="preserve">
+    <value>访问“覆盖作业日志级别”设置</value>
+  </data>
+  <data name="ResProductProvisioning" xml:space="preserve">
+    <value>产品预置</value>
+  </data>
+  <data name="ResProductProvisioningHelp" xml:space="preserve">
+    <value>在一个组级别管理产品预置设置。</value>
+  </data>
+  <data name="ResProducts" xml:space="preserve">
+    <value>产品</value>
+  </data>
+  <data name="ResProductSets" xml:space="preserve">
+    <value>产品集</value>
+  </data>
+  <data name="ResProductSetsHelp" xml:space="preserve">
+    <value>查看和管理产品集的能力。</value>
+  </data>
+  <data name="ResProductsHelp" xml:space="preserve">
+    <value>启用通过控制台 REST API 访问产品集合。</value>
+  </data>
+  <data name="RestAPIAirWatchEducationWrite" xml:space="preserve">
+    <value>REST API 教育设置写入</value>
+  </data>
+  <data name="RestAPIAirWatchEducationWriteHelp" xml:space="preserve">
+    <value>用来保存和编辑教育设置的 REST API</value>
+  </data>
+  <data name="RestApiCartDelete" xml:space="preserve">
+    <value>REST API 购物车删除</value>
+  </data>
+  <data name="RestApiCartDeleteHelp" xml:space="preserve">
+    <value>用来删除购物车数据的 REST API</value>
+  </data>
+  <data name="RestApiCartWrite" xml:space="preserve">
+    <value>REST API 购物车写入</value>
+  </data>
+  <data name="RestApiCartWriteHelp" xml:space="preserve">
+    <value>用来保存和编辑购物车数据的 REST API</value>
+  </data>
+  <data name="RestApiClassAssignmentSave" xml:space="preserve">
+    <value>REST API 类分配保存</value>
+  </data>
+  <data name="RestApiClassAssignmentSaveHelp" xml:space="preserve">
+    <value>用来保存类分配的 REST API 调用</value>
+  </data>
+  <data name="RestAPIClassDelete" xml:space="preserve">
+    <value>REST API 类删除</value>
+  </data>
+  <data name="RestAPIClassDeleteHelp" xml:space="preserve">
+    <value>用来删除类数据的 REST API</value>
+  </data>
+  <data name="RestAPIClassLoad" xml:space="preserve">
+    <value>REST API 类读取</value>
+  </data>
+  <data name="RestAPIClassLoadHelp" xml:space="preserve">
+    <value>用来查看类数据的 REST API</value>
+  </data>
+  <data name="RestAPIClassWrite" xml:space="preserve">
+    <value>REST API 类写入</value>
+  </data>
+  <data name="RestAPIClassWriteHelp" xml:space="preserve">
+    <value>用来保存和编辑类数据的 REST API</value>
+  </data>
+  <data name="RestApiEduAppsForDeviceRead" xml:space="preserve">
+    <value>用于设备读取的 REST API 应用</value>
+  </data>
+  <data name="RestApiEduAppsForDeviceReadhelp" xml:space="preserve">
+    <value>用来获取符合设备条件的应用列表的 REST API</value>
+  </data>
+  <data name="RestAPILoadEducation" xml:space="preserve">
+    <value>REST API 教育设置读取</value>
+  </data>
+  <data name="RestAPILoadEducationHelp" xml:space="preserve">
+    <value>用来查看教育设置的 REST API</value>
+  </data>
+  <data name="RestApiPersonEnrollmentUserMapWrite" xml:space="preserve">
+    <value>REST API Apple School Manager 地图</value>
+  </data>
+  <data name="RestApiPersonEnrollmentUserMapWriteHelp" xml:space="preserve">
+    <value>用来将注册用户映射到 Apple School Manager 成员的 REST API</value>
+  </data>
+  <data name="RestApiRosterSyncRead" xml:space="preserve">
+    <value>REST API Apple School Manager 同步读取</value>
+  </data>
+  <data name="RestApiRosterSyncReadHelp" xml:space="preserve">
+    <value>用来检查 Apple School Manager 同步状态的 REST API</value>
+  </data>
+  <data name="RestApiRosterSyncWrite" xml:space="preserve">
+    <value>REST API Apple School Manager 写入</value>
+  </data>
+  <data name="RestApiRosterSyncWriteHelp" xml:space="preserve">
+    <value>用来启动 Apple School Manager 同步的 REST API</value>
+  </data>
+  <data name="RestApiUpdatesPolicyDelete" xml:space="preserve">
+    <value>更新策略删除访问</value>
+  </data>
+  <data name="RestApiUpdatesPolicyDeleteHelp" xml:space="preserve">
+    <value>启用对“更新策略”集合中的所有删除 API 的访问。</value>
+  </data>
+  <data name="RestApiUpdatesPolicyExecute" xml:space="preserve">
+    <value>更新策略执行访问</value>
+  </data>
+  <data name="RestApiUpdatesPolicyExecuteHelp" xml:space="preserve">
+    <value>启用对“更新策略”集合中的所有执行 API 的访问。</value>
+  </data>
+  <data name="RestApiUpdatesPolicyRead" xml:space="preserve">
+    <value>更新策略读取访问</value>
+  </data>
+  <data name="RestApiUpdatesPolicyReadHelp" xml:space="preserve">
+    <value>启用对“更新策略”集合中的所有只读 API 的访问。</value>
+  </data>
+  <data name="RestApiUpdatesPolicyWrite" xml:space="preserve">
+    <value>更新策略写入访问</value>
+  </data>
+  <data name="RestApiUpdatesPolicyWriteHelp" xml:space="preserve">
+    <value>启用对“更新策略”集合中的所有写入 API 的访问。</value>
+  </data>
+  <data name="RestEnterpiseIntegration" xml:space="preserve">
+    <value>REST 企业集成</value>
+  </data>
+  <data name="RestEnterpiseIntegrationHelp" xml:space="preserve">
+    <value>企业集成的 REST API</value>
+  </data>
+  <data name="RestrictedActionsSec" xml:space="preserve">
+    <value>受限制的操作</value>
+  </data>
+  <data name="RestrictedActionsSecHelp" xml:space="preserve">
+    <value>授予权限查看“受限制的操作”屏幕。</value>
+  </data>
+  <data name="RestrictionsDD" xml:space="preserve">
+    <value>限制</value>
+  </data>
+  <data name="RestrictionsDDHelp" xml:space="preserve">
+    <value>请求将当前限制施加与设备。</value>
+  </data>
+  <data name="ResVideo" xml:space="preserve">
+    <value>视频</value>
+  </data>
+  <data name="ResVideoHelp" xml:space="preserve">
+    <value>管理视频应用的设置</value>
+  </data>
+  <data name="ResWebApps" xml:space="preserve">
+    <value>Web 应用</value>
+  </data>
+  <data name="ResWebAppsHelp" xml:space="preserve">
+    <value>分配并管理 Web 应用程序。</value>
+  </data>
+  <data name="RetentionAd" xml:space="preserve">
+    <value>保留</value>
+  </data>
+  <data name="RetentionAdHelp" xml:space="preserve">
+    <value>授予权限清除警报。</value>
+  </data>
+  <data name="RevokeCertificateHelp" xml:space="preserve">
+    <value>授予权限吊销证书。</value>
+  </data>
+  <data name="RotateRecoveryKeyHelp" xml:space="preserve">
+    <value>授予管理员按需轮换加密的 macOS 设备个人恢复密钥的权限。</value>
+  </data>
+  <data name="RoutingPoliciesHub" xml:space="preserve">
+    <value>路由策略</value>
+  </data>
+  <data name="RoutingPoliciesHubHelp" xml:space="preserve">
+    <value>查看和管理警报路由策略。</value>
+  </data>
+  <data name="SaveListViewFilters" xml:space="preserve">
+    <value>保存列表视图筛选器</value>
+  </data>
+  <data name="SaveListViewFiltersHelp" xml:space="preserve">
+    <value>允许管理员在列表视图页面中保存筛选器</value>
+  </data>
+  <data name="ScepApple" xml:space="preserve">
+    <value>SCEP</value>
+  </data>
+  <data name="ScepAppleHelp" xml:space="preserve">
+    <value>控制对“iOS”项下的“SCEP”页面的访问。</value>
+  </data>
+  <data name="ScepCertificateHelp" xml:space="preserve">
+    <value>控制对 SCEP 证书工具的访问。</value>
+  </data>
+  <data name="SdkAnalyticsAb" xml:space="preserve">
+    <value>SDK 分析</value>
+  </data>
+  <data name="SdkAnalyticsAbHelp" xml:space="preserve">
+    <value>控制访问应用程序管理的 SDK 分析页面。</value>
+  </data>
+  <data name="SdkIos" xml:space="preserve">
+    <value>SDK</value>
+  </data>
+  <data name="SdkIosHelp" xml:space="preserve">
+    <value>用来配置 SDK 应用程序安全性的设置。</value>
+  </data>
+  <data name="SearchDevicesDM" xml:space="preserve">
+    <value>搜索设备</value>
+  </data>
+  <data name="SearchDevicesDMHelp" xml:space="preserve">
+    <value>访问设备管理内的搜索设备菜单。</value>
+  </data>
+  <data name="SearchNotesHelp" xml:space="preserve">
+    <value>授予搜索注释和标记的权限</value>
+  </data>
+  <data name="SearchUserAccounts" xml:space="preserve">
+    <value>搜索</value>
+  </data>
+  <data name="SearchUserAccountsHelp" xml:space="preserve">
+    <value>访问快速搜索栏的用户选项。</value>
+  </data>
+  <data name="SecureChannelCertificateHelp" xml:space="preserve">
+    <value>上载证书以保护通道。</value>
+  </data>
+  <data name="SecurityInfoDD" xml:space="preserve">
+    <value>安全信息</value>
+  </data>
+  <data name="SecurityInfoDDHelp" xml:space="preserve">
+    <value>访问设备的安全审核信息。</value>
+  </data>
+  <data name="SecuritySec" xml:space="preserve">
+    <value>安全</value>
+  </data>
+  <data name="SecuritySecHelp" xml:space="preserve">
+    <value>授予权限查看“安全性”屏幕。</value>
+  </data>
+  <data name="ServiceUrlsHelp" xml:space="preserve">
+    <value>授予权限编辑服务 URL，例如身份管理提供程序端点。</value>
+  </data>
+  <data name="SettingsAndPoliciesSet" xml:space="preserve">
+    <value>设置和策略</value>
+  </data>
+  <data name="SettingsAndPoliciesSetHelp" xml:space="preserve">
+    <value>控制访问应用设置和策略页面。</value>
+  </data>
+  <data name="SettingsAttributeHelp" xml:space="preserve">
+    <value>控制对“常规”下“属性”页面的访问。导航到: 配置\系统设置\设备\常规</value>
+  </data>
+  <data name="SettingsAuditAd" xml:space="preserve">
+    <value>设置审核</value>
+  </data>
+  <data name="SettingsAuditAdHelp" xml:space="preserve">
+    <value>通过“系统代码”启用/禁用“设置审核”</value>
+  </data>
+  <data name="SettingsDeviceAdvanced" xml:space="preserve">
+    <value>设置：设备 - 高级</value>
+  </data>
+  <data name="SettingsDeviceAdvancedHelp" xml:space="preserve">
+    <value>控制对“设备与用户”下“高级”页面的访问。导航到: 配置\系统设置\设备与用户\高级</value>
+  </data>
+  <data name="SettingsDeviceEnrollmentProgramHelp" xml:space="preserve">
+    <value>控制对设备注册计划的访问。导航到: 配置\系统设置\设备\Apple</value>
+  </data>
+  <data name="SettingsDeviceGeneralAdvanced" xml:space="preserve">
+    <value>设置 - 设备 - 常规 - 高级</value>
+  </data>
+  <data name="SettingsDeviceGeneralAdvancedHelp" xml:space="preserve">
+    <value>控制对“常规”下“高级”页面的访问。导航到: 设置\设备用户\常规\高级</value>
+  </data>
+  <data name="SettingsEm" xml:space="preserve">
+    <value>设置</value>
+  </data>
+  <data name="SettingsEmHelp" xml:space="preserve">
+    <value>控制访问电子邮件设置。</value>
+  </data>
+  <data name="SettingsEnrollmentUserPasswordPolicyEditHelp" xml:space="preserve">
+    <value>控制对“设备与用户”项下“密码设置”页面的编辑访问权限。导航到: 配置\设备与用户设置\常规\安全\密码</value>
+  </data>
+  <data name="SettingsEnrollmentUserPasswordPolicyViewHelp" xml:space="preserve">
+    <value>控制对“设备与用户”项下“密码设置”页面的查看访问权限。导航到: 配置\设备与用户设置\常规\安全\密码</value>
+  </data>
+  <data name="SettingsHeaderBasedAuthenticationHelp" xml:space="preserve">
+    <value>控制对“企业集成”项下“外部身份验证”页面的访问。导航到: 设置\系统\企业集成</value>
+  </data>
+  <data name="SettingsLinux" xml:space="preserve">
+    <value>Linux 设置</value>
+  </data>
+  <data name="SettingsLinuxAgentApplication" xml:space="preserve">
+    <value>适用于 Linux 的 Intelligent Hub 应用程序设置</value>
+  </data>
+  <data name="SettingsLinuxAgentApplicationHelp" xml:space="preserve">
+    <value>控制对适用于 Linux 的 Intelligent Hub 应用程序设置页面的访问</value>
+  </data>
+  <data name="SettingsLinuxAgentSettings" xml:space="preserve">
+    <value>适用于 Intelligent Hub 的 Linux 设置</value>
+  </data>
+  <data name="SettingsLinuxAgentSettingsHelp" xml:space="preserve">
+    <value>控制对 Linux 下“Intelligent Hub 设置”页面的访问。导航到: 设置\设备与用户\Linux</value>
+  </data>
+  <data name="SettingsLinuxHelp" xml:space="preserve">
+    <value>控制对 Linux 下“Intelligent Hub 设置”页面的访问。导航到: 设置\设备与用户\Linux</value>
+  </data>
+  <data name="SettingsOnlyValidAtPartnerOrCustomer" xml:space="preserve">
+    <value>无法在当前组织组级别查看 SaaS 通知。请选择客户或合作伙伴级别的组织组以查看 SaaS 通知。</value>
+  </data>
+  <data name="SettingsOverridesAd" xml:space="preserve">
+    <value>设置覆盖</value>
+  </data>
+  <data name="SettingsOverridesAdHelp" xml:space="preserve">
+    <value>查看和编辑事件日志覆盖。</value>
+  </data>
+  <data name="SettingsQnxAgentSettingsHelp" xml:space="preserve">
+    <value>控制对 QNX 下的“Agent 设置”页面的访问。导航到: 配置\系统设置\设备\Qnx</value>
+  </data>
+  <data name="SharedDevicesSet" xml:space="preserve">
+    <value>共享设备</value>
+  </data>
+  <data name="SharedDevicesSetHelp" xml:space="preserve">
+    <value>控制对共享设备页面的访问。</value>
+  </data>
+  <data name="SmartGroupsAb" xml:space="preserve">
+    <value>智能组</value>
+  </data>
+  <data name="SmartGroupsAbHelp" xml:space="preserve">
+    <value>编辑应用程序智能组分配。</value>
+  </data>
+  <data name="SmartGroupsGr" xml:space="preserve">
+    <value>智能组</value>
+  </data>
+  <data name="SmartGroupsGrHelp" xml:space="preserve">
+    <value>查看、编辑和删除智能组。</value>
+  </data>
+  <data name="SoftwareInventoryWM" xml:space="preserve">
+    <value>软件清单</value>
+  </data>
+  <data name="SoftwareInventoryWMHelp" xml:space="preserve">
+    <value>访问 WinMo 软件清单页面。</value>
+  </data>
+  <data name="SslPinningSec" xml:space="preserve">
+    <value>SSL 固定</value>
+  </data>
+  <data name="SslPinningSecHelp" xml:space="preserve">
+    <value>授予权限查看“SSL 固定”屏幕。</value>
+  </data>
+  <data name="StagingPPN" xml:space="preserve">
+    <value>注册预备</value>
+  </data>
+  <data name="StagingPPNHelp" xml:space="preserve">
+    <value>管理预置策略的注册预备定义。</value>
+  </data>
+  <data name="StartAwcm" xml:space="preserve">
+    <value>启动 AWCM</value>
+  </data>
+  <data name="StatusHistoryDD" xml:space="preserve">
+    <value>状态历史记录</value>
+  </data>
+  <data name="StatusHistoryDDHelp" xml:space="preserve">
+    <value>查看设备的注册与合规状态历史记录。</value>
+  </data>
+  <data name="StopAwcm" xml:space="preserve">
+    <value>停止 AWCM</value>
+  </data>
+  <data name="SummaryInfoPM" xml:space="preserve">
+    <value>摘要信息</value>
+  </data>
+  <data name="SummaryInfoPMHelp" xml:space="preserve">
+    <value>控制对“打印机摘要信息”页面的访问</value>
+  </data>
+  <data name="SuspendBitlockerEncryptionHelp" xml:space="preserve">
+    <value>用于在“设备详细信息”页面上配置挂起 BitLocker 加密</value>
+  </data>
+  <data name="SymbianDev" xml:space="preserve">
+    <value>Symbian</value>
+  </data>
+  <data name="SymbianDevHelp" xml:space="preserve">
+    <value>控制对设备项下 Symbian 页面的访问权限。</value>
+  </data>
+  <data name="SyncDD" xml:space="preserve">
+    <value>同步设备设置</value>
+  </data>
+  <data name="SyncDDHelp" xml:space="preserve">
+    <value>远程同步设备设置，如配置文件和应用等。</value>
+  </data>
+  <data name="SyncDeviceEnrollmentProgram" xml:space="preserve">
+    <value>注册计划 - 同步设备</value>
+  </data>
+  <data name="SyncDeviceEnrollmentProgramHelp" xml:space="preserve">
+    <value>控制同步 DEP 设备的访问权限。导航到“注册状态”页面</value>
+  </data>
+  <data name="SyncDeviceSensors" xml:space="preserve">
+    <value>同步设备传感器</value>
+  </data>
+  <data name="SyncDeviceSensorsHelp" xml:space="preserve">
+    <value>控制对从设备请求传感器数据刷新的访问权限</value>
+  </data>
+  <data name="SystemCodeAuditAd" xml:space="preserve">
+    <value>系统代码审核</value>
+  </data>
+  <data name="SystemCodeAuditAdHelp" xml:space="preserve">
+    <value>控制访问系统代码审核。</value>
+  </data>
+  <data name="SystemHealthSettingsAd" xml:space="preserve">
+    <value>系统运行状况设置</value>
+  </data>
+  <data name="SystemHealthSettingsAdHelp" xml:space="preserve">
+    <value>查看和编辑系统运行状况设置。</value>
+  </data>
+  <data name="SystemHealthSettingsEditHelp" xml:space="preserve">
+    <value>授予编辑系统运行状况设置的权限。导航到: 菜单\配置\系统设置\管理\诊断\系统运行状况</value>
+  </data>
+  <data name="SystemHealthSettingsViewHelp" xml:space="preserve">
+    <value>授予查看系统运行状况设置的权限。导航到: 菜单\配置\系统设置\管理\诊断\系统运行状况</value>
+  </data>
+  <data name="SystemInternalHub" xml:space="preserve">
+    <value>系统内部</value>
+  </data>
+  <data name="SystemInternalHubHelp" xml:space="preserve">
+    <value>生成内部帐单报表。</value>
+  </data>
+  <data name="TagManagementViewHelp" xml:space="preserve">
+    <value>授予查看标记管理的权限</value>
+  </data>
+  <data name="TagsApi" xml:space="preserve">
+    <value>标记</value>
+  </data>
+  <data name="TagsApiHelp" xml:space="preserve">
+    <value>访问所有标记 API。</value>
+  </data>
+  <data name="TagsDev" xml:space="preserve">
+    <value>标记</value>
+  </data>
+  <data name="TagsDevHelp" xml:space="preserve">
+    <value>授予权限访问标记管理。</value>
+  </data>
+  <data name="TargetedLogDeviceEditHelp" xml:space="preserve">
+    <value>授予编辑目标设备日志记录的权限。导航到: 仪表板\设备仪表板</value>
+  </data>
+  <data name="TargetedLogDeviceViewHelp" xml:space="preserve">
+    <value>授予查看目标设备日志记录的权限。导航到: 仪表板\设备仪表板</value>
+  </data>
+  <data name="TelecomBasicSettingsViewHelp" xml:space="preserve">
+    <value>控制对电信基本配置向导的访问</value>
+  </data>
+  <data name="TelecomDD" xml:space="preserve">
+    <value>电信</value>
+  </data>
+  <data name="TelecomDDHelp" xml:space="preserve">
+    <value>在设备详细信息页面访问设备电信数据。</value>
+  </data>
+  <data name="TelecomHub" xml:space="preserve">
+    <value>电信</value>
+  </data>
+  <data name="TelecomHubHelp" xml:space="preserve">
+    <value>生成电信管理报表。</value>
+  </data>
+  <data name="TelecomManagementTel" xml:space="preserve">
+    <value>电信管理</value>
+  </data>
+  <data name="TelecomManagementTelHelp" xml:space="preserve">
+    <value>控制访问电信模块。显示电信项下的可用菜单项目。</value>
+  </data>
+  <data name="TelecomSettingsSys" xml:space="preserve">
+    <value>电信设置</value>
+  </data>
+  <data name="TelecomSettingsSysHelp" xml:space="preserve">
+    <value>控制访问电信设置页面。</value>
+  </data>
+  <data name="TenantStorageGr" xml:space="preserve">
+    <value>租户存储</value>
+  </data>
+  <data name="TenantStorageGrHelp" xml:space="preserve">
+    <value>供内部使用: 控制对“租户存储”页面的访问。</value>
+  </data>
+  <data name="TenantStorageHelp" xml:space="preserve">
+    <value>供内部使用，仅对系统管理员角色可见。控制对租户存储的“设置/管理/存储”页面的访问。</value>
+  </data>
+  <data name="TermsOfUseAdmin" xml:space="preserve">
+    <value>使用条款</value>
+  </data>
+  <data name="TermsOfUseAdminHelp" xml:space="preserve">
+    <value>查看管理员帐户使用条款。</value>
+  </data>
+  <data name="TermsOfUseSys" xml:space="preserve">
+    <value>使用条款</value>
+  </data>
+  <data name="TermsOfUseSysHelp" xml:space="preserve">
+    <value>控制访问“系统设置”和“设备注册”中的“使用条款”页面。</value>
+  </data>
+  <data name="TestModeEM" xml:space="preserve">
+    <value>测试模式</value>
+  </data>
+  <data name="TestModeEMHelp" xml:space="preserve">
+    <value>编辑电子邮件管理合规策略的测试模式。</value>
+  </data>
+  <data name="TimeScheduleDM" xml:space="preserve">
+    <value>时间表</value>
+  </data>
+  <data name="TimeScheduleDMHelp" xml:space="preserve">
+    <value>查看和编辑配置文件的时间表。</value>
+  </data>
+  <data name="TimeScheduleHelp" xml:space="preserve">
+    <value>授权查看/编辑时间表设置。</value>
+  </data>
+  <data name="TroubleshootingSys" xml:space="preserve">
+    <value>故障排除</value>
+  </data>
+  <data name="TroubleshootingSysHelp" xml:space="preserve">
+    <value>控制访问日志和故障排除页面。</value>
+  </data>
+  <data name="UemNotificationsInfo" xml:space="preserve">
+    <value>包括 Workspace ONE UEM 和 Workspace ONE Assist 的通知。</value>
+  </data>
+  <data name="UnApproveUpdate" xml:space="preserve">
+    <value>取消批准更新</value>
+  </data>
+  <data name="UnApproveUpdateHelp" xml:space="preserve">
+    <value>授予向设备发出“取消批准更新”命令的权限。</value>
+  </data>
+  <data name="UnApproveUpdates" xml:space="preserve">
+    <value>取消批准更新</value>
+  </data>
+  <data name="UnManagedWipeProtectionHelp" xml:space="preserve">
+    <value>未纳管设备的擦除保护设置</value>
+  </data>
+  <data name="UpdateEditAssignment" xml:space="preserve">
+    <value>更新编辑分配</value>
+  </data>
+  <data name="UpdateEditAssignmentHelp" xml:space="preserve">
+    <value>授予编辑智能组更新分配的权限</value>
+  </data>
+  <data name="UploadCctk" xml:space="preserve">
+    <value>上载 Cctk</value>
+  </data>
+  <data name="UploadCctkHelp" xml:space="preserve">
+    <value>允许管理员上载用于部署配置的 CCTK 软件包文件以配置 BIOS。</value>
+  </data>
+  <data name="UploadUnattendXml" xml:space="preserve">
+    <value>上载未纳管的 Xml</value>
+  </data>
+  <data name="UploadUnattendXmlHelp" xml:space="preserve">
+    <value>允许管理员上载用于部署配置的 Unattend XML 文件。</value>
+  </data>
+  <data name="UsageTel" xml:space="preserve">
+    <value>使用量</value>
+  </data>
+  <data name="UsageTelHelp" xml:space="preserve">
+    <value>查看电信使用量详情和仪表板。</value>
+  </data>
+  <data name="UserCategoriesDU" xml:space="preserve">
+    <value>用户类别</value>
+  </data>
+  <data name="UserCategoriesDUHelp" xml:space="preserve">
+    <value>控制访问系统设置中的用户类别。</value>
+  </data>
+  <data name="UserDetailUserAccounts" xml:space="preserve">
+    <value>用户详细信息</value>
+  </data>
+  <data name="UserDetailUserAccountsHelp" xml:space="preserve">
+    <value>访问“查看用户详细信息”页面。</value>
+  </data>
+  <data name="UserInfoDD" xml:space="preserve">
+    <value>用户信息</value>
+  </data>
+  <data name="UserInfoDDHelp" xml:space="preserve">
+    <value>访问设备详细信息中的用户信息。</value>
+  </data>
+  <data name="UserManagementHub" xml:space="preserve">
+    <value>用户管理</value>
+  </data>
+  <data name="UserManagementHubHelp" xml:space="preserve">
+    <value>生成用户管理报表。</value>
+  </data>
+  <data name="UserMigrationHelp" xml:space="preserve">
+    <value>授予权限查看可被迁移到 LDAP 用户的基本注册用户。</value>
+  </data>
+  <data name="UserRegistrationDashboard" xml:space="preserve">
+    <value>用户注册</value>
+  </data>
+  <data name="UserRegistrationDashboardHelp" xml:space="preserve">
+    <value>从仪表板和用户帐户页面访问注册状态链接。</value>
+  </data>
+  <data name="UserRegistrationEnrollmentStatus" xml:space="preserve">
+    <value>用户注册</value>
+  </data>
+  <data name="UserRegistrationEnrollmentStatusHelp" xml:space="preserve">
+    <value>在注册状态页面访问用户注册。</value>
+  </data>
+  <data name="UserRegistrationHelp" xml:space="preserve">
+    <value>控制在“仪表板”和“用户帐户”页面上查看“注册状态”链接的访问权限。导航到菜单/管理/用户帐户</value>
+  </data>
+  <data name="UserRoleHelp" xml:space="preserve">
+    <value>控制访问“用户帐户”项下的“角色”。</value>
+  </data>
+  <data name="UsersRESTSystem" xml:space="preserve">
+    <value>用户</value>
+  </data>
+  <data name="UsersRESTSystemHelp" xml:space="preserve">
+    <value>注册用户帐户的 REST API</value>
+  </data>
+  <data name="UserStorageSet" xml:space="preserve">
+    <value>用户存储</value>
+  </data>
+  <data name="UserStorageSetHelp" xml:space="preserve">
+    <value>管理最终用户的内容存储设置。</value>
+  </data>
+  <data name="UserTrackingHub" xml:space="preserve">
+    <value>用户跟踪</value>
+  </data>
+  <data name="UserTrackingHubHelp" xml:space="preserve">
+    <value>生成用户跟踪报表。</value>
+  </data>
+  <data name="VideoManagementSet" xml:space="preserve">
+    <value>视频管理</value>
+  </data>
+  <data name="VideoManagementSetHelp" xml:space="preserve">
+    <value>将视频添加到频道</value>
+  </data>
+  <data name="ViewAd" xml:space="preserve">
+    <value>查看</value>
+  </data>
+  <data name="ViewAdHelp" xml:space="preserve">
+    <value>授予权限查看缓存设置。</value>
+  </data>
+  <data name="ViewAdminAccount" xml:space="preserve">
+    <value>查看</value>
+  </data>
+  <data name="ViewAdminAccountHelp" xml:space="preserve">
+    <value>查看管理员帐户</value>
+  </data>
+  <data name="ViewAdminGroup" xml:space="preserve">
+    <value>查看</value>
+  </data>
+  <data name="ViewAdminGroupHelp" xml:space="preserve">
+    <value>查看管理员组页面。</value>
+  </data>
+  <data name="ViewAdminRoles" xml:space="preserve">
+    <value>查看</value>
+  </data>
+  <data name="ViewAdminRolesHelp" xml:space="preserve">
+    <value>查看管理员角色页面。</value>
+  </data>
+  <data name="ViewAn" xml:space="preserve">
+    <value>查看</value>
+  </data>
+  <data name="ViewAnHelp" xml:space="preserve">
+    <value>控制对“设备”项下的“Android”页面的访问。</value>
+  </data>
+  <data name="ViewApple" xml:space="preserve">
+    <value>查看</value>
+  </data>
+  <data name="ViewAppleHelp" xml:space="preserve">
+    <value>控制对设备项下 Apple 页面的访问。</value>
+  </data>
+  <data name="ViewBaselines" xml:space="preserve">
+    <value>查看基准</value>
+  </data>
+  <data name="ViewBaselinesHelp" xml:space="preserve">
+    <value>控制对查看基准的访问权限</value>
+  </data>
+  <data name="ViewCM" xml:space="preserve">
+    <value>查看</value>
+  </data>
+  <data name="ViewCMHelp" xml:space="preserve">
+    <value>查看内容管理页面。</value>
+  </data>
+  <data name="ViewCustomReportSubscriptionHelp" xml:space="preserve">
+    <value>控制查看自定义报告订阅的访问权限。导航到: Hub\报告与分析\自定义报告\订阅</value>
+  </data>
+  <data name="ViewDashboardDM" xml:space="preserve">
+    <value>查看仪表板</value>
+  </data>
+  <data name="ViewDashboardDMHelp" xml:space="preserve">
+    <value>查看设备管理内的设备仪表板页面。</value>
+  </data>
+  <data name="ViewDeviceManagement" xml:space="preserve">
+    <value>查看</value>
+  </data>
+  <data name="ViewDeviceManagementHelp" xml:space="preserve">
+    <value>查看设备管理模块。</value>
+  </data>
+  <data name="ViewDevicesAb" xml:space="preserve">
+    <value>查看设备</value>
+  </data>
+  <data name="ViewDevicesAbHelp" xml:space="preserve">
+    <value>控制访问查看与某一应用程序相关的设备。</value>
+  </data>
+  <data name="ViewDevicesCM" xml:space="preserve">
+    <value>查看设备</value>
+  </data>
+  <data name="ViewDevicesCMHelp" xml:space="preserve">
+    <value>在内容管理页面按所分配的内容查看设备。</value>
+  </data>
+  <data name="ViewDevicesDM" xml:space="preserve">
+    <value>查看设备</value>
+  </data>
+  <data name="ViewDevicesDMHelp" xml:space="preserve">
+    <value>访问配置文件下的“查看设备”图标。</value>
+  </data>
+  <data name="ViewDeviceSensors" xml:space="preserve">
+    <value>查看设备传感器</value>
+  </data>
+  <data name="ViewDeviceSensorsHelp" xml:space="preserve">
+    <value>控制对查看设备传感器详细信息和配置的访问权限</value>
+  </data>
+  <data name="ViewDeviceWnsStatus" xml:space="preserve">
+    <value>查看设备 WNS 状态</value>
+  </data>
+  <data name="ViewDeviceWnsStatusHelp" xml:space="preserve">
+    <value>能够查看设备 WNS 状态。</value>
+  </data>
+  <data name="ViewDM" xml:space="preserve">
+    <value>查看</value>
+  </data>
+  <data name="ViewDMHelp" xml:space="preserve">
+    <value>查看设备管理下的配置文件页面。</value>
+  </data>
+  <data name="ViewEducationOverviewHelp" xml:space="preserve">
+    <value>查看教育概览页面      </value>
+  </data>
+  <data name="ViewEM" xml:space="preserve">
+    <value>查看</value>
+  </data>
+  <data name="ViewEMHelp" xml:space="preserve">
+    <value>访问电子邮件管理菜单项目。</value>
+  </data>
+  <data name="ViewExtendedDeviceInventory" xml:space="preserve">
+    <value>查看扩展设备清单</value>
+  </data>
+  <data name="ViewExtendedDeviceInventoryHelp" xml:space="preserve">
+    <value>控制访问以查看扩展设备清单。</value>
+  </data>
+  <data name="ViewExtendedDeviceInventoryOnDeviceDetail" xml:space="preserve">
+    <value>查看“设备详细信息”页面上的扩展设备清单</value>
+  </data>
+  <data name="ViewExtendedDeviceInventoryOnDeviceDetailHelp" xml:space="preserve">
+    <value>控制访问权限以在“设备详细信息”页面上查看扩展设备清单。</value>
+  </data>
+  <data name="ViewFileServerConfiguration" xml:space="preserve">
+    <value>查看文件服务器配置</value>
+  </data>
+  <data name="ViewFileServerConfigurationHelp" xml:space="preserve">
+    <value>授予用户查看文件服务器网格和详细信息的权限</value>
+  </data>
+  <data name="ViewGen" xml:space="preserve">
+    <value>查看</value>
+  </data>
+  <data name="ViewGenHelp" xml:space="preserve">
+    <value>控制访问系统设置中的设备页面。</value>
+  </data>
+  <data name="ViewGr" xml:space="preserve">
+    <value>查看</value>
+  </data>
+  <data name="ViewGrHelp" xml:space="preserve">
+    <value>访问组织组页面。</value>
+  </data>
+  <data name="ViewHA" xml:space="preserve">
+    <value>查看</value>
+  </data>
+  <data name="ViewHAHelp" xml:space="preserve">
+    <value>访问警报模块</value>
+  </data>
+  <data name="ViewIos" xml:space="preserve">
+    <value>查看</value>
+  </data>
+  <data name="ViewIosHelp" xml:space="preserve">
+    <value>控制访问“设备”项下的 iOS 页面。</value>
+  </data>
+  <data name="ViewLinux" xml:space="preserve">
+    <value>查看</value>
+  </data>
+  <data name="ViewLinuxHelp" xml:space="preserve">
+    <value>控制对“设备”项下 Linux 页面的访问。</value>
+  </data>
+  <data name="ViewNotesHelp" xml:space="preserve">
+    <value>授予查看注释的权限</value>
+  </data>
+  <data name="ViewOemUpdates" xml:space="preserve">
+    <value>查看 Oem 更新</value>
+  </data>
+  <data name="ViewOemUpdatesHelp" xml:space="preserve">
+    <value>控制查看 OEM 更新仪表板的访问权限。导航到: 菜单\设备\OEM 更新</value>
+  </data>
+  <data name="ViewPM" xml:space="preserve">
+    <value>查看</value>
+  </data>
+  <data name="ViewPMHelp" xml:space="preserve">
+    <value>访问外设设置页面。</value>
+  </data>
+  <data name="ViewProvisioningPackages" xml:space="preserve">
+    <value>查看置备软件包</value>
+  </data>
+  <data name="ViewProvisioningPackagesHelp" xml:space="preserve">
+    <value>控制访问以查看置备软件包</value>
+  </data>
+  <data name="ViewSet" xml:space="preserve">
+    <value>查看</value>
+  </data>
+  <data name="ViewSetHelp" xml:space="preserve">
+    <value>控制访问系统设置中的应用页面。</value>
+  </data>
+  <data name="ViewSys" xml:space="preserve">
+    <value>查看</value>
+  </data>
+  <data name="ViewSysHelp" xml:space="preserve">
+    <value>控制访问“系统设置”。</value>
+  </data>
+  <data name="ViewTagHelp" xml:space="preserve">
+    <value>授予查看标记的权限</value>
+  </data>
+  <data name="ViewTimeWindow" xml:space="preserve">
+    <value>查看时间段</value>
+  </data>
+  <data name="ViewTimeWindowHelp" xml:space="preserve">
+    <value>控制查看时间段的访问权限。</value>
+  </data>
+  <data name="ViewTimeWindowOnDeviceDetail" xml:space="preserve">
+    <value>在“设备详细信息”页面上查看时间段</value>
+  </data>
+  <data name="ViewTimeWindowOnDeviceDetailHelp" xml:space="preserve">
+    <value>控制在“设备详细信息”页面上查看时间段的访问权限。</value>
+  </data>
+  <data name="ViewUG" xml:space="preserve">
+    <value>查看</value>
+  </data>
+  <data name="ViewUGHelp" xml:space="preserve">
+    <value>访问用户组页面。</value>
+  </data>
+  <data name="ViewUpdateDevices" xml:space="preserve">
+    <value>查看更新设备</value>
+  </data>
+  <data name="ViewUpdateDevicesHelp" xml:space="preserve">
+    <value>控制按更新状态查看设备的访问权限。导航到: 菜单\设备\更新</value>
+  </data>
+  <data name="ViewUpdatesHelp" xml:space="preserve">
+    <value>控制查看更新仪表板的访问权限。导航到: 菜单\设备\更新</value>
+  </data>
+  <data name="ViewUserAccounts" xml:space="preserve">
+    <value>查看</value>
+  </data>
+  <data name="ViewUserAccountsHelp" xml:space="preserve">
+    <value>查看用户帐户。</value>
+  </data>
+  <data name="ViewUserCategories" xml:space="preserve">
+    <value>查看</value>
+  </data>
+  <data name="ViewUserCategoriesHelp" xml:space="preserve">
+    <value>访问用户帐户的类别</value>
+  </data>
+  <data name="ViewUserDetails" xml:space="preserve">
+    <value>查看用户详细信息</value>
+  </data>
+  <data name="ViewUserDetailsHelp" xml:space="preserve">
+    <value>查看 Chrome OS 用户配置文件的用户分配。</value>
+  </data>
+  <data name="ViewUserRoles" xml:space="preserve">
+    <value>查看</value>
+  </data>
+  <data name="ViewUserRolesHelp" xml:space="preserve">
+    <value>查看用户角色。</value>
+  </data>
+  <data name="ViewWin" xml:space="preserve">
+    <value>查看</value>
+  </data>
+  <data name="ViewWindowsTemplateDevicesHelp" xml:space="preserve">
+    <value>允许管理员配置设置，以查看已在软件包仪表板上应用 Windows 模板 - 置备软件包的设备</value>
+  </data>
+  <data name="ViewWindowsTemplatesHelp" xml:space="preserve">
+    <value>允许管理员配置设置，以在控制台仪表板上查看 Windows 模板</value>
+  </data>
+  <data name="ViewWinHelp" xml:space="preserve">
+    <value>控制对设备项下 Windows 页面的访问。</value>
+  </data>
+  <data name="ViewXmlDM" xml:space="preserve">
+    <value>查看 XML</value>
+  </data>
+  <data name="ViewXmlDMHelp" xml:space="preserve">
+    <value>访问配置文件下的“查看 XML”图标。</value>
+  </data>
+  <data name="VmInstanceLockHelp" xml:space="preserve">
+    <value>锁定由 Horizon FLEX 管理的虚拟机实例</value>
+  </data>
+  <data name="VmInstanceUnlockHelp" xml:space="preserve">
+    <value>解锁由 Horizon FLEX 管理的虚拟机实例</value>
+  </data>
+  <data name="VmInstanceWipeHelp" xml:space="preserve">
+    <value>擦除由 Horizon FLEX 管理的虚拟机实例</value>
+  </data>
+  <data name="VMwareEmployeeLoginNotification" xml:space="preserve">
+    <value>VMware 员工登录通知</value>
+  </data>
+  <data name="VMwareEmployeeLoginNotificationInfo" xml:space="preserve">
+    <value>启用后，在 VMware 员工访问您的客户或合作伙伴组织组时会通知指定的收件人。</value>
+  </data>
+  <data name="WebConsoleLogHelp" xml:space="preserve">
+    <value>控制访问“网络故障日志”。</value>
+  </data>
+  <data name="WeblinkPM" xml:space="preserve">
+    <value>网页链接</value>
+  </data>
+  <data name="WeblinkPMHelp" xml:space="preserve">
+    <value>控制访问打印机网页链接页面</value>
+  </data>
+  <data name="WebsiteFiltersSettingsHelp" xml:space="preserve">
+    <value>控制查看和编辑网站筛选器设置屏幕的访问权限。导航路径是: 设置\应用\应用程序集成\网站筛选器</value>
+  </data>
+  <data name="WiFiPM" xml:space="preserve">
+    <value>Wi-Fi</value>
+  </data>
+  <data name="WiFiPMHelp" xml:space="preserve">
+    <value>控制访问打印机 Wi-Fi 页面</value>
+  </data>
+  <data name="Windows8RtWin" xml:space="preserve">
+    <value>Windows 8/RT</value>
+  </data>
+  <data name="Windows8RtWinHelp" xml:space="preserve">
+    <value>控制对 WinTR 设置的访问。</value>
+  </data>
+  <data name="WindowsAppDeploymentsEditHelp" xml:space="preserve">
+    <value>此资源允许管理员在控制台上配置应用程序部署设置</value>
+  </data>
+  <data name="WindowsAutoDiscoverySettingsEditHelp" xml:space="preserve">
+    <value>此资源允许管理员将自动发现模式配置为“本地部署”或“云托管”，并为 Windows 自动发现注册一个特定域</value>
+  </data>
+  <data name="WindowsAutoEnrollmentSettings" xml:space="preserve">
+    <value>Windows 自动注册设置</value>
+  </data>
+  <data name="WindowsAutoEnrollmentSettingsHelp" xml:space="preserve">
+    <value>此资源允许管理员配置适用于在 Windows 设备上运行的置备代理的设置。</value>
+  </data>
+  <data name="WindowsMobileDD" xml:space="preserve">
+    <value>Windows Mobile</value>
+  </data>
+  <data name="WindowsMobileDDHelp" xml:space="preserve">
+    <value>在设备详细信息页面管理特定 Windows Mobile 设置。</value>
+  </data>
+  <data name="WindowsMobileWm" xml:space="preserve">
+    <value>Windows Mobile</value>
+  </data>
+  <data name="WindowsMobileWmHelp" xml:space="preserve">
+    <value>控制访问“设备”中的 Windows Mobile 页面。</value>
+  </data>
+  <data name="WindowsPcSet" xml:space="preserve">
+    <value>Windows PC</value>
+  </data>
+  <data name="WindowsPcSetHelp" xml:space="preserve">
+    <value>控制对设备下 Windows PC 页面的访问权。</value>
+  </data>
+  <data name="WindowsPhone8Win" xml:space="preserve">
+    <value>Windows Phone 8</value>
+  </data>
+  <data name="WindowsPhone8WinHelp" xml:space="preserve">
+    <value>控制访问 Windows Phone 设置。</value>
+  </data>
+  <data name="WindowsPhoneHealthAttestationEdit" xml:space="preserve">
+    <value>编辑 WindowsPhone 运行状况证明</value>
+  </data>
+  <data name="WindowsPhoneHealthAttestationEditHelp" xml:space="preserve">
+    <value>此资源允许管理员为 Windows 10 移动设备配置运行状况证明设置</value>
+  </data>
+  <data name="WindowsPhoneWin" xml:space="preserve">
+    <value>Windows Phone</value>
+  </data>
+  <data name="WindowsPhoneWinHelp" xml:space="preserve">
+    <value>控制访问系统设置中的 Windows Phone 页面。</value>
+  </data>
+  <data name="WindowsRuntimeProvisioningHelp" xml:space="preserve">
+    <value>这些设置将允许管理员查看向最终用户批量置备 Windows 设备所需的注册预备信息。这还将帮助设置所有设备的引导信息。</value>
+  </data>
+  <data name="WindowsSampleScheduleHelp" xml:space="preserve">
+    <value>此组设置允许管理员设置收集 MDM 数据和设置样本的时间间隔。</value>
+  </data>
+  <data name="WinmoSWInventoryHub" xml:space="preserve">
+    <value>WinMo 软件清单</value>
+  </data>
+  <data name="WinmoSWInventoryHubHelp" xml:space="preserve">
+    <value>生成 WinMo S/W 清单报表。</value>
+  </data>
+  <data name="WipeProtectionDU" xml:space="preserve">
+    <value>擦除保护</value>
+  </data>
+  <data name="WipeProtectionDUHelp" xml:space="preserve">
+    <value>控制访问“高级”项下的“擦除保护”页面。</value>
+  </data>
+  <data name="WorkflowsDD" xml:space="preserve">
+    <value>工作流</value>
+  </data>
+  <data name="WorkflowsDDHelp" xml:space="preserve">
+    <value>查看设备上工作流的执行状态。</value>
+  </data>
+  <data name="WorkspaceSet" xml:space="preserve">
+    <value>容器</value>
+  </data>
+  <data name="WorkspaceSetHelp" xml:space="preserve">
+    <value>控制访问“常规”项下的 Container 页面。</value>
+  </data>
+  <data name="ZonesGr" xml:space="preserve">
+    <value>区域</value>
+  </data>
+  <data name="ZonesGrHelp" xml:space="preserve">
+    <value>管理组织组的位置区域。</value>
+  </data>
+  <data name="ZplPM" xml:space="preserve">
+    <value>Zpl</value>
+  </data>
+  <data name="ZplPMHelp" xml:space="preserve">
+    <value>控制对打印机 Zpl 页面的访问权限</value>
+  </data>
+</root>

@@ -1,0 +1,4934 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Aad" xml:space="preserve">
+    <value>AAD</value>
+  </data>
+  <data name="AbortAction" xml:space="preserve">
+    <value>取消操作</value>
+  </data>
+  <data name="AccessibilityPrivacyHelpInfo" xml:space="preserve">
+    <value>通过可访问性子系统控制应用程序。</value>
+  </data>
+  <data name="ActiveDirectoryRealm" xml:space="preserve">
+    <value>Active Directory 领域</value>
+  </data>
+  <data name="ActiveHoursEndUi" xml:space="preserve">
+    <value>活动时段 (结束)</value>
+  </data>
+  <data name="ActiveHoursMaxRangeInHours" xml:space="preserve">
+    <value>最长活动时段 (小时)</value>
+  </data>
+  <data name="ActiveHoursStartUi" xml:space="preserve">
+    <value>活动时段 (开始)</value>
+  </data>
+  <data name="AddArgProfile" xml:space="preserve">
+    <value>添加 {0} 配置文件</value>
+    <comment>The placeholder in this label key contains platform name.</comment>
+  </data>
+  <data name="AddCustomFolders" xml:space="preserve">
+    <value>添加自定义文件夹</value>
+  </data>
+  <data name="AddDescription" xml:space="preserve">
+    <value>添加说明</value>
+  </data>
+  <data name="AddExecutablePathInfo" xml:space="preserve">
+    <value>添加主应用程序正常工作所需的其他可执行路径。</value>
+  </data>
+  <data name="AddFirewallRule" xml:space="preserve">
+    <value>添加防火墙规则</value>
+  </data>
+  <data name="AdditionalRevocationCheck" xml:space="preserve">
+    <value>其他吊销检查</value>
+  </data>
+  <data name="AdditionalRevocationCheckInfo" xml:space="preserve">
+    <value>如果选择了软吊销检查，则在证书被 CRL/OCSP 明确拒绝之前，将被视为有效。这意味着不可用/不可访问的 CRL/OCSP 允许此检查成功。
+如果选择了硬吊销检查，除非 CRL/OCSP 明确指出“此证书正常”，否则证书将被视为无效。这是最安全的选项。</value>
+  </data>
+  <data name="AdditionalSettings" xml:space="preserve">
+    <value>其他设置</value>
+  </data>
+  <data name="AdditionalSettingsNotSupported" xml:space="preserve">
+    <value>此资源不支持状态管理和错误处理设置。</value>
+  </data>
+  <data name="AddPath" xml:space="preserve">
+    <value>添加</value>
+  </data>
+  <data name="AddPayloadQuickTipContent" xml:space="preserve">
+    <value>单击“添加”按钮以添加并配置此负载。</value>
+  </data>
+  <data name="AddPayloadsToYourProfile" xml:space="preserve">
+    <value>将负载添加到您的配置文件</value>
+  </data>
+  <data name="AddressBook" xml:space="preserve">
+    <value>通讯录</value>
+  </data>
+  <data name="AddressBookPrivacyHelpInfo" xml:space="preserve">
+    <value>由 Contacts.app 管理的联系信息。</value>
+  </data>
+  <data name="AddressToProxyHelp" xml:space="preserve">
+    <value>使用此设置可指定代理服务器的地址和端口。地址的格式为“server[:port]”。</value>
+  </data>
+  <data name="AddressToProxyServer" xml:space="preserve">
+    <value>代理服务器地址</value>
+  </data>
+  <data name="AddRowForPinnedApps" xml:space="preserve">
+    <value>添加行</value>
+  </data>
+  <data name="AddSectionName" xml:space="preserve">
+    <value>添加区域</value>
+  </data>
+  <data name="AddSettingsToYourProfile" xml:space="preserve">
+    <value>将设置添加到您的配置文件</value>
+  </data>
+  <data name="AddSystemExtension" xml:space="preserve">
+    <value>添加系统扩展</value>
+  </data>
+  <data name="AddSystemExtensionType" xml:space="preserve">
+    <value>添加系统扩展类型</value>
+  </data>
+  <data name="AddText" xml:space="preserve">
+    <value>添加文本</value>
+  </data>
+  <data name="AddTimeAwarenessProfile" xml:space="preserve">
+    <value>添加新的时间感知配置文件</value>
+  </data>
+  <data name="AddTo" xml:space="preserve">
+    <value>添加到</value>
+  </data>
+  <data name="AddVersionAlertText" xml:space="preserve">
+    <value>添加版本以编辑配置文件负载、名称等属性以及某些部署选项。</value>
+  </data>
+  <data name="AddVersionIconText" xml:space="preserve">
+    <value>要编辑名称等配置文件属性、负载以及某些部署选项，需要添加版本。新版本将在保存后替换当前版本。</value>
+  </data>
+  <data name="AdministratorApprovedUpdates" xml:space="preserve">
+    <value>管理员批准的更新</value>
+  </data>
+  <data name="AdSite" xml:space="preserve">
+    <value>AD 站点</value>
+  </data>
+  <data name="AEReceiverCodeRequirement" xml:space="preserve">
+    <value>接收方代码要求</value>
+  </data>
+  <data name="AEReceiverCodeRequirementPrivacyHelpInfo" xml:space="preserve">
+    <value>接收二进制文件的代码要求。</value>
+  </data>
+  <data name="AEReceiverIdentifier" xml:space="preserve">
+    <value>接收方标识符</value>
+  </data>
+  <data name="AEReceiverIdentifierPrivacyHelpInfo" xml:space="preserve">
+    <value>接收标识符进程发送的 AppleEvent 的接收方标识符。</value>
+  </data>
+  <data name="AEReceiverIdentifierType" xml:space="preserve">
+    <value>接收方标识符类型</value>
+  </data>
+  <data name="AEReceiverIdentifierTypePrivacyHelpInfo" xml:space="preserve">
+    <value>AppleEvent 接收方标识符值的类型。必须是捆绑包 ID 或路径。</value>
+  </data>
+  <data name="AFWFactoryResetProtectionPolicyDescription" xml:space="preserve">
+    <value>要启用企业出厂重置保护并置备通过未经授权的方法 (如引导加载程序或快速引导) 出厂重置的设备，首先需要在 {0} 上获取 Google 用户 ID。
+
+请在“资源名称”中输入“people/me”，并在“人员”字段中输入“emailAddresses”，单击“执行”，将 ID 复制粘贴到下方，然后再继续。</value>
+  </data>
+  <data name="AfwOemSelection" xml:space="preserve">
+    <value>选择 OEM</value>
+  </data>
+  <data name="AfwOemSettings" xml:space="preserve">
+    <value>OEM 设置</value>
+  </data>
+  <data name="AirPlaySecurity" xml:space="preserve">
+    <value>AirPlay 安全性</value>
+  </data>
+  <data name="AirplaySecurityPassword" xml:space="preserve">
+    <value>管理员密码</value>
+  </data>
+  <data name="AllAccounts" xml:space="preserve">
+    <value>所有帐户</value>
+  </data>
+  <data name="AllowAddingGoogleAccountsTooltip" xml:space="preserve">
+    <value>允许向设备添加新的 Google 帐户</value>
+  </data>
+  <data name="AllowAll" xml:space="preserve">
+    <value>全部允许 (Toast、活动、警示、错误对话框、覆盖)</value>
+  </data>
+  <data name="AllowAllCookiesFromAllSites" xml:space="preserve">
+    <value>允许所有站点中的所有 Cookie</value>
+  </data>
+  <data name="AllowAllExceptErrorDialogs" xml:space="preserve">
+    <value>全部允许 (错误对话框除外)</value>
+  </data>
+  <data name="AllowAllExceptErrorDialogsTooltip" xml:space="preserve">
+    <value>“全部允许 (错误对话框除外)”需要 Android 9.0+</value>
+  </data>
+  <data name="AllowAllKeyguardFeaturesTooltip" xml:space="preserve">
+    <value>允许设备上的所有键盘锁功能</value>
+  </data>
+  <data name="AllowAppClips" xml:space="preserve">
+    <value>允许应用剪辑</value>
+  </data>
+  <data name="AllowAppClipsToolTip" xml:space="preserve">
+    <value>如果取消选中，用户将无法添加任何应用剪辑，并会移除设备上的任何现有应用剪辑。</value>
+  </data>
+  <data name="AllowApplicationsFrom" xml:space="preserve">
+    <value>允许来自以下位置的应用程序</value>
+  </data>
+  <data name="AllowAppStoreAutoUpdates" xml:space="preserve">
+    <value>允许应用商店自动更新</value>
+  </data>
+  <data name="AllowAutoConnectToWifiHotspots" xml:space="preserve">
+    <value>允许自动连接到 Wi-Fi 热点</value>
+  </data>
+  <data name="AllowAutomaticLogin" xml:space="preserve">
+    <value>允许自动登录</value>
+  </data>
+  <data name="AllowBackupService" xml:space="preserve">
+    <value>允许备份服务</value>
+  </data>
+  <data name="AllowBatterySavingLocationUpdatesOnly" xml:space="preserve">
+    <value>仅设置电池节能位置更新</value>
+  </data>
+  <data name="AllowBiometricOptions" xml:space="preserve">
+    <value>允许生物识别选项</value>
+  </data>
+  <data name="AllowBiometricOptionsForDeviceToolTip" xml:space="preserve">
+    <value>允许生物识别功能解锁设备。</value>
+  </data>
+  <data name="AllowBiometricOptionsToolTip" xml:space="preserve">
+    <value>允许生物识别功能解锁工作配置文件。</value>
+  </data>
+  <data name="AllowBluetoothPairing" xml:space="preserve">
+    <value>允许蓝牙更改</value>
+  </data>
+  <data name="AllowCellularDataOnRoaming" xml:space="preserve">
+    <value>允许漫游时使用手机网络数据</value>
+  </data>
+  <data name="AllowCloudProtection" xml:space="preserve">
+    <value>云保护</value>
+  </data>
+  <data name="AllowConfigLocation" xml:space="preserve">
+    <value>Allow User to Modify Location Settings</value>
+  </data>
+  <data name="AllowContinuousPathKeyboard" xml:space="preserve">
+    <value>允许 QuickPath 键盘</value>
+  </data>
+  <data name="AllowContinuousPathKeyboardTooltip" xml:space="preserve">
+    <value>如果禁用，则用户无法使用 QuickPath 键盘。</value>
+  </data>
+  <data name="AllowCredentialsChangesTooltip" xml:space="preserve">
+    <value>允许在设备上更改用户凭证</value>
+  </data>
+  <data name="AllowDeprecatedWebKitTls" xml:space="preserve">
+    <value>允许已弃用的 TLS 版本</value>
+  </data>
+  <data name="AllowDeprecatedWebKitTlsTooltip" xml:space="preserve">
+    <value>如果允许，在 Safari 上使用 TLS v1.0-1.1 连接网站时，用户将看不到显示的警告消息。</value>
+  </data>
+  <data name="AllowedAccountsInGooglePlay" xml:space="preserve">
+    <value>Google Play 中允许的帐户</value>
+  </data>
+  <data name="AllowedApplications" xml:space="preserve">
+    <value>允许的应用程序</value>
+  </data>
+  <data name="AllowedBundleIds" xml:space="preserve">
+    <value>允许的包 ID</value>
+  </data>
+  <data name="AllowedBundleIdsDescription" xml:space="preserve">
+    <value>允许访问 Kerberos 票证授予票证 (TGT) 的应用包 ID 列表。</value>
+  </data>
+  <data name="AllowedPackageNamesToUtilizeWidgets" xml:space="preserve">
+    <value>输入以逗号分隔的软件包名称列表。默认情况下，允许 Gmail 和 Boxer。</value>
+  </data>
+  <data name="AllowedSystemExtensions" xml:space="preserve">
+    <value>允许的系统扩展</value>
+  </data>
+  <data name="AllowedSystemExtensionsDescription" xml:space="preserve">
+    <value>允许始终加载一组特定的扩展。任一 ID 都是可选的，但都可以提供。</value>
+  </data>
+  <data name="AllowedSystemExtensionTypes" xml:space="preserve">
+    <value>允许的系统扩展类型</value>
+  </data>
+  <data name="AllowedSystemExtensionTypesDescription" xml:space="preserve">
+    <value>允许加载全部或部分系统扩展类型。团队标识符规则优先于全局设置。</value>
+  </data>
+  <data name="AllowEmailSync" xml:space="preserve">
+    <value>允许电子邮件同步</value>
+  </data>
+  <data name="AllowEnhancedPinAtStartup" xml:space="preserve">
+    <value>启动时允许增强 PIN</value>
+  </data>
+  <data name="AllowEnhancedPinAtStartupTooltip" xml:space="preserve">
+    <value>增强的启动 PIN 允许使用包含大写和小写字母、符号、数字和空格在内的字符。为操作系统驱动器打开 BitLocker 时，将应用此设置。并非所有计算机在预启动环境中都支持增强的 PIN。</value>
+  </data>
+  <data name="AllowEsimModification" xml:space="preserve">
+    <value>允许 eSIM 修改</value>
+  </data>
+  <data name="AllowEsimModificationTooltip" xml:space="preserve">
+    <value>禁用时，此设置可防止用户在 iPhone XS 和 iPhone XS Max 上添加或移除流量套餐。</value>
+  </data>
+  <data name="AllowExclusion" xml:space="preserve">
+    <value>允许排除</value>
+  </data>
+  <data name="AllowExport" xml:space="preserve">
+    <value>允许导出</value>
+  </data>
+  <data name="AllowExportFromKeyChainTooltip" xml:space="preserve">
+    <value>如果未选中，则无法从密钥链导出私钥。</value>
+  </data>
+  <data name="AllowFaceScanning" xml:space="preserve">
+    <value>允许面部扫描</value>
+  </data>
+  <data name="AllowFaceScanningForDeviceToolTip" xml:space="preserve">
+    <value>允许面部扫描解锁设备。</value>
+  </data>
+  <data name="AllowFaceScanningToolTip" xml:space="preserve">
+    <value>允许面部扫描解锁工作配置文件。</value>
+  </data>
+  <data name="AllowFilesNetworkDriveAccess" xml:space="preserve">
+    <value>允许访问网络驱动器</value>
+  </data>
+  <data name="AllowFilesNetworkDriveAccessToolTip" xml:space="preserve">
+    <value>如果禁用，用户将无法连接到“文件”应用中的网络驱动器。</value>
+  </data>
+  <data name="AllowFilesUSBDriveAccess" xml:space="preserve">
+    <value>允许访问 USB 驱动器</value>
+  </data>
+  <data name="AllowFilesUSBDriveAccessToolTip" xml:space="preserve">
+    <value>禁用后，用户将无法通过 USB 驱动器访问文件</value>
+  </data>
+  <data name="AllowFindMyDevice" xml:space="preserve">
+    <value>允许“查找我的设备”</value>
+  </data>
+  <data name="AllowFindMyDeviceTooltip" xml:space="preserve">
+    <value>如果禁用，则用户无法使用“查找我的”应用中的“查找我的设备”。</value>
+  </data>
+  <data name="AllowFindMyFriends" xml:space="preserve">
+    <value>允许“查找我的好友”</value>
+  </data>
+  <data name="AllowFindMyFriendsTooltip" xml:space="preserve">
+    <value>如果禁用，则用户无法使用“查找我的”应用中的“查找我的好友”。</value>
+  </data>
+  <data name="AllowFingerprintSensor" xml:space="preserve">
+    <value>允许指纹传感器</value>
+  </data>
+  <data name="AllowFingerprintSensorForDeviceToolTip" xml:space="preserve">
+    <value>允许指纹传感器解锁设备。</value>
+  </data>
+  <data name="AllowFingerprintSensorToolTip" xml:space="preserve">
+    <value>允许指纹传感器解锁工作配置文件。</value>
+  </data>
+  <data name="AllowGPSLocationOnly" xml:space="preserve">
+    <value>仅设置 GPS 定位</value>
+  </data>
+  <data name="AllowHandoff" xml:space="preserve">
+    <value>允许 Handoff</value>
+  </data>
+  <data name="AllowHandoffTooltip" xml:space="preserve">
+    <value>取消勾选后，将在 macOS 中禁用活动持续功能。</value>
+  </data>
+  <data name="AllowHighAccuracyLocationOnly" xml:space="preserve">
+    <value>仅设置高精度定位</value>
+  </data>
+  <data name="AllowInternetSharing" xml:space="preserve">
+    <value>允许 Internet 共享</value>
+  </data>
+  <data name="AllowIOAVProtection" xml:space="preserve">
+    <value>IOAV 保护</value>
+  </data>
+  <data name="AllowIpsecNetworkTrafficInStealthMode" xml:space="preserve">
+    <value>允许隐藏模式下的 Ipsec 网络流量</value>
+  </data>
+  <data name="AllowIpsecNetworkTrafficInStealthModeHelp" xml:space="preserve">
+    <value>如果“禁用隐藏模式”为 true，则忽略此选项。否则，当此选项为 true 时，防火墙的隐藏模式规则不得阻止主机响应未经请求的网络流量，前提是该流量受 IPsec 保护。</value>
+  </data>
+  <data name="AllowIrisScanning" xml:space="preserve">
+    <value>允许虹膜扫描</value>
+  </data>
+  <data name="AllowIrisScanningToolForDeviceToolTip" xml:space="preserve">
+    <value>允许虹膜扫描解锁设备。</value>
+  </data>
+  <data name="AllowIrisScanningToolTip" xml:space="preserve">
+    <value>允许虹膜扫描解锁工作配置文件。</value>
+  </data>
+  <data name="AllowKeyguardCameraTooltip" xml:space="preserve">
+    <value>允许从键盘锁激活相机</value>
+  </data>
+  <data name="AllowKeyguardFingerprintSensorTooltip" xml:space="preserve">
+    <value>允许从键盘锁使用指纹传感器</value>
+  </data>
+  <data name="AllowKeyguardNotificationsTooltip" xml:space="preserve">
+    <value>允许在键盘锁上显示通知</value>
+  </data>
+  <data name="AllowKeyguardTrustAgentStateTooltip" xml:space="preserve">
+    <value>在键盘锁上允许信任代理</value>
+  </data>
+  <data name="AllowKeyguardUnRedactedNotificationsTooltip" xml:space="preserve">
+    <value>在键盘锁上允许未编辑的通知</value>
+  </data>
+  <data name="AllowlistAppsCanUtilizeWidgets" xml:space="preserve">
+    <value>允许可使用小组件的应用</value>
+  </data>
+  <data name="AllowLocationAccess" xml:space="preserve">
+    <value>允许定位服务配置 (仅限纳管设备)</value>
+  </data>
+  <data name="AllowLocationAccessTooltip" xml:space="preserve">
+    <value>允许定位服务配置</value>
+  </data>
+  <data name="AllowLocationDeletion" xml:space="preserve">
+    <value>允许删除位置</value>
+  </data>
+  <data name="AllowLocationGroupDeletion" xml:space="preserve">
+    <value>允许删除组织组</value>
+  </data>
+  <data name="AllowLocationServices" xml:space="preserve">
+    <value>允许定位服务</value>
+  </data>
+  <data name="AllowManagedAppsCloudSyncTooltip" xml:space="preserve">
+    <value>关闭此选项后，将阻止受管应用使用 iCloud 同步。</value>
+  </data>
+  <data name="AllowManagedToWriteUnmanagedContacts" xml:space="preserve">
+    <value>允许纳管应用将联系人写入到非纳管联系人帐户</value>
+  </data>
+  <data name="AllowManagedToWriteUnmanagedContactsTooltip" xml:space="preserve">
+    <value>禁用后，此设置会限制纳管应用将联系人写入非纳管联系人帐户。如果允许纳管应用和帐户中的文档在非纳管应用和帐户中打开，则此选项没有任何影响。</value>
+  </data>
+  <data name="AllowNonGoogleAccountsTooltip" xml:space="preserve">
+    <value>允许添加和移除用户帐户</value>
+  </data>
+  <data name="AllowOnAccessProtection" xml:space="preserve">
+    <value>OnAccess 保护</value>
+  </data>
+  <data name="AllowOneLock" xml:space="preserve">
+    <value>允许一个锁</value>
+  </data>
+  <data name="AllowOutgoingBluetoothConnections" xml:space="preserve">
+    <value>允许出站蓝牙连接</value>
+  </data>
+  <data name="AllowOutgoingPhoneCallsTooltip" xml:space="preserve">
+    <value>允许来自设备的拨出电话</value>
+  </data>
+  <data name="AllowPasswordAutoFill" xml:space="preserve">
+    <value>允许自动填写密码</value>
+  </data>
+  <data name="AllowPasswordAutoFillTooltip" xml:space="preserve">
+    <value>如果已启用，此设置允许自动填写密码。</value>
+  </data>
+  <data name="AllowPasswordChange" xml:space="preserve">
+    <value>允许更改密码</value>
+  </data>
+  <data name="AllowPasswordProximityRequests" xml:space="preserve">
+    <value>允许密码接近请求</value>
+  </data>
+  <data name="AllowPasswordProximityRequestsTooltip" xml:space="preserve">
+    <value>如果不允许，则禁止从附近设备请求密码</value>
+  </data>
+  <data name="AllowPasswordSharing" xml:space="preserve">
+    <value>允许共享 WiFi 密码</value>
+  </data>
+  <data name="AllowPasswordSharingTooltip" xml:space="preserve">
+    <value>禁用此选项后，用户将无法使用“Airdrop 密码”功能共享密码。</value>
+  </data>
+  <data name="AllowPersonalHotspotModification" xml:space="preserve">
+    <value>允许修改个人热点</value>
+  </data>
+  <data name="AllowPersonalHotspotModificationTooltip" xml:space="preserve">
+    <value>如果禁用此选项，则不允许用户修改个人热点设置。</value>
+  </data>
+  <data name="AllowPersonalShareWithWorkApp" xml:space="preserve">
+    <value>允许个人应用与工作应用共享数据</value>
+  </data>
+  <data name="AllowPersonalShareWithWorkAppTooltip" xml:space="preserve">
+    <value>指定用户是否可以将文件/图片/数据从个人端共享到托管配置文件中，方法是从个人端发送文件/图片/数据，或在托管配置文件中的应用中提取数据</value>
+  </data>
+  <data name="AllowPinAtStartUpToolTip" xml:space="preserve">
+    <value>Enable or disable Secure Startup, which requires an initial PIN entry to boot up the device. If disabled, the device passcode will be cleared only on first-time install of the profile. If Secure Startup is already disabled, the device must be factory reset to enable it. This feature applies only to Android devices that do not have file-based encryption.</value>
+  </data>
+  <data name="AllowPinnedFolderDocuments" xml:space="preserve">
+    <value>允许文档</value>
+  </data>
+  <data name="AllowPinnedFolderDocumentsToolTip" xml:space="preserve">
+    <value>在 1703 中添加。在“开始”菜单中允许“文档”快捷方式。</value>
+  </data>
+  <data name="AllowPinnedFolderDownloads" xml:space="preserve">
+    <value>允许下载</value>
+  </data>
+  <data name="AllowPinnedFolderDownloadsToolTip" xml:space="preserve">
+    <value>在 1703 中添加。在“开始”菜单中允许“下载”快捷方式。</value>
+  </data>
+  <data name="AllowPinnedFolderFileExplorer" xml:space="preserve">
+    <value>允许文件资源管理器</value>
+  </data>
+  <data name="AllowPinnedFolderFileExplorerToolTip" xml:space="preserve">
+    <value>在 1703 中添加。在“开始”菜单中允许“文件资源管理器”快捷方式。</value>
+  </data>
+  <data name="AllowPinnedFolderHomeGroup" xml:space="preserve">
+    <value>允许家庭组</value>
+  </data>
+  <data name="AllowPinnedFolderHomeGroupToolTip" xml:space="preserve">
+    <value>在 1703 中添加。在“开始”菜单中允许“家庭组”快捷方式。</value>
+  </data>
+  <data name="AllowPinnedFolderMusic" xml:space="preserve">
+    <value>允许音乐</value>
+  </data>
+  <data name="AllowPinnedFolderMusicToolTip" xml:space="preserve">
+    <value>在 1703 中添加。在“开始”菜单中允许“音乐”快捷方式。</value>
+  </data>
+  <data name="AllowPinnedFolderNetwork" xml:space="preserve">
+    <value>允许网络</value>
+  </data>
+  <data name="AllowPinnedFolderNetworkToolTip" xml:space="preserve">
+    <value>在 1703 中添加。在“开始”菜单中允许“网络”快捷方式。</value>
+  </data>
+  <data name="AllowPinnedFolderPersonalFolder" xml:space="preserve">
+    <value>允许个人文件夹</value>
+  </data>
+  <data name="AllowPinnedFolderPersonalFolderToolTip" xml:space="preserve">
+    <value>在 1703 中添加。在“开始”菜单中允许“个人文件夹”快捷方式。</value>
+  </data>
+  <data name="AllowPinnedFolderPictures" xml:space="preserve">
+    <value>允许图片</value>
+  </data>
+  <data name="AllowPinnedFolderPicturesToolTip" xml:space="preserve">
+    <value>在 1703 中添加。在“开始”菜单中允许“图片”快捷方式。</value>
+  </data>
+  <data name="AllowPinnedFolderSettings" xml:space="preserve">
+    <value>允许设置</value>
+  </data>
+  <data name="AllowPinnedFolderSettingsToolTip" xml:space="preserve">
+    <value>在 1703 中添加。在“开始”菜单中允许“设置”快捷方式。</value>
+  </data>
+  <data name="AllowPinnedFolderVideos" xml:space="preserve">
+    <value>允许视频</value>
+  </data>
+  <data name="AllowPinnedFolderVideosToolTip" xml:space="preserve">
+    <value>在 1703 中添加。在“开始”菜单中允许“视频”快捷方式。</value>
+  </data>
+  <data name="AllowProximitySetupToNewDevice" xml:space="preserve">
+    <value>允许新设备接近设置</value>
+  </data>
+  <data name="AllowProximitySetupToNewDeviceTooltip" xml:space="preserve">
+    <value>如果不允许，用户将看不到设置附近新设备的提示。</value>
+  </data>
+  <data name="AllowRecoveryKeyRotation" xml:space="preserve">
+    <value>密钥轮换 (建议)</value>
+  </data>
+  <data name="AllowRemovingAndroidWorkAccountTooltip" xml:space="preserve">
+    <value>允许从设备中移除 Android Work 帐户</value>
+  </data>
+  <data name="AllowScanningNetworkFiles" xml:space="preserve">
+    <value>扫描网络文件</value>
+  </data>
+  <data name="AllowScreenShotHelp" xml:space="preserve">
+    <value>如果未选择此功能，用户将无法保存显示器的屏幕截图，并且无法捕获屏幕录制。这也会阻止 Classroom 应用观察远程屏幕。</value>
+  </data>
+  <data name="AllowScriptScanning" xml:space="preserve">
+    <value>扫描脚本</value>
+  </data>
+  <data name="AllowSendReceiveSmsTooltip" xml:space="preserve">
+    <value>允许发送和接收短信</value>
+  </data>
+  <data name="AllowSharedDeviceTemporarySession" xml:space="preserve">
+    <value>允许共享设备临时会话</value>
+  </data>
+  <data name="AllowSharedDeviceTemporarySessionTooltip" xml:space="preserve">
+    <value>如果不允许，共享 iPad 的用户将不允许启动临时会话。通过临时会话，用户可以利用共享的 iPad，在用户注销时，不会将用户数据保存或同步到 iCloud。</value>
+  </data>
+  <data name="AllowSimpleToolTip" xml:space="preserve">
+    <value>如果启用，则允许员工设置一个简单密码，该密码可以包含重复字符，或递增或递减字符 (如 123 或 CBA)。</value>
+  </data>
+  <data name="AllowSiriServerLogging" xml:space="preserve">
+    <value>允许 Siri 服务器日志记录</value>
+  </data>
+  <data name="AllowSiriServerLoggingTooltip" xml:space="preserve">
+    <value>禁用此选项后，Siri 不会将数据记录到服务器。</value>
+  </data>
+  <data name="AllowSmartCard" xml:space="preserve">
+    <value>允许智能卡身份验证</value>
+  </data>
+  <data name="AllowStandardUserToSetSystemService" xml:space="preserve">
+    <value>允许标准用户设置系统服务 (仅适用于 macOS 11+)</value>
+  </data>
+  <data name="AllowSystemErrorDialogs" xml:space="preserve">
+    <value>允许系统 UI</value>
+  </data>
+  <data name="AllowSystemWindows" xml:space="preserve">
+    <value>允许系统 UI（Toast、活动、警示、错误、叠加）</value>
+  </data>
+  <data name="AllowSystemWindowsErrorDialogs" xml:space="preserve">
+    <value>允许系统 UI (错误对话框)</value>
+  </data>
+  <data name="AllowSystemWindowsExceptErrorDialogs" xml:space="preserve">
+    <value>允许系统 UI (Toast、活动、警示、叠加)</value>
+  </data>
+  <data name="AllowUnmanagedToReadManagedContacts" xml:space="preserve">
+    <value>允许非纳管应用从纳管联系人帐户读取联系人</value>
+  </data>
+  <data name="AllowUnmanagedToReadManagedContactsTooltip" xml:space="preserve">
+    <value>禁用后，此设置会限制非纳管应用从纳管联系人帐户读取联系人。如果允许纳管应用和帐户中的文档在非纳管应用和帐户中打开，则此选项没有任何影响。</value>
+  </data>
+  <data name="AllowUnsecureVPNConnection" xml:space="preserve">
+    <value>允许不安全的 VPN 连接</value>
+  </data>
+  <data name="AllowUpdateServiceToolTip" xml:space="preserve">
+    <value>指定设备是否可以利用 Microsoft 更新、WSUS 或 Windows 应用商店。如果将 Windows 更新配置为从 Intranet 来源接收更新，则此策略仍将继续定期从公共 Windows 更新服务获取信息。允许此策略将禁用与包括 Windows 应用商店在内的公共更新服务的连接。</value>
+  </data>
+  <data name="AllowURLs" xml:space="preserve">
+    <value>允许的网站</value>
+  </data>
+  <data name="AllowUsbRestrictedMode" xml:space="preserve">
+    <value>允许 USB 受限模式</value>
+  </data>
+  <data name="AllowUsbRestrictedModeTooltip" xml:space="preserve">
+    <value>禁用此选项后，设备无需输入密码即可初次连接到或保持连接到 USB 附件。</value>
+  </data>
+  <data name="AllowUserIconChangeTooltip" xml:space="preserve">
+    <value>允许更改用户图标</value>
+  </data>
+  <data name="AllowUserToAdjustVoiceControl" xml:space="preserve">
+    <value>允许用户调整语音控制</value>
+  </data>
+  <data name="AllowUserToChangeDateTime" xml:space="preserve">
+    <value>允许用户更改日期/时间</value>
+  </data>
+  <data name="AllowUserToConfigure" xml:space="preserve">
+    <value>允许用户配置</value>
+  </data>
+  <data name="AllowUserUIAccess" xml:space="preserve">
+    <value>UI 锁定</value>
+  </data>
+  <data name="AllowWifiDisconnectDuringSleep" xml:space="preserve">
+    <value>睡眠期间保持 Wi-Fi 开启</value>
+  </data>
+  <data name="AllowWifiDisconnectDuringSleepTooltip" xml:space="preserve">
+    <value>选择是否在睡眠期间保持 Wi-Fi 开启</value>
+  </data>
+  <data name="AllowWiFiPowerModification" xml:space="preserve">
+    <value>允许打开/关闭 Wi-Fi</value>
+  </data>
+  <data name="AllowWiFiPowerModificationTooltip" xml:space="preserve">
+    <value>如果禁用，则用户无法打开或关闭 Wi-Fi。此限制不会阻止在 Wi-Fi 打开时选择使用哪个 Wi-Fi 网络。</value>
+  </data>
+  <data name="AllTrustedApps" xml:space="preserve">
+    <value>允许非 Windows 应用商店应用程序</value>
+  </data>
+  <data name="AlwaysAutoUpdate" xml:space="preserve">
+    <value>始终自动更新</value>
+  </data>
+  <data name="AlwaysPrompt" xml:space="preserve">
+    <value>始终提示</value>
+  </data>
+  <data name="AlwaysUserSelectedAcrossDevice" xml:space="preserve">
+    <value>始终允许用户在设备上选择</value>
+  </data>
+  <data name="AndroidEnterpriseAutoUpdateMustBeOnlyPayload" xml:space="preserve">
+    <value>自动更新负载必须是配置文件中唯一的负载。</value>
+  </data>
+  <data name="AndroidNinePlusFullyManaged" xml:space="preserve">
+    <value>Android 9.0+ 完全管理</value>
+  </data>
+  <data name="AnnualSystemUpdateFreezePeriods" xml:space="preserve">
+    <value>每年系统更新冻结期</value>
+  </data>
+  <data name="AnyEthernet" xml:space="preserve">
+    <value>任何以太网</value>
+  </data>
+  <data name="APNAdvanced" xml:space="preserve">
+    <value>APN</value>
+  </data>
+  <data name="AppControlAtleastOneSideSettingRequiredError" xml:space="preserve">
+    <value>选择至少一个纳管设备或工作配置文件设置进行配置。</value>
+  </data>
+  <data name="AppHelp" xml:space="preserve">
+    <value>控制应用、程序或服务的连接的规则。</value>
+  </data>
+  <data name="AppIcon" xml:space="preserve">
+    <value>应用图标</value>
+  </data>
+  <data name="AppIconSize" xml:space="preserve">
+    <value>应用图标大小</value>
+  </data>
+  <data name="AppIdentifier" xml:space="preserve">
+    <value>应用标识符</value>
+  </data>
+  <data name="AppIdentifierRequired" xml:space="preserve">
+    <value>需要应用标识符。</value>
+  </data>
+  <data name="AppIdentifierType" xml:space="preserve">
+    <value>应用标识符类型</value>
+  </data>
+  <data name="AppleAllowCarPlay" xml:space="preserve">
+    <value>允许 CarPlay</value>
+  </data>
+  <data name="AppleAllowCarPlayTooltip" xml:space="preserve">
+    <value>启用后，此设置允许在 Apple CarPlay 中显示应用程序通知。</value>
+  </data>
+  <data name="AppleBypassDoNotDisturb" xml:space="preserve">
+    <value>允许关键警示通知</value>
+  </data>
+  <data name="AppleBypassDoNotDisturbTooltip" xml:space="preserve">
+    <value>启用后，此设置允许应用程序将通知标记为关键，并绕过“请勿打扰”和铃声设置。</value>
+  </data>
+  <data name="AppleConfiguratorInformationa" xml:space="preserve">
+    <value>通过直接将预配置的 MDM 配置文件安装到设备上，即可自动对 iOS 设备进行注册预备。必须先为此组织组导出一个配置文件，然后使用 Apple Configurator 或采用其他手动方式将该文件安装到设备上。
+
+执行以下操作来创建配置文件：
+1. 启用“自动注册”。
+2. 选择“注册预备模式”。
+3. 为每台设备选择一个“默认注册用户”作为指定的初始用户 (如果无用户可选，单击“添加用户”)。
+4. 选择设备平台。
+5. 单击“保存”按钮以保存设置。
+6. 单击“导出”按钮以导出配置文件。
+
+导出配置文件后，即可使用 Apple Configurator 应用程序内“配置文件”框底部的加号标志将配置文件导入到 Apple Configurator。</value>
+  </data>
+  <data name="AppleConfiguratorInformationb" xml:space="preserve">
+    <value>可以使用序列号、IMEI 或 UDID 来注册设备，从而预先分配每台设备的最终用户。
+
+对于未注册设备，注册用户取决于您选择的“注册预备模式”：
+1. 如果“注册预备模式”为“无”，则所有未注册设备均在您选择的“默认注册用户”下注册。
+2. 如果“注册预备模式”为“单用户”，则会在最终用户打开 Intelligent Hub 应用时提示其提供凭据。
+
+您无法预先注册多用户设备。
+如果“注册预备模式”为“多用户”，则设备将置于“共享设备”模式。您的最终用户必须签入/签出要使用的设备。</value>
+  </data>
+  <data name="AppleDoNotGroup" xml:space="preserve">
+    <value>请勿分组</value>
+  </data>
+  <data name="AppleEvents" xml:space="preserve">
+    <value>Apple 事件</value>
+  </data>
+  <data name="AppleEventsPrivacyHelpInfo" xml:space="preserve">
+    <value>允许应用程序向其他进程发送受限制的 AppleEvent。</value>
+  </data>
+  <data name="AppleGroupIntoAppSpecifiedGroups" xml:space="preserve">
+    <value>分到应用程序指定的组</value>
+  </data>
+  <data name="AppleGroupIntoOneGroup" xml:space="preserve">
+    <value>分到一个组</value>
+  </data>
+  <data name="AppleGroupNotificationType" xml:space="preserve">
+    <value>选择组通知类型</value>
+  </data>
+  <data name="AppleGroupNotificationTypeTooltip" xml:space="preserve">
+    <value>确定如何在设备上对应用程序通知进行分组。</value>
+  </data>
+  <data name="AppleProfileInstallationBatchSize" xml:space="preserve">
+    <value>Apple 配置文件安装批量大小</value>
+  </data>
+  <data name="AppleProfileInstallationBatchSizeTooltip" xml:space="preserve">
+    <value>按批次添加到命令队列中的配置文件命令数量</value>
+  </data>
+  <data name="AppleProfileReleaseBatchSize" xml:space="preserve">
+    <value>Apple 配置文件发布批量大小</value>
+  </data>
+  <data name="AppleProfileReleaseBatchSizeTooltip" xml:space="preserve">
+    <value>Apple 设备每 2 分钟发布的配置文件命令数。</value>
+  </data>
+  <data name="AppleProfileReleaseJob" xml:space="preserve">
+    <value>Apple 配置文件发布作业</value>
+  </data>
+  <data name="AppleShowPreviewNotificationType" xml:space="preserve">
+    <value>显示预览</value>
+  </data>
+  <data name="AppleShowPreviewNotificationTypeTooltip" xml:space="preserve">
+    <value>始终 - 当锁定和解锁设备时显示预览
+仅当解锁时 - 仅当解锁设备时才会显示预览
+从不 - 永远不会显示预览</value>
+  </data>
+  <data name="ApplicationControlCope" xml:space="preserve">
+    <value>COPE 上的应用控制</value>
+  </data>
+  <data name="ApplicationExtensionInfo" xml:space="preserve">
+    <value>对指定 URL 执行单点登录 (SSO) 的应用扩展的包标识符。</value>
+  </data>
+  <data name="AppListDefault" xml:space="preserve">
+    <value>默认</value>
+  </data>
+  <data name="AppMappingFromDTR" xml:space="preserve">
+    <value>来自 DTR 的应用程序映射</value>
+  </data>
+  <data name="AppMappingOptionRemoved" xml:space="preserve">
+    <value>在 Tunnel 配置中使用设备流量规则管理 Safari 域和应用。定义的应用策略将自动应用于此配置文件。</value>
+  </data>
+  <data name="AppMode" xml:space="preserve">
+    <value>应用模式</value>
+  </data>
+  <data name="AppNotifications" xml:space="preserve">
+    <value>应用通知</value>
+  </data>
+  <data name="AppOrService" xml:space="preserve">
+    <value>应用或服务</value>
+  </data>
+  <data name="AppStoreAutoUpdates" xml:space="preserve">
+    <value>通过 App Store 自动更新</value>
+  </data>
+  <data name="AppTypeHelp" xml:space="preserve">
+    <value>控制应用、程序或服务的连接的规则。</value>
+  </data>
+  <data name="AppUsageRules" xml:space="preserve">
+    <value>应用使用情况规则</value>
+  </data>
+  <data name="ArchiveScanning" xml:space="preserve">
+    <value>扫描档案</value>
+  </data>
+  <data name="ArgAddProfile" xml:space="preserve">
+    <value>添加新的 {0} 配置文件</value>
+  </data>
+  <data name="ArgMustBeBetweenArgs" xml:space="preserve">
+    <value>{0} 必须介于 {1} 和 {2} 之间</value>
+  </data>
+  <data name="ArgNotValidHttpsUrl" xml:space="preserve">
+    <value>添加的 {0} 不是有效的 https URL</value>
+  </data>
+  <data name="ASAccessType" xml:space="preserve">
+    <value>访问类型</value>
+  </data>
+  <data name="ASAccessTypeAny" xml:space="preserve">
+    <value>任意</value>
+  </data>
+  <data name="ASAccessTypeWiFiOnly" xml:space="preserve">
+    <value>仅 Wi-Fi</value>
+  </data>
+  <data name="AspectRatio" xml:space="preserve">
+    <value>纵横比</value>
+  </data>
+  <data name="ASRExclusions" xml:space="preserve">
+    <value>排除项</value>
+  </data>
+  <data name="ASRRule" xml:space="preserve">
+    <value>ASR 规则</value>
+  </data>
+  <data name="ASRRuleSelectedMultipleTimes" xml:space="preserve">
+    <value>由于 ASR 规则冲突，保存失败。请仅选择每个 ASR 规则一次。</value>
+  </data>
+  <data name="ASSecurityType" xml:space="preserve">
+    <value>安全类型</value>
+  </data>
+  <data name="ASSecurityTypePassword" xml:space="preserve">
+    <value>密码</value>
+  </data>
+  <data name="AssignedAccessConfigurationXmlFileId" xml:space="preserve">
+    <value>分配的访问配置 Xml</value>
+  </data>
+  <data name="AssignedAccessConfigurationXmlFileIdHelp" xml:space="preserve">
+    <value>上载分配的访问配置 XML 或将 XML 直接粘贴到文本框中。</value>
+  </data>
+  <data name="AssociatedDomainRequired" xml:space="preserve">
+    <value>需要关联的域。</value>
+  </data>
+  <data name="AssociatedDomains" xml:space="preserve">
+    <value>关联的域</value>
+  </data>
+  <data name="AssociatedDomainsSettings" xml:space="preserve">
+    <value>关联的域</value>
+  </data>
+  <data name="AtleastOneAppIdentifierAndAssociatedDomainRequired" xml:space="preserve">
+    <value>至少需要一个应用标识符和关联的域。</value>
+  </data>
+  <data name="AtLeastOneAppPrivacyPolicyShouldBeAdded" xml:space="preserve">
+    <value>应当为隐私首选项至少添加一个应用程序。</value>
+  </data>
+  <data name="AtleastOneAppShouldBeAddedInNotification" xml:space="preserve">
+    <value>未添加任何应用程序。请至少添加一个应用程序到通知负载，然后重试。</value>
+  </data>
+  <data name="AtleastOneAreaIsRequired" xml:space="preserve">
+    <value>需要至少一个区域。</value>
+  </data>
+  <data name="AtleastOneHostIsRequired" xml:space="preserve">
+    <value>至少需要一个主机名或域名。</value>
+  </data>
+  <data name="AtleastOneMessageShouldBeAddedInCustomMessagesProfile" xml:space="preserve">
+    <value>至少应在自定义消息配置文件中添加一条消息</value>
+  </data>
+  <data name="AtLeastOneServiceForPrivacyPreference" xml:space="preserve">
+    <value>至少将一个服务定义为允许或不允许。</value>
+  </data>
+  <data name="AtLeastOneSsoExtensionApplicationShouldBeAdded" xml:space="preserve">
+    <value>应至少添加一个 SSO 扩展应用程序。</value>
+  </data>
+  <data name="AtleastOneUrlIsRequired" xml:space="preserve">
+    <value>至少需要一个 URL 前缀。</value>
+  </data>
+  <data name="AttackSurfaceReduction" xml:space="preserve">
+    <value>攻击面减少</value>
+  </data>
+  <data name="AttackSurfaceReductionRule" xml:space="preserve">
+    <value>攻击面减少规则</value>
+  </data>
+  <data name="AttackSurfaceReductionRulesOptionsToolTip" xml:space="preserve">
+    <value>可以使用此策略启用 (阻止/审核) 或禁用攻击面减少规则。此功能功能可以防止恶意软件感染机器。</value>
+  </data>
+  <data name="AttackSurfaceReductionsRule1" xml:space="preserve">
+    <value>阻止电子邮件客户端和 Web 邮件中的可执行内容</value>
+  </data>
+  <data name="AttackSurfaceReductionsRule10" xml:space="preserve">
+    <value>阻止从 Windows 本地安全机构子系统 (lsass.exe) 窃取凭证</value>
+  </data>
+  <data name="AttackSurfaceReductionsRule11" xml:space="preserve">
+    <value>阻止通过 PSExec 和 WMI 命令执行创建进程</value>
+  </data>
+  <data name="AttackSurfaceReductionsRule12" xml:space="preserve">
+    <value>阻止从 USB 运行的不受信任和未签名的进程</value>
+  </data>
+  <data name="AttackSurfaceReductionsRule13" xml:space="preserve">
+    <value>仅阻止 Office 通信应用程序创建子进程</value>
+  </data>
+  <data name="AttackSurfaceReductionsRule14" xml:space="preserve">
+    <value>阻止 Adobe Reader 创建子进程</value>
+  </data>
+  <data name="AttackSurfaceReductionsRule2" xml:space="preserve">
+    <value>阻止所有 Office 应用程序创建子进程</value>
+  </data>
+  <data name="AttackSurfaceReductionsRule3" xml:space="preserve">
+    <value>阻止 Office 应用程序创建可执行内容</value>
+  </data>
+  <data name="AttackSurfaceReductionsRule4" xml:space="preserve">
+    <value>阻止 Office 应用程序将代码注入其他进程</value>
+  </data>
+  <data name="AttackSurfaceReductionsRule5" xml:space="preserve">
+    <value>阻止 JavaScript 或 VBScript 启动下载的可执行内容</value>
+  </data>
+  <data name="AttackSurfaceReductionsRule6" xml:space="preserve">
+    <value>阻止执行可能混淆的脚本</value>
+  </data>
+  <data name="AttackSurfaceReductionsRule7" xml:space="preserve">
+    <value>阻止从 Office 宏执行 Win32 API 调用</value>
+  </data>
+  <data name="AttackSurfaceReductionsRule8" xml:space="preserve">
+    <value>阻止可执行文件运行，除非它们符合普遍性、期限或受信任列表标准</value>
+  </data>
+  <data name="AttackSurfaceReductionsRule9" xml:space="preserve">
+    <value>使用高级保护抵御勒索软件</value>
+  </data>
+  <data name="attempts" xml:space="preserve">
+    <value>尝试</value>
+  </data>
+  <data name="AuditMode" xml:space="preserve">
+    <value>审核模式</value>
+  </data>
+  <data name="AUMID" xml:space="preserve">
+    <value>AUMID (应用程序用户模型 ID)</value>
+  </data>
+  <data name="AuthenticatedDomain" xml:space="preserve">
+    <value>经过身份验证的域 SID</value>
+  </data>
+  <data name="AuthenticatedNetworkMountUrlListPlaceholderText" xml:space="preserve">
+    <value>Protocol://URL/Volume</value>
+  </data>
+  <data name="AuthenticationEnabledWithCustomEnrollment" xml:space="preserve">
+    <value>自定义注册打开时需要进行身份验证。</value>
+  </data>
+  <data name="AuthorizedApplicationRules" xml:space="preserve">
+    <value>授权的应用程序规则</value>
+  </data>
+  <data name="AuthorizedApplicationRulesHelp" xml:space="preserve">
+    <value>如果该值为 false，本地存储中的授权应用程序防火墙规则将被忽略且不会强制执行</value>
+  </data>
+  <data name="AuthorizedLocalUsers" xml:space="preserve">
+    <value>授权的本地用户</value>
+  </data>
+  <data name="AuthorizedLocalUsersHelp" xml:space="preserve">
+    <value>指定此规则的授权本地用户列表</value>
+  </data>
+  <data name="AutoApproveDrivers" xml:space="preserve">
+    <value>驱动程序</value>
+  </data>
+  <data name="AutoApproveFeatureUpdates" xml:space="preserve">
+    <value>功能更新</value>
+  </data>
+  <data name="AutoDetectSettingsHelp" xml:space="preserve">
+    <value>启用此设置可在网络上自动检测代理。</value>
+  </data>
+  <data name="Autofill" xml:space="preserve">
+    <value>自动填充</value>
+  </data>
+  <data name="AutomaticallyDetectSettings" xml:space="preserve">
+    <value>自动检测设置</value>
+  </data>
+  <data name="AutoPlay" xml:space="preserve">
+    <value>允许用户更改 AutoPlay 设置</value>
+  </data>
+  <data name="AutoRestartDeadlinePeriodForFeatureToolTip" xml:space="preserve">
+    <value>此策略定义截止时间 (天)，该时间过后必须重新启动更新才能进行功能更新。</value>
+  </data>
+  <data name="AutoRestartDeadlinePeriodInDays" xml:space="preserve">
+    <value>质量更新自动重新启动截止时间 (天)</value>
+  </data>
+  <data name="AutoRestartDeadlinePeriodInDaysForFeatureUpdates" xml:space="preserve">
+    <value>功能更新自动重新启动截止时间 (天)</value>
+  </data>
+  <data name="AutoRestartDeadlinePeriodToolTip" xml:space="preserve">
+    <value>此策略定义截止时间 (天)，该时间过后，更新时必须重新引导。</value>
+  </data>
+  <data name="AutoRestartNotificationScheduleInMinutes" xml:space="preserve">
+    <value>自动重新启动通知 (分钟)</value>
+  </data>
+  <data name="AutoRestartNotificationScheduleToolTip" xml:space="preserve">
+    <value>在 Windows 10 版本 1703 中添加。指定自动重新启动提醒通知的计划</value>
+  </data>
+  <data name="AutoRestartRequiredNotificationDismissalToolTip" xml:space="preserve">
+    <value>在 Windows 10 版本 1703 中添加。指定如何关闭需要自动重新启动通知</value>
+  </data>
+  <data name="AutoUpdateEnd" xml:space="preserve">
+    <value>结束时间</value>
+  </data>
+  <data name="AutoUpdateEndTimeAtLeastThirtyMinutes" xml:space="preserve">
+    <value>结束时间必须晚于开始时间至少 30 分钟。</value>
+  </data>
+  <data name="AutoUpdatePublicAppUpdatePolicy" xml:space="preserve">
+    <value>公共应用自动更新策略</value>
+  </data>
+  <data name="AutoUpdateStart" xml:space="preserve">
+    <value>开始时间</value>
+  </data>
+  <data name="AWDisableStatefulFtp" xml:space="preserve">
+    <value>有状态的 FTP</value>
+  </data>
+  <data name="AwOpportunityMatchAuthSetPerKM" xml:space="preserve">
+    <value>每 KM 的机会匹配身份验证集</value>
+  </data>
+  <data name="AwOverlaySize" xml:space="preserve">
+    <value>覆盖大小 (MB)</value>
+  </data>
+  <data name="AwRam" xml:space="preserve">
+    <value>RAM</value>
+  </data>
+  <data name="AwSecurityAssociationIdleTime" xml:space="preserve">
+    <value>安全关联空闲时间</value>
+  </data>
+  <data name="AwWriteFilterType" xml:space="preserve">
+    <value>写入筛选器类型</value>
+  </data>
+  <data name="AwWriteFilterTypeHelp" xml:space="preserve">
+    <value>表示下一会话的覆盖类型。</value>
+  </data>
+  <data name="BackToProfile" xml:space="preserve">
+    <value>返回配置文件</value>
+  </data>
+  <data name="BatchImportWifiProfilesExplanationEight" xml:space="preserve">
+    <value>仅支持 Apple 和 Android 平台。Android 平台不支持企业模板类型和“设置为活跃网络”标记。不支持上载证书，证书只能通过提及证书颁发机构的名称和 AirWatch 系统中存在的证书模板加以援引。仅支持 Android 企业模板类型中的“WPA/WPA2Enterprise”安全类型。</value>
+  </data>
+  <data name="BatchImportWifiProfilesExplanationFive" xml:space="preserve">
+    <value>如果给定的配置文件名称在系统中不存在，则会新建一个配置文件</value>
+  </data>
+  <data name="BatchImportWifiProfilesExplanationFour" xml:space="preserve">
+    <value>使用给定的 Wi-Fi 设置编辑现有配置文件。在这种情况下，将创建新的 Wi-Fi 配置</value>
+  </data>
+  <data name="BatchImportWifiProfilesExplanationOne" xml:space="preserve">
+    <value>此批量导入功能可用于将 Wi-Fi 配置文件批量加载到系统中。此功能仅适用于 iOS 和 Android 平台。</value>
+  </data>
+  <data name="BatchImportWifiProfilesExplanationSeven" xml:space="preserve">
+    <value>应当在“组织组/分配的组织组”列使用组 ID。</value>
+  </data>
+  <data name="BatchImportWifiProfilesExplanationSix" xml:space="preserve">
+    <value>下面的链接提供此类导入的参考模板。必填字段均以 '*' 标注</value>
+  </data>
+  <data name="BatchImportWifiProfilesExplanationThree" xml:space="preserve">
+    <value>更改现有配置文件中的型号和/或所分配的组织组字段</value>
+  </data>
+  <data name="BatchImportWifiProfilesExplanationTwo" xml:space="preserve">
+    <value>使用此功能，您可以对 Wi-Fi 配置文件进行以下更改：</value>
+  </data>
+  <data name="BehaviorMonitoring" xml:space="preserve">
+    <value>行为监控</value>
+  </data>
+  <data name="BIOSPasswordSetting" xml:space="preserve">
+    <value>BIOS 密码设置</value>
+  </data>
+  <data name="BiosPasswordSettingHelpTooltip" xml:space="preserve">
+    <value>选择“纳管”时，Workspace ONE 可为分配到此配置文件的设备生成独一无二的 BIOS 强密码。选择“手动”时，您可为分配到此配置文件的设备手动输入 BIOS 密码。</value>
+  </data>
+  <data name="BiosProfileWorkflowInfoMessage" xml:space="preserve">
+    <value>使用 Freestyle Orchestrator 工作流可在单个工作流中分配负载和 Dell Command Monitor 应用。</value>
+  </data>
+  <data name="BitLockerInvalidKeyRotation" xml:space="preserve">
+    <value>选择密钥轮换或静态密钥</value>
+  </data>
+  <data name="BitLockerKeyRotationInfo" xml:space="preserve">
+    <value>启用一次使用恢复密钥以获得更安全的 BitLocker 环境，或启用静态密钥以获得更多 IT 便利</value>
+  </data>
+  <data name="BitLockerRealTimeEnforcement" xml:space="preserve">
+    <value>强制加密</value>
+  </data>
+  <data name="BitLockerRealTimeEnforcementInfo" xml:space="preserve">
+    <value>启用此设置将在设备上强制加密，如果 BitLocker 被手动关闭，则会立即重新加密设备。</value>
+  </data>
+  <data name="BitlockerRecoveryKeyText" xml:space="preserve">
+    <value>静态恢复密钥</value>
+  </data>
+  <data name="BitLockerRecoveryOptions" xml:space="preserve">
+    <value>BitLocker 恢复密钥设置</value>
+  </data>
+  <data name="BlockAllCookiesFromAllSites" xml:space="preserve">
+    <value>阻止所有站点中的所有 Cookie</value>
+  </data>
+  <data name="BlockMode" xml:space="preserve">
+    <value>阻止模式</value>
+  </data>
+  <data name="BlockOnlyCookiesFromThirdPartyWebsites" xml:space="preserve">
+    <value>仅阻止第三方网站中的 Cookie</value>
+  </data>
+  <data name="BothLoginAndLogout" xml:space="preserve">
+    <value>登录和注销</value>
+  </data>
+  <data name="BuiltIn" xml:space="preserve">
+    <value>内置</value>
+  </data>
+  <data name="BypassProxyForLocal" xml:space="preserve">
+    <value>跳过本地代理服务器</value>
+  </data>
+  <data name="CacheFallbackShouldBeBetweenArgAndArg" xml:space="preserve">
+    <value>值必须是介于 0 到 31 天之间的数字 (以秒表示)。</value>
+  </data>
+  <data name="CacheHost" xml:space="preserve">
+    <value>缓存主机</value>
+  </data>
+  <data name="CacheHostSource" xml:space="preserve">
+    <value>缓存主机源</value>
+  </data>
+  <data name="CacheHostSourceToolTip" xml:space="preserve">
+    <value>允许您通过自定义 DHCP 选项在网络缓存服务器中配置一个或多个交付优化。</value>
+  </data>
+  <data name="CacheHostToolTip" xml:space="preserve">
+    <value>允许您配置一个或多个由交付优化使用的 Microsoft 联网缓存服务器。</value>
+  </data>
+  <data name="CalendarDomains" xml:space="preserve">
+    <value>日历域</value>
+  </data>
+  <data name="CalendarPrivacyHelpInfo" xml:space="preserve">
+    <value>由 Calendar.app 管理的日历信息。</value>
+  </data>
+  <data name="CameraPrivacyHelpInfo" xml:space="preserve">
+    <value>系统相机。在配置文件中无法授予对相机的访问权限，只能拒绝。</value>
+  </data>
+  <data name="CannotBeConfiguredWithOtherPayloads" xml:space="preserve">
+    <value>此配置文件负载无法与其他配置文件负载一起配置。</value>
+  </data>
+  <data name="CantDeletePerAppVpnPayload" xml:space="preserve">
+    <value>无法删除该负载，因为它与“应用隧道”策略的一个或多个应用程序相关联。请移除与应用程序的关联以删除此负载。</value>
+  </data>
+  <data name="CantEditPerAppVpnDetails" xml:space="preserve">
+    <value>无法编辑此配置文件的“连接类型”，因为它与“应用隧道”策略的一个或多个应用程序相关联。请移除与应用程序的关联以编辑此参数。</value>
+  </data>
+  <data name="CanvasDoesnotHaveSpaceError" xml:space="preserve">
+    <value>此画布页面没有此应用程序的可用位置。</value>
+  </data>
+  <data name="CatchupFullScan" xml:space="preserve">
+    <value>弥补完全扫描</value>
+  </data>
+  <data name="CatchupQuickScan" xml:space="preserve">
+    <value>弥补快速扫描</value>
+  </data>
+  <data name="CertAttach" xml:space="preserve">
+    <value>附加证书</value>
+  </data>
+  <data name="CertChooseFile" xml:space="preserve">
+    <value>选择文件</value>
+  </data>
+  <data name="CertificateIsNotUploaded" xml:space="preserve">
+    <value>凭证 - 未上载证书，是必填字段</value>
+  </data>
+  <data name="CertificatePreference" xml:space="preserve">
+    <value>证书首选项</value>
+  </data>
+  <data name="CertificatePreferenceNames" xml:space="preserve">
+    <value>证书首选项名称</value>
+  </data>
+  <data name="CertificatePreferenceServiceNamesLimitExceeded" xml:space="preserve">
+    <value>最多允许 15 个服务。</value>
+  </data>
+  <data name="CertificateSource" xml:space="preserve">
+    <value>证书源</value>
+  </data>
+  <data name="CertificateTemplateSelect" xml:space="preserve">
+    <value>选择证书模板</value>
+  </data>
+  <data name="CertPassInCorrect" xml:space="preserve">
+    <value>证书密码不正确。</value>
+  </data>
+  <data name="CertPassRequired" xml:space="preserve">
+    <value>证书密码为必填项。</value>
+  </data>
+  <data name="CFAAllowedApplication" xml:space="preserve">
+    <value>例如: C:\MyApp.exe</value>
+  </data>
+  <data name="CFAAllowedApplicationsToolTip" xml:space="preserve">
+    <value>受控文件夹访问将允许授权的应用程序访问和修改受保护的文件夹。大多数已知和受信任的应用程序都将有权访问。此策略也可用于允许内部开发的或未知的应用访问受保护的文件夹</value>
+  </data>
+  <data name="CFAFolder" xml:space="preserve">
+    <value>例如: C:\MyDocuments</value>
+  </data>
+  <data name="CfaProtectedFoldersFolder1" xml:space="preserve">
+    <value>C:/Users/Public/Documents</value>
+  </data>
+  <data name="CfaProtectedFoldersFolder10" xml:space="preserve">
+    <value>C:/Users/Username/Desktop</value>
+  </data>
+  <data name="CfaProtectedFoldersFolder11" xml:space="preserve">
+    <value>C:/Users/Username/Favorites</value>
+  </data>
+  <data name="CfaProtectedFoldersFolder2" xml:space="preserve">
+    <value>C:/Users/Public/Pictures</value>
+  </data>
+  <data name="CfaProtectedFoldersFolder3" xml:space="preserve">
+    <value>C:/Users/Public/Videos</value>
+  </data>
+  <data name="CfaProtectedFoldersFolder4" xml:space="preserve">
+    <value>C:/Users/Public/Music</value>
+  </data>
+  <data name="CfaProtectedFoldersFolder5" xml:space="preserve">
+    <value>C:/Users/Public/Desktop</value>
+  </data>
+  <data name="CfaProtectedFoldersFolder6" xml:space="preserve">
+    <value>C:/Users/Username/Documents</value>
+  </data>
+  <data name="CfaProtectedFoldersFolder7" xml:space="preserve">
+    <value>C:/Users/Username/Pictures</value>
+  </data>
+  <data name="CfaProtectedFoldersFolder8" xml:space="preserve">
+    <value>C:/Users/Username/Videos</value>
+  </data>
+  <data name="CfaProtectedFoldersFolder9" xml:space="preserve">
+    <value>C:/Users/Username/Music</value>
+  </data>
+  <data name="ChangePrimaryInteractionPointMsg" xml:space="preserve">
+    <value>更改主交互点消息</value>
+  </data>
+  <data name="CheckCertificateTrust" xml:space="preserve">
+    <value>证书信任检查验证</value>
+  </data>
+  <data name="CheckCertificateTrustInfo" xml:space="preserve">
+    <value>启用后，将执行标准证书信任有效性检查，而不执行任何其他吊销检查。</value>
+  </data>
+  <data name="CheckForSignaturesBeforeRunningScan" xml:space="preserve">
+    <value>运行扫描前检查签名</value>
+  </data>
+  <data name="ChooseYourLook" xml:space="preserve">
+    <value>选择外观</value>
+  </data>
+  <data name="CloudBlockLevel" xml:space="preserve">
+    <value>云保护级别</value>
+  </data>
+  <data name="CloudExtendedTimeout" xml:space="preserve">
+    <value>云阻止超时</value>
+  </data>
+  <data name="CodeRequirement" xml:space="preserve">
+    <value>代码要求</value>
+  </data>
+  <data name="CodeRequirementPrivacyHelpInfo" xml:space="preserve">
+    <value>通过命令“codesign --display -r - /path/to/app/binary”获得。</value>
+  </data>
+  <data name="Columbia" xml:space="preserve">
+    <value>哥伦比亚</value>
+  </data>
+  <data name="Columns" xml:space="preserve">
+    <value>列</value>
+  </data>
+  <data name="CommaNotAllowedinAppId" xml:space="preserve">
+    <value>应用程序标识符不能包含逗号</value>
+  </data>
+  <data name="CommentPrivacyHelpInfo" xml:space="preserve">
+    <value>仅供您自己使用，macOS 不会使用。</value>
+  </data>
+  <data name="CompleteHardDisk" xml:space="preserve">
+    <value>操作系统驱动器和所有固定硬盘驱动器</value>
+  </data>
+  <data name="ComplianceAndAppControlPrivacyInfo" xml:space="preserve">
+    <value>不会强制执行专为在分配到这些设备的被拒绝应用程序组或非允许应用程序组上运行而创建的合规策略。</value>
+  </data>
+  <data name="ComplianceProfileRemovalInfo" xml:space="preserve">
+    <value>不允许手动移除合规性配置文件</value>
+  </data>
+  <data name="ConcurrentRequestsToEnrollmentUserSyncDataInitialLimitToolTip" xml:space="preserve">
+    <value>可以同时授予的存储过程“EnrollmentUserSyncData”的初始请求数。</value>
+  </data>
+  <data name="ConcurrentRequestsToEnrollmentUserSyncDataMaxLimitToolTip" xml:space="preserve">
+    <value>可以同时授予的存储过程“EnrollmentUserSyncData”的最大请求数。</value>
+  </data>
+  <data name="ConfigureLayout" xml:space="preserve">
+    <value>配置布局</value>
+  </data>
+  <data name="ConfigureSdkAtApplicationLevel" xml:space="preserve">
+    <value>选择您想为这款应用程序使用的 SDK 配置文件</value>
+  </data>
+  <data name="ConfigureSecurityAssociationIdleTime" xml:space="preserve">
+    <value>配置安全关联空闲时间</value>
+  </data>
+  <data name="ConfigureTimeWindow" xml:space="preserve">
+    <value>配置一个窗口以自动更新在前台运行的公共应用。该窗口基于设备上的时区设置。</value>
+  </data>
+  <data name="ConfirmCustomPayloadDelete" xml:space="preserve">
+    <value>是否确定要删除此自定义设置负载?</value>
+  </data>
+  <data name="ConfirmResourceWillNotBePublished" xml:space="preserve">
+    <value>没有分配的智能组，因此该资源将不会被分配给任何设备。您要继续吗?</value>
+  </data>
+  <data name="ConnectionNameIsRequired" xml:space="preserve">
+    <value>VPN - 连接名称是必填字段</value>
+  </data>
+  <data name="ContactsDomains" xml:space="preserve">
+    <value>联系人域</value>
+  </data>
+  <data name="ContainsInvalidCharactersNotAllowedInFileName" xml:space="preserve">
+    <value>包含无效字符 (/ \ ? : * | " &lt; &gt;)。文件名仅允许使用有效字符。</value>
+  </data>
+  <data name="ContentPopups" xml:space="preserve">
+    <value>内容</value>
+  </data>
+  <data name="Continuity" xml:space="preserve">
+    <value>连续性</value>
+  </data>
+  <data name="ControlledFolderAccess" xml:space="preserve">
+    <value>受控文件夹访问</value>
+  </data>
+  <data name="ControlledFolderAccessToolTip" xml:space="preserve">
+    <value>可以使用此策略启用 (阻止/审核) 或禁用受控的文件夹访问功能。此功能将阻止恶意应用程序修改受保护的文件夹和文档。</value>
+  </data>
+  <data name="COPEDevicesApplyTo" xml:space="preserve">
+    <value>您想要在哪里对公司所有、个人启用的设备应用应用程序控制？</value>
+  </data>
+  <data name="COPEDevicesInfo" xml:space="preserve">
+    <value>此设置仅影响公司所有个人启用的设备。此配置文件在分配时始终在工作配置文件和工作托管设备上应用。</value>
+  </data>
+  <data name="Corrupted" xml:space="preserve">
+    <value>已损坏</value>
+  </data>
+  <data name="Courier" xml:space="preserve">
+    <value>Courier</value>
+  </data>
+  <data name="CreateConfigurationFiles" xml:space="preserve">
+    <value>创建配置文件</value>
+  </data>
+  <data name="CreateConfigurationFilesDescription" xml:space="preserve">
+    <value>使用 Dynamic Environment Manager 控制台创建、自定义和下载配置文件。</value>
+  </data>
+  <data name="CreateYourKiosk" xml:space="preserve">
+    <value>创建您的 Kiosk</value>
+  </data>
+  <data name="CRLCheck" xml:space="preserve">
+    <value>认证吊销列表验证</value>
+  </data>
+  <data name="CRLCheckHelp" xml:space="preserve">
+    <value>配置证书吊销列表 (CRL) 验证强制执行</value>
+  </data>
+  <data name="CrossProfileCalendarAccess" xml:space="preserve">
+    <value>跨配置文件日历访问</value>
+  </data>
+  <data name="Curacao" xml:space="preserve">
+    <value>库拉索</value>
+  </data>
+  <data name="CurrentBranchNew" xml:space="preserve">
+    <value>半年度通道</value>
+  </data>
+  <data name="CurrentOrNextLoginUser" xml:space="preserve">
+    <value>当前或下一个登录用户</value>
+  </data>
+  <data name="CustomConfigurationForFutureUse" xml:space="preserve">
+    <value>保留自定义配置以供将来使用</value>
+  </data>
+  <data name="CustomEnrollment" xml:space="preserve">
+    <value>自定义注册</value>
+  </data>
+  <data name="CustomExtensionData" xml:space="preserve">
+    <value>自定义数据</value>
+  </data>
+  <data name="CustomFolders" xml:space="preserve">
+    <value>自定义文件夹</value>
+  </data>
+  <data name="CustomHelp" xml:space="preserve">
+    <value>数字 0-255 表示 IP 协议 (TCP = 6，UDP = 17)</value>
+  </data>
+  <data name="CustomMessages" xml:space="preserve">
+    <value>自定义消息</value>
+  </data>
+  <data name="CustomSSL" xml:space="preserve">
+    <value>自定义 SSL</value>
+  </data>
+  <data name="CustomWebViewEnrollmentToolTip" xml:space="preserve">
+    <value>使用自定义注册将在注册期间为用户提供完全自定义的体验。目前，此功能将利用来自“设置”&gt;“设备和用户”&gt;“常规”&gt;“注册”的 Web 注册流程中的部分设置</value>
+  </data>
+  <data name="CustomXml" xml:space="preserve">
+    <value>自定义 XML</value>
+  </data>
+  <data name="CustomXmlDescription" xml:space="preserve">
+    <value>将在 ExtensionData 节点中添加的自定义 xml。</value>
+  </data>
+  <data name="DataDrivenProfileSaveFailed" xml:space="preserve">
+    <value>无法保存配置文件。</value>
+  </data>
+  <data name="DataDrivenProfileSaveSuccess" xml:space="preserve">
+    <value>配置文件已保存。</value>
+  </data>
+  <data name="DataSense" xml:space="preserve">
+    <value>允许用户更改 DataSense 设置</value>
+  </data>
+  <data name="DefaultAction" xml:space="preserve">
+    <value>默认操作</value>
+  </data>
+  <data name="DefaultActionHelp" xml:space="preserve">
+    <value>指定规则强制执行的操作。</value>
+  </data>
+  <data name="DefaultDefenderBlockingLevel" xml:space="preserve">
+    <value>默认 Windows Defender 阻止级别</value>
+  </data>
+  <data name="DefaultInboundAction" xml:space="preserve">
+    <value>入站操作</value>
+  </data>
+  <data name="DefaultInboundActionHelp" xml:space="preserve">
+    <value>此值是防火墙在入站连接上默认执行的操作。</value>
+  </data>
+  <data name="DefaultOutboundAction" xml:space="preserve">
+    <value>出站操作</value>
+  </data>
+  <data name="DefaultOutboundActionHelp" xml:space="preserve">
+    <value>此值是防火墙在出站连接上默认执行的操作。</value>
+  </data>
+  <data name="DefenderExploitGuard" xml:space="preserve">
+    <value>Defender 攻击保护</value>
+  </data>
+  <data name="DeferFeatureUpdatesPeriodInDays" xml:space="preserve">
+    <value>推迟功能更新 (天)</value>
+  </data>
+  <data name="DeferFeatureUpdatesPeriodInDaysToolTip" xml:space="preserve">
+    <value>将功能更新延迟指定的天数。已在 Windows 10 版本 1607 中添加，支持的值为 0-180。在 Windows 10 版本 1703 中，支持的值已更新为 0-365</value>
+  </data>
+  <data name="DeferQualityUpdatesPeriodInDays" xml:space="preserve">
+    <value>推迟质量更新 (天)</value>
+  </data>
+  <data name="DeferQualityUpdatesPeriodInDaysToolTip" xml:space="preserve">
+    <value>在 Windows 10 版本 1607 中添加。将质量更新延迟指定天数。支持 0-30 的值。</value>
+  </data>
+  <data name="DefineAppOrProcess" xml:space="preserve">
+    <value>定义应用程序或进程</value>
+  </data>
+  <data name="DelayBackgroundDownloadFromHttp" xml:space="preserve">
+    <value>延迟来自 Http 的后台下载</value>
+  </data>
+  <data name="DelayBackgroundDownloadFromHttpToolTip" xml:space="preserve">
+    <value>允许在能够使用对等的后台下载中延迟 HTTP 源的使用。</value>
+  </data>
+  <data name="DelayCacheServerFallbackBackground" xml:space="preserve">
+    <value>延迟缓存服务器回退后台</value>
+  </data>
+  <data name="DelayCacheServerFallbackBackgroundToolTip" xml:space="preserve">
+    <value>指定将从缓存服务器回退到后台内容下载的 HTTP 源的时间(以秒为单位)。</value>
+  </data>
+  <data name="DelayCacheServerFallbackForeground" xml:space="preserve">
+    <value>延迟缓存服务器回退前台</value>
+  </data>
+  <data name="DelayCacheServerFallbackForegroundToolTip" xml:space="preserve">
+    <value>指定将从缓存服务器回退到前台内容下载的 HTTP 源的时间(以秒为单位)。</value>
+  </data>
+  <data name="DelayDownloadShouldBeBetweenArgAndArg" xml:space="preserve">
+    <value>值必须为数字 (以秒表示)。建议值为 1 小时 (3600 秒)。</value>
+  </data>
+  <data name="DelayedLaunchCannotBeLessThanZeroSeconds" xml:space="preserve">
+    <value>延迟启动不能小于 0 秒</value>
+  </data>
+  <data name="DelayForegroundDownloadFromHttp" xml:space="preserve">
+    <value>延迟来自 Http 的前台下载</value>
+  </data>
+  <data name="DelayForegroundDownloadFromHttpToolTip" xml:space="preserve">
+    <value>允许在能够使用对等的前台(交互式)下载中延迟 HTTP 源的使用。</value>
+  </data>
+  <data name="DeleteAll" xml:space="preserve">
+    <value>全部删除</value>
+  </data>
+  <data name="DeleteConfirmationMessage" xml:space="preserve">
+    <value>是否确定要将其删除?</value>
+  </data>
+  <data name="DeleteConfirmationTitle" xml:space="preserve">
+    <value>确认</value>
+  </data>
+  <data name="DeleteCredential" xml:space="preserve">
+    <value>删除凭据</value>
+  </data>
+  <data name="DeleteCredentialPayloadConfirm" xml:space="preserve">
+    <value>是否确定要删除此凭据负载?</value>
+  </data>
+  <data name="DeleteCustomSettings" xml:space="preserve">
+    <value>删除自定义设置</value>
+  </data>
+  <data name="DeleteDirectory" xml:space="preserve">
+    <value>删除目录</value>
+  </data>
+  <data name="DeleteDirectoryConfirm" xml:space="preserve">
+    <value>是否确定要删除此目录负载？</value>
+  </data>
+  <data name="DeleteException" xml:space="preserve">
+    <value>删除例外</value>
+  </data>
+  <data name="DeleteExceptionPayloadConfirmation" xml:space="preserve">
+    <value>是否确定要删除此异常负载?</value>
+  </data>
+  <data name="DeleteIbeaconGroup" xml:space="preserve">
+    <value>删除 iBeacon 组</value>
+  </data>
+  <data name="DeleteSCEP" xml:space="preserve">
+    <value>删除 SCEP</value>
+  </data>
+  <data name="DeleteSCEPConfirm" xml:space="preserve">
+    <value>是否确定要删除此 SCEP 负载?</value>
+  </data>
+  <data name="DeleteTab" xml:space="preserve">
+    <value>删除选项卡</value>
+  </data>
+  <data name="DeleteVPN" xml:space="preserve">
+    <value>删除 VPN</value>
+  </data>
+  <data name="DeleteVPNPayloadConfirm" xml:space="preserve">
+    <value>是否确定要删除此 VPN 负载?</value>
+  </data>
+  <data name="DeleteWiFi" xml:space="preserve">
+    <value>删除 WiFi</value>
+  </data>
+  <data name="DeleteWiFiConfirm" xml:space="preserve">
+    <value>是否确定要删除此 WiFi 负载?</value>
+  </data>
+  <data name="DeliverWithUEM" xml:space="preserve">
+    <value>通过 UEM 交付</value>
+  </data>
+  <data name="DeliverWithUEMDescription" xml:space="preserve">
+    <value>利用 UEM 设备配置文件的强大功能，通过智能组将配置文件上载并交付至正确的设备。</value>
+  </data>
+  <data name="DeliveryOptimizationMaxCacheAge" xml:space="preserve">
+    <value>每个文件在交付优化缓存中滞留的时间上限 (秒)</value>
+  </data>
+  <data name="DeliveryOptimizationMaxCacheAgeToolTip" xml:space="preserve">
+    <value>指定每个文件在成功下载后在交付优化缓存中滞留的时间上限 (以秒计)。值 0 (零) 是 Windows 10 版本 1607 中的新增特性，意味着“不受限”。交付优化可使文件在缓存中滞留更长时间，并在未超出缓存大小的情况下可供上载到其他设备。</value>
+  </data>
+  <data name="DeliveryOptimizationMaxCacheSize" xml:space="preserve">
+    <value>交付优化可以利用的缓存大小上限 (%)</value>
+  </data>
+  <data name="DeliveryOptimizationMaxCacheSizeToolTip" xml:space="preserve">
+    <value>指定交付优化可利用的缓存大小上限，以磁盘大小百分比 (1-100) 表示</value>
+  </data>
+  <data name="DeliveryOptimizationMaxUploadBandwidth" xml:space="preserve">
+    <value>设备跨所有并发上载活动所用的上载带宽上限 (KB/秒)</value>
+  </data>
+  <data name="Dell" xml:space="preserve">
+    <value>Dell</value>
+  </data>
+  <data name="DellUpdateSupportSite" xml:space="preserve">
+    <value>Dell Update/支持站点</value>
+  </data>
+  <data name="DEM" xml:space="preserve">
+    <value>DEM</value>
+    <comment>Abbreviation of Dynamic Environment Manager</comment>
+  </data>
+  <data name="DemPayloadTooltip" xml:space="preserve">
+    <value>从 DEM 控制台设置配置。请确保在 UEM 中上载配置文件。</value>
+  </data>
+  <data name="DenyPermission" xml:space="preserve">
+    <value>拒绝权限</value>
+  </data>
+  <data name="DenyURLs" xml:space="preserve">
+    <value>拒绝网站</value>
+  </data>
+  <data name="DesktopClient" xml:space="preserve">
+    <value>桌面客户端</value>
+  </data>
+  <data name="DesktopClientToolTip" xml:space="preserve">
+    <value>VMware 建议使用桌面客户端以确保实现最佳兼容性和支持体验。</value>
+  </data>
+  <data name="DesktopFolders" xml:space="preserve">
+    <value>桌面文件夹</value>
+  </data>
+  <data name="DesktopImageUrl" xml:space="preserve">
+    <value>桌面映像</value>
+  </data>
+  <data name="DestroyFVKeyOnStandbyHelpInfo" xml:space="preserve">
+    <value>当计算机从休眠状态唤醒时，需要用户解除 FileVault 锁定。</value>
+  </data>
+  <data name="DeviceLockTimeoutRangeInMinutes" xml:space="preserve">
+    <value>设备锁定超时范围（以分钟计）</value>
+  </data>
+  <data name="DeviceLockTimeOutShouldBeInRange0And999" xml:space="preserve">
+    <value>密码 - 工作配置文件锁定超时应介于 0 和 999 之间</value>
+  </data>
+  <data name="DeviceLockTimeoutToolTip" xml:space="preserve">
+    <value>要使此设置生效，需要在推送配置文件后重新引导设备。</value>
+  </data>
+  <data name="DevicePairing" xml:space="preserve">
+    <value>设备配对</value>
+  </data>
+  <data name="DevicePairingTooltip" xml:space="preserve">
+    <value>仅受监督。如果设置为 false，则会禁用主机配对，但监督主机除外。
+从 iOS 13 开始，此选项默认启用，且无法禁用。</value>
+  </data>
+  <data name="DevicePasswordExpiration" xml:space="preserve">
+    <value>密码过期 (天)</value>
+  </data>
+  <data name="DevicePasswordExpirationToolTip" xml:space="preserve">
+    <value>配置密码的到期天数 (以天为单位)。值必须介于 0 到 730 之间。过期值为 0 表示密码永不过期。</value>
+  </data>
+  <data name="DevicePasswordHistoryToolTip" xml:space="preserve">
+    <value>配置不能再重用的先前密码 (包括当前密码) 的数量</value>
+  </data>
+  <data name="DeviceProfileCorrupted" xml:space="preserve">
+    <value>设备配置文件已损坏 - 重新安装已排队</value>
+  </data>
+  <data name="DeviceProfileResyncLimitExceededForCorrupted" xml:space="preserve">
+    <value>设备配置文件已损坏 - 重新安装未排队</value>
+  </data>
+  <data name="DeviceUID" xml:space="preserve">
+    <value>设备 UID</value>
+  </data>
+  <data name="DeviceVPNTooltip" xml:space="preserve">
+    <value>设备 VPN</value>
+  </data>
+  <data name="DeviceWideVPNRules" xml:space="preserve">
+    <value>设备范围的 VPN 规则</value>
+  </data>
+  <data name="DeviceWLANMacLookUpText" xml:space="preserve">
+    <value>设备无线局域网 Mac 地址</value>
+  </data>
+  <data name="DhcpOption" xml:space="preserve">
+    <value>DHCP 选项 ID</value>
+  </data>
+  <data name="DHCPOptionID235" xml:space="preserve">
+    <value>DHCP 选项 ID 235</value>
+  </data>
+  <data name="DHCPOptionID235Free" xml:space="preserve">
+    <value>DHCP 选项 ID 235 可用</value>
+  </data>
+  <data name="DirectAssignments" xml:space="preserve">
+    <value>直接分配</value>
+  </data>
+  <data name="DirectionHelp" xml:space="preserve">
+    <value>逗号分隔列表。将根据流量方向启用该规则，如下所示</value>
+  </data>
+  <data name="DisableAll" xml:space="preserve">
+    <value>全部禁用</value>
+  </data>
+  <data name="DisableContextMenus" xml:space="preserve">
+    <value>禁用上下文菜单</value>
+  </data>
+  <data name="DisableContextMenusToolTip" xml:space="preserve">
+    <value>在 1803 中添加。允许在“开始”菜单中调用上下文菜单。</value>
+  </data>
+  <data name="DisableCrlVerification" xml:space="preserve">
+    <value>禁用 CRL 验证</value>
+  </data>
+  <data name="DisableShowAppList" xml:space="preserve">
+    <value>在“设置”中禁用“在‘开始’菜单中显示应用列表”</value>
+  </data>
+  <data name="DisableStatefulFtp" xml:space="preserve">
+    <value>设置为“禁用”以允许辅助连接</value>
+  </data>
+  <data name="DisableWorkProfileLabel" xml:space="preserve">
+    <value>设置禁用工作配置文件的最大天数</value>
+  </data>
+  <data name="Disallow" xml:space="preserve">
+    <value>不允许</value>
+  </data>
+  <data name="Disallowed" xml:space="preserve">
+    <value>不允许</value>
+  </data>
+  <data name="DisallowWifiWarningMessage" xml:space="preserve">
+    <value>当禁用“允许 WiFi”时，如果设备所连接的 WiFi 网络不具有已安装的配置文件，则设备会断开与此网络的连接。建议结合现有 WiFi 配置文件负载使用此限制，以便即使“移动数据”也被禁用时设备仍可保持网络连接。</value>
+  </data>
+  <data name="DiscardProfileChanges" xml:space="preserve">
+    <value>放弃配置文件更改</value>
+  </data>
+  <data name="DiscoverableMode" xml:space="preserve">
+    <value>启用蓝牙的设备可以发现设备</value>
+  </data>
+  <data name="DISK" xml:space="preserve">
+    <value>磁盘</value>
+  </data>
+  <data name="DisplayMessageForAssociatedDomainsPayload" xml:space="preserve">
+    <value>关联的域可与可扩展应用 SSO、通用链路和密码自动填充等功能一起使用</value>
+  </data>
+  <data name="Documents" xml:space="preserve">
+    <value>文档</value>
+  </data>
+  <data name="DomainAdminsPlaceholderText" xml:space="preserve">
+    <value>例如域管理员</value>
+  </data>
+  <data name="DoNotAllowAnySiteToShowPopups" xml:space="preserve">
+    <value>不允许任何网站显示弹出窗口</value>
+  </data>
+  <data name="DoNotCollectApplicationSampleWarningForAppControlProfile" xml:space="preserve">
+    <value>层次结构中至少一个组织组的至少一个设备类型的个人应用程序隐私权政策设为“不收集”。尽管存在隐私权政策，仍会强制执行从这些设备中移除被拒绝或非允许的个人应用程序的应用控制策略。请复查隐私权政策或通知最终用户此操作对其个人应用程序的影响。</value>
+  </data>
+  <data name="DoNotCollectApplicationSampleWarningForAppGroups" xml:space="preserve">
+    <value>层次结构中至少一个组织组的至少一个设备的个人应用隐私权政策设为“不收集”。不会强制执行与这些设备的个人应用程序应用组相关的合规策略和应用控制配置文件。</value>
+  </data>
+  <data name="DoNotForceSize" xml:space="preserve">
+    <value>不强制启动屏幕大小</value>
+  </data>
+  <data name="DoNothing" xml:space="preserve">
+    <value>无操作</value>
+  </data>
+  <data name="DoNotIgnore" xml:space="preserve">
+    <value>请勿忽略</value>
+  </data>
+  <data name="DoNotPedictNetworkActionsOnAnyNetworkConnection" xml:space="preserve">
+    <value>不预测对任何网络连接执行的网络操作</value>
+  </data>
+  <data name="DontAllow" xml:space="preserve">
+    <value>不允许</value>
+  </data>
+  <data name="DownloadProfile" xml:space="preserve">
+    <value>下载配置文件</value>
+  </data>
+  <data name="DragToStartMsg" xml:space="preserve">
+    <value>拖动以启动</value>
+  </data>
+  <data name="DriveLocationUsedForPeerCache" xml:space="preserve">
+    <value>用于对等端缓存的驱动器位置</value>
+  </data>
+  <data name="DriveLocationUsedForPeerCacheToolTip" xml:space="preserve">
+    <value>指定交付优化应该用于其缓存的驱动器。可以使用环境变量、驱动器盘符或完整路径来指定驱动器位置。
+
+默认情况下，使用 %SystemDrive% 存储缓存。</value>
+  </data>
+  <data name="DriverExtensions" xml:space="preserve">
+    <value>驱动程序</value>
+  </data>
+  <data name="Drivers" xml:space="preserve">
+    <value>驱动程序</value>
+  </data>
+  <data name="DualScanForDeferralPolicies" xml:space="preserve">
+    <value>双扫描</value>
+  </data>
+  <data name="DuplicateICCIDs" xml:space="preserve">
+    <value>您不能在单个配置文件中多次添加同一个 ICCID。请移除一个或多个重复的 ICCID</value>
+  </data>
+  <data name="DuplicateTeamIdentifierAdded" xml:space="preserve">
+    <value>无法为系统扩展类型添加重复的团队标识符。</value>
+  </data>
+  <data name="DuplicateTeamIdWithEmptyBundleId" xml:space="preserve">
+    <value>存在多个团队标识符时，包标识符不能为空。</value>
+  </data>
+  <data name="DuplicateTimeScheduleEntries" xml:space="preserve">
+    <value>以下一个或多个调度规则为相同规则。请更新时间范围或删除复制的行以继续。</value>
+  </data>
+  <data name="DynamicEnvironmentManager" xml:space="preserve">
+    <value>Dynamic Environment Manager</value>
+  </data>
+  <data name="EapType" xml:space="preserve">
+    <value>EAP 类型</value>
+  </data>
+  <data name="EdgeTraversal" xml:space="preserve">
+    <value>Edge 遍历</value>
+  </data>
+  <data name="EdgeTraversalHelp" xml:space="preserve">
+    <value>表示是否为此规则启用或禁用 Edge 遍历</value>
+  </data>
+  <data name="EditArgForArgOpensDialog" xml:space="preserve">
+    <value>编辑 {0} 的 {1}“打开”对话框的</value>
+    <comment>The first placeholder in this label key contains profile name and the second placeholder contains platform name.</comment>
+  </data>
+  <data name="EditArgProfile" xml:space="preserve">
+    <value>编辑 {0} 配置文件</value>
+    <comment>The placeholder in this label key contains platform name.</comment>
+  </data>
+  <data name="EditProfileArgOpensDialog" xml:space="preserve">
+    <value>编辑配置文件 {0}“打开”对话框</value>
+  </data>
+  <data name="EmailAddressPromptLookUpText" xml:space="preserve">
+    <value>在自助门户中提示输入电子邮件地址</value>
+  </data>
+  <data name="EmailDomainPromptLookUpText" xml:space="preserve">
+    <value>在自助门户中提示输入电子邮件域</value>
+  </data>
+  <data name="EmailScanning" xml:space="preserve">
+    <value>扫描电子邮件</value>
+  </data>
+  <data name="EmptyCanvasMessage" xml:space="preserve">
+    <value>将应用拖动到此处并进行排列或选择要启动的应用</value>
+  </data>
+  <data name="EmptyFolderPlaceholder" xml:space="preserve">
+    <value>将应用添加到此文件夹</value>
+  </data>
+  <data name="EmptyHiddenAppsMsg" xml:space="preserve">
+    <value>提供对从属应用的访问权限并设置隐藏的应用</value>
+  </data>
+  <data name="EmptyKioskGroup" xml:space="preserve">
+    <value>保存失败。在发布之前，请从 kiosk 配置中移除空组</value>
+  </data>
+  <data name="EmptySingleAppMsg" xml:space="preserve">
+    <value>将应用拖动到此处或选择要在 kiosk 模式下运行的应用。</value>
+  </data>
+  <data name="EmptyTemplateMsg" xml:space="preserve">
+    <value>自定义主屏幕布局，并使用图像和文本添加公司品牌。</value>
+  </data>
+  <data name="EnableAssociatedDomains" xml:space="preserve">
+    <value>启用关联的域</value>
+  </data>
+  <data name="EnableBitLockerToGoSupport" xml:space="preserve">
+    <value>启用 BitLocker To Go 支持</value>
+  </data>
+  <data name="EnableBitLockerToGoSupportTooltip" xml:space="preserve">
+    <value>启用此选项将使可移动驱动器处于只读状态，除非进行加密。要查找驱动器的恢复密钥，请查看“外围设备”下方。</value>
+  </data>
+  <data name="EnableCalendarDomains" xml:space="preserve">
+    <value>启用日历域</value>
+  </data>
+  <data name="EnableCalendars" xml:space="preserve">
+    <value>启用日历</value>
+  </data>
+  <data name="EnableCalendarsTooltip" xml:space="preserve">
+    <value>如果启用，则将为此 Exchange 帐户配置日历。</value>
+  </data>
+  <data name="EnableCalendarsUserOverridable" xml:space="preserve">
+    <value>允许日历切换</value>
+  </data>
+  <data name="EnableCalendarsUserOverridableTooltip" xml:space="preserve">
+    <value>如果禁用，则不允许用户打开或关闭日历。</value>
+  </data>
+  <data name="EnableContactsDomains" xml:space="preserve">
+    <value>启用联系人域</value>
+  </data>
+  <data name="EnableContactsTooltip" xml:space="preserve">
+    <value>如果启用，则将为此 Exchange 帐户配置联系人。</value>
+  </data>
+  <data name="EnableContactsUserOverridable" xml:space="preserve">
+    <value>允许联系人切换</value>
+  </data>
+  <data name="EnableContactsUserOverridableTooltip" xml:space="preserve">
+    <value>如果禁用，则不允许用户打开或关闭联系人。</value>
+  </data>
+  <data name="EnabledAuditMode" xml:space="preserve">
+    <value>已启用（审核模式）</value>
+  </data>
+  <data name="EnabledBlockMode" xml:space="preserve">
+    <value>已启用（阻止模式）</value>
+  </data>
+  <data name="EnableDelayAppUpdates" xml:space="preserve">
+    <value>延迟非操作系统更新</value>
+  </data>
+  <data name="EnableDelayAppUpdatesInDays" xml:space="preserve">
+    <value>延迟非操作系统更新 (天)</value>
+  </data>
+  <data name="EnableDelayAppUpdatesInDaysToolTip" xml:space="preserve">
+    <value>如果启用，用户对非操作系统软件更新的可见性将延迟。</value>
+  </data>
+  <data name="EnableDelayUpdates" xml:space="preserve">
+    <value>延迟操作系统更新</value>
+  </data>
+  <data name="Enabledelayupdatesindays" xml:space="preserve">
+    <value>延迟操作系统更新 (天)</value>
+  </data>
+  <data name="EnableDevicePasscodePolicyToolTip" xml:space="preserve">
+    <value>在设备上强制实施设备密码策略。</value>
+  </data>
+  <data name="EnableExcludedDomains" xml:space="preserve">
+    <value>启用排除的域</value>
+  </data>
+  <data name="EnableFaceUnlockAuthentication" xml:space="preserve">
+    <value>允许人脸解锁</value>
+  </data>
+  <data name="EnableFallback" xml:space="preserve">
+    <value>启用回退</value>
+  </data>
+  <data name="EnableFallbackTooltip" xml:space="preserve">
+    <value>启用通过蜂窝数据传输的隧道来承载符合 Wi-Fi 助理条件的流量，还需要 VPN。如果启用回退，则要求服务器对单个用户支持多个隧道。</value>
+  </data>
+  <data name="EnableIrisScannerAuthentication" xml:space="preserve">
+    <value>允许虹膜扫描仪</value>
+  </data>
+  <data name="EnableLoggingHelp" xml:space="preserve">
+    <value>这将启用错误、警告、信息或调试级别的日志记录。</value>
+  </data>
+  <data name="EnableLowCPUPriority" xml:space="preserve">
+    <value>启用低 CPU 优先级</value>
+  </data>
+  <data name="EnableMail" xml:space="preserve">
+    <value>启用邮件</value>
+  </data>
+  <data name="EnableMailDomains" xml:space="preserve">
+    <value>启用邮件域</value>
+  </data>
+  <data name="EnableMailTooltip" xml:space="preserve">
+    <value>如果启用，则将为此 Exchange 帐户配置邮件。</value>
+  </data>
+  <data name="EnableMailUserOverridable" xml:space="preserve">
+    <value>允许邮件切换</value>
+  </data>
+  <data name="EnableMailUserOverridableTooltip" xml:space="preserve">
+    <value>如果禁用，则不允许用户打开或关闭邮件。</value>
+  </data>
+  <data name="EnableNotes" xml:space="preserve">
+    <value>启用便笺</value>
+  </data>
+  <data name="EnableNotesTooltip" xml:space="preserve">
+    <value>如果启用，则将为此 Exchange 帐户配置便笺。</value>
+  </data>
+  <data name="EnableNotesUserOverridable" xml:space="preserve">
+    <value>允许便笺切换</value>
+  </data>
+  <data name="EnableNotesUserOverridableTooltip" xml:space="preserve">
+    <value>如果禁用，则不允许用户打开或关闭便笺。</value>
+  </data>
+  <data name="EnableOldNodes" xml:space="preserve">
+    <value>启用早期 Windows 版本的设置</value>
+  </data>
+  <data name="EnablePacketQueue" xml:space="preserve">
+    <value>启用数据包队列</value>
+  </data>
+  <data name="EnablePacketQueueHelp" xml:space="preserve">
+    <value>配置数据包队列</value>
+  </data>
+  <data name="EnableRecoveryKeyHelpInfo" xml:space="preserve">
+    <value>如果设备已加密，则允许 Hub 提示员工输入密码以轮换要托管的恢复密钥。</value>
+  </data>
+  <data name="EnableReminders" xml:space="preserve">
+    <value>启用提醒</value>
+  </data>
+  <data name="EnableRemindersTooltip" xml:space="preserve">
+    <value>如果启用，则将为此 Exchange 帐户配置提醒。</value>
+  </data>
+  <data name="EnableRemindersUserOverridable" xml:space="preserve">
+    <value>允许提醒切换</value>
+  </data>
+  <data name="EnableRemindersUserOverridableTooltip" xml:space="preserve">
+    <value>如果禁用，则不允许用户打开或关闭提醒。</value>
+  </data>
+  <data name="EnableSiriProfanityFilterTooltip" xml:space="preserve">
+    <value>启用此选项后，Siri 无法作出任何涉及不当内容的答复。</value>
+  </data>
+  <data name="EnableSystemAppsInWorkProfileTooltip" xml:space="preserve">
+    <value>对于 Android 设备，按照“系统设置”&gt;“组”&gt;“应用程序组”中列入白名单的应用的定义，这样做会启用在工作配置文件内部预先安装的应用程序。</value>
+  </data>
+  <data name="EnableUseOfDictation" xml:space="preserve">
+    <value>启用听写功能</value>
+  </data>
+  <data name="EnableVoiceControl" xml:space="preserve">
+    <value>启用语音控制</value>
+  </data>
+  <data name="EnableWebViewBasedEnrollment" xml:space="preserve">
+    <value>启用基于 Web 视图的注册</value>
+  </data>
+  <data name="EncodethepresharedkeyusingUTF8" xml:space="preserve">
+    <value>使用 UTF-8 对预共享密钥进行编码</value>
+  </data>
+  <data name="EncryptAndBlockData" xml:space="preserve">
+    <value>加密和屏蔽数据</value>
+  </data>
+  <data name="EncryptDataAndAllowUserToMoveData" xml:space="preserve">
+    <value>加密数据并允许用户将数据移到非企业应用程序。数据传输将受到审核。</value>
+  </data>
+  <data name="EncryptDataAndPromptUser" xml:space="preserve">
+    <value>加密数据并提示用户在将数据移至非企业应用程序时进行覆盖。审核覆盖项。</value>
+  </data>
+  <data name="EncryptionActionAfterLastNotification" xml:space="preserve">
+    <value>上次解除后的操作</value>
+  </data>
+  <data name="EncryptionActionAfterLastNotificationHelpInfo" xml:space="preserve">
+    <value>在最后一次允许的解除后 1 分钟和 5 分钟自动发送员工通知，提示他们在系统自动注销之前保存其所做的工作，否则不会执行任何操作。</value>
+  </data>
+  <data name="EncryptionMaxNotifyAttempts" xml:space="preserve">
+    <value>通知解除</value>
+  </data>
+  <data name="EncryptionMaxNotifyAttemptsHelpInfo" xml:space="preserve">
+    <value>设置允许员工解除注销通知的次数。</value>
+  </data>
+  <data name="EncryptionMaxNotifyAttemptsInTimes" xml:space="preserve">
+    <value>通知解除 (次数)</value>
+  </data>
+  <data name="EncryptionNotificationMessageHelpInfo" xml:space="preserve">
+    <value>创建一条发送给员工的消息，通知他们在收到提示后需要注销并重新登录。</value>
+  </data>
+  <data name="EncryptionNotificationRetryIntervalHelpInfo" xml:space="preserve">
+    <value>设置解除通知之间的时间间隔。</value>
+  </data>
+  <data name="EndpointSecurityExtension" xml:space="preserve">
+    <value>端点安全</value>
+  </data>
+  <data name="EnforceAuthenticationPin" xml:space="preserve">
+    <value>启动时需要使用 PIN</value>
+  </data>
+  <data name="EnforceSmartCard" xml:space="preserve">
+    <value>需要使用智能卡进行所有身份验证</value>
+  </data>
+  <data name="EngagedRestartDeadlineForFeatureToolTip" xml:space="preserve">
+    <value>在活动时段之外自动计划和执行挂起的重新启动之前的截止时间。</value>
+  </data>
+  <data name="EngagedRestartDeadlineForFeatureUpdates" xml:space="preserve">
+    <value>功能更新有效重新启动截止时间 (天)</value>
+  </data>
+  <data name="EngagedRestartDeadlineInDays" xml:space="preserve">
+    <value>质量更新有效重新启动截止时间 (天)</value>
+  </data>
+  <data name="EngagedRestartDeadlineToolTip" xml:space="preserve">
+    <value>在活动时段之外自动计划和执行挂起的重新启动之前的截止时间。</value>
+  </data>
+  <data name="EngagedRestartSnoozeScheduleForFeatureToolTip" xml:space="preserve">
+    <value>用户可以推迟预定重新启动提醒通知的天数上限。</value>
+  </data>
+  <data name="EngagedRestartSnoozeScheduleForFeatureUpdates" xml:space="preserve">
+    <value>功能更新有效重新启动推迟计划 (天)</value>
+  </data>
+  <data name="EngagedRestartSnoozeScheduleInDays" xml:space="preserve">
+    <value>质量更新有效重新启动推迟计划 (天)</value>
+  </data>
+  <data name="EngagedRestartSnoozeScheduleToolTip" xml:space="preserve">
+    <value>用户可以推迟预定重新启动提醒通知的天数上限。</value>
+  </data>
+  <data name="Enhanced" xml:space="preserve">
+    <value>增强</value>
+  </data>
+  <data name="EnterACommaSeparatedListOfEmailAddressesToBeAllowlisted" xml:space="preserve">
+    <value>输入要允许的电子邮件地址列表 (以逗号分隔)</value>
+  </data>
+  <data name="EnterACommaSeparatedListOfPackagesToBeAllowlisted" xml:space="preserve">
+    <value>输入要允许的软件包名称列表 (以逗号分隔)</value>
+  </data>
+  <data name="EnterAPN" xml:space="preserve">
+    <value>输入 APN</value>
+  </data>
+  <data name="EnterDisplayName" xml:space="preserve">
+    <value>EnterDisplayName	输入显示名称</value>
+  </data>
+  <data name="EnterMessageHere" xml:space="preserve">
+    <value>在此处输入消息</value>
+  </data>
+  <data name="EnterNumberOfDaysWorkProfileDisabled" xml:space="preserve">
+    <value>允许禁用工作配置文件的最大天数</value>
+  </data>
+  <data name="EnterPackageFamilyNameOfApplication" xml:space="preserve">
+    <value>输入应用程序的程序包系列名称</value>
+  </data>
+  <data name="EnterpriseCloudResourcesTooltip" xml:space="preserve">
+    <value>一份在云中托管的企业资源域的列表，这些域需要得到保护并且只能通过企业网络经由代理服务器 (端口 80) 路由。在使用非 Microsoft 应用时，将“|/*AppCompat*/”附加到域名。</value>
+  </data>
+  <data name="EnterpriseFactoryResetProtection" xml:space="preserve">
+    <value>企业出厂重置保护</value>
+  </data>
+  <data name="EnterpriseFactoryResetProtectionInfoMessage" xml:space="preserve">
+    <value>要启用企业出厂重置保护并置备已使用未经验证的方法(如引导加载程序或快速引导)进行出厂重置的设备，您首先需要在 Google People 处获取 Google 用户 ID (https://developers.google.com/people/api/rest/v1/people/get)。</value>
+  </data>
+  <data name="EnterpriseFactoryResetProtectionInfoMessage2" xml:space="preserve">
+    <value>在“资源名称”中输入“people/me”，在“人员字段”中输入“emailAddresses”，单击“执行”，复制 ID，将其粘贴到下面，然后再继续。</value>
+  </data>
+  <data name="EnterpriseIPRangesTooltip" xml:space="preserve">
+    <value>设置在企业网络中定义计算机的企业 IP 范围。来自那些计算机的数据将被视为企业的一个组成部分并受到保护。这些位置被认为是放置企业数据的安全之处。</value>
+  </data>
+  <data name="EnterpriseNetworkDomainsTooltip" xml:space="preserve">
+    <value>本域名列表是一份由企业界限组成的列表。来自这些域并发送给设备的数据将被视为企业数据并受到保护。这些位置被认为是放置企业数据的安全之处。</value>
+  </data>
+  <data name="EnterRulesHere" xml:space="preserve">
+    <value>在此处输入规则</value>
+  </data>
+  <data name="EnterThePackageFamilyNameOfTheApplication" xml:space="preserve">
+    <value>输入应用程序的软件包系列名称</value>
+  </data>
+  <data name="EnterUrlHere" xml:space="preserve">
+    <value>在此处输入 URL</value>
+  </data>
+  <data name="ErrorsInTheConfiguredProfiles" xml:space="preserve">
+    <value>此配置文件中的部分配置负载似乎存在错误。请更正以下错误以继续</value>
+  </data>
+  <data name="ErrorTitle" xml:space="preserve">
+    <value>错误标题</value>
+  </data>
+  <data name="EscrowChannelSecurityModeCompatibilityError" xml:space="preserve">
+    <value>托管网关的 MDM 通道安全必须设置为“已加密”。请转到“所有设置”&amp;gt;“设备与用户”&amp;gt;“Windows”&amp;gt;“Windows 桌面”&amp;gt;“Intelligent Hub 设置”以更改此设置。</value>
+  </data>
+  <data name="EscrowedCertificateAvailabilityJob" xml:space="preserve">
+    <value>Windows 托管证书可用性作业</value>
+  </data>
+  <data name="EscrowGatewayProfileWindowsInfo" xml:space="preserve">
+    <value>可以将托管的 SMIME 证书上载到托管网关，并由设备作为由设备的身份证书加密的配置文件进行检索。对于托管网关，必须将 MDM 通道安全设置为“已加密”(在“所有设置”&amp;gt;“设备与用户”&amp;gt;“Windows”&amp;gt;“Windows 桌面”&amp;gt;“Intelligent Hub 设置”中)。</value>
+  </data>
+  <data name="EscrowRecoveryKeyToServer" xml:space="preserve">
+    <value>将个人恢复密钥托管到 UEM 服务器</value>
+  </data>
+  <data name="Exceptions" xml:space="preserve">
+    <value>例外</value>
+  </data>
+  <data name="ExceptionsHelp" xml:space="preserve">
+    <value>指定不应使用代理服务器的地址。请使用分号 (;) 分隔条目。</value>
+  </data>
+  <data name="ExchangeOAuthSignInURLTooltip" xml:space="preserve">
+    <value>指定 URL，在未使用自动发现时，通过 OAuth 加载到网络视图进行身份验证。</value>
+  </data>
+  <data name="ExchangeUseOauthTooltip" xml:space="preserve">
+    <value>确定 Exchange 连接是否应使用 OAuth 执行身份验证</value>
+  </data>
+  <data name="ExcludedDomains" xml:space="preserve">
+    <value>排除的域</value>
+  </data>
+  <data name="ExcludeGroup" xml:space="preserve">
+    <value>排除组</value>
+  </data>
+  <data name="ExcludeLocalNetworks" xml:space="preserve">
+    <value>排除本地网络</value>
+  </data>
+  <data name="ExcludeLocalNetworksInfo" xml:space="preserve">
+    <value>如果选中此选项并选中“包括所有网络”，则会路由 VPN 外部的所有本地网络流量</value>
+  </data>
+  <data name="ExcludeWUDriversInQualityUpdate" xml:space="preserve">
+    <value>从质量更新中排除 Windows 更新驱动程序</value>
+  </data>
+  <data name="ExcludeWUDriversInQualityUpdatesToolTip" xml:space="preserve">
+    <value>Windows 10 版本 1607 中的新增功能。IT 管理员可使用此功能在更新过程中排除 Windows 更新 (WU) 驱动程序。</value>
+  </data>
+  <data name="Exempt_B_IPv4_And_IPv6" xml:space="preserve">
+    <value>同时豁免 IPv4 和 IPv6</value>
+  </data>
+  <data name="EXEMPT_ICMP" xml:space="preserve">
+    <value>豁免 ICMP</value>
+  </data>
+  <data name="EXEMPT_NEIGHBOR_DISC" xml:space="preserve">
+    <value>豁免邻居发现</value>
+  </data>
+  <data name="EXEMPT_NONE" xml:space="preserve">
+    <value>无 IPsec 豁免</value>
+  </data>
+  <data name="EXEMPT_ROUTER_DISC" xml:space="preserve">
+    <value>豁免路由器发现</value>
+  </data>
+  <data name="ExploitProtection" xml:space="preserve">
+    <value>攻击保护</value>
+  </data>
+  <data name="ExploitProtectionSettings" xml:space="preserve">
+    <value>攻击保护设置</value>
+  </data>
+  <data name="ExploitProtectionSettingsTooltip" xml:space="preserve">
+    <value>使 IT 管理员能够将代表所需系统和应用程序缓解选项的配置推送到组织中的所有设备。系统设置需要重新启动；应用程序设置不需要重新启动。</value>
+  </data>
+  <data name="ExtensibleSso" xml:space="preserve">
+    <value>单点登录扩展</value>
+  </data>
+  <data name="ExtensionCustomDataDescription" xml:space="preserve">
+    <value>传递到应用扩展的任意数据字典。</value>
+  </data>
+  <data name="ExtensionHosts" xml:space="preserve">
+    <value>主机</value>
+  </data>
+  <data name="ExtensionHostsDescription" xml:space="preserve">
+    <value>可以通过应用扩展进行身份验证的主机名或域名。</value>
+  </data>
+  <data name="ExtensionIdentifier" xml:space="preserve">
+    <value>扩展标识符</value>
+  </data>
+  <data name="ExtensionRealmInfo" xml:space="preserve">
+    <value>凭据类型扩展负载的领域名称。</value>
+  </data>
+  <data name="Extensions" xml:space="preserve">
+    <value>扩展名</value>
+    <comment>File system extensions.</comment>
+  </data>
+  <data name="ExtensionType" xml:space="preserve">
+    <value>扩展类型</value>
+  </data>
+  <data name="ExtensionUrls" xml:space="preserve">
+    <value>URL</value>
+  </data>
+  <data name="ExtensionUrlsDescription" xml:space="preserve">
+    <value>应用扩展在其中执行 SSO 的身份提供程序的 URL 前缀。</value>
+  </data>
+  <data name="F5SSL" xml:space="preserve">
+    <value>F5 SSL</value>
+  </data>
+  <data name="FactoryResetProtectionAdminIdError" xml:space="preserve">
+    <value>请输入一个或多个出厂重置保护管理员 ID。</value>
+  </data>
+  <data name="FailCRLVerificationOnError" xml:space="preserve">
+    <value>如果遇到任何错误，CRL 验证将失败</value>
+  </data>
+  <data name="FailCRLVerificationOnlyIfTheCertificateisRevoked" xml:space="preserve">
+    <value>只有当证书被吊销时，CRL 验证才失败</value>
+  </data>
+  <data name="FailedToConnectFactoryProvisioningError" xml:space="preserve">
+    <value>无法从 API 服务器连接到出厂置备服务。</value>
+  </data>
+  <data name="FeatureUpdates" xml:space="preserve">
+    <value>功能更新</value>
+  </data>
+  <data name="FileExceeds20Mb" xml:space="preserve">
+    <value>所选文件超过了 20MB 最大文件大小限制。</value>
+  </data>
+  <data name="FileMustBeImageType" xml:space="preserve">
+    <value>文件必须为其中一种允许的类型 (png、jpg、jpeg、bmp、gif、tif)。</value>
+  </data>
+  <data name="FileNameServersPlaceholderText" xml:space="preserve">
+    <value>例如 example.com</value>
+  </data>
+  <data name="FilePathExclusionsHelp" xml:space="preserve">
+    <value>FilePathExclusionsHelp</value>
+  </data>
+  <data name="FileProviderPresence" xml:space="preserve">
+    <value>文件提供程序存在</value>
+  </data>
+  <data name="FileProviderPresenceInfo" xml:space="preserve">
+    <value>允许应用程序访问由其他应用程序的文件提供程序扩展存储和管理的文档和目录。</value>
+  </data>
+  <data name="FileShares" xml:space="preserve">
+    <value>文件共享</value>
+  </data>
+  <data name="FileVaultUser" xml:space="preserve">
+    <value>FileVault 用户</value>
+  </data>
+  <data name="FileVaultUserHelpInfo" xml:space="preserve">
+    <value>选择“当前或下一个登录用户”，可在安装配置文件时为已登录用户启用 FileVault。如果用户此时未登录，则将授予下一个登录用户相应权限。仅适用于本地或移动用户，但不适用于网络用户。选择“特定用户”，可仅向单个用户授予权限。必须提供用户名。</value>
+  </data>
+  <data name="FileVaultUsername" xml:space="preserve">
+    <value>用户名</value>
+  </data>
+  <data name="FindPayload" xml:space="preserve">
+    <value>找到负载</value>
+  </data>
+  <data name="Firewall" xml:space="preserve">
+    <value>防火墙</value>
+  </data>
+  <data name="FirewallHelp" xml:space="preserve">
+    <value>打开防火墙。如果该值为 false，则无论其他策略设置如何，服务器都不得阻止任何网络流量</value>
+  </data>
+  <data name="FirewallLegacy" xml:space="preserve">
+    <value>防火墙 (旧版)</value>
+  </data>
+  <data name="FirewallRules" xml:space="preserve">
+    <value>防火墙规则</value>
+  </data>
+  <data name="FirewallV2" xml:space="preserve">
+    <value>FirewallV2</value>
+  </data>
+  <data name="FirewallWin8" xml:space="preserve">
+    <value>防火墙 (旧版)</value>
+  </data>
+  <data name="FirstActiveEthernet" xml:space="preserve">
+    <value>第一个活动以太网</value>
+  </data>
+  <data name="FirstEthernet" xml:space="preserve">
+    <value>第一个以太网</value>
+  </data>
+  <data name="FirstNameLookUpText" xml:space="preserve">
+    <value>用户名字</value>
+  </data>
+  <data name="FoldersCount" xml:space="preserve">
+    <value>文件夹计数</value>
+  </data>
+  <data name="ForceAuthenticationBeforeAutoFill" xml:space="preserve">
+    <value>在自动填写密码之前强制执行身份验证</value>
+  </data>
+  <data name="ForceAuthenticationBeforeAutoFillTooltip" xml:space="preserve">
+    <value>启用后，此设置会在自动填写密码和信用卡信息之前强制用户先执行身份验证。</value>
+  </data>
+  <data name="ForceAutomaticDateAndTime" xml:space="preserve">
+    <value>强制自动设置日期和时间</value>
+  </data>
+  <data name="ForceAutomaticDateAndTimeTooltip" xml:space="preserve">
+    <value>启用后，此设置会阻止用户切换关闭 iOS 设备中“日期和时间”的“自动设置”功能。</value>
+  </data>
+  <data name="ForceFullscreen" xml:space="preserve">
+    <value>强制全屏显示启动屏幕</value>
+  </data>
+  <data name="ForceLogout" xml:space="preserve">
+    <value>强制注销</value>
+  </data>
+  <data name="ForceNonFullscreen" xml:space="preserve">
+    <value>强制非全屏显示启动屏幕</value>
+  </data>
+  <data name="ForcePinToolTip" xml:space="preserve">
+    <value>如果启用，员工需要设置或更新设备密码以满足最低密码要求。</value>
+  </data>
+  <data name="ForceStartSize" xml:space="preserve">
+    <value>强制启动屏幕大小</value>
+  </data>
+  <data name="ForceStartSizeToolTip" xml:space="preserve">
+    <value>一旦配置，将会强制启动屏幕的大小。</value>
+  </data>
+  <data name="ForceWiFiPowerOn" xml:space="preserve">
+    <value>强制开启 Wi-Fi</value>
+  </data>
+  <data name="ForceWiFiPowerOnToolTip" xml:space="preserve">
+    <value>启用后，即使用户进入或退出飞行模式，也无法在“设置”或控制中心中将 Wi-Fi 切换为关闭状态。它不会阻止选择要使用的 Wi-Fi 网络。</value>
+  </data>
+  <data name="Forest" xml:space="preserve">
+    <value>林</value>
+  </data>
+  <data name="FreezePeriodGreaterThan90Days" xml:space="preserve">
+    <value>冻结期不应超过 90 天</value>
+  </data>
+  <data name="FreezePeriodOverlapMessage" xml:space="preserve">
+    <value>冻结期不应重叠</value>
+  </data>
+  <data name="FreezePeriodRequiredMessage" xml:space="preserve">
+    <value>请选择开始日期和结束日期</value>
+  </data>
+  <data name="FreezePeriods" xml:space="preserve">
+    <value>冻结期</value>
+  </data>
+  <data name="FreezePeriodValidationErrorMessage" xml:space="preserve">
+    <value>请选择一个不超过 90 天的冻结期。相邻冻结期需要的间隔至少为 60 天。</value>
+  </data>
+  <data name="FreezePeriodWithin60DaysMessage" xml:space="preserve">
+    <value>相邻冻结期应相隔 60 天以上</value>
+  </data>
+  <data name="FridayAndSaturday" xml:space="preserve">
+    <value>星期五和星期六</value>
+  </data>
+  <data name="FullScan" xml:space="preserve">
+    <value>完全扫描</value>
+  </data>
+  <data name="FullScanScheduleDay" xml:space="preserve">
+    <value>完全扫描计划日期</value>
+  </data>
+  <data name="FullyQualifiedResourceName" xml:space="preserve">
+    <value>完全限定的资源名称</value>
+  </data>
+  <data name="GeneralPayloadWorkflowInfoMessage" xml:space="preserve">
+    <value>包含此配置文件的工作流，使用在该工作流中定义的分配和部署设置。</value>
+  </data>
+  <data name="GetStartedInProfiles" xml:space="preserve">
+    <value>开始使用配置文件</value>
+  </data>
+  <data name="GettingStartedWithDEM" xml:space="preserve">
+    <value>开始使用 Dynamic Environment Manager</value>
+  </data>
+  <data name="GIF" xml:space="preserve">
+    <value>GIF</value>
+  </data>
+  <data name="GlobalActions" xml:space="preserve">
+    <value>全局操作</value>
+  </data>
+  <data name="GlobalPortFirewallRules" xml:space="preserve">
+    <value>全局端口防火墙规则</value>
+  </data>
+  <data name="GlobalPortFirewallRulesHelp" xml:space="preserve">
+    <value>如果该值为 false，则本地存储中的全局端口防火墙规则将被忽略且不会强制执行。</value>
+  </data>
+  <data name="GooglePeopleGet" xml:space="preserve">
+    <value>Google People: get</value>
+  </data>
+  <data name="GoogleUserIDs" xml:space="preserve">
+    <value>Google userIDs</value>
+  </data>
+  <data name="GotIt" xml:space="preserve">
+    <value>明白了</value>
+  </data>
+  <data name="GrantPermission" xml:space="preserve">
+    <value>授予权限</value>
+  </data>
+  <data name="GroupExternalID" xml:space="preserve">
+    <value>组外部 ID</value>
+  </data>
+  <data name="GroupIdSource" xml:space="preserve">
+    <value>组 ID 源</value>
+  </data>
+  <data name="GroupIdSourceToolTip" xml:space="preserve">
+    <value>将对等选择限制到特定源。</value>
+  </data>
+  <data name="GroupTitle" xml:space="preserve">
+    <value>组标题</value>
+  </data>
+  <data name="Hard" xml:space="preserve">
+    <value>硬</value>
+  </data>
+  <data name="Helvetica" xml:space="preserve">
+    <value>Helvetica</value>
+  </data>
+  <data name="Hide" xml:space="preserve">
+    <value>隐藏</value>
+  </data>
+  <data name="HideAllAppsList" xml:space="preserve">
+    <value>隐藏所有应用列表</value>
+  </data>
+  <data name="HideAppList" xml:space="preserve">
+    <value>应用列表</value>
+  </data>
+  <data name="HideAppListToolTip" xml:space="preserve">
+    <value>在 1709 中添加。此设置需要重新启动设备。</value>
+  </data>
+  <data name="HideChangeAccountSettings" xml:space="preserve">
+    <value>更改帐户设置</value>
+  </data>
+  <data name="HideChangeAccountSettingsToolTip" xml:space="preserve">
+    <value>在 1703 中添加。控制选项在“开始”菜单中的可见性。</value>
+  </data>
+  <data name="HideFrequentlyUsedApps" xml:space="preserve">
+    <value>常用应用</value>
+  </data>
+  <data name="HideFrequentlyUsedAppsToolTip" xml:space="preserve">
+    <value>在 1703 中添加。控制最常用应用在“开始”菜单中的可见性。此设置需要重新启动设备。</value>
+  </data>
+  <data name="HideHibernate" xml:space="preserve">
+    <value>休眠</value>
+  </data>
+  <data name="HideHibernateToolTip" xml:space="preserve">
+    <value>在 1703 中添加。控制“休眠”选项在“开始”菜单中的可见性。</value>
+  </data>
+  <data name="HideLock" xml:space="preserve">
+    <value>锁定</value>
+  </data>
+  <data name="HideLockToolTip" xml:space="preserve">
+    <value>在 1703 中添加。控制“锁定”选项在“开始”菜单中的可见性。</value>
+  </data>
+  <data name="HidePeopleBar" xml:space="preserve">
+    <value>People 栏</value>
+  </data>
+  <data name="HidePeopleBarToolTip" xml:space="preserve">
+    <value>在 1709 中添加。控制“People”选项在任务栏中的可见性，并防止固定到任务栏或切换“People”设置。</value>
+  </data>
+  <data name="HidePowerButton" xml:space="preserve">
+    <value>“电源”按钮</value>
+  </data>
+  <data name="HidePowerButtonToolTip" xml:space="preserve">
+    <value>在 1703 中添加。控制“电源”按钮在“开始”菜单中的可见性。此设置需要重新启动设备。</value>
+  </data>
+  <data name="HideRecentJumplists" xml:space="preserve">
+    <value>最近跳转列表</value>
+  </data>
+  <data name="HideRecentJumplistsToolTip" xml:space="preserve">
+    <value>在 1703 中添加。控制最近打开的项目在“开始”菜单中的可见性。此设置需要重新启动设备。</value>
+  </data>
+  <data name="HideRecentlyAddedApps" xml:space="preserve">
+    <value>最近添加的应用</value>
+  </data>
+  <data name="HideRecentlyAddedAppsToolTip" xml:space="preserve">
+    <value>在 1703 中添加。控制最近添加的应用在“开始”菜单中的可见性。此设置需要重新启动设备。</value>
+  </data>
+  <data name="HideRestart" xml:space="preserve">
+    <value>重启</value>
+  </data>
+  <data name="HideRestartToolTip" xml:space="preserve">
+    <value>在 1703 中添加。控制“重启”和“更新并重启”选项的可见性。</value>
+  </data>
+  <data name="HideShutDown" xml:space="preserve">
+    <value>关机</value>
+  </data>
+  <data name="HideShutDownToolTip" xml:space="preserve">
+    <value>在 1703 中添加。控制“关机”选项的可见性。</value>
+  </data>
+  <data name="HideSignOut" xml:space="preserve">
+    <value>退出</value>
+  </data>
+  <data name="HideSignOutToolTip" xml:space="preserve">
+    <value>在 1703 中添加。控制“退出”选项在“开始”菜单中的可见性。</value>
+  </data>
+  <data name="HideSleep" xml:space="preserve">
+    <value>睡眠</value>
+  </data>
+  <data name="HideSleepToolTip" xml:space="preserve">
+    <value>在 1703 中添加。控制“睡眠”选项的可见性。</value>
+  </data>
+  <data name="HideSwitchAccount" xml:space="preserve">
+    <value>切换帐户</value>
+  </data>
+  <data name="HideSwitchAccountToolTip" xml:space="preserve">
+    <value>在 1703 中添加。控制“切换帐户”选项在“开始”菜单中的可见性。</value>
+  </data>
+  <data name="HideUserTile" xml:space="preserve">
+    <value>用户磁贴</value>
+  </data>
+  <data name="HideUserTileToolTip" xml:space="preserve">
+    <value>在 1703 中添加。控制“用户”选项在“开始”菜单中的可见性。此设置需要重新启动设备。</value>
+  </data>
+  <data name="HighBlockingLevel" xml:space="preserve">
+    <value>高阻止级别 - 主动阻止未知文件，同时优化客户端性能 (误报的可能性更大)</value>
+  </data>
+  <data name="HighPlusBlockingLevel" xml:space="preserve">
+    <value>最高阻止级别 – 主动阻止未知文件并应用其他保护措施 (可能会影响客户端性能)</value>
+  </data>
+  <data name="HonorTimeScheduleToAllowAccess" xml:space="preserve">
+    <value>遵守允许访问应用的时间表</value>
+  </data>
+  <data name="ICCIDIsRequired" xml:space="preserve">
+    <value>ICCID 为必填项</value>
+  </data>
+  <data name="ICCIDs" xml:space="preserve">
+    <value>ICCID</value>
+  </data>
+  <data name="IdentifierTypePrivacyHelpInfo" xml:space="preserve">
+    <value>应用程序捆绑包应通过捆绑包 ID 来标识。非捆绑二进制文件必须通过安装路径来标识。应用程序捆绑包内的嵌入式助手工具将自动继承将其包含在内的应用程序捆绑包的权限。</value>
+  </data>
+  <data name="IdentityPreference" xml:space="preserve">
+    <value>身份首选项</value>
+  </data>
+  <data name="IdentityPreferenceNames" xml:space="preserve">
+    <value>身份首选项名称</value>
+  </data>
+  <data name="IdentityPrivacy" xml:space="preserve">
+    <value>标识隐私</value>
+  </data>
+  <data name="Ignore" xml:space="preserve">
+    <value>忽略</value>
+  </data>
+  <data name="IgnoreMOAppDownloadLimitToolTip" xml:space="preserve">
+    <value>指定是否忽略蜂窝网络上应用及其更新的移动运营商下载限制。</value>
+  </data>
+  <data name="IgnoreMOUpdateDownloadLimitToolTip" xml:space="preserve">
+    <value>在 Windows 10 版本 1703 中添加。指定是否忽略蜂窝网络上操作系统更新的移动运营商下载限制</value>
+  </data>
+  <data name="ImageDetails" xml:space="preserve">
+    <value>图像详细信息</value>
+  </data>
+  <data name="ImageElementDescription" xml:space="preserve">
+    <value>图像元素说明</value>
+  </data>
+  <data name="ImagePosition" xml:space="preserve">
+    <value>图像位置</value>
+  </data>
+  <data name="Images" xml:space="preserve">
+    <value>图像</value>
+  </data>
+  <data name="Imagesize" xml:space="preserve">
+    <value>需要尺寸</value>
+  </data>
+  <data name="iMessageAndFaceTime" xml:space="preserve">
+    <value>iMessage 和 FaceTime</value>
+  </data>
+  <data name="ImportEdgeAssets" xml:space="preserve">
+    <value>导入 Edge 资产</value>
+  </data>
+  <data name="ImportEdgeAssetsToolTip" xml:space="preserve">
+    <value>在 1703 中添加。导入用于 Edge 辅助磁贴的 Edge 资产。此设置需要重新启动设备。</value>
+  </data>
+  <data name="InboundEncryptedPacketsQueued" xml:space="preserve">
+    <value>入站加密数据包将排队</value>
+  </data>
+  <data name="IncludeAllNetworks" xml:space="preserve">
+    <value>包括所有网络</value>
+  </data>
+  <data name="IncludeAllNetworksInfo" xml:space="preserve">
+    <value>如果选中，将通过 VPN 路由所有流量</value>
+  </data>
+  <data name="InfoBoxOnAndroidLegacyProfilesMsg" xml:space="preserve">
+    <value>将旧版 Android 管理迁移到工作配置文件后，您能够加大对所有 OEM 设备的控制力度并提高一致性和安全性。请立即创建新的 Android 配置文件。{0}</value>
+  </data>
+  <data name="InitialDevicePasscode" xml:space="preserve">
+    <value>初始设备密码</value>
+  </data>
+  <data name="InnerAuthenticationMethod" xml:space="preserve">
+    <value>内部身份验证方法</value>
+  </data>
+  <data name="InsiderBuildsToolTip" xml:space="preserve">
+    <value>在 Windows 10 版本 1709 中添加。指定是否允许访问 Windows 10 Insider Preview 内部版本</value>
+  </data>
+  <data name="InstallOnlyArea" xml:space="preserve">
+    <value>仅在选定区域设备安装</value>
+  </data>
+  <data name="InstallSettingIsRequired" xml:space="preserve">
+    <value>自定义设置 -“安装设置”是必填字段</value>
+  </data>
+  <data name="InstallSettings" xml:space="preserve">
+    <value>安装设置</value>
+  </data>
+  <data name="InstallSignedUpdatesFromThirdPartyEntitiesToolTip" xml:space="preserve">
+    <value>指定自动更新是否接受由 Microsoft 以外的实体签名的更新</value>
+  </data>
+  <data name="InstallTheConsole" xml:space="preserve">
+    <value>安装 控制台</value>
+  </data>
+  <data name="InstallTheConsoleDescription" xml:space="preserve">
+    <value>下载并安装轻型Dynamic Environment Manager控制台以自定义您的配置文件。</value>
+  </data>
+  <data name="InstallUserProfileFailed" xml:space="preserve">
+    <value>安装用户配置文件失败</value>
+  </data>
+  <data name="Institutional" xml:space="preserve">
+    <value>机构</value>
+  </data>
+  <data name="IntegerBetweenArgAndArg" xml:space="preserve">
+    <value>输入一个介于 {0} 和 {1} 之间的整数。</value>
+  </data>
+  <data name="InterfaceLevelType" xml:space="preserve">
+    <value>接口级别类型</value>
+  </data>
+  <data name="InterfaceNamePlaceholderText" xml:space="preserve">
+    <value>例如，接口名称</value>
+  </data>
+  <data name="InterfaceTypes" xml:space="preserve">
+    <value>接口类型</value>
+  </data>
+  <data name="InterfaceTypesHelp" xml:space="preserve">
+    <value>以逗号分隔的接口类型列表。例如 RemoteAccess,Wireless,Lan,MobileBroadband</value>
+  </data>
+  <data name="InternalDefinitionUpdateServer" xml:space="preserve">
+    <value>内部定义更新服务器</value>
+  </data>
+  <data name="IntrusionPreventionSystem" xml:space="preserve">
+    <value>入侵防御系统</value>
+  </data>
+  <data name="INVALID_ROOT_ELEMENT" xml:space="preserve">
+    <value>Xml 根元素无效。</value>
+  </data>
+  <data name="INVALID_STARTLAYOUT_XML" xml:space="preserve">
+    <value>开始布局 xml 无效。</value>
+  </data>
+  <data name="InvalidAssociatedDomainDefined" xml:space="preserve">
+    <value>定义的关联域无效。</value>
+  </data>
+  <data name="InvalidCharacterInInput" xml:space="preserve">
+    <value>输入的字符无效。</value>
+  </data>
+  <data name="InvalidCustomConfigurationXml" xml:space="preserve">
+    <value>无效的自定义配置 XML: {0}</value>
+  </data>
+  <data name="InvalidEncryptionNotificationRetryInterval" xml:space="preserve">
+    <value>解除之间的重试间隔应介于 1 到 168 之间</value>
+  </data>
+  <data name="InvalidIPaddressesAndFqdnCacheHost" xml:space="preserve">
+    <value>缓存主机值必须采用完全限定域名 (FQDN) 或 IP 地址格式。请使用逗号分隔多个值。</value>
+  </data>
+  <data name="InvalidIPaddressesAndFqdnCacheHostSource" xml:space="preserve">
+    <value>缓存主机源值必须采用完全限定域名 (FQDN) 或 IP 地址格式。请使用逗号分隔多个值。</value>
+  </data>
+  <data name="InvalidIPAddressRange" xml:space="preserve">
+    <value>请输入有效的 IP 地址。请使用逗号分隔地址和地址范围。请在地址间使用短划线表示范围</value>
+  </data>
+  <data name="InvalidPasswordForMaxNumericSequences" xml:space="preserve">
+    <value>此预定义密码不符合当前数字序列长度上限的要求</value>
+  </data>
+  <data name="InvalidPasswordForMaxRepeatingCharacters" xml:space="preserve">
+    <value>此预定义密码不符合当前重复字符数的要求</value>
+  </data>
+  <data name="InvalidPasswordForMinNumberOfLetters" xml:space="preserve">
+    <value>此预定义密码不符合当前最低字母数目的要求</value>
+  </data>
+  <data name="InvalidPasswordForMinNumberOfLowerCaseLetters" xml:space="preserve">
+    <value>此预定义密码不符合当前小写字母最低数目的要求</value>
+  </data>
+  <data name="InvalidPasswordForMinNumberOfNonLetters" xml:space="preserve">
+    <value>此预定义密码不符合当前最低非字母数目的要求</value>
+  </data>
+  <data name="InvalidPasswordForMinNumberOfNumericalDigits" xml:space="preserve">
+    <value>此预定义密码不符合当前数字最低数目的要求</value>
+  </data>
+  <data name="InvalidPasswordForMinNumberOfSymbols" xml:space="preserve">
+    <value>此预定义密码不符合当前最低符号数目的要求</value>
+  </data>
+  <data name="InvalidPasswordForMinNumberOfUpperCaseLetters" xml:space="preserve">
+    <value>此预定义密码不符合当前大写字母最低数目的要求</value>
+  </data>
+  <data name="InvalidPasswordForMinPasscodeLength" xml:space="preserve">
+    <value>此预定义密码不符合当前密码最短长度的要求</value>
+  </data>
+  <data name="InvalidPortRange" xml:space="preserve">
+    <value>请输入有效的端口号 (0-65535)。请使用逗号分隔端口和端口范围。请在端口号之间使用短划线表示范围</value>
+  </data>
+  <data name="InvalidRecoveryKeyMaxFailureCount" xml:space="preserve">
+    <value>错误之前的故障上限应介于 1 到 5 之间</value>
+  </data>
+  <data name="InvalidRecoveryKeyNotificationRetryInterval" xml:space="preserve">
+    <value>解除之间的重试间隔应介于 1 到 168 之间</value>
+  </data>
+  <data name="InvalidRemovalDateSelection" xml:space="preserve">
+    <value>移除日期无效。只允许将来的日期。</value>
+  </data>
+  <data name="InvalidSmartGroupAssigned" xml:space="preserve">
+    <value>由于分配的智能组无效，无法创建配置文件</value>
+  </data>
+  <data name="InvalidUrlPattern" xml:space="preserve">
+    <value>输入的所有 URL 必须以 http:// 或 https:// 开头</value>
+  </data>
+  <data name="IosArgBelowOnly" xml:space="preserve">
+    <value>仅限 iOS {0} 及以下版本</value>
+  </data>
+  <data name="IosArgMacOsArgOnly" xml:space="preserve">
+    <value>仅限 iOS {0} 和 macOS {1}</value>
+  </data>
+  <data name="IosArgSupervisedAfter" xml:space="preserve">
+    <value>iOS {0}、iOS {1} + 受监督</value>
+  </data>
+  <data name="IosDownloadProfileMessage" xml:space="preserve">
+    <value>下载并安装“{0}”配置文件以确保您的设备安全。</value>
+    <comment>param[0]: profile name as displayed on the device</comment>
+  </data>
+  <data name="IosOnly" xml:space="preserve">
+    <value>仅限 iOS</value>
+  </data>
+  <data name="IosProfileDownloadInProgressMessage" xml:space="preserve">
+    <value>正在下载配置文件</value>
+  </data>
+  <data name="IosProfileInstallInstallProfileMessage" xml:space="preserve">
+    <value>安装“{0}”配置文件。</value>
+    <comment>param[0]: profile name as displayed on the device</comment>
+  </data>
+  <data name="IosProfileInstallOpenSettingsMessage" xml:space="preserve">
+    <value>打开“设置”，然后点击“安装下载的配置文件”。</value>
+  </data>
+  <data name="IosProfileInstallStepsMessage" xml:space="preserve">
+    <value>要在您的设备上启用 {0}，还需要再执行几个步骤。</value>
+    <comment>param[0]: profile name as displayed on the device</comment>
+  </data>
+  <data name="IosProfileInstallTrustRemoteManagementMessage" xml:space="preserve">
+    <value>信任“远程管理”。</value>
+  </data>
+  <data name="IosSupportedVersionArg" xml:space="preserve">
+    <value>iOS {0} - {1}</value>
+  </data>
+  <data name="IpadProfileInstallationContinueToInstructions" xml:space="preserve">
+    <value>如果您正在注册 iPad，请点击“继续”。</value>
+  </data>
+  <data name="IpRangeDataFormatException" xml:space="preserve">
+    <value>IP 范围数据格式异常</value>
+  </data>
+  <data name="IPSecCisco" xml:space="preserve">
+    <value>IPSec (Cisco)</value>
+  </data>
+  <data name="IPsecExempt" xml:space="preserve">
+    <value>IPsec 豁免</value>
+  </data>
+  <data name="IPsecExemptHelp" xml:space="preserve">
+    <value>配置 IPsec 豁免</value>
+  </data>
+  <data name="IsAppMappingFromDTREnabled" xml:space="preserve">
+    <value>使用设备流量规则</value>
+  </data>
+  <data name="KerberosAllowAutomaticLoginDescription" xml:space="preserve">
+    <value>如果为 false，则不允许将密码保存到密钥链。</value>
+  </data>
+  <data name="KerberosAllowPasswordChangeDescription" xml:space="preserve">
+    <value>如果为 false，则禁用密码更改。</value>
+  </data>
+  <data name="KerberosPwReqComplexityDescription" xml:space="preserve">
+    <value>如果为 true，则密码必须符合 Active Directory 的“复杂”定义。</value>
+  </data>
+  <data name="KerberosRealmDescription" xml:space="preserve">
+    <value>应正确大写的 Kerberos 领域。如果在 Active Directory 林中，则这是用户登录的领域。</value>
+  </data>
+  <data name="KerberosRequireUserPresenceDescription" xml:space="preserve">
+    <value>如果为 true，则要求用户提供触控 ID、面容 ID 或密码以访问密钥链条目。</value>
+  </data>
+  <data name="KerberosSyncLocalPasswordDescription" xml:space="preserve">
+    <value>如果为 false，则禁用密码同步。请注意，如果用户使用移动帐户登录，则此操作将不起作用。</value>
+  </data>
+  <data name="KerberosUseSiteAutoDiscoveryDescription" xml:space="preserve">
+    <value>如果为 false，则 Kerberos 扩展不会自动使用 LDAP 和 DNS 来确定其 AD 站点名称。</value>
+  </data>
+  <data name="KeyMaterialIsRequired" xml:space="preserve">
+    <value>Wifi -“密码”是必填字段</value>
+  </data>
+  <data name="KeyMaterialLengthShouldBe255Characters" xml:space="preserve">
+    <value>Wifi - 密码长度不能超过 255 个字符</value>
+  </data>
+  <data name="KioskEditApplication" xml:space="preserve">
+    <value>编辑应用程序</value>
+  </data>
+  <data name="KioskExePath" xml:space="preserve">
+    <value>应用程序可执行路径</value>
+  </data>
+  <data name="KioskSmartGroupError" xml:space="preserve">
+    <value>请在“常规”部分中指定至少一个分配组以继续。</value>
+  </data>
+  <data name="KioskStartMenuScreens" xml:space="preserve">
+    <value>“开始”菜单屏幕</value>
+  </data>
+  <data name="KioskWorkflowInfoMessage" xml:space="preserve">
+    <value>使用 Freestyle Orchestrator 工作流可在单个工作流中分配 kiosk 负载和应用。</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>语言</value>
+  </data>
+  <data name="LastNameLookUpText" xml:space="preserve">
+    <value>用户姓氏</value>
+  </data>
+  <data name="LauncherLayout" xml:space="preserve">
+    <value>Launcher 布局</value>
+  </data>
+  <data name="LauncherMode" xml:space="preserve">
+    <value>启动器模式</value>
+  </data>
+  <data name="LauncherOfflineModeTooltip" xml:space="preserve">
+    <value>启用后，当设备脱机或身份验证服务不可用时，可以访问此启动器配置文件。注意: 此配置文件需要分配给最终用户和注册预备用户，或同时包含这两者的组织组。</value>
+  </data>
+  <data name="LaunchRestrictionInfo" xml:space="preserve">
+    <value>启用此项可指定允许运行或不允许运行的应用程序。</value>
+  </data>
+  <data name="LimitAccessToWebsites" xml:space="preserve">
+    <value>限制访问网站</value>
+  </data>
+  <data name="LimitComputerUseToWeekdays" xml:space="preserve">
+    <value>仅限工作日使用电脑</value>
+  </data>
+  <data name="LimitComputerUseToWeekends" xml:space="preserve">
+    <value>仅限周末使用电脑</value>
+  </data>
+  <data name="LimitPeerUsaageToMembersWithTheSameGroupIdToolTip" xml:space="preserve">
+    <value>指定具有相同组 ID 的成员是否应利用对等更新</value>
+  </data>
+  <data name="LimitPeerUsageToMembersWithSameGroupId" xml:space="preserve">
+    <value>将对等使用限制为具有相同组 ID 的成员</value>
+  </data>
+  <data name="ListenEvent" xml:space="preserve">
+    <value>侦听事件</value>
+  </data>
+  <data name="ListenEventInfo" xml:space="preserve">
+    <value>允许应用程序监控输入设备 (鼠标、键盘和触控板) 中的事件。</value>
+  </data>
+  <data name="LocalAddressRangesHelp" xml:space="preserve">
+    <value>指定规则涵盖的本地地址。</value>
+  </data>
+  <data name="LocalConnectionRules" xml:space="preserve">
+    <value>本地连接规则</value>
+  </data>
+  <data name="LocalConnectionRulesHelp" xml:space="preserve">
+    <value>如果此值为 false，则无论架构版本和连接安全规则版本如何，都将忽略且不会强制执行本地存储中的连接安全规则</value>
+  </data>
+  <data name="LocalFirewallRules" xml:space="preserve">
+    <value>本地防火墙规则</value>
+  </data>
+  <data name="LocalFirewallRulesHelp" xml:space="preserve">
+    <value>如果此值为 false，则本地存储中的防火墙规则将被忽略且不会强制执行。</value>
+  </data>
+  <data name="Localhost" xml:space="preserve">
+    <value>本地主机</value>
+  </data>
+  <data name="LocalPortRanges" xml:space="preserve">
+    <value>本地端口范围</value>
+  </data>
+  <data name="LocalPortRangesHelp" xml:space="preserve">
+    <value>以逗号分隔的范围列表。例如 100-120,200,300-320。</value>
+  </data>
+  <data name="LockScreenImageUrl" xml:space="preserve">
+    <value>锁屏图像</value>
+  </data>
+  <data name="LockScreenMessageEnabled" xml:space="preserve">
+    <value>设置锁屏消息</value>
+  </data>
+  <data name="LockScreenMessageToolTip" xml:space="preserve">
+    <value>当设备锁定时，设备屏幕上会显示此消息。此消息对遗失或被盗设备有用。</value>
+  </data>
+  <data name="LockTaskHelpText" xml:space="preserve">
+    <value>锁定任务模式允许应用将自身固定到前台。允许要在锁定任务模式下固定的应用。应用必须支持锁定任务模式，如 https://developer.android.com/work/cosu.html 中所述。看不到您要查找的应用? 请确保已将其添加到“应用与图书”部分。</value>
+  </data>
+  <data name="LockTaskMode" xml:space="preserve">
+    <value>锁定任务模式</value>
+  </data>
+  <data name="LoginOnly" xml:space="preserve">
+    <value>仅登录</value>
+  </data>
+  <data name="LogoutOnly" xml:space="preserve">
+    <value>仅注销</value>
+  </data>
+  <data name="LongSupportMessageEnabled" xml:space="preserve">
+    <value>设置用户在设置中看到的消息</value>
+  </data>
+  <data name="LongSupportMessageToolTip" xml:space="preserve">
+    <value>用户可在其设备的“设置”&gt;“安全性”&gt;“设备”下看到此消息</value>
+  </data>
+  <data name="LucidaGrande" xml:space="preserve">
+    <value>Lucida Grande</value>
+  </data>
+  <data name="Macao" xml:space="preserve">
+    <value>澳门</value>
+  </data>
+  <data name="MacOsAllowSmartCardInfo" xml:space="preserve">
+    <value>禁用后，将禁止使用智能卡进行登录、授权和屏幕保护程序解锁。但仍允许将其用于其他功能，例如，对电子邮件和 Web 访问进行签名。
+注意 - 需要重新启动才能使设置更改生效。</value>
+  </data>
+  <data name="MacOsAndTvOSOnly" xml:space="preserve">
+    <value>仅限 macOS 和 tvOS</value>
+  </data>
+  <data name="MacOsCertificatePreferenceTooltip" xml:space="preserve">
+    <value>如果您有多个服务器和/或电子邮件使用不同的证书，则可以创建一个证书首选项来定义应自动使用此证书的 URL 或电子邮件。最多允许 15 个服务。</value>
+  </data>
+  <data name="MacOsCloseViewFarPointTooltip" xml:space="preserve">
+    <value>最小缩放值可以是从 0 到已设置的最大缩放值之间的任何值</value>
+  </data>
+  <data name="MacOsCloseViewNearPointTooltip" xml:space="preserve">
+    <value>最大缩放值可以是已设置的最小缩放值到 20 之间的任何值</value>
+  </data>
+  <data name="MacOsDiskEncryptionHubEncryptionDescription" xml:space="preserve">
+    <value>Intelligent Hub 将向请求注销的最终用户显示通知</value>
+  </data>
+  <data name="MacOsDiskEncryptionHubRecoveryKeyDescription" xml:space="preserve">
+    <value>Intelligent Hub 将提示托管用户输入密码以轮换要托管的恢复密钥</value>
+  </data>
+  <data name="MacOsDiskEncryptionHubSection" xml:space="preserve">
+    <value>Intelligent Hub 设备管理</value>
+  </data>
+  <data name="MacOsDiskEncryptionHubSectionDescription" xml:space="preserve">
+    <value>配置 Intelligent Hub 以使用上述本机设备管理设置强制执行员工合规性。</value>
+  </data>
+  <data name="MacOsDiskEncryptionNativeMdmSection" xml:space="preserve">
+    <value>本机设备管理</value>
+  </data>
+  <data name="MacOsDiskEncryptionNativeMdmSectionDescription" xml:space="preserve">
+    <value>配置本机 FileVault 2 磁盘加密设置。</value>
+  </data>
+  <data name="MacOsDiskEncryptionUseIntelligentHubDescription" xml:space="preserve">
+    <value>只能对 Intelligent Hub 19.04 及更高版本禁用。默认情况下，将始终启用 Intelligent Hub 4.0 和 AirWatch Agent 3.1.1 及更低版本。</value>
+  </data>
+  <data name="MacOsEnforceSmartCardInfo" xml:space="preserve">
+    <value>启用后，用户将只能使用智能卡登录或进行身份验证。</value>
+  </data>
+  <data name="MacOsFileVault108Deprecated" xml:space="preserve">
+    <value>FileVault 10.8 配置文件已被弃用</value>
+  </data>
+  <data name="MacOsFileVault108DeprecatedDescription" xml:space="preserve">
+    <value>此版本的 FileVault 不再受支持。有关详细信息，请参见知识库文章：OS X 10.8 的 FileVault 加密管理。</value>
+  </data>
+  <data name="MacOsFusionPayloadDeprecated" xml:space="preserve">
+    <value>已弃用 Fusion 负载。</value>
+  </data>
+  <data name="MacOsFusionPayloadDescription" xml:space="preserve">
+    <value>有关更多信息，请参阅 {0}。</value>
+  </data>
+  <data name="MacOsIdentityPreferenceTooltip" xml:space="preserve">
+    <value>如果您使用多个客户端身份证书，则可以创建一个身份首选项来定义应自动使用此证书的 URL，以便用户无需在每次登录时都要手动选择该证书。DNS 主机名可以使用通配符 (*)。最多允许 15 个服务。</value>
+  </data>
+  <data name="MacOsMultiplePayloadSameInterfaceError" xml:space="preserve">
+    <value>无法创建以太网接口类型相同的多个网络负载</value>
+  </data>
+  <data name="MacOsNetworkInterfaceInfo" xml:space="preserve">
+    <value>名称中含“活动”字样的负载适用于在配置文件安装时可正常工作的以太网接口。如果没有活动的以太网接口可正常工作，则“第一个活动以太网”负载将配置具有最高服务顺序优先级的接口。名称中不含“活动”字样的负载将根据服务顺序应用于以太网接口，不考虑接口是否正常工作</value>
+  </data>
+  <data name="MacOsOneCardPerUserInfo" xml:space="preserve">
+    <value>启用后，用户只能与一个智能卡配对，但如果在设置此限制之前已设置配对，则允许使用现有配对。</value>
+  </data>
+  <data name="MacOsOnly" xml:space="preserve">
+    <value>仅限 macOS</value>
+  </data>
+  <data name="MacOsPrivacyInfo" xml:space="preserve">
+    <value>对于 macOS 设备，应用程序信息将传输到 Workspace ONE UEM，系统稍后会从设备处理受管应用程序信息，然后放弃个人应用程序信息而不保存。</value>
+  </data>
+  <data name="MacOsPrivacyPreferencesDescription" xml:space="preserve">
+    <value>授予或拒绝对请求访问受保护隐私服务的应用程序或进程的访问权限。</value>
+  </data>
+  <data name="MacOsSystemExtensionsDescription" xml:space="preserve">
+    <value>控制在 macOS 10.15 及更高版本上加载的系统扩展的限制和设置。</value>
+  </data>
+  <data name="MacOsUserPairingDialogInfo" xml:space="preserve">
+    <value>禁用后，用户将看不到配对对话框来添加新的智能卡，但现有配对仍将正常工作。</value>
+  </data>
+  <data name="MailDomains" xml:space="preserve">
+    <value>邮件域</value>
+  </data>
+  <data name="ManagedAccountAndWhitelistedAccounts" xml:space="preserve">
+    <value>受管帐户和允许的帐户</value>
+  </data>
+  <data name="ManagedSettingTpmChipWarning" xml:space="preserve">
+    <value>如果禁用 TPM 芯片，则一次性 BIOS 密码功能也将被禁用，并且从受管 BIOS 配置文件设置的 BIOS 密码在使用后将不会轮换。是否继续?</value>
+  </data>
+  <data name="ManagedSettingTpmChipWarningTitle" xml:space="preserve">
+    <value>禁用 TPM 芯片</value>
+  </data>
+  <data name="MatchADPasswordComplexity" xml:space="preserve">
+    <value>匹配 AD 密码复杂性</value>
+  </data>
+  <data name="MaxBackgroundDownloadBandwidth" xml:space="preserve">
+    <value>最大后台下载带宽</value>
+  </data>
+  <data name="MaxBackgroundDownloadBandwidthToolTip" xml:space="preserve">
+    <value>指定设备可以通过交付优化在所有并发下载活动中使用的最大后台下载带宽(以 KB/秒为单位)。</value>
+  </data>
+  <data name="MaxDownloadBandwidthRange" xml:space="preserve">
+    <value>值必须为数字 (单位 KB/秒)。</value>
+  </data>
+  <data name="MaxFailedAttemptsToolTip" xml:space="preserve">
+    <value>如果选择了一个值，则在设备的锁定屏幕上输入密码时，允许员工达到选定失败尝试次数。在六次尝试失败后，需要等待一段时间，然后才能再次输入密码。每尝试一次，等待时间都会增加。在 macOS 中超过此数目时，设备将被锁定；如果在 iOS 中，设备将被擦除。</value>
+  </data>
+  <data name="MaxForegroundDownloadBandwidth" xml:space="preserve">
+    <value>最大前台下载带宽</value>
+  </data>
+  <data name="MaxForegroundDownloadBandwidthToolTip" xml:space="preserve">
+    <value>指定设备可以通过交付优化在所有并发下载活动中使用的最大前台下载带宽(以 KB/秒为单位)。</value>
+  </data>
+  <data name="MaxGracePeriodToolTip" xml:space="preserve">
+    <value>如果选择了一个值，则在选定的持续时间内 (以分钟为单位)，员工不输入密码也可以解锁设备。值 0 表示宽限期为零，每次解锁都需要立即输入密码。</value>
+  </data>
+  <data name="MaxHeight480px" xml:space="preserve">
+    <value>最大高度 480px</value>
+  </data>
+  <data name="MaxHeight720px" xml:space="preserve">
+    <value>最大高度 720px</value>
+  </data>
+  <data name="MaximumDownloadBandwidthAsAPercentageOfTotalAvailable" xml:space="preserve">
+    <value>最大下载带宽占可用总带宽的百分比 (%)</value>
+  </data>
+  <data name="MaximumDownloadBandwidthAsAPercentageOfTotalAvailableToolTip" xml:space="preserve">
+    <value>指定交付优化在所有并发下载活动中使用的最大前台下载带宽，以可用下载带宽百分比表示。默认值 0 (零) 意味着交付优化会动态调整以使用可用带宽进行前台下载。
+
+请注意，即使设置了此策略，也不会限制来自 LAN 对等端的下载。</value>
+  </data>
+  <data name="MaximumDownloadBandwidthThatADeviceWillUse" xml:space="preserve">
+    <value>设备将使用的最大下载带宽 (KB/秒)</value>
+  </data>
+  <data name="MaximumDownloadBandwidthThatADeviceWillUseToolTip" xml:space="preserve">
+    <value>指定最大下载带宽 (KB/秒)，设备可通过交付优化在所有并发下载活动中使用这个带宽。
+
+默认值 0 (零) 意味着交付优化会动态调整以使用可用带宽进行下载。</value>
+  </data>
+  <data name="MaximumNumberOfFailedAttemptsShouldBeInRange4And16" xml:space="preserve">
+    <value>密码 -“密码输入尝试失败次数”应介于 4 和 16 之间</value>
+  </data>
+  <data name="MaximumTimeForUserInactivityUntilEnteringWorkPasscodeTooltip" xml:space="preserve">
+    <value>在需要输入工作密码之前用户处于非活动状态的最长时间。</value>
+  </data>
+  <data name="MaximumTimeForUserInactivityUntilTheDeviceWillLockTooltip" xml:space="preserve">
+    <value>设备锁定前用户操作次数上限。</value>
+  </data>
+  <data name="MaxInactivityToolTip" xml:space="preserve">
+    <value>如果选择了某个值，则设备在被系统锁定之前一直处于闲置状态，无需员工解锁。达到此限制后，设备将被锁定，必须输入密码。</value>
+  </data>
+  <data name="MaxPinAgeInDaysToolTip" xml:space="preserve">
+    <value>如果设置了某个值，则在指定天数内，员工无需更改密码。在此天数过后，将强制用户更改密码，然后才能解锁设备。</value>
+  </data>
+  <data name="MaxPinLengthShouldBeBetween5And127" xml:space="preserve">
+    <value>Windows Hello -“PIN 长度上限”应介于 5 和 127 之间</value>
+  </data>
+  <data name="MaxWidth480px" xml:space="preserve">
+    <value>最大宽度 480px</value>
+  </data>
+  <data name="MaxWidth720px" xml:space="preserve">
+    <value>最大宽度 720px</value>
+  </data>
+  <data name="MdmTargetedProfilesSupported" xml:space="preserve">
+    <value>仅显示 MDM 目标配置文件。</value>
+  </data>
+  <data name="MediaLibrary" xml:space="preserve">
+    <value>媒体库</value>
+  </data>
+  <data name="MediaLibraryInfo" xml:space="preserve">
+    <value>来自各种媒体源 (如 iTunes 或 Aperture) 的图像、音频和视频的用户集合。</value>
+  </data>
+  <data name="Microphone" xml:space="preserve">
+    <value>麦克风</value>
+  </data>
+  <data name="MicrophonePrivacyHelpInfo" xml:space="preserve">
+    <value>系统麦克风。在配置文件中无法授予对麦克风的访问权限，只能拒绝。</value>
+  </data>
+  <data name="MicrosoftDocumentationHelpText" xml:space="preserve">
+    <value>Microsoft 文档</value>
+  </data>
+  <data name="MicrosoftUpdateServer" xml:space="preserve">
+    <value>Microsoft 更新服务器</value>
+  </data>
+  <data name="MinComplexCharsToolTip" xml:space="preserve">
+    <value>如果选择了某个值，员工需要设置一个密码，并且该密码所包含的复杂字符个数必须等于或大于所选值。复杂字符指的是数字或字母以外的字符，例如 &amp; % $ #。</value>
+  </data>
+  <data name="MinDevicePasscodeLengthToolTip" xml:space="preserve">
+    <value>允许的设备密码长度下限。</value>
+  </data>
+  <data name="MinDevicePasscodeQualityToolTip" xml:space="preserve">
+    <value>允许的设备密码质量下限。</value>
+  </data>
+  <data name="MinFieldShouldBeBetween0And59" xml:space="preserve">
+    <value>分钟字段必须介于 00 和 59 之间。</value>
+  </data>
+  <data name="MinimizeTitleBar" xml:space="preserve">
+    <value>最小化标题栏</value>
+  </data>
+  <data name="MinimumBatteryRequiredForPeerUploads" xml:space="preserve">
+    <value>对等端上载所需的最低电量 (%)</value>
+  </data>
+  <data name="MinimumBatteryRequiredForPeerUploadsToolTip" xml:space="preserve">
+    <value>指定介于 1 和 100 之间的任何值 (百分比形式)，以允许设备在使用电池供电时将数据上载到 LAN 和组对等端。当电池电量低于设定的最低电池电量时，上载将自动暂停。</value>
+  </data>
+  <data name="MinimumContentFileSizeThatCanUsePeerCaching" xml:space="preserve">
+    <value>可以使用对等缓存的最小内容文件大小</value>
+  </data>
+  <data name="MinimumContentFileSizeThatCanUsePeerCachingToolTip" xml:space="preserve">
+    <value>可以使用对等缓存的最小内容文件大小</value>
+  </data>
+  <data name="MinimumDiskSizeForDeviceToUsePeerCaching" xml:space="preserve">
+    <value>设备使用对等端缓存所需的最小磁盘大小</value>
+  </data>
+  <data name="MinimumDiskSizeForDeviceToUsePeerCachingToolTip" xml:space="preserve">
+    <value>指定设备使用对等端缓存所需的最小磁盘大小 (以 GB 为单位的容量)</value>
+  </data>
+  <data name="MinimumPasswordAgeShouldBeInRange0And998" xml:space="preserve">
+    <value>密码 - 最短密码期限应介于 0 和 998 之间</value>
+  </data>
+  <data name="MinimumPasswordLengthCanOnlyBeInteger" xml:space="preserve">
+    <value>最短密码长度只能为整数</value>
+  </data>
+  <data name="MinimumPasswordLengthDescription" xml:space="preserve">
+    <value>用户密码的最少字符数。</value>
+  </data>
+  <data name="MinimumPasswordLengthInCharacters" xml:space="preserve">
+    <value>最短密码长度 (以字符为单位)</value>
+  </data>
+  <data name="MinimumPasswordLengthShouldBeInRange4And16" xml:space="preserve">
+    <value>密码 - 密码长度下限应介于 4 和 16 之间</value>
+  </data>
+  <data name="MinimumQosForBackgroundDownloads" xml:space="preserve">
+    <value>后台下载的最低 QoS (KB/秒)</value>
+  </data>
+  <data name="MinimumQosForBackgroundDownloadsToolTip" xml:space="preserve">
+    <value>以 KB/秒为单位指定后台下载的最低下载 QoS (服务质量或速度)。此策略影响对等端和 HTTP 源的调配。交付优化可补充 HTTP 源下载以达到设定的最低 QoS 值。默认值为 500。</value>
+  </data>
+  <data name="MinimumRAMForDeviceToUsePeerCaching" xml:space="preserve">
+    <value>设备使用对等端缓存所需的最小 RAM</value>
+  </data>
+  <data name="MinimumRAMForDeviceToUsePeerCachingToolTip" xml:space="preserve">
+    <value>指定使用对等端缓存所需的最小 RAM 容量 (GB)。</value>
+  </data>
+  <data name="MinLength" xml:space="preserve">
+    <value>密码长度下限</value>
+  </data>
+  <data name="MinPasswordAgeMustBeLessThanDevicePasswordExpiration" xml:space="preserve">
+    <value>最短密码期限必须小于设备密码过期时间</value>
+  </data>
+  <data name="MinPinLengthShouldBeBetween4And127" xml:space="preserve">
+    <value>Windows Hello -“PIN 长度下限”应介于 4 和 127 之间</value>
+  </data>
+  <data name="MISSING_CSP" xml:space="preserve">
+    <value>保存失败。请上载配置 XML</value>
+  </data>
+  <data name="MISSING_DESIGN" xml:space="preserve">
+    <value>保存失败。请单击“配置”以在发布之前创建 kiosk</value>
+  </data>
+  <data name="MMPC" xml:space="preserve">
+    <value>MMPC</value>
+  </data>
+  <data name="ModularSdk" xml:space="preserve">
+    <value>模块化 SDK</value>
+  </data>
+  <data name="MonitorAllFiles" xml:space="preserve">
+    <value>监控所有文件 (双向)</value>
+  </data>
+  <data name="MonitorIncomingFiles" xml:space="preserve">
+    <value>监控入站文件</value>
+  </data>
+  <data name="MonitorOutgoingFiles" xml:space="preserve">
+    <value>监控出站文件</value>
+  </data>
+  <data name="MonthlyUploadDataCap" xml:space="preserve">
+    <value>每月上载数据上限 (GB)</value>
+  </data>
+  <data name="MonthlyUploadDataCapToolTip" xml:space="preserve">
+    <value>指定允许交付优化在每个日历月内上载到互联网对等端的最大总字节数 (GB)。值 0 (零) 意味着“不受限制”。如果设置为 0，则不会应用每月上载限制。默认值为 20。</value>
+  </data>
+  <data name="MoveTo" xml:space="preserve">
+    <value>移至</value>
+  </data>
+  <data name="MSCHAP" xml:space="preserve">
+    <value>MSCHAP</value>
+  </data>
+  <data name="Myanmar" xml:space="preserve">
+    <value>缅甸</value>
+  </data>
+  <data name="NameCannotBeBlank" xml:space="preserve">
+    <value>名称不能为空</value>
+  </data>
+  <data name="NameHelp" xml:space="preserve">
+    <value>规则的唯一字母数字标识符</value>
+  </data>
+  <data name="NameYourProfile" xml:space="preserve">
+    <value>为您的配置文件命名</value>
+  </data>
+  <data name="NameYourProfileHelpText" xml:space="preserve">
+    <value>您可以将配置文件命名为采用以下内容开头</value>
+  </data>
+  <data name="NetworkExtension" xml:space="preserve">
+    <value>网络</value>
+  </data>
+  <data name="NetworkProtection" xml:space="preserve">
+    <value>网络保护</value>
+  </data>
+  <data name="NetworkProtectionToolTip" xml:space="preserve">
+    <value>可以使用此策略启用 (阻止/审核) 或禁用 Defender 网络保护。此功能可防止用户遭遇钓鱼欺诈和访问给设备招来恶意软件的恶意网站。</value>
+  </data>
+  <data name="NeverAutoUpdate" xml:space="preserve">
+    <value>永不自动更新</value>
+  </data>
+  <data name="NeverSend" xml:space="preserve">
+    <value>从不发送</value>
+  </data>
+  <data name="NewFreezePeriod" xml:space="preserve">
+    <value>新冻结期</value>
+  </data>
+  <data name="NewProfileAssignmentFailed" xml:space="preserve">
+    <value>分配新配置文件失败。</value>
+  </data>
+  <data name="NoAlert" xml:space="preserve">
+    <value>无提醒</value>
+  </data>
+  <data name="NoOfGroups" xml:space="preserve">
+    <value>组数</value>
+  </data>
+  <data name="NoPinningToTaskbar" xml:space="preserve">
+    <value>允许固定到任务栏</value>
+  </data>
+  <data name="NoPinningToTaskbarToolTip" xml:space="preserve">
+    <value>在 1703 中添加。允许用户将应用固定或取消固定到任务栏上。</value>
+  </data>
+  <data name="NoPreviewAvailable" xml:space="preserve">
+    <value>没有可用于合规性配置文件的预览。</value>
+  </data>
+  <data name="NoPreviewAvailableForProvisioning" xml:space="preserve">
+    <value>没有可用于置备配置文件的预览。</value>
+  </data>
+  <data name="NoScheduledScan" xml:space="preserve">
+    <value>未计划扫描</value>
+  </data>
+  <data name="NotAllowedAcrossDevice" xml:space="preserve">
+    <value>不允许跨设备 (Android 10+)</value>
+  </data>
+  <data name="NotConfigured" xml:space="preserve">
+    <value>未配置</value>
+  </data>
+  <data name="NotificationMessage" xml:space="preserve">
+    <value>通知消息</value>
+  </data>
+  <data name="NotificationTitle" xml:space="preserve">
+    <value>通知标题</value>
+  </data>
+  <data name="NotifyUserForEncryptionHelpInfo" xml:space="preserve">
+    <value>向员工显示通知，提示他们注销，允许操作系统提示员工输入密码以启动加密。</value>
+  </data>
+  <data name="NotifyUserIfEncryptionDisabled" xml:space="preserve">
+    <value>加密禁用通知</value>
+  </data>
+  <data name="NotifyUserWhenWindowsFirewallBlocksANewApp" xml:space="preserve">
+    <value>当 Windows 防火墙屏蔽新应用时通知用户</value>
+  </data>
+  <data name="NumberOfTimesUserCanBypass" xml:space="preserve">
+    <value>绕过登录</value>
+  </data>
+  <data name="NumberOfTimesUserCanBypassHelpInfo" xml:space="preserve">
+    <value>设置允许用户绕过 FileVault 提示进行登录的次数。</value>
+  </data>
+  <data name="NumberOfTimesUserCanBypassInTimes" xml:space="preserve">
+    <value>绕过登录 (次数)</value>
+  </data>
+  <data name="NumberPasscodeEntryAttemptsRestarted" xml:space="preserve">
+    <value>重新启动设备之前的密码输入尝试次数</value>
+  </data>
+  <data name="OAuthSignInURL" xml:space="preserve">
+    <value>OAuth 登录 URL</value>
+  </data>
+  <data name="OAuthTokenRequestUrl" xml:space="preserve">
+    <value>OAuth 令牌 URL</value>
+  </data>
+  <data name="OEMConfig" xml:space="preserve">
+    <value>OEM 配置</value>
+  </data>
+  <data name="OEMLocation" xml:space="preserve">
+    <value>位置</value>
+  </data>
+  <data name="OEMPriority" xml:space="preserve">
+    <value>优先级</value>
+  </data>
+  <data name="OEMPriorityHelp" xml:space="preserve">
+    <value>Dell Command Update 将使用其成功加载的第一个位置/目录。Dell Command Update 不会加载列出的每个源位置，亦不会将内容汇总到一起。Dell Command Update 不会检查 Dell.com 站点中不可用的任何源位置上的签名。</value>
+  </data>
+  <data name="OEMSettingsHelpText" xml:space="preserve">
+    <value>您可以通过启用此开关来启用 OEM 特定设置。</value>
+  </data>
+  <data name="OEMUpdateSourceLocation" xml:space="preserve">
+    <value>更新源位置</value>
+  </data>
+  <data name="OemUpdateWorkflowInfoMessage" xml:space="preserve">
+    <value>使用 Freestyle Orchestrator 工作流可在单个工作流中分配 OEM 更新负载和 Dell Command Update 应用。</value>
+  </data>
+  <data name="OfflineMode" xml:space="preserve">
+    <value>脱机模式</value>
+  </data>
+  <data name="OG" xml:space="preserve">
+    <value>组织组</value>
+  </data>
+  <data name="OneCardPerUser" xml:space="preserve">
+    <value>限制每个用户一个卡</value>
+  </data>
+  <data name="OneLockHelp" xml:space="preserve">
+    <value>“一个锁”允许工作密码和设备密码相同，这使得用户可以使用相同的密码来解决这两个难题。</value>
+  </data>
+  <data name="OnlyManagedAccounts" xml:space="preserve">
+    <value>仅限受管帐户</value>
+  </data>
+  <data name="OnlyNumbersAllowed" xml:space="preserve">
+    <value>此字段中只允许使用数字</value>
+  </data>
+  <data name="OpenAllLinksInAirwatchBrowser" xml:space="preserve">
+    <value>在 Workspace ONE Web 中打开所有链接</value>
+  </data>
+  <data name="OpportunityMatchAuthSetPerKM" xml:space="preserve">
+    <value>如果密钥模块必须忽略整个身份验证集且不支持所有身份验证套件，则设置为“禁用”。如果密钥模块必须仅忽略不受支持的身份验证套件，则设置为“启用”。</value>
+  </data>
+  <data name="Option" xml:space="preserve">
+    <value>选项</value>
+  </data>
+  <data name="OrientationType" xml:space="preserve">
+    <value>方向类型</value>
+  </data>
+  <data name="OSXLegacy" xml:space="preserve">
+    <value>OS X</value>
+  </data>
+  <data name="OverlayCriticalThreshold" xml:space="preserve">
+    <value>覆盖临界阈值</value>
+  </data>
+  <data name="OverlayCriticalThresholdHelp" xml:space="preserve">
+    <value>临界阈值大小 (以 MB 为单位)。UWF 覆盖大小达到或超过此值时，UWF 会发送临界阈值通知事件</value>
+  </data>
+  <data name="OverlaySizeHelp" xml:space="preserve">
+    <value>表示当前会话中覆盖的最大缓存大小 (以 MB 为单位)</value>
+  </data>
+  <data name="OverlayWarningThreshold" xml:space="preserve">
+    <value>覆盖警告阈值 (MB)</value>
+  </data>
+  <data name="OverlayWarningThresholdHelp" xml:space="preserve">
+    <value>警告阈值大小 (以 MB 为单位)。UWF 覆盖大小达到或超过此值时，UWF 会发送警告阈值通知事件。</value>
+  </data>
+  <data name="OverridePreviousPassword" xml:space="preserve">
+    <value>覆盖以前的密码</value>
+  </data>
+  <data name="OverridePreviousPasswordTooltip" xml:space="preserve">
+    <value>如果启用，将使用负载中的新 EAS 密码覆盖以前的用户/EAS 密码。</value>
+  </data>
+  <data name="P2PBranchCacheInfo" xml:space="preserve">
+    <value>Workspace ONE Peer Distribution 可为内部网络上的 Windows 设备提供对等应用分发功能，从而提高应用下载速度并消除对多个分发点的需要。</value>
+  </data>
+  <data name="P2PBranchCacheSettings" xml:space="preserve">
+    <value>对等分发</value>
+  </data>
+  <data name="P2PBranchCacheSettingsAddHostedCacheServer" xml:space="preserve">
+    <value>添加托管缓存服务器</value>
+  </data>
+  <data name="P2PBranchCacheSettingsAddHostedCacheServerTooltip" xml:space="preserve">
+    <value>指定要用作缓存源且位于分支机构网络中的托管缓存服务器</value>
+  </data>
+  <data name="P2PBranchCacheSettingsCacheAgeDays" xml:space="preserve">
+    <value>最长缓存期限 (天)</value>
+  </data>
+  <data name="P2PBranchCacheSettingsCacheAgeDaysHelp" xml:space="preserve">
+    <value>项目应保留在设备缓存中的最长天数</value>
+  </data>
+  <data name="P2PBranchCacheSettingsCacheDiskSpacePercent" xml:space="preserve">
+    <value>用于 BranchCache 的磁盘空间百分比</value>
+  </data>
+  <data name="P2PBranchCacheSettingsCacheDiskSpacePercentHelp" xml:space="preserve">
+    <value>用于在设备上缓存的本地磁盘空间百分比</value>
+  </data>
+  <data name="P2PBranchCacheSettingsCacheSettings" xml:space="preserve">
+    <value>缓存设置</value>
+  </data>
+  <data name="P2PBranchCacheSettingsErrorEmptyHostedCacheServers" xml:space="preserve">
+    <value>“托管缓存服务器”字段不能为空。</value>
+  </data>
+  <data name="P2PBranchCacheSettingsFileStorageCachingDisabledError" xml:space="preserve">
+    <value>对等分发要求启用文件存储缓存。请在“设置”中启用文件存储缓存，以便继续。</value>
+  </data>
+  <data name="P2PBranchCacheSettingsHostedCacheServerExample" xml:space="preserve">
+    <value>示例: branch1.example.com</value>
+  </data>
+  <data name="P2PBranchCacheSettingsHostedCacheServersList" xml:space="preserve">
+    <value>托管缓存服务器</value>
+  </data>
+  <data name="P2PBranchCacheSettingsHostedModeSettings" xml:space="preserve">
+    <value>托管模式设置</value>
+  </data>
+  <data name="P2PBranchCacheSettingsMode" xml:space="preserve">
+    <value>Workspace ONE Peer Distribution 模式</value>
+  </data>
+  <data name="P2PBranchCacheSettingsModeDistributed" xml:space="preserve">
+    <value>已分发</value>
+  </data>
+  <data name="P2PBranchCacheSettingsModeHelp" xml:space="preserve">
+    <value>配置对等分发模式:
+已分发 - 从本地子网中的对等方下载。
+已托管 - 从分支中的托管缓存服务器下载。
+本地 - 仅使用本地设备缓存。
+已禁用 - 不使用对等分发。</value>
+  </data>
+  <data name="P2PBranchCacheSettingsModeHosted" xml:space="preserve">
+    <value>已托管</value>
+  </data>
+  <data name="P2PBranchCacheSettingsModeLocal" xml:space="preserve">
+    <value>本地</value>
+  </data>
+  <data name="PackageID.Plural" xml:space="preserve">
+    <value>软件包 ID</value>
+  </data>
+  <data name="PacketsQueuedAfterDecryption" xml:space="preserve">
+    <value>数据包将在解密后排队</value>
+  </data>
+  <data name="PasscodeAlways" xml:space="preserve">
+    <value>始终输入密码</value>
+  </data>
+  <data name="PasscodeChangeAlert" xml:space="preserve">
+    <value>密码更改提醒</value>
+  </data>
+  <data name="PasscodeChangeAlertHelp" xml:space="preserve">
+    <value>在密码过期前通知用户更改密码的时间长度。</value>
+  </data>
+  <data name="PasscodeMinLengthToolTip" xml:space="preserve">
+    <value>如果选择了某个值，则员工必须设置长度等于或大于所选值的密码。</value>
+  </data>
+  <data name="PasscodeOnce" xml:space="preserve">
+    <value>输入密码一次</value>
+  </data>
+  <data name="PasscodeRequiredRange" xml:space="preserve">
+    <value>需要密码范围</value>
+  </data>
+  <data name="PasscodeRequiredRangeInMinutes" xml:space="preserve">
+    <value>需要密码范围 (以分钟为单位)</value>
+  </data>
+  <data name="PasscodeRequiredRangeInMinutesHelp" xml:space="preserve">
+    <value>使用非强身份认证 (如指纹或人脸识别) 解锁工作配置文件之后需要密码之前的时间长度。</value>
+  </data>
+  <data name="PasscodeRequiredRangeToolTip" xml:space="preserve">
+    <value>使用非强身份验证 (如指纹或人脸识别) 解锁设备之后需要密码之前的时间长度。</value>
+  </data>
+  <data name="PassportPayloadInformation" xml:space="preserve">
+    <value>Windows Hello 是一种更安全的登录 Windows 和应用程序的方式。无需使用共享或可共享的密钥 (比如密码)，Windows Hello 可代表您以安全方式向应用程序、网站和网络进行身份验证而不必发送密码。使用 Windows Hello 需要与 Azure Active Directory 集成。请使用此策略来设置 PIN 强度，并允许生物识别用途。</value>
+  </data>
+  <data name="PasswordChangeMessage" xml:space="preserve">
+    <value>密码更改消息</value>
+  </data>
+  <data name="PasswordExpireNotificationCanOnlyBeInteger" xml:space="preserve">
+    <value>密码过期通知只能为整数</value>
+  </data>
+  <data name="PasswordExpireNotificationDescription" xml:space="preserve">
+    <value>通知用户其密码过期之前的天数。</value>
+  </data>
+  <data name="PasswordExpireNotificationInDays" xml:space="preserve">
+    <value>密码过期通知 (以天为单位)</value>
+  </data>
+  <data name="PasswordHistoryCountCanOnlyBeInteger" xml:space="preserve">
+    <value>密码历史计数只能为整数</value>
+  </data>
+  <data name="PasswordHistoryCountDescription" xml:space="preserve">
+    <value>无法在域中重新使用的先前密码数。</value>
+  </data>
+  <data name="PasswordHistoryCountNumberOfPasswords" xml:space="preserve">
+    <value>密码历史计数 (密码数量)</value>
+  </data>
+  <data name="PasswordHistoryShouldBeInRange0And50" xml:space="preserve">
+    <value>密码 -“密码历史记录”应介于 0 和 50 之间</value>
+  </data>
+  <data name="PasswordMinimumAgeCanOnlyBeInteger" xml:space="preserve">
+    <value>密码最短使用期限只能为整数</value>
+  </data>
+  <data name="PasswordMinimumAgeDescription" xml:space="preserve">
+    <value>用户可以更改其密码之前的最短天数。</value>
+  </data>
+  <data name="PasswordMinimumAgeInDays" xml:space="preserve">
+    <value>密码最短使用期限 (以天为单位)</value>
+  </data>
+  <data name="PasswordRequirementsTextDescription" xml:space="preserve">
+    <value>向用户显示域密码要求的文本版本。仅在未指定“匹配 AD 密码复杂性”或“最短密码长度”时使用。</value>
+  </data>
+  <data name="Passwords" xml:space="preserve">
+    <value>密码</value>
+  </data>
+  <data name="PasswordSettings" xml:space="preserve">
+    <value>密码设置</value>
+  </data>
+  <data name="Paths" xml:space="preserve">
+    <value>路径</value>
+    <comment>Used for file paths.</comment>
+  </data>
+  <data name="PatternNotMatching" xml:space="preserve">
+    <value>模式不匹配</value>
+  </data>
+  <data name="PauseFeatureUpdatesStartTimeTooltip" xml:space="preserve">
+    <value>在 Windows 10 版本 1703 中添加。指定应暂停功能更新的日期和时间</value>
+  </data>
+  <data name="PauseQualityUpdatesStartTimeTooltip" xml:space="preserve">
+    <value>在 Windows 10 版本 1703 中添加。指定应暂停质量更新的日期和时间</value>
+  </data>
+  <data name="PayloadCertificateUUIDInfo" xml:space="preserve">
+    <value>选择仅将 FileVaultMaster.cer 上载到凭证负载。请参阅 macOS 平台指南，了解如何创建此证书。</value>
+  </data>
+  <data name="Payloads" xml:space="preserve">
+    <value>负载</value>
+  </data>
+  <data name="PeerToPeerUpdatesToolTip" xml:space="preserve">
+    <value>利用交付优化部署更新</value>
+  </data>
+  <data name="PercentageMaxBackgroundBandwidth" xml:space="preserve">
+    <value>最大后台带宽百分比</value>
+  </data>
+  <data name="PercentageMaxBackgroundBandwidthToolTip" xml:space="preserve">
+    <value>指定交付优化在所有并发下载活动中使用的最大后台下载带宽占可用下载带宽的百分比。</value>
+  </data>
+  <data name="PercentageMaxForegroundBandwidth" xml:space="preserve">
+    <value>最大前台带宽百分比</value>
+  </data>
+  <data name="PercentageMaxForegroundBandwidthToolTip" xml:space="preserve">
+    <value>指定交付优化在所有并发下载活动中使用的最大前台下载带宽占可用下载带宽的百分比。</value>
+  </data>
+  <data name="PerformDeviceWipeAfterTooManyIncorrectAttemptsTooltip" xml:space="preserve">
+    <value>因输入错误设备解锁密码次数过多而执行设备擦除。</value>
+  </data>
+  <data name="PerformEnterpriseWipeAfterTooManyIncorrectAttemptsTooltip" xml:space="preserve">
+    <value>输入错误工作密码次数过多后执行企业擦除。</value>
+  </data>
+  <data name="PersistDomainMembership" xml:space="preserve">
+    <value>保留域成员资格</value>
+  </data>
+  <data name="PersistDomainMembershipHelp" xml:space="preserve">
+    <value>指示域机密注册表项是否在注册表排除列表中</value>
+  </data>
+  <data name="PersistTerminalServicesLicensing" xml:space="preserve">
+    <value>保留终端服务许可</value>
+  </data>
+  <data name="PersistTerminalServicesLicensingHelp" xml:space="preserve">
+    <value>指示终端服务器客户端访问许可证 (TSCAL) 注册表项是否在 UWF 注册表排除列表中</value>
+  </data>
+  <data name="PersonalAndInstitutional" xml:space="preserve">
+    <value>个人和机构</value>
+  </data>
+  <data name="PersonalApplicationPrivacyInfo" xml:space="preserve">
+    <value>当个人应用程序信息收集设为“不收集”时，</value>
+  </data>
+  <data name="Personalization" xml:space="preserve">
+    <value>个性化</value>
+  </data>
+  <data name="Photos" xml:space="preserve">
+    <value>照片</value>
+  </data>
+  <data name="PhotosPrivacyHelpInfo" xml:space="preserve">
+    <value>在 ~/Pictures/.photoslibrary 中由 Photos.app 管理的照片</value>
+  </data>
+  <data name="Pictures" xml:space="preserve">
+    <value>图片</value>
+  </data>
+  <data name="PinHistoryToolTip" xml:space="preserve">
+    <value>如果值设置为 N，则当更改设备密码时，员工需要创建与 N 个最近创建的密码相比唯一的密码。</value>
+  </data>
+  <data name="PinnedRow" xml:space="preserve">
+    <value>固定行</value>
+  </data>
+  <data name="PostEvent" xml:space="preserve">
+    <value>事件之后</value>
+  </data>
+  <data name="PostEventPrivacyHelpInfo" xml:space="preserve">
+    <value>允许应用程序使用 CoreGraphics API 将 CGEvents 发送到系统事件流。</value>
+  </data>
+  <data name="Powermgt" xml:space="preserve">
+    <value>电源管理</value>
+  </data>
+  <data name="PowerOffEvent" xml:space="preserve">
+    <value>关机事件</value>
+  </data>
+  <data name="PowerOffTheComputer" xml:space="preserve">
+    <value>关闭计算机电源</value>
+  </data>
+  <data name="PredefinedBookmarksCommaError" xml:space="preserve">
+    <value>必须为添加的每个书签创建唯一名称。多个名称不能以逗号分隔，并且不能列在一个字段中</value>
+  </data>
+  <data name="PresharedKeyEncoding" xml:space="preserve">
+    <value>预共享密钥编码</value>
+  </data>
+  <data name="PresharedKeyEncodingHelp" xml:space="preserve">
+    <value>配置预共享密钥编码。</value>
+  </data>
+  <data name="Presharedkeyisnotencoded" xml:space="preserve">
+    <value>预共享密钥未经过编码</value>
+  </data>
+  <data name="PreventAppSheet" xml:space="preserve">
+    <value>禁止应用程序表</value>
+  </data>
+  <data name="PreventInstallBlacklistedAndroidAppsTooltip" xml:space="preserve">
+    <value>对于 Android 设备，这样做并不会卸载应用程序，但会禁止访问按照“系统设置”&gt;“组”&gt;“应用程序组”中的定义视为被拒绝的应用程序。</value>
+  </data>
+  <data name="PreventMACAddressRandomization" xml:space="preserve">
+    <value>防止 MAC 地址随机化</value>
+  </data>
+  <data name="PreventMACAddressRandomizationTooltip" xml:space="preserve">
+    <value>如果启用，则可在与网络关联时防止此 Wi-Fi 网络的 MAC 地址随机化。这还将在“设置”中显示隐私警告，表明网络已降低隐私保护。</value>
+  </data>
+  <data name="PreventUninstallRequiredAppsTooltip" xml:space="preserve">
+    <value>此功能将禁止卸载“系统设置”&gt;“组”&gt;“应用程序组”中定义的必需应用。</value>
+  </data>
+  <data name="PreventUseInThirdPartyApps" xml:space="preserve">
+    <value>禁止在其他应用中使用</value>
+  </data>
+  <data name="PreventUseInThirdPartyAppsTooltip" xml:space="preserve">
+    <value>启用此选项后，此帐户将无法在 Apple Mail 应用之外的任何其他应用中发送邮件。</value>
+  </data>
+  <data name="PrinterDevice" xml:space="preserve">
+    <value>打印机</value>
+  </data>
+  <data name="PrivacyEnabledSingleAppModeMessage" xml:space="preserve">
+    <value>请检查您的控制台隐私设置，确认它们允许收集个人应用程序数据。如果不允许收集个人应用程序数据，则可能无法正确应用单应用模式配置文件负载。</value>
+  </data>
+  <data name="PrivacyPreferences" xml:space="preserve">
+    <value>隐私首选项</value>
+  </data>
+  <data name="Processes" xml:space="preserve">
+    <value>流程</value>
+    <comment>Executing Programs</comment>
+  </data>
+  <data name="ProfileCannotBeCreatedAtParentOg" xml:space="preserve">
+    <value>无法在给定的父组织组中创建配置文件</value>
+  </data>
+  <data name="ProfileDeleteConfirmation" xml:space="preserve">
+    <value>您确定要删除配置文件“{0}”吗?</value>
+  </data>
+  <data name="ProfileLoadingError" xml:space="preserve">
+    <value>无法加载配置文件。</value>
+  </data>
+  <data name="ProfileNotDeactivatedBecauseLinkedToOtherEntity" xml:space="preserve">
+    <value>您正尝试取消激活的配置文件与应用程序/合规策略相关联。请移除各自的关联以将其移除。</value>
+  </data>
+  <data name="ProfileNotDeletedBecauseLinkedToOtherEntity" xml:space="preserve">
+    <value>您正尝试移除的配置文件与应用程序/合规策略相关联。请移除各自的关联以将其移除。</value>
+  </data>
+  <data name="ProfileReadOnlyWarning" xml:space="preserve">
+    <value>由于权限，无法编辑此页面</value>
+  </data>
+  <data name="ProfileResource" xml:space="preserve">
+    <value>配置文件资源</value>
+  </data>
+  <data name="ProfileResourceLinkedToWorkflows" xml:space="preserve">
+    <value>无法删除此资源，因为它当前已与一个或多个工作流相关联。</value>
+  </data>
+  <data name="ProfileRetryCircuitBreakerJob" xml:space="preserve">
+    <value>配置文件重试断路器</value>
+  </data>
+  <data name="ProfileScope" xml:space="preserve">
+    <value>配置文件作用域</value>
+  </data>
+  <data name="ProfilesHelp" xml:space="preserve">
+    <value>指定规则所属的配置文件: 域、专用、公用</value>
+  </data>
+  <data name="ProfilesSetting" xml:space="preserve">
+    <value>配置文件设置</value>
+  </data>
+  <data name="ProfilesSettings" xml:space="preserve">
+    <value>配置文件设置</value>
+  </data>
+  <data name="ProfileTypeNotSupportedInWorkflows" xml:space="preserve">
+    <value>此配置文件将在工作流中使用。它不能更改为合规性或交互式配置文件。</value>
+  </data>
+  <data name="ProfileUsedInWorkflow" xml:space="preserve">
+    <value>此配置文件将在工作流中使用，更新它将对工作流中的设备产生一定影响。{0}</value>
+  </data>
+  <data name="ProfileWorkflow" xml:space="preserve">
+    <value>配置文件工作流</value>
+  </data>
+  <data name="ProfileXmlForDeviceWarning" xml:space="preserve">
+    <value>生成的 XML 值是根据分配中的示例设备创建的。</value>
+  </data>
+  <data name="PromptForPasswordIfEncryptionEnabled" xml:space="preserve">
+    <value>如果已加密，则提示输入密码</value>
+  </data>
+  <data name="PromptMessage" xml:space="preserve">
+    <value>提示消息</value>
+  </data>
+  <data name="PromptTitle" xml:space="preserve">
+    <value>提示标题</value>
+  </data>
+  <data name="PromptToEnableFileVaultAt" xml:space="preserve">
+    <value>何时提示用户</value>
+  </data>
+  <data name="PromptToEnableFileVaultAtHelpInfo" xml:space="preserve">
+    <value>设置何时提示用户输入密码以启用 FileVault。</value>
+  </data>
+  <data name="Protectedfolders" xml:space="preserve">
+    <value>受保护的文件夹</value>
+  </data>
+  <data name="ProtectedNetworksInfo" xml:space="preserve">
+    <value>只能通过企业应用程序访问来自受保护网络的数据。这些位置被认为是放置企业数据的安全之处。</value>
+  </data>
+  <data name="ProtocolHelp" xml:space="preserve">
+    <value>选定的协议配置</value>
+  </data>
+  <data name="ProtocolNumber" xml:space="preserve">
+    <value>协议号</value>
+  </data>
+  <data name="ProviderDesignatedRequirement" xml:space="preserve">
+    <value>提供程序指定的要求</value>
+  </data>
+  <data name="ProviderDesignatedRequirementInfo" xml:space="preserve">
+    <value>如果 VPN 提供程序作为系统扩展实现，则此字段为必填项</value>
+  </data>
+  <data name="ProvisionInOobeEnrollment" xml:space="preserve">
+    <value>在 OOBE 置备过程中跟踪配置文件状态</value>
+  </data>
+  <data name="ProvisionInOobeEnrollmentToolTip" xml:space="preserve">
+    <value>选择此选项会将此配置文件添加到“OOBE 状态跟踪”页面。只有成功应用此策略或置备过程超出“设置”&gt;“设备与用户”&gt;“常规”&gt;“注册”&gt;“可选提示”中配置的超时值时，才会将置备视为已完成。</value>
+  </data>
+  <data name="ProxyBypassHttpNotAllowed" xml:space="preserve">
+    <value>Wi-Fi 排除列表不允许使用 HTTP 和 HTTPS 前缀。请从网址中移除它。</value>
+  </data>
+  <data name="PUAProtection" xml:space="preserve">
+    <value>PUA 保护</value>
+  </data>
+  <data name="PuaProtectionOff" xml:space="preserve">
+    <value>PUA 保护关闭</value>
+  </data>
+  <data name="PuaProtectionOn" xml:space="preserve">
+    <value>PUA 保护打开</value>
+  </data>
+  <data name="PublicAppAutoUpdate" xml:space="preserve">
+    <value>公共应用自动更新</value>
+  </data>
+  <data name="PulseSecure" xml:space="preserve">
+    <value>Pulse Secure</value>
+  </data>
+  <data name="QuarantinePurgeItemsAfterDelay" xml:space="preserve">
+    <value>多长时间后移除隔离文件</value>
+  </data>
+  <data name="QueuingDisabled" xml:space="preserve">
+    <value>将禁用所有队列</value>
+  </data>
+  <data name="QuickFilters" xml:space="preserve">
+    <value>快速筛选器</value>
+  </data>
+  <data name="QuickScan" xml:space="preserve">
+    <value>快速扫描</value>
+  </data>
+  <data name="QuickTip" xml:space="preserve">
+    <value>快速提示</value>
+  </data>
+  <data name="RealmIsRequiredForCredentialTypeExtensibleSso" xml:space="preserve">
+    <value>凭据类型可扩展 sso 需要领域</value>
+  </data>
+  <data name="RealmIsRequiredForKerberosSso" xml:space="preserve">
+    <value>Kerberos sso 需要领域</value>
+  </data>
+  <data name="RealTimeMonitoring" xml:space="preserve">
+    <value>实时监控</value>
+  </data>
+  <data name="RealtimeScanDirection" xml:space="preserve">
+    <value>实时扫描方向</value>
+  </data>
+  <data name="RecentAppsButton" xml:space="preserve">
+    <value>“最近使用的应用”按钮</value>
+  </data>
+  <data name="RecommendedUpdates" xml:space="preserve">
+    <value>以安装重要更新的相同方式来安装推荐的更新</value>
+  </data>
+  <data name="RecoveryKeyErrorMessageHelpInfo" xml:space="preserve">
+    <value>创建一条发送给员工的消息，以便在发生不可恢复的错误时提示他们联系 IT 管理员。</value>
+  </data>
+  <data name="RecoveryKeyMaxFailureCount" xml:space="preserve">
+    <value>在错误消息之前重试</value>
+  </data>
+  <data name="RecoveryKeyMaxFailureCountHelpInfo" xml:space="preserve">
+    <value>显示错误警示之前的密码输入尝试次数上限。密码不正确错误不计入限制。</value>
+  </data>
+  <data name="RecoveryKeyMaxFailureCountInAttempts" xml:space="preserve">
+    <value>错误消息出现之前的重试次数 (尝试次数)</value>
+  </data>
+  <data name="RecoveryKeyNotificationMessageHelpInfo" xml:space="preserve">
+    <value>创建一条发送给员工的消息，通知他们需要输入密码以允许 Hub 轮换其恢复密钥。单击继续后，将显示下面配置的提示。</value>
+  </data>
+  <data name="RecoveryKeyNotificationRetryIntervalHelpInfo" xml:space="preserve">
+    <value>设置解除通知之间的时间间隔。</value>
+  </data>
+  <data name="RecoveryKeyPromptMessageHelpInfo" xml:space="preserve">
+    <value>创建一条发送给员工的消息，提示他们输入密码。</value>
+  </data>
+  <data name="RecoveryKeySuccessMessageHelpInfo" xml:space="preserve">
+    <value>创建一条发送给员工的消息，以便在他们成功输入密码后告知他们其设备是否符合您组织的磁盘加密策略。</value>
+  </data>
+  <data name="RecoveryTypeHelpInfo" xml:space="preserve">
+    <value>选择最符合您组织要求的恢复密钥类型。请参阅 macOS 平台指南，了解有关个人和机构恢复密钥的更多信息。</value>
+  </data>
+  <data name="RegionAndLanguage" xml:space="preserve">
+    <value>区域和语言</value>
+  </data>
+  <data name="RegistryPathExclusionsHelp" xml:space="preserve">
+    <value>当前会话中 UWF 注册表排除列表中的注册表项</value>
+  </data>
+  <data name="ReleaseWindowsInsiderNew" xml:space="preserve">
+    <value>Insider - Release 通道 (最稳定、公开内部版本)</value>
+  </data>
+  <data name="Reminders" xml:space="preserve">
+    <value>提醒</value>
+  </data>
+  <data name="RemindersPrivacyHelpInfo" xml:space="preserve">
+    <value>由 Reminders.app 管理的提醒信息。</value>
+  </data>
+  <data name="RemoteAddressRangesHelp" xml:space="preserve">
+    <value>指定规则涵盖的远程地址。自定义范围应为以逗号分隔的令牌列表。</value>
+  </data>
+  <data name="RemotePortRanges" xml:space="preserve">
+    <value>远程端口范围</value>
+  </data>
+  <data name="RemotePortRangesHelp" xml:space="preserve">
+    <value>以逗号分隔的范围列表。例如 100-120,200,300-320。</value>
+  </data>
+  <data name="RemovableDriveScanning" xml:space="preserve">
+    <value>扫描可移动驱动器</value>
+  </data>
+  <data name="RemoveAllAppsButton" xml:space="preserve">
+    <value>“移除所有应用”按钮</value>
+  </data>
+  <data name="RemoveImage" xml:space="preserve">
+    <value>移除图像</value>
+  </data>
+  <data name="RemoveSettingIsRequired" xml:space="preserve">
+    <value>自定义设置 -“移除设置”是必填字段</value>
+  </data>
+  <data name="RemoveSettings" xml:space="preserve">
+    <value>移除设置</value>
+  </data>
+  <data name="RemoveText" xml:space="preserve">
+    <value>移除文本</value>
+  </data>
+  <data name="RequireAlphanumericToolTip" xml:space="preserve">
+    <value>如果启用，员工需要设置包含字母字符 (例如“abcd”) 而不是仅包含数字字符的密码。</value>
+  </data>
+  <data name="RequireMDMEnrollmentDEP" xml:space="preserve">
+    <value>需要 MDM 注册</value>
+  </data>
+  <data name="RequireMDMEnrollmentDEPTooltip" xml:space="preserve">
+    <value>如果已启用，将强制要求用户在设备上初次使用设置助理时进行注册。否则无法激活设备。如果已禁用，设备上的设置助理将提供跳过 MDM 注册的选项。
+从 iOS 13 开始，此选项默认启用，无法禁用。</value>
+  </data>
+  <data name="RequireUserPresenceDescription" xml:space="preserve">
+    <value>如果启用，则要求用户提供触控 ID、面容 ID 或
+用于访问密钥链条目的密码。</value>
+  </data>
+  <data name="RequireUserTouchIdOrPassword" xml:space="preserve">
+    <value>需要用户触控 ID 或密码</value>
+  </data>
+  <data name="RequireUserToUnlockDiskAfterHibernation" xml:space="preserve">
+    <value>要求用户在休眠后解除 FileVault 锁定</value>
+  </data>
+  <data name="ResourcePlatformLinkedToWorkflow" xml:space="preserve">
+    <value>无法禁用平台 {0}。它已与工作流相关联。</value>
+    <comment>The placehoder in this label key contains the platform type e.g. Android, Apple</comment>
+  </data>
+  <data name="RestrictActionForProfileDesc" xml:space="preserve">
+    <value>此配置文件正在工作流中使用。为避免中断，请在重试此操作之前移除工作流步骤。</value>
+  </data>
+  <data name="RestrictDeactivateActionForProfile" xml:space="preserve">
+    <value>配置文件停用 - 已阻止</value>
+  </data>
+  <data name="RestrictDeleteActionForProfile" xml:space="preserve">
+    <value>配置文件删除 - 已阻止</value>
+  </data>
+  <data name="RestrictInputMethods" xml:space="preserve">
+    <value>限制输入法</value>
+  </data>
+  <data name="RestrictPeerSelectionBy" xml:space="preserve">
+    <value>通过以下方式限制对等选择</value>
+  </data>
+  <data name="RestrictPeerSelectionBySubnet" xml:space="preserve">
+    <value>通过子网限制对等选择</value>
+  </data>
+  <data name="RestrictPeerSelectionByToolTip" xml:space="preserve">
+    <value>将此策略设置为通过选定选项限制对等选择。</value>
+  </data>
+  <data name="RetryIntervalBetweenDismissals" xml:space="preserve">
+    <value>解除间隔</value>
+  </data>
+  <data name="RetryIntervalBetweenDismissalsInHours" xml:space="preserve">
+    <value>解除时间间隔 (小时)</value>
+  </data>
+  <data name="RevocationCheckType" xml:space="preserve">
+    <value>检查类型</value>
+  </data>
+  <data name="RevokeOnUnenroll" xml:space="preserve">
+    <value>取消注册时吊销</value>
+  </data>
+  <data name="RotateRecoveryKeyAfterDaysIsRequired" xml:space="preserve">
+    <value>值应为 0 或介于 15 到 365 之间的整数</value>
+  </data>
+  <data name="Rotaterecoverykeyafterinfo" xml:space="preserve">
+    <value>如果已编辑配置文件并更改了天数，则将重新评估现有设备恢复密钥，并在需要时自动轮换。值应为 0 或在 15 到 365 的范围内。如果值为 0，则不会执行自动轮换。</value>
+  </data>
+  <data name="Rows" xml:space="preserve">
+    <value>行</value>
+  </data>
+  <data name="RuleMerging" xml:space="preserve">
+    <value>规则合并</value>
+  </data>
+  <data name="RuleName" xml:space="preserve">
+    <value>规则名称</value>
+  </data>
+  <data name="RuntimePermissionsInfoWsOne" xml:space="preserve">
+    <value>通过 Workspace ONE 为设备上安装的所有应用设置权限行为。您还可以为特定应用添加行为例外。添加例外后，单击“配置”以修改应用的权限行为。</value>
+  </data>
+  <data name="SafariDomains" xml:space="preserve">
+    <value>Safari 域名</value>
+  </data>
+  <data name="SamsungDateTimeProfileName" xml:space="preserve">
+    <value>Samsung 日期/时间</value>
+  </data>
+  <data name="SamsungKnoxFirewallProfileName" xml:space="preserve">
+    <value>Samsung Knox 防火墙</value>
+  </data>
+  <data name="SamsungKnoxPasscodeProfileName" xml:space="preserve">
+    <value>Samsung Knox 密码</value>
+  </data>
+  <data name="SamsungKnoxRestrictionsProfileName" xml:space="preserve">
+    <value>Samsung Knox 限制</value>
+  </data>
+  <data name="SamsungPasscodeDependentMsg" xml:space="preserve">
+    <value>Samsung 密码功能与设备密码设置配合使用。可在密码负载中配置设备密码设置。在使用下面的 Samsung 密码功能时，请确保还配置了设备密码设置。</value>
+  </data>
+  <data name="SaveAssign" xml:space="preserve">
+    <value>保存并分配</value>
+  </data>
+  <data name="SavePublish" xml:space="preserve">
+    <value>保存并发布</value>
+  </data>
+  <data name="ScanAvgCpuLoadFactor" xml:space="preserve">
+    <value>扫描平均 CPU 负载因子 (%)</value>
+  </data>
+  <data name="ScanMappedNetworkDrives" xml:space="preserve">
+    <value>扫描映射网络驱动器</value>
+  </data>
+  <data name="ScheduleImminentRestartWarningInMinutes" xml:space="preserve">
+    <value>计划的即将发生重新启动警告 (分钟)</value>
+  </data>
+  <data name="ScheduleImminentRestartWarningToolTip" xml:space="preserve">
+    <value>通知开始前的分钟数。</value>
+  </data>
+  <data name="ScheduleInstTime" xml:space="preserve">
+    <value>计划安装时间</value>
+  </data>
+  <data name="ScheduleRestartWarningInHours" xml:space="preserve">
+    <value>计划的自动重新启动警告 (小时)</value>
+  </data>
+  <data name="ScheduleRestartWarningToolTip" xml:space="preserve">
+    <value>通知开始前的小时数。</value>
+  </data>
+  <data name="ScreenCaptureInfo" xml:space="preserve">
+    <value>允许应用程序访问用于屏幕捕获和录制的控件。</value>
+  </data>
+  <data name="Screens" xml:space="preserve">
+    <value>屏幕</value>
+  </data>
+  <data name="ScreenTime" xml:space="preserve">
+    <value>屏幕时间</value>
+  </data>
+  <data name="ScriptAddress" xml:space="preserve">
+    <value>脚本地址</value>
+  </data>
+  <data name="ScriptAddressHelp" xml:space="preserve">
+    <value>脚本地址是代理脚本托管所在位置的 URL。这也称为 PAC URL。</value>
+  </data>
+  <data name="SdkConfiguration" xml:space="preserve">
+    <value>SDK 配置</value>
+  </data>
+  <data name="SdkProfileListViewMenuTitle" xml:space="preserve">
+    <value>添加新的 SDK 配置文件或查看和管理现有 SDK 配置文件</value>
+  </data>
+  <data name="SdkProfiles" xml:space="preserve">
+    <value>SDK 配置文件</value>
+  </data>
+  <data name="SearchPayloadsPlaceholder" xml:space="preserve">
+    <value>开始键入以搜索负载</value>
+  </data>
+  <data name="SecondActiveEthernet" xml:space="preserve">
+    <value>第二个活动以太网</value>
+  </data>
+  <data name="SecondEthernet" xml:space="preserve">
+    <value>第二个以太网</value>
+  </data>
+  <data name="SecureDeviceUdidLookUpText" xml:space="preserve">
+    <value>应用目录的加密设备 UDID</value>
+  </data>
+  <data name="SecurityAssociationIdleTime" xml:space="preserve">
+    <value>配置安全关联空闲时间 (秒)。该值必须在 300 到 3,600 的范围内</value>
+  </data>
+  <data name="SecurityPrivacy" xml:space="preserve">
+    <value>安全与隐私</value>
+  </data>
+  <data name="SecurityPrivacySettings" xml:space="preserve">
+    <value>安全和隐私设置</value>
+  </data>
+  <data name="SelectApps" xml:space="preserve">
+    <value>选择应用</value>
+  </data>
+  <data name="SelectConfiguration" xml:space="preserve">
+    <value>选择配置</value>
+  </data>
+  <data name="SelectExclusionType" xml:space="preserve">
+    <value>选择排除类型</value>
+  </data>
+  <data name="SelectKioskApp" xml:space="preserve">
+    <value>选择应用类型</value>
+  </data>
+  <data name="SelectModeLabel" xml:space="preserve">
+    <value>选择模式</value>
+  </data>
+  <data name="SelectOEM" xml:space="preserve">
+    <value>选择 OEM</value>
+  </data>
+  <data name="SelectPasscodeApplication" xml:space="preserve">
+    <value>请选择通行码应用程序</value>
+  </data>
+  <data name="SelectProfile" xml:space="preserve">
+    <value>选择配置文件...</value>
+  </data>
+  <data name="SelectTheProfileConfigurationToGetStarted" xml:space="preserve">
+    <value>选择配置文件配置以开始</value>
+  </data>
+  <data name="SelectThinClientProfileCreate" xml:space="preserve">
+    <value>选择要为其创建配置文件的瘦客户端系统。</value>
+  </data>
+  <data name="SendAllSamples" xml:space="preserve">
+    <value>自动发送所有样本</value>
+  </data>
+  <data name="SendDiagnosticAndUsageTelemetryData" xml:space="preserve">
+    <value>发送诊断和使用情况遥测数据</value>
+  </data>
+  <data name="SendDiagnosticAndUsageTelemetryDataToolTip" xml:space="preserve">
+    <value>安全级别会发送与连接的用户体验、
+恶意软件移除工具和 Defender 相关的
+安全信息。
+除基本设备信息 (包括质量和
+和应用兼容性和使用情况) 外，
+基本级别还会发送安全数据。
+增强级别还会发送 Windows 和应用的使用情况和性能信息
+完全级别会发送识别和解决问题所需的所有数据。</value>
+  </data>
+  <data name="SendSafeSamples" xml:space="preserve">
+    <value>自动发送安全样本</value>
+  </data>
+  <data name="SeparateMultipleValuesWithPipeCharacter" xml:space="preserve">
+    <value>用管道字符分隔多个值</value>
+  </data>
+  <data name="ServerIsRequired" xml:space="preserve">
+    <value>“服务器”是必填字段</value>
+  </data>
+  <data name="ServerSetup" xml:space="preserve">
+    <value>服务器设置</value>
+  </data>
+  <data name="ServiceSetIdentifierIsRequiredField" xml:space="preserve">
+    <value>Wifi -“服务集标识符”是必填字段</value>
+  </data>
+  <data name="ServicingMode" xml:space="preserve">
+    <value>服务模式</value>
+  </data>
+  <data name="ServicingModeHelp" xml:space="preserve">
+    <value>表示何时在当前会话中启用了服务</value>
+  </data>
+  <data name="SetEnableMCXLoginScriptToTRUE" xml:space="preserve">
+    <value>将 EnableMCXLoginScripts 设为 TRUE</value>
+  </data>
+  <data name="SetHoursToLimitBackgroundDownloadBandwidth" xml:space="preserve">
+    <value>设置用于限制后台下载带宽的小时数</value>
+  </data>
+  <data name="SetHoursToLimitBackgroundDownloadBandwidthEndTimeUi" xml:space="preserve">
+    <value>设置结束时间以限制后台下载带宽</value>
+  </data>
+  <data name="SetHoursToLimitBackgroundDownloadBandwidthStartTimeUi" xml:space="preserve">
+    <value>设置开始时间以限制后台下载带宽</value>
+  </data>
+  <data name="SetHoursToLimitBackgroundDownloadBandwidthToolTip" xml:space="preserve">
+    <value>指定交付优化在工作时间内外的所有并发下载活动中使用的最大后台下载带宽占可用下载带宽的百分比。</value>
+  </data>
+  <data name="SetHoursToLimitForegroundDownloadBandwidth" xml:space="preserve">
+    <value>设置用于限制前台下载带宽的小时数</value>
+  </data>
+  <data name="SetHoursToLimitForegroundDownloadBandwidthEndTimeUi" xml:space="preserve">
+    <value>设置结束时间以限制前台下载带宽</value>
+  </data>
+  <data name="SetHoursToLimitForegroundDownloadBandwidthStartTimeUi" xml:space="preserve">
+    <value>设置开始时间以限制前台下载带宽</value>
+  </data>
+  <data name="SetHoursToLimitForegroundDownloadBandwidthToolTip" xml:space="preserve">
+    <value>指定交付优化在工作时间内外的所有并发下载活动中使用的最大前台下载带宽占可用下载带宽的百分比。</value>
+  </data>
+  <data name="SetIndividualPackages" xml:space="preserve">
+    <value>设置单个软件包</value>
+  </data>
+  <data name="SetInitialPasscode" xml:space="preserve">
+    <value>设置初始密码</value>
+  </data>
+  <data name="SetInitialPasscodeToolTip" xml:space="preserve">
+    <value>在设备上设置密码后，用户可以将其更改为符合设备密码策略的其他内容。</value>
+  </data>
+  <data name="SetMCXScriptTrustLabel" xml:space="preserve">
+    <value>将 MCXScriptTrust 设为匹配用来将客户端计算机连接到目录域的绑定设置</value>
+  </data>
+  <data name="SetPercentageOfThrottleForBackgroundTrafficDuringBusinessHours" xml:space="preserve">
+    <value>设置工作时间内的后台流量限制百分比</value>
+  </data>
+  <data name="SetPercentageOfThrottleForBackgroundTrafficDuringBusinessHoursToolTip" xml:space="preserve">
+    <value>设置工作时间内的后台流量限制百分比</value>
+  </data>
+  <data name="SetPercentageOfThrottleForBackgroundTrafficOutsideBusinessHours" xml:space="preserve">
+    <value>设置工作时间外的后台流量限制百分比</value>
+  </data>
+  <data name="SetPercentageOfThrottleForBackgroundTrafficOutsideBusinessHoursToolTip" xml:space="preserve">
+    <value>设置工作时间外的后台流量限制百分比</value>
+  </data>
+  <data name="SetPercentageOfThrottleForForegroundTrafficDuringBusinessHours" xml:space="preserve">
+    <value>设置工作时间内的前台流量限制百分比</value>
+  </data>
+  <data name="SetPercentageOfThrottleForForegroundTrafficDuringBusinessHoursToolTip" xml:space="preserve">
+    <value>设置工作时间内的前台流量限制百分比</value>
+  </data>
+  <data name="SetPercentageOfThrottleForForegroundTrafficOutsideBusinessHours" xml:space="preserve">
+    <value>设置工作时间外的前台流量限制百分比</value>
+  </data>
+  <data name="SetPercentageOfThrottleForForegroundTrafficOutsideBusinessHoursToolTip" xml:space="preserve">
+    <value>设置工作时间外的前台流量限制百分比</value>
+  </data>
+  <data name="SetupAssistantPayloadDescription" xml:space="preserve">
+    <value>选择要在软件更新时跳过的设置屏幕</value>
+  </data>
+  <data name="ShortSupportMessageEnabled" xml:space="preserve">
+    <value>编辑阻止设置的提示消息</value>
+  </data>
+  <data name="ShortSupportMessageToolTip" xml:space="preserve">
+    <value>当用户单击被阻止的设置或功能时，支持消息可显示一段简短说明，解释为什么无法访问该功能，字数限于 200 个字符。</value>
+  </data>
+  <data name="Show" xml:space="preserve">
+    <value>显示</value>
+  </data>
+  <data name="ShowPersonalRecoveryKeyToUser" xml:space="preserve">
+    <value>显示个人恢复密钥</value>
+  </data>
+  <data name="ShowRecoveryKeyHelpInfo" xml:space="preserve">
+    <value>生成密钥时，向员工的设备显示个人恢复密钥。</value>
+  </data>
+  <data name="SignatureUpdateFallbackOrder" xml:space="preserve">
+    <value>签名更新回退顺序</value>
+  </data>
+  <data name="SignatureUpdateFileSharesSources" xml:space="preserve">
+    <value>签名更新文件共享源</value>
+  </data>
+  <data name="SignatureUpdateInterval" xml:space="preserve">
+    <value>签名更新间隔 (以小时为单位)</value>
+  </data>
+  <data name="SignatureUpdates" xml:space="preserve">
+    <value>签名更新</value>
+  </data>
+  <data name="SignIn" xml:space="preserve">
+    <value>登录设置</value>
+  </data>
+  <data name="SignInSettings" xml:space="preserve">
+    <value>登录设置</value>
+  </data>
+  <data name="SimpleDownloadMode" xml:space="preserve">
+    <value>简单下载模式</value>
+  </data>
+  <data name="SimplifyUserProfileConfigurationAndDelivery" xml:space="preserve">
+    <value>简化用户配置文件配置和交付</value>
+  </data>
+  <data name="SimplifyUserProfileConfigurationAndDeliveryDescription" xml:space="preserve">
+    <value>Dynamic Environment Manager 跨任何虚拟、物理和基于云的 Windows 桌面环境提供个性化和动态策略配置。利用 UEM 的强大功能将配置文件交付到受管端点，并简化基础架构和用户配置文件管理。</value>
+  </data>
+  <data name="SIMSetup" xml:space="preserve">
+    <value>SIM 设置</value>
+  </data>
+  <data name="SIMUsageRules" xml:space="preserve">
+    <value>SIM 使用情况规则</value>
+  </data>
+  <data name="SingleAppModeAddAppError" xml:space="preserve">
+    <value>添加应用程序时发生错误</value>
+  </data>
+  <data name="SkipAccessibility" xml:space="preserve">
+    <value>可访问性</value>
+  </data>
+  <data name="SkipAccessibilityTooltip" xml:space="preserve">
+    <value>如果跳过，用户将看不到“可访问性”窗格。仅当 Mac 连接到以太网并且已下载云配置时，才会发生这种情况。</value>
+  </data>
+  <data name="SkipAllScreens" xml:space="preserve">
+    <value>跳过所有屏幕</value>
+  </data>
+  <data name="SkipAppearance" xml:space="preserve">
+    <value>选择外观</value>
+  </data>
+  <data name="SkipAppleID" xml:space="preserve">
+    <value>Apple ID 设置</value>
+  </data>
+  <data name="SkipAppStore" xml:space="preserve">
+    <value>App Store</value>
+  </data>
+  <data name="SkipAppStoreTooltip" xml:space="preserve">
+    <value>如果跳过，将不会向用户显示 App Store 信息屏幕</value>
+  </data>
+  <data name="SkipChooseYourLookTooltip" xml:space="preserve">
+    <value>如果跳过，在设置过程中系统将不会提示用户选择亮灯模式或黑暗模式。</value>
+  </data>
+  <data name="SkipDeviceMigration" xml:space="preserve">
+    <value>跳过设备到设备迁移屏幕</value>
+  </data>
+  <data name="SkipDeviceToDeviceMigration" xml:space="preserve">
+    <value>设备到设备迁移</value>
+  </data>
+  <data name="SkipDeviceToDeviceMigrationTooltip" xml:space="preserve">
+    <value>如果跳过，则在安装过程中不会向用户通知有关设备到设备迁移的信息</value>
+  </data>
+  <data name="SkipExpressLanguage" xml:space="preserve">
+    <value>Express 语言</value>
+  </data>
+  <data name="SkipExpressLanguageTooltip" xml:space="preserve">
+    <value>如果跳过，在设置过程中系统将不会提示用户设置 Express 语言</value>
+  </data>
+  <data name="SkipFirstUseHints" xml:space="preserve">
+    <value>跳过用户教程和介绍性提示</value>
+  </data>
+  <data name="SkipIcloudStorageSetup" xml:space="preserve">
+    <value>iCloud Storage</value>
+  </data>
+  <data name="SkipImessageAndFacetime" xml:space="preserve">
+    <value>iMessage 和 FaceTime</value>
+  </data>
+  <data name="SkipiMessageAndFaceTimeTooltip" xml:space="preserve">
+    <value>如果跳过，在设置过程中系统将不会提示用户对 iMessage 和 FaceTime 进行设置。</value>
+  </data>
+  <data name="SkipLocation" xml:space="preserve">
+    <value>定位服务</value>
+  </data>
+  <data name="SkipMessagingActivationUsingPhoneNumber" xml:space="preserve">
+    <value>跳过使用电话号码激活消息屏幕</value>
+  </data>
+  <data name="SkipPasscode" xml:space="preserve">
+    <value>密码</value>
+  </data>
+  <data name="SkipPayment" xml:space="preserve">
+    <value>付款</value>
+  </data>
+  <data name="SkipPreferredLanguage" xml:space="preserve">
+    <value>首选语言</value>
+  </data>
+  <data name="SkipPreferredLanguageTooltip" xml:space="preserve">
+    <value>如果跳过，在设置过程中系统将不会提示用户设置首选语言</value>
+  </data>
+  <data name="SkipRestore" xml:space="preserve">
+    <value>还原</value>
+  </data>
+  <data name="SkipRestoreCompleted" xml:space="preserve">
+    <value>还原已完成</value>
+  </data>
+  <data name="SkipRestoreCompletedTooltip" xml:space="preserve">
+    <value>如果跳过，用户将看不到“还原已完成”窗格。</value>
+  </data>
+  <data name="SkipScreenTime" xml:space="preserve">
+    <value>屏幕时间</value>
+  </data>
+  <data name="SkipScreenTimeTooltip" xml:space="preserve">
+    <value>如果跳过，在设置过程中系统将不会通知用户屏幕时间。</value>
+  </data>
+  <data name="SkipSelectedScreens" xml:space="preserve">
+    <value>跳过所选屏幕</value>
+  </data>
+  <data name="SkipSetupAssistant" xml:space="preserve">
+    <value>跳过设置帮助</value>
+  </data>
+  <data name="SkipSIMSetup" xml:space="preserve">
+    <value>添加流量套餐</value>
+  </data>
+  <data name="SkipSimSetupTooltip" xml:space="preserve">
+    <value>如果跳过，则不提示用户添加流量套餐。</value>
+  </data>
+  <data name="SkipSoftwareUpdate" xml:space="preserve">
+    <value>软件更新</value>
+  </data>
+  <data name="SkipSoftwareUpdateTooltip" xml:space="preserve">
+    <value>如果跳过，在设置过程中系统将不会通知用户关于软件更新的信息。</value>
+  </data>
+  <data name="SkipTOS" xml:space="preserve">
+    <value>条款和条件</value>
+  </data>
+  <data name="SkipTouchID" xml:space="preserve">
+    <value>Touch ID</value>
+  </data>
+  <data name="SkipTrueTone" xml:space="preserve">
+    <value>真音</value>
+  </data>
+  <data name="SkipUpdateCompleted" xml:space="preserve">
+    <value>更新已完成</value>
+  </data>
+  <data name="SkipUpdateCompletedTooltip" xml:space="preserve">
+    <value>如果跳过，用户将看不到“软件更新完成”窗格。</value>
+  </data>
+  <data name="SkipWelcome" xml:space="preserve">
+    <value>欢迎</value>
+  </data>
+  <data name="SkipWelcomeTooltip" xml:space="preserve">
+    <value>如果跳过，在设置过程中系统将不会通知欢迎屏幕</value>
+  </data>
+  <data name="Slovakia" xml:space="preserve">
+    <value>斯洛伐克</value>
+  </data>
+  <data name="SmartCardSettings" xml:space="preserve">
+    <value>智能卡</value>
+  </data>
+  <data name="SmimeEncryptByDefaultUserOverrideable" xml:space="preserve">
+    <value>允许用户切换 S/MIME 加密</value>
+  </data>
+  <data name="SmimeEncryptByDefaultUserOverrideableTooltip" xml:space="preserve">
+    <value>启用后，此设置允许用户切换打开或关闭电子邮件设置中的 S/MIME 加密。</value>
+  </data>
+  <data name="SmimeEncryptionCertificateUuidUserOverrideable" xml:space="preserve">
+    <value>允许用户选择 S/MIME 加密证书</value>
+  </data>
+  <data name="SmimeEncryptionCertificateUuidUserOverrideableTooltip" xml:space="preserve">
+    <value>启用后，此设置允许用户为电子邮件设置中的 S/MIME 加密选择签名身份。</value>
+  </data>
+  <data name="SmimeSigningCertificateUuidUserOverrideable" xml:space="preserve">
+    <value>允许用户选择 S/MIME 签名证书</value>
+  </data>
+  <data name="SmimeSigningCertificateUuidUserOverrideableTooltip" xml:space="preserve">
+    <value>启用后，此设置允许用户为电子邮件设置中的 S/MIME 签名选择签名身份。</value>
+  </data>
+  <data name="SmimeSigningUserOverrideable" xml:space="preserve">
+    <value>允许用户切换 S/MIME 签名</value>
+  </data>
+  <data name="SmimeSigningUserOverrideableTooltip" xml:space="preserve">
+    <value>启用后，此设置允许用户切换打开或关闭电子邮件设置中的 S/MIME 签名。</value>
+  </data>
+  <data name="Soft" xml:space="preserve">
+    <value>软</value>
+  </data>
+  <data name="SpecificUser" xml:space="preserve">
+    <value>特定用户</value>
+  </data>
+  <data name="SpecifyExclusionValue" xml:space="preserve">
+    <value>指定排除值</value>
+  </data>
+  <data name="SpecifyHowSIMsUseCellularDataNetworks" xml:space="preserve">
+    <value>指定 SIM 使用手机网络数据网络的方式</value>
+  </data>
+  <data name="SpeechRecognition" xml:space="preserve">
+    <value>语音识别</value>
+  </data>
+  <data name="SpeechRecognitionInfo" xml:space="preserve">
+    <value>允许应用程序使用语音识别功能。</value>
+  </data>
+  <data name="SSIDFieldAlreadyGivenAtRowNumberArg" xml:space="preserve">
+    <value>已在行号 {0} 上分配 SSID 字段</value>
+  </data>
+  <data name="SsoExtension" xml:space="preserve">
+    <value>SSO 扩展</value>
+  </data>
+  <data name="SsoExtensionDescription" xml:space="preserve">
+    <value>为您的设备上的特定应用配置 SSO 扩展。</value>
+  </data>
+  <data name="SsoRealmToolTip" xml:space="preserve">
+    <value>输入 Kerberos 域领域。此值应正确大写。对于 Workspace ONE Access Cloud 托管的 KDC，此参数必须完全大写。</value>
+  </data>
+  <data name="StartLayout" xml:space="preserve">
+    <value>开始布局</value>
+  </data>
+  <data name="StartLayoutXml" xml:space="preserve">
+    <value>开始布局 XML</value>
+  </data>
+  <data name="StartMenuPolicies" xml:space="preserve">
+    <value>“开始”菜单策略</value>
+  </data>
+  <data name="StartTypingToAddAnICCIDs" xml:space="preserve">
+    <value>开始键入内容以添加 ICCID</value>
+  </data>
+  <data name="StaticCode" xml:space="preserve">
+    <value>静态代码验证</value>
+  </data>
+  <data name="StaticCodePrivacyHelpInfo" xml:space="preserve">
+    <value>如果设为 True，则静态验证过代码要求。仅当进程使其动态代码签名无效时使用。</value>
+  </data>
+  <data name="StealthMode" xml:space="preserve">
+    <value>隐藏模式</value>
+  </data>
+  <data name="StealthModeHelp" xml:space="preserve">
+    <value>如果此选项为 false，则服务器将以隐藏模式运行。</value>
+  </data>
+  <data name="StoreAppPublisherName" xml:space="preserve">
+    <value>输入存储应用发布者名称</value>
+  </data>
+  <data name="StoreKeyHelpInfo" xml:space="preserve">
+    <value>将个人恢复密钥托管到 UEM 服务器，以便始终可以在“设备详细信息”中访问。</value>
+  </data>
+  <data name="StrictMode" xml:space="preserve">
+    <value>严格模式</value>
+  </data>
+  <data name="SubmitSamplesConsent" xml:space="preserve">
+    <value>用户同意</value>
+  </data>
+  <data name="SuccessMessage" xml:space="preserve">
+    <value>成功消息</value>
+  </data>
+  <data name="SuccessTitle" xml:space="preserve">
+    <value>成功标题</value>
+  </data>
+  <data name="SundayThroughThursday" xml:space="preserve">
+    <value>星期日到星期四</value>
+  </data>
+  <data name="SuperviseDevices" xml:space="preserve">
+    <value>监督</value>
+  </data>
+  <data name="SuperviseDevicesTooltip" xml:space="preserve">
+    <value>如果启用，会在完成设置助理后开始自动隔空监督设备。
+从 iOS 13 开始，此选项默认启用，无法禁用。</value>
+  </data>
+  <data name="SupportedProtocolSchemesTooltip" xml:space="preserve">
+    <value>设备仅支持将 http、https 和浏览器 URL 方案作为协议。</value>
+  </data>
+  <data name="SuspendBitlockerUntilTpmIsInitialized" xml:space="preserve">
+    <value>在 TPM 初始化之前挂起 BitLocker</value>
+  </data>
+  <data name="SuspendBitlockerUntilTpmIsInitializedInfo" xml:space="preserve">
+    <value>针对在初始化 TPM 之前需要加密的注册 (例如 OOBE) 启用此选项。系统将被加密，但在 TPM 初始化之前，BitLocker 将处于挂起状态。</value>
+  </data>
+  <data name="SyncFolderPlaceholderText" xml:space="preserve">
+    <value>例如 ~/Library/FolderToSync</value>
+  </data>
+  <data name="SyncLocalPassword" xml:space="preserve">
+    <value>同步本地密码</value>
+  </data>
+  <data name="SyncPeriod" xml:space="preserve">
+    <value>同步周期</value>
+  </data>
+  <data name="SysExtAllowUserOverrides" xml:space="preserve">
+    <value>允许用户覆盖</value>
+  </data>
+  <data name="SysExtUserOverride" xml:space="preserve">
+    <value>用户覆盖</value>
+  </data>
+  <data name="SysExtUserOverrideDescription" xml:space="preserve">
+    <value>启用之后，用户可以批准此策略未明确允许的其他系统扩展。</value>
+  </data>
+  <data name="SystemEncryptionOnUnenrollment" xml:space="preserve">
+    <value>保持系统始终加密</value>
+  </data>
+  <data name="SystemEncryptionOnUnenrollmentInfo" xml:space="preserve">
+    <value>选择此选项后，在移除配置文件、擦除设备、从 Azure AD 中移除设备、设备断开与工作/学校帐户的连接、从控制台中删除设备或卸载 Hub 时，均可保持系统始终加密。此选项不适用于员工自有设备。</value>
+  </data>
+  <data name="SystemExtensions" xml:space="preserve">
+    <value>系统扩展</value>
+  </data>
+  <data name="SystemInfoStatusBar" xml:space="preserve">
+    <value>状态栏中的系统信息</value>
+  </data>
+  <data name="SystemPolicyAllFiles" xml:space="preserve">
+    <value>系统策略所有文件</value>
+  </data>
+  <data name="SystemPolicyAllFilesPrivacyHelpInfo" xml:space="preserve">
+    <value>允许应用程序访问所有受保护文件。</value>
+  </data>
+  <data name="SystemPolicyDesktopFolder" xml:space="preserve">
+    <value>系统策略的桌面文件夹</value>
+  </data>
+  <data name="SystemPolicyDesktopFolderInfo" xml:space="preserve">
+    <value>允许应用程序访问桌面上的文件。</value>
+  </data>
+  <data name="SystemPolicyDocumentsFolder" xml:space="preserve">
+    <value>系统策略的文档文件夹</value>
+  </data>
+  <data name="SystemPolicyDocumentsFolderInfo" xml:space="preserve">
+    <value>允许应用程序访问“文档”中的文件。</value>
+  </data>
+  <data name="SystemPolicyDownloadsFolder" xml:space="preserve">
+    <value>系统策略的下载文件夹</value>
+  </data>
+  <data name="SystemPolicyDownloadsFolderInfo" xml:space="preserve">
+    <value>允许应用程序访问“下载”中的文件。</value>
+  </data>
+  <data name="SystemPolicyNetworkVolumes" xml:space="preserve">
+    <value>系统策略的网络卷</value>
+  </data>
+  <data name="SystemPolicyNetworkVolumesInfo" xml:space="preserve">
+    <value>允许应用程序访问网络卷上的文件。</value>
+  </data>
+  <data name="SystemPolicyRemovableVolumes" xml:space="preserve">
+    <value>系统策略的可移动卷</value>
+  </data>
+  <data name="SystemPolicyRemovableVolumesInfo" xml:space="preserve">
+    <value>允许应用程序访问“可移动卷”上的文件。</value>
+  </data>
+  <data name="SystemPolicySysAdminFiles" xml:space="preserve">
+    <value>系统策略系统管理员文件</value>
+  </data>
+  <data name="SystemPolicySysAdminFilesPrivacyHelpInfo" xml:space="preserve">
+    <value>允许应用程序访问用于系统管理的一些文件。</value>
+  </data>
+  <data name="SystemUpdate" xml:space="preserve">
+    <value>系统更新</value>
+  </data>
+  <data name="SystemUpdateFreezePeriodInfo" xml:space="preserve">
+    <value>当设备时钟在任何冻结期内时，所有入站系统更新 (包括安全修补程序) 都将被阻止且无法安装。每个冻结期最多允许 90 天，相邻冻结期必须相隔至少 60 天。</value>
+  </data>
+  <data name="SystemUpdateFreezePeriodPlaceHolder" xml:space="preserve">
+    <value>未配置冻结期</value>
+  </data>
+  <data name="TeamIdentifier" xml:space="preserve">
+    <value>团队标识符</value>
+  </data>
+  <data name="TeamIdIdRequiredForSystemExtensionType" xml:space="preserve">
+    <value>系统扩展类型需要团队标识符。</value>
+  </data>
+  <data name="TextDetails" xml:space="preserve">
+    <value>文本详细信息</value>
+  </data>
+  <data name="TextElementDescription" xml:space="preserve">
+    <value>文本元素说明</value>
+  </data>
+  <data name="ThinClients" xml:space="preserve">
+    <value>瘦客户端</value>
+  </data>
+  <data name="ThirdActiveEthernet" xml:space="preserve">
+    <value>第三个活动以太网</value>
+  </data>
+  <data name="ThirdEthernet" xml:space="preserve">
+    <value>第三个以太网</value>
+  </data>
+  <data name="TIF" xml:space="preserve">
+    <value>.TIF</value>
+  </data>
+  <data name="TimeAwareness" xml:space="preserve">
+    <value>时间感知</value>
+  </data>
+  <data name="TimeAwarenessConfiguration" xml:space="preserve">
+    <value>时间感知配置</value>
+  </data>
+  <data name="TimeAwarenessConfigurationHelpText" xml:space="preserve">
+    <value>此部分中的配置将应用于从“资源”&gt;“时间段”或第三方调度系统中为用户设备定义的时间表的应用程序。</value>
+  </data>
+  <data name="TimeLimits" xml:space="preserve">
+    <value>时间限制</value>
+  </data>
+  <data name="times" xml:space="preserve">
+    <value>次</value>
+  </data>
+  <data name="TimeSchedulingSetUpInfoMsg" xml:space="preserve">
+    <value>尚未为您的组织组配置 Hub 服务。应在 Hub 服务中设置与第三方时间调度系统的集成，以让此配置正常工作。</value>
+  </data>
+  <data name="ToggleAll" xml:space="preserve">
+    <value>全部切换</value>
+  </data>
+  <data name="TokenRemovalAction" xml:space="preserve">
+    <value>移除智能卡时启动屏幕保护程序</value>
+  </data>
+  <data name="TokenRemovalActionInfo" xml:space="preserve">
+    <value>如果启用，则移除智能卡后，屏幕保护程序将被激活。此外，建议使用安全和隐私配置文件来强制在屏幕保护程序激活后立即锁定屏幕。</value>
+  </data>
+  <data name="TotalAssignedDevice" xml:space="preserve">
+    <value>已分配的设备总数</value>
+  </data>
+  <data name="TotalEnrolledDevice" xml:space="preserve">
+    <value>注册的设备总数</value>
+  </data>
+  <data name="TrustAllCertificatesTooltip" xml:space="preserve">
+    <value>禁止对 ActiveSync 服务器、代理或网关和其他电子邮件服务器之间的通信中使用的 SSL 证书执行验证检查。此设置仅用于测试目的，不应在生产环境中启用。</value>
+  </data>
+  <data name="TvOSArgSupervised" xml:space="preserve">
+    <value>tvOS {0} + 受监督</value>
+  </data>
+  <data name="TvOsOnly" xml:space="preserve">
+    <value>仅限 tvOS</value>
+  </data>
+  <data name="UiLockdown" xml:space="preserve">
+    <value>UI 访问</value>
+  </data>
+  <data name="UnattendComputerNameText" xml:space="preserve">
+    <value>在 OOBE 期间，默认情况下，计算机名称是随机的，以便每个系统都具有唯一名称。建议填充“注册所有者”字段，因为 Windows 将合并该字段中的前 7 个字符，并随机使用其余 8 个字符以创建计算机名称。有关更多信息，请参阅 {0}。</value>
+    <comment>{0} Place holder in this label contains help url for computer name "https://docs.microsoft.com/en-us/windows-hardware/customize/desktop/unattend/microsoft-windows-shell-setup-computername"</comment>
+  </data>
+  <data name="Underlined" xml:space="preserve">
+    <value>带下划线</value>
+  </data>
+  <data name="UnicastResponsesToMulticastOrBroadcastNetworkTraffic" xml:space="preserve">
+    <value>单播响应多播或广播网络流量</value>
+  </data>
+  <data name="UnicastResponsesToMulticastOrBroadcastNetworkTrafficHelp" xml:space="preserve">
+    <value>如果为 true，则将阻止对多播广播流量进行单播响应。</value>
+  </data>
+  <data name="UnifiedWriteFilter" xml:space="preserve">
+    <value>统一写入筛选器</value>
+  </data>
+  <data name="UnsavedProfilePrompt" xml:space="preserve">
+    <value>您有未保存的配置文件设置更改。是否确定要离开此页面?</value>
+  </data>
+  <data name="UpdateBranchInfoNew" xml:space="preserve">
+    <value>Insider - Fast 通道: 主要内部版本包括新功能和现有功能更改、有限服务和/或累积更新，Insider - Slow 通道: 主要内部版本包括新功能和现有功能更改、所有服务和/或累积更新，Insider - Release 通道: 主要内部版本包括最新功能、更新、错误修复和应用程序更改。</value>
+  </data>
+  <data name="UpdatedStatusMessage" xml:space="preserve">
+    <value>设备将收到新的配置文件版本</value>
+  </data>
+  <data name="UpdateOnWifiOnly" xml:space="preserve">
+    <value>仅在使用 Wi-Fi 时更新</value>
+  </data>
+  <data name="UpdateOtherMsftProductsWhenUpdatingWindows" xml:space="preserve">
+    <value>在更新 Windows 时，同时更新其他 Microsoft 产品</value>
+  </data>
+  <data name="UpdateScanFrequencyInHours" xml:space="preserve">
+    <value>更新扫描频率 (小时)</value>
+  </data>
+  <data name="UploadKioskXML" xml:space="preserve">
+    <value>上载 Kiosk XML</value>
+  </data>
+  <data name="UrlAccessControl" xml:space="preserve">
+    <value>Url 访问控制</value>
+  </data>
+  <data name="URLAccessControls" xml:space="preserve">
+    <value>URL 访问控件</value>
+  </data>
+  <data name="USBStorage" xml:space="preserve">
+    <value>USB 存储</value>
+  </data>
+  <data name="UseCommonFilePathExclusions" xml:space="preserve">
+    <value>使用通用文件路径排除项</value>
+  </data>
+  <data name="UseCommonFilePathExclusionsHelp" xml:space="preserve">
+    <value>使用设置确定是否将在筛选器中添加或排除通用路径排除项</value>
+  </data>
+  <data name="UseCommonRegistryExclusions" xml:space="preserve">
+    <value>使用通用注册表排除项</value>
+  </data>
+  <data name="UseCommonRegistryExclusionsHelp" xml:space="preserve">
+    <value>使用设置确定是否要在筛选器中添加或排除通用注册表排除项</value>
+  </data>
+  <data name="UsedSpaceEncryption" xml:space="preserve">
+    <value>在初次加密时仅加密已使用的空间</value>
+  </data>
+  <data name="UseDTRForAppMappingToolTip" xml:space="preserve">
+    <value>在 Tunnel 配置中使用设备流量规则管理应用。</value>
+  </data>
+  <data name="UseExisting" xml:space="preserve">
+    <value>使用现有</value>
+  </data>
+  <data name="UseIntelligentHubForEnforcement" xml:space="preserve">
+    <value>使用 Intelligent Hub 强制执行</value>
+  </data>
+  <data name="UseIntelligentHubForEnforcementHelpInfo" xml:space="preserve">
+    <value>启用或禁用 Intelligent Hub 强制执行磁盘加密。禁用时，系统不会通过 Hub 通知提示员工。仅应用上面的本机设备管理设置。</value>
+  </data>
+  <data name="UseOauth" xml:space="preserve">
+    <value>使用 OAuth</value>
+  </data>
+  <data name="UsePasswordIfTpmNotAvailable" xml:space="preserve">
+    <value>如果 TPM 不存在，则使用密码</value>
+  </data>
+  <data name="UseProxyForLocalAddresses" xml:space="preserve">
+    <value>本地 (内联网) 地址使用代理服务器</value>
+  </data>
+  <data name="UseProxyForLocalHelp" xml:space="preserve">
+    <value>启用此选项将为本地内联网地址使用配置的代理服务器。</value>
+  </data>
+  <data name="UseProxyServer" xml:space="preserve">
+    <value>使用代理服务器</value>
+  </data>
+  <data name="UseProxyServerHelp" xml:space="preserve">
+    <value>启用此设置以手动指定代理的服务器地址、端口和异常 URL。</value>
+  </data>
+  <data name="UserCanShareData" xml:space="preserve">
+    <value>关闭，此后数据可以供任何应用程序共享</value>
+  </data>
+  <data name="UserData" xml:space="preserve">
+    <value>用户数据</value>
+  </data>
+  <data name="UserDetails" xml:space="preserve">
+    <value>用户详细信息</value>
+  </data>
+  <data name="UserDistinguishedNameLookUpText" xml:space="preserve">
+    <value>用户的标识名</value>
+  </data>
+  <data name="UserName" xml:space="preserve">
+    <value>用户名</value>
+  </data>
+  <data name="UserPairing" xml:space="preserve">
+    <value>显示用户配对对话框</value>
+  </data>
+  <data name="UserSelectedOutsideOfWorkProfile" xml:space="preserve">
+    <value>允许用户在配置文件外部选择</value>
+  </data>
+  <data name="UserSmimeEncryptionLookUpText" xml:space="preserve">
+    <value>用户 S/MIME 加密证书</value>
+  </data>
+  <data name="UserSmimeSigningLookUpText" xml:space="preserve">
+    <value>用户 S/MIME 签名证书</value>
+  </data>
+  <data name="UseSetUpScript" xml:space="preserve">
+    <value>使用设置脚本</value>
+  </data>
+  <data name="UseSetUpScriptHelp" xml:space="preserve">
+    <value>启用此选项以配置代理脚本 URL</value>
+  </data>
+  <data name="UseSiteAutoDiscovery" xml:space="preserve">
+    <value>使用站点自动发现</value>
+  </data>
+  <data name="UseStaticRecoveryKey" xml:space="preserve">
+    <value>静态密钥</value>
+  </data>
+  <data name="UseWindowsLogonCredentials" xml:space="preserve">
+    <value>使用 Windows 登录凭据</value>
+  </data>
+  <data name="UseWindowsRecommendedSettings" xml:space="preserve">
+    <value>使用 Windows 推荐的设置</value>
+  </data>
+  <data name="UWP" xml:space="preserve">
+    <value>UWP</value>
+  </data>
+  <data name="ValidateFrom" xml:space="preserve">
+    <value>生效日期</value>
+  </data>
+  <data name="ValidateTo" xml:space="preserve">
+    <value>有效截止日期</value>
+  </data>
+  <data name="ValueMustBeBetweenArgandArg" xml:space="preserve">
+    <value>值必须是介于 {0}-{1} 之间的数字。</value>
+  </data>
+  <data name="Values" xml:space="preserve">
+    <value>值</value>
+  </data>
+  <data name="Videos" xml:space="preserve">
+    <value>视频</value>
+  </data>
+  <data name="ViewDeviceAssignmentInfoMessage" xml:space="preserve">
+    <value>网格仅通过直接分配显示设备，但此资源可能还具有基于工作流的分配。</value>
+  </data>
+  <data name="ViewList" xml:space="preserve">
+    <value>查看列表</value>
+  </data>
+  <data name="ViewWorkflow" xml:space="preserve">
+    <value>查看工作流</value>
+  </data>
+  <data name="VMwareTunnelClientBusinessBundleId" xml:space="preserve">
+    <value>捆绑包 ID</value>
+  </data>
+  <data name="VMwareTunnelClientBusinessBundleIdInfo" xml:space="preserve">
+    <value>仅在 VMware Workspace ONE 团队建议时使用。</value>
+  </data>
+  <data name="VolumeToProtect" xml:space="preserve">
+    <value>要保护的卷</value>
+  </data>
+  <data name="VolumeToProtectHelp" xml:space="preserve">
+    <value>指示卷当前是否受当前会话中的 UWF 保护</value>
+  </data>
+  <data name="WeakBiometric" xml:space="preserve">
+    <value>弱生物识别</value>
+  </data>
+  <data name="WhenUnlocked" xml:space="preserve">
+    <value>解锁时</value>
+  </data>
+  <data name="WhiteListedAirPlayDestinations" xml:space="preserve">
+    <value>允许的 AirPlay 目标位置</value>
+  </data>
+  <data name="WiFiAssistPolicy" xml:space="preserve">
+    <value>Wi-Fi 助理</value>
+  </data>
+  <data name="WifiAssistThree" xml:space="preserve">
+    <value>无限制的手机网络数据</value>
+  </data>
+  <data name="WifiAssistTwo" xml:space="preserve">
+    <value>默认</value>
+  </data>
+  <data name="WifiProfilesText" xml:space="preserve">
+    <value>WiFi 配置文件</value>
+  </data>
+  <data name="WildCardDomainExample" xml:space="preserve">
+    <value>使用 * 作为域的通配符。例如: *.example.com 或 *example.com</value>
+  </data>
+  <data name="Win32" xml:space="preserve">
+    <value>Win32</value>
+  </data>
+  <data name="Win32Agent" xml:space="preserve">
+    <value>Workspace ONE Intelligent Hub</value>
+  </data>
+  <data name="WinByPassForLocal" xml:space="preserve">
+    <value>Win 绕过本地连接</value>
+  </data>
+  <data name="WinDesktopMinimumNumberOfComplexCharacters" xml:space="preserve">
+    <value>最低复杂字符数</value>
+  </data>
+  <data name="WinDesktopMinimumNumberOfComplexCharactersTooltip" xml:space="preserve">
+    <value>复杂密码应包含以下四类字符中的三类字符: 大写 (A-Z)、小写 (a-z)、数字 (0-9)、特殊字符 (!、$、#、% 等)。对于本地帐户，无论配置的复杂程度值如何，都会强制实施复杂程度值 3。</value>
+  </data>
+  <data name="WinDesktopMinimumPasswordLengthToolTip" xml:space="preserve">
+    <value>本地帐户支持的最小长度为 6 个字符，Microsoft 帐户支持的最小长度为 8 个字符。</value>
+  </data>
+  <data name="Windows10Kiosk" xml:space="preserve">
+    <value>Kiosk</value>
+  </data>
+  <data name="WindowsInsiderFastNew" xml:space="preserve">
+    <value>Insider - Fast 通道 (不太稳定，开发人员内部版本)</value>
+  </data>
+  <data name="WindowsInsiderSlowNew" xml:space="preserve">
+    <value>Insider - Slow 通道 (较稳定，开发人员内部版本)</value>
+  </data>
+  <data name="WindowsLabelTooltip" xml:space="preserve">
+    <value>输入要在“开始”菜单和应用目录中显示的文本。</value>
+  </data>
+  <data name="WindowsLicenseKeyIsRequired" xml:space="preserve">
+    <value>Windows 许可 -“许可证密钥”是必填字段</value>
+  </data>
+  <data name="WindowsLicensingLicenseKeyToolTip" xml:space="preserve">
+    <value>有效许可证密钥包含 29 个字符，其中包括连字符。</value>
+  </data>
+  <data name="WindowsPlatformLabel" xml:space="preserve">
+    <value>Windows 桌面</value>
+  </data>
+  <data name="WindowsRemoteWipeToolTip" xml:space="preserve">
+    <value>“擦除受保护数据”执行无法规避的擦除，在某些设备配置中，此命令可能导致设备无法启动。“擦除并保留置备数据”将在擦除后还原置备数据。</value>
+  </data>
+  <data name="WindowsUpdatesPayloadUpdateGroupInfo" xml:space="preserve">
+    <value>选择自动应用于已分配设备的更新组。
+注意: 系统将提示您代表所有用户接受更新 EULA。
+</value>
+  </data>
+  <data name="WindowsUrlTooltip" xml:space="preserve">
+    <value>输入要打开的 URL。</value>
+  </data>
+  <data name="Winlockdown" xml:space="preserve">
+    <value>需要激活 VPN 进行应用程序连接。如果断开 VPN 连接，则应用程序将被锁定，无网络可访问性</value>
+  </data>
+  <data name="WinSplitTunnel" xml:space="preserve">
+    <value>Win 拆分隧道</value>
+  </data>
+  <data name="WinVpnTrustedNetworkDetection" xml:space="preserve">
+    <value>Win VPN 可信网络检测</value>
+  </data>
+  <data name="Wipe" xml:space="preserve">
+    <value>擦除</value>
+  </data>
+  <data name="WipeAction" xml:space="preserve">
+    <value>请选择您想要进行的擦除操作</value>
+  </data>
+  <data name="WipePersistProvisionedData" xml:space="preserve">
+    <value>擦除并保留置备数据</value>
+  </data>
+  <data name="WipePersistUserData" xml:space="preserve">
+    <value>擦除持久用户数据</value>
+  </data>
+  <data name="WipeProtected" xml:space="preserve">
+    <value>擦除受保护数据</value>
+  </data>
+  <data name="WorkAllowPersonalShareWithWorkApp" xml:space="preserve">
+    <value>允许个人应用与工作应用共享数据</value>
+  </data>
+  <data name="WorkAllowPersonalShareWithWorkAppTooltip" xml:space="preserve">
+    <value>指定用户是否可以将文件/图片/数据从个人端共享到托管配置文件中，方法是从个人端发送文件/图片/数据，或在托管配置文件中的应用中提取数据</value>
+  </data>
+  <data name="WorkflowAssignmentsDesc" xml:space="preserve">
+    <value>具有多个分配的设备将按优先级顺序接收工作流。如果调整单个分配的优先级，则将自动重新排列其他分配的优先级。请选择要编辑的分配。</value>
+  </data>
+  <data name="WorkflowForResource" xml:space="preserve">
+    <value>{0} 的工作流</value>
+    <comment>The placeholder in this label key contains the resource e.g apps, profiles, sensors</comment>
+  </data>
+  <data name="WorkflowSummary" xml:space="preserve">
+    <value>工作流摘要</value>
+  </data>
+  <data name="WorkManagedProductivity" xml:space="preserve">
+    <value>工作受管工作效率</value>
+  </data>
+  <data name="WorkProfile" xml:space="preserve">
+    <value>工作配置文件</value>
+  </data>
+  <data name="WorkProfileLockTimeoutRangeInMinutes" xml:space="preserve">
+    <value>工作配置文件锁定超时范围 (以分钟为单位)</value>
+  </data>
+  <data name="WorkRestrictionPolicyDescription" xml:space="preserve">
+    <value>配置工作配置文件设置，以跨仅工作的应用管理策略。配置工作受管设备设置以在整个设备应用策略。工作配置文件和工作受管设备设置的配置将应用于公司所有个人启用的设备。</value>
+  </data>
+  <data name="WPA3Enterprise" xml:space="preserve">
+    <value>WPA3 Enterprise</value>
+  </data>
+  <data name="WPA3Personal" xml:space="preserve">
+    <value>WPA3</value>
+  </data>
+  <data name="WriteFilter" xml:space="preserve">
+    <value>写入筛选器</value>
+  </data>
+  <data name="WriteFilterHelp" xml:space="preserve">
+    <value>指示是否已为当前会话启用 UWF。</value>
+  </data>
+  <data name="XValue" xml:space="preserve">
+    <value>X 值</value>
+  </data>
+  <data name="YValue" xml:space="preserve">
+    <value>Y 值</value>
+  </data>
+  <data name="ZeroBlockingLevel" xml:space="preserve">
+    <value>零容错阻止级别 – 阻止所有未知可执行文件</value>
+  </data>
+</root>

@@ -1,0 +1,643 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AboutMobileFlows" xml:space="preserve">
+    <value>關於 Mobile Flows</value>
+  </data>
+  <data name="AddArgMobileFlow" xml:space="preserve">
+    <value>新增 {0} 流程</value>
+    <comment>String will be passed in for {0}. Examples: 'Add Salesforce Flow', 'Add ServiceNow Flow' etc.</comment>
+  </data>
+  <data name="AddKeyValuePairs" xml:space="preserve">
+    <value>新增所有適用的機碼值組</value>
+  </data>
+  <data name="AddNewMobileFlow" xml:space="preserve">
+    <value>新增 Mobile Flow</value>
+  </data>
+  <data name="AdobeSignDescription" xml:space="preserve">
+    <value>用於簽署文件的 Adobe Connector</value>
+  </data>
+  <data name="AdobeSignTitle" xml:space="preserve">
+    <value>Adobe 簽署</value>
+  </data>
+  <data name="Algorithm" xml:space="preserve">
+    <value>演算法</value>
+  </data>
+  <data name="Approvals" xml:space="preserve">
+    <value>核准</value>
+  </data>
+  <data name="AreYouSureToCancel" xml:space="preserve">
+    <value>確定要取消嗎?</value>
+  </data>
+  <data name="ArgCatalogConnector" xml:space="preserve">
+    <value>{0} 目錄連接器</value>
+  </data>
+  <data name="ArgCatalogConnectors" xml:space="preserve">
+    <value>{0} 目錄連接器</value>
+  </data>
+  <data name="ArgMobileFlow" xml:space="preserve">
+    <value>{0} Mobile Flow</value>
+    <comment>Numeric one will be passed in for {0}</comment>
+  </data>
+  <data name="ArgMobileFlows" xml:space="preserve">
+    <value>{0} Mobile Flows</value>
+    <comment>Numeric value will be passed for {0}</comment>
+  </data>
+  <data name="AuthenticationHeader" xml:space="preserve">
+    <value>驗證標頭</value>
+  </data>
+  <data name="BaseURL" xml:space="preserve">
+    <value>基準 URL</value>
+  </data>
+  <data name="BasicInformation" xml:space="preserve">
+    <value>基本資訊</value>
+  </data>
+  <data name="BoxNotesDescription" xml:space="preserve">
+    <value>Box Notes 連接器，用於 @ 提及通知</value>
+  </data>
+  <data name="BoxNotesTitle" xml:space="preserve">
+    <value>Box Notes</value>
+  </data>
+  <data name="ClientCredentials" xml:space="preserve">
+    <value>用戶端認證</value>
+  </data>
+  <data name="ConcurDescription" xml:space="preserve">
+    <value>用於費用要求核准的 Concur 連接器</value>
+  </data>
+  <data name="ConcurTitle" xml:space="preserve">
+    <value>Concur</value>
+  </data>
+  <data name="ConcurTravelDescription" xml:space="preserve">
+    <value>用於差旅要求核准的 Concur 連接器</value>
+  </data>
+  <data name="ConcurTravelTitle" xml:space="preserve">
+    <value>Concur Travel</value>
+  </data>
+  <data name="ConfirmConnectorDelete" xml:space="preserve">
+    <value>確定要刪除此連接器嗎?</value>
+  </data>
+  <data name="ConnectionStatus" xml:space="preserve">
+    <value>連線狀態</value>
+  </data>
+  <data name="ConnectorAuthConfigError" xml:space="preserve">
+    <value>驗證類型錯誤或 Connector 故障。請聯絡您的 IT 管理員以調查此問題。</value>
+  </data>
+  <data name="ConnectorAuthenticationTypeHelp" xml:space="preserve">
+    <value>從後端服務預期用戶端使用之驗證類型的下拉式清單選擇。</value>
+  </data>
+  <data name="ConnectorBaseUrlConfigError" xml:space="preserve">
+    <value>Connector 故障。請聯絡您的 IT 管理員以調查此問題。</value>
+  </data>
+  <data name="ConnectorBaseURLHelp" xml:space="preserve">
+    <value>Mobile Flows 連接器後端服務的 URL。該項僅針對 VMware 連接器為必備。換句話說，如果您將使用 VMware Salesforce 連接器，請在此處輸入貴公司的 Salesforce URL。</value>
+  </data>
+  <data name="ConnectorDeleteWarning" xml:space="preserve">
+    <value>此動作將永久移除連接器</value>
+  </data>
+  <data name="ConnectorDiscoveryApiError" xml:space="preserve">
+    <value>無法驗證探索 URL</value>
+  </data>
+  <data name="ConnectorDiscoveryError" xml:space="preserve">
+    <value>找不到此 Connector。請聯絡您的 IT 管理員以調查此問題。</value>
+  </data>
+  <data name="ConnectorDiscoveryInvalidResponse" xml:space="preserve">
+    <value>連接器探索回應無效</value>
+  </data>
+  <data name="ConnectorDiscoveryURLHelp" xml:space="preserve">
+    <value>此 URL 是由 Mobile Flows 伺服器使用，用以判別已部署連接器的功能。如果連接器是在雲端託管，將使用可公開存取的 URL。如果連接器是在 API 或 Edge 閘道後端託管，將使用閘道的完整路徑 URL，以便在經過驗證後重新導向到連接器本身。此 URL 的回應必須符合智慧卡連接器指南中定義的預期格式。</value>
+  </data>
+  <data name="ConnectorIDHelp" xml:space="preserve">
+    <value>請輸入唯一識別貴公司連接器的 ID</value>
+  </data>
+  <data name="ConnectorIsNotFound" xml:space="preserve">
+    <value>找不到連接器</value>
+  </data>
+  <data name="ConnectorKeyValueHelp" xml:space="preserve">
+    <value>有欄位需要使用者向連接器後端系統驗證。此處需要包含 OAuth 2.0 欄位。詳情請參閱智慧卡連接器指南。</value>
+  </data>
+  <data name="ConnectorLoginURLHelp" xml:space="preserve">
+    <value>用戶端向後端服務進行驗證並提供存取 Token 所用的 URL。例如 https://login.salesforce.com</value>
+  </data>
+  <data name="ConnectorName" xml:space="preserve">
+    <value>連接器名稱</value>
+  </data>
+  <data name="ConnectorNameHelp" xml:space="preserve">
+    <value>請輸入識別連接器的名稱。終端使用者將用來啟用用戶端上的服務，而且 Mobile Flows 管理員將用來區別不同的連接器。</value>
+  </data>
+  <data name="ConnectorProviderHelp" xml:space="preserve">
+    <value>選擇將部署 VMware 提供的連接器或貴公司內部託管的連接器。</value>
+  </data>
+  <data name="ConnectorServiceHelp" xml:space="preserve">
+    <value>請從下拉式功能表中選取要部署的 VMware 連接器</value>
+  </data>
+  <data name="ConnectorStatusHelp" xml:space="preserve">
+    <value>若要防止所有使用者在其裝置上存取此連接器的 Mobile Flow 資訊，請停用此連接器。</value>
+  </data>
+  <data name="ConnectorType" xml:space="preserve">
+    <value>類型</value>
+  </data>
+  <data name="CoupaDescription" xml:space="preserve">
+    <value>申請要求核准的 Coupa 連接器</value>
+  </data>
+  <data name="CoupaTitle" xml:space="preserve">
+    <value>Coupa</value>
+  </data>
+  <data name="DeveloperGuide" xml:space="preserve">
+    <value>開發人員指南</value>
+  </data>
+  <data name="DiscoveryURL" xml:space="preserve">
+    <value>探索 URL</value>
+  </data>
+  <data name="DiscoveryURLChanged" xml:space="preserve">
+    <value>探索 URL 已變更</value>
+  </data>
+  <data name="EditMobileFlow" xml:space="preserve">
+    <value>編輯 Mobile Flow</value>
+  </data>
+  <data name="FieldCannotContainWhiteSpaces" xml:space="preserve">
+    <value>欄位不可包含空格</value>
+  </data>
+  <data name="FieldIsRequired" xml:space="preserve">
+    <value>欄位為必填</value>
+  </data>
+  <data name="FieldMaxLength" xml:space="preserve">
+    <value>欄位的長度不可超過 {0} 個字元</value>
+  </data>
+  <data name="FieldMinLength" xml:space="preserve">
+    <value>欄位的長度必須至少有 {0} 個字元</value>
+  </data>
+  <data name="FieldShouldBeValidHttpsURL" xml:space="preserve">
+    <value>欄位應為有效的 https URL</value>
+  </data>
+  <data name="FieldShouldBeValidURL" xml:space="preserve">
+    <value>此欄位應填寫一個有效的 URL</value>
+  </data>
+  <data name="GitHubPage" xml:space="preserve">
+    <value>GitHub 頁面</value>
+  </data>
+  <data name="GoogleDocsDescription" xml:space="preserve">
+    <value>用於 @ 提及通知的 Google 文件連接器</value>
+  </data>
+  <data name="GoogleDocsTitle" xml:space="preserve">
+    <value>Google 文件</value>
+  </data>
+  <data name="GrantType" xml:space="preserve">
+    <value>授與類型</value>
+  </data>
+  <data name="GrantTypeHelp" xml:space="preserve">
+    <value>從下拉式清單中選擇取得存取 Token 的方法。機密和公用用戶端會使用授權碼來交換存取 Token 的授權碼。這在 OAuth 2.0 組態中有時會稱為 Web 應用程式或 Web 伺服器。用戶端會使用用戶端認證來取得使用者內容外的存取 Token。如果您的 OAuth 2.0 提供者提供具服務帳戶權限的用戶端認證授與類型，這就非常有用。第一方用戶端會使用密碼來交換存取 Token 的使用者認證。如果您的 OAuth 2.0 提供者提供密碼授與類型，且您具備想要使用的服務帳戶，這就非常有用。</value>
+  </data>
+  <data name="HideAdvancedOAuth2Options" xml:space="preserve">
+    <value>隱藏進階選項</value>
+  </data>
+  <data name="HowMobileFlowsWork" xml:space="preserve">
+    <value>運作原理</value>
+  </data>
+  <data name="HowMobileFlowsWorkDescription" xml:space="preserve">
+    <value>Mobile Flows 為您想要連線的每個業務系統部署連接器，使您能夠讓員工有辦法透過行動 APP 來啟用或停用可操作的通知。一旦將每個連接器名稱對應到每個連接器的公開 URL，員工之後即可在其企業 APP 上輕鬆存取通知。</value>
+  </data>
+  <data name="HubSpotDealsDescription" xml:space="preserve">
+    <value>用於新交易指派的 HubSpot 連接器</value>
+  </data>
+  <data name="HubSpotDealsTitle" xml:space="preserve">
+    <value>HubSpot - 交易</value>
+  </data>
+  <data name="HubSpotTicketsDescription" xml:space="preserve">
+    <value>用於新票證指派的 HubSpot 連接器</value>
+  </data>
+  <data name="HubSpotTicketsTitle" xml:space="preserve">
+    <value>HubSpot - 票證</value>
+  </data>
+  <data name="JiraServiceDeskDescription" xml:space="preserve">
+    <value>用於票證核准的 Jira Service Desk 連接器</value>
+  </data>
+  <data name="JiraServiceDeskTitle" xml:space="preserve">
+    <value>Jira Service Desk</value>
+  </data>
+  <data name="KeyValuePair" xml:space="preserve">
+    <value>新增機碼值組</value>
+  </data>
+  <data name="LinkedInLearningChatbotDescription" xml:space="preserve">
+    <value>透過 Hub Assistant 搜尋培訓的 LinkedIn Learning 連接器</value>
+  </data>
+  <data name="LinkedInLearningChatbotTitle" xml:space="preserve">
+    <value>LinkedIn Learning 聊天機器人</value>
+  </data>
+  <data name="LinkedInLearningDescription" xml:space="preserve">
+    <value>新培訓通知的 LinkedIn Learning 連接器</value>
+  </data>
+  <data name="LinkedInLearningTitle" xml:space="preserve">
+    <value>LinkedIn Learning</value>
+  </data>
+  <data name="MicrosoftDynamicsCaseResolutionDescription" xml:space="preserve">
+    <value>用於新案例指派的 Microsoft Dynamic 連接器</value>
+  </data>
+  <data name="MicrosoftDynamicsCaseResolutionTitle" xml:space="preserve">
+    <value>Microsoft Dynamics – 案例解決方式</value>
+  </data>
+  <data name="MicrosoftDynamicsDescription" xml:space="preserve">
+    <value>用於新指派帳戶通知的 Microsoft Dynamics 連接器</value>
+  </data>
+  <data name="MicrosoftDynamicsTasksDescription" xml:space="preserve">
+    <value>用於新工作指派的 Microsoft Dynamics 連接器</value>
+  </data>
+  <data name="MicrosoftDynamicsTasksTitle" xml:space="preserve">
+    <value>Microsoft Dynamics – 工作</value>
+  </data>
+  <data name="MicrosoftDynamicsTitle" xml:space="preserve">
+    <value>Microsoft Dynamics</value>
+  </data>
+  <data name="MicrosoftOneDriveDescription" xml:space="preserve">
+    <value>用於檔案/資料夾存取核准的 Microsoft OneDrive 連接器</value>
+  </data>
+  <data name="MicrosoftOneDriveTitle" xml:space="preserve">
+    <value>Microsoft OneDrive</value>
+  </data>
+  <data name="MicrosoftPlannerDescription" xml:space="preserve">
+    <value>用於新指派工作通知的 Microsoft Planner 連接器</value>
+  </data>
+  <data name="MicrosoftPlannerTitle" xml:space="preserve">
+    <value>Microsoft Planner</value>
+  </data>
+  <data name="MicrosoftTeamsDescription" xml:space="preserve">
+    <value>用於 @ 提及通知的 Microsoft Teams 連接器</value>
+  </data>
+  <data name="MicrosoftTeamsTitle" xml:space="preserve">
+    <value>Microsoft Teams</value>
+  </data>
+  <data name="MobileFlow" xml:space="preserve">
+    <value>Mobile Flow</value>
+  </data>
+  <data name="MobileFlowAPIURL" xml:space="preserve">
+    <value>Mobile Flows API URL</value>
+  </data>
+  <data name="MobileFlowBestPracticesDescription" xml:space="preserve">
+    <value>您可以在 VMware GitHub 網站的 Wiki 中找到 Mobile Flows 的最佳做法: https://github.com/vmwaresamples/card-connectors-guide/wiki。</value>
+  </data>
+  <data name="MobileFlowDescription" xml:space="preserve">
+    <value>檢視和管理所有連接器</value>
+  </data>
+  <data name="MobileFlows" xml:space="preserve">
+    <value>Mobile Flows</value>
+  </data>
+  <data name="MobileFlowsAddConnectors" xml:space="preserve">
+    <value>新增連接器</value>
+  </data>
+  <data name="MobileFlowsAdminNoAccessToOG" xml:space="preserve">
+    <value>管理此企業群組的管理員可以存取 Mobile Flows。請您的系統管理員指派所需的角色，然後將此管理員儲存在此企業群組。接著重新登入，並使用該角色在此企業群組存取 Mobile Flows。</value>
+  </data>
+  <data name="MobileFlowsAPIURL" xml:space="preserve">
+    <value>Mobile Flows API URL</value>
+  </data>
+  <data name="MobileFlowsApiUrlNotFound" xml:space="preserve">
+    <value>Mobile Flows 雲端服務無法使用。</value>
+  </data>
+  <data name="MobileFlowsApiUrlNotProvisioned" xml:space="preserve">
+    <value>請確認目前的企業群組已設定 Mobile Flows API URL，您可以在網站 URL 區段中找到這個 URL。如果問題持續存在，請聯絡您的系統管理員。</value>
+  </data>
+  <data name="MobileFlowsBestPractices" xml:space="preserve">
+    <value>Mobile Flows 最佳實務做法</value>
+  </data>
+  <data name="MobileFlowsCatalogDescription" xml:space="preserve">
+    <value>透過選擇以下的開箱即用 (OOTB) 連接器和工作流程，立即開始使用 Workspace ONE Mobile Flows。只需新增、設定和提供一些其他詳細資料，即可大功告成!</value>
+  </data>
+  <data name="MobileFlowsCloudServiceDescription" xml:space="preserve">
+    <value>Mobile Flows 是整合 VMware Intelligent Hub 及 Boxer 的雲端服務，為員工提供所需的可操作通知，以利提高工作效率。</value>
+  </data>
+  <data name="MobileFlowsConnectingToCloudService" xml:space="preserve">
+    <value>正在連線至 Mobile Flows 雲端服務</value>
+  </data>
+  <data name="MobileFlowsConnectorGuideWikiArg" xml:space="preserve">
+    <value>請查看 {0} 以瞭解如何建置連接器</value>
+    <comment>Html string will be passed in for {0}. Example: &lt;label for='open-connectors-guide-wiki' class='wiki-link'&gt;developer guide&lt;/label&gt;`.</comment>
+  </data>
+  <data name="MobileFlowsDescription" xml:space="preserve">
+    <value>檢視與管理 Mobile Flows</value>
+  </data>
+  <data name="MobileFlowsDirectoryBasicAdminError" xml:space="preserve">
+    <value>您無法存取 Workspace ONE Access。您必須是此組織群組設定目錄中的目錄管理員，才能存取 Workspace ONE Access。</value>
+  </data>
+  <data name="MobileFlowsIDMNotConfigured" xml:space="preserve">
+    <value>無法存取 Workspace ONE Access。請檢查您的存取權限並確定設定無誤</value>
+  </data>
+  <data name="MobileFlowsIDMSetupArg" xml:space="preserve">
+    <value>Workspace ONE Access 必須先進行設定，才能存取 Mobile Flows。請前往 {0}，並連線至 Workspace ONE Access。完成之後，請登出再登入以重試。</value>
+  </data>
+  <data name="MobileFlowsIDMSetupRequired" xml:space="preserve">
+    <value>必須先設定 Workspace ONE 才能存取 Mobile Flows。請前往 [開始使用] 並完成 Workspace ONE 設定。完成之後，請登出再登入以重試一次。</value>
+  </data>
+  <data name="MobileFlowsNoAccessToIDM" xml:space="preserve">
+    <value>您沒有 Workspace ONE Access 的存取權。您必須是目錄管理員，才能存取 Workspace ONE Access</value>
+  </data>
+  <data name="MobileFlowsNoAccessToOrganizationGroup" xml:space="preserve">
+    <value>此使用者不屬於此企業群組。</value>
+  </data>
+  <data name="MobileFlowsNotCustomerTypeOrganizationGroup" xml:space="preserve">
+    <value>僅能在客戶類型企業群組中註冊雲端租用戶。</value>
+  </data>
+  <data name="MobileFlowsProductivityDescription" xml:space="preserve">
+    <value>Mobile Flows 可顯示員工的個人化工作流程，並彙總來自不同業務系統的資料，讓員工能更輕鬆地透過單一 APP，隨時掌握他們所有的生產力 APP。</value>
+  </data>
+  <data name="MobileFlowsRegisteringTenant" xml:space="preserve">
+    <value>正在傳送及登錄客戶資料至 URL</value>
+  </data>
+  <data name="MobileFlowsSampleConnectorWikiArg" xml:space="preserve">
+    <value>請前往 {0} 以尋找預先建置的連接器</value>
+    <comment>Html string will be passed in for {0}. Example: &lt;label for='open-sample-connectors-wiki' class='wiki-link'&gt;GitHub page&lt;/label&gt;`.</comment>
+  </data>
+  <data name="MobileFlowsTenantAlreadyExists" xml:space="preserve">
+    <value>Mobile Flows 雲服務中已存在此雲端租用戶。</value>
+  </data>
+  <data name="MobileFlowsTenantProvisioning" xml:space="preserve">
+    <value>若要開始，請先註冊客戶租用戶以連線至 Mobile Flows 雲端服務。</value>
+  </data>
+  <data name="MobileFlowsTenantProvisioningError" xml:space="preserve">
+    <value>似乎發生問題…</value>
+  </data>
+  <data name="MobileFlowsTenantProvisioningFailed" xml:space="preserve">
+    <value>無法註冊雲端租用戶。</value>
+  </data>
+  <data name="MobileFlowsTenantProvisioningSuccess" xml:space="preserve">
+    <value>已成功連線至 Mobile Flows 雲端服務!</value>
+  </data>
+  <data name="MobileFlowsVidmNotConfigured" xml:space="preserve">
+    <value>尚未設定此組織群組的 Workspace ONE Access。</value>
+  </data>
+  <data name="MobileFlowTroubleshootDocs" xml:space="preserve">
+    <value>請參閱 GitHub 上的 Mobile Flows 連接器指南：https://github.com/vmwaresamples/card-connectors-guide。</value>
+  </data>
+  <data name="MultiTenantParameters" xml:space="preserve">
+    <value>多承租人參數</value>
+  </data>
+  <data name="MyFlows" xml:space="preserve">
+    <value>我的流程</value>
+  </data>
+  <data name="NoMobileFlowsCatalogFound" xml:space="preserve">
+    <value>找不到可用的流程</value>
+  </data>
+  <data name="NoMobileFlowsFound" xml:space="preserve">
+    <value>您似乎尚未建立任何行動流程！</value>
+  </data>
+  <data name="NotificationMethod" xml:space="preserve">
+    <value>通知方法</value>
+  </data>
+  <data name="NotificationMethodPoll" xml:space="preserve">
+    <value>通知方法 - 輪詢</value>
+  </data>
+  <data name="NotificationMethodPush" xml:space="preserve">
+    <value>通知方法 - 推送</value>
+  </data>
+  <data name="NotificationMethodPushInfo" xml:space="preserve">
+    <value>請使用此資訊來設定來源商務系統中的推送通知設定。</value>
+  </data>
+  <data name="NotificationPollPushDifference" xml:space="preserve">
+    <value>可輪詢或推送來自商務系統的通知:
+輪詢 - Mobile Flows 伺服器將在收到新通知的 1 小時間隔內輪詢後端商務系統。
+推送 - 如果後端商務系統支援推送機制，則在通知準備就緒時，Mobile Flows 會產生端點供服務呼叫。</value>
+  </data>
+  <data name="NoVmwareServicesFound" xml:space="preserve">
+    <value>找不到任何 VMware 服務。</value>
+  </data>
+  <data name="OAuth2Parameters" xml:space="preserve">
+    <value>OAuth 2.0 參數</value>
+  </data>
+  <data name="OopsSomethingWentWrong" xml:space="preserve">
+    <value>糟糕！發生錯誤！</value>
+  </data>
+  <data name="PollingInterval" xml:space="preserve">
+    <value>輪詢間隔</value>
+  </data>
+  <data name="PushNotificationInfo" xml:space="preserve">
+    <value>儲存後，即會產生推送 URL，並且可在連接器詳細資料頁面下找到。請使用這些資訊在來源商務系統中設定推送通知設定。您可以在 [我的流程] &gt; [編輯] 下，檢視和編輯這些設定。</value>
+  </data>
+  <data name="PushURL" xml:space="preserve">
+    <value>推送 URL</value>
+  </data>
+  <data name="RegenerateSecret" xml:space="preserve">
+    <value>確定要重新產生密碼嗎?</value>
+  </data>
+  <data name="RegenerateSecretConfirm" xml:space="preserve">
+    <value>您確定要重新產生密碼嗎? 重新產生密碼後，上一個密碼就無法再使用。請務必據此更新來源商務系統中的推送通知設定。</value>
+  </data>
+  <data name="SabaDescription" xml:space="preserve">
+    <value>用於新學習通知的 Saba 連接器</value>
+  </data>
+  <data name="SabaTitle" xml:space="preserve">
+    <value>Saba</value>
+  </data>
+  <data name="SalesforceCaseResolutionDescription" xml:space="preserve">
+    <value>用於新案例指派的 Salesforce 連接器</value>
+  </data>
+  <data name="SalesforceCaseResolutionTitle" xml:space="preserve">
+    <value>Salesforce – 案例解決方式</value>
+  </data>
+  <data name="SalesforceDescription" xml:space="preserve">
+    <value>用於折扣要求核准的 Salesforce 連接器</value>
+  </data>
+  <data name="SalesforceLeadsDescription" xml:space="preserve">
+    <value>新指派潛在客戶名單通知的 Salesforce 連接器</value>
+  </data>
+  <data name="SalesforceLeadsTitle" xml:space="preserve">
+    <value>Salesforce 潛在客戶名單</value>
+  </data>
+  <data name="SalesforceTasksDescription" xml:space="preserve">
+    <value>用於新工作指派的 Salesforce 連接器</value>
+  </data>
+  <data name="SalesforceTasksTitle" xml:space="preserve">
+    <value>Salesforce – 工作</value>
+  </data>
+  <data name="SalesforceTitle" xml:space="preserve">
+    <value>Salesforce</value>
+  </data>
+  <data name="ServiceAccountCredential" xml:space="preserve">
+    <value>服務帳戶認證</value>
+  </data>
+  <data name="ServiceAccountCredentialHelp" xml:space="preserve">
+    <value>請輸入後端服務預期用戶端會使用的服務帳戶認證。</value>
+  </data>
+  <data name="ServiceNowChatbotDescription" xml:space="preserve">
+    <value>用於建立票證、檢視票證及透過 Hub Assistant 訂購裝置的 ServiceNow 連接器</value>
+  </data>
+  <data name="ServiceNowChatbotTitle" xml:space="preserve">
+    <value>ServiceNow 聊天機器人</value>
+  </data>
+  <data name="ServiceNowDescription" xml:space="preserve">
+    <value>用於申請要求核准的 ServiceNow 連接器</value>
+  </data>
+  <data name="ServiceNowTitle" xml:space="preserve">
+    <value>ServiceNow</value>
+  </data>
+  <data name="ShowAdvancedOAuth2Options" xml:space="preserve">
+    <value>顯示進階選項</value>
+  </data>
+  <data name="TokenServerHints" xml:space="preserve">
+    <value>Token 伺服器提示</value>
+  </data>
+  <data name="TokenUriBodyParameters" xml:space="preserve">
+    <value>Token URI 內文參數</value>
+  </data>
+  <data name="UEMChatbotDescription" xml:space="preserve">
+    <value>透過 Hub Assistant 同步裝置的 UEM 連接器</value>
+  </data>
+  <data name="UEMChatbotTitle" xml:space="preserve">
+    <value>UEM 聊天機器人</value>
+  </data>
+  <data name="UseCase" xml:space="preserve">
+    <value>使用案例</value>
+  </data>
+  <data name="VirtualAssistant" xml:space="preserve">
+    <value>虛擬助理</value>
+  </data>
+  <data name="WhatIsMobileFlow" xml:space="preserve">
+    <value>什麼是 Mobile Flows?</value>
+  </data>
+  <data name="WhatIsMobileFlowDescription" xml:space="preserve">
+    <value>Mobile Flows 能夠根據 Boxer 和其他企業應用程式中的遠端系統啟用可化為行動的智慧型通知，促進員工提升效率和生產力。在這裡，管理員可設定和部署要為終端使用者啟用的連接器和流程。</value>
+  </data>
+  <data name="Wiki" xml:space="preserve">
+    <value>Wiki</value>
+  </data>
+  <data name="WorkdayDescription" xml:space="preserve">
+    <value>用於 PTO 核准的 Workday 連接器</value>
+  </data>
+  <data name="WorkdayTitle" xml:space="preserve">
+    <value>Workday</value>
+  </data>
+  <data name="WorkspaceONEHub" xml:space="preserve">
+    <value>Workspace ONE Hub</value>
+  </data>
+  <data name="ZendeskTasksDescription" xml:space="preserve">
+    <value>用於工作核准的 Zendesk 連接器</value>
+  </data>
+  <data name="ZendeskTasksTitle" xml:space="preserve">
+    <value>Zendesk – 工作</value>
+  </data>
+  <data name="ZendeskTicketResolutionDescription" xml:space="preserve">
+    <value>用於新票證指派的 Zendesk 連接器</value>
+  </data>
+  <data name="ZendeskTicketResolutionTitle" xml:space="preserve">
+    <value>Zendesk – 票證解決方案</value>
+  </data>
+  <data name="ZoomRecordingsDescription" xml:space="preserve">
+    <value>用於新錄製通知的 Zoom 連接器</value>
+  </data>
+  <data name="ZoomRecordingsTitle" xml:space="preserve">
+    <value>Zoom 錄製</value>
+  </data>
+</root>

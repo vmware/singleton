@@ -1,0 +1,1004 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AboutFreestyleOrchestrator" xml:space="preserve">
+    <value>Informacje o platformie Freestyle Orchestrator</value>
+  </data>
+  <data name="AddEditFreestyle" xml:space="preserve">
+    <value>Dodaj/edytuj Freestyle</value>
+  </data>
+  <data name="AddEditFreestyleHelp" xml:space="preserve">
+    <value>Kontroluj dostęp do tworzenia, edycji i publikowania typów freestyle i zasobów, takich jak aplikacje, profile i skrypty</value>
+  </data>
+  <data name="AddressWidth" xml:space="preserve">
+    <value>Szerokość adresu</value>
+  </data>
+  <data name="ApplicationDoesNotExist" xml:space="preserve">
+    <value>Aplikacja nie istnieje</value>
+  </data>
+  <data name="ApplicationExists" xml:space="preserve">
+    <value>Aplikacja istnieje</value>
+  </data>
+  <data name="AppResultsDescription" xml:space="preserve">
+    <value>Aktualna liczba potencjalnie kwalifikujących się aplikacji może być większa niż przedstawiona.</value>
+  </data>
+  <data name="AppsOfArg" xml:space="preserve">
+    <value>Aplikacje {0} ‒ {1} z {2}</value>
+  </data>
+  <data name="Archived" xml:space="preserve">
+    <value>Archiwum</value>
+  </data>
+  <data name="AssignmentDoesNotExistOrMightBeDeleted" xml:space="preserve">
+    <value>Przypisanie nie istnieje lub mogło zostać usunięte.</value>
+  </data>
+  <data name="AssignmentsCouldNotBeRetrieved" xml:space="preserve">
+    <value>Nie można pobrać przypisań.</value>
+  </data>
+  <data name="Attributes" xml:space="preserve">
+    <value>Atrybuty</value>
+  </data>
+  <data name="AutoDeploy" xml:space="preserve">
+    <value>Automatycznie wdrażaj</value>
+  </data>
+  <data name="AutoDeployAndShowInAppCatalog" xml:space="preserve">
+    <value>Automatycznie wdrażaj i pokaż w katalogu aplikacji</value>
+  </data>
+  <data name="BackoffRate" xml:space="preserve">
+    <value>Wskaźnik opóźnienia</value>
+  </data>
+  <data name="BackoffRateDesc" xml:space="preserve">
+    <value>Mnożnik określający interwał między kolejnymi próbami.</value>
+  </data>
+  <data name="BankLocator" xml:space="preserve">
+    <value>Lokalizator banku</value>
+  </data>
+  <data name="BaseTimeHelpText" xml:space="preserve">
+    <value>Oceniono na podstawie lokalnego czasu urządzenia</value>
+  </data>
+  <data name="BiosPayloadWarning" xml:space="preserve">
+    <value>Przed opublikowaniem upewnij się, że aplikacja Dell Command Monitor została dodana do przepływu pracy.</value>
+  </data>
+  <data name="Bitlocker" xml:space="preserve">
+    <value>BitLocker</value>
+  </data>
+  <data name="BrowserExtension" xml:space="preserve">
+    <value>Rozszerzenie przeglądarki</value>
+  </data>
+  <data name="BrowserName" xml:space="preserve">
+    <value>Nazwa przeglądarki</value>
+  </data>
+  <data name="Capacity" xml:space="preserve">
+    <value>Pojemność</value>
+  </data>
+  <data name="Caption" xml:space="preserve">
+    <value>Napis</value>
+  </data>
+  <data name="CatalogIconRecommendationAndLimit" xml:space="preserve">
+    <value>PNG, JPG or GIF, 1 MB maximum, 512 by 512 px recommended.</value>
+  </data>
+  <data name="ChangeAttribute" xml:space="preserve">
+    <value>Zmień</value>
+    <comment>edi change attribute confirm button text</comment>
+  </data>
+  <data name="ChangeAttributeConfirmationDescription" xml:space="preserve">
+    <value>Zmiana tego wyboru usunie wszystkie atrybuty powiązane z obecnym wyborem.</value>
+    <comment>edi change attribute confirm model body description</comment>
+  </data>
+  <data name="ChangeAttributeConfirmationTitle" xml:space="preserve">
+    <value>Zmień wybór</value>
+    <comment>edi change attribute confirm model title</comment>
+  </data>
+  <data name="ChangePlatform" xml:space="preserve">
+    <value>Zmień platformę</value>
+  </data>
+  <data name="ChasisType" xml:space="preserve">
+    <value>Typ obudowy</value>
+  </data>
+  <data name="ClockSpeed" xml:space="preserve">
+    <value>Taktowanie zegara</value>
+  </data>
+  <data name="CodeName" xml:space="preserve">
+    <value>Nazwa kodowa</value>
+  </data>
+  <data name="CompletedWithException" xml:space="preserve">
+    <value>Ukończono z wyjątkiem</value>
+  </data>
+  <data name="Compute" xml:space="preserve">
+    <value>Oblicz</value>
+  </data>
+  <data name="ConfigurationOptionTooltipMsg" xml:space="preserve">
+    <value>Wybierz platformę, aby dodać więcej kroków do przepływu pracy.</value>
+  </data>
+  <data name="ConfirmDeleteArg" xml:space="preserve">
+    <value>Usuń {0}</value>
+    <comment>{0} will be Workflow name</comment>
+  </data>
+  <data name="ConfirmDeleteWorkflowContent" xml:space="preserve">
+    <value>Usunięcie tego przepływu pracy spowoduje usunięcie przypisania zasobu z urządzeń w tym przepływie pracy. Czynności tej nie można cofnąć. Aktualnie zainstalowane zasoby na urządzeniach pozostaną, chyba że zostaną usunięte ręcznie.</value>
+  </data>
+  <data name="ConfirmPauseArg" xml:space="preserve">
+    <value>Wstrzymaj {0}</value>
+  </data>
+  <data name="ConfirmPauseWorkflowContent" xml:space="preserve">
+    <value>Czynność ta spowoduje zatrzymanie uruchamiania przepływu pracy na nowych urządzeniach do momentu jego wznowienia. Nie ma to wpływu na urządzenia, na których przepływ pracy jest uruchomiony lub aktualnie używany.</value>
+  </data>
+  <data name="ConnectionId" xml:space="preserve">
+    <value>Identyfikator połączenia</value>
+  </data>
+  <data name="Cores" xml:space="preserve">
+    <value>Rdzenie</value>
+  </data>
+  <data name="CPU" xml:space="preserve">
+    <value>Procesor CPU</value>
+  </data>
+  <data name="CPUBrand" xml:space="preserve">
+    <value>Marka procesora CPU</value>
+  </data>
+  <data name="CPUID" xml:space="preserve">
+    <value>Identyfikator procesora CPU</value>
+  </data>
+  <data name="CPUModel" xml:space="preserve">
+    <value>Model procesora CPU</value>
+  </data>
+  <data name="CPUSubType" xml:space="preserve">
+    <value>Podtyp procesora CPU</value>
+  </data>
+  <data name="CPUType" xml:space="preserve">
+    <value>Typ procesora CPU</value>
+  </data>
+  <data name="CreatedOnByArg" xml:space="preserve">
+    <value>Utworzone {0} przez {1}</value>
+  </data>
+  <data name="CreateWorkflowsInfo" xml:space="preserve">
+    <value>Gdy wszystko będzie gotowe, kliknij przycisk Rozpocznij, aby utworzyć i opublikować przepływy pracy przy użyciu skonfigurowanych zasobów.</value>
+  </data>
+  <data name="CreateYourWorkflows" xml:space="preserve">
+    <value>Utwórz przepływy pracy</value>
+  </data>
+  <data name="CustomLastDays" xml:space="preserve">
+    <value>Ostatnie {0} dni</value>
+  </data>
+  <data name="CustomLastHours" xml:space="preserve">
+    <value>Ostatnie {0} godz.</value>
+  </data>
+  <data name="CustomLastMonths" xml:space="preserve">
+    <value>Ostatnie {0} mies.</value>
+  </data>
+  <data name="CustomLastWeeks" xml:space="preserve">
+    <value>Ostatnie {0} tyg.</value>
+  </data>
+  <data name="DataWidth" xml:space="preserve">
+    <value>Szerokość danych</value>
+  </data>
+  <data name="DeleteFreestyle" xml:space="preserve">
+    <value>Usuń Freestyle</value>
+  </data>
+  <data name="DeleteFreestyleHelp" xml:space="preserve">
+    <value>Kontrola dostępu do usuwania Freestyle i typów zasobów, takich jak aplikacje, profile i skrypty</value>
+  </data>
+  <data name="DeleteWorkflow" xml:space="preserve">
+    <value>Usuń przepływ pracy</value>
+  </data>
+  <data name="DeleteWorkflowAdditionalContent" xml:space="preserve">
+    <value>Aby usunąć zainstalowane zasoby, przejdź do widoku szczegółów urządzenia dla każdego z urządzeń lub widoku przypisanych urządzeń dla każdego zasobu.</value>
+  </data>
+  <data name="DeploymentSettings" xml:space="preserve">
+    <value>Ustawienia wdrożenia</value>
+  </data>
+  <data name="DeviceBreakdown" xml:space="preserve">
+    <value>Zestawienie urządzeń</value>
+  </data>
+  <data name="DeviceDistributionUnavailable" xml:space="preserve">
+    <value>Dystrybucja urządzenia jest niedostępna.</value>
+  </data>
+  <data name="DeviceExecutionStatusInfo" xml:space="preserve">
+    <value>W oparciu o wybory platformy i grupy Smart</value>
+  </data>
+  <data name="DeviceLocator" xml:space="preserve">
+    <value>Lokalizator urządzenia</value>
+  </data>
+  <data name="DeviceNotAssignedToWorkflow" xml:space="preserve">
+    <value>Urządzenie nie jest przypisane do tego przepływu pracy.</value>
+  </data>
+  <data name="DeviceWithStatusArg" xml:space="preserve">
+    <value>Urządzenie ze stanem {0}</value>
+  </data>
+  <data name="DeviceWorkflowStatusInfo" xml:space="preserve">
+    <value>Stan każdego etapu w tym przepływie pracy dla tego urządzenia przedstawiono poniżej.</value>
+  </data>
+  <data name="DiskIndex" xml:space="preserve">
+    <value>Indeks dysku</value>
+  </data>
+  <data name="DNSDomain" xml:space="preserve">
+    <value>Domena DNS</value>
+  </data>
+  <data name="DNSServerSearchOrder" xml:space="preserve">
+    <value>Kolejność wyszukiwania serwera DNS</value>
+  </data>
+  <data name="DoYouWantToContinue" xml:space="preserve">
+    <value>Czy chcesz kontynuować?</value>
+  </data>
+  <data name="DriverDate" xml:space="preserve">
+    <value>Data sterownika</value>
+  </data>
+  <data name="DriverKey" xml:space="preserve">
+    <value>Klucz sterownika</value>
+  </data>
+  <data name="DriverSigned" xml:space="preserve">
+    <value>Sterownik podpisany</value>
+  </data>
+  <data name="DWord32Bit" xml:space="preserve">
+    <value>DWORD</value>
+  </data>
+  <data name="EdiSelectFurther" xml:space="preserve">
+    <value>Wybierz atrybut</value>
+    <comment>edi sencondary selection default text.</comment>
+  </data>
+  <data name="EmptyStepStatus" xml:space="preserve">
+    <value>Brak zgłoszonych stanów urządzeń. Liczniki urządzeń zostaną zaktualizowane, gdy dostępnych będzie więcej danych.</value>
+  </data>
+  <data name="EnterNumber" xml:space="preserve">
+    <value>Wprowadź liczbę</value>
+  </data>
+  <data name="EnterNumberForCustomRange" xml:space="preserve">
+    <value>Wprowadź liczbę definiującą zakres niestandardowy.</value>
+  </data>
+  <data name="EntryBlock" xml:space="preserve">
+    <value>Ustawienia procesu pracy</value>
+  </data>
+  <data name="ErrorHandling" xml:space="preserve">
+    <value>Obsługa błędów</value>
+  </data>
+  <data name="ErrorLoadingCategories" xml:space="preserve">
+    <value>Nie można pobrać kategorii aplikacji. Jeśli problem będzie się powtarzał, skontaktuj się z administratorem systemu.</value>
+  </data>
+  <data name="EulaSettings" xml:space="preserve">
+    <value>Ustawienia EULA</value>
+  </data>
+  <data name="ExcludedSmartGroupAssignmentError" xml:space="preserve">
+    <value>Wykluczone grupy Smart nie powinny być częścią przypisań grup Smart żadnego przepływu pracy, który zawiera tę aplikację.</value>
+  </data>
+  <data name="ExecutionRate" xml:space="preserve">
+    <value>Częstotliwość wykonywania</value>
+  </data>
+  <data name="Exists" xml:space="preserve">
+    <value>Istnieje</value>
+  </data>
+  <data name="ExpandableString" xml:space="preserve">
+    <value>Ciąg rozwijalny</value>
+  </data>
+  <data name="ExtensionName" xml:space="preserve">
+    <value>Nazwa rozszerzenia</value>
+  </data>
+  <data name="FileSystem" xml:space="preserve">
+    <value>System plików</value>
+  </data>
+  <data name="Filters" xml:space="preserve">
+    <value>Filtry</value>
+  </data>
+  <data name="FindOutMore" xml:space="preserve">
+    <value>Aby dowiedzieć się więcej, odwiedź stronę</value>
+  </data>
+  <data name="FirstRetryAfter" xml:space="preserve">
+    <value>Najpierw ponów próbę po</value>
+  </data>
+  <data name="FourthRetryAfter" xml:space="preserve">
+    <value>Czwarta ponowna próba po</value>
+  </data>
+  <data name="FreeSpace" xml:space="preserve">
+    <value>Wolne miejsce</value>
+  </data>
+  <data name="Freestyle" xml:space="preserve">
+    <value>Freestyle</value>
+  </data>
+  <data name="FreestyleContext" xml:space="preserve">
+    <value>Kontekst</value>
+  </data>
+  <data name="FreestyleHeader" xml:space="preserve">
+    <value>Utwórz przepływ pracy, który spełnia Twoje wymagania</value>
+  </data>
+  <data name="FreestyleInfo" xml:space="preserve">
+    <value>Workspace ONE Freestyle Orchestrator to niekodowana platforma aranżacji IT, która zapewnia elastyczność tworzenia przepływów pracy dla zasobów, takich jak aplikacje, profile i skrypty, a także zastosowania ich do urządzeń w oparciu o kryteria szczegółowe.</value>
+  </data>
+  <data name="FreestyleNote" xml:space="preserve">
+    <value>Obecnie dostępna tylko na platformę Windows 10 i macOS.</value>
+  </data>
+  <data name="FreestyleOrchestrator" xml:space="preserve">
+    <value>Freestyle Orchestrator</value>
+  </data>
+  <data name="FreestyleOrchestratorInfo" xml:space="preserve">
+    <value>Utwórz przepływy pracy dla zasobów, takich jak aplikacje, profile i skrypty i zastosuj je do urządzeń w oparciu o kryteria szczegółowe.</value>
+  </data>
+  <data name="FreestyleOrchestratorPreview" xml:space="preserve">
+    <value>Freestyle Orchestrator (wersja podglądowa)</value>
+  </data>
+  <data name="FreestyleWelcomeWindowDescription" xml:space="preserve">
+    <value>Freestyle Orchestrator to niekodowana platforma aranżacji IT, która zapewnia elastyczność tworzenia przepływów pracy dla zasobów, takich jak aplikacje, profile i skrypty, a także zastosowania ich do urządzeń w oparciu o kryteria szczegółowe.</value>
+  </data>
+  <data name="FreestyleWelcomeWindowDescriptionInfo" xml:space="preserve">
+    <value>Freestyle Orchestrator jest obecnie dostępna na platformach Windows 10 i macOS.</value>
+  </data>
+  <data name="FreestyleWorkflow" xml:space="preserve">
+    <value>Przepływ pracy Freestyle</value>
+  </data>
+  <data name="FreestyleWorkflowDescription" xml:space="preserve">
+    <value>Dostarczaj obiekty lub podejmuj określone działania na urządzeniach w oparciu o kryteria.</value>
+  </data>
+  <data name="GettingStartedWithWorkflows" xml:space="preserve">
+    <value>Wprowadzenie do przepływów pracy</value>
+  </data>
+  <data name="HardwareSerial" xml:space="preserve">
+    <value>Numer seryjny sprzętu</value>
+  </data>
+  <data name="HardwareVendor" xml:space="preserve">
+    <value>Dostawca sprzętu</value>
+  </data>
+  <data name="HardwareVersion" xml:space="preserve">
+    <value>Wersja sprzętu</value>
+  </data>
+  <data name="Hotfix" xml:space="preserve">
+    <value>Poprawka</value>
+  </data>
+  <data name="HotfixKBId" xml:space="preserve">
+    <value>Identyfikator bazy wiedzy poprawki</value>
+  </data>
+  <data name="Includes" xml:space="preserve">
+    <value>Obejmuje</value>
+  </data>
+  <data name="InitialValueIsActivated" xml:space="preserve">
+    <value>Początkowa wartość jest aktywowana</value>
+  </data>
+  <data name="InitialValueIsEnabled" xml:space="preserve">
+    <value>Początkowa wartość jest włączona</value>
+  </data>
+  <data name="InitialValueIsOwned" xml:space="preserve">
+    <value>Początkowa wartość jest własnością</value>
+  </data>
+  <data name="InstallationState" xml:space="preserve">
+    <value>Stan instalacji</value>
+  </data>
+  <data name="InstalledBy" xml:space="preserve">
+    <value>Zainstalowano przez</value>
+  </data>
+  <data name="InstalledOn" xml:space="preserve">
+    <value>Zainstalowano na</value>
+  </data>
+  <data name="InstallLocation" xml:space="preserve">
+    <value>Lokalizacja instalacji</value>
+  </data>
+  <data name="InstallSource" xml:space="preserve">
+    <value>Źródło instalacji</value>
+  </data>
+  <data name="IntroducingFreestyleOrchestrator" xml:space="preserve">
+    <value>Informacje wstępne o platformie Freestyle Orchestrator</value>
+  </data>
+  <data name="IsBootable" xml:space="preserve">
+    <value>Rozruchowy</value>
+  </data>
+  <data name="IsFramework" xml:space="preserve">
+    <value>Wszystkie pliki</value>
+  </data>
+  <data name="KioskPayloadWarning" xml:space="preserve">
+    <value>Przed opublikowaniem upewnij się, że aplikacje z ładunku Kiosk są dodane do przepływu pracy.</value>
+  </data>
+  <data name="LastFortyFiveDays" xml:space="preserve">
+    <value>Ostatnie czterdzieści pięć dni</value>
+  </data>
+  <data name="LastFortyFiveDaysNumeric" xml:space="preserve">
+    <value>Ostatnie 45 dni</value>
+  </data>
+  <data name="LastFourteenDays" xml:space="preserve">
+    <value>Ostatnie czternaście dni</value>
+  </data>
+  <data name="LastFourteenDaysNumeric" xml:space="preserve">
+    <value>Ostatnie 14 dni</value>
+  </data>
+  <data name="LastSevenDaysNumeric" xml:space="preserve">
+    <value>Ostatnie 7 dni</value>
+  </data>
+  <data name="LastSixtyDays" xml:space="preserve">
+    <value>Ostatnie sześćdziesiąt dni</value>
+  </data>
+  <data name="LastSixtyDaysNumeric" xml:space="preserve">
+    <value>Ostatnie 60 dni</value>
+  </data>
+  <data name="LastThirtyDaysNumeric" xml:space="preserve">
+    <value>Ostatnie 30 dni</value>
+  </data>
+  <data name="Latest" xml:space="preserve">
+    <value>Najnowsza wersja</value>
+  </data>
+  <data name="LatestAvailable" xml:space="preserve">
+    <value>Najnowsza dostępna wersja</value>
+  </data>
+  <data name="LocalTimeZone" xml:space="preserve">
+    <value>Lokalna strefa czasowa</value>
+  </data>
+  <data name="LogicalDrives" xml:space="preserve">
+    <value>Dyski logiczne</value>
+  </data>
+  <data name="ManufacturerId" xml:space="preserve">
+    <value>Identyfikator producenta</value>
+  </data>
+  <data name="ManufacturerVersion" xml:space="preserve">
+    <value>Wersja producenta</value>
+  </data>
+  <data name="ManufacturerVersionInfo" xml:space="preserve">
+    <value>Informacje o wersji producenta</value>
+  </data>
+  <data name="MatchesFound" xml:space="preserve">
+    <value>Znaleziono dopasowania: {0}</value>
+  </data>
+  <data name="MaxClockSpeed" xml:space="preserve">
+    <value>Maksymalne taktowanie</value>
+  </data>
+  <data name="MaximumRetries" xml:space="preserve">
+    <value>Maksymalna liczba ponownych prób</value>
+  </data>
+  <data name="MayNotBeFiltered" xml:space="preserve">
+    <value>Wyniki mogą nie obejmować</value>
+  </data>
+  <data name="MayNotBeFilteredDesc" xml:space="preserve">
+    <value>Alfanumeryczne wersje aplikacji przefiltrowane przy użyciu operatora „większe niż” lub „mniejsze niż”.</value>
+  </data>
+  <data name="MemoryType" xml:space="preserve">
+    <value>Typ pamięci</value>
+  </data>
+  <data name="ModifiedOnByArg" xml:space="preserve">
+    <value>Zmodyfikowane {0} przez {1}</value>
+  </data>
+  <data name="MonitorPerformance" xml:space="preserve">
+    <value>Monitorowanie wydajność</value>
+  </data>
+  <data name="MonitorWorkflowPerformanceInfo" xml:space="preserve">
+    <value>Monitoruj i zapoznaj się z opublikowanymi przepływami pracy, wyświetlaj metryki wydajności i zarządzaj zapisanymi i zarchiwizowanymi przepływami pracy.</value>
+  </data>
+  <data name="MultipleValueHelpText" xml:space="preserve">
+    <value>Oddziel wiele wartości przecinkami.</value>
+  </data>
+  <data name="MustBeBetweenArgs" xml:space="preserve">
+    <value>Musi zawierać się pomiędzy {0} i {1}</value>
+  </data>
+  <data name="NavigationFreestyle" xml:space="preserve">
+    <value>Nawigacja Freestyle</value>
+  </data>
+  <data name="NavigationFreestyleHelp" xml:space="preserve">
+    <value>Kontrola dostępu do menu bocznego Freestyle</value>
+  </data>
+  <data name="NavigationResources" xml:space="preserve">
+    <value>Nawigacja po zasobach</value>
+  </data>
+  <data name="NavigationResourcesHelp" xml:space="preserve">
+    <value>Kontrola dostępu do menu bocznego zasobów</value>
+  </data>
+  <data name="NetworkAdapter" xml:space="preserve">
+    <value>Karta sieciowa</value>
+  </data>
+  <data name="NoDefaultPolicyForVersion" xml:space="preserve">
+    <value>Wersja aplikacji nie ma żadnych zasad domyślnych. Ustaw jedną przed opublikowaniem.</value>
+  </data>
+  <data name="NoStepStatus" xml:space="preserve">
+    <value>Brak stanu do zgłoszenia dla tego kroku. Wybierz inny krok, aby wyświetlić zestawienie urządzeń.</value>
+  </data>
+  <data name="NotBetween" xml:space="preserve">
+    <value>Nie pomiędzy</value>
+  </data>
+  <data name="NotEquals" xml:space="preserve">
+    <value>Nie równa się</value>
+  </data>
+  <data name="NotIn" xml:space="preserve">
+    <value>nie w</value>
+  </data>
+  <data name="OemUpdatesPayloadWarning" xml:space="preserve">
+    <value>Przed opublikowaniem upewnij się, że aplikacja Dell Command Update została dodana do przepływu pracy.</value>
+  </data>
+  <data name="OverallDeviceExecutionStatus" xml:space="preserve">
+    <value>Ogólny stan wykonania urządzenia</value>
+  </data>
+  <data name="Overwritten" xml:space="preserve">
+    <value>Zastąpiono</value>
+  </data>
+  <data name="Partitions" xml:space="preserve">
+    <value>Partycje</value>
+  </data>
+  <data name="PhysicalPresenceVersion" xml:space="preserve">
+    <value>Wersja Physical Presence</value>
+  </data>
+  <data name="PlatformChangeConfirmationDescription" xml:space="preserve">
+    <value>Zmiana platformy spowoduje usunięcie wszystkich innych zasobów, kroków, czynności, które wprowadzono do przepływu pracy. Czy na pewno chcesz kontynuować?</value>
+  </data>
+  <data name="PlatformChangeConfirmationTitle" xml:space="preserve">
+    <value>Ostrzeżenie – zmiana platformy</value>
+  </data>
+  <data name="PlatformDescription" xml:space="preserve">
+    <value>Zasoby są filtrowane w oparciu o typ platformy.</value>
+  </data>
+  <data name="PlatformRole" xml:space="preserve">
+    <value>Rola platformy</value>
+  </data>
+  <data name="PlayDemo" xml:space="preserve">
+    <value>Odtwórz demonstrację</value>
+  </data>
+  <data name="PotentiallyImpactedApplications" xml:space="preserve">
+    <value>Potencjalnie kwalifikujące się aplikacje</value>
+  </data>
+  <data name="ProceedToNextStepConditionFailedError" xml:space="preserve">
+    <value>Lub etap nie jest ustawiony poprawnie lub brakuje go podczas korzystania z opcji przechodzenia do następnego etapu.</value>
+  </data>
+  <data name="ProductIdentificationNumber" xml:space="preserve">
+    <value>Numer identyfikacyjny produktu</value>
+  </data>
+  <data name="ProfilesAndBaselines" xml:space="preserve">
+    <value>Profile i punkty odniesienia</value>
+  </data>
+  <data name="Program" xml:space="preserve">
+    <value>Program</value>
+  </data>
+  <data name="PropertyFile" xml:space="preserve">
+    <value>Plik właściwości</value>
+  </data>
+  <data name="ProtectionStatus" xml:space="preserve">
+    <value>Stan ochrony</value>
+  </data>
+  <data name="PublishedOnByArg" xml:space="preserve">
+    <value>Opublikowano {0} przez {1}</value>
+  </data>
+  <data name="PublishedStateDescription" xml:space="preserve">
+    <value>Aktualizacja danych może potrwać nawet 4 godziny w zależności od zameldowań urządzeń. Aby teraz zsynchronizować przepływ pracy z urządzeniami, przejdź do sekcji Szczegóły urządzenia, kliknij pozycję Więcej działań i wybierz opcję Przepływy pracy.</value>
+  </data>
+  <data name="Publisher" xml:space="preserve">
+    <value>Wydawca</value>
+  </data>
+  <data name="PublisherId" xml:space="preserve">
+    <value>Identyfikator wydawcy</value>
+  </data>
+  <data name="QWord64Bit" xml:space="preserve">
+    <value>QWORD</value>
+  </data>
+  <data name="ReevaluateCondition" xml:space="preserve">
+    <value>Ponowna ocena warunku</value>
+  </data>
+  <data name="ReevaluateConditionDesc" xml:space="preserve">
+    <value>Wykonuje cały przepływ pracy co 15 minut, aby upewnić się, że urządzenie zachowuje wymagany stan.</value>
+  </data>
+  <data name="Registry" xml:space="preserve">
+    <value>Rejestr</value>
+  </data>
+  <data name="RegistryDoesNotExistAt" xml:space="preserve">
+    <value>Rejestr nie istnieje w</value>
+  </data>
+  <data name="RegistryExistsAt" xml:space="preserve">
+    <value>Rejestr istnieje w</value>
+  </data>
+  <data name="RegistryPath" xml:space="preserve">
+    <value>Ścieżka rejestru</value>
+  </data>
+  <data name="ReinstallIfRemoved" xml:space="preserve">
+    <value>Zainstaluj ponownie, jeśli usunięto</value>
+  </data>
+  <data name="ReinstallIfRemovedDesc" xml:space="preserve">
+    <value>Zainstaluj ponownie ten zasób, jeśli zostanie usunięty z urządzenia.</value>
+  </data>
+  <data name="ResourceCount" xml:space="preserve">
+    <value>Liczba zasobów</value>
+  </data>
+  <data name="ResourcesWelcomeWindowDescription" xml:space="preserve">
+    <value>Zreorganizowano lewe okienko nawigacji (menu główne), aby dodać kartę nowych zasobów, dzięki czemu można łatwo uzyskać dostęp i zarządzać powszechnie używanymi funkcjami. W zasobach będą znajdować się aplikacje, profile, warunki i nie tylko.</value>
+  </data>
+  <data name="ResourceUnauthorizedAccessContactSystemAdmin" xml:space="preserve">
+    <value>Nie masz uprawnień dostępu do tego zasobu. Aby uzyskać pomoc, skontaktuj się z administratorem systemu.</value>
+  </data>
+  <data name="RestoreToDefault" xml:space="preserve">
+    <value>Przywróć domyślne</value>
+  </data>
+  <data name="Results" xml:space="preserve">
+    <value>Wyniki</value>
+  </data>
+  <data name="RetryAfter" xml:space="preserve">
+    <value>Ponów próbę po</value>
+  </data>
+  <data name="RetryAfterDesc" xml:space="preserve">
+    <value>Interwał czasowy, po którym ponowione zostaną kroki przepływu pracy z błędami.</value>
+  </data>
+  <data name="RetryIntervalDesc" xml:space="preserve">
+    <value>Iloczyn ponownych prób po, liczby ponownych prób i wskaźnika opóźnienia.</value>
+  </data>
+  <data name="RunScript" xml:space="preserve">
+    <value>Uruchom skrypt</value>
+  </data>
+  <data name="SavedFailedContactAdmin" xml:space="preserve">
+    <value>Nie można zapisać. Próbuj ponownie. Jeśli problem będzie się powtarzał, skontaktuj się z administratorem systemu.</value>
+  </data>
+  <data name="SavedStateDescription" xml:space="preserve">
+    <value>Opublikuj przepływ pracy, aby przypisać urządzenia. Dane zostaną uaktualnione po zameldowaniu przypisanych urządzeń.</value>
+  </data>
+  <data name="SaveSuccessPublishFailedTryAgain" xml:space="preserve">
+    <value>Publikowanie przepływu pracy nie powiodło się. Przepływ pracy został zapisany, spróbuj opublikować ponownie.</value>
+  </data>
+  <data name="SearchAndSelect" xml:space="preserve">
+    <value>Wyszukaj i wybierz</value>
+  </data>
+  <data name="SearchExistingApp" xml:space="preserve">
+    <value>Wyszukaj istniejącą aplikację</value>
+  </data>
+  <data name="SearchExistingProfile" xml:space="preserve">
+    <value>Wyszukaj istniejący profil</value>
+  </data>
+  <data name="SearchScript" xml:space="preserve">
+    <value>Wyszukaj skrypt</value>
+  </data>
+  <data name="SecondRetryAfter" xml:space="preserve">
+    <value>Druga ponowna próba po</value>
+  </data>
+  <data name="SelectSmartGroupMessage" xml:space="preserve">
+    <value>Wybierz grupy Smart, które zostaną przypisane do tego przepływu pracy oraz sposób ich dostarczenia.</value>
+  </data>
+  <data name="SelectVersion" xml:space="preserve">
+    <value>Wybierz wersję</value>
+  </data>
+  <data name="SensorBaseTimeInfo" xml:space="preserve">
+    <value>Wybierz strefę czasową do użycia dla tego warunku czujnika: czas lokalny urządzenia lub czas serwera (UTC).</value>
+  </data>
+  <data name="SetDefaultPolicy" xml:space="preserve">
+    <value>Ustaw domyślną zasadę</value>
+  </data>
+  <data name="SetRegistryData" xml:space="preserve">
+    <value>Ustaw dane rejestru</value>
+  </data>
+  <data name="SetRegistryValue" xml:space="preserve">
+    <value>Ustaw wartość rejestru</value>
+  </data>
+  <data name="SettingsRetrievalError" xml:space="preserve">
+    <value>Wystąpił błąd podczas pobierania ustawień przepływu pracy</value>
+  </data>
+  <data name="SettingsSavedSuccessfully" xml:space="preserve">
+    <value>Pomyślnie zapisano ustawienia przepływu pracy</value>
+  </data>
+  <data name="SettingsSaveFailedTryAgain" xml:space="preserve">
+    <value>Podczas zapisywania ustawień przepływu pracy wystąpił błąd. Spróbuj ponownie</value>
+  </data>
+  <data name="Shares" xml:space="preserve">
+    <value>Udziały</value>
+  </data>
+  <data name="Showing" xml:space="preserve">
+    <value>Wyświetlanie</value>
+  </data>
+  <data name="ShowingResultsArg" xml:space="preserve">
+    <value>Wyświetlanie wyników {0}</value>
+  </data>
+  <data name="SkipWorkflow" xml:space="preserve">
+    <value>Pomiń etap przepływu pracy</value>
+  </data>
+  <data name="SkipWorkflowDesc" xml:space="preserve">
+    <value>Pomiń nieudany etap przepływu pracy i zgłoś błąd, ale kontynuuj przepływ pracy.</value>
+  </data>
+  <data name="SocketDesignation" xml:space="preserve">
+    <value>Oznaczenie gniazda</value>
+  </data>
+  <data name="SpecVersion" xml:space="preserve">
+    <value>Wersja specyfikacji</value>
+  </data>
+  <data name="StageWorkflowInfo" xml:space="preserve">
+    <value>Przejdź do zasobów i skonfiguruj aplikacje, profile, skrypty i czujniki w celach referencyjnych w przepływie pracy.</value>
+  </data>
+  <data name="StageWorkflowResources" xml:space="preserve">
+    <value>Wstępnie zarejestruj zasoby przepływu pracy</value>
+  </data>
+  <data name="StartExploringFreestyleOrchestrator" xml:space="preserve">
+    <value>Rozpocznij eksplorowanie platformy Freestyle Orchestrator</value>
+  </data>
+  <data name="StartType" xml:space="preserve">
+    <value>Typ początkowy</value>
+  </data>
+  <data name="StateName" xml:space="preserve">
+    <value>Nazwa stanu</value>
+  </data>
+  <data name="StepStatus" xml:space="preserve">
+    <value>Stan kroku</value>
+  </data>
+  <data name="StopWorkflow" xml:space="preserve">
+    <value>Zatrzymaj przepływ pracy</value>
+  </data>
+  <data name="StopWorkflowDesc" xml:space="preserve">
+    <value>Zatrzymaj przepływ pracy na etapie zakończonym niepowodzeniem i zgłoś niepowodzenie.</value>
+  </data>
+  <data name="SwitchToTimeWindow" xml:space="preserve">
+    <value>Zastąp przedziałem czasowym</value>
+  </data>
+  <data name="SwitchToTimeWindowConfirmation" xml:space="preserve">
+    <value>Czy chcesz zastąpić ten warunek przedziałem czasowym?</value>
+  </data>
+  <data name="SwitchToTimeWindowWarning" xml:space="preserve">
+    <value>Nie można połączyć przedziału czasu z innymi warunkami. Dodanie przedziału czasu zastąpi istniejące kryteria.</value>
+  </data>
+  <data name="SystemEnclosure" xml:space="preserve">
+    <value>Załącznik systemowy</value>
+  </data>
+  <data name="TemplateSelectionQuestion" xml:space="preserve">
+    <value>Do czego chcesz utworzyć przepływ pracy?</value>
+  </data>
+  <data name="ThirdRetryAfter" xml:space="preserve">
+    <value>Trzecia ponowna próba po</value>
+  </data>
+  <data name="TimeDurationDay" xml:space="preserve">
+    <value>Dzień</value>
+  </data>
+  <data name="TimeDurationDays" xml:space="preserve">
+    <value>Dni</value>
+  </data>
+  <data name="TimeDurationHour" xml:space="preserve">
+    <value>Godz.</value>
+  </data>
+  <data name="TimeDurationHours" xml:space="preserve">
+    <value>Godz.</value>
+  </data>
+  <data name="TimeDurationMinute" xml:space="preserve">
+    <value>Minuta</value>
+  </data>
+  <data name="TimeDurationMinutes" xml:space="preserve">
+    <value>Min.</value>
+  </data>
+  <data name="TimeoutDesc" xml:space="preserve">
+    <value>Maksymalny czas oczekiwania na ukończenie etapu przepływu pracy.</value>
+  </data>
+  <data name="TimeReported" xml:space="preserve">
+    <value>Czas zgłoszenia</value>
+  </data>
+  <data name="TimeWindowRuleDescription" xml:space="preserve">
+    <value>Ponowna ocena warunku następuje odpowiednio do skonfigurowanego interwału czasowego, dopóki urządzenie go nie spełni. Gałęzie INNY nie są dozwolone.</value>
+  </data>
+  <data name="TimeWindowRuleDescriptionArg" xml:space="preserve">
+    <value>Ponowna ocena warunku następuje odpowiednio do skonfigurowanego interwału czasowego ({0}), dopóki urządzenie go nie spełni. Gałęzie INNY nie są dozwolone.</value>
+  </data>
+  <data name="TimeWindowStateSupport" xml:space="preserve">
+    <value>Nie można zastosować zarządzania stanem do warunku przedziału czasowego.</value>
+  </data>
+  <data name="ToLearnMore" xml:space="preserve">
+    <value>Dowiedz się więcej</value>
+  </data>
+  <data name="TotalEligibleDevices" xml:space="preserve">
+    <value>Łączna liczba kwalifikujących się urządzeń</value>
+  </data>
+  <data name="Troubleshoot" xml:space="preserve">
+    <value>Rozwiązywanie problemów</value>
+  </data>
+  <data name="TrustedPlatformModule" xml:space="preserve">
+    <value>Moduł TPM</value>
+  </data>
+  <data name="UnauthorizedAccessResource" xml:space="preserve">
+    <value>Nie masz uprawnień dostępu do tego zasobu. Aby uzyskać pomoc, skontaktuj się z administratorem IT.</value>
+  </data>
+  <data name="UninstallerFilePath" xml:space="preserve">
+    <value>Ścieżka pliku dezinstalatora</value>
+  </data>
+  <data name="Universallyuniqueidentifier" xml:space="preserve">
+    <value>Uniwersalny unikalny identyfikator</value>
+  </data>
+  <data name="UnsupportedProfilePayloadEcrow" xml:space="preserve">
+    <value>Przepływ pracy nie może zawierać profilu z ładunkiem Escrow. Wybierz inny profil.</value>
+  </data>
+  <data name="UnsupportedProfilePayloadEWSOutlook" xml:space="preserve">
+    <value>Przepływy pracy nie mogą zawierać profilu MacOS z ładunkiem EWS Outlook. Wybierz inny profil</value>
+  </data>
+  <data name="UpdateAgent" xml:space="preserve">
+    <value>Agent aktualizacji</value>
+  </data>
+  <data name="Uuid" xml:space="preserve">
+    <value>UUID</value>
+  </data>
+  <data name="VersionUUID" xml:space="preserve">
+    <value>UUID wersji</value>
+  </data>
+  <data name="VersionValidationMessage" xml:space="preserve">
+    <value>Wprowadź wersje jako liczby oddzielone kropkami (1,0, 1.0.1, 1.0.1.1).</value>
+  </data>
+  <data name="ViewDocs" xml:space="preserve">
+    <value>Wyświetl dokumenty</value>
+  </data>
+  <data name="ViewFreestyle" xml:space="preserve">
+    <value>Wyświetl Freestyle</value>
+  </data>
+  <data name="ViewFreestyleHelp" xml:space="preserve">
+    <value>Kontroluj dostęp do wyświetlania szczegółów Freestyle i typów zasobów, takich jak aplikacje, profile i skrypty</value>
+  </data>
+  <data name="ViewInModal" xml:space="preserve">
+    <value>Wyświetl w trybie modalnym</value>
+  </data>
+  <data name="ViewItemDetails" xml:space="preserve">
+    <value>Wyświetl szczegóły</value>
+  </data>
+  <data name="ViewResults" xml:space="preserve">
+    <value>Wyświetl wyniki</value>
+  </data>
+  <data name="VirtualAppsCollections" xml:space="preserve">
+    <value>Kolekcje aplikacji wirtualnych</value>
+  </data>
+  <data name="VirtualCPU" xml:space="preserve">
+    <value>Wirtualny procesor CPU</value>
+  </data>
+  <data name="VirtualCPUs" xml:space="preserve">
+    <value>Wirtualne procesory CPU</value>
+  </data>
+  <data name="WfEmptyStepCountError" xml:space="preserve">
+    <value>Przepływ pracy musi zawierać przynajmniej jeden etap.</value>
+  </data>
+  <data name="WfNameEmptyError" xml:space="preserve">
+    <value>Nie podano nazwy przepływu pracy. Należy podać nazwę i spróbować ponownie.</value>
+  </data>
+  <data name="WfTypeEmptyError" xml:space="preserve">
+    <value>Zapisywanie nie powiodło się. Nie podano typu przepływu pracy.</value>
+  </data>
+  <data name="WhenRetriesExhausted" xml:space="preserve">
+    <value>Gdy ponowne próby zostały wyczerpane</value>
+  </data>
+  <data name="WindowsOptionalFeatures" xml:space="preserve">
+    <value>Funkcje opcjonalne systemu Windows</value>
+  </data>
+  <data name="WiredNetwork" xml:space="preserve">
+    <value>Sieć przewodowa</value>
+  </data>
+  <data name="WorkflowDisabledCatalogTooltip" xml:space="preserve">
+    <value>Wybierz grupę Smart, aby zmodyfikować te ustawienia.</value>
+  </data>
+  <data name="WorkflowDoesNotExistOrMightBeDeleted" xml:space="preserve">
+    <value>Przepływ pracy nie istnieje lub mógł zostać usunięty.</value>
+  </data>
+  <data name="WorkflowExecutionStatus" xml:space="preserve">
+    <value>Stan wykonania przepływu pracy</value>
+  </data>
+  <data name="WorkflowPausedSuccessfully" xml:space="preserve">
+    <value>Przepływ pracy został wstrzymany pomyślnie</value>
+  </data>
+  <data name="WorkflowPauseFailedTryAgain" xml:space="preserve">
+    <value>Wstrzymanie przepływu pracy nie powiodło się. Próbuj ponownie.</value>
+  </data>
+  <data name="WorkflowRestoreDefaults" xml:space="preserve">
+    <value>Przywróć domyślne</value>
+  </data>
+  <data name="WorkflowResumedSuccessfully" xml:space="preserve">
+    <value>Pomyślnie wznowiono przepływ pracy</value>
+  </data>
+  <data name="WorkflowResumeFailedTryAgain" xml:space="preserve">
+    <value>Wznowienie przepływu pracy nie powiodło się. Próbuj ponownie.</value>
+  </data>
+  <data name="WorkflowRetryInterval" xml:space="preserve">
+    <value>Interwał ponawiania prób</value>
+  </data>
+  <data name="WorkflowSettings" xml:space="preserve">
+    <value>Ustawienia procesu pracy</value>
+  </data>
+  <data name="WorkflowSettingsDesc" xml:space="preserve">
+    <value>Skonfiguruj ustawienia domyślne przepływów pracy. Możesz zastąpić te ustawienia w poszczególnych przepływach pracy.</value>
+  </data>
+  <data name="WorkflowSmartGroupDescription" xml:space="preserve">
+    <value>Urządzenia będą wykonywać przepływ pracy po zaewidencjonowaniu.</value>
+  </data>
+  <data name="WorkflowStatusNotEvaluatedInfo" xml:space="preserve">
+    <value>Urządzenie otrzymało przepływ pracy, ale jeszcze nie zgłosiło stanu etapu przepływu pracy.</value>
+  </data>
+  <data name="WorkflowStep" xml:space="preserve">
+    <value>Etap przepływu pracy</value>
+  </data>
+  <data name="WorkflowTimeout" xml:space="preserve">
+    <value>Limit czasu</value>
+  </data>
+  <data name="WorkflowWarningExactVersionSelected" xml:space="preserve">
+    <value>Ten etap przepływu pracy może się nie powieść, jeśli wybrana zostanie jedna wersja, a do urządzenia przypisana jest również nowsza wersja</value>
+  </data>
+</root>

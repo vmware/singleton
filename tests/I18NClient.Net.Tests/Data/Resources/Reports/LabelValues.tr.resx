@@ -1,0 +1,240 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AcknowledgedOn" xml:space="preserve">
+    <value>Onaylandığı Tarih:</value>
+  </data>
+  <data name="AppAssignmentStatus" xml:space="preserve">
+    <value>Uygulama Atama Durumu</value>
+  </data>
+  <data name="AvailableDeviceCapacity" xml:space="preserve">
+    <value>Mevcut Aygıt Kapasitesi</value>
+  </data>
+  <data name="BackupBatteryFullLifeTime" xml:space="preserve">
+    <value>Yedek Pil Tam Kullanım Ömrü</value>
+  </data>
+  <data name="BackupBatteryLifeTime" xml:space="preserve">
+    <value>Yedek Pil Ömrü</value>
+  </data>
+  <data name="BatteryFullLifeTime" xml:space="preserve">
+    <value>Pil Tam Kullanım Ömrü</value>
+  </data>
+  <data name="BatterymAHourConsumed" xml:space="preserve">
+    <value>Tüketilen Pil mAh Değeri</value>
+  </data>
+  <data name="BillingCycle" xml:space="preserve">
+    <value>Fatura Döngüsü</value>
+  </data>
+  <data name="ConsoleAppName" xml:space="preserve">
+    <value>Konsol Uygulaması Adı</value>
+  </data>
+  <data name="ContentImportance" xml:space="preserve">
+    <value>İçerik Önemi</value>
+  </data>
+  <data name="ContentPriority" xml:space="preserve">
+    <value>İçerik Önceliği</value>
+  </data>
+  <data name="ContentSizeinKB" xml:space="preserve">
+    <value>KB Cinsinden İçerik Boyutu</value>
+  </data>
+  <data name="ContentVersion" xml:space="preserve">
+    <value>İçerik Sürümü</value>
+  </data>
+  <data name="CoreUser" xml:space="preserve">
+    <value>Temel Kullanıcı</value>
+  </data>
+  <data name="DataProtectionStatus" xml:space="preserve">
+    <value>Veri Koruma Durumu</value>
+  </data>
+  <data name="DataUsageInKB" xml:space="preserve">
+    <value>KB Cinsinden Veri Kullanımı</value>
+  </data>
+  <data name="DateUnenrolled" xml:space="preserve">
+    <value>Kaydı Silinmiş Tarih</value>
+  </data>
+  <data name="DaysOffline" xml:space="preserve">
+    <value>Çevrimdışı Olarak Geçen Gün Sayısı</value>
+  </data>
+  <data name="DaysUntilExpires" xml:space="preserve">
+    <value>Sona Erme Tarihine Kalan Gün Sayısı</value>
+  </data>
+  <data name="FileSizeLimitExceed" xml:space="preserve">
+    <value>Dosya boyutu, limiti aşıyor</value>
+  </data>
+  <data name="FileSizeLimitExceedHelp" xml:space="preserve">
+    <value>Dosya Boyutu, dosyayı oluştururken limiti aştı.</value>
+  </data>
+  <data name="IsAcknowledged" xml:space="preserve">
+    <value>Onaylandı</value>
+  </data>
+  <data name="IsActivationLockEnabled" xml:space="preserve">
+    <value>Etkinleştirme Kilidi Etkin Mi?</value>
+  </data>
+  <data name="IsCloudBackupEnabled" xml:space="preserve">
+    <value>Bulut Yedekleme Etkin Mi?</value>
+  </data>
+  <data name="IsSupervised" xml:space="preserve">
+    <value>Denetleniyor mu?</value>
+  </data>
+  <data name="LastModifiedDate" xml:space="preserve">
+    <value>Son Değiştirilme Tarihi</value>
+  </data>
+  <data name="LoginDate" xml:space="preserve">
+    <value>Oturum Açma Tarihi</value>
+  </data>
+  <data name="MaxOperatingSystemName" xml:space="preserve">
+    <value>Maksimum İşletim Sistemi Adı</value>
+  </data>
+  <data name="MDMManagedYN" xml:space="preserve">
+    <value>MDM Tarafından Yönetiliyor Mu?</value>
+  </data>
+  <data name="MinOperatingSystemName" xml:space="preserve">
+    <value>Minimum İşletim Sistemi Adı</value>
+  </data>
+  <data name="NewReportCertificateNearExpiration" xml:space="preserve">
+    <value>Kullanım Süresi Sonu Yaklaşan Yönetilen Sertifika</value>
+  </data>
+    <data name="NewReportCertificateNearExpirationHelp" xml:space="preserve">
+    <value>Kullanım süresi sonu yaklaşan yönetilen sertifikalara sahip aygıtların bir listesini gösterir. Bunlara, oluşturma, yenileme, iptal gibi yaşam döngüsü yönetimi Workspace ONE UEM tarafından kontrol edilen sertifikalar dahildir.</value>
+  </data>
+  <data name="OrganizationGroupIDName" xml:space="preserve">
+    <value>Organizasyon Grubu Kimliği Ad</value>
+  </data>
+  <data name="PayloadRemovalDisallowed" xml:space="preserve">
+    <value>Yük Kaldırmaya İzin Verilmiyor</value>
+  </data>
+  <data name="PendingInstalls" xml:space="preserve">
+    <value>Bekleyen Yüklemeler</value>
+  </data>
+  <data name="ProfileGroupType" xml:space="preserve">
+    <value>Profil Grubu Türü</value>
+  </data>
+  <data name="ReportMaxFileSizeLimitMessage" xml:space="preserve">
+    <value>{0} GB olarak belirlenen dosya boyutu sınırını aşan raporlar, işlenme sürecinde sonlandırılacaktır. </value>
+  </data>
+  <data name="SelectedValue" xml:space="preserve">
+    <value>Seçilen Değer</value>
+  </data>
+  <data name="SelectedValues" xml:space="preserve">
+    <value>Seçilen Değerler</value>
+  </data>
+  <data name="UserExtendedPropertiesEnabled" xml:space="preserve">
+    <value>Genişletilmiş Kullanıcı Özelliklerini Etkinleştir</value>
+  </data>
+</root>

@@ -1,0 +1,486 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AddedPolices" xml:space="preserve">
+    <value>添加的策略</value>
+  </data>
+  <data name="AssignBaseline" xml:space="preserve">
+    <value>分配基准</value>
+  </data>
+  <data name="AssignBaselineDescription" xml:space="preserve">
+    <value>选择智能组以分配基准。</value>
+  </data>
+  <data name="AssignBaselineDescription2" xml:space="preserve">
+    <value>选择智能组以分配基准。选择排除项以排除特定组。如果将排除项添加到已发布的基准，则该基准将从已排除的设备中移除。</value>
+  </data>
+  <data name="AssignBaselineLocationGroupNotFound" xml:space="preserve">
+    <value>由于无法找到组织组，无法分配基准。</value>
+  </data>
+  <data name="AssignBaselineNotFound" xml:space="preserve">
+    <value>由于无法找到基准，无法分配基准。</value>
+  </data>
+  <data name="AssignedDevicesArg" xml:space="preserve">
+    <value>已分配: {0} 台设备</value>
+  </data>
+  <data name="Assignments" xml:space="preserve">
+    <value>分配项</value>
+  </data>
+  <data name="Baseline" xml:space="preserve">
+    <value>基准</value>
+  </data>
+  <data name="BaselineAssigned" xml:space="preserve">
+    <value>已分配基准</value>
+  </data>
+  <data name="BaselineAssignmentFailed" xml:space="preserve">
+    <value>无法分配基准。请重试。</value>
+  </data>
+  <data name="BaselineAssignmentSuccessful" xml:space="preserve">
+    <value>已成功将基准发布到更新的分配。</value>
+  </data>
+  <data name="BaselineBlobFailed" xml:space="preserve">
+    <value>由于无法创建软件包，无法创建基准。</value>
+  </data>
+  <data name="BaselineCombinedBlobFailed" xml:space="preserve">
+    <value>由于无法创建包含自定义的软件包，无法创建基准。</value>
+  </data>
+  <data name="BaselineContainsExe" xml:space="preserve">
+    <value>您的自定义基准包含可执行文件。请移除它们，然后重试。</value>
+  </data>
+  <data name="BaselineCopyFailed" xml:space="preserve">
+    <value>无法复制所选基准。</value>
+  </data>
+  <data name="BaselineCopySuccessful" xml:space="preserve">
+    <value>已成功复制所选基准。</value>
+  </data>
+  <data name="BaselineCreated" xml:space="preserve">
+    <value>已创建基准</value>
+  </data>
+  <data name="BaselineCreationFailed" xml:space="preserve">
+    <value>无法创建基准。</value>
+  </data>
+  <data name="BaselineCreationSuccessful" xml:space="preserve">
+    <value>已成功保存基准。</value>
+  </data>
+  <data name="BaselineCustomizationFailed" xml:space="preserve">
+    <value>由于无法应用自定义，无法创建基准。</value>
+  </data>
+  <data name="BaselineDeleted" xml:space="preserve">
+    <value>已删除基准</value>
+  </data>
+  <data name="BaselineDeleteFailed" xml:space="preserve">
+    <value>无法删除基准。请重试。</value>
+  </data>
+  <data name="BaselineDeleteSuccessful" xml:space="preserve">
+    <value>已成功删除基准。</value>
+  </data>
+  <data name="BaselineDetails" xml:space="preserve">
+    <value>基准名称和版本</value>
+  </data>
+  <data name="BaselineErrorCode" xml:space="preserve">
+    <value>设备错误代码</value>
+  </data>
+  <data name="BaselineErrorMessage" xml:space="preserve">
+    <value>错误消息</value>
+  </data>
+  <data name="BaselineFileCorrupt" xml:space="preserve">
+    <value>您的自定义基准不是有效的 zip 文件。</value>
+  </data>
+  <data name="BaselineFileEmpty" xml:space="preserve">
+    <value>您的自定义基准似乎为空。请使用有效文件重试。</value>
+  </data>
+  <data name="BaselineFileMissingPolicies" xml:space="preserve">
+    <value>为自定义基准选择的文件不符合建议的规范。请参考文档进行修改。</value>
+  </data>
+  <data name="BaselineFileSizeError" xml:space="preserve">
+    <value>您的自定义基准超过了最大大小限制 5MB。</value>
+  </data>
+  <data name="BaselineGetPolicyTreeFailed" xml:space="preserve">
+    <value>无法加载用于自定义的策略，请稍后重试。</value>
+  </data>
+  <data name="BaselineInvalidRequest" xml:space="preserve">
+    <value>请确保填写所有必填字段。</value>
+  </data>
+  <data name="BaselineMissingPolicies" xml:space="preserve">
+    <value>由于一个或多个策略已被移除或不可用，无法创建基准</value>
+  </data>
+  <data name="BaselineModified" xml:space="preserve">
+    <value>已修改基准</value>
+  </data>
+  <data name="BaselineName" xml:space="preserve">
+    <value>基准名称</value>
+  </data>
+  <data name="BaselinePendingReboot" xml:space="preserve">
+    <value>重新引导挂起</value>
+  </data>
+  <data name="BaselinePolicyFieldError" xml:space="preserve">
+    <value>由于一个或多个策略具有无效值，无法创建基准</value>
+  </data>
+  <data name="BaselinePolicyGenerationFailed" xml:space="preserve">
+    <value>由于无法生成一个或多个策略，无法创建基准</value>
+  </data>
+  <data name="Baselines" xml:space="preserve">
+    <value>基准</value>
+  </data>
+  <data name="BaselinesBlobID" xml:space="preserve">
+    <value>基准 Blob ID</value>
+  </data>
+  <data name="BaselinesCount" xml:space="preserve">
+    <value>基准计数</value>
+  </data>
+  <data name="BaselineServiceUnavailable" xml:space="preserve">
+    <value>无法连接到基准服务“https://www.vmwarebaselines.com”。有关详细信息，请检查连接和日志。</value>
+  </data>
+  <data name="BaselinesMenuDescription" xml:space="preserve">
+    <value>查看基准</value>
+  </data>
+  <data name="BaselineStatusCallFailed" xml:space="preserve">
+    <value>无法检索基准状态。请稍后再试</value>
+  </data>
+  <data name="BaselineTooltipCis" xml:space="preserve">
+    <value>对所选版本和级别使用 CIS 基准推荐的设置。</value>
+  </data>
+  <data name="BaselineTooltipCustom" xml:space="preserve">
+    <value>上载要应用于设备的自定义组策略对象 (GPO) 备份。GPO 备份必须是小于 5MB 的 ZIP 文件。</value>
+  </data>
+  <data name="BaselineTooltipWindows" xml:space="preserve">
+    <value>Microsoft 安全工具包的安全基准组件 (“SBC”) 由 Microsoft 编写，可供您专门用于管理 Windows 10 设备。SBC 按原样提供，VMware 或 Microsoft 不对其提供任何形式的担保。有关 SBC 的详细信息，请访问 {0}。</value>
+  </data>
+  <data name="BaselineUUID" xml:space="preserve">
+    <value>基准 UUID</value>
+  </data>
+  <data name="BlankBaseline" xml:space="preserve">
+    <value>创建自己的</value>
+  </data>
+  <data name="BlankBaselineDescription" xml:space="preserve">
+    <value>通过从我们的策略目录中选择，创建自己的基准。</value>
+  </data>
+  <data name="ChooseTemplate" xml:space="preserve">
+    <value>选择基准</value>
+  </data>
+  <data name="ComplianceDataMissing" xml:space="preserve">
+    <value>此基准的合规性数据尚不可用。请将基准重新发布到分配的设备以触发合规性示例报告。</value>
+  </data>
+  <data name="ConfirmCancelBaseline" xml:space="preserve">
+    <value>您对此基准所做的更改尚未保存。是否要放弃这些更改?</value>
+  </data>
+  <data name="ConfirmCloudDescription" xml:space="preserve">
+    <value>通过使用 Workspace ONE 基准，您将访问由 VMware 远程存储的数据。如果不想继续，请单击“取消”。</value>
+  </data>
+  <data name="ConfirmCloudTitle" xml:space="preserve">
+    <value>远程数据访问</value>
+  </data>
+  <data name="ConfirmDeleteBaseline" xml:space="preserve">
+    <value>如果此基准已分配，则删除此基准会将其从所有设备中移除。是否要继续?</value>
+  </data>
+  <data name="CopyBaseline" xml:space="preserve">
+      <value>复制基准</value>
+  </data>
+  <data name="CustomBaseline" xml:space="preserve">
+    <value>自定义基准</value>
+  </data>
+  <data name="CustomBaselineCompliance" xml:space="preserve">
+    <value>根据添加到基准的策略 (而不是压缩策略) 评估自定义基准的合规性数据。</value>
+  </data>
+  <data name="CustomBaselineComplianceDataMissing" xml:space="preserve">
+    <value>自定义基准的合规性数据不可用或不完整，因为无法查看压缩的策略。</value>
+  </data>
+  <data name="CustomBaselineError" xml:space="preserve">
+    <value>请为自定义基准选择一个文件</value>
+  </data>
+  <data name="CustomBaselineHelpLink" xml:space="preserve">
+    <value>查看 GPO 上载说明</value>
+  </data>
+  <data name="CustomizeSelectPolicy" xml:space="preserve">
+    <value>选择一个策略以查看其设置。</value>
+  </data>
+  <data name="CustomizeStepDescription" xml:space="preserve">
+    <value>您可从 {0} 中查看或自定义策略以满足个人需要。</value>
+  </data>
+  <data name="DefinitionStepDescription" xml:space="preserve">
+    <value>为基准命名并提供描述。</value>
+  </data>
+  <data name="DeleteBaseline" xml:space="preserve">
+    <value>删除基准</value>
+  </data>
+  <data name="DeviceBaselineLocationGroupNotFound" xml:space="preserve">
+    <value>无法获取适用于基准的设备，因为无法找到组织组。</value>
+  </data>
+  <data name="DeviceBaselineNotFound" xml:space="preserve">
+    <value>无法获取适用于基准的设备，因为无法找到基准。</value>
+  </data>
+  <data name="DiscardAndExit" xml:space="preserve">
+    <value>放弃并退出</value>
+  </data>
+  <data name="EditBaseline" xml:space="preserve">
+    <value>编辑基准</value>
+  </data>
+  <data name="EditRequestError" xml:space="preserve">
+    <value>所选基准版本不再可用，请创建一个新的基准版本。</value>
+  </data>
+  <data name="EmptyBaselineList" xml:space="preserve">
+    <value>未找到基准</value>
+  </data>
+  <data name="EmptyDeviceList" xml:space="preserve">
+    <value>找不到设备</value>
+  </data>
+  <data name="EmptyListInput" xml:space="preserve">
+    <value>需要一个或多个条目</value>
+  </data>
+  <data name="EmptyPolicyList" xml:space="preserve">
+    <value>尚未添加任何策略</value>
+  </data>
+  <data name="ErrorBaselineDeviceException" xml:space="preserve">
+    <value>无法应用基准，请查看日志以进行修复。</value>
+  </data>
+  <data name="ErrorDownloadBlobFailed" xml:space="preserve">
+    <value>无法访问基准，请查看日志以进行修复。</value>
+  </data>
+  <data name="ErrorInvalidExecutable" xml:space="preserve">
+    <value>LGPO.exe 无效，请尝试更改可执行文件以进行修复。</value>
+  </data>
+  <data name="ErrorLGPOBackupFailed" xml:space="preserve">
+    <value>无法应用基准，请查看日志以进行修复。</value>
+  </data>
+  <data name="ErrorMissingLGPO" xml:space="preserve">
+    <value>LGPO.exe 不可用，无法应用基准。</value>
+  </data>
+  <data name="ErrorSavingFileInFolder" xml:space="preserve">
+    <value>无法保存基准，请查看日志以进行修复。</value>
+  </data>
+  <data name="ErrorUpdatingDatabase" xml:space="preserve">
+    <value>基准状态未知，请查看日志以获取更多信息。</value>
+  </data>
+  <data name="ErrorZipExtractionFailed" xml:space="preserve">
+    <value>无法提取基准，请查看日志以进行修复。</value>
+  </data>
+  <data name="ExcludedSmartGroups" xml:space="preserve">
+    <value>排除的智能组</value>
+  </data>
+  <data name="Exclusions" xml:space="preserve">
+    <value>排除项</value>
+  </data>
+  <data name="FailedInstall" xml:space="preserve">
+    <value>安装失败</value>
+  </data>
+  <data name="FailedRemoval" xml:space="preserve">
+    <value>移除失败</value>
+  </data>
+  <data name="IntermediateDescription" xml:space="preserve">
+    <value>符合 {0}% 到 {1}% 的设备被归类为中间设备。</value>
+  </data>
+  <data name="MaxValueArg" xml:space="preserve">
+    <value>必须小于或等于 {0}</value>
+  </data>
+  <data name="MinValueArg" xml:space="preserve">
+    <value>必须大于或等于 {0}</value>
+  </data>
+  <data name="NewBaseline" xml:space="preserve">
+    <value>新建基准</value>
+  </data>
+  <data name="NoActiveOSVersion" xml:space="preserve">
+    <value>找不到操作系统版本。请稍后再试。</value>
+  </data>
+  <data name="NoCustomizationSupport" xml:space="preserve">
+    <value>自定义当前不可用于所选基准。</value>
+  </data>
+  <data name="NoFileSelected" xml:space="preserve">
+    <value>未选择任何文件。</value>
+  </data>
+  <data name="NonEnglishSearchResult" xml:space="preserve">
+    <value>未找到“{0}”的结果。您可以用英语重试搜索，以查看策略是否可用。</value>
+  </data>
+  <data name="NoResultsFoundForArg" xml:space="preserve">
+    <value>找不到“{0}”的结果</value>
+  </data>
+  <data name="NoSmartGroupsSelected" xml:space="preserve">
+    <value>未选择智能组</value>
+  </data>
+  <data name="PolicyNotFound" xml:space="preserve">
+    <value>未找到策略详细信息</value>
+  </data>
+  <data name="PolicyStepDescription" xml:space="preserve">
+    <value>从目录中搜索并添加策略。</value>
+  </data>
+  <data name="Proceed" xml:space="preserve">
+    <value>继续</value>
+  </data>
+  <data name="RemovalFailed" xml:space="preserve">
+    <value>移除失败</value>
+  </data>
+  <data name="RequiredFieldError" xml:space="preserve">
+    <value>请输入基准的名称。</value>
+  </data>
+  <data name="SaveAndPublish" xml:space="preserve">
+    <value>保存并发布</value>
+  </data>
+  <data name="SearchPolicyPlaceholder" xml:space="preserve">
+    <value>开始键入以搜索策略</value>
+  </data>
+  <data name="SearchSmartGroupPlaceholder" xml:space="preserve">
+    <value>开始键入以搜索智能组</value>
+  </data>
+  <data name="SelectedSmartGroups" xml:space="preserve">
+    <value>已选择的智能组</value>
+  </data>
+  <data name="SelectTypeDescription" xml:space="preserve">
+    <value>选择要添加的基准类型。</value>
+  </data>
+  <data name="SelectTypeTitle" xml:space="preserve">
+    <value>选择基准类型</value>
+  </data>
+  <data name="SmartGroupAtLeastOneValidationDescription" xml:space="preserve">
+    <value>“分配”选项卡中至少需要有一个智能组。</value>
+  </data>
+  <data name="SummaryStepDescription" xml:space="preserve">
+    <value>保存此基准之前先查看摘要。</value>
+  </data>
+  <data name="TemplateStepDescription" xml:space="preserve">
+    <value>选择预配置的基准和版本。</value>
+  </data>
+  <data name="TextareaMaxLinesError" xml:space="preserve">
+    <value>超过行数上限</value>
+  </data>
+  <data name="TextareaMaxSentenceError" xml:space="preserve">
+    <value>一个或多个句子超过长度上限</value>
+  </data>
+  <data name="TotalInstalledArg" xml:space="preserve">
+    <value>已安装的总数: {0}</value>
+  </data>
+  <data name="UnabletoLoadDevices" xml:space="preserve">
+    <value>无法加载设备列表，请稍后重试。</value>
+  </data>
+  <data name="UnsavedChanges" xml:space="preserve">
+    <value>未保存的更改</value>
+  </data>
+  <data name="UnsupportedLanguageError" xml:space="preserve">
+    <value>错误: 不支持选定语言。</value>
+  </data>
+  <data name="UseBaselineTemplate" xml:space="preserve">
+      <value>使用模板</value>
+  </data>
+  <data name="UseTemplateDescription" xml:space="preserve">
+    <value>使用行业标准模板设置基准。</value>
+  </data>
+  <data name="VersionBreakdown" xml:space="preserve">
+    <value>版本细目</value>
+  </data>
+  <data name="ViewBaselineDevicesTitle" xml:space="preserve">
+    <value>查看设备 - 基准</value>
+  </data>
+</root>

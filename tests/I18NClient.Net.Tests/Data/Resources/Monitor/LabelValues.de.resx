@@ -1,0 +1,364 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AdminPanelHeaderDescription" xml:space="preserve">
+    <value>Eine Übersicht über Lizenzinformationen und bereitgestellte Workspace ONE UEM-Komponenten.</value>
+  </data>
+  <data name="DataPrivacy" xml:space="preserve">
+    <value>Datenschutz</value>
+  </data>
+  <data name="DataPrivacyLabel10" xml:space="preserve">
+    <value>Für die Erstellung von benutzerdefinierten Berichten verwendete Daten werden vom Cloud-Dienst für alle in der AirWatch Konsole gefundenen Geräte und den dazugehörigen Anwendungen erfasst. Die Daten, die für die Berichterstattung zur Verfügung stehen, hängen davon ab, wie Sie Ihre AirWatch Konsole und Ihre Datenschutzeinstellungen konfiguriert haben. Nur Daten zu den von Ihnen ausgewählten Kategorien, wie App-Daten, Gerätedaten oder OS-Update-Daten, werden für laufende oder historische Berichtszwecke erhoben und gepflegt.</value>
+  </data>
+  <data name="DataPrivacyLabel11" xml:space="preserve">
+    <value>Anwendungen</value>
+  </data>
+  <data name="DataPrivacyLabel12" xml:space="preserve">
+    <value>App-Daten umfassen Angaben wie verwaltete Apps, persönliche Apps, Versionen, Installationsstatus, Geräteattribute wie Benutzername, E-Mail, Telefonnummer, IMEI und mehr.</value>
+  </data>
+  <data name="DataPrivacyLabel13" xml:space="preserve">
+    <value>Geräte</value>
+  </data>
+  <data name="DataPrivacyLabel15" xml:space="preserve">
+    <value>Gerätedaten umfassen Angaben wie Modell, BS-Version, Sicherheitsniveau, IMEI, Benutzername, Telefonnummer, E-Mail und mehr.</value>
+  </data>
+  <data name="DataPrivacyLabel16" xml:space="preserve">
+    <value>Anmeldung zur Verwendung von Intelligence</value>
+  </data>
+  <data name="DataPrivacyLabel19" xml:space="preserve">
+    <value>Sie können sich jederzeit von diesem Dienst abmelden. Es werden keine in Workspace ONE UEM Console neu erfassten Daten in den Cloud-Dienst verschoben. Nur die vor der Abmeldung erfassten Daten verbleiben.</value>
+  </data>
+  <data name="DataPrivacyLabel2" xml:space="preserve">
+    <value>Wussten Sie das NEUE benutzerdefinierte Berichte zum schnelleren, leichteren Zugriff auf kritische Business Intelligence-Daten verfügbar sind?</value>
+  </data>
+  <data name="DataPrivacyLabel20" xml:space="preserve">
+    <value>Weitere Informationen finden Sie unter {0}.</value>
+  </data>
+  <data name="DataPrivacyLabel21" xml:space="preserve">
+    <value>Datenschutzeinstellungen</value>
+  </data>
+  <data name="DataPrivacyLabel22" xml:space="preserve">
+    <value>Falls Sie die Datenschutzeinstellungen für Ihren Mandanten konfiguriert haben, wird unser Dienst diese Einstellungen befolgen, bevor Daten an die Cloud gesendet werden. Mit der Einstellung „Erfassen und anzeigen“ werden Daten an den Cloud-Dienst gesendet. Mit den Einstellungen „Erfassen und nicht anzeigen“ und „Nicht erfassen“ werden keine Daten an den Cloud-Dienst gesendet.</value>
+  </data>
+  <data name="DataPrivacyLabel23" xml:space="preserve">
+    <value>VMware Workspace ONE Intelligence – Benutzerhandbuch</value>
+  </data>
+  <data name="DataPrivacyLabel24" xml:space="preserve">
+    <value>BS-Updates</value>
+  </data>
+  <data name="DataPrivacyLabel27" xml:space="preserve">
+    <value>Sie können sich jederzeit von diesem Dienst abmelden. Löschen Sie dazu das Häkchen im oben angezeigten Kästchen. Wenn Sie sich abmelden, haben Sie keinen Zugriff auf Datenanalyse-Tools und -Funktionen und alle in Workspace ONE UEM Console erfassten neue Daten werden nicht in den Cloud-Dienst verschoben. Vor der Abmeldung erfasste Daten sind jedoch immer noch verfügbar.</value>
+  </data>
+  <data name="DataPrivacyLabel28" xml:space="preserve">
+    <value>BS-Update-Daten umfassen Angaben wie Software-Updates auf Windows-Geräten, Patch-Updates für Windows, Gerätename, Benutzername, E-Mail und mehr.</value>
+  </data>
+  <data name="DataPrivacyLabel9" xml:space="preserve">
+    <value>Was wir erfassen</value>
+  </data>
+  <data name="Dataprivacysettingschange" xml:space="preserve">
+    <value>Änderung der Datenschutzeinstellungen</value>
+  </data>
+  <data name="DataPrivacyTooltip" xml:space="preserve">
+    <value>Der Datenschutz wird für die unten ausgewählten Ressourcen den Kennungsschutz aktivieren. Nur zugelassene Admin-Rollen haben dann Zugriff.</value>
+  </data>
+  <data name="EditCustomReportHelp" xml:space="preserve">
+    <value>Bietet uneingeschränkten Zugriff auf die Intelligence-Seite unter „Monitor“.</value>
+  </data>
+  <data name="EditIntelligenceHelp" xml:space="preserve">
+    <value>Bietet uneingeschränkten Zugriff auf die Intelligence-Seite unter „Monitor“. Funktionen sind auf benutzerdefinierte Berichte begrenzt.</value>
+  </data>
+  <data name="EditIntelligenceWithAddOnHelp" xml:space="preserve">
+    <value>Bietet uneingeschränkten Zugriff auf die Intelligence-Seite unter „Monitor“. Erfordert ein Abonnement für Workspace ONE Intelligence.</value>
+  </data>
+  <data name="ExportsInfo" xml:space="preserve">
+    <value>Laden Sie exportierte Listenansichten und Berichte herunter.</value>
+  </data>
+  <data name="ExportStateFailed" xml:space="preserve">
+    <value>Der Export konnte nicht abgeschlossen werden. Versuchen Sie noch einmal, die Datei zu exportieren.</value>
+  </data>
+  <data name="ExportStateFileSizeLimitExceed" xml:space="preserve">
+    <value>Der Grenzwert für die Exportdateigröße von 4 GB wurde überschritten. Reduzieren Sie die Anzahl der ausgewählten Datensätze und versuchen Sie es noch einmal.</value>
+  </data>
+  <data name="GettingStartedMDMDescription4" xml:space="preserve">
+    <value>Sehen Sie, wie Sie Ihre Geräte über das Dashboard und Monitor am besten verwalten.</value>
+  </data>
+  <data name="GettingStartedMonitorDescription" xml:space="preserve">
+    <value>Lassen Sie sich aktuelle Statistiken anzeigen, wie die komplette Bereitstellung von Geräten von Monitor erfolgt. Verwenden Sie nach der Registrierung Ihres Geräts diesen Link, um zu Monitor zu navigieren, und lassen Sie sich eines der Ergebnisse aus dem Registrierungsverlauf anzeigen.</value>
+  </data>
+  <data name="GoupId" xml:space="preserve">
+    <value>Gruppen-ID:</value>
+  </data>
+  <data name="Hub" xml:space="preserve">
+    <value>Monitor</value>
+  </data>
+  <data name="HubAdminPanelMenuDescription" xml:space="preserve">
+    <value>Lizenznutzung nachverfolgen und Enterprise Integration-Bereitstellungsstatus anzeigen</value>
+  </data>
+  <data name="HubApps" xml:space="preserve">
+    <value>Apps überwachen</value>
+  </data>
+  <data name="HubAppsHelp" xml:space="preserve">
+    <value>Steuert den Zugriff auf den Abschnitt „Anwendungen überwachen“</value>
+  </data>
+  <data name="HubCertificates" xml:space="preserve">
+    <value>Zertifikate überwachen</value>
+  </data>
+  <data name="HubCertificatesHelp" xml:space="preserve">
+    <value>Steuert den Zugriff auf den Abschnitt „Zertifikate überwachen“</value>
+  </data>
+  <data name="HubCompliance" xml:space="preserve">
+    <value>Compliance überwachen</value>
+  </data>
+  <data name="HubComplianceHelp" xml:space="preserve">
+    <value>Steuert den Zugriff auf den Abschnitt „Konformität überwachen“</value>
+  </data>
+  <data name="HubContent" xml:space="preserve">
+    <value>Inhalt überwachen</value>
+  </data>
+  <data name="HubContentHelp" xml:space="preserve">
+    <value>Steuert den Zugriff auf den Abschnitt „Inhalt überwachen“</value>
+  </data>
+  <data name="HubDevices" xml:space="preserve">
+    <value>Geräte überwachen</value>
+  </data>
+  <data name="HubDevicesHelp" xml:space="preserve">
+    <value>Steuert den Zugriff auf den Abschnitt „Geräte überwachen“</value>
+  </data>
+  <data name="HubEmail" xml:space="preserve">
+    <value>E-Mail überwachen</value>
+  </data>
+  <data name="HubEmailHelp" xml:space="preserve">
+    <value>Steuert den Zugriff auf den Abschnitt „E-Mail überwachen“</value>
+  </data>
+  <data name="HubPastDay" xml:space="preserve">
+    <value>Seit einem Tag</value>
+  </data>
+  <data name="HubPastMonth" xml:space="preserve">
+    <value>Seit einem Monat</value>
+  </data>
+  <data name="HubPastWeek" xml:space="preserve">
+    <value>Seit einer Woche</value>
+  </data>
+  <data name="HubProfiles" xml:space="preserve">
+    <value>Profile überwachen</value>
+  </data>
+  <data name="HubProfilesHelp" xml:space="preserve">
+    <value>Steuert den Zugriff auf den Abschnitt „Profile überwachen“</value>
+  </data>
+  <data name="HubTelecom" xml:space="preserve">
+    <value>Telekommunikation überwachen</value>
+  </data>
+  <data name="HubTelecomHelp" xml:space="preserve">
+    <value>Steuert den Zugriff auf den Abschnitt „Telekommunikation überwachen“</value>
+  </data>
+  <data name="IntelligenceOptOutInfo" xml:space="preserve">
+    <value>Wenn Sie Intelligence aktivieren und ein Workspace ONE UEM-SaaS-Kunde sind, wird Ihr Intelligence-Mandant automatisch in einer Region auf Grundlage Ihrer Workspace ONE UEM-SaaS-Region erstellt. Hinweis: Ihre Region für Workspace ONE Intelligence muss außerhalb Ihrer Region für Workspace ONE UEM liegen. Eine Liste von {0} sowie weitere Details finden Sie im {1}.</value>
+    <comment>First place holder contains a link to intelligence supportes regions and second place holder contains a link to VMware Workspace ONE Intelligence user guide.</comment>
+  </data>
+  <data name="IntelligenceRegions" xml:space="preserve">
+    <value>Wenn Sie Intelligence aktivieren und ein Workspace ONE UEM-SaaS-Kunde sind, wird Ihr Intelligence-Mandant automatisch in einer Region auf Grundlage Ihrer Workspace ONE UEM-SaaS-Region erstellt. Eine Liste von Regionen, die Intelligence unterstützt, sowie weitere Details finden Sie im {0}.</value>
+  </data>
+  <data name="IntelligenceSupportedRegions" xml:space="preserve">
+    <value>Von Intelligence unterstützte Regionen</value>
+  </data>
+  <data name="IntelligenceTitle" xml:space="preserve">
+    <value>Intelligence</value>
+  </data>
+  <data name="LearnMoreAboutEnrollment" xml:space="preserve">
+    <value>Weitere Informationen zu den Registrierungszuständen: Eingetragen, Registriert, Nicht registriert</value>
+  </data>
+  <data name="MonitorAdminPanelMenuDescription" xml:space="preserve">
+    <value>Lizenznutzung nachverfolgen und Enterprise Integration-Bereitstellungsstatus anzeigen</value>
+  </data>
+  <data name="MonitorInstalledAppVersions" xml:space="preserve">
+    <value>Am häufigsten installierte Unternehmens-App-Versionen</value>
+  </data>
+  <data name="MonitorMenuTitle" xml:space="preserve">
+    <value>Zentrales Portal für Bereitstellungsstatusinformationen und -daten</value>
+  </data>
+  <data name="MonitorOverviewMenuTitle" xml:space="preserve">
+    <value>Bereitstellungs-Dashboard mit Diagrammen und Daten mit Handlungsbedarf</value>
+  </data>
+  <data name="MonitorPastDay" xml:space="preserve">
+    <value>Seit einem Tag</value>
+  </data>
+  <data name="MonitorPastMonth" xml:space="preserve">
+    <value>Seit einem Monat</value>
+  </data>
+  <data name="MonitorPastWeek" xml:space="preserve">
+    <value>Seit einer Woche</value>
+  </data>
+  <data name="NavigationHub" xml:space="preserve">
+    <value>Navigation Monitor</value>
+  </data>
+  <data name="NavigationHubHelp" xml:space="preserve">
+    <value>Steuert den Zugriff auf Monitor</value>
+  </data>
+  <data name="NoActiveOrDeployedComponentsFound" xml:space="preserve">
+    <value>Keine aktiven Produkte oder bereitgestellten Komponenten gefunden.</value>
+  </data>
+  <data name="NoActiveProductsFound" xml:space="preserve">
+    <value>Keine aktiven Produkte gefunden.</value>
+  </data>
+  <data name="NoDeployedComponentsFound" xml:space="preserve">
+    <value>Keine bereitgestellten Komponenten gefunden.</value>
+  </data>
+  <data name="ObjectsPerPage" xml:space="preserve">
+    <value>Objekte pro Seite</value>
+  </data>
+  <data name="OgPath" xml:space="preserve">
+    <value>OG-Pfad:</value>
+  </data>
+  <data name="OptInInformation" xml:space="preserve">
+    <value>Opt-In Information</value>
+  </data>
+  <data name="OptInInformationContent" xml:space="preserve">
+    <value>If you opt in to Intelligence and are a Workspace ONE UEM SaaS customer, your corresponding Intelligence tenant will automatically be created in a region based on your Workspace ONE UEM SaaS region.</value>
+  </data>
+  <data name="OptInInformationContentNote" xml:space="preserve">
+    <value>Note: Your Workspace ONE Intelligence region may be outside your Workspace ONE UEM region. See a list of the Intelligence supported regions, and find more details in the VMware Workspace ONE Intelligence user guide.</value>
+  </data>
+  <data name="OptInLaunchWorkspaceOne" xml:space="preserve">
+    <value>Opt in and launch Workspace ONE Intelligence.</value>
+  </data>
+  <data name="OptInToIntelligence" xml:space="preserve">
+    <value>Opt-In to Intelligence</value>
+  </data>
+  <data name="OptOut" xml:space="preserve">
+    <value>Opt Out</value>
+  </data>
+  <data name="OptOutConfirmationMessage" xml:space="preserve">
+    <value>This action suspends access to Intelligence and stops data collection from Workspace ONE UEM to the cloud service. Data collected prior to opting out will still be available, and any scheduled reports and automations will continue. Opting back in will resume access to Intelligence and data collection, but events that occurred while opted out may result in data discrepancies.</value>
+  </data>
+  <data name="OptOutOfIntelligence" xml:space="preserve">
+    <value>Opt Out of Intelligence</value>
+  </data>
+  <data name="ReportGenerated" xml:space="preserve">
+    <value>Generiert</value>
+  </data>
+  <data name="TermsOfUseMustFill" xml:space="preserve">
+    <value>You must fill out the required information and accept the following terms of service to use Intelligence.</value>
+  </data>
+  <data name="ViewCustomReportHelp" xml:space="preserve">
+    <value>Bietet schreibgeschützten Zugriff auf die Intelligence-Seite unter Monitor.</value>
+  </data>
+  <data name="ViewTheVMWarePrivacyPolicy" xml:space="preserve">
+    <value>View the VMware Privacy Policy.</value>
+  </data>
+</root>

@@ -1,0 +1,2907 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AccessDeniedForOG" xml:space="preserve">
+    <value>현재 조직 그룹에 애플리케이션 액세스 권한이 없음</value>
+  </data>
+  <data name="AccessPoliciesIDMSetupArg" xml:space="preserve">
+    <value>액세스 정책을 사용하려면 먼저 Workspace ONE을 설치해야 합니다. {0}(으)로 이동한 후 Workspace ONE 설치를 완료하십시오. 완료되면 로그아웃했다가 다시 로그인하여 재시도해 보십시오.</value>
+  </data>
+  <data name="AccountNameExample" xml:space="preserve">
+    <value>예: VMware</value>
+  </data>
+  <data name="AccountNotifyEmail" xml:space="preserve">
+    <value>이메일 설정 알림</value>
+  </data>
+  <data name="AccountNotifyEmailInfo" xml:space="preserve">
+    <value>이메일 알림</value>
+  </data>
+  <data name="AccountNotifyPush" xml:space="preserve">
+    <value>ENS2</value>
+  </data>
+  <data name="AccountNotifyPushInfo" xml:space="preserve">
+    <value>이메일 알림 서비스를 사용하거나 사용하지 않도록 설정합니다.</value>
+  </data>
+  <data name="AccountSMIMESignByDefault" xml:space="preserve">
+    <value>자동으로 이메일 서명</value>
+  </data>
+  <data name="AccountSMIMESignByDefaultInfo" xml:space="preserve">
+    <value>작성 보기를 실행할 때 기본적으로 S/MIME 서명을 사용하도록 설정</value>
+  </data>
+  <data name="AccountSyncCalendar" xml:space="preserve">
+    <value>캘린더 설정 동기화</value>
+  </data>
+  <data name="AccountSyncCalendarInfo" xml:space="preserve">
+    <value>장치의 캘린더 동기화 사용 안 함</value>
+  </data>
+  <data name="AccountSyncContact" xml:space="preserve">
+    <value>연락처 설정 동기화</value>
+  </data>
+  <data name="AccountSyncContactInfo" xml:space="preserve">
+    <value>장치의 연락처 동기화 사용 안 함</value>
+  </data>
+  <data name="AccountSyncEmail" xml:space="preserve">
+    <value>이메일 설정 동기화</value>
+  </data>
+  <data name="AccountSyncEmailInfo" xml:space="preserve">
+    <value>장치의 이메일 동기화 사용 안 함</value>
+  </data>
+  <data name="AccountUseOAuth" xml:space="preserve">
+    <value>최신 인증</value>
+  </data>
+  <data name="AccountUseOAuthInfo" xml:space="preserve">
+    <value>사용하도록 설정하면 등록 중 인증을 위한 로그인 페이지로 리디렉션됩니다.</value>
+  </data>
+  <data name="ActionsGrid" xml:space="preserve">
+    <value>작업 그리드</value>
+  </data>
+  <data name="ActionsNotShownForProductBasedApps" xml:space="preserve">
+    <value>개별 설치 및 제거 작업은 '제품' 패키지의 일부인 애플리케이션으로 제한됩니다.</value>
+  </data>
+  <data name="ActivateApplication" xml:space="preserve">
+    <value>애플리케이션 활성화</value>
+  </data>
+  <data name="AddContingencies" xml:space="preserve">
+    <value>대응 추가</value>
+  </data>
+  <data name="AIPSensitivityLabels" xml:space="preserve">
+    <value>AIP 민감도 레이블</value>
+  </data>
+  <data name="AllAppsImportedFromPlay" xml:space="preserve">
+    <value>모든 애플리케이션 가져옴</value>
+  </data>
+  <data name="AllAppsTab" xml:space="preserve">
+    <value>모든 앱</value>
+  </data>
+  <data name="Alloted" xml:space="preserve">
+    <value>할당됨</value>
+  </data>
+  <data name="AllowActionArchiveInfo" xml:space="preserve">
+    <value>이를 통해 이메일 보관 기능을 허용하거나 차단할 수 있습니다.</value>
+  </data>
+  <data name="AllowActionSpamInfo" xml:space="preserve">
+    <value>사용하지 않도록 설정하면 최종 사용자가 Workspace ONE Boxer의 스팸 옵션을 사용할 수 없습니다 사용하도록 설정하고 전달 이메일 주소를 제공하지 않으면 스팸 보고서가 정크 이메일로 이동됩니다.</value>
+  </data>
+  <data name="AllowAnnotations" xml:space="preserve">
+    <value>주석 허용</value>
+  </data>
+  <data name="AllowAnnotationsTip" xml:space="preserve">
+    <value>필기 및 형광펜 도구를 허용합니다.</value>
+  </data>
+  <data name="AllowAppRemovalsWithoutProtectionTimeWindowHelp" xml:space="preserve">
+    <value>관리자가 제거를 승인하고 재개하면, 제거 작업을 성공적으로 허용하기 위해 여기에서 예약된 간격 동안 해당 앱에 대한 보호가 트리거되지 않습니다. 간격이 경과한 후 영향을 받는 장치가 '제출된 영향을 받은 장치'에서 구성한 수에 도달하면 보호가 다시 트리거됩니다.</value>
+  </data>
+  <data name="AllowArchivingEmails" xml:space="preserve">
+    <value>이메일 보관 허용</value>
+  </data>
+  <data name="AllowAttachmentsDownloadInfo" xml:space="preserve">
+    <value>첨부 파일 다운로드를 사용하거나 사용하지 않도록 설정합니다.</value>
+  </data>
+  <data name="AllowAttachmentsInfo" xml:space="preserve">
+    <value>메일을 보낼 때 첨부 파일을 사용하거나 사용하지 않도록 설정</value>
+  </data>
+  <data name="AllowAttachmentsTip" xml:space="preserve">
+    <value>메모 첨부 파일 기능을 사용하거나 사용하지 않도록 설정합니다. 사용하지 않도록 설정된 경우에는 첨부 유형이 허용되지 않습니다.</value>
+  </data>
+  <data name="AllowCameraTip" xml:space="preserve">
+    <value>장치 카메라 옵션을 사용하거나 사용하지 않도록 설정합니다.</value>
+  </data>
+  <data name="AllowCrashReportingInfo" xml:space="preserve">
+    <value>기본적으로 Boxer는 충돌을 익명으로 보고할 수 있습니다. 충돌을 보고 수정할 수 있도록 이 옵션을 사용하는 것이 좋습니다.</value>
+  </data>
+  <data name="AllowDocProvidersInfo" xml:space="preserve">
+    <value>Workspace ONE Boxer 내의 외부 제공자(iCloud, Dropbox, Google Drive 등)에서 첨부 파일을 사용하거나 사용하지 않도록 설정합니다.</value>
+  </data>
+  <data name="AllowDocumentScanner" xml:space="preserve">
+    <value>문서 스캐너 허용</value>
+  </data>
+  <data name="AllowDocumentScannerTip" xml:space="preserve">
+    <value>문서 스캔 기능을 사용하거나 사용하지 않도록 설정합니다.</value>
+  </data>
+  <data name="AllowEnterpriseContentInfo" xml:space="preserve">
+    <value>엔터프라이즈 콘텐츠는 온라인 저장소를 통해 파일을 저장하고 보기 위해 Boxer로 Workspace ONE Content의 저장소 설정을 가져옵니다. 이 구성에는 SSO가 사용하도록 설정되어야 합니다.</value>
+  </data>
+  <data name="AllowExchange" xml:space="preserve">
+    <value>Exchange 허용</value>
+  </data>
+  <data name="AllowGallery" xml:space="preserve">
+    <value>갤러리 허용</value>
+  </data>
+  <data name="AllowGalleryTip" xml:space="preserve">
+    <value>장치 이미지 갤러리 액세스 및 사용을 사용하거나 사용하지 않도록 설정합니다.</value>
+  </data>
+  <data name="AllowHyperlinksTip" xml:space="preserve">
+    <value>사용자가 하이퍼링크를 입력할 수 있도록 허용합니다.</value>
+  </data>
+  <data name="AllowList" xml:space="preserve">
+    <value>목록 허용</value>
+  </data>
+  <data name="AllowLocalCalendarsInfo" xml:space="preserve">
+    <value>Workspace ONE Boxer에서 로컬 캘린더를 사용하려면 True로 설정합니다. 사용하지 않도록 설정된 경우 최종 사용자가 Workspace ONE Boxer의 로컬 연락처를 사용할 수 없습니다.</value>
+  </data>
+  <data name="AllowMetricsInfo" xml:space="preserve">
+    <value>제품 결정에 도움이 되는 익명 메트릭 수집을 사용하지 않으려면 선택합니다.</value>
+  </data>
+  <data name="AllowOpenInInfo" xml:space="preserve">
+    <value>열기 기능을 사용하여 다른 앱에서 파일을 연결 또는 연결할 수 없도록 설정하거나 Workspace ONE Boxer로 공유합니다. 첨부 파일 열기 기능이나 공유를 사용하지 않도록 설정하면 '관리자가 외부 애플리케이션의 첨부 파일을 제한했습니다'라는 메시지가 표시됩니다.</value>
+  </data>
+  <data name="AllowRemovalsForDuration" xml:space="preserve">
+    <value>보호 없이 제거 허용(시간)</value>
+  </data>
+  <data name="AllowTextBoxes" xml:space="preserve">
+    <value>텍스트 상자 허용</value>
+  </data>
+  <data name="AllowTextBoxesTip" xml:space="preserve">
+    <value>텍스트 상자를 허용합니다.</value>
+  </data>
+  <data name="AllowUserInstallDeferralLabel" xml:space="preserve">
+    <value>사용자 설치 연기 허용</value>
+  </data>
+  <data name="AllowUserInstallDeferralTooltip" xml:space="preserve">
+    <value>사용자가 이 애플리케이션 설치를 연기할 수 있도록 허용</value>
+  </data>
+  <data name="AllowUserRegistrationMessage" xml:space="preserve">
+    <value>사용자 환경 URL 및 GroupID에 대한 액세스 권한이 있는 모든 사용자가 사용자 계정을 생성하고 회사 리소스에 액세스할 수 있도록 허용합니다. 권한이 없는 사용자가 액세스할 수 없도록 하려면 이 옵션을 선택 취소하고 계정 &gt; 사용자 &gt; 목록 보기 &gt; '사용자 추가'로 이동하여 사용자 계정을 생성합니다.</value>
+  </data>
+  <data name="AllowVoiceRecordings" xml:space="preserve">
+    <value>음성 녹음 허용</value>
+  </data>
+  <data name="AllowVoiceRecordingsTip" xml:space="preserve">
+    <value>음성 녹음을 사용하거나 사용하지 않도록 설정합니다.</value>
+  </data>
+  <data name="AndroidDerivedCredentialSmimeForFirstaccount" xml:space="preserve">
+    <value>{0}은(는) 단일 S/MIME 인증서만 지원합니다. 기본 관리 이메일 계정에만 이 옵션을 선택하십시오.</value>
+  </data>
+  <data name="AppAlreadyExistsUnderProductProvisioning" xml:space="preserve">
+    <value>이 애플리케이션은 '제품 프로비저닝'에 이미 있으며 '앱 및 책' 아래에 업로드할 수 없습니다. '제품 프로비저닝'에서 앱 인스턴스를 삭제하고 업로드를 다시 시도할 수 있습니다. 앱 제거를 방지하려면 애플리케이션을 보유할 권한이 있는 장치가 모두 할당의 일부인지 확인합니다.</value>
+  </data>
+  <data name="AppAvatarsDefault" xml:space="preserve">
+    <value>아바타 사용</value>
+  </data>
+  <data name="AppBulkAction" xml:space="preserve">
+    <value>애플리케이션 대량 작업</value>
+  </data>
+  <data name="AppCategories" xml:space="preserve">
+    <value>앱 카테고리</value>
+  </data>
+  <data name="AppCompliance" xml:space="preserve">
+    <value>앱 규정 준수</value>
+  </data>
+  <data name="AppComplianceReportedCompliant" xml:space="preserve">
+    <value>앱 규정 준수 - 규정 준수 보고</value>
+  </data>
+  <data name="AppComplianceReportedNonCompliant" xml:space="preserve">
+    <value>앱 규정 준수 - 규정 준수 위반 보고</value>
+  </data>
+  <data name="AppComplianceReportedUnknown" xml:space="preserve">
+    <value>앱 규정 준수 - 알 수 없음 보고</value>
+  </data>
+  <data name="AppConfigSectionMmaInfoMsg" xml:space="preserve">
+    <value>이 KVP가 애플리케이션 전체에 적용되는지 확인합니다. 중단을 방지하려면 특정 이메일 계정에만 적용되는 모든 구성을 '이메일 설정'의 '사용자 지정 계정 구성'으로 이동해야 합니다.</value>
+  </data>
+  <data name="AppConversationViewDefault" xml:space="preserve">
+    <value>대화 그룹화</value>
+  </data>
+  <data name="AppDefaultBrowser" xml:space="preserve">
+    <value>기본 브라우저로 제한</value>
+  </data>
+  <data name="AppDefaultBrowserExceptions" xml:space="preserve">
+    <value>브라우저 예외</value>
+  </data>
+  <data name="AppDefaultBrowserExceptionsInfo" xml:space="preserve">
+    <value>하이퍼링크가 Console에서 제한된 경우 항상 기본/네이티브 브라우저에서 열리도록 도메인/사이트에 대한 예외 목록을 추가할 수 있습니다. 하이퍼링크가 제한되지 않으면 항상 Workspace ONE Web에서 열리도록 도메인/사이트에 대한 예외 목록을 추가할 수 있습니다. 예외 목록은 와일드카드, 하위 도메인, 도메인에만 일치합니다. 예: AppDefaultBrowserExceptions = ["*.vmware.com", "jira*.vmware.com", "internal.vmware.com", "vmware.com"]</value>
+  </data>
+  <data name="AppDefaultBrowserTooltip" xml:space="preserve">
+    <value>기본 브라우저에서 모든 링크를 엽니다.</value>
+  </data>
+  <data name="AppDefaultCallerID" xml:space="preserve">
+    <value>기본 발신자 ID</value>
+  </data>
+  <data name="AppDeploymentInlineHelpPublic" xml:space="preserve">
+    <value>적용 날짜에 자동으로(자동) 또는 수동으로(주문형) 애플리케이션을 배포하십시오.</value>
+  </data>
+  <data name="AppDetails" xml:space="preserve">
+    <value>앱 세부 정보</value>
+  </data>
+  <data name="AppDetailsView" xml:space="preserve">
+    <value>애플리케이션 세부 정보 보기</value>
+  </data>
+  <data name="AppDomainsInternal" xml:space="preserve">
+    <value>내부 도메인 목록</value>
+  </data>
+  <data name="AppDomainsWarning" xml:space="preserve">
+    <value>외부 수신자 경고</value>
+  </data>
+  <data name="AppDomainsWarningInfo" xml:space="preserve">
+    <value>외부 수신자에게 메시지를 보낼 때 최종 사용자에게 알립니다.</value>
+  </data>
+  <data name="AppEnableKeyWrappingOnlyMode" xml:space="preserve">
+    <value>Swift SDK 키 래핑 전용 모드 사용</value>
+  </data>
+  <data name="AppEnableKeyWrappingOnlyModeInfo" xml:space="preserve">
+    <value>키 래핑 보안 기능을 모두 활용하려면 계속 사용합니다.</value>
+  </data>
+  <data name="AppForceActivateSSO" xml:space="preserve">
+    <value>SSO(Single Sign-On) 사용</value>
+  </data>
+  <data name="AppForceActivateSSOInfo" xml:space="preserve">
+    <value>이렇게 하면 SSO가 활성화되고 SSO가 항상 켜져 있는 상태에서 이 키는 더 이상 사용되지 않습니다. 이는 엔터프라이즈 콘텐츠를 비롯한 여러 기능에도 필요합니다.</value>
+  </data>
+  <data name="AppGroup" xml:space="preserve">
+    <value>앱 그룹</value>
+  </data>
+  <data name="AppGroups" xml:space="preserve">
+    <value>앱 그룹</value>
+  </data>
+  <data name="AppInstallDeferred" xml:space="preserve">
+    <value>설치 지연됨</value>
+  </data>
+  <data name="AppKeyWrappingOnlyMode" xml:space="preserve">
+    <value>Swift SDK 키 래핑 전용 모드</value>
+  </data>
+  <data name="AppleUpdateAvailableHelpText" xml:space="preserve">
+    <value>이 열에서는 애플리케이션이 최신 버전인지 아니면 업데이트가 있는지 여부를 알 수 있습니다. 이 열은 App Store에 있는 앱에만 지원됩니다.</value>
+  </data>
+  <data name="ApplicationApprovedFordeviceAssignment" xml:space="preserve">
+    <value>장치 기반 할당이 활성화된 애플리케이션. 모든 iOS9 이상 및 macOS 10.11 이상 장치는 장치당 하나의 라이센스를 받습니다. 해당 장치는 애플리케이션을 받기 위해 Apple ID가 없어도 됩니다.</value>
+  </data>
+  <data name="ApplicationApprovedFordeviceAssignmentWithTvOS" xml:space="preserve">
+    <value>장치 기반 할당이 활성화된 애플리케이션. 모든 iOS 9 이상 및 macOS 10.11 이상 장치는 장치당 하나의 라이센스를 받습니다. 해당 장치는 애플리케이션을 받기 위해 Apple ID가 없어도 됩니다. tvOS 장치는 장치 기반 라이센스만 사용할 수 있으며 사용에 관리자 작업을 요구하지 않습니다.</value>
+  </data>
+  <data name="ApplicationAttributes" xml:space="preserve">
+    <value>속성</value>
+  </data>
+  <data name="ApplicationAttributesTooltip" xml:space="preserve">
+    <value>애플리케이션 특성은 개별 조직과 연결된 도메인 목록과 같이 작업 중에 사용할 애플리케이션에 대한 장치 특정 세부 정보를 제공하는 데 사용됩니다.</value>
+  </data>
+  <data name="ApplicationBundleId" xml:space="preserve">
+    <value>애플리케이션 번들 ID</value>
+  </data>
+  <data name="ApplicationCantDeleteRetireConfirmation" xml:space="preserve">
+    <value>애플리케이션을 삭제하면 Workspace ONE이 해당 애플리케이션을 관리하는 하나 또는 그 이상의 할당된 장치에서 제거되고 Console에서 사용 중지됩니다. 계속 하시겠습니까?</value>
+  </data>
+  <data name="ApplicationConfigMigrationJob" xml:space="preserve">
+    <value>애플리케이션 구성 마이그레이션 작업</value>
+  </data>
+  <data name="ApplicationDeactivateDescription" xml:space="preserve">
+    <value>애플리케이션을 비활성화하면 Workspace ONE에서 관리하는 모든 장치에서 해당 애플리케이션의 모든 버전이 제거됩니다. 신중하게 진행하시기 바랍니다.</value>
+  </data>
+  <data name="ApplicationDeploymentStatusStaleTime" xml:space="preserve">
+    <value>다음 시간 후에 애플리케이션 UEM 명령 오래됨으로 표시</value>
+  </data>
+  <data name="ApplicationDeploymentStatusStaleTimeForAndroid" xml:space="preserve">
+    <value>Android</value>
+  </data>
+  <data name="ApplicationDeploymentStatusStaleTimeForIos" xml:space="preserve">
+    <value>iOS</value>
+  </data>
+  <data name="ApplicationDeploymentStatusStaleTimeForMacOs" xml:space="preserve">
+    <value>macOS</value>
+  </data>
+  <data name="ApplicationDeploymentStatusStaleTimeForWindows" xml:space="preserve">
+    <value>Windows</value>
+  </data>
+  <data name="ApplicationDeploymentStatusStaleTimeTooltip" xml:space="preserve">
+    <value>장치가 마지막 UEM 명령(작업을 완료하지 않은 경우)을 승인하는 시간(분)을 설정하여 UEM 명령을 "오래됨"으로 표시하도록 합니다. 애플리케이션이 게시될 때 오래된 명령이 다시 트리거됩니다. 애플리케이션 카탈로그는 더는 최종 사용자에게 애플리케이션을 "처리 중"으로 표시하지 않고 "설치" 또는 "업데이트" 작업을 다시 사용하도록 설정합니다.</value>
+  </data>
+  <data name="ApplicationGroupActivated" xml:space="preserve">
+    <value>애플리케이션 그룹이 활성화됨</value>
+  </data>
+  <data name="ApplicationGroupDeactivated" xml:space="preserve">
+    <value>애플리케이션 그룹이 비활성화됨</value>
+  </data>
+  <data name="ApplicationGroupDeleted" xml:space="preserve">
+    <value>애플리케이션 그룹이 삭제됨</value>
+  </data>
+  <data name="ApplicationInKiosk" xml:space="preserve">
+    <value>공지사항: 이 애플리케이션이 키오스크 프로필에 포함되어 있습니다. 애플리케이션을 제거 후 프로필을 업데이트하십시오.</value>
+  </data>
+  <data name="ApplicationMaxFileSizeWithCdn" xml:space="preserve">
+    <value>CDN을 포함한 애플리케이션 최대 파일 크기</value>
+  </data>
+  <data name="ApplicationMaxFileSizeWithCdnToolTip" xml:space="preserve">
+    <value>CDN을 사용하도록 설정하면 최대 파일 크기와 CDN을 포함한 최대 파일 크기에서 더 큰 값이 이 조직 그룹에 대한 업로드에 사용됩니다.</value>
+  </data>
+  <data name="ApplicationPublished" xml:space="preserve">
+    <value>애플리케이션 게시 성공</value>
+  </data>
+  <data name="ApplicationPublishFailed" xml:space="preserve">
+    <value>애플리케이션 게시 실패</value>
+  </data>
+  <data name="ApplicationPublishStarted" xml:space="preserve">
+    <value>애플리케이션 게시 시작됨</value>
+  </data>
+  <data name="ApplicationReasonChange" xml:space="preserve">
+    <value>애플리케이션 사유 변경</value>
+  </data>
+  <data name="ApplicationRetireDescription" xml:space="preserve">
+    <value>애플리케이션 버전의 사용을 중지하면 Workspace ONE에서 관리하는 모든 장치에서 해당 애플리케이션 버전이 제거됩니다. 가능한 경우 애플리케이션의 다음 하위 버전이 장치에 푸시됩니다. 신중하게 진행하시기 바랍니다.</value>
+  </data>
+  <data name="ApplicationSample" xml:space="preserve">
+    <value>애플리케이션 샘플</value>
+  </data>
+  <data name="ApplicationSource" xml:space="preserve">
+    <value>애플리케이션 소스</value>
+  </data>
+  <data name="ApplicationsSetting" xml:space="preserve">
+    <value>애플리케이션 설정</value>
+  </data>
+  <data name="ApplicationsSettings" xml:space="preserve">
+    <value>애플리케이션 설정</value>
+  </data>
+  <data name="ApplicationTransforms" xml:space="preserve">
+    <value>애플리케이션 변환</value>
+  </data>
+  <data name="ApplicationUemVersionAlreadyExists" xml:space="preserve">
+    <value>애플리케이션 UEM 버전이 이미 존재함</value>
+  </data>
+  <data name="ApplicationUserAppRatingDescription" xml:space="preserve">
+    <value>{0} 애플리케이션 사용자 앱 등급(별 5개 중 {1}개)</value>
+    <comment>The first placeholder in the label key is for the application name and the second placeholder is for the app rating count by user.</comment>
+  </data>
+  <data name="ApplicationUUID" xml:space="preserve">
+    <value>애플리케이션 UUID</value>
+  </data>
+  <data name="AppLogAggregationMode" xml:space="preserve">
+    <value>로그 집계 모드</value>
+  </data>
+  <data name="AppLogAggregationUrl" xml:space="preserve">
+    <value>로그 집계 URL</value>
+  </data>
+  <data name="AppMobileFlowsAutoEnableConnectors" xml:space="preserve">
+    <value>Mobile Flows 자동 사용 커넥터</value>
+  </data>
+  <data name="AppMobileFlowsEnabled" xml:space="preserve">
+    <value>Mobile Flows</value>
+  </data>
+  <data name="AppMobileFlowsEnabledInfo" xml:space="preserve">
+    <value>Boxer와 통합할 수 있는 Mobile Flows 서버 정보 구성</value>
+  </data>
+  <data name="AppMobileFlowsHost" xml:space="preserve">
+    <value>Mobile Flows 호스트</value>
+  </data>
+  <data name="AppMobileFlowsSyncTimeHours" xml:space="preserve">
+    <value>Mobile Flows 동기화 시간</value>
+  </data>
+  <data name="AppMobileFlowsSyncTimeHoursInfo" xml:space="preserve">
+    <value>이 값(시간)보다 이전에 전송되는 이메일에 대해 Mobile Flow 카드를 요청하지 마십시오.</value>
+  </data>
+  <data name="AppMobileFlowsvIDM" xml:space="preserve">
+    <value>Mobile Flows 인증 서버</value>
+  </data>
+  <data name="AppNameIsRequired" xml:space="preserve">
+    <value>결과를 보려면 애플리케이션 이름이 필요합니다.</value>
+  </data>
+  <data name="AppNotExistOrUnauthorizedAccess" xml:space="preserve">
+    <value>애플리케이션이 없거나 사용자에게 애플리케이션에 액세스할 수 있는 권한이 없습니다.</value>
+  </data>
+  <data name="AppPasscode" xml:space="preserve">
+    <value>앱 암호</value>
+  </data>
+  <data name="AppPatchUpdate" xml:space="preserve">
+    <value>애플리케이션 패치 업데이트</value>
+  </data>
+  <data name="AppPhishEmailAddress" xml:space="preserve">
+    <value>피싱 신고 대상</value>
+  </data>
+  <data name="AppPhishEmailAddressInfo" xml:space="preserve">
+    <value>신고된 피싱 이메일을 수신할 이메일 주소를 구성합니다.</value>
+  </data>
+  <data name="AppPlainTextMode" xml:space="preserve">
+    <value>일반 텍스트 모드</value>
+  </data>
+  <data name="AppPlainTextModeInfo" xml:space="preserve">
+    <value>Boxer가 일반 텍스트 모드에서만 동기화되도록 하려면 선택합니다. HTML 콘텐츠는 허용되지 않습니다.</value>
+  </data>
+  <data name="AppPolicies" xml:space="preserve">
+    <value>앱 정책</value>
+  </data>
+  <data name="AppPurebredPackageName" xml:space="preserve">
+    <value>Purebred 애플리케이션 ID</value>
+  </data>
+  <data name="AppPurebredPackageNameInfo" xml:space="preserve">
+    <value>Purebred 애플리케이션의 패키지/번들 ID입니다. 이 ID는 Boxer와 함께 사용할 수 있도록 장치에서 Purebred 애플리케이션을 확인하는 데 사용됩니다.</value>
+  </data>
+  <data name="AppPurebredPublicKey" xml:space="preserve">
+    <value>Purebred 애플리케이션 서명</value>
+  </data>
+  <data name="AppPurebredPublicKeyInfo" xml:space="preserve">
+    <value>Purebred 애플리케이션의 공용 서명입니다. 이 키는 Boxer와 함께 사용할 수 있도록 장치에서 Purebred 애플리케이션을 확인하는 데 사용됩니다.</value>
+  </data>
+  <data name="AppRefetchEmptyLinksUsingMime" xml:space="preserve">
+    <value>Mime을 사용하여 빈 링크 다시 가져오기</value>
+  </data>
+  <data name="AppRefetchEmptyLinksUsingMimeInfo" xml:space="preserve">
+    <value>서버가 아닌 도메인을 가리키는 비표준 URL 체계(예: RSA 애플리케이션)가 포함된 HTML을 통해 가져온 이메일의 경우 Exchange에서 URL을 빈 공간 두 개로 교체합니다. KVP를 사용하면 Boxer가 이러한 발생을 감지하고 MIME을 사용하여 영향을 받는 본문을 다시 다운로드할 수 있습니다. 이는 동일한 URL 교체 문제에 적용되지 않습니다.</value>
+  </data>
+  <data name="AppRemovalProtectionLogDevicesHeader" xml:space="preserve">
+    <value>앱 제거 보호 로그 장치</value>
+  </data>
+  <data name="AppRetriesOnFailedInitialAuth" xml:space="preserve">
+    <value>인증 재시도 횟수 지정</value>
+  </data>
+  <data name="AppRetriesOnFailedInitialAuthInfo" xml:space="preserve">
+    <value>장애 발생 시 인증 재시도 횟수 지정</value>
+  </data>
+  <data name="AppSampleInformation" xml:space="preserve">
+    <value>앱 샘플 정보</value>
+  </data>
+  <data name="AppSampleLastSeen" xml:space="preserve">
+    <value>앱 샘플 마지막 표시</value>
+  </data>
+  <data name="AppSequencingTab" xml:space="preserve">
+    <value>애플리케이션 서열화</value>
+  </data>
+  <data name="AppSkipTutorial" xml:space="preserve">
+    <value>앱 내 자습서 건너뛰기</value>
+  </data>
+  <data name="AppSkipTutorialTooltip" xml:space="preserve">
+    <value>처음 실행 시 애플리케이션 자습서에서 건너뛰기</value>
+  </data>
+  <data name="AppSpamForwardAddress" xml:space="preserve">
+    <value>스팸 신고 대상</value>
+  </data>
+  <data name="AppSpamForwardAddressInfo" xml:space="preserve">
+    <value>신고된 스팸 이메일을 수신할 이메일 주소를 구성합니다.</value>
+  </data>
+  <data name="AppsTabSegregationFeatureInformation" xml:space="preserve">
+    <value>관리되는 애플리케이션 탭에는 Workspace ONE UEM에서 관리되는 모든 macOS 애플리케이션 및 소프트웨어 설치 프로그램이 표시됩니다. 모든 애플리케이션 탭에는 장치에 설치된 모든 .app 번들의 읽기 전용 macOS 보고된 목록이 표시됩니다. 모든 애플리케이션 탭의 콘텐츠 가용성은 개인 애플리케이션에 대한 UEM Console 개인 정보 설정에서 구성됩니다.</value>
+  </data>
+  <data name="AppStatus" xml:space="preserve">
+    <value>앱 상태</value>
+  </data>
+  <data name="AppsTermsOfUseNotification" xml:space="preserve">
+    <value>앱 EULA 업데이트 알림</value>
+  </data>
+  <data name="AppStore" xml:space="preserve">
+    <value>App Store</value>
+  </data>
+  <data name="AppStoreAppSourceHelpText" xml:space="preserve">
+    <value>이 열에서는 App Store에 애플리케이션이 제공되었는지를 알 수 있습니다.</value>
+  </data>
+  <data name="AppSwipesLeftLongDefault" xml:space="preserve">
+    <value>왼쪽 길게 쓸어넘기기 기본값</value>
+  </data>
+  <data name="AppSwipesLeftShortDefault" xml:space="preserve">
+    <value>왼쪽 짧게 쓸어넘기기 기본값</value>
+  </data>
+  <data name="AppSwipesRightLongDefault" xml:space="preserve">
+    <value>오른쪽 길게 쓸어넘기기 기본값</value>
+  </data>
+  <data name="AppSwipesRightShortDefault" xml:space="preserve">
+    <value>오른쪽 짧게 쓸어넘기기 기본값</value>
+  </data>
+  <data name="AppsWithConfigurationErrors" xml:space="preserve">
+    <value>구성 오류가 있는 애플리케이션</value>
+  </data>
+  <data name="AppUpdatedDate" xml:space="preserve">
+    <value>애플리케이션 업데이트 날짜</value>
+  </data>
+  <data name="AppUpdateSource" xml:space="preserve">
+    <value>애플리케이션 업데이트 소스</value>
+  </data>
+  <data name="AppUrl" xml:space="preserve">
+    <value>애플리케이션 URL</value>
+  </data>
+  <data name="AppVersionDetailsHelp" xml:space="preserve">
+    <value>Workspace ONE UEM은 각 내부 애플리케이션 패키지의 내부 버전을 유지합니다. 이 필드에는 '애플리케이션 버전'이 자동으로 채워집니다. 이 필드는 최종 사용자 장치에 할당 및 배포해야 하는 최신 버전을 식별하는 데 사용됩니다.</value>
+  </data>
+  <data name="AppVersionInformationFourDecimal" xml:space="preserve">
+    <value>각 필드는 필수이고 32비트 정수의 최대값(2147483647)을 초과할 수 없습니다.</value>
+  </data>
+  <data name="AppVersionNeedsAssignment" xml:space="preserve">
+    <value>애플리케이션 버전 할당 필요</value>
+  </data>
+  <data name="AppVersionNeedsAssignmentInfo" xml:space="preserve">
+    <value>최신 애플리케이션 버전에는 하나 이상의 할당이 필요합니다.</value>
+  </data>
+  <data name="AppVersionNeedsAssignmentMessage" xml:space="preserve">
+    <value>최신 애플리케이션 버전에 애플리케이션 할당이 없습니다. 이 애플리케이션을 사용하는 워크플로 할당은 이전 애플리케이션 버전 및 해당 기본 정책을 계속 사용합니다. 새 애플리케이션 버전을 사용하려면 애플리케이션 할당을 생성합니다.</value>
+  </data>
+  <data name="AppVersionUpdateNotification" xml:space="preserve">
+    <value>애플리케이션 버전 업데이트 알림</value>
+  </data>
+  <data name="AppWorkflowsMenuDescription" xml:space="preserve">
+    <value>애플리케이션 워크플로</value>
+  </data>
+  <data name="AppWorkflowsMenuItem" xml:space="preserve">
+    <value>애플리케이션 워크플로</value>
+  </data>
+  <data name="Architecture" xml:space="preserve">
+    <value>아키텍처</value>
+  </data>
+  <data name="ArgAssignedCount" xml:space="preserve">
+    <value>{0} 할당됨</value>
+  </data>
+  <data name="ArgInstalledCount" xml:space="preserve">
+    <value>{0} 설치됨</value>
+  </data>
+  <data name="ArgNotInstalledCount" xml:space="preserve">
+    <value>{0} 설치 안 됨</value>
+  </data>
+  <data name="ArgVersions" xml:space="preserve">
+    <value>{0}개의 버전</value>
+  </data>
+  <data name="ARMAppDependencies" xml:space="preserve">
+    <value>ARM 의존성</value>
+  </data>
+  <data name="ArpMessage" xml:space="preserve">
+    <value>제거 임계값에 도달하여 애플리케이션 제거가 일시 중지되었습니다.</value>
+  </data>
+  <data name="AssignedArgOutOfTotalInstalledArg" xml:space="preserve">
+    <value>{1}의 {0}이(가) 할당됨</value>
+  </data>
+  <data name="AssignedButNotInstalled" xml:space="preserve">
+    <value>할당되었지만 설치되지 않음</value>
+  </data>
+  <data name="AssignedConfiguration" xml:space="preserve">
+    <value>할당된 구성</value>
+  </data>
+  <data name="AssignmentCannotBeRemovedForAnAppAssociatedWithWorkflow" xml:space="preserve">
+    <value>워크플로의 일부인 애플리케이션에 대한 할당을 제거할 수 없습니다.</value>
+  </data>
+  <data name="AssignmentCopiedFrom" xml:space="preserve">
+    <value>다음에서 복사된 할당</value>
+  </data>
+  <data name="AssignmentCopiedFromMessage" xml:space="preserve">
+    <value>아래에서 새로 고침 버튼을 클릭하여 다음에서 복사될 버전 번호 할당을 표시합니다.</value>
+  </data>
+  <data name="AssignmentCreated" xml:space="preserve">
+    <value>애플리케이션 할당 생성됨</value>
+  </data>
+  <data name="AssignmentDeleted" xml:space="preserve">
+    <value>애플리케이션 할당 삭제됨</value>
+  </data>
+  <data name="AssignmentDescriptionPlaceholder" xml:space="preserve">
+    <value>할당 설명</value>
+  </data>
+  <data name="AssignmentGroupingInfoMessage" xml:space="preserve">
+    <value>이 할당의 일부 스마트 그룹에는 애플리케이션 구성 또는 애플리케이션 특성 키 값 또는 MST 변환 파일에 분리된 차이점이 있어 정확성을 보장합니다. 최종 사용자의 장치에 영향을 주지 않으며 추가 작업이 필요하지 않습니다.</value>
+  </data>
+  <data name="AssignmentInformation" xml:space="preserve">
+    <value>할당 정보</value>
+  </data>
+  <data name="AssignmentInstallDetails" xml:space="preserve">
+    <value>할당 및 설치 세부 정보</value>
+  </data>
+  <data name="AssignmentInstallDetailsToolTip" xml:space="preserve">
+    <value>Workspace ONE에서 이 애플리케이션을 할당한 기기의 설치 세부 정보</value>
+  </data>
+  <data name="AssignmentNamePlaceholder" xml:space="preserve">
+    <value>할당 이름</value>
+  </data>
+  <data name="AssignmentOutOfDate" xml:space="preserve">
+    <value>할당 만료 날짜</value>
+  </data>
+  <data name="AssignmentStatus" xml:space="preserve">
+    <value>할당 상태</value>
+  </data>
+  <data name="AssignmentUpdated" xml:space="preserve">
+    <value>애플리케이션 할당 업데이트됨</value>
+  </data>
+  <data name="AssignmentUpToDate" xml:space="preserve">
+    <value>최신 상태입니다. 애플리케이션이 할당 및 설치됨</value>
+  </data>
+  <data name="AtleastOneActiveAssignmentIsRequired" xml:space="preserve">
+    <value>하나 이상의 할당 규칙에 연결된 활성 스마트 그룹이 없습니다. 계속하려면 스마트 그룹을 추가하거나 할당 규칙을 삭제하십시오.</value>
+  </data>
+  <data name="AtleastOneAssignmentIsRequired" xml:space="preserve">
+    <value>할당에는 하나 이상의 스마트 그룹을 지정해야 합니다.</value>
+  </data>
+  <data name="AttachmentDownload" xml:space="preserve">
+    <value>첨부 파일 다운로드</value>
+  </data>
+  <data name="AttachmentsRestrictionMMAInfo" xml:space="preserve">
+    <value>이 설정은 사용자가 다른 애플리케이션에서 이메일 또는 첨부 파일을 열 수 있는지 결정합니다. 모든 애플리케이션에서 열리지 않도록 하려면 미리 보기 전용을 선택하고, 허용되는 애플리케이션을 지정하려면 허용 목록을 선택하고, 모든 앱에서 열리도록 하려면 제한 없음을 선택하십시오.</value>
+  </data>
+  <data name="AttachPhotos" xml:space="preserve">
+    <value>사진 첨부</value>
+  </data>
+  <data name="AuthenticateExchangeServerTooltip" xml:space="preserve">
+    <value>Exchange 서버에 인증하는 방법 구성</value>
+  </data>
+  <data name="AuthenticationAdvancedSectionMessage" xml:space="preserve">
+    <value>선택 항목에 사용할 수 있는 고급 구성 없음</value>
+  </data>
+  <data name="AuthenticationType" xml:space="preserve">
+    <value>인증 유형</value>
+  </data>
+  <data name="AuthenticationTypeInfo" xml:space="preserve">
+    <value>사용자 이름 및 암호로 인증하려면 기본을 선택하며, 인증서로 인증하려면 인증서를 선택하고, 인증서와 암호로 Exchange와 인증하려면 둘 다를 선택하십시오.</value>
+  </data>
+  <data name="AutoAppAssignedButNotInstalled" xml:space="preserve">
+    <value>최신 버전이 아닙니다. 애플리케이션이 할당되었지만 설치되지 않음</value>
+  </data>
+  <data name="AutoAppAssignmentOutOfDate" xml:space="preserve">
+    <value>최신 버전이 아닙니다. 할당된 애플리케이션 버전이 설치된 버전과 동일하지 않음</value>
+  </data>
+  <data name="AutoBootstrapPackageAssignedButNotInstalled" xml:space="preserve">
+    <value>부트스트랩 패키지가 할당되었지만 장치가 이미 등록되었습니다. 주문형 배포에 사용할 수 있지만 요청되지 않았습니다.</value>
+  </data>
+  <data name="AvailablePatchCriticality" xml:space="preserve">
+    <value>사용 가능한 패치 중요도</value>
+  </data>
+  <data name="AvatarsDefault" xml:space="preserve">
+    <value>아바타</value>
+  </data>
+  <data name="BackLinkEmailSettings" xml:space="preserve">
+    <value>&lt; 이메일 설정</value>
+  </data>
+  <data name="BadgeOnly" xml:space="preserve">
+    <value>없음(배지 횟수만 해당)</value>
+  </data>
+  <data name="BasicAndCertificate" xml:space="preserve">
+    <value>기본 및 인증서</value>
+  </data>
+  <data name="BetaAppSourceHelpText" xml:space="preserve">
+    <value>이 열에서는 애플리케이션이 TestFlight에서 다운로드되었고, 앱의 베타 버전으로 간주되는지 알 수 있습니다.</value>
+  </data>
+  <data name="BlockingApplicationsInfoMessage" xml:space="preserve">
+    <value>설치가 안전하게 완료되지 못하도록 방해할 수 있는 애플리케이션이나 프로세스를 정의하십시오. 저장하기 전에 애플리케이션이 종료되지 않도록 이 옵션을 사용할 수도 있습니다.</value>
+  </data>
+  <data name="BlockingApplicationsTooltip" xml:space="preserve">
+    <value>애플리케이션의 이름을 정의하십시오. 앱이 /Applications/ 폴더에 있으면 파일 이름으로만 정의할 수 있으며 경로가 자동으로 검색됩니다.</value>
+  </data>
+  <data name="BookCategoriesHelp" xml:space="preserve">
+    <value>책 카탈로그에 쉽게 액세스하기 위해 책 패키지를 사전 지정된 카테고리나 사용자 지정 카테고리를 이용해 카테고리화하십시오.</value>
+  </data>
+  <data name="BootstrapPackageAssignedAndInstallCommandAcknowledged" xml:space="preserve">
+    <value>부트스트랩 패키지가 할당되고 설치 명령이 승인됨</value>
+  </data>
+  <data name="BootstrapPackageAssignedButInstallCommandNotAcknowledged" xml:space="preserve">
+    <value>부트스트랩 패키지가 할당되었지만 설치 명령이 아직 승인되지 않음</value>
+  </data>
+  <data name="BoxerSmimeInfoMsg" xml:space="preserve">
+    <value>아래 구성은 Boxer 애플리케이션 버전 5.21 이상에서 인식됩니다. 이전 버전의 경우 이 애플리케이션과 연결된 사용자 지정 SDK 프로필의 "자격 증명" 페이로드를 사용하십시오.</value>
+  </data>
+  <data name="BoxerTrustStoreOnly" xml:space="preserve">
+    <value>Boxer 신뢰 스토어 전용</value>
+  </data>
+  <data name="BuildNumber" xml:space="preserve">
+    <value>빌드 번호</value>
+  </data>
+  <data name="BulkActionExceptionMessage" xml:space="preserve">
+    <value>많은 장치에 대한 작업을 수행하려면 필터를 선택하십시오.</value>
+  </data>
+  <data name="BulkSyncTunnelConfigAlert" xml:space="preserve">
+    <value>Tunnel 구성이 유효한 할당을 가진 장치에서 동기화됩니다.</value>
+  </data>
+  <data name="Bundleidwarningforb2bapps" xml:space="preserve">
+    <value>번들 ID는 관리되는 배포와 사용자 지정 애플리케이션의 정확한 배포를 위해 필요합니다.</value>
+  </data>
+  <data name="CalendarMaxSyncPeriodInfo" xml:space="preserve">
+    <value>사용자가 캘린더 이벤트를 동기화하도록 선택할 수 있는 거리입니다.</value>
+  </data>
+  <data name="CannotAllotMoreThanArgLicenses" xml:space="preserve">
+    <value>{0}개 이상의 라이센스를 할당할 수 없음</value>
+  </data>
+  <data name="CannotRevokeLicense" xml:space="preserve">
+    <value>애플리케이션 라이선스를 해지할 수 없습니다. 올바른 VPP 계정 ID로 시도하십시오.</value>
+  </data>
+  <data name="CardsVersionMessage" xml:space="preserve">
+    <value>이러한 정책은 Card 버전 1.1 이상에만 적용됩니다. 이전 Card 버전에 대한 Exchange 설정을 관리하려면 이 애플리케이션과 연결된 SDK 프로필의 사용자 지정 설정으로 이동하십시오.</value>
+  </data>
+  <data name="CardsWarningToEditAllAssignments" xml:space="preserve">
+    <value>Cards 구성을 설정할 준비가 되었습니다. 게시하기 전에 이 애플리케이션과 연결된 SDK 프로필의 사용자 지정 설정에서 이식된 구성이 올바른지 확인합니다.</value>
+  </data>
+  <data name="CertAuthenticationTip" xml:space="preserve">
+    <value>인증서 인증의 경우 SDK 프로필에서 인증서를 구성/업로드하십시오.</value>
+  </data>
+  <data name="CertificateTemplateInfo" xml:space="preserve">
+    <value>장치에 여러 개의 관리되는 이메일 계정을 구성할 때 동일한 Exchange 서버에서 다른 UPN을 사용하는 다른 인증서 템플릿을 구성하십시오.</value>
+  </data>
+  <data name="CertificateUrlOnly" xml:space="preserve">
+    <value>인증서 URL 전용</value>
+  </data>
+  <data name="CertUrlWithFallback" xml:space="preserve">
+    <value>인증서 URL(폴백 포함)</value>
+  </data>
+  <data name="ChangeWhenToCallInstallComplete" xml:space="preserve">
+    <value>설치 완료 시기 결정 변경</value>
+  </data>
+  <data name="ChangeWhenToCallInstallCompleteDescription" xml:space="preserve">
+    <value>애플리케이션을 장치에 설치한 후 설치 완료 시기 결정 기준을 변경하면 이러한 장치에서 애플리케이션의 재평가가 트리거됩니다. 새 기준이 충족되지 않으면 해당 애플리케이션이 이러한 장치에서 제거됩니다. 이 작업으로 인해 발생할 수 있는 잠재적인 중단 때문에 기준 변경을 사용하도록 설정하려면 관리자 PIN이 필요합니다.</value>
+  </data>
+  <data name="CheckingDeviceEligibility" xml:space="preserve">
+    <value>장치 적합성 확인 중</value>
+  </data>
+  <data name="ClearConfigurationWarningText" xml:space="preserve">
+    <value>이 구성을 지우면 이전에 저장된 모든 값이 재설정되고 검색할 수 없게 됩니다.
+계속하시겠습니까?</value>
+  </data>
+  <data name="ClearConfigurationWarningTitleText" xml:space="preserve">
+    <value>구성 지우기 주의</value>
+  </data>
+  <data name="ClipboardEnabled" xml:space="preserve">
+    <value>클립보드 사용</value>
+  </data>
+  <data name="ClipboardPasteActionEnabled" xml:space="preserve">
+    <value>클립보드 붙여넣기 사용</value>
+  </data>
+  <data name="CollectionMenuDescription" xml:space="preserve">
+    <value>Horizon, Horizon Cloud, Citrix 또는 ThinApp의 가상 애플리케이션 및 데스크톱 배포와 Workspace ONE Access를 통합합니다.</value>
+  </data>
+  <data name="Collections" xml:space="preserve">
+    <value>컬렉션</value>
+  </data>
+  <data name="CollectionsHelp" xml:space="preserve">
+    <value>가상 애플리케이션 수집 액세스 제어, 디렉토리 관리자에게만 적용</value>
+  </data>
+  <data name="CompromisedProtectionTooltip" xml:space="preserve">
+    <value>손상된 장치에 자동으로 엔터프라이즈 초기화를 실행 활성화</value>
+  </data>
+  <data name="ConditionIf" xml:space="preserve">
+    <value>If</value>
+  </data>
+  <data name="ConditionIfArg" xml:space="preserve">
+    <value>If {0}</value>
+  </data>
+  <data name="ConditionNotMet" xml:space="preserve">
+    <value>조건이 충족되지 않음</value>
+  </data>
+  <data name="ConditionPrefix" xml:space="preserve">
+    <value>필터(If)</value>
+  </data>
+  <data name="ConditionSuffix" xml:space="preserve">
+    <value>작업(Then)</value>
+  </data>
+  <data name="ConditionSuffixUpgradeApp" xml:space="preserve">
+    <value>작업(Then) 업그레이드 애플리케이션</value>
+  </data>
+  <data name="ConditionThen" xml:space="preserve">
+    <value>Then</value>
+  </data>
+  <data name="ConditionThenArg" xml:space="preserve">
+    <value>Then {0}</value>
+  </data>
+  <data name="ConditionTitle" xml:space="preserve">
+    <value>조건 확인</value>
+  </data>
+  <data name="ConfigurationFeedbackFor" xml:space="preserve">
+    <value>{0}에 대한 구성 피드백</value>
+  </data>
+  <data name="ConfigurationPositionChangeNotice" xml:space="preserve">
+    <value>구성 위치 변경 알림</value>
+  </data>
+  <data name="ConfigureDLPSettingsTooltip" xml:space="preserve">
+    <value>이 계정에 대한 DLP 설정 구성</value>
+  </data>
+  <data name="ConfiguredUrlOnly" xml:space="preserve">
+    <value>구성된 URL 전용</value>
+  </data>
+  <data name="ConfigureEmailSeparationTooltip" xml:space="preserve">
+    <value>이 계정에 대한 이메일 분류 구성</value>
+  </data>
+  <data name="ConfigureRegistryData" xml:space="preserve">
+    <value>레지스트리 데이터 구성</value>
+  </data>
+  <data name="ConfigureRegistryDataHelpText" xml:space="preserve">
+    <value>특정 레지스트리 값을 확인 하려면 선택</value>
+  </data>
+  <data name="ConfigureRegistryValues" xml:space="preserve">
+    <value>레지스트리 값 구성</value>
+  </data>
+  <data name="ConfigureRegistryValuesHelpText" xml:space="preserve">
+    <value>경로 유무만 확인하려면 이 항목 선택 해제</value>
+  </data>
+  <data name="ConfigureSyncEmailCalenderTooltip" xml:space="preserve">
+    <value>이메일 및 캘린더 동기화 방법 구성</value>
+  </data>
+  <data name="ConfigureVpnAtApplicationLevel" xml:space="preserve">
+    <value>이 애플리케이션에 사용할 VPN 구성 프로필을 선택하십시오. 이 설정은 tvOS 장치에 적용되지 않습니다.</value>
+  </data>
+  <data name="ConfirmDeactivationApplicationRemoval" xml:space="preserve">
+    <value>애플리케이션을 비활성화하면 Workspace ONE이 해당 애플리케이션을 관리하는 모든 장치에서 해당 애플리케이션의 모든 버전을 제거합니다. 이 애플리케이션을 비활성화하시겠습니까?</value>
+  </data>
+  <data name="ConfirmRetirementApplicationRemoval" xml:space="preserve">
+    <value>애플리케이션 버전의 사용을 중지하면 Workspace ONE이 해당 애플리케이션을 관리하는 모든 장치에서 해당 애플리케이션 버전이 제거됩니다. 활성 상태인 경우 애플리케이션의 다음 하위 버전이 할당된 장치로 푸시됩니다. 이 애플리케이션을 사용 중지하시겠습니까?</value>
+  </data>
+  <data name="ConversationThreading" xml:space="preserve">
+    <value>대화 스레딩</value>
+  </data>
+  <data name="CopyOf" xml:space="preserve">
+    <value>사본</value>
+  </data>
+  <data name="CopyOfArg" xml:space="preserve">
+    <value>사본 - {0}</value>
+  </data>
+  <data name="CouldnotRetrieveApp" xml:space="preserve">
+    <value>애플리케이션을 검색할 수 없습니다. 더 이상 존재하지 않거나 삭제되었을 수 있습니다.</value>
+  </data>
+  <data name="CouldnotRetrieveAssignmentForApp" xml:space="preserve">
+    <value>이 애플리케이션에 대한 할당을 검색할 수 없습니다. 더 이상 존재하지 않거나 삭제되었을 수 있습니다.</value>
+  </data>
+  <data name="CrashReporting" xml:space="preserve">
+    <value>충돌 보고</value>
+  </data>
+  <data name="CreatedOnArgArgByArg" xml:space="preserve">
+    <value>{0}에 {1}가 생성함</value>
+  </data>
+  <data name="CreateWorkflow" xml:space="preserve">
+    <value>워크플로 생성</value>
+  </data>
+  <data name="CreateWorkflowBannerDescription" xml:space="preserve">
+    <value>애플리케이션 워크플로를 사용하면 직접 정의한 기준에 따라 여러 앱 배포 또는 업데이트를 특정 순서로 처리할 수 있습니다. 복잡한 배포 요구 사항을 관리하거나 보안 및 규정 준수 정책을 충족하지 못하는 앱을 업데이트하는 작업이 전보다 쉬워졌습니다.</value>
+  </data>
+  <data name="CreateWorkflowBannerHeader" xml:space="preserve">
+    <value>앱 배포 및 업데이트에 대한 추가 제어</value>
+  </data>
+  <data name="CreateWorkflowNote" xml:space="preserve">
+    <value>현재 Windows 데스크톱 장치에서만 사용할 수 있습니다.</value>
+  </data>
+  <data name="CurrentActiveAppAndUEMVersionArgs" xml:space="preserve">
+    <value>현재 활성 애플리케이션 버전은 {0}이고 애플리케이션의 UEM 버전은 {1}입니다.</value>
+  </data>
+  <data name="CurrentDeployment" xml:space="preserve">
+    <value>현재 배포</value>
+  </data>
+  <data name="CurrentUemVersion" xml:space="preserve">
+    <value>현재 UEM 버전</value>
+  </data>
+  <data name="CustomAccountConfiguration" xml:space="preserve">
+    <value>사용자 지정 계정 구성</value>
+  </data>
+  <data name="CustomOnlineMeetingUrlsInfo" xml:space="preserve">
+    <value>이렇게 하면 온라인 모임 서비스의 클라우드 버전에서 사용하는 표준 형식에 포함되지 않은 모임에 대해 특별히 온라인 모임 초대를 받는 캘린더 초대의 QuickJoin 버튼을 사용할 수 있습니다. 온-프레미스 설정이 있는 경우 URL을 사용하여 이를 구성합니다.</value>
+  </data>
+  <data name="DeactivateApplication" xml:space="preserve">
+    <value>애플리케이션 비활성화</value>
+  </data>
+  <data name="DefaultAppAvatarsInfo" xml:space="preserve">
+    <value>아바타 전환</value>
+  </data>
+  <data name="DefaultAssignmentDescription" xml:space="preserve">
+    <value>이 할당의 정책이 워크플로 할당에 기본적으로 사용됩니다.</value>
+  </data>
+  <data name="DefaultAssignmentPrompt" xml:space="preserve">
+    <value>이 할당의 정책을 기본값으로 사용하시겠습니까?</value>
+  </data>
+  <data name="DefaultAssignmentPromptTitle" xml:space="preserve">
+    <value>기본 정책 변경</value>
+  </data>
+  <data name="DefaultAssignmentTooltip" xml:space="preserve">
+    <value>사용하도록 설정하면 해당 장치의 다른 상위 우선 순위 정책 할당에서 재정의하지 않는 한 워크플로에서 할당한 앱이 포함된 장치는 기본적으로 이 정책을 수신합니다. 각 앱에 대해 정책은 하나만 기본으로 표시할 수 있습니다.</value>
+  </data>
+  <data name="DefaultCalendarSyncPeriod" xml:space="preserve">
+    <value>기본 캘린더 동기화 기간</value>
+  </data>
+  <data name="DefaultCallerIDInfo" xml:space="preserve">
+    <value>기본적으로 연락처 이름과 전화번호 내보내기 기능을 사용합니다. 이 설정은 Workspace ONE UEM console의 발신자 ID 옵션을 제한하지 않음으로 설정해야 합니다.</value>
+  </data>
+  <data name="DefaultConversationViewInfo" xml:space="preserve">
+    <value>이렇게 하면 이메일을 그룹화하도록 대화 보기 기본값을 설정하거나, 이메일을 대화별로 그룹화하지 않도록 설정합니다.</value>
+  </data>
+  <data name="DefaultEmailSyncPeriod" xml:space="preserve">
+    <value>기본 이메일 동기화 기간</value>
+  </data>
+  <data name="DeleteEmailAccountContent" xml:space="preserve">
+    <value>이 이메일 계정을 제거하시겠습니까?</value>
+  </data>
+  <data name="DeleteEmailAccountTitle" xml:space="preserve">
+    <value>이메일 계정 삭제</value>
+  </data>
+  <data name="DeleteOnSpamForwardInfo" xml:space="preserve">
+    <value>전달 후 최종 사용자의 장치에서 스팸 이메일을 삭제하도록 설정합니다.</value>
+  </data>
+  <data name="DeleteTabContentLabel" xml:space="preserve">
+    <value>이 인스턴스를 삭제하시겠습니까? 이 구성이 더 이상 앱에 적용되지 않습니다.</value>
+  </data>
+  <data name="DeleteTabTitleLabel" xml:space="preserve">
+    <value>인스턴스 삭제</value>
+  </data>
+  <data name="DependencyMissing" xml:space="preserve">
+    <value>종속성 누락</value>
+  </data>
+  <data name="DependentAppValidationFailed" xml:space="preserve">
+    <value>종속성 애플리케이션 검증 실패</value>
+  </data>
+  <data name="DeploymentProgressToolTip" xml:space="preserve">
+    <value>이 애플리케이션 버전에 할당된 장치의 배포 진행률 세부 정보를 표시합니다.</value>
+  </data>
+  <data name="DeploymentStatus" xml:space="preserve">
+    <value>배포 상태</value>
+  </data>
+  <data name="DeploymentTimeInvalid" xml:space="preserve">
+    <value>{0} 사이의 시간을 입력하십시오.</value>
+    <comment>Please provide time between between 01:00 - 12:59</comment>
+  </data>
+  <data name="DeployX86FileToX64MachineInfo" xml:space="preserve">
+    <value>X86 아키텍처 파일을 업로드하여 X64 아키텍처 시스템에 배포할 수 있음</value>
+  </data>
+  <data name="DerivedCredentialForFirstaccount" xml:space="preserve">
+    <value>{0}은(는) 단일 인증 인증서만 지원합니다. 기본 관리 이메일 계정에만 이 옵션을 선택하십시오.
+5.21보다 낮은 Boxer 애플리케이션 버전과 함께 {0}을(를) 사용하는 경우 '애플리케이션 구성' 섹션의 사용자 지정 KVP 'PolicyDerivedCredentials'를 전달하십시오.</value>
+  </data>
+  <data name="DerivedCredentialSmimeForFirstaccount" xml:space="preserve">
+    <value>PIV-D는 단일 S/MIME 인증서만 지원합니다. 기본 관리 이메일 계정에만 이 옵션을 선택하십시오.
+5.21보다 낮은 Boxer 애플리케이션 버전과 함께 PIV-D를 사용하는 경우 '애플리케이션 구성' 섹션의 사용자 지정 KVP 'PolicyDerivedCredentials'를 전달하십시오.</value>
+  </data>
+  <data name="Descriptions" xml:space="preserve">
+    <value>설명</value>
+  </data>
+  <data name="DesiredStateManagementTooltip" xml:space="preserve">
+    <value>활성화된 경우 및 최종 사용자가 앱을 삭제한 경우 다음 Hub 동기화 시 앱이 자동으로 다시 설치됩니다.
+비활성화된 경우 및 최종 사용자가 앱을 삭제한 경우, UEM Console 또는 카탈로그에서 푸시하지 않으면 애플리케이션이 자동으로 재설치되지 않습니다.</value>
+  </data>
+  <data name="DeviceAndBoxerTrustStore" xml:space="preserve">
+    <value>장치 및 Boxer 신뢰 스토어</value>
+  </data>
+  <data name="DeviceArchitecture" xml:space="preserve">
+    <value>장치 아키텍처</value>
+  </data>
+  <data name="DeviceAssignmentEnableCountArg" xml:space="preserve">
+    <value>애플리케이션에 장치 기반 할당 가능. 이 옵션을 활성화하도록 선택하는 경우 모든 iOS 9 이상 및 macOS 10.11 이상인 장치당 하나의 라이센스가 할당됩니다. 현재 {0}개의 iOS 9 이상/macOS 10.11 이상인 장치가 할당되어 있습니다. 이러한 장치는 애플리케이션 설치를 위해 Apple ID가 필요하지 않습니다.</value>
+  </data>
+  <data name="DeviceAssignmentEnableWithTvOSCountArg" xml:space="preserve">
+    <value>애플리케이션에 장치 기반 할당 가능. 이 옵션을 활성화하도록 선택하는 경우 모든 iOS 9 이상 및 macOS 10.11 이상인 장치당 하나의 라이센스가 할당됩니다. 현재 {0}개의 iOS 9 이상/macOS 10.11 이상인 장치가 할당되어 있습니다. 이러한 장치는 애플리케이션 설치를 위해 Apple ID가 필요하지 않습니다. tvOS 장치는 장치 기반 라이센스만 사용할 수 있으며 사용에 관리자 작업을 요구하지 않습니다.</value>
+  </data>
+  <data name="DeviceBasedVPPAppSourceHelpText" xml:space="preserve">
+    <value>이 열에서는 애플리케이션이 Volume Purchase Program과 함께 Device Based Licensing을 사용하여 설치되었는지를 알 수 있습니다.</value>
+  </data>
+  <data name="DeviceEligibilityCheckFailed" xml:space="preserve">
+    <value>장치 적합성 확인 실패</value>
+  </data>
+  <data name="DeviceGuardErrorArg" xml:space="preserve">
+    <value>Device Guard를 사용하려면 {0}에 Windows Enterprise 라이센스 키가 필요합니다.</value>
+  </data>
+  <data name="DeviceReportedReason" xml:space="preserve">
+    <value>보고된 장치 사유</value>
+  </data>
+  <data name="DeviceTrustStoreOnly" xml:space="preserve">
+    <value>장치 신뢰 스토어 전용</value>
+  </data>
+  <data name="DeviceUuIdLookUpText" xml:space="preserve">
+    <value>장치 UUID</value>
+  </data>
+  <data name="DisableAppConfiguration" xml:space="preserve">
+    <value>애플리케이션 구성 사용 안 함</value>
+  </data>
+  <data name="DisableAppConfigWarning" xml:space="preserve">
+    <value>애플리케이션 구성을 사용하지 않도록 설정하면 구성이 삭제되고 장치에서 앱 설정이 제거되거나 변경될 수 있습니다.</value>
+  </data>
+  <data name="DisableCDNWarning" xml:space="preserve">
+    <value>{0}MB보다 큰 앱이 업로드되었습니다. CDN을 사용하지 않도록 설정할 수 없습니다.</value>
+  </data>
+  <data name="DisableKeyEscrowInfo" xml:space="preserve">
+    <value>서버에서 에스크로 키를 사용하지 않도록 설정합니다. 이 기능을 사용하지 않도록 설정하면 SDK 로그인 흐름 사용 시 "암호 찾기" 기능이 사용하지 않도록 설정됩니다.</value>
+  </data>
+  <data name="DisableKeyEscrowYesNoInfo" xml:space="preserve">
+    <value>서버에서 에스크로 키를 사용하지 않도록 설정합니다. '예'로 설정하면 '암호 찾기' 기능을 사용하지 않도록 설정합니다(SDK 로그인 흐름 사용 시).</value>
+  </data>
+  <data name="DisplayInAppCatalog" xml:space="preserve">
+    <value>App Catalog에 표시</value>
+  </data>
+  <data name="DisplayInAppCatalogHelp" xml:space="preserve">
+    <value>이 설정을 사용하여 Workspace ONE 애플리케이션 카탈로그에 이 애플리케이션을 표시하거나 숨기도록 구성합니다.</value>
+  </data>
+  <data name="DlpHelpText" xml:space="preserve">
+    <value>DLP 정책은 장치에서 관리형 애플리케이션과 비관리형 애플리케이션 간의 데이터 교환을 제어합니다. 이 애플리케이션에서 데이터 손실을 방지하려면 “관리형 액세스”로 설정하고 원하는 장치 유형에 대한 “제한” 프로필 정책을 생성합니다.</value>
+  </data>
+  <data name="DoNotCollectApplicationListWarningForCompliancePolicy" xml:space="preserve">
+    <value>개인 설정 애플리케이션 개인 정보 보호 정책이 계층 내 하나 이상의 조직 그룹과 관련된 하나 이상의 장치에 대해 ‘수집하지 않음’으로 설정되어 있습니다. 이러한 장치의 개인 설정 애플리케이션의 애플리케이션 그룹과 연결된 규정 준수 정책은 강제로 적용되지 않습니다.</value>
+  </data>
+  <data name="DownloadAutomaticallyAndInstall" xml:space="preserve">
+    <value>장치에 애플리케이션이 자동으로 다운로드되고 설치됩니다.</value>
+  </data>
+  <data name="DownloadAutomaticallyAndInstallInApplicationsFolder" xml:space="preserve">
+    <value>애플리케이션 폴더에 애플리케이션이 자동으로 다운로드되고 설치됩니다.</value>
+  </data>
+  <data name="DownloadFeedback" xml:space="preserve">
+    <value>피드백 다운로드</value>
+  </data>
+  <data name="DoYouWantToDeletePpkg" xml:space="preserve">
+    <value>프로비저닝 패키지(PPKG)를 삭제하시겠습니까?</value>
+  </data>
+  <data name="DuplicateAppConfigInTab" xml:space="preserve">
+    <value>{0} 탭의 중복된 앱 구성</value>
+  </data>
+  <data name="DuplicateAssignmentName" xml:space="preserve">
+    <value>이 이름을 가진 할당 규칙이 이미 있습니다.</value>
+  </data>
+  <data name="DuplicateEmailSettings" xml:space="preserve">
+    <value>{1} 탭에 중복된 {0} 구성됨</value>
+  </data>
+  <data name="DuplicateVppSmartGroupPresent" xml:space="preserve">
+    <value>동일한 스마트 그룹을 두 번 추가할 수 없습니다.</value>
+  </data>
+  <data name="E_FAIL" xml:space="preserve">
+    <value>Office 배포 도구(ODT)를 사용하여 볼륨 라이센스를 설치할 수 없음</value>
+  </data>
+  <data name="E_UNEXPECTED" xml:space="preserve">
+    <value>컴퓨터에 C2R Office가 없을 때 제거하려고 했습니다.</value>
+  </data>
+  <data name="EARAppUpdateAvailable" xml:space="preserve">
+    <value>EAR 애플리케이션 업데이트 사용 가능</value>
+  </data>
+  <data name="EARAppUpdateMode" xml:space="preserve">
+    <value>알림 업데이트</value>
+  </data>
+  <data name="EARAppUpdateModeHelp" xml:space="preserve">
+    <value>이 애플리케이션의 새 버전을 사용할 수 있게 될 때마다 알림을 받으려면 이 옵션을 사용하도록 설정합니다.</value>
+  </data>
+  <data name="EARNewAppVersionAvailable" xml:space="preserve">
+    <value>이제 최신 버전 {0} v{1}를 업로드할 수 있습니다.</value>
+  </data>
+  <data name="EasilyAddWindowsAppsFromEnterpriseAppRepository" xml:space="preserve">
+    <value>엔터프라이즈 애플리케이션 저장소에서 Windows 애플리케이션을 쉽게 추가</value>
+  </data>
+  <data name="EditApp" xml:space="preserve">
+    <value>애플리케이션 편집</value>
+  </data>
+  <data name="EditApplicationArgOpensDialog" xml:space="preserve">
+    <value>애플리케이션 {0} 대화 상자 열기 편집</value>
+    <comment>The placeholder in this label key contains application name.</comment>
+  </data>
+  <data name="EditConfiguration" xml:space="preserve">
+    <value>구성 편집</value>
+  </data>
+  <data name="EditWarning" xml:space="preserve">
+    <value>경고 편집</value>
+  </data>
+  <data name="EditWarningMessage" xml:space="preserve">
+    <value>이 장치와 연결된 구성을 편집하면 이러한 변경 사항이 스마트 그룹 {0}의 다른 모든 장치에 적용됩니다. 계속하시겠습니까?</value>
+  </data>
+  <data name="EditWorkflow" xml:space="preserve">
+    <value>워크플로 편집</value>
+  </data>
+  <data name="EditWtcicCriteriaHelpText" xml:space="preserve">
+    <value>편집을 클릭하고 관리자 PIN을 입력하여 애플리케이션을 장치에 대기 또는 설치한 후에 설치 완료 시기 결정 기준을 변경합니다. 잘못된 기준을 지정하면 장치에서 애플리케이션이 제거됩니다.</value>
+  </data>
+  <data name="EmailClassification" xml:space="preserve">
+    <value>이메일 분류</value>
+  </data>
+  <data name="EmailClassificationInfo" xml:space="preserve">
+    <value>이메일 분류 구성</value>
+  </data>
+  <data name="EmailMaxSyncPeriodInfo" xml:space="preserve">
+    <value>사용자가 이메일 메시지를 동기화하도록 선택할 수 있는 거리입니다.</value>
+  </data>
+  <data name="EmmManagedAccessHelpInfo" xml:space="preserve">
+    <value>EMM 관리형 액세스 등록 없이도 이 앱에 대한 {0} 설정을 사용자에 맞게 수정할 수 있습니다.</value>
+  </data>
+  <data name="EnableClipboardPasteActionTip" xml:space="preserve">
+    <value>붙여넣기 기능을 사용하려면 true로 설정합니다. 이 키가 설정되지 않은 경우 붙여넣기는 기본적으로 지원됩니다.</value>
+  </data>
+  <data name="EnableClipboardTip" xml:space="preserve">
+    <value>Workspace ONE 애플리케이션 간에만 클립보드 기능을 사용하려면 true로 설정합니다.</value>
+  </data>
+  <data name="EnableComplianceOnDeviceTooltip" xml:space="preserve">
+    <value>활성화되면 지원되는 SDK 앱을 통해 규칙이 평가됩니다.</value>
+  </data>
+  <data name="EnableDeviceAssignmentConfirmationBulk" xml:space="preserve">
+    <value>선택한 애플리케이션에 대해 장치 기반 라이센스 할당을 활성화하시겠습니까?</value>
+  </data>
+  <data name="EnableDeviceGuard" xml:space="preserve">
+    <value>애플리케이션 설치 후 장치 보호 활성화</value>
+  </data>
+  <data name="EnableKeyEscrow" xml:space="preserve">
+    <value>FastSync 사용</value>
+  </data>
+  <data name="EnableKeyEscrowInfo" xml:space="preserve">
+    <value>FastSync는 백그라운드 동기화 및 후속 동기화 속도를 개선합니다. FastSync 설정은 이메일 알림 서비스를 사용하도록 설정하고 구성하면 적용됩니다.</value>
+  </data>
+  <data name="EnableNewAuthEncoding" xml:space="preserve">
+    <value>비밀번호에 움라우트 문자 지원</value>
+  </data>
+  <data name="EnableNewAuthEncodingInfo" xml:space="preserve">
+    <value>Boxer 암호에 ISO-8859-1 인코딩을 사용하도록 설정하여 특수 독일어의 움라우트(ä, ß 등) 문자를 지원합니다.</value>
+  </data>
+  <data name="EnableOfflineAccessTooltip" xml:space="preserve">
+    <value>비활성화된 경우 오프라인 액세스가 제한됩니다. 활성화되고 오프라인 허용 최대 기간이 0으로 설정된 경우 오프라인 액세스가 무기한 허용됩니다. 활성화되고 0이 아닌 오프라인 허용 최대 기간이 초과된 경우 액세스가 차단됩니다.</value>
+  </data>
+  <data name="EnableOsVersionTooltip" xml:space="preserve">
+    <value>활성화된 경우 앱이 구성된 규칙에 따라 장치의 OS 버전을 평가하고 충족되면 작업을 실행합니다.</value>
+  </data>
+  <data name="EnableSecurityPatchDateTooltip" xml:space="preserve">
+    <value>활성화되면 앱이 구성된 규칙에 따라 장치의 보안 패치 날짜를 평가하고 패치가 최신 상태가 아니면 작업을 실행합니다. 이 설정은 Android 장치에만 적용됩니다.</value>
+  </data>
+  <data name="EncryptionCertificateAuthority" xml:space="preserve">
+    <value>암호화 인증 기관</value>
+  </data>
+  <data name="EncryptionCertificateTemplate" xml:space="preserve">
+    <value>암호화 인증서 템플릿</value>
+  </data>
+  <data name="ENSAPIToken" xml:space="preserve">
+    <value>ENS2 API 토큰</value>
+  </data>
+  <data name="ENSAPITokenInfo" xml:space="preserve">
+    <value>Cloud ENS2 서비스 활성화를 위해 VMware에서 제공하는 API 토큰입니다.</value>
+  </data>
+  <data name="ENSFetchTokenInfo" xml:space="preserve">
+    <value>새 ENS2 서버 주소를 입력할 때 새 토큰을 검색합니다. 이전에 구성된 토큰을 새 ENS2 서버 주소에 사용할 수 없습니다.</value>
+  </data>
+  <data name="ENSInvalidAPITokenMessage" xml:space="preserve">
+    <value>토큰을 검색할 수 없습니다. ENS2 서버 주소가 올바르고 ENS2 서버가 작동하는지 확인한 후 다시 시도하십시오. 문제가 지속되면 UEM Console 로그 및/또는 ENS2 서버 로그를 검토하고 VMware 지원 팀에 문의하십시오.</value>
+  </data>
+  <data name="ENSLinkAddress" xml:space="preserve">
+    <value>ENS2 서버 주소</value>
+  </data>
+  <data name="ENSLinkAddressInfo" xml:space="preserve">
+    <value>사용자가 연결할 ENS2 시스템의 주소입니다.</value>
+  </data>
+  <data name="ENSRetrieveTokenBtnText" xml:space="preserve">
+    <value>토큰 검색</value>
+  </data>
+  <data name="ENSValidAPITokenMessage" xml:space="preserve">
+    <value>ENS2 API 토큰을 검색했습니다.</value>
+  </data>
+  <data name="EnterAppUrlFromGooglePlayStore" xml:space="preserve">
+    <value>Google Play 스토어에서 애플리케이션 URL 입력</value>
+  </data>
+  <data name="EnterKeyValuePairsForApplicationAttributes" xml:space="preserve">
+    <value>애플리케이션에 특성을 제공하기 위한 키-값 쌍 입력</value>
+  </data>
+  <data name="EnterKeyValuePairsToConfigureWhenAppNotSupport" xml:space="preserve">
+    <value>이 애플리케이션은 애플리케이션 구성을 지원하지 않습니다. SDK를 사용하여 애플리케이션을 구성하는 경우 아래에 키 값 쌍을 입력하십시오.</value>
+  </data>
+  <data name="EnterNumberBetweenArgAndArg" xml:space="preserve">
+    <value>{0}에서 {1} 사이의 숫자를 입력하십시오.</value>
+  </data>
+  <data name="EnterpriseAppCatalogDetailsLegalTooltip" xml:space="preserve">
+    <value>아래의 진행을 클릭하면 타사 웹사이트에서 소프트웨어를 다운로드하게 됩니다. VMware는 타사 소프트웨어의 품질, 컨텐츠, 안정성 또는 보안 방법과 관련하여 어떠한 진술이나 보증도 하지 않으며 타사 소프트웨어를 다운로드하고 사용하도록 선택한 경우 VMware는 책임을 지지 않습니다.</value>
+  </data>
+  <data name="EnterpriseAppCatalogFailedToLoad" xml:space="preserve">
+    <value>애플리케이션 카탈로그를 로드하지 못했습니다. 다시 로드하고 문제가 지속되면 관리자에게 문의하십시오.</value>
+  </data>
+  <data name="EnterpriseAppCatalogNoApplications" xml:space="preserve">
+    <value>카탈로그를 통해 사용할 수 있는 애플리케이션이 없습니다. 다시 로드하고 문제가 지속되면 관리자에게 문의하십시오.</value>
+  </data>
+  <data name="EnterpriseAppRepository" xml:space="preserve">
+    <value>엔터프라이즈 애플리케이션 저장소입니다.</value>
+  </data>
+  <data name="EnterpriseAppRepositoryAddAppName" xml:space="preserve">
+    <value>애플리케이션의 이름을 Intelligent Hub 카탈로그에 표시하고자 하는 대로 입력하십시오.</value>
+  </data>
+  <data name="EnterpriseAppRepositoryAppUpdateMode" xml:space="preserve">
+    <value>알림 업데이트</value>
+  </data>
+  <data name="EnterpriseAppRepositoryAppUpdateModeInfo" xml:space="preserve">
+    <value>애플리케이션 업데이트에 대한 옵션을 선택합니다.</value>
+  </data>
+  <data name="EnterpriseAppRepositoryAppUpdateModeNone" xml:space="preserve">
+    <value>없음</value>
+  </data>
+  <data name="EnterpriseAppRepositoryAppUpdateModeNotify" xml:space="preserve">
+    <value>알림</value>
+  </data>
+  <data name="EnterpriseAppSourceHelpText" xml:space="preserve">
+    <value>이 열에서는 애플리케이션이 엔터프라이징 서명 인증서를 사용하여 서명되었으며 App Store를 통해 배포되지 않았는지 여부를 알 수 있습니다.</value>
+  </data>
+  <data name="EnterValidBuildVersion" xml:space="preserve">
+    <value>빌드 버전 필드에 유효한 값을 입력하십시오.</value>
+  </data>
+  <data name="EnterValidWhitelistedApplications" xml:space="preserve">
+    <value>유효한 허용된 애플리케이션 입력</value>
+  </data>
+  <data name="EntireChain" xml:space="preserve">
+    <value>전체 체인</value>
+  </data>
+  <data name="ERROR_ANOTHER_RUNNING_SCENARIO" xml:space="preserve">
+    <value>다른 시나리오가 실행 중입니다.</value>
+  </data>
+  <data name="ERROR_COMPLETING_SCENARIO" xml:space="preserve">
+    <value>프로세스를 완료하지 못했습니다. 가능한 이유는 다음과 같습니다.
+
+    사용자가 설치 취소함
+    다른 설치에 의해 설치가 취소됨
+    설치 중 디스크 공간 부족
+    알 수 없는 언어 ID</value>
+  </data>
+  <data name="ERROR_COMPLETING_SCENARIO_NEED_CLEAN_UP" xml:space="preserve">
+    <value>가능한 이유는 다음과 같습니다.
+
+    알 수 없는 SKU
+    CDN에 Content가 없음
+        예: zh-sg와 같이 지원되지 않는 LAP 설치 시도
+        컨텐츠를 사용할 수 없는 CDN 문제
+    서명 확인 문제(예: Office 컨텐츠의 서명 확인 실패)
+    사용자가 취소함</value>
+  </data>
+  <data name="ERROR_HANDLING_COMMAND_LINE" xml:space="preserve">
+    <value>C2RClient 명령줄 오류</value>
+  </data>
+  <data name="ERROR_INSTALL_FAILURE" xml:space="preserve">
+    <value>사전 요구사항 확인에 실패했습니다.
+
+    SxS(2016 MSI가 설치된 상태에서 설치를 시도함)
+    현재 설치된 Office와 설치하려고 했던 Office 간의 비트 불일치(예: 64비트 버전이 현재 설치된 상태에서 32비트 버전 설치를 시도하는 경우)</value>
+  </data>
+  <data name="ERROR_INSTALL_USEREXIT" xml:space="preserve">
+    <value>사용자가 설치를 취소함</value>
+  </data>
+  <data name="ERROR_INVALID_DATA" xml:space="preserve">
+    <value>다운로드한 Office 배포 도구(ODT)의 서명을 확인할 수 없음</value>
+  </data>
+  <data name="ERROR_PROCESSPOOL_INITIALIZATION" xml:space="preserve">
+    <value>C2RClient를 시작하지 못함</value>
+  </data>
+  <data name="ERROR_QUEUE_SCENARIO" xml:space="preserve">
+    <value>C2RClient에서 설치 시나리오를 대기열에 추가하지 못함</value>
+  </data>
+  <data name="ERROR_REMOVE_INSTALLATION_NEEDED" xml:space="preserve">
+    <value>클라이언트가 "설치 제거" 시나리오에서 클라이언트 정리를 요청하고 있습니다.</value>
+  </data>
+  <data name="ERROR_SCENARIO_CANCELLED" xml:space="preserve">
+    <value>앱을 실행하여 업데이트 차단함</value>
+  </data>
+  <data name="ERROR_SCENARIO_CANCELLED_AS_PLANNED" xml:space="preserve">
+    <value>시나리오가 계획대로 취소됨</value>
+  </data>
+  <data name="ERROR_TIMEOUT" xml:space="preserve">
+    <value>Office 배포 도구(ODT)를 다운로드하지 못함</value>
+  </data>
+  <data name="ErrorApplicationSyncJobAppPublish" xml:space="preserve">
+    <value>애플리케이션 게시 후 애플리케이션 동기화 작업에서 오류가 발생했습니다.</value>
+  </data>
+  <data name="EscrowExpiry" xml:space="preserve">
+    <value>FastSync 만료</value>
+  </data>
+  <data name="EscrowExpiryInfo" xml:space="preserve">
+    <value>Workspace ONE Boxer에서 FastSync 키를 수신하지 않을 때의 만료 시간을 시간 단위로 설정합니다. FastSync 설정은 이메일 알림 서비스를 사용하도록 설정하고 구성하면 적용됩니다.</value>
+  </data>
+  <data name="EscrowGatewayToolTipInfo" xml:space="preserve">
+    <value>에스크로 게이트웨이 구성은 게이트웨이가 환경에서 구성된 경우에만 적용됩니다.</value>
+  </data>
+  <data name="EventBased" xml:space="preserve">
+    <value>이벤트 기반</value>
+  </data>
+  <data name="EventTargeted" xml:space="preserve">
+    <value>이벤트 대상</value>
+  </data>
+  <data name="EWSConfigPositionChangeInfo" xml:space="preserve">
+    <value>'이메일 설정' 섹션에서 EWS URL을 설정할지 여부를 구성합니다.</value>
+  </data>
+  <data name="EWSUrl" xml:space="preserve">
+    <value>EWS URL</value>
+  </data>
+  <data name="EWSUrlInfo" xml:space="preserve">
+    <value>EWS(또는 SEG) 끝점 주소</value>
+  </data>
+  <data name="EwsUrlInfoMsg" xml:space="preserve">
+    <value>EWS URL 구성이 이메일 설정 섹션으로 이동했습니다.</value>
+  </data>
+  <data name="ExchangeSettings" xml:space="preserve">
+    <value>Microsoft Exchange 설정</value>
+  </data>
+  <data name="ExchangeURL" xml:space="preserve">
+    <value>Exchange URL</value>
+  </data>
+  <data name="ExchangeUserName" xml:space="preserve">
+    <value>Exchange 사용자 이름</value>
+  </data>
+  <data name="ExecutionFailed" xml:space="preserve">
+    <value>실행 실패</value>
+  </data>
+  <data name="ExportFactoryPpkg" xml:space="preserve">
+    <value>내보내기</value>
+  </data>
+  <data name="ExportPpkgMessage" xml:space="preserve">
+    <value>지원되는 애플리케이션 목록에서 애플리케이션을 선택한 후 PPKG(Windows 프로비저닝 패키지)로 내보냅니다. PPKG 내보내기가 완료되면 다운로드 링크가 포함된 알림이 전송됩니다.</value>
+  </data>
+  <data name="ExportPpkgWindowsNoAppsMessage" xml:space="preserve">
+    <value>애플리케이션을 PPKG(Windows 프로비저닝 패키지)로 내보내면 초기 설치를 위한 애플리케이션의 패키징이 가능합니다. PPKG로 내보내려면 일부 Windows 애플리케이션을 업로드하십시오.</value>
+  </data>
+  <data name="ExternalApplicationIdInfo" xml:space="preserve">
+    <value>Apple App Store의 고유 식별자입니다. 애플리케이션의 iTunes URL에서 볼 수 있습니다.</value>
+  </data>
+  <data name="FactoryProvisioningServiceNotRunning" xml:space="preserve">
+    <value>공장 프로비저닝 서비스가 구성되어 있지 않거나 실행 중이지 않습니다. Workspace ONE UEM 설치를 확인하십시오.</value>
+  </data>
+  <data name="FailedToUploadApplication" xml:space="preserve">
+    <value>애플리케이션 업로드에 실패했습니다.</value>
+  </data>
+  <data name="FastAsyncConfigPositionChangeInfo" xml:space="preserve">
+    <value>'이메일 설정' 섹션에서 EWS URL을 설정할지 여부를 구성합니다.
+'애플리케이션 정책' &gt; '고급' 섹션에서 FastSync 및 해당 만료를 사용하도록 설정할지 여부를 구성합니다.</value>
+  </data>
+  <data name="FeaturedApps" xml:space="preserve">
+    <value>추천 앱</value>
+  </data>
+  <data name="FeedbackChannelDataNotAvailableMessage" xml:space="preserve">
+    <value>이 장치는 현재 피드백을 보고하고 있지 않으며 오프라인 상태일 수 있습니다. 나중에 다시 시도하십시오.</value>
+  </data>
+  <data name="FeedbackChannelEditConfigurationMessage" xml:space="preserve">
+    <value>구성 변경 사항은 다음 스마트 그룹에 속하는 모든 장치에 적용됩니다.
+
+{0}.
+
+편집하시겠습니까?</value>
+  </data>
+  <data name="FeedbackDateTime" xml:space="preserve">
+    <value>보고된 장치 시간</value>
+  </data>
+  <data name="FeedbackMessage" xml:space="preserve">
+    <value>메시지</value>
+  </data>
+  <data name="FeedbackTitle" xml:space="preserve">
+    <value>피드백 제목</value>
+  </data>
+  <data name="FeedbackTriggerValue" xml:space="preserve">
+    <value>트리거 값</value>
+  </data>
+  <data name="FieldShouldBeANumber" xml:space="preserve">
+    <value>필드는 숫자여야 합니다.</value>
+  </data>
+  <data name="FieldShouldBeBetweenArgAndMaxInt" xml:space="preserve">
+    <value>필드는 {0}부터 {1} 사이의 숫자여야 합니다.</value>
+  </data>
+  <data name="FieldShouldBeValidColourInHexFormat" xml:space="preserve">
+    <value>이 필드에는 16진수 형식의 텍스트 색이 필요합니다.</value>
+  </data>
+  <data name="FileFormatNotSupported" xml:space="preserve">
+    <value>선택한 파일 형식은 지원되지 않습니다. xml 파일을 선택하십시오.</value>
+  </data>
+  <data name="FilterAppleSystemApps" xml:space="preserve">
+    <value>com.apple.* 애플리케이션 표시</value>
+  </data>
+  <data name="FilterBySmartGroup" xml:space="preserve">
+    <value>Smart Group 기준 필터링</value>
+  </data>
+  <data name="FinalDetectionFailed" xml:space="preserve">
+    <value>최종 감지 실패</value>
+  </data>
+  <data name="FlexDeploymentNewMessage" xml:space="preserve">
+    <value>장치는 아래 구성을 기반으로 애플리케이션을 수신합니다. 여러 할당이 포함된 장치는 정책을 우선 순위로 수신합니다. 단일 할당에 대한 우선 순위를 조정하면 다른 할당의 우선 순위가 자동으로 조정됩니다. 편집할 할당을 선택하십시오. 새 할당을 추가하면 목록의 맨 아래에 새 규칙이 생성됩니다.</value>
+  </data>
+  <data name="FlexeraCriticalAppsArrived" xml:space="preserve">
+    <value>새로운 Flexera SVM 패치 사용 가능</value>
+  </data>
+  <data name="FlexeraSVM" xml:space="preserve">
+    <value>Flexera SVM</value>
+  </data>
+  <data name="ForwardAddAttachments" xml:space="preserve">
+    <value>첨부 파일 전달/추가</value>
+  </data>
+  <data name="FromEnterpriseCatalog" xml:space="preserve">
+    <value>엔터프라이즈 앱 저장소에서</value>
+  </data>
+  <data name="GetStartedWithWorkflows" xml:space="preserve">
+    <value>워크플로 시작하기</value>
+  </data>
+  <data name="GoToChromeWebStore" xml:space="preserve">
+    <value>Chrome 웹 스토어로 이동</value>
+  </data>
+  <data name="HideNotificationsLabel" xml:space="preserve">
+    <value>알림 숨기기</value>
+  </data>
+  <data name="HideNotificationsTooltip" xml:space="preserve">
+    <value>이 애플리케이션에 대한 설치 및 제거 알림이 나타나지 않도록 하려면 이 설정을 사용하도록 설정합니다. 이는 자동 배포된 애플리케이션에만 적용됩니다.</value>
+  </data>
+  <data name="HighCriticality" xml:space="preserve">
+    <value>높은 중요도</value>
+  </data>
+  <data name="IconFile" xml:space="preserve">
+    <value>아이콘 파일</value>
+  </data>
+  <data name="InactiveAppAlreadyExistsinConsole" xml:space="preserve">
+    <value>이 애플리케이션은 이미 콘솔에 추가되었으며 비활성 상태입니다. 할당을 계속하려면 애플리케이션 목록 보기에서 애플리케이션을 다시 활성화하십시오.</value>
+  </data>
+  <data name="IncorrectExchangeURL" xml:space="preserve">
+    <value>https://server.domain.com/EWS/Exchange.asmx 형식을 사용하십시오.</value>
+  </data>
+  <data name="IndividualAppSizeLimitMessage" xml:space="preserve">
+    <value>최대 허용 파일 크기: {0}MB</value>
+  </data>
+  <data name="InstallAppExceptionMessage" xml:space="preserve">
+    <value>많은 장치에 응용 프로그램을 설치하려면 필터를 선택하십시오.</value>
+  </data>
+  <data name="InstallApplicationConfirmed" xml:space="preserve">
+    <value>장치 확인 애플리케이션 설치</value>
+  </data>
+  <data name="InstallAppOnAllBspAlert" xml:space="preserve">
+    <value>모든 장치에 애플리케이션을 설치하려고 합니다. 라이센스가 제한된 경우 일부 장치에서 애플리케이션을 수신하지 못할 수 있습니다. 계속하려면 확인을 클릭하십시오. 사용 가능한 라이센스: 온라인 {0}개, 오프라인 {1}개</value>
+  </data>
+  <data name="InstallationStatus" xml:space="preserve">
+    <value>설치 상태</value>
+  </data>
+  <data name="InstallationStatusLastScan" xml:space="preserve">
+    <value>설치 상태 마지막 스캔</value>
+  </data>
+  <data name="InstallCommandFailed" xml:space="preserve">
+    <value>설치 명령 실패</value>
+  </data>
+  <data name="InstalledAndFeedbackAvailable" xml:space="preserve">
+    <value>설치됨(구성 피드백 사용 가능)</value>
+  </data>
+  <data name="InstalledAppVersion" xml:space="preserve">
+    <value>설치된 애플리케이션 버전</value>
+  </data>
+  <data name="InstalledButHidden" xml:space="preserve">
+    <value>설치되었지만 숨겨짐</value>
+  </data>
+  <data name="InstalledByUser" xml:space="preserve">
+    <value>사용자가 설치함</value>
+  </data>
+  <data name="InstalledEqualsAssigned" xml:space="preserve">
+    <value>설치됨 = 할당됨</value>
+  </data>
+  <data name="InstalledNotEqualsAssigned" xml:space="preserve">
+    <value>설치됨 &lt;&gt; 할당됨</value>
+  </data>
+  <data name="InstalledPersonalApp" xml:space="preserve">
+    <value>설치된 개인 애플리케이션</value>
+  </data>
+  <data name="InstalledSystemApp" xml:space="preserve">
+    <value>설치된 시스템 애플리케이션</value>
+  </data>
+  <data name="InstalledWithVersion" xml:space="preserve">
+    <value>설치된 ({0})</value>
+  </data>
+  <data name="InstallerDeferralExitCodeInvalid" xml:space="preserve">
+    <value>종료 코드가 잘못되었습니다.</value>
+  </data>
+  <data name="InstallerDeferralExitCodeLabel" xml:space="preserve">
+    <value>설치 프로그램 지연 종료 코드</value>
+  </data>
+  <data name="InstallerDeferralExitCodeRequired" xml:space="preserve">
+    <value>종료 코드는 필수입니다.</value>
+  </data>
+  <data name="InstallerDeferralExitCodeTooltip" xml:space="preserve">
+    <value>설치 프로그램에서 반환되는 정수 코드를 지정하여 애플리케이션 설치가 지연되었음을 나타냅니다. 이렇게 하면 다음 설치 간격 동안 애플리케이션 설치를 다시 시도할 수 있습니다.</value>
+  </data>
+  <data name="InstallerDeferralIntervalLabel" xml:space="preserve">
+    <value>설치 프로그램 지연 간격</value>
+  </data>
+  <data name="InstallerDeferralIntervalOption12Hours" xml:space="preserve">
+    <value>12시간</value>
+  </data>
+  <data name="InstallerDeferralIntervalOption24Hours" xml:space="preserve">
+    <value>24시간</value>
+  </data>
+  <data name="InstallerDeferralIntervalOption2Hours" xml:space="preserve">
+    <value>2시간</value>
+  </data>
+  <data name="InstallerDeferralIntervalOption4Hours" xml:space="preserve">
+    <value>4시간</value>
+  </data>
+  <data name="InstallerDeferralIntervalOption8Hours" xml:space="preserve">
+    <value>8시간</value>
+  </data>
+  <data name="InstallerDeferralIntervalTooltip" xml:space="preserve">
+    <value>지연 기간 지정</value>
+  </data>
+  <data name="InstallerDeferralNotificationCustom" xml:space="preserve">
+    <value>사용자 지정</value>
+  </data>
+  <data name="InstallerDeferralNotificationLabel" xml:space="preserve">
+    <value>UEM 또는 사용자 지정 알림 사용</value>
+  </data>
+  <data name="InstallerDeferralNotificationTooltip" xml:space="preserve">
+    <value>지연에 UEM 또는 사용자 지정 알림을 사용해야 하는지 여부 지정</value>
+  </data>
+  <data name="InstallerDeferralNotificationUEM" xml:space="preserve">
+    <value>UEM</value>
+  </data>
+  <data name="InstallerPackageDeployment" xml:space="preserve">
+    <value>설치 프로그램 패키지 배포</value>
+  </data>
+  <data name="InstallInProgress" xml:space="preserve">
+    <value>설치 중</value>
+  </data>
+  <data name="InstallOnSelectedDevices" xml:space="preserve">
+    <value>이 앱은 유효한 할당을 포함하는 장치에만 설치됩니다.</value>
+  </data>
+  <data name="InstallOnSelectedDevicesBspAlert" xml:space="preserve">
+    <value>선택한 장치에 애플리케이션을 설치하려고 합니다. 라이센스가 제한된 경우 일부 장치에서 애플리케이션을 수신하지 못할 수 있습니다. 계속하려면 확인을 클릭하십시오. 사용 가능한 라이센스: 온라인 {0}개, 오프라인 {1}개</value>
+  </data>
+  <data name="InstallStatusHeaderToolTip" xml:space="preserve">
+    <value>이는 이 애플리케이션의 설치 상태에 대한 자세한 정보를 포함하고 특정 버전에 종속되지 않은 장치에서 보고한 데이터를 나타냅니다.</value>
+  </data>
+  <data name="InstallSuccess" xml:space="preserve">
+    <value>설치 성공</value>
+  </data>
+  <data name="IntelligenceOptInMessageForFeedbackArg" xml:space="preserve">
+    <value>애플리케이션 구성 피드백을 보려면 Intelligence에 참여해야 합니다. {0}</value>
+  </data>
+  <data name="InternalAppAssignmentUpToDate" xml:space="preserve">
+    <value>최신 상태입니다. 할당된 애플리케이션 버전이 설치된 버전과 동일</value>
+  </data>
+  <data name="InternalApplication" xml:space="preserve">
+    <value>내부 애플리케이션</value>
+  </data>
+  <data name="InternalApplications" xml:space="preserve">
+    <value>내부 애플리케이션</value>
+  </data>
+  <data name="InternalDomainsFieldError" xml:space="preserve">
+    <value>도메인 목록은 대괄호로 묶어야 합니다. 예: [“xyz.com”,”abc.com”]</value>
+  </data>
+  <data name="InternalDomainsInfo" xml:space="preserve">
+    <value>내부 또는 허용되는 도메인을 정의합니다. 사용자는 내부 도메인이 정의되고 외부 수신자가 설정되지 않은 경우 '보내기 전에 확인' 설정을 사용하여 경고를 사용하지 않도록 설정할 수 있습니다. 각 도메인을 따옴표로 묶고 쉼표를 구분자로 사용하고 목록을 대괄호로 묶습니다. 예: [“xyz.com”,”abc.com”]</value>
+  </data>
+  <data name="InternalTriggerAccountVersion" xml:space="preserve">
+    <value>이 애플리케이션 버전에 할당된 기기에서 수행된 최근 작업의 세부 정보를 표시합니다.</value>
+  </data>
+  <data name="InvalidAppAttributeVpnKey" xml:space="preserve">
+    <value>VPNUUID가 특성에 대해 올바르지 않습니다. 대신 앱 터널링을 구성하십시오.</value>
+  </data>
+  <data name="InvalidApplicationBundleID" xml:space="preserve">
+    <value>잘못된 애플리케이션 번들 ID</value>
+  </data>
+  <data name="InvalidApplicationError" xml:space="preserve">
+    <value>애플리케이션 패키지 형식이 지원되지 않음</value>
+  </data>
+  <data name="InvalidMultiStringValue" xml:space="preserve">
+    <value>따옴표가 없는 문자열을 지정하십시오.</value>
+  </data>
+  <data name="InvalidNsxEntryForApplication" xml:space="preserve">
+    <value>선택한 애플리케이션에 대해 잘못된 NSX 항목이 있습니다.</value>
+  </data>
+  <data name="InvalidPkgInfoFile" xml:space="preserve">
+    <value>잘못된 메타데이터입니다. Admin Assistant Tool을 통해 파일을 생성하고 업로드를 다시 시도합니다.</value>
+  </data>
+  <data name="InvalidPlayStoreUrlEnterValidUrlToContinue" xml:space="preserve">
+    <value>잘못된 Play Store URL입니다. 계속하려면 유효한 Play Store URL을 입력하십시오.</value>
+  </data>
+  <data name="InvalidRegistryPath" xml:space="preserve">
+    <value>잘못된 레지스트리 경로</value>
+  </data>
+  <data name="InvalidThresholdId" xml:space="preserve">
+    <value>잘못된 임계값 ID</value>
+  </data>
+  <data name="IsBlockingAppsEnabled" xml:space="preserve">
+    <value>애플리케이션 차단</value>
+  </data>
+  <data name="IsBlockingAppsEnabledTooltip" xml:space="preserve">
+    <value>애플리케이션 차단을 활성화하면 설치를 시작하기 전에 정의된 모든 항목을 사용하여 애플리케이션이 실행 중인지 확인합니다. 애플리케이션 차단을 비활성화하면 차단 동작이 무시되고 설치가 계속됩니다.</value>
+  </data>
+  <data name="IsForceInstallAfterDateEnabled" xml:space="preserve">
+    <value>지정 일자 이후 강제 설치</value>
+  </data>
+  <data name="IsForceInstallAfterDateEnabledTooltip" xml:space="preserve">
+    <value>항목이 아직 설치되지 않은 경우 강제 설치할 날짜를 지정합니다. 이렇게 하면 모든 차단 애플리케이션이 강제로 닫히고 정의된 경우 재시작 작업을 수행합니다.</value>
+  </data>
+  <data name="KeyEscrow" xml:space="preserve">
+    <value>키 에스크로</value>
+  </data>
+  <data name="KeyHelpText" xml:space="preserve">
+    <value>예: HKLM\Software\.. 또는 HKCU\Software\.. 또는 HKEY_LOCAL_MACHINE\Software.. 또는 HKEY_CURRENT_USER\Software..
+
+최상위 레지스트리 하이브의 축약형 또는 온전한 이름을 사용하여 레지스트리 경로를 입력합니다.</value>
+  </data>
+  <data name="KeySupportedOnlyAtAccountLevel" xml:space="preserve">
+    <value>계정 수준에서만 지원되는 키</value>
+  </data>
+  <data name="KeySupportedOnlyAtAppLevel" xml:space="preserve">
+    <value>애플리케이션 수준에서만 지원되는 키</value>
+  </data>
+  <data name="LastAction" xml:space="preserve">
+    <value>마지막 작업</value>
+  </data>
+  <data name="LastActionTaken" xml:space="preserve">
+    <value>마지막 수행한 작업</value>
+  </data>
+  <data name="LastActionTimestamp" xml:space="preserve">
+    <value>마지막 작업 타임스탬프</value>
+  </data>
+  <data name="LastReportedTime" xml:space="preserve">
+    <value>마지막으로 보고된 시간</value>
+  </data>
+  <data name="LastServerAction" xml:space="preserve">
+    <value>마지막 서버 작업</value>
+  </data>
+  <data name="LatestInstallationEvent" xml:space="preserve">
+    <value>기록된 최신 설치 이벤트</value>
+  </data>
+  <data name="LatestInstallationEventTooltip" xml:space="preserve">
+    <value>이 장치 및 애플리케이션에 대한 '문제 해결' 섹션에 기록된 최신 설치 이벤트를 표시합니다. 진행 중인 설치 상태만 이벤트로 캡처되고 완료된 설치 상태는 캡처되지 않습니다. 장치에서 일부 설치 상태를 보고하지 않을 수 있으며 이 경우 이벤트는 기록되지 않습니다.</value>
+  </data>
+  <data name="LatestInstallationStatus" xml:space="preserve">
+    <value>최신 설치 상태</value>
+  </data>
+  <data name="LicenseDistribution" xml:space="preserve">
+    <value>라이센스 분포</value>
+  </data>
+  <data name="LicenseSummary" xml:space="preserve">
+    <value>라이센스 요약</value>
+  </data>
+  <data name="LogAggregationMode" xml:space="preserve">
+    <value>로그 집계 모드</value>
+  </data>
+  <data name="LogAggregationModeInfo" xml:space="preserve">
+    <value>앱이 로그 파일을 로그 집계 끝점으로 전송하는 모드입니다.</value>
+  </data>
+  <data name="LogAggregationUrlInfo" xml:space="preserve">
+    <value>로그 집계 끝점의 URL입니다.</value>
+  </data>
+  <data name="LowCriticality" xml:space="preserve">
+    <value>낮은 중요도</value>
+  </data>
+  <data name="macOSDesiredStateManagement" xml:space="preserve">
+    <value>원하는 상태 관리</value>
+  </data>
+  <data name="Major" xml:space="preserve">
+    <value>주요</value>
+  </data>
+  <data name="ManageAssignment" xml:space="preserve">
+    <value>할당 관리</value>
+  </data>
+  <data name="ManageAssignmentForApplicationArgOpensDialog" xml:space="preserve">
+    <value>애플리케이션 {0} 대화 상자 열기에 대한 할당 관리</value>
+    <comment>The placeholder in this label key will contain application name.</comment>
+  </data>
+  <data name="ManageAssignmentForArgOpensDialog" xml:space="preserve">
+    <value>{0} 대화 상자 열기에 대한 할당 관리</value>
+    <comment>Placeholder in this label key is for application name.</comment>
+  </data>
+  <data name="ManagedAccess" xml:space="preserve">
+    <value>관리되는 액세스</value>
+  </data>
+  <data name="ManagedAccessDescription" xml:space="preserve">
+    <value>EMM 관리형 액세스는 Intelligent Hub에서 이 애플리케이션을 설치할 수 있는 장치를 정의합니다.</value>
+  </data>
+  <data name="ManagedAccessOnlyEmmDevices" xml:space="preserve">
+    <value>EMM 관리형 장치에서만 이 애플리케이션을 설치할 수 있습니다.</value>
+  </data>
+  <data name="ManagedAccessSecuredByWorkspace" xml:space="preserve">
+    <value>이 애플리케이션이 Workspace ONE SDK 버전 20.10 이상으로 보호되는 경우 애플리케이션이 EMM에 의해 관리되지 않으면 액세스가 차단됩니다. 이 애플리케이션이 관리되도록 하려면 제한 탭에서 '사용자 설치했을 경우 애플리케이션을 MDM 관리로 설정' 설정을 활성화하십시오.</value>
+  </data>
+  <data name="ManagedAccessSettingEnabled" xml:space="preserve">
+    <value>이 설정이 활성화된 경우:</value>
+  </data>
+  <data name="ManagedAccessSettingEnabledOnlyEmm" xml:space="preserve">
+    <value>이 설정이 활성화되면 EMM 관리형 장치에서만 이 애플리케이션을 설치할 수 있습니다.</value>
+  </data>
+  <data name="ManagedAccessSubDescription" xml:space="preserve">
+    <value>이 설정이 비활성화되면 모든 등록된 장치에서 이 애플리케이션을 설치할 수 있습니다.</value>
+  </data>
+  <data name="ManagedAccessTitle" xml:space="preserve">
+    <value>EMM 관리형 액세스</value>
+  </data>
+  <data name="ManagedAppsTab" xml:space="preserve">
+    <value>관리되는 애플리케이션</value>
+  </data>
+  <data name="ManagedConfigurationErrorMessage" xml:space="preserve">
+    <value>구성 오류</value>
+  </data>
+  <data name="ManagementAccess" xml:space="preserve">
+    <value>관리 액세스</value>
+  </data>
+  <data name="ManagementIDToolTip" xml:space="preserve">
+    <value>앱 및 장치 당 고유한 식별자</value>
+  </data>
+  <data name="MaxAllowedDevicesException" xml:space="preserve">
+    <value>선택한 장치 수가 허용된 장치 수를 초과했습니다. 필터를 선택하십시오.</value>
+  </data>
+  <data name="MaxAttachmentSize" xml:space="preserve">
+    <value>최대 첨부 파일 크기</value>
+  </data>
+  <data name="MaxAttachmentSizeInfo" xml:space="preserve">
+    <value>사용자가 보내는 이메일에 첨부할 수 있는 최대 파일 크기(바이트 단위)입니다.</value>
+  </data>
+  <data name="MaxCalendarSyncWindow" xml:space="preserve">
+    <value>허용되는 최대 캘린더 동기화 기간</value>
+  </data>
+  <data name="MaxEmailSyncWindow" xml:space="preserve">
+    <value>허용되는 최대 이메일 동기화 기간</value>
+  </data>
+  <data name="MaxFileSizeCDNMegabytes" xml:space="preserve">
+    <value>CDN을 포함한 최대 파일 크기</value>
+  </data>
+  <data name="MaximumFileSizeWithCDNShouldBeLesserThanAppCapacity" xml:space="preserve">
+    <value>CDN을 포함한 최대 파일 크기는 총 앱 용량을 초과할 수 없습니다.</value>
+  </data>
+  <data name="MaxTabCountReached" xml:space="preserve">
+    <value>관리되는 이메일 계정은 세 개만 지원됩니다.</value>
+  </data>
+  <data name="MediumCriticality" xml:space="preserve">
+    <value>보통 중요도</value>
+  </data>
+  <data name="MetadataFileContainsInvalidCharactersForNameKey" xml:space="preserve">
+    <value>메타데이터 파일 내의 이름 키 값에 잘못된 문자가 포함되어 있습니다. 이 키 값은 영숫자, 밑줄, 공백, 하이픈 및 마침표만 사용할 수 있습니다.</value>
+  </data>
+  <data name="MMAEmailSettingsInfoMsgInfo" xml:space="preserve">
+    <value>여러 이메일 계정 구성은 Boxer 애플리케이션 버전 5.21 이상에서만 지원되며 Single Sign-On을 사용하도록 설정해야 합니다.</value>
+  </data>
+  <data name="MobileFlowsAuthenticationServerInfo" xml:space="preserve">
+    <value>장치 사용자 인증을 위한 올바른 URL을 제공하십시오. 이는 Workspace ONE Access 서버 URL일 수 있습니다.</value>
+  </data>
+  <data name="MobileFlowsAutoEnableConnectorsInfo" xml:space="preserve">
+    <value>사용하도록 설정된 경우 Mobile Flows를 켜면 모든 커넥터가 연속하여 자동으로 켜집니다. 모든 커넥터가 Workspace ONE Access와 연동된 경우에만 권장됩니다.</value>
+  </data>
+  <data name="MobileFlowsHostInfo" xml:space="preserve">
+    <value>Mobile Flows 서버의 호스트 이름</value>
+  </data>
+  <data name="MobileFlowsInfo" xml:space="preserve">
+    <value>Boxer와 통합할 수 있는 Mobile Flows 서버 정보 구성</value>
+  </data>
+  <data name="MobileFlowsSyncHoursInfo" xml:space="preserve">
+    <value>이 값(시간)보다 이전에 전송되는 이메일에 대해 Mobile Flow 카드를 요청하지 마십시오.</value>
+  </data>
+  <data name="ModifiedOnArgArgByArg" xml:space="preserve">
+    <value>{0}에 {1}가 수정함</value>
+  </data>
+  <data name="MSTSelection" xml:space="preserve">
+    <value>애플리케이션 변환 선택</value>
+  </data>
+  <data name="MustBePositiveIntegerValue" xml:space="preserve">
+    <value>양의 정수 값이어야 함</value>
+  </data>
+  <data name="NewWorkflow" xml:space="preserve">
+    <value>새 워크플로</value>
+  </data>
+  <data name="NoEventLogged" xml:space="preserve">
+    <value>이벤트 로그 없음</value>
+  </data>
+  <data name="NotebookVersionMessage" xml:space="preserve">
+    <value>아래 정책은 Notebook 버전 1.4 이상에만 적용됩니다. 이전 버전의 경우 이 애플리케이션과 연결된 SDK 프로필의 사용자 지정 설정으로 이동하십시오.</value>
+  </data>
+  <data name="NotebookWarningToEditAllAssignments" xml:space="preserve">
+    <value>Notebook 구성을 설정할 준비가 되었습니다. 게시하기 전에 이 애플리케이션과 연결된 SDK 프로필의 사용자 지정 설정에서 이식된 구성이 올바른지 확인합니다.</value>
+  </data>
+  <data name="NotEvaluated" xml:space="preserve">
+    <value>평가되지 않음</value>
+  </data>
+  <data name="NotificationsInfo" xml:space="preserve">
+    <value>이메일 알림 서비스(ENS) 및 해당 동작을 구성하여 실시간 이메일 알림을 제공합니다.</value>
+  </data>
+  <data name="NotifyEmail" xml:space="preserve">
+    <value>이메일 알림</value>
+  </data>
+  <data name="NumberOfApps" xml:space="preserve">
+    <value>{0}개의 애플리케이션</value>
+  </data>
+  <data name="NumberOfCommandsQueued" xml:space="preserve">
+    <value>대기열에 추가된 명령 수</value>
+  </data>
+  <data name="OCSP" xml:space="preserve">
+    <value>인증서 해지 정책</value>
+  </data>
+  <data name="OfflineLicenseAvailableArgDevicesAllocation" xml:space="preserve">
+    <value>{0}개의 오프라인 라이센스를 사용할 수 있습니다. 선착순 기반으로 장치에 라이센스가 할당됩니다.</value>
+  </data>
+  <data name="OnDemandAppAssignedButNotInstalled" xml:space="preserve">
+    <value>요청 시 배포에 할당된 애플리케이션이 설치되지 않음</value>
+  </data>
+  <data name="OnDemandAppAssignmentOutOfDate" xml:space="preserve">
+    <value>요청 시 배포에 할당된 최신 애플리케이션 버전이 설치되지 않음</value>
+  </data>
+  <data name="OnDemandBootstrapPackageAssignedButNotInstalled" xml:space="preserve">
+    <value>주문형 배포에 대해 부트스트랩 패키지가 할당되었지만 요청되지 않았습니다.</value>
+  </data>
+  <data name="OneDay" xml:space="preserve">
+    <value>1일</value>
+  </data>
+  <data name="OnlineLicenseAvailableArgDevicesAllocation" xml:space="preserve">
+    <value>{0}개의 온라인 라이센스를 사용할 수 있습니다. 선착순 기반으로 장치에 라이센스가 할당됩니다.</value>
+  </data>
+  <data name="OrdersLicensesMenuTitle" xml:space="preserve">
+    <value>대량 구입 프로그램(VPP) 보너스 코드 보기 및 관리</value>
+  </data>
+  <data name="OSVersionNotSetError" xml:space="preserve">
+    <value>정책이 활성화된 경우 OsVesion은 0이거나 비워 둘 수 없습니다.</value>
+  </data>
+  <data name="OsXParseError" xml:space="preserve">
+    <value>OsX 파일을 구문 분석하는 동안 오류가 발생했습니다.</value>
+  </data>
+  <data name="OtherAttributes" xml:space="preserve">
+    <value>기타 특성</value>
+  </data>
+  <data name="PasswordNotCopied" xml:space="preserve">
+    <value>구성 중에 입력한 비밀번호는 이 프로필과 함께 복사되지 않았습니다. 저장하기 전에 올바른 비밀번호를 다시 입력하십시오.</value>
+  </data>
+  <data name="Paused" xml:space="preserve">
+    <value>일시 중지됨</value>
+  </data>
+  <data name="PeerDistribution" xml:space="preserve">
+    <value>Peer Distribution</value>
+  </data>
+  <data name="PeerDistributionCacheBytes" xml:space="preserve">
+    <value>캐시 바이트</value>
+  </data>
+  <data name="PeerDistributionCacheEnabled" xml:space="preserve">
+    <value>캐시 사용</value>
+  </data>
+  <data name="PeerDistributionCurrentClientMode" xml:space="preserve">
+    <value>현재 클라이언트 모드</value>
+  </data>
+  <data name="PeerDistributionDetails" xml:space="preserve">
+    <value>Peer Distribution 세부 정보</value>
+  </data>
+  <data name="PeerDistributionDetailsLearnMore" xml:space="preserve">
+    <value>더 알아보기</value>
+  </data>
+  <data name="PeerDistributionDetailsToolTip" xml:space="preserve">
+    <value>Peer Distribution을 사용하여 이 애플리케이션을 다운로드한 장치 수, 다운로드한 데이터 양, 다운로드 데이터를 가져온 위치를 표시</value>
+  </data>
+  <data name="PeerDistributionDevicesUtilizingPeerDistribution" xml:space="preserve">
+    <value>Peer Distribution을 활용하는 장치</value>
+  </data>
+  <data name="PeerDistributionDevicesWithPeerDistributionOn" xml:space="preserve">
+    <value>Peer Distribution이 켜져 있는 장치</value>
+  </data>
+  <data name="PeerDistributionDownloadSource" xml:space="preserve">
+    <value>소스 다운로드</value>
+  </data>
+  <data name="PeerDistributionHostedCacheServerList" xml:space="preserve">
+    <value>호스팅된 캐시 서버 목록</value>
+  </data>
+  <data name="PeerDistributionNotUtilized" xml:space="preserve">
+    <value>활용되지 않음</value>
+  </data>
+  <data name="PeerDistributionOff" xml:space="preserve">
+    <value>끄기</value>
+  </data>
+  <data name="PeerDistributionOnNotUtilized" xml:space="preserve">
+    <value>켜짐/활용되지 않음</value>
+  </data>
+  <data name="PeerDistributionOnUtilized" xml:space="preserve">
+    <value>켜짐/활용됨</value>
+  </data>
+  <data name="PeerDistributionServerBytes" xml:space="preserve">
+    <value>서버 바이트</value>
+  </data>
+  <data name="PeerDistributionSfdOriginTypeAW" xml:space="preserve">
+    <value>장치 서비스</value>
+  </data>
+  <data name="PeerDistributionSfdOriginTypeCDN" xml:space="preserve">
+    <value>CDN</value>
+  </data>
+  <data name="PeerDistributionSfdOriginTypeNone" xml:space="preserve">
+    <value>없음</value>
+  </data>
+  <data name="PeerDistributionSfdOriginTypeP2P" xml:space="preserve">
+    <value>Adaptiva</value>
+  </data>
+  <data name="PeerDistributionSfdOriginTypeP2PBC" xml:space="preserve">
+    <value>CDN(장치 서비스 포함)</value>
+  </data>
+  <data name="PeerDistributionStatus" xml:space="preserve">
+    <value>Peer Distribution</value>
+  </data>
+  <data name="PeerDistributionTotalDeviceCount" xml:space="preserve">
+    <value>총 장치 수</value>
+  </data>
+  <data name="PeerDistributionTotalSavingBytes" xml:space="preserve">
+    <value>총 저장 바이트</value>
+  </data>
+  <data name="PeerDistributionTotalSavingPercent" xml:space="preserve">
+    <value>총 저장 비율</value>
+  </data>
+  <data name="PeerDistributionTotalUtilizedCacheBytes" xml:space="preserve">
+    <value>총 사용된 캐시 바이트</value>
+  </data>
+  <data name="PeerDistributionTotalUtilizedServerBytes" xml:space="preserve">
+    <value>총 사용된 서버 바이트</value>
+  </data>
+  <data name="PeerDistributionUtilized" xml:space="preserve">
+    <value>활용됨</value>
+  </data>
+  <data name="PersonalAppCounts" xml:space="preserve">
+    <value>할당 없이 설치</value>
+  </data>
+  <data name="PersonalAppCountsToolTip" xml:space="preserve">
+    <value>설치된 이 애플리케이션의 다른 버전이 있지만 유효한 할당이 없는 장치의 개수를 표시합니다. 이는 이들 장치가 해당 애플리케이션을 사이드로딩하였거나 이전에 Workspace ONE으로부터 할당을 받았기 때문입니다.</value>
+  </data>
+  <data name="Pivd" xml:space="preserve">
+    <value>PIV-D</value>
+  </data>
+  <data name="PivdAndroidDerivedCredentialSmimeForFirstaccount" xml:space="preserve">
+    <value>PIV-D는 단일 S/MIME 인증서만 지원합니다. 기본 관리 이메일 계정에만 이 옵션을 선택하십시오.</value>
+  </data>
+  <data name="PivdDerivedCredentialForFirstaccount" xml:space="preserve">
+    <value>PIV-D는 단일 인증 인증서만 지원합니다. 기본 관리 이메일 계정에만 이 옵션을 선택하십시오. 5.21보다 낮은 Boxer 애플리케이션 버전과 함께 PIV-D를 사용하는 경우 '애플리케이션 구성' 섹션의 사용자 지정 KVP 'PolicyDerivedCredentials'를 전달하십시오.</value>
+  </data>
+  <data name="PlusAdd" xml:space="preserve">
+    <value>+ 추가</value>
+  </data>
+  <data name="PolicyAllowActionArchive" xml:space="preserve">
+    <value>보관 작업</value>
+  </data>
+  <data name="PolicyAllowActionSpam" xml:space="preserve">
+    <value>최종 사용자가 스팸을 신고하도록 허용</value>
+  </data>
+  <data name="PolicyAllowAttachments" xml:space="preserve">
+    <value>첨부 파일 허용</value>
+  </data>
+  <data name="PolicyAllowAttachmentsDownload" xml:space="preserve">
+    <value>첨부 파일 다운로드 허용</value>
+  </data>
+  <data name="PolicyAllowAttachmentsDownloadInfo" xml:space="preserve">
+    <value>첨부 파일 다운로드 및 전달 허용 또는 차단</value>
+  </data>
+  <data name="PolicyAllowAttachmentsInfo" xml:space="preserve">
+    <value>사용자가 첨부 파일을 추가/전달하도록 허용</value>
+  </data>
+  <data name="PolicyAllowCallKitIdentification" xml:space="preserve">
+    <value>CallKit 사용 설정</value>
+  </data>
+  <data name="PolicyAllowCallKitIdentificationInfo" xml:space="preserve">
+    <value>이는 iOS 설정에 불과하며 CallKit 발신자 ID를 사용하도록 설정하려면 사용자 상호 작용이 필요합니다.</value>
+  </data>
+  <data name="PolicyAllowCrashReporting" xml:space="preserve">
+    <value>충돌 보고 허용</value>
+  </data>
+  <data name="PolicyAllowCustomKeyboards" xml:space="preserve">
+    <value>사용자 지정 키보드 허용</value>
+  </data>
+  <data name="PolicyAllowCustomKeyboardsTooltip" xml:space="preserve">
+    <value>사용자가 타사 키보드를 사용하도록 허용</value>
+  </data>
+  <data name="PolicyAllowDocProviders" xml:space="preserve">
+    <value>외부 제공자의 첨부 파일 제어</value>
+  </data>
+  <data name="PolicyAllowEnterpriseContent" xml:space="preserve">
+    <value>엔터프라이즈 콘텐츠</value>
+  </data>
+  <data name="PolicyAllowLocalCalendars" xml:space="preserve">
+    <value>로컬 캘린더</value>
+  </data>
+  <data name="PolicyAllowLogging" xml:space="preserve">
+    <value>로깅 허용</value>
+  </data>
+  <data name="PolicyAllowLoggingInfo" xml:space="preserve">
+    <value>이러한 로그는 사용자가 로그 전송 작업을 실행하지 않는 한 전송되지 않습니다.</value>
+  </data>
+  <data name="PolicyAllowMailServerCiphers" xml:space="preserve">
+    <value>허용된 메일 서버 암호</value>
+  </data>
+  <data name="PolicyAllowMailServerCiphersInfo" xml:space="preserve">
+    <value>메일 서버에 연결할 때 Boxer에서 TLS 응답 중 이러한 암호만 사용하도록 강제 적용</value>
+  </data>
+  <data name="PolicyAllowMetrics" xml:space="preserve">
+    <value>익명 메트릭</value>
+  </data>
+  <data name="PolicyAllowOpenIn" xml:space="preserve">
+    <value>제어 열기 기능</value>
+  </data>
+  <data name="PolicyAllowPhotoAttachemetInfo" xml:space="preserve">
+    <value>카메라/사진 갤러리에서 사진 첨부 기능 허용 또는 차단</value>
+  </data>
+  <data name="PolicyAllowPhotoAttachment" xml:space="preserve">
+    <value>사진 첨부 파일 허용</value>
+  </data>
+  <data name="PolicyAllowPrint" xml:space="preserve">
+    <value>인쇄 허용</value>
+  </data>
+  <data name="PolicyAllowPrintTooltip" xml:space="preserve">
+    <value>이메일 및 첨부 파일의 인쇄를 차단하여 사용하지 않도록 설정</value>
+  </data>
+  <data name="PolicyAllowTouchID" xml:space="preserve">
+    <value>Biometric ID</value>
+  </data>
+  <data name="PolicyAllowTouchInfo" xml:space="preserve">
+    <value>이 기능을 활성화하면 사용자가 지원되는 장치에서 지문, Touch ID 또는 Face ID를 사용할 수 있습니다.</value>
+  </data>
+  <data name="PolicyAllowUserAccountsInfo" xml:space="preserve">
+    <value>사용자가 Gmail, iCloud 및 기타 IMAP 계정과 같은 다른 계정을 추가할 수 있도록 허용합니다.</value>
+  </data>
+  <data name="PolicyCalendarMaxSyncPeriod" xml:space="preserve">
+    <value>최대 캘린더 동기화 기간</value>
+  </data>
+  <data name="PolicyCalendarMaxSyncPeriodInfo" xml:space="preserve">
+    <value>사용자가 캘린더 이벤트를 동기화하도록 선택할 수 있는 거리입니다.</value>
+  </data>
+  <data name="PolicyClassMarkings" xml:space="preserve">
+    <value>표시</value>
+  </data>
+  <data name="PolicyClassMarkingsDefaultClass" xml:space="preserve">
+    <value>기본 분류</value>
+  </data>
+  <data name="PolicyClassMarkingsDefaultClassInfo" xml:space="preserve">
+    <value>(선택 사항) 이메일에 대한 기본 분류를 설정합니다. 값은 PolicyClassMarkings 구성 값 항목의 표시 이름과 일치해야 합니다.</value>
+  </data>
+  <data name="PolicyClassMarkingsEnabled" xml:space="preserve">
+    <value>분류 표시를 사용하거나 사용하지 않도록 설정</value>
+  </data>
+  <data name="PolicyClassMarkingsEnabledInfo" xml:space="preserve">
+    <value>분류 표시를 사용하거나 사용하지 않도록 설정합니다.</value>
+  </data>
+  <data name="PolicyClassMarkingsInfo" xml:space="preserve">
+    <value>계층 분류 목록을 정의합니다.</value>
+  </data>
+  <data name="PolicyClassMarkingsRankEnabled" xml:space="preserve">
+    <value>순위 지정 사용</value>
+  </data>
+  <data name="PolicyClassMarkingsRankEnabledInfo" xml:space="preserve">
+    <value>(선택 사항) 계층적 분류 순위 지정을 사용하도록 설정합니다.</value>
+  </data>
+  <data name="PolicyClassMarkingsXHeader" xml:space="preserve">
+    <value>x-머리글 정의</value>
+  </data>
+  <data name="PolicyClassMarkingsXHeaderInfo" xml:space="preserve">
+    <value>(선택 사항) 분류를 위해 x-머리글을 사용하도록 설정하고 정의합니다.</value>
+  </data>
+  <data name="PolicyClassVersion" xml:space="preserve">
+    <value>버전</value>
+  </data>
+  <data name="PolicyClassVersionInfo" xml:space="preserve">
+    <value>분류 기능의 버전 번호</value>
+  </data>
+  <data name="PolicyCustomOnlineMeetingUrls" xml:space="preserve">
+    <value>QuickJoin 사용자 지정 URL</value>
+  </data>
+  <data name="PolicyDeleteOnSpamForward" xml:space="preserve">
+    <value>스팸 삭제</value>
+  </data>
+  <data name="PolicyDisableKeyEscrow" xml:space="preserve">
+    <value>키 에스크로 사용 안 함(암호 찾기)</value>
+  </data>
+  <data name="PolicyEmailMaxSyncPeriod" xml:space="preserve">
+    <value>최대 이메일 동기화 기간</value>
+  </data>
+  <data name="PolicyEnforceHTTPS" xml:space="preserve">
+    <value>불안전한 HTTP 연결 제한</value>
+  </data>
+  <data name="PolicyEnforceHTTPSTooltip" xml:space="preserve">
+    <value>불안전한 (HTTP) 연결에서 들어오는 콘텐츠 로드를 제한합니다.</value>
+  </data>
+  <data name="PolicyLimitNotificationText" xml:space="preserve">
+    <value>알림 콘텐츠</value>
+  </data>
+  <data name="PolicyLimitNotificationTextInfo" xml:space="preserve">
+    <value>각 알림 경고에 공개되는 정보의 양을 제어합니다.</value>
+  </data>
+  <data name="PolicyScepPendingMaxRetryAttempts" xml:space="preserve">
+    <value>SCEP 최대 재시도 횟수</value>
+  </data>
+  <data name="PolicyScepPendingRetryTimeout" xml:space="preserve">
+    <value>SCEP 각 재시도 사이의 간격(초)</value>
+  </data>
+  <data name="PolicySensitivityLabelsEmailClassificationInfo" xml:space="preserve">
+    <value>사용자가 AIP 레이블과 상호 작용할 수 있게 됩니다.</value>
+  </data>
+  <data name="PolicySMIME" xml:space="preserve">
+    <value>S/MIME 상태</value>
+  </data>
+  <data name="PolicySMIMEConformingEncryptionAlgorithms" xml:space="preserve">
+    <value>지원되는 암호화 알고리즘</value>
+  </data>
+  <data name="PolicySMIMEConformingEncryptionAlgorithmsInfo" xml:space="preserve">
+    <value>S/MIME 암호화를 특정 알고리즘으로 제한할 수 있습니다. 승인된 알고리즘을 사용하지 않는 암호화 이메일은 경고로 표시됩니다. 유효한 값이 제공되지 않으면 모든 알고리즘이 사용 가능한 것으로 간주됩니다.</value>
+  </data>
+  <data name="PolicySMIMEConformingSigningAlgorithms" xml:space="preserve">
+    <value>지원되는 서명 알고리즘</value>
+  </data>
+  <data name="PolicySMIMEDefaultEncryptionAlgorithm" xml:space="preserve">
+    <value>기본 암호화 알고리즘</value>
+  </data>
+  <data name="PolicySMIMEDefaultEncryptionAlgorithmInfo" xml:space="preserve">
+    <value>S/MIME 암호화를 특정 알고리즘으로 제한할 수 있습니다. 승인된 알고리즘을 사용하지 않는 암호화 이메일은 경고로 표시됩니다. 유효한 값이 제공되지 않으면 모든 알고리즘이 사용 가능한 것으로 간주됩니다.</value>
+  </data>
+  <data name="PolicySMIMEDefaultSigningAlgorithm" xml:space="preserve">
+    <value>기본 서명 알고리즘</value>
+  </data>
+  <data name="PolicySMIMEEnableRevocationCheck" xml:space="preserve">
+    <value>S/MIME 해지 확인 사용</value>
+  </data>
+  <data name="PolicySMIMEEnableRevocationCheckInfo" xml:space="preserve">
+    <value>S/MIME 인증서 해지 확인을 위한 정책 정의</value>
+  </data>
+  <data name="PolicySMIMERevocationCheckType" xml:space="preserve">
+    <value>S/MIME 해지 확인 유형</value>
+  </data>
+  <data name="PolicySMIMERevocationCheckTypeInfo" xml:space="preserve">
+    <value>전체 인증서 체인에 대한 해지 상태 확인을 실행하는 정책 또는 사용자 인증서만 정의합니다.</value>
+  </data>
+  <data name="PolicySMIMERevocationCheckUrl" xml:space="preserve">
+    <value>S/MIME 해지 확인 URL</value>
+  </data>
+  <data name="PolicySMIMERevocationCheckUrlInfo" xml:space="preserve">
+    <value>이 URL은 OCSP 응답자 URL로 사용됩니다.</value>
+  </data>
+  <data name="PolicySMIMERevocationEnforceNonce" xml:space="preserve">
+    <value>S/MIME 해지 임시값 적용</value>
+  </data>
+  <data name="PolicySMIMERevocationEnforceNonceInfo" xml:space="preserve">
+    <value>사용하도록 설정된 경우 임시값이 OCSP 요청에 적용됩니다.</value>
+  </data>
+  <data name="PolicySMIMERevocationStrictness" xml:space="preserve">
+    <value>S/MIME 해지 엄격성</value>
+  </data>
+  <data name="PolicySMIMERevocationStrictnessInfo" xml:space="preserve">
+    <value>해지된 인증서 사용의 허용 여부를 결정하는 데 적용할 엄격성 수준을 정의합니다.</value>
+  </data>
+  <data name="PolicySMIMERevocationTTL" xml:space="preserve">
+    <value>S/MIME 해지 TTL</value>
+  </data>
+  <data name="PolicySMIMERevocationTTLinfo" xml:space="preserve">
+    <value>해지 데이터 유지 기간(일)을 정의합니다.</value>
+  </data>
+  <data name="PolicySMIMERevocationUseAIA" xml:space="preserve">
+    <value>S/MIME 해지 권한 정보 액세스 사용</value>
+  </data>
+  <data name="PolicySMIMERevocationUseAIAInfo" xml:space="preserve">
+    <value>인증서에서 권한 정보 액세스 확장의 사용과 관련된 정책</value>
+  </data>
+  <data name="PolicySMIMEStrictEKUCheck" xml:space="preserve">
+    <value>EKU 확장 확인 필요</value>
+  </data>
+  <data name="PolicySMIMEStrictEKUCheckInfo" xml:space="preserve">
+    <value>S/MIME 인증서의 EKU 확장을 확인해야 하는지의 여부를 정의합니다. True로 설정된 경우 EKU 확장이 인증서에 있고 이 확장에 이메일 보호 용도가 설정되어 있는지 확인합니다.</value>
+  </data>
+  <data name="PolicySMIMETrustStore" xml:space="preserve">
+    <value>S/MIME 신뢰 스토어</value>
+  </data>
+  <data name="PolicyStatus" xml:space="preserve">
+    <value>정책 상태</value>
+  </data>
+  <data name="PolicyTLSEnableRevocationCheck" xml:space="preserve">
+    <value>해지 확인</value>
+  </data>
+  <data name="PolicyTLSEnableRevocationCheckInfo" xml:space="preserve">
+    <value>TLS 해지 확인을 사용하거나 사용하지 않도록 설정</value>
+  </data>
+  <data name="PolicyTLSRevocationCheckType" xml:space="preserve">
+    <value>해지 확인 유형</value>
+  </data>
+  <data name="PolicyTLSRevocationCheckTypeInfo" xml:space="preserve">
+    <value>해지 확인을 전체 체인에 적용할지 아니면 서버의 인증서에만 적용할 지를 지정합니다. 해지 확인을 사용하지 않도록 설정한 경우에는 이 정책이 아무런 영향을 주지 않습니다.</value>
+  </data>
+  <data name="PolicyTLSRevocationCheckUrl" xml:space="preserve">
+    <value>해지 확인 URL</value>
+  </data>
+  <data name="PolicyTLSRevocationCheckUrlInfo" xml:space="preserve">
+    <value>OCSP 서버 URL. 해지 확인을 사용하지 않도록 설정한 경우에는 이 정책이 아무런 영향을 주지 않습니다.</value>
+  </data>
+  <data name="PolicyTLSRevocationEnforceNonce" xml:space="preserve">
+    <value>임시값 적용</value>
+  </data>
+  <data name="PolicyTLSRevocationEnforceNonceInfo" xml:space="preserve">
+    <value>사용하도록 설정된 경우 임시값을 적용합니다. 그렇지 않으면 임시값을 사용하지 않습니다. 해지 확인을 사용하지 않도록 설정한 경우에는 이 정책이 아무런 영향을 주지 않습니다.</value>
+  </data>
+  <data name="PolicyTLSRevocationStrictness" xml:space="preserve">
+    <value>해지 엄격성</value>
+  </data>
+  <data name="PolicyTLSRevocationStrictnessInfo" xml:space="preserve">
+    <value>Ignore로 설정하면 해지 확인 결과만 기록되고 TLS 연결을 차단하지 않습니다. Strict로 설정하면 서버 인증서가 해지되거나 OCSP 서버에 연결할 수 없는 경우 TLS 연결이 차단됩니다. Moderate으로 설정하면 서버 인증서가 해지된 경우 TLS 연결이 차단됩니다. OCSP 서버에 연결할 수 없는 경우 이전 확인 결과를 사용합니다(사용 가능한 경우). 해지 확인을 사용하지 않도록 설정한 경우에는 이 정책이 아무런 영향을 주지 않습니다.</value>
+  </data>
+  <data name="PolicyTLSRevocationTTL" xml:space="preserve">
+    <value>해지 TTL(일)</value>
+  </data>
+  <data name="PolicyTLSRevocationTTLInfo" xml:space="preserve">
+    <value>해지 데이터 보존 기간(일)입니다. 응답자가 nextupdate 값을 제공하지 않는 경우 음수 값과 0은 무시됩니다. KVP가 설정되면 이 KVP의 값을 사용합니다. KVP가 설정되지 않으면 기본적으로 7일 후 확인이 설정됩니다. 응답자가 nextupdate를 제공하는 경우 KVP가 설정되면 이 KVP의 값을 사용하고 응답자의 nextupdate 값은 무시됩니다. 이 KVP가 설정되지 않으면 응답자의 nextupdate 값을 사용합니다. 해지 확인을 사용하지 않도록 설정한 경우에는 이 정책이 아무런 영향을 주지 않습니다.</value>
+  </data>
+  <data name="PolicyTLSRevocationUseAIA" xml:space="preserve">
+    <value>해지 사용 AIA</value>
+  </data>
+  <data name="PolicyTLSRevocationUseAIAInfo" xml:space="preserve">
+    <value>사용 안 함 - 해지 상태에 대해 인증서 내에 구성된 URL을 사용하지 말고 해지 확인 URL만을 사용하십시오. 사용 - 해지 상태 확인을 위해 인증서 내에 구성된 URL을 사용하고, 사용할 수 없다면 해지 확인 URL로 변경하십시오. 필수 - 해지 상태 확인을 위해 인증서 내에 구성된 URL만 사용하고 해지 확인 URL은 무시하십시오. 해지 확인을 사용하지 않도록 설정한 경우에는 이 정책이 아무런 영향을 주지 않습니다.</value>
+  </data>
+  <data name="PolicyTLSStrictTrustCheck" xml:space="preserve">
+    <value>TLS 신뢰 확인</value>
+  </data>
+  <data name="PolicyTLSStrictTrustCheckInfo" xml:space="preserve">
+    <value>True로 설정하면 Boxer에서 TLS 서버 인증서에 대해 보다 엄격한 신뢰 확인을 수행합니다. 전체 인증서 체인을 구성하는 모든 루트 CA 인증서와 중간 CA가 인증서가 콘솔 구성 신뢰 스토어 기반으로 생성한 신뢰 스토어에 설치되는지 확인합니다. 이 키는 해지 확인을 사용하도록 설정한 경우에만 역할을 수행합니다.</value>
+  </data>
+  <data name="PolicyTLSTrustStore" xml:space="preserve">
+    <value>신뢰 스토어</value>
+  </data>
+  <data name="PolicyTLSTrustStoreInfo" xml:space="preserve">
+    <value>사용하지 않도록 설정하면 장치 신뢰 스토어 및 Boxer 신뢰 스토어를 사용하고, 사용하도록 설정하면 Boxer 신뢰 스토어를 사용합니다. 기본값은 device trust store + boxer trust store입니다. iOS: 해지 확인을 사용하지 않도록 설정하면 현재 '0' 값에 대해 장치 신뢰 스토어만 사용합니다. 장치에 미리 로드되지 않은 사용자 지정 중간 CA가 포함되면 이에 대해 유일한 유효 옵션은 '1'입니다. 즉, 항상 Boxer 신뢰 스토어를 사용하고 신뢰 연결이 Boxer 신뢰 스토어에서 모든 중간 CA를 사용할 수 있도록 해야 합니다. Android: 해지 확인을 사용하지 않도록 설정한 경우에는 이 KVP가 아무런 영향을 주지 않습니다.(그러한 경우에는 장치의 기본 신뢰 스토어를 사용하여 인증서 체인을 검증합니다. Boxer의 스토어에는 검증할 체인이 없습니다.)</value>
+  </data>
+  <data name="PolicyWatermarkColor" xml:space="preserve">
+    <value>워터마크 색상</value>
+  </data>
+  <data name="PolicyWatermarkColorInfo" xml:space="preserve">
+    <value>16진수 형식의 텍스트 색을 정의합니다. 기본 색은 파란색입니다.</value>
+  </data>
+  <data name="PolicyWatermarkOpacity" xml:space="preserve">
+    <value>워터마크 불투명도</value>
+  </data>
+  <data name="PolicyWatermarkOpacityInfo" xml:space="preserve">
+    <value>텍스트의 불투명도를 정의합니다. 0~100 사이의 숫자를 설정할 수 있습니다.</value>
+  </data>
+  <data name="PolicyWatermarkText" xml:space="preserve">
+    <value>워터마크 텍스트</value>
+  </data>
+  <data name="PolicyWatermarkTextInfo" xml:space="preserve">
+    <value>워터마크 텍스트를 정의합니다.</value>
+  </data>
+  <data name="PositiveIntegerRequired" xml:space="preserve">
+    <value>양의 정수값 입력</value>
+  </data>
+  <data name="PradeoAPIKey" xml:space="preserve">
+    <value>Pradeo API 키</value>
+  </data>
+  <data name="PreReleaseVersionTooltip" xml:space="preserve">
+    <value>이 목록에 표시될 것으로 예상되었던 항목이 누락된 경우 이 엔터프라이즈에서 삭제되었거나 할당 취소되었을 수 있습니다.</value>
+  </data>
+  <data name="PreventRemoval" xml:space="preserve">
+    <value>제거 방지</value>
+  </data>
+  <data name="PreventRemovalTooltip" xml:space="preserve">
+    <value>사용하도록 설정되면 사용자는 이 앱을 제거할 수 없습니다. iOS 14 이상이 필요합니다.</value>
+  </data>
+  <data name="ProductApp" xml:space="preserve">
+    <value>제품 애플리케이션</value>
+  </data>
+  <data name="ProductAppInstalled" xml:space="preserve">
+    <value>제품 기반 애플리케이션이 할당 및 설치됨</value>
+  </data>
+  <data name="ProductAppNotInstalled" xml:space="preserve">
+    <value>제품 기반 애플리케이션이 할당되었지만 설치되지 않음</value>
+  </data>
+  <data name="ProviderDisabledFileUploadMessage" xml:space="preserve">
+    <value>파일 스토리지와 CDN이 비활성화되었거나 데이터베이스 크기가 이 조직의 최대 용량에 도달했습니다. 계속하려면 관리자에게 문의하거나 이 항목을 사용하도록 설정하고 데이터베이스 스토리지를 확인하십시오.</value>
+  </data>
+  <data name="ProvisioningProfileExpirationExplainationArgDays" xml:space="preserve">
+    <value>이 애플리케이션과 연결된 프로비저닝 프로필이 {0}일 후에 만료됩니다. 프로비저닝 프로필이 만료되면 이 애플리케이션에 액세스할 수 없게 되며 이 애플리케이션의 설치를 시도하는 새 사용자는 설치할 수 없습니다. 애플리케이션에 대한 프로비저닝 프로필을 다시 생성하고 아래의 갱신 버튼을 클릭하여 업데이트하십시오. 애플리케이션이 이미 설치되어 있는 장치의 경우 프로비저닝 프로필을 갱신하면 애플리케이션을 다시 설치하지 않고 장치의 기존 프로필이 추가된 새 프로필로 대체됩니다. 새로 등록된 장치나 이 애플리케이션이 없는 장치의 경우에는 애플리케이션을 설치하면 추가된 새 프로비저닝 프로필이 전송됩니다.</value>
+  </data>
+  <data name="PublicApplication" xml:space="preserve">
+    <value>공용 애플리케이션</value>
+  </data>
+  <data name="PublicApplications" xml:space="preserve">
+    <value>공용 애플리케이션</value>
+  </data>
+  <data name="PublisherAddedMultipleTimesInAppGroup" xml:space="preserve">
+    <value>동일한 게시자가 이 앱 그룹에 여러 번 추가되었습니다.</value>
+  </data>
+  <data name="PublisherExceptionAddedMultipleTimesInAppGroup" xml:space="preserve">
+    <value>게시자에 대한 예외로 동일한 애플리케이션이 여러 번 추가되었습니다.</value>
+  </data>
+  <data name="PurchasedApplication" xml:space="preserve">
+    <value>구매한 애플리케이션</value>
+  </data>
+  <data name="PurchasedApplications" xml:space="preserve">
+    <value>구매한 애플리케이션</value>
+  </data>
+  <data name="PurchasedAppLicenseAssignmentBySmartGroup" xml:space="preserve">
+    <value>스마트 그룹별 구매한 애플리케이션 라이센스 할당</value>
+  </data>
+  <data name="Purebred" xml:space="preserve">
+    <value>Purebred</value>
+  </data>
+  <data name="QuickReply" xml:space="preserve">
+    <value>빠른 회신</value>
+  </data>
+  <data name="Ranking" xml:space="preserve">
+    <value>순위</value>
+  </data>
+  <data name="Read/Unread" xml:space="preserve">
+    <value>읽음/읽지 않음</value>
+  </data>
+  <data name="ReasonsBreakdown" xml:space="preserve">
+    <value>설치 상태 세부 사항</value>
+  </data>
+  <data name="ReasonsBreakdownToolTip" xml:space="preserve">
+    <value>이는 이 애플리케이션의 설치 상태에 대한 자세한 정보를 포함하고 특정 버전에 종속되지 않은 장치에서 보고한 데이터를 나타냅니다.</value>
+  </data>
+  <data name="RedeemingCode" xml:space="preserve">
+    <value>교환 코드</value>
+  </data>
+  <data name="RedemptionCode" xml:space="preserve">
+    <value>교환 코드</value>
+  </data>
+  <data name="RedemptionCodes" xml:space="preserve">
+    <value>교환 코드</value>
+  </data>
+  <data name="RefreshApps" xml:space="preserve">
+    <value>애플리케이션 새로 고침</value>
+  </data>
+  <data name="RemoveApplicationConfirmed" xml:space="preserve">
+    <value>장치 확인 애플리케이션 제거</value>
+  </data>
+  <data name="RemoveArgApplicationOpensDialog" xml:space="preserve">
+    <value>애플리케이션 {0} 대화 상자 열기 제거</value>
+    <comment>Placeholder in this label key is for application name.</comment>
+  </data>
+  <data name="RemoveCommandDispatched" xml:space="preserve">
+    <value>제거 명령 발송됨</value>
+  </data>
+  <data name="RemoveCommandSuccessful" xml:space="preserve">
+    <value>장치에서 제거 명령 확인함</value>
+  </data>
+  <data name="RemovedByEmm" xml:space="preserve">
+    <value>EMM에 의해 제거됨</value>
+  </data>
+  <data name="RemovedByUser" xml:space="preserve">
+    <value>사용자가 제거함</value>
+  </data>
+  <data name="RemoveFromSelectedDevices" xml:space="preserve">
+    <value>이 앱은 앱이 설치되고 EMM에 의해 관리되는 장치에서만 제거됩니다.</value>
+  </data>
+  <data name="RemovePreviousValues" xml:space="preserve">
+    <value>이전 값 제거</value>
+  </data>
+  <data name="RequireApprovalToInstall" xml:space="preserve">
+    <value>설치 승인 필요</value>
+  </data>
+  <data name="RequireApprovalToInstallToolTip" xml:space="preserve">
+    <value>선택된 할당 그룹의 사용자는 이 애플리케이션에 액세스하려면 승인을 받아야 합니다.</value>
+  </data>
+  <data name="RequiredEmailSettings" xml:space="preserve">
+    <value>{1} 탭에 {0}을(를) 추가하십시오.</value>
+  </data>
+  <data name="RestartDeadlineInDays" xml:space="preserve">
+    <value>장치가 자동으로 재부팅된 이후 기간</value>
+  </data>
+  <data name="RestrictScreenshotsInfo" xml:space="preserve">
+    <value>사용자의 앱 스크린샷 작성 방지(Android에만 해당).</value>
+  </data>
+  <data name="ReviewRequestExpired" xml:space="preserve">
+    <value>검토 요청이 인증되지 않았거나 만료되었습니다. 페이지를 새로 고치고 다시 검토하십시오.</value>
+  </data>
+  <data name="ReviewSummaryBeforeAddingApp" xml:space="preserve">
+    <value>애플리케이션을 추가하기 전에 요약을 검토하십시오. 일부 필드는 나중에 애플리케이션 목록 보기를 통해 편집할 수 있습니다.</value>
+  </data>
+  <data name="RevisionNumber" xml:space="preserve">
+    <value>수정 번호</value>
+  </data>
+  <data name="RevisionVersion" xml:space="preserve">
+    <value>수정 버전 필드에 유효한 값을 입력하십시오.</value>
+  </data>
+  <data name="S/MIMEPolicy" xml:space="preserve">
+    <value>S/MIME 정책</value>
+  </data>
+  <data name="SaaSAppsIDMSetupArg" xml:space="preserve">
+    <value>SaaS 애플리케이션을 사용하려면 먼저 Workspace ONE을 설치해야 합니다. {0}(으)로 이동한 후 Workspace ONE 설치를 완료하십시오. 완료되면 로그아웃했다가 다시 로그인하여 재시도해 보십시오.</value>
+  </data>
+  <data name="SameAssignmentExists" xml:space="preserve">
+    <value>하나 이상의 스마트 그룹이 또 다른 할당에서 이 애플리케이션에 할당되어 있습니다. 계속하려면 이들 스마트 그룹을 제거하십시오.</value>
+  </data>
+  <data name="SaveConfiguration" xml:space="preserve">
+    <value>구성 저장</value>
+  </data>
+  <data name="ScepPendingMaxRetryAttemptsInfo" xml:space="preserve">
+    <value>SDK에서 SCEP 가져오기의 최대 재시도 횟수 구성</value>
+  </data>
+  <data name="ScepPendingRetryTimeoutInfo" xml:space="preserve">
+    <value>SDK에서 SCEP 가져오기의 각 재시도 간격</value>
+  </data>
+  <data name="ScriptFileHelpText" xml:space="preserve">
+    <value>업로드할 사용자 지정 스크립트</value>
+  </data>
+  <data name="SecurityPatch" xml:space="preserve">
+    <value>보안 패치</value>
+  </data>
+  <data name="SecurityPatchDateNotSetError" xml:space="preserve">
+    <value>정책이 활성화된 경우 보안 패치 날짜는 비워 둘 수 없음</value>
+  </data>
+  <data name="SelectedDeviceRequiresApprovalAlert" xml:space="preserve">
+    <value>이 특정 장치에 이 애플리케이션을 설치하려면 승인이 필요합니다. 승인 요청은 최종 사용자가 시작할 수 있습니다.</value>
+  </data>
+  <data name="SelectedDevicesRequireApprovalAlert" xml:space="preserve">
+    <value>애플리케이션 액세스에 승인이 필요한 장치를 제외한 모든 장치에 애플리케이션이 설치됩니다. 승인 요청은 최종 사용자가 시작할 수 있습니다.</value>
+  </data>
+  <data name="SendAppConfigDescription" xml:space="preserve">
+    <value>앱 개발자가 제공한 설정을 사용하여 애플리케이션을 구성합니다.</value>
+  </data>
+  <data name="SendAppConfiguration" xml:space="preserve">
+    <value>전송 구성</value>
+  </data>
+  <data name="SendApplicationAttributes" xml:space="preserve">
+    <value>애플리케이션 특성 보내기</value>
+  </data>
+  <data name="SendAttibutes" xml:space="preserve">
+    <value>특성 보내기</value>
+  </data>
+  <data name="SendInviteTooltip" xml:space="preserve">
+    <value>사용하도록 설정하면 모든 iOS 장치가 VPP 앱을 설치하기 위해 자동으로 초대됩니다. 그렇지 않으면 VPP 앱이 설치될 때 장치가 초대됩니다.</value>
+  </data>
+  <data name="ShowCallKitOption" xml:space="preserve">
+    <value>CallKit 옵션 표시</value>
+  </data>
+  <data name="SideLoadedCount" xml:space="preserve">
+    <value>측면 로드된 설치</value>
+  </data>
+  <data name="SigningCertificateAuthority" xml:space="preserve">
+    <value>서명 인증 기관</value>
+  </data>
+  <data name="SigningCertificateTemplate" xml:space="preserve">
+    <value>서명 인증서 템플릿</value>
+  </data>
+  <data name="SmartGroupNotPresentInAssignment" xml:space="preserve">
+    <value>스마트 그룹이 애플리케이션과 관련된 할당에 존재하지 않습니다.</value>
+  </data>
+  <data name="SmimeBoxerUserInfoMsg" xml:space="preserve">
+    <value>이미 사용자 &gt; 고급 &gt; 인증서에 연결된 S/MIME 인증서가 있는 사용자는 아래 소스와 함께 해당 인증서를 수신합니다. 아래에서 사용자 계정 또는 소스와 연결된 인증서를 선택하십시오.</value>
+  </data>
+  <data name="SMIMEConformingEncryptionAlgorithmsInfo" xml:space="preserve">
+    <value>S/MIME 암호화를 특정 알고리즘으로 제한할 수 있습니다. 승인된 알고리즘을 사용하지 않는 암호화 이메일은 경고로 표시됩니다. 유효한 값이 제공되지 않으면 모든 알고리즘이 사용 가능한 것으로 간주됩니다.</value>
+  </data>
+  <data name="SMIMEConformingSigningAlgorithmsInfo" xml:space="preserve">
+    <value>S/MIME 서명을 특정 알고리즘으로 제한할 수 있습니다. 승인된 알고리즘을 사용하지 않는 서명된 이메일은 경고로 표시됩니다. 유효한 값이 제공되지 않으면 모든 알고리즘이 사용 가능한 것으로 간주됩니다.</value>
+  </data>
+  <data name="SMIMEDefaultEncryptionAlgorithmInfo" xml:space="preserve">
+    <value>수신 및 송신 이메일에 사용할 암호화 알고리즘을 지정합니다. 유효한 알고리즘을 제공하지 않으면 지원되는 최저 알고리즘(3DES)이 사용됩니다.</value>
+  </data>
+  <data name="SMIMEDefaultSigningAlgorithmInfo" xml:space="preserve">
+    <value>수신 및 송신 이메일에 사용할 기본 S/MIME 서명 알고리즘을 지정합니다. 유효한 알고리즘을 제공하지 않으면 지원되는 최저 알고리즘(SHA-1)이 사용됩니다.</value>
+  </data>
+  <data name="SmimeInfo" xml:space="preserve">
+    <value>S/MIME 구성</value>
+  </data>
+  <data name="SMIMEStatusInfo" xml:space="preserve">
+    <value>S/MIME 요구사항 구성</value>
+  </data>
+  <data name="SMIMEStrictEKUCheckInfo" xml:space="preserve">
+    <value>S/MIME 인증서의 EKU 확장을 확인해야 하는지의 여부를 정의합니다. True로 설정된 경우 EKU 확장이 인증서에 있고 이 확장에 이메일 보호 용도가 설정되어 있는지 확인합니다.</value>
+  </data>
+  <data name="Spam" xml:space="preserve">
+    <value>스팸</value>
+  </data>
+  <data name="SpamAndPhishingReporting" xml:space="preserve">
+    <value>스팸 &amp; 피싱 신고</value>
+  </data>
+  <data name="SpamAndPhishingReportingInfo" xml:space="preserve">
+    <value>스팸 또는 피싱 공격으로 확인된 이메일에서 수행할 작업을 구성합니다.</value>
+  </data>
+  <data name="SpamReportConfigPositionChangeInfo" xml:space="preserve">
+    <value>최종 사용자가 '앱 정책' &gt; '사용성' 섹션에서 스팸을 보고하도록 허용할지 여부를 구성합니다.</value>
+  </data>
+  <data name="SpecificApplicationIsNotSupported" xml:space="preserve">
+    <value>잘못된 애플리케이션입니다. Workspace ONE Launcher APK만 업로드하십시오.</value>
+  </data>
+  <data name="SsoInfo" xml:space="preserve">
+    <value>Boxer에서 SSO를 사용하도록 설정하려면 SDK 프로필에서 이 옵션 및 SSO 구성을 사용하도록 설정합니다. 사용하도록 설정한 후에는 Workspace ONE Boxer를 다시 설치하지 않고 SSO를 사용하지 않도록 설정할 수 없습니다.</value>
+  </data>
+  <data name="StatusLastAction" xml:space="preserve">
+    <value>상태-마지막 작업</value>
+  </data>
+  <data name="StokenExpiredMessage" xml:space="preserve">
+    <value>이 조직 그룹에 대해 업로드된 sToken이 만료되었습니다. sToken을 갱신하고 다시 업로드하십시오.</value>
+  </data>
+  <data name="StokenRevokedMessage" xml:space="preserve">
+    <value>이 조직 그룹에 대해 업로드된 sToken이 취소되었습니다. 새 sToken을 업로드하십시오.</value>
+  </data>
+  <data name="Strict" xml:space="preserve">
+    <value>엄격</value>
+  </data>
+  <data name="SupportedProcessorArchitectureHelp" xml:space="preserve">
+    <value>애플리케이션이 지원하는 아키텍처 유형을 선택하십시오. 32비트를 선택하면 이 애플리케이션이 32비트 및 64비트 기기 모두에 게시됩니다.</value>
+  </data>
+  <data name="SupportEmailAddress" xml:space="preserve">
+    <value>지원 이메일 주소</value>
+  </data>
+  <data name="SupportEmailAddressInfo" xml:space="preserve">
+    <value>지원 메뉴를 통해 로그를 보낼 때 지정할 이메일 주소입니다.</value>
+  </data>
+  <data name="SwipesLeftLongInfo" xml:space="preserve">
+    <value>사용자가 이메일 목록 보기에서 이메일을 쓸어넘길 때 기본 작업을 설정하려면 값을 아래 중 하나로 설정합니다. 사용자가 해당 설정을 변경해도 콘솔에서 선택을 재정의하지 않는다는 점에 유의하십시오.</value>
+  </data>
+  <data name="SwipesLeftShortInfo" xml:space="preserve">
+    <value>사용자가 이메일 목록 보기에서 이메일을 쓸어넘길 때 기본 작업을 설정하려면 값을 아래 중 하나로 설정합니다. 사용자가 해당 설정을 변경해도 콘솔에서 선택을 재정의하지 않는다는 점에 유의하십시오.</value>
+  </data>
+  <data name="SwipesRightLongInfo" xml:space="preserve">
+    <value>사용자가 이메일 목록 보기에서 이메일을 쓸어넘길 때 기본 작업을 설정하려면 값을 아래 중 하나로 설정합니다. 사용자가 해당 설정을 변경해도 콘솔에서 선택을 재정의하지 않는다는 점에 유의하십시오.</value>
+  </data>
+  <data name="SwipesRightShortInfo" xml:space="preserve">
+    <value>사용자가 이메일 목록 보기에서 이메일을 쓸어넘길 때 기본 작업을 설정하려면 값을 아래 중 하나로 설정합니다. 사용자가 해당 설정을 변경해도 콘솔에서 선택을 재정의하지 않는다는 점에 유의하십시오.</value>
+  </data>
+  <data name="SyncContact" xml:space="preserve">
+    <value>연락처 동기화</value>
+  </data>
+  <data name="SyncTunnelConfiguration" xml:space="preserve">
+    <value>동기화 터널 구성</value>
+  </data>
+  <data name="TempUploadedPatch" xml:space="preserve">
+    <value>업로드된 패치</value>
+  </data>
+  <data name="TempUploadedTransform" xml:space="preserve">
+    <value>업로드된 변환</value>
+  </data>
+  <data name="TenantStorageCapacity" xml:space="preserve">
+    <value>용량</value>
+  </data>
+  <data name="TenantStorageCapacityMegaBytes" xml:space="preserve">
+    <value>용량 (MB)</value>
+  </data>
+  <data name="TenantStorageGigaBytes" xml:space="preserve">
+    <value>GB</value>
+  </data>
+  <data name="TenantStorageMaxFileSize" xml:space="preserve">
+    <value>최대 파일 크기</value>
+  </data>
+  <data name="TenantStorageMaxFileSizeMegaBytes" xml:space="preserve">
+    <value>최대 파일 크기 (MB)</value>
+  </data>
+  <data name="TenantStorageMegaBytes" xml:space="preserve">
+    <value>MB</value>
+  </data>
+  <data name="TenantStorageOverageAllowed" xml:space="preserve">
+    <value>허용되는 초과량</value>
+  </data>
+  <data name="TenantStorageOverageAllowedMegaBytes" xml:space="preserve">
+    <value>허용되는 초과량 (MB)</value>
+  </data>
+  <data name="ThisFieldIsRequired" xml:space="preserve">
+    <value>이 필드는 필수입니다.</value>
+  </data>
+  <data name="ThreeDays" xml:space="preserve">
+    <value>3일</value>
+  </data>
+  <data name="TimeReceived" xml:space="preserve">
+    <value>시간 접수됨</value>
+  </data>
+  <data name="TimeStamp" xml:space="preserve">
+    <value>타임스탬프</value>
+  </data>
+  <data name="TLSInfo" xml:space="preserve">
+    <value>TLS 구성</value>
+  </data>
+  <data name="TotalCount" xml:space="preserve">
+    <value>총 수</value>
+  </data>
+  <data name="TotalRedeemedLicensesHelpText" xml:space="preserve">
+    <value>총 사용된 수는 이 Workspace UEM Console에서 사용하는 라이센스와 그 외부에서 사용되는 라이센스의 합계입니다. 이들 라이센스는 장치에 할당되어 있기 때문에 배포하기 전에 해지해야 합니다.</value>
+  </data>
+  <data name="TriggerAccount" xml:space="preserve">
+    <value>마지막 작업 세부 정보</value>
+  </data>
+  <data name="TriggerAccountToolTip" xml:space="preserve">
+    <value>이 애플리케이션에 할당된 기기에서 수행된 최근 작업의 세부 정보를 표시합니다.</value>
+  </data>
+  <data name="TrustStore" xml:space="preserve">
+    <value>신뢰 스토어</value>
+  </data>
+  <data name="TunnelAndOtherAttributes" xml:space="preserve">
+    <value>Tunnel 및 기타 특성</value>
+  </data>
+  <data name="TunnelConfigGridBulkActionArg" xml:space="preserve">
+    <value>Tunnel 구성은 {0} 장치에 동기화 됨</value>
+  </data>
+  <data name="UemVersion" xml:space="preserve">
+    <value>UEM 버전</value>
+  </data>
+  <data name="UnPause" xml:space="preserve">
+    <value>일시 정지 해제</value>
+  </data>
+  <data name="Unpaused" xml:space="preserve">
+    <value>일시 정지 해제됨</value>
+  </data>
+  <data name="UnPauseToSelectedDevice" xml:space="preserve">
+    <value>이 조치를 취하면 더 이상 사용 권한이 없는 장치에서 이 애플리케이션 제거의 일시 중단을 해제합니다. 계속하기 전에 사용 권한이 모두 정확한지 확인하십시오. 계속하려면 '확인'을 클릭하십시오.</value>
+  </data>
+  <data name="UnreleasedVersions" xml:space="preserve">
+    <value>시험판 버전</value>
+  </data>
+  <data name="UpgradeApplication" xml:space="preserve">
+    <value>애플리케이션 업그레이드</value>
+  </data>
+  <data name="UploadedPercentageFormat" xml:space="preserve">
+    <value>{0}%</value>
+    <comment>This should be changed to %{0} for languages supporting %# format for percentage</comment>
+  </data>
+  <data name="UploadedUemVersion" xml:space="preserve">
+    <value>업로드된 UEM 버전</value>
+  </data>
+  <data name="UploadedVersion" xml:space="preserve">
+    <value>업로드된 버전</value>
+  </data>
+  <data name="UploadInProgressDoNotClose" xml:space="preserve">
+    <value>업로드가 진행 중입니다. 모달을 닫거나 페이지를 새로 고침하지 마십시오.</value>
+  </data>
+  <data name="UploadStillInProgress" xml:space="preserve">
+    <value>업로드가 아직 진행 중입니다. 모달을 닫거나 페이지를 새로 고침하지 마십시오.</value>
+  </data>
+  <data name="UploadUninstallScript" xml:space="preserve">
+    <value>애플리케이션에 대한 제거 스크립트를 업로드하십시오.</value>
+  </data>
+  <data name="Usability" xml:space="preserve">
+    <value>유용성</value>
+  </data>
+  <data name="UseEscrowGateway" xml:space="preserve">
+    <value>에스크로 게이트웨이 사용</value>
+  </data>
+  <data name="UseEscrowGatewayInfo" xml:space="preserve">
+    <value>이 옵션은 Boxer 5.19 이상 버전에 에스크로 게이트웨이가 구성된 경우에만 적용됩니다.</value>
+  </data>
+  <data name="UserAppRatingInfo" xml:space="preserve">
+    <value>사용자 애플리케이션 등급 정보</value>
+  </data>
+  <data name="UserCertificateOnly" xml:space="preserve">
+    <value>사용자 인증서 전용</value>
+  </data>
+  <data name="UserCertificateOptionalInfo" xml:space="preserve">
+    <value>사용자에게 인증서가 없는 경우에는 이 자격 증명을 건너뛰고 나머지 프로필이 최종 사용자에게 전달됩니다. 사용 가능한 경우, 특정 Workspace ONE 사용자로부터 사용자 인증서를 가져옵니다. 콘솔 또는 셀프 서비스의 사용자 세부 정보를 통해 인증서를 수동으로 업로드할 수 있습니다.</value>
+  </data>
+  <data name="UserDeferredInstall" xml:space="preserve">
+    <value>없음(사용자에 의한 애플리케이션 설치 지연)</value>
+  </data>
+  <data name="UserEngagedDeadline" xml:space="preserve">
+    <value>사용자 개입형 기한</value>
+  </data>
+  <data name="UserEngagedRestart" xml:space="preserve">
+    <value>사용자 개입형 다시 시작</value>
+  </data>
+  <data name="UseSameSigningAndEncryptionCertificate" xml:space="preserve">
+    <value>동일한 서명 및 암호화 인증서 사용</value>
+  </data>
+  <data name="UseSameSigningAndEncryptionCertificateInfo" xml:space="preserve">
+    <value>아니요가 선택되지 않은 한 동일한 S/MIME 인증서가 서명 및 암호화에 사용됩니다.</value>
+  </data>
+  <data name="ValidatingDependentApps" xml:space="preserve">
+    <value>종속성 애플리케이션 검증</value>
+  </data>
+  <data name="ValidationAppConfiguration" xml:space="preserve">
+    <value>선택한 앱에 정의된 할당이 없습니다. 다른 앱을 선택하거나 하나 이상의 할당을 정의하고 다시 시도하십시오.</value>
+  </data>
+  <data name="ValidationDuplicateStep" xml:space="preserve">
+    <value>유사한 구성이 있는 다른 단계가 있습니다.</value>
+  </data>
+  <data name="ValidationErrorMessage" xml:space="preserve">
+    <value>변경 내용을 저장할 수 없습니다. 모든 필드를 입력했는지 확인하고 다시 시도하기 전에 오류가 없는지 확인합니다.</value>
+  </data>
+  <data name="VersionCodeAlreadyExistsInOG" xml:space="preserve">
+    <value>이 Android 애플리케이션의 버전 코드는 {0}이며 OG에 이미 존재합니다. 버전 코드를 업데이트하도록 개발자에게 요청하십시오. 현재 OG에서 식별자 {1}에 대해 이미 등록된 버전 코드는 {2}입니다.</value>
+  </data>
+  <data name="Versions" xml:space="preserve">
+    <value>버전</value>
+  </data>
+  <data name="VersionsInstalled" xml:space="preserve">
+    <value>설치된 버전</value>
+  </data>
+  <data name="ViewCriteria" xml:space="preserve">
+    <value>조건 보기</value>
+  </data>
+  <data name="ViewFlexeraApps" xml:space="preserve">
+    <value>앱 보기</value>
+  </data>
+  <data name="ViewInstallStatusForApplication" xml:space="preserve">
+    <value>{0}의 설치 상태 보기</value>
+  </data>
+  <data name="VirtualApplications" xml:space="preserve">
+    <value>가상 애플리케이션</value>
+  </data>
+  <data name="VirtualApplicationsHelp" xml:space="preserve">
+    <value>가상 애플리케이션 구성 액세스 제어, 디렉토리 관리자에게만 적용</value>
+  </data>
+  <data name="VirtualApps" xml:space="preserve">
+    <value>가상 애플리케이션</value>
+  </data>
+  <data name="VirtualAppsHelp" xml:space="preserve">
+    <value>Workspace ONE 카탈로그에서 직원들이 액세스할 수 있는 가상 애플리케이션 및 데스크톱 목록을 참조하십시오.</value>
+  </data>
+  <data name="VirtualAppsIDMSetupArg" xml:space="preserve">
+    <value>가상 애플리케이션을 사용하려면 먼저 Workspace ONE을 설치해야 합니다. {0}(으)로 이동한 후 Workspace ONE 설치를 완료하십시오. 완료되면 로그아웃했다가 다시 로그인하여 재시도해 보십시오.</value>
+  </data>
+  <data name="VirtualAppsMenuDescription" xml:space="preserve">
+    <value>Workspace ONE 카탈로그에서 직원들이 액세스할 수 있는 가상 애플리케이션 및 데스크톱 목록을 참조하십시오.</value>
+  </data>
+  <data name="VirtualBreadcrumbDescription" xml:space="preserve">
+    <value>가상 애플리케이션 및 컬렉션 보기 및 관리</value>
+  </data>
+  <data name="VMwareDocs" xml:space="preserve">
+    <value>VMware Docs</value>
+  </data>
+  <data name="VPPLicenseNotAvailable" xml:space="preserve">
+    <value>없음(라이센스를 사용할 수 없음)</value>
+  </data>
+  <data name="WaitingForEvent" xml:space="preserve">
+    <value>이벤트 대기 중</value>
+  </data>
+  <data name="WaitingForSchedule" xml:space="preserve">
+    <value>스케줄 대기 중</value>
+  </data>
+  <data name="WaitingForTimeWindow" xml:space="preserve">
+    <value>기간 대기 중</value>
+  </data>
+  <data name="WaitingToBeRetried" xml:space="preserve">
+    <value>재시도 대기 중</value>
+  </data>
+  <data name="WantToContinue" xml:space="preserve">
+    <value>계속하시겠습니까?</value>
+  </data>
+  <data name="WebLinkMenus" xml:space="preserve">
+    <value>웹 링크</value>
+  </data>
+  <data name="WindowsAppsRetireDescription" xml:space="preserve">
+    <value>앱 버전의 사용을 중지하면 Workspace ONE이 관리하는 모든 장치에서 해당 앱이 제거됩니다. 앱의 다음 하위 버전이 사용 가능하여 할당된 경우 장치 OS는 앱의 다운그레이드를 지원하지 않으므로 아무 작업도 수행 되지 않습니다.</value>
+  </data>
+  <data name="WindowsProvisioningInstallContextWarning" xml:space="preserve">
+    <value>이 애플리케이션에는 설치를 위한 사용자 컨텍스트가 필요합니다. 이를 내보낸 PPKG에 포함할 수 없습니다.</value>
+  </data>
+  <data name="WindowsProvisioningNoAppSelected" xml:space="preserve">
+    <value>Windows 프로비저닝 패키지를 내보낼 애플리케이션을 선택하십시오.</value>
+  </data>
+  <data name="WindowsProvisioningOGInheritedWarning" xml:space="preserve">
+    <value>이 애플리케이션은 다른 조직 그룹에서 상속됩니다. 내보낸 PPKG에 포함할 수 없습니다.</value>
+  </data>
+  <data name="WindowsProvisioningPackageDeleteFailed" xml:space="preserve">
+    <value>PPKG(프로비저닝 패키지)를 삭제하는 도중 예기치 않은 오류가 발생했습니다.</value>
+  </data>
+  <data name="WindowsProvisioningPackageDeleteSuccess" xml:space="preserve">
+    <value>Windows 프로비저닝 패키지(PPKG)가 삭제되었습니다.</value>
+  </data>
+  <data name="WindowsProvisioningPackageDeleteWarning" xml:space="preserve">
+    <value>이 프로비저닝 패키지는 더 높은 조직 그룹에서 관리되거나 관리자가 읽기 전용 액세스 권한만 가지고 있으므로 삭제할 수 없습니다.</value>
+  </data>
+  <data name="WindowsProvisioningPackageDownloadAction" xml:space="preserve">
+    <value>다운로드</value>
+  </data>
+  <data name="WindowsProvisioningPackageEditWarning" xml:space="preserve">
+    <value>이 프로비저닝 패키지는 더 높은 조직 그룹에서 관리되거나 관리자가 읽기 전용 액세스 권한만 가지고 있으므로 편집할 수 없습니다.</value>
+  </data>
+  <data name="WindowsProvisioningPackageFailed" xml:space="preserve">
+    <value>PPKG(Windows 프로비저닝 패키지)를 요청하는 도중 예기치 않은 오류가 발생했습니다.</value>
+  </data>
+  <data name="WindowsProvisioningPackageFailedMessage" xml:space="preserve">
+    <value>PPKG(Windows 프로비저닝 패키지)를 내보내지 못함</value>
+  </data>
+  <data name="WindowsProvisioningPackagePleaseWait" xml:space="preserve">
+    <value>기존 PPKG(Windows 프로비저닝 패키지) 내보내기 요청이 진행 중입니다. 내보내기가 완료될 때까지 기다리십시오.</value>
+  </data>
+  <data name="WindowsProvisioningPackageProgressActionMessage" xml:space="preserve">
+    <value>앱 보기</value>
+  </data>
+  <data name="WindowsProvisioningPackageProgressMessage" xml:space="preserve">
+    <value>PPKG(Windows 프로비저닝 패키지)를 내보내는 중입니다.</value>
+  </data>
+  <data name="WindowsProvisioningPackageRequested" xml:space="preserve">
+    <value>PPKG(Windows 프로비저닝 패키지) 내보내기가 성공적으로 요청되었습니다. PPKG 내보내기가 완료되면 다운로드 링크가 포함된 알림이 전송됩니다.</value>
+  </data>
+  <data name="WindowsProvisioningPackageStorageFailed" xml:space="preserve">
+    <value>스토리지가 부족하여 PPKG(Windows 프로비저닝 패키지)를 내보내지 못함</value>
+  </data>
+  <data name="WindowsProvisioningPackageSuccessActionMessage" xml:space="preserve">
+    <value>다운로드</value>
+  </data>
+  <data name="WindowsProvisioningPackageSuccessMessage" xml:space="preserve">
+    <value>내보낸 PPKG(Windows 프로비저닝 패키지)를 다운로드할 수 있습니다.</value>
+  </data>
+  <data name="WindowsProvisioningPackageTitle" xml:space="preserve">
+    <value>Windows 프로비저닝 패키지</value>
+  </data>
+  <data name="WindowsProvisioningSFDReUploadWarning" xml:space="preserve">
+    <value>이 애플리케이션을 내보낸 PPKG에 포함하려면 설정에서 소프트웨어 패키지 배포를 활성화한 후 업로드해야 합니다.</value>
+  </data>
+  <data name="WinRTDesiredStateManagementTooltip" xml:space="preserve">
+    <value>자동 배달 방법을 사용하여 배포된 MDM 관리 앱에만 적용됩니다. 사용하도록 설정되면 제거가 감지될 때 애플리케이션을 자동으로 다시 설치합니다. 사용하지 않도록 설정되면 제거가 감지될 때 애플리케이션을 다시 설치하지 않습니다.</value>
+  </data>
+  <data name="WorkflowDefinitionDesc" xml:space="preserve">
+    <value>워크플로에 식별 이름 및 설명을 추가하십시오.</value>
+  </data>
+  <data name="WorkflowRebootPlaceholder" xml:space="preserve">
+    <value>다음 단계(있는 경우)로 진행하기 전에 장치가 재부팅됩니다.</value>
+  </data>
+  <data name="Workflows" xml:space="preserve">
+    <value>워크플로</value>
+  </data>
+  <data name="WorkflowStepsDesc" xml:space="preserve">
+    <value>애플리케이션 및 조건을 검색하고 여기에 추가하여 워크플로를 생성합니다. 워크플로는 아래 순서대로 실행됩니다. 드래그하여 순서를 변경합니다.</value>
+  </data>
+  <data name="WorkflowStepsPlaceholder" xml:space="preserve">
+    <value>애플리케이션 또는 조건을 추가하여 시작</value>
+  </data>
+  <data name="WorkflowSummaryDesc" xml:space="preserve">
+    <value>저장하기 전에 워크플로 세부 정보 및 단계를 검토하십시오.</value>
+  </data>
+  <data name="WorkspaceOneAdminAssistantForMacOs" xml:space="preserve">
+    <value>macOS용 Workspace ONE Admin Assistant</value>
+  </data>
+  <data name="X64AppDependencies" xml:space="preserve">
+    <value>X64 종속성</value>
+  </data>
+  <data name="X86AppDependencies" xml:space="preserve">
+    <value>X86 종속성</value>
+  </data>
+  <data name="ZeroOrPositiveIntegerRequired" xml:space="preserve">
+    <value>값은 0 또는 양의 정수여야 함</value>
+  </data>
+</root>

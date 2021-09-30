@@ -1,0 +1,1042 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AadAsIdpAttributeRequired" xml:space="preserve">
+    <value>Het 'Azure Active Directory Mapping-kenmerk' is verplicht wanneer Directory is ingesteld op Geen en Azure AD for Identity Services is ingeschakeld op de pagina met instellingen voor Directory Services.</value>
+  </data>
+  <data name="AadAttributeMapping" xml:space="preserve">
+    <value>Azure Active Directory Mapping-kenmerk</value>
+  </data>
+  <data name="AccountLocked" xml:space="preserve">
+    <value>Uw Workspace ONE UEM-account is vergrendeld. {0} om uw account te ontgrendelen of neem contact op met uw IT-beheerder.</value>
+    <comment>{0} will be replaced with url to reset password</comment>
+  </data>
+  <data name="AccountLockedSubject" xml:space="preserve">
+    <value>Workspace ONE UEM-account is vergrendeld</value>
+  </data>
+  <data name="AccountUnlocked" xml:space="preserve">
+    <value>Uw Workspace ONE UEM-account is ontgrendeld. {0} voor toegang tot de Workspace ONE UEM Console.</value>
+    <comment>{0} will be replaced with url to login</comment>
+  </data>
+  <data name="AccountUnlockedSubject" xml:space="preserve">
+    <value>Workspace ONE UEM-account is ontgrendeld</value>
+  </data>
+  <data name="AddCloudServicesAdmin" xml:space="preserve">
+    <value>Een cloudservices-beheerder toevoegen</value>
+  </data>
+  <data name="AddCloudServicesAdminPlaceHolder" xml:space="preserve">
+    <value>{0}</value>
+  </data>
+  <data name="AddSelectedUsersToUserGroup" xml:space="preserve">
+    <value>Geselecteerde gebruikers aan gebruikersgroep toevoegen</value>
+  </data>
+  <data name="AdminAccountLocked" xml:space="preserve">
+    <value>Beheerdersaccount vergrendeld</value>
+  </data>
+  <data name="AdminAccountUnlocked" xml:space="preserve">
+    <value>Beheerdersaccount ontgrendeld</value>
+  </data>
+  <data name="AdminApiAuthenticationWarningText" xml:space="preserve">
+    <value>De Console gebruikt standaard gebruikersinloggegevens, tenzij een clientcertificaat is gegenereerd.</value>
+  </data>
+  <data name="AdminGroupMembersExport" xml:space="preserve">
+    <value>Leden van beheerdersgroepen exporteren</value>
+  </data>
+  <data name="AdminGroupMembersExportHelp" xml:space="preserve">
+    <value>Regelt de toegang tot de export van beheerdersgroepsleden. Ga naar Menu\Accounts\Beheerders\Beheerdersgroepen</value>
+  </data>
+  <data name="Administrators" xml:space="preserve">
+    <value>Beheerders</value>
+  </data>
+  <data name="AdministratorsSettings" xml:space="preserve">
+    <value>Beheerdersinstellingen</value>
+  </data>
+  <data name="AdminNotificationArgForSamlConfiguration" xml:space="preserve">
+    <value>Het kenmerk {0}, dat vereist is om beheerders veilig te verifiëren in de Console, ontbreekt in de SAML-respons van uw identiteitsprovider.</value>
+  </data>
+  <data name="AdminPasswordReset" xml:space="preserve">
+    <value>Beheerderwachtwoord opnieuw instellen</value>
+  </data>
+  <data name="AdminUserPasswordResetAction" xml:space="preserve">
+    <value>Deze actie zal een e-mail voor het opnieuw instellen van een wachtwoord genereren voor de volgende admingebruiker. Controleer of het e-mailadres correct is en ga verder.</value>
+    <comment>This action corresponds to triggering password reset for admin user from the admin list view grid</comment>
+  </data>
+  <data name="AdminUserPasswordResetEmailTriggered" xml:space="preserve">
+    <value>E-mail voor opnieuw instellen van admingebruikerswachtwoord gegenereerd</value>
+  </data>
+  <data name="AgentSettingsPublish" xml:space="preserve">
+    <value>Agent-instellingen publiceren</value>
+  </data>
+  <data name="AllAdministratorsSettings" xml:space="preserve">
+    <value>Instellingen voor alle beheerders</value>
+  </data>
+  <data name="AllAppsBooksSettings" xml:space="preserve">
+    <value>Alle instellingen voor Applicaties &amp; boeken</value>
+  </data>
+  <data name="AllowedDevicesDescription" xml:space="preserve">
+    <value>Vooraf goedgekeurde toestellen importeren op IMEI-nummer, serienummer of UDID. Gebruik dit om een lijst met bekende toestellen te importeren (bijvoorbeeld bedrijfstoestellen). De eigenaar en de groep-ID die is gekoppeld aan dit toestel, worden automatisch toegepast op het toestel tijdens het inschrijvingsproces.</value>
+  </data>
+  <data name="AllUsersSettings" xml:space="preserve">
+    <value>Instellingen voor alle gebruikers</value>
+  </data>
+  <data name="AndroidEfotaApproveUpdate" xml:space="preserve">
+    <value>Android EFOTA-update goedkeuren</value>
+  </data>
+  <data name="ApiQuotaReachedNotification" xml:space="preserve">
+    <value>API-verbruik</value>
+  </data>
+  <data name="ApiQuotaThresholdReachedAction" xml:space="preserve">
+    <value>API-verbruik weergeven</value>
+  </data>
+  <data name="ApiQuotaThresholdReachedMessage" xml:space="preserve">
+    <value>U hebt {0}% van uw dagelijkse API-limiet bereikt. Dit wordt opnieuw ingesteld bij {1}</value>
+    <comment>{0} will be replaced with a numeric value indicating what percentage of api calls have been utilized for that day. {1} will be replaced with the localized time in which the api usage resets</comment>
+  </data>
+  <data name="ApiQuotaThresholdReachedTitle" xml:space="preserve">
+    <value>API-verbruik</value>
+  </data>
+  <data name="ArgCannotBeMappedAppleIdArgAsArgNotFoundInOgArg" xml:space="preserve">
+    <value>{0} kan niet worden toegewezen aan de beheerde Apple ID {1} omdat {2} niet is gevonden in de hiërarchie van organisatiegroep {3}</value>
+  </data>
+  <data name="ArgCannotBeMappedToEnrollmentUserAppleAlreadyPresent" xml:space="preserve">
+    <value>{0} bestaat al in het CSV-bestand, zodat deze niet opnieuw wordt toegevoegd.</value>
+  </data>
+  <data name="ArgCannotBeMappedToEnrollmentUserAppleIDNotFound" xml:space="preserve">
+    <value>{0} kan niet worden toegewezen aan de inschrijvingsgebruiker omdat deze Apple ID niet in het systeem is gevonden</value>
+  </data>
+  <data name="ArgCannotBeMappedToEnrollmentUserKeyboardLayoutInValid" xml:space="preserve">
+    <value>{0} kan niet worden toegewezen aan de inschrijvingsgebruiker omdat deze toetsenbordindeling niet geldig is</value>
+  </data>
+  <data name="ArgCannotBeMappedToEnrollmentUserMissingAppleID" xml:space="preserve">
+    <value>{0} kan niet worden toegewezen aan de inschrijvingsgebruiker omdat deze Apple ID ontbreekt in het CSV-bestand</value>
+  </data>
+  <data name="ArgCannotBeMappedToUserArgAsAlreadyMapped" xml:space="preserve">
+    <value>{fileProcessorDataContext.Person.ManagedAppleIdentifier} kan niet worden toegewezen aan de inschrijvingsgebruiker {username} omdat deze inschrijvingsgebruiker al is toegewezen aan een ander lid</value>
+  </data>
+  <data name="ArgDefinedAboveGivenOG" xml:space="preserve">
+    <value>{0} is gedefinieerd boven de opgegeven organisatiegroep</value>
+  </data>
+  <data name="ArgHasAlreadyMapped" xml:space="preserve">
+    <value>{0} is al toegewezen</value>
+  </data>
+  <data name="BackToLoginPage" xml:space="preserve">
+    <value>Terug naar inloggen</value>
+  </data>
+  <data name="BatchImportAdminUsersExplanation" xml:space="preserve">
+    <value>Met de functie Admingebruikers importeren kunt u grote hoeveelheden admingebruikers tegelijk in het systeem laden. Admingebruikers moeten zijn gekoppeld aan een organisatiegroep.</value>
+  </data>
+  <data name="BatchImportCancelled" xml:space="preserve">
+    <value>Batchimport geannuleerd.</value>
+  </data>
+  <data name="BatchImportDescription" xml:space="preserve">
+    <value>De batchimportfunctie kan worden gebruikt om gebruikers en hun apparaten in grote omvang in het systeem te laden. CSV-sjablonen vindt u hieronder. Als de sjabloon wordt bewerkt met behulp van het hulpprogramma Microsoft Excel, moet u ervoor zorgen dat de kolomindeling is ingesteld op Tekst om verlies van informatie als gevolg van de conversie van de indeling te voorkomen en als CSV-bestand op te slaan.</value>
+  </data>
+  <data name="BatchImportErrors" xml:space="preserve">
+    <value>Fouten batchimport</value>
+  </data>
+  <data name="BatchImportSuccessful" xml:space="preserve">
+    <value>Batchimport geslaagd.</value>
+  </data>
+  <data name="BatchImportUserGroupsExplanation" xml:space="preserve">
+    <value>Deze batchimportfunctie kan worden gebruikt om gebruikersgroepen van grote omvang in het systeem te laden.</value>
+  </data>
+  <data name="BatchImportUsersDevicesExplanation" xml:space="preserve">
+    <value>De batchimportfunctie kan worden gebruikt voor het, in grote omvang, laden van gebruikers en hun toestellen in het systeem. Een sjabloon voor deze import is hieronder gekoppeld.</value>
+  </data>
+  <data name="BeAtleastArgCharactersLong" xml:space="preserve">
+    <value>moet ten minste {0} tekens lang zijn</value>
+    <comment>{0} will be replaced by a number</comment>
+  </data>
+  <data name="CancelBatchImport" xml:space="preserve">
+    <value>Batchimport annuleren</value>
+  </data>
+  <data name="CancelBatchImportWarning" xml:space="preserve">
+    <value>Door deze actie wordt het batchimportproces geannuleerd.</value>
+  </data>
+  <data name="CanNotDeleteUserGroupBecauseAssignedToSmartGroup" xml:space="preserve">
+    <value>Kan gebruikersgroep niet verwijderen omdat deze is toegewezen aan de volgende smart groups: {0}</value>
+  </data>
+  <data name="CartPublish" xml:space="preserve">
+    <value>Kar publiceren</value>
+  </data>
+  <data name="CertificateBasedApiAuthenticationWarningText" xml:space="preserve">
+    <value>Genereer en exporteer het clientcertificaat voor API-verificatie.</value>
+  </data>
+  <data name="CertificateProvisioning" xml:space="preserve">
+    <value>Provisioning van certificaten</value>
+  </data>
+  <data name="ChallengeClientCertificate" xml:space="preserve">
+    <value>Challenge van clientcertificaat</value>
+    <comment>Client certificate for authenticating the retrieval of a SCEP challenge</comment>
+  </data>
+  <data name="CheckGroup" xml:space="preserve">
+    <value>Groep controleren</value>
+  </data>
+  <data name="ClickedResetPasswordNotifyAdmin" xml:space="preserve">
+    <value>Het opnieuw instellen van het wachtwoord is gestart door u of een andere beheerder. Als dit niet correct is, neemt u contact op met uw beheerder voor meer informatie</value>
+  </data>
+  <data name="ClickHereToLogin" xml:space="preserve">
+    <value>login</value>
+  </data>
+  <data name="ColumnsInSpreadsheetDoesNotMatchTemplate" xml:space="preserve">
+    <value>De kolommen in deze spreadsheet komen niet overeen met de sjabloon.</value>
+  </data>
+  <data name="CompleteWithErrors" xml:space="preserve">
+    <value>Voltooien met fouten</value>
+  </data>
+  <data name="CompliancePoliciesView" xml:space="preserve">
+    <value>Netwerkbeleidweergave</value>
+  </data>
+  <data name="CompliancePoliciesViewHelp" xml:space="preserve">
+    <value>Regelt de toegang tot de Netwerkbeleidsweergave. Ga naar Toestellen\Netwerkbeleid\Lijstweergave</value>
+  </data>
+  <data name="CompromiseDetectionForWindows10Device" xml:space="preserve">
+    <value>Verdacht-toesteldetectie voor Windows 10-toestel</value>
+  </data>
+  <data name="ContactAdministratorIfYouHaveDirectoryAccount" xml:space="preserve">
+    <value>Als u een directoryaccount hebt, neemt u contact op met uw beheerder om uw wachtwoord opnieuw in te stellen.</value>
+    <comment>Used in conjuction with "PasswordResetIsNotAvailableForDirectoryAccounts" in telling a user that a directory account cannot use the WS1 password reset flow.</comment>
+  </data>
+  <data name="ContactAdministratorIfYouHaveExternalAccount" xml:space="preserve">
+    <value>Als u een Directory-account hebt, neemt u contact op met uw beheerder om uw wachtwoord opnieuw in te stellen. Als u een VMware Cloud Services-account hebt, kunt u uw wacht woord opnieuw instellen op cloud.vmware.com</value>
+    <comment>Message shown during touble loggingIn flow for an account</comment>
+  </data>
+  <data name="ContentRightsManagement" xml:space="preserve">
+    <value>Inhoudsrechtenbeheer</value>
+  </data>
+  <data name="CreateAdminAccountsFromCSPPortal" xml:space="preserve">
+    <value>Deze tenant is ingeschakeld met de Workspace ONE Cloud Admin Hub. Beheerders die zijn gemaakt in UEM hebben alleen toegang tot UEM. Voeg de beheerder toe in cloudservices om toegang tot Workspace ONE services in te schakelen. {0}</value>
+  </data>
+  <data name="Date&amp;Time" xml:space="preserve">
+    <value>Datum en tijd</value>
+  </data>
+  <data name="DecryptionFailedFieldName" xml:space="preserve">
+    <value>Field Name</value>
+  </data>
+  <data name="DeleteDepSharedMdmProfile" xml:space="preserve">
+    <value>Met DEP gedeeld MDM-profiel verwijderen</value>
+  </data>
+  <data name="DeniedDevices" xml:space="preserve">
+    <value>Geweigerde toestellen</value>
+  </data>
+  <data name="DeniedDevicesDescription" xml:space="preserve">
+    <value>Importeer geweigerde toestellen op IMEI-nummer, serienummer of UDID. Gebruik dit om een lijst met bekende niet-conforme toestellen te importeren. Geweigerde toestellen kunnen niet worden ingeschreven. Als een geweigerd toestel wordt ingeschreven, wordt het automatisch uitgeschreven wanneer de import wordt verwerkt. Tijdens de inschrijving wordt geen rekening gehouden met het opgegeven platform, besturingssysteem en model.</value>
+  </data>
+  <data name="DeviceBasedVppAppUpdate" xml:space="preserve">
+    <value>Toestelgebaseerde VPP-app-update</value>
+  </data>
+  <data name="DeviceBulkManagementDeviceViewGps" xml:space="preserve">
+    <value>Toestelbeheer in bulk - toestellocatie inzien</value>
+  </data>
+  <data name="DeviceBulkManagementDeviceViewGpsHelp" xml:space="preserve">
+    <value>Hiermee geeft u gebruikers toestemming om van grote groepen toestellen tegelijk de actuele locatie te bekijken.</value>
+  </data>
+  <data name="Devicebulkmanagementrebootdevice" xml:space="preserve">
+    <value>Toestel opnieuw opstarten in bulk</value>
+  </data>
+  <data name="DeviceEditionNotAllowedAsUserArgNotManagedAtOG" xml:space="preserve">
+    <value>Toestel bewerken is niet toegestaan omdat de gebruiker {0} niet wordt beheerd in deze organisatiegroep</value>
+  </data>
+  <data name="DeviceLgCannotBeParentUserDefaultLg" xml:space="preserve">
+    <value>De toestelorganisatiegroep kan niet de standaardorganisatiegroep van de bovenliggende gebruiker zijn.</value>
+  </data>
+  <data name="DirectoryAccountsToBePushedBySCIMProvisioning" xml:space="preserve">
+    <value>Directoryaccounts kunnen alleen worden gemaakt door de SCIM Provisioning API</value>
+  </data>
+  <data name="DirectoryNameIsInvalid" xml:space="preserve">
+    <value>Directorynaam is ongeldig. De directorynaam mag geen spaties bevatten.</value>
+  </data>
+  <data name="DirectorySync" xml:space="preserve">
+    <value>Directorysynchronisatie</value>
+  </data>
+  <data name="DisableDepConfiguration" xml:space="preserve">
+    <value>DEP-configuratie uitschakelen</value>
+  </data>
+  <data name="DisplayVideoImport" xml:space="preserve">
+    <value>Video-import weergeven</value>
+  </data>
+  <data name="DisplayVideoView" xml:space="preserve">
+    <value>Video View weergeven</value>
+  </data>
+  <data name="DomainMappingIsNotFoundForGivenDomain" xml:space="preserve">
+    <value>Domein toewijzing is niet gevonden voor het gegeven domein.</value>
+  </data>
+  <data name="DownloadAdvancedTemplateForUsersAndDevices" xml:space="preserve">
+    <value>Geavanceerde sjabloon voor gebruikers en apparaten downloaden</value>
+  </data>
+  <data name="DownloadSimpleTemplateForUsersAndDevices" xml:space="preserve">
+    <value>Eenvoudig sjabloon voor gebruikers en apparaten downloaden</value>
+  </data>
+  <data name="DownloadTemplateForAllowedDevices" xml:space="preserve">
+    <value>Sjabloon voor toegestane toestellen downloaden</value>
+  </data>
+  <data name="DuplicateAdminUserFound" xml:space="preserve">
+    <value>Dubbele admingebruiker gevonden.</value>
+  </data>
+  <data name="DuplicateDirectoryUserGroupMessage" xml:space="preserve">
+    <value>De Directory-gebruikersgroep met ID '{0}' bestaat al.</value>
+  </data>
+  <data name="DuplicateExcludedUserGroupInSmartGroup" xml:space="preserve">
+    <value>Dezelfde gebruikersgroep kan niet worden toegevoegd aan zowel uitsluitings- als toevoegingslijst. Verwijder deze gebruikersgroep uit de toevoegingslijst als u de groep wilt uitsluiten.</value>
+  </data>
+  <data name="DuplicateUserGroupMessage" xml:space="preserve">
+    <value>De gebruikersgroep met beschrijvende naam {0} bestaat al. Geef een andere beschrijvende naam.</value>
+  </data>
+  <data name="EARAppUpdateAvailableNotification" xml:space="preserve">
+    <value>Enterprise-app opslagplaatsupdates</value>
+  </data>
+  <data name="EditAdmin" xml:space="preserve">
+    <value>Beheerder bewerken</value>
+  </data>
+  <data name="EditCustomReportsGettingStarted" xml:space="preserve">
+    <value>Aan de slag met Intelligence</value>
+  </data>
+  <data name="EditCustomReportsGettingStartedHelp" xml:space="preserve">
+    <value>Geeft volledige toegang om in te schrijven voor Intelligence.</value>
+  </data>
+  <data name="EditDepSharedMdmProfile" xml:space="preserve">
+    <value>Met DEP gedeeld MDM-profiel bewerken</value>
+  </data>
+  <data name="EditTemporaryAdmin" xml:space="preserve">
+    <value>Tijdelijke beheerder bewerken</value>
+  </data>
+  <data name="EditTypeGrHelp" xml:space="preserve">
+    <value>Bekijk en bewerk het organisatiegroepstype voor organisatiegroepen.</value>
+  </data>
+  <data name="EditUserArgOpensDialog" xml:space="preserve">
+    <value>Gebruiker {0} bewerken opent dialoogvenster</value>
+    <comment>The placeholder in this label key contains username.</comment>
+  </data>
+  <data name="EMAdvancedLogging" xml:space="preserve">
+    <value>EM-geavanceerd loggen</value>
+  </data>
+  <data name="EMAdvancedLoggingHelp" xml:space="preserve">
+    <value>Venster voor geavanceerde logboekregistratie van gebeurtenissen voor toestellen in een directe MEM-implementatie</value>
+  </data>
+  <data name="EncounteredErrorLoadingAvailableLocationGroup" xml:space="preserve">
+    <value>Fout aangetroffen bij het laden van beschikbare organisatiegroepen.</value>
+  </data>
+  <data name="EnrollmentOgInvalidOrUnauthorized" xml:space="preserve">
+    <value>De inschrijvingsorganisatiegroep is ongeldig of niet-geautoriseerd.</value>
+  </data>
+  <data name="EnrollmentRestrictNewUserForScimProvisioning" xml:space="preserve">
+    <value>Uw account is niet in UEM ingericht en kan dus niet worden ingeschreven. Neem contact op met uw beheerder voor verdere ondersteuning.</value>
+  </data>
+  <data name="EnrollmentUserTenancyNotification" xml:space="preserve">
+    <value>Het maken van inschrijfgebruikers en gebruikersgroepen buiten het OGS-systeem van de klant is niet toegestaan na de releases eind 2021.</value>
+  </data>
+  <data name="EnterSearchTerm" xml:space="preserve">
+    <value>Geef een zoekterm op</value>
+  </data>
+  <data name="ErrorOccuredBulkOperation" xml:space="preserve">
+    <value>Er is een fout opgetreden tijdens de bulkbewerking</value>
+  </data>
+  <data name="ErrorOccuredDuringMergeOfNewUserGroup" xml:space="preserve">
+    <value>Er is een fout opgetreden tijdens het samenvoegen/synchroniseren van de nieuwe gebruikersgroep. {0}</value>
+  </data>
+  <data name="ErrorOccuredForUserGroups" xml:space="preserve">
+    <value>Er is een fout opgetreden bij het zoeken naar groepen waarvan de gebruiker deel uitmaakt</value>
+  </data>
+  <data name="ErrorOccuredWhileMergingGroups" xml:space="preserve">
+    <value>Er is een fout opgetreden tijdens het samenvoegen van de groepen</value>
+  </data>
+  <data name="ErrorResolvingValidOgForUser" xml:space="preserve">
+    <value>Fout bij het oplossen van geldige organisatiegroepen voor de gebruiker</value>
+  </data>
+  <data name="ExcludedUserGroups" xml:space="preserve">
+    <value>Uitgesloten gebruikersgroepen</value>
+  </data>
+  <data name="ExcludedUserGroupsToolTip" xml:space="preserve">
+    <value>Dit criterium biedt de mogelijkheid om toestellen uit te sluiten die toebehoren aan specifieke gebruikers van de toestellijst die gegenereerd wordt door de rest van de criteria toe te passen.</value>
+  </data>
+  <data name="ExpressSetupEdit" xml:space="preserve">
+    <value>Setup van Express bewerken</value>
+  </data>
+  <data name="ExpressSetupEditHelp" xml:space="preserve">
+    <value>Geeft beheerders bewerkingstoegang tot de configuratie van de Console-integratie in AirWatch Express.</value>
+  </data>
+  <data name="ExpressSetupRead" xml:space="preserve">
+    <value>Setup van Express lezen</value>
+  </data>
+  <data name="ExpressSetupReadHelp" xml:space="preserve">
+    <value>Geeft beheerders leestoegang tot de vereenvoudigde configuratie van de Console-integratie in AirWatch Express.</value>
+  </data>
+  <data name="ExternalIdArgDNArgMismatch" xml:space="preserve">
+    <value>Externe ID {0} behoort niet tot de DN-naam {1}.</value>
+  </data>
+  <data name="FailedToCheckDirectoryGroup" xml:space="preserve">
+    <value>Kan directorygroep niet controleren</value>
+  </data>
+  <data name="FailedToSaveTheAdminGroup" xml:space="preserve">
+    <value>Admingroep kan niet worden opgeslagen</value>
+  </data>
+  <data name="FailedToSendResetPasswordEmail" xml:space="preserve">
+    <value>Verzenden van e-mail voor wachtwoord opnieuw instellen is mislukt.</value>
+    <comment>When admin tries to trigger a reset password email for an admin.</comment>
+  </data>
+  <data name="FileInvalidErrorText" xml:space="preserve">
+    <value>Bestandstype moet CSV zijn.</value>
+  </data>
+  <data name="FileTypeHelperText" xml:space="preserve">
+    <value>Moet een CSV-bestand zijn volgens de sjabloonspecificaties</value>
+  </data>
+  <data name="FirstNameFirstTwoLetters" xml:space="preserve">
+    <value>Voornaam (eerste 2 letters)</value>
+  </data>
+  <data name="FirstNameInitial" xml:space="preserve">
+    <value>Voornaam (eerste letter)</value>
+  </data>
+  <data name="FollowingUsersWillBeUnlocked" xml:space="preserve">
+    <value>De volgende gebruikers worden ontgrendeld:</value>
+  </data>
+  <data name="ForgotUserName" xml:space="preserve">
+    <value>Gebruikersnaam vergeten</value>
+  </data>
+  <data name="GeneralFailure" xml:space="preserve">
+    <value>Verzenden van e-mail voor wachtwoord opnieuw instellen is mislukt. Controleer de configuratie-instellingen van de SMTP-server en probeer het opnieuw.</value>
+  </data>
+  <data name="GeofenceAreaEdit" xml:space="preserve">
+    <value>Geofencing-gebied bewerken</value>
+  </data>
+  <data name="GivenDistinguishedNameNotFoundUserCannotAdd" xml:space="preserve">
+    <value>De gegeven DN-naam is niet gevonden. Gebruiker kan niet worden toegevoegd.</value>
+  </data>
+  <data name="GivenOgCustomerCodeInvalid" xml:space="preserve">
+    <value>De opgegeven klantcode van de organisatiegroep is ongeldig.</value>
+  </data>
+  <data name="GivenSecurityTypeNotConfigured" xml:space="preserve">
+    <value>Het opgegeven beveiligingstype is niet geconfigureerd.</value>
+  </data>
+  <data name="GivenSecurityTypeNotSupported" xml:space="preserve">
+    <value>Het opgegeven beveiligingstype wordt niet ondersteund.</value>
+  </data>
+  <data name="GroupNameRequired" xml:space="preserve">
+    <value>Groepsnaam is vereist</value>
+  </data>
+  <data name="HideTemplatesAndGuidelines" xml:space="preserve">
+    <value>Sjablonen en richtlijnen verbergen</value>
+  </data>
+  <data name="IBeaconGroupEdit" xml:space="preserve">
+    <value>IBeacon-groep bewerken</value>
+  </data>
+  <data name="IfExistsAnEmailWillBeSentToTheAddressOnFile" xml:space="preserve">
+    <value>Een e-mail met verdere instructies is verzonden naar het e-mailadres dat we in ons bestand hebben voor uw account.</value>
+    <comment>When a user requests a "forgot password" reset link via email, this is the message given regardless of whether the user name is valid or not.</comment>
+  </data>
+  <data name="IfTroubleClickingCopyAndPasteLink" xml:space="preserve">
+    <value>Als deze koppeling niet werkt, probeer de volgende link te kopiëren en te plakken in uw browser.</value>
+  </data>
+  <data name="IncorrectPasswordAnswerAttemptWarning" xml:space="preserve">
+    <value>U hebt nog 1 poging over. U moet alle vragen correct beantwoorden, anders wordt u geblokkeerd.</value>
+  </data>
+  <data name="IncorrectPasswordAnswerAttemptWarningPlural" xml:space="preserve">
+    <value>U hebt nog {0} pogingen over. U moet alle vragen correct beantwoorden, anders wordt u geblokkeerd.</value>
+  </data>
+  <data name="InstallAppOnAll" xml:space="preserve">
+    <value>App installeren op alle</value>
+  </data>
+  <data name="InstallMdmProfile" xml:space="preserve">
+    <value>MDM-profiel installeren</value>
+  </data>
+  <data name="InstallOnFiltered" xml:space="preserve">
+    <value>Installeren op gefilterde</value>
+  </data>
+  <data name="InvalidDataEntered" xml:space="preserve">
+    <value>Ongeldige gegevens ingevoerd.</value>
+  </data>
+  <data name="InvalidDeviceGroupId" xml:space="preserve">
+    <value>De ID van de toestelgroep is ongeldig.</value>
+  </data>
+  <data name="InvalidGroupBaseDN" xml:space="preserve">
+    <value>Standaard of opgegeven basis-DN{0} van groep is niet geldig</value>
+  </data>
+  <data name="InvalidSession" xml:space="preserve">
+    <value>Ongeldige sessie</value>
+  </data>
+  <data name="InvalidTemplate" xml:space="preserve">
+    <value>Ongeldige sjabloon. Download de meest recente sjabloon</value>
+  </data>
+  <data name="InvalidUserCredentialsPleaseTryAgain" xml:space="preserve">
+    <value>Ongeldig Inloggegevens. Probeer het opnieuw.</value>
+  </data>
+  <data name="IsRequiredArg" xml:space="preserve">
+    <value>Het argument is vereist.</value>
+  </data>
+  <data name="IssueCertificate" xml:space="preserve">
+    <value>Uitgeven van certificaat</value>
+  </data>
+  <data name="JITSettings" xml:space="preserve">
+    <value>JIT-instellingen</value>
+    <comment>Resource for JIT Settings</comment>
+  </data>
+  <data name="JITSettingsHelp" xml:space="preserve">
+    <value>Beheert toegang tot GET- en UPDATE-eindpunten voor JIT.</value>
+  </data>
+  <data name="LastNameFirstTwoLetters" xml:space="preserve">
+    <value>Achternaam (eerste 2 letters)</value>
+  </data>
+  <data name="LastNameInitial" xml:space="preserve">
+    <value>Achternaam (eerste letter)</value>
+  </data>
+  <data name="LdapNotDefinedUserCannotAdd" xml:space="preserve">
+    <value>LDAP is niet gedefinieerd voor de opgegeven organisatiegroep. Admingebruiker kan niet worden toegevoegd.</value>
+  </data>
+  <data name="LocalSync" xml:space="preserve">
+    <value>Lokale synchronisatie</value>
+  </data>
+  <data name="LoginAsDifferentUser" xml:space="preserve">
+    <value>Aanmelden als een andere gebruiker</value>
+  </data>
+  <data name="LoginPasswordIsRequired" xml:space="preserve">
+    <value>Wacht woord is vereist</value>
+  </data>
+  <data name="MailboxBusy" xml:space="preserve">
+    <value>Gevraagde e-mailactie kan niet worden voltooid. SMTP-protocolfout: Mailbox niet beschikbaar. Probeer het opnieuw.</value>
+  </data>
+  <data name="MailboxUnavailable" xml:space="preserve">
+    <value>Verzenden van e-mail voor wachtwoord opnieuw instellen is mislukt. SMTP-protocolfout: Mailbox niet beschikbaar.</value>
+  </data>
+  <data name="MEMRotateGSuitePassword" xml:space="preserve">
+    <value>G Suite-wachtwoord roteren</value>
+  </data>
+  <data name="MEMRotateGSuitePasswordConfirmation" xml:space="preserve">
+    <value>Bevestiging G Suite-wachtwoord roteren</value>
+  </data>
+  <data name="MEMRotateGSuitePasswordFailed" xml:space="preserve">
+    <value>Roteren G Suite-wachtwoord mislukt</value>
+  </data>
+  <data name="MEMRotateGSuitePasswordInfoMessage" xml:space="preserve">
+    <value>Met deze actie stelt u het wachtwoord van de gebruiker opnieuw in en vernieuwt u de bijbehorende e-mailprofielen op de apparaten van de gebruiker. Deze actie kan niet ongedaan worden gemaakt.</value>
+  </data>
+  <data name="MergeFailedRetry" xml:space="preserve">
+    <value>Samenvoegen mislukt. Probeer het opnieuw.</value>
+  </data>
+  <data name="MessageTemplateCouldNotBeRetrieved" xml:space="preserve">
+    <value>Berichtsjabloon kan niet worden opgehaald.</value>
+  </data>
+  <data name="MigrateWarning" xml:space="preserve">
+    <value>De migratieactie zal toestellen en gebruikersinstellingen van basisaccounts en verificatieproxy-accounts naar het geselecteerde LDAP-gebruikersaccount verplaatsen. Het basisaccount en het verificatieproxy-gebruikersaccounts zullen worden verwijderd zodra de migratie is voltooid en zullen niet meer worden gebruikt om toestellen in te schrijven.
+
+Wilt u doorgaan?</value>
+  </data>
+  <data name="NetworkRanges" xml:space="preserve">
+    <value>Netwerkbereiken</value>
+  </data>
+  <data name="NoCommonCustomUserGroupsForSelectedUsers" xml:space="preserve">
+    <value>Er zijn geen algemene aangepaste gebruikersgroepen voor de geselecteerde gebruikers.</value>
+  </data>
+  <data name="NoPasswordQuestionContactAdminMessage" xml:space="preserve">
+    <value>U hebt geen wachtwoordherstelvraag opgegeven, zodat u deze pagina niet kunt gebruiken om uw wachtwoord opnieuw in te stellen. Neem contact op met een beheerder.</value>
+  </data>
+  <data name="NotifyDevicesEnrolledHubApp" xml:space="preserve">
+    <value>Melding verzenden naar in Hub-app ingeschreven apparaten</value>
+  </data>
+  <data name="NumberOfChangesShouldBePositive" xml:space="preserve">
+    <value>Aantal wijzigingen moet een positief geheel getal zijn</value>
+  </data>
+  <data name="NumberOfObjects" xml:space="preserve">
+    <value>{0} objecten</value>
+  </data>
+  <data name="OfflineCompliancePolicy" xml:space="preserve">
+    <value>Offline netwerkbeleid</value>
+  </data>
+  <data name="OGGroupIdNotInCurrentHierarchy" xml:space="preserve">
+    <value>Importeren mislukt. Organisatiegroep (ID: {0}) niet in de huidige hiërarchie.</value>
+  </data>
+  <data name="OGNotInCurrentHierarchy" xml:space="preserve">
+    <value>Importeren mislukt. Organisatiegroep niet in de huidige hiërarchie.</value>
+  </data>
+  <data name="OneAttemptRemaining" xml:space="preserve">
+    <value>1 poging resterend.</value>
+  </data>
+  <data name="P2PPublish" xml:space="preserve">
+    <value>P2P publiceren</value>
+  </data>
+  <data name="PasswordNotificationPeriodDays" xml:space="preserve">
+    <value>Meldingsperiode wachtwoord (dagen)</value>
+  </data>
+  <data name="PasswordResetIsNotAvailableForDirectoryAccounts" xml:space="preserve">
+    <value>Wachtwoord opnieuw instellen is niet beschikbaar voor directory-accounts.</value>
+  </data>
+  <data name="PasswordResetIsNotAvailableForExternalAccounts" xml:space="preserve">
+    <value>Opnieuw instellen van het wachtwoord is niet beschikbaar voor Directory-of VMware Cloud Services-accounts</value>
+    <comment>Message shown during trouble loggingIn flow for an account</comment>
+  </data>
+  <data name="PasswordShouldBeAtleastArgCharactersLong" xml:space="preserve">
+    <value>Uw wachtwoord moet ten minste {0} tekens lang zijn</value>
+    <comment>{0} will be relaced by a number</comment>
+  </data>
+  <data name="PermissionColumnIsEmply" xml:space="preserve">
+    <value>De kolom Machtiging is leeg, waardoor de standaardmachtiging voor de gebruikersgroep wordt toegevoegd</value>
+  </data>
+  <data name="PermissonArgDoesnotConformWithTemplate" xml:space="preserve">
+    <value>De machtiging {0} voldoet niet aan de sjabloon, dus wordt overgeslagen</value>
+  </data>
+  <data name="PleaseCheckDirectoryUsername" xml:space="preserve">
+    <value>Controleer de Username in de directory</value>
+  </data>
+  <data name="ProvisioningPackagePublish" xml:space="preserve">
+    <value>Provisioningpakket publiceren</value>
+  </data>
+  <data name="PublishAndroidWorkPublicApp" xml:space="preserve">
+    <value>Android Work publieke app publiceren</value>
+  </data>
+  <data name="PublishAreaProfile" xml:space="preserve">
+    <value>Gebiedsprofiel publiceren</value>
+  </data>
+  <data name="PublishBrowserSettings" xml:space="preserve">
+    <value>Browserinstellingen publiceren</value>
+  </data>
+  <data name="RemoteViewDD" xml:space="preserve">
+    <value>Extern scherm - Toestelgegevens</value>
+  </data>
+  <data name="RemoteViewDDHelp" xml:space="preserve">
+    <value>Schakel de mogelijkheid in om een externe screenshot te maken van het toestelscherm.</value>
+  </data>
+  <data name="RemoveDepRegisteredDevices" xml:space="preserve">
+    <value>Toestellen met DEP-registratie verwijderen</value>
+  </data>
+  <data name="RemoveSelectedUsersFromUserGroup" xml:space="preserve">
+    <value>Geselecteerde gebruikers uit gebruikersgroep verwijderen</value>
+  </data>
+  <data name="ReportAppleMDM" xml:space="preserve">
+    <value>Apple MDM rapport </value>
+  </data>
+  <data name="ReportAppleMDMHelp" xml:space="preserve">
+    <value>Beheert de machtiging om het Apple MDM-rapport te bekijken</value>
+  </data>
+  <data name="ReportProductCompliance" xml:space="preserve">
+    <value>Naleving van netwerkbeleid voor producten rapporteren</value>
+  </data>
+  <data name="ReportProductComplianceHelp" xml:space="preserve">
+    <value>Beheert de machtiging om het rapport over de naleving van netwerkbeleid voor producten te bekijken</value>
+  </data>
+  <data name="ReportProductDeploymentSummary" xml:space="preserve">
+    <value>Samenvattingsrapport voor productimplementatie</value>
+  </data>
+  <data name="ReportProductDeploymentSummaryHelp" xml:space="preserve">
+    <value>Beheert toegang om het samenvattingsrapport voor productimplementatie te bekijken</value>
+  </data>
+  <data name="ReportProvisioningProductAssigned" xml:space="preserve">
+    <value>Momenteel toegewezen provisioninggegevens - Producten (Nieuw)</value>
+  </data>
+  <data name="ResetPassword" xml:space="preserve">
+    <value>Wachtwoord opnieuw instellen</value>
+    <comment>To be used to trigger reset password for core user.</comment>
+  </data>
+  <data name="ResetYourPassword" xml:space="preserve">
+    <value>uw wachtwoord opnieuw instellen</value>
+  </data>
+  <data name="ResetYourPasswordNow" xml:space="preserve">
+    <value>Uw wachtwoord nu opnieuw instellen</value>
+  </data>
+  <data name="RestApiCustomAttriutesDelete" xml:space="preserve">
+    <value>Verwijderen van aangepaste REST API-eigenschappen</value>
+  </data>
+  <data name="RestApiCustomAttriutesDeleteHelp" xml:space="preserve">
+    <value>Geeft toegang tot alle 'verwijder'-API's in de verzameling Aangepaste eigenschappen</value>
+  </data>
+  <data name="RestApiEnterpriseIntegrationRead" xml:space="preserve">
+    <value>REST-API-bedrijfsintegratie lezen</value>
+  </data>
+  <data name="RestApiEnterpriseIntegrationReadHelp" xml:space="preserve">
+    <value>Toegang tot alle alleen-lezen API's in bedrijfsintegratie </value>
+  </data>
+  <data name="Restapimamapps" xml:space="preserve">
+    <value>REST API MAM-applicaties</value>
+  </data>
+  <data name="RestapimamappsHelp" xml:space="preserve">
+    <value>Toegang tot beheerde applicaties</value>
+  </data>
+  <data name="Restapimamblob" xml:space="preserve">
+    <value>REST API MAM Blob</value>
+  </data>
+  <data name="RestapimamblobHelp" xml:space="preserve">
+    <value>Upload download inhoud</value>
+  </data>
+  <data name="Restapimdmdevices" xml:space="preserve">
+    <value>REST API MDM toestellen</value>
+  </data>
+  <data name="RestapimdmdevicesHelp" xml:space="preserve">
+    <value>Vergrendeling/ontgrendeling opdrachten verzenden</value>
+  </data>
+  <data name="Restapimdmprofiles" xml:space="preserve">
+    <value>REST API MDM profielen</value>
+  </data>
+  <data name="RestapimdmprofilesHelp" xml:space="preserve">
+    <value>Commando's voor vergrendeling/ontgrendeling verzenden</value>
+  </data>
+  <data name="Restapimdmsmartgroups" xml:space="preserve">
+    <value>REST API MDM Smart Groups</value>
+  </data>
+  <data name="RestapimdmsmartgroupsHelp" xml:space="preserve">
+    <value>Toegang tot Smart Group gegevens</value>
+  </data>
+  <data name="Restapimdmusergroups" xml:space="preserve">
+    <value>REST API MDM Gebruikersgroepen</value>
+  </data>
+  <data name="RestapimdmusergroupsHelp" xml:space="preserve">
+    <value>Toegang tot gebruikersgroepen</value>
+  </data>
+  <data name="Restapisystemadmin" xml:space="preserve">
+    <value>REST API Systeembeheerder</value>
+  </data>
+  <data name="RestapisystemadminHelp" xml:space="preserve">
+    <value>Toegang tot beheerdersinformatie</value>
+  </data>
+  <data name="Restapisystemgroups" xml:space="preserve">
+    <value>REST API Systeemgroepen</value>
+  </data>
+  <data name="RestapisystemgroupsHelp" xml:space="preserve">
+    <value>Toegang tot Organisatiegroepen informatie</value>
+  </data>
+  <data name="Restapisystemusers" xml:space="preserve">
+    <value>REST API Systeemgebruikers</value>
+  </data>
+  <data name="RestapisystemusersHelp" xml:space="preserve">
+    <value>Toegang tot Gebruikersinformatie</value>
+  </data>
+  <data name="RevokeAzureADUserTokensOnDeviceWipe" xml:space="preserve">
+    <value>Gebruikerstokens automatisch intrekken bij het wissen van apparaten</value>
+  </data>
+  <data name="RevokeAzureADUserTokensToolTip" xml:space="preserve">
+    <value>Hiermee kan Workspace ONE UEM Microsoft Azure AD-gebruikerstokens intrekken wanneer toestel- of bedrijfsgegevens worden gewist. Opmerking: uitschakelen van deze functie wordt niet aanbevolen omdat het de beveiliging van uw configuratie vermindert. Als een gewist toestel kwijtraakt, kan het nog steeds een geldig AAD-verificatietoken bevatten</value>
+  </data>
+  <data name="RoleId" xml:space="preserve">
+    <value>Rol-ID</value>
+  </data>
+  <data name="Roles" xml:space="preserve">
+    <value>Rollen</value>
+  </data>
+  <data name="SaveDepRegisteredDevices" xml:space="preserve">
+    <value>Toestellen met DEP-registratie opslaan</value>
+  </data>
+  <data name="Scheduler" xml:space="preserve">
+    <value>Planner</value>
+  </data>
+  <data name="SchedulerApple" xml:space="preserve">
+    <value>Planner</value>
+  </data>
+  <data name="SchedulerAppleHelp" xml:space="preserve">
+    <value>Beheert toegang tot de MDM Planner-pagina</value>
+  </data>
+  <data name="SchedulerHelp" xml:space="preserve">
+    <value>Beheert toegang tot de pagina met Planner-instellingen</value>
+  </data>
+  <data name="ScimEnabledOGCannotBatchImportDirectoryTypes" xml:space="preserve">
+    <value>Deze organisatiegroep gebruikt SCIM om gebruikers, beheerders en groepen in te richten. Directory-gebruikers en -groepen kunnen niet bulkgewijs worden geïmporteerd.</value>
+  </data>
+  <data name="SecurityTypeIsRequired" xml:space="preserve">
+    <value>Het beveiligingstype is vereist.</value>
+  </data>
+  <data name="SelectedUsersDoNotExistOrHaveAlreadyBeenDeleted" xml:space="preserve">
+    <value>De geselecteerde gebruikers bestaan niet omdat ze mogelijk al zijn verwijderd. Sluit dit pop-upvenster en vernieuw de gebruikerslijst.</value>
+  </data>
+  <data name="SelectFileLabel" xml:space="preserve">
+    <value>Bestand selecteren</value>
+  </data>
+  <data name="SelectMemConfigLabel" xml:space="preserve">
+    <value>MEM-configuratie</value>
+  </data>
+  <data name="SendApplicationConfigurationRequest" xml:space="preserve">
+    <value>App-configuratieaanvraag verzenden</value>
+  </data>
+  <data name="SendFeedback" xml:space="preserve">
+    <value>Feedback verzenden</value>
+  </data>
+  <data name="SendsEmail" xml:space="preserve">
+    <value>E-mail verzenden</value>
+  </data>
+  <data name="ServerError" xml:space="preserve">
+    <value>Serverfout</value>
+  </data>
+  <data name="SettingsEnrollmentCustomization" xml:space="preserve">
+    <value>Instellingen &gt; Inschrijving &gt; Aanpassing</value>
+  </data>
+  <data name="SettingsEnrollmentCustomizationHelp" xml:space="preserve">
+    <value>Toestemming om het tabblad Aanpassing (Toestellen\Toestelinstellingen\Toestellen en gebruikers\Algemeen\Inschrijving) weer te geven en te wijzigen</value>
+  </data>
+  <data name="SettingsEnrollmentOptionalPrompt" xml:space="preserve">
+    <value>Instellingen &gt; Inschrijving &gt; Optionele prompt</value>
+  </data>
+  <data name="SettingsEnrollmentOptionalPromptHelp" xml:space="preserve">
+    <value>Toestemming om het tabblad Optionele prompt (Toestellen\Toestelinstellingen\Toestellen en gebruikers\Algemeen\Inschrijving) weer te geven en te wijzigen</value>
+  </data>
+  <data name="SettingsHeaderBasedAuthentication" xml:space="preserve">
+    <value>Op instellingen gebaseerde kopverificatie</value>
+  </data>
+  <data name="SettingsMDMSampleSchedule" xml:space="preserve">
+    <value>Instellingen voor de tijdsplanning voor MDM-query</value>
+  </data>
+  <data name="SettingsMDMSampleScheduleHelp" xml:space="preserve">
+    <value>Geeft toegang tot MDM-pagina voor steekproefschema</value>
+  </data>
+  <data name="SettingsScheduler" xml:space="preserve">
+    <value>Instellingen voor taakplanner</value>
+  </data>
+  <data name="SettingsSchedulerHelp" xml:space="preserve">
+    <value>Geeft toegang tot de Planner-pagina</value>
+  </data>
+  <data name="ShareYourFeedback" xml:space="preserve">
+    <value>Deel uw feedback</value>
+  </data>
+  <data name="ShowBatchTypeTemplates" xml:space="preserve">
+    <value>Batchtypesjablonen weergeven</value>
+  </data>
+  <data name="SingleAppModeProfileRemove" xml:space="preserve">
+    <value>Eén-app-modusprofiel verwijderen</value>
+  </data>
+  <data name="SyncDirectoryGroup" xml:space="preserve">
+    <value>Directorygroep synchroniseren</value>
+  </data>
+  <data name="TargetLgCannotParentUserLg" xml:space="preserve">
+    <value>De doelorganisatiegroep mag geen bovenliggende organisatiegroep zijn van de organisatiegroep van de gebruiker.</value>
+  </data>
+  <data name="ThresholdAdminActionRequest" xml:space="preserve">
+    <value>Actieaanvraag voor drempelbeheerder</value>
+  </data>
+  <data name="TimedOut" xml:space="preserve">
+    <value>Time-out</value>
+  </data>
+  <data name="TokenNotCreatedDeviceIdentifiersSpecifiersNotProvided" xml:space="preserve">
+    <value>Token niet aangemaakt! De toestelinformatie ontbreekt.</value>
+  </data>
+  <data name="TransactionFailed" xml:space="preserve">
+    <value>Verzenden van e-mail voor wachtwoord opnieuw instellen is mislukt. Controleer het e-mailadres van de ontvanger en probeer het opnieuw.</value>
+  </data>
+  <data name="TroubleLoggingIn" xml:space="preserve">
+    <value>Problemen bij het inloggen</value>
+  </data>
+  <data name="TwoFactorAuthenticationMethodNotValidOrNotAllowed" xml:space="preserve">
+    <value>Tweestapsverificatiemethode is niet geldig of niet toegestaan.</value>
+  </data>
+  <data name="TwoMoreLgCannotSameCustomerCode" xml:space="preserve">
+    <value>Twee of meer organisatiegroepen kunnen niet dezelfde klantcode hebben.</value>
+  </data>
+  <data name="UnableToFindCertificate" xml:space="preserve">
+    <value>Kan het certificaat niet vinden.</value>
+  </data>
+  <data name="UninstallAppFromAll" xml:space="preserve">
+    <value>App uit alle verwijderen</value>
+  </data>
+  <data name="UniqueIdentifierArgNotProvidedForNewAdmin" xml:space="preserve">
+    <value>Unieke ID "{0}" niet opgegeven voor nieuwe beheerder</value>
+  </data>
+  <data name="UniqueIdentifierArgNotProvidedForNewUser" xml:space="preserve">
+    <value>Unieke ID "{0}" niet opgegeven voor nieuwe gebruiker</value>
+  </data>
+  <data name="UpdatePublish" xml:space="preserve">
+    <value>Update publiceren</value>
+  </data>
+  <data name="UserAccountUnlocked" xml:space="preserve">
+    <value>Gebruikersaccount is ontgrendeld</value>
+  </data>
+  <data name="UserAndroidWorkAppsSync" xml:space="preserve">
+    <value>Gebruikerssynchronisatie Android Work-apps</value>
+  </data>
+  <data name="UserArgCannotBeEditedUserResidesAtBelowImportingOG" xml:space="preserve">
+    <value>De gebruiker {0} kan niet worden bewerkt of beheerd omdat de gebruiker zich buiten/onder de organisatiegroep van de import bevindt</value>
+  </data>
+  <data name="UserArgCannotBeMoved" xml:space="preserve">
+    <value>De gebruiker {0} kan niet worden verplaatst omdat de primaire OG van een apparaat/meerdere apparaten zich boven de doelorganisatiegroep bevinden</value>
+  </data>
+  <data name="UserArgEditNotAllowedForFollowingSecurityType" xml:space="preserve">
+    <value>Gebruiker {0} bewerken is niet toegestaan voor het volgende beveiligingstype</value>
+  </data>
+  <data name="UserArgEditNotAllowedNoPermission" xml:space="preserve">
+    <value>Gebruiker {0} bewerken is niet toegestaan omdat de gebruiker niet is toegestaan in deze OG</value>
+  </data>
+  <data name="UserArgNotCreatedAsNotFoundInAD" xml:space="preserve">
+    <value>De gebruiker {0} is niet gemaakt omdat deze niet is gevonden in de AD</value>
+  </data>
+  <data name="UserArgWasNotFoundatLG" xml:space="preserve">
+    <value>De gebruiker {0} is niet gevonden op de opgegeven locatie groep of is geen basisgebruiker</value>
+  </data>
+  <data name="UserCannotAssignedToParentLg" xml:space="preserve">
+    <value>De gebruiker kan niet worden toegewezen aan een bovenliggende organisatiegroep.</value>
+  </data>
+  <data name="UserDataCorruptedErrorMessage" xml:space="preserve">
+    <value>Er is een probleem opgetreden bij het decoderen van gebruikersgegevens. Bekijk gebeurtenislogboeken om te zien welke velden en gebruikers zijn getroffen. Los dit probleem op door Bewerken te selecteren en de juiste gegevens voor elke betrokken gebruiker opnieuw in te voeren.</value>
+    <comment>Error message shown during the User List View in case Decryption fails for some of the Personal info of any Users.</comment>
+  </data>
+  <data name="UserDecryptionFailed" xml:space="preserve">
+    <value>Decodering van gebruikersgegevens is mislukt</value>
+  </data>
+  <data name="UserGroupsNotPermittedAtGivenOG" xml:space="preserve">
+    <value>Gebruikersgroepen mogen niet worden toegevoegd aan de opgegeven organisatiegroep</value>
+  </data>
+  <data name="UserInformationPrivacySettingWarning" xml:space="preserve">
+    <value>De privacy-instellingen voor gebruikersinformatie zijn niet van toepassing op het programma Verbinding testen op de pagina Directory Services-instellingen onder Systeem &gt; Bedrijfsintegratie.</value>
+  </data>
+  <data name="UserLockedOut" xml:space="preserve">
+    <value>Gebruikersaccount is vergrendeld</value>
+  </data>
+  <data name="UsernameAndPassword" xml:space="preserve">
+    <value>Gebruikersnaam en wachtwoord</value>
+  </data>
+  <data name="UserNoAccessForOGArg" xml:space="preserve">
+    <value>Gebruiker heeft geen toegangsrechten voor organisatiegroep {0}</value>
+  </data>
+  <data name="UserNotFoundAd" xml:space="preserve">
+    <value>De gebruiker is niet gevonden in Active Directory. De gebruiker kan niet worden toegevoegd.</value>
+  </data>
+  <data name="UserQuestionsNotAuthenticated" xml:space="preserve">
+    <value>Uw wachtwoord kan niet opnieuw worden ingesteld totdat uw beveiligingsvraag correct is beantwoord. Raadpleeg de e-mail over wachtwoordherstel die u heeft ontvangen, voor instructies over hoe u verder kunt gaan.</value>
+    <comment>Only appears if someone tries to directly hit the "reset password" page without first answering their security questions.</comment>
+  </data>
+  <data name="UserRoleNotValid" xml:space="preserve">
+    <value>De gebruikersrol is niet geldig.</value>
+  </data>
+  <data name="UsersSettings" xml:space="preserve">
+    <value>Gebruikersinstellingen</value>
+  </data>
+  <data name="UserTypeRequiredFieldValueDirectoryBasicArg" xml:space="preserve">
+    <value>De waarde van het veld Gebruikerstype moet {0} of {1} zijn.</value>
+  </data>
+  <data name="VideoImport" xml:space="preserve">
+    <value>Video-import</value>
+  </data>
+  <data name="ViewCustomReportsGettingStarted" xml:space="preserve">
+    <value>Aan de slag met Intelligence</value>
+  </data>
+  <data name="ViewCustomReportsGettingStartedHelp" xml:space="preserve">
+    <value>Geeft alleen-lezentoegang tot Aan de slag met Intelligence.</value>
+  </data>
+  <data name="ViewEducationOverview" xml:space="preserve">
+    <value>Onderwijs-overzicht weergeven</value>
+  </data>
+  <data name="ViewManagedAdminPasswordHelp" xml:space="preserve">
+    <value>Beheert toegang om beheerde beheerderswachtwoorden te bekijken</value>
+  </data>
+  <data name="ViewUserGroup.Plural" xml:space="preserve">
+    <value>Gebruikersgroepen weergeven</value>
+  </data>
+  <data name="WebAppEntitlements" xml:space="preserve">
+    <value>Rechten voor web-app</value>
+  </data>
+  <data name="Websitefilterssettings" xml:space="preserve">
+    <value>Instellingen voor websitefilters</value>
+  </data>
+  <data name="WindowsBspTenantIdDelete" xml:space="preserve">
+    <value>Windows Bsp TenantId verwijderen</value>
+  </data>
+  <data name="WorkspaceOneCloudAccessDeniesErrorMessage" xml:space="preserve">
+    <value>U heeft een account voor VMware Cloud Services nodig om toegang tot Workspace ONE te krijgen. Neem voor hulp contact op met uw beheerder. {0}</value>
+  </data>
+</root>

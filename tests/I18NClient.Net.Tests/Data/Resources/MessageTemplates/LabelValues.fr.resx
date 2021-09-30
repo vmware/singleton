@@ -1,0 +1,1035 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="MessageTemplates_Content_AccessFileAndCommentNavigateToSSPSection" xml:space="preserve">
+    <value>Vous pouvez accéder à ce fichier et à son commentaire en accédant à la section Portail en libre-service</value>
+  </data>
+  <data name="MessageTemplates_Content_AccessFolderNavigateToSSPSection" xml:space="preserve">
+    <value>Vous pouvez accéder à ce dossier via la section Portail en libre-service</value>
+  </data>
+  <data name="MessageTemplates_Content_AccountEnabledActivateDeviceUsingBrowserNavigateTo" xml:space="preserve">
+    <value>Votre compte Workspace ONE UEM a été activé, vous pouvez désormais enrôler votre terminal. À l'aide du navigateur de votre terminal, accédez à :</value>
+  </data>
+  <data name="MessageTemplates_Content_AccountEnabledFollowStepsToEnrollDevice" xml:space="preserve">
+    <value>Félicitations ! Votre compte Workspace ONE UEM a été activé. Veuillez suivre les étapes ci-dessous pour enrôler votre terminal.</value>
+  </data>
+  <data name="MessageTemplates_Content_AccountExpirationExpirationDate" xml:space="preserve">
+    <value>Expiration du compte : {ExpirationDate}</value>
+  </data>
+  <data name="MessageTemplates_Content_AdminConsole" xml:space="preserve">
+    <value>Administrateur console Workspace ONE UEM :</value>
+  </data>
+  <data name="MessageTemplates_Content_AdminCreatedLogIntoConsoleUsingCredential" xml:space="preserve">
+    <value>Votre compte d'administrateur Workspace ONE UEM a été créé, vous pouvez désormais vous connecter à la console d'administration de Workspace ONE UEM à l'aide des informations d'identification suivantes :</value>
+  </data>
+  <data name="MessageTemplates_Content_AdminCreatedWithDetails" xml:space="preserve">
+    <value>Votre compte d'administrateur Workspace ONE UEM a été créé. Console : {ConsoleUrl} Nom d'utilisateur : {AdminUserName} Mot de passe : {AdminPassword}</value>
+  </data>
+  <data name="MessageTemplates_Content_AdminFirstNameAdminLastName" xml:space="preserve">
+    <value>{AdminFirstName} {AdminLastName},</value>
+  </data>
+  <data name="MessageTemplates_Content_AdminInfoUpdatedLogIntoConsoleToConfirm" xml:space="preserve">
+    <value>Les informations de votre compte administrateur Workspace ONE UEM ont été mises à jour. Connectez-vous à la console pour les confirmer.</value>
+  </data>
+  <data name="MessageTemplates_Content_AdminPasswordReset" xml:space="preserve">
+    <value>Une réinitialisation du mot de passe a été lancée par vous-même ou par un autre administrateur. Si ce n'est pas le cas, veuillez contacter votre administrateur pour plus d'informations. Le lien suivant vous permettra d'accéder à notre site Web pour modifier votre mot de passe :</value>
+  </data>
+  <data name="MessageTemplates_Content_AdminPasswordUpdated" xml:space="preserve">
+    <value>Votre mot de passe Workspace ONE UEM a été mis à jour.</value>
+  </data>
+  <data name="MessageTemplates_Content_AdminPasswordWillExpireInDays" xml:space="preserve">
+    <value>Votre mot de passe d'administrateur pour Workspace ONE UEM console {AdminUserName} expire dans {DaysToBasicAdminPasswordExpiry} jours.</value>
+  </data>
+  <data name="MessageTemplates_Content_AdminStatusChanged" xml:space="preserve">
+    <value>Votre statut d'administrateur Workspace ONE UEM a été remplacé par {AdminStatus}.</value>
+  </data>
+  <data name="MessageTemplates_Content_AlternativelyScanQrCodeToBeginEnrollment" xml:space="preserve">
+    <value>Vous pouvez également scanner le code QR pour commencer l'enrôlement :</value>
+  </data>
+  <data name="MessageTemplates_Content_AppAssignedAccessInternalAppPageReviewPublish" xml:space="preserve">
+    <value>{ApplicationName} a été attribué à des terminaux. Vous pouvez donc désormais le publier sur ces terminaux. Vous avez également accès à cette application via la page Applications internes dans Workspace ONE UEM Console. Vérifiez l'attribution du terminal et publiez l'application. Les détails de l'application sont répertoriés ci-dessous :</value>
+  </data>
+  <data name="MessageTemplates_Content_AppAvailableForDownloadFromUem" xml:space="preserve">
+    <value>{ApplicationName} est maintenant disponible au téléchargement sur votre terminal à partir du catalogue d'applications Workspace ONE UEM.</value>
+  </data>
+  <data name="MessageTemplates_Content_AppAvailableForDownloadFromUemWithDetails" xml:space="preserve">
+    <value>{ApplicationName} est maintenant disponible au téléchargement sur votre terminal à partir du catalogue d'applications Workspace ONE UEM. Les détails de l'application sont répertoriés ci-dessous :</value>
+  </data>
+  <data name="MessageTemplates_Content_AppCreatedAccessInternalAppPage" xml:space="preserve">
+    <value>L'application nommée {ApplicationName} a été créée. Vous pouvez accéder à cette application via la page Applications internes dans Workspace ONE UEM console. Les détails de l'application sont répertoriés ci-dessous :</value>
+  </data>
+  <data name="MessageTemplates_Content_AppCreatedAccessInternalAppPageReviewSubmit" xml:space="preserve">
+    <value>{ApplicationName} a été créée et rendue disponible pour examen. Vous pouvez accéder à cette application via la page Applications internes dans Workspace ONE UEM Console. Vérifiez-la et soumettez-la pour attribution. Les détails de l'application sont les suivants :</value>
+  </data>
+  <data name="MessageTemplates_Content_AppErrorFindLogFile" xml:space="preserve">
+    <value>L'application {ApplicationName} a renvoyé une erreur. Veuillez trouver ci-joint le fichier journal.</value>
+  </data>
+  <data name="MessageTemplates_Content_AppEulaUpdatedAcceptanceRequired" xml:space="preserve">
+    <value>Les conditions de votre contrat de licence d'utilisateur ont été mises à jour et votre acceptation est requise.</value>
+  </data>
+  <data name="MessageTemplates_Content_AppEulaUpdatedAcceptanceRequiredBeforeGracePeriod" xml:space="preserve">
+    <value>Les conditions de votre contrat de licence d'utilisateur ont été mises à jour et votre acceptation est requise avant que la période de grâce ne soit terminée.</value>
+  </data>
+  <data name="MessageTemplates_Content_AppEulaUpdatedAcceptanceRequiredLogInToAppCatalogToAccept" xml:space="preserve">
+    <value>Les conditions de votre contrat de licence d'utilisateur ont été mises à jour et votre acceptation est requise. Connectez-vous au catalogue d'applications Workspace ONE UEM pour accepter les modifications.</value>
+  </data>
+  <data name="MessageTemplates_Content_AppGroupCreatedNavigateToSettingsPageToAccessAppGroups" xml:space="preserve">
+    <value>{CountOfApplicationGroups} groupe(s) d'applications ont été créés suite à une synchronisation avec {VendorName}. Vous trouverez les détails sur ces groupes d'applications en pièce jointe. Vous pouvez accéder à ces groupes d'applications via la section Groupes d'applications sous Applications et livres &gt; Paramètres d'applications dans Workspace ONE UEM Console.</value>
+  </data>
+  <data name="MessageTemplates_Content_AppHasBeenPurchasedOpenHubToDownload" xml:space="preserve">
+    <value>{ApplicationName} a été achetée en votre nom et est désormais disponible au téléchargement. Ouvrez le Workspace ONE Intelligent Hub pour la télécharger.</value>
+  </data>
+  <data name="MessageTemplates_Content_AppNameAppVersion" xml:space="preserve">
+    <value>{ApplicationName}, {ApplicationVersion}</value>
+  </data>
+  <data name="MessageTemplates_Content_AppReputationAnalysisCompletedForApp" xml:space="preserve">
+    <value>L'analyse de réputation des applications est terminée pour {ApplicationName} et les résultats sont maintenant disponibles.</value>
+  </data>
+  <data name="MessageTemplates_Content_AppReviewedAccessInternalAppPageAssignSubmit" xml:space="preserve">
+    <value>{ApplicationName} a été contrôlée. Celle-ci est maintenant disponible pour attribution aux terminaux. Vous pouvez accéder à cette application via la page Applications internes dans Workspace ONE UEM Console. Attribuez-lui des terminaux puis publiez-la. Les détails de l'application sont répertoriés ci-dessous :</value>
+  </data>
+  <data name="MessageTemplates_Content_AuthenticationRequiredCredentialsBelow" xml:space="preserve">
+    <value>L'authentification peut être requise. Vos informations d'identification uniques sont les suivantes :</value>
+  </data>
+  <data name="MessageTemplates_Content_ClickHere" xml:space="preserve">
+    <value>Cliquez ici</value>
+  </data>
+  <data name="MessageTemplates_Content_ClickInstallAcceptPrompts" xml:space="preserve">
+    <value>Cliquez sur Installer et acceptez les invites de configuration de la procédure.</value>
+  </data>
+  <data name="MessageTemplates_Content_ConsoleURL" xml:space="preserve">
+    <value>URL de la console :</value>
+  </data>
+  <data name="MessageTemplates_Content_ContactItHelpDeskIfHaveQuestions" xml:space="preserve">
+    <value>Veuillez contacter votre support informatique si vous avez des questions :</value>
+  </data>
+  <data name="MessageTemplates_Content_ContentComment" xml:space="preserve">
+    <value>« {Comment} »</value>
+  </data>
+  <data name="MessageTemplates_Content_ContentShareUserFirstNameLastName" xml:space="preserve">
+    <value>{ContentShareUserFirstName} {ContentShareUserLastName}</value>
+  </data>
+  <data name="MessageTemplates_Content_ContentUserIsUsingContentLocker" xml:space="preserve">
+    <value>{ContentShareUserFirstName} utilise la solution Content Locker de Workspace ONE UEM pour partager facilement et en toute sécurité des fichiers avec vous.</value>
+  </data>
+  <data name="Messagetemplates_Content_DearAdministrator" xml:space="preserve">
+    <value>Cher administrateur,</value>
+  </data>
+  <data name="MessageTemplates_Content_DeviceApprovedForAccessUsingBrowserNavigateTo" xml:space="preserve">
+    <value>Votre terminal a été approuvé pour l'accès mobile. À l'aide du navigateur Web de votre terminal, accédez à</value>
+  </data>
+  <data name="MessageTemplates_Content_DeviceBlockedFromEnrollmentForReason" xml:space="preserve">
+    <value>L'enrôlement de votre terminal {DevicePlatform} {DeviceModel} a été bloqué pour la raison suivante :</value>
+  </data>
+  <data name="MessageTemplates_Content_DeviceEnrollmentUsingCredentials" xml:space="preserve">
+    <value>L'enrôlement de votre terminal {DeviceFriendlyName} dans Workspace ONE UEM est terminé. Vos identifiants sont les suivants : {EnrollmentUser}.</value>
+  </data>
+  <data name="MessageTemplates_Content_DeviceHasNotReportedComplianceToUemLaunchHubToCheckIn" xml:space="preserve">
+    <value>Votre terminal n'a pas signalé son statut de conformité à Workspace ONE UEM dans le délai requis. Veuillez lancer le Workspace ONE Intelligent Hub sur votre terminal pour que celui-ci soit contrôlé.</value>
+  </data>
+  <data name="MessageTemplates_Content_DeviceInViolationOfOrgCompliancePolicy" xml:space="preserve">
+    <value>Votre terminal, {DeviceFriendlyName}, enfreint la politique de conformité de votre organisation :</value>
+  </data>
+  <data name="MessageTemplates_Content_DeviceInViolationOfPolicyActionTakenIfNonCompliant" xml:space="preserve">
+    <value>Votre périphérique enfreint la politique de conformité « {PolicyName} ». D'autres actions seront prises si le terminal demeure non conforme.</value>
+  </data>
+  <data name="MessageTemplates_Content_DeviceLostCallMe" xml:space="preserve">
+    <value>Ce terminal a été perdu. Veuillez nous appeler.</value>
+  </data>
+  <data name="MessageTemplates_Content_DeviceNoAccessData" xml:space="preserve">
+    <value>Ce terminal n'a plus accès aux paramètres, aux applications et au contenu déployés lors de son enregistrement.</value>
+  </data>
+  <data name="MessageTemplates_Content_DeviceNonCompliantActionsInEffect" xml:space="preserve">
+    <value>En cas de non-conformité de votre terminal, les actions suivantes seront appliquées :</value>
+  </data>
+  <data name="MessageTemplates_Content_DevicesWipedWithinLastMinutes" xml:space="preserve">
+    <value>Nous avons remarqué qu'un nombre inhabituellement élevé de terminaux ont été effacés de l'entreprise ou réinitialisés au cours des {EnterpriseWipeInterval} dernières minutes.</value>
+  </data>
+  <data name="MessageTemplates_Content_DevicesWithAppExceededLimitRemovalOnHoldUntilConfirm" xml:space="preserve">
+    <value>Le nombre de terminaux équipés de l'application {BundleID} a dépassé la limite de suppression de votre application. L'effacement de ces applications a été suspendu jusqu'à ce que vous en confirmiez la quantité et que vous souhaitiez libérer ou non toutes les commandes d'effacement de cette application.</value>
+  </data>
+  <data name="MessageTemplates_Content_DeviceUnenrolled" xml:space="preserve">
+    <value>Votre terminal {DeviceFriendlyName} n'est désormais plus enrôlé.</value>
+  </data>
+  <data name="MessageTemplates_Content_DoNotEnterInfoUntilInContainerApp" xml:space="preserve">
+    <value>Ne saisissez pas d'informations personnelles ou spécifiques à l'organisation tant que vous n'êtes pas dans l'application du conteneur Workspace ONE UEM, comme indiqué ci-dessous :</value>
+  </data>
+  <data name="MessageTemplates_Content_DoNotEnterInfoUntilInHubApp" xml:space="preserve">
+    <value>Ne saisissez pas d'informations personnelles ou spécifiques à l'organisation tant que vous n'êtes pas dans le Workspace ONE Intelligent Hub, comme indiqué ci-dessous :</value>
+  </data>
+  <data name="MessageTemplates_Content_DownloadHubApp" xml:space="preserve">
+    <value>Téléchargement de l'application Workspace ONE Intelligent Hub</value>
+  </data>
+  <data name="MessageTemplates_Content_DownloadHubAppOnDeviceYouWantToEnrollAt" xml:space="preserve">
+    <value>Téléchargez l'application Workspace ONE Intelligent Hub sur le terminal que vous souhaitez enrôler à l'adresse</value>
+  </data>
+  <data name="MessageTemplates_Content_EmailDomainConfirmedUserWithSameDomainEnrolledInto" xml:space="preserve">
+    <value>Une fois votre domaine de messagerie confirmé, les utilisateurs qui s'inscrivent à l'aide d'une adresse e-mail avec le même domaine seront inscrits dans l'URL et l'ID de groupe suivants :</value>
+  </data>
+  <data name="MessageTemplates_Content_EmailDomainRegisteredVerifyEmailAddress" xml:space="preserve">
+    <value>Votre domaine de messagerie a été enregistré pour l'enrôlement par e-mail. Veuillez vérifier votre adresse e-mail en cliquant sur le lien ci-dessous :</value>
+  </data>
+  <data name="MessageTemplates_Content_EnrollmentURL" xml:space="preserve">
+    <value>URL d'enrôlement :</value>
+  </data>
+  <data name="MessageTemplates_Content_EnrollYourDevice" xml:space="preserve">
+    <value>Enrôlez votre terminal.</value>
+  </data>
+  <data name="MessageTemplates_Content_EnterCredentialsToAuthenticateDevice" xml:space="preserve">
+    <value>Veuillez saisir vos identifiants pour authentifier votre terminal.</value>
+  </data>
+  <data name="MessageTemplates_Content_EnterTokenBelowInAppToResetPasscode" xml:space="preserve">
+    <value>Veuillez saisir le jeton ci-dessous lorsque vous utilisez la fonction Mot de passe oublié dans votre application pour réinitialiser votre code secret.</value>
+  </data>
+  <data name="MessageTemplates_Content_EnterTokenWhenPromptedDuringAuth" xml:space="preserve">
+    <value>Veuillez saisir le jeton ci-dessous lorsque vous y êtes invité lors de l'authentification au catalogue d'applications.</value>
+  </data>
+  <data name="MessageTemplates_Content_EnterTokenWhenPromptedWithDetails" xml:space="preserve">
+    <value>Veuillez saisir le jeton ci-dessous lorsque vous y êtes invité lors de l'authentification au catalogue d'applications. Jeton : {AppCatalogToken}</value>
+  </data>
+  <data name="MessageTemplates_Content_EulaUpdatedAcceptanceRequired" xml:space="preserve">
+    <value>Les conditions de votre contrat de licence d'utilisateur Workspace ONE UEM ont été mises à jour et votre acceptation est requise.</value>
+  </data>
+  <data name="MessageTemplates_Content_ExpirationDateTokenExpirationDate" xml:space="preserve">
+    <value>Date d'expiration : {TokenExpirationDate}</value>
+  </data>
+  <data name="MessageTemplates_Content_FileAccessibleInContentLockerOrContentLockerSync" xml:space="preserve">
+    <value>En outre, le fichier sera accessible dans Content Locker sur votre terminal mobile ou sur Content Locker Sync s'il est installé sur votre ordinateur.</value>
+  </data>
+  <data name="MessageTemplates_Content_FinalNoticeAppEulaUpdatedLogInToUemToAccept" xml:space="preserve">
+    <value>DERNIÈRE NOTIFICATION : Les conditions de votre contrat de licence d'utilisateur ont été mises à jour. Connectez-vous au catalogue d'applications Workspace ONE UEM pour accepter les modifications.</value>
+  </data>
+  <data name="MessageTemplates_Content_FinalNotificationIfRejectAppRemoved" xml:space="preserve">
+    <value>Il s'agit de la dernière notification. Si vous refusez les termes du contrat de licence d'utilisateur, l'application sera supprimée de votre terminal.</value>
+  </data>
+  <data name="MessageTemplates_Content_FirstNameLastName" xml:space="preserve">
+    <value>{FirstName} {LastName},</value>
+  </data>
+  <data name="MessageTemplates_Content_FolderAccessibleInContentLockerOrContentLockerSync" xml:space="preserve">
+    <value>En outre, le dossier sera accessible dans Content Locker sur votre terminal mobile ou sur Content Locker Sync s'il est installé sur votre ordinateur.</value>
+  </data>
+  <data name="MessageTemplates_Content_FollowPromptsToSetupPasswordAt" xml:space="preserve">
+    <value>Suivez les invites pour configurer votre mot de passe</value>
+  </data>
+  <data name="MessageTemplates_Content_ForFutureAccessRequireCredentials" xml:space="preserve">
+    <value>Pour un accès futur au(x) dossier(s), vous pouvez avoir besoin des informations d'identification ci-dessous.</value>
+  </data>
+  <data name="MessageTemplates_Content_GoToAppRemovalLogPageToSeeDevicesCanChangeAppRemovalLimitSettings" xml:space="preserve">
+    <value>Veuillez accéder à la page {AppRemovalLog} pour afficher une liste de tous les terminaux affectés. Vous pouvez augmenter ou diminuer les paramètres de limite de suppression d'applications sur {AppRemovalProtection}.</value>
+  </data>
+  <data name="MessageTemplates_Content_GoToContainerEnrollmentUrlToActivateDevice" xml:space="preserve">
+    <value>Accédez à {ContainerEnrollmentUrl} pour activer votre terminal</value>
+  </data>
+  <data name="MessageTemplates_Content_GoToHubEnrollmentUrlToActivateDevice" xml:space="preserve">
+    <value>Accédez à {HubEnrollmentUrl} pour activer votre terminal</value>
+  </data>
+  <data name="MessageTemplates_Content_GrantedFollowingAdminRoles" xml:space="preserve">
+    <value>Les rôles d'administrateur suivants vous ont été attribués :</value>
+  </data>
+  <data name="MessageTemplates_Content_GroupIdGroupIdentifier" xml:space="preserve">
+    <value>ID de groupe : {GroupIdentifier}</value>
+  </data>
+  <data name="MessageTemplates_Content_HasMentionedYouInCommentOnFile" xml:space="preserve">
+    <value>vous a mentionné dans un commentaire du fichier</value>
+  </data>
+  <data name="MessageTemplates_Content_HasSharedYouFolder" xml:space="preserve">
+    <value>a partagé le dossier avec vous</value>
+  </data>
+  <data name="MessageTemplates_Content_HaveNewFolderSharesNavigateToSSPSection" xml:space="preserve">
+    <value>Vous avez de nouveaux partages de dossiers. Pour les consulter, accédez à la section Portail en libre-service</value>
+  </data>
+  <data name="MessageTemplates_Content_HoldOnWipeUntilConfirm" xml:space="preserve">
+    <value>Nous allons mettre en attente toutes les commandes d'effacement ultérieures, jusqu'à ce que vous puissiez évaluer la raison de leur augmentation et que vous souhaitiez libérer ou non toutes les commandes d'effacement à venir.</value>
+  </data>
+  <data name="MessageTemplates_Content_IfPasswordExpiresForcedToReset" xml:space="preserve">
+    <value>Si votre mot de passe de compte expire, vous serez obligé de le réinitialiser avant de vous connecter.</value>
+  </data>
+  <data name="MessageTemplates_Content_IfRejectDeviceUnenrolledRemovalOfData" xml:space="preserve">
+    <value>Si vous refusez les termes du contrat de licence d'utilisateur, votre terminal ne sera plus enrôlé dans Workspace ONE UEM, ce qui entraîne la suppression de toutes les données spécifiques à l'organisation de votre terminal.</value>
+  </data>
+  <data name="MessageTemplates_Content_IfRejectOrNotAcceptRemoveApp" xml:space="preserve">
+    <value>Si vous refusez les conditions du contrat de licence d'utilisateur ou que vous ne l'acceptez pas pendant la période de grâce, l'application sera supprimée de votre terminal.</value>
+  </data>
+  <data name="MessageTemplates_Content_Important" xml:space="preserve">
+    <value>Important :</value>
+  </data>
+  <data name="MessageTemplates_Content_LinkAboveWillExpireOn" xml:space="preserve">
+    <value>Le lien ci-dessus expirera le</value>
+  </data>
+  <data name="MessageTemplates_Content_LinkExpiredContactItHelpDeskToRequestAt" xml:space="preserve">
+    <value>Si le lien a expiré, veuillez contacter votre service d'assistance informatique pour demander un nouvel e-mail d'enregistrement à l'adresse :</value>
+  </data>
+  <data name="MessageTemplates_Content_LogIntoConsoleToImplementCompliancePolicies" xml:space="preserve">
+    <value>Connectez-vous à Workspace ONE UEM console pour implémenter des politiques de conformité qui utilisent {VendorName} groupes d'applications afin de suivre les terminaux non conformes.</value>
+  </data>
+  <data name="MessageTemplates_Content_LogIntoConsoleToResetPassword" xml:space="preserve">
+    <value>Connectez-vous à la console d'administration de Workspace ONE UEM et réinitialisez votre mot de passe en sélectionnant votre nom dans le coin supérieur droit, puis en sélectionnant Gérer les paramètres du compte.</value>
+  </data>
+  <data name="MessageTemplates_Content_LogIntoSSPToReviewAcceptUpdatedTermsAt" xml:space="preserve">
+    <value>Connectez-vous au Portail en libre-service pour vérifier et accepter les termes mis à jour</value>
+  </data>
+  <data name="MessageTemplates_Content_LogIntoUemToAcceptChangesForApp" xml:space="preserve">
+    <value>Connectez-vous au catalogue d'applications Workspace ONE UEM via votre terminal pour accepter les modifications de l'application suivante :</value>
+  </data>
+  <data name="MessageTemplates_Content_MyContent" xml:space="preserve">
+    <value>Mon contenu</value>
+  </data>
+  <data name="MessageTemplates_Content_OnlyDownloadFromOfficialAppStore" xml:space="preserve">
+    <value>Téléchargez uniquement depuis l'App Store officiel de votre terminal</value>
+  </data>
+  <data name="MessageTemplates_Content_OrContactComplianceSupportPhone" xml:space="preserve">
+    <value>ou par téléphone : {ComplianceSupportPhone}</value>
+  </data>
+  <data name="MessageTemplates_Content_OrContactEnrollmentSupportPhone" xml:space="preserve">
+    <value>ou par téléphone : {EnrollmentSupportPhone}.</value>
+  </data>
+  <data name="MessageTemplates_Content_OurWebsite" xml:space="preserve">
+    <value>via notre site Web</value>
+  </data>
+  <data name="MessageTemplates_Content_PasswordEnrollmentPassword" xml:space="preserve">
+    <value>Mot de passe : {EnrollmentPassword}</value>
+  </data>
+  <data name="MessageTemplates_Content_PasswordResetLink" xml:space="preserve">
+    <value>Lien de réinitialisation du mot de passe :</value>
+  </data>
+  <data name="MessageTemplates_Content_PasswordResetLinkExpiration" xml:space="preserve">
+    <value>Expiration du lien de réinitialisation du mot de passe :</value>
+  </data>
+  <data name="MessageTemplates_Content_PolicyNamePolicyDescription" xml:space="preserve">
+    <value>{PolicyName}: {PolicyDescription}</value>
+  </data>
+  <data name="MessageTemplates_Content_ProvisioningPackageRequestStatusChangedLogIntoConsoleToSee" xml:space="preserve">
+    <value>L'état de votre demande de création d'un module de provisionnement Windows a changé. Connectez-vous à la console et consultez les notifications pour plus de détails.</value>
+  </data>
+  <data name="MessageTemplates_Content_RedirectedToContainerAppOrToDownloadContainerApp" xml:space="preserve">
+    <value>Si l'application de conteneur Workspace ONE UEM est installée sur votre terminal, vous y serez redirigée. Si ce n'est pas le cas, vous serez redirigé vers l'App Store officiel pour la télécharger.</value>
+  </data>
+  <data name="MessageTemplates_Content_RedirectedToHubAppOrToDownloadHubApp" xml:space="preserve">
+    <value>Si l'application Workspace ONE Intelligent Hub est installée sur votre terminal, vous y serez redirigée. Si ce n'est pas le cas, vous serez redirigé vers l'App Store officiel pour la télécharger.</value>
+  </data>
+  <data name="MessageTemplates_Content_Regards" xml:space="preserve">
+    <value>Cordialement,</value>
+  </data>
+  <data name="MessageTemplates_Content_RegisteringEnableDownloadAppPurchasedByOrg" xml:space="preserve">
+    <value>L'enregistrement du programme vous permettra de télécharger des applications achetées par votre organisation en votre nom.</value>
+  </data>
+  <data name="MessageTemplates_Content_RegistrationTokenRevoked" xml:space="preserve">
+    <value>Le jeton d'enregistrement de votre terminal a été révoqué.</value>
+  </data>
+  <data name="MessageTemplates_Content_RegistrationTokenRevokedCannotBeActivated" xml:space="preserve">
+    <value>Le jeton d'enregistrement de votre terminal a été révoqué et vous ne pourrez plus l'activer dans Workspace ONE UEM.</value>
+  </data>
+  <data name="MessageTemplates_Content_ResetUrlExpirationText" xml:space="preserve">
+    <value>Le lien ci-dessous arrivera à expiration dans {PasswordResetUrlExpiration} heures.</value>
+  </data>
+  <data name="MessageTemplates_Content_ResetUrlRetryText" xml:space="preserve">
+    <value>Si ce lien ne fonctionne pas, essayez de copier/coller le lien suivant dans votre navigateur.</value>
+  </data>
+  <data name="MessageTemplates_Content_ResetUrlText" xml:space="preserve">
+    <value>Réinitialiser votre mot de passe maintenant</value>
+  </data>
+  <data name="MessageTemplates_Content_RestrictionsLiftedWhenCompliant" xml:space="preserve">
+    <value>Les restrictions appliquées à votre terminal seront suspendues lorsque celui-ci sera à nouveau conforme.</value>
+  </data>
+  <data name="MessageTemplates_Content_SeeAppReputationAnalysisReportForApp" xml:space="preserve">
+    <value>Consultez le rapport détaillé de l'analyse de réputation des applications ci-joint {ApplicationName} {ApplicationVersion}.</value>
+  </data>
+  <data name="MessageTemplates_Content_SeeDeviceWipeDetailsNavigateTo" xml:space="preserve">
+    <value>Pour afficher la liste de tous les terminaux réinitialisés ou en attente de réinitialisation, déterminez ce qui a déclenché chaque action et spécifiez si vous souhaitez supprimer ou procéder à chacune d'entre elles en accédant à</value>
+  </data>
+  <data name="MessageTemplates_Content_SetUemPassword" xml:space="preserve">
+    <value>Sélectionnez votre mot de passe Workspace ONE UEM.</value>
+  </data>
+  <data name="MessageTemplates_Content_TempAdminCreatedOrModifiedLogIntoConsole" xml:space="preserve">
+    <value>Votre compte d'administrateur temporaire Workspace ONE UEM a été créé ou modifié, vous pouvez désormais vous connecter à la console d'administration de Workspace ONE UEM à l'aide des informations d'identification suivantes :</value>
+  </data>
+  <data name="MessageTemplates_Content_ToActivateAndAccessContent" xml:space="preserve">
+    <value>Pour activer votre compte et accéder au contenu partagé avec vous,</value>
+  </data>
+  <data name="MessageTemplates_Content_ToComplyWithPolicyAddressViolations" xml:space="preserve">
+    <value>Pour respecter la politique de conformité, vous devez répondre aux infractions suivantes :</value>
+  </data>
+  <data name="MessageTemplates_Content_TokenAppCatalogToken" xml:space="preserve">
+    <value>Jeton : {AppCatalogToken}</value>
+  </data>
+  <data name="MessageTemplates_Content_TokenApplicationAuthenticationToken" xml:space="preserve">
+    <value>Jeton : {ApplicationAuthenticationToken}</value>
+  </data>
+  <data name="MessageTemplates_Content_ToLearnMoreVisit" xml:space="preserve">
+    <value>Pour en savoir plus, accédez à</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAdminAccountActivationTitle" xml:space="preserve">
+    <value>Activation du compte d'administrateur Workspace ONE UEM : {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAdminPasswordExpiryNotificationTitle" xml:space="preserve">
+    <value>Notification d'expiration du mot de passe du compte administrateur Workspace ONE UEM : {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAdminPasswordResetTitle" xml:space="preserve">
+    <value>Mise à jour du mot de passe administrateur Workspace ONE UEM : {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAdminPasswordUpdatedTitle" xml:space="preserve">
+    <value>Mise à jour du mot de passe du compte administrateur Workspace ONE UEM : {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAdminPersonalInfoUpdatedTitle" xml:space="preserve">
+    <value>Mise à jour des informations personnelles du compte administrateur Workspace ONE UEM : {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAdminStatusUpdatedTitle" xml:space="preserve">
+    <value>Mise à jour du statut d'administrateur Workspace ONE UEM : {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAppCatalogTokenNotificationTitle" xml:space="preserve">
+    <value>Notification du jeton du catalogue d'application Workspace ONE UEM : {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAppEulaUpdateNotificationTitle" xml:space="preserve">
+    <value>Notification de mise à jour des conditions d'utilisation d'application Workspace ONE UEM : {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAppForgotPasscodeTokenNotificationTitle" xml:space="preserve">
+    <value>Notification de jeton de mot de passe oublié pour l'application Workspace ONE UEM :{Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAppGroupCreationNotificationTitle" xml:space="preserve">
+    <value>Notification de création de groupe d'application Workspace ONE UEM : {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAppLogNotificationTitle" xml:space="preserve">
+    <value>Notification de journal d'application Workspace ONE UEM : {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAppNotificationTitle" xml:space="preserve">
+    <value>Notification d'application Workspace ONE UEM : {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAppPurchaseTitle" xml:space="preserve">
+    <value>Achat d'application Workspace ONE UEM : {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAppRemovalNotificationTitle" xml:space="preserve">
+    <value>Notification de suppression d'application Workspace ONE UEM : {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAppReputationAnalysisTitle" xml:space="preserve">
+    <value>Analyse de la réputation des applications Workspace ONE UEM : {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAppWorkflowAppAssignmentNotificationTitle" xml:space="preserve">
+    <value>Notification d'attribution de l'application, workflow d'application Workspace ONE UEM : {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAppWorkflowAppCreatedNotificationTitle" xml:space="preserve">
+    <value>Notification de création de l'application, workflow d'application Workspace ONE UEM : {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAppWorkflowAppPublishNotificationTitle" xml:space="preserve">
+    <value>Notification de publication de l'application, workflow d'application Workspace ONE UEM : {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAppWorkflowAppReviewNotificationTitle" xml:space="preserve">
+    <value>Notification de révision de l'application, workflow d'application Workspace ONE UEM : {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemContentNotificationTitle" xml:space="preserve">
+    <value>Notification de contenu Workspace ONE UEM : {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemDeviceActivationTitle" xml:space="preserve">
+    <value>Activation du terminal Workspace ONE UEM : {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemDeviceBlockedByEnrollmentRestrictionTitle" xml:space="preserve">
+    <value>Terminal bloqué en raison d'une restriction d'enrôlement Workspace ONE UEM : {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemDeviceComplianceViolationTitle" xml:space="preserve">
+    <value>Terminal en infraction de conformité Workspace ONE UEM : {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemDeviceEnrolledTitle" xml:space="preserve">
+    <value>Enregistrement réussi d'un terminal Workspace ONE UEM : {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemDeviceRemovalTitle" xml:space="preserve">
+    <value>Suppression du terminal Workspace ONE UEM : {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemDeviceUnenrolledTitle" xml:space="preserve">
+    <value>Terminal désenrôlé Workspace ONE UEM : {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemEmailDomainRegistrationTitle" xml:space="preserve">
+    <value>Enregistrement au domaine de messagerie Workspace ONE UEM : {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemEulaUpdateTitle" xml:space="preserve">
+    <value>Mise à jour des conditions d'utilisation Workspace ONE UEM : {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemFinalNoticeAppEulaUpdateTitle" xml:space="preserve">
+    <value>NOTIFICATION FINALE : Mise à jour des conditions d'utilisation d'application Workspace ONE UEM : {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemLicenseBasedVppNotificationTitle" xml:space="preserve">
+    <value>Notification de VPP avec licence Workspace ONE UEM : {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemProvisioningPackageTitle" xml:space="preserve">
+    <value>Module de provisionnement Workspace ONE UEM : {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemTempAdminActivationTitle" xml:space="preserve">
+    <value>Activation du compte administrateur temporaire Workspace ONE UEM : {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemUserActivationTitle" xml:space="preserve">
+    <value>Activation de l'utilisateur Workspace ONE UEM : {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemWipeProtectionNotificationTitle" xml:space="preserve">
+    <value>Notification de protection contre l'effacement Workspace ONE UEM : {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UnenrollmentReason" xml:space="preserve">
+    <value>Motif : {ServerActionSource}</value>
+  </data>
+  <data name="MessageTemplates_Content_UserCommentsForApp" xml:space="preserve">
+    <value>Les commentaires utilisateur de l'application sont les suivants :</value>
+  </data>
+  <data name="MessageTemplates_Content_UserHasSharedFolder" xml:space="preserve">
+    <value>{ContentShareUserFirstName} {ContentShareUserLastName} ({ContentShareUserEmail}) a partagé le dossier « {ContentFolderName} » avec vous.</value>
+  </data>
+  <data name="MessageTemplates_Content_UserNameAdminUserName" xml:space="preserve">
+    <value>Nom d'utilisateur : {AdminUserName}</value>
+  </data>
+  <data name="MessageTemplates_Content_UserNameEmailAddress" xml:space="preserve">
+    <value>Nom d'utilisateur : {EmailAddress}</value>
+  </data>
+  <data name="MessageTemplates_Content_UserNameEnrollmentUserName" xml:space="preserve">
+    <value>Nom d'utilisateur : {EnrollmentUserName}</value>
+  </data>
+  <data name="MessageTemplates_Content_UsingBrowserToRegisterVppProgramNavigateTo" xml:space="preserve">
+    <value>À l'aide du navigateur de votre terminal iOS 7, enregistrez le programme VPP basé sur la licence d'Apple, à l'adresse :</value>
+  </data>
+  <data name="Messagetemplates_Content_WelcomeToWorkspaceOneUEM" xml:space="preserve">
+    <value>Bienvenue dans Workspace ONE UEM</value>
+  </data>
+  <data name="MessageTemplates_Content_WhenPromptedEnterUseNamePassword" xml:space="preserve">
+    <value>Lorsque vous y êtes invité, saisissez votre nom d'utilisateur et votre mot de passe :</value>
+  </data>
+  <data name="MessageTemplates_Content_WipeLogPage" xml:space="preserve">
+    <value>Page Journaux des réinitialisations</value>
+  </data>
+  <data name="MessageTemplates_Content_WorkspaceOneUem" xml:space="preserve">
+    <value>Workspace ONE UEM</value>
+  </data>
+  <data name="Messagetemplates_Content_WorkspaceOneUEMUser" xml:space="preserve">
+    <value>Utilisateur Workspace ONE UEM</value>
+  </data>
+  <data name="Messagetemplates_Description_AdminAccountActivation" xml:space="preserve">
+    <value>Modèle de message par défaut lorsqu'un administrateur est ajouté par un autre administrateur à partir de la console.</value>
+  </data>
+  <data name="Messagetemplates_Description_AdminPasswordChange" xml:space="preserve">
+    <value>Modèle de message par défaut informant un administrateur que son mot de passe a été modifié. Ce message est automatique et est toujours envoyé à des fins de sécurité.</value>
+  </data>
+  <data name="Messagetemplates_Description_AdminPasswordExpiryNotification" xml:space="preserve">
+    <value>Modèle de message par défaut qui informe un administrateur que son mot de passe va bientôt expirer et qu'il doit prendre des mesures pour le réinitialiser</value>
+  </data>
+  <data name="Messagetemplates_Description_AdminPasswordReset" xml:space="preserve">
+    <value>Modèle de message par défaut informant un administrateur que son mot de passe a été modifié. Ce message est automatique et est toujours envoyé à des fins de sécurité.</value>
+  </data>
+  <data name="Messagetemplates_Description_AdminPersonalInformationChange" xml:space="preserve">
+    <value>Modèle de message par défaut informant un administrateur que ses informations personnelles ont été modifiées. Ce message est automatique et est toujours envoyé à des fins de sécurité.</value>
+  </data>
+  <data name="Messagetemplates_Description_AdminPersonalInformationChangeViaApi" xml:space="preserve">
+    <value>Le modèle de message par défaut informant un administrateur que ses informations personnelles ont été modifiées via l'API. Ce message est automatique et est toujours envoyé à des fins de sécurité.</value>
+  </data>
+  <data name="Messagetemplates_Description_AdminStatusChange" xml:space="preserve">
+    <value>Modèle de message par défaut informant un administrateur qu'il a été désactivé ou réactivé. Ce message est automatique et est toujours envoyé à des fins de sécurité.</value>
+  </data>
+  <data name="Messagetemplates_Description_AppCatalogTokenNotification" xml:space="preserve">
+    <value>Modèle de message par défaut pour envoyer les informations de jeton à l'utilisateur lorsqu'il accède au catalogue d'applications pour la première fois. Il est envoyé uniquement si le terminal se trouve dans un groupe organisationnel configuré pour l'authentification par jeton.</value>
+  </data>
+  <data name="Messagetemplates_Description_ApplicationAssignmentNotification" xml:space="preserve">
+    <value>Modèle de message par défaut qui informe un administrateur qu'une nouvelle application est prête pour l'attribution.</value>
+  </data>
+  <data name="Messagetemplates_Description_ApplicationCreationNotification" xml:space="preserve">
+    <value>Modèle de message par défaut qui informe un administrateur qu'une nouvelle application a été créée.</value>
+  </data>
+  <data name="Messagetemplates_Description_ApplicationEulaFinalNotification" xml:space="preserve">
+    <value>Modèle de message par défaut pour envoyer un dernier avertissement aux utilisateurs qui doivent accepter les conditions d'utilisation ajoutées ou mises à jour d'une application ou celle-ci sera supprimée.</value>
+  </data>
+  <data name="Messagetemplates_Description_ApplicationEulaNotification" xml:space="preserve">
+    <value>Modèle de message par défaut informant les utilisateurs que les conditions d'utilisation d'une application ont été ajoutées ou mises à jour. Il leur est demandé d'accepter l'ajout ou la modification.</value>
+  </data>
+  <data name="Messagetemplates_Description_ApplicationLogNotification" xml:space="preserve">
+    <value>Modèle de message par défaut envoyé lorsqu'une application activée par SDK génère un journal d'incidents et qu'un marqueur est activé pour envoyer automatiquement des journaux d'incidents aux développeurs.</value>
+  </data>
+  <data name="Messagetemplates_Description_ApplicationNotification" xml:space="preserve">
+    <value>Modèle de message par défaut informant un utilisateur qu'une nouvelle application peut être téléchargée dans le catalogue d'applications.</value>
+  </data>
+  <data name="Messagetemplates_Description_ApplicationPublishNotification" xml:space="preserve">
+    <value>Modèle de message par défaut qui informe un administrateur qu'une nouvelle application est prête à être publiée.</value>
+  </data>
+  <data name="Messagetemplates_Description_ApplicationReviewNotification" xml:space="preserve">
+    <value>Modèle de message par défaut informant un administrateur qu'une application est prête pour l'évaluation.</value>
+  </data>
+  <data name="Messagetemplates_Description_ApplicationScanDetailResult" xml:space="preserve">
+    <value>Modèle de message par défaut informant les développeurs du rapport détaillé d'analyses de réputation d'application.</value>
+  </data>
+  <data name="Messagetemplates_Description_ApplicationScanNotification" xml:space="preserve">
+    <value>Notification de la fin de l'analyse de réputation de l'application</value>
+  </data>
+  <data name="Messagetemplates_Description_AppRemoveNotification" xml:space="preserve">
+    <value>Ce modèle de message est utilisé pour informer les terminaux qu'une suppression d'applications a été déclenchée sur un grand nombre de terminaux sur une courte période de temps.</value>
+  </data>
+  <data name="Messagetemplates_Description_AppVersionUpdateNotification" xml:space="preserve">
+    <value>Lors du processus d'inscription, personnalisez le message qui s'affiche dans l'invite d'installation du profil MDM.</value>
+  </data>
+  <data name="Messagetemplates_Description_AuthenticationAppTokenNotification" xml:space="preserve">
+    <value>Modèle d'envoi d'e-mail d'un jeton aux utilisateurs afin de réinitialiser le code secret d'une application SDK sur un terminal.</value>
+  </data>
+  <data name="Messagetemplates_Description_ComplianceViolationAdministratorNotification" xml:space="preserve">
+    <value>Modèle de message par défaut informant l'administrateur qu'un terminal enfreint une stratégie de conformité et que l'utilisateur doit prendre une mesure pour rétablir la conformité.</value>
+  </data>
+  <data name="Messagetemplates_Description_ComplianceViolationUserNotification" xml:space="preserve">
+    <value>Modèle de message par défaut informant les utilisateurs qu'ils enfreignent une stratégie de conformité et qu'ils doivent faire le nécessaire pour établir leur conformité.</value>
+  </data>
+  <data name="Messagetemplates_Description_DeviceActivation" xml:space="preserve">
+    <value>Modèle de message par défaut informant les utilisateurs qu'ils peuvent enrôler leur terminal.</value>
+  </data>
+  <data name="Messagetemplates_Description_DeviceBlockedByRestriction" xml:space="preserve">
+    <value>Modèle de message par défaut pour informer les utilisateurs que leur terminal a été bloqué par une restriction.</value>
+  </data>
+  <data name="Messagetemplates_Description_DeviceEnrolled" xml:space="preserve">
+    <value>Modèle de message par défaut informant les utilisateurs que leur terminal a été enrôlé avec succès.</value>
+  </data>
+  <data name="Messagetemplates_Description_DeviceEnrollmentProgramCustomPrompt" xml:space="preserve">
+    <value>Personnalisez le texte qui apparaît dans le volet d'authentification de l'assistant de configuration pour les terminaux auxquels un profil de programme d'inscription a été attribué.</value>
+  </data>
+  <data name="Messagetemplates_Description_DeviceLockScreenMessageiOS7" xml:space="preserve">
+    <value>Modèle de message par défaut affiché lorsqu'une commande de message de verrouillage du terminal est envoyée au terminal en cas de perte.</value>
+  </data>
+  <data name="Messagetemplates_Description_DeviceOutofDateCompliance" xml:space="preserve">
+    <value>Modèle de message par défaut demandant à l'utilisateur de lancer Workspace ONE Intelligent Hub pour permettre le check-in du terminal et effectuer une analyse en cas de compromission.</value>
+  </data>
+  <data name="Messagetemplates_Description_DeviceUnenrolled" xml:space="preserve">
+    <value>Modèle de message par défaut informant les utilisateurs que leur terminal a été désenrôlé.</value>
+  </data>
+  <data name="Messagetemplates_Description_DeviceWipeEmailNotification" xml:space="preserve">
+    <value>Modèle de message par défaut informant l'administrateur qu'un grand nombre de terminaux a été réinitialisé ou dont le contenu d'entreprise a été effacé sur une courte période de temps.</value>
+  </data>
+  <data name="Messagetemplates_Description_EmailDomainRegistration" xml:space="preserve">
+    <value>Modèle de message par défaut utilisé pour valider le domaine de messagerie qui sera utilisé lors du processus d'enrôlement simplifié.</value>
+  </data>
+  <data name="Messagetemplates_Description_EulaNotification" xml:space="preserve">
+    <value>Modèle de message par défaut informant les utilisateurs que les conditions d'utilisation ont été ajoutées ou mises à jour, et les invitant à accepter cet ajout ou cette modification.</value>
+  </data>
+  <data name="Messagetemplates_Description_ExternalUserActivation" xml:space="preserve">
+    <value>Modèle de message par défaut informant les utilisateurs externes de l'activation du compte lorsqu'un dossier est partagé.</value>
+  </data>
+  <data name="Messagetemplates_Description_LicenseBasedPurchasedApplicationInvitation" xml:space="preserve">
+    <value>Modèle de message par défaut informant les utilisateurs d'enrôlement qu'ils doivent s'enregistrer avec Apple pour le VPP basé sur les licences.</value>
+  </data>
+  <data name="Messagetemplates_Description_MamEnrollmentUserActivation" xml:space="preserve">
+    <value>Modèle de message par défaut lorsqu'un administrateur ajoute un nouvel utilisateur depuis la console dans un groupe organisationnel configuré pour l'enrôlement MAM.</value>
+  </data>
+  <data name="Messagetemplates_Description_MamNewUserActivation" xml:space="preserve">
+    <value>Modèle de message par défaut lorsqu'un utilisateur s'enrôle dans un groupe organisationnel configuré pour l'enrôlement MAM.</value>
+  </data>
+  <data name="Messagetemplates_Description_MentionedCommentNotification" xml:space="preserve">
+    <value>Mentionné dans la notification du commentaire</value>
+  </data>
+  <data name="Messagetemplates_Description_NewlyAddedUserToUserGroupNotification" xml:space="preserve">
+    <value>Modèle de message par défaut informant les utilisateurs nouvellement ajoutés au groupe d'utilisateurs des derniers dossiers partagés.</value>
+  </data>
+  <data name="Messagetemplates_Description_NewSharedFolderNotification" xml:space="preserve">
+    <value>Notification de dossier partagé</value>
+  </data>
+  <data name="Messagetemplates_Description_ProvisioningPackageNotification" xml:space="preserve">
+    <value>Modèle de message par défaut qui informe un administrateur que le module de provisionnement a été créé et qu'il est disponible au téléchargement.</value>
+  </data>
+  <data name="Messagetemplates_Description_PurchasedApplication" xml:space="preserve">
+    <value>Modèle de message par défaut informant un utilisateur qu'une application a été achetée en leur nom et peut être téléchargée.</value>
+  </data>
+  <data name="Messagetemplates_Description_TempAdminActivation" xml:space="preserve">
+    <value>Modèle de message par défaut lorsqu'un administrateur temporaire est ajouté par un autre administrateur depuis la console.</value>
+  </data>
+  <data name="Messagetemplates_Description_UnRegisterDevice" xml:space="preserve">
+    <value>Modèle de message par défaut informant les utilisateurs que leur terminal a été désenrôlé et que toutes les données propres à l'organisation seront supprimées.</value>
+  </data>
+  <data name="Messagetemplates_Description_UserActivation" xml:space="preserve">
+    <value>Modèle de message par défaut informant les utilisateurs qu'ils ont été ajoutés en tant qu'utilisateur EMM et peuvent maintenant enrôler leur terminal.</value>
+  </data>
+  <data name="Messagetemplates_Description_VendorApplicationGroupCreationNotification" xml:space="preserve">
+    <value>Modèle de message par défaut informant un utilisateur qu'un ou plusieurs groupes d'applications fournisseur ont été créés et sont disponibles pour la mise en place des stratégies de conformité.</value>
+  </data>
+  <data name="Messagetemplates_Description_WorkSpaceDeviceActivation" xml:space="preserve">
+    <value>Modèle de message par défaut informant les utilisateurs qu'ils peuvent enrôler leur terminal.</value>
+  </data>
+  <data name="Messagetemplates_Name_AdminAccountActivation" xml:space="preserve">
+    <value>Activation de l'administrateur</value>
+  </data>
+  <data name="Messagetemplates_Name_AdminPasswordChange" xml:space="preserve">
+    <value>Changement de mot de passe administrateur</value>
+  </data>
+  <data name="Messagetemplates_Name_AdminPasswordExpiryNotification" xml:space="preserve">
+    <value>Notification d'expiration du mot de passe administrateur</value>
+  </data>
+  <data name="Messagetemplates_Name_AdminPasswordReset" xml:space="preserve">
+    <value>Changement de mot de passe administrateur</value>
+  </data>
+  <data name="Messagetemplates_Name_AdminPersonalInformationChange" xml:space="preserve">
+    <value>Changement d'informations personnelles de l'administrateur</value>
+  </data>
+  <data name="Messagetemplates_Name_AdminPersonalInformationChangeViaApi" xml:space="preserve">
+    <value>Modification des informations personnelles de l'administrateur via l'API</value>
+  </data>
+  <data name="Messagetemplates_Name_AdminStatusChange" xml:space="preserve">
+    <value>Changement d'état de l'administrateur</value>
+  </data>
+  <data name="Messagetemplates_Name_AppCatalogTokenNotification" xml:space="preserve">
+    <value>Notification du jeton de l'App Catalog</value>
+  </data>
+  <data name="Messagetemplates_Name_ApplicationAssignmentNotification" xml:space="preserve">
+    <value>Workflow d'application : attribuer une notification</value>
+  </data>
+  <data name="Messagetemplates_Name_ApplicationCreationNotification" xml:space="preserve">
+    <value>Workflow d'application : notification de création</value>
+  </data>
+  <data name="Messagetemplates_Name_ApplicationEulaFinalNotification" xml:space="preserve">
+    <value>Conditions d'utilisation d'application : notification finale</value>
+  </data>
+  <data name="Messagetemplates_Name_ApplicationEulaNotification" xml:space="preserve">
+    <value>Conditions d'utilisation d'application : notification des mises à jour</value>
+  </data>
+  <data name="Messagetemplates_Name_ApplicationLogNotification" xml:space="preserve">
+    <value>Notification de journal d'application pour SDK</value>
+  </data>
+  <data name="Messagetemplates_Name_ApplicationNotification" xml:space="preserve">
+    <value>Notification d'application</value>
+  </data>
+  <data name="Messagetemplates_Name_ApplicationPublishNotification" xml:space="preserve">
+    <value>Workflow d'application : publier une notification</value>
+  </data>
+  <data name="Messagetemplates_Name_ApplicationReviewNotification" xml:space="preserve">
+    <value>Workflow d'application : notification de révision</value>
+  </data>
+  <data name="Messagetemplates_Name_ApplicationScanDetailResult" xml:space="preserve">
+    <value>Détails de l'analyse de réputation d'application</value>
+  </data>
+  <data name="Messagetemplates_Name_ApplicationScanNotification" xml:space="preserve">
+    <value>Notification de la fin de l'analyse de réputation de l'application</value>
+  </data>
+  <data name="Messagetemplates_Name_AppRemoveNotification" xml:space="preserve">
+    <value>Notification de suppression de limite atteinte de l'application</value>
+  </data>
+  <data name="Messagetemplates_Name_AppVersionUpdateNotification" xml:space="preserve">
+    <value>Installation de profil MDM (iOS uniquement)</value>
+  </data>
+  <data name="Messagetemplates_Name_AuthenticationAppTokenNotification" xml:space="preserve">
+    <value>Notification de jeton du code secret oublié de l'application</value>
+  </data>
+  <data name="Messagetemplates_Name_ComplianceViolationAdministratorNotification" xml:space="preserve">
+    <value>Notification de violation de conformité à l'administrateur</value>
+  </data>
+  <data name="Messagetemplates_Name_ComplianceViolationUserNotification" xml:space="preserve">
+    <value>Notification de violation de conformité à l'utilisateur</value>
+  </data>
+  <data name="Messagetemplates_Name_DeviceActivation" xml:space="preserve">
+    <value>Activation du terminal</value>
+  </data>
+  <data name="Messagetemplates_Name_DeviceBlockedByRestriction" xml:space="preserve">
+    <value>Terminal bloqué en raison d'une restriction d'inscription</value>
+  </data>
+  <data name="Messagetemplates_Name_DeviceEnrolled" xml:space="preserve">
+    <value>Terminal enrôlé avec succès</value>
+  </data>
+  <data name="Messagetemplates_Name_DeviceEnrollmentProgramCustomPrompt" xml:space="preserve">
+    <value>Invite personnalisée au programme d'inscription des terminaux.</value>
+  </data>
+  <data name="Messagetemplates_Name_DeviceLockScreenMessageiOS7" xml:space="preserve">
+    <value>Message de l'écran de verrouillage du terminal perdu (iOS 7 uniquement)</value>
+  </data>
+  <data name="Messagetemplates_Name_DeviceOutofDateCompliance" xml:space="preserve">
+    <value>Demander une vérification de la conformité</value>
+  </data>
+  <data name="Messagetemplates_Name_DeviceUnenrolled" xml:space="preserve">
+    <value>Terminal désenrôlé</value>
+  </data>
+  <data name="Messagetemplates_Name_DeviceWipeEmailNotification" xml:space="preserve">
+    <value>Notification de protection contre l'effacement</value>
+  </data>
+  <data name="Messagetemplates_Name_EmailDomainRegistration" xml:space="preserve">
+    <value>Enregistrement au domaine de messagerie</value>
+  </data>
+  <data name="Messagetemplates_Name_EulaNotification" xml:space="preserve">
+    <value>Notification des conditions d'utilisation</value>
+  </data>
+  <data name="Messagetemplates_Name_ExternalUserActivation" xml:space="preserve">
+    <value>Activation d'un utilisateur externe</value>
+  </data>
+  <data name="Messagetemplates_Name_LicenseBasedPurchasedApplicationInvitation" xml:space="preserve">
+    <value>Notification VPP basée sur une licence</value>
+  </data>
+  <data name="Messagetemplates_Name_MamEnrollmentUserActivation" xml:space="preserve">
+    <value>Activation d'un nouvel utilisateur par un administrateur dans MAM</value>
+  </data>
+  <data name="Messagetemplates_Name_MamNewUserActivation" xml:space="preserve">
+    <value>Activation d'un nouvel utilisateur par un autre utilisateur dans MAM</value>
+  </data>
+  <data name="Messagetemplates_Name_MentionedCommentNotification" xml:space="preserve">
+    <value>Mention dans le commentaire</value>
+  </data>
+  <data name="Messagetemplates_Name_NewlyAddedUserToUserGroupNotification" xml:space="preserve">
+    <value>Notification de partage pour l'utilisateur récemment ajouté dans le groupe d'utilisateurs</value>
+  </data>
+  <data name="Messagetemplates_Name_NewSharedFolderNotification" xml:space="preserve">
+    <value>Nouveau dossier partagé</value>
+  </data>
+  <data name="Messagetemplates_Name_ProvisioningPackageNotification" xml:space="preserve">
+    <value>Notification de l'état du module de provisionnement</value>
+  </data>
+  <data name="Messagetemplates_Name_PurchasedApplication" xml:space="preserve">
+    <value>Achat d'application</value>
+  </data>
+  <data name="Messagetemplates_Name_TempAdminActivation" xml:space="preserve">
+    <value>Activation administrateur temporaire</value>
+  </data>
+  <data name="Messagetemplates_Name_UnRegisterDevice" xml:space="preserve">
+    <value>Désinscrire le terminal</value>
+  </data>
+  <data name="Messagetemplates_Name_UserActivation" xml:space="preserve">
+    <value>Activation de l'utilisateur</value>
+  </data>
+  <data name="Messagetemplates_Name_VendorApplicationGroupCreationNotification" xml:space="preserve">
+    <value>Notification de création de groupe d'applications fournisseur</value>
+  </data>
+  <data name="Messagetemplates_Name_WorkSpaceDeviceActivation" xml:space="preserve">
+    <value>Activation des terminaux utilisant AirWatch Container</value>
+  </data>
+  <data name="Messagetemplates_Subject_AdminAccountActivation" xml:space="preserve">
+    <value>Activation du compte administrateur Workspace ONE UEM</value>
+  </data>
+  <data name="Messagetemplates_Subject_AdminPasswordChange" xml:space="preserve">
+    <value>Mise à jour du mot de passe du compte administrateur Workspace ONE UEM</value>
+  </data>
+  <data name="Messagetemplates_Subject_AdminPasswordExpiryNotification" xml:space="preserve">
+    <value>Notification d'expiration du mot de passe administrateur</value>
+  </data>
+  <data name="Messagetemplates_Subject_AdminPasswordReset" xml:space="preserve">
+    <value>Mise à jour du mot de passe administrateur Workspace ONE UEM</value>
+  </data>
+  <data name="Messagetemplates_Subject_AdminPersonalInformationChange" xml:space="preserve">
+    <value>Mise à jour des informations personnelles du compte administrateur Workspace ONE UEM</value>
+  </data>
+  <data name="Messagetemplates_Subject_AdminPersonalInformationChangeViaApi" xml:space="preserve">
+    <value>Mise à jour des informations personnelles du compte administrateur Workspace ONE UEM</value>
+  </data>
+  <data name="Messagetemplates_Subject_AdminStatusChange" xml:space="preserve">
+    <value>Mise à jour du statut d'administrateur Workspace ONE UEM</value>
+  </data>
+  <data name="Messagetemplates_Subject_AppCatalogTokenNotification" xml:space="preserve">
+    <value>Jeton du catalogue d'application Workspace ONE UEM</value>
+  </data>
+  <data name="Messagetemplates_Subject_ApplicationAssignmentNotification" xml:space="preserve">
+    <value>Workspace ONE UEM - Application disponible pour attribution</value>
+  </data>
+  <data name="Messagetemplates_Subject_ApplicationCreationNotification" xml:space="preserve">
+    <value>Workspace ONE UEM - Nouvelle application créée</value>
+  </data>
+  <data name="Messagetemplates_Subject_ApplicationEulaFinalNotification" xml:space="preserve">
+    <value>NOTIFICATION FINALE : Mise à jour des conditions d'utilisation d'application Workspace ONE UEM</value>
+  </data>
+  <data name="Messagetemplates_Subject_ApplicationEulaNotification" xml:space="preserve">
+    <value>Mise à jour des conditions d'utilisation des applications</value>
+  </data>
+  <data name="Messagetemplates_Subject_ApplicationLogNotification" xml:space="preserve">
+    <value>Journal d'erreurs d'application Workspace ONE UEM</value>
+  </data>
+  <data name="Messagetemplates_Subject_ApplicationNotification" xml:space="preserve">
+    <value>Workspace ONE UEM - Application disponible au téléchargement</value>
+  </data>
+  <data name="Messagetemplates_Subject_ApplicationPublishNotification" xml:space="preserve">
+    <value>Workspace ONE UEM - Application disponible pour publication</value>
+  </data>
+  <data name="Messagetemplates_Subject_ApplicationReviewNotification" xml:space="preserve">
+    <value>Workspace ONE UEM - Notification de révision de l'application</value>
+  </data>
+  <data name="Messagetemplates_Subject_ApplicationScanDetailResult" xml:space="preserve">
+    <value>Workspace ONE UEM - Rapport d'analyse de la réputation de l'application</value>
+  </data>
+  <data name="Messagetemplates_Subject_ApplicationScanNotification" xml:space="preserve">
+    <value>Analyse de la réputation de l'application terminée</value>
+  </data>
+  <data name="Messagetemplates_Subject_AppRemoveNotification" xml:space="preserve">
+    <value>ATTENTION : limite de suppression d'applications dépassée</value>
+  </data>
+  <data name="Messagetemplates_Subject_AuthenticationAppTokenNotification" xml:space="preserve">
+    <value>Jeton de code secret oublié</value>
+  </data>
+  <data name="Messagetemplates_Subject_ComplianceViolationAdministratorNotification" xml:space="preserve">
+    <value>Attention requise : violation de conformité du terminal Workspace ONE UEM</value>
+  </data>
+  <data name="Messagetemplates_Subject_ComplianceViolationUserNotification" xml:space="preserve">
+    <value>Attention requise : violation de conformité du terminal Workspace ONE UEM</value>
+  </data>
+  <data name="Messagetemplates_Subject_DeviceActivation" xml:space="preserve">
+    <value>Activation du terminal Workspace ONE UEM</value>
+  </data>
+  <data name="Messagetemplates_Subject_DeviceBlockedByRestriction" xml:space="preserve">
+    <value>Workspace ONE UEM - Terminal bloqué en raison d'une restriction d'enrôlement</value>
+  </data>
+  <data name="Messagetemplates_Subject_DeviceEnrolled" xml:space="preserve">
+    <value>Workspace ONE UEM - Terminal enrôlé avec succès</value>
+  </data>
+  <data name="Messagetemplates_Subject_DeviceEnrollmentProgramCustomPrompt" xml:space="preserve">
+    <value>Invite personnalisée au programme d'inscription des terminaux.</value>
+  </data>
+  <data name="Messagetemplates_Subject_DeviceLockScreenMessageiOS7" xml:space="preserve">
+    <value>Message de l'écran de verrouillage du terminal iOS 7</value>
+  </data>
+  <data name="Messagetemplates_Subject_DeviceOutofDateCompliance" xml:space="preserve">
+    <value>Demande de vérification de la conformité Workspace ONE UEM</value>
+  </data>
+  <data name="Messagetemplates_Subject_DeviceUnenrolled" xml:space="preserve">
+    <value>Workspace ONE UEM - Terminal désenrôlé</value>
+  </data>
+  <data name="Messagetemplates_Subject_DeviceWipeEmailNotification" xml:space="preserve">
+    <value>Limite d'effacement Workspace ONE UEM dépassée</value>
+  </data>
+  <data name="Messagetemplates_Subject_EmailDomainRegistration" xml:space="preserve">
+    <value>Enregistrement au domaine de messagerie Workspace ONE UEM</value>
+  </data>
+  <data name="Messagetemplates_Subject_EulaNotification" xml:space="preserve">
+    <value>Mise à jour des conditions d'utilisation Workspace ONE UEM</value>
+  </data>
+  <data name="Messagetemplates_Subject_ExternalUserActivation" xml:space="preserve">
+    <value>{ContentShareUserFirstName} {ContentShareUserLastName} a partagé un dossier avec vous sur Workspace ONE UEM</value>
+  </data>
+  <data name="Messagetemplates_Subject_LicenseBasedPurchasedApplicationInvitation" xml:space="preserve">
+    <value>Workspace ONE UEM - Lien pour s'enregistrer auprès d'Apple pour les VPP basés sur une licence</value>
+  </data>
+  <data name="Messagetemplates_Subject_MamEnrollmentUserActivation" xml:space="preserve">
+    <value>Activation de l'utilisateur Workspace ONE UEM</value>
+  </data>
+  <data name="Messagetemplates_Subject_MamNewUserActivation" xml:space="preserve">
+    <value>Activation de l'utilisateur Workspace ONE UEM</value>
+  </data>
+  <data name="Messagetemplates_Subject_MentionedCommentNotification" xml:space="preserve">
+    <value>{Commenter} vous a mentionné dans un commentaire sur le fichier « {ContentName} »</value>
+  </data>
+  <data name="Messagetemplates_Subject_NewlyAddedUserToUserGroupNotification" xml:space="preserve">
+    <value>Nouveau(x) dossier(s) de contenu partagé(s) avec vous</value>
+  </data>
+  <data name="Messagetemplates_Subject_NewSharedFolderNotification" xml:space="preserve">
+    <value>{ContentShareUserFirstName} a partagé le dossier « {ContentFolderName} » avec vous.</value>
+  </data>
+  <data name="Messagetemplates_Subject_ProvisioningPackageNotification" xml:space="preserve">
+    <value>Module de provisionnement Workspace ONE UEM créé</value>
+  </data>
+  <data name="Messagetemplates_Subject_PurchasedApplication" xml:space="preserve">
+    <value>Achat d'application Workspace ONE UEM</value>
+  </data>
+  <data name="Messagetemplates_Subject_TempAdminActivation" xml:space="preserve">
+    <value>Activation du compte administrateur temporaire Workspace ONE UEM</value>
+  </data>
+  <data name="Messagetemplates_Subject_UnRegisterDevice" xml:space="preserve">
+    <value>Suppression du terminal Workspace ONE UEM</value>
+  </data>
+  <data name="Messagetemplates_Subject_UserActivation" xml:space="preserve">
+    <value>Activation de l'utilisateur Workspace ONE UEM</value>
+  </data>
+  <data name="Messagetemplates_Subject_VendorApplicationGroupCreationNotification" xml:space="preserve">
+    <value>Workspace ONE UEM - Nouveau groupe d'applications créé</value>
+  </data>
+  <data name="Messagetemplates_Subject_WorkSpaceDeviceActivation" xml:space="preserve">
+    <value>Activation du terminal Workspace ONE UEM</value>
+  </data>
+</root>

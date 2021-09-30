@@ -1,0 +1,3410 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AdaptivaSetup" xml:space="preserve">
+    <value>Opsætning af Adaptiva</value>
+  </data>
+  <data name="AdaptivaSetupHelp" xml:space="preserve">
+    <value>Konfigurer ressource for P2-partner, Adaptiva</value>
+  </data>
+  <data name="AdaptiveManagement" xml:space="preserve">
+    <value>Adaptive Management</value>
+  </data>
+  <data name="AdaptiveManagementHelp" xml:space="preserve">
+    <value>Mulighed for at se og indstille niveauet for Adaptive Management baseret på apppolitikker</value>
+  </data>
+  <data name="AddApplicationWorkflowHelp" xml:space="preserve">
+    <value>Giver en udvikler tilladelse til at uploade en app</value>
+  </data>
+  <data name="AddCartHelp" xml:space="preserve">
+    <value>Upload en CSV af enhedens serienumre for delte enheder. </value>
+  </data>
+  <data name="AddCustomReportSubscriptionHelp" xml:space="preserve">
+    <value>Styrer adgang til at tilføje abonnementet på den brugerdefinerede rapporter. Gå til Hub\Reports &amp; Analytics\Custom Reports\Subscriptions</value>
+  </data>
+  <data name="AddDeviceUserAccounts" xml:space="preserve">
+    <value>Tilføj enhed</value>
+  </data>
+  <data name="AddDeviceUserAccountsHelp" xml:space="preserve">
+    <value>Tilføj enheder til brugerkonti.</value>
+  </data>
+  <data name="AddEditAdminAccount" xml:space="preserve">
+    <value>Tilføj/rediger</value>
+  </data>
+  <data name="AddEditAdminAccountHelp" xml:space="preserve">
+    <value>Tilføj eller rediger admin konti.</value>
+  </data>
+  <data name="AddEditAdminGroup" xml:space="preserve">
+    <value>Tilføj/rediger</value>
+  </data>
+  <data name="AddEditAdminGroupHelp" xml:space="preserve">
+    <value>Tilføj eller rediger admin-grupper.</value>
+  </data>
+  <data name="AddEditAdminRoles" xml:space="preserve">
+    <value>Tilføj/rediger</value>
+  </data>
+  <data name="AddEditAdminRolesHelp" xml:space="preserve">
+    <value>Tilføj, rediger og slet admin roller.</value>
+  </data>
+  <data name="AddEditDeviceManufacturerDetails" xml:space="preserve">
+    <value>Tilføj producentoplysninger for redigeringsenhed</value>
+  </data>
+  <data name="AddEditDeviceManufacturerDetailsHelp" xml:space="preserve">
+    <value>Tilføj en ny enhedsproducent eller rediger en eksisterende producent på konsollen via API</value>
+  </data>
+  <data name="AddEditDeviceModelDetails" xml:space="preserve">
+    <value>Tilføj modeloplysninger for redigeringsenhed</value>
+  </data>
+  <data name="AddEditDeviceModelDetailsHelp" xml:space="preserve">
+    <value>Tilføj en ny enhedsmodel eller rediger en eksisterende model på konsollen via API</value>
+  </data>
+  <data name="AddEditUG" xml:space="preserve">
+    <value>Tilføj/rediger</value>
+  </data>
+  <data name="AddEditUGHelp" xml:space="preserve">
+    <value>Tilføj, rediger og slet brugergrupper.</value>
+  </data>
+  <data name="AddEditUserAccount" xml:space="preserve">
+    <value>Tilføj/rediger</value>
+  </data>
+  <data name="AddEditUserAccountHelp" xml:space="preserve">
+    <value>Tilføj eller rediger brugerkonti.</value>
+  </data>
+  <data name="AddEditUserCat" xml:space="preserve">
+    <value>Tilføj/rediger</value>
+  </data>
+  <data name="AddEditUserCatHelp" xml:space="preserve">
+    <value>Tilføj, rediger og slet tilmeldingens brugerkategorier.</value>
+  </data>
+  <data name="AddEditUserRoles" xml:space="preserve">
+    <value>Tilføj/rediger</value>
+  </data>
+  <data name="AddEditUserRolesHelp" xml:space="preserve">
+    <value>Tilføj og rediger bruger roller.</value>
+  </data>
+  <data name="AddEditWindowsTemplateHelp" xml:space="preserve">
+    <value>Giver administrator mulighed for at konfigurere indstillingerne for at tilføje og/eller redigere Windows-skabelonen på Console-dashboardet</value>
+  </data>
+  <data name="AddFileServerConfiguration" xml:space="preserve">
+    <value>Tilføj filserverkonfiguration</value>
+  </data>
+  <data name="AddFileServerConfigurationHelp" xml:space="preserve">
+    <value>Giver bruger tilladelse til at tilføje filservergitteret og oplysninger</value>
+  </data>
+  <data name="AddNoteHelp" xml:space="preserve">
+    <value>Giver tilladelse til at tilføje en besked</value>
+  </data>
+  <data name="AdminAd" xml:space="preserve">
+    <value>Administrator</value>
+  </data>
+  <data name="AdminAdHelp" xml:space="preserve">
+    <value>Styrer adgang til startsider i Systemindstillinger, advarselsemodulet, siden til oprettelse af brugerdefinerede felter, support siden i systemindstillinger og RADIUS profilen.</value>
+  </data>
+  <data name="AdminOptIn" xml:space="preserve">
+    <value>ADMIN-TILVALG</value>
+  </data>
+  <data name="AdminSaaSNotifications" xml:space="preserve">
+    <value>SaaS-notifikationer</value>
+  </data>
+  <data name="AdminSaaSNotificationsHelp" xml:space="preserve">
+    <value>Styrer adgangen til siden SaaS-notifikationsindstillinger</value>
+  </data>
+  <data name="AdminsRESTSystem" xml:space="preserve">
+    <value>Administratorer</value>
+  </data>
+  <data name="AdminsRESTSystemHelp" xml:space="preserve">
+    <value>REST APIs til admin konti</value>
+  </data>
+  <data name="AdvancedEm" xml:space="preserve">
+    <value>Avanceret</value>
+  </data>
+  <data name="AdvancedEmHelp" xml:space="preserve">
+    <value>Styrer avancerede e-mailindstillinger.</value>
+  </data>
+  <data name="AdvancedHelp" xml:space="preserve">
+    <value>Styrer adgang til Avanceret undermenu.</value>
+  </data>
+  <data name="AdvancedIn" xml:space="preserve">
+    <value>Avanceret</value>
+  </data>
+  <data name="AdvancedInHelp" xml:space="preserve">
+    <value>Styrer adgang til avanceret installations indstillinger.</value>
+  </data>
+  <data name="AdvancedSet" xml:space="preserve">
+    <value>Avanceret</value>
+  </data>
+  <data name="AdvancedSetHelp" xml:space="preserve">
+    <value>Styrer adgang til avancerede sider i system indstillinger.</value>
+  </data>
+  <data name="AdvancedSOaP" xml:space="preserve">
+    <value>Avanceret</value>
+  </data>
+  <data name="AdvancedSOaPHelp" xml:space="preserve">
+    <value>Brug avancerede API'er, f.eks. til sletning af enhed og Enterprise-sletning.</value>
+  </data>
+  <data name="AdvancedSys" xml:space="preserve">
+    <value>Avanceret</value>
+  </data>
+  <data name="AdvancedSysHelp" xml:space="preserve">
+    <value>Styrer adgang til Avanceret siden under System.</value>
+  </data>
+  <data name="AfterArg" xml:space="preserve">
+    <value>Efter {0}</value>
+  </data>
+  <data name="AgentApplicationAn" xml:space="preserve">
+    <value>Hub-app</value>
+  </data>
+  <data name="AgentApplicationAnHelp" xml:space="preserve">
+    <value>Styrer adgang til siden Hub-apps under Android.</value>
+  </data>
+  <data name="AgentPackageAdd" xml:space="preserve">
+    <value>Tilføjelse til Hub-pakke</value>
+  </data>
+  <data name="AgentPackageAddHelp" xml:space="preserve">
+    <value>Giver tilladelse til at uploade en Hub-.apf-fil til staging i produktklargøring.</value>
+  </data>
+  <data name="AgentPackageDelete" xml:space="preserve">
+    <value>Sletning af Hub-pakke</value>
+  </data>
+  <data name="AgentPackageDeleteHelp" xml:space="preserve">
+    <value>Giver tilladelse til at slette en Hub-.apf-fil, som ikke vil være tilgængelig til brug under staging i produktklargøring.</value>
+  </data>
+  <data name="AgentPackagePPN" xml:space="preserve">
+    <value>Hub-pakke</value>
+  </data>
+  <data name="AgentPackagePPNHelp" xml:space="preserve">
+    <value>Giver tilladelse til at tilføje/opdatere/slette Hub-.apf-filer til staging i produktklargøringer.</value>
+  </data>
+  <data name="AgentPackageView" xml:space="preserve">
+    <value>Visning af Hub-pakke</value>
+  </data>
+  <data name="AgentPackageViewHelp" xml:space="preserve">
+    <value>Giver tilladelse til at vise oversigten over tilgængelige Hub-.apf-filer på skærmbilledet for Hub-pakker, som kan anvendes til staging i produktklargøring.</value>
+  </data>
+  <data name="AgentSettingsAn" xml:space="preserve">
+    <value>Intelligent Hub-indstillinger</value>
+  </data>
+  <data name="AgentSettingsAnHelp" xml:space="preserve">
+    <value>Styrer adgang til siden Intelligent Hub-indstillinger under Android.</value>
+  </data>
+  <data name="AgentSettingsApple" xml:space="preserve">
+    <value>Hub-indstillinger</value>
+  </data>
+  <data name="AgentSettingsAppleHelp" xml:space="preserve">
+    <value>Styrer adgang til iOS Hub-indstillinger under iOS.</value>
+  </data>
+  <data name="AgentSettingsLinuxHelp" xml:space="preserve">
+    <value>Styrer adgang til indstillinger for Linux Intelligent Hub under Linux.</value>
+  </data>
+  <data name="AirwatchEmailClientSet" xml:space="preserve">
+    <value>AirWatch e-mailklient</value>
+  </data>
+  <data name="AirwatchEmailClientSetHelp" xml:space="preserve">
+    <value>Styrer adgang til siden AirWatch e-mailklient under Apps.</value>
+  </data>
+  <data name="AirWatchHelpAd" xml:space="preserve">
+    <value>AirWatch hjælp</value>
+  </data>
+  <data name="AirWatchHelpAdHelp" xml:space="preserve">
+    <value>Styrer adgang til AirWatch Help.</value>
+  </data>
+  <data name="AirWatchTunnelHelp" xml:space="preserve">
+    <value>Giv tilladelse til at konfigurere AirWatch Tunnel</value>
+  </data>
+  <data name="AkamaiSetting" xml:space="preserve">
+    <value>Akamai</value>
+  </data>
+  <data name="AkamaiSettingHelp" xml:space="preserve">
+    <value>Indstillinger til konfiguration af Akamai som CDN-udbyder</value>
+  </data>
+  <data name="AlertCreationPoliciesViewHelp" xml:space="preserve">
+    <value>Styrer adgang til visning af Oprettelsespolitik i Advarselsoprettelse. 
+</value>
+  </data>
+  <data name="AlertDD" xml:space="preserve">
+    <value>Advarsler</value>
+  </data>
+  <data name="AlertDDHelp" xml:space="preserve">
+    <value>Adgang til advarsler der er knyttet til en enhed.</value>
+  </data>
+  <data name="AlertsPM" xml:space="preserve">
+    <value>Advarsler</value>
+  </data>
+  <data name="AlertsPMHelp" xml:space="preserve">
+    <value>Styrer adgang til siden Printeradvarsler</value>
+  </data>
+  <data name="AndroidFileManagerDM" xml:space="preserve">
+    <value>Android filstyring</value>
+  </data>
+  <data name="AndroidFileManagerDMHelp" xml:space="preserve">
+    <value>Fjernstyr Android filer og mapper fra Enhedsdetaljer siden.</value>
+  </data>
+  <data name="AndroidForWorkHelp" xml:space="preserve">
+    <value>AndroidForWork</value>
+  </data>
+  <data name="AndroidServiceApplicationsAn" xml:space="preserve">
+    <value>Android service apps</value>
+  </data>
+  <data name="AndroidServiceApplicationsAnHelp" xml:space="preserve">
+    <value>Giver tilladelse til at se og redigere service apps.</value>
+  </data>
+  <data name="ApnsApp" xml:space="preserve">
+    <value>APNs</value>
+  </data>
+  <data name="ApnsAppHelp" xml:space="preserve">
+    <value>Styrer adgang til APNs for apps siden under iOS.</value>
+  </data>
+  <data name="ApnsSet" xml:space="preserve">
+    <value>APNs</value>
+  </data>
+  <data name="ApnsSetHelp" xml:space="preserve">
+    <value>Styrer adgang til APNs siden i system indstillinger.</value>
+  </data>
+  <data name="AppCatalogHelp" xml:space="preserve">
+    <value>ressource til app-katalog</value>
+  </data>
+  <data name="AppConfigurationSet" xml:space="preserve">
+    <value>App konfiguration</value>
+  </data>
+  <data name="AppConfigurationSetHelp" xml:space="preserve">
+    <value>Styrer adgang til App konfigurations siden.</value>
+  </data>
+  <data name="AppCrashLogsHelp" xml:space="preserve">
+    <value>Styrer adgang til App nedbrudslogfiler. 
+</value>
+  </data>
+  <data name="AppleConfiguratorSet" xml:space="preserve">
+    <value>Apple Configurator</value>
+  </data>
+  <data name="AppleConfiguratorSetHelp" xml:space="preserve">
+    <value>Styrer adgang til Apple Configurator siden under iOS.</value>
+  </data>
+  <data name="AppleEducation" xml:space="preserve">
+    <value>Uddannelse</value>
+  </data>
+  <data name="AppleEducationHelp" xml:space="preserve">
+    <value>Styrer adgang til Apple Education-siden</value>
+  </data>
+  <data name="ApplicationCatalogEdit" xml:space="preserve">
+    <value>Rediger app-katalog</value>
+  </data>
+  <data name="ApplicationCatalogEditHelp" xml:space="preserve">
+    <value>Til redigering af siden App Catalog-indstillinger</value>
+  </data>
+  <data name="ApplicationCategoriesAb" xml:space="preserve">
+    <value>App-kategorier</value>
+  </data>
+  <data name="ApplicationCategoriesAbHelp" xml:space="preserve">
+    <value>Vis og styr applikation kategorier.</value>
+  </data>
+  <data name="ApplicationGroupsAb" xml:space="preserve">
+    <value>App grupper</value>
+  </data>
+  <data name="ApplicationGroupsAbHelp" xml:space="preserve">
+    <value>Vis og styr app-grupper.</value>
+  </data>
+  <data name="ApplicationIntegrationSet" xml:space="preserve">
+    <value>App integration</value>
+  </data>
+  <data name="ApplicationIntegrationSetHelp" xml:space="preserve">
+    <value>Styrer adgang til App integration indstillinger skærmen.</value>
+  </data>
+  <data name="ApplicationPPN" xml:space="preserve">
+    <value>App</value>
+  </data>
+  <data name="ApplicationPPNHelp" xml:space="preserve">
+    <value>Adgang til klargøring af app siden.</value>
+  </data>
+  <data name="ApplicationProfilesAb" xml:space="preserve">
+    <value>App profiler</value>
+  </data>
+  <data name="ApplicationProfilesAbHelp" xml:space="preserve">
+    <value>Vis og styr app profiler.</value>
+  </data>
+  <data name="ApplicationPublishAb" xml:space="preserve">
+    <value>Udgiv app</value>
+  </data>
+  <data name="ApplicationPublishAbHelp" xml:space="preserve">
+    <value>Udgiv apps der blev tilføjet.</value>
+  </data>
+  <data name="ApplicationsAb" xml:space="preserve">
+    <value>Apps</value>
+  </data>
+  <data name="ApplicationsAbHelp" xml:space="preserve">
+    <value>Adgang til Mobile Application Management siden.</value>
+  </data>
+  <data name="ApplicationsDD" xml:space="preserve">
+    <value>Apps</value>
+  </data>
+  <data name="ApplicationsDDHelp" xml:space="preserve">
+    <value>Fjerninstaller og slet apps på styrede enheder.</value>
+  </data>
+  <data name="ApplicationsDM" xml:space="preserve">
+    <value>Apps</value>
+  </data>
+  <data name="ApplicationsDMHelp" xml:space="preserve">
+    <value>Afsend forespørgsel om logfiler og styr feedback om applikationen.</value>
+  </data>
+  <data name="ApplicationsHub" xml:space="preserve">
+    <value>Apps</value>
+  </data>
+  <data name="ApplicationsHubHelp" xml:space="preserve">
+    <value>Generer rapporter for enheds apps.</value>
+  </data>
+  <data name="ApplicationsSet" xml:space="preserve">
+    <value>Apps</value>
+  </data>
+  <data name="ApplicationsSetHelp" xml:space="preserve">
+    <value>Adgang til sider for indstillinger for apps til indholdsstyring.</value>
+  </data>
+  <data name="ApplicationWorkflowAb" xml:space="preserve">
+    <value>App arbejdsproces</value>
+  </data>
+  <data name="ApplicationWorkflowAbHelp" xml:space="preserve">
+    <value>Upload, anmeld, tildel og udgiv apps.</value>
+  </data>
+  <data name="ApplicationWrappingAb" xml:space="preserve">
+    <value>App wrapping</value>
+  </data>
+  <data name="ApplicationWrappingAbHelp" xml:space="preserve">
+    <value>Adgang til programmets wrapping.</value>
+  </data>
+  <data name="AppRemovalProtectionHelp" xml:space="preserve">
+    <value>Sådan vises indstillingen for at aktivere beskyttelse mod fjernelse af apps</value>
+  </data>
+  <data name="AppRemovalProtectionLogEditHelp" xml:space="preserve">
+    <value>Ressource til styring af 'redigerings'-adgang til siden med logfiler til beskyttelse mod fjernelse af apps</value>
+  </data>
+  <data name="AppRemovalProtectionLogViewHelp" xml:space="preserve">
+    <value>Ressource til styring af ' Vis ' adgang til siden med logfiler til beskyttelse mod fjernelse af apps</value>
+  </data>
+  <data name="ApproveAndUnapproveUpdates" xml:space="preserve">
+    <value>Godkend og fjern godkendelse af opdateringer</value>
+  </data>
+  <data name="ApproveUpdate" xml:space="preserve">
+    <value>Godkend opdatering</value>
+  </data>
+  <data name="ApproveUpdateHelp" xml:space="preserve">
+    <value>Giver tilladelse til at udstede godkend opdateringskommando til enheder.</value>
+  </data>
+  <data name="ApproveUpdates" xml:space="preserve">
+    <value>Godkend opdatering</value>
+  </data>
+  <data name="AppsRESTMam" xml:space="preserve">
+    <value>Apps</value>
+  </data>
+  <data name="AppsRESTMamHelp" xml:space="preserve">
+    <value>REST APIs til programmer</value>
+  </data>
+  <data name="AppUserCommentsAb" xml:space="preserve">
+    <value>App bruger kommentarer</value>
+  </data>
+  <data name="AppUserCommentsAbHelp" xml:space="preserve">
+    <value>Vis og styr bruger kommentar indstillinger.</value>
+  </data>
+  <data name="AssetBatchImportSys" xml:space="preserve">
+    <value>Aktiv batchimport</value>
+  </data>
+  <data name="AssetBatchImportSysHelp" xml:space="preserve">
+    <value>Masseimporter liste af telekom aktiver.</value>
+  </data>
+  <data name="AssetManagementO" xml:space="preserve">
+    <value>Aktivstyring</value>
+  </data>
+  <data name="AssetManagementOHelp" xml:space="preserve">
+    <value>Søg, tilføj og rediger aktiver.</value>
+  </data>
+  <data name="AssetTrackingDM" xml:space="preserve">
+    <value>Sporing af aktiver</value>
+  </data>
+  <data name="AssetTrackingDMHelp" xml:space="preserve">
+    <value>Adgang til sporing af aktiver siden under enhedsstyring.</value>
+  </data>
+  <data name="AssetUserTrackingO" xml:space="preserve">
+    <value>Aktiv brugersporing</value>
+  </data>
+  <data name="AssetUserTrackingOHelp" xml:space="preserve">
+    <value>Adgang til bruger sporingssiden, herunder Tjek ind og Tjek ud faner.</value>
+  </data>
+  <data name="AssignDeviceEnrollmentProgram" xml:space="preserve">
+    <value>Tilmeldingsprogram tildel profiler</value>
+  </data>
+  <data name="AssignDeviceEnrollmentProgramHelp" xml:space="preserve">
+    <value>Styrer adgang til Tildel DEP-profiler til enheder. Gå til siden for tilmeldingsstatus</value>
+  </data>
+  <data name="AssignmentRulesAdd" xml:space="preserve">
+    <value>Tilføj tildelingsregler</value>
+  </data>
+  <data name="AssignmentRulesAddHelp" xml:space="preserve">
+    <value>Tilføj tildelingsregler for enhed.</value>
+  </data>
+  <data name="AssignmentRulesDelete" xml:space="preserve">
+    <value>Slet tildelingsregler</value>
+  </data>
+  <data name="AssignmentRulesDeleteHelp" xml:space="preserve">
+    <value>Slet tildelingsregler for enhed.</value>
+  </data>
+  <data name="AssignmentRulesEdit" xml:space="preserve">
+    <value>Rediger tildelingsregler</value>
+  </data>
+  <data name="AssignmentRulesEditHelp" xml:space="preserve">
+    <value>Rediger tildelingsregler for enhed.</value>
+  </data>
+  <data name="AssignmentSys" xml:space="preserve">
+    <value>Tildeling</value>
+  </data>
+  <data name="AssignmentSysHelp" xml:space="preserve">
+    <value>Rediger telekom abonnementets statiske og dynamiske tildelinger.</value>
+  </data>
+  <data name="Assist" xml:space="preserve">
+    <value>Assist</value>
+  </data>
+  <data name="AssistFileManager" xml:space="preserve">
+    <value>Filstyring</value>
+  </data>
+  <data name="AssistFileManagerHelp" xml:space="preserve">
+    <value>Giver adgang til at styre filer på fjernenheden</value>
+  </data>
+  <data name="AssistHelp" xml:space="preserve">
+    <value>Administrer fjernstyringsroller</value>
+  </data>
+  <data name="AssistRegistryEditor" xml:space="preserve">
+    <value>Registreringseditor</value>
+  </data>
+  <data name="AssistRegistryEditorHelp" xml:space="preserve">
+    <value>Giver adgang til at foretage ændringer i registreringsdatabasen på Windows Mobile-enheder</value>
+  </data>
+  <data name="AssistRemoteControl" xml:space="preserve">
+    <value>Fjernstyring</value>
+  </data>
+  <data name="AssistRemoteControlHelp" xml:space="preserve">
+    <value>Giver adgang til visning og styring af fjernenhed</value>
+  </data>
+  <data name="AssistRemoteShell" xml:space="preserve">
+    <value>Remote shell</value>
+  </data>
+  <data name="AssistRemoteShellHelp" xml:space="preserve">
+    <value>Giver adgang til at udføre kommandoer via kommandolinjegrænsefladen på en fjernenhed</value>
+  </data>
+  <data name="AssistRemoteView" xml:space="preserve">
+    <value>Vis fjernstyring</value>
+  </data>
+  <data name="AssistRemoteViewHelp" xml:space="preserve">
+    <value>Giver adgang til kun at vise en fjernenhed. Hvis fjernvisning og -styring er aktiveret, initieres en session som kun visning, men brugeren kan anmodes om at få adgang til kontrolskærmen</value>
+  </data>
+  <data name="AssistSessionCollaboration" xml:space="preserve">
+    <value>Sessionssamarbejde</value>
+  </data>
+  <data name="AssistSessionCollaborationHelp" xml:space="preserve">
+    <value>Giver en konsolbruger mulighed for at invitere flere deltagere til en Remote Assist-session</value>
+  </data>
+  <data name="AssistUnattendedAccess" xml:space="preserve">
+    <value>Uovervåget adgang</value>
+  </data>
+  <data name="AssistUnattendedAccessHelp" xml:space="preserve">
+    <value>Giver adgang til enheden i uovervåget tilstand</value>
+  </data>
+  <data name="AttachmentsDD" xml:space="preserve">
+    <value>Vedhæftede filer</value>
+  </data>
+  <data name="AttachmentsDDHelp" xml:space="preserve">
+    <value>Tilføj og slet vedhæftede filer fra enheder under Enhedsdetaljer.</value>
+  </data>
+  <data name="AutoDiscoveryIns" xml:space="preserve">
+    <value>Auto-Discovery</value>
+  </data>
+  <data name="AutoDiscoveryInsHelp" xml:space="preserve">
+    <value>Styrer adgangen til siden Auto-Discovery under installation.</value>
+  </data>
+  <data name="AutoEnrollmentHelp" xml:space="preserve">
+    <value>Auto-tilmelding</value>
+  </data>
+  <data name="AutomationHelp" xml:space="preserve">
+    <value>Denne Tech Preview-ressource giver adgang til vores automatiseringsplatform via siden Hub-oversigt</value>
+  </data>
+  <data name="AwcmDD" xml:space="preserve">
+    <value>AWCM</value>
+  </data>
+  <data name="AwcmDDHelp" xml:space="preserve">
+    <value>Start og stop forbindelsen til AirWatch Cloud Manager fra Enhedsdetaljer siden.</value>
+  </data>
+  <data name="AWProDeviceClearPasscode" xml:space="preserve">
+    <value>AW Pro enhed ryd adgangskode</value>
+  </data>
+  <data name="AWProDeviceClearPasscodeHelp" xml:space="preserve">
+    <value>Styrer adgang til at rydde adgangskode/Power-on adgangskode i AirWatch Pro</value>
+  </data>
+  <data name="AWProDeviceSendMessage" xml:space="preserve">
+    <value>AW Pro enhed send meddelelse</value>
+  </data>
+  <data name="AWProDeviceSendMessageHelp" xml:space="preserve">
+    <value>Styrer adgang til at Sende meddelelse under AW Pro</value>
+  </data>
+  <data name="AWProGenerateNewCertificate" xml:space="preserve">
+    <value>AW Pro Opret nyt certifikat</value>
+  </data>
+  <data name="AWProGenerateNewCertificateHelp" xml:space="preserve">
+    <value>Styrer adgang til at oprette nyt certifikat</value>
+  </data>
+  <data name="AwProResCategory" xml:space="preserve">
+    <value>AirWatch Pro</value>
+  </data>
+  <data name="AwProResCategoryHelp" xml:space="preserve">
+    <value>Fuld adgang til AW Pro Console.</value>
+  </data>
+  <data name="BatchImportAccounts" xml:space="preserve">
+    <value>Batchimport</value>
+  </data>
+  <data name="BatchImportAccountsHelp" xml:space="preserve">
+    <value>Batchimport administrative konti.</value>
+  </data>
+  <data name="BatchImportDM" xml:space="preserve">
+    <value>Batchimport</value>
+  </data>
+  <data name="BatchImportDMHelp" xml:space="preserve">
+    <value>Batchimport enhedsprofiler.</value>
+  </data>
+  <data name="BatchImportUG" xml:space="preserve">
+    <value>Batchimport</value>
+  </data>
+  <data name="BatchImportUGHelp" xml:space="preserve">
+    <value>Batchimport af tilmeldingens brugergrupper</value>
+  </data>
+  <data name="BatchImportUserAccount" xml:space="preserve">
+    <value>Batchimport</value>
+  </data>
+  <data name="BatchImportUserAccountHelp" xml:space="preserve">
+    <value>Tilgå batchimport af tilmeldingens brugere.</value>
+  </data>
+  <data name="BatchSizeBySmartGroupHelp" xml:space="preserve">
+    <value>Angiver antallet af enheder, der skal inkluderes i hvert batch for intern appudrulning.</value>
+  </data>
+  <data name="BatchStatusAdminGeneral" xml:space="preserve">
+    <value>Batchstatus</value>
+  </data>
+  <data name="BatchStatusAdminGeneralHelp" xml:space="preserve">
+    <value>Vis status for batchimport af adminbrugere.</value>
+  </data>
+  <data name="BatchStatusUserGeneral" xml:space="preserve">
+    <value>Batchstatus</value>
+  </data>
+  <data name="BatchStatusUserGeneralHelp" xml:space="preserve">
+    <value>Adgang til batchstatus af masseimport af tilmeldings brugerne.</value>
+  </data>
+  <data name="BeforeArg" xml:space="preserve">
+    <value>Før {0}</value>
+  </data>
+  <data name="BESResCategory" xml:space="preserve">
+    <value>BES</value>
+  </data>
+  <data name="BESResCategoryHelp" xml:space="preserve">
+    <value>Aktiverer BES registreringsikonet fra Dashboard siden.</value>
+  </data>
+  <data name="BillingBi" xml:space="preserve">
+    <value>Fakturering</value>
+  </data>
+  <data name="BillingBiHelp" xml:space="preserve">
+    <value>Styr faktureringsdetaljer side.</value>
+  </data>
+  <data name="BIOSManagement" xml:space="preserve">
+    <value>BIOS-styring</value>
+  </data>
+  <data name="BIOSManagementHelp" xml:space="preserve">
+    <value>BIOS-styringsressourcer</value>
+  </data>
+  <data name="BooksAb" xml:space="preserve">
+    <value>Bøger</value>
+  </data>
+  <data name="BooksAbHelp" xml:space="preserve">
+    <value>Giver adgang til Bøger modulet under Apps &amp; bøger.</value>
+  </data>
+  <data name="BoxerConfigReadWrite" xml:space="preserve">
+    <value>Boxer-appkonfiguration</value>
+  </data>
+  <data name="BoxerConfigReadWriteHelp" xml:space="preserve">
+    <value>Til konfiguration af Boxer-indstillinger ved upload som en offentlig app</value>
+  </data>
+  <data name="BranchCacheSetup" xml:space="preserve">
+    <value>Opsætning af cache for afdeling</value>
+  </data>
+  <data name="BranchCacheSetupHelp" xml:space="preserve">
+    <value>Indstillinger til opsætning og konfiguration af den indbyggede Peer-to-Peer-apps distributionsfunktionalitet i Workspace ONE for Windows 10</value>
+  </data>
+  <data name="BrandingSys" xml:space="preserve">
+    <value>Branding</value>
+  </data>
+  <data name="BrandingSysHelp" xml:space="preserve">
+    <value>Styrer adgang til Branding siden under Generelt.</value>
+  </data>
+  <data name="BrowserDM" xml:space="preserve">
+    <value>Browser</value>
+  </data>
+  <data name="BrowserDMHelp" xml:space="preserve">
+    <value>Konfigurer browser politikkerne under enhedsstyring.</value>
+  </data>
+  <data name="BulkActionUserAccounts" xml:space="preserve">
+    <value>Massehandling</value>
+  </data>
+  <data name="BulkActionUserAccountsHelp" xml:space="preserve">
+    <value>Udfør massehandlinger på brugerens konti, som for eksempel Send meddelelse.</value>
+  </data>
+  <data name="BulkImportCM" xml:space="preserve">
+    <value>Batchimport</value>
+  </data>
+  <data name="BulkImportCMHelp" xml:space="preserve">
+    <value>Batchimporter indhold i Alt indhold visningen.</value>
+  </data>
+  <data name="BulkManagementAd" xml:space="preserve">
+    <value>Bulk-management</value>
+  </data>
+  <data name="BulkManagementAdHelp" xml:space="preserve">
+    <value>Vis og rediger indstillinger for bulk-management.</value>
+  </data>
+  <data name="BulkManagementDM" xml:space="preserve">
+    <value>Bulk-management</value>
+  </data>
+  <data name="BulkManagementDMHelp" xml:space="preserve">
+    <value>Udfør massehandlinger på enheder fra enhedslistevisning.</value>
+  </data>
+  <data name="CatalogSet" xml:space="preserve">
+    <value>Katalog</value>
+  </data>
+  <data name="CatalogSetHelp" xml:space="preserve">
+    <value>Giver tilladelse til at få adgang til app-katalogsiderne i systemindstillinger.</value>
+  </data>
+  <data name="CategoriesCM" xml:space="preserve">
+    <value>Kategorier</value>
+  </data>
+  <data name="CategoriesCMHelp" xml:space="preserve">
+    <value>Opret og rediger indholdskategorier.</value>
+  </data>
+  <data name="CDNSetupHelp" xml:space="preserve">
+    <value>Systemindstilling for CDN</value>
+  </data>
+  <data name="CertificateAuthoritiesApple" xml:space="preserve">
+    <value>Nøglecentre</value>
+  </data>
+  <data name="CertificateAuthoritiesAppleHelp" xml:space="preserve">
+    <value>Styrer adgang til Certifikatautoriteter siden under iOS.</value>
+  </data>
+  <data name="CertificateAuthorityCM" xml:space="preserve">
+    <value>Nøglecenter</value>
+  </data>
+  <data name="CertificateAuthorityCMHelp" xml:space="preserve">
+    <value>Adgang til nøglecenteret og certifikat skabelon sektionerne.</value>
+  </data>
+  <data name="CertificateManagementDM" xml:space="preserve">
+    <value>Certifikat management</value>
+  </data>
+  <data name="CertificateManagementDMHelp" xml:space="preserve">
+    <value>Vis og styr certifikater under enhedsstyring.</value>
+  </data>
+  <data name="CertificatesDD" xml:space="preserve">
+    <value>Certifikater</value>
+  </data>
+  <data name="CertificatesDDHelp" xml:space="preserve">
+    <value>Vis certifikater knyttet til enheder under Enhedsdetaljer.</value>
+  </data>
+  <data name="CertificatesExpired" xml:space="preserve">
+    <value>Certifikater udløbet</value>
+  </data>
+  <data name="CertificatesRevoked" xml:space="preserve">
+    <value>Certifikat tilbagekaldt</value>
+  </data>
+  <data name="ChangePasswordAdminAccounts" xml:space="preserve">
+    <value>Rediger adgangskode</value>
+  </data>
+  <data name="ChangePasswordAdminAccountsHelp" xml:space="preserve">
+    <value>Skift administrative adgangskoder.</value>
+  </data>
+  <data name="ChromebookSet" xml:space="preserve">
+    <value>ChromeBook</value>
+  </data>
+  <data name="ChromebookSetHelp" xml:space="preserve">
+    <value>Styrer adgang til Agent indstillinger siden under ChromeBook</value>
+  </data>
+  <data name="CloudContentPlatformHelp" xml:space="preserve">
+    <value>Ressource til at aktivere UEM-indstillinger for at starte Cloud Content-tjenester</value>
+  </data>
+  <data name="CollapsedAriaLabel" xml:space="preserve">
+    <value>skjult</value>
+  </data>
+  <data name="CommaSeparatedEmailInfo" xml:space="preserve">
+    <value>Brug et komma til at adskille flere e-mailadresser.</value>
+  </data>
+  <data name="ComplianceDD" xml:space="preserve">
+    <value>Compliance</value>
+  </data>
+  <data name="ComplianceDDHelp" xml:space="preserve">
+    <value>Vis compliance regler og status under Enhedsdetaljer.</value>
+  </data>
+  <data name="ComplianceDM" xml:space="preserve">
+    <value>Compliance</value>
+  </data>
+  <data name="ComplianceDMHelp" xml:space="preserve">
+    <value>Vis og styr enheds compliance-politikker under enhedsstyring.</value>
+  </data>
+  <data name="ComplianceHub" xml:space="preserve">
+    <value>Compliance</value>
+  </data>
+  <data name="ComplianceHubHelp" xml:space="preserve">
+    <value>Generer rapporter for enheds compliance.</value>
+  </data>
+  <data name="CompliancePoliciesEM" xml:space="preserve">
+    <value>Compliancepolitikker</value>
+  </data>
+  <data name="CompliancePoliciesEMHelp" xml:space="preserve">
+    <value>Styr compliance-politikker for e-mail management.</value>
+  </data>
+  <data name="ConditionalAccessIntegrations" xml:space="preserve">
+    <value>Betingede adgangsintegrationer</value>
+  </data>
+  <data name="ConditionalAccessIntegrationsHelp" xml:space="preserve">
+    <value>Styrer adgang til deling af en enheds Compliance-status med en tredjepart med henblik på konfiguration af politikker for betinget adgang</value>
+  </data>
+  <data name="ConditionsPPN" xml:space="preserve">
+    <value>Betingelser</value>
+  </data>
+  <data name="ConditionsPPNHelp" xml:space="preserve">
+    <value>Opret og styr klargørings betingelser for klargørings politikker.</value>
+  </data>
+  <data name="ConsoleSecurityAd" xml:space="preserve">
+    <value>Console-sikkerhed</value>
+  </data>
+  <data name="ConsoleSecurityAdHelp" xml:space="preserve">
+    <value>Vis Console-sikkerhedssider, og styr dem fra den globale organisationsgruppe.</value>
+  </data>
+  <data name="ContentDashboard" xml:space="preserve">
+    <value>Indholds-dashboard</value>
+  </data>
+  <data name="ContentDashboardHelp" xml:space="preserve">
+    <value>Styrer adgang til visning af Indholds Dashboard siden. Naviger til Menu\Indhold\Dashboard</value>
+  </data>
+  <data name="ContentDD" xml:space="preserve">
+    <value>Indhold</value>
+  </data>
+  <data name="ContentDDHelp" xml:space="preserve">
+    <value>Tilgå og styr indhold for en enhed under Enhedsdetaljer.</value>
+  </data>
+  <data name="ContentDeliveryServiceHelp" xml:space="preserve">
+    <value>Styrer adgang til indstillinger for indholdsleveringstjeneste</value>
+  </data>
+  <data name="ContentHub" xml:space="preserve">
+    <value>Indhold</value>
+  </data>
+  <data name="ContentHubHelp" xml:space="preserve">
+    <value>Generer rapporter for enhedsindhold.</value>
+  </data>
+  <data name="ContentRightsManagementHelp" xml:space="preserve">
+    <value>Indstillinger relateret til konfiguration af Azure Rights Management-beskyttelse for indhold.</value>
+  </data>
+  <data name="ContentViewerHelp" xml:space="preserve">
+    <value>Styrer adgang til indstillinger for Content-fremviser (HTML5 fremviser)</value>
+  </data>
+  <data name="CreationPoliciesGr" xml:space="preserve">
+    <value>Oprettelsespolitikker</value>
+  </data>
+  <data name="CreationPoliciesGrHelp" xml:space="preserve">
+    <value>Se og rediger advarsel oprettelses politikker.</value>
+  </data>
+  <data name="CustomAttributeAssignmentRulesHelp" xml:space="preserve">
+    <value>Listevisningsskærm for at vise aktuelle brugerdefinerede attributtildelingsregler</value>
+  </data>
+  <data name="CustomAttributesSet" xml:space="preserve">
+    <value>Brugerdefinerede attributter</value>
+  </data>
+  <data name="CustomAttributesSetHelp" xml:space="preserve">
+    <value>Se og styr brugerdefinerede attributter i system indstillinger.</value>
+  </data>
+  <data name="CustomFieldsDM" xml:space="preserve">
+    <value>Brugerdefinerede felter</value>
+  </data>
+  <data name="CustomFieldsDMHelp" xml:space="preserve">
+    <value>Rediger brugerdefinerede variabler under enhedskonfiguration.</value>
+  </data>
+  <data name="CustomizationAd" xml:space="preserve">
+    <value>Tilpasning</value>
+  </data>
+  <data name="CustomizationAdHelp" xml:space="preserve">
+    <value>Giver tilladelse til at tilpasse understøttede gitre</value>
+  </data>
+  <data name="CustomizationHelp" xml:space="preserve">
+    <value>Giver tilladelse til at tilpasse understøttede gitre på brugerniveauet.
+</value>
+  </data>
+  <data name="CustomMdmCommandHelp" xml:space="preserve">
+    <value>Styrer aktivering af funktionen til at sende kommandoer til iOS, tvOS og macOS ved at indsætte XML for kommandoen</value>
+  </data>
+  <data name="DataPurgingD" xml:space="preserve">
+    <value>Data rydning</value>
+  </data>
+  <data name="DataPurgingDHelp" xml:space="preserve">
+    <value>Giver tilladelse til at redigere Data Tømnings indstillingerne.</value>
+  </data>
+  <data name="DataSamplesAd" xml:space="preserve">
+    <value>Dataeksempler</value>
+  </data>
+  <data name="DataSamplesAdHelp" xml:space="preserve">
+    <value>Styrer revision af enheds stikprøve historik i databasetabeller.</value>
+  </data>
+  <data name="DataSecuritySec" xml:space="preserve">
+    <value>Datasikkerhed</value>
+  </data>
+  <data name="DataSecuritySecHelp" xml:space="preserve">
+    <value>Giver tilladelse til at vise datasikkerhedsskærmen.</value>
+  </data>
+  <data name="DeleteCartHelp" xml:space="preserve">
+    <value>Sletning af vogne lader administratoren fjerne en liste over serienumre til brug med delte enheder.</value>
+  </data>
+  <data name="DeleteCustomReportSubscriptionHelp" xml:space="preserve">
+    <value>Styrer adgang til at slette abonnementet på det brugerdefinerede rapporter. Gå til Hub\Reports &amp; Analytics\Custom Reports\Subscriptions</value>
+  </data>
+  <data name="DeleteDeviceDD" xml:space="preserve">
+    <value>Slet enhed</value>
+  </data>
+  <data name="DeleteDeviceDDHelp" xml:space="preserve">
+    <value>Slet enhedsposter fra Enhedsdetaljer siden.</value>
+  </data>
+  <data name="DeleteFileServerConfiguration" xml:space="preserve">
+    <value>Slet filserverkonfiguration</value>
+  </data>
+  <data name="DeleteFileServerConfigurationHelp" xml:space="preserve">
+    <value>Giver bruger tilladelse til at slette filservergitteret og oplysninger</value>
+  </data>
+  <data name="DeleteNoteHelp" xml:space="preserve">
+    <value>Giver tilladelse til at slette en meddelelse</value>
+  </data>
+  <data name="DeleteTagHelp" xml:space="preserve">
+    <value>Giver tilladelse til at slette et mærke</value>
+  </data>
+  <data name="DeleteUnmanagedEM" xml:space="preserve">
+    <value>Slet ikke-styret</value>
+  </data>
+  <data name="DeleteUnmanagedEMHelp" xml:space="preserve">
+    <value>Slet ikke-styrede enheder fra e-mail management dashboard.</value>
+  </data>
+  <data name="DeleteWindowsTemplateHelp" xml:space="preserve">
+    <value>Giver administrator mulighed for at konfigurere indstillingerne for at slette Windows-skabelonen på Console-dashboardet</value>
+  </data>
+  <data name="DesignateRecipients" xml:space="preserve">
+    <value>ANGIV MODTAGERE</value>
+  </data>
+  <data name="DetailsPM" xml:space="preserve">
+    <value>Detaljer</value>
+  </data>
+  <data name="DetailsPMHelp" xml:space="preserve">
+    <value>Vis printerdetaljer sider.</value>
+  </data>
+  <data name="DeviceBulkManagementRebootDeviceHelp" xml:space="preserve">
+    <value>Tillader at bruger kan genstarte enhed(er) i større partier.</value>
+  </data>
+  <data name="DeviceDetailsHub" xml:space="preserve">
+    <value>Enhedsdetaljer</value>
+  </data>
+  <data name="DeviceDetailsHubHelp" xml:space="preserve">
+    <value>Generer rapporter for enhedsdetaljer.</value>
+  </data>
+  <data name="DeviceDetailsQueryHealthAttestationHelp" xml:space="preserve">
+    <value>Forespørg om tilstandsattestationscertifikat BLOB on-demand</value>
+  </data>
+  <data name="DeviceDetailsQueryOSUpdates" xml:space="preserve">
+    <value>Enhedsdetaljer forespørger om OS-opdateringer</value>
+  </data>
+  <data name="DeviceDetailsQueryOSUpdatesHelp" xml:space="preserve">
+    <value>Styrer adgang til forespørgsel om oplysninger om OS-opdateringer fra enheden fra siden Enhedsdetaljer</value>
+  </data>
+  <data name="DeviceEnterpriseReset" xml:space="preserve">
+    <value>Enterprise nulstilling</value>
+  </data>
+  <data name="DeviceEnterpriseResetHelp" xml:space="preserve">
+    <value>Giver tilladelse til nulstilling af enhed men vedligeholder AirWatch tilmelding og virksomhedens data</value>
+  </data>
+  <data name="DeviceGroupsDM" xml:space="preserve">
+    <value>Enhedsgrupper</value>
+  </data>
+  <data name="DeviceGroupsDMHelp" xml:space="preserve">
+    <value>Opret og styr enhedsgrupper under enhedsstyring.</value>
+  </data>
+  <data name="DeviceGroupsSet" xml:space="preserve">
+    <value>Enhedsgrupper</value>
+  </data>
+  <data name="DeviceGroupsSetHelp" xml:space="preserve">
+    <value>Styrer adgang til enhedsgrupper i system indstillinger.</value>
+  </data>
+  <data name="DeviceInventoryHub" xml:space="preserve">
+    <value>Enhedslager</value>
+  </data>
+  <data name="DeviceInventoryHubHelp" xml:space="preserve">
+    <value>Generer rapporter for enhedslager.</value>
+  </data>
+  <data name="DeviceLimitRestrictionEdit" xml:space="preserve">
+    <value>Rediger begrænsning for enhedsgrænse</value>
+  </data>
+  <data name="DeviceLimitRestrictionEditHelp" xml:space="preserve">
+    <value>Giver tilladelse til at ændre/læse enhedsgrænsen under indstillinger/enheder og Users/Generelt/Tilmelding/Begrænsning</value>
+  </data>
+  <data name="DevicePM" xml:space="preserve">
+    <value>Enhed</value>
+  </data>
+  <data name="DevicePMHelp" xml:space="preserve">
+    <value>Styrer adgang til Printerenhed siden</value>
+  </data>
+  <data name="DevicesHub" xml:space="preserve">
+    <value>Enheder</value>
+  </data>
+  <data name="DevicesHubHelp" xml:space="preserve">
+    <value>Generer rapporter for enhedsgrupperinger og metrikker.</value>
+  </data>
+  <data name="DevicesRESTMdm" xml:space="preserve">
+    <value>Enheder</value>
+  </data>
+  <data name="DevicesRESTMdmHelp" xml:space="preserve">
+    <value>REST APIs til enhedsstyring</value>
+  </data>
+  <data name="DeviceWipeDD" xml:space="preserve">
+    <value>Sletning af enhed</value>
+  </data>
+  <data name="DeviceWipeDDHelp" xml:space="preserve">
+    <value>Fjern sletning af en enhed fra Enhedsdetaljer og nulstilling af enhed til fabrikindstillingerne.</value>
+  </data>
+  <data name="DeviceWipeHelp" xml:space="preserve">
+    <value>Styrer adgang til at slette en enhed.</value>
+  </data>
+  <data name="DeviceWipesSet" xml:space="preserve">
+    <value>Sletning af enheder</value>
+  </data>
+  <data name="DeviceWipesSetHelp" xml:space="preserve">
+    <value>Styrer adgang til Device Lifecycle Management i systemindstillinger.</value>
+  </data>
+  <data name="DiagnosticsAd" xml:space="preserve">
+    <value>Diagnosticering</value>
+  </data>
+  <data name="DiagnosticsAdHelp" xml:space="preserve">
+    <value>Styr diagnosticeringsindstillinger i system indstillinger.</value>
+  </data>
+  <data name="DisableActivationLockBypassCodeHelp" xml:space="preserve">
+    <value>Giver admin-brugeren mulighed for at deaktivere aktiveringslåsens bypass-kode på en iOS-enhed. Gå til Enhed/Detaljer/Oversigt/eller til Enhed/Liste, vælg en enhed, og klik på mere.</value>
+  </data>
+  <data name="DisableActivationLockBypassDD" xml:space="preserve">
+    <value>Deaktiver aktiveringslås bypass</value>
+  </data>
+  <data name="DisableActivationLockBypassDDHelp" xml:space="preserve">
+    <value>Deaktiver tilsidesættelseskode for aktiveringslås på en iOS enhed.</value>
+  </data>
+  <data name="DisplayVideoImportHelp" xml:space="preserve">
+    <value>Import af video i AirWatch med Wistia</value>
+  </data>
+  <data name="DisplayVideoViewHelp" xml:space="preserve">
+    <value>Vis liste over videoer</value>
+  </data>
+  <data name="DistributionDM" xml:space="preserve">
+    <value>Distribution</value>
+  </data>
+  <data name="DistributionDMHelp" xml:space="preserve">
+    <value>Adgang til distribution serverstien via rediger placering og placeringsoplysninger siden.</value>
+  </data>
+  <data name="DomainJoinConfigEdit" xml:space="preserve">
+    <value>Rediger</value>
+  </data>
+  <data name="DomainJoinConfigEditHelp" xml:space="preserve">
+    <value>Styrer adgangen til konfiguration af Tilføj/Rediger/Tildel/Slet domænejoin.</value>
+  </data>
+  <data name="DownloadContentCM" xml:space="preserve">
+    <value>Download indhold</value>
+  </data>
+  <data name="DownloadContentCMHelp" xml:space="preserve">
+    <value>Download indhold fra Alt indhold visningen.</value>
+  </data>
+  <data name="DownloadLinuxPullServiceInstallerHelp" xml:space="preserve">
+    <value>Giver tilladelse til download af installationsprogram til Linux-Pull-tjeneste</value>
+  </data>
+  <data name="DownloadWindowsPullServiceInstallerHelp" xml:space="preserve">
+    <value>Giver tilladelse til download af installationsprogram til Windows-Pull-tjeneste</value>
+  </data>
+  <data name="DropshipProvisioningEdit" xml:space="preserve">
+    <value>Rediger indstillingerne for klargøring af dropship</value>
+  </data>
+  <data name="DropshipProvisioningHelp" xml:space="preserve">
+    <value>Styrer adgang for at aktivere klargøring af dropship</value>
+  </data>
+  <data name="DxModeEM" xml:space="preserve">
+    <value>Dx tilstand</value>
+  </data>
+  <data name="DxModeEMHelp" xml:space="preserve">
+    <value>Aktiver og deaktiver Dx-tilstand for enhedsfejlfinding fra e-mail management dashboard.</value>
+  </data>
+  <data name="EasIntegrationEm" xml:space="preserve">
+    <value>EAS Integration</value>
+  </data>
+  <data name="EasIntegrationEmHelp" xml:space="preserve">
+    <value>Styrer adgang til siden Mobile Email Gateway under Generelt.</value>
+  </data>
+  <data name="EditAdminGroupHelp" xml:space="preserve">
+    <value>Tilladelse til redigering af admin gruppe. 
+</value>
+  </data>
+  <data name="EditDD" xml:space="preserve">
+    <value>Rediger</value>
+  </data>
+  <data name="EditDDHelp" xml:space="preserve">
+    <value>Rediger enhedsoplysningerne som for eksempel navn, aktiv nummeret osv.</value>
+  </data>
+  <data name="EditFileServerConfiguration" xml:space="preserve">
+    <value>Rediger filserverkonfiguration</value>
+  </data>
+  <data name="EditFileServerConfigurationHelp" xml:space="preserve">
+    <value>Giver bruger tilladelse til at redigere filservergitteret og oplysninger </value>
+  </data>
+  <data name="EditNoteHelp" xml:space="preserve">
+    <value>Giver tilladelse til at redigere en besked</value>
+  </data>
+  <data name="EditTagHelp" xml:space="preserve">
+    <value>Giver tilladelse til at redigere et mærke</value>
+  </data>
+  <data name="EditTypeGr" xml:space="preserve">
+    <value>Rediger type</value>
+  </data>
+  <data name="EditUserAccounts" xml:space="preserve">
+    <value>Rediger</value>
+  </data>
+  <data name="EditUserAccountsHelp" xml:space="preserve">
+    <value>Rediger tilmeldingens brugerkonti.</value>
+  </data>
+  <data name="EmailAddressAlreadyExists" xml:space="preserve">
+    <value>E-mailadresse findes allerede</value>
+  </data>
+  <data name="EmailDM" xml:space="preserve">
+    <value>E-mail</value>
+  </data>
+  <data name="EmailDMHelp" xml:space="preserve">
+    <value>Bloker og tillad ActiveSync anmodninger.</value>
+  </data>
+  <data name="EmailManagementHub" xml:space="preserve">
+    <value>E-mailstyring</value>
+  </data>
+  <data name="EmailManagementHubHelp" xml:space="preserve">
+    <value>Generer rapporter for e-mailstyring.</value>
+  </data>
+  <data name="EMDashboardMigrateDevice" xml:space="preserve">
+    <value>Overførselsenhed for dashboard til styring af e-mails</value>
+  </data>
+  <data name="EMDashboardMigrateDeviceHelp" xml:space="preserve">
+    <value>Styrer adgangen til at flytte en eller flere enheder mellem MEM-konfigurationer</value>
+  </data>
+  <data name="EnableDigitalExperienceTelemetry" xml:space="preserve">
+    <value>Aktiver telemetri for digital oplevelse</value>
+  </data>
+  <data name="EnableDigitalExperienceTelemetryHelp" xml:space="preserve">
+    <value>Aktiver indsamling og overførsel af telemetri for digital oplevelse til Workspace ONE Intelligence.</value>
+  </data>
+  <data name="EnableDisableAd" xml:space="preserve">
+    <value>Aktiver/deaktiver</value>
+  </data>
+  <data name="EnableDisableAdHelp" xml:space="preserve">
+    <value>Aktiver eller deaktiver Memcache.</value>
+  </data>
+  <data name="EnableSystemSettingsAuditHelp" xml:space="preserve">
+    <value>Aktiverer/deaktiverer overvågning af indstillinger igennen systemkoder.
+</value>
+  </data>
+  <data name="EncryptionKeyManagementHelp" xml:space="preserve">
+    <value>Giver tilladelse til at udføre styring af krypteringsnøgle. Gå til System\Sikkerhed\Styring af krypteringsnøgle</value>
+  </data>
+  <data name="EnrollmentDM" xml:space="preserve">
+    <value>Tilmelding</value>
+  </data>
+  <data name="EnrollmentDMHelp" xml:space="preserve">
+    <value>Rediger tilmeldings begrænsninger.</value>
+  </data>
+  <data name="EnrollmentProgramSet" xml:space="preserve">
+    <value>Tilmeldingsprogram</value>
+  </data>
+  <data name="EnrollmentProgramSetHelp" xml:space="preserve">
+    <value>Styrer adgang til Device Enrollment Program.</value>
+  </data>
+  <data name="EnrollmentProgramUserGen" xml:space="preserve">
+    <value>Tilmeldingsprogram</value>
+  </data>
+  <data name="EnrollmentProgramUserGenHelp" xml:space="preserve">
+    <value>Gå til Device Enrollment Program profiler for enheder.</value>
+  </data>
+  <data name="EnrollmentSet" xml:space="preserve">
+    <value>Tilmelding</value>
+  </data>
+  <data name="EnrollmentSetHelp" xml:space="preserve">
+    <value>Styrer adgang til siden Tilmelding under Generelt.</value>
+  </data>
+  <data name="EnrollOffline" xml:space="preserve">
+    <value>Tilmeld offline</value>
+  </data>
+  <data name="EnrollOfflineHelp" xml:space="preserve">
+    <value>Denne ressource tillader enhver administrator med den angivne rolle at kunne tilmelde registrerede enheder offline</value>
+  </data>
+  <data name="EnterAdminModeHelp" xml:space="preserve">
+    <value>Styrer adgang til at indtaste kommando for admin-tilstand-kommando for startprogram</value>
+  </data>
+  <data name="EnterEmailAddressToDesignateRecipients" xml:space="preserve">
+    <value>Indtast e-mailadresser for at tildele modtagere</value>
+  </data>
+  <data name="EnterpriseIntegrationSys" xml:space="preserve">
+    <value>Enterprise integration</value>
+  </data>
+  <data name="EnterpriseIntegrationSysHelp" xml:space="preserve">
+    <value>Styrer adgang til Enterprise integration.</value>
+  </data>
+  <data name="EnterpriseResourceAddHelp" xml:space="preserve">
+    <value>Giver tilladelse til at tilføje ny Enterprise ressource.</value>
+  </data>
+  <data name="EnterpriseResourceHelp" xml:space="preserve">
+    <value>Giver tilladelse til adgang til Enterprise ressource siden.</value>
+  </data>
+  <data name="EnterpriseWipeDD" xml:space="preserve">
+    <value>Enterprise sletning</value>
+  </data>
+  <data name="EnterpriseWipeDDHelp" xml:space="preserve">
+    <value>Giver tilladelse til at afmelde enheden fra Enhedsdetaljer siden og sletter alle af virksomhedens data og indstillinger.</value>
+  </data>
+  <data name="EnterpriseWipeDM" xml:space="preserve">
+    <value>Enterprise sletning</value>
+  </data>
+  <data name="EnterpriseWipeDMHelp" xml:space="preserve">
+    <value>Giver tilladelse til at afmelde en enhed og til at fjerne alt af virksomhedens data og alle indstillingerne.</value>
+  </data>
+  <data name="EquipmentEq" xml:space="preserve">
+    <value>Udstyr</value>
+  </data>
+  <data name="EquipmentEqHelp" xml:space="preserve">
+    <value>Udstyrs management. Naviger til Menu\Udstyr</value>
+  </data>
+  <data name="ESignature" xml:space="preserve">
+    <value>eSignatur</value>
+  </data>
+  <data name="ESignatureHelp" xml:space="preserve">
+    <value>Indstillinger for eSignaturer under Indhold. Naviger til Indstillinger\Indhold\Avanceret\eSignatur</value>
+  </data>
+  <data name="ESignatures" xml:space="preserve">
+    <value>eSignaturer</value>
+  </data>
+  <data name="EulDD" xml:space="preserve">
+    <value>Slutbrugerlicensaftale</value>
+  </data>
+  <data name="EulDDHelp" xml:space="preserve">
+    <value>Vis ældre og nuværende vilkår for anvendelse for en enhed i Enhedsdetaljer.</value>
+  </data>
+  <data name="EventLogAd" xml:space="preserve">
+    <value>Hændelseslogfil</value>
+  </data>
+  <data name="EventLogAdHelp" xml:space="preserve">
+    <value>Styrer adgang til Console-hændelseslogfiler.</value>
+  </data>
+  <data name="EventLogHelp" xml:space="preserve">
+    <value>Styrer adgang til at læse Hændelseslogfiler. 
+</value>
+  </data>
+  <data name="EventsPM" xml:space="preserve">
+    <value>Hændelser</value>
+  </data>
+  <data name="EventsPMHelp" xml:space="preserve">
+    <value>Styrer adgang til Printer hændelseslogfiler siden.</value>
+  </data>
+  <data name="ExitAdminModeHelp" xml:space="preserve">
+    <value>Styrer adgang til kommandoen Luk admin-tilstand</value>
+  </data>
+  <data name="ExitAirWatchLauncherHelp" xml:space="preserve">
+    <value>Styrer adgang til kommandoen Luk startprogram</value>
+  </data>
+  <data name="ExpandedAriaLabel" xml:space="preserve">
+    <value>udvidet</value>
+  </data>
+  <data name="ExpireAllUsersGr" xml:space="preserve">
+    <value>Lad alle brugere udløbe</value>
+  </data>
+  <data name="ExpireAllUsersGrHelp" xml:space="preserve">
+    <value>Aktiverer knappen "Lad alle brugeradgangskoder udløbe".</value>
+  </data>
+  <data name="ExportUG" xml:space="preserve">
+    <value>Eksport</value>
+  </data>
+  <data name="ExportUGHelp" xml:space="preserve">
+    <value>Eksporter brugergrupper.</value>
+  </data>
+  <data name="ExportUserAccounts" xml:space="preserve">
+    <value>Eksport</value>
+  </data>
+  <data name="ExportUserAccountsHelp" xml:space="preserve">
+    <value>Eksporter brugerkonti.</value>
+  </data>
+  <data name="ExportUserCategories" xml:space="preserve">
+    <value>Eksport</value>
+  </data>
+  <data name="ExportUserCategoriesHelp" xml:space="preserve">
+    <value>Eksporter tilmeldings brugerkonto kategorier.</value>
+  </data>
+  <data name="ExportUserRoles" xml:space="preserve">
+    <value>Eksport</value>
+  </data>
+  <data name="ExportUserRolesHelp" xml:space="preserve">
+    <value>Eksporter bruger roller.</value>
+  </data>
+  <data name="FeatureFlagEdit" xml:space="preserve">
+    <value>Rediger funktionsflag</value>
+  </data>
+  <data name="FeatureFlagEditHelp" xml:space="preserve">
+    <value>Styrer adgang til redigering og opdatering af funktionsflag.</value>
+  </data>
+  <data name="FeatureFlagRead" xml:space="preserve">
+    <value>Læs funktionsflag</value>
+  </data>
+  <data name="FeatureFlagReadHelp" xml:space="preserve">
+    <value>Styrer evnen til at læse status for funktionsflag.</value>
+  </data>
+  <data name="FileActionsPPN" xml:space="preserve">
+    <value>Filhandlinger</value>
+  </data>
+  <data name="FileActionsPPNHelp" xml:space="preserve">
+    <value>Opret og styr filhandlinger til klargørings politikkerne.</value>
+  </data>
+  <data name="FileEncryptionStats" xml:space="preserve">
+    <value>Filkrypteringsstatistik</value>
+  </data>
+  <data name="FileEncryptionStatsHelp" xml:space="preserve">
+    <value>Indstillinger for Tenant-lager: TenantStorage.FileEncryptionStats</value>
+  </data>
+  <data name="FileManagerHelp" xml:space="preserve">
+    <value>Giver tilladelse til fjernstyring til adgang af filer på WinMo enheder.
+</value>
+  </data>
+  <data name="FilepathIns" xml:space="preserve">
+    <value>Filsti</value>
+  </data>
+  <data name="FilepathInsHelp" xml:space="preserve">
+    <value>Styrer adgang til filsynk siden under Avanceret.</value>
+  </data>
+  <data name="FilesPM" xml:space="preserve">
+    <value>Filer</value>
+  </data>
+  <data name="FilesPMHelp" xml:space="preserve">
+    <value>Styrer adgang til Printerfiler siden</value>
+  </data>
+  <data name="FilesPr" xml:space="preserve">
+    <value>Filer</value>
+  </data>
+  <data name="FilesPrHelp" xml:space="preserve">
+    <value>Styr printerfiler.</value>
+  </data>
+  <data name="FindDeviceDD" xml:space="preserve">
+    <value>Find enhed</value>
+  </data>
+  <data name="FindDeviceDDHelp" xml:space="preserve">
+    <value>Sæt status for enheden for at starte med at sende en lydbesked så brugeren kan finde enheden. Kun tilgængelig fra Enhedsdetaljer.</value>
+  </data>
+  <data name="FindDeviceHelp" xml:space="preserve">
+    <value>Styrer adgang til at aktivere en lydalarm så bruger kan finde enheden. Tilgængelig i Enhedsdetaljer HTML5 skærmen.</value>
+  </data>
+  <data name="FriendlyNameSet" xml:space="preserve">
+    <value>Navn</value>
+  </data>
+  <data name="FriendlyNameSetHelp" xml:space="preserve">
+    <value>Styrer adgang til Navn siden under Generelt.</value>
+  </data>
+  <data name="GatewayStatusEm" xml:space="preserve">
+    <value>Gateway status</value>
+  </data>
+  <data name="GatewayStatusEmHelp" xml:space="preserve">
+    <value>Styrer indstillinger for e-mail gateway-status.</value>
+  </data>
+  <data name="GeneralDD" xml:space="preserve">
+    <value>Generelt</value>
+  </data>
+  <data name="GeneralDDHelp" xml:space="preserve">
+    <value>Styrer forskellige basis funktioner af Enhedsdetaljer siden.</value>
+  </data>
+  <data name="GeneralHub" xml:space="preserve">
+    <value>Generelt</value>
+  </data>
+  <data name="GeneralHubHelp" xml:space="preserve">
+    <value>Adgang til rapport modulet.</value>
+  </data>
+  <data name="GeneralPM" xml:space="preserve">
+    <value>Generelt</value>
+  </data>
+  <data name="GeneralPMHelp" xml:space="preserve">
+    <value>Styrer adgang til Printer generelt siden</value>
+  </data>
+  <data name="GeneralSettingsEm" xml:space="preserve">
+    <value>Generelle indstillinger</value>
+  </data>
+  <data name="GeneralSettingsEmHelp" xml:space="preserve">
+    <value>Styrer generelle indstillinger for e-mail.</value>
+  </data>
+  <data name="GeneralSOaP" xml:space="preserve">
+    <value>Generelt</value>
+  </data>
+  <data name="GeneralSOaPHelp" xml:space="preserve">
+    <value>Adgang til alle AirWatch Services med undtagelse af sletingskommandoer.</value>
+  </data>
+  <data name="GeneralSys" xml:space="preserve">
+    <value>Generelt</value>
+  </data>
+  <data name="GeneralSysHelp" xml:space="preserve">
+    <value>Styrer adgang til Generelt siden under System.</value>
+  </data>
+  <data name="GeofencingAreaDM" xml:space="preserve">
+    <value>Geofencing område</value>
+  </data>
+  <data name="GeofencingAreaDMHelp" xml:space="preserve">
+    <value>Styr geofence indstillinger for profiler.</value>
+  </data>
+  <data name="GeofencingHelp" xml:space="preserve">
+    <value>Giver tilladelse til vise/redigere indstillinger for geofencing. 
+</value>
+  </data>
+  <data name="GeofencingSet" xml:space="preserve">
+    <value>Geofencing</value>
+  </data>
+  <data name="GeofencingSetHelp" xml:space="preserve">
+    <value>Giver tilladelse til vise/redigere indstillinger for geofencing.</value>
+  </data>
+  <data name="GettingStartedApplicationHelp" xml:space="preserve">
+    <value>Styrer 'Kom i gang'-processen for Mobile Application Management</value>
+  </data>
+  <data name="GettingStartedSys" xml:space="preserve">
+    <value>Kom i gang</value>
+  </data>
+  <data name="GettingStartedSysHelp" xml:space="preserve">
+    <value>Giver tilladelse til at vise 'Kom i gang' guiden.</value>
+  </data>
+  <data name="GooglePlayIntegrationAn" xml:space="preserve">
+    <value>Google Play Integration</value>
+  </data>
+  <data name="GooglePlayIntegrationAnHelp" xml:space="preserve">
+    <value>Giv tilladelse til at vise og redigere Google Play integrationen.</value>
+  </data>
+  <data name="GroupsRESTSystem" xml:space="preserve">
+    <value>Grupper</value>
+  </data>
+  <data name="GroupsRESTSystemHelp" xml:space="preserve">
+    <value>REST APIs til gruppe manageemnt</value>
+  </data>
+  <data name="GSuiteRotatePasswordAction" xml:space="preserve">
+    <value>G Suite-rotation af adgangskode</value>
+  </data>
+  <data name="GSuiteRotatePasswordActionHelp" xml:space="preserve">
+    <value>Mulighed for at rotere G Suite Basic-adgangskode og rotere e-mailprofiler.</value>
+  </data>
+  <data name="HeroCards" xml:space="preserve">
+    <value>Mobile Flows</value>
+  </data>
+  <data name="HeroCardsHelp" xml:space="preserve">
+    <value>Konfigurationsbrugerflade for Mobile Flows-backends og -tjenester</value>
+  </data>
+  <data name="HorizonWorkspaceSettings" xml:space="preserve">
+    <value>Horizon Workspace indstillinger</value>
+  </data>
+  <data name="HorizonWorkspaceSettingsHelp" xml:space="preserve">
+    <value>Styrer adgang til at vise og redigere Horizon Workspace indstillinger. Naviger til Indstillinger\Apps\App integration\Horizon Workspace</value>
+  </data>
+  <data name="HyperLinkDeleteAd" xml:space="preserve">
+    <value>Slet hyperlink</value>
+  </data>
+  <data name="HyperLinkDeleteAdHelp" xml:space="preserve">
+    <value>Giver tilladelse til at fjerne vedhæftede hyperlink fra siden Enhedsdetaljer.</value>
+  </data>
+  <data name="InProductSupport" xml:space="preserve">
+    <value>Support i produkt</value>
+  </data>
+  <data name="InProductSupportHelp" xml:space="preserve">
+    <value>Adgang til support i produktet, hvor administratorer kan søge i dokumentationen og få hjælp direkte inde fra UEM.</value>
+  </data>
+  <data name="InstallationAdvancedIns" xml:space="preserve">
+    <value>Avanceret installation</value>
+  </data>
+  <data name="InstallationAdvancedInsHelp" xml:space="preserve">
+    <value>Styrer adgang til Avanceret siden under installation.</value>
+  </data>
+  <data name="InstallationIns" xml:space="preserve">
+    <value>Installation</value>
+  </data>
+  <data name="InstallationInsHelp" xml:space="preserve">
+    <value>Styrer adgang til Installation side.</value>
+  </data>
+  <data name="InstallFontsApple" xml:space="preserve">
+    <value>Installer skrifttyper</value>
+  </data>
+  <data name="InstallFontsAppleHelp" xml:space="preserve">
+    <value>Aktivere installer skrifttyper sektionen i indstillinger.</value>
+  </data>
+  <data name="InstallIntelligentHub" xml:space="preserve">
+    <value>Installer Intelligent Hub</value>
+  </data>
+  <data name="InstallIntelligentHubHelp" xml:space="preserve">
+    <value>Giver adgang til at fjerninstallere Intelligent Hub på en tilmeldt enhed</value>
+  </data>
+  <data name="InsufficientResourceToSaveAdmin" xml:space="preserve">
+    <value>Kunne ikke gemme. Din administratorkonto har ikke tilstrækkelige tilladelser til at redigere denne post.</value>
+  </data>
+  <data name="Intelligence" xml:space="preserve">
+    <value>Intelligence</value>
+  </data>
+  <data name="IntelligenceHelp" xml:space="preserve">
+    <value>Adgang til Intelligence-siden.</value>
+  </data>
+  <data name="InternalAppsAb" xml:space="preserve">
+    <value>Interne apps</value>
+  </data>
+  <data name="InternalAppsAbHelp" xml:space="preserve">
+    <value>Upload og styr apps der blev udviklet internt.</value>
+  </data>
+  <data name="LanguageManagementAd" xml:space="preserve">
+    <value>Sprog management</value>
+  </data>
+  <data name="LanguageManagementAdHelp" xml:space="preserve">
+    <value>Vis menu elementer for sprog management og gå til Lokalisering editor og Sprogpakke aktiveringssiden.</value>
+  </data>
+  <data name="LearnMoreAccess" xml:space="preserve">
+    <value>Adgang til Få flere oplysninger</value>
+  </data>
+  <data name="LearnMoreAccessContact" xml:space="preserve">
+    <value>Adgang til Kontakt i Få flere oplysninger</value>
+  </data>
+  <data name="LearnMoreAccessContactHelp" xml:space="preserve">
+    <value>Styrer adgang til afsnittet Kontakt i Lær mere, og opgrader</value>
+  </data>
+  <data name="LearnMoreAccessHelp" xml:space="preserve">
+    <value>Styrer adgang til afsnittet Lær mere, og opgrader</value>
+  </data>
+  <data name="LegacyAndroidMigration" xml:space="preserve">
+    <value>Legacy Android-overførsel</value>
+  </data>
+  <data name="LegacyAndroidMigrationHelp" xml:space="preserve">
+    <value>Styrer adgang til siden Legacy Android-overførsel for at overføre Legacy Android-enheder til Android Enterprise med en arbejdsprofil</value>
+  </data>
+  <data name="LicensesAd" xml:space="preserve">
+    <value>Licenser</value>
+  </data>
+  <data name="LicensesAdHelp" xml:space="preserve">
+    <value>Giver tilladelse til at redigere licenser.</value>
+  </data>
+  <data name="LinuxHelp" xml:space="preserve">
+    <value>Styrer adgang til Linux-indstillingssider i systemindstillinger.</value>
+  </data>
+  <data name="LocalizationSys" xml:space="preserve">
+    <value>Lokalisering</value>
+  </data>
+  <data name="LocalizationSysHelp" xml:space="preserve">
+    <value>Styrer adgang til Lokaliserings indstillinger.</value>
+  </data>
+  <data name="LocationCodeGr" xml:space="preserve">
+    <value>Placeringskode</value>
+  </data>
+  <data name="LocationCodeGrHelp" xml:space="preserve">
+    <value>Rediger en placeringskode på Placering Tilføj/rediger siderne.</value>
+  </data>
+  <data name="LocationDD" xml:space="preserve">
+    <value>Placering</value>
+  </data>
+  <data name="LocationDDHelp" xml:space="preserve">
+    <value>Vis placering og brødkrumme data af enhederne.</value>
+  </data>
+  <data name="LocationGroupTypeHelp" xml:space="preserve">
+    <value>Styrer adgang til Organisationsgruppe type siden.
+</value>
+  </data>
+  <data name="LocationsGr" xml:space="preserve">
+    <value>Placeringer</value>
+  </data>
+  <data name="LocationsGrHelp" xml:space="preserve">
+    <value>Se og styr placeringer for organisationsgrupper.</value>
+  </data>
+  <data name="LocationsHub" xml:space="preserve">
+    <value>Placeringer</value>
+  </data>
+  <data name="LocationsHubHelp" xml:space="preserve">
+    <value>Generer rapporter for placeringsdata.</value>
+  </data>
+  <data name="LocationStatusHelp" xml:space="preserve">
+    <value>Styrer adgang til Placeringsstatus link. Styrer adgang til Tilføj ny placeringsstatus.
+</value>
+  </data>
+  <data name="LocationTypeHelp" xml:space="preserve">
+    <value>Styrer adgang til Placeringsype siden.
+</value>
+  </data>
+  <data name="LocationZonesGr" xml:space="preserve">
+    <value>Placeringszoner</value>
+  </data>
+  <data name="LocationZonesGrHelp" xml:space="preserve">
+    <value>Tilføj og rediger placeringszoner for en placering.</value>
+  </data>
+  <data name="LockDD" xml:space="preserve">
+    <value>Lås</value>
+  </data>
+  <data name="LockDDHelp" xml:space="preserve">
+    <value>Fjernlås enhed eller lås single sign-on app.</value>
+  </data>
+  <data name="LogDD" xml:space="preserve">
+    <value>Logfil</value>
+  </data>
+  <data name="LogDDHelp" xml:space="preserve">
+    <value>Vis logfiler i Enhedsdetaljer.</value>
+  </data>
+  <data name="LoggingAd" xml:space="preserve">
+    <value>Logføring</value>
+  </data>
+  <data name="LoggingAdHelp" xml:space="preserve">
+    <value>Giver tilladelse til at se hændelseslogfil indstillinger.</value>
+  </data>
+  <data name="LoggingAdL" xml:space="preserve">
+    <value>Logføring</value>
+  </data>
+  <data name="LoggingAdLHelp" xml:space="preserve">
+    <value>Se og rediger logførings indstillinger for syslog og målrettet logføring.</value>
+  </data>
+  <data name="LoginHistoryAdminGen" xml:space="preserve">
+    <value>Loginhistorik</value>
+  </data>
+  <data name="LoginHistoryAdminGenHelp" xml:space="preserve">
+    <value>Adgang til Loginhistorik siden under Admin konti siden og Brugerindstillinger siden.</value>
+  </data>
+  <data name="LookupFields" xml:space="preserve">
+    <value>Opslagsfelter</value>
+  </data>
+  <data name="LookupFieldsHelp" xml:space="preserve">
+    <value>Styrer adgang til Søgefelter siden under Generelt.</value>
+  </data>
+  <data name="MacOsXApple" xml:space="preserve">
+    <value>macOS</value>
+  </data>
+  <data name="MacOsXAppleHelp" xml:space="preserve">
+    <value>Styrer adgang til macOS indstillinger sider i systemindstillinger.</value>
+  </data>
+  <data name="MailRecipient" xml:space="preserve">
+    <value>E-mailmodtager</value>
+  </data>
+  <data name="MaintenanceUpgradeNotificationInfo" xml:space="preserve">
+    <value>Vælg en indstilling, der skal bruges til at bestemme, hvem der modtager beskeder om Workspace ONE UEM og Workspace ONE Assist. Hvis Admin-tilmelding er valgt, får administratorer vist indstillingen Vedligeholdelse og opgradering under Kontoindstillinger &gt; Notifikationer.</value>
+  </data>
+  <data name="MaintenanceUpgradeNotifications" xml:space="preserve">
+    <value>Meddelelser om vedligeholdelse og opgradering</value>
+  </data>
+  <data name="ManageAdminGroups" xml:space="preserve">
+    <value>Styr</value>
+  </data>
+  <data name="ManageAdminGroupsHelp" xml:space="preserve">
+    <value>Udfører handlinger for admin-grupper som synkronisering eller fletning.</value>
+  </data>
+  <data name="ManageBaselines" xml:space="preserve">
+    <value>Administrer grundlinjer</value>
+  </data>
+  <data name="ManageBaselinesHelp" xml:space="preserve">
+    <value>Styrer adgangen til at administrere grundlinjer, herunder tilladelser til at tilføje nye, redigere og tildele en grundlinje</value>
+  </data>
+  <data name="ManageContentCM" xml:space="preserve">
+    <value>Styr indhold</value>
+  </data>
+  <data name="ManageContentCMHelp" xml:space="preserve">
+    <value>Tilføj nyt indhold og styr det eksisterende indhold.</value>
+  </data>
+  <data name="ManageDevicesCM" xml:space="preserve">
+    <value>Styr enheder</value>
+  </data>
+  <data name="ManageDevicesCMHelp" xml:space="preserve">
+    <value>Installer og slet indholdet på styrede enheder via fjernstyring.</value>
+  </data>
+  <data name="ManageDeviceSensors" xml:space="preserve">
+    <value>Administrer enhedens sensorer</value>
+  </data>
+  <data name="ManageDeviceSensorsHelp" xml:space="preserve">
+    <value>Styrer adgang til at tilføje, redigere, tildele eller slette enhedssensorer</value>
+  </data>
+  <data name="ManageDM" xml:space="preserve">
+    <value>Styr</value>
+  </data>
+  <data name="ManageDMHelp" xml:space="preserve">
+    <value>Styr enhedsprofiler.</value>
+  </data>
+  <data name="ManagedSettingsApple" xml:space="preserve">
+    <value>Styrede indstillinger</value>
+  </data>
+  <data name="ManagedSettingsAppleHelp" xml:space="preserve">
+    <value>Styrer adgang til Styrede indstillinger for iOS.</value>
+  </data>
+  <data name="ManageGr" xml:space="preserve">
+    <value>Styr</value>
+  </data>
+  <data name="ManageGrHelp" xml:space="preserve">
+    <value>Styr organisationsgruppe</value>
+  </data>
+  <data name="ManageNodeAd" xml:space="preserve">
+    <value>Styr node</value>
+  </data>
+  <data name="ManageNodeAdHelp" xml:space="preserve">
+    <value>Tilføj, rediger, slet og ryd MemCached noder.</value>
+  </data>
+  <data name="ManagePM" xml:space="preserve">
+    <value>Styr</value>
+  </data>
+  <data name="ManagePMHelp" xml:space="preserve">
+    <value>Afsend kommandoer og anmodninger til printere via fjernstyring.</value>
+  </data>
+  <data name="ManageTimeWindow" xml:space="preserve">
+    <value>Administrer tidsvindue</value>
+  </data>
+  <data name="ManageTimeWindowHelp" xml:space="preserve">
+    <value>Styrer adgangen til at administrere tidsvindue, herunder tilladelser til at tilføje nye, redigere og tildele et tidsvindue.</value>
+  </data>
+  <data name="ManageUG" xml:space="preserve">
+    <value>Styr</value>
+  </data>
+  <data name="ManageUGHelp" xml:space="preserve">
+    <value>Udfører handlinger for tilmeldings brugergrupper som synkronisering eller fletning.</value>
+  </data>
+  <data name="MapsIns" xml:space="preserve">
+    <value>Kort</value>
+  </data>
+  <data name="MapsInsHelp" xml:space="preserve">
+    <value>Styrer adgang til Kort siden under Installation.</value>
+  </data>
+  <data name="MembersAdminGroup" xml:space="preserve">
+    <value>Medlemmer</value>
+  </data>
+  <data name="MembersAdminGroupHelp" xml:space="preserve">
+    <value>Vis admin gruppens medlemmer.</value>
+  </data>
+  <data name="MembersUG" xml:space="preserve">
+    <value>Medlemmer</value>
+  </data>
+  <data name="MembersUGHelp" xml:space="preserve">
+    <value>Adgang til brugergruppen medlemsliste.</value>
+  </data>
+  <data name="MenuLinkForTagHelp" xml:space="preserve">
+    <value>Styrer adgang til mærkemenuen</value>
+  </data>
+  <data name="MessageTemplatesSet" xml:space="preserve">
+    <value>Meddelelsesskabeloner</value>
+  </data>
+  <data name="MessageTemplatesSetHelp" xml:space="preserve">
+    <value>Styrer adgang til Meddelelsesskabeloner.</value>
+  </data>
+  <data name="MessagingDD" xml:space="preserve">
+    <value>Beskeder</value>
+  </data>
+  <data name="MessagingDDHelp" xml:space="preserve">
+    <value>Send e-mails, push-notifikationer eller SMS-beskeder til enheder.</value>
+  </data>
+  <data name="MessagingSet" xml:space="preserve">
+    <value>Beskeder</value>
+  </data>
+  <data name="MessagingSetHelp" xml:space="preserve">
+    <value>Styrer adgang til Meddelelser siden under Generelt.</value>
+  </data>
+  <data name="MigrateUserAccounts" xml:space="preserve">
+    <value>Overførsel</value>
+  </data>
+  <data name="MigrateUserAccountsHelp" xml:space="preserve">
+    <value>Overfør brugertilmelding konti fra Basis tilmelding til LDAP tilmelding.</value>
+  </data>
+  <data name="MirrorPM" xml:space="preserve">
+    <value>Spejlning</value>
+  </data>
+  <data name="MirrorPMHelp" xml:space="preserve">
+    <value>Styrer adgang til Printer spejlning siden</value>
+  </data>
+  <data name="MobileFlowsAuthToken" xml:space="preserve">
+    <value>Autentificeringstoken til Mobile Flows</value>
+  </data>
+  <data name="MobileFlowsAuthTokenHelp" xml:space="preserve">
+    <value>Genererer certifikat-JWT til benyttelse af Mobile Flows-serveren</value>
+  </data>
+  <data name="MobileFlowsServerUrl" xml:space="preserve">
+    <value>Mobile Flows-server URL</value>
+  </data>
+  <data name="MobileFlowsServerUrlHelp" xml:space="preserve">
+    <value>Mobile Flows-server URL</value>
+  </data>
+  <data name="MobileFlowsTenantAdd" xml:space="preserve">
+    <value>Tilføj Mobile Flows Tenant</value>
+  </data>
+  <data name="MobileFlowsTenantAddHelp" xml:space="preserve">
+    <value>Tildel kundetenant i Mobile Flows-cloudtjeneste</value>
+  </data>
+  <data name="ModifyAgentSet" xml:space="preserve">
+    <value>Rediger Hub</value>
+  </data>
+  <data name="ModifyAgentSetHelp" xml:space="preserve">
+    <value>Styrer adgang til at redigere Hub-indstillinger.</value>
+  </data>
+  <data name="MonitoringAd" xml:space="preserve">
+    <value>Overvågning</value>
+  </data>
+  <data name="MonitoringAdHelp" xml:space="preserve">
+    <value>Giver tilladelse til adgang og redigering af Overvågningindstillinger.</value>
+  </data>
+  <data name="MoreHelp" xml:space="preserve">
+    <value>Styrer adgang til Yderligere menu.  
+</value>
+  </data>
+  <data name="NacIntegrationSys" xml:space="preserve">
+    <value>NAC integration</value>
+  </data>
+  <data name="NacIntegrationSysHelp" xml:space="preserve">
+    <value>Styrer adgang til siden Integration af netværkadgangskontrol under Generelt.</value>
+  </data>
+  <data name="NavigateExportStatusHelp" xml:space="preserve">
+    <value>Adgang til eksport status siden til visning og download af gitter eksports.</value>
+  </data>
+  <data name="NavigationO" xml:space="preserve">
+    <value>Navigation</value>
+  </data>
+  <data name="NavigationOHelp" xml:space="preserve">
+    <value>Adgang til avancerede menuer.</value>
+  </data>
+  <data name="NetworkAccessControlIntegrationHelp" xml:space="preserve">
+    <value>Styrer adgang til siden Integration af netværkadgangskontrol under Generelt. 
+</value>
+  </data>
+  <data name="NetworkDD" xml:space="preserve">
+    <value>Netværk</value>
+  </data>
+  <data name="NetworkDDHelp" xml:space="preserve">
+    <value>Adgang til netværkssiden fra Enhedsdetaljer.</value>
+  </data>
+  <data name="NetworkRangeGr" xml:space="preserve">
+    <value>Netværksområde</value>
+  </data>
+  <data name="NetworkRangeGrHelp" xml:space="preserve">
+    <value>Styr og importer netværksområder til organisationsgrupper.</value>
+  </data>
+  <data name="NetworkRangeHelp" xml:space="preserve">
+    <value>Giver tilladelse til visning af Netværksområde skærmen</value>
+  </data>
+  <data name="NoFiltersSelected" xml:space="preserve">
+    <value>Ingen filtre valgt</value>
+  </data>
+  <data name="NotesDD" xml:space="preserve">
+    <value>Noter</value>
+  </data>
+  <data name="NotesDDHelp" xml:space="preserve">
+    <value>Tilføj, rediger og slet enhedsnoter under Enhedsdetaljer.</value>
+  </data>
+  <data name="NotificationRecipients" xml:space="preserve">
+    <value>Notifikationsmodtagere</value>
+  </data>
+  <data name="NotificationsAd" xml:space="preserve">
+    <value>Notifikationer</value>
+  </data>
+  <data name="NotificationsAdHelp" xml:space="preserve">
+    <value>Vis og rediger indstillingerne til hændelsesnotifikationer</value>
+  </data>
+  <data name="NotifyAb" xml:space="preserve">
+    <value>Giv besked</value>
+  </data>
+  <data name="NotifyAbHelp" xml:space="preserve">
+    <value>Send notifikationer via enheds apps.</value>
+  </data>
+  <data name="Office365MamIntegrationSettings" xml:space="preserve">
+    <value>Office365-integrationsindstillinger</value>
+  </data>
+  <data name="Office365MamIntegrationSettingsHelp" xml:space="preserve">
+    <value>Ressource til styring af skærmen Systemindstillinger for tilføjelse af standard DLP-politikker til Office 365-apps</value>
+  </data>
+  <data name="Old" xml:space="preserve">
+    <value>Gammel</value>
+  </data>
+  <data name="OldPPO" xml:space="preserve">
+    <value>Gammel</value>
+  </data>
+  <data name="OldPPOHelp" xml:space="preserve">
+    <value>Adgang til forældede indstillinger til klargøringsprofiler.</value>
+  </data>
+  <data name="OrganizationGroupChangeAd" xml:space="preserve">
+    <value>Ændring af organisationsgruppe</value>
+  </data>
+  <data name="OrganizationGroupChangeAdHelp" xml:space="preserve">
+    <value>Giver tilladelse til at ændre organisationsgrupper via en rullemenu</value>
+  </data>
+  <data name="OrganizationGroupCodeGr" xml:space="preserve">
+    <value>Organisationsgruppe-id</value>
+  </data>
+  <data name="OrganizationGroupCodeGrHelp" xml:space="preserve">
+    <value>Rediger organisationsgruppe-ID.</value>
+  </data>
+  <data name="OsUpdateStatusHelp" xml:space="preserve">
+    <value>Styrer adgang til at hente status for en OS-opdatering på enheder. Naviger til Enheder/Detaljevisning</value>
+  </data>
+  <data name="OutlookAddinSet" xml:space="preserve">
+    <value>Outlook AddIn</value>
+  </data>
+  <data name="OutlookAddinSetHelp" xml:space="preserve">
+    <value>Aktiver og deaktiver Outlook AddIn plug-in</value>
+  </data>
+  <data name="OverrideJobLogLevelHelp" xml:space="preserve">
+    <value>Giver bruger tilladelse til at tilsidesætte joblogføringsniveauet via DeviceDetails, når enheder understøtter denne funktionalitet.</value>
+  </data>
+  <data name="OverviewHub" xml:space="preserve">
+    <value>Oversigt</value>
+  </data>
+  <data name="OverviewHubHelp" xml:space="preserve">
+    <value>Få adgang til overvågningsoversigtssiden.</value>
+  </data>
+  <data name="P2PSetupHelp" xml:space="preserve">
+    <value>Siden med indstillinger, der indeholder undersektioner af forskellige P2P-leverandører</value>
+  </data>
+  <data name="PasscodeDD" xml:space="preserve">
+    <value>Adgangskode</value>
+  </data>
+  <data name="PasscodeDDHelp" xml:space="preserve">
+    <value>Ryd og nulstil adgangskoder til enheder og apps.</value>
+  </data>
+  <data name="PerformanceTuningHelp" xml:space="preserve">
+    <value>Styrer adgang til Tilpasning af ydeevne parametre i Systemindstillinger.
+</value>
+  </data>
+  <data name="PerformanceTuningIns" xml:space="preserve">
+    <value>Tilpasning af ydeevne</value>
+  </data>
+  <data name="PerformanceTuningInsHelp" xml:space="preserve">
+    <value>Styrer adgang til Tilpasning af ydeevne parametre i Systemindstillinger.</value>
+  </data>
+  <data name="PersonalContentSet" xml:space="preserve">
+    <value>Personligt indhold</value>
+  </data>
+  <data name="PersonalContentSetHelp" xml:space="preserve">
+    <value>Giver tilladelse til at redigere indstillinger der er relevante til Personligt indhold</value>
+  </data>
+  <data name="PlansTel" xml:space="preserve">
+    <value>Abonnementer</value>
+  </data>
+  <data name="PlansTelHelp" xml:space="preserve">
+    <value>Styr konfigurerede telekom abonnementer for en organisationsgruppe.</value>
+  </data>
+  <data name="PoliciesPPN" xml:space="preserve">
+    <value>Politikker</value>
+  </data>
+  <data name="PoliciesPPNHelp" xml:space="preserve">
+    <value>Opret og styr klargørings politikker.</value>
+  </data>
+  <data name="PolicyEngineSettingsEditHelp" xml:space="preserve">
+    <value>Tilladelse til at redigere indstillinger for Policy Engine. Gå til Konfigurer\Indstillinger\Admin\Indstillinger for Policy Engine</value>
+  </data>
+  <data name="PolicyEngineSettingsViewHelp" xml:space="preserve">
+    <value>Giver tilladelse til at vise indstillinger for Policy Engine.</value>
+  </data>
+  <data name="PolicyOverrideEM" xml:space="preserve">
+    <value>Tilsidesæt politik</value>
+  </data>
+  <data name="PolicyOverrideEMHelp" xml:space="preserve">
+    <value>Tilsidesæt e-mailpolitikker for at tillade og forbyde enheder.</value>
+  </data>
+  <data name="PolicySigningCertificateHelp" xml:space="preserve">
+    <value>Giver tilladelse til at uploade ECC-certifikat. Gå til System\Avanceret\Politik-signeringscertifikat</value>
+  </data>
+  <data name="PowerPM" xml:space="preserve">
+    <value>Strøm</value>
+  </data>
+  <data name="PowerPMHelp" xml:space="preserve">
+    <value>Styrer adgang til Printer strømforsynings siden</value>
+  </data>
+  <data name="PrinterManagementProfile" xml:space="preserve">
+    <value>Printer management profil</value>
+  </data>
+  <data name="PrinterManagementProfiles" xml:space="preserve">
+    <value>Printer management profiler</value>
+  </data>
+  <data name="PrinterProfiles" xml:space="preserve">
+    <value>Printerprofiler</value>
+  </data>
+  <data name="PrinterProfilesHelp" xml:space="preserve">
+    <value>Styrer adgang til at vise Printerprofiler gitteret. Naviger til Menu\Printer management\Profiler</value>
+  </data>
+  <data name="PrinterServersPM" xml:space="preserve">
+    <value>Printer servere</value>
+  </data>
+  <data name="PrinterServersPMHelp" xml:space="preserve">
+    <value>Vis, tilføj og slet printer servere på printer indstillinger siden.</value>
+  </data>
+  <data name="PrinterTestPrint" xml:space="preserve">
+    <value>Printertestudskrivning</value>
+  </data>
+  <data name="PrinterTestPrintHelp" xml:space="preserve">
+    <value>Giver tilladelse til at sende en printertestudskrivning.</value>
+  </data>
+  <data name="PrinterViewAveryDennisonGeneralHelp" xml:space="preserve">
+    <value>Fanen Generelt på siden Avery Dennison 'Enhedsoplysninger'. </value>
+  </data>
+  <data name="PrinterViewCpclPM" xml:space="preserve">
+    <value>CPCL</value>
+  </data>
+  <data name="PrinterViewCpclPMHelp" xml:space="preserve">
+    <value>Styrer adgang til Printer CPCL siden</value>
+  </data>
+  <data name="PrinterViewDataMaxONeilAutoUpdateHelp" xml:space="preserve">
+    <value>Fanen 'AutoUpdate' til siden Datamax Enhedsoplysninger. </value>
+  </data>
+  <data name="PrinterViewDataMaxONeilBatteryHelp" xml:space="preserve">
+    <value>Fanen "Batteri" på siden "Enhedsoplysninger" på Datamax-printeren. </value>
+  </data>
+  <data name="PrinterViewDataMaxONeilBluetoothHelp" xml:space="preserve">
+    <value>Fanen 'Bluetooth' til siden Datamax-enhedsoplysninger. </value>
+  </data>
+  <data name="PrinterViewDataMaxONeilCustomSettingsHelp" xml:space="preserve">
+    <value>Sådan vises fanen Brugerdefinerede indstillinger på siden Datamax-O'Neil-enhedsoplysninger. </value>
+  </data>
+  <data name="PrinterViewDataMaxONeilGeneralHelp" xml:space="preserve">
+    <value>Fanen Generelt på siden Datamax 'Enhedsoplysninger'.  </value>
+  </data>
+  <data name="PrinterViewDataMaxONeilGeneralNetworkHelp" xml:space="preserve">
+    <value>Fanen 'GeneralNetwork' til siden Datamax-enhedsoplysninger. </value>
+  </data>
+  <data name="PrinterViewDataMaxONeilMediaLabelHelp" xml:space="preserve">
+    <value>Fanen 'Media Label' på siden Datamax 'Enhedsoplysninger'. </value>
+  </data>
+  <data name="PrinterViewDataMaxONeilMiscellaneousHelp" xml:space="preserve">
+    <value>Fanen 'Miscellanous’ på siden Datamax 'Enhedsoplysninger'. </value>
+  </data>
+  <data name="PrinterViewDataMaxONeilPrintControlHelp" xml:space="preserve">
+    <value>Fanen 'PrintControl’ på siden Datamax 'Enhedsoplysninger'. </value>
+  </data>
+  <data name="PrinterViewDataMaxONeilRS232Help" xml:space="preserve">
+    <value>Fanen 'RS232' til siden Datamax ’Enhedsoplysninger’. </value>
+  </data>
+  <data name="PrinterViewDataMaxONeilSystemSettingsHelp" xml:space="preserve">
+    <value>Fanen 'Systemindstillinger' på siden Datamax 'Enhedsoplysninger'. </value>
+  </data>
+  <data name="PrinterViewDataMaxONeilWifiHelp" xml:space="preserve">
+    <value>Fanen 'Wi-fi' til siden Datamax-enhedsoplysninger. </value>
+  </data>
+  <data name="PrinterViewEpsonGeneral" xml:space="preserve">
+    <value>Vis oplysninger om Epson printer: Generelt fane</value>
+  </data>
+  <data name="PrinterViewEpsonGeneralHelp" xml:space="preserve">
+    <value>Vis enhedsoplysninger om Epson printer</value>
+  </data>
+  <data name="PrinterViewEpsonPrintSettingsHelp" xml:space="preserve">
+    <value>Giver bruger adgang til Epson-udskriftsindstillinger</value>
+  </data>
+  <data name="PrivacySet" xml:space="preserve">
+    <value>Privatlivspolitik</value>
+  </data>
+  <data name="PrivacySetHelp" xml:space="preserve">
+    <value>Styrer adgang til privatlivspolitik siden under Generelt.</value>
+  </data>
+  <data name="ProductImprovementProgramSettings" xml:space="preserve">
+    <value>Programindstillinger til forbedring af produkt</value>
+  </data>
+  <data name="ProductImprovementProgramSettingsHelp" xml:space="preserve">
+    <value>Styrer adgang til programindstillingssiden for produktforbedringer, som findes under Indstillinger &gt; Admin &gt; Produktforbedringsprogrammer.</value>
+  </data>
+  <data name="ProductivityAppsAb" xml:space="preserve">
+    <value>Produktivitetsapps</value>
+  </data>
+  <data name="ProductProvisioningHub" xml:space="preserve">
+    <value>Produktklargøring</value>
+  </data>
+  <data name="ProductProvisioningHubHelp" xml:space="preserve">
+    <value>Generer rapporter for produktklargøring</value>
+  </data>
+  <data name="ProductProvisioningSettingsHelp" xml:space="preserve">
+    <value>Konfigurer bestemte funktioner til produktklargøring.</value>
+  </data>
+  <data name="ProductSetsHelp" xml:space="preserve">
+    <value>Styrer adgang til produktsæt under Nye produkter</value>
+  </data>
+  <data name="ProfileEncryptAndExportXmlDM" xml:space="preserve">
+    <value>Profil kryptering og eksport af XML</value>
+  </data>
+  <data name="ProfileEncryptAndExportXmlDMHelp" xml:space="preserve">
+    <value>Hent certifikaterne til profil krypteringen og upload profilens XML.</value>
+  </data>
+  <data name="ProfilesApple" xml:space="preserve">
+    <value>Profiler</value>
+  </data>
+  <data name="ProfilesAppleHelp" xml:space="preserve">
+    <value>Styrer adgang til Profiler siden under iOS.</value>
+  </data>
+  <data name="ProfilesDD" xml:space="preserve">
+    <value>Profiler</value>
+  </data>
+  <data name="ProfilesDDHelp" xml:space="preserve">
+    <value>Vis og styr konfigurationsprofiler i Enhedsdetaljer.</value>
+  </data>
+  <data name="ProfilesHub" xml:space="preserve">
+    <value>Profiler</value>
+  </data>
+  <data name="ProfilesHubHelp" xml:space="preserve">
+    <value>Generer rapporter for enhedsprofiler</value>
+  </data>
+  <data name="ProfilesPM" xml:space="preserve">
+    <value>Profiler</value>
+  </data>
+  <data name="ProfilesPMHelp" xml:space="preserve">
+    <value>Styrer adgang til Printerprofiler siden</value>
+  </data>
+  <data name="ProfilesPPN" xml:space="preserve">
+    <value>Profiler</value>
+  </data>
+  <data name="ProfilesPPNHelp" xml:space="preserve">
+    <value>Adgang til klargøringsprofiler siden.</value>
+  </data>
+  <data name="ProfilesPr" xml:space="preserve">
+    <value>Profiler</value>
+  </data>
+  <data name="ProfilesPrHelp" xml:space="preserve">
+    <value>Styr printerprofiler.</value>
+  </data>
+  <data name="ProfilesRESTMdm" xml:space="preserve">
+    <value>Profiler</value>
+  </data>
+  <data name="ProfilesRESTMdmHelp" xml:space="preserve">
+    <value>REST APIs for enheden profiler</value>
+  </data>
+  <data name="ProvisioningHelp" xml:space="preserve">
+    <value>Styrer adgang til WinMo Klargørings siden.</value>
+  </data>
+  <data name="ProvisioningPolicyConditionCopyHelp" xml:space="preserve">
+    <value>Giver bruger tilladelse til at kopiere en tilstand.</value>
+  </data>
+  <data name="ProvisioningPolicyFileActionCopyHelp" xml:space="preserve">
+    <value>Giver en bruger tilladelse til at kopiere en klargøringsfil/handling.</value>
+  </data>
+  <data name="ProxiesAndTunnelHelp" xml:space="preserve">
+    <value>Giv tilladelse til at vise og redigere proxyer og tunnelindstillinger</value>
+  </data>
+  <data name="ProxyIns" xml:space="preserve">
+    <value>Proxy</value>
+  </data>
+  <data name="ProxyInsHelp" xml:space="preserve">
+    <value>Styrer adgang til Proxyindstillinger siden under Generelt.</value>
+  </data>
+  <data name="PublicAppsAb" xml:space="preserve">
+    <value>Offentlige apps</value>
+  </data>
+  <data name="PublicAppsAbHelp" xml:space="preserve">
+    <value>Tildel og styr apps fra den offentlige butik.</value>
+  </data>
+  <data name="PullServiceInstallersPPN" xml:space="preserve">
+    <value>Pull-tjeneste installationsprogrammer</value>
+  </data>
+  <data name="PullServiceInstallersPPNHelp" xml:space="preserve">
+    <value>Vis og download pull-tjeneste installationsprogrammer.</value>
+  </data>
+  <data name="PurchasedApplicationsAb" xml:space="preserve">
+    <value>Købte apps</value>
+  </data>
+  <data name="PurchasedApplicationsAbHelp" xml:space="preserve">
+    <value>Importer bulk indkøbte app licenser og styr licens distribution.</value>
+  </data>
+  <data name="QnxSet" xml:space="preserve">
+    <value>QNX</value>
+  </data>
+  <data name="QnxSetHelp" xml:space="preserve">
+    <value>Styrer adgang til siden med agentindstillinger under QNX.</value>
+  </data>
+  <data name="QRCodeHelp" xml:space="preserve">
+    <value>Konfiguration af QR-kodetilmelding</value>
+  </data>
+  <data name="QueryDD" xml:space="preserve">
+    <value>Forespørgsel</value>
+  </data>
+  <data name="QueryDDHelp" xml:space="preserve">
+    <value>Afsend en forespørgsel til enheden om at opdatere enhedens status oplysninger.</value>
+  </data>
+  <data name="ReadDeviceManufacturerDetails" xml:space="preserve">
+    <value>Læs oplysninger om enhedsproducent</value>
+  </data>
+  <data name="ReadDeviceManufacturerDetailsHelp" xml:space="preserve">
+    <value>Læs oplysninger om enhedsproducent via API</value>
+  </data>
+  <data name="ReadDeviceModelDetails" xml:space="preserve">
+    <value>Læs oplysninger om enhedsmodel</value>
+  </data>
+  <data name="ReadDeviceModelDetailsHelp" xml:space="preserve">
+    <value>Læs oplysninger om enhedsmodel via API</value>
+  </data>
+  <data name="RefreshEsimHelp" xml:space="preserve">
+    <value>Giver tilladelse til at opdatere eSIM-mobilabonnement</value>
+  </data>
+  <data name="RegistryManagerHelp" xml:space="preserve">
+    <value>Giver tilladelse til fjernstyret adgang til registreringsdatabasen på WinMo enheder.
+</value>
+  </data>
+  <data name="RelayServerBatching" xml:space="preserve">
+    <value>Batchkørsel på relæserver</value>
+  </data>
+  <data name="RelayServerBatchingHelp" xml:space="preserve">
+    <value>Styrer adgangen til batchkørsel på relæserveren og batchstatus</value>
+  </data>
+  <data name="RelayServerRemoteFileList" xml:space="preserve">
+    <value>Relæserverens fjernfilliste</value>
+  </data>
+  <data name="RelayServerRemoteFileListHelp" xml:space="preserve">
+    <value>Styrer adgangen til relæserverens fjernfilliste</value>
+  </data>
+  <data name="RelayServersPPN" xml:space="preserve">
+    <value>Relæservere</value>
+  </data>
+  <data name="RelayServersPPNHelp" xml:space="preserve">
+    <value>Vis og styr klargøring af relæservere.</value>
+  </data>
+  <data name="RemoteControlDD" xml:space="preserve">
+    <value>Fjernstyring</value>
+  </data>
+  <data name="RemoteControlDDHelp" xml:space="preserve">
+    <value>Fjernstyring af enheden</value>
+  </data>
+  <data name="RemoteManagementSettingsEditHelp" xml:space="preserve">
+    <value>Styrer redigeringsadgang til siden Fjernstyring under Enterprise Integration. Gå til Konfiguration\Systemindstillinger\Enterprise Integration\Fjernstyring</value>
+  </data>
+  <data name="RemoteSet" xml:space="preserve">
+    <value>Ekstern</value>
+  </data>
+  <data name="RemoteSetHelp" xml:space="preserve">
+    <value>Giver tilladelse til at redigere indstillinger for fjernlagring.</value>
+  </data>
+  <data name="RemoveDeviceEnrollmentProgram" xml:space="preserve">
+    <value>Tilmeldingsapplikation - fjern profilen</value>
+  </data>
+  <data name="RemoveDeviceEnrollmentProgramHelp" xml:space="preserve">
+    <value>Styrer adgang til Fjern DEP-profiler fra enheder. Gå til siden for tilmeldingsstatus</value>
+  </data>
+  <data name="RenameDeviceHelp" xml:space="preserve">
+    <value>Kommando til at omdøbe en enhed. </value>
+  </data>
+  <data name="RenewCertificateHelp" xml:space="preserve">
+    <value>Giver tilladelse til at forny et certifikat 
+</value>
+  </data>
+  <data name="RepairHub" xml:space="preserve">
+    <value>Reparer Hub</value>
+  </data>
+  <data name="RepairHubHelp" xml:space="preserve">
+    <value>Giver tilladelse til at reparere Hub på enheden.</value>
+  </data>
+  <data name="ReportIOS7Compatability" xml:space="preserve">
+    <value>iOS7 kompatibilitet</value>
+  </data>
+  <data name="ReportIOS7CompatabilityHelp" xml:space="preserve">
+    <value>Giv adgang til iOS7 kompatibilitet rapport</value>
+  </data>
+  <data name="ReportsAlertsSys" xml:space="preserve">
+    <value>Rapporter og advarsler</value>
+  </data>
+  <data name="ReportsAlertsSysHelp" xml:space="preserve">
+    <value>Styrer adgang til Rapporter og Advarsler</value>
+  </data>
+  <data name="ReportsIns" xml:space="preserve">
+    <value>Rapporter</value>
+  </data>
+  <data name="ReportsInsHelp" xml:space="preserve">
+    <value>Styrer adgang til Rapporter siden under Installation.</value>
+  </data>
+  <data name="RepositoriesCM" xml:space="preserve">
+    <value>Lagre</value>
+  </data>
+  <data name="RepositoriesCMHelp" xml:space="preserve">
+    <value>Tilføj, rediger og slet indholdslagre.</value>
+  </data>
+  <data name="ReputationAnalysisAb" xml:space="preserve">
+    <value>Sikkerhedsanalyse</value>
+  </data>
+  <data name="ReputationAnalysisAbHelp" xml:space="preserve">
+    <value>Kør app-sikkerhedsanalysen og vis resultaterne.</value>
+  </data>
+  <data name="RequestCheckinDD" xml:space="preserve">
+    <value>Send anmodning om tjek ind</value>
+  </data>
+  <data name="RequestCheckinDDHelp" xml:space="preserve">
+    <value>Send en meddelelse til enheden hvor der anmodes om tjek ind. Tilgængelig i Enhedsdetaljer.</value>
+  </data>
+  <data name="ResBlueprints" xml:space="preserve">
+    <value>Blueprints</value>
+  </data>
+  <data name="ResBlueprintsHelp" xml:space="preserve">
+    <value>Opret en enkel placering for at tilføje og associere apps, ressourcer og begrænsningspolitikker til brugere og enheder.</value>
+  </data>
+  <data name="ResCompliancePolicy" xml:space="preserve">
+    <value>Compliance-politik</value>
+  </data>
+  <data name="ResCompliancePolicyHelp" xml:space="preserve">
+    <value>Få adgang til compliance-politik oplysninger via REST APIs</value>
+  </data>
+  <data name="ResConsoleNotifications" xml:space="preserve">
+    <value>Console-notifikationer</value>
+  </data>
+  <data name="ResConsoleNotificationsHelp" xml:space="preserve">
+    <value>Vis og interager med administrative notifikationer på tværs af Console</value>
+  </data>
+  <data name="ResCustomAttributes" xml:space="preserve">
+    <value>Brugerdefinerede attributter</value>
+  </data>
+  <data name="ResCustomAttributesHelp" xml:space="preserve">
+    <value>REST API giver adgang til brugerdefinerede atttributter</value>
+  </data>
+  <data name="ResCustomReports" xml:space="preserve">
+    <value>Brugerdefinerede rapporter</value>
+  </data>
+  <data name="ResCustomReportsHelp" xml:space="preserve">
+    <value>Adgang til siden med brugerdefinerede rapporter.</value>
+  </data>
+  <data name="ResDirectMEMAdvLog" xml:space="preserve">
+    <value>Direkte MEM avanceret logføring</value>
+  </data>
+  <data name="ResDirectMEMAdvLogHelp" xml:space="preserve">
+    <value>Hvis denne funktion tilgås via MEM-dashboard, giver den dig tilladelse til at vise avanceret MEG-kølogføring via Console på en per enhed-basis.</value>
+  </data>
+  <data name="ResEmailNotification" xml:space="preserve">
+    <value>Indstillinger for Email Notification Service</value>
+  </data>
+  <data name="ResEmailNotificationHelp" xml:space="preserve">
+    <value>Styring af ENS indstillinger.</value>
+  </data>
+  <data name="ResGlobalServiceExchange" xml:space="preserve">
+    <value>AppleCare</value>
+  </data>
+  <data name="ResGlobalServiceExchangeHelp" xml:space="preserve">
+    <value>Styrer adgang til AppleCare siden under Apple.</value>
+  </data>
+  <data name="ResJasperIntegration" xml:space="preserve">
+    <value>Jasper integration</value>
+  </data>
+  <data name="ResJasperIntegrationHelp" xml:space="preserve">
+    <value>Styr indstillinger for Jasper integration</value>
+  </data>
+  <data name="ResLifecycleNotifications" xml:space="preserve">
+    <value>Lifecycle notifikationer</value>
+  </data>
+  <data name="ResLifecycleNotificationsHelp" xml:space="preserve">
+    <value>Adgang til Lifecycle notifikationer under Enhedsdetaljer.</value>
+  </data>
+  <data name="ResMutualTlsAuthentication" xml:space="preserve">
+    <value>Gensidig TLS godkendelse</value>
+  </data>
+  <data name="ResMutualTlsAuthenticationHelp" xml:space="preserve">
+    <value>Konfigurer gensidige indstillinger for TLS-godkendelse mellem Workspace ONE Intelligent Hub og Workspace ONE UEM-serveren</value>
+  </data>
+  <data name="ResNotifications" xml:space="preserve">
+    <value>Notifikationer</value>
+  </data>
+  <data name="ResNotificationsHelp" xml:space="preserve">
+    <value>Vis og interager med administrative notifikationer på tværs af Console</value>
+  </data>
+  <data name="ResOverrideJobLogLevel" xml:space="preserve">
+    <value>Tilsidesættelse på joblogføringsniveau</value>
+  </data>
+  <data name="ResOverrideJobLogLevelHelp" xml:space="preserve">
+    <value>Adgang til tilsidesæt job logføringsniveau indstillinger</value>
+  </data>
+  <data name="ResProductProvisioning" xml:space="preserve">
+    <value>Produktklargøring</value>
+  </data>
+  <data name="ResProductProvisioningHelp" xml:space="preserve">
+    <value>Styr produktklargøringsindstillinger på gruppeniveau</value>
+  </data>
+  <data name="ResProducts" xml:space="preserve">
+    <value>Produkter</value>
+  </data>
+  <data name="ResProductSets" xml:space="preserve">
+    <value>Produktsæt</value>
+  </data>
+  <data name="ResProductSetsHelp" xml:space="preserve">
+    <value>Mulighed for at vise og styre et eller flere produkt sæt.</value>
+  </data>
+  <data name="ResProductsHelp" xml:space="preserve">
+    <value>Giver adgang til produktsamlingen via Consoles REST-API'er.</value>
+  </data>
+  <data name="RestAPIAirWatchEducationWrite" xml:space="preserve">
+    <value>REST API Education-indstillinger, skriv</value>
+  </data>
+  <data name="RestAPIAirWatchEducationWriteHelp" xml:space="preserve">
+    <value>REST API for at gemme og redigere Education indstillinger</value>
+  </data>
+  <data name="RestApiCartDelete" xml:space="preserve">
+    <value>REST API Cart, slet</value>
+  </data>
+  <data name="RestApiCartDeleteHelp" xml:space="preserve">
+    <value>REST API for at slette vogndata</value>
+  </data>
+  <data name="RestApiCartWrite" xml:space="preserve">
+    <value>REST API Cart, skriv</value>
+  </data>
+  <data name="RestApiCartWriteHelp" xml:space="preserve">
+    <value>REST API for at gemme og redigere vogndata</value>
+  </data>
+  <data name="RestApiClassAssignmentSave" xml:space="preserve">
+    <value>REST API Class Assignments, gem</value>
+  </data>
+  <data name="RestApiClassAssignmentSaveHelp" xml:space="preserve">
+    <value>REST API opkald for at gemme klassetildelinger</value>
+  </data>
+  <data name="RestAPIClassDelete" xml:space="preserve">
+    <value>REST API Class, slet</value>
+  </data>
+  <data name="RestAPIClassDeleteHelp" xml:space="preserve">
+    <value>REST API for at slette klassedata</value>
+  </data>
+  <data name="RestAPIClassLoad" xml:space="preserve">
+    <value>REST API Class, læs</value>
+  </data>
+  <data name="RestAPIClassLoadHelp" xml:space="preserve">
+    <value>REST API for at vise klassedata</value>
+  </data>
+  <data name="RestAPIClassWrite" xml:space="preserve">
+    <value>REST API Class, skriv</value>
+  </data>
+  <data name="RestAPIClassWriteHelp" xml:space="preserve">
+    <value>REST API for gemme og redigere klassedata</value>
+  </data>
+  <data name="RestApiEduAppsForDeviceRead" xml:space="preserve">
+    <value>REST API apps for Læs enhed</value>
+  </data>
+  <data name="RestApiEduAppsForDeviceReadhelp" xml:space="preserve">
+    <value>REST API for at modtage en liste over apps tilgængelige for enhed</value>
+  </data>
+  <data name="RestAPILoadEducation" xml:space="preserve">
+    <value>REST API Education-indstillinger, læs</value>
+  </data>
+  <data name="RestAPILoadEducationHelp" xml:space="preserve">
+    <value>REST API for at vise Education indstillinger</value>
+  </data>
+  <data name="RestApiPersonEnrollmentUserMapWrite" xml:space="preserve">
+    <value>REST API Apple School Manager-kort</value>
+  </data>
+  <data name="RestApiPersonEnrollmentUserMapWriteHelp" xml:space="preserve">
+    <value>REST API for at kortlægge en tilmeldingsbruger til et medlem fra Apple School Manager</value>
+  </data>
+  <data name="RestApiRosterSyncRead" xml:space="preserve">
+    <value>REST API Apple School Manager-synkronisering, læse</value>
+  </data>
+  <data name="RestApiRosterSyncReadHelp" xml:space="preserve">
+    <value>REST API for at tjekke Apple School Manager synkroniseringsstatus</value>
+  </data>
+  <data name="RestApiRosterSyncWrite" xml:space="preserve">
+    <value>REST API Apple School Manager, skrive</value>
+  </data>
+  <data name="RestApiRosterSyncWriteHelp" xml:space="preserve">
+    <value>REST API for at initiere Apple School Manager-synkronisering</value>
+  </data>
+  <data name="RestApiUpdatesPolicyDelete" xml:space="preserve">
+    <value>Opdaterer politik for sletteadgang</value>
+  </data>
+  <data name="RestApiUpdatesPolicyDeleteHelp" xml:space="preserve">
+    <value>Aktiverer adgang til alle SLET API'er i opdateringspolitiksamling</value>
+  </data>
+  <data name="RestApiUpdatesPolicyExecute" xml:space="preserve">
+    <value>Opdaterer politik for udførelsesadgang</value>
+  </data>
+  <data name="RestApiUpdatesPolicyExecuteHelp" xml:space="preserve">
+    <value>Aktiverer adgang til alle UDFØR API'er i opdateringspolitiksamling</value>
+  </data>
+  <data name="RestApiUpdatesPolicyRead" xml:space="preserve">
+    <value>Opdaterer politik for skrivebeskyttet adgang</value>
+  </data>
+  <data name="RestApiUpdatesPolicyReadHelp" xml:space="preserve">
+    <value>Aktiverer adgang til alle SKRIVEBESKYTTET API'er i opdateringspolitiksamling</value>
+  </data>
+  <data name="RestApiUpdatesPolicyWrite" xml:space="preserve">
+    <value>Opdaterer politik for skriveadgang</value>
+  </data>
+  <data name="RestApiUpdatesPolicyWriteHelp" xml:space="preserve">
+    <value>Aktiverer adgang til alle SKRIV API'er i opdateringspolitiksamling</value>
+  </data>
+  <data name="RestEnterpiseIntegration" xml:space="preserve">
+    <value>Rest Enterprise Integration</value>
+  </data>
+  <data name="RestEnterpiseIntegrationHelp" xml:space="preserve">
+    <value>REST APIs for Enterprise Integration</value>
+  </data>
+  <data name="RestrictedActionsSec" xml:space="preserve">
+    <value>Begrænsede handlinger</value>
+  </data>
+  <data name="RestrictedActionsSecHelp" xml:space="preserve">
+    <value>Giver tilladelse ttil visning af Begrænsede handlinger skærmen.</value>
+  </data>
+  <data name="RestrictionsDD" xml:space="preserve">
+    <value>Begrænsninger</value>
+  </data>
+  <data name="RestrictionsDDHelp" xml:space="preserve">
+    <value>Afsend en forespørgsel om aktuelle begrænsninger der er oprettet på en enhed.</value>
+  </data>
+  <data name="ResVideo" xml:space="preserve">
+    <value>Video</value>
+  </data>
+  <data name="ResVideoHelp" xml:space="preserve">
+    <value>Styr indstillinger for video appen</value>
+  </data>
+  <data name="ResWebApps" xml:space="preserve">
+    <value>Web apps</value>
+  </data>
+  <data name="ResWebAppsHelp" xml:space="preserve">
+    <value>Tildel og styr web apps.</value>
+  </data>
+  <data name="RetentionAd" xml:space="preserve">
+    <value>Opbevaring</value>
+  </data>
+  <data name="RetentionAdHelp" xml:space="preserve">
+    <value>Giver tilladelse til at fjerne advarsler.</value>
+  </data>
+  <data name="RevokeCertificateHelp" xml:space="preserve">
+    <value>Giver tilladelse til at tilbagekalde et certifikat. 
+</value>
+  </data>
+  <data name="RotateRecoveryKeyHelp" xml:space="preserve">
+    <value>Giver administratorer adgang til at on-demand-rotere en krypteret macOS-enheds personlige genoprettelsesnøgle.</value>
+  </data>
+  <data name="RoutingPoliciesHub" xml:space="preserve">
+    <value>Routing politikker</value>
+  </data>
+  <data name="RoutingPoliciesHubHelp" xml:space="preserve">
+    <value>Vis og styr varslings routing politikker.</value>
+  </data>
+  <data name="SaveListViewFilters" xml:space="preserve">
+    <value>Gem View Filter-liste</value>
+  </data>
+  <data name="SaveListViewFiltersHelp" xml:space="preserve">
+    <value>Giver administratoren mulighed for at gemme filtre på listevisningssider</value>
+  </data>
+  <data name="ScepApple" xml:space="preserve">
+    <value>SCEP</value>
+  </data>
+  <data name="ScepAppleHelp" xml:space="preserve">
+    <value>Styrer adgang til SCEP siden under iOS.</value>
+  </data>
+  <data name="ScepCertificateHelp" xml:space="preserve">
+    <value>Styrer adgang til certifikatværktøjet SCEP. </value>
+  </data>
+  <data name="SdkAnalyticsAb" xml:space="preserve">
+    <value>SDK-analyse</value>
+  </data>
+  <data name="SdkAnalyticsAbHelp" xml:space="preserve">
+    <value>Styrer adgang til SDK analyser siden for app management.</value>
+  </data>
+  <data name="SdkIos" xml:space="preserve">
+    <value>SDK</value>
+  </data>
+  <data name="SdkIosHelp" xml:space="preserve">
+    <value>Indstillinger til konfiguration af SDK app sikkerhed.</value>
+  </data>
+  <data name="SearchDevicesDM" xml:space="preserve">
+    <value>Søg enheder</value>
+  </data>
+  <data name="SearchDevicesDMHelp" xml:space="preserve">
+    <value>Adgang til Søg enheder menuen i enhedsstyring.</value>
+  </data>
+  <data name="SearchNotesHelp" xml:space="preserve">
+    <value>Giver tilladelse til at søge i noter og mærker</value>
+  </data>
+  <data name="SearchUserAccounts" xml:space="preserve">
+    <value>Søg</value>
+  </data>
+  <data name="SearchUserAccountsHelp" xml:space="preserve">
+    <value>Adgang til brugerindstillingen til hurtig-søgningslinjen.</value>
+  </data>
+  <data name="SecureChannelCertificateHelp" xml:space="preserve">
+    <value>Upload certifikatet som sikrer kanalen.
+</value>
+  </data>
+  <data name="SecurityInfoDD" xml:space="preserve">
+    <value>Sikkerhedsoplysninger</value>
+  </data>
+  <data name="SecurityInfoDDHelp" xml:space="preserve">
+    <value>Adgang til oplysninger om sikkerhedsovervågningen af en enhed.</value>
+  </data>
+  <data name="SecuritySec" xml:space="preserve">
+    <value>Sikkerhed</value>
+  </data>
+  <data name="SecuritySecHelp" xml:space="preserve">
+    <value>Giver tilladelse til at vise sikkerhedsskærmen.</value>
+  </data>
+  <data name="ServiceUrlsHelp" xml:space="preserve">
+    <value>Giver tilladelse til redigering af tjeneste URL-adresser som for eksempel slutpunktet for udbyderen af identitetsstyring.
+</value>
+  </data>
+  <data name="SettingsAndPoliciesSet" xml:space="preserve">
+    <value>Indstillinger og politikker</value>
+  </data>
+  <data name="SettingsAndPoliciesSetHelp" xml:space="preserve">
+    <value>Styrer adgang til app indstillinger og politikker siderne.</value>
+  </data>
+  <data name="SettingsAttributeHelp" xml:space="preserve">
+    <value>Styrer adgang til siden Attribut under Generelt. Gå til Konfiguration\Systemindstillinger\Enhed\Generelt</value>
+  </data>
+  <data name="SettingsAuditAd" xml:space="preserve">
+    <value>Overvågning af indstillinger</value>
+  </data>
+  <data name="SettingsAuditAdHelp" xml:space="preserve">
+    <value>Aktiverer/deaktiverer overvågning af indstillinger igennen systemkoder.</value>
+  </data>
+  <data name="SettingsDeviceAdvanced" xml:space="preserve">
+    <value>Indstillinger - enhed - avanceret</value>
+  </data>
+  <data name="SettingsDeviceAdvancedHelp" xml:space="preserve">
+    <value>Styrer adgangen til siden Avanceret under Enheder og brugere. Gå til Konfiguration\Systemindstillinger\Enhed og brugere\Avanceret</value>
+  </data>
+  <data name="SettingsDeviceEnrollmentProgramHelp" xml:space="preserve">
+    <value>Styrer adgang til programmet Enhedstilmelding. Gå til Konfiguration\Systemindstillinger\Enhed\Apple</value>
+  </data>
+  <data name="SettingsDeviceGeneralAdvanced" xml:space="preserve">
+    <value>Indstillinger - Enhed - Avanceret</value>
+  </data>
+  <data name="SettingsDeviceGeneralAdvancedHelp" xml:space="preserve">
+    <value>Styrer adgangen til siden Avanceret under Generelt. Gå til Indstillinger\EnhedBrugere\Generelt\Avanceret</value>
+  </data>
+  <data name="SettingsEm" xml:space="preserve">
+    <value>Indstillinger</value>
+  </data>
+  <data name="SettingsEmHelp" xml:space="preserve">
+    <value>Styrer adgang til e-mailindstillinger.</value>
+  </data>
+  <data name="SettingsEnrollmentUserPasswordPolicyEditHelp" xml:space="preserve">
+    <value>Styrer redigeringsadgang til siden adgangskodeindstillinger under Enheder og brugere. Gå til Konfiguration\Enheder og brugerindstillinger\Generelt\Sikkerhed\Adgangskoder</value>
+  </data>
+  <data name="SettingsEnrollmentUserPasswordPolicyViewHelp" xml:space="preserve">
+    <value>Styrer visningsadgang til siden adgangskodeindstillinger under Enheder og brugere. Gå til Konfiguration\Enheder og brugerindstillinger\Generelt\Sikkerhed\Adgangskoder</value>
+  </data>
+  <data name="SettingsHeaderBasedAuthenticationHelp" xml:space="preserve">
+    <value>Styrer adgang til siden Ekstern godkendelse under Enterprise Integration. Gå til Indstillinger\System\Enterprise Integration</value>
+  </data>
+  <data name="SettingsLinux" xml:space="preserve">
+    <value>Indstillinger Linux</value>
+  </data>
+  <data name="SettingsLinuxAgentApplication" xml:space="preserve">
+    <value>Intelligent Hub-indstillinger for Linux-app</value>
+  </data>
+  <data name="SettingsLinuxAgentApplicationHelp" xml:space="preserve">
+    <value>Styrer adgang til Intelligent Hub-appens indstillingsside i Linux</value>
+  </data>
+  <data name="SettingsLinuxAgentSettings" xml:space="preserve">
+    <value>Linux-indstillinger for Intelligent Hub</value>
+  </data>
+  <data name="SettingsLinuxAgentSettingsHelp" xml:space="preserve">
+    <value>Styrer adgang til siden Intelligent Hub-indstillinger under Linux. Gå til indstillinger\Enheder og brugere\Linux</value>
+  </data>
+  <data name="SettingsLinuxHelp" xml:space="preserve">
+    <value>Styrer adgang til siden Intelligent Hub-indstillinger under Linux. Gå til indstillinger\Enheder og brugere\Linux</value>
+  </data>
+  <data name="SettingsOnlyValidAtPartnerOrCustomer" xml:space="preserve">
+    <value>Saas-notifikationer kan ikke vises på det aktuelle organisationsgruppeniveau. Vælg en OG på kunde- eller partnerniveau for at få vist SaaS-notifikationer.</value>
+  </data>
+  <data name="SettingsOverridesAd" xml:space="preserve">
+    <value>Tilsidesættelse af indstillinger</value>
+  </data>
+  <data name="SettingsOverridesAdHelp" xml:space="preserve">
+    <value>Se og rediger hændelseslog tilsidesættelser.</value>
+  </data>
+  <data name="SettingsQnxAgentSettingsHelp" xml:space="preserve">
+    <value>Styrer adgang til Agent indstillinger side under Qnx. Gå til Konfiguration\SystemIndstillinger\Enhed\Qnx</value>
+  </data>
+  <data name="SharedDevicesSet" xml:space="preserve">
+    <value>Delte enheder</value>
+  </data>
+  <data name="SharedDevicesSetHelp" xml:space="preserve">
+    <value>Styrer adgang til Delte enheder siden</value>
+  </data>
+  <data name="SmartGroupsAb" xml:space="preserve">
+    <value>Smart-grupper</value>
+  </data>
+  <data name="SmartGroupsAbHelp" xml:space="preserve">
+    <value>Rediger applikationens smart-gruppe tildelinger.</value>
+  </data>
+  <data name="SmartGroupsGr" xml:space="preserve">
+    <value>Smart-grupper</value>
+  </data>
+  <data name="SmartGroupsGrHelp" xml:space="preserve">
+    <value>Vis, rediger og slet smart-grupper.</value>
+  </data>
+  <data name="SoftwareInventoryWM" xml:space="preserve">
+    <value>Softwareoversigt</value>
+  </data>
+  <data name="SoftwareInventoryWMHelp" xml:space="preserve">
+    <value>Adgang til WinMo softwareoversigt siden.</value>
+  </data>
+  <data name="SslPinningSec" xml:space="preserve">
+    <value>SSL fastgørelse</value>
+  </data>
+  <data name="SslPinningSecHelp" xml:space="preserve">
+    <value>Giver tilladelse til visning af SSL fastgørelseskærmen.</value>
+  </data>
+  <data name="StagingPPN" xml:space="preserve">
+    <value>Staging</value>
+  </data>
+  <data name="StagingPPNHelp" xml:space="preserve">
+    <value>Styr staging definitioner til klargørings politikkerne.</value>
+  </data>
+  <data name="StartAwcm" xml:space="preserve">
+    <value>Start AWCM</value>
+  </data>
+  <data name="StatusHistoryDD" xml:space="preserve">
+    <value>Status historik</value>
+  </data>
+  <data name="StatusHistoryDDHelp" xml:space="preserve">
+    <value>Vis tilmelding og compliance status historikken af en enhed.</value>
+  </data>
+  <data name="StopAwcm" xml:space="preserve">
+    <value>Stop AWCM</value>
+  </data>
+  <data name="SummaryInfoPM" xml:space="preserve">
+    <value>Oplysninger om oversigten</value>
+  </data>
+  <data name="SummaryInfoPMHelp" xml:space="preserve">
+    <value>Styrer adgang til Printer oversigtsoplysninger siden</value>
+  </data>
+  <data name="SuspendBitlockerEncryptionHelp" xml:space="preserve">
+    <value>Til konfiguration af midlertidigt stop af bitlocker-kryptering på siden Enhedsoplysninger</value>
+  </data>
+  <data name="SymbianDev" xml:space="preserve">
+    <value>Symbian</value>
+  </data>
+  <data name="SymbianDevHelp" xml:space="preserve">
+    <value>Styrer adgang til Symbian-side under enhed.</value>
+  </data>
+  <data name="SyncDD" xml:space="preserve">
+    <value>Indstillinger for Synkroniser enhed</value>
+  </data>
+  <data name="SyncDDHelp" xml:space="preserve">
+    <value>Synkroniser enhedsindstillinger, såsom profiler og apps, via fjernstyring.</value>
+  </data>
+  <data name="SyncDeviceEnrollmentProgram" xml:space="preserve">
+    <value>Tilmeldingsprogram - Synkorniser enheder</value>
+  </data>
+  <data name="SyncDeviceEnrollmentProgramHelp" xml:space="preserve">
+    <value>Styrer adgang til Synkroniser DEP-enheder. Gå til siden for tilmeldingsstatus</value>
+  </data>
+  <data name="SyncDeviceSensors" xml:space="preserve">
+    <value>Synkroniser enhedens sensorer</value>
+  </data>
+  <data name="SyncDeviceSensorsHelp" xml:space="preserve">
+    <value>Styrer adgang til at anmode om en sensordataopdatering fra enheden</value>
+  </data>
+  <data name="SystemCodeAuditAd" xml:space="preserve">
+    <value>Overvågningen af systemkoden</value>
+  </data>
+  <data name="SystemCodeAuditAdHelp" xml:space="preserve">
+    <value>Styrer adgang til Systemkode overvågning.</value>
+  </data>
+  <data name="SystemHealthSettingsAd" xml:space="preserve">
+    <value>Systemtilstandsindstillinger</value>
+  </data>
+  <data name="SystemHealthSettingsAdHelp" xml:space="preserve">
+    <value>Se og rediger systemtilstandsindstillinger.</value>
+  </data>
+  <data name="SystemHealthSettingsEditHelp" xml:space="preserve">
+    <value>Giver tilladelse til at redigere Systemtilstandsindstillinger. Gå til: Menu\Konfiguration\Systemindstillinger\Admin\Diagnosticering\Systemtilstand</value>
+  </data>
+  <data name="SystemHealthSettingsViewHelp" xml:space="preserve">
+    <value>Giver tilladelse til at vise Systemtilstandsindstillinger. Gå til: Menu\Konfiguration\Systemindstillinger\Admin\Diagnosticering\Systemtilstand</value>
+  </data>
+  <data name="SystemInternalHub" xml:space="preserve">
+    <value>Internt system</value>
+  </data>
+  <data name="SystemInternalHubHelp" xml:space="preserve">
+    <value>Generer interne faktureringsrapporter.</value>
+  </data>
+  <data name="TagManagementViewHelp" xml:space="preserve">
+    <value>Giver tilladelse til at vise mærke management</value>
+  </data>
+  <data name="TagsApi" xml:space="preserve">
+    <value>Mærker</value>
+  </data>
+  <data name="TagsApiHelp" xml:space="preserve">
+    <value>Adgang til alle mærke APIs.</value>
+  </data>
+  <data name="TagsDev" xml:space="preserve">
+    <value>Mærker</value>
+  </data>
+  <data name="TagsDevHelp" xml:space="preserve">
+    <value>Giver tilladelse til at få adgang til mærke management</value>
+  </data>
+  <data name="TargetedLogDeviceEditHelp" xml:space="preserve">
+    <value>Giver tilladelse til at redigere målrettet logføring af enhed. Gå til Dashboards\Enhedsdashboard</value>
+  </data>
+  <data name="TargetedLogDeviceViewHelp" xml:space="preserve">
+    <value>Giver tilladelse til at vise målrettet logføring af enhed. Gå til Dashboards\Enhedsdashboard</value>
+  </data>
+  <data name="TelecomBasicSettingsViewHelp" xml:space="preserve">
+    <value>Styrer adgang til Telekom Basal konfigurationsguide</value>
+  </data>
+  <data name="TelecomDD" xml:space="preserve">
+    <value>Telekom</value>
+  </data>
+  <data name="TelecomDDHelp" xml:space="preserve">
+    <value>Adgang til enhedens telekom data under Enhedsdetaljer.</value>
+  </data>
+  <data name="TelecomHub" xml:space="preserve">
+    <value>Telekom</value>
+  </data>
+  <data name="TelecomHubHelp" xml:space="preserve">
+    <value>Generer rapporter for telekom management.</value>
+  </data>
+  <data name="TelecomManagementTel" xml:space="preserve">
+    <value>Telekom management</value>
+  </data>
+  <data name="TelecomManagementTelHelp" xml:space="preserve">
+    <value>Styrer adgang til Telekom modulet. Viser tilgængelige menuelementer under Telekom.</value>
+  </data>
+  <data name="TelecomSettingsSys" xml:space="preserve">
+    <value>Telekom indstillinger</value>
+  </data>
+  <data name="TelecomSettingsSysHelp" xml:space="preserve">
+    <value>Styrer adgang til siden telekom indstillinger</value>
+  </data>
+  <data name="TenantStorageGr" xml:space="preserve">
+    <value>Tenantlager</value>
+  </data>
+  <data name="TenantStorageGrHelp" xml:space="preserve">
+    <value>Til intern brug: styrer adgangen til siden Tenantlager.</value>
+  </data>
+  <data name="TenantStorageHelp" xml:space="preserve">
+    <value>Til intern brug og kun synlig for systemadministratorrollen. Styrer adgang til siden Indstillinger/Admin/Lager for tenantlager.</value>
+  </data>
+  <data name="TermsOfUseAdmin" xml:space="preserve">
+    <value>Vilkår for anvendelse</value>
+  </data>
+  <data name="TermsOfUseAdminHelp" xml:space="preserve">
+    <value>Vis admin konto Vilkår for anvendelse.</value>
+  </data>
+  <data name="TermsOfUseSys" xml:space="preserve">
+    <value>Vilkår for anvendelse</value>
+  </data>
+  <data name="TermsOfUseSysHelp" xml:space="preserve">
+    <value>Styrer adgang til Vilkår for anvendelse siden i system indstillinger og enhedstilmelding.</value>
+  </data>
+  <data name="TestModeEM" xml:space="preserve">
+    <value>Testtilstand</value>
+  </data>
+  <data name="TestModeEMHelp" xml:space="preserve">
+    <value>Rediger testtilstand for e-mailstyring af compliance-politikker.</value>
+  </data>
+  <data name="TimeScheduleDM" xml:space="preserve">
+    <value>Tidsplan</value>
+  </data>
+  <data name="TimeScheduleDMHelp" xml:space="preserve">
+    <value>Vis og rediger tider id tidsplaner til profiler.</value>
+  </data>
+  <data name="TimeScheduleHelp" xml:space="preserve">
+    <value>Giver tilladelse til indstillinger for Vis/rediger tidsplan 
+</value>
+  </data>
+  <data name="TroubleshootingSys" xml:space="preserve">
+    <value>Fejlfinding</value>
+  </data>
+  <data name="TroubleshootingSysHelp" xml:space="preserve">
+    <value>Styrer adgang til logfiler og fejlfindings sider.</value>
+  </data>
+  <data name="UemNotificationsInfo" xml:space="preserve">
+    <value>Omfatter meddelelser for Workspace ONE UEM og Workspace ONE Assist.</value>
+  </data>
+  <data name="UnApproveUpdate" xml:space="preserve">
+    <value>Fjern godkendelse af opdatering</value>
+  </data>
+  <data name="UnApproveUpdateHelp" xml:space="preserve">
+    <value>Giver tilladelse til at fjerne godkendelse af opdateringskommando til enheder.</value>
+  </data>
+  <data name="UnApproveUpdates" xml:space="preserve">
+    <value>Fjern godkendelse af opdatering</value>
+  </data>
+  <data name="UnManagedWipeProtectionHelp" xml:space="preserve">
+    <value>Indstillinger for sletningsbeskyttelse af ikke-styret enhed</value>
+  </data>
+  <data name="UpdateEditAssignment" xml:space="preserve">
+    <value>Opdater Rediger tildeling</value>
+  </data>
+  <data name="UpdateEditAssignmentHelp" xml:space="preserve">
+    <value>Giver tilladelse til redigere tildeling af opdatering til smart-grupper</value>
+  </data>
+  <data name="UploadCctk" xml:space="preserve">
+    <value>Upload Cctk</value>
+  </data>
+  <data name="UploadCctkHelp" xml:space="preserve">
+    <value>Lader en administrator uploade en CCTK-pakkefil til udrulningskonfiguration for at konfigurere BIOS.</value>
+  </data>
+  <data name="UploadUnattendXml" xml:space="preserve">
+    <value>Upload Uovervåget Xml</value>
+  </data>
+  <data name="UploadUnattendXmlHelp" xml:space="preserve">
+    <value>Lader en administrator uploade en Unattend XML-fil til udrulningskonfiguration.</value>
+  </data>
+  <data name="UsageTel" xml:space="preserve">
+    <value>Forbrug</value>
+  </data>
+  <data name="UsageTelHelp" xml:space="preserve">
+    <value>Se telekom forbrugsdetaljer og dashboard.</value>
+  </data>
+  <data name="UserCategoriesDU" xml:space="preserve">
+    <value>Brugerkategorier</value>
+  </data>
+  <data name="UserCategoriesDUHelp" xml:space="preserve">
+    <value>Styrer adgang til brugerkategorier i system indstillinger.</value>
+  </data>
+  <data name="UserDetailUserAccounts" xml:space="preserve">
+    <value>Brugeroplysninger</value>
+  </data>
+  <data name="UserDetailUserAccountsHelp" xml:space="preserve">
+    <value>Adgang til Visning af brugeroplysninger siden.</value>
+  </data>
+  <data name="UserInfoDD" xml:space="preserve">
+    <value>Brugeroplysninger</value>
+  </data>
+  <data name="UserInfoDDHelp" xml:space="preserve">
+    <value>Adgang til brugeroplysninger under Enhedsdetaljer.</value>
+  </data>
+  <data name="UserManagementHub" xml:space="preserve">
+    <value>Brugerstyring</value>
+  </data>
+  <data name="UserManagementHubHelp" xml:space="preserve">
+    <value>Generer rappoter for brugermanagement.</value>
+  </data>
+  <data name="UserMigrationHelp" xml:space="preserve">
+    <value>Giver tilladelse til at vise Basis tilmeldings brugere som kan overføres til LDAP brugere. 
+</value>
+  </data>
+  <data name="UserRegistrationDashboard" xml:space="preserve">
+    <value>Brugerregistrering</value>
+  </data>
+  <data name="UserRegistrationDashboardHelp" xml:space="preserve">
+    <value>Adgang til tilmeldingsstatus linket fra Dashboard og Brugerkonti siderne.</value>
+  </data>
+  <data name="UserRegistrationEnrollmentStatus" xml:space="preserve">
+    <value>Brugerregistrering</value>
+  </data>
+  <data name="UserRegistrationEnrollmentStatusHelp" xml:space="preserve">
+    <value>Adgang til brugerregistreringen på tilmeldingsstatus siden.</value>
+  </data>
+  <data name="UserRegistrationHelp" xml:space="preserve">
+    <value>Styrer adgangen til at få vist link til tilmeldingsstatus på dashboard og på siden Brugerkonti. Gå til Menu/Administration/Brugerkonti</value>
+  </data>
+  <data name="UserRoleHelp" xml:space="preserve">
+    <value>Styrer adgang til Roller under Brugerkonti.
+</value>
+  </data>
+  <data name="UsersRESTSystem" xml:space="preserve">
+    <value>Brugere</value>
+  </data>
+  <data name="UsersRESTSystemHelp" xml:space="preserve">
+    <value>REST APIs til tilmeldingens brugerkonti</value>
+  </data>
+  <data name="UserStorageSet" xml:space="preserve">
+    <value>Brugerlager</value>
+  </data>
+  <data name="UserStorageSetHelp" xml:space="preserve">
+    <value>Styr indholdslager indstillinger for slutbrugerne.</value>
+  </data>
+  <data name="UserTrackingHub" xml:space="preserve">
+    <value>Brugersporing</value>
+  </data>
+  <data name="UserTrackingHubHelp" xml:space="preserve">
+    <value>Generer rapporter for bruger sporing.</value>
+  </data>
+  <data name="VideoManagementSet" xml:space="preserve">
+    <value>Video managment</value>
+  </data>
+  <data name="VideoManagementSetHelp" xml:space="preserve">
+    <value>Tilføj videoer til kanalerne</value>
+  </data>
+  <data name="ViewAd" xml:space="preserve">
+    <value>Vis</value>
+  </data>
+  <data name="ViewAdHelp" xml:space="preserve">
+    <value>Giver tilladelse til at se cache indstillinger.</value>
+  </data>
+  <data name="ViewAdminAccount" xml:space="preserve">
+    <value>Vis</value>
+  </data>
+  <data name="ViewAdminAccountHelp" xml:space="preserve">
+    <value>Vis admin konti.</value>
+  </data>
+  <data name="ViewAdminGroup" xml:space="preserve">
+    <value>Vis</value>
+  </data>
+  <data name="ViewAdminGroupHelp" xml:space="preserve">
+    <value>Vis admin gruppen siden.</value>
+  </data>
+  <data name="ViewAdminRoles" xml:space="preserve">
+    <value>Vis</value>
+  </data>
+  <data name="ViewAdminRolesHelp" xml:space="preserve">
+    <value>Vis admin rolle siden.</value>
+  </data>
+  <data name="ViewAn" xml:space="preserve">
+    <value>Vis</value>
+  </data>
+  <data name="ViewAnHelp" xml:space="preserve">
+    <value>Styrer adgang til Android siden under Enhed.</value>
+  </data>
+  <data name="ViewApple" xml:space="preserve">
+    <value>Vis</value>
+  </data>
+  <data name="ViewAppleHelp" xml:space="preserve">
+    <value>Styrer adgang til Apple siden under enhed.</value>
+  </data>
+  <data name="ViewBaselines" xml:space="preserve">
+    <value>Se grundlinjer</value>
+  </data>
+  <data name="ViewBaselinesHelp" xml:space="preserve">
+    <value>Styrer adgangen til at få vist grundlinjer</value>
+  </data>
+  <data name="ViewCM" xml:space="preserve">
+    <value>Vis</value>
+  </data>
+  <data name="ViewCMHelp" xml:space="preserve">
+    <value>Vis siderne for indholdsstyring.</value>
+  </data>
+  <data name="ViewCustomReportSubscriptionHelp" xml:space="preserve">
+    <value>Styrer adgang til at vise abonnementet på brugerdefinerede rapporter. Naviger til Hub\Reports &amp; Analytics\Custom Reports\Subscriptions</value>
+  </data>
+  <data name="ViewDashboardDM" xml:space="preserve">
+    <value>Vis dashboard</value>
+  </data>
+  <data name="ViewDashboardDMHelp" xml:space="preserve">
+    <value>Vis siden med enhedens dashboard under enhedsstyring.</value>
+  </data>
+  <data name="ViewDeviceManagement" xml:space="preserve">
+    <value>Vis</value>
+  </data>
+  <data name="ViewDeviceManagementHelp" xml:space="preserve">
+    <value>Vis enhedsstyringsmodul.</value>
+  </data>
+  <data name="ViewDevicesAb" xml:space="preserve">
+    <value>Vis enheder</value>
+  </data>
+  <data name="ViewDevicesAbHelp" xml:space="preserve">
+    <value>Styrer adgang til at vise enheder knyttet til en applikation.</value>
+  </data>
+  <data name="ViewDevicesCM" xml:space="preserve">
+    <value>Vis enheder</value>
+  </data>
+  <data name="ViewDevicesCMHelp" xml:space="preserve">
+    <value>Vis enheder efter tildelt indhold på siden for indholdsstyring.</value>
+  </data>
+  <data name="ViewDevicesDM" xml:space="preserve">
+    <value>Vis enheder</value>
+  </data>
+  <data name="ViewDevicesDMHelp" xml:space="preserve">
+    <value>Adgang til Vis enheder ikonet i profiler.</value>
+  </data>
+  <data name="ViewDeviceSensors" xml:space="preserve">
+    <value>Vis enhedens sensorer</value>
+  </data>
+  <data name="ViewDeviceSensorsHelp" xml:space="preserve">
+    <value>Styrer adgang til at vise enhedssensoroplysninger og -konfiguration</value>
+  </data>
+  <data name="ViewDeviceWnsStatus" xml:space="preserve">
+    <value>Vis enhedens WNS-status</value>
+  </data>
+  <data name="ViewDeviceWnsStatusHelp" xml:space="preserve">
+    <value>Mulighed for at få vist enhedens WNS-status.</value>
+  </data>
+  <data name="ViewDM" xml:space="preserve">
+    <value>Vis</value>
+  </data>
+  <data name="ViewDMHelp" xml:space="preserve">
+    <value>Vis profil siden i enhedsstyring.</value>
+  </data>
+  <data name="ViewEducationOverviewHelp" xml:space="preserve">
+    <value>Vis siden Education-oversigt      </value>
+  </data>
+  <data name="ViewEM" xml:space="preserve">
+    <value>Vis</value>
+  </data>
+  <data name="ViewEMHelp" xml:space="preserve">
+    <value>Adgang til e-mailstyringsmenuelementet.</value>
+  </data>
+  <data name="ViewExtendedDeviceInventory" xml:space="preserve">
+    <value>Vis udvidet enhedslager</value>
+  </data>
+  <data name="ViewExtendedDeviceInventoryHelp" xml:space="preserve">
+    <value>Styr adgang til visning af det udvidede enhedslager.</value>
+  </data>
+  <data name="ViewExtendedDeviceInventoryOnDeviceDetail" xml:space="preserve">
+    <value>Vis udvidet enhedslager på enhedsoplysningssiden.</value>
+  </data>
+  <data name="ViewExtendedDeviceInventoryOnDeviceDetailHelp" xml:space="preserve">
+    <value>Styr adgang til visning af det udvidede enhedslager på enhedsoplysningssiden.</value>
+  </data>
+  <data name="ViewFileServerConfiguration" xml:space="preserve">
+    <value>Se filserverkonfiguration</value>
+  </data>
+  <data name="ViewFileServerConfigurationHelp" xml:space="preserve">
+    <value>Giver bruger tilladelse til at vise filservergitteret og oplysninger</value>
+  </data>
+  <data name="ViewGen" xml:space="preserve">
+    <value>Vis</value>
+  </data>
+  <data name="ViewGenHelp" xml:space="preserve">
+    <value>Styrer adgang til enheds sider i system indstillinger.</value>
+  </data>
+  <data name="ViewGr" xml:space="preserve">
+    <value>Vis</value>
+  </data>
+  <data name="ViewGrHelp" xml:space="preserve">
+    <value>Åbn organisationsgruppesider.</value>
+  </data>
+  <data name="ViewHA" xml:space="preserve">
+    <value>Vis</value>
+  </data>
+  <data name="ViewHAHelp" xml:space="preserve">
+    <value>Adgang til advarselsmodulet.</value>
+  </data>
+  <data name="ViewIos" xml:space="preserve">
+    <value>Vis</value>
+  </data>
+  <data name="ViewIosHelp" xml:space="preserve">
+    <value>Styrer adgang til iOS siden under Enhed.</value>
+  </data>
+  <data name="ViewLinux" xml:space="preserve">
+    <value>Vis</value>
+  </data>
+  <data name="ViewLinuxHelp" xml:space="preserve">
+    <value>Styrer adgang til Linux-siden under Enheder.</value>
+  </data>
+  <data name="ViewNotesHelp" xml:space="preserve">
+    <value>Giver tilladelse til at vise noter</value>
+  </data>
+  <data name="ViewOemUpdates" xml:space="preserve">
+    <value>Se OEM-opdateringer</value>
+  </data>
+  <data name="ViewOemUpdatesHelp" xml:space="preserve">
+    <value>Styrer adgang til at vise OEM-opdateringsdashboard. Naviger til Menu\Enheder\OEMUpdates</value>
+  </data>
+  <data name="ViewPM" xml:space="preserve">
+    <value>Vis</value>
+  </data>
+  <data name="ViewPMHelp" xml:space="preserve">
+    <value>Adgang til indstillinger for ydre enheder siden.</value>
+  </data>
+  <data name="ViewProvisioningPackages" xml:space="preserve">
+    <value>Vis klargøringspakke</value>
+  </data>
+  <data name="ViewProvisioningPackagesHelp" xml:space="preserve">
+    <value>Kontroller adgang for at få vist klargøringspakker</value>
+  </data>
+  <data name="ViewSet" xml:space="preserve">
+    <value>Vis</value>
+  </data>
+  <data name="ViewSetHelp" xml:space="preserve">
+    <value>Styrer adgang til Apps siderne i system indstillinger</value>
+  </data>
+  <data name="ViewSys" xml:space="preserve">
+    <value>Vis</value>
+  </data>
+  <data name="ViewSysHelp" xml:space="preserve">
+    <value>Styrer adgang til Systemindstillinger.</value>
+  </data>
+  <data name="ViewTagHelp" xml:space="preserve">
+    <value>Giver tilladelse til visning af fanen</value>
+  </data>
+  <data name="ViewTimeWindow" xml:space="preserve">
+    <value>Vis tidsvindue</value>
+  </data>
+  <data name="ViewTimeWindowHelp" xml:space="preserve">
+    <value>Styrer adgang til at vise tidsvinduet.</value>
+  </data>
+  <data name="ViewTimeWindowOnDeviceDetail" xml:space="preserve">
+    <value>Vis tidsvindue på enhedsoplysningssiden</value>
+  </data>
+  <data name="ViewTimeWindowOnDeviceDetailHelp" xml:space="preserve">
+    <value>Styrer adgang til at vise tidsvinduet på enhedsoplysningssiden.</value>
+  </data>
+  <data name="ViewUG" xml:space="preserve">
+    <value>Vis</value>
+  </data>
+  <data name="ViewUGHelp" xml:space="preserve">
+    <value>Adgang til brugergruppe siden.</value>
+  </data>
+  <data name="ViewUpdateDevices" xml:space="preserve">
+    <value>Se Opdatering af enheder</value>
+  </data>
+  <data name="ViewUpdateDevicesHelp" xml:space="preserve">
+    <value>Styrer adgang til at vise enheder efter opdateringsstatus. Naviger til Menu\Enheder\Opdateringer</value>
+  </data>
+  <data name="ViewUpdatesHelp" xml:space="preserve">
+    <value>Styrer adgang til at vise opdateringsdashboard. Naviger til Menu\Enheder\Opdateringer</value>
+  </data>
+  <data name="ViewUserAccounts" xml:space="preserve">
+    <value>Vis</value>
+  </data>
+  <data name="ViewUserAccountsHelp" xml:space="preserve">
+    <value>Vis brugerkonti.</value>
+  </data>
+  <data name="ViewUserCategories" xml:space="preserve">
+    <value>Vis</value>
+  </data>
+  <data name="ViewUserCategoriesHelp" xml:space="preserve">
+    <value>Adgang til brugerkonti kategorierne.</value>
+  </data>
+  <data name="ViewUserDetails" xml:space="preserve">
+    <value>Se brugeroplysninger</value>
+  </data>
+  <data name="ViewUserDetailsHelp" xml:space="preserve">
+    <value>Vis brugertildelinger for Chrome OS-brugerprofiler.</value>
+  </data>
+  <data name="ViewUserRoles" xml:space="preserve">
+    <value>Vis</value>
+  </data>
+  <data name="ViewUserRolesHelp" xml:space="preserve">
+    <value>Vis bruger rollerne.</value>
+  </data>
+  <data name="ViewWin" xml:space="preserve">
+    <value>Vis</value>
+  </data>
+  <data name="ViewWindowsTemplateDevicesHelp" xml:space="preserve">
+    <value>Giver administratoren mulighed for at konfigurere indstillinger til at vise enheder, som Windows-skabelonklargøringspakken er blevet anvendt på, på Console-dashboardet</value>
+  </data>
+  <data name="ViewWindowsTemplatesHelp" xml:space="preserve">
+    <value>Giver administrator mulighed for at konfigurere indstillingerne for at vise Windows-skabelonen på konsol-dashboardet</value>
+  </data>
+  <data name="ViewWinHelp" xml:space="preserve">
+    <value>Styrer adgang til Windows siden under Enheder.</value>
+  </data>
+  <data name="ViewXmlDM" xml:space="preserve">
+    <value>Vis XML</value>
+  </data>
+  <data name="ViewXmlDMHelp" xml:space="preserve">
+    <value>Adgang til Vis XML ikonet under profiler.</value>
+  </data>
+  <data name="VmInstanceLockHelp" xml:space="preserve">
+    <value>Lås virtuelle maskine-instanser, der styres af Horizon FLEX</value>
+  </data>
+  <data name="VmInstanceUnlockHelp" xml:space="preserve">
+    <value>Åbn virtuelle maskine-instanser, der styres af Horizon FLEX</value>
+  </data>
+  <data name="VmInstanceWipeHelp" xml:space="preserve">
+    <value>Slet virtuelle maskine-instanser, der styres af Horizon FLEX</value>
+  </data>
+  <data name="VMwareEmployeeLoginNotification" xml:space="preserve">
+    <value>VMware-medarbejderloginnotifikation</value>
+  </data>
+  <data name="VMwareEmployeeLoginNotificationInfo" xml:space="preserve">
+    <value>Aktivér for at underrette de udpegede modtagere, når en VMware-medarbejder får adgang til din kunde- eller partner-OG.</value>
+  </data>
+  <data name="WebConsoleLogHelp" xml:space="preserve">
+    <value>Styrer adgang til Web nedbrugslogfiler. 
+</value>
+  </data>
+  <data name="WeblinkPM" xml:space="preserve">
+    <value>Weblink</value>
+  </data>
+  <data name="WeblinkPMHelp" xml:space="preserve">
+    <value>Styrer adgang til Printer Weblink siden</value>
+  </data>
+  <data name="WebsiteFiltersSettingsHelp" xml:space="preserve">
+    <value>Styrer adgang til at vise og redigere skærmen Website Filters-indstillinger. Gå til Indstillinger\Apps\App-integration\Website Filters</value>
+  </data>
+  <data name="WiFiPM" xml:space="preserve">
+    <value>Wi-Fi</value>
+  </data>
+  <data name="WiFiPMHelp" xml:space="preserve">
+    <value>Styrer adgang til Printer Wi-Fi siden</value>
+  </data>
+  <data name="Windows8RtWin" xml:space="preserve">
+    <value>Windows 8/RT</value>
+  </data>
+  <data name="Windows8RtWinHelp" xml:space="preserve">
+    <value>Kontroller adgang til WinRT indstillingerne.</value>
+  </data>
+  <data name="WindowsAppDeploymentsEditHelp" xml:space="preserve">
+    <value>Denne ressource giver administratorer tilladelse til at konfigurere appudrulningsindstillinger på konsollen</value>
+  </data>
+  <data name="WindowsAutoDiscoverySettingsEditHelp" xml:space="preserve">
+    <value>Denne ressource lader administratoren konfigurere Auto-Discovery-tilstanden til enten 'on-premise' eller 'Cloud Hosted ' og registrere et bestemt domæne for Windows Auto-Discovery</value>
+  </data>
+  <data name="WindowsAutoEnrollmentSettings" xml:space="preserve">
+    <value>Automatiske Windows-indstillinger for tilmelding</value>
+  </data>
+  <data name="WindowsAutoEnrollmentSettingsHelp" xml:space="preserve">
+    <value>Denne ressource giver administratorer mulighed for at konfigurere de indstillinger, der er relevante for klargøringsagenten, der kører på Windows-enhed(er). </value>
+  </data>
+  <data name="WindowsMobileDD" xml:space="preserve">
+    <value>Windows Mobile</value>
+  </data>
+  <data name="WindowsMobileDDHelp" xml:space="preserve">
+    <value>Styr Windows Mobile specifikke indstillinger i Enhedsdetaljer.</value>
+  </data>
+  <data name="WindowsMobileWm" xml:space="preserve">
+    <value>Windows Mobile</value>
+  </data>
+  <data name="WindowsMobileWmHelp" xml:space="preserve">
+    <value>Styrer adgang til Windows Mobile siden under Enhed.</value>
+  </data>
+  <data name="WindowsPcSet" xml:space="preserve">
+    <value>Windows PC</value>
+  </data>
+  <data name="WindowsPcSetHelp" xml:space="preserve">
+    <value>Styrer adgang til Windows-pc-sider under Enheder.</value>
+  </data>
+  <data name="WindowsPhone8Win" xml:space="preserve">
+    <value>Windows Phone 8</value>
+  </data>
+  <data name="WindowsPhone8WinHelp" xml:space="preserve">
+    <value>Styrer adgang til Windows Phone indstillinger.</value>
+  </data>
+  <data name="WindowsPhoneHealthAttestationEdit" xml:space="preserve">
+    <value>Rediger WindowsPhone-sundhedsattestation</value>
+  </data>
+  <data name="WindowsPhoneHealthAttestationEditHelp" xml:space="preserve">
+    <value>Denne ressource lader admin konfigurere sundhedsattestations indstillinger for Windows 10 mobile enheder</value>
+  </data>
+  <data name="WindowsPhoneWin" xml:space="preserve">
+    <value>Windows Phone</value>
+  </data>
+  <data name="WindowsPhoneWinHelp" xml:space="preserve">
+    <value>Styrer adgang til Windows Phone sider i system indstillinger.</value>
+  </data>
+  <data name="WindowsRuntimeProvisioningHelp" xml:space="preserve">
+    <value>Disse indstillinger gør det muligt for en administrator at vise de staging-oplysninger, der er påkrævet for bulkklargøring af Windows-enheder til slutbrugere. Dette vil også hjælpe med at oprette bootstrap-oplysninger for alle enheder.</value>
+  </data>
+  <data name="WindowsSampleScheduleHelp" xml:space="preserve">
+    <value>Denne gruppe indstillinger lader administratoren oprette intervaller for indsamling af eksempler på MDM-data og indstillinger.</value>
+  </data>
+  <data name="WinmoSWInventoryHub" xml:space="preserve">
+    <value>WinMO S/W lager</value>
+  </data>
+  <data name="WinmoSWInventoryHubHelp" xml:space="preserve">
+    <value>Generer rapporter for WinMo S/W lager.</value>
+  </data>
+  <data name="WipeProtectionDU" xml:space="preserve">
+    <value>Sletningsbeskyttelse</value>
+  </data>
+  <data name="WipeProtectionDUHelp" xml:space="preserve">
+    <value>Styrer adgang til Sletningsbeskyttelse siden under Avanceret.</value>
+  </data>
+  <data name="WorkflowsDD" xml:space="preserve">
+    <value>Arbejdsgange</value>
+  </data>
+  <data name="WorkflowsDDHelp" xml:space="preserve">
+    <value>Se status for udførelse af arbejdsprocesser på enheden.</value>
+  </data>
+  <data name="WorkspaceSet" xml:space="preserve">
+    <value>Container</value>
+  </data>
+  <data name="WorkspaceSetHelp" xml:space="preserve">
+    <value>Styrer adgang til Container siden under Generelt.</value>
+  </data>
+  <data name="ZonesGr" xml:space="preserve">
+    <value>Zoner</value>
+  </data>
+  <data name="ZonesGrHelp" xml:space="preserve">
+    <value>Styr placeringszoner for organisationsgrupper.</value>
+  </data>
+  <data name="ZplPM" xml:space="preserve">
+    <value>Zpl</value>
+  </data>
+  <data name="ZplPMHelp" xml:space="preserve">
+    <value>Styrer adgangen til printerens Zpl-side</value>
+  </data>
+</root>

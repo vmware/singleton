@@ -1,0 +1,3410 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AdaptivaSetup" xml:space="preserve">
+    <value>Adaptiva-installatie</value>
+  </data>
+  <data name="AdaptivaSetupHelp" xml:space="preserve">
+    <value>Installatieresource voor P2P-partner, Adaptiva</value>
+  </data>
+  <data name="AdaptiveManagement" xml:space="preserve">
+    <value>Adaptief beheer</value>
+  </data>
+  <data name="AdaptiveManagementHelp" xml:space="preserve">
+    <value>Mogelijkheid om het adaptieve beheerniveau te bekijken en in te stellen op basis van het applicatiebeleid</value>
+  </data>
+  <data name="AddApplicationWorkflowHelp" xml:space="preserve">
+    <value>Geeft rechten aan een ontwikkelaar om een applicatie te uploaden</value>
+  </data>
+  <data name="AddCartHelp" xml:space="preserve">
+    <value>Upload een CSV met de serienummers van gedeelde toestellen. </value>
+  </data>
+  <data name="AddCustomReportSubscriptionHelp" xml:space="preserve">
+    <value>Hiermee wordt de toegang beheerd om het abonnement op aangepast rapport toe te voegen. Ga naar Hub \ Rapporten en analyse \ Aangepaste rapporten \ Abonnementen</value>
+  </data>
+  <data name="AddDeviceUserAccounts" xml:space="preserve">
+    <value>Toestel toevoegen</value>
+  </data>
+  <data name="AddDeviceUserAccountsHelp" xml:space="preserve">
+    <value>Toestellen voor gebruikersaccounts toevoegen.</value>
+  </data>
+  <data name="AddEditAdminAccount" xml:space="preserve">
+    <value>Toevoegen/bewerken</value>
+  </data>
+  <data name="AddEditAdminAccountHelp" xml:space="preserve">
+    <value>Beheerdersaccounts toevoegen of bewerken.</value>
+  </data>
+  <data name="AddEditAdminGroup" xml:space="preserve">
+    <value>Toevoegen/bewerken</value>
+  </data>
+  <data name="AddEditAdminGroupHelp" xml:space="preserve">
+    <value>Beheerdersgroepen toevoegen of bewerken.</value>
+  </data>
+  <data name="AddEditAdminRoles" xml:space="preserve">
+    <value>Toevoegen/bewerken</value>
+  </data>
+  <data name="AddEditAdminRolesHelp" xml:space="preserve">
+    <value>Beheerdersrollen toevoegen, bewerken en verwijderen.</value>
+  </data>
+  <data name="AddEditDeviceManufacturerDetails" xml:space="preserve">
+    <value>Gegevens apparaatfabrikant toevoegen/bewerken</value>
+  </data>
+  <data name="AddEditDeviceManufacturerDetailsHelp" xml:space="preserve">
+    <value>Een nieuwe apparaatfabrikant toevoegen of een bestaande fabrikant bewerken in de Console via API</value>
+  </data>
+  <data name="AddEditDeviceModelDetails" xml:space="preserve">
+    <value>Gegevens apparaatmodel toevoegen/bewerken</value>
+  </data>
+  <data name="AddEditDeviceModelDetailsHelp" xml:space="preserve">
+    <value>Een nieuw apparaatmodel toevoegen of een bestaand model bewerken in de Console via API</value>
+  </data>
+  <data name="AddEditUG" xml:space="preserve">
+    <value>Toevoegen/bewerken</value>
+  </data>
+  <data name="AddEditUGHelp" xml:space="preserve">
+    <value>Gebruikersgroepen toevoegen, bewerken en verwijderen.</value>
+  </data>
+  <data name="AddEditUserAccount" xml:space="preserve">
+    <value>Toevoegen/bewerken</value>
+  </data>
+  <data name="AddEditUserAccountHelp" xml:space="preserve">
+    <value>Gebruikersaccounts toevoegen of bewerken.</value>
+  </data>
+  <data name="AddEditUserCat" xml:space="preserve">
+    <value>Toevoegen/bewerken</value>
+  </data>
+  <data name="AddEditUserCatHelp" xml:space="preserve">
+    <value>Inschrijvingscategorieën voor de gebruiker toevoegen, bewerken en verwijderen.</value>
+  </data>
+  <data name="AddEditUserRoles" xml:space="preserve">
+    <value>Toevoegen/bewerken</value>
+  </data>
+  <data name="AddEditUserRolesHelp" xml:space="preserve">
+    <value>Gebruikersrollen toevoegen en bewerken.</value>
+  </data>
+  <data name="AddEditWindowsTemplateHelp" xml:space="preserve">
+    <value>Hiermee kan de beheerder de instellingen configureren voor het toevoegen en/of bewerken van een Windows-sjabloon op het dashboard van de Console</value>
+  </data>
+  <data name="AddFileServerConfiguration" xml:space="preserve">
+    <value>Bestandsserverconfiguratie toevoegen</value>
+  </data>
+  <data name="AddFileServerConfigurationHelp" xml:space="preserve">
+    <value>Geeft de gebruiker rechten om het raster en de details van de bestandsservers toe te voegen</value>
+  </data>
+  <data name="AddNoteHelp" xml:space="preserve">
+    <value>Geeft toestemming om een nieuwe opmerking toe te voegen</value>
+  </data>
+  <data name="AdminAd" xml:space="preserve">
+    <value>Beheerder</value>
+  </data>
+  <data name="AdminAdHelp" xml:space="preserve">
+    <value>Beheert toegang tot startpagina's in Systeeminstellingen, de waarschuwingsmodule, de pagina voor aangepaste velddefinities, de helppagina in Systeeminstellingen en de pagina voor RADIUS profielen.</value>
+  </data>
+  <data name="AdminOptIn" xml:space="preserve">
+    <value>AANMELDEN ALS BEHEERDER</value>
+  </data>
+  <data name="AdminSaaSNotifications" xml:space="preserve">
+    <value>SaaS-meldingen</value>
+  </data>
+  <data name="AdminSaaSNotificationsHelp" xml:space="preserve">
+    <value>Beheert toegang tot de pagina voor SaaS-meldingsinstellingen</value>
+  </data>
+  <data name="AdminsRESTSystem" xml:space="preserve">
+    <value>Beheerders</value>
+  </data>
+  <data name="AdminsRESTSystemHelp" xml:space="preserve">
+    <value>REST APIs voor beheerdersaccounts</value>
+  </data>
+  <data name="AdvancedEm" xml:space="preserve">
+    <value>Geavanceerd</value>
+  </data>
+  <data name="AdvancedEmHelp" xml:space="preserve">
+    <value>Beheert geavanceerde e-mailinstellingen.</value>
+  </data>
+  <data name="AdvancedHelp" xml:space="preserve">
+    <value>Beheert de toegang tot het geavanceerde submenu.</value>
+  </data>
+  <data name="AdvancedIn" xml:space="preserve">
+    <value>Geavanceerd</value>
+  </data>
+  <data name="AdvancedInHelp" xml:space="preserve">
+    <value>Beheert toegang tot geavanceerde installatie-instellingen.</value>
+  </data>
+  <data name="AdvancedSet" xml:space="preserve">
+    <value>Geavanceerd</value>
+  </data>
+  <data name="AdvancedSetHelp" xml:space="preserve">
+    <value>Beheert toegang tot geavanceerde pagina's in Systeeminstellingen.</value>
+  </data>
+  <data name="AdvancedSOaP" xml:space="preserve">
+    <value>Geavanceerd</value>
+  </data>
+  <data name="AdvancedSOaPHelp" xml:space="preserve">
+    <value>Gebruik geavanceerde API’s zoals het wissen van het toestel of wissen van bedrijfsgegevens.</value>
+  </data>
+  <data name="AdvancedSys" xml:space="preserve">
+    <value>Geavanceerd</value>
+  </data>
+  <data name="AdvancedSysHelp" xml:space="preserve">
+    <value>Beheert toegang tot de pagina Geavanceerd onder Systeem.</value>
+  </data>
+  <data name="AfterArg" xml:space="preserve">
+    <value>Na {0}</value>
+  </data>
+  <data name="AgentApplicationAn" xml:space="preserve">
+    <value>Hub-applicatie</value>
+  </data>
+  <data name="AgentApplicationAnHelp" xml:space="preserve">
+    <value>Beheert toegang tot de pagina voor Hub-applicaties onder Android.</value>
+  </data>
+  <data name="AgentPackageAdd" xml:space="preserve">
+    <value>Hub-pakket toevoegen</value>
+  </data>
+  <data name="AgentPackageAddHelp" xml:space="preserve">
+    <value>Geeft toestemming om een Hub .apf-bestand te uploaden dat bruikbaar is voor het voorbereiden voor productprovisioning.</value>
+  </data>
+  <data name="AgentPackageDelete" xml:space="preserve">
+    <value>Hub-pakket verwijderen</value>
+  </data>
+  <data name="AgentPackageDeleteHelp" xml:space="preserve">
+    <value>Geeft toestemming om een Hub .apf te verwijderen dat vervolgens niet beschikbaar zal zijn voor gebruik tijdens het vooraf configureren van productprovisioning.</value>
+  </data>
+  <data name="AgentPackagePPN" xml:space="preserve">
+    <value>Hub-pakket</value>
+  </data>
+  <data name="AgentPackagePPNHelp" xml:space="preserve">
+    <value>Geeft toestemming tot toevoegen/updaten/verwijderen van Hub .apf-bestanden voor het vooraf configureren van productprovisioning.</value>
+  </data>
+  <data name="AgentPackageView" xml:space="preserve">
+    <value>Hub-pakket weergeven</value>
+  </data>
+  <data name="AgentPackageViewHelp" xml:space="preserve">
+    <value>Geeft toestemming om een lijst met beschikbare Hub .apf-bestanden te bekijken in het Hub Pakketten-scherm dat kan worden gebruikt voor het vooraf configureren van productprovisioning.</value>
+  </data>
+  <data name="AgentSettingsAn" xml:space="preserve">
+    <value>Intelligent Hub-instellingen</value>
+  </data>
+  <data name="AgentSettingsAnHelp" xml:space="preserve">
+    <value>Beheert toegang tot de pagina voor Intelligent Hub-instellingen onder Android.</value>
+  </data>
+  <data name="AgentSettingsApple" xml:space="preserve">
+    <value>Hub-instellingen</value>
+  </data>
+  <data name="AgentSettingsAppleHelp" xml:space="preserve">
+    <value>Beheert toegang tot iOS Hub-instellingen onder iOS.</value>
+  </data>
+  <data name="AgentSettingsLinuxHelp" xml:space="preserve">
+    <value>Beheert toegang tot Linux Intelligent Hub-instellingen onder Linux.</value>
+  </data>
+  <data name="AirwatchEmailClientSet" xml:space="preserve">
+    <value>AirWatch-e-mailclient</value>
+  </data>
+  <data name="AirwatchEmailClientSetHelp" xml:space="preserve">
+    <value>Beheert toegang tot de pagina AirWatch-e-mailclient onder Applicaties.</value>
+  </data>
+  <data name="AirWatchHelpAd" xml:space="preserve">
+    <value>AirWatch Help</value>
+  </data>
+  <data name="AirWatchHelpAdHelp" xml:space="preserve">
+    <value>Beheert toegang tot AirWatch Help.</value>
+  </data>
+  <data name="AirWatchTunnelHelp" xml:space="preserve">
+    <value>Rechten geven om AirWatch Tunnel te configureren</value>
+  </data>
+  <data name="AkamaiSetting" xml:space="preserve">
+    <value>Akamai</value>
+  </data>
+  <data name="AkamaiSettingHelp" xml:space="preserve">
+    <value>Instellingen om Akamai te configureren als CDN-provider</value>
+  </data>
+  <data name="AlertCreationPoliciesViewHelp" xml:space="preserve">
+    <value>Beheert de machtiging om het aanmaakbeleid van het instellen van waarschuwingen weer te geven. 
+</value>
+  </data>
+  <data name="AlertDD" xml:space="preserve">
+    <value>Waarschuwingen</value>
+  </data>
+  <data name="AlertDDHelp" xml:space="preserve">
+    <value>Meldingen geassocieerd met dit toestel weergeven.</value>
+  </data>
+  <data name="AlertsPM" xml:space="preserve">
+    <value>Waarschuwingen</value>
+  </data>
+  <data name="AlertsPMHelp" xml:space="preserve">
+    <value>Beheert toegang tot de pagina met printerwaarschuwingen.</value>
+  </data>
+  <data name="AndroidFileManagerDM" xml:space="preserve">
+    <value>Android file manager</value>
+  </data>
+  <data name="AndroidFileManagerDMHelp" xml:space="preserve">
+    <value>Android-bestanden en -mappen die op afstand worden beheerd van de pagina voor toesteldetails.</value>
+  </data>
+  <data name="AndroidForWorkHelp" xml:space="preserve">
+    <value>AndroidForWork</value>
+  </data>
+  <data name="AndroidServiceApplicationsAn" xml:space="preserve">
+    <value>Android-serviceapplicatie</value>
+  </data>
+  <data name="AndroidServiceApplicationsAnHelp" xml:space="preserve">
+    <value>Geeft toestemming om serviceapplicaties weer te geven en te bewerken.</value>
+  </data>
+  <data name="ApnsApp" xml:space="preserve">
+    <value>APNs</value>
+  </data>
+  <data name="ApnsAppHelp" xml:space="preserve">
+    <value>Beheert toegang tot de pagina APNs voor applicaties onder iOS.</value>
+  </data>
+  <data name="ApnsSet" xml:space="preserve">
+    <value>APNs</value>
+  </data>
+  <data name="ApnsSetHelp" xml:space="preserve">
+    <value>Beheert toegang tot de APNs-pagina in Systeeminstellingen.</value>
+  </data>
+  <data name="AppCatalogHelp" xml:space="preserve">
+    <value>resource voor app-catalogus</value>
+  </data>
+  <data name="AppConfigurationSet" xml:space="preserve">
+    <value>Applicatieconfiguratie</value>
+  </data>
+  <data name="AppConfigurationSetHelp" xml:space="preserve">
+    <value>Beheert toegang tot de pagina Applicatieconfiguratie.</value>
+  </data>
+  <data name="AppCrashLogsHelp" xml:space="preserve">
+    <value>Beheert toegang tot applicatiecrashlogboeken. 
+</value>
+  </data>
+  <data name="AppleConfiguratorSet" xml:space="preserve">
+    <value>Apple Configurator</value>
+  </data>
+  <data name="AppleConfiguratorSetHelp" xml:space="preserve">
+    <value>Beheert toegang tot de pagina Apple Configurator onder iOS.</value>
+  </data>
+  <data name="AppleEducation" xml:space="preserve">
+    <value>Education</value>
+  </data>
+  <data name="AppleEducationHelp" xml:space="preserve">
+    <value>Beheert toegang tot de Apple Education-pagina</value>
+  </data>
+  <data name="ApplicationCatalogEdit" xml:space="preserve">
+    <value>Applicatiecatalogus bewerken</value>
+  </data>
+  <data name="ApplicationCatalogEditHelp" xml:space="preserve">
+    <value>Voor het bewerken van de pagina met instellingen voor de app-catalogus</value>
+  </data>
+  <data name="ApplicationCategoriesAb" xml:space="preserve">
+    <value>Applicatiecategorieën</value>
+  </data>
+  <data name="ApplicationCategoriesAbHelp" xml:space="preserve">
+    <value>Applicatiecategorieën bekijken en beheren.</value>
+  </data>
+  <data name="ApplicationGroupsAb" xml:space="preserve">
+    <value>Applicatiegroepen</value>
+  </data>
+  <data name="ApplicationGroupsAbHelp" xml:space="preserve">
+    <value>Applicatiegroepen bekijken en beheren.</value>
+  </data>
+  <data name="ApplicationIntegrationSet" xml:space="preserve">
+    <value>Applicatie-integratie</value>
+  </data>
+  <data name="ApplicationIntegrationSetHelp" xml:space="preserve">
+    <value>Beheert toegang tot het scherm met instellingen van de applicatie-integratie.</value>
+  </data>
+  <data name="ApplicationPPN" xml:space="preserve">
+    <value>Applicatie</value>
+  </data>
+  <data name="ApplicationPPNHelp" xml:space="preserve">
+    <value>Toegang tot de pagina voor applicatie-provisioning.</value>
+  </data>
+  <data name="ApplicationProfilesAb" xml:space="preserve">
+    <value>Applicatieprofielen</value>
+  </data>
+  <data name="ApplicationProfilesAbHelp" xml:space="preserve">
+    <value>Applicatieprofielen bekijken en beheren.</value>
+  </data>
+  <data name="ApplicationPublishAb" xml:space="preserve">
+    <value>Applicatie publiceren</value>
+  </data>
+  <data name="ApplicationPublishAbHelp" xml:space="preserve">
+    <value>Toegevoegde applicaties publiceren.</value>
+  </data>
+  <data name="ApplicationsAb" xml:space="preserve">
+    <value>Applicaties</value>
+  </data>
+  <data name="ApplicationsAbHelp" xml:space="preserve">
+    <value>Toegang verkrijgen tot de pagina voor mobiel applicatiebeheer.</value>
+  </data>
+  <data name="ApplicationsDD" xml:space="preserve">
+    <value>Applicaties</value>
+  </data>
+  <data name="ApplicationsDDHelp" xml:space="preserve">
+    <value>Applicaties van beheerde toestellen op afstand installeren en verwijderen.</value>
+  </data>
+  <data name="ApplicationsDM" xml:space="preserve">
+    <value>Applicaties</value>
+  </data>
+  <data name="ApplicationsDMHelp" xml:space="preserve">
+    <value>Logs aanvragen en feedback van applicaties beheren.</value>
+  </data>
+  <data name="ApplicationsHub" xml:space="preserve">
+    <value>Applicaties</value>
+  </data>
+  <data name="ApplicationsHubHelp" xml:space="preserve">
+    <value>Rapporten voor toestelapplicaties genereren.</value>
+  </data>
+  <data name="ApplicationsSet" xml:space="preserve">
+    <value>Applicaties</value>
+  </data>
+  <data name="ApplicationsSetHelp" xml:space="preserve">
+    <value>Toegang tot de pagina voor applicaties voor inhoudsbeheer.</value>
+  </data>
+  <data name="ApplicationWorkflowAb" xml:space="preserve">
+    <value>Applicatiewerkstroom</value>
+  </data>
+  <data name="ApplicationWorkflowAbHelp" xml:space="preserve">
+    <value>Upload, controleer, wijs toe en publiceer applicaties.</value>
+  </data>
+  <data name="ApplicationWrappingAb" xml:space="preserve">
+    <value>Applicatie inpakken</value>
+  </data>
+  <data name="ApplicationWrappingAbHelp" xml:space="preserve">
+    <value>Toegang verkrijgen tot het verpakken van de applicatie.</value>
+  </data>
+  <data name="AppRemovalProtectionHelp" xml:space="preserve">
+    <value>De optie voor het inschakelen van de beveiliging tegen het verwijderen van apps weergeven</value>
+  </data>
+  <data name="AppRemovalProtectionLogEditHelp" xml:space="preserve">
+    <value>Resource voor het beheren van de bewerkingstoegang tot de pagina met logboeken van de beveiliging tegen het verwijderen van apps</value>
+  </data>
+  <data name="AppRemovalProtectionLogViewHelp" xml:space="preserve">
+    <value>Resource voor het beheren van de weergavetoegang tot de pagina met logboeken van de beveiliging tegen het verwijderen van apps</value>
+  </data>
+  <data name="ApproveAndUnapproveUpdates" xml:space="preserve">
+    <value>Updates goedkeuren en niet goedkeuren</value>
+  </data>
+  <data name="ApproveUpdate" xml:space="preserve">
+    <value>Update goedkeuren</value>
+  </data>
+  <data name="ApproveUpdateHelp" xml:space="preserve">
+    <value>Geeft rechten om het commando voor het goedkeuren van update naar toestellen te verzenden.</value>
+  </data>
+  <data name="ApproveUpdates" xml:space="preserve">
+    <value>Update goedkeuren</value>
+  </data>
+  <data name="AppsRESTMam" xml:space="preserve">
+    <value>Applicaties</value>
+  </data>
+  <data name="AppsRESTMamHelp" xml:space="preserve">
+    <value>REST API's voor applicaties</value>
+  </data>
+  <data name="AppUserCommentsAb" xml:space="preserve">
+    <value>Opmerkingen van applicatiegebruikers</value>
+  </data>
+  <data name="AppUserCommentsAbHelp" xml:space="preserve">
+    <value>Bekijk en beheer instellingen voor gebruikerscommentaar.</value>
+  </data>
+  <data name="AssetBatchImportSys" xml:space="preserve">
+    <value>Assets in bulk importeren</value>
+  </data>
+  <data name="AssetBatchImportSysHelp" xml:space="preserve">
+    <value>Bulklijst met telecomassets importeren</value>
+  </data>
+  <data name="AssetManagementO" xml:space="preserve">
+    <value>Assetbeheer</value>
+  </data>
+  <data name="AssetManagementOHelp" xml:space="preserve">
+    <value>Assets zoeken, toevoegen, en aanpassen</value>
+  </data>
+  <data name="AssetTrackingDM" xml:space="preserve">
+    <value>Assettracering</value>
+  </data>
+  <data name="AssetTrackingDMHelp" xml:space="preserve">
+    <value>Toegang tot de pagina voor assettracering onder toestelbeheer.</value>
+  </data>
+  <data name="AssetUserTrackingO" xml:space="preserve">
+    <value>Volgen van assetgebruikers</value>
+  </data>
+  <data name="AssetUserTrackingOHelp" xml:space="preserve">
+    <value>Toegang tot de pagina voor het volgen van gebruikers. Inclusief de tabbladen Inchecken en Uitchecken.</value>
+  </data>
+  <data name="AssignDeviceEnrollmentProgram" xml:space="preserve">
+    <value>Wijs profielen toe in het inschrijvingsprogramma</value>
+  </data>
+  <data name="AssignDeviceEnrollmentProgramHelp" xml:space="preserve">
+    <value>Regelt toegang om DEP-profielen aan toestellen toe te wijzen. Ga naar de pagina voor de inschrijvingsstatus</value>
+  </data>
+  <data name="AssignmentRulesAdd" xml:space="preserve">
+    <value>Toewijzingsregels toevoegen</value>
+  </data>
+  <data name="AssignmentRulesAddHelp" xml:space="preserve">
+    <value>Toewijzingsregels toestel toevoegen.</value>
+  </data>
+  <data name="AssignmentRulesDelete" xml:space="preserve">
+    <value>Toewijzingsregels verwijderen</value>
+  </data>
+  <data name="AssignmentRulesDeleteHelp" xml:space="preserve">
+    <value>Toewijzingsregels toestel verwijderen.</value>
+  </data>
+  <data name="AssignmentRulesEdit" xml:space="preserve">
+    <value>Toewijzingsregels bewerken</value>
+  </data>
+  <data name="AssignmentRulesEditHelp" xml:space="preserve">
+    <value>Toewijzingsregels toestel bewerken.</value>
+  </data>
+  <data name="AssignmentSys" xml:space="preserve">
+    <value>Toewijzing</value>
+  </data>
+  <data name="AssignmentSysHelp" xml:space="preserve">
+    <value>Statisch telecomabonnement en dynamische toewijzingen bewerken.</value>
+  </data>
+  <data name="Assist" xml:space="preserve">
+    <value>Assist</value>
+  </data>
+  <data name="AssistFileManager" xml:space="preserve">
+    <value>File manager</value>
+  </data>
+  <data name="AssistFileManagerHelp" xml:space="preserve">
+    <value>Geeft toegang tot het beheren van bestanden op het externe toestel</value>
+  </data>
+  <data name="AssistHelp" xml:space="preserve">
+    <value>Extern-beheerrollen beheren</value>
+  </data>
+  <data name="AssistRegistryEditor" xml:space="preserve">
+    <value>Editor van het register</value>
+  </data>
+  <data name="AssistRegistryEditorHelp" xml:space="preserve">
+    <value>Geeft toegang voor het maken van registerwijzigingen op mobiele Windows-toestellen</value>
+  </data>
+  <data name="AssistRemoteControl" xml:space="preserve">
+    <value>Bediening op afstand</value>
+  </data>
+  <data name="AssistRemoteControlHelp" xml:space="preserve">
+    <value>Geeft toegang om een extern toestel weer te geven en te beheren</value>
+  </data>
+  <data name="AssistRemoteShell" xml:space="preserve">
+    <value>Externe shell</value>
+  </data>
+  <data name="AssistRemoteShellHelp" xml:space="preserve">
+    <value>Geeft toegang voor het uitvoeren van commando's via de commandoregelinterface op een extern toestel</value>
+  </data>
+  <data name="AssistRemoteView" xml:space="preserve">
+    <value>Weergave op afstand</value>
+  </data>
+  <data name="AssistRemoteViewHelp" xml:space="preserve">
+    <value>Geeft toegang om alleen een extern toestel weer te geven. Als Weergave op afstand en Bediening op afstand zijn ingeschakeld, wordt een sessie als alleen-weergeven gestart, maar kan de gebruiker om toegang voor bediening op afstand worden gevraagd</value>
+  </data>
+  <data name="AssistSessionCollaboration" xml:space="preserve">
+    <value>Samenwerking in sessies</value>
+  </data>
+  <data name="AssistSessionCollaborationHelp" xml:space="preserve">
+    <value>Hiermee kan de consolegebruiker extra deelnemers uitnodigen voor een Remote Assist-sessie</value>
+  </data>
+  <data name="AssistUnattendedAccess" xml:space="preserve">
+    <value>Onbeheerde toegang</value>
+  </data>
+  <data name="AssistUnattendedAccessHelp" xml:space="preserve">
+    <value>Geeft toegang tot het toestel in onbeheerde modus</value>
+  </data>
+  <data name="AttachmentsDD" xml:space="preserve">
+    <value>Bijlagen</value>
+  </data>
+  <data name="AttachmentsDDHelp" xml:space="preserve">
+    <value>Bijlagen op toestellen in toesteldetails verwijderen en toevoegen.</value>
+  </data>
+  <data name="AutoDiscoveryIns" xml:space="preserve">
+    <value>Automatische ontdekking</value>
+  </data>
+  <data name="AutoDiscoveryInsHelp" xml:space="preserve">
+    <value>Regelt toegang tot de pagina Automatische ontdekking onder Installatie.</value>
+  </data>
+  <data name="AutoEnrollmentHelp" xml:space="preserve">
+    <value>Automatische inschrijving</value>
+  </data>
+  <data name="AutomationHelp" xml:space="preserve">
+    <value>Deze Tech Preview-resource biedt toegang tot ons automatiseringsplatform via de pagina Hub-overzicht</value>
+  </data>
+  <data name="AwcmDD" xml:space="preserve">
+    <value>AWCM</value>
+  </data>
+  <data name="AwcmDDHelp" xml:space="preserve">
+    <value>De verbinding voor AirWatch Cloud Manager van de pagina voor toesteldetails starten en stoppen.</value>
+  </data>
+  <data name="AWProDeviceClearPasscode" xml:space="preserve">
+    <value>AW Pro toesteltoegangscode wissen</value>
+  </data>
+  <data name="AWProDeviceClearPasscodeHelp" xml:space="preserve">
+    <value>Regelt de toegang voor het wissen van toegangscode/power-on wachtwoord in AirWatch Pro</value>
+  </data>
+  <data name="AWProDeviceSendMessage" xml:space="preserve">
+    <value>AW Pro toestel bericht sturen</value>
+  </data>
+  <data name="AWProDeviceSendMessageHelp" xml:space="preserve">
+    <value>Beheert toegang om een bericht in AW Pro te sturen</value>
+  </data>
+  <data name="AWProGenerateNewCertificate" xml:space="preserve">
+    <value>AW Pro nieuw certificaat genereren</value>
+  </data>
+  <data name="AWProGenerateNewCertificateHelp" xml:space="preserve">
+    <value>Beheert toegang om een nieuw certificaat te genereren</value>
+  </data>
+  <data name="AwProResCategory" xml:space="preserve">
+    <value>AW Pro</value>
+  </data>
+  <data name="AwProResCategoryHelp" xml:space="preserve">
+    <value>Volledige toegang tot de AW Pro Console.</value>
+  </data>
+  <data name="BatchImportAccounts" xml:space="preserve">
+    <value>Batchimport</value>
+  </data>
+  <data name="BatchImportAccountsHelp" xml:space="preserve">
+    <value>Beheerdersaccounts in bulk importeren</value>
+  </data>
+  <data name="BatchImportDM" xml:space="preserve">
+    <value>Batchimport</value>
+  </data>
+  <data name="BatchImportDMHelp" xml:space="preserve">
+    <value>Toestelprofielen in het groot importeren.</value>
+  </data>
+  <data name="BatchImportUG" xml:space="preserve">
+    <value>Batchimport</value>
+  </data>
+  <data name="BatchImportUGHelp" xml:space="preserve">
+    <value>Gebruikersgroep voor het inschrijven in het groot importeren.</value>
+  </data>
+  <data name="BatchImportUserAccount" xml:space="preserve">
+    <value>Batchimport</value>
+  </data>
+  <data name="BatchImportUserAccountHelp" xml:space="preserve">
+    <value>Toegang tot de gebruikersgroep voor het inschrijven in het groot importeren.</value>
+  </data>
+  <data name="BatchSizeBySmartGroupHelp" xml:space="preserve">
+    <value>Geeft aan hoeveel toestellen in elke batch worden opgenomen voor de implementatie van interne apps.</value>
+  </data>
+  <data name="BatchStatusAdminGeneral" xml:space="preserve">
+    <value>Batchstatus</value>
+  </data>
+  <data name="BatchStatusAdminGeneralHelp" xml:space="preserve">
+    <value>Status van in batch importeren van admingebruikers bekijken</value>
+  </data>
+  <data name="BatchStatusUserGeneral" xml:space="preserve">
+    <value>Batchstatus</value>
+  </data>
+  <data name="BatchStatusUserGeneralHelp" xml:space="preserve">
+    <value>Toegang tot de batch-status van importeren in bulk van gebruikers voor inschrijving.</value>
+  </data>
+  <data name="BeforeArg" xml:space="preserve">
+    <value>Voor {0}</value>
+  </data>
+  <data name="BESResCategory" xml:space="preserve">
+    <value>BES</value>
+  </data>
+  <data name="BESResCategoryHelp" xml:space="preserve">
+    <value>Schakelt het BES-registratiepictogram op de dashboardpagina's in.</value>
+  </data>
+  <data name="BillingBi" xml:space="preserve">
+    <value>Facturering</value>
+  </data>
+  <data name="BillingBiHelp" xml:space="preserve">
+    <value>Pagina voor details van facturering beheren.</value>
+  </data>
+  <data name="BIOSManagement" xml:space="preserve">
+    <value>BIOS-beheer</value>
+  </data>
+  <data name="BIOSManagementHelp" xml:space="preserve">
+    <value>BIOS-beheerresources</value>
+  </data>
+  <data name="BooksAb" xml:space="preserve">
+    <value>Boeken</value>
+  </data>
+  <data name="BooksAbHelp" xml:space="preserve">
+    <value>Geeft toegang tot de boeken-module onder applicaties en boeken.</value>
+  </data>
+  <data name="BoxerConfigReadWrite" xml:space="preserve">
+    <value>Configuratie Boxer-app</value>
+  </data>
+  <data name="BoxerConfigReadWriteHelp" xml:space="preserve">
+    <value>Voor het configureren van Boxer-instellingen bij uploaden als openbare app.</value>
+  </data>
+  <data name="BranchCacheSetup" xml:space="preserve">
+    <value>Branch-cache configureren</value>
+  </data>
+  <data name="BranchCacheSetupHelp" xml:space="preserve">
+    <value>Instellingen om de systeemeigen peer-to-peer app distibutiefunctionaliteit in Workspace ONE voor Windows 10 te installeren en configureren.</value>
+  </data>
+  <data name="BrandingSys" xml:space="preserve">
+    <value>Huisstijl</value>
+  </data>
+  <data name="BrandingSysHelp" xml:space="preserve">
+    <value>Beheert toegang tot de pagina Huisstijl onder Algemeen</value>
+  </data>
+  <data name="BrowserDM" xml:space="preserve">
+    <value>Browser</value>
+  </data>
+  <data name="BrowserDMHelp" xml:space="preserve">
+    <value>Browserbeleid binnen toestelbeheer configureren.</value>
+  </data>
+  <data name="BulkActionUserAccounts" xml:space="preserve">
+    <value>Actie in volume</value>
+  </data>
+  <data name="BulkActionUserAccountsHelp" xml:space="preserve">
+    <value>Acties in volume op gebruikersaccounts uitvoeren zoals Bericht sturen.</value>
+  </data>
+  <data name="BulkImportCM" xml:space="preserve">
+    <value>Batchimport</value>
+  </data>
+  <data name="BulkImportCMHelp" xml:space="preserve">
+    <value>Importeer inhoud in bulk binnen de weergave voor alle inhoud.</value>
+  </data>
+  <data name="BulkManagementAd" xml:space="preserve">
+    <value>Beheer in bulk</value>
+  </data>
+  <data name="BulkManagementAdHelp" xml:space="preserve">
+    <value>Instellingen voor beheer in bulk weergeven en bewerken.</value>
+  </data>
+  <data name="BulkManagementDM" xml:space="preserve">
+    <value>Beheer in bulk</value>
+  </data>
+  <data name="BulkManagementDMHelp" xml:space="preserve">
+    <value>Acties in bulk uitvoeren op toestellen van de toestellijstweergave.</value>
+  </data>
+  <data name="CatalogSet" xml:space="preserve">
+    <value>Catalogus</value>
+  </data>
+  <data name="CatalogSetHelp" xml:space="preserve">
+    <value>Geeft toestemming om toegang te verkrijgen tot de pagina's voor de applicatiecatalogus in Systeeminstellingen</value>
+  </data>
+  <data name="CategoriesCM" xml:space="preserve">
+    <value>Categorieën</value>
+  </data>
+  <data name="CategoriesCMHelp" xml:space="preserve">
+    <value>Inhoudscategorieën creëren en bewerken.</value>
+  </data>
+  <data name="CDNSetupHelp" xml:space="preserve">
+    <value>Systeeminstelling voor CDN</value>
+  </data>
+  <data name="CertificateAuthoritiesApple" xml:space="preserve">
+    <value>Certificaatautoriteiten</value>
+  </data>
+  <data name="CertificateAuthoritiesAppleHelp" xml:space="preserve">
+    <value>Beheert toegang tot de pagina Certificaatautoriteiten onder iOS.</value>
+  </data>
+  <data name="CertificateAuthorityCM" xml:space="preserve">
+    <value>Certificaatautoriteit</value>
+  </data>
+  <data name="CertificateAuthorityCMHelp" xml:space="preserve">
+    <value>Toegang tot secties voor certificaatautoriteit en certificaatsjablonen.</value>
+  </data>
+  <data name="CertificateManagementDM" xml:space="preserve">
+    <value>Certificaatbeheer</value>
+  </data>
+  <data name="CertificateManagementDMHelp" xml:space="preserve">
+    <value>Certificaten onder toestelbeheer bekijken en heberen.</value>
+  </data>
+  <data name="CertificatesDD" xml:space="preserve">
+    <value>Certificaten</value>
+  </data>
+  <data name="CertificatesDDHelp" xml:space="preserve">
+    <value>Certificaten geassocieerd met de toestellen in toesteldetails weergeven.</value>
+  </data>
+  <data name="CertificatesExpired" xml:space="preserve">
+    <value>Certificaten verlopen</value>
+  </data>
+  <data name="CertificatesRevoked" xml:space="preserve">
+    <value>Certificaten ingetrokken</value>
+  </data>
+  <data name="ChangePasswordAdminAccounts" xml:space="preserve">
+    <value>Wachtwoord wijzigen</value>
+  </data>
+  <data name="ChangePasswordAdminAccountsHelp" xml:space="preserve">
+    <value>Beheerderswachtwoorden wijzigen.</value>
+  </data>
+  <data name="ChromebookSet" xml:space="preserve">
+    <value>ChromeBook</value>
+  </data>
+  <data name="ChromebookSetHelp" xml:space="preserve">
+    <value>Beheert toegang tot de pagina voor Agent-instellingen onder ChromeBook.</value>
+  </data>
+  <data name="CloudContentPlatformHelp" xml:space="preserve">
+    <value>Bron om UEM-opties in te schakelen voor het starten van Cloud Content Services</value>
+  </data>
+  <data name="CollapsedAriaLabel" xml:space="preserve">
+    <value>samengevouwen</value>
+  </data>
+  <data name="CommaSeparatedEmailInfo" xml:space="preserve">
+    <value>Gebruik een komma om meerdere e-mailadressen van elkaar te scheiden.</value>
+  </data>
+  <data name="ComplianceDD" xml:space="preserve">
+    <value>Netwerkbeleid</value>
+  </data>
+  <data name="ComplianceDDHelp" xml:space="preserve">
+    <value>Netwerkregels en conformiteitsstatussen in toesteldetails weergeven.</value>
+  </data>
+  <data name="ComplianceDM" xml:space="preserve">
+    <value>Netwerkbeleid</value>
+  </data>
+  <data name="ComplianceDMHelp" xml:space="preserve">
+    <value>Bekijk en beheer de netwerkregels voor toestellen onder toestelbeheer.</value>
+  </data>
+  <data name="ComplianceHub" xml:space="preserve">
+    <value>Netwerkbeleid</value>
+  </data>
+  <data name="ComplianceHubHelp" xml:space="preserve">
+    <value>Rapporten voor toestelgedragstatussen genereren.</value>
+  </data>
+  <data name="CompliancePoliciesEM" xml:space="preserve">
+    <value>Netwerkbeleid</value>
+  </data>
+  <data name="CompliancePoliciesEMHelp" xml:space="preserve">
+    <value>Beheren van netwerkbeleid voor e-mailbeheer.</value>
+  </data>
+  <data name="ConditionalAccessIntegrations" xml:space="preserve">
+    <value>Integraties van voorwaardelijke toegang</value>
+  </data>
+  <data name="ConditionalAccessIntegrationsHelp" xml:space="preserve">
+    <value>Regelt de toegang tot het delen van de nalevingsstatus van een apparaat met een derde partij om beleid voor voorwaardelijke toegang te kunnen configureren.</value>
+  </data>
+  <data name="ConditionsPPN" xml:space="preserve">
+    <value>Voorwaarden</value>
+  </data>
+  <data name="ConditionsPPNHelp" xml:space="preserve">
+    <value>Provisioningomstandigheden voor provisioningbeleid creëren en beheren.</value>
+  </data>
+  <data name="ConsoleSecurityAd" xml:space="preserve">
+    <value>Consolebeveiliging</value>
+  </data>
+  <data name="ConsoleSecurityAdHelp" xml:space="preserve">
+    <value>Consolebeveiligingspagina's van de globale organisatiegroep weergeven en beheren.</value>
+  </data>
+  <data name="ContentDashboard" xml:space="preserve">
+    <value>Inhoud dashboard</value>
+  </data>
+  <data name="ContentDashboardHelp" xml:space="preserve">
+    <value>Beheert toegang om de pagina voor inhoud dashboard te bekijken. Navigeer naar menu\Inhoud\Dashboard</value>
+  </data>
+  <data name="ContentDD" xml:space="preserve">
+    <value>Inhoud</value>
+  </data>
+  <data name="ContentDDHelp" xml:space="preserve">
+    <value>Inhoud voor een toestel in toesteldetails bekijken en beheren.</value>
+  </data>
+  <data name="ContentDeliveryServiceHelp" xml:space="preserve">
+    <value>Beheert toegang tot instellingen van de Service voor aanlevering van inhoud</value>
+  </data>
+  <data name="ContentHub" xml:space="preserve">
+    <value>Inhoud</value>
+  </data>
+  <data name="ContentHubHelp" xml:space="preserve">
+    <value>Rapporten voor toestelinhoud genereren.</value>
+  </data>
+  <data name="ContentRightsManagementHelp" xml:space="preserve">
+    <value>Instellingen voor het configureren van Azure Rights Management-beveiliging voor Content.</value>
+  </data>
+  <data name="ContentViewerHelp" xml:space="preserve">
+    <value>Beheert toegang tot instellingen voor Content Viewer (HTML5 Viewer)</value>
+  </data>
+  <data name="CreationPoliciesGr" xml:space="preserve">
+    <value>Aanmaakbeleid</value>
+  </data>
+  <data name="CreationPoliciesGrHelp" xml:space="preserve">
+    <value>Beleid om waarschuwingen te maken beheren en weergeven.</value>
+  </data>
+  <data name="CustomAttributeAssignmentRulesHelp" xml:space="preserve">
+    <value>Lijstweergave met toewijzingsregels voor huidige aangepaste eigenschappen</value>
+  </data>
+  <data name="CustomAttributesSet" xml:space="preserve">
+    <value>Aangepaste eigenschappen</value>
+  </data>
+  <data name="CustomAttributesSetHelp" xml:space="preserve">
+    <value>Aangepaste eigenschappen in Systeeminstellingen weergeven en beheren.</value>
+  </data>
+  <data name="CustomFieldsDM" xml:space="preserve">
+    <value>Aangepaste velden</value>
+  </data>
+  <data name="CustomFieldsDMHelp" xml:space="preserve">
+    <value>Aangepaste variabele onder toestel instellen bewerken</value>
+  </data>
+  <data name="CustomizationAd" xml:space="preserve">
+    <value>Aanpassing</value>
+  </data>
+  <data name="CustomizationAdHelp" xml:space="preserve">
+    <value>Geeft toestemming om ondersteunde rasters aan te passen.</value>
+  </data>
+  <data name="CustomizationHelp" xml:space="preserve">
+    <value>Geef toestemming om ondersteunde rasters te personaliseren op gebruikersniveau
+</value>
+  </data>
+  <data name="CustomMdmCommandHelp" xml:space="preserve">
+    <value>Besturingselementen waarmee de functie commando's naar iOS, tvOS en MacOS kan verzenden door de XML van het commando te plakken</value>
+  </data>
+  <data name="DataPurgingD" xml:space="preserve">
+    <value>Gegevensverwijdering</value>
+  </data>
+  <data name="DataPurgingDHelp" xml:space="preserve">
+    <value>Toestemming om instellingen voor het verwijderen van gegevens te wijzigen.</value>
+  </data>
+  <data name="DataSamplesAd" xml:space="preserve">
+    <value>Datasteekproeven</value>
+  </data>
+  <data name="DataSamplesAdHelp" xml:space="preserve">
+    <value>Beheerd het controleren van de geschiedenis van toestelvoorbeelden op databasetabellen.</value>
+  </data>
+  <data name="DataSecuritySec" xml:space="preserve">
+    <value>Gegevensbeveiliging</value>
+  </data>
+  <data name="DataSecuritySecHelp" xml:space="preserve">
+    <value>Geeft toestemming voor het weergeven van het scherm voor gegevensbeveiliging.</value>
+  </data>
+  <data name="DeleteCartHelp" xml:space="preserve">
+    <value>Door karren te verwijderen kan de beheerder een lijst met serienummers voor gebruik bij gedeelde toestellen verwijderen.</value>
+  </data>
+  <data name="DeleteCustomReportSubscriptionHelp" xml:space="preserve">
+    <value>Regelt de toegang tot het verwijderen van het abonnement op een aangepast rapport. Ga naar Hub \ Rapporten en analyse \ Aangepaste rapporten \ Abonnementen</value>
+  </data>
+  <data name="DeleteDeviceDD" xml:space="preserve">
+    <value>Toestel verwijderen</value>
+  </data>
+  <data name="DeleteDeviceDDHelp" xml:space="preserve">
+    <value>Toestelgegevens van de pagina voor toesteldetails verwijderen.</value>
+  </data>
+  <data name="DeleteFileServerConfiguration" xml:space="preserve">
+    <value>Bestandsserverconfiguratie verwijderen</value>
+  </data>
+  <data name="DeleteFileServerConfigurationHelp" xml:space="preserve">
+    <value>Geeft de gebruiker rechten om het raster en de details van de bestandsservers te verwijderen</value>
+  </data>
+  <data name="DeleteNoteHelp" xml:space="preserve">
+    <value>Geeft toelating om een opmerking te verwijderen</value>
+  </data>
+  <data name="DeleteTagHelp" xml:space="preserve">
+    <value>Geeft toestemming om een label te verwijderen</value>
+  </data>
+  <data name="DeleteUnmanagedEM" xml:space="preserve">
+    <value>Onbeheerde verwijderen</value>
+  </data>
+  <data name="DeleteUnmanagedEMHelp" xml:space="preserve">
+    <value>Onbeheerde toestellen van het e-maildashboard verwijderen.</value>
+  </data>
+  <data name="DeleteWindowsTemplateHelp" xml:space="preserve">
+    <value>Hiermee kan de beheerder de instellingen configureren voor het verwijderen van een Windows-sjabloon op het dashboard van de Console</value>
+  </data>
+  <data name="DesignateRecipients" xml:space="preserve">
+    <value>ONTVANGERS TOEWIJZEN</value>
+  </data>
+  <data name="DetailsPM" xml:space="preserve">
+    <value>Details</value>
+  </data>
+  <data name="DetailsPMHelp" xml:space="preserve">
+    <value>Pagina's voor printerdetails weergeven</value>
+  </data>
+  <data name="DeviceBulkManagementRebootDeviceHelp" xml:space="preserve">
+    <value>Hiermee kan de gebruiker toestellen bulksgewijs opnieuw opstarten</value>
+  </data>
+  <data name="DeviceDetailsHub" xml:space="preserve">
+    <value>Toestelgegevens</value>
+  </data>
+  <data name="DeviceDetailsHubHelp" xml:space="preserve">
+    <value>Rapporten voor toesteldetails genereren.</value>
+  </data>
+  <data name="DeviceDetailsQueryHealthAttestationHelp" xml:space="preserve">
+    <value>On-demand query uitvoeren op de blob van het Health Attestation-certificaat</value>
+  </data>
+  <data name="DeviceDetailsQueryOSUpdates" xml:space="preserve">
+    <value>Zoekopdracht naar OS-updates op het toestel</value>
+  </data>
+  <data name="DeviceDetailsQueryOSUpdatesHelp" xml:space="preserve">
+    <value>Toestaan om te zoeken naar informatie over OS-updates op het toestel vanaf de pagina Toestelgegevens</value>
+  </data>
+  <data name="DeviceEnterpriseReset" xml:space="preserve">
+    <value>Bedrijfsreset</value>
+  </data>
+  <data name="DeviceEnterpriseResetHelp" xml:space="preserve">
+    <value>Geeft toestemming om het toestel terug te zetten naar de fabrieksinstellingen terwijl de inschrijving met AirWatch en andere bedrijfsgegevens behouden blijven</value>
+  </data>
+  <data name="DeviceGroupsDM" xml:space="preserve">
+    <value>Toestelgroepen</value>
+  </data>
+  <data name="DeviceGroupsDMHelp" xml:space="preserve">
+    <value>Toestelgroepen binnen toestelbeheer creëren en beheren.</value>
+  </data>
+  <data name="DeviceGroupsSet" xml:space="preserve">
+    <value>Toestelgroepen</value>
+  </data>
+  <data name="DeviceGroupsSetHelp" xml:space="preserve">
+    <value>Beheert toegang tot toestelgroepen in Systeeminstellingen.</value>
+  </data>
+  <data name="DeviceInventoryHub" xml:space="preserve">
+    <value>Toestelinventaris</value>
+  </data>
+  <data name="DeviceInventoryHubHelp" xml:space="preserve">
+    <value>Rapporten voor toestelinventaris genereren.</value>
+  </data>
+  <data name="DeviceLimitRestrictionEdit" xml:space="preserve">
+    <value>Beperking toestellimiet bewerken</value>
+  </data>
+  <data name="DeviceLimitRestrictionEditHelp" xml:space="preserve">
+    <value>Geeft toestemming om de toestellimiet onder Instellingen / Toestellen en gebruikers / Algemeen / Inschrijving / Beperking te wijzigen/lezen</value>
+  </data>
+  <data name="DevicePM" xml:space="preserve">
+    <value>Toestel</value>
+  </data>
+  <data name="DevicePMHelp" xml:space="preserve">
+    <value>Beheert toegang tot de pagina voor printertoestellen.</value>
+  </data>
+  <data name="DevicesHub" xml:space="preserve">
+    <value>Toestellen</value>
+  </data>
+  <data name="DevicesHubHelp" xml:space="preserve">
+    <value>Rapporten voor toestelgroeperingen en metrics genereren.</value>
+  </data>
+  <data name="DevicesRESTMdm" xml:space="preserve">
+    <value>Toestellen</value>
+  </data>
+  <data name="DevicesRESTMdmHelp" xml:space="preserve">
+    <value>REST APIs voor toestelbeheer</value>
+  </data>
+  <data name="DeviceWipeDD" xml:space="preserve">
+    <value>Toestel wissen</value>
+  </data>
+  <data name="DeviceWipeDDHelp" xml:space="preserve">
+    <value>Toestel van toesteldetails op afstand wissen en naar fabrieksinstellingen herstellen.</value>
+  </data>
+  <data name="DeviceWipeHelp" xml:space="preserve">
+    <value>Beheert toegang tot het wissen van een toestel.</value>
+  </data>
+  <data name="DeviceWipesSet" xml:space="preserve">
+    <value>Wissen van toestellen</value>
+  </data>
+  <data name="DeviceWipesSetHelp" xml:space="preserve">
+    <value>Beheert toegang tot de levenscyclusbeheer van het toestel in Systeeminstellingen.</value>
+  </data>
+  <data name="DiagnosticsAd" xml:space="preserve">
+    <value>Diagnose</value>
+  </data>
+  <data name="DiagnosticsAdHelp" xml:space="preserve">
+    <value>Diagnostische instellingen in Systeeminstellingen beheren.</value>
+  </data>
+  <data name="DisableActivationLockBypassCodeHelp" xml:space="preserve">
+    <value>Hiermee kan de beheerder de bypasscode voor de activeringsvergrendeling op een iOS-toestel uitschakelen. Ga naar Toestel / Details / Samenvatting of naar Toestel / Lijst, selecteer een toestel en klik op Meer.</value>
+  </data>
+  <data name="DisableActivationLockBypassDD" xml:space="preserve">
+    <value>Omzeilen van de activeringsvergrendeling uitschakelen</value>
+  </data>
+  <data name="DisableActivationLockBypassDDHelp" xml:space="preserve">
+    <value>Omzeilingscode van de activeringsvergrendeling op een iOS-toestel uitschakelen.</value>
+  </data>
+  <data name="DisplayVideoImportHelp" xml:space="preserve">
+    <value>Video in AirWatch importeren met Wistia</value>
+  </data>
+  <data name="DisplayVideoViewHelp" xml:space="preserve">
+    <value>Lijst met video's weergeven</value>
+  </data>
+  <data name="DistributionDM" xml:space="preserve">
+    <value>Distributie</value>
+  </data>
+  <data name="DistributionDMHelp" xml:space="preserve">
+    <value>Toegang tot het serverpad van de distributie op de pagina's voor locatiebewerking en locatiedetails</value>
+  </data>
+  <data name="DomainJoinConfigEdit" xml:space="preserve">
+    <value>Bewerken</value>
+  </data>
+  <data name="DomainJoinConfigEditHelp" xml:space="preserve">
+    <value>Beheert toegang om een configuratie voor domein samenvoegen toe te voegen, te bewerken, toe te wijzen of te verwijderen.</value>
+  </data>
+  <data name="DownloadContentCM" xml:space="preserve">
+    <value>Inhoud downloaden</value>
+  </data>
+  <data name="DownloadContentCMHelp" xml:space="preserve">
+    <value>Inhoud binnen de weergave voor alle inhoud downloaden.</value>
+  </data>
+  <data name="DownloadLinuxPullServiceInstallerHelp" xml:space="preserve">
+    <value>Geeft rechten om installatieprogramma van Linux Pull Service te downloaden</value>
+  </data>
+  <data name="DownloadWindowsPullServiceInstallerHelp" xml:space="preserve">
+    <value>Geeft rechten om installatieprogramma van Windows Pull Service te downloaden</value>
+  </data>
+  <data name="DropshipProvisioningEdit" xml:space="preserve">
+    <value>De provisioninginstellingen voor doorverzending bewerken</value>
+  </data>
+  <data name="DropshipProvisioningHelp" xml:space="preserve">
+    <value>Toegang tot provisioning voor doorverzending beheren</value>
+  </data>
+  <data name="DxModeEM" xml:space="preserve">
+    <value>DX-modus</value>
+  </data>
+  <data name="DxModeEMHelp" xml:space="preserve">
+    <value>Schakel DxMode voor het oplossen van problemen op toestellen in of uit op het e-mailbeheerdashboard.</value>
+  </data>
+  <data name="EasIntegrationEm" xml:space="preserve">
+    <value>EAS-integratie</value>
+  </data>
+  <data name="EasIntegrationEmHelp" xml:space="preserve">
+    <value>Beheert toegang tot de Mobile Email Gateway-pagina onder Algemeen.</value>
+  </data>
+  <data name="EditAdminGroupHelp" xml:space="preserve">
+    <value>Bevoegdheden om een beheerdersgroep te bewerken. 
+</value>
+  </data>
+  <data name="EditDD" xml:space="preserve">
+    <value>Bewerken</value>
+  </data>
+  <data name="EditDDHelp" xml:space="preserve">
+    <value>Toestelinformatie zoals de beschrijvende naam, assetnummer, etc. bewerken.</value>
+  </data>
+  <data name="EditFileServerConfiguration" xml:space="preserve">
+    <value>Bestandsserverconfiguratie bewerken</value>
+  </data>
+  <data name="EditFileServerConfigurationHelp" xml:space="preserve">
+    <value>Geeft de gebruiker rechten om het raster en de details van bestandsservers te bewerken </value>
+  </data>
+  <data name="EditNoteHelp" xml:space="preserve">
+    <value>Geeft toestemming om een opmerking te bewerken</value>
+  </data>
+  <data name="EditTagHelp" xml:space="preserve">
+    <value>Geeft toestemming om een label te bewerken</value>
+  </data>
+  <data name="EditTypeGr" xml:space="preserve">
+    <value>Type bewerken</value>
+  </data>
+  <data name="EditUserAccounts" xml:space="preserve">
+    <value>Bewerken</value>
+  </data>
+  <data name="EditUserAccountsHelp" xml:space="preserve">
+    <value>Gebruikersaccount voor inschrijven bewerken.</value>
+  </data>
+  <data name="EmailAddressAlreadyExists" xml:space="preserve">
+    <value>E-mailadres bestaat al</value>
+  </data>
+  <data name="EmailDM" xml:space="preserve">
+    <value>E-mail</value>
+  </data>
+  <data name="EmailDMHelp" xml:space="preserve">
+    <value>ActiveSync aanvragen blokkeren en toestaan.</value>
+  </data>
+  <data name="EmailManagementHub" xml:space="preserve">
+    <value>E-mailbeheer</value>
+  </data>
+  <data name="EmailManagementHubHelp" xml:space="preserve">
+    <value>Rapporten voor e-mailbeheer genereren.</value>
+  </data>
+  <data name="EMDashboardMigrateDevice" xml:space="preserve">
+    <value>Dashboard E-mailbeheer - Toestel migreren</value>
+  </data>
+  <data name="EMDashboardMigrateDeviceHelp" xml:space="preserve">
+    <value>Regelt de toegang om een of meer toestellen tussen MEM-configuraties te verplaatsen</value>
+  </data>
+  <data name="EnableDigitalExperienceTelemetry" xml:space="preserve">
+    <value>Digital Experience-telemetrie inschakelen</value>
+  </data>
+  <data name="EnableDigitalExperienceTelemetryHelp" xml:space="preserve">
+    <value>Verzameling en verzending van digitale experience-telemetrie naar Workspace ONE Intelligence mogelijk maken.</value>
+  </data>
+  <data name="EnableDisableAd" xml:space="preserve">
+    <value>Inschakelen/uitschakelen</value>
+  </data>
+  <data name="EnableDisableAdHelp" xml:space="preserve">
+    <value>Memcache in- of uitschakelen.</value>
+  </data>
+  <data name="EnableSystemSettingsAuditHelp" xml:space="preserve">
+    <value>Schakelt de audit van de instellingen in/uit via de systeemcodes.
+</value>
+  </data>
+  <data name="EncryptionKeyManagementHelp" xml:space="preserve">
+    <value>Geeft rechten voor het beheer van encryptiesleutels. Ga naar Systeem \ Beveiliging \ Encryptiesleutelbeheer</value>
+  </data>
+  <data name="EnrollmentDM" xml:space="preserve">
+    <value>Inschrijving</value>
+  </data>
+  <data name="EnrollmentDMHelp" xml:space="preserve">
+    <value>Inschrijvingsbeperkingen wijzigen.</value>
+  </data>
+  <data name="EnrollmentProgramSet" xml:space="preserve">
+    <value>Inschrijvingsprogramma</value>
+  </data>
+  <data name="EnrollmentProgramSetHelp" xml:space="preserve">
+    <value>Beheert toegang tot het programma voor toestel inschrijven.</value>
+  </data>
+  <data name="EnrollmentProgramUserGen" xml:space="preserve">
+    <value>Inschrijvingsprogramma</value>
+  </data>
+  <data name="EnrollmentProgramUserGenHelp" xml:space="preserve">
+    <value>Open profielen van het programma voor toestel inschrijven.</value>
+  </data>
+  <data name="EnrollmentSet" xml:space="preserve">
+    <value>Inschrijving</value>
+  </data>
+  <data name="EnrollmentSetHelp" xml:space="preserve">
+    <value>Beheert toegang tot de pagina Inschrijving onder Algemeen.</value>
+  </data>
+  <data name="EnrollOffline" xml:space="preserve">
+    <value>Offline inschrijven</value>
+  </data>
+  <data name="EnrollOfflineHelp" xml:space="preserve">
+    <value>Met deze resource kan elke beheerder met de opgegeven rol geregistreerde toestellen offline inschrijven</value>
+  </data>
+  <data name="EnterAdminModeHelp" xml:space="preserve">
+    <value>Regelt de toegang tot het commando Beheerdersmodus openen voor Launcher.</value>
+  </data>
+  <data name="EnterEmailAddressToDesignateRecipients" xml:space="preserve">
+    <value>E-mailadressen invoeren om ontvangers aan te wijzen</value>
+  </data>
+  <data name="EnterpriseIntegrationSys" xml:space="preserve">
+    <value>Bedrijfsintegratie</value>
+  </data>
+  <data name="EnterpriseIntegrationSysHelp" xml:space="preserve">
+    <value>Beheert toegang tot bedrijfsintegratie.</value>
+  </data>
+  <data name="EnterpriseResourceAddHelp" xml:space="preserve">
+    <value>Geeft toestemming om nieuwe bedrijfsresources toe te voegen.</value>
+  </data>
+  <data name="EnterpriseResourceHelp" xml:space="preserve">
+    <value>Geeft toegang tot de pagina met bedrijfsresources.</value>
+  </data>
+  <data name="EnterpriseWipeDD" xml:space="preserve">
+    <value>Bedrijfsgegevens wissen</value>
+  </data>
+  <data name="EnterpriseWipeDDHelp" xml:space="preserve">
+    <value>Geeft toestemming om een toestel binnen de toesteldetailspagina uit te schrijven. Dit zal alle bedrijfsgegevens en instellingen verwijderen.</value>
+  </data>
+  <data name="EnterpriseWipeDM" xml:space="preserve">
+    <value>Bedrijfsgegevens wissen</value>
+  </data>
+  <data name="EnterpriseWipeDMHelp" xml:space="preserve">
+    <value>Geeft toestemming om een toestel uit te schrijven. Dit verwijderd alle bedrijfsgegevens en instellingen.</value>
+  </data>
+  <data name="EquipmentEq" xml:space="preserve">
+    <value>Apparatuur</value>
+  </data>
+  <data name="EquipmentEqHelp" xml:space="preserve">
+    <value>Apparatuur beheerd. Navigeer naar Menu\Apparatuur.</value>
+  </data>
+  <data name="ESignature" xml:space="preserve">
+    <value>elektronische handtekening</value>
+  </data>
+  <data name="ESignatureHelp" xml:space="preserve">
+    <value>Instellingen voor elektronische handtekeningen onder Inhoud. Navigeer naar Instellingen/Inhoud/Geavanceerd/elektronische handtekening</value>
+  </data>
+  <data name="ESignatures" xml:space="preserve">
+    <value>elektronische handtekeningen</value>
+  </data>
+  <data name="EulDD" xml:space="preserve">
+    <value>Gebruikersovereenkomst</value>
+  </data>
+  <data name="EulDDHelp" xml:space="preserve">
+    <value>Verouderde en huidige gebruikersovereenkomsten voor een toestel in toesteldetails weergeven.</value>
+  </data>
+  <data name="EventLogAd" xml:space="preserve">
+    <value>Gebeurtenislog</value>
+  </data>
+  <data name="EventLogAdHelp" xml:space="preserve">
+    <value>Beheert toegang tot logs van consolegebeurtenissen</value>
+  </data>
+  <data name="EventLogHelp" xml:space="preserve">
+    <value>Beheert de machtiging om de gebeurtenislogs te lezen. 
+</value>
+  </data>
+  <data name="EventsPM" xml:space="preserve">
+    <value>Gebeurtenissen</value>
+  </data>
+  <data name="EventsPMHelp" xml:space="preserve">
+    <value>Beheert toegang tot de pagina voor het gebeurtenislog van de printer.</value>
+  </data>
+  <data name="ExitAdminModeHelp" xml:space="preserve">
+    <value>Regelt de toegang tot het commando Beheerdersmodus afsluiten</value>
+  </data>
+  <data name="ExitAirWatchLauncherHelp" xml:space="preserve">
+    <value>Regelt de toegang tot het commando Launcher afsluiten</value>
+  </data>
+  <data name="ExpandedAriaLabel" xml:space="preserve">
+    <value>uitgevouwen</value>
+  </data>
+  <data name="ExpireAllUsersGr" xml:space="preserve">
+    <value>Alle gebruikers laten verlopen</value>
+  </data>
+  <data name="ExpireAllUsersGrHelp" xml:space="preserve">
+    <value>Knop voor "Wachtwoorden van alle gebruikers laten vervallen" inschakelen.</value>
+  </data>
+  <data name="ExportUG" xml:space="preserve">
+    <value>Export</value>
+  </data>
+  <data name="ExportUGHelp" xml:space="preserve">
+    <value>Gebruikersgroepen exporteren.</value>
+  </data>
+  <data name="ExportUserAccounts" xml:space="preserve">
+    <value>Export</value>
+  </data>
+  <data name="ExportUserAccountsHelp" xml:space="preserve">
+    <value>Gebruikersaccounts exporteren</value>
+  </data>
+  <data name="ExportUserCategories" xml:space="preserve">
+    <value>Export</value>
+  </data>
+  <data name="ExportUserCategoriesHelp" xml:space="preserve">
+    <value>Categorieën voor gebruikersaccount van inschrijving exporteren.</value>
+  </data>
+  <data name="ExportUserRoles" xml:space="preserve">
+    <value>Export</value>
+  </data>
+  <data name="ExportUserRolesHelp" xml:space="preserve">
+    <value>Gebruikersrollen exporteren.</value>
+  </data>
+  <data name="FeatureFlagEdit" xml:space="preserve">
+    <value>Bewerken functievlag</value>
+  </data>
+  <data name="FeatureFlagEditHelp" xml:space="preserve">
+    <value>Regelt de toegang tot vlaggen voor bewerken en bijwerken van functies.</value>
+  </data>
+  <data name="FeatureFlagRead" xml:space="preserve">
+    <value>Lezen functievlag</value>
+  </data>
+  <data name="FeatureFlagReadHelp" xml:space="preserve">
+    <value>Regelt de mogelijkheid om de functievlagstatus te lezen.</value>
+  </data>
+  <data name="FileActionsPPN" xml:space="preserve">
+    <value>Bestandsacties</value>
+  </data>
+  <data name="FileActionsPPNHelp" xml:space="preserve">
+    <value>Bestandsacties voor provisioningbeleid creëren en beheren.</value>
+  </data>
+  <data name="FileEncryptionStats" xml:space="preserve">
+    <value>Bestandsencryptiestatistieken</value>
+  </data>
+  <data name="FileEncryptionStatsHelp" xml:space="preserve">
+    <value>Instellingen voor Tenant-opslag: TenantStorage.FileEncryptionStats</value>
+  </data>
+  <data name="FileManagerHelp" xml:space="preserve">
+    <value>Geeft toestemming om vanop afstand bestanden van WinMo-toestellen te raadplegen.
+</value>
+  </data>
+  <data name="FilepathIns" xml:space="preserve">
+    <value>Bestandspad</value>
+  </data>
+  <data name="FilepathInsHelp" xml:space="preserve">
+    <value>Beheert toegang tot de pagina Bestandssynchronisatie onder Geavanceerd.</value>
+  </data>
+  <data name="FilesPM" xml:space="preserve">
+    <value>Bestanden</value>
+  </data>
+  <data name="FilesPMHelp" xml:space="preserve">
+    <value>Beheert toegang tot de pagina voor printerbestanden.</value>
+  </data>
+  <data name="FilesPr" xml:space="preserve">
+    <value>Bestanden</value>
+  </data>
+  <data name="FilesPrHelp" xml:space="preserve">
+    <value>Printerbestanden beheren.</value>
+  </data>
+  <data name="FindDeviceDD" xml:space="preserve">
+    <value>Toestel lokaliseren</value>
+  </data>
+  <data name="FindDeviceDDHelp" xml:space="preserve">
+    <value>Stel de status van het toestel in zodat het audio-alert afgaat zodat een gebruiker het toestel kan vinden. Deze optie is te vinden onder toesteldetails.</value>
+  </data>
+  <data name="FindDeviceHelp" xml:space="preserve">
+    <value>Beheert de machtiging om de staat van het toestel in te stellen en zo de audio-waarschuwing te starten zodat de gebruiker het toestel kan vinden. Beschikbaar in Toestelgegevens voor het HTML5-scherm</value>
+  </data>
+  <data name="FriendlyNameSet" xml:space="preserve">
+    <value>Beschrijvende naam</value>
+  </data>
+  <data name="FriendlyNameSetHelp" xml:space="preserve">
+    <value>Beheert toegang tot de pagina Beschrijvende naam onder Algemeen.</value>
+  </data>
+  <data name="GatewayStatusEm" xml:space="preserve">
+    <value>Gatewaystatus</value>
+  </data>
+  <data name="GatewayStatusEmHelp" xml:space="preserve">
+    <value>Beheert statusinstellingen van de e-mailgateway.</value>
+  </data>
+  <data name="GeneralDD" xml:space="preserve">
+    <value>Algemeen</value>
+  </data>
+  <data name="GeneralDDHelp" xml:space="preserve">
+    <value>Beheer diverse basisfuncties van de toestel-detailpagina.</value>
+  </data>
+  <data name="GeneralHub" xml:space="preserve">
+    <value>Algemeen</value>
+  </data>
+  <data name="GeneralHubHelp" xml:space="preserve">
+    <value>Toegang tot de rapportmodule.</value>
+  </data>
+  <data name="GeneralPM" xml:space="preserve">
+    <value>Algemeen</value>
+  </data>
+  <data name="GeneralPMHelp" xml:space="preserve">
+    <value>Beheert toegang tot de algemene printerpagina.</value>
+  </data>
+  <data name="GeneralSettingsEm" xml:space="preserve">
+    <value>Algemene instellingen</value>
+  </data>
+  <data name="GeneralSettingsEmHelp" xml:space="preserve">
+    <value>Beheert de algemene e-mailinstellingen.</value>
+  </data>
+  <data name="GeneralSOaP" xml:space="preserve">
+    <value>Algemeen</value>
+  </data>
+  <data name="GeneralSOaPHelp" xml:space="preserve">
+    <value>Toegang tot alle AirWatch-services-API's behalve opdrachten om te wissen.</value>
+  </data>
+  <data name="GeneralSys" xml:space="preserve">
+    <value>Algemeen</value>
+  </data>
+  <data name="GeneralSysHelp" xml:space="preserve">
+    <value>Beheert toegang tot de pagina Algemeen onder Systeem.</value>
+  </data>
+  <data name="GeofencingAreaDM" xml:space="preserve">
+    <value>Geofencing-gebied</value>
+  </data>
+  <data name="GeofencingAreaDMHelp" xml:space="preserve">
+    <value>Geofence-instellingen voor profielen beheren.</value>
+  </data>
+  <data name="GeofencingHelp" xml:space="preserve">
+    <value>Geeft toestemming om geofencing-instellingen te bekijken/bewerken. 
+</value>
+  </data>
+  <data name="GeofencingSet" xml:space="preserve">
+    <value>Geofencing</value>
+  </data>
+  <data name="GeofencingSetHelp" xml:space="preserve">
+    <value>Geeft toestemming om geofencing-instellingen te bekijken/bewerken.</value>
+  </data>
+  <data name="GettingStartedApplicationHelp" xml:space="preserve">
+    <value>Beheert de workflow Aan de slag voor Mobiel applicatiebeheer</value>
+  </data>
+  <data name="GettingStartedSys" xml:space="preserve">
+    <value>Aan de slag</value>
+  </data>
+  <data name="GettingStartedSysHelp" xml:space="preserve">
+    <value>Geeft toestemming om de handleiding Aan de slag weer te geven.</value>
+  </data>
+  <data name="GooglePlayIntegrationAn" xml:space="preserve">
+    <value>Google Play-integratie</value>
+  </data>
+  <data name="GooglePlayIntegrationAnHelp" xml:space="preserve">
+    <value>Geeft toestemming om Android Market-integratie weer te geven en te bewerken.</value>
+  </data>
+  <data name="GroupsRESTSystem" xml:space="preserve">
+    <value>Groepen</value>
+  </data>
+  <data name="GroupsRESTSystemHelp" xml:space="preserve">
+    <value>REST APIs voor groepsbeheer</value>
+  </data>
+  <data name="GSuiteRotatePasswordAction" xml:space="preserve">
+    <value>Wachtwoordrotatie G-suite</value>
+  </data>
+  <data name="GSuiteRotatePasswordActionHelp" xml:space="preserve">
+    <value>Mogelijkheid om een basiswachtwoord voor de G-suite en e-mailprofielen te roteren.</value>
+  </data>
+  <data name="HeroCards" xml:space="preserve">
+    <value>Mobile Flows</value>
+  </data>
+  <data name="HeroCardsHelp" xml:space="preserve">
+    <value>Configuratie-UI voor Mobile Flows-backend en -services</value>
+  </data>
+  <data name="HorizonWorkspaceSettings" xml:space="preserve">
+    <value>Horizon Workspace Instellingen</value>
+  </data>
+  <data name="HorizonWorkspaceSettingsHelp" xml:space="preserve">
+    <value>Beheert toegang om de instellingen van Horizon Workspace weer te geven en te bewerken. Het navigatiepad is Instellingen\Applicaties\Applicatie-integratie\Horizon Workspace.</value>
+  </data>
+  <data name="HyperLinkDeleteAd" xml:space="preserve">
+    <value>Hyperlink verwijderen</value>
+  </data>
+  <data name="HyperLinkDeleteAdHelp" xml:space="preserve">
+    <value>Geeft toestemming om de hyperlinkbijlagen te verwijderen van de pagina met toestelgegevens.</value>
+  </data>
+  <data name="InProductSupport" xml:space="preserve">
+    <value>Ondersteuning in product</value>
+  </data>
+  <data name="InProductSupportHelp" xml:space="preserve">
+    <value>Toegang tot de ondersteuningstool in het product waarmee beheerders de documentatie kunnen doorzoeken en hulp kunnen krijgen vanuit UEM.</value>
+  </data>
+  <data name="InstallationAdvancedIns" xml:space="preserve">
+    <value>Geavanceerde installatie</value>
+  </data>
+  <data name="InstallationAdvancedInsHelp" xml:space="preserve">
+    <value>Beheert toegang tot de pagina Geavanceerd onder Installatie.</value>
+  </data>
+  <data name="InstallationIns" xml:space="preserve">
+    <value>Installatie</value>
+  </data>
+  <data name="InstallationInsHelp" xml:space="preserve">
+    <value>Beheert toegang tot de pagina Installatie.</value>
+  </data>
+  <data name="InstallFontsApple" xml:space="preserve">
+    <value>Lettertypen installeren</value>
+  </data>
+  <data name="InstallFontsAppleHelp" xml:space="preserve">
+    <value>Schakeld de sectie voor Lettertypen installeren in instellingen in.</value>
+  </data>
+  <data name="InstallIntelligentHub" xml:space="preserve">
+    <value>Intelligent Hub installeren</value>
+  </data>
+  <data name="InstallIntelligentHubHelp" xml:space="preserve">
+    <value>Biedt toegang om Intelligent Hub op afstand op een ingeschreven toestel te installeren</value>
+  </data>
+  <data name="InsufficientResourceToSaveAdmin" xml:space="preserve">
+    <value>Kan niet opslaan. Uw beheerdersaccount heeft onvoldoende rechten om deze record te wijzigen.</value>
+  </data>
+  <data name="Intelligence" xml:space="preserve">
+    <value>Intelligence</value>
+  </data>
+  <data name="IntelligenceHelp" xml:space="preserve">
+    <value>Toegang tot de pagina Intelligence.</value>
+  </data>
+  <data name="InternalAppsAb" xml:space="preserve">
+    <value>Interne applicaties</value>
+  </data>
+  <data name="InternalAppsAbHelp" xml:space="preserve">
+    <value>Intern ontwikkelde applicaties uploaden en beheren.</value>
+  </data>
+  <data name="LanguageManagementAd" xml:space="preserve">
+    <value>Taalbeheer</value>
+  </data>
+  <data name="LanguageManagementAdHelp" xml:space="preserve">
+    <value>Menu-item voor taalbeheer weergeven en toegang tot de lokalisatie-editor en taalpakket activeringspagina.</value>
+  </data>
+  <data name="LearnMoreAccess" xml:space="preserve">
+    <value>Meer informatie - Toegang</value>
+  </data>
+  <data name="LearnMoreAccessContact" xml:space="preserve">
+    <value>Meer informatie - Toegang tot Contact</value>
+  </data>
+  <data name="LearnMoreAccessContactHelp" xml:space="preserve">
+    <value>Regelt de toegang tot het gedeelte Contact van het gedeelte Info en Upgrade.</value>
+  </data>
+  <data name="LearnMoreAccessHelp" xml:space="preserve">
+    <value>Regelt de toegang tot het gedeelte Info en Upgrade</value>
+  </data>
+  <data name="LegacyAndroidMigration" xml:space="preserve">
+    <value>Legacy Android-migratie</value>
+  </data>
+  <data name="LegacyAndroidMigrationHelp" xml:space="preserve">
+    <value>Regelt de toegang tot de pagina Legacy Android-migratie om Legacy Android-toestellen te migreren naar Android Enterprise met een werkprofiel</value>
+  </data>
+  <data name="LicensesAd" xml:space="preserve">
+    <value>Licenties</value>
+  </data>
+  <data name="LicensesAdHelp" xml:space="preserve">
+    <value>Geeft toestemming om licenties te wijzigen.</value>
+  </data>
+  <data name="LinuxHelp" xml:space="preserve">
+    <value>Regelt de toegang tot de pagina's met Linux-instellingen in de systeeminstellingen.</value>
+  </data>
+  <data name="LocalizationSys" xml:space="preserve">
+    <value>Lokalisatie</value>
+  </data>
+  <data name="LocalizationSysHelp" xml:space="preserve">
+    <value>Beheert toegang tot de lokalisatie-instellingen.</value>
+  </data>
+  <data name="LocationCodeGr" xml:space="preserve">
+    <value>Locatiecode</value>
+  </data>
+  <data name="LocationCodeGrHelp" xml:space="preserve">
+    <value>Locatiecode bewerken op pagina's voor Locatie toevoegen/bewerken.</value>
+  </data>
+  <data name="LocationDD" xml:space="preserve">
+    <value>Locatie</value>
+  </data>
+  <data name="LocationDDHelp" xml:space="preserve">
+    <value>Locatie- en breadcrumbgegevens voor toestellen weergeven.</value>
+  </data>
+  <data name="LocationGroupTypeHelp" xml:space="preserve">
+    <value>Beheert de toegang tot de pagina van type organisatiegroep.
+</value>
+  </data>
+  <data name="LocationsGr" xml:space="preserve">
+    <value>Locaties</value>
+  </data>
+  <data name="LocationsGrHelp" xml:space="preserve">
+    <value>Locaties voor organisatiegroepen bekijken en beheren.</value>
+  </data>
+  <data name="LocationsHub" xml:space="preserve">
+    <value>Locaties</value>
+  </data>
+  <data name="LocationsHubHelp" xml:space="preserve">
+    <value>Rapporten voor locaties genereren.</value>
+  </data>
+  <data name="LocationStatusHelp" xml:space="preserve">
+    <value>Beheert de toegang tot de link met de locatiestatus. Beheert de toegang om een nieuwe locatiestatus toe te voegen.
+</value>
+  </data>
+  <data name="LocationTypeHelp" xml:space="preserve">
+    <value>Beheert de toegang tot de pagina met het locatietype.
+</value>
+  </data>
+  <data name="LocationZonesGr" xml:space="preserve">
+    <value>Locatiezones</value>
+  </data>
+  <data name="LocationZonesGrHelp" xml:space="preserve">
+    <value>Locatiezones aan een locatie toevoegen en bewerken.</value>
+  </data>
+  <data name="LockDD" xml:space="preserve">
+    <value>Vergrendelen</value>
+  </data>
+  <data name="LockDDHelp" xml:space="preserve">
+    <value>Toestel of Single Sign-On van applicatie op afstand vergrendelen.</value>
+  </data>
+  <data name="LogDD" xml:space="preserve">
+    <value>Log</value>
+  </data>
+  <data name="LogDDHelp" xml:space="preserve">
+    <value>Logs in toesteldetails weergeven.</value>
+  </data>
+  <data name="LoggingAd" xml:space="preserve">
+    <value>Logboekregistratie</value>
+  </data>
+  <data name="LoggingAdHelp" xml:space="preserve">
+    <value>Geeft toestemming om de instellingen van het gebeurtenislogboek weer te geven.</value>
+  </data>
+  <data name="LoggingAdL" xml:space="preserve">
+    <value>Logboekregistratie</value>
+  </data>
+  <data name="LoggingAdLHelp" xml:space="preserve">
+    <value>Bekijk en bewerk instellingen voor de logboekregistratie voor syslog en gerichte logboekregistratie.</value>
+  </data>
+  <data name="LoginHistoryAdminGen" xml:space="preserve">
+    <value>Logingeschiedenis</value>
+  </data>
+  <data name="LoginHistoryAdminGenHelp" xml:space="preserve">
+    <value>Toegang tot aanmeldgeschiedenis op de pagina voor beheerdersaccounts en gebruikersvoorkeuren.</value>
+  </data>
+  <data name="LookupFields" xml:space="preserve">
+    <value>Opzoekvelden</value>
+  </data>
+  <data name="LookupFieldsHelp" xml:space="preserve">
+    <value>Beheert toegang tot de pagina Opzoekvelden onder Algemeen.</value>
+  </data>
+  <data name="MacOsXApple" xml:space="preserve">
+    <value>macOS</value>
+  </data>
+  <data name="MacOsXAppleHelp" xml:space="preserve">
+    <value>Beheert toegang tot de pagina's voor macOS-instellingen in Systeeminstellingen.</value>
+  </data>
+  <data name="MailRecipient" xml:space="preserve">
+    <value>E-mailontvanger</value>
+  </data>
+  <data name="MaintenanceUpgradeNotificationInfo" xml:space="preserve">
+    <value>Selecteer een optie om te bepalen wie Workspace ONE UEM- en Workspace ONE Assist-meldingen ontvangt. Als Aanmelden als beheerder is geselecteerd, zien beheerders een optie Onderhoud en upgrade onder Accountinstellingen &gt; Meldingen.</value>
+  </data>
+  <data name="MaintenanceUpgradeNotifications" xml:space="preserve">
+    <value>Onderhouds- en upgrademeldingen</value>
+  </data>
+  <data name="ManageAdminGroups" xml:space="preserve">
+    <value>Beheren</value>
+  </data>
+  <data name="ManageAdminGroupsHelp" xml:space="preserve">
+    <value>Acties zoals synchroniseren or samenvoegen op beheerdersgroepen uitvoeren.</value>
+  </data>
+  <data name="ManageBaselines" xml:space="preserve">
+    <value>Uitgangswaarden beheren</value>
+  </data>
+  <data name="ManageBaselinesHelp" xml:space="preserve">
+    <value>Regelt de toegang tot het beheer van uitgangswaarden, inclusief rechten voor het toevoegen, bewerken en toewijzen van een uitgangswaarde</value>
+  </data>
+  <data name="ManageContentCM" xml:space="preserve">
+    <value>Inhoud beheren</value>
+  </data>
+  <data name="ManageContentCMHelp" xml:space="preserve">
+    <value>Nieuwe inhoud toevoegen en bestaande inhoud beheren.</value>
+  </data>
+  <data name="ManageDevicesCM" xml:space="preserve">
+    <value>Toestellen beheren</value>
+  </data>
+  <data name="ManageDevicesCMHelp" xml:space="preserve">
+    <value>Inhoud op een beheerd toestel op afstand installeren</value>
+  </data>
+  <data name="ManageDeviceSensors" xml:space="preserve">
+    <value>Toestelsensoren beheren</value>
+  </data>
+  <data name="ManageDeviceSensorsHelp" xml:space="preserve">
+    <value>Regelt de bevoegdheid tot het toevoegen, bewerken, toewijzen of verwijderen van toestelsensoren</value>
+  </data>
+  <data name="ManageDM" xml:space="preserve">
+    <value>Beheren</value>
+  </data>
+  <data name="ManageDMHelp" xml:space="preserve">
+    <value>Toestelprofielen beheren.</value>
+  </data>
+  <data name="ManagedSettingsApple" xml:space="preserve">
+    <value>Beheerde instellingen</value>
+  </data>
+  <data name="ManagedSettingsAppleHelp" xml:space="preserve">
+    <value>Beheert toegang tot beheerde instellingen foor iOS.</value>
+  </data>
+  <data name="ManageGr" xml:space="preserve">
+    <value>Beheren</value>
+  </data>
+  <data name="ManageGrHelp" xml:space="preserve">
+    <value>Organisatiegroepen beheren</value>
+  </data>
+  <data name="ManageNodeAd" xml:space="preserve">
+    <value>Knoop beheren</value>
+  </data>
+  <data name="ManageNodeAdHelp" xml:space="preserve">
+    <value>MemCached-knopen toevoegen, bewerken, verwijderen en leegmaken.</value>
+  </data>
+  <data name="ManagePM" xml:space="preserve">
+    <value>Beheren</value>
+  </data>
+  <data name="ManagePMHelp" xml:space="preserve">
+    <value>Opdrachten en queries op afstand naar printers verzenden.</value>
+  </data>
+  <data name="ManageTimeWindow" xml:space="preserve">
+    <value>Tijdvenster beheren</value>
+  </data>
+  <data name="ManageTimeWindowHelp" xml:space="preserve">
+    <value>Beheert toegang om tijdvenster te beheren, inclusief rechten voor het toevoegen, bewerken en toewijzen van een tijdvenster.</value>
+  </data>
+  <data name="ManageUG" xml:space="preserve">
+    <value>Beheren</value>
+  </data>
+  <data name="ManageUGHelp" xml:space="preserve">
+    <value>Acties voor op de gebruikersgroep voor inschrijven uitvoeren zoals synchroniseren of samenvoegen.</value>
+  </data>
+  <data name="MapsIns" xml:space="preserve">
+    <value>Kaarten</value>
+  </data>
+  <data name="MapsInsHelp" xml:space="preserve">
+    <value>Beheert toegang tot de pagina Kaarten onder Installatie.</value>
+  </data>
+  <data name="MembersAdminGroup" xml:space="preserve">
+    <value>Leden</value>
+  </data>
+  <data name="MembersAdminGroupHelp" xml:space="preserve">
+    <value>Leden van de beheerdersgroep bekijken.</value>
+  </data>
+  <data name="MembersUG" xml:space="preserve">
+    <value>Leden</value>
+  </data>
+  <data name="MembersUGHelp" xml:space="preserve">
+    <value>Toegang tot de lijst voor lidmaatschap voor gebruikersgroepen.</value>
+  </data>
+  <data name="MenuLinkForTagHelp" xml:space="preserve">
+    <value>Beheert de toegang tot het labelmenu</value>
+  </data>
+  <data name="MessageTemplatesSet" xml:space="preserve">
+    <value>Berichtsjablonen</value>
+  </data>
+  <data name="MessageTemplatesSetHelp" xml:space="preserve">
+    <value>Beheert toegang tot berichtsjablonen.</value>
+  </data>
+  <data name="MessagingDD" xml:space="preserve">
+    <value>Berichten</value>
+  </data>
+  <data name="MessagingDDHelp" xml:space="preserve">
+    <value>E-mails, pushberichten of sms-berichten naar de toestellen sturen.</value>
+  </data>
+  <data name="MessagingSet" xml:space="preserve">
+    <value>Berichten</value>
+  </data>
+  <data name="MessagingSetHelp" xml:space="preserve">
+    <value>Beheert toegang tot de pagina Berichten onder Algemeen.</value>
+  </data>
+  <data name="MigrateUserAccounts" xml:space="preserve">
+    <value>Migratie</value>
+  </data>
+  <data name="MigrateUserAccountsHelp" xml:space="preserve">
+    <value>Gebruikersaccounts voor inschrijven van de basis-inschrijving naar LDAP-inschrijving verplaatsen.</value>
+  </data>
+  <data name="MirrorPM" xml:space="preserve">
+    <value>Mirror</value>
+  </data>
+  <data name="MirrorPMHelp" xml:space="preserve">
+    <value>Beheert toegang tot de pagina Mirror van de printer.</value>
+  </data>
+  <data name="MobileFlowsAuthToken" xml:space="preserve">
+    <value>Mobile Flows verificatietoken</value>
+  </data>
+  <data name="MobileFlowsAuthTokenHelp" xml:space="preserve">
+    <value>Genereert certificaat-JWT voor gebruik door Mobile Flows Server</value>
+  </data>
+  <data name="MobileFlowsServerUrl" xml:space="preserve">
+    <value>URL voor Mobile Flows Server</value>
+  </data>
+  <data name="MobileFlowsServerUrlHelp" xml:space="preserve">
+    <value>URL voor Mobile Flows Server</value>
+  </data>
+  <data name="MobileFlowsTenantAdd" xml:space="preserve">
+    <value>Mobile Flows-tenant toevoegen</value>
+  </data>
+  <data name="MobileFlowsTenantAddHelp" xml:space="preserve">
+    <value>Klanttenant inrichten in Mobile Flows-cloudservice</value>
+  </data>
+  <data name="ModifyAgentSet" xml:space="preserve">
+    <value>Hub wijzigen</value>
+  </data>
+  <data name="ModifyAgentSetHelp" xml:space="preserve">
+    <value>Beheert toegang voor het wijzigen van Hub-instellingen.</value>
+  </data>
+  <data name="MonitoringAd" xml:space="preserve">
+    <value>Bewaking</value>
+  </data>
+  <data name="MonitoringAdHelp" xml:space="preserve">
+    <value>Geeft toestemming om de bewakingsinstellingen weer te geven en te bewerken</value>
+  </data>
+  <data name="MoreHelp" xml:space="preserve">
+    <value>Beheert de toegang tot het menu Meer.  
+</value>
+  </data>
+  <data name="NacIntegrationSys" xml:space="preserve">
+    <value>NAC-integratie</value>
+  </data>
+  <data name="NacIntegrationSysHelp" xml:space="preserve">
+    <value>Beheert toegang tot de pagina Integratie van de controle van de netwerktoegang onder Algemeen.</value>
+  </data>
+  <data name="NavigateExportStatusHelp" xml:space="preserve">
+    <value>Toegang tot de overzichtspagina waar exportgegevens bekeken en gedownload kunnen worden.</value>
+  </data>
+  <data name="NavigationO" xml:space="preserve">
+    <value>Navigatie</value>
+  </data>
+  <data name="NavigationOHelp" xml:space="preserve">
+    <value>Toegang tot geavanceerde menu's</value>
+  </data>
+  <data name="NetworkAccessControlIntegrationHelp" xml:space="preserve">
+    <value>Beheert toegang tot de pagina Integratie van de controle van de netwerktoegang onder Algemeen. 
+</value>
+  </data>
+  <data name="NetworkDD" xml:space="preserve">
+    <value>Netwerk</value>
+  </data>
+  <data name="NetworkDDHelp" xml:space="preserve">
+    <value>Toegang tot de netwerkpagina in toesteldetails.</value>
+  </data>
+  <data name="NetworkRangeGr" xml:space="preserve">
+    <value>Netwerkbereik</value>
+  </data>
+  <data name="NetworkRangeGrHelp" xml:space="preserve">
+    <value>Netwerkbereiken voor organisatiegroepen beheren en importeren.</value>
+  </data>
+  <data name="NetworkRangeHelp" xml:space="preserve">
+    <value>Geeft toestemming om het scherm Netwerkbereik te bekijken</value>
+  </data>
+  <data name="NoFiltersSelected" xml:space="preserve">
+    <value>Geen filters geselecteerd</value>
+  </data>
+  <data name="NotesDD" xml:space="preserve">
+    <value>Notities</value>
+  </data>
+  <data name="NotesDDHelp" xml:space="preserve">
+    <value>Toestelnotities in toesteldetails toevoegen, bewerken en verwijderen.</value>
+  </data>
+  <data name="NotificationRecipients" xml:space="preserve">
+    <value>Ontvangersmelding</value>
+  </data>
+  <data name="NotificationsAd" xml:space="preserve">
+    <value>Meldingen</value>
+  </data>
+  <data name="NotificationsAdHelp" xml:space="preserve">
+    <value>Instellingen voor de melding van gebeurtenissen weergeven en bewerken.</value>
+  </data>
+  <data name="NotifyAb" xml:space="preserve">
+    <value>Melden</value>
+  </data>
+  <data name="NotifyAbHelp" xml:space="preserve">
+    <value>Meldingen via toestelapplicaties verzenden</value>
+  </data>
+  <data name="Office365MamIntegrationSettings" xml:space="preserve">
+    <value>Office 365 integratie-instellingen</value>
+  </data>
+  <data name="Office365MamIntegrationSettingsHelp" xml:space="preserve">
+    <value>Resource voor het beheren van het scherm met systeeminstellingen voor het toevoegen van standaard DLP-beleid voor Office 365-apps</value>
+  </data>
+  <data name="Old" xml:space="preserve">
+    <value>Oud</value>
+  </data>
+  <data name="OldPPO" xml:space="preserve">
+    <value>Oud</value>
+  </data>
+  <data name="OldPPOHelp" xml:space="preserve">
+    <value>Voorgaande instellingen van provisioningprofiel openen.</value>
+  </data>
+  <data name="OrganizationGroupChangeAd" xml:space="preserve">
+    <value>Wijziging van organisatiegroep</value>
+  </data>
+  <data name="OrganizationGroupChangeAdHelp" xml:space="preserve">
+    <value>Geeft toestemming om van organisatiegroep te wisselen middels een vervolgkeuzelijst</value>
+  </data>
+  <data name="OrganizationGroupCodeGr" xml:space="preserve">
+    <value>Organisatiegroep-ID</value>
+  </data>
+  <data name="OrganizationGroupCodeGrHelp" xml:space="preserve">
+    <value>Bewerk organisatiegroep-ID.</value>
+  </data>
+  <data name="OsUpdateStatusHelp" xml:space="preserve">
+    <value>Hiermee wordt de toegang beheerd om de status van een OS-update op apparaten te verkrijgen. Ga naar de weergave Toestellen / Details</value>
+  </data>
+  <data name="OutlookAddinSet" xml:space="preserve">
+    <value>Outlook Addin</value>
+  </data>
+  <data name="OutlookAddinSetHelp" xml:space="preserve">
+    <value>De Outlook-plug-in in-/uitschakelen</value>
+  </data>
+  <data name="OverrideJobLogLevelHelp" xml:space="preserve">
+    <value>Geeft de gebruiker het recht om het taaklogboekniveau te overschrijven via Toestelgegevens wanneer toestellen deze functionaliteit ondersteunen.</value>
+  </data>
+  <data name="OverviewHub" xml:space="preserve">
+    <value>Overzicht</value>
+  </data>
+  <data name="OverviewHubHelp" xml:space="preserve">
+    <value>Toegang tot de Monitor-overzichtspagina.</value>
+  </data>
+  <data name="P2PSetupHelp" xml:space="preserve">
+    <value>Instellingenpagina  met subsecties van verschillende P2P-leveranciers</value>
+  </data>
+  <data name="PasscodeDD" xml:space="preserve">
+    <value>Toegangscode</value>
+  </data>
+  <data name="PasscodeDDHelp" xml:space="preserve">
+    <value>Toegangscodes voor toestellen en applicaties wissen en opnieuw instellen.</value>
+  </data>
+  <data name="PerformanceTuningHelp" xml:space="preserve">
+    <value>Beheert toegang tot parameters voor Prestatie-afstemming in Systeeminstellingen.
+</value>
+  </data>
+  <data name="PerformanceTuningIns" xml:space="preserve">
+    <value>Prestatie-afstemming</value>
+  </data>
+  <data name="PerformanceTuningInsHelp" xml:space="preserve">
+    <value>Beheert toegang tot parameters voor Prestatie-afstemming in Systeeminstellingen.</value>
+  </data>
+  <data name="PersonalContentSet" xml:space="preserve">
+    <value>Persoonlijke inhoud</value>
+  </data>
+  <data name="PersonalContentSetHelp" xml:space="preserve">
+    <value>Geeft toestemming om de instellingen voor persoonlijke inhoud te wijzigen</value>
+  </data>
+  <data name="PlansTel" xml:space="preserve">
+    <value>Plannen</value>
+  </data>
+  <data name="PlansTelHelp" xml:space="preserve">
+    <value>Beheer geconfigureerde telecomabonnementen voor een organisatiegroep.</value>
+  </data>
+  <data name="PoliciesPPN" xml:space="preserve">
+    <value>Netwerkregels</value>
+  </data>
+  <data name="PoliciesPPNHelp" xml:space="preserve">
+    <value>Provisioningprofielen creëren en beheren.</value>
+  </data>
+  <data name="PolicyEngineSettingsEditHelp" xml:space="preserve">
+    <value>Rechten om de instellingen van de beleidsengine te bewerken. Ga naar Configureren \ Instellingen \ Beheer \ Instellingen netwerkbeleidsengine</value>
+  </data>
+  <data name="PolicyEngineSettingsViewHelp" xml:space="preserve">
+    <value>Geeft rechten om de instellingen van de beleidsengine weer te geven.</value>
+  </data>
+  <data name="PolicyOverrideEM" xml:space="preserve">
+    <value>Overschrijving van beleid</value>
+  </data>
+  <data name="PolicyOverrideEMHelp" xml:space="preserve">
+    <value>E-mailbeleid overschrijven om toestellen toe te staan of te weigeren.</value>
+  </data>
+  <data name="PolicySigningCertificateHelp" xml:space="preserve">
+    <value>Geeft rechten om het ECC-certificaat te uploaden. Ga naar Systeem \ Geavanceerd \ Beleidsondertekeningscertificaat</value>
+  </data>
+  <data name="PowerPM" xml:space="preserve">
+    <value>Aan/uit</value>
+  </data>
+  <data name="PowerPMHelp" xml:space="preserve">
+    <value>Beheert toegang tot de pagina met de voeding van de printer.</value>
+  </data>
+  <data name="PrinterManagementProfile" xml:space="preserve">
+    <value>Profiel voor printerbeheer</value>
+  </data>
+  <data name="PrinterManagementProfiles" xml:space="preserve">
+    <value>Profielen voor printerbeheer</value>
+  </data>
+  <data name="PrinterProfiles" xml:space="preserve">
+    <value>Printerprofielen</value>
+  </data>
+  <data name="PrinterProfilesHelp" xml:space="preserve">
+    <value>Beheert de toegang om het raster met printerprofielen te bekijken. Navigeer naar Menu\Printerbeheer\Profielen</value>
+  </data>
+  <data name="PrinterServersPM" xml:space="preserve">
+    <value>Printer-server</value>
+  </data>
+  <data name="PrinterServersPMHelp" xml:space="preserve">
+    <value>Print-servers op de pagina voor printerinstellingen weergeven, toevoegen en verwijderen.</value>
+  </data>
+  <data name="PrinterTestPrint" xml:space="preserve">
+    <value>Printer testafdruk</value>
+  </data>
+  <data name="PrinterTestPrintHelp" xml:space="preserve">
+    <value>Geeft toestemming om een testafdruk naar de printer te verzenden.</value>
+  </data>
+  <data name="PrinterViewAveryDennisonGeneralHelp" xml:space="preserve">
+    <value>Het tabblad Algemeen op de pagina met toestelgegevens voor Avery Dennison. </value>
+  </data>
+  <data name="PrinterViewCpclPM" xml:space="preserve">
+    <value>CPCL</value>
+  </data>
+  <data name="PrinterViewCpclPMHelp" xml:space="preserve">
+    <value>Beheert toegang tot de pagina met CPCL van de printer.</value>
+  </data>
+  <data name="PrinterViewDataMaxONeilAutoUpdateHelp" xml:space="preserve">
+    <value>Het tabblad 'AutoUpdate' voor de pagina met toestelgegevens voor het Datamax-apparaat. </value>
+  </data>
+  <data name="PrinterViewDataMaxONeilBatteryHelp" xml:space="preserve">
+    <value>Het tabblad 'Accu' op de pagina met toestelgegevens voor de Datamax-printer. </value>
+  </data>
+  <data name="PrinterViewDataMaxONeilBluetoothHelp" xml:space="preserve">
+    <value>Het tabblad 'Bluetooth' op de pagina met toestelgegevens voor het Datamax-apparaat. </value>
+  </data>
+  <data name="PrinterViewDataMaxONeilCustomSettingsHelp" xml:space="preserve">
+    <value>Het tabblad 'Aangepaste instellingen' op de pagina met toestelgegevens voor het Datamax-O'Neil-apparaat. </value>
+  </data>
+  <data name="PrinterViewDataMaxONeilGeneralHelp" xml:space="preserve">
+    <value>Het tabblad 'Algemeen' op de pagina met toestelgegevens voor het Datamax-apparaat.  </value>
+  </data>
+  <data name="PrinterViewDataMaxONeilGeneralNetworkHelp" xml:space="preserve">
+    <value>Het tabblad ' Algemeen netwerk' op de pagina met toestelgegevens voor het Datamax-apparaat. </value>
+  </data>
+  <data name="PrinterViewDataMaxONeilMediaLabelHelp" xml:space="preserve">
+    <value>Het tabblad 'Medialabel' op de pagina met toestelgegevens voor het Datamax-apparaat. </value>
+  </data>
+  <data name="PrinterViewDataMaxONeilMiscellaneousHelp" xml:space="preserve">
+    <value>Het tabblad 'Diversen' op de pagina met toestelgegevens voor het Datamax-apparaat. </value>
+  </data>
+  <data name="PrinterViewDataMaxONeilPrintControlHelp" xml:space="preserve">
+    <value>Het tabblad 'PrintControl' op de pagina met toestelgegevens voor het Datamax-apparaat. </value>
+  </data>
+  <data name="PrinterViewDataMaxONeilRS232Help" xml:space="preserve">
+    <value>Het tabblad 'RS232' op de pagina met toestelgegevens voor het Datamax-apparaat. </value>
+  </data>
+  <data name="PrinterViewDataMaxONeilSystemSettingsHelp" xml:space="preserve">
+    <value>Het tabblad 'Systeeminstellingen' op de pagina met toestelgegevens voor het Datamax-apparaat. </value>
+  </data>
+  <data name="PrinterViewDataMaxONeilWifiHelp" xml:space="preserve">
+    <value>Het tabblad 'WiFi' op de pagina met toestelgegevens voor het Datamax-apparaat. </value>
+  </data>
+  <data name="PrinterViewEpsonGeneral" xml:space="preserve">
+    <value>Epson printer toestelgegevens bekijken: Algemeen tabblad</value>
+  </data>
+  <data name="PrinterViewEpsonGeneralHelp" xml:space="preserve">
+    <value>Epson printer toestelgegevens bekijken</value>
+  </data>
+  <data name="PrinterViewEpsonPrintSettingsHelp" xml:space="preserve">
+    <value>Geeft gebruikers toegang tot de Epson-afdrukinstellingen</value>
+  </data>
+  <data name="PrivacySet" xml:space="preserve">
+    <value>Privacy</value>
+  </data>
+  <data name="PrivacySetHelp" xml:space="preserve">
+    <value>Beheert toegang tot de pagina voor privacy onder Algemeen.</value>
+  </data>
+  <data name="ProductImprovementProgramSettings" xml:space="preserve">
+    <value>Instellingen voor het programma voor productverbetering</value>
+  </data>
+  <data name="ProductImprovementProgramSettingsHelp" xml:space="preserve">
+    <value>Hiermee regelt u de toegang tot de pagina met instellingen voor productverbeteringsprogramma's in Instellingen &gt; Beheer &gt; Productverbeteringsprogramma's.</value>
+  </data>
+  <data name="ProductivityAppsAb" xml:space="preserve">
+    <value>Productiviteitsapplicaties</value>
+  </data>
+  <data name="ProductProvisioningHub" xml:space="preserve">
+    <value>Productprovisioning</value>
+  </data>
+  <data name="ProductProvisioningHubHelp" xml:space="preserve">
+    <value>Rapporten voor productprovisioning genereren.</value>
+  </data>
+  <data name="ProductProvisioningSettingsHelp" xml:space="preserve">
+    <value>Configureer bepaalde functies voor productprovisioning.</value>
+  </data>
+  <data name="ProductSetsHelp" xml:space="preserve">
+    <value>Beheert toegang tot productsets onder Nieuwe producten</value>
+  </data>
+  <data name="ProfileEncryptAndExportXmlDM" xml:space="preserve">
+    <value>Profielencryptie en XML-export</value>
+  </data>
+  <data name="ProfileEncryptAndExportXmlDMHelp" xml:space="preserve">
+    <value>Certificatie voor profielencryptie uploaden en XML-profiel exporteren.</value>
+  </data>
+  <data name="ProfilesApple" xml:space="preserve">
+    <value>Profielen</value>
+  </data>
+  <data name="ProfilesAppleHelp" xml:space="preserve">
+    <value>Beheert toegang tot de pagina Profielen onder iOS.</value>
+  </data>
+  <data name="ProfilesDD" xml:space="preserve">
+    <value>Profielen</value>
+  </data>
+  <data name="ProfilesDDHelp" xml:space="preserve">
+    <value>Configuratieprofielen in toesteldetails weergeven en beheren.</value>
+  </data>
+  <data name="ProfilesHub" xml:space="preserve">
+    <value>Profielen</value>
+  </data>
+  <data name="ProfilesHubHelp" xml:space="preserve">
+    <value>Rapporten voor toestelprofielen genereren.</value>
+  </data>
+  <data name="ProfilesPM" xml:space="preserve">
+    <value>Profielen</value>
+  </data>
+  <data name="ProfilesPMHelp" xml:space="preserve">
+    <value>Beheert toegang tot de pagina Printerprofielen.</value>
+  </data>
+  <data name="ProfilesPPN" xml:space="preserve">
+    <value>Profielen</value>
+  </data>
+  <data name="ProfilesPPNHelp" xml:space="preserve">
+    <value>Pagina met provisioningprofielen openen.</value>
+  </data>
+  <data name="ProfilesPr" xml:space="preserve">
+    <value>Profielen</value>
+  </data>
+  <data name="ProfilesPrHelp" xml:space="preserve">
+    <value>Beheer printerprofielen</value>
+  </data>
+  <data name="ProfilesRESTMdm" xml:space="preserve">
+    <value>Profielen</value>
+  </data>
+  <data name="ProfilesRESTMdmHelp" xml:space="preserve">
+    <value>REST API's voor toestelprofielen</value>
+  </data>
+  <data name="ProvisioningHelp" xml:space="preserve">
+    <value>Beheert de toegang tot de pagina WinMo-provisioning.</value>
+  </data>
+  <data name="ProvisioningPolicyConditionCopyHelp" xml:space="preserve">
+    <value>Geeft gebruiker rechten om een voor waarde te kopiëren.</value>
+  </data>
+  <data name="ProvisioningPolicyFileActionCopyHelp" xml:space="preserve">
+    <value>Geeft een gebruiker het recht om een provisioningbestand/-actie te kopiëren.</value>
+  </data>
+  <data name="ProxiesAndTunnelHelp" xml:space="preserve">
+    <value>Geef rechten om Proxy- en Tunnel-instellingen weer te geven en te bewerken</value>
+  </data>
+  <data name="ProxyIns" xml:space="preserve">
+    <value>Proxy</value>
+  </data>
+  <data name="ProxyInsHelp" xml:space="preserve">
+    <value>Beheert toegang tot de pagina Proxy-instellingen onder Algemeen.</value>
+  </data>
+  <data name="PublicAppsAb" xml:space="preserve">
+    <value>Publieke applicaties</value>
+  </data>
+  <data name="PublicAppsAbHelp" xml:space="preserve">
+    <value>Applicaties van de Public Store toewijzen en beheren.</value>
+  </data>
+  <data name="PullServiceInstallersPPN" xml:space="preserve">
+    <value>Pull Service-installatieprogramma's</value>
+  </data>
+  <data name="PullServiceInstallersPPNHelp" xml:space="preserve">
+    <value>Bekijk en download installatieprogramma's voor 'Pull service'.</value>
+  </data>
+  <data name="PurchasedApplicationsAb" xml:space="preserve">
+    <value>Gekochte applicaties</value>
+  </data>
+  <data name="PurchasedApplicationsAbHelp" xml:space="preserve">
+    <value>Importeer applicatielicenties die in grote aantallen gekocht zijn en beheer de distributie van de licenties.</value>
+  </data>
+  <data name="QnxSet" xml:space="preserve">
+    <value>QNX</value>
+  </data>
+  <data name="QnxSetHelp" xml:space="preserve">
+    <value>Beheert de toegang tot de pagina voor Agent-instellingen onder QNX.</value>
+  </data>
+  <data name="QRCodeHelp" xml:space="preserve">
+    <value>Inschrijving met QR-code configureren</value>
+  </data>
+  <data name="QueryDD" xml:space="preserve">
+    <value>Query</value>
+  </data>
+  <data name="QueryDDHelp" xml:space="preserve">
+    <value>Vraag toestellen om de informatie van de toestelstatus te updaten.</value>
+  </data>
+  <data name="ReadDeviceManufacturerDetails" xml:space="preserve">
+    <value>Gegevens van apparaatfabrikant lezen</value>
+  </data>
+  <data name="ReadDeviceManufacturerDetailsHelp" xml:space="preserve">
+    <value>Gegevens van apparaatfabrikant lezen via API</value>
+  </data>
+  <data name="ReadDeviceModelDetails" xml:space="preserve">
+    <value>Gegevens van apparaatmodel lezen</value>
+  </data>
+  <data name="ReadDeviceModelDetailsHelp" xml:space="preserve">
+    <value>Gegevens van apparaatmodel lezen via API</value>
+  </data>
+  <data name="RefreshEsimHelp" xml:space="preserve">
+    <value>Geeft rechten om het eSIM mobiele abonnement te updaten</value>
+  </data>
+  <data name="RegistryManagerHelp" xml:space="preserve">
+    <value>Geeft toestemming om vanop afstand het register van WinMo-toestellen te raadplegen
+</value>
+  </data>
+  <data name="RelayServerBatching" xml:space="preserve">
+    <value>Bulkverwerking relayserver</value>
+  </data>
+  <data name="RelayServerBatchingHelp" xml:space="preserve">
+    <value>Regelt toegang tot batchimport en batchstatus voor relayserver</value>
+  </data>
+  <data name="RelayServerRemoteFileList" xml:space="preserve">
+    <value>Externe bestanden relayserver</value>
+  </data>
+  <data name="RelayServerRemoteFileListHelp" xml:space="preserve">
+    <value>Regelt toegang tot Externe bestanden relayserver</value>
+  </data>
+  <data name="RelayServersPPN" xml:space="preserve">
+    <value>Relayservers</value>
+  </data>
+  <data name="RelayServersPPNHelp" xml:space="preserve">
+    <value>Bekijk en beheer provisioningrelayservers.</value>
+  </data>
+  <data name="RemoteControlDD" xml:space="preserve">
+    <value>Bediening op afstand</value>
+  </data>
+  <data name="RemoteControlDDHelp" xml:space="preserve">
+    <value>Toestel op afstand bedienen.</value>
+  </data>
+  <data name="RemoteManagementSettingsEditHelp" xml:space="preserve">
+    <value>Regelt bewerkingstoegang tot de pagina Extern beheer onder Bedrijfsintegratie. Ga naar Configuratie \ Systeeminstellingen \ Bedrijfsintegratie \ Extern beheer</value>
+  </data>
+  <data name="RemoteSet" xml:space="preserve">
+    <value>Extern</value>
+  </data>
+  <data name="RemoteSetHelp" xml:space="preserve">
+    <value>Geeft toestemming om instellingen voor externe opslag te bewerken.</value>
+  </data>
+  <data name="RemoveDeviceEnrollmentProgram" xml:space="preserve">
+    <value>Verwijder profiel van het inschrijvingsprogramma</value>
+  </data>
+  <data name="RemoveDeviceEnrollmentProgramHelp" xml:space="preserve">
+    <value>Regelt de toegang tot het verwijderen van DEP-profielen van toestellen. Ga naar de pagina Inschrijvingsstatus</value>
+  </data>
+  <data name="RenameDeviceHelp" xml:space="preserve">
+    <value>Commando om de naam van een toestel te wijzigen. </value>
+  </data>
+  <data name="RenewCertificateHelp" xml:space="preserve">
+    <value>Geeft toestemming om een certificaat te vernieuwen. 
+</value>
+  </data>
+  <data name="RepairHub" xml:space="preserve">
+    <value>Hub herstellen</value>
+  </data>
+  <data name="RepairHubHelp" xml:space="preserve">
+    <value>Geeft toestemming om Hub op het toestel te repareren.</value>
+  </data>
+  <data name="ReportIOS7Compatability" xml:space="preserve">
+    <value>iOS 7 compatibiliteit</value>
+  </data>
+  <data name="ReportIOS7CompatabilityHelp" xml:space="preserve">
+    <value>Geeft toegang tot het rapport van iOS 7 compatibiliteit</value>
+  </data>
+  <data name="ReportsAlertsSys" xml:space="preserve">
+    <value>Rapporten en waarschuwingen</value>
+  </data>
+  <data name="ReportsAlertsSysHelp" xml:space="preserve">
+    <value>Beheert toegang tot rapporten en meldingen</value>
+  </data>
+  <data name="ReportsIns" xml:space="preserve">
+    <value>Rapporten</value>
+  </data>
+  <data name="ReportsInsHelp" xml:space="preserve">
+    <value>Beheert toegang tot de pagina Rapporten onder Installatie.</value>
+  </data>
+  <data name="RepositoriesCM" xml:space="preserve">
+    <value>Opslagplaatsen</value>
+  </data>
+  <data name="RepositoriesCMHelp" xml:space="preserve">
+    <value>Inhoudsopslagplaatsen toevoegen, bewerken en verwijderen.</value>
+  </data>
+  <data name="ReputationAnalysisAb" xml:space="preserve">
+    <value>Reputatie-analyse</value>
+  </data>
+  <data name="ReputationAnalysisAbHelp" xml:space="preserve">
+    <value>Applicatiereputatieanalyse uitvoeren en de resultaten bekijken.</value>
+  </data>
+  <data name="RequestCheckinDD" xml:space="preserve">
+    <value>Inchecken aanvragen</value>
+  </data>
+  <data name="RequestCheckinDDHelp" xml:space="preserve">
+    <value>Verzend een bericht naar het toestel met de vraag om in te checken. Beschikbaar in toesteldetails.</value>
+  </data>
+  <data name="ResBlueprints" xml:space="preserve">
+    <value>Blueprints</value>
+  </data>
+  <data name="ResBlueprintsHelp" xml:space="preserve">
+    <value>Creëer één centrale locatie waar u applicaties, resources en beperkingsbeleid aan gebruikers en toestellen kunt toevoegen en/of koppelen.</value>
+  </data>
+  <data name="ResCompliancePolicy" xml:space="preserve">
+    <value>Netwerkbeleid</value>
+  </data>
+  <data name="ResCompliancePolicyHelp" xml:space="preserve">
+    <value>Toegang tot informatie over netwerkbeleid via REST APIs</value>
+  </data>
+  <data name="ResConsoleNotifications" xml:space="preserve">
+    <value>Console-meldingen</value>
+  </data>
+  <data name="ResConsoleNotificationsHelp" xml:space="preserve">
+    <value>Bekijk naar en communiceren met de administratieve kennisgevingen van de Console</value>
+  </data>
+  <data name="ResCustomAttributes" xml:space="preserve">
+    <value>Aangepaste eigenschappen</value>
+  </data>
+  <data name="ResCustomAttributesHelp" xml:space="preserve">
+    <value>REST API voor toegang tot aangepaste eigenschappen</value>
+  </data>
+  <data name="ResCustomReports" xml:space="preserve">
+    <value>Aangepaste rapporten</value>
+  </data>
+  <data name="ResCustomReportsHelp" xml:space="preserve">
+    <value>Toegang tot aangepaste rapporten</value>
+  </data>
+  <data name="ResDirectMEMAdvLog" xml:space="preserve">
+    <value>Direct, geavanceerd MEM-logboekregistratie</value>
+  </data>
+  <data name="ResDirectMEMAdvLogHelp" xml:space="preserve">
+    <value>Deze functie, die u in het MEM-dashboard kunt vinden, laat u geavanceerde logboekregistratie per toestel voor de MEG-wachtrij zien in de Console.</value>
+  </data>
+  <data name="ResEmailNotification" xml:space="preserve">
+    <value>Instellingen van de e-mailmeldingservice</value>
+  </data>
+  <data name="ResEmailNotificationHelp" xml:space="preserve">
+    <value>ENS-instellingen beheren.</value>
+  </data>
+  <data name="ResGlobalServiceExchange" xml:space="preserve">
+    <value>AppleCare</value>
+  </data>
+  <data name="ResGlobalServiceExchangeHelp" xml:space="preserve">
+    <value>Beheert toegang tot de pagina voor AppleCare onder Apple.</value>
+  </data>
+  <data name="ResJasperIntegration" xml:space="preserve">
+    <value>Jasper-integratie</value>
+  </data>
+  <data name="ResJasperIntegrationHelp" xml:space="preserve">
+    <value>Jasper integratie-instellingen beheren.</value>
+  </data>
+  <data name="ResLifecycleNotifications" xml:space="preserve">
+    <value>Levenscyclusmeldingen</value>
+  </data>
+  <data name="ResLifecycleNotificationsHelp" xml:space="preserve">
+    <value>Toegang tot Levenscyclus meldingen in toesteldetails.</value>
+  </data>
+  <data name="ResMutualTlsAuthentication" xml:space="preserve">
+    <value>Tweezijdige TLS-verificatie</value>
+  </data>
+  <data name="ResMutualTlsAuthenticationHelp" xml:space="preserve">
+    <value>Configureer tweezijdige TLS-verificatie-instellingen tussen de Workspace ONE Intelligent Hub en Workspace ONE UEM server</value>
+  </data>
+  <data name="ResNotifications" xml:space="preserve">
+    <value>Meldingen</value>
+  </data>
+  <data name="ResNotificationsHelp" xml:space="preserve">
+    <value>Bekijk naar en communiceren met de administratieve kennisgevingen van de Console</value>
+  </data>
+  <data name="ResOverrideJobLogLevel" xml:space="preserve">
+    <value>Niveau van taaklogboek overschrijven</value>
+  </data>
+  <data name="ResOverrideJobLogLevelHelp" xml:space="preserve">
+    <value>Toegang tot het overschrijven van de instellingen van het taaklogniveau</value>
+  </data>
+  <data name="ResProductProvisioning" xml:space="preserve">
+    <value>Productprovisioning</value>
+  </data>
+  <data name="ResProductProvisioningHelp" xml:space="preserve">
+    <value>Instellingen voor productprovisioning op een groepsniveau beheren.</value>
+  </data>
+  <data name="ResProducts" xml:space="preserve">
+    <value>Producten</value>
+  </data>
+  <data name="ResProductSets" xml:space="preserve">
+    <value>Productensets</value>
+  </data>
+  <data name="ResProductSetsHelp" xml:space="preserve">
+    <value>De mogelijkheid om productensets te bekijken en beheren.</value>
+  </data>
+  <data name="ResProductsHelp" xml:space="preserve">
+    <value>Geeft toegang tot de verzameling Producten via de REST-API’s van de Console.</value>
+  </data>
+  <data name="RestAPIAirWatchEducationWrite" xml:space="preserve">
+    <value>REST API instellingen voor onderwijs lezen</value>
+  </data>
+  <data name="RestAPIAirWatchEducationWriteHelp" xml:space="preserve">
+    <value>REST API voor het opslaan en bewerken van instellingen voor Onderwijs</value>
+  </data>
+  <data name="RestApiCartDelete" xml:space="preserve">
+    <value>Rest API kar verwijderen</value>
+  </data>
+  <data name="RestApiCartDeleteHelp" xml:space="preserve">
+    <value>REST API om kargegevens te verwijderen</value>
+  </data>
+  <data name="RestApiCartWrite" xml:space="preserve">
+    <value>REST API kar schrijven</value>
+  </data>
+  <data name="RestApiCartWriteHelp" xml:space="preserve">
+    <value>REST API om kargegevens op te slaan en te bewerken</value>
+  </data>
+  <data name="RestApiClassAssignmentSave" xml:space="preserve">
+    <value>REST API klastoewijzingen opslaan</value>
+  </data>
+  <data name="RestApiClassAssignmentSaveHelp" xml:space="preserve">
+    <value>REST API aanroep om klastoewijzingen op te slaan</value>
+  </data>
+  <data name="RestAPIClassDelete" xml:space="preserve">
+    <value>REST API klas verwijderen</value>
+  </data>
+  <data name="RestAPIClassDeleteHelp" xml:space="preserve">
+    <value>REST API om klasgegevens te verwijderen</value>
+  </data>
+  <data name="RestAPIClassLoad" xml:space="preserve">
+    <value>REST API klas lezen</value>
+  </data>
+  <data name="RestAPIClassLoadHelp" xml:space="preserve">
+    <value>REST API om klasgegevens te bekijken</value>
+  </data>
+  <data name="RestAPIClassWrite" xml:space="preserve">
+    <value>REST API klas schrijven</value>
+  </data>
+  <data name="RestAPIClassWriteHelp" xml:space="preserve">
+    <value>REST API om klasgegevens op te slaan en te bewerken</value>
+  </data>
+  <data name="RestApiEduAppsForDeviceRead" xml:space="preserve">
+    <value>REST API-apps voor toestel lezen</value>
+  </data>
+  <data name="RestApiEduAppsForDeviceReadhelp" xml:space="preserve">
+    <value>REST API om een lijst te verkrijgen van apps die in aanmerking komen voor een toestel</value>
+  </data>
+  <data name="RestAPILoadEducation" xml:space="preserve">
+    <value>REST API onderwijsinstellingen lezen</value>
+  </data>
+  <data name="RestAPILoadEducationHelp" xml:space="preserve">
+    <value>REST API om instellingen voor Onderwijs te zien</value>
+  </data>
+  <data name="RestApiPersonEnrollmentUserMapWrite" xml:space="preserve">
+    <value>REST API Apple School Manager toewijzen</value>
+  </data>
+  <data name="RestApiPersonEnrollmentUserMapWriteHelp" xml:space="preserve">
+    <value>REST API om een inschrijvingsgebruiker toe te wijzen aan een deelnemer aan Apple School Manager</value>
+  </data>
+  <data name="RestApiRosterSyncRead" xml:space="preserve">
+    <value>REST API Apple School Manager synchr. lezen</value>
+  </data>
+  <data name="RestApiRosterSyncReadHelp" xml:space="preserve">
+    <value>REST API om de synchronisatiestatus van Apple School Manager te bekijken</value>
+  </data>
+  <data name="RestApiRosterSyncWrite" xml:space="preserve">
+    <value>REST API Apple School Manager schrijven</value>
+  </data>
+  <data name="RestApiRosterSyncWriteHelp" xml:space="preserve">
+    <value>REST API om synchronisatie van Apple School Manager te initiëren</value>
+  </data>
+  <data name="RestApiUpdatesPolicyDelete" xml:space="preserve">
+    <value>Beleid voor updates verwijderingstoegang</value>
+  </data>
+  <data name="RestApiUpdatesPolicyDeleteHelp" xml:space="preserve">
+    <value>Schakelt toegang in tot alle verwijderings-API's in het beleid voor updates.</value>
+  </data>
+  <data name="RestApiUpdatesPolicyExecute" xml:space="preserve">
+    <value>Beleid voor updates uitvoeringstoegang</value>
+  </data>
+  <data name="RestApiUpdatesPolicyExecuteHelp" xml:space="preserve">
+    <value>Schakelt toegang in tot alle uitvoerings-API's in het beleid voor updates.</value>
+  </data>
+  <data name="RestApiUpdatesPolicyRead" xml:space="preserve">
+    <value>Beleid voor updates leestoegang</value>
+  </data>
+  <data name="RestApiUpdatesPolicyReadHelp" xml:space="preserve">
+    <value>Schakelt toegang in tot alle alleen-lezen-API's in het beleid voor updates.</value>
+  </data>
+  <data name="RestApiUpdatesPolicyWrite" xml:space="preserve">
+    <value>Beleid voor updates schrijftoegang</value>
+  </data>
+  <data name="RestApiUpdatesPolicyWriteHelp" xml:space="preserve">
+    <value>Schakelt toegang in tot alle schrijf-API's in het beleid voor updates.</value>
+  </data>
+  <data name="RestEnterpiseIntegration" xml:space="preserve">
+    <value>REST-bedrijfsintegratie</value>
+  </data>
+  <data name="RestEnterpiseIntegrationHelp" xml:space="preserve">
+    <value>REST API's voor bedrijfsintegratie</value>
+  </data>
+  <data name="RestrictedActionsSec" xml:space="preserve">
+    <value>Afgeschermde acties</value>
+  </data>
+  <data name="RestrictedActionsSecHelp" xml:space="preserve">
+    <value>Geeft toestemming om het scherm voor afgeschermde acties weer te geven.</value>
+  </data>
+  <data name="RestrictionsDD" xml:space="preserve">
+    <value>Beperkingen</value>
+  </data>
+  <data name="RestrictionsDDHelp" xml:space="preserve">
+    <value>Vraag de huidige beperkingen op die van toepassing zijn op een toestel.</value>
+  </data>
+  <data name="ResVideo" xml:space="preserve">
+    <value>Video</value>
+  </data>
+  <data name="ResVideoHelp" xml:space="preserve">
+    <value>Beheer instellingen voor de video-applicatie</value>
+  </data>
+  <data name="ResWebApps" xml:space="preserve">
+    <value>Web-apps</value>
+  </data>
+  <data name="ResWebAppsHelp" xml:space="preserve">
+    <value>Web-apps toewijzen en beheren</value>
+  </data>
+  <data name="RetentionAd" xml:space="preserve">
+    <value>Bewaren</value>
+  </data>
+  <data name="RetentionAdHelp" xml:space="preserve">
+    <value>Geeft toestemming om waarschuwingen te verwijderen.</value>
+  </data>
+  <data name="RevokeCertificateHelp" xml:space="preserve">
+    <value>Geeft toestemming om een certificaat in te trekken. 
+</value>
+  </data>
+  <data name="RotateRecoveryKeyHelp" xml:space="preserve">
+    <value>Biedt beheerders toegang tot on-demand rotatieatie van een gecodeerde persoonlijke herstelsleutel voor macOS-apparaten.</value>
+  </data>
+  <data name="RoutingPoliciesHub" xml:space="preserve">
+    <value>Routeringsbeleid</value>
+  </data>
+  <data name="RoutingPoliciesHubHelp" xml:space="preserve">
+    <value>Bekijk en beheer het beleid ten aanzien van het doorsturen van waarschuwingen</value>
+  </data>
+  <data name="SaveListViewFilters" xml:space="preserve">
+    <value>Lijstweergavefilters opslaan</value>
+  </data>
+  <data name="SaveListViewFiltersHelp" xml:space="preserve">
+    <value>Hiermee kunnen beheerders filters opslaan op lijstweergavepagina's</value>
+  </data>
+  <data name="ScepApple" xml:space="preserve">
+    <value>SCEP</value>
+  </data>
+  <data name="ScepAppleHelp" xml:space="preserve">
+    <value>Beheert toegang tot de SCEP-pagina onder iOS.</value>
+  </data>
+  <data name="ScepCertificateHelp" xml:space="preserve">
+    <value>Regelt de toegang tot de SCEP Certificate Tool. </value>
+  </data>
+  <data name="SdkAnalyticsAb" xml:space="preserve">
+    <value>SDK-analyse</value>
+  </data>
+  <data name="SdkAnalyticsAbHelp" xml:space="preserve">
+    <value>Beheert toegang tot de pagina SDK-analyse voor applicatiebeheer.</value>
+  </data>
+  <data name="SdkIos" xml:space="preserve">
+    <value>SDK</value>
+  </data>
+  <data name="SdkIosHelp" xml:space="preserve">
+    <value>Instellingen voor het configureren van de SDK-applicatiebeveiliging.</value>
+  </data>
+  <data name="SearchDevicesDM" xml:space="preserve">
+    <value>Toestellen zoeken</value>
+  </data>
+  <data name="SearchDevicesDMHelp" xml:space="preserve">
+    <value>Toegang tot het menu voor toestel zoeken binnen toestelbeheer.</value>
+  </data>
+  <data name="SearchNotesHelp" xml:space="preserve">
+    <value>Geeft toestemming om notities en labels te doorzoeken</value>
+  </data>
+  <data name="SearchUserAccounts" xml:space="preserve">
+    <value>Zoeken</value>
+  </data>
+  <data name="SearchUserAccountsHelp" xml:space="preserve">
+    <value>Toegang tot de gebruikersoptie van de zoekbalk.</value>
+  </data>
+  <data name="SecureChannelCertificateHelp" xml:space="preserve">
+    <value>Certificaat uploaden om het kanaal te beveiligen.
+</value>
+  </data>
+  <data name="SecurityInfoDD" xml:space="preserve">
+    <value>Beveiligingsinformatie</value>
+  </data>
+  <data name="SecurityInfoDDHelp" xml:space="preserve">
+    <value>Toegang tot de controle-informatie voor een toestel.</value>
+  </data>
+  <data name="SecuritySec" xml:space="preserve">
+    <value>Beveiliging</value>
+  </data>
+  <data name="SecuritySecHelp" xml:space="preserve">
+    <value>Geeft toestemming om het beveiligingsscherm weer te geven.</value>
+  </data>
+  <data name="ServiceUrlsHelp" xml:space="preserve">
+    <value>Geeft toestemming om service-URL's te bewerken (bijv. eindpunten voor identiteitsbeheer).
+</value>
+  </data>
+  <data name="SettingsAndPoliciesSet" xml:space="preserve">
+    <value>Instellingen en beleid</value>
+  </data>
+  <data name="SettingsAndPoliciesSetHelp" xml:space="preserve">
+    <value>Beheert toegang tot de pagina's voor instellingen en beleid van applicaties.</value>
+  </data>
+  <data name="SettingsAttributeHelp" xml:space="preserve">
+    <value>Regelt toegang tot kenmerkpagina onder Algemeen. Ga naar Configuratie \ Systeeminstellingen \ Toestel \ Algemeen</value>
+  </data>
+  <data name="SettingsAuditAd" xml:space="preserve">
+    <value>Audit van instellingen</value>
+  </data>
+  <data name="SettingsAuditAdHelp" xml:space="preserve">
+    <value>Schakelt de audit van de instellingen in/uit via de systeemcodes.</value>
+  </data>
+  <data name="SettingsDeviceAdvanced" xml:space="preserve">
+    <value>Geavanceerde toestelinstellingen</value>
+  </data>
+  <data name="SettingsDeviceAdvancedHelp" xml:space="preserve">
+    <value>Regelt de toegang tot de pagina Geavanceerd onder Toestellen en gebruikers. Navigeer naar Configuratie\Systeeminstellingen\Toestel en gebruikers\Geavanceerd</value>
+  </data>
+  <data name="SettingsDeviceEnrollmentProgramHelp" xml:space="preserve">
+    <value>Regelt de toegang tot het toestelinschrijvingsprogramma. Ga naar Configuratie \ Systeeminstellingen \ Toestel \ Apple</value>
+  </data>
+  <data name="SettingsDeviceGeneralAdvanced" xml:space="preserve">
+    <value>Instellingen Toestel Algemeen Geavanceerd</value>
+  </data>
+  <data name="SettingsDeviceGeneralAdvancedHelp" xml:space="preserve">
+    <value>Regelt de toegang tot de pagina Geavanceerd onder Algemeen. Navigeer naar Instellingen\Toestellen en gebruikers\Algemeen\Geavanceerd</value>
+  </data>
+  <data name="SettingsEm" xml:space="preserve">
+    <value>Instellingen</value>
+  </data>
+  <data name="SettingsEmHelp" xml:space="preserve">
+    <value>Beheert toegang tot e-mailinstellingen.</value>
+  </data>
+  <data name="SettingsEnrollmentUserPasswordPolicyEditHelp" xml:space="preserve">
+    <value>Regelt de bewerkingstoegang tot de pagina Wachtwoordinstellingen onder Toestellen en gebruikers. Ga naar Configuratie \ Toestellen en gebruikers \ Instellingen \ Algemeen \ Beveiliging  \ Wachtwoorden</value>
+  </data>
+  <data name="SettingsEnrollmentUserPasswordPolicyViewHelp" xml:space="preserve">
+    <value>Regelt de weergavetoegang tot de pagina Wachtwoordinstellingen onder Toestellen en gebruikers. Ga naar Configuratie \ Toestellen en gebruikers \ Instellingen \ Algemeen \ Beveiliging  \ Wachtwoorden</value>
+  </data>
+  <data name="SettingsHeaderBasedAuthenticationHelp" xml:space="preserve">
+    <value>Regelt de toegang tot de pagina Externe verificatie onder Bedrijfsintegratie. Ga naar Instellingen \ Systeem \ Bedrijfsintegratie</value>
+  </data>
+  <data name="SettingsLinux" xml:space="preserve">
+    <value>Instellingen Linux</value>
+  </data>
+  <data name="SettingsLinuxAgentApplication" xml:space="preserve">
+    <value>Instellingen Intelligent Hub-applicatie voor Linux</value>
+  </data>
+  <data name="SettingsLinuxAgentApplicationHelp" xml:space="preserve">
+    <value>Regelt toegang tot de instellingenpagina van de Intelligent Hub-applicatie voor Linux</value>
+  </data>
+  <data name="SettingsLinuxAgentSettings" xml:space="preserve">
+    <value>Linux-instellingen voor Intelligent Hub</value>
+  </data>
+  <data name="SettingsLinuxAgentSettingsHelp" xml:space="preserve">
+    <value>Regelt toegang tot de instellingenpagina van de Intelligent Hub onder Linux. Ga naar Instellingen \ Toestellen en gebruikers \ Linux</value>
+  </data>
+  <data name="SettingsLinuxHelp" xml:space="preserve">
+    <value>Regelt toegang tot de instellingenpagina van de Intelligent Hub onder Linux. Ga naar Instellingen \ Toestellen en gebruikers \ Linux</value>
+  </data>
+  <data name="SettingsOnlyValidAtPartnerOrCustomer" xml:space="preserve">
+    <value>SaaS-meldingen kunnen niet worden weergegeven op het huidige niveau van de organisatiegroep. Selecteer een OG op klant- of partnerniveau om SaaS-meldingen te bekijken.</value>
+  </data>
+  <data name="SettingsOverridesAd" xml:space="preserve">
+    <value>Instellingen opheffen</value>
+  </data>
+  <data name="SettingsOverridesAdHelp" xml:space="preserve">
+    <value>Overschrijvingen van gebeurtenislogs weergeven en bewerken.</value>
+  </data>
+  <data name="SettingsQnxAgentSettingsHelp" xml:space="preserve">
+    <value>Regelt toegang tot de pagina Agentinstellingen onder Qnx. Ga naar Configuratie \ Systeeminstellingen \ Toestel \ Qnx</value>
+  </data>
+  <data name="SharedDevicesSet" xml:space="preserve">
+    <value>Gedeelde toestellen</value>
+  </data>
+  <data name="SharedDevicesSetHelp" xml:space="preserve">
+    <value>Beheert toegang tot de pagina voor gedeelde toestellen</value>
+  </data>
+  <data name="SmartGroupsAb" xml:space="preserve">
+    <value>Smart groups</value>
+  </data>
+  <data name="SmartGroupsAbHelp" xml:space="preserve">
+    <value>Smart group-toewijzingen voor applicaties bewerken</value>
+  </data>
+  <data name="SmartGroupsGr" xml:space="preserve">
+    <value>Smart groups</value>
+  </data>
+  <data name="SmartGroupsGrHelp" xml:space="preserve">
+    <value>Smart groups weergeven, bewerken en verwijderen.</value>
+  </data>
+  <data name="SoftwareInventoryWM" xml:space="preserve">
+    <value>Software-inventaris</value>
+  </data>
+  <data name="SoftwareInventoryWMHelp" xml:space="preserve">
+    <value>Toegang tot de pagina voor WinMo software-inventaris.</value>
+  </data>
+  <data name="SslPinningSec" xml:space="preserve">
+    <value>SSL Pinning</value>
+  </data>
+  <data name="SslPinningSecHelp" xml:space="preserve">
+    <value>Geeft toestemming om het scherm voor SSL-pinning weer te geven.</value>
+  </data>
+  <data name="StagingPPN" xml:space="preserve">
+    <value>Voorbereide inrichting</value>
+  </data>
+  <data name="StagingPPNHelp" xml:space="preserve">
+    <value>Beheren van definities voor voorbereide inrichting (staging) voor provisioningbeleid.</value>
+  </data>
+  <data name="StartAwcm" xml:space="preserve">
+    <value>Start AWCM</value>
+  </data>
+  <data name="StatusHistoryDD" xml:space="preserve">
+    <value>Statusgeschiedenis</value>
+  </data>
+  <data name="StatusHistoryDDHelp" xml:space="preserve">
+    <value>Geschiedenis voor inschrijving- en conformiteitsstatus voor een toestel weergeven.</value>
+  </data>
+  <data name="StopAwcm" xml:space="preserve">
+    <value>Stop AWCM</value>
+  </data>
+  <data name="SummaryInfoPM" xml:space="preserve">
+    <value>Samenvattingsinformatie</value>
+  </data>
+  <data name="SummaryInfoPMHelp" xml:space="preserve">
+    <value>Beheert toegang tot de pagina met samenvattingsinformatie voor de printer</value>
+  </data>
+  <data name="SuspendBitlockerEncryptionHelp" xml:space="preserve">
+    <value>Voor het configureren moet u de BitLocker-versleuteling op de pagina met toestelgegevens opheffen</value>
+  </data>
+  <data name="SymbianDev" xml:space="preserve">
+    <value>Symbian</value>
+  </data>
+  <data name="SymbianDevHelp" xml:space="preserve">
+    <value>Beheert toegang tot de Symbian-pagina onder toestel.</value>
+  </data>
+  <data name="SyncDD" xml:space="preserve">
+    <value>Toestelinstellingen synchroniseren</value>
+  </data>
+  <data name="SyncDDHelp" xml:space="preserve">
+    <value>Toestelinstellingen zoals profielen en applicaties op afstand synchroniseren.</value>
+  </data>
+  <data name="SyncDeviceEnrollmentProgram" xml:space="preserve">
+    <value>Inschrijvingsprogramma synchroniseer toestellen</value>
+  </data>
+  <data name="SyncDeviceEnrollmentProgramHelp" xml:space="preserve">
+    <value>Regelt de toegang tot DEP-toestellen synchroniseren. Ga naar de pagina Inschrijvingsstatus</value>
+  </data>
+  <data name="SyncDeviceSensors" xml:space="preserve">
+    <value>Toestelsensoren synchroniseren</value>
+  </data>
+  <data name="SyncDeviceSensorsHelp" xml:space="preserve">
+    <value>Beheert aanvragen voor het vernieuwen van toestelsensorgegevens</value>
+  </data>
+  <data name="SystemCodeAuditAd" xml:space="preserve">
+    <value>Audit van systeemcode</value>
+  </data>
+  <data name="SystemCodeAuditAdHelp" xml:space="preserve">
+    <value>Beheert toegang tot de controle van systeemcode</value>
+  </data>
+  <data name="SystemHealthSettingsAd" xml:space="preserve">
+    <value>Instellingen voor systeemgezondheid</value>
+  </data>
+  <data name="SystemHealthSettingsAdHelp" xml:space="preserve">
+    <value>Instellingen voor systeemgezondheid weergeven en bewerken.</value>
+  </data>
+  <data name="SystemHealthSettingsEditHelp" xml:space="preserve">
+    <value>Geeft rechten om de instellingen voor systeemgezondheid te bewerken. Ga naar Menu \ Configuratie \ Systeeminstellingen \ Beheer \ Diagnostisch \ Systeemgezondheid</value>
+  </data>
+  <data name="SystemHealthSettingsViewHelp" xml:space="preserve">
+    <value>Geeft rechten om de instellingen voor systeemgezondheid te bekijken. Ga naar Menu \ Configuratie \ Systeeminstellingen \ Beheer \ Diagnostisch \ Systeemgezondheid</value>
+  </data>
+  <data name="SystemInternalHub" xml:space="preserve">
+    <value>Systeemintern</value>
+  </data>
+  <data name="SystemInternalHubHelp" xml:space="preserve">
+    <value>Interne facturering rapporten genereren.</value>
+  </data>
+  <data name="TagManagementViewHelp" xml:space="preserve">
+    <value>Geeft toestemming om het labelbeheer te zien</value>
+  </data>
+  <data name="TagsApi" xml:space="preserve">
+    <value>Labels</value>
+  </data>
+  <data name="TagsApiHelp" xml:space="preserve">
+    <value>Toegang tot alle APIs-labels.</value>
+  </data>
+  <data name="TagsDev" xml:space="preserve">
+    <value>Labels</value>
+  </data>
+  <data name="TagsDevHelp" xml:space="preserve">
+    <value>Geeft toestemming voor toegang tot labelbeheer.</value>
+  </data>
+  <data name="TargetedLogDeviceEditHelp" xml:space="preserve">
+    <value>Geeft rechten om gerichte toestellogboekregistratie te bewerken. Ga naar Dashboards \ Toesteldashboard</value>
+  </data>
+  <data name="TargetedLogDeviceViewHelp" xml:space="preserve">
+    <value>Geeft rechten om gerichte toestellogboekregistratie te bekijken. Ga naar Dashboards \ Toesteldashboard</value>
+  </data>
+  <data name="TelecomBasicSettingsViewHelp" xml:space="preserve">
+    <value>Beheert toegang tot de configuratiewizard voor Telecom Basic</value>
+  </data>
+  <data name="TelecomDD" xml:space="preserve">
+    <value>Telecom</value>
+  </data>
+  <data name="TelecomDDHelp" xml:space="preserve">
+    <value>Toegang tot telecomgegevens van toestellen in toesteldetails.</value>
+  </data>
+  <data name="TelecomHub" xml:space="preserve">
+    <value>Telecom</value>
+  </data>
+  <data name="TelecomHubHelp" xml:space="preserve">
+    <value>Rapporten voor telecombeheer genereren.</value>
+  </data>
+  <data name="TelecomManagementTel" xml:space="preserve">
+    <value>Telecombeheer</value>
+  </data>
+  <data name="TelecomManagementTelHelp" xml:space="preserve">
+    <value>Beheert toegang tot de module Telecom. Geeft beschikbare items van het menu Telecom weer.</value>
+  </data>
+  <data name="TelecomSettingsSys" xml:space="preserve">
+    <value>Telecominstellingen</value>
+  </data>
+  <data name="TelecomSettingsSysHelp" xml:space="preserve">
+    <value>Beheert toegang tot de pagina voor telecominstellingen.</value>
+  </data>
+  <data name="TenantStorageGr" xml:space="preserve">
+    <value>Tenantopslag</value>
+  </data>
+  <data name="TenantStorageGrHelp" xml:space="preserve">
+    <value>Voor intern gebruik: regelt de toegang tot de tenantopslagpagina.</value>
+  </data>
+  <data name="TenantStorageHelp" xml:space="preserve">
+    <value>Voor intern gebruik, alleen zichtbaar voor de systeembeheerdersrol. Beheert toegang tot de pagina Instellingen/Beheer/Opslag voor tenantopslag.</value>
+  </data>
+  <data name="TermsOfUseAdmin" xml:space="preserve">
+    <value>Gebruikersovereenkomst</value>
+  </data>
+  <data name="TermsOfUseAdminHelp" xml:space="preserve">
+    <value>Gebruikersovereenkomst van de beheerdersaccount weergeven.</value>
+  </data>
+  <data name="TermsOfUseSys" xml:space="preserve">
+    <value>Gebruikersovereenkomst</value>
+  </data>
+  <data name="TermsOfUseSysHelp" xml:space="preserve">
+    <value>Beheert toegang tot de pagina voor gebruikersovereenkomst in Systeeminstellingen en Toestelinschrijving</value>
+  </data>
+  <data name="TestModeEM" xml:space="preserve">
+    <value>Testmodus</value>
+  </data>
+  <data name="TestModeEMHelp" xml:space="preserve">
+    <value>Testmodus van netwerkbeleid voor e-mailbeheer bewerken.</value>
+  </data>
+  <data name="TimeScheduleDM" xml:space="preserve">
+    <value>Tijdschema</value>
+  </data>
+  <data name="TimeScheduleDMHelp" xml:space="preserve">
+    <value>Tijdschema's voor profielen weergeven en bewerken.</value>
+  </data>
+  <data name="TimeScheduleHelp" xml:space="preserve">
+    <value>Geeft toestemming om de tijdschema-instellingen te bekijken/bewerken. 
+</value>
+  </data>
+  <data name="TroubleshootingSys" xml:space="preserve">
+    <value>Probleemoplossing</value>
+  </data>
+  <data name="TroubleshootingSysHelp" xml:space="preserve">
+    <value>Beheert toegang tot logs en pagina's voor probleemoplossingen.</value>
+  </data>
+  <data name="UemNotificationsInfo" xml:space="preserve">
+    <value>Bevat meldingen voor Workspace ONE UEM en Workspace ONE Assist.</value>
+  </data>
+  <data name="UnApproveUpdate" xml:space="preserve">
+    <value>Update niet goedkeuren</value>
+  </data>
+  <data name="UnApproveUpdateHelp" xml:space="preserve">
+    <value>Geeft rechten om het commando Update niet goedkeuren te verzenden naar toestellen.</value>
+  </data>
+  <data name="UnApproveUpdates" xml:space="preserve">
+    <value>Update niet goedkeuren</value>
+  </data>
+  <data name="UnManagedWipeProtectionHelp" xml:space="preserve">
+    <value>Instellingen voor wisbescherming op onbeheerde toestellen</value>
+  </data>
+  <data name="UpdateEditAssignment" xml:space="preserve">
+    <value>Bewerkingstoewijzing bijwerken</value>
+  </data>
+  <data name="UpdateEditAssignmentHelp" xml:space="preserve">
+    <value>Geeft rechten om de toewijzing van de update aan smart groups te bewerken</value>
+  </data>
+  <data name="UploadCctk" xml:space="preserve">
+    <value>Cctk uploaden</value>
+  </data>
+  <data name="UploadCctkHelp" xml:space="preserve">
+    <value>Hiermee kan een beheerder een CCTK-pakketbestand voor de implementatieconfiguratie uploaden om het BIOS te configureren.</value>
+  </data>
+  <data name="UploadUnattendXml" xml:space="preserve">
+    <value>Onbeheerde Xml uploaden</value>
+  </data>
+  <data name="UploadUnattendXmlHelp" xml:space="preserve">
+    <value>Hiermee kan een beheerder het Unattend XML-bestand voor de implementatieconfiguratie uploaden.</value>
+  </data>
+  <data name="UsageTel" xml:space="preserve">
+    <value>Verbruik</value>
+  </data>
+  <data name="UsageTelHelp" xml:space="preserve">
+    <value>Verbruikgegevens van telecom en dashboard weergeven.</value>
+  </data>
+  <data name="UserCategoriesDU" xml:space="preserve">
+    <value>Gebruikerscategorieën</value>
+  </data>
+  <data name="UserCategoriesDUHelp" xml:space="preserve">
+    <value>Beheert toegang tot gebruikerscategorieën in Systeeminstellingen.</value>
+  </data>
+  <data name="UserDetailUserAccounts" xml:space="preserve">
+    <value>Gebruikersgegevens</value>
+  </data>
+  <data name="UserDetailUserAccountsHelp" xml:space="preserve">
+    <value>Toegang tot de weergave van de pagina voor gebruikersdetails</value>
+  </data>
+  <data name="UserInfoDD" xml:space="preserve">
+    <value>Gebruikersinformatie</value>
+  </data>
+  <data name="UserInfoDDHelp" xml:space="preserve">
+    <value>Toegang tot gebruikersinformatie in toesteldetails.</value>
+  </data>
+  <data name="UserManagementHub" xml:space="preserve">
+    <value>Gebruikersbeheer</value>
+  </data>
+  <data name="UserManagementHubHelp" xml:space="preserve">
+    <value>Rapport voor gebruikersbeheer genereren.</value>
+  </data>
+  <data name="UserMigrationHelp" xml:space="preserve">
+    <value>Geeft toestemming om standaard inschrijvingsgebruikers te zien die kunnen gemigreerd worden naar LDAP-gebruikers. 
+</value>
+  </data>
+  <data name="UserRegistrationDashboard" xml:space="preserve">
+    <value>Gebruikersregistratie</value>
+  </data>
+  <data name="UserRegistrationDashboardHelp" xml:space="preserve">
+    <value>Toegang tot de link voor de inschrijving-status van het Dashboard en Gebruikersaccounts pagina's.</value>
+  </data>
+  <data name="UserRegistrationEnrollmentStatus" xml:space="preserve">
+    <value>Gebruikersregistratie</value>
+  </data>
+  <data name="UserRegistrationEnrollmentStatusHelp" xml:space="preserve">
+    <value>Toegang tot de Gebruikersregistratie op Inschrijvingsstatus pagina.</value>
+  </data>
+  <data name="UserRegistrationHelp" xml:space="preserve">
+    <value>Beheert de toegang tot de link met de gebruikersregistratie op de pagina met gebruikersaccounts. Navigeer naar Menu/Beheer/Gebruikersaccounts</value>
+  </data>
+  <data name="UserRoleHelp" xml:space="preserve">
+    <value>Beheert de toegang tot functies onder gebruikersaccounts.
+</value>
+  </data>
+  <data name="UsersRESTSystem" xml:space="preserve">
+    <value>Gebruikers</value>
+  </data>
+  <data name="UsersRESTSystemHelp" xml:space="preserve">
+    <value>REST APIs voor de gebruikersaccount van inschrijven</value>
+  </data>
+  <data name="UserStorageSet" xml:space="preserve">
+    <value>Gebruikersopslag</value>
+  </data>
+  <data name="UserStorageSetHelp" xml:space="preserve">
+    <value>opslaginstellingen voor eindgebruikers beheren.</value>
+  </data>
+  <data name="UserTrackingHub" xml:space="preserve">
+    <value>Volgen van gebruikers</value>
+  </data>
+  <data name="UserTrackingHubHelp" xml:space="preserve">
+    <value>Genereer rapporten voor het volgen van gebruikers</value>
+  </data>
+  <data name="VideoManagementSet" xml:space="preserve">
+    <value>Videobeheer</value>
+  </data>
+  <data name="VideoManagementSetHelp" xml:space="preserve">
+    <value>Video's aan kanalen toevoegen</value>
+  </data>
+  <data name="ViewAd" xml:space="preserve">
+    <value>Weergeven</value>
+  </data>
+  <data name="ViewAdHelp" xml:space="preserve">
+    <value>Geeft toestemming om de cache-instellingen weer te geven.</value>
+  </data>
+  <data name="ViewAdminAccount" xml:space="preserve">
+    <value>Weergeven</value>
+  </data>
+  <data name="ViewAdminAccountHelp" xml:space="preserve">
+    <value>Beheerdersaccounts weergeven</value>
+  </data>
+  <data name="ViewAdminGroup" xml:space="preserve">
+    <value>Weergeven</value>
+  </data>
+  <data name="ViewAdminGroupHelp" xml:space="preserve">
+    <value>Pagina voor beheerdersgroep bekijken.</value>
+  </data>
+  <data name="ViewAdminRoles" xml:space="preserve">
+    <value>Weergeven</value>
+  </data>
+  <data name="ViewAdminRolesHelp" xml:space="preserve">
+    <value>Pagina voor beheerdersrollen bekijken.</value>
+  </data>
+  <data name="ViewAn" xml:space="preserve">
+    <value>Weergeven</value>
+  </data>
+  <data name="ViewAnHelp" xml:space="preserve">
+    <value>Beheert toegang tot de Android pagina onder toestel.</value>
+  </data>
+  <data name="ViewApple" xml:space="preserve">
+    <value>Weergeven</value>
+  </data>
+  <data name="ViewAppleHelp" xml:space="preserve">
+    <value>Beheert toegang tot de pagina voor Apple onder Toestel.</value>
+  </data>
+  <data name="ViewBaselines" xml:space="preserve">
+    <value>Uitgangswaarden weergeven</value>
+  </data>
+  <data name="ViewBaselinesHelp" xml:space="preserve">
+    <value>Regelt de toegang voor weergave van uitgangswaarden</value>
+  </data>
+  <data name="ViewCM" xml:space="preserve">
+    <value>Weergeven</value>
+  </data>
+  <data name="ViewCMHelp" xml:space="preserve">
+    <value>Bekijk de pagina's voor Inhoudsbeheer.</value>
+  </data>
+  <data name="ViewCustomReportSubscriptionHelp" xml:space="preserve">
+    <value>Regelt de toegang voor weergave van het abonnement op een aangepast rapport. Ga naar Hub \ Rapporten en analyse \ Aangepaste rapporten \ Abonnementen</value>
+  </data>
+  <data name="ViewDashboardDM" xml:space="preserve">
+    <value>Dashboard weergeven</value>
+  </data>
+  <data name="ViewDashboardDMHelp" xml:space="preserve">
+    <value>Bekijk het toesteldashboard in Inhoudsbeheer.</value>
+  </data>
+  <data name="ViewDeviceManagement" xml:space="preserve">
+    <value>Weergeven</value>
+  </data>
+  <data name="ViewDeviceManagementHelp" xml:space="preserve">
+    <value>Bekijk de module Toestelbeheer</value>
+  </data>
+  <data name="ViewDevicesAb" xml:space="preserve">
+    <value>Toestellen weergeven</value>
+  </data>
+  <data name="ViewDevicesAbHelp" xml:space="preserve">
+    <value>Beheert de machtiging om toestellen te bekijken die verbonden zijn aan een applicatie.</value>
+  </data>
+  <data name="ViewDevicesCM" xml:space="preserve">
+    <value>Toestellen weergeven</value>
+  </data>
+  <data name="ViewDevicesCMHelp" xml:space="preserve">
+    <value>Bekijk toestellen per toegewezen inhoud op de pagina 'Inhoudsbeheer'.</value>
+  </data>
+  <data name="ViewDevicesDM" xml:space="preserve">
+    <value>Toestellen weergeven</value>
+  </data>
+  <data name="ViewDevicesDMHelp" xml:space="preserve">
+    <value>Open het icoon 'Toestellen bekijken' onder profielen.</value>
+  </data>
+  <data name="ViewDeviceSensors" xml:space="preserve">
+    <value>Toestelsensoren weergeven</value>
+  </data>
+  <data name="ViewDeviceSensorsHelp" xml:space="preserve">
+    <value>Beheert toegang voor het weergeven van toestelsensorgegevens en -configuratie</value>
+  </data>
+  <data name="ViewDeviceWnsStatus" xml:space="preserve">
+    <value>WNS-status van toestel weergeven</value>
+  </data>
+  <data name="ViewDeviceWnsStatusHelp" xml:space="preserve">
+    <value>De mogelijkheid om de WNS-status van het toestel weer te geven</value>
+  </data>
+  <data name="ViewDM" xml:space="preserve">
+    <value>Weergeven</value>
+  </data>
+  <data name="ViewDMHelp" xml:space="preserve">
+    <value>Bekijk de profielenpagina onder Toestelmanagement</value>
+  </data>
+  <data name="ViewEducationOverviewHelp" xml:space="preserve">
+    <value>Overzichtspagina onderwijs weergeven      </value>
+  </data>
+  <data name="ViewEM" xml:space="preserve">
+    <value>Weergeven</value>
+  </data>
+  <data name="ViewEMHelp" xml:space="preserve">
+    <value>Open het menu-item genaamd E-mailbeheer.</value>
+  </data>
+  <data name="ViewExtendedDeviceInventory" xml:space="preserve">
+    <value>Uitgebreide toestelinventaris weergeven</value>
+  </data>
+  <data name="ViewExtendedDeviceInventoryHelp" xml:space="preserve">
+    <value>Beheer de toegang om de uitgebreide toestelinventaris te bekijken.</value>
+  </data>
+  <data name="ViewExtendedDeviceInventoryOnDeviceDetail" xml:space="preserve">
+    <value>Uitgebreide toestelinventaris op de pagina Toestelgegevens weergeven</value>
+  </data>
+  <data name="ViewExtendedDeviceInventoryOnDeviceDetailHelp" xml:space="preserve">
+    <value>Beheert toegang om de uitgebreide toestelinventaris op de pagina Toestelgegevens te bekijken.</value>
+  </data>
+  <data name="ViewFileServerConfiguration" xml:space="preserve">
+    <value>Bestandsserverconfiguratie weergeven</value>
+  </data>
+  <data name="ViewFileServerConfigurationHelp" xml:space="preserve">
+    <value>Geeft gebruiker rechten om het raster en de details van bestandsservers weer te geven</value>
+  </data>
+  <data name="ViewGen" xml:space="preserve">
+    <value>Weergeven</value>
+  </data>
+  <data name="ViewGenHelp" xml:space="preserve">
+    <value>Beheert toegang tot toestelpagina's in systeeminstellingen.</value>
+  </data>
+  <data name="ViewGr" xml:space="preserve">
+    <value>Weergeven</value>
+  </data>
+  <data name="ViewGrHelp" xml:space="preserve">
+    <value>Toegang tot Organisatiegroepspagina's.</value>
+  </data>
+  <data name="ViewHA" xml:space="preserve">
+    <value>Weergeven</value>
+  </data>
+  <data name="ViewHAHelp" xml:space="preserve">
+    <value>Open de waarschuwingenmodule.</value>
+  </data>
+  <data name="ViewIos" xml:space="preserve">
+    <value>Weergeven</value>
+  </data>
+  <data name="ViewIosHelp" xml:space="preserve">
+    <value>Beheert toegang tot de pagina iOS onder Toestel.</value>
+  </data>
+  <data name="ViewLinux" xml:space="preserve">
+    <value>Weergeven</value>
+  </data>
+  <data name="ViewLinuxHelp" xml:space="preserve">
+    <value>Regelt toegang tot de pagina Linux onder Toestel.</value>
+  </data>
+  <data name="ViewNotesHelp" xml:space="preserve">
+    <value>Geeft toestemming om de notities te bekijken</value>
+  </data>
+  <data name="ViewOemUpdates" xml:space="preserve">
+    <value>OEM-updates weergeven</value>
+  </data>
+  <data name="ViewOemUpdatesHelp" xml:space="preserve">
+    <value>Regelt de toegang tot het dashboard voor OEM-updates. Ga naar Menu \ Toestellen \ OEM-updates</value>
+  </data>
+  <data name="ViewPM" xml:space="preserve">
+    <value>Weergeven</value>
+  </data>
+  <data name="ViewPMHelp" xml:space="preserve">
+    <value>Toegang tot de pagina's van instellingen voor randapparatuur.</value>
+  </data>
+  <data name="ViewProvisioningPackages" xml:space="preserve">
+    <value>Provisioningpakketten weergeven</value>
+  </data>
+  <data name="ViewProvisioningPackagesHelp" xml:space="preserve">
+    <value>Toegang beheren om provisioningpakketten te bekijken</value>
+  </data>
+  <data name="ViewSet" xml:space="preserve">
+    <value>Weergeven</value>
+  </data>
+  <data name="ViewSetHelp" xml:space="preserve">
+    <value>Beheert toegang tot applicatiepagina's in systeeminstellingen</value>
+  </data>
+  <data name="ViewSys" xml:space="preserve">
+    <value>Weergeven</value>
+  </data>
+  <data name="ViewSysHelp" xml:space="preserve">
+    <value>Beheert toegang tot de systeeminstellingen.</value>
+  </data>
+  <data name="ViewTagHelp" xml:space="preserve">
+    <value>Geeft toestemming om een label te bekijken</value>
+  </data>
+  <data name="ViewTimeWindow" xml:space="preserve">
+    <value>Tijdvenster weergeven</value>
+  </data>
+  <data name="ViewTimeWindowHelp" xml:space="preserve">
+    <value>Beheert toegang om het tijdsvenster weer te geven.</value>
+  </data>
+  <data name="ViewTimeWindowOnDeviceDetail" xml:space="preserve">
+    <value>Tijdsvenster weergeven op de pagina met toestelgegevens</value>
+  </data>
+  <data name="ViewTimeWindowOnDeviceDetailHelp" xml:space="preserve">
+    <value>Beheert toegang om het tijdsvenster op de pagina Toestelgegevens te bekijken.</value>
+  </data>
+  <data name="ViewUG" xml:space="preserve">
+    <value>Weergeven</value>
+  </data>
+  <data name="ViewUGHelp" xml:space="preserve">
+    <value>Toegang tot de pagina voor gebruikersgroepen.</value>
+  </data>
+  <data name="ViewUpdateDevices" xml:space="preserve">
+    <value>Update van apparaten bekijken</value>
+  </data>
+  <data name="ViewUpdateDevicesHelp" xml:space="preserve">
+    <value>Regelt de toegang voor weergave van de toestellen op updatestatus. Ga naar Menu \ Toestellen \ Updates</value>
+  </data>
+  <data name="ViewUpdatesHelp" xml:space="preserve">
+    <value>Regelt de toegang tot het dashboard voor updates. Ga naar Menu \ Toestellen \ Updates</value>
+  </data>
+  <data name="ViewUserAccounts" xml:space="preserve">
+    <value>Weergeven</value>
+  </data>
+  <data name="ViewUserAccountsHelp" xml:space="preserve">
+    <value>Gebruikersaccounts weergeven.</value>
+  </data>
+  <data name="ViewUserCategories" xml:space="preserve">
+    <value>Weergeven</value>
+  </data>
+  <data name="ViewUserCategoriesHelp" xml:space="preserve">
+    <value>Toegang tot de categorieën voor gebruikersaccounts.</value>
+  </data>
+  <data name="ViewUserDetails" xml:space="preserve">
+    <value>Gebruikersgegevens weergeven</value>
+  </data>
+  <data name="ViewUserDetailsHelp" xml:space="preserve">
+    <value>Gebruikerstoewijzingen voor Chrome OS-gebruikersprofielen weergeven.</value>
+  </data>
+  <data name="ViewUserRoles" xml:space="preserve">
+    <value>Weergeven</value>
+  </data>
+  <data name="ViewUserRolesHelp" xml:space="preserve">
+    <value>Gebruikersrollen weergeven</value>
+  </data>
+  <data name="ViewWin" xml:space="preserve">
+    <value>Weergeven</value>
+  </data>
+  <data name="ViewWindowsTemplateDevicesHelp" xml:space="preserve">
+    <value>Hiermee kan de beheerder de instellingen configureren om toestellen te bekijken waarop het Windows-sjabloon provisioningpakket is toegepast op het dashboard van de Console</value>
+  </data>
+  <data name="ViewWindowsTemplatesHelp" xml:space="preserve">
+    <value>Hiermee kan de beheerder de instellingen configureren voor het weergeven van een Windows-sjabloon op het dashboard van de Console</value>
+  </data>
+  <data name="ViewWinHelp" xml:space="preserve">
+    <value>Beheert toegang tot de pagina voor Windows onder Toestel.</value>
+  </data>
+  <data name="ViewXmlDM" xml:space="preserve">
+    <value>XML weergeven</value>
+  </data>
+  <data name="ViewXmlDMHelp" xml:space="preserve">
+    <value>Open het icoon 'XML bekijken' onder profielen.</value>
+  </data>
+  <data name="VmInstanceLockHelp" xml:space="preserve">
+    <value>Virtual Machine-instanties vergrendelen die door Horizon FLEX worden beheerd</value>
+  </data>
+  <data name="VmInstanceUnlockHelp" xml:space="preserve">
+    <value>Virtual Machine-instances ontgrendelen die door Horizon FLEX worden beheerd</value>
+  </data>
+  <data name="VmInstanceWipeHelp" xml:space="preserve">
+    <value>Virtual Machine-instanties wissen die door Horizon FLEX worden beheerd</value>
+  </data>
+  <data name="VMwareEmployeeLoginNotification" xml:space="preserve">
+    <value>Inlogmelding VMware-werknemer</value>
+  </data>
+  <data name="VMwareEmployeeLoginNotificationInfo" xml:space="preserve">
+    <value>Schakel deze optie in om aangewezen ontvangers op de hoogte te stellen wanneer een VMware-medewerker toegang heeft tot uw klant of partner OG.</value>
+  </data>
+  <data name="WebConsoleLogHelp" xml:space="preserve">
+    <value>Beheert de toegang tot de websitecrashlogboeken. 
+</value>
+  </data>
+  <data name="WeblinkPM" xml:space="preserve">
+    <value>Weblink</value>
+  </data>
+  <data name="WeblinkPMHelp" xml:space="preserve">
+    <value>Beheert toegang tot de pagina met de link van de printer.</value>
+  </data>
+  <data name="WebsiteFiltersSettingsHelp" xml:space="preserve">
+    <value>Beheert toegang om de instellingen van website-filters weer te geven en te bewerken. Het navigatiepad is Instellingen \ Applicaties \ Applicatie-integratie \ Website-filters.</value>
+  </data>
+  <data name="WiFiPM" xml:space="preserve">
+    <value>Wi-Fi</value>
+  </data>
+  <data name="WiFiPMHelp" xml:space="preserve">
+    <value>Beheert toegang tot de Wi-Fi-pagina voor de printer.</value>
+  </data>
+  <data name="Windows8RtWin" xml:space="preserve">
+    <value>Windows 8 / RT</value>
+  </data>
+  <data name="Windows8RtWinHelp" xml:space="preserve">
+    <value>Beheert toegang tot instellingen voor WinRT.</value>
+  </data>
+  <data name="WindowsAppDeploymentsEditHelp" xml:space="preserve">
+    <value>Met deze resource kunnen beheerders de instellingen voor app-implementaties configureren op de console</value>
+  </data>
+  <data name="WindowsAutoDiscoverySettingsEditHelp" xml:space="preserve">
+    <value>Met deze resource kan de beheerder de automatische detectiemodus instellen op 'Op locatie' of 'In de cloud gehost' en een bepaald domein registreren voor automatische detectie van Windows</value>
+  </data>
+  <data name="WindowsAutoEnrollmentSettings" xml:space="preserve">
+    <value>Instellingen voor automatische inschrijving voor Windows</value>
+  </data>
+  <data name="WindowsAutoEnrollmentSettingsHelp" xml:space="preserve">
+    <value>Met deze resource kunnen beheerders de instellingen configureren die van toepassing zijn op de provisioning-agent die wordt uitgevoerd op Windows-toestellen. </value>
+  </data>
+  <data name="WindowsMobileDD" xml:space="preserve">
+    <value>Windows Mobile</value>
+  </data>
+  <data name="WindowsMobileDDHelp" xml:space="preserve">
+    <value>Windows Mobile specifieke instellingen in toesteldetails beheren.</value>
+  </data>
+  <data name="WindowsMobileWm" xml:space="preserve">
+    <value>Windows Mobile</value>
+  </data>
+  <data name="WindowsMobileWmHelp" xml:space="preserve">
+    <value>Beheert toegang tot de pagina Windows Mobile onder Toestel.</value>
+  </data>
+  <data name="WindowsPcSet" xml:space="preserve">
+    <value>Windows PC</value>
+  </data>
+  <data name="WindowsPcSetHelp" xml:space="preserve">
+    <value>Beheert toegang tot de pagina's voor Windows PC onder toestellen.</value>
+  </data>
+  <data name="WindowsPhone8Win" xml:space="preserve">
+    <value>Windows Phone 8</value>
+  </data>
+  <data name="WindowsPhone8WinHelp" xml:space="preserve">
+    <value>Beheert toegang tot Windows Phone-instellingen.</value>
+  </data>
+  <data name="WindowsPhoneHealthAttestationEdit" xml:space="preserve">
+    <value>WindowsPhone-gezondheidsverklaring bewerken</value>
+  </data>
+  <data name="WindowsPhoneHealthAttestationEditHelp" xml:space="preserve">
+    <value>Met deze resource kunnen beheerders het gezondheidsattest voor mobiele toestellen met Windows 10 instellen.</value>
+  </data>
+  <data name="WindowsPhoneWin" xml:space="preserve">
+    <value>Windows Phone</value>
+  </data>
+  <data name="WindowsPhoneWinHelp" xml:space="preserve">
+    <value>Beheert toegang tot de pagina's voor Windows Phone in Systeeminstellingen.</value>
+  </data>
+  <data name="WindowsRuntimeProvisioningHelp" xml:space="preserve">
+    <value>Met deze instellingen kan een beheerder de staging-informatie bekijken die vereist is voor bulkprovisioning van Windows-toestellen voor eindgebruikers. Dit helpt ook bij het instellen van de bootstrap-informatie voor alle toestellen.</value>
+  </data>
+  <data name="WindowsSampleScheduleHelp" xml:space="preserve">
+    <value>Met deze groep instellingen kan de beheerder de intervallen instellen voor het verzamelen van steekproeven van MDM-gegevens en -instellingen.</value>
+  </data>
+  <data name="WinmoSWInventoryHub" xml:space="preserve">
+    <value>WinMo S/W-inventaris</value>
+  </data>
+  <data name="WinmoSWInventoryHubHelp" xml:space="preserve">
+    <value>Rapporten voor WinMo S/W Inventaris genereren</value>
+  </data>
+  <data name="WipeProtectionDU" xml:space="preserve">
+    <value>Beschermen tegen wissen</value>
+  </data>
+  <data name="WipeProtectionDUHelp" xml:space="preserve">
+    <value>Beheert toegang tot de pagina voor het beschermen van wissen onder Geavanceerd.</value>
+  </data>
+  <data name="WorkflowsDD" xml:space="preserve">
+    <value>Werkstromen</value>
+  </data>
+  <data name="WorkflowsDDHelp" xml:space="preserve">
+    <value>Bekijk de status van de uitvoering van werkstromen op het toestel.</value>
+  </data>
+  <data name="WorkspaceSet" xml:space="preserve">
+    <value>Container</value>
+  </data>
+  <data name="WorkspaceSetHelp" xml:space="preserve">
+    <value>Beheert toegang tot de pagina Container onder Algemeen.</value>
+  </data>
+  <data name="ZonesGr" xml:space="preserve">
+    <value>Zones</value>
+  </data>
+  <data name="ZonesGrHelp" xml:space="preserve">
+    <value>Beheer locatiezones voor organisatiegroepen</value>
+  </data>
+  <data name="ZplPM" xml:space="preserve">
+    <value>Zpl</value>
+  </data>
+  <data name="ZplPMHelp" xml:space="preserve">
+    <value>Beheert toegang tot de Printer Zpl-pagina</value>
+  </data>
+</root>

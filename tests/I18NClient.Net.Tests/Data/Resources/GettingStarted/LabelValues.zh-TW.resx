@@ -1,0 +1,358 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ACCAndActiveDirectory" xml:space="preserve">
+    <value>AirWatch Cloud Connector (ACC) 和 Directory</value>
+  </data>
+  <data name="ACCAndActiveDirectoryDescription" xml:space="preserve">
+    <value>允許 AirWatch Cloud Connector (ACC) 服務無需公開您的網路資訊即可安全存取貴公司的企業資源。建立連線至 Active Directory (AD) 的安全連線，以便從貴公司的目錄中匯入使用者和群組。</value>
+  </data>
+  <data name="ACCInstallerDownloaded" xml:space="preserve">
+    <value>AirWatch Cloud Connector (ACC) 安裝程式下載完畢</value>
+  </data>
+  <data name="ACCSetup" xml:space="preserve">
+    <value>AirWatch Cloud Connector (ACC) 設定</value>
+  </data>
+  <data name="ACCSetupDetailsArg" xml:space="preserve">
+    <value>按照這些簡單的步驟來啟用 AirWatch Cloud Connector (ACC)，以在不需要變更網路防火牆的情況下安全存取貴組織的企業資源。您可以在 {0} 找到軟硬體需求清單，以及有關變更為 AirWatch Cloud Connector (ACC) 架構的其他資訊。</value>
+  </data>
+  <data name="ActiveDirectoryBasicDescription" xml:space="preserve">
+    <value>Active Directory (基本) 可支援只能在最上層客戶組織群組內進行設定的單一目錄。啟用後可將使用者同步至 Workspace ONE Access，
+不需安裝 Workspace ONE Access Connector。但不建議用於複雜的大型企業部署。</value>
+  </data>
+  <data name="AirWatchCloudConnectorWithAbbreviation" xml:space="preserve">
+    <value>AirWatch Cloud Connector (ACC)</value>
+  </data>
+  <data name="AndroidAppsPermissionAutoApproved" xml:space="preserve">
+    <value>Android 應用程式及任何相關聯的權限將會自動核准，並在您的 Google Play 商店帳戶中更新。</value>
+  </data>
+  <data name="CompleteConnectToVIDMStep" xml:space="preserve">
+    <value>配置 Workspace ONE Access 以解除鎖定。</value>
+  </data>
+  <data name="ConfigureAd" xml:space="preserve">
+    <value>使用下面的表單給予 AirWatch 存取您 Active Directory 的權限，然後開始匯入使用者。</value>
+  </data>
+  <data name="ConfiguredSuccessfully" xml:space="preserve">
+    <value>已成功設定</value>
+  </data>
+  <data name="ConnectorAndDirectoryOverviewDescription1" xml:space="preserve">
+    <value>設定 Connector 後，它會建立僅可輸出至 Workspace ONE 的連線。此精靈將協助您:</value>
+  </data>
+  <data name="ConnectorAndDirectoryOverviewDescription2" xml:space="preserve">
+    <value>安裝及設定 AirWatch Cloud Connector (ACC) 的 Connector 套件</value>
+  </data>
+  <data name="ConnectorAndDirectoryOverviewDescription3" xml:space="preserve">
+    <value>部署 Connector 以將 Workspace ONE UEM 與您的 AD 同步化</value>
+  </data>
+  <data name="ConnectorAndDirectoryOverviewDescription4" xml:space="preserve">
+    <value>前往 {0} 主控台部署可將 Workspace ONE Access 與您的 AD 同步化的 Connector (強烈建議)。</value>
+  </data>
+  <data name="ConnectorAndDirectoryOverviewHeader" xml:space="preserve">
+    <value>若要授予企業使用者存取 Workspace ONE 的權限，必須先在您的內部網路中建立 Workspace ONE UEM 與 Active Directory (AD) 之間的連線。</value>
+  </data>
+  <data name="ConnectorAndDirectoryOverviewImageDescription" xml:space="preserve">
+    <value>AirWatch Cloud Connector (ACC) 服務可協助將您的 Active Directory 與其個別服務獨立地同步化。此精靈可協助您設定 Workspace ONE UEM 與您的 AD 之間的專屬連線。</value>
+  </data>
+  <data name="ConnectorAndDirectoryOverviewNote" xml:space="preserve">
+    <value>備註: 若 Workspace ONE 服務部署於 DMZ，則內部部署安裝需要 Connector。系統必須有 Connector 組態，才能讓 SaaS 部署與您的 AD 進行通訊。詳情請參閱 {0}。</value>
+  </data>
+  <data name="ConnectToIdentityManagerDescription" xml:space="preserve">
+    <value>允許 Workspace ONE UEM 與 Workspace ONE Access 進行通訊，以部署身分識別導向功能，例如整合目錄、Mobile SSO 和裝置信任。</value>
+  </data>
+  <data name="Credentials" xml:space="preserve">
+    <value>認證</value>
+  </data>
+  <data name="DeleteConfiguration" xml:space="preserve">
+    <value>刪除組態</value>
+  </data>
+  <data name="DeleteVidmConfiguration" xml:space="preserve">
+    <value>刪除 Workspace ONE Access 組態</value>
+  </data>
+  <data name="DeleteVidmDescription" xml:space="preserve">
+    <value>此動作將移除 Workspace ONE Access 和 Workspace ONE UEM 之間的所有通訊。這會讓整合目錄和裝置合規性驗證配接器等功能無法正常運作，直到重新啟用為止。</value>
+  </data>
+  <data name="DeploymentGuide" xml:space="preserve">
+    <value>部署指南</value>
+  </data>
+  <data name="DeviceEnrollment" xml:space="preserve">
+    <value>裝置註冊</value>
+  </data>
+  <data name="DownloadACCInstaller" xml:space="preserve">
+    <value>下載 AirWatch Cloud Connector (ACC) 安裝程式</value>
+  </data>
+  <data name="DownloadACCInstallerDescription" xml:space="preserve">
+    <value>在下方建立您的 AirWatch Cloud Connector (ACC) 憑證密碼。您在下一步啟動 AirWatch Cloud Connector (ACC) 安裝程式時需要憑證密碼。</value>
+  </data>
+  <data name="EmployeeEmailTemplateDescription" xml:space="preserve">
+    <value>下載電子郵件範本，向員工介紹 Workspace ONE 以及如何開始使用。</value>
+  </data>
+  <data name="EnableGettingStartedDescription" xml:space="preserve">
+    <value>「使用入門」可以輕鬆地引導您逐步進行所需完成的安裝步驟。您要立即啟用嗎?</value>
+  </data>
+  <data name="FailedToEnableDirectoryAuthentication" xml:space="preserve">
+    <value>無法啟用目錄驗證</value>
+  </data>
+  <data name="FailedToSetWorkspaceOneMode" xml:space="preserve">
+    <value>更新 Workspace ONE Access 的 Worskpace ONE 目錄模式時，似乎發生錯誤。請在 Workspace ONE Access 中檢查此欄位，並再次嘗試以繼續。</value>
+  </data>
+  <data name="FollowStepsToCompleteAccInstallation" xml:space="preserve">
+    <value>請按照下列步驟完成您的 AirWatch Cloud Connector (ACC) 安裝。</value>
+  </data>
+  <data name="ForMoreInformation" xml:space="preserve">
+    <value>{0|Click here}，以取得更多資訊。</value>
+  </data>
+  <data name="GettingStartedNotEnabled" xml:space="preserve">
+    <value>「使用入門」尚未啟用。</value>
+  </data>
+  <data name="IdentityAndAccessManagement" xml:space="preserve">
+    <value>身分識別和存取管理</value>
+  </data>
+  <data name="InstallAcc" xml:space="preserve">
+    <value>安裝 AirWatch Cloud Connector (ACC)。</value>
+  </data>
+  <data name="InvalidStagedDataPleaseReinitiateVidmConfiguration" xml:space="preserve">
+    <value>無效的預備資料。請重新起始 Workspace ONE Access 組態。</value>
+  </data>
+  <data name="NextStepsDescription1" xml:space="preserve">
+    <value>若要啟用 Workspace ONE Access Connector 並將 Active Directory 和 Workspace ONE Access 同步化，請前往 {0} 下載安裝套件，然後按照下列步驟進行</value>
+  </data>
+  <data name="NextStepsDescription2" xml:space="preserve">
+    <value>將 Workspace ONE UEM 及 Workspace ONE Access 與 Active Directory 同步化可啟用身分識別導向功能，例如 Mobile SSO、條件式存取、同盟應用程式等等</value>
+  </data>
+  <data name="NextStepsDescription3" xml:space="preserve">
+    <value>導覽到 {0|Workspace ONE Access}，然後按一下 [新增 Connector] 以取得啟用字串</value>
+  </data>
+  <data name="NextStepsDescription4" xml:space="preserve">
+    <value>在 Workspace ONE Access Connector 上輸入啟用字串</value>
+  </data>
+  <data name="NextStepsDescription5" xml:space="preserve">
+    <value>在 Workspace ONE Access 管理員主控台中設定 Active Directory。提醒: 針對 Workspace ONE Access 的使用者和群組同步化設定，建議您採用精靈中 Workspace ONE UEM 所用的相同設定。</value>
+  </data>
+  <data name="NextStepsDescription6" xml:space="preserve">
+    <value>Workspace ONE Access Connector 會將您的 Active Directory 使用者及群組與 Workspace ONE Access 進行同步化，並支援同步化的輸出專用模式，不需要您公司網路的輸入連接埠。</value>
+  </data>
+  <data name="NextStepsHeader" xml:space="preserve">
+    <value>後續步驟:</value>
+  </data>
+  <data name="NextStepsStronglyRecommend" xml:space="preserve">
+    <value>後續步驟 (強烈建議)</value>
+  </data>
+  <data name="OptionOfAddingAppsFromPublicAppsPage" xml:space="preserve">
+    <value>您也可選擇從 [公用應用程式] 頁面新增應用程式，以檢視權限並手動核准。</value>
+  </data>
+  <data name="PasswordForAccCertificate" xml:space="preserve">
+    <value>AirWatch Cloud Connector (ACC) 憑證的密碼。您需要此密碼才能將設定匯入至 AirWatch Cloud Connector (ACC) 伺服器。</value>
+  </data>
+  <data name="RequireGroupIdForVidm" xml:space="preserve">
+    <value>此組織群組沒有 Workspace ONE Access 設定所需的群組 ID。您可以在 {0} 頁面上新增群組 ID</value>
+  </data>
+  <data name="RunAccInstaller" xml:space="preserve">
+    <value>執行 AirWatch Cloud Connector (ACC) 安裝程式。</value>
+  </data>
+  <data name="SeemsToBeSomeError" xml:space="preserve">
+    <value>發生伺服器錯誤，請稍後再試。如果此問題依舊存在，請聯絡您的 IT 管理員。</value>
+  </data>
+  <data name="SetupCertificateAuthority" xml:space="preserve">
+    <value>遵循這些簡易步驟即可使用 AirWatch 憑證授權機構自動設定 Mobile Single Sign-On。按一下 [繼續] 即可開始設定。</value>
+  </data>
+  <data name="StartAccInstallShield" xml:space="preserve">
+    <value>啟動 AirWatch Cloud Connector (ACC) InstallShield 精靈。</value>
+  </data>
+  <data name="StartAccInstallShieldInstruction1" xml:space="preserve">
+    <value>1. 登入將用於 AirWatch Cloud Connector (ACC) 的伺服器。</value>
+  </data>
+  <data name="StartAccInstallShieldInstruction2" xml:space="preserve">
+    <value>2. 將 AirWatch Cloud Connector (ACC) 安裝程式檔案傳輸至伺服器並加以開啟。</value>
+  </data>
+  <data name="StartAccInstallShieldInstruction3" xml:space="preserve">
+    <value>3. 顯示歡迎畫面時，請選擇 [下一步]。</value>
+  </data>
+  <data name="StartAccInstallShieldInstruction4" xml:space="preserve">
+    <value>4. 接受授權合約，接著選擇 [下一步]。</value>
+  </data>
+  <data name="StartAccInstallShieldInstruction5" xml:space="preserve">
+    <value>5.選擇 [變更...] 以選擇安裝目錄，接著選擇 [下一步]。</value>
+  </data>
+  <data name="StartAccInstallShieldInstruction6" xml:space="preserve">
+    <value>6. 輸入您在步驟 1 建立的憑證密碼 (下載 AirWatch Cloud Connector (ACC) 安裝程式之前)，再選取 [下一步]。</value>
+  </data>
+  <data name="TestConnectionToAccServer" xml:space="preserve">
+    <value>測試 AirWatch Cloud Connector (ACC) 連線</value>
+  </data>
+  <data name="vIDM" xml:space="preserve">
+    <value>Workspace ONE Access</value>
+  </data>
+  <data name="VidmCertificateDescription" xml:space="preserve">
+    <value>啟用 Workspace ONE UEM 憑證佈建，以便與 Workspace ONE Access 和 Mobile SSO 搭配使用。在此頁面匯出發行者憑證，讓您能夠與 Workspace ONE Access 驗證配接器建立信任。</value>
+  </data>
+  <data name="VidmConfigurationDescription" xml:space="preserve">
+    <value>在使用者、裝置和混合雲之間建立信任，以網路、原生和虛擬應用程式享受整合應用程式目錄流暢的使用者體驗和強大的條件式存取。</value>
+  </data>
+  <data name="VidmConnector" xml:space="preserve">
+    <value>Workspace ONE Access Connector</value>
+  </data>
+  <data name="VidmDescriptionText" xml:space="preserve">
+    <value>啟用 AirWatch 憑證佈建，以便與 Workspace ONE Access 和行動 Single Sign-On 搭配使用。在此頁面匯出發行者憑證，讓您能夠與 Workspace ONE Access 驗證配接器建立信任。</value>
+  </data>
+  <data name="VidmInfoMessage" xml:space="preserve">
+    <value>這會協助您建立 VMware Unified Endpoint Management 與 Workspace ONE Access 之間的連線。</value>
+  </data>
+  <data name="VidmOverviewDescription" xml:space="preserve">
+    <value>Workspace ONE Access 與 Unified Endpoint Management (UEM) 之間建立通訊後，您將能部署:</value>
+  </data>
+  <data name="VidmOverviewDescription1" xml:space="preserve">
+    <value>通用應用程式目錄，包括 Ｗeb、原生和虛擬應用程式</value>
+  </data>
+  <data name="VidmOverviewDescription2" xml:space="preserve">
+    <value>Mobile Single Sign-On (SSO)	</value>
+  </data>
+  <data name="VidmOverviewDescription3" xml:space="preserve">
+    <value>應用程式的條件式存取，包括裝置管理和符合性</value>
+  </data>
+  <data name="VidmOverviewDescription4" xml:space="preserve">
+    <value>Mobile Flows</value>
+  </data>
+  <data name="VidmOverviewDescription5" xml:space="preserve">
+    <value>People Search</value>
+  </data>
+  <data name="VidmOverviewHeader" xml:space="preserve">
+    <value>Workspace ONE Access 是 Workspace ONE 的身分識別和存取管理元件，為使用者提供應用程式的 Single Sign-On 和安全存取。</value>
+  </data>
+  <data name="VidmOverviewImageInfo" xml:space="preserve">
+    <value>在 Workspace ONE Access 與 VMware Unified Endpoint Management 之間建立通訊以管理身分識別相關元件。</value>
+  </data>
+  <data name="VidmPasswordRecoveryMessage" xml:space="preserve">
+    <value>如果您忘記密碼，可在 {0} 登入頁面上進行復原。如果密碼連結已過期，請聯絡 Workspace ONE UEM 支援。</value>
+  </data>
+  <data name="VidmTenantAlreadyConfigured" xml:space="preserve">
+    <value>您的 Workspace ONE Access 租用戶已經以另一個 Workspace ONE UEM 租用戶或組織群組加以設定。請前往 [身分識別與存取管理] &gt; [設定] &gt; [AirWatch]，以 Workspace ONE UEM 詳細資料手動更新您的租用戶。如需詳細瞭解設定方式，請參閱 {0} 第 14 頁。</value>
+  </data>
+  <data name="VidmTestConnectionDesc" xml:space="preserve">
+    <value>進行測試以確認 Workspace ONE UEM 與 Workspace ONE Access 正安全地進行通訊。</value>
+  </data>
+  <data name="VmwareEnterpriseSystemsConnectorGuide" xml:space="preserve">
+    <value>VMware Enterprise Systems Connector 指南</value>
+  </data>
+  <data name="VmwareIdm" xml:space="preserve">
+    <value>VMware Workspace ONE Access</value>
+  </data>
+  <data name="WhyIsItImportant" xml:space="preserve">
+    <value>這為何很重要?</value>
+  </data>
+</root>

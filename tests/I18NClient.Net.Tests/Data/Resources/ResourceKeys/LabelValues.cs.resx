@@ -1,0 +1,3410 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AdaptivaSetup" xml:space="preserve">
+    <value>Nastavení Adaptiva</value>
+  </data>
+  <data name="AdaptivaSetupHelp" xml:space="preserve">
+    <value>Zdroj nastavení pro partnera P2P, Adaptiva</value>
+  </data>
+  <data name="AdaptiveManagement" xml:space="preserve">
+    <value>Adaptivní správa</value>
+  </data>
+  <data name="AdaptiveManagementHelp" xml:space="preserve">
+    <value>Schopnost zobrazit a nastavit adaptivní úroveň správy podle zásad aplikace</value>
+  </data>
+  <data name="AddApplicationWorkflowHelp" xml:space="preserve">
+    <value>Uděluje vývojáři oprávnění nahrát aplikaci</value>
+  </data>
+  <data name="AddCartHelp" xml:space="preserve">
+    <value>Nahrát soubor CSV se sériovými čísly zařízení pro sdílená zařízení. </value>
+  </data>
+  <data name="AddCustomReportSubscriptionHelp" xml:space="preserve">
+    <value>Řídí přístup k přidávání vlastních odběrů zpráv. Přejděte do centra Hub \ Zprávy a analýzy \ Vlastní zprávy \ Odběry</value>
+  </data>
+  <data name="AddDeviceUserAccounts" xml:space="preserve">
+    <value>Přidat zařízení</value>
+  </data>
+  <data name="AddDeviceUserAccountsHelp" xml:space="preserve">
+    <value>Přidat zařízení pro uživatelské účty.</value>
+  </data>
+  <data name="AddEditAdminAccount" xml:space="preserve">
+    <value>Přidat/upravit</value>
+  </data>
+  <data name="AddEditAdminAccountHelp" xml:space="preserve">
+    <value>Přidat nebo upravit administrátorské účty.</value>
+  </data>
+  <data name="AddEditAdminGroup" xml:space="preserve">
+    <value>Přidat/upravit</value>
+  </data>
+  <data name="AddEditAdminGroupHelp" xml:space="preserve">
+    <value>Přidat nebo upravit administrátorské skupiny.</value>
+  </data>
+  <data name="AddEditAdminRoles" xml:space="preserve">
+    <value>Přidat/upravit</value>
+  </data>
+  <data name="AddEditAdminRolesHelp" xml:space="preserve">
+    <value>Přidat, upravit nebo odstranit administrátorské role.</value>
+  </data>
+  <data name="AddEditDeviceManufacturerDetails" xml:space="preserve">
+    <value>Přidat/upravit podrobnosti o výrobci zařízení</value>
+  </data>
+  <data name="AddEditDeviceManufacturerDetailsHelp" xml:space="preserve">
+    <value>Přidání nového výrobce zařízení nebo úprava existujícího výrobce v konzole prostřednictvím rozhraní API</value>
+  </data>
+  <data name="AddEditDeviceModelDetails" xml:space="preserve">
+    <value>Přidat/upravit podrobnosti o modelu zařízení</value>
+  </data>
+  <data name="AddEditDeviceModelDetailsHelp" xml:space="preserve">
+    <value>Přidání nového modelu zařízení nebo úprava existujícího modelu v konzole prostřednictvím rozhraní API</value>
+  </data>
+  <data name="AddEditUG" xml:space="preserve">
+    <value>Přidat/upravit</value>
+  </data>
+  <data name="AddEditUGHelp" xml:space="preserve">
+    <value>Přidat, upravit a odstranit uživatelské skupiny.</value>
+  </data>
+  <data name="AddEditUserAccount" xml:space="preserve">
+    <value>Přidat/upravit</value>
+  </data>
+  <data name="AddEditUserAccountHelp" xml:space="preserve">
+    <value>Přidat nebo upravit uživatelské účty.</value>
+  </data>
+  <data name="AddEditUserCat" xml:space="preserve">
+    <value>Přidat/upravit</value>
+  </data>
+  <data name="AddEditUserCatHelp" xml:space="preserve">
+    <value>Přidat, upravit a odstranit uživatelské kategorie.</value>
+  </data>
+  <data name="AddEditUserRoles" xml:space="preserve">
+    <value>Přidat/upravit</value>
+  </data>
+  <data name="AddEditUserRolesHelp" xml:space="preserve">
+    <value>Přidat a upravit uživatelské role.</value>
+  </data>
+  <data name="AddEditWindowsTemplateHelp" xml:space="preserve">
+    <value>Umožňuje správci konfigurovat nastavení pro přidávání nebo úpravu šablony Windows na panelu konzoly Console</value>
+  </data>
+  <data name="AddFileServerConfiguration" xml:space="preserve">
+    <value>Přidat konfiguraci souborového serveru</value>
+  </data>
+  <data name="AddFileServerConfigurationHelp" xml:space="preserve">
+    <value>Uděluje uživateli oprávnění přidat mřížku a podrobnosti souborových serverů</value>
+  </data>
+  <data name="AddNoteHelp" xml:space="preserve">
+    <value>Uděluje oprávnění přidávat nové poznámky</value>
+  </data>
+  <data name="AdminAd" xml:space="preserve">
+    <value>Administrátor</value>
+  </data>
+  <data name="AdminAdHelp" xml:space="preserve">
+    <value>Řídí přístup ke vstupním stránkám nastavení systému, modulu výstrah, uživatelské oblasti, stránky definic, nápovědy v nastavení systému a profilové stránky RADIUS</value>
+  </data>
+  <data name="AdminOptIn" xml:space="preserve">
+    <value>PŘIHLÁŠENÍ ADMINISTRÁTORA</value>
+  </data>
+  <data name="AdminSaaSNotifications" xml:space="preserve">
+    <value>Oznámení SaaS</value>
+  </data>
+  <data name="AdminSaaSNotificationsHelp" xml:space="preserve">
+    <value>Spravuje přístup na stránku nastavení oznámení SaaS</value>
+  </data>
+  <data name="AdminsRESTSystem" xml:space="preserve">
+    <value>Administrátoři</value>
+  </data>
+  <data name="AdminsRESTSystemHelp" xml:space="preserve">
+    <value>REST API pro účet administrátora</value>
+  </data>
+  <data name="AdvancedEm" xml:space="preserve">
+    <value>Rozšířené</value>
+  </data>
+  <data name="AdvancedEmHelp" xml:space="preserve">
+    <value>Řídí rozšířená nastavení e-mailu.</value>
+  </data>
+  <data name="AdvancedHelp" xml:space="preserve">
+    <value>Řídí přístup k podřízené nabídce Rozšířené</value>
+  </data>
+  <data name="AdvancedIn" xml:space="preserve">
+    <value>Rozšířené</value>
+  </data>
+  <data name="AdvancedInHelp" xml:space="preserve">
+    <value>Řídí přístup k nastavení rozšířené instalace.</value>
+  </data>
+  <data name="AdvancedSet" xml:space="preserve">
+    <value>Rozšířené</value>
+  </data>
+  <data name="AdvancedSetHelp" xml:space="preserve">
+    <value>Řídí přístup k rozšířeným stránkám v natavení systému.</value>
+  </data>
+  <data name="AdvancedSOaP" xml:space="preserve">
+    <value>Rozšířené</value>
+  </data>
+  <data name="AdvancedSOaPHelp" xml:space="preserve">
+    <value>Umožňuje používat rozšířená API, jako je Výmaz zařízení a Firemní výmaz.</value>
+  </data>
+  <data name="AdvancedSys" xml:space="preserve">
+    <value>Rozšířené</value>
+  </data>
+  <data name="AdvancedSysHelp" xml:space="preserve">
+    <value>Řídí přístup ke stránce Pokročilé pod menu Systém.</value>
+  </data>
+  <data name="AfterArg" xml:space="preserve">
+    <value>Po {0}</value>
+  </data>
+  <data name="AgentApplicationAn" xml:space="preserve">
+    <value>Aplikace centra Hub</value>
+  </data>
+  <data name="AgentApplicationAnHelp" xml:space="preserve">
+    <value>Řídí přístup ke stránkám aplikace centra Hub v Androidu.</value>
+  </data>
+  <data name="AgentPackageAdd" xml:space="preserve">
+    <value>Přidat balíček centra Hub</value>
+  </data>
+  <data name="AgentPackageAddHelp" xml:space="preserve">
+    <value>Povoluje nahrání souboru .apf centra Hub pro fázování při zřizování produktu.</value>
+  </data>
+  <data name="AgentPackageDelete" xml:space="preserve">
+    <value>Vymazat balíček centra Hub</value>
+  </data>
+  <data name="AgentPackageDeleteHelp" xml:space="preserve">
+    <value>Povoluje odstranění souboru .apf centra Hub, který nebude k dispozici pro fázování při zřizování produktu.</value>
+  </data>
+  <data name="AgentPackagePPN" xml:space="preserve">
+    <value>Balíček centra Hub</value>
+  </data>
+  <data name="AgentPackagePPNHelp" xml:space="preserve">
+    <value>Povoluje přidat/aktualizovat/odstranit soubory .apf centra Hub pro fázování při zřizování produktu.</value>
+  </data>
+  <data name="AgentPackageView" xml:space="preserve">
+    <value>Zobrazení balíčku Hub</value>
+  </data>
+  <data name="AgentPackageViewHelp" xml:space="preserve">
+    <value>Povoluje prohlížení seznamu dostupných souborů .apf na obrazovce balíčků centra Hub, což může být využito při fázování při zřizování produktu.</value>
+  </data>
+  <data name="AgentSettingsAn" xml:space="preserve">
+    <value>Nastavení centra Intelligent Hub</value>
+  </data>
+  <data name="AgentSettingsAnHelp" xml:space="preserve">
+    <value>Řídí přístup ke stránce nastavení centra Intelligent Hub v Androidu.</value>
+  </data>
+  <data name="AgentSettingsApple" xml:space="preserve">
+    <value>Nastavení centra Hub</value>
+  </data>
+  <data name="AgentSettingsAppleHelp" xml:space="preserve">
+    <value>Řídí přístup k nastavením centra Hub pro iOS v iOS.</value>
+  </data>
+  <data name="AgentSettingsLinuxHelp" xml:space="preserve">
+    <value>Řídí přístup k nastavení centra Linux Intelligent Hub v systému Linux.</value>
+  </data>
+  <data name="AirwatchEmailClientSet" xml:space="preserve">
+    <value>E-mailový klient AirWatch</value>
+  </data>
+  <data name="AirwatchEmailClientSetHelp" xml:space="preserve">
+    <value>V aplikacích řídí přístup ke stránce e-mailového klienta AirWatch.</value>
+  </data>
+  <data name="AirWatchHelpAd" xml:space="preserve">
+    <value>Nápověda AirWatch</value>
+  </data>
+  <data name="AirWatchHelpAdHelp" xml:space="preserve">
+    <value>Řídí přístup k nápovědě AirWatch</value>
+  </data>
+  <data name="AirWatchTunnelHelp" xml:space="preserve">
+    <value>Udělit oprávnění ke konfiguraci aplikace AirWatch Tunnel</value>
+  </data>
+  <data name="AkamaiSetting" xml:space="preserve">
+    <value>Akamai</value>
+  </data>
+  <data name="AkamaiSettingHelp" xml:space="preserve">
+    <value>Nastavení ke konfiguraci Akamai jako poskytovatele CDN</value>
+  </data>
+  <data name="AlertCreationPoliciesViewHelp" xml:space="preserve">
+    <value>Řídí přístup k zobrazení nastavení výstrah týkajících se vytváření zásad 
+</value>
+  </data>
+  <data name="AlertDD" xml:space="preserve">
+    <value>Výstrahy</value>
+  </data>
+  <data name="AlertDDHelp" xml:space="preserve">
+    <value>Přístup k upozorněním přiřazeným k zařízení</value>
+  </data>
+  <data name="AlertsPM" xml:space="preserve">
+    <value>Výstrahy</value>
+  </data>
+  <data name="AlertsPMHelp" xml:space="preserve">
+    <value>Řídí přístup ke stránce výstrah tiskárny.</value>
+  </data>
+  <data name="AndroidFileManagerDM" xml:space="preserve">
+    <value>Správce souborů Androidu</value>
+  </data>
+  <data name="AndroidFileManagerDMHelp" xml:space="preserve">
+    <value>Soubory a složky Androidu vzdáleně řízené ze stránky detailů zařízení</value>
+  </data>
+  <data name="AndroidForWorkHelp" xml:space="preserve">
+    <value>AndroidForWork</value>
+  </data>
+  <data name="AndroidServiceApplicationsAn" xml:space="preserve">
+    <value>Aplikace služby Android</value>
+  </data>
+  <data name="AndroidServiceApplicationsAnHelp" xml:space="preserve">
+    <value>Uděluje oprávnění k prohlížení a úpravám aplikací služeb.</value>
+  </data>
+  <data name="ApnsApp" xml:space="preserve">
+    <value>APNs</value>
+  </data>
+  <data name="ApnsAppHelp" xml:space="preserve">
+    <value>Řídí přístup k APNs pro stránku aplikací pod menu iOS.</value>
+  </data>
+  <data name="ApnsSet" xml:space="preserve">
+    <value>APNs</value>
+  </data>
+  <data name="ApnsSetHelp" xml:space="preserve">
+    <value>Řídí přístup ke stránce APNs v systémovém nastavení</value>
+  </data>
+  <data name="AppCatalogHelp" xml:space="preserve">
+    <value>zdroj pro katalog aplikací</value>
+  </data>
+  <data name="AppConfigurationSet" xml:space="preserve">
+    <value>Konfigurace aplikace</value>
+  </data>
+  <data name="AppConfigurationSetHelp" xml:space="preserve">
+    <value>Řídí přístup ke stránce Konfigurace aplikace</value>
+  </data>
+  <data name="AppCrashLogsHelp" xml:space="preserve">
+    <value>Řídí přístup k chybovým protokolům aplikace. 
+</value>
+  </data>
+  <data name="AppleConfiguratorSet" xml:space="preserve">
+    <value>Apple Configurator</value>
+  </data>
+  <data name="AppleConfiguratorSetHelp" xml:space="preserve">
+    <value>Řídí přístup ke stránce Apple Configurator pod menu iOS.</value>
+  </data>
+  <data name="AppleEducation" xml:space="preserve">
+    <value>Vzdělávání</value>
+  </data>
+  <data name="AppleEducationHelp" xml:space="preserve">
+    <value>Řídí přístup ke stránce Apple Education</value>
+  </data>
+  <data name="ApplicationCatalogEdit" xml:space="preserve">
+    <value>Upravit katalog aplikací</value>
+  </data>
+  <data name="ApplicationCatalogEditHelp" xml:space="preserve">
+    <value>Stránka pro úpravy nastavení katalogu aplikací</value>
+  </data>
+  <data name="ApplicationCategoriesAb" xml:space="preserve">
+    <value>Kategorie aplikací</value>
+  </data>
+  <data name="ApplicationCategoriesAbHelp" xml:space="preserve">
+    <value>Prohlížet a spravovat kategorie aplikací.</value>
+  </data>
+  <data name="ApplicationGroupsAb" xml:space="preserve">
+    <value>Skupiny aplikací</value>
+  </data>
+  <data name="ApplicationGroupsAbHelp" xml:space="preserve">
+    <value>Prohlížejte a spravujte skupiny aplikací</value>
+  </data>
+  <data name="ApplicationIntegrationSet" xml:space="preserve">
+    <value>Integrace aplikace</value>
+  </data>
+  <data name="ApplicationIntegrationSetHelp" xml:space="preserve">
+    <value>Řídí přístup k obrazovce nastavení integrace aplikací</value>
+  </data>
+  <data name="ApplicationPPN" xml:space="preserve">
+    <value>Aplikace</value>
+  </data>
+  <data name="ApplicationPPNHelp" xml:space="preserve">
+    <value>Přístup ke zřizovací stránce aplikace</value>
+  </data>
+  <data name="ApplicationProfilesAb" xml:space="preserve">
+    <value>Profily aplikace</value>
+  </data>
+  <data name="ApplicationProfilesAbHelp" xml:space="preserve">
+    <value>Prohlížejte a spravujte profily aplikace.</value>
+  </data>
+  <data name="ApplicationPublishAb" xml:space="preserve">
+    <value>Publikování aplikací</value>
+  </data>
+  <data name="ApplicationPublishAbHelp" xml:space="preserve">
+    <value>Publikovat přidané aplikace.</value>
+  </data>
+  <data name="ApplicationsAb" xml:space="preserve">
+    <value>Aplikace</value>
+  </data>
+  <data name="ApplicationsAbHelp" xml:space="preserve">
+    <value>Mobile Application Management - Správa mobilních aplikací</value>
+  </data>
+  <data name="ApplicationsDD" xml:space="preserve">
+    <value>Aplikace</value>
+  </data>
+  <data name="ApplicationsDDHelp" xml:space="preserve">
+    <value>Provést vzdálenou instalaci a odstranění aplikací spravovaného zařízení</value>
+  </data>
+  <data name="ApplicationsDM" xml:space="preserve">
+    <value>Aplikace</value>
+  </data>
+  <data name="ApplicationsDMHelp" xml:space="preserve">
+    <value>Vyžádané protokoly a odezva správy aplikace.</value>
+  </data>
+  <data name="ApplicationsHub" xml:space="preserve">
+    <value>Aplikace</value>
+  </data>
+  <data name="ApplicationsHubHelp" xml:space="preserve">
+    <value>Generovat sestavy pro aplikace zařízení</value>
+  </data>
+  <data name="ApplicationsSet" xml:space="preserve">
+    <value>Aplikace</value>
+  </data>
+  <data name="ApplicationsSetHelp" xml:space="preserve">
+    <value>Přístup ke stránkám nastavení aplikací správy obsahu</value>
+  </data>
+  <data name="ApplicationWorkflowAb" xml:space="preserve">
+    <value>Pracovní postup aplikace</value>
+  </data>
+  <data name="ApplicationWorkflowAbHelp" xml:space="preserve">
+    <value>Nahrání, kontrola, přiřazení a publikování aplikací.</value>
+  </data>
+  <data name="ApplicationWrappingAb" xml:space="preserve">
+    <value>Zabalení aplikace</value>
+  </data>
+  <data name="ApplicationWrappingAbHelp" xml:space="preserve">
+    <value>Přistoupit k zabalování aplikace</value>
+  </data>
+  <data name="AppRemovalProtectionHelp" xml:space="preserve">
+    <value>Zobrazení možnosti aktivovat ochranu před odstraněním aplikace</value>
+  </data>
+  <data name="AppRemovalProtectionLogEditHelp" xml:space="preserve">
+    <value>Zdroj pro řízení přístupu „Upravit“ na stránku protokolů ochrany před odebráním aplikace</value>
+  </data>
+  <data name="AppRemovalProtectionLogViewHelp" xml:space="preserve">
+    <value>Zdroj pro řízení přístupu „Zobrazit“ na stránku protokolů ochrany před odebráním aplikace</value>
+  </data>
+  <data name="ApproveAndUnapproveUpdates" xml:space="preserve">
+    <value>Schválit a odvolat schválení aktualizace</value>
+  </data>
+  <data name="ApproveUpdate" xml:space="preserve">
+    <value>Schválit aktualizaci</value>
+  </data>
+  <data name="ApproveUpdateHelp" xml:space="preserve">
+    <value>Uděluje oprávnění k vydání příkazu schválit aktualizaci na zařízeních.</value>
+  </data>
+  <data name="ApproveUpdates" xml:space="preserve">
+    <value>Schválit aktualizaci</value>
+  </data>
+  <data name="AppsRESTMam" xml:space="preserve">
+    <value>Aplikace</value>
+  </data>
+  <data name="AppsRESTMamHelp" xml:space="preserve">
+    <value>REST API pro aplikace</value>
+  </data>
+  <data name="AppUserCommentsAb" xml:space="preserve">
+    <value>Komentáře uživatelů aplikace</value>
+  </data>
+  <data name="AppUserCommentsAbHelp" xml:space="preserve">
+    <value>Prohlížejte a spravujte nastavení komentářů uživatelů.</value>
+  </data>
+  <data name="AssetBatchImportSys" xml:space="preserve">
+    <value>Dávkový import aktiv</value>
+  </data>
+  <data name="AssetBatchImportSysHelp" xml:space="preserve">
+    <value>Importovat celkový přehled o telekomunikačním majetku.</value>
+  </data>
+  <data name="AssetManagementO" xml:space="preserve">
+    <value>Správa aktiv</value>
+  </data>
+  <data name="AssetManagementOHelp" xml:space="preserve">
+    <value>Hledat, přidat a upravovat zařízení.</value>
+  </data>
+  <data name="AssetTrackingDM" xml:space="preserve">
+    <value>Sledování aktiv</value>
+  </data>
+  <data name="AssetTrackingDMHelp" xml:space="preserve">
+    <value>Přístup ke stránce sledování zařízení ve správě aktiv.</value>
+  </data>
+  <data name="AssetUserTrackingO" xml:space="preserve">
+    <value>Sledování uživatele aktiv</value>
+  </data>
+  <data name="AssetUserTrackingOHelp" xml:space="preserve">
+    <value>Přístup ke stránce sledování zařízení, včetně záložek k přihlášení a odhlášení.</value>
+  </data>
+  <data name="AssignDeviceEnrollmentProgram" xml:space="preserve">
+    <value>Registrační program - Přiřadit profily</value>
+  </data>
+  <data name="AssignDeviceEnrollmentProgramHelp" xml:space="preserve">
+    <value>Řídí přístup k připisování profilů programu registrace do zařízení. Přejděte na stránku stavu registrace</value>
+  </data>
+  <data name="AssignmentRulesAdd" xml:space="preserve">
+    <value>Přidat pravidla přiřazení</value>
+  </data>
+  <data name="AssignmentRulesAddHelp" xml:space="preserve">
+    <value>Přidat pravidla přiřazení zařízení.</value>
+  </data>
+  <data name="AssignmentRulesDelete" xml:space="preserve">
+    <value>Odstranit pravidla přiřazení</value>
+  </data>
+  <data name="AssignmentRulesDeleteHelp" xml:space="preserve">
+    <value>Odstranit pravidla přiřazení zařízení.</value>
+  </data>
+  <data name="AssignmentRulesEdit" xml:space="preserve">
+    <value>Upravit pravidla přiřazení</value>
+  </data>
+  <data name="AssignmentRulesEditHelp" xml:space="preserve">
+    <value>Upravit pravidla přiřazení zařízení.</value>
+  </data>
+  <data name="AssignmentSys" xml:space="preserve">
+    <value>Přiřazení</value>
+  </data>
+  <data name="AssignmentSysHelp" xml:space="preserve">
+    <value>Upravovat telekomunikační plán statických a dynamických přiřazení.</value>
+  </data>
+  <data name="Assist" xml:space="preserve">
+    <value>Assist</value>
+  </data>
+  <data name="AssistFileManager" xml:space="preserve">
+    <value>Správce souborů</value>
+  </data>
+  <data name="AssistFileManagerHelp" xml:space="preserve">
+    <value>Poskytuje přístup ke správě souborů na vzdáleném zařízení</value>
+  </data>
+  <data name="AssistHelp" xml:space="preserve">
+    <value>Správa rolí vzdálené správy</value>
+  </data>
+  <data name="AssistRegistryEditor" xml:space="preserve">
+    <value>Editor registru</value>
+  </data>
+  <data name="AssistRegistryEditorHelp" xml:space="preserve">
+    <value>Poskytuje přístup k provádění změn v registrech na zařízeních se systémem Windows Mobile</value>
+  </data>
+  <data name="AssistRemoteControl" xml:space="preserve">
+    <value>Vzdálené řízení</value>
+  </data>
+  <data name="AssistRemoteControlHelp" xml:space="preserve">
+    <value>Poskytuje přístup k zobrazení a ovládání vzdáleného zařízení</value>
+  </data>
+  <data name="AssistRemoteShell" xml:space="preserve">
+    <value>Vzdálené prostředí</value>
+  </data>
+  <data name="AssistRemoteShellHelp" xml:space="preserve">
+    <value>Poskytuje přístup k provádění příkazů prostřednictvím rozhraní příkazového řádku na vzdáleném zařízení</value>
+  </data>
+  <data name="AssistRemoteView" xml:space="preserve">
+    <value>Zobrazení na dálku</value>
+  </data>
+  <data name="AssistRemoteViewHelp" xml:space="preserve">
+    <value>Poskytuje přístup pouze k prohlížení vzdáleného zařízení. Pokud je aktivováno vzdálené zobrazení a ovládání, je relace iniciována pouze v režimu zobrazení, ale uživatel může být požádán o přístup k ovládací obrazovce</value>
+  </data>
+  <data name="AssistSessionCollaboration" xml:space="preserve">
+    <value>Relace spolupráce</value>
+  </data>
+  <data name="AssistSessionCollaborationHelp" xml:space="preserve">
+    <value>Umožňuje uživateli konzoly pozvat další účastníky do relace vzdálené pomoci.</value>
+  </data>
+  <data name="AssistUnattendedAccess" xml:space="preserve">
+    <value>Bezobslužný přístup</value>
+  </data>
+  <data name="AssistUnattendedAccessHelp" xml:space="preserve">
+    <value>Poskytuje přístup k zařízení v bezobslužném režimu</value>
+  </data>
+  <data name="AttachmentsDD" xml:space="preserve">
+    <value>Přílohy</value>
+  </data>
+  <data name="AttachmentsDDHelp" xml:space="preserve">
+    <value>Přidat a odstranit přílohy zařízení v detailech zařízení.</value>
+  </data>
+  <data name="AutoDiscoveryIns" xml:space="preserve">
+    <value>Automatické zjišťování</value>
+  </data>
+  <data name="AutoDiscoveryInsHelp" xml:space="preserve">
+    <value>V nabídce Instalace řídí přístup ke stránce automatického zjišťování.</value>
+  </data>
+  <data name="AutoEnrollmentHelp" xml:space="preserve">
+    <value>Autoregistrace</value>
+  </data>
+  <data name="AutomationHelp" xml:space="preserve">
+    <value>Tento zdroj Odborný náhled poskytuje přístup k platformě automatizace přes stránku přehledu centra Hub</value>
+  </data>
+  <data name="AwcmDD" xml:space="preserve">
+    <value>AWCM (správce AirWatch Cloudu)</value>
+  </data>
+  <data name="AwcmDDHelp" xml:space="preserve">
+    <value>Spustit a ukončit připojení AirWatch cloud managera ze stránky detailů zařízení.</value>
+  </data>
+  <data name="AWProDeviceClearPasscode" xml:space="preserve">
+    <value>AW Pro vymazání hesla zařízení</value>
+  </data>
+  <data name="AWProDeviceClearPasscodeHelp" xml:space="preserve">
+    <value>Řídí přístup k vymazání hesla/hesla napájení v aplikaci AirWatch Pro</value>
+  </data>
+  <data name="AWProDeviceSendMessage" xml:space="preserve">
+    <value>AW Pro poslání zprávy zařízení</value>
+  </data>
+  <data name="AWProDeviceSendMessageHelp" xml:space="preserve">
+    <value>Řídí přístup k posílání zpráv v AW Pro</value>
+  </data>
+  <data name="AWProGenerateNewCertificate" xml:space="preserve">
+    <value>AW Pro Vygenerovat nový certifikát</value>
+  </data>
+  <data name="AWProGenerateNewCertificateHelp" xml:space="preserve">
+    <value>Řídí přístup ke generování nového certifikátu</value>
+  </data>
+  <data name="AwProResCategory" xml:space="preserve">
+    <value>AW Pro</value>
+  </data>
+  <data name="AwProResCategoryHelp" xml:space="preserve">
+    <value>Plný přistup k AW Pro konzole.</value>
+  </data>
+  <data name="BatchImportAccounts" xml:space="preserve">
+    <value>Hromadný import</value>
+  </data>
+  <data name="BatchImportAccountsHelp" xml:space="preserve">
+    <value>Dávkově importujte administrátorské účty.</value>
+  </data>
+  <data name="BatchImportDM" xml:space="preserve">
+    <value>Hromadný import</value>
+  </data>
+  <data name="BatchImportDMHelp" xml:space="preserve">
+    <value>Hromadně importujte profily zařízení.</value>
+  </data>
+  <data name="BatchImportUG" xml:space="preserve">
+    <value>Hromadný import</value>
+  </data>
+  <data name="BatchImportUGHelp" xml:space="preserve">
+    <value>Dávkově importujte skupiny uživatelů registrace.</value>
+  </data>
+  <data name="BatchImportUserAccount" xml:space="preserve">
+    <value>Hromadný import</value>
+  </data>
+  <data name="BatchImportUserAccountHelp" xml:space="preserve">
+    <value>Získat přístup k dávkovému importu pro uživatele registrace.</value>
+  </data>
+  <data name="BatchSizeBySmartGroupHelp" xml:space="preserve">
+    <value>Určuje počet zařízení, která budou zahrnuta do každé dávky pro interní nasazení aplikace.</value>
+  </data>
+  <data name="BatchStatusAdminGeneral" xml:space="preserve">
+    <value>Stav dávky</value>
+  </data>
+  <data name="BatchStatusAdminGeneralHelp" xml:space="preserve">
+    <value>Zobrazit status hromadných importů uživatelů – administrátorů</value>
+  </data>
+  <data name="BatchStatusUserGeneral" xml:space="preserve">
+    <value>Stav dávky</value>
+  </data>
+  <data name="BatchStatusUserGeneralHelp" xml:space="preserve">
+    <value>Přístup ke statusu hromadné registrace importů uživatelů.</value>
+  </data>
+  <data name="BeforeArg" xml:space="preserve">
+    <value>Před {0}</value>
+  </data>
+  <data name="BESResCategory" xml:space="preserve">
+    <value>BES</value>
+  </data>
+  <data name="BESResCategoryHelp" xml:space="preserve">
+    <value>Povoluje ikonu registrace BES na stránkách řídicího panelu.</value>
+  </data>
+  <data name="BillingBi" xml:space="preserve">
+    <value>Fakturace</value>
+  </data>
+  <data name="BillingBiHelp" xml:space="preserve">
+    <value>Správa stránky detailů fakturace.</value>
+  </data>
+  <data name="BIOSManagement" xml:space="preserve">
+    <value>Správa systému BIOS</value>
+  </data>
+  <data name="BIOSManagementHelp" xml:space="preserve">
+    <value>Prostředky správy systému BIOS</value>
+  </data>
+  <data name="BooksAb" xml:space="preserve">
+    <value>Knihy</value>
+  </data>
+  <data name="BooksAbHelp" xml:space="preserve">
+    <value>Přístup k modulu knih v Aplikacích &amp; knihách.</value>
+  </data>
+  <data name="BoxerConfigReadWrite" xml:space="preserve">
+    <value>Konfigurace aplikace Boxer</value>
+  </data>
+  <data name="BoxerConfigReadWriteHelp" xml:space="preserve">
+    <value>Slouží ke konfiguraci nastavení aplikace Boxer, když je nahrána jako veřejná aplikace</value>
+  </data>
+  <data name="BranchCacheSetup" xml:space="preserve">
+    <value>Nastavení mezipaměti větve</value>
+  </data>
+  <data name="BranchCacheSetupHelp" xml:space="preserve">
+    <value>Nastavení a konfigurace nativní funkce distribuce aplikací typu peer-to-peer v aplikaci Workspace ONE pro systém Windows 10</value>
+  </data>
+  <data name="BrandingSys" xml:space="preserve">
+    <value>Propagace značky</value>
+  </data>
+  <data name="BrandingSysHelp" xml:space="preserve">
+    <value>Řídí přístup ke stránce brandingu v menu Obecné.</value>
+  </data>
+  <data name="BrowserDM" xml:space="preserve">
+    <value>Browser</value>
+  </data>
+  <data name="BrowserDMHelp" xml:space="preserve">
+    <value>Konfigurace pravidel prohlížeče ve správě zařízení.</value>
+  </data>
+  <data name="BulkActionUserAccounts" xml:space="preserve">
+    <value>Hromadná akce</value>
+  </data>
+  <data name="BulkActionUserAccountsHelp" xml:space="preserve">
+    <value>Provést hromadné akce na účtech uživatelů. Například poslat zprávy.</value>
+  </data>
+  <data name="BulkImportCM" xml:space="preserve">
+    <value>Hromadný import</value>
+  </data>
+  <data name="BulkImportCMHelp" xml:space="preserve">
+    <value>Obsah hromadného importu v Prohlížení veškerého obsahu.</value>
+  </data>
+  <data name="BulkManagementAd" xml:space="preserve">
+    <value>Správa hromadných akcí</value>
+  </data>
+  <data name="BulkManagementAdHelp" xml:space="preserve">
+    <value>Zobrazit a upravovat nastavení správy hromadných akcí</value>
+  </data>
+  <data name="BulkManagementDM" xml:space="preserve">
+    <value>Správa hromadných akcí</value>
+  </data>
+  <data name="BulkManagementDMHelp" xml:space="preserve">
+    <value>Provést hromadnou akci na zařízeních v sekci Prohlížení v seznamu zařízení</value>
+  </data>
+  <data name="CatalogSet" xml:space="preserve">
+    <value>Katalog</value>
+  </data>
+  <data name="CatalogSetHelp" xml:space="preserve">
+    <value>Povoluje vstup do stránek katalogu aplikací v nastavení systému</value>
+  </data>
+  <data name="CategoriesCM" xml:space="preserve">
+    <value>Kategorie</value>
+  </data>
+  <data name="CategoriesCMHelp" xml:space="preserve">
+    <value>Tvoření a úpravy kategorie obsahu.</value>
+  </data>
+  <data name="CDNSetupHelp" xml:space="preserve">
+    <value>Nastavení systému pro CDN</value>
+  </data>
+  <data name="CertificateAuthoritiesApple" xml:space="preserve">
+    <value>Certifikační autority</value>
+  </data>
+  <data name="CertificateAuthoritiesAppleHelp" xml:space="preserve">
+    <value>Řídí přístup ke stránce certifikačních autorit v menu iOS.</value>
+  </data>
+  <data name="CertificateAuthorityCM" xml:space="preserve">
+    <value>Certifikační autorita</value>
+  </data>
+  <data name="CertificateAuthorityCMHelp" xml:space="preserve">
+    <value>Přístup k certifikační autoritě a k sekci certifikačního vzoru.</value>
+  </data>
+  <data name="CertificateManagementDM" xml:space="preserve">
+    <value>Správa certifikátů</value>
+  </data>
+  <data name="CertificateManagementDMHelp" xml:space="preserve">
+    <value>Prohlížení a správa certifikátů ve správě zařízení.</value>
+  </data>
+  <data name="CertificatesDD" xml:space="preserve">
+    <value>Certifikáty</value>
+  </data>
+  <data name="CertificatesDDHelp" xml:space="preserve">
+    <value>Prohlížení certifikátů přidružených k zařízení v detailech zařízení.</value>
+  </data>
+  <data name="CertificatesExpired" xml:space="preserve">
+    <value>Prošlé certifikáty</value>
+  </data>
+  <data name="CertificatesRevoked" xml:space="preserve">
+    <value>Odvolané certifikáty</value>
+  </data>
+  <data name="ChangePasswordAdminAccounts" xml:space="preserve">
+    <value>Změnit heslo</value>
+  </data>
+  <data name="ChangePasswordAdminAccountsHelp" xml:space="preserve">
+    <value>Změnit administrátorská hesla.</value>
+  </data>
+  <data name="ChromebookSet" xml:space="preserve">
+    <value>ChromeBook</value>
+  </data>
+  <data name="ChromebookSetHelp" xml:space="preserve">
+    <value>Řídí přístup ke stránce nastavení agenta v ChromeBook.</value>
+  </data>
+  <data name="CloudContentPlatformHelp" xml:space="preserve">
+    <value>Zdroje, které aktivují možnosti UEM pro spuštění služeb Cloud Content</value>
+  </data>
+  <data name="CollapsedAriaLabel" xml:space="preserve">
+    <value>sbaleno</value>
+  </data>
+  <data name="CommaSeparatedEmailInfo" xml:space="preserve">
+    <value>K oddělení více e-mailových adres použijte čárku.</value>
+  </data>
+  <data name="ComplianceDD" xml:space="preserve">
+    <value>Konformita</value>
+  </data>
+  <data name="ComplianceDDHelp" xml:space="preserve">
+    <value>Zobrazit zásady konformity a statusy v detailech zařízení.</value>
+  </data>
+  <data name="ComplianceDM" xml:space="preserve">
+    <value>Konformita</value>
+  </data>
+  <data name="ComplianceDMHelp" xml:space="preserve">
+    <value>Zobrazit a spravovat zásady zařízení ve správě zařízení.</value>
+  </data>
+  <data name="ComplianceHub" xml:space="preserve">
+    <value>Konformita</value>
+  </data>
+  <data name="ComplianceHubHelp" xml:space="preserve">
+    <value>Generovat sestavy o dodržování konformity</value>
+  </data>
+  <data name="CompliancePoliciesEM" xml:space="preserve">
+    <value>Zásady konformity</value>
+  </data>
+  <data name="CompliancePoliciesEMHelp" xml:space="preserve">
+    <value>Spravovat zásady konformity správy e-mailu</value>
+  </data>
+  <data name="ConditionalAccessIntegrations" xml:space="preserve">
+    <value>Integrace s podmíněným přístupem</value>
+  </data>
+  <data name="ConditionalAccessIntegrationsHelp" xml:space="preserve">
+    <value>Řídí přístup ke sdílení stavu shody zařízení s třetí stranou za účelem konfigurace zásad podmíněného přístupu</value>
+  </data>
+  <data name="ConditionsPPN" xml:space="preserve">
+    <value>Podmínky</value>
+  </data>
+  <data name="ConditionsPPNHelp" xml:space="preserve">
+    <value>Vytvořit a spravovat zřizovací podmínky pravidel zřizování</value>
+  </data>
+  <data name="ConsoleSecurityAd" xml:space="preserve">
+    <value>Zabezpečení konzoly</value>
+  </data>
+  <data name="ConsoleSecurityAdHelp" xml:space="preserve">
+    <value>Zobrazení stránky zabezpečení konzoly a správa z globální organizační skupiny</value>
+  </data>
+  <data name="ContentDashboard" xml:space="preserve">
+    <value>Řídicí panel obsahu</value>
+  </data>
+  <data name="ContentDashboardHelp" xml:space="preserve">
+    <value>Řídí přístup k prohlížení stránky řídicího panelu obsahu. Přejděte do menu\obsah\řídicí panel.</value>
+  </data>
+  <data name="ContentDD" xml:space="preserve">
+    <value>Obsah</value>
+  </data>
+  <data name="ContentDDHelp" xml:space="preserve">
+    <value>Přístup a správa obsahu zařízení v detailech zařízení.</value>
+  </data>
+  <data name="ContentDeliveryServiceHelp" xml:space="preserve">
+    <value>Řídí přístup k nastavení služby doručení obsahu</value>
+  </data>
+  <data name="ContentHub" xml:space="preserve">
+    <value>Obsah</value>
+  </data>
+  <data name="ContentHubHelp" xml:space="preserve">
+    <value>Generovat sestavy o obsahu zařízení</value>
+  </data>
+  <data name="ContentRightsManagementHelp" xml:space="preserve">
+    <value>Nastavení týkající se konfigurace ochrany správy práv Azure pro obsah.</value>
+  </data>
+  <data name="ContentViewerHelp" xml:space="preserve">
+    <value>Řídí přístup k nastavením prohlížeče obsahu (prohlížeč HTML5)</value>
+  </data>
+  <data name="CreationPoliciesGr" xml:space="preserve">
+    <value>Zásady vytváření</value>
+  </data>
+  <data name="CreationPoliciesGrHelp" xml:space="preserve">
+    <value>Prohlížení a správa výstrah pravidel vytváření.</value>
+  </data>
+  <data name="CustomAttributeAssignmentRulesHelp" xml:space="preserve">
+    <value>Obrazovka zobrazení seznamu určená k zobrazení aktuálních pravidel přiřazení vlastních atributů</value>
+  </data>
+  <data name="CustomAttributesSet" xml:space="preserve">
+    <value>Vlastní atributy</value>
+  </data>
+  <data name="CustomAttributesSetHelp" xml:space="preserve">
+    <value>Prohlížení a správa vlastních atributů v nastavení systému.</value>
+  </data>
+  <data name="CustomFieldsDM" xml:space="preserve">
+    <value>Vlastní pole</value>
+  </data>
+  <data name="CustomFieldsDMHelp" xml:space="preserve">
+    <value>Upravit vlastní proměnné v nastavení zařízení.</value>
+  </data>
+  <data name="CustomizationAd" xml:space="preserve">
+    <value>Vlastní nastavení</value>
+  </data>
+  <data name="CustomizationAdHelp" xml:space="preserve">
+    <value>Povolit přístup k vlastnímu nastavení podporovaných mřížek</value>
+  </data>
+  <data name="CustomizationHelp" xml:space="preserve">
+    <value>Poskytuje oprávnění přizpůsobit podporované mřížky na úrovni uživatele
+</value>
+  </data>
+  <data name="CustomMdmCommandHelp" xml:space="preserve">
+    <value>Ovládací prvky aktivující funkci pro odesílání příkazů na systémech iOS, tvOS a macOS vložením souboru XML příkazu</value>
+  </data>
+  <data name="DataPurgingD" xml:space="preserve">
+    <value>Vyprazdňování dat</value>
+  </data>
+  <data name="DataPurgingDHelp" xml:space="preserve">
+    <value>Opravňuje k modifikaci nastavení vyprazdňování dat.</value>
+  </data>
+  <data name="DataSamplesAd" xml:space="preserve">
+    <value>Vzorky dat</value>
+  </data>
+  <data name="DataSamplesAdHelp" xml:space="preserve">
+    <value>Řídí audit historie vzorků zařízení v tabulkách databáze</value>
+  </data>
+  <data name="DataSecuritySec" xml:space="preserve">
+    <value>Zabezpečení dat</value>
+  </data>
+  <data name="DataSecuritySecHelp" xml:space="preserve">
+    <value>Povoluje zobrazení stránky zabezpečení dat.</value>
+  </data>
+  <data name="DeleteCartHelp" xml:space="preserve">
+    <value>Odstranění košíků umožňuje administrátorovi odstranit seznam sériových čísel určených pro použití se sdílenými zařízeními.</value>
+  </data>
+  <data name="DeleteCustomReportSubscriptionHelp" xml:space="preserve">
+    <value>Řídí přístup k odstraňování vlastních odběrů zpráv. Přejděte do centra Hub \ Zprávy a analýzy \ Vlastní zprávy \ Odběry</value>
+  </data>
+  <data name="DeleteDeviceDD" xml:space="preserve">
+    <value>Odstranit zařízení</value>
+  </data>
+  <data name="DeleteDeviceDDHelp" xml:space="preserve">
+    <value>Odstranit záznamy zařízení ze stránky detailů zařízení.</value>
+  </data>
+  <data name="DeleteFileServerConfiguration" xml:space="preserve">
+    <value>Odstranit konfiguraci souborového serveru</value>
+  </data>
+  <data name="DeleteFileServerConfigurationHelp" xml:space="preserve">
+    <value>Uděluje uživateli oprávnění odstranit mřížku a podrobnosti souborových serverů</value>
+  </data>
+  <data name="DeleteNoteHelp" xml:space="preserve">
+    <value>Uděluje oprávnění odstranit poznámku</value>
+  </data>
+  <data name="DeleteTagHelp" xml:space="preserve">
+    <value>Uděluje oprávnění odstranit štítek</value>
+  </data>
+  <data name="DeleteUnmanagedEM" xml:space="preserve">
+    <value>Odstranit nespravované</value>
+  </data>
+  <data name="DeleteUnmanagedEMHelp" xml:space="preserve">
+    <value>Z řídicího panelu správy e-mailu vymazat nespravovaná zařízení</value>
+  </data>
+  <data name="DeleteWindowsTemplateHelp" xml:space="preserve">
+    <value>Umožňuje správci konfigurovat nastavení pro odebírání šablony Windows na panelu konzoly Console</value>
+  </data>
+  <data name="DesignateRecipients" xml:space="preserve">
+    <value>URČIT PŘÍJEMCE</value>
+  </data>
+  <data name="DetailsPM" xml:space="preserve">
+    <value>Detaily</value>
+  </data>
+  <data name="DetailsPMHelp" xml:space="preserve">
+    <value>Prohlížet detaily stránek tiskárny</value>
+  </data>
+  <data name="DeviceBulkManagementRebootDeviceHelp" xml:space="preserve">
+    <value>Umožňuje uživateli hromadné restartování zařízení</value>
+  </data>
+  <data name="DeviceDetailsHub" xml:space="preserve">
+    <value>Detaily zařízení</value>
+  </data>
+  <data name="DeviceDetailsHubHelp" xml:space="preserve">
+    <value>Generovat sestavy pro detaily zařízení.</value>
+  </data>
+  <data name="DeviceDetailsQueryHealthAttestationHelp" xml:space="preserve">
+    <value>Dotázat se blob certifikátu ověření stavu na vyžádání</value>
+  </data>
+  <data name="DeviceDetailsQueryOSUpdates" xml:space="preserve">
+    <value>Detaily zařízení – Dotazování aktualizací OS</value>
+  </data>
+  <data name="DeviceDetailsQueryOSUpdatesHelp" xml:space="preserve">
+    <value>Řídí přístup k dotazování informací o aktualizacích OS ze zařízení na stránce Detaily zařízení.</value>
+  </data>
+  <data name="DeviceEnterpriseReset" xml:space="preserve">
+    <value>Firemní reset</value>
+  </data>
+  <data name="DeviceEnterpriseResetHelp" xml:space="preserve">
+    <value>Dává oprávnění k firemnímu výmazu, při zachování registrace v Airwach i dalších firemních dat.</value>
+  </data>
+  <data name="DeviceGroupsDM" xml:space="preserve">
+    <value>Skupiny zařízení</value>
+  </data>
+  <data name="DeviceGroupsDMHelp" xml:space="preserve">
+    <value>Vytvořit a spravovat skupiny zařízení uvnitř správy zařízení.</value>
+  </data>
+  <data name="DeviceGroupsSet" xml:space="preserve">
+    <value>Skupiny zařízení</value>
+  </data>
+  <data name="DeviceGroupsSetHelp" xml:space="preserve">
+    <value>Řídí přístup ke skupinám zařízení v nastavení systému</value>
+  </data>
+  <data name="DeviceInventoryHub" xml:space="preserve">
+    <value>Inventář zařízení</value>
+  </data>
+  <data name="DeviceInventoryHubHelp" xml:space="preserve">
+    <value>Generovat sestavy o inventáři zařízení.</value>
+  </data>
+  <data name="DeviceLimitRestrictionEdit" xml:space="preserve">
+    <value>Upravit omezení limitu zařízení</value>
+  </data>
+  <data name="DeviceLimitRestrictionEditHelp" xml:space="preserve">
+    <value>Uděluje oprávnění upravovat / načíst limit zařízení v části Nastavení / Zařízení a uživatelé / Obecné / Registrace / Omezení</value>
+  </data>
+  <data name="DevicePM" xml:space="preserve">
+    <value>Zařízení</value>
+  </data>
+  <data name="DevicePMHelp" xml:space="preserve">
+    <value>Řídí přístup ke stránce tiskárny.</value>
+  </data>
+  <data name="DevicesHub" xml:space="preserve">
+    <value>Zařízení</value>
+  </data>
+  <data name="DevicesHubHelp" xml:space="preserve">
+    <value>Generovat sestavy seskupení zařízení a metriky.</value>
+  </data>
+  <data name="DevicesRESTMdm" xml:space="preserve">
+    <value>Zařízení</value>
+  </data>
+  <data name="DevicesRESTMdmHelp" xml:space="preserve">
+    <value>REST APIs pro správu zařízení</value>
+  </data>
+  <data name="DeviceWipeDD" xml:space="preserve">
+    <value>Výmaz zařízení</value>
+  </data>
+  <data name="DeviceWipeDDHelp" xml:space="preserve">
+    <value>Na dálku vymazat zařízení z detailů zařízení, což navrátí zařízení do továrního nastavení.</value>
+  </data>
+  <data name="DeviceWipeHelp" xml:space="preserve">
+    <value>Řídí přístup k vymazání zařízení.</value>
+  </data>
+  <data name="DeviceWipesSet" xml:space="preserve">
+    <value>Výmazy zařízení</value>
+  </data>
+  <data name="DeviceWipesSetHelp" xml:space="preserve">
+    <value>Řídí přístup ke správě životnosti zařízení v nastavení systému</value>
+  </data>
+  <data name="DiagnosticsAd" xml:space="preserve">
+    <value>Diagnostika</value>
+  </data>
+  <data name="DiagnosticsAdHelp" xml:space="preserve">
+    <value>Správa diagnostického nastavení v nastavení systému.</value>
+  </data>
+  <data name="DisableActivationLockBypassCodeHelp" xml:space="preserve">
+    <value>Umožňuje administrátorovi deaktivovat kód na obejití zámku aktivace na zařízení iOS. Přejděte do nabídky Zařízení / Podrobnosti / Přehled / nebo na Zařízení / Seznam, vyberte zařízení a klikněte na možnost Další.</value>
+  </data>
+  <data name="DisableActivationLockBypassDD" xml:space="preserve">
+    <value>Deaktivovat obejití zámku aktivace</value>
+  </data>
+  <data name="DisableActivationLockBypassDDHelp" xml:space="preserve">
+    <value>Zabránit aktivaci obejití zámku na zařízení iOS.</value>
+  </data>
+  <data name="DisplayVideoImportHelp" xml:space="preserve">
+    <value>Import videa ve službě AirWatch pomocí společnosti Wistia</value>
+  </data>
+  <data name="DisplayVideoViewHelp" xml:space="preserve">
+    <value>Zobrazit seznam videí</value>
+  </data>
+  <data name="DistributionDM" xml:space="preserve">
+    <value>Distribuce</value>
+  </data>
+  <data name="DistributionDMHelp" xml:space="preserve">
+    <value>Přístup k cestě ditribučního serveru v úpravách lokality a na stránkach detailů lokality.</value>
+  </data>
+  <data name="DomainJoinConfigEdit" xml:space="preserve">
+    <value>Upravit</value>
+  </data>
+  <data name="DomainJoinConfigEditHelp" xml:space="preserve">
+    <value>Řídí přístup ke konfiguraci přidání/úprav/přiřazení/odstranění připojení k doméně.</value>
+  </data>
+  <data name="DownloadContentCM" xml:space="preserve">
+    <value>Stáhnout obsah</value>
+  </data>
+  <data name="DownloadContentCMHelp" xml:space="preserve">
+    <value>Stahování obsahu uvnitř zobrazení veškerého obsahu.</value>
+  </data>
+  <data name="DownloadLinuxPullServiceInstallerHelp" xml:space="preserve">
+    <value>Uděluje oprávnění stáhnout instalační program služby Linux Pull.</value>
+  </data>
+  <data name="DownloadWindowsPullServiceInstallerHelp" xml:space="preserve">
+    <value>Uděluje oprávnění stáhnout instalační program služby Windows Pull</value>
+  </data>
+  <data name="DropshipProvisioningEdit" xml:space="preserve">
+    <value>Upravit nastavení aplikace Drop Ship Provisioning</value>
+  </data>
+  <data name="DropshipProvisioningHelp" xml:space="preserve">
+    <value>Řídit přístup k aktivaci aplikace Drop Ship Provisioning</value>
+  </data>
+  <data name="DxModeEM" xml:space="preserve">
+    <value>Režim Dx</value>
+  </data>
+  <data name="DxModeEMHelp" xml:space="preserve">
+    <value>Aktivovat a deaktivovat režim Dx za účelem řešení potíží z řídicího panelu pro správu e-mailů</value>
+  </data>
+  <data name="EasIntegrationEm" xml:space="preserve">
+    <value>EAS integrace</value>
+  </data>
+  <data name="EasIntegrationEmHelp" xml:space="preserve">
+    <value>Řídí přístup ke stránce brány mobilního e-mailu v sekci Obecné.</value>
+  </data>
+  <data name="EditAdminGroupHelp" xml:space="preserve">
+    <value>Poskytuje povolení upravovat administrátorské skupiny. 
+</value>
+  </data>
+  <data name="EditDD" xml:space="preserve">
+    <value>Upravit</value>
+  </data>
+  <data name="EditDDHelp" xml:space="preserve">
+    <value>Upravit informace o zařízení, například popisný název, inventární číslo aktiva, atd.</value>
+  </data>
+  <data name="EditFileServerConfiguration" xml:space="preserve">
+    <value>Upravit konfiguraci souborového serveru</value>
+  </data>
+  <data name="EditFileServerConfigurationHelp" xml:space="preserve">
+    <value>Uděluje uživateli oprávnění upravovat mřížku a podrobnosti souborových serverů </value>
+  </data>
+  <data name="EditNoteHelp" xml:space="preserve">
+    <value>Uděluje oprávnění upravit poznámku</value>
+  </data>
+  <data name="EditTagHelp" xml:space="preserve">
+    <value>Uděluje oprávnění upravit tag</value>
+  </data>
+  <data name="EditTypeGr" xml:space="preserve">
+    <value>Upravit typ</value>
+  </data>
+  <data name="EditUserAccounts" xml:space="preserve">
+    <value>Upravit</value>
+  </data>
+  <data name="EditUserAccountsHelp" xml:space="preserve">
+    <value>Upravit účty uživatelů registrace.</value>
+  </data>
+  <data name="EmailAddressAlreadyExists" xml:space="preserve">
+    <value>E-mailová adresa již existuje</value>
+  </data>
+  <data name="EmailDM" xml:space="preserve">
+    <value>E-mail</value>
+  </data>
+  <data name="EmailDMHelp" xml:space="preserve">
+    <value>Zablokovat a povolit vyžádání ActiveSync.</value>
+  </data>
+  <data name="EmailManagementHub" xml:space="preserve">
+    <value>Správa e-mailu</value>
+  </data>
+  <data name="EmailManagementHubHelp" xml:space="preserve">
+    <value>Generovat zprávy pro správu e-mailů</value>
+  </data>
+  <data name="EMDashboardMigrateDevice" xml:space="preserve">
+    <value>Panel správy e-mailu - Migrovat zařízení</value>
+  </data>
+  <data name="EMDashboardMigrateDeviceHelp" xml:space="preserve">
+    <value>Řídí přístup k přesunu jednoho či více zařízení mezi konfiguracemi MEM.</value>
+  </data>
+  <data name="EnableDigitalExperienceTelemetry" xml:space="preserve">
+    <value>Aktivovat telemetrii digitálního prostředí</value>
+  </data>
+  <data name="EnableDigitalExperienceTelemetryHelp" xml:space="preserve">
+    <value>Aktivuje shromažďování a přenos telemetrie digitálního prostředí do aplikace Workspace ONE Intelligence.</value>
+  </data>
+  <data name="EnableDisableAd" xml:space="preserve">
+    <value>Aktivovat/deaktivovat</value>
+  </data>
+  <data name="EnableDisableAdHelp" xml:space="preserve">
+    <value>Aktivujte nebo deaktivujte Memcache.</value>
+  </data>
+  <data name="EnableSystemSettingsAuditHelp" xml:space="preserve">
+    <value>Aktivuje/deaktivuje nastavení auditu přes systémové kódy.
+</value>
+  </data>
+  <data name="EncryptionKeyManagementHelp" xml:space="preserve">
+    <value>Uděluje oprávnění provádět správu šifrovacích klíčů. Přejděte do nabídky Systém \ Zabezpečení \ Správa šifrovacího klíče</value>
+  </data>
+  <data name="EnrollmentDM" xml:space="preserve">
+    <value>Registrace</value>
+  </data>
+  <data name="EnrollmentDMHelp" xml:space="preserve">
+    <value>Upravit omezení registrace.</value>
+  </data>
+  <data name="EnrollmentProgramSet" xml:space="preserve">
+    <value>Program registrace</value>
+  </data>
+  <data name="EnrollmentProgramSetHelp" xml:space="preserve">
+    <value>Řídí přístup k programu registrace zařízení</value>
+  </data>
+  <data name="EnrollmentProgramUserGen" xml:space="preserve">
+    <value>Program registrace</value>
+  </data>
+  <data name="EnrollmentProgramUserGenHelp" xml:space="preserve">
+    <value>Přistup k profilům registrace programu na přístrojích.</value>
+  </data>
+  <data name="EnrollmentSet" xml:space="preserve">
+    <value>Registrace</value>
+  </data>
+  <data name="EnrollmentSetHelp" xml:space="preserve">
+    <value>Řídí přístup ke stránce Registrace pod menu Obecné.</value>
+  </data>
+  <data name="EnrollOffline" xml:space="preserve">
+    <value>Registrujte se off-line</value>
+  </data>
+  <data name="EnrollOfflineHelp" xml:space="preserve">
+    <value>Tento zdroj povoluje libovolnému administrátorovi se zadanou rolí registraci registrovaných zařízení v režimu off-line</value>
+  </data>
+  <data name="EnterAdminModeHelp" xml:space="preserve">
+    <value>Řídí přístup k příkazu Zadat režim administrátora pro spouštěč</value>
+  </data>
+  <data name="EnterEmailAddressToDesignateRecipients" xml:space="preserve">
+    <value>Zadejte e-mailové adresy pro určení příjemců</value>
+  </data>
+  <data name="EnterpriseIntegrationSys" xml:space="preserve">
+    <value>Podniková integrace</value>
+  </data>
+  <data name="EnterpriseIntegrationSysHelp" xml:space="preserve">
+    <value>Řídí přístup k podnikové integraci</value>
+  </data>
+  <data name="EnterpriseResourceAddHelp" xml:space="preserve">
+    <value>Poskytuje oprávnění přidávat nové podnikové zdroje.</value>
+  </data>
+  <data name="EnterpriseResourceHelp" xml:space="preserve">
+    <value>Uděluje přístup ke stránce firemních zdrojů.</value>
+  </data>
+  <data name="EnterpriseWipeDD" xml:space="preserve">
+    <value>Firemní výmaz</value>
+  </data>
+  <data name="EnterpriseWipeDDHelp" xml:space="preserve">
+    <value>Povoluje odregistrovat zařízení na stránce detailů zařízení - nastane celkové vymazání firemních dat a nastavení.</value>
+  </data>
+  <data name="EnterpriseWipeDM" xml:space="preserve">
+    <value>Firemní výmaz</value>
+  </data>
+  <data name="EnterpriseWipeDMHelp" xml:space="preserve">
+    <value>Povolí odregistrování přístroje a vymaže veškerá firemní data a nastavení.</value>
+  </data>
+  <data name="EquipmentEq" xml:space="preserve">
+    <value>Vybavení</value>
+  </data>
+  <data name="EquipmentEqHelp" xml:space="preserve">
+    <value>Správa vybavení. Navigace k menu\vybavení.</value>
+  </data>
+  <data name="ESignature" xml:space="preserve">
+    <value>ePodpis</value>
+  </data>
+  <data name="ESignatureHelp" xml:space="preserve">
+    <value>Nastavení ePodpisů je v Obsahu. Přejděte na nastavení\Obsah\Rozšířené\ePodpis</value>
+  </data>
+  <data name="ESignatures" xml:space="preserve">
+    <value>elektronické podpisy</value>
+  </data>
+  <data name="EulDD" xml:space="preserve">
+    <value>EULA</value>
+  </data>
+  <data name="EulDDHelp" xml:space="preserve">
+    <value>V detailech zařízení prohlédnout minulé i současné podmínky použití.</value>
+  </data>
+  <data name="EventLogAd" xml:space="preserve">
+    <value>Protokol událostí</value>
+  </data>
+  <data name="EventLogAdHelp" xml:space="preserve">
+    <value>Řídí přístup k protokolům událostí na konzole</value>
+  </data>
+  <data name="EventLogHelp" xml:space="preserve">
+    <value>Řídí přístup ke čtení protokolů událostí. 
+</value>
+  </data>
+  <data name="EventsPM" xml:space="preserve">
+    <value>Události</value>
+  </data>
+  <data name="EventsPMHelp" xml:space="preserve">
+    <value>Řídí přístup ke stránce protokolů událostí tiskárny</value>
+  </data>
+  <data name="ExitAdminModeHelp" xml:space="preserve">
+    <value>Řídí přístup k příkazu Ukončit režim administrátora</value>
+  </data>
+  <data name="ExitAirWatchLauncherHelp" xml:space="preserve">
+    <value>Řídí přístup k příkazu Ukončit spouštěč</value>
+  </data>
+  <data name="ExpandedAriaLabel" xml:space="preserve">
+    <value>rozbaleno</value>
+  </data>
+  <data name="ExpireAllUsersGr" xml:space="preserve">
+    <value>Ukončit platnost všem uživatelům</value>
+  </data>
+  <data name="ExpireAllUsersGrHelp" xml:space="preserve">
+    <value>Aktivuje tlačítko „Ukončit platnost hesel všech uživatelů“.</value>
+  </data>
+  <data name="ExportUG" xml:space="preserve">
+    <value>Export</value>
+  </data>
+  <data name="ExportUGHelp" xml:space="preserve">
+    <value>Exportovat uživatelské skupiny.</value>
+  </data>
+  <data name="ExportUserAccounts" xml:space="preserve">
+    <value>Export</value>
+  </data>
+  <data name="ExportUserAccountsHelp" xml:space="preserve">
+    <value>Exportovat uživatelské účty.</value>
+  </data>
+  <data name="ExportUserCategories" xml:space="preserve">
+    <value>Export</value>
+  </data>
+  <data name="ExportUserCategoriesHelp" xml:space="preserve">
+    <value>Export kategorií registrace uživatelských účtů.</value>
+  </data>
+  <data name="ExportUserRoles" xml:space="preserve">
+    <value>Export</value>
+  </data>
+  <data name="ExportUserRolesHelp" xml:space="preserve">
+    <value>Exportovat uživatelské role.</value>
+  </data>
+  <data name="FeatureFlagEdit" xml:space="preserve">
+    <value>Upravit příznak vlastnosti</value>
+  </data>
+  <data name="FeatureFlagEditHelp" xml:space="preserve">
+    <value>Řídí přístup k úpravám a aktualizaci příznaků funkcí.</value>
+  </data>
+  <data name="FeatureFlagRead" xml:space="preserve">
+    <value>Načíst příznak vlastnosti</value>
+  </data>
+  <data name="FeatureFlagReadHelp" xml:space="preserve">
+    <value>Řídí možnost načíst stav příznaku funkce.</value>
+  </data>
+  <data name="FileActionsPPN" xml:space="preserve">
+    <value>Akce souboru</value>
+  </data>
+  <data name="FileActionsPPNHelp" xml:space="preserve">
+    <value>Vytvořit a spravovat akce složky Zásady zřizování</value>
+  </data>
+  <data name="FileEncryptionStats" xml:space="preserve">
+    <value>Statistiky šifrování souboru</value>
+  </data>
+  <data name="FileEncryptionStatsHelp" xml:space="preserve">
+    <value>Nastavení úložiště klienta: TenantStorage.FileEncryptionStats</value>
+  </data>
+  <data name="FileManagerHelp" xml:space="preserve">
+    <value>Uděluje oprávnění přistupovat na dálku k souborům na WinMo zařízeních.
+</value>
+  </data>
+  <data name="FilepathIns" xml:space="preserve">
+    <value>Cesta složky</value>
+  </data>
+  <data name="FilepathInsHelp" xml:space="preserve">
+    <value>Řídí přístup ke stránce synchronizace souborů pod menu Pokročilé.</value>
+  </data>
+  <data name="FilesPM" xml:space="preserve">
+    <value>Složky</value>
+  </data>
+  <data name="FilesPMHelp" xml:space="preserve">
+    <value>Řídí přístup ke stránce souborů tiskárny.</value>
+  </data>
+  <data name="FilesPr" xml:space="preserve">
+    <value>Složky</value>
+  </data>
+  <data name="FilesPrHelp" xml:space="preserve">
+    <value>Správa složek tiskárny.</value>
+  </data>
+  <data name="FindDeviceDD" xml:space="preserve">
+    <value>Nalézt zařízení</value>
+  </data>
+  <data name="FindDeviceDDHelp" xml:space="preserve">
+    <value>Nastavit zařízení tak, aby se spustila audio výstraha a uživatel mohl zařízení najít. K dispozici je v detailech zařízení.</value>
+  </data>
+  <data name="FindDeviceHelp" xml:space="preserve">
+    <value>Řídí přístup k nastavení stavu zařízení pro zahájení zvukových výstrah, aby uživatel mohl zařízení najít. Dostupné na HTML5 obrazovce v detailech zařízení.</value>
+  </data>
+  <data name="FriendlyNameSet" xml:space="preserve">
+    <value>Popisný název</value>
+  </data>
+  <data name="FriendlyNameSetHelp" xml:space="preserve">
+    <value>Řídí přístup ke stránce popisných názvů pod menu Obecné.</value>
+  </data>
+  <data name="GatewayStatusEm" xml:space="preserve">
+    <value>Stav brány</value>
+  </data>
+  <data name="GatewayStatusEmHelp" xml:space="preserve">
+    <value>Řídí nastavení stavu e-mailové brány.</value>
+  </data>
+  <data name="GeneralDD" xml:space="preserve">
+    <value>Obecné</value>
+  </data>
+  <data name="GeneralDDHelp" xml:space="preserve">
+    <value>Řídí vybrané základní funkce stránky detailů zařízení.</value>
+  </data>
+  <data name="GeneralHub" xml:space="preserve">
+    <value>Obecné</value>
+  </data>
+  <data name="GeneralHubHelp" xml:space="preserve">
+    <value>Přístup k modulu sestav</value>
+  </data>
+  <data name="GeneralPM" xml:space="preserve">
+    <value>Obecné</value>
+  </data>
+  <data name="GeneralPMHelp" xml:space="preserve">
+    <value>Řídí přístup ke stránce tiskárny Obecné.</value>
+  </data>
+  <data name="GeneralSettingsEm" xml:space="preserve">
+    <value>Obecná nastavení</value>
+  </data>
+  <data name="GeneralSettingsEmHelp" xml:space="preserve">
+    <value>Řídí obecná nastavení e-mailu.</value>
+  </data>
+  <data name="GeneralSOaP" xml:space="preserve">
+    <value>Obecné</value>
+  </data>
+  <data name="GeneralSOaPHelp" xml:space="preserve">
+    <value>Přístup ke všem API službám AirWatch, s vyjímkou příkazů k výmazu.</value>
+  </data>
+  <data name="GeneralSys" xml:space="preserve">
+    <value>Obecné</value>
+  </data>
+  <data name="GeneralSysHelp" xml:space="preserve">
+    <value>Řídí přístup ke stránce Obecné pod menu Systém.</value>
+  </data>
+  <data name="GeofencingAreaDM" xml:space="preserve">
+    <value>Oblast geofencingu</value>
+  </data>
+  <data name="GeofencingAreaDMHelp" xml:space="preserve">
+    <value>Správa nastavení profilů geofence</value>
+  </data>
+  <data name="GeofencingHelp" xml:space="preserve">
+    <value>Uděluje oprávnění k zobrazení/úpravě nastavení geofencingu. 
+</value>
+  </data>
+  <data name="GeofencingSet" xml:space="preserve">
+    <value>Geofencing</value>
+  </data>
+  <data name="GeofencingSetHelp" xml:space="preserve">
+    <value>Uděluje oprávnění k zobrazení/úpravě nastavení geofencingu.</value>
+  </data>
+  <data name="GettingStartedApplicationHelp" xml:space="preserve">
+    <value>Řídí průběh módu Začínáme ve Správě mobilních aplikací</value>
+  </data>
+  <data name="GettingStartedSys" xml:space="preserve">
+    <value>Začínáme</value>
+  </data>
+  <data name="GettingStartedSysHelp" xml:space="preserve">
+    <value>Povoluje zobrazení příručky Začínáme.</value>
+  </data>
+  <data name="GooglePlayIntegrationAn" xml:space="preserve">
+    <value>Intergace Google Play</value>
+  </data>
+  <data name="GooglePlayIntegrationAnHelp" xml:space="preserve">
+    <value>Povolit prohlížení a úpravy integrace Android market</value>
+  </data>
+  <data name="GroupsRESTSystem" xml:space="preserve">
+    <value>Skupiny</value>
+  </data>
+  <data name="GroupsRESTSystemHelp" xml:space="preserve">
+    <value>Omezovací REST API pro správu skupin</value>
+  </data>
+  <data name="GSuiteRotatePasswordAction" xml:space="preserve">
+    <value>Rotace hesla sady G Suite</value>
+  </data>
+  <data name="GSuiteRotatePasswordActionHelp" xml:space="preserve">
+    <value>Schopnost rotovat základní heslo sady G Suite a e-mailové profily.</value>
+  </data>
+  <data name="HeroCards" xml:space="preserve">
+    <value>Mobile Flows</value>
+  </data>
+  <data name="HeroCardsHelp" xml:space="preserve">
+    <value>Konfigurační rozhraní pro back-endové systémy a služby Mobile Flows</value>
+  </data>
+  <data name="HorizonWorkspaceSettings" xml:space="preserve">
+    <value>Nastavení Horizon Workspace</value>
+  </data>
+  <data name="HorizonWorkspaceSettingsHelp" xml:space="preserve">
+    <value>Řídí přístup k prohlížení a úpravám nastavení Horizon Workspace; přejděte na nastavení\aplikace\integrace aplikace\Horizon Workspace</value>
+  </data>
+  <data name="HyperLinkDeleteAd" xml:space="preserve">
+    <value>Odstraňování odkazů</value>
+  </data>
+  <data name="HyperLinkDeleteAdHelp" xml:space="preserve">
+    <value>Dává oprávnění odebírat přílohy s odkazy na stránce detailů zařízení.</value>
+  </data>
+  <data name="InProductSupport" xml:space="preserve">
+    <value>Podpora v produktu</value>
+  </data>
+  <data name="InProductSupportHelp" xml:space="preserve">
+    <value>Přístup k nástroji podpory v produktu, kde administrátoři mohou prohledávat dokumentaci a získat pomoc přímo v rámci UEM.</value>
+  </data>
+  <data name="InstallationAdvancedIns" xml:space="preserve">
+    <value>Instalace pokročila</value>
+  </data>
+  <data name="InstallationAdvancedInsHelp" xml:space="preserve">
+    <value>Řídí přístup ke stránce Pokročilé pod menu Instalace.</value>
+  </data>
+  <data name="InstallationIns" xml:space="preserve">
+    <value>Instalace</value>
+  </data>
+  <data name="InstallationInsHelp" xml:space="preserve">
+    <value>Řídí přístup ke stránce Instalace.</value>
+  </data>
+  <data name="InstallFontsApple" xml:space="preserve">
+    <value>Instalace písma</value>
+  </data>
+  <data name="InstallFontsAppleHelp" xml:space="preserve">
+    <value>V nastavení aktivuje instalační sekci písma</value>
+  </data>
+  <data name="InstallIntelligentHub" xml:space="preserve">
+    <value>Instalovat centrum Intelligent Hub</value>
+  </data>
+  <data name="InstallIntelligentHubHelp" xml:space="preserve">
+    <value>Poskytuje přístup ke vzdálené instalaci centra Intelligent Hub na registrovaném zařízení</value>
+  </data>
+  <data name="InsufficientResourceToSaveAdmin" xml:space="preserve">
+    <value>Nelze uložit. Váš účet administrátora nemá dostatečná oprávnění k úpravě tohoto záznamu.</value>
+  </data>
+  <data name="Intelligence" xml:space="preserve">
+    <value>Intelligence</value>
+  </data>
+  <data name="IntelligenceHelp" xml:space="preserve">
+    <value>Přístup ke stránce služby Intelligence</value>
+  </data>
+  <data name="InternalAppsAb" xml:space="preserve">
+    <value>Interní aplikace</value>
+  </data>
+  <data name="InternalAppsAbHelp" xml:space="preserve">
+    <value>Nahrát a spravovat interně vytvořené aplikace.</value>
+  </data>
+  <data name="LanguageManagementAd" xml:space="preserve">
+    <value>Správa jazyků</value>
+  </data>
+  <data name="LanguageManagementAdHelp" xml:space="preserve">
+    <value>Prohlédnout položku z menu správy jazyků a otevřít aktivační stránku balíčku jazykú a lokalizačního editora</value>
+  </data>
+  <data name="LearnMoreAccess" xml:space="preserve">
+    <value>Další informace – přístup</value>
+  </data>
+  <data name="LearnMoreAccessContact" xml:space="preserve">
+    <value>Další informace – přístup, sekce Kontakt</value>
+  </data>
+  <data name="LearnMoreAccessContactHelp" xml:space="preserve">
+    <value>Řídí přístup k sekci Kontakt v části Informace a upgrade</value>
+  </data>
+  <data name="LearnMoreAccessHelp" xml:space="preserve">
+    <value>Řídí přístup k části Informace a upgrade</value>
+  </data>
+  <data name="LegacyAndroidMigration" xml:space="preserve">
+    <value>Migrace starších verzí systému Android</value>
+  </data>
+  <data name="LegacyAndroidMigrationHelp" xml:space="preserve">
+    <value>Řídí přístup ke stránce migrace starší verze aplikace Android, aby se umožnila migrace starších zařízení Android do služby Android Enterprise pomocí profilu Work</value>
+  </data>
+  <data name="LicensesAd" xml:space="preserve">
+    <value>Licence</value>
+  </data>
+  <data name="LicensesAdHelp" xml:space="preserve">
+    <value>Uděluje oprávnění pro úpravu licencí.</value>
+  </data>
+  <data name="LinuxHelp" xml:space="preserve">
+    <value>Řídí přístup ke stránkám nastavení Linux v nastavení systému.</value>
+  </data>
+  <data name="LocalizationSys" xml:space="preserve">
+    <value>Lokalizace</value>
+  </data>
+  <data name="LocalizationSysHelp" xml:space="preserve">
+    <value>Řídí přístup k nastavení lokalizace.</value>
+  </data>
+  <data name="LocationCodeGr" xml:space="preserve">
+    <value>Kód umístění</value>
+  </data>
+  <data name="LocationCodeGrHelp" xml:space="preserve">
+    <value>Upravit kód polohy v "Přidat polohu/upravit stránky."</value>
+  </data>
+  <data name="LocationDD" xml:space="preserve">
+    <value>Poloha</value>
+  </data>
+  <data name="LocationDDHelp" xml:space="preserve">
+    <value>Zobrazit polohu s popisem cesty zařízení.</value>
+  </data>
+  <data name="LocationGroupTypeHelp" xml:space="preserve">
+    <value>Řídí přístup ke stránce Typ organizační skupiny
+</value>
+  </data>
+  <data name="LocationsGr" xml:space="preserve">
+    <value>Umístění</value>
+  </data>
+  <data name="LocationsGrHelp" xml:space="preserve">
+    <value>Zobrazovat a spravovat polohu organizačních skupin</value>
+  </data>
+  <data name="LocationsHub" xml:space="preserve">
+    <value>Umístění</value>
+  </data>
+  <data name="LocationsHubHelp" xml:space="preserve">
+    <value>Generovat sestavy dle poloh</value>
+  </data>
+  <data name="LocationStatusHelp" xml:space="preserve">
+    <value>Řídí přístup k odkazu stavu místa. Řídí přístup k přidávání nových stavů místa.
+</value>
+  </data>
+  <data name="LocationTypeHelp" xml:space="preserve">
+    <value>Řídí přístup ke stránce Typ místa.
+</value>
+  </data>
+  <data name="LocationZonesGr" xml:space="preserve">
+    <value>Zóny umístění</value>
+  </data>
+  <data name="LocationZonesGrHelp" xml:space="preserve">
+    <value>Přidávat a upravovat polohové zóny a polohu.</value>
+  </data>
+  <data name="LockDD" xml:space="preserve">
+    <value>Zámek</value>
+  </data>
+  <data name="LockDDHelp" xml:space="preserve">
+    <value>Dálkově uzamknout zařízení nebo uzamknout aplikaci jednotného přihlášení</value>
+  </data>
+  <data name="LogDD" xml:space="preserve">
+    <value>Protokol</value>
+  </data>
+  <data name="LogDDHelp" xml:space="preserve">
+    <value>Zobrazit protokoly v detailech zařízení.</value>
+  </data>
+  <data name="LoggingAd" xml:space="preserve">
+    <value>Protokolování</value>
+  </data>
+  <data name="LoggingAdHelp" xml:space="preserve">
+    <value>Uděluje oprávnění k zobrazení nastavení protokolu událostí.</value>
+  </data>
+  <data name="LoggingAdL" xml:space="preserve">
+    <value>Protokolování</value>
+  </data>
+  <data name="LoggingAdLHelp" xml:space="preserve">
+    <value>Zobrazovat a upravovat nastavení syslog a cílené přihlašování.</value>
+  </data>
+  <data name="LoginHistoryAdminGen" xml:space="preserve">
+    <value>Historie přihlašování</value>
+  </data>
+  <data name="LoginHistoryAdminGenHelp" xml:space="preserve">
+    <value>Přístup ke stránce historie přihlašování na stránce administrátorských účtů a na stránce uživatelkých preferencí.</value>
+  </data>
+  <data name="LookupFields" xml:space="preserve">
+    <value>Vyhledávací pole</value>
+  </data>
+  <data name="LookupFieldsHelp" xml:space="preserve">
+    <value>Řídí přístup ke stránce vyhledávacích polí pod menu Obecné.</value>
+  </data>
+  <data name="MacOsXApple" xml:space="preserve">
+    <value>macOS</value>
+  </data>
+  <data name="MacOsXAppleHelp" xml:space="preserve">
+    <value>Řídí přístup ke stránkám nastavení macOS v nastavení systému.</value>
+  </data>
+  <data name="MailRecipient" xml:space="preserve">
+    <value>Příjemce e-mailu</value>
+  </data>
+  <data name="MaintenanceUpgradeNotificationInfo" xml:space="preserve">
+    <value>Vyberte možnost, podle které se bude určovat, kdo bude dostávat oznámení Workspace ONE UEM a Workspace ONE Assist. Pokud je vybráno přihlášení administrátora, administrátorům se v části Nastavení účtu &gt; Oznámení zobrazí možnost Údržba a upgrade.</value>
+  </data>
+  <data name="MaintenanceUpgradeNotifications" xml:space="preserve">
+    <value>Oznámení o údržbě a upgradu</value>
+  </data>
+  <data name="ManageAdminGroups" xml:space="preserve">
+    <value>Spravovat</value>
+  </data>
+  <data name="ManageAdminGroupsHelp" xml:space="preserve">
+    <value>Provádění akcí v administrátorských skupinách, např. synchronizace nebo sloučení.</value>
+  </data>
+  <data name="ManageBaselines" xml:space="preserve">
+    <value>Správa standardních hodnot</value>
+  </data>
+  <data name="ManageBaselinesHelp" xml:space="preserve">
+    <value>Řídí přístup ke správě standardních hodnot, včetně oprávnění k přidání nových nebo úpravě a přiřazení stávajících standardních hodnot</value>
+  </data>
+  <data name="ManageContentCM" xml:space="preserve">
+    <value>Spravovat obsah</value>
+  </data>
+  <data name="ManageContentCMHelp" xml:space="preserve">
+    <value>Přidávání nového obsahu a správa exitujícího obsahu.</value>
+  </data>
+  <data name="ManageDevicesCM" xml:space="preserve">
+    <value>Spravovat zařízení</value>
+  </data>
+  <data name="ManageDevicesCMHelp" xml:space="preserve">
+    <value>Na dálku nainstalovat a vymazat obsah na spravovaných zařízeních.</value>
+  </data>
+  <data name="ManageDeviceSensors" xml:space="preserve">
+    <value>Správa senzorů zařízení</value>
+  </data>
+  <data name="ManageDeviceSensorsHelp" xml:space="preserve">
+    <value>Řídí přístup k přidávání, úpravám, přiřazování a odstraňování senzorů zařízení</value>
+  </data>
+  <data name="ManageDM" xml:space="preserve">
+    <value>Spravovat</value>
+  </data>
+  <data name="ManageDMHelp" xml:space="preserve">
+    <value>Správa profilů zařízení</value>
+  </data>
+  <data name="ManagedSettingsApple" xml:space="preserve">
+    <value>Spravovaná nastavení</value>
+  </data>
+  <data name="ManagedSettingsAppleHelp" xml:space="preserve">
+    <value>Řídí přístup ke spravovaným nastavením v iOS.</value>
+  </data>
+  <data name="ManageGr" xml:space="preserve">
+    <value>Spravovat</value>
+  </data>
+  <data name="ManageGrHelp" xml:space="preserve">
+    <value>Spravovat organizační skupiny</value>
+  </data>
+  <data name="ManageNodeAd" xml:space="preserve">
+    <value>Správa uzlů</value>
+  </data>
+  <data name="ManageNodeAdHelp" xml:space="preserve">
+    <value>Přidat, upravit, vymazat a vyprázdnit MemCache uzle.</value>
+  </data>
+  <data name="ManagePM" xml:space="preserve">
+    <value>Spravovat</value>
+  </data>
+  <data name="ManagePMHelp" xml:space="preserve">
+    <value>Na dálku poslat tiskárnám příkazy a dotazy</value>
+  </data>
+  <data name="ManageTimeWindow" xml:space="preserve">
+    <value>Spravovat časové okno</value>
+  </data>
+  <data name="ManageTimeWindowHelp" xml:space="preserve">
+    <value>Řídí přístup ke správě časového okna, včetně oprávnění k přidání nových či úpravě a přiřazení stávajících časových oken.</value>
+  </data>
+  <data name="ManageUG" xml:space="preserve">
+    <value>Spravovat</value>
+  </data>
+  <data name="ManageUGHelp" xml:space="preserve">
+    <value>Provádět akce a registraci skupin uživatelů, např. sync nebo sloučení.</value>
+  </data>
+  <data name="MapsIns" xml:space="preserve">
+    <value>Mapy</value>
+  </data>
+  <data name="MapsInsHelp" xml:space="preserve">
+    <value>Řídí přístup ke stránce map pod menu Instalace.</value>
+  </data>
+  <data name="MembersAdminGroup" xml:space="preserve">
+    <value>Členové</value>
+  </data>
+  <data name="MembersAdminGroupHelp" xml:space="preserve">
+    <value>Zobrazení členů administrátorské skupiny.</value>
+  </data>
+  <data name="MembersUG" xml:space="preserve">
+    <value>Členové</value>
+  </data>
+  <data name="MembersUGHelp" xml:space="preserve">
+    <value>Přístup k přehledu členů uživatelské skupiny.</value>
+  </data>
+  <data name="MenuLinkForTagHelp" xml:space="preserve">
+    <value>Řídí přístup k menu štítků</value>
+  </data>
+  <data name="MessageTemplatesSet" xml:space="preserve">
+    <value>Šablony zpráv</value>
+  </data>
+  <data name="MessageTemplatesSetHelp" xml:space="preserve">
+    <value>Řídí přístup k šablonám zpráv.</value>
+  </data>
+  <data name="MessagingDD" xml:space="preserve">
+    <value>Zasílání zpráv</value>
+  </data>
+  <data name="MessagingDDHelp" xml:space="preserve">
+    <value>Odeslat na zařízení e-maily, zprávy push, či zprávy SMS</value>
+  </data>
+  <data name="MessagingSet" xml:space="preserve">
+    <value>Zasílání zpráv</value>
+  </data>
+  <data name="MessagingSetHelp" xml:space="preserve">
+    <value>Řídí přístup ke stránce zasílání zpráv pod menu Obecné.</value>
+  </data>
+  <data name="MigrateUserAccounts" xml:space="preserve">
+    <value>Migrace</value>
+  </data>
+  <data name="MigrateUserAccountsHelp" xml:space="preserve">
+    <value>Přesouvat registraci uživatelských účtů ze zakladní registrace do registrace LDAP.</value>
+  </data>
+  <data name="MirrorPM" xml:space="preserve">
+    <value>Zrcadlo</value>
+  </data>
+  <data name="MirrorPMHelp" xml:space="preserve">
+    <value>Řídí přístup ke stránce zrcadla tiskárny</value>
+  </data>
+  <data name="MobileFlowsAuthToken" xml:space="preserve">
+    <value>Ověřovací token Mobile Flows</value>
+  </data>
+  <data name="MobileFlowsAuthTokenHelp" xml:space="preserve">
+    <value>Generuje JWT certifikátu, který použije server Mobile Flows</value>
+  </data>
+  <data name="MobileFlowsServerUrl" xml:space="preserve">
+    <value>Adresa URL serveru Mobile Flows</value>
+  </data>
+  <data name="MobileFlowsServerUrlHelp" xml:space="preserve">
+    <value>Adresa URL serveru Mobile Flows</value>
+  </data>
+  <data name="MobileFlowsTenantAdd" xml:space="preserve">
+    <value>Přidat klienta Mobile Flows</value>
+  </data>
+  <data name="MobileFlowsTenantAddHelp" xml:space="preserve">
+    <value>Zřizuje klient zákazníka v cloudové službě Mobile Flows</value>
+  </data>
+  <data name="ModifyAgentSet" xml:space="preserve">
+    <value>Změnit centrum Hub</value>
+  </data>
+  <data name="ModifyAgentSetHelp" xml:space="preserve">
+    <value>Řídí přístup k úpravám nastavení centra Hub.</value>
+  </data>
+  <data name="MonitoringAd" xml:space="preserve">
+    <value>Monitorování</value>
+  </data>
+  <data name="MonitoringAdHelp" xml:space="preserve">
+    <value>Uděluje oprávnění k přístupu a úpravám nastavení sledování.</value>
+  </data>
+  <data name="MoreHelp" xml:space="preserve">
+    <value>Řídí přístup k menu Více.  
+</value>
+  </data>
+  <data name="NacIntegrationSys" xml:space="preserve">
+    <value>Integrace NAC</value>
+  </data>
+  <data name="NacIntegrationSysHelp" xml:space="preserve">
+    <value>Řídí přístup k integraci řízení síťového přístupu pod menu Obecné.</value>
+  </data>
+  <data name="NavigateExportStatusHelp" xml:space="preserve">
+    <value>Přístup ke stránce stavu exportu, odkud lze prohlížet a stahovat gridové exporty.</value>
+  </data>
+  <data name="NavigationO" xml:space="preserve">
+    <value>Navigace</value>
+  </data>
+  <data name="NavigationOHelp" xml:space="preserve">
+    <value>Přístup k rozšířenému menu</value>
+  </data>
+  <data name="NetworkAccessControlIntegrationHelp" xml:space="preserve">
+    <value>Řídí přístup k integraci řízení síťového přístupu pod menu Obecné. 
+</value>
+  </data>
+  <data name="NetworkDD" xml:space="preserve">
+    <value>Síť</value>
+  </data>
+  <data name="NetworkDDHelp" xml:space="preserve">
+    <value>Přístup ke stránce sítě v detailech zařízení.</value>
+  </data>
+  <data name="NetworkRangeGr" xml:space="preserve">
+    <value>Rozsah sítě</value>
+  </data>
+  <data name="NetworkRangeGrHelp" xml:space="preserve">
+    <value>Správa a import síťového rozsahu organizačních skupin.</value>
+  </data>
+  <data name="NetworkRangeHelp" xml:space="preserve">
+    <value>Uděluje oprávnění zobrazovat obrazovku rozsahu sítě.</value>
+  </data>
+  <data name="NoFiltersSelected" xml:space="preserve">
+    <value>Nejsou vybrány žádné filtry</value>
+  </data>
+  <data name="NotesDD" xml:space="preserve">
+    <value>Poznámky</value>
+  </data>
+  <data name="NotesDDHelp" xml:space="preserve">
+    <value>Přidat, upravit a odstranit poznámky zařízení v detailech zařízení.</value>
+  </data>
+  <data name="NotificationRecipients" xml:space="preserve">
+    <value>Příjemci oznámení</value>
+  </data>
+  <data name="NotificationsAd" xml:space="preserve">
+    <value>Oznámení</value>
+  </data>
+  <data name="NotificationsAdHelp" xml:space="preserve">
+    <value>Zobrazit a upravit nastavení pro upozornění na události</value>
+  </data>
+  <data name="NotifyAb" xml:space="preserve">
+    <value>Oznámit</value>
+  </data>
+  <data name="NotifyAbHelp" xml:space="preserve">
+    <value>Poslat upozornění přes aplikace zařízení.</value>
+  </data>
+  <data name="Office365MamIntegrationSettings" xml:space="preserve">
+    <value>Nastavení integrace Office 365</value>
+  </data>
+  <data name="Office365MamIntegrationSettingsHelp" xml:space="preserve">
+    <value>Zdroj pro obrazovku řízení nastavení systému umožňující přidávání výchozích zásad DLP pro aplikace sady Office 365</value>
+  </data>
+  <data name="Old" xml:space="preserve">
+    <value>Staré</value>
+  </data>
+  <data name="OldPPO" xml:space="preserve">
+    <value>Staré</value>
+  </data>
+  <data name="OldPPOHelp" xml:space="preserve">
+    <value>Vstup do nastavení Legacy (starší verze) ke zřizování profilů</value>
+  </data>
+  <data name="OrganizationGroupChangeAd" xml:space="preserve">
+    <value>Změny organizační skupiny</value>
+  </data>
+  <data name="OrganizationGroupChangeAdHelp" xml:space="preserve">
+    <value>Umožňuje změnit organizační skupiny z rozevíracího seznamu.</value>
+  </data>
+  <data name="OrganizationGroupCodeGr" xml:space="preserve">
+    <value>ID organizační skupiny</value>
+  </data>
+  <data name="OrganizationGroupCodeGrHelp" xml:space="preserve">
+    <value>Upravit ID organizační skupiny.</value>
+  </data>
+  <data name="OsUpdateStatusHelp" xml:space="preserve">
+    <value>Řídí přístup k získání stavu aktualizace OS na zařízeních. Přejděte do nabídky Zařízení / Zobrazení detailů</value>
+  </data>
+  <data name="OutlookAddinSet" xml:space="preserve">
+    <value>Outlook Addin</value>
+  </data>
+  <data name="OutlookAddinSetHelp" xml:space="preserve">
+    <value>Aktivovat a deaktivovat Outlook AddIn plugin</value>
+  </data>
+  <data name="OverrideJobLogLevelHelp" xml:space="preserve">
+    <value>Poskytuje uživateli oprávnění k přepsání úrovně protokolu úloh prostřednictvím podrobností zařízení, pokud zařízení danou funkci podporují.</value>
+  </data>
+  <data name="OverviewHub" xml:space="preserve">
+    <value>Přehled</value>
+  </data>
+  <data name="OverviewHubHelp" xml:space="preserve">
+    <value>Přístup ke stránce přehledu sledování</value>
+  </data>
+  <data name="P2PSetupHelp" xml:space="preserve">
+    <value>Stránka nastavení, která obsahuje pododdíly různých dodavatelů P2P</value>
+  </data>
+  <data name="PasscodeDD" xml:space="preserve">
+    <value>Heslo</value>
+  </data>
+  <data name="PasscodeDDHelp" xml:space="preserve">
+    <value>Vymazání a reset hesla pro zařízení a aplikace.</value>
+  </data>
+  <data name="PerformanceTuningHelp" xml:space="preserve">
+    <value>Řídí přístup k parametrům Optimalizace výkonu v systémových nastaveních.
+</value>
+  </data>
+  <data name="PerformanceTuningIns" xml:space="preserve">
+    <value>Optimalizace výkonu</value>
+  </data>
+  <data name="PerformanceTuningInsHelp" xml:space="preserve">
+    <value>Řídí přístup k parametrům Optimalizace výkonu v systémových nastaveních.</value>
+  </data>
+  <data name="PersonalContentSet" xml:space="preserve">
+    <value>Osobní obsah</value>
+  </data>
+  <data name="PersonalContentSetHelp" xml:space="preserve">
+    <value>Uděluje oprávnění k modifikaci nastavení náležejících osobnímu obsahu.</value>
+  </data>
+  <data name="PlansTel" xml:space="preserve">
+    <value>Plány</value>
+  </data>
+  <data name="PlansTelHelp" xml:space="preserve">
+    <value>Spravuje konfigurované telekomunikační plány pro organizační skupinu.</value>
+  </data>
+  <data name="PoliciesPPN" xml:space="preserve">
+    <value>Zásady</value>
+  </data>
+  <data name="PoliciesPPNHelp" xml:space="preserve">
+    <value>Tvoření a správa zásad zřizování</value>
+  </data>
+  <data name="PolicyEngineSettingsEditHelp" xml:space="preserve">
+    <value>Oprávnění k upravování nastavení modulu zásad. Přejděte na nastavení Konfigurace \ Nastavení \ Administrátor \ Nastavení modulu zásad</value>
+  </data>
+  <data name="PolicyEngineSettingsViewHelp" xml:space="preserve">
+    <value>Uděluje oprávnění k zobrazení modulu zásad.</value>
+  </data>
+  <data name="PolicyOverrideEM" xml:space="preserve">
+    <value>Přepsání zásady</value>
+  </data>
+  <data name="PolicyOverrideEMHelp" xml:space="preserve">
+    <value>Přepište zásady e-mailu pro povolování a zakazování zařízení.</value>
+  </data>
+  <data name="PolicySigningCertificateHelp" xml:space="preserve">
+    <value>Uděluje oprávnění k nahrání certifikátu ECC. Přejděte do nabídky Systém \ Pokročilé \ Certifikát podepisování zásad</value>
+  </data>
+  <data name="PowerPM" xml:space="preserve">
+    <value>Napájení</value>
+  </data>
+  <data name="PowerPMHelp" xml:space="preserve">
+    <value>Řídí přístup ke stránce napájení tiskárny.</value>
+  </data>
+  <data name="PrinterManagementProfile" xml:space="preserve">
+    <value>Profil správy tiskárny</value>
+  </data>
+  <data name="PrinterManagementProfiles" xml:space="preserve">
+    <value>Profily správy tiskárny</value>
+  </data>
+  <data name="PrinterProfiles" xml:space="preserve">
+    <value>Profily tiskárny</value>
+  </data>
+  <data name="PrinterProfilesHelp" xml:space="preserve">
+    <value>Řídí přístup k zobrazení mřížky souborů tiskárny; naleznete v Menu/Správa tiskárny/Profily</value>
+  </data>
+  <data name="PrinterServersPM" xml:space="preserve">
+    <value>Servery tiskáren</value>
+  </data>
+  <data name="PrinterServersPMHelp" xml:space="preserve">
+    <value>Prohlédnout, přidat a vymazat servery tiskáren na stránce nastavení tiskáren</value>
+  </data>
+  <data name="PrinterTestPrint" xml:space="preserve">
+    <value>Testovací tisk tiskárny</value>
+  </data>
+  <data name="PrinterTestPrintHelp" xml:space="preserve">
+    <value>Uděluje oprávnění k odeslání testovacího tisku tiskárny.</value>
+  </data>
+  <data name="PrinterViewAveryDennisonGeneralHelp" xml:space="preserve">
+    <value>Karta Obecné na stránce „Podrobnosti zařízení“ Avery Dennison. </value>
+  </data>
+  <data name="PrinterViewCpclPM" xml:space="preserve">
+    <value>CPCL</value>
+  </data>
+  <data name="PrinterViewCpclPMHelp" xml:space="preserve">
+    <value>Řídí přístup ke stránce CPCL tiskárny</value>
+  </data>
+  <data name="PrinterViewDataMaxONeilAutoUpdateHelp" xml:space="preserve">
+    <value>Karta „Automatické aktualizace“ pro stránku Podrobnosti zařízení Datamax. </value>
+  </data>
+  <data name="PrinterViewDataMaxONeilBatteryHelp" xml:space="preserve">
+    <value>Karta „Baterie“ na stránce Podrobnosti zařízení tiskárny Datamax. </value>
+  </data>
+  <data name="PrinterViewDataMaxONeilBluetoothHelp" xml:space="preserve">
+    <value>Karta „Bluetooth“ pro stránku Podrobnosti zařízení Datamax. </value>
+  </data>
+  <data name="PrinterViewDataMaxONeilCustomSettingsHelp" xml:space="preserve">
+    <value>Zobrazení karty Vlastní nastavení na stránce Podrobnosti zařízení Datamax-O'Neil. </value>
+  </data>
+  <data name="PrinterViewDataMaxONeilGeneralHelp" xml:space="preserve">
+    <value>Karta Obecné na stránce „Podrobnosti zařízení“ Datamax.  </value>
+  </data>
+  <data name="PrinterViewDataMaxONeilGeneralNetworkHelp" xml:space="preserve">
+    <value>Karta „Obecná síť“ pro stránku Podrobnosti zařízení Datamax. </value>
+  </data>
+  <data name="PrinterViewDataMaxONeilMediaLabelHelp" xml:space="preserve">
+    <value>Karta „Obecná síť“ na stránce „Podrobnosti zařízení“ Datamax. </value>
+  </data>
+  <data name="PrinterViewDataMaxONeilMiscellaneousHelp" xml:space="preserve">
+    <value>Karta „Různé“ na stránce „Podrobnosti zařízení“ Datamax. </value>
+  </data>
+  <data name="PrinterViewDataMaxONeilPrintControlHelp" xml:space="preserve">
+    <value>Karta „Ovládání tisku“ na stránce „Podrobnosti zařízení“ Datamax. </value>
+  </data>
+  <data name="PrinterViewDataMaxONeilRS232Help" xml:space="preserve">
+    <value>Karta „RS232“ pro stránku „Podrobnosti zařízení“ Datamax. </value>
+  </data>
+  <data name="PrinterViewDataMaxONeilSystemSettingsHelp" xml:space="preserve">
+    <value>Karta „Nastavení systému“ na stránce „Podrobnosti zařízení“ Datamax. </value>
+  </data>
+  <data name="PrinterViewDataMaxONeilWifiHelp" xml:space="preserve">
+    <value>Karta „WiFi“ na stránce Podrobnosti zařízení Datamax. </value>
+  </data>
+  <data name="PrinterViewEpsonGeneral" xml:space="preserve">
+    <value>Zobrazit detaily tiskárny Epson: záložka „obecné“</value>
+  </data>
+  <data name="PrinterViewEpsonGeneralHelp" xml:space="preserve">
+    <value>Zobrazení tiskárny Epson - detaily zařízení</value>
+  </data>
+  <data name="PrinterViewEpsonPrintSettingsHelp" xml:space="preserve">
+    <value>Povoluje uživateli přístup k nastavením tisku Epson</value>
+  </data>
+  <data name="PrivacySet" xml:space="preserve">
+    <value>Ochrana osobních údajů</value>
+  </data>
+  <data name="PrivacySetHelp" xml:space="preserve">
+    <value>Řídí přístup ke stránce ochrany osobních údajů ve složce "Obecné"</value>
+  </data>
+  <data name="ProductImprovementProgramSettings" xml:space="preserve">
+    <value>Nastavení programu pro zlepšení produktů</value>
+  </data>
+  <data name="ProductImprovementProgramSettingsHelp" xml:space="preserve">
+    <value>Řídí přístup ke stránce nastavení programu na zlepšení produktu, která se nachází v nabídce Nastavení &gt; Administrátor &gt; Programy zlepšování produktů.</value>
+  </data>
+  <data name="ProductivityAppsAb" xml:space="preserve">
+    <value>Produktivní aplikace</value>
+  </data>
+  <data name="ProductProvisioningHub" xml:space="preserve">
+    <value>Zřizování produktu</value>
+  </data>
+  <data name="ProductProvisioningHubHelp" xml:space="preserve">
+    <value>Generovat sestavu o zřizování produktu.</value>
+  </data>
+  <data name="ProductProvisioningSettingsHelp" xml:space="preserve">
+    <value>Konfigurujte některé funkce pro zajišťování produktu.</value>
+  </data>
+  <data name="ProductSetsHelp" xml:space="preserve">
+    <value>Řídí přístup k sadám produktů v nabídce Produkty - nové</value>
+  </data>
+  <data name="ProfileEncryptAndExportXmlDM" xml:space="preserve">
+    <value>Profil šifrování a export XML</value>
+  </data>
+  <data name="ProfileEncryptAndExportXmlDMHelp" xml:space="preserve">
+    <value>Nahrát certifikáty pro šifrování profilu a exportovat profil XML</value>
+  </data>
+  <data name="ProfilesApple" xml:space="preserve">
+    <value>Profily</value>
+  </data>
+  <data name="ProfilesAppleHelp" xml:space="preserve">
+    <value>Řídí přístup ke stránce Profily pod menu iOS.</value>
+  </data>
+  <data name="ProfilesDD" xml:space="preserve">
+    <value>Profily</value>
+  </data>
+  <data name="ProfilesDDHelp" xml:space="preserve">
+    <value>V detailech zařízení zobrazit a spravovat konfiguraci profilů.</value>
+  </data>
+  <data name="ProfilesHub" xml:space="preserve">
+    <value>Profily</value>
+  </data>
+  <data name="ProfilesHubHelp" xml:space="preserve">
+    <value>Generovat sestavy profilů zařízení.</value>
+  </data>
+  <data name="ProfilesPM" xml:space="preserve">
+    <value>Profily</value>
+  </data>
+  <data name="ProfilesPMHelp" xml:space="preserve">
+    <value>Řídí přístup ke stránce profilů tiskárny</value>
+  </data>
+  <data name="ProfilesPPN" xml:space="preserve">
+    <value>Profily</value>
+  </data>
+  <data name="ProfilesPPNHelp" xml:space="preserve">
+    <value>Přístup ke stránce zřizování profilů</value>
+  </data>
+  <data name="ProfilesPr" xml:space="preserve">
+    <value>Profily</value>
+  </data>
+  <data name="ProfilesPrHelp" xml:space="preserve">
+    <value>Správa profilů tiskárny</value>
+  </data>
+  <data name="ProfilesRESTMdm" xml:space="preserve">
+    <value>Profily</value>
+  </data>
+  <data name="ProfilesRESTMdmHelp" xml:space="preserve">
+    <value>REST APIs pro profily zařízení</value>
+  </data>
+  <data name="ProvisioningHelp" xml:space="preserve">
+    <value>Řídí přístup ke stránce WinMo zřizování.</value>
+  </data>
+  <data name="ProvisioningPolicyConditionCopyHelp" xml:space="preserve">
+    <value>Uděluje uživateli oprávnění kopírovat podmínku.</value>
+  </data>
+  <data name="ProvisioningPolicyFileActionCopyHelp" xml:space="preserve">
+    <value>Uděluje uživateli oprávnění kopírovat soubor/akci zajišťování.</value>
+  </data>
+  <data name="ProxiesAndTunnelHelp" xml:space="preserve">
+    <value>Uděluje oprávnění zobrazovat a upravovat nastavení připojení Proxy a Tunnel</value>
+  </data>
+  <data name="ProxyIns" xml:space="preserve">
+    <value>Proxy</value>
+  </data>
+  <data name="ProxyInsHelp" xml:space="preserve">
+    <value>Řídí přístup ke stránce nastavení proxy pod menu Obecné.</value>
+  </data>
+  <data name="PublicAppsAb" xml:space="preserve">
+    <value>Veřejné aplikace</value>
+  </data>
+  <data name="PublicAppsAbHelp" xml:space="preserve">
+    <value>Přiřazovat a spravovat aplikace z veřejného obchodu.</value>
+  </data>
+  <data name="PullServiceInstallersPPN" xml:space="preserve">
+    <value>Vyžádat instalační soubory služby</value>
+  </data>
+  <data name="PullServiceInstallersPPNHelp" xml:space="preserve">
+    <value>Zobrazit a stáhnout instalační soubor služby stahování</value>
+  </data>
+  <data name="PurchasedApplicationsAb" xml:space="preserve">
+    <value>Zakoupené aplikace</value>
+  </data>
+  <data name="PurchasedApplicationsAbHelp" xml:space="preserve">
+    <value>Import hromadně zakoupených licencí aplikací a správa distribuce licencí.</value>
+  </data>
+  <data name="QnxSet" xml:space="preserve">
+    <value>QNX</value>
+  </data>
+  <data name="QnxSetHelp" xml:space="preserve">
+    <value>Řídí přístup ke stránce nastavení agenta v části QNX.</value>
+  </data>
+  <data name="QRCodeHelp" xml:space="preserve">
+    <value>Konfigurace registrace kódu QR</value>
+  </data>
+  <data name="QueryDD" xml:space="preserve">
+    <value>Dotazovat</value>
+  </data>
+  <data name="QueryDDHelp" xml:space="preserve">
+    <value>Vyzvat zařízení k aktualizaci stavu zařízení.</value>
+  </data>
+  <data name="ReadDeviceManufacturerDetails" xml:space="preserve">
+    <value>Číst podrobnosti o výrobci zařízení</value>
+  </data>
+  <data name="ReadDeviceManufacturerDetailsHelp" xml:space="preserve">
+    <value>Číst podrobnosti o výrobci zařízení prostřednictvím rozhraní API</value>
+  </data>
+  <data name="ReadDeviceModelDetails" xml:space="preserve">
+    <value>Číst podrobnosti o modelu zařízení</value>
+  </data>
+  <data name="ReadDeviceModelDetailsHelp" xml:space="preserve">
+    <value>Číst podrobnosti o modelu zařízení prostřednictvím rozhraní API</value>
+  </data>
+  <data name="RefreshEsimHelp" xml:space="preserve">
+    <value>Uděluje oprávnění k aktualizaci mobilního plánu eSIM karty</value>
+  </data>
+  <data name="RegistryManagerHelp" xml:space="preserve">
+    <value>Zařizuje přístup k vzdálenému přístupu k registru WinMo zařízení.
+</value>
+  </data>
+  <data name="RelayServerBatching" xml:space="preserve">
+    <value>Dávkový import synchronizačního serveru</value>
+  </data>
+  <data name="RelayServerBatchingHelp" xml:space="preserve">
+    <value>Řídí přístup k dávkovému importu synchronizačního serveru a stavu dávky.</value>
+  </data>
+  <data name="RelayServerRemoteFileList" xml:space="preserve">
+    <value>Seznam vzdálených souborů synchronizačního serveru</value>
+  </data>
+  <data name="RelayServerRemoteFileListHelp" xml:space="preserve">
+    <value>Řídí přístup k seznamu vzdálených souborů synchronizačního serveru.</value>
+  </data>
+  <data name="RelayServersPPN" xml:space="preserve">
+    <value>Synchronizační servery</value>
+  </data>
+  <data name="RelayServersPPNHelp" xml:space="preserve">
+    <value>Zobrazovat a spravovat zřizovací synchronizační servery</value>
+  </data>
+  <data name="RemoteControlDD" xml:space="preserve">
+    <value>Vzdálené řízení</value>
+  </data>
+  <data name="RemoteControlDDHelp" xml:space="preserve">
+    <value>Řídit zařízení na dálku</value>
+  </data>
+  <data name="RemoteManagementSettingsEditHelp" xml:space="preserve">
+    <value>Řídí přístup Úpravy ke stránce vzdálené správy v rámci firemní integrace. Přejděte do nabídky Konfigurace \Nastavení systému \ Firemní integrace \ Správa na dálku</value>
+  </data>
+  <data name="RemoteSet" xml:space="preserve">
+    <value>Vzdálený</value>
+  </data>
+  <data name="RemoteSetHelp" xml:space="preserve">
+    <value>Uděluje oprávnění upravovat nastavení vztahující se ke vzdálenému úložišti.</value>
+  </data>
+  <data name="RemoveDeviceEnrollmentProgram" xml:space="preserve">
+    <value>Registrační program - Odstranit profil</value>
+  </data>
+  <data name="RemoveDeviceEnrollmentProgramHelp" xml:space="preserve">
+    <value>Řídí přístup k odebírání profilů DEP ze zařízení. Přejděte na stránku stavu registrace</value>
+  </data>
+  <data name="RenameDeviceHelp" xml:space="preserve">
+    <value>Příkaz k přejmenování zařízení. </value>
+  </data>
+  <data name="RenewCertificateHelp" xml:space="preserve">
+    <value>Uděluje oprávnění obnovit certifikát. 
+</value>
+  </data>
+  <data name="RepairHub" xml:space="preserve">
+    <value>Opravit centrum Hub</value>
+  </data>
+  <data name="RepairHubHelp" xml:space="preserve">
+    <value>Uděluje oprávnění k opravě centra Hub na zařízení.</value>
+  </data>
+  <data name="ReportIOS7Compatability" xml:space="preserve">
+    <value>iOS 7 kompatibilita</value>
+  </data>
+  <data name="ReportIOS7CompatabilityHelp" xml:space="preserve">
+    <value>Uděluje přístup k reportu iOS 7 kompatibility</value>
+  </data>
+  <data name="ReportsAlertsSys" xml:space="preserve">
+    <value>Zprávy a výstrahy</value>
+  </data>
+  <data name="ReportsAlertsSysHelp" xml:space="preserve">
+    <value>Řídí přístup k Reportům a upozorněním</value>
+  </data>
+  <data name="ReportsIns" xml:space="preserve">
+    <value>Sestavy</value>
+  </data>
+  <data name="ReportsInsHelp" xml:space="preserve">
+    <value>Řídí přístup ke stránce Reporty pod menu Instalace.</value>
+  </data>
+  <data name="RepositoriesCM" xml:space="preserve">
+    <value>Úložiště</value>
+  </data>
+  <data name="RepositoriesCMHelp" xml:space="preserve">
+    <value>Přidat, upravit a vymazat obsah úložišť.</value>
+  </data>
+  <data name="ReputationAnalysisAb" xml:space="preserve">
+    <value>Analýzy reputace</value>
+  </data>
+  <data name="ReputationAnalysisAbHelp" xml:space="preserve">
+    <value>Spustit aplikaci Analýzy reputace a prohlédnout výsledky.</value>
+  </data>
+  <data name="RequestCheckinDD" xml:space="preserve">
+    <value>Vyžadovat přihlášení</value>
+  </data>
+  <data name="RequestCheckinDDHelp" xml:space="preserve">
+    <value>Poslat zařízení zprávu s požadavkem k jeho přihlášení. K dispozici v detailech zařízení.</value>
+  </data>
+  <data name="ResBlueprints" xml:space="preserve">
+    <value>Projekty</value>
+  </data>
+  <data name="ResBlueprintsHelp" xml:space="preserve">
+    <value>Vytvořte jednu lokaci, do které budete přidávat uživatelům a zařízením příslušné aplikace, zdroje a zásady omezení.</value>
+  </data>
+  <data name="ResCompliancePolicy" xml:space="preserve">
+    <value>Zásady konformity</value>
+  </data>
+  <data name="ResCompliancePolicyHelp" xml:space="preserve">
+    <value>Přístup k informacím zásad konformity přes REST APIs</value>
+  </data>
+  <data name="ResConsoleNotifications" xml:space="preserve">
+    <value>Oznámení konzoly</value>
+  </data>
+  <data name="ResConsoleNotificationsHelp" xml:space="preserve">
+    <value>Zobrazení a interakce s administračními oznámeními konzoly</value>
+  </data>
+  <data name="ResCustomAttributes" xml:space="preserve">
+    <value>Vlastní atributy</value>
+  </data>
+  <data name="ResCustomAttributesHelp" xml:space="preserve">
+    <value>REST API umožňující přístup k vlastním atributům</value>
+  </data>
+  <data name="ResCustomReports" xml:space="preserve">
+    <value>Vlastní zprávy</value>
+  </data>
+  <data name="ResCustomReportsHelp" xml:space="preserve">
+    <value>Přístup ke stránce Vlastní zprávy</value>
+  </data>
+  <data name="ResDirectMEMAdvLog" xml:space="preserve">
+    <value>Přímé MEM - rozšířené protokolování</value>
+  </data>
+  <data name="ResDirectMEMAdvLogHelp" xml:space="preserve">
+    <value>K této funkci se přistupuje z panelu MEM. V konzole umožňuje zobrazovat průběh rozšířeného protokolování jednotlivých zařízení.</value>
+  </data>
+  <data name="ResEmailNotification" xml:space="preserve">
+    <value>E-mailová oznámení – nastavení služby</value>
+  </data>
+  <data name="ResEmailNotificationHelp" xml:space="preserve">
+    <value>Správa nastavení služby emailových oznámení ENS.</value>
+  </data>
+  <data name="ResGlobalServiceExchange" xml:space="preserve">
+    <value>AppleCare</value>
+  </data>
+  <data name="ResGlobalServiceExchangeHelp" xml:space="preserve">
+    <value>Řídí přístup ke stránce AppleCare v Applu</value>
+  </data>
+  <data name="ResJasperIntegration" xml:space="preserve">
+    <value>Integrace Jasper</value>
+  </data>
+  <data name="ResJasperIntegrationHelp" xml:space="preserve">
+    <value>Správa integračních nastavení Jasperu</value>
+  </data>
+  <data name="ResLifecycleNotifications" xml:space="preserve">
+    <value>Oznámení v cyklu životnosti</value>
+  </data>
+  <data name="ResLifecycleNotificationsHelp" xml:space="preserve">
+    <value>Přístup k oznámením o cyklu životnosti v detailech zařízení.</value>
+  </data>
+  <data name="ResMutualTlsAuthentication" xml:space="preserve">
+    <value>Vzájemná autentizace protokolem TLS</value>
+  </data>
+  <data name="ResMutualTlsAuthenticationHelp" xml:space="preserve">
+    <value>Konfiguruje nastavení vzájemné autentizace protokolem TLS mezi aplikacemi Workspace ONE Intelligent Hub a serverem Workspace ONE UEM.</value>
+  </data>
+  <data name="ResNotifications" xml:space="preserve">
+    <value>Oznámení</value>
+  </data>
+  <data name="ResNotificationsHelp" xml:space="preserve">
+    <value>Zobrazení a interakce s administračními oznámeními konzoly</value>
+  </data>
+  <data name="ResOverrideJobLogLevel" xml:space="preserve">
+    <value>Přepsat úroveň protokolu úloh.</value>
+  </data>
+  <data name="ResOverrideJobLogLevelHelp" xml:space="preserve">
+    <value>Přístup k nastavení přepisu úrovně protokolu úloh.</value>
+  </data>
+  <data name="ResProductProvisioning" xml:space="preserve">
+    <value>Zřizování produktu</value>
+  </data>
+  <data name="ResProductProvisioningHelp" xml:space="preserve">
+    <value>Nastavení zřizování produktu spravujte na úrovni skupiny.</value>
+  </data>
+  <data name="ResProducts" xml:space="preserve">
+    <value>Produkty</value>
+  </data>
+  <data name="ResProductSets" xml:space="preserve">
+    <value>Sady produktů</value>
+  </data>
+  <data name="ResProductSetsHelp" xml:space="preserve">
+    <value>Možnost prohlížet a spravovat sady produktů</value>
+  </data>
+  <data name="ResProductsHelp" xml:space="preserve">
+    <value>Umožňuje přístup ke kolekci produktů přes rozhraní REST API konzoly.</value>
+  </data>
+  <data name="RestAPIAirWatchEducationWrite" xml:space="preserve">
+    <value>REST API Education – zápis nastavení</value>
+  </data>
+  <data name="RestAPIAirWatchEducationWriteHelp" xml:space="preserve">
+    <value>Rozhraní REST API na ukládání a úpravy nastavení Vzdělání</value>
+  </data>
+  <data name="RestApiCartDelete" xml:space="preserve">
+    <value>REST API – odstranění košíku</value>
+  </data>
+  <data name="RestApiCartDeleteHelp" xml:space="preserve">
+    <value>REST API na odstranění dat košíku</value>
+  </data>
+  <data name="RestApiCartWrite" xml:space="preserve">
+    <value>REST API – zápis košíku</value>
+  </data>
+  <data name="RestApiCartWriteHelp" xml:space="preserve">
+    <value>REST API na uložení a úpravy dat košíku</value>
+  </data>
+  <data name="RestApiClassAssignmentSave" xml:space="preserve">
+    <value>REST API – uložení přiřazení třídy</value>
+  </data>
+  <data name="RestApiClassAssignmentSaveHelp" xml:space="preserve">
+    <value>Volání REST API na uložení přiřazení třídy</value>
+  </data>
+  <data name="RestAPIClassDelete" xml:space="preserve">
+    <value>REST API – odstranění třídy</value>
+  </data>
+  <data name="RestAPIClassDeleteHelp" xml:space="preserve">
+    <value>Rozhraní REST API na odstranění dat třídy</value>
+  </data>
+  <data name="RestAPIClassLoad" xml:space="preserve">
+    <value>REST API – čtení třídy</value>
+  </data>
+  <data name="RestAPIClassLoadHelp" xml:space="preserve">
+    <value>Rozhraní REST API na zobrazení dat třídy</value>
+  </data>
+  <data name="RestAPIClassWrite" xml:space="preserve">
+    <value>REST API – zápis třídy</value>
+  </data>
+  <data name="RestAPIClassWriteHelp" xml:space="preserve">
+    <value>Rozhraní REST API na ukládání a úpravy dat třídy</value>
+  </data>
+  <data name="RestApiEduAppsForDeviceRead" xml:space="preserve">
+    <value>REST API – aplikace pro čtení zařízení</value>
+  </data>
+  <data name="RestApiEduAppsForDeviceReadhelp" xml:space="preserve">
+    <value>REST API na získání seznamu aplikací způsobilých pro zařízení</value>
+  </data>
+  <data name="RestAPILoadEducation" xml:space="preserve">
+    <value>REST API Education – čtení nastavení</value>
+  </data>
+  <data name="RestAPILoadEducationHelp" xml:space="preserve">
+    <value>Rozhraní REST API na zobrazení nastavení Vzdělání</value>
+  </data>
+  <data name="RestApiPersonEnrollmentUserMapWrite" xml:space="preserve">
+    <value>REST API – mapa Apple School Manager</value>
+  </data>
+  <data name="RestApiPersonEnrollmentUserMapWriteHelp" xml:space="preserve">
+    <value>REST API na mapování uživatele registrace ke členovi z aplikace Apple School Manager</value>
+  </data>
+  <data name="RestApiRosterSyncRead" xml:space="preserve">
+    <value>REST API – čtení synchronizace Apple School Manager</value>
+  </data>
+  <data name="RestApiRosterSyncReadHelp" xml:space="preserve">
+    <value>REST API na kontrolu stavu synchronizace Apple School Manager</value>
+  </data>
+  <data name="RestApiRosterSyncWrite" xml:space="preserve">
+    <value>REST API – zápis Apple School Manager</value>
+  </data>
+  <data name="RestApiRosterSyncWriteHelp" xml:space="preserve">
+    <value>REST API na zahájení synchronizace Apple School Manager</value>
+  </data>
+  <data name="RestApiUpdatesPolicyDelete" xml:space="preserve">
+    <value>Zásady aktualizací – přístup k odstranění</value>
+  </data>
+  <data name="RestApiUpdatesPolicyDeleteHelp" xml:space="preserve">
+    <value>Povoluje přístup ke všem API ODSTRANĚNÍ v sadě zásad aktualizací</value>
+  </data>
+  <data name="RestApiUpdatesPolicyExecute" xml:space="preserve">
+    <value>Zásady aktualizací – přístup ke spuštění</value>
+  </data>
+  <data name="RestApiUpdatesPolicyExecuteHelp" xml:space="preserve">
+    <value>Povoluje přístup ke všem API SPUŠTĚNÍ v sadě zásad aktualizací</value>
+  </data>
+  <data name="RestApiUpdatesPolicyRead" xml:space="preserve">
+    <value>Zásady aktualizací – přístup pro čtení</value>
+  </data>
+  <data name="RestApiUpdatesPolicyReadHelp" xml:space="preserve">
+    <value>Povoluje přístup ke všem API pouze ke čtení v sadě zásad aktualizací</value>
+  </data>
+  <data name="RestApiUpdatesPolicyWrite" xml:space="preserve">
+    <value>Zásady aktualizací – přístup k zápisu</value>
+  </data>
+  <data name="RestApiUpdatesPolicyWriteHelp" xml:space="preserve">
+    <value>Povoluje přístup ke všem API ZÁPISU v sadě zásad aktualizací</value>
+  </data>
+  <data name="RestEnterpiseIntegration" xml:space="preserve">
+    <value>REST API – podnikové integrace</value>
+  </data>
+  <data name="RestEnterpiseIntegrationHelp" xml:space="preserve">
+    <value>REST API podnikové integrace</value>
+  </data>
+  <data name="RestrictedActionsSec" xml:space="preserve">
+    <value>Akce omezení</value>
+  </data>
+  <data name="RestrictedActionsSecHelp" xml:space="preserve">
+    <value>Uděluje povolení k zobrazení akcí omezení.</value>
+  </data>
+  <data name="RestrictionsDD" xml:space="preserve">
+    <value>Omezení</value>
+  </data>
+  <data name="RestrictionsDDHelp" xml:space="preserve">
+    <value>Vyžádat aktuální omezení uplatňovaná na zařízení.</value>
+  </data>
+  <data name="ResVideo" xml:space="preserve">
+    <value>Video</value>
+  </data>
+  <data name="ResVideoHelp" xml:space="preserve">
+    <value>Spravujte nastavení Video aplikace</value>
+  </data>
+  <data name="ResWebApps" xml:space="preserve">
+    <value>Webové aplikace</value>
+  </data>
+  <data name="ResWebAppsHelp" xml:space="preserve">
+    <value>Přiřazení a správa webových aplikací.</value>
+  </data>
+  <data name="RetentionAd" xml:space="preserve">
+    <value>Uchování</value>
+  </data>
+  <data name="RetentionAdHelp" xml:space="preserve">
+    <value>Uděluje oprávnění k upozorněním o vyprázdnění.</value>
+  </data>
+  <data name="RevokeCertificateHelp" xml:space="preserve">
+    <value>Uděluje oprávnění odvolat certifikát. 
+</value>
+  </data>
+  <data name="RotateRecoveryKeyHelp" xml:space="preserve">
+    <value>Poskytuje administrátorům přístup k rotaci šifrovaného osobního obnovovacího klíče zařízení macOS na vyžádání.</value>
+  </data>
+  <data name="RoutingPoliciesHub" xml:space="preserve">
+    <value>Zásady směrování</value>
+  </data>
+  <data name="RoutingPoliciesHubHelp" xml:space="preserve">
+    <value>Zobrazit a spravovat zásady směrování výstrah.</value>
+  </data>
+  <data name="SaveListViewFilters" xml:space="preserve">
+    <value>Uložit filtry zobrazení seznamu</value>
+  </data>
+  <data name="SaveListViewFiltersHelp" xml:space="preserve">
+    <value>Povoluje administrátorovi ukládat filtry na stránkách zobrazení seznamu</value>
+  </data>
+  <data name="ScepApple" xml:space="preserve">
+    <value>SCEP</value>
+  </data>
+  <data name="ScepAppleHelp" xml:space="preserve">
+    <value>Řídí přístup ke stránce SCEP pod menu iOS.</value>
+  </data>
+  <data name="ScepCertificateHelp" xml:space="preserve">
+    <value>Řídí přístup k certifikačnímu nástroji SCEP. </value>
+  </data>
+  <data name="SdkAnalyticsAb" xml:space="preserve">
+    <value>Analýza SDK</value>
+  </data>
+  <data name="SdkAnalyticsAbHelp" xml:space="preserve">
+    <value>Řídí přístup ke stránce analýz SDK správy aplikací.</value>
+  </data>
+  <data name="SdkIos" xml:space="preserve">
+    <value>SDK</value>
+  </data>
+  <data name="SdkIosHelp" xml:space="preserve">
+    <value>Nastavení ke konfiguraci zabezpečení aplikací SDK</value>
+  </data>
+  <data name="SearchDevicesDM" xml:space="preserve">
+    <value>Hledat zařízení</value>
+  </data>
+  <data name="SearchDevicesDMHelp" xml:space="preserve">
+    <value>Přístup k menu vyhledávání zařízení v rámci správy zařízení.</value>
+  </data>
+  <data name="SearchNotesHelp" xml:space="preserve">
+    <value>Uděluje oprávnění pro hledání poznámek a štítků</value>
+  </data>
+  <data name="SearchUserAccounts" xml:space="preserve">
+    <value>Hledat</value>
+  </data>
+  <data name="SearchUserAccountsHelp" xml:space="preserve">
+    <value>Přístup k uživatelské možnosti lišty rychlého vyhledávání.</value>
+  </data>
+  <data name="SecureChannelCertificateHelp" xml:space="preserve">
+    <value>Nahrávání certifikátu pro bezpečný kanál.
+</value>
+  </data>
+  <data name="SecurityInfoDD" xml:space="preserve">
+    <value>Informace o zabezpečení</value>
+  </data>
+  <data name="SecurityInfoDDHelp" xml:space="preserve">
+    <value>Přístup k informacím o auditu zabezpečení přístroje.</value>
+  </data>
+  <data name="SecuritySec" xml:space="preserve">
+    <value>Zabezpečení</value>
+  </data>
+  <data name="SecuritySecHelp" xml:space="preserve">
+    <value>Uděluje oprávnění k prohlížení bezpečnostní obrazovky.</value>
+  </data>
+  <data name="ServiceUrlsHelp" xml:space="preserve">
+    <value>Dává oprávnění k úpravě adres URL služby, například koncových bodů poskytovatele správy identit.
+</value>
+  </data>
+  <data name="SettingsAndPoliciesSet" xml:space="preserve">
+    <value>Nastavení a zásady</value>
+  </data>
+  <data name="SettingsAndPoliciesSetHelp" xml:space="preserve">
+    <value>Řídí přístup k nastavení aplikací a ke stránkám pravidel</value>
+  </data>
+  <data name="SettingsAttributeHelp" xml:space="preserve">
+    <value>Řídí přístup ke stránce atributu v části Obecné. Přejděte do části Konfigurace / Nastavení systému / Zařízení / Všeobecné</value>
+  </data>
+  <data name="SettingsAuditAd" xml:space="preserve">
+    <value>Nastavení auditu</value>
+  </data>
+  <data name="SettingsAuditAdHelp" xml:space="preserve">
+    <value>Aktivuje/deaktivuje nastavení auditu přes systémové kódy.</value>
+  </data>
+  <data name="SettingsDeviceAdvanced" xml:space="preserve">
+    <value>Nastavení zařízení - Rozšířené</value>
+  </data>
+  <data name="SettingsDeviceAdvancedHelp" xml:space="preserve">
+    <value>Řídí přístup ke stránce Pokročilé v nabídce Zařízení a uživatelé. Přejděte do Konfigurace/ Konfigurace systému / Zařízení a uživatelé /Pokročilé</value>
+  </data>
+  <data name="SettingsDeviceEnrollmentProgramHelp" xml:space="preserve">
+    <value>Řídí přístup k programu registrace zařízení. Přejděte do části Konfigurace / Nastavení systému / Zařízení / Apple</value>
+  </data>
+  <data name="SettingsDeviceGeneralAdvanced" xml:space="preserve">
+    <value>Nastavení – Zařízení – Obecné – Pokročilé</value>
+  </data>
+  <data name="SettingsDeviceGeneralAdvancedHelp" xml:space="preserve">
+    <value>Řídí přístup ke stránce Rozšířené v nabídce Obecné. Přejděte do Nastavení / Zařízení a uživatelé /Obecné/Pokročilé</value>
+  </data>
+  <data name="SettingsEm" xml:space="preserve">
+    <value>Nastavení</value>
+  </data>
+  <data name="SettingsEmHelp" xml:space="preserve">
+    <value>Řídí přístup k nastavením e-mailu.</value>
+  </data>
+  <data name="SettingsEnrollmentUserPasswordPolicyEditHelp" xml:space="preserve">
+    <value>Řídí úpravu přístupu ke stránce Nastavení hesel v části Zařízení a uživatelé. Přejděte do části Konfigurace \ Nastavení zařízení a uživatelů \ Obecné \ Zabezpečení \ Hesla</value>
+  </data>
+  <data name="SettingsEnrollmentUserPasswordPolicyViewHelp" xml:space="preserve">
+    <value>Řídí přístup prohlížení ke stránce Nastavení hesel v nabídce Zařízení a uživatelé. Přejděte do části Konfigurace \ Nastavení zařízení a uživatelů \ Obecné \ Zabezpečení \ Hesla</value>
+  </data>
+  <data name="SettingsHeaderBasedAuthenticationHelp" xml:space="preserve">
+    <value>Řídí přístup ke stránce Externí autentizace v části Podniková integrace. Přejděte do části Nastavení / Systém / Podniková integrace</value>
+  </data>
+  <data name="SettingsLinux" xml:space="preserve">
+    <value>Nastavení systému Linux</value>
+  </data>
+  <data name="SettingsLinuxAgentApplication" xml:space="preserve">
+    <value>Nastavení centra Intelligent Hub pro aplikaci Linux</value>
+  </data>
+  <data name="SettingsLinuxAgentApplicationHelp" xml:space="preserve">
+    <value>Řídí přístup ke stránce nastavení centra Intelligent Hub pro systém Linux.</value>
+  </data>
+  <data name="SettingsLinuxAgentSettings" xml:space="preserve">
+    <value>Nastavení systému Linux pro centrum Intelligent Hub</value>
+  </data>
+  <data name="SettingsLinuxAgentSettingsHelp" xml:space="preserve">
+    <value>Řídí přístup ke stránce nastavení centra Intelligent Hub v systému Linux. Přejděte do části Nastavení \ Zařízení a uživatelé \ Linux</value>
+  </data>
+  <data name="SettingsLinuxHelp" xml:space="preserve">
+    <value>Řídí přístup ke stránce nastavení centra Intelligent Hub v systému Linux. Přejděte do části Nastavení \ Zařízení a uživatelé \ Linux</value>
+  </data>
+  <data name="SettingsOnlyValidAtPartnerOrCustomer" xml:space="preserve">
+    <value>Oznámení SaaS nelze zobrazit na současné úrovni organizační skupiny. Chcete-li zobrazit oznámení SaaS, zvolte organizační skupinu na úrovni zákazníka nebo partnera.</value>
+  </data>
+  <data name="SettingsOverridesAd" xml:space="preserve">
+    <value>Přepsání nastavení</value>
+  </data>
+  <data name="SettingsOverridesAdHelp" xml:space="preserve">
+    <value>Zobrazovat a upravovat protokol přepisování událostí.</value>
+  </data>
+  <data name="SettingsQnxAgentSettingsHelp" xml:space="preserve">
+    <value>Řídí přístup ke stránce nastavení agenta v části Qnx. Přejděte do části Konfigurace \ Nastavení systému \ Zařízení \ Qnx</value>
+  </data>
+  <data name="SharedDevicesSet" xml:space="preserve">
+    <value>Sdílená zařízení</value>
+  </data>
+  <data name="SharedDevicesSetHelp" xml:space="preserve">
+    <value>Řídí přístup ke stránce sdílených zařízení</value>
+  </data>
+  <data name="SmartGroupsAb" xml:space="preserve">
+    <value>Smart skupiny</value>
+  </data>
+  <data name="SmartGroupsAbHelp" xml:space="preserve">
+    <value>Upravovaat přiřazení Smart skupiny aplikace</value>
+  </data>
+  <data name="SmartGroupsGr" xml:space="preserve">
+    <value>Smart skupiny</value>
+  </data>
+  <data name="SmartGroupsGrHelp" xml:space="preserve">
+    <value>Zobrazit, upravit a vymazat smart skupiny</value>
+  </data>
+  <data name="SoftwareInventoryWM" xml:space="preserve">
+    <value>Inventář softwaru</value>
+  </data>
+  <data name="SoftwareInventoryWMHelp" xml:space="preserve">
+    <value>Přistup na stránku inventáře WinMo softwaru</value>
+  </data>
+  <data name="SslPinningSec" xml:space="preserve">
+    <value>SSL držení</value>
+  </data>
+  <data name="SslPinningSecHelp" xml:space="preserve">
+    <value>Uděluje oprávnění k prohlížení obrazovky SSL Pinning.</value>
+  </data>
+  <data name="StagingPPN" xml:space="preserve">
+    <value>Fázování</value>
+  </data>
+  <data name="StagingPPNHelp" xml:space="preserve">
+    <value>Spravujte definice fázování pro zásady zřizování</value>
+  </data>
+  <data name="StartAwcm" xml:space="preserve">
+    <value>Zahájit AWCM</value>
+  </data>
+  <data name="StatusHistoryDD" xml:space="preserve">
+    <value>Historie stavu</value>
+  </data>
+  <data name="StatusHistoryDDHelp" xml:space="preserve">
+    <value>Zobrazení registrace a historie stavu konformity zařízení</value>
+  </data>
+  <data name="StopAwcm" xml:space="preserve">
+    <value>Zastavit AWCM</value>
+  </data>
+  <data name="SummaryInfoPM" xml:space="preserve">
+    <value>Přehled informací</value>
+  </data>
+  <data name="SummaryInfoPMHelp" xml:space="preserve">
+    <value>Řídí přístup ke stránce informací přehledu tiskárny.</value>
+  </data>
+  <data name="SuspendBitlockerEncryptionHelp" xml:space="preserve">
+    <value>Pro konfiguraci pozastavení šifrování BitLocker na stránce detailů zařízení</value>
+  </data>
+  <data name="SymbianDev" xml:space="preserve">
+    <value>Symbian</value>
+  </data>
+  <data name="SymbianDevHelp" xml:space="preserve">
+    <value>Řídí přístup ke stránce Symbianu v zařízení.</value>
+  </data>
+  <data name="SyncDD" xml:space="preserve">
+    <value>Synchronizovat nastavení zařízení</value>
+  </data>
+  <data name="SyncDDHelp" xml:space="preserve">
+    <value>Synchronizovat nastavení zařízení na dálku; např.profily a aplikace.</value>
+  </data>
+  <data name="SyncDeviceEnrollmentProgram" xml:space="preserve">
+    <value>Registrační program - Synchronizovat zařízení</value>
+  </data>
+  <data name="SyncDeviceEnrollmentProgramHelp" xml:space="preserve">
+    <value>Řídí přístup k synchronizaci zařízení DEP. Přejděte na stránku stavu registrace</value>
+  </data>
+  <data name="SyncDeviceSensors" xml:space="preserve">
+    <value>Synchronizovat senzory zařízení</value>
+  </data>
+  <data name="SyncDeviceSensorsHelp" xml:space="preserve">
+    <value>Řídí přístup k vyžádání obnovení dat senzoru ze zařízení</value>
+  </data>
+  <data name="SystemCodeAuditAd" xml:space="preserve">
+    <value>Audit systémového kódu</value>
+  </data>
+  <data name="SystemCodeAuditAdHelp" xml:space="preserve">
+    <value>Řírí přístup ke kódovému auditu systému.</value>
+  </data>
+  <data name="SystemHealthSettingsAd" xml:space="preserve">
+    <value>Nastavení stavu systému</value>
+  </data>
+  <data name="SystemHealthSettingsAdHelp" xml:space="preserve">
+    <value>Zobrazovat a upravovat nastavení stavu systému.</value>
+  </data>
+  <data name="SystemHealthSettingsEditHelp" xml:space="preserve">
+    <value>Uděluje oprávnění upravovat nastavení stavu systému. Přejděte do části: Nabídka \ Konfigurace \ Systém \ Administrátor \ Diagnostika \ Stav systému</value>
+  </data>
+  <data name="SystemHealthSettingsViewHelp" xml:space="preserve">
+    <value>Uděluje oprávnění zobrazit nastavení stavu systému. Přejděte do části: Nabídka \ Konfigurace \ Systém \ Administrátor \ Diagnostika \ Stav systému</value>
+  </data>
+  <data name="SystemInternalHub" xml:space="preserve">
+    <value>Interní systém</value>
+  </data>
+  <data name="SystemInternalHubHelp" xml:space="preserve">
+    <value>Generovat reporty interního účetnictví.</value>
+  </data>
+  <data name="TagManagementViewHelp" xml:space="preserve">
+    <value>Uděluje oprávnění k zobrazení správy štítků</value>
+  </data>
+  <data name="TagsApi" xml:space="preserve">
+    <value>Štítky</value>
+  </data>
+  <data name="TagsApiHelp" xml:space="preserve">
+    <value>Přístup ke všem štítkům APIs.</value>
+  </data>
+  <data name="TagsDev" xml:space="preserve">
+    <value>Štítky</value>
+  </data>
+  <data name="TagsDevHelp" xml:space="preserve">
+    <value>Uděluje oprávnění pro přístup ke správě štítků.</value>
+  </data>
+  <data name="TargetedLogDeviceEditHelp" xml:space="preserve">
+    <value>Uděluje oprávnění upravovat cílené protokolování zařízení. Přejděte do části Řídicí panely \ Řídicí panel zařízení</value>
+  </data>
+  <data name="TargetedLogDeviceViewHelp" xml:space="preserve">
+    <value>Uděluje oprávnění zobrazovat cílené protokolování zařízení. Přejděte do části Řídicí panely \ Řídicí panel zařízení</value>
+  </data>
+  <data name="TelecomBasicSettingsViewHelp" xml:space="preserve">
+    <value>Řídí přístup k průvodci konfigurací základních telekomunikačních služeb.</value>
+  </data>
+  <data name="TelecomDD" xml:space="preserve">
+    <value>Telekomunikační služby</value>
+  </data>
+  <data name="TelecomDDHelp" xml:space="preserve">
+    <value>Přístup k datům Telecomu v detailech zařízení.</value>
+  </data>
+  <data name="TelecomHub" xml:space="preserve">
+    <value>Telekomunikační služby</value>
+  </data>
+  <data name="TelecomHubHelp" xml:space="preserve">
+    <value>Generovat reporty pro vedení Telecomu</value>
+  </data>
+  <data name="TelecomManagementTel" xml:space="preserve">
+    <value>Správa telekomunikační služby</value>
+  </data>
+  <data name="TelecomManagementTelHelp" xml:space="preserve">
+    <value>Řídí přístup k telekomunikačnímu modulu. Zobrazuje dostupné položky menu v sekci Telecom.</value>
+  </data>
+  <data name="TelecomSettingsSys" xml:space="preserve">
+    <value>Nastavení telekomunikace</value>
+  </data>
+  <data name="TelecomSettingsSysHelp" xml:space="preserve">
+    <value>Řídí přístup ke stránce nastavení</value>
+  </data>
+  <data name="TenantStorageGr" xml:space="preserve">
+    <value>Klientské úložiště</value>
+  </data>
+  <data name="TenantStorageGrHelp" xml:space="preserve">
+    <value>Pro interní použití: řídí přístup na stránku úložiště klienta.</value>
+  </data>
+  <data name="TenantStorageHelp" xml:space="preserve">
+    <value>Pro interní použití, viditelné pouze pro roli správce systému. Řídí přístup pro úpravu stránky Nastavení/Správa/Úložiště pro úložiště klienta.</value>
+  </data>
+  <data name="TermsOfUseAdmin" xml:space="preserve">
+    <value>Podmínky použití pro administrátory</value>
+  </data>
+  <data name="TermsOfUseAdminHelp" xml:space="preserve">
+    <value>Zobrazit podmínky použití adminitrátorského účtu.</value>
+  </data>
+  <data name="TermsOfUseSys" xml:space="preserve">
+    <value>Podmínky použití pro administrátory</value>
+  </data>
+  <data name="TermsOfUseSysHelp" xml:space="preserve">
+    <value>Řídí pístup ke stránce Podmínek použití v systémových nastavení a registraci zaříezní.</value>
+  </data>
+  <data name="TestModeEM" xml:space="preserve">
+    <value>Testovací režim</value>
+  </data>
+  <data name="TestModeEMHelp" xml:space="preserve">
+    <value>Upravit testovací režim pro zásady konformity správy e-mailu</value>
+  </data>
+  <data name="TimeScheduleDM" xml:space="preserve">
+    <value>Časový plán</value>
+  </data>
+  <data name="TimeScheduleDMHelp" xml:space="preserve">
+    <value>Zobrazení a upravení časových plánů profilů</value>
+  </data>
+  <data name="TimeScheduleHelp" xml:space="preserve">
+    <value>Uděluje oprávnění zobrazovat/upravovat nastavení časových plánů 
+</value>
+  </data>
+  <data name="TroubleshootingSys" xml:space="preserve">
+    <value>Řešení potíží</value>
+  </data>
+  <data name="TroubleshootingSysHelp" xml:space="preserve">
+    <value>Řídí přístup ke stránkám protokolů a řešení technických problémů</value>
+  </data>
+  <data name="UemNotificationsInfo" xml:space="preserve">
+    <value>Zahrnuje oznámení pro Workspace ONE UEM a Workspace ONE Assist.</value>
+  </data>
+  <data name="UnApproveUpdate" xml:space="preserve">
+    <value>Odvolat schválení aktualizace</value>
+  </data>
+  <data name="UnApproveUpdateHelp" xml:space="preserve">
+    <value>Uděluje oprávnění k vydání příkazu neschválit aktualizaci na zařízeních.</value>
+  </data>
+  <data name="UnApproveUpdates" xml:space="preserve">
+    <value>Odvolat schválení aktualizace</value>
+  </data>
+  <data name="UnManagedWipeProtectionHelp" xml:space="preserve">
+    <value>Nastavení ochrany před výmazem nespravovaného zařízení</value>
+  </data>
+  <data name="UpdateEditAssignment" xml:space="preserve">
+    <value>Aktualizovat úpravu přiřazení</value>
+  </data>
+  <data name="UpdateEditAssignmentHelp" xml:space="preserve">
+    <value>Uděluje oprávnění upravovat přiřazení aktualizace smart skupin</value>
+  </data>
+  <data name="UploadCctk" xml:space="preserve">
+    <value>Nahrát Cctk</value>
+  </data>
+  <data name="UploadCctkHelp" xml:space="preserve">
+    <value>Umožňuje administrátorovi nahrát soubor balíčku CCTK pro konfiguraci nasazení pro konfiguraci systému BIOS.</value>
+  </data>
+  <data name="UploadUnattendXml" xml:space="preserve">
+    <value>Nahrát bezobslužný soubor XML</value>
+  </data>
+  <data name="UploadUnattendXmlHelp" xml:space="preserve">
+    <value>Umožňuje administrátorovi nahrát Nedoprovázený soubor XML pro konfiguraci nasazení.</value>
+  </data>
+  <data name="UsageTel" xml:space="preserve">
+    <value>Využití</value>
+  </data>
+  <data name="UsageTelHelp" xml:space="preserve">
+    <value>Zobrazit detaily využití telekomunikace a řídicí panel.</value>
+  </data>
+  <data name="UserCategoriesDU" xml:space="preserve">
+    <value>Uživatelské kategorie</value>
+  </data>
+  <data name="UserCategoriesDUHelp" xml:space="preserve">
+    <value>Řídí přístup ke kateogoriím uživatele v systémových nastaveních</value>
+  </data>
+  <data name="UserDetailUserAccounts" xml:space="preserve">
+    <value>Detaily o uživateli</value>
+  </data>
+  <data name="UserDetailUserAccountsHelp" xml:space="preserve">
+    <value>Přístup k zobrazení stránky podrobností o uživateli</value>
+  </data>
+  <data name="UserInfoDD" xml:space="preserve">
+    <value>Informace o uživateli</value>
+  </data>
+  <data name="UserInfoDDHelp" xml:space="preserve">
+    <value>Přístup k informacím o uživateli v detailech zařízení.</value>
+  </data>
+  <data name="UserManagementHub" xml:space="preserve">
+    <value>Správa uživatele</value>
+  </data>
+  <data name="UserManagementHubHelp" xml:space="preserve">
+    <value>Vytvářejte reporty pro uživatelskou správu</value>
+  </data>
+  <data name="UserMigrationHelp" xml:space="preserve">
+    <value>Poskytuje oprávnění k zobrazování uživatelů základní registrace, kteří mohou být migrováni na LDAP uživatele. 
+</value>
+  </data>
+  <data name="UserRegistrationDashboard" xml:space="preserve">
+    <value>Registrace uživatele</value>
+  </data>
+  <data name="UserRegistrationDashboardHelp" xml:space="preserve">
+    <value>Přístup na odkaz stavu registrace z řídicího panelu a ze stránek uživatelských účtů.</value>
+  </data>
+  <data name="UserRegistrationEnrollmentStatus" xml:space="preserve">
+    <value>Registrace uživatele</value>
+  </data>
+  <data name="UserRegistrationEnrollmentStatusHelp" xml:space="preserve">
+    <value>Přístup na registraci uživatele ze stránky stavu registrace.</value>
+  </data>
+  <data name="UserRegistrationHelp" xml:space="preserve">
+    <value>Řídí přístup k odkazu uživatelského zápisu na stránce uživatelských účtů.</value>
+  </data>
+  <data name="UserRoleHelp" xml:space="preserve">
+    <value>Řídí přístup k rolím pod menu Účty.
+</value>
+  </data>
+  <data name="UsersRESTSystem" xml:space="preserve">
+    <value>Uživatelé</value>
+  </data>
+  <data name="UsersRESTSystemHelp" xml:space="preserve">
+    <value>REST APIs pro registraci uživatelksých účtů</value>
+  </data>
+  <data name="UserStorageSet" xml:space="preserve">
+    <value>Uživatelské úložiště</value>
+  </data>
+  <data name="UserStorageSetHelp" xml:space="preserve">
+    <value>Správa nastavení úložiště obsahu koncových uživatelů</value>
+  </data>
+  <data name="UserTrackingHub" xml:space="preserve">
+    <value>Sledování uživatele</value>
+  </data>
+  <data name="UserTrackingHubHelp" xml:space="preserve">
+    <value>Vytváření reportů o sledování úživatele.</value>
+  </data>
+  <data name="VideoManagementSet" xml:space="preserve">
+    <value>Správa videí</value>
+  </data>
+  <data name="VideoManagementSetHelp" xml:space="preserve">
+    <value>Přidat videa ke kanálům</value>
+  </data>
+  <data name="ViewAd" xml:space="preserve">
+    <value>Zobrazit</value>
+  </data>
+  <data name="ViewAdHelp" xml:space="preserve">
+    <value>Uděluje oprávnění k prohlížení mezipaměti nastavení</value>
+  </data>
+  <data name="ViewAdminAccount" xml:space="preserve">
+    <value>Zobrazit</value>
+  </data>
+  <data name="ViewAdminAccountHelp" xml:space="preserve">
+    <value>Zobrazit administrátorské účty.</value>
+  </data>
+  <data name="ViewAdminGroup" xml:space="preserve">
+    <value>Zobrazit</value>
+  </data>
+  <data name="ViewAdminGroupHelp" xml:space="preserve">
+    <value>Zobrazit stránku administrátorské skupiny.</value>
+  </data>
+  <data name="ViewAdminRoles" xml:space="preserve">
+    <value>Zobrazit</value>
+  </data>
+  <data name="ViewAdminRolesHelp" xml:space="preserve">
+    <value>Zobrazení stránky administrátorských rolí</value>
+  </data>
+  <data name="ViewAn" xml:space="preserve">
+    <value>Zobrazit</value>
+  </data>
+  <data name="ViewAnHelp" xml:space="preserve">
+    <value>Řídí přístup ke stránce Android pod menu Zařízení.</value>
+  </data>
+  <data name="ViewApple" xml:space="preserve">
+    <value>Zobrazit</value>
+  </data>
+  <data name="ViewAppleHelp" xml:space="preserve">
+    <value>Řídí přístup ke stránkce Apple v sekci Zařízení</value>
+  </data>
+  <data name="ViewBaselines" xml:space="preserve">
+    <value>Zobrazit standardní hodnoty</value>
+  </data>
+  <data name="ViewBaselinesHelp" xml:space="preserve">
+    <value>Řídí přístup k zobrazení standardních hodnot</value>
+  </data>
+  <data name="ViewCM" xml:space="preserve">
+    <value>Zobrazit</value>
+  </data>
+  <data name="ViewCMHelp" xml:space="preserve">
+    <value>Zobrazení stránek správy obsahu.</value>
+  </data>
+  <data name="ViewCustomReportSubscriptionHelp" xml:space="preserve">
+    <value>Řídí přístup k zobrazení odběrů vlastních zpráv. Přejděte do části Hub \ Zprávy a analýzy \ Vlastní zprávy \ Odběry</value>
+  </data>
+  <data name="ViewDashboardDM" xml:space="preserve">
+    <value>Zobrazení řídicího panelu</value>
+  </data>
+  <data name="ViewDashboardDMHelp" xml:space="preserve">
+    <value>Zobrazení řídicího panelu zařízení v rámci správy zařízení</value>
+  </data>
+  <data name="ViewDeviceManagement" xml:space="preserve">
+    <value>Zobrazit</value>
+  </data>
+  <data name="ViewDeviceManagementHelp" xml:space="preserve">
+    <value>Zobrazení režimu správy zařízení</value>
+  </data>
+  <data name="ViewDevicesAb" xml:space="preserve">
+    <value>Zobrazit zařízení</value>
+  </data>
+  <data name="ViewDevicesAbHelp" xml:space="preserve">
+    <value>Řídí přístup k zobrazení zařízení přiřazených k aplikaci</value>
+  </data>
+  <data name="ViewDevicesCM" xml:space="preserve">
+    <value>Zobrazit zařízení</value>
+  </data>
+  <data name="ViewDevicesCMHelp" xml:space="preserve">
+    <value>Prohlížet zařízení dle přiřazeného obsahu na stránce správy obsahu.</value>
+  </data>
+  <data name="ViewDevicesDM" xml:space="preserve">
+    <value>Zobrazit zařízení</value>
+  </data>
+  <data name="ViewDevicesDMHelp" xml:space="preserve">
+    <value>Přístup k zobrazení ikony zařízení v sekci Profily</value>
+  </data>
+  <data name="ViewDeviceSensors" xml:space="preserve">
+    <value>Zobrazit senzory zařízení</value>
+  </data>
+  <data name="ViewDeviceSensorsHelp" xml:space="preserve">
+    <value>Řídí přístup k zobrazení detailů a konfigurace senzoru zařízení</value>
+  </data>
+  <data name="ViewDeviceWnsStatus" xml:space="preserve">
+    <value>Zobrazit stav WNS zařízení</value>
+  </data>
+  <data name="ViewDeviceWnsStatusHelp" xml:space="preserve">
+    <value>Schopnost zobrazit stav WNS zařízení.</value>
+  </data>
+  <data name="ViewDM" xml:space="preserve">
+    <value>Zobrazit</value>
+  </data>
+  <data name="ViewDMHelp" xml:space="preserve">
+    <value>Zobrazení stránky profiů v sekci správa zařízení</value>
+  </data>
+  <data name="ViewEducationOverviewHelp" xml:space="preserve">
+    <value>Zobrazit stránku přehledu vzdělání      </value>
+  </data>
+  <data name="ViewEM" xml:space="preserve">
+    <value>Zobrazit</value>
+  </data>
+  <data name="ViewEMHelp" xml:space="preserve">
+    <value>Přístup k položce Nabídka správy e-mailu</value>
+  </data>
+  <data name="ViewExtendedDeviceInventory" xml:space="preserve">
+    <value>Zobrazit rozšířený sklad zařízení</value>
+  </data>
+  <data name="ViewExtendedDeviceInventoryHelp" xml:space="preserve">
+    <value>Řídí přístup k zobrazení rozšířeného skladu zařízení.</value>
+  </data>
+  <data name="ViewExtendedDeviceInventoryOnDeviceDetail" xml:space="preserve">
+    <value>Zobrazit rozšířený sklad zařízení na stránce detailů zařízení</value>
+  </data>
+  <data name="ViewExtendedDeviceInventoryOnDeviceDetailHelp" xml:space="preserve">
+    <value>Řídí přístup k zobrazení rozšířeného skladu zařízení na stránce detailů zařízení.</value>
+  </data>
+  <data name="ViewFileServerConfiguration" xml:space="preserve">
+    <value>Zobrazit konfiguraci souborového serveru</value>
+  </data>
+  <data name="ViewFileServerConfigurationHelp" xml:space="preserve">
+    <value>Uděluje uživateli oprávnění zobrazovat mřížku a podrobnosti souborových serverů</value>
+  </data>
+  <data name="ViewGen" xml:space="preserve">
+    <value>Zobrazit</value>
+  </data>
+  <data name="ViewGenHelp" xml:space="preserve">
+    <value>Řídí přístup ke stránkce zařízení v systémových nastaveních.</value>
+  </data>
+  <data name="ViewGr" xml:space="preserve">
+    <value>Zobrazit</value>
+  </data>
+  <data name="ViewGrHelp" xml:space="preserve">
+    <value>Přístup na stránky organizačních skupin.</value>
+  </data>
+  <data name="ViewHA" xml:space="preserve">
+    <value>Zobrazit</value>
+  </data>
+  <data name="ViewHAHelp" xml:space="preserve">
+    <value>Přístup do režimu upozornění.</value>
+  </data>
+  <data name="ViewIos" xml:space="preserve">
+    <value>Zobrazit</value>
+  </data>
+  <data name="ViewIosHelp" xml:space="preserve">
+    <value>Řídí přístup ke stránce iOS pod menu Zařízení.</value>
+  </data>
+  <data name="ViewLinux" xml:space="preserve">
+    <value>Zobrazit</value>
+  </data>
+  <data name="ViewLinuxHelp" xml:space="preserve">
+    <value>Řídí přístup ke stránce Linux v části Zařízení.</value>
+  </data>
+  <data name="ViewNotesHelp" xml:space="preserve">
+    <value>Uděluje oprávnění pro prohlížení poznámek</value>
+  </data>
+  <data name="ViewOemUpdates" xml:space="preserve">
+    <value>Zobrazit aktualizace OEM</value>
+  </data>
+  <data name="ViewOemUpdatesHelp" xml:space="preserve">
+    <value>Řídí přístup k zobrazení řídicího panelu aktualizací OEM. Přejděte do nabídky Nabídka \ Zařízení \ Aktualizace OEM</value>
+  </data>
+  <data name="ViewPM" xml:space="preserve">
+    <value>Zobrazit</value>
+  </data>
+  <data name="ViewPMHelp" xml:space="preserve">
+    <value>Přístup na stránku nastavení periferií</value>
+  </data>
+  <data name="ViewProvisioningPackages" xml:space="preserve">
+    <value>Zobrazit zřizovací balíčky</value>
+  </data>
+  <data name="ViewProvisioningPackagesHelp" xml:space="preserve">
+    <value>Řídí přístup k zobrazení zřizovacích balíčků</value>
+  </data>
+  <data name="ViewSet" xml:space="preserve">
+    <value>Zobrazit</value>
+  </data>
+  <data name="ViewSetHelp" xml:space="preserve">
+    <value>Řídí přístup na stránky aplikací v systémových nastaveních</value>
+  </data>
+  <data name="ViewSys" xml:space="preserve">
+    <value>Zobrazit</value>
+  </data>
+  <data name="ViewSysHelp" xml:space="preserve">
+    <value>Řídí přístup k systémovým nastavením.</value>
+  </data>
+  <data name="ViewTagHelp" xml:space="preserve">
+    <value>Uděluje oprávnění zobrazit tag</value>
+  </data>
+  <data name="ViewTimeWindow" xml:space="preserve">
+    <value>Zobrazit časové okno</value>
+  </data>
+  <data name="ViewTimeWindowHelp" xml:space="preserve">
+    <value>Řídí přístup k zobrazení časového okna.</value>
+  </data>
+  <data name="ViewTimeWindowOnDeviceDetail" xml:space="preserve">
+    <value>Zobrazit časové okno na stránce s podrobnostmi o zařízení</value>
+  </data>
+  <data name="ViewTimeWindowOnDeviceDetailHelp" xml:space="preserve">
+    <value>Řídí přístup k zobrazení časového okna na stránce s podrobnostmi o zařízení.</value>
+  </data>
+  <data name="ViewUG" xml:space="preserve">
+    <value>Zobrazit</value>
+  </data>
+  <data name="ViewUGHelp" xml:space="preserve">
+    <value>Přístup na stránku uživatelké skupiny</value>
+  </data>
+  <data name="ViewUpdateDevices" xml:space="preserve">
+    <value>Zobrazit aktualizace zařízení</value>
+  </data>
+  <data name="ViewUpdateDevicesHelp" xml:space="preserve">
+    <value>Řídí přístup k zobrazení zařízení podle stavu aktualizace. Přejděte na nabídku Nabídka \ Zařízení \ Aktualizace</value>
+  </data>
+  <data name="ViewUpdatesHelp" xml:space="preserve">
+    <value>Řídí přístup k zobrazení řídicího panelu aktualizací. Přejděte na nabídku Menu \ Zařízení \ Aktualizace</value>
+  </data>
+  <data name="ViewUserAccounts" xml:space="preserve">
+    <value>Zobrazit</value>
+  </data>
+  <data name="ViewUserAccountsHelp" xml:space="preserve">
+    <value>Zobrazit uživatelské účyty.</value>
+  </data>
+  <data name="ViewUserCategories" xml:space="preserve">
+    <value>Zobrazit</value>
+  </data>
+  <data name="ViewUserCategoriesHelp" xml:space="preserve">
+    <value>Přístup ke kategoriím uživatelských účtů</value>
+  </data>
+  <data name="ViewUserDetails" xml:space="preserve">
+    <value>Zobrazit podrobnosti o uživateli</value>
+  </data>
+  <data name="ViewUserDetailsHelp" xml:space="preserve">
+    <value>Zobrazení přiřazení uživatelů pro uživatelské profily systému Chrome OS.</value>
+  </data>
+  <data name="ViewUserRoles" xml:space="preserve">
+    <value>Zobrazit</value>
+  </data>
+  <data name="ViewUserRolesHelp" xml:space="preserve">
+    <value>Zobrazit uživatelské role.</value>
+  </data>
+  <data name="ViewWin" xml:space="preserve">
+    <value>Zobrazit</value>
+  </data>
+  <data name="ViewWindowsTemplateDevicesHelp" xml:space="preserve">
+    <value>Povoluje administrátorovi konfigurovat nastavení na zobrazení zařízení, na která byla na řídicím panelu konzoly Console použita šablona Windows – zřizovací balíček</value>
+  </data>
+  <data name="ViewWindowsTemplatesHelp" xml:space="preserve">
+    <value>Umožňuje správci konfigurovat nastavení pro zobrazení šablony Windows na ovládacím panelu konzoly Console</value>
+  </data>
+  <data name="ViewWinHelp" xml:space="preserve">
+    <value>Řídí přístup na stránku Windows v sekci Zařízení</value>
+  </data>
+  <data name="ViewXmlDM" xml:space="preserve">
+    <value>Zobrazení XML</value>
+  </data>
+  <data name="ViewXmlDMHelp" xml:space="preserve">
+    <value>Přístup pro zobrazení ikony XML v sekci Profily</value>
+  </data>
+  <data name="VmInstanceLockHelp" xml:space="preserve">
+    <value>Uzamknout instance virtuálního počítače spravované pomocí Horizon FLEX</value>
+  </data>
+  <data name="VmInstanceUnlockHelp" xml:space="preserve">
+    <value>Odemknout instance virtuálního počítače spravované pomocí Horizon FLEX</value>
+  </data>
+  <data name="VmInstanceWipeHelp" xml:space="preserve">
+    <value>Odebrat instance virtuálního počítače spravované pomocí Horizon FLEX</value>
+  </data>
+  <data name="VMwareEmployeeLoginNotification" xml:space="preserve">
+    <value>Oznámení o přihlášení zaměstnance VMware</value>
+  </data>
+  <data name="VMwareEmployeeLoginNotificationInfo" xml:space="preserve">
+    <value>Aktivujte, pokud chcete upozorňovat určené příjemce, když zaměstnanec VMware přistupuje k vaší zákaznické nebo partnerské organizační skupině.</value>
+  </data>
+  <data name="WebConsoleLogHelp" xml:space="preserve">
+    <value>Řídí přístup k chybovým webovým protokolům. 
+</value>
+  </data>
+  <data name="WeblinkPM" xml:space="preserve">
+    <value>Webový odkaz</value>
+  </data>
+  <data name="WeblinkPMHelp" xml:space="preserve">
+    <value>Řídí přístup ke stránce weblinku tiskárny.</value>
+  </data>
+  <data name="WebsiteFiltersSettingsHelp" xml:space="preserve">
+    <value>Řídí přístup k zobrazení a úpravám obrazovky nastavení filtrů webové stránky. Cesta k nabídce je Nastavení \ Aplikace \ Integrace aplikace \ Filtry webové stránky</value>
+  </data>
+  <data name="WiFiPM" xml:space="preserve">
+    <value>Wi-Fi</value>
+  </data>
+  <data name="WiFiPMHelp" xml:space="preserve">
+    <value>Řídí přístup na stránku Wi-Fi tiskárny.</value>
+  </data>
+  <data name="Windows8RtWin" xml:space="preserve">
+    <value>Windows 8/RT</value>
+  </data>
+  <data name="Windows8RtWinHelp" xml:space="preserve">
+    <value>Řídí přístup k natavení WinRT</value>
+  </data>
+  <data name="WindowsAppDeploymentsEditHelp" xml:space="preserve">
+    <value>Tento zdroj umožňuje administrátorům konfigurovat nastavení nasazení aplikace na konzole</value>
+  </data>
+  <data name="WindowsAutoDiscoverySettingsEditHelp" xml:space="preserve">
+    <value>Tento zdroj umožňuje administrátorovi konfigurovat režim automatického zjišťování „V místním nasazení“ nebo „Hostováno v cloudu“ a registrovat určitou doménu pro automatické zjišťování Windows</value>
+  </data>
+  <data name="WindowsAutoEnrollmentSettings" xml:space="preserve">
+    <value>Nastavení automatické registrace Windows</value>
+  </data>
+  <data name="WindowsAutoEnrollmentSettingsHelp" xml:space="preserve">
+    <value>Tento zdroj umožňuje administrátorům konfigurovat nastavení, která bude možné použít na agentovi zajišťování, který je spuštěný na zařízení(ch) se systémem Windows. </value>
+  </data>
+  <data name="WindowsMobileDD" xml:space="preserve">
+    <value>Windows Mobile</value>
+  </data>
+  <data name="WindowsMobileDDHelp" xml:space="preserve">
+    <value>Správa specifických nastavení Windows Mobile v sekci Detaily zařízení.</value>
+  </data>
+  <data name="WindowsMobileWm" xml:space="preserve">
+    <value>Windows Mobile</value>
+  </data>
+  <data name="WindowsMobileWmHelp" xml:space="preserve">
+    <value>Řídí přístup ke stránce Windows Mobile pod menu Zařízení.</value>
+  </data>
+  <data name="WindowsPcSet" xml:space="preserve">
+    <value>Windows PC</value>
+  </data>
+  <data name="WindowsPcSetHelp" xml:space="preserve">
+    <value>Řídí přístup na stránky Windows PC v sekci zařízení.</value>
+  </data>
+  <data name="WindowsPhone8Win" xml:space="preserve">
+    <value>Windows Phone 8</value>
+  </data>
+  <data name="WindowsPhone8WinHelp" xml:space="preserve">
+    <value>Řídí přístup k nastavení Windows Phone.</value>
+  </data>
+  <data name="WindowsPhoneHealthAttestationEdit" xml:space="preserve">
+    <value>Upravit ověření stavu systému Windows Phone</value>
+  </data>
+  <data name="WindowsPhoneHealthAttestationEditHelp" xml:space="preserve">
+    <value>Tento zdroj umožňuje administrátorovi konfigurovat nastavení atestace stavu pro mobilní zařízení se systémem Windows 10</value>
+  </data>
+  <data name="WindowsPhoneWin" xml:space="preserve">
+    <value>Windows Phone</value>
+  </data>
+  <data name="WindowsPhoneWinHelp" xml:space="preserve">
+    <value>Řídí přístup na stránky Windows Phone v systémových nastaveních.</value>
+  </data>
+  <data name="WindowsRuntimeProvisioningHelp" xml:space="preserve">
+    <value>Tato nastavení umožní administrátorovi zobrazit informace o fázování, které jsou nutné k hromadnému zajišťování zařízení Windows koncovým uživatelům. To také pomůže nastavit spouštěcí informace pro všechna zařízení.</value>
+  </data>
+  <data name="WindowsSampleScheduleHelp" xml:space="preserve">
+    <value>Tato skupina nastavení umožňuje administrátorovi nastavit intervaly pro sběr vzorků dat a nastavení MDM.</value>
+  </data>
+  <data name="WinmoSWInventoryHub" xml:space="preserve">
+    <value>Zásoby WinMo S/W</value>
+  </data>
+  <data name="WinmoSWInventoryHubHelp" xml:space="preserve">
+    <value>Vytváření reportů pro inventář WinMo S/W</value>
+  </data>
+  <data name="WipeProtectionDU" xml:space="preserve">
+    <value>Ochrana před výmazem</value>
+  </data>
+  <data name="WipeProtectionDUHelp" xml:space="preserve">
+    <value>Řídí přístup ke stránce ochrany před výmazem v sekci Rozšířené.</value>
+  </data>
+  <data name="WorkflowsDD" xml:space="preserve">
+    <value>Pracovní postupy</value>
+  </data>
+  <data name="WorkflowsDDHelp" xml:space="preserve">
+    <value>Zobrazí stav provádění pracovních postupů na zařízení.</value>
+  </data>
+  <data name="WorkspaceSet" xml:space="preserve">
+    <value>Kontejner</value>
+  </data>
+  <data name="WorkspaceSetHelp" xml:space="preserve">
+    <value>Řídí přístup na stránku Container v sekci Obecné.</value>
+  </data>
+  <data name="ZonesGr" xml:space="preserve">
+    <value>Zóny</value>
+  </data>
+  <data name="ZonesGrHelp" xml:space="preserve">
+    <value>Správa místních zón organizačních skupin</value>
+  </data>
+  <data name="ZplPM" xml:space="preserve">
+    <value>ZPL</value>
+  </data>
+  <data name="ZplPMHelp" xml:space="preserve">
+    <value>Řídí přístup na stránku ZPL tiskárny.</value>
+  </data>
+</root>

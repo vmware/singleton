@@ -1,0 +1,260 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AADEnrolled" xml:space="preserve">
+    <value>Zarejestrowane w AAD</value>
+  </data>
+  <data name="AndroidAssignedSmartGroups" xml:space="preserve">
+    <value>Grupy Smart systemu Android</value>
+  </data>
+  <data name="AndroidEnterprise" xml:space="preserve">
+    <value>Android — firmy</value>
+  </data>
+  <data name="AnyBook" xml:space="preserve">
+    <value>Dowolna książka</value>
+  </data>
+  <data name="ApplicationManaged" xml:space="preserve">
+    <value>Zarządzane przez aplikację</value>
+  </data>
+  <data name="ArgNewSmartGroupDescription" xml:space="preserve">
+    <value>Wprowadź nazwę grupy Smart zarządzanej przez {0}</value>
+    <comment>Placeholder in this label key will contain the link text localized value.</comment>
+  </data>
+  <data name="AssignSmartGroup" xml:space="preserve">
+    <value>Przypisz grupę Smart</value>
+  </data>
+  <data name="CannotDeleteAssignedEntities" xml:space="preserve">
+    <value>Grup Smart nie można usunąć, jeśli są przypisane do zasad lub użyte jako wykluczenie przypisania. Przejdź do poniższej kolumny Przypisania, aby wyświetlić wszystkie powiązane zasady, które muszą być nieprzypisane w celu usunięcia grupy Smart</value>
+  </data>
+  <data name="CloudProfile" xml:space="preserve">
+    <value>Profil w chmurze</value>
+  </data>
+  <data name="DeleteFailure" xml:space="preserve">
+    <value>Usuń</value>
+  </data>
+  <data name="DeleteSmartGroup" xml:space="preserve">
+    <value>Usuń grupę Smart</value>
+  </data>
+  <data name="DepEnrolled" xml:space="preserve">
+    <value>Zarejestrowane w DEP</value>
+  </data>
+  <data name="DevicePreviewDisabled" xml:space="preserve">
+    <value>Podgląd urządzenia wyłączony</value>
+  </data>
+  <data name="DeviceSensorAttribute" xml:space="preserve">
+    <value>Atrybut czujnika urządzenia</value>
+  </data>
+  <data name="DeviceUpdate" xml:space="preserve">
+    <value>Aktualizacja urządzenia</value>
+  </data>
+  <data name="EditSmartGroupArgOpensDialog" xml:space="preserve">
+    <value>Edytowanie grupy Smart {0} otwiera okno dialogowe</value>
+  </data>
+  <data name="EduShared" xml:space="preserve">
+    <value>Tryb udostępniania EDU urządzenia iPad</value>
+  </data>
+  <data name="EnrollmentCategory" xml:space="preserve">
+    <value>Kategoria rejestracji</value>
+  </data>
+  <data name="EnrollmentCategoryToolTip" xml:space="preserve">
+    <value>Ten filtr kryteriów dotyczy tylko urządzeń z systemem Windows Android i Apple (iOS, macOS i tvOS). Nie wpłynie to na urządzenia innych platform.</value>
+  </data>
+  <data name="EntityReconcileService" xml:space="preserve">
+    <value>Usługa uzgadniania obiektu</value>
+  </data>
+  <data name="EntityType" xml:space="preserve">
+    <value>Typ obiektu</value>
+  </data>
+  <data name="ExternalApplication" xml:space="preserve">
+    <value>Aplikacja zewnętrzna</value>
+  </data>
+  <data name="ExternalBook" xml:space="preserve">
+    <value>Książka zewnętrzna</value>
+  </data>
+  <data name="IosAssignedSmartGroups" xml:space="preserve">
+    <value>Użyj grup Smart systemu iOS</value>
+  </data>
+  <data name="IsExcluded" xml:space="preserve">
+    <value>Jest wykluczone</value>
+  </data>
+  <data name="ManagementType" xml:space="preserve">
+    <value>Typ zarządzania</value>
+  </data>
+  <data name="ManagementTypeToolTip" xml:space="preserve">
+    <value>Te kryteria filtrują urządzenia według wybranego typu zarządzania. Jeśli nic nie zostanie wybrane, to kryteria filtrowania nie będą zastosowane.</value>
+  </data>
+  <data name="ModelLegacy" xml:space="preserve">
+    <value>Model (starsza wersja)</value>
+  </data>
+  <data name="ModelNotFound" xml:space="preserve">
+    <value>Nie znaleziono modelu</value>
+  </data>
+  <data name="OEMAndModel" xml:space="preserve">
+    <value>OEM i model</value>
+  </data>
+  <data name="OEMAndModelTooltip" xml:space="preserve">
+    <value>To kryterium dotyczy tylko urządzeń z systemem Windows Desktop i Android oraz filtruje urządzenia według OEM i wybranego modelu. Wyboru w rozwijanym menu modelu dokonuje się na podstawie modeli zarejestrowanych w danym środowisku. Jeśli nie zostanie dokonany żaden wybór, kryteria filtrowania nie będą stosowane.</value>
+  </data>
+  <data name="PleaseSelectAtLeastOneApplicablePlatform" xml:space="preserve">
+    <value>Proszę wybrać przynajmniej jedną odpowiednią platformę.</value>
+  </data>
+  <data name="ProductAssignment" xml:space="preserve">
+    <value>Przypisanie produktu</value>
+  </data>
+  <data name="PurchasedBook" xml:space="preserve">
+    <value>Zakupiona książka</value>
+  </data>
+  <data name="SelectManufacturer" xml:space="preserve">
+    <value>Wybierz producenta</value>
+  </data>
+  <data name="SmartgroupAssignedToWorkflow" xml:space="preserve">
+    <value>Grupa Smart została już dodana do przypisania przepływu pracy.</value>
+  </data>
+  <data name="SmartGroupDeviceMapCleanupJob" xml:space="preserve">
+    <value>Zadanie oczyszczania mapy urządzenia grupy Smart</value>
+  </data>
+  <data name="SmartGroupPrivacyDisplay" xml:space="preserve">
+    <value>Niektóre dziedziczone grupy przypisania mogą nie być wyświetlane ze względu na ustawienia prywatności.</value>
+  </data>
+  <data name="SmartGroupsCount" xml:space="preserve">
+    <value>Liczba grup Smart</value>
+  </data>
+  <data name="SwitchBetweenCriteria" xml:space="preserve">
+    <value>Ostrzeżenie: w przypadku zmiany kryteriów na Urządzenie/Użytkownik utracisz wszystkie kryteria wyboru użyte do wygenerowania listy urządzeń na bieżącej stronie oraz wszelkie zasady i aplikacje, które są przypisane do tych urządzeń. Przełączenie z powrotem nie spowoduje ponownego wypełnienia kryteriów wyboru. Czy na pewno chcesz kontynuować?</value>
+  </data>
+  <data name="SwitchFromDevicesToCriteria" xml:space="preserve">
+    <value>OSTRZEŻENIE: w przypadku zmiany z Urządzenia/Użytkownik na wybór kryteriów utracisz wszystkie kryteria wyboru użyte do wygenerowania listy urządzeń na bieżącej stronie oraz wszelkie zasady i aplikacje, które są przypisane do tych urządzeń. Przełączenie z powrotem nie spowoduje ponownego wypełnienia kryteriów wyboru. Czy na pewno chcesz kontynuować?</value>
+  </data>
+  <data name="TypeToSearchModel" xml:space="preserve">
+    <value>Wpisz, aby wyszukać model</value>
+  </data>
+  <data name="UserApprovedMdmEnrolled" xml:space="preserve">
+    <value>Zarejestrowano MDM zatwierdzone przez użytkownika</value>
+  </data>
+  <data name="ViewAssignmentForSmartGroupArgOpensDialog" xml:space="preserve">
+    <value>Wyświetlenie przypisania dla grupy Smart o nazwie {0} otwiera okno dialogowe</value>
+    <comment>The placeholder in this label key will contain smart group name.</comment>
+  </data>
+  <data name="WhomDoYouAssign" xml:space="preserve">
+    <value>Do kogo chcesz przypisać tę aplikację?</value>
+  </data>
+  <data name="WindowsAssignedSmartGroups" xml:space="preserve">
+    <value>Grupy Smart systemu Windows</value>
+  </data>
+</root>

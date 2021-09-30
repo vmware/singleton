@@ -1,0 +1,584 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AMAPIEnrollmentFeatureNotSupported" xml:space="preserve">
+    <value>De inschrijvingsfunctie van de Android Management API wordt niet ondersteund voor uw organisatie. Neem contact op met uw beheerder.</value>
+  </data>
+  <data name="AMAPIEnrollmentNotAllowed" xml:space="preserve">
+    <value>De Android Management API-instellingen zijn niet ingeschakeld voor de organisatie van het toestel</value>
+  </data>
+  <data name="AMAPIRegistration" xml:space="preserve">
+    <value>Android Management API-registratie</value>
+  </data>
+  <data name="AndroidEnterpriseNotAllowed" xml:space="preserve">
+    <value>Android Enterprise-inschrijving is niet toegestaan voor het toestel.</value>
+  </data>
+  <data name="AndroidEnterpriseNotFound" xml:space="preserve">
+    <value>Android Enterprise-instellingen zijn niet ingeschakeld voor de organisatie van het toestel</value>
+  </data>
+  <data name="AndroidLegacyEnrollmentNotAllowed" xml:space="preserve">
+    <value>Android Legacy-inschrijving is niet toegestaan in de modus Toesteleigenaar.</value>
+  </data>
+  <data name="AndroidManagementAPI" xml:space="preserve">
+    <value>Android Management API</value>
+  </data>
+  <data name="AndroidWorkEnrollmentUserAddError" xml:space="preserve">
+    <value>Inschrijvingsgebruiker kan niet worden toegevoegd aan GSuite. Neem contact op met uw beheerder of probeer het opnieuw.</value>
+  </data>
+  <data name="AndroidWorkEnrollmentUserEmailNotFound" xml:space="preserve">
+    <value>Uw account is niet gevonden, neem contact op met uw beheerder of probeer het opnieuw.</value>
+  </data>
+  <data name="AndroidWorkEnrollmentUserNotFound" xml:space="preserve">
+    <value>Dit is een ongeldig Google-account.</value>
+  </data>
+  <data name="AndroidWorkProfileEnrollmentNotAllowed" xml:space="preserve">
+    <value>De opgegeven server-en groep-ID staat de inschrijving van het Work-profiel niet toe. Neem contact op met uw beheerder als u vragen hebt.</value>
+  </data>
+  <data name="AndroidWorkUserEmailDomainNotASubDomain" xml:space="preserve">
+    <value>Het domein dat wordt gebruikt is geen geregistreerd subdomein. Neem contact op met uw beheerder.</value>
+  </data>
+  <data name="ApplicationIsNotAllowedToRegister" xml:space="preserve">
+    <value>Applicatie mag niet worden geregistreerd.</value>
+  </data>
+  <data name="AssignUserRole" xml:space="preserve">
+    <value>Gebruikersrol toewijzen</value>
+  </data>
+  <data name="AutoEnrollmentDisabled" xml:space="preserve">
+    <value>Automatische inschrijving is niet ingeschakeld voor de opgegeven organisatiegroep. Neem contact op met uw beheerder of probeer het opnieuw.</value>
+  </data>
+  <data name="CannotChangeOGForDEPTokenArg" xml:space="preserve">
+    <value>Kan organisatie groep voor DEP-token {0} niet wijzigen</value>
+  </data>
+  <data name="CannotUseStagingUserForCustomDep" xml:space="preserve">
+    <value>Staging-gebruikers worden niet ondersteund. Neem contact op met uw beheerder.</value>
+  </data>
+  <data name="CaptchaText" xml:space="preserve">
+    <value>Captcha</value>
+  </data>
+  <data name="ChangeRankOrOrganizationGroup" xml:space="preserve">
+    <value>De rang of de organisatiegroep wijzigen</value>
+  </data>
+  <data name="ChangeRankOrOrganizationGroupForUserGroup" xml:space="preserve">
+    <value>De rang of de organisatiegroep voor een gebruikersgroep wijzigen</value>
+  </data>
+  <data name="ChangeRankOrUserRole" xml:space="preserve">
+    <value>De rang of de gebruikersrol wijzigen</value>
+  </data>
+  <data name="ChangeRankOrUserRoleForUserGroup" xml:space="preserve">
+    <value>De rang of de gebruikersrol voor een gebruikersgroep wijzigen</value>
+  </data>
+  <data name="ChangeUserRoleAssignmentRankUsingEdit" xml:space="preserve">
+    <value>Klik op de knop Bewerken naast een bestand om de rangvolgorde of de gebruikersrol voor een gebruikersgroep te wijzigen</value>
+  </data>
+  <data name="ConfirmEnterpriseWipeDeviceTitleMessage" xml:space="preserve">
+    <value>Met deze actie schrijft u alle beheerde zakelijke resources uit en verwijdert u die van het geselecteerde toestel (inclusief applicaties en profielen). U kunt deze actie niet ongedaan maken zonder dit toestel opnieuw in te schrijven.</value>
+  </data>
+  <data name="CopeEnrollmentNotSupported" xml:space="preserve">
+    <value>Inschrijving geblokkeerd vanwege niet-ondersteunde Workspace ONE Intelligent Hub-versie</value>
+  </data>
+  <data name="CopyEMMToken" xml:space="preserve">
+    <value>3. Kopieer het gegeven EMM-token om in de volgende stap te gebruiken.</value>
+  </data>
+  <data name="CustomEnrollmentFeatureNotEnabled" xml:space="preserve">
+    <value>Aangepaste inschrijving is uitgeschakeld voor uw organisatie. Neem contact op met uw beheerder om het inschrijvingsprofiel van dit apparaat opnieuw op te slaan en probeer opnieuw in te schrijven.</value>
+  </data>
+  <data name="DefaultActionForInactiveUsersChanged" xml:space="preserve">
+    <value>Standaardactie voor inactieve gebruikers is gewijzigd</value>
+  </data>
+  <data name="DefaultDeviceOwnershipChanged" xml:space="preserve">
+    <value>Standaard eigendomstype van toestel is gewijzigd</value>
+  </data>
+  <data name="DefaultDeviceUserRoleChanged" xml:space="preserve">
+    <value>Standaard gebruikersrol van toestel is gewijzigd</value>
+  </data>
+  <data name="DeleteDeviceCountMessage" xml:space="preserve">
+    <value>Aantal toestellen dat permanent wordt verwijderd:</value>
+  </data>
+  <data name="DepFetchInfoMessage" xml:space="preserve">
+    <value>Met de optie Haal alle toestellen op worden alle apparaten die aan dit token zijn toegewezen in Apple Business Manager, gesynchroniseerd met de UEM console, inclusief de apparaten die al zijn gesynchroniseerd. Deze optie mag alleen worden gebruikt als laatste alternatief om al uw apparaten volledig te vernieuwen en opnieuw te synchroniseren vanuit Apple Business Manager.</value>
+  </data>
+  <data name="DepFetchInfoMessageSchool" xml:space="preserve">
+    <value>Met de optie Haal alle toestellen op worden alle apparaten die aan dit token zijn toegewezen in Apple School Manager, gesynchroniseerd met de UEM console, inclusief de apparaten die al zijn gesynchroniseerd. Deze optie mag alleen worden gebruikt als laatste alternatief om al uw apparaten volledig te vernieuwen en opnieuw te synchroniseren vanuit Apple School Manager.</value>
+  </data>
+  <data name="DEPTokenArgCannotBeDeleted" xml:space="preserve">
+    <value>DEP-token {0} kan niet worden verwijderd</value>
+  </data>
+  <data name="DEPTokenArgCannotBeRevoked" xml:space="preserve">
+    <value>DEP-token {0} kan niet worden ingetrokken</value>
+  </data>
+  <data name="DeviceEnrolledArg" xml:space="preserve">
+    <value>Toestel uitgeschreven # {0}</value>
+  </data>
+  <data name="DeviceMacAddressDenylisted" xml:space="preserve">
+    <value>Het toestel kan niet worden ingeschreven, omdat het MAC-adres van het toestel geweigerd is.</value>
+  </data>
+  <data name="DeviceManagementRemoved" xml:space="preserve">
+    <value>Toestelbeheer is verwijderd door de Workspace ONE UEM-beheerder</value>
+  </data>
+  <data name="DeviceNotAllowlisted" xml:space="preserve">
+    <value>Type toestelmodel niet toegestaan en/of besturingssysteem van toestel niet toegestaan.</value>
+  </data>
+  <data name="DeviceNotAllowlistedManufacturererNotAllowed" xml:space="preserve">
+    <value>Toestel is niet toegestaan en/of fabrikant is niet toegestaan.</value>
+  </data>
+  <data name="DeviceNotAllowlistedModelNotAllowed" xml:space="preserve">
+    <value>Type toestelmodel niet toegestaan.</value>
+  </data>
+  <data name="DeviceNotEnrolled" xml:space="preserve">
+    <value>Toestel is niet ingeschreven</value>
+  </data>
+  <data name="DeviceNotRegistered" xml:space="preserve">
+    <value>Toestel is niet geregistreerd. Ongeldig modeltype en/of besturingssysteem</value>
+  </data>
+  <data name="DeviceSNArgNotExistsForArgToken" xml:space="preserve">
+    <value>Serienummer {0} van toestel bestaat niet voor {1}-token</value>
+  </data>
+  <data name="DeviceStateIsAndroidEnterprise" xml:space="preserve">
+    <value>Toestel is al ingeschreven in Android Enterprise</value>
+  </data>
+  <data name="DeviceUserNotFound" xml:space="preserve">
+    <value>Inschrijvingsgebruiker niet gevonden voor het toestel</value>
+  </data>
+  <data name="DirectoryGroupBasedMappingChanged" xml:space="preserve">
+    <value>De instelling Mapping op basis van directory-groep inschakelen is gewijzigd</value>
+  </data>
+  <data name="DropshipProvisioning" xml:space="preserve">
+    <value>Drop Ship Provisioning</value>
+  </data>
+  <data name="EMMToken" xml:space="preserve">
+    <value>EMM-token</value>
+  </data>
+  <data name="EmptyDeviceIdentifierPleaseTryAgain" xml:space="preserve">
+    <value>De UDID van het toestel is niet aanwezig in de inschrijvingsaanvraag. Neem contact op met uw beheerder of probeer het opnieuw.</value>
+  </data>
+  <data name="EmptyPasswordPleaseTryAgain" xml:space="preserve">
+    <value>Het wachtwoord is niet aanwezig in de inschrijvingsaanvraag. Neem contact op met uw beheerder of probeer het opnieuw.</value>
+  </data>
+  <data name="EmptyUserNameOrEmailAddressPleaseTryAgain" xml:space="preserve">
+    <value>De gebruikersnaam of het e-mailadres is niet aanwezig in de inschrijvingsaanvraag. Neem contact op met uw beheerder of probeer het opnieuw.</value>
+  </data>
+  <data name="EnableDropShipProvisioning" xml:space="preserve">
+    <value>Workspace ONE-provisioning voor doorverzending inschakelen</value>
+  </data>
+  <data name="EnrollmentDisabled" xml:space="preserve">
+    <value>Inschrijving is uitgeschakeld omdat de MDM-order niet kan worden gevonden in de SKU.</value>
+  </data>
+  <data name="EnrollmentSecurityTypeNotSupported" xml:space="preserve">
+    <value>Poging tot inschrijving met een niet-ondersteund beveiligingstype. Neem contact op met uw beheerder of probeer het opnieuw.</value>
+  </data>
+  <data name="EnrollmentTypeCriteriaMustContainOneEnrollmentType" xml:space="preserve">
+    <value>Criteria voor eigendomstype moeten ten minste één eigendomstype bevatten</value>
+  </data>
+  <data name="EnrollmentUserNotFound" xml:space="preserve">
+    <value>Inschrijvingsgebruiker is niet gevonden. Geef een bestaande gebruiker op.</value>
+  </data>
+  <data name="EnrollmentWelcomeMessageBody" xml:space="preserve">
+    <value>Workspace ONE UEM helpt uw IT-afdeling om uw toestel te voorzien van een veilige toegang tot resources. Het volgende stapsgewijze proces zal u begeleiden bij het configureren van uw toestel en ervoor zorgen dat het conform de netwerkregels is.</value>
+  </data>
+  <data name="EnrollmentWelcomeMessageHeader" xml:space="preserve">
+    <value>Welkom bij Workspace ONE UEM!</value>
+  </data>
+  <data name="EnterpriseWipeDeviceCountMessage" xml:space="preserve">
+    <value>{0} toestel(en)</value>
+  </data>
+  <data name="EnterpriseWipeDeviceCountTitle" xml:space="preserve">
+    <value>Aantal toestellen waarop bedrijfsgegevens permanent worden gewist:</value>
+  </data>
+  <data name="ErrorAddingUserAccount" xml:space="preserve">
+    <value>Fout bij het automatisch toevoegen van een gebruikersaccount. Neem contact op met uw beheerder of probeer het opnieuw.</value>
+  </data>
+  <data name="ErrorThrownWhenResolvingDeviceIdentifier" xml:space="preserve">
+    <value>Er is een fout opgetreden tijdens het omzetten van de toestel-ID</value>
+  </data>
+  <data name="ExistingClientIDDontMatch" xml:space="preserve">
+    <value>Kan wijzigingen niet opslaan omdat tekstvelden moeten overeenkomen met bestaande registratiewaarden. Alleen het certificaat kan worden bewerkt.</value>
+  </data>
+  <data name="ExternalAccessRole" xml:space="preserve">
+    <value>Externe toegangsrol</value>
+  </data>
+  <data name="FailedToCreateAgentInstallUrl" xml:space="preserve">
+    <value>Installatie-URL van agent kan niet worden gemaakt. Neem contact op met uw beheerder of probeer het opnieuw.</value>
+  </data>
+  <data name="FailedToCreateDeviceAuthenticationToken" xml:space="preserve">
+    <value>Verificatietoken van het toestel kan niet worden gemaakt. Neem contact op met uw beheerder of probeer het opnieuw.</value>
+  </data>
+  <data name="FailedToDisplayAgentAppStoreLink" xml:space="preserve">
+    <value>Koppeling naar Agent App Store kan niet worden weergegeven. Neem contact op met uw beheerder of probeer het opnieuw.</value>
+  </data>
+  <data name="FailedToDisplayWelcomeMessage" xml:space="preserve">
+    <value>Het welkomstbericht kan niet worden weergegeven. Neem contact op met uw beheerder of probeer het opnieuw.</value>
+  </data>
+  <data name="FailedToProcessDisplayMdmInstallationMessage" xml:space="preserve">
+    <value>Het MDM-installatiebericht kan niet worden weergegeven. Neem contact op met uw beheerder of probeer het opnieuw.</value>
+  </data>
+  <data name="FailedToRedirectToAgentInstallUrl" xml:space="preserve">
+    <value>Kan niet doorverwijzen naar de installatie-URL van de agent. Neem contact op met uw beheerder of probeer het opnieuw.</value>
+  </data>
+  <data name="FailedToRedirectToMdmInstallUrl" xml:space="preserve">
+    <value>Kan niet omleiden naar de installatie-URL van MDM. Neem contact op met uw beheerder of probeer het opnieuw.</value>
+  </data>
+  <data name="FailedToRedirectToWorkspaceSchema" xml:space="preserve">
+    <value>Kan niet omleiden naar het Workspace-schema. Neem contact op met uw beheerder of probeer het opnieuw.</value>
+  </data>
+  <data name="FailedToRegisterApplication" xml:space="preserve">
+    <value>De applicatie kan niet worden geregistreerd. Neem contact op met uw beheerder of probeer het opnieuw.</value>
+  </data>
+  <data name="FailedToRetrieveNextStep" xml:space="preserve">
+    <value>De volgende inschrijvingsstap kan niet worden opgehaald. Neem contact op met uw beheerder of probeer het opnieuw.</value>
+  </data>
+  <data name="FailedToRetrieveSessionId" xml:space="preserve">
+    <value>De sessie-ID van de toestelinschrijving kan niet worden opgehaald. Neem contact op met uw beheerder of probeer het opnieuw.</value>
+  </data>
+  <data name="FailedToValidateDeviceRestrictions" xml:space="preserve">
+    <value>Inschrijvingsbeperkingen van het toestel kunnen niet worden gevalideerd. Neem contact op met uw beheerder of probeer het opnieuw.</value>
+  </data>
+  <data name="FailedToValidateEmailAddress" xml:space="preserve">
+    <value>Het e-mailadres van de inschrijvingsgebruiker kan niet worden gevalideerd. Neem contact op met uw beheerder of probeer het opnieuw.</value>
+  </data>
+  <data name="FailedValidatingDeviceIdentifier" xml:space="preserve">
+    <value>De UDID van het toestel kan niet worden gevalideerd. Neem contact op met uw beheerder of probeer het opnieuw.</value>
+  </data>
+  <data name="FailedValidatingStagingMode" xml:space="preserve">
+    <value>De modus voor voorbereide inrichting kan niet worden gevalideerd. Neem contact op met uw beheerder of probeer het opnieuw.</value>
+  </data>
+  <data name="FieldMustBeOfArgCharacters" xml:space="preserve">
+    <value>Veld moet van {0} teken(s) zijn.</value>
+  </data>
+  <data name="FollowingTokensOwnershipWillNotChange" xml:space="preserve">
+    <value>Het eigendom van de volgende tokens wordt niet gewijzigd</value>
+  </data>
+  <data name="ForceAospEnrollment" xml:space="preserve">
+    <value>AOSP/gesloten netwerkinschrijving afdwingen</value>
+  </data>
+  <data name="GeneralCheckIn" xml:space="preserve">
+    <value>Inchecken</value>
+  </data>
+  <data name="GetStarted:" xml:space="preserve">
+    <value>Aan de slag:</value>
+  </data>
+  <data name="GetSuccessfully" xml:space="preserve">
+    <value>MDM-server-URL is opgehaald</value>
+  </data>
+  <data name="GoogleAdminConsole" xml:space="preserve">
+    <value>Google Beheerdersconsole.</value>
+  </data>
+  <data name="GoogleDeviceIdRequired" xml:space="preserve">
+    <value>De Google-toestel-ID is vereist.</value>
+  </data>
+  <data name="GoogleUserIdRequired" xml:space="preserve">
+    <value>De Google-gebruikers-ID is vereist.</value>
+  </data>
+  <data name="GoToThe" xml:space="preserve">
+    <value>1. Ga naar de </value>
+  </data>
+  <data name="GroupIdAssignmentModeChanged" xml:space="preserve">
+    <value>Toewijzing groeps-ID-modus is gewijzigd</value>
+  </data>
+  <data name="HubRegistered" xml:space="preserve">
+    <value>Hub geregistreerd</value>
+  </data>
+  <data name="IntelligentHubManaged" xml:space="preserve">
+    <value>Beheerd door Intelligent Hub</value>
+  </data>
+  <data name="InvalidDeviceAttributes" xml:space="preserve">
+    <value>Voer een van de volgende apparaatkenmerken in: serienummer / IMEI / UDID</value>
+  </data>
+  <data name="InvalidDeviceModel" xml:space="preserve">
+    <value>Toestel is niet geregistreerd. Ongeldig modeltype</value>
+  </data>
+  <data name="InvalidDeviceOS" xml:space="preserve">
+    <value>Toestel is niet geregistreerd. Ongeldig besturingssysteem</value>
+  </data>
+  <data name="InvalidDeviceType" xml:space="preserve">
+    <value>Ongeldig type toestel</value>
+  </data>
+  <data name="InvalidHeaderUsedInTemplate" xml:space="preserve">
+    <value>Ongeldige koptekst gebruikt in de sjabloon. Download en gebruik de sjabloon in het venster Toewijzing bewerken.</value>
+  </data>
+  <data name="InvalidImeiAttributeArgs" xml:space="preserve">
+    <value>IMEI moet numeriek zijn en exact 15 tekens lang zijn.</value>
+  </data>
+  <data name="InvalidMigrationRequest" xml:space="preserve">
+    <value>Toestel-UDID is leeg</value>
+  </data>
+  <data name="InvalidOrganizationGroupFromVidm" xml:space="preserve">
+    <value>De inschrijvingsgebruiker bevindt zich niet in de opgegeven Workspace ONE Access-organisatiegroep.</value>
+  </data>
+  <data name="InvalidSerialNumberAttributeArgs" xml:space="preserve">
+    <value>Lengte van serienummer moet kleiner zijn dan {0} tekens.</value>
+  </data>
+  <data name="InvalidSerialNumberValuesFoundArgs" xml:space="preserve">
+    <value>De lengte van elk serienummer moet minder zijn dan {0}</value>
+  </data>
+  <data name="InvalidTokenDetails" xml:space="preserve">
+    <value>Verificatie is mislukt vanwege ongeldige tokengegevens.</value>
+  </data>
+  <data name="InvalidUdidAttributeArgs" xml:space="preserve">
+    <value>Lengte van UDID moet kleiner zijn dan {0} tekens.</value>
+  </data>
+  <data name="InvalidUDIDValuesFoundArgs" xml:space="preserve">
+    <value>De lengte van elke UDID moet minder zijn dan {0}.</value>
+  </data>
+  <data name="IosProfileDownloadHeaderTitle" xml:space="preserve">
+    <value>Stappen voor het downloaden van het profiel</value>
+  </data>
+  <data name="IosProfileDownloadSteps" xml:space="preserve">
+    <value>1. Wanneer u wordt gevraagd het profiel te downloaden, tikt u op {0}
+
+2. Wanneer het downloaden is voltooid, tikt u op {1}</value>
+  </data>
+  <data name="LaforgeUserCreationFailed" xml:space="preserve">
+    <value>Android Enterprise-gebruiker aanmaken is mislukt</value>
+  </data>
+  <data name="LinkToConfigurationTab" xml:space="preserve">
+    <value>Koppelen aan Configuratie-tabblad</value>
+  </data>
+  <data name="MigrationFeatureDisabled" xml:space="preserve">
+    <value>De Android Enterprise-migratiefunctie wordt niet ondersteund voor uw organisatie. Neem contact op met uw beheerder.</value>
+  </data>
+  <data name="MoveDevicesToUserOrOGBAsedOnIPOrCA" xml:space="preserve">
+    <value>Wijs toestellen toe aan een gebruiker of organisatiegroep op basis van een toewijzing van IP-bereik of wijs toestellen toe aan een organisatiegroep op basis van regels voor aangepaste kenmerken. De toewijzingsregels voor toestellen kunnen niet worden ingeschakeld als Organisatiegroep per IP-bereik of Organisatiegroep per aangepast kenmerk is geselecteerd voor een of meer organisatiegroepen in de hiërarchie. U kunt de toewijzingsregels voor toestellen echter inschakelen als de gebruikersnaam per IP-bereiktype is geselecteerd in de hiërarchie.</value>
+  </data>
+  <data name="MultiuserFFSetup" xml:space="preserve">
+    <value>Inschrijving voor meerdere gebruikers geblokkeerd omdat de functie niet goed is ingesteld.</value>
+  </data>
+  <data name="MultiuserNonMdmSupport" xml:space="preserve">
+    <value>Inschrijving voor meerdere gebruikers wordt niet ondersteund voor het gebruikte inschrijvingsprotocol.</value>
+  </data>
+  <data name="NoMDMOrderFound" xml:space="preserve">
+    <value>Inschrijving is opgeschort omdat de MDM-order niet kan worden gevonden in de SKU.</value>
+  </data>
+  <data name="NotAuthorizedToCreateEnrollmentUser" xml:space="preserve">
+    <value>Gebruiker is niet gemachtigd om inschrijvingsgebruiker te maken.</value>
+  </data>
+  <data name="OperationNotAuthorized" xml:space="preserve">
+    <value>Niet gemachtigd om deze bewerking uit te voeren</value>
+  </data>
+  <data name="OrganizationGroupInherited" xml:space="preserve">
+    <value>Organisatiegroep overgenomen</value>
+  </data>
+  <data name="PasscodeExpired" xml:space="preserve">
+    <value>De toegangscode is verlopen</value>
+  </data>
+  <data name="PhoneNumberPrivacyCheck" xml:space="preserve">
+    <value>Privacycontrole voor telefoonnummer</value>
+  </data>
+  <data name="PreventReEnrollmentMessage" xml:space="preserve">
+    <value>Als u het selectievakje Herinschrijving voorkomen selecteert, wordt het toestel op een weigeringslijst geplaatst en kan de gebruiker het niet opnieuw inschrijven in Workspace ONE UEM. Een beheerder kan dit toestel op een later tijdstip verwijderen van de weigeringslijst, indien nodig.</value>
+  </data>
+  <data name="PrivacyNotificationDisabled" xml:space="preserve">
+    <value>Gebruiksvriendelijke privacy-melding is uitgeschakeld</value>
+  </data>
+  <data name="PromptToBeginDownloadMessageForAppleOsX" xml:space="preserve">
+    <value>De Intelligent Hub wordt automatisch gedownload en geïnstalleerd op uw computer. Afhankelijk van uw netwerkverbinding duurt dit ongeveer 1-5 minuten. Tik op Doorgaan zodra de Agent is geïnstalleerd om het inschrijvingsproces te voltooien.</value>
+  </data>
+  <data name="RegisterAMAPI" xml:space="preserve">
+    <value>Registreer AMAPI. {0}</value>
+  </data>
+  <data name="RegisterAMAPIAtParentOG" xml:space="preserve">
+    <value>Registreer AMAPI bij de organisatiegroep waar de Android EMM-registratie is geconfigureerd. {0}</value>
+  </data>
+  <data name="RegisterAMAPIHelpText" xml:space="preserve">
+    <value>De Android Management API (AMAPI)-registratie is vereist voordat deze kan worden gebruikt voor deze organisatiegroep.</value>
+  </data>
+  <data name="RegisteredOrAppEnrolled" xml:space="preserve">
+    <value>Geregistreerde of zelfstandige app ingeschreven</value>
+  </data>
+  <data name="RegisterManagedDomain" xml:space="preserve">
+    <value>2. Registreer een beheerd Google-domein als er nog geen bestaat.</value>
+  </data>
+  <data name="RegisterMultiuserDeviceConfirmationMessage" xml:space="preserve">
+    <value>Gebruikersinformatie die aan de toestelregistratie is gekoppeld wordt verwijderd voor Windows-toestellen.</value>
+  </data>
+  <data name="Requirements" xml:space="preserve">
+    <value>Vereisten</value>
+  </data>
+  <data name="RequireSharedDeviceEnrollmentEulaAcceptance" xml:space="preserve">
+    <value>Altijd vragen om Gebruikersovereenkomst kan niet worden ingeschakeld totdat de Gebruikersovereenkomst voor de inschrijving is gemaakt. Ga naar Groepen en instellingen &gt; Toestellen en gebruikers &gt; Algemeen &gt; Inschrijving &gt; tabblad Gebruikersovereenkomst om een gebruikersovereenkomst te maken.</value>
+  </data>
+  <data name="SerialNumberAssignmentFailed" xml:space="preserve">
+    <value>Toewijzing serienummer is mislukt.</value>
+  </data>
+  <data name="SetUpDirectoryServices" xml:space="preserve">
+    <value>Directory Services instellen</value>
+  </data>
+  <data name="SubOrganizationGroup" xml:space="preserve">
+    <value>Suborganisatiegroep </value>
+  </data>
+  <data name="SubsequentUserEnrollmentBlocked" xml:space="preserve">
+    <value>De volgende gebruikersinschrijving is geblokkeerd.</value>
+  </data>
+  <data name="TapHereIfNotPromptedAutomatically" xml:space="preserve">
+    <value>Tik hier als de prompt niet automatisch verschijnt.</value>
+  </data>
+  <data name="TapHereWhenDownloadFinishes" xml:space="preserve">
+    <value>Tik hier als het downloaden is voltooid</value>
+  </data>
+  <data name="TargetOwnershipRestrictedByDefaultPolicyAtGivenOG" xml:space="preserve">
+    <value>Eigendom van doel wordt beperkt door het standaardbeleid voor de opgegeven organisatiegroep</value>
+  </data>
+  <data name="TokenSaveFailed" xml:space="preserve">
+    <value>Opslaan van token is mislukt.</value>
+  </data>
+  <data name="UemManaged" xml:space="preserve">
+    <value>UEM beheerd</value>
+  </data>
+  <data name="UnapprovedUser" xml:space="preserve">
+    <value>De gebruiker is een externe SAML-geverifieerde gebruiker en mag niet worden ingeschreven. Neem contact op met uw beheerder of probeer het opnieuw.</value>
+  </data>
+  <data name="UploadedCertMisMatch" xml:space="preserve">
+    <value>Certificaat ontbreekt. Upload een geldig certificaat om door te gaan.</value>
+  </data>
+  <data name="UserEnrolled" xml:space="preserve">
+    <value>Gebruiker ingeschreven</value>
+  </data>
+  <data name="UserEnrollmentFeatureNotEnabled" xml:space="preserve">
+    <value>Gebruikersinschrijving is uitgeschakeld voor uw organisatie. Neem contact op met uw beheerder om gebruikersinschrijving in te schakelen en probeer het opnieuw.</value>
+  </data>
+  <data name="UserHasExceededMaxAllowedDevices" xml:space="preserve">
+    <value>De gebruiker heeft het maximaal aantal toegestane toestellen overschreden.</value>
+  </data>
+  <data name="UsernameAlreadyExists" xml:space="preserve">
+    <value>Gebruikersnaam bestaat al voor een andere gebruiker. Probeer het opnieuw.</value>
+  </data>
+  <data name="UserSetup" xml:space="preserve">
+    <value>Gebruikersconfiguratie</value>
+  </data>
+  <data name="ValidatePhoneNumberFailed" xml:space="preserve">
+    <value>Het telefoonnummer van de inschrijvingsgebruiker kan niet worden gevalideerd. Neem contact op met uw beheerder of probeer het opnieuw.</value>
+  </data>
+  <data name="WipeInitiated" xml:space="preserve">
+    <value>Wissen geïnitieerd</value>
+  </data>
+  <data name="WipeInitiatedTooltip" xml:space="preserve">
+    <value>Wissen is geïnitieerd</value>
+  </data>
+  <data name="WorkProfileManagementMode" xml:space="preserve">
+    <value>Modus Werkprofielbeheer</value>
+  </data>
+  <data name="WorkProfileManagementModeInfoMessage" xml:space="preserve">
+    <value>Hiermee geeft u op of nieuw ingeschreven apparaten worden beheerd door Intelligent Hub of Android Management API. AMAPI wordt aanbevolen. Intelligent Hub is nog steeds aanwezig op het apparaat, maar beheermogelijkheden worden gedelegeerd aan het systeemeigen Android-besturingssysteem. Bestaande ingeschreven apparaten worden niet beïnvloed.</value>
+  </data>
+  <data name="WorkProfileManagementModeToggleSuccessfulMessage" xml:space="preserve">
+    <value>De registratie is gelukt. De beheermodus is gewijzigd in Android Management API. Zie Inschrijvingsinstellingen om de geconfigureerde beheermodus te bekijken of te wijzigen.</value>
+  </data>
+  <data name="Ws1RealTimeUserGroupSyncChanged" xml:space="preserve">
+    <value>De real-time gebruikersgroepsynchronisatie-instelling van Workspace ONE is gewijzigd</value>
+  </data>
+</root>

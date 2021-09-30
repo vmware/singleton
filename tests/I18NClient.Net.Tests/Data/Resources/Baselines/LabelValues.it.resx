@@ -1,0 +1,486 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AddedPolices" xml:space="preserve">
+    <value>Criteri aggiunti</value>
+  </data>
+  <data name="AssignBaseline" xml:space="preserve">
+    <value>Assegna base di confronto</value>
+  </data>
+  <data name="AssignBaselineDescription" xml:space="preserve">
+    <value>Selezionare i gruppi smart per assegnare la base di confronto</value>
+  </data>
+  <data name="AssignBaselineDescription2" xml:space="preserve">
+    <value>Selezionare i gruppi smart per assegnare la base di confronto. Selezionare Esclusioni per escludere gruppi specifici. Se si aggiunge un'esclusione a una base di confronto pubblicata, questa verrà rimossa dai dispositivi esclusi.</value>
+  </data>
+  <data name="AssignBaselineLocationGroupNotFound" xml:space="preserve">
+    <value>Impossibile assegnare la base di confronto poiché il gruppo non è stato trovato.</value>
+  </data>
+  <data name="AssignBaselineNotFound" xml:space="preserve">
+    <value>Impossibile assegnare la base di confronto poiché la base di confronto non è stata trovata.</value>
+  </data>
+  <data name="AssignedDevicesArg" xml:space="preserve">
+    <value>Assegnati: {0} dispositivi</value>
+  </data>
+  <data name="Assignments" xml:space="preserve">
+    <value>Assegnazioni</value>
+  </data>
+  <data name="Baseline" xml:space="preserve">
+    <value>Base di confronto</value>
+  </data>
+  <data name="BaselineAssigned" xml:space="preserve">
+    <value>Linea di base assegnata</value>
+  </data>
+  <data name="BaselineAssignmentFailed" xml:space="preserve">
+    <value>Impossibile assegnare la base di confronto. Riprovare.</value>
+  </data>
+  <data name="BaselineAssignmentSuccessful" xml:space="preserve">
+    <value>Base di confronto pubblicata correttamente per l'assegnazione aggiornata.</value>
+  </data>
+  <data name="BaselineBlobFailed" xml:space="preserve">
+    <value>Creazione di una base di confronto non riuscita perché non è stato possibile creare il pacchetto.</value>
+  </data>
+  <data name="BaselineCombinedBlobFailed" xml:space="preserve">
+    <value>Creazione di una base di confronto non riuscita perché non è stato possibile creare il pacchetto contenente le personalizzazioni.</value>
+  </data>
+  <data name="BaselineContainsExe" xml:space="preserve">
+    <value>La base di confronto personalizzata contiene file eseguibili. Rimuovili e prova di nuovo.</value>
+  </data>
+  <data name="BaselineCopyFailed" xml:space="preserve">
+    <value>Impossibile copiare la base di confronto selezionata.</value>
+  </data>
+  <data name="BaselineCopySuccessful" xml:space="preserve">
+    <value>La base di confronto selezionata è stata copiata correttamente.</value>
+  </data>
+  <data name="BaselineCreated" xml:space="preserve">
+    <value>Linea di base creata</value>
+  </data>
+  <data name="BaselineCreationFailed" xml:space="preserve">
+    <value>Creazione della base di confronto non riuscita.</value>
+  </data>
+  <data name="BaselineCreationSuccessful" xml:space="preserve">
+    <value>Base di confronto salvata.</value>
+  </data>
+  <data name="BaselineCustomizationFailed" xml:space="preserve">
+    <value>Non è stato possibile creare una base di confronto perché le personalizzazioni sono state applicate.</value>
+  </data>
+  <data name="BaselineDeleted" xml:space="preserve">
+    <value>Linea di base eliminata</value>
+  </data>
+  <data name="BaselineDeleteFailed" xml:space="preserve">
+    <value>Impossibile eliminare la base di confronto. Riprova.</value>
+  </data>
+  <data name="BaselineDeleteSuccessful" xml:space="preserve">
+    <value>Base di confronto eliminata.</value>
+  </data>
+  <data name="BaselineDetails" xml:space="preserve">
+    <value>Nome e versione della base di confronto</value>
+  </data>
+  <data name="BaselineErrorCode" xml:space="preserve">
+    <value>Codice di errore dispositivo</value>
+  </data>
+  <data name="BaselineErrorMessage" xml:space="preserve">
+    <value>Messaggio di errore</value>
+  </data>
+  <data name="BaselineFileCorrupt" xml:space="preserve">
+    <value>La base di confronto personalizzata non è un file zip valido.</value>
+  </data>
+  <data name="BaselineFileEmpty" xml:space="preserve">
+    <value>La base di confronto sembra vuota. Riprova con un file valido.</value>
+  </data>
+  <data name="BaselineFileMissingPolicies" xml:space="preserve">
+    <value>Il file selezionato per la base di confronto personalizzata non è conforme alle specifiche consigliate. Consulta la documentazione per rivederlo.</value>
+  </data>
+  <data name="BaselineFileSizeError" xml:space="preserve">
+    <value>La base di confronto personalizzata supera il limite di dimensione massima di 5 MB.</value>
+  </data>
+  <data name="BaselineGetPolicyTreeFailed" xml:space="preserve">
+    <value>Impossibile caricare i criteri per la personalizzazione. Riprovare più tardi.</value>
+  </data>
+  <data name="BaselineInvalidRequest" xml:space="preserve">
+    <value>Controlla che tutti i campi obbligatori siano compilati.</value>
+  </data>
+  <data name="BaselineMissingPolicies" xml:space="preserve">
+    <value>Creazione di una base di confronto non riuscita perché uno o più criteri sono stati rimossi o non sono disponibili</value>
+  </data>
+  <data name="BaselineModified" xml:space="preserve">
+    <value>Linea di base modificata</value>
+  </data>
+  <data name="BaselineName" xml:space="preserve">
+    <value>Nome della base di confronto</value>
+  </data>
+  <data name="BaselinePendingReboot" xml:space="preserve">
+    <value>Riavvia in sospeso</value>
+  </data>
+  <data name="BaselinePolicyFieldError" xml:space="preserve">
+    <value>Creazione di una base di confronto non riuscita perché uno o più criteri hanno valori non validi</value>
+  </data>
+  <data name="BaselinePolicyGenerationFailed" xml:space="preserve">
+    <value>Non è stato possibile creare una base di confronto perché non è stato possibile generare uno o più criteri</value>
+  </data>
+  <data name="Baselines" xml:space="preserve">
+    <value>Basi di confronto</value>
+  </data>
+  <data name="BaselinesBlobID" xml:space="preserve">
+    <value>ID Blob base di confronto</value>
+  </data>
+  <data name="BaselinesCount" xml:space="preserve">
+    <value>Conteggio base di confronto</value>
+  </data>
+  <data name="BaselineServiceUnavailable" xml:space="preserve">
+    <value>Impossibile connettersi al servizio Base di confronto "https://www.vmwarebaselines.com". Controlla la connettività e i registri per ulteriori informazioni.</value>
+  </data>
+  <data name="BaselinesMenuDescription" xml:space="preserve">
+    <value>Visualizza basi di confronto</value>
+  </data>
+  <data name="BaselineStatusCallFailed" xml:space="preserve">
+    <value>Impossibile recuperare lo stato delle basi di confronto. Riprova più tardi</value>
+  </data>
+  <data name="BaselineTooltipCis" xml:space="preserve">
+    <value>Usa le impostazioni consigliate del Benchmark CIS per la versione e il livello selezionati.</value>
+  </data>
+  <data name="BaselineTooltipCustom" xml:space="preserve">
+    <value>Carica un backup GPO (Group Policy Object) personalizzato da applicare ai dispositivi. Il backup GPO deve essere un file ZIP di dimensioni inferiori a 5 MB.</value>
+  </data>
+  <data name="BaselineTooltipWindows" xml:space="preserve">
+    <value>I componenti SBC ("Security Baseline Components") di Microsoft Security Toolkit sono creati da Microsoft e sono resi disponibili esclusivamente per la gestione dei dispositivi Windows 10. Gli SBC vengono forniti da VMware o Microsoft COSÌ COME SONO e senza alcuna garanzia di alcun tipo. Ulteriori informazioni sugli SBC sono disponibili all'indirizzo {0}.</value>
+  </data>
+  <data name="BaselineUUID" xml:space="preserve">
+    <value>UUID base di confronto</value>
+  </data>
+  <data name="BlankBaseline" xml:space="preserve">
+    <value>Crea personale</value>
+  </data>
+  <data name="BlankBaselineDescription" xml:space="preserve">
+    <value>Crea la tua base di confronto scegliendo dal nostro catalogo di criteri.</value>
+  </data>
+  <data name="ChooseTemplate" xml:space="preserve">
+    <value>Scegli base di confronto</value>
+  </data>
+  <data name="ComplianceDataMissing" xml:space="preserve">
+    <value>I dati di conformità non sono ancora disponibili per questa linea di base. Ripubblicare la linea di base nei dispositivi assegnati per attivare la segnalazione dei campioni di conformità.</value>
+  </data>
+  <data name="ConfirmCancelBaseline" xml:space="preserve">
+    <value>Le modifiche a questa base di confronto non sono state salvate. Eliminare le modifiche?</value>
+  </data>
+  <data name="ConfirmCloudDescription" xml:space="preserve">
+    <value>Utilizzando le basi di confronto Workspace ONE verrà eseguito l'accesso ai dati archiviati in remoto da VMware. Fai clic su Annulla se non desideri procedere.</value>
+  </data>
+  <data name="ConfirmCloudTitle" xml:space="preserve">
+    <value>Accesso remoto ai dati</value>
+  </data>
+  <data name="ConfirmDeleteBaseline" xml:space="preserve">
+    <value>Se questa base di confronto è assegnata, la sua eliminazione comporterà la rimozione da tutti i dispositivi. Continuare?</value>
+  </data>
+  <data name="CopyBaseline" xml:space="preserve">
+      <value>Copia base di confronto</value>
+  </data>
+  <data name="CustomBaseline" xml:space="preserve">
+    <value>Base di confronto personalizzata</value>
+  </data>
+  <data name="CustomBaselineCompliance" xml:space="preserve">
+    <value>La conformità per le linee di base personalizzate viene valutata in base ai criteri aggiunti alla linea di base, non ai criteri compressi.</value>
+  </data>
+  <data name="CustomBaselineComplianceDataMissing" xml:space="preserve">
+    <value>I dati di conformità non sono disponibili o sono incompleti per le linee di base personalizzate, in quanto non è stato possibile rivedere i criteri compressi.</value>
+  </data>
+  <data name="CustomBaselineError" xml:space="preserve">
+    <value>Seleziona un file per la base di confronto personalizzata</value>
+  </data>
+  <data name="CustomBaselineHelpLink" xml:space="preserve">
+    <value>Visualizza le istruzioni di caricamento GPO</value>
+  </data>
+  <data name="CustomizeSelectPolicy" xml:space="preserve">
+    <value>Seleziona un criterio per visualizzarne le impostazioni.</value>
+  </data>
+  <data name="CustomizeStepDescription" xml:space="preserve">
+    <value>Puoi esaminare o personalizzare i criteri da {0} per soddisfare le tue esigenze.</value>
+  </data>
+  <data name="DefinitionStepDescription" xml:space="preserve">
+    <value>Assegna un nome e una descrizione alla base di confronto.</value>
+  </data>
+  <data name="DeleteBaseline" xml:space="preserve">
+    <value>Elimina base di confronto</value>
+  </data>
+  <data name="DeviceBaselineLocationGroupNotFound" xml:space="preserve">
+    <value>Impossibile recuperare i dispositivi per la base di confronto poiché il gruppo non è stato trovato.</value>
+  </data>
+  <data name="DeviceBaselineNotFound" xml:space="preserve">
+    <value>Impossibile recuperare i dispositivi per la base di confronto poiché la base di confronto non è stata trovata.</value>
+  </data>
+  <data name="DiscardAndExit" xml:space="preserve">
+    <value>Elimina ed esci</value>
+  </data>
+  <data name="EditBaseline" xml:space="preserve">
+    <value>Modifica base di confronto</value>
+  </data>
+  <data name="EditRequestError" xml:space="preserve">
+    <value>La versione della base di confronto selezionata non è più disponibile; creane una nuova.</value>
+  </data>
+  <data name="EmptyBaselineList" xml:space="preserve">
+    <value>Non sono state trovate basi di confronto</value>
+  </data>
+  <data name="EmptyDeviceList" xml:space="preserve">
+    <value>Nessun dispositivo trovato</value>
+  </data>
+  <data name="EmptyListInput" xml:space="preserve">
+    <value>Richiede una o più voci</value>
+  </data>
+  <data name="EmptyPolicyList" xml:space="preserve">
+    <value>Nessun criterio aggiunto finora</value>
+  </data>
+  <data name="ErrorBaselineDeviceException" xml:space="preserve">
+    <value>Impossibile applicare le basi di confronto, controlla i registri per correggere.</value>
+  </data>
+  <data name="ErrorDownloadBlobFailed" xml:space="preserve">
+    <value>Impossibile accedere alle basi di confronto, controlla i registri per correggere.</value>
+  </data>
+  <data name="ErrorInvalidExecutable" xml:space="preserve">
+    <value>LGPO.exe non è valido; prova a cambiare il file eseguibile per correggere.</value>
+  </data>
+  <data name="ErrorLGPOBackupFailed" xml:space="preserve">
+    <value>Impossibile applicare le basi di confronto, controlla i registri per correggere.</value>
+  </data>
+  <data name="ErrorMissingLGPO" xml:space="preserve">
+    <value>LGPO.exe non è disponibile per applicare le basi di confronto.</value>
+  </data>
+  <data name="ErrorSavingFileInFolder" xml:space="preserve">
+    <value>Impossibile salvare le basi di confronto; controlla i registri per correggere.</value>
+  </data>
+  <data name="ErrorUpdatingDatabase" xml:space="preserve">
+    <value>Stato delle basi di confronto sconosciuto; controlla i registri per maggiori informazioni.</value>
+  </data>
+  <data name="ErrorZipExtractionFailed" xml:space="preserve">
+    <value>Impossibile estrarre le basi di confronto; controlla i registri per correggere.</value>
+  </data>
+  <data name="ExcludedSmartGroups" xml:space="preserve">
+    <value>Gruppi smart esclusi</value>
+  </data>
+  <data name="Exclusions" xml:space="preserve">
+    <value>Esclusioni</value>
+  </data>
+  <data name="FailedInstall" xml:space="preserve">
+    <value>Installazione non riuscita</value>
+  </data>
+  <data name="FailedRemoval" xml:space="preserve">
+    <value>Rimozione non riuscita</value>
+  </data>
+  <data name="IntermediateDescription" xml:space="preserve">
+    <value>I dispositivi che sono conformi dal {0}% al {1}% sono classificati come intermedi.</value>
+  </data>
+  <data name="MaxValueArg" xml:space="preserve">
+    <value>Deve essere minore o uguale a {0}</value>
+  </data>
+  <data name="MinValueArg" xml:space="preserve">
+    <value>Deve essere maggiore o uguale a {0}</value>
+  </data>
+  <data name="NewBaseline" xml:space="preserve">
+    <value>Nuova base di confronto</value>
+  </data>
+  <data name="NoActiveOSVersion" xml:space="preserve">
+    <value>Nessuna versione del sistema operativo trovata. Riprovare più tardi.</value>
+  </data>
+  <data name="NoCustomizationSupport" xml:space="preserve">
+    <value>La personalizzazione non è al momento disponibile per la base di confronto selezionata.</value>
+  </data>
+  <data name="NoFileSelected" xml:space="preserve">
+    <value>Nessun file selezionato.</value>
+  </data>
+  <data name="NonEnglishSearchResult" xml:space="preserve">
+    <value>Nessun risultato trovato per "{0}". Puoi ripetere la ricerca in inglese per verificare se il criterio è disponibile.</value>
+  </data>
+  <data name="NoResultsFoundForArg" xml:space="preserve">
+    <value>Nessun risultato trovato per "{0}"</value>
+  </data>
+  <data name="NoSmartGroupsSelected" xml:space="preserve">
+    <value>Nessun gruppo smart selezionato</value>
+  </data>
+  <data name="PolicyNotFound" xml:space="preserve">
+    <value>Nessun dettaglio trovato per i criteri</value>
+  </data>
+  <data name="PolicyStepDescription" xml:space="preserve">
+    <value>Cerca e aggiungi i criteri dal catalogo.</value>
+  </data>
+  <data name="Proceed" xml:space="preserve">
+    <value>Procedi</value>
+  </data>
+  <data name="RemovalFailed" xml:space="preserve">
+    <value>Rimozione non riuscita</value>
+  </data>
+  <data name="RequiredFieldError" xml:space="preserve">
+    <value>Immetti un nome per la base di confronto.</value>
+  </data>
+  <data name="SaveAndPublish" xml:space="preserve">
+    <value>Salva e pubblica</value>
+  </data>
+  <data name="SearchPolicyPlaceholder" xml:space="preserve">
+    <value>Inizia a digitare per cercare un criterio</value>
+  </data>
+  <data name="SearchSmartGroupPlaceholder" xml:space="preserve">
+    <value>Inizia a digitare per cercare un gruppo smart</value>
+  </data>
+  <data name="SelectedSmartGroups" xml:space="preserve">
+    <value>Gruppi smart selezionati</value>
+  </data>
+  <data name="SelectTypeDescription" xml:space="preserve">
+    <value>Scegli un tipo di base di confronto da aggiungere.</value>
+  </data>
+  <data name="SelectTypeTitle" xml:space="preserve">
+    <value>Seleziona il tipo di base di confronto</value>
+  </data>
+  <data name="SmartGroupAtLeastOneValidationDescription" xml:space="preserve">
+    <value>È necessario almeno un gruppo smart nella scheda Assegnazioni.</value>
+  </data>
+  <data name="SummaryStepDescription" xml:space="preserve">
+    <value>Rivedi il riepilogo prima di salvare questa base di confronto.</value>
+  </data>
+  <data name="TemplateStepDescription" xml:space="preserve">
+    <value>Seleziona una base di confronto e una versione preconfigurate.</value>
+  </data>
+  <data name="TextareaMaxLinesError" xml:space="preserve">
+    <value>Supera il numero massimo di righe</value>
+  </data>
+  <data name="TextareaMaxSentenceError" xml:space="preserve">
+    <value>Una o più frasi superano la lunghezza massima</value>
+  </data>
+  <data name="TotalInstalledArg" xml:space="preserve">
+    <value>Totale installato: {0}</value>
+  </data>
+  <data name="UnabletoLoadDevices" xml:space="preserve">
+    <value>Impossibile caricare l'elenco dispositivi. Riprova più tardi.</value>
+  </data>
+  <data name="UnsavedChanges" xml:space="preserve">
+    <value>Modifiche non salvate</value>
+  </data>
+  <data name="UnsupportedLanguageError" xml:space="preserve">
+    <value>Errore: la lingua selezionata non è supportata.</value>
+  </data>
+  <data name="UseBaselineTemplate" xml:space="preserve">
+      <value>Utilizza modello</value>
+  </data>
+  <data name="UseTemplateDescription" xml:space="preserve">
+    <value>Utilizza i modelli standard di settore per configurare la base di confronto.</value>
+  </data>
+  <data name="VersionBreakdown" xml:space="preserve">
+    <value>Suddivisione versioni</value>
+  </data>
+  <data name="ViewBaselineDevicesTitle" xml:space="preserve">
+    <value>Visualizza dispositivi - Basi di confronto</value>
+  </data>
+</root>

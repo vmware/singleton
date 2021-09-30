@@ -1,0 +1,1035 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="MessageTemplates_Content_AccessFileAndCommentNavigateToSSPSection" xml:space="preserve">
+    <value>Du kan få adgang til denne fil og dens kommentarer ved at gå til selvbetjeningsportalen</value>
+  </data>
+  <data name="MessageTemplates_Content_AccessFolderNavigateToSSPSection" xml:space="preserve">
+    <value>Du kan få adgang til denne mappe ved at gå til selvbetjeningsportalen</value>
+  </data>
+  <data name="MessageTemplates_Content_AccountEnabledActivateDeviceUsingBrowserNavigateTo" xml:space="preserve">
+    <value>Din Workspace ONE UEM-konto er blevet aktiveret, og du kan aktivere din enhed. Brug din enheds browser til at navigere til:</value>
+  </data>
+  <data name="MessageTemplates_Content_AccountEnabledFollowStepsToEnrollDevice" xml:space="preserve">
+    <value>Tillykke! Din Workspace ONE UEM-konto er blevet aktiveret. Følg venligst trinene herunder for at tilmelde din enhed.</value>
+  </data>
+  <data name="MessageTemplates_Content_AccountExpirationExpirationDate" xml:space="preserve">
+    <value>Kontoudløb: {ExpirationDate}</value>
+  </data>
+  <data name="MessageTemplates_Content_AdminConsole" xml:space="preserve">
+    <value>Workspace ONE UEM administratorkonsol:</value>
+  </data>
+  <data name="MessageTemplates_Content_AdminCreatedLogIntoConsoleUsingCredential" xml:space="preserve">
+    <value>Din Workspace ONE UEM administratorkonto er blevet oprettet, og du kan nu logge på Workspace ONE UEM administratorkonsollen med følgende legitimationsoplysninger:</value>
+  </data>
+  <data name="MessageTemplates_Content_AdminCreatedWithDetails" xml:space="preserve">
+    <value>Din Workspace ONE UEM-administratorkonto er blevet oprettet. Konsol: {ConsoleUrl} Brugernavn: {AdminUserName} Adgangskode: {AdminPassword}</value>
+  </data>
+  <data name="MessageTemplates_Content_AdminFirstNameAdminLastName" xml:space="preserve">
+    <value>{AdminFirstName} {AdminLastName},</value>
+  </data>
+  <data name="MessageTemplates_Content_AdminInfoUpdatedLogIntoConsoleToConfirm" xml:space="preserve">
+    <value>Dine Workspace ONE UEM-administratoroplysninger er blevet opdateret. Log venligst på konsollen for at bekræfte dine kontooplysninger.</value>
+  </data>
+  <data name="MessageTemplates_Content_AdminPasswordReset" xml:space="preserve">
+    <value>Nulstilling af adgangskode er blevet initieret enten af dig eller en anden administrator. Hvis dette er forkert, skal du kontakte din administrator for at få flere oplysninger. Følgende link vil tage dig tilbage til vores websted og lade dig ændre din adgangskode:</value>
+  </data>
+  <data name="MessageTemplates_Content_AdminPasswordUpdated" xml:space="preserve">
+    <value>Din Workspace ONE UEM-adgangskode er blevet opdateret.</value>
+  </data>
+  <data name="MessageTemplates_Content_AdminPasswordWillExpireInDays" xml:space="preserve">
+    <value>Din administratoradgangskode til Workspace ONE UEM Console-konto '{AdminUserName}' udløber om {DaysToBasicAdminPasswordExpiry} dage.</value>
+  </data>
+  <data name="MessageTemplates_Content_AdminStatusChanged" xml:space="preserve">
+    <value>Din Workspace ONE UEM-administratorstatus er blevet ændret til {AdminStatus}.</value>
+  </data>
+  <data name="MessageTemplates_Content_AlternativelyScanQrCodeToBeginEnrollment" xml:space="preserve">
+    <value>Alternativt kan du scanne QR-koden for at starte tilmeldingen:</value>
+  </data>
+  <data name="MessageTemplates_Content_AppAssignedAccessInternalAppPageReviewPublish" xml:space="preserve">
+    <value>{ApplicationName}er blevet tildelt til enheder og er nu tilgængelig for udgivelse på disse enheder. Du kan få adgang til denne app ved at gå til siden med interne apps i Workspace ONE UEM Console. Tjek venligst enhedstildelingen, og udgiv appen. App-oplysningerne er vist herunder:</value>
+  </data>
+  <data name="MessageTemplates_Content_AppAvailableForDownloadFromUem" xml:space="preserve">
+    <value>{ApplicationName} kan nu downloades til din enhed fra Workspace ONE UEM app-kataloget.</value>
+  </data>
+  <data name="MessageTemplates_Content_AppAvailableForDownloadFromUemWithDetails" xml:space="preserve">
+    <value>{ApplicationName} kan nu downloades til din enhed fra Workspace ONE UEM app-kataloget. App-oplysninger er vist herunder:</value>
+  </data>
+  <data name="MessageTemplates_Content_AppCreatedAccessInternalAppPage" xml:space="preserve">
+    <value>Appen med navnet {ApplicationName} er blevet oprettet. Du kan få adgang til denne app ved at gå til siden med interne apps i Workspace ONE UEM Console. App-oplysningerne er vist herunder:</value>
+  </data>
+  <data name="MessageTemplates_Content_AppCreatedAccessInternalAppPageReviewSubmit" xml:space="preserve">
+    <value>{ApplicationName} er blevet oprettet og er nu tilgængelig til gennemsyn. Du kan få adgang til denne app ved at gå til siden med interne apps i Workspace ONE UEM Console. Gennemse og send den til tildeling. App-oplysninger er vist herunder:</value>
+  </data>
+  <data name="MessageTemplates_Content_AppErrorFindLogFile" xml:space="preserve">
+    <value>Appen {ApplicationName} har returneret en fejlmeddelelse. Se venligst den vedhæftede logfil.</value>
+  </data>
+  <data name="MessageTemplates_Content_AppEulaUpdatedAcceptanceRequired" xml:space="preserve">
+    <value>Betingelserne for din app-brugeraftale er blevet opdateret, og din accept er påkrævet.</value>
+  </data>
+  <data name="MessageTemplates_Content_AppEulaUpdatedAcceptanceRequiredBeforeGracePeriod" xml:space="preserve">
+    <value>Betingelserne for din app-brugeraftale er blevet opdateret, og din accept er påkrævet, før tidsfristen udløber.</value>
+  </data>
+  <data name="MessageTemplates_Content_AppEulaUpdatedAcceptanceRequiredLogInToAppCatalogToAccept" xml:space="preserve">
+    <value>Betingelserne for din app-brugeraftale er blevet opdateret, og din accept er påkrævet. Log venligst på Workspace ONE UEM app-kataloget for at acceptere.</value>
+  </data>
+  <data name="MessageTemplates_Content_AppGroupCreatedNavigateToSettingsPageToAccessAppGroups" xml:space="preserve">
+    <value>{CountOfApplicationGroups} app-gruppe(r) er blevet oprettet som resultat af synkronisering med {VendorName}. Der er oplysninger om disse app-grupper i den vedhæftede fil. Du kan få adgang til disse app-grupper ved at navigere til App-grupper under Apps og Bøger &gt; siden App-indstillinger i Workspace ONE UEM Console.</value>
+  </data>
+  <data name="MessageTemplates_Content_AppHasBeenPurchasedOpenHubToDownload" xml:space="preserve">
+    <value>{ApplicationName} er blevet købt på dine vegne og er nu tilgængelig for download. Åbn Workspace ONE Intelligent Hub for at downloade den købte app.</value>
+  </data>
+  <data name="MessageTemplates_Content_AppNameAppVersion" xml:space="preserve">
+    <value>{ApplicationName}, {ApplicationVersion}</value>
+  </data>
+  <data name="MessageTemplates_Content_AppReputationAnalysisCompletedForApp" xml:space="preserve">
+    <value>App-sikkerhedsanalyse er blevet fuldført for {ApplicationName}, og resultaterne er nu tilgængelige.</value>
+  </data>
+  <data name="MessageTemplates_Content_AppReviewedAccessInternalAppPageAssignSubmit" xml:space="preserve">
+    <value>{ApplicationName} er blevet gennemgået og er nu tilgængelig for tildeling til enheder. Du kan få adgang til denne app ved at gå til siden med interne apps i Workspace ONE UEM Console. Tildel den til enheder, og send den til udgivelse. App-oplysninger er vist herunder:</value>
+  </data>
+  <data name="MessageTemplates_Content_AuthenticationRequiredCredentialsBelow" xml:space="preserve">
+    <value>Godkendelse kan være påkrævet. Dine unikke legitimationsoplysninger vises nedenfor:</value>
+  </data>
+  <data name="MessageTemplates_Content_ClickHere" xml:space="preserve">
+    <value>klik her</value>
+  </data>
+  <data name="MessageTemplates_Content_ClickInstallAcceptPrompts" xml:space="preserve">
+    <value>Klik på "Installer", og accepter anmodninger om at fortsætte konfigurationen.</value>
+  </data>
+  <data name="MessageTemplates_Content_ConsoleURL" xml:space="preserve">
+    <value>URL-adresse for Console:</value>
+  </data>
+  <data name="MessageTemplates_Content_ContactItHelpDeskIfHaveQuestions" xml:space="preserve">
+    <value>Kontakt venligst din IT-helpdesk, hvis du har spørgsmål:</value>
+  </data>
+  <data name="MessageTemplates_Content_ContentComment" xml:space="preserve">
+    <value>"{Comment}"</value>
+  </data>
+  <data name="MessageTemplates_Content_ContentShareUserFirstNameLastName" xml:space="preserve">
+    <value>{ContentShareUserFirstName} {ContentShareUserLastName}</value>
+  </data>
+  <data name="MessageTemplates_Content_ContentUserIsUsingContentLocker" xml:space="preserve">
+    <value>{ContentShareUserFirstName} bruger Workspace ONE UEM Content Locker-løsning til nemt og sikkert at dele filer med dig.</value>
+  </data>
+  <data name="Messagetemplates_Content_DearAdministrator" xml:space="preserve">
+    <value>Kære administrator</value>
+  </data>
+  <data name="MessageTemplates_Content_DeviceApprovedForAccessUsingBrowserNavigateTo" xml:space="preserve">
+    <value>Din enhed er blevet godkendt til mobil adgang. Anvend din enheds webbrowser, og naviger til</value>
+  </data>
+  <data name="MessageTemplates_Content_DeviceBlockedFromEnrollmentForReason" xml:space="preserve">
+    <value>Din enhed {DevicePlatform} {DeviceModel} blev blokeret fra tilmelding af følgende årsag:</value>
+  </data>
+  <data name="MessageTemplates_Content_DeviceEnrollmentUsingCredentials" xml:space="preserve">
+    <value>Din enhed {DeviceFriendlyName} har fuldført Workspace ONE UEM-tilmelding med legitimationsoplysninger fra {EnrollmentUser}.</value>
+  </data>
+  <data name="MessageTemplates_Content_DeviceHasNotReportedComplianceToUemLaunchHubToCheckIn" xml:space="preserve">
+    <value>Din enhed har ikke rapporteret sin compliance-status til Workspace ONE UEM indenfor den påkrævede tidsramme. Start venligst VMware Workspace ONE Intelligent Hub på din enhed for at tjekke ind.</value>
+  </data>
+  <data name="MessageTemplates_Content_DeviceInViolationOfOrgCompliancePolicy" xml:space="preserve">
+    <value>Din enhed, {DeviceFriendlyName}, overholder i øjeblikket ikke din organisations compliance-politik:</value>
+  </data>
+  <data name="MessageTemplates_Content_DeviceInViolationOfPolicyActionTakenIfNonCompliant" xml:space="preserve">
+    <value>Din enhed overholder ikke "{PolicyName}"-compliance-politikken. Yderligere handlinger vil blive foretaget, hvis enheden ikke overholder kravene.</value>
+  </data>
+  <data name="MessageTemplates_Content_DeviceLostCallMe" xml:space="preserve">
+    <value>Denne enhed er bortkommet. Ring venligst til mig.</value>
+  </data>
+  <data name="MessageTemplates_Content_DeviceNoAccessData" xml:space="preserve">
+    <value>Denne enhed har ikke længere adgang til indstillinger, apps og indhold udrullet under tilmelding.</value>
+  </data>
+  <data name="MessageTemplates_Content_DeviceNonCompliantActionsInEffect" xml:space="preserve">
+    <value>Så længe din enhed ikke overholder kravene, vil følgende handlinger være gældende på din enhed:</value>
+  </data>
+  <data name="MessageTemplates_Content_DevicesWipedWithinLastMinutes" xml:space="preserve">
+    <value>Vi har bemærket, at et usædvanligt stort antal enheder er blevet Enterprise-slettet eller enheds-slettet i løbet af de sidste {EnterpriseWipeInterval} minutter.</value>
+  </data>
+  <data name="MessageTemplates_Content_DevicesWithAppExceededLimitRemovalOnHoldUntilConfirm" xml:space="preserve">
+    <value>Antallet af enheder med appen {BundleID} har overskredet din app-fjernelsesgrænse. Fjernelse af disse apps er blevet sat på pause, indtil du bekræfter antallet, og hvorvidt du ønsker at frigive alle fjernelseskommandoer for denne app.</value>
+  </data>
+  <data name="MessageTemplates_Content_DeviceUnenrolled" xml:space="preserve">
+    <value>Din enhed {DeviceFriendlyName} er blevet afmeldt.</value>
+  </data>
+  <data name="MessageTemplates_Content_DoNotEnterInfoUntilInContainerApp" xml:space="preserve">
+    <value>Indtast venligst ikke personlige eller organisationsspecifikke oplysninger, før du er i Workspace ONE UEM container-appen nedenfor:</value>
+  </data>
+  <data name="MessageTemplates_Content_DoNotEnterInfoUntilInHubApp" xml:space="preserve">
+    <value>Indtast venligst ikke personlige eller organisationsspecifikke oplysninger, før du er i VMware Workspace ONE Intelligent Hub nedenfor:</value>
+  </data>
+  <data name="MessageTemplates_Content_DownloadHubApp" xml:space="preserve">
+    <value>Download Workspace ONE Intelligent Hub-appen.</value>
+  </data>
+  <data name="MessageTemplates_Content_DownloadHubAppOnDeviceYouWantToEnrollAt" xml:space="preserve">
+    <value>Download VMware Workspace ONE Intelligent Hub-appen på den enhed, som du ønsker at tilmelde den på</value>
+  </data>
+  <data name="MessageTemplates_Content_EmailDomainConfirmedUserWithSameDomainEnrolledInto" xml:space="preserve">
+    <value>Når dit e-maildomæne er bekræftet, vil brugere, der tilmelder sig med en e-mailadresse med samme domæne, blive tilmeldt følgende URL-adresse og gruppe-ID:</value>
+  </data>
+  <data name="MessageTemplates_Content_EmailDomainRegisteredVerifyEmailAddress" xml:space="preserve">
+    <value>Dit e-maildomæne er blevet registreret for e-mailbaseret tilmelding. Bekræft venligst din e-mailadresse ved at klikke på linket herunder:</value>
+  </data>
+  <data name="MessageTemplates_Content_EnrollmentURL" xml:space="preserve">
+    <value>Tilmeldings-URL-adresse:</value>
+  </data>
+  <data name="MessageTemplates_Content_EnrollYourDevice" xml:space="preserve">
+    <value>Tilmeld din enhed.</value>
+  </data>
+  <data name="MessageTemplates_Content_EnterCredentialsToAuthenticateDevice" xml:space="preserve">
+    <value>Indtast venligst dine legimitationsoplysninger for at godkende din enhed.</value>
+  </data>
+  <data name="MessageTemplates_Content_EnterTokenBelowInAppToResetPasscode" xml:space="preserve">
+    <value>Indtast venligst nedenstående token, når du anvender "glemt adgangskode" i din app for at nulstille din adgangskode.</value>
+  </data>
+  <data name="MessageTemplates_Content_EnterTokenWhenPromptedDuringAuth" xml:space="preserve">
+    <value>Indtast venligst det angivne token, når der anmodes om App-katalog-godkendelse.</value>
+  </data>
+  <data name="MessageTemplates_Content_EnterTokenWhenPromptedWithDetails" xml:space="preserve">
+    <value>Indtast venligst det angivne token, når der anmodes om App-katalog-godkendelse. Token: {AppCatalogToken}</value>
+  </data>
+  <data name="MessageTemplates_Content_EulaUpdatedAcceptanceRequired" xml:space="preserve">
+    <value>Betingelserne for din Workspace ONE UEM-brugeraftale er blevet opdateret, og din accept er påkrævet.</value>
+  </data>
+  <data name="MessageTemplates_Content_ExpirationDateTokenExpirationDate" xml:space="preserve">
+    <value>Udløbsdato: {TokenExpirationDate}</value>
+  </data>
+  <data name="MessageTemplates_Content_FileAccessibleInContentLockerOrContentLockerSync" xml:space="preserve">
+    <value>Desuden vil filen være tilgængelig i Content Locker på din mobilenhed eller Content Locker Sync, hvis den er installeret på din computer.</value>
+  </data>
+  <data name="MessageTemplates_Content_FinalNoticeAppEulaUpdatedLogInToUemToAccept" xml:space="preserve">
+    <value>SIDSTE ADVARSEL: Vilkårene for din app-brugeraftale er blevet opdateret. Log venligst på Workspace ONE UEM app-kataloget for at acceptere vilkårene.</value>
+  </data>
+  <data name="MessageTemplates_Content_FinalNotificationIfRejectAppRemoved" xml:space="preserve">
+    <value>Dette er den sidste advarsel. Hvis du afviser betingelserne i brugeraftalen, vil appen blive fjernet fra din enhed.</value>
+  </data>
+  <data name="MessageTemplates_Content_FirstNameLastName" xml:space="preserve">
+    <value>{FirstName} {LastName},</value>
+  </data>
+  <data name="MessageTemplates_Content_FolderAccessibleInContentLockerOrContentLockerSync" xml:space="preserve">
+    <value>Desuden vil mappen være tilgængelig i Content Locker på din mobilenhed eller Content Locker Sync, hvis den er installeret på din computer.</value>
+  </data>
+  <data name="MessageTemplates_Content_FollowPromptsToSetupPasswordAt" xml:space="preserve">
+    <value>Følg prompterne for at opsætte din adgangskode</value>
+  </data>
+  <data name="MessageTemplates_Content_ForFutureAccessRequireCredentials" xml:space="preserve">
+    <value>For at få fremtidig adgang til mapper, kan du få brug for legitimationsoplysningerne herunder.</value>
+  </data>
+  <data name="MessageTemplates_Content_GoToAppRemovalLogPageToSeeDevicesCanChangeAppRemovalLimitSettings" xml:space="preserve">
+    <value>Gå til siden {AppRemovalLog} for at se en liste over alle de enheder, der er blevet påvirket. Du kan forøge eller reducere indstillingerne for grænsen for app-fjernelse her {AppRemovalProtection}.</value>
+  </data>
+  <data name="MessageTemplates_Content_GoToContainerEnrollmentUrlToActivateDevice" xml:space="preserve">
+    <value>Gå til {ContainerEnrollmentUrl} for at aktivere din enhed</value>
+  </data>
+  <data name="MessageTemplates_Content_GoToHubEnrollmentUrlToActivateDevice" xml:space="preserve">
+    <value>Gå til {HubEnrollmentUrl} for at aktivere din enhed</value>
+  </data>
+  <data name="MessageTemplates_Content_GrantedFollowingAdminRoles" xml:space="preserve">
+    <value>Du er blevet tildelt adgang til følgende administratorroller:</value>
+  </data>
+  <data name="MessageTemplates_Content_GroupIdGroupIdentifier" xml:space="preserve">
+    <value>Gruppe-id: {GroupIdentifier}</value>
+  </data>
+  <data name="MessageTemplates_Content_HasMentionedYouInCommentOnFile" xml:space="preserve">
+    <value>har nævnt dig i en kommentar til filen</value>
+  </data>
+  <data name="MessageTemplates_Content_HasSharedYouFolder" xml:space="preserve">
+    <value>har delt mappen med dig</value>
+  </data>
+  <data name="MessageTemplates_Content_HaveNewFolderSharesNavigateToSSPSection" xml:space="preserve">
+    <value>Du har nye mappedelinger. For at få adgang til denne skal du navigere til selvbetjeningsportalen</value>
+  </data>
+  <data name="MessageTemplates_Content_HoldOnWipeUntilConfirm" xml:space="preserve">
+    <value>Vi vil sætte alle fremtidige sletningskommandoer på pause, indtil du kan evaluere årsagen til det øgede antal sletninger og bekræfte, at du ønsker at frigive alle fremtidige sletningskommandoer.</value>
+  </data>
+  <data name="MessageTemplates_Content_IfPasswordExpiresForcedToReset" xml:space="preserve">
+    <value>Hvis adgangskoden til din konto udløber, vil du blive tvunget til at nulstille din adgangskode, før du logger på.</value>
+  </data>
+  <data name="MessageTemplates_Content_IfRejectDeviceUnenrolledRemovalOfData" xml:space="preserve">
+    <value>Hvis du afviser vilkårene i brugeraftalen, vil din enhed blive fjernet fra Workspace ONE UEM, hvilket medfører fjernelse af alle organisationsspecifikke data fra din enhed.</value>
+  </data>
+  <data name="MessageTemplates_Content_IfRejectOrNotAcceptRemoveApp" xml:space="preserve">
+    <value>Hvis du afviser vilkårene for brugeraftalen eller ikke accepterer inden for fristen, vil appen blive fjernet fra din enhed.</value>
+  </data>
+  <data name="MessageTemplates_Content_Important" xml:space="preserve">
+    <value>Vigtigt:</value>
+  </data>
+  <data name="MessageTemplates_Content_LinkAboveWillExpireOn" xml:space="preserve">
+    <value>Linket herover udløber den</value>
+  </data>
+  <data name="MessageTemplates_Content_LinkExpiredContactItHelpDeskToRequestAt" xml:space="preserve">
+    <value>Hvis linket er udløbet, så kontakt din IT-helpdesk for at anmode om en ny tilmeldings-e-mail på</value>
+  </data>
+  <data name="MessageTemplates_Content_LogIntoConsoleToImplementCompliancePolicies" xml:space="preserve">
+    <value>Log venligst på Workspace ONE UEM Console for at implementere compliance-politikker, der anvender {VendorName}-appgrupper til at overvåge ikke-kompatible enheder.</value>
+  </data>
+  <data name="MessageTemplates_Content_LogIntoConsoleToResetPassword" xml:space="preserve">
+    <value>Log venligst på Workspace ONE UEM-administratorkonsollen, og nulstil din adgangskode ved at vælge dit navn i øverste højre hjørne og derefter vælge 'Administrer kontoindstillinger'.</value>
+  </data>
+  <data name="MessageTemplates_Content_LogIntoSSPToReviewAcceptUpdatedTermsAt" xml:space="preserve">
+    <value>Log venligst på Selvbetjeningsportalen for at gennemgå og acceptere opdaterede vilkår på</value>
+  </data>
+  <data name="MessageTemplates_Content_LogIntoUemToAcceptChangesForApp" xml:space="preserve">
+    <value>Log venligst på Workspace ONE UEM app-kataloget fra din enhed for at acceptere ændringerne for følgende app:</value>
+  </data>
+  <data name="MessageTemplates_Content_MyContent" xml:space="preserve">
+    <value>Mit indhold</value>
+  </data>
+  <data name="MessageTemplates_Content_OnlyDownloadFromOfficialAppStore" xml:space="preserve">
+    <value>Download kun fra din enheds officielle App Store</value>
+  </data>
+  <data name="MessageTemplates_Content_OrContactComplianceSupportPhone" xml:space="preserve">
+    <value>eller kontakt telefon: {ComplianceSupportPhone}</value>
+  </data>
+  <data name="MessageTemplates_Content_OrContactEnrollmentSupportPhone" xml:space="preserve">
+    <value>eller kontakt telefon: {EnrollmentSupportPhone}.</value>
+  </data>
+  <data name="MessageTemplates_Content_OurWebsite" xml:space="preserve">
+    <value>vores websted</value>
+  </data>
+  <data name="MessageTemplates_Content_PasswordEnrollmentPassword" xml:space="preserve">
+    <value>Adgangskode: {EnrollmentPassword}</value>
+  </data>
+  <data name="MessageTemplates_Content_PasswordResetLink" xml:space="preserve">
+    <value>Link til nulstilling af adgangskode:</value>
+  </data>
+  <data name="MessageTemplates_Content_PasswordResetLinkExpiration" xml:space="preserve">
+    <value>Link til nulstilling af adgangskode udløber:</value>
+  </data>
+  <data name="MessageTemplates_Content_PolicyNamePolicyDescription" xml:space="preserve">
+    <value>{PolicyName}: {PolicyDescription}</value>
+  </data>
+  <data name="MessageTemplates_Content_ProvisioningPackageRequestStatusChangedLogIntoConsoleToSee" xml:space="preserve">
+    <value>Status for din anmodning om at oprette en Windows-klargøringspakke er ændret. Log venligst på konsollen, og se notifikationer for detaljer.</value>
+  </data>
+  <data name="MessageTemplates_Content_RedirectedToContainerAppOrToDownloadContainerApp" xml:space="preserve">
+    <value>Hvis Workspace ONE UEM Container-appen er installeret på din enhed, vil du blive omdirigeret til den. Hvis ikke, vil du blive omdirigeret til din enheds officielle App Store for at downloade den.</value>
+  </data>
+  <data name="MessageTemplates_Content_RedirectedToHubAppOrToDownloadHubApp" xml:space="preserve">
+    <value>Hvis VMware Workspace ONE Intelligent Hub-appen er installeret på din enhed, vil du blive omdirigeret til den. Hvis ikke, vil du blive omdirigeret til din enheds officielle App Store for at downloade den.</value>
+  </data>
+  <data name="MessageTemplates_Content_Regards" xml:space="preserve">
+    <value>Med venlig hilsen</value>
+  </data>
+  <data name="MessageTemplates_Content_RegisteringEnableDownloadAppPurchasedByOrg" xml:space="preserve">
+    <value>Tilmelding til programmet vil give dig mulighed for at downloade apps købt af din organisation på dine vegne.</value>
+  </data>
+  <data name="MessageTemplates_Content_RegistrationTokenRevoked" xml:space="preserve">
+    <value>Registreringstoken for din enhed er blevet tilbagekaldt.</value>
+  </data>
+  <data name="MessageTemplates_Content_RegistrationTokenRevokedCannotBeActivated" xml:space="preserve">
+    <value>Registreringstoken for din enhed er blevet tilbagekaldt, og du vil ikke længere kunne aktivere det i Workspace ONE UEM.</value>
+  </data>
+  <data name="MessageTemplates_Content_ResetUrlExpirationText" xml:space="preserve">
+    <value>Linket ovenfor udløber om {PasswordResetUrlExpiration} timer.</value>
+  </data>
+  <data name="MessageTemplates_Content_ResetUrlRetryText" xml:space="preserve">
+    <value>Hvis dette link ikke virker, så prøv at kopiere og indsætte følgende link i din browser.</value>
+  </data>
+  <data name="MessageTemplates_Content_ResetUrlText" xml:space="preserve">
+    <value>Nulstil din adgangskode nu</value>
+  </data>
+  <data name="MessageTemplates_Content_RestrictionsLiftedWhenCompliant" xml:space="preserve">
+    <value>Begrænsninger oprettet på din enhed bliver fjernet, når din enhed igen er compliant.</value>
+  </data>
+  <data name="MessageTemplates_Content_SeeAppReputationAnalysisReportForApp" xml:space="preserve">
+    <value>Se venligst vedhæftede detaljerede rapport om app-sikkerhedsanalyse for appen {ApplicationName}{ApplicationVersion}.</value>
+  </data>
+  <data name="MessageTemplates_Content_SeeDeviceWipeDetailsNavigateTo" xml:space="preserve">
+    <value>For at se en liste over alle enheder, der er blevet slettet eller afventer sletning, se, hvad der udløste hver handling, og angive, om du ønsker at fjerne eller fortsætte med hver handling, skal du navigere til</value>
+  </data>
+  <data name="MessageTemplates_Content_SetUemPassword" xml:space="preserve">
+    <value>Indstil din Workspace ONE UEM-adgangskode.</value>
+  </data>
+  <data name="MessageTemplates_Content_TempAdminCreatedOrModifiedLogIntoConsole" xml:space="preserve">
+    <value>Din midlertidige Workspace ONE UEM-administratorkonto er blevet oprettet eller ændret, og du kan nu logge på Workspace ONE UEM-administratorkonsollen med følgende legitimationsoplysninger:</value>
+  </data>
+  <data name="MessageTemplates_Content_ToActivateAndAccessContent" xml:space="preserve">
+    <value>For at aktivere din konto og få adgang til indhold delt med dig,</value>
+  </data>
+  <data name="MessageTemplates_Content_ToComplyWithPolicyAddressViolations" xml:space="preserve">
+    <value>For at overholde politikken skal du udbedre følgende overtrædelser:</value>
+  </data>
+  <data name="MessageTemplates_Content_TokenAppCatalogToken" xml:space="preserve">
+    <value>Token: {AppCatalogToken}</value>
+  </data>
+  <data name="MessageTemplates_Content_TokenApplicationAuthenticationToken" xml:space="preserve">
+    <value>Token: {ApplicationAuthenticationToken}</value>
+  </data>
+  <data name="MessageTemplates_Content_ToLearnMoreVisit" xml:space="preserve">
+    <value>Få mere at vide på</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAdminAccountActivationTitle" xml:space="preserve">
+    <value>Aktivering af Workspace ONE UEM-administratorkonto – {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAdminPasswordExpiryNotificationTitle" xml:space="preserve">
+    <value>Meddelelse om udløb af Workspace ONE UEM-administratoradgangskode – {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAdminPasswordResetTitle" xml:space="preserve">
+    <value>Workspace ONE UEM-administratoradgangskode er nulstillet - {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAdminPasswordUpdatedTitle" xml:space="preserve">
+    <value>Workspace ONE UEM-administratoradgangskode opdateret – {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAdminPersonalInfoUpdatedTitle" xml:space="preserve">
+    <value>Workspace ONE UEM-administrators personlige oplysninger opdateret – {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAdminStatusUpdatedTitle" xml:space="preserve">
+    <value>Workspace ONE UEM-administratorstatus opdateret – {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAppCatalogTokenNotificationTitle" xml:space="preserve">
+    <value>Meddelelse om Workspace ONE UEM-app-katalog-token – {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAppEulaUpdateNotificationTitle" xml:space="preserve">
+    <value>Meddelelse om Workspace ONE UEM-app opdatering af Vilkår for anvendelse – {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAppForgotPasscodeTokenNotificationTitle" xml:space="preserve">
+    <value>Meddelelse om Workspace ONE UEM-app Glemt adgangskode – {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAppGroupCreationNotificationTitle" xml:space="preserve">
+    <value>Meddelelse om oprettelse af Workspace ONE UEM-app-gruppe – {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAppLogNotificationTitle" xml:space="preserve">
+    <value>Meddelelse om Workspace ONE UEM-app-log – {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAppNotificationTitle" xml:space="preserve">
+    <value>Meddelelse om Workspace ONE UEM-app – {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAppPurchaseTitle" xml:space="preserve">
+    <value>Workspace ONE UEM-app-køb – {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAppRemovalNotificationTitle" xml:space="preserve">
+    <value>Meddelelse om fjernelse af Workspace ONE UEM-app – {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAppReputationAnalysisTitle" xml:space="preserve">
+    <value>Workspace ONE UEM-app-sikkerhedsanalyse – {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAppWorkflowAppAssignmentNotificationTitle" xml:space="preserve">
+    <value>Workspace ONE UEM-app-arbejdsproces – meddelelse om app-tildeling – {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAppWorkflowAppCreatedNotificationTitle" xml:space="preserve">
+    <value>Workspace ONE UEM-app-arbejdsproces – meddelelse om app-oprettelse – {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAppWorkflowAppPublishNotificationTitle" xml:space="preserve">
+    <value>Workspace ONE UEM-app-arbejdsproces – meddelelse om app-udgivelse – {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemAppWorkflowAppReviewNotificationTitle" xml:space="preserve">
+    <value>Workspace ONE UEM-app-arbejdsproces – meddelelse om app-gennemgang – {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemContentNotificationTitle" xml:space="preserve">
+    <value>Meddelelse om Workspace ONE UEM-indhold – {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemDeviceActivationTitle" xml:space="preserve">
+    <value>Workspace ONE UEM-enhedsaktivering – {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemDeviceBlockedByEnrollmentRestrictionTitle" xml:space="preserve">
+    <value>Workspace ONE UEM-enhed blokeret af tilmeldingsbegrænsning – {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemDeviceComplianceViolationTitle" xml:space="preserve">
+    <value>Workspace ONE UEM – overtrædelse af enheds compliance – {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemDeviceEnrolledTitle" xml:space="preserve">
+    <value>Workspace ONE UEM-enhed er tilmeldt – {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemDeviceRemovalTitle" xml:space="preserve">
+    <value>Workspace ONE UEM-enhedsfjernelse – {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemDeviceUnenrolledTitle" xml:space="preserve">
+    <value>Workspace ONE UEM-enhed afmeldt – {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemEmailDomainRegistrationTitle" xml:space="preserve">
+    <value>Workspace ONE UEM – e-maildomæneregistrering – {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemEulaUpdateTitle" xml:space="preserve">
+    <value>Workspace ONE UEM – opdatering af Vilkår for anvendelse – {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemFinalNoticeAppEulaUpdateTitle" xml:space="preserve">
+    <value>SIDSTE ADVARSEL – Workspace ONE UEM-app opdatering af Vilkår for anvendelse – {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemLicenseBasedVppNotificationTitle" xml:space="preserve">
+    <value>Meddelelse om Workspace ONE UEM licensbaseret VPP – {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemProvisioningPackageTitle" xml:space="preserve">
+    <value>Workspace ONE UEM-klargøringspakke – {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemTempAdminActivationTitle" xml:space="preserve">
+    <value>Aktivering af midlertidig Workspace ONE UEM-administratorkonto – {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemUserActivationTitle" xml:space="preserve">
+    <value>Workspace ONE UEM-brugeraktivering – {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UemWipeProtectionNotificationTitle" xml:space="preserve">
+    <value>Meddelelse om Workspace ONE UEM-sletningsbeskyttelse – {Date}</value>
+  </data>
+  <data name="MessageTemplates_Content_UnenrollmentReason" xml:space="preserve">
+    <value>Årsag: {ServerActionSource}</value>
+  </data>
+  <data name="MessageTemplates_Content_UserCommentsForApp" xml:space="preserve">
+    <value>Brugerkommentarer til appen findes nedenfor:</value>
+  </data>
+  <data name="MessageTemplates_Content_UserHasSharedFolder" xml:space="preserve">
+    <value>{ContentShareUserFirstName} {ContentShareUserLastName} ({ContentShareUserEmail}) har delt mappen "{ContentFolderName}" med dig.</value>
+  </data>
+  <data name="MessageTemplates_Content_UserNameAdminUserName" xml:space="preserve">
+    <value>Brugernavn: {AdminUserName}</value>
+  </data>
+  <data name="MessageTemplates_Content_UserNameEmailAddress" xml:space="preserve">
+    <value>Brugernavn: {EmailAddress}</value>
+  </data>
+  <data name="MessageTemplates_Content_UserNameEnrollmentUserName" xml:space="preserve">
+    <value>Brugernavn: {EnrollmentUserName}</value>
+  </data>
+  <data name="MessageTemplates_Content_UsingBrowserToRegisterVppProgramNavigateTo" xml:space="preserve">
+    <value>Ved at anvende din iOS 7-enheds browser til at tilmelde dig Apples licensbaserede VPP-program skal du navigere til</value>
+  </data>
+  <data name="Messagetemplates_Content_WelcomeToWorkspaceOneUEM" xml:space="preserve">
+    <value>Velkommen til Workspace ONE UEM!</value>
+  </data>
+  <data name="MessageTemplates_Content_WhenPromptedEnterUseNamePassword" xml:space="preserve">
+    <value>Når du bliver bedt om det, skal du indtaste dit brugernavn og din adgangskode for tilmelding:</value>
+  </data>
+  <data name="MessageTemplates_Content_WipeLogPage" xml:space="preserve">
+    <value>Slet logfilside</value>
+  </data>
+  <data name="MessageTemplates_Content_WorkspaceOneUem" xml:space="preserve">
+    <value>Workspace ONE UEM</value>
+  </data>
+  <data name="Messagetemplates_Content_WorkspaceOneUEMUser" xml:space="preserve">
+    <value>Workspace ONE UEM-bruger</value>
+  </data>
+  <data name="Messagetemplates_Description_AdminAccountActivation" xml:space="preserve">
+    <value>Standardmeddelelsesskabelon, der bruges, når en administrator bliver tilføjet af en anden administrator fra Console.</value>
+  </data>
+  <data name="Messagetemplates_Description_AdminPasswordChange" xml:space="preserve">
+    <value>Standardmeddelelsesskabelon, der giver en administrator besked om, at vedkommendes adgangskode er blevet ændret. Denne meddelelse er automatiseret og vil altid blive afsendt af sikkerhedsårsager.</value>
+  </data>
+  <data name="Messagetemplates_Description_AdminPasswordExpiryNotification" xml:space="preserve">
+    <value>Standardmeddelelsesskabelon, der underretter en administrator om, at adgangskoden snart udløber, og at det er nødvendigt at reagere for at nulstille adgangskoden</value>
+  </data>
+  <data name="Messagetemplates_Description_AdminPasswordReset" xml:space="preserve">
+    <value>Standardmeddelelsesskabelon, der giver en administrator besked om, at vedkommendes adgangskode er blevet ændret. Denne meddelelse er automatiseret og vil altid blive afsendt af sikkerhedsårsager.</value>
+  </data>
+  <data name="Messagetemplates_Description_AdminPersonalInformationChange" xml:space="preserve">
+    <value>Standardmeddelelsesskabelon, der giver en administrator besked om, at vedkommendes personlige oplysninger er blevet ændret. Denne meddelelse er automatiseret og vil altid blive afsendt af sikkerhedsårsager.</value>
+  </data>
+  <data name="Messagetemplates_Description_AdminPersonalInformationChangeViaApi" xml:space="preserve">
+    <value>Standardmeddelelsesskabelon, der giver en administrator besked om, at vedkommendes personlige oplysninger er blevet ændret via API. Denne meddelelse er automatiseret og vil altid blive afsendt af sikkerhedsårsager.</value>
+  </data>
+  <data name="Messagetemplates_Description_AdminStatusChange" xml:space="preserve">
+    <value>Standardmeddelelsesskabelon, der giver en administrator besked om, at vedkommende er blevet deaktiveret eller genaktiveret. Denne meddelelse er automatiseret og vil altid blive afsendt af sikkerhedsårsager.</value>
+  </data>
+  <data name="Messagetemplates_Description_AppCatalogTokenNotification" xml:space="preserve">
+    <value>Standardmeddelelsesskabelon, der sender tokenoplysninger til brugeren, når vedkommende får adgang til app-kataloget for første gang. Dette vil kun blive sendt, hvis enheden er i en organisationsgruppe, som er konfigureret til tokengodkendelse.</value>
+  </data>
+  <data name="Messagetemplates_Description_ApplicationAssignmentNotification" xml:space="preserve">
+    <value>Standardmeddelelsesskabelon, der giver en administrator besked om, at der er en ny app klar til tildeling.</value>
+  </data>
+  <data name="Messagetemplates_Description_ApplicationCreationNotification" xml:space="preserve">
+    <value>Standardmeddelelsesskabelon, der giver en administrator besked, når en ny app er blevet oprettet.</value>
+  </data>
+  <data name="Messagetemplates_Description_ApplicationEulaFinalNotification" xml:space="preserve">
+    <value>Standardmeddelelsesskabelon, der bruges til at give en sidste advarsel til brugere om, at de skal acceptere de opdaterede eller tilføjede Vilkår for Anvendelse for en app, ellers vil appen blive fjernet.</value>
+  </data>
+  <data name="Messagetemplates_Description_ApplicationEulaNotification" xml:space="preserve">
+    <value>Standardmeddelelsesskabelonen, der giver brugere besked om, at en apps vilkår for anvendelse er tilføjet eller opdateret. Den pålægger dem at acceptere tilføjelsen eller ændringen.</value>
+  </data>
+  <data name="Messagetemplates_Description_ApplicationLogNotification" xml:space="preserve">
+    <value>Standardmeddelelsesskabelon til når en SDK-aktiveret app genererer en nedbrudslogfil, og appen markeres til automatisk at sende nedbrudslogfiler til udviklerens e-mail.</value>
+  </data>
+  <data name="Messagetemplates_Description_ApplicationNotification" xml:space="preserve">
+    <value>Standardmeddelelsesskabelon, der giver en bruger besked om, at en ny app er tilgængelig for download i AirWatch app-kataloget.</value>
+  </data>
+  <data name="Messagetemplates_Description_ApplicationPublishNotification" xml:space="preserve">
+    <value>Standardmeddelelsesskabelon, der giver en administrator besked om, at en ny app er klar til udgivelse.</value>
+  </data>
+  <data name="Messagetemplates_Description_ApplicationReviewNotification" xml:space="preserve">
+    <value>Standardmeddelelsesskabelon, der giver en administrator besked om, at en ny app er klar til gennemsyn.</value>
+  </data>
+  <data name="Messagetemplates_Description_ApplicationScanDetailResult" xml:space="preserve">
+    <value>Standardmeddelelsesskabelon, der giver udviklere besked om den detaljerede app-sikkerhedsanalyserapport.</value>
+  </data>
+  <data name="Messagetemplates_Description_ApplicationScanNotification" xml:space="preserve">
+    <value>Notifikation af fuldførelse af analyse af app-omdømme</value>
+  </data>
+  <data name="Messagetemplates_Description_AppRemoveNotification" xml:space="preserve">
+    <value>Denne meddelelsesskabelon anvendes til at give enheder besked om, at fjernelse af app er blevet udløst for et stort antal enheder over en kort tidsperiode.</value>
+  </data>
+  <data name="Messagetemplates_Description_AppVersionUpdateNotification" xml:space="preserve">
+    <value>Under tilmeldingsprocessen, tilpas meddelelsen der vises i MDM installationsprofil prompten.</value>
+  </data>
+  <data name="Messagetemplates_Description_AuthenticationAppTokenNotification" xml:space="preserve">
+    <value>Skabelon for at sende et token via e-mail til brugere, som skal nulstille adgangskoden i en SDK-app på en enhed.</value>
+  </data>
+  <data name="Messagetemplates_Description_ComplianceViolationAdministratorNotification" xml:space="preserve">
+    <value>Standardmeddelelsesskabelon, der giver administratoren besked om, at en enhed overtræder en compliance-politik, og at brugeren skal sørge for at blive compliant.</value>
+  </data>
+  <data name="Messagetemplates_Description_ComplianceViolationUserNotification" xml:space="preserve">
+    <value>Standardbeskedskabelon, der giver brugeren besked om, at denne overtræder en compliance-politik, og at brugeren skal sørge for at blive compliant.</value>
+  </data>
+  <data name="Messagetemplates_Description_DeviceActivation" xml:space="preserve">
+    <value>Standardmeddelelsesskabelon til at underrette brugere om, at de kan tilmelde deres enhed.</value>
+  </data>
+  <data name="Messagetemplates_Description_DeviceBlockedByRestriction" xml:space="preserve">
+    <value>Standardmeddelelsesskabelon, der giver brugere besked om, at deres enhed er blevet blokeret af en begrænsning.</value>
+  </data>
+  <data name="Messagetemplates_Description_DeviceEnrolled" xml:space="preserve">
+    <value>Standardmeddelelsesskabelon til at underrette brugere om, at deres enhed er blevet tilmeldt.</value>
+  </data>
+  <data name="Messagetemplates_Description_DeviceEnrollmentProgramCustomPrompt" xml:space="preserve">
+    <value>Tilpas teksten der vises i Indstillingsassistentens Godkendelses vindue for enheder tilknyttet en Device Enrollment Program profil.</value>
+  </data>
+  <data name="Messagetemplates_Description_DeviceLockScreenMessageiOS7" xml:space="preserve">
+    <value>Standard HTML-meddelelsesskabelon der vises, når en kommando, der skal vises på låseskærmen, sendes til enheden, når den går tabt.</value>
+  </data>
+  <data name="Messagetemplates_Description_DeviceOutofDateCompliance" xml:space="preserve">
+    <value>Standardmeddelelsesskabelon, der anmoder brugeren om at starte Workspace ONE Intelligent Hub for at lade enheden tjekke ind og køre en kompromitteret skanning.</value>
+  </data>
+  <data name="Messagetemplates_Description_DeviceUnenrolled" xml:space="preserve">
+    <value>Standardmeddelelsesskabelon til at underrette brugere om, at deres enhed er blevet afmeldt.</value>
+  </data>
+  <data name="Messagetemplates_Description_DeviceWipeEmailNotification" xml:space="preserve">
+    <value>Standardmeddelelsesskabelon til at give administrator besked om, at et stort antal enheder er blevet Enterprise-slettet eller Enheds-slettet indenfor en kort tidsperiode.</value>
+  </data>
+  <data name="Messagetemplates_Description_EmailDomainRegistration" xml:space="preserve">
+    <value>Standardmeddelelsesskabelon, der anvendes til at validere e-maildomænet, som skal bruges under den forenklede tilmeldingsproces.</value>
+  </data>
+  <data name="Messagetemplates_Description_EulaNotification" xml:space="preserve">
+    <value>Standardmeddelelsesskabelon til at underrette brugere om, at vilkårene for anvendelse er blevet tilføjet eller opdateret, og bede dem om at godkende tilføjelsen eller ændringen.</value>
+  </data>
+  <data name="Messagetemplates_Description_ExternalUserActivation" xml:space="preserve">
+    <value>Standardmeddelelsesskabelon til at underrette eksterne brugere om kontoaktivering, når en mappe er delt.</value>
+  </data>
+  <data name="Messagetemplates_Description_LicenseBasedPurchasedApplicationInvitation" xml:space="preserve">
+    <value>Standardmeddelelsesskabelon til at underrette tilmeldt bruger om at registrere sig hos Apple mhp. Licensbaseret VPP.</value>
+  </data>
+  <data name="Messagetemplates_Description_MamEnrollmentUserActivation" xml:space="preserve">
+    <value>Standardmeddelelsesskabelon til når en administrator tilføjer en ny bruger fra Console i en OG, der er konfigureret for MAM-tilmelding.</value>
+  </data>
+  <data name="Messagetemplates_Description_MamNewUserActivation" xml:space="preserve">
+    <value>Standardmeddelelsesskabelon til når en bruger tilmeldes i en OG, der er konfigureret til MAM-tilmelding.</value>
+  </data>
+  <data name="Messagetemplates_Description_MentionedCommentNotification" xml:space="preserve">
+    <value>Nævnt i kommentar notifikation</value>
+  </data>
+  <data name="Messagetemplates_Description_NewlyAddedUserToUserGroupNotification" xml:space="preserve">
+    <value>Standardmeddelelsesskabelon til at underrette nyligt tilføjede brugere i en brugergruppe om tidligere delt mappe.</value>
+  </data>
+  <data name="Messagetemplates_Description_NewSharedFolderNotification" xml:space="preserve">
+    <value>Delt mappe notifikation</value>
+  </data>
+  <data name="Messagetemplates_Description_ProvisioningPackageNotification" xml:space="preserve">
+    <value>Standardmeddelelsesskabelonen, der giver en administrator besked om, at klargøringspakken er blevet oprettet og kan downloades.</value>
+  </data>
+  <data name="Messagetemplates_Description_PurchasedApplication" xml:space="preserve">
+    <value>Standardmeddelelsesskabelon, der giver en bruger besked om, at en app er blevet indkøbt på deres vegne og er tilgængelig til download.</value>
+  </data>
+  <data name="Messagetemplates_Description_TempAdminActivation" xml:space="preserve">
+    <value>Standardmeddelelsesskabelon til når en midlertidig administrator bliver tilføjet af en anden administrator i Console.</value>
+  </data>
+  <data name="Messagetemplates_Description_UnRegisterDevice" xml:space="preserve">
+    <value>Standardmeddelelsesskabelon til at underrette brugere om, at deres enhed er blevet afmeldt, og at alle organisationsspecifikke data vil blive fjernet.</value>
+  </data>
+  <data name="Messagetemplates_Description_UserActivation" xml:space="preserve">
+    <value>Standardmeddelelsesskabelonen, der giver brugere besked om, at de er blevet tilføjet som en EMM-bruger og kan tilmelde deres enhed.</value>
+  </data>
+  <data name="Messagetemplates_Description_VendorApplicationGroupCreationNotification" xml:space="preserve">
+    <value>Standardmeddelelsesskabelon, der underretter en bruger om, at leverandørapp-gruppe(r) er blevet oprettet og er tilgængelige til implementering af compliance-politikker.</value>
+  </data>
+  <data name="Messagetemplates_Description_WorkSpaceDeviceActivation" xml:space="preserve">
+    <value>Standardmeddelelsesskabelon til at underrette brugere om, at de kan tilmelde deres enhed.</value>
+  </data>
+  <data name="Messagetemplates_Name_AdminAccountActivation" xml:space="preserve">
+    <value>Administratoraktivering</value>
+  </data>
+  <data name="Messagetemplates_Name_AdminPasswordChange" xml:space="preserve">
+    <value>Admin adgangskode skift</value>
+  </data>
+  <data name="Messagetemplates_Name_AdminPasswordExpiryNotification" xml:space="preserve">
+    <value>Udløbsnotificering for administratoradgangskode</value>
+  </data>
+  <data name="Messagetemplates_Name_AdminPasswordReset" xml:space="preserve">
+    <value>Admin adgangskode skift</value>
+  </data>
+  <data name="Messagetemplates_Name_AdminPersonalInformationChange" xml:space="preserve">
+    <value>Ændring af personlige admin oplysninger</value>
+  </data>
+  <data name="Messagetemplates_Name_AdminPersonalInformationChangeViaApi" xml:space="preserve">
+    <value>Ændring af administratorens personlige oplysninger via API</value>
+  </data>
+  <data name="Messagetemplates_Name_AdminStatusChange" xml:space="preserve">
+    <value>Ændring af administrativ status</value>
+  </data>
+  <data name="Messagetemplates_Name_AppCatalogTokenNotification" xml:space="preserve">
+    <value>App-katalog - token-notifikation</value>
+  </data>
+  <data name="Messagetemplates_Name_ApplicationAssignmentNotification" xml:space="preserve">
+    <value>App-arbejdsgang – Tildel notifikation</value>
+  </data>
+  <data name="Messagetemplates_Name_ApplicationCreationNotification" xml:space="preserve">
+    <value>App-arbejdsgang – Oprettelsesnotifikation</value>
+  </data>
+  <data name="Messagetemplates_Name_ApplicationEulaFinalNotification" xml:space="preserve">
+    <value>Vilkår for anvendelse af app – Sidste notifikation</value>
+  </data>
+  <data name="Messagetemplates_Name_ApplicationEulaNotification" xml:space="preserve">
+    <value>Vilkår for anvendelse af app – Opdateringsnotifikation</value>
+  </data>
+  <data name="Messagetemplates_Name_ApplicationLogNotification" xml:space="preserve">
+    <value>App-log-notifikation for SDK</value>
+  </data>
+  <data name="Messagetemplates_Name_ApplicationNotification" xml:space="preserve">
+    <value>App notifikation</value>
+  </data>
+  <data name="Messagetemplates_Name_ApplicationPublishNotification" xml:space="preserve">
+    <value>App-arbejdsgang – Udgiv notifikation</value>
+  </data>
+  <data name="Messagetemplates_Name_ApplicationReviewNotification" xml:space="preserve">
+    <value>App-arbejdsgang – Gennemse notifikation</value>
+  </data>
+  <data name="Messagetemplates_Name_ApplicationScanDetailResult" xml:space="preserve">
+    <value>Sikkerhedsanalysedetaljer for app-omdømme</value>
+  </data>
+  <data name="Messagetemplates_Name_ApplicationScanNotification" xml:space="preserve">
+    <value>Notifikation af fuldførelse af analyse af app-omdømme</value>
+  </data>
+  <data name="Messagetemplates_Name_AppRemoveNotification" xml:space="preserve">
+    <value>App – Fjern notifikation om Grænse nået</value>
+  </data>
+  <data name="Messagetemplates_Name_AppVersionUpdateNotification" xml:space="preserve">
+    <value>MDM profilinstallering (kun iOS)</value>
+  </data>
+  <data name="Messagetemplates_Name_AuthenticationAppTokenNotification" xml:space="preserve">
+    <value>App glemte notifikationstoken for adgangskode</value>
+  </data>
+  <data name="Messagetemplates_Name_ComplianceViolationAdministratorNotification" xml:space="preserve">
+    <value>Notifikation til admin vedrørende complianceovertrædelse</value>
+  </data>
+  <data name="Messagetemplates_Name_ComplianceViolationUserNotification" xml:space="preserve">
+    <value>Meddelelser til brugeren vedrørende complianceovertrædelse</value>
+  </data>
+  <data name="Messagetemplates_Name_DeviceActivation" xml:space="preserve">
+    <value>Aktivering af enhed</value>
+  </data>
+  <data name="Messagetemplates_Name_DeviceBlockedByRestriction" xml:space="preserve">
+    <value>Enhed blokeret af tilmeldingsbegrænsning</value>
+  </data>
+  <data name="Messagetemplates_Name_DeviceEnrolled" xml:space="preserve">
+    <value>Enheden er tilmeldt</value>
+  </data>
+  <data name="Messagetemplates_Name_DeviceEnrollmentProgramCustomPrompt" xml:space="preserve">
+    <value>Enhedstilmeldingsprogram brugerdefineret prompt</value>
+  </data>
+  <data name="Messagetemplates_Name_DeviceLockScreenMessageiOS7" xml:space="preserve">
+    <value>Skærmlåsnotifikation for tabt enhed (kun iOS7)</value>
+  </data>
+  <data name="Messagetemplates_Name_DeviceOutofDateCompliance" xml:space="preserve">
+    <value>Anmod om compliance tjek</value>
+  </data>
+  <data name="Messagetemplates_Name_DeviceUnenrolled" xml:space="preserve">
+    <value>Enhed afmeldt</value>
+  </data>
+  <data name="Messagetemplates_Name_DeviceWipeEmailNotification" xml:space="preserve">
+    <value>Sletningsbeskyttelse notifikation</value>
+  </data>
+  <data name="Messagetemplates_Name_EmailDomainRegistration" xml:space="preserve">
+    <value>Registrering af e-maildomæne</value>
+  </data>
+  <data name="Messagetemplates_Name_EulaNotification" xml:space="preserve">
+    <value>Vilkår for anvendelse notifikation</value>
+  </data>
+  <data name="Messagetemplates_Name_ExternalUserActivation" xml:space="preserve">
+    <value>Ekstern bruger aktivering</value>
+  </data>
+  <data name="Messagetemplates_Name_LicenseBasedPurchasedApplicationInvitation" xml:space="preserve">
+    <value>Licensbaseret VPP-invitation</value>
+  </data>
+  <data name="Messagetemplates_Name_MamEnrollmentUserActivation" xml:space="preserve">
+    <value>MAM admin-initieret aktivering af ny bruger</value>
+  </data>
+  <data name="Messagetemplates_Name_MamNewUserActivation" xml:space="preserve">
+    <value>MAM bruger-initieret aktivering af ny bruger</value>
+  </data>
+  <data name="Messagetemplates_Name_MentionedCommentNotification" xml:space="preserve">
+    <value>Nævnt i en kommentar</value>
+  </data>
+  <data name="Messagetemplates_Name_NewlyAddedUserToUserGroupNotification" xml:space="preserve">
+    <value>Del besked for nyligt tilføjet bruger i brugergruppe</value>
+  </data>
+  <data name="Messagetemplates_Name_NewSharedFolderNotification" xml:space="preserve">
+    <value>Ny delt mappe</value>
+  </data>
+  <data name="Messagetemplates_Name_ProvisioningPackageNotification" xml:space="preserve">
+    <value>Notifikation for klargøringspakkestatus</value>
+  </data>
+  <data name="Messagetemplates_Name_PurchasedApplication" xml:space="preserve">
+    <value>App indkøb</value>
+  </data>
+  <data name="Messagetemplates_Name_TempAdminActivation" xml:space="preserve">
+    <value>Midlertidig administratoraktivering</value>
+  </data>
+  <data name="Messagetemplates_Name_UnRegisterDevice" xml:space="preserve">
+    <value>Fjern registrering af enhed</value>
+  </data>
+  <data name="Messagetemplates_Name_UserActivation" xml:space="preserve">
+    <value>Bruger aktivering</value>
+  </data>
+  <data name="Messagetemplates_Name_VendorApplicationGroupCreationNotification" xml:space="preserve">
+    <value>Forhandler applikation gruppe oprettelse notifikation</value>
+  </data>
+  <data name="Messagetemplates_Name_WorkSpaceDeviceActivation" xml:space="preserve">
+    <value>Aktivering af Container enhed</value>
+  </data>
+  <data name="Messagetemplates_Subject_AdminAccountActivation" xml:space="preserve">
+    <value>Aktivering af Workspace ONE UEM-administratorkonto</value>
+  </data>
+  <data name="Messagetemplates_Subject_AdminPasswordChange" xml:space="preserve">
+    <value>Workspace ONE UEM-administratoradgangskode er opdateret</value>
+  </data>
+  <data name="Messagetemplates_Subject_AdminPasswordExpiryNotification" xml:space="preserve">
+    <value>Udløbsnotifikation for administratoradgangskode</value>
+  </data>
+  <data name="Messagetemplates_Subject_AdminPasswordReset" xml:space="preserve">
+    <value>Workspace ONE UEM-administratoradgangskode er nulstillet</value>
+  </data>
+  <data name="Messagetemplates_Subject_AdminPersonalInformationChange" xml:space="preserve">
+    <value>Workspace ONE UEM-administrators personlige oplysninger er opdateret</value>
+  </data>
+  <data name="Messagetemplates_Subject_AdminPersonalInformationChangeViaApi" xml:space="preserve">
+    <value>Workspace ONE UEM-administrators personlige oplysninger er opdateret</value>
+  </data>
+  <data name="Messagetemplates_Subject_AdminStatusChange" xml:space="preserve">
+    <value>Workspace ONE UEM-administratorstatus er opdateret</value>
+  </data>
+  <data name="Messagetemplates_Subject_AppCatalogTokenNotification" xml:space="preserve">
+    <value>Workspace ONE UEM-app-katalog-token</value>
+  </data>
+  <data name="Messagetemplates_Subject_ApplicationAssignmentNotification" xml:space="preserve">
+    <value>Workspace ONE UEM – app er tilgængelig til tildeling</value>
+  </data>
+  <data name="Messagetemplates_Subject_ApplicationCreationNotification" xml:space="preserve">
+    <value>Workspace ONE UEM – ny app er oprettet</value>
+  </data>
+  <data name="Messagetemplates_Subject_ApplicationEulaFinalNotification" xml:space="preserve">
+    <value>SIDSTE ADVARSEL – Workspace ONE UEM-app opdatering af Vilkår for anvendelse</value>
+  </data>
+  <data name="Messagetemplates_Subject_ApplicationEulaNotification" xml:space="preserve">
+    <value>Opdatering af Vilkår for anvendelse af app</value>
+  </data>
+  <data name="Messagetemplates_Subject_ApplicationLogNotification" xml:space="preserve">
+    <value>Fejllog for Workspace ONE UEM-app</value>
+  </data>
+  <data name="Messagetemplates_Subject_ApplicationNotification" xml:space="preserve">
+    <value>Workspace ONE UEM – app er tilgængelig til download</value>
+  </data>
+  <data name="Messagetemplates_Subject_ApplicationPublishNotification" xml:space="preserve">
+    <value>Workspace ONE UEM – app er tilgængelig til udgivelse</value>
+  </data>
+  <data name="Messagetemplates_Subject_ApplicationReviewNotification" xml:space="preserve">
+    <value>Workspace ONE UEM – meddelelse om app-gennemgang</value>
+  </data>
+  <data name="Messagetemplates_Subject_ApplicationScanDetailResult" xml:space="preserve">
+    <value>Workspace ONE UEM – app-sikkerhedsanalyserapport</value>
+  </data>
+  <data name="Messagetemplates_Subject_ApplicationScanNotification" xml:space="preserve">
+    <value>Sikkerhedsanalyse fuldført</value>
+  </data>
+  <data name="Messagetemplates_Subject_AppRemoveNotification" xml:space="preserve">
+    <value>Bemærk: Fjernelsesgrænse for app overskredet</value>
+  </data>
+  <data name="Messagetemplates_Subject_AuthenticationAppTokenNotification" xml:space="preserve">
+    <value>Token for glemt adgangskode</value>
+  </data>
+  <data name="Messagetemplates_Subject_ComplianceViolationAdministratorNotification" xml:space="preserve">
+    <value>Opmærksomhed er påkrævet: Overtrædelse af Workspace ONE UEM-enheds compliance</value>
+  </data>
+  <data name="Messagetemplates_Subject_ComplianceViolationUserNotification" xml:space="preserve">
+    <value>Opmærksomhed er påkrævet: Overtrædelse af Workspace ONE UEM-enheds compliance</value>
+  </data>
+  <data name="Messagetemplates_Subject_DeviceActivation" xml:space="preserve">
+    <value>Workspace ONE UEM-enhedsaktivering</value>
+  </data>
+  <data name="Messagetemplates_Subject_DeviceBlockedByRestriction" xml:space="preserve">
+    <value>Workspace ONE UEM – enhed blokeret af tilmeldingsbegrænsning</value>
+  </data>
+  <data name="Messagetemplates_Subject_DeviceEnrolled" xml:space="preserve">
+    <value>Workspace ONE UEM – enhed er tilmeldt</value>
+  </data>
+  <data name="Messagetemplates_Subject_DeviceEnrollmentProgramCustomPrompt" xml:space="preserve">
+    <value>Enhedstilmeldingsprogram brugerdefineret prompt</value>
+  </data>
+  <data name="Messagetemplates_Subject_DeviceLockScreenMessageiOS7" xml:space="preserve">
+    <value>Skærmmeddelelse for enhedslås – iOS7</value>
+  </data>
+  <data name="Messagetemplates_Subject_DeviceOutofDateCompliance" xml:space="preserve">
+    <value>Workspace ONE UEM-anmodning om compliance-tjek</value>
+  </data>
+  <data name="Messagetemplates_Subject_DeviceUnenrolled" xml:space="preserve">
+    <value>Workspace ONE UEM – enhed er frameldt</value>
+  </data>
+  <data name="Messagetemplates_Subject_DeviceWipeEmailNotification" xml:space="preserve">
+    <value>Workspace ONE UEM-sletningsgrænse er overskredet</value>
+  </data>
+  <data name="Messagetemplates_Subject_EmailDomainRegistration" xml:space="preserve">
+    <value>Workspace ONE UEM – e-maildomæneregistrering</value>
+  </data>
+  <data name="Messagetemplates_Subject_EulaNotification" xml:space="preserve">
+    <value>Workspace ONE UEM – opdatering af Vilkår for anvendelse</value>
+  </data>
+  <data name="Messagetemplates_Subject_ExternalUserActivation" xml:space="preserve">
+    <value>{ContentShareUserFirstName} {ContentShareUserLastName} har delt en mappe med dig på Workspace ONE UEM</value>
+  </data>
+  <data name="Messagetemplates_Subject_LicenseBasedPurchasedApplicationInvitation" xml:space="preserve">
+    <value>Workspace ONE UEM – Link til registrering med Apple for licensbaseret VPP</value>
+  </data>
+  <data name="Messagetemplates_Subject_MamEnrollmentUserActivation" xml:space="preserve">
+    <value>Workspace ONE UEM-brugeraktivering</value>
+  </data>
+  <data name="Messagetemplates_Subject_MamNewUserActivation" xml:space="preserve">
+    <value>Workspace ONE UEM-brugeraktivering</value>
+  </data>
+  <data name="Messagetemplates_Subject_MentionedCommentNotification" xml:space="preserve">
+    <value>{Commenter} har nævnt dig i en kommentar til filen ”{ContentName}”</value>
+  </data>
+  <data name="Messagetemplates_Subject_NewlyAddedUserToUserGroupNotification" xml:space="preserve">
+    <value>Ny(e) indholdsmappe(r) er delt med dig</value>
+  </data>
+  <data name="Messagetemplates_Subject_NewSharedFolderNotification" xml:space="preserve">
+    <value>{ContentShareUserFirstName} har delt mappen "{ContentFolderName}" med dig.</value>
+  </data>
+  <data name="Messagetemplates_Subject_ProvisioningPackageNotification" xml:space="preserve">
+    <value>Workspace ONE UEM-klargøringspakke oprettet</value>
+  </data>
+  <data name="Messagetemplates_Subject_PurchasedApplication" xml:space="preserve">
+    <value>Workspace ONE UEM-app-køb</value>
+  </data>
+  <data name="Messagetemplates_Subject_TempAdminActivation" xml:space="preserve">
+    <value>Workspace ONE UEM – aktivering af midlertidig administratorkonto</value>
+  </data>
+  <data name="Messagetemplates_Subject_UnRegisterDevice" xml:space="preserve">
+    <value>Workspace ONE UEM-enhedsfjernelse</value>
+  </data>
+  <data name="Messagetemplates_Subject_UserActivation" xml:space="preserve">
+    <value>Workspace ONE UEM-brugeraktivering</value>
+  </data>
+  <data name="Messagetemplates_Subject_VendorApplicationGroupCreationNotification" xml:space="preserve">
+    <value>Workspace ONE UEM – ny app-gruppe er oprettet</value>
+  </data>
+  <data name="Messagetemplates_Subject_WorkSpaceDeviceActivation" xml:space="preserve">
+    <value>Workspace ONE UEM-enhedsaktivering</value>
+  </data>
+</root>

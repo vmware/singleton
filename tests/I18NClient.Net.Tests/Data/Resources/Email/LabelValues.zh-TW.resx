@@ -1,0 +1,261 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AdminPersonalInformationChangeViaApi" xml:space="preserve">
+    <value>管理員的個人資訊已透過 API 變更</value>
+  </data>
+  <data name="AdminPersonalInformationChangeViaApiMTD" xml:space="preserve">
+    <value>預設 HTML 訊息範本，用於通知管理員其個人資訊已透過 API 變更。此訊息是基於安全性目的自動產生的，一律會傳送。</value>
+  </data>
+  <data name="BlockAttachments" xml:space="preserve">
+    <value>封鎖附件</value>
+  </data>
+  <data name="ConfirmEnrollmentEmailMessage" xml:space="preserve">
+    <value>您要傳送註冊電子郵件嗎?</value>
+  </data>
+  <data name="CustomAttribute1LookUpText" xml:space="preserve">
+    <value>自訂屬性 1</value>
+  </data>
+  <data name="CustomAttribute2LookUpText" xml:space="preserve">
+    <value>自訂屬性 2</value>
+  </data>
+  <data name="CustomAttribute3LookUpText" xml:space="preserve">
+    <value>自訂屬性 3</value>
+  </data>
+  <data name="CustomAttribute4LookUpText" xml:space="preserve">
+    <value>自訂屬性 4</value>
+  </data>
+  <data name="CustomAttribute5LookUpText" xml:space="preserve">
+    <value>自訂屬性 5</value>
+  </data>
+  <data name="EmailListViewError" xml:space="preserve">
+    <value>請檢查記錄。發生錯誤，作業失敗！</value>
+  </data>
+  <data name="EmailNotificationInstallerV1" xml:space="preserve">
+    <value>Email Notification Installer V1</value>
+  </data>
+  <data name="EmailNotificationInstallerV2" xml:space="preserve">
+    <value>Email Notification Installer V2</value>
+  </data>
+  <data name="ENSSettingsInfo" xml:space="preserve">
+    <value>適用於 VMware Boxer 和 Inbox 用戶端的 Email Notification Service 豐富了使用者的通知體驗。從「資源」入口網站下載適當的 ENS 產品版本 {0} 或 {1} 到已連接網路的機器。CNS URL 是在網站 URL 全域設定。如果您沒有存取此頁面的權限，且 URL 未準確填入，請聯絡您的 AirWatch 管理員或 AW 支援 (共用的 SaaS)。</value>
+  </data>
+  <data name="Exch2019" xml:space="preserve">
+    <value>Exchange 2019</value>
+  </data>
+  <data name="ExternalEnrollment" xml:space="preserve">
+    <value>外部註冊</value>
+  </data>
+  <data name="Get" xml:space="preserve">
+    <value>取得</value>
+  </data>
+  <data name="getStatus" xml:space="preserve">
+    <value>取得狀態</value>
+  </data>
+  <data name="GmailUpdateFailed" xml:space="preserve">
+    <value>Gmail 更新失敗</value>
+  </data>
+  <data name="GoogleAccessUpdate" xml:space="preserve">
+    <value>Google 存取更新</value>
+  </data>
+  <data name="GoogleCustomAttributeWarningMessage" xml:space="preserve">
+    <value>必須在 [目錄服務使用者] 索引標籤上啟用 [自訂屬性]</value>
+  </data>
+  <data name="GoogleProvisionPasswordOnUnenrollment" xml:space="preserve">
+    <value>取消註冊時輪換設定檔</value>
+  </data>
+  <data name="GoogleProvisionPasswordOnUnenrollmentToolTip" xml:space="preserve">
+    <value>使用者註冊多部裝置時，請停用此功能，以避免取消註冊時發生設定檔及密碼輪換</value>
+  </data>
+  <data name="GoogleTokenRevocationToolTip" xml:space="preserve">
+    <value>啟用 MDM 合規性動作以撤銷使用者的 G 套件 Token。</value>
+  </data>
+  <data name="GoogleTokenRevocationWarningMessage" xml:space="preserve">
+    <value>可能只能針對一個企業群組中的一個 MEM 組態啟用 Token 撤銷功能。</value>
+  </data>
+  <data name="GoogleUserEmailAddressType" xml:space="preserve">
+    <value>Google 使用者電子郵件地址</value>
+  </data>
+  <data name="HelpMessageGoogleAppsConfig" xml:space="preserve">
+    <value>此 Email 伺服器類型的 Email 管理，是透過與 Email 伺服器的直接整合而獲得支援。</value>
+  </data>
+  <data name="HelpMessageJSegConfig" xml:space="preserve">
+    <value>此電子郵件伺服器的電子郵件管理功能需要在企業內部安裝 AirWatch Secure Email Gateway (SEG) 代理伺服器。完成下方的基本設定後，您就能從此精靈的 [摘要] 頁面上下載 SEG 應用程式的安裝程式。</value>
+  </data>
+  <data name="HelpMessagePowerShellConfig" xml:space="preserve">
+    <value>此 Email 伺服器類型的 Email 管理，是透過與 Email 伺服器的直接 PowerShell 整合而獲得支援，不需要 AirWatch Secure Email Gateway (SEG) Proxy 伺服器。</value>
+  </data>
+  <data name="HelpMessageSegAnnouncement" xml:space="preserve">
+    <value>VMware 已宣佈淘汰傳統 SEG。請檢閱 {0}，以取得更多詳細資訊。</value>
+  </data>
+  <data name="InvalidSEGClusterHostName" xml:space="preserve">
+    <value>SEG 叢集主機無效。僅允許有效的 IPV4/主機名稱。</value>
+  </data>
+  <data name="IsGoogleTokenRevocationEnabled" xml:space="preserve">
+    <value>Token 撤銷</value>
+  </data>
+  <data name="MailServerUpdateFailed" xml:space="preserve">
+    <value>Email 伺服器更新失敗</value>
+  </data>
+  <data name="MessageTemplates_Content_BlockEmailIfPolicyViolation" xml:space="preserve">
+    <value>基於公司電子郵件安全性原則，此電子郵件已遭到封鎖。請聯絡您的管理員，以取得進一步的資訊。</value>
+  </data>
+  <data name="MessageTemplates_Description_BlockEmail" xml:space="preserve">
+    <value>封鎖電子郵件時要傳送給使用者的預設訊息範本。</value>
+  </data>
+  <data name="MessageTemplates_Name_BlockEmail" xml:space="preserve">
+    <value>封鎖 Email</value>
+  </data>
+  <data name="MessageTemplates_Subject_BlockEmail" xml:space="preserve">
+    <value>電子郵件已遭到封鎖</value>
+  </data>
+  <data name="PendingAllow" xml:space="preserve">
+    <value>擱置允許</value>
+  </data>
+  <data name="PendingBlock" xml:space="preserve">
+    <value>擱置封鎖</value>
+  </data>
+  <data name="RevokeGoogleTokenOnDeviceWipe" xml:space="preserve">
+    <value>抹除裝置時自動撤銷。</value>
+  </data>
+  <data name="RevokeGoogleTokenOnDeviceWipeToolTip" xml:space="preserve">
+    <value>執行取消註冊和企業抹除動作時啟用 Token 撤銷。</value>
+  </data>
+  <data name="Segannouncement" xml:space="preserve">
+    <value>My Workspace ONE 宣告</value>
+  </data>
+  <data name="setConfig" xml:space="preserve">
+    <value>設定組態</value>
+  </data>
+  <data name="UserEmailPolicyToolTipTooltip" xml:space="preserve">
+    <value>範例：
+ 
+在搜尋方塊中若有「Acme*」值，將選取以「Acme」文字為開頭的所有使用者/群組
+ 
+在搜尋方塊中若有「*Acme*」值，將選取包含「Acme」文字的所有使用者/群組
+ 
+在搜尋方塊中若有「*Acme」值，將選取以「Acme」文字為結尾的所有使用者/群組</value>
+  </data>
+  <data name="UserPrincipalNameLookupText" xml:space="preserve">
+    <value>使用者主體名稱</value>
+  </data>
+  <data name="WorkspaceOneUEMLoginRecovery" xml:space="preserve">
+    <value>Workspace ONE UEM 登入復原</value>
+  </data>
+</root>

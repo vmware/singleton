@@ -1,0 +1,2906 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AccessDeniedForOG" xml:space="preserve">
+    <value>Geçerli Organizasyon grubunun uygulamaya erişimi yok</value>
+  </data>
+  <data name="AccessPoliciesIDMSetupArg" xml:space="preserve">
+    <value>Erişim Politikalarının kullanılabilmesi için önce Workspace ONE'ın kurulması gerekir. {0} konumuna gidin ve Workspace ONE kurulumunu tamamlayın. Tamamlandıktan sonra oturumu kapatıp açın ve tekrar deneyin.</value>
+  </data>
+  <data name="AccountNameExample" xml:space="preserve">
+    <value>ör. VMware</value>
+  </data>
+  <data name="AccountNotifyEmail" xml:space="preserve">
+    <value>E-posta Bildirim Ayarı</value>
+  </data>
+  <data name="AccountNotifyEmailInfo" xml:space="preserve">
+    <value>E-posta Bildirimleri</value>
+  </data>
+  <data name="AccountNotifyPush" xml:space="preserve">
+    <value>ENS2</value>
+  </data>
+  <data name="AccountNotifyPushInfo" xml:space="preserve">
+    <value>E-posta bildirim hizmetini etkinleştirir veya devre dışı bırakır.</value>
+  </data>
+  <data name="AccountSMIMESignByDefault" xml:space="preserve">
+    <value>E-postayı otomatik olarak imzala</value>
+  </data>
+  <data name="AccountSMIMESignByDefaultInfo" xml:space="preserve">
+    <value>Oluşturma görünümü başlatıldığında varsayılan olarak S/MIME imzalamayı mümkün hale getirir</value>
+  </data>
+  <data name="AccountSyncCalendar" xml:space="preserve">
+    <value>Takvimi Eşitleme Ayarı</value>
+  </data>
+  <data name="AccountSyncCalendarInfo" xml:space="preserve">
+    <value>Takvimin aygıta eşitlenmesini devre dışı bırak</value>
+  </data>
+  <data name="AccountSyncContact" xml:space="preserve">
+    <value>Kişileri Eşitleme Ayarı</value>
+  </data>
+  <data name="AccountSyncContactInfo" xml:space="preserve">
+    <value>Kişilerin aygıta eşitlenmesini devre dışı bırak</value>
+  </data>
+  <data name="AccountSyncEmail" xml:space="preserve">
+    <value>E-posta Eşitleme Ayarı</value>
+  </data>
+  <data name="AccountSyncEmailInfo" xml:space="preserve">
+    <value>E-postaların aygıta eşitlenmesini devre dışı bırak</value>
+  </data>
+  <data name="AccountUseOAuth" xml:space="preserve">
+    <value>Modern Kimlik Doğrulama</value>
+  </data>
+  <data name="AccountUseOAuthInfo" xml:space="preserve">
+    <value>Etkinleştirildiğinde, kayıt sırasında kullanıcılar kimlik doğrulama için oturum açma sayfasına yeniden yönlendirilir</value>
+  </data>
+  <data name="ActionsGrid" xml:space="preserve">
+    <value>Eylem Tablosu</value>
+  </data>
+  <data name="ActionsNotShownForProductBasedApps" xml:space="preserve">
+    <value>"Ürün" paketinin parçası olan uygulamalar için ayrı yükleme ve kaldırma işlemleri kısıtlanmıştır.</value>
+  </data>
+  <data name="ActivateApplication" xml:space="preserve">
+    <value>Uygulamayı Etkinleştir</value>
+  </data>
+  <data name="AddContingencies" xml:space="preserve">
+    <value>Olası Durumlar Ekle</value>
+  </data>
+  <data name="AIPSensitivityLabels" xml:space="preserve">
+    <value>AIP Hassasiyet Etiketleri</value>
+  </data>
+  <data name="AllAppsImportedFromPlay" xml:space="preserve">
+    <value>Tüm uygulamalar zaten karşıya yüklenmiş</value>
+  </data>
+  <data name="AllAppsTab" xml:space="preserve">
+    <value>Tüm Uygulamalar</value>
+  </data>
+  <data name="Alloted" xml:space="preserve">
+    <value>Ayrılan</value>
+  </data>
+  <data name="AllowActionArchiveInfo" xml:space="preserve">
+    <value>Bu, e-postaları arşivleme özelliğini sağlar veya engeller</value>
+  </data>
+  <data name="AllowActionSpamInfo" xml:space="preserve">
+    <value>Devre dışı bırakılırsa son kullanıcılar için Workspace ONE Boxer'daki İstenmeyen Posta seçeneği kullanılamaz hale gelir. Etkinleştirilir ve iletilecek olan e-posta adresi sunulmazsa istenmeyen posta raporları Gereksiz E-postalara taşınır.</value>
+  </data>
+  <data name="AllowAnnotations" xml:space="preserve">
+    <value>Ek Açıklamalara İzin Ver</value>
+  </data>
+  <data name="AllowAnnotationsTip" xml:space="preserve">
+    <value>El yazısı ve vurgulama araçlarının kullanımına izin verir.</value>
+  </data>
+  <data name="AllowAppRemovalsWithoutProtectionTimeWindowHelp" xml:space="preserve">
+    <value>Yöneticiler kaldırmaları onaylayıp sürdürdüklerinde, kaldırma eylemini başarılı bir şekilde gerçekleştirebilmek üzere burada zamanlanmış aralıkta bu uygulama için koruma tetiklenemz. Aralık başladıktan sonra, etkilenen aygıtlar "dosyalanan etkilenen aygıtlar" içinde yapılandırılan sayıya ulaşırsa koruma tekrar tetiklenecektir.</value>
+  </data>
+  <data name="AllowArchivingEmails" xml:space="preserve">
+    <value>E-postaların Arşivlenmesine İzin Ver</value>
+  </data>
+  <data name="AllowAttachmentsDownloadInfo" xml:space="preserve">
+    <value>Eklerin indirilmesini etkinleştirir veya devre dışı bırakır.</value>
+  </data>
+  <data name="AllowAttachmentsInfo" xml:space="preserve">
+    <value>E-postaları göndermek için ekleri etkinleştirir veya devre dışı bırakır</value>
+  </data>
+  <data name="AllowAttachmentsTip" xml:space="preserve">
+    <value>Not ekleri özelliğini etkinleştirir veya devre dışı bırakır. Devre dışı bırakıldığında, hiçbir ek türüne izin verilmez.</value>
+  </data>
+  <data name="AllowCameraTip" xml:space="preserve">
+    <value>Aygıt kamera seçeneğini etkinleştirir veya devre dışı bırakır.</value>
+  </data>
+  <data name="AllowCrashReportingInfo" xml:space="preserve">
+    <value>Varsayılan olarak, Boxer'da çökmelerin anonim olarak rapor edilmesine izin verilir. Çökmeleri görüp düzeltmemize izin vermek için bu seçeneğin etkin kalmasını tavsiye ederiz</value>
+  </data>
+  <data name="AllowDocProvidersInfo" xml:space="preserve">
+    <value>Workspace ONE Boxer içinde harici sağlayıcılar (iCloud, Dropbox, Google Drive vb.) tarafından sunulan ekleri etkinleştirir ya da devre dışı bırakır.</value>
+  </data>
+  <data name="AllowDocumentScanner" xml:space="preserve">
+    <value>Belge Tarayıcıya İzin Ver</value>
+  </data>
+  <data name="AllowDocumentScannerTip" xml:space="preserve">
+    <value>Belge tarama özelliğini etkinleştirir veya devre dışı bırakır.</value>
+  </data>
+  <data name="AllowEnterpriseContentInfo" xml:space="preserve">
+    <value>Kurumsal İçerik, çevrimiçi havuzlarınızla karşılıklı olarak dosya kaydetme ve görüntüleme işlemleri için Workspace ONE Content'teki havuz kurulumlarınızı Boxer'a taşır. Bu yapılandırma için SSO'nun etkinleştirilmesi gerekir. </value>
+  </data>
+  <data name="AllowExchange" xml:space="preserve">
+    <value>Exchange'e İzin Ver</value>
+  </data>
+  <data name="AllowGallery" xml:space="preserve">
+    <value>Galeri'ye İzin Ver</value>
+  </data>
+  <data name="AllowGalleryTip" xml:space="preserve">
+    <value>Aygıt görüntü galerisinin erişimini ve kullanımını etkinleştirir veya devre dışı bırakır.</value>
+  </data>
+  <data name="AllowHyperlinksTip" xml:space="preserve">
+    <value>Kullanıcıların köprü girmesine izin verir.</value>
+  </data>
+  <data name="AllowList" xml:space="preserve">
+    <value>İzin Verilenler Listesi</value>
+  </data>
+  <data name="AllowLocalCalendarsInfo" xml:space="preserve">
+    <value>Workspace ONE Boxer'da yerel takvimleri etkinleştirmek için Doğru olarak ayarlayın. Devre dışı bırakılırsa Workspace ONE Boxer'daki yerel takvimler seçeneği son kullanıcılar için kullanılamaz hale gelir.</value>
+  </data>
+  <data name="AllowMetricsInfo" xml:space="preserve">
+    <value>Ürünler konusunda kararlar vermemize yardımcı olan anonim metrik toplama işlevini devre dışı bırakmak isteyip istemediğinizi belirleyin.</value>
+  </data>
+  <data name="AllowOpenInInfo" xml:space="preserve">
+    <value>Açma veya Workspace ONE Boxer'da paylaşma işlevlerini kullanarak diğer uygulamalardan dosya ekleme özelliğini etkinleştirir veya devre dışı bırakır. Eklerin açılması veya paylaşılması devre dışı bırakıldığında "Yöneticiniz harici uygulamalardan gelen ekleri kısıtladı" mesajı görüntülenir.</value>
+  </data>
+  <data name="AllowRemovalsForDuration" xml:space="preserve">
+    <value>Koruma Olmadan Kaldırmaya İzin Ver (sa.)</value>
+  </data>
+  <data name="AllowTextBoxes" xml:space="preserve">
+    <value>Metin Kutularına İzin Ver</value>
+  </data>
+  <data name="AllowTextBoxesTip" xml:space="preserve">
+    <value>Metin kutularına izin verir.</value>
+  </data>
+  <data name="AllowUserInstallDeferralLabel" xml:space="preserve">
+    <value>Kullanıcı Yükleme Ertelemesine İzin Ver</value>
+  </data>
+  <data name="AllowUserInstallDeferralTooltip" xml:space="preserve">
+    <value>Kullanıcının bu uygulamanın yüklemesini ertelemesine izin vermek için etkinleştirin</value>
+  </data>
+  <data name="AllowUserRegistrationMessage" xml:space="preserve">
+    <value>Ortam URL'nize ve GroupID'nize sahip herhangi bir kullanıcının bir kullanıcı hesabı oluşturmasına ve kurumsal kaynaklara erişim elde etmesine izin verir. Yetkisiz kullanıcıların erişim elde etmesini önlemek için bu seçeneği kaldırın, kullanıcı hesabı oluşturmak için Hesaplar&gt;Kullanıcılar&gt;Liste Görünümü&gt;"Kullanıcı Ekle" kısmına gidin.</value>
+  </data>
+  <data name="AllowVoiceRecordings" xml:space="preserve">
+    <value>Ses Kayıtlarına İzin Ver</value>
+  </data>
+  <data name="AllowVoiceRecordingsTip" xml:space="preserve">
+    <value>Ses kaydı kullanımını etkinleştirir veya devre dışı bırakır.</value>
+  </data>
+  <data name="AndroidDerivedCredentialSmimeForFirstaccount" xml:space="preserve">
+    <value>{0} sadece tek bir S/MIME sertifikasını destekler. Bu seçeneği yalnızca birincil olarak yönetilen e-posta hesabı için belirleyin.</value>
+  </data>
+  <data name="AppAlreadyExistsUnderProductProvisioning" xml:space="preserve">
+    <value>Bu uygulama, "Ürün Provizyonlama" altında zaten mevcuttur ve "Apps&amp;books" bölümüne yüklenemez. "Ürün Provizyonlama"dan uygulama örneğini silebilir ve karşıya yüklemeyi tekrar deneyebilirsiniz. Uygulama kaldırmaktan kaçınmak için uygulamayı tutma yetkisine sahip olan tüm aygıtların atamanın parçası olduğundan emin olun.</value>
+  </data>
+  <data name="AppAvatarsDefault" xml:space="preserve">
+    <value>Avatarları Etkinleştir</value>
+  </data>
+  <data name="AppBulkAction" xml:space="preserve">
+    <value>Toplu Uygulama Eylemi</value>
+  </data>
+  <data name="AppCategories" xml:space="preserve">
+    <value>Uygulama Kategorileri</value>
+  </data>
+  <data name="AppCompliance" xml:space="preserve">
+    <value>Uygulama Uyumluluğu</value>
+  </data>
+  <data name="AppComplianceReportedCompliant" xml:space="preserve">
+    <value>Uygulama Uyumluluğu Uyumlu Rapor Edildi</value>
+  </data>
+  <data name="AppComplianceReportedNonCompliant" xml:space="preserve">
+    <value>Uygulama Uyumluluğu Uyumlu Değil Rapor Edildi</value>
+  </data>
+  <data name="AppComplianceReportedUnknown" xml:space="preserve">
+    <value>Uygulama Uyumluluğu Bilinmeyen Olarak Rapor Edildi</value>
+  </data>
+  <data name="AppConfigSectionMmaInfoMsg" xml:space="preserve">
+    <value>Bu KVP'nin uygulama genelinde uygulandığından emin olun. Kesintilerin önlenmesi için sadece belirli bir e-posta hesabına uygulanan yapılandırmalar "E-posta Ayarları" altında "Özel Hesap Yapılandırması" bölümüne taşınmalıdır.</value>
+  </data>
+  <data name="AppConversationViewDefault" xml:space="preserve">
+    <value>Sohbet Gruplandırması</value>
+  </data>
+  <data name="AppDefaultBrowser" xml:space="preserve">
+    <value>Varsayılan Tarayıcıyla Kısıtla</value>
+  </data>
+  <data name="AppDefaultBrowserExceptions" xml:space="preserve">
+    <value>Tarayıcı Özel Durumları</value>
+  </data>
+  <data name="AppDefaultBrowserExceptionsInfo" xml:space="preserve">
+    <value>Köprülerin Console'da kısıtlandığı durumlarda daima varsayılan/yerel tarayıcıda açılmak üzere etki alanları/siteler için bir özel durumlar listesi ekleyebilirsiniz. Köprüler kısıtlanmamışsa daima Workspace ONE Web'de açılmak üzere etki alanları/siteler için bir özel durumlar listesi ekleyebilirsiniz. Özel Durumlar listesi yalnızca joker karakterler, alt etki alanları ve etki alanlarıyla eşleşir. Örnek: AppDefaultBrowserExceptions = ["*.vmware.com", "jira*.vmware.com", "internal.vmware.com", "vmware.com"]</value>
+  </data>
+  <data name="AppDefaultBrowserTooltip" xml:space="preserve">
+    <value>Tüm bağlantıları varsayılan tarayıcıda açar.</value>
+  </data>
+  <data name="AppDefaultCallerID" xml:space="preserve">
+    <value>Varsayılan Arayan Kimliği</value>
+  </data>
+  <data name="AppDeploymentInlineHelpPublic" xml:space="preserve">
+    <value>Uygulamayı otomatik (Auto) olarak ya da gerek olduğunda manuel (İstek Üzerine) dağıtın.</value>
+  </data>
+  <data name="AppDetails" xml:space="preserve">
+    <value>Uygulama Ayrıntıları</value>
+  </data>
+  <data name="AppDetailsView" xml:space="preserve">
+    <value>Uygulama Ayrıntıları Görünümü</value>
+  </data>
+  <data name="AppDomainsInternal" xml:space="preserve">
+    <value>Dahili Etki Alanı Listesi</value>
+  </data>
+  <data name="AppDomainsWarning" xml:space="preserve">
+    <value>Harici Alıcı Uyarısı</value>
+  </data>
+  <data name="AppDomainsWarningInfo" xml:space="preserve">
+    <value>Harici bir alıcıya mesaj gönderirken son kullanıcıyı bilgilendirir.</value>
+  </data>
+  <data name="AppEnableKeyWrappingOnlyMode" xml:space="preserve">
+    <value>Swift SDK Anahtarı Yalnızca Sarmalama Modunu Etkinleştir</value>
+  </data>
+  <data name="AppEnableKeyWrappingOnlyModeInfo" xml:space="preserve">
+    <value>Anahtar sarmalama güvenlik özelliklerinden tam olarak yararlanabilmek için etkin tutun</value>
+  </data>
+  <data name="AppForceActivateSSO" xml:space="preserve">
+    <value>Çoklu Oturum Açmayı (SSO) Etkinleştir</value>
+  </data>
+  <data name="AppForceActivateSSOInfo" xml:space="preserve">
+    <value>Bu SSO'yu etkinleştirir, SSO her zaman açık olduğunda bu anahtar kullanımdan kaldırılır. Bu, Kurumsal İçerik de dahil olmak üzere birçok özellik için de gereklidir.</value>
+  </data>
+  <data name="AppGroup" xml:space="preserve">
+    <value>Uygulama Grubu</value>
+  </data>
+  <data name="AppGroups" xml:space="preserve">
+    <value>Uygulama Grupları</value>
+  </data>
+  <data name="AppInstallDeferred" xml:space="preserve">
+    <value>Yükleme Ertelendi</value>
+  </data>
+  <data name="AppKeyWrappingOnlyMode" xml:space="preserve">
+    <value>Swift SDK Anahtarı Yalnızca Sarmalama Modu</value>
+  </data>
+  <data name="AppleUpdateAvailableHelpText" xml:space="preserve">
+    <value>Bu sütun, bir uygulamanın en son sürümde mi olduğunu ya da bir güncelleme bulunup bulunmadığını belirler. Bu sadece App Store'da bulunan uygulamalar için desteklenir.</value>
+  </data>
+  <data name="ApplicationApprovedFordeviceAssignment" xml:space="preserve">
+    <value>Uygulama, aygıt tabanlı atama için etkinleştirildi. Lütfen tüm iOS9+ ve Mac OS 10.11+ aygıtların, aygıt başına bir lisans alıcağını dikkate alın. Bu aygıtlar uygulamayı almak için Apple ID gerektirmeyecek.</value>
+  </data>
+  <data name="ApplicationApprovedFordeviceAssignmentWithTvOS" xml:space="preserve">
+    <value>Uygulama, aygıt tabanlı atama için etkinleştirildi. Lütfen tüm iOS9+ ve Mac OS 10.11+ aygıtların, aygıt başına bir lisans alıcağını dikkate alın. Bu aygıtlar uygulamayı almak için Apple ID gerektirmeyecek. tvOS aygıtları yalnızca Aygıt Tabanlı Lisansları kullanabilir ve kullanım için yönetici eylemi gerektirmez.</value>
+  </data>
+  <data name="ApplicationAttributes" xml:space="preserve">
+    <value>Öznitelikler</value>
+  </data>
+  <data name="ApplicationAttributesTooltip" xml:space="preserve">
+    <value>Uygulama öznitelikleri; farklı bir organizasyonla ilişkilendirilmiş etki alanlarının bir listesi gibi, işlem sırasında kullanılmak üzere uygulamalara aygıta özel ayrıntılar sağlamak için kullanılır.</value>
+  </data>
+  <data name="ApplicationBundleId" xml:space="preserve">
+    <value>Uygulama Paketi Kimliği</value>
+  </data>
+  <data name="ApplicationCantDeleteRetireConfirmation" xml:space="preserve">
+    <value>Uygulama Workspace ONE tarafından yönetiliyorsa uygulamanın silinmesi, uygulamayı atandığı bir veya daha fazla aygıttan kaldıracak ve uygulamayı konsolda devre dışı bırakacaktır. Devam etmek istiyor musunuz?</value>
+  </data>
+  <data name="ApplicationConfigMigrationJob" xml:space="preserve">
+    <value>Uygulama Yapılandırma Geçiş İşi</value>
+  </data>
+  <data name="ApplicationDeactivateDescription" xml:space="preserve">
+    <value>Bir uygulamanın devre dışı bırakılması halinde, uygulama Workspace ONE tarafından yönetiliyorsa uygulamanın bütün sürümleri tüm aygıtlardan kaldırılacaktır. Lütfen dikkatle devam edin.</value>
+  </data>
+  <data name="ApplicationDeploymentStatusStaleTime" xml:space="preserve">
+    <value>Uygulama UEM komutunu şu kadar süre sonra eski olarak işaretle:</value>
+  </data>
+  <data name="ApplicationDeploymentStatusStaleTimeForAndroid" xml:space="preserve">
+    <value>Android</value>
+  </data>
+  <data name="ApplicationDeploymentStatusStaleTimeForIos" xml:space="preserve">
+    <value>iOS</value>
+  </data>
+  <data name="ApplicationDeploymentStatusStaleTimeForMacOs" xml:space="preserve">
+    <value>Mac OS</value>
+  </data>
+  <data name="ApplicationDeploymentStatusStaleTimeForWindows" xml:space="preserve">
+    <value>Windows</value>
+  </data>
+  <data name="ApplicationDeploymentStatusStaleTimeTooltip" xml:space="preserve">
+    <value>Bir aygıtın UEM komutunu "eski" olarak işaretlemek için son UEM komutunu (ancak eylemi tamamlamamış) kaç dakika sonra onayladığını inceleyin. Eski komutlar, uygulamalar yayınlandığında yeniden tetiklenir. Uygulama kataloğu, uygulamaları artık son kullanıcılara "İşleniyor" olarak görüntülemez ancak "Yükle" veya "Güncelle" eylemlerini yeniden etkinleştirir.</value>
+  </data>
+  <data name="ApplicationGroupActivated" xml:space="preserve">
+    <value>Uygulama Grubu Etkinleştirildi</value>
+  </data>
+  <data name="ApplicationGroupDeactivated" xml:space="preserve">
+    <value>Uygulama Grubu Devre Dışı Bırakıldı</value>
+  </data>
+  <data name="ApplicationGroupDeleted" xml:space="preserve">
+    <value>Uygulama Grubu Silindi</value>
+  </data>
+  <data name="ApplicationInKiosk" xml:space="preserve">
+    <value>UYARI: Bu uygulama, kiosk profilinde yer alır. Uygulama kaldırıldıktan sonra lütfen profili güncelleyin.</value>
+  </data>
+  <data name="ApplicationMaxFileSizeWithCdn" xml:space="preserve">
+    <value>CDN ile Uygulama Maksimum Dosya Boyutu</value>
+  </data>
+  <data name="ApplicationMaxFileSizeWithCdnToolTip" xml:space="preserve">
+    <value>CDN etkinleştirildiğinde, bu Organizasyon Grubu karşıya yüklemeleri için "Maksimum Dosya Boyutu" ve "CDN ile Maksimum Dosya Boyutu" arasından daha büyük olan değere izin verilir.</value>
+  </data>
+  <data name="ApplicationPublished" xml:space="preserve">
+    <value>Uygulama Yayınlama Başarılı</value>
+  </data>
+  <data name="ApplicationPublishFailed" xml:space="preserve">
+    <value>Uygulama Yayınlama Başarısız Oldu</value>
+  </data>
+  <data name="ApplicationPublishStarted" xml:space="preserve">
+    <value>Uygulama Yayınlama Başladı</value>
+  </data>
+  <data name="ApplicationReasonChange" xml:space="preserve">
+    <value>Uygulama Neden Değişikliği</value>
+  </data>
+  <data name="ApplicationRetireDescription" xml:space="preserve">
+    <value>Bir uygulamanın bir sürümünü devre dışı bırakmak, uygulamanın o sürümünü, Workspace ONE tarafından yönetilen bir uygulamanın bulunduğu tüm aygıtlardan kaldırır. Uygunsa uygulamanın bir sonraki alt sürümü aygıtlara gönderilir. Lütfen dikkatle ilerleyin.</value>
+  </data>
+  <data name="ApplicationSample" xml:space="preserve">
+    <value>Uygulama Örneği</value>
+  </data>
+  <data name="ApplicationSource" xml:space="preserve">
+    <value>Uygulama Kaynağı</value>
+  </data>
+  <data name="ApplicationsSetting" xml:space="preserve">
+    <value>Uygulamalar İçin Ayar</value>
+  </data>
+  <data name="ApplicationsSettings" xml:space="preserve">
+    <value>Uygulamalar İçin Ayarlar</value>
+  </data>
+  <data name="ApplicationTransforms" xml:space="preserve">
+    <value>Uygulama Dönüşümleri</value>
+  </data>
+  <data name="ApplicationUemVersionAlreadyExists" xml:space="preserve">
+    <value>Uygulamanın UEM Sürümü zaten mevcut.</value>
+  </data>
+  <data name="ApplicationUserAppRatingDescription" xml:space="preserve">
+    <value>{0} uygulaması için 5 yıldız üzerinden {1} kullanıcı uygulama derecelendirmesi</value>
+    <comment>The first placeholder in the label key is for the application name and the second placeholder is for the app rating count by user.</comment>
+  </data>
+  <data name="ApplicationUUID" xml:space="preserve">
+    <value>Uygulama UUID'si</value>
+  </data>
+  <data name="AppLogAggregationMode" xml:space="preserve">
+    <value>Günlük Toplama Modu</value>
+  </data>
+  <data name="AppLogAggregationUrl" xml:space="preserve">
+    <value>Günlük Toplama URL'si</value>
+  </data>
+  <data name="AppMobileFlowsAutoEnableConnectors" xml:space="preserve">
+    <value>Mobile Flows Bağlayıcıları Otomatik Etkinleştir</value>
+  </data>
+  <data name="AppMobileFlowsEnabled" xml:space="preserve">
+    <value>Mobile Flows</value>
+  </data>
+  <data name="AppMobileFlowsEnabledInfo" xml:space="preserve">
+    <value>Mobile Flows sunucu bilgilerini, Boxer'ın iletişim kurabileceği şekilde yapılandır</value>
+  </data>
+  <data name="AppMobileFlowsHost" xml:space="preserve">
+    <value>Mobile Flows Ana Bilgisayar</value>
+  </data>
+  <data name="AppMobileFlowsSyncTimeHours" xml:space="preserve">
+    <value>Mobile Flows Eşzamanlama Saatleri</value>
+  </data>
+  <data name="AppMobileFlowsSyncTimeHoursInfo" xml:space="preserve">
+    <value>Bu değerden (saat) daha önce gönderilen e-postalar için Mobile Flow kartları isteme</value>
+  </data>
+  <data name="AppMobileFlowsvIDM" xml:space="preserve">
+    <value>Mobile Flows Kimlik Doğrulama Sunucusu</value>
+  </data>
+  <data name="AppNameIsRequired" xml:space="preserve">
+    <value>Sonuçları görüntülemek için uygulama adı gereklidir.</value>
+  </data>
+  <data name="AppNotExistOrUnauthorizedAccess" xml:space="preserve">
+    <value>Uygulama mevcut değil ya da uygulamaya erişim yetkiniz yok.</value>
+  </data>
+  <data name="AppPasscode" xml:space="preserve">
+    <value>Uygulama Şifresi</value>
+  </data>
+  <data name="AppPatchUpdate" xml:space="preserve">
+    <value>Uygulama Düzeltme Eki Güncellemesi</value>
+  </data>
+  <data name="AppPhishEmailAddress" xml:space="preserve">
+    <value>Kimlik Avı Raporla:</value>
+  </data>
+  <data name="AppPhishEmailAddressInfo" xml:space="preserve">
+    <value>Bildirilen kimlik avı e-postasını alacak e-posta adresini yapılandırın</value>
+  </data>
+  <data name="AppPlainTextMode" xml:space="preserve">
+    <value>Sade Metin Modu</value>
+  </data>
+  <data name="AppPlainTextModeInfo" xml:space="preserve">
+    <value>Boxer'ın yalnızca sade metin modunda eşitlemesini istiyorsanız seçin. HTML içeriğine izin verilmez</value>
+  </data>
+  <data name="AppPolicies" xml:space="preserve">
+    <value>Uygulama İlkeleri</value>
+  </data>
+  <data name="AppPurebredPackageName" xml:space="preserve">
+    <value>Purebred Uygulama Kimliği</value>
+  </data>
+  <data name="AppPurebredPackageNameInfo" xml:space="preserve">
+    <value>Purebred Uygulamasının paket kimliği. Bu kimlik, Boxer ile kullanım için aygıttaki Purebred uygulamasını doğrulamak amacıyla kullanılacaktır.</value>
+  </data>
+  <data name="AppPurebredPublicKey" xml:space="preserve">
+    <value>Purebred Uygulama İmzası</value>
+  </data>
+  <data name="AppPurebredPublicKeyInfo" xml:space="preserve">
+    <value>Purebred Uygulamasının genel imzası. Bu anahtar, Boxer ile kullanım için aygıttaki Purebred uygulamasını doğrulamak amacıyla kullanılacaktır.</value>
+  </data>
+  <data name="AppRefetchEmptyLinksUsingMime" xml:space="preserve">
+    <value>MIME Kullanarak Boş Bağlantıları Yeniden Al</value>
+  </data>
+  <data name="AppRefetchEmptyLinksUsingMimeInfo" xml:space="preserve">
+    <value>Sunucu dışı etki alanlarını hedefleyen, standart olmayan URL şemaları (RSA uygulaması için olduğu gibi) içeren, HTML aracılığıyla alınmış e-postalar için Exchange, URL'yi iki boşlukla değiştirir. KVP, Boxer'ın bu tekrarlamayı algılamasını ve MIME kullanarak etkilenen gövdeyi yeniden indirmesini sağlar; bu aynı URL değiştirme sorununda geçerli değildir.</value>
+  </data>
+  <data name="AppRemovalProtectionLogDevicesHeader" xml:space="preserve">
+    <value>Uygulama Kaldırma Koruması Günlüğü Aygıtları</value>
+  </data>
+  <data name="AppRetriesOnFailedInitialAuth" xml:space="preserve">
+    <value>Kimlik doğrulama yeniden deneme sayısını belirtir</value>
+  </data>
+  <data name="AppRetriesOnFailedInitialAuthInfo" xml:space="preserve">
+    <value>Hata olduğunda kimlik doğrulama yeniden deneme sayısını belirtir</value>
+  </data>
+  <data name="AppSampleInformation" xml:space="preserve">
+    <value>Uygulama Örneği Bilgileri</value>
+  </data>
+  <data name="AppSampleLastSeen" xml:space="preserve">
+    <value>Uygulama Örneğinin Son Görülmesi</value>
+  </data>
+  <data name="AppSequencingTab" xml:space="preserve">
+    <value>Uygulama Sıralama</value>
+  </data>
+  <data name="AppSkipTutorial" xml:space="preserve">
+    <value>Uygulama öğreticisini atla</value>
+  </data>
+  <data name="AppSkipTutorialTooltip" xml:space="preserve">
+    <value>İlk kez başlatmadaki uygulama öğreticisini atla</value>
+  </data>
+  <data name="AppSpamForwardAddress" xml:space="preserve">
+    <value>İstenmeyen Posta Raporu</value>
+  </data>
+  <data name="AppSpamForwardAddressInfo" xml:space="preserve">
+    <value>Bildirilen istenmeyen posta e-postasını alacak e-posta adresini yapılandırın</value>
+  </data>
+  <data name="AppsTabSegregationFeatureInformation" xml:space="preserve">
+    <value>Yönetilen uygulamalar sekmesi, Workspace ONE UEM'de yönetilen tüm macOS uygulamalarını ve yazılım yükleyicilerini görüntüler. Tüm Uygulamalar sekmesi, macOS'un rapor ettiği, aygıtta yüklü tüm uygulama paketlerine yönelik salt okunur bir liste gösterir. Tüm Uygulamalar sekmesindeki içeriğin kullanılabilirliği, UEM Console Kişisel Uygulamalara yönelik Gizlilik ayarlarında yapılandırılır.</value>
+  </data>
+  <data name="AppStatus" xml:space="preserve">
+    <value>Uygulama Durumu</value>
+  </data>
+  <data name="AppsTermsOfUseNotification" xml:space="preserve">
+    <value>App EULA Güncelleme Bildirimi</value>
+  </data>
+  <data name="AppStore" xml:space="preserve">
+    <value>App Store</value>
+  </data>
+  <data name="AppStoreAppSourceHelpText" xml:space="preserve">
+    <value>Bu sütun, bir uygulamanın App Store'da bulunup bulunmadığını belirler.</value>
+  </data>
+  <data name="AppSwipesLeftLongDefault" xml:space="preserve">
+    <value>Sola Doğru Uzun Bir Şekilde Kaydır Varsayılanı</value>
+  </data>
+  <data name="AppSwipesLeftShortDefault" xml:space="preserve">
+    <value>Sola Doğru Kısa Bir Şekilde Kaydır Varsayılanı</value>
+  </data>
+  <data name="AppSwipesRightLongDefault" xml:space="preserve">
+    <value>Sağa Doğru Uzun Bir Şekilde Kaydır Varsayılanı</value>
+  </data>
+  <data name="AppSwipesRightShortDefault" xml:space="preserve">
+    <value>Sağa Doğru Kısa Bir Şekilde Kaydır Varsayılanı</value>
+  </data>
+  <data name="AppsWithConfigurationErrors" xml:space="preserve">
+    <value>Yapılandırma hataları olan uygulamalar</value>
+  </data>
+  <data name="AppUpdatedDate" xml:space="preserve">
+    <value>Uygulama Güncellenme Tarihi</value>
+  </data>
+  <data name="AppUpdateSource" xml:space="preserve">
+    <value>Uygulama güncelleme kaynağı</value>
+  </data>
+  <data name="AppUrl" xml:space="preserve">
+    <value>Uygulama URL'si</value>
+  </data>
+  <data name="AppVersionDetailsHelp" xml:space="preserve">
+    <value>Workspace ONE UEM, her dahili uygulama paketi için dahili bir sürüm tutar. Bu alan, "Uygulama Sürümü" ile otomatik olarak doldurulur. Bu alan, son kullanıcı aygıtlarına atanması ve dağıtılması gereken en son sürümü tanımlamak için kullanılır.</value>
+  </data>
+  <data name="AppVersionInformationFourDecimal" xml:space="preserve">
+    <value>Her alan gereklidir ve maksimum 32 bit tam sayı değerini (2147483647) aşamaz.</value>
+  </data>
+  <data name="AppVersionNeedsAssignment" xml:space="preserve">
+    <value>Uygulama Sürümü Atama Gerektiriyor</value>
+  </data>
+  <data name="AppVersionNeedsAssignmentInfo" xml:space="preserve">
+    <value>Son uygulama sürümü en az bir atama gerektiriyor.</value>
+  </data>
+  <data name="AppVersionNeedsAssignmentMessage" xml:space="preserve">
+    <value>Son uygulama sürümünde bir uygulama ataması yok. Bu uygulamayı kullanan iş akışı atamaları, önceki uygulama sürümünü ve uygulamanın varsayılan ilkesini kullanmaya devam edecektir. Yeni uygulama sürümünü kullanmak için bir uygulama ataması oluşturun.</value>
+  </data>
+  <data name="AppVersionUpdateNotification" xml:space="preserve">
+    <value>Uygulama Sürümü Güncelleme Bildirimi</value>
+  </data>
+  <data name="AppWorkflowsMenuDescription" xml:space="preserve">
+    <value>Uygulama İş Akışları</value>
+  </data>
+  <data name="AppWorkflowsMenuItem" xml:space="preserve">
+    <value>Uygulama İş Akışları</value>
+  </data>
+  <data name="Architecture" xml:space="preserve">
+    <value>Mimari</value>
+  </data>
+  <data name="ArgAssignedCount" xml:space="preserve">
+    <value>{0} Atanmış</value>
+  </data>
+  <data name="ArgInstalledCount" xml:space="preserve">
+    <value>{0} Yüklü</value>
+  </data>
+  <data name="ArgNotInstalledCount" xml:space="preserve">
+    <value>{0} Yüklü Değil</value>
+  </data>
+  <data name="ArgVersions" xml:space="preserve">
+    <value>{0} sürüm</value>
+  </data>
+  <data name="ARMAppDependencies" xml:space="preserve">
+    <value>ARM Bağımlılıkları</value>
+  </data>
+  <data name="ArpMessage" xml:space="preserve">
+    <value>Uygulamanızın kaldırma işlemleri, kaldırma eşiğine ulaşıldığı için duraklatıldı.</value>
+  </data>
+  <data name="AssignedArgOutOfTotalInstalledArg" xml:space="preserve">
+    <value>{0} / {1} atandı</value>
+  </data>
+  <data name="AssignedButNotInstalled" xml:space="preserve">
+    <value>Atandı Ancak Yüklenmedi</value>
+  </data>
+  <data name="AssignedConfiguration" xml:space="preserve">
+    <value>Atanan Yapılandırma</value>
+  </data>
+  <data name="AssignmentCannotBeRemovedForAnAppAssociatedWithWorkflow" xml:space="preserve">
+    <value>Bir iş akışının parçası olan bir uygulama için atama kaldırılamaz.</value>
+  </data>
+  <data name="AssignmentCopiedFrom" xml:space="preserve">
+    <value>Atamalar Şuradan Kopyalandı:</value>
+  </data>
+  <data name="AssignmentCopiedFromMessage" xml:space="preserve">
+    <value>Atamaların kopyalanacağı sürüm numarasını görüntülemek için aşağıdaki Yenile düğmesine tıklayın.</value>
+  </data>
+  <data name="AssignmentCreated" xml:space="preserve">
+    <value>Uygulama Ataması Oluşturuldu</value>
+  </data>
+  <data name="AssignmentDeleted" xml:space="preserve">
+    <value>Uygulama Ataması Silindi</value>
+  </data>
+  <data name="AssignmentDescriptionPlaceholder" xml:space="preserve">
+    <value>Atama Açıklaması</value>
+  </data>
+  <data name="AssignmentGroupingInfoMessage" xml:space="preserve">
+    <value>Bu atamada yer alan bazı Akıllı Grupların uygulama yapılandırma veya uygulama özniteliği anahtar değerleri ya da MST dönüşüm dosyaları farklıdır ve bu değerler, doğruluğu sağlamak için ayrı tutulmuştur. Son kullanıcıların aygıtlarına etkisi olmaz ve başka bir işlem yapılması gerekmez.</value>
+  </data>
+  <data name="AssignmentInformation" xml:space="preserve">
+    <value>Atama Bilgileri</value>
+  </data>
+  <data name="AssignmentInstallDetails" xml:space="preserve">
+    <value>Atama ve Yükleme Ayrıntıları</value>
+  </data>
+  <data name="AssignmentInstallDetailsToolTip" xml:space="preserve">
+    <value>Workspace ONE'dan bu uygulamanın atandığı aygıtların yükleme ayrıntıları</value>
+  </data>
+  <data name="AssignmentNamePlaceholder" xml:space="preserve">
+    <value>Atama Adı</value>
+  </data>
+  <data name="AssignmentOutOfDate" xml:space="preserve">
+    <value>Atama Güncel Değil</value>
+  </data>
+  <data name="AssignmentStatus" xml:space="preserve">
+    <value>Atama Durumu</value>
+  </data>
+  <data name="AssignmentUpdated" xml:space="preserve">
+    <value>Uygulama Ataması Güncellendi</value>
+  </data>
+  <data name="AssignmentUpToDate" xml:space="preserve">
+    <value>Güncel. Uygulama atandı ve yüklendi</value>
+  </data>
+  <data name="AtleastOneActiveAssignmentIsRequired" xml:space="preserve">
+    <value>Bir veya daha fazla atama kuralı, etkin bir Akıllı Grup ile ilişkilendirilmemiş. Devam etmek için Akıllı Grup ekleyin veya atama kurallarını silin.</value>
+  </data>
+  <data name="AtleastOneAssignmentIsRequired" xml:space="preserve">
+    <value>Atamalarda en az bir akıllı grubun belirtilmesi gerekir.</value>
+  </data>
+  <data name="AttachmentDownload" xml:space="preserve">
+    <value>Eklerin İndirilmesi</value>
+  </data>
+  <data name="AttachmentsRestrictionMMAInfo" xml:space="preserve">
+    <value>Bu ayar, kullanıcının e-postaları ya da e-posta eklerini diğer uygulamalarda açıp açamayacağını belirler. Herhangi bir uygulamada açılmasını engellemek için Sadece Önizleme Gerçekleştir'i seçin ve izin verilen uygulamaları belirtmek üzere İzin Verilenler Listesi'ni ya da herhangi bir uygulamaya izin vermek için Kısıtlanmamış'ı seçin.</value>
+  </data>
+  <data name="AttachPhotos" xml:space="preserve">
+    <value>Fotoğraf Ekleme</value>
+  </data>
+  <data name="AuthenticateExchangeServerTooltip" xml:space="preserve">
+    <value>Exchange Sunucunuza kimlik doğrulaması işlemini yapılandırın</value>
+  </data>
+  <data name="AuthenticationAdvancedSectionMessage" xml:space="preserve">
+    <value>Seçimleriniz için gelişmiş yapılandırma yok</value>
+  </data>
+  <data name="AuthenticationType" xml:space="preserve">
+    <value>Kimlik Doğrulama Türü</value>
+  </data>
+  <data name="AuthenticationTypeInfo" xml:space="preserve">
+    <value>Kullanıcı adı ve parola kullanarak kimlik doğrulaması yaparken Temel, sertifika kullanırken Sertifika ve Exchange ile kimlik doğrulaması yapmak için hem sertifika hem de parola sormak istiyorsanız Her ikisi de öğesini seçin.</value>
+  </data>
+  <data name="AutoAppAssignedButNotInstalled" xml:space="preserve">
+    <value>Güncel değil. Uygulama atandı ancak yüklenmedi</value>
+  </data>
+  <data name="AutoAppAssignmentOutOfDate" xml:space="preserve">
+    <value>Güncel değil. Atanan uygulama sürümü, yüklenen sürümle aynı değil</value>
+  </data>
+  <data name="AutoBootstrapPackageAssignedButNotInstalled" xml:space="preserve">
+    <value>Önyükleme Paketi atandı ancak aygıt daha önceden kaydedilmiş. Aygıt isteğe bağlı dağıtım için uygun ancak bu işlem talep edilmemiş</value>
+  </data>
+  <data name="AvailablePatchCriticality" xml:space="preserve">
+    <value>Mevcut Düzeltme Eki Kritikliği</value>
+  </data>
+  <data name="AvatarsDefault" xml:space="preserve">
+    <value>Avatarlar</value>
+  </data>
+  <data name="BackLinkEmailSettings" xml:space="preserve">
+    <value>&lt; E-posta Ayarları</value>
+  </data>
+  <data name="BadgeOnly" xml:space="preserve">
+    <value>Yok (yalnızca gösterge sayısı)</value>
+  </data>
+  <data name="BasicAndCertificate" xml:space="preserve">
+    <value>Temel ve Sertifika</value>
+  </data>
+  <data name="BetaAppSourceHelpText" xml:space="preserve">
+    <value>Bu sütun, bir uygulamanın TestFlight'tan indirilip indirilmediği ve uygulamanın beta sürümünde olarak kabul edilip edilmediğini belirler.</value>
+  </data>
+  <data name="BlockingApplicationsInfoMessage" xml:space="preserve">
+    <value>Bir yükleme işleminin güvenli bir şekilde tamamlanmasını engelleyebilecek uygulamaları veya işlemleri tanımlayın. Bunu, uygulamalardan kaydetmeden çıkmayı engellemek için de kullanabilirsiniz.</value>
+  </data>
+  <data name="BlockingApplicationsTooltip" xml:space="preserve">
+    <value>Uygulamanın adını tanımlayın. Uygulama, /Uygulamalar/ klasöründeyse yalnızca dosya adı olarak tanımlanabilir ve yol otomatik olarak bulunur.</value>
+  </data>
+  <data name="BookCategoriesHelp" xml:space="preserve">
+    <value>Kitap paketini daha önceden tanımlanmış Kategorilerle kategorilere ayır ya da Kitap Kataloğunda erişim kolaylığı için Kategorileri özelleştir</value>
+  </data>
+  <data name="BootstrapPackageAssignedAndInstallCommandAcknowledged" xml:space="preserve">
+    <value>Önyükleme Paketi atandı ve yükleme komutu onaylandı</value>
+  </data>
+  <data name="BootstrapPackageAssignedButInstallCommandNotAcknowledged" xml:space="preserve">
+    <value>Önyükleme Paketi atandı ancak yükleme komutu henüz onaylanmadı</value>
+  </data>
+  <data name="BoxerSmimeInfoMsg" xml:space="preserve">
+    <value>Aşağıdaki yapılandırma, Boxer uygulamasının 5.21 sürümü ve daha üzeri sürümleri tarafından tanınacaktır. Daha eski sürümler için bu uygulama ile ilişkili olan özel SDK profilindeki "kimlik bilgileri" (credentials) yükünü kullanın</value>
+  </data>
+  <data name="BoxerTrustStoreOnly" xml:space="preserve">
+    <value>Yalnızca Boxer Güven Deposu</value>
+  </data>
+  <data name="BuildNumber" xml:space="preserve">
+    <value>Yapı Numarası</value>
+  </data>
+  <data name="BulkActionExceptionMessage" xml:space="preserve">
+    <value>İşlemi çok sayıda aygıtta gerçekleştirmek için lütfen filtre seçin.</value>
+  </data>
+  <data name="BulkSyncTunnelConfigAlert" xml:space="preserve">
+    <value>Tunnel Yapılandırması, geçerli atamalara sahip aygıtlarda eşitlenir.</value>
+  </data>
+  <data name="Bundleidwarningforb2bapps" xml:space="preserve">
+    <value>Paket Kimliği, Özel Uygulamaların tam ve yönetilen dağıtımı için gereklidir</value>
+  </data>
+  <data name="CalendarMaxSyncPeriodInfo" xml:space="preserve">
+    <value>Kullanıcının takvim etkinliklerini eşitlemek için ne kadar geriye doğru seçim yapabileceği.</value>
+  </data>
+  <data name="CannotAllotMoreThanArgLicenses" xml:space="preserve">
+    <value>Maksimum {0} lisans tahsis edilebilir</value>
+  </data>
+  <data name="CannotRevokeLicense" xml:space="preserve">
+    <value>Uygulama lisansı iptal edilemiyor. Lütfen geçerli bir Toplu Satın Alma Programı (VPP) hesap kimliği ile deneyin.</value>
+  </data>
+  <data name="CardsVersionMessage" xml:space="preserve">
+    <value>Bu ilkeler yalnızca Card 1.1 ve üzeri sürümleri için geçerlidir. Önceki Card sürümleri için Exchange ayarlarını yönetmek üzere bu uygulama ile ilişkilendirilmiş SDK profilindeki Özel Ayarlara gidin.</value>
+  </data>
+  <data name="CardsWarningToEditAllAssignments" xml:space="preserve">
+    <value>Cards yapılandırması kurulum için hazır. Yayınlamadan önce, bu uygulama ile ilişkilendirilmiş SDK profilinin özel ayarlarından alınan yapılandırmaların doğru olduğundan emin olun.</value>
+  </data>
+  <data name="CertAuthenticationTip" xml:space="preserve">
+    <value>Sertifika Kimlik Doğrulaması için SDK profilinde sertifikayı yapılandırın/yükleyin.</value>
+  </data>
+  <data name="CertificateTemplateInfo" xml:space="preserve">
+    <value>Aygıtlarınızda, aynı Exchange sunucusundan birden fazla yönetilen e-posta hesabı yapılandırırken farklı UPN ile farklı sertifika şablonları yapılandırın.</value>
+  </data>
+  <data name="CertificateUrlOnly" xml:space="preserve">
+    <value>Yalnızca Sertifika URL'si</value>
+  </data>
+  <data name="CertUrlWithFallback" xml:space="preserve">
+    <value>Geri Dönüş İçeren Sertifika URL'si</value>
+  </data>
+  <data name="ChangeWhenToCallInstallComplete" xml:space="preserve">
+    <value>Yükleme İşleminin Tamamlandığını Bildirme Zamanını Değiştir</value>
+  </data>
+  <data name="ChangeWhenToCallInstallCompleteDescription" xml:space="preserve">
+    <value>Bir uygulama herhangi bir aygıta yüklendikten sonra Yükleme İşleminin Tamamlandığını Bildirme Zamanını Değiştirme kriteri bu aygıtlarda uygulamanın yeniden değerlendirilmesini başlatacaktır. Yeni kriter karşılanmıyorsa uygulama bu aygıtlardan kaldırılacaktır. Bu eylemin neden olabileceği olası kesinti nedeniyle, kriter değiştirmeyi etkinleştirmek için yönetici PIN'i gereklidir.</value>
+  </data>
+  <data name="CheckingDeviceEligibility" xml:space="preserve">
+    <value>Aygıt Uygunluğu Kontrol Ediliyor</value>
+  </data>
+  <data name="ClearConfigurationWarningText" xml:space="preserve">
+    <value>Bu yapılandırmayı temizlemek, yapılandırmanın önceden kaydedilen tüm değerlerini sıfırlayacaktır ve bu değerler geri alınamayacaktır.
+Devam etmek istediğinizden emin misiniz?</value>
+  </data>
+  <data name="ClearConfigurationWarningTitleText" xml:space="preserve">
+    <value>Yapılandırma Uyarısını Temizle</value>
+  </data>
+  <data name="ClipboardEnabled" xml:space="preserve">
+    <value>Pano Etkinleştirildi</value>
+  </data>
+  <data name="ClipboardPasteActionEnabled" xml:space="preserve">
+    <value>Panodakileri Yapıştırmayı Etkinleştir</value>
+  </data>
+  <data name="CollectionMenuDescription" xml:space="preserve">
+    <value>Workspace ONE Access'i; Horizon, Horizon Cloud, Citrix veya ThinApp'in Sanal Uygulama ve Masaüstü dağıtımları ile entegre eder.</value>
+  </data>
+  <data name="Collections" xml:space="preserve">
+    <value>Koleksiyonlar</value>
+  </data>
+  <data name="CollectionsHelp" xml:space="preserve">
+    <value>Sanal uygulamalar koleksiyonlarına erişimi kontrol eder; sadece dizin yöneticilerine uygulanabilir</value>
+  </data>
+  <data name="CompromisedProtectionTooltip" xml:space="preserve">
+    <value>Güvenilirliğini kaybetmiş aygıtlarda Şirket Verilerini Silme özelliğini otomatik olarak gerçekleştirmeyi etkinleştirin.</value>
+  </data>
+  <data name="ConditionIf" xml:space="preserve">
+    <value>Eğer</value>
+  </data>
+  <data name="ConditionIfArg" xml:space="preserve">
+    <value>Eğer {0}</value>
+  </data>
+  <data name="ConditionNotMet" xml:space="preserve">
+    <value>Koşul karşılanmadı</value>
+  </data>
+  <data name="ConditionPrefix" xml:space="preserve">
+    <value>Filtrele (Eğer)</value>
+  </data>
+  <data name="ConditionSuffix" xml:space="preserve">
+    <value>Eylem (Sonra)</value>
+  </data>
+  <data name="ConditionSuffixUpgradeApp" xml:space="preserve">
+    <value>Eylem (Sonra) Uygulamayı Yükselt</value>
+  </data>
+  <data name="ConditionThen" xml:space="preserve">
+    <value>Sonra</value>
+  </data>
+  <data name="ConditionThenArg" xml:space="preserve">
+    <value>Sonra {0}</value>
+  </data>
+  <data name="ConditionTitle" xml:space="preserve">
+    <value>Koşulu Denetle</value>
+  </data>
+  <data name="ConfigurationFeedbackFor" xml:space="preserve">
+    <value>{0} İçin Yapılandırma Geri Bildirimi</value>
+  </data>
+  <data name="ConfigurationPositionChangeNotice" xml:space="preserve">
+    <value>Yapılandırma Pozisyonu Değişikliği Bildirimi</value>
+  </data>
+  <data name="ConfigureDLPSettingsTooltip" xml:space="preserve">
+    <value>Bu hesap için DLP ayarlarını yapılandırın</value>
+  </data>
+  <data name="ConfiguredUrlOnly" xml:space="preserve">
+    <value>Yalnızca yapılandırılan URL</value>
+  </data>
+  <data name="ConfigureEmailSeparationTooltip" xml:space="preserve">
+    <value>Bu hesap için e-posta sınıflandırmasını yapılandırın</value>
+  </data>
+  <data name="ConfigureRegistryData" xml:space="preserve">
+    <value>Kayıt Defteri Verilerini Yapılandır</value>
+  </data>
+  <data name="ConfigureRegistryDataHelpText" xml:space="preserve">
+    <value>Belirli bir kayıt defteri değerini kontrol etmek için seçin</value>
+  </data>
+  <data name="ConfigureRegistryValues" xml:space="preserve">
+    <value>Kayıt Defteri Değerlerini Yapılandır</value>
+  </data>
+  <data name="ConfigureRegistryValuesHelpText" xml:space="preserve">
+    <value>Yalnızca yolun varlığını doğrulamak için bunu işaretlemeyin</value>
+  </data>
+  <data name="ConfigureSyncEmailCalenderTooltip" xml:space="preserve">
+    <value>E-posta ve takvim senkronizasyonunu yapılandırın</value>
+  </data>
+  <data name="ConfigureVpnAtApplicationLevel" xml:space="preserve">
+    <value>Bu uygulama için kullanmak istediğiniz bir VPN yapılandırma profili seçin. Bu ayar, tvOS aygıtları için geçerli değildir.</value>
+  </data>
+  <data name="ConfirmDeactivationApplicationRemoval" xml:space="preserve">
+    <value>Uygulamanın devre dışı bırakılması halinde, uygulama Workspace ONE tarafından yönetiliyorsa uygulamanın bütün sürümleri tüm aygıtlardan kaldırılacaktır. Bu uygulamayı devre dışı bırakmak istediğinizden emin misiniz?</value>
+  </data>
+  <data name="ConfirmRetirementApplicationRemoval" xml:space="preserve">
+    <value>Bir uygulamanın bir sürümünü devre dışı bırakmak, uygulamanın o sürümünü, Workspace ONE tarafından yönetilen bir uygulamanın bulunduğu tüm aygıtlardan kaldırır. Etkinse uygulamanın bir sonraki daha düşük sürümü atandığı aygıtlara gönderilir. Bu uygulamayı devre dışı bırakmak istediğinizden emin misiniz?</value>
+  </data>
+  <data name="ConversationThreading" xml:space="preserve">
+    <value>Konuşma Konusu Oluşturma</value>
+  </data>
+  <data name="CopyOf" xml:space="preserve">
+    <value>Şunun kopyası:</value>
+  </data>
+  <data name="CopyOfArg" xml:space="preserve">
+    <value>Şunun kopyası: {0}</value>
+  </data>
+  <data name="CouldnotRetrieveApp" xml:space="preserve">
+    <value>Uygulama alınamadı. Artık mevcut değil veya silinmiş olabilir.</value>
+  </data>
+  <data name="CouldnotRetrieveAssignmentForApp" xml:space="preserve">
+    <value>Bu uygulama için atamalar alınamadı. Artık mevcut değil veya silinmiş olabilir.</value>
+  </data>
+  <data name="CrashReporting" xml:space="preserve">
+    <value>Çökme Raporlaması</value>
+  </data>
+  <data name="CreatedOnArgArgByArg" xml:space="preserve">
+    <value>{1} tarafından şu zamanda oluşturuldu: {0}</value>
+  </data>
+  <data name="CreateWorkflow" xml:space="preserve">
+    <value>İş Akışı Oluştur</value>
+  </data>
+  <data name="CreateWorkflowBannerDescription" xml:space="preserve">
+    <value>Uygulama İş Akışları, birden çok uygulama dağıtımını ya da güncellemesini tanımladığınız kriterlere göre belirli bir sırada işlemenizi sağlar. Karmaşık dağıtım gereksinimlerini yönetmek ve güvenlik ve uyumluluk ilkelerinizi karşılamayan uygulamaları güncellemek artık her zamankinden daha kolay.</value>
+  </data>
+  <data name="CreateWorkflowBannerHeader" xml:space="preserve">
+    <value>Uygulama dağıtımı ve güncellemeleri üzerinde daha fazla kontrol</value>
+  </data>
+  <data name="CreateWorkflowNote" xml:space="preserve">
+    <value>Şu anda sadece Windows masaüstü aygıtları için kullanılabilir.</value>
+  </data>
+  <data name="CurrentActiveAppAndUEMVersionArgs" xml:space="preserve">
+    <value>Mevcut etkin Uygulama Sürümü: {0} ve uygulamanın UEM Sürümü: {1}.</value>
+  </data>
+  <data name="CurrentDeployment" xml:space="preserve">
+    <value>Mevcut Dağıtım</value>
+  </data>
+  <data name="CurrentUemVersion" xml:space="preserve">
+    <value>Mevcut UEM Sürümü</value>
+  </data>
+  <data name="CustomAccountConfiguration" xml:space="preserve">
+    <value>Özel Hesap Yapılandırma</value>
+  </data>
+  <data name="CustomOnlineMeetingUrlsInfo" xml:space="preserve">
+    <value>Bu, özellikle çevrimiçi toplantı hizmetlerinin bulut sürümleri tarafından kullanılan ve standart formatta olmayan toplantılar için çevrimiçi toplantı davetlerine sahip takvim davetlerinde bulunan QuickJoin düğmesini etkinleştirir. Şirket içi bir kuruluma sahipseniz bunu kendi URL'lerinizle yapılandırmak isteyebilirsiniz.</value>
+  </data>
+  <data name="DeactivateApplication" xml:space="preserve">
+    <value>Uygulamayı Devre Dışı Bırak</value>
+  </data>
+  <data name="DefaultAppAvatarsInfo" xml:space="preserve">
+    <value>Avatarları değiştir</value>
+  </data>
+  <data name="DefaultAssignmentDescription" xml:space="preserve">
+    <value>Bu atamanın ilkeleri artık iş akışı atamaları için varsayılan olarak kullanılacaktır.</value>
+  </data>
+  <data name="DefaultAssignmentPrompt" xml:space="preserve">
+    <value>Bunun yerine bu atamanın ilkelerini varsayılan olarak kullanmak istediğinizden emin misiniz?</value>
+  </data>
+  <data name="DefaultAssignmentPromptTitle" xml:space="preserve">
+    <value>Varsayılan İlkeleri Değiştir</value>
+  </data>
+  <data name="DefaultAssignmentTooltip" xml:space="preserve">
+    <value>Etkinleştirildiğinde, iş akışlarından atanan bu uygulamaya sahip aygıtlar, aygıtlar için bir veya daha yüksek öncelik ilkesi ataması tarafından geçersiz kılınmadıkça varsayılan olarak bu ilkeleri alır. Bir uygulama için yalnızca bir ilke varsayılan olarak işaretlenebilir.</value>
+  </data>
+  <data name="DefaultCalendarSyncPeriod" xml:space="preserve">
+    <value>Varsayılan Takvim Eşitleme Süresi</value>
+  </data>
+  <data name="DefaultCallerIDInfo" xml:space="preserve">
+    <value>Kişilerin adlarının ve telefon numaralarının varsayılan olarak dışa aktarılmasını etkinleştirin. Bu ayar, Workspace ONE UEM Console'daki Arayan Kimliği seçeneğinin Kısıtlanmamış olarak ayarlanmasını gerektirir.</value>
+  </data>
+  <data name="DefaultConversationViewInfo" xml:space="preserve">
+    <value>Bu, Sohbet görünümü varsayılanını e-postaları grupla veya sohbete göre e-postaları gruplama olarak ayarlar</value>
+  </data>
+  <data name="DefaultEmailSyncPeriod" xml:space="preserve">
+    <value>Varsayılan E-posta Eşitleme Süresi</value>
+  </data>
+  <data name="DeleteEmailAccountContent" xml:space="preserve">
+    <value>Bu e-posta hesabını kaldırmak istediğinizden emin misiniz?</value>
+  </data>
+  <data name="DeleteEmailAccountTitle" xml:space="preserve">
+    <value>E-Posta Hesabını Sil</value>
+  </data>
+  <data name="DeleteOnSpamForwardInfo" xml:space="preserve">
+    <value>İlettikten sonra son kullanıcının aygıtından istenmeyen e-postanın silinmesi için etkinleştirin.</value>
+  </data>
+  <data name="DeleteTabContentLabel" xml:space="preserve">
+    <value>Bu örneği silmek istediğinizden emin misiniz? Bu yapılandırma uygulamaya artık uygulanmayacaktır.</value>
+  </data>
+  <data name="DeleteTabTitleLabel" xml:space="preserve">
+    <value>Örneği Sil</value>
+  </data>
+  <data name="DependencyMissing" xml:space="preserve">
+    <value>Bağımlılık Eksik</value>
+  </data>
+  <data name="DependentAppValidationFailed" xml:space="preserve">
+    <value>Bağımlı Uygulama Doğrulanamadı</value>
+  </data>
+  <data name="DeploymentProgressToolTip" xml:space="preserve">
+    <value>Bu uygulama sürümü için atanmış aygıtlarda gerçekleştirilen dağıtım işleminin ayrıntılarını görüntüler.</value>
+  </data>
+  <data name="DeploymentStatus" xml:space="preserve">
+    <value>Dağıtım Durumu</value>
+  </data>
+  <data name="DeploymentTimeInvalid" xml:space="preserve">
+    <value>Lütfen şu aralıkta bir zaman girin: {0}</value>
+    <comment>Please provide time between between 01:00 - 12:59</comment>
+  </data>
+  <data name="DeployX86FileToX64MachineInfo" xml:space="preserve">
+    <value>X86 mimari dosyası, X64 mimari makinesinde dağıtılmak üzere yüklenebilir</value>
+  </data>
+  <data name="DerivedCredentialForFirstaccount" xml:space="preserve">
+    <value>{0} sadece tek kimlik doğrulama sertifikasını destekler. Bu seçeneği yalnızca birincil olarak yönetilen e-posta hesabı için belirleyin.
+5.21'den düşük Boxer uygulaması sürümlerine sahip {0} kullanımında ise "Uygulama Yapılandırması" bölümünden "PolicyDerivedCredentials" özel KVP'sini geçirin.</value>
+  </data>
+  <data name="DerivedCredentialSmimeForFirstaccount" xml:space="preserve">
+    <value>PIV-D sadece tek S/MIME sertifikasını destekler. Bu seçeneği yalnızca birincil olarak yönetilen e-posta hesabı için belirleyin.
+5.21'den düşük Boxer uygulaması sürümlerine sahip PIV-D kullanımında ise "Uygulama Yapılandırması" bölümünde "PolicyDerivedCredentials" özel KVP'sini geçirin.</value>
+  </data>
+  <data name="Descriptions" xml:space="preserve">
+    <value>Açıklamalar</value>
+  </data>
+  <data name="DesiredStateManagementTooltip" xml:space="preserve">
+    <value>Etkinleştirilirse ve son kullanıcı uygulamayı silerse sonraki Hub eşitlemesi sırasında otomatik olarak yeniden yüklenir.
+Devre dışı bırakılırsa ve son kullanıcı uygulamayı silerse UEM Console veya Kataloğu üzerinden gönderilene kadar otomatik olarak yeniden yüklenmez.</value>
+  </data>
+  <data name="DeviceAndBoxerTrustStore" xml:space="preserve">
+    <value>Aygıt ve Boxer Güven Deposu</value>
+  </data>
+  <data name="DeviceArchitecture" xml:space="preserve">
+    <value>Aygıt Mimarisi</value>
+  </data>
+  <data name="DeviceAssignmentEnableCountArg" xml:space="preserve">
+    <value>Aygıt tabanlı atama için uygun uygulama. Bu seçeneği etkinleştirirseniz tüm iOS 9 ve üzeri ile macOS 10.11 ve üzeri aygıtlar, aygıt başına bir lisans alır. Şu anda {0} iOS 9 ve üzeri/macOS 10.11 ve üzeri atanmış aygıtınız var. Bu aygıtlar, uygulamayı almak için Apple kimliği gerektirmez.</value>
+  </data>
+  <data name="DeviceAssignmentEnableWithTvOSCountArg" xml:space="preserve">
+    <value>Aygıt tabanlı atama için uygun uygulama. Bu seçeneği etkinleştirirseniz tüm iOS 9 ve üzeri ile macOS 10.11 ve üzeri aygıtlar, aygıt başına bir lisans alır. Şu anda {0} iOS 9 ve üzeri/macOS 10.11 ve üzeri atanmış aygıtınız var. Bu aygıtlar, uygulamayı almak için Apple kimliği gerektirmez. tvOS aygıtları yalnızca Aygıt Tabanlı Lisansları kullanabilir ve kullanım için yönetici eylemi gerektirmez.</value>
+  </data>
+  <data name="DeviceBasedVPPAppSourceHelpText" xml:space="preserve">
+    <value>Bu sütun, bir uygulamanın Toplu Satın Alma Programı ile Aygıt Tabanlı Lisanslama kullanarak yüklenip yüklenmediğini belirler.</value>
+  </data>
+  <data name="DeviceEligibilityCheckFailed" xml:space="preserve">
+    <value>Aygıt Uygunluk Kontrolü Başarısız Oldu</value>
+  </data>
+  <data name="DeviceGuardErrorArg" xml:space="preserve">
+    <value>Aygıt Korumasını etkinleştirmek için {0} içinde bir Windows Enterprise lisans anahtarının olması gerekir.</value>
+  </data>
+  <data name="DeviceReportedReason" xml:space="preserve">
+    <value>Aygıtın Bildirilen Nedeni</value>
+  </data>
+  <data name="DeviceTrustStoreOnly" xml:space="preserve">
+    <value>Yalnızca Aygıt Güven Deposu</value>
+  </data>
+  <data name="DeviceUuIdLookUpText" xml:space="preserve">
+    <value>Aygıt Evrensel Benzersiz Tanımlayıcısı (UUID)</value>
+  </data>
+  <data name="DisableAppConfiguration" xml:space="preserve">
+    <value>Uygulama Yapılandırmasını Devre Dışı Bırak</value>
+  </data>
+  <data name="DisableAppConfigWarning" xml:space="preserve">
+    <value>Uygulama yapılandırmasını devre dışı bırakmak yapılandırmayı siler ve aygıt üzerindeki uygulama ayarlarını kaldırabilir ya da değiştirebilir.</value>
+  </data>
+  <data name="DisableCDNWarning" xml:space="preserve">
+    <value>{0} MB boyutundan daha büyük bir uygulama karşıya yüklendi. CDN'nin devre dışı bırakılmasına izin verilmiyor.</value>
+  </data>
+  <data name="DisableKeyEscrowInfo" xml:space="preserve">
+    <value>Sunucuda emanet anahtarını devre dışı bırakır. Bunu devre dışı bırakmak, "Şifremi Unuttum" özelliğini devre dışı bırakacaktır (SDK oturum açma akışını kullanırken).</value>
+  </data>
+  <data name="DisableKeyEscrowYesNoInfo" xml:space="preserve">
+    <value>Sunucuda emanet anahtarını devre dışı bırakır. "Evet" olarak ayarlandığında "şifremi unuttum" özelliği devre dışı bırakılacaktır (SDK oturum açma akışını kullanırken).</value>
+  </data>
+  <data name="DisplayInAppCatalog" xml:space="preserve">
+    <value>Uygulama Kataloğunda Görüntüle</value>
+  </data>
+  <data name="DisplayInAppCatalogHelp" xml:space="preserve">
+    <value>Bu ayarı kullanarak bu uygulamayı Workspace ONE uygulamasında gösterilmek ya da gizlenmek üzere yapılandırın</value>
+  </data>
+  <data name="DlpHelpText" xml:space="preserve">
+    <value>DLP ilkeleri aygıttaki yönetilen ve yönetilmeyen uygulamalar arasında kontrollü veri değişimi sağlar. Bu uygulamada veri kaybını önlemek üzere uygulamayı "Yönetilen Erişim" yapın ve istenen aygıt türleri için "Kısıtlama" profil ilkeleri oluşturun.</value>
+  </data>
+  <data name="DoNotCollectApplicationListWarningForCompliancePolicy" xml:space="preserve">
+    <value>Kişisel uygulama gizlilik ilkeniz, hiyerarşinizdeki en az bir Organizasyon Grubunun en az bir aygıtı için Toplama olarak ayarlanır. Bu aygıtların kişisel uygulamaları için uygulama gruplarıyla ilişkilendirilmiş uyumluluk ilkeleri uygulanmayacaktır.</value>
+  </data>
+  <data name="DownloadAutomaticallyAndInstall" xml:space="preserve">
+    <value>Uygulama otomatik olarak indirilecek ve aygıtınıza yüklenecektir.</value>
+  </data>
+  <data name="DownloadAutomaticallyAndInstallInApplicationsFolder" xml:space="preserve">
+    <value>Uygulama otomatik olarak indirilecek ve Uygulamalar klasörüne yüklenecektir.</value>
+  </data>
+  <data name="DownloadFeedback" xml:space="preserve">
+    <value>Geri Bildirim İndir</value>
+  </data>
+  <data name="DoYouWantToDeletePpkg" xml:space="preserve">
+    <value>Provizyonlama Paketini (PPKG) silmek istiyor musunuz?</value>
+  </data>
+  <data name="DuplicateAppConfigInTab" xml:space="preserve">
+    <value>{0} sekmesinde Yinelenen Uygulama Yapılandırması</value>
+  </data>
+  <data name="DuplicateAssignmentName" xml:space="preserve">
+    <value>Bu adı taşıyan bir atama kuralı zaten var.</value>
+  </data>
+  <data name="DuplicateEmailSettings" xml:space="preserve">
+    <value>{1} sekmesinde yapılandırılan {0} öğesini yinele</value>
+  </data>
+  <data name="DuplicateVppSmartGroupPresent" xml:space="preserve">
+    <value>Aynı Akıllı Grup iki kez eklenemez.</value>
+  </data>
+  <data name="E_FAIL" xml:space="preserve">
+    <value>Toplu lisans yüklemek için Office Dağıtım Aracı (ODT) kullanılamaz</value>
+  </data>
+  <data name="E_UNEXPECTED" xml:space="preserve">
+    <value>Makinede hiç C2R Office yokken kaldırmaya çalışıldı.</value>
+  </data>
+  <data name="EARAppUpdateAvailable" xml:space="preserve">
+    <value>EAR Uygulama Güncellemesi Mevcut</value>
+  </data>
+  <data name="EARAppUpdateMode" xml:space="preserve">
+    <value>Güncelleme Bildirimleri</value>
+  </data>
+  <data name="EARAppUpdateModeHelp" xml:space="preserve">
+    <value>Bu uygulamanın yeni bir sürümü her kullanıma sunulduğunda bildirim almak için bu seçeneği etkinleştirin.</value>
+  </data>
+  <data name="EARNewAppVersionAvailable" xml:space="preserve">
+    <value>{0} v{1} uygulamasının yeni bir sürümü karşıya yükleme için mevcut</value>
+  </data>
+  <data name="EasilyAddWindowsAppsFromEnterpriseAppRepository" xml:space="preserve">
+    <value>Kurumsal Uygulama Deposundan kolayca Windows uygulamaları ekleyin</value>
+  </data>
+  <data name="EditApp" xml:space="preserve">
+    <value>Uygulamayı Düzenle</value>
+  </data>
+  <data name="EditApplicationArgOpensDialog" xml:space="preserve">
+    <value>{0} Uygulamasını Düzenle İletişim Kutusunu Açar</value>
+    <comment>The placeholder in this label key contains application name.</comment>
+  </data>
+  <data name="EditConfiguration" xml:space="preserve">
+    <value>Yapılandırmayı Düzenle</value>
+  </data>
+  <data name="EditWarning" xml:space="preserve">
+    <value>Uyarıyı Düzenle</value>
+  </data>
+  <data name="EditWarningMessage" xml:space="preserve">
+    <value>Bu aygıtla ilişkilendirilmiş yapılandırma düzenlendiğinde, değişiklikler {0} akıllı gruptaki diğer tüm aygıtlara uygulanacaktır. Devam etmek istediğinizden emin misiniz?</value>
+  </data>
+  <data name="EditWorkflow" xml:space="preserve">
+    <value>İş akışını Düzenle</value>
+  </data>
+  <data name="EditWtcicCriteriaHelpText" xml:space="preserve">
+    <value>Uygulama sıraya alındıktan ya da herhangi bir aygıta yüklendikten sonra Yükleme İşleminin Tamamlandığını Bildirme Zamanı kriterini değiştirmek için Düzenle öğesine tıklayın ve yönetici PIN'inizi girin. Yanlış kriter belirlemeniz durumunda uygulamanın aygıtlardan kaldıracağını unutmayın.</value>
+  </data>
+  <data name="EmailClassification" xml:space="preserve">
+    <value>E-posta Sınıflandırması</value>
+  </data>
+  <data name="EmailClassificationInfo" xml:space="preserve">
+    <value>E-posta Sınıflandırmasını Yapılandır</value>
+  </data>
+  <data name="EmailMaxSyncPeriodInfo" xml:space="preserve">
+    <value>Kullanıcının e-posta mesajlarını eşitlemek için ne kadar geriye doğru seçim yapabileceği.</value>
+  </data>
+  <data name="EmmManagedAccessHelpInfo" xml:space="preserve">
+    <value>EMM ile Yönetilen Erişim kaydı gerekmeden bu uygulama için {0} ayarlarını yine de özelleştirebilirsiniz.</value>
+  </data>
+  <data name="EnableClipboardPasteActionTip" xml:space="preserve">
+    <value>Yapıştırma özelliğini etkinleştirmek için doğru olarak ayarlayın. Bu anahtar ayarlanmamışsa varsayılan olarak yapıştırma desteklenir.</value>
+  </data>
+  <data name="EnableClipboardTip" xml:space="preserve">
+    <value>Pano özelliğini sadece Workspace ONE uygulamaları arasında etkinleştirmek için doğru olarak ayarlayın.</value>
+  </data>
+  <data name="EnableComplianceOnDeviceTooltip" xml:space="preserve">
+    <value>Etkinleştirildiğinde, kurallar destekleyici Yazılım Geliştirme Seti (SDK) uygulamaları tarafından değerlendirilir.</value>
+  </data>
+  <data name="EnableDeviceAssignmentConfirmationBulk" xml:space="preserve">
+    <value>Seçilen uygulamalar için aygıt tabanlı lisans atamasını etkinleştirmek istediğinizden emin misiniz?</value>
+  </data>
+  <data name="EnableDeviceGuard" xml:space="preserve">
+    <value>Uygulamaları Yükledikten Sonra Aygıt Korumasını Etkinleştir</value>
+  </data>
+  <data name="EnableKeyEscrow" xml:space="preserve">
+    <value>FastSync'i Etkinleştir</value>
+  </data>
+  <data name="EnableKeyEscrowInfo" xml:space="preserve">
+    <value>FastSync, arka planda eşitleme işlemlerini iyileştirir ve art arda gelen eşitlemeleri hızlandırır. E-posta Bildirim Hizmeti etkinleştirildiğinde ve yapılandırıldığında FastSync ayarları uygulanır</value>
+  </data>
+  <data name="EnableNewAuthEncoding" xml:space="preserve">
+    <value>Parolada umlaut karakterlerini destekle</value>
+  </data>
+  <data name="EnableNewAuthEncodingInfo" xml:space="preserve">
+    <value>Almancanın özel umlaut (ä ve ß) karakterlerini desteklemek için Boxer parolasında ISO-8859-1 kodlamasının kullanılması için etkinleştirin.</value>
+  </data>
+  <data name="EnableOfflineAccessTooltip" xml:space="preserve">
+    <value>Devre dışı bırakıldığında, Çevrimdışı Erişim kısıtlanır. Etkinleştirildiğinde ve Çevrimdışı İzin Verilen Maksimum Süre 0 olarak ayarlandığında, Çevrimdışı Erişime sınırsız süreyle izin verilir. Etkinleştirildiğinde ve sıfırdan farklı Çevrimdışı İzin Verilen Maksimum Süre aşıldığında, erişim engellenir</value>
+  </data>
+  <data name="EnableOsVersionTooltip" xml:space="preserve">
+    <value>Etkinleştirildiğinde uygulama, aygıtın İS Sürümünü yapılandırılan kurala göre değerlendirir ve uygun bulunursa eylemi gerçekleştirir.</value>
+  </data>
+  <data name="EnableSecurityPatchDateTooltip" xml:space="preserve">
+    <value>Etkinleştirildiğinde, uygulama aygıttaki güvenlik düzeltme ekinin tarihini yapılandırılan kurala göre değerlendirir ve düzeltme eki güncel değilse eylem gerçekleştirir. Bu ayar yalnızca Android aygıtlar için geçerlidir</value>
+  </data>
+  <data name="EncryptionCertificateAuthority" xml:space="preserve">
+    <value>Şifreleme Sertifika Yetkilisi</value>
+  </data>
+  <data name="EncryptionCertificateTemplate" xml:space="preserve">
+    <value>Şifreleme Sertifika Şablonu</value>
+  </data>
+  <data name="ENSAPIToken" xml:space="preserve">
+    <value>ENS2 API belirteci</value>
+  </data>
+  <data name="ENSAPITokenInfo" xml:space="preserve">
+    <value>Cloud ENS2 hizmetini etkinleştirmek için VMware tarafından sağlanan API belirteci.</value>
+  </data>
+  <data name="ENSFetchTokenInfo" xml:space="preserve">
+    <value>Yeni ENS2 sunucu adresi girdiğinizde yeni bir belirteç alın. Yeni bir ENS2 sunucu adresiyle daha önceden yapılandırılmış bir belirteci kullanamazsınız.</value>
+  </data>
+  <data name="ENSInvalidAPITokenMessage" xml:space="preserve">
+    <value>Belirteç alınamadı. ENS2 sunucu adresinin doğru olduğundan ve ENS2 sunucusunun çalışıyor olduğundan emin olun ve tekrar deneyin. Sorun devam ederse UEM Console günlükleri ve/veya ENS2 sunucu günlüklerini inceleyin ve VMware Destek birimine başvurun.</value>
+  </data>
+  <data name="ENSLinkAddress" xml:space="preserve">
+    <value>ENS2 Sunucu Adresi</value>
+  </data>
+  <data name="ENSLinkAddressInfo" xml:space="preserve">
+    <value>Kullanıcıların bağlanabilmesi için ENS2 sisteminin adresi.</value>
+  </data>
+  <data name="ENSRetrieveTokenBtnText" xml:space="preserve">
+    <value>Belirteç Al</value>
+  </data>
+  <data name="ENSValidAPITokenMessage" xml:space="preserve">
+    <value>ENS2 API Belirteci alındı.</value>
+  </data>
+  <data name="EnterAppUrlFromGooglePlayStore" xml:space="preserve">
+    <value>Google Play Store'dan uygulama URL'sini girin</value>
+  </data>
+  <data name="EnterKeyValuePairsForApplicationAttributes" xml:space="preserve">
+    <value>Uygulamalara öznitelikler sağlamak için Anahtar-Değer çiftleri girin</value>
+  </data>
+  <data name="EnterKeyValuePairsToConfigureWhenAppNotSupport" xml:space="preserve">
+    <value>Bu uygulama, uygulama yapılandırmasını desteklemiyor. Uygulamayı yapılandırmak için SDK kullanıyorsanız aşağıdaki anahtar değer çiftlerini girin</value>
+  </data>
+  <data name="EnterNumberBetweenArgAndArg" xml:space="preserve">
+    <value>{0} - {1} arasında bir sayı girin.</value>
+  </data>
+  <data name="EnterpriseAppCatalogDetailsLegalTooltip" xml:space="preserve">
+    <value>VMware, üçüncü taraf yazılımların kalitesi, içeriği, güvenilirliği veya güvenlik uygulamalarıyla ilgili hiçbir beyanda bulunmaz veya garanti vermez ve üçüncü taraf yazılımı indirmeyi ve kullanmayı seçmeniz durumunda VMware'in hiçbir sorumluluğu yoktur.</value>
+  </data>
+  <data name="EnterpriseAppCatalogFailedToLoad" xml:space="preserve">
+    <value>Uygulama kataloğu yüklenemedi. Lütfen tekrar yüklemeyi deneyin ve sorun devam ederse sistem yöneticinizle iletişime geçin.</value>
+  </data>
+  <data name="EnterpriseAppCatalogNoApplications" xml:space="preserve">
+    <value>Katalogda Hiçbir Uygulama kullanılabilir değil. Lütfen tekrar yüklemeyi deneyin ve sorun devam ederse sistem yöneticinizle iletişime geçin.</value>
+  </data>
+  <data name="EnterpriseAppRepository" xml:space="preserve">
+    <value>Kurumsal Uygulama Deposu.</value>
+  </data>
+  <data name="EnterpriseAppRepositoryAddAppName" xml:space="preserve">
+    <value>Uygulamanın adını, Intelligent Hub kataloğunda görünmesi gerektiği şekilde girin.</value>
+  </data>
+  <data name="EnterpriseAppRepositoryAppUpdateMode" xml:space="preserve">
+    <value>Güncelleme Bildirimleri</value>
+  </data>
+  <data name="EnterpriseAppRepositoryAppUpdateModeInfo" xml:space="preserve">
+    <value>Uygulama güncellemeleri için bir seçenek belirleyin.</value>
+  </data>
+  <data name="EnterpriseAppRepositoryAppUpdateModeNone" xml:space="preserve">
+    <value>Hiçbiri</value>
+  </data>
+  <data name="EnterpriseAppRepositoryAppUpdateModeNotify" xml:space="preserve">
+    <value>Bildir</value>
+  </data>
+  <data name="EnterpriseAppSourceHelpText" xml:space="preserve">
+    <value>Bu sütun, bir uygulamanın kurumsal imza sertifikası ile imzalanıp imzalanmadığını ve App Store üzerinden dağıtılmadığını belirler.</value>
+  </data>
+  <data name="EnterValidBuildVersion" xml:space="preserve">
+    <value>Lütfen Oluşturma Sürümü alanına geçerli bir değer girin.</value>
+  </data>
+  <data name="EnterValidWhitelistedApplications" xml:space="preserve">
+    <value>Geçerli İzin Verilen Uygulamaları Girin</value>
+  </data>
+  <data name="EntireChain" xml:space="preserve">
+    <value>Tüm Zincir</value>
+  </data>
+  <data name="ERROR_ANOTHER_RUNNING_SCENARIO" xml:space="preserve">
+    <value>Başka bir senaryo çalışıyor</value>
+  </data>
+  <data name="ERROR_COMPLETING_SCENARIO" xml:space="preserve">
+    <value>İşlem tamamlanamadı. Olası nedenler:
+
+    Yükleme kullanıcı tarafından iptal edildi
+    Yükleme başka bir yükleme tarafından iptal edildi
+    Yükleme sırasında disk alanı yetersiz kaldı
+    Bilinmeyen dil kimliği</value>
+  </data>
+  <data name="ERROR_COMPLETING_SCENARIO_NEED_CLEAN_UP" xml:space="preserve">
+    <value>Olası nedenler:
+
+    Bilinmeyen SKU'lar
+    İçerik CDN'de yok
+        zh-sg gibi desteklenmeyen bir LAP'yi yüklemeye çalışmak gibi
+        İçeriğin mevcut olmadığı CDN sorunu
+    İmza denetimi sorunu, Office içeriği için başarısız imza denetimi gibi
+    Kullanıcı iptal etti</value>
+  </data>
+  <data name="ERROR_HANDLING_COMMAND_LINE" xml:space="preserve">
+    <value>C2RClient komut satırı hatası</value>
+  </data>
+  <data name="ERROR_INSTALL_FAILURE" xml:space="preserve">
+    <value>Herhangi bir ön talep kontrolü başarısız oldu.
+
+    SxS (2016 MSI yüklüyken yüklenmeye çalışıldı)
+    Şu anda yüklü olan Office ve yüklenmeye çalışılan Office arasında (64 bit sürümü zaten yüklüyken 32 bit sürümünü yüklemeye çalışmanız gibi) bit uyuşmazlığı.</value>
+  </data>
+  <data name="ERROR_INSTALL_USEREXIT" xml:space="preserve">
+    <value>Kullanıcı yüklemeyi iptal etti</value>
+  </data>
+  <data name="ERROR_INVALID_DATA" xml:space="preserve">
+    <value>İndirilen Office Dağıtım Aracı'nın (ODT) imzası doğrulanamıyor</value>
+  </data>
+  <data name="ERROR_PROCESSPOOL_INITIALIZATION" xml:space="preserve">
+    <value>C2RClient başlatılamadı</value>
+  </data>
+  <data name="ERROR_QUEUE_SCENARIO" xml:space="preserve">
+    <value>C2RClient'ta yükleme senaryosu kuyruğa alınamadı</value>
+  </data>
+  <data name="ERROR_REMOVE_INSTALLATION_NEEDED" xml:space="preserve">
+    <value>İstemci, "Yüklemeyi Kaldırma" senaryosunda istemci temizlemesi istiyor</value>
+  </data>
+  <data name="ERROR_SCENARIO_CANCELLED" xml:space="preserve">
+    <value>Uygulamaları çalıştırarak güncelleme engellendi</value>
+  </data>
+  <data name="ERROR_SCENARIO_CANCELLED_AS_PLANNED" xml:space="preserve">
+    <value>Senaryo planlandığı gibi iptal edildi</value>
+  </data>
+  <data name="ERROR_TIMEOUT" xml:space="preserve">
+    <value>Office Dağıtım Aracı (ODT) indirilemedi</value>
+  </data>
+  <data name="ErrorApplicationSyncJobAppPublish" xml:space="preserve">
+    <value>Uygulama Yayınladıktan Sonra Uygulama Eşitleme İşinde Hata.</value>
+  </data>
+  <data name="EscrowExpiry" xml:space="preserve">
+    <value>FastSync Kullanım Süresi Sonu</value>
+  </data>
+  <data name="EscrowExpiryInfo" xml:space="preserve">
+    <value>Workspace ONE Boxer'ın FastSync anahtarını alamamasındaki zaman aşımı süresini saat cinsinden ayarlayın. E-posta Bildirim Hizmeti etkinleştirildiğinde ve yapılandırıldığında FastSync ayarları uygulanır</value>
+  </data>
+  <data name="EscrowGatewayToolTipInfo" xml:space="preserve">
+    <value>Emanet Ağ Geçidi yapılandırması, yalnızca ağ geçidi ortamınızda yapılandırıldığında geçerli olur</value>
+  </data>
+  <data name="EventBased" xml:space="preserve">
+    <value>Etkinlik Tabanlı</value>
+  </data>
+  <data name="EventTargeted" xml:space="preserve">
+    <value>Hedeflenen Etkinlik</value>
+  </data>
+  <data name="EWSConfigPositionChangeInfo" xml:space="preserve">
+    <value>"E-posta ayarları" bölümünde EWS URL'sini ayarlamak isteyip istemediğinizi yapılandırın.</value>
+  </data>
+  <data name="EWSUrl" xml:space="preserve">
+    <value>EWS URL'si</value>
+  </data>
+  <data name="EWSUrlInfo" xml:space="preserve">
+    <value>EWS (ya da SEG) uç noktasının adresi</value>
+  </data>
+  <data name="EwsUrlInfoMsg" xml:space="preserve">
+    <value>EWS Url yapılandırması, e-posta ayarları bölümüne taşındı</value>
+  </data>
+  <data name="ExchangeSettings" xml:space="preserve">
+    <value>Microsoft Exchange Ayarları</value>
+  </data>
+  <data name="ExchangeURL" xml:space="preserve">
+    <value>Exchange URL'si</value>
+  </data>
+  <data name="ExchangeUserName" xml:space="preserve">
+    <value>Exchange Kullanıcı Adı</value>
+  </data>
+  <data name="ExecutionFailed" xml:space="preserve">
+    <value>Yürütülemedi</value>
+  </data>
+  <data name="ExportFactoryPpkg" xml:space="preserve">
+    <value>Dışarı Aktar</value>
+  </data>
+  <data name="ExportPpkgMessage" xml:space="preserve">
+    <value>Uygulamaları desteklenen uygulamalar listesinden seçin ve bir Windows Provizyonlama Paketine (PPKG) aktarın. PPKG'ye aktarma tamamlandığında bunu indirmek için bir bağlantıyla birlikte bir bildirim gönderilir.</value>
+  </data>
+  <data name="ExportPpkgWindowsNoAppsMessage" xml:space="preserve">
+    <value>Uygulamaların Windows Provizyonlama Paketine (PPKG) aktarılması, uygulamaları fabrikada yüklemek için paket haline getirmeye olanak sağlar. Lütfen bir PPKG'ye aktarmak üzere bazı Windows uygulamalarını karşıya yükleyin.</value>
+  </data>
+  <data name="ExternalApplicationIdInfo" xml:space="preserve">
+    <value>Bu, Apple App Store benzersiz tanımlayıcısıdır. Bu, uygulamanın iTunes URL'sinde görülebilir</value>
+  </data>
+  <data name="FactoryProvisioningServiceNotRunning" xml:space="preserve">
+    <value>Fabrikada Provizyonlama hizmeti yapılandırılmadı veya çalışmıyor. Lütfen Workspace ONE UEM kurulumuzu kontrol edin.</value>
+  </data>
+  <data name="FailedToUploadApplication" xml:space="preserve">
+    <value>Uygulama karşıya yüklenemedi.</value>
+  </data>
+  <data name="FastAsyncConfigPositionChangeInfo" xml:space="preserve">
+    <value>"E-posta ayarları" bölümünde EWS URL'sini ayarlamak isteyip istemediğinizi yapılandırın. "Uygulama ilkeleri" &gt; "Gelişmiş" bölümünde FastSync'i etkinleştirmek ve kullanım süresini belirlemek isteyip istemediğinizi yapılandırın.</value>
+  </data>
+  <data name="FeaturedApps" xml:space="preserve">
+    <value>Öne Çıkan Uygulamalar</value>
+  </data>
+  <data name="FeedbackChannelDataNotAvailableMessage" xml:space="preserve">
+    <value>Bu aygıt şu anda geri bildirim raporu vermiyor ve çevrimdışı olabilir. Lütfen daha sonra tekrar deneyin.</value>
+  </data>
+  <data name="FeedbackChannelEditConfigurationMessage" xml:space="preserve">
+    <value>Yapılandırma değişiklikleri aşağıdaki akıllı gruplara ait olan tüm aygıtlara uygulanacaktır:
+
+{0}.
+
+Düzenlemek istediğinizden emin misiniz?</value>
+  </data>
+  <data name="FeedbackDateTime" xml:space="preserve">
+    <value>Aygıtın Bildirdiği Zaman</value>
+  </data>
+  <data name="FeedbackMessage" xml:space="preserve">
+    <value>İleti</value>
+  </data>
+  <data name="FeedbackTitle" xml:space="preserve">
+    <value>Geri Bildirim Başlığı</value>
+  </data>
+  <data name="FeedbackTriggerValue" xml:space="preserve">
+    <value>Başlatma Değeri</value>
+  </data>
+  <data name="FieldShouldBeANumber" xml:space="preserve">
+    <value>Bu alanda bir sayı olmalıdır</value>
+  </data>
+  <data name="FieldShouldBeBetweenArgAndMaxInt" xml:space="preserve">
+    <value>Bu alanda {0} - {1} arasında bir sayı olmalıdır</value>
+  </data>
+  <data name="FieldShouldBeValidColourInHexFormat" xml:space="preserve">
+    <value>Bu alan, onaltılık biçimde metin rengi gerektirir</value>
+  </data>
+  <data name="FileFormatNotSupported" xml:space="preserve">
+    <value>Seçilen dosya biçimi desteklenmiyor, lütfen bir XML dosyası seçin.</value>
+  </data>
+  <data name="FilterAppleSystemApps" xml:space="preserve">
+    <value>com.apple.* uygulamalarını göster</value>
+  </data>
+  <data name="FilterBySmartGroup" xml:space="preserve">
+    <value>Akıllı Gruba Göre Filtrele</value>
+  </data>
+  <data name="FinalDetectionFailed" xml:space="preserve">
+    <value>Son Algılama Başarısız Oldu</value>
+  </data>
+  <data name="FlexDeploymentNewMessage" xml:space="preserve">
+    <value>Aygıtlar, aşağıdaki yapılandırmalara göre uygulama alacaktır. Birden çok ataması bulunan aygıtlar, politikaları öncelik sırasında göre alacaktır. Tek bir atamanın önceliği ayarlandığında, diğer atamalar otomatik olarak yeniden önceliklendirilecektir. Düzenlemek üzere atamayı seçin. Yeni bir atama eklendiğinde listenin en altında yeni bir kural oluşturulur.</value>
+  </data>
+  <data name="FlexeraCriticalAppsArrived" xml:space="preserve">
+    <value>Yeni Flexera SVM düzeltme ekleri mevcut</value>
+  </data>
+  <data name="FlexeraSVM" xml:space="preserve">
+    <value>Flexera SVM</value>
+  </data>
+  <data name="ForwardAddAttachments" xml:space="preserve">
+    <value>Ekleri İlet/Ekle</value>
+  </data>
+  <data name="FromEnterpriseCatalog" xml:space="preserve">
+    <value>Kurumsal Uygulama Deposundan</value>
+  </data>
+  <data name="GetStartedWithWorkflows" xml:space="preserve">
+    <value>İş akışlarını kullanmaya başlayın</value>
+  </data>
+  <data name="GoToChromeWebStore" xml:space="preserve">
+    <value>Chrome web mağazasına git</value>
+  </data>
+  <data name="HideNotificationsLabel" xml:space="preserve">
+    <value>Bildirimleri Gizle</value>
+  </data>
+  <data name="HideNotificationsTooltip" xml:space="preserve">
+    <value>Bu uygulama için yükleme ve kaldırma bildirimlerinin görüntülenmesini önlemek için bu ayarı etkinleştirin. Bu, yalnızca Otomatik olarak dağıtılan uygulamalar için geçerlidir.</value>
+  </data>
+  <data name="HighCriticality" xml:space="preserve">
+    <value>Yüksek Kritiklik</value>
+  </data>
+  <data name="IconFile" xml:space="preserve">
+    <value>Simge Dosyası</value>
+  </data>
+  <data name="InactiveAppAlreadyExistsinConsole" xml:space="preserve">
+    <value>Bu uygulama konsola zaten eklendi ve etkin olmayan bir durumda. Atamaya devam etmek için lütfen Uygulama Listesi Görünümünden uygulamayı yeniden etkinleştirin.</value>
+  </data>
+  <data name="IncorrectExchangeURL" xml:space="preserve">
+    <value>https://server.domain.com/EWS/Exchange.asmx biçimini kullanın.</value>
+  </data>
+  <data name="IndividualAppSizeLimitMessage" xml:space="preserve">
+    <value>Maksimum İzin Verilen Dosya Boyutu: {0} MB</value>
+  </data>
+  <data name="InstallAppExceptionMessage" xml:space="preserve">
+    <value>Uygulamayı çok sayıda aygıta yüklemek için lütfen filtre seçin.</value>
+  </data>
+  <data name="InstallApplicationConfirmed" xml:space="preserve">
+    <value>Aygıt, uygulamanın yüklemesini onayladı</value>
+  </data>
+  <data name="InstallAppOnAllBspAlert" xml:space="preserve">
+    <value>Bu uygulamayı tüm aygıtlara yüklemek üzeresiniz. Lisans miktarınız sınırlıysa bazı aygıtlar, uygulamayı almayabilir. Devam etmek için Tamam öğesine tıklayın. Mevcut lisans sayısı: {0} Çevrimiçi, {1} Çevrimdışı</value>
+  </data>
+  <data name="InstallationStatus" xml:space="preserve">
+    <value>Yükleme Durumu</value>
+  </data>
+  <data name="InstallationStatusLastScan" xml:space="preserve">
+    <value>Yükleme Durumu Son Taraması</value>
+  </data>
+  <data name="InstallCommandFailed" xml:space="preserve">
+    <value>Yükleme Komutu Başarısız Oldu</value>
+  </data>
+  <data name="InstalledAndFeedbackAvailable" xml:space="preserve">
+    <value>Yüklendi (Yapılandırma Geri Bildirimi Mevcut)</value>
+  </data>
+  <data name="InstalledAppVersion" xml:space="preserve">
+    <value>Yüklü Uygulama Sürümü</value>
+  </data>
+  <data name="InstalledButHidden" xml:space="preserve">
+    <value>Yüklü Ancak Gizli</value>
+  </data>
+  <data name="InstalledByUser" xml:space="preserve">
+    <value>Kullanıcı tarafından yüklendi</value>
+  </data>
+  <data name="InstalledEqualsAssigned" xml:space="preserve">
+    <value>Yüklendi = Atandı</value>
+  </data>
+  <data name="InstalledNotEqualsAssigned" xml:space="preserve">
+    <value>Yüklendi &lt;&gt; Atandı</value>
+  </data>
+  <data name="InstalledPersonalApp" xml:space="preserve">
+    <value>Yüklü Kişisel Uygulama</value>
+  </data>
+  <data name="InstalledSystemApp" xml:space="preserve">
+    <value>Yüklü Sistem Uygulaması</value>
+  </data>
+  <data name="InstalledWithVersion" xml:space="preserve">
+    <value>Yüklendi ({0})</value>
+  </data>
+  <data name="InstallerDeferralExitCodeInvalid" xml:space="preserve">
+    <value>Çıkış kodu geçersiz.</value>
+  </data>
+  <data name="InstallerDeferralExitCodeLabel" xml:space="preserve">
+    <value>Yükleyici Erteleme Çıkış Kodu</value>
+  </data>
+  <data name="InstallerDeferralExitCodeRequired" xml:space="preserve">
+    <value>Çıkış kodu gereklidir.</value>
+  </data>
+  <data name="InstallerDeferralExitCodeTooltip" xml:space="preserve">
+    <value>Uygulama yüklemesinin ertelenmiş olduğunu göstermek için yükleyici tarafından verilen tam sayı kodunu belirtin. Bu, uygulama yüklemesinin bir sonraki yükleme aralığında yeniden denenmesine izin verecektir.</value>
+  </data>
+  <data name="InstallerDeferralIntervalLabel" xml:space="preserve">
+    <value>Yükleyici Erteleme Aralığı</value>
+  </data>
+  <data name="InstallerDeferralIntervalOption12Hours" xml:space="preserve">
+    <value>12 Saat</value>
+  </data>
+  <data name="InstallerDeferralIntervalOption24Hours" xml:space="preserve">
+    <value>24 saat</value>
+  </data>
+  <data name="InstallerDeferralIntervalOption2Hours" xml:space="preserve">
+    <value>2 Saat</value>
+  </data>
+  <data name="InstallerDeferralIntervalOption4Hours" xml:space="preserve">
+    <value>4 saat</value>
+  </data>
+  <data name="InstallerDeferralIntervalOption8Hours" xml:space="preserve">
+    <value>8 saat</value>
+  </data>
+  <data name="InstallerDeferralIntervalTooltip" xml:space="preserve">
+    <value>Erteleme zaman çerçevesini belirtin</value>
+  </data>
+  <data name="InstallerDeferralNotificationCustom" xml:space="preserve">
+    <value>ÖZEL</value>
+  </data>
+  <data name="InstallerDeferralNotificationLabel" xml:space="preserve">
+    <value>UEM veya Özel Bildirimler kullan</value>
+  </data>
+  <data name="InstallerDeferralNotificationTooltip" xml:space="preserve">
+    <value>Erteleme için UEM ya da özel bildirimler kullanılmasını belirleyin</value>
+  </data>
+  <data name="InstallerDeferralNotificationUEM" xml:space="preserve">
+    <value>UEM</value>
+  </data>
+  <data name="InstallerPackageDeployment" xml:space="preserve">
+    <value>Yükleyici Paketi Dağıtımı</value>
+  </data>
+  <data name="InstallInProgress" xml:space="preserve">
+    <value>Kurulum devam ediyor</value>
+  </data>
+  <data name="InstallOnSelectedDevices" xml:space="preserve">
+    <value>Bu uygulama, sadece geçerli atamalara sahip aygıtlara yüklenecektir.</value>
+  </data>
+  <data name="InstallOnSelectedDevicesBspAlert" xml:space="preserve">
+    <value>Bu uygulamayı seçilen tüm aygıtlara yüklemek üzeresiniz. Lisans miktarınız sınırlıysa bazı aygıtlar, uygulamayı almayabilir. Devam etmek için Tamam öğesine tıklayın. Mevcut lisans sayısı: {0} Çevrimiçi, {1} Çevrimdışı</value>
+  </data>
+  <data name="InstallStatusHeaderToolTip" xml:space="preserve">
+    <value>Bu, uygulamanın yükleme durumu hakkında ayrıntılı bilgiler içeren ve belirli bir sürüme bağlı olmayan aygıtlar tarafından bildirilen verileri gösterir.</value>
+  </data>
+  <data name="InstallSuccess" xml:space="preserve">
+    <value>Kurulum başarılı</value>
+  </data>
+  <data name="IntelligenceOptInMessageForFeedbackArg" xml:space="preserve">
+    <value>Uygulama yapılandırma geri bildirimini görüntülemek için Intelligence'ı seçmeniz gerekecektir. {0}</value>
+  </data>
+  <data name="InternalAppAssignmentUpToDate" xml:space="preserve">
+    <value>Güncel. Atanan uygulama sürümü, yüklenen sürümle aynı</value>
+  </data>
+  <data name="InternalApplication" xml:space="preserve">
+    <value>Dahili Uygulama</value>
+  </data>
+  <data name="InternalApplications" xml:space="preserve">
+    <value>Dahili Uygulamalar</value>
+  </data>
+  <data name="InternalDomainsFieldError" xml:space="preserve">
+    <value>Etki alanı listesi köşeli parantez içinde olmalıdır. Örneğin: ["xyz.com","abc.com"]</value>
+  </data>
+  <data name="InternalDomainsInfo" xml:space="preserve">
+    <value>Dahili olan veya izin verilen etki alanlarını tanımlayın. Kullanıcı, dahili etki alanları tanımlandığında ve Harici alıcılar ayarlanmadığında "Göndermeden önce onayla" seçeneğini kullanarak uyarıyı devre dışı bırakabilir. Her etki alanı çift tırnak işareti içinde olmalıdır. Ayırmak için virgül kullanın ve köşeli parantezle listeyi kapatın. Örneğin: ["xyz.com","abc.com"].</value>
+  </data>
+  <data name="InternalTriggerAccountVersion" xml:space="preserve">
+    <value>Bu uygulama sürümü için atanmış aygıtlarda gerçekleştirilen son işlemin ayrıntılarını görüntüler.</value>
+  </data>
+  <data name="InvalidAppAttributeVpnKey" xml:space="preserve">
+    <value>VPNUUID, öznitelikler için geçerli değil; bunun yerine lütfen Uygulama Tüneli Oluşturmayı yapılandırın</value>
+  </data>
+  <data name="InvalidApplicationBundleID" xml:space="preserve">
+    <value>Geçersiz Uygulama Paketi Kimliği</value>
+  </data>
+  <data name="InvalidApplicationError" xml:space="preserve">
+    <value>Uygulama paketi biçimi desteklenmiyor</value>
+  </data>
+  <data name="InvalidMultiStringValue" xml:space="preserve">
+    <value>Lütfen tırnak işareti olmayan dizeleri belirtin</value>
+  </data>
+  <data name="InvalidNsxEntryForApplication" xml:space="preserve">
+    <value>Seçilen uygulama için geçersiz NSX Girişi</value>
+  </data>
+  <data name="InvalidPkgInfoFile" xml:space="preserve">
+    <value>Meta veriler geçersiz. Admin Assistant Aracı ile dosyayı oluşturun ve tekrar karşıya yüklemeyi deneyin.</value>
+  </data>
+  <data name="InvalidPlayStoreUrlEnterValidUrlToContinue" xml:space="preserve">
+    <value>Geçersiz Play Store URL'si. Devam etmek için lütfen geçerli bir Play Store URL'si girin.</value>
+  </data>
+  <data name="InvalidRegistryPath" xml:space="preserve">
+    <value>Geçersiz Kayıt Defteri Yolu</value>
+  </data>
+  <data name="InvalidThresholdId" xml:space="preserve">
+    <value>Geçersiz Eşik Kimliği</value>
+  </data>
+  <data name="IsBlockingAppsEnabled" xml:space="preserve">
+    <value>Engelleyen Uygulamalar</value>
+  </data>
+  <data name="IsBlockingAppsEnabledTooltip" xml:space="preserve">
+    <value>Engelleyen Uygulamalar etkinleştirildiğinde, tanımlanan öğeler kullanılarak yükleme işlemi başlamadan önce çalışıp çalışmadıkları kontrol edilir. Engelleyen Uygulamalar devre dışı bırakıldığında tüm engelleyici eylemler geçersiz kılınır ve yükleme işlemi sürdürülür.</value>
+  </data>
+  <data name="IsForceInstallAfterDateEnabled" xml:space="preserve">
+    <value>Yüklemeye Zorlama Tarihi</value>
+  </data>
+  <data name="IsForceInstallAfterDateEnabledTooltip" xml:space="preserve">
+    <value>Öğe henüz yüklenmediyse yüklemeyi zorlamak için bir tarih belirleyin. Bu, engelleyen uygulamaları kapatmaya zorlar ve tanımlanmışsa yeniden başlatma eylemini gerçekleştirilir.</value>
+  </data>
+  <data name="KeyEscrow" xml:space="preserve">
+    <value>Anahtar Emaneti</value>
+  </data>
+  <data name="KeyHelpText" xml:space="preserve">
+    <value>Ör. HKLM\Software\.. veya HKCU\Software\.. veya HKEY_LOCAL_MACHINE\Software.. veya HKEY_CURRENT_USER\Software..
+
+En üst düzey kayıt defteri kovanı için kısaltılmış veya tam adı kullanarak kayıt defteri yolunu girin.</value>
+  </data>
+  <data name="KeySupportedOnlyAtAccountLevel" xml:space="preserve">
+    <value>Anahtar Sadece Hesap Seviyesinde Destekleniyor</value>
+  </data>
+  <data name="KeySupportedOnlyAtAppLevel" xml:space="preserve">
+    <value>Anahtar Sadece Uygulama Seviyesinde Destekleniyor</value>
+  </data>
+  <data name="LastAction" xml:space="preserve">
+    <value>Son İşlem</value>
+  </data>
+  <data name="LastActionTaken" xml:space="preserve">
+    <value>Yapılan Son İşlem</value>
+  </data>
+  <data name="LastActionTimestamp" xml:space="preserve">
+    <value>Son İşlemin Zaman Damgası</value>
+  </data>
+  <data name="LastReportedTime" xml:space="preserve">
+    <value>Son Rapor Zamanı</value>
+  </data>
+  <data name="LastServerAction" xml:space="preserve">
+    <value>Son Sunucu İşlemi</value>
+  </data>
+  <data name="LatestInstallationEvent" xml:space="preserve">
+    <value>Kaydedilen En Son Yükleme Etkinliği</value>
+  </data>
+  <data name="LatestInstallationEventTooltip" xml:space="preserve">
+    <value>Bu aygıt ve uygulama için "sorun giderme" bölümünde kaydedilen en son yükleme etkinliğini görüntüler. Yalnızca devam eden kurulum durumları etkinlik olarak yakalanır, tamamlanmamış kurulum durumları yakalanmaz. Aygıt her yükleme durumunu raporlamayabilir, bu durumda hiçbir etkinlik kaydedilmez.</value>
+  </data>
+  <data name="LatestInstallationStatus" xml:space="preserve">
+    <value>En Son Yükleme Durumu</value>
+  </data>
+  <data name="LicenseDistribution" xml:space="preserve">
+    <value>Lisans Dağıtımı</value>
+  </data>
+  <data name="LicenseSummary" xml:space="preserve">
+    <value>Lisans Özeti</value>
+  </data>
+  <data name="LogAggregationMode" xml:space="preserve">
+    <value>Günlük Toplama Modu</value>
+  </data>
+  <data name="LogAggregationModeInfo" xml:space="preserve">
+    <value>Uygulamanın Günlük dosyasını Günlük Toplama uç noktasına gönderdiği mod.</value>
+  </data>
+  <data name="LogAggregationUrlInfo" xml:space="preserve">
+    <value>Günlük Toplama uç noktasının URL'si.</value>
+  </data>
+  <data name="LowCriticality" xml:space="preserve">
+    <value>Düşük Kritiklik</value>
+  </data>
+  <data name="macOSDesiredStateManagement" xml:space="preserve">
+    <value>İstenen Durum Yönetimi</value>
+  </data>
+  <data name="Major" xml:space="preserve">
+    <value>Büyük</value>
+  </data>
+  <data name="ManageAssignment" xml:space="preserve">
+    <value>Atamayı Yönet</value>
+  </data>
+  <data name="ManageAssignmentForApplicationArgOpensDialog" xml:space="preserve">
+    <value>{0} uygulaması için atamayı yönet iletişim kutusunu açar</value>
+    <comment>The placeholder in this label key will contain application name.</comment>
+  </data>
+  <data name="ManageAssignmentForArgOpensDialog" xml:space="preserve">
+    <value>{0} için Atamayı Yönet İletişim Kutusunu Açar</value>
+    <comment>Placeholder in this label key is for application name.</comment>
+  </data>
+  <data name="ManagedAccess" xml:space="preserve">
+    <value>Yönetilen Erişim</value>
+  </data>
+  <data name="ManagedAccessDescription" xml:space="preserve">
+    <value>EMM ile yönetilen erişim, hangi aygıtların Intelligent Hub üzerinden bu uygulamayı yükleyebileceğini belirler.</value>
+  </data>
+  <data name="ManagedAccessOnlyEmmDevices" xml:space="preserve">
+    <value>Sadece EMM ile yönetilen aygıtlar bu uygulamayı yükleyebilir.</value>
+  </data>
+  <data name="ManagedAccessSecuredByWorkspace" xml:space="preserve">
+    <value>Bu uygulama, Workspace ONE SDK sürümü 20.10 veya daha sonraki bir sürümü tarafından korunuyorsa uygulama EMM ile yönetilmediği sürece erişim engellenir. Bu uygulamanın yönetildiğinden emin olmak için Kısıtlamalar sekmesinde "Kullanıcı Yüklüyse Uygulamayı MDM Üzerinden Yönet" ayarını etkinleştirin.</value>
+  </data>
+  <data name="ManagedAccessSettingEnabled" xml:space="preserve">
+    <value>Bu ayar etkinleştirilirse:</value>
+  </data>
+  <data name="ManagedAccessSettingEnabledOnlyEmm" xml:space="preserve">
+    <value>Bu ayar etkinleştirilirse sadece EMM ile yönetilen aygıtlar bu uygulamayı yükleyebilir.</value>
+  </data>
+  <data name="ManagedAccessSubDescription" xml:space="preserve">
+    <value>Bu ayar devre dışı bırakılırsa tüm kayıtlı aygıtlar bu uygulamayı yükleyebilir.</value>
+  </data>
+  <data name="ManagedAccessTitle" xml:space="preserve">
+    <value>EMM ile Yönetilen Erişim</value>
+  </data>
+  <data name="ManagedAppsTab" xml:space="preserve">
+    <value>Yönetilen Uygulamalar</value>
+  </data>
+  <data name="ManagedConfigurationErrorMessage" xml:space="preserve">
+    <value>Yapılandırma Hataları</value>
+  </data>
+  <data name="ManagementAccess" xml:space="preserve">
+    <value>Yönetim Erişimi</value>
+  </data>
+  <data name="ManagementIDToolTip" xml:space="preserve">
+    <value>Uygulama ve aygıt için benzersiz tanımlayıcı</value>
+  </data>
+  <data name="MaxAllowedDevicesException" xml:space="preserve">
+    <value>Seçilen aygıt sayısı izin verilen aygıt sayısını aşıyor, lütfen filtre seçin.</value>
+  </data>
+  <data name="MaxAttachmentSize" xml:space="preserve">
+    <value>Maksimum ek boyutu</value>
+  </data>
+  <data name="MaxAttachmentSizeInfo" xml:space="preserve">
+    <value>Kullanıcının bir giden e-postaya ekleyebileceği dosya boyutunun (Bayt cinsinden) üst sınırı</value>
+  </data>
+  <data name="MaxCalendarSyncWindow" xml:space="preserve">
+    <value>İzin Verilen Maksimum Takvim Eşitleme Süresi</value>
+  </data>
+  <data name="MaxEmailSyncWindow" xml:space="preserve">
+    <value>İzin Verilen Maksimum E-posta Eşitleme Süresi</value>
+  </data>
+  <data name="MaxFileSizeCDNMegabytes" xml:space="preserve">
+    <value>CDN ile Maksimum Dosya Boyutu</value>
+  </data>
+  <data name="MaximumFileSizeWithCDNShouldBeLesserThanAppCapacity" xml:space="preserve">
+    <value>CND ile Maksimum Dosya Boyutu, Toplam Uygulama Kapasitesini aşamaz.</value>
+  </data>
+  <data name="MaxTabCountReached" xml:space="preserve">
+    <value>Yalnızca üç yönetilen e-posta hesabı desteklenir</value>
+  </data>
+  <data name="MediumCriticality" xml:space="preserve">
+    <value>Orta Düzeyde Kritiklik</value>
+  </data>
+  <data name="MetadataFileContainsInvalidCharactersForNameKey" xml:space="preserve">
+    <value>Meta veri dosyasındaki Ad anahtar değeri geçersiz karakterler içeriyor. Bu anahtar değeri sadece alfasayısal, alt çizgi, boşluk, tire ve nokta kullanabilir.</value>
+  </data>
+  <data name="MMAEmailSettingsInfoMsgInfo" xml:space="preserve">
+    <value>Birden çok e-posta hesabı yapılandırması, sadece Boxer uygulamasının 5.21 sürümünde veya daha üst sürümlerde desteklenir ve Çoklu Oturum Açma'nın etkinleştirilmiş olması gerekir.</value>
+  </data>
+  <data name="MobileFlowsAuthenticationServerInfo" xml:space="preserve">
+    <value>Aygıt kullanıcılarının kimliğini doğrulamak için geçerli bir URL sağlayın. Bu, Workspace ONE Access sunucusunun URL'si olabilir</value>
+  </data>
+  <data name="MobileFlowsAutoEnableConnectorsInfo" xml:space="preserve">
+    <value>Etkinse Mobile Flows'u açarken tüm bağlayıcıları otomatik olarak sırayla etkinleştirin. Yalnızca tüm bağlayıcıların Workspace ONE Access ile birleştirildiği durumlarda tavsiye edilir</value>
+  </data>
+  <data name="MobileFlowsHostInfo" xml:space="preserve">
+    <value>Mobile Flows sunucusu için ana bilgisayar adı</value>
+  </data>
+  <data name="MobileFlowsInfo" xml:space="preserve">
+    <value>Mobile Flows sunucu bilgilerini, Boxer'ın iletişim kurabileceği şekilde yapılandır</value>
+  </data>
+  <data name="MobileFlowsSyncHoursInfo" xml:space="preserve">
+    <value>Bu değerden (saat) daha önce gönderilen e-postalar için Mobile Flow kartları isteme</value>
+  </data>
+  <data name="ModifiedOnArgArgByArg" xml:space="preserve">
+    <value>{1} tarafından şu zamanda değiştirildi: {0}</value>
+  </data>
+  <data name="MSTSelection" xml:space="preserve">
+    <value>Uygulama Dönüşümlerini Seç</value>
+  </data>
+  <data name="MustBePositiveIntegerValue" xml:space="preserve">
+    <value>Pozitif tamsayı değeri olmalıdır</value>
+  </data>
+  <data name="NewWorkflow" xml:space="preserve">
+    <value>Yeni İş Akışı</value>
+  </data>
+  <data name="NoEventLogged" xml:space="preserve">
+    <value>Kayıtlı etkinlik yok</value>
+  </data>
+  <data name="NotebookVersionMessage" xml:space="preserve">
+    <value>Aşağıdaki ilkeler sadece Notebook 1.4 sürümü ve üzeri için geçerlidir. Daha eski sürümler için bu uygulama ile ilişkilendirilmiş SDK profilindeki özel ayarlara gidin.</value>
+  </data>
+  <data name="NotebookWarningToEditAllAssignments" xml:space="preserve">
+    <value>Notebook yapılandırması kurulum için hazır. Yayınlamadan önce, bu uygulama ile ilişkilendirilmiş SDK profilinin özel ayarlarından alınan yapılandırmaların doğru olduğundan emin olun.</value>
+  </data>
+  <data name="NotEvaluated" xml:space="preserve">
+    <value>Değerlendirilmedi</value>
+  </data>
+  <data name="NotificationsInfo" xml:space="preserve">
+    <value>Gerçek zamanlı e-posta bildirimleri sağlamak için E-posta Bildirim Hizmeti (ENS) ve davranışını yapılandırın.</value>
+  </data>
+  <data name="NotifyEmail" xml:space="preserve">
+    <value>E-posta Bildirimi</value>
+  </data>
+  <data name="NumberOfApps" xml:space="preserve">
+    <value>{0} Uygulama</value>
+  </data>
+  <data name="NumberOfCommandsQueued" xml:space="preserve">
+    <value>Sıraya Alınmış Komut Sayısı</value>
+  </data>
+  <data name="OCSP" xml:space="preserve">
+    <value>Sertifika İptal İlkeleri</value>
+  </data>
+  <data name="OfflineLicenseAvailableArgDevicesAllocation" xml:space="preserve">
+    <value>{0} çevrimdışı lisans mevcut. Aygıtlara, ilk gelene öncelik verilecek şekilde lisans atanacaktır.</value>
+  </data>
+  <data name="OnDemandAppAssignedButNotInstalled" xml:space="preserve">
+    <value>İstek üzerine dağıtım için atanan uygulama yüklenmedi</value>
+  </data>
+  <data name="OnDemandAppAssignmentOutOfDate" xml:space="preserve">
+    <value>İstek üzerine dağıtım için atanan son uygulama sürümü yüklenmedi</value>
+  </data>
+  <data name="OnDemandBootstrapPackageAssignedButNotInstalled" xml:space="preserve">
+    <value>İsteğe bağlı dağıtım için atanan ancak talep edilmeyen Önyükleme Paketi</value>
+  </data>
+  <data name="OneDay" xml:space="preserve">
+    <value>1 Gün</value>
+  </data>
+  <data name="OnlineLicenseAvailableArgDevicesAllocation" xml:space="preserve">
+    <value>{0} çevrimiçi lisans mevcut. Aygıtlara, ilk gelene öncelik verilecek şekilde lisans atanacaktır.</value>
+  </data>
+  <data name="OrdersLicensesMenuTitle" xml:space="preserve">
+    <value>Toplu Satın Alma Programı (VPP) kullanım kodlarını görüntüle ve yönet</value>
+  </data>
+  <data name="OSVersionNotSetError" xml:space="preserve">
+    <value>İlke etkinleştirilmişse OsVesion sıfır veya boş olamaz</value>
+  </data>
+  <data name="OsXParseError" xml:space="preserve">
+    <value>OsX dosyası ayrıştırılırken hata oluştu</value>
+  </data>
+  <data name="OtherAttributes" xml:space="preserve">
+    <value>Diğer Öznitelikler</value>
+  </data>
+  <data name="PasswordNotCopied" xml:space="preserve">
+    <value>Yapılandırmanız sırasında girilen parolalar bu profille birlikte kopyalanmadı. Kaydetmeden önce doğru parolaları yeniden girin.</value>
+  </data>
+  <data name="Paused" xml:space="preserve">
+    <value>Duraklatıldı</value>
+  </data>
+  <data name="PeerDistribution" xml:space="preserve">
+    <value>Eşler Arası Dağıtım</value>
+  </data>
+  <data name="PeerDistributionCacheBytes" xml:space="preserve">
+    <value>Önbellek Baytı</value>
+  </data>
+  <data name="PeerDistributionCacheEnabled" xml:space="preserve">
+    <value>Önbellek Etkinleştirildi</value>
+  </data>
+  <data name="PeerDistributionCurrentClientMode" xml:space="preserve">
+    <value>Geçerli İstemci Modu</value>
+  </data>
+  <data name="PeerDistributionDetails" xml:space="preserve">
+    <value>Eş Dağıtım Detayları</value>
+  </data>
+  <data name="PeerDistributionDetailsLearnMore" xml:space="preserve">
+    <value>DAHA FAZLA BİLGİ EDİNİN</value>
+  </data>
+  <data name="PeerDistributionDetailsToolTip" xml:space="preserve">
+    <value>Bu uygulamayı Eş Dağıtım kullanarak indiren aygıtların sayısını, indirilen veri miktarını ve indirme verisinin alındığı yeri görüntüler</value>
+  </data>
+  <data name="PeerDistributionDevicesUtilizingPeerDistribution" xml:space="preserve">
+    <value>Eş Dağıtım Kullanan Aygıtlar</value>
+  </data>
+  <data name="PeerDistributionDevicesWithPeerDistributionOn" xml:space="preserve">
+    <value>Eş Dağıtım Seçeneği Etkin Aygıtlar</value>
+  </data>
+  <data name="PeerDistributionDownloadSource" xml:space="preserve">
+    <value>Kaynağı İndir</value>
+  </data>
+  <data name="PeerDistributionHostedCacheServerList" xml:space="preserve">
+    <value>Barındırılan Önbellek Sunucu Listesi</value>
+  </data>
+  <data name="PeerDistributionNotUtilized" xml:space="preserve">
+    <value>Kullanılmıyor</value>
+  </data>
+  <data name="PeerDistributionOff" xml:space="preserve">
+    <value>Kapalı</value>
+  </data>
+  <data name="PeerDistributionOnNotUtilized" xml:space="preserve">
+    <value>Açık/Kullanılmıyor</value>
+  </data>
+  <data name="PeerDistributionOnUtilized" xml:space="preserve">
+    <value>Açık/Kullanılıyor</value>
+  </data>
+  <data name="PeerDistributionServerBytes" xml:space="preserve">
+    <value>Sunucu Baytları</value>
+  </data>
+  <data name="PeerDistributionSfdOriginTypeAW" xml:space="preserve">
+    <value>Aygıt Hizmetleri</value>
+  </data>
+  <data name="PeerDistributionSfdOriginTypeCDN" xml:space="preserve">
+    <value>CDN</value>
+  </data>
+  <data name="PeerDistributionSfdOriginTypeNone" xml:space="preserve">
+    <value>Hiçbiri</value>
+  </data>
+  <data name="PeerDistributionSfdOriginTypeP2P" xml:space="preserve">
+    <value>Adaptiva</value>
+  </data>
+  <data name="PeerDistributionSfdOriginTypeP2PBC" xml:space="preserve">
+    <value>CDN (Aygıt Hizmetleri ile)</value>
+  </data>
+  <data name="PeerDistributionStatus" xml:space="preserve">
+    <value>Eşler Arası Dağıtım</value>
+  </data>
+  <data name="PeerDistributionTotalDeviceCount" xml:space="preserve">
+    <value>Toplam Aygıt Sayısı</value>
+  </data>
+  <data name="PeerDistributionTotalSavingBytes" xml:space="preserve">
+    <value>Toplam Kaydedilen Bayt</value>
+  </data>
+  <data name="PeerDistributionTotalSavingPercent" xml:space="preserve">
+    <value>Toplam Kaydetme Yüzdesi</value>
+  </data>
+  <data name="PeerDistributionTotalUtilizedCacheBytes" xml:space="preserve">
+    <value>Toplam Kullanılan Önbellek Baytı</value>
+  </data>
+  <data name="PeerDistributionTotalUtilizedServerBytes" xml:space="preserve">
+    <value>Toplam Kullanılan Sunucu Baytı</value>
+  </data>
+  <data name="PeerDistributionUtilized" xml:space="preserve">
+    <value>Kullanılıyor</value>
+  </data>
+  <data name="PersonalAppCounts" xml:space="preserve">
+    <value>Atamalar olmadan yükler</value>
+  </data>
+  <data name="PersonalAppCountsToolTip" xml:space="preserve">
+    <value>Bu uygulamanın farklı sürümlerine sahip olan ancak bu uygulamanın dışarıdan yüklenmiş olması veya daha önceden Workspace ONE'dan atama alınmış olması nedeniyle geçerli ataması olmayan aygıt sayısını görüntüler.</value>
+  </data>
+  <data name="Pivd" xml:space="preserve">
+    <value>PIV-D</value>
+  </data>
+  <data name="PivdAndroidDerivedCredentialSmimeForFirstaccount" xml:space="preserve">
+    <value>PIV-D sadece tek bir S/MIME sertifikasını destekler. Bu seçeneği yalnızca birincil olarak yönetilen e-posta hesabı için belirleyin.</value>
+  </data>
+  <data name="PivdDerivedCredentialForFirstaccount" xml:space="preserve">
+    <value>PIV-D sadece tek kimlik doğrulama sertifikasını destekler. Bu seçeneği yalnızca birincil olarak yönetilen e-posta hesabı için belirleyin. 5.21'den düşük Boxer uygulaması sürümlerine sahip PIV-D kullanımında ise "Uygulama Yapılandırması" bölümünde "PolicyDerivedCredentials" özel KVP'sini geçin.</value>
+  </data>
+  <data name="PlusAdd" xml:space="preserve">
+    <value>+ Ekle</value>
+  </data>
+  <data name="PolicyAllowActionArchive" xml:space="preserve">
+    <value>Arşiv Eylemi</value>
+  </data>
+  <data name="PolicyAllowActionSpam" xml:space="preserve">
+    <value>Son Kullanıcının İstenmeyen Postaları Rapor etmesine izin ver</value>
+  </data>
+  <data name="PolicyAllowAttachments" xml:space="preserve">
+    <value>Eklere İzin Ver</value>
+  </data>
+  <data name="PolicyAllowAttachmentsDownload" xml:space="preserve">
+    <value>Eklerin İndirilmesine İzin Ver</value>
+  </data>
+  <data name="PolicyAllowAttachmentsDownloadInfo" xml:space="preserve">
+    <value>Eklerin indirilmesine ve iletilmesine izin ver veya engelle</value>
+  </data>
+  <data name="PolicyAllowAttachmentsInfo" xml:space="preserve">
+    <value>Kullanıcının ekleri eklemesine/iletmesine izin verir</value>
+  </data>
+  <data name="PolicyAllowCallKitIdentification" xml:space="preserve">
+    <value>CallKit kullanımını etkinleştir</value>
+  </data>
+  <data name="PolicyAllowCallKitIdentificationInfo" xml:space="preserve">
+    <value>Bu sadece bir iOS ayarıdır ve kullanıcı ve CallKit arayan ID'si arasında etkileşim gerektirir</value>
+  </data>
+  <data name="PolicyAllowCrashReporting" xml:space="preserve">
+    <value>Çökmelerin Raporlanmasına İzin Ver</value>
+  </data>
+  <data name="PolicyAllowCustomKeyboards" xml:space="preserve">
+    <value>Özel Klavyelere İzin Ver</value>
+  </data>
+  <data name="PolicyAllowCustomKeyboardsTooltip" xml:space="preserve">
+    <value>Kullanıcılarınızın üçüncü taraf klavyeleri etkinleştirmesine izin verin</value>
+  </data>
+  <data name="PolicyAllowDocProviders" xml:space="preserve">
+    <value>Harici sağlayıcılardan gelen ekleri kontrol edin</value>
+  </data>
+  <data name="PolicyAllowEnterpriseContent" xml:space="preserve">
+    <value>Kurumsal İçerik</value>
+  </data>
+  <data name="PolicyAllowLocalCalendars" xml:space="preserve">
+    <value>Yerel Takvimler</value>
+  </data>
+  <data name="PolicyAllowLogging" xml:space="preserve">
+    <value>Günlük kayıtlarına izin ver</value>
+  </data>
+  <data name="PolicyAllowLoggingInfo" xml:space="preserve">
+    <value>Bu günlükler, kullanıcı tarafından gönderilmesi için bir eylem yapılmazsa gönderilmez.</value>
+  </data>
+  <data name="PolicyAllowMailServerCiphers" xml:space="preserve">
+    <value>İzin Verilen Posta Sunucusu Şifrelemeleri</value>
+  </data>
+  <data name="PolicyAllowMailServerCiphersInfo" xml:space="preserve">
+    <value>Bir posta sunucusuna bağlanırken TLS el sıkışması sırasında Boxer'ı yalnızca bu şifrelemeleri kullanmaya zorlar</value>
+  </data>
+  <data name="PolicyAllowMetrics" xml:space="preserve">
+    <value>Anonim Metrikler</value>
+  </data>
+  <data name="PolicyAllowOpenIn" xml:space="preserve">
+    <value>İçinde Açmayı Kontrol Et</value>
+  </data>
+  <data name="PolicyAllowPhotoAttachemetInfo" xml:space="preserve">
+    <value>Kamera/fotoğraf galerisinden fotoğraf eklemeye izin ver veya engelle</value>
+  </data>
+  <data name="PolicyAllowPhotoAttachment" xml:space="preserve">
+    <value>Fotoğraf Ekine İzin Ver</value>
+  </data>
+  <data name="PolicyAllowPrint" xml:space="preserve">
+    <value>Yazdırmaya İzin Ver</value>
+  </data>
+  <data name="PolicyAllowPrintTooltip" xml:space="preserve">
+    <value>E-postaların ve eklerin yazdırılmasını engellemek için devre dışı bırak</value>
+  </data>
+  <data name="PolicyAllowTouchID" xml:space="preserve">
+    <value>Biyometrik Kimlik</value>
+  </data>
+  <data name="PolicyAllowTouchInfo" xml:space="preserve">
+    <value>Bu özelliğin etkinleştirilmesi, kullanıcıların desteklenen aygıtlarda Parmak İzi, Touch ID veya Face ID'yi kullanmasına izin verir.</value>
+  </data>
+  <data name="PolicyAllowUserAccountsInfo" xml:space="preserve">
+    <value>Kullanıcıya Gmail, iCloud ve diğer IMAP hesapları gibi hesapları ekleme izni ver.</value>
+  </data>
+  <data name="PolicyCalendarMaxSyncPeriod" xml:space="preserve">
+    <value>Maksimum Takvim Eşitleme Penceresi</value>
+  </data>
+  <data name="PolicyCalendarMaxSyncPeriodInfo" xml:space="preserve">
+    <value>Kullanıcının takvim etkinliklerini eşitlemek için ne kadar geriye doğru seçim yapabileceği.</value>
+  </data>
+  <data name="PolicyClassMarkings" xml:space="preserve">
+    <value>İşaretler</value>
+  </data>
+  <data name="PolicyClassMarkingsDefaultClass" xml:space="preserve">
+    <value>Varsayılan Sınıflandırma</value>
+  </data>
+  <data name="PolicyClassMarkingsDefaultClassInfo" xml:space="preserve">
+    <value>(İsteğe Bağlı) E-postalar için varsayılan sınıflandırmayı ayarlayın. Değer, PolicyClassMarkings yapılandırma değerindeki bir girişteki görüntü adıyla eşleşmelidir.</value>
+  </data>
+  <data name="PolicyClassMarkingsEnabled" xml:space="preserve">
+    <value>Sınıflandırma işaretlerini etkinleştirir veya devre dışı bırakır</value>
+  </data>
+  <data name="PolicyClassMarkingsEnabledInfo" xml:space="preserve">
+    <value>Sınıflandırma işaretlerini etkinleştir veya devre dışı bırak</value>
+  </data>
+  <data name="PolicyClassMarkingsInfo" xml:space="preserve">
+    <value>Sınıflandırmanın hiyerarşik listesini tanımlar.</value>
+  </data>
+  <data name="PolicyClassMarkingsRankEnabled" xml:space="preserve">
+    <value>Derecelendirmeyi etkinleştir</value>
+  </data>
+  <data name="PolicyClassMarkingsRankEnabledInfo" xml:space="preserve">
+    <value>(İsteğe Bağlı) Hiyerarşik sınıflandırma derecelendirmesini etkinleştirir.</value>
+  </data>
+  <data name="PolicyClassMarkingsXHeader" xml:space="preserve">
+    <value>x-üst bilgisini tanımla</value>
+  </data>
+  <data name="PolicyClassMarkingsXHeaderInfo" xml:space="preserve">
+    <value>(İsteğe Bağlı) Sınıflandırma için x-üst bilgisini etkinleştirir ve tanımlar.</value>
+  </data>
+  <data name="PolicyClassVersion" xml:space="preserve">
+    <value>Sürüm</value>
+  </data>
+  <data name="PolicyClassVersionInfo" xml:space="preserve">
+    <value>Sınıflandırma özelliği için sürüm numarası</value>
+  </data>
+  <data name="PolicyCustomOnlineMeetingUrls" xml:space="preserve">
+    <value>Özel QuickJoin URL'leri</value>
+  </data>
+  <data name="PolicyDeleteOnSpamForward" xml:space="preserve">
+    <value>İstenmeyen Postayı Sil</value>
+  </data>
+  <data name="PolicyDisableKeyEscrow" xml:space="preserve">
+    <value>Anahtar Emanetini Devre Dışı Bırak (Şifremi Unuttum)</value>
+  </data>
+  <data name="PolicyEmailMaxSyncPeriod" xml:space="preserve">
+    <value>Maksimum E-Posta Eşitleme Penceresi</value>
+  </data>
+  <data name="PolicyEnforceHTTPS" xml:space="preserve">
+    <value>Güvenli olmayan HTTP bağlantılarını kısıtla</value>
+  </data>
+  <data name="PolicyEnforceHTTPSTooltip" xml:space="preserve">
+    <value>Güvenli olmayan (HTTP) bağlantılardan yüklenen içeriği kısıtlar.</value>
+  </data>
+  <data name="PolicyLimitNotificationText" xml:space="preserve">
+    <value>Bildirim İçeriği</value>
+  </data>
+  <data name="PolicyLimitNotificationTextInfo" xml:space="preserve">
+    <value>Her bildirim uyarısında ne kadar bilgi verileceğini kontrol eder</value>
+  </data>
+  <data name="PolicyScepPendingMaxRetryAttempts" xml:space="preserve">
+    <value>SCEP için maksimum yeniden deneme sayısı</value>
+  </data>
+  <data name="PolicyScepPendingRetryTimeout" xml:space="preserve">
+    <value>Saniye cinsinden SCEP için her yeniden deneme arasındaki aralık</value>
+  </data>
+  <data name="PolicySensitivityLabelsEmailClassificationInfo" xml:space="preserve">
+    <value>Kullanıcılar AIP etiketleriyle etkileşime girebilecektir</value>
+  </data>
+  <data name="PolicySMIME" xml:space="preserve">
+    <value>S/MIME Durumu</value>
+  </data>
+  <data name="PolicySMIMEConformingEncryptionAlgorithms" xml:space="preserve">
+    <value>Desteklenen Şifreleme Algoritmaları</value>
+  </data>
+  <data name="PolicySMIMEConformingEncryptionAlgorithmsInfo" xml:space="preserve">
+    <value>S/MIME şifrelemesini belirli algoritmalarla kısıtlamaya izni verir. Onaylanmış bir algoritma kullanmayan şifrelenmiş e-postalar bir uyarıyla işaretlenecektir. Geçerli değerler sağlanmazsa tüm algoritmalar kabul edilebilir olarak işlenecektir.</value>
+  </data>
+  <data name="PolicySMIMEConformingSigningAlgorithms" xml:space="preserve">
+    <value>Desteklenen İmzalama Algoritmaları</value>
+  </data>
+  <data name="PolicySMIMEDefaultEncryptionAlgorithm" xml:space="preserve">
+    <value>Varsayılan Şifreleme Algoritması</value>
+  </data>
+  <data name="PolicySMIMEDefaultEncryptionAlgorithmInfo" xml:space="preserve">
+    <value>S/MIME şifrelemesini belirli algoritmalarla kısıtlamaya izni verir. Onaylanmış bir algoritma kullanmayan şifrelenmiş e-postalar bir uyarıyla işaretlenecektir. Geçerli değerler sağlanmazsa tüm algoritmalar kabul edilebilir olarak işlenecektir.</value>
+  </data>
+  <data name="PolicySMIMEDefaultSigningAlgorithm" xml:space="preserve">
+    <value>Varsayılan İmzalama Algoritması</value>
+  </data>
+  <data name="PolicySMIMEEnableRevocationCheck" xml:space="preserve">
+    <value>S/MIME iptali kontrolünü etkinleştir</value>
+  </data>
+  <data name="PolicySMIMEEnableRevocationCheckInfo" xml:space="preserve">
+    <value>S/MIME sertifikalarının iptal denetimi ilkesini tanımlar</value>
+  </data>
+  <data name="PolicySMIMERevocationCheckType" xml:space="preserve">
+    <value>S/MIME iptal kontrol türü</value>
+  </data>
+  <data name="PolicySMIMERevocationCheckTypeInfo" xml:space="preserve">
+    <value>Tüm sertifika zinciri veya sadece kullanıcı sertifikası için iptal durumu kontrolünü yürütecek ilkeyi tanımlar.</value>
+  </data>
+  <data name="PolicySMIMERevocationCheckUrl" xml:space="preserve">
+    <value>S/MIME iptal kontrolü URL'si</value>
+  </data>
+  <data name="PolicySMIMERevocationCheckUrlInfo" xml:space="preserve">
+    <value>Bu URL, OCSP Yanıtlayıcı URL'si olarak kullanılıyor</value>
+  </data>
+  <data name="PolicySMIMERevocationEnforceNonce" xml:space="preserve">
+    <value>Tek Seferlik S/MIME İptal Anahtarı</value>
+  </data>
+  <data name="PolicySMIMERevocationEnforceNonceInfo" xml:space="preserve">
+    <value>Etkinleştirildiğinde tek seferlik anahtar, OCSP isteklerinde zorlanacaktır</value>
+  </data>
+  <data name="PolicySMIMERevocationStrictness" xml:space="preserve">
+    <value>S/MIME iptal katılığı</value>
+  </data>
+  <data name="PolicySMIMERevocationStrictnessInfo" xml:space="preserve">
+    <value>İptal edilmiş bir sertifikanın kullanılmasına izin verilip verilmeyeceğini belirlemek için kullanılacak katılık seviyesini tanımlar</value>
+  </data>
+  <data name="PolicySMIMERevocationTTL" xml:space="preserve">
+    <value>S/MIME İptal TTL'si</value>
+  </data>
+  <data name="PolicySMIMERevocationTTLinfo" xml:space="preserve">
+    <value>İptal verilerinin saklanacağı süreyi gün cinsinden belirler</value>
+  </data>
+  <data name="PolicySMIMERevocationUseAIA" xml:space="preserve">
+    <value>S/MIME İptali Yetki Bilgileri Erişim Kullanımı</value>
+  </data>
+  <data name="PolicySMIMERevocationUseAIAInfo" xml:space="preserve">
+    <value>Sertifikadaki Yetki Bilgileri Erişim uzantısının kullanımına ilişkin ilke</value>
+  </data>
+  <data name="PolicySMIMEStrictEKUCheck" xml:space="preserve">
+    <value>EKU Uzantı Kontrolü İste</value>
+  </data>
+  <data name="PolicySMIMEStrictEKUCheckInfo" xml:space="preserve">
+    <value>S/MIME sertifikalarının EKU uzantısını kontrol etme gereksiminizin olup olmadığını belirler. Doğru olarak ayarlanırsa EKU uzantısının sertifikada mevcut olup olmadığını ve sertifikada belirlenmiş E-posta Koruması amacının bulunup bulunmadığını doğrularız.</value>
+  </data>
+  <data name="PolicySMIMETrustStore" xml:space="preserve">
+    <value>S/MIME Güven Deposu</value>
+  </data>
+  <data name="PolicyStatus" xml:space="preserve">
+    <value>İlke Durumu</value>
+  </data>
+  <data name="PolicyTLSEnableRevocationCheck" xml:space="preserve">
+    <value>İptal Kontrolü</value>
+  </data>
+  <data name="PolicyTLSEnableRevocationCheckInfo" xml:space="preserve">
+    <value>TLS iptal kontrollerini Etkinleştirir/Devre Dışı Bırakır</value>
+  </data>
+  <data name="PolicyTLSRevocationCheckType" xml:space="preserve">
+    <value>İptal Kontrol Türü</value>
+  </data>
+  <data name="PolicyTLSRevocationCheckTypeInfo" xml:space="preserve">
+    <value>İptal kontrollerinin tüm zincir veya sadece sunucu sertifikası için geçerli olup olmadığını belirtir. İptal Kontrolü devre dışı bırakılırsa bu ilkenin bir etkisi olmaz.</value>
+  </data>
+  <data name="PolicyTLSRevocationCheckUrl" xml:space="preserve">
+    <value>İptal Kontrolü URL'si</value>
+  </data>
+  <data name="PolicyTLSRevocationCheckUrlInfo" xml:space="preserve">
+    <value>OCSP Sunucu URL'si. İptal Kontrolü devre dışı bırakılırsa bu ilkenin bir etkisi olmaz.</value>
+  </data>
+  <data name="PolicyTLSRevocationEnforceNonce" xml:space="preserve">
+    <value>Tek Seferlik Anahtarı Zorunlu Kıl</value>
+  </data>
+  <data name="PolicyTLSRevocationEnforceNonceInfo" xml:space="preserve">
+    <value>Etkinleştirilmişse tek seferlik anahtarı zorunlu kılın, aksi durumda tek seferlik anahtarı kullanmayın. İptal Kontrolü devre dışı bırakılırsa bu ilkenin bir etkisi olmaz.</value>
+  </data>
+  <data name="PolicyTLSRevocationStrictness" xml:space="preserve">
+    <value>İptal Katılığı</value>
+  </data>
+  <data name="PolicyTLSRevocationStrictnessInfo" xml:space="preserve">
+    <value>İptal etme kontrolü sonucu, Yoksay olarak ayarlandığında yalnızca günlüğe kaydedilir ve TLS bağlantıları engellemez. Sıkı olarak ayarlandığında, Sunucunun sertifikası iptal edilirse veya OCSP sunucusuna ulaşılamazsa TLS bağlantıları engellenir. Orta olarak ayarlandığında, sunucunun sertifikası iptal edilirse TLS bağlantıları engellenir. OCSP sunucusuna ulaşılamazsa önceki kontrolün sonucu kullanılır (varsa). İptal Kontrolü devre dışı bırakılırsa bu ilkenin bir etkisi olmaz.</value>
+  </data>
+  <data name="PolicyTLSRevocationTTL" xml:space="preserve">
+    <value>İptal TTL'si (Gün)</value>
+  </data>
+  <data name="PolicyTLSRevocationTTLInfo" xml:space="preserve">
+    <value>İptal verilerinin tutulacağı süre (gün). Yanıtlayan nextupdate değeri sağlamıyorsa negatif değer ve sıfır yoksayılır. KVP ayarlanırsa bu KVP'deki değeri kullanın. KVP ayarlanmamışsa bir sonraki kontrolü varsayılan olarak 7 güne ayarlar. Yanıtlayan, sonraki güncelleme değerini sağlıyorsa. KVP ayarlandıysa bu KVP'deki değeri kullanın, yanıtlayandan gelen nextupdate değeri yoksayılır. Bu KVP ayarlanmamışsa yanıtlayandan gelen nextupdate değerini kullanın. İptal Kontrolü devre dışı bırakılırsa bu ilkenin bir etkisi olmaz.</value>
+  </data>
+  <data name="PolicyTLSRevocationUseAIA" xml:space="preserve">
+    <value>AIA Kullanımını İptal Etme</value>
+  </data>
+  <data name="PolicyTLSRevocationUseAIAInfo" xml:space="preserve">
+    <value>Devre Dışı - İptal durumu için sertifika içinde yapılandırılmış URL'yi kullanmayın, yalnızca İptal Kontrolü URL'sini kullanın. Devre Dışı - İptal durumu kontrolü için sertifika içinde yapılandırılmış URL'yi kullanın, mevcut değilse İptal Kontrolü URL'sine geri dönün. Gerekli - SADECE iptal durumunu kontrol etmek için sertifika içinde yapılandırılmış URL'yi kullanın, İptal Kontrol URL'sini yoksayın. İptal Kontrolü devre dışı bırakılırsa bu ilkenin bir etkisi olmaz.</value>
+  </data>
+  <data name="PolicyTLSStrictTrustCheck" xml:space="preserve">
+    <value>TLS Güven Kontrolü</value>
+  </data>
+  <data name="PolicyTLSStrictTrustCheckInfo" xml:space="preserve">
+    <value>Doğru olarak ayarlanırsa Boxer, TLS sunucu sertifikaları için sıkı güven kontrolleri gerçekleştirir. Tüm kök CA sertifikası ve ara CA sertifikaları kontrol ederiz. Bu sertifikalar, Güven Deposu konsol yapılandırmasını taban alarak oluşturduğumuz güven deposunda yüklü tüm sertifika zincirini oluşturur. Bu anahtar sadece İptal Kontrolü etkinse bir rol oynar.</value>
+  </data>
+  <data name="PolicyTLSTrustStore" xml:space="preserve">
+    <value>Güven Deposu</value>
+  </data>
+  <data name="PolicyTLSTrustStoreInfo" xml:space="preserve">
+    <value>Devre dışı bırakıldığında, aygıt güven deposu ve Boxer güven deposunu kullanır. Etkinleştirildiğinde Boxer güven deposunu kullanılır. Varsayılan ayar, aygıt güven deposu + Boxer güven deposudur. iOS: İptal Kontrolü devre dışı bırakıldığında, şu anda sadece "0" değeri için Aygıt Güven Deposu kullanılır. Özel Ara CA'lar aygıt üzerinde önceden yüklenmiş olarak gelmeyen öğelerde bulunursa bunun için geçerli tek seçenek "1" olacaktır. Her zaman Boxer Güven Deposu kullanılır ve tüm ara CA'lar, bağlantılara güvenmek için Boxer Güven Deposu'nda bulunmalıdır. Android: İptal Kontrolü devre dışı bırakılmışsa bu KVP'nin hiçbir etkisi olmayacaktır. (Böyle bir durumda, sertifika zincirini doğrulamak için aygıtın varsayılan güven deposu kullanılır. Boxer'ın deposu, doğrulanacak herhangi bir zincire sahip olmaz)</value>
+  </data>
+  <data name="PolicyWatermarkColor" xml:space="preserve">
+    <value>Filigran Rengi</value>
+  </data>
+  <data name="PolicyWatermarkColorInfo" xml:space="preserve">
+    <value>Onaltılık biçimdeki metin rengini belirler. Varsayılan renk mavidir</value>
+  </data>
+  <data name="PolicyWatermarkOpacity" xml:space="preserve">
+    <value>Filigran Opaklığı</value>
+  </data>
+  <data name="PolicyWatermarkOpacityInfo" xml:space="preserve">
+    <value>Metnin opaklığını belirler. 0 ile 100 arasında herhangi bir sayı olarak ayarlayabilirsiniz</value>
+  </data>
+  <data name="PolicyWatermarkText" xml:space="preserve">
+    <value>Filigran Metni</value>
+  </data>
+  <data name="PolicyWatermarkTextInfo" xml:space="preserve">
+    <value>Filigran metnini belirler</value>
+  </data>
+  <data name="PositiveIntegerRequired" xml:space="preserve">
+    <value>Bir pozitif tamsayı değeri girin</value>
+  </data>
+  <data name="PradeoAPIKey" xml:space="preserve">
+    <value>Pradeo Uygulama Programı Arabirimi (API) Anahtarı</value>
+  </data>
+  <data name="PreReleaseVersionTooltip" xml:space="preserve">
+    <value>Bu listede görmeyi beklediğiniz bir girdi eksikse bu kurumdan silinmiş ya da ataması kaldırılmış olabilir.</value>
+  </data>
+  <data name="PreventRemoval" xml:space="preserve">
+    <value>Kaldırmayı Engelle</value>
+  </data>
+  <data name="PreventRemovalTooltip" xml:space="preserve">
+    <value>Etkinleştirilirse kullanıcının uygulamayı kaldırmasına izin verilmez. iOS 14+ gereklidir.</value>
+  </data>
+  <data name="ProductApp" xml:space="preserve">
+    <value>Ürün Uygulaması</value>
+  </data>
+  <data name="ProductAppInstalled" xml:space="preserve">
+    <value>Ürün tabanlı uygulama atandı ve yüklendi</value>
+  </data>
+  <data name="ProductAppNotInstalled" xml:space="preserve">
+    <value>Ürün tabanlı uygulama atandı ancak yüklenmedi</value>
+  </data>
+  <data name="ProviderDisabledFileUploadMessage" xml:space="preserve">
+    <value>Bu kurum için Dosya depolama ve CDN’nin devre dışı bırakıldığı veya veritabanı boyutunun maksimum kapasiteye ulaştığı görülüyor. Lütfen yöneticinizle iletişime geçin veya devam etmek için bu öğeleri etkinleştirip veritabanı depolama alanınızı kontrol edin.</value>
+  </data>
+  <data name="ProvisioningProfileExpirationExplainationArgDays" xml:space="preserve">
+    <value>Bu uygulamaya ilişkin provizyonlama profilinin süresi {0} gün içinde dolacak. Provizyonlama profilinin süresi dolduğunda uygulamaya erişemeyecekler ve uygulamayı yüklemeye çalışan yeni kullanıcılar artık uygulamayı yükleyemeyecek. Uygulama için provizyonlama profilini yeniden oluşturun ve aşağıdaki Yenile düğmesine tıklayarak bunu güncelleyin. Uygulamanın yüklü olduğu aygıtlar için provizyonlama profilini yenilemek, uygulamayı yeniden yüklemeden aygıtta var olan profili eklenen yeni profil ile değiştirecektir. Yeni kayıtlı aygıtlar veya uygulamanın bulunmadığı aygıtlar için uygulamayı yüklemek, eklenen yeni provizyonlama profilini gönderecektir.</value>
+  </data>
+  <data name="PublicApplication" xml:space="preserve">
+    <value>Genel Uygulama</value>
+  </data>
+  <data name="PublicApplications" xml:space="preserve">
+    <value>Genel Uygulamalar</value>
+  </data>
+  <data name="PublisherAddedMultipleTimesInAppGroup" xml:space="preserve">
+    <value>Aynı yayımcı, bu uygulama grubuna birden çok kez eklendi</value>
+  </data>
+  <data name="PublisherExceptionAddedMultipleTimesInAppGroup" xml:space="preserve">
+    <value>Aynı uygulama, bir yayımcı için özel durum olarak birden çok kez eklendi</value>
+  </data>
+  <data name="PurchasedApplication" xml:space="preserve">
+    <value>Satın Alınan Uygulama</value>
+  </data>
+  <data name="PurchasedApplications" xml:space="preserve">
+    <value>Satın Alınan Uygulamalar</value>
+  </data>
+  <data name="PurchasedAppLicenseAssignmentBySmartGroup" xml:space="preserve">
+    <value>Akıllı Grup Tarafından Satın Alınan Uygulama Lisansı Ataması</value>
+  </data>
+  <data name="Purebred" xml:space="preserve">
+    <value>Purebred</value>
+  </data>
+  <data name="QuickReply" xml:space="preserve">
+    <value>Hızlı Yanıt</value>
+  </data>
+  <data name="Ranking" xml:space="preserve">
+    <value>Derecelendirme</value>
+  </data>
+  <data name="Read/Unread" xml:space="preserve">
+    <value>Okundu/Okunmadı</value>
+  </data>
+  <data name="ReasonsBreakdown" xml:space="preserve">
+    <value>Yükleme Durumu Ayrıntıları</value>
+  </data>
+  <data name="ReasonsBreakdownToolTip" xml:space="preserve">
+    <value>Bu, uygulamanın yükleme durumu hakkında ayrıntılı bilgiler içeren ve belirli bir sürüme bağlı olmayan aygıtlar tarafından bildirilen verileri gösterir.</value>
+  </data>
+  <data name="RedeemingCode" xml:space="preserve">
+    <value>Kod Kullanılıyor</value>
+  </data>
+  <data name="RedemptionCode" xml:space="preserve">
+    <value>Kullanım Kodu</value>
+  </data>
+  <data name="RedemptionCodes" xml:space="preserve">
+    <value>Kullanım Kodları</value>
+  </data>
+  <data name="RefreshApps" xml:space="preserve">
+    <value>Uygulamaları Yenile</value>
+  </data>
+  <data name="RemoveApplicationConfirmed" xml:space="preserve">
+    <value>Aygıt, uygulamanın kaldırılmasını onayladı</value>
+  </data>
+  <data name="RemoveArgApplicationOpensDialog" xml:space="preserve">
+    <value>{0} Uygulamasını Kaldır İletişim Kutusunu Açar</value>
+    <comment>Placeholder in this label key is for application name.</comment>
+  </data>
+  <data name="RemoveCommandDispatched" xml:space="preserve">
+    <value>Kaldırma Komutu Gönderildi</value>
+  </data>
+  <data name="RemoveCommandSuccessful" xml:space="preserve">
+    <value>Aygıt Kaldırmayı Onayladı</value>
+  </data>
+  <data name="RemovedByEmm" xml:space="preserve">
+    <value>EMM tarafından kaldırıldı</value>
+  </data>
+  <data name="RemovedByUser" xml:space="preserve">
+    <value>Kullanıcı tarafından kaldırıldı</value>
+  </data>
+  <data name="RemoveFromSelectedDevices" xml:space="preserve">
+    <value>Bu uygulama sadece EMM tarafından yüklenen ve yönetilen uygulamalara sahip aygıtlardan kaldırılacaktır.</value>
+  </data>
+  <data name="RemovePreviousValues" xml:space="preserve">
+    <value>Önceki değerleri kaldır</value>
+  </data>
+  <data name="RequireApprovalToInstall" xml:space="preserve">
+    <value>Yüklemek İçin Onay Gerektir</value>
+  </data>
+  <data name="RequireApprovalToInstallToolTip" xml:space="preserve">
+    <value>Seçilen Atama Grubundaki kullanıcıların, bu uygulamaya erişebilmek için onay alması gerekecektir.</value>
+  </data>
+  <data name="RequiredEmailSettings" xml:space="preserve">
+    <value>Lütfen {1} sekmesine {0} öğesini ekleyin</value>
+  </data>
+  <data name="RestartDeadlineInDays" xml:space="preserve">
+    <value>Aygıtın otomatik olarak yeniden başlatılmasından sonraki gün sayısı</value>
+  </data>
+  <data name="RestrictScreenshotsInfo" xml:space="preserve">
+    <value>Kullanıcının uygulamanın ekran görüntülerini almasını engeller. (sadece Android)</value>
+  </data>
+  <data name="ReviewRequestExpired" xml:space="preserve">
+    <value>Gözden Geçirme İsteği yetkilendirilmemiş veya sona ermiş. Lütfen sayfayı yenileyip tekrar gözden geçirin.</value>
+  </data>
+  <data name="ReviewSummaryBeforeAddingApp" xml:space="preserve">
+    <value>Bir uygulama eklemeden önce özeti gözden geçirin. Daha sonra bazı alanları uygulama listesi görünümünden düzenleyebilirsiniz</value>
+  </data>
+  <data name="RevisionNumber" xml:space="preserve">
+    <value>Düzeltme Numarası</value>
+  </data>
+  <data name="RevisionVersion" xml:space="preserve">
+    <value>Lütfen Düzeltme Sürümü alanına geçerli bir değer girin.</value>
+  </data>
+  <data name="S/MIMEPolicy" xml:space="preserve">
+    <value>S/MIME ilkesi</value>
+  </data>
+  <data name="SaaSAppsIDMSetupArg" xml:space="preserve">
+    <value>SaaS uygulamalarının kullanılabilmesi için önce Workspace ONE'ın kurulması gerekir. {0} konumuna gidin ve Workspace ONE kurulumunu tamamlayın. Tamamlandıktan sonra oturumu kapatıp açın ve tekrar deneyin.</value>
+  </data>
+  <data name="SameAssignmentExists" xml:space="preserve">
+    <value>Bir ya da daha fazla akıllı grup, bu uygulamaya başka bir atamada zaten atanmış. Devam etmek için lütfen bu akıllı grupları kaldırın.</value>
+  </data>
+  <data name="SaveConfiguration" xml:space="preserve">
+    <value>Yapılandırmayı Kaydet</value>
+  </data>
+  <data name="ScepPendingMaxRetryAttemptsInfo" xml:space="preserve">
+    <value>SDK'da bir SCEP alımı için maksimum yeniden deneme denemesi sayısını yapılandırır</value>
+  </data>
+  <data name="ScepPendingRetryTimeoutInfo" xml:space="preserve">
+    <value>SDK'da SCEP alımı için her yeniden deneme arasındaki aralık</value>
+  </data>
+  <data name="ScriptFileHelpText" xml:space="preserve">
+    <value>Karşıya yüklenecek özel komut dosyası</value>
+  </data>
+  <data name="SecurityPatch" xml:space="preserve">
+    <value>Güvenlik Düzeltme Eki</value>
+  </data>
+  <data name="SecurityPatchDateNotSetError" xml:space="preserve">
+    <value>İlke etkinleştirilmişse Güvenlik Düzeltme Eki Tarihi boş bırakılamaz</value>
+  </data>
+  <data name="SelectedDeviceRequiresApprovalAlert" xml:space="preserve">
+    <value>Bu uygulamanın bu aygıta yüklenmesi için onay gereklidir. Onay isteği, son kullanıcı tarafından başlatılabilir.</value>
+  </data>
+  <data name="SelectedDevicesRequireApprovalAlert" xml:space="preserve">
+    <value>Uygulama, uygulamaya erişim için onay gerektirenler dışındaki tüm aygıtlara yüklenecektir. Onay isteği, son kullanıcı tarafından başlatılabilir.</value>
+  </data>
+  <data name="SendAppConfigDescription" xml:space="preserve">
+    <value>Uygulama geliştiricisi tarafından sağlanan ayarları kullanarak bu uygulamayı yapılandırın.</value>
+  </data>
+  <data name="SendAppConfiguration" xml:space="preserve">
+    <value>Yapılandırma Gönder</value>
+  </data>
+  <data name="SendApplicationAttributes" xml:space="preserve">
+    <value>Uygulama Özniteliklerini Gönder</value>
+  </data>
+  <data name="SendAttibutes" xml:space="preserve">
+    <value>Öznitelikleri Gönder</value>
+  </data>
+  <data name="SendInviteTooltip" xml:space="preserve">
+    <value>Etkinleştirildiğinde, tüm iOS aygıtlar otomatik olarak VPP uygulamalarını yüklemeye davet edilecek. Etkinleştirilmezse aygıtlar, VPP uygulamaları yüklendiğinde davet edilecektir.</value>
+  </data>
+  <data name="ShowCallKitOption" xml:space="preserve">
+    <value>CallKit Seçeneğini Göster</value>
+  </data>
+  <data name="SideLoadedCount" xml:space="preserve">
+    <value>Dışarıdan Yüklenmiş Kurulumlar</value>
+  </data>
+  <data name="SigningCertificateAuthority" xml:space="preserve">
+    <value>İmzalama Sertifikası Yetkilisi</value>
+  </data>
+  <data name="SigningCertificateTemplate" xml:space="preserve">
+    <value>İmzalama Sertifikası Şablonu</value>
+  </data>
+  <data name="SmartGroupNotPresentInAssignment" xml:space="preserve">
+    <value>Akıllı grup, uygulama ile ilişkilendirilmiş atamaların hiçbirinde mevcut değil.</value>
+  </data>
+  <data name="SmimeBoxerUserInfoMsg" xml:space="preserve">
+    <value>Hâlihazırda ilişkilendirilmiş S/MIME sertifikaları olan kullanıcılar (Kullanıcı &gt; Gelişmiş &gt; Sertifikalar), bunları aşağıdaki kaynaklara ek olarak alırlar. Kullanıcı hesabı ile ilişkilendirilmiş sertifikayı ya da aşağıdaki kaynağı seçin</value>
+  </data>
+  <data name="SMIMEConformingEncryptionAlgorithmsInfo" xml:space="preserve">
+    <value>S/MIME şifrelemesini belirli algoritmalarla kısıtlamaya izni verir. Onaylanmış bir algoritma kullanmayan şifrelenmiş e-postalar bir uyarıyla işaretlenecektir. Geçerli değerler sağlanmazsa tüm algoritmalar kabul edilebilir olarak işlenecektir.</value>
+  </data>
+  <data name="SMIMEConformingSigningAlgorithmsInfo" xml:space="preserve">
+    <value>S/MIME imzalamasını belirli algoritmalarla kısıtlamaya izni verir. Onaylanmış bir algoritma kullanmayan imzalı e-postalar bir uyarıyla işaretlenecektir. Geçerli değerler sağlanmazsa tüm algoritmalar kabul edilebilir olarak işlenecektir.</value>
+  </data>
+  <data name="SMIMEDefaultEncryptionAlgorithmInfo" xml:space="preserve">
+    <value>Gelen ve giden e-postalar için kullanılacak bir şifreleme algoritması belirleyin. Geçerli bir algoritma sağlanmazsa desteklenen en düşük algoritma kullanılır (3DES).</value>
+  </data>
+  <data name="SMIMEDefaultSigningAlgorithmInfo" xml:space="preserve">
+    <value>Gelen ve giden e-postalar için kullanılacak varsayılan S/MIME imzalama algoritmasını belirleyin. Geçerli bir algoritma sağlanmazsa desteklenen en düşük algoritma kullanılır (SHA-1).</value>
+  </data>
+  <data name="SmimeInfo" xml:space="preserve">
+    <value>S/MIME'yi Yapılandır</value>
+  </data>
+  <data name="SMIMEStatusInfo" xml:space="preserve">
+    <value>S/MIME gereksinimlerini yapılandır</value>
+  </data>
+  <data name="SMIMEStrictEKUCheckInfo" xml:space="preserve">
+    <value>S/MIME sertifikalarının EKU uzantısını kontrol etme gereksiminizin olup olmadığını belirler. Doğru olarak ayarlanırsa EKU uzantısının sertifikada mevcut olup olmadığını ve sertifikada belirlenmiş E-posta Koruması amacının bulunup bulunmadığını doğrularız.</value>
+  </data>
+  <data name="Spam" xml:space="preserve">
+    <value>İstenmeyen Posta</value>
+  </data>
+  <data name="SpamAndPhishingReporting" xml:space="preserve">
+    <value>İstenmeyen Posta ve Kimlik Avı Raporlama</value>
+  </data>
+  <data name="SpamAndPhishingReportingInfo" xml:space="preserve">
+    <value>İstenmeyen posta ya da kimlik avı saldırısı olarak tanımlanan e-postada gerçekleştirilecek eylemleri yapılandırın</value>
+  </data>
+  <data name="SpamReportConfigPositionChangeInfo" xml:space="preserve">
+    <value>"Uygulama ilkeleri" &gt; "Kullanılabilirlik" bölümünde, son kullanıcının istenmeyen e-postaları rapor etmesine izin vermek isteyip istemediğinizi yapılandırın</value>
+  </data>
+  <data name="SpecificApplicationIsNotSupported" xml:space="preserve">
+    <value>Geçersiz uygulama, karşıya yalnızca Workspace ONE Launcher APK yükleyin</value>
+  </data>
+  <data name="SsoInfo" xml:space="preserve">
+    <value>Boxer'da SSO'yu etkinleştirmek için SDK profilinizde bu seçeneği ve SSO yapılandırmasını etkinleştirin. SSO etkinleştirildiğinde, Workspace ONE Boxer yeniden yüklenmeden devre dışı bırakılamaz.</value>
+  </data>
+  <data name="StatusLastAction" xml:space="preserve">
+    <value>Durum - Son İşlem</value>
+  </data>
+  <data name="StokenExpiredMessage" xml:space="preserve">
+    <value>Bu organizasyon grubu için yüklenen sToken'ın süresi dolmuştur. sToken'ı yenileyin ve tekrar karşıya yükleyin.</value>
+  </data>
+  <data name="StokenRevokedMessage" xml:space="preserve">
+    <value>Bu organizasyon grubu için yüklenen sToken iptal edildi. Karşıya yeni bir sToken yükleyin.</value>
+  </data>
+  <data name="Strict" xml:space="preserve">
+    <value>Sıkı</value>
+  </data>
+  <data name="SupportedProcessorArchitectureHelp" xml:space="preserve">
+    <value>Lütfen uygulamanın desteklediği mimari türünü seçin. 32 bit seçildiğinde, bu uygulama hem 32 bit hem de 64 bit aygıtlarda yayınlanacaktır.</value>
+  </data>
+  <data name="SupportEmailAddress" xml:space="preserve">
+    <value>Destek E-posta Adresi</value>
+  </data>
+  <data name="SupportEmailAddressInfo" xml:space="preserve">
+    <value>Destek menüsü aracılığıyla günlükleri gönderirken belirtilecek e-posta adresi.</value>
+  </data>
+  <data name="SwipesLeftLongInfo" xml:space="preserve">
+    <value>Kullanıcı e-posta liste görünümündeki bir e-postayı kaydırdığında gerçekleşecek varsayılan eylemi ayarlamak için değeri aşağıdakilerden birine ayarlayın. Kullanıcı bu ayarı değiştirirse konsolun kullanıcı tercihini geçersiz kılmayacağını lütfen dikkate alın</value>
+  </data>
+  <data name="SwipesLeftShortInfo" xml:space="preserve">
+    <value>Kullanıcı e-posta liste görünümündeki bir e-postayı kaydırdığında gerçekleşecek varsayılan eylemi ayarlamak için değeri aşağıdakilerden birine ayarlayın. Kullanıcı bu ayarı değiştirirse konsolun kullanıcı tercihini geçersiz kılmayacağını lütfen dikkate alın</value>
+  </data>
+  <data name="SwipesRightLongInfo" xml:space="preserve">
+    <value>Kullanıcı e-posta liste görünümündeki bir e-postayı kaydırdığında gerçekleşecek varsayılan eylemi ayarlamak için değeri aşağıdakilerden birine ayarlayın. Kullanıcı bu ayarı değiştirirse konsolun kullanıcı tercihini geçersiz kılmayacağını lütfen dikkate alın</value>
+  </data>
+  <data name="SwipesRightShortInfo" xml:space="preserve">
+    <value>Kullanıcı e-posta liste görünümündeki bir e-postayı kaydırdığında gerçekleşecek varsayılan eylemi ayarlamak için değeri aşağıdakilerden birine ayarlayın. Kullanıcı bu ayarı değiştirirse konsolun kullanıcı tercihini geçersiz kılmayacağını lütfen dikkate alın</value>
+  </data>
+  <data name="SyncContact" xml:space="preserve">
+    <value>Kişileri Eşitle</value>
+  </data>
+  <data name="SyncTunnelConfiguration" xml:space="preserve">
+    <value>Tünel Yapılandırmasını Eşitle</value>
+  </data>
+  <data name="TempUploadedPatch" xml:space="preserve">
+    <value>Yüklenmiş Düzeltme Eki</value>
+  </data>
+  <data name="TempUploadedTransform" xml:space="preserve">
+    <value>Karşıya Yüklenmiş Dönüşüm</value>
+  </data>
+  <data name="TenantStorageCapacity" xml:space="preserve">
+    <value>Kapasite</value>
+  </data>
+  <data name="TenantStorageCapacityMegaBytes" xml:space="preserve">
+    <value>Kapasite (MB)</value>
+  </data>
+  <data name="TenantStorageGigaBytes" xml:space="preserve">
+    <value>GB</value>
+  </data>
+  <data name="TenantStorageMaxFileSize" xml:space="preserve">
+    <value>Maks Dosya Boyutu</value>
+  </data>
+  <data name="TenantStorageMaxFileSizeMegaBytes" xml:space="preserve">
+    <value>Maksimum dosya boyutu (MB)</value>
+  </data>
+  <data name="TenantStorageMegaBytes" xml:space="preserve">
+    <value>MB</value>
+  </data>
+  <data name="TenantStorageOverageAllowed" xml:space="preserve">
+    <value>İzin Verilen Fazlalık</value>
+  </data>
+  <data name="TenantStorageOverageAllowedMegaBytes" xml:space="preserve">
+    <value>İzin verilen fazlalık (MB)</value>
+  </data>
+  <data name="ThisFieldIsRequired" xml:space="preserve">
+    <value>Bu alan zorunludur</value>
+  </data>
+  <data name="ThreeDays" xml:space="preserve">
+    <value>3 Gün</value>
+  </data>
+  <data name="TimeReceived" xml:space="preserve">
+    <value>Alınma Zamanı</value>
+  </data>
+  <data name="TimeStamp" xml:space="preserve">
+    <value>Zaman damgası</value>
+  </data>
+  <data name="TLSInfo" xml:space="preserve">
+    <value>TLS'yi Yapılandır</value>
+  </data>
+  <data name="TotalCount" xml:space="preserve">
+    <value>Toplam Sayı</value>
+  </data>
+  <data name="TotalRedeemedLicensesHelpText" xml:space="preserve">
+    <value>Toplam kullanılan sayı, bu Workspace ONE UEM Console ve Workspace ONE UEM Console dışında kullanılan lisans sayısının toplamıdır. Bu lisanslar aygıtlar tarafından talep edildiğinden yeniden dağıtılabilmeleri için önce iptal edilmelidir.</value>
+  </data>
+  <data name="TriggerAccount" xml:space="preserve">
+    <value>Son İşlem Ayrıntıları</value>
+  </data>
+  <data name="TriggerAccountToolTip" xml:space="preserve">
+    <value>Bu uygulama için atanmış aygıtlarda gerçekleştirilen son işlemin ayrıntılarını görüntüler.</value>
+  </data>
+  <data name="TrustStore" xml:space="preserve">
+    <value>Güven Deposu</value>
+  </data>
+  <data name="TunnelAndOtherAttributes" xml:space="preserve">
+    <value>Tunnel ve Diğer Öznitelikler</value>
+  </data>
+  <data name="TunnelConfigGridBulkActionArg" xml:space="preserve">
+    <value>Tunnel yapılandırması {0} aygıtta eşitlenir</value>
+  </data>
+  <data name="UemVersion" xml:space="preserve">
+    <value>UEM Sürümü</value>
+  </data>
+  <data name="UnPause" xml:space="preserve">
+    <value>Devam et</value>
+  </data>
+  <data name="Unpaused" xml:space="preserve">
+    <value>Devam ettirildi</value>
+  </data>
+  <data name="UnPauseToSelectedDevice" xml:space="preserve">
+    <value>Bu işlemi gerçekleştirdiğinizde artık destek hakkı bulunmayan herhangi bir cihaz için bu uygulamanın kaldırılma işlemini devam ettirirsiniz. İşleme devam etmeden önce destek haklarının doğru olduğunu kontrol edin. Devam etmek istiyorsanız "Tamam" düğmesine tıklayın.</value>
+  </data>
+  <data name="UnreleasedVersions" xml:space="preserve">
+    <value>Yayın Öncesi Sürüm</value>
+  </data>
+  <data name="UpgradeApplication" xml:space="preserve">
+    <value>Uygulamayı Yükselt</value>
+  </data>
+  <data name="UploadedPercentageFormat" xml:space="preserve">
+    <value>%{0}</value>
+    <comment>This should be changed to %{0} for languages supporting %# format for percentage</comment>
+  </data>
+  <data name="UploadedUemVersion" xml:space="preserve">
+    <value>Yüklenen UEM Sürümü</value>
+  </data>
+  <data name="UploadedVersion" xml:space="preserve">
+    <value>Karşıya Yüklenen Sürüm</value>
+  </data>
+  <data name="UploadInProgressDoNotClose" xml:space="preserve">
+    <value>Karşıya yükleme işlemi devam ediyor, lütfen kipi kapatmayın ve sayfayı yenilemeyin.</value>
+  </data>
+  <data name="UploadStillInProgress" xml:space="preserve">
+    <value>Karşıya yükleme işlemi hâlâ devam ediyor, lütfen kipi kapatmayın ve sayfayı yenilemeyin.</value>
+  </data>
+  <data name="UploadUninstallScript" xml:space="preserve">
+    <value>Lütfen uygulama için kaldırma komut dosyası yükleyin</value>
+  </data>
+  <data name="Usability" xml:space="preserve">
+    <value>Kullanılabilirlik</value>
+  </data>
+  <data name="UseEscrowGateway" xml:space="preserve">
+    <value>Emanet Ağ Geçidini kullan</value>
+  </data>
+  <data name="UseEscrowGatewayInfo" xml:space="preserve">
+    <value>Bu seçenek, sadece Boxer 5.19 ya da daha yüksek sürümde ve Emanet Ağ Geçidi yapılandırıldığında geçerli olur.</value>
+  </data>
+  <data name="UserAppRatingInfo" xml:space="preserve">
+    <value>Kullanıcı Uygulama Puanı Bilgisi</value>
+  </data>
+  <data name="UserCertificateOnly" xml:space="preserve">
+    <value>Yalnızca Kullanıcı Sertifikası</value>
+  </data>
+  <data name="UserCertificateOptionalInfo" xml:space="preserve">
+    <value>Kullanıcının sertifikası yoksa bu kimlik bilgisi atlanacak ve profilin geri kalanı, son kullanıcılara iletilecektir. Kimlik bilgisi varsa kullanıcı sertifikası, belirli Workspace ONE kullanıcısından alınacaktır. Sertifika, konsol ya da Self Servis aracılığıyla kullanıcı bilgileri bölümünden manuel olarak yüklenebilir.</value>
+  </data>
+  <data name="UserDeferredInstall" xml:space="preserve">
+    <value>Yok (Uygulama Yükleme Kullanıcı Tarafından Ertelendi)</value>
+  </data>
+  <data name="UserEngagedDeadline" xml:space="preserve">
+    <value>Kullanıcıya Bağlı Son Tarih</value>
+  </data>
+  <data name="UserEngagedRestart" xml:space="preserve">
+    <value>Kullanıcıya bağlı yeniden başlatma</value>
+  </data>
+  <data name="UseSameSigningAndEncryptionCertificate" xml:space="preserve">
+    <value>Aynı İmzalama ve Şifreleme Sertifikasını Kullan</value>
+  </data>
+  <data name="UseSameSigningAndEncryptionCertificateInfo" xml:space="preserve">
+    <value>Hiçbir sertifika seçilmemişse aynı S/MIME sertifikası hem imzalama hem şifreleme için kullanılır.</value>
+  </data>
+  <data name="ValidatingDependentApps" xml:space="preserve">
+    <value>Bağımlı Uygulamalar Doğrulanıyor</value>
+  </data>
+  <data name="ValidationAppConfiguration" xml:space="preserve">
+    <value>Seçili uygulamaya atama yapılmamış. Lütfen farklı bir uygulama seçin ya da en az bir atama yapıp tekrar deneyin.</value>
+  </data>
+  <data name="ValidationDuplicateStep" xml:space="preserve">
+    <value>Benzer yapılandırmaya sahip başka bir adım mevcut.</value>
+  </data>
+  <data name="ValidationErrorMessage" xml:space="preserve">
+    <value>Değişiklikler kaydedilemiyor. Tekrar denemeden önce her alanın eksiksiz ve hatasız olduğundan emin olun.</value>
+  </data>
+  <data name="VersionCodeAlreadyExistsInOG" xml:space="preserve">
+    <value>Bu Android uygulamasının sürüm kodu {0} olmakta olup bu kod zaten OG'de mevcuttur. Lütfen geliştiricinizden sürüm kodunu güncellemesini isteyin. Mevcut OG'deki {1} Tanımlayıcısı için daha önce eklenen sürüm kodları şunlardır: {2}.</value>
+  </data>
+  <data name="Versions" xml:space="preserve">
+    <value>sürümler</value>
+  </data>
+  <data name="VersionsInstalled" xml:space="preserve">
+    <value>Sürümler Yüklü</value>
+  </data>
+  <data name="ViewCriteria" xml:space="preserve">
+    <value>Kriterleri Görüntüle</value>
+  </data>
+  <data name="ViewFlexeraApps" xml:space="preserve">
+    <value>Uygulamaları Görüntüle</value>
+  </data>
+  <data name="ViewInstallStatusForApplication" xml:space="preserve">
+    <value>{0} için Yükleme Durumunu görüntüle</value>
+  </data>
+  <data name="VirtualApplications" xml:space="preserve">
+    <value>Sanal Uygulamalar</value>
+  </data>
+  <data name="VirtualApplicationsHelp" xml:space="preserve">
+    <value>Sanal Uygulamalar yapılandırmasına Erişimi kontrol eder; sadece dizin yöneticilerine uygulanabilir</value>
+  </data>
+  <data name="VirtualApps" xml:space="preserve">
+    <value>Sanal Uygulamalar</value>
+  </data>
+  <data name="VirtualAppsHelp" xml:space="preserve">
+    <value>Workspace ONE kataloğundan, çalışanların erişebilecekleri Sanal Uygulamalar ve Masaüstlerinin listesine bakın.</value>
+  </data>
+  <data name="VirtualAppsIDMSetupArg" xml:space="preserve">
+    <value>Sanal Uygulamaların kullanılabilmesi için önce Workspace ONE'ın kurulması gerekir. {0} konumuna gidin ve Workspace ONE kurulumunu tamamlayın. Tamamlandıktan sonra oturumu kapatıp açın ve tekrar deneyin.</value>
+  </data>
+  <data name="VirtualAppsMenuDescription" xml:space="preserve">
+    <value>Workspace ONE kataloğundan, çalışanların erişebilecekleri Sanal Uygulamalar ve Masaüstlerinin listesine bakın.</value>
+  </data>
+  <data name="VirtualBreadcrumbDescription" xml:space="preserve">
+    <value>Sanal uygulamaları ve koleksiyonları görüntüleyin ve yönetin.</value>
+  </data>
+  <data name="VMwareDocs" xml:space="preserve">
+    <value>VMware Docs</value>
+  </data>
+  <data name="VPPLicenseNotAvailable" xml:space="preserve">
+    <value>Yok (Lisans Yok)</value>
+  </data>
+  <data name="WaitingForEvent" xml:space="preserve">
+    <value>Etkinlik bekleniyor</value>
+  </data>
+  <data name="WaitingForSchedule" xml:space="preserve">
+    <value>Planlama bekleniyor</value>
+  </data>
+  <data name="WaitingForTimeWindow" xml:space="preserve">
+    <value>Zaman penceresi bekleniyor</value>
+  </data>
+  <data name="WaitingToBeRetried" xml:space="preserve">
+    <value>Yeniden denenmesi bekleniyor</value>
+  </data>
+  <data name="WantToContinue" xml:space="preserve">
+    <value>Devam etmek istiyor musunuz?</value>
+  </data>
+  <data name="WebLinkMenus" xml:space="preserve">
+    <value>Web Bağlantıları</value>
+  </data>
+  <data name="WindowsAppsRetireDescription" xml:space="preserve">
+    <value>Bir uygulamanın bir sürümünü devre dışı bırakma, uygulamayı Workspace ONE tarafından yönetilen tüm aygıtlardan kaldırır. Uygulamanın bir sonraki alt sürümü kullanılabilir durumdaysa ve atanmışsa aygıt işletim sistemi uygulamayı eski sürüme düşürmeyi desteklemediğinden hiçbir eylem gerçekleştirilmez.</value>
+  </data>
+  <data name="WindowsProvisioningInstallContextWarning" xml:space="preserve">
+    <value>Bu uygulamanın yüklenmesi için bir kullanıcı bağlamı gerekir. Dışa aktarılan PPKG'ye dahil edilemez</value>
+  </data>
+  <data name="WindowsProvisioningNoAppSelected" xml:space="preserve">
+    <value>Lütfen Windows Provizyonlama Paketine aktarılacak uygulamaları seçin</value>
+  </data>
+  <data name="WindowsProvisioningOGInheritedWarning" xml:space="preserve">
+    <value>Bu uygulama başka bir Organizasyon Grubundan alınır. Dışa aktarılan PPKG'ye dahil edilemez.</value>
+  </data>
+  <data name="WindowsProvisioningPackageDeleteFailed" xml:space="preserve">
+    <value>Provizyonlama Paketi (PPKG) silinirken beklenmedik hata oluştu.</value>
+  </data>
+  <data name="WindowsProvisioningPackageDeleteSuccess" xml:space="preserve">
+    <value>Windows Provizyonlama Paketi (PPKG) başarıyla silindi.</value>
+  </data>
+  <data name="WindowsProvisioningPackageDeleteWarning" xml:space="preserve">
+    <value>Bu Provizyonlama Paketi silinemez çünkü daha yüksek bir organizasyon grubunda yönetiliyor.</value>
+  </data>
+  <data name="WindowsProvisioningPackageDownloadAction" xml:space="preserve">
+    <value>İndir</value>
+  </data>
+  <data name="WindowsProvisioningPackageEditWarning" xml:space="preserve">
+    <value>Bu Provizyonlama Paketi, daha yüksek bir organizasyon grubunda yönetildiği veya yöneticinin sadece okuma erişimi olduğu için düzenlenemez.</value>
+  </data>
+  <data name="WindowsProvisioningPackageFailed" xml:space="preserve">
+    <value>Provizyonlama Paketi (PPKG) istenirken beklenmedik hata oluştu.</value>
+  </data>
+  <data name="WindowsProvisioningPackageFailedMessage" xml:space="preserve">
+    <value>Windows Provizyonlama Paketi (PPKG) dışa aktarılamadı</value>
+  </data>
+  <data name="WindowsProvisioningPackagePleaseWait" xml:space="preserve">
+    <value>Mevcut bir Windows Provizyonlama Paketi (PPKG) dışa aktarma isteği devam ediyor. Lütfen dışa aktarma işleminin tamamlanmasını bekleyin.</value>
+  </data>
+  <data name="WindowsProvisioningPackageProgressActionMessage" xml:space="preserve">
+    <value>Uygulamaları Görüntüle</value>
+  </data>
+  <data name="WindowsProvisioningPackageProgressMessage" xml:space="preserve">
+    <value>Bir Windows Provizyonlama Paketi (PPKG) dışa aktarılıyor.</value>
+  </data>
+  <data name="WindowsProvisioningPackageRequested" xml:space="preserve">
+    <value>Windows Provizyonlama Paketi (PPKG) dışa aktarma isteği başarıyla gönderildi. PPKG dışa aktarma tamamlandığında bunu indirmek için bir bağlantıyla birlikte bir bildirim gönderilir.</value>
+  </data>
+  <data name="WindowsProvisioningPackageStorageFailed" xml:space="preserve">
+    <value>Yetersiz depolama alanı nedeniyle Windows Provizyonlama Paketi (PPKG) dışa aktarılamadı</value>
+  </data>
+  <data name="WindowsProvisioningPackageSuccessActionMessage" xml:space="preserve">
+    <value>İndir</value>
+  </data>
+  <data name="WindowsProvisioningPackageSuccessMessage" xml:space="preserve">
+    <value>Dışa aktarılan Windows Provizyonlama Paketi (PPKG) indirilebilir.</value>
+  </data>
+  <data name="WindowsProvisioningPackageTitle" xml:space="preserve">
+    <value>Windows Provizyonlama Paketi</value>
+  </data>
+  <data name="WindowsProvisioningSFDReUploadWarning" xml:space="preserve">
+    <value>Bu uygulamanın dışa aktarılan PPKG'ye dahil edilebilmesi için Ayarlar'da Yazılım Paketi Dağıtımı etkinleştirildikten sonra uygulamanın karşıya yüklenmesi gerekir</value>
+  </data>
+  <data name="WinRTDesiredStateManagementTooltip" xml:space="preserve">
+    <value>Yalnızca Otomatik dağıtım yöntemi kullanılarak dağıtılan MDM tarafından yönetilen uygulamalar için geçerlidir. Etkinleştirildiğinde, uygulamanın kaldırıldığı algılanırsa uygulama otomatik olarak yeniden yüklenecektir. Devre dışı bırakıldığında, uygulamanın kaldırıldığı algılanırsa uygulama yeniden yüklenmeyecektir.</value>
+  </data>
+  <data name="WorkflowDefinitionDesc" xml:space="preserve">
+    <value>İş akışı için bir kolay ad ve açıklama belirleyin.</value>
+  </data>
+  <data name="WorkflowRebootPlaceholder" xml:space="preserve">
+    <value>Sonraki herhangi bir adıma geçmeden önce aygıt yeniden başlatılacaktır.</value>
+  </data>
+  <data name="Workflows" xml:space="preserve">
+    <value>İş Akışları</value>
+  </data>
+  <data name="WorkflowStepsDesc" xml:space="preserve">
+    <value>İş akışınızı oluşturmak için buradan uygulama ve koşullar arayıp ekleyin. İş akışı aşağıdaki sırayla yürütülür. Sıralamayı ayarlamak için sürükleyin.</value>
+  </data>
+  <data name="WorkflowStepsPlaceholder" xml:space="preserve">
+    <value>Uygulamalar veya koşullar ekleyerek başlayın</value>
+  </data>
+  <data name="WorkflowSummaryDesc" xml:space="preserve">
+    <value>Lütfen kaydetmeden önce iş akışı detaylarını ve adımlarını gözden geçirin.</value>
+  </data>
+  <data name="WorkspaceOneAdminAssistantForMacOs" xml:space="preserve">
+    <value>macOS için Workspace ONE Admin Assistant</value>
+  </data>
+  <data name="X64AppDependencies" xml:space="preserve">
+    <value>X64 Bağımlılıkları</value>
+  </data>
+  <data name="X86AppDependencies" xml:space="preserve">
+    <value>X86 Bağımlılıkları</value>
+  </data>
+  <data name="ZeroOrPositiveIntegerRequired" xml:space="preserve">
+    <value>Değer sıfır veya pozitif bir tamsayı olmalıdır</value>
+  </data>
+</root>

@@ -1,0 +1,486 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AddedPolices" xml:space="preserve">
+    <value>Hinzugefügte Richtlinien</value>
+  </data>
+  <data name="AssignBaseline" xml:space="preserve">
+    <value>Baseline zuweisen</value>
+  </data>
+  <data name="AssignBaselineDescription" xml:space="preserve">
+    <value>Wählen Sie die Smartgroup(s) aus, um die Baseline zuzuweisen.</value>
+  </data>
+  <data name="AssignBaselineDescription2" xml:space="preserve">
+    <value>Wählen Sie die Smartgroup(s) für die Zuweisung der Baseline aus. Wählen Sie Ausschlüsse aus, um bestimmte Gruppen auszuschließen. Wenn Sie einen Ausschluss zu einer veröffentlichten Baseline hinzufügen, wird die Baseline von den ausgeschlossenen Geräten entfernt.</value>
+  </data>
+  <data name="AssignBaselineLocationGroupNotFound" xml:space="preserve">
+    <value>Die Baseline konnte nicht zugewiesen werden, weil die Organisationsgruppe nicht gefunden werden konnte.</value>
+  </data>
+  <data name="AssignBaselineNotFound" xml:space="preserve">
+    <value>Die Baseline konnte nicht zugewiesen werden, weil die Baseline nicht gefunden werden konnte.</value>
+  </data>
+  <data name="AssignedDevicesArg" xml:space="preserve">
+    <value>Zugewiesen: {0} Geräte</value>
+  </data>
+  <data name="Assignments" xml:space="preserve">
+    <value>Zuweisungen</value>
+  </data>
+  <data name="Baseline" xml:space="preserve">
+    <value>Baseline</value>
+  </data>
+  <data name="BaselineAssigned" xml:space="preserve">
+    <value>Baseline zugewiesen</value>
+  </data>
+  <data name="BaselineAssignmentFailed" xml:space="preserve">
+    <value>Die Baseline kann nicht zugewiesen werden. Bitte versuchen Sie es erneut.</value>
+  </data>
+  <data name="BaselineAssignmentSuccessful" xml:space="preserve">
+    <value>Die Baseline wurde erfolgreich in der aktualisierten Zuweisung veröffentlicht.</value>
+  </data>
+  <data name="BaselineBlobFailed" xml:space="preserve">
+    <value>Baseline konnte nicht erstellt werden, da das Paket nicht erstellt werden konnte.</value>
+  </data>
+  <data name="BaselineCombinedBlobFailed" xml:space="preserve">
+    <value>Baseline konnte nicht erstellt werden, da das Paket mit den Anpassungen nicht erstellt werden konnte.</value>
+  </data>
+  <data name="BaselineContainsExe" xml:space="preserve">
+    <value>Ihre benutzerdefinierte Baseline enthält ausführbare Dateien. Entfernen Sie diese und versuchen Sie es erneut.</value>
+  </data>
+  <data name="BaselineCopyFailed" xml:space="preserve">
+    <value>Die ausgewählte Baseline konnte nicht kopiert werden.</value>
+  </data>
+  <data name="BaselineCopySuccessful" xml:space="preserve">
+    <value>Die ausgewählte Baseline wurde erfolgreich kopiert.</value>
+  </data>
+  <data name="BaselineCreated" xml:space="preserve">
+    <value>Baseline erstellt</value>
+  </data>
+  <data name="BaselineCreationFailed" xml:space="preserve">
+    <value>Baseline konnte nicht erstellt werden.</value>
+  </data>
+  <data name="BaselineCreationSuccessful" xml:space="preserve">
+    <value>Die Baseline wurde erfolgreich gespeichert.</value>
+  </data>
+  <data name="BaselineCustomizationFailed" xml:space="preserve">
+    <value>Baseline konnte nicht erstellt werden, da die Anpassungen nicht angewendet werden konnten.</value>
+  </data>
+  <data name="BaselineDeleted" xml:space="preserve">
+    <value>Baseline gelöscht</value>
+  </data>
+  <data name="BaselineDeleteFailed" xml:space="preserve">
+    <value>Fehler beim Löschen der Baseline. Versuchen Sie es erneut.</value>
+  </data>
+  <data name="BaselineDeleteSuccessful" xml:space="preserve">
+    <value>Baseline gelöscht.</value>
+  </data>
+  <data name="BaselineDetails" xml:space="preserve">
+    <value>Baseline-Name und -Version</value>
+  </data>
+  <data name="BaselineErrorCode" xml:space="preserve">
+    <value>Gerätefehlercode</value>
+  </data>
+  <data name="BaselineErrorMessage" xml:space="preserve">
+    <value>Fehlermeldung</value>
+  </data>
+  <data name="BaselineFileCorrupt" xml:space="preserve">
+    <value>Ihre benutzerdefinierte Baseline ist keine gültige ZIP-Datei.</value>
+  </data>
+  <data name="BaselineFileEmpty" xml:space="preserve">
+    <value>Ihre benutzerdefinierte Baseline scheint leer zu sein. Bitte versuchen Sie es erneut mit einer gültigen Datei.</value>
+  </data>
+  <data name="BaselineFileMissingPolicies" xml:space="preserve">
+    <value>Die für die benutzerdefinierte Baseline ausgewählte Datei entspricht nicht den empfohlenen Spezifikationen. Weitere Informationen finden Sie in der Dokumentation.</value>
+  </data>
+  <data name="BaselineFileSizeError" xml:space="preserve">
+    <value>Ihre benutzerdefinierte Baseline überschreitet die maximale Größe von 5 MB.</value>
+  </data>
+  <data name="BaselineGetPolicyTreeFailed" xml:space="preserve">
+    <value>Die Richtlinien für die Anpassung können nicht geladen werden. Versuchen Sie es später erneut.</value>
+  </data>
+  <data name="BaselineInvalidRequest" xml:space="preserve">
+    <value>Stellen Sie sicher, dass alle erforderlichen Felder ausgefüllt sind.</value>
+  </data>
+  <data name="BaselineMissingPolicies" xml:space="preserve">
+    <value>Baseline konnte nicht erstellt werden, da eine oder mehrere Richtlinien entfernt wurden oder nicht verfügbar sind.</value>
+  </data>
+  <data name="BaselineModified" xml:space="preserve">
+    <value>Baseline geändert</value>
+  </data>
+  <data name="BaselineName" xml:space="preserve">
+    <value>Baseline-Name</value>
+  </data>
+  <data name="BaselinePendingReboot" xml:space="preserve">
+    <value>Neustart ausstehend</value>
+  </data>
+  <data name="BaselinePolicyFieldError" xml:space="preserve">
+    <value>Baseline konnte nicht erstellt werden, da eine oder mehrere Richtlinien ungültige Werte haben</value>
+  </data>
+  <data name="BaselinePolicyGenerationFailed" xml:space="preserve">
+    <value>Baseline konnte nicht erstellt werden, da eine oder mehrere Richtlinien nicht generiert werden konnten</value>
+  </data>
+  <data name="Baselines" xml:space="preserve">
+    <value>Baselines</value>
+  </data>
+  <data name="BaselinesBlobID" xml:space="preserve">
+    <value>Baseline-Blob-ID</value>
+  </data>
+  <data name="BaselinesCount" xml:space="preserve">
+    <value>Anzahl Baselines</value>
+  </data>
+  <data name="BaselineServiceUnavailable" xml:space="preserve">
+    <value>Die Verbindung zum Baseline-Service „https://www.vmwarebaselines.com“ konnte nicht hergestellt werden. Weitere Informationen finden Sie in Ihren Konnektivitäts- und Protokolldateien.</value>
+  </data>
+  <data name="BaselinesMenuDescription" xml:space="preserve">
+    <value>Baselines anzeigen</value>
+  </data>
+  <data name="BaselineStatusCallFailed" xml:space="preserve">
+    <value>Abruf des Baseline-Status fehlgeschlagen. Bitte versuchen Sie es später erneut.</value>
+  </data>
+  <data name="BaselineTooltipCis" xml:space="preserve">
+    <value>Verwenden Sie die von CIS Benchmark empfohlenen Einstellungen für die ausgewählte Version und Ebene.</value>
+  </data>
+  <data name="BaselineTooltipCustom" xml:space="preserve">
+    <value>Laden Sie die Sicherung eines benutzerdefinierten Gruppenrichtlinienobjekts (GPO) hoch, das auf Geräte angewendet werden soll. Die GPO-Sicherung muss eine ZIP-Datei sein, die kleiner als 5 MB ist.</value>
+  </data>
+  <data name="BaselineTooltipWindows" xml:space="preserve">
+    <value>Die Security Baseline Components (SBC) des Microsoft Security Toolkit werden von Microsoft erstellt und für Ihre Verwendung ausschließlich für die Verwaltung von Windows 10-Geräten zur Verfügung gestellt. Die SBC werden IN DER VORLIEGENDEN FORM und ohne jegliche Gewährleistung jeglicher Art von VMware oder Microsoft bereitgestellt. Weitere Informationen zu den SBC finden Sie unter {0}.</value>
+  </data>
+  <data name="BaselineUUID" xml:space="preserve">
+    <value>Baseline-UUID</value>
+  </data>
+  <data name="BlankBaseline" xml:space="preserve">
+    <value>Eigene erstellen</value>
+  </data>
+  <data name="BlankBaselineDescription" xml:space="preserve">
+    <value>Erstellen Sie Ihre eigene Baseline, indem Sie eine aus unserem Richtlinienkatalog auswählen.</value>
+  </data>
+  <data name="ChooseTemplate" xml:space="preserve">
+    <value>Baseline auswählen</value>
+  </data>
+  <data name="ComplianceDataMissing" xml:space="preserve">
+    <value>Für diese Baseline sind noch keine Konformitätsdaten verfügbar. Veröffentlichen Sie die Baseline erneut auf den zugewiesenen Geräten, um die Berichterstattung von Konformitätsproben auszulösen.</value>
+  </data>
+  <data name="ConfirmCancelBaseline" xml:space="preserve">
+    <value>Ihre Änderungen an dieser Baseline wurden nicht gespeichert. Möchten Sie die Änderungen verwerfen?</value>
+  </data>
+  <data name="ConfirmCloudDescription" xml:space="preserve">
+    <value>Durch die Verwendung von Workspace ONE-Baselines greifen Sie auf Daten zu, die remote von VMware gespeichert werden. Klicken Sie auf „Abbrechen“, wenn Sie nicht fortfahren möchten.</value>
+  </data>
+  <data name="ConfirmCloudTitle" xml:space="preserve">
+    <value>Remote-Datenzugriff</value>
+  </data>
+  <data name="ConfirmDeleteBaseline" xml:space="preserve">
+    <value>Wenn diese Baseline zugewiesen ist, wird Sie beim Löschen von allen Geräten entfernt. Möchten Sie fortfahren?</value>
+  </data>
+  <data name="CopyBaseline" xml:space="preserve">
+      <value>Baseline kopieren</value>
+  </data>
+  <data name="CustomBaseline" xml:space="preserve">
+    <value>Benutzerdefinierte Baseline</value>
+  </data>
+  <data name="CustomBaselineCompliance" xml:space="preserve">
+    <value>Konformitätsdaten für benutzerdefinierte Baselines werden auf Grundlage der Richtlinien durchgeführt, die der Baseline hinzugefügt wurden, nicht nach den komprimierten Richtlinien.</value>
+  </data>
+  <data name="CustomBaselineComplianceDataMissing" xml:space="preserve">
+    <value>Konformitätsdaten sind für benutzerdefinierte Baselines nicht verfügbar oder unvollständig, da die komprimierten Richtlinien nicht überprüft werden konnten.</value>
+  </data>
+  <data name="CustomBaselineError" xml:space="preserve">
+    <value>Wählen Sie eine Datei für die benutzerdefinierte Baseline aus.</value>
+  </data>
+  <data name="CustomBaselineHelpLink" xml:space="preserve">
+    <value>Anweisungen zum Hochladen von GPO anzeigen</value>
+  </data>
+  <data name="CustomizeSelectPolicy" xml:space="preserve">
+    <value>Wählen Sie eine Richtlinie aus, um ihre Einstellungen anzuzeigen.</value>
+  </data>
+  <data name="CustomizeStepDescription" xml:space="preserve">
+    <value>Sie können die Richtlinien von {0} überprüfen oder anpassen, damit Ihre Anforderungen erfüllt werden.</value>
+  </data>
+  <data name="DefinitionStepDescription" xml:space="preserve">
+    <value>Fügen Sie eine Namen und eine Beschreibung für die Baseline hinzu.</value>
+  </data>
+  <data name="DeleteBaseline" xml:space="preserve">
+    <value>Baseline löschen</value>
+  </data>
+  <data name="DeviceBaselineLocationGroupNotFound" xml:space="preserve">
+    <value>Abrufen von Geräten für die Baseline fehlgeschlagen, weil die Organisationsgruppe nicht gefunden werden konnte.</value>
+  </data>
+  <data name="DeviceBaselineNotFound" xml:space="preserve">
+    <value>Abrufen von Geräten für die Baseline fehlgeschlagen, weil die Baseline nicht gefunden werden konnte.</value>
+  </data>
+  <data name="DiscardAndExit" xml:space="preserve">
+    <value>Verwerfen und beenden</value>
+  </data>
+  <data name="EditBaseline" xml:space="preserve">
+    <value>Baseline bearbeiten</value>
+  </data>
+  <data name="EditRequestError" xml:space="preserve">
+    <value>Die ausgewählte Baselineversion ist nicht mehr verfügbar. Erstellen Sie eine neue Version.</value>
+  </data>
+  <data name="EmptyBaselineList" xml:space="preserve">
+    <value>Keine Baselines gefunden</value>
+  </data>
+  <data name="EmptyDeviceList" xml:space="preserve">
+    <value>Keine Geräte gefunden</value>
+  </data>
+  <data name="EmptyListInput" xml:space="preserve">
+    <value>Erfordert einen oder mehrere Einträge</value>
+  </data>
+  <data name="EmptyPolicyList" xml:space="preserve">
+    <value>Noch keine Richtlinien hinzugefügt</value>
+  </data>
+  <data name="ErrorBaselineDeviceException" xml:space="preserve">
+    <value>Anwenden von Baselines fehlgeschlagen. Überprüfen Sie die Protokolle zwecks Wiederherstellung.</value>
+  </data>
+  <data name="ErrorDownloadBlobFailed" xml:space="preserve">
+    <value>Zugriff auf Baselines fehlgeschlagen. Überprüfen Sie die Protokolle zwecks Wiederherstellung.</value>
+  </data>
+  <data name="ErrorInvalidExecutable" xml:space="preserve">
+    <value>LGPO.exe ist ungültig. Versuchen Sie, die ausführbare Datei wiederherzustellen.</value>
+  </data>
+  <data name="ErrorLGPOBackupFailed" xml:space="preserve">
+    <value>Anwenden von Baselines fehlgeschlagen. Überprüfen Sie die Protokolle zwecks Wiederherstellung.</value>
+  </data>
+  <data name="ErrorMissingLGPO" xml:space="preserve">
+    <value>LGPO.exe ist nicht verfügbar, um Baselines anzuwenden.</value>
+  </data>
+  <data name="ErrorSavingFileInFolder" xml:space="preserve">
+    <value>Speichern von Baselines fehlgeschlagen. Prüfen Sie die Protokolle zwecks Wiederherstellung.</value>
+  </data>
+  <data name="ErrorUpdatingDatabase" xml:space="preserve">
+    <value>Baseline-Status unbekannt. Weitere Informationen finden Sie in den Protokollen.</value>
+  </data>
+  <data name="ErrorZipExtractionFailed" xml:space="preserve">
+    <value>Extrahieren der Baselines fehlgeschlagen. Prüfen Sie die Protokolle zwecks Wiederherstellung.</value>
+  </data>
+  <data name="ExcludedSmartGroups" xml:space="preserve">
+    <value>Ausgeschlossene Smartgruppen</value>
+  </data>
+  <data name="Exclusions" xml:space="preserve">
+    <value>Ausschlüsse</value>
+  </data>
+  <data name="FailedInstall" xml:space="preserve">
+    <value>Installation fehlgeschlagen</value>
+  </data>
+  <data name="FailedRemoval" xml:space="preserve">
+    <value>Entfernen fehlgeschlagen</value>
+  </data>
+  <data name="IntermediateDescription" xml:space="preserve">
+    <value>Geräte mit einer Übereinstimmung von {0} % bis {1} % werden als Intermediate klassifiziert.</value>
+  </data>
+  <data name="MaxValueArg" xml:space="preserve">
+    <value>Muss kleiner als oder gleich groß sein wie {0}</value>
+  </data>
+  <data name="MinValueArg" xml:space="preserve">
+    <value>Muss größer als oder gleich groß sein wie {0}</value>
+  </data>
+  <data name="NewBaseline" xml:space="preserve">
+    <value>Neue Baseline</value>
+  </data>
+  <data name="NoActiveOSVersion" xml:space="preserve">
+    <value>Keine Betriebssystemversionen gefunden. Versuchen Sie es später erneut.</value>
+  </data>
+  <data name="NoCustomizationSupport" xml:space="preserve">
+    <value>Die Anpassung ist derzeit für die ausgewählte Baseline nicht verfügbar.</value>
+  </data>
+  <data name="NoFileSelected" xml:space="preserve">
+    <value>Keine Datei ausgewählt.</value>
+  </data>
+  <data name="NonEnglishSearchResult" xml:space="preserve">
+    <value>Keine Ergebnisse für „{0}“ gefunden. Sie können Ihre Suche auf Englisch wiederholen, um zu überprüfen, ob die Richtlinie verfügbar ist.</value>
+  </data>
+  <data name="NoResultsFoundForArg" xml:space="preserve">
+    <value>Keine Ergebnisse gefunden für „{0}“</value>
+  </data>
+  <data name="NoSmartGroupsSelected" xml:space="preserve">
+    <value>Keine Smartgroup(s) ausgewählt</value>
+  </data>
+  <data name="PolicyNotFound" xml:space="preserve">
+    <value>Keine Richtliniendetails gefunden</value>
+  </data>
+  <data name="PolicyStepDescription" xml:space="preserve">
+    <value>Suchen Sie Richtlinien im Katalog, und fügen Sie sie hinzu.</value>
+  </data>
+  <data name="Proceed" xml:space="preserve">
+    <value>Weiter</value>
+  </data>
+  <data name="RemovalFailed" xml:space="preserve">
+    <value>Entfernen fehlgeschlagen</value>
+  </data>
+  <data name="RequiredFieldError" xml:space="preserve">
+    <value>Geben Sie einen Namen für die Baseline ein.</value>
+  </data>
+  <data name="SaveAndPublish" xml:space="preserve">
+    <value>Speichern und veröffentlichen</value>
+  </data>
+  <data name="SearchPolicyPlaceholder" xml:space="preserve">
+    <value>Beginnen Sie mit der Eingabe, um nach einer Richtlinie zu suchen.</value>
+  </data>
+  <data name="SearchSmartGroupPlaceholder" xml:space="preserve">
+    <value>Beginnen Sie mit der Eingabe, um nach einer Smartgroup zu suchen.</value>
+  </data>
+  <data name="SelectedSmartGroups" xml:space="preserve">
+    <value>Ausgewählte Smartgroups</value>
+  </data>
+  <data name="SelectTypeDescription" xml:space="preserve">
+    <value>Wählen Sie einen Typ für die Baseline aus, die hinzugefügt werden soll.</value>
+  </data>
+  <data name="SelectTypeTitle" xml:space="preserve">
+    <value>Baseline-Typ auswählen</value>
+  </data>
+  <data name="SmartGroupAtLeastOneValidationDescription" xml:space="preserve">
+    <value>Mindestens eine Smartgroup auf der Registerkarte „Zuweisungen“ ist erforderlich.</value>
+  </data>
+  <data name="SummaryStepDescription" xml:space="preserve">
+    <value>Prüfen Sie vor dem Speichern dieser Baseline die Zusammenfassung.</value>
+  </data>
+  <data name="TemplateStepDescription" xml:space="preserve">
+    <value>Wählen Sie eine vorkonfigurierte Baseline und Version.</value>
+  </data>
+  <data name="TextareaMaxLinesError" xml:space="preserve">
+    <value>Überschreitet die maximale Anzahl von Zeilen</value>
+  </data>
+  <data name="TextareaMaxSentenceError" xml:space="preserve">
+    <value>Ein oder mehrere Sätze überschreiten die maximale Länge.</value>
+  </data>
+  <data name="TotalInstalledArg" xml:space="preserve">
+    <value>Insgesamt installiert: {0}</value>
+  </data>
+  <data name="UnabletoLoadDevices" xml:space="preserve">
+    <value>Die Geräteliste kann nicht geladen werden. Versuchen Sie es später erneut.</value>
+  </data>
+  <data name="UnsavedChanges" xml:space="preserve">
+    <value>Ungespeicherte Änderungen</value>
+  </data>
+  <data name="UnsupportedLanguageError" xml:space="preserve">
+    <value>Fehler: Die ausgewählte Sprache wird nicht unterstützt.</value>
+  </data>
+  <data name="UseBaselineTemplate" xml:space="preserve">
+      <value>Vorlage verwenden</value>
+  </data>
+  <data name="UseTemplateDescription" xml:space="preserve">
+    <value>Verwenden Sie Branchenstandardvorlagen zum Einrichten einer Baseline.</value>
+  </data>
+  <data name="VersionBreakdown" xml:space="preserve">
+    <value>Versionsaufschlüsselung</value>
+  </data>
+  <data name="ViewBaselineDevicesTitle" xml:space="preserve">
+    <value>Geräte anzeigen – Baselines</value>
+  </data>
+</root>

@@ -1,0 +1,3410 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AdaptivaSetup" xml:space="preserve">
+    <value>Adaptiva Kurulumu</value>
+  </data>
+  <data name="AdaptivaSetupHelp" xml:space="preserve">
+    <value>P2P iş ortağı için kurulum kaynağı, Adaptiva</value>
+  </data>
+  <data name="AdaptiveManagement" xml:space="preserve">
+    <value>Uyarlamalı Yönetim</value>
+  </data>
+  <data name="AdaptiveManagementHelp" xml:space="preserve">
+    <value>Uygulama ilkelerine göre uyarlamalı yönetim seviyesini görüntüleme ve ayarlama imkanı</value>
+  </data>
+  <data name="AddApplicationWorkflowHelp" xml:space="preserve">
+    <value>Geliştiricinin bir uygulamayı yüklemesine izin verir</value>
+  </data>
+  <data name="AddCartHelp" xml:space="preserve">
+    <value>Paylaşılan Aygıtlar için aygıt seri numaralarını içeren bir CSV'yi karşıya yükleyin. </value>
+  </data>
+  <data name="AddCustomReportSubscriptionHelp" xml:space="preserve">
+    <value>Özel Rapor Aboneliği eklemek için erişimi kontrol eder. Hub\Raporlar ve Analizler\Özel Raporlar\Abonelikler konumuna gidin</value>
+  </data>
+  <data name="AddDeviceUserAccounts" xml:space="preserve">
+    <value>Aygıt Ekle</value>
+  </data>
+  <data name="AddDeviceUserAccountsHelp" xml:space="preserve">
+    <value>Kullanıcı hesapları için aygıtlar ekle</value>
+  </data>
+  <data name="AddEditAdminAccount" xml:space="preserve">
+    <value>Ekle/Düzenle</value>
+  </data>
+  <data name="AddEditAdminAccountHelp" xml:space="preserve">
+    <value>Yönetici hesaplarını ekle ya da düzenle</value>
+  </data>
+  <data name="AddEditAdminGroup" xml:space="preserve">
+    <value>Ekle/Düzenle</value>
+  </data>
+  <data name="AddEditAdminGroupHelp" xml:space="preserve">
+    <value>Yönetici gruplarını ekle ya da düzenle</value>
+  </data>
+  <data name="AddEditAdminRoles" xml:space="preserve">
+    <value>Ekle/Düzenle</value>
+  </data>
+  <data name="AddEditAdminRolesHelp" xml:space="preserve">
+    <value>Yönetici rollerini ekle, düzenle ve sil</value>
+  </data>
+  <data name="AddEditDeviceManufacturerDetails" xml:space="preserve">
+    <value>Aygıt Üreticisi Ayrıntılarını Ekle ve Düzenle</value>
+  </data>
+  <data name="AddEditDeviceManufacturerDetailsHelp" xml:space="preserve">
+    <value>Uygulama Programı Arabirimi (API) aracılığıyla Console'a yeni bir aygıt üreticisi ekleyin veya Console'da mevcut olan bir üreticiyi düzenleyin</value>
+  </data>
+  <data name="AddEditDeviceModelDetails" xml:space="preserve">
+    <value>Aygıt Modeli Ayrıntılarını Ekle ve Düzenle</value>
+  </data>
+  <data name="AddEditDeviceModelDetailsHelp" xml:space="preserve">
+    <value>Uygulama Programı Arabirimi (API) aracılığıyla Console'a yeni bir aygıt modeli ekleyin veya Console'da mevcut olan bir modeli düzenleyin</value>
+  </data>
+  <data name="AddEditUG" xml:space="preserve">
+    <value>Ekle/Düzenle</value>
+  </data>
+  <data name="AddEditUGHelp" xml:space="preserve">
+    <value>Kullanıcı grupları ekle, düzenle ve sil</value>
+  </data>
+  <data name="AddEditUserAccount" xml:space="preserve">
+    <value>Ekle/Düzenle</value>
+  </data>
+  <data name="AddEditUserAccountHelp" xml:space="preserve">
+    <value>Kullanıcı hesaplarını ekle ya da düzenle</value>
+  </data>
+  <data name="AddEditUserCat" xml:space="preserve">
+    <value>Ekle/Düzenle</value>
+  </data>
+  <data name="AddEditUserCatHelp" xml:space="preserve">
+    <value>Kayıt kullanıcı kategorilerini ekle, düzenle ve sil</value>
+  </data>
+  <data name="AddEditUserRoles" xml:space="preserve">
+    <value>Ekle/Düzenle</value>
+  </data>
+  <data name="AddEditUserRolesHelp" xml:space="preserve">
+    <value>Kullanıcı rollerini ekle ve düzenle</value>
+  </data>
+  <data name="AddEditWindowsTemplateHelp" xml:space="preserve">
+    <value>Yöneticinin, Console panosunda Windows Şablonu ekleme ve/veya düzenleme ayarlarını yapılandırmasına izin verir</value>
+  </data>
+  <data name="AddFileServerConfiguration" xml:space="preserve">
+    <value>Dosya Sunucu Yapılandırması Ekle</value>
+  </data>
+  <data name="AddFileServerConfigurationHelp" xml:space="preserve">
+    <value>Kullanıcıya, dosya sunucusu kılavuzunu ve ayrıntılarını ekleme izni verir</value>
+  </data>
+  <data name="AddNoteHelp" xml:space="preserve">
+    <value>Yeni Not Ekleme İzni Verir</value>
+  </data>
+  <data name="AdminAd" xml:space="preserve">
+    <value>Yönetici</value>
+  </data>
+  <data name="AdminAdHelp" xml:space="preserve">
+    <value>Sistem Ayarları, Uyarı Modülü, Özel Alan Tanımları sayfası, Sistem Ayarlarındaki Yardım Sayfası ve RADIUS Profilleri sayfasındaki giriş sayfalarına erişimi kontrol eder</value>
+  </data>
+  <data name="AdminOptIn" xml:space="preserve">
+    <value>YÖNETİCİ KABUL</value>
+  </data>
+  <data name="AdminSaaSNotifications" xml:space="preserve">
+    <value>SaaS Bildirimleri</value>
+  </data>
+  <data name="AdminSaaSNotificationsHelp" xml:space="preserve">
+    <value>SaaS Bildirimleri Ayarlar Sayfasına erişimi kontrol eder</value>
+  </data>
+  <data name="AdminsRESTSystem" xml:space="preserve">
+    <value>Yöneticiler</value>
+  </data>
+  <data name="AdminsRESTSystemHelp" xml:space="preserve">
+    <value>Yönetici hesapları için REST API'leri</value>
+  </data>
+  <data name="AdvancedEm" xml:space="preserve">
+    <value>Gelişmiş</value>
+  </data>
+  <data name="AdvancedEmHelp" xml:space="preserve">
+    <value>E-posta Gelişmiş Ayarlarını Kontrol Eder</value>
+  </data>
+  <data name="AdvancedHelp" xml:space="preserve">
+    <value>Gelişmiş alt menüsüne erişimi kontrol eder.</value>
+  </data>
+  <data name="AdvancedIn" xml:space="preserve">
+    <value>Gelişmiş</value>
+  </data>
+  <data name="AdvancedInHelp" xml:space="preserve">
+    <value>Gelişmiş yükleme ayarlarına erişimi kontrol eder</value>
+  </data>
+  <data name="AdvancedSet" xml:space="preserve">
+    <value>Gelişmiş</value>
+  </data>
+  <data name="AdvancedSetHelp" xml:space="preserve">
+    <value>Sistem ayarları seçeneğinde, gelişmiş sayfalara erişimi kontrol eder</value>
+  </data>
+  <data name="AdvancedSOaP" xml:space="preserve">
+    <value>Gelişmiş</value>
+  </data>
+  <data name="AdvancedSOaPHelp" xml:space="preserve">
+    <value>Aygıtı Fabrika Ayarlarına Geri Döndürme ve Şirket Verilerini Silme gibi gelişmiş API’leri kullanın.</value>
+  </data>
+  <data name="AdvancedSys" xml:space="preserve">
+    <value>Gelişmiş</value>
+  </data>
+  <data name="AdvancedSysHelp" xml:space="preserve">
+    <value>Sistem ayarları altında Gelişmiş sayfasına erişimi kontrol eder</value>
+  </data>
+  <data name="AfterArg" xml:space="preserve">
+    <value>{0} Sonrası</value>
+  </data>
+  <data name="AgentApplicationAn" xml:space="preserve">
+    <value>Hub Uygulaması</value>
+  </data>
+  <data name="AgentApplicationAnHelp" xml:space="preserve">
+    <value>Android seçeneği altındaki Hub Uygulamaları sayfasına erişimi denetler.</value>
+  </data>
+  <data name="AgentPackageAdd" xml:space="preserve">
+    <value>Hub Paketi Ekle</value>
+  </data>
+  <data name="AgentPackageAddHelp" xml:space="preserve">
+    <value>Ürün provizyonlamada hazırlama için bir Hub .apf dosyasının karşıya yüklenmesine izin verir.</value>
+  </data>
+  <data name="AgentPackageDelete" xml:space="preserve">
+    <value>Hub Paketi Sil</value>
+  </data>
+  <data name="AgentPackageDeleteHelp" xml:space="preserve">
+    <value>Ürün provizyonlamada hazırlama için kullanıma sunulmayacak olan bir Hub .apf'sinin silinmesine izin verir.</value>
+  </data>
+  <data name="AgentPackagePPN" xml:space="preserve">
+    <value>Hub Paketi</value>
+  </data>
+  <data name="AgentPackagePPNHelp" xml:space="preserve">
+    <value>Ürün provizyonlamada hazırlama için Hub .apf dosyalarının eklenmesine/güncellenmesine/silinmesine izin verir.</value>
+  </data>
+  <data name="AgentPackageView" xml:space="preserve">
+    <value>Hub Paketi Görüntüle</value>
+  </data>
+  <data name="AgentPackageViewHelp" xml:space="preserve">
+    <value>Ürün provizyonlamada hazırlama için kullanılabilecek Hub Paketleri ekranındaki kullanılabilir Hub .apf dosyaları listesinin görüntülenmesine izin verir.</value>
+  </data>
+  <data name="AgentSettingsAn" xml:space="preserve">
+    <value>Intelligent Hub Ayarları</value>
+  </data>
+  <data name="AgentSettingsAnHelp" xml:space="preserve">
+    <value>Android seçeneği altındaki Intelligent Hub Ayarları sayfasına erişimi denetler.</value>
+  </data>
+  <data name="AgentSettingsApple" xml:space="preserve">
+    <value>Hub Ayarları</value>
+  </data>
+  <data name="AgentSettingsAppleHelp" xml:space="preserve">
+    <value>iOS seçeneği altındaki iOS Hub Ayarlarına erişimi denetler.</value>
+  </data>
+  <data name="AgentSettingsLinuxHelp" xml:space="preserve">
+    <value>Linux altındaki Linux Intelligent hub Ayarlarına erişimi kontrol eder.</value>
+  </data>
+  <data name="AirwatchEmailClientSet" xml:space="preserve">
+    <value>AirWatch E-Posta İstemcisi</value>
+  </data>
+  <data name="AirwatchEmailClientSetHelp" xml:space="preserve">
+    <value>Uygulamalar seçeneği altında AirWatch E-Posta İstemcisi sayfasına erişimi kontrol eder</value>
+  </data>
+  <data name="AirWatchHelpAd" xml:space="preserve">
+    <value>AirWatch Yardım</value>
+  </data>
+  <data name="AirWatchHelpAdHelp" xml:space="preserve">
+    <value>AirWatch Yardım'a erişimi kontrol eder</value>
+  </data>
+  <data name="AirWatchTunnelHelp" xml:space="preserve">
+    <value>AirWatch Tunnel'ı yapılandırmaya izin ver</value>
+  </data>
+  <data name="AkamaiSetting" xml:space="preserve">
+    <value>Akamai</value>
+  </data>
+  <data name="AkamaiSettingHelp" xml:space="preserve">
+    <value>Akamai öğesini CDN sağlayıcısı olarak yapılandırma ayarları</value>
+  </data>
+  <data name="AlertCreationPoliciesViewHelp" xml:space="preserve">
+    <value>Uyarı Kurulumu Oluşturma İlkesi görünümüne olan erişimi denetler. 
+</value>
+  </data>
+  <data name="AlertDD" xml:space="preserve">
+    <value>Uyarılar</value>
+  </data>
+  <data name="AlertDDHelp" xml:space="preserve">
+    <value>Bir aygıt ile ilgili olan uyarılara erişim sağla</value>
+  </data>
+  <data name="AlertsPM" xml:space="preserve">
+    <value>Uyarılar</value>
+  </data>
+  <data name="AlertsPMHelp" xml:space="preserve">
+    <value>Yazıcı Uyarıları sayfasına erişimi kontrol eder</value>
+  </data>
+  <data name="AndroidFileManagerDM" xml:space="preserve">
+    <value>Android Dosya Yöneticisi</value>
+  </data>
+  <data name="AndroidFileManagerDMHelp" xml:space="preserve">
+    <value>Aygıt detayları sayfasından  Android dosyalarını ve klasörlerini uzaktan yönet</value>
+  </data>
+  <data name="AndroidForWorkHelp" xml:space="preserve">
+    <value>AndroidForWork</value>
+  </data>
+  <data name="AndroidServiceApplicationsAn" xml:space="preserve">
+    <value>Android Hizmet Uygulamaları</value>
+  </data>
+  <data name="AndroidServiceApplicationsAnHelp" xml:space="preserve">
+    <value>Hizmet Uygulamalarını görüntüleme ve düzeltme izni ver</value>
+  </data>
+  <data name="ApnsApp" xml:space="preserve">
+    <value>APNs</value>
+  </data>
+  <data name="ApnsAppHelp" xml:space="preserve">
+    <value>iOS seçeneği altında Uygulamalar sayfası için APNs 'e erişimi kontrol eder</value>
+  </data>
+  <data name="ApnsSet" xml:space="preserve">
+    <value>APNs</value>
+  </data>
+  <data name="ApnsSetHelp" xml:space="preserve">
+    <value>Sistem ayarlarında APNs sayfasına erişimi kontrol eder</value>
+  </data>
+  <data name="AppCatalogHelp" xml:space="preserve">
+    <value>uygulama kataloğu için kaynak</value>
+  </data>
+  <data name="AppConfigurationSet" xml:space="preserve">
+    <value>Uygulama Yapılandırma</value>
+  </data>
+  <data name="AppConfigurationSetHelp" xml:space="preserve">
+    <value>Uygulama Yapılandırma sayfasına erişimi kontrol eder.</value>
+  </data>
+  <data name="AppCrashLogsHelp" xml:space="preserve">
+    <value>Uygulama Çökme Günlüklerine erişimi kontrol eder. 
+</value>
+  </data>
+  <data name="AppleConfiguratorSet" xml:space="preserve">
+    <value>Apple Configurator</value>
+  </data>
+  <data name="AppleConfiguratorSetHelp" xml:space="preserve">
+    <value>iOS seçeneği altında Apple Configurator'a erişimi kontrol eder</value>
+  </data>
+  <data name="AppleEducation" xml:space="preserve">
+    <value>Eğitim</value>
+  </data>
+  <data name="AppleEducationHelp" xml:space="preserve">
+    <value>Apple Eğitim sayfasına erişimi kontrol eder</value>
+  </data>
+  <data name="ApplicationCatalogEdit" xml:space="preserve">
+    <value>Uygulama Kataloğunu Düzenle</value>
+  </data>
+  <data name="ApplicationCatalogEditHelp" xml:space="preserve">
+    <value>Uygulama kataloğu ayarlar sayfasını düzenlemek için</value>
+  </data>
+  <data name="ApplicationCategoriesAb" xml:space="preserve">
+    <value>Uygulama Kategorileri</value>
+  </data>
+  <data name="ApplicationCategoriesAbHelp" xml:space="preserve">
+    <value>Uygulama kategorilerini görüntüle ve yönet.</value>
+  </data>
+  <data name="ApplicationGroupsAb" xml:space="preserve">
+    <value>Uygulama Grupları</value>
+  </data>
+  <data name="ApplicationGroupsAbHelp" xml:space="preserve">
+    <value>Uygulama gruplarını görüntüle ve yönet</value>
+  </data>
+  <data name="ApplicationIntegrationSet" xml:space="preserve">
+    <value>Uygulama Entegrasyonu</value>
+  </data>
+  <data name="ApplicationIntegrationSetHelp" xml:space="preserve">
+    <value>Uygulama Entegrasyonu Ayarları ekranına erişimi kontrol eder.</value>
+  </data>
+  <data name="ApplicationPPN" xml:space="preserve">
+    <value>Uygulama</value>
+  </data>
+  <data name="ApplicationPPNHelp" xml:space="preserve">
+    <value>Provizyonlama uygulamaları sayfasına erişim sağla</value>
+  </data>
+  <data name="ApplicationProfilesAb" xml:space="preserve">
+    <value>Uygulama Profilleri</value>
+  </data>
+  <data name="ApplicationProfilesAbHelp" xml:space="preserve">
+    <value>Uygulama profillerini görüntüle ve yönet.</value>
+  </data>
+  <data name="ApplicationPublishAb" xml:space="preserve">
+    <value>Uygulama Yayınlama</value>
+  </data>
+  <data name="ApplicationPublishAbHelp" xml:space="preserve">
+    <value>İlave uygulamalar yayınla</value>
+  </data>
+  <data name="ApplicationsAb" xml:space="preserve">
+    <value>Uygulamalar</value>
+  </data>
+  <data name="ApplicationsAbHelp" xml:space="preserve">
+    <value>Mobil Uygulama Yönetimi sayfasına erişim sağla</value>
+  </data>
+  <data name="ApplicationsDD" xml:space="preserve">
+    <value>Uygulamalar</value>
+  </data>
+  <data name="ApplicationsDDHelp" xml:space="preserve">
+    <value>Yönetilen aygıtlardan uygulamaları uzaktan yükle ve kaldır</value>
+  </data>
+  <data name="ApplicationsDM" xml:space="preserve">
+    <value>Uygulamalar</value>
+  </data>
+  <data name="ApplicationsDMHelp" xml:space="preserve">
+    <value>Günlükleri iste ve uygulama geri bildirimlerini yönet.</value>
+  </data>
+  <data name="ApplicationsHub" xml:space="preserve">
+    <value>Uygulamalar</value>
+  </data>
+  <data name="ApplicationsHubHelp" xml:space="preserve">
+    <value>Aygıt uygulamaları için raporlar oluştur</value>
+  </data>
+  <data name="ApplicationsSet" xml:space="preserve">
+    <value>Uygulamalar</value>
+  </data>
+  <data name="ApplicationsSetHelp" xml:space="preserve">
+    <value>İçerik yönetimi uygulamaları için ayarlar sayfalarına erişim sağla</value>
+  </data>
+  <data name="ApplicationWorkflowAb" xml:space="preserve">
+    <value>Uygulama İş Akışı</value>
+  </data>
+  <data name="ApplicationWorkflowAbHelp" xml:space="preserve">
+    <value>Uygulamaları karşıya yükle, gözden geçir, ata ve yayınla</value>
+  </data>
+  <data name="ApplicationWrappingAb" xml:space="preserve">
+    <value>Uygulama Sarmalama</value>
+  </data>
+  <data name="ApplicationWrappingAbHelp" xml:space="preserve">
+    <value>Uygulama sarmalamaya erişim sağla</value>
+  </data>
+  <data name="AppRemovalProtectionHelp" xml:space="preserve">
+    <value>Uygulama kaldırma korumasını etkinleştirme seçeneğini görüntülemek için</value>
+  </data>
+  <data name="AppRemovalProtectionLogEditHelp" xml:space="preserve">
+    <value>Uygulama kaldırma koruması günlük sayfasına "düzenleme" erişimini kontrol etmek için kaynak</value>
+  </data>
+  <data name="AppRemovalProtectionLogViewHelp" xml:space="preserve">
+    <value>Uygulama kaldırma koruması günlük sayfasına "görüntüleme" erişimini kontrol etmek için kaynak</value>
+  </data>
+  <data name="ApproveAndUnapproveUpdates" xml:space="preserve">
+    <value>Güncelleme Onaylama ve Onayını Kaldırma</value>
+  </data>
+  <data name="ApproveUpdate" xml:space="preserve">
+    <value>Güncellemeyi Onayla</value>
+  </data>
+  <data name="ApproveUpdateHelp" xml:space="preserve">
+    <value>Aygıtlara güncellemeyi onaylama komutu verilmesi için izin verir.</value>
+  </data>
+  <data name="ApproveUpdates" xml:space="preserve">
+    <value>Güncellemeyi Onayla</value>
+  </data>
+  <data name="AppsRESTMam" xml:space="preserve">
+    <value>Uygulamalar</value>
+  </data>
+  <data name="AppsRESTMamHelp" xml:space="preserve">
+    <value>Uygulamalar için REST API'leri</value>
+  </data>
+  <data name="AppUserCommentsAb" xml:space="preserve">
+    <value>Uygulama Kullanıcı Yorumları</value>
+  </data>
+  <data name="AppUserCommentsAbHelp" xml:space="preserve">
+    <value>Kullanıcı yorum ayarlarını görüntüle ve yönet</value>
+  </data>
+  <data name="AssetBatchImportSys" xml:space="preserve">
+    <value>Varlığı Toplu Karşıya Yükleme</value>
+  </data>
+  <data name="AssetBatchImportSysHelp" xml:space="preserve">
+    <value>Telekom Varlığı toplu listesini içeri aktar</value>
+  </data>
+  <data name="AssetManagementO" xml:space="preserve">
+    <value>Varlık Yönetimi</value>
+  </data>
+  <data name="AssetManagementOHelp" xml:space="preserve">
+    <value>Varlıkları ara, ekle ve değiştir.</value>
+  </data>
+  <data name="AssetTrackingDM" xml:space="preserve">
+    <value>Varlık Takibi</value>
+  </data>
+  <data name="AssetTrackingDMHelp" xml:space="preserve">
+    <value>Aygıt yönetimi altında varlık izleme sayfasına erişim sağla</value>
+  </data>
+  <data name="AssetUserTrackingO" xml:space="preserve">
+    <value>Varlık Kullanıcı Takibi</value>
+  </data>
+  <data name="AssetUserTrackingOHelp" xml:space="preserve">
+    <value>'Teslim Et' ve 'Teslim Al' sekmeleri de dahil kullanıcı izleme sayfasına erişim sağla</value>
+  </data>
+  <data name="AssignDeviceEnrollmentProgram" xml:space="preserve">
+    <value>Kayıt programı profillerini ata</value>
+  </data>
+  <data name="AssignDeviceEnrollmentProgramHelp" xml:space="preserve">
+    <value>DEP profillerini aygıtlara atamak için erişimi kontrol eder. Kayıt Durumu Sayfasına gidin</value>
+  </data>
+  <data name="AssignmentRulesAdd" xml:space="preserve">
+    <value>Atama Kuralları Ekleme</value>
+  </data>
+  <data name="AssignmentRulesAddHelp" xml:space="preserve">
+    <value>Aygıt atama kuralları ekleyin.</value>
+  </data>
+  <data name="AssignmentRulesDelete" xml:space="preserve">
+    <value>Atama Kurallarını Silme</value>
+  </data>
+  <data name="AssignmentRulesDeleteHelp" xml:space="preserve">
+    <value>Aygıt atama kurallarını silin.</value>
+  </data>
+  <data name="AssignmentRulesEdit" xml:space="preserve">
+    <value>Atama Kurallarını Düzenleme</value>
+  </data>
+  <data name="AssignmentRulesEditHelp" xml:space="preserve">
+    <value>Aygıt atama kurallarını düzenleyin.</value>
+  </data>
+  <data name="AssignmentSys" xml:space="preserve">
+    <value>Atama</value>
+  </data>
+  <data name="AssignmentSysHelp" xml:space="preserve">
+    <value>Telekom plan statiğini ve dinamik atamaları düzenle</value>
+  </data>
+  <data name="Assist" xml:space="preserve">
+    <value>Assist</value>
+  </data>
+  <data name="AssistFileManager" xml:space="preserve">
+    <value>Dosya Yöneticisi</value>
+  </data>
+  <data name="AssistFileManagerHelp" xml:space="preserve">
+    <value>Uzak aygıttaki dosyaların yönetilmesi için erişim sağlar</value>
+  </data>
+  <data name="AssistHelp" xml:space="preserve">
+    <value>Uzaktan yönetim rollerini yönetin</value>
+  </data>
+  <data name="AssistRegistryEditor" xml:space="preserve">
+    <value>Kayıt Defteri Düzenleyici</value>
+  </data>
+  <data name="AssistRegistryEditorHelp" xml:space="preserve">
+    <value>Windows mobil aygıtlarında kayıt defteri değişiklikleri yapılması için erişim sağlar</value>
+  </data>
+  <data name="AssistRemoteControl" xml:space="preserve">
+    <value>Uzaktan Denetim</value>
+  </data>
+  <data name="AssistRemoteControlHelp" xml:space="preserve">
+    <value>Uzak aygıtın görüntülenmesi ve denetlenmesi için erişim sağlar</value>
+  </data>
+  <data name="AssistRemoteShell" xml:space="preserve">
+    <value>Uzak Kabuk</value>
+  </data>
+  <data name="AssistRemoteShellHelp" xml:space="preserve">
+    <value>Uzak aygıtın komut satırı arayüzü aracılığıyla komut yürütülmesi için erişim sağlar</value>
+  </data>
+  <data name="AssistRemoteView" xml:space="preserve">
+    <value>Uzaktan Görünüm</value>
+  </data>
+  <data name="AssistRemoteViewHelp" xml:space="preserve">
+    <value>Uzak aygıtın yalnızca görüntülenmesi için erişim sağlar. Uzaktan Görüntüleme ve Denetim etkinse yalnızca görüntüleme nitelikli bir oturum başlatılır ancak kullanıcıya ekranının denetlenmesi için istek gönderilebilir</value>
+  </data>
+  <data name="AssistSessionCollaboration" xml:space="preserve">
+    <value>Oturum İş Birliği</value>
+  </data>
+  <data name="AssistSessionCollaborationHelp" xml:space="preserve">
+    <value>Konsol kullanıcılarının, bir Uzaktan Yardım oturumuna ek katılımcı davet edebilmesini sağlar</value>
+  </data>
+  <data name="AssistUnattendedAccess" xml:space="preserve">
+    <value>Katılımsız Erişim</value>
+  </data>
+  <data name="AssistUnattendedAccessHelp" xml:space="preserve">
+    <value>Katılımsız modda aygıta erişim sağlar</value>
+  </data>
+  <data name="AttachmentsDD" xml:space="preserve">
+    <value>Ekler</value>
+  </data>
+  <data name="AttachmentsDDHelp" xml:space="preserve">
+    <value>Aygıt detaylarında, ekleri aygıtlara ekle ve aygıtlardan kaldır</value>
+  </data>
+  <data name="AutoDiscoveryIns" xml:space="preserve">
+    <value>Otomatik Bulma</value>
+  </data>
+  <data name="AutoDiscoveryInsHelp" xml:space="preserve">
+    <value>Yükleme altında Otomatik Bulma sayfasına erişimi kontrol eder.</value>
+  </data>
+  <data name="AutoEnrollmentHelp" xml:space="preserve">
+    <value>Otomatik Kayıt</value>
+  </data>
+  <data name="AutomationHelp" xml:space="preserve">
+    <value>Bu Teknik Önizleme kaynağı, Hub'a Genel Bakış sayfası aracılığıyla Otomasyon platformumuza erişim sağlar</value>
+  </data>
+  <data name="AwcmDD" xml:space="preserve">
+    <value>AWCM</value>
+  </data>
+  <data name="AwcmDDHelp" xml:space="preserve">
+    <value>Aygıt detayları sayfasından AirWatch Cloud Manager bağlantısını başlat ve durdur</value>
+  </data>
+  <data name="AWProDeviceClearPasscode" xml:space="preserve">
+    <value>AW Pro Aygıt Temizleme Şifresi</value>
+  </data>
+  <data name="AWProDeviceClearPasscodeHelp" xml:space="preserve">
+    <value>AirWatch Pro'da Şifreyi/Açılış Parolasını temizleme erişimini denetler</value>
+  </data>
+  <data name="AWProDeviceSendMessage" xml:space="preserve">
+    <value>AW Pro Aygıt İleti Gönder</value>
+  </data>
+  <data name="AWProDeviceSendMessageHelp" xml:space="preserve">
+    <value>AW Pro'da ileti göndermeye erişimi kontrol eder</value>
+  </data>
+  <data name="AWProGenerateNewCertificate" xml:space="preserve">
+    <value>AW Pro Yeni Sertifika Oluştur</value>
+  </data>
+  <data name="AWProGenerateNewCertificateHelp" xml:space="preserve">
+    <value>Yeni sertifika oluşturmaya erişimi kontrol eder</value>
+  </data>
+  <data name="AwProResCategory" xml:space="preserve">
+    <value>AW Pro</value>
+  </data>
+  <data name="AwProResCategoryHelp" xml:space="preserve">
+    <value>AW Pro Konsoluna tam erişim sağlayın.</value>
+  </data>
+  <data name="BatchImportAccounts" xml:space="preserve">
+    <value>Toplu Olarak İçeri Aktar</value>
+  </data>
+  <data name="BatchImportAccountsHelp" xml:space="preserve">
+    <value>Yönetici hesaplarını toplu karşıya yükle</value>
+  </data>
+  <data name="BatchImportDM" xml:space="preserve">
+    <value>Toplu Olarak İçeri Aktar</value>
+  </data>
+  <data name="BatchImportDMHelp" xml:space="preserve">
+    <value>Aygıt profillerini toplu karşıya yükle</value>
+  </data>
+  <data name="BatchImportUG" xml:space="preserve">
+    <value>Toplu Olarak İçeri Aktar</value>
+  </data>
+  <data name="BatchImportUGHelp" xml:space="preserve">
+    <value>Kayıt kullanıcı gruplarını toplu karşıya yükle</value>
+  </data>
+  <data name="BatchImportUserAccount" xml:space="preserve">
+    <value>Toplu Olarak İçeri Aktar</value>
+  </data>
+  <data name="BatchImportUserAccountHelp" xml:space="preserve">
+    <value>Kayıt Kullanıcıları için toplu karşıya yüklemeye erişim sağla</value>
+  </data>
+  <data name="BatchSizeBySmartGroupHelp" xml:space="preserve">
+    <value>Dahili uygulama dağıtımının her bir grubuna dahil edilecek aygıt sayısını belirtir.</value>
+  </data>
+  <data name="BatchStatusAdminGeneral" xml:space="preserve">
+    <value>Toplu İşlem Durumu</value>
+  </data>
+  <data name="BatchStatusAdminGeneralHelp" xml:space="preserve">
+    <value>Yönetici Olan Kullanıcı toplu karşıya yükleme durumunu görüntüle</value>
+  </data>
+  <data name="BatchStatusUserGeneral" xml:space="preserve">
+    <value>Toplu İşlem Durumu</value>
+  </data>
+  <data name="BatchStatusUserGeneralHelp" xml:space="preserve">
+    <value>Toplu kayıt kullanıcı içeri aktarımlarının toplu iş durumuna erisin.</value>
+  </data>
+  <data name="BeforeArg" xml:space="preserve">
+    <value>{0} Öncesi</value>
+  </data>
+  <data name="BESResCategory" xml:space="preserve">
+    <value>BES</value>
+  </data>
+  <data name="BESResCategoryHelp" xml:space="preserve">
+    <value>Pano sayfalarında BES Kayıt simgesini etkinleştirir.</value>
+  </data>
+  <data name="BillingBi" xml:space="preserve">
+    <value>Ödeme</value>
+  </data>
+  <data name="BillingBiHelp" xml:space="preserve">
+    <value>Ödeme detayları sayfasını yönetin.</value>
+  </data>
+  <data name="BIOSManagement" xml:space="preserve">
+    <value>BIOS Yönetimi</value>
+  </data>
+  <data name="BIOSManagementHelp" xml:space="preserve">
+    <value>BIOS Yönetim kaynakları</value>
+  </data>
+  <data name="BooksAb" xml:space="preserve">
+    <value>Kitaplar</value>
+  </data>
+  <data name="BooksAbHelp" xml:space="preserve">
+    <value>Uygulamalar &amp; Kitaplar bölümü altında Kitaplar modülüne erişim sağla</value>
+  </data>
+  <data name="BoxerConfigReadWrite" xml:space="preserve">
+    <value>Boxer Uygulama Yapılandırması</value>
+  </data>
+  <data name="BoxerConfigReadWriteHelp" xml:space="preserve">
+    <value>Genel bir uygulama olarak yüklendiğinde Boxer ayarlarını yapılandırmak için</value>
+  </data>
+  <data name="BranchCacheSetup" xml:space="preserve">
+    <value>BranchCache Kurulumu</value>
+  </data>
+  <data name="BranchCacheSetupHelp" xml:space="preserve">
+    <value>Windows 10 için Workspace ONE'da yerel eşler arası uygulama dağıtımı işlevselliğini kurma ve yapılandırma ayarları</value>
+  </data>
+  <data name="BrandingSys" xml:space="preserve">
+    <value>Markalama</value>
+  </data>
+  <data name="BrandingSysHelp" xml:space="preserve">
+    <value>Genel seçeneği altında Markalama sayfasına erişimi kontrol eder</value>
+  </data>
+  <data name="BrowserDM" xml:space="preserve">
+    <value>Browser</value>
+  </data>
+  <data name="BrowserDMHelp" xml:space="preserve">
+    <value>Aygıt yönetimi içerisinde tarayıcı ilkelerini yapılandır.</value>
+  </data>
+  <data name="BulkActionUserAccounts" xml:space="preserve">
+    <value>Yığın Eylem</value>
+  </data>
+  <data name="BulkActionUserAccountsHelp" xml:space="preserve">
+    <value>Kullanıcı hesapları üzerinde Mesaj Gönderme gibi yığın eylemler gerçekleştir</value>
+  </data>
+  <data name="BulkImportCM" xml:space="preserve">
+    <value>Toplu Olarak İçeri Aktar</value>
+  </data>
+  <data name="BulkImportCMHelp" xml:space="preserve">
+    <value>Tüm içerik görünümü içerisinde içeriği toplu olarak içeri aktar</value>
+  </data>
+  <data name="BulkManagementAd" xml:space="preserve">
+    <value>Toplu Yönetim</value>
+  </data>
+  <data name="BulkManagementAdHelp" xml:space="preserve">
+    <value>Toplu yönetim ayarlarını görüntüle ve düzenle</value>
+  </data>
+  <data name="BulkManagementDM" xml:space="preserve">
+    <value>Toplu Yönetim</value>
+  </data>
+  <data name="BulkManagementDMHelp" xml:space="preserve">
+    <value>Aygıt liste görünümünden  aygıt üzerinde toplu eylemler gerçekleştir</value>
+  </data>
+  <data name="CatalogSet" xml:space="preserve">
+    <value>Katalog</value>
+  </data>
+  <data name="CatalogSetHelp" xml:space="preserve">
+    <value>Sistem ayarlarında uygulama katalog sayfalarına erişim izni verir</value>
+  </data>
+  <data name="CategoriesCM" xml:space="preserve">
+    <value>Kategoriler</value>
+  </data>
+  <data name="CategoriesCMHelp" xml:space="preserve">
+    <value>İçerik kategorilerini oluştur ve düzenle</value>
+  </data>
+  <data name="CDNSetupHelp" xml:space="preserve">
+    <value>CDN için Sistem Ayarı</value>
+  </data>
+  <data name="CertificateAuthoritiesApple" xml:space="preserve">
+    <value>Sertifika Yetkilileri</value>
+  </data>
+  <data name="CertificateAuthoritiesAppleHelp" xml:space="preserve">
+    <value>iOS altında Sertifika Yetkilileri sayfasına yapılan erişimi kontrol eder.</value>
+  </data>
+  <data name="CertificateAuthorityCM" xml:space="preserve">
+    <value>Sertifika Yetkilisi</value>
+  </data>
+  <data name="CertificateAuthorityCMHelp" xml:space="preserve">
+    <value>Sertifika Yetkilisine ve Sertifika Şablon bölümlerine erişim sağla.</value>
+  </data>
+  <data name="CertificateManagementDM" xml:space="preserve">
+    <value>Sertifika Yönetimi</value>
+  </data>
+  <data name="CertificateManagementDMHelp" xml:space="preserve">
+    <value>Aygıt yönetimi altında sertifikaları görüntüle ve yönet</value>
+  </data>
+  <data name="CertificatesDD" xml:space="preserve">
+    <value>Sertifikalar</value>
+  </data>
+  <data name="CertificatesDDHelp" xml:space="preserve">
+    <value>Aygıt detaylarında aygıt ile ilgili olan sertifikaları görüntüle</value>
+  </data>
+  <data name="CertificatesExpired" xml:space="preserve">
+    <value>Sertifikaların Kullanım Süresi Sona Erdi</value>
+  </data>
+  <data name="CertificatesRevoked" xml:space="preserve">
+    <value>Sertifikalar İptal Edildi</value>
+  </data>
+  <data name="ChangePasswordAdminAccounts" xml:space="preserve">
+    <value>Parolayı Değiştir</value>
+  </data>
+  <data name="ChangePasswordAdminAccountsHelp" xml:space="preserve">
+    <value>Yönetici parolalarını değiştir</value>
+  </data>
+  <data name="ChromebookSet" xml:space="preserve">
+    <value>ChromeBook</value>
+  </data>
+  <data name="ChromebookSetHelp" xml:space="preserve">
+    <value>ChromeBook seçeneği altında Aracı Ayarları sayfasına erişimi kontrol eder</value>
+  </data>
+  <data name="CloudContentPlatformHelp" xml:space="preserve">
+    <value>Bulut İçerik Hizmetlerini başlatacak UEM seçeneklerini etkinleştirmek için kaynak</value>
+  </data>
+  <data name="CollapsedAriaLabel" xml:space="preserve">
+    <value>daraltılmış</value>
+  </data>
+  <data name="CommaSeparatedEmailInfo" xml:space="preserve">
+    <value>Birden çok e-posta adresini ayırmak için virgül kullanın.</value>
+  </data>
+  <data name="ComplianceDD" xml:space="preserve">
+    <value>Uyumluluk</value>
+  </data>
+  <data name="ComplianceDDHelp" xml:space="preserve">
+    <value>Aygıt detaylarında uyumluluk kurallarını ve durumlarını görüntüle</value>
+  </data>
+  <data name="ComplianceDM" xml:space="preserve">
+    <value>Uyumluluk</value>
+  </data>
+  <data name="ComplianceDMHelp" xml:space="preserve">
+    <value>Aygıt yönetimi altında aygıt uyumluluk ilkelerini görüntüle ve yönet</value>
+  </data>
+  <data name="ComplianceHub" xml:space="preserve">
+    <value>Uyumluluk</value>
+  </data>
+  <data name="ComplianceHubHelp" xml:space="preserve">
+    <value>Aygıt uyumluluğu için raporlar oluştur</value>
+  </data>
+  <data name="CompliancePoliciesEM" xml:space="preserve">
+    <value>Uyumluluk İlkeleri</value>
+  </data>
+  <data name="CompliancePoliciesEMHelp" xml:space="preserve">
+    <value>E-Posta yönetim uyumluluk ilkelerini yönet</value>
+  </data>
+  <data name="ConditionalAccessIntegrations" xml:space="preserve">
+    <value>Koşullu Erişim Entegrasyonları</value>
+  </data>
+  <data name="ConditionalAccessIntegrationsHelp" xml:space="preserve">
+    <value>Koşullu erişim ilkelerini yapılandırmak amacıyla bir aygıtın uyumluluk durumunu üçüncü tarafla paylaşma erişimini kontrol eder</value>
+  </data>
+  <data name="ConditionsPPN" xml:space="preserve">
+    <value>Koşullar</value>
+  </data>
+  <data name="ConditionsPPNHelp" xml:space="preserve">
+    <value>Provizyon ilkeleri için provizyonlama şartlarını oluştur ve yönet</value>
+  </data>
+  <data name="ConsoleSecurityAd" xml:space="preserve">
+    <value>Konsol Güvenliği</value>
+  </data>
+  <data name="ConsoleSecurityAdHelp" xml:space="preserve">
+    <value>Konsol güvenlik sayfalarını görüntüle ve Global Organizasyon Grubu'ndan yönet</value>
+  </data>
+  <data name="ContentDashboard" xml:space="preserve">
+    <value>İçerik Panosu</value>
+  </data>
+  <data name="ContentDashboardHelp" xml:space="preserve">
+    <value>İçerik Pano sayfasını görüntülemek için erişimi kontrol eder. Menü\İçerik\Pano'ya gidin</value>
+  </data>
+  <data name="ContentDD" xml:space="preserve">
+    <value>İçerik</value>
+  </data>
+  <data name="ContentDDHelp" xml:space="preserve">
+    <value>Aygıt detaylarında bir aygıt için içeriğe erişim sağla ve içeriği yönet</value>
+  </data>
+  <data name="ContentDeliveryServiceHelp" xml:space="preserve">
+    <value>İçerik Teslim Hizmeti ayarlarına erişimi kontrol eder</value>
+  </data>
+  <data name="ContentHub" xml:space="preserve">
+    <value>İçerik</value>
+  </data>
+  <data name="ContentHubHelp" xml:space="preserve">
+    <value>Aygıt içeriği için raporlar oluştur</value>
+  </data>
+  <data name="ContentRightsManagementHelp" xml:space="preserve">
+    <value>Content için Azure Hak Yönetimi korumasını yapılandırma ile ilgili ayarlar.</value>
+  </data>
+  <data name="ContentViewerHelp" xml:space="preserve">
+    <value>İçerik Görüntüleyicisi (HTML5 Görüntüleyici) ayarlarına erişimi kontrol eder</value>
+  </data>
+  <data name="CreationPoliciesGr" xml:space="preserve">
+    <value>Oluşturma İlkeleri</value>
+  </data>
+  <data name="CreationPoliciesGrHelp" xml:space="preserve">
+    <value>Oluşturma ilkeleri uyarısını görüntüle ve yönet.</value>
+  </data>
+  <data name="CustomAttributeAssignmentRulesHelp" xml:space="preserve">
+    <value>Geçerli özel öznitelik atama kurallarını görüntüleyen liste görünümü ekranı</value>
+  </data>
+  <data name="CustomAttributesSet" xml:space="preserve">
+    <value>Özel Öznitelikler</value>
+  </data>
+  <data name="CustomAttributesSetHelp" xml:space="preserve">
+    <value>Sistem ayarlarında özel öznitelikleri görüntüle ve yönet</value>
+  </data>
+  <data name="CustomFieldsDM" xml:space="preserve">
+    <value>Özel Alanlar</value>
+  </data>
+  <data name="CustomFieldsDMHelp" xml:space="preserve">
+    <value>Aygıt kurulumu altında özel değişkenleri düzenle.</value>
+  </data>
+  <data name="CustomizationAd" xml:space="preserve">
+    <value>Özelleştirme</value>
+  </data>
+  <data name="CustomizationAdHelp" xml:space="preserve">
+    <value>Desteklenen tabloları özelleştirmek için gerekli olan izni ver</value>
+  </data>
+  <data name="CustomizationHelp" xml:space="preserve">
+    <value>Kullanıcı düzeyinde desteklenen filtrelerin özelleştirilmesine izin ver
+</value>
+  </data>
+  <data name="CustomMdmCommandHelp" xml:space="preserve">
+    <value>Komutun XML'sini yapıştırarak iOS, tvOS ve macOS'e komut gönderme özelliğini etkinleştiren denetimler</value>
+  </data>
+  <data name="DataPurgingD" xml:space="preserve">
+    <value>Veri Temizleme</value>
+  </data>
+  <data name="DataPurgingDHelp" xml:space="preserve">
+    <value>Veri Temizleme ayarlarını  değiştirmeye izin verir.</value>
+  </data>
+  <data name="DataSamplesAd" xml:space="preserve">
+    <value>Veri Örnekleri</value>
+  </data>
+  <data name="DataSamplesAdHelp" xml:space="preserve">
+    <value>Veritabanı Tablolarındaki aygıt örnekleri geçmişinin denetimini kontrol eder</value>
+  </data>
+  <data name="DataSecuritySec" xml:space="preserve">
+    <value>Veri Güvenliği</value>
+  </data>
+  <data name="DataSecuritySecHelp" xml:space="preserve">
+    <value>Veri Güvenliği ekranını görüntülemeye izin verir</value>
+  </data>
+  <data name="DeleteCartHelp" xml:space="preserve">
+    <value>Sepetlerin silinmesi, yöneticinin Paylaşılan Aygıtlar ile kullanılacak seri numarası listesini kaldırmasına izin verir.</value>
+  </data>
+  <data name="DeleteCustomReportSubscriptionHelp" xml:space="preserve">
+    <value>Özel Rapor Aboneliğini silmek için erişimi kontrol eder. Hub\Raporlar ve Analizler\Özel Raporlar\Abonelikler konumuna gidin</value>
+  </data>
+  <data name="DeleteDeviceDD" xml:space="preserve">
+    <value>Aygıtı Sil</value>
+  </data>
+  <data name="DeleteDeviceDDHelp" xml:space="preserve">
+    <value>Aygıt detayları sayfasından aygıt kayıtlarını sil</value>
+  </data>
+  <data name="DeleteFileServerConfiguration" xml:space="preserve">
+    <value>Dosya Sunucusu Yapılandırmasını Sil</value>
+  </data>
+  <data name="DeleteFileServerConfigurationHelp" xml:space="preserve">
+    <value>Kullanıcıya, dosya sunucusu kılavuzunu ve ayrıntılarını silme izni verir</value>
+  </data>
+  <data name="DeleteNoteHelp" xml:space="preserve">
+    <value>Notu silmeye izin verir</value>
+  </data>
+  <data name="DeleteTagHelp" xml:space="preserve">
+    <value>Etiketi silmeye izin verir</value>
+  </data>
+  <data name="DeleteUnmanagedEM" xml:space="preserve">
+    <value>Yönetilmeyeni Sil</value>
+  </data>
+  <data name="DeleteUnmanagedEMHelp" xml:space="preserve">
+    <value>E-posta Yönetimi Panosu'ndan yönetilmeyen aygıtları silin.</value>
+  </data>
+  <data name="DeleteWindowsTemplateHelp" xml:space="preserve">
+    <value>Yöneticinin, Console panosunda Windows Şablonunu Silme ayarlarını yapılandırmasına izin verir</value>
+  </data>
+  <data name="DesignateRecipients" xml:space="preserve">
+    <value>ALICILARI BELİRLEME</value>
+  </data>
+  <data name="DetailsPM" xml:space="preserve">
+    <value>Ayrıntılar</value>
+  </data>
+  <data name="DetailsPMHelp" xml:space="preserve">
+    <value>Yazıcı ayrıntıları sayfalarını görüntüle</value>
+  </data>
+  <data name="DeviceBulkManagementRebootDeviceHelp" xml:space="preserve">
+    <value>Kullanıcıya aygıtları toplu halde silme izni verir</value>
+  </data>
+  <data name="DeviceDetailsHub" xml:space="preserve">
+    <value>Aygıt Detayları</value>
+  </data>
+  <data name="DeviceDetailsHubHelp" xml:space="preserve">
+    <value>Aygıt detayları için raporlar oluştur</value>
+  </data>
+  <data name="DeviceDetailsQueryHealthAttestationHelp" xml:space="preserve">
+    <value>İstek üzerine Sistem Durumu Kanıtlama Sertifikası blobunu sorgula</value>
+  </data>
+  <data name="DeviceDetailsQueryOSUpdates" xml:space="preserve">
+    <value>Aygıt Detayları Sorgulaması İşletim Sistemi Güncellemeleri</value>
+  </data>
+  <data name="DeviceDetailsQueryOSUpdatesHelp" xml:space="preserve">
+    <value>Aygıt detayları sayfasındaki aygıttan alınan işletim sistemi güncellemeleri bilgisi sorgulamasına erişimi kontrol eder</value>
+  </data>
+  <data name="DeviceEnterpriseReset" xml:space="preserve">
+    <value>Şirket Sıfırlaması</value>
+  </data>
+  <data name="DeviceEnterpriseResetHelp" xml:space="preserve">
+    <value>AirWatch kaydını ve diğer kurumsal verileri korurken, bir aygıtı fabrika ayarlarına döndürme izni verir</value>
+  </data>
+  <data name="DeviceGroupsDM" xml:space="preserve">
+    <value>Aygıt Grupları</value>
+  </data>
+  <data name="DeviceGroupsDMHelp" xml:space="preserve">
+    <value>Aygıt yönetimi içerisinde aygıt gruplarını oluştur ve yönet.</value>
+  </data>
+  <data name="DeviceGroupsSet" xml:space="preserve">
+    <value>Aygıt Grupları</value>
+  </data>
+  <data name="DeviceGroupsSetHelp" xml:space="preserve">
+    <value>Sistem ayarlarında aygıt gruplarına erişimi kontrol eder</value>
+  </data>
+  <data name="DeviceInventoryHub" xml:space="preserve">
+    <value>Aygıt Stoğu</value>
+  </data>
+  <data name="DeviceInventoryHubHelp" xml:space="preserve">
+    <value>Aygıt stoğu için raporlar oluştur</value>
+  </data>
+  <data name="DeviceLimitRestrictionEdit" xml:space="preserve">
+    <value>Aygıt Sınırı Kısıtlamasını Düzenle</value>
+  </data>
+  <data name="DeviceLimitRestrictionEditHelp" xml:space="preserve">
+    <value>Ayarlar / Aygıtlar ve Kullanıcılar / Genel / Kayıt/ Kısıtlama altında aygıt sınırını değiştirme / okuma izni verir</value>
+  </data>
+  <data name="DevicePM" xml:space="preserve">
+    <value>Aygıt</value>
+  </data>
+  <data name="DevicePMHelp" xml:space="preserve">
+    <value>Yazıcı  aygıtı sayfasına erişimi kontrol eder.</value>
+  </data>
+  <data name="DevicesHub" xml:space="preserve">
+    <value>Aygıtlar</value>
+  </data>
+  <data name="DevicesHubHelp" xml:space="preserve">
+    <value>Aygıt gruplama ve ölçüm için raporlar oluştur</value>
+  </data>
+  <data name="DevicesRESTMdm" xml:space="preserve">
+    <value>Aygıtlar</value>
+  </data>
+  <data name="DevicesRESTMdmHelp" xml:space="preserve">
+    <value>Aygıt yönetimi için REST API'leri</value>
+  </data>
+  <data name="DeviceWipeDD" xml:space="preserve">
+    <value>Aygıtı Fabrika Ayarlarına Döndürme</value>
+  </data>
+  <data name="DeviceWipeDDHelp" xml:space="preserve">
+    <value>Aygıtı fabrika ayarlarına döndürerek aygıt detaylarından aygıt içeriğini uzaktan sil</value>
+  </data>
+  <data name="DeviceWipeHelp" xml:space="preserve">
+    <value>Aygıt içeriğini silmek için gereken erişimi kontrol eder</value>
+  </data>
+  <data name="DeviceWipesSet" xml:space="preserve">
+    <value>Aygıtı Fabrika Ayarlarına Döndürmeler</value>
+  </data>
+  <data name="DeviceWipesSetHelp" xml:space="preserve">
+    <value>Sistem ayarları seçeneğinde, Aygıt Yaşam Döngüsü Yönetimine erişimi kontrol eder</value>
+  </data>
+  <data name="DiagnosticsAd" xml:space="preserve">
+    <value>Tanılama</value>
+  </data>
+  <data name="DiagnosticsAdHelp" xml:space="preserve">
+    <value>Sistem ayarlarından tanılama ayarlarını yönet.</value>
+  </data>
+  <data name="DisableActivationLockBypassCodeHelp" xml:space="preserve">
+    <value>Yönetici olan kullanıcının, bir iOS aygıtında etkinleştirme kilidi atlama kodunu devre dışı bırakmasına olanak tanır. Aygıt/Ayrıntılar/Özet veya Aygıt/Liste konumuna gidin, bir aygıt seçin ve Diğer'e tıklayın.</value>
+  </data>
+  <data name="DisableActivationLockBypassDD" xml:space="preserve">
+    <value>Etkinleştirme Kilidini Atlamayı Devre Dışı Bırak</value>
+  </data>
+  <data name="DisableActivationLockBypassDDHelp" xml:space="preserve">
+    <value>Bir iOS aygıtında etkinleştirme kilidi atlama kodunu devre dışı bırak</value>
+  </data>
+  <data name="DisplayVideoImportHelp" xml:space="preserve">
+    <value>Wistia'yı kullanarak AirWatch'ta video içe aktarma</value>
+  </data>
+  <data name="DisplayVideoViewHelp" xml:space="preserve">
+    <value>Videoların listesini görüntüle</value>
+  </data>
+  <data name="DistributionDM" xml:space="preserve">
+    <value>Dağıtım</value>
+  </data>
+  <data name="DistributionDMHelp" xml:space="preserve">
+    <value>Konum düzenleme ve konum detayı sayfalarından, dağıtım sunucu yoluna erişim sağla.</value>
+  </data>
+  <data name="DomainJoinConfigEdit" xml:space="preserve">
+    <value>Düzenle</value>
+  </data>
+  <data name="DomainJoinConfigEditHelp" xml:space="preserve">
+    <value>Etki Alanına Katılım yapılandırmasını Ekle/Düzenle/Ata/Sil'e erişimi kontrol eder.</value>
+  </data>
+  <data name="DownloadContentCM" xml:space="preserve">
+    <value>İçeriği İndir</value>
+  </data>
+  <data name="DownloadContentCMHelp" xml:space="preserve">
+    <value>Tüm İçerik Görünümü içerisinde içeriği indir</value>
+  </data>
+  <data name="DownloadLinuxPullServiceInstallerHelp" xml:space="preserve">
+    <value>Linux Servis Yükleyicisi İsteğini indirme izni verir</value>
+  </data>
+  <data name="DownloadWindowsPullServiceInstallerHelp" xml:space="preserve">
+    <value>Windows Servis Yükleyicisi İsteğini indirme izni verir</value>
+  </data>
+  <data name="DropshipProvisioningEdit" xml:space="preserve">
+    <value>Dropship provizyonlama ayarlarını düzenler</value>
+  </data>
+  <data name="DropshipProvisioningHelp" xml:space="preserve">
+    <value>Dropship provizyonlama özelliğini etkinleştirmek için erişimi kontrol eder</value>
+  </data>
+  <data name="DxModeEM" xml:space="preserve">
+    <value>Dx Modu</value>
+  </data>
+  <data name="DxModeEMHelp" xml:space="preserve">
+    <value>Aygıtta sorun giderme için e-posta yönetim panosundan DxMode'u etkinleştir ve devre dışı bırak</value>
+  </data>
+  <data name="EasIntegrationEm" xml:space="preserve">
+    <value>EAS Entegrasyonu</value>
+  </data>
+  <data name="EasIntegrationEmHelp" xml:space="preserve">
+    <value>Genel seçeneği altında Mobil E-posta Ağ Geçidine erişimi kontrol eder.</value>
+  </data>
+  <data name="EditAdminGroupHelp" xml:space="preserve">
+    <value>Bir yönetici grubu düzenleme izni verir 
+</value>
+  </data>
+  <data name="EditDD" xml:space="preserve">
+    <value>Düzenle</value>
+  </data>
+  <data name="EditDDHelp" xml:space="preserve">
+    <value>Kolay ad, varlık numarası, vb. gibi aygıt bilgilerini düzenle</value>
+  </data>
+  <data name="EditFileServerConfiguration" xml:space="preserve">
+    <value>Dosya Sunucusu Yapılandırmasını Düzenle</value>
+  </data>
+  <data name="EditFileServerConfigurationHelp" xml:space="preserve">
+    <value>Kullanıcıya, dosya sunucusu kılavuzunu ve ayrıntılarını düzenleme izni verir </value>
+  </data>
+  <data name="EditNoteHelp" xml:space="preserve">
+    <value>Bir notu düzenlemek için izin verir</value>
+  </data>
+  <data name="EditTagHelp" xml:space="preserve">
+    <value>Etiketi düzenlemek için izin verir</value>
+  </data>
+  <data name="EditTypeGr" xml:space="preserve">
+    <value>Türü Düzenle</value>
+  </data>
+  <data name="EditUserAccounts" xml:space="preserve">
+    <value>Düzenle</value>
+  </data>
+  <data name="EditUserAccountsHelp" xml:space="preserve">
+    <value>Kayıt kullanıcı hesaplarını düzenle</value>
+  </data>
+  <data name="EmailAddressAlreadyExists" xml:space="preserve">
+    <value>E-posta Adresi Zaten Mevcut</value>
+  </data>
+  <data name="EmailDM" xml:space="preserve">
+    <value>E-posta</value>
+  </data>
+  <data name="EmailDMHelp" xml:space="preserve">
+    <value>ActiveSync isteklerini engelle ve izin ver.</value>
+  </data>
+  <data name="EmailManagementHub" xml:space="preserve">
+    <value>E-posta Yönetimi</value>
+  </data>
+  <data name="EmailManagementHubHelp" xml:space="preserve">
+    <value>E-posta yönetimi için raporlar oluşturun.</value>
+  </data>
+  <data name="EMDashboardMigrateDevice" xml:space="preserve">
+    <value>E-posta Yönetim Panosu Aygıtı Geçirme</value>
+  </data>
+  <data name="EMDashboardMigrateDeviceHelp" xml:space="preserve">
+    <value>Bir veya daha fazla aygıtın MEM yapılandırmaları arasında taşınması için erişimi kontrol eder</value>
+  </data>
+  <data name="EnableDigitalExperienceTelemetry" xml:space="preserve">
+    <value>Dijital Deneyim Telemetrisini Etkinleştir</value>
+  </data>
+  <data name="EnableDigitalExperienceTelemetryHelp" xml:space="preserve">
+    <value>Dijital deneyim telemetrisinin Workspace ONE Intelligence'ta toplanmasını ve bu noktaya aktarılmasını etkinleştirin.</value>
+  </data>
+  <data name="EnableDisableAd" xml:space="preserve">
+    <value>Etkinleştir/Devre Dışı Bırak</value>
+  </data>
+  <data name="EnableDisableAdHelp" xml:space="preserve">
+    <value>Memcache'ı etkinleştir ve devre dışı bırak.</value>
+  </data>
+  <data name="EnableSystemSettingsAuditHelp" xml:space="preserve">
+    <value>Sistem Kodları aracılığıyla Ayarlar Denetlemesini etkinleştirir/devre dışı bırakır.
+</value>
+  </data>
+  <data name="EncryptionKeyManagementHelp" xml:space="preserve">
+    <value>Şifreleme Anahtarı Yönetimi uygulamak için izin verir. Sistem \ Güvenlik \ Şifreleme Anahtarı Yönetimi konumuna gidin</value>
+  </data>
+  <data name="EnrollmentDM" xml:space="preserve">
+    <value>Kayıt</value>
+  </data>
+  <data name="EnrollmentDMHelp" xml:space="preserve">
+    <value>Kayıt kısıtlamalarını değiştir.</value>
+  </data>
+  <data name="EnrollmentProgramSet" xml:space="preserve">
+    <value>Kayıt Programı</value>
+  </data>
+  <data name="EnrollmentProgramSetHelp" xml:space="preserve">
+    <value>Aygıt Kayıt Programına erişimi kontrol eder</value>
+  </data>
+  <data name="EnrollmentProgramUserGen" xml:space="preserve">
+    <value>Kayıt Programı</value>
+  </data>
+  <data name="EnrollmentProgramUserGenHelp" xml:space="preserve">
+    <value>Aygıtlar için Aygıt Kayıt Programına Erişim Sağla</value>
+  </data>
+  <data name="EnrollmentSet" xml:space="preserve">
+    <value>Kayıt</value>
+  </data>
+  <data name="EnrollmentSetHelp" xml:space="preserve">
+    <value>Genel seçeneği altında Kayıt sayfasına erişimi kontrol eder</value>
+  </data>
+  <data name="EnrollOffline" xml:space="preserve">
+    <value>Çevrimdışı Kaydet</value>
+  </data>
+  <data name="EnrollOfflineHelp" xml:space="preserve">
+    <value>Bu kaynak, belirtilen role sahip yöneticilerin kayıtlı aygıtları çevrimdışı olarak kaydetmesine izin verir</value>
+  </data>
+  <data name="EnterAdminModeHelp" xml:space="preserve">
+    <value>Launcher için Yönetici Moduna Gir komutuna erişimi kontrol eder</value>
+  </data>
+  <data name="EnterEmailAddressToDesignateRecipients" xml:space="preserve">
+    <value>Alıcıları atamak için e-posta adreslerini girin</value>
+  </data>
+  <data name="EnterpriseIntegrationSys" xml:space="preserve">
+    <value>Kurumsal Entegrasyon</value>
+  </data>
+  <data name="EnterpriseIntegrationSysHelp" xml:space="preserve">
+    <value>Kurumsal Entegrasyona erişimi kontrol eder</value>
+  </data>
+  <data name="EnterpriseResourceAddHelp" xml:space="preserve">
+    <value>Yeni Kurumsal Kaynak eklenmesine izin verir.</value>
+  </data>
+  <data name="EnterpriseResourceHelp" xml:space="preserve">
+    <value>Kurumsal Kaynak sayfasına erişim Sağlar.</value>
+  </data>
+  <data name="EnterpriseWipeDD" xml:space="preserve">
+    <value>Şirket Verilerini Sil</value>
+  </data>
+  <data name="EnterpriseWipeDDHelp" xml:space="preserve">
+    <value>Aygıt detayları sayfasında, tüm kurumsal veri ve ayarları kaldırarak bir aygıt kaydını silmeye izin verir</value>
+  </data>
+  <data name="EnterpriseWipeDM" xml:space="preserve">
+    <value>Şirket Verilerini Sil</value>
+  </data>
+  <data name="EnterpriseWipeDMHelp" xml:space="preserve">
+    <value>Tüm kurumsal veri ve ayarlarını kaldırarak bir aygıt kaydını silmeye izin verir</value>
+  </data>
+  <data name="EquipmentEq" xml:space="preserve">
+    <value>Ekipman</value>
+  </data>
+  <data name="EquipmentEqHelp" xml:space="preserve">
+    <value>Ekipman yönetimi. Menü\Ekipman'a gidin.</value>
+  </data>
+  <data name="ESignature" xml:space="preserve">
+    <value>Elektronik İmza</value>
+  </data>
+  <data name="ESignatureHelp" xml:space="preserve">
+    <value>İçerik altında elektronik imzalar için ayarlara ulaşmak üzere Ayarlar\İçerik\Gelişmiş\Elektronik İmza'ya gidin.</value>
+  </data>
+  <data name="ESignatures" xml:space="preserve">
+    <value>Elektronik İmzalar</value>
+  </data>
+  <data name="EulDD" xml:space="preserve">
+    <value>EULA</value>
+  </data>
+  <data name="EulDDHelp" xml:space="preserve">
+    <value>Aygıt detaylarında, bir aygıt için geçmişteki ve şimdiki kullanım şartlarını görüntüle</value>
+  </data>
+  <data name="EventLogAd" xml:space="preserve">
+    <value>Etkinlik Günlüğü</value>
+  </data>
+  <data name="EventLogAdHelp" xml:space="preserve">
+    <value>Konsol etkinlik günlüklerine erişimi kontrol eder</value>
+  </data>
+  <data name="EventLogHelp" xml:space="preserve">
+    <value>Etkinlik Günlüklerini okumaya erişimi kontrol eder. 
+</value>
+  </data>
+  <data name="EventsPM" xml:space="preserve">
+    <value>Olaylar</value>
+  </data>
+  <data name="EventsPMHelp" xml:space="preserve">
+    <value>Yazıcı etkinlik günlüğü sayfasına erişimi kontrol eder.</value>
+  </data>
+  <data name="ExitAdminModeHelp" xml:space="preserve">
+    <value>Yönetici Modundan Çık komutuna erişimi kontrol eder</value>
+  </data>
+  <data name="ExitAirWatchLauncherHelp" xml:space="preserve">
+    <value>Launcher'dan Çık komutuna erişimi kontrol eder</value>
+  </data>
+  <data name="ExpandedAriaLabel" xml:space="preserve">
+    <value>genişletilmiş</value>
+  </data>
+  <data name="ExpireAllUsersGr" xml:space="preserve">
+    <value>Tüm Kullanıcıları Sonlandır</value>
+  </data>
+  <data name="ExpireAllUsersGrHelp" xml:space="preserve">
+    <value>"Tüm kullanıcı parolalarını sonladır" düğmesini etkinleştirir.</value>
+  </data>
+  <data name="ExportUG" xml:space="preserve">
+    <value>Dışarı Aktar</value>
+  </data>
+  <data name="ExportUGHelp" xml:space="preserve">
+    <value>Kullanıcı gruplarını dışarı aktar</value>
+  </data>
+  <data name="ExportUserAccounts" xml:space="preserve">
+    <value>Dışarı Aktar</value>
+  </data>
+  <data name="ExportUserAccountsHelp" xml:space="preserve">
+    <value>Kullanıcı hesaplarını dışarı aktar</value>
+  </data>
+  <data name="ExportUserCategories" xml:space="preserve">
+    <value>Dışarı Aktar</value>
+  </data>
+  <data name="ExportUserCategoriesHelp" xml:space="preserve">
+    <value>Kayıt kullanıcı hesap kategorilerini dışarı aktar</value>
+  </data>
+  <data name="ExportUserRoles" xml:space="preserve">
+    <value>Dışarı Aktar</value>
+  </data>
+  <data name="ExportUserRolesHelp" xml:space="preserve">
+    <value>Kullanıcı rollerini dışarı aktar</value>
+  </data>
+  <data name="FeatureFlagEdit" xml:space="preserve">
+    <value>Özellik Bayrağını Düzenle</value>
+  </data>
+  <data name="FeatureFlagEditHelp" xml:space="preserve">
+    <value>Özellik bayraklarını düzenleme ve güncelleme erişimini kontrol eder.</value>
+  </data>
+  <data name="FeatureFlagRead" xml:space="preserve">
+    <value>Özellik Bayrağını Oku</value>
+  </data>
+  <data name="FeatureFlagReadHelp" xml:space="preserve">
+    <value>Özellik bayrağının durumunu okuma özelliğini kontrol eder.</value>
+  </data>
+  <data name="FileActionsPPN" xml:space="preserve">
+    <value>Dosya Eylemleri</value>
+  </data>
+  <data name="FileActionsPPNHelp" xml:space="preserve">
+    <value>Provizyonlama ilkeleri için dosya eylemleri oluştur ve yönet</value>
+  </data>
+  <data name="FileEncryptionStats" xml:space="preserve">
+    <value>Dosya Şifrelemesi İstatistikleri</value>
+  </data>
+  <data name="FileEncryptionStatsHelp" xml:space="preserve">
+    <value>Kiracı Depolama Ayarları: TenantStorage.FileEncryptionStats</value>
+  </data>
+  <data name="FileManagerHelp" xml:space="preserve">
+    <value>WinMo aygıtlarının Dosyalarına uzaktan erişmek için izin verir
+</value>
+  </data>
+  <data name="FilepathIns" xml:space="preserve">
+    <value>Dosya Yolu</value>
+  </data>
+  <data name="FilepathInsHelp" xml:space="preserve">
+    <value>Gelişmiş altında dosya eşitleme sayfasına erişimi kontrol eder.</value>
+  </data>
+  <data name="FilesPM" xml:space="preserve">
+    <value>Dosyalar</value>
+  </data>
+  <data name="FilesPMHelp" xml:space="preserve">
+    <value>Yazıcı dosyaları sayfasına erişimi kontrol eder.</value>
+  </data>
+  <data name="FilesPr" xml:space="preserve">
+    <value>Dosyalar</value>
+  </data>
+  <data name="FilesPrHelp" xml:space="preserve">
+    <value>Yazıcı dosyalarını yönet</value>
+  </data>
+  <data name="FindDeviceDD" xml:space="preserve">
+    <value>Aygıtı Bul</value>
+  </data>
+  <data name="FindDeviceDDHelp" xml:space="preserve">
+    <value>Kullanıcının aygıtın yerini belirleyebilmesi için, sesli uyarıyı başlatmak üzere aygıtın durumunu ayarlayın. Aygıt detaylarından erişilebilir</value>
+  </data>
+  <data name="FindDeviceHelp" xml:space="preserve">
+    <value>Kullanıcının aygıtın yerini belirleyebilmesi için, sesli uyarıyı başlatmak üzere, aygıt durumunun ayarlanmasına erişimi kontrol eder. Aygıt Detayları HTML5 ekranında mevcuttur.</value>
+  </data>
+  <data name="FriendlyNameSet" xml:space="preserve">
+    <value>Kolay Ad</value>
+  </data>
+  <data name="FriendlyNameSetHelp" xml:space="preserve">
+    <value>Genel seçeneği altında Kolay Ad sayfasına erişimi kontrol eder</value>
+  </data>
+  <data name="GatewayStatusEm" xml:space="preserve">
+    <value>Ağ Geçidi Durumu</value>
+  </data>
+  <data name="GatewayStatusEmHelp" xml:space="preserve">
+    <value>E-posta Ağ Geçidi Durum Ayarlarını Kontrol Eder</value>
+  </data>
+  <data name="GeneralDD" xml:space="preserve">
+    <value>Genel</value>
+  </data>
+  <data name="GeneralDDHelp" xml:space="preserve">
+    <value>Aygıt detaylarının çeşitli temel özelliklerini denetle</value>
+  </data>
+  <data name="GeneralHub" xml:space="preserve">
+    <value>Genel</value>
+  </data>
+  <data name="GeneralHubHelp" xml:space="preserve">
+    <value>Raporlar modülüne erişim sağla</value>
+  </data>
+  <data name="GeneralPM" xml:space="preserve">
+    <value>Genel</value>
+  </data>
+  <data name="GeneralPMHelp" xml:space="preserve">
+    <value>Genel yazıcı sayfasına erişimi kontrol eder.</value>
+  </data>
+  <data name="GeneralSettingsEm" xml:space="preserve">
+    <value>Genel Ayarlar</value>
+  </data>
+  <data name="GeneralSettingsEmHelp" xml:space="preserve">
+    <value>E-posta Genel Ayarlarını kontrol eder.</value>
+  </data>
+  <data name="GeneralSOaP" xml:space="preserve">
+    <value>Genel</value>
+  </data>
+  <data name="GeneralSOaPHelp" xml:space="preserve">
+    <value>Silme komutları dışında tüm AirWatch hizmetleri API'lerine erişim sağla</value>
+  </data>
+  <data name="GeneralSys" xml:space="preserve">
+    <value>Genel</value>
+  </data>
+  <data name="GeneralSysHelp" xml:space="preserve">
+    <value>Sistem seçeneği altında Genel sayfasına erişimi kontrol eder</value>
+  </data>
+  <data name="GeofencingAreaDM" xml:space="preserve">
+    <value>Coğrafi Sınırlama Alanı</value>
+  </data>
+  <data name="GeofencingAreaDMHelp" xml:space="preserve">
+    <value>Profiller için coğrafi sınırlama ayarlarını yönet</value>
+  </data>
+  <data name="GeofencingHelp" xml:space="preserve">
+    <value>Coğrafi sınırlama ayarlarının Görüntülenmesine/Düzenlenmesine izin verir. 
+</value>
+  </data>
+  <data name="GeofencingSet" xml:space="preserve">
+    <value>Coğrafi Sınırlama</value>
+  </data>
+  <data name="GeofencingSetHelp" xml:space="preserve">
+    <value>Coğrafi sınırlama ayarlarının Görüntülenmesine/Düzenlenmesine izin verir.</value>
+  </data>
+  <data name="GettingStartedApplicationHelp" xml:space="preserve">
+    <value>Mobil Uygulama Yönetimi için Başlarken takibini kontrol eder</value>
+  </data>
+  <data name="GettingStartedSys" xml:space="preserve">
+    <value>İlk Yapılandırma</value>
+  </data>
+  <data name="GettingStartedSysHelp" xml:space="preserve">
+    <value>Başlangıç kılavuzunu görüntülemek için gerekli olan izni verir</value>
+  </data>
+  <data name="GooglePlayIntegrationAn" xml:space="preserve">
+    <value>Google Play Entegrasyonu</value>
+  </data>
+  <data name="GooglePlayIntegrationAnHelp" xml:space="preserve">
+    <value>Android Market entegrasyonunu görüntüleme ve düzenleme izni ver</value>
+  </data>
+  <data name="GroupsRESTSystem" xml:space="preserve">
+    <value>Gruplar</value>
+  </data>
+  <data name="GroupsRESTSystemHelp" xml:space="preserve">
+    <value>Grup yönetimi için REST API'leri</value>
+  </data>
+  <data name="GSuiteRotatePasswordAction" xml:space="preserve">
+    <value>G Suite Parolası Döndürme</value>
+  </data>
+  <data name="GSuiteRotatePasswordActionHelp" xml:space="preserve">
+    <value>G Suite temel parolalarını ve e-posta profillerini döndürme olanağı.</value>
+  </data>
+  <data name="HeroCards" xml:space="preserve">
+    <value>Mobile Flows</value>
+  </data>
+  <data name="HeroCardsHelp" xml:space="preserve">
+    <value>Mobile Flows arka ucu ve hizmetleri için Yapılandırma Arabirimi</value>
+  </data>
+  <data name="HorizonWorkspaceSettings" xml:space="preserve">
+    <value>Horizon Workspace Ayarları</value>
+  </data>
+  <data name="HorizonWorkspaceSettingsHelp" xml:space="preserve">
+    <value>Horizon Workspace ayarlarını görüntülemek ve  düzenlemek için gereken erişimi kontrol eder. Gezinti yolu Ayarlar\Uygulamalar\Uygulama Entegrasyonu\Horizon Workspace'dir.</value>
+  </data>
+  <data name="HyperLinkDeleteAd" xml:space="preserve">
+    <value>Köprü Sil</value>
+  </data>
+  <data name="HyperLinkDeleteAdHelp" xml:space="preserve">
+    <value>Aygıt detayları sayfasından köprü eklerinin kaldırılması için izin verir</value>
+  </data>
+  <data name="InProductSupport" xml:space="preserve">
+    <value>Ürün İçi Destek</value>
+  </data>
+  <data name="InProductSupportHelp" xml:space="preserve">
+    <value>Yöneticilerin belge arayabildiği ve UEM üzerinden doğrudan yardım alabileceği ürün içi destek aracına erişim.</value>
+  </data>
+  <data name="InstallationAdvancedIns" xml:space="preserve">
+    <value>Gelişmiş Kurulum</value>
+  </data>
+  <data name="InstallationAdvancedInsHelp" xml:space="preserve">
+    <value>Kurulum altında gelişmiş sayfasına yapılan erişimi kontrol eder.</value>
+  </data>
+  <data name="InstallationIns" xml:space="preserve">
+    <value>Yükleme</value>
+  </data>
+  <data name="InstallationInsHelp" xml:space="preserve">
+    <value>Kurulum sayfasına erişimi kontrol eder.</value>
+  </data>
+  <data name="InstallFontsApple" xml:space="preserve">
+    <value>Yazı Tiplerini Yükle</value>
+  </data>
+  <data name="InstallFontsAppleHelp" xml:space="preserve">
+    <value>Ayarlar seçeneğinde, Yazı Tipleri bölümünü yüklemeyi etkinleştirir</value>
+  </data>
+  <data name="InstallIntelligentHub" xml:space="preserve">
+    <value>Intelligent Hub'ı Yükle</value>
+  </data>
+  <data name="InstallIntelligentHubHelp" xml:space="preserve">
+    <value>Intelligent Hub'ı kayıtlı bir aygıta uzaktan kurmak için erişim sağlar</value>
+  </data>
+  <data name="InsufficientResourceToSaveAdmin" xml:space="preserve">
+    <value>Kaydedilemiyor. Yönetici hesabınız bu kaydı değiştirmek için yeterli izne sahip değil.</value>
+  </data>
+  <data name="Intelligence" xml:space="preserve">
+    <value>Intelligence</value>
+  </data>
+  <data name="IntelligenceHelp" xml:space="preserve">
+    <value>Intelligence sayfasına erişim.</value>
+  </data>
+  <data name="InternalAppsAb" xml:space="preserve">
+    <value>Dahili Uygulamalar</value>
+  </data>
+  <data name="InternalAppsAbHelp" xml:space="preserve">
+    <value>Dahili olarak geliştirilmiş uygulamaları karşıya yükle ve yönet</value>
+  </data>
+  <data name="LanguageManagementAd" xml:space="preserve">
+    <value>Dil Yönetimi</value>
+  </data>
+  <data name="LanguageManagementAdHelp" xml:space="preserve">
+    <value>Dil Yönetimi için menü öğesini görüntüle ve Yerelleştirme Düzenleyicisine, Dil Paketini etkinleştirme sayfasına erişim sağla</value>
+  </data>
+  <data name="LearnMoreAccess" xml:space="preserve">
+    <value>Daha Fazla Bilgi Edinin Erişimi</value>
+  </data>
+  <data name="LearnMoreAccessContact" xml:space="preserve">
+    <value>Daha Fazla Bilgi Edinin Kişi Erişimi</value>
+  </data>
+  <data name="LearnMoreAccessContactHelp" xml:space="preserve">
+    <value>Bilgi ve Yükselt bölümü için Kişi bölümüne erişimi kontrol eder</value>
+  </data>
+  <data name="LearnMoreAccessHelp" xml:space="preserve">
+    <value>Bilgi ve Yükselt bölümü için erişimi kontrol eder</value>
+  </data>
+  <data name="LegacyAndroidMigration" xml:space="preserve">
+    <value>Eski Android Geçişi</value>
+  </data>
+  <data name="LegacyAndroidMigrationHelp" xml:space="preserve">
+    <value>Eski Android aygıtlarını İş Profili olan Android Enterprise'a geçirmek için kullanılan Eski Android Geçişi sayfasına erişimi kontrol eder</value>
+  </data>
+  <data name="LicensesAd" xml:space="preserve">
+    <value>Lisanslar</value>
+  </data>
+  <data name="LicensesAdHelp" xml:space="preserve">
+    <value>Lisansları değiştirme izni verir.</value>
+  </data>
+  <data name="LinuxHelp" xml:space="preserve">
+    <value>Sistem ayarlarındaki Linux ayarları sayfalarına erişimi kontrol eder.</value>
+  </data>
+  <data name="LocalizationSys" xml:space="preserve">
+    <value>Yerelleştirme</value>
+  </data>
+  <data name="LocalizationSysHelp" xml:space="preserve">
+    <value>Yerelleştirme Ayarlarına erişimi kontrol eder</value>
+  </data>
+  <data name="LocationCodeGr" xml:space="preserve">
+    <value>Konum Kodu</value>
+  </data>
+  <data name="LocationCodeGrHelp" xml:space="preserve">
+    <value>Konum Ekle/Düzenle sayfalarında bir Konum Kodu Düzenleyin.</value>
+  </data>
+  <data name="LocationDD" xml:space="preserve">
+    <value>Konum</value>
+  </data>
+  <data name="LocationDDHelp" xml:space="preserve">
+    <value>Aygıtlar için konum ve içerik haritası verisini görüntüle</value>
+  </data>
+  <data name="LocationGroupTypeHelp" xml:space="preserve">
+    <value>Organizasyon Grubu Türü Sayfasına erişimi kontrol eder
+</value>
+  </data>
+  <data name="LocationsGr" xml:space="preserve">
+    <value>Konumlar</value>
+  </data>
+  <data name="LocationsGrHelp" xml:space="preserve">
+    <value>Organizasyon grupları için konumları görüntüle ve yönet</value>
+  </data>
+  <data name="LocationsHub" xml:space="preserve">
+    <value>Konumlar</value>
+  </data>
+  <data name="LocationsHubHelp" xml:space="preserve">
+    <value>Konumlar için raporlar oluştur</value>
+  </data>
+  <data name="LocationStatusHelp" xml:space="preserve">
+    <value>Konum Durumu bağlantısına olan erişimi kontrol eder. Yeni Konum Durumu Ekle'ye olan erişimi kontrol eder.
+</value>
+  </data>
+  <data name="LocationTypeHelp" xml:space="preserve">
+    <value>Konum Türü sayfasına olan erişimi kontrol eder
+</value>
+  </data>
+  <data name="LocationZonesGr" xml:space="preserve">
+    <value>Konum Bölgeleri</value>
+  </data>
+  <data name="LocationZonesGrHelp" xml:space="preserve">
+    <value>Bir konuma Konum Bölgeleri ekleyin ve düzenleyin.</value>
+  </data>
+  <data name="LockDD" xml:space="preserve">
+    <value>Kilitle</value>
+  </data>
+  <data name="LockDDHelp" xml:space="preserve">
+    <value>Aygıtı ya da uygulamayı Çoklu Oturum Açma ile uzaktan kilitleyin.</value>
+  </data>
+  <data name="LogDD" xml:space="preserve">
+    <value>Günlük</value>
+  </data>
+  <data name="LogDDHelp" xml:space="preserve">
+    <value>Aygıt detaylarında günlükleri görüntüle</value>
+  </data>
+  <data name="LoggingAd" xml:space="preserve">
+    <value>Günlüğe Kaydetme</value>
+  </data>
+  <data name="LoggingAdHelp" xml:space="preserve">
+    <value>Etkinlik günlük ayarlarını görüntülemek için izin verir.</value>
+  </data>
+  <data name="LoggingAdL" xml:space="preserve">
+    <value>Günlüğe Kaydetme</value>
+  </data>
+  <data name="LoggingAdLHelp" xml:space="preserve">
+    <value>Syslog ve hedeflenen günlük için günlüğe kaydetme ayarlarını görüntüle ve düzenle.</value>
+  </data>
+  <data name="LoginHistoryAdminGen" xml:space="preserve">
+    <value>Oturum Açma Geçmişi</value>
+  </data>
+  <data name="LoginHistoryAdminGenHelp" xml:space="preserve">
+    <value>Kullanıcı Tercihleri sayfasında ve Yönetici Hesapları sayfasında Oturum Açma Geçmişi sayfasına erişim sağla</value>
+  </data>
+  <data name="LookupFields" xml:space="preserve">
+    <value>Arama Alanları</value>
+  </data>
+  <data name="LookupFieldsHelp" xml:space="preserve">
+    <value>Genel altında arama alanları sayfasına erişimi kontrol eder.</value>
+  </data>
+  <data name="MacOsXApple" xml:space="preserve">
+    <value>Mac OS</value>
+  </data>
+  <data name="MacOsXAppleHelp" xml:space="preserve">
+    <value>Sistem ayarları seçeneğinde Mac OS ayarları sayfalarına erişimi kontrol eder.</value>
+  </data>
+  <data name="MailRecipient" xml:space="preserve">
+    <value>Posta Alıcısı</value>
+  </data>
+  <data name="MaintenanceUpgradeNotificationInfo" xml:space="preserve">
+    <value>Workspace ONE UEM ve Workspace ONE Assist bildirimlerini kimin alacağının belirlenmesi için kullanılacak bir seçenek belirleyin. Yönetici Kabul seçiliyse yöneticiler Hesap Ayarları &gt; Bildirimler altında Bakım ve Yükseltme seçeneğini görür.</value>
+  </data>
+  <data name="MaintenanceUpgradeNotifications" xml:space="preserve">
+    <value>Bakım ve Yükseltme Bildirimleri</value>
+  </data>
+  <data name="ManageAdminGroups" xml:space="preserve">
+    <value>Yönet</value>
+  </data>
+  <data name="ManageAdminGroupsHelp" xml:space="preserve">
+    <value>Yönetici gruplarında eşitleme ya da birleştirme gibi eylemler gerçekleştir</value>
+  </data>
+  <data name="ManageBaselines" xml:space="preserve">
+    <value>Taban Çizgilerini Yönet</value>
+  </data>
+  <data name="ManageBaselinesHelp" xml:space="preserve">
+    <value>Yeni Taban Çizgisi ekleme, Taban Çizgisi düzenleme ve atama izinleri de dahil olmak üzere, Taban Çizgilerini yönetme işlevine erişimi kontrol eder</value>
+  </data>
+  <data name="ManageContentCM" xml:space="preserve">
+    <value>İçeriği Yönet</value>
+  </data>
+  <data name="ManageContentCMHelp" xml:space="preserve">
+    <value>Yeni içerik ekle ve varolan içeriği yönet</value>
+  </data>
+  <data name="ManageDevicesCM" xml:space="preserve">
+    <value>Aygıtları Yönet</value>
+  </data>
+  <data name="ManageDevicesCMHelp" xml:space="preserve">
+    <value>Yönetilen aygıtlarda içeriği uzaktan yükle ve sil</value>
+  </data>
+  <data name="ManageDeviceSensors" xml:space="preserve">
+    <value>Aygıt Algılayıcıları Yönet</value>
+  </data>
+  <data name="ManageDeviceSensorsHelp" xml:space="preserve">
+    <value>Aygıt algılayıcı ekleme, düzenleme, atama veya silme erişimini kontrol eder</value>
+  </data>
+  <data name="ManageDM" xml:space="preserve">
+    <value>Yönet</value>
+  </data>
+  <data name="ManageDMHelp" xml:space="preserve">
+    <value>Aygıt profillerini yönet</value>
+  </data>
+  <data name="ManagedSettingsApple" xml:space="preserve">
+    <value>Yönetilen Ayarlar</value>
+  </data>
+  <data name="ManagedSettingsAppleHelp" xml:space="preserve">
+    <value>iOS için Yönetilen Ayarlara erişimi kontrol eder</value>
+  </data>
+  <data name="ManageGr" xml:space="preserve">
+    <value>Yönet</value>
+  </data>
+  <data name="ManageGrHelp" xml:space="preserve">
+    <value>Organizasyon gruplarını yönet</value>
+  </data>
+  <data name="ManageNodeAd" xml:space="preserve">
+    <value>Düğümü Yönet</value>
+  </data>
+  <data name="ManageNodeAdHelp" xml:space="preserve">
+    <value>MemCached düğümlerini ekle, düzenle ve temizle.</value>
+  </data>
+  <data name="ManagePM" xml:space="preserve">
+    <value>Yönet</value>
+  </data>
+  <data name="ManagePMHelp" xml:space="preserve">
+    <value>Yazıcılara uzaktan komut ve sorgular gönder</value>
+  </data>
+  <data name="ManageTimeWindow" xml:space="preserve">
+    <value>Zaman Penceresini Yönet</value>
+  </data>
+  <data name="ManageTimeWindowHelp" xml:space="preserve">
+    <value>Yeni zaman penceresi ekleme, düzenleme ve atama izinleri de dahil olmak üzere zaman penceresi yönetme işlevine erişimi kontrol eder.</value>
+  </data>
+  <data name="ManageUG" xml:space="preserve">
+    <value>Yönet</value>
+  </data>
+  <data name="ManageUGHelp" xml:space="preserve">
+    <value>Eşitleme ya da birleştirme gibi kayıt kullanıcı grupları üzerinde eylemler gerçekleştir</value>
+  </data>
+  <data name="MapsIns" xml:space="preserve">
+    <value>Haritalar</value>
+  </data>
+  <data name="MapsInsHelp" xml:space="preserve">
+    <value>Yükleme altında Haritalar sayfasına erişimi kontrol eder.</value>
+  </data>
+  <data name="MembersAdminGroup" xml:space="preserve">
+    <value>Üyeler</value>
+  </data>
+  <data name="MembersAdminGroupHelp" xml:space="preserve">
+    <value>Yönetici grubu üyelerini görüntüle</value>
+  </data>
+  <data name="MembersUG" xml:space="preserve">
+    <value>Üyeler</value>
+  </data>
+  <data name="MembersUGHelp" xml:space="preserve">
+    <value>Kullanıcı grup üyeleri listesine erişim sağla</value>
+  </data>
+  <data name="MenuLinkForTagHelp" xml:space="preserve">
+    <value>Etiketle menülerine erişimi kontrol eder.</value>
+  </data>
+  <data name="MessageTemplatesSet" xml:space="preserve">
+    <value>Mesaj Şablonları</value>
+  </data>
+  <data name="MessageTemplatesSetHelp" xml:space="preserve">
+    <value>İleti Şablonlarına erişimi kontrol eder.</value>
+  </data>
+  <data name="MessagingDD" xml:space="preserve">
+    <value>Mesajlaşma</value>
+  </data>
+  <data name="MessagingDDHelp" xml:space="preserve">
+    <value>Aygıtlara, e-posta, bildirimler ya da SMS iletileri gönderin</value>
+  </data>
+  <data name="MessagingSet" xml:space="preserve">
+    <value>Mesajlaşma</value>
+  </data>
+  <data name="MessagingSetHelp" xml:space="preserve">
+    <value>Genel altında Mesajlaşma sayfasına erişimi kontrol eder.</value>
+  </data>
+  <data name="MigrateUserAccounts" xml:space="preserve">
+    <value>Geçiş</value>
+  </data>
+  <data name="MigrateUserAccountsHelp" xml:space="preserve">
+    <value>Kayıt kullanıcı hesaplarını Temel kayıttan LDAP kaydına taşı</value>
+  </data>
+  <data name="MirrorPM" xml:space="preserve">
+    <value>Yansıtma</value>
+  </data>
+  <data name="MirrorPMHelp" xml:space="preserve">
+    <value>Yazıcı yansıtma sayfasına erişimi kontrol eder.</value>
+  </data>
+  <data name="MobileFlowsAuthToken" xml:space="preserve">
+    <value>Mobile Flows Kimlik Doğrulama Belirteci</value>
+  </data>
+  <data name="MobileFlowsAuthTokenHelp" xml:space="preserve">
+    <value>Mobile Flows Sunucusu tarafından kullanılacak sertifika JWT'sini oluşturur</value>
+  </data>
+  <data name="MobileFlowsServerUrl" xml:space="preserve">
+    <value>Mobile Flows Sunucusu URL'si</value>
+  </data>
+  <data name="MobileFlowsServerUrlHelp" xml:space="preserve">
+    <value>Mobile Flows Sunucusu URL'si</value>
+  </data>
+  <data name="MobileFlowsTenantAdd" xml:space="preserve">
+    <value>Mobile Flows Kiracısı Ekle</value>
+  </data>
+  <data name="MobileFlowsTenantAddHelp" xml:space="preserve">
+    <value>Mobile Flows bulut hizmetinde kiracı müşteriyi provizyonla</value>
+  </data>
+  <data name="ModifyAgentSet" xml:space="preserve">
+    <value>Hub'ı Değiştir</value>
+  </data>
+  <data name="ModifyAgentSetHelp" xml:space="preserve">
+    <value>Hub ayarlarını değiştirmek için erişimi denetler.</value>
+  </data>
+  <data name="MonitoringAd" xml:space="preserve">
+    <value>İzleme</value>
+  </data>
+  <data name="MonitoringAdHelp" xml:space="preserve">
+    <value>İzleme Ayarlarına erişim ve düzenleme için gerekli olan izni verir.</value>
+  </data>
+  <data name="MoreHelp" xml:space="preserve">
+    <value>Daha Fazla menüsüne olan erişimi kontrol eder  
+</value>
+  </data>
+  <data name="NacIntegrationSys" xml:space="preserve">
+    <value>NAC Entegrasyonu</value>
+  </data>
+  <data name="NacIntegrationSysHelp" xml:space="preserve">
+    <value>Genel seçeneği altında Ağ Erişim Kontrol Entegrasyon sayfasına erişimi denetler</value>
+  </data>
+  <data name="NavigateExportStatusHelp" xml:space="preserve">
+    <value>Tablodan dışarı aktarılanları görüntülemek ve indirmek için dışarı aktarım durum sayfasına erişim sağla.</value>
+  </data>
+  <data name="NavigationO" xml:space="preserve">
+    <value>Gezinti</value>
+  </data>
+  <data name="NavigationOHelp" xml:space="preserve">
+    <value>Gelişmiş menülere erişim sağla</value>
+  </data>
+  <data name="NetworkAccessControlIntegrationHelp" xml:space="preserve">
+    <value>Genel seçeneği altında Ağ Erişim Kontrol Entegrasyon sayfasına erişimi denetler 
+</value>
+  </data>
+  <data name="NetworkDD" xml:space="preserve">
+    <value>Ağ</value>
+  </data>
+  <data name="NetworkDDHelp" xml:space="preserve">
+    <value>Aygıt detaylarında ağ sayfasına erişim sağla</value>
+  </data>
+  <data name="NetworkRangeGr" xml:space="preserve">
+    <value>Ağ Aralığı</value>
+  </data>
+  <data name="NetworkRangeGrHelp" xml:space="preserve">
+    <value>Organizyon grupları için ağ aralıkları yönetin ve içeri aktarın.</value>
+  </data>
+  <data name="NetworkRangeHelp" xml:space="preserve">
+    <value>Ağ Aralığı ekranı görmek için izin verir</value>
+  </data>
+  <data name="NoFiltersSelected" xml:space="preserve">
+    <value>Seçili filtre yok</value>
+  </data>
+  <data name="NotesDD" xml:space="preserve">
+    <value>Notlar</value>
+  </data>
+  <data name="NotesDDHelp" xml:space="preserve">
+    <value>Aygıt detaylarında, aygıt notlarını ekle, düzenle ve sil</value>
+  </data>
+  <data name="NotificationRecipients" xml:space="preserve">
+    <value>Bildirim Alıcıları</value>
+  </data>
+  <data name="NotificationsAd" xml:space="preserve">
+    <value>Bildirimler</value>
+  </data>
+  <data name="NotificationsAdHelp" xml:space="preserve">
+    <value>Etkinlik bildirim ayarlarını görüntüle ve düzenle</value>
+  </data>
+  <data name="NotifyAb" xml:space="preserve">
+    <value>Bildir</value>
+  </data>
+  <data name="NotifyAbHelp" xml:space="preserve">
+    <value>Aygıt uygulamaları yoluyla bildirimler gönder</value>
+  </data>
+  <data name="Office365MamIntegrationSettings" xml:space="preserve">
+    <value>Office365 Entegrasyon Ayarları</value>
+  </data>
+  <data name="Office365MamIntegrationSettingsHelp" xml:space="preserve">
+    <value>Office 365 uygulamalarına yönelik varsayılan DLP ilkelerini eklemek için sistem ayarları ekranını kontrol etme kaynağı</value>
+  </data>
+  <data name="Old" xml:space="preserve">
+    <value>Eski</value>
+  </data>
+  <data name="OldPPO" xml:space="preserve">
+    <value>Eski</value>
+  </data>
+  <data name="OldPPOHelp" xml:space="preserve">
+    <value>Provizyonlama profilleri için eski ayarlara erişim sağla</value>
+  </data>
+  <data name="OrganizationGroupChangeAd" xml:space="preserve">
+    <value>Organizasyon Grubunu Değiştirme</value>
+  </data>
+  <data name="OrganizationGroupChangeAdHelp" xml:space="preserve">
+    <value>Organizasyon Gruplarını bir açılır menü üzerinden değiştirmenize izin verir</value>
+  </data>
+  <data name="OrganizationGroupCodeGr" xml:space="preserve">
+    <value>Organizasyon Grubu Kimliği</value>
+  </data>
+  <data name="OrganizationGroupCodeGrHelp" xml:space="preserve">
+    <value>Organizasyon Grubu Kimliğini düzenleyin.</value>
+  </data>
+  <data name="OsUpdateStatusHelp" xml:space="preserve">
+    <value>Aygıtlarda bir işletim sistemi güncellemesinin durumunu almak için gerekli olan erişimi kontrol eder. Aygıtlar / Ayrıntılar Görünümüne gidin</value>
+  </data>
+  <data name="OutlookAddinSet" xml:space="preserve">
+    <value>Outlook Eklentisi</value>
+  </data>
+  <data name="OutlookAddinSetHelp" xml:space="preserve">
+    <value>Outlook Eklentisini Etkinleştir ve Devre Dışı Bırak</value>
+  </data>
+  <data name="OverrideJobLogLevelHelp" xml:space="preserve">
+    <value>Aygıtlar işlevi desteklediğinde kullanıcıya, DeviceDetails ile iş günlük düzeyini geçersiz kılma izni verir.</value>
+  </data>
+  <data name="OverviewHub" xml:space="preserve">
+    <value>Genel Görünüm</value>
+  </data>
+  <data name="OverviewHubHelp" xml:space="preserve">
+    <value>İzleme genel görünüm sayfasına erişim sağla.</value>
+  </data>
+  <data name="P2PSetupHelp" xml:space="preserve">
+    <value>Çeşitli P2P tedarikçilerinin alt bölümleri içeren ayarlar sayfası</value>
+  </data>
+  <data name="PasscodeDD" xml:space="preserve">
+    <value>Şifre</value>
+  </data>
+  <data name="PasscodeDDHelp" xml:space="preserve">
+    <value>Aygıtlar ve uygulamalar için şifreleri temizle  ve sıfırla</value>
+  </data>
+  <data name="PerformanceTuningHelp" xml:space="preserve">
+    <value>Sistem Ayarlarında, Performans Ayar parametrelerine erişimi kontrol eder.
+</value>
+  </data>
+  <data name="PerformanceTuningIns" xml:space="preserve">
+    <value>Performans Ayarı</value>
+  </data>
+  <data name="PerformanceTuningInsHelp" xml:space="preserve">
+    <value>Sistem Ayarlarında, Performans Ayar parametrelerine erişimi kontrol eder.</value>
+  </data>
+  <data name="PersonalContentSet" xml:space="preserve">
+    <value>Kişisel İçerik</value>
+  </data>
+  <data name="PersonalContentSetHelp" xml:space="preserve">
+    <value>Kişisel İçerik ile ilgili ayarları değiştirme izni verir</value>
+  </data>
+  <data name="PlansTel" xml:space="preserve">
+    <value>Planlar</value>
+  </data>
+  <data name="PlansTelHelp" xml:space="preserve">
+    <value>Bir organizasyon grubu için yapılandırılmış telekom planlarını yönet</value>
+  </data>
+  <data name="PoliciesPPN" xml:space="preserve">
+    <value>İlkeler</value>
+  </data>
+  <data name="PoliciesPPNHelp" xml:space="preserve">
+    <value>Provizyonlama ilkelerini oluştur ve yönet</value>
+  </data>
+  <data name="PolicyEngineSettingsEditHelp" xml:space="preserve">
+    <value>İlke Motoru Ayarlarını düzenlemek için izin verir. Yapılandır\Ayarlar\Yönetici\İlke Motoru Ayarları konumuna gidin</value>
+  </data>
+  <data name="PolicyEngineSettingsViewHelp" xml:space="preserve">
+    <value>İlke Motoru Ayarlarını görüntülemek için izin verir.</value>
+  </data>
+  <data name="PolicyOverrideEM" xml:space="preserve">
+    <value>İlke Geçersiz Kılma</value>
+  </data>
+  <data name="PolicyOverrideEMHelp" xml:space="preserve">
+    <value>Aygıtlara izin vermek veya izin vermemek için e-posta ilkelerini geçersiz kılın.</value>
+  </data>
+  <data name="PolicySigningCertificateHelp" xml:space="preserve">
+    <value>ECC sertifikasını karşıya yükleme izni verir. Sistem \ Gelişmiş \ İlke İmzalama Sertifikası konumuna gidin</value>
+  </data>
+  <data name="PowerPM" xml:space="preserve">
+    <value>Güç</value>
+  </data>
+  <data name="PowerPMHelp" xml:space="preserve">
+    <value>Yazıcı güç durumu sayfasına erişimi kontrol eder.</value>
+  </data>
+  <data name="PrinterManagementProfile" xml:space="preserve">
+    <value>Yazıcı Yönetimi Profili</value>
+  </data>
+  <data name="PrinterManagementProfiles" xml:space="preserve">
+    <value>Yazıcı Yönetimi Profilleri</value>
+  </data>
+  <data name="PrinterProfiles" xml:space="preserve">
+    <value>Yazıcı Profilleri</value>
+  </data>
+  <data name="PrinterProfilesHelp" xml:space="preserve">
+    <value>Yazıcı Profilleri kılavuzuna erişimi kontrol eder. Menü\ Yazıcı Yönetimi \ Profiller'e gidiniz.</value>
+  </data>
+  <data name="PrinterServersPM" xml:space="preserve">
+    <value>Yazıcı Sunucuları</value>
+  </data>
+  <data name="PrinterServersPMHelp" xml:space="preserve">
+    <value>Yazıcı ayarları sayfasında yazıcı sunucularını görüntüle, ekle ve sil</value>
+  </data>
+  <data name="PrinterTestPrint" xml:space="preserve">
+    <value>Yazıcı Test Baskısı</value>
+  </data>
+  <data name="PrinterTestPrintHelp" xml:space="preserve">
+    <value>Yazıcı test baskısı göndermek için izin verir.</value>
+  </data>
+  <data name="PrinterViewAveryDennisonGeneralHelp" xml:space="preserve">
+    <value>Avery Dennison "Aygıt Ayrıntıları" sayfasındaki Genel sekmesi. </value>
+  </data>
+  <data name="PrinterViewCpclPM" xml:space="preserve">
+    <value>CPCL</value>
+  </data>
+  <data name="PrinterViewCpclPMHelp" xml:space="preserve">
+    <value>Yazıcı CPCL sayfasına erişimi kontrol eder</value>
+  </data>
+  <data name="PrinterViewDataMaxONeilAutoUpdateHelp" xml:space="preserve">
+    <value>Datamax Aygıt Ayrıntıları sayfası için "AutoUpdate" sekmesi. </value>
+  </data>
+  <data name="PrinterViewDataMaxONeilBatteryHelp" xml:space="preserve">
+    <value>Datamax yazıcısının "Aygıt Detayları" sayfasındaki "Pil" sekmesi. </value>
+  </data>
+  <data name="PrinterViewDataMaxONeilBluetoothHelp" xml:space="preserve">
+    <value>Datamax Aygıt ayrıntıları sayfası için "Bluetooth" sekmesi. </value>
+  </data>
+  <data name="PrinterViewDataMaxONeilCustomSettingsHelp" xml:space="preserve">
+    <value>Datamax-O'Neil Aygıt Ayrıntıları sayfasındaki Özel Ayarlar sekmesini görüntülemek için. </value>
+  </data>
+  <data name="PrinterViewDataMaxONeilGeneralHelp" xml:space="preserve">
+    <value>Datamax "Aygıt Ayrıntıları" sayfasındaki Genel sekmesi.  </value>
+  </data>
+  <data name="PrinterViewDataMaxONeilGeneralNetworkHelp" xml:space="preserve">
+    <value>Datamax Aygıt Ayrıntıları sayfası için "GeneralNetwork" sekmesi. </value>
+  </data>
+  <data name="PrinterViewDataMaxONeilMediaLabelHelp" xml:space="preserve">
+    <value>Datamax Aygıt Ayrıntıları sayfasındaki "Medya Etiketi" sekmesi. </value>
+  </data>
+  <data name="PrinterViewDataMaxONeilMiscellaneousHelp" xml:space="preserve">
+    <value>Datamax "Aygıt Ayrıntıları" sayfasındaki "Çeşitli" sekmesi. </value>
+  </data>
+  <data name="PrinterViewDataMaxONeilPrintControlHelp" xml:space="preserve">
+    <value>Datamax "Aygıt Ayrıntıları" sayfasındaki "PrintControl" sekmesi. </value>
+  </data>
+  <data name="PrinterViewDataMaxONeilRS232Help" xml:space="preserve">
+    <value>Datamax Aygıt Ayrıntıları sayfası için "RS232" sekmesi. </value>
+  </data>
+  <data name="PrinterViewDataMaxONeilSystemSettingsHelp" xml:space="preserve">
+    <value>Datamax Aygıt Ayrıntıları sayfasındaki "Sistem Ayarları" sekmesi. </value>
+  </data>
+  <data name="PrinterViewDataMaxONeilWifiHelp" xml:space="preserve">
+    <value>Datamax Aygıt Ayrıntıları sayfası için "WiFi" sekmesi. </value>
+  </data>
+  <data name="PrinterViewEpsonGeneral" xml:space="preserve">
+    <value>Epson Yazıcı Detaylarını Görüntüle: Genel Sekme</value>
+  </data>
+  <data name="PrinterViewEpsonGeneralHelp" xml:space="preserve">
+    <value>Epson Yazıcı Aygıt Detaylarını Görüntüle</value>
+  </data>
+  <data name="PrinterViewEpsonPrintSettingsHelp" xml:space="preserve">
+    <value>Kullanıcının Epson Yazdırma Ayarlarına erişmesine izin verir</value>
+  </data>
+  <data name="PrivacySet" xml:space="preserve">
+    <value>Gizlilik</value>
+  </data>
+  <data name="PrivacySetHelp" xml:space="preserve">
+    <value>Genel seçeneği altında Gizlilik sayfasına erişimi kontrol eder</value>
+  </data>
+  <data name="ProductImprovementProgramSettings" xml:space="preserve">
+    <value>Ürün İyileştirme Programı Ayarları</value>
+  </data>
+  <data name="ProductImprovementProgramSettingsHelp" xml:space="preserve">
+    <value>Ayarlar &gt; Yönetici &gt; Ürün Geliştirme Programları bölümünde bulunan Ürün İyileştirme Programı Ayarları'na erişimi kontrol eder.</value>
+  </data>
+  <data name="ProductivityAppsAb" xml:space="preserve">
+    <value>Verimlilik Uygulamaları</value>
+  </data>
+  <data name="ProductProvisioningHub" xml:space="preserve">
+    <value>Ürün Provizyonlama</value>
+  </data>
+  <data name="ProductProvisioningHubHelp" xml:space="preserve">
+    <value>Ürün provizyonlama için raporlar oluştur</value>
+  </data>
+  <data name="ProductProvisioningSettingsHelp" xml:space="preserve">
+    <value>Ürün provizyonlama için belirli özellikleri yapılandırın.</value>
+  </data>
+  <data name="ProductSetsHelp" xml:space="preserve">
+    <value>Yeni Ürünler altında Ürün Kümelerine Erişimi Kontrol Eder</value>
+  </data>
+  <data name="ProfileEncryptAndExportXmlDM" xml:space="preserve">
+    <value>Profili Şifrele ve XML'i Dışarı Aktar</value>
+  </data>
+  <data name="ProfileEncryptAndExportXmlDMHelp" xml:space="preserve">
+    <value>Profil şifrelemek ve XML profilini dışarı aktarmak için sertifikaları karşıya yükle</value>
+  </data>
+  <data name="ProfilesApple" xml:space="preserve">
+    <value>Profiller</value>
+  </data>
+  <data name="ProfilesAppleHelp" xml:space="preserve">
+    <value>iOS altında Profiller sayfasına erişimi kontrol eder.</value>
+  </data>
+  <data name="ProfilesDD" xml:space="preserve">
+    <value>Profiller</value>
+  </data>
+  <data name="ProfilesDDHelp" xml:space="preserve">
+    <value>Aygıt detaylarında, yapılandırma profillerini görüntüle ve yönet</value>
+  </data>
+  <data name="ProfilesHub" xml:space="preserve">
+    <value>Profiller</value>
+  </data>
+  <data name="ProfilesHubHelp" xml:space="preserve">
+    <value>Aygıt profilleri için raporlar oluştur</value>
+  </data>
+  <data name="ProfilesPM" xml:space="preserve">
+    <value>Profiller</value>
+  </data>
+  <data name="ProfilesPMHelp" xml:space="preserve">
+    <value>Yazıcı profilleri sayfasına erişimi kontrol eder.</value>
+  </data>
+  <data name="ProfilesPPN" xml:space="preserve">
+    <value>Profiller</value>
+  </data>
+  <data name="ProfilesPPNHelp" xml:space="preserve">
+    <value>Provizyonlama profilleri sayfasına erişim sağla</value>
+  </data>
+  <data name="ProfilesPr" xml:space="preserve">
+    <value>Profiller</value>
+  </data>
+  <data name="ProfilesPrHelp" xml:space="preserve">
+    <value>Yazıcı profillerini yönet</value>
+  </data>
+  <data name="ProfilesRESTMdm" xml:space="preserve">
+    <value>Profiller</value>
+  </data>
+  <data name="ProfilesRESTMdmHelp" xml:space="preserve">
+    <value>Aygıt profilleri için REST API'leri</value>
+  </data>
+  <data name="ProvisioningHelp" xml:space="preserve">
+    <value>WinMo Provizyonlama sayfasına erişimi kontrol eder.</value>
+  </data>
+  <data name="ProvisioningPolicyConditionCopyHelp" xml:space="preserve">
+    <value>Kullanıcının bir koşulu kopyalamasına izin verir.</value>
+  </data>
+  <data name="ProvisioningPolicyFileActionCopyHelp" xml:space="preserve">
+    <value>Kullanıcıya bir Provizyonlama Dosyasını/Eylemini kopyalama izni verir.</value>
+  </data>
+  <data name="ProxiesAndTunnelHelp" xml:space="preserve">
+    <value>Proxy ve Tünel ayarlarını görüntülemek ve düzenlemek için izin ver</value>
+  </data>
+  <data name="ProxyIns" xml:space="preserve">
+    <value>Proxy</value>
+  </data>
+  <data name="ProxyInsHelp" xml:space="preserve">
+    <value>Genel altında Proxy Ayarları sayfasına yapılan erişimi kontrol eder.</value>
+  </data>
+  <data name="PublicAppsAb" xml:space="preserve">
+    <value>Genel Uygulamalar</value>
+  </data>
+  <data name="PublicAppsAbHelp" xml:space="preserve">
+    <value>Ortak depodan uygulamaları ata ve yönet</value>
+  </data>
+  <data name="PullServiceInstallersPPN" xml:space="preserve">
+    <value>Servis Yükleyicilerini İste</value>
+  </data>
+  <data name="PullServiceInstallersPPNHelp" xml:space="preserve">
+    <value>Harekete geçirici servis yükleyicilerini görüntüle ve indir</value>
+  </data>
+  <data name="PurchasedApplicationsAb" xml:space="preserve">
+    <value>Satın Alınan Uygulamalar</value>
+  </data>
+  <data name="PurchasedApplicationsAbHelp" xml:space="preserve">
+    <value>Satın alınan uygulama lisanslarını toplu olarak içeri aktar ve lisans dağıtımını yönet</value>
+  </data>
+  <data name="QnxSet" xml:space="preserve">
+    <value>QNX</value>
+  </data>
+  <data name="QnxSetHelp" xml:space="preserve">
+    <value>QNX seçeneği altında Aracı Ayarlarına erişimi kontrol eder.</value>
+  </data>
+  <data name="QRCodeHelp" xml:space="preserve">
+    <value>QR Kodu kayıt yapılandırması</value>
+  </data>
+  <data name="QueryDD" xml:space="preserve">
+    <value>Sorgu</value>
+  </data>
+  <data name="QueryDDHelp" xml:space="preserve">
+    <value>Aygıt durum bilgisini güncellemek için aygıtları sorgula</value>
+  </data>
+  <data name="ReadDeviceManufacturerDetails" xml:space="preserve">
+    <value>Aygıt Üreticisi Ayrıntılarını Oku</value>
+  </data>
+  <data name="ReadDeviceManufacturerDetailsHelp" xml:space="preserve">
+    <value>Uygulama Programı Arabirimi (API) aracılığıyla aygıt üreticisi ayrıntılarını okuyun</value>
+  </data>
+  <data name="ReadDeviceModelDetails" xml:space="preserve">
+    <value>Aygıt Modeli Ayrıntılarını Oku</value>
+  </data>
+  <data name="ReadDeviceModelDetailsHelp" xml:space="preserve">
+    <value>Uygulama Programı Arabirimi (API) aracılığıyla aygıt modeli ayrıntılarını okuyun</value>
+  </data>
+  <data name="RefreshEsimHelp" xml:space="preserve">
+    <value>eSIM hücresel planını güncellemek için izin verir</value>
+  </data>
+  <data name="RegistryManagerHelp" xml:space="preserve">
+    <value>WinMo aygıtlarının kayıt defterine uzaktan erişime izni verir.
+</value>
+  </data>
+  <data name="RelayServerBatching" xml:space="preserve">
+    <value>Geçiş Sunucusu İşlem Grubu Oluşturma</value>
+  </data>
+  <data name="RelayServerBatchingHelp" xml:space="preserve">
+    <value>Geçiş Sunucusu İşlem Grubu İçe Aktarmasına ve İşlem Grubu Durumuna erişimi kontrol eder</value>
+  </data>
+  <data name="RelayServerRemoteFileList" xml:space="preserve">
+    <value>Geçiş Sunucusu Uzak Dosya Listesi</value>
+  </data>
+  <data name="RelayServerRemoteFileListHelp" xml:space="preserve">
+    <value>Geçiş Sunucusu Uzak Dosya Listesine erişimi kontrol eder</value>
+  </data>
+  <data name="RelayServersPPN" xml:space="preserve">
+    <value>Geçiş Sunucuları</value>
+  </data>
+  <data name="RelayServersPPNHelp" xml:space="preserve">
+    <value>Provizyonlama geçiş sunucularını görüntüle ve yönet</value>
+  </data>
+  <data name="RemoteControlDD" xml:space="preserve">
+    <value>Uzaktan Denetim</value>
+  </data>
+  <data name="RemoteControlDDHelp" xml:space="preserve">
+    <value>Bir aygıtı uzaktan denetle</value>
+  </data>
+  <data name="RemoteManagementSettingsEditHelp" xml:space="preserve">
+    <value>Kurumsal Entegrasyon'un altında Uzaktan Yönetim sayfasına Düzenleme erişimini kontrol eder. Yapılandırma\Sistem Ayarları\Kurumsal Entegrasyon\Uzaktan Yönetim konumuna gidin</value>
+  </data>
+  <data name="RemoteSet" xml:space="preserve">
+    <value>Uzak</value>
+  </data>
+  <data name="RemoteSetHelp" xml:space="preserve">
+    <value>Uzakta Depolamayla ilgili ayarları değiştirmeye izin verir</value>
+  </data>
+  <data name="RemoveDeviceEnrollmentProgram" xml:space="preserve">
+    <value>Kayıt programı profilini kaldır</value>
+  </data>
+  <data name="RemoveDeviceEnrollmentProgramHelp" xml:space="preserve">
+    <value>Aygıtlardan DEP profillerini kaldırmak için erişimi kontrol eder. Kayıt Durumu Sayfasına gidin</value>
+  </data>
+  <data name="RenameDeviceHelp" xml:space="preserve">
+    <value>Bir aygıtı yeniden adlandırma komutu. </value>
+  </data>
+  <data name="RenewCertificateHelp" xml:space="preserve">
+    <value>Bir sertifikayı yenilemek için izin verir 
+</value>
+  </data>
+  <data name="RepairHub" xml:space="preserve">
+    <value>Hub'ı Onar</value>
+  </data>
+  <data name="RepairHubHelp" xml:space="preserve">
+    <value>Aygıtta Hub'ı onarmaya izin verir.</value>
+  </data>
+  <data name="ReportIOS7Compatability" xml:space="preserve">
+    <value>iOS 7 Uyumluluğu</value>
+  </data>
+  <data name="ReportIOS7CompatabilityHelp" xml:space="preserve">
+    <value>iOS 7 Uyumluluk raporuna erişim sağlar</value>
+  </data>
+  <data name="ReportsAlertsSys" xml:space="preserve">
+    <value>Raporlar ve Uyarılar</value>
+  </data>
+  <data name="ReportsAlertsSysHelp" xml:space="preserve">
+    <value>Raporlar ve Uyarılara erişimi kontrol eder</value>
+  </data>
+  <data name="ReportsIns" xml:space="preserve">
+    <value>Raporlar</value>
+  </data>
+  <data name="ReportsInsHelp" xml:space="preserve">
+    <value>Kurulum altında Raporlar sayfasına yapılan erişimi kontrol eder.</value>
+  </data>
+  <data name="RepositoriesCM" xml:space="preserve">
+    <value>Havuzlar</value>
+  </data>
+  <data name="RepositoriesCMHelp" xml:space="preserve">
+    <value>İçerik havuzlarını ekle, düzenle ve sil</value>
+  </data>
+  <data name="ReputationAnalysisAb" xml:space="preserve">
+    <value>Tanınmışlık Analizi</value>
+  </data>
+  <data name="ReputationAnalysisAbHelp" xml:space="preserve">
+    <value>Uygulama tanınmışlık analizini çalıştır ve sonuçları görüntüle</value>
+  </data>
+  <data name="RequestCheckinDD" xml:space="preserve">
+    <value>Teslim Et'i İste</value>
+  </data>
+  <data name="RequestCheckinDDHelp" xml:space="preserve">
+    <value>Aygıtın teslim edilmesini istemek için aygıta bir mesaj gönder. Aygıt detaylarında mevcut</value>
+  </data>
+  <data name="ResBlueprints" xml:space="preserve">
+    <value>Mavi Kopyalar</value>
+  </data>
+  <data name="ResBlueprintsHelp" xml:space="preserve">
+    <value>Uygulamaları, kaynakları ve kısıtlama ilkelerini eklemek ve bunları kullanıcılar, aygıtlarla ilişkilendirmek üzere tek bir konum oluşturun.</value>
+  </data>
+  <data name="ResCompliancePolicy" xml:space="preserve">
+    <value>Uyumluluk İlkesi</value>
+  </data>
+  <data name="ResCompliancePolicyHelp" xml:space="preserve">
+    <value>REST API'ler yoluyla Uyumluluk İlkesi bilgisine erişim sağla</value>
+  </data>
+  <data name="ResConsoleNotifications" xml:space="preserve">
+    <value>Konsol Bildirimleri</value>
+  </data>
+  <data name="ResConsoleNotificationsHelp" xml:space="preserve">
+    <value>Konsol çapında yönetim bildirimlerini görüntüle ve etkileşime gir</value>
+  </data>
+  <data name="ResCustomAttributes" xml:space="preserve">
+    <value>Özel Öznitelikler</value>
+  </data>
+  <data name="ResCustomAttributesHelp" xml:space="preserve">
+    <value>Özel Özniteliklere erişim sağlamak için REST API</value>
+  </data>
+  <data name="ResCustomReports" xml:space="preserve">
+    <value>Özel Raporlar</value>
+  </data>
+  <data name="ResCustomReportsHelp" xml:space="preserve">
+    <value>Özel Raporlar sayfasına erişim sağlayın.</value>
+  </data>
+  <data name="ResDirectMEMAdvLog" xml:space="preserve">
+    <value>Doğrudan MEM Gelişmiş Günlüğe Kaydetme</value>
+  </data>
+  <data name="ResDirectMEMAdvLogHelp" xml:space="preserve">
+    <value>MEM panosu aracılığıyla erişim sağlandı, bu özellik her bir aygıt temeli üzerinde konsol aracılığıyla gelişmiş MEG sıra günlüğünü görüntülemeye izin verir.</value>
+  </data>
+  <data name="ResEmailNotification" xml:space="preserve">
+    <value>E-posta Bildirim Hizmeti Ayarları</value>
+  </data>
+  <data name="ResEmailNotificationHelp" xml:space="preserve">
+    <value>ENS ayarlarını yönet</value>
+  </data>
+  <data name="ResGlobalServiceExchange" xml:space="preserve">
+    <value>AppleCare</value>
+  </data>
+  <data name="ResGlobalServiceExchangeHelp" xml:space="preserve">
+    <value>Apple altında Global Service Exchange sayfasına erişimi kontrol eder.</value>
+  </data>
+  <data name="ResJasperIntegration" xml:space="preserve">
+    <value>Jasper Entegrasyonu</value>
+  </data>
+  <data name="ResJasperIntegrationHelp" xml:space="preserve">
+    <value>Jasper Tümleştirme ayarlarını yönet</value>
+  </data>
+  <data name="ResLifecycleNotifications" xml:space="preserve">
+    <value>Yaşam Döngüsü Bildirimleri</value>
+  </data>
+  <data name="ResLifecycleNotificationsHelp" xml:space="preserve">
+    <value>Aygıt Detayları seçeneğinde, Yaşam Döngüsü Bildirimlerine  erişim sağla</value>
+  </data>
+  <data name="ResMutualTlsAuthentication" xml:space="preserve">
+    <value>Karşılıklı TLS Kimlik Doğrulama</value>
+  </data>
+  <data name="ResMutualTlsAuthenticationHelp" xml:space="preserve">
+    <value>Workspace ONE Intelligent Hub ve Workspace ONE UEM sunucusu arasındaki ortak TLS kimlik doğrulama ayarlarını yapılandır</value>
+  </data>
+  <data name="ResNotifications" xml:space="preserve">
+    <value>Bildirimler</value>
+  </data>
+  <data name="ResNotificationsHelp" xml:space="preserve">
+    <value>Konsol çapında yönetim bildirimlerini görüntüle ve etkileşime gir</value>
+  </data>
+  <data name="ResOverrideJobLogLevel" xml:space="preserve">
+    <value>İş Günlük Düzeyini Geçersiz Kıl</value>
+  </data>
+  <data name="ResOverrideJobLogLevelHelp" xml:space="preserve">
+    <value>Geçersiz İş Günlük Seviyesi Ayarlarına Erişim Sağla</value>
+  </data>
+  <data name="ResProductProvisioning" xml:space="preserve">
+    <value>Ürün Provizyonlama</value>
+  </data>
+  <data name="ResProductProvisioningHelp" xml:space="preserve">
+    <value>Bir grup seviyesinde ürün provizyonlama ayarlarını yönet</value>
+  </data>
+  <data name="ResProducts" xml:space="preserve">
+    <value>Ürünler</value>
+  </data>
+  <data name="ResProductSets" xml:space="preserve">
+    <value>Ürün Kümeleri</value>
+  </data>
+  <data name="ResProductSetsHelp" xml:space="preserve">
+    <value>Ürün kümelerini görüntüleme ve yönetme yeteneği</value>
+  </data>
+  <data name="ResProductsHelp" xml:space="preserve">
+    <value>Konsol REST API'leri üzerinden Ürünler koleksiyonuna erişimi etkinleştirir.</value>
+  </data>
+  <data name="RestAPIAirWatchEducationWrite" xml:space="preserve">
+    <value>Temsili Durum Transferi (REST) Uygulama Programı Arabirimi (API) Education ayarları yazma</value>
+  </data>
+  <data name="RestAPIAirWatchEducationWriteHelp" xml:space="preserve">
+    <value>Eğitim ayarlarını kaydetmek ve düzenlemek için REST API'si</value>
+  </data>
+  <data name="RestApiCartDelete" xml:space="preserve">
+    <value>Temsili Durum Transferi (REST) Uygulama Programı Arabirimi (API) Sepet Silme</value>
+  </data>
+  <data name="RestApiCartDeleteHelp" xml:space="preserve">
+    <value>Sepet verilerini silmek için Temsili Durum Transferi (REST) Uygulama Programı Arabirimi (API)</value>
+  </data>
+  <data name="RestApiCartWrite" xml:space="preserve">
+    <value>Temsili Durum Transferi (REST) Uygulama Programı Arabirimi (API) Sepet Yazma</value>
+  </data>
+  <data name="RestApiCartWriteHelp" xml:space="preserve">
+    <value>Sepet verilerini kaydetmek ve düzenlemek için Temsili Durum Transferi (REST) Uygulama Programı Arabirimi (API)</value>
+  </data>
+  <data name="RestApiClassAssignmentSave" xml:space="preserve">
+    <value>Temsili Durum Transferi (REST) Uygulama Programı Arabirimi (API) Ders Atamalarını Kaydetme</value>
+  </data>
+  <data name="RestApiClassAssignmentSaveHelp" xml:space="preserve">
+    <value>Ders atamalarını kaydetmek için Temsili Durum Transferi (REST) Uygulama Programı Arabirimi (API) araması</value>
+  </data>
+  <data name="RestAPIClassDelete" xml:space="preserve">
+    <value>Temsili Durum Transferi (REST) Uygulama Programı Arabirimi (API) Ders Silme</value>
+  </data>
+  <data name="RestAPIClassDeleteHelp" xml:space="preserve">
+    <value>Sınıf verilerini silmek için REST API'si</value>
+  </data>
+  <data name="RestAPIClassLoad" xml:space="preserve">
+    <value>Temsili Durum Transferi (REST) Uygulama Programı Arabirimi (API) Ders Okuma</value>
+  </data>
+  <data name="RestAPIClassLoadHelp" xml:space="preserve">
+    <value>Sınıf verilerini görüntülemek için REST API'si</value>
+  </data>
+  <data name="RestAPIClassWrite" xml:space="preserve">
+    <value>Temsili Durum Transferi (REST) Uygulama Programı Arabirimi (API) Ders Yazma</value>
+  </data>
+  <data name="RestAPIClassWriteHelp" xml:space="preserve">
+    <value>Sınıf verilerini kaydetmek ve düzenlemek için REST API'si</value>
+  </data>
+  <data name="RestApiEduAppsForDeviceRead" xml:space="preserve">
+    <value>Aygıt Okuma için Temsili Durum Transferi (REST) Uygulama Programı Arabirimi (API) Uygulamaları</value>
+  </data>
+  <data name="RestApiEduAppsForDeviceReadhelp" xml:space="preserve">
+    <value>Aygıta uygun uygulamaların bir listesini almak için Temsili Durum Transferi (REST) Uygulama Programı Arabirimi (API)</value>
+  </data>
+  <data name="RestAPILoadEducation" xml:space="preserve">
+    <value>Temsili Durum Transferi (REST) Uygulama Programı Arabirimi (API) Education Ayarları Okuma</value>
+  </data>
+  <data name="RestAPILoadEducationHelp" xml:space="preserve">
+    <value>Eğitim ayarlarını görüntülemek için REST API'si</value>
+  </data>
+  <data name="RestApiPersonEnrollmentUserMapWrite" xml:space="preserve">
+    <value>Temsili Durum Transferi (REST) Uygulama Programı Arabirimi (API) Apple School Manager eşlemesi</value>
+  </data>
+  <data name="RestApiPersonEnrollmentUserMapWriteHelp" xml:space="preserve">
+    <value>Bir kayıt kullanıcısını Apple School Manager'daki bir üye ile eşlemek için Temsili Durum Transferi (REST) Uygulama Programı Arabirimi (API)</value>
+  </data>
+  <data name="RestApiRosterSyncRead" xml:space="preserve">
+    <value>Temsili Durum Transferi (REST) Uygulama Programı Arabirimi (API) Apple School Manager Eşitleme Okuma</value>
+  </data>
+  <data name="RestApiRosterSyncReadHelp" xml:space="preserve">
+    <value>Apple School Manager eşitleme durumunu kontrol etmek için Temsili Durum Transferi (REST) Uygulama Programı Arabirimi (API)</value>
+  </data>
+  <data name="RestApiRosterSyncWrite" xml:space="preserve">
+    <value>Temsili Durum Transferi (REST) Uygulama Programı Arabirimi (API) Apple School Manager Yazma</value>
+  </data>
+  <data name="RestApiRosterSyncWriteHelp" xml:space="preserve">
+    <value>Apple School Manager eşitlemesini başlatmak için Temsili Durum Transferi (REST) Uygulama Programı Arabirimi (API)</value>
+  </data>
+  <data name="RestApiUpdatesPolicyDelete" xml:space="preserve">
+    <value>Güncelleme İlkesi Silme erişimi</value>
+  </data>
+  <data name="RestApiUpdatesPolicyDeleteHelp" xml:space="preserve">
+    <value>Güncelleme İlkesi koleksiyonunda SİLME işlevini içeren tüm API'lere erişim sağlar.</value>
+  </data>
+  <data name="RestApiUpdatesPolicyExecute" xml:space="preserve">
+    <value>Güncelleme İlkesi Yürütme erişimi</value>
+  </data>
+  <data name="RestApiUpdatesPolicyExecuteHelp" xml:space="preserve">
+    <value>Güncelleme İlkesi koleksiyonunda YÜRÜTME işlevini içeren tüm API'lere erişim sağlar.</value>
+  </data>
+  <data name="RestApiUpdatesPolicyRead" xml:space="preserve">
+    <value>Güncelleme İlkesi Okuma erişimi</value>
+  </data>
+  <data name="RestApiUpdatesPolicyReadHelp" xml:space="preserve">
+    <value>Güncelleme İlkesi koleksiyonunda Salt OKUNUR tüm API'lere erişim sağlar.</value>
+  </data>
+  <data name="RestApiUpdatesPolicyWrite" xml:space="preserve">
+    <value>Güncelleme İlkesi Yazma erişimi</value>
+  </data>
+  <data name="RestApiUpdatesPolicyWriteHelp" xml:space="preserve">
+    <value>Güncelleme İlkesi koleksiyonunda YAZMA işlevini içeren tüm API'lere erişim sağlar.</value>
+  </data>
+  <data name="RestEnterpiseIntegration" xml:space="preserve">
+    <value>REST Kurumsal Entegrasyonu</value>
+  </data>
+  <data name="RestEnterpiseIntegrationHelp" xml:space="preserve">
+    <value>Kurumsal Entegrasyon için REST API'ler</value>
+  </data>
+  <data name="RestrictedActionsSec" xml:space="preserve">
+    <value>Kısıtlanmış Eylemler</value>
+  </data>
+  <data name="RestrictedActionsSecHelp" xml:space="preserve">
+    <value>Kısıtlanmış Eylemler ekranını görüntülemeye izin verir</value>
+  </data>
+  <data name="RestrictionsDD" xml:space="preserve">
+    <value>Kısıtlamalar</value>
+  </data>
+  <data name="RestrictionsDDHelp" xml:space="preserve">
+    <value>Bir aygıta uygulanan mevcut kısıtlamaları iste</value>
+  </data>
+  <data name="ResVideo" xml:space="preserve">
+    <value>Video</value>
+  </data>
+  <data name="ResVideoHelp" xml:space="preserve">
+    <value>Video uygulaması için ayarları yönet</value>
+  </data>
+  <data name="ResWebApps" xml:space="preserve">
+    <value>Web uygulamaları</value>
+  </data>
+  <data name="ResWebAppsHelp" xml:space="preserve">
+    <value>Web uygulamalarını ata be yönet.</value>
+  </data>
+  <data name="RetentionAd" xml:space="preserve">
+    <value>Bekletme</value>
+  </data>
+  <data name="RetentionAdHelp" xml:space="preserve">
+    <value>Uyarıları temizlemeye izin verir</value>
+  </data>
+  <data name="RevokeCertificateHelp" xml:space="preserve">
+    <value>Bir sertifikayı iptal etmek  için izin verir 
+</value>
+  </data>
+  <data name="RotateRecoveryKeyHelp" xml:space="preserve">
+    <value>Yöneticilerin isteğe bağlı olarak şifrelenmiş macOS aygıtı Kişisel Kurtarma Anahtarını döndürmesine izin verir.</value>
+  </data>
+  <data name="RoutingPoliciesHub" xml:space="preserve">
+    <value>Yönlendirme İlkeleri</value>
+  </data>
+  <data name="RoutingPoliciesHubHelp" xml:space="preserve">
+    <value>Uyarı yönlendirme ilkelerini görüntüle ve yönet.</value>
+  </data>
+  <data name="SaveListViewFilters" xml:space="preserve">
+    <value>Liste Görünümü Filtrelerini Kaydet</value>
+  </data>
+  <data name="SaveListViewFiltersHelp" xml:space="preserve">
+    <value>Yöneticinin liste görünümü sayfalarında filtreleri kaydetmesini sağlar</value>
+  </data>
+  <data name="ScepApple" xml:space="preserve">
+    <value>SCEP</value>
+  </data>
+  <data name="ScepAppleHelp" xml:space="preserve">
+    <value>iOS altında SCEP sayfasına yapılan erişimi kontrol eder.</value>
+  </data>
+  <data name="ScepCertificateHelp" xml:space="preserve">
+    <value>SCEP Sertifika Aracına erişimi denetler. </value>
+  </data>
+  <data name="SdkAnalyticsAb" xml:space="preserve">
+    <value>SDK Analizi</value>
+  </data>
+  <data name="SdkAnalyticsAbHelp" xml:space="preserve">
+    <value>Uygulama yönetimi için SDK analizi sayfasına erişimi kontrol eder</value>
+  </data>
+  <data name="SdkIos" xml:space="preserve">
+    <value>SDK</value>
+  </data>
+  <data name="SdkIosHelp" xml:space="preserve">
+    <value>SDK Uygulama Güvenliği Yapılandırma ayarları.</value>
+  </data>
+  <data name="SearchDevicesDM" xml:space="preserve">
+    <value>Aygıt Ara</value>
+  </data>
+  <data name="SearchDevicesDMHelp" xml:space="preserve">
+    <value>Aygıt yönetimi içerisinde Aygıt Arama menüsüne erişim sağla.</value>
+  </data>
+  <data name="SearchNotesHelp" xml:space="preserve">
+    <value>Notları ve etiketleri aramak için izin verir</value>
+  </data>
+  <data name="SearchUserAccounts" xml:space="preserve">
+    <value>Ara</value>
+  </data>
+  <data name="SearchUserAccountsHelp" xml:space="preserve">
+    <value>Hızlı arama çubuğunun Kullanıcı seçeneğine erişim sağla</value>
+  </data>
+  <data name="SecureChannelCertificateHelp" xml:space="preserve">
+    <value>Güvenli kanal için karşıya yükleme sertifikası
+</value>
+  </data>
+  <data name="SecurityInfoDD" xml:space="preserve">
+    <value>Güvenlik Bilgisi</value>
+  </data>
+  <data name="SecurityInfoDDHelp" xml:space="preserve">
+    <value>Aygıt için güvenlik denetimi bilgisine erişim sağla</value>
+  </data>
+  <data name="SecuritySec" xml:space="preserve">
+    <value>Güvenlik</value>
+  </data>
+  <data name="SecuritySecHelp" xml:space="preserve">
+    <value>Güvenlik ekranını görüntülemeye izin verir</value>
+  </data>
+  <data name="ServiceUrlsHelp" xml:space="preserve">
+    <value>Kimlik Yönetimi sağlayıcı uç noktaları gibi Hizmet URL'lerini düzenlemek üzere izin verir.
+</value>
+  </data>
+  <data name="SettingsAndPoliciesSet" xml:space="preserve">
+    <value>Ayarlar ve İlkeler</value>
+  </data>
+  <data name="SettingsAndPoliciesSetHelp" xml:space="preserve">
+    <value>Uygulama ayarlarına ve ilkeler sayfasına erişimi kontrol eder</value>
+  </data>
+  <data name="SettingsAttributeHelp" xml:space="preserve">
+    <value>Genel seçeneği altında Öznitelik sayfasına erişimi kontrol eder. Yapılandırma\Sistem Ayarları\Aygıt\Genel konumuna gidin</value>
+  </data>
+  <data name="SettingsAuditAd" xml:space="preserve">
+    <value>Ayarlar Denetimi</value>
+  </data>
+  <data name="SettingsAuditAdHelp" xml:space="preserve">
+    <value>Sistem Kodları aracılığıyla Ayarlar Denetlemesini etkinleştirir/devre dışı bırakır.</value>
+  </data>
+  <data name="SettingsDeviceAdvanced" xml:space="preserve">
+    <value>Ayarlar Aygıt Gelişmiş</value>
+  </data>
+  <data name="SettingsDeviceAdvancedHelp" xml:space="preserve">
+    <value>Aygıtlar ve Kullanıcılar alanındaki Gelişmiş sayfasına erişimi kontrol eder. Yapılandırma\Sistem Ayarları\Aygıt ve Kullanıcılar\Gelişmiş yoluna gidin</value>
+  </data>
+  <data name="SettingsDeviceEnrollmentProgramHelp" xml:space="preserve">
+    <value>Aygıt Kayıt Programına erişimi kontrol eder. Yapılandırma\Sistem Ayarları\Aygıt\Apple konumuna gidin</value>
+  </data>
+  <data name="SettingsDeviceGeneralAdvanced" xml:space="preserve">
+    <value>Ayarlar Aygıt Genel Gelişmiş</value>
+  </data>
+  <data name="SettingsDeviceGeneralAdvancedHelp" xml:space="preserve">
+    <value>Genel alanındaki Gelişmiş sayfasına erişimi kontrol eder. Ayarlar\AygıtlarKullanıcılar\Genel\Gelişmiş yoluna gidin</value>
+  </data>
+  <data name="SettingsEm" xml:space="preserve">
+    <value>Ayarlar</value>
+  </data>
+  <data name="SettingsEmHelp" xml:space="preserve">
+    <value>E-posta Ayarlarına erişimi kontrol eder.</value>
+  </data>
+  <data name="SettingsEnrollmentUserPasswordPolicyEditHelp" xml:space="preserve">
+    <value>Aygıtlar ve Kullanıcılar'ın altındaki Parola Ayarları sayfasını düzenleme erişimini kontrol eder. Yapılandırma\ Aygıtlar ve Kullanıcılar Ayarlar\Genel\Güvenlik \Parolalar konumuna gidin</value>
+  </data>
+  <data name="SettingsEnrollmentUserPasswordPolicyViewHelp" xml:space="preserve">
+    <value>Aygıtlar ve Kullanıcılar'ın altındaki Parola Ayarları sayfasını görüntüleme erişimini kontrol eder. Yapılandırma\ Aygıtlar ve Kullanıcılar Ayarlar\Genel\Güvenlik \Parolalar konumuna gidin</value>
+  </data>
+  <data name="SettingsHeaderBasedAuthenticationHelp" xml:space="preserve">
+    <value>Kurumsal Entegrasyon'un altındaki External Authentication sayfasına erişimi kontrol eder. Ayarlar\Sistem\Kurumsal Entegrasyon konumuna gidin</value>
+  </data>
+  <data name="SettingsLinux" xml:space="preserve">
+    <value>Linux Ayarları</value>
+  </data>
+  <data name="SettingsLinuxAgentApplication" xml:space="preserve">
+    <value>Linux Uygulaması İçin Intelligent Hub Ayarları</value>
+  </data>
+  <data name="SettingsLinuxAgentApplicationHelp" xml:space="preserve">
+    <value>Linux İçin Intelligent Hub Uygulama Ayarları Sayfasına erişimi denetler</value>
+  </data>
+  <data name="SettingsLinuxAgentSettings" xml:space="preserve">
+    <value>Intelligent Hub için Linux ayarları</value>
+  </data>
+  <data name="SettingsLinuxAgentSettingsHelp" xml:space="preserve">
+    <value>Linux altındaki Intelligent Hub Ayarları sayfasına erişimi kontrol eder. Ayarlar\Aygıtlar ve Kullanıcılar\Linux konumuna gidin</value>
+  </data>
+  <data name="SettingsLinuxHelp" xml:space="preserve">
+    <value>Linux altındaki Intelligent Hub Ayarları sayfasına erişimi kontrol eder. Ayarlar\Aygıtlar ve Kullanıcılar\Linux konumuna gidin</value>
+  </data>
+  <data name="SettingsOnlyValidAtPartnerOrCustomer" xml:space="preserve">
+    <value>SaaS Bildirimleri geçerli Organizasyon Grubu düzeyinde görüntülenemiyor. SaaS Bildirimlerini görüntülemek için müşteri veya iş ortağı düzeyinde bir OG seçin.</value>
+  </data>
+  <data name="SettingsOverridesAd" xml:space="preserve">
+    <value>Ayarları Geçersiz Kılma İşlemleri</value>
+  </data>
+  <data name="SettingsOverridesAdHelp" xml:space="preserve">
+    <value>Etkinlik günlüğü geçersiz kılmayı görüntüle ve düzenle.</value>
+  </data>
+  <data name="SettingsQnxAgentSettingsHelp" xml:space="preserve">
+    <value>Qnx altındaki Aracı Ayarları sayfasına erişimi kontrol eder. Yapılandırma\Sistem Ayarları\Aygıt\Qnx konumuna gidin</value>
+  </data>
+  <data name="SharedDevicesSet" xml:space="preserve">
+    <value>Paylaşılan Aygıtlar</value>
+  </data>
+  <data name="SharedDevicesSetHelp" xml:space="preserve">
+    <value>Paylaşılan Aygıt sayfasına erişimi kontrol eder</value>
+  </data>
+  <data name="SmartGroupsAb" xml:space="preserve">
+    <value>Akıllı Gruplar</value>
+  </data>
+  <data name="SmartGroupsAbHelp" xml:space="preserve">
+    <value>Akıllı Grup Uygulaması atamalarını düzenle</value>
+  </data>
+  <data name="SmartGroupsGr" xml:space="preserve">
+    <value>Akıllı Gruplar</value>
+  </data>
+  <data name="SmartGroupsGrHelp" xml:space="preserve">
+    <value>Akıllı grupları görüntüle, düzenle ve sil</value>
+  </data>
+  <data name="SoftwareInventoryWM" xml:space="preserve">
+    <value>Yazılım Stoğu</value>
+  </data>
+  <data name="SoftwareInventoryWMHelp" xml:space="preserve">
+    <value>WinMo Yazılım Stoku sayfasına erişim sağla</value>
+  </data>
+  <data name="SslPinningSec" xml:space="preserve">
+    <value>SSL Sabitleme</value>
+  </data>
+  <data name="SslPinningSecHelp" xml:space="preserve">
+    <value>SSL Sabitleme ekranını görüntülemeye izin verir.</value>
+  </data>
+  <data name="StagingPPN" xml:space="preserve">
+    <value>Hazırlama</value>
+  </data>
+  <data name="StagingPPNHelp" xml:space="preserve">
+    <value>Provizyonlama profilleri için hazırlama tanımlarını yönet</value>
+  </data>
+  <data name="StartAwcm" xml:space="preserve">
+    <value>AWCM Başlat</value>
+  </data>
+  <data name="StatusHistoryDD" xml:space="preserve">
+    <value>Durum Geçmişi</value>
+  </data>
+  <data name="StatusHistoryDDHelp" xml:space="preserve">
+    <value>Bir aygıt için kayıt ve uyumluluk durumu geçmişini görüntüle</value>
+  </data>
+  <data name="StopAwcm" xml:space="preserve">
+    <value>AWCM Durdur</value>
+  </data>
+  <data name="SummaryInfoPM" xml:space="preserve">
+    <value>Özet Bilgisi</value>
+  </data>
+  <data name="SummaryInfoPMHelp" xml:space="preserve">
+    <value>Yazıcı özeti bilgilerine erişimi kontrol eder.</value>
+  </data>
+  <data name="SuspendBitlockerEncryptionHelp" xml:space="preserve">
+    <value>Aygıt Ayrıntıları sayfasında BitLocker şifrelemesini askıya almayı yapılandırmak için</value>
+  </data>
+  <data name="SymbianDev" xml:space="preserve">
+    <value>Symbian</value>
+  </data>
+  <data name="SymbianDevHelp" xml:space="preserve">
+    <value>Aygıt seçeneği altında Symbian sayfasına erişimi kontrol eder</value>
+  </data>
+  <data name="SyncDD" xml:space="preserve">
+    <value>Aygıt Ayarlarını Eşitle</value>
+  </data>
+  <data name="SyncDDHelp" xml:space="preserve">
+    <value>Profiller ve uygulamalar gibi aygıt ayarlarını uzaktan eşitle</value>
+  </data>
+  <data name="SyncDeviceEnrollmentProgram" xml:space="preserve">
+    <value>Kayıt programı aygıtlarını eşitle</value>
+  </data>
+  <data name="SyncDeviceEnrollmentProgramHelp" xml:space="preserve">
+    <value>DEP Aygıtlarını Eşitlemek için erişimi kontrol eder. Kayıt Durumu Sayfasına gidin</value>
+  </data>
+  <data name="SyncDeviceSensors" xml:space="preserve">
+    <value>Aygıt Algılayıcıları Eşitle</value>
+  </data>
+  <data name="SyncDeviceSensorsHelp" xml:space="preserve">
+    <value>Aygıta algılayıcı verilerini yenileme isteği gönderme erişimini denetler</value>
+  </data>
+  <data name="SystemCodeAuditAd" xml:space="preserve">
+    <value>Sistem Kodu Denetlemesi</value>
+  </data>
+  <data name="SystemCodeAuditAdHelp" xml:space="preserve">
+    <value>Sistem Kodu Denetlemesine erişimi kontrol eder.</value>
+  </data>
+  <data name="SystemHealthSettingsAd" xml:space="preserve">
+    <value>Sistem Durumu Ayarları</value>
+  </data>
+  <data name="SystemHealthSettingsAdHelp" xml:space="preserve">
+    <value>Sistem Durumu ayarlarını görüntüle ve düzenle.</value>
+  </data>
+  <data name="SystemHealthSettingsEditHelp" xml:space="preserve">
+    <value>Sistem Durumu ayarlarını düzenlemek için izin verir. Şuraya gidin: Menü\Yapılandırma\Sistem Ayarları\Yönetici\Tanılama\Sistem Durumu</value>
+  </data>
+  <data name="SystemHealthSettingsViewHelp" xml:space="preserve">
+    <value>Sistem Durumu ayarlarını görüntülemek için izin verir. Şuraya gidin: Menü\Yapılandırma\Sistem Ayarları\Yönetici\Tanılama\Sistem Durumu</value>
+  </data>
+  <data name="SystemInternalHub" xml:space="preserve">
+    <value>Sistem İçi</value>
+  </data>
+  <data name="SystemInternalHubHelp" xml:space="preserve">
+    <value>Dahili ödeme raporları oluştur</value>
+  </data>
+  <data name="TagManagementViewHelp" xml:space="preserve">
+    <value>Etiket yönetimini görüntülemeye izin verir</value>
+  </data>
+  <data name="TagsApi" xml:space="preserve">
+    <value>Etiketler</value>
+  </data>
+  <data name="TagsApiHelp" xml:space="preserve">
+    <value>Tüm Etiket API'lerine erişim sağla</value>
+  </data>
+  <data name="TagsDev" xml:space="preserve">
+    <value>Etiketler</value>
+  </data>
+  <data name="TagsDevHelp" xml:space="preserve">
+    <value>Etiket yönetimine erişim izni verir</value>
+  </data>
+  <data name="TargetedLogDeviceEditHelp" xml:space="preserve">
+    <value>Hedeflenen aygıtın günlük kaydını düzenlemek için izin verir. Panolar\Aygıt Panosu konumuna gidin</value>
+  </data>
+  <data name="TargetedLogDeviceViewHelp" xml:space="preserve">
+    <value>Hedeflenen aygıtın günlük kaydını görüntülemek için izin verir. Panolar\Aygıt Panosu konumuna gidin</value>
+  </data>
+  <data name="TelecomBasicSettingsViewHelp" xml:space="preserve">
+    <value>Telekom Temel Yapılandırma Sihirbazı için gereken erişimi kontrol eder.</value>
+  </data>
+  <data name="TelecomDD" xml:space="preserve">
+    <value>Telekom</value>
+  </data>
+  <data name="TelecomDDHelp" xml:space="preserve">
+    <value>Aygıt detaylarında, aygıt telekom verisine erişim sağla</value>
+  </data>
+  <data name="TelecomHub" xml:space="preserve">
+    <value>Telekom</value>
+  </data>
+  <data name="TelecomHubHelp" xml:space="preserve">
+    <value>Telekom yönetimi için raporlar oluştur</value>
+  </data>
+  <data name="TelecomManagementTel" xml:space="preserve">
+    <value>Telekom Yönetimi</value>
+  </data>
+  <data name="TelecomManagementTelHelp" xml:space="preserve">
+    <value>Telekom Modülüne erişimi kontrol eder. Telekom seçeneği altında kullanılabilir menü öğelerini gösterir</value>
+  </data>
+  <data name="TelecomSettingsSys" xml:space="preserve">
+    <value>Telekom Ayarları</value>
+  </data>
+  <data name="TelecomSettingsSysHelp" xml:space="preserve">
+    <value>Telekom ayarları sayfasına erişimi kontrol eder</value>
+  </data>
+  <data name="TenantStorageGr" xml:space="preserve">
+    <value>Kiracı Depolaması</value>
+  </data>
+  <data name="TenantStorageGrHelp" xml:space="preserve">
+    <value>Dahili kullanım için: Kiracı Depolaması sayfasına erişimi denetler.</value>
+  </data>
+  <data name="TenantStorageHelp" xml:space="preserve">
+    <value>Dahili kullanım için yalnızca Sistem Yöneticisi rolü tarafından görüntülenir. Kiracı deposu için Ayarlar/Yönetici/Depolama sayfasına erişimi denetler.</value>
+  </data>
+  <data name="TermsOfUseAdmin" xml:space="preserve">
+    <value>Kullanım Şartları</value>
+  </data>
+  <data name="TermsOfUseAdminHelp" xml:space="preserve">
+    <value>Yönetici hesapları Kullanım Şartlarını görüntüle</value>
+  </data>
+  <data name="TermsOfUseSys" xml:space="preserve">
+    <value>Kullanım Şartları</value>
+  </data>
+  <data name="TermsOfUseSysHelp" xml:space="preserve">
+    <value>Sistem Ayarlarında ve Aygıt Kaydında, Kullanım Şartları sayfasına erişimi kontrol eder</value>
+  </data>
+  <data name="TestModeEM" xml:space="preserve">
+    <value>Test Modu</value>
+  </data>
+  <data name="TestModeEMHelp" xml:space="preserve">
+    <value>E-posta yönetimi uyumluluk ilkeleri için test modunu düzenleyin.</value>
+  </data>
+  <data name="TimeScheduleDM" xml:space="preserve">
+    <value>Zaman Çizelgesi</value>
+  </data>
+  <data name="TimeScheduleDMHelp" xml:space="preserve">
+    <value>Profiller için zaman çizelgeleri görüntüle ve düzenle</value>
+  </data>
+  <data name="TimeScheduleHelp" xml:space="preserve">
+    <value>Zaman Planlaması ayarlarını Görüntüleme/Düzenleme izni verir. 
+</value>
+  </data>
+  <data name="TroubleshootingSys" xml:space="preserve">
+    <value>Sorun Giderme</value>
+  </data>
+  <data name="TroubleshootingSysHelp" xml:space="preserve">
+    <value>Günlüklere ve sorun giderme sayfalarına erişimi kontrol eder</value>
+  </data>
+  <data name="UemNotificationsInfo" xml:space="preserve">
+    <value>Workspace ONE UEM ve Workspace ONE Assist için bildirimleri içerir.</value>
+  </data>
+  <data name="UnApproveUpdate" xml:space="preserve">
+    <value>Güncelleme Onayını Kaldır</value>
+  </data>
+  <data name="UnApproveUpdateHelp" xml:space="preserve">
+    <value>Aygıtlara güncellemeyi reddetme komutu verilmesi için izin verir.</value>
+  </data>
+  <data name="UnApproveUpdates" xml:space="preserve">
+    <value>Güncelleme Onayını Kaldır</value>
+  </data>
+  <data name="UnManagedWipeProtectionHelp" xml:space="preserve">
+    <value>Yönetilmeyen aygıtı fabrika ayarlarına geri döndürme koruma ayarları</value>
+  </data>
+  <data name="UpdateEditAssignment" xml:space="preserve">
+    <value>Atama Düzenlemeyi Güncelle</value>
+  </data>
+  <data name="UpdateEditAssignmentHelp" xml:space="preserve">
+    <value>Güncellemenin akıllı gruplara atanmasını düzenlemek için izin verir</value>
+  </data>
+  <data name="UploadCctk" xml:space="preserve">
+    <value>Cctk'yi Karşıya Yükle</value>
+  </data>
+  <data name="UploadCctkHelp" xml:space="preserve">
+    <value>Yöneticinin, BIOS'u yapılandırmak için dağıtım yapılandırmasına yönelik CCTK paket dosyası yüklemesine izin verir.</value>
+  </data>
+  <data name="UploadUnattendXml" xml:space="preserve">
+    <value>Atanmamış Xml'i Karşıya Yükle</value>
+  </data>
+  <data name="UploadUnattendXmlHelp" xml:space="preserve">
+    <value>Yöneticinin, dağıtım yapılandırması için XML Atamasını Kaldırma dosyası yüklemesine izin verir.</value>
+  </data>
+  <data name="UsageTel" xml:space="preserve">
+    <value>Kullanım</value>
+  </data>
+  <data name="UsageTelHelp" xml:space="preserve">
+    <value>Telekom kullanım detaylarını ve panoyu görüntüle</value>
+  </data>
+  <data name="UserCategoriesDU" xml:space="preserve">
+    <value>Kullanıcı Kategorileri</value>
+  </data>
+  <data name="UserCategoriesDUHelp" xml:space="preserve">
+    <value>Sistem ayarlarında kullanıcı kategorilerine erişimi kontrol eder.</value>
+  </data>
+  <data name="UserDetailUserAccounts" xml:space="preserve">
+    <value>Kullanıcı detayı</value>
+  </data>
+  <data name="UserDetailUserAccountsHelp" xml:space="preserve">
+    <value>Kullanıcı detayları sayfa görünümüne erişim sağla</value>
+  </data>
+  <data name="UserInfoDD" xml:space="preserve">
+    <value>Kullanıcı Bilgisi</value>
+  </data>
+  <data name="UserInfoDDHelp" xml:space="preserve">
+    <value>Aygıt detaylarından kullanıcı bilgilerine erişim sağla</value>
+  </data>
+  <data name="UserManagementHub" xml:space="preserve">
+    <value>Kullanıcı Yönetimi</value>
+  </data>
+  <data name="UserManagementHubHelp" xml:space="preserve">
+    <value>Kullanıcı yönetimi için raporlar oluştur</value>
+  </data>
+  <data name="UserMigrationHelp" xml:space="preserve">
+    <value>LDAP kullanıcılarına taşınmaları mümkün olan temel kayıt kullanıcılarının görüntülenmesine izin verir 
+</value>
+  </data>
+  <data name="UserRegistrationDashboard" xml:space="preserve">
+    <value>Kullanıcı Kaydı</value>
+  </data>
+  <data name="UserRegistrationDashboardHelp" xml:space="preserve">
+    <value>Pano'dan ya da Kullanıcı Hesapları sayfasından kayıt durumu bağlantısına erişim sağla</value>
+  </data>
+  <data name="UserRegistrationEnrollmentStatus" xml:space="preserve">
+    <value>Kullanıcı Kaydı</value>
+  </data>
+  <data name="UserRegistrationEnrollmentStatusHelp" xml:space="preserve">
+    <value>Kayıt Durumu sayfasında Kullanıcı Kaydına Erişim Sağla</value>
+  </data>
+  <data name="UserRegistrationHelp" xml:space="preserve">
+    <value>Pano ve Kullanıcı Hesapları sayfasında Kayıt Durumu bağlantısını görüntülemek için erişimi kontrol eder. Menü/Yönetim/Kullanıcı Hesaplarına gidin</value>
+  </data>
+  <data name="UserRoleHelp" xml:space="preserve">
+    <value>Rollere, kullanıcı hesapları  seçeneği altında erişimi kontrol eder
+</value>
+  </data>
+  <data name="UsersRESTSystem" xml:space="preserve">
+    <value>Kullanıcılar</value>
+  </data>
+  <data name="UsersRESTSystemHelp" xml:space="preserve">
+    <value>Kayıt kullanıcı hesapları için REST API'leri</value>
+  </data>
+  <data name="UserStorageSet" xml:space="preserve">
+    <value>Kullanıcı Depolaması</value>
+  </data>
+  <data name="UserStorageSetHelp" xml:space="preserve">
+    <value>Son kullanıcılar için içerik depolama ayarlarını yönet</value>
+  </data>
+  <data name="UserTrackingHub" xml:space="preserve">
+    <value>Kullanıcı İzleme</value>
+  </data>
+  <data name="UserTrackingHubHelp" xml:space="preserve">
+    <value>Kullanıcıyı izleme için raporlar oluştur</value>
+  </data>
+  <data name="VideoManagementSet" xml:space="preserve">
+    <value>Video Yönetimi</value>
+  </data>
+  <data name="VideoManagementSetHelp" xml:space="preserve">
+    <value>Kanallara videolar ekle</value>
+  </data>
+  <data name="ViewAd" xml:space="preserve">
+    <value>Görüntüle</value>
+  </data>
+  <data name="ViewAdHelp" xml:space="preserve">
+    <value>Önbellek ayarlarını görüntüleme izni verir.</value>
+  </data>
+  <data name="ViewAdminAccount" xml:space="preserve">
+    <value>Görüntüle</value>
+  </data>
+  <data name="ViewAdminAccountHelp" xml:space="preserve">
+    <value>Yönetici hesaplarını görüntüle</value>
+  </data>
+  <data name="ViewAdminGroup" xml:space="preserve">
+    <value>Görüntüle</value>
+  </data>
+  <data name="ViewAdminGroupHelp" xml:space="preserve">
+    <value>Yönetici grubu sayfasını görüntüle</value>
+  </data>
+  <data name="ViewAdminRoles" xml:space="preserve">
+    <value>Görüntüle</value>
+  </data>
+  <data name="ViewAdminRolesHelp" xml:space="preserve">
+    <value>Yönetici rolleri sayfasını görüntüle</value>
+  </data>
+  <data name="ViewAn" xml:space="preserve">
+    <value>Görüntüle</value>
+  </data>
+  <data name="ViewAnHelp" xml:space="preserve">
+    <value>Aygıt seçeneği altında Android sayfasına erişimi kontrol eder.</value>
+  </data>
+  <data name="ViewApple" xml:space="preserve">
+    <value>Görüntüle</value>
+  </data>
+  <data name="ViewAppleHelp" xml:space="preserve">
+    <value>Aygıt seçeneği altında Apple sayfasına erişimi kontrol eder</value>
+  </data>
+  <data name="ViewBaselines" xml:space="preserve">
+    <value>Taban Çizgilerini Görüntüle</value>
+  </data>
+  <data name="ViewBaselinesHelp" xml:space="preserve">
+    <value>Taban Çizgilerini görüntüleme işlevine erişimi kontrol eder</value>
+  </data>
+  <data name="ViewCM" xml:space="preserve">
+    <value>Görüntüle</value>
+  </data>
+  <data name="ViewCMHelp" xml:space="preserve">
+    <value>İçerik Yönetimi sayfalarını görüntüle</value>
+  </data>
+  <data name="ViewCustomReportSubscriptionHelp" xml:space="preserve">
+    <value>Özel Raporların Aboneliğini görüntülemek için erişimi kontrol eder. Hub\Raporlar ve Analizler\Özel Raporlar\Abonelikler konumuna gidin</value>
+  </data>
+  <data name="ViewDashboardDM" xml:space="preserve">
+    <value>Panoyu Görüntüle</value>
+  </data>
+  <data name="ViewDashboardDMHelp" xml:space="preserve">
+    <value>Aygıt yönetimi içerisinde aygıt panosu sayfasını görüntüle</value>
+  </data>
+  <data name="ViewDeviceManagement" xml:space="preserve">
+    <value>Görüntüle</value>
+  </data>
+  <data name="ViewDeviceManagementHelp" xml:space="preserve">
+    <value>Aygıt yönetimi modülünü görüntüle</value>
+  </data>
+  <data name="ViewDevicesAb" xml:space="preserve">
+    <value>Aygıtları Görüntüle</value>
+  </data>
+  <data name="ViewDevicesAbHelp" xml:space="preserve">
+    <value>Bir uygulama ile ilişkili olan aygıtları görüntülemek için gereken erişimi kontrol eder</value>
+  </data>
+  <data name="ViewDevicesCM" xml:space="preserve">
+    <value>Aygıtları Görüntüle</value>
+  </data>
+  <data name="ViewDevicesCMHelp" xml:space="preserve">
+    <value>İçerik yönetimi sayfasında aygıtları atanan içeriğe göre görüntüle</value>
+  </data>
+  <data name="ViewDevicesDM" xml:space="preserve">
+    <value>Aygıtları Görüntüle</value>
+  </data>
+  <data name="ViewDevicesDMHelp" xml:space="preserve">
+    <value>Profillerde, aygıt simgesi görünümüne erişim sağla</value>
+  </data>
+  <data name="ViewDeviceSensors" xml:space="preserve">
+    <value>Aygıt Algılayıcıları Görüntüle</value>
+  </data>
+  <data name="ViewDeviceSensorsHelp" xml:space="preserve">
+    <value>Aygıt algılayıcı ayrıntılarını ve yapılandırmasını görüntüleme erişimini denetler</value>
+  </data>
+  <data name="ViewDeviceWnsStatus" xml:space="preserve">
+    <value>Aygıt WNS Durumunu Görüntüle</value>
+  </data>
+  <data name="ViewDeviceWnsStatusHelp" xml:space="preserve">
+    <value>Aygıt WNS durumunu görüntüleme özelliği.</value>
+  </data>
+  <data name="ViewDM" xml:space="preserve">
+    <value>Görüntüle</value>
+  </data>
+  <data name="ViewDMHelp" xml:space="preserve">
+    <value>Aygıt yönetiminde, profiller sayfasını görüntüle</value>
+  </data>
+  <data name="ViewEducationOverviewHelp" xml:space="preserve">
+    <value>Eğitim genel bakış sayfasını görüntüle      </value>
+  </data>
+  <data name="ViewEM" xml:space="preserve">
+    <value>Görüntüle</value>
+  </data>
+  <data name="ViewEMHelp" xml:space="preserve">
+    <value>E-posta Yönetimi menü öğesine erişin.</value>
+  </data>
+  <data name="ViewExtendedDeviceInventory" xml:space="preserve">
+    <value>Genişletilmiş Aygıt Envanterini Görüntüle</value>
+  </data>
+  <data name="ViewExtendedDeviceInventoryHelp" xml:space="preserve">
+    <value>Genişletilmiş Aygıt Envanterini görüntüleme erişimini kontrol edin.</value>
+  </data>
+  <data name="ViewExtendedDeviceInventoryOnDeviceDetail" xml:space="preserve">
+    <value>Aygıt ayrıntıları sayfasında Genişletilmiş Aygıt Envanterini görüntüle</value>
+  </data>
+  <data name="ViewExtendedDeviceInventoryOnDeviceDetailHelp" xml:space="preserve">
+    <value>Aygıt ayrıntıları sayfasında Genişletilmiş Aygıt Envanterini görüntüleme erişimini kontrol edin.</value>
+  </data>
+  <data name="ViewFileServerConfiguration" xml:space="preserve">
+    <value>Dosya Sunucusu Yapılandırmasını Görüntüle</value>
+  </data>
+  <data name="ViewFileServerConfigurationHelp" xml:space="preserve">
+    <value>Kullanıcıya, dosya sunucusu kılavuzunu ve ayrıntılarını görüntüleme izni verir</value>
+  </data>
+  <data name="ViewGen" xml:space="preserve">
+    <value>Görüntüle</value>
+  </data>
+  <data name="ViewGenHelp" xml:space="preserve">
+    <value>Sistem ayarları seçeneğinde, aygıt sayfalarına erişimi kontrol eder</value>
+  </data>
+  <data name="ViewGr" xml:space="preserve">
+    <value>Görüntüle</value>
+  </data>
+  <data name="ViewGrHelp" xml:space="preserve">
+    <value>Organizasyon Grubu sayfalarına erişim sağlayın.</value>
+  </data>
+  <data name="ViewHA" xml:space="preserve">
+    <value>Görüntüle</value>
+  </data>
+  <data name="ViewHAHelp" xml:space="preserve">
+    <value>Uyarılar modülüne erişim</value>
+  </data>
+  <data name="ViewIos" xml:space="preserve">
+    <value>Görüntüle</value>
+  </data>
+  <data name="ViewIosHelp" xml:space="preserve">
+    <value>Aygıt seçeneği altında iOS sayfasına erişimi kontrol eder</value>
+  </data>
+  <data name="ViewLinux" xml:space="preserve">
+    <value>Görüntüle</value>
+  </data>
+  <data name="ViewLinuxHelp" xml:space="preserve">
+    <value>Aygıt altında Linux sayfasına erişimi kontrol eder.</value>
+  </data>
+  <data name="ViewNotesHelp" xml:space="preserve">
+    <value>Notları görüntülemek için izin verir</value>
+  </data>
+  <data name="ViewOemUpdates" xml:space="preserve">
+    <value>Özgün Donatım Üreticisi (OEM) Güncellemelerini Görüntüle</value>
+  </data>
+  <data name="ViewOemUpdatesHelp" xml:space="preserve">
+    <value>OEM güncellemeleri panosunu görüntülemek için erişimi kontrol eder. Menü\Aygıtlar\OEMUpdates konumuna gidin</value>
+  </data>
+  <data name="ViewPM" xml:space="preserve">
+    <value>Görüntüle</value>
+  </data>
+  <data name="ViewPMHelp" xml:space="preserve">
+    <value>Çevre birimi ayarları sayfalarına erişim sağla</value>
+  </data>
+  <data name="ViewProvisioningPackages" xml:space="preserve">
+    <value>Windows Provizyonlama Paketleri</value>
+  </data>
+  <data name="ViewProvisioningPackagesHelp" xml:space="preserve">
+    <value>Provizyonlama paketlerini görüntülemek için erişimi kontrol et</value>
+  </data>
+  <data name="ViewSet" xml:space="preserve">
+    <value>Görüntüle</value>
+  </data>
+  <data name="ViewSetHelp" xml:space="preserve">
+    <value>Sistem Ayarlarında uygulama sayfalarına erişimi kontrol eder</value>
+  </data>
+  <data name="ViewSys" xml:space="preserve">
+    <value>Görüntüle</value>
+  </data>
+  <data name="ViewSysHelp" xml:space="preserve">
+    <value>Sistem Ayarlarına erişimi kontrol eder</value>
+  </data>
+  <data name="ViewTagHelp" xml:space="preserve">
+    <value>Etiketi görüntülemek için izin verir</value>
+  </data>
+  <data name="ViewTimeWindow" xml:space="preserve">
+    <value>Zaman Penceresini Görüntüle</value>
+  </data>
+  <data name="ViewTimeWindowHelp" xml:space="preserve">
+    <value>Zaman penceresini görüntüleme erişimini kontrol edin.</value>
+  </data>
+  <data name="ViewTimeWindowOnDeviceDetail" xml:space="preserve">
+    <value>Zaman Penceresini Aygıt ayrıntıları sayfasında görüntüle</value>
+  </data>
+  <data name="ViewTimeWindowOnDeviceDetailHelp" xml:space="preserve">
+    <value>Zaman penceresini aygıt ayrıntıları sayfasında görüntüleme erişimini kontrol edin.</value>
+  </data>
+  <data name="ViewUG" xml:space="preserve">
+    <value>Görüntüle</value>
+  </data>
+  <data name="ViewUGHelp" xml:space="preserve">
+    <value>Kullanıcı grup sayfasına erişim sağla</value>
+  </data>
+  <data name="ViewUpdateDevices" xml:space="preserve">
+    <value>Güncelleme Aygıtlarını Görüntüle</value>
+  </data>
+  <data name="ViewUpdateDevicesHelp" xml:space="preserve">
+    <value>Aygıtları güncelleme durumlarına göre görüntülemek için erişimi kontrol eder. Menü\Aygıtlar\Güncellemeler konumuna gidin</value>
+  </data>
+  <data name="ViewUpdatesHelp" xml:space="preserve">
+    <value>Güncellemeler panosunu görüntülemek için erişimi kontrol eder. Menü\Aygıtlar\Güncellemeler konumuna gidin</value>
+  </data>
+  <data name="ViewUserAccounts" xml:space="preserve">
+    <value>Görüntüle</value>
+  </data>
+  <data name="ViewUserAccountsHelp" xml:space="preserve">
+    <value>Kullanıcı hesaplarını görüntüle</value>
+  </data>
+  <data name="ViewUserCategories" xml:space="preserve">
+    <value>Görüntüle</value>
+  </data>
+  <data name="ViewUserCategoriesHelp" xml:space="preserve">
+    <value>Kullanıcı hesapları için kategorilere erişim sağla</value>
+  </data>
+  <data name="ViewUserDetails" xml:space="preserve">
+    <value>Kullanıcı Ayrıntıları Görüntüle</value>
+  </data>
+  <data name="ViewUserDetailsHelp" xml:space="preserve">
+    <value>Chrome OS Kullanıcı profilleri için kullanıcı atamalarını görüntüleyin.</value>
+  </data>
+  <data name="ViewUserRoles" xml:space="preserve">
+    <value>Görüntüle</value>
+  </data>
+  <data name="ViewUserRolesHelp" xml:space="preserve">
+    <value>Kullanıcı rollerini görüntüle</value>
+  </data>
+  <data name="ViewWin" xml:space="preserve">
+    <value>Görüntüle</value>
+  </data>
+  <data name="ViewWindowsTemplateDevicesHelp" xml:space="preserve">
+    <value>Yöneticinin, Console panosunda Windows Şablonu - provizyonlama paketinin uygulandığı Aygıtları görüntüleme ayarlarını yapılandırmasına izin verir</value>
+  </data>
+  <data name="ViewWindowsTemplatesHelp" xml:space="preserve">
+    <value>Yöneticinin, Console panosunda Windows Şablonunu Görüntüleme ayarlarını yapılandırmasına izin verir</value>
+  </data>
+  <data name="ViewWinHelp" xml:space="preserve">
+    <value>Aygıt seçeneği altında Windows sayfasına erişimi kontrol eder</value>
+  </data>
+  <data name="ViewXmlDM" xml:space="preserve">
+    <value>XML'i Görüntüle</value>
+  </data>
+  <data name="ViewXmlDMHelp" xml:space="preserve">
+    <value>Profillerden, XML simge görünümüne erişim sağla</value>
+  </data>
+  <data name="VmInstanceLockHelp" xml:space="preserve">
+    <value>Horizon FLEX tarafından yönetilen Sanal Makine örneklerini kilitle</value>
+  </data>
+  <data name="VmInstanceUnlockHelp" xml:space="preserve">
+    <value>Horizon FLEX tarafından yönetilen Sanal Makine örneklerinin kilidini aç</value>
+  </data>
+  <data name="VmInstanceWipeHelp" xml:space="preserve">
+    <value>Horizon FLEX tarafından yönetilen Sanal Makine örneklerini sil</value>
+  </data>
+  <data name="VMwareEmployeeLoginNotification" xml:space="preserve">
+    <value>VMware Çalışan Oturum Açma Bildirimi</value>
+  </data>
+  <data name="VMwareEmployeeLoginNotificationInfo" xml:space="preserve">
+    <value>Bir VMware çalışanı müşterinize veya iş ortağı OG'sine eriştiğinde belirlenen alıcıları bilgilendirmek için etkinleştirin.</value>
+  </data>
+  <data name="WebConsoleLogHelp" xml:space="preserve">
+    <value>Web Çöküş Günlüklerine olan erişimi denetler. 
+</value>
+  </data>
+  <data name="WeblinkPM" xml:space="preserve">
+    <value>Weblink</value>
+  </data>
+  <data name="WeblinkPMHelp" xml:space="preserve">
+    <value>Yazıcı Ağ Bağlantısı sayfasına erişimi kontrol eder.</value>
+  </data>
+  <data name="WebsiteFiltersSettingsHelp" xml:space="preserve">
+    <value>Web Sitesi Filtreleri ayarlar ekranını görüntülemek ve düzenlemek için erişimi kontrol eder. Gidilecek yol Ayarlar\Uygulamalar\Uygulama Entegrasyonu\Web Sitesi Filtreleri'dir</value>
+  </data>
+  <data name="WiFiPM" xml:space="preserve">
+    <value>Wi-Fi</value>
+  </data>
+  <data name="WiFiPMHelp" xml:space="preserve">
+    <value>Yazıcı Wi-Fİ sayfasına erişimi kontrol eder.</value>
+  </data>
+  <data name="Windows8RtWin" xml:space="preserve">
+    <value>Windows 8/RT</value>
+  </data>
+  <data name="Windows8RtWinHelp" xml:space="preserve">
+    <value>WinRT ayarlarına erişimi kontrol eder</value>
+  </data>
+  <data name="WindowsAppDeploymentsEditHelp" xml:space="preserve">
+    <value>Bu kaynak, yöneticilere Console üzerindeki uygulama dağıtımları ayarlarını yapılandırma izni verir</value>
+  </data>
+  <data name="WindowsAutoDiscoverySettingsEditHelp" xml:space="preserve">
+    <value>Bu kaynak, yöneticinin otomatik bulma modunu "Şirket İçi" veya "Bulut Tarafından Barındırılan" olarak yapılandırmasına ve Windows Otomatik Bulma için belirli bir etki alanını kaydetmesine izin verir</value>
+  </data>
+  <data name="WindowsAutoEnrollmentSettings" xml:space="preserve">
+    <value>Windows Otomatik Kayıt Ayarları</value>
+  </data>
+  <data name="WindowsAutoEnrollmentSettingsHelp" xml:space="preserve">
+    <value>Bu kaynak, yöneticilerin Windows aygıtlarda çalışan provizyonlama aracısı için geçerli olacak ayarları yapılandırmasına izin verir. </value>
+  </data>
+  <data name="WindowsMobileDD" xml:space="preserve">
+    <value>Windows Mobile</value>
+  </data>
+  <data name="WindowsMobileDDHelp" xml:space="preserve">
+    <value>Aygıt detaylarında Windows Mobil'in özel ayarlarını yönet</value>
+  </data>
+  <data name="WindowsMobileWm" xml:space="preserve">
+    <value>Windows Mobile</value>
+  </data>
+  <data name="WindowsMobileWmHelp" xml:space="preserve">
+    <value>Aygıt seçeneği altında Windows Mobile sayfasına erişimi kontrol eder</value>
+  </data>
+  <data name="WindowsPcSet" xml:space="preserve">
+    <value>Windows PC</value>
+  </data>
+  <data name="WindowsPcSetHelp" xml:space="preserve">
+    <value>Aygıt seçeneği altında Windows PC sayfalarına erişimi kontrol eder</value>
+  </data>
+  <data name="WindowsPhone8Win" xml:space="preserve">
+    <value>Windows Phone 8</value>
+  </data>
+  <data name="WindowsPhone8WinHelp" xml:space="preserve">
+    <value>Windows Phone ayarlarına erişimi kontrol eder.</value>
+  </data>
+  <data name="WindowsPhoneHealthAttestationEdit" xml:space="preserve">
+    <value>Windows Phone Sistem Durumu Kanıtlamasını Düzenle</value>
+  </data>
+  <data name="WindowsPhoneHealthAttestationEditHelp" xml:space="preserve">
+    <value>Bu kaynak, yöneticiye Windows 10 mobil aygıtları için sistem durumu kanıtlama ayarlarını yapılandırma izni verir</value>
+  </data>
+  <data name="WindowsPhoneWin" xml:space="preserve">
+    <value>Windows Phone</value>
+  </data>
+  <data name="WindowsPhoneWinHelp" xml:space="preserve">
+    <value>Sistem ayarları seçeneğinde Windows Phone sayfalarına erişimi kontrol eder</value>
+  </data>
+  <data name="WindowsRuntimeProvisioningHelp" xml:space="preserve">
+    <value>Bu ayarlar, yöneticinin Windows aygıtlarının son kullanıcılara toplu olarak provizyonlanması için gerekli olan provizyonlama bilgilerini görüntülemesine izin verecektir. Bu, tüm aygıtlar için önyükleme bilgilerinin ayarlanmasına yardımcı olacaktır.</value>
+  </data>
+  <data name="WindowsSampleScheduleHelp" xml:space="preserve">
+    <value>Bu ayar grubu, yöneticinin MDM verilerinden ve ayarlarından örnek toplama aralıklarını ayarlamasına izin verir.</value>
+  </data>
+  <data name="WinmoSWInventoryHub" xml:space="preserve">
+    <value>WinMo S/W Stoku</value>
+  </data>
+  <data name="WinmoSWInventoryHubHelp" xml:space="preserve">
+    <value>WinMo S/W Stoku için raporlar oluştur.</value>
+  </data>
+  <data name="WipeProtectionDU" xml:space="preserve">
+    <value>Silme Koruma</value>
+  </data>
+  <data name="WipeProtectionDUHelp" xml:space="preserve">
+    <value>Gelişmiş seçeneği altında Silme Koruma sayfasına erişimi kontrol eder.</value>
+  </data>
+  <data name="WorkflowsDD" xml:space="preserve">
+    <value>İş Akışları</value>
+  </data>
+  <data name="WorkflowsDDHelp" xml:space="preserve">
+    <value>Aygıtta iş akışlarının yürütülmesinin durumunu görüntüle.</value>
+  </data>
+  <data name="WorkspaceSet" xml:space="preserve">
+    <value>Kapsayıcı</value>
+  </data>
+  <data name="WorkspaceSetHelp" xml:space="preserve">
+    <value>Genel seçeneği altında Kapsayıcı sayfasına erişimi kontrol eder</value>
+  </data>
+  <data name="ZonesGr" xml:space="preserve">
+    <value>Bölgeler</value>
+  </data>
+  <data name="ZonesGrHelp" xml:space="preserve">
+    <value>Organizasyon grupları için konum bölgelerini yönetin.</value>
+  </data>
+  <data name="ZplPM" xml:space="preserve">
+    <value>Zpl</value>
+  </data>
+  <data name="ZplPMHelp" xml:space="preserve">
+    <value>Yazıcı ZPL sayfasına erişimi kontrol eder</value>
+  </data>
+</root>

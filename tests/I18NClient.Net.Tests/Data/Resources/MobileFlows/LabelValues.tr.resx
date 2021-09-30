@@ -1,0 +1,643 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AboutMobileFlows" xml:space="preserve">
+    <value>Mobile Flows Hakkında</value>
+  </data>
+  <data name="AddArgMobileFlow" xml:space="preserve">
+    <value>{0} Akış Ekle</value>
+    <comment>String will be passed in for {0}. Examples: 'Add Salesforce Flow', 'Add ServiceNow Flow' etc.</comment>
+  </data>
+  <data name="AddKeyValuePairs" xml:space="preserve">
+    <value>Tüm geçerli anahtar-değer çiftlerini ekler</value>
+  </data>
+  <data name="AddNewMobileFlow" xml:space="preserve">
+    <value>Yeni Mobile Flow Ekle</value>
+  </data>
+  <data name="AdobeSignDescription" xml:space="preserve">
+    <value>Belgeleri imzalamak için Adobe bağlayıcısı</value>
+  </data>
+  <data name="AdobeSignTitle" xml:space="preserve">
+    <value>Adobe Sign</value>
+  </data>
+  <data name="Algorithm" xml:space="preserve">
+    <value>Algoritma</value>
+  </data>
+  <data name="Approvals" xml:space="preserve">
+    <value>Onaylar</value>
+  </data>
+  <data name="AreYouSureToCancel" xml:space="preserve">
+    <value>İptal etmek istediğinizden emin misiniz?</value>
+  </data>
+  <data name="ArgCatalogConnector" xml:space="preserve">
+    <value>{0} Katalog Bağlayıcı</value>
+  </data>
+  <data name="ArgCatalogConnectors" xml:space="preserve">
+    <value>{0} Katalog Bağlayıcıları</value>
+  </data>
+  <data name="ArgMobileFlow" xml:space="preserve">
+    <value>{0} Mobile Flow</value>
+    <comment>Numeric one will be passed in for {0}</comment>
+  </data>
+  <data name="ArgMobileFlows" xml:space="preserve">
+    <value>{0} Mobile Flows</value>
+    <comment>Numeric value will be passed for {0}</comment>
+  </data>
+  <data name="AuthenticationHeader" xml:space="preserve">
+    <value>Kimlik Doğrulama Üstbilgisi</value>
+  </data>
+  <data name="BaseURL" xml:space="preserve">
+    <value>Temel URL</value>
+  </data>
+  <data name="BasicInformation" xml:space="preserve">
+    <value>Temel Bilgiler</value>
+  </data>
+  <data name="BoxNotesDescription" xml:space="preserve">
+    <value>@ simgesiyle bahsetme bildirimleri için Kutucuk Notları bağlayıcı</value>
+  </data>
+  <data name="BoxNotesTitle" xml:space="preserve">
+    <value>Kutucuk Notları</value>
+  </data>
+  <data name="ClientCredentials" xml:space="preserve">
+    <value>İstemci Kimlik Bilgileri</value>
+  </data>
+  <data name="ConcurDescription" xml:space="preserve">
+    <value>Gider talebi onayı için Concur bağlayıcı</value>
+  </data>
+  <data name="ConcurTitle" xml:space="preserve">
+    <value>Concur</value>
+  </data>
+  <data name="ConcurTravelDescription" xml:space="preserve">
+    <value>Seyahat talebi onayı için Concur bağlayıcı</value>
+  </data>
+  <data name="ConcurTravelTitle" xml:space="preserve">
+    <value>Concur Travel</value>
+  </data>
+  <data name="ConfirmConnectorDelete" xml:space="preserve">
+    <value>Bu bağlayıcıyı silmek istediğinize emin misiniz?</value>
+  </data>
+  <data name="ConnectionStatus" xml:space="preserve">
+    <value>Bağlantı Durumu</value>
+  </data>
+  <data name="ConnectorAuthConfigError" xml:space="preserve">
+    <value>Kimlik Doğrulama Türü yanlış ya da bağlayıcı hatalı. Sorunun araştırılması için IT yöneticinizle iletişime geçin.</value>
+  </data>
+  <data name="ConnectorAuthenticationTypeHelp" xml:space="preserve">
+    <value>Açılır listeden, arka uç hizmetinin istemcinin kullanmasını beklediği kimlik doğrulama türünü seçin.</value>
+  </data>
+  <data name="ConnectorBaseUrlConfigError" xml:space="preserve">
+    <value>Bağlayıcı hatalı. Sorunun araştırılması için IT yöneticinizle iletişime geçin.</value>
+  </data>
+  <data name="ConnectorBaseURLHelp" xml:space="preserve">
+    <value>Mobile Flows bağlayıcının arka uç hizmetinin URL'si. Bu sadece VMware bağlayıcılar için gereklidir. Örneğin, VMware Salesforce Connector'dan faydalanıyorsanız, kurumunuzun Salesforce URL'sini buraya girin.</value>
+  </data>
+  <data name="ConnectorDeleteWarning" xml:space="preserve">
+    <value>Bu eylem bağlayıcıyı kalıcı olarak kaldıracaktır</value>
+  </data>
+  <data name="ConnectorDiscoveryApiError" xml:space="preserve">
+    <value>Bulma URL'si doğrulanamadı</value>
+  </data>
+  <data name="ConnectorDiscoveryError" xml:space="preserve">
+    <value>Bu bağlayıcı bulunamadı. Sorunun araştırılması için IT yöneticinizle iletişime geçin.</value>
+  </data>
+  <data name="ConnectorDiscoveryInvalidResponse" xml:space="preserve">
+    <value>Bağlayıcı bulma yanıtı geçerli değil</value>
+  </data>
+  <data name="ConnectorDiscoveryURLHelp" xml:space="preserve">
+    <value>Bu, dağıtılan bağlayıcının yeteneklerini belirlemek için Mobile Flows sunucusu tarafından kullanılan URL'dir. Bağlayıcınızı bulutta barındırıyorsanız herkesin erişebileceği URL kullanılır. Bağlayıcınız bir API veya Edge Gateway'in ardında barındırılıyorsa kimlik doğrulamadan sonra bağlayıcının kendini yeniden yönlendirmek için ağ geçidinin tam yol URL'si kullanılır. URL'nin yanıtı Kart Bağlayıcıları Kılavuzunda tanımlandığı şekilde beklenen biçime uymalıdır.</value>
+  </data>
+  <data name="ConnectorIDHelp" xml:space="preserve">
+    <value>Kurumunuzun bağlayıcılarını benzersiz bir şekilde tanımlamak için bir Kimlik girin</value>
+  </data>
+  <data name="ConnectorIsNotFound" xml:space="preserve">
+    <value>Bağlayıcı bulunamadı</value>
+  </data>
+  <data name="ConnectorKeyValueHelp" xml:space="preserve">
+    <value>Bunlar, kullanıcıların bağlayıcının arka uç sisteminde kimliğinin doğrulanması için gerekli alanlardır. OAuth 2.0 alanları, gerektiğinde buraya eklenecektir. Ayrıntılar için Kart Bağlayıcıları Kılavuzuna bakın.</value>
+  </data>
+  <data name="ConnectorLoginURLHelp" xml:space="preserve">
+    <value>İstemci tarafından arka uç hizmeti ile kimlik doğrulaması yapmak ve erişim belirteci sağlamak üzere kullanılan URL. Örneğin, https://login.salesforce.com</value>
+  </data>
+  <data name="ConnectorName" xml:space="preserve">
+    <value>Bağlayıcı Adı</value>
+  </data>
+  <data name="ConnectorNameHelp" xml:space="preserve">
+    <value>Lütfen bağlayıcınızı tanımlamak üzere bir ad girin. Bu ad hem son kullanıcılar için istemcideki hizmetleri devreye sokmak, hem de Mobile Flows yöneticileri için farklı bağlayıcıları birbirinde ayırmak için kullanılır.</value>
+  </data>
+  <data name="ConnectorProviderHelp" xml:space="preserve">
+    <value>VMware tarafından sağlanan mı yoksa kurumunuz tarafından dahili olarak barındırılan bir bağlayıcıyı mı dağıtacağınızı seçin.</value>
+  </data>
+  <data name="ConnectorServiceHelp" xml:space="preserve">
+    <value>Dağıtmak istediğiniz VMware bağlayıcısını aşağı açılır menüden seçin.</value>
+  </data>
+  <data name="ConnectorStatusHelp" xml:space="preserve">
+    <value>Tüm kullanıcıların bu bağlayıcıya bağlı aygıtlarındaki Mobile Flow bilgisine erişmelerini engellemek istiyorsanız bağlayıcıyı devre dışı bırakın.</value>
+  </data>
+  <data name="ConnectorType" xml:space="preserve">
+    <value>Tür</value>
+  </data>
+  <data name="CoupaDescription" xml:space="preserve">
+    <value>İstek onayı için Coupa bağlayıcı</value>
+  </data>
+  <data name="CoupaTitle" xml:space="preserve">
+    <value>Coupa</value>
+  </data>
+  <data name="DeveloperGuide" xml:space="preserve">
+    <value>geliştirici kılavuzu</value>
+  </data>
+  <data name="DiscoveryURL" xml:space="preserve">
+    <value>Bulma URL'si</value>
+  </data>
+  <data name="DiscoveryURLChanged" xml:space="preserve">
+    <value>Bulma URL'si değiştirildi</value>
+  </data>
+  <data name="EditMobileFlow" xml:space="preserve">
+    <value>Mobile Flow'u Düzenle</value>
+  </data>
+  <data name="FieldCannotContainWhiteSpaces" xml:space="preserve">
+    <value>Alan boşluk/boşluklar içeremez</value>
+  </data>
+  <data name="FieldIsRequired" xml:space="preserve">
+    <value>Alan gerekli</value>
+  </data>
+  <data name="FieldMaxLength" xml:space="preserve">
+    <value>Alan {0} karakterden uzun olamaz</value>
+  </data>
+  <data name="FieldMinLength" xml:space="preserve">
+    <value>Alan en az {0} karakter uzunluğunda olmalıdır</value>
+  </data>
+  <data name="FieldShouldBeValidHttpsURL" xml:space="preserve">
+    <value>Alan, geçerli https URL'si olmalıdır</value>
+  </data>
+  <data name="FieldShouldBeValidURL" xml:space="preserve">
+    <value>Alan geçerli bir URL olmalıdır</value>
+  </data>
+  <data name="GitHubPage" xml:space="preserve">
+    <value>GitHub sayfası</value>
+  </data>
+  <data name="GoogleDocsDescription" xml:space="preserve">
+    <value>@ simgesiyle bahsetme bildirimleri için Google Docs</value>
+  </data>
+  <data name="GoogleDocsTitle" xml:space="preserve">
+    <value>Google Docs</value>
+  </data>
+  <data name="GrantType" xml:space="preserve">
+    <value>Yetki Türü</value>
+  </data>
+  <data name="GrantTypeHelp" xml:space="preserve">
+    <value>Açılır listeden erişim belirteci edinme yöntemini seçin. Yetkilendirme Kodu, bir erişim belirteci için yetkilendirme kodu paylaşmak üzere gizli ve genel istemciler tarafından kullanılır. Buna OAuth 2.0 yapılandırmasında Web Uygulaması veya Web Sunucusu adı verilebilir. İstemci Kimlik Bilgileri, kullanıcı bağlamının dışında bir erişim belirteci edinmek için istemciler tarafından kullanılır. OAuth 2.0 sağlayıcınız hizmet hesabı ayrıcalıklarına sahip bir İstemci Kimlik Bilgileri yetki türü sunuyorsa bu faydalı bir işlemdir. Parola, bir erişim belirteci için kullanıcının kimlik bilgilerini paylaşmak üzere birinci taraf istemciler tarafından kullanılır. OAuth 2.0 sağlayıcınız Parola yetki türü sunuyorsa ve kullanmak istediğiniz bir hizmet hesabınız varsa bu işlem faydalıdır.</value>
+  </data>
+  <data name="HideAdvancedOAuth2Options" xml:space="preserve">
+    <value>Gelişmiş Seçenekleri Gizle</value>
+  </data>
+  <data name="HowMobileFlowsWork" xml:space="preserve">
+    <value>Nasıl çalışıyor</value>
+  </data>
+  <data name="HowMobileFlowsWorkDescription" xml:space="preserve">
+    <value>Mobile Flows, bağlanmak istediğiniz her işletme sistemi için bağlayıcılar dağıtarak çalışanlara işlem yapılabilir bildirimleri mobil uygulamaları aracılığıyla etkinleştirme ya da devre dışı bırakma imkanı sağlar. Her bir bağlayıcının adı her bağlayıcı için genele açık bir URL ile eşleştirildiğinde çalışanlar, kurumsal uygulamalarındaki bildirimlere kolayca erişebilecektir.</value>
+  </data>
+  <data name="HubSpotDealsDescription" xml:space="preserve">
+    <value>Yeni teklif atamaları için HubSpot bağlayıcısı</value>
+  </data>
+  <data name="HubSpotDealsTitle" xml:space="preserve">
+    <value>HubSpot - Deals</value>
+  </data>
+  <data name="HubSpotTicketsDescription" xml:space="preserve">
+    <value>Yeni destek talebi atamaları için HubSpot bağlayıcısı</value>
+  </data>
+  <data name="HubSpotTicketsTitle" xml:space="preserve">
+    <value>HubSpot - Tickets</value>
+  </data>
+  <data name="JiraServiceDeskDescription" xml:space="preserve">
+    <value>Bilet onayı için Jira Hizmet Masası bağlayıcı</value>
+  </data>
+  <data name="JiraServiceDeskTitle" xml:space="preserve">
+    <value>Jira Hizmet Masası</value>
+  </data>
+  <data name="KeyValuePair" xml:space="preserve">
+    <value>Anahtar Değer Çifti Ekleme</value>
+  </data>
+  <data name="LinkedInLearningChatbotDescription" xml:space="preserve">
+    <value>Hub Assistant ile eğitim arama için LinkedIn Learning bağlayıcı</value>
+  </data>
+  <data name="LinkedInLearningChatbotTitle" xml:space="preserve">
+    <value>LinkedIn Learning Sohbet Robotu</value>
+  </data>
+  <data name="LinkedInLearningDescription" xml:space="preserve">
+    <value>Yeni eğitim bildirimleri için LinkedIn Learning bağlayıcı</value>
+  </data>
+  <data name="LinkedInLearningTitle" xml:space="preserve">
+    <value>LinkedIn Learning</value>
+  </data>
+  <data name="MicrosoftDynamicsCaseResolutionDescription" xml:space="preserve">
+    <value>Yeni olay atamaları için Microsoft Dynamics bağlayıcısı</value>
+  </data>
+  <data name="MicrosoftDynamicsCaseResolutionTitle" xml:space="preserve">
+    <value>Microsoft Dynamics – Case Resolution</value>
+  </data>
+  <data name="MicrosoftDynamicsDescription" xml:space="preserve">
+    <value>Yeni atanan hesap bildirimleri için Microsoft Dynamics bağlayıcı</value>
+  </data>
+  <data name="MicrosoftDynamicsTasksDescription" xml:space="preserve">
+    <value>Yeni görev atamaları için Microsoft Dynamics bağlayıcısı</value>
+  </data>
+  <data name="MicrosoftDynamicsTasksTitle" xml:space="preserve">
+    <value>Microsoft Dynamics – Tasks</value>
+  </data>
+  <data name="MicrosoftDynamicsTitle" xml:space="preserve">
+    <value>Microsoft Dynamics</value>
+  </data>
+  <data name="MicrosoftOneDriveDescription" xml:space="preserve">
+    <value>Dosya/klasör erişimi onayı için Microsoft OneDrive bağlayıcı</value>
+  </data>
+  <data name="MicrosoftOneDriveTitle" xml:space="preserve">
+    <value>Microsoft OneDrive</value>
+  </data>
+  <data name="MicrosoftPlannerDescription" xml:space="preserve">
+    <value>Yeni atanan görev bildirimleri için Microsoft Planner bağlayıcı</value>
+  </data>
+  <data name="MicrosoftPlannerTitle" xml:space="preserve">
+    <value>Microsoft Planner</value>
+  </data>
+  <data name="MicrosoftTeamsDescription" xml:space="preserve">
+    <value>@ simgesiyle bahsetme bildirimleri için Microsoft Teams bağlayıcı</value>
+  </data>
+  <data name="MicrosoftTeamsTitle" xml:space="preserve">
+    <value>Microsoft Teams</value>
+  </data>
+  <data name="MobileFlow" xml:space="preserve">
+    <value>Mobile Flow</value>
+  </data>
+  <data name="MobileFlowAPIURL" xml:space="preserve">
+    <value>Mobile Flows Uygulama Programı Arabirimi (API) URL'si</value>
+  </data>
+  <data name="MobileFlowBestPracticesDescription" xml:space="preserve">
+    <value>Mobile Flows en iyi yöntemleri VMware GitHub web sitesindeki Wiki sayfasında bulunabilir: https://github.com/vmwaresamples/card-connectors-guide/wiki.</value>
+  </data>
+  <data name="MobileFlowDescription" xml:space="preserve">
+    <value>Tüm bağlayıcıları görüntüle ve yönet</value>
+  </data>
+  <data name="MobileFlows" xml:space="preserve">
+    <value>Mobile Flows</value>
+  </data>
+  <data name="MobileFlowsAddConnectors" xml:space="preserve">
+    <value>Bağlayıcı Ekle</value>
+  </data>
+  <data name="MobileFlowsAdminNoAccessToOG" xml:space="preserve">
+    <value>Bu Organizasyon Grubunda yönetilen yöneticiler, Mobile Flows'a erişilebilir. Yöneticinizden gerekli rolü atamasını isteyin ve bu yöneticinizi Organizasyon Grubuna kaydedin. Ardından yeniden oturum açın ve bu Organizasyon Grubundan Mobile Flows'a erişmek için bu rolü kullanın.</value>
+  </data>
+  <data name="MobileFlowsAPIURL" xml:space="preserve">
+    <value>Mobile Flows Uygulama Programı Arabirimi (API) URL'si</value>
+  </data>
+  <data name="MobileFlowsApiUrlNotFound" xml:space="preserve">
+    <value>Mobile Flows Bulut Hizmeti kullanılamıyor.</value>
+  </data>
+  <data name="MobileFlowsApiUrlNotProvisioned" xml:space="preserve">
+    <value>Lütfen Mobile Flows Uygulama Programı Arabirimi (API) URL'sinin, Site URL'si bölümünde bulabileceğiniz geçerli Organizasyon Grubunda yapılandırıldığından emin olun. Sorun devam ederse lütfen sistem yöneticiniz ile iletişime geçin.</value>
+  </data>
+  <data name="MobileFlowsBestPractices" xml:space="preserve">
+    <value>Mobile Flows en iyi uygulamaları</value>
+  </data>
+  <data name="MobileFlowsCatalogDescription" xml:space="preserve">
+    <value>Aşağıda önceden oluşturulmuş (OOTB) bağlayıcılar ve iş akışları arasından seçim yaparak Workspace ONE Mobile Flows'u hemen kullanmaya başlayın. Sadece ekleyin, yapılandırın, birkaç ek ayrıntı girin ve hazırsınız!</value>
+  </data>
+  <data name="MobileFlowsCloudServiceDescription" xml:space="preserve">
+    <value>Mobile Flows, çalışanlara daha verimli olmaları için gereken işlem yapılabilir bildirimler sağlamak amacıyla VMware Intelligent Hub ve Boxer ile entegre olan Bulut Hizmetidir.</value>
+  </data>
+  <data name="MobileFlowsConnectingToCloudService" xml:space="preserve">
+    <value>Mobile Flows bulut hizmetine bağlanılıyor</value>
+  </data>
+  <data name="MobileFlowsConnectorGuideWikiArg" xml:space="preserve">
+    <value>Bağlayıcıları nasıl oluşturacağınızı öğrenmek için bu {0} içeriğine bakın</value>
+    <comment>Html string will be passed in for {0}. Example: &lt;label for='open-connectors-guide-wiki' class='wiki-link'&gt;developer guide&lt;/label&gt;`.</comment>
+  </data>
+  <data name="MobileFlowsDescription" xml:space="preserve">
+    <value>Mobile Flows'u görüntüle ve yönet</value>
+  </data>
+  <data name="MobileFlowsDirectoryBasicAdminError" xml:space="preserve">
+    <value>Workspace ONE Access'e erişiminiz yok. Workspace ONE Access'e erişim sağlamak için bu organizasyon grubunda yapılandırılmış dizin içinde bir dizin yöneticisi olmalısınız.</value>
+  </data>
+  <data name="MobileFlowsIDMNotConfigured" xml:space="preserve">
+    <value>Workspace ONE Access'e erişilemiyor. Erişim ayrıcalıklarınızı kontrol edin ve doğru bir şekilde yapılandırıldığından emin olun</value>
+  </data>
+  <data name="MobileFlowsIDMSetupArg" xml:space="preserve">
+    <value>Mobile Flows'a erişilebilmesi için önce Workspace ONE Access'in yapılandırılması gerekir. {0} konumuna gidin ve Workspace ONE Access'e bağlanın. Tamamlandıktan sonra oturumu kapatıp açın ve tekrar deneyin.</value>
+  </data>
+  <data name="MobileFlowsIDMSetupRequired" xml:space="preserve">
+    <value>Mobile Flows'a erişilebilmesi için öncelikle Workspace ONE'ın ayarlanması gerekir. Başlarken'e gidin ve Workspace ONE kurulumunu tamamlayın. İşlem tamamlandıktan sonra oturumu kapatın ve yeniden denemek için tekrar açın.</value>
+  </data>
+  <data name="MobileFlowsNoAccessToIDM" xml:space="preserve">
+    <value>Workspace ONE Access'e erişiminiz yok. Workspace ONE Access'e erişim sağlamak için bir dizin yöneticisi olmanız gerekir</value>
+  </data>
+  <data name="MobileFlowsNoAccessToOrganizationGroup" xml:space="preserve">
+    <value>Bu Kullanıcı, bu Organizasyon grubuna ait değil.</value>
+  </data>
+  <data name="MobileFlowsNotCustomerTypeOrganizationGroup" xml:space="preserve">
+    <value>Bulut Kiracısı, yalnızca Müşteri Türü Organizasyon Grubunda kaydedilebilir.</value>
+  </data>
+  <data name="MobileFlowsProductivityDescription" xml:space="preserve">
+    <value>Mobile Flows, çalışanların kişiselleştirilmiş iş akışlarını ortaya çıkararak ve farklı işletme sistemlerinden verileri toplayarak çalışanların tek bir uygulamadan tüm verimlilik uygulamalarına bağlı kalmasını kolaylaştırır.</value>
+  </data>
+  <data name="MobileFlowsRegisteringTenant" xml:space="preserve">
+    <value>Müşteri verileri URL'ye gönderiliyor ve kaydediliyor</value>
+  </data>
+  <data name="MobileFlowsSampleConnectorWikiArg" xml:space="preserve">
+    <value>Önceden oluşturulmuş bağlayıcıları bulmak için bu {0} içeriğine gidin</value>
+    <comment>Html string will be passed in for {0}. Example: &lt;label for='open-sample-connectors-wiki' class='wiki-link'&gt;GitHub page&lt;/label&gt;`.</comment>
+  </data>
+  <data name="MobileFlowsTenantAlreadyExists" xml:space="preserve">
+    <value>Bu Bulut Kiracısı, Mobile Flows Bulut Hizmetinde zaten var.</value>
+  </data>
+  <data name="MobileFlowsTenantProvisioning" xml:space="preserve">
+    <value>Başlamak için Mobile Flows bulut hizmetine bağlanacak kiracı müşteriyi kaydedin.</value>
+  </data>
+  <data name="MobileFlowsTenantProvisioningError" xml:space="preserve">
+    <value>Bazı şeyler yanlış gibi görünüyor…</value>
+  </data>
+  <data name="MobileFlowsTenantProvisioningFailed" xml:space="preserve">
+    <value>Bulut Kiracısı kaydedilemedi.</value>
+  </data>
+  <data name="MobileFlowsTenantProvisioningSuccess" xml:space="preserve">
+    <value>Mobile Flows bulut hizmetine başarıyla bağlanıldı!</value>
+  </data>
+  <data name="MobileFlowsVidmNotConfigured" xml:space="preserve">
+    <value>Workspace ONE Access, bu Organizasyon Grubu için yapılandırılmadı.</value>
+  </data>
+  <data name="MobileFlowTroubleshootDocs" xml:space="preserve">
+    <value>Lütfen GitHub üzerindeki Mobile Flows bağlayıcı kılavuzumuza bakınız: https://github.com/vmwaresamples/card-connectors-guide.</value>
+  </data>
+  <data name="MultiTenantParameters" xml:space="preserve">
+    <value>Çoklu Kiracılı Parametreler</value>
+  </data>
+  <data name="MyFlows" xml:space="preserve">
+    <value>Akışlarım</value>
+  </data>
+  <data name="NoMobileFlowsCatalogFound" xml:space="preserve">
+    <value>Kullanılabilir akış bulunamadı</value>
+  </data>
+  <data name="NoMobileFlowsFound" xml:space="preserve">
+    <value>Henüz bir mobile flows oluşturmamışsınız!</value>
+  </data>
+  <data name="NotificationMethod" xml:space="preserve">
+    <value>Bildirim Yöntemi</value>
+  </data>
+  <data name="NotificationMethodPoll" xml:space="preserve">
+    <value>Bildirim Yöntemi - Yoklama</value>
+  </data>
+  <data name="NotificationMethodPush" xml:space="preserve">
+    <value>Bildirim Yöntemi - Anında</value>
+  </data>
+  <data name="NotificationMethodPushInfo" xml:space="preserve">
+    <value>Kaynak işletme sisteminden anında bildirim ayarlarını yapılandırmak için lütfen bu bilgileri kullanın.</value>
+  </data>
+  <data name="NotificationPollPushDifference" xml:space="preserve">
+    <value>İşletme sistemlerinden gelen bildirimler yoklanabilir ya da anında iletilebilir:
+Yoklama: Mobile Flows sunucusu, yeni bildirim olup olmadığını tespit etmek için arka uç işletme sistemlerini 1 saatlik aralıklarla yoklar. 
+Anında İletme: Arka uç işletme sistemi, anında iletme mekanizmasını destekliyorsa Mobile Flows, bildirim hazır olduğunda hizmetin sorgulayabileceği bir arka nokta oluşturabilir.</value>
+  </data>
+  <data name="NoVmwareServicesFound" xml:space="preserve">
+    <value>Hiç VMware hizmeti bulunamadı.</value>
+  </data>
+  <data name="OAuth2Parameters" xml:space="preserve">
+    <value>OAuth 2.0 Parametreleri</value>
+  </data>
+  <data name="OopsSomethingWentWrong" xml:space="preserve">
+    <value>Tüh! Bir sorun oluştu!</value>
+  </data>
+  <data name="PollingInterval" xml:space="preserve">
+    <value>Yoklama Aralığı</value>
+  </data>
+  <data name="PushNotificationInfo" xml:space="preserve">
+    <value>Kaydedildiğinde, Anında İletme URL'si oluşturulur ve bağlayıcı ayrıntıları sayfasında bulunabilir. Kaynak işletme sisteminde anında iletme bildirimi ayarlarını yapılandırmak için lütfen bu bilgileri kullanın. Bu ayarları Akışlarım &gt; Düzenle'nin altında görüntüleyebilir ve düzenleyebilirsiniz.</value>
+  </data>
+  <data name="PushURL" xml:space="preserve">
+    <value>URL'yi Anında İlet</value>
+  </data>
+  <data name="RegenerateSecret" xml:space="preserve">
+    <value>Gizli Öğe Yeniden Oluşturulsun Mu?</value>
+  </data>
+  <data name="RegenerateSecretConfirm" xml:space="preserve">
+    <value>Gizli Öğeyi yeniden oluşturmak istediğinizden emin misiniz? Yeniden oluşturma işleminden sonra eski gizli öğe çalışmayacaktır. Lütfen kaynak işletme sistemindeki anında bildirim ayarlarını buna göre güncelleyin.</value>
+  </data>
+  <data name="SabaDescription" xml:space="preserve">
+    <value>Yeni öğrenme bildirimleri için Saba bağlayıcı</value>
+  </data>
+  <data name="SabaTitle" xml:space="preserve">
+    <value>Saba</value>
+  </data>
+  <data name="SalesforceCaseResolutionDescription" xml:space="preserve">
+    <value>Yeni olay atamaları için Salesforce bağlayıcısı</value>
+  </data>
+  <data name="SalesforceCaseResolutionTitle" xml:space="preserve">
+    <value>Salesforce – Case Resolution</value>
+  </data>
+  <data name="SalesforceDescription" xml:space="preserve">
+    <value>İndirim talebi onayı için Salesforce bağlayıcı</value>
+  </data>
+  <data name="SalesforceLeadsDescription" xml:space="preserve">
+    <value>Yeni atanan müşteri adayı bildirimleri için Salesforce bağlayıcı</value>
+  </data>
+  <data name="SalesforceLeadsTitle" xml:space="preserve">
+    <value>Salesforce Müşteri Adayları</value>
+  </data>
+  <data name="SalesforceTasksDescription" xml:space="preserve">
+    <value>Yeni görev atamaları için Salesforce bağlayıcısı</value>
+  </data>
+  <data name="SalesforceTasksTitle" xml:space="preserve">
+    <value>Salesforce – Tasks</value>
+  </data>
+  <data name="SalesforceTitle" xml:space="preserve">
+    <value>Salesforce</value>
+  </data>
+  <data name="ServiceAccountCredential" xml:space="preserve">
+    <value>Hizmet Hesabı Kimlik Bilgileri</value>
+  </data>
+  <data name="ServiceAccountCredentialHelp" xml:space="preserve">
+    <value>Lütfen arka uç hizmetinin istemcinin kullanmasını beklediği hizmet hesabı kimlik bilgilerini girin.</value>
+  </data>
+  <data name="ServiceNowChatbotDescription" xml:space="preserve">
+    <value>Bilet oluşturmak, bilet görüntülemek ve aygıtları Hub Assistant üzerinden sıralamak için ServiceNow bağlayıcı</value>
+  </data>
+  <data name="ServiceNowChatbotTitle" xml:space="preserve">
+    <value>ServiceNow Sohbet Robotu</value>
+  </data>
+  <data name="ServiceNowDescription" xml:space="preserve">
+    <value>İstek onayı için ServiceNow bağlayıcı</value>
+  </data>
+  <data name="ServiceNowTitle" xml:space="preserve">
+    <value>ServiceNow</value>
+  </data>
+  <data name="ShowAdvancedOAuth2Options" xml:space="preserve">
+    <value>Gelişmiş Seçenekleri Göster</value>
+  </data>
+  <data name="TokenServerHints" xml:space="preserve">
+    <value>Belirteç Sunucusu İpuçları</value>
+  </data>
+  <data name="TokenUriBodyParameters" xml:space="preserve">
+    <value>Belirteç URI Gövdesi Parametreleri</value>
+  </data>
+  <data name="UEMChatbotDescription" xml:space="preserve">
+    <value>Hub Assistant üzerinden aygıtları eşitlemek için UEM bağlayıcı</value>
+  </data>
+  <data name="UEMChatbotTitle" xml:space="preserve">
+    <value>UEM Sohbet Robotu</value>
+  </data>
+  <data name="UseCase" xml:space="preserve">
+    <value>Kullanım Örnekleri</value>
+  </data>
+  <data name="VirtualAssistant" xml:space="preserve">
+    <value>Sanal Yardımcı</value>
+  </data>
+  <data name="WhatIsMobileFlow" xml:space="preserve">
+    <value>Mobile Flows nedir?</value>
+  </data>
+  <data name="WhatIsMobileFlowDescription" xml:space="preserve">
+    <value>Mobile Flows, Boxer ve diğer kurumsal uygulamalarında uzak sistemlere karşı akıllı ve işlem yapılabilir bildirimleri etkinleştirerek çalışan verimini ve üretkenliğini artırır. Burada, yöneticiler son kullanıcılar için etkinleştirmek istedikleri bağlayıcıları ve akışları yapılandırabilir ve dağıtabilirler.</value>
+  </data>
+  <data name="Wiki" xml:space="preserve">
+    <value>Wiki</value>
+  </data>
+  <data name="WorkdayDescription" xml:space="preserve">
+    <value>PTO onayı için Workday bağlayıcı</value>
+  </data>
+  <data name="WorkdayTitle" xml:space="preserve">
+    <value>Workday</value>
+  </data>
+  <data name="WorkspaceONEHub" xml:space="preserve">
+    <value>Workspace ONE Hub</value>
+  </data>
+  <data name="ZendeskTasksDescription" xml:space="preserve">
+    <value>Görev onayları için Zendesk bağlayıcısı</value>
+  </data>
+  <data name="ZendeskTasksTitle" xml:space="preserve">
+    <value>Zendesk – Tasks</value>
+  </data>
+  <data name="ZendeskTicketResolutionDescription" xml:space="preserve">
+    <value>Yeni destek talebi atamaları için Zendesk bağlayıcısı</value>
+  </data>
+  <data name="ZendeskTicketResolutionTitle" xml:space="preserve">
+    <value>Zendesk – Ticket Resolution</value>
+  </data>
+  <data name="ZoomRecordingsDescription" xml:space="preserve">
+    <value>Yeni kayıt bildirimi için Zoom bağlayıcı</value>
+  </data>
+  <data name="ZoomRecordingsTitle" xml:space="preserve">
+    <value>Zoom Kayıtları</value>
+  </data>
+</root>

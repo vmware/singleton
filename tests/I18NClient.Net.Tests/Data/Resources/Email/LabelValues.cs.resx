@@ -1,0 +1,261 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AdminPersonalInformationChangeViaApi" xml:space="preserve">
+    <value>Osobní údaje správce byly změněny prostřednictvím rozhraní API</value>
+  </data>
+  <data name="AdminPersonalInformationChangeViaApiMTD" xml:space="preserve">
+    <value>Šablona výchozí HTML zprávy upozorňující správce, že byly prostřednictvím rozhraní API změněny jeho osobní údaje. Tato zpráva je automatizována a z bezpečnostních důvodů se vždy odešle.</value>
+  </data>
+  <data name="BlockAttachments" xml:space="preserve">
+    <value>Blokovat přílohy</value>
+  </data>
+  <data name="ConfirmEnrollmentEmailMessage" xml:space="preserve">
+    <value>Chcete poslat registrační e-mail?</value>
+  </data>
+  <data name="CustomAttribute1LookUpText" xml:space="preserve">
+    <value>Vlastní atribut 1</value>
+  </data>
+  <data name="CustomAttribute2LookUpText" xml:space="preserve">
+    <value>Vlastní atribut 2</value>
+  </data>
+  <data name="CustomAttribute3LookUpText" xml:space="preserve">
+    <value>Vlastní atribut 3</value>
+  </data>
+  <data name="CustomAttribute4LookUpText" xml:space="preserve">
+    <value>Vlastní atribut 4</value>
+  </data>
+  <data name="CustomAttribute5LookUpText" xml:space="preserve">
+    <value>Vlastní atribut 5</value>
+  </data>
+  <data name="EmailListViewError" xml:space="preserve">
+    <value>Zkontrolujte protokoly. Došlo k chybě. Operace se nezdařila!</value>
+  </data>
+  <data name="EmailNotificationInstallerV1" xml:space="preserve">
+    <value>Instalační program pro upozornění na e-mail V1</value>
+  </data>
+  <data name="EmailNotificationInstallerV2" xml:space="preserve">
+    <value>Instalační program pro upozornění na e-mail V2</value>
+  </data>
+  <data name="ENSSettingsInfo" xml:space="preserve">
+    <value>Služba upozornění na e-mail pro klienty aplikací VMware Boxer a Inbox zvyšuje servis uživatelů v oblasti upozorňování. Z portálu zdrojů si stáhněte do počítače připojeného k vaší síti odpovídající produktovou verzi ENS {0} nebo {1}. Adresa URL CNS je nakonfigurována globálně na stránce adres URL. Nemáte-li k této stránce přístup a adresa URL není správně vyplněna, obraťte se na správce služby AirWatch nebo podporu AW (sdílené SaaS).</value>
+  </data>
+  <data name="Exch2019" xml:space="preserve">
+    <value>Exchange 2019</value>
+  </data>
+  <data name="ExternalEnrollment" xml:space="preserve">
+    <value>Externí registrace</value>
+  </data>
+  <data name="Get" xml:space="preserve">
+    <value>Získat</value>
+  </data>
+  <data name="getStatus" xml:space="preserve">
+    <value>Získat status</value>
+  </data>
+  <data name="GmailUpdateFailed" xml:space="preserve">
+    <value>Aktualizace aplikace Gmail se nezdařila</value>
+  </data>
+  <data name="GoogleAccessUpdate" xml:space="preserve">
+    <value>Aktualizace služby Google Access</value>
+  </data>
+  <data name="GoogleCustomAttributeWarningMessage" xml:space="preserve">
+    <value>Na kartě uživatele adresářových služeb musí být aktivovány vlastní atributy</value>
+  </data>
+  <data name="GoogleProvisionPasswordOnUnenrollment" xml:space="preserve">
+    <value>Rotovat profily při zrušení registrace</value>
+  </data>
+  <data name="GoogleProvisionPasswordOnUnenrollmentToolTip" xml:space="preserve">
+    <value>Vypnutím této možnosti zabráníte rotaci profilu a hesla při zrušení registrace, když má uživatel registrováno více zařízení.</value>
+  </data>
+  <data name="GoogleTokenRevocationToolTip" xml:space="preserve">
+    <value>Aktivuje akci shody MDM pro odmítnutí uživatelských tokenů G Suite.</value>
+  </data>
+  <data name="GoogleTokenRevocationWarningMessage" xml:space="preserve">
+    <value>Odmítnutí tokenu je možné aktivovat jen pro jednu konfiguraci MEM v organizační skupině.</value>
+  </data>
+  <data name="GoogleUserEmailAddressType" xml:space="preserve">
+    <value>E-mailová adresa uživatele Google</value>
+  </data>
+  <data name="HelpMessageGoogleAppsConfig" xml:space="preserve">
+    <value>Správa e-mailu pro tento typ e-mailového serveru je podporována prostřednictvím přímé integrace s e-mailovým serverem.</value>
+  </data>
+  <data name="HelpMessageJSegConfig" xml:space="preserve">
+    <value>Schopnosti správy e-mailu pro tento e-mailový server vyžadují instalaci proxy serveru AirWatch Secure Email Gateway (SEG) v místní síti (on-premise). Po nakonfigurování základního nastavení si budete moci stáhnout instalační program pro aplikaci SEG ze stránky Shrnutí v tomto průvodci.</value>
+  </data>
+  <data name="HelpMessagePowerShellConfig" xml:space="preserve">
+    <value>Správa e-mailu pro tento typ e-mailového serveru je podporována prostřednictvím přímé integrace PowerShell s e-mailovým serverem a nevyžaduje proxy server AirWatch Secure Email Gateway (SEG).</value>
+  </data>
+  <data name="HelpMessageSegAnnouncement" xml:space="preserve">
+    <value>Společnost VMware oznámila nesouhlas s klasickým SEG. Více podrobností se dozvíte zde: {0}.</value>
+  </data>
+  <data name="InvalidSEGClusterHostName" xml:space="preserve">
+    <value>Neplatný hostitel clusteru SEG. Je povolen pouze platný protokol IPv4 / název hostitele.</value>
+  </data>
+  <data name="IsGoogleTokenRevocationEnabled" xml:space="preserve">
+    <value>Odmítnutí tokenu</value>
+  </data>
+  <data name="MailServerUpdateFailed" xml:space="preserve">
+    <value>Aktualizace e-mailového serveru se nezdařila</value>
+  </data>
+  <data name="MessageTemplates_Content_BlockEmailIfPolicyViolation" xml:space="preserve">
+    <value>Tento e-mail byl zablokován na zásadě zásad zabezpečení firemního e-mailu. Obraťte se na svého administrátora, který vám poskytne více informací.</value>
+  </data>
+  <data name="MessageTemplates_Description_BlockEmail" xml:space="preserve">
+    <value>Šablona výchozí zprávy, která bude odeslána uživatelům v případě zablokování e-mailu.</value>
+  </data>
+  <data name="MessageTemplates_Name_BlockEmail" xml:space="preserve">
+    <value>Blokovat e-mail</value>
+  </data>
+  <data name="MessageTemplates_Subject_BlockEmail" xml:space="preserve">
+    <value>E-mail zablokován</value>
+  </data>
+  <data name="PendingAllow" xml:space="preserve">
+    <value>Nevyřízené povolení</value>
+  </data>
+  <data name="PendingBlock" xml:space="preserve">
+    <value>Nevyřízené blokování</value>
+  </data>
+  <data name="RevokeGoogleTokenOnDeviceWipe" xml:space="preserve">
+    <value>Automaticky odmítnout při výmazu zařízení</value>
+  </data>
+  <data name="RevokeGoogleTokenOnDeviceWipeToolTip" xml:space="preserve">
+    <value>Aktivuje odmítnutí tokenu jako součást zrušení registrace a firemního výmazu dat.</value>
+  </data>
+  <data name="Segannouncement" xml:space="preserve">
+    <value>Oznámení My Workspace ONE</value>
+  </data>
+  <data name="setConfig" xml:space="preserve">
+    <value>Nastavit konfiguraci</value>
+  </data>
+  <data name="UserEmailPolicyToolTipTooltip" xml:space="preserve">
+    <value>Příklad:
+ 
+Hodnota „Acme*“ ve vyhledávacím poli vybere všechny uživatele/skupiny, které ZAČÍNAJÍ  textem „Acme“
+ 
+Hodnota „*Acme*“ ve vyhledávacím poli vybere všechny uživatele/skupiny, které OBSAHUJÍ text „Acme“
+ 
+Hodnota „*Acme“ ve vyhledávacím poli vybere všechny uživatele/skupiny, které KONČÍ textem „Acme“</value>
+  </data>
+  <data name="UserPrincipalNameLookupText" xml:space="preserve">
+    <value>Primární uživatelské jméno</value>
+  </data>
+  <data name="WorkspaceOneUEMLoginRecovery" xml:space="preserve">
+    <value>Obnova přihlášení do Workspace ONE UEM</value>
+  </data>
+</root>

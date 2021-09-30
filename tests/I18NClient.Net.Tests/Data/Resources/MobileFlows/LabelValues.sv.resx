@@ -1,0 +1,644 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AboutMobileFlows" xml:space="preserve">
+    <value>Om Mobile Flows</value>
+  </data>
+  <data name="AddArgMobileFlow" xml:space="preserve">
+    <value>Lägg till {0} Flow</value>
+    <comment>String will be passed in for {0}. Examples: 'Add Salesforce Flow', 'Add ServiceNow Flow' etc.</comment>
+  </data>
+  <data name="AddKeyValuePairs" xml:space="preserve">
+    <value>Lägg till alla tillämpliga nyckel/värdepar</value>
+  </data>
+  <data name="AddNewMobileFlow" xml:space="preserve">
+    <value>Lägg till nytt Mobile Flow</value>
+  </data>
+  <data name="AdobeSignDescription" xml:space="preserve">
+    <value>Adobe-anslutning för signering av dokument</value>
+  </data>
+  <data name="AdobeSignTitle" xml:space="preserve">
+    <value>Adobe Sign</value>
+  </data>
+  <data name="Algorithm" xml:space="preserve">
+    <value>Algoritm</value>
+  </data>
+  <data name="Approvals" xml:space="preserve">
+    <value>Godkännanden</value>
+  </data>
+  <data name="AreYouSureToCancel" xml:space="preserve">
+    <value>Är du säker på att du vill avbryta?</value>
+  </data>
+  <data name="ArgCatalogConnector" xml:space="preserve">
+    <value>{0} kataloganslutning</value>
+  </data>
+  <data name="ArgCatalogConnectors" xml:space="preserve">
+    <value>{0} kataloganslutningar</value>
+  </data>
+  <data name="ArgMobileFlow" xml:space="preserve">
+    <value>{0} Mobile Flow</value>
+    <comment>Numeric one will be passed in for {0}</comment>
+  </data>
+  <data name="ArgMobileFlows" xml:space="preserve">
+    <value>Mobile Flows för {0}</value>
+    <comment>Numeric value will be passed for {0}</comment>
+  </data>
+  <data name="AuthenticationHeader" xml:space="preserve">
+    <value>Autentiseringshuvuddata</value>
+  </data>
+  <data name="BaseURL" xml:space="preserve">
+    <value>Bas-URL</value>
+  </data>
+  <data name="BasicInformation" xml:space="preserve">
+    <value>Grundläggande information</value>
+  </data>
+  <data name="BoxNotesDescription" xml:space="preserve">
+    <value>Box Notes-anslutning för @-omnämningsmeddelanden</value>
+  </data>
+  <data name="BoxNotesTitle" xml:space="preserve">
+    <value>Box Notes</value>
+  </data>
+  <data name="ClientCredentials" xml:space="preserve">
+    <value>Klientautentiseringsuppgifter</value>
+  </data>
+  <data name="ConcurDescription" xml:space="preserve">
+    <value>Concur-anslutning för godkännande av utgiftsförfrågan</value>
+  </data>
+  <data name="ConcurTitle" xml:space="preserve">
+    <value>Concur</value>
+  </data>
+  <data name="ConcurTravelDescription" xml:space="preserve">
+    <value>Concur-anslutning för godkännande av reseförfrågan</value>
+  </data>
+  <data name="ConcurTravelTitle" xml:space="preserve">
+    <value>Concur-resa</value>
+  </data>
+  <data name="ConfirmConnectorDelete" xml:space="preserve">
+    <value>Är du säker på att du vill ta bort det här anslutningsprogrammet?</value>
+  </data>
+  <data name="ConnectionStatus" xml:space="preserve">
+    <value>Anslutningsstatus</value>
+  </data>
+  <data name="ConnectorAuthConfigError" xml:space="preserve">
+    <value>Autentiseringstypen är antingen felaktig eller anslutningen är defekt. Kontakta din it-administratör för att utreda frågan.</value>
+  </data>
+  <data name="ConnectorAuthenticationTypeHelp" xml:space="preserve">
+    <value>Välj den autentiseringsmetod i listrutan som backend-tjänsten förväntar sig att klienten använder.</value>
+  </data>
+  <data name="ConnectorBaseUrlConfigError" xml:space="preserve">
+    <value>Det är fel på anslutningen. Kontakta din it-administratör för att utreda frågan.</value>
+  </data>
+  <data name="ConnectorBaseURLHelp" xml:space="preserve">
+    <value>URL:n för anslutningsprogrammets backend-tjänst för Mobile Flows. Detta är endast nödvändigt för VMware-anslutningsprogram. Dvs. om du använder VMware Salesforce Connector anger du organisationens Salesforce-URL här.</value>
+  </data>
+  <data name="ConnectorDeleteWarning" xml:space="preserve">
+    <value>Den här åtgärden tar bort anslutningsprogrammet permanent</value>
+  </data>
+  <data name="ConnectorDiscoveryApiError" xml:space="preserve">
+    <value>Det gick inte att validera identifierings-URL:en</value>
+  </data>
+  <data name="ConnectorDiscoveryError" xml:space="preserve">
+    <value>Anslutningen kunde inte hittas. Kontakta din it-administratör för att utreda frågan.</value>
+  </data>
+  <data name="ConnectorDiscoveryInvalidResponse" xml:space="preserve">
+    <value>Anslutningsprogrammets identifieringssvar är inte giltigt</value>
+  </data>
+  <data name="ConnectorDiscoveryURLHelp" xml:space="preserve">
+    <value>Detta är den URL som används av servern för Mobile Flows för att fastställa kapaciteten hos en distribuerad anslutning. Om ditt anslutningsprogram är en värdtjänst i molnet används den publikt tillgängliga URL:n. Om ditt anslutningsprogram är en värdtjänst bakom en API eller en gateway på nätverkskanten används den fullständiga sökvägen till URL:n för gatewayen för att omdirigera anslutningsprogrammet när det har autentiserats. URL:ns svar måste stämma överens med det förväntade formatet som definierats i guiden Card Connectors.</value>
+  </data>
+  <data name="ConnectorIDHelp" xml:space="preserve">
+    <value>Ange ett ID som unikt identifierar organisationens anslutningsprogram</value>
+  </data>
+  <data name="ConnectorIsNotFound" xml:space="preserve">
+    <value>Anslutningsprogrammet kunde inte hittas</value>
+  </data>
+  <data name="ConnectorKeyValueHelp" xml:space="preserve">
+    <value>De här fälten är obligatoriska för autentisering av användare till anslutningsprogrammets backend-system. OAuth 2.0-fälten inkluderas här vid behov. Se guiden Card Connectors för detaljerad information.</value>
+  </data>
+  <data name="ConnectorLoginURLHelp" xml:space="preserve">
+    <value>URL:n som klienten använder för att autentisera till backend-tjänsten och tillhandahålla en åtkomsttoken. Till exempel: https://login.salesforce.com</value>
+  </data>
+  <data name="ConnectorName" xml:space="preserve">
+    <value>Anslutningsprogrammets namn</value>
+  </data>
+  <data name="ConnectorNameHelp" xml:space="preserve">
+    <value>Ange ett namn som identifierar anslutningsprogrammet. Namnet används av slutanvändare när de aktiverar tjänster på klienter och av administratörer för Mobile Flows så att de kan se skillnad på de olika anslutningsprogrammen.</value>
+  </data>
+  <data name="ConnectorProviderHelp" xml:space="preserve">
+    <value>Välj om du vill distribuera ett anslutningsprogram från VMware eller ett internt anslutningsprogram i organisationen.</value>
+  </data>
+  <data name="ConnectorServiceHelp" xml:space="preserve">
+    <value>Välj i det VMware-anslutningsprogram du vill distribuera i listrutan</value>
+  </data>
+  <data name="ConnectorStatusHelp" xml:space="preserve">
+    <value>Avaktivera kontakt om du vill förhindra att alla användare kommer åt Mobile Flow-information på sina enheter för den här kontakten.</value>
+  </data>
+  <data name="ConnectorType" xml:space="preserve">
+    <value>Typ</value>
+  </data>
+  <data name="CoupaDescription" xml:space="preserve">
+    <value>Coupa-anslutning för godkännande av rekvisitionsförfrågan</value>
+  </data>
+  <data name="CoupaTitle" xml:space="preserve">
+    <value>Coupa</value>
+  </data>
+  <data name="DeveloperGuide" xml:space="preserve">
+    <value>utvecklarhandbok</value>
+  </data>
+  <data name="DiscoveryURL" xml:space="preserve">
+    <value>Webbadress för identifiering</value>
+  </data>
+  <data name="DiscoveryURLChanged" xml:space="preserve">
+    <value>Identifierings-URL:en ändrades</value>
+  </data>
+  <data name="EditMobileFlow" xml:space="preserve">
+    <value>Redigera Mobile Flow</value>
+  </data>
+  <data name="FieldCannotContainWhiteSpaces" xml:space="preserve">
+    <value>Fältet får inte innehålla blanksteg</value>
+  </data>
+  <data name="FieldIsRequired" xml:space="preserve">
+    <value>Fältet är obligatoriskt</value>
+  </data>
+  <data name="FieldMaxLength" xml:space="preserve">
+    <value>Fältet får inte innehålla mer än {0} tecken</value>
+  </data>
+  <data name="FieldMinLength" xml:space="preserve">
+    <value>Fältet måste innehålla minst {0} tecken</value>
+  </data>
+  <data name="FieldShouldBeValidHttpsURL" xml:space="preserve">
+    <value>Fältet ska vara en giltig https-webbadress</value>
+  </data>
+  <data name="FieldShouldBeValidURL" xml:space="preserve">
+    <value>Fältet måste innehålla en giltig URL</value>
+  </data>
+  <data name="GitHubPage" xml:space="preserve">
+    <value>GitHub-sidan</value>
+  </data>
+  <data name="GoogleDocsDescription" xml:space="preserve">
+    <value>Google Docs-anslutning för @-omnämnningsmeddelanden</value>
+  </data>
+  <data name="GoogleDocsTitle" xml:space="preserve">
+    <value>Google Docs</value>
+  </data>
+  <data name="GrantType" xml:space="preserve">
+    <value>Beviljandetyp</value>
+  </data>
+  <data name="GrantTypeHelp" xml:space="preserve">
+    <value>Välj metod för att hämta en åtkomsttoken i listrutan. Auktoriseringskod används av konfidentiella och offentliga klienter för att byta en auktoriseringskod mot en åtkomsttoken. Det här kallas ibland Web App eller Web Server i OAuth 2.0-konfiguration. Klientautentiseringsuppgifter används av klienter för att hämta en åtkomsttoken utanför en användares kontext. Det här är användbart om din OAuth 2.0-leverantör erbjuder klientautentiseringsuppgifter med tjänstkontobehörighet som beviljandetyp. Lösenord används av förstapartsklienter för att byta en användares autentiseringsuppgifter mot en åtkomsttoken. Det här är användbart om din OAuth 2.0-leverantör erbjuder en beviljandetyp med lösenord och om du har ett tjänstkonto som du vill använda.</value>
+  </data>
+  <data name="HideAdvancedOAuth2Options" xml:space="preserve">
+    <value>Dölj avancerade alternativ</value>
+  </data>
+  <data name="HowMobileFlowsWork" xml:space="preserve">
+    <value>Så fungerar det</value>
+  </data>
+  <data name="HowMobileFlowsWorkDescription" xml:space="preserve">
+    <value>Med Mobile Flows (mobila flöden) kan du ge anställda möjlighet att aktivera eller avaktivera meddelanden som kan åtgärdas via sina mobila appar genom att använda kontakter för varje affärssystem som du vill ansluta. När varje anslutningsnamn har mappats till en offentlig webbadress för varje kontakt får anställda enkel åtkomst till meddelanden om sina företagsappar.</value>
+  </data>
+  <data name="HubSpotDealsDescription" xml:space="preserve">
+    <value>HubSpot-anslutning för nya dealtilldelningar</value>
+  </data>
+  <data name="HubSpotDealsTitle" xml:space="preserve">
+    <value>HubSpot – Dealar</value>
+  </data>
+  <data name="HubSpotTicketsDescription" xml:space="preserve">
+    <value>HubSpot-anslutning för nya biljettilldelningar</value>
+  </data>
+  <data name="HubSpotTicketsTitle" xml:space="preserve">
+    <value>HubSpot – Biljetter</value>
+  </data>
+  <data name="JiraServiceDeskDescription" xml:space="preserve">
+    <value>JIRA Service Desk-anslutning för godkännande av biljett</value>
+  </data>
+  <data name="JiraServiceDeskTitle" xml:space="preserve">
+    <value>Jira Service Desk</value>
+  </data>
+  <data name="KeyValuePair" xml:space="preserve">
+    <value>Lägg till nyckel/värdepar</value>
+  </data>
+  <data name="LinkedInLearningChatbotDescription" xml:space="preserve">
+    <value>LinkedIn Learning-anslutning för att söka utbildningar via Hub Assistant</value>
+  </data>
+  <data name="LinkedInLearningChatbotTitle" xml:space="preserve">
+    <value>LinkedIn Learning-chattbott</value>
+  </data>
+  <data name="LinkedInLearningDescription" xml:space="preserve">
+    <value>LinkedIn Learning-anslutning för nya utbildningsmeddelanden</value>
+  </data>
+  <data name="LinkedInLearningTitle" xml:space="preserve">
+    <value>LinkedIn Learning</value>
+  </data>
+  <data name="MicrosoftDynamicsCaseResolutionDescription" xml:space="preserve">
+    <value>Microsoft Dynamics-anslutning för nya ärendetilldelningar</value>
+  </data>
+  <data name="MicrosoftDynamicsCaseResolutionTitle" xml:space="preserve">
+    <value>Microsoft Dynamics – Ärendelösning</value>
+  </data>
+  <data name="MicrosoftDynamicsDescription" xml:space="preserve">
+    <value>Microsoft Dynamics-anslutning för nya tilldelade kontomeddelanden</value>
+  </data>
+  <data name="MicrosoftDynamicsTasksDescription" xml:space="preserve">
+    <value>Microsoft Dynamic-anslutning för nya uppgiftstilldelningar</value>
+  </data>
+  <data name="MicrosoftDynamicsTasksTitle" xml:space="preserve">
+    <value>Microsoft Dynamics – Uppgifter</value>
+  </data>
+  <data name="MicrosoftDynamicsTitle" xml:space="preserve">
+    <value>Microsoft Dynamics</value>
+  </data>
+  <data name="MicrosoftOneDriveDescription" xml:space="preserve">
+    <value>Microsoft OneDrive-anslutning för godkännande av fil-/mappåtkomst</value>
+  </data>
+  <data name="MicrosoftOneDriveTitle" xml:space="preserve">
+    <value>Microsoft OneDrive</value>
+  </data>
+  <data name="MicrosoftPlannerDescription" xml:space="preserve">
+    <value>Microsoft Planner-anslutning för nya meddelanden om tilldelade uppgifter</value>
+  </data>
+  <data name="MicrosoftPlannerTitle" xml:space="preserve">
+    <value>Microsoft Planner</value>
+  </data>
+  <data name="MicrosoftTeamsDescription" xml:space="preserve">
+    <value>Microsoft Teams-anslutning för @-omnämningsmeddelanden</value>
+  </data>
+  <data name="MicrosoftTeamsTitle" xml:space="preserve">
+    <value>Microsoft Teams</value>
+  </data>
+  <data name="MobileFlow" xml:space="preserve">
+    <value>Mobile Flow</value>
+  </data>
+  <data name="MobileFlowAPIURL" xml:space="preserve">
+    <value>API-URL för Mobile Flows</value>
+  </data>
+  <data name="MobileFlowBestPracticesDescription" xml:space="preserve">
+    <value>Bästa praxis för Mobile Flows finns i wikin på VMware GitHub-webbplatsen: https://github.com/vmwaresamples/card-connectors-guide/wiki.</value>
+  </data>
+  <data name="MobileFlowDescription" xml:space="preserve">
+    <value>Visa och hantera alla anslutningsprogram</value>
+  </data>
+  <data name="MobileFlows" xml:space="preserve">
+    <value>Mobile Flows</value>
+  </data>
+  <data name="MobileFlowsAddConnectors" xml:space="preserve">
+    <value>Lägg till kontakter</value>
+  </data>
+  <data name="MobileFlowsAdminNoAccessToOG" xml:space="preserve">
+    <value>Administratörer som du hanterar med hjälp av den här organisationsgruppen kan få åtkomst till Mobile Flows. Kontakta systemadministratören, be denna tilldela den roll som krävs och spara sedan den här administratören i den här organisationsgruppen. Logga sedan in igen och använd den rollen till att få åtkomst till Mobile Flows i den här organisationsgruppen.</value>
+  </data>
+  <data name="MobileFlowsAPIURL" xml:space="preserve">
+    <value>API-URL för Mobile Flows</value>
+  </data>
+  <data name="MobileFlowsApiUrlNotFound" xml:space="preserve">
+    <value>Molntjänsten Mobile Flows är inte tillgänglig.</value>
+  </data>
+  <data name="MobileFlowsApiUrlNotProvisioned" xml:space="preserve">
+    <value>Se till att webbadressen för Mobile Flows API är konfigurerad i den aktuella organisationsgruppen. Du hittar den i avsnittet Webbplatsadresser. Om problemet kvarstår kontaktar du systemadministratören.</value>
+  </data>
+  <data name="MobileFlowsBestPractices" xml:space="preserve">
+    <value>Bästa praxis för Mobile Flows</value>
+  </data>
+  <data name="MobileFlowsCatalogDescription" xml:space="preserve">
+    <value>Börja använda Workspace ONE Mobile Flows direkt genom att välja bland de hyllfärdiga (OOTB) anslutningarna och arbetsflödena nedan. Lägg till, konfigurera och ge ytterligare information och du är klar!</value>
+  </data>
+  <data name="MobileFlowsCloudServiceDescription" xml:space="preserve">
+    <value>Mobile Flows är en molntjänst som integreras med VMware Intelligent Hub och Boxer för att förse anställda med funktionsrika aviseringar som de behöver för att bli mer produktiva.</value>
+  </data>
+  <data name="MobileFlowsConnectingToCloudService" xml:space="preserve">
+    <value>Ansluter till molntjänsten Mobile Flows</value>
+  </data>
+  <data name="MobileFlowsConnectorGuideWikiArg" xml:space="preserve">
+    <value>Se denna {0} för mer information om att skapa anslutningar</value>
+    <comment>Html string will be passed in for {0}. Example: &lt;label for='open-connectors-guide-wiki' class='wiki-link'&gt;developer guide&lt;/label&gt;`.</comment>
+  </data>
+  <data name="MobileFlowsDescription" xml:space="preserve">
+    <value>Visa och hantera Mobile Flows</value>
+  </data>
+  <data name="MobileFlowsDirectoryBasicAdminError" xml:space="preserve">
+    <value>Du har inte åtkomst till Workspace ONE Access. Du måste vara en katalogadministratör i katalogen som konfigurerats i den här organisationsgruppen för att komma åt Workspace ONE Access.</value>
+  </data>
+  <data name="MobileFlowsIDMNotConfigured" xml:space="preserve">
+    <value>Det gick inte att ansluta till Workspace ONE Access. Kontrollera att dina åtkomstprivilegier är korrekt konfigurerade</value>
+  </data>
+  <data name="MobileFlowsIDMSetupArg" xml:space="preserve">
+    <value>Workspace ONE Access måste konfigureras innan Mobile Flows kan användas. Gå till {0} och anslut till Workspace ONE Access. När det är klart loggar du ut och loggar sedan in igen för att försöka igen.</value>
+  </data>
+  <data name="MobileFlowsIDMSetupRequired" xml:space="preserve">
+    <value>Workspace ONE måste ställas in innan Mobile Flows kan nås. Gå till Komma igång och slutför konfigurationen av Workspace ONE. När du är klar måste du logga ut och logga in igen för att försöka igen.</value>
+  </data>
+  <data name="MobileFlowsNoAccessToIDM" xml:space="preserve">
+    <value>Du har inte åtkomst till Workspace ONE Access. Du måste vara katalogadministratör för att få åtkomst till Workspace ONE Access</value>
+  </data>
+  <data name="MobileFlowsNoAccessToOrganizationGroup" xml:space="preserve">
+    <value>Den här användaren hör inte till den här organisationsgruppen.</value>
+  </data>
+  <data name="MobileFlowsNotCustomerTypeOrganizationGroup" xml:space="preserve">
+    <value>Molninnehavaren kan endast registreras i kundtypens organisationsgrupp.</value>
+  </data>
+  <data name="MobileFlowsProductivityDescription" xml:space="preserve">
+    <value>Mobile Flows gör det enklare för anställda att förbli anslutna till alla sina produktivitetsappar från en enda app genom att visa anställdas personliga arbetsflöde och samla data från olika affärssystem.</value>
+  </data>
+  <data name="MobileFlowsRegisteringTenant" xml:space="preserve">
+    <value>Skickar och registrerar kunddata för URL</value>
+  </data>
+  <data name="MobileFlowsSampleConnectorWikiArg" xml:space="preserve">
+    <value>Gå till denna {0} för att hitta förbyggda anslutningar</value>
+    <comment>Html string will be passed in for {0}. Example: &lt;label for='open-sample-connectors-wiki' class='wiki-link'&gt;GitHub page&lt;/label&gt;`.</comment>
+  </data>
+  <data name="MobileFlowsTenantAlreadyExists" xml:space="preserve">
+    <value>Den här molninnehavaren finns redan i molntjänsten Mobile Flows.</value>
+  </data>
+  <data name="MobileFlowsTenantProvisioning" xml:space="preserve">
+    <value>För att komma igång registrerar du kundinnehavare för att ansluta till molntjänsten Mobile Flows.</value>
+  </data>
+  <data name="MobileFlowsTenantProvisioningError" xml:space="preserve">
+    <value>Det är något som inte stämmer …</value>
+  </data>
+  <data name="MobileFlowsTenantProvisioningFailed" xml:space="preserve">
+    <value>Molninnehavaren kunde inte registreras.</value>
+  </data>
+  <data name="MobileFlowsTenantProvisioningSuccess" xml:space="preserve">
+    <value>Ansluten till molntjänsten Mobile Flow!</value>
+  </data>
+  <data name="MobileFlowsVidmNotConfigured" xml:space="preserve">
+    <value>Workspace ONE Access har inte konfigurerats för den här organisationsgruppen.</value>
+  </data>
+  <data name="MobileFlowTroubleshootDocs" xml:space="preserve">
+    <value>Se vår Connector Guide för Mobile Flows på GitHub: https://github.com/vmwaresamples/card-connectors-guide.</value>
+  </data>
+  <data name="MultiTenantParameters" xml:space="preserve">
+    <value>Flerinnehavarparametrar</value>
+  </data>
+  <data name="MyFlows" xml:space="preserve">
+    <value>Mina flöden</value>
+  </data>
+  <data name="NoMobileFlowsCatalogFound" xml:space="preserve">
+    <value>Inga tillgängliga flöden hittades</value>
+  </data>
+  <data name="NoMobileFlowsFound" xml:space="preserve">
+    <value>Du verkar inte ha skapat några mobilflöden än!</value>
+  </data>
+  <data name="NotificationMethod" xml:space="preserve">
+    <value>Meddelandemetod</value>
+  </data>
+  <data name="NotificationMethodPoll" xml:space="preserve">
+    <value>Meddelandemetod - avsökning</value>
+  </data>
+  <data name="NotificationMethodPush" xml:space="preserve">
+    <value>Meddelandemetod – push</value>
+  </data>
+  <data name="NotificationMethodPushInfo" xml:space="preserve">
+    <value>Använd informationen för att konfigurera inställningar för push-meddelanden i källans affärssystem.</value>
+  </data>
+  <data name="NotificationPollPushDifference" xml:space="preserve">
+    <value>Aviseringar från affärssystem kan avsökas eller skickas:
+Avsökning – Mobile Flows server avsöker backend-affärssystemet i intervall om 1 timme för nya aviseringar. 
+Push – Om ett backend-affärssystem stödjer en push-mekanism kan Mobile Flows skapa en slutpunkt för tjänsten att anropa när aviseringar är klara.</value>
+  </data>
+  <data name="NoVmwareServicesFound" xml:space="preserve">
+    <value>Inga VMware-tjänster hittades.</value>
+  </data>
+  <data name="OAuth2Parameters" xml:space="preserve">
+    <value>Parametrar för OAuth 2.0</value>
+  </data>
+  <data name="OopsSomethingWentWrong" xml:space="preserve">
+    <value>Hoppsan! Ett fel inträffade!</value>
+  </data>
+  <data name="PollingInterval" xml:space="preserve">
+    <value>Avsökningsintervall</value>
+  </data>
+  <data name="PushNotificationInfo" xml:space="preserve">
+    <value>När du har sparat kommer push-URL: en att skapas och du hittar den på anslutningsinformationssidan. Använd informationen för att konfigurera inställningarna för push-meddelanden i källans affärssystem. Du kan visa och redigera inställningarna under Mina flöden &gt; Redigera.</value>
+  </data>
+  <data name="PushURL" xml:space="preserve">
+    <value>Push-URL</value>
+  </data>
+  <data name="RegenerateSecret" xml:space="preserve">
+    <value>Vill du återskapa den hemliga nyckeln igen?</value>
+  </data>
+  <data name="RegenerateSecretConfirm" xml:space="preserve">
+    <value>Är du säker på att du vill skapa den hemliga nyckeln igen? När den har genererats på nytt kommer den tidigare inte längre att fungera. Var noga med att uppdatera inställningarna för push-meddelanden i källans affärssystem.</value>
+  </data>
+  <data name="SabaDescription" xml:space="preserve">
+    <value>Saba Connector för avisering av nya utbildningar </value>
+  </data>
+  <data name="SabaTitle" xml:space="preserve">
+    <value>Saba</value>
+  </data>
+  <data name="SalesforceCaseResolutionDescription" xml:space="preserve">
+    <value>Salesforce-anslutning för nya ärendetilldelningar</value>
+  </data>
+  <data name="SalesforceCaseResolutionTitle" xml:space="preserve">
+    <value>Salesforce – Ärendelösning</value>
+  </data>
+  <data name="SalesforceDescription" xml:space="preserve">
+    <value>Salesforce-anslutning för godkännande av förfrågan om rabatt</value>
+  </data>
+  <data name="SalesforceLeadsDescription" xml:space="preserve">
+    <value>Salesforce-anslutning för meddelanden om ny tilldelade lead</value>
+  </data>
+  <data name="SalesforceLeadsTitle" xml:space="preserve">
+    <value>Salesforce-leads</value>
+  </data>
+  <data name="SalesforceTasksDescription" xml:space="preserve">
+    <value>Salesforce-anslutning för nya uppgiftstilldelningar</value>
+  </data>
+  <data name="SalesforceTasksTitle" xml:space="preserve">
+    <value>Salesforce – Uppgifter</value>
+  </data>
+  <data name="SalesforceTitle" xml:space="preserve">
+    <value>Salesforce</value>
+  </data>
+  <data name="ServiceAccountCredential" xml:space="preserve">
+    <value>Autentiseringsuppgifter för tjänstekonto</value>
+  </data>
+  <data name="ServiceAccountCredentialHelp" xml:space="preserve">
+    <value>Ange autentiseringsuppgifterna för tjänstekontot som backend-tjänsten förväntar sig att klienten ska använda.</value>
+  </data>
+  <data name="ServiceNowChatbotDescription" xml:space="preserve">
+    <value>ServiceNow-anslutning för att skapa biljetter, visa biljetter och beställa enheter via Hub Assistant</value>
+  </data>
+  <data name="ServiceNowChatbotTitle" xml:space="preserve">
+    <value>ServiceNow-chattbott</value>
+  </data>
+  <data name="ServiceNowDescription" xml:space="preserve">
+    <value>ServiceNow-anslutning för godkännande av rekvisitionsförfrågan</value>
+  </data>
+  <data name="ServiceNowTitle" xml:space="preserve">
+    <value>ServiceNow</value>
+  </data>
+  <data name="ShowAdvancedOAuth2Options" xml:space="preserve">
+    <value>Visa avancerade alternativ</value>
+  </data>
+  <data name="TokenServerHints" xml:space="preserve">
+    <value>Tips om tokenserver</value>
+  </data>
+  <data name="TokenUriBodyParameters" xml:space="preserve">
+    <value>Parametrar för tokens URI-text</value>
+  </data>
+  <data name="UEMChatbotDescription" xml:space="preserve">
+    <value>UEM-anslutning för synkronisering av enheter via Hub Assistant</value>
+  </data>
+  <data name="UEMChatbotTitle" xml:space="preserve">
+    <value>UEM-chattbott</value>
+  </data>
+  <data name="UseCase" xml:space="preserve">
+    <value>Användningsfall</value>
+  </data>
+  <data name="VirtualAssistant" xml:space="preserve">
+    <value>Virtuell assistent</value>
+  </data>
+  <data name="WhatIsMobileFlow" xml:space="preserve">
+    <value>Vad är Mobile Flows?</value>
+  </data>
+  <data name="WhatIsMobileFlowDescription" xml:space="preserve">
+    <value>Mobile Flows ökar effektiviteten och produktiviteten bland dina anställda med ett intelligent och funktionsrikt aviseringssystem för Boxer och andra företagsappar.
+Administratörer kan konfigurera och drisftsätta anslutningsprogram och flöden de vill aktivera för slutanvändarna.</value>
+  </data>
+  <data name="Wiki" xml:space="preserve">
+    <value>Wiki</value>
+  </data>
+  <data name="WorkdayDescription" xml:space="preserve">
+    <value>Workday-anslutning för PTO-godkännande</value>
+  </data>
+  <data name="WorkdayTitle" xml:space="preserve">
+    <value>Workday</value>
+  </data>
+  <data name="WorkspaceONEHub" xml:space="preserve">
+    <value>Workspace ONE Hub</value>
+  </data>
+  <data name="ZendeskTasksDescription" xml:space="preserve">
+    <value>Zendesk-anslutningar för uppgiftsgodkännanden</value>
+  </data>
+  <data name="ZendeskTasksTitle" xml:space="preserve">
+    <value>Zendesk – Uppgifter</value>
+  </data>
+  <data name="ZendeskTicketResolutionDescription" xml:space="preserve">
+    <value>Zendesk-anslutning för nya biljettilldelningar</value>
+  </data>
+  <data name="ZendeskTicketResolutionTitle" xml:space="preserve">
+    <value>Zendesk – Biljettlösning</value>
+  </data>
+  <data name="ZoomRecordingsDescription" xml:space="preserve">
+    <value>Zoom-anslutning för meddelande om ny inspelning</value>
+  </data>
+  <data name="ZoomRecordingsTitle" xml:space="preserve">
+    <value>Zoom-inspelningar</value>
+  </data>
+</root>

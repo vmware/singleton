@@ -1,0 +1,218 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AddDomainJoinConfig" xml:space="preserve">
+    <value>Nyt domænejoin</value>
+  </data>
+  <data name="AddedDJSuccessfully" xml:space="preserve">
+    <value>Domænejoin blev tilføjet</value>
+  </data>
+  <data name="AddedDJUnSuccessfully" xml:space="preserve">
+    <value>Kunne ikke gemme domænejoin</value>
+  </data>
+  <data name="CreateLocalUser" xml:space="preserve">
+    <value>Opret lokal bruger</value>
+  </data>
+  <data name="CreateLocalUserTooltip" xml:space="preserve">
+    <value>Vælg for at oprette en lokal brugerkonto til at logge på enheden. Hvis det ikke er markeret, skal du oprette en brugerkonto ved hjælp af en brugerdefineret profil.</value>
+  </data>
+  <data name="DeletedDJSuccessfully" xml:space="preserve">
+    <value>Domænejoin blev slettet</value>
+  </data>
+  <data name="DeleteDomainJoinConfig" xml:space="preserve">
+    <value>Slet domænejoin</value>
+  </data>
+  <data name="DJDeleteFailure" xml:space="preserve">
+    <value>Kunne ikke slette domænejoin</value>
+  </data>
+  <data name="DJUsernameCannotHaveRestrictedCharacters" xml:space="preserve">
+    <value>Brugernavnet må ikke indeholde disse tegn: / \ [ ] : | &lt; &gt; + = ; , ? * % @</value>
+  </data>
+  <data name="DomainFriendlyName" xml:space="preserve">
+    <value>Domænekaldenavn</value>
+  </data>
+  <data name="DomainFriendlyNameTooltip" xml:space="preserve">
+    <value>Parameteren for det ældre domænenavn, der er konfigureret i Indstillinger for Directory Services. Dette er den værdi, der normalt anvendes med formatet DOMAIN\username, når der logges på med legitimationsoplysninger til Active Directory-domænet. Hvis denne parameter ikke er konfigureret, skal du bruge samme værdi som Domænenavn (forrige felt).</value>
+  </data>
+  <data name="DomainJoin" xml:space="preserve">
+    <value>Domænejoin</value>
+  </data>
+  <data name="DomainJoinConfigListDescription" xml:space="preserve">
+    <value>Domænejoin </value>
+  </data>
+  <data name="DomainJoinConfigWillBeDeleted" xml:space="preserve">
+    <value>Sletning af denne Domænejoin-konfiguration vil fjerne den fra de enheder, der er registret, men ikke tilmeldt. Tilmeldte enheder vil ikke blive påvirket.
+Vil du fortsætte?</value>
+  </data>
+  <data name="DomainJoinName" xml:space="preserve">
+    <value>Navn</value>
+  </data>
+  <data name="DomainJoinType" xml:space="preserve">
+    <value>Domænejointype.</value>
+  </data>
+  <data name="DomainServerUrl" xml:space="preserve">
+    <value>Domænenavn</value>
+  </data>
+  <data name="DomainServerUrlHelptext" xml:space="preserve">
+    <value>Klik her for at konfigurere denne værdi i indstillinger for {0}.</value>
+    <comment>{0} will be replaced with link to Directory Services settings page with the the text "Directory Services"</comment>
+  </data>
+  <data name="DomainServerUrlTooltip" xml:space="preserve">
+    <value>Det fulde domænekomponentnavn på Active Directory-domænet (f.eks.: dc01.contoso.com). Denne server skal konfigureres i Indstillinger for Directory Services, før du tilføjer en domænejoinforbindelse.</value>
+  </data>
+  <data name="EditDomainJoinConfig" xml:space="preserve">
+    <value>Rediger domænejoin</value>
+  </data>
+  <data name="LocalUsername" xml:space="preserve">
+    <value>Lokalt brugernavn</value>
+  </data>
+  <data name="LocalUsernamePassword" xml:space="preserve">
+    <value>Lokal brugeradgangskode</value>
+  </data>
+  <data name="MachineNameFormat" xml:space="preserve">
+    <value>Format på maskinnavn</value>
+  </data>
+  <data name="MachineNameFormatTooltip" xml:space="preserve">
+    <value>Indtast et unikt navn på 15 tegn for enheden. For at få hjælp til at generere et unikt navn skal du bruge %SERIAL%, der inkluderer et hardwarespecifikt serienummer, eller bruge %RAND:[#]%, som genererer tilfældige tegn med længden #. For at mindske risikoen for at oprette duplikerede computernavne, når der anvendes tilfældig nummergenerering, skal længden af det tilfældige tal [%RAND:[#]%] være større end eller lig med 7.</value>
+  </data>
+  <data name="MakeAdministrator" xml:space="preserve">
+    <value>Gør til administrator</value>
+  </data>
+  <data name="MakeAdministratorTooltip" xml:space="preserve">
+    <value>Tilføj den lokale brugerkonto til administratorgruppen på enheden.</value>
+  </data>
+  <data name="NoDomainJoinConfig" xml:space="preserve">
+    <value>Der er ikke tilføjet nogle domænejoin-konfigurationer i denne OG</value>
+  </data>
+  <data name="OnPremActiveDirectory" xml:space="preserve">
+    <value>On-Premises Active Directory</value>
+  </data>
+  <data name="SmartGroupAlreadyAssigned" xml:space="preserve">
+    <value>er allerede tildelt til</value>
+  </data>
+  <data name="Workgroup" xml:space="preserve">
+    <value>Arbejdsgruppe</value>
+  </data>
+  <data name="WorkGroupName" xml:space="preserve">
+    <value>Arbejdsgruppe</value>
+  </data>
+  <data name="WorkgroupNameTooltip" xml:space="preserve">
+    <value>Navnet på den arbejdsgruppe, klienten bliver tilmeldt.</value>
+  </data>
+</root>

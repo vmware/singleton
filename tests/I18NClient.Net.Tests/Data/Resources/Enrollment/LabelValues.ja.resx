@@ -1,0 +1,584 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AMAPIEnrollmentFeatureNotSupported" xml:space="preserve">
+    <value>組織では、Android 管理 API の加入機能はサポートされていません。管理者にお問い合わせください。</value>
+  </data>
+  <data name="AMAPIEnrollmentNotAllowed" xml:space="preserve">
+    <value>Android 管理 API 設定がデバイスの組織で有効になっていません。</value>
+  </data>
+  <data name="AMAPIRegistration" xml:space="preserve">
+    <value>Android 管理 API の登録</value>
+  </data>
+  <data name="AndroidEnterpriseNotAllowed" xml:space="preserve">
+    <value>デバイスでは Android Enterprise の加入は許可されていません。</value>
+  </data>
+  <data name="AndroidEnterpriseNotFound" xml:space="preserve">
+    <value>Android Enterprise 設定がデバイスの組織で有効になっていません</value>
+  </data>
+  <data name="AndroidLegacyEnrollmentNotAllowed" xml:space="preserve">
+    <value>デバイスの所有者モードでは Android Legacy の加入は許可されていません。</value>
+  </data>
+  <data name="AndroidManagementAPI" xml:space="preserve">
+    <value>Android 管理 API</value>
+  </data>
+  <data name="AndroidWorkEnrollmentUserAddError" xml:space="preserve">
+    <value>加入ユーザーを GSuite に追加できませんでした。管理者に問い合わせるか、再試行してください。</value>
+  </data>
+  <data name="AndroidWorkEnrollmentUserEmailNotFound" xml:space="preserve">
+    <value>アカウントが見つかりませんでした。管理者に連絡するか、再試行してください。</value>
+  </data>
+  <data name="AndroidWorkEnrollmentUserNotFound" xml:space="preserve">
+    <value>これは無効な Google アカウントです。</value>
+  </data>
+  <data name="AndroidWorkProfileEnrollmentNotAllowed" xml:space="preserve">
+    <value>指定されたサーバおよびグループ ID では、Work プロファイル加入が許可されていません。ご不明な点は、管理者にお問い合わせください。</value>
+  </data>
+  <data name="AndroidWorkUserEmailDomainNotASubDomain" xml:space="preserve">
+    <value>使用しているドメインは、登録されたサブドメインでありません。貴社管理者まで連絡してください。</value>
+  </data>
+  <data name="ApplicationIsNotAllowedToRegister" xml:space="preserve">
+    <value>アプリケーションの登録は許可されていません。</value>
+  </data>
+  <data name="AssignUserRole" xml:space="preserve">
+    <value>ユーザー役割を割り当てる</value>
+  </data>
+  <data name="AutoEnrollmentDisabled" xml:space="preserve">
+    <value>指定された組織グループに対して自動加入が有効になっていません。管理者に問い合わせるか、再試行してください。</value>
+  </data>
+  <data name="CannotChangeOGForDEPTokenArg" xml:space="preserve">
+    <value>DEP トークン {0} の組織グループを変更できません</value>
+  </data>
+  <data name="CannotUseStagingUserForCustomDep" xml:space="preserve">
+    <value>代理セットアップ ユーザーはサポートされていません。管理者にお問い合わせください。</value>
+  </data>
+  <data name="CaptchaText" xml:space="preserve">
+    <value>Captcha</value>
+  </data>
+  <data name="ChangeRankOrOrganizationGroup" xml:space="preserve">
+    <value>ランクまたは組織グループを変更する</value>
+  </data>
+  <data name="ChangeRankOrOrganizationGroupForUserGroup" xml:space="preserve">
+    <value>ユーザー グループのランクまたは組織グループを変更する</value>
+  </data>
+  <data name="ChangeRankOrUserRole" xml:space="preserve">
+    <value>ランクまたはユーザー役割を変更する</value>
+  </data>
+  <data name="ChangeRankOrUserRoleForUserGroup" xml:space="preserve">
+    <value>ユーザー グループのランクまたはユーザー役割を変更する</value>
+  </data>
+  <data name="ChangeUserRoleAssignmentRankUsingEdit" xml:space="preserve">
+    <value>ユーザー グループのランクまたはユーザー役割を変更するには、レコードの横の編集ボタンをクリックしてください。</value>
+  </data>
+  <data name="ConfirmEnterpriseWipeDeviceTitleMessage" xml:space="preserve">
+    <value>このアクションを実行すると、選択したデバイスから、すべての管理対象エンタープライズ リソース (アプリケーションとプロファイルを含む) が加入解除および削除されます。このアクションを取り消すには、このデバイスを再加入させる必要があります。</value>
+  </data>
+  <data name="CopeEnrollmentNotSupported" xml:space="preserve">
+    <value>Workspace ONE Intelligent Hub バージョンがサポートされていないため、加入がブロックされました</value>
+  </data>
+  <data name="CopyEMMToken" xml:space="preserve">
+    <value>3. 次のステップで使用するために提供された EMM トークンをコピーします。</value>
+  </data>
+  <data name="CustomEnrollmentFeatureNotEnabled" xml:space="preserve">
+    <value>組織でカスタム加入が無効になっています。管理者に連絡してこのデバイスの加入プロファイルを再保存し、再加入を試みてください。</value>
+  </data>
+  <data name="DefaultActionForInactiveUsersChanged" xml:space="preserve">
+    <value>非アクティブ ユーザーに対するデフォルト アクションが変更されました</value>
+  </data>
+  <data name="DefaultDeviceOwnershipChanged" xml:space="preserve">
+    <value>デフォルトのデバイスの所有権が変更されました</value>
+  </data>
+  <data name="DefaultDeviceUserRoleChanged" xml:space="preserve">
+    <value>デフォルトのデバイス ユーザー役割が変更されました</value>
+  </data>
+  <data name="DeleteDeviceCountMessage" xml:space="preserve">
+    <value>完全に削除されるデバイスの数:</value>
+  </data>
+  <data name="DepFetchInfoMessage" xml:space="preserve">
+    <value>[すべてのデバイスをフェッチ] オプションでは、すでに同期されているデバイスを含め、Apple Business Manager でこのトークンに割り当てられているすべてのデバイスが UEM console で同期されます。このオプションは、Apple Business Manager からのすべてのデバイスを完全に更新して再同期する最後の方法としてのみ使用する必要があります。</value>
+  </data>
+  <data name="DepFetchInfoMessageSchool" xml:space="preserve">
+    <value>[すべてのデバイスをフェッチ] オプションでは、すでに同期されているデバイスを含め、Apple School Manager でこのトークンに割り当てられているすべてのデバイスが UEM console で同期されます。このオプションは、Apple School Manager からのすべてのデバイスを完全に更新して再同期する最後の方法としてのみ使用する必要があります。</value>
+  </data>
+  <data name="DEPTokenArgCannotBeDeleted" xml:space="preserve">
+    <value>DEP トークン {0} を削除できません</value>
+  </data>
+  <data name="DEPTokenArgCannotBeRevoked" xml:space="preserve">
+    <value>DEP トークン {0} を取り消せません</value>
+  </data>
+  <data name="DeviceEnrolledArg" xml:space="preserve">
+    <value>加入解除デバイス番号 {0}</value>
+  </data>
+  <data name="DeviceMacAddressDenylisted" xml:space="preserve">
+    <value>デバイスの MAC アドレスが拒否されているため、デバイスを加入させることができません。</value>
+  </data>
+  <data name="DeviceManagementRemoved" xml:space="preserve">
+    <value>デバイス管理が Workspace ONE UEM 管理者によって削除されました</value>
+  </data>
+  <data name="DeviceNotAllowlisted" xml:space="preserve">
+    <value>デバイス モデルのタイプやデバイス OS が許可されていません。</value>
+  </data>
+  <data name="DeviceNotAllowlistedManufacturererNotAllowed" xml:space="preserve">
+    <value>デバイスが許可されていないか、メーカーが許可されていません。</value>
+  </data>
+  <data name="DeviceNotAllowlistedModelNotAllowed" xml:space="preserve">
+    <value>デバイス モデルのタイプが許可されていません。</value>
+  </data>
+  <data name="DeviceNotEnrolled" xml:space="preserve">
+    <value>デバイスは加入していません</value>
+  </data>
+  <data name="DeviceNotRegistered" xml:space="preserve">
+    <value>デバイスが登録されていません。デバイス モデルのタイプまたは OS が無効です</value>
+  </data>
+  <data name="DeviceSNArgNotExistsForArgToken" xml:space="preserve">
+    <value>デバイス シリアル番号 {0} が {1} トークンに存在しません</value>
+  </data>
+  <data name="DeviceStateIsAndroidEnterprise" xml:space="preserve">
+    <value>デバイスはすでに Android Enterprise に加入しています</value>
+  </data>
+  <data name="DeviceUserNotFound" xml:space="preserve">
+    <value>デバイスの加入ユーザーが見つかりません</value>
+  </data>
+  <data name="DirectoryGroupBasedMappingChanged" xml:space="preserve">
+    <value>ディレクトリのグループ ベースのマッピングの有効化が変更されました</value>
+  </data>
+  <data name="DropshipProvisioning" xml:space="preserve">
+    <value>Drop Ship Provisioning</value>
+  </data>
+  <data name="EMMToken" xml:space="preserve">
+    <value>EMM トークン</value>
+  </data>
+  <data name="EmptyDeviceIdentifierPleaseTryAgain" xml:space="preserve">
+    <value>加入要求にデバイスの UDID が存在しません。管理者に問い合わせるか、再試行してください。</value>
+  </data>
+  <data name="EmptyPasswordPleaseTryAgain" xml:space="preserve">
+    <value>加入要求にパスワードが存在しません。管理者に問い合わせるか、再試行してください。</value>
+  </data>
+  <data name="EmptyUserNameOrEmailAddressPleaseTryAgain" xml:space="preserve">
+    <value>加入要求にユーザー名またはメール アドレスが存在しません。管理者に問い合わせるか、再試行してください。</value>
+  </data>
+  <data name="EnableDropShipProvisioning" xml:space="preserve">
+    <value>Workspace ONE Drop Ship Provisioning を有効にする</value>
+  </data>
+  <data name="EnrollmentDisabled" xml:space="preserve">
+    <value>MDM オーダーが SKU で見つからないため、加入が無効になりました。</value>
+  </data>
+  <data name="EnrollmentSecurityTypeNotSupported" xml:space="preserve">
+    <value>サポートされていないセキュリティ タイプで加入を試みました。管理者に問い合わせるか、再試行してください。</value>
+  </data>
+  <data name="EnrollmentTypeCriteriaMustContainOneEnrollmentType" xml:space="preserve">
+    <value>加入タイプ基準には少なくとも 1 つの加入タイプを含める必要があります</value>
+  </data>
+  <data name="EnrollmentUserNotFound" xml:space="preserve">
+    <value>加入ユーザーが見つかりません。既存のユーザーを入力してください。</value>
+  </data>
+  <data name="EnrollmentWelcomeMessageBody" xml:space="preserve">
+    <value>Workspace ONE UEM は、IT 部門がリソースへの安全なアクセスをデバイスに提供するために役立ちます。次のステップバイステップのプロセスでは、デバイスを構成し、ポリシーを順守させる手順を示します。</value>
+  </data>
+  <data name="EnrollmentWelcomeMessageHeader" xml:space="preserve">
+    <value>Workspace ONE UEM へようこそ</value>
+  </data>
+  <data name="EnterpriseWipeDeviceCountMessage" xml:space="preserve">
+    <value>{0} デバイス</value>
+  </data>
+  <data name="EnterpriseWipeDeviceCountTitle" xml:space="preserve">
+    <value>企業情報ワイプが実行されるデバイスの数:</value>
+  </data>
+  <data name="ErrorAddingUserAccount" xml:space="preserve">
+    <value>ユーザー アカウントの自動追加中にエラーが発生しました。管理者に問い合わせるか、再試行してください。</value>
+  </data>
+  <data name="ErrorThrownWhenResolvingDeviceIdentifier" xml:space="preserve">
+    <value>デバイス識別子の解決を試行したときにエラーが発生しました</value>
+  </data>
+  <data name="ExistingClientIDDontMatch" xml:space="preserve">
+    <value>テキスト フィールドは既存の登録値と一致する必要があるため、変更を保存できません。証明書のみを編集できます。</value>
+  </data>
+  <data name="ExternalAccessRole" xml:space="preserve">
+    <value>外部アクセス役割</value>
+  </data>
+  <data name="FailedToCreateAgentInstallUrl" xml:space="preserve">
+    <value>Agent のインストール URL の作成に失敗しました。管理者に問い合わせるか、再試行してください。</value>
+  </data>
+  <data name="FailedToCreateDeviceAuthenticationToken" xml:space="preserve">
+    <value>デバイスの認証トークンの作成に失敗しました。管理者に問い合わせるか、再試行してください。</value>
+  </data>
+  <data name="FailedToDisplayAgentAppStoreLink" xml:space="preserve">
+    <value>エージェントの App Store のリンクの表示に失敗しました。管理者に問い合わせるか、再試行してください。</value>
+  </data>
+  <data name="FailedToDisplayWelcomeMessage" xml:space="preserve">
+    <value>ようこそメッセージの表示に失敗しました。管理者に問い合わせるか、再試行してください。</value>
+  </data>
+  <data name="FailedToProcessDisplayMdmInstallationMessage" xml:space="preserve">
+    <value>MDM インストール メッセージの表示に失敗しました。管理者に問い合わせるか、再試行してください。</value>
+  </data>
+  <data name="FailedToRedirectToAgentInstallUrl" xml:space="preserve">
+    <value>エージェントのインストール URL へのリダイレクトに失敗しました。管理者に問い合わせるか、再試行してください。</value>
+  </data>
+  <data name="FailedToRedirectToMdmInstallUrl" xml:space="preserve">
+    <value>MDM のインストール URL へのリダイレクトに失敗しました。管理者に問い合わせるか、再試行してください。</value>
+  </data>
+  <data name="FailedToRedirectToWorkspaceSchema" xml:space="preserve">
+    <value>ワークスペース スキーマへのリダイレクトに失敗しました。管理者に問い合わせるか、再試行してください。</value>
+  </data>
+  <data name="FailedToRegisterApplication" xml:space="preserve">
+    <value>アプリケーションの登録に失敗しました。管理者に問い合わせるか、再試行してください。</value>
+  </data>
+  <data name="FailedToRetrieveNextStep" xml:space="preserve">
+    <value>次の加入ステップの取得に失敗しました。管理者に問い合わせるか、再試行してください。</value>
+  </data>
+  <data name="FailedToRetrieveSessionId" xml:space="preserve">
+    <value>デバイスの加入セッション ID の取得に失敗しました。管理者に問い合わせるか、再試行してください。</value>
+  </data>
+  <data name="FailedToValidateDeviceRestrictions" xml:space="preserve">
+    <value>デバイスの加入制約の検証に失敗しました。管理者に問い合わせるか、再試行してください。</value>
+  </data>
+  <data name="FailedToValidateEmailAddress" xml:space="preserve">
+    <value>加入ユーザーのメール アドレスの検証に失敗しました。管理者に問い合わせるか、再試行してください。</value>
+  </data>
+  <data name="FailedValidatingDeviceIdentifier" xml:space="preserve">
+    <value>デバイスの UDID の検証に失敗しました。管理者に問い合わせるか、再試行してください。</value>
+  </data>
+  <data name="FailedValidatingStagingMode" xml:space="preserve">
+    <value>代理セットアップ モードの検証に失敗しました。管理者に問い合わせるか、再試行してください。</value>
+  </data>
+  <data name="FieldMustBeOfArgCharacters" xml:space="preserve">
+    <value>フィールドは {0} 文字にする必要があります。</value>
+  </data>
+  <data name="FollowingTokensOwnershipWillNotChange" xml:space="preserve">
+    <value>次のトークンの所有権は変更されません</value>
+  </data>
+  <data name="ForceAospEnrollment" xml:space="preserve">
+    <value>AOSP/閉じられたネットワークの加入を強制</value>
+  </data>
+  <data name="GeneralCheckIn" xml:space="preserve">
+    <value>チェックイン</value>
+  </data>
+  <data name="GetStarted:" xml:space="preserve">
+    <value>使用を開始する:</value>
+  </data>
+  <data name="GetSuccessfully" xml:space="preserve">
+    <value>MDM サーバの URL が正常に取得されました</value>
+  </data>
+  <data name="GoogleAdminConsole" xml:space="preserve">
+    <value>Google 管理者コンソール。</value>
+  </data>
+  <data name="GoogleDeviceIdRequired" xml:space="preserve">
+    <value>Google デバイス ID が必要です。</value>
+  </data>
+  <data name="GoogleUserIdRequired" xml:space="preserve">
+    <value>Google ユーザー ID が必要です。</value>
+  </data>
+  <data name="GoToThe" xml:space="preserve">
+    <value>1. 次に移動します:</value>
+  </data>
+  <data name="GroupIdAssignmentModeChanged" xml:space="preserve">
+    <value>グループ ID 割り当てモードが変更されました</value>
+  </data>
+  <data name="HubRegistered" xml:space="preserve">
+    <value>登録されたハブ</value>
+  </data>
+  <data name="IntelligentHubManaged" xml:space="preserve">
+    <value>Intelligent Hub 管理対象</value>
+  </data>
+  <data name="InvalidDeviceAttributes" xml:space="preserve">
+    <value>次のいずれかのデバイス属性を入力してください: シリアル番号/IMEI/UDID</value>
+  </data>
+  <data name="InvalidDeviceModel" xml:space="preserve">
+    <value>デバイスが登録されていません。デバイス モデルのタイプが無効です</value>
+  </data>
+  <data name="InvalidDeviceOS" xml:space="preserve">
+    <value>デバイスが登録されていません。デバイス OS が無効です</value>
+  </data>
+  <data name="InvalidDeviceType" xml:space="preserve">
+    <value>デバイス タイプが無効です</value>
+  </data>
+  <data name="InvalidHeaderUsedInTemplate" xml:space="preserve">
+    <value>無効なヘッダーがテンプレートに使用されています。[割り当てを編集] ウィンドウで提供されているテンプレートをダウンロードして使用してください。</value>
+  </data>
+  <data name="InvalidImeiAttributeArgs" xml:space="preserve">
+    <value>IMEI は数字で、正確に 15 文字の長さである必要があります。</value>
+  </data>
+  <data name="InvalidMigrationRequest" xml:space="preserve">
+    <value>デバイス UDID が空です</value>
+  </data>
+  <data name="InvalidOrganizationGroupFromVidm" xml:space="preserve">
+    <value>指定された、Workspace ONE Access が割り当てた組織グループに加入ユーザーはいません。</value>
+  </data>
+  <data name="InvalidSerialNumberAttributeArgs" xml:space="preserve">
+    <value>シリアル番号の長さは {0} 文字未満である必要があります。</value>
+  </data>
+  <data name="InvalidSerialNumberValuesFoundArgs" xml:space="preserve">
+    <value>各シリアル番号の長さは {0} より小さくしてください</value>
+  </data>
+  <data name="InvalidTokenDetails" xml:space="preserve">
+    <value>トークンの詳細が無効であるため、認証に失敗しました。</value>
+  </data>
+  <data name="InvalidUdidAttributeArgs" xml:space="preserve">
+    <value>UDID の長さは {0} 文字未満にする必要があります。</value>
+  </data>
+  <data name="InvalidUDIDValuesFoundArgs" xml:space="preserve">
+    <value>各 UDID の長さは {0} より小さくしてください。</value>
+  </data>
+  <data name="IosProfileDownloadHeaderTitle" xml:space="preserve">
+    <value>プロファイルのダウンロード手順</value>
+  </data>
+  <data name="IosProfileDownloadSteps" xml:space="preserve">
+    <value>1. プロファイルのダウンロードを求めるメッセージが表示されたら、{0} をタップします。
+
+2. ダウンロードが完了したら、{1} をタップします。</value>
+  </data>
+  <data name="LaforgeUserCreationFailed" xml:space="preserve">
+    <value>Android Enterprise ユーザーの作成に失敗しました</value>
+  </data>
+  <data name="LinkToConfigurationTab" xml:space="preserve">
+    <value>[構成] タブへのリンク</value>
+  </data>
+  <data name="MigrationFeatureDisabled" xml:space="preserve">
+    <value>組織では、Android Enterprise の移行機能はサポートされていません。管理者にお問い合わせください。</value>
+  </data>
+  <data name="MoveDevicesToUserOrOGBAsedOnIPOrCA" xml:space="preserve">
+    <value>IP 範囲の割り当てに基づいてデバイスをユーザーまたは組織グループに割り当てるか、またはカスタム属性ルールに基づいてデバイスを組織グループに割り当てます。階層内のいずれかの組織グループに対して [IP 範囲による組織グループ] または [カスタム属性による組織グループ] が選択されている場合、デバイス割り当てルールは有効にできません。ただし、階層内で [IP 範囲によるユーザー名] タイプが選択されている場合は、デバイス割り当てルールを有効にできます。</value>
+  </data>
+  <data name="MultiuserFFSetup" xml:space="preserve">
+    <value>マルチユーザー加入は、機能が適切にセットアップされていないため、ブロックされました。</value>
+  </data>
+  <data name="MultiuserNonMdmSupport" xml:space="preserve">
+    <value>使用されている加入プロトコルに対しては、マルチユーザー加入はサポートされていません。</value>
+  </data>
+  <data name="NoMDMOrderFound" xml:space="preserve">
+    <value>MDM オーダーが SKU で見つからないため、加入が一時停止されました。</value>
+  </data>
+  <data name="NotAuthorizedToCreateEnrollmentUser" xml:space="preserve">
+    <value>ユーザーには加入ユーザーを作成する権限がありません。</value>
+  </data>
+  <data name="OperationNotAuthorized" xml:space="preserve">
+    <value>この操作を実行する権限がありません</value>
+  </data>
+  <data name="OrganizationGroupInherited" xml:space="preserve">
+    <value>組織グループが継承されました</value>
+  </data>
+  <data name="PasscodeExpired" xml:space="preserve">
+    <value>パスコードの期限が切れました</value>
+  </data>
+  <data name="PhoneNumberPrivacyCheck" xml:space="preserve">
+    <value>電話番号のプライバシー チェック</value>
+  </data>
+  <data name="PreventReEnrollmentMessage" xml:space="preserve">
+    <value>下の [再加入防止] チェック ボックスをオンにした場合、そのデバイスが拒否リストに登録され、ユーザーがそのデバイスを Workspace ONE UEM に再加入させることができなくなります。管理者は、必要に応じて後でこのデバイスを拒否リストから削除できます。</value>
+  </data>
+  <data name="PrivacyNotificationDisabled" xml:space="preserve">
+    <value>ユーザー フレンドリ プライバシー通知が無効になっています</value>
+  </data>
+  <data name="PromptToBeginDownloadMessageForAppleOsX" xml:space="preserve">
+    <value>Intelligent Hub が自動的にダウンロードされ、コンピュータにインストールされます。ネットワーク接続によっては、1～5 分かかります。Agent がインストールされたら、[続行] をタップして加入プロセスを完了してください。</value>
+  </data>
+  <data name="RegisterAMAPI" xml:space="preserve">
+    <value>AMAPI を登録します。{0}</value>
+  </data>
+  <data name="RegisterAMAPIAtParentOG" xml:space="preserve">
+    <value>Android EMM の登録が構成されている組織グループに AMAPI を登録します。{0}</value>
+  </data>
+  <data name="RegisterAMAPIHelpText" xml:space="preserve">
+    <value>この組織グループで使用する前に、Android 管理 API (AMAPI) の登録が必要です。</value>
+  </data>
+  <data name="RegisteredOrAppEnrolled" xml:space="preserve">
+    <value>登録済みまたはスタンドアロンのアプリが加入しました</value>
+  </data>
+  <data name="RegisterManagedDomain" xml:space="preserve">
+    <value>2. 管理対象 Google ドメインが存在しない場合は登録します。</value>
+  </data>
+  <data name="RegisterMultiuserDeviceConfirmationMessage" xml:space="preserve">
+    <value>Windows デバイスのデバイス加入に関連付けされたユーザー情報は削除されます。</value>
+  </data>
+  <data name="Requirements" xml:space="preserve">
+    <value>要件</value>
+  </data>
+  <data name="RequireSharedDeviceEnrollmentEulaAcceptance" xml:space="preserve">
+    <value>加入利用規約を作成するまで、[利用規約を常にプロンプト表示] を有効にできません。[グループと設定] &gt; [デバイスとユーザー] &gt; [全般] &gt; [加入] &gt; [利用規約] タブの順に進んで、利用規約を作成してください。</value>
+  </data>
+  <data name="SerialNumberAssignmentFailed" xml:space="preserve">
+    <value>シリアル番号の割り当てに失敗しました。</value>
+  </data>
+  <data name="SetUpDirectoryServices" xml:space="preserve">
+    <value>ディレクトリ サービスのセットアップ</value>
+  </data>
+  <data name="SubOrganizationGroup" xml:space="preserve">
+    <value>サブ組織グループ</value>
+  </data>
+  <data name="SubsequentUserEnrollmentBlocked" xml:space="preserve">
+    <value>以後のユーザー加入はブロックされました。</value>
+  </data>
+  <data name="TapHereIfNotPromptedAutomatically" xml:space="preserve">
+    <value>自動的に表示されない場合はここをタップしてください</value>
+  </data>
+  <data name="TapHereWhenDownloadFinishes" xml:space="preserve">
+    <value>ダウンロードが完了したらここをタップしてください</value>
+  </data>
+  <data name="TargetOwnershipRestrictedByDefaultPolicyAtGivenOG" xml:space="preserve">
+    <value>ターゲットの所有権は、この組織グループの既定ポリシーによって制限されています</value>
+  </data>
+  <data name="TokenSaveFailed" xml:space="preserve">
+    <value>トークンの保存に失敗しました。</value>
+  </data>
+  <data name="UemManaged" xml:space="preserve">
+    <value>UEM 管理対象</value>
+  </data>
+  <data name="UnapprovedUser" xml:space="preserve">
+    <value>ユーザーが、外部の SAML 認証ユーザーであり、加入を許可されていません。管理者に問い合わせるか、再試行してください。</value>
+  </data>
+  <data name="UploadedCertMisMatch" xml:space="preserve">
+    <value>証明書がありません。続行するには、有効な証明書をアップロードしてください。</value>
+  </data>
+  <data name="UserEnrolled" xml:space="preserve">
+    <value>ユーザーが加入されました</value>
+  </data>
+  <data name="UserEnrollmentFeatureNotEnabled" xml:space="preserve">
+    <value>組織で User Enrollment が無効になっています。管理者に連絡して User Enrollment を有効にし、再試行してください。</value>
+  </data>
+  <data name="UserHasExceededMaxAllowedDevices" xml:space="preserve">
+    <value>ユーザーが許可されたデバイスの最大数を超えています。</value>
+  </data>
+  <data name="UsernameAlreadyExists" xml:space="preserve">
+    <value>別のユーザーのユーザー名がすでに存在します。再試行してください。</value>
+  </data>
+  <data name="UserSetup" xml:space="preserve">
+    <value>ユーザー セットアップ</value>
+  </data>
+  <data name="ValidatePhoneNumberFailed" xml:space="preserve">
+    <value>加入ユーザーの電話番号の検証に失敗しました。管理者に問い合わせるか、再試行してください。</value>
+  </data>
+  <data name="WipeInitiated" xml:space="preserve">
+    <value>ワイプが開始されました</value>
+  </data>
+  <data name="WipeInitiatedTooltip" xml:space="preserve">
+    <value>ワイプが開始されています</value>
+  </data>
+  <data name="WorkProfileManagementMode" xml:space="preserve">
+    <value>Work プロファイル管理モード</value>
+  </data>
+  <data name="WorkProfileManagementModeInfoMessage" xml:space="preserve">
+    <value>新しく加入したデバイスを Intelligent Hub で管理するか Android 管理 API で管理するかを指定します。AMAPI が推奨されます。Intelligent Hub はデバイスに残りますが、管理機能はネイティブの Android OS に委任されます。既存の加入済みデバイスは影響を受けません。</value>
+  </data>
+  <data name="WorkProfileManagementModeToggleSuccessfulMessage" xml:space="preserve">
+    <value>登録に成功しました。管理モードが Android 管理 API に更新されました。構成された管理モードを表示または編集するには、加入設定を参照してください。</value>
+  </data>
+  <data name="Ws1RealTimeUserGroupSyncChanged" xml:space="preserve">
+    <value>Workspace ONE のリアルタイム ユーザー グループ同期設定が変更されました</value>
+  </data>
+</root>

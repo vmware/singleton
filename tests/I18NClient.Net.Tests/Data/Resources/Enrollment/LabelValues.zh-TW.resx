@@ -1,0 +1,584 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AMAPIEnrollmentFeatureNotSupported" xml:space="preserve">
+    <value>貴組織不支援 Android 管理 API 註冊功能。請聯絡您的管理員。</value>
+  </data>
+  <data name="AMAPIEnrollmentNotAllowed" xml:space="preserve">
+    <value>裝置所屬組織尚未啟用 Android 管理 API 設定。</value>
+  </data>
+  <data name="AMAPIRegistration" xml:space="preserve">
+    <value>Android 管理 API 登錄</value>
+  </data>
+  <data name="AndroidEnterpriseNotAllowed" xml:space="preserve">
+    <value>不允許裝置進行 Android Enterprise 註冊。</value>
+  </data>
+  <data name="AndroidEnterpriseNotFound" xml:space="preserve">
+    <value>裝置所屬組織尚未啟用 Android Enterprise 設定</value>
+  </data>
+  <data name="AndroidLegacyEnrollmentNotAllowed" xml:space="preserve">
+    <value>在裝置擁有者模式中，不允許使用 Android 舊版註冊。</value>
+  </data>
+  <data name="AndroidManagementAPI" xml:space="preserve">
+    <value>Android 管理 API</value>
+  </data>
+  <data name="AndroidWorkEnrollmentUserAddError" xml:space="preserve">
+    <value>無法將註冊使用者新增到 GSuite。請聯絡您的管理員或再試一次。</value>
+  </data>
+  <data name="AndroidWorkEnrollmentUserEmailNotFound" xml:space="preserve">
+    <value>我們無法找到您的帳戶，請聯絡您的管理員或再試一次。</value>
+  </data>
+  <data name="AndroidWorkEnrollmentUserNotFound" xml:space="preserve">
+    <value>這是無效的 Google 帳戶。</value>
+  </data>
+  <data name="AndroidWorkProfileEnrollmentNotAllowed" xml:space="preserve">
+    <value>提供的伺服器和群組 ID 不允許 Work 設定檔註冊。如果您有任何問題，請聯絡您的管理員。</value>
+  </data>
+  <data name="AndroidWorkUserEmailDomainNotASubDomain" xml:space="preserve">
+    <value>所使用的網域非登錄的子網域。請聯絡您的管理員。</value>
+  </data>
+  <data name="ApplicationIsNotAllowedToRegister" xml:space="preserve">
+    <value>應用程式不允許註冊。</value>
+  </data>
+  <data name="AssignUserRole" xml:space="preserve">
+    <value>指派使用者角色</value>
+  </data>
+  <data name="AutoEnrollmentDisabled" xml:space="preserve">
+    <value>沒有為提供的企業群組啟用自動註冊。請聯絡您的管理員或再試一次。</value>
+  </data>
+  <data name="CannotChangeOGForDEPTokenArg" xml:space="preserve">
+    <value>無法變更 DEP Token {0} 的企業群組</value>
+  </data>
+  <data name="CannotUseStagingUserForCustomDep" xml:space="preserve">
+    <value>不支援註冊預備使用者。請聯絡您的管理員。</value>
+  </data>
+  <data name="CaptchaText" xml:space="preserve">
+    <value>Captcha</value>
+  </data>
+  <data name="ChangeRankOrOrganizationGroup" xml:space="preserve">
+    <value>變更等級或企業群組</value>
+  </data>
+  <data name="ChangeRankOrOrganizationGroupForUserGroup" xml:space="preserve">
+    <value>變更使用者群組的等級或企業群組</value>
+  </data>
+  <data name="ChangeRankOrUserRole" xml:space="preserve">
+    <value>變更等級或使用者角色</value>
+  </data>
+  <data name="ChangeRankOrUserRoleForUserGroup" xml:space="preserve">
+    <value>變更使用者群組的等級或使用者角色</value>
+  </data>
+  <data name="ChangeUserRoleAssignmentRankUsingEdit" xml:space="preserve">
+    <value>若要變更使用者群組的等級或使用者角色，請按一下記錄旁的編輯按鈕</value>
+  </data>
+  <data name="ConfirmEnterpriseWipeDeviceTitleMessage" xml:space="preserve">
+    <value>此動作會從所選裝置取消註冊並移除所有受管理的企業資源 (包括應用程式和設定檔)。您無法在未重新註冊此裝置的情況下復原此動作。</value>
+  </data>
+  <data name="CopeEnrollmentNotSupported" xml:space="preserve">
+    <value>由於 Workspace ONE Intelligent Hub 版本不受支援，已封鎖註冊</value>
+  </data>
+  <data name="CopyEMMToken" xml:space="preserve">
+    <value>3. 複製提供的 EMM Token 以在下一個步驟使用。</value>
+  </data>
+  <data name="CustomEnrollmentFeatureNotEnabled" xml:space="preserve">
+    <value>您的組織已停用自訂註冊。請聯絡您的管理員以重新儲存此裝置的註冊設定檔，然後嘗試重新註冊。</value>
+  </data>
+  <data name="DefaultActionForInactiveUsersChanged" xml:space="preserve">
+    <value>非使用中之使用者的預設動作已變更</value>
+  </data>
+  <data name="DefaultDeviceOwnershipChanged" xml:space="preserve">
+    <value>預設裝置擁有權已變更</value>
+  </data>
+  <data name="DefaultDeviceUserRoleChanged" xml:space="preserve">
+    <value>預設裝置使用者角色已變更</value>
+  </data>
+  <data name="DeleteDeviceCountMessage" xml:space="preserve">
+    <value>將永久刪除的裝置數：</value>
+  </data>
+  <data name="DepFetchInfoMessage" xml:space="preserve">
+    <value>[擷取所有裝置] 選項會同步透過 UEM Console 在 Apple Business Manager 中指派給此 Token 的所有裝置，包括已同步的裝置。此選項僅可作為從 Apple Business Manager 全面重新整理和重新同步所有裝置的最終替代方法。</value>
+  </data>
+  <data name="DepFetchInfoMessageSchool" xml:space="preserve">
+    <value>[擷取所有裝置] 選項會同步透過 UEM Console 在 Apple School Manager 中指派給此 Token 的所有裝置，包括已同步的裝置。此選項僅可作為從 Apple School Manager 全面重新整理和重新同步所有裝置的最終替代方法。</value>
+  </data>
+  <data name="DEPTokenArgCannotBeDeleted" xml:space="preserve">
+    <value>無法刪除 DEP Token {0}</value>
+  </data>
+  <data name="DEPTokenArgCannotBeRevoked" xml:space="preserve">
+    <value>無法撤銷 DEP Token {0}</value>
+  </data>
+  <data name="DeviceEnrolledArg" xml:space="preserve">
+    <value>裝置已取消註冊 # {0}</value>
+  </data>
+  <data name="DeviceMacAddressDenylisted" xml:space="preserve">
+    <value>無法註冊裝置，因為裝置的 MAC 位址遭到拒絕。</value>
+  </data>
+  <data name="DeviceManagementRemoved" xml:space="preserve">
+    <value>Workspace ONE UEM 管理員已移除 [裝置管理]</value>
+  </data>
+  <data name="DeviceNotAllowlisted" xml:space="preserve">
+    <value>裝置型號類型和/或裝置作業系統不被允許。</value>
+  </data>
+  <data name="DeviceNotAllowlistedManufacturererNotAllowed" xml:space="preserve">
+    <value>裝置不被允許和/或製造商不被允許。</value>
+  </data>
+  <data name="DeviceNotAllowlistedModelNotAllowed" xml:space="preserve">
+    <value>裝置型號類型不被允許。</value>
+  </data>
+  <data name="DeviceNotEnrolled" xml:space="preserve">
+    <value>裝置未註冊</value>
+  </data>
+  <data name="DeviceNotRegistered" xml:space="preserve">
+    <value>裝置未註冊。無效的裝置型號類型和/或作業系統</value>
+  </data>
+  <data name="DeviceSNArgNotExistsForArgToken" xml:space="preserve">
+    <value>{1} Token 的裝置序號 {0} 不存在</value>
+  </data>
+  <data name="DeviceStateIsAndroidEnterprise" xml:space="preserve">
+    <value>裝置已於 Android Enterprise 註冊</value>
+  </data>
+  <data name="DeviceUserNotFound" xml:space="preserve">
+    <value>找不到裝置的註冊使用者</value>
+  </data>
+  <data name="DirectoryGroupBasedMappingChanged" xml:space="preserve">
+    <value>啟用根據目錄群組的對應設定已變更</value>
+  </data>
+  <data name="DropshipProvisioning" xml:space="preserve">
+    <value>Drop Ship Provisioning</value>
+  </data>
+  <data name="EMMToken" xml:space="preserve">
+    <value>EMM Token</value>
+  </data>
+  <data name="EmptyDeviceIdentifierPleaseTryAgain" xml:space="preserve">
+    <value>裝置的 UDID 不存在於註冊要求中。請聯絡您的管理員或再試一次。</value>
+  </data>
+  <data name="EmptyPasswordPleaseTryAgain" xml:space="preserve">
+    <value>密碼不存在於註冊要求中。請聯絡您的管理員或再試一次。</value>
+  </data>
+  <data name="EmptyUserNameOrEmailAddressPleaseTryAgain" xml:space="preserve">
+    <value>使用者名稱或電子郵件地址不存在於註冊要求中。請聯絡您的管理員或再試一次。</value>
+  </data>
+  <data name="EnableDropShipProvisioning" xml:space="preserve">
+    <value>啟動 Workspace ONE Drop Ship Provisioning</value>
+  </data>
+  <data name="EnrollmentDisabled" xml:space="preserve">
+    <value>註冊已停用，因為在 SKU 中找不到 MDM 訂單。</value>
+  </data>
+  <data name="EnrollmentSecurityTypeNotSupported" xml:space="preserve">
+    <value>嘗試以不受支援的安全性類型來註冊。請聯絡您的管理員或再試一次。</value>
+  </data>
+  <data name="EnrollmentTypeCriteriaMustContainOneEnrollmentType" xml:space="preserve">
+    <value>註冊類型準則必須包含至少一個註冊類型</value>
+  </data>
+  <data name="EnrollmentUserNotFound" xml:space="preserve">
+    <value>找不到註冊使用者。請提供現有的使用者。</value>
+  </data>
+  <data name="EnrollmentWelcomeMessageBody" xml:space="preserve">
+    <value>Workspace ONE UEM 可協助您的 IT 部門，讓您的裝置安全地存取資源。下列程序將指引您逐步完成裝置設定，並確認您的裝置符合原則。</value>
+  </data>
+  <data name="EnrollmentWelcomeMessageHeader" xml:space="preserve">
+    <value>歡迎使用 Workspace ONE UEM!</value>
+  </data>
+  <data name="EnterpriseWipeDeviceCountMessage" xml:space="preserve">
+    <value>{0} 個裝置</value>
+  </data>
+  <data name="EnterpriseWipeDeviceCountTitle" xml:space="preserve">
+    <value>將進行企業抹除的裝置數：</value>
+  </data>
+  <data name="ErrorAddingUserAccount" xml:space="preserve">
+    <value>自動新增使用者帳戶時發生錯誤。請聯絡您的管理員或再試一次。</value>
+  </data>
+  <data name="ErrorThrownWhenResolvingDeviceIdentifier" xml:space="preserve">
+    <value>嘗試解析裝置識別碼時擲回錯誤</value>
+  </data>
+  <data name="ExistingClientIDDontMatch" xml:space="preserve">
+    <value>無法儲存變更，因為文字欄位必須與現有的登錄值相符。只能編輯憑證。</value>
+  </data>
+  <data name="ExternalAccessRole" xml:space="preserve">
+    <value>具有外部存取權的身份</value>
+  </data>
+  <data name="FailedToCreateAgentInstallUrl" xml:space="preserve">
+    <value>無法建立 Agent 安裝 URL。請聯絡您的管理員或再試一次。</value>
+  </data>
+  <data name="FailedToCreateDeviceAuthenticationToken" xml:space="preserve">
+    <value>無法建立裝置的驗證 Token。請聯絡您的管理員或再試一次。</value>
+  </data>
+  <data name="FailedToDisplayAgentAppStoreLink" xml:space="preserve">
+    <value>無法顯示 Agent 的 App Store 連結。請聯絡您的管理員或再試一次。</value>
+  </data>
+  <data name="FailedToDisplayWelcomeMessage" xml:space="preserve">
+    <value>無法顯示歡迎訊息。請聯絡您的管理員或再試一次。</value>
+  </data>
+  <data name="FailedToProcessDisplayMdmInstallationMessage" xml:space="preserve">
+    <value>無法顯示 MDM 安裝訊息。請聯絡您的管理員或再試一次。</value>
+  </data>
+  <data name="FailedToRedirectToAgentInstallUrl" xml:space="preserve">
+    <value>無法重新導向至 Agent 安裝 URL。請聯絡您的管理員或再試一次。</value>
+  </data>
+  <data name="FailedToRedirectToMdmInstallUrl" xml:space="preserve">
+    <value>無法重新導向至 MDM 安裝 URL。請聯絡您的管理員或再試一次。</value>
+  </data>
+  <data name="FailedToRedirectToWorkspaceSchema" xml:space="preserve">
+    <value>無法重新導向至工作區配置。請聯絡您的管理員或再試一次。</value>
+  </data>
+  <data name="FailedToRegisterApplication" xml:space="preserve">
+    <value>無法登錄應用程式。請聯絡您的管理員或再試一次。</value>
+  </data>
+  <data name="FailedToRetrieveNextStep" xml:space="preserve">
+    <value>無法擷取下一個註冊步驟。請聯絡您的管理員或再試一次。</value>
+  </data>
+  <data name="FailedToRetrieveSessionId" xml:space="preserve">
+    <value>無法擷取裝置的註冊工作階段 ID。請聯絡您的管理員或再試一次。</value>
+  </data>
+  <data name="FailedToValidateDeviceRestrictions" xml:space="preserve">
+    <value>無法驗證裝置的註冊限制。請聯絡您的管理員或再試一次。</value>
+  </data>
+  <data name="FailedToValidateEmailAddress" xml:space="preserve">
+    <value>無法驗證註冊使用者的電子郵件地址。請聯絡您的管理員或再試一次。</value>
+  </data>
+  <data name="FailedValidatingDeviceIdentifier" xml:space="preserve">
+    <value>無法驗證裝置的 UDID。請聯絡您的管理員或再試一次。</value>
+  </data>
+  <data name="FailedValidatingStagingMode" xml:space="preserve">
+    <value>無法驗證註冊預備模式。請聯絡您的管理員或再試一次。</value>
+  </data>
+  <data name="FieldMustBeOfArgCharacters" xml:space="preserve">
+    <value>欄位必須為 {0} 個字元。</value>
+  </data>
+  <data name="FollowingTokensOwnershipWillNotChange" xml:space="preserve">
+    <value>下列 Token 的擁有權將不會變更</value>
+  </data>
+  <data name="ForceAospEnrollment" xml:space="preserve">
+    <value>強制 AOSP/封閉式網路註冊</value>
+  </data>
+  <data name="GeneralCheckIn" xml:space="preserve">
+    <value>簽入</value>
+  </data>
+  <data name="GetStarted:" xml:space="preserve">
+    <value>使用入門：</value>
+  </data>
+  <data name="GetSuccessfully" xml:space="preserve">
+    <value>已成功擷取 MDM 伺服器 URL</value>
+  </data>
+  <data name="GoogleAdminConsole" xml:space="preserve">
+    <value>Google 管理主控台。</value>
+  </data>
+  <data name="GoogleDeviceIdRequired" xml:space="preserve">
+    <value>需要 Google 裝置 ID。</value>
+  </data>
+  <data name="GoogleUserIdRequired" xml:space="preserve">
+    <value>需要 Google 使用者 ID。</value>
+  </data>
+  <data name="GoToThe" xml:space="preserve">
+    <value>1. 前往</value>
+  </data>
+  <data name="GroupIdAssignmentModeChanged" xml:space="preserve">
+    <value>群組 ID 指派模式已變更</value>
+  </data>
+  <data name="HubRegistered" xml:space="preserve">
+    <value>已註冊的 Hub</value>
+  </data>
+  <data name="IntelligentHubManaged" xml:space="preserve">
+    <value>受管 Intelligent Hub</value>
+  </data>
+  <data name="InvalidDeviceAttributes" xml:space="preserve">
+    <value>請輸入以下其中一個裝置屬性: 序號 / IMEI / UDID</value>
+  </data>
+  <data name="InvalidDeviceModel" xml:space="preserve">
+    <value>裝置未註冊。無效的裝置型號類型</value>
+  </data>
+  <data name="InvalidDeviceOS" xml:space="preserve">
+    <value>裝置未註冊。無效的裝置作業系統</value>
+  </data>
+  <data name="InvalidDeviceType" xml:space="preserve">
+    <value>無效的裝置類型</value>
+  </data>
+  <data name="InvalidHeaderUsedInTemplate" xml:space="preserve">
+    <value>範本中使用的標頭無效。請下載並使用 [編輯指派] 視窗中提供的範本。</value>
+  </data>
+  <data name="InvalidImeiAttributeArgs" xml:space="preserve">
+    <value>IMEI 必須是數字，且長度必須正好 15 個字元。</value>
+  </data>
+  <data name="InvalidMigrationRequest" xml:space="preserve">
+    <value>裝置 UDID 空白</value>
+  </data>
+  <data name="InvalidOrganizationGroupFromVidm" xml:space="preserve">
+    <value>註冊使用者不在提供的 Workspace ONE Access 指派組織群組中。</value>
+  </data>
+  <data name="InvalidSerialNumberAttributeArgs" xml:space="preserve">
+    <value>序號長度必須少於 {0} 個字元。</value>
+  </data>
+  <data name="InvalidSerialNumberValuesFoundArgs" xml:space="preserve">
+    <value>每個序號的長度應少於 {0}</value>
+  </data>
+  <data name="InvalidTokenDetails" xml:space="preserve">
+    <value>驗證失敗，因 Token 詳細資料無效。</value>
+  </data>
+  <data name="InvalidUdidAttributeArgs" xml:space="preserve">
+    <value>UDID 長度必須少於 {0} 個字元。</value>
+  </data>
+  <data name="InvalidUDIDValuesFoundArgs" xml:space="preserve">
+    <value>每個 UDID 的長度應小於 {0}。</value>
+  </data>
+  <data name="IosProfileDownloadHeaderTitle" xml:space="preserve">
+    <value>下載設定檔的步驟</value>
+  </data>
+  <data name="IosProfileDownloadSteps" xml:space="preserve">
+    <value>1. 當系統提示下載設定檔時，請點選 {0}
+
+2. 下載完成後，請點選 {1}</value>
+  </data>
+  <data name="LaforgeUserCreationFailed" xml:space="preserve">
+    <value>Android Enterprise 使用者建立失敗</value>
+  </data>
+  <data name="LinkToConfigurationTab" xml:space="preserve">
+    <value>連結至 [組態] 索引標籤</value>
+  </data>
+  <data name="MigrationFeatureDisabled" xml:space="preserve">
+    <value>貴組織不支援 Android Enterprise 移轉功能。請聯絡您的管理員。</value>
+  </data>
+  <data name="MoveDevicesToUserOrOGBAsedOnIPOrCA" xml:space="preserve">
+    <value>將裝置指派給根據 IP 範圍指派的使用者或組織群組，或根據自訂屬性規則將裝置指派給組織群組。如果為階層中的任何一個組織群組選取根據 IP 範圍或根據自訂屬性的組織群組，則無法啟用裝置指派規則。但是，如果在階層中選取了根據 IP 範圍類型列出的使用者名稱，則可以啟用裝置指派規則。</value>
+  </data>
+  <data name="MultiuserFFSetup" xml:space="preserve">
+    <value>已封鎖多使用者註冊，因為這項功能未正確設定。</value>
+  </data>
+  <data name="MultiuserNonMdmSupport" xml:space="preserve">
+    <value>使用的註冊通訊協定不支援多使用者註冊。</value>
+  </data>
+  <data name="NoMDMOrderFound" xml:space="preserve">
+    <value>註冊已暫停，因為在 SKU 中找不到 MDM 訂單。</value>
+  </data>
+  <data name="NotAuthorizedToCreateEnrollmentUser" xml:space="preserve">
+    <value>使用者沒有可建立註冊使用者的授權。</value>
+  </data>
+  <data name="OperationNotAuthorized" xml:space="preserve">
+    <value>無權執行此作業</value>
+  </data>
+  <data name="OrganizationGroupInherited" xml:space="preserve">
+    <value>企業群組已繼承</value>
+  </data>
+  <data name="PasscodeExpired" xml:space="preserve">
+    <value>密碼已到期</value>
+  </data>
+  <data name="PhoneNumberPrivacyCheck" xml:space="preserve">
+    <value>電話號碼的隱私檢查</value>
+  </data>
+  <data name="PreventReEnrollmentMessage" xml:space="preserve">
+    <value>選取下方的「防止重新註冊」核取方塊，會將其納入裝置封鎖清單，防止使用者重新註冊至 Workspace ONE UEM。管理員可在日後有需要時，從封鎖清單中移除此裝置。</value>
+  </data>
+  <data name="PrivacyNotificationDisabled" xml:space="preserve">
+    <value>已停用易於使用的隱私權通知</value>
+  </data>
+  <data name="PromptToBeginDownloadMessageForAppleOsX" xml:space="preserve">
+    <value>正在下載 Intelligent Hub 並自動安裝至您的電腦。視您的網路連線而定，這應需 1-5 分鐘的時間。代理程式安裝完成後，請點選 [繼續] 以完成註冊程序。</value>
+  </data>
+  <data name="RegisterAMAPI" xml:space="preserve">
+    <value>登錄 AMAPI。{0}</value>
+  </data>
+  <data name="RegisterAMAPIAtParentOG" xml:space="preserve">
+    <value>在設定 Android EMM 登錄的組織群組中登錄 AMAPI。{0}</value>
+  </data>
+  <data name="RegisterAMAPIHelpText" xml:space="preserve">
+    <value>必須先登錄 Android 管理 API (AMAPI)，才能與此組織群組搭配使用。</value>
+  </data>
+  <data name="RegisteredOrAppEnrolled" xml:space="preserve">
+    <value>已註冊登錄或獨立應用程式</value>
+  </data>
+  <data name="RegisterManagedDomain" xml:space="preserve">
+    <value>2. 登錄受管理的 Google 網域 (若不存在)。</value>
+  </data>
+  <data name="RegisterMultiuserDeviceConfirmationMessage" xml:space="preserve">
+    <value>對於 Windows 裝置，繫結到裝置註冊的使用者資訊將被刪除。</value>
+  </data>
+  <data name="Requirements" xml:space="preserve">
+    <value>需求</value>
+  </data>
+  <data name="RequireSharedDeviceEnrollmentEulaAcceptance" xml:space="preserve">
+    <value>永遠提示在建立註冊使用條款之前無法啟用使用款條。請至 [群組和設定] &gt; [裝置和使用者] &gt; [一般] &gt; [註冊] &gt; [使用條款] 索引標籤來建立使用條款。</value>
+  </data>
+  <data name="SerialNumberAssignmentFailed" xml:space="preserve">
+    <value>序號指派失敗。</value>
+  </data>
+  <data name="SetUpDirectoryServices" xml:space="preserve">
+    <value>設定目錄服務</value>
+  </data>
+  <data name="SubOrganizationGroup" xml:space="preserve">
+    <value>子企業群組</value>
+  </data>
+  <data name="SubsequentUserEnrollmentBlocked" xml:space="preserve">
+    <value>已封鎖後續的使用者註冊。</value>
+  </data>
+  <data name="TapHereIfNotPromptedAutomatically" xml:space="preserve">
+    <value>若您未收到自動提示，請點選此處</value>
+  </data>
+  <data name="TapHereWhenDownloadFinishes" xml:space="preserve">
+    <value>下載完成時，請點選此處</value>
+  </data>
+  <data name="TargetOwnershipRestrictedByDefaultPolicyAtGivenOG" xml:space="preserve">
+    <value>目標擁有權受限於指定之企業群組的預設原則</value>
+  </data>
+  <data name="TokenSaveFailed" xml:space="preserve">
+    <value>Token 儲存失敗。</value>
+  </data>
+  <data name="UemManaged" xml:space="preserve">
+    <value>已納管的 UEM</value>
+  </data>
+  <data name="UnapprovedUser" xml:space="preserve">
+    <value>使用者是外部 SAML 驗證的使用者，且不允許註冊。請聯絡您的管理員或再試一次。</value>
+  </data>
+  <data name="UploadedCertMisMatch" xml:space="preserve">
+    <value>憑證遺失。上傳有效憑證以繼續。</value>
+  </data>
+  <data name="UserEnrolled" xml:space="preserve">
+    <value>使用者已註冊</value>
+  </data>
+  <data name="UserEnrollmentFeatureNotEnabled" xml:space="preserve">
+    <value>您的組織已停用使用者註冊。請聯絡您的管理員以啟用使用者註冊，然後再試一次。</value>
+  </data>
+  <data name="UserHasExceededMaxAllowedDevices" xml:space="preserve">
+    <value>使用者已超過允許的裝置數量上限。</value>
+  </data>
+  <data name="UsernameAlreadyExists" xml:space="preserve">
+    <value>使用者名稱已屬於不同的使用者。請再試一次。</value>
+  </data>
+  <data name="UserSetup" xml:space="preserve">
+    <value>使用者設定</value>
+  </data>
+  <data name="ValidatePhoneNumberFailed" xml:space="preserve">
+    <value>無法驗證註冊使用者的電話號碼。請聯絡您的管理員或再試一次。</value>
+  </data>
+  <data name="WipeInitiated" xml:space="preserve">
+    <value>抹除已啟動</value>
+  </data>
+  <data name="WipeInitiatedTooltip" xml:space="preserve">
+    <value>抹除已啟動</value>
+  </data>
+  <data name="WorkProfileManagementMode" xml:space="preserve">
+    <value>Work 設定檔管理模式</value>
+  </data>
+  <data name="WorkProfileManagementModeInfoMessage" xml:space="preserve">
+    <value>指定由 Intelligent Hub 或 Android 管理 API 來管理新註冊的裝置。建議使用 AMAPI。Intelligent Hub 仍會顯示在裝置上，但管理功能將會委派給原生 Android 作業系統。現有的已註冊裝置不會受到影響。</value>
+  </data>
+  <data name="WorkProfileManagementModeToggleSuccessfulMessage" xml:space="preserve">
+    <value>登錄成功！管理模式已更新為 Android 管理 API。請參閱 [註冊設定]，以檢視或編輯已設定的管理模式。</value>
+  </data>
+  <data name="Ws1RealTimeUserGroupSyncChanged" xml:space="preserve">
+    <value>Workspace ONE 即時使用者群組同步設定已變更</value>
+  </data>
+</root>

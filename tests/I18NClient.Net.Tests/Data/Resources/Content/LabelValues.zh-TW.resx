@@ -1,0 +1,431 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Acknowledged" xml:space="preserve">
+    <value>已認可</value>
+  </data>
+  <data name="AcknowledgedNotRequired" xml:space="preserve">
+    <value>必要內容之確認僅適用於 Smartfolio。</value>
+  </data>
+  <data name="AdminRepositoryContent" xml:space="preserve">
+    <value>管理員存放庫內容</value>
+  </data>
+  <data name="AllowCorporateFileServerViewing" xml:space="preserve">
+    <value>允許檢視企業檔案伺服器</value>
+  </data>
+  <data name="AllowFileActions" xml:space="preserve">
+    <value>允許檔案動作</value>
+  </data>
+  <data name="AllowFileActionsTooltip" xml:space="preserve">
+    <value>允許終端使用者使用 Content Locker 應用程式，從 SharePoint Online 中直接刪除、重新命名和移動內容。</value>
+  </data>
+  <data name="ArgFilesLargerThanMaximumAllowedArgMessage" xml:space="preserve">
+    <value>您嘗試上傳的 {0} 個檔案超過所允許的 {1} MB 檔案大小上限。請查看 [設定] &gt; [管理員] &gt; [儲存空間]，將預設值變更為您要的檔案大小上限。若沒看到 [儲存空間] 選項，即代表您沒有存取權。您必須聯絡具有較高權限的管理員，才能進行所需的變更。</value>
+  </data>
+  <data name="AutoSyncAdminRepositories" xml:space="preserve">
+    <value>自動同步管理員存放庫</value>
+  </data>
+  <data name="AutoTemplateDescription" xml:space="preserve">
+    <value>描述</value>
+  </data>
+  <data name="BatchImportContentLockerExplanation" xml:space="preserve">
+    <value>這種大量匯入功能可用於將文件大批載入系統。下面連結提供此類導入的參考範本。</value>
+  </data>
+  <data name="CCPCanBeEnabledAtCustomerOgOnly" xml:space="preserve">
+    <value>雲端內容平台僅能在客戶 OG 啟用</value>
+  </data>
+  <data name="CellDataUsageExceedsArg" xml:space="preserve">
+    <value>行動數據使用量超過 {0} {1}</value>
+    <comment>{0} and {1} will be replaced by Data Usage and unit. Ex: 10 MB</comment>
+  </data>
+  <data name="CellDataUsageExceedsArgOfTotalPlan" xml:space="preserve">
+    <value>行動數據使用量超過總方案的 {0}</value>
+    <comment>{0} will be replaced by Cell Data Usage Percentage</comment>
+  </data>
+  <data name="CertificateAuthentication" xml:space="preserve">
+    <value>憑證驗證</value>
+  </data>
+  <data name="CertificateBasedAuthenticationTooltip" xml:space="preserve">
+    <value>需要在 Content Gateway 設定中使用 Kerberos 組態，才能啟用 PIV-D 衍生認證的使用。</value>
+  </data>
+  <data name="CGPublicSslCertificateTooltip" xml:space="preserve">
+    <value>請上傳第三方公開 SSL 憑證，讓裝置可信任 Content Gateway (必須為「.pfx」格式且包含您的公開及私密金鑰組)。</value>
+  </data>
+  <data name="ChangeRepositoryName" xml:space="preserve">
+    <value>變更受管理內容的存放庫名稱</value>
+  </data>
+  <data name="ClientCertificateChain" xml:space="preserve">
+    <value>用戶端憑證鏈結</value>
+  </data>
+  <data name="CloudContentPlatform" xml:space="preserve">
+    <value>雲端內容平台</value>
+  </data>
+  <data name="CloudContentPlatformConfigured" xml:space="preserve">
+    <value>已為此客戶 OG 設定雲端內容平台。用戶端 API 可用來與該平台互動</value>
+  </data>
+  <data name="CloudContentPlatformDescription" xml:space="preserve">
+    <value>雲端內容平台</value>
+  </data>
+  <data name="CloudContentPlatformInfo" xml:space="preserve">
+    <value>針對可能存留資料的各種企業存放庫，內容平台讓人可以統一存取終端使用者內容。按一下 [啟動] 按鈕來設定此客戶 OG 以使用 CCP 端點。</value>
+  </data>
+  <data name="ConfigureContentGateway" xml:space="preserve">
+    <value>未設定 Content Gateway。請在 {0} 設定中進行設定。</value>
+  </data>
+  <data name="ContentAdvancedCorporateFileServers" xml:space="preserve">
+    <value>Content 進階企業檔案伺服器</value>
+  </data>
+  <data name="ContentAdvancedCorporateFileServersHelp" xml:space="preserve">
+    <value>控制外部 Content 存放庫同步作業。</value>
+  </data>
+  <data name="ContentDevice" xml:space="preserve">
+    <value>Content 裝置</value>
+  </data>
+  <data name="ContentGatewayConfigurationNotSelected" xml:space="preserve">
+    <value>請選取 Content Gateway 組態</value>
+  </data>
+  <data name="ContentGatewayConfigurationUid" xml:space="preserve">
+    <value>Content Gateway 組態 UID</value>
+  </data>
+  <data name="ContentGatewayPublicSslCertificate" xml:space="preserve">
+    <value>公用的 SSL 憑證 (Linux 部署所需)</value>
+  </data>
+  <data name="ContentLocker" xml:space="preserve">
+    <value>Workspace ONE Content 應用程式</value>
+  </data>
+  <data name="ContentSSLCertificate" xml:space="preserve">
+    <value>Content SSL 憑證</value>
+  </data>
+  <data name="CorporateFileServerDefaultMessage" xml:space="preserve">
+    <value>在即將推出的版本中，此功能將淘汰。請在 {0} 上分享您對這項變更的意見反應。</value>
+    <comment>{0} will be replaced with Ideas Portal link.</comment>
+  </data>
+  <data name="CustomGatewaySettingID" xml:space="preserve">
+    <value>自訂閘道設定 ID</value>
+  </data>
+  <data name="CustomGatewaySettingInvalidDataType" xml:space="preserve">
+    <value>金鑰 {0} 選取的類型和值不相符。</value>
+  </data>
+  <data name="CustomGatewaySettings" xml:space="preserve">
+    <value>自訂閘道設定</value>
+  </data>
+  <data name="DeletedSucessfully" xml:space="preserve">
+    <value>已成功刪除</value>
+  </data>
+  <data name="DenyList" xml:space="preserve">
+    <value>拒絕清單</value>
+  </data>
+  <data name="DomainController" xml:space="preserve">
+    <value>網域控制器</value>
+  </data>
+  <data name="DomainControllerTooltip" xml:space="preserve">
+    <value>網域的網域控制站主機名稱或 IP 位址。</value>
+  </data>
+  <data name="DownloadContentGatewayConfiguration" xml:space="preserve">
+    <value>下載 Content Gateway 組態</value>
+  </data>
+  <data name="DownloadContentViewerConfiguration" xml:space="preserve">
+    <value>下載內容檢視器組態</value>
+  </data>
+  <data name="DownloadSuccessful" xml:space="preserve">
+    <value>下載成功</value>
+  </data>
+  <data name="Eb" xml:space="preserve">
+    <value>EB</value>
+  </data>
+  <data name="ExternalRepositorySyncDeprecationMessage" xml:space="preserve">
+    <value>若要啟用，請移至 {0} 頁面。在即將推出的版本中，此功能將遭到淘汰。</value>
+    <comment>{0} will be replaced with CorporateFileServer settings.</comment>
+  </data>
+  <data name="ExternalRepositorySyncShareFeedbackMessage" xml:space="preserve">
+    <value>請在 {0} 上分享您對此變更的意見反應。</value>
+    <comment>{0} will be replaced with Ideas Portal link.</comment>
+  </data>
+  <data name="Failure" xml:space="preserve">
+    <value>失敗</value>
+  </data>
+  <data name="FeatureIsDisabled" xml:space="preserve">
+    <value>此功能已停用</value>
+  </data>
+  <data name="FileSizeExceededForMultiDownload" xml:space="preserve">
+    <value>多重下載已超過總檔案大小 (6GB)。</value>
+  </data>
+  <data name="FileStatus" xml:space="preserve">
+    <value>檔案狀態</value>
+  </data>
+  <data name="FileStorageInformationMessageWithArg" xml:space="preserve">
+    <value>Workspace ONE UEM 會自動為 SaaS 客戶設定檔案儲存空間。對於內部部署客戶，請將專用伺服器設定為 {0}、內部用應用程式和受管理內容。這會降低 Workspace ONE UEM 資料庫的整體負擔並提高效能。請勿在不移轉其目前內容的情況下變更檔案儲存伺服器。</value>
+  </data>
+  <data name="IdeasPortal" xml:space="preserve">
+    <value>構想入口網站</value>
+  </data>
+  <data name="InvalidBlacklistLink" xml:space="preserve">
+    <value>無效的 {0} 範本或封鎖清單</value>
+  </data>
+  <data name="InvalidCategoryAssignment" xml:space="preserve">
+    <value>類別 {0} 不屬於任何已指派的企業群組階層</value>
+  </data>
+  <data name="InvalidResponseFormat" xml:space="preserve">
+    <value>無效的回應格式</value>
+  </data>
+  <data name="KcdDomainTooltip" xml:space="preserve">
+    <value>包含使用者的 AD 之中的網域名稱。網域必須符合 UPN 尾碼。(例如 corp.test.com 和 user@corp.test.com)</value>
+  </data>
+  <data name="KerberosAuthenticationError" xml:space="preserve">
+    <value>Kerberos 驗證錯誤。請檢查提供的 UPN。</value>
+  </data>
+  <data name="KerberosConfigurationError" xml:space="preserve">
+    <value>Kerberos 組態錯誤。請檢查 KDC 主機、網域名稱和服務帳戶詳細資料。</value>
+  </data>
+  <data name="LabelCorporateFileServers" xml:space="preserve">
+    <value>企業檔案伺服器</value>
+  </data>
+  <data name="ManagedContent" xml:space="preserve">
+    <value>受管理的內容</value>
+  </data>
+  <data name="ManagedContentDelete" xml:space="preserve">
+    <value>受管理內容刪除</value>
+  </data>
+  <data name="ManualTemplateBlacklistedLinks" xml:space="preserve">
+    <value>已遭拒的連結</value>
+  </data>
+  <data name="ManualTemplateLink" xml:space="preserve">
+    <value>連結</value>
+  </data>
+  <data name="ManualTemplateLinkAdd" xml:space="preserve">
+    <value>新增</value>
+  </data>
+  <data name="ManualTemplateRepoEndPoints" xml:space="preserve">
+    <value>存放庫端點</value>
+  </data>
+  <data name="ManualTemplateType" xml:space="preserve">
+    <value>類型</value>
+  </data>
+  <data name="MaxSelectedFileCountExceeded" xml:space="preserve">
+    <value>已超過選取檔案計數上限 (10)。</value>
+  </data>
+  <data name="MemConfigurationUId" xml:space="preserve">
+    <value>MEM 組態 UID</value>
+  </data>
+  <data name="MyRepositoryDeprecationWarning" xml:space="preserve">
+    <value>此頁面將在未來版本中移除。請使用 Content 應用程式來管理您的存放庫。</value>
+  </data>
+  <data name="NullValue" xml:space="preserve">
+    <value>Null 值</value>
+  </data>
+  <data name="Pb" xml:space="preserve">
+    <value>PB</value>
+  </data>
+  <data name="Permissions" xml:space="preserve">
+    <value>權限</value>
+  </data>
+  <data name="PersonalContentCanOnlyBeEnabledAtCustomerLg" xml:space="preserve">
+    <value>個人內容僅能在類型為「客戶」的企業群組或其下單位中啟用。</value>
+  </data>
+  <data name="PIVDDerivedCredentials" xml:space="preserve">
+    <value>使用衍生認證</value>
+  </data>
+  <data name="PlatformLinux" xml:space="preserve">
+    <value>Linux (舊版)</value>
+  </data>
+  <data name="PlatformUag" xml:space="preserve">
+    <value>Unified Access Gateway</value>
+  </data>
+  <data name="PlatformWindows" xml:space="preserve">
+    <value>Windows (舊版)</value>
+  </data>
+  <data name="PleaseEnterContentRepositoryTemplateName" xml:space="preserve">
+    <value>請輸入名稱。</value>
+  </data>
+  <data name="PleaseEnterUserRepositoryName" xml:space="preserve">
+    <value>請輸入使用者存放庫名稱。</value>
+  </data>
+  <data name="PleaseSelectContentGatewayWithKcdSettings" xml:space="preserve">
+    <value>請選取含 KCD 設定的 Content Gateway。</value>
+  </data>
+  <data name="ProvideADUserUPN" xml:space="preserve">
+    <value>為與外部存放庫同步的 AD 使用者提供使用者主體名稱。</value>
+  </data>
+  <data name="Repositories" xml:space="preserve">
+    <value>存放庫</value>
+  </data>
+  <data name="Repository" xml:space="preserve">
+    <value>存放庫</value>
+  </data>
+  <data name="RepositoryTestConnectionFailed" xml:space="preserve">
+    <value>存放庫測試連線失敗。</value>
+  </data>
+  <data name="RFSSSLCertificateRequiredWarning" xml:space="preserve">
+    <value>使用安全連線的 RFS 需要公開的 SSL 憑證。請上傳「.pfx」格式之完整憑證鏈結。</value>
+  </data>
+  <data name="SearchSignatureRequests" xml:space="preserve">
+    <value>搜尋簽名要求</value>
+  </data>
+  <data name="SecureContentLockerSettingsCustomizeMessage" xml:space="preserve">
+    <value>Content 會使用所選設定檔中所定義的設定。若要設定您的設定檔，請導覽至 [應用程式] &gt; [設定和原則] &gt; [{0}]</value>
+    <comment>{0} will be replaced with a link to Profiles settings page under Apps &gt;Settings and Policies with the text "Profiles"</comment>
+  </data>
+  <data name="SecureContentLockerSettingsDefaultMessage" xml:space="preserve">
+    <value>Content 將使用在以下頁面所定義的預設應用程式設定和原則:</value>
+  </data>
+  <data name="StorageTypeDatabase" xml:space="preserve">
+    <value>AirWatch 管理的資料庫</value>
+  </data>
+  <data name="StorageTypeInternal" xml:space="preserve">
+    <value>已納管的 UEM</value>
+  </data>
+  <data name="StoreYourReports" xml:space="preserve">
+    <value>儲存報告</value>
+  </data>
+  <data name="Tb" xml:space="preserve">
+    <value>TB</value>
+  </data>
+  <data name="TermsOfUseMessage" xml:space="preserve">
+    <value>Content 會在下方欄位顯示所選的使用條款。若要建立您專屬的使用條款，請導覽至 [系統] &gt; [{0}]</value>
+    <comment>{0} will be replaced with a link to Terms of use settings page with the text "Terms of Use" </comment>
+  </data>
+  <data name="TunnelConfigurationUid" xml:space="preserve">
+    <value>Tunnel 組態 UID</value>
+  </data>
+  <data name="Uaginfomessage" xml:space="preserve">
+    <value>Content Gateway 服務現在僅可透過 Unified Access Gateway 取得。舊版 Linux 和 Windows 的 Content Gateway 已不再受到支援。
+</value>
+  </data>
+  <data name="UnableToDelete" xml:space="preserve">
+    <value>無法刪除</value>
+  </data>
+  <data name="UploadNotAllowedOverQuota" xml:space="preserve">
+    <value>不允許上傳，因為檔案大小超過可用的儲存空間。</value>
+  </data>
+  <data name="UploadNotPermittedEmptyFile" xml:space="preserve">
+    <value>不允許上傳空白檔案</value>
+  </data>
+  <data name="Viewed" xml:space="preserve">
+    <value>已檢視</value>
+  </data>
+  <data name="WorkspaceONEContentApp" xml:space="preserve">
+    <value>Workspace ONE Content 應用程式</value>
+  </data>
+  <data name="Yb" xml:space="preserve">
+    <value>YB</value>
+  </data>
+  <data name="Zb" xml:space="preserve">
+    <value>ZB</value>
+  </data>
+</root>

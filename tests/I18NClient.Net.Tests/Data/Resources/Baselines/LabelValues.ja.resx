@@ -1,0 +1,486 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AddedPolices" xml:space="preserve">
+    <value>追加ポリシー</value>
+  </data>
+  <data name="AssignBaseline" xml:space="preserve">
+    <value>ベースラインの割り当て</value>
+  </data>
+  <data name="AssignBaselineDescription" xml:space="preserve">
+    <value>ベースラインを割り当てるスマート グループを選択します。</value>
+  </data>
+  <data name="AssignBaselineDescription2" xml:space="preserve">
+    <value>ベースラインを割り当てるスマート グループを選択します。特定のグループを除外するには、[除外] を選択します。公開されているベースラインに除外を追加すると、そのベースラインは除外されたデバイスから削除されます。</value>
+  </data>
+  <data name="AssignBaselineLocationGroupNotFound" xml:space="preserve">
+    <value>組織グループが見つからなかったため、ベースラインを割り当てることができません。</value>
+  </data>
+  <data name="AssignBaselineNotFound" xml:space="preserve">
+    <value>ベースラインが見つからなかったためベースラインを割り当てることができません。</value>
+  </data>
+  <data name="AssignedDevicesArg" xml:space="preserve">
+    <value>割り当て済み: {0} デバイス</value>
+  </data>
+  <data name="Assignments" xml:space="preserve">
+    <value>割り当て</value>
+  </data>
+  <data name="Baseline" xml:space="preserve">
+    <value>ベースライン</value>
+  </data>
+  <data name="BaselineAssigned" xml:space="preserve">
+    <value>ベースラインが割り当てられました</value>
+  </data>
+  <data name="BaselineAssignmentFailed" xml:space="preserve">
+    <value>ベースラインを割り当てることができません。再試行してください。</value>
+  </data>
+  <data name="BaselineAssignmentSuccessful" xml:space="preserve">
+    <value>更新された割り当てにベースラインが正常に公開されました。</value>
+  </data>
+  <data name="BaselineBlobFailed" xml:space="preserve">
+    <value>パッケージの作成に失敗したため、ベースラインを作成できませんでした。</value>
+  </data>
+  <data name="BaselineCombinedBlobFailed" xml:space="preserve">
+    <value>カスタマイズを含むパッケージの作成に失敗したため、ベースラインを作成できませんでした。</value>
+  </data>
+  <data name="BaselineContainsExe" xml:space="preserve">
+    <value>カスタム ベースラインに実行ファイルが含まれています。それらを削除して、もう一度試してください。</value>
+  </data>
+  <data name="BaselineCopyFailed" xml:space="preserve">
+    <value>選択したベースラインをコピーできませんでした。</value>
+  </data>
+  <data name="BaselineCopySuccessful" xml:space="preserve">
+    <value>選択したベースラインが正常にコピーされました。</value>
+  </data>
+  <data name="BaselineCreated" xml:space="preserve">
+    <value>ベースラインが作成されました</value>
+  </data>
+  <data name="BaselineCreationFailed" xml:space="preserve">
+    <value>ベースラインの作成に失敗しました。</value>
+  </data>
+  <data name="BaselineCreationSuccessful" xml:space="preserve">
+    <value>ベースラインが正常に保存されました。</value>
+  </data>
+  <data name="BaselineCustomizationFailed" xml:space="preserve">
+    <value>カスタマイズの適用に失敗したため、ベースラインを作成できませんでした。</value>
+  </data>
+  <data name="BaselineDeleted" xml:space="preserve">
+    <value>ベースラインが削除されました</value>
+  </data>
+  <data name="BaselineDeleteFailed" xml:space="preserve">
+    <value>ベースラインの削除に失敗しました。もう一度やり直してください。</value>
+  </data>
+  <data name="BaselineDeleteSuccessful" xml:space="preserve">
+    <value>ベースラインの削除が完了しました。</value>
+  </data>
+  <data name="BaselineDetails" xml:space="preserve">
+    <value>ベースラインの名前とバージョン</value>
+  </data>
+  <data name="BaselineErrorCode" xml:space="preserve">
+    <value>デバイス エラー コード</value>
+  </data>
+  <data name="BaselineErrorMessage" xml:space="preserve">
+    <value>エラー メッセージ</value>
+  </data>
+  <data name="BaselineFileCorrupt" xml:space="preserve">
+    <value>カスタム ベースラインは有効な zip ファイルではありません。</value>
+  </data>
+  <data name="BaselineFileEmpty" xml:space="preserve">
+    <value>カスタム ベースラインが空になっています。有効なファイルで再試行してください。</value>
+  </data>
+  <data name="BaselineFileMissingPolicies" xml:space="preserve">
+    <value>カスタム ベースライン用に選択されているファイルは、推奨されている仕様に従っていません。改訂するためのドキュメントを参照してください。</value>
+  </data>
+  <data name="BaselineFileSizeError" xml:space="preserve">
+    <value>カスタム ベースラインが最大サイズ制限の 5 MB を超えています。</value>
+  </data>
+  <data name="BaselineGetPolicyTreeFailed" xml:space="preserve">
+    <value>カスタマイズのポリシーをロードできません。後で再試行してください。</value>
+  </data>
+  <data name="BaselineInvalidRequest" xml:space="preserve">
+    <value>すべての必須フィールドが入力されていることを確認してください。</value>
+  </data>
+  <data name="BaselineMissingPolicies" xml:space="preserve">
+    <value>1 つ以上のポリシーが削除されているか使用できないため、ベースラインの作成に失敗しました</value>
+  </data>
+  <data name="BaselineModified" xml:space="preserve">
+    <value>ベースラインが変更されました</value>
+  </data>
+  <data name="BaselineName" xml:space="preserve">
+    <value>ベースライン名</value>
+  </data>
+  <data name="BaselinePendingReboot" xml:space="preserve">
+    <value>再起動保留中</value>
+  </data>
+  <data name="BaselinePolicyFieldError" xml:space="preserve">
+    <value>1 つ以上のポリシーの値が無効なため、ベースラインの作成に失敗しました</value>
+  </data>
+  <data name="BaselinePolicyGenerationFailed" xml:space="preserve">
+    <value>1 つ以上のポリシーを生成できなかったため、ベースラインの作成に失敗しました</value>
+  </data>
+  <data name="Baselines" xml:space="preserve">
+    <value>ベースライン</value>
+  </data>
+  <data name="BaselinesBlobID" xml:space="preserve">
+    <value>ベースラインの BLOB ID</value>
+  </data>
+  <data name="BaselinesCount" xml:space="preserve">
+    <value>ベースライン数</value>
+  </data>
+  <data name="BaselineServiceUnavailable" xml:space="preserve">
+    <value>ベースライン サービス「https://www.vmwarebaselines.com」に接続できません。接続を確認し、ログで詳細を確認してください。</value>
+  </data>
+  <data name="BaselinesMenuDescription" xml:space="preserve">
+    <value>ベースラインの表示</value>
+  </data>
+  <data name="BaselineStatusCallFailed" xml:space="preserve">
+    <value>ベースラインの状態を取得できません。後で再試行してください</value>
+  </data>
+  <data name="BaselineTooltipCis" xml:space="preserve">
+    <value>選択したバージョンとレベルの CIS ベンチマークの推奨設定を使用します。</value>
+  </data>
+  <data name="BaselineTooltipCustom" xml:space="preserve">
+    <value>カスタム グループ ポリシー オブジェクト (GPO) のバックアップをアップロードして、デバイスに適用します。GPO のバックアップは、5 MB 未満の ZIP ファイルであることが必要です。</value>
+  </data>
+  <data name="BaselineTooltipWindows" xml:space="preserve">
+    <value>Microsoft Security Toolkit のセキュリティ ベースライン コンポーネント (「SBC」) は、Microsoft によって作成されたもので、Windows 10 デバイスの管理にのみ使用できます。SBC は、VMware または Microsoft からのいかなる種類の保証もなく、現状のままで提供されます。SBC の詳細については、{0} を参照してください。</value>
+  </data>
+  <data name="BaselineUUID" xml:space="preserve">
+    <value>ベースライン UUID</value>
+  </data>
+  <data name="BlankBaseline" xml:space="preserve">
+    <value>独自に作成</value>
+  </data>
+  <data name="BlankBaselineDescription" xml:space="preserve">
+    <value>当社のポリシー カタログから選択して、独自のベースラインを作成します。</value>
+  </data>
+  <data name="ChooseTemplate" xml:space="preserve">
+    <value>ベースラインの選択</value>
+  </data>
+  <data name="ComplianceDataMissing" xml:space="preserve">
+    <value>このベースラインでは順守データがまだ利用できません。割り当てられたデバイスにベースラインを再発行して、順守サンプル レポートの作成をトリガしてください。</value>
+  </data>
+  <data name="ConfirmCancelBaseline" xml:space="preserve">
+    <value>このベースラインへの変更は保存されません。変更を破棄しますか?</value>
+  </data>
+  <data name="ConfirmCloudDescription" xml:space="preserve">
+    <value>Workspace ONE ベースラインを使用すると、VMware によってリモート保存されているデータにアクセスします。続行しない場合は [キャンセル] をクリックしてください。</value>
+  </data>
+  <data name="ConfirmCloudTitle" xml:space="preserve">
+    <value>リモート データ アクセス</value>
+  </data>
+  <data name="ConfirmDeleteBaseline" xml:space="preserve">
+    <value>このベースラインが割り当てられている場合、削除するとすべてのデバイスから削除されます。続行しますか?</value>
+  </data>
+  <data name="CopyBaseline" xml:space="preserve">
+      <value>ベースラインをコピー</value>
+  </data>
+  <data name="CustomBaseline" xml:space="preserve">
+    <value>カスタム ベースライン</value>
+  </data>
+  <data name="CustomBaselineCompliance" xml:space="preserve">
+    <value>カスタム ベースラインの順守データは、圧縮されたポリシーではなく、ベースラインに追加されたポリシーに基づいて評価されます。</value>
+  </data>
+  <data name="CustomBaselineComplianceDataMissing" xml:space="preserve">
+    <value>圧縮されたポリシーを確認できなかったため、カスタム ベースラインの順守データは利用できないか不完全です。</value>
+  </data>
+  <data name="CustomBaselineError" xml:space="preserve">
+    <value>カスタム ベースラインのファイルを選択してください</value>
+  </data>
+  <data name="CustomBaselineHelpLink" xml:space="preserve">
+    <value>GPO のアップロード手順の表示</value>
+  </data>
+  <data name="CustomizeSelectPolicy" xml:space="preserve">
+    <value>設定を表示するポリシーを選択します。</value>
+  </data>
+  <data name="CustomizeStepDescription" xml:space="preserve">
+    <value>必要に応じて、{0} のポリシーを確認またはカスタマイズできます。</value>
+  </data>
+  <data name="DefinitionStepDescription" xml:space="preserve">
+    <value>ベースラインの名前と説明を入力します。</value>
+  </data>
+  <data name="DeleteBaseline" xml:space="preserve">
+    <value>ベースラインを削除</value>
+  </data>
+  <data name="DeviceBaselineLocationGroupNotFound" xml:space="preserve">
+    <value>組織グループが見つからなかったため、ベースラインのデバイスを取得できません。</value>
+  </data>
+  <data name="DeviceBaselineNotFound" xml:space="preserve">
+    <value>ベースラインが見つからなかったため、ベースラインのデバイスを取得できません。</value>
+  </data>
+  <data name="DiscardAndExit" xml:space="preserve">
+    <value>破棄して終了</value>
+  </data>
+  <data name="EditBaseline" xml:space="preserve">
+    <value>ベースラインの編集</value>
+  </data>
+  <data name="EditRequestError" xml:space="preserve">
+    <value>選択したベースラインのバージョンは使用できません。新しいベースラインを作成してください。</value>
+  </data>
+  <data name="EmptyBaselineList" xml:space="preserve">
+    <value>ベースラインが見つかりません</value>
+  </data>
+  <data name="EmptyDeviceList" xml:space="preserve">
+    <value>デバイスが見つかりません</value>
+  </data>
+  <data name="EmptyListInput" xml:space="preserve">
+    <value>1 つ以上のエントリが必要です</value>
+  </data>
+  <data name="EmptyPolicyList" xml:space="preserve">
+    <value>ポリシーがまだ追加されていません</value>
+  </data>
+  <data name="ErrorBaselineDeviceException" xml:space="preserve">
+    <value>ベースラインを適用できません。ログを確認して修正してください。</value>
+  </data>
+  <data name="ErrorDownloadBlobFailed" xml:space="preserve">
+    <value>ベースラインにアクセスできません。ログを確認して修正してください。</value>
+  </data>
+  <data name="ErrorInvalidExecutable" xml:space="preserve">
+    <value>LGPO.exe が有効ではありません。実行ファイルを変更して修正してください。</value>
+  </data>
+  <data name="ErrorLGPOBackupFailed" xml:space="preserve">
+    <value>ベースラインを適用できません。ログを確認して修正してください。</value>
+  </data>
+  <data name="ErrorMissingLGPO" xml:space="preserve">
+    <value>ベースラインを適用するための LGPO.exe が使用できません。</value>
+  </data>
+  <data name="ErrorSavingFileInFolder" xml:space="preserve">
+    <value>ベースラインを保存できません。ログを確認して修正してください。</value>
+  </data>
+  <data name="ErrorUpdatingDatabase" xml:space="preserve">
+    <value>ベースラインの状態が不明です。詳細については、ログを確認してください。</value>
+  </data>
+  <data name="ErrorZipExtractionFailed" xml:space="preserve">
+    <value>ベースラインを抽出できません。ログを確認して修正してください。</value>
+  </data>
+  <data name="ExcludedSmartGroups" xml:space="preserve">
+    <value>除外するスマートグループ</value>
+  </data>
+  <data name="Exclusions" xml:space="preserve">
+    <value>除外</value>
+  </data>
+  <data name="FailedInstall" xml:space="preserve">
+    <value>インストールに失敗しました</value>
+  </data>
+  <data name="FailedRemoval" xml:space="preserve">
+    <value>削除に失敗しました</value>
+  </data>
+  <data name="IntermediateDescription" xml:space="preserve">
+    <value>順守が {0}% から {1}% のデバイスは中間と分類されます。</value>
+  </data>
+  <data name="MaxValueArg" xml:space="preserve">
+    <value>{0} 以下の値にしてください</value>
+  </data>
+  <data name="MinValueArg" xml:space="preserve">
+    <value>{0} 以上の値にしてください</value>
+  </data>
+  <data name="NewBaseline" xml:space="preserve">
+    <value>新しいベースライン</value>
+  </data>
+  <data name="NoActiveOSVersion" xml:space="preserve">
+    <value>OS バージョンが見つかりませんでした。後で再試行してください。</value>
+  </data>
+  <data name="NoCustomizationSupport" xml:space="preserve">
+    <value>選択したベースラインでは、カスタマイズを現在使用できません。</value>
+  </data>
+  <data name="NoFileSelected" xml:space="preserve">
+    <value>ファイルが選択されていません。</value>
+  </data>
+  <data name="NonEnglishSearchResult" xml:space="preserve">
+    <value>「{0}」の結果が見つかりませんでした。英語で検索を再試行して、このポリシーが利用可能かどうかを確認できます。</value>
+  </data>
+  <data name="NoResultsFoundForArg" xml:space="preserve">
+    <value>「{0}」の結果が見つかりませんでした</value>
+  </data>
+  <data name="NoSmartGroupsSelected" xml:space="preserve">
+    <value>スマート グループが選択されていません</value>
+  </data>
+  <data name="PolicyNotFound" xml:space="preserve">
+    <value>ポリシーの詳細が見つかりません</value>
+  </data>
+  <data name="PolicyStepDescription" xml:space="preserve">
+    <value>カタログからポリシーを検索して追加します。</value>
+  </data>
+  <data name="Proceed" xml:space="preserve">
+    <value>続行</value>
+  </data>
+  <data name="RemovalFailed" xml:space="preserve">
+    <value>削除に失敗しました</value>
+  </data>
+  <data name="RequiredFieldError" xml:space="preserve">
+    <value>ベースラインの名前を入力してください。</value>
+  </data>
+  <data name="SaveAndPublish" xml:space="preserve">
+    <value>保存して公開</value>
+  </data>
+  <data name="SearchPolicyPlaceholder" xml:space="preserve">
+    <value>ポリシーを検索するにはここに入力</value>
+  </data>
+  <data name="SearchSmartGroupPlaceholder" xml:space="preserve">
+    <value>スマート グループを検索するにはここに入力</value>
+  </data>
+  <data name="SelectedSmartGroups" xml:space="preserve">
+    <value>選択したスマート グループ</value>
+  </data>
+  <data name="SelectTypeDescription" xml:space="preserve">
+    <value>追加するベースラインのタイプを選択します。</value>
+  </data>
+  <data name="SelectTypeTitle" xml:space="preserve">
+    <value>ベースラインのタイプを選択</value>
+  </data>
+  <data name="SmartGroupAtLeastOneValidationDescription" xml:space="preserve">
+    <value>[割り当て] タブにスマート グループが 1 つ以上必要です。</value>
+  </data>
+  <data name="SummaryStepDescription" xml:space="preserve">
+    <value>このベースラインを保存する前に、サマリを確認します。</value>
+  </data>
+  <data name="TemplateStepDescription" xml:space="preserve">
+    <value>事前構成されているベースラインとバージョンを選択します。</value>
+  </data>
+  <data name="TextareaMaxLinesError" xml:space="preserve">
+    <value>最大行数を超えています</value>
+  </data>
+  <data name="TextareaMaxSentenceError" xml:space="preserve">
+    <value>1 つ以上の文が最大長を超えています</value>
+  </data>
+  <data name="TotalInstalledArg" xml:space="preserve">
+    <value>インストール済み合計: {0}</value>
+  </data>
+  <data name="UnabletoLoadDevices" xml:space="preserve">
+    <value>デバイス リストをロードできません。後で再試行してください。</value>
+  </data>
+  <data name="UnsavedChanges" xml:space="preserve">
+    <value>保存されていない変更内容</value>
+  </data>
+  <data name="UnsupportedLanguageError" xml:space="preserve">
+    <value>エラー：選択した言語はサポートされていません。</value>
+  </data>
+  <data name="UseBaselineTemplate" xml:space="preserve">
+      <value>テンプレート使用</value>
+  </data>
+  <data name="UseTemplateDescription" xml:space="preserve">
+    <value>業界標準のテンプレートを使用してベースラインをセットアップします。</value>
+  </data>
+  <data name="VersionBreakdown" xml:space="preserve">
+    <value>バージョン内訳</value>
+  </data>
+  <data name="ViewBaselineDevicesTitle" xml:space="preserve">
+    <value>デバイスを表示 - ベースライン</value>
+  </data>
+</root>

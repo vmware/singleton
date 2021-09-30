@@ -1,0 +1,967 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AC" xml:space="preserve">
+    <value>AC</value>
+  </data>
+  <data name="AccessToDeviceReprocessProductsMenuTooltip" xml:space="preserve">
+    <value>Sorunları daha hızlı gidermek üzere çalışanlar için ürün yeniden işleme menüsüne erişim sağlar.</value>
+  </data>
+  <data name="ACorFullBattery" xml:space="preserve">
+    <value>AC veya Tam Pil</value>
+  </data>
+  <data name="ACPowerCondition" xml:space="preserve">
+    <value>Aygıt güce bağlı olduğunda (ör. bir bağlantı ayağına yerleştirildiğinde, güce takıldığında) eylemlerinizin gerçekleşmesi için planlayın.</value>
+  </data>
+  <data name="AddAgentPackages" xml:space="preserve">
+    <value>Hub/Agent Paketi Ekle</value>
+  </data>
+  <data name="AddFileServer" xml:space="preserve">
+    <value>Dosya Sunucusu Ekle</value>
+  </data>
+  <data name="AddPinnedAppsHelp" xml:space="preserve">
+    <value>Sabitlenmiş Uygulamalar satırı eklemek, aygıtın ana ekranındaki alan kısıtlamaları nedeniyle Başlık Çubuğunu Simge Durumuna Küçült işlevinin etkinleştirilmesini zorunlu kılar.</value>
+  </data>
+  <data name="AddPinnedAppsRow" xml:space="preserve">
+    <value>Sabitlenmiş Uygulamalar için Satır Ekle</value>
+  </data>
+  <data name="AddToLauncher" xml:space="preserve">
+    <value>Başlatıcıya Ekle</value>
+  </data>
+  <data name="AfterDurationExceeded" xml:space="preserve">
+    <value>Süre Aşıldıktan Sonra</value>
+  </data>
+  <data name="AgentPackages" xml:space="preserve">
+    <value>Hub/Agent Paketleri</value>
+  </data>
+  <data name="AgentPackagesMenuTitle" xml:space="preserve">
+    <value>Hub/Agent Paketlerini görüntüle ve ekle</value>
+  </data>
+  <data name="AirwatchMdmAgentUpgrade" xml:space="preserve">
+    <value>AirWatch MDM Agent Yükseltmesi</value>
+  </data>
+  <data name="Airwatchmdmagentupgradefile" xml:space="preserve">
+    <value>AirWatch MDM Agent Yükseltme Dosyası</value>
+  </data>
+  <data name="AndroidAvailableSystemActions" xml:space="preserve">
+    <value>Intent Çalıştırma, Yeniden Başlatma, Özel Ayarlar Uygulama, Launcher Oturumunu Kapatma.</value>
+  </data>
+  <data name="AndroidFile" xml:space="preserve">
+    <value>Dosya</value>
+  </data>
+  <data name="ApplicationAssignmentsCount" xml:space="preserve">
+    <value>Atamalar</value>
+  </data>
+  <data name="AssistCommandLine" xml:space="preserve">
+    <value>Komut Satırı</value>
+  </data>
+  <data name="AssistManageFiles" xml:space="preserve">
+    <value>Dosyaları Yönet</value>
+  </data>
+  <data name="AssistRemoteAssist" xml:space="preserve">
+    <value>Uzaktan Yardım</value>
+  </data>
+  <data name="AssistRemoteViewIosTooltip" xml:space="preserve">
+    <value>Sadece Uzaktan Görünümü destekleyen iOS dışında tüm platformlar için Uzaktan Görünüm ve Denetimi destekler.</value>
+  </data>
+  <data name="AssistShareScreen" xml:space="preserve">
+    <value>Ekranı Paylaş</value>
+  </data>
+  <data name="AtleastOneCustomAttributeAndAttributeValueIsRequired" xml:space="preserve">
+    <value>En az bir Özel Öznitelik ve Öznitelik Değeri gereklidir</value>
+  </data>
+  <data name="AutoRetry" xml:space="preserve">
+    <value>Otomatik Yeniden Dene</value>
+  </data>
+  <data name="BackgroundApplication" xml:space="preserve">
+    <value>Arkaplan uygulaması</value>
+  </data>
+  <data name="Batchimportrelayserverexplanation" xml:space="preserve">
+    <value>Geçiş Sunucusu İçe Aktarma özelliği, Geçiş Sunucularını sisteme toplu halde yüklemek üzere kullanılabilir. Geçiş Sunucuları kullanıcıları bir organizasyon grubu ile ilişkilendirilmiş olmalıdır.
+
+Referans için Şablonu İndir'e tıklayın.</value>
+  </data>
+  <data name="BulkEnterpriseResetDescription" xml:space="preserve">
+    <value>Bu eylemin sadece VMware Hızlı Dağıtım istemcisinden yararlanan hazırlama kaydı işlemiyle kaydedilmiş Zebra ya da Honeywell Rugged Android veya Windows Mobile Aygıtlarda geçerli olduğunu lütfen unutmayın. Bu eylem, bir aygıt silme işlemi ve ardından yeniden başlatma gerçekleştirecektir. Yeniden başlatma sonrasında aygıt yine de Workspace ONE'a kaydedilir ve kendini istenen ve önceden tanımlanmış bir duruma getirir.</value>
+  </data>
+  <data name="CannotActivatePolicy_DeactivationDateIsInPast" xml:space="preserve">
+    <value>İlke etkinleştirilemiyor. Devre dışı bırakma tarihi geçmiş.</value>
+  </data>
+  <data name="CannotBeEmptyArg" xml:space="preserve">
+    <value>{0}, null veya boş olamaz</value>
+  </data>
+  <data name="CannotDeactivatePolicy_ActivationDateIsInThePast" xml:space="preserve">
+    <value>İlke Devre Dışı Bırakılamıyor. Etkinleştirme Tarihi geçmiş.</value>
+  </data>
+  <data name="CannotSavePolicySmartGroupNotAssigned" xml:space="preserve">
+    <value>İlke otomatik olarak etkinleştirilemiyor. Akıllı Grup atanmadı.</value>
+  </data>
+  <data name="CASettingsCannotBeConfiguredAtThisOg" xml:space="preserve">
+    <value>Özel Öznitelik Ayarları, bu organizasyon grubunda yapılandırılamaz.</value>
+  </data>
+  <data name="CDNShouldBeEnabled" xml:space="preserve">
+    <value>CDN Aracılığıyla Ürün İndirmelerine İzin Ver ayarlarını etkinleştirmeden önce lütfen CDN ayarlarını etkinleştirip kaydedin</value>
+  </data>
+  <data name="CharactersAreRestrictedInProductName" xml:space="preserve">
+    <value>Ürün adı, {0} karakterlerini içermemelidir</value>
+  </data>
+  <data name="CloudRelayConnectionShouldFollowFormat" xml:space="preserve">
+    <value>Cloud Relay bağlantısının biçimi /DesiredFolder/Temp şeklinde olmalıdır</value>
+  </data>
+  <data name="ConditionActionAfterDurationHelp" xml:space="preserve">
+    <value>Koşul süresi karşılandıktan sonra nasıl ilerleneceğini belirler.</value>
+  </data>
+  <data name="ConditionDurationHelp" xml:space="preserve">
+    <value>Bu koşulun bu eylemi gerçekleştirme süresini ayarlar.</value>
+  </data>
+  <data name="ConditionFileNameHelp" xml:space="preserve">
+    <value>Koşulu ayarlamak için aygıtlara ürün bileşenlerini indirmeden ve/veya yüklemeden önce kontrol edilmesi için aygıt yolu ve dosya adını girin.</value>
+  </data>
+  <data name="ConditionFrequencyHelp" xml:space="preserve">
+    <value>Aygıtların bu dosyanın bulunup bulunmadığını kontrol etmek için bu koşulu ne sıklıkla çalıştıracaklarını belirler.</value>
+  </data>
+  <data name="ConditionMetWhen" xml:space="preserve">
+    <value>Koşulun Karşılandığı Durum</value>
+  </data>
+  <data name="ConditionTestTypeHelp" xml:space="preserve">
+    <value>Bu dosya aygıtlarda bulunduğunda veya bulunmadığında ürün bileşenlerinin indirilip indirilmemesini ve/veya yüklenip yüklenmemesini belirler.</value>
+  </data>
+  <data name="ConfigureAgentTakesToSettingsConfiguration" xml:space="preserve">
+    <value>"Aracıyı Yapılandır", sonraki adımlar için sizi Ayarlar yapılandırma sayfasına yönlendirir</value>
+  </data>
+  <data name="ConfigureWinmoAgent" xml:space="preserve">
+    <value>Aracıyı Yapılandır</value>
+  </data>
+  <data name="ConfirmContinueWithPreviousActivationDate" xml:space="preserve">
+    <value>Etkinleştirme Tarihini ve Saatini değiştirmeye çalıştınız. Etkin bir üründe Etkinleştirme Tarihi güncellenemez. Etkinleştirme Tarihini değiştirmek için lütfen değişiklikleri İptal edin, ürünü devre dışı bırakın, Tarihi istediğiniz şekilde değiştirin, ardından değişiklikleri Kaydedin ve ürünü Etkinleştirin. Bu Etkin Üründeki önceki Etkinleştirme Tarihini korumak için Tamam'ı seçin.</value>
+  </data>
+  <data name="ConfirmDeactivateDependentPolicy" xml:space="preserve">
+    <value>Bu ürün, başka bir ürüne bağımlı bir üründür. Bu ürünün devre dışı bırakılması aşağıdaki Ürünlerin ne zaman çalışabileceğini etkiler: {0}</value>
+  </data>
+  <data name="ConsoleConnectionShouldFollowFormat" xml:space="preserve">
+    <value>Konsol Bağlantı yolu şu formatta olmalıdır: /DesiredFolder/Temp</value>
+  </data>
+  <data name="ContentPull" xml:space="preserve">
+    <value>İçerik Çekme</value>
+  </data>
+  <data name="CopyRelayServer" xml:space="preserve">
+    <value>Geçiş Sunucusunu Kopyala</value>
+  </data>
+  <data name="CopyStaging" xml:space="preserve">
+    <value>Hazırlamayı Kopyala</value>
+  </data>
+  <data name="CouldNotEstablishConnectionToRemoteManagementHost" xml:space="preserve">
+    <value>Uzaktan yönetim ana bilgisayarına bağlantı kurulurken hata oluştu.</value>
+  </data>
+  <data name="CustomAttributeDoesNotExist" xml:space="preserve">
+    <value>Erişmeye çalıştığınız özel öznitelik mevcut değil.</value>
+  </data>
+  <data name="CustomAttributeNameIsRequired" xml:space="preserve">
+    <value>Özel öznitelik adı gerekli</value>
+  </data>
+  <data name="CustomAttributesFieldsRequired" xml:space="preserve">
+    <value>Tüm alanlar gerekli</value>
+  </data>
+  <data name="CustomAttributesOnlyExplanation" xml:space="preserve">
+    <value>Bu toplu karşıya yükleme türünü, özel öznitelikleri ve ayarlarını eklemek veya güncellemek için kullanın (not: en az bir özel öznitelik değeri gereklidir).</value>
+  </data>
+  <data name="DailyInterval" xml:space="preserve">
+    <value>Günlük Aralık</value>
+  </data>
+  <data name="DailyIntervalPlaceholder" xml:space="preserve">
+    <value>1 ile 7 arasında bir sayı girin</value>
+  </data>
+  <data name="DateTimeIsNotInAllowedRange" xml:space="preserve">
+    <value>Sadece {0} ve {1} arasındaki Tarih ve Saat girdilerine izin verilmelidir.</value>
+  </data>
+  <data name="DeleteApplicationWithLinkedPoliciesWarning" xml:space="preserve">
+    <value>Şu anda bir veya daha fazla Üründe kullanılmakta olduğundan bu Uygulamayı silemezsiniz. Lütfen Uygulamayı düzenleyerek Üründen ayırın. İşlemi tamamladıktan sonra uygulamayı silebilirsiniz.</value>
+  </data>
+  <data name="DeleteApplicationWithLinkedStagingWarning" xml:space="preserve">
+    <value>Şu anda bir veya daha fazla Hazırlama Tanımında kullanılmakta olduğundan bu Uygulamayı silemezsiniz. Lütfen Hazırlama tanımını düzenleyerek başka bir Uygulama seçin veya Hazırlama Tanımını silin. İşlemi tamamladığınızda Uygulamayı silebilirsiniz.</value>
+  </data>
+  <data name="DeleteAttributesWithLinkedRegisteredDevicesWarning" xml:space="preserve">
+    <value>Şu anda Kayıtlı Aygıtlara bağlı olan özel öznitelikler silinemez. Lütfen öncelikle Öznitelikleri Kayıtlı Aygıtlardan ayırın.</value>
+  </data>
+  <data name="DeleteEventActionWithLinkedPoliciesWarning" xml:space="preserve">
+    <value>Şu anda bir veya daha fazla Üründe kullanılmakta olduğundan bu Etkinlik Eylemini silemezsiniz. Lütfen Etkinlik Eylemini düzenleyerek Üründen ayırın. İşlemi tamamladığınızda Etkinlik Eylemini silebilirsiniz.</value>
+  </data>
+  <data name="DeleteEventActionWithLinkedStagingWarning" xml:space="preserve">
+    <value>Şu anda bir veya daha fazla Hazırlama Tanımında kullanılmakta olduğundan bu Etkinlik Eylemini silemezsiniz. Lütfen Hazırlama Tanımını düzenleyerek başka bir Etkinlik Eylemi seçin veya Hazırlama Tanımını silin. İşlemi tamamladığınızda Etkinlik Eylemini silebilirsiniz.</value>
+  </data>
+  <data name="DeleteFileActionWithLinkedPoliciesWarning" xml:space="preserve">
+    <value>Şu anda bir veya daha fazla Üründe kullanılmakta olduğundan bu Dosyayı/Eylemi silemezsiniz. Lütfen Dosyayı/Eylemi düzenleyerek üründen ayırın. İşlemi tamamladıktan sonra Dosyayı/Eylemi silebilirsiniz.</value>
+  </data>
+  <data name="DeleteFileActionWithLinkedStagingWarning" xml:space="preserve">
+    <value>Şu anda bir veya daha fazla Hazırlama Tanımında kullanılmakta olduğundan bu Dosyayı/Eylemi silemezsiniz. Lütfen Hazırlama Tanımını düzenleyerek başka bir Dosya/Eylem seçin veya Hazırlama Tanımını silin. İşlemi tamamladığınızda dosyayı/işlemi silebilirsiniz.</value>
+  </data>
+  <data name="DeleteProductWithAppTunnelingEnabledError" xml:space="preserve">
+    <value>Bir ya da daha fazla Uygulama Kurulum bildirimi Uygulama Tüneli ile yapılandırıldığından bu ürün silinemiyor. Lütfen yapılandırmayı kaldırın ve tekrar deneyin.</value>
+  </data>
+  <data name="DeleteProfileWithLinkedPoliciesWarning" xml:space="preserve">
+    <value>Şu anda bir veya daha fazla Üründe kullanılmakta olduğundan bu Profili silemezsiniz. Lütfen Profili düzenleyerek Üründen ayırın. İşlemi tamamladıktan sonra uygulamayı silebilirsiniz.</value>
+  </data>
+  <data name="DeleteProfileWithLinkedStagingWarning" xml:space="preserve">
+    <value>Şu anda bir veya daha fazla Hazırlama Tanımında kullanılmakta olduğundan bu Profili silemezsiniz. Lütfen Hazırlama Tanımını düzenleyerek başka bir Profil seçin veya Hazırlama Tanımını silin. İşlemi tamamladığınızda Etkinlik Eylemini silebilirsiniz.</value>
+  </data>
+  <data name="DeploymentMode" xml:space="preserve">
+    <value>Dağıtım Modu</value>
+  </data>
+  <data name="DestinationMustBeDirectoryPath" xml:space="preserve">
+    <value>Hedef bir Dizin Yolu olmalıdır</value>
+  </data>
+  <data name="DeviceConnectionShouldFollowFormat" xml:space="preserve">
+    <value>Aygıt Bağlantı yolu şu formatta olmalıdır: /DesiredFolder/Temp</value>
+  </data>
+  <data name="DeviceFriendlyNameLookUpText" xml:space="preserve">
+    <value>Aygıt Kolay Adı</value>
+  </data>
+  <data name="DevicePlatformID" xml:space="preserve">
+    <value>Aygıt Platformu Tanımlayıcısı</value>
+  </data>
+  <data name="DevicePolicyJobStatusNoJobs" xml:space="preserve">
+    <value>İş Yok</value>
+  </data>
+  <data name="DeviceReprocess" xml:space="preserve">
+    <value>Aygıtın Yeniden İşlenmesi</value>
+  </data>
+  <data name="DeviceReprocessTooltip" xml:space="preserve">
+    <value>Çalışanların ürünleri yeniden işlemesine olanak verir.</value>
+  </data>
+  <data name="DeviceTypeOfTheFileIsInvalid" xml:space="preserve">
+    <value>Dosyanın DeviceType bilgisi geçersiz. DeviceType, Android, Apple vb. bir aygıt platformu olmalıdır.</value>
+  </data>
+  <data name="DeviceWillNeedToBePluggedIn" xml:space="preserve">
+    <value>Eylemin gerçekleşmesi için aygıtın prize takılı veya yeterince şarjının olması gereklidir. Bu koşul herhangi bir etkinliğin/eylemin parçasıysa mesaj ve gecikme alanları geçersizdir.</value>
+  </data>
+  <data name="DoubleQuotesForCommandLineIsRequired" xml:space="preserve">
+    <value>Komut satırı için çift tırnak işareti gereklidir</value>
+  </data>
+  <data name="DownloadAndDeployMotoDcCabFile" xml:space="preserve">
+    <value>Motorola aygıtlardaki metrik raporlar için lütfen şuradan MotoDC.cab dosyasını indirin ve dağıtın:</value>
+  </data>
+  <data name="DownloadFiles" xml:space="preserve">
+    <value>Dosyaları İndir</value>
+  </data>
+  <data name="DownloadPullServiceConfig" xml:space="preserve">
+    <value>Çekme hizmeti yapılandırmasını indir</value>
+  </data>
+  <data name="EditFileServer" xml:space="preserve">
+    <value>Dosya Sunucusunu Düzenle</value>
+  </data>
+  <data name="EditStaging" xml:space="preserve">
+    <value>Hazırlamayı Düzenle</value>
+  </data>
+  <data name="EndDay" xml:space="preserve">
+    <value>Bitiş Günü</value>
+  </data>
+  <data name="EndHour" xml:space="preserve">
+    <value>Bitiş Saati</value>
+  </data>
+  <data name="EndMinute" xml:space="preserve">
+    <value>Bitiş Dakikası</value>
+  </data>
+  <data name="EndMonth" xml:space="preserve">
+    <value>Bitiş Ayı</value>
+  </data>
+  <data name="EndTimeShouldBeLaterThanStartTime" xml:space="preserve">
+    <value>Bitiş zamanı başlama zamanından sonra olmalıdır</value>
+  </data>
+  <data name="EndTimeUtc" xml:space="preserve">
+    <value>Bitiş Zamanı (UTC)</value>
+  </data>
+  <data name="EndYear" xml:space="preserve">
+    <value>Bitiş Yılı</value>
+  </data>
+  <data name="EnterAdminModeConfirmed" xml:space="preserve">
+    <value>Yönetici Moduna Gir Onaylandı</value>
+  </data>
+  <data name="EnterAdminModeFailed" xml:space="preserve">
+    <value>Yönetici Moduna Gir Başarısız Oldu</value>
+  </data>
+  <data name="EnterAdminModeRefused" xml:space="preserve">
+    <value>Yönetici Moduna Gir Reddedildi</value>
+  </data>
+  <data name="EnterAdminModeRequested" xml:space="preserve">
+    <value>Yönetici Moduna Girme İsteği Gönderildi</value>
+  </data>
+  <data name="EnterAdminModeSuccess" xml:space="preserve">
+    <value>Yönetici Moduna Giriş Başarılı</value>
+  </data>
+  <data name="ErrorParsingRemoteFeature" xml:space="preserve">
+    <value>Uzaktan yardım özelliği "{0}" ayrıştırılırken hata oluştu</value>
+  </data>
+  <data name="ErrorReturnedFromHoneywellServer" xml:space="preserve">
+    <value>Honeywell Sunucusundan hata alındı</value>
+  </data>
+  <data name="ErrorReturnedFromZebraServer" xml:space="preserve">
+    <value>Zebra Sunucusundan hata alındı</value>
+  </data>
+  <data name="EventActionAndroidPrerequisite" xml:space="preserve">
+    <value>Lütfen Eylemleri başlatan en az bir Koşul ekleyin. "Koşul Ekle" seçeneği ile önceden oluşturulmuş koşulları ekleyebilir ya da yeni koşullar oluşturabilirsiniz. Bir defada birden fazla koşul türü seçilebilir ancak belirli bir türden yalnızca bir koşul belirlenebilir. Daha önce seçilenle aynı türde bir koşul seçilirse bu, önceden seçilmiş olanın yerine geçer. İzin verilen koşul türü Pil Eşiği, Yinelenen Plan ve AC Güç'tür.</value>
+  </data>
+  <data name="EventActionLinkedToPolicyOrStagingAndCanNotBeMovedToNonAccessibleOgs" xml:space="preserve">
+    <value>Etkinlik eylemi, bazı ürünlere veya hazırlama paketlerine bağlı. Bu nedenle etkinlik eylemi, bağlı bileşenler tarafından erişilemeyen OG'lere taşınamıyor.</value>
+  </data>
+  <data name="ExitAdminModeConfirmed" xml:space="preserve">
+    <value>Yönetici Modundan Çık Onaylandı</value>
+  </data>
+  <data name="ExitAdminModeFailed" xml:space="preserve">
+    <value>Yönetici Modundan Çık Başarısız Oldu</value>
+  </data>
+  <data name="ExitAdminModeRefused" xml:space="preserve">
+    <value>Yönetici Modundan Çık Reddedildi</value>
+  </data>
+  <data name="ExitAdminModeRequested" xml:space="preserve">
+    <value>Yönetici Modundan Çıkma İsteği Gönderildi</value>
+  </data>
+  <data name="ExitAdminModeSuccess" xml:space="preserve">
+    <value>Yönetici Modundan Çıkış Başarılı</value>
+  </data>
+  <data name="ExitAirwatchLauncher" xml:space="preserve">
+    <value>Launcher'dan Çık</value>
+  </data>
+  <data name="ExitAirwatchLauncherConfirmed" xml:space="preserve">
+    <value>Launcher'dan Çıkış Onaylandı</value>
+  </data>
+  <data name="ExitAirwatchLauncherFailed" xml:space="preserve">
+    <value>Launcher'dan Çıkış Başarısız Oldu</value>
+  </data>
+  <data name="ExitAirwatchLauncherRefused" xml:space="preserve">
+    <value>Launcher'dan Çıkış Reddedildi</value>
+  </data>
+  <data name="ExitAirwatchLauncherRequested" xml:space="preserve">
+    <value>Launcher'dan Çıkış İsteği Gönderildi</value>
+  </data>
+  <data name="ExitAirWatchLauncherSuccess" xml:space="preserve">
+    <value>Launcher'dan Çıkış Başarılı</value>
+  </data>
+  <data name="Expedited" xml:space="preserve">
+    <value>Hızlandırılmış</value>
+  </data>
+  <data name="ExpeditedProductTooltip" xml:space="preserve">
+    <value>Bu seçeneği düzenlemek için ürünün devre dışı bırakılması gerekmektedir.</value>
+  </data>
+  <data name="ExpeditedProvisioningPolicyEdit" xml:space="preserve">
+    <value>Hızlandırılmış Provizyonlama İlkesi Düzenleme</value>
+  </data>
+  <data name="ExpeditedProvisioningPolicyEditHelp" xml:space="preserve">
+    <value>Provizyonlama İlkesindeki hızlandırılmış dağıtım seçeneğini düzenlemek için erişimi kontrol eder.</value>
+  </data>
+  <data name="FileActionLinkedToPolicyOrStagingAndCanNotBeMovedToNonAccessibleOgs" xml:space="preserve">
+    <value>Dosya Eylemi, bazı ürünlere veya hazırlama paketlerine bağlı. Bu nedenle bağlı bileşenler tarafından erişilemeyen OG'lere taşınamıyor.</value>
+  </data>
+  <data name="FileActionsFilePathError" xml:space="preserve">
+    <value>Ad ve İndirme Yolunun birlikte toplam karakter sayısı en fazla 255 olmalıdır</value>
+  </data>
+  <data name="FileFound" xml:space="preserve">
+    <value>Dosya Bulundu</value>
+  </data>
+  <data name="FileServerAssociatedWithEventActionArgs" xml:space="preserve">
+    <value>{0} dosya sunucusu {1} ile kullanılıyor</value>
+  </data>
+  <data name="FileServerDeleteFailed" xml:space="preserve">
+    <value>Şu anda aşağıdaki Olay Eylemlerinde kullanıldığı için bu Dosya Sunucusunu silemezsiniz: Lütfen düzenleyerek Dosya Sunucusunu Olay Eyleminden ayırın. Tamamlandıktan sonra Dosya Sunucusunu silebilirsiniz</value>
+  </data>
+  <data name="FileServerDeleteSuccessful" xml:space="preserve">
+    <value>Dosya Sunucusu Başarıyla Silindi</value>
+  </data>
+  <data name="FileServerDetails" xml:space="preserve">
+    <value>Dosya Sunucusu Bilgileri</value>
+  </data>
+  <data name="FileServerNameIsRequired" xml:space="preserve">
+    <value>Dosya Sunucusu Adı Gerekli</value>
+  </data>
+  <data name="FileServers" xml:space="preserve">
+    <value>Dosya Sunucuları</value>
+  </data>
+  <data name="FileServerUsernameIsRequired" xml:space="preserve">
+    <value>Dosya Sunucusu Kullanıcı Adı Gerekli</value>
+  </data>
+  <data name="FileSyncDownload" xml:space="preserve">
+    <value>Dosya Eşitleme İndirme</value>
+  </data>
+  <data name="FileSyncUpload" xml:space="preserve">
+    <value>Dosya Eşitleme Karşıya Yüklemesi</value>
+  </data>
+  <data name="FirstFieldShouldBeSmallerThanSecondField" xml:space="preserve">
+    <value>Geçersiz değerler. İlk alanın ikinci alandan daha küçük bir sayı içerdiğinden emin olun.</value>
+  </data>
+  <data name="FiveDays" xml:space="preserve">
+    <value>5 Gün</value>
+  </data>
+  <data name="GenerateHoneywellBarcode" xml:space="preserve">
+    <value>Honeywell Barkodu oluştur</value>
+  </data>
+  <data name="GenerateHoneywellBarcodeDisclaimerText" xml:space="preserve">
+    <value>Bu, bu sayfada seçilen verileri temsil eden barkodlar oluşturmak için Honeywell Enterprise Provisioner barkod oluşturucusuna talep gönderir.
+
+VMware, bu siteyi denetlemez ve içerikle ilgili herhangi bir sorumluluk kabul etmez. Bu sayfadan barkod üretirseniz bunun sorumluluğu size aittir.</value>
+  </data>
+  <data name="HideActionBar" xml:space="preserve">
+    <value>Başlık Çubuğunu Simge Durumuna Küçült</value>
+  </data>
+  <data name="Honeywell" xml:space="preserve">
+    <value>Honeywell Enterprise Provisioner</value>
+  </data>
+  <data name="HoneywellBarcode" xml:space="preserve">
+    <value>Honeywell Barkodu</value>
+  </data>
+  <data name="HoneywellEP" xml:space="preserve">
+    <value>Honeywell Enterprise Provisioner</value>
+  </data>
+  <data name="HoneywellEPUrl" xml:space="preserve">
+    <value>Honeywell Enterprise Provisioner URL'si</value>
+  </data>
+  <data name="HostPlaceHolder" xml:space="preserve">
+    <value>* veya 1.2.3.4 veya 10.0.0.0-10.0.0.255</value>
+  </data>
+  <data name="HourlyInterval" xml:space="preserve">
+    <value>Saatlik Aralık</value>
+  </data>
+  <data name="HourlyIntervalPlaceholder" xml:space="preserve">
+    <value>1 ile 24 arasında bir sayı girin</value>
+  </data>
+  <data name="HttpsNotSupportedForPushRelayServers" xml:space="preserve">
+    <value>Aygıt bağlantısı için https protokolü, gönderme geçiş sunucusu için desteklenmiyor</value>
+  </data>
+  <data name="HubPackageAlreadyExists" xml:space="preserve">
+    <value>Aynı dosya adına VEYA paket adına ve sürümüne sahip Hub Paketi zaten mevcut</value>
+  </data>
+  <data name="IntelligentHub" xml:space="preserve">
+    <value>Intelligent Hub</value>
+  </data>
+  <data name="InvalidDateTimeInputs" xml:space="preserve">
+    <value>Sağlanan Tarih ve Saat girdileri geçersiz ya da eksik. Lütfen doğru girdi sağlayın.</value>
+  </data>
+  <data name="InvalidHoneywellRelayServerProtocol" xml:space="preserve">
+    <value>Honeywell bu geçiş sunucusu protokolünü desteklemiyor</value>
+  </data>
+  <data name="InvalidOrganizationGroupsForStagingAndProductionServers" xml:space="preserve">
+    <value>Hazırlama ve üretim sunucuları için geçersiz organizasyon grupları</value>
+  </data>
+  <data name="IOTGateway" xml:space="preserve">
+    <value>IOTGateway</value>
+  </data>
+  <data name="IsExpedited" xml:space="preserve">
+    <value>Dağıtımı Hızlandır</value>
+  </data>
+  <data name="LastContactDate" xml:space="preserve">
+    <value>Son iletişim tarihi</value>
+  </data>
+  <data name="LastErrorCode" xml:space="preserve">
+    <value>Son hata kodu</value>
+  </data>
+  <data name="Launcher" xml:space="preserve">
+    <value>Launcher</value>
+  </data>
+  <data name="LauncherAction" xml:space="preserve">
+    <value>Launcher</value>
+  </data>
+  <data name="LauncherCheckInCheckOutCondtion" xml:space="preserve">
+    <value>Launcher'a giriş yapıldığında veya Launcher'dan çıkıldığında eyleme geçer.</value>
+  </data>
+  <data name="LauncherLogout" xml:space="preserve">
+    <value>Launcher Oturumu Kapatma</value>
+  </data>
+  <data name="LauncherMiscAppWildcardRuleInfo" xml:space="preserve">
+    <value>Bu düzenle eşleşen uygulamalara otomatik olarak izin vermek için "*" karakterini kullanabilirsiniz. Örnek: com.örnek.*</value>
+  </data>
+  <data name="LegacyAgent" xml:space="preserve">
+    <value>Aracı</value>
+  </data>
+  <data name="LegacyAirwatchAgent" xml:space="preserve">
+    <value>AirWatch Agent</value>
+  </data>
+  <data name="LinkIsRequired" xml:space="preserve">
+    <value>Dosya Sunucusu Bağlantısı Gerekli</value>
+  </data>
+  <data name="LowMemCondition" xml:space="preserve">
+    <value>Düşük Hafıza Durumu</value>
+  </data>
+  <data name="ManifestItemAlreadyExists" xml:space="preserve">
+    <value>Bildirim öğesi zaten mevcut. Lütfen başka bir tane seçin.</value>
+  </data>
+  <data name="MaxPullConnections" xml:space="preserve">
+    <value>Maksimum Alma Bağlantısı</value>
+  </data>
+  <data name="MaxPullConnectionsValueCannotBeNullOrInvalid" xml:space="preserve">
+    <value>Maksimum Alma Bağlantısı değeri boş veya geçersiz olamaz</value>
+  </data>
+  <data name="MaxPushConnections" xml:space="preserve">
+    <value>Maksimum Gönderme Bağlantısı</value>
+  </data>
+  <data name="MaxPushConnectionsValueCannotBeNullOrInvalid" xml:space="preserve">
+    <value>Maksimum Gönderme Bağlantısı değeri boş veya geçersiz olamaz</value>
+  </data>
+  <data name="MaxRSCCPushConnectionHelpText" xml:space="preserve">
+    <value>Bu değeri değiştirerek Geçiş Sunucularına içerik göndermede kullanılan maksimum eşzamanlı bağlantı sayısını azaltabilirsiniz. Varsayılan değer: 50 Bağlantı</value>
+  </data>
+  <data name="NoContentAddedToProduct" xml:space="preserve">
+    <value>Ürüne uygulama veya dosya eylemi eklenmemiş.</value>
+  </data>
+  <data name="NotTested" xml:space="preserve">
+    <value>Test Edilmedi</value>
+  </data>
+  <data name="NoVPNProfileSelected" xml:space="preserve">
+    <value>PerAppVPN'i yapılandırmak için lütfen bir VPN profili seçin</value>
+  </data>
+  <data name="OemBuildRuleHelpText" xml:space="preserve">
+    <value>OEM derleme sürümü ve "&gt;" ve "&lt;" işleçleri ile atama kuralı yalnızca sürümlerin aynı formata sahip olduğu ve ASCII'de karşılaştırıldığı zaman geçerlidir</value>
+  </data>
+  <data name="OemBuildVersionShouldHaveDeviceManufacturerRule" xml:space="preserve">
+    <value>"&gt;" ve "&lt;" işleçlerini kullanırken OEM derleme sürümü kuralı, aygıt üreticisi özniteliğine de sahip olmalıdır (yalnızca VE şartına izin verilir)</value>
+  </data>
+  <data name="OGDeleteWarningForProducts" xml:space="preserve">
+    <value>Bu Organizasyon Grubuyla ilişkilendirilmiş bileşenler, bir veya daha fazla üst Organizasyon Grubuyla ilişkilendirilmiş bir ya da daha fazla Ürüne bağlı olabilir. Bu Organizasyon Grubunu silmek, bir veya daha fazla üst Organizasyon Grubundaki bu Ürünleri geçersiz kılar. Bu Organizasyon Grubunu silmeden önce bileşenlerin bağlantısını kaldırmanız veya üst Ürünleri de silmeniz önerilir.</value>
+  </data>
+  <data name="OnlyAppWithSpecifiedVersionWillBeUninstalled" xml:space="preserve">
+    <value>Seçilen uygulama sürümü kaldırılacak. Bu uygulamanın diğer sürümleri aygıtta kalacaktır.</value>
+  </data>
+  <data name="OnlyFileServersWithCGCanBeAdded" xml:space="preserve">
+    <value>Dosya Sunucularının bu listede görüntülenebilmesi ve bir Etkinlik Eylemine eklenebilmesi için yapılandırılmış bir Content Gateway'e sahip olması gerekir</value>
+  </data>
+  <data name="OnlyNumericValuesAreAllowedForSpecificOperators" xml:space="preserve">
+    <value>&gt;, &gt;=, &lt;, &lt;= ve BETWEEN gibi İşleçler İçin Sadece Sayısal Değerlere İzin Verilir</value>
+  </data>
+  <data name="OrganizationGroupIsRequired" xml:space="preserve">
+    <value>Organizasyon Grubu Gerekli</value>
+  </data>
+  <data name="OutRanked" xml:space="preserve">
+    <value>Üst Sırada</value>
+  </data>
+  <data name="PasswordForPullServiceCertificate" xml:space="preserve">
+    <value>Çekme hizmeti sertifikası parolası</value>
+  </data>
+  <data name="PasswordIsRequired" xml:space="preserve">
+    <value>Dosya Sunucusu Parolası Gerekli</value>
+  </data>
+  <data name="PinnedApps" xml:space="preserve">
+    <value>Sabitlenmiş Uygulamalar</value>
+  </data>
+  <data name="PleaseEnterValidURL" xml:space="preserve">
+    <value>Lütfen Geçerli bir URL Girin</value>
+  </data>
+  <data name="PolicyEngineQueue" xml:space="preserve">
+    <value>İlke Altyapısı Sırası</value>
+  </data>
+  <data name="PolicyEngineQueueMenuTitle" xml:space="preserve">
+    <value>İlke Altyapısı Sırası</value>
+  </data>
+  <data name="PolicyId" xml:space="preserve">
+    <value>İlke Tanımlayıcısı</value>
+  </data>
+  <data name="PortPlaceHolder" xml:space="preserve">
+    <value>* veya 80 veya 8080-8085</value>
+  </data>
+  <data name="ProductDeviceForceReprocessFailed" xml:space="preserve">
+    <value>Ürün Aygıt Yeniden İşlemeye Zorlama Başarısız Oldu</value>
+  </data>
+  <data name="ProductDownloadsThroughCDN" xml:space="preserve">
+    <value>CDN Aracılığıyla Ürün İndirmeleri</value>
+  </data>
+  <data name="ProductionServerDescription" xml:space="preserve">
+    <value>Üretim Sunucusu, şunun gibi üretim içeriklerini almak üzere yapılandırılmıştır: Dosya Eylemleri ve Uygulamaları.</value>
+  </data>
+  <data name="ProductProvisioning_ColdBoot" xml:space="preserve">
+    <value>Soğuk Başlatma</value>
+  </data>
+  <data name="ProductProvisioning_InstallApplication" xml:space="preserve">
+    <value>Uygulama - Yükle</value>
+  </data>
+  <data name="ProductProvisioning_InstallEventAction" xml:space="preserve">
+    <value>Etkinlik Eylemi - Yükle</value>
+  </data>
+  <data name="ProductProvisioning_InstallFilesActions" xml:space="preserve">
+    <value>Dosya/Eylem - Yükle</value>
+  </data>
+  <data name="ProductProvisioning_InstallProduct" xml:space="preserve">
+    <value>Ürün - Yükle</value>
+  </data>
+  <data name="ProductProvisioning_InstallProfile" xml:space="preserve">
+    <value>Profil - Yükle</value>
+  </data>
+  <data name="ProductProvisioning_Reboot" xml:space="preserve">
+    <value>Yeniden Başlat</value>
+  </data>
+  <data name="ProductProvisioning_UninstallApplication" xml:space="preserve">
+    <value>Uygulama - Kaldır</value>
+  </data>
+  <data name="ProductProvisioning_UninstallEventAction" xml:space="preserve">
+    <value>Etkinlik Eylemi - Kaldır</value>
+  </data>
+  <data name="ProductProvisioning_UninstallFilesActions" xml:space="preserve">
+    <value>Dosya/Eylem - Kaldır</value>
+  </data>
+  <data name="ProductProvisioning_UninstallProduct" xml:space="preserve">
+    <value>Ürün - Kaldır</value>
+  </data>
+  <data name="ProductProvisioning_UninstallProfile" xml:space="preserve">
+    <value>Profil - Kaldır</value>
+  </data>
+  <data name="ProductProvisioning_WarmBoot" xml:space="preserve">
+    <value>Sıcak Başlatma</value>
+  </data>
+  <data name="ProductProvisioningDeviceConnectionHttpsSupportFeatureDisabled" xml:space="preserve">
+    <value>Aygıt bağlantı özelliği için https protokolü devre dışı bırakıldı</value>
+  </data>
+  <data name="ProductSetForceReprocess" xml:space="preserve">
+    <value>Yeniden İşlemeye Zorla</value>
+  </data>
+  <data name="ProductSetNameArgAlreadyExistsPleaseChooseAnother" xml:space="preserve">
+    <value>{0} adına sahip ürün kümesi zaten var. Lütfen başka bir tane seçin.</value>
+  </data>
+  <data name="ProfileLinkedToPolicyOrStagingAndCanNotBeMovedToNonAccessibleOgs" xml:space="preserve">
+    <value>Profil, bazı ürünlere veya hazırlama paketlerine bağlı. Bu nedenle profil, bağlı bileşenler tarafından erişilemeyen OG'lere taşınamaz.</value>
+  </data>
+  <data name="ProvisioningCommandDeleted" xml:space="preserve">
+    <value>Provizyonlama komutu silindi</value>
+  </data>
+  <data name="ProvisioningEventAction" xml:space="preserve">
+    <value>Etkinlik Eylemi</value>
+  </data>
+  <data name="ProvisioningEventActions" xml:space="preserve">
+    <value>Etkinlik Eylemleri</value>
+  </data>
+  <data name="PublishOnRelayServers" xml:space="preserve">
+    <value>Geçiş Sunucularında Yayınla</value>
+  </data>
+  <data name="PullRelayServerNotAllowed" xml:space="preserve">
+    <value>Seçilen Geçiş sunucusu türü geçersiz</value>
+  </data>
+  <data name="QueueContentOnRelayServer" xml:space="preserve">
+    <value>Atanan Aygıtlar Olmadan Geçiş Sunucularındaki İçerikleri Sıraya Al</value>
+  </data>
+  <data name="RelayServerCloudConnector" xml:space="preserve">
+    <value>Geçiş Sunucusu Bulut Bağlayıcısı</value>
+  </data>
+  <data name="RelayServerCloudConnectorBatchSize" xml:space="preserve">
+    <value>Geçiş Sunucusu Bulut Bağlayıcısı Toplu İşlem Boyutu</value>
+  </data>
+  <data name="RelayServerCloudConnectorBatchSizeHelp" xml:space="preserve">
+    <value>Toplu işlem başına WS1 sunucusundan indirilecek maksimum içerik yönergesi sayısı. Ek yönergeler sonraki toplu işlemler sırasında işlenir.</value>
+  </data>
+  <data name="RelayServerCloudConnectorEnableHelp" xml:space="preserve">
+    <value>Bu ayarı etkinleştirme, VMware bulutundan içerik almak ve ağınız dahilinde geçiş sunucularına göndermek üzere Bulut Bağlayıcısı Geçişini yapılandırır.</value>
+  </data>
+  <data name="RelayServerCloudRelayAlreadyExists" xml:space="preserve">
+    <value>Cloud Relay bağlantısı için Ana Bilgisayar Adı, Bağlantı Noktası, Kullanıcı ve Yolun hepsi başka bir geçiş sunucusu ile aynıdır.</value>
+  </data>
+  <data name="RelayServerCloudRelayConnection" xml:space="preserve">
+    <value>Cloud Relay Bağlantısı</value>
+  </data>
+  <data name="RelayServerCountConfirm" xml:space="preserve">
+    <value>İçerikler, {0} geçiş sunucusuna sıraya alınacak. Devam etmek istediğinize emin misiniz?</value>
+  </data>
+  <data name="RelayServerDoesNotExists" xml:space="preserve">
+    <value>Seçili OG içinde herhangi bir Geçiş Sunucusu bulunmuyor.</value>
+  </data>
+  <data name="RelayServerDomainUserFormat" xml:space="preserve">
+    <value>Etki alanı kullanıcıları için kabul edilen biçimler: kullanıcı_adı@etki_alanı, etki_alanı\kullanıcı</value>
+  </data>
+  <data name="RelayServerDomainUserFormatError" xml:space="preserve">
+    <value>Etki Alanı kullanıcısında biçim hatası</value>
+  </data>
+  <data name="RelayServerId" xml:space="preserve">
+    <value>Geçiş Sunucusu Kimliği</value>
+  </data>
+  <data name="RelayServerOnly" xml:space="preserve">
+    <value>Yanlızca Geçiş Sunucusu</value>
+  </data>
+  <data name="RelayServerOnlyHelp" xml:space="preserve">
+    <value>Bu Ürüne atanan tüm aygıtlar için bir Geçiş Sunucusu yapılandırıldığından emin olun.</value>
+  </data>
+  <data name="RelayServerProtocolHTTPS" xml:space="preserve">
+    <value>HTTPS</value>
+  </data>
+  <data name="RelayServerPullConnectionInvalidPullDiscoveryText" xml:space="preserve">
+    <value>Metin Bulma İsteğinde 127.0.0.1 bulunmamalıdır</value>
+  </data>
+  <data name="RelayServerPushOrCloudRelay" xml:space="preserve">
+    <value>Gönder/Cloud Relay</value>
+  </data>
+  <data name="RelayServerTypeCloudRelay" xml:space="preserve">
+    <value>Cloud Relay</value>
+  </data>
+  <data name="RelayServerUserRestrictionError" xml:space="preserve">
+    <value>Kullanıcı adında/parolada ":" karakterine izin verilmez.</value>
+  </data>
+  <data name="RelayServerWithDeviceServicesBackup" xml:space="preserve">
+    <value>Workspace ONE Sunucusu Yedekli Geçiş Sunucusu</value>
+  </data>
+  <data name="RemoveFromLauncher" xml:space="preserve">
+    <value>Launcher'dan Kaldır</value>
+  </data>
+  <data name="ReportStatusBatchSize" xml:space="preserve">
+    <value>Rapor Durumu Toplu İşlem Boyutu</value>
+  </data>
+  <data name="ReportStatusBatchSizeValueCannotBeNullOrInvalid" xml:space="preserve">
+    <value>Rapor durumu toplu işlem boyutu değeri boş veya geçersiz olamaz</value>
+  </data>
+  <data name="RequestDeviceServicesPinsNumberOfCertificatesReturned" xml:space="preserve">
+    <value>Aygıt Hizmetleri PİN'lerini İste: Listelenen Sertifika Sayısı</value>
+  </data>
+  <data name="RequestDeviceServicesPinsNumberOfHostsReturned" xml:space="preserve">
+    <value>Aygıt Hizmetleri PİN'lerini İste: Listelenen Ana Bilgisayar Sayısı</value>
+  </data>
+  <data name="RequestDeviceServicesPinsUpdated" xml:space="preserve">
+    <value>Güncellenen Aygıt Hizmetleri PİN'lerini İste</value>
+  </data>
+  <data name="RestartAirWatchAgent" xml:space="preserve">
+    <value>AirWatch Agent'ı Yeniden Başlat</value>
+  </data>
+  <data name="RSCCReportBatchSizeHelpText" xml:space="preserve">
+    <value>İçerik, hedeflenen Geçiş Sunucularına dağıtılırken Cloud Relay, her bir Geçiş Sunucusu'nun aktarım durumunu Workspace ONE Cloud'a bildirir. Bu değeri değiştirerek her toplu işleme eklenecek Geçiş Sunucusu durumu sayısını sınırlandırabilirsiniz. Varsayılan değer: toplu işlem başına 25 durum</value>
+  </data>
+  <data name="RSFileSize" xml:space="preserve">
+    <value>Bayt Cinsinden Dosya Boyutu</value>
+  </data>
+  <data name="Selectawifiproile" xml:space="preserve">
+    <value>{0} öğesini indirmek için bir barkod tarandıktan sonra aygıtların bir veya daha fazla FTP sunucusuna bağlanmak için kullanacağı bir Wi-Fi Profili seçin.</value>
+  </data>
+  <data name="Selectfrompreviouslyconfiguredpackages" xml:space="preserve">
+    <value>Önceden yapılandırılmış {0} Paketlerinden seçim yapın veya Workspace ONE UEM Kaynaklar Portalı'ndan en yeni sürümü indirin</value>
+  </data>
+  <data name="SelectProductFilter" xml:space="preserve">
+    <value>Filtreleme İçin Ürünleri Seç</value>
+  </data>
+  <data name="Sideloadprereqs1" xml:space="preserve">
+    <value>1. {0} öğesinin en son sürümünü kullanmaya karar verirseniz onu MyAirWatch Kaynaklar Portalı'ndan indirmeniz ve yüklemeniz gerekir.</value>
+  </data>
+  <data name="Sideloadstagingallowsyoutodownloadandinstall" xml:space="preserve">
+    <value>Dışarıdan yükleme hazırlama yöntemi, otomatik kayıt sürecinin başlaması için bir aygıta {0} öğesini indirmenize ve yüklemenize izin verir. Bu, aygıta dışarıdan yüklenen tek bir dosyada gerekli tüm bileşenleri bir araya getirerek kayıt işlemini basitleştirir.</value>
+  </data>
+  <data name="SingleAppModeWildcardRule" xml:space="preserve">
+    <value>Çeşitli Uygulama Joker Karakter kuralı sadece Tek Uygulama Modu profili için Gizli Uygulama sekmesine eklenebilir.</value>
+  </data>
+  <data name="SmartGroupNotAssignedForAnActiveProduct" xml:space="preserve">
+    <value>Aktif ürünler için akıllı grup atamaları gerekli. Tüm akıllı grup atamalarını kaldırmadan önce akıllı gruplar ekleyin veya ürünü devre dışı bırakın.</value>
+  </data>
+  <data name="SourceLocalizationKey" xml:space="preserve">
+    <value>Kaynak</value>
+  </data>
+  <data name="StagingAddManifestInfo" xml:space="preserve">
+    <value>Bildirim ekle seçeneği, hazırlama sırasında uygulanacak ek içerik ve komutları tanımlar. Uygulamalar, Profiller ve Dosyalar/Eylemler gibi bileşenler, gerçekleştirilecek bir işlem seçmeden önce Provizyonlama&gt;Bileşenler menüsünden oluşturulmalıdır.</value>
+  </data>
+  <data name="StagingPackageNameLengthExceeded" xml:space="preserve">
+    <value>Hazırlama paketi adı, {0} karakterlik maksimum sınırı aşıyor. Lütfen yeniden adlandırın ve Hazırlama Paketini yeniden kaydedin.</value>
+  </data>
+  <data name="StagingPackageNameShouldNotContainTheFollowingCharacters" xml:space="preserve">
+    <value>Hazırlama paketi adı, {0} karakterlerini içermemelidir</value>
+  </data>
+  <data name="StagingServerDescription" xml:space="preserve">
+    <value>Hazırlama Sunucusu, kayıt sırasında Hub Paketi ve Gelişmiş hazırlama yapılandırmaları gibi hazırlama içeriklerini almak üzere yapılandırılmıştır.</value>
+  </data>
+  <data name="StartDay" xml:space="preserve">
+    <value>Başlangıç Günü</value>
+  </data>
+  <data name="StartHour" xml:space="preserve">
+    <value>Başlangıç Saati</value>
+  </data>
+  <data name="StartMinute" xml:space="preserve">
+    <value>Başlangıç Dakikası</value>
+  </data>
+  <data name="StartMonth" xml:space="preserve">
+    <value>Başlangıç Ayı</value>
+  </data>
+  <data name="StartTimeUtc" xml:space="preserve">
+    <value>Başlangıç Zamanı (UTC)</value>
+  </data>
+  <data name="StartYear" xml:space="preserve">
+    <value>Başlangıç Yılı</value>
+  </data>
+  <data name="StopACMRequested" xml:space="preserve">
+    <value>ACM'yi Durdurma İsteği Gönderildi</value>
+  </data>
+  <data name="StoreOsUpdatesFilesOnRelayServer" xml:space="preserve">
+    <value>İS Güncelleme Dosyalarını Geçiş Sunucusunda Saklama</value>
+  </data>
+  <data name="StoreOsUpdatesFilesOnRelayServerHelp" xml:space="preserve">
+    <value>Bu özellik, yeterli alana sahip olmayan Windows Mobile aygıtlarında İS güncellemelerini iyileştirmek için kullanılabilir. Bayrak ayarlandığında büyük görüntü dosyalarının tümü Geçiş sunucusunda kalır. Aygıttaki OSUPDATE yardımcı programı güncelleme sırasında bunları tek tek aşağı çeker. Bayrak ayarlanmadığında dosyaların tümü aygıta kopyalanır ve İS güncelleme yardımcı programı bunları yerel olarak çalıştırır.</value>
+  </data>
+  <data name="Tags" xml:space="preserve">
+    <value>Etiketler</value>
+  </data>
+  <data name="TemplateModeWildcardRule" xml:space="preserve">
+    <value>Çeşitli Uygulama Joker Karakter kuralı sadece Şablon Modu profili için Gizli Uygulama sekmesine eklenebilir</value>
+  </data>
+  <data name="TestConnectionStatus" xml:space="preserve">
+    <value>Bağlantı Durumunu Test Etme</value>
+  </data>
+  <data name="TimeFormatPlaceholder" xml:space="preserve">
+    <value>SS:DD</value>
+  </data>
+  <data name="Typetoselectanagentpackage" xml:space="preserve">
+    <value>{0} Öğesini Seç</value>
+  </data>
+  <data name="VersionIncrementMessage" xml:space="preserve">
+    <value>Geçerli sürümü görüntüler. Değişiklikler kaydedildikten sonra bu sayı artımlı olur.</value>
+  </data>
+  <data name="ViewAndManageCustomAttributeAssignmentRules" xml:space="preserve">
+    <value>Özel Öznitelik atama kurallarını görüntüle ve yönet</value>
+  </data>
+  <data name="ViewApplicationAssignments" xml:space="preserve">
+    <value>Uygulama Atamalarını Görüntüle</value>
+  </data>
+  <data name="ViewAttribute" xml:space="preserve">
+    <value>Öznitelik Görüntüle</value>
+  </data>
+  <data name="ViewCondition" xml:space="preserve">
+    <value>Koşulu Görüntüle</value>
+  </data>
+  <data name="ViewRelayServer" xml:space="preserve">
+    <value>Geçiş Sunucusunu Görüntüle</value>
+  </data>
+  <data name="ViewStaging" xml:space="preserve">
+    <value>Hazırlamayı Görüntüle</value>
+  </data>
+  <data name="VmwareResourcePortal" xml:space="preserve">
+    <value>VMware kaynak portalı</value>
+  </data>
+  <data name="VPNAccessNotApplicableInfoMessage" xml:space="preserve">
+    <value>Uygulama, bir Ürünün Uygulama Kaldırma Bildiriminde kullanılıyorsa VPN Erişimi "Geçerli Değil" olarak ayarlanır</value>
+  </data>
+  <data name="WeeklyInterval" xml:space="preserve">
+    <value>Haftalık Aralık</value>
+  </data>
+  <data name="WeeklyIntervalPlaceholder" xml:space="preserve">
+    <value>1 ile 52 arasında bir sayı girin</value>
+  </data>
+  <data name="Wizardenrollmentcomments" xml:space="preserve">
+    <value>Geçiş Sunucunuzu, Wi-Fi Profilinizi, {0} öğesini, Kullanıcı Hazırlamayı ve Barkod Yapılandırmasını ayarlamak üzere bu adım adım sihirbazı takip edin. İşlem tamamlandığında aygıtlarınızı kaydetmek için barkodlar ve gerekirse ek yardım için erişim sağlanır.</value>
+  </data>
+  <data name="Wizardsideloadenrollmentcomments" xml:space="preserve">
+    <value>{0} öğesini, Kullanıcı Hazırlamayı ve Dışardan Yükleme Yapılandırmasını doğru şekilde ayarlamak için bu adım adım sihirbazı takip edin. İşlem tamamlandığında aygıtlarınıza yüklemek üzere bir dışardan yükleme dosyası ve gerekirse ek yardım için erişim sağlanır.</value>
+  </data>
+  <data name="Wizardwebenrollmentcomments" xml:space="preserve">
+    <value>Kayıt işlemi için AirWatch Agent'ı doğru şekilde yapılandırmak üzere bu adım adım sihirbazı takip edin. İşlem tamamlandığında gerekirse ek yardım için erişim sağlanır.</value>
+  </data>
+  <data name="WorkSpaceONECertificate" xml:space="preserve">
+    <value>Workspace ONE Sertifikası</value>
+  </data>
+  <data name="WorkSpaceOneLauncher" xml:space="preserve">
+    <value>Workspace ONE Launcher</value>
+  </data>
+  <data name="ZQ510" xml:space="preserve">
+    <value>ZQ510</value>
+  </data>
+  <data name="ZQ520" xml:space="preserve">
+    <value>ZQ520</value>
+  </data>
+</root>

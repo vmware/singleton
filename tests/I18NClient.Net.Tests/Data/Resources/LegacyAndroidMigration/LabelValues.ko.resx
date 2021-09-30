@@ -1,0 +1,485 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Android7Zebra" xml:space="preserve">
+    <value>Android 7 이상 마이그레이션</value>
+  </data>
+  <data name="Android7ZebraDescription" xml:space="preserve">
+    <value>관리된 작업으로 마이그레이션하려면 Zebra 장치가 Android 7 이상이어야 합니다. 마이그레이션을 진행하기 전에 장치를 업데이트하십시오.</value>
+  </data>
+  <data name="AndroidEnterpriseUserAccountCreationFailed" xml:space="preserve">
+    <value>Android Enterprise 사용자 계정 생성 실패</value>
+  </data>
+  <data name="ApprovePublicApps" xml:space="preserve">
+    <value>공용 애플리케이션 승인</value>
+  </data>
+  <data name="CertificateUpload" xml:space="preserve">
+    <value>업로드</value>
+  </data>
+  <data name="CheckNetworkSettings" xml:space="preserve">
+    <value>네트워크 설정을 확인하여 Workspace ONE과 Google Play 스토어 간의 연결이 {0}에 설정되어 있는지 확인합니다.</value>
+    <comment>{0} will be replaced by another key with text 'here'.</comment>
+  </data>
+  <data name="ChooseMigrationType" xml:space="preserve">
+    <value>생성할 레거시 Android 마이그레이션 유형을 선택합니다.</value>
+  </data>
+  <data name="ClickValidate" xml:space="preserve">
+    <value>마이그레이션에 적합한 장치 수를 검색하려면 유효성 검사를 클릭합니다.</value>
+  </data>
+  <data name="CommandNotSent" xml:space="preserve">
+    <value>명령 전송 안 됨</value>
+  </data>
+  <data name="CommandQueued" xml:space="preserve">
+    <value>명령이 대기 중임</value>
+  </data>
+  <data name="ConfirmDeleteMigrationContent" xml:space="preserve">
+    <value>이 마이그레이션을 삭제하면 영구 알림이 철회되어 대기열의 장치가 레거시 Android에서 마이그레이션될 수 없습니다. 이미 마이그레이션된 장치에서는 Android Enterprise가 제거되지 않습니다. 이 마이그레이션을 삭제하시겠습니까?</value>
+  </data>
+  <data name="ConfirmDeleteMigrationTitle" xml:space="preserve">
+    <value>삭제 확인 - {0}</value>
+    <comment>{0} will be replaced by the name of a migration</comment>
+  </data>
+  <data name="ConfirmMigrationCancel" xml:space="preserve">
+    <value>이 마이그레이션을 취소하시겠습니까?</value>
+  </data>
+  <data name="ConsistentDeviceManagement" xml:space="preserve">
+    <value>지속적인 장치 관리</value>
+  </data>
+  <data name="CurateApps" xml:space="preserve">
+    <value>Google Play Store에서 애플리케이션을 앱을 엄선</value>
+  </data>
+  <data name="DeviceCountEdit" xml:space="preserve">
+    <value>{1}개의 새 장치 중 {0}개가 마이그레이션에 적합합니다.</value>
+    <comment>{0} and {1} will be replaced by a number</comment>
+  </data>
+  <data name="DeviceCountStatistic" xml:space="preserve">
+    <value>{1}개의 장치 중 {0}개가 마이그레이션에 적합합니다.</value>
+    <comment>{0} and {1} will be replaced by a number. 
+e.g.  4 out of 9 devices are eligible for migration</comment>
+  </data>
+  <data name="DevicePreviewDescription" xml:space="preserve">
+    <value>선택한 스마트 그룹의 대상 장치에 알림을 보내 마이그레이션에 대해 직원들에게 알리고 계속 진행하도록 합니다. 레거시 Android 마이그레이션 페이지에서 진행률을 모니터링할 수 있습니다.</value>
+  </data>
+  <data name="DevicesMigrated" xml:space="preserve">
+    <value>마이그레이션된 장치</value>
+  </data>
+  <data name="DevicesNotMigratedAreNeverEffected" xml:space="preserve">
+    <value>마이그레이션되지 않는 장치는 영향을 받지 않습니다.</value>
+  </data>
+  <data name="EasierLegacyAndroidMigration" xml:space="preserve">
+    <value>레거시 Android 관리를 관리된 작업이나 작업 프로필로 마이그레이션하는 것이 전보다 더 쉬워졌습니다!</value>
+  </data>
+  <data name="EligibilityStatus" xml:space="preserve">
+    <value>적합성 상태</value>
+  </data>
+  <data name="EveryFeatureWorks" xml:space="preserve">
+    <value>모든 OEM 장치에서 모든 기능이 동일하게 작동하는지 확인합니다.</value>
+  </data>
+  <data name="ExprtMigrationDeviceDetail" xml:space="preserve">
+    <value>세부 정보 내보내기</value>
+  </data>
+  <data name="HowToGetStartedLegacyAndroidMigration" xml:space="preserve">
+    <value>시작 방법</value>
+  </data>
+  <data name="IncreaseProductivity" xml:space="preserve">
+    <value>직원 생산성 증대</value>
+  </data>
+  <data name="InitiatedDate" xml:space="preserve">
+    <value>시작 날짜</value>
+  </data>
+  <data name="InvalidOgUUIDFormat" xml:space="preserve">
+    <value>잘못된 조직 그룹 UUID 형식</value>
+  </data>
+  <data name="LearnHowToEnsureLink" xml:space="preserve">
+    <value>방법 알아보기</value>
+    <comment>this text is part of MakeSureToApprovePublicApps {1}</comment>
+  </data>
+  <data name="LegacyAdministrationRemainsIntact" xml:space="preserve">
+    <value>레거시 관리는 마이그레이션이 완료될 때까지 그대로 유지됩니다.</value>
+  </data>
+  <data name="LegacyAndroidMigrationDeviceExport" xml:space="preserve">
+    <value>아래 나열된 장치는 위의 스마트 그룹을 선택했을 때 레거시 관리에 있었습니다. 이 스마트 그룹에 추가된 모든 장치는 나중에 새로 검색된 장치로 나타납니다. {0}를 통해 제거되었을 수 있는 스마트 그룹의 장치를 포함하여 마이그레이션된 모든 장치의 분석 결과를 확인하십시오.</value>
+    <comment>{0} will be replaced by another key with text 'Export Details'.</comment>
+  </data>
+  <data name="LegacyAndroidMigrationGotEasier" xml:space="preserve">
+    <value>레거시 Android 관리를 작업 프로필로 마이그레이션하고 모니터링하는 것이 훨씬 쉬워졌습니다!</value>
+  </data>
+  <data name="LegacyAndroidMigrationHelpText" xml:space="preserve">
+    <value>레거시 Android 마이그레이션 도움말</value>
+  </data>
+  <data name="LegacyAndroidMigrationTitle" xml:space="preserve">
+    <value>레거시 Android 마이그레이션</value>
+  </data>
+  <data name="LegacyAndroidMigrationWelcomeWindowDescription" xml:space="preserve">
+    <value>BYOD 장치를 사용하는 직원의 보안 및 전반적인 환경을 개선하여 모든 OEM 장치에 대한 제어 및 일관성을 향상시키려면 지금 마이그레이션하십시오. </value>
+  </data>
+  <data name="LockDownAllowWorkApps" xml:space="preserve">
+    <value>Launcher 및 고급 장치 제한을 사용하여 회사 관리 장치를 잠급니다. 업무 앱 및 데이터를 직원 소유된 장치에 별도로 저장할 수 있습니다.</value>
+  </data>
+  <data name="MakeSureLink" xml:space="preserve">
+    <value>공용 앱</value>
+    <comment>this text is part of MakeSureToApprovePublicApps {0}</comment>
+  </data>
+  <data name="MakeSureToApprovePublicApps" xml:space="preserve">
+    <value>{0}에서 조직에 대한 모든 공용 애플리케이션이 승인되었는지 확인하고 {1}에서 직원들이 생산성을 유지하는 데 필요한 모든 것을 확인하는 방법을 알아보십시오.</value>
+    <comment>{0} and {1} will be replaced by another key with text 'here'.</comment>
+  </data>
+  <data name="MakeSureToApprovePublicAppsWorkManaged" xml:space="preserve">
+    <value>모든 {0}이(가) 조직에 승인되었는지 확인하고 직원들이 생산성을 유지하는 데 필요한 모든 것을 갖추도록 {1}을(를) 확인하십시오.</value>
+    <comment>{0} will be replaced by key MakeSureLink, {1} by LearnHowToEnsureLink</comment>
+  </data>
+  <data name="ManageBothApps" xml:space="preserve">
+    <value>공용 및 내부 앱 관리</value>
+  </data>
+  <data name="MigrateEveryFeature" xml:space="preserve">
+    <value>재설정 또는 재부팅을 수행하지 않은 상태에서 장치를 마이그레이션하고 모든 OEM 장치에서 기능이 손쉽게 동일하게 작동하는지 확인합니다.</value>
+  </data>
+  <data name="MigrateMoreControl" xml:space="preserve">
+    <value>제어 및 일관성이 강화된 마이그레이션</value>
+  </data>
+  <data name="MigrateWithConfidence" xml:space="preserve">
+    <value>신뢰 수준을 사용하여 마이그레이션</value>
+  </data>
+  <data name="Migrating" xml:space="preserve">
+    <value>마이그레이션 작업</value>
+  </data>
+  <data name="MigrationAllCompatible" xml:space="preserve">
+    <value>선택한 스마트 그룹에 있는 {0}개의 레거시 Android 장치 모두 마이그레이션에 적합합니다.</value>
+    <comment>{0} will be replaced by a number.</comment>
+  </data>
+  <data name="MigrationCertificate" xml:space="preserve">
+    <value>마이그레이션 인증서</value>
+  </data>
+  <data name="MigrationDeleteSuccessMessage" xml:space="preserve">
+    <value>{0}을(를) 삭제했습니다.</value>
+    <comment>{0} will be replaced by a migration name</comment>
+  </data>
+  <data name="MigrationDescription" xml:space="preserve">
+    <value>직원이 Android Enterprise로 업그레이드하기로 선택하면 이 메시지에서 직원에게 마이그레이션에 대한 정보를 제공하고 계속하기 위한 조치를 수행하도록 안내합니다.</value>
+  </data>
+  <data name="MigrationLimitReached" xml:space="preserve">
+    <value>마이그레이션에는 SmartGroup 할당이 최대 10개까지 있을 수 있습니다.</value>
+  </data>
+  <data name="MigrationMessageDescription" xml:space="preserve">
+    <value>직원이 Android Enterprise로 업그레이드하기로 선택한 후 이 메시지에서 직원에게 마이그레이션에 대한 정보를 제공하고 계속하기 위한 조치를 수행하도록 안내합니다.</value>
+  </data>
+  <data name="MigrationMessagePlaceholder" xml:space="preserve">
+    <value>이제 한 곳에서 모든 앱에 쉽고 안전하게 액세스할 수 있도록 Android Enterprise로 업그레이드하십시오. 그렇지 않은 경우 언제든지 이 기능을 해제할 수 있습니다. [설정] &gt; [계정] &gt; [작업 프로필 설정]으로 이동하십시오.</value>
+  </data>
+  <data name="MigrationNoDevicesCompatible" xml:space="preserve">
+    <value>선택한 스마트 그룹의 장치가 마이그레이션에 적합하지 않습니다. 계속 진행하려면 레거시 Android 장치가 포함된 스마트 그룹을 선택하십시오.</value>
+  </data>
+  <data name="MigrationNotFound" xml:space="preserve">
+    <value>마이그레이션을 찾을 수 없습니다.</value>
+  </data>
+  <data name="MigrationSomeDevicesCompatible" xml:space="preserve">
+    <value>선택한 스마트 그룹에서 레거시 Android 장치 {1}개 중 {0}개가 마이그레이션에 적합합니다. 계속 진행할 경우 이러한 장치에만 마이그레이션이 적용됩니다.</value>
+    <comment>{0} and {1} will be replaced by a number.</comment>
+  </data>
+  <data name="MigrationSuccessMessage" xml:space="preserve">
+    <value>{0}을(를) 생성했습니다.</value>
+    <comment>{0} will be replaced by a string containing the name of a new migration</comment>
+  </data>
+  <data name="MigrationTitlePlaceholder" xml:space="preserve">
+    <value>개인 및 직장 생활을 하나의 장치에 따로 보관</value>
+  </data>
+  <data name="MigrationType" xml:space="preserve">
+    <value>마이그레이션 유형</value>
+  </data>
+  <data name="MissingCertificateError" xml:space="preserve">
+    <value>마이그레이션 인증서를 업로드하십시오.</value>
+  </data>
+  <data name="MonitoringLegacyAndroidMigration" xml:space="preserve">
+    <value>모니터링</value>
+  </data>
+  <data name="MoreControlAndConstistency" xml:space="preserve">
+    <value>더 많은 제어 및 일관성</value>
+  </data>
+  <data name="NeedsAttention" xml:space="preserve">
+    <value>주의 필요</value>
+  </data>
+  <data name="NewLegacyAndroidMigration" xml:space="preserve">
+    <value>새 마이그레이션</value>
+  </data>
+  <data name="NewMigrationTitle" xml:space="preserve">
+    <value>새 마이그레이션</value>
+  </data>
+  <data name="NoDevicesError" xml:space="preserve">
+    <value>선택한 스마트 그룹의 장치가 마이그레이션과 호환되지 않습니다. 계속하기 전에 호환되는 장치를 선택하십시오.</value>
+  </data>
+  <data name="NoEligibleDevices" xml:space="preserve">
+    <value>적합한 레거시 Android 장치를 찾을 수 없음</value>
+  </data>
+  <data name="NoEligibleDevicesEdit" xml:space="preserve">
+    <value>적합한 새 레거시 Android 장치를 찾을 수 없음</value>
+  </data>
+  <data name="NoImpactOnExistingDevices" xml:space="preserve">
+    <value>기존 장치에 영향을 주지 않음</value>
+  </data>
+  <data name="NoNewDevices" xml:space="preserve">
+    <value>선택한 스마트 그룹에서 적합한 새 레거시 Android 장치를 찾을 수 없습니다.</value>
+  </data>
+  <data name="NoOgFound" xml:space="preserve">
+    <value>지정된 조직 그룹 UUID에 대한 조직 그룹을 찾을 수 없습니다.</value>
+  </data>
+  <data name="NotCompatible" xml:space="preserve">
+    <value>호환되지 않음</value>
+  </data>
+  <data name="NotCompleteDeviceControl" xml:space="preserve">
+    <value>작업 애플리케이션 및 해당 데이터는 개인 애플리케이션과 별도로 저장 및 관리되므로 장치 제어를 완료할 필요가 없습니다.</value>
+  </data>
+  <data name="PreparingCommand" xml:space="preserve">
+    <value>명령 준비 중</value>
+  </data>
+  <data name="Prerequisites" xml:space="preserve">
+    <value>사전 요구사항</value>
+  </data>
+  <data name="PrerequisitesDescription" xml:space="preserve">
+    <value>마이그레이션하기 전에 마이그레이션이 원활하게 진행되도록 하기 위해 다음 필수 사전 요구 사항을 완료했는지 확인하십시오. 완료되지 않은 경우 마이그레이션이 실패하거나 사용자가 필요한 모든 앱에 액세스할 수 없게 됩니다.</value>
+  </data>
+  <data name="ProvideUnifiedAppExperience" xml:space="preserve">
+    <value>직원들에게 더 통합되고 안정적인 환경을 제공하고 모든 장치에 공용 애플리케이션이 자동으로 설치되도록 허용합니다. 회사 관리 장치는 내부 애플리케이션을 자동으로 설치할 수도 있습니다.</value>
+  </data>
+  <data name="PublishedAsAPrivateApp" xml:space="preserve">
+    <value>개인 앱</value>
+    <comment>this text is pat of PublishInternalAppsInPlayStoreWorkManaged {0}</comment>
+  </data>
+  <data name="PublishInternalApps" xml:space="preserve">
+    <value>내부 애플리케이션 게시</value>
+  </data>
+  <data name="PublishInternalAppsInPlayStore" xml:space="preserve">
+    <value>모든 내부 애플리케이션이 {0} Google Play 스토어에서 개인 애플리케이션으로 게시되는지 확인합니다. {1}</value>
+    <comment>{0} will be replaced by another key with text 'here'. 
+{1} will be replaced by another key with text 'Learn More'.</comment>
+  </data>
+  <data name="PublishInternalAppsInPlayStoreWorkManaged" xml:space="preserve">
+    <value>모든 내부 애플리케이션이 업무 프로필 장치용 Google Play Store에 {0}(으)로 게시되었는지 확인합니다. 회사 관리 장치용 Workspace ONE UEM을 사용하여 내부 애플리케이션을 자동으로 설치할 수 있습니다. {1}</value>
+    <comment>{0} will be replaced by another key with text 'private app'. 
+{1} will be replaced by another key with text 'Learn More'.</comment>
+  </data>
+  <data name="PushMigrationOut" xml:space="preserve">
+    <value>마이그레이션 스테이징이 완료된 후 마이그레이션을 조직의 나머지 부분으로 푸시합니다.</value>
+  </data>
+  <data name="RecreateLegacyProfiles" xml:space="preserve">
+    <value>레거시 프로필</value>
+    <comment>this text is part of RecreateLegacyProfilesProductsToNew {0}</comment>
+  </data>
+  <data name="RecreateLegacyProfilesProductsToNew" xml:space="preserve">
+    <value>{0}을(를) 새 프로필로 다시 생성하고 마이그레이션 전에 회사 관리 장치에 대한 레거시 프로필을 사용하여 {1}을(를) 손쉽게 다시 생성합니다.</value>
+    <comment>{0} will be replaced by RecreateLegacyProfiles and {1} by RecreateProducts</comment>
+  </data>
+  <data name="RecreateLegacyProfilesToNew" xml:space="preserve">
+    <value>마이그레이션 전에 {0}에서 레거시 프로필을 새 프로필로 다시 생성합니다.</value>
+    <comment>{0} will be replaced by another key with text 'here'.</comment>
+  </data>
+  <data name="RecreateProducts" xml:space="preserve">
+    <value>제품</value>
+    <comment>this text is part of RecreateLegacyProfilesProductsToNew {1}</comment>
+  </data>
+  <data name="RecreateProfiles" xml:space="preserve">
+    <value>프로필 다시 생성</value>
+  </data>
+  <data name="RecreateProfilesAndProducts" xml:space="preserve">
+    <value>프로필 및 제품 다시 생성</value>
+  </data>
+  <data name="RetrieveMigrationCertificate" xml:space="preserve">
+    <value>마이그레이션 인증서 검색</value>
+  </data>
+  <data name="RetrieveMigrationCertificateDescription" xml:space="preserve">
+    <value>마이그레이션의 무결성을 보장하려면 인증서가 필요합니다. 회사에 대한 인증서를 생성하려면 Zebra 담당자에게 문의하십시오.</value>
+  </data>
+  <data name="RetryMigrationSuccess" xml:space="preserve">
+    <value>마이그레이션에 대한 알림이 선택한 장치로 전송되고 계속하기 위한 조치를 수행하도록 안내합니다.</value>
+  </data>
+  <data name="SeeDevicesCompleteInprogressAssigned" xml:space="preserve">
+    <value>어떤 장치가 완료되고, 진행 중이며 할당되었는지 확인합니다.</value>
+  </data>
+  <data name="SelectMigrationSmartGroups" xml:space="preserve">
+    <value>마이그레이션할 스마트 그룹을 선택합니다.</value>
+  </data>
+  <data name="SelectMigrationType" xml:space="preserve">
+    <value>마이그레이션 유형 선택</value>
+  </data>
+  <data name="SeparateWorkAndPersonalApps" xml:space="preserve">
+    <value>작업 애플리케이션과 개인 애플리케이션을 분리하고 안전하게 유지</value>
+  </data>
+  <data name="SetUpLegacyAndroidMigration" xml:space="preserve">
+    <value>마이그레이션 및 모니터링은 제어 및 일관성을 최대화하는 데 필요한 도구를 통해 간편하게 수행됩니다.</value>
+  </data>
+  <data name="SmartGroupInAccessible" xml:space="preserve">
+    <value>스마트 그룹을 찾을 수 없거나 사용자에게 액세스 권한이 없습니다.</value>
+  </data>
+  <data name="SmartGroupMore" xml:space="preserve">
+    <value>그 외 {0}개</value>
+    <comment>{0} will be replaced by a number. 
+e.g.  + 5 More</comment>
+  </data>
+  <data name="TestFewDevices" xml:space="preserve">
+    <value>일부 장치를 테스트하여 직원의 장치가 성공적으로 마이그레이션되었는지 확인합니다.</value>
+  </data>
+  <data name="TestingLegacyAndroidMigration" xml:space="preserve">
+    <value>테스트 중</value>
+  </data>
+  <data name="TrackDeviceProgressLegacyAndroidMigration" xml:space="preserve">
+    <value>조직 전체를 푸시하기 전에 장치의 진행률과 마이그레이션 상태를 추적합니다.</value>
+  </data>
+  <data name="TrackProgressAndTakeAction" xml:space="preserve">
+    <value>진행 상황 추적 및 작업 수행</value>
+  </data>
+  <data name="UnassignedDevices" xml:space="preserve">
+    <value>현재 선택된 스마트 그룹에 따라 {0}개의 장치가 제거됩니다.</value>
+    <comment>{0} will be replaced by a number</comment>
+  </data>
+  <data name="UnifiedAppExperience" xml:space="preserve">
+    <value>직원에게 통합되고 신뢰할 수 있는 애플리케이션 환경을 제공합니다.</value>
+  </data>
+  <data name="UploadCertificateHelpText" xml:space="preserve">
+    <value>업로드할 마이그레이션 인증서 선택</value>
+  </data>
+  <data name="UserEmailCannotBeNullOrWhitespace" xml:space="preserve">
+    <value>androidWorkUserEmail 필드는 null이거나 비워둘 수 없습니다.</value>
+  </data>
+  <data name="UserPasswordCannotBeNullOrWhitepsace" xml:space="preserve">
+    <value>androidWorkUserPassword 필드는 null이거나 비워둘 수 없습니다.</value>
+  </data>
+  <data name="Validate" xml:space="preserve">
+    <value>유효성 검사</value>
+  </data>
+  <data name="ValidateTooltip" xml:space="preserve">
+    <value>선택한 스마트 그룹 내의 레거시 Android 장치가 있는지 여부를 확인합니다.</value>
+  </data>
+  <data name="VerifyNetworkSettings" xml:space="preserve">
+    <value>네트워크 설정 확인</value>
+  </data>
+  <data name="WaitingOnUser" xml:space="preserve">
+    <value>사용자 대기 중</value>
+  </data>
+  <data name="WhatIsMigrationFor" xml:space="preserve">
+    <value>이 마이그레이션의 용도는 무엇입니까?</value>
+  </data>
+  <data name="WhatToExpect" xml:space="preserve">
+    <value>예상 결과</value>
+  </data>
+  <data name="WorkManagedMigrationDescription" xml:space="preserve">
+    <value>기업 소유 장치를 장치 관리자에서 관리된 작업으로 마이그레이션합니다. Android 7 이상을 실행하는 Zebra 장치가 필요합니다.</value>
+  </data>
+  <data name="WorkProfileMigrationDescription" xml:space="preserve">
+    <value>개인 소유 장치를 장치 관리자에서 업무 프로필로 마이그레이션합니다.</value>
+  </data>
+</root>

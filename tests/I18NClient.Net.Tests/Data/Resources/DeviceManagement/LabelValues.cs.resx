@@ -1,0 +1,804 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AboutEnrollment" xml:space="preserve">
+    <value>Další informace o stavech registrace:</value>
+  </data>
+  <data name="AboutTotalDeployment" xml:space="preserve">
+    <value>Zařízení musí být zaregistrovaná, aby byla započítána jako nasazená. Zařízení čekající na akci, jako je firemní výmaz, jsou započítávána do doby, než bude akce dokončena. Zapsaná zařízení se započítávají až po registraci.</value>
+  </data>
+  <data name="AddTag" xml:space="preserve">
+    <value>Vytvořit značku</value>
+  </data>
+  <data name="AddTagHelp" xml:space="preserve">
+    <value>Uděluje oprávnění vytvořit nový štítek</value>
+  </data>
+  <data name="AdminModePasscodeHelpText" xml:space="preserve">
+    <value>Určete alfanumerické heslo pro řešení potíží se zařízením v režimu administrátora. Pětkrát klepněte na ikonu centra Hub na přihlašovací obrazovce, abyste získali přístup v režimu administrátora.</value>
+  </data>
+  <data name="AirwatchCannotSeeYourPersonalContent" xml:space="preserve">
+    <value>VMware Workspace ONE Intelligent Hub shromažďuje pouze informace, které jsou důležité k poskytování zabezpečeného firemního přístupu.</value>
+  </data>
+  <data name="AllowPinAtStartup" xml:space="preserve">
+    <value>Povolení kódu PIN při spuštění</value>
+  </data>
+  <data name="AndroidSharedDeviceAdminModePasscode" xml:space="preserve">
+    <value>Heslo režimu administrátora</value>
+  </data>
+  <data name="AndroidSharedDeviceMode" xml:space="preserve">
+    <value>Režim sdíleného zařízení Android</value>
+  </data>
+  <data name="AndroidSharedDeviceModeHelpText" xml:space="preserve">
+    <value>Přihlašování a odhlašování sdílených zařízení Android s využitím nativních funkcí systému Android nebo aplikace Workspace ONE Launcher. Nativní Android podporuje jednodušší případy použití, které nevyžadují mnoho úprav. Aplikace Launcher podporuje vlastní nastavení uživatelského rozhraní pro složitější případy použití.</value>
+  </data>
+  <data name="AppCatalogSupport" xml:space="preserve">
+    <value>Podpora katalogu aplikací</value>
+  </data>
+  <data name="AssignTags" xml:space="preserve">
+    <value>Přiřadit štítky</value>
+  </data>
+  <data name="BluetoothDeviceMessageLabelAny" xml:space="preserve">
+    <value>Zařízení Bluetooth</value>
+  </data>
+  <data name="BulkAndroidWipeAddition" xml:space="preserve">
+    <value>Pokud se kterékoli z těchto zařízení znovu zaregistruje do Workspace ONE, bude vytvořeno nové UDID, což bude mít za následek duplicitní záznam zařízení.</value>
+  </data>
+  <data name="BulkEnterpriseWipeDescription" xml:space="preserve">
+    <value>Firemní výmaz odregistruje a odstraní všechny spravované firemní zdroje včetně aplikací a profilů z vybraných zařízení. Tuto akci nelze odvolat. Bude vyžadována opětovná registrace, aby Workspace ONE mohl zařízení znovu spravovat.</value>
+  </data>
+  <data name="CallUsageMessageLabelAny" xml:space="preserve">
+    <value>Využití volání</value>
+  </data>
+  <data name="CannotDeleteUsersWithRegistrationRecord" xml:space="preserve">
+    <value>Nelze odstranit uživatele, který má registrační záznam DEP nebo pokud je přiřazen k profilu DEP</value>
+  </data>
+  <data name="CarrierCountryCodeMessageLabelAny" xml:space="preserve">
+    <value>Dopravce, kód země</value>
+  </data>
+  <data name="CellularDataUsageMessageLabelAny" xml:space="preserve">
+    <value>Využití mobilních dat</value>
+  </data>
+  <data name="ChromeOsDeviceCleanup" xml:space="preserve">
+    <value>Odebrání zařízení Chrome OS</value>
+  </data>
+  <data name="ClearAndroidAccounts" xml:space="preserve">
+    <value>Vymazat účty Android</value>
+  </data>
+  <data name="ClearAndroidAccountsHelpInfo" xml:space="preserve">
+    <value>Vymazání účtů Android by odstranilo účty, které mohou některé aplikace používat k automatickému přihlášení. Vymazání účtu Google vyžaduje systém Android 8+ a vymazání jiného účtu než Google vyžaduje systém Android 9+. Toto nastavení se týká pouze metody spouštění u sdíleného zařízení Android, jelikož nativní metoda vždy vymaže každý účet.</value>
+  </data>
+  <data name="ClearDevicePasscodeDevicePageHelpInfo" xml:space="preserve">
+    <value>Aktivujte nebo deaktivujte možnost Zabezpečené spouštění, která pro spuštění zařízení vyžaduje zadání kódu PIN. Pokud je možnost Zabezpečené spouštění již vypnuta, bude ji možné zapnout až po resetování zařízení do továrního nastavení. Tato funkce se týká pouze zařízení Android, která nemají šifrování na základě souborů.</value>
+  </data>
+  <data name="ClearDevicePasscodeSharedSettingsHelpInfo" xml:space="preserve">
+    <value>Aktivujte nebo deaktivujte možnost Zabezpečené spouštění systému Android, která pro spuštění zařízení vyžaduje zadání kódu PIN. Pokud je tato možnost vypnutá, uživatelé nemohou během nastavování hesla zapnout volbu Zabezpečení spouštění. Pokud je v zařízení možnost Zabezpečené spouštění již vypnuta, bude ji možné zapnout až po resetování zařízení do továrního nastavení. Tato funkce se týká pouze zařízení Android, která nemají šifrování na základě souborů.</value>
+  </data>
+  <data name="ConfirmAndroidSharedDeviceAdminModePasscode" xml:space="preserve">
+    <value>Potvrdit heslo režimu administrátora</value>
+  </data>
+  <data name="ConfirmEnterpriseWipeDeviceMessageChromeOs" xml:space="preserve">
+    <value>Tato akce odregistruje a odebere všechny spravované podnikové zdroje z vybraného zařízení (včetně aplikací a profilů). Tuto akci nelze vrátit zpět bez opětovné registrace tohoto zařízení.</value>
+  </data>
+  <data name="ConfirmExport" xml:space="preserve">
+    <value>Ano, exportovat</value>
+  </data>
+  <data name="ConfirmOverwrite" xml:space="preserve">
+    <value>Potvrzení přepisu</value>
+  </data>
+  <data name="ConfirmOverwriteMessage" xml:space="preserve">
+    <value>Exportováním tohoto balíčku PPKG přepíšete balíčky PPKG pro dokončené šablony. Před exportem tohoto balíčku se ujistěte, že jste stáhli předchozí balíček. Opravdu chcete pokračovat?</value>
+  </data>
+  <data name="ContactAdminPrivacyNotice" xml:space="preserve">
+    <value>Výše uvedené oblasti shromažďování jsou specifické pro správu digitálního pracovního prostoru VMware Workspace ONE Intelligent Hub a pro podniková a osobní zařízení se mohou lišit.
+
+Obraťte se na svého administrátora IT a zeptejte se na aplikace třetích stran, které vaší společnosti mohou umožňovat vidět další osobní/soukromé informace, a požádejte o kopii všech platných interních zásad.</value>
+  </data>
+  <data name="DependencyApplications" xml:space="preserve">
+    <value>Aplikace závislosti</value>
+  </data>
+  <data name="DeviceBulkManagementAddTags" xml:space="preserve">
+    <value>Správa hromadných akcí zařízení – přiřazování štítků</value>
+  </data>
+  <data name="DeviceBulkManagementAddTagsHelp" xml:space="preserve">
+    <value>Uživateli umožňuje přiřazovat zařízením štítky hromadně.</value>
+  </data>
+  <data name="DeviceDeleteWhiteSpaceReason" xml:space="preserve">
+    <value>Prázdné místo nesmí být použito jako důvod.</value>
+  </data>
+  <data name="DevicePhoneNumberMessageLabelAny" xml:space="preserve">
+    <value>Telefonní číslo zařízení</value>
+  </data>
+  <data name="DeviceProvisioningMenuDescription" xml:space="preserve">
+    <value>Spravovat zřizovací balíčky zařízení</value>
+  </data>
+  <data name="DeviceProvisioningMenuTitle" xml:space="preserve">
+    <value>Zřizování</value>
+  </data>
+  <data name="DevicesCountExcludesUnenrolled" xml:space="preserve">
+    <value>Zařízení započítávaná do celkového nasazení byla aktualizována tak, aby vyloučila nezaregistrovaná zařízení.</value>
+  </data>
+  <data name="DeviceViewWorkflowsList" xml:space="preserve">
+    <value>Zobrazení zařízení – seznam pracovních postupů</value>
+  </data>
+  <data name="DeviceViewWorkflowsListHelp" xml:space="preserve">
+    <value>Řídí přístup na kartu Pracovní postupy na stránce Detaily zařízení.</value>
+  </data>
+  <data name="DifferentModelReplacement" xml:space="preserve">
+    <value>Výměna různých modelů</value>
+  </data>
+  <data name="DownloadEncryptedPackage" xml:space="preserve">
+    <value>Stáhnout šifrovaný balíček</value>
+  </data>
+  <data name="DownloadProvisioningFiles" xml:space="preserve">
+    <value>Stáhnout zřizovací soubory</value>
+  </data>
+  <data name="DownloadWindowsPhoneAgent" xml:space="preserve">
+    <value>Stáhnout agent Windows Phone</value>
+  </data>
+  <data name="DuplicatePackageFound" xml:space="preserve">
+    <value>Tento název se již používá. Zvolte jiný název.</value>
+  </data>
+  <data name="EditProvisioningPackage" xml:space="preserve">
+    <value>Upravit zřizovací balíček</value>
+  </data>
+  <data name="EducationCertificateRenewalJob" xml:space="preserve">
+    <value>Úloha obnovení certifikátu o vzdělání</value>
+  </data>
+  <data name="EmailDiscovery" xml:space="preserve">
+    <value>Automatické zjišťování e-mailu</value>
+  </data>
+  <data name="EmailDomainRegistrationFailure" xml:space="preserve">
+    <value>Selhání registrace e-mailové domény</value>
+  </data>
+  <data name="EmailDomainRegistrationSuccess" xml:space="preserve">
+    <value>Úspěšná registrace e-mailové domény</value>
+  </data>
+  <data name="EmptyApplicationList" xml:space="preserve">
+    <value>Nenalezeny žádné aplikace.</value>
+  </data>
+  <data name="EmptyEnrollmentSessionPleaseTryAgain" xml:space="preserve">
+    <value>Neplatná relace registrace. Zkuste to znovu.</value>
+  </data>
+  <data name="EmptyPackageList" xml:space="preserve">
+    <value>Zde se objeví vaše nové zřizovací balíčky.</value>
+  </data>
+  <data name="EncryptedPackageDescription" xml:space="preserve">
+    <value>Exportujte jeden šifrovaný zřizovací balíček s konfiguracemi, nastavením a aplikacemi pro místní zařízení.</value>
+  </data>
+  <data name="EncryptedPackageTitle" xml:space="preserve">
+    <value>Šifrovaný balíček</value>
+  </data>
+  <data name="Enrollmentemailaddress" xml:space="preserve">
+    <value>E-mailová adresa</value>
+  </data>
+  <data name="Enrollmentemailusername" xml:space="preserve">
+    <value>Uživatelské jméno e-mailu</value>
+  </data>
+  <data name="EnterCharactersShownAbove" xml:space="preserve">
+    <value>Zadejte výše uvedené znaky</value>
+  </data>
+  <data name="EnterpriseWipeFailed" xml:space="preserve">
+    <value>Firemní výmaz se nezdařil.</value>
+  </data>
+  <data name="EnterpriseWipeReasonRequired" xml:space="preserve">
+    <value>Při požadavku na firemní výmaz je nutné vyplnit pole Důvod.</value>
+  </data>
+  <data name="EnterpriseWipeSucceeded" xml:space="preserve">
+    <value>Firemní výmaz proběhl úspěšně.</value>
+  </data>
+  <data name="ExportInProgress" xml:space="preserve">
+    <value>Probíhá export...</value>
+  </data>
+  <data name="ExportLater" xml:space="preserve">
+    <value>Již probíhá export jiného zřizovacího balíčku. Buď uložte šablonu a exportujte ji později, nebo počkejte, dokud nebude druhý export dokončen.</value>
+  </data>
+  <data name="FailedLoadingUnmanagedProfilePayload" xml:space="preserve">
+    <value>Selhalo nahrání datové části nespravovaného profilu</value>
+  </data>
+  <data name="FailedToDownload" xml:space="preserve">
+    <value>Žádost o stáhnutí selhala. Zkuste to později znovu.</value>
+  </data>
+  <data name="FailedToExport" xml:space="preserve">
+    <value>Export se nezdařil</value>
+  </data>
+  <data name="FeatureNotSupported" xml:space="preserve">
+    <value>Tato funkce aktuálně není podporována.</value>
+  </data>
+  <data name="GPSMessageLabelAny" xml:space="preserve">
+    <value>GPS</value>
+  </data>
+  <data name="GroupIDAndEmailRequired" xml:space="preserve">
+    <value>E-mailová adresa a ID skupiny jsou povinná pole</value>
+  </data>
+  <data name="InactiveAppsFound" xml:space="preserve">
+    <value>Některé aplikace byly odstraněny nebo upraveny po vytvoření tohoto balíčku. Zkontrolujte seznam vybraných aplikací a ujistěte se, že je úplný.</value>
+  </data>
+  <data name="InvokeAgent" xml:space="preserve">
+    <value>Vyvolat agenta</value>
+  </data>
+  <data name="LauncherSharedDeviceMode" xml:space="preserve">
+    <value>Launcher</value>
+  </data>
+  <data name="ManagedInstallations" xml:space="preserve">
+    <value>Spravované instalace</value>
+  </data>
+  <data name="MultipleEnrollmentUsersForEmail" xml:space="preserve">
+    <value>K dané e-mailové adrese je přidruženo více uživatelů registrace</value>
+  </data>
+  <data name="NativeSharedDeviceMode" xml:space="preserve">
+    <value>Nativní</value>
+  </data>
+  <data name="NewProvisioningPackage" xml:space="preserve">
+    <value>Nový zřizovací balíček</value>
+  </data>
+  <data name="NoEnrollmentUserForEmail" xml:space="preserve">
+    <value>K dané e-mailové adrese není přidružen žádný uživatel registrace</value>
+  </data>
+  <data name="NoOrganizationGroupForGroupId" xml:space="preserve">
+    <value>Pro zadané ID skupiny nebyla nalezena žádná organizační skupina</value>
+  </data>
+  <data name="NoTransformSelected" xml:space="preserve">
+    <value>Nevybrána žádná transformace</value>
+  </data>
+  <data name="NotWorking" xml:space="preserve">
+    <value>Nefunguje?</value>
+  </data>
+  <data name="OEMProvisioningDescription" xml:space="preserve">
+    <value>Exportujte balíčky PPKG a soubory XML, aby se předběžně nahrála zařízení s konfiguracemi, nastaveními a aplikacemi v závodech OEM.</value>
+  </data>
+  <data name="OEMProvisioningTitle" xml:space="preserve">
+    <value>Tovární zajišťování</value>
+  </data>
+  <data name="OnboardingMethod" xml:space="preserve">
+    <value>Metoda prvotního zavádění</value>
+  </data>
+  <data name="OnboardingMethods" xml:space="preserve">
+    <value>Metody prvotního zavádění</value>
+  </data>
+  <data name="OrganizationGroupInvalidForEnrollmentUser" xml:space="preserve">
+    <value>Uživatel nemá oprávnění registrovat se v dané organizační skupině</value>
+  </data>
+  <data name="PackageInProgress" xml:space="preserve">
+    <value>Probíhá export stávajícího zajišťovacího balíčku Windows (PPKG). Počkejte, dokud nebude export dokončen.</value>
+  </data>
+  <data name="PackageSaved" xml:space="preserve">
+    <value>Výborně! Vytváření zřizovacího balíčku probíhá. Vraťte se sem později, až tu bude odkaz ke stažení.</value>
+  </data>
+  <data name="PersonalApplicationMessageLabelAny" xml:space="preserve">
+    <value>Soukromá aplikace</value>
+  </data>
+  <data name="PersonalAppsCollected" xml:space="preserve">
+    <value>Instalované osobní aplikace jsou shromažďovány z důvodu ochrany osobních a firemních dat před škodlivými aplikacemi. Pouze instalované aplikace na seznamu jsou k dispozici. Žádný obsah ani data z osobních aplikací nejsou sdílena s Workspace ONE.</value>
+  </data>
+  <data name="PlatformConfirmation" xml:space="preserve">
+    <value>Potvrzení platformy</value>
+  </data>
+  <data name="PromptForiPadandMAC" xml:space="preserve">
+    <value>Potvrďte, zda používáte iPad proto, abyste předešli potížím při registracích a instalacích aplikací.</value>
+  </data>
+  <data name="RemoteControlAccess" xml:space="preserve">
+    <value>Přístup ke vzdálenému řízení</value>
+  </data>
+  <data name="Replaced" xml:space="preserve">
+    <value>Nahrazeno</value>
+  </data>
+  <data name="Requested" xml:space="preserve">
+    <value>Vyžadováno</value>
+  </data>
+  <data name="RetiringDevice" xml:space="preserve">
+    <value>Vyřazení zařízení</value>
+  </data>
+  <data name="RoamingStatusMessageLabelAny" xml:space="preserve">
+    <value>Stav roamingu</value>
+  </data>
+  <data name="SameModelReplacement" xml:space="preserve">
+    <value>Výměna stejných modelů</value>
+  </data>
+  <data name="SaveAndExport" xml:space="preserve">
+    <value>Uložit a exportovat</value>
+  </data>
+  <data name="SaveForLater" xml:space="preserve">
+    <value>Ne, uložit na později</value>
+  </data>
+  <data name="SelectedApplications" xml:space="preserve">
+    <value>Vybrané aplikace</value>
+  </data>
+  <data name="SelectStagingMode" xml:space="preserve">
+    <value>Vyberte režim fázování</value>
+  </data>
+  <data name="SingleAndroidWipeAddition" xml:space="preserve">
+    <value>Pokud se zařízení znovu zaregistruje do Workspace ONE, bude vytvořeno nové UDID, což bude mít za následek duplicitní záznam zařízení.</value>
+  </data>
+  <data name="SingleEnterpriseWipeDescription" xml:space="preserve">
+    <value>Firemní výmaz odregistruje a odstraní všechny spravované firemní zdroje včetně aplikací a profilů z vybraných zařízení.
+Tuto akci nelze odvolat. Bude vyžadována opětovná registrace, aby Workspace ONE mohl zařízení znovu spravovat.</value>
+  </data>
+  <data name="SMSUsageMessageLabelAny" xml:space="preserve">
+    <value>Využití SMS</value>
+  </data>
+  <data name="StagingIsEnabledForEnrollmentUser" xml:space="preserve">
+    <value>Fázování je aktivováno pro daného uživatele registrace</value>
+  </data>
+  <data name="SystemAppsToggleHelpText" xml:space="preserve">
+    <value>Povolit koncovým uživatelům přístup k systémovým aplikacím</value>
+  </data>
+  <data name="SystemLogs" xml:space="preserve">
+    <value>Systémové protokoly</value>
+  </data>
+  <data name="SystemLogsPrivacyNoticeMessageLabel" xml:space="preserve">
+    <value>Systémové protokoly – oznámení o ochraně osobních údajů</value>
+  </data>
+  <data name="TapHereToRetry" xml:space="preserve">
+    <value>Klepnutím sem pokus zopakujte</value>
+  </data>
+  <data name="TermsAndConditions" xml:space="preserve">
+    <value>Smluvní podmínky</value>
+  </data>
+  <data name="TransformLabel" xml:space="preserve">
+    <value>Transformace instalace aplikace</value>
+  </data>
+  <data name="TransformToolTipText" xml:space="preserve">
+    <value>Transformace je kolekce změn použitých na instalaci MSI. Vyberte dostupný soubor transformace (MST), který bude použit během instalace.</value>
+  </data>
+  <data name="TransformToolTipTitle" xml:space="preserve">
+    <value>Transformovat</value>
+  </data>
+  <data name="UnattendAdJoinLabel" xml:space="preserve">
+    <value>Typ Active Directory</value>
+  </data>
+  <data name="UnattendAdJoinText" xml:space="preserve">
+    <value>Vyberte typ spojení AD, který chcete použít. Na základě tohoto výběru vám níže uvedený formulář pomůže vygenerovat soubor unattend.xml pro konkrétní spojení AD.</value>
+  </data>
+  <data name="UnattendAutoAdminLogonLabel" xml:space="preserve">
+    <value>Automatické přihlášení administrátora</value>
+  </data>
+  <data name="UnattendAutoAdminLogonText" xml:space="preserve">
+    <value>K registraci zařízení je nutné jednorázové přihlášení administrátora. Automatické přihlášení administrátora bylo zapnuto a nyní je nutné nastavit účet místního administrátora.</value>
+  </data>
+  <data name="UnattendBuildConfigFile" xml:space="preserve">
+    <value>Sestavit konfigurační soubor</value>
+  </data>
+  <data name="UnattendBuildInAdminText" xml:space="preserve">
+    <value>Toto je heslo účtu administrátora</value>
+  </data>
+  <data name="UnattendBuiltInAdminLabel" xml:space="preserve">
+    <value>Heslo administrátora</value>
+  </data>
+  <data name="UnattendComputerNameLabel" xml:space="preserve">
+    <value>Název počítače</value>
+  </data>
+  <data name="UnattendComputerNamePlaceholder" xml:space="preserve">
+    <value>Název počítače (náhodný)</value>
+  </data>
+  <data name="UnattendCreateLocalUserLabel" xml:space="preserve">
+    <value>Vytvořit místního uživatele</value>
+  </data>
+  <data name="UnattendCreateLocalUserText" xml:space="preserve">
+    <value>Výběrem „Ano“ vytvoříte dopředu účet místního uživatele. Po výběru „Ne“ bude uživatel vyzván k vytvoření účtu během registrace v prostředí prvního spuštění počítače.</value>
+  </data>
+  <data name="UnattendDomainNameLabel" xml:space="preserve">
+    <value>Název domény</value>
+  </data>
+  <data name="UnattendDomainNameText" xml:space="preserve">
+    <value>Toto je název domény, ke které bude klient připojen</value>
+  </data>
+  <data name="UnattendDomainOuLabel" xml:space="preserve">
+    <value>Organizační jednotka AD</value>
+  </data>
+  <data name="UnattendDomainOuText" xml:space="preserve">
+    <value>Musí být ve formátu "OU=,OU=,DC=firma,DC=com"</value>
+  </data>
+  <data name="UnattendDomainPasswordLabel" xml:space="preserve">
+    <value>Heslo domény</value>
+  </data>
+  <data name="UnattendDomainPasswordText" xml:space="preserve">
+    <value>Zadejte heslo účtu pro připojení do domény Active Directory.</value>
+  </data>
+  <data name="UnattendDomainUserLabel" xml:space="preserve">
+    <value>Uživatelské jméno domény</value>
+  </data>
+  <data name="UnattendDomainUserText" xml:space="preserve">
+    <value>Zadejte uživatelské jméno účtu Active Directory s oprávněním pro připojení do domény.</value>
+  </data>
+  <data name="UnattendDownloadMarkup" xml:space="preserve">
+    <value>Nedoprovázené XML</value>
+  </data>
+  <data name="UnattendDownloadPackage" xml:space="preserve">
+    <value>PPKG</value>
+  </data>
+  <data name="UnattendEnableBuiltInAdminLabel" xml:space="preserve">
+    <value>Aktivovat účet administrátora</value>
+  </data>
+  <data name="UnattendEnableBuiltInAdminText" xml:space="preserve">
+    <value>Aktivuje vestavěný účet administrátora. Tento účet je implicitně deaktivován. Když používáte Automatické přihlášení administrátora, musí být účet výchozího administrátora aktivován.</value>
+  </data>
+  <data name="UnattendFirstLogonCmdLabel" xml:space="preserve">
+    <value>Příkazy prvního přihlášení</value>
+  </data>
+  <data name="UnattendFirstLogonCmdText" xml:space="preserve">
+    <value>Můžete přidat příkazy, které budou automaticky spuštěny při prvním přihlášení uživatele. (Vyžaduje, aby uživatel měl oprávnění místního administrátora.)</value>
+  </data>
+  <data name="UnattendLocaleChineseHongKong" xml:space="preserve">
+    <value>Čínština (Hongkong)</value>
+  </data>
+  <data name="UnattendLocaleChinesePrc" xml:space="preserve">
+    <value>Čínština (Čína)</value>
+  </data>
+  <data name="UnattendLocaleChineseSimplified" xml:space="preserve">
+    <value>Čínština (zjednodušená)</value>
+  </data>
+  <data name="UnattendLocaleChineseTaiwan" xml:space="preserve">
+    <value>Čínština (Tchaj-wan)</value>
+  </data>
+  <data name="UnattendLocaleChineseTraditional" xml:space="preserve">
+    <value>Čínština (tradiční)</value>
+  </data>
+  <data name="UnattendLocaleEnglish" xml:space="preserve">
+    <value>Angličtina</value>
+  </data>
+  <data name="UnattendLocaleEnglishUk" xml:space="preserve">
+    <value>Angličtina – VB</value>
+  </data>
+  <data name="UnattendLocaleEnglishUs" xml:space="preserve">
+    <value>Angličtina – USA</value>
+  </data>
+  <data name="UnattendLocaleFrench" xml:space="preserve">
+    <value>francouzský</value>
+  </data>
+  <data name="UnattendLocaleFrenchCanada" xml:space="preserve">
+    <value>Francouzština – Kanada</value>
+  </data>
+  <data name="UnattendLocaleFrenchFrance" xml:space="preserve">
+    <value>Francouzština – Francie</value>
+  </data>
+  <data name="UnattendLocaleGerman" xml:space="preserve">
+    <value>německý</value>
+  </data>
+  <data name="UnattendLocaleItalian" xml:space="preserve">
+    <value>italský</value>
+  </data>
+  <data name="UnattendLocaleJapanese" xml:space="preserve">
+    <value>Japonština</value>
+  </data>
+  <data name="UnattendLocaleKorean" xml:space="preserve">
+    <value>Korejština</value>
+  </data>
+  <data name="UnattendLocaleLabel" xml:space="preserve">
+    <value>Oblast a klávesnice</value>
+  </data>
+  <data name="UnattendLocalePortuguese" xml:space="preserve">
+    <value>portugalský</value>
+  </data>
+  <data name="UnattendLocalePortugueseBrazil" xml:space="preserve">
+    <value>Portugalština (Brazílie)</value>
+  </data>
+  <data name="UnattendLocalePortuguesePortugal" xml:space="preserve">
+    <value>Portugalština (Portugalsko)</value>
+  </data>
+  <data name="UnattendLocaleSpanish" xml:space="preserve">
+    <value>španělský</value>
+  </data>
+  <data name="UnattendLocaleSpanishMexico" xml:space="preserve">
+    <value>Španělština – Mexiko</value>
+  </data>
+  <data name="UnattendLocaleSpanishSpain" xml:space="preserve">
+    <value>Španělština – Španělsko</value>
+  </data>
+  <data name="UnattendLocaleText" xml:space="preserve">
+    <value>Určuje dostupný vstupní jazyk a rozložení klávesnice na základě jazyka operačního systému vybraného výše.</value>
+  </data>
+  <data name="UnattendLocalUserAdminLabel" xml:space="preserve">
+    <value>Nastavit jako administrátora</value>
+  </data>
+  <data name="UnattendLocalUserAdminText" xml:space="preserve">
+    <value>„Ano“ je vyžadováno k automatickému spuštění registrace AirWatch. Během přihlašování uživatel uvidí vyskakovací okno AirWatch, ve kterém zadá přihlašovací údaje k registraci.</value>
+  </data>
+  <data name="UnattendLocalUserNameLabel" xml:space="preserve">
+    <value>Místní uživatelské jméno</value>
+  </data>
+  <data name="UnattendLocalUserNameText" xml:space="preserve">
+    <value>Toto je uživatelské jméno místního uživatele</value>
+  </data>
+  <data name="UnattendLocalUserPasswordLabel" xml:space="preserve">
+    <value>Heslo místního uživatele</value>
+  </data>
+  <data name="UnattendLocalUserPasswordText" xml:space="preserve">
+    <value>Není-li zadáno žádné heslo, systém vyzve uživatele ke změně hesla během prvního přihlášení.</value>
+  </data>
+  <data name="UnattendMediaLanguageLabel" xml:space="preserve">
+    <value>Jazyk operačního systému</value>
+  </data>
+  <data name="UnattendMediaLanguageText" xml:space="preserve">
+    <value>Vyberte jazyk instalačního média operačního systému, které bylo poskytnuto OEM prodejci</value>
+  </data>
+  <data name="UnattendModeAzureAdNoPrem" xml:space="preserve">
+    <value>Azure Active Directory – bez verze Premium</value>
+  </data>
+  <data name="UnattendModeAzureAdPrem" xml:space="preserve">
+    <value>Azure Active Directory – Premium</value>
+  </data>
+  <data name="UnattendModeWorkgroup" xml:space="preserve">
+    <value>Pracovní skupina</value>
+  </data>
+  <data name="UnattendNewCmdLabel" xml:space="preserve">
+    <value>Nový příkaz</value>
+  </data>
+  <data name="UnattendOnPremAdJoin" xml:space="preserve">
+    <value>Místní připojení Active Directory</value>
+  </data>
+  <data name="UnattendOobeSectionLabel" xml:space="preserve">
+    <value>Konfigurace registrace v prostředí prvního spuštění počítače</value>
+  </data>
+  <data name="UnattendProductKeyLabel" xml:space="preserve">
+    <value>Klíč produktu</value>
+  </data>
+  <data name="UnattendProductKeyText" xml:space="preserve">
+    <value>Kód Product Key systému Windows je posloupnost pěti písmen nebo číslic, která se pětkrát opakuje a je oddělena pomlčkami. Příklad: „12345-54CDE-XYZ78-ONM98-456TY“</value>
+  </data>
+  <data name="UnattendRegisteredOrgLabel" xml:space="preserve">
+    <value>Registrovaná organizace</value>
+  </data>
+  <data name="UnattendRegisteredOrgText" xml:space="preserve">
+    <value>Tento údaj se zobrazí v systémových informacích.</value>
+  </data>
+  <data name="UnattendRegisteredOwnerLabel" xml:space="preserve">
+    <value>Registrovaný vlastník</value>
+  </data>
+  <data name="UnattendRegisteredOwnerText" xml:space="preserve">
+    <value>Tento údaj se zobrazí v systémových informacích.</value>
+  </data>
+  <data name="UnattendRemoveConsumerAppsLabel" xml:space="preserve">
+    <value>Odstranit zákaznické aplikace Windows 10</value>
+  </data>
+  <data name="UnattendRemoveConsumerAppsText" xml:space="preserve">
+    <value>Aktivací této možnosti zabráníte zákaznickým aplikacím (např. Candy Crush), aby se objevily ve Windows 10. Možnost je podporována jen po zadání klíče produktu pro verzi Enterprise nebo Education. Vyžaduje Windows ve verzi 1511 nebo vyšší.</value>
+  </data>
+  <data name="UnattendSaveFailed" xml:space="preserve">
+    <value>Uložení balíčku selhalo, zkontrolujte obsah formuláře a zkuste to znovu.</value>
+  </data>
+  <data name="UnattendShowEulaLabel" xml:space="preserve">
+    <value>Stránka EULA</value>
+  </data>
+  <data name="UnattendShowEulaText" xml:space="preserve">
+    <value>Je-li vybrána možnost „Zobrazit“, otevře se během registrace v prostředí prvního spuštění počítače stránka s licenčními podmínkami k softwaru Microsoft.</value>
+  </data>
+  <data name="UnattendShowLocaleSettingsLabel" xml:space="preserve">
+    <value>Nastavení oblasti a klávesnice</value>
+  </data>
+  <data name="UnattendShowLocaleSettingsText" xml:space="preserve">
+    <value>Je-li vybrána možnost „Zobrazit“, otevře se během registrace v prostředí prvního spuštění počítače stránka Nastavení oblasti a klávesnice. Když vyberete možnost „Skrýt“, nebude tato stránka vidět a národní prostředí budete muset vybrat v níže uvedeném rozbalovacím seznamu.</value>
+  </data>
+  <data name="UnattendShowOnlineAccountLabel" xml:space="preserve">
+    <value>Nastavení online účtu</value>
+  </data>
+  <data name="UnattendShowOnlineAccountText" xml:space="preserve">
+    <value>Je-li vybrána možnost „Zobrazit“, zobrazí se obrazovka online účtu. V ní se uživatel může přihlásit prostřednictvím účtu Microsoftu.</value>
+  </data>
+  <data name="UnattendShowPrivacyLabel" xml:space="preserve">
+    <value>Nastavení ochrany osobních údajů</value>
+  </data>
+  <data name="UnattendShowPrivacyText" xml:space="preserve">
+    <value>Je-li vybrána možnost „Zobrazit“, bude během registrace v prostředí prvního spuštění počítače uživatel vyzván k výběru nastavení soukromí. Když vyberete možnost „Skrýt“, použijí se nastavení aplikace Express a výzva se nezobrazí.</value>
+  </data>
+  <data name="UnattendSyncCmdLabel" xml:space="preserve">
+    <value>Další synchronní příkazy</value>
+  </data>
+  <data name="UnattendSyncCmdText" xml:space="preserve">
+    <value>Zde můžete přidat příkazy, které budou automaticky spuštěny na konci přípravy Windows, ale před přihlášením uživatele</value>
+  </data>
+  <data name="UnattendSystemConfigurationSection" xml:space="preserve">
+    <value>Konfigurace systému</value>
+  </data>
+  <data name="UnattendUacAlwaysNotify" xml:space="preserve">
+    <value>Pokaždé upozornit</value>
+  </data>
+  <data name="UnattendUacDefault" xml:space="preserve">
+    <value>Výchozí nastavení</value>
+  </data>
+  <data name="UnattendUacDisabled" xml:space="preserve">
+    <value>Vypnuto</value>
+  </data>
+  <data name="UnattendUacEnableButDoNotNotify" xml:space="preserve">
+    <value>Aktivováno, ale neoznamovat</value>
+  </data>
+  <data name="UnattendUacLabel" xml:space="preserve">
+    <value>Řízení uživatelského účtu</value>
+  </data>
+  <data name="UnattendUacNotifyWithoutDimmingDesktop" xml:space="preserve">
+    <value>Oznámit bez ztmavení desktopu</value>
+  </data>
+  <data name="UnattendUacText" xml:space="preserve">
+    <value>Vyberte typ řízení uživatelského účtu</value>
+  </data>
+  <data name="UnattendValidationInvalidInput" xml:space="preserve">
+    <value>Neplatný vstup</value>
+  </data>
+  <data name="UnattendValidationMaxLength" xml:space="preserve">
+    <value>Toto pole je povinné a nesmí obsahovat více než {0} znaků.</value>
+  </data>
+  <data name="UnattendValidationNoAdminUser" xml:space="preserve">
+    <value>Musíte vytvořit místního uživatele, který je členem skupiny administrátorů, nebo aktivovat vestavěný účet administrátora.</value>
+  </data>
+  <data name="UnattendValidationProductKey" xml:space="preserve">
+    <value>Neplatný klíč Product Key</value>
+  </data>
+  <data name="UnattendValidationRequired" xml:space="preserve">
+    <value>Toto pole nesmí být prázdné.</value>
+  </data>
+  <data name="UnattendWelcome" xml:space="preserve">
+    <value>Vítejte v konfiguračním nástroji pro zřizování. Zadejte hodnoty všech povinných polí a poté se zpřístupní tlačítko sestavení konfiguračního souboru.</value>
+  </data>
+  <data name="UnattendWorkgroupLabel" xml:space="preserve">
+    <value>Pracovní skupina</value>
+  </data>
+  <data name="UnattendWorkgroupText" xml:space="preserve">
+    <value>Toto je název pracovní skupiny, ke které bude klient připojen.</value>
+  </data>
+  <data name="UnattendWs1OgLabel" xml:space="preserve">
+    <value>Organizační skupina registrace</value>
+  </data>
+  <data name="UnattendWs1OgText" xml:space="preserve">
+    <value>Toto je ID skupiny, do které patří organizační skupina registrace. Je-li zapnuto SAML, ujistěte se, že máte nastavenu samostatnou org. skupinu „Fázování“ s vypnutým SAML. ID skupiny zjistíte také umístěním ukazatele myši nad organizační skupinu v horní části konzole Workspace ONE.</value>
+  </data>
+  <data name="UnattendWs1Section" xml:space="preserve">
+    <value>Registrace ve Workspace ONE</value>
+  </data>
+  <data name="UnattendWs1ServerLabel" xml:space="preserve">
+    <value>Registrační server</value>
+  </data>
+  <data name="UnattendWs1ServerText" xml:space="preserve">
+    <value>Toto je adresa URL registračního serveru. Najdete ji v nabídce Všechna nastavení --&gt; Systém --&gt; Rozšířené --&gt; Adresy URL webu v části URL registrace MDM. Zapište jen základní část URL, například https://vmwarelab.awmdm.com.</value>
+  </data>
+  <data name="UnattendWs1StagingAccountLabel" xml:space="preserve">
+    <value>Účet fázování</value>
+  </data>
+  <data name="UnattendWs1StagingAccountPasswordLabel" xml:space="preserve">
+    <value>Heslo fázování</value>
+  </data>
+  <data name="UnattendWs1StagingAccountPasswordText" xml:space="preserve">
+    <value>„Heslo“ účtu fázování je uvedené na stejné stránce jako účet fázování. Pokud heslo obsahuje speciální znaky (&amp;, &gt; nebo &lt;), dojde k selhání pracovních postupů továrního zajištění, které používají tento účet pro registraci. Chcete-li změnit heslo, přejděte na stránku Uživatelé.</value>
+  </data>
+  <data name="UnattendWs1StagingAccountText" xml:space="preserve">
+    <value>Účet fázování, zadaný v nabídce Všechna nastavení --&gt; Zařízení a uživatelé --&gt; Windows --&gt; Windows Desktop --&gt; Fázování a zřizování v poli UPN.</value>
+  </data>
+  <data name="UnmanagedProfilesMessageLabelAny" xml:space="preserve">
+    <value>Nespravované profily</value>
+  </data>
+  <data name="USBDeviceMessageLabelAny" xml:space="preserve">
+    <value>Zařízení USB</value>
+  </data>
+  <data name="UserEnrollmentAndEnter" xml:space="preserve">
+    <value>Máte ID skupiny?</value>
+  </data>
+  <data name="UserEnrollmentNotEnabledInOg" xml:space="preserve">
+    <value>Registrace uživatele není v zadané organizační skupině povolena</value>
+  </data>
+  <data name="UserEnrollmentSettingsMessage" xml:space="preserve">
+    <value>V aplikaci nastavení vyhledejte a klepněte na možnost „Přihlásit se do vaší společnosti“.</value>
+  </data>
+  <data name="UserEnrollmentUseEmailAddress" xml:space="preserve">
+    <value>Použít e-mailovou adresu</value>
+  </data>
+  <data name="UserPasswordIsRequired" xml:space="preserve">
+    <value>Heslo je povinné</value>
+  </data>
+  <data name="Workappsprivacynoticemessagelabel" xml:space="preserve">
+    <value>Ze zařízení jsou za účelem reportování shromažďovány seznamy s názvem aplikace, verzí a stavem instalace, a to u všech pracovních aplikací doručených přes Workspace ONE.</value>
+  </data>
+</root>

@@ -1,0 +1,485 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Android7Zebra" xml:space="preserve">
+    <value>Migrar Android 7 ou versões superiores</value>
+  </data>
+  <data name="Android7ZebraDescription" xml:space="preserve">
+    <value>A migração para o trabalho gerenciado requer que os dispositivos Zebra apresentem o Android 7 ou versões superiores. Atualize seus dispositivos antes de prosseguir com a migração.</value>
+  </data>
+  <data name="AndroidEnterpriseUserAccountCreationFailed" xml:space="preserve">
+    <value>Falha na criação de conta de usuário corporativo do Android</value>
+  </data>
+  <data name="ApprovePublicApps" xml:space="preserve">
+    <value>Aprovar aplicativos públicos</value>
+  </data>
+  <data name="CertificateUpload" xml:space="preserve">
+    <value>Carregar</value>
+  </data>
+  <data name="CheckNetworkSettings" xml:space="preserve">
+    <value>Verifique suas configurações de rede para garantir que uma conexão entre o Workspace ONE e a Google Play Store seja estabelecida. {0}</value>
+    <comment>{0} will be replaced by another key with text 'here'.</comment>
+  </data>
+  <data name="ChooseMigrationType" xml:space="preserve">
+    <value>Escolha o tipo de migração do Android legado que você gostaria de criar.</value>
+  </data>
+  <data name="ClickValidate" xml:space="preserve">
+    <value>Clique em Validar para recuperar a contagem de dispositivos qualificados para a migração</value>
+  </data>
+  <data name="CommandNotSent" xml:space="preserve">
+    <value>Comando não enviado</value>
+  </data>
+  <data name="CommandQueued" xml:space="preserve">
+    <value>Comando em fila</value>
+  </data>
+  <data name="ConfirmDeleteMigrationContent" xml:space="preserve">
+    <value>A exclusão desta migração impedirá que os dispositivos na fila migrem do Android legado ao retirar a notificação persistente. O Android Enterprise não será removido dos dispositivos que já foram migrados. Tem certeza de que deseja excluir esta migração?</value>
+  </data>
+  <data name="ConfirmDeleteMigrationTitle" xml:space="preserve">
+    <value>Confirmar exclusão - {0}</value>
+    <comment>{0} will be replaced by the name of a migration</comment>
+  </data>
+  <data name="ConfirmMigrationCancel" xml:space="preserve">
+    <value>Tem certeza de que deseja cancelar esta migração?</value>
+  </data>
+  <data name="ConsistentDeviceManagement" xml:space="preserve">
+    <value>Gerenciamento de dispositivos consistente</value>
+  </data>
+  <data name="CurateApps" xml:space="preserve">
+    <value>Selecionar aplicativos no Google Play Store</value>
+  </data>
+  <data name="DeviceCountEdit" xml:space="preserve">
+    <value>{0} de {1} novos dispositivos estão qualificados para a migração</value>
+    <comment>{0} and {1} will be replaced by a number</comment>
+  </data>
+  <data name="DeviceCountStatistic" xml:space="preserve">
+    <value>{0} de {1} dispositivos estão qualificados para a migração</value>
+    <comment>{0} and {1} will be replaced by a number. 
+e.g.  4 out of 9 devices are eligible for migration</comment>
+  </data>
+  <data name="DevicePreviewDescription" xml:space="preserve">
+    <value>Uma notificação será enviada aos dispositivos elegíveis nos Grupos inteligentes selecionados informando os funcionários sobre a migração e solicitando que eles executem as ações necessárias para prosseguir. Você pode monitorar seu progresso na página de migração do Android Legacy.</value>
+  </data>
+  <data name="DevicesMigrated" xml:space="preserve">
+    <value>Dispositivos migrados</value>
+  </data>
+  <data name="DevicesNotMigratedAreNeverEffected" xml:space="preserve">
+    <value>Os dispositivos que não estão sendo migrados nunca são afetados.</value>
+  </data>
+  <data name="EasierLegacyAndroidMigration" xml:space="preserve">
+    <value>A migração da administração do Android legado para trabalho gerenciado ou perfis de trabalho nunca foi tão fácil!</value>
+  </data>
+  <data name="EligibilityStatus" xml:space="preserve">
+    <value>Status de qualificação</value>
+  </data>
+  <data name="EveryFeatureWorks" xml:space="preserve">
+    <value>Certifique-se de que todos os recursos funcionem da mesma maneira em todos os dispositivos OEM.</value>
+  </data>
+  <data name="ExprtMigrationDeviceDetail" xml:space="preserve">
+    <value>Exportar detalhes</value>
+  </data>
+  <data name="HowToGetStartedLegacyAndroidMigration" xml:space="preserve">
+    <value>Como começar</value>
+  </data>
+  <data name="IncreaseProductivity" xml:space="preserve">
+    <value>Aumente a produtividade dos funcionários</value>
+  </data>
+  <data name="InitiatedDate" xml:space="preserve">
+    <value>Data de início</value>
+  </data>
+  <data name="InvalidOgUUIDFormat" xml:space="preserve">
+    <value>Formato inválido de UUID do Grupo organizacional</value>
+  </data>
+  <data name="LearnHowToEnsureLink" xml:space="preserve">
+    <value>saiba como</value>
+    <comment>this text is part of MakeSureToApprovePublicApps {1}</comment>
+  </data>
+  <data name="LegacyAdministrationRemainsIntact" xml:space="preserve">
+    <value>A administração legada permanece intacta até que a migração seja concluída.</value>
+  </data>
+  <data name="LegacyAndroidMigrationDeviceExport" xml:space="preserve">
+    <value>Os dispositivos listados abaixo estavam em administração legada quando os Grupos inteligentes acima foram selecionados. Dispositivos adicionados a esses Grupos inteligentes no futuro aparecerão como dispositivos recém-descobertos. Consulte {0} para ver o detalhamento de todos os dispositivos que foram migrados, incluindo dispositivos de Grupos inteligentes que podem ter sido removidos.</value>
+    <comment>{0} will be replaced by another key with text 'Export Details'.</comment>
+  </data>
+  <data name="LegacyAndroidMigrationGotEasier" xml:space="preserve">
+    <value>A migração e o monitoramento da administração do Android legado para perfis de trabalho acaba de ficar mais fácil!</value>
+  </data>
+  <data name="LegacyAndroidMigrationHelpText" xml:space="preserve">
+    <value>Ajuda da migração do Android Legacy</value>
+  </data>
+  <data name="LegacyAndroidMigrationTitle" xml:space="preserve">
+    <value>Migração do Android legado</value>
+  </data>
+  <data name="LegacyAndroidMigrationWelcomeWindowDescription" xml:space="preserve">
+    <value>Migre agora para obter mais controle e consistência em todos os dispositivos OEM com segurança aprimorada e uma experiência geral melhor para funcionários com dispositivos BYOD.</value>
+  </data>
+  <data name="LockDownAllowWorkApps" xml:space="preserve">
+    <value>Bloqueie dispositivos de trabalho gerenciado com o Launcher e as restrições avançadas do dispositivo. Permita que aplicativos e dados de trabalho sejam armazenados separadamente para os dispositivos de propriedade dos funcionários.</value>
+  </data>
+  <data name="MakeSureLink" xml:space="preserve">
+    <value>aplicativo público</value>
+    <comment>this text is part of MakeSureToApprovePublicApps {0}</comment>
+  </data>
+  <data name="MakeSureToApprovePublicApps" xml:space="preserve">
+    <value>Certifique-se de que todos os aplicativos públicos sejam aprovados para sua organização {0} e veja como garantir que os funcionários tenham tudo o que precisam para se manterem produtivos {1}.</value>
+    <comment>{0} and {1} will be replaced by another key with text 'here'.</comment>
+  </data>
+  <data name="MakeSureToApprovePublicAppsWorkManaged" xml:space="preserve">
+    <value>Certifique-se de que todos os {0} sejam aprovados para sua organização e {1} garantir que os funcionários tenham tudo de que precisam para se manterem produtivos.</value>
+    <comment>{0} will be replaced by key MakeSureLink, {1} by LearnHowToEnsureLink</comment>
+  </data>
+  <data name="ManageBothApps" xml:space="preserve">
+    <value>Gerenciar aplicativos públicos e internos</value>
+  </data>
+  <data name="MigrateEveryFeature" xml:space="preserve">
+    <value>Migre dispositivos sem realizar uma redefinição ou reinicialização e certifique-se de que os recursos funcionem da mesma forma e sem problemas em todos os dispositivos do OEM.</value>
+  </data>
+  <data name="MigrateMoreControl" xml:space="preserve">
+    <value>Faça a migração com mais controle e consistência</value>
+  </data>
+  <data name="MigrateWithConfidence" xml:space="preserve">
+    <value>Migre com confiança</value>
+  </data>
+  <data name="Migrating" xml:space="preserve">
+    <value>Migração</value>
+  </data>
+  <data name="MigrationAllCompatible" xml:space="preserve">
+    <value>Todos os {0} dispositivos Android legados nos Grupos inteligentes selecionados estão qualificados para migração.</value>
+    <comment>{0} will be replaced by a number.</comment>
+  </data>
+  <data name="MigrationCertificate" xml:space="preserve">
+    <value>Certificado de migração</value>
+  </data>
+  <data name="MigrationDeleteSuccessMessage" xml:space="preserve">
+    <value>{0} foi deletada com sucesso.</value>
+    <comment>{0} will be replaced by a migration name</comment>
+  </data>
+  <data name="MigrationDescription" xml:space="preserve">
+    <value>Depois que os funcionários optarem por fazer o upgrade para o Android Enterprise, essa mensagem vai informá-los sobre a migração e solicitar que eles executem as ações necessárias para prosseguir</value>
+  </data>
+  <data name="MigrationLimitReached" xml:space="preserve">
+    <value>A migração pode ter no máximo 10 atribuições de um Grupo Inteligente</value>
+  </data>
+  <data name="MigrationMessageDescription" xml:space="preserve">
+    <value>Depois que os funcionários optarem por fazer o upgrade para o Android Enterprise, essa mensagem vai informá-los sobre a migração e solicitar que eles executem as ações necessárias para prosseguir.</value>
+  </data>
+  <data name="MigrationMessagePlaceholder" xml:space="preserve">
+    <value>Faça já o upgrade para o Android Enterprise para obter um acesso fácil e seguro a todos os seus aplicativos em um só lugar. Se decidir que não é o ideal para você, você poderá desativar esse recurso a qualquer momento. Vá para Configurações &gt; Contas &gt; Configurações do perfil de trabalho.</value>
+  </data>
+  <data name="MigrationNoDevicesCompatible" xml:space="preserve">
+    <value>Nenhum dispositivo nos Grupos inteligentes selecionados está qualificado para migração. Selecione Grupos inteligentes que incluem dispositivos Android legados para continuar.</value>
+  </data>
+  <data name="MigrationNotFound" xml:space="preserve">
+    <value>Migração não encontrada.</value>
+  </data>
+  <data name="MigrationSomeDevicesCompatible" xml:space="preserve">
+    <value>{0} de {1} dispositivos Android legados nos Grupos inteligentes selecionados são elegíveis para migração. A migração será aplicada a esses dispositivos somente se você continuar.</value>
+    <comment>{0} and {1} will be replaced by a number.</comment>
+  </data>
+  <data name="MigrationSuccessMessage" xml:space="preserve">
+    <value>{0} foi criada com sucesso.</value>
+    <comment>{0} will be replaced by a string containing the name of a new migration</comment>
+  </data>
+  <data name="MigrationTitlePlaceholder" xml:space="preserve">
+    <value>Mantenha sua vida pessoal e profissional separadas em um só dispositivo</value>
+  </data>
+  <data name="MigrationType" xml:space="preserve">
+    <value>Tipo de migração</value>
+  </data>
+  <data name="MissingCertificateError" xml:space="preserve">
+    <value>Carregue um certificado de migração</value>
+  </data>
+  <data name="MonitoringLegacyAndroidMigration" xml:space="preserve">
+    <value>Monitoramento</value>
+  </data>
+  <data name="MoreControlAndConstistency" xml:space="preserve">
+    <value>Mais controle e consistência</value>
+  </data>
+  <data name="NeedsAttention" xml:space="preserve">
+    <value>Precisa de atenção</value>
+  </data>
+  <data name="NewLegacyAndroidMigration" xml:space="preserve">
+    <value>Nova migração</value>
+  </data>
+  <data name="NewMigrationTitle" xml:space="preserve">
+    <value>Nova migração</value>
+  </data>
+  <data name="NoDevicesError" xml:space="preserve">
+    <value>Nenhum dos dispositivos nos grupos inteligentes escolhidos é compatível com a migração. Escolha dispositivos compatíveis antes de prosseguir.</value>
+  </data>
+  <data name="NoEligibleDevices" xml:space="preserve">
+    <value>Não foi encontrado nenhum dispositivo qualificado com Android legado</value>
+  </data>
+  <data name="NoEligibleDevicesEdit" xml:space="preserve">
+    <value>Não foi encontrado nenhum dispositivo novo e qualificado com Android legado</value>
+  </data>
+  <data name="NoImpactOnExistingDevices" xml:space="preserve">
+    <value>Sem impacto nos dispositivos existentes</value>
+  </data>
+  <data name="NoNewDevices" xml:space="preserve">
+    <value>Não foi encontrado nenhum dispositivo novo e qualificado com Android legado nos Grupos inteligentes selecionados.</value>
+  </data>
+  <data name="NoOgFound" xml:space="preserve">
+    <value>Nenhum grupo organizacional encontrado para o UUID do grupo organizacional fornecido.</value>
+  </data>
+  <data name="NotCompatible" xml:space="preserve">
+    <value>Não compatível</value>
+  </data>
+  <data name="NotCompleteDeviceControl" xml:space="preserve">
+    <value>Não há necessidade de controle total do dispositivo, pois os aplicativos de trabalho e seus dados são armazenados e gerenciados separadamente dos aplicativos pessoais.</value>
+  </data>
+  <data name="PreparingCommand" xml:space="preserve">
+    <value>Preparando comando</value>
+  </data>
+  <data name="Prerequisites" xml:space="preserve">
+    <value>Pré-requisitos</value>
+  </data>
+  <data name="PrerequisitesDescription" xml:space="preserve">
+    <value>Antes de migrar, verifique se você concluiu os pré-requisitos necessários a seguir para garantir que a migração seja feita de forma uniforme. Não concluí-los pode levar a falhas em migrações ou a usuários que não conseguem acessar todos os aplicativos necessários.</value>
+  </data>
+  <data name="ProvideUnifiedAppExperience" xml:space="preserve">
+    <value>Ofereça aos funcionários uma experiência mais unificada e confiável e permita que aplicativos públicos sejam instalados silenciosamente em qualquer dispositivo. Os dispositivos de trabalho gerenciado também podem instalar silenciosamente aplicativos internos.</value>
+  </data>
+  <data name="PublishedAsAPrivateApp" xml:space="preserve">
+    <value>aplicativo privado</value>
+    <comment>this text is pat of PublishInternalAppsInPlayStoreWorkManaged {0}</comment>
+  </data>
+  <data name="PublishInternalApps" xml:space="preserve">
+    <value>Publicar aplicativos internos</value>
+  </data>
+  <data name="PublishInternalAppsInPlayStore" xml:space="preserve">
+    <value>Certifique-se de que todos os aplicativos internos sejam publicados como um aplicativo privado na Google Play Store {0}. {1}</value>
+    <comment>{0} will be replaced by another key with text 'here'. 
+{1} will be replaced by another key with text 'Learn More'.</comment>
+  </data>
+  <data name="PublishInternalAppsInPlayStoreWorkManaged" xml:space="preserve">
+    <value>Certifique-se de que todos os aplicativos internos sejam publicados como {0} na Google Play Store para dispositivos com perfil de trabalho. Os aplicativos internos podem ser instalados silenciosamente por meio do Workspace ONE UEM para dispositivos de trabalho gerenciado. {1}</value>
+    <comment>{0} will be replaced by another key with text 'private app'. 
+{1} will be replaced by another key with text 'Learn More'.</comment>
+  </data>
+  <data name="PushMigrationOut" xml:space="preserve">
+    <value>Após migrações em fases bem-sucedidas, envie a migração para o restante da organização.</value>
+  </data>
+  <data name="RecreateLegacyProfiles" xml:space="preserve">
+    <value>perfis legados</value>
+    <comment>this text is part of RecreateLegacyProfilesProductsToNew {0}</comment>
+  </data>
+  <data name="RecreateLegacyProfilesProductsToNew" xml:space="preserve">
+    <value>Recrie {0} como novos perfis e crie facilmente {1} com perfis legados para dispositivos de trabalho gerenciado antes da migração.</value>
+    <comment>{0} will be replaced by RecreateLegacyProfiles and {1} by RecreateProducts</comment>
+  </data>
+  <data name="RecreateLegacyProfilesToNew" xml:space="preserve">
+    <value>Recrie perfis legacy como novos perfis antes da migração. {0}</value>
+    <comment>{0} will be replaced by another key with text 'here'.</comment>
+  </data>
+  <data name="RecreateProducts" xml:space="preserve">
+    <value>produtos</value>
+    <comment>this text is part of RecreateLegacyProfilesProductsToNew {1}</comment>
+  </data>
+  <data name="RecreateProfiles" xml:space="preserve">
+    <value>Recriar perfis</value>
+  </data>
+  <data name="RecreateProfilesAndProducts" xml:space="preserve">
+    <value>Recriar perfis e produtos</value>
+  </data>
+  <data name="RetrieveMigrationCertificate" xml:space="preserve">
+    <value>Recuperação do certificado de migração</value>
+  </data>
+  <data name="RetrieveMigrationCertificateDescription" xml:space="preserve">
+    <value>É necessário um certificado para garantir a integridade da migração. Entre em contato com o representante da Zebra para gerar um certificado para a sua empresa.</value>
+  </data>
+  <data name="RetryMigrationSuccess" xml:space="preserve">
+    <value>Uma notificação será enviada aos dispositivos selecionados sobre a migração e solicitando que eles executem uma ação para prosseguir.</value>
+  </data>
+  <data name="SeeDevicesCompleteInprogressAssigned" xml:space="preserve">
+    <value>Veja quais dispositivos estão concluídos, em andamento e atribuídos.</value>
+  </data>
+  <data name="SelectMigrationSmartGroups" xml:space="preserve">
+    <value>Selecione os grupos inteligentes que você deseja migrar.</value>
+  </data>
+  <data name="SelectMigrationType" xml:space="preserve">
+    <value>Selecionar tipo de migração</value>
+  </data>
+  <data name="SeparateWorkAndPersonalApps" xml:space="preserve">
+    <value>Mantenha os aplicativos pessoais e de trabalho separados e protegidos</value>
+  </data>
+  <data name="SetUpLegacyAndroidMigration" xml:space="preserve">
+    <value>A migração e o monitoramento tornam-se simples com as ferramentas necessárias para maximizar o controle e a consistência.</value>
+  </data>
+  <data name="SmartGroupInAccessible" xml:space="preserve">
+    <value>O Grupo inteligente não foi encontrado ou o usuário não tem acesso a ele</value>
+  </data>
+  <data name="SmartGroupMore" xml:space="preserve">
+    <value>Mais {0}</value>
+    <comment>{0} will be replaced by a number. 
+e.g.  + 5 More</comment>
+  </data>
+  <data name="TestFewDevices" xml:space="preserve">
+    <value>Teste alguns dispositivos para garantir que a migração para os dispositivos dos tenha sido bem sucedida.</value>
+  </data>
+  <data name="TestingLegacyAndroidMigration" xml:space="preserve">
+    <value>Teste</value>
+  </data>
+  <data name="TrackDeviceProgressLegacyAndroidMigration" xml:space="preserve">
+    <value>Acompanhe o progresso dos dispositivos e a integridade da migração de enviar para toda a organização.</value>
+  </data>
+  <data name="TrackProgressAndTakeAction" xml:space="preserve">
+    <value>Acompanhar progresso e tomar medidas</value>
+  </data>
+  <data name="UnassignedDevices" xml:space="preserve">
+    <value>{0} dispositivos serão removidos com base na seleção atual do Grupo inteligente.</value>
+    <comment>{0} will be replaced by a number</comment>
+  </data>
+  <data name="UnifiedAppExperience" xml:space="preserve">
+    <value>Forneça aos funcionários uma experiência de aplicativo unificada e mais confiável.</value>
+  </data>
+  <data name="UploadCertificateHelpText" xml:space="preserve">
+    <value>Selecionar certificado de migração a ser carregado</value>
+  </data>
+  <data name="UserEmailCannotBeNullOrWhitespace" xml:space="preserve">
+    <value>O campo androidWorkUserEmail não pode ser nulo ou vazio</value>
+  </data>
+  <data name="UserPasswordCannotBeNullOrWhitepsace" xml:space="preserve">
+    <value>O campo androidWorkUserPassword não pode ser nulo ou vazio</value>
+  </data>
+  <data name="Validate" xml:space="preserve">
+    <value>Validar</value>
+  </data>
+  <data name="ValidateTooltip" xml:space="preserve">
+    <value>Valida se os dispositivos com Android legado nos Grupos inteligentes selecionados existem ou não</value>
+  </data>
+  <data name="VerifyNetworkSettings" xml:space="preserve">
+    <value>Verificar configurações de rede</value>
+  </data>
+  <data name="WaitingOnUser" xml:space="preserve">
+    <value>Aguardando o usuário</value>
+  </data>
+  <data name="WhatIsMigrationFor" xml:space="preserve">
+    <value>Para que serve essa migração?</value>
+  </data>
+  <data name="WhatToExpect" xml:space="preserve">
+    <value>O que esperar</value>
+  </data>
+  <data name="WorkManagedMigrationDescription" xml:space="preserve">
+    <value>Migre dispositivos de propriedade corporativa do administrador do dispositivo para trabalho gerenciado. Requer dispositivos Zebra com Android 7 ou versões posteriores.</value>
+  </data>
+  <data name="WorkProfileMigrationDescription" xml:space="preserve">
+    <value>Migre dispositivos de propriedade pessoal do administrador do dispositivo para o perfil de trabalho.</value>
+  </data>
+</root>

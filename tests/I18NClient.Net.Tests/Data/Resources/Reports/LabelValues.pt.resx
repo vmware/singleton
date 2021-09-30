@@ -1,0 +1,240 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AcknowledgedOn" xml:space="preserve">
+    <value>Confirmado em</value>
+  </data>
+  <data name="AppAssignmentStatus" xml:space="preserve">
+    <value>Status da atribuição de aplicativo</value>
+  </data>
+  <data name="AvailableDeviceCapacity" xml:space="preserve">
+    <value>Capacidade disponível do dispositivo</value>
+  </data>
+  <data name="BackupBatteryFullLifeTime" xml:space="preserve">
+    <value>Duração total da bateria de backup</value>
+  </data>
+  <data name="BackupBatteryLifeTime" xml:space="preserve">
+    <value>Vida útil da bateria de backup</value>
+  </data>
+  <data name="BatteryFullLifeTime" xml:space="preserve">
+    <value>Vida útil de bateria cheia</value>
+  </data>
+  <data name="BatterymAHourConsumed" xml:space="preserve">
+    <value>Consumo de mAh da bateria</value>
+  </data>
+  <data name="BillingCycle" xml:space="preserve">
+    <value>Ciclo de faturamento</value>
+  </data>
+  <data name="ConsoleAppName" xml:space="preserve">
+    <value>Nome do aplicativo de console</value>
+  </data>
+  <data name="ContentImportance" xml:space="preserve">
+    <value>Importância do conteúdo</value>
+  </data>
+  <data name="ContentPriority" xml:space="preserve">
+    <value>Prioridade do conteúdo</value>
+  </data>
+  <data name="ContentSizeinKB" xml:space="preserve">
+    <value>Tamanho do conteúdo em KB</value>
+  </data>
+  <data name="ContentVersion" xml:space="preserve">
+    <value>Versão do conteúdo</value>
+  </data>
+  <data name="CoreUser" xml:space="preserve">
+    <value>Usuário principal</value>
+  </data>
+  <data name="DataProtectionStatus" xml:space="preserve">
+    <value>Status da proteção de dados</value>
+  </data>
+  <data name="DataUsageInKB" xml:space="preserve">
+    <value>Uso de dados em KB</value>
+  </data>
+  <data name="DateUnenrolled" xml:space="preserve">
+    <value>Registro de data cancelado</value>
+  </data>
+  <data name="DaysOffline" xml:space="preserve">
+    <value>Dias offline</value>
+  </data>
+  <data name="DaysUntilExpires" xml:space="preserve">
+    <value>Dias até expirar</value>
+  </data>
+  <data name="FileSizeLimitExceed" xml:space="preserve">
+    <value>O tamanho do arquivo excede o limite</value>
+  </data>
+  <data name="FileSizeLimitExceedHelp" xml:space="preserve">
+    <value>A criação do arquivo excedeu o limite de tamanho.</value>
+  </data>
+  <data name="IsAcknowledged" xml:space="preserve">
+    <value>É confirmado</value>
+  </data>
+  <data name="IsActivationLockEnabled" xml:space="preserve">
+    <value>O Bloqueio da ativação está habilitado?</value>
+  </data>
+  <data name="IsCloudBackupEnabled" xml:space="preserve">
+    <value>O Backup na nuvem está habilitado?</value>
+  </data>
+  <data name="IsSupervised" xml:space="preserve">
+    <value>Está supervisionado?</value>
+  </data>
+  <data name="LastModifiedDate" xml:space="preserve">
+    <value>Data da última modificação</value>
+  </data>
+  <data name="LoginDate" xml:space="preserve">
+    <value>Data de acesso</value>
+  </data>
+  <data name="MaxOperatingSystemName" xml:space="preserve">
+    <value>Nome máximo do sistema operacional</value>
+  </data>
+  <data name="MDMManagedYN" xml:space="preserve">
+    <value>O MDM é gerenciado</value>
+  </data>
+  <data name="MinOperatingSystemName" xml:space="preserve">
+    <value>Nome mínimo do sistema operacional</value>
+  </data>
+  <data name="NewReportCertificateNearExpiration" xml:space="preserve">
+    <value>Certificado gerenciado está prestes a expirar</value>
+  </data>
+    <data name="NewReportCertificateNearExpirationHelp" xml:space="preserve">
+    <value>Exibir uma lista de dispositivos com certificados gerenciados que estão prestes a expirar. Ela inclui certificados cujo gerenciamento de ciclo de vida é controlado pelo Workspace ONE UEM, por exemplo, emissão, renovação, revogação etc.</value>
+  </data>
+  <data name="OrganizationGroupIDName" xml:space="preserve">
+    <value>ID do grupo organizacional Nome</value>
+  </data>
+  <data name="PayloadRemovalDisallowed" xml:space="preserve">
+    <value>Remoção de Payload não permitida</value>
+  </data>
+  <data name="PendingInstalls" xml:space="preserve">
+    <value>Instalação pendente</value>
+  </data>
+  <data name="ProfileGroupType" xml:space="preserve">
+    <value>Tipo de perfil de grupo</value>
+  </data>
+  <data name="ReportMaxFileSizeLimitMessage" xml:space="preserve">
+    <value>Qualquer relatório que exceda o limite do tamanho de arquivo definido de {0} GB será encerrado no momento do processamento. </value>
+  </data>
+  <data name="SelectedValue" xml:space="preserve">
+    <value>Valor selecionado</value>
+  </data>
+  <data name="SelectedValues" xml:space="preserve">
+    <value>Valores selecionados</value>
+  </data>
+  <data name="UserExtendedPropertiesEnabled" xml:space="preserve">
+    <value>Permitir propriedades estendidas do usuário</value>
+  </data>
+</root>

@@ -1,0 +1,556 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ActivateHubServices" xml:space="preserve">
+    <value>Hub Hizmetlerini Etkinleştir</value>
+  </data>
+  <data name="ActivateHubServicesDescription" xml:space="preserve">
+    <value>Hub Hizmetleri, Workspace ONE Access tarafından bulut ortamında barındırılır. Etkinleştirmek için Workspace ONE Access Bulut Kiracınız hakkında ayrıntıları sağlayın veya aşağıdan bir bulut kiracısı isteyin. Bulut Kiracınızı bilmiyorsanız bu bilgileri VMware'den aldığınız e-postada bulabilir veya bu bilgileri bulamazsanız bir destek bileti oluşturabilirsiniz.</value>
+  </data>
+  <data name="ActivateHubServicesGeneralDescription" xml:space="preserve">
+    <value>Hub Hizmetleri, Workspace ONE Access'in içinde yer alır. Yapılandırmak için Workspace ONE Access Kiracınızın bilgilerini aşağı girin. Kiracınızı tanımıyorsanız bilgilerini VMware'den aldığınız e-postada bulabilir ya da bu bilgileri bulamıyorsanız bir destek bileti gönderebilirsiniz.</value>
+  </data>
+  <data name="ActivateHubServicesGeneralNote" xml:space="preserve">
+    <value>Note: Workspace ONE Access'i yapılandırmadan Hub Hizmetlerinin belirli özelliklerini kullanabilirsiniz.</value>
+  </data>
+  <data name="ActivateHubServicesNote" xml:space="preserve">
+    <value>Not: Hub Kataloğu özellikleri, bağlayıcılar oluşturulmadan veya Active Directory senkronize edilmeden kullanılabilir.</value>
+  </data>
+  <data name="AdministratorDetails" xml:space="preserve">
+    <value>Yönetici Ayrıntıları</value>
+  </data>
+  <data name="ArgOrganizationGroups" xml:space="preserve">
+    <value>{0} Organizasyon Grupları</value>
+    <comment>{0} will be integer</comment>
+  </data>
+  <data name="AuthenticationSourceSettingsFetchFailedError" xml:space="preserve">
+    <value>Kimlik doğrulama kaynak ayarları alınamadı.</value>
+  </data>
+  <data name="Avenger" xml:space="preserve">
+    <value>Android Avenger</value>
+  </data>
+  <data name="BluetoothLocationServiceHubPassport" xml:space="preserve">
+    <value>*Çalışanların aygıtlarında Bluetooth ve en iyi sonuçlar için Konum Hizmetleri etkinleştirilmelidir.</value>
+  </data>
+  <data name="CatalogSettings" xml:space="preserve">
+    <value>Katalog Ayarları</value>
+  </data>
+  <data name="CatalogSettingsDescription" xml:space="preserve">
+    <value>Hub, aşağıdaki ayarlara bağlı olarak entegre edilmiş bir uygulama kataloğu gösterecek.</value>
+  </data>
+  <data name="CloudTenant" xml:space="preserve">
+    <value>Bulut Kiracısı</value>
+  </data>
+  <data name="CloudTenantAlreadyConfigured" xml:space="preserve">
+    <value>Workspace ONE Access için zaten bir Bulut Kiracısı yapılandırıldı.</value>
+  </data>
+  <data name="CloudTenantHelpText" xml:space="preserve">
+    <value>Bulut Kiracınız yok mu? Hemen bir Workspace ONE Access Bulut Kiracısı talep edebilirsiniz.</value>
+  </data>
+  <data name="CloudTenantHostedInOneOfTheRegion" xml:space="preserve">
+    <value>Bulut kiracınız aşağıdaki bölgelerden birinde barındırılabilir. Kurumunuzun uyumluluğunu, güvenliğini ve genel iş gereksinimlerini en iyi şekilde karşılayanı seçin.</value>
+  </data>
+  <data name="CloudTenantSameAsExisting" xml:space="preserve">
+    <value>Bulut Kiracısı mevcut kiracıyla aynı. Devam etmek için kaydedin.</value>
+  </data>
+  <data name="CloudTenantSuccessfullyCreatedActivateHubServices" xml:space="preserve">
+    <value>Bulut Kiracınız başarıyla oluşturuldu. Hub Hizmetlerini etkinleştirmek için Başlayın'a tıklayarak, e-posta ile aldığınız Workspace ONE Access Bulut Kiracınız ile ilgili ayrıntıları belirtin.</value>
+  </data>
+  <data name="CloudTenantUrl" xml:space="preserve">
+    <value>Bulut Kiracısı URL'si</value>
+  </data>
+  <data name="CollectLocationDataTooltip" xml:space="preserve">
+    <value>Çalışanlardan GPS konum verilerinin toplanmasına izin vermelerini isteyin.</value>
+  </data>
+  <data name="ConfigurationOverwrite" xml:space="preserve">
+    <value>Yapılandırma Üzerine Yaz</value>
+  </data>
+  <data name="ConsiderUpdatingArgLanguage" xml:space="preserve">
+    <value>Çalışanlara için {0} dilini uygun şekilde güncellemeyi düşünebilirsiniz.</value>
+    <comment>{0} will be "Terms of Use"</comment>
+  </data>
+  <data name="DeviceDatafromGoogleNotReceived" xml:space="preserve">
+    <value>Google'dan aygıt verileri alınmadı. Çözmek için IT yöneticinizle iletişime geçin.</value>
+  </data>
+  <data name="DifferentVidmTenantConfiguredAtCurrentOg" xml:space="preserve">
+    <value>Bu Organizasyon Grubunda farklı bir Workspace ONE Access Kiracısı yapılandırılmış.</value>
+  </data>
+  <data name="DisabledByDefault" xml:space="preserve">
+    <value>Varsayılan olarak devre dışı bırakıldı</value>
+  </data>
+  <data name="DisableManagedAppNotAcceptable" xml:space="preserve">
+    <value>Lütfen geçerli bir Uygulama Tanımlayıcısı girin.</value>
+  </data>
+  <data name="DisplayPrivacyDialogTooltip" xml:space="preserve">
+    <value>İlk başlangıcın ardından standart gizlilik ekranını görüntüler.</value>
+  </data>
+  <data name="DownloadLatestMacOsHubVersion" xml:space="preserve">
+    <value>Son Sürümü İndir</value>
+  </data>
+  <data name="EditHidPassportServiceSettings" xml:space="preserve">
+    <value>HID Passport Hizmeti Ayarlarını Düzenle</value>
+  </data>
+  <data name="EditHidPassportServiceSettingsHelp" xml:space="preserve">
+    <value>HID Passport Hizmeti ayarlarını düzenleme erişimini kontrol eder.</value>
+  </data>
+  <data name="EnableAutomaticUpdates" xml:space="preserve">
+    <value>Otomatik Güncelleştirmeler</value>
+  </data>
+  <data name="EnableAutomaticUpdatesTooltip" xml:space="preserve">
+    <value>Herhangi bir güncellemenin olup olmadığını otomatik kontrol eder. Devre dışı bırakıldığında, Hub içerisinde güncelleme olup olmadığını çalışanların manuel olarak kontrol etmesi gerekir.</value>
+  </data>
+  <data name="EnableAwcmTooltip" xml:space="preserve">
+    <value>AirWatch Cloud Messaging (AWCM) sunucu ile Hub arasında gerçek zamanlı iletişim sağlar. Devre dışı bırakıldığında, planlanmış bir sonraki giriş aralığına kadar Hub komut ve örnekleri almaz.</value>
+  </data>
+  <data name="EnableConfigureHubPassportDescription" xml:space="preserve">
+    <value>Çalışanların, iOS ve Android aygıtlarını sanal erişim kimlik kartları olarak kullanıp kurumsal ofislere erişmelerine izin vermek için Hub Hizmetleri'nde Hub Passport'u etkinleştirip yapılandırın.</value>
+  </data>
+  <data name="EnabledByDefault" xml:space="preserve">
+    <value>Varsayılan olarak etkin</value>
+  </data>
+  <data name="EnableHubExperienceModeInfo" xml:space="preserve">
+    <value>Bu Organizasyon Grubunda yer alan aygıtların Uygulama Kataloğu ve Kişiler gibi özellikler için Workspace ONE Hub Hizmetlerine bağlanmasına izin vermek için Etkin'i seçin.</value>
+  </data>
+  <data name="EnableMacOsHubDownloadAfterEnrollment" xml:space="preserve">
+    <value>Kayıttan Sonra Hub'ı Yükle</value>
+  </data>
+  <data name="EnableMacOsHubDownloadAfterEnrollmentTooltip" xml:space="preserve">
+    <value>DEP veya Web yoluyla kayıt yapıldıktan sonra Hub'ı otomatik yükler.</value>
+  </data>
+  <data name="EnforcePasscodePolicyTooltip" xml:space="preserve">
+    <value>Çalışanlardan MDM profil gereksinimlerine uygun yeni bir parola oluşturmalarını ister. Devre dışı bırakıldığında, çalışanlardan bunu yalnızca oturum kapatılırken ve tekrar açılırken ister.</value>
+  </data>
+  <data name="ExcludesOrganizationGroups" xml:space="preserve">
+    <value>Hariç Tutulan Organizasyon Grupları</value>
+  </data>
+  <data name="FailedToRetrieveAvailableHostingRegionsContactSupport" xml:space="preserve">
+    <value>Workspace ONE Access kiracısı için mevcut barındırma bölgeleri alınamadı. Lütfen daha sonra tekrar deneyin. Sorun devam ederse lütfen destek birimi ile iletişime geçin.</value>
+  </data>
+  <data name="GeneratingCloudTenant" xml:space="preserve">
+    <value>Bulut Kiracısı Oluşturma</value>
+  </data>
+  <data name="HubCatalogAndroid" xml:space="preserve">
+    <value>Hub Kataloğu (Android)</value>
+  </data>
+  <data name="HubCatalogIos" xml:space="preserve">
+    <value>Hub Kataloğu (iOS)</value>
+  </data>
+  <data name="HubCatalogMacos" xml:space="preserve">
+    <value>Hub Kataloğu (macOS)</value>
+  </data>
+  <data name="HubCatalogSettingsFetchFailedError" xml:space="preserve">
+    <value>Hub kataloğu etkinleştirme modu ayarları alınamadı.</value>
+  </data>
+  <data name="HubCatalogWinRT" xml:space="preserve">
+    <value>Hub Kataloğu (Windows)</value>
+  </data>
+  <data name="HubEnabledSelectedOg" xml:space="preserve">
+    <value>Hub Passport ayarları seçilen organizasyon grubu için zaten etkinleştirildi.</value>
+  </data>
+  <data name="HubIntegration" xml:space="preserve">
+    <value>Hub Entegrasyonu</value>
+  </data>
+  <data name="HubPassport" xml:space="preserve">
+    <value>Hub Passport</value>
+  </data>
+  <data name="HubPassportDescription" xml:space="preserve">
+    <value>Hub Passport, çalışanların iOS ve Android aygıtlarını sanal erişim kimlik kartları olarak kullanıp kurumsal ofislere erişmelerini sağlar ve Hub Hizmetleri'nde etkinleştirilmelidir. Bu özelliğe erişimi yönetmek için Organizasyon Grupları'nı seçin.</value>
+  </data>
+  <data name="HubPassportEnabledAtChildArgOgInfo" xml:space="preserve">
+    <value>Seçili OG alt öğeleri seçime zaten eklenmiş. Üst öğeyi seçmek için {0} öğesini kaldırın.</value>
+    <comment>{0} will be list of Organization groups name</comment>
+  </data>
+  <data name="HubPassportEnabledAtParentArgOgInfo" xml:space="preserve">
+    <value>Seçilen OG, {0} öğesinin alt öğesi olarak zaten eklenmiş.</value>
+    <comment>{0} will be Organization group name</comment>
+  </data>
+  <data name="HubPassportSettingChildOgDescription" xml:space="preserve">
+    <value>Hub Passport işlevselliği etkinleştirildikten sonra otomatik olarak Organizasyon Grubu'nuza ve tüm alt gruplarına varsayılan olarak uygulanacaktır. Bununla birlikte, bu işlevselliği belirli Organizasyon Grupları ile sınırlandırmak isterseniz bu grupları aşağıdan seçebilirsiniz.</value>
+  </data>
+  <data name="HubServicesActivatedLaunchHubServicesToConfigure" xml:space="preserve">
+    <value>Hub Hizmetleri başarıyla etkinleştirildi. Yapılandırılacak Hub Hizmetlerini şimdi başlatabilirsiniz.</value>
+  </data>
+  <data name="HubServicesActivationInfo" xml:space="preserve">
+    <value>Aşağıdaki entegrasyon seçeneklerini etkinleştirmek için Intelligent Hub yapılandırma sayfasından Hub Hizmetlerini yapılandırın.</value>
+  </data>
+  <data name="HubServicesFeature" xml:space="preserve">
+    <value>Intelligent Hub içinde Hub Hizmetleri Özelliklerini Kullanın</value>
+  </data>
+  <data name="HubServicesFeaturesSettingsFetchFailedError" xml:space="preserve">
+    <value>Hub hizmetleri özellikleri ayarları alınamadı</value>
+  </data>
+  <data name="HubServicesGeneralNote" xml:space="preserve">
+    <value>Not: Bildirimler ve Kişiler özellikleri, yalnızca Bulut Hub Hizmetleri ve Access Kiracısı kapsamında kullanılabilir.</value>
+  </data>
+  <data name="HubServicesHostingDescription" xml:space="preserve">
+    <value>Hub Hizmetleri, Workspace ONE Access tarafından bulut ortamında barındırılır.</value>
+  </data>
+  <data name="HubServicesHostingGeneralDescription" xml:space="preserve">
+    <value>Hub Hizmetleri, Workspace ONE Access'in içinde yer alır.</value>
+  </data>
+  <data name="HubServicesSuccessfullyReactivatedLaunchHubServicesToConfigureIntelligentHubExperience" xml:space="preserve">
+    <value>Hub Hizmetleri başarıyla yeniden etkinleştirildi. Intelligent Hub deneyimini yapılandırmak için Hub Hizmetlerini şimdi başlatabilirsiniz.</value>
+  </data>
+  <data name="HubServicesURL" xml:space="preserve">
+    <value>Hub Hizmetleri URL'si</value>
+  </data>
+  <data name="HubServicesURLSaveError" xml:space="preserve">
+    <value>Hub hizmetleri yapılandırma URL'si kaydedilemedi.</value>
+  </data>
+  <data name="HubSettingsConfiguredSuccess" xml:space="preserve">
+    <value>Hub Passport ayarları başarıyla kaydedildi.</value>
+  </data>
+  <data name="HubSettingsInvalidInputError" xml:space="preserve">
+    <value>Bu Organizasyon Grubunun kaynakları bulunamadı veya bu kullanıcının bu Organizasyon Grubuna erişimi yok.</value>
+  </data>
+  <data name="HubSettingsUnauthorizedAccessError" xml:space="preserve">
+    <value>Yetkisiz erişim.</value>
+  </data>
+  <data name="IDMAuthentication" xml:space="preserve">
+    <value>Workspace ONE Access</value>
+  </data>
+  <data name="IncorrectEmailAddress" xml:space="preserve">
+    <value>E-posta Adresi geçerli değil. Lütfen E-posta Adresi formatını kontrol edip tekrar deneyin.</value>
+  </data>
+  <data name="InvalidCloudTenantUrl" xml:space="preserve">
+    <value>Geçersiz URL. Devam etmek için Workspace ONE Access Bulut Kiracısı URL'nizi girin.</value>
+  </data>
+  <data name="InvalidFirstName" xml:space="preserve">
+    <value>Geçersiz Ad. Lütfen tekrar deneyin.</value>
+  </data>
+  <data name="InvalidLastName" xml:space="preserve">
+    <value>Geçersiz Soyadı. Lütfen tekrar deneyin.</value>
+  </data>
+  <data name="InvalidPasswordTryAgain" xml:space="preserve">
+    <value>Geçersiz Parola. Lütfen tekrar deneyin.</value>
+  </data>
+  <data name="InvalidUserNameErrorMessage" xml:space="preserve">
+    <value>Geçersiz kullanıcı adı. Lütfen kullanıcı adını değiştirin ve tekrar deneyin.</value>
+  </data>
+  <data name="InvalidUserNamePleaseTryAgain" xml:space="preserve">
+    <value>Geçersiz kullanıcı adı. Lütfen tekrar deneyin.</value>
+  </data>
+  <data name="InvalidUsernameTryAgain" xml:space="preserve">
+    <value>Geçersiz kullanıcı adı. Lütfen tekrar deneyin.</value>
+  </data>
+  <data name="macOSCheckInIntervalTooltip" xml:space="preserve">
+    <value>Frekans Hub'ını, yeni komutlar almak üzere sunucuya giriş yapacak biçimde ayarlar.</value>
+  </data>
+  <data name="MacOsCollectAnalytics" xml:space="preserve">
+    <value>Analiz Toplama</value>
+  </data>
+  <data name="MacOsCollectCrashReports" xml:space="preserve">
+    <value>Çökme Raporu Almayı İste</value>
+  </data>
+  <data name="MacOsCollectLocationData" xml:space="preserve">
+    <value>Konum Verisi Almayı İste</value>
+  </data>
+  <data name="macOsEnforcePasscode" xml:space="preserve">
+    <value>Parolayı Zorunlu Hale Getirme</value>
+  </data>
+  <data name="MacOsPrivacyLink" xml:space="preserve">
+    <value>Gizlilik Bağlantısı</value>
+  </data>
+  <data name="MacOsRequestPermission" xml:space="preserve">
+    <value>İzin İste</value>
+  </data>
+  <data name="macOSSampleIntervalTooltip" xml:space="preserve">
+    <value>Frekans Hub'ını, ürün provizyonlama durumu, disk şifreleme durumu, özel öznitelikler, GPS konumu ve diğer temel sistem bilgileri gibi verileri toplamak üzere aygıtları tarayacak biçimde ayarlar.</value>
+  </data>
+  <data name="MacOsShowPrivacyScreen" xml:space="preserve">
+    <value>Gizlilik Ekranını Göster</value>
+  </data>
+  <data name="macOSTransmitIntervalTooltip" xml:space="preserve">
+    <value>Frekans Hub'ını, Hub UEM sunucusuna veri örneklerini gönderecek biçimde ayarlar.</value>
+  </data>
+  <data name="MacOsUninstallHub" xml:space="preserve">
+    <value>Ayrıcalıkları Kaldır</value>
+  </data>
+  <data name="MacOsVMwareWorkspaceONEIntelligentHub" xml:space="preserve">
+    <value>VMware Workspace ONE Intelligent Hub</value>
+  </data>
+  <data name="ManagementModeDescription" xml:space="preserve">
+    <value>Aygıtların MDM yönetimi olmadan kaydolmasını sağlar (Çalışma Alanı kayıtlıdır).</value>
+  </data>
+  <data name="ManagementModeSettingsFetchFailedError" xml:space="preserve">
+    <value>Kapsayıcı mod ayarları alınamadı.</value>
+  </data>
+  <data name="OptInFlowAlreadyCompletedInformationMessage" xml:space="preserve">
+    <value>Workspace ONE Access, mevcut organizasyon grubu için zaten yapılandırılmış. Lütfen IT yöneticinizle iletişime geçin.</value>
+  </data>
+  <data name="OrganizationGroupNotFoundError" xml:space="preserve">
+    <value>Organizasyon grubu bulunamadı.</value>
+  </data>
+  <data name="OrganizationGroupRestrictedError" xml:space="preserve">
+    <value>Bu Organizasyon Grubunun kaynakları bulunamadı veya bu kullanıcının bu Organizasyon Grubuna erişimi yok.</value>
+  </data>
+  <data name="PickARegion" xml:space="preserve">
+    <value>Bölge Seç</value>
+  </data>
+  <data name="PickDataCenterLocation" xml:space="preserve">
+    <value>Veri Merkezi Konumunu Seç</value>
+  </data>
+  <data name="PleaseWaitWhileYourCloudTenantIsCreated" xml:space="preserve">
+    <value>Bulut Kiracınız oluşturulurken lütfen birkaç dakika bekleyin.</value>
+  </data>
+  <data name="PolicyAllowCrashReportingTooltip" xml:space="preserve">
+    <value>Çökme Raporlarını toplar ve otomatik olarak sunucuya gönderir.</value>
+  </data>
+  <data name="PrivacyPolicyLinkTooltip" xml:space="preserve">
+    <value>Gizlilik ekranını, VMware gizlilik sayfası dışında farklı bir bağlantıya yönlendirir.</value>
+  </data>
+  <data name="ProvideInformationBelowToRequestAdministratorAccessAndvIDMCloudTenant" xml:space="preserve">
+    <value>Birkaç dakika içinde e-posta yoluyla alacağınız yönetici erişimi ve bir Workspace ONE Access Bulut Kiracısı istemek için bilgileri aşağıya girin.</value>
+  </data>
+  <data name="ReadAndAcceptHubServicesTOS" xml:space="preserve">
+    <value>Hub Hizmetlerini kullanmak için aşağıdaki hizmet koşullarını okuyup kabul edin.</value>
+  </data>
+  <data name="ReconfigureHubServices" xml:space="preserve">
+    <value>Hub Hizmetlerini Yeniden Yapılandırma</value>
+  </data>
+  <data name="ReconfigureHubServicesDescription" xml:space="preserve">
+    <value>Hub Hizmetleri, Workspace ONE Access tarafından bulut ortamında barındırılır. Yeniden yapılandırmak için aşağıda Workspace ONE Access Bulut Kiracınız hakkında ayrıntıları sağlayın. Bulut Kiracınızı bilmiyorsanız bu bilgileri VMware'den aldığınız e-postada bulabilir veya bu bilgileri bulamazsanız bir destek bileti oluşturabilirsiniz.</value>
+  </data>
+  <data name="ReconfigureHubServicesGeneralDescription" xml:space="preserve">
+    <value>Hub Hizmetleri, Workspace ONE Access'in içinde yer alır. Yeniden yapılandırmak için Workspace ONE Access Kiracınızın bilgilerini aşağı girin. Kiracınızı tanımıyorsanız bilgilerini VMware'den aldığınız e-postada bulabilir ya da bu bilgileri bulamıyorsanız bir destek bileti gönderebilirsiniz.</value>
+  </data>
+  <data name="RequestCloudTenant" xml:space="preserve">
+    <value>Bulut Kiracısı İste</value>
+  </data>
+  <data name="RequestCloudTenantInfo" xml:space="preserve">
+    <value>Not: Mevcut veri merkezi servis sağlayıcınızdan farklı olabilecek ve başka bir ülkede bulunabilecek bulut kiracısı için veri merkezi bağlantısı gerekir.</value>
+  </data>
+  <data name="RequireGroupIdForVidmWithoutLink" xml:space="preserve">
+    <value>Bu Organizasyon Grubunun, Workspace ONE Access kurulumu için gereken Grup Kimliği yoktur. Grup Kimliğini Organizasyon Grubu ayrıntıları sayfasında ekleyebilirsiniz.</value>
+  </data>
+  <data name="SaveFailedTryAgain" xml:space="preserve">
+    <value>Kaydetme başarısız oldu. Lütfen tekrar deneyin.</value>
+  </data>
+  <data name="SdkProfileV2" xml:space="preserve">
+    <value>SDK Profili</value>
+  </data>
+  <data name="SourceOfAuthentication" xml:space="preserve">
+    <value>Kimlik Doğrulama Kaynağı</value>
+  </data>
+  <data name="SourceOfAuthenticationDescription" xml:space="preserve">
+    <value>Hub, kimlik doğrulama için aşağıda seçilen sağlayıcıyı kullanır.</value>
+  </data>
+  <data name="SourceOfAuthenticationForHub" xml:space="preserve">
+    <value>Hub için Kimlik Doğrulama Kaynağı</value>
+  </data>
+  <data name="StartTypeToAddGroup" xml:space="preserve">
+    <value>Bir grup eklemek için yazmaya başlayın</value>
+  </data>
+  <data name="TechnicalErrorOccurredPleaseContactAdministrator" xml:space="preserve">
+    <value>Teknik bir hata oluştu. Lütfen tekrar deneyin. Sorun devam ederse lütfen IT yöneticiniz ile iletişime geçin.</value>
+  </data>
+  <data name="TenantAlreadyConfigured" xml:space="preserve">
+    <value>Workspace ONE Access için bir Kiracı yapılandırıldı.</value>
+  </data>
+  <data name="TenantNameWillBeCreatedBasedOnOG" xml:space="preserve">
+    <value>Oturum açan mevcut Organizasyon Grubu adına dayalı olarak oluşturulacak kiracı adı aşağıdadır.</value>
+  </data>
+  <data name="TenantUrlLabel" xml:space="preserve">
+    <value>Kiracı URL</value>
+  </data>
+  <data name="TermsOfService" xml:space="preserve">
+    <value>Hizmet Şartları</value>
+  </data>
+  <data name="TermsOfServices" xml:space="preserve">
+    <value>Hizmet Şartları</value>
+  </data>
+  <data name="UEMAirwatch" xml:space="preserve">
+    <value>UEM (AirWatch)</value>
+  </data>
+  <data name="UninstallAgentTooltip" xml:space="preserve">
+    <value>Çalışanlara, Hub uygulamasını aygıtlarından kaldırma yetkisi verir.</value>
+  </data>
+  <data name="UpgradeSilentlyTooltip" xml:space="preserve">
+    <value>Yükseltmeler, çalışanlara sorulmadan arka planda otomatik yüklenir. Devre dışı bırakılması durumunda, çalışanlardan yeni güncellemeler kullanılabilir olduğunda yükseltmeleri istenir.</value>
+  </data>
+  <data name="UseHubServicesFeatures" xml:space="preserve">
+    <value>Hub Hizmetleri Özelliklerini Kullanın</value>
+  </data>
+  <data name="UserNameLabel" xml:space="preserve">
+    <value>Kullanıcı Adı</value>
+  </data>
+  <data name="VidmConfigOverwriteNote" xml:space="preserve">
+    <value>Not: Workspace ONE uygulamasını mevcut yapılandırmanızla kullanıyorsanız kayıtlı çalışanlar etkilenmez. Ancak yeni çalışanlar yalnızca Intelligent Hub uygulamasını kullanabilir.</value>
+  </data>
+  <data name="VidmConfigRemoveWarning" xml:space="preserve">
+    <value>Mevcut Workspace ONE Access yapılandırmanız, yeni girdiğiniz bilgilerle değiştirilecek.</value>
+  </data>
+  <data name="VidmConfigRemoveWarningDescription" xml:space="preserve">
+    <value>Workspace ONE uygulamasını mevcut yapılandırmanızla kullanıyorsanız kayıtlı çalışanlar etkilenmez. Ancak yeni çalışanlar, yalnızca Intelligent Hub uygulamasını kullanabilir.</value>
+  </data>
+  <data name="VidmConfigReplacedWithNewCloudTenantWarning" xml:space="preserve">
+    <value>Workspace ONE Access yapılandırmanız, bu isteği tamamlamanızın ardından yeni Bulut Kiracınız ile değiştirilecek.</value>
+  </data>
+  <data name="VIDMConfigureCertificateError" xml:space="preserve">
+    <value>Workspace ONE UEM hizmet hesabı için sertifika oluşturulamadı. Workspace ONE Access ayarları yapılandırılamıyor.</value>
+  </data>
+  <data name="VIDMConfigureExistingUEMSettingError" xml:space="preserve">
+    <value>Workspace ONE Access kiracınızdan Workspace ONE UEM yapılandırması ayrıntıları alınırken bir hata oluşmuş gibi görünüyor. Lütfen bu ayarları kontrol edin ve devam etmek için tekrar deneyin.</value>
+  </data>
+  <data name="VIDMConfigureUEMSettingsError" xml:space="preserve">
+    <value>Workspace ONE Access kiracınızda Workspace ONE UEM ayarları yapılandırılırken bir hata oluşmuş gibi görünüyor. Devam etmek için lütfen tekrar deneyin.</value>
+  </data>
+  <data name="VidmImpactedConfigDescription" xml:space="preserve">
+    <value>Workspace ONE Access gerektiren Hub Hizmetleri özelliklerini kullanmak için yeni Workspace ONE Access örneğinizi geçerli tüm yapılandırmalarla yeniden yapılandırmanız gerekir. Etkilenen yapılandırmaların tam listesi için Workspace ONE Hub Services Guide'daki (Workspace ONE Hub Hizmetleri Kılavuzu) bu {0} içeriğine bakın.</value>
+  </data>
+  <data name="VIDMInvalidOGTypeError" xml:space="preserve">
+    <value>Workspace ONE Access yalnızca Organizasyon Grubu müşteri türünde yapılandırılabilir.</value>
+  </data>
+  <data name="VIDMInvalidSettingsError" xml:space="preserve">
+    <value>Workspace ONE Access Bulut Kiracısı kimlik bilgileri geçersiz. VMware'den kimlik bilgilerinizi içeren bir e-posta almış olmanız gerekir. Bu bilgileri bulamazsanız bir destek bileti oluşturun.</value>
+  </data>
+  <data name="VidmNotConfiguredError" xml:space="preserve">
+    <value>Workspace ONE Access, istenen Organizasyon Grubu için yapılandırılmamış.</value>
+  </data>
+  <data name="VidmTenantRemoveFailed" xml:space="preserve">
+    <value>Mevcut Workspace ONE Access kiracı yapılandırması kaldırılamadı.</value>
+  </data>
+  <data name="ViewHidPassportServiceSettings" xml:space="preserve">
+    <value>HID Passport Hizmet Ayarlarını Görüntüle</value>
+  </data>
+  <data name="ViewHidPassportServiceSettingsHelp" xml:space="preserve">
+    <value>HID Passport Hizmeti ayarlarını görüntüleme erişimini kontrol eder.</value>
+  </data>
+  <data name="ViewTermsOfServiceAndAccept" xml:space="preserve">
+    <value>Aşağıdan Hizmet Şartları'nı {0} görüntüleyip kabul edin.</value>
+  </data>
+  <data name="VMwarePrivacyNotice" xml:space="preserve">
+    <value>VMware Gizlilik Bildirimi</value>
+  </data>
+  <data name="WantToUseSameCloudTenant" xml:space="preserve">
+    <value>Hub Hizmetlerini etkinleştirmek için bu aynı Bulut Kiracısını kullanmak ister misiniz?</value>
+  </data>
+  <data name="WantToUseSameTenant" xml:space="preserve">
+    <value>Hub Hizmetlerini etkinleştirmek için bu aynı Kiracıyı kullanmak ister misiniz?</value>
+  </data>
+  <data name="WindowsDesktopCollectAnalytics" xml:space="preserve">
+    <value>Analiz Toplama</value>
+  </data>
+  <data name="WindowsDesktopPrivacyLink" xml:space="preserve">
+    <value>Gizlilik Bağlantısı</value>
+  </data>
+  <data name="WindowsDesktopShowPrivacyScreen" xml:space="preserve">
+    <value>Gizlilik Ekranını Göster</value>
+  </data>
+</root>

@@ -1,0 +1,286 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AddEditScripts" xml:space="preserve">
+    <value>Dodaj/edytuj skrypty</value>
+  </data>
+  <data name="AddEditScriptsHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do dodawania lub edycji skryptów urządzenia</value>
+  </data>
+  <data name="AppCatalogCustomization" xml:space="preserve">
+    <value>Dostosowywanie wykazu aplikacji</value>
+  </data>
+  <data name="CatalogCustomizationNotDefined" xml:space="preserve">
+    <value>Szczegóły dostosowywania katalogu aplikacji nie są obecne dla skryptu, nie można włączyć opcji wyświetlania w Hub</value>
+  </data>
+  <data name="CatalogIconLimit" xml:space="preserve">
+    <value>Ikona przekracza maksymalny dopuszczalny rozmiar 1 MB.</value>
+  </data>
+  <data name="ConfigureComplexSequences" xml:space="preserve">
+    <value>Konfiguruj sekwencje złożone</value>
+  </data>
+  <data name="ConfigureComplexSequencesInfo" xml:space="preserve">
+    <value>Użyj skryptów jako zasobu na platformie Freestyle, aby skonfigurować złożone sekwencje urządzeń, które zawierają aplikacje i profile.</value>
+  </data>
+  <data name="DeleteAssignmentsWarning" xml:space="preserve">
+    <value>Czy na pewno chcesz usunąć to przypisanie?
+Wykonanie tej czynności spowoduje usunięcie skryptu ze wszystkich przypisanych urządzeń.</value>
+  </data>
+  <data name="DeleteScripts" xml:space="preserve">
+    <value>Usuń skrypty</value>
+  </data>
+  <data name="DeleteScriptsHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do usuwania skryptów urządzenia</value>
+  </data>
+  <data name="DuplicateServerCertificate" xml:space="preserve">
+    <value>Załadowany certyfikat już obecny w istniejącym zestawie certyfikatów serwera.</value>
+  </data>
+  <data name="EditScript" xml:space="preserve">
+    <value>Edytuj skrypt</value>
+  </data>
+  <data name="EnableSelfService" xml:space="preserve">
+    <value>Włącz samoobsługę</value>
+  </data>
+  <data name="EnableSelfServiceInfo" xml:space="preserve">
+    <value>Dodaj skrypty do katalogu Intelligent Hub dla samoobsługi urządzenia.</value>
+  </data>
+  <data name="ExecutionContextWindows" xml:space="preserve">
+    <value>Kontekst i uprawnienia wykonania</value>
+  </data>
+  <data name="ExecutionTime" xml:space="preserve">
+    <value>Czas wykonania</value>
+  </data>
+  <data name="HoursLabel" xml:space="preserve">
+    <value>Godz.</value>
+  </data>
+  <data name="LastExecutionTime" xml:space="preserve">
+    <value>Ostatni czas wykonania</value>
+  </data>
+  <data name="NetworkChange" xml:space="preserve">
+    <value>Zmiana sieci</value>
+  </data>
+  <data name="PostActionButtonText" xml:space="preserve">
+    <value>Tekst przycisku po wykonaniu czynności</value>
+  </data>
+  <data name="PreActionButtonText" xml:space="preserve">
+    <value>Tekst przycisku przed wykonaniem czynności</value>
+  </data>
+  <data name="Repair" xml:space="preserve">
+    <value>Naprawa</value>
+  </data>
+  <data name="RunImmediately" xml:space="preserve">
+    <value>Natychmiast uruchom jeden raz</value>
+  </data>
+  <data name="RunImmediatelyInfoText" xml:space="preserve">
+    <value>Ten wyzwalacz uruchomi skrypt na wszystkich przypisanych urządzeniach automatycznie po opublikowaniu. Zostanie on również uruchomiony natychmiast po zarejestrowaniu nowego urządzenia.</value>
+  </data>
+  <data name="RunOnEnrollment" xml:space="preserve">
+    <value>Uruchom rejestrację</value>
+  </data>
+  <data name="RunOnPublish" xml:space="preserve">
+    <value>Uruchom publikację / Uruchom teraz</value>
+  </data>
+  <data name="RunPeriodically" xml:space="preserve">
+    <value>Uruchom okresowo</value>
+  </data>
+  <data name="ScriptCategory" xml:space="preserve">
+    <value>Kategoria (opcjonalnie)</value>
+  </data>
+  <data name="ScriptDeleteWarning" xml:space="preserve">
+    <value>Czy na pewno chcesz usunąć ten skrypt?</value>
+  </data>
+  <data name="ScriptDeploymentHeader" xml:space="preserve">
+    <value>Wybierz metodę wdrażania, aby określić, kiedy skrypt będzie uruchamiany</value>
+  </data>
+  <data name="ScriptDescription" xml:space="preserve">
+    <value>Opis (opcjonalnie)</value>
+  </data>
+  <data name="ScriptDetailsLoadFailed" xml:space="preserve">
+    <value>Ładowanie szczegółów skryptu nie powiodło się.</value>
+  </data>
+  <data name="ScriptDisplayDescription" xml:space="preserve">
+    <value>Wyświetl opis (opcjonalnie)</value>
+  </data>
+  <data name="ScriptLanguage" xml:space="preserve">
+    <value>Język skryptu</value>
+  </data>
+  <data name="ScriptLinkedToWorkflowError" xml:space="preserve">
+    <value>Skrypt jest częścią co najmniej jednego przepływu pracy. Usuń skrypt ze wszystkich przepływów pracy, aby usunąć skrypt.</value>
+  </data>
+  <data name="Scripts" xml:space="preserve">
+    <value>Skrypty</value>
+  </data>
+  <data name="ScriptsConfigureDevices" xml:space="preserve">
+    <value>Konfiguruj urządzenia</value>
+  </data>
+  <data name="ScriptsConfigureDevicesInfo" xml:space="preserve">
+    <value>Użyj popularnych języków skryptów i zabezpiecz zmienne środowiskowe, aby skonfigurować urządzenia stacjonarne.</value>
+  </data>
+  <data name="ScriptSearchFailed" xml:space="preserve">
+    <value>Wyszukiwanie skryptu nie powiodło się </value>
+  </data>
+  <data name="ScriptsHeader" xml:space="preserve">
+    <value>Automatyczna konfiguracja punktu końcowego</value>
+  </data>
+  <data name="ScriptsHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do wyświetlania i zarządzania skryptami urządzenia</value>
+  </data>
+  <data name="ScriptsInfo" xml:space="preserve">
+    <value>Automatyzuj zadania konfiguracji niestandardowej na punktach końcowych przy użyciu typowych języków skryptów. Więcej informacji na temat skryptów zawiera sekcja</value>
+  </data>
+  <data name="ScriptsPurpose" xml:space="preserve">
+    <value>Co mogę zrobić ze skryptami?</value>
+  </data>
+  <data name="ScriptsTimeOutInSeconds" xml:space="preserve">
+    <value>Limit czasu w sekundach</value>
+  </data>
+  <data name="ScriptWorkflow" xml:space="preserve">
+    <value>Przepływ pracy skryptu</value>
+  </data>
+  <data name="SearchExistingScript" xml:space="preserve">
+    <value>Wyszukaj istniejący skrypt</value>
+  </data>
+  <data name="ShowInHubCatalog" xml:space="preserve">
+    <value>Pokaż w katalogu Hub</value>
+  </data>
+  <data name="ShowInHubOptional" xml:space="preserve">
+    <value>Pokaż w Hub (opcjonalnie)</value>
+  </data>
+  <data name="UnableRetrieveScriptError" xml:space="preserve">
+    <value>Nie można pobrać skryptu. Skrypt już nie istnieje lub mógł zostać usunięty.</value>
+  </data>
+  <data name="ViewScripts" xml:space="preserve">
+    <value>Wyświetl skrypty</value>
+  </data>
+  <data name="ViewScriptsHelp" xml:space="preserve">
+    <value>Kontroluje dostęp do wyświetlania szczegółów i konfiguracji skryptu urządzenia.</value>
+  </data>
+  <data name="WindowsAdminExecutionContext" xml:space="preserve">
+    <value>Kontekst użytkownika z uprawnieniami administratora</value>
+  </data>
+  <data name="WindowsExecutionContextInfo" xml:space="preserve">
+    <value>Gdy skrypt jest uruchomiony w kontekście systemu, jest on zawsze wykonywany z uprawnieniami administratora, a interakcje użytkownika będą pomijane. Skrypty, które wymagają interakcji użytkownika, powinny być wykonywane w kontekście użytkownika z odpowiednimi uprawnieniami, jeśli jest to wymagane przez skrypt. Uprawnienia administratora będą stosowane zarówno do użytkowników standardowych, jak i administratorów na urządzeniu.</value>
+  </data>
+  <data name="WindowsSystemExecutionContext" xml:space="preserve">
+    <value>System Context</value>
+  </data>
+  <data name="WindowsUserExecutionContext" xml:space="preserve">
+    <value>Kontekst użytkownika bez uprawnień administratora</value>
+  </data>
+</root>

@@ -1,0 +1,2909 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AccessDeniedForOG" xml:space="preserve">
+    <value>El grupo organizativo actual no tiene acceso a la aplicación</value>
+  </data>
+  <data name="AccessPoliciesIDMSetupArg" xml:space="preserve">
+    <value>Hay que configurar Workspace ONE para poder utilizar las políticas de acceso. Vaya a {0} y complete la configuración de Workspace ONE. Una vez completado, cierre la sesión y vuelva a iniciarla para intentarlo de nuevo.</value>
+  </data>
+  <data name="AccountNameExample" xml:space="preserve">
+    <value>Por ejemplo, VMware</value>
+  </data>
+  <data name="AccountNotifyEmail" xml:space="preserve">
+    <value>Ajustes del correo electrónico de notificaciones</value>
+  </data>
+  <data name="AccountNotifyEmailInfo" xml:space="preserve">
+    <value>Notificaciones de correo electrónico</value>
+  </data>
+  <data name="AccountNotifyPush" xml:space="preserve">
+    <value>ENS2</value>
+  </data>
+  <data name="AccountNotifyPushInfo" xml:space="preserve">
+    <value>Habilita o deshabilita el servicio de notificaciones de correo electrónico.</value>
+  </data>
+  <data name="AccountSMIMESignByDefault" xml:space="preserve">
+    <value>Firmar correo electrónico automáticamente</value>
+  </data>
+  <data name="AccountSMIMESignByDefaultInfo" xml:space="preserve">
+    <value>Habilita la firma S/MIME de forma predeterminada cuando se inicia la vista de redacción</value>
+  </data>
+  <data name="AccountSyncCalendar" xml:space="preserve">
+    <value>Ajustes de sincronización del calendario</value>
+  </data>
+  <data name="AccountSyncCalendarInfo" xml:space="preserve">
+    <value>Deshabilitar la sincronización del calendario con el dispositivo</value>
+  </data>
+  <data name="AccountSyncContact" xml:space="preserve">
+    <value>Ajustes de la sincronización de contactos</value>
+  </data>
+  <data name="AccountSyncContactInfo" xml:space="preserve">
+    <value>Deshabilitar la sincronización de los contactos con el dispositivo</value>
+  </data>
+  <data name="AccountSyncEmail" xml:space="preserve">
+    <value>Ajustes de sincronización del correo electrónico</value>
+  </data>
+  <data name="AccountSyncEmailInfo" xml:space="preserve">
+    <value>Deshabilitar la sincronización del correo electrónico con el dispositivo</value>
+  </data>
+  <data name="AccountUseOAuth" xml:space="preserve">
+    <value>Autenticación moderna</value>
+  </data>
+  <data name="AccountUseOAuthInfo" xml:space="preserve">
+    <value>Cuando está habilitada, durante la inscripción, se redirige a los usuarios a la página de inicio de sesión para la autenticación</value>
+  </data>
+  <data name="ActionsGrid" xml:space="preserve">
+    <value>Cuadrícula de acciones</value>
+  </data>
+  <data name="ActionsNotShownForProductBasedApps" xml:space="preserve">
+    <value>Las acciones de instalación y eliminación individuales están restringidas para las aplicaciones que forman parte de un paquete de producto.</value>
+  </data>
+  <data name="ActivateApplication" xml:space="preserve">
+    <value>Activar aplicación</value>
+  </data>
+  <data name="AddContingencies" xml:space="preserve">
+    <value>Agregar contingencias</value>
+  </data>
+  <data name="AIPSensitivityLabels" xml:space="preserve">
+    <value>Etiquetas de confidencialidad de AIP</value>
+  </data>
+  <data name="AllAppsImportedFromPlay" xml:space="preserve">
+    <value>Ya se han importado todas las aplicaciones</value>
+  </data>
+  <data name="AllAppsTab" xml:space="preserve">
+    <value>Todas las aplicaciones</value>
+  </data>
+  <data name="Alloted" xml:space="preserve">
+    <value>Asignado</value>
+  </data>
+  <data name="AllowActionArchiveInfo" xml:space="preserve">
+    <value>Esto permite o bloquea la posibilidad de archivar los correos electrónicos</value>
+  </data>
+  <data name="AllowActionSpamInfo" xml:space="preserve">
+    <value>Si está deshabilitada, la opción spam de Workspace ONE Boxer no estará disponible para los usuarios finales. Si esta opción está habilitada y no se proporciona la dirección de correo electrónico de reenvío, los informes de spam se moverán al correo no deseado.</value>
+  </data>
+  <data name="AllowAnnotations" xml:space="preserve">
+    <value>Permitir anotaciones</value>
+  </data>
+  <data name="AllowAnnotationsTip" xml:space="preserve">
+    <value>Permite el uso de herramientas de escritura a mano y de marcador de resaltado.</value>
+  </data>
+  <data name="AllowAppRemovalsWithoutProtectionTimeWindowHelp" xml:space="preserve">
+    <value>Una vez que los administradores aprueben y reanuden la eliminación, no se activará la protección para esa aplicación durante el intervalo programado aquí para permitir la acción de eliminación correctamente. Una vez transcurrido el intervalo, la protección se volverá a activar si los dispositivos afectados alcanzan el número configurado en "Dispositivos afectados".</value>
+  </data>
+  <data name="AllowArchivingEmails" xml:space="preserve">
+    <value>Permitir el archivado de correo electrónico</value>
+  </data>
+  <data name="AllowAttachmentsDownloadInfo" xml:space="preserve">
+    <value>Habilita o deshabilita la descarga de archivos adjuntos.</value>
+  </data>
+  <data name="AllowAttachmentsInfo" xml:space="preserve">
+    <value>Habilita o inhabilita los archivos adjuntos para enviar mensajes</value>
+  </data>
+  <data name="AllowAttachmentsTip" xml:space="preserve">
+    <value>Habilita o deshabilita la función de archivos adjuntos de nota. Cuando se deshabilita, no se admite ningún tipo de archivo adjunto.</value>
+  </data>
+  <data name="AllowCameraTip" xml:space="preserve">
+    <value>Habilita o deshabilita la opción de cámara del dispositivo.</value>
+  </data>
+  <data name="AllowCrashReportingInfo" xml:space="preserve">
+    <value>De forma predeterminada, Boxer puede informar de forma anónima acerca de los bloqueos. Recomendamos mantener esta opción habilitada para que podamos verlos y solucionarlos</value>
+  </data>
+  <data name="AllowDocProvidersInfo" xml:space="preserve">
+    <value>Habilita o deshabilita los archivos adjuntos de proveedores externos (iCloud, Dropbox, Google Drive, etc.) en Workspace ONE Boxer.</value>
+  </data>
+  <data name="AllowDocumentScanner" xml:space="preserve">
+    <value>Permitir escáner de documentos</value>
+  </data>
+  <data name="AllowDocumentScannerTip" xml:space="preserve">
+    <value>Habilita o deshabilita la función de escaneado de documentos.</value>
+  </data>
+  <data name="AllowEnterpriseContentInfo" xml:space="preserve">
+    <value>Content de Enterprise introduce la configuración de los repositorios de Workspace ONE Content en Boxer para guardar y ver archivos tanto en los repositorios en línea, como desde los mismos. Es necesario habilitar SSO para esta configuración.</value>
+  </data>
+  <data name="AllowExchange" xml:space="preserve">
+    <value>Permitir intercambio</value>
+  </data>
+  <data name="AllowGallery" xml:space="preserve">
+    <value>Permitir galería</value>
+  </data>
+  <data name="AllowGalleryTip" xml:space="preserve">
+    <value>Habilita o deshabilita el acceso y el uso de la galería de imágenes del dispositivo.</value>
+  </data>
+  <data name="AllowHyperlinksTip" xml:space="preserve">
+    <value>Permite a los usuarios introducir hipervínculos.</value>
+  </data>
+  <data name="AllowList" xml:space="preserve">
+    <value>Lista de admitidos</value>
+  </data>
+  <data name="AllowLocalCalendarsInfo" xml:space="preserve">
+    <value>Configure esta opción en True para habilitar los calendarios locales en Workspace ONE Boxer. Si está deshabilitada, la opción Calendarios locales en Workspace ONE Boxer no estará disponible para los usuarios finales.</value>
+  </data>
+  <data name="AllowMetricsInfo" xml:space="preserve">
+    <value>Elija esta opción si desea deshabilitar la recopilación de métricas anónimas que nos ayuden a tomar decisiones sobre el producto.</value>
+  </data>
+  <data name="AllowOpenInInfo" xml:space="preserve">
+    <value>Habilita o deshabilita la posibilidad de adjuntar archivos de otras aplicaciones mediante la apertura o uso compartido en Workspace ONE Boxer. Cuando se deshabilita la función de abrir o compartir archivos adjuntos, se muestra el mensaje "El administrador ha restringido los archivos adjuntos de aplicaciones externas".</value>
+  </data>
+  <data name="AllowRemovalsForDuration" xml:space="preserve">
+    <value>Permitir eliminaciones sin protección (horas)</value>
+  </data>
+  <data name="AllowTextBoxes" xml:space="preserve">
+    <value>Permitir cuadros de texto</value>
+  </data>
+  <data name="AllowTextBoxesTip" xml:space="preserve">
+    <value>Permite el uso de cuadros de texto.</value>
+  </data>
+  <data name="AllowUserInstallDeferralLabel" xml:space="preserve">
+    <value>Permitir aplazamiento de instalación de usuario</value>
+  </data>
+  <data name="AllowUserInstallDeferralTooltip" xml:space="preserve">
+    <value>Permite al usuario aplazar la instalación de esta aplicación</value>
+  </data>
+  <data name="AllowUserRegistrationMessage" xml:space="preserve">
+    <value>Permite que cualquier usuario que tenga acceso a la URL del entorno y al ID de grupo crear una cuenta de usuario y obtener acceso a los recursos corporativos. Para ayudar a impedir que los usuarios no autorizados obtengan acceso, anule la selección de esta opción y vaya a Cuentas &gt; Usuarios &gt; Vista de lista &gt; "Agregar usuario" para crear cuentas de usuario.</value>
+  </data>
+  <data name="AllowVoiceRecordings" xml:space="preserve">
+    <value>Permitir grabaciones de voz</value>
+  </data>
+  <data name="AllowVoiceRecordingsTip" xml:space="preserve">
+    <value>Habilita o deshabilita el uso de grabaciones de audio.</value>
+  </data>
+  <data name="AndroidDerivedCredentialSmimeForFirstaccount" xml:space="preserve">
+    <value>{0} admite solamente un certificado de S/MIME único. Seleccione esta opción solo para una cuenta de correo electrónico administrada.</value>
+  </data>
+  <data name="AppAlreadyExistsUnderProductProvisioning" xml:space="preserve">
+    <value>Esta aplicación ya existe en "Aprovisionamiento de productos" y no se puede cargar en "Aplicaciones y libros". Puede eliminar la instancia de la aplicación de "Aprovisionamiento de productos" y volver a intentar cargarla. Para evitar la eliminación de aplicaciones, asegúrese de que todos los dispositivos autorizados para conservar la aplicación formen parte de la asignación.</value>
+  </data>
+  <data name="AppAvatarsDefault" xml:space="preserve">
+    <value>Habilitar avatares</value>
+  </data>
+  <data name="AppBulkAction" xml:space="preserve">
+    <value>Acción de la aplicación en masa</value>
+  </data>
+  <data name="AppCategories" xml:space="preserve">
+    <value>Categorías de aplicaciones</value>
+  </data>
+  <data name="AppCompliance" xml:space="preserve">
+    <value>Conformidad de aplicaciones</value>
+  </data>
+  <data name="AppComplianceReportedCompliant" xml:space="preserve">
+    <value>Conformidad de la aplicación: conforme</value>
+  </data>
+  <data name="AppComplianceReportedNonCompliant" xml:space="preserve">
+    <value>Conformidad de la aplicación: no conforme</value>
+  </data>
+  <data name="AppComplianceReportedUnknown" xml:space="preserve">
+    <value>Conformidad de la aplicación: desconocida</value>
+  </data>
+  <data name="AppConfigSectionMmaInfoMsg" xml:space="preserve">
+    <value>Asegúrese de que este KVP se aplique a toda la aplicación. Cualquier configuración que se aplique solo a una cuenta de correo electrónico específica debería trasladarse a "Configuración de cuenta personalizada" en "Ajustes de correo electrónico" para evitar interrupciones.</value>
+  </data>
+  <data name="AppConversationViewDefault" xml:space="preserve">
+    <value>Agrupación de conversaciones</value>
+  </data>
+  <data name="AppDefaultBrowser" xml:space="preserve">
+    <value>Restringir a navegador predeterminado</value>
+  </data>
+  <data name="AppDefaultBrowserExceptions" xml:space="preserve">
+    <value>Excepciones del navegador</value>
+  </data>
+  <data name="AppDefaultBrowserExceptionsInfo" xml:space="preserve">
+    <value>Si los hipervínculos están restringidos en Console, puede agregar una lista de excepciones de dominios/sitios para que siempre se abran en el navegador predeterminado/nativo. Si los hipervínculos no están restringidos, puede agregar una lista de excepciones de dominios/sitios para que siempre se abran en Workspace ONE Web. La lista de excepciones solo coincidirá con comodines, subdominios y dominios. Ejemplo: AppDefaultBrowserExceptions = ["*.vmware.com", "jira*.vmware.com", "internal.vmware.com", "vmware.com"]</value>
+  </data>
+  <data name="AppDefaultBrowserTooltip" xml:space="preserve">
+    <value>Abra todos los vínculos en el navegador predeterminado.</value>
+  </data>
+  <data name="AppDefaultCallerID" xml:space="preserve">
+    <value>Identificador de llamada predeterminado</value>
+  </data>
+  <data name="AppDeploymentInlineHelpPublic" xml:space="preserve">
+    <value>Implemente la aplicación automáticamente (Automático) o bien de forma manual (a pedido) siempre que sea necesario.</value>
+  </data>
+  <data name="AppDetails" xml:space="preserve">
+    <value>Detalles de la aplicación</value>
+  </data>
+  <data name="AppDetailsView" xml:space="preserve">
+    <value>Vista de detalles de la aplicación</value>
+  </data>
+  <data name="AppDomainsInternal" xml:space="preserve">
+    <value>Lista de dominios internos</value>
+  </data>
+  <data name="AppDomainsWarning" xml:space="preserve">
+    <value>Advertencia de destinatario externo</value>
+  </data>
+  <data name="AppDomainsWarningInfo" xml:space="preserve">
+    <value>Notifica al usuario final cuando se envía un mensaje a un destinatario externo.</value>
+  </data>
+  <data name="AppEnableKeyWrappingOnlyMode" xml:space="preserve">
+    <value>Habilitar el modo de solo ajuste de clave del SDK de Swift</value>
+  </data>
+  <data name="AppEnableKeyWrappingOnlyModeInfo" xml:space="preserve">
+    <value>Mantenga esta opción habilitada para aprovechar al máximo las funciones de seguridad del ajuste de claves</value>
+  </data>
+  <data name="AppForceActivateSSO" xml:space="preserve">
+    <value>Habilitar inicio de sesión único (SSO)</value>
+  </data>
+  <data name="AppForceActivateSSOInfo" xml:space="preserve">
+    <value>Esto habilita el SSO. Esta clave se dejará de usar si el SSO siempre está habilitado, lo cual es también necesario para una serie de funciones, incluido el contenido de empresa.</value>
+  </data>
+  <data name="AppGroup" xml:space="preserve">
+    <value>Grupo de aplicaciones</value>
+  </data>
+  <data name="AppGroups" xml:space="preserve">
+    <value>Grupos de aplicaciones</value>
+  </data>
+  <data name="AppInstallDeferred" xml:space="preserve">
+    <value>Instalación aplazada</value>
+  </data>
+  <data name="AppKeyWrappingOnlyMode" xml:space="preserve">
+    <value>Modo de solo ajuste de clave del SDK de Swift</value>
+  </data>
+  <data name="AppleUpdateAvailableHelpText" xml:space="preserve">
+    <value>Esta columna determina si una aplicación dispone de la versión más reciente o si hay una actualización disponible. Solo es compatible con aplicaciones disponibles en la App Store.</value>
+  </data>
+  <data name="ApplicationApprovedFordeviceAssignment" xml:space="preserve">
+    <value>Aplicación habilitada para asignación por dispositivos. Por favor, tome en cuenta que todos los dispositivos iOS 9+ y macOS 10.11+ recibirán una licencia por cada dispositivo. Los dispositivos no necesitan un ID de Apple a recibir la aplicación.</value>
+  </data>
+  <data name="ApplicationApprovedFordeviceAssignmentWithTvOS" xml:space="preserve">
+    <value>Aplicación habilitada para la asignación basada en dispositivos. Tenga en cuenta que todos los dispositivos iOS 9+ y macOS 10.11+ recibirán una licencia por cada dispositivo. Dichos dispositivos no necesitan un ID de Apple para a recibir la aplicación. Los dispositivos tvOS solo podrán usar las licencias basadas en dispositivos y no necesitarán implementar ninguna acción por parte del administrador.</value>
+  </data>
+  <data name="ApplicationAttributes" xml:space="preserve">
+    <value>Atributos</value>
+  </data>
+  <data name="ApplicationAttributesTooltip" xml:space="preserve">
+    <value>Los atributos de la aplicación se utilizan para proporcionar detalles específicos del dispositivo para que las aplicaciones los usen durante su operación, como una lista de dominios asociados a una organización distinta.</value>
+  </data>
+  <data name="ApplicationBundleId" xml:space="preserve">
+    <value>ID del paquete de la aplicación</value>
+  </data>
+  <data name="ApplicationCantDeleteRetireConfirmation" xml:space="preserve">
+    <value>Al eliminar la aplicación también se eliminará de uno o varios de los dispositivos asignados en los que es administrada por Workspace ONE. También se retirará en la consola. ¿Desea continuar?</value>
+  </data>
+  <data name="ApplicationConfigMigrationJob" xml:space="preserve">
+    <value>Tarea de migración de configuración de aplicaciones</value>
+  </data>
+  <data name="ApplicationDeactivateDescription" xml:space="preserve">
+    <value>Si desactiva una aplicación, también se desinstalarán todas las versiones de la aplicación de todos los dispositivos en los que la aplicación esté administrada por Workspace ONE. Por favor, continúe con precaución.</value>
+  </data>
+  <data name="ApplicationDeploymentStatusStaleTime" xml:space="preserve">
+    <value>Marcar comando UEM de aplicaciones como obsoleto tras</value>
+  </data>
+  <data name="ApplicationDeploymentStatusStaleTimeForAndroid" xml:space="preserve">
+    <value>Android</value>
+  </data>
+  <data name="ApplicationDeploymentStatusStaleTimeForIos" xml:space="preserve">
+    <value>iOS</value>
+  </data>
+  <data name="ApplicationDeploymentStatusStaleTimeForMacOs" xml:space="preserve">
+    <value>macOS</value>
+  </data>
+  <data name="ApplicationDeploymentStatusStaleTimeForWindows" xml:space="preserve">
+    <value>Windows</value>
+  </data>
+  <data name="ApplicationDeploymentStatusStaleTimeTooltip" xml:space="preserve">
+    <value>Establece cuántos minutos después de que un dispositivo confirme el último comando UEM (pero que no haya completado la acción) deben transcurrir para marcar el comando UEM como "obsoleto". Los comandos obsoletos se volverán a activar cuando se publiquen las aplicaciones. El catálogo de aplicaciones ya no mostrará aplicaciones como "en proceso" a los usuarios finales, sino que volverá a habilitar las acciones "Instalar" o "Actualizar".</value>
+  </data>
+  <data name="ApplicationGroupActivated" xml:space="preserve">
+    <value>Grupo de aplicaciones activado</value>
+  </data>
+  <data name="ApplicationGroupDeactivated" xml:space="preserve">
+    <value>Grupo de aplicaciones desactivado</value>
+  </data>
+  <data name="ApplicationGroupDeleted" xml:space="preserve">
+    <value>Grupo de aplicaciones eliminado</value>
+  </data>
+  <data name="ApplicationInKiosk" xml:space="preserve">
+    <value>AVISO: Esta aplicación se incluye en un perfil de quiosco. Actualice el perfil después de la eliminación de la aplicación.</value>
+  </data>
+  <data name="ApplicationMaxFileSizeWithCdn" xml:space="preserve">
+    <value>Tamaño máximo de archivo de la aplicación con CDN</value>
+  </data>
+  <data name="ApplicationMaxFileSizeWithCdnToolTip" xml:space="preserve">
+    <value>Cuando CDN está habilitado, el valor de mayor tamaño entre "Tamaño máximo de archivo" y "Tamaño máximo de archivo con valores CDN" se usará para las cargas de este grupo organizativo</value>
+  </data>
+  <data name="ApplicationPublished" xml:space="preserve">
+    <value>Publicación de aplicación correcta</value>
+  </data>
+  <data name="ApplicationPublishFailed" xml:space="preserve">
+    <value>Error en la publicación de la aplicación</value>
+  </data>
+  <data name="ApplicationPublishStarted" xml:space="preserve">
+    <value>Publicación de la aplicación iniciada</value>
+  </data>
+  <data name="ApplicationReasonChange" xml:space="preserve">
+    <value>Motivo del cambio de la aplicación</value>
+  </data>
+  <data name="ApplicationRetireDescription" xml:space="preserve">
+    <value>Si retira una versión de una aplicación, también se desinstalará la versión de la aplicación de todos los dispositivos en los que la aplicación esté administrada por Workspace ONE. Si está disponible, la próxima versión inferior de la aplicación se enviará a los dispositivos. Por favor, continúe con precaución.</value>
+  </data>
+  <data name="ApplicationSample" xml:space="preserve">
+    <value>Muestra de la aplicación</value>
+  </data>
+  <data name="ApplicationSource" xml:space="preserve">
+    <value>Origen de la aplicación</value>
+  </data>
+  <data name="ApplicationsSetting" xml:space="preserve">
+    <value>Configuración de aplicaciones</value>
+  </data>
+  <data name="ApplicationsSettings" xml:space="preserve">
+    <value>Configuraciones de aplicaciones</value>
+  </data>
+  <data name="ApplicationTransforms" xml:space="preserve">
+    <value>Transformaciones para aplicaciones</value>
+  </data>
+  <data name="ApplicationUemVersionAlreadyExists" xml:space="preserve">
+    <value>Ya existe una versión de UEM de la aplicación</value>
+  </data>
+  <data name="ApplicationUserAppRatingDescription" xml:space="preserve">
+    <value>Calificación del usuario de la aplicación {0}: {1} de 5 estrellas</value>
+    <comment>The first placeholder in the label key is for the application name and the second placeholder is for the app rating count by user.</comment>
+  </data>
+  <data name="ApplicationUUID" xml:space="preserve">
+    <value>UUID de aplicación</value>
+  </data>
+  <data name="AppLogAggregationMode" xml:space="preserve">
+    <value>Modo de agregación de registros</value>
+  </data>
+  <data name="AppLogAggregationUrl" xml:space="preserve">
+    <value>URL de agregación de registros</value>
+  </data>
+  <data name="AppMobileFlowsAutoEnableConnectors" xml:space="preserve">
+    <value>Habilitación automática de los conectores de Mobile Flows</value>
+  </data>
+  <data name="AppMobileFlowsEnabled" xml:space="preserve">
+    <value>Mobile Flows</value>
+  </data>
+  <data name="AppMobileFlowsEnabledInfo" xml:space="preserve">
+    <value>Configure la información del servidor de Mobile Flows con el cual se puede integrar Boxer</value>
+  </data>
+  <data name="AppMobileFlowsHost" xml:space="preserve">
+    <value>Host de Mobile Flows</value>
+  </data>
+  <data name="AppMobileFlowsSyncTimeHours" xml:space="preserve">
+    <value>Horas de sincronización de Mobile Flows</value>
+  </data>
+  <data name="AppMobileFlowsSyncTimeHoursInfo" xml:space="preserve">
+    <value>No solicite tarjetas de Mobile Flow para los correos electrónicos enviados antes de este valor (en horas)</value>
+  </data>
+  <data name="AppMobileFlowsvIDM" xml:space="preserve">
+    <value>Servidor de autenticación de Mobile Flows</value>
+  </data>
+  <data name="AppNameIsRequired" xml:space="preserve">
+    <value>El nombre de la aplicación es necesario para ver los resultados.</value>
+  </data>
+  <data name="AppNotExistOrUnauthorizedAccess" xml:space="preserve">
+    <value>La aplicación no existe o no cuenta con autorización para acceder a ella.</value>
+  </data>
+  <data name="AppPasscode" xml:space="preserve">
+    <value>Código de acceso de la aplicación</value>
+  </data>
+  <data name="AppPatchUpdate" xml:space="preserve">
+    <value>Actualización de revisión de la aplicación</value>
+  </data>
+  <data name="AppPhishEmailAddress" xml:space="preserve">
+    <value>Comunicar suplantación de identidad a</value>
+  </data>
+  <data name="AppPhishEmailAddressInfo" xml:space="preserve">
+    <value>Configure la dirección de correo electrónico que recibirá el correo electrónico de suplantación de identidad notificado</value>
+  </data>
+  <data name="AppPlainTextMode" xml:space="preserve">
+    <value>Modo de texto sin formato</value>
+  </data>
+  <data name="AppPlainTextModeInfo" xml:space="preserve">
+    <value>Seleccione esta opción si desea que Boxer solo se sincronice en el modo de texto sin formato. No se admite contenido HTML</value>
+  </data>
+  <data name="AppPolicies" xml:space="preserve">
+    <value>Directivas de aplicaciones</value>
+  </data>
+  <data name="AppPurebredPackageName" xml:space="preserve">
+    <value>ID de aplicación de Purebred</value>
+  </data>
+  <data name="AppPurebredPackageNameInfo" xml:space="preserve">
+    <value>El ID de paquete/compilación de la aplicación Purebred. Este ID se utilizará para verificar la aplicación Purebred en el dispositivo para su uso con Boxer.</value>
+  </data>
+  <data name="AppPurebredPublicKey" xml:space="preserve">
+    <value>Firma de la aplicación Purebred</value>
+  </data>
+  <data name="AppPurebredPublicKeyInfo" xml:space="preserve">
+    <value>La firma pública de la aplicación Purebred. Este clave se utilizará para verificar la aplicación Purebred en el dispositivo para su uso con Boxer.</value>
+  </data>
+  <data name="AppRefetchEmptyLinksUsingMime" xml:space="preserve">
+    <value>Volver a recuperar vínculos vacíos mediante MIME</value>
+  </data>
+  <data name="AppRefetchEmptyLinksUsingMimeInfo" xml:space="preserve">
+    <value>Para los correos electrónicos recuperados a través de HTML que contienen esquemas de URL no estándar (al igual que para la aplicación RSA) que apuntan a dominios que no son de servidor, Exchange reemplaza la URL por dos espacios vacíos. El KVP habilita Boxer para detectar esta repetición y vuelve a descargar el cuerpo afectado mediante MIME, que no está sujeto al mismo problema de reemplazo de URL.</value>
+  </data>
+  <data name="AppRemovalProtectionLogDevicesHeader" xml:space="preserve">
+    <value>Dispositivos de registro de protección contra eliminación de aplicaciones</value>
+  </data>
+  <data name="AppRetriesOnFailedInitialAuth" xml:space="preserve">
+    <value>Especifica el número de reintentos de autenticación</value>
+  </data>
+  <data name="AppRetriesOnFailedInitialAuthInfo" xml:space="preserve">
+    <value>Especifica el número de reintentos de autenticación tras un error</value>
+  </data>
+  <data name="AppSampleInformation" xml:space="preserve">
+    <value>Información de la muestra de la aplicación</value>
+  </data>
+  <data name="AppSampleLastSeen" xml:space="preserve">
+    <value>Última detección de la muestra de la aplicación</value>
+  </data>
+  <data name="AppSequencingTab" xml:space="preserve">
+    <value>Secuenciado de aplicaciones</value>
+  </data>
+  <data name="AppSkipTutorial" xml:space="preserve">
+    <value>Omitir el tutorial en la aplicación</value>
+  </data>
+  <data name="AppSkipTutorialTooltip" xml:space="preserve">
+    <value>Omitir tutorial de la aplicación al iniciar por primera vez</value>
+  </data>
+  <data name="AppSpamForwardAddress" xml:space="preserve">
+    <value>Notificar correo no deseado a</value>
+  </data>
+  <data name="AppSpamForwardAddressInfo" xml:space="preserve">
+    <value>Configure la dirección de correo electrónico que recibirá el correo electrónico no deseado notificado</value>
+  </data>
+  <data name="AppsTabSegregationFeatureInformation" xml:space="preserve">
+    <value>La pestaña Aplicaciones administradas muestra todas las aplicaciones de macOS y los instaladores de software que se administran en Workspace ONE UEM. La pestaña Todas las aplicaciones muestra una lista de todos los paquetes de aplicaciones de macOS de solo lectura notificados que se encuentran instalados en el dispositivo. La disponibilidad de contenido en la pestaña Todas las aplicaciones está configurada en los ajustes de privacidad de UEM Console para aplicaciones personales.</value>
+  </data>
+  <data name="AppStatus" xml:space="preserve">
+    <value>Estado de la aplicación</value>
+  </data>
+  <data name="AppsTermsOfUseNotification" xml:space="preserve">
+    <value>Notificación de la actualización del CLUF de la aplicación</value>
+  </data>
+  <data name="AppStore" xml:space="preserve">
+    <value>App Store</value>
+  </data>
+  <data name="AppStoreAppSourceHelpText" xml:space="preserve">
+    <value>Esta columna determina si la aplicación estaba disponible en la App Store.</value>
+  </data>
+  <data name="AppSwipesLeftLongDefault" xml:space="preserve">
+    <value>Deslizamiento largo a la izquierda predeterminado</value>
+  </data>
+  <data name="AppSwipesLeftShortDefault" xml:space="preserve">
+    <value>Deslizamiento corto a la izquierda predeterminado</value>
+  </data>
+  <data name="AppSwipesRightLongDefault" xml:space="preserve">
+    <value>Deslizamiento largo a la derecha predeterminado</value>
+  </data>
+  <data name="AppSwipesRightShortDefault" xml:space="preserve">
+    <value>Deslizamiento corto a la derecha predeterminado</value>
+  </data>
+  <data name="AppsWithConfigurationErrors" xml:space="preserve">
+    <value>Aplicaciones con errores de configuración</value>
+  </data>
+  <data name="AppUpdatedDate" xml:space="preserve">
+    <value>Fecha de actualización de la aplicación</value>
+  </data>
+  <data name="AppUpdateSource" xml:space="preserve">
+    <value>Origen de actualización de la aplicación</value>
+  </data>
+  <data name="AppUrl" xml:space="preserve">
+    <value>URL de la aplicación</value>
+  </data>
+  <data name="AppVersionDetailsHelp" xml:space="preserve">
+    <value>Workspace ONE UEM conserva una versión interna para cada paquete de aplicaciones internas. Este campo se rellena automáticamente con la "Versión de la aplicación". Este campo se utiliza para identificar la versión más reciente que debe asignarse e implementarse en los dispositivos de usuario final.</value>
+  </data>
+  <data name="AppVersionInformationFourDecimal" xml:space="preserve">
+    <value>Cada uno de estos campos es obligatorio y no puede superar el valor máximo para un entero de 32 bits (2147483647).</value>
+  </data>
+  <data name="AppVersionNeedsAssignment" xml:space="preserve">
+    <value>La versión de la aplicación necesita la asignación</value>
+  </data>
+  <data name="AppVersionNeedsAssignmentInfo" xml:space="preserve">
+    <value>La versión más reciente de la aplicación necesita al menos una asignación.</value>
+  </data>
+  <data name="AppVersionNeedsAssignmentMessage" xml:space="preserve">
+    <value>La versión más reciente de la aplicación no tiene una asignación de aplicaciones. Las asignaciones de flujos de trabajo que utilizan esta aplicación seguirán utilizando la versión anterior de la aplicación y su política predeterminada. Para utilizar la nueva versión de la aplicación, cree una asignación de aplicaciones.</value>
+  </data>
+  <data name="AppVersionUpdateNotification" xml:space="preserve">
+    <value>Notificación de actualización de la versión de la aplicación</value>
+  </data>
+  <data name="AppWorkflowsMenuDescription" xml:space="preserve">
+    <value>Flujos de trabajo de aplicaciones</value>
+  </data>
+  <data name="AppWorkflowsMenuItem" xml:space="preserve">
+    <value>Flujos de trabajo de aplicaciones</value>
+  </data>
+  <data name="Architecture" xml:space="preserve">
+    <value>Arquitectura</value>
+  </data>
+  <data name="ArgAssignedCount" xml:space="preserve">
+    <value>{0} asignadas</value>
+  </data>
+  <data name="ArgInstalledCount" xml:space="preserve">
+    <value>{0} instaladas</value>
+  </data>
+  <data name="ArgNotInstalledCount" xml:space="preserve">
+    <value>{0} sin instalar</value>
+  </data>
+  <data name="ArgVersions" xml:space="preserve">
+    <value>{0} versiones</value>
+  </data>
+  <data name="ARMAppDependencies" xml:space="preserve">
+    <value>Dependencias ARM</value>
+  </data>
+  <data name="ArpMessage" xml:space="preserve">
+    <value>Las eliminaciones de la aplicación se han puesto en pausa puesto que han alcanzado el umbral de eliminación.</value>
+  </data>
+  <data name="AssignedArgOutOfTotalInstalledArg" xml:space="preserve">
+    <value>Se han asignado {0} de {1}</value>
+  </data>
+  <data name="AssignedButNotInstalled" xml:space="preserve">
+    <value>Asignadas pero sin instalar</value>
+  </data>
+  <data name="AssignedConfiguration" xml:space="preserve">
+    <value>Configuración asignada</value>
+  </data>
+  <data name="AssignmentCannotBeRemovedForAnAppAssociatedWithWorkflow" xml:space="preserve">
+    <value>La asignación no se puede eliminar para una aplicación que forma parte de un flujo de trabajo.</value>
+  </data>
+  <data name="AssignmentCopiedFrom" xml:space="preserve">
+    <value>Asignaciones copiadas desde</value>
+  </data>
+  <data name="AssignmentCopiedFromMessage" xml:space="preserve">
+    <value>Haga clic en el botón para actualizar a continuación y que se muestre el número de versión desde el cual se copiarán las asignaciones.</value>
+  </data>
+  <data name="AssignmentCreated" xml:space="preserve">
+    <value>Asignación de aplicación creada</value>
+  </data>
+  <data name="AssignmentDeleted" xml:space="preserve">
+    <value>Asignación de aplicación eliminada</value>
+  </data>
+  <data name="AssignmentDescriptionPlaceholder" xml:space="preserve">
+    <value>Descripción de la asignación</value>
+  </data>
+  <data name="AssignmentGroupingInfoMessage" xml:space="preserve">
+    <value>Algunos de los grupos inteligentes de esta asignación tienen diferentes valores de configuración de la aplicación o de atributos de la aplicación, o bien archivos de transformación MST, que se han separado para garantizar la precisión. Los dispositivos de los usuarios finales no se verán afectados, ni será necesario realizar ninguna otra acción.</value>
+  </data>
+  <data name="AssignmentInformation" xml:space="preserve">
+    <value>Información sobre la asignación</value>
+  </data>
+  <data name="AssignmentInstallDetails" xml:space="preserve">
+    <value>Detalles de la asignación y la instalación</value>
+  </data>
+  <data name="AssignmentInstallDetailsToolTip" xml:space="preserve">
+    <value>Detalles de la instalación para dispositivos que tienen asignada esta aplicación en Workspace ONE</value>
+  </data>
+  <data name="AssignmentNamePlaceholder" xml:space="preserve">
+    <value>Nombre de asignación</value>
+  </data>
+  <data name="AssignmentOutOfDate" xml:space="preserve">
+    <value>Asignación obsoleta</value>
+  </data>
+  <data name="AssignmentStatus" xml:space="preserve">
+    <value>Estado de asignación</value>
+  </data>
+  <data name="AssignmentUpdated" xml:space="preserve">
+    <value>Asignación de aplicaciones actualizada</value>
+  </data>
+  <data name="AssignmentUpToDate" xml:space="preserve">
+    <value>Actualizado. Aplicación asignada e instalada</value>
+  </data>
+  <data name="AtleastOneActiveAssignmentIsRequired" xml:space="preserve">
+    <value>Una o más reglas de asignación no tienen un grupo inteligente activo asociado. Agregue un grupo inteligente o bien elimine las reglas de asignación para continuar.</value>
+  </data>
+  <data name="AtleastOneAssignmentIsRequired" xml:space="preserve">
+    <value>Se debe especificar al menos un grupo inteligente en las asignaciones.</value>
+  </data>
+  <data name="AttachmentDownload" xml:space="preserve">
+    <value>Descarga de archivos adjuntos</value>
+  </data>
+  <data name="AttachmentsRestrictionMMAInfo" xml:space="preserve">
+    <value>Este ajuste determina si el usuario podrá abrir correos o archivos adjuntos en otras aplicaciones. Seleccione "Vista previa solamente" para impedir que se abran en cualquier aplicación, "Lista de permitidos" para especificar las aplicaciones permitidas o "Sin restricciones" para permitir cualquier aplicación.</value>
+  </data>
+  <data name="AttachPhotos" xml:space="preserve">
+    <value>Adjuntar fotografías</value>
+  </data>
+  <data name="AuthenticateExchangeServerTooltip" xml:space="preserve">
+    <value>Configurar cómo autenticarse en el servidor de Exchange</value>
+  </data>
+  <data name="AuthenticationAdvancedSectionMessage" xml:space="preserve">
+    <value>No hay configuraciones avanzadas disponibles para sus selecciones</value>
+  </data>
+  <data name="AuthenticationType" xml:space="preserve">
+    <value>Tipo de autenticación</value>
+  </data>
+  <data name="AuthenticationTypeInfo" xml:space="preserve">
+    <value>Elija Básico cuando se autentique con un nombre de usuario y contraseña, Certificado cuando utilice un certificado y Ambos si requiere un certificado y una contraseña para autenticarse con Exchange.</value>
+  </data>
+  <data name="AutoAppAssignedButNotInstalled" xml:space="preserve">
+    <value>No actualizado. Aplicación asignada, pero no instalada</value>
+  </data>
+  <data name="AutoAppAssignmentOutOfDate" xml:space="preserve">
+    <value>No actualizado. La versión de la aplicación asignada no es la misma que la versión instalada</value>
+  </data>
+  <data name="AutoBootstrapPackageAssignedButNotInstalled" xml:space="preserve">
+    <value>Se ha asignado el paquete de arranque, pero el dispositivo ya estaba inscrito. Está disponible para la implementación a petición, pero no se ha solicitado</value>
+  </data>
+  <data name="AvailablePatchCriticality" xml:space="preserve">
+    <value>Gravedad de la revisión disponible</value>
+  </data>
+  <data name="AvatarsDefault" xml:space="preserve">
+    <value>Avatares</value>
+  </data>
+  <data name="BackLinkEmailSettings" xml:space="preserve">
+    <value>&lt; Configuración del correo electrónico</value>
+  </data>
+  <data name="BadgeOnly" xml:space="preserve">
+    <value>Ninguna (solo recuento de etiquetas)</value>
+  </data>
+  <data name="BasicAndCertificate" xml:space="preserve">
+    <value>Básico y Certificado</value>
+  </data>
+  <data name="BetaAppSourceHelpText" xml:space="preserve">
+    <value>Esta columna determina si la aplicación se descargó desde TestFlight y se considera una versión beta.</value>
+  </data>
+  <data name="BlockingApplicationsInfoMessage" xml:space="preserve">
+    <value>Defina las aplicaciones o procesos que puedan bloquear una instalación antes de que finalice de forma segura. También puede utilizar esta opción para evitar salir de las aplicaciones antes de guardar.</value>
+  </data>
+  <data name="BlockingApplicationsTooltip" xml:space="preserve">
+    <value>Defina el nombre de la aplicación. Si la aplicación se encuentra en la carpeta /Aplicaciones/, puede definirse como nombre de archivo, y la ruta de acceso se detectará automáticamente.</value>
+  </data>
+  <data name="BookCategoriesHelp" xml:space="preserve">
+    <value>Categorizar el paquete de libro con categorías predefinidas o categorías personalizadas para facilitar el acceso en el catálogo de libros</value>
+  </data>
+  <data name="BootstrapPackageAssignedAndInstallCommandAcknowledged" xml:space="preserve">
+    <value>Paquete de arranque asignado y comando de instalación confirmados</value>
+  </data>
+  <data name="BootstrapPackageAssignedButInstallCommandNotAcknowledged" xml:space="preserve">
+    <value>El paquete de arranque se ha asignado, pero el comando de instalación no se ha confirmado aún</value>
+  </data>
+  <data name="BoxerSmimeInfoMsg" xml:space="preserve">
+    <value>La configuración a continuación será reconocida por Boxer en las versiones de la aplicación 5.21 y posteriores. Para las versiones anteriores, utilice la carga útil de "credenciales" en el perfil de SDK personalizado asociado con esta aplicación</value>
+  </data>
+  <data name="BoxerTrustStoreOnly" xml:space="preserve">
+    <value>Solo almacén de confianza de Boxer</value>
+  </data>
+  <data name="BuildNumber" xml:space="preserve">
+    <value>Número de compilación</value>
+  </data>
+  <data name="BulkActionExceptionMessage" xml:space="preserve">
+    <value>Seleccione el filtro para realizar la operación en un gran número de dispositivos.</value>
+  </data>
+  <data name="BulkSyncTunnelConfigAlert" xml:space="preserve">
+    <value>La configuración de Tunnel se sincronizará en los dispositivos con asignaciones válidas.</value>
+  </data>
+  <data name="Bundleidwarningforb2bapps" xml:space="preserve">
+    <value>El ID de paquete es obligatorio para la distribución administrada y la implementación correcta de aplicaciones personalizadas.</value>
+  </data>
+  <data name="CalendarMaxSyncPeriodInfo" xml:space="preserve">
+    <value>La anterioridad con la que un usuario puede comenzar a sincronizar sus eventos de calendario.</value>
+  </data>
+  <data name="CannotAllotMoreThanArgLicenses" xml:space="preserve">
+    <value>No se pueden asignar más de {0} licencias</value>
+  </data>
+  <data name="CannotRevokeLicense" xml:space="preserve">
+    <value>No se puede revocar la licencia de la aplicación. Inténtelo con un ID de cuenta de VPP válido.</value>
+  </data>
+  <data name="CardsVersionMessage" xml:space="preserve">
+    <value>Estas políticas solamente se aplican a las versiones 1.1 y posteriores de Card. Para administrar los ajustes de Exchange para versiones de Card anteriores, desplácese a Ajustes personalizados en el perfil de SDK asociado a esta aplicación.</value>
+  </data>
+  <data name="CardsWarningToEditAllAssignments" xml:space="preserve">
+    <value>La configuración de Cards está lista para la instalación. Asegúrese de que las configuraciones que se hayan trasladado desde los ajustes personalizados del perfil de SDK asociado con esta aplicación sean correctas antes de la publicación.</value>
+  </data>
+  <data name="CertAuthenticationTip" xml:space="preserve">
+    <value>Para la autenticación de certificados, configure o cargue el certificado en el perfil de SDK.</value>
+  </data>
+  <data name="CertificateTemplateInfo" xml:space="preserve">
+    <value>Al configurar varias cuentas de correo electrónico administradas en los dispositivos, desde el mismo Exchange Server, debe configurar diferentes plantillas de certificado con un UPN diferente.</value>
+  </data>
+  <data name="CertificateUrlOnly" xml:space="preserve">
+    <value>Solo URL de certificado</value>
+  </data>
+  <data name="CertUrlWithFallback" xml:space="preserve">
+    <value>URL de certificado con reserva</value>
+  </data>
+  <data name="ChangeWhenToCallInstallComplete" xml:space="preserve">
+    <value>Cambiar criterios para determinar que la instalación se ha completado</value>
+  </data>
+  <data name="ChangeWhenToCallInstallCompleteDescription" xml:space="preserve">
+    <value>En el caso de cambiar el criterio para determinar si la instalación se ha completado después de instalar una aplicación en cualquier dispositivo, se activará la reevaluación de la aplicación en estos dispositivos. Si no se cumplen los nuevos criterios, la aplicación se eliminará de estos dispositivos. Debido a la posible interrupción que esta acción podría, se requiere un PIN de administrador para habilitar el cambio de los criterios.</value>
+  </data>
+  <data name="CheckingDeviceEligibility" xml:space="preserve">
+    <value>Comprobando idoneidad del dispositivo</value>
+  </data>
+  <data name="ClearConfigurationWarningText" xml:space="preserve">
+    <value>Al borrar esta configuración, se restablecerán todos los valores previamente guardados, los cuales no se podrán recuperar.
+¿Está seguro de que desea continuar?</value>
+  </data>
+  <data name="ClearConfigurationWarningTitleText" xml:space="preserve">
+    <value>Advertencia de configuración de borrado</value>
+  </data>
+  <data name="ClipboardEnabled" xml:space="preserve">
+    <value>Portapapeles habilitado</value>
+  </data>
+  <data name="ClipboardPasteActionEnabled" xml:space="preserve">
+    <value>Habilita la función de pegado del portapapeles</value>
+  </data>
+  <data name="CollectionMenuDescription" xml:space="preserve">
+    <value>Integra Workspace ONE Access con implementaciones de aplicaciones virtuales y de escritorio de Horizon, Horizon Cloud, Citrix o ThinApp.</value>
+  </data>
+  <data name="Collections" xml:space="preserve">
+    <value>Recopilaciones</value>
+  </data>
+  <data name="CollectionsHelp" xml:space="preserve">
+    <value>Controla el acceso a las colecciones de aplicaciones virtuales y solo se aplica a los administradores de directorio</value>
+  </data>
+  <data name="CompromisedProtectionTooltip" xml:space="preserve">
+    <value>Habilitar para realizar automáticamente una eliminación empresarial en los dispositivos comprometidos.</value>
+  </data>
+  <data name="ConditionIf" xml:space="preserve">
+    <value>Si</value>
+  </data>
+  <data name="ConditionIfArg" xml:space="preserve">
+    <value>Si {0}</value>
+  </data>
+  <data name="ConditionNotMet" xml:space="preserve">
+    <value>No se cumple la condición</value>
+  </data>
+  <data name="ConditionPrefix" xml:space="preserve">
+    <value>Filtro (Si)</value>
+  </data>
+  <data name="ConditionSuffix" xml:space="preserve">
+    <value>Acción (A continuación)</value>
+  </data>
+  <data name="ConditionSuffixUpgradeApp" xml:space="preserve">
+    <value>Acción (A continuación) Actualizar aplicación</value>
+  </data>
+  <data name="ConditionThen" xml:space="preserve">
+    <value>A continuación</value>
+  </data>
+  <data name="ConditionThenArg" xml:space="preserve">
+    <value>A continuación {0}</value>
+  </data>
+  <data name="ConditionTitle" xml:space="preserve">
+    <value>Comprobar condición</value>
+  </data>
+  <data name="ConfigurationFeedbackFor" xml:space="preserve">
+    <value>Comentarios sobre la configuración de {0}</value>
+  </data>
+  <data name="ConfigurationPositionChangeNotice" xml:space="preserve">
+    <value>Aviso de cambio de posición de la configuración</value>
+  </data>
+  <data name="ConfigureDLPSettingsTooltip" xml:space="preserve">
+    <value>Configurar los ajustes de DLP para esta cuenta</value>
+  </data>
+  <data name="ConfiguredUrlOnly" xml:space="preserve">
+    <value>Solo URL configurada</value>
+  </data>
+  <data name="ConfigureEmailSeparationTooltip" xml:space="preserve">
+    <value>Configurar la clasificación de correo electrónico para esta cuenta</value>
+  </data>
+  <data name="ConfigureRegistryData" xml:space="preserve">
+    <value>Configurar los datos del registro</value>
+  </data>
+  <data name="ConfigureRegistryDataHelpText" xml:space="preserve">
+    <value>Seleccione esta opción para buscar un valor concreto del registro</value>
+  </data>
+  <data name="ConfigureRegistryValues" xml:space="preserve">
+    <value>Configurar los valores del registro</value>
+  </data>
+  <data name="ConfigureRegistryValuesHelpText" xml:space="preserve">
+    <value>Deje esta opción desactivada para verificar solo la existencia de la ruta</value>
+  </data>
+  <data name="ConfigureSyncEmailCalenderTooltip" xml:space="preserve">
+    <value>Configurar cómo sincronizar el correo electrónico y el calendario</value>
+  </data>
+  <data name="ConfigureVpnAtApplicationLevel" xml:space="preserve">
+    <value>Seleccione un perfil de configuración de VPN que desee utilizar para esta aplicación. Este ajuste no se aplica a los dispositivos tvOS.</value>
+  </data>
+  <data name="ConfirmDeactivationApplicationRemoval" xml:space="preserve">
+    <value>La desactivación de una aplicación desinstalará todas sus versiones de todos los dispositivos en los que la aplicación es administrada por Workspace ONE. ¿Está seguro de que desea desactivar esta aplicación?</value>
+  </data>
+  <data name="ConfirmRetirementApplicationRemoval" xml:space="preserve">
+    <value>Si retira una versión de una aplicación, desinstalará esa misma versión de la aplicación de todos los dispositivos donde Workspace ONE administra la aplicación. Si está activada, la siguiente versión previa de la aplicación se envía a los dispositivos a los que está asignada. ¿Está seguro que desea retirar esta aplicación?</value>
+  </data>
+  <data name="ConversationThreading" xml:space="preserve">
+    <value>Cadena de mensajes</value>
+  </data>
+  <data name="CopyOf" xml:space="preserve">
+    <value>Copia de</value>
+  </data>
+  <data name="CopyOfArg" xml:space="preserve">
+    <value>Copia de - {0}</value>
+  </data>
+  <data name="CouldnotRetrieveApp" xml:space="preserve">
+    <value>No se ha podido recuperar la aplicación. Ya no existe o es posible que se haya eliminado.</value>
+  </data>
+  <data name="CouldnotRetrieveAssignmentForApp" xml:space="preserve">
+    <value>No se han podido recuperar las asignaciones de esta aplicación. Ya no existen o es posible que se hayan eliminado.</value>
+  </data>
+  <data name="CrashReporting" xml:space="preserve">
+    <value>Informes de bloqueo</value>
+  </data>
+  <data name="CreatedOnArgArgByArg" xml:space="preserve">
+    <value>Creado el {0} por {1}</value>
+  </data>
+  <data name="CreateWorkflow" xml:space="preserve">
+    <value>Crear flujo de trabajo</value>
+  </data>
+  <data name="CreateWorkflowBannerDescription" xml:space="preserve">
+    <value>Los flujos de trabajo de aplicaciones permiten controlar varias implementaciones de aplicaciones o actualizaciones en un orden específico en función de los criterios que defina. La administración de requisitos complejos de implementación y la actualización de aplicaciones que no cumplan con las políticas de seguridad y conformidad son ahora más fáciles de gestionar que nunca antes.</value>
+  </data>
+  <data name="CreateWorkflowBannerHeader" xml:space="preserve">
+    <value>Mayor control sobre la implementación y las actualizaciones de la aplicación</value>
+  </data>
+  <data name="CreateWorkflowNote" xml:space="preserve">
+    <value>Actualmente solo está disponible para los dispositivos de escritorio de Windows.</value>
+  </data>
+  <data name="CurrentActiveAppAndUEMVersionArgs" xml:space="preserve">
+    <value>La versión actual de la aplicación es: {0} y la versión de UEM de la aplicación es: {1}.</value>
+  </data>
+  <data name="CurrentDeployment" xml:space="preserve">
+    <value>Implementación actual</value>
+  </data>
+  <data name="CurrentUemVersion" xml:space="preserve">
+    <value>Versión actual de UEM</value>
+  </data>
+  <data name="CustomAccountConfiguration" xml:space="preserve">
+    <value>Configuración de la cuenta personalizada</value>
+  </data>
+  <data name="CustomOnlineMeetingUrlsInfo" xml:space="preserve">
+    <value>Esto habilita el botón QuickJoin que se encuentra en las invitaciones del calendario que tienen invitaciones para reuniones en línea, específicamente para las reuniones que no se encuentran en el formato estándar utilizado por las versiones de nube de los servicios de reuniones en línea. Si no dispone de una configuración local, puede configurarla con sus URL.</value>
+  </data>
+  <data name="DeactivateApplication" xml:space="preserve">
+    <value>Desactivar aplicación</value>
+  </data>
+  <data name="DefaultAppAvatarsInfo" xml:space="preserve">
+    <value>Alternar avatares</value>
+  </data>
+  <data name="DefaultAssignmentDescription" xml:space="preserve">
+    <value>Las directivas de esta asignación se utilizarán de forma predeterminada para las asignaciones de flujos de trabajo.</value>
+  </data>
+  <data name="DefaultAssignmentPrompt" xml:space="preserve">
+    <value>¿Está seguro de que desea utilizar las políticas de esta asignación como predeterminadas en su lugar?</value>
+  </data>
+  <data name="DefaultAssignmentPromptTitle" xml:space="preserve">
+    <value>Cambiar directivas predeterminadas</value>
+  </data>
+  <data name="DefaultAssignmentTooltip" xml:space="preserve">
+    <value>Cuando se habilita esta opción, los dispositivos que tengan esta aplicación asignada desde flujos de trabajo recibirán estas directivas de forma predeterminada, a menos que se anulen por otra asignación de directiva de prioridad más alta para los dispositivos. Solo se puede marcar una directiva como predeterminada para una aplicación.</value>
+  </data>
+  <data name="DefaultCalendarSyncPeriod" xml:space="preserve">
+    <value>Periodo predeterminado de sincronización de calendario</value>
+  </data>
+  <data name="DefaultCallerIDInfo" xml:space="preserve">
+    <value>Habilite la exportación de nombres y números de los contactos de forma predeterminada. Este ajuste requiere que la opción Identificador de llamada en Workspace ONE UEM Console se establezca como Sin restricciones.</value>
+  </data>
+  <data name="DefaultConversationViewInfo" xml:space="preserve">
+    <value>Esto configura la vista de conversación como predeterminada para agrupar correos electrónicos o no agrupar los correos electrónicos por conversación</value>
+  </data>
+  <data name="DefaultEmailSyncPeriod" xml:space="preserve">
+    <value>Periodo predeterminado de sincronización del correo electrónico</value>
+  </data>
+  <data name="DeleteEmailAccountContent" xml:space="preserve">
+    <value>¿Está seguro de que desea eliminar esta cuenta de correo electrónico?</value>
+  </data>
+  <data name="DeleteEmailAccountTitle" xml:space="preserve">
+    <value>Eliminar cuenta de correo electrónico</value>
+  </data>
+  <data name="DeleteOnSpamForwardInfo" xml:space="preserve">
+    <value>Configure esta opción para eliminar el correo electrónico no deseado del dispositivo del usuario final tras el reenvío.</value>
+  </data>
+  <data name="DeleteTabContentLabel" xml:space="preserve">
+    <value>¿Está seguro de que desea eliminar esta instancia? Esta configuración ya no se aplicará a la aplicación.</value>
+  </data>
+  <data name="DeleteTabTitleLabel" xml:space="preserve">
+    <value>Eliminar instancia</value>
+  </data>
+  <data name="DependencyMissing" xml:space="preserve">
+    <value>Dependencia ausente</value>
+  </data>
+  <data name="DependentAppValidationFailed" xml:space="preserve">
+    <value>Error de validación de la aplicación dependiente</value>
+  </data>
+  <data name="DeploymentProgressToolTip" xml:space="preserve">
+    <value>Muestra los detalles del progreso de la implementación en los dispositivos asignados para esta versión de la aplicación.</value>
+  </data>
+  <data name="DeploymentStatus" xml:space="preserve">
+    <value>Estado de implementación</value>
+  </data>
+  <data name="DeploymentTimeInvalid" xml:space="preserve">
+    <value>Proporcione un tiempo entre {0}</value>
+    <comment>Please provide time between between 01:00 - 12:59</comment>
+  </data>
+  <data name="DeployX86FileToX64MachineInfo" xml:space="preserve">
+    <value>Se puede cargar el archivo de la arquitectura X86 para implementarse en máquinas de la arquitectura X86</value>
+  </data>
+  <data name="DerivedCredentialForFirstaccount" xml:space="preserve">
+    <value>{0} admite solo un certificado de autenticación único. Seleccione esta opción solo para la cuenta de correo electrónico administrada principal.
+Para usar {0} con versiones de la aplicación Boxer inferiores a la 5.21, pase el valor "PolicyDerivedCredentials" del KVP personalizado desde la sección "Configuración de la aplicación".</value>
+  </data>
+  <data name="DerivedCredentialSmimeForFirstaccount" xml:space="preserve">
+    <value>PIV-D admite solo un certificado de S/MIME único. Seleccione esta opción solo para la cuenta de correo electrónico administrada principal.
+Para usar PIV-D con versiones de la aplicación Boxer inferiores a la 5.21, pase el valor "PolicyDerivedCredentials" de KVP personalizado desde la sección "Configuración de la aplicación".</value>
+  </data>
+  <data name="Descriptions" xml:space="preserve">
+    <value>Descripciones</value>
+  </data>
+  <data name="DesiredStateManagementTooltip" xml:space="preserve">
+    <value>Si esta opción está habilitada y el usuario final elimina la aplicación, la aplicación se volverá a instalar automáticamente en la siguiente sincronización del Hub.
+Si está inhabilitada y el usuario final elimina la aplicación, la aplicación no se volverá a instalar automáticamente, a menos que se envíe desde el catálogo o UEM Console.</value>
+  </data>
+  <data name="DeviceAndBoxerTrustStore" xml:space="preserve">
+    <value>Almacén de confianza del dispositivo y Boxer</value>
+  </data>
+  <data name="DeviceArchitecture" xml:space="preserve">
+    <value>Arquitectura del dispositivo</value>
+  </data>
+  <data name="DeviceAssignmentEnableCountArg" xml:space="preserve">
+    <value>La aplicación es apta para la asignación basada en dispositivos. Si decide habilitar esta opción, todos los dispositivos iOS 9+ y macOS 10.11+ recibirán una licencia por cada dispositivo. Actualmente, tiene {0} dispositivos iOS 9+/macOS 10.11+ asignados. Estos dispositivos no requieren un ID de Apple para recibir la aplicación.</value>
+  </data>
+  <data name="DeviceAssignmentEnableWithTvOSCountArg" xml:space="preserve">
+    <value>La aplicación es apta para la asignación basada en dispositivos. Si decide habilitar esta opción, todos los dispositivos iOS 9+ y macOS 10.11+ recibirán una licencia por cada dispositivo. Actualmente, tiene {0} dispositivos iOS 9+/macOS 10.11+ asignados. Estos dispositivos no requieren un ID de Apple para recibir la aplicación. Los dispositivos tvOS solo podrán usar las licencias basadas en dispositivos y no necesitarán implementar ninguna acción por parte del administrador.</value>
+  </data>
+  <data name="DeviceBasedVPPAppSourceHelpText" xml:space="preserve">
+    <value>Esta columna determina si se instaló una aplicación utilizando una licencia basada en el dispositivo con el programa de compras por volumen.</value>
+  </data>
+  <data name="DeviceEligibilityCheckFailed" xml:space="preserve">
+    <value>Error al comprobar la idoneidad del dispositivo</value>
+  </data>
+  <data name="DeviceGuardErrorArg" xml:space="preserve">
+    <value>Para habilitar Device Guard, se requiere una clave de licencia de Windows Enterprise en {0}.</value>
+  </data>
+  <data name="DeviceReportedReason" xml:space="preserve">
+    <value>Motivo reportado del dispositivo</value>
+  </data>
+  <data name="DeviceTrustStoreOnly" xml:space="preserve">
+    <value>Solo almacén de confianza del dispositivo</value>
+  </data>
+  <data name="DeviceUuIdLookUpText" xml:space="preserve">
+    <value>UUID de dispositivo</value>
+  </data>
+  <data name="DisableAppConfiguration" xml:space="preserve">
+    <value>Deshabilitar configuración de la aplicación</value>
+  </data>
+  <data name="DisableAppConfigWarning" xml:space="preserve">
+    <value>Al deshabilitar la configuración de la aplicación, se eliminará la configuración y se podrá eliminar o modificar la configuración de la aplicación en el dispositivo.</value>
+  </data>
+  <data name="DisableCDNWarning" xml:space="preserve">
+    <value>Se cargará una aplicación con un tamaño superior a {0} MB. No se permite la deshabilitación de CDN.</value>
+  </data>
+  <data name="DisableKeyEscrowInfo" xml:space="preserve">
+    <value>Deshabilita la clave de custodia en el servidor. Al deshabilitar esta opción, se deshabilitará la función "¿Olvidó su código de acceso?" (al utilizar el flujo de inicio de sesión de SDK).</value>
+  </data>
+  <data name="DisableKeyEscrowYesNoInfo" xml:space="preserve">
+    <value>Deshabilita la clave de depósito de garantía en el servidor. Cuando se establece en "Sí", se deshabilitará la función "¿Ha olvidado su código de acceso?" (cuando se utiliza el flujo de inicio de sesión de SDK).</value>
+  </data>
+  <data name="DisplayInAppCatalog" xml:space="preserve">
+    <value>Mostrar en el catálogo de aplicaciones</value>
+  </data>
+  <data name="DisplayInAppCatalogHelp" xml:space="preserve">
+    <value>Utilice este ajuste para mostrar u ocultar la aplicación en el catálogo de aplicaciones de Workspace ONE</value>
+  </data>
+  <data name="DlpHelpText" xml:space="preserve">
+    <value>Las políticas de DLP proveen intercambio controlado de datos entre las aplicaciones administradas y sin administrar del dispositivo. Para prevenir la pérdida de datos en esta aplicación tiene que seleccionar "Acceso administrado" y crear políticas del perfil de "Restricciones" para los tipos deseados.</value>
+  </data>
+  <data name="DoNotCollectApplicationListWarningForCompliancePolicy" xml:space="preserve">
+    <value>La directiva de privacidad de su aplicación personal está establecida en Do Not Collect (No recopilar) para al menos un dispositivo de un grupo organizativo de su jerarquía, como mínimo. No se aplicarán las directivas de conformidad asociadas a los grupos de aplicación de las aplicaciones personales de estos dispositivos.</value>
+  </data>
+  <data name="DownloadAutomaticallyAndInstall" xml:space="preserve">
+    <value>Esta aplicación se descargará automáticamente y se instalará en su dispositivo.</value>
+  </data>
+  <data name="DownloadAutomaticallyAndInstallInApplicationsFolder" xml:space="preserve">
+    <value>La aplicación se descargará automáticamente y se instalará en la carpeta Aplicaciones.</value>
+  </data>
+  <data name="DownloadFeedback" xml:space="preserve">
+    <value>Descargar comentarios</value>
+  </data>
+  <data name="DoYouWantToDeletePpkg" xml:space="preserve">
+    <value>¿Desea eliminar el paquete de aprovisionamiento (PPKG)?</value>
+  </data>
+  <data name="DuplicateAppConfigInTab" xml:space="preserve">
+    <value>Configuración de aplicaciones duplicadas en la pestaña {0}</value>
+  </data>
+  <data name="DuplicateAssignmentName" xml:space="preserve">
+    <value>Ya existe una regla de asignación con este nombre.</value>
+  </data>
+  <data name="DuplicateEmailSettings" xml:space="preserve">
+    <value>Duplicar {0} tras la configuración en la pestaña {1}</value>
+  </data>
+  <data name="DuplicateVppSmartGroupPresent" xml:space="preserve">
+    <value>No se puede agregar el mismo grupo inteligente dos veces.</value>
+  </data>
+  <data name="E_FAIL" xml:space="preserve">
+    <value>La herramienta de implementación de Office (ODT) no se puede usar para instalar la licencia de volumen</value>
+  </data>
+  <data name="E_UNEXPECTED" xml:space="preserve">
+    <value>Se intentó desinstalar cuando C2R Office no está en la máquina.</value>
+  </data>
+  <data name="EARAppUpdateAvailable" xml:space="preserve">
+    <value>Actualización de la aplicación EAR disponible</value>
+  </data>
+  <data name="EARAppUpdateMode" xml:space="preserve">
+    <value>Notificaciones de actualización</value>
+  </data>
+  <data name="EARAppUpdateModeHelp" xml:space="preserve">
+    <value>Habilite esta opción para que se le notifique cada vez que se encuentre disponible una nueva versión de esta aplicación.</value>
+  </data>
+  <data name="EARNewAppVersionAvailable" xml:space="preserve">
+    <value>Ya está disponible una nueva versión de {0} v{1} para su descarga</value>
+  </data>
+  <data name="EasilyAddWindowsAppsFromEnterpriseAppRepository" xml:space="preserve">
+    <value>Agregar fácilmente aplicaciones de Windows del repositorio de aplicaciones Enterprise</value>
+  </data>
+  <data name="EditApp" xml:space="preserve">
+    <value>Editar aplicación</value>
+  </data>
+  <data name="EditApplicationArgOpensDialog" xml:space="preserve">
+    <value>Editar aplicación {0} abre un cuadro de diálogo</value>
+    <comment>The placeholder in this label key contains application name.</comment>
+  </data>
+  <data name="EditConfiguration" xml:space="preserve">
+    <value>Editar configuración</value>
+  </data>
+  <data name="EditWarning" xml:space="preserve">
+    <value>Editar advertencia</value>
+  </data>
+  <data name="EditWarningMessage" xml:space="preserve">
+    <value>La edición de la configuración asociada a este dispositivo aplicará estos cambios al resto de dispositivos en los grupos inteligentes de {0}. ¿Está seguro de que desea continuar?</value>
+  </data>
+  <data name="EditWorkflow" xml:space="preserve">
+    <value>Editar flujo de trabajo</value>
+  </data>
+  <data name="EditWtcicCriteriaHelpText" xml:space="preserve">
+    <value>Haga clic en Editar e introduzca el PIN de administrador para cambiar los criterios para determinar si la instalación se ha completado una vez la aplicación se haya puesto en cola o se instale en algún dispositivo. Tenga en cuenta que si especifica criterios incorrectos, la aplicación se eliminará de los dispositivos.</value>
+  </data>
+  <data name="EmailClassification" xml:space="preserve">
+    <value>Clasificación de correo electrónico</value>
+  </data>
+  <data name="EmailClassificationInfo" xml:space="preserve">
+    <value>Configurar clasificación de correo electrónico</value>
+  </data>
+  <data name="EmailMaxSyncPeriodInfo" xml:space="preserve">
+    <value>La anterioridad con la que un usuario puede comenzar a realizar la sincronización con sus mensajes de correo electrónico.</value>
+  </data>
+  <data name="EmmManagedAccessHelpInfo" xml:space="preserve">
+    <value>Puede continuar personalizando la configuración de {0} para esta aplicación sin necesidad de una inscripción en el acceso administrado de EMM.</value>
+  </data>
+  <data name="EnableClipboardPasteActionTip" xml:space="preserve">
+    <value>Configure el valor en true para habilitar la función de pegado. La función de pegado se admite de forma predeterminada, en el caso de que esta clave no se configure.</value>
+  </data>
+  <data name="EnableClipboardTip" xml:space="preserve">
+    <value>Configure el valor en true para habilitar la función del portapapeles solo entre las aplicaciones de Workspace ONE.</value>
+  </data>
+  <data name="EnableComplianceOnDeviceTooltip" xml:space="preserve">
+    <value>Si esta opción está habilitada, las reglas se evaluarán por su compatibilidad con las aplicaciones SDK.</value>
+  </data>
+  <data name="EnableDeviceAssignmentConfirmationBulk" xml:space="preserve">
+    <value>¿Está seguro de que desea habilitar la asignación de licencias basada en dispositivos para las aplicaciones seleccionadas?</value>
+  </data>
+  <data name="EnableDeviceGuard" xml:space="preserve">
+    <value>Habilitar la protección de dispositivos después de instalar aplicaciones</value>
+  </data>
+  <data name="EnableKeyEscrow" xml:space="preserve">
+    <value>Habilitar FastSync</value>
+  </data>
+  <data name="EnableKeyEscrowInfo" xml:space="preserve">
+    <value>FastSync mejora la sincronización en segundo plano y la velocidad de las sincronizaciones posteriores. Los ajustes de FastSync se aplican cuando el servicio de notificaciones de correo electrónico está habilitado y configurado</value>
+  </data>
+  <data name="EnableNewAuthEncoding" xml:space="preserve">
+    <value>Compatibilidad con metafonías en la contraseña</value>
+  </data>
+  <data name="EnableNewAuthEncodingInfo" xml:space="preserve">
+    <value>Habilite esta opción para usar la codificación ISO-8859-1 para la contraseña de Boxer con el fin de admitir caracteres especiales y metafonías (ä y ß, etc.) del alemán.</value>
+  </data>
+  <data name="EnableOfflineAccessTooltip" xml:space="preserve">
+    <value>Cuando esta opción está inhabilitada, el acceso sin conexión se limita. Cuando está habilitada y el periodo máximo permitido sin conexión se establece en 0, se permite el acceso sin conexión durante un plazo indefinido. Cuando está habilitada y se supera un período máximo permitido sin conexión distinto a cero, el acceso se bloquea</value>
+  </data>
+  <data name="EnableOsVersionTooltip" xml:space="preserve">
+    <value>Cuando está habilitada, la aplicación evaluará la versión del sistema operativo en relación con la regla configurada y ejecutará la acción cuando se cumpla.</value>
+  </data>
+  <data name="EnableSecurityPatchDateTooltip" xml:space="preserve">
+    <value>Si esta opción está habilitada, la aplicación evaluará la fecha de revisión de seguridad en el dispositivo con respecto a la regla configurada y ejecutará la acción si la revisión no está actualizada. Esta configuración se aplica solamente a dispositivos Android</value>
+  </data>
+  <data name="EncryptionCertificateAuthority" xml:space="preserve">
+    <value>Entidad de certificación de cifrado</value>
+  </data>
+  <data name="EncryptionCertificateTemplate" xml:space="preserve">
+    <value>Plantilla de certificación de cifrado</value>
+  </data>
+  <data name="ENSAPIToken" xml:space="preserve">
+    <value>Token de API de ENS2</value>
+  </data>
+  <data name="ENSAPITokenInfo" xml:space="preserve">
+    <value>Token de API proporcionado por VMware para activar el servicio ENS2 en la nube.</value>
+  </data>
+  <data name="ENSFetchTokenInfo" xml:space="preserve">
+    <value>Puede recuperar un nuevo token al introducir una nueva dirección de servidor ENS2. No podrá usar un token configurado previamente con una nueva dirección de servidor ENS2.</value>
+  </data>
+  <data name="ENSInvalidAPITokenMessage" xml:space="preserve">
+    <value>No se ha podido recuperar el token. Asegúrese de que la dirección del servidor ENS2 es correcta y de que el servidor ENS2 funciona correctamente y vuelva a intentarlo. Si el problema persiste, revise los registros de UEM Console y/o los registros del servidor ENS2 y póngase en contacto con el soporte de VMware.</value>
+  </data>
+  <data name="ENSLinkAddress" xml:space="preserve">
+    <value>Dirección del servidor ENS2</value>
+  </data>
+  <data name="ENSLinkAddressInfo" xml:space="preserve">
+    <value>La dirección del sistema ENS2 a la que se conectarán los usuarios.</value>
+  </data>
+  <data name="ENSRetrieveTokenBtnText" xml:space="preserve">
+    <value>Recuperar token</value>
+  </data>
+  <data name="ENSValidAPITokenMessage" xml:space="preserve">
+    <value>Token de API de ENS2 recuperado.</value>
+  </data>
+  <data name="EnterAppUrlFromGooglePlayStore" xml:space="preserve">
+    <value>Introduzca la dirección URL de la aplicación de la tienda Google Play</value>
+  </data>
+  <data name="EnterKeyValuePairsForApplicationAttributes" xml:space="preserve">
+    <value>Introducir pares clave-valor para proporcionar atributos a las aplicaciones</value>
+  </data>
+  <data name="EnterKeyValuePairsToConfigureWhenAppNotSupport" xml:space="preserve">
+    <value>Esta aplicación no es compatible con la configuración de la aplicación. Si está utilizando el SDK para configurar la aplicación, introduzca a continuación los pares de clave-valor</value>
+  </data>
+  <data name="EnterNumberBetweenArgAndArg" xml:space="preserve">
+    <value>Introduzca un número entre {0} - {1}.</value>
+  </data>
+  <data name="EnterpriseAppCatalogDetailsLegalTooltip" xml:space="preserve">
+    <value>Al hacer clic en la opción de continuar, descargará software de un sitio web de terceros. VMware no ofrece ninguna garantía respecto de la calidad, el contenido, la fiabilidad o las prácticas de seguridad del software de terceros y VMware no aceptará responsabilidad alguna si decide descargar y utilizar el software de terceros.</value>
+  </data>
+  <data name="EnterpriseAppCatalogFailedToLoad" xml:space="preserve">
+    <value>No se ha podido cargar el catálogo de aplicaciones. Intente volver a cargarlo y póngase en contacto con el administrador si el problema persiste.</value>
+  </data>
+  <data name="EnterpriseAppCatalogNoApplications" xml:space="preserve">
+    <value>No hay aplicaciones disponibles a través del catálogo, intente volver a cargarlo y póngase en contacto con el administrador si el problema persiste.</value>
+  </data>
+  <data name="EnterpriseAppRepository" xml:space="preserve">
+    <value>Repositorio de aplicaciones de Enterprise.</value>
+  </data>
+  <data name="EnterpriseAppRepositoryAddAppName" xml:space="preserve">
+    <value>Introduzca el nombre de la aplicación como debería aparecer en el catálogo de Intelligent Hub.</value>
+  </data>
+  <data name="EnterpriseAppRepositoryAppUpdateMode" xml:space="preserve">
+    <value>Notificaciones de actualización</value>
+  </data>
+  <data name="EnterpriseAppRepositoryAppUpdateModeInfo" xml:space="preserve">
+    <value>Seleccione una opción para las actualizaciones de aplicaciones.</value>
+  </data>
+  <data name="EnterpriseAppRepositoryAppUpdateModeNone" xml:space="preserve">
+    <value>Ninguno</value>
+  </data>
+  <data name="EnterpriseAppRepositoryAppUpdateModeNotify" xml:space="preserve">
+    <value>Notificar</value>
+  </data>
+  <data name="EnterpriseAppSourceHelpText" xml:space="preserve">
+    <value>Esta columna determina si una aplicación se ha firmado mediante un certificado de firma empresarial y no se ha distribuido a través de la App Store.</value>
+  </data>
+  <data name="EnterValidBuildVersion" xml:space="preserve">
+    <value>Introduzca un valor válido en el campo Versión de la compilación</value>
+  </data>
+  <data name="EnterValidWhitelistedApplications" xml:space="preserve">
+    <value>Introducir aplicaciones permitidas válidas</value>
+  </data>
+  <data name="EntireChain" xml:space="preserve">
+    <value>Cadena completa</value>
+  </data>
+  <data name="ERROR_ANOTHER_RUNNING_SCENARIO" xml:space="preserve">
+    <value>Se está ejecutando otro escenario</value>
+  </data>
+  <data name="ERROR_COMPLETING_SCENARIO" xml:space="preserve">
+    <value>No se pudo completar el proceso. Posibles motivos:
+
+    Instalación cancelada por el usuario
+    Instalación cancelada por otra instalación
+    No hay suficiente espacio de disco durante la instalación
+    ID de idioma desconocido</value>
+  </data>
+  <data name="ERROR_COMPLETING_SCENARIO_NEED_CLEAN_UP" xml:space="preserve">
+    <value>Posibles motivos:
+
+    SKU desconocidos
+    El contenido no existe en la CDN:
+        Por intentar instalar un LAP no compatible, como zh-sg
+        Por un problema de la CDN que hace que el contenido no está disponible
+    Problema de comprobación de firma, como un error en la comprobación de firma del contenido de Office
+    Usuario cancelado</value>
+  </data>
+  <data name="ERROR_HANDLING_COMMAND_LINE" xml:space="preserve">
+    <value>Error de línea de comandos de C2RClient</value>
+  </data>
+  <data name="ERROR_INSTALL_FAILURE" xml:space="preserve">
+    <value>Se produjo un error en la comprobación de prerrequisitos.
+
+    SxS (se intentó instalar cuando 2016 MSI está instalado)
+    Los bits no coinciden entre la versión de Office instalada actualmente y la versión de Office que se intentó instalar (por ejemplo, cuando se intenta instalar una versión de 32 bits estando instalada en ese momento la versión de 64 bits).</value>
+  </data>
+  <data name="ERROR_INSTALL_USEREXIT" xml:space="preserve">
+    <value>El usuario canceló la instalación</value>
+  </data>
+  <data name="ERROR_INVALID_DATA" xml:space="preserve">
+    <value>No se puede verificar la firma de la herramienta de implementación de Office (ODT) descargada</value>
+  </data>
+  <data name="ERROR_PROCESSPOOL_INITIALIZATION" xml:space="preserve">
+    <value>No se pudo iniciar C2RClient</value>
+  </data>
+  <data name="ERROR_QUEUE_SCENARIO" xml:space="preserve">
+    <value>No se pudo poner en cola el escenario de instalación en C2RClient</value>
+  </data>
+  <data name="ERROR_REMOVE_INSTALLATION_NEEDED" xml:space="preserve">
+    <value>El cliente solicita la limpieza de clientes en un escenario de "Eliminar instalación"</value>
+  </data>
+  <data name="ERROR_SCENARIO_CANCELLED" xml:space="preserve">
+    <value>Actualización bloqueada por aplicaciones en ejecución</value>
+  </data>
+  <data name="ERROR_SCENARIO_CANCELLED_AS_PLANNED" xml:space="preserve">
+    <value>Escenario cancelado según la planificación</value>
+  </data>
+  <data name="ERROR_TIMEOUT" xml:space="preserve">
+    <value>No se pudo descargar la herramienta de implementación de Office (ODT)</value>
+  </data>
+  <data name="ErrorApplicationSyncJobAppPublish" xml:space="preserve">
+    <value>Error en el trabajo de sincronización de aplicaciones tras la publicación de aplicaciones.</value>
+  </data>
+  <data name="EscrowExpiry" xml:space="preserve">
+    <value>Caducidad de FastSync</value>
+  </data>
+  <data name="EscrowExpiryInfo" xml:space="preserve">
+    <value>Establezca el tiempo de caducidad en horas en el que Workspace ONE Boxer no recibirá la clave de FastSync. Los ajustes de FastSync se aplican cuando el servicio de notificaciones de correo electrónico está habilitado y configurado</value>
+  </data>
+  <data name="EscrowGatewayToolTipInfo" xml:space="preserve">
+    <value>La configuración de la puerta de enlace de custodia solo se aplicará cuando dicha puerta de enlace esté configurada en su entorno</value>
+  </data>
+  <data name="EventBased" xml:space="preserve">
+    <value>Basado en evento</value>
+  </data>
+  <data name="EventTargeted" xml:space="preserve">
+    <value>Evento con destino</value>
+  </data>
+  <data name="EWSConfigPositionChangeInfo" xml:space="preserve">
+    <value>Configure si desea establecer la URL de EWS en la sección "Ajustes de correo electrónico".</value>
+  </data>
+  <data name="EWSUrl" xml:space="preserve">
+    <value>URL de EWS</value>
+  </data>
+  <data name="EWSUrlInfo" xml:space="preserve">
+    <value>Dirección del endpoint de EWS (o SEG)</value>
+  </data>
+  <data name="EwsUrlInfoMsg" xml:space="preserve">
+    <value>La configuración de URL de EWS se ha trasladado a la sección de ajustes del correo electrónico</value>
+  </data>
+  <data name="ExchangeSettings" xml:space="preserve">
+    <value>Ajustes de Microsoft Exchange</value>
+  </data>
+  <data name="ExchangeURL" xml:space="preserve">
+    <value>URL de Exchange</value>
+  </data>
+  <data name="ExchangeUserName" xml:space="preserve">
+    <value>Nombre de usuario de Exchange</value>
+  </data>
+  <data name="ExecutionFailed" xml:space="preserve">
+    <value>Error de ejecución</value>
+  </data>
+  <data name="ExportFactoryPpkg" xml:space="preserve">
+    <value>Exportar</value>
+  </data>
+  <data name="ExportPpkgMessage" xml:space="preserve">
+    <value>Seleccione aplicaciones de una lista de aplicaciones compatibles y expórtelas a un paquete de aprovisionamiento de Windows (PPKG). Cuando la exportación a PPKG se haya completado, se enviará una notificación con un enlace para descargarlo.</value>
+  </data>
+  <data name="ExportPpkgWindowsNoAppsMessage" xml:space="preserve">
+    <value>La exportación de aplicaciones a un paquete de aprovisionamiento de Windows (PPKG) permite el empaquetado de aplicaciones para instalaciones en fábrica. Cargue aplicaciones de Windows para exportarlas a un PPKG.</value>
+  </data>
+  <data name="ExternalApplicationIdInfo" xml:space="preserve">
+    <value>Este es el identificador exclusivo de la tienda App Store de Apple. Se puede ver en la dirección URL de iTunes de la aplicación</value>
+  </data>
+  <data name="FactoryProvisioningServiceNotRunning" xml:space="preserve">
+    <value>El servicio de aprovisionamiento de fábrica no está configurado ni en ejecución. Compruebe la instalación de Workspace ONE UEM.</value>
+  </data>
+  <data name="FailedToUploadApplication" xml:space="preserve">
+    <value>Error al cargar la aplicación.</value>
+  </data>
+  <data name="FastAsyncConfigPositionChangeInfo" xml:space="preserve">
+    <value>Configure si desea establecer la URL de EWS en la sección "Ajustes de correo electrónico".
+Configure si desea habilitar FastSync y su caducidad en la sección "Políticas de la aplicación" &gt; "Avanzado".</value>
+  </data>
+  <data name="FeaturedApps" xml:space="preserve">
+    <value>Aplicaciones destacadas</value>
+  </data>
+  <data name="FeedbackChannelDataNotAvailableMessage" xml:space="preserve">
+    <value>Este dispositivo no está generando comentarios en este momento y es posible que se encuentre sin conexión. Vuelva a intentarlo más tarde.</value>
+  </data>
+  <data name="FeedbackChannelEditConfigurationMessage" xml:space="preserve">
+    <value>Los cambios de configuración se aplicarán en todos los dispositivos que pertenezcan a los siguientes grupos inteligentes:
+
+{0}.
+
+¿Está seguro de que desea realizar alguna modificación?</value>
+  </data>
+  <data name="FeedbackDateTime" xml:space="preserve">
+    <value>Hora de notificación del dispositivo</value>
+  </data>
+  <data name="FeedbackMessage" xml:space="preserve">
+    <value>Mensaje</value>
+  </data>
+  <data name="FeedbackTitle" xml:space="preserve">
+    <value>Título del comentario</value>
+  </data>
+  <data name="FeedbackTriggerValue" xml:space="preserve">
+    <value>Valor del activador</value>
+  </data>
+  <data name="FieldShouldBeANumber" xml:space="preserve">
+    <value>El campo debe ser un número</value>
+  </data>
+  <data name="FieldShouldBeBetweenArgAndMaxInt" xml:space="preserve">
+    <value>El campo debe ser un número entre {0} y {1}</value>
+  </data>
+  <data name="FieldShouldBeValidColourInHexFormat" xml:space="preserve">
+    <value>Este campo requiere color en el texto en formato hexadecimal</value>
+  </data>
+  <data name="FileFormatNotSupported" xml:space="preserve">
+    <value>No se admite el formato de archivo seleccionado. Seleccione un archivo XML.</value>
+  </data>
+  <data name="FilterAppleSystemApps" xml:space="preserve">
+    <value>Mostrar aplicaciones com.apple.*</value>
+  </data>
+  <data name="FilterBySmartGroup" xml:space="preserve">
+    <value>Filtrar por grupo inteligente</value>
+  </data>
+  <data name="FinalDetectionFailed" xml:space="preserve">
+    <value>Error en la detección final</value>
+  </data>
+  <data name="FlexDeploymentNewMessage" xml:space="preserve">
+    <value>Los dispositivos recibirán la aplicación en función de las configuraciones que se indican a continuación. Los dispositivos con varias asignaciones recibirán las directivas en orden de prioridad. Al ajustar la prioridad de una asignación en particular, se reasignarán automáticamente el resto de asignaciones. Seleccione la asignación que desea editar. Al agregar una nueva asignación, se creará una nueva regla en la parte inferior de la lista.</value>
+  </data>
+  <data name="FlexeraCriticalAppsArrived" xml:space="preserve">
+    <value>Hay disponibles nuevas revisiones de Flexera SVM</value>
+  </data>
+  <data name="FlexeraSVM" xml:space="preserve">
+    <value>SVM de Flexera</value>
+  </data>
+  <data name="ForwardAddAttachments" xml:space="preserve">
+    <value>Reenviar/agregar archivos adjuntos</value>
+  </data>
+  <data name="FromEnterpriseCatalog" xml:space="preserve">
+    <value>Del repositorio de aplicaciones de Enterprise</value>
+  </data>
+  <data name="GetStartedWithWorkflows" xml:space="preserve">
+    <value>Introducción a los flujos de trabajo</value>
+  </data>
+  <data name="GoToChromeWebStore" xml:space="preserve">
+    <value>Ir a Chrome Web Store</value>
+  </data>
+  <data name="HideNotificationsLabel" xml:space="preserve">
+    <value>Ocultar notificaciones</value>
+  </data>
+  <data name="HideNotificationsTooltip" xml:space="preserve">
+    <value>Habilite este ajuste para evitar que se muestren las notificaciones de instalación y desinstalación de esta aplicación. Esto solo se aplicará a las aplicaciones implementadas automáticamente.</value>
+  </data>
+  <data name="HighCriticality" xml:space="preserve">
+    <value>Gravedad alta</value>
+  </data>
+  <data name="IconFile" xml:space="preserve">
+    <value>Archivo de icono</value>
+  </data>
+  <data name="InactiveAppAlreadyExistsinConsole" xml:space="preserve">
+    <value>Esta aplicación ya se agregó a la consola y está en estado inactivo. Vuelva a activar la aplicación en la vista de lista de aplicaciones para continuar con la asignación.</value>
+  </data>
+  <data name="IncorrectExchangeURL" xml:space="preserve">
+    <value>Utilice el formato https://server.domain.com/EWS/Exchange.asmx.</value>
+  </data>
+  <data name="IndividualAppSizeLimitMessage" xml:space="preserve">
+    <value>Tamaño máximo de archivo permitido: {0} MB</value>
+  </data>
+  <data name="InstallAppExceptionMessage" xml:space="preserve">
+    <value>Seleccione el filtro para instalar la aplicación en una gran cantidad de dispositivos.</value>
+  </data>
+  <data name="InstallApplicationConfirmed" xml:space="preserve">
+    <value>Instalación de la aplicación confirmada por el dispositivo</value>
+  </data>
+  <data name="InstallAppOnAllBspAlert" xml:space="preserve">
+    <value>Está a punto de instalar la aplicación en todos los dispositivos. Si las licencias son limitadas, es posible que algunos dispositivos no reciban la aplicación. Haga clic en Aceptar para continuar. Licencias disponibles: {0} en línea, {1} sin conexión</value>
+  </data>
+  <data name="InstallationStatus" xml:space="preserve">
+    <value>Estado de instalación</value>
+  </data>
+  <data name="InstallationStatusLastScan" xml:space="preserve">
+    <value>Último escaneo del estado de instalación</value>
+  </data>
+  <data name="InstallCommandFailed" xml:space="preserve">
+    <value>Error del comando de instalación</value>
+  </data>
+  <data name="InstalledAndFeedbackAvailable" xml:space="preserve">
+    <value>Instalado (comentarios sobre configuración disponibles)</value>
+  </data>
+  <data name="InstalledAppVersion" xml:space="preserve">
+    <value>Versión de la aplicación instalada</value>
+  </data>
+  <data name="InstalledButHidden" xml:space="preserve">
+    <value>Instalado pero oculto</value>
+  </data>
+  <data name="InstalledByUser" xml:space="preserve">
+    <value>Instalado por el usuario</value>
+  </data>
+  <data name="InstalledEqualsAssigned" xml:space="preserve">
+    <value>Instalado = Asignado</value>
+  </data>
+  <data name="InstalledNotEqualsAssigned" xml:space="preserve">
+    <value>Instalado &lt;&gt; Asignado</value>
+  </data>
+  <data name="InstalledPersonalApp" xml:space="preserve">
+    <value>La aplicación personal se ha instalado</value>
+  </data>
+  <data name="InstalledSystemApp" xml:space="preserve">
+    <value>Aplicación del sistema instalada</value>
+  </data>
+  <data name="InstalledWithVersion" xml:space="preserve">
+    <value>({0}) se ha instalado</value>
+  </data>
+  <data name="InstallerDeferralExitCodeInvalid" xml:space="preserve">
+    <value>El código de salida no es válido.</value>
+  </data>
+  <data name="InstallerDeferralExitCodeLabel" xml:space="preserve">
+    <value>Código de salida de aplazamiento del instalador</value>
+  </data>
+  <data name="InstallerDeferralExitCodeRequired" xml:space="preserve">
+    <value>Se requiere código de salida.</value>
+  </data>
+  <data name="InstallerDeferralExitCodeTooltip" xml:space="preserve">
+    <value>Especifique el código del entero devuelto por el instalador para indicar que se ha aplazado la instalación de la aplicación. Esto permitirá volver a intentar la instalación de la aplicación en el siguiente intervalo de instalación.</value>
+  </data>
+  <data name="InstallerDeferralIntervalLabel" xml:space="preserve">
+    <value>Intervalo de aplazamiento del instalador</value>
+  </data>
+  <data name="InstallerDeferralIntervalOption12Hours" xml:space="preserve">
+    <value>12 horas</value>
+  </data>
+  <data name="InstallerDeferralIntervalOption24Hours" xml:space="preserve">
+    <value>24 horas</value>
+  </data>
+  <data name="InstallerDeferralIntervalOption2Hours" xml:space="preserve">
+    <value>2 horas</value>
+  </data>
+  <data name="InstallerDeferralIntervalOption4Hours" xml:space="preserve">
+    <value>4 horas</value>
+  </data>
+  <data name="InstallerDeferralIntervalOption8Hours" xml:space="preserve">
+    <value>8 horas</value>
+  </data>
+  <data name="InstallerDeferralIntervalTooltip" xml:space="preserve">
+    <value>Especificar el periodo de tiempo del aplazamiento</value>
+  </data>
+  <data name="InstallerDeferralNotificationCustom" xml:space="preserve">
+    <value>PERSONALIZADO</value>
+  </data>
+  <data name="InstallerDeferralNotificationLabel" xml:space="preserve">
+    <value>Usar UEM o notificaciones personalizadas</value>
+  </data>
+  <data name="InstallerDeferralNotificationTooltip" xml:space="preserve">
+    <value>Especifique si los aplazamientos deben utilizar UEM o notificaciones personalizadas</value>
+  </data>
+  <data name="InstallerDeferralNotificationUEM" xml:space="preserve">
+    <value>UEM</value>
+  </data>
+  <data name="InstallerPackageDeployment" xml:space="preserve">
+    <value>Implementación del paquete del instalador</value>
+  </data>
+  <data name="InstallInProgress" xml:space="preserve">
+    <value>Instalación en curso</value>
+  </data>
+  <data name="InstallOnSelectedDevices" xml:space="preserve">
+    <value>Esta aplicación solo se instalará en dispositivos con asignaciones válidas.</value>
+  </data>
+  <data name="InstallOnSelectedDevicesBspAlert" xml:space="preserve">
+    <value>Está a punto de instalar la aplicación en todos los dispositivos seleccionados. Si las licencias son limitadas, es posible que algunos dispositivos no reciban la aplicación. Haga clic en Aceptar para continuar. Licencias disponibles: {0} en línea, {1} sin conexión</value>
+  </data>
+  <data name="InstallStatusHeaderToolTip" xml:space="preserve">
+    <value>Esta es una representación de los datos reportados por los dispositivos, que contiene información detallada sobre el estado de instalación de esta aplicación y no está vinculada a ninguna versión en concreto.</value>
+  </data>
+  <data name="InstallSuccess" xml:space="preserve">
+    <value>Instalación correcta</value>
+  </data>
+  <data name="IntelligenceOptInMessageForFeedbackArg" xml:space="preserve">
+    <value>Para ver los comentarios de configuración de la aplicación, tendrá que participar en Intelligence. {0}</value>
+  </data>
+  <data name="InternalAppAssignmentUpToDate" xml:space="preserve">
+    <value>Actualizado. La versión de la aplicación asignada es la misma que la versión instalada</value>
+  </data>
+  <data name="InternalApplication" xml:space="preserve">
+    <value>Aplicación interna</value>
+  </data>
+  <data name="InternalApplications" xml:space="preserve">
+    <value>Aplicaciones internas</value>
+  </data>
+  <data name="InternalDomainsFieldError" xml:space="preserve">
+    <value>La lista de dominios debe ir entre corchetes. Por ejemplo: ["xyz.com","abc.com"]</value>
+  </data>
+  <data name="InternalDomainsInfo" xml:space="preserve">
+    <value>Defina los dominios internos o permitidos. El usuario puede deshabilitar la advertencia a través de la opción "Confirmar antes de enviar" cuando se definen los dominios internos y no se establecen destinatarios externos. Incluya cada dominio entre comillas dobles y use una coma como separador, escribiendo la lista entre corchetes. Por ejemplo: ["xyz.com","abc.com"].</value>
+  </data>
+  <data name="InternalTriggerAccountVersion" xml:space="preserve">
+    <value>Muestra los detalles de la acción más reciente que se ha llevado a cabo en los dispositivos asignados para esta versión de la aplicación.</value>
+  </data>
+  <data name="InvalidAppAttributeVpnKey" xml:space="preserve">
+    <value>VPNUUID no es válido para los atributos. Configure la tunelización de aplicaciones en su lugar</value>
+  </data>
+  <data name="InvalidApplicationBundleID" xml:space="preserve">
+    <value>ID de paquete de aplicaciones no válido</value>
+  </data>
+  <data name="InvalidApplicationError" xml:space="preserve">
+    <value>El formato del paquete de aplicaciones no es compatible</value>
+  </data>
+  <data name="InvalidMultiStringValue" xml:space="preserve">
+    <value>Especifique cadenas que no tengan comillas</value>
+  </data>
+  <data name="InvalidNsxEntryForApplication" xml:space="preserve">
+    <value>Entrada de NSX no válida para la aplicación seleccionada</value>
+  </data>
+  <data name="InvalidPkgInfoFile" xml:space="preserve">
+    <value>Metadatos no válidos. Genere el archivo mediante la herramienta Admin Assistant e intente volver a cargar.</value>
+  </data>
+  <data name="InvalidPlayStoreUrlEnterValidUrlToContinue" xml:space="preserve">
+    <value>Dirección URL no válida de la tienda Play Store. Introduzca una dirección URL de la tienda Play Story válida para continuar.</value>
+  </data>
+  <data name="InvalidRegistryPath" xml:space="preserve">
+    <value>Ruta de registro no válida</value>
+  </data>
+  <data name="InvalidThresholdId" xml:space="preserve">
+    <value>ID de umbral no válido</value>
+  </data>
+  <data name="IsBlockingAppsEnabled" xml:space="preserve">
+    <value>Aplicaciones de bloqueo</value>
+  </data>
+  <data name="IsBlockingAppsEnabledTooltip" xml:space="preserve">
+    <value>Al habilitar las aplicaciones de bloqueo se utilizarán los elementos definidos para comprobar si se están ejecutando antes de comenzar la instalación. Al deshabilitar las aplicaciones de bloqueo, se anulará cualquier conducta de bloqueo y se continuará con la instalación.</value>
+  </data>
+  <data name="IsForceInstallAfterDateEnabled" xml:space="preserve">
+    <value>Forzar instalación después de la fecha</value>
+  </data>
+  <data name="IsForceInstallAfterDateEnabledTooltip" xml:space="preserve">
+    <value>Especifique una fecha para forzar la instalación si el elemento aún no se ha instalado. Esto forzará el cierre de cualquier aplicación de bloqueo y, en el caso de que se hayan definido, forzará la acción de reinicio.</value>
+  </data>
+  <data name="KeyEscrow" xml:space="preserve">
+    <value>Custodia de claves</value>
+  </data>
+  <data name="KeyHelpText" xml:space="preserve">
+    <value>Por ejemplo, HKLM\Software\.. o HKCU\Software\.. o HKEY_LOCAL_MACHINE\Software.. o HKEY_CURRENT_USER\Software..
+
+Introduzca la ruta de registro utilizando el nombre abreviado o completo del subárbol del registro del nivel superior.</value>
+  </data>
+  <data name="KeySupportedOnlyAtAccountLevel" xml:space="preserve">
+    <value>Clave solo admitida en el nivel de cuenta</value>
+  </data>
+  <data name="KeySupportedOnlyAtAppLevel" xml:space="preserve">
+    <value>Clave solo admitida en el nivel de aplicaciones</value>
+  </data>
+  <data name="LastAction" xml:space="preserve">
+    <value>Última acción</value>
+  </data>
+  <data name="LastActionTaken" xml:space="preserve">
+    <value>Acción más reciente llevada a cabo</value>
+  </data>
+  <data name="LastActionTimestamp" xml:space="preserve">
+    <value>Marca de tiempo de la acción más reciente</value>
+  </data>
+  <data name="LastReportedTime" xml:space="preserve">
+    <value>Última vez que se ha informado</value>
+  </data>
+  <data name="LastServerAction" xml:space="preserve">
+    <value>Última acción de servidor</value>
+  </data>
+  <data name="LatestInstallationEvent" xml:space="preserve">
+    <value>Evento de instalación más reciente registrado</value>
+  </data>
+  <data name="LatestInstallationEventTooltip" xml:space="preserve">
+    <value>Muestra el evento de instalación más reciente que se ha registrado en la sección "Solución de problemas" para este dispositivo y aplicación. Solo se capturarán como eventos los estados de instalación en curso y no los que están completados. Es posible que el dispositivo no informe de todos los estados de instalación; en ese caso, no se registrará ningún evento.</value>
+  </data>
+  <data name="LatestInstallationStatus" xml:space="preserve">
+    <value>Estado de instalación más reciente</value>
+  </data>
+  <data name="LicenseDistribution" xml:space="preserve">
+    <value>Distribución de licencias</value>
+  </data>
+  <data name="LicenseSummary" xml:space="preserve">
+    <value>Resumen de licencias</value>
+  </data>
+  <data name="LogAggregationMode" xml:space="preserve">
+    <value>Modo de agregación de registros</value>
+  </data>
+  <data name="LogAggregationModeInfo" xml:space="preserve">
+    <value>El modo en el que la aplicación enviará el archivo de registro al endpoint de agregación de registros.</value>
+  </data>
+  <data name="LogAggregationUrlInfo" xml:space="preserve">
+    <value>La URL del endpoint de agregación de registros.</value>
+  </data>
+  <data name="LowCriticality" xml:space="preserve">
+    <value>Gravedad baja</value>
+  </data>
+  <data name="macOSDesiredStateManagement" xml:space="preserve">
+    <value>Gestión del estado deseado</value>
+  </data>
+  <data name="Major" xml:space="preserve">
+    <value>Principal</value>
+  </data>
+  <data name="ManageAssignment" xml:space="preserve">
+    <value>Administrar asignación</value>
+  </data>
+  <data name="ManageAssignmentForApplicationArgOpensDialog" xml:space="preserve">
+    <value>Administrar asignación para la aplicación {0} abre un cuadro de diálogo</value>
+    <comment>The placeholder in this label key will contain application name.</comment>
+  </data>
+  <data name="ManageAssignmentForArgOpensDialog" xml:space="preserve">
+    <value>Administrar asignación para {0} abre un cuadro de diálogo</value>
+    <comment>Placeholder in this label key is for application name.</comment>
+  </data>
+  <data name="ManagedAccess" xml:space="preserve">
+    <value>Acceso administrado</value>
+  </data>
+  <data name="ManagedAccessDescription" xml:space="preserve">
+    <value>El acceso administrado por EMM define qué dispositivos podrán instalar esta aplicación desde Intelligent Hub.</value>
+  </data>
+  <data name="ManagedAccessOnlyEmmDevices" xml:space="preserve">
+    <value>Solo los dispositivos administrados por EMM podrán instalar esta aplicación.</value>
+  </data>
+  <data name="ManagedAccessSecuredByWorkspace" xml:space="preserve">
+    <value>Si esta aplicación está protegida por Workspace ONE SDK versión 20.10 o una versión posterior, se bloqueará el acceso a menos que la aplicación esté administrada por EMM. Con el fin de garantizar que la aplicación se encuentre administrada, habilite la opción "Configurar la aplicación como Administrada por MDM si el usuario la ha instalado" en la pestaña Restricciones.</value>
+  </data>
+  <data name="ManagedAccessSettingEnabled" xml:space="preserve">
+    <value>Si esta opción está habilitada:</value>
+  </data>
+  <data name="ManagedAccessSettingEnabledOnlyEmm" xml:space="preserve">
+    <value>Si esta opción está habilitada, solo los dispositivos administrados por EMM podrán instalar esta aplicación.</value>
+  </data>
+  <data name="ManagedAccessSubDescription" xml:space="preserve">
+    <value>Si esta opción está deshabilitada, todos los dispositivos registrados podrán instalar la aplicación.</value>
+  </data>
+  <data name="ManagedAccessTitle" xml:space="preserve">
+    <value>Acceso administrado por EMM</value>
+  </data>
+  <data name="ManagedAppsTab" xml:space="preserve">
+    <value>Aplicaciones administradas</value>
+  </data>
+  <data name="ManagedConfigurationErrorMessage" xml:space="preserve">
+    <value>Errores de configuración</value>
+  </data>
+  <data name="ManagementAccess" xml:space="preserve">
+    <value>Acceso de administración</value>
+  </data>
+  <data name="ManagementIDToolTip" xml:space="preserve">
+    <value>Identificador único por aplicación y dispositivo</value>
+  </data>
+  <data name="MaxAllowedDevicesException" xml:space="preserve">
+    <value>El número de dispositivos seleccionados supera el número de dispositivos permitidos. Seleccione el filtro.</value>
+  </data>
+  <data name="MaxAttachmentSize" xml:space="preserve">
+    <value>Tamaño máximo del archivo adjunto</value>
+  </data>
+  <data name="MaxAttachmentSizeInfo" xml:space="preserve">
+    <value>Tamaño máximo del archivo en bytes que un usuario puede adjuntar a un correo electrónico saliente</value>
+  </data>
+  <data name="MaxCalendarSyncWindow" xml:space="preserve">
+    <value>Periodo máximo de sincronización de calendario permitido</value>
+  </data>
+  <data name="MaxEmailSyncWindow" xml:space="preserve">
+    <value>Periodo máximo de sincronización de correo electrónico permitido</value>
+  </data>
+  <data name="MaxFileSizeCDNMegabytes" xml:space="preserve">
+    <value>Tamaño máximo de archivo con CDN</value>
+  </data>
+  <data name="MaximumFileSizeWithCDNShouldBeLesserThanAppCapacity" xml:space="preserve">
+    <value>El tamaño máximo del archivo con CND no puede superar la capacidad total de la aplicación.</value>
+  </data>
+  <data name="MaxTabCountReached" xml:space="preserve">
+    <value>Solo se admiten tres cuentas de correo electrónico administradas</value>
+  </data>
+  <data name="MediumCriticality" xml:space="preserve">
+    <value>Gravedad media</value>
+  </data>
+  <data name="MetadataFileContainsInvalidCharactersForNameKey" xml:space="preserve">
+    <value>El valor clave Nombre del archivo de metadatos contiene caracteres no válidos. Este valor clave solo admite caracteres alfanuméricos, guiones bajos, espacios en blanco, guiones y puntos.</value>
+  </data>
+  <data name="MMAEmailSettingsInfoMsgInfo" xml:space="preserve">
+    <value>Solo se admite la configuración de varias cuentas de correo electrónico en la versión de la aplicación 5.21 o posterior de Boxer y se debe habilitar el inicio de sesión único.</value>
+  </data>
+  <data name="MobileFlowsAuthenticationServerInfo" xml:space="preserve">
+    <value>Proporcione una dirección URL válida para autenticar a los usuarios de dispositivos. Esta podría ser la URL del servidor de Workspace ONE Access</value>
+  </data>
+  <data name="MobileFlowsAutoEnableConnectorsInfo" xml:space="preserve">
+    <value>Si se habilita esta opción, cuando se activa Mobile Flows, se activan automáticamente todos los conectores en sucesión. Se recomienda solo cuando todos los conectores están federados con Workspace ONE Access</value>
+  </data>
+  <data name="MobileFlowsHostInfo" xml:space="preserve">
+    <value>Nombre de host para el servidor de Mobile Flows</value>
+  </data>
+  <data name="MobileFlowsInfo" xml:space="preserve">
+    <value>Configure la información del servidor de Mobile Flows con el cual se puede integrar Boxer</value>
+  </data>
+  <data name="MobileFlowsSyncHoursInfo" xml:space="preserve">
+    <value>No solicite tarjetas de Mobile Flow para los correos electrónicos enviados antes de este valor (en horas)</value>
+  </data>
+  <data name="ModifiedOnArgArgByArg" xml:space="preserve">
+    <value>Modificado el {0} por {1}</value>
+  </data>
+  <data name="MSTSelection" xml:space="preserve">
+    <value>Seleccionar transformaciones de aplicaciones</value>
+  </data>
+  <data name="MustBePositiveIntegerValue" xml:space="preserve">
+    <value>Debe ser un número entero positivo</value>
+  </data>
+  <data name="NewWorkflow" xml:space="preserve">
+    <value>Nuevo flujo de trabajo</value>
+  </data>
+  <data name="NoEventLogged" xml:space="preserve">
+    <value>No hay ningún evento registrado</value>
+  </data>
+  <data name="NotebookVersionMessage" xml:space="preserve">
+    <value>Las siguientes directivas solo se aplican a la versión 1.4 y posterior del Bloc de notas. Para versiones anteriores, acceda a la configuración personalizada del perfil de SDK asociado con esta aplicación.</value>
+  </data>
+  <data name="NotebookWarningToEditAllAssignments" xml:space="preserve">
+    <value>La configuración del Bloc de notas está lista para la configuración. Asegúrese de que las configuraciones que se hayan trasladado desde los ajustes personalizados del perfil de SDK asociado con esta aplicación sean correctas antes de la publicación.</value>
+  </data>
+  <data name="NotEvaluated" xml:space="preserve">
+    <value>No evaluado</value>
+  </data>
+  <data name="NotificationsInfo" xml:space="preserve">
+    <value>Configure el servicio de notificaciones de correo electrónico (ENS) y su comportamiento para proporcionar notificaciones de correo electrónico en tiempo real.</value>
+  </data>
+  <data name="NotifyEmail" xml:space="preserve">
+    <value>Notificar correo electrónico</value>
+  </data>
+  <data name="NumberOfApps" xml:space="preserve">
+    <value>{0} aplicaciones</value>
+  </data>
+  <data name="NumberOfCommandsQueued" xml:space="preserve">
+    <value>Número de comandos en cola</value>
+  </data>
+  <data name="OCSP" xml:space="preserve">
+    <value>Directivas de revocación de certificados</value>
+  </data>
+  <data name="OfflineLicenseAvailableArgDevicesAllocation" xml:space="preserve">
+    <value>{0} licencias sin conexión disponibles. Las licencias se asignarán a los dispositivos según el orden de incorporación de los mismos.</value>
+  </data>
+  <data name="OnDemandAppAssignedButNotInstalled" xml:space="preserve">
+    <value>Aplicación asignada para implementación a petición no instalada</value>
+  </data>
+  <data name="OnDemandAppAssignmentOutOfDate" xml:space="preserve">
+    <value>La última versión de la aplicación asignada para la implementación a petición no está instalada</value>
+  </data>
+  <data name="OnDemandBootstrapPackageAssignedButNotInstalled" xml:space="preserve">
+    <value>El paquete de arranque se ha asignado para la implementación a petición, pero no se ha solicitado</value>
+  </data>
+  <data name="OneDay" xml:space="preserve">
+    <value>1 día</value>
+  </data>
+  <data name="OnlineLicenseAvailableArgDevicesAllocation" xml:space="preserve">
+    <value>{0} licencias en línea disponibles. Las licencias se asignarán a los dispositivos según el orden de incorporación de los mismos.</value>
+  </data>
+  <data name="OrdersLicensesMenuTitle" xml:space="preserve">
+    <value>Vea y administre los códigos de canje del programa de compras por volumen (VPP)</value>
+  </data>
+  <data name="OSVersionNotSetError" xml:space="preserve">
+    <value>Si la directiva está habilitada, la versión de SO no debe ser cero ni estar vacía</value>
+  </data>
+  <data name="OsXParseError" xml:space="preserve">
+    <value>Error al analizar el archivo OsX</value>
+  </data>
+  <data name="OtherAttributes" xml:space="preserve">
+    <value>Otros atributos</value>
+  </data>
+  <data name="PasswordNotCopied" xml:space="preserve">
+    <value>Las contraseñas introducidas durante la configuración no se han copiado junto con este perfil. Vuelva a introducir las contraseñas correctas antes de guardar.</value>
+  </data>
+  <data name="Paused" xml:space="preserve">
+    <value>Pausado</value>
+  </data>
+  <data name="PeerDistribution" xml:space="preserve">
+    <value>Peer Distribution</value>
+  </data>
+  <data name="PeerDistributionCacheBytes" xml:space="preserve">
+    <value>Bytes de memoria caché</value>
+  </data>
+  <data name="PeerDistributionCacheEnabled" xml:space="preserve">
+    <value>Memoria caché habilitada</value>
+  </data>
+  <data name="PeerDistributionCurrentClientMode" xml:space="preserve">
+    <value>Modo de cliente actual</value>
+  </data>
+  <data name="PeerDistributionDetails" xml:space="preserve">
+    <value>Detalles de distribución punto a punto</value>
+  </data>
+  <data name="PeerDistributionDetailsLearnMore" xml:space="preserve">
+    <value>MÁS INFORMACIÓN</value>
+  </data>
+  <data name="PeerDistributionDetailsToolTip" xml:space="preserve">
+    <value>Muestra el número de dispositivos que han descargado esta aplicación mediante la distribución de punto a punto, la cantidad de datos descargados y dónde se obtuvieron los datos de descarga.</value>
+  </data>
+  <data name="PeerDistributionDevicesUtilizingPeerDistribution" xml:space="preserve">
+    <value>Dispositivos que utilizan la distribución punto a punto</value>
+  </data>
+  <data name="PeerDistributionDevicesWithPeerDistributionOn" xml:space="preserve">
+    <value>Dispositivos con distribución punto a punto en</value>
+  </data>
+  <data name="PeerDistributionDownloadSource" xml:space="preserve">
+    <value>Origen de descarga</value>
+  </data>
+  <data name="PeerDistributionHostedCacheServerList" xml:space="preserve">
+    <value>Lista de servidores de caché alojados</value>
+  </data>
+  <data name="PeerDistributionNotUtilized" xml:space="preserve">
+    <value>No utilizado</value>
+  </data>
+  <data name="PeerDistributionOff" xml:space="preserve">
+    <value>Apagado</value>
+  </data>
+  <data name="PeerDistributionOnNotUtilized" xml:space="preserve">
+    <value>Activado/no utilizado</value>
+  </data>
+  <data name="PeerDistributionOnUtilized" xml:space="preserve">
+    <value>Activado/utilizado</value>
+  </data>
+  <data name="PeerDistributionServerBytes" xml:space="preserve">
+    <value>Bytes de servidor</value>
+  </data>
+  <data name="PeerDistributionSfdOriginTypeAW" xml:space="preserve">
+    <value>Servicios de dispositivos</value>
+  </data>
+  <data name="PeerDistributionSfdOriginTypeCDN" xml:space="preserve">
+    <value>CDN</value>
+  </data>
+  <data name="PeerDistributionSfdOriginTypeNone" xml:space="preserve">
+    <value>Ninguno</value>
+  </data>
+  <data name="PeerDistributionSfdOriginTypeP2P" xml:space="preserve">
+    <value>Adaptiva</value>
+  </data>
+  <data name="PeerDistributionSfdOriginTypeP2PBC" xml:space="preserve">
+    <value>CDN (con servicios de dispositivos)</value>
+  </data>
+  <data name="PeerDistributionStatus" xml:space="preserve">
+    <value>Peer Distribution</value>
+  </data>
+  <data name="PeerDistributionTotalDeviceCount" xml:space="preserve">
+    <value>Número total de dispositivos</value>
+  </data>
+  <data name="PeerDistributionTotalSavingBytes" xml:space="preserve">
+    <value>Total de bytes de almacenamiento</value>
+  </data>
+  <data name="PeerDistributionTotalSavingPercent" xml:space="preserve">
+    <value>Porcentaje total de almacenamiento</value>
+  </data>
+  <data name="PeerDistributionTotalUtilizedCacheBytes" xml:space="preserve">
+    <value>Total de bytes de memoria caché utilizados</value>
+  </data>
+  <data name="PeerDistributionTotalUtilizedServerBytes" xml:space="preserve">
+    <value>Total de bytes de servidor utilizados</value>
+  </data>
+  <data name="PeerDistributionUtilized" xml:space="preserve">
+    <value>Utilizado</value>
+  </data>
+  <data name="PersonalAppCounts" xml:space="preserve">
+    <value>Instalaciones sin asignaciones</value>
+  </data>
+  <data name="PersonalAppCountsToolTip" xml:space="preserve">
+    <value>Muestra el número de dispositivos que tienen diferentes versiones de esta aplicación instaladas, pero que no tienen una asignación válida, debido a que la aplicación se ha cargado lateralmente o a que anteriormente tenía una asignación de Workspace ONE.</value>
+  </data>
+  <data name="Pivd" xml:space="preserve">
+    <value>PIV-D</value>
+  </data>
+  <data name="PivdAndroidDerivedCredentialSmimeForFirstaccount" xml:space="preserve">
+    <value>PIV-D admite solamente un certificado de S/MIME único. Seleccione esta opción solo para una cuenta de correo electrónico administrada.</value>
+  </data>
+  <data name="PivdDerivedCredentialForFirstaccount" xml:space="preserve">
+    <value>PIV-D admite solamente un certificado de autenticación único. Seleccione esta opción solo para la cuenta de correo electrónico administrada principal.
+ Para usar PIV-D con versiones de la aplicación Boxer inferiores a la 5.21, pase el valor "PolicyDerivedCredentials" de KVP personalizado desde la sección "Configuración de la aplicación".</value>
+  </data>
+  <data name="PlusAdd" xml:space="preserve">
+    <value>+ Agregar</value>
+  </data>
+  <data name="PolicyAllowActionArchive" xml:space="preserve">
+    <value>Acción de archivado</value>
+  </data>
+  <data name="PolicyAllowActionSpam" xml:space="preserve">
+    <value>Permitir al usuario final informar sobre correo no deseado</value>
+  </data>
+  <data name="PolicyAllowAttachments" xml:space="preserve">
+    <value>Permitir archivos adjuntos</value>
+  </data>
+  <data name="PolicyAllowAttachmentsDownload" xml:space="preserve">
+    <value>Permitir descarga de archivos adjuntos</value>
+  </data>
+  <data name="PolicyAllowAttachmentsDownloadInfo" xml:space="preserve">
+    <value>Permitir o bloquear la descarga y reenvío de archivos adjuntos</value>
+  </data>
+  <data name="PolicyAllowAttachmentsInfo" xml:space="preserve">
+    <value>Permite al usuario agregar o reenviar archivos adjuntos</value>
+  </data>
+  <data name="PolicyAllowCallKitIdentification" xml:space="preserve">
+    <value>Habilitar el uso de CallKit</value>
+  </data>
+  <data name="PolicyAllowCallKitIdentificationInfo" xml:space="preserve">
+    <value>Se trata tan solo de una configuración de iOS y requiere la interacción del usuario para habilitar el ID de autor de la llamada de CallKit</value>
+  </data>
+  <data name="PolicyAllowCrashReporting" xml:space="preserve">
+    <value>Permitir informes de bloqueo</value>
+  </data>
+  <data name="PolicyAllowCustomKeyboards" xml:space="preserve">
+    <value>Permitir teclados personalizados</value>
+  </data>
+  <data name="PolicyAllowCustomKeyboardsTooltip" xml:space="preserve">
+    <value>Permitir a los usuarios habilitar teclados de terceros</value>
+  </data>
+  <data name="PolicyAllowDocProviders" xml:space="preserve">
+    <value>Controlar archivos adjuntos de proveedores externos</value>
+  </data>
+  <data name="PolicyAllowEnterpriseContent" xml:space="preserve">
+    <value>Contenido de empresa</value>
+  </data>
+  <data name="PolicyAllowLocalCalendars" xml:space="preserve">
+    <value>Calendarios locales</value>
+  </data>
+  <data name="PolicyAllowLogging" xml:space="preserve">
+    <value>Permite el registro</value>
+  </data>
+  <data name="PolicyAllowLoggingInfo" xml:space="preserve">
+    <value>Estos registros no se envían a menos que el usuario lleve a cabo una acción para enviarlos.</value>
+  </data>
+  <data name="PolicyAllowMailServerCiphers" xml:space="preserve">
+    <value>Cifrados de servidor de correo permitidos</value>
+  </data>
+  <data name="PolicyAllowMailServerCiphersInfo" xml:space="preserve">
+    <value>Obliga a Boxer a utilizar solo estos cifrados durante un protocolo de enlace TLS al conectarse a un servidor de correo</value>
+  </data>
+  <data name="PolicyAllowMetrics" xml:space="preserve">
+    <value>Métricas anónimas</value>
+  </data>
+  <data name="PolicyAllowOpenIn" xml:space="preserve">
+    <value>Controlar apertura</value>
+  </data>
+  <data name="PolicyAllowPhotoAttachemetInfo" xml:space="preserve">
+    <value>Permitir o bloquear la capacidad de adjuntar fotografías desde la galería de fotografías o la cámara</value>
+  </data>
+  <data name="PolicyAllowPhotoAttachment" xml:space="preserve">
+    <value>Permitir archivo adjunto de la fotografía</value>
+  </data>
+  <data name="PolicyAllowPrint" xml:space="preserve">
+    <value>Permitir impresión</value>
+  </data>
+  <data name="PolicyAllowPrintTooltip" xml:space="preserve">
+    <value>Deshabilite esta opción para bloquear la impresión de correos electrónicos y archivos adjuntos</value>
+  </data>
+  <data name="PolicyAllowTouchID" xml:space="preserve">
+    <value>ID biométrico</value>
+  </data>
+  <data name="PolicyAllowTouchInfo" xml:space="preserve">
+    <value>Al habilitar esta función, los usuarios pueden usar la huella digital, Touch ID o Face ID en los dispositivos compatibles.</value>
+  </data>
+  <data name="PolicyAllowUserAccountsInfo" xml:space="preserve">
+    <value>Permitir que el usuario agregue otras cuentas, como Gmail, iCloud y otras cuentas IMAP.</value>
+  </data>
+  <data name="PolicyCalendarMaxSyncPeriod" xml:space="preserve">
+    <value>Ventana con el valor máximo de sincronización de calendarios</value>
+  </data>
+  <data name="PolicyCalendarMaxSyncPeriodInfo" xml:space="preserve">
+    <value>La anterioridad con la que un usuario puede comenzar a sincronizar sus eventos de calendario.</value>
+  </data>
+  <data name="PolicyClassMarkings" xml:space="preserve">
+    <value>Marcados</value>
+  </data>
+  <data name="PolicyClassMarkingsDefaultClass" xml:space="preserve">
+    <value>Clasificación predeterminada</value>
+  </data>
+  <data name="PolicyClassMarkingsDefaultClassInfo" xml:space="preserve">
+    <value>(Opcional) Establece la clasificación predeterminada para los correos electrónicos. El valor debe coincidir con el nombre para mostrar de una entrada en el valor de configuración de PolicyClassMarkings.</value>
+  </data>
+  <data name="PolicyClassMarkingsEnabled" xml:space="preserve">
+    <value>Habilita o deshabilita los marcados de clasificación</value>
+  </data>
+  <data name="PolicyClassMarkingsEnabledInfo" xml:space="preserve">
+    <value>Habilitar o deshabilitar los marcados de clasificación</value>
+  </data>
+  <data name="PolicyClassMarkingsInfo" xml:space="preserve">
+    <value>Define la lista jerárquica de clasificaciones.</value>
+  </data>
+  <data name="PolicyClassMarkingsRankEnabled" xml:space="preserve">
+    <value>Habilitar clasificación</value>
+  </data>
+  <data name="PolicyClassMarkingsRankEnabledInfo" xml:space="preserve">
+    <value>(Opcional) Habilita el ranking de clasificación jerárquica.</value>
+  </data>
+  <data name="PolicyClassMarkingsXHeader" xml:space="preserve">
+    <value>Definir x-header</value>
+  </data>
+  <data name="PolicyClassMarkingsXHeaderInfo" xml:space="preserve">
+    <value>(Opcional) Habilita y define x-header para la clasificación.</value>
+  </data>
+  <data name="PolicyClassVersion" xml:space="preserve">
+    <value>Versión</value>
+  </data>
+  <data name="PolicyClassVersionInfo" xml:space="preserve">
+    <value>Número de versión de la función de clasificación</value>
+  </data>
+  <data name="PolicyCustomOnlineMeetingUrls" xml:space="preserve">
+    <value>URL personalizada de QuickJoin</value>
+  </data>
+  <data name="PolicyDeleteOnSpamForward" xml:space="preserve">
+    <value>Eliminar correo no deseado</value>
+  </data>
+  <data name="PolicyDisableKeyEscrow" xml:space="preserve">
+    <value>Deshabilitar custodia de claves (código de acceso olvidado)</value>
+  </data>
+  <data name="PolicyEmailMaxSyncPeriod" xml:space="preserve">
+    <value>Ventana con el valor máximo de sincronización de correos electrónicos</value>
+  </data>
+  <data name="PolicyEnforceHTTPS" xml:space="preserve">
+    <value>Restringir conexiones HTTP no seguras</value>
+  </data>
+  <data name="PolicyEnforceHTTPSTooltip" xml:space="preserve">
+    <value>Restringe el contenido de carga procedente de conexiones (HTTP) no seguras.</value>
+  </data>
+  <data name="PolicyLimitNotificationText" xml:space="preserve">
+    <value>Contenido de la notificación</value>
+  </data>
+  <data name="PolicyLimitNotificationTextInfo" xml:space="preserve">
+    <value>Controla la cantidad de información que se revela en cada alerta de notificación</value>
+  </data>
+  <data name="PolicyScepPendingMaxRetryAttempts" xml:space="preserve">
+    <value>Número máximo de reintentos para SCEP</value>
+  </data>
+  <data name="PolicyScepPendingRetryTimeout" xml:space="preserve">
+    <value>Intervalo entre cada reintento para SCEP en segundos</value>
+  </data>
+  <data name="PolicySensitivityLabelsEmailClassificationInfo" xml:space="preserve">
+    <value>Los usuarios podrán interactuar con las etiquetas de AIP</value>
+  </data>
+  <data name="PolicySMIME" xml:space="preserve">
+    <value>Estado de S/MIME</value>
+  </data>
+  <data name="PolicySMIMEConformingEncryptionAlgorithms" xml:space="preserve">
+    <value>Algoritmos de cifrado admitidos</value>
+  </data>
+  <data name="PolicySMIMEConformingEncryptionAlgorithmsInfo" xml:space="preserve">
+    <value>Permite limitar el cifrado de S/MIME a algoritmos específicos. Los correos electrónicos cifrados que no utilicen un algoritmo aprobado se marcarán con una advertencia. Si no se proporcionan valores válidos, todos los algoritmos se considerarán aceptables.</value>
+  </data>
+  <data name="PolicySMIMEConformingSigningAlgorithms" xml:space="preserve">
+    <value>Algoritmos de firma admitidos</value>
+  </data>
+  <data name="PolicySMIMEDefaultEncryptionAlgorithm" xml:space="preserve">
+    <value>Algoritmo de cifrado predeterminado</value>
+  </data>
+  <data name="PolicySMIMEDefaultEncryptionAlgorithmInfo" xml:space="preserve">
+    <value>Permite limitar el cifrado de S/MIME a algoritmos específicos. Los correos electrónicos cifrados que no utilicen un algoritmo aprobado se marcarán con una advertencia. Si no se proporcionan valores válidos, todos los algoritmos se considerarán aceptables.</value>
+  </data>
+  <data name="PolicySMIMEDefaultSigningAlgorithm" xml:space="preserve">
+    <value>Algoritmo de firma predeterminado</value>
+  </data>
+  <data name="PolicySMIMEEnableRevocationCheck" xml:space="preserve">
+    <value>Habilitar comprobación de revocación de S/MIME</value>
+  </data>
+  <data name="PolicySMIMEEnableRevocationCheckInfo" xml:space="preserve">
+    <value>Define la directiva para la comprobación de revocación de certificados de S/MIME</value>
+  </data>
+  <data name="PolicySMIMERevocationCheckType" xml:space="preserve">
+    <value>Tipo de comprobación de revocación de S/MIME</value>
+  </data>
+  <data name="PolicySMIMERevocationCheckTypeInfo" xml:space="preserve">
+    <value>Define la directiva para ejecutar la comprobación de estado de revocación de toda la cadena de certificados o
+simplemente el certificado del usuario.</value>
+  </data>
+  <data name="PolicySMIMERevocationCheckUrl" xml:space="preserve">
+    <value>URL de comprobación de revocación de S/MIME</value>
+  </data>
+  <data name="PolicySMIMERevocationCheckUrlInfo" xml:space="preserve">
+    <value>Esta URL se utiliza como URL del respondedor de OCSP</value>
+  </data>
+  <data name="PolicySMIMERevocationEnforceNonce" xml:space="preserve">
+    <value>Aplicar nonce de revocación de S/MIME</value>
+  </data>
+  <data name="PolicySMIMERevocationEnforceNonceInfo" xml:space="preserve">
+    <value>Si el nonce habilitado se aplicará en las solicitudes de OCSP</value>
+  </data>
+  <data name="PolicySMIMERevocationStrictness" xml:space="preserve">
+    <value>Severidad de revocación de S/MIME</value>
+  </data>
+  <data name="PolicySMIMERevocationStrictnessInfo" xml:space="preserve">
+    <value>Define el nivel de severidad que se utilizará para determinar si se permite o no el uso de un certificado revocado</value>
+  </data>
+  <data name="PolicySMIMERevocationTTL" xml:space="preserve">
+    <value>TTL de revocación de S/MIME</value>
+  </data>
+  <data name="PolicySMIMERevocationTTLinfo" xml:space="preserve">
+    <value>Define la cantidad de tiempo en días que se conservarán los datos de revocación</value>
+  </data>
+  <data name="PolicySMIMERevocationUseAIA" xml:space="preserve">
+    <value>Utilizar el acceso a la información de autoridad para la revocación de S/MIME</value>
+  </data>
+  <data name="PolicySMIMERevocationUseAIAInfo" xml:space="preserve">
+    <value>Directiva relativa al uso de la extensión de acceso a la información de la autoridad en el certificado</value>
+  </data>
+  <data name="PolicySMIMEStrictEKUCheck" xml:space="preserve">
+    <value>Requiere comprobación de la extensión de EKU</value>
+  </data>
+  <data name="PolicySMIMEStrictEKUCheckInfo" xml:space="preserve">
+    <value>Define si se debe comprobar la extensión de EKU de los certificados S/MIME. Si se establece en true, validaremos que dicha extensión de EKU está presente en el certificado y tiene configurado el objetivo de protección de correo electrónico.</value>
+  </data>
+  <data name="PolicySMIMETrustStore" xml:space="preserve">
+    <value>Almacén de confianza de S/MIME</value>
+  </data>
+  <data name="PolicyStatus" xml:space="preserve">
+    <value>Estado de la política</value>
+  </data>
+  <data name="PolicyTLSEnableRevocationCheck" xml:space="preserve">
+    <value>Comprobación de revocación</value>
+  </data>
+  <data name="PolicyTLSEnableRevocationCheckInfo" xml:space="preserve">
+    <value>Habilita o deshabilita las comprobaciones de revocación de TLS</value>
+  </data>
+  <data name="PolicyTLSRevocationCheckType" xml:space="preserve">
+    <value>Tipo de comprobación de revocación</value>
+  </data>
+  <data name="PolicyTLSRevocationCheckTypeInfo" xml:space="preserve">
+    <value>Especifica si las comprobaciones de revocación deben aplicarse a toda la cadena o solo al certificado del servidor. Esta directiva no tendrá efecto si la comprobación de revocación está deshabilitada.</value>
+  </data>
+  <data name="PolicyTLSRevocationCheckUrl" xml:space="preserve">
+    <value>URL de comprobación de revocación</value>
+  </data>
+  <data name="PolicyTLSRevocationCheckUrlInfo" xml:space="preserve">
+    <value>URL de servidor OCSP. Esta directiva no tendrá efecto si la comprobación de revocación está deshabilitada.</value>
+  </data>
+  <data name="PolicyTLSRevocationEnforceNonce" xml:space="preserve">
+    <value>Aplicar nonce</value>
+  </data>
+  <data name="PolicyTLSRevocationEnforceNonceInfo" xml:space="preserve">
+    <value>Aplique el nonce si está habilitado, de lo contrario, no utilice nonce. Esta directiva no tendrá efecto si la comprobación de revocación está deshabilitada.</value>
+  </data>
+  <data name="PolicyTLSRevocationStrictness" xml:space="preserve">
+    <value>Severidad de revocación</value>
+  </data>
+  <data name="PolicyTLSRevocationStrictnessInfo" xml:space="preserve">
+    <value>Cuando se configura en Ignorar, el resultado de la comprobación de revocación, solo se registra y no se bloquean las conexiones de TLS. Cuando se configura en Estricto, las conexiones de TLS se bloquean si se revoca el certificado del servidor o no se puede acceder al servidor OCSP. Cuando se configura en Moderado, las conexiones de TLS se bloquean si se revoca el certificado del servidor. Si no se puede acceder al servidor OCSP, se utiliza el resultado de la comprobación anterior (si está disponible). Esta directiva no tendrá efecto si la comprobación de revocación está deshabilitada.</value>
+  </data>
+  <data name="PolicyTLSRevocationTTL" xml:space="preserve">
+    <value>TTL de revocación (días)</value>
+  </data>
+  <data name="PolicyTLSRevocationTTLInfo" xml:space="preserve">
+    <value>Cantidad de tiempo en días que se conservan los datos de revocación. Se omiten los valores negativo y cero, si el respondedor no proporciona el valor nextupdate . Si se configura el KVP, utilice el valor de este KVP. Si no se configura el KVP, la siguiente comprobación se llevará a cabo de forma predeterminada en 7 días. Si el respondedor proporciona el valor nextupdate. Si se configura el KVP, utilice el valor de este KVP y se ignorará entonces el valor nextupdate del respondedor. Si no se configura este KVP, deberá utilizar entonces el valor nextupdate del respondedor. Esta directiva no tendrá efecto si se ha deshabilitado la comprobación de revocación.</value>
+  </data>
+  <data name="PolicyTLSRevocationUseAIA" xml:space="preserve">
+    <value>AIA de uso de revocación</value>
+  </data>
+  <data name="PolicyTLSRevocationUseAIAInfo" xml:space="preserve">
+    <value>Deshabilitado: no usa la URL configurada en el certificado para el estado de revocación, usa solo la URL de comprobación de revocación. Habilitado: usa la URL configurada en el certificado para la comprobación del estado de revocación y revierte a la URL de comprobación de revocación si no está disponible. Obligatorio: SOLO usa la URL configurada en el certificado para comprobar el estado de revocación e ignora la URL de comprobación de revocación. Esta directiva no tendrá efecto si la comprobación de revocación está deshabilitada.</value>
+  </data>
+  <data name="PolicyTLSStrictTrustCheck" xml:space="preserve">
+    <value>Comprobación de confianza de TLS</value>
+  </data>
+  <data name="PolicyTLSStrictTrustCheckInfo" xml:space="preserve">
+    <value>Si se configura como true, Boxer realizará comprobaciones de confianza más estrictas para los certificados del servidor TLS. Comprobaremos que todos los certificados de CA de raíz y los certificados de CA intermedios que conforman toda la cadena de certificados estén instalados en el almacén de confianza que se creó en función del almacén de confianza de la configuración de la consola. Esta clave solo realiza su función en el caso de haber habilitado la comprobación de revocación.</value>
+  </data>
+  <data name="PolicyTLSTrustStore" xml:space="preserve">
+    <value>Almacén de confianza</value>
+  </data>
+  <data name="PolicyTLSTrustStoreInfo" xml:space="preserve">
+    <value>Cuando esta opción está deshabilitada, utiliza el almacén de confianza del dispositivo y el almacén de confianza de Boxer. Cuando está habilitada, usa el almacén de confianza de Boxer. El valor predeterminado es almacén de confianza del dispositivo + almacén de confianza de Boxer. iOS: en el caso de que la comprobación de revocación se encuentre deshabilitada, se utilizará solamente el almacén de confianza del dispositivo para el valor "0". En el caso de que estén implicadas las CA intermedias personalizadas que no vienen precargadas en el dispositivo, la única opción válida para esto será "1", es decir, Utilizar siempre el almacén de confianza de Boxer y que todas las CA intermedias deberán estar disponibles en el Almacén de confianza de Boxer con el fin de confiar en las conexiones. Android: este KVP no tendrá efecto si la comprobación de revocación está deshabilitada. (En tal caso, el almacén de confianza predeterminado del dispositivo se usará para validar la cadena de certificados. El almacén de Boxer no tendrá, por tanto, cadenas que validar)</value>
+  </data>
+  <data name="PolicyWatermarkColor" xml:space="preserve">
+    <value>Color de la marca de agua</value>
+  </data>
+  <data name="PolicyWatermarkColorInfo" xml:space="preserve">
+    <value>Define el color del texto en formato hexadecimal. El azul es el color predeterminado</value>
+  </data>
+  <data name="PolicyWatermarkOpacity" xml:space="preserve">
+    <value>Opacidad de marca de agua</value>
+  </data>
+  <data name="PolicyWatermarkOpacityInfo" xml:space="preserve">
+    <value>Define la opacidad del texto. Puede configurar cualquier número entre 0 y 100</value>
+  </data>
+  <data name="PolicyWatermarkText" xml:space="preserve">
+    <value>Texto de marca de agua</value>
+  </data>
+  <data name="PolicyWatermarkTextInfo" xml:space="preserve">
+    <value>Define el texto de la marca de agua</value>
+  </data>
+  <data name="PositiveIntegerRequired" xml:space="preserve">
+    <value>Introduzca un valor entero positivo</value>
+  </data>
+  <data name="PradeoAPIKey" xml:space="preserve">
+    <value>Clave API de Pradeo</value>
+  </data>
+  <data name="PreReleaseVersionTooltip" xml:space="preserve">
+    <value>Si falta una entrada de esta lista que esperaba ver, es posible que se haya eliminado o anulado la asignación de esta empresa.</value>
+  </data>
+  <data name="PreventRemoval" xml:space="preserve">
+    <value>Evitar eliminación</value>
+  </data>
+  <data name="PreventRemovalTooltip" xml:space="preserve">
+    <value>Si está habilitada esta opción, el usuario no puede desinstalar la aplicación. Requiere iOS 14 o posterior.</value>
+  </data>
+  <data name="ProductApp" xml:space="preserve">
+    <value>Aplicación del producto</value>
+  </data>
+  <data name="ProductAppInstalled" xml:space="preserve">
+    <value>Aplicación basada en producto asignada e instalada</value>
+  </data>
+  <data name="ProductAppNotInstalled" xml:space="preserve">
+    <value>Aplicación basada en producto asignada pero no instalada</value>
+  </data>
+  <data name="ProviderDisabledFileUploadMessage" xml:space="preserve">
+    <value>Parece que el almacenamiento de archivos y CDN no están habilitados o que el tamaño de la base de datos ha alcanzado su capacidad máxima para esta organización. Póngase en contacto con el administrador o bien habilite estos elementos y compruebe que el almacenamiento de la base de datos continúa.</value>
+  </data>
+  <data name="ProvisioningProfileExpirationExplainationArgDays" xml:space="preserve">
+    <value>El perfil de aprovisionamiento asociado a esta aplicación caduca en {0} días. Una vez que caduque el perfil de aprovisionamiento, no se podrá acceder a la aplicación y los usuarios nuevos que intenten instalar la aplicación no podrán hacerlo. Regenere el perfil de aprovisionamiento para la aplicación y actualícelo haciendo clic en el botón Renovar a continuación. En los dispositivos que ya tienen la aplicación instalada, la renovación del perfil de aprovisionamiento sustituirá el perfil existente del dispositivo por el nuevo perfil agregado sin volver a instalar la aplicación. En los nuevos dispositivos inscritos o en los dispositivos que no tienen la aplicación, la instalación de la aplicación enviará el nuevo perfil de aprovisionamiento agregado.</value>
+  </data>
+  <data name="PublicApplication" xml:space="preserve">
+    <value>Aplicación pública</value>
+  </data>
+  <data name="PublicApplications" xml:space="preserve">
+    <value>Aplicaciones públicas</value>
+  </data>
+  <data name="PublisherAddedMultipleTimesInAppGroup" xml:space="preserve">
+    <value>Se ha añadido el mismo publicador a este grupo de aplicaciones varias veces</value>
+  </data>
+  <data name="PublisherExceptionAddedMultipleTimesInAppGroup" xml:space="preserve">
+    <value>Se ha añadido la misma aplicación varias veces como excepción de un publicador</value>
+  </data>
+  <data name="PurchasedApplication" xml:space="preserve">
+    <value>Aplicación comprada</value>
+  </data>
+  <data name="PurchasedApplications" xml:space="preserve">
+    <value>Aplicaciones compradas</value>
+  </data>
+  <data name="PurchasedAppLicenseAssignmentBySmartGroup" xml:space="preserve">
+    <value>Asignación de licencias de aplicaciones adquiridas por el grupo inteligente</value>
+  </data>
+  <data name="Purebred" xml:space="preserve">
+    <value>Purebred</value>
+  </data>
+  <data name="QuickReply" xml:space="preserve">
+    <value>Respuesta rápida</value>
+  </data>
+  <data name="Ranking" xml:space="preserve">
+    <value>Clasificación</value>
+  </data>
+  <data name="Read/Unread" xml:space="preserve">
+    <value>Leídos/No leídos</value>
+  </data>
+  <data name="ReasonsBreakdown" xml:space="preserve">
+    <value>Detalles del estado de instalación</value>
+  </data>
+  <data name="ReasonsBreakdownToolTip" xml:space="preserve">
+    <value>Esta es una representación de los datos reportados por los dispositivos, que contiene información detallada sobre el estado de instalación de esta aplicación y no está vinculada a ninguna versión en concreto.</value>
+  </data>
+  <data name="RedeemingCode" xml:space="preserve">
+    <value>Canjeando código</value>
+  </data>
+  <data name="RedemptionCode" xml:space="preserve">
+    <value>Código de canje</value>
+  </data>
+  <data name="RedemptionCodes" xml:space="preserve">
+    <value>Códigos de canje</value>
+  </data>
+  <data name="RefreshApps" xml:space="preserve">
+    <value>Actualizar aplicaciones</value>
+  </data>
+  <data name="RemoveApplicationConfirmed" xml:space="preserve">
+    <value>Eliminación de la aplicación confirmada por el dispositivo</value>
+  </data>
+  <data name="RemoveArgApplicationOpensDialog" xml:space="preserve">
+    <value>Eliminar aplicación {0} abre un cuadro de diálogo</value>
+    <comment>Placeholder in this label key is for application name.</comment>
+  </data>
+  <data name="RemoveCommandDispatched" xml:space="preserve">
+    <value>Se ha enviado el comando de eliminación</value>
+  </data>
+  <data name="RemoveCommandSuccessful" xml:space="preserve">
+    <value>Eliminación confirmada por el dispositivo</value>
+  </data>
+  <data name="RemovedByEmm" xml:space="preserve">
+    <value>Eliminado por EMM</value>
+  </data>
+  <data name="RemovedByUser" xml:space="preserve">
+    <value>Eliminado por el usuario</value>
+  </data>
+  <data name="RemoveFromSelectedDevices" xml:space="preserve">
+    <value>Esta aplicación se eliminará solo en los dispositivos que tengan la aplicación instalada y administrada por EMM.</value>
+  </data>
+  <data name="RemovePreviousValues" xml:space="preserve">
+    <value>Eliminar valores anteriores</value>
+  </data>
+  <data name="RequireApprovalToInstall" xml:space="preserve">
+    <value>Requiere aprobación para instalar</value>
+  </data>
+  <data name="RequireApprovalToInstallToolTip" xml:space="preserve">
+    <value>Los usuarios del grupo de asignación seleccionado deberán obtener aprobación para acceder a esta aplicación.</value>
+  </data>
+  <data name="RequiredEmailSettings" xml:space="preserve">
+    <value>Agregue {0} en la pestaña {1}</value>
+  </data>
+  <data name="RestartDeadlineInDays" xml:space="preserve">
+    <value>Número de días tras los cuales el dispositivo se reinicia automáticamente</value>
+  </data>
+  <data name="RestrictScreenshotsInfo" xml:space="preserve">
+    <value>Evita que el usuario tome capturas de pantalla de la aplicación. (Solo Android)</value>
+  </data>
+  <data name="ReviewRequestExpired" xml:space="preserve">
+    <value>La solicitud de revisión no está autorizada o ha caducado. Actualice la página y vuelva a realizar la revisión.</value>
+  </data>
+  <data name="ReviewSummaryBeforeAddingApp" xml:space="preserve">
+    <value>Revise el resumen antes de agregar una aplicación. Puede editar algunos campos más adelante en la vista de lista de aplicaciones.</value>
+  </data>
+  <data name="RevisionNumber" xml:space="preserve">
+    <value>Número de revisión</value>
+  </data>
+  <data name="RevisionVersion" xml:space="preserve">
+    <value>Introduzca un valor válido en el campo Versión de revisión</value>
+  </data>
+  <data name="S/MIMEPolicy" xml:space="preserve">
+    <value>Directiva de S/MIME</value>
+  </data>
+  <data name="SaaSAppsIDMSetupArg" xml:space="preserve">
+    <value>Hay que configurar Workspace ONE para poder utilizar aplicaciones SaaS. Vaya a {0} y complete la configuración de Workspace ONE. Una vez completada, cierre la sesión y vuelva a iniciarla para intentarlo de nuevo.</value>
+  </data>
+  <data name="SameAssignmentExists" xml:space="preserve">
+    <value>Ya se han asignado uno o más grupos inteligentes a esta aplicación en otra asignación. Elimine estos grupos inteligentes para continuar.</value>
+  </data>
+  <data name="SaveConfiguration" xml:space="preserve">
+    <value>Guardar la configuración</value>
+  </data>
+  <data name="ScepPendingMaxRetryAttemptsInfo" xml:space="preserve">
+    <value>Configura el número máximo de intentos de recuperación de SCEP en el SDK</value>
+  </data>
+  <data name="ScepPendingRetryTimeoutInfo" xml:space="preserve">
+    <value>Intervalo entre cada reintento de recuperación de SCEP en el SDK</value>
+  </data>
+  <data name="ScriptFileHelpText" xml:space="preserve">
+    <value>Script personalizado que se cargará</value>
+  </data>
+  <data name="SecurityPatch" xml:space="preserve">
+    <value>Revisión de seguridad</value>
+  </data>
+  <data name="SecurityPatchDateNotSetError" xml:space="preserve">
+    <value>La fecha de la revisión de seguridad no puede estar vacía si la directiva está habilitada</value>
+  </data>
+  <data name="SelectedDeviceRequiresApprovalAlert" xml:space="preserve">
+    <value>Esta aplicación requiere aprobación para instalarse en este dispositivo específico. El usuario final puede iniciar una solicitud de aprobación.</value>
+  </data>
+  <data name="SelectedDevicesRequireApprovalAlert" xml:space="preserve">
+    <value>La aplicación se instalará en todos los dispositivos a excepción de aquellos que requieran aprobación para acceder a ella. El usuario final puede iniciar una solicitud de aprobación.</value>
+  </data>
+  <data name="SendAppConfigDescription" xml:space="preserve">
+    <value>Configure esta aplicación con los ajustes proporcionados por el desarrollador de la aplicación.</value>
+  </data>
+  <data name="SendAppConfiguration" xml:space="preserve">
+    <value>Enviar configuración</value>
+  </data>
+  <data name="SendApplicationAttributes" xml:space="preserve">
+    <value>Enviar atributos de la aplicación</value>
+  </data>
+  <data name="SendAttibutes" xml:space="preserve">
+    <value>Enviar atributos</value>
+  </data>
+  <data name="SendInviteTooltip" xml:space="preserve">
+    <value>Cuando se habilita esta opción, se invitará automáticamente a todos los dispositivos iOS a instalar las aplicaciones de VPP. En caso contrario, se invitará a los dispositivos cuando se instalen las aplicaciones de VPP.</value>
+  </data>
+  <data name="ShowCallKitOption" xml:space="preserve">
+    <value>Mostrar opción de CallKit</value>
+  </data>
+  <data name="SideLoadedCount" xml:space="preserve">
+    <value>Instalaciones de carga lateral</value>
+  </data>
+  <data name="SigningCertificateAuthority" xml:space="preserve">
+    <value>Entidad de certificación de firma</value>
+  </data>
+  <data name="SigningCertificateTemplate" xml:space="preserve">
+    <value>Plantilla de certificación de firma</value>
+  </data>
+  <data name="SmartGroupNotPresentInAssignment" xml:space="preserve">
+    <value>El grupo inteligente no está presente en ninguna de las asignaciones asociadas con la aplicación.</value>
+  </data>
+  <data name="SmimeBoxerUserInfoMsg" xml:space="preserve">
+    <value>Los usuarios con certificados S/MIME que ya hayan sido asociados, Usuario&gt; Avanzado&gt; Certificados, los recibirán además de los orígenes que se indican a continuación. Seleccione a continuación el certificado asociado a la cuenta de usuario o al origen</value>
+  </data>
+  <data name="SMIMEConformingEncryptionAlgorithmsInfo" xml:space="preserve">
+    <value>Permite limitar el cifrado de S/MIME a algoritmos específicos. Los correos electrónicos cifrados que no utilicen un algoritmo aprobado se marcarán con una advertencia. Si no se proporcionan valores válidos, todos los algoritmos se considerarán aceptables.</value>
+  </data>
+  <data name="SMIMEConformingSigningAlgorithmsInfo" xml:space="preserve">
+    <value>Permite limitar la firma de S/MIME a algoritmos específicos. Los correos electrónicos firmados que no utilicen un algoritmo aprobado se marcarán con una advertencia. Si no se proporcionan valores válidos, todos los algoritmos se considerarán aceptables.</value>
+  </data>
+  <data name="SMIMEDefaultEncryptionAlgorithmInfo" xml:space="preserve">
+    <value>Especifique un algoritmo de cifrado que se utilizará para los correos electrónicos entrantes y salientes. Si no se proporciona un algoritmo válido, se utiliza el algoritmo más bajo compatible (3DES).</value>
+  </data>
+  <data name="SMIMEDefaultSigningAlgorithmInfo" xml:space="preserve">
+    <value>Especifique un algoritmo de firma S/MIME predeterminado que se utilizará para los correos electrónicos entrantes y salientes. Si no se proporciona un algoritmo válido, se utiliza el algoritmo más bajo compatible (SHA-1).</value>
+  </data>
+  <data name="SmimeInfo" xml:space="preserve">
+    <value>Configurar S/MIME</value>
+  </data>
+  <data name="SMIMEStatusInfo" xml:space="preserve">
+    <value>Configurar requisitos de S/MIME</value>
+  </data>
+  <data name="SMIMEStrictEKUCheckInfo" xml:space="preserve">
+    <value>Define si se debe comprobar la extensión de EKU de los certificados S/MIME. Si se establece en true, validaremos que dicha extensión de EKU está presente en el certificado y tiene configurado el objetivo de protección de correo electrónico.</value>
+  </data>
+  <data name="Spam" xml:space="preserve">
+    <value>No deseado</value>
+  </data>
+  <data name="SpamAndPhishingReporting" xml:space="preserve">
+    <value>Informes de correo no deseado y suplantación de identidad</value>
+  </data>
+  <data name="SpamAndPhishingReportingInfo" xml:space="preserve">
+    <value>Configure las acciones que se llevarán a cabo en el correo electrónico identificado como no deseado o como suplantación de identidad</value>
+  </data>
+  <data name="SpamReportConfigPositionChangeInfo" xml:space="preserve">
+    <value>Configure si desea permitir que el usuario final Informe acerca de los mensajes de correo no deseado en la sección "Directivas de aplicaciones"&gt;"Facilidad de uso"</value>
+  </data>
+  <data name="SpecificApplicationIsNotSupported" xml:space="preserve">
+    <value>Aplicación no válida, cargue solo el APK del iniciador de Workspace ONE</value>
+  </data>
+  <data name="SsoInfo" xml:space="preserve">
+    <value>Para habilitar SSO en Boxer, habilite esta opción y la configuración de SSO en el perfil de SDK. Una vez habilitado, SSO no se puede deshabilitar sin volver a instalar Workspace ONE Boxer.</value>
+  </data>
+  <data name="StatusLastAction" xml:space="preserve">
+    <value>Estado: Última acción</value>
+  </data>
+  <data name="StokenExpiredMessage" xml:space="preserve">
+    <value>El sToken cargado para este grupo organizativo ha caducado. Renueve el sToken y vuelva a cargarlo.</value>
+  </data>
+  <data name="StokenRevokedMessage" xml:space="preserve">
+    <value>El sToken cargado para este grupo organizativo se ha revocado. Cargue uno nuevo.</value>
+  </data>
+  <data name="Strict" xml:space="preserve">
+    <value>Estricto</value>
+  </data>
+  <data name="SupportedProcessorArchitectureHelp" xml:space="preserve">
+    <value>Seleccione el tipo de arquitectura compatible con la aplicación. Si selecciona 32 bits, la aplicación se publicará tanto en dispositivos de 32 bits como de 64.</value>
+  </data>
+  <data name="SupportEmailAddress" xml:space="preserve">
+    <value>Dirección de correo electrónico de soporte</value>
+  </data>
+  <data name="SupportEmailAddressInfo" xml:space="preserve">
+    <value>Dirección de correo electrónico que se debe especificar al enviar registros a través del menú de soporte.</value>
+  </data>
+  <data name="SwipesLeftLongInfo" xml:space="preserve">
+    <value>Configure el valor en uno de los siguientes para establecer la acción predeterminada a implementar cuando un usuario desliza un correo electrónico en la vista de lista de correo electrónico. Tenga en cuenta que si el usuario cambia esta opción, la consola no anulará su selección</value>
+  </data>
+  <data name="SwipesLeftShortInfo" xml:space="preserve">
+    <value>Configure el valor en uno de los siguientes para establecer la acción predeterminada a implementar cuando un usuario desliza un correo electrónico en la vista de lista de correo electrónico. Tenga en cuenta que si el usuario cambia esta opción, la consola no anulará su selección</value>
+  </data>
+  <data name="SwipesRightLongInfo" xml:space="preserve">
+    <value>Configure el valor en uno de los siguientes para establecer la acción predeterminada a implementar cuando un usuario desliza un correo electrónico en la vista de lista de correo electrónico. Tenga en cuenta que si el usuario cambia esta opción, la consola no anulará su selección</value>
+  </data>
+  <data name="SwipesRightShortInfo" xml:space="preserve">
+    <value>Configure el valor en uno de los siguientes para establecer la acción predeterminada a implementar cuando un usuario desliza un correo electrónico en la vista de lista de correo electrónico. Tenga en cuenta que si el usuario cambia esta opción, la consola no anulará su selección</value>
+  </data>
+  <data name="SyncContact" xml:space="preserve">
+    <value>Sincronizar contactos</value>
+  </data>
+  <data name="SyncTunnelConfiguration" xml:space="preserve">
+    <value>Sincronizar configuración de Tunnel</value>
+  </data>
+  <data name="TempUploadedPatch" xml:space="preserve">
+    <value>Revisión cargada</value>
+  </data>
+  <data name="TempUploadedTransform" xml:space="preserve">
+    <value>Transformación cargada</value>
+  </data>
+  <data name="TenantStorageCapacity" xml:space="preserve">
+    <value>Capacidad</value>
+  </data>
+  <data name="TenantStorageCapacityMegaBytes" xml:space="preserve">
+    <value>Capacidad (MB)</value>
+  </data>
+  <data name="TenantStorageGigaBytes" xml:space="preserve">
+    <value>GB</value>
+  </data>
+  <data name="TenantStorageMaxFileSize" xml:space="preserve">
+    <value>Tamaño máximo del archivo</value>
+  </data>
+  <data name="TenantStorageMaxFileSizeMegaBytes" xml:space="preserve">
+    <value>Tamaño máximo del archivo (MB)</value>
+  </data>
+  <data name="TenantStorageMegaBytes" xml:space="preserve">
+    <value>MB</value>
+  </data>
+  <data name="TenantStorageOverageAllowed" xml:space="preserve">
+    <value>Exceso permitido</value>
+  </data>
+  <data name="TenantStorageOverageAllowedMegaBytes" xml:space="preserve">
+    <value>Exceso permitido (MB)</value>
+  </data>
+  <data name="ThisFieldIsRequired" xml:space="preserve">
+    <value>Este campo es obligatorio</value>
+  </data>
+  <data name="ThreeDays" xml:space="preserve">
+    <value>3 días</value>
+  </data>
+  <data name="TimeReceived" xml:space="preserve">
+    <value>Hora de recepción</value>
+  </data>
+  <data name="TimeStamp" xml:space="preserve">
+    <value>Marca de tiempo</value>
+  </data>
+  <data name="TLSInfo" xml:space="preserve">
+    <value>Configurar TLS</value>
+  </data>
+  <data name="TotalCount" xml:space="preserve">
+    <value>Número total</value>
+  </data>
+  <data name="TotalRedeemedLicensesHelpText" xml:space="preserve">
+    <value>El recuento total de canjes es la suma de las licencias canjeadas por esta Workspace ONE UEM console y las licencias canjeadas fuera de esta Workspace ONE UEM console. Los dispositivos han reclamado estas licencias y se deben revocar antes de poder distribuirse.</value>
+  </data>
+  <data name="TriggerAccount" xml:space="preserve">
+    <value>Detalles de la acción más reciente</value>
+  </data>
+  <data name="TriggerAccountToolTip" xml:space="preserve">
+    <value>Muestra los detalles de la acción más reciente que se ha llevado a cabo en los dispositivos asignados para esta aplicación.</value>
+  </data>
+  <data name="TrustStore" xml:space="preserve">
+    <value>Almacén de confianza</value>
+  </data>
+  <data name="TunnelAndOtherAttributes" xml:space="preserve">
+    <value>Tunnel y otros atributos</value>
+  </data>
+  <data name="TunnelConfigGridBulkActionArg" xml:space="preserve">
+    <value>La configuración de Tunnel se sincronizará en {0} dispositivos</value>
+  </data>
+  <data name="UemVersion" xml:space="preserve">
+    <value>Versión de UEM</value>
+  </data>
+  <data name="UnPause" xml:space="preserve">
+    <value>Cancelar pausa</value>
+  </data>
+  <data name="Unpaused" xml:space="preserve">
+    <value>Pausa cancelada</value>
+  </data>
+  <data name="UnPauseToSelectedDevice" xml:space="preserve">
+    <value>Al implementar esta acción, se cancelará la pausa aplicada a las eliminaciones de esta aplicación para cualquier dispositivo que no cuente con las autorizaciones. Asegúrese de que las autorizaciones sean precisas antes de continuar. Haga clic en "Aceptar" si desea continuar.</value>
+  </data>
+  <data name="UnreleasedVersions" xml:space="preserve">
+    <value>Versión preliminar</value>
+  </data>
+  <data name="UpgradeApplication" xml:space="preserve">
+    <value>Actualizar aplicación</value>
+  </data>
+  <data name="UploadedPercentageFormat" xml:space="preserve">
+    <value>{0} %</value>
+    <comment>This should be changed to %{0} for languages supporting %# format for percentage</comment>
+  </data>
+  <data name="UploadedUemVersion" xml:space="preserve">
+    <value>Versión de UEM cargada</value>
+  </data>
+  <data name="UploadedVersion" xml:space="preserve">
+    <value>Versión cargada</value>
+  </data>
+  <data name="UploadInProgressDoNotClose" xml:space="preserve">
+    <value>Carga en curso. no cierre el diálogo modal ni actualice la página.</value>
+  </data>
+  <data name="UploadStillInProgress" xml:space="preserve">
+    <value>La carga aún está en curso. no cierre el diálogo modal ni actualice la página.</value>
+  </data>
+  <data name="UploadUninstallScript" xml:space="preserve">
+    <value>Cargue el script de desinstalación de la aplicación</value>
+  </data>
+  <data name="Usability" xml:space="preserve">
+    <value>Facilidad de uso</value>
+  </data>
+  <data name="UseEscrowGateway" xml:space="preserve">
+    <value>Utilizar puerta de enlace de custodia</value>
+  </data>
+  <data name="UseEscrowGatewayInfo" xml:space="preserve">
+    <value>Esta opción solo se aplicará a Boxer 5.19 o una versión posterior y cuando se configure la puerta de enlace de custodia.</value>
+  </data>
+  <data name="UserAppRatingInfo" xml:space="preserve">
+    <value>Información de calificación de la aplicación del usuario</value>
+  </data>
+  <data name="UserCertificateOnly" xml:space="preserve">
+    <value>Solo certificado del usuario</value>
+  </data>
+  <data name="UserCertificateOptionalInfo" xml:space="preserve">
+    <value>Si el usuario no dispone de un certificado, esta credencial se omitirá y el resto del perfil se enviará a los usuarios finales. En caso de que esté disponible, el certificado de usuario se extrae del usuario específico de Workspace ONE. El certificado se puede cargar de forma manual a través de los detalles del usuario en la consola o en Autoservicio.</value>
+  </data>
+  <data name="UserDeferredInstall" xml:space="preserve">
+    <value>Ninguno (el usuario ha aplazado la instalación de la aplicación)</value>
+  </data>
+  <data name="UserEngagedDeadline" xml:space="preserve">
+    <value>Fecha límite de usuario en curso</value>
+  </data>
+  <data name="UserEngagedRestart" xml:space="preserve">
+    <value>Reinicio activado por el usuario</value>
+  </data>
+  <data name="UseSameSigningAndEncryptionCertificate" xml:space="preserve">
+    <value>Use el mismo certificado de firma y cifrado</value>
+  </data>
+  <data name="UseSameSigningAndEncryptionCertificateInfo" xml:space="preserve">
+    <value>Se utilizará el mismo certificado S/MIME para firmar y cifrar, a menos que se seleccione No.</value>
+  </data>
+  <data name="ValidatingDependentApps" xml:space="preserve">
+    <value>Validando aplicaciones dependientes</value>
+  </data>
+  <data name="ValidationAppConfiguration" xml:space="preserve">
+    <value>La aplicación seleccionada no tiene ninguna asignación definida. Seleccione una aplicación diferente o bien defina al menos una asignación e inténtelo de nuevo.</value>
+  </data>
+  <data name="ValidationDuplicateStep" xml:space="preserve">
+    <value>Ya existe otro paso con una configuración similar.</value>
+  </data>
+  <data name="ValidationErrorMessage" xml:space="preserve">
+    <value>No se pueden guardar los cambios. Asegúrese de que cada campo esté completo y de que no haya errores antes de volver a intentarlo.</value>
+  </data>
+  <data name="VersionCodeAlreadyExistsInOG" xml:space="preserve">
+    <value>El código de versión de esta aplicación de Android es {0} y ya existe en el GO. Solicite al desarrollador que actualice el código de versión. Los códigos del identificador {1} que ya están agregados en el GO actual son {2}.</value>
+  </data>
+  <data name="Versions" xml:space="preserve">
+    <value>Versiones</value>
+  </data>
+  <data name="VersionsInstalled" xml:space="preserve">
+    <value>Versiones instaladas</value>
+  </data>
+  <data name="ViewCriteria" xml:space="preserve">
+    <value>Ver criterios</value>
+  </data>
+  <data name="ViewFlexeraApps" xml:space="preserve">
+    <value>Ver aplicaciones</value>
+  </data>
+  <data name="ViewInstallStatusForApplication" xml:space="preserve">
+    <value>Ver el estado de instalación de {0}</value>
+  </data>
+  <data name="VirtualApplications" xml:space="preserve">
+    <value>Aplicaciones virtuales</value>
+  </data>
+  <data name="VirtualApplicationsHelp" xml:space="preserve">
+    <value>Controla el acceso a la configuración de las aplicaciones virtuales y solo se aplica a los administradores de directorio</value>
+  </data>
+  <data name="VirtualApps" xml:space="preserve">
+    <value>Aplicaciones virtuales</value>
+  </data>
+  <data name="VirtualAppsHelp" xml:space="preserve">
+    <value>Consulte una lista de aplicaciones virtuales y escritorios a los que pueden acceder los empleados desde el catálogo de Workspace ONE.</value>
+  </data>
+  <data name="VirtualAppsIDMSetupArg" xml:space="preserve">
+    <value>Hay que configurar Workspace ONE para poder utilizar aplicaciones virtuales. Vaya a {0} y complete la configuración de Workspace ONE. Una vez completada, cierre la sesión y vuelva a iniciarla para intentarlo de nuevo.</value>
+  </data>
+  <data name="VirtualAppsMenuDescription" xml:space="preserve">
+    <value>Consulte una lista de aplicaciones virtuales y escritorios a los que pueden acceder los empleados desde el catálogo de Workspace ONE.</value>
+  </data>
+  <data name="VirtualBreadcrumbDescription" xml:space="preserve">
+    <value>Ver y administrar colecciones y aplicaciones virtuales.</value>
+  </data>
+  <data name="VMwareDocs" xml:space="preserve">
+    <value>VMware Docs</value>
+  </data>
+  <data name="VPPLicenseNotAvailable" xml:space="preserve">
+    <value>Ninguna (licencia no disponible)</value>
+  </data>
+  <data name="WaitingForEvent" xml:space="preserve">
+    <value>Esperando evento</value>
+  </data>
+  <data name="WaitingForSchedule" xml:space="preserve">
+    <value>Esperando programación</value>
+  </data>
+  <data name="WaitingForTimeWindow" xml:space="preserve">
+    <value>Esperando a ventana de tiempo</value>
+  </data>
+  <data name="WaitingToBeRetried" xml:space="preserve">
+    <value>Esperando para volver a intentar</value>
+  </data>
+  <data name="WantToContinue" xml:space="preserve">
+    <value>¿Desea continuar?</value>
+  </data>
+  <data name="WebLinkMenus" xml:space="preserve">
+    <value>Enlaces web</value>
+  </data>
+  <data name="WindowsAppsRetireDescription" xml:space="preserve">
+    <value>Al retirar una versión de una aplicación, la misma se desinstalará de todos los dispositivos administrados por Workspace ONE. Si la siguiente versión inferior de la aplicación está disponible y se asigna, no se llevará a cabo ninguna acción, ya que el sistema operativo del dispositivo no admite la degradación de la aplicación.</value>
+  </data>
+  <data name="WindowsProvisioningInstallContextWarning" xml:space="preserve">
+    <value>Esta aplicación requiere un contexto de usuario para la instalación. No puede incluirse en el PPKG exportado</value>
+  </data>
+  <data name="WindowsProvisioningNoAppSelected" xml:space="preserve">
+    <value>Seleccione las aplicaciones que desea exportar a un paquete de aprovisionamiento de Windows</value>
+  </data>
+  <data name="WindowsProvisioningOGInheritedWarning" xml:space="preserve">
+    <value>Esta aplicación se hereda de otro grupo organizativo. No puede incluirse en el PPKG exportado.</value>
+  </data>
+  <data name="WindowsProvisioningPackageDeleteFailed" xml:space="preserve">
+    <value>Error inesperado al eliminar el paquete de aprovisionamiento (PPKG).</value>
+  </data>
+  <data name="WindowsProvisioningPackageDeleteSuccess" xml:space="preserve">
+    <value>El paquete de aprovisionamiento (PPKG) de Windows se ha eliminado correctamente.</value>
+  </data>
+  <data name="WindowsProvisioningPackageDeleteWarning" xml:space="preserve">
+    <value>Este paquete de aprovisionamiento no se puede eliminar porque está administrado en un nivel de grupo organizativo más alto o porque el administrador tiene acceso de solo lectura.</value>
+  </data>
+  <data name="WindowsProvisioningPackageDownloadAction" xml:space="preserve">
+    <value>Descargar</value>
+  </data>
+  <data name="WindowsProvisioningPackageEditWarning" xml:space="preserve">
+    <value>Este paquete de aprovisionamiento no se puede editar porque ya está administrado en un nivel de grupo organizativo más alto o porque el administrador tiene acceso de solo lectura.</value>
+  </data>
+  <data name="WindowsProvisioningPackageFailed" xml:space="preserve">
+    <value>Error inesperado al solicitar el paquete de aprovisionamiento (PPKG).</value>
+  </data>
+  <data name="WindowsProvisioningPackageFailedMessage" xml:space="preserve">
+    <value>Se ha producido un error al exportar el paquete de aprovisionamiento de Windows (PPKG)</value>
+  </data>
+  <data name="WindowsProvisioningPackagePleaseWait" xml:space="preserve">
+    <value>Solicitud de exportación de un paquete de aprovisionamiento de Windows (PPKG) en curso. Espere hasta que la exportación finalice.</value>
+  </data>
+  <data name="WindowsProvisioningPackageProgressActionMessage" xml:space="preserve">
+    <value>Ver aplicaciones</value>
+  </data>
+  <data name="WindowsProvisioningPackageProgressMessage" xml:space="preserve">
+    <value>Se está exportando un paquete de aprovisionamiento de Windows (PPKG).</value>
+  </data>
+  <data name="WindowsProvisioningPackageRequested" xml:space="preserve">
+    <value>Solicitud de exportación de paquete de aprovisionamiento de Windows (PPKG) realizada correctamente. Cuando la exportación del PPKG se haya completado, se enviará una notificación con un enlace para descargarlo.</value>
+  </data>
+  <data name="WindowsProvisioningPackageStorageFailed" xml:space="preserve">
+    <value>Se ha producido un error al exportar el paquete de aprovisionamiento de Windows (PPKG) por falta de almacenamiento</value>
+  </data>
+  <data name="WindowsProvisioningPackageSuccessActionMessage" xml:space="preserve">
+    <value>Descargar</value>
+  </data>
+  <data name="WindowsProvisioningPackageSuccessMessage" xml:space="preserve">
+    <value>Paquete de aprovisionamiento de Windows (PPKG) disponible para su descarga.</value>
+  </data>
+  <data name="WindowsProvisioningPackageTitle" xml:space="preserve">
+    <value>Paquete de aprovisionamiento de Windows</value>
+  </data>
+  <data name="WindowsProvisioningSFDReUploadWarning" xml:space="preserve">
+    <value>Esta aplicación debe cargarse al habilitar la implementación del paquete de software en los ajustes para que se incluya en el PPKG exportado</value>
+  </data>
+  <data name="WinRTDesiredStateManagementTooltip" xml:space="preserve">
+    <value>Solo se aplica a aplicaciones administradas mediante MDM e implementadas a través del método de distribución automática. Si está habilitada, la aplicación se volverá a instalar automáticamente cuando se detecte una desinstalación. Si está deshabilitada, la aplicación no se volverá a instalar cuando se detecte la desinstalación.</value>
+  </data>
+  <data name="WorkflowDefinitionDesc" xml:space="preserve">
+    <value>Proporcione al flujo de trabajo un nombre descriptivo y una descripción.</value>
+  </data>
+  <data name="WorkflowRebootPlaceholder" xml:space="preserve">
+    <value>El dispositivo se reiniciará antes de continuar con el siguiente paso si lo hubiera.</value>
+  </data>
+  <data name="Workflows" xml:space="preserve">
+    <value>Flujos de trabajo</value>
+  </data>
+  <data name="WorkflowStepsDesc" xml:space="preserve">
+    <value>Busque y agregue aplicaciones y condiciones aquí para crear el flujo de trabajo. El flujo de trabajo se ejecutará en el orden especificado a continuación. Arrastre para llevar a cabo la reordenación.</value>
+  </data>
+  <data name="WorkflowStepsPlaceholder" xml:space="preserve">
+    <value>Comience agregando aplicaciones o condiciones</value>
+  </data>
+  <data name="WorkflowSummaryDesc" xml:space="preserve">
+    <value>Revise los detalles del flujo de trabajo y los pasos antes de guardar.</value>
+  </data>
+  <data name="WorkspaceOneAdminAssistantForMacOs" xml:space="preserve">
+    <value>Workspace ONE Admin Assistant para macOS</value>
+  </data>
+  <data name="X64AppDependencies" xml:space="preserve">
+    <value>Dependencias X64</value>
+  </data>
+  <data name="X86AppDependencies" xml:space="preserve">
+    <value>Dependencias X86</value>
+  </data>
+  <data name="ZeroOrPositiveIntegerRequired" xml:space="preserve">
+    <value>El valor debe ser cero o un número entero positivo</value>
+  </data>
+</root>

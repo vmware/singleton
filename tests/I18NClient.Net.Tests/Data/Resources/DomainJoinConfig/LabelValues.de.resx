@@ -1,0 +1,218 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AddDomainJoinConfig" xml:space="preserve">
+    <value>Neuer Domänenbeitritt</value>
+  </data>
+  <data name="AddedDJSuccessfully" xml:space="preserve">
+    <value>Domänenbeitritt erfolgreich hinzugefügt</value>
+  </data>
+  <data name="AddedDJUnSuccessfully" xml:space="preserve">
+    <value>Speichern des Domänenbeitritts fehlgeschlagen</value>
+  </data>
+  <data name="CreateLocalUser" xml:space="preserve">
+    <value>Lokalen Benutzer erstellen</value>
+  </data>
+  <data name="CreateLocalUserTooltip" xml:space="preserve">
+    <value>Wählen Sie diese Option aus, um ein lokales Benutzerkonto für die Anmeldung am Gerät zu erstellen. Wenn diese Option nicht ausgewählt ist, müssen Sie ein Benutzerkonto mithilfe eines benutzerdefinierten Profils erstellen.</value>
+  </data>
+  <data name="DeletedDJSuccessfully" xml:space="preserve">
+    <value>Domänenbeitritt erfolgreich gelöscht</value>
+  </data>
+  <data name="DeleteDomainJoinConfig" xml:space="preserve">
+    <value>Domänenbeitritt löschen</value>
+  </data>
+  <data name="DJDeleteFailure" xml:space="preserve">
+    <value>Löschen des Domänenbeitritts fehlgeschlagen</value>
+  </data>
+  <data name="DJUsernameCannotHaveRestrictedCharacters" xml:space="preserve">
+    <value>Der Benutzername darf folgende Zeichen nicht enthalten: / \ [ ] : | &lt; &gt; + = ; , ? * % @</value>
+  </data>
+  <data name="DomainFriendlyName" xml:space="preserve">
+    <value>Anzeigename der Domäne</value>
+  </data>
+  <data name="DomainFriendlyNameTooltip" xml:space="preserve">
+    <value>Der in den Verzeichnisdienst-Einstellungen konfigurierte Parameter für den alten Domänennamen. Dies ist der Wert, der bei der Anmeldung mit Active Directory-Domänenanmeldedaten häufig mit dem Format DOMAIN\username verwendet wird. Wenn dieser Parameter nicht konfiguriert ist, verwenden Sie als Domänennamen denselben Wert (vorheriges Feld).</value>
+  </data>
+  <data name="DomainJoin" xml:space="preserve">
+    <value>Domänenbeitritt</value>
+  </data>
+  <data name="DomainJoinConfigListDescription" xml:space="preserve">
+    <value>Domänenbeitritt </value>
+  </data>
+  <data name="DomainJoinConfigWillBeDeleted" xml:space="preserve">
+    <value>Durch das Löschen dieser Domänenbeitrittskonfiguration wird diese von den Geräten entfernt, die registriert, jedoch nicht angemeldet wurden. Angemeldete Geräte sind davon nicht betroffen.
+Möchten Sie fortfahren?</value>
+  </data>
+  <data name="DomainJoinName" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="DomainJoinType" xml:space="preserve">
+    <value>Typ des Domänenbeitritts</value>
+  </data>
+  <data name="DomainServerUrl" xml:space="preserve">
+    <value>Domänenname</value>
+  </data>
+  <data name="DomainServerUrlHelptext" xml:space="preserve">
+    <value>Klicken Sie hier, um diesen Wert in den {0}-Einstellungen zu konfigurieren.</value>
+    <comment>{0} will be replaced with link to Directory Services settings page with the the text "Directory Services"</comment>
+  </data>
+  <data name="DomainServerUrlTooltip" xml:space="preserve">
+    <value>Der vollständige Name der Domänenkomponente der Active Directory-Domäne (Beispiel: dc01.contoso.com). Dieser Server muss in den Verzeichnisdiensteinstellungen konfiguriert sein, bevor Sie einen Domänenbeitritt hinzufügen.</value>
+  </data>
+  <data name="EditDomainJoinConfig" xml:space="preserve">
+    <value>Domänenbeitritt bearbeiten</value>
+  </data>
+  <data name="LocalUsername" xml:space="preserve">
+    <value>Lokaler Benutzername</value>
+  </data>
+  <data name="LocalUsernamePassword" xml:space="preserve">
+    <value>Lokales Benutzerkennwort</value>
+  </data>
+  <data name="MachineNameFormat" xml:space="preserve">
+    <value>Format des Maschinennamens</value>
+  </data>
+  <data name="MachineNameFormatTooltip" xml:space="preserve">
+    <value>Geben Sie einen eindeutigen 15 Zeichen umfassenden Namen für das Gerät ein. Für Hilfe beim Generieren eines eindeutigen Namens verwenden Sie %SERIAL%, das eine hardwarespezifische Seriennummer enthält, oder Sie verwenden %RAND:[#]%, wodurch zufällige Zeichen mit einer Länge von # generiert werden. Um die Möglichkeit zu minimieren, doppelte Computernamen bei der Verwendung der Generierung von Zufallszahlen zu erstellen, muss die Länge der Zufallszahlen [%RAND:[#]%] größer oder gleich 7 sein.</value>
+  </data>
+  <data name="MakeAdministrator" xml:space="preserve">
+    <value>Administrator erstellen</value>
+  </data>
+  <data name="MakeAdministratorTooltip" xml:space="preserve">
+    <value>Fügen Sie das lokale Benutzerkonto zur Administratorengruppe auf dem Gerät hinzu.</value>
+  </data>
+  <data name="NoDomainJoinConfig" xml:space="preserve">
+    <value>In dieser Organisationsgruppe wurden keine Domänenbeitrittskonfigurationen hinzugefügt</value>
+  </data>
+  <data name="OnPremActiveDirectory" xml:space="preserve">
+    <value>Lokales Active Directory</value>
+  </data>
+  <data name="SmartGroupAlreadyAssigned" xml:space="preserve">
+    <value>ist bereits zugewiesen an</value>
+  </data>
+  <data name="Workgroup" xml:space="preserve">
+    <value>Arbeitsgruppe</value>
+  </data>
+  <data name="WorkGroupName" xml:space="preserve">
+    <value>Arbeitsgruppe</value>
+  </data>
+  <data name="WorkgroupNameTooltip" xml:space="preserve">
+    <value>Der Name der Arbeitsgruppe, mit der der Client verknüpft wird.</value>
+  </data>
+</root>

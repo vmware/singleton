@@ -1,0 +1,1004 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AboutFreestyleOrchestrator" xml:space="preserve">
+    <value>Om Freestyle Orchestrator</value>
+  </data>
+  <data name="AddEditFreestyle" xml:space="preserve">
+    <value>Lägg till/redigera Freestyle</value>
+  </data>
+  <data name="AddEditFreestyleHelp" xml:space="preserve">
+    <value>Kontrollera åtkomst till att skapa, redigera och publicera Freestyle och resurstyper som appar, profiler och skript</value>
+  </data>
+  <data name="AddressWidth" xml:space="preserve">
+    <value>Adressbredd</value>
+  </data>
+  <data name="ApplicationDoesNotExist" xml:space="preserve">
+    <value>Applikationen finns inte</value>
+  </data>
+  <data name="ApplicationExists" xml:space="preserve">
+    <value>Applikationen finns</value>
+  </data>
+  <data name="AppResultsDescription" xml:space="preserve">
+    <value>Det faktiska antalet potentiellt kvalificerade appar kan vara större än vad som visas.</value>
+  </data>
+  <data name="AppsOfArg" xml:space="preserve">
+    <value>Appar {0} – {1} av {2}</value>
+  </data>
+  <data name="Archived" xml:space="preserve">
+    <value>Arkiverade</value>
+  </data>
+  <data name="AssignmentDoesNotExistOrMightBeDeleted" xml:space="preserve">
+    <value>Tilldelningen finns inte eller kan ha tagits bort.</value>
+  </data>
+  <data name="AssignmentsCouldNotBeRetrieved" xml:space="preserve">
+    <value>Det gick inte att hämta tilldelningar.</value>
+  </data>
+  <data name="Attributes" xml:space="preserve">
+    <value>Attribut</value>
+  </data>
+  <data name="AutoDeploy" xml:space="preserve">
+    <value>Driftsätt automatiskt</value>
+  </data>
+  <data name="AutoDeployAndShowInAppCatalog" xml:space="preserve">
+    <value>Driftsätt automatiskt och visa i App Catalog</value>
+  </data>
+  <data name="BackoffRate" xml:space="preserve">
+    <value>Backoff-frekvens</value>
+  </data>
+  <data name="BackoffRateDesc" xml:space="preserve">
+    <value>Multiplikator som avgör intervallet mellan efterföljande försök.</value>
+  </data>
+  <data name="BankLocator" xml:space="preserve">
+    <value>Banklokalisering</value>
+  </data>
+  <data name="BaseTimeHelpText" xml:space="preserve">
+    <value>Utvärderas baserat på lokal enhetstid</value>
+  </data>
+  <data name="BiosPayloadWarning" xml:space="preserve">
+    <value>Kontrollera att Dell Command Monitor-appen har lagts till i arbetsflödet innan du publicerar.</value>
+  </data>
+  <data name="Bitlocker" xml:space="preserve">
+    <value>Bitlocker</value>
+  </data>
+  <data name="BrowserExtension" xml:space="preserve">
+    <value>Webbläsartillägg</value>
+  </data>
+  <data name="BrowserName" xml:space="preserve">
+    <value>Webbläsarnamn</value>
+  </data>
+  <data name="Capacity" xml:space="preserve">
+    <value>Kapacitet</value>
+  </data>
+  <data name="Caption" xml:space="preserve">
+    <value>Bildtext</value>
+  </data>
+  <data name="CatalogIconRecommendationAndLimit" xml:space="preserve">
+    <value>PNG, JPG or GIF, 1 MB maximum, 512 by 512 px recommended.</value>
+  </data>
+  <data name="ChangeAttribute" xml:space="preserve">
+    <value>Ändra</value>
+    <comment>edi change attribute confirm button text</comment>
+  </data>
+  <data name="ChangeAttributeConfirmationDescription" xml:space="preserve">
+    <value>Om du ändrar markeringen raderas alla attribut som är associerade till den aktuella markeringen.</value>
+    <comment>edi change attribute confirm model body description</comment>
+  </data>
+  <data name="ChangeAttributeConfirmationTitle" xml:space="preserve">
+    <value>Ändra val</value>
+    <comment>edi change attribute confirm model title</comment>
+  </data>
+  <data name="ChangePlatform" xml:space="preserve">
+    <value>Byt plattform</value>
+  </data>
+  <data name="ChasisType" xml:space="preserve">
+    <value>Chassityp</value>
+  </data>
+  <data name="ClockSpeed" xml:space="preserve">
+    <value>Klockhastighet</value>
+  </data>
+  <data name="CodeName" xml:space="preserve">
+    <value>Kodnamn</value>
+  </data>
+  <data name="CompletedWithException" xml:space="preserve">
+    <value>Slutfört med undantag</value>
+  </data>
+  <data name="Compute" xml:space="preserve">
+    <value>Beräkna</value>
+  </data>
+  <data name="ConfigurationOptionTooltipMsg" xml:space="preserve">
+    <value>Välj plattform för att lägga till fler steg i arbetsflödet.</value>
+  </data>
+  <data name="ConfirmDeleteArg" xml:space="preserve">
+    <value>Ta bort {0}</value>
+    <comment>{0} will be Workflow name</comment>
+  </data>
+  <data name="ConfirmDeleteWorkflowContent" xml:space="preserve">
+    <value>Om du tar bort det här arbetsflödet tas resurstilldelningen bort från enheterna i det här arbetsflödet. Åtgärden kan inte ångras. De resurser som är installerade på enheten kommer bli kvar om de inte tas bort manuellt.</value>
+  </data>
+  <data name="ConfirmPauseArg" xml:space="preserve">
+    <value>Pausa {0}</value>
+  </data>
+  <data name="ConfirmPauseWorkflowContent" xml:space="preserve">
+    <value>Med åtgärden avbryts körningen av arbetsflödet på nya enheter tills du återupptar det. Enheter som har körts eller som kör arbetsflödet påverkas inte.</value>
+  </data>
+  <data name="ConnectionId" xml:space="preserve">
+    <value>Anslutnings-ID</value>
+  </data>
+  <data name="Cores" xml:space="preserve">
+    <value>Kärnor</value>
+  </data>
+  <data name="CPU" xml:space="preserve">
+    <value>CPU</value>
+  </data>
+  <data name="CPUBrand" xml:space="preserve">
+    <value>CPU-märke</value>
+  </data>
+  <data name="CPUID" xml:space="preserve">
+    <value>CPU-ID</value>
+  </data>
+  <data name="CPUModel" xml:space="preserve">
+    <value>CPU-modell</value>
+  </data>
+  <data name="CPUSubType" xml:space="preserve">
+    <value>CPU-undertyp</value>
+  </data>
+  <data name="CPUType" xml:space="preserve">
+    <value>CPU-typ</value>
+  </data>
+  <data name="CreatedOnByArg" xml:space="preserve">
+    <value>Skapad den {0} av {1}</value>
+  </data>
+  <data name="CreateWorkflowsInfo" xml:space="preserve">
+    <value>När du är klar klickar du på Kom igång för att skapa och publicera arbetsflöden med de resurser du konfigurerat.</value>
+  </data>
+  <data name="CreateYourWorkflows" xml:space="preserve">
+    <value>Skapa dina arbetsflöden</value>
+  </data>
+  <data name="CustomLastDays" xml:space="preserve">
+    <value>Senaste {0} dagen/dagarna</value>
+  </data>
+  <data name="CustomLastHours" xml:space="preserve">
+    <value>Senaste {0} timmen/timmarna</value>
+  </data>
+  <data name="CustomLastMonths" xml:space="preserve">
+    <value>Senaste {0} månaden/månaderna</value>
+  </data>
+  <data name="CustomLastWeeks" xml:space="preserve">
+    <value>Senaste {0} veckan/veckorna</value>
+  </data>
+  <data name="DataWidth" xml:space="preserve">
+    <value>Databredd</value>
+  </data>
+  <data name="DeleteFreestyle" xml:space="preserve">
+    <value>Ta bort Freestyle</value>
+  </data>
+  <data name="DeleteFreestyleHelp" xml:space="preserve">
+    <value>Kontrollera åtkomst till att ta bort Freestyle och resurstyper, t.ex. appar, profiler och skript</value>
+  </data>
+  <data name="DeleteWorkflow" xml:space="preserve">
+    <value>Ta bort arbetsflöde</value>
+  </data>
+  <data name="DeleteWorkflowAdditionalContent" xml:space="preserve">
+    <value>För att ta bort de installerade resurserna, gå till vyn enhetsinformation för varje enhet eller vyn tilldelade enheter för varje resurs.</value>
+  </data>
+  <data name="DeploymentSettings" xml:space="preserve">
+    <value>Inställningar för driftsättning</value>
+  </data>
+  <data name="DeviceBreakdown" xml:space="preserve">
+    <value>Enhetsöversikt</value>
+  </data>
+  <data name="DeviceDistributionUnavailable" xml:space="preserve">
+    <value>Enhetsdistribution är inte tillgänglig.</value>
+  </data>
+  <data name="DeviceExecutionStatusInfo" xml:space="preserve">
+    <value>Baserat på val av plattform och smartgrupp</value>
+  </data>
+  <data name="DeviceLocator" xml:space="preserve">
+    <value>Lokalisering av enheter</value>
+  </data>
+  <data name="DeviceNotAssignedToWorkflow" xml:space="preserve">
+    <value>Enheten är inte tilldelad till det här arbetsflödet.</value>
+  </data>
+  <data name="DeviceWithStatusArg" xml:space="preserve">
+    <value>Enhet med statusen {0}</value>
+  </data>
+  <data name="DeviceWorkflowStatusInfo" xml:space="preserve">
+    <value>Status för varje steg i det här arbetsflödet för den här enheten visas nedan.</value>
+  </data>
+  <data name="DiskIndex" xml:space="preserve">
+    <value>Disk-index</value>
+  </data>
+  <data name="DNSDomain" xml:space="preserve">
+    <value>DNS-domän</value>
+  </data>
+  <data name="DNSServerSearchOrder" xml:space="preserve">
+    <value>Sökordning för DNS-servrar</value>
+  </data>
+  <data name="DoYouWantToContinue" xml:space="preserve">
+    <value>Vill du fortsätta?</value>
+  </data>
+  <data name="DriverDate" xml:space="preserve">
+    <value>Drivrutinsdatum</value>
+  </data>
+  <data name="DriverKey" xml:space="preserve">
+    <value>Drivrutinsnyckel</value>
+  </data>
+  <data name="DriverSigned" xml:space="preserve">
+    <value>Signerad drivrutin</value>
+  </data>
+  <data name="DWord32Bit" xml:space="preserve">
+    <value>DWORD</value>
+  </data>
+  <data name="EdiSelectFurther" xml:space="preserve">
+    <value>Välj attribut</value>
+    <comment>edi sencondary selection default text.</comment>
+  </data>
+  <data name="EmptyStepStatus" xml:space="preserve">
+    <value>Ingen status för enheten har rapporterats. Antalet enheter uppdateras när mer data finns tillgängligt.</value>
+  </data>
+  <data name="EnterNumber" xml:space="preserve">
+    <value>Ange ett nummer</value>
+  </data>
+  <data name="EnterNumberForCustomRange" xml:space="preserve">
+    <value>Ange nummer för anpassat intervall</value>
+  </data>
+  <data name="EntryBlock" xml:space="preserve">
+    <value>Arbetsflödesinställningar</value>
+  </data>
+  <data name="ErrorHandling" xml:space="preserve">
+    <value>Felhantering</value>
+  </data>
+  <data name="ErrorLoadingCategories" xml:space="preserve">
+    <value>Det gick inte att hämta appkategorier. Kontakta din systemadministratör om problemet kvarstår.</value>
+  </data>
+  <data name="EulaSettings" xml:space="preserve">
+    <value>EULA-inställningar</value>
+  </data>
+  <data name="ExcludedSmartGroupAssignmentError" xml:space="preserve">
+    <value>Uteslutna smartgrupper ska inte ingå i tilldelningen av smarta grupper för arbetsflöden som innehåller den här applikationen.</value>
+  </data>
+  <data name="ExecutionRate" xml:space="preserve">
+    <value>Körningsfrekvens</value>
+  </data>
+  <data name="Exists" xml:space="preserve">
+    <value>Finns</value>
+  </data>
+  <data name="ExpandableString" xml:space="preserve">
+    <value>Utökningsbar sträng</value>
+  </data>
+  <data name="ExtensionName" xml:space="preserve">
+    <value>Namn på filnamnstillägg</value>
+  </data>
+  <data name="FileSystem" xml:space="preserve">
+    <value>Filsystem</value>
+  </data>
+  <data name="Filters" xml:space="preserve">
+    <value>Filter</value>
+  </data>
+  <data name="FindOutMore" xml:space="preserve">
+    <value>Om du vill ha mer information, gå till</value>
+  </data>
+  <data name="FirstRetryAfter" xml:space="preserve">
+    <value>Första försöket igen efter</value>
+  </data>
+  <data name="FourthRetryAfter" xml:space="preserve">
+    <value>Fjärde försöket igen efter</value>
+  </data>
+  <data name="FreeSpace" xml:space="preserve">
+    <value>Ledigt utrymme</value>
+  </data>
+  <data name="Freestyle" xml:space="preserve">
+    <value>Freestyle</value>
+  </data>
+  <data name="FreestyleContext" xml:space="preserve">
+    <value>Kontext</value>
+  </data>
+  <data name="FreestyleHeader" xml:space="preserve">
+    <value>Skapa arbetsflöden som uppfyller dina behov</value>
+  </data>
+  <data name="FreestyleInfo" xml:space="preserve">
+    <value>Workspace ONE Freestyle Orchestrator är en IT-orkestreringsplattform utan kod som ger dig flexibiliteten att skapa arbetsflöden för resurser såsom appar, profiler och skript och tillämpa dem på enheter baserat på detaljerade kriterier.</value>
+  </data>
+  <data name="FreestyleNote" xml:space="preserve">
+    <value>Finns för närvarande endast för Windows 10 och macOS-plattformar.</value>
+  </data>
+  <data name="FreestyleOrchestrator" xml:space="preserve">
+    <value>Freestyle Orchestrator</value>
+  </data>
+  <data name="FreestyleOrchestratorInfo" xml:space="preserve">
+    <value>Skapa arbetsflöden för resurser som t. ex. appar, profiler och skript, och tillämpa dem på enheter baserat på detaljerade kriterier.</value>
+  </data>
+  <data name="FreestyleOrchestratorPreview" xml:space="preserve">
+    <value>Freestyle Orchestrator (förhandsvisning)</value>
+  </data>
+  <data name="FreestyleWelcomeWindowDescription" xml:space="preserve">
+    <value>Freestyle Orchestrator är en IT-orkestreringsplattform med låg kod som ger dig flexibiliteten att skapa arbetsflöden för resurser såsom appar, profiler och skript och tillämpa dem på enheter baserat på detaljerade kriterier.</value>
+  </data>
+  <data name="FreestyleWelcomeWindowDescriptionInfo" xml:space="preserve">
+    <value>Freestyle Orchestrator är för närvarande tillgänglig för Windows 10-och macOS-plattformar.</value>
+  </data>
+  <data name="FreestyleWorkflow" xml:space="preserve">
+    <value>Freestyle-arbetsflöde</value>
+  </data>
+  <data name="FreestyleWorkflowDescription" xml:space="preserve">
+    <value>Leverera objekt eller vidta specifik åtgärd på enheter baserat på kriterier.</value>
+  </data>
+  <data name="GettingStartedWithWorkflows" xml:space="preserve">
+    <value>Komma igång med arbetsflöden</value>
+  </data>
+  <data name="HardwareSerial" xml:space="preserve">
+    <value>Maskinvarans serienummer</value>
+  </data>
+  <data name="HardwareVendor" xml:space="preserve">
+    <value>Maskinvaruleverantör</value>
+  </data>
+  <data name="HardwareVersion" xml:space="preserve">
+    <value>Hårdvaruversion</value>
+  </data>
+  <data name="Hotfix" xml:space="preserve">
+    <value>Snabbkorrigering</value>
+  </data>
+  <data name="HotfixKBId" xml:space="preserve">
+    <value>KB-ID för snabbkorrigering</value>
+  </data>
+  <data name="Includes" xml:space="preserve">
+    <value>Innehåller</value>
+  </data>
+  <data name="InitialValueIsActivated" xml:space="preserve">
+    <value>Startvärde är aktiverat</value>
+  </data>
+  <data name="InitialValueIsEnabled" xml:space="preserve">
+    <value>Startvärde är aktiverat</value>
+  </data>
+  <data name="InitialValueIsOwned" xml:space="preserve">
+    <value>Startvärde ägs</value>
+  </data>
+  <data name="InstallationState" xml:space="preserve">
+    <value>Installationstillstånd</value>
+  </data>
+  <data name="InstalledBy" xml:space="preserve">
+    <value>Installerad av</value>
+  </data>
+  <data name="InstalledOn" xml:space="preserve">
+    <value>Installerad</value>
+  </data>
+  <data name="InstallLocation" xml:space="preserve">
+    <value>Installationsplats</value>
+  </data>
+  <data name="InstallSource" xml:space="preserve">
+    <value>Installationskälla</value>
+  </data>
+  <data name="IntroducingFreestyleOrchestrator" xml:space="preserve">
+    <value>Vi presenterar Freestyle Orchestrator</value>
+  </data>
+  <data name="IsBootable" xml:space="preserve">
+    <value>är startbar</value>
+  </data>
+  <data name="IsFramework" xml:space="preserve">
+    <value>är Framework</value>
+  </data>
+  <data name="KioskPayloadWarning" xml:space="preserve">
+    <value>Kontrollera att appar från kioskens nyttolast läggs till i arbetsflödet innan du publicerar.</value>
+  </data>
+  <data name="LastFortyFiveDays" xml:space="preserve">
+    <value>Senaste 45 dagarna</value>
+  </data>
+  <data name="LastFortyFiveDaysNumeric" xml:space="preserve">
+    <value>Senaste 45 dagarna</value>
+  </data>
+  <data name="LastFourteenDays" xml:space="preserve">
+    <value>Senaste 40 dagarna</value>
+  </data>
+  <data name="LastFourteenDaysNumeric" xml:space="preserve">
+    <value>Senaste 14 dagarna</value>
+  </data>
+  <data name="LastSevenDaysNumeric" xml:space="preserve">
+    <value>Senaste 7 dagarna</value>
+  </data>
+  <data name="LastSixtyDays" xml:space="preserve">
+    <value>Senaste 60 dagarna</value>
+  </data>
+  <data name="LastSixtyDaysNumeric" xml:space="preserve">
+    <value>Senaste 60 dagarna</value>
+  </data>
+  <data name="LastThirtyDaysNumeric" xml:space="preserve">
+    <value>Senaste 30 dagarna</value>
+  </data>
+  <data name="Latest" xml:space="preserve">
+    <value>Senaste</value>
+  </data>
+  <data name="LatestAvailable" xml:space="preserve">
+    <value>Senaste tillgängliga</value>
+  </data>
+  <data name="LocalTimeZone" xml:space="preserve">
+    <value>Lokal tidszon</value>
+  </data>
+  <data name="LogicalDrives" xml:space="preserve">
+    <value>Logiska drivrutiner</value>
+  </data>
+  <data name="ManufacturerId" xml:space="preserve">
+    <value>Tillverkar-ID</value>
+  </data>
+  <data name="ManufacturerVersion" xml:space="preserve">
+    <value>Tillverkarversion</value>
+  </data>
+  <data name="ManufacturerVersionInfo" xml:space="preserve">
+    <value>Versionsinformation för tillverkare</value>
+  </data>
+  <data name="MatchesFound" xml:space="preserve">
+    <value>{0} matchning(ar) hittades</value>
+  </data>
+  <data name="MaxClockSpeed" xml:space="preserve">
+    <value>Maximal klockhastighet</value>
+  </data>
+  <data name="MaximumRetries" xml:space="preserve">
+    <value>Maximalt antal försök</value>
+  </data>
+  <data name="MayNotBeFiltered" xml:space="preserve">
+    <value>Resultaten kanske inte innehåller</value>
+  </data>
+  <data name="MayNotBeFilteredDesc" xml:space="preserve">
+    <value>Alfanumeriska versioner av appar som filtrerats med operatorerna ”större än” eller ”mindre än”.</value>
+  </data>
+  <data name="MemoryType" xml:space="preserve">
+    <value>Minnestyp</value>
+  </data>
+  <data name="ModifiedOnByArg" xml:space="preserve">
+    <value>Ändrad den {0} av {1}</value>
+  </data>
+  <data name="MonitorPerformance" xml:space="preserve">
+    <value>Övervaka prestanda</value>
+  </data>
+  <data name="MonitorWorkflowPerformanceInfo" xml:space="preserve">
+    <value>Övervaka och få insyn i publicerade arbetsflöden, visa prestandastatistik och hantera sparade och arkiverade arbetsflöden.</value>
+  </data>
+  <data name="MultipleValueHelpText" xml:space="preserve">
+    <value>Avskilj olika värden med kommatecken.</value>
+  </data>
+  <data name="MustBeBetweenArgs" xml:space="preserve">
+    <value>Måste vara mellan {0} och {1}</value>
+  </data>
+  <data name="NavigationFreestyle" xml:space="preserve">
+    <value>Navigering Freestyle</value>
+  </data>
+  <data name="NavigationFreestyleHelp" xml:space="preserve">
+    <value>Styr åtkomst till Freestyles sidomeny</value>
+  </data>
+  <data name="NavigationResources" xml:space="preserve">
+    <value>Resurser för navigering</value>
+  </data>
+  <data name="NavigationResourcesHelp" xml:space="preserve">
+    <value>Styr åtkomst till sidomenyn för resurser</value>
+  </data>
+  <data name="NetworkAdapter" xml:space="preserve">
+    <value>Nätverkskort</value>
+  </data>
+  <data name="NoDefaultPolicyForVersion" xml:space="preserve">
+    <value>Appens version har inga standardpolicyer. Ange en före publicering.</value>
+  </data>
+  <data name="NoStepStatus" xml:space="preserve">
+    <value>Det finns ingen rapport för det här steget. Välj ett annat steg för att se översikt av enheter.</value>
+  </data>
+  <data name="NotBetween" xml:space="preserve">
+    <value>Inte mellan</value>
+  </data>
+  <data name="NotEquals" xml:space="preserve">
+    <value>Inte lika</value>
+  </data>
+  <data name="NotIn" xml:space="preserve">
+    <value>Inte under</value>
+  </data>
+  <data name="OemUpdatesPayloadWarning" xml:space="preserve">
+    <value>Kontrollera att du har lagt till Dell Command Update-appen i arbetsflödet innan du publicerar.</value>
+  </data>
+  <data name="OverallDeviceExecutionStatus" xml:space="preserve">
+    <value>Övergripande status för enhetskörning</value>
+  </data>
+  <data name="Overwritten" xml:space="preserve">
+    <value>Överskrivet</value>
+  </data>
+  <data name="Partitions" xml:space="preserve">
+    <value>Partitioner</value>
+  </data>
+  <data name="PhysicalPresenceVersion" xml:space="preserve">
+    <value>Version fysisk närvaro</value>
+  </data>
+  <data name="PlatformChangeConfirmationDescription" xml:space="preserve">
+    <value>Om du ändrar plattformen raderas alla övriga resurser, steg och åtgärder som du har angett i arbetsflödet. Är du säker på att du vill fortsätta?</value>
+  </data>
+  <data name="PlatformChangeConfirmationTitle" xml:space="preserve">
+    <value>Varning – plattformsändring</value>
+  </data>
+  <data name="PlatformDescription" xml:space="preserve">
+    <value>Resurser filtreras baserat på plattformstyp.</value>
+  </data>
+  <data name="PlatformRole" xml:space="preserve">
+    <value>Plattformsroll</value>
+  </data>
+  <data name="PlayDemo" xml:space="preserve">
+    <value>Spela upp demo</value>
+  </data>
+  <data name="PotentiallyImpactedApplications" xml:space="preserve">
+    <value>Potentiellt kvalificerade appar</value>
+  </data>
+  <data name="ProceedToNextStepConditionFailedError" xml:space="preserve">
+    <value>Else-steget är inte korrekt inställt eller saknas vid användning av fortsätt till nästa steg.</value>
+  </data>
+  <data name="ProductIdentificationNumber" xml:space="preserve">
+    <value>Produktens ID-nummer</value>
+  </data>
+  <data name="ProfilesAndBaselines" xml:space="preserve">
+    <value>Profiler och baslinjer</value>
+  </data>
+  <data name="Program" xml:space="preserve">
+    <value>Program</value>
+  </data>
+  <data name="PropertyFile" xml:space="preserve">
+    <value>Egenskapsfil</value>
+  </data>
+  <data name="ProtectionStatus" xml:space="preserve">
+    <value>Skyddsstatus</value>
+  </data>
+  <data name="PublishedOnByArg" xml:space="preserve">
+    <value>Publicerad på {0} av {1}</value>
+  </data>
+  <data name="PublishedStateDescription" xml:space="preserve">
+    <value>Det kan ta upp till 4 timmar innan data uppdateras baserat på incheckningar på enheter. Om du vill synkronisera arbetsflödet till enheter nu, går du till Enhetsinformation, klickar på Fler åtgärder och väljer Arbetsflöden.</value>
+  </data>
+  <data name="Publisher" xml:space="preserve">
+    <value>Utgivare</value>
+  </data>
+  <data name="PublisherId" xml:space="preserve">
+    <value>Utgivar-ID</value>
+  </data>
+  <data name="QWord64Bit" xml:space="preserve">
+    <value>QWORD</value>
+  </data>
+  <data name="ReevaluateCondition" xml:space="preserve">
+    <value>Omvärdera villkor</value>
+  </data>
+  <data name="ReevaluateConditionDesc" xml:space="preserve">
+    <value>Kör hela arbetsflödet var 15:e minut så att enheten behåller önskad status.</value>
+  </data>
+  <data name="Registry" xml:space="preserve">
+    <value>Registret</value>
+  </data>
+  <data name="RegistryDoesNotExistAt" xml:space="preserve">
+    <value>Registret finns inte på</value>
+  </data>
+  <data name="RegistryExistsAt" xml:space="preserve">
+    <value>Registret finns på</value>
+  </data>
+  <data name="RegistryPath" xml:space="preserve">
+    <value>Registersökväg</value>
+  </data>
+  <data name="ReinstallIfRemoved" xml:space="preserve">
+    <value>Ominstallera om borttagen</value>
+  </data>
+  <data name="ReinstallIfRemovedDesc" xml:space="preserve">
+    <value>Ominstallera resursen om den tas bort från en enhet.</value>
+  </data>
+  <data name="ResourceCount" xml:space="preserve">
+    <value>Resursantal</value>
+  </data>
+  <data name="ResourcesWelcomeWindowDescription" xml:space="preserve">
+    <value>Vi har omorganiserat vänster navigeringsfönster (huvudmenyn) för att inkludera en flik med nya resurser så att du lättare kan komma åt och hantera de funktioner du oftast använder. I resurser hittar du appar, profiler, villkor och mycket annat.</value>
+  </data>
+  <data name="ResourceUnauthorizedAccessContactSystemAdmin" xml:space="preserve">
+    <value>Du har inte behörighet att komma åt den här resursen. Kontakta din systemadministratör om du behöver hjälp.</value>
+  </data>
+  <data name="RestoreToDefault" xml:space="preserve">
+    <value>Återställ till standard</value>
+  </data>
+  <data name="Results" xml:space="preserve">
+    <value>Resultat</value>
+  </data>
+  <data name="RetryAfter" xml:space="preserve">
+    <value>Försök igen efter</value>
+  </data>
+  <data name="RetryAfterDesc" xml:space="preserve">
+    <value>Tidsintervall efter vilket arbetsflödes steg med fel, försöks igen.</value>
+  </data>
+  <data name="RetryIntervalDesc" xml:space="preserve">
+    <value>Produkt av försök igen, försök efter och backoff-frekvens.</value>
+  </data>
+  <data name="RunScript" xml:space="preserve">
+    <value>Kör skript</value>
+  </data>
+  <data name="SavedFailedContactAdmin" xml:space="preserve">
+    <value>Det gick inte att spara. Försök igen. Kontakta din systemadministratör om problemet kvarstår.</value>
+  </data>
+  <data name="SavedStateDescription" xml:space="preserve">
+    <value>Publicera ditt arbetsflöde för att tilldela enheter. Data uppdateras när tilldelade enheter checkas in.</value>
+  </data>
+  <data name="SaveSuccessPublishFailedTryAgain" xml:space="preserve">
+    <value>Det gick inte att publicera arbetsflödet. Arbetsflödet har sparats. Försök publicera igen.</value>
+  </data>
+  <data name="SearchAndSelect" xml:space="preserve">
+    <value>Sök och välj</value>
+  </data>
+  <data name="SearchExistingApp" xml:space="preserve">
+    <value>Sök efter en befintlig app</value>
+  </data>
+  <data name="SearchExistingProfile" xml:space="preserve">
+    <value>Sök efter en befintlig profil</value>
+  </data>
+  <data name="SearchScript" xml:space="preserve">
+    <value>Sök efter skript</value>
+  </data>
+  <data name="SecondRetryAfter" xml:space="preserve">
+    <value>Andra försök igen efter</value>
+  </data>
+  <data name="SelectSmartGroupMessage" xml:space="preserve">
+    <value>Välj de smartgrupper som ska tilldelas till arbetsflödet och hur du levererar det.</value>
+  </data>
+  <data name="SelectVersion" xml:space="preserve">
+    <value>Välj version</value>
+  </data>
+  <data name="SensorBaseTimeInfo" xml:space="preserve">
+    <value>Välj tidszon som ska användas för detta sensorvillkor: enhetens lokala tid eller servertid (UTC).</value>
+  </data>
+  <data name="SetDefaultPolicy" xml:space="preserve">
+    <value>Ange standardpolicy</value>
+  </data>
+  <data name="SetRegistryData" xml:space="preserve">
+    <value>Ställ in registerdata</value>
+  </data>
+  <data name="SetRegistryValue" xml:space="preserve">
+    <value>Ställ in registervärde</value>
+  </data>
+  <data name="SettingsRetrievalError" xml:space="preserve">
+    <value>Ett fel uppstod när inställningarna för arbetsflöde hämtades</value>
+  </data>
+  <data name="SettingsSavedSuccessfully" xml:space="preserve">
+    <value>Inställningarna för arbetsflöde har sparats</value>
+  </data>
+  <data name="SettingsSaveFailedTryAgain" xml:space="preserve">
+    <value>Ett fel uppstod när inställningarna för arbetsflöde sparades. Försök igen.</value>
+  </data>
+  <data name="Shares" xml:space="preserve">
+    <value>Delar</value>
+  </data>
+  <data name="Showing" xml:space="preserve">
+    <value>Visar</value>
+  </data>
+  <data name="ShowingResultsArg" xml:space="preserve">
+    <value>Visar {0} resultat</value>
+  </data>
+  <data name="SkipWorkflow" xml:space="preserve">
+    <value>Hoppa över arbetsflödessteg</value>
+  </data>
+  <data name="SkipWorkflowDesc" xml:space="preserve">
+    <value>Hoppa över det misslyckade arbetsflödessteget och rapportera ett fel, men fortsätt med arbetsflödet.</value>
+  </data>
+  <data name="SocketDesignation" xml:space="preserve">
+    <value>Socket-tilldelning</value>
+  </data>
+  <data name="SpecVersion" xml:space="preserve">
+    <value>Spec-version</value>
+  </data>
+  <data name="StageWorkflowInfo" xml:space="preserve">
+    <value>Gå till resurser och konfigurera appar, profiler, skript och sensorer som ska refereras till i ett arbetsflöde.</value>
+  </data>
+  <data name="StageWorkflowResources" xml:space="preserve">
+    <value>Mellanlagra arbetsflödesresurser</value>
+  </data>
+  <data name="StartExploringFreestyleOrchestrator" xml:space="preserve">
+    <value>Börja utforska Freestyle Orchestrator</value>
+  </data>
+  <data name="StartType" xml:space="preserve">
+    <value>Starttyp</value>
+  </data>
+  <data name="StateName" xml:space="preserve">
+    <value>Tillståndsnamn</value>
+  </data>
+  <data name="StepStatus" xml:space="preserve">
+    <value>Stegstatus</value>
+  </data>
+  <data name="StopWorkflow" xml:space="preserve">
+    <value>Stoppa arbetsflöde</value>
+  </data>
+  <data name="StopWorkflowDesc" xml:space="preserve">
+    <value>Stoppa arbetsflödet i det misslyckade steget och rapportera en misslyckad status.</value>
+  </data>
+  <data name="SwitchToTimeWindow" xml:space="preserve">
+    <value>Ersätt med tidsfönster</value>
+  </data>
+  <data name="SwitchToTimeWindowConfirmation" xml:space="preserve">
+    <value>Vill du ersätta det här villkoret med ett tidsfönster?</value>
+  </data>
+  <data name="SwitchToTimeWindowWarning" xml:space="preserve">
+    <value>Ett tidsfönstervillkor kan inte kombineras med andra villkor. Om du lägger till ett tidsfönster ersätts befintliga kriterier.</value>
+  </data>
+  <data name="SystemEnclosure" xml:space="preserve">
+    <value>System-kapsling</value>
+  </data>
+  <data name="TemplateSelectionQuestion" xml:space="preserve">
+    <value>Vad vill du skapa ett arbetsflöde för?</value>
+  </data>
+  <data name="ThirdRetryAfter" xml:space="preserve">
+    <value>Tredje försök igen efter</value>
+  </data>
+  <data name="TimeDurationDay" xml:space="preserve">
+    <value>Dag</value>
+  </data>
+  <data name="TimeDurationDays" xml:space="preserve">
+    <value>Dag(ar)</value>
+  </data>
+  <data name="TimeDurationHour" xml:space="preserve">
+    <value>Timme</value>
+  </data>
+  <data name="TimeDurationHours" xml:space="preserve">
+    <value>Timme/timmar</value>
+  </data>
+  <data name="TimeDurationMinute" xml:space="preserve">
+    <value>Minut</value>
+  </data>
+  <data name="TimeDurationMinutes" xml:space="preserve">
+    <value>Minut(er)</value>
+  </data>
+  <data name="TimeoutDesc" xml:space="preserve">
+    <value>Max. väntetid för att ett arbetsflödessteg ska slutföljas.</value>
+  </data>
+  <data name="TimeReported" xml:space="preserve">
+    <value>Rapporterad tid</value>
+  </data>
+  <data name="TimeWindowRuleDescription" xml:space="preserve">
+    <value>Villkoret utvärderas på nytt med ett konfigurerat intervall tills enheten uppfyller det. ELSE-grenar är inte tillåtna.</value>
+  </data>
+  <data name="TimeWindowRuleDescriptionArg" xml:space="preserve">
+    <value>Villkoret utvärderas på nytt med ett konfigurerat intervall ({0}) tills enheten uppfyller det. ELSE-grenar är inte tillåtna.</value>
+  </data>
+  <data name="TimeWindowStateSupport" xml:space="preserve">
+    <value>Det går inte att tillämpa tillståndshantering i ett tidsfönstervillkor.</value>
+  </data>
+  <data name="ToLearnMore" xml:space="preserve">
+    <value>Mer information</value>
+  </data>
+  <data name="TotalEligibleDevices" xml:space="preserve">
+    <value>Totalt antal kvalificerade enheter</value>
+  </data>
+  <data name="Troubleshoot" xml:space="preserve">
+    <value>Felsöka</value>
+  </data>
+  <data name="TrustedPlatformModule" xml:space="preserve">
+    <value>Trusted Platform Module</value>
+  </data>
+  <data name="UnauthorizedAccessResource" xml:space="preserve">
+    <value>Du har inte behörighet att komma åt den här resursen. Kontakta din IT-administratör om du behöver hjälp.</value>
+  </data>
+  <data name="UninstallerFilePath" xml:space="preserve">
+    <value>Sökväg till avinstallationsprogram</value>
+  </data>
+  <data name="Universallyuniqueidentifier" xml:space="preserve">
+    <value>Universellt unik identifierare</value>
+  </data>
+  <data name="UnsupportedProfilePayloadEcrow" xml:space="preserve">
+    <value>Arbetsflödet kan inte innehålla en profil med en deponering-nyttolast. Välj en annan profil.</value>
+  </data>
+  <data name="UnsupportedProfilePayloadEWSOutlook" xml:space="preserve">
+    <value>Arbetsflödet kan inte innehålla en MacOS-profil med en EWS Outlook-nyttolast. Välj en annan profil</value>
+  </data>
+  <data name="UpdateAgent" xml:space="preserve">
+    <value>Uppdateringsagent</value>
+  </data>
+  <data name="Uuid" xml:space="preserve">
+    <value>UUID</value>
+  </data>
+  <data name="VersionUUID" xml:space="preserve">
+    <value>UUID för version</value>
+  </data>
+  <data name="VersionValidationMessage" xml:space="preserve">
+    <value>Ange version som nummer separerat med punkter (1.0, 1.0.1, 1.0.1.1).</value>
+  </data>
+  <data name="ViewDocs" xml:space="preserve">
+    <value>Visa dokument</value>
+  </data>
+  <data name="ViewFreestyle" xml:space="preserve">
+    <value>Visa Freestyle</value>
+  </data>
+  <data name="ViewFreestyleHelp" xml:space="preserve">
+    <value>Kontrollera åtkomst till att visa Freestyle-information och resurstyper, t.ex. appar, profiler och skript</value>
+  </data>
+  <data name="ViewInModal" xml:space="preserve">
+    <value>Visa i modal</value>
+  </data>
+  <data name="ViewItemDetails" xml:space="preserve">
+    <value>Visa information</value>
+  </data>
+  <data name="ViewResults" xml:space="preserve">
+    <value>Visa resultat</value>
+  </data>
+  <data name="VirtualAppsCollections" xml:space="preserve">
+    <value>Samlingar med virtuella appar</value>
+  </data>
+  <data name="VirtualCPU" xml:space="preserve">
+    <value>Virtuell CPU</value>
+  </data>
+  <data name="VirtualCPUs" xml:space="preserve">
+    <value>Virtuella CPU:er</value>
+  </data>
+  <data name="WfEmptyStepCountError" xml:space="preserve">
+    <value>Arbetsflödet måste innehålla minst ett steg.</value>
+  </data>
+  <data name="WfNameEmptyError" xml:space="preserve">
+    <value>Inget namn har angetts för arbetsflödet. Ange ett namn och försök igen.</value>
+  </data>
+  <data name="WfTypeEmptyError" xml:space="preserve">
+    <value>Kunde inte sparas. Ingen typ har angetts för arbetsflödet.</value>
+  </data>
+  <data name="WhenRetriesExhausted" xml:space="preserve">
+    <value>När maximalt antal försök uppnåtts</value>
+  </data>
+  <data name="WindowsOptionalFeatures" xml:space="preserve">
+    <value>Valfria funktioner i Windows</value>
+  </data>
+  <data name="WiredNetwork" xml:space="preserve">
+    <value>Kabelanslutet nätverk</value>
+  </data>
+  <data name="WorkflowDisabledCatalogTooltip" xml:space="preserve">
+    <value>Välj en smartgrupp om du vill ändra inställningarna.</value>
+  </data>
+  <data name="WorkflowDoesNotExistOrMightBeDeleted" xml:space="preserve">
+    <value>Arbetsflödet finns inte eller kan ha tagits bort.</value>
+  </data>
+  <data name="WorkflowExecutionStatus" xml:space="preserve">
+    <value>Status för arbetsflödeskörning</value>
+  </data>
+  <data name="WorkflowPausedSuccessfully" xml:space="preserve">
+    <value>Arbetsflödet har pausats</value>
+  </data>
+  <data name="WorkflowPauseFailedTryAgain" xml:space="preserve">
+    <value>Det gick inte att pausa arbetsflödet. Försök igen.</value>
+  </data>
+  <data name="WorkflowRestoreDefaults" xml:space="preserve">
+    <value>Återställ standardinställningar</value>
+  </data>
+  <data name="WorkflowResumedSuccessfully" xml:space="preserve">
+    <value>Arbetsflödet har återupptagits</value>
+  </data>
+  <data name="WorkflowResumeFailedTryAgain" xml:space="preserve">
+    <value>Arbetsflödet kunde inte återupptas. Försök igen.</value>
+  </data>
+  <data name="WorkflowRetryInterval" xml:space="preserve">
+    <value>Återförsöksintervall</value>
+  </data>
+  <data name="WorkflowSettings" xml:space="preserve">
+    <value>Arbetsflödesinställningar</value>
+  </data>
+  <data name="WorkflowSettingsDesc" xml:space="preserve">
+    <value>Konfigurera standardinställningarna för arbetsflöden. Du kan åsidosätta inställningarna i enskilda arbetsflöden.</value>
+  </data>
+  <data name="WorkflowSmartGroupDescription" xml:space="preserve">
+    <value>Enheter kör arbetsflödet vid incheckning.</value>
+  </data>
+  <data name="WorkflowStatusNotEvaluatedInfo" xml:space="preserve">
+    <value>Enheten tog emot arbetsflödet men har ännu inte rapporterat status för arbetsflödessteg</value>
+  </data>
+  <data name="WorkflowStep" xml:space="preserve">
+    <value>Arbetsflödessteg</value>
+  </data>
+  <data name="WorkflowTimeout" xml:space="preserve">
+    <value>Tidsgräns</value>
+  </data>
+  <data name="WorkflowWarningExactVersionSelected" xml:space="preserve">
+    <value>Det här arbetsflödessteget kan misslyckas om en specifik version väljs och en senare version också tilldelas enheten</value>
+  </data>
+</root>

@@ -1,0 +1,1042 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AadAsIdpAttributeRequired" xml:space="preserve">
+    <value>Atribut mapování služby Azure Active Directory je povinný, pokud je adresář nastaven na možnost Žádný a na stránce nastavení služeb Directory Services je aktivována služba Azure AD pro služby identity.</value>
+  </data>
+  <data name="AadAttributeMapping" xml:space="preserve">
+    <value>Atribut mapování služby Azure Active Directory</value>
+  </data>
+  <data name="AccountLocked" xml:space="preserve">
+    <value>Váš účet Workspace ONE UEM byl uzamknut. Provedením {0} odemkněte účet nebo se obraťte na svého IT administrátora.</value>
+    <comment>{0} will be replaced with url to reset password</comment>
+  </data>
+  <data name="AccountLockedSubject" xml:space="preserve">
+    <value>Účet Workspace ONE UEM je uzamknut</value>
+  </data>
+  <data name="AccountUnlocked" xml:space="preserve">
+    <value>Váš účet Workspace ONE UEM byl odemknut. Provedením {0} otevřete konzoli Workspace ONE UEM Console.</value>
+    <comment>{0} will be replaced with url to login</comment>
+  </data>
+  <data name="AccountUnlockedSubject" xml:space="preserve">
+    <value>Účet Workspace ONE UEM je odemknut</value>
+  </data>
+  <data name="AddCloudServicesAdmin" xml:space="preserve">
+    <value>Přidat administrátora cloudových služeb</value>
+  </data>
+  <data name="AddCloudServicesAdminPlaceHolder" xml:space="preserve">
+    <value>{0}</value>
+  </data>
+  <data name="AddSelectedUsersToUserGroup" xml:space="preserve">
+    <value>Přidat vybrané uživatele do uživatelské skupiny</value>
+  </data>
+  <data name="AdminAccountLocked" xml:space="preserve">
+    <value>Účet administrátora je uzamknut</value>
+  </data>
+  <data name="AdminAccountUnlocked" xml:space="preserve">
+    <value>Účet administrátora je odemknut</value>
+  </data>
+  <data name="AdminApiAuthenticationWarningText" xml:space="preserve">
+    <value>Konzole bude standardně používat uživatelské přihlašovací údaje, pokud nebyl generován certifikát klientu.</value>
+  </data>
+  <data name="AdminGroupMembersExport" xml:space="preserve">
+    <value>Export členů administrátorské skupiny</value>
+  </data>
+  <data name="AdminGroupMembersExportHelp" xml:space="preserve">
+    <value>Řídí přístup k exportování členů skupiny administrátorů. Naleznete v části Menu / Účty / Administrace / Skupiny administrátorů</value>
+  </data>
+  <data name="Administrators" xml:space="preserve">
+    <value>Administrátoři</value>
+  </data>
+  <data name="AdministratorsSettings" xml:space="preserve">
+    <value>Administrátorské nastavení</value>
+  </data>
+  <data name="AdminNotificationArgForSamlConfiguration" xml:space="preserve">
+    <value>Atribut '{0}', který je nutný k zabezpečené autentizaci administrátorů v konzole, v odpovědi SAML poskytovatele identity chybí.</value>
+  </data>
+  <data name="AdminPasswordReset" xml:space="preserve">
+    <value>Reset hesla administrátora</value>
+  </data>
+  <data name="AdminUserPasswordResetAction" xml:space="preserve">
+    <value>Tato akce spustí proces odeslání e-mailu pro resetování hesla následujícího administrátora. Zkontrolujte správnost e-mailové adresy a pokračujte.</value>
+    <comment>This action corresponds to triggering password reset for admin user from the admin list view grid</comment>
+  </data>
+  <data name="AdminUserPasswordResetEmailTriggered" xml:space="preserve">
+    <value>Spuštěno odeslání e-mailu pro resetování hesla uživatele – administrátora</value>
+  </data>
+  <data name="AgentSettingsPublish" xml:space="preserve">
+    <value>Publikování nastavení agenta</value>
+  </data>
+  <data name="AllAdministratorsSettings" xml:space="preserve">
+    <value>Všechna administrátorská nastavení</value>
+  </data>
+  <data name="AllAppsBooksSettings" xml:space="preserve">
+    <value>Všechna nastavení Aplikací a knih</value>
+  </data>
+  <data name="AllowedDevicesDescription" xml:space="preserve">
+    <value>Importujte předem schválená zařízení podle IMEI, sériového čísla nebo UDID. Pro import použijte seznam známých zařízení (například firemních). Během přihlášení se automaticky použije vlastnictví a ID skupiny spojené s tímto zařízením.</value>
+  </data>
+  <data name="AllUsersSettings" xml:space="preserve">
+    <value>Nastavení všech uživatelů</value>
+  </data>
+  <data name="AndroidEfotaApproveUpdate" xml:space="preserve">
+    <value>Aktualizace schválení Android Efota</value>
+  </data>
+  <data name="ApiQuotaReachedNotification" xml:space="preserve">
+    <value>Využití API</value>
+  </data>
+  <data name="ApiQuotaThresholdReachedAction" xml:space="preserve">
+    <value>Zobrazit využití API</value>
+  </data>
+  <data name="ApiQuotaThresholdReachedMessage" xml:space="preserve">
+    <value>Dosáhli jste {0}% denního limitu používání API, který bude vynulován v {1}</value>
+    <comment>{0} will be replaced with a numeric value indicating what percentage of api calls have been utilized for that day. {1} will be replaced with the localized time in which the api usage resets</comment>
+  </data>
+  <data name="ApiQuotaThresholdReachedTitle" xml:space="preserve">
+    <value>Využití API</value>
+  </data>
+  <data name="ArgCannotBeMappedAppleIdArgAsArgNotFoundInOgArg" xml:space="preserve">
+    <value>{0} nelze namapovat na ID spravovaného zařízení Apple {1}, protože {2} nebyl nalezen v hierarchii Organizační skupina – {3}.</value>
+  </data>
+  <data name="ArgCannotBeMappedToEnrollmentUserAppleAlreadyPresent" xml:space="preserve">
+    <value>{0} již v souboru CSV existuje, proto se znovu nepřidá.</value>
+  </data>
+  <data name="ArgCannotBeMappedToEnrollmentUserAppleIDNotFound" xml:space="preserve">
+    <value>{0} nemůže být namapováno na uživatele registrace, protože v systému nebylo nalezen Apple ID.</value>
+  </data>
+  <data name="ArgCannotBeMappedToEnrollmentUserKeyboardLayoutInValid" xml:space="preserve">
+    <value>{0} nemůže být namapováno na uživatele registrace, protože toto rozložení klávesnice není platné.</value>
+  </data>
+  <data name="ArgCannotBeMappedToEnrollmentUserMissingAppleID" xml:space="preserve">
+    <value>{0} nemůže být namapováno na uživatele registrace, protože v souboru CSV chybí Apple ID.</value>
+  </data>
+  <data name="ArgCannotBeMappedToUserArgAsAlreadyMapped" xml:space="preserve">
+    <value>{fileProcessorDataContext.Person.ManagedAppleIdentifier} nemůže být namapováno na uživatele registrace {username}, protože tento uživatel registrace je již namapován na jiného člena.</value>
+  </data>
+  <data name="ArgDefinedAboveGivenOG" xml:space="preserve">
+    <value>{0} je definováno nad danou organizační skupinou</value>
+  </data>
+  <data name="ArgHasAlreadyMapped" xml:space="preserve">
+    <value>{0} již bylo namapováno</value>
+  </data>
+  <data name="BackToLoginPage" xml:space="preserve">
+    <value>Zpátky na přihlašovací stránku</value>
+  </data>
+  <data name="BatchImportAdminUsersExplanation" xml:space="preserve">
+    <value>Funkce Import administrátora slouží k hromadnému načítání uživatelů typu administrátor do systému. Uživatelé – administrátoři by měli být přidruženi k organizační skupině.</value>
+  </data>
+  <data name="BatchImportCancelled" xml:space="preserve">
+    <value>Dávkový import byl zrušen.</value>
+  </data>
+  <data name="BatchImportDescription" xml:space="preserve">
+    <value>Funkce hromadného importu může být použita na hromadné načítání uživatelů a jejich zařízení do systému. Šablony CSV naleznete níže. Pokud je šablona upravována pomocí nástroje Microsoft Excel, ujistěte se, že je formát sloupce nastaven na „Text“, aby se zabránilo ztrátě informací kvůli převodu formátu a aby se soubor ukládal jako CSV.</value>
+  </data>
+  <data name="BatchImportErrors" xml:space="preserve">
+    <value>Chyby hromadného importu</value>
+  </data>
+  <data name="BatchImportSuccessful" xml:space="preserve">
+    <value>Hromadný import byl úspěšný.</value>
+  </data>
+  <data name="BatchImportUserGroupsExplanation" xml:space="preserve">
+    <value>Funkce hromadného importu může být použita na nahrání uživatelských skupin v dávce do systému.</value>
+  </data>
+  <data name="BatchImportUsersDevicesExplanation" xml:space="preserve">
+    <value>Funkce dávkového importu může být použita k hromadnému nahrání uživatelů a jejich zařízení do systému. Šablona pro tento import je v níže uvedeném odkazu.</value>
+  </data>
+  <data name="BeAtleastArgCharactersLong" xml:space="preserve">
+    <value>minimální počet znaků: {0}</value>
+    <comment>{0} will be replaced by a number</comment>
+  </data>
+  <data name="CancelBatchImport" xml:space="preserve">
+    <value>Zrušit hromadný import</value>
+  </data>
+  <data name="CancelBatchImportWarning" xml:space="preserve">
+    <value>Tato akce zruší proces hromadného importu.</value>
+  </data>
+  <data name="CanNotDeleteUserGroupBecauseAssignedToSmartGroup" xml:space="preserve">
+    <value>Nelze odstranit skupinu uživatelů, protože je přiřazena následujícím smart skupinám – {0}</value>
+  </data>
+  <data name="CartPublish" xml:space="preserve">
+    <value>Publikování košíku</value>
+  </data>
+  <data name="CertificateBasedApiAuthenticationWarningText" xml:space="preserve">
+    <value>Generujte a exportujte certifikát klientu pro autentizaci API.</value>
+  </data>
+  <data name="CertificateProvisioning" xml:space="preserve">
+    <value>Zajišťování certifikátu</value>
+  </data>
+  <data name="ChallengeClientCertificate" xml:space="preserve">
+    <value>Ověřovací test certifikátu klienta</value>
+    <comment>Client certificate for authenticating the retrieval of a SCEP challenge</comment>
+  </data>
+  <data name="CheckGroup" xml:space="preserve">
+    <value>Zkontrolovat skupinu</value>
+  </data>
+  <data name="ClickedResetPasswordNotifyAdmin" xml:space="preserve">
+    <value>Vy nebo jiný administrátor zahájil resetování hesla. Pokud toto není správný postup, obraťte se na svého administrátora se žádostí o více informací.</value>
+  </data>
+  <data name="ClickHereToLogin" xml:space="preserve">
+    <value>přihlášení</value>
+  </data>
+  <data name="ColumnsInSpreadsheetDoesNotMatchTemplate" xml:space="preserve">
+    <value>Sloupce v tabulce se neshodují se šablonou.</value>
+  </data>
+  <data name="CompleteWithErrors" xml:space="preserve">
+    <value>Dokončeno s chybami</value>
+  </data>
+  <data name="CompliancePoliciesView" xml:space="preserve">
+    <value>Zobrazení zásad konformity</value>
+  </data>
+  <data name="CompliancePoliciesViewHelp" xml:space="preserve">
+    <value>Řídí přístup k zobrazení Zásad konformity. Přejděte do nabídky Zařízení / Zásady konformity / Zobrazení seznamu</value>
+  </data>
+  <data name="CompromiseDetectionForWindows10Device" xml:space="preserve">
+    <value>Detekce kompromitace pro zařízení se systémem Windows 10</value>
+  </data>
+  <data name="ContactAdministratorIfYouHaveDirectoryAccount" xml:space="preserve">
+    <value>Máte-li účet v adresáři, obraťte se na administrátora se žádostí o resetování hesla.</value>
+    <comment>Used in conjuction with "PasswordResetIsNotAvailableForDirectoryAccounts" in telling a user that a directory account cannot use the WS1 password reset flow.</comment>
+  </data>
+  <data name="ContactAdministratorIfYouHaveExternalAccount" xml:space="preserve">
+    <value>Máte-li účet v adresáři, obraťte se na administrátora se žádostí o resetování hesla. Máte-li účet VMware Cloud Services, můžete heslo resetovat na adrese cloud.vmware.com.</value>
+    <comment>Message shown during touble loggingIn flow for an account</comment>
+  </data>
+  <data name="ContentRightsManagement" xml:space="preserve">
+    <value>Správa práv obsahu</value>
+  </data>
+  <data name="CreateAdminAccountsFromCSPPortal" xml:space="preserve">
+    <value>Tento klient je aktivován ve službách Workspace ONE Cloud Admin Hub. Administrátoři vytvoření v UEM budou mít přístup pouze k UEM. Přidejte administrátora do cloudových služeb, abyste umožnili přístup ke službám Workspace ONE. {0}</value>
+  </data>
+  <data name="Date&amp;Time" xml:space="preserve">
+    <value>Datum a čas</value>
+  </data>
+  <data name="DecryptionFailedFieldName" xml:space="preserve">
+    <value>Field Name</value>
+  </data>
+  <data name="DeleteDepSharedMdmProfile" xml:space="preserve">
+    <value>Odstranit sdílený profil MdM Dep</value>
+  </data>
+  <data name="DeniedDevices" xml:space="preserve">
+    <value>Zakázaná zařízení</value>
+  </data>
+  <data name="DeniedDevicesDescription" xml:space="preserve">
+    <value>Importujte zakázaná zařízení podle IMEI, sériového čísla nebo UDID. Toto využijte k importu seznamu nekonformních zařízení. Zakázaná zařízení se nebudou smět registrovat. Pokud je registrováno zakázané zařízení, po zpracování importu se registrace automaticky zruší. Zde uvedená platforma, OS a model nebudou během registrace brány v potaz.</value>
+  </data>
+  <data name="DeviceBasedVppAppUpdate" xml:space="preserve">
+    <value>Aktualizace aplikace Vpp na základě zařízení</value>
+  </data>
+  <data name="DeviceBulkManagementDeviceViewGps" xml:space="preserve">
+    <value>Správa hromadných akcí zařízení - zobrazení lokace zařízení</value>
+  </data>
+  <data name="DeviceBulkManagementDeviceViewGpsHelp" xml:space="preserve">
+    <value>Uživateli povoluje hromadně zobrazovat lokace zařízení.</value>
+  </data>
+  <data name="Devicebulkmanagementrebootdevice" xml:space="preserve">
+    <value>Hromadně restartovat zařízení</value>
+  </data>
+  <data name="DeviceEditionNotAllowedAsUserArgNotManagedAtOG" xml:space="preserve">
+    <value>Úprava zařízení není povolena, protože uživatel {0} není spravován v této organizační skupině.</value>
+  </data>
+  <data name="DeviceLgCannotBeParentUserDefaultLg" xml:space="preserve">
+    <value>Organizační skupina zařízení nemůže být výchozí organizační skupinou nadřízeného uživatele.</value>
+  </data>
+  <data name="DirectoryAccountsToBePushedBySCIMProvisioning" xml:space="preserve">
+    <value>Účty adresáře mohou být vytvářeny pouze prostřednictvím rozhraní API zajišťování SCIM</value>
+  </data>
+  <data name="DirectoryNameIsInvalid" xml:space="preserve">
+    <value>Název adresáře je neplatný. Název adresáře nesmí obsahovat žádné mezery.</value>
+  </data>
+  <data name="DirectorySync" xml:space="preserve">
+    <value>Synchronizace adresáře</value>
+  </data>
+  <data name="DisableDepConfiguration" xml:space="preserve">
+    <value>Zakázat konfiguraci Dep</value>
+  </data>
+  <data name="DisplayVideoImport" xml:space="preserve">
+    <value>Zobrazit import videa</value>
+  </data>
+  <data name="DisplayVideoView" xml:space="preserve">
+    <value>Zobrazení prohlížení videa</value>
+  </data>
+  <data name="DomainMappingIsNotFoundForGivenDomain" xml:space="preserve">
+    <value>Mapování domény nebylo pro danou doménu nalezeno.</value>
+  </data>
+  <data name="DownloadAdvancedTemplateForUsersAndDevices" xml:space="preserve">
+    <value>Stáhnout rozšířenou šablonu pro uživatele a zařízení</value>
+  </data>
+  <data name="DownloadSimpleTemplateForUsersAndDevices" xml:space="preserve">
+    <value>Stáhnout jednoduchou šablonu pro uživatele a zařízení</value>
+  </data>
+  <data name="DownloadTemplateForAllowedDevices" xml:space="preserve">
+    <value>Stáhnout šablonu pro povolená zařízení</value>
+  </data>
+  <data name="DuplicateAdminUserFound" xml:space="preserve">
+    <value>Byl nalezen duplicitní uživatel – administrátor.</value>
+  </data>
+  <data name="DuplicateDirectoryUserGroupMessage" xml:space="preserve">
+    <value>Skupina adresářových uživatelů s ID ,{0}‘ již existuje.</value>
+  </data>
+  <data name="DuplicateExcludedUserGroupInSmartGroup" xml:space="preserve">
+    <value>Stejnou uživatelskou skupinu nelze přidat do seznamu vyloučení a seznamu přidání. Odstraňte tuto skupinu ze seznamu přidání, pokud ji chcete vyloučit.</value>
+  </data>
+  <data name="DuplicateUserGroupMessage" xml:space="preserve">
+    <value>Skupina uživatelů s popisným názvem ,{0}‘ již existuje. Zadejte jiný popisný název.</value>
+  </data>
+  <data name="EARAppUpdateAvailableNotification" xml:space="preserve">
+    <value>Aktualizace úložiště firemních aplikací</value>
+  </data>
+  <data name="EditAdmin" xml:space="preserve">
+    <value>Upravit administrátora</value>
+  </data>
+  <data name="EditCustomReportsGettingStarted" xml:space="preserve">
+    <value>Začínáme se službou Intelligence</value>
+  </data>
+  <data name="EditCustomReportsGettingStartedHelp" xml:space="preserve">
+    <value>Poskytuje plný přístup pro přihlášení do služby Intelligence.</value>
+  </data>
+  <data name="EditDepSharedMdmProfile" xml:space="preserve">
+    <value>Upravit sdílený profil MdM Dep</value>
+  </data>
+  <data name="EditTemporaryAdmin" xml:space="preserve">
+    <value>Upravit dočasného administrátora</value>
+  </data>
+  <data name="EditTypeGrHelp" xml:space="preserve">
+    <value>Zobrazte a upravte typ organizační skupiny.</value>
+  </data>
+  <data name="EditUserArgOpensDialog" xml:space="preserve">
+    <value>Příkaz Upravit uživatele {0} otevře dialogové okno</value>
+    <comment>The placeholder in this label key contains username.</comment>
+  </data>
+  <data name="EMAdvancedLogging" xml:space="preserve">
+    <value>PokročiléProtokolováníEM</value>
+  </data>
+  <data name="EMAdvancedLoggingHelp" xml:space="preserve">
+    <value>Okno pokročilého protokolování určené zařízením s přímým nasazením MEM.</value>
+  </data>
+  <data name="EncounteredErrorLoadingAvailableLocationGroup" xml:space="preserve">
+    <value>Chyba při nahrávání dostupných organizačních skupin.</value>
+  </data>
+  <data name="EnrollmentOgInvalidOrUnauthorized" xml:space="preserve">
+    <value>Organizační skupina registrace je neplatná nebo neautorizovaná.</value>
+  </data>
+  <data name="EnrollmentRestrictNewUserForScimProvisioning" xml:space="preserve">
+    <value>Váš účet nebyl v UEM zřízen, a proto nelze registraci provést. O další pomoc požádejte svého administrátora.</value>
+  </data>
+  <data name="EnrollmentUserTenancyNotification" xml:space="preserve">
+    <value>Po verzích z konce roku 2021 nebude povoleno vytváření uživatelů a uživatelských skupin registrace mimo zákaznické organizační skupiny.</value>
+  </data>
+  <data name="EnterSearchTerm" xml:space="preserve">
+    <value>Zadejte hledaný výraz</value>
+  </data>
+  <data name="ErrorOccuredBulkOperation" xml:space="preserve">
+    <value>Během hromadné operace došlo k chybě.</value>
+  </data>
+  <data name="ErrorOccuredDuringMergeOfNewUserGroup" xml:space="preserve">
+    <value>Během slučování/synchronizace nové uživatelské skupiny došlo k chybě. {0}</value>
+  </data>
+  <data name="ErrorOccuredForUserGroups" xml:space="preserve">
+    <value>Při hledání skupin, do kterých uživatel patří, došlo k chybě.</value>
+  </data>
+  <data name="ErrorOccuredWhileMergingGroups" xml:space="preserve">
+    <value>Během slučování skupin došlo k chybě.</value>
+  </data>
+  <data name="ErrorResolvingValidOgForUser" xml:space="preserve">
+    <value>Během analýzy platných organizačních skupin pro uživatele došlo k chybě.</value>
+  </data>
+  <data name="ExcludedUserGroups" xml:space="preserve">
+    <value>Vyloučené uživatelské skupiny</value>
+  </data>
+  <data name="ExcludedUserGroupsToolTip" xml:space="preserve">
+    <value>Toto kritérium poskytuje způsob vyloučení zařízení, která patří uživateli z konkrétní uživatelské skupiny ze seznamu zařízení vygenerovaného uplatněním ostatních filtrovacích kritérií.</value>
+  </data>
+  <data name="ExpressSetupEdit" xml:space="preserve">
+    <value>Úprava nastavení platformy Express</value>
+  </data>
+  <data name="ExpressSetupEditHelp" xml:space="preserve">
+    <value>"Administrátorům poskytuje přístup do úprav, jež umožňují nastavit komponenty integrace konzoly v platformě AirWatch Express."</value>
+  </data>
+  <data name="ExpressSetupRead" xml:space="preserve">
+    <value>Číst nastavení platformy Express</value>
+  </data>
+  <data name="ExpressSetupReadHelp" xml:space="preserve">
+    <value>Administrátorům poskytuje přístup k informacím o zjednodušeném nastavení komponentů integrace konzoly v platformě AirWatch Express.</value>
+  </data>
+  <data name="ExternalIdArgDNArgMismatch" xml:space="preserve">
+    <value>Externí ID {0} nepatří k rozlišujícímu názvu {1}.</value>
+  </data>
+  <data name="FailedToCheckDirectoryGroup" xml:space="preserve">
+    <value>Nepodařilo se zkontrolovat skupinu adresáře</value>
+  </data>
+  <data name="FailedToSaveTheAdminGroup" xml:space="preserve">
+    <value>Nelze uložit administrátorskou skupinu</value>
+  </data>
+  <data name="FailedToSendResetPasswordEmail" xml:space="preserve">
+    <value>Selhalo odeslání e-mailu pro resetování hesla.</value>
+    <comment>When admin tries to trigger a reset password email for an admin.</comment>
+  </data>
+  <data name="FileInvalidErrorText" xml:space="preserve">
+    <value>Typ souboru musí být CSV.</value>
+  </data>
+  <data name="FileTypeHelperText" xml:space="preserve">
+    <value>Soubor CSV se musí řídit specifikacemi šablony</value>
+  </data>
+  <data name="FirstNameFirstTwoLetters" xml:space="preserve">
+    <value>Křestní jméno (první 2 písmena)</value>
+  </data>
+  <data name="FirstNameInitial" xml:space="preserve">
+    <value>Křestní jméno – první písmeno</value>
+  </data>
+  <data name="FollowingUsersWillBeUnlocked" xml:space="preserve">
+    <value>Následující uživatelé budou odemknuti:</value>
+  </data>
+  <data name="ForgotUserName" xml:space="preserve">
+    <value>Zapomenuté uživatelské jméno</value>
+  </data>
+  <data name="GeneralFailure" xml:space="preserve">
+    <value>Selhalo odeslání e-mailu pro resetování hesla. Ověřte konfiguraci serveru SMTP a opakujte pokus.</value>
+  </data>
+  <data name="GeofenceAreaEdit" xml:space="preserve">
+    <value>Úprava oblasti geofencingu</value>
+  </data>
+  <data name="GivenDistinguishedNameNotFoundUserCannotAdd" xml:space="preserve">
+    <value>Zadaný rozlišující název nebyl nalezen. Uživatel nemůže být přidán.</value>
+  </data>
+  <data name="GivenOgCustomerCodeInvalid" xml:space="preserve">
+    <value>Zadaný zákaznický kód organizační skupiny je neplatný.</value>
+  </data>
+  <data name="GivenSecurityTypeNotConfigured" xml:space="preserve">
+    <value>Zadaný typ zabezpečení není konfigurován.</value>
+  </data>
+  <data name="GivenSecurityTypeNotSupported" xml:space="preserve">
+    <value>Zadaný typ zabezpečení není podporován.</value>
+  </data>
+  <data name="GroupNameRequired" xml:space="preserve">
+    <value>Název skupiny je povinný</value>
+  </data>
+  <data name="HideTemplatesAndGuidelines" xml:space="preserve">
+    <value>Skrýt šablony a pokyny</value>
+  </data>
+  <data name="IBeaconGroupEdit" xml:space="preserve">
+    <value>Úprava skupiny IBeacon</value>
+  </data>
+  <data name="IfExistsAnEmailWillBeSentToTheAddressOnFile" xml:space="preserve">
+    <value>Na e-mailovou adresu, kterou máme přiřazenou k vašemu účtu, byl odeslán e-mail s dalšími pokyny.</value>
+    <comment>When a user requests a "forgot password" reset link via email, this is the message given regardless of whether the user name is valid or not.</comment>
+  </data>
+  <data name="IfTroubleClickingCopyAndPasteLink" xml:space="preserve">
+    <value>Pokud tento odkaz nefunguje, zkuste zkopírovat a vložit do prohlížeče následující odkaz.</value>
+  </data>
+  <data name="IncorrectPasswordAnswerAttemptWarning" xml:space="preserve">
+    <value>Máte ještě jeden pokus. Uveďte správné odpovědi na otázky, aby nedošlo k uzamknutí účtu.</value>
+  </data>
+  <data name="IncorrectPasswordAnswerAttemptWarningPlural" xml:space="preserve">
+    <value>Máte další pokusy ({0}). Správně odpovězte na všechny otázky, jinak budete zablokováni.</value>
+  </data>
+  <data name="InstallAppOnAll" xml:space="preserve">
+    <value>Instalovat aplikaci na všechny</value>
+  </data>
+  <data name="InstallMdmProfile" xml:space="preserve">
+    <value>Instalovat profil Mdm</value>
+  </data>
+  <data name="InstallOnFiltered" xml:space="preserve">
+    <value>Instalovat na filtrované</value>
+  </data>
+  <data name="InvalidDataEntered" xml:space="preserve">
+    <value>Byla zadána chybná data.</value>
+  </data>
+  <data name="InvalidDeviceGroupId" xml:space="preserve">
+    <value>ID skupiny zařízení je neplatné.</value>
+  </data>
+  <data name="InvalidGroupBaseDN" xml:space="preserve">
+    <value>Výchozí nebo poskytnutý základní rozlišující název skupiny – {0} není platný</value>
+  </data>
+  <data name="InvalidSession" xml:space="preserve">
+    <value>Neplatná relace</value>
+  </data>
+  <data name="InvalidTemplate" xml:space="preserve">
+    <value>Neplatná šablona. Stáhněte si nejnovější šablonu.</value>
+  </data>
+  <data name="InvalidUserCredentialsPleaseTryAgain" xml:space="preserve">
+    <value>Neplatné přihlašovací údaje. Zkuste to znovu.</value>
+  </data>
+  <data name="IsRequiredArg" xml:space="preserve">
+    <value>Argument je povinný.</value>
+  </data>
+  <data name="IssueCertificate" xml:space="preserve">
+    <value>Vydat certifikát</value>
+  </data>
+  <data name="JITSettings" xml:space="preserve">
+    <value>Nastavení JIT</value>
+    <comment>Resource for JIT Settings</comment>
+  </data>
+  <data name="JITSettingsHelp" xml:space="preserve">
+    <value>Řídí přístup k ZÍSKÁNÍ a AKTUALIZACI koncových bodů pro JIT.</value>
+  </data>
+  <data name="LastNameFirstTwoLetters" xml:space="preserve">
+    <value>Příjmení (první 2 písmena)</value>
+  </data>
+  <data name="LastNameInitial" xml:space="preserve">
+    <value>Příjmení – první písmeno</value>
+  </data>
+  <data name="LdapNotDefinedUserCannotAdd" xml:space="preserve">
+    <value>LDAP není definováno pro danou organizační skupinu. Administrátor nemůže být přidán.</value>
+  </data>
+  <data name="LocalSync" xml:space="preserve">
+    <value>Místní synchronizace</value>
+  </data>
+  <data name="LoginAsDifferentUser" xml:space="preserve">
+    <value>Přihlásit se jako jiný uživatel</value>
+  </data>
+  <data name="LoginPasswordIsRequired" xml:space="preserve">
+    <value>Heslo je povinné</value>
+  </data>
+  <data name="MailboxBusy" xml:space="preserve">
+    <value>Požadovanou e-mailovou akci nelze dokončit. Chyba protokolu SMTP: poštovní schránka není dostupná. Opakujte pokus.</value>
+  </data>
+  <data name="MailboxUnavailable" xml:space="preserve">
+    <value>Selhalo odeslání e-mailu pro resetování hesla. Chyba protokolu SMTP: poštovní schránka není dostupná.</value>
+  </data>
+  <data name="MEMRotateGSuitePassword" xml:space="preserve">
+    <value>Provést rotaci hesla sady G Suite</value>
+  </data>
+  <data name="MEMRotateGSuitePasswordConfirmation" xml:space="preserve">
+    <value>Potvrzení rotace hesla sady G Suite</value>
+  </data>
+  <data name="MEMRotateGSuitePasswordFailed" xml:space="preserve">
+    <value>Rotace hesla sady G Suite se nezdařila</value>
+  </data>
+  <data name="MEMRotateGSuitePasswordInfoMessage" xml:space="preserve">
+    <value>Tato akce resetuje heslo uživatele a obnoví na zařízeních uživatele všechny přidružené e-mailové profily. Tuto akci nelze vrátit zpět.</value>
+  </data>
+  <data name="MergeFailedRetry" xml:space="preserve">
+    <value>Sloučení se nezdařilo – zkuste to znovu</value>
+  </data>
+  <data name="MessageTemplateCouldNotBeRetrieved" xml:space="preserve">
+    <value>Nelze načíst šablonu zprávy.</value>
+  </data>
+  <data name="MigrateWarning" xml:space="preserve">
+    <value>Migrace převede zařízení a nastavení uživatelů ze základních a proxy autentizovaných uživatelských účtů na vybraný uživatelský účet adresáře. Základní a proxy autentizované uživatelské účty budou odstraněny, jakmile bude migrace dokončena a nebude je již možno používat k registraci zařízení. 
+
+Chcete pokračovat?</value>
+  </data>
+  <data name="NetworkRanges" xml:space="preserve">
+    <value>Rozsahy sítě</value>
+  </data>
+  <data name="NoCommonCustomUserGroupsForSelectedUsers" xml:space="preserve">
+    <value>Pro vybrané uživatele nejsou k dispozici žádné běžné vlastní skupiny uživatelů.</value>
+  </data>
+  <data name="NoPasswordQuestionContactAdminMessage" xml:space="preserve">
+    <value>Nezadali jste otázku pro resetování hesla, a proto nelze heslo znovu nastavit. Obraťte se na administrátora.</value>
+  </data>
+  <data name="NotifyDevicesEnrolledHubApp" xml:space="preserve">
+    <value>Oznámit zařízení se zaregistrovanou aplikací centra Hub</value>
+  </data>
+  <data name="NumberOfChangesShouldBePositive" xml:space="preserve">
+    <value>Počet změn by měl být kladné celé číslo.</value>
+  </data>
+  <data name="NumberOfObjects" xml:space="preserve">
+    <value>Objekty: {0}</value>
+  </data>
+  <data name="OfflineCompliancePolicy" xml:space="preserve">
+    <value>Zásady konformity off-line</value>
+  </data>
+  <data name="OGGroupIdNotInCurrentHierarchy" xml:space="preserve">
+    <value>Import se nezdařil. Organizační skupina (ID: {0}) se nenachází v aktuální hierarchii.</value>
+  </data>
+  <data name="OGNotInCurrentHierarchy" xml:space="preserve">
+    <value>Import se nezdařil. Organizační skupina se nenachází v aktuální hierarchii.</value>
+  </data>
+  <data name="OneAttemptRemaining" xml:space="preserve">
+    <value>Zbývá 1 pokus.</value>
+  </data>
+  <data name="P2PPublish" xml:space="preserve">
+    <value>Publikování typu P2P</value>
+  </data>
+  <data name="PasswordNotificationPeriodDays" xml:space="preserve">
+    <value>Období oznámení o platnosti hesla (dny)</value>
+  </data>
+  <data name="PasswordResetIsNotAvailableForDirectoryAccounts" xml:space="preserve">
+    <value>Resetování hesla není dostupné u adresářových účtů.</value>
+  </data>
+  <data name="PasswordResetIsNotAvailableForExternalAccounts" xml:space="preserve">
+    <value>Resetování hesla není dostupné u adresářových účtů a účtů VMware Cloud Services</value>
+    <comment>Message shown during trouble loggingIn flow for an account</comment>
+  </data>
+  <data name="PasswordShouldBeAtleastArgCharactersLong" xml:space="preserve">
+    <value>Vaše heslo by mělo mít následující minimální počet znaků: {0}</value>
+    <comment>{0} will be relaced by a number</comment>
+  </data>
+  <data name="PermissionColumnIsEmply" xml:space="preserve">
+    <value>Sloupec oprávnění je prázdný, proto se přidává výchozí oprávnění pro uživatelskou skupinu</value>
+  </data>
+  <data name="PermissonArgDoesnotConformWithTemplate" xml:space="preserve">
+    <value>Oprávnění {0} neodpovídá šabloně, proto bylo přeskočeno.</value>
+  </data>
+  <data name="PleaseCheckDirectoryUsername" xml:space="preserve">
+    <value>Zkontrolujte uživatelské jméno adresáře</value>
+  </data>
+  <data name="ProvisioningPackagePublish" xml:space="preserve">
+    <value>Publikování zřizovacího balíčku</value>
+  </data>
+  <data name="PublishAndroidWorkPublicApp" xml:space="preserve">
+    <value>Publikovat veřejnou aplikaci Android Work</value>
+  </data>
+  <data name="PublishAreaProfile" xml:space="preserve">
+    <value>Publikovat profil oblasti</value>
+  </data>
+  <data name="PublishBrowserSettings" xml:space="preserve">
+    <value>Publikovat nastavení prohlížeče</value>
+  </data>
+  <data name="RemoteViewDD" xml:space="preserve">
+    <value>Zobrazení na dálku - detaily zařízení</value>
+  </data>
+  <data name="RemoteViewDDHelp" xml:space="preserve">
+    <value>Aktivujte možnost provádět snímky obrazovky zařízení na dálku</value>
+  </data>
+  <data name="RemoveDepRegisteredDevices" xml:space="preserve">
+    <value>Odstranit zařízení s registrací Dep</value>
+  </data>
+  <data name="RemoveSelectedUsersFromUserGroup" xml:space="preserve">
+    <value>Odstranit vybrané uživatele z uživatelské skupiny</value>
+  </data>
+  <data name="ReportAppleMDM" xml:space="preserve">
+    <value>Zpráva Apple MDM </value>
+  </data>
+  <data name="ReportAppleMDMHelp" xml:space="preserve">
+    <value>Řídí přístup k prohlížení sestavy Apple MDM.</value>
+  </data>
+  <data name="ReportProductCompliance" xml:space="preserve">
+    <value>Report konformity produktu</value>
+  </data>
+  <data name="ReportProductComplianceHelp" xml:space="preserve">
+    <value>Řídí přístup k prohlížení reportu konformity produktu</value>
+  </data>
+  <data name="ReportProductDeploymentSummary" xml:space="preserve">
+    <value>Přehled nasazení produktu</value>
+  </data>
+  <data name="ReportProductDeploymentSummaryHelp" xml:space="preserve">
+    <value>Řídí přístup ke zprávě o přehledu nasazení produktu</value>
+  </data>
+  <data name="ReportProvisioningProductAssigned" xml:space="preserve">
+    <value>Zřizovací detaily právě přiřazených - produkty (nové)</value>
+  </data>
+  <data name="ResetPassword" xml:space="preserve">
+    <value>Resetovat heslo</value>
+    <comment>To be used to trigger reset password for core user.</comment>
+  </data>
+  <data name="ResetYourPassword" xml:space="preserve">
+    <value>resetujte své heslo</value>
+  </data>
+  <data name="ResetYourPasswordNow" xml:space="preserve">
+    <value>Resetovat heslo teď</value>
+  </data>
+  <data name="RestApiCustomAttriutesDelete" xml:space="preserve">
+    <value>Rest API - vymazání vlastních atributů.</value>
+  </data>
+  <data name="RestApiCustomAttriutesDeleteHelp" xml:space="preserve">
+    <value>Umožňuje přístup ke všem API pro odstranění ve sbírce vlastních atributů.</value>
+  </data>
+  <data name="RestApiEnterpriseIntegrationRead" xml:space="preserve">
+    <value>Podniková integrace Rest API - čtení</value>
+  </data>
+  <data name="RestApiEnterpriseIntegrationReadHelp" xml:space="preserve">
+    <value>V podnikové integraci umožňuje přístup ke všem API určeným pouze ke čtení. </value>
+  </data>
+  <data name="Restapimamapps" xml:space="preserve">
+    <value>Rest API - aplikace MAM</value>
+  </data>
+  <data name="RestapimamappsHelp" xml:space="preserve">
+    <value>Přístup ke spravovaným aplikacím</value>
+  </data>
+  <data name="Restapimamblob" xml:space="preserve">
+    <value>REST API - objekt Blob MAM</value>
+  </data>
+  <data name="RestapimamblobHelp" xml:space="preserve">
+    <value>Nahrát obsah stahování</value>
+  </data>
+  <data name="Restapimdmdevices" xml:space="preserve">
+    <value>REST API - zařízení MDM</value>
+  </data>
+  <data name="RestapimdmdevicesHelp" xml:space="preserve">
+    <value>Poslat příkaz k uzamčení/odemčení</value>
+  </data>
+  <data name="Restapimdmprofiles" xml:space="preserve">
+    <value>REST API - profily MDM</value>
+  </data>
+  <data name="RestapimdmprofilesHelp" xml:space="preserve">
+    <value>Poslat příkaz k uzamknutí/odemknutí</value>
+  </data>
+  <data name="Restapimdmsmartgroups" xml:space="preserve">
+    <value>REST API - smart skupiny MDM</value>
+  </data>
+  <data name="RestapimdmsmartgroupsHelp" xml:space="preserve">
+    <value>Přístup k informacím smart skupiny</value>
+  </data>
+  <data name="Restapimdmusergroups" xml:space="preserve">
+    <value>REST API MDM - uživatelské skupiny</value>
+  </data>
+  <data name="RestapimdmusergroupsHelp" xml:space="preserve">
+    <value>Přístup k uživatelským skupinám</value>
+  </data>
+  <data name="Restapisystemadmin" xml:space="preserve">
+    <value>REST API systém -admin</value>
+  </data>
+  <data name="RestapisystemadminHelp" xml:space="preserve">
+    <value>Přístup k administrátorským infomracím</value>
+  </data>
+  <data name="Restapisystemgroups" xml:space="preserve">
+    <value>REST API systém - skupiny</value>
+  </data>
+  <data name="RestapisystemgroupsHelp" xml:space="preserve">
+    <value>Přístup k informacím o organizační skupině</value>
+  </data>
+  <data name="Restapisystemusers" xml:space="preserve">
+    <value>REST API systém - uživatelé</value>
+  </data>
+  <data name="RestapisystemusersHelp" xml:space="preserve">
+    <value>Přístup k informacím o uživateli</value>
+  </data>
+  <data name="RevokeAzureADUserTokensOnDeviceWipe" xml:space="preserve">
+    <value>Automaticky odvolat uživatelské tokeny při čištění zařízení</value>
+  </data>
+  <data name="RevokeAzureADUserTokensToolTip" xml:space="preserve">
+    <value>Umožní programu Workspace ONE UEM odvolat uživatelské tokeny Microsoft Azure AD, když se provádí firemní výmaz nebo výmaz zařízení. Poznámka: Tuto funkci se nedoporučuje zakazovat, protože zhorší stav zabezpečení vaší konfigurace. Jestliže je vymazané zařízení ztraceno, může stále obsahovat platný ověřovací token AAD.</value>
+  </data>
+  <data name="RoleId" xml:space="preserve">
+    <value>ID role</value>
+  </data>
+  <data name="Roles" xml:space="preserve">
+    <value>Role</value>
+  </data>
+  <data name="SaveDepRegisteredDevices" xml:space="preserve">
+    <value>Uložit zařízení s registrací Dep</value>
+  </data>
+  <data name="Scheduler" xml:space="preserve">
+    <value>Plánovač</value>
+  </data>
+  <data name="SchedulerApple" xml:space="preserve">
+    <value>Plánovač</value>
+  </data>
+  <data name="SchedulerAppleHelp" xml:space="preserve">
+    <value>Řídí přístup ke stránce plánovače MDM.</value>
+  </data>
+  <data name="SchedulerHelp" xml:space="preserve">
+    <value>Řídí přístup ke stránce nastavení plánovače.</value>
+  </data>
+  <data name="ScimEnabledOGCannotBatchImportDirectoryTypes" xml:space="preserve">
+    <value>Tato organizační skupina používá SCIM k poskytování informací uživatelům, administrátorům a skupinám. Uživatele a skupiny adresáře nelze importovat hromadně.</value>
+  </data>
+  <data name="SecurityTypeIsRequired" xml:space="preserve">
+    <value>Typ zabezpečení je povinný.</value>
+  </data>
+  <data name="SelectedUsersDoNotExistOrHaveAlreadyBeenDeleted" xml:space="preserve">
+    <value>Vybraní uživatelé neexistují, protože již jsou možná odstraněni. Zavřete tuto vyskakovací zprávu a aktualizujte stránku se seznamem uživatelů.</value>
+  </data>
+  <data name="SelectFileLabel" xml:space="preserve">
+    <value>Vybrat soubor</value>
+  </data>
+  <data name="SelectMemConfigLabel" xml:space="preserve">
+    <value>Konfigurace MEM</value>
+  </data>
+  <data name="SendApplicationConfigurationRequest" xml:space="preserve">
+    <value>Poslat požadavek na konfiguraci aplikace</value>
+  </data>
+  <data name="SendFeedback" xml:space="preserve">
+    <value>Odeslat hodnocení</value>
+  </data>
+  <data name="SendsEmail" xml:space="preserve">
+    <value>Poslat e-mail</value>
+  </data>
+  <data name="ServerError" xml:space="preserve">
+    <value>Chyba serveru</value>
+  </data>
+  <data name="SettingsEnrollmentCustomization" xml:space="preserve">
+    <value>Nastavení registrace – vlastní nastavení</value>
+  </data>
+  <data name="SettingsEnrollmentCustomizationHelp" xml:space="preserve">
+    <value>Oprávnění pro přístup a úpravy karty Vlastní nastavení (Zařízení / Nastavení zařízení / Zařízení a uživatelé / Obecné / Registrace)</value>
+  </data>
+  <data name="SettingsEnrollmentOptionalPrompt" xml:space="preserve">
+    <value>Nastavení registrace – volitelná výzva</value>
+  </data>
+  <data name="SettingsEnrollmentOptionalPromptHelp" xml:space="preserve">
+    <value>Oprávnění pro přístup a úpravy karty Volitelná výzva (Zařízení / Nastavení zařízení / Zařízení a uživatelé / Obecné / Registrace)</value>
+  </data>
+  <data name="SettingsHeaderBasedAuthentication" xml:space="preserve">
+    <value>Ověření podle záhlaví Settings</value>
+  </data>
+  <data name="SettingsMDMSampleSchedule" xml:space="preserve">
+    <value>Nastavení MDM plánu vzorkování</value>
+  </data>
+  <data name="SettingsMDMSampleScheduleHelp" xml:space="preserve">
+    <value>Poskytuje přístup na stránku vzorového plánovače MDM.</value>
+  </data>
+  <data name="SettingsScheduler" xml:space="preserve">
+    <value>Nastavení plánovače</value>
+  </data>
+  <data name="SettingsSchedulerHelp" xml:space="preserve">
+    <value>Poskytuje přístup na stránku plánovače.</value>
+  </data>
+  <data name="ShareYourFeedback" xml:space="preserve">
+    <value>Sdílet zpětnou vazbu</value>
+  </data>
+  <data name="ShowBatchTypeTemplates" xml:space="preserve">
+    <value>Zobrazit šablony typů dávky</value>
+  </data>
+  <data name="SingleAppModeProfileRemove" xml:space="preserve">
+    <value>Odstranění profilu režimu jedné aplikace</value>
+  </data>
+  <data name="SyncDirectoryGroup" xml:space="preserve">
+    <value>Synchronizovat skupinu adresáře</value>
+  </data>
+  <data name="TargetLgCannotParentUserLg" xml:space="preserve">
+    <value>Cílová organizační skupina nemůže být nadřazena organizační skupině uživatele.</value>
+  </data>
+  <data name="ThresholdAdminActionRequest" xml:space="preserve">
+    <value>Požadavek na administrátora mezní hodnoty</value>
+  </data>
+  <data name="TimedOut" xml:space="preserve">
+    <value>Vypršel časový limit</value>
+  </data>
+  <data name="TokenNotCreatedDeviceIdentifiersSpecifiersNotProvided" xml:space="preserve">
+    <value>Token nebyl vytvořen!  Scházejí informace o zařízení.</value>
+  </data>
+  <data name="TransactionFailed" xml:space="preserve">
+    <value>Selhalo odeslání e-mailu pro resetování hesla. Ověřte správnost e-mailové adresy příjemce a opakujte pokus.</value>
+  </data>
+  <data name="TroubleLoggingIn" xml:space="preserve">
+    <value>Problémy s přihlášením</value>
+  </data>
+  <data name="TwoFactorAuthenticationMethodNotValidOrNotAllowed" xml:space="preserve">
+    <value>Metoda dvoufaktorové autentizace není platná nebo není povolena.</value>
+  </data>
+  <data name="TwoMoreLgCannotSameCustomerCode" xml:space="preserve">
+    <value>Dvě nebo více organizačních skupin nemohou mít stejný zákaznický kód.</value>
+  </data>
+  <data name="UnableToFindCertificate" xml:space="preserve">
+    <value>Certifikát nelze najít.</value>
+  </data>
+  <data name="UninstallAppFromAll" xml:space="preserve">
+    <value>Odinstalovat aplikaci ze všech</value>
+  </data>
+  <data name="UniqueIdentifierArgNotProvidedForNewAdmin" xml:space="preserve">
+    <value>Pro nového správce nebyl poskytnut jedinečný identifikátor „{0}“.</value>
+  </data>
+  <data name="UniqueIdentifierArgNotProvidedForNewUser" xml:space="preserve">
+    <value>Pro nového uživatele nebyl poskytnut jedinečný identifikátor „{0}“.</value>
+  </data>
+  <data name="UpdatePublish" xml:space="preserve">
+    <value>Publikování aktualizace</value>
+  </data>
+  <data name="UserAccountUnlocked" xml:space="preserve">
+    <value>Účet uživatele je odemknutý</value>
+  </data>
+  <data name="UserAndroidWorkAppsSync" xml:space="preserve">
+    <value>Synchronizace aplikací Android Work uživatele</value>
+  </data>
+  <data name="UserArgCannotBeEditedUserResidesAtBelowImportingOG" xml:space="preserve">
+    <value>Správa nebo úprava uživatele {0} není možná, protože je umístěn mimo importující organizační skupinu nebo pod ní.</value>
+  </data>
+  <data name="UserArgCannotBeMoved" xml:space="preserve">
+    <value>Uživatele {0} nelze přesunout kvůli tomu, že primární organizační skupina nejméně jednoho zařízení je nad cílovou organizační skupinou.</value>
+  </data>
+  <data name="UserArgEditNotAllowedForFollowingSecurityType" xml:space="preserve">
+    <value>Pro následující druh zabezpečení není úprava uživatele {0} povolena.</value>
+  </data>
+  <data name="UserArgEditNotAllowedNoPermission" xml:space="preserve">
+    <value>Úprava uživatele {0} není povolena, protože uživatel není v této organizační skupině povolen.</value>
+  </data>
+  <data name="UserArgNotCreatedAsNotFoundInAD" xml:space="preserve">
+    <value>Uživatel {0} nebyl vytvořen, protože nebyl nalezen ve službě AD.</value>
+  </data>
+  <data name="UserArgWasNotFoundatLG" xml:space="preserve">
+    <value>Uživatel {0} nebyl nalezen v dané skupině umístění nebo není základním uživatelem</value>
+  </data>
+  <data name="UserCannotAssignedToParentLg" xml:space="preserve">
+    <value>Uživatele nemůžete přiřadit k nadřízené organizační skupině.</value>
+  </data>
+  <data name="UserDataCorruptedErrorMessage" xml:space="preserve">
+    <value>Došlo k problému při dešifrování informací o uživateli. Pokud chcete zjistit, kterých polí a uživatelů se to týká, nahlédněte do protokolů událostí. Problém vyřešte vybráním režimu úprav a opětovným zadáním správných údajů pro jednotlivé zasažené uživatele.</value>
+    <comment>Error message shown during the User List View in case Decryption fails for some of the Personal info of any Users.</comment>
+  </data>
+  <data name="UserDecryptionFailed" xml:space="preserve">
+    <value>Dešifrování uživatelských dat se nezdařilo</value>
+  </data>
+  <data name="UserGroupsNotPermittedAtGivenOG" xml:space="preserve">
+    <value>Do dané organizační skupiny není povoleno přidávat uživatelské skupiny</value>
+  </data>
+  <data name="UserInformationPrivacySettingWarning" xml:space="preserve">
+    <value>Nastavení ochrany osobních údajů pro informace o uživateli se nevztahuje na nástroj pro testování připojení na stránce nastavení adresářových služeb v části Systém &gt; Podniková integrace.</value>
+  </data>
+  <data name="UserLockedOut" xml:space="preserve">
+    <value>Účet uživatele je zamknutý</value>
+  </data>
+  <data name="UsernameAndPassword" xml:space="preserve">
+    <value>Uživatelské jméno a heslo</value>
+  </data>
+  <data name="UserNoAccessForOGArg" xml:space="preserve">
+    <value>Uživatel nemá oprávnění k přístupu pro organizační skupinu {0}.</value>
+  </data>
+  <data name="UserNotFoundAd" xml:space="preserve">
+    <value>Uživatel nebyl nalezen v adresářové službě. Nelze přidat uživatele.</value>
+  </data>
+  <data name="UserQuestionsNotAuthenticated" xml:space="preserve">
+    <value>Vaše heslo nemůže být resetováno, dokud správně neodpovíte na bezpečnostní otázku. Pokyny najdete v e-mailu pro resetování hesla, který jste obdrželi.</value>
+    <comment>Only appears if someone tries to directly hit the "reset password" page without first answering their security questions.</comment>
+  </data>
+  <data name="UserRoleNotValid" xml:space="preserve">
+    <value>Uživatelská role je neplatná.</value>
+  </data>
+  <data name="UsersSettings" xml:space="preserve">
+    <value>Uživatelská nastavení</value>
+  </data>
+  <data name="UserTypeRequiredFieldValueDirectoryBasicArg" xml:space="preserve">
+    <value>Hodnota pole Typ uživatele by měla být {0} nebo {1}.</value>
+  </data>
+  <data name="VideoImport" xml:space="preserve">
+    <value>Import videa</value>
+  </data>
+  <data name="ViewCustomReportsGettingStarted" xml:space="preserve">
+    <value>Začínáme se službou Intelligence</value>
+  </data>
+  <data name="ViewCustomReportsGettingStartedHelp" xml:space="preserve">
+    <value>Poskytuje přístup jen pro čtení ke stránce Začínáme se službou Intelligence.</value>
+  </data>
+  <data name="ViewEducationOverview" xml:space="preserve">
+    <value>Zobrazit přehled vzdělání</value>
+  </data>
+  <data name="ViewManagedAdminPasswordHelp" xml:space="preserve">
+    <value>Řídí přístup k prohlížení spravovaných administrátorských hesel</value>
+  </data>
+  <data name="ViewUserGroup.Plural" xml:space="preserve">
+    <value>Zobrazit uživatelské skupiny</value>
+  </data>
+  <data name="WebAppEntitlements" xml:space="preserve">
+    <value>Oprávnění webové aplikace</value>
+  </data>
+  <data name="Websitefilterssettings" xml:space="preserve">
+    <value>Nastavení filtrů webových stránek</value>
+  </data>
+  <data name="WindowsBspTenantIdDelete" xml:space="preserve">
+    <value>Odstranění ID klienta Bsp systému Windows</value>
+  </data>
+  <data name="WorkspaceOneCloudAccessDeniesErrorMessage" xml:space="preserve">
+    <value>Musíte mít vlastní účet VMware Cloud Services pro přístup k Workspace ONE. Požádejte o pomoc svého administrátora. {0}</value>
+  </data>
+</root>

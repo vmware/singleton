@@ -1,0 +1,2555 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AboutToPerformResumeBitlocker" xml:space="preserve">
+    <value>U staat op het punt de actie BitLocker-encryptie hervatten uit te voeren. Controleer alle onderstaande informatie zorgvuldig om door te gaan.</value>
+  </data>
+  <data name="ActivateBacklight" xml:space="preserve">
+    <value>Achtergrondverlichting activeren</value>
+  </data>
+  <data name="ActivationLockClearFailure" xml:space="preserve">
+    <value>Activeringsvergrendeling uitschakelen mislukt</value>
+  </data>
+  <data name="ActivationLockClearRequested" xml:space="preserve">
+    <value>Activeringsvergrendeling uitschakelen aangevraagd</value>
+  </data>
+  <data name="ActivationLockClearSuccess" xml:space="preserve">
+    <value>Activeringsvergrendeling uitschakelen geslaagd</value>
+  </data>
+  <data name="ActivationLockCommandWarning" xml:space="preserve">
+    <value>Activeringsvergrendeling is ingeschakeld voor dit toestel. Voer de Apple ID en het wachtwoord in waarmee deze functie is geactiveerd om het toestel opnieuw te activeren. Als u de Apple ID en het wachtwoord niet meer weet, kiest u het commando Activeringsvergrendeling uitschakelen.</value>
+  </data>
+  <data name="ActivationLockEnabledSuccessfully" xml:space="preserve">
+    <value>Activeringsvergrendeling ingeschakeld</value>
+  </data>
+  <data name="ActivationLockWarning" xml:space="preserve">
+    <value>Het is vastgesteld dat de activeringsvergrendeling is ingeschakeld via de Zoek mijn iPhone-functie. Zelfs nadat het toestel tot de fabrieksinstellingen terug is gezet, kan het toestel niet opnieuw worden ingeschakeld zonder iCloud Apple ID-wachtwoord dat ook gebruikt is om de activeringsvergrendeling in te schakelen.</value>
+  </data>
+  <data name="AddDropShipDevice" xml:space="preserve">
+    <value>Toestel met doorverzending toevoegen</value>
+  </data>
+  <data name="AddNewSchedule" xml:space="preserve">
+    <value>Nieuw schema toevoegen</value>
+  </data>
+  <data name="AddSideLoadingKey" xml:space="preserve">
+    <value>Side loading-sleutel toevoegen</value>
+  </data>
+  <data name="AffectedDeviceTagManagementMessage" xml:space="preserve">
+    <value>De geselecteerde tags worden toegepast op alle geselecteerde toestellen</value>
+  </data>
+  <data name="AgentEnrollmentUrl" xml:space="preserve">
+    <value>Inschrijvings-URL voor de Agent</value>
+  </data>
+  <data name="AirWatchHuaweiService" xml:space="preserve">
+    <value>AirWatch Huwaei-service</value>
+  </data>
+  <data name="AirWatchInterrogatorQueueMonitor" xml:space="preserve">
+    <value>De Interrogator-wachtrijservice leest de informatie die door de Interrogator-server naar de wachtrijen geschreven is en schrijft deze gegevens naar de database.</value>
+  </data>
+  <data name="AirWatchInterrogatorServer" xml:space="preserve">
+    <value>De Interrogator-server is een socket-server die inkomende toestelgegevens ontvangt over poort 8087.</value>
+  </data>
+  <data name="AndroidAvailableFileActions" xml:space="preserve">
+    <value>Download en upload bestanden.</value>
+  </data>
+  <data name="AndroidDeviceLogSourceToolTipText" xml:space="preserve">
+    <value>Selecteer Hub om logboeken te verzamelen die zijn gegenereerd door de Workspace ONE Intelligent Hub.
+
+Selecteer Systeem om een volledig systeemlogboek te verzamelen voor legacy Android-toestellen waarop een platform-OEM-service is geïnstalleerd. Er wordt een bugrapport verzameld als het toestel door Android for Work-beheerd is en Android 7.0 of hoger gebruikt.
+
+Selecteer Netwerk om een logboek te verzamelen van netwerkgebeurtenissen op het toestel.
+
+Selecteer Beveiliging om veiligheidslogboeken van zowel voor als na het opstarten te verzamelen. Logboeken worden naar de console geüpload zodra ze beschikbaar zijn op het toestel.</value>
+  </data>
+  <data name="AndroidEnterpriseCancelMigration" xml:space="preserve">
+    <value>Commando om Android Enterprise-migratie te annuleren.</value>
+  </data>
+  <data name="AndroidEnterpriseMigration" xml:space="preserve">
+    <value>Commando om Android Legacy-migratie naar AFW te starten.</value>
+  </data>
+  <data name="AndroidManagement" xml:space="preserve">
+    <value>Android-beheer</value>
+  </data>
+  <data name="AndroidRequestDeviceLogSettingsInformation" xml:space="preserve">
+    <value>Pas hieronder uw logboekregistratieaanvraag aan. Ga naar Toestelinformatie &gt; Meer &gt; Bijlagen &gt; Documenten om de logboeken te bekijken. Het kan tot 90 minuten duren om netwerk- of veiligheidslogboeken te ontvangen. Sommige opties zijn mogelijk niet beschikbaar doordat ze niet worden ondersteund op het toestel.</value>
+  </data>
+  <data name="AndroidWorkProfileEndUserMessageSetupHelp" xml:space="preserve">
+    <value>Dit optionele bericht wordt getoond aan eindgebruikers op Android-toestellen om toe te lichten waarom hun Work-profiel is verwijderd.</value>
+  </data>
+  <data name="AndroidWorkProfileEndUserWipeMessage" xml:space="preserve">
+    <value>Bericht voor eindgebruiker over wissen van Android-werkprofiel</value>
+  </data>
+  <data name="AndroidWorkSharedDeviceModeNotReported" xml:space="preserve">
+    <value>Niet gerapporteerd</value>
+  </data>
+  <data name="ApnsMessageForRemoteView" xml:space="preserve">
+    <value>Uw beheerder wil het scherm van uw toestel op afstand bekijken. Navigeer naar uw iOS bedieningspaneel om het scherm van uw toestel uit te zenden.</value>
+  </data>
+  <data name="ApnsMessageNotSent" xml:space="preserve">
+    <value>Er is een fout opgetreden tijdens verzending van het bericht voor weergave op afstand. Neem contact op met de helpdesk voor ondersteuning.</value>
+  </data>
+  <data name="ApnsMessageSentForRemoteView" xml:space="preserve">
+    <value>Bericht is verzonden naar het toestel om de gebruiker te vragen om een weergavesessie op afstand te starten.</value>
+  </data>
+  <data name="AppAssignmentEditWarning" xml:space="preserve">
+    <value>Als u de configuratie van deze applicatie bewerkt, worden deze wijzigingen toegepast op de andere toestellen in deze werkstromen.</value>
+  </data>
+  <data name="AppleBusinessManager" xml:space="preserve">
+    <value>Apple Business Manager</value>
+  </data>
+  <data name="AppleBusinessManagerFetchFail" xml:space="preserve">
+    <value>Ophalen van Apple Business Manager mislukt</value>
+  </data>
+  <data name="AppleBusinessManagerFetchSuccess" xml:space="preserve">
+    <value>Ophalen van Apple Business Manager geslaagd</value>
+  </data>
+  <data name="AppleBusinessManagerSyncFail" xml:space="preserve">
+    <value>Synchronisatie Apple Business Manager mislukt</value>
+  </data>
+  <data name="AppleBusinessManagerSyncSuccess" xml:space="preserve">
+    <value>Synchronisatie Apple Business Manager geslaagd</value>
+  </data>
+  <data name="ApplicationConfigurationConfirmed" xml:space="preserve">
+    <value>Applicatieconfiguratie bevestigd</value>
+  </data>
+  <data name="ApplicationConfigurationFailed" xml:space="preserve">
+    <value>Applicatieconfiguratie mislukt</value>
+  </data>
+  <data name="ApplicationConfigurationRefused" xml:space="preserve">
+    <value>Applicatieconfiguratie geweigerd</value>
+  </data>
+  <data name="ApplyTimeWindow" xml:space="preserve">
+    <value>Als u het tijdvenster wilt toepassen op een apparaat, moet u het als een werkstroomvoorwaarde gebruiken.</value>
+  </data>
+  <data name="ApplyToAllAdmin" xml:space="preserve">
+    <value>Toepassen op alle beheerders in deze organisatiegroep of lager</value>
+  </data>
+  <data name="ApprovedByClassification" xml:space="preserve">
+    <value>Goedgekeurd per classificatie</value>
+  </data>
+  <data name="ApprovedByRevisionAndClassification" xml:space="preserve">
+    <value>Goedgekeurd op revisie en classificatie</value>
+  </data>
+  <data name="ApproveWipe" xml:space="preserve">
+    <value>Wissen goedkeuren</value>
+  </data>
+  <data name="ApproveWipeConfirm" xml:space="preserve">
+    <value>Approve wipe successful</value>
+  </data>
+  <data name="AssignedTags" xml:space="preserve">
+    <value>Toegewezen tags</value>
+  </data>
+  <data name="AssignmentName" xml:space="preserve">
+    <value>Toewijzingsnaam</value>
+  </data>
+  <data name="Athena" xml:space="preserve">
+    <value>Athena</value>
+  </data>
+  <data name="AttributesNotPresent" xml:space="preserve">
+    <value>Toestelkenmerken niet aanwezig.</value>
+  </data>
+  <data name="Auto_Detect" xml:space="preserve">
+    <value>Automatisch detecteren</value>
+  </data>
+  <data name="AutoInstall" xml:space="preserve">
+    <value>Automatisch installeren</value>
+  </data>
+  <data name="AutoUpdateStatus" xml:space="preserve">
+    <value>Status automatisch bijwerken</value>
+  </data>
+  <data name="AutoUpdateStatusFail" xml:space="preserve">
+    <value>Status automatisch bijwerken mislukt</value>
+  </data>
+  <data name="AutoUpdateStatusPass" xml:space="preserve">
+    <value>Status automatisch bijwerken geslaagd</value>
+  </data>
+  <data name="AutoUpdateStatusUnknown" xml:space="preserve">
+    <value>Status automatisch bijwerken onbekend</value>
+  </data>
+  <data name="AvailableByApple" xml:space="preserve">
+    <value>Beschikbaar van Apple</value>
+  </data>
+  <data name="Bash" xml:space="preserve">
+    <value>Bash</value>
+  </data>
+  <data name="BatchImportCustomAttributesExplanation" xml:space="preserve">
+    <value>De functie Aangepaste kenmerken importeren is voor het laden van grotere hoeveelheden gepersonaliseerde kenmerken en de bijbehorende waarden, waarbij elke kolom met één aangepast kenmerk overeenkomt en elke rij met verschillende parameters.</value>
+  </data>
+  <data name="BeginRollOut" xml:space="preserve">
+    <value>Roll-out starten</value>
+  </data>
+  <data name="BiosAttestationFailed" xml:space="preserve">
+    <value>BIOS-verificatie mislukt</value>
+  </data>
+  <data name="BiosAttestationPassed" xml:space="preserve">
+    <value>BIOS-verificatie gelukt</value>
+  </data>
+  <data name="BiosAttestationStatus" xml:space="preserve">
+    <value>BIOS-verificatie</value>
+  </data>
+  <data name="BiosAttestationStatusUnknown" xml:space="preserve">
+    <value>Status van BIOS-verificatie onbekend</value>
+  </data>
+  <data name="BiosDate" xml:space="preserve">
+    <value>BIOS-datum</value>
+  </data>
+  <data name="BiosVendor" xml:space="preserve">
+    <value>BIOS-leverancier</value>
+  </data>
+  <data name="BiosVerificationCheck" xml:space="preserve">
+    <value>BIOS-verificatie</value>
+  </data>
+  <data name="BitLockerCipherMismatch" xml:space="preserve">
+    <value>Versleutelingssterkte op toestel komt niet overeen met profiel</value>
+  </data>
+  <data name="BitLockerCipherStrengthMismatch" xml:space="preserve">
+    <value>Codeersterkte op profiel: {0}, op toestel: {1}.</value>
+  </data>
+  <data name="BitLockerDriveStatusDecryptionInProgress" xml:space="preserve">
+    <value>Bezig met ontsleutelen</value>
+  </data>
+  <data name="BitLockerDriveStatusEncrypted" xml:space="preserve">
+    <value>Versleuteld</value>
+  </data>
+  <data name="BitLockerDriveStatusEncryptionInProgress" xml:space="preserve">
+    <value>Bezig met versleutelen</value>
+  </data>
+  <data name="BitLockerDriveStatusNotEncrypted" xml:space="preserve">
+    <value>Niet geëncrypteerd</value>
+  </data>
+  <data name="BitLockerDriveStatusSuspended" xml:space="preserve">
+    <value>Opgeheven</value>
+  </data>
+  <data name="BitLockerDriveStatusSuspendedScheduled" xml:space="preserve">
+    <value>Onderbroken (per profielschema)</value>
+  </data>
+  <data name="BitLockerDriveStatusSuspendedWithRebootCount" xml:space="preserve">
+    <value>Onderbroken (kan nog {0} keer opnieuw worden opgestart)</value>
+  </data>
+  <data name="BitLockerDriveStatusUnknown" xml:space="preserve">
+    <value>Onbekend</value>
+  </data>
+  <data name="BitLockerEncryptionResumed" xml:space="preserve">
+    <value>BitLocker-encryptie hervat</value>
+  </data>
+  <data name="BitLockerProtection" xml:space="preserve">
+    <value>BitLocker-beveiliging</value>
+  </data>
+  <data name="BitLockerRecoveryKeyModalHelpText" xml:space="preserve">
+    <value>Gebruik de herstelsleutel om een toestel te ontgrendelen dat is versleuteld met BitLocker.</value>
+  </data>
+  <data name="BitLockerRecoveryKeyModalText" xml:space="preserve">
+    <value>Gebruik de herstelsleutel om een toestel te ontgrendelen dat is versleuteld met BitLocker. Statische herstelsleutels zijn alleen beschikbaar als ze worden toegevoegd aan het profiel.</value>
+  </data>
+  <data name="BitlockerResume" xml:space="preserve">
+    <value>BitLocker hervatten</value>
+  </data>
+  <data name="BitLockerStatusDecryptionInProgress" xml:space="preserve">
+    <value>BitLocker-status: Bezig met ontsleutelen</value>
+  </data>
+  <data name="BitLockerStatusEncrypted" xml:space="preserve">
+    <value>BitLocker-status: Versleuteld</value>
+  </data>
+  <data name="BitLockerStatusEncryptionInProgress" xml:space="preserve">
+    <value>BitLocker-status: Bezig met versleutelen</value>
+  </data>
+  <data name="BitLockerStatusNotEncrypted" xml:space="preserve">
+    <value>BitLocker-status: Niet versleuteld</value>
+  </data>
+  <data name="BitLockerStatusPartiallyProtected" xml:space="preserve">
+    <value>BitLocker-status: Gedeeltelijk beveiligd</value>
+  </data>
+  <data name="BitLockerStatusSuspended" xml:space="preserve">
+    <value>BitLocker-status: Onderbroken (kan nog {0} keer opnieuw worden opgestart)</value>
+  </data>
+  <data name="BitLockerStatusSuspendedScheduled" xml:space="preserve">
+    <value>BitLocker-status: Onderbroken (per profielschema)</value>
+  </data>
+  <data name="BitLockerStatusUnknown" xml:space="preserve">
+    <value>BitLocker-status: Onbekend</value>
+  </data>
+  <data name="BitLockerSuspendedPerProfileSchedule" xml:space="preserve">
+    <value>BitLocker-encryptie onderbroken per profielschema</value>
+  </data>
+  <data name="Blueprints" xml:space="preserve">
+    <value>Blueprints</value>
+  </data>
+  <data name="BuildOrRevisionNumber" xml:space="preserve">
+    <value>Buildversie/Revisienummer</value>
+  </data>
+  <data name="BulkActivationLockCommandWarning" xml:space="preserve">
+    <value>Activeringsvergrendeling is ingeschakeld voor een of meer geselecteerde toestellen. Voer de Apple ID en het wachtwoord in waarmee deze functie is geactiveerd om de toestellen opnieuw te activeren. Als u de Apple ID en het wachtwoord niet meer weet, kiest u hieronder het commando Activeringsvergrendeling uitschakelen.</value>
+  </data>
+  <data name="BulkApiAction" xml:space="preserve">
+    <value>Bulk API-actie</value>
+  </data>
+  <data name="BulkTagManagementSelectTipArg" xml:space="preserve">
+    <value>{0} toestel(len) geselecteerd</value>
+  </data>
+  <data name="BusinessHours" xml:space="preserve">
+    <value>Kantooruren</value>
+  </data>
+  <data name="CancelFirmwareUpdate" xml:space="preserve">
+    <value>Update annuleren</value>
+  </data>
+  <data name="CancelSchedule" xml:space="preserve">
+    <value>Planning annuleren</value>
+  </data>
+  <data name="CanNotDeleteTagBecauseAssignedToSmartGroup" xml:space="preserve">
+    <value>Kan label niet verwijderen omdat dit is toegewezen aan de volgende smart groups: {0}</value>
+  </data>
+  <data name="CertificateInfo" xml:space="preserve">
+    <value>Certificaatinformatie</value>
+  </data>
+  <data name="CertificateSerialNumber" xml:space="preserve">
+    <value>Serienummer van certificaat</value>
+  </data>
+  <data name="ChangePasscodeMsgSamsung" xml:space="preserve">
+    <value>Bij Android (legacy)-apparaten werkt het wijzigen van de toegangscode alleen op Samsung-apparaten of als er nog geen toegangscode op het apparaat is ingesteld</value>
+  </data>
+  <data name="ChangeWorkProfilePasscodeNote" xml:space="preserve">
+    <value>Deze actie dwingt de gebruiker een nieuw ontgrendelingswachtwoord voor het werkprofiel te gebruiken. Het opgegeven wachtwoord moet conform de huidige geïnstalleerde beleidsbeperkingen voor toegangscodes zijn behalve de geschiedenis van gebruikte toegangscodes. Als niet wordt voldaan aan deze beperkingen, wordt het wachtwoord afgewezen</value>
+  </data>
+  <data name="CheckInDevice" xml:space="preserve">
+    <value>Toestel inchecken</value>
+  </data>
+  <data name="CheckInDeviceFailed" xml:space="preserve">
+    <value>Toestel inchecken mislukt</value>
+  </data>
+  <data name="CheckInDeviceRequested" xml:space="preserve">
+    <value>Toestel inchecken aangevraagd</value>
+  </data>
+  <data name="CheckInDeviceSucceeded" xml:space="preserve">
+    <value>Toestel inchecken geslaagd</value>
+  </data>
+  <data name="ChromeOSDeviceDisableLostMode" xml:space="preserve">
+    <value>Het Chrome OS-toestel blijft ingeschreven, maar wordt volledig uitgeschakeld en geeft het aangepaste bericht weer dat is ingesteld in het Chrome OS-toestelprofiel &gt; Beveiliging en privacy &gt; Verloren-modusbericht wanneer de Verloren-modus is ingeschakeld. Schakel de Verloren-modus uit om het Chrome OS-toestel te ontgrendelen.</value>
+  </data>
+  <data name="ChromeOSDeviceEnableLostMode" xml:space="preserve">
+    <value>Het Chrome OS-toestel blijft ingeschreven, maar wordt volledig uitgeschakeld en geeft het aangepaste bericht weer dat is ingesteld in het Chrome OS-toestelprofiel &gt; Beveiliging en privacy &gt; Verloren-modusbericht wanneer de Verloren-modus is ingeschakeld. Schakel de Verloren-modus in om het Chrome OS-toestel te ontgrendelen.</value>
+  </data>
+  <data name="ChromeOsEnterpriseWipeReason" xml:space="preserve">
+    <value>Reden voor Chrome OS-bedrijfsgegevens wissen</value>
+  </data>
+  <data name="ClearAndroidDevicePasscodeConfirmation" xml:space="preserve">
+    <value>Weet u zeker dat de toegangscode van het apparaat wilt wissen?</value>
+  </data>
+  <data name="ClearAndroidWorkProfilePasscode" xml:space="preserve">
+    <value>Werktoegangscode wissen</value>
+  </data>
+  <data name="ClearAndroidWorkProfilePasscodeConfirmation" xml:space="preserve">
+    <value>Weet u zeker dat de werktoegangscode van het apparaat wilt wissen?</value>
+  </data>
+  <data name="ClearApplicationPasscode" xml:space="preserve">
+    <value>Applicatietoegangscode wissen</value>
+  </data>
+  <data name="ClearPasscodeLockDevice" xml:space="preserve">
+    <value>Toesteltoegangscode wissen/Toestel vergrendelen/Afsluiten/Opnieuw opstarten</value>
+  </data>
+  <data name="CommandDisableActivationLockComment" xml:space="preserve">
+    <value>Als de activeringsvergrendeling op een iOS- of macOS-toestel is ingeschakeld, moet de Apple ID en het wachtwoord of de toegangscode van het toestel worden ingevoerd om Zoek mijn iPhone (Mac) uit te schakelen, het toestel te wissen of het toestel te ontgrendelen.
+
+Klik op Deactiveren om de activeringsvergrendeling op het toestel uit te schakelen.</value>
+  </data>
+  <data name="CommandDisableActivationLockCommentBypass" xml:space="preserve">
+    <value>In plaats van de activeringsvergrendeling uit te schakelen, kunt u ook de volgende code invoeren tijdens de installatieprocedure. Voer deze toegangscode in als wachtwoord voor de activeringsvergrendeling en laat het veld Apple ID-gebruikersnaam leeg.</value>
+  </data>
+  <data name="CompromisedDevicesChartDescription" xml:space="preserve">
+    <value>{0} verdachte apparaten. In totaal {1} verdachte apparaten.</value>
+  </data>
+  <data name="CompromisedDevicesChartTitle" xml:space="preserve">
+    <value>Ringdiagram van verdachte apparaten. </value>
+  </data>
+  <data name="ConditionError" xml:space="preserve">
+    <value>Een of meer voorwaarden in deze werkstroom hebben geen actie die volgt. Voeg een actie toe om door te gaan.</value>
+  </data>
+  <data name="ConfigureLocationGroup" xml:space="preserve">
+    <value>Organisatiegroep configureren</value>
+  </data>
+  <data name="ConfigureLoginCredentials" xml:space="preserve">
+    <value>Inloggegevens configureren</value>
+  </data>
+  <data name="ConfirmDeleteDevice" xml:space="preserve">
+    <value>Apparaat verwijderen? Alle hiervoor gemaakte apparaatinformatie wordt ook verwijderd.</value>
+  </data>
+  <data name="ConfirmDeleteDeviceWithRecoveryKey" xml:space="preserve">
+    <value>Apparaat verwijderen? Alle hiervoor gemaakte apparaatinformatie wordt ook verwijderd. Waarschuwing: de herstelsleutel voor versleuteling zal ook worden verwijderd. Er kunnen gegevens verloren gaan.</value>
+  </data>
+  <data name="ConfirmDeviceRebootAfterHubRepair" xml:space="preserve">
+    <value>Met deze actie herstelt u Hub-problemen, zoals HMAC-fouten, gestopte services of beschadigde of ontbrekende bestanden. Mogelijk wordt de Hub op het apparaat bijgewerkt naar de nieuwste versie die beschikbaar is op uw console. In sommige gevallen kan deze actie een herstart initiëren</value>
+  </data>
+  <data name="ConfirmPauseTitle" xml:space="preserve">
+    <value>Onderbreken bevestigen</value>
+  </data>
+  <data name="ConfirmResumeTitle" xml:space="preserve">
+    <value>Hervatten bevestigen</value>
+  </data>
+  <data name="ConfirmUnenrollDeleteDeviceWithRecoveryKey" xml:space="preserve">
+    <value>Dit apparaat is nog ingeschreven. Als u het apparaat verwijdert, zal het worden uitgeschreven. Waarschuwing: de herstelsleutel voor versleuteling zal ook worden verwijderd.</value>
+  </data>
+  <data name="ConfirmUpdateRollOutContent" xml:space="preserve">
+    <value>Roll-out starten heeft tot doel te starten met het doorvoeren van updates als dit nog niet is begonnen en het doorvoeren van updates te hervatten als dit op een eerder moment is gestopt. Weet u zeker dat u de update wilt doorvoeren?</value>
+  </data>
+  <data name="ConfirmUpdateRollOutTitle" xml:space="preserve">
+    <value>Roll-out bevestigen</value>
+  </data>
+  <data name="ConnectDeviceToWifiPriorToEnrollment" xml:space="preserve">
+    <value>Toestel verbinden met wifi (WPA/WPA2) voorafgaand aan de inschrijving</value>
+  </data>
+  <data name="ConnectionState" xml:space="preserve">
+    <value>Verbindingsstatus</value>
+    <comment>Either Connected or Disconnected</comment>
+  </data>
+  <data name="COPEDeviceInfoMessage" xml:space="preserve">
+    <value>Het volledige toestelbeheer blijft intact. Medewerkers ontvangen een werkprofiel voor toegang tot bedrijfsapps en hebben toegang tot hun persoonlijke Google Play Store buiten het werkprofiel. Deze optie is beschikbaar voor Android versie 8.0 en hoger.</value>
+  </data>
+  <data name="CouldNotStartRemoteViewSession" xml:space="preserve">
+    <value>We kunnen de sessie voor toestel met UDID {0} niet starten met het systeem voor externe weergave. Neem contact op met ondersteuning voor assistentie.</value>
+  </data>
+  <data name="CpuTitle" xml:space="preserve">
+    <value>CPU-architectuur</value>
+  </data>
+  <data name="CpuTooltip" xml:space="preserve">
+    <value>Dit criterium filtert toestellen op basis van CPU-architectuur. Deze filtering is alleen van toepassing op Windows- en macOS-toestellen. Als u geen optie selecteert, worden filtercriteria niet toegepast.</value>
+  </data>
+  <data name="CreateDevice" xml:space="preserve">
+    <value>Creëren</value>
+  </data>
+  <data name="CreateNewUserMessageArg" xml:space="preserve">
+    <value>Als de gebruiker waarnaar wordt gezocht niet kan worden gevonden, maakt u hier een nieuwe gebruiker aan: {0}</value>
+    <comment>{0} will be replaced by a hyperlink with text Create New User</comment>
+  </data>
+  <data name="CreateTimeWindow" xml:space="preserve">
+    <value>Tijdvenster maken</value>
+  </data>
+  <data name="CriteriaPreviewNote" xml:space="preserve">
+    <value>Het huidige voorbeeld wordt gegenereerd op basis van alleen de applicatienaam, maar de evaluatie van de voorwaarde op de toestellen zal de criteria-operator bevatten.</value>
+  </data>
+  <data name="CustomDateRange" xml:space="preserve">
+    <value>Aangepast</value>
+  </data>
+  <data name="CustomFieldAdded" xml:space="preserve">
+    <value>Custom veld toegevoegd</value>
+  </data>
+  <data name="CustomFieldDeleted" xml:space="preserve">
+    <value>Custom veld verwijderd</value>
+  </data>
+  <data name="CustomFieldModified" xml:space="preserve">
+    <value>Custom veld aangepast</value>
+  </data>
+  <data name="DailyArg" xml:space="preserve">
+    <value>Dagelijks {0} - {1} ({2})</value>
+    <comment>Placehoders: 0 - StartTime, 1 - EndTime, 2 - Duration.
+Example: Daily 11:00 PM - 4:30 AM (5 hours 30 mins)</comment>
+  </data>
+  <data name="DataCompromisedOrCorrupted" xml:space="preserve">
+    <value>De gegevens zijn mogelijk beschadigd. Neem contact op met uw IT-beheerder.</value>
+  </data>
+  <data name="DataNotCollectedDueToPrivacySettings" xml:space="preserve">
+    <value>GPS-gegevens niet beschikbaar. Als u GPS-gegevens wilt weergeven, wijzigt u privacy-instellingen om locatiegegevens te verzamelen en weer te geven</value>
+  </data>
+  <data name="DataValidationFailed" xml:space="preserve">
+    <value>Opslaan mislukt. Probeer het opnieuw.</value>
+  </data>
+  <data name="DateEncrypted" xml:space="preserve">
+    <value>Datum versleuteld</value>
+  </data>
+  <data name="DateLabel" xml:space="preserve">
+    <value>Datum en tijd</value>
+  </data>
+  <data name="DateLastSeen" xml:space="preserve">
+    <value>Datum laatst gezien</value>
+  </data>
+  <data name="DateMustBeInFuture" xml:space="preserve">
+    <value>Datum moet in de toekomst liggen</value>
+  </data>
+  <data name="DayAgo" xml:space="preserve">
+    <value>een dag geleden</value>
+  </data>
+  <data name="DefineAssignmentAndSelectSmartGroups" xml:space="preserve">
+    <value>Toewijzing definiëren en Smart groups selecteren</value>
+  </data>
+  <data name="DefineDeploymentDateTimeAndMethod" xml:space="preserve">
+    <value>Implementatiedatum en -tijd en methode definiëren</value>
+  </data>
+  <data name="DeleteDeviceConfirmation" xml:space="preserve">
+    <value>Bevestiging toestel wissen</value>
+  </data>
+  <data name="DeleteSensor" xml:space="preserve">
+    <value>Sensor verwijderen</value>
+  </data>
+  <data name="DeleteSensorConfirmArg" xml:space="preserve">
+    <value>Weet u zeker dat u sensor "{0}" wilt verwijderen?</value>
+  </data>
+  <data name="DeleteTimeWindowConfirmation" xml:space="preserve">
+    <value>Weet u zeker dat u dit tijdvenster wilt verwijderen?</value>
+  </data>
+  <data name="DeleteTimeWindowTitle" xml:space="preserve">
+    <value>Tijdvenster verwijderen</value>
+  </data>
+  <data name="DeleteUserConfirmation" xml:space="preserve">
+    <value>Het commando Gebruiker verwijderen zal de gebruiker van het toestel verwijderen, zelfs als de gebruiker gegevens heeft die nog niet zijn gesynchroniseerd. Weet u zeker dat u wilt doorgaan?</value>
+  </data>
+  <data name="DeleteUserConfirmed" xml:space="preserve">
+    <value>Gebruiker verwijderen bevestigd</value>
+  </data>
+  <data name="DeleteUserFailed" xml:space="preserve">
+    <value>Het commando Gebruiker verwijderen kan niet worden verzonden.</value>
+  </data>
+  <data name="DeleteUserRefused" xml:space="preserve">
+    <value>Gebruiker verwijderen geweigerd</value>
+  </data>
+  <data name="DeleteUserRequested" xml:space="preserve">
+    <value>Gebruiker verwijderen aangevraagd</value>
+  </data>
+  <data name="DeleteUserSuccess" xml:space="preserve">
+    <value>Het commando Gebruiker verwijderen is verzonden.</value>
+  </data>
+  <data name="DEPAdminPasswordRotationJob" xml:space="preserve">
+    <value>DEP-beheerderswachtwoord-rotatietaak</value>
+  </data>
+  <data name="DeploymentAlreadyExists" xml:space="preserve">
+    <value>Er bestaat al een implementatie met vergelijkbare eigenschappen</value>
+  </data>
+  <data name="DeploymentBegins" xml:space="preserve">
+    <value>Implementatie begint</value>
+  </data>
+  <data name="DeploymentDownloadAndInstall" xml:space="preserve">
+    <value>Downloaden en installeren</value>
+  </data>
+  <data name="DeploymentDownloadOnly" xml:space="preserve">
+    <value>Alleen downloaden</value>
+  </data>
+  <data name="DeploymentForDeviceUpdateNotFound" xml:space="preserve">
+    <value>Geen implementatie gevonden voor deze toestelupdate.</value>
+  </data>
+  <data name="DeploymentInstallOnly" xml:space="preserve">
+    <value>Alleen installeren</value>
+  </data>
+  <data name="DeploymentMethod" xml:space="preserve">
+    <value>Implementatiemethode</value>
+  </data>
+  <data name="DeploymentStartAfterUpdateExpiry" xml:space="preserve">
+    <value>Begintijd van implementatie mag niet na de vervaldatum van de update vallen.</value>
+  </data>
+  <data name="DeploymentStartTime" xml:space="preserve">
+    <value>Begindatum implementatie</value>
+  </data>
+  <data name="DescriptionofQRCodeEnrollment" xml:space="preserve">
+    <value>Op Android-toestellen met versie 7.0+, wordt na een factory reset Inschrijven met QR-code gestart op het Android-welkomstscherm door ergens op het scherm 6 keer te tikken. Afhankelijk van het gebruikte toestel kan een prompt worden getoond om verbinding te maken met een wifi-netwerk alvorens de QR-code te scannen.</value>
+  </data>
+  <data name="DestinationPath" xml:space="preserve">
+    <value>Bestemmingspad</value>
+  </data>
+  <data name="DeviceAlreadyLocked" xml:space="preserve">
+    <value>Het apparaat is al vergrendeld.</value>
+  </data>
+  <data name="DeviceBatchSizeHelp" xml:space="preserve">
+    <value>Aantal toestellen waarop de Beleidsengine invloed heeft.</value>
+  </data>
+  <data name="DeviceBulkManagementForceBiosPasswordReset" xml:space="preserve">
+    <value>Gedwongen BIOS-wachtwoordreset bij apparaatbeheer in bulk</value>
+  </data>
+  <data name="DeviceBulkManagementForceBiosPasswordResetHelp" xml:space="preserve">
+    <value>Gebruiker toestaan om in bulk BIOS-wachtwoorden op apparaten te resetten</value>
+  </data>
+  <data name="DeviceCapability" xml:space="preserve">
+    <value>Functionaliteit apparaat</value>
+  </data>
+  <data name="DeviceCICOCheckIn" xml:space="preserve">
+    <value>CICO check-in toestel</value>
+  </data>
+  <data name="DeviceCICOCheckInHelp" xml:space="preserve">
+    <value>Geeft toestemming om een toestel terug in te checken naar de multi-staging-gebruiker vanaf de Console</value>
+  </data>
+  <data name="DeviceDeferralDate" xml:space="preserve">
+    <value>Uitgestelde datum</value>
+  </data>
+  <data name="DeviceDenylist" xml:space="preserve">
+    <value>Actie voor de weigeringslijst van het toestel</value>
+  </data>
+  <data name="DeviceDetailsApplicationSdkAppComplianceBanner" xml:space="preserve">
+    <value>Conformiteit van de SDK-app is laatst gemeld door {0}. U kunt in de lijst hieronder naar de app navigeren voor meer informatie.</value>
+    <comment>{0} will be replaced by a ApplicationName (Application Bundle Identifier).</comment>
+  </data>
+  <data name="DeviceDetailsComplianceSdkAppComplianceBanner" xml:space="preserve">
+    <value>Er zijn netwerkbeleidsregels voor de SDK-app toegewezen aan dit toestel. Ga naar het tabblad Apps onder toestelgegevens om de status van de conformiteitsstatus van de SDK-app weer te geven.</value>
+  </data>
+  <data name="DeviceDetailsNumberOfApprovedUpdatesArg" xml:space="preserve">
+    <value>{0} nieuwe updates goedgekeurd</value>
+  </data>
+  <data name="DeviceDetailsNumberOfAvailableUpdatesArg" xml:space="preserve">
+    <value>{0} nieuwe updates beschikbaar</value>
+  </data>
+  <data name="DeviceDetailsNumberOfInstalledUpdatesArg" xml:space="preserve">
+    <value>{0} totaal geïnstalleerde updates</value>
+  </data>
+  <data name="DeviceDoesNotExistOrMightBeDeleted" xml:space="preserve">
+    <value>Toestel bestaat niet of is verwijderd.</value>
+  </data>
+  <data name="DeviceDomainJoinResourceCreationJob" xml:space="preserve">
+    <value>Toesteldomein samenvoegen - resource creëren-taak</value>
+  </data>
+  <data name="DeviceEnrolled" xml:space="preserve">
+    <value>Toestellen ingeschreven</value>
+  </data>
+  <data name="DeviceEnrollmentChartDescription" xml:space="preserve">
+    <value>{0}</value>
+  </data>
+  <data name="DeviceEnrollmentChartTitle" xml:space="preserve">
+    <value>Gestapeld staafdiagram voor toestelinschrijvingen. </value>
+  </data>
+  <data name="DeviceHasBeenOverriddenSuccessfully" xml:space="preserve">
+    <value>Commando verzonden</value>
+  </data>
+  <data name="DeviceListCannotBeEmpty" xml:space="preserve">
+    <value>Toestellijst kan niet leeg zijn.</value>
+  </data>
+  <data name="DeviceLocationGroupChangeFailed" xml:space="preserve">
+    <value>Wijziging van organisatiegroep van apparaat is mislukt. Controleer of de doelorganisatiegroep een groeps-ID heeft en zich op of onder de hiërarchie van de inschrijvingsorganisatiegroep bevindt.</value>
+  </data>
+  <data name="DeviceLogSourceToolTipText" xml:space="preserve">
+    <value>Selecteer Hub om logboeken te verzamelen die door de Workspace ONE Intelligent Hub zijn gegenereerd. Selecteer Systeem om een volledig systeemlogboek te verzamelen voor toestellen waarop een platform-OEM-Service is geïnstalleerd. Er wordt een bugrapport verzameld als het toestel Android for Work-beheerd is en Android 7.0 of hoger gebruikt. Er kan een systeemlogboek en een bugrapport worden verzameld als het toestel Android for Work-beheerd is en er een platform OEM-Service is geïnstalleerd.</value>
+  </data>
+  <data name="DeviceLogTypeToolTipText" xml:space="preserve">
+    <value>Selecteer "Momentopname" om de meest recente logboeken van de toestellen op te halen. Selecteer "Op tijd" om een continu logboek voor een bepaald tijdsbestek te verzamelen. U kunt meerdere logboeken naar Workspace ONE UEM sturen.</value>
+  </data>
+  <data name="DeviceNameMaxCharacters" xml:space="preserve">
+    <value>Toestelnaam mag maximaal 512 tekens bevatten</value>
+  </data>
+  <data name="DeviceNotFound" xml:space="preserve">
+    <value>Toestel is niet gevonden</value>
+  </data>
+  <data name="DeviceNotRegisteredForRemoteView" xml:space="preserve">
+    <value>Het toestel met UDID {0} is niet geregistreerd voor weergave op afstand. Klik op de knop Toestel registreren hieronder om het toestel te registreren.</value>
+  </data>
+  <data name="DeviceOfflineDomainJoinBlobCreationFailed" xml:space="preserve">
+    <value>Maken van BLOB voor offline domein samenvoegen mislukt</value>
+  </data>
+  <data name="DeviceOfflineDomainJoinFailed" xml:space="preserve">
+    <value>Offline samenvoegen van domein is mislukt</value>
+  </data>
+  <data name="DeviceOwnerEnrollmentMode" xml:space="preserve">
+    <value>Beheermodus voor bedrijfstoestellen</value>
+  </data>
+  <data name="DeviceOwnershipChartDescription" xml:space="preserve">
+    <value>{0}</value>
+  </data>
+  <data name="DeviceOwnershipChartTitle" xml:space="preserve">
+    <value>Gestapeld staafdiagram voor toesteleigendom. </value>
+  </data>
+  <data name="DevicePolicyJobAuditing" xml:space="preserve">
+    <value>Beleidstaak toestelcontrole</value>
+  </data>
+  <data name="DevicePolicyJobAuditingHelp" xml:space="preserve">
+    <value>Indien ingeschakeld, worden verwerkte producttaken opgeslagen in Beleidstaakcontrole</value>
+  </data>
+  <data name="DeviceReadiness" xml:space="preserve">
+    <value>Gereedheid van apparaat</value>
+  </data>
+  <data name="DeviceRegisteredForRemoteView" xml:space="preserve">
+    <value>Het toestel met UDID {0} is voor weergave op afstand geregistreerd.</value>
+  </data>
+  <data name="DeviceSavedSuccessfully" xml:space="preserve">
+    <value>Apparaat succesvol opgeslagen</value>
+  </data>
+  <data name="DeviceShutdownFailed" xml:space="preserve">
+    <value>Afsluiten van toestel mislukt</value>
+  </data>
+  <data name="DeviceShutdownSuccess" xml:space="preserve">
+    <value>Afsluiten van toestel geslaagd</value>
+  </data>
+  <data name="DevicesSeenInLastDay" xml:space="preserve">
+    <value>Toestellen gezien in afgelopen 24 uur</value>
+  </data>
+  <data name="DevicesSettings" xml:space="preserve">
+    <value>Toestelinstellingen</value>
+  </data>
+  <data name="DevicesStagingMenuTitle" xml:space="preserve">
+    <value>Voorbereide inrichting</value>
+  </data>
+  <data name="DeviceStateAndSearchHubConfigurationErrorMessage" xml:space="preserve">
+    <value>Kan geen gegevens ophalen omdat de onderliggende service offline is of niet is geconfigureerd</value>
+  </data>
+  <data name="DeviceSyncInitiated" xml:space="preserve">
+    <value>Toestelsynchronisatie is gestart</value>
+  </data>
+  <data name="DeviceTime" xml:space="preserve">
+    <value>Toesteltijd</value>
+  </data>
+  <data name="DeviceTimeWindowCardEmpty" xml:space="preserve">
+    <value>Geen beschikbare schema's.</value>
+  </data>
+  <data name="DeviceTimeWindowCardNote" xml:space="preserve">
+    <value>Toon de meest recente tijdvensters die op de console zijn geconfigureerd voor dit toestel.</value>
+  </data>
+  <data name="DeviceTimeWindowCardTitle" xml:space="preserve">
+    <value>Tijdvensters van vandaag</value>
+  </data>
+  <data name="DeviceUnenrollmentRequested" xml:space="preserve">
+    <value>Uitschrijving van toestel aangevraagd</value>
+  </data>
+  <data name="DeviceUpdateDeferralDate" xml:space="preserve">
+    <value>Uiterste uitsteldatum</value>
+  </data>
+  <data name="DeviceUpdateExpirationDate" xml:space="preserve">
+    <value>Vervaldatum</value>
+  </data>
+  <data name="DeviceUpdateInstallInProgress" xml:space="preserve">
+    <value>Bezig met installeren</value>
+  </data>
+  <data name="DeviceUpdateName" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="DeviceUpdatePublish" xml:space="preserve">
+    <value>Toestelupdate publiceren</value>
+  </data>
+  <data name="DeviceUpdateReasonTooltipInfo" xml:space="preserve">
+    <value>Alleen antwoorden van kwalificerende iOS-apparaten kunnen worden gefilterd.</value>
+  </data>
+  <data name="DeviceUpdateReleaseDate" xml:space="preserve">
+    <value>Releasedatum</value>
+  </data>
+  <data name="DeviceUpdates" xml:space="preserve">
+    <value>Toestelupdates</value>
+  </data>
+  <data name="DeviceUpdateStatus" xml:space="preserve">
+    <value>Status van de update</value>
+  </data>
+  <data name="DeviceUpdateType" xml:space="preserve">
+    <value>Type updaten</value>
+  </data>
+  <data name="DeviceUpdateUUIDNotFound" xml:space="preserve">
+    <value>Apparaat-update met opgegeven UUID is niet gevonden</value>
+  </data>
+  <data name="DeviceWipeDescription" xml:space="preserve">
+    <value>Toestel wissen verwijdert alle apps, gegevens, e-mail, profielen en MDM-mogelijkheden en het apparaat wordt teruggezet op de standaard fabrieksinstellingen. Dit geldt ook voor alle persoonlijke gebruikersgegevens, indien van toepassing. Deze actie kan niet ongedaan worden gemaakt. Ga voorzichtig verder.</value>
+  </data>
+  <data name="DeviceWipeDescriptionForMac" xml:space="preserve">
+    <value>Toestel wissen verwijdert alle apps, gegevens, e-mail, profielen en MDM-mogelijkheden en het macOS-besturingssysteem. Dit geldt ook voor alle persoonlijke gebruikersgegevens, indien van toepassing. Deze actie kan niet ongedaan worden gemaakt. Ga voorzichtig verder.</value>
+  </data>
+  <data name="DeviceWipeEmailNotification" xml:space="preserve">
+    <value>E-mailmelding voor toestel wissen</value>
+  </data>
+  <data name="DevUnlockCommand" xml:space="preserve">
+    <value>Toestelontgrendelingscommando</value>
+  </data>
+  <data name="DirectoryOrFilePathExample" xml:space="preserve">
+    <value>Voer directory of bestandspad in</value>
+  </data>
+  <data name="DisableActivationLock" xml:space="preserve">
+    <value>Activeringsvergrendeling uitschakelen</value>
+  </data>
+  <data name="DisableManagedApplication" xml:space="preserve">
+    <value>Beheerde applicatie uitschakelen</value>
+  </data>
+  <data name="DisallowProximitySetup" xml:space="preserve">
+    <value>Nabijheidsinstellingen niet toestaan</value>
+  </data>
+  <data name="DisallowProximitySetupTooltip" xml:space="preserve">
+    <value>Wanneer deze optie is ingeschakeld, wordt het scherm Nabijheidsinstellingen overgeslagen in de Configuratieassistent de volgende keer dat het toestel opnieuw opstart.</value>
+  </data>
+  <data name="DomainJoinConfigAssignmentCreated" xml:space="preserve">
+    <value>Configuratie toewijzing domein samenvoegen gemaakt</value>
+  </data>
+  <data name="DomainJoinConfigAssignmentDeleted" xml:space="preserve">
+    <value>Configuratie toewijzing domein samenvoegen verwijderd</value>
+  </data>
+  <data name="DomainJoinConfigAssignmentUpdated" xml:space="preserve">
+    <value>Configuratie toewijzing domein samenvoegen bijgewerkt</value>
+  </data>
+  <data name="DomainJoinConfigCreated" xml:space="preserve">
+    <value>Configuratie domein samenvoegen gemaakt</value>
+  </data>
+  <data name="DomainJoinConfigDeleted" xml:space="preserve">
+    <value>Configuratie domein samenvoegen verwijderd</value>
+  </data>
+  <data name="DomainJoinConfigUpdated" xml:space="preserve">
+    <value>Configuratie domein samenvoegen bijgewerkt</value>
+  </data>
+  <data name="DomainJoinConfigurationError" xml:space="preserve">
+    <value>Configuratiefout domein samenvoegen</value>
+  </data>
+  <data name="DomainJoinDescription" xml:space="preserve">
+    <value>Domein samenvoegen</value>
+  </data>
+  <data name="DownloadAndInstall" xml:space="preserve">
+    <value>Downloaden en installeren</value>
+  </data>
+  <data name="DownloadAndInstallDesc" xml:space="preserve">
+    <value>Update wordt gedownload en geïnstalleerd op apparaten</value>
+  </data>
+  <data name="DownloadAndInstallNow" xml:space="preserve">
+    <value>Nu downloaden en installeren</value>
+  </data>
+  <data name="DownloadInsufficientNetwork" xml:space="preserve">
+    <value>Onvoldoende netwerk voor download</value>
+  </data>
+  <data name="DownloadInsufficientPower" xml:space="preserve">
+    <value>Onvoldoende vermogen voor download</value>
+  </data>
+  <data name="DownloadInsufficientSpace" xml:space="preserve">
+    <value>Onvoldoende ruimte voor download</value>
+  </data>
+  <data name="DownloadNow" xml:space="preserve">
+    <value>Nu downloaden</value>
+  </data>
+  <data name="DownloadOnly" xml:space="preserve">
+    <value>Alleen downloaden</value>
+  </data>
+  <data name="DownloadOnlyDesc" xml:space="preserve">
+    <value>Update wordt alleen op apparaten gedownload</value>
+  </data>
+  <data name="DownloadRequiresComputer" xml:space="preserve">
+    <value>Download vereist computer</value>
+  </data>
+  <data name="Drive" xml:space="preserve">
+    <value>Station</value>
+  </data>
+  <data name="DriveLetter" xml:space="preserve">
+    <value>Stationsletter</value>
+  </data>
+  <data name="DropshipDeviceName" xml:space="preserve">
+    <value>Toestelnaam</value>
+  </data>
+  <data name="DropshipDeviceNameToolTip" xml:space="preserve">
+    <value>Door mensen leesbare toestelnaam</value>
+  </data>
+  <data name="DropshipModelNumber" xml:space="preserve">
+    <value>Modelnummer</value>
+  </data>
+  <data name="DropshipModelNumberToolTip" xml:space="preserve">
+    <value>OEM-toestelmodel</value>
+  </data>
+  <data name="DropshipOptional" xml:space="preserve">
+    <value>Optioneel</value>
+  </data>
+  <data name="DropshipOrganizationGroup" xml:space="preserve">
+    <value>Organisatiegroep</value>
+  </data>
+  <data name="DropshipOwnership" xml:space="preserve">
+    <value>Eigendomstype</value>
+  </data>
+  <data name="DropshipOwnershipToolTip" xml:space="preserve">
+    <value>Bedrijf/BYOD</value>
+  </data>
+  <data name="DropShipProvisioningMenuTitle" xml:space="preserve">
+    <value>Drop Ship Provisioning</value>
+  </data>
+  <data name="DropshipSerialNumber" xml:space="preserve">
+    <value>Serienummer</value>
+  </data>
+  <data name="DropshipSerialNumberToolTip" xml:space="preserve">
+    <value>Door OEM verstrekt serienummer van toestel</value>
+  </data>
+  <data name="DropshipSyncDeviceSuccessful" xml:space="preserve">
+    <value>Synchroniseren van toestellen geslaagd</value>
+  </data>
+  <data name="DropshipSyncDeviceUnsuccessful" xml:space="preserve">
+    <value>Kan synchroniseren momenteel niet initialiseren</value>
+  </data>
+  <data name="DropshipTag" xml:space="preserve">
+    <value>Label</value>
+  </data>
+  <data name="DropshipTagToolTip" xml:space="preserve">
+    <value>Drop Ship-label om toestellen logisch te groeperen</value>
+  </data>
+  <data name="DynamicActionFailed" xml:space="preserve">
+    <value>Het systeem kan geen commando naar het toestel verzenden. De verbinding is niet beschikbaar of er is een fout op het toestel.</value>
+  </data>
+  <data name="EasSample" xml:space="preserve">
+    <value>EAS-steekproef</value>
+  </data>
+  <data name="EditDeviceArgOpensDialog" xml:space="preserve">
+    <value>Toestel {0} bewerken opent dialoogvenster</value>
+    <comment>The placeholder in this label key contains device friendly name.</comment>
+  </data>
+  <data name="EditTimeWindow" xml:space="preserve">
+    <value>Tijdvenster bewerken</value>
+  </data>
+  <data name="EfotaCancelScheduleMessage" xml:space="preserve">
+    <value>Toestellen ontvangen deze update niet meer vanaf dit punt. Eerdere updates in deze planning kunnen niet worden ingetrokken. Wilt u deze geplande update annuleren?</value>
+  </data>
+  <data name="EfotaDeliveryMethod" xml:space="preserve">
+    <value>Installatiemethode</value>
+  </data>
+  <data name="EfotaInstallOnDemandPublishMessage" xml:space="preserve">
+    <value>Gebruikers wordt gevraagd de firmware-update te accepteren voordat deze op hun toestel wordt geïnstalleerd.</value>
+  </data>
+  <data name="Eligible" xml:space="preserve">
+    <value>Gerechtigd</value>
+  </data>
+  <data name="EligibleHoverText" xml:space="preserve">
+    <value>Gerechtigd
+Omvat alle ondersteunde apparaten, DEP-apparaten en appraten onder supervisie                                                                                          </value>
+  </data>
+  <data name="EnableActivationLock" xml:space="preserve">
+    <value>Activeringsvergrendeling inschakelen</value>
+  </data>
+  <data name="EnableManagedApplication" xml:space="preserve">
+    <value>Beheerde applicatie inschakelen</value>
+  </data>
+  <data name="EndDateLessThanStartDate" xml:space="preserve">
+    <value>Begindatum/-tijd mag niet later zijn dan geplande einddatum/-tijd.</value>
+  </data>
+  <data name="EndDateSameAsStartDate" xml:space="preserve">
+    <value>Begindatum/-tijd en einddatum/-tijd mag niet hetzelfde zijn.</value>
+  </data>
+  <data name="EndUserWipeMessage" xml:space="preserve">
+    <value>Bericht voor eindgebruiker over wissen van Android-werkprofiel</value>
+  </data>
+  <data name="EnrollmentConfigurationWizard" xml:space="preserve">
+    <value>Inschrijvingsconfiguratiewizard</value>
+  </data>
+  <data name="EnrollmentDetail" xml:space="preserve">
+    <value>Inschrijvingsgegevens</value>
+  </data>
+  <data name="EnrollmentID" xml:space="preserve">
+    <value>ID voor inschrijving</value>
+  </data>
+  <data name="EnterAssignmentName" xml:space="preserve">
+    <value>Voer de toewijzingsnaam in</value>
+  </data>
+  <data name="EnterDeviceName" xml:space="preserve">
+    <value>Voer de toestelnaam in</value>
+  </data>
+  <data name="EnterModelNumber" xml:space="preserve">
+    <value>Voer het modelnummer in</value>
+  </data>
+  <data name="EnterpriseWipeWarningAADDevices" xml:space="preserve">
+    <value>Voor Azure Active Directory-toestellen moet u ervoor zorgen dat er een lokale beheerdersaccount bestaat voordat u het commando voor bedrijfsgegevens wissen uitvoert, omdat hierdoor het Azure AD-account wordt verwijderd. Als het lokale beheerdersaccount niet bestaat, moet het toestel worden hersteld naar de fabrieksinstellingen.</value>
+  </data>
+  <data name="EnterSerialNumber" xml:space="preserve">
+    <value>Voer het serienummer in</value>
+  </data>
+  <data name="EnvironmentVariables" xml:space="preserve">
+    <value>Omgevingsvariabelen</value>
+  </data>
+  <data name="ErrorGeneratingAppToken" xml:space="preserve">
+    <value>Fout bij het genereren van applicatietoken. Probeer het opnieuw.</value>
+  </data>
+  <data name="ErrorInitiatingDeviceSync" xml:space="preserve">
+    <value>Onbekende fout bij het initiëren van toestelsynchronisatie</value>
+  </data>
+  <data name="ErrorResolvingDeviceGroupArg" xml:space="preserve">
+    <value>Fout bij het omzetten van de apparaatgroep {0}</value>
+  </data>
+  <data name="ErrorWhileSendingEmailNotification" xml:space="preserve">
+    <value>Fout bij het verzenden van e-mailmelding. Probeer het opnieuw.</value>
+  </data>
+  <data name="EsimUrl" xml:space="preserve">
+    <value>eSIM-URL</value>
+  </data>
+  <data name="EsimUrlTooltip" xml:space="preserve">
+    <value>De eSIM-URL is de URL van de eSIM-server van de provider, waarmee het apparaat een aanvraag kan doen om het mobiele abonnement te vernieuwen.</value>
+  </data>
+  <data name="EveryArg" xml:space="preserve">
+    <value>Elke {0} {1} - {2} ({3})</value>
+    <comment>Placehoders: 0 - Days on which schedule is repeated, 1 - StartTime, 2 - EndTime, 3 - Duration.
+Example: Every Mon/Tue 11:00 PM - 4:30 AM (5 hours 30 mins)</comment>
+  </data>
+  <data name="EveryWeekdayArg" xml:space="preserve">
+    <value>Elke doordeweekse dag {0} - {1} ({2})</value>
+    <comment>Placehoders: 0 - StartTime, 1 - EndTime, 2 - Duration.
+Example: Every Weekday 11:00 PM - 4:30 AM (5 hours 30 mins)</comment>
+  </data>
+  <data name="ExecutionContext" xml:space="preserve">
+    <value>Uitvoeringscontext</value>
+  </data>
+  <data name="Existing" xml:space="preserve">
+    <value>Bestaand</value>
+  </data>
+  <data name="ExistingDeviceUpdatedInDeviceState" xml:space="preserve">
+    <value>Bestaand toestel is bijgewerkt in Toestelstatus</value>
+  </data>
+  <data name="Expires" xml:space="preserve">
+    <value>Vervalt</value>
+  </data>
+  <data name="ExportPPKGWindowsMoved" xml:space="preserve">
+    <value>Provisioningpakket exporteren</value>
+  </data>
+  <data name="ExportPPKGWindowsMovedMessage" xml:space="preserve">
+    <value>Met deze actie gaat u naar de sectie Voorbereide inrichting, waar u applicaties kunt exporteren om een provisioningpakket te maken. Wilt u doorgaan?</value>
+  </data>
+  <data name="ExtendedDeviceInventory" xml:space="preserve">
+    <value>Uitgebreide toestelinventaris</value>
+  </data>
+  <data name="ExternalBootStatusAllowed" xml:space="preserve">
+    <value>Status extern opstarten - toegestaan</value>
+  </data>
+  <data name="ExternalBootStatusDisallowed" xml:space="preserve">
+    <value>Status extern opstarten - niet toegestaan</value>
+  </data>
+  <data name="ExternalBootStatusNotSupported" xml:space="preserve">
+    <value>Status extern opstarten - niet ondersteund</value>
+  </data>
+  <data name="ExternalStorage" xml:space="preserve">
+    <value>Externe opslag</value>
+  </data>
+  <data name="FailedItemsBackOffTime" xml:space="preserve">
+    <value>Vrijgavetijd voor mislukte items</value>
+  </data>
+  <data name="FailedItemsMaxTryCount" xml:space="preserve">
+    <value>Maximum aantal pogingen voor mislukte Items</value>
+  </data>
+  <data name="FewSecondsAgo" xml:space="preserve">
+    <value>een paar seconden geleden</value>
+  </data>
+  <data name="FileActionNoNewFileEntities" xml:space="preserve">
+    <value>Geen nieuwe bestandsentiteiten gevonden.</value>
+  </data>
+  <data name="FilePathOnFileServerExample" xml:space="preserve">
+    <value>Voer bestandspad op de bestandsserver in</value>
+  </data>
+  <data name="FileServer" xml:space="preserve">
+    <value>Bestandsserver</value>
+  </data>
+  <data name="FileUploadInfoMessage" xml:space="preserve">
+    <value>Bestanden worden in dynamische gegenereerde onderliggende mappen geüpload op elk toegewezen toestel. Als meerdere uploadacties met dezelfde regels voor het toewijzen van bestemmingsmapnamen worden gebruikt, kunnen gelijknamige bestanden elkaar overschrijven. Het wordt aanbevolen een unieke naam te gebruiken.</value>
+  </data>
+  <data name="FindDeviceAlarmSoundMessage" xml:space="preserve">
+    <value>Het alarm klinkt met behulp van de geconfigureerde beltoon van het apparaat, die mogelijk continu wordt herhaald totdat het alarm is uitgeschakeld door op de melding op het apparaat te tikken.</value>
+  </data>
+  <data name="FirmwareUpdateDeploymentEndDateTime" xml:space="preserve">
+    <value>Einde implementatie</value>
+  </data>
+  <data name="FirmwareUpdateDeploymentStartDateTime" xml:space="preserve">
+    <value>Begin implementatie</value>
+  </data>
+  <data name="FolderNaming" xml:space="preserve">
+    <value>Mapnamen instellen</value>
+  </data>
+  <data name="FollowingAssignmentArgWillBeDeleted" xml:space="preserve">
+    <value>Weet u zeker dat u toewijzing "{0}" wilt verwijderen?</value>
+  </data>
+  <data name="FollowingDeploymentsWillBeDeleted" xml:space="preserve">
+    <value>Weet u zeker dat u deze toewijzing wilt verwijderen? Als u dit doet, voorkomt u dat apparaten deze update ophalen. Deze update wordt echter niet verwijderd van de apparaten die deze al hebben ontvangen.</value>
+  </data>
+  <data name="ForceAospDisabledPromtText" xml:space="preserve">
+    <value>Apparaat wordt ingeschreven op basis van het Work Managed-inschrijvingstype, dat is ingesteld in de Android-inschrijvingsinstellingen</value>
+  </data>
+  <data name="ForceAospEnabledPromtText" xml:space="preserve">
+    <value>Het apparaat wordt ingeschreven als AOSP/Gesloten netwerk, ongeacht het Work Managed-inschrijvingstype dat is ingesteld in de Android-inschrijvingsinstellingen</value>
+  </data>
+  <data name="ForceBiosPasswordReset" xml:space="preserve">
+    <value>Opnieuw instellen van BIOS-wachtwoord forceren</value>
+  </data>
+  <data name="ForceBiosPasswordResetFailure" xml:space="preserve">
+    <value>Opnieuw instellen BIOS-wachtwoord is mislukt.</value>
+  </data>
+  <data name="ForceBiosPasswordResetHelp" xml:space="preserve">
+    <value>Recht om BIOS-wachtwoordherstel te forceren op de pagina Toestelgegevens.</value>
+  </data>
+  <data name="ForceBiosPasswordResetMessage" xml:space="preserve">
+    <value>Deze actie wordt uitgevoerd wanneer het toestel incheckt bij Workspace ONE UEM. Het toestel moet het BIOS-profiel hebben en een compatibel, ondersteund toesteltype zijn. Voer uw beveiligingspincode in om door te gaan.</value>
+  </data>
+  <data name="ForceBiosPasswordResetRestricted" xml:space="preserve">
+    <value>Opnieuw instellen van BIOS-wachtwoord afdwingen</value>
+  </data>
+  <data name="ForceBiosPasswordResetSuccess" xml:space="preserve">
+    <value>Opnieuw instellen BIOS-wachtwoord is aangevraagd voor dit toestel.</value>
+  </data>
+  <data name="ForceDeviceReportAppConfigFeedbackSuccess" xml:space="preserve">
+    <value>Feedback aangevraagd. Het kan een paar minuten duren voordat nieuwe feedback beschikbaar is.</value>
+  </data>
+  <data name="ForceDeviceReportAppConfigFeedbackTitle" xml:space="preserve">
+    <value>Feedback over app-configuratie aanvragen</value>
+  </data>
+  <data name="ForceRequestFeedbackConfirmationMessage" xml:space="preserve">
+    <value>Nieuwe feedback voor apps, indien beschikbaar, wordt gemeld door het apparaat en kan worden bekeken in Apps en boeken &gt; Applicaties &gt; Details-weergave &gt; Toestel &gt; kolom Toegewezen configuratie of door hier op de app-naam te klikken en naar het tabblad Configuratie van de app te gaan.</value>
+  </data>
+  <data name="ForceRequestFeedbackConfirmationMessageSecond" xml:space="preserve">
+    <value>Deze aanvraag kan slechts 3 keer per dag worden verzonden. Weet u zeker dat u wilt aanvragen?</value>
+  </data>
+  <data name="ForceRequestFeedbackTitle" xml:space="preserve">
+    <value>Feedback over app-configuratie aanvragen</value>
+  </data>
+  <data name="FreshDeviceCreatedInDeviceState" xml:space="preserve">
+    <value>Nieuw toestel gemaakt in Toestelstatus</value>
+  </data>
+  <data name="GenerateNewCode" xml:space="preserve">
+    <value>Nieuwe code genereren</value>
+  </data>
+  <data name="GetSensor" xml:space="preserve">
+    <value>Get(Sensor)</value>
+  </data>
+  <data name="GoogleApiError" xml:space="preserve">
+    <value>Google API-uitzondering/fout.</value>
+  </data>
+  <data name="GooglePlayServiceDisable" xml:space="preserve">
+    <value>De geïnstalleerde versie van Google Play-services is uitgeschakeld op dit toestel</value>
+  </data>
+  <data name="GooglePlayServiceMissing" xml:space="preserve">
+    <value>Google Play-services ontbreekt op dit toestel</value>
+  </data>
+  <data name="GooglePlayServiceUpdateRequired" xml:space="preserve">
+    <value>De geïnstalleerde versie van Google Play-services is verouderd.</value>
+  </data>
+  <data name="GooglePlayServiceUpdating" xml:space="preserve">
+    <value>Google Play-service wordt momenteel op dit toestel bijgewerkt</value>
+  </data>
+  <data name="GoToAppleBusinessManager" xml:space="preserve">
+    <value>Apple Business Manager</value>
+  </data>
+  <data name="GoToWorkflowList" xml:space="preserve">
+    <value>Ga naar Werkstromen</value>
+  </data>
+  <data name="GPSDataCollectionNotEnabledForDeviceType" xml:space="preserve">
+    <value>Verzamelen van de locatiegegevens is niet ingeschakeld voor dit type toestel</value>
+  </data>
+  <data name="GracePeriodRecoveryKey" xml:space="preserve">
+    <value>Herstelsleutel voor respijtperiode</value>
+  </data>
+  <data name="HealthAttestationStatus" xml:space="preserve">
+    <value>Status gezondheidsattest</value>
+  </data>
+  <data name="HmacRecovery" xml:space="preserve">
+    <value>HMAC-herstel</value>
+  </data>
+  <data name="HostedOnAnExternalURL" xml:space="preserve">
+    <value>Gehost op een externe URL</value>
+  </data>
+  <data name="HourAgo" xml:space="preserve">
+    <value>een uur geleden</value>
+  </data>
+  <data name="HubEnrollmentUrl" xml:space="preserve">
+    <value>Inschrijvings-URL voor de Hub</value>
+  </data>
+  <data name="HubRepair" xml:space="preserve">
+    <value>Hub herstellen</value>
+  </data>
+  <data name="HumanReadableName" xml:space="preserve">
+    <value>Gemelde update</value>
+  </data>
+  <data name="Idle" xml:space="preserve">
+    <value>Inactief</value>
+  </data>
+  <data name="IGEL_THIN_CLIENT" xml:space="preserve">
+    <value>IGEL OS</value>
+  </data>
+  <data name="IMSI" xml:space="preserve">
+    <value>IMSI</value>
+  </data>
+  <data name="IncorrectFilter" xml:space="preserve">
+    <value>Onjuist filter</value>
+  </data>
+  <data name="InstallComplete" xml:space="preserve">
+    <value>Installatie voltooid</value>
+  </data>
+  <data name="InstallEventAction" xml:space="preserve">
+    <value>Gebeurtenisactie instellen</value>
+  </data>
+  <data name="InstallInsufficientPower" xml:space="preserve">
+    <value>Onvoldoende vermogen voor installatie</value>
+  </data>
+  <data name="InstallInsufficientSpace" xml:space="preserve">
+    <value>Onvoldoende ruimte voor installatie</value>
+  </data>
+  <data name="InstallNow" xml:space="preserve">
+    <value>Nu installeren</value>
+  </data>
+  <data name="InstallOnDemand" xml:space="preserve">
+    <value>On-demand installeren</value>
+  </data>
+  <data name="InstallOnly" xml:space="preserve">
+    <value>Alleen installeren</value>
+  </data>
+  <data name="InstallOnlyDesc" xml:space="preserve">
+    <value>Reeds gedownloade updates worden geïnstalleerd op apparaten</value>
+  </data>
+  <data name="InstallPackage" xml:space="preserve">
+    <value>Pakket installeren</value>
+  </data>
+  <data name="InstallPhoneCallInProgress" xml:space="preserve">
+    <value>Bezig met installeren telefoongesprek</value>
+  </data>
+  <data name="InternalStorage" xml:space="preserve">
+    <value>Interne opslag</value>
+  </data>
+  <data name="Interrogator" xml:space="preserve">
+    <value>Interrogator</value>
+  </data>
+  <data name="InterrogatorIntervalRequired" xml:space="preserve">
+    <value>Interrogator-interval vereist</value>
+  </data>
+  <data name="InterrogatorIntervalSeconds" xml:space="preserve">
+    <value>Interrogator-interval (sec)</value>
+  </data>
+  <data name="InterrogatorPort" xml:space="preserve">
+    <value>Interrigator-poort</value>
+  </data>
+  <data name="InterrogatorQueueService" xml:space="preserve">
+    <value>AirWatch Interrogator-wachtrijmonitor</value>
+  </data>
+  <data name="InterrogatorService" xml:space="preserve">
+    <value>AirWatch Interrogator-server</value>
+  </data>
+  <data name="InterrogatorSettings" xml:space="preserve">
+    <value>Interrogator-instellingen</value>
+  </data>
+  <data name="InvalidGooglePlayService" xml:space="preserve">
+    <value>De versie van de Google Play-services op dit toestel is niet authentiek</value>
+  </data>
+  <data name="InvalidGroupIdentifier" xml:space="preserve">
+    <value>De geselecteerde organisatiegroep heeft geen geldige groeps-ID.</value>
+  </data>
+  <data name="InvalidPeriodEnd" xml:space="preserve">
+    <value>Ongeldige eindwaarde</value>
+  </data>
+  <data name="InvalidSuspendBitLockerRebootCount" xml:space="preserve">
+    <value>Aantal keer opnieuw opstarten moet tussen 1 en 15 liggen.</value>
+  </data>
+  <data name="InvalidTargetedLoggingFilterFormat" xml:space="preserve">
+    <value>Ongeldige indeling voor filter Gerichte logboekregistratie</value>
+  </data>
+  <data name="IosCodeSigningChecks" xml:space="preserve">
+    <value>Verificatie op ondertekening van systeemcode is uitgeschakeld.</value>
+  </data>
+  <data name="IosDebugChecks" xml:space="preserve">
+    <value>Er vindt momenteel foutopsporing plaats in de app.</value>
+  </data>
+  <data name="IosDisallowedOperationChecks" xml:space="preserve">
+    <value>De integriteit van dit toestel is verdacht.</value>
+  </data>
+  <data name="IosEnvironmentChecks" xml:space="preserve">
+    <value>De applicatie wordt uitgevoerd in een omgeving die niet wordt beheerd door de toestelleverancier.</value>
+  </data>
+  <data name="IosMountCheck" xml:space="preserve">
+    <value>Het toestel bevat mogelijk gevaarlijke en/of verdachte koppelingen.</value>
+  </data>
+  <data name="Iospost103managementcapabilityunavailable" xml:space="preserve">
+    <value>Er is geen toezicht op dit apparaat. U kunt geen acties uitvoeren op de updates.</value>
+  </data>
+  <data name="Iospre103managementcapabilityunavailable" xml:space="preserve">
+    <value>Dit apparaat is niet ingeschreven bij DEP en heeft geen toezicht. U kunt geen acties uitvoeren op de updates.</value>
+  </data>
+  <data name="IosProhibitedFileExistenceChecks" xml:space="preserve">
+    <value>De applicatie bevat of gebruikt niet-toegestane bibliotheken.</value>
+  </data>
+  <data name="IosQueryStatusTooltip" xml:space="preserve">
+    <value>De status van updates voor dit toestel opvragen. Alleen updates die door Workspace ONE zijn gepland, kunnen worden opgevraagd.</value>
+  </data>
+  <data name="IosUpdateDeviceCountWarning" xml:space="preserve">
+    <value>U staat op het punt een iOS-updateverzoek naar {0} toestel(len) te verzenden. Deze aanvraag wordt alleen verzonden naar iOS 10.3 + toestellen als deze onder supervisie staan en naar iOS 9+ toestellen als deze onder supervisie staan en in DEP zijn ingeschreven.</value>
+  </data>
+  <data name="iPad7" xml:space="preserve">
+    <value>iPad 7e generatie</value>
+  </data>
+  <data name="iPadMini4" xml:space="preserve">
+    <value>iPad Mini 4</value>
+  </data>
+  <data name="iPadPro11inch2" xml:space="preserve">
+    <value>iPad Pro 11-inch 2e generatie</value>
+  </data>
+  <data name="iPadPro12.9inch4" xml:space="preserve">
+    <value>iPad Pro 12,9-inch 4e generatie</value>
+  </data>
+  <data name="iPhone11" xml:space="preserve">
+    <value>iPhone 11</value>
+  </data>
+  <data name="iPhone11Pro" xml:space="preserve">
+    <value>iPhone 11 Pro</value>
+  </data>
+  <data name="iPhone11ProMax" xml:space="preserve">
+    <value>iPhone 11 Pro Max</value>
+  </data>
+  <data name="iPhoneSE2" xml:space="preserve">
+    <value>iPhone SE 2e generatie</value>
+  </data>
+  <data name="iPhoneX" xml:space="preserve">
+    <value>iPhone X</value>
+  </data>
+  <data name="iPhoneXʀ" xml:space="preserve">
+    <value>iPhone Xʀ</value>
+  </data>
+  <data name="iPhoneXs" xml:space="preserve">
+    <value>iPhone Xs</value>
+  </data>
+  <data name="iPhoneXsMax" xml:space="preserve">
+    <value>iPhone Xs Max</value>
+  </data>
+  <data name="IsDataPreferred" xml:space="preserve">
+    <value>Heeft voorkeur voor gegevens</value>
+  </data>
+  <data name="IsNotEnabledSIP" xml:space="preserve">
+    <value>Is uitgeschakeld</value>
+  </data>
+  <data name="IsSecurityPatchUpdate" xml:space="preserve">
+    <value>Beveiligingsupdate?</value>
+  </data>
+  <data name="IsVoicePreferred" xml:space="preserve">
+    <value>Heeft voorkeur voor spraak</value>
+  </data>
+  <data name="KeepAppsOnDevice" xml:space="preserve">
+    <value>Applicaties op toestel bewaren</value>
+  </data>
+  <data name="KeyCopied" xml:space="preserve">
+    <value>Sleutel gekopieerd</value>
+  </data>
+  <data name="KeyRotationRequestFailed" xml:space="preserve">
+    <value>Kan op dit moment geen sleutelrotatie voor {0} aanvragen.</value>
+  </data>
+  <data name="KeyRotationSuccessfullyRequested" xml:space="preserve">
+    <value>Sleutelrotatie is aangevraagd voor {0}.</value>
+  </data>
+  <data name="KeyShouldNotBeEmpty" xml:space="preserve">
+    <value>Sleutel mag niet leeg zijn</value>
+  </data>
+  <data name="LastApplied" xml:space="preserve">
+    <value>Laatst toegepast</value>
+  </data>
+  <data name="LastAppliedPassword" xml:space="preserve">
+    <value>Meest recente wachtwoord toegepast</value>
+  </data>
+  <data name="LastAppliedPasswordTooltip" xml:space="preserve">
+    <value>Dit is het laatste BIOS-wachtwoord waarvan is bevestigd dat het voor dit toestel is toegepast.</value>
+  </data>
+  <data name="LastLoggedInTime" xml:space="preserve">
+    <value>Tijdstip laatste keer ingelogd</value>
+  </data>
+  <data name="LastReboot" xml:space="preserve">
+    <value>Laatste keer opnieuw opgestart</value>
+  </data>
+  <data name="LastSeenBreakdownChartDescription" xml:space="preserve">
+    <value>{0}</value>
+  </data>
+  <data name="LastSeenBreakdownChartTitle" xml:space="preserve">
+    <value>Staafdiagram uitsplitsing laatst gezien. </value>
+  </data>
+  <data name="LastSeenDays" xml:space="preserve">
+    <value>Laatst gezien (dagen)</value>
+  </data>
+  <data name="LastSeenOverviewChartDescription" xml:space="preserve">
+    <value> {0} apparaten worden in de laatste 24 uur weergegeven. {1} apparaten voor het laatst weergegeven.</value>
+  </data>
+  <data name="LastSeenOverviewChartTitle" xml:space="preserve">
+    <value>Laatst gezien - overzicht </value>
+  </data>
+  <data name="LastSevenDays" xml:space="preserve">
+    <value>Afgelopen zeven dagen</value>
+  </data>
+  <data name="LastSixMonths" xml:space="preserve">
+    <value>Afgelopen zes maanden</value>
+  </data>
+  <data name="LastSubmittedPassword" xml:space="preserve">
+    <value>Meest recente wachtwoord verzonden</value>
+  </data>
+  <data name="LastSubmittedPasswordTooltip" xml:space="preserve">
+    <value>Dit is het laatste BIOS-wachtwoord dat bij het toestel is ingediend als een update tijdens automatische of geplande rotatie, of tijdens de afgedwongen update. Als er geen aanvraag voor een update van het wachtwoord is verzonden, wordt 'Geen' weergegeven.</value>
+  </data>
+  <data name="LastSuccessfulScan" xml:space="preserve">
+    <value>Laatste geslaagde scan</value>
+  </data>
+  <data name="LastSuccessfulSync" xml:space="preserve">
+    <value>Laatste geslaagde synchronisatie</value>
+  </data>
+  <data name="LastThirtyDays" xml:space="preserve">
+    <value>Afgelopen dertig dagen</value>
+  </data>
+  <data name="LastUsername" xml:space="preserve">
+    <value>Laatste gebruikersnaam</value>
+  </data>
+  <data name="LatestAgent" xml:space="preserve">
+    <value>Nieuwste Hub</value>
+  </data>
+  <data name="LatestAvailableOsUpdate" xml:space="preserve">
+    <value>Nieuwste beschikbare OS-update</value>
+  </data>
+  <data name="LauncherImageWarningMessage" xml:space="preserve">
+    <value>AirWatch Agent 8.2 of hoger, Workspace ONE Intelligent Hub 9.0 of hoger en AirWatch Launcher 3.4 of hoger zijn vereist om beelden van hoge kwaliteit te implementeren.</value>
+  </data>
+  <data name="LicensedUntil" xml:space="preserve">
+    <value>Licentie tot {0}</value>
+  </data>
+  <data name="LicenseSample" xml:space="preserve">
+    <value>Licentievoorbeeld</value>
+  </data>
+  <data name="LocationDataHasNotBeenReceived" xml:space="preserve">
+    <value>Locatiegegevens zijn niet ontvangen</value>
+  </data>
+  <data name="LogoutUserConfirmation" xml:space="preserve">
+    <value>Weet u zeker dat u de momenteel ingelogde gebruiker op het toestel wilt uitloggen?</value>
+  </data>
+  <data name="LostMessage" xml:space="preserve">
+    <value>Verloren bericht</value>
+  </data>
+  <data name="LostMessageTooltip" xml:space="preserve">
+    <value>Verloren bericht dat wordt weergegeven op het toestel.</value>
+  </data>
+  <data name="LostModeDisabledMessage" xml:space="preserve">
+    <value>Verloren-modus is uitgeschakeld.</value>
+  </data>
+  <data name="LostModeDisableFailedMessage" xml:space="preserve">
+    <value>Kan Verloren-modus niet uitschakelen. Probeer het opnieuw.</value>
+  </data>
+  <data name="LostModeEnabledMessage" xml:space="preserve">
+    <value>Verloren-modus is ingeschakeld.</value>
+  </data>
+  <data name="LostModeEnableFailedMessage" xml:space="preserve">
+    <value>Kan Verloren-modus niet inschakelen. Probeer het opnieuw.</value>
+  </data>
+  <data name="LTE" xml:space="preserve">
+    <value>LTE</value>
+    <comment>Cellular technology</comment>
+  </data>
+  <data name="MacOsDeviceLogLevelInfo" xml:space="preserve">
+    <value>Kies het logboekregistratieniveau voor de gegevens die u wilt verzamelen. Selecteer Info voor standaardregistratie en -verzameling. Selecteer Foutenopsporing voor uitgebreide registratie en aanvullende gegevensverzameling.</value>
+  </data>
+  <data name="MacOsHostName" xml:space="preserve">
+    <value>Hostnaam</value>
+  </data>
+  <data name="MacOsLocalHostName" xml:space="preserve">
+    <value>Naam van lokale host</value>
+  </data>
+  <data name="MacOsRequestDeviceLogSettingsInformation" xml:space="preserve">
+    <value>Pas hieronder uw logboekregistratieaanvraag aan. Ga naar Toestelinformatie &amp;gt; Meer &amp;gt; Bijlagen &amp;gt; Documenten om de logboeken te bekijken </value>
+  </data>
+  <data name="MacOsViewLocalAdminPassword" xml:space="preserve">
+    <value>Beheerderswachtwoord bekijken</value>
+  </data>
+  <data name="MaintenanceHours" xml:space="preserve">
+    <value>Onderhoudsuren</value>
+  </data>
+  <data name="ManageAssignments" xml:space="preserve">
+    <value>Toewijzingen beheren</value>
+  </data>
+  <data name="ManagedAdminPasswordAccessed" xml:space="preserve">
+    <value>Wachtwoord voor beheerde admingebruiker geraadpleegd</value>
+  </data>
+  <data name="ManagedAdminPasswordRotationInformation" xml:space="preserve">
+    <value>Om veiligheidsredenen zal een commando voor het roteren van dit wachtwoord binnen 8 uur worden geplaatst</value>
+  </data>
+  <data name="ManagedAdminStaticPasswordRotationInformation" xml:space="preserve">
+    <value>Willekeurig beheerderswachtwoord is niet ingeschakeld voor het gebruikte toestelinschrijvingsprofiel. Dit wachtwoord wordt niet geroteerd</value>
+  </data>
+  <data name="ManagedAdminUser" xml:space="preserve">
+    <value>Beheerde admingebruiker</value>
+  </data>
+  <data name="ManagedApplicationAttributesConfirmed" xml:space="preserve">
+    <value>Eigenschappen van beheerde applicatie bevestigd</value>
+  </data>
+  <data name="ManagedApplicationAttributesFailed" xml:space="preserve">
+    <value>Eigenschappen van beheerde applicatie mislukt</value>
+  </data>
+  <data name="ManagedApplicationAttributesRefused" xml:space="preserve">
+    <value>Eigenschappen van beheerde applicatie geweigerd</value>
+  </data>
+  <data name="ManagedApplicationAttributesRequested" xml:space="preserve">
+    <value>Eigenschappen van beheerde applicatie aangevraagd</value>
+  </data>
+  <data name="ManageTags" xml:space="preserve">
+    <value>Labels beheren</value>
+  </data>
+  <data name="ManageUpdate" xml:space="preserve">
+    <value>Update beheren</value>
+  </data>
+  <data name="MaxArgCharacters" xml:space="preserve">
+    <value>Max. {0} tekens</value>
+  </data>
+  <data name="MEID" xml:space="preserve">
+    <value>MEID</value>
+  </data>
+  <data name="MemorySize" xml:space="preserve">
+    <value>Geheugengrootte</value>
+  </data>
+  <data name="MinOrMaxCannotBeLessThanZero" xml:space="preserve">
+    <value>Minimale of maximale waarde kan niet lager zijn dan 0.</value>
+  </data>
+  <data name="MinuteAgo" xml:space="preserve">
+    <value>een minuut geleden</value>
+  </data>
+  <data name="MinValCannotBeGreaterThanMaxVal" xml:space="preserve">
+    <value>De minimale waarde kan niet groter zijn dan de maximale waarde.</value>
+  </data>
+  <data name="ModelDetailSearchHelpText" xml:space="preserve">
+    <value>Typ om model te zoeken</value>
+  </data>
+  <data name="ModelNotSupported" xml:space="preserve">
+    <value>Model niet ondersteund</value>
+  </data>
+  <data name="ModelNumberMaxCharacters" xml:space="preserve">
+    <value>Modelnummer mag maximaal 500 tekens bevatten</value>
+  </data>
+  <data name="MonitorFilter" xml:space="preserve">
+    <value>Monitorfilter</value>
+  </data>
+  <data name="MonitorIdentifier" xml:space="preserve">
+    <value>Monitor-ID</value>
+  </data>
+  <data name="MultiuserDeviceRegistrationNotAllowed" xml:space="preserve">
+    <value>Registratie van toestel voor meerdere gebruikers is niet toegestaan.</value>
+  </data>
+  <data name="NavigateToNextDevice" xml:space="preserve">
+    <value>Toestelgegevens Pijl volgende</value>
+  </data>
+  <data name="NavigateToPreviousDevice" xml:space="preserve">
+    <value>Toestelgegevens Pijl vorige</value>
+  </data>
+  <data name="NetworkErrorOccurredPleaseRefresh" xml:space="preserve">
+    <value>Er is een netwerkverbindingsfout opgetreden. Vernieuw de browser en probeer het opnieuw.</value>
+  </data>
+  <data name="NewAssignment" xml:space="preserve">
+    <value>Nieuwe toewijzing</value>
+  </data>
+  <data name="NewFileServer" xml:space="preserve">
+    <value>Nieuwe bestandsserver</value>
+  </data>
+  <data name="NewRoutine" xml:space="preserve">
+    <value>Nieuw schema</value>
+  </data>
+  <data name="NewScript" xml:space="preserve">
+    <value>Nieuw script</value>
+  </data>
+  <data name="NewTimeWindow" xml:space="preserve">
+    <value>Nieuw tijdvenster</value>
+  </data>
+  <data name="NextReTry" xml:space="preserve">
+    <value>Volgende nieuwe poging</value>
+  </data>
+  <data name="NextSevenDays" xml:space="preserve">
+    <value>Volgende zeven dagen</value>
+  </data>
+  <data name="NextSixMonths" xml:space="preserve">
+    <value>Volgende zes maanden</value>
+  </data>
+  <data name="NextThirtyDays" xml:space="preserve">
+    <value>Volgende dertig dagen</value>
+  </data>
+  <data name="NextThreeMonths" xml:space="preserve">
+    <value>Volgende drie maanden</value>
+  </data>
+  <data name="NoAssignedTagsFound" xml:space="preserve">
+    <value>Geen toegewezen labels gevonden</value>
+  </data>
+  <data name="NoAssignmentsFound" xml:space="preserve">
+    <value>Geen toewijzingen gevonden</value>
+  </data>
+  <data name="NoAvailableTagsFound" xml:space="preserve">
+    <value>Geen beschikbare labels gevonden</value>
+  </data>
+  <data name="NoDeploymentFound" xml:space="preserve">
+    <value>Geen implementatie gevonden voor toestelupdate onder huidige organisatiegroep .</value>
+  </data>
+  <data name="NoDeviceUpdatesMsg" xml:space="preserve">
+    <value>Er zijn geen toestelupdates beschikbaar</value>
+  </data>
+  <data name="NoGroupIdAtEnrollmentOg" xml:space="preserve">
+    <value>Inschrijvings-OG heeft geen groeps-ID</value>
+  </data>
+  <data name="NonceError" xml:space="preserve">
+    <value>Nonce-generatiefout.</value>
+  </data>
+  <data name="NoPasscodeDevicesChartDescription" xml:space="preserve">
+    <value>{0} apparaten zonder wachtwoord. In totaal {1} apparaten zonder wachtwoord.</value>
+  </data>
+  <data name="NoPasscodeDevicesChartTitle" xml:space="preserve">
+    <value>Ringdiagram van apparaten zonder wachtwoord. </value>
+  </data>
+  <data name="NoRemovableDrivesInOG" xml:space="preserve">
+    <value>Er zijn geen verwisselbare stations beschikbaar</value>
+  </data>
+  <data name="NoSafetyNetScanData" xml:space="preserve">
+    <value>Geen eerdere scangegevens</value>
+  </data>
+  <data name="NoSmartGroupsFound" xml:space="preserve">
+    <value>Geen Smart group gevonden</value>
+  </data>
+  <data name="NotDepOrSupervised" xml:space="preserve">
+    <value>Niet DEP of Onder supervisie</value>
+  </data>
+  <data name="NoteKeepAppsOnDevice" xml:space="preserve">
+    <value>De voorbeeldweergave van toestellen kan worden gebruikt om toestellen te vinden die niet de vereiste versie van Intelligent Hub hebben om deze optie te ondersteunen. Zoek in dat geval op 'Niet ondersteund'.</value>
+  </data>
+  <data name="NotEligible" xml:space="preserve">
+    <value>Niet gerechtigd</value>
+  </data>
+  <data name="NotEligibleHoverText" xml:space="preserve">
+    <value>Niet gerechtigd
+Bevat alle apparaten met deze of een hogere versie en die niet worden ondersteund, niet onder supervisie staan of niet DEP zijn</value>
+  </data>
+  <data name="NotEncryptedDevicesChartDescription" xml:space="preserve">
+    <value>{0} apparaten zonder versleuteling. In totaal {1} apparaten zonder versleuteling</value>
+  </data>
+  <data name="NotEncryptedDevicesChartTitle" xml:space="preserve">
+    <value>Ringdiagram van apparaten zonder versleuteling.</value>
+  </data>
+  <data name="NotificationForDownloadSuccess" xml:space="preserve">
+    <value>Melding voor geslaagde download</value>
+  </data>
+  <data name="NotificationForInstallSuccess" xml:space="preserve">
+    <value>Melding voor geslaagde installatie</value>
+  </data>
+  <data name="NotificationType" xml:space="preserve">
+    <value>Meldingstype</value>
+  </data>
+  <data name="NotifyVidmConfigChange" xml:space="preserve">
+    <value>Configuratiewijziging Workspace ONE Access melden</value>
+  </data>
+  <data name="NumberOfReboots" xml:space="preserve">
+    <value>Aantal herstarts</value>
+  </data>
+  <data name="OemUpdateSampleProcessorJob" xml:space="preserve">
+    <value>OemUpdate-overzichtsverwerkingstaak</value>
+  </data>
+  <data name="OfflineDomainJoin" xml:space="preserve">
+    <value>Offline domein samenvoegen</value>
+  </data>
+  <data name="OneTime" xml:space="preserve">
+    <value>Eenmalig</value>
+  </data>
+  <data name="OneTimeOnly" xml:space="preserve">
+    <value>Eenmalig</value>
+  </data>
+  <data name="OneTimeOnlyArg" xml:space="preserve">
+    <value>Eenmalig {0} - {1} ({2})</value>
+    <comment>Placehoders: 0 - StartTime, 1 - EndTime, 2 - Duration.
+Example: One Time Only 11:00 PM - 4:30 AM (5 hours 30 mins)</comment>
+  </data>
+  <data name="OneTimeTitleArg" xml:space="preserve">
+    <value>{0} - {1} ({2})</value>
+    <comment>Placehoders: 0 - StartTime, 1 - EndTime, 2 - Duration.
+Example: 11:00 PM - 4:30 AM (5 hours 30 mins)</comment>
+  </data>
+  <data name="OnHigherVersion" xml:space="preserve">
+    <value>Op hogere versie</value>
+  </data>
+  <data name="OnHigherVersionHoverText" xml:space="preserve">
+    <value>Op hogere versie
+Bevat alle apparaten met een hogere versie, ongeacht of ze gerechtigd zijn </value>
+  </data>
+  <data name="OnThisVersion" xml:space="preserve">
+    <value>Op deze versie</value>
+  </data>
+  <data name="OnThisVersionHoverText" xml:space="preserve">
+    <value>Op deze versie
+Bevat alle apparaten met deze versie, ongeacht of ze gerechtigd zijn</value>
+  </data>
+  <data name="OpenWiFi" xml:space="preserve">
+    <value>Open Wi-Fi</value>
+  </data>
+  <data name="OperatingSystemBreakDownChartDescription" xml:space="preserve">
+    <value>{0} staafdiagram. {1}</value>
+  </data>
+  <data name="OperatingSystemBreakDownChartTitle" xml:space="preserve">
+    <value>Verschillende besturingssystemen </value>
+  </data>
+  <data name="OrganizationUnits" xml:space="preserve">
+    <value>Organisatie-eenheden</value>
+  </data>
+  <data name="OrganizationUnitsHelpMessage" xml:space="preserve">
+    <value>Volledige DN-naam van organisatie-eenheid (OU) waar computerobjecten moeten worden gemaakt</value>
+  </data>
+  <data name="OsUpdateEditAssignment" xml:space="preserve">
+    <value>Toewijzing bewerken</value>
+  </data>
+  <data name="OutOfDateState" xml:space="preserve">
+    <value>Verouderd</value>
+  </data>
+  <data name="OutOfDateStatus" xml:space="preserve">
+    <value>Verouderd</value>
+  </data>
+  <data name="OverrideDeviceUpdatesContentArg" xml:space="preserve">
+    <value>Met deze actie worden geplande toewijzingsopties voor dit toestel overschreven. Ook kan de eindgebruiker een onderbreking ondervinden als een installatiecommando wordt gepusht. Weet u zeker dat u wilt [{0}]?</value>
+  </data>
+  <data name="OverrideJobLogLevelConfirmation" xml:space="preserve">
+    <value>Bevestiging van overschrijven van taaklogboekniveau</value>
+  </data>
+  <data name="OverrideWarning" xml:space="preserve">
+    <value>Overschrijvingswaarschuwing</value>
+  </data>
+  <data name="OwnershipAndPlatformChangeNotAllowed" xml:space="preserve">
+    <value>Eigendoms- en platformwijzigingen zijn niet toegestaan.</value>
+  </data>
+  <data name="PasswordSetOn" xml:space="preserve">
+    <value>Wachtwoord ingesteld op</value>
+  </data>
+  <data name="Pause" xml:space="preserve">
+    <value>Pauzeren</value>
+  </data>
+  <data name="PausedSuccessfully" xml:space="preserve">
+    <value>Onderbreking geslaagd</value>
+  </data>
+  <data name="PauseUpdatesContent" xml:space="preserve">
+    <value>Onderbreken is niet van toepassing op apparaten waarvoor deze update al is gedownload. Hierdoor worden echter wel alle toegewezen toekomstige downloads van de update onderbroken. U kunt bestaande toewijzingen beheren, maar de wijzigingen worden pas van kracht als de update wordt hervat. Weet u zeker dat u de update wilt onderbreken?</value>
+  </data>
+  <data name="PendingSync" xml:space="preserve">
+    <value>Synchronisatie in behandeling</value>
+  </data>
+  <data name="PendingSystemUpdate" xml:space="preserve">
+    <value>Systeemupdate in behandeling</value>
+  </data>
+  <data name="PerAppVpnProfile" xml:space="preserve">
+    <value>VPN-profiel per app</value>
+  </data>
+  <data name="Periodically" xml:space="preserve">
+    <value>Periodiek</value>
+  </data>
+  <data name="PhoneNumberIsRequiredField" xml:space="preserve">
+    <value>Telefoonnummer is een verplicht veld</value>
+  </data>
+  <data name="PlatformsChartDescription" xml:space="preserve">
+    <value>{0}</value>
+  </data>
+  <data name="PlatformsChartTitle" xml:space="preserve">
+    <value>Staafdiagram van platformen. </value>
+  </data>
+  <data name="PlayAirPlayErrorMessage" xml:space="preserve">
+    <value>Er is een fout opgetreden bij het verbinden met AirPlay met dit toestel. Controleer uw instellingen en probeer het opnieuw.</value>
+  </data>
+  <data name="PleaseEnterValidIPAddress" xml:space="preserve">
+    <value>Voer een geldig IP-adres in</value>
+  </data>
+  <data name="PolicyEngineBackoffHelp" xml:space="preserve">
+    <value>Hoe vaak, in minuten, de Beleidsengine een item opnieuw zal proberen.</value>
+  </data>
+  <data name="PolicyEngineMaxTryCountHelp" xml:space="preserve">
+    <value>Het aantal keren dat de beleidsengine nieuwe pogingen onderneemt voor een item.</value>
+  </data>
+  <data name="PolicyEngineQueueAuditing" xml:space="preserve">
+    <value>Wachtrij controlebeleidsengine</value>
+  </data>
+  <data name="PolicyEngineQueueAuditingHelp" xml:space="preserve">
+    <value>Indien ingeschakeld, worden verwerkte items uit de wachtrij van de Beleidsengine opgeslagen in Beleidsengine wachtrijcontrole.</value>
+  </data>
+  <data name="PollOnLogin" xml:space="preserve">
+    <value>Polling bij login</value>
+  </data>
+  <data name="PreserveDataPlan" xml:space="preserve">
+    <value>Gegevensabonnement bewaren</value>
+  </data>
+  <data name="PreserveDataPlanTooltip" xml:space="preserve">
+    <value>Wanneer deze optie ingeschakeld is en er een gegevensabonnement op het toestel aanwezig is, blijft het gegevensabonnement bewaard nadat het toestel wordt gewist.</value>
+  </data>
+  <data name="PreviousPassword" xml:space="preserve">
+    <value>Vorig wachtwoord</value>
+  </data>
+  <data name="ProductProvisioningAWCMThrottle" xml:space="preserve">
+    <value>AWCM-beperking voor productprovisioning</value>
+  </data>
+  <data name="ProductProvisioningAwcmThrottleHelp" xml:space="preserve">
+    <value>Indien ingeschakeld, maakt productprovisioning gebruik van de AWCM uitgaande wachtrij voor AWCM-meldingen.</value>
+  </data>
+  <data name="ProductProvisioningAWCMThrottleRate" xml:space="preserve">
+    <value>Frequentie van AWCM-beperking voor productprovisioning</value>
+  </data>
+  <data name="ProductProvisioningAwcmThrottleRateHelp" xml:space="preserve">
+    <value>Aantal AWCM-meldingen dat wordt verzonden per seconde.</value>
+  </data>
+  <data name="ProductProvisioningBatchReleaseJob" xml:space="preserve">
+    <value>Vrijgavetaak voor batchgewijze productprovisioning</value>
+  </data>
+  <data name="ProductProvisioningCommandReleaseBatchSize" xml:space="preserve">
+    <value>Batchgrootte van de vrijgavetaak voor productprovisioning</value>
+  </data>
+  <data name="ProductProvisioningCommandReleaseBatchSizeHelp" xml:space="preserve">
+    <value>Het aantal opdrachten dat wordt vrijgegeven vanaf de opdrachtwachtrij van het toestel per taakinterval van de batchvrijgaveplanner voor productprovisioning.</value>
+  </data>
+  <data name="ProductsBatchSizeHelp" xml:space="preserve">
+    <value>Aantal producten waarop de Beleidsengine invloed heeft.</value>
+  </data>
+  <data name="ProvisioningDescription" xml:space="preserve">
+    <value>Provisioning wordt gebruikt om toestellen automatisch in te schrijven en geavanceerde beheersfuncties te bieden.</value>
+  </data>
+  <data name="PublishDummyFirmware" xml:space="preserve">
+    <value>Dummy-firmware publiceren</value>
+  </data>
+  <data name="Python" xml:space="preserve">
+    <value>Python 3</value>
+  </data>
+  <data name="QRCodeConfiguredComponents" xml:space="preserve">
+    <value>U hebt de volgende onderdelen geconfigureerd. Houd er rekening mee dat deze gegevens niet worden opgeslagen, dus zorg dat de configuratie correct is voordat u dit venster sluit. Als u daarna nog wijzigingen wilt aanbrengen, moet u de wizard opnieuw doorlopen.</value>
+  </data>
+  <data name="QRCodeEnrollmentDetailsMessage" xml:space="preserve">
+    <value>Als u token-gebaseerde verificatie wilt gebruiken, laat dan de eerste twee opties hieronder uitgeschakeld</value>
+  </data>
+  <data name="QRCodeEnrollmentWiFiHelpText" xml:space="preserve">
+    <value>De wifi-instellingen worden geconfigureerd na scannen van de QR-code. Toestellen met een vooraf geïnstalleerde QR-lezer hebben de wifi-instellingen nodig als geen mobiele gegevens beschikbaar zijn. Toestellen zonder vooraf geïnstalleerde QR-lezer hebben een aparte netwerkaansluiting nodig die is geconfigureerd om de QR-lezer te downloaden en te installeren. Nadat de QR-lezer is geïnstalleerd, wordt dit netwerk gebruikt om het toestel in te schrijven. Alleen WPA/WPA2-verificatie wordt ondersteund.</value>
+  </data>
+  <data name="QRCodePromptForEnteringLoginCredentials" xml:space="preserve">
+    <value>Gebruiker wordt gevraagd inloggegevens in te voeren</value>
+  </data>
+  <data name="QRCodePromptForEnteringOG" xml:space="preserve">
+    <value>Gebruiker wordt gevraagd een organisatiegroep of inschrijvingstoken in te voeren</value>
+  </data>
+  <data name="QRcodeSheetTitle" xml:space="preserve">
+    <value>QR code gegenereerd door AirWatch</value>
+  </data>
+  <data name="QRCodeWizardCloseConfirmation" xml:space="preserve">
+    <value>Zorg dat u de QR-code hebt opgeslagen voordat u dit venster sluit, aangezien de configuratie niet in de Console wordt opgeslagen. Wilt u doorgaan?</value>
+  </data>
+  <data name="Quality" xml:space="preserve">
+    <value>Kwaliteit</value>
+  </data>
+  <data name="QueriedSuccessfully" xml:space="preserve">
+    <value>Query geslaagd</value>
+  </data>
+  <data name="QueryDeviceSecurity" xml:space="preserve">
+    <value>Query toestelbeveiliging</value>
+  </data>
+  <data name="Querystatus" xml:space="preserve">
+    <value>Updatestatus opvragen</value>
+  </data>
+  <data name="Querystatustooltip" xml:space="preserve">
+    <value>De status van updates voor dit toestel opvragen.</value>
+  </data>
+  <data name="RebootCount" xml:space="preserve">
+    <value>Aantal keer opnieuw opstarten</value>
+  </data>
+  <data name="RecommendedTasks" xml:space="preserve">
+    <value>Aanbevolen taken</value>
+  </data>
+  <data name="RecoveryID" xml:space="preserve">
+    <value>Herstel-ID</value>
+  </data>
+  <data name="RecurringScheduleCondition" xml:space="preserve">
+    <value>Plan uw acties om plaats te vinden op terugkerende tijden.</value>
+  </data>
+  <data name="ReDeviceLogFailedToSendToDevice" xml:space="preserve">
+    <value>Aanvraag van toestellogboek is niet verzonden naar toestel.</value>
+  </data>
+  <data name="Refreshed" xml:space="preserve">
+    <value>Vernieuwd</value>
+  </data>
+  <data name="RefreshEsim" xml:space="preserve">
+    <value>eSIM vernieuwen</value>
+  </data>
+  <data name="RegisterRemoteManagement" xml:space="preserve">
+    <value>Extern beheer registreren</value>
+  </data>
+  <data name="RegisterRemoteViewCommandAlreadyOnQueue" xml:space="preserve">
+    <value>De opdracht om het toestel te registreren voor Weergave op afstand staat al in de wachtrij en wordt opgehaald wanneer het toestel verbinding maakt met de Console.</value>
+  </data>
+  <data name="RegisterRemoteViewCommandCouldNotBeQueued" xml:space="preserve">
+    <value>De opdracht om het toestel te registreren voor Weergave op afstand kan niet worden verzonden. Neem contact op met de helpdesk voor ondersteuning.</value>
+  </data>
+  <data name="RegisterRemoteViewCommandQueued" xml:space="preserve">
+    <value>De opdracht om het toestel te registreren voor Weergave op afstand is in de wachtrij geplaatst.</value>
+  </data>
+  <data name="RegistryOperation" xml:space="preserve">
+    <value>Registerbewerking</value>
+  </data>
+  <data name="RejectWipe" xml:space="preserve">
+    <value>Wissen weigeren</value>
+  </data>
+  <data name="RejectWipeConfirm" xml:space="preserve">
+    <value>Reject wipe successful</value>
+  </data>
+  <data name="RelayServerContactDelayHelp" xml:space="preserve">
+    <value>Hoe vaak (in minuten) de service voor aanlevering van inhoud items verwerkt voor een niet goed functionerende relayserver.</value>
+  </data>
+  <data name="RelayServerTestConnectionResultsExportFailed" xml:space="preserve">
+    <value>Export van testverbindingsresultaten is mislukt.</value>
+  </data>
+  <data name="RemoteFindWindowsDevice" xml:space="preserve">
+    <value>Extern Windows-apparaat zoeken</value>
+  </data>
+  <data name="RemovableDrives" xml:space="preserve">
+    <value>Verwisselbare stations</value>
+  </data>
+  <data name="RemovableDrivesMessage" xml:space="preserve">
+    <value>Verwisselbare stations versleuteld met BitLocker.</value>
+  </data>
+  <data name="RemoveEnterpriseFactoryProtection" xml:space="preserve">
+    <value>Enterprise Factory Reset-beveiliging verwijderen voor het wissen?</value>
+  </data>
+  <data name="RemoveEventAction" xml:space="preserve">
+    <value>Gebeurtenisactie verwijderen</value>
+  </data>
+  <data name="RemoveUpdate" xml:space="preserve">
+    <value>Update verwijderen</value>
+  </data>
+  <data name="RepeatDaily" xml:space="preserve">
+    <value>Dagelijks herhalen</value>
+  </data>
+  <data name="RepeatDailyArg" xml:space="preserve">
+    <value>Dagelijks herhalen {0} - {1} ({2})</value>
+    <comment>Placehoders: 0 - StartTime, 1 - EndTime, 2 - Duration.
+Example: Repeat Daily 11:00 PM - 4:30 AM (5 hours 30 mins)</comment>
+  </data>
+  <data name="RepeatEvery" xml:space="preserve">
+    <value>Herhalen elke</value>
+  </data>
+  <data name="RepeatEveryArg" xml:space="preserve">
+    <value>Elke {0} {1} - {2} ({3}) herhalen</value>
+    <comment>Placehoders: 0 - Days, 1 - StartTime, 2 - EndTime, 3 - Duration.
+Example: Repeat Every Mon/Wed 11:00 PM - 4:30 AM (5 hours 30 mins)</comment>
+  </data>
+  <data name="RepeatEveryWeekdayArg" xml:space="preserve">
+    <value>Elke doordeweekse dag {0} - {1} ({2}) herhalen</value>
+    <comment>Placehoders: 0 - StartTime, 1 - EndTime, 2 - Duration.
+Example: Repeat Every Weekday 11:00 PM - 4:30 AM (5 hours 30 mins)</comment>
+  </data>
+  <data name="RepeatWeekly" xml:space="preserve">
+    <value>Wekelijks herhalen</value>
+  </data>
+  <data name="Requestcompliancecheckmtd" xml:space="preserve">
+    <value>Dit is de standaard HTML-berichtsjabloon waarmee gebruikers worden verzocht Workspace ONE Intelligent Hub te openen, zodat het toestel zich incheckt en een nalevingscontrole kan uitvoeren.</value>
+  </data>
+  <data name="RequestError" xml:space="preserve">
+    <value>Fout in goedkeuringsaanvraag</value>
+  </data>
+  <data name="RequestExpired" xml:space="preserve">
+    <value>Goedkeuringsaanvraag is verlopen</value>
+  </data>
+  <data name="RequestFailed" xml:space="preserve">
+    <value>Aanvraag mislukt</value>
+  </data>
+  <data name="RequestHubLogs" xml:space="preserve">
+    <value>Intelligent Hub-logboeken aanvragen</value>
+  </data>
+  <data name="RequestHubRepairFailure" xml:space="preserve">
+    <value>Kan commando om Hub te herstellen niet in wachtrij plaatsen</value>
+  </data>
+  <data name="RequestHubRepairSuccess" xml:space="preserve">
+    <value>Commando om Hub te herstellen is in wachtrij geplaatst</value>
+  </data>
+  <data name="RequestLimitHasBeenReached" xml:space="preserve">
+    <value>Aanvraaglimiet is bereikt. Wacht een paar minuten en probeer het opnieuw.</value>
+  </data>
+  <data name="RequestRejected" xml:space="preserve">
+    <value>Goedkeuringsaanvraag is geweigerd</value>
+  </data>
+  <data name="RequestUserConsent" xml:space="preserve">
+    <value>Toestemming vragen aan gebruiker</value>
+  </data>
+  <data name="RequestUserConsentInfo" xml:space="preserve">
+    <value>Wanneer deze optie is ingeschakeld, wordt de gebruiker gevraagd om het verzamelen van logboeken toe te staan. De privacy-prompt bevat informatie over welke gegevens worden verzameld in de logboeken en vereist acceptatie van de gebruiker voordat de logboeken worden verzonden.</value>
+  </data>
+  <data name="RequestUserListFailed" xml:space="preserve">
+    <value>Aanvraag query gebruikerslijst is mislukt</value>
+  </data>
+  <data name="ResetAndroidWorkProfilePasscode" xml:space="preserve">
+    <value>Toegangscode voor werk wijzigen</value>
+  </data>
+  <data name="ResetBiosPassword" xml:space="preserve">
+    <value>BIOS-wachtwoord opnieuw instellen</value>
+  </data>
+  <data name="ResponseDataType" xml:space="preserve">
+    <value>Gegevenstype respons</value>
+  </data>
+  <data name="Resume" xml:space="preserve">
+    <value>Hervatten</value>
+  </data>
+  <data name="ResumeBitLocker" xml:space="preserve">
+    <value>BitLocker hervatten</value>
+  </data>
+  <data name="ResumeBitLockerConfirmed" xml:space="preserve">
+    <value>BitLocker hervat</value>
+  </data>
+  <data name="ResumeBitlockerEncryption" xml:space="preserve">
+    <value>BitLocker-encryptie hervatten</value>
+  </data>
+  <data name="ResumeBitlockerEncryptionMessage" xml:space="preserve">
+    <value>Bevestig dat u BitLocker-encryptie wilt hervatten.</value>
+  </data>
+  <data name="ResumeBitlockerEncryptionRestricted" xml:space="preserve">
+    <value>Opheffen van BitLocker-encryptie beperkt</value>
+  </data>
+  <data name="ResumeBitLockerFailed" xml:space="preserve">
+    <value>Kan BitLocker momenteel niet hervatten</value>
+  </data>
+  <data name="ResumeBitLockerFailure" xml:space="preserve">
+    <value>BitLocker hervatten is mislukt.</value>
+  </data>
+  <data name="ResumeBitLockerRequested" xml:space="preserve">
+    <value>Hervatten BitLocker aangevraagd</value>
+  </data>
+  <data name="ResumeBitLockerSuccess" xml:space="preserve">
+    <value>BitLocker hervatten is voor dit toestel aangevraagd.</value>
+  </data>
+  <data name="ResumeSuccessfully" xml:space="preserve">
+    <value>Hervatten geslaagd</value>
+  </data>
+  <data name="ResumeUpdatesContent" xml:space="preserve">
+    <value>Hervatten start het doorvoeren van updates als dit nog niet is begonnen en hervat het doorvoeren van updates als dit eerder is gestopt. Weet u zeker dat u de update wilt hervatten?</value>
+  </data>
+  <data name="RevocationDate" xml:space="preserve">
+    <value>Intrekkingsdatum</value>
+  </data>
+  <data name="RevocationError" xml:space="preserve">
+    <value>Intrekkingsfout</value>
+  </data>
+  <data name="RevocationPending" xml:space="preserve">
+    <value>Intrekking in behandeling</value>
+  </data>
+  <data name="RevocationReason" xml:space="preserve">
+    <value>Intrekkingsreden</value>
+  </data>
+  <data name="RevokeGoogleRefreshToken" xml:space="preserve">
+    <value>G Suite-tokens intrekken</value>
+  </data>
+  <data name="RotateBitLockerRecoveryKey" xml:space="preserve">
+    <value>BitLocker-herstelsleutel roteren</value>
+  </data>
+  <data name="RotateBitLockerRecoveryKeyConfirmed" xml:space="preserve">
+    <value>Roteren BitLocker-herstelsleutel bevestigd</value>
+  </data>
+  <data name="RotateBitLockerRecoveryKeyFailed" xml:space="preserve">
+    <value>Roteren BitLocker-herstelsleutel mislukt</value>
+  </data>
+  <data name="RotateBitLockerRecoveryKeyRefused" xml:space="preserve">
+    <value>Roteren BitLocker-herstelsleutel geweigerd</value>
+  </data>
+  <data name="RotateBitLockerRecoveryKeyRequested" xml:space="preserve">
+    <value>Roteren BitLocker-herstelsleutel aangevraagd</value>
+  </data>
+  <data name="RotateDEPAdminPassword" xml:space="preserve">
+    <value>DEP-beheerderswachtwoord roteren</value>
+  </data>
+  <data name="RotateDEPAdminPasswordConfirmed" xml:space="preserve">
+    <value>DEP-beheerderswachtwoord roteren bevestigd</value>
+  </data>
+  <data name="RotateDEPAdminPasswordFailed" xml:space="preserve">
+    <value>DEP-beheerderswachtwoord roteren mislukt</value>
+  </data>
+  <data name="RotateDEPAdminPasswordRequested" xml:space="preserve">
+    <value>DEP-beheerderswachtwoord roteren aangevraagd</value>
+  </data>
+  <data name="RotateDeviceRecoveryKeyConfirmed" xml:space="preserve">
+    <value>Herstelsleutel voor schijfversleuteling ontvangen</value>
+  </data>
+  <data name="RuntimeInformation" xml:space="preserve">
+    <value>Runtime-informatie</value>
+  </data>
+  <data name="SafetyNetAttestationError" xml:space="preserve">
+    <value>SafetyNet attestfout.</value>
+  </data>
+  <data name="SafetyNetBasicIntegrityFailure" xml:space="preserve">
+    <value>SafetyNet basisintegriteitstfout.</value>
+  </data>
+  <data name="SafetyNetCtsNotCompatible" xml:space="preserve">
+    <value>SafetyNet CTS incompatibel.</value>
+  </data>
+  <data name="SafetyNetResponseValidationFailed" xml:space="preserve">
+    <value>SafetyNet responsvalidatie mislukt.</value>
+  </data>
+  <data name="SafetyNetStatementInvalid" xml:space="preserve">
+    <value>SafetyNet attestscan is ongeldig.</value>
+  </data>
+  <data name="SamsungEFOTAPublishUpdateTimeZoneInfo" xml:space="preserve">
+    <value>Selecteer hieronder het tijdsbestek voor het plannen van deze update. Updates kunnen niet meer dan 30 dagen van tevoren worden gepland met een maximale updateperiode van 7 dagen. Updates in deze periode worden elke 4 uur in de tijdzone van de server naar toestellen gepubliceerd.</value>
+  </data>
+  <data name="SaveAsEncrypted" xml:space="preserve">
+    <value>Opslaan als versleuteld</value>
+  </data>
+  <data name="SavePriority" xml:space="preserve">
+    <value>Prioriteit opslaan</value>
+  </data>
+  <data name="ScanTimeInSeconds" xml:space="preserve">
+    <value>Scantijd</value>
+  </data>
+  <data name="ScheduledRotateDEPAdminPasswordRequested" xml:space="preserve">
+    <value>Geplande rotatie voor DEP-beheerderswachtwoord aangevraagd</value>
+  </data>
+  <data name="ScriptCommand" xml:space="preserve">
+    <value>Scriptcommando</value>
+  </data>
+  <data name="ScriptCommandTooltipText" xml:space="preserve">
+    <value>Als u een nieuw script uploadt, worden bestaande scriptcommando's overschreven.</value>
+  </data>
+  <data name="ScriptsAssignmentWizardDefinitionTabDesc" xml:space="preserve">
+    <value>De sleutelnaam, beschrijving en andere algemene informatie voor het script configureren</value>
+  </data>
+  <data name="ScriptsAssignmentWizardDeploymentTabDesc" xml:space="preserve">
+    <value>De sleutelnaam, beschrijving en andere algemene informatie voor het script configureren</value>
+  </data>
+  <data name="ScriptsMenuDescription" xml:space="preserve">
+    <value>In scripts worden aangepaste geavanceerde acties voor desktoptoestellen gedefinieerd</value>
+  </data>
+  <data name="SearchAssignedTags" xml:space="preserve">
+    <value>Toegewezen tags zoeken</value>
+  </data>
+  <data name="SearchAvailableTags" xml:space="preserve">
+    <value>Beschikbare tags zoeken</value>
+  </data>
+  <data name="SearchOrganizationUnits" xml:space="preserve">
+    <value>Organisatie-eenheden zoeken</value>
+  </data>
+  <data name="SecureBootStatusFull" xml:space="preserve">
+    <value>Status veilig opstarten - volledig</value>
+  </data>
+  <data name="SecureBootStatusMedium" xml:space="preserve">
+    <value>Status veilig opstarten - medium</value>
+  </data>
+  <data name="SecureBootStatusNotSupported" xml:space="preserve">
+    <value>Status veilig opstarten - niet ondersteund</value>
+  </data>
+  <data name="SecureBootStatusOff" xml:space="preserve">
+    <value>Status veilig opstarten - uit</value>
+  </data>
+  <data name="SecureWiFI" xml:space="preserve">
+    <value>Beveiligd (WPA/WPA2)</value>
+  </data>
+  <data name="SelectAndroidAgentVersionToInstall" xml:space="preserve">
+    <value>Selecteer de versie van de Android Hub die u op het toestel wilt installeren</value>
+  </data>
+  <data name="SelectNotifications" xml:space="preserve">
+    <value>Meldingen selecteren</value>
+  </data>
+  <data name="SerialNumberCannotHaveSpecialCharacters" xml:space="preserve">
+    <value>Ongeldig(e) serienummer(s). Serienummers mogen alleen uit letters en cijfers bestaan. Corrigeer het bestand en upload de winkelwagen opnieuw.</value>
+  </data>
+  <data name="SerialNumberMaxCharacters" xml:space="preserve">
+    <value>Serienummer mag maximaal 200 tekens bevatten.</value>
+  </data>
+  <data name="ServerTimeUTC" xml:space="preserve">
+    <value>Servertijd (UTC)</value>
+  </data>
+  <data name="ServerTimeZone" xml:space="preserve">
+    <value>Tijdzone van de server:</value>
+  </data>
+  <data name="Set" xml:space="preserve">
+    <value>Instellen</value>
+  </data>
+  <data name="SetBitLockerRecoveryKey" xml:space="preserve">
+    <value>BitLocker-herstelsleutel instellen</value>
+  </data>
+  <data name="SetUpConfiguration" xml:space="preserve">
+    <value>Installatieconfiguratie</value>
+  </data>
+  <data name="SetupScriptParameters" xml:space="preserve">
+    <value>Stel een of meer omgevingsvariabelen in voor dynamische of gevoelige informatie in dit script</value>
+  </data>
+  <data name="SharedIpad" xml:space="preserve">
+    <value>Gedeelde iPad</value>
+  </data>
+  <data name="SIMCardArg" xml:space="preserve">
+    <value>SIM-kaart {0}</value>
+    <comment>{0} will be replaced with the SIM card number</comment>
+  </data>
+  <data name="SimLabel" xml:space="preserve">
+    <value>Label</value>
+  </data>
+  <data name="SimLabelID" xml:space="preserve">
+    <value>Label-ID</value>
+  </data>
+  <data name="Slot" xml:space="preserve">
+    <value>Sleuf</value>
+  </data>
+  <data name="SmartGroupAssignmentError" xml:space="preserve">
+    <value>Een Smart Group kan aan slechts één domein worden toegewezen.</value>
+  </data>
+  <data name="SmsSettingsAreNotConfigured" xml:space="preserve">
+    <value>SMS-instellingen zijn niet geconfigureerd. Configureer deze via Alle instellingen &gt; Systeem &gt; Bedrijfsintegratie &gt; SMS</value>
+  </data>
+  <data name="StagingListView" xml:space="preserve">
+    <value>Lijstweergave</value>
+  </data>
+  <data name="StagingWindows" xml:space="preserve">
+    <value>Windows</value>
+  </data>
+  <data name="StartedSuccessfully" xml:space="preserve">
+    <value>Is gestart</value>
+  </data>
+  <data name="StopDeviceUpdate" xml:space="preserve">
+    <value>Toestelupdate stopzetten</value>
+  </data>
+  <data name="SubRuleType" xml:space="preserve">
+    <value>Type subregel</value>
+  </data>
+  <data name="Supported" xml:space="preserve">
+    <value>Ondersteund</value>
+  </data>
+  <data name="SupportedDevicesInfoText" xml:space="preserve">
+    <value>Bevat gerechtigde en niet-gerechtigde apparaten van deze organisatiegroep en daaronder, evenals de status van updates die zijn getriggerd door een toewijzing. </value>
+  </data>
+  <data name="SuspendBitLocker" xml:space="preserve">
+    <value>BitLocker onderbreken</value>
+  </data>
+  <data name="SuspendBitLockerConfirmed" xml:space="preserve">
+    <value>BitLocker onderbroken</value>
+  </data>
+  <data name="SuspendBitlockerEncryption" xml:space="preserve">
+    <value>BitLocker-encryptie opheffen</value>
+  </data>
+  <data name="SuspendBitlockerEncryptionMessage" xml:space="preserve">
+    <value>Als u BitLocker onderbreekt, wordt de beveiliging uitgeschakeld totdat het systeem het gespecificeerde aantal keren opnieuw wordt opgestart, of totdat de beheerder de beveiliging hervat. Het systeem blijft versleuteld.</value>
+  </data>
+  <data name="SuspendBitlockerEncryptionRestricted" xml:space="preserve">
+    <value>Opheffen van BitLocker-encryptie beperkt</value>
+  </data>
+  <data name="SuspendBitLockerFailed" xml:space="preserve">
+    <value>Kan BitLocker momenteel niet onderbreken</value>
+  </data>
+  <data name="SuspendBitLockerFailure" xml:space="preserve">
+    <value>Kan BitLocker momenteel niet onderbreken.</value>
+  </data>
+  <data name="SuspendBitLockerRequested" xml:space="preserve">
+    <value>BitLocker-onderbreking aangevraagd</value>
+  </data>
+  <data name="SuspendBitLockerSuccess" xml:space="preserve">
+    <value>BitLocker opheffen is voor dit toestel aangevraagd.</value>
+  </data>
+  <data name="SuspendDevice" xml:space="preserve">
+    <value>Toestel opheffen</value>
+  </data>
+  <data name="SyncEntitlements" xml:space="preserve">
+    <value>Synchronisatierechten</value>
+  </data>
+  <data name="SyncUpdates" xml:space="preserve">
+    <value>Updates synchroniseren</value>
+  </data>
+  <data name="SystemApps" xml:space="preserve">
+    <value>Systeemapps</value>
+  </data>
+  <data name="SystemManufacturerAndModel" xml:space="preserve">
+    <value>Systeemfabrikant en -model</value>
+  </data>
+  <data name="SystemManufacturerAndModelTooltip" xml:space="preserve">
+    <value>Fabrikant- en modelfilter voor smart group</value>
+  </data>
+  <data name="Systemunlocked" xml:space="preserve">
+    <value>Systeem ontgrendeld.</value>
+  </data>
+  <data name="SystemUpdateReceivedTime" xml:space="preserve">
+    <value>Update beschikbaar sinds</value>
+  </data>
+  <data name="TagAssignmentHelp" xml:space="preserve">
+    <value>Tag(s) selecteren voor apparaattoewijzing</value>
+  </data>
+  <data name="TagRemovalHelp" xml:space="preserve">
+    <value>Tag(s) selecteren voor verwijderen</value>
+  </data>
+  <data name="TargetedLoggingDeviceId" xml:space="preserve">
+    <value>Gebruik een van de volgende indelingen om gerichte logregistratie voor de opgegeven toestel-ID's in te schakelen. 
+			1. {deviceId1},{deviceId2},..
+			 2. {deviceId1}|{Timestamp},{deviceId2}|{Timestamp},..
+			 Tijdstempel moet de indeling yyyy-MM-dd HH:mm:ss hebben, bijv. 100|2018-12-30 18:30:00. 8 uur is de standaardperiode voor gerichte logregistratie.</value>
+  </data>
+  <data name="TargetedLoggingNeedsAtleastOneDeviceIdFilter" xml:space="preserve">
+    <value>Voer ten minste één toestel-ID in voor logboekregistratie.</value>
+  </data>
+  <data name="TestPrint" xml:space="preserve">
+    <value>Testafdruk</value>
+  </data>
+  <data name="TestPrintConfirmation" xml:space="preserve">
+    <value>Bevestiging testafdruk</value>
+  </data>
+  <data name="TheUserShouldLockDeviceBootloader" xml:space="preserve">
+    <value>De gebruiker moet de bootloader van het toestel vergrendelen</value>
+  </data>
+  <data name="TheUserShouldRestoreDeviceToCleanFactoryROM" xml:space="preserve">
+    <value>De gebruiker moet het toestel herstellen naar een schone fabrieks-ROM</value>
+  </data>
+  <data name="ThirdPartyRemoteManagement" xml:space="preserve">
+    <value>Extern beheer</value>
+  </data>
+  <data name="Throttled" xml:space="preserve">
+    <value>Vertraagd</value>
+    <comment>One of the Device Command Queue status</comment>
+  </data>
+  <data name="TimeWindow" xml:space="preserve">
+    <value>Tijdvenster</value>
+  </data>
+  <data name="TimeWindowBannerDescription" xml:space="preserve">
+    <value>Gebruik tijdvensters in uw werkstromen om updates te plannen en resources op het juiste moment te leveren voor uw bedrijf.</value>
+  </data>
+  <data name="TimeWindowBannerTitle" xml:space="preserve">
+    <value>Werkstromen stroomlijnen met tijdvensters</value>
+  </data>
+  <data name="TimeWindowBaseTimeInfo" xml:space="preserve">
+    <value>Selecteer de te gebruiken tijdzone voor dit tijdvenster: lokale tijd toestel of servertijd (UTC).</value>
+  </data>
+  <data name="TimeWindowCategoryInfo" xml:space="preserve">
+    <value>Selecteer een tijdvenstercategorie: kantooruren of onderhoudsuren.</value>
+  </data>
+  <data name="TimeWindowGroupRestriction" xml:space="preserve">
+    <value>Dit tijdvenster kan niet worden bewerkt of verwijderd, omdat het in een hogere organisatiegroep wordt beheerd of omdat de beheerder alleen leesbevoegdheid heeft.</value>
+  </data>
+  <data name="TimeWindowMenuDescription" xml:space="preserve">
+    <value>Tijdvensters beheren</value>
+  </data>
+  <data name="TimeWindowMenuItem" xml:space="preserve">
+    <value>Tijdvensters</value>
+  </data>
+  <data name="TimeWindowStepDesc1" xml:space="preserve">
+    <value>Maak een "wekelijks onderhoudsschema Kw1" om te voldoen aan de unieke behoeften van uw bedrijf.</value>
+  </data>
+  <data name="TimeWindowStepDesc2" xml:space="preserve">
+    <value>Maak een wekelijks schema dat elke dinsdag van 9 tot 4 uur wordt herhaald.</value>
+  </data>
+  <data name="TimeWindowStepDesc3" xml:space="preserve">
+    <value>Verwijs naar "wekelijks onderhoudsschema Kw1" om updates in de werkstroom te pushen.</value>
+  </data>
+  <data name="TimeWindowSteps" xml:space="preserve">
+    <value>Begin met deze stappen</value>
+  </data>
+  <data name="TimeWindowStepTitle1" xml:space="preserve">
+    <value>Selecteer een tijdvenstercategorie: kantooruren of onderhoudsuren</value>
+  </data>
+  <data name="TimeWindowStepTitle2" xml:space="preserve">
+    <value>Maak een schema dat herhalingen verwerkt</value>
+  </data>
+  <data name="TimeWindowStepTitle3" xml:space="preserve">
+    <value>Gebruik als werkstroomvoorwaarde</value>
+  </data>
+  <data name="Tools" xml:space="preserve">
+    <value>Hulpmiddelen</value>
+  </data>
+  <data name="ToolTipKeepAppsOnDevice" xml:space="preserve">
+    <value>Selecteer deze optie om bestaande beheerde applicaties en hun in cache opgeslagen gegevens op het toestel te laten staan. Bedrijfsgegevens op toestellen met een agentversie lager dan 2105 worden niet gewist als deze optie is geselecteerd.</value>
+  </data>
+  <data name="TotalDevicesArg" xml:space="preserve">
+    <value>Totaal aantal toestellen: {0}</value>
+  </data>
+  <data name="TotalEligibleDevicesArg" xml:space="preserve">
+    <value>Totaal aantal gerechtigde toestellen: {0}</value>
+  </data>
+  <data name="ToViewGPSDataInstallAirwatchAgent" xml:space="preserve">
+    <value>Om GPS-gegevens te bekijken, installeert u eerst de VMware AirWatch Agent vanuit de Microsoft Store</value>
+  </data>
+  <data name="Trigger" xml:space="preserve">
+    <value>Trigger</value>
+  </data>
+  <data name="UnitId" xml:space="preserve">
+    <value>Eenheids-id</value>
+  </data>
+  <data name="Unlicensed" xml:space="preserve">
+    <value>Zonder licentie</value>
+  </data>
+  <data name="UpdateAgentApplication" xml:space="preserve">
+    <value>Agent-applicatie bijwerken</value>
+  </data>
+  <data name="UpdateInstallPendingReboot" xml:space="preserve">
+    <value>Update geïnstalleerd. Installatie wordt voltooid na opnieuw opstarten.</value>
+  </data>
+  <data name="UpdateNoLongerAvailable" xml:space="preserve">
+    <value>Deze update is niet meer beschikbaar. Er worden geen verdere acties met betrekking tot deze update op toestellen uitgevoerd.</value>
+  </data>
+  <data name="UpdatesLastSync" xml:space="preserve">
+    <value>Laatste synchr.:</value>
+  </data>
+  <data name="UpdatesNextSync" xml:space="preserve">
+    <value>Volgende synchr.:</value>
+  </data>
+  <data name="UptoDateStatus" xml:space="preserve">
+    <value>Tot op heden</value>
+  </data>
+  <data name="UseCDSV1" xml:space="preserve">
+    <value>Service voor aanlevering van inhoud V1</value>
+  </data>
+  <data name="UseLatestAirWatchAgent" xml:space="preserve">
+    <value>Gebruik de nieuwste Workspace ONE Intelligent Hub</value>
+  </data>
+  <data name="UseLegacyCDSLogicHelp" xml:space="preserve">
+    <value>Indien ingeschakeld, wordt de oudere versie van logica van de Service voor aanlevering van inhoud gebruikt.</value>
+  </data>
+  <data name="UsePolicyEngineV1" xml:space="preserve">
+    <value>Beleidsengine V1</value>
+  </data>
+  <data name="UserBasedAccountDescription" xml:space="preserve">
+    <value>Het Google-account dat voor dit toestel is gemaakt, is hetzelfde voor alle toestellen die door deze werknemer zijn ingeschreven. Dit inschrijvingstype heeft de voorkeur voor werknemers die zijn toegewezen aan toestellen maar niet voor inschrijvingen met voorbereide inrichting. Er kan een toestellimiet per gebruikersaccount bestaan.</value>
+  </data>
+  <data name="UserGroupAssignmentsWithEmptyGroupIDWarning" xml:space="preserve">
+    <value>Organisatiegroepen met ontbrekende groep-ID's leiden ertoe dat inschrijving van toegewezen gebruikersgroepen mislukt. Om dit te voorkomen, werkt u de groep-ID('s) van elke organisatiegroep bij.</value>
+  </data>
+  <data name="UserRemovableDrivesMessage" xml:space="preserve">
+    <value>Verwisselbare stations versleuteld met BitLocker.</value>
+  </data>
+  <data name="UserSwitch" xml:space="preserve">
+    <value>Gebruikersknop</value>
+  </data>
+  <data name="ValueShouldNotBeEmpty" xml:space="preserve">
+    <value>Waarde mag niet leeg zijn</value>
+  </data>
+  <data name="VerifyResponseError" xml:space="preserve">
+    <value>Controleer de responsfout.</value>
+  </data>
+  <data name="ViewBiosPassword" xml:space="preserve">
+    <value>BIOS-wachtwoord weergeven</value>
+  </data>
+  <data name="ViewBiosPasswordHeader" xml:space="preserve">
+    <value>BIOS-wachtwoord</value>
+  </data>
+  <data name="ViewBiosPasswordHelp" xml:space="preserve">
+    <value>Recht om BIOS-wachtwoord op de pagina Toestelgegevens weer te geven.</value>
+  </data>
+  <data name="ViewBypassCode" xml:space="preserve">
+    <value>Bypass-code weergeven</value>
+  </data>
+  <data name="ViewManagedAdminPassword" xml:space="preserve">
+    <value>Beheerd beheerderswachtwoord bekijken</value>
+  </data>
+  <data name="ViewManagedAppConfigFeedback" xml:space="preserve">
+    <value>Feedback bekijken</value>
+  </data>
+  <data name="ViewRecoveryKeyRotationInformation" xml:space="preserve">
+    <value>Om veiligheidsredenen zal een commando voor het roteren van deze sleutel binnen 15 minuten worden geplaatst.</value>
+  </data>
+  <data name="VolumeIdentifier" xml:space="preserve">
+    <value>Volume-identificatie</value>
+  </data>
+  <data name="WiFiConfiguration" xml:space="preserve">
+    <value>Configureer optionele Wi-Fi waarmee het toestel vóór de inschrijving verbinding moet maken</value>
+  </data>
+  <data name="WifiOnly" xml:space="preserve">
+    <value>Uitsluitend Wi-Fi</value>
+  </data>
+  <data name="WiFiSsid" xml:space="preserve">
+    <value>Wi-Fi SSID</value>
+  </data>
+  <data name="Windows10KioskPublishingProcessorJob" xml:space="preserve">
+    <value>Windows10 Kiosk Publishing-verwerkingstaak</value>
+  </data>
+  <data name="WindowsCompromisedRuleWarning" xml:space="preserve">
+    <value>Dit beleid is alleen van toepassing op Windows 10-toestellen die compatibel met TPM 2.0 zijn. TPM 2.0-compatibiliteit is niet van toepassing op de BIOS-verificatiecontrole.</value>
+  </data>
+  <data name="WindowsDevicePowerOffWarningMessage" xml:space="preserve">
+    <value>Windows 10-toestellen worden binnen 5 minuten opnieuw opgestart zodat de gebruiker actieve werkzaamheden kan afronden.</value>
+  </data>
+  <data name="WindowsDhaBiosAttestationFailed" xml:space="preserve">
+    <value>Hiervoor is een BIOS-verificatieprogramma van Dell vereist. Alleen van toepassing op geselecteerde Dell-apparaten. TPM 2.0-compatibiliteit is niet van toepassing op de BIOS-verificatiecontrole.</value>
+  </data>
+  <data name="WindowsProvisioningPackageServiceProcessorJob" xml:space="preserve">
+    <value>Windows Provisioning Package Service-verwerkingstaak</value>
+  </data>
+  <data name="WinRTEnterpriseResetDescription" xml:space="preserve">
+    <value>Bedrijfsreset herstelt een toestel naar de status gereed voor gebruik wanneer een toestel is beschadigd of slecht functionerende apps heeft. Windows OS wordt opnieuw geïnstalleerd terwijl de gebruikersgegevens, gebruikersaccounts en beheerde applicaties behouden blijven. Na de reset synchroniseert het toestel geïmplementeerde bedrijfsinstellingen, beleidsregels en apps automatisch opnieuw en blijft onder beheer van Workspace ONE.</value>
+  </data>
+  <data name="WipeDeviceStorage" xml:space="preserve">
+    <value>Apparaatopslag wissen</value>
+  </data>
+  <data name="WipeLogDescription" xml:space="preserve">
+    <value>Apparaten weergeven die zijn gewist, opdrachten voor wissen in wachtstand bekijken en de drempelteller voor wissen opnieuw instellen.</value>
+  </data>
+  <data name="WipeRemovableStorage" xml:space="preserve">
+    <value>Verwisselbare opslag wissen</value>
+  </data>
+  <data name="WipeThresholdMessage" xml:space="preserve">
+    <value>De op de {0} pagina ingestelde wisdrempelwaarde is bereikt. Er worden geen apparaten meer van het bedrijf gewist of het apparaat wordt gewist totdat het systeem wordt ontgrendeld.</value>
+  </data>
+  <data name="WizardQRCodesummarycongratulations" xml:space="preserve">
+    <value>De configuratie is voltooid en de QR-code is beschikbaar om te downloaden. De QR code is in de vorm van platte tekst en kan worden gelezen door elke QR-lezer/decoder. Neem de nodige maatregelen om uitlekken van gevoelige informatie te voorkomen.</value>
+  </data>
+  <data name="WorkflowAssignments" xml:space="preserve">
+    <value>Werkstroomtoewijzingen</value>
+  </data>
+  <data name="WorkManagedDeviceInfoMessage" xml:space="preserve">
+    <value>Een volledig beheerd en vergrendeld toestel. Werknemers hebben alleen toegang tot bedrijfs-apps en geen toegang tot persoonlijke apps via de Google Play Store.</value>
+  </data>
+  <data name="WorkManagedEnrollmentType" xml:space="preserve">
+    <value>Google Account genereren voor bedrijfstoestellen</value>
+  </data>
+  <data name="WorkProfileStatus" xml:space="preserve">
+    <value>Werkprofiel</value>
+  </data>
+  <data name="Zsh" xml:space="preserve">
+    <value>Zsh</value>
+  </data>
+</root>

@@ -1,0 +1,2906 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AccessDeniedForOG" xml:space="preserve">
+    <value>Huidige organisatiegroep heeft geen toegang tot de applicatie</value>
+  </data>
+  <data name="AccessPoliciesIDMSetupArg" xml:space="preserve">
+    <value>De installatie van Workspace ONE moet zijn voltooid voordat toegangsbeleid kan worden gebruikt. Ga naar {0} en rond de installatie van Workspace ONE af. Log uit en log vervolgens opnieuw in en probeer het opnieuw.</value>
+  </data>
+  <data name="AccountNameExample" xml:space="preserve">
+    <value>bijv. VMware</value>
+  </data>
+  <data name="AccountNotifyEmail" xml:space="preserve">
+    <value>E-mailinstelling melden</value>
+  </data>
+  <data name="AccountNotifyEmailInfo" xml:space="preserve">
+    <value>E-mailmeldingen</value>
+  </data>
+  <data name="AccountNotifyPush" xml:space="preserve">
+    <value>ENS2</value>
+  </data>
+  <data name="AccountNotifyPushInfo" xml:space="preserve">
+    <value>Schakelt de e-mailmeldingsservice in of uit.</value>
+  </data>
+  <data name="AccountSMIMESignByDefault" xml:space="preserve">
+    <value>E-mail automatisch ondertekenen</value>
+  </data>
+  <data name="AccountSMIMESignByDefaultInfo" xml:space="preserve">
+    <value>S/MIME-ondertekening wordt standaard ingeschakeld wanneer de opstelweergave is gestart</value>
+  </data>
+  <data name="AccountSyncCalendar" xml:space="preserve">
+    <value>Instelling synchronisatie van agenda</value>
+  </data>
+  <data name="AccountSyncCalendarInfo" xml:space="preserve">
+    <value>Synchronisatie van agenda naar het apparaat uitschakelen</value>
+  </data>
+  <data name="AccountSyncContact" xml:space="preserve">
+    <value>Instelling synchronisatie van contactpersonen</value>
+  </data>
+  <data name="AccountSyncContactInfo" xml:space="preserve">
+    <value>Synchronisatie van contactpersonen met het apparaat uitschakelen</value>
+  </data>
+  <data name="AccountSyncEmail" xml:space="preserve">
+    <value>Instelling synchronisatie van e-mail</value>
+  </data>
+  <data name="AccountSyncEmailInfo" xml:space="preserve">
+    <value>Synchronisatie van e-mail naar het apparaat uitschakelen</value>
+  </data>
+  <data name="AccountUseOAuth" xml:space="preserve">
+    <value>Moderne verificatie</value>
+  </data>
+  <data name="AccountUseOAuthInfo" xml:space="preserve">
+    <value>Wanneer deze optie is ingeschakeld tijdens de inschrijving, worden gebruikers doorverwezen naar de loginpagina voor verificatie</value>
+  </data>
+  <data name="ActionsGrid" xml:space="preserve">
+    <value>Actieraster</value>
+  </data>
+  <data name="ActionsNotShownForProductBasedApps" xml:space="preserve">
+    <value>Afzonderlijke installatie- en verwijderingsacties zijn beperkt voor apps die deel uitmaken van een productpakket.</value>
+  </data>
+  <data name="ActivateApplication" xml:space="preserve">
+    <value>Applicatie activeren</value>
+  </data>
+  <data name="AddContingencies" xml:space="preserve">
+    <value>Installatievoorwaarden toevoegen</value>
+  </data>
+  <data name="AIPSensitivityLabels" xml:space="preserve">
+    <value>AIP-gevoeligheidslabels</value>
+  </data>
+  <data name="AllAppsImportedFromPlay" xml:space="preserve">
+    <value>Alle apps zijn al geïmporteerd</value>
+  </data>
+  <data name="AllAppsTab" xml:space="preserve">
+    <value>Alle applicaties</value>
+  </data>
+  <data name="Alloted" xml:space="preserve">
+    <value>Toegewezen</value>
+  </data>
+  <data name="AllowActionArchiveInfo" xml:space="preserve">
+    <value>Hiermee wordt de mogelijkheid om e-mails te archiveren in- of uitgeschakeld</value>
+  </data>
+  <data name="AllowActionSpamInfo" xml:space="preserve">
+    <value>Als deze optie is uitgeschakeld, is de Spam-optie in Workspace ONE Boxer niet beschikbaar voor eindgebruikers. Als deze optie is ingeschakeld en het e-mailadres voor doorsturen niet wordt opgegeven, worden de spamrapporten verplaatst naar Ongewenste e-mail.</value>
+  </data>
+  <data name="AllowAnnotations" xml:space="preserve">
+    <value>Annotaties toestaan</value>
+  </data>
+  <data name="AllowAnnotationsTip" xml:space="preserve">
+    <value>Hiermee staat u het gebruik van handschrift- en markeerstift-tools toe.</value>
+  </data>
+  <data name="AllowAppRemovalsWithoutProtectionTimeWindowHelp" xml:space="preserve">
+    <value>Zodra admins de verwijdering hebben goedgekeurd en hervat, wordt er geen beveiliging geactiveerd voor die app gedurende het interval dat hier is gepland om de verwijdering te kunnen uitvoeren. Nadat het interval is verstreken, wordt de beveiliging opnieuw geactiveerd als de betrokken apparaten het aantal bereiken dat is geconfigureerd in het veld 'Betrokken apparaten'.</value>
+  </data>
+  <data name="AllowArchivingEmails" xml:space="preserve">
+    <value>E-mails archiveren toestaan</value>
+  </data>
+  <data name="AllowAttachmentsDownloadInfo" xml:space="preserve">
+    <value>Hiermee wordt het downloaden van bijlagen in- of uitgeschakeld.</value>
+  </data>
+  <data name="AllowAttachmentsInfo" xml:space="preserve">
+    <value>Hiermee worden bijlagen voor het verzenden van e-mails in- of uitgeschakeld</value>
+  </data>
+  <data name="AllowAttachmentsTip" xml:space="preserve">
+    <value>Hiermee schakelt u de functie voor notitiebijlagen in of uit. Als deze optie is uitgeschakeld, zijn er geen typen bijlagen toegestaan.</value>
+  </data>
+  <data name="AllowCameraTip" xml:space="preserve">
+    <value>Hiermee schakelt u de toestelcamera in of uit.</value>
+  </data>
+  <data name="AllowCrashReportingInfo" xml:space="preserve">
+    <value>Boxer is standaard gemachtigd om crashes anoniem te melden. We raden aan om deze functie ingeschakeld te houden, zodat wij crashes kunnen zien en oplossen</value>
+  </data>
+  <data name="AllowDocProvidersInfo" xml:space="preserve">
+    <value>Hiermee schakelt u bijlagen van externe providers (iCloud, Dropbox, Google Drive, enz.) in of uit in Workspace ONE Boxer.</value>
+  </data>
+  <data name="AllowDocumentScanner" xml:space="preserve">
+    <value>Documentscanner toestaan</value>
+  </data>
+  <data name="AllowDocumentScannerTip" xml:space="preserve">
+    <value>Schakelt de functie voor documenten scannen in of uit.</value>
+  </data>
+  <data name="AllowEnterpriseContentInfo" xml:space="preserve">
+    <value>Bedrijfscontent brengt uw in Workspace ONE Content ingestelde opslagplaatsen over naar Boxer om bestanden naar en van uw online opslagplaatsen te kunnen opslaan en bekijken. SSO moet zijn ingeschakeld voor deze configuratie.</value>
+  </data>
+  <data name="AllowExchange" xml:space="preserve">
+    <value>Exchange toestaan</value>
+  </data>
+  <data name="AllowGallery" xml:space="preserve">
+    <value>Galerie toestaan</value>
+  </data>
+  <data name="AllowGalleryTip" xml:space="preserve">
+    <value>Schakelt de toegang tot en het gebruik van de afbeeldingengalerie op het toestel in of uit.</value>
+  </data>
+  <data name="AllowHyperlinksTip" xml:space="preserve">
+    <value>Gebruikers toestaan om hyperlinks in te voeren.</value>
+  </data>
+  <data name="AllowList" xml:space="preserve">
+    <value>Toestemmingslijst</value>
+  </data>
+  <data name="AllowLocalCalendarsInfo" xml:space="preserve">
+    <value>Stel dit in op True om lokale agenda's in Workspace ONE Boxer in te schakelen. Als de optie Lokale contacten in Workspace ONE Boxer is uitgeschakeld, is deze niet beschikbaar voor eindgebruikers.</value>
+  </data>
+  <data name="AllowMetricsInfo" xml:space="preserve">
+    <value>Kies of u het verzamelen van anonieme meetgegevens, op basis waarvan we productbeslissingen kunnen nemen, wilt uitschakelen.</value>
+  </data>
+  <data name="AllowOpenInInfo" xml:space="preserve">
+    <value>Hiermee kunt u het koppelen van bestanden uit andere apps in-of uitschakelen met behulp van de functie openen in of delen in Workspace ONE Boxer. Wanneer het openen of delen van bijlagen is uitgeschakeld, wordt het bericht 'Uw beheerder heeft bijlagen uit externe applicaties beperkt' weergegeven.</value>
+  </data>
+  <data name="AllowRemovalsForDuration" xml:space="preserve">
+    <value>Verwijderingen zonder bescherming toestaan (uur)</value>
+  </data>
+  <data name="AllowTextBoxes" xml:space="preserve">
+    <value>Tekstvakken toestaan</value>
+  </data>
+  <data name="AllowTextBoxesTip" xml:space="preserve">
+    <value>Staat tekstvakken toe.</value>
+  </data>
+  <data name="AllowUserInstallDeferralLabel" xml:space="preserve">
+    <value>Uitgestelde installatie door gebruiker toestaan</value>
+  </data>
+  <data name="AllowUserInstallDeferralTooltip" xml:space="preserve">
+    <value>Schakel dit in als gebruikers de installatie van deze applicatie mogen uitstellen</value>
+  </data>
+  <data name="AllowUserRegistrationMessage" xml:space="preserve">
+    <value>Hiermee kan elke gebruiker die toegang heeft tot uw omgevings-URL en GroupID, een gebruikersaccount aanmaken en toegang krijgen tot bedrijfsresources. Schakel deze optie uit om te voorkomen dat onbevoegde gebruikers toegang krijgen. Ga daarvoor naar Accounts &gt; Gebruikers &gt; Lijstweergave &gt; Gebruiker toevoegen om een nieuwe gebruikersaccount aan te maken.</value>
+  </data>
+  <data name="AllowVoiceRecordings" xml:space="preserve">
+    <value>Spraakopnamen toestaan</value>
+  </data>
+  <data name="AllowVoiceRecordingsTip" xml:space="preserve">
+    <value>Hiermee schakelt u het gebruik van audio-opnamen in of uit.</value>
+  </data>
+  <data name="AndroidDerivedCredentialSmimeForFirstaccount" xml:space="preserve">
+    <value>{0} ondersteunt slechts één S/MIME-certificaat. Selecteer deze optie alleen voor het primaire beheerde e-mailaccount.</value>
+  </data>
+  <data name="AppAlreadyExistsUnderProductProvisioning" xml:space="preserve">
+    <value>Deze applicatie bestaat al onder Productprovisioning en kan niet worden geüpload onder Apps en boeken. U kunt de app-instantie verwijderen uit Productprovisioning en opnieuw proberen te uploaden. Om het verwijderen van apps te voorkomen, moet u ervoor zorgen dat de apparaten die de applicatie mogen behouden, allemaal deel uitmaken van de toewijzing.</value>
+  </data>
+  <data name="AppAvatarsDefault" xml:space="preserve">
+    <value>Avatars inschakelen</value>
+  </data>
+  <data name="AppBulkAction" xml:space="preserve">
+    <value>Applicatieactie in volume</value>
+  </data>
+  <data name="AppCategories" xml:space="preserve">
+    <value>Applicatiecategorieën</value>
+  </data>
+  <data name="AppCompliance" xml:space="preserve">
+    <value>Applicatieconformiteit</value>
+  </data>
+  <data name="AppComplianceReportedCompliant" xml:space="preserve">
+    <value>Applicatieconformiteit heeft applicatie gerapporteerd als Conform</value>
+  </data>
+  <data name="AppComplianceReportedNonCompliant" xml:space="preserve">
+    <value>Applicatieconformiteit heeft applicatie gerapporteerd als Niet-conform</value>
+  </data>
+  <data name="AppComplianceReportedUnknown" xml:space="preserve">
+    <value>Applicatieconformiteit heeft applicatie gerapporteerd als Onbekend</value>
+  </data>
+  <data name="AppConfigSectionMmaInfoMsg" xml:space="preserve">
+    <value>Zorg ervoor dat deze KVP in de gehele app van toepassing is. Alle configuraties die alleen op een specifiek e-mailaccount van toepassing zijn, moeten worden verplaatst naar Aangepaste accountconfiguratie in de E-mailinstellingen om verstoringen te voorkomen.</value>
+  </data>
+  <data name="AppConversationViewDefault" xml:space="preserve">
+    <value>Gespreksgroepering</value>
+  </data>
+  <data name="AppDefaultBrowser" xml:space="preserve">
+    <value>Beperken tot standaardbrowser</value>
+  </data>
+  <data name="AppDefaultBrowserExceptions" xml:space="preserve">
+    <value>Browseruitzonderingen</value>
+  </data>
+  <data name="AppDefaultBrowserExceptionsInfo" xml:space="preserve">
+    <value>As hyperlinks beperkt zijn in de Console, kunt u een lijst met uitzonderingen voor domeinen/sites toevoegen die altijd kunnen worden geopend in de standaard/native browser. Als hyperlinks niet beperkt zijn, kunt u een lijst met uitzonderingen voor domeinen/sites toevoegen die altijd in Workspace ONE Web kunnen worden geopend. De lijst met uitzonderingen matcht alleen jokertekens, subdomeinen, domeinen. Bijvoorbeeld: AppDefaultBrowserExceptions = ["*.vmware.com", "jira*.vmware.com", "internal.vmware.com", "vmware.com"]</value>
+  </data>
+  <data name="AppDefaultBrowserTooltip" xml:space="preserve">
+    <value>Alle koppelingen in de standaardbrowser openen.</value>
+  </data>
+  <data name="AppDefaultCallerID" xml:space="preserve">
+    <value>Standaard nummerweergave</value>
+  </data>
+  <data name="AppDeploymentInlineHelpPublic" xml:space="preserve">
+    <value>Applicatie automatisch (Auto) of handmatig (On Demand) wanneer nodig implementeren</value>
+  </data>
+  <data name="AppDetails" xml:space="preserve">
+    <value>App-gegevens</value>
+  </data>
+  <data name="AppDetailsView" xml:space="preserve">
+    <value>App-detailsweergave</value>
+  </data>
+  <data name="AppDomainsInternal" xml:space="preserve">
+    <value>Lijst met interne domeinen</value>
+  </data>
+  <data name="AppDomainsWarning" xml:space="preserve">
+    <value>Waarschuwing externe ontvanger</value>
+  </data>
+  <data name="AppDomainsWarningInfo" xml:space="preserve">
+    <value>Waarschuwt de eindgebruiker wanneer deze een bericht verzendt naar een externe ontvanger.</value>
+  </data>
+  <data name="AppEnableKeyWrappingOnlyMode" xml:space="preserve">
+    <value>Modus voor alleen Swift SDK Key Wrapping inschakelen</value>
+  </data>
+  <data name="AppEnableKeyWrappingOnlyModeInfo" xml:space="preserve">
+    <value>Ingeschakeld houden om de KeyWrap-beveiligingsfuncties optimaal te benutten</value>
+  </data>
+  <data name="AppForceActivateSSO" xml:space="preserve">
+    <value>Single Sign-On (SSO) inschakelen</value>
+  </data>
+  <data name="AppForceActivateSSOInfo" xml:space="preserve">
+    <value>Hierdoor wordt SSO ingeschakeld; deze sleutel wordt afgeschaft als SSO altijd is ingeschakeld. Dit is ook vereist voor een aantal functies, inclusief Bedrijfscontent.</value>
+  </data>
+  <data name="AppGroup" xml:space="preserve">
+    <value>Applicatiegroep</value>
+  </data>
+  <data name="AppGroups" xml:space="preserve">
+    <value>Applicatiegroepen</value>
+  </data>
+  <data name="AppInstallDeferred" xml:space="preserve">
+    <value>Installatie uitgesteld</value>
+  </data>
+  <data name="AppKeyWrappingOnlyMode" xml:space="preserve">
+    <value>Modus voor alleen Swift SDK Key Wrapping inschakelen</value>
+  </data>
+  <data name="AppleUpdateAvailableHelpText" xml:space="preserve">
+    <value>Deze kolom bepaalt of u de nieuwste versie van een applicatie heeft of dat er een update beschikbaar is. Dit wordt alleen ondersteund voor applicaties die beschikbaar zijn in de App Store.</value>
+  </data>
+  <data name="ApplicationApprovedFordeviceAssignment" xml:space="preserve">
+    <value>Deze applicatie staat toewijzing per toestel toe. Let erop dat alle iOS 9-toestellen en macOS 10.11 toestellen, of recenter, één licentie per toestel ontvangen. Deze toestellen hebben geen Apple ID nodig om de applicatie te ontvangen.</value>
+  </data>
+  <data name="ApplicationApprovedFordeviceAssignmentWithTvOS" xml:space="preserve">
+    <value>Applicatie is ingeschakeld voor toewijzing op basis van toestel. Houd er rekening mee dat alle iOS 9- en macOS 10.11-toestellen en recenter één licentie per toestel ontvangen. Voor deze toestellen is geen Apple ID nodig voor het ontvangen van de applicatie. tvOS-toestellen kunnen alleen op toestel gebaseerde licenties gebruiken en vereisen geen beheerdersactie voor gebruik.</value>
+  </data>
+  <data name="ApplicationAttributes" xml:space="preserve">
+    <value>Eigenschappen</value>
+  </data>
+  <data name="ApplicationAttributesTooltip" xml:space="preserve">
+    <value>App-kenmerken worden gebruikt om toestelspecifieke gegevens voor apps aan te leveren, die tijdens het gebruik van de app worden gebruikt, zoals een lijst met domeinen die zijn gekoppeld aan een afzonderlijke organisatie.</value>
+  </data>
+  <data name="ApplicationBundleId" xml:space="preserve">
+    <value>Applicatiebundel-ID</value>
+  </data>
+  <data name="ApplicationCantDeleteRetireConfirmation" xml:space="preserve">
+    <value>Als u de applicatie verwijdert, zal deze worden verwijderd van één of meerdere toegewezen toestellen waar het een door Workspace ONE beheerde applicatie is en zal de applicatie buiten gebruik worden gesteld in de Console. Wilt u doorgaan?</value>
+  </data>
+  <data name="ApplicationConfigMigrationJob" xml:space="preserve">
+    <value>Migratietaak applicatieconfiguratie</value>
+  </data>
+  <data name="ApplicationDeactivateDescription" xml:space="preserve">
+    <value>Een applicatie deactiveren houdt in dat alle versies van de applicatie van alle toestellen zullen worden verwijderd waarop de applicatie door Workspace ONE wordt beheerd. Ga voorzichtig verder.</value>
+  </data>
+  <data name="ApplicationDeploymentStatusStaleTime" xml:space="preserve">
+    <value>UEM-commando voor app markeren als verouderd na</value>
+  </data>
+  <data name="ApplicationDeploymentStatusStaleTimeForAndroid" xml:space="preserve">
+    <value>Android</value>
+  </data>
+  <data name="ApplicationDeploymentStatusStaleTimeForIos" xml:space="preserve">
+    <value>iOS</value>
+  </data>
+  <data name="ApplicationDeploymentStatusStaleTimeForMacOs" xml:space="preserve">
+    <value>macOS</value>
+  </data>
+  <data name="ApplicationDeploymentStatusStaleTimeForWindows" xml:space="preserve">
+    <value>Windows</value>
+  </data>
+  <data name="ApplicationDeploymentStatusStaleTimeTooltip" xml:space="preserve">
+    <value>Stel in na hoeveel minuten nadat een apparaat het laatste UEM-commando bevestigt (maar de actie nog niet heeft voltooid) het UEM-commando als "verouderd" moet worden gemarkeerd. Verouderde opdrachten worden opnieuw geactiveerd wanneer apps worden gepubliceerd. De app-catalogus geeft apps niet meer weer als "Bezig met verwerken", maar schakelt de acties "Installeren" of "Bijwerken" opnieuw in.</value>
+  </data>
+  <data name="ApplicationGroupActivated" xml:space="preserve">
+    <value>Applicatiegroep geactiveerd</value>
+  </data>
+  <data name="ApplicationGroupDeactivated" xml:space="preserve">
+    <value>Applicatiegroep gedeactiveerd</value>
+  </data>
+  <data name="ApplicationGroupDeleted" xml:space="preserve">
+    <value>Applicatiegroep verwijderd</value>
+  </data>
+  <data name="ApplicationInKiosk" xml:space="preserve">
+    <value>Let op: Deze applicatie is opgenomen in een kioskprofiel. Werk het profiel bij nadat de applicatie is verwijderd.</value>
+  </data>
+  <data name="ApplicationMaxFileSizeWithCdn" xml:space="preserve">
+    <value>Maximale bestandsgrootte van applicatie met CDN</value>
+  </data>
+  <data name="ApplicationMaxFileSizeWithCdnToolTip" xml:space="preserve">
+    <value>Wanneer CDN is ingeschakeld, wordt de grootste van de waarden Maximale bestandsgrootte en Max bestandsgrootte met CDN gebruikt voor uploads voor deze organisatiegroep.</value>
+  </data>
+  <data name="ApplicationPublished" xml:space="preserve">
+    <value>Applicatie publiceren geslaagd</value>
+  </data>
+  <data name="ApplicationPublishFailed" xml:space="preserve">
+    <value>Applicatie publiceren mislukt</value>
+  </data>
+  <data name="ApplicationPublishStarted" xml:space="preserve">
+    <value>Applicatie publiceren gestart</value>
+  </data>
+  <data name="ApplicationReasonChange" xml:space="preserve">
+    <value>Reden applicatiewijziging</value>
+  </data>
+  <data name="ApplicationRetireDescription" xml:space="preserve">
+    <value>Als een applicatieversie buiten gebruik wordt gesteld, zal de versie op alle toestellen worden verwijderd als deze door Workspace ONE wordt beheerd. Indien beschikbaar zal de volgende lagere versie van de applicatie naar de toestellen worden gepusht. Ga voorzichtig verder.</value>
+  </data>
+  <data name="ApplicationSample" xml:space="preserve">
+    <value>Applicatievoorbeeld</value>
+  </data>
+  <data name="ApplicationSource" xml:space="preserve">
+    <value>Applicatiebron</value>
+  </data>
+  <data name="ApplicationsSetting" xml:space="preserve">
+    <value>Applicatie-instelling</value>
+  </data>
+  <data name="ApplicationsSettings" xml:space="preserve">
+    <value>Applicatie-instellingen</value>
+  </data>
+  <data name="ApplicationTransforms" xml:space="preserve">
+    <value>Applicatietransformaties</value>
+  </data>
+  <data name="ApplicationUemVersionAlreadyExists" xml:space="preserve">
+    <value>UEM-versie van de applicatie bestaat al</value>
+  </data>
+  <data name="ApplicationUserAppRatingDescription" xml:space="preserve">
+    <value>{0} app-beoordeling door app-gebruikers {1} van 5 sterren</value>
+    <comment>The first placeholder in the label key is for the application name and the second placeholder is for the app rating count by user.</comment>
+  </data>
+  <data name="ApplicationUUID" xml:space="preserve">
+    <value>Applicatie-UUID</value>
+  </data>
+  <data name="AppLogAggregationMode" xml:space="preserve">
+    <value>Modus logboeken samenvoegen</value>
+  </data>
+  <data name="AppLogAggregationUrl" xml:space="preserve">
+    <value>URL logboeken samenvoegen</value>
+  </data>
+  <data name="AppMobileFlowsAutoEnableConnectors" xml:space="preserve">
+    <value>Mobile Flows automatisch connectors inschakelen</value>
+  </data>
+  <data name="AppMobileFlowsEnabled" xml:space="preserve">
+    <value>Mobile Flows</value>
+  </data>
+  <data name="AppMobileFlowsEnabledInfo" xml:space="preserve">
+    <value>Informatie over de Mobile Flows-server configureren waarmee Boxer kan integreren</value>
+  </data>
+  <data name="AppMobileFlowsHost" xml:space="preserve">
+    <value>Host voor Mobile Flows</value>
+  </data>
+  <data name="AppMobileFlowsSyncTimeHours" xml:space="preserve">
+    <value>Mobile Flows synchronisatie-uren</value>
+  </data>
+  <data name="AppMobileFlowsSyncTimeHoursInfo" xml:space="preserve">
+    <value>Vraag geen Mobile Flows-kaarten aan voor e-mails die eerder zijn verzonden dan deze waarde (in uren)</value>
+  </data>
+  <data name="AppMobileFlowsvIDM" xml:space="preserve">
+    <value>Mobile Flows verificatieserver</value>
+  </data>
+  <data name="AppNameIsRequired" xml:space="preserve">
+    <value>Applicatienaam is vereist om resultaten weer te geven.</value>
+  </data>
+  <data name="AppNotExistOrUnauthorizedAccess" xml:space="preserve">
+    <value>Applicatie bestaat niet of u bent niet gemachtigd om die te openen.</value>
+  </data>
+  <data name="AppPasscode" xml:space="preserve">
+    <value>App-toegangscode</value>
+  </data>
+  <data name="AppPatchUpdate" xml:space="preserve">
+    <value>Applicatiepatch-update</value>
+  </data>
+  <data name="AppPhishEmailAddress" xml:space="preserve">
+    <value>Phishing rapporteren aan</value>
+  </data>
+  <data name="AppPhishEmailAddressInfo" xml:space="preserve">
+    <value>Het e-mailadres configureren waarop de gerapporteerde phishing-mail wordt ontvangen</value>
+  </data>
+  <data name="AppPlainTextMode" xml:space="preserve">
+    <value>Modus Tekst zonder opmaak</value>
+  </data>
+  <data name="AppPlainTextModeInfo" xml:space="preserve">
+    <value>Selecteer deze optie als u wilt dat Boxer alleen synchroniseert in de modus Tekst zonder opmaak. HTML-inhoud is niet toegestaan</value>
+  </data>
+  <data name="AppPolicies" xml:space="preserve">
+    <value>App-beleid</value>
+  </data>
+  <data name="AppPurebredPackageName" xml:space="preserve">
+    <value>Purebred-app-ID</value>
+  </data>
+  <data name="AppPurebredPackageNameInfo" xml:space="preserve">
+    <value>De pakket/bundel-ID van de Purebred-app. Deze ID wordt gebruikt om de Purebred-applicatie op het toestel te verifiëren voor gebruik met Boxer.</value>
+  </data>
+  <data name="AppPurebredPublicKey" xml:space="preserve">
+    <value>Purebred-app-handtekening</value>
+  </data>
+  <data name="AppPurebredPublicKeyInfo" xml:space="preserve">
+    <value>De publieke handtekening van de Purebred-app. Deze sleutel wordt gebruikt om de Purebred-applicatie op het toestel te verifiëren voor gebruik met Boxer.</value>
+  </data>
+  <data name="AppRefetchEmptyLinksUsingMime" xml:space="preserve">
+    <value>Lege koppelingen opnieuw ophalen met MIME</value>
+  </data>
+  <data name="AppRefetchEmptyLinksUsingMimeInfo" xml:space="preserve">
+    <value>Voor via HTML opgehaalde e-mails die niet-standaard URL-schema's bevatten (zoals voor de RSA-app) die verwijzen naar niet-serverdomeinen, vervangt Exchange de URL door twee lege spaties. De KVP zorgt ervoor dat Boxer deze instantie detecteert en de betreffende e-mails opnieuw downloadt met MIME, waarop deze URL-vervanging niet van toepassing is.</value>
+  </data>
+  <data name="AppRemovalProtectionLogDevicesHeader" xml:space="preserve">
+    <value>Logregistratie beveiliging applicatieverwijdering</value>
+  </data>
+  <data name="AppRetriesOnFailedInitialAuth" xml:space="preserve">
+    <value>Specificeert het aantal herhaalde verificatiepogingen</value>
+  </data>
+  <data name="AppRetriesOnFailedInitialAuthInfo" xml:space="preserve">
+    <value>Specificeert het aantal herhaalde verificatiepogingen bij een fout</value>
+  </data>
+  <data name="AppSampleInformation" xml:space="preserve">
+    <value>Informatie app-steekproef</value>
+  </data>
+  <data name="AppSampleLastSeen" xml:space="preserve">
+    <value>Laats bekeken app-steekproef</value>
+  </data>
+  <data name="AppSequencingTab" xml:space="preserve">
+    <value>App sequencing</value>
+  </data>
+  <data name="AppSkipTutorial" xml:space="preserve">
+    <value>Zelfstudie in app overslaan</value>
+  </data>
+  <data name="AppSkipTutorialTooltip" xml:space="preserve">
+    <value>Sla de in-app zelfstudie bij de eerste keer starten over</value>
+  </data>
+  <data name="AppSpamForwardAddress" xml:space="preserve">
+    <value>Spam melden aan</value>
+  </data>
+  <data name="AppSpamForwardAddressInfo" xml:space="preserve">
+    <value>Configureer het e-mailadres waarop de gemelde spamberichten worden ontvangen</value>
+  </data>
+  <data name="AppsTabSegregationFeatureInformation" xml:space="preserve">
+    <value>Op het tabblad Beheerde apps worden alle macOS-applicaties en software-installatieprogramma's weergegeven die worden beheerd in Workspace ONE UEM. Op het tabblad Alle applicaties wordt een alleen-lezen lijst weergegeven met alle .app-bundels die op het toestel zijn geïnstalleerd. De beschikbaarheid van content op het tabblad Alle applicaties is geconfigureerd in de privacyinstellingen voor persoonlijke applicaties op de UEM console.</value>
+  </data>
+  <data name="AppStatus" xml:space="preserve">
+    <value>App-status</value>
+  </data>
+  <data name="AppsTermsOfUseNotification" xml:space="preserve">
+    <value>Updatemelding voor gebruikersovereenkomst van de applicatie</value>
+  </data>
+  <data name="AppStore" xml:space="preserve">
+    <value>App Store</value>
+  </data>
+  <data name="AppStoreAppSourceHelpText" xml:space="preserve">
+    <value>Deze kolom bepaalt of een applicatie beschikbaar was in de App Store.</value>
+  </data>
+  <data name="AppSwipesLeftLongDefault" xml:space="preserve">
+    <value>Standaard Lang naar links swipen</value>
+  </data>
+  <data name="AppSwipesLeftShortDefault" xml:space="preserve">
+    <value>Standaard Kort naar links swipen</value>
+  </data>
+  <data name="AppSwipesRightLongDefault" xml:space="preserve">
+    <value>Standaard Lang naar rechts swipen</value>
+  </data>
+  <data name="AppSwipesRightShortDefault" xml:space="preserve">
+    <value>Standaard Kort naar rechts swipen</value>
+  </data>
+  <data name="AppsWithConfigurationErrors" xml:space="preserve">
+    <value>Apps met configuratiefouten</value>
+  </data>
+  <data name="AppUpdatedDate" xml:space="preserve">
+    <value>Datum waarop app is bijgewerkt</value>
+  </data>
+  <data name="AppUpdateSource" xml:space="preserve">
+    <value>Bron van applicatie-update</value>
+  </data>
+  <data name="AppUrl" xml:space="preserve">
+    <value>App-URL</value>
+  </data>
+  <data name="AppVersionDetailsHelp" xml:space="preserve">
+    <value>Workspace ONE UEM onderhoudt een interne versie voor elk intern app-pakket. In dit veld wordt automatisch de 'App-versie' ingevuld. Dit veld wordt gebruikt om de nieuwste versie te identificeren die moet worden toegewezen en geïmplementeerd op toestellen van eindgebruikers.</value>
+  </data>
+  <data name="AppVersionInformationFourDecimal" xml:space="preserve">
+    <value>Elk veld is vereist en mag niet groter zijn dan de maximumwaarde voor een 32-bits geheel getal (2147483647).</value>
+  </data>
+  <data name="AppVersionNeedsAssignment" xml:space="preserve">
+    <value>Applicatieversie vereist toewijzing</value>
+  </data>
+  <data name="AppVersionNeedsAssignmentInfo" xml:space="preserve">
+    <value>De meest recente applicatieversie heeft ten minste één toewijzing nodig.</value>
+  </data>
+  <data name="AppVersionNeedsAssignmentMessage" xml:space="preserve">
+    <value>De nieuwste applicatieversie heeft geen applicatietoewijzing. Werkstroomtoewijzingen die deze applicatie gebruiken, blijven de vorige applicatieversie en het standaardbeleid ervan gebruiken. Maak een applicatietoewijzing om de nieuwe applicatieversie te gebruiken.</value>
+  </data>
+  <data name="AppVersionUpdateNotification" xml:space="preserve">
+    <value>Melding over applicatieversie-update</value>
+  </data>
+  <data name="AppWorkflowsMenuDescription" xml:space="preserve">
+    <value>Applicatiewerkstromen</value>
+  </data>
+  <data name="AppWorkflowsMenuItem" xml:space="preserve">
+    <value>Applicatiewerkstromen</value>
+  </data>
+  <data name="Architecture" xml:space="preserve">
+    <value>Architectuur</value>
+  </data>
+  <data name="ArgAssignedCount" xml:space="preserve">
+    <value>{0} toegewezen</value>
+  </data>
+  <data name="ArgInstalledCount" xml:space="preserve">
+    <value>{0} geïnstalleerd</value>
+  </data>
+  <data name="ArgNotInstalledCount" xml:space="preserve">
+    <value>{0} niet geïnstalleerd</value>
+  </data>
+  <data name="ArgVersions" xml:space="preserve">
+    <value>{0} versie(s)</value>
+  </data>
+  <data name="ARMAppDependencies" xml:space="preserve">
+    <value>ARM-afhankelijkheden</value>
+  </data>
+  <data name="ArpMessage" xml:space="preserve">
+    <value>Het verwijderen van uw applicatie is onderbroken omdat de drempelwaarde voor verwijderingen is bereikt.</value>
+  </data>
+  <data name="AssignedArgOutOfTotalInstalledArg" xml:space="preserve">
+    <value>{0} van {1} zijn toegewezen</value>
+  </data>
+  <data name="AssignedButNotInstalled" xml:space="preserve">
+    <value>Toegewezen maar niet geïnstalleerd</value>
+  </data>
+  <data name="AssignedConfiguration" xml:space="preserve">
+    <value>Toegewezen configuratie</value>
+  </data>
+  <data name="AssignmentCannotBeRemovedForAnAppAssociatedWithWorkflow" xml:space="preserve">
+    <value>Toewijzing kan niet worden verwijderd voor een app die deel uitmaakt van een werkstroom.</value>
+  </data>
+  <data name="AssignmentCopiedFrom" xml:space="preserve">
+    <value>Toewijzingen gekopieerd van</value>
+  </data>
+  <data name="AssignmentCopiedFromMessage" xml:space="preserve">
+    <value>Klik op de knop Vernieuwen hieronder om het versienummer weer te geven waarvan de toewijzingen worden gekopieerd.</value>
+  </data>
+  <data name="AssignmentCreated" xml:space="preserve">
+    <value>Toewijzing applicatie gemaakt</value>
+  </data>
+  <data name="AssignmentDeleted" xml:space="preserve">
+    <value>Toewijzing applicatie verwijderd</value>
+  </data>
+  <data name="AssignmentDescriptionPlaceholder" xml:space="preserve">
+    <value>Beschrijving van de toewijzing</value>
+  </data>
+  <data name="AssignmentGroupingInfoMessage" xml:space="preserve">
+    <value>Enkele smart groups in deze toewijzing hebben een andere sleutelwaarde voor app-configuratie of app-kenmerken of MST-transformatiebestanden, die zijn gescheiden om de nauwkeurigheid te garanderen. Dit heeft geen gevolgen voor de apparaten van eindgebruikers en er is geen verdere actie nodig.</value>
+  </data>
+  <data name="AssignmentInformation" xml:space="preserve">
+    <value>Toewijzingsgegevens</value>
+  </data>
+  <data name="AssignmentInstallDetails" xml:space="preserve">
+    <value>Toewijzings- en installatiegegevens</value>
+  </data>
+  <data name="AssignmentInstallDetailsToolTip" xml:space="preserve">
+    <value>Installatiegegevens van toestellen waaraan deze toepassing is toegewezen vanuit Workspace ONE</value>
+  </data>
+  <data name="AssignmentNamePlaceholder" xml:space="preserve">
+    <value>Toewijzingsnaam</value>
+  </data>
+  <data name="AssignmentOutOfDate" xml:space="preserve">
+    <value>Toewijzing verouderd</value>
+  </data>
+  <data name="AssignmentStatus" xml:space="preserve">
+    <value>Toewijzingsstatus</value>
+  </data>
+  <data name="AssignmentUpdated" xml:space="preserve">
+    <value>Toewijzing applicatie bijgewerkt</value>
+  </data>
+  <data name="AssignmentUpToDate" xml:space="preserve">
+    <value>Up-to-date. App toegewezen en geïnstalleerd</value>
+  </data>
+  <data name="AtleastOneActiveAssignmentIsRequired" xml:space="preserve">
+    <value>Aan een of meer toewijzingsregels is geen actieve smart group gekoppeld. Voeg een smart group toe of verwijder de toewijzingsregels om door te gaan.</value>
+  </data>
+  <data name="AtleastOneAssignmentIsRequired" xml:space="preserve">
+    <value>Er moet ten minste één smart group worden opgegeven in toewijzingen.</value>
+  </data>
+  <data name="AttachmentDownload" xml:space="preserve">
+    <value>Bijlagen downloaden</value>
+  </data>
+  <data name="AttachmentsRestrictionMMAInfo" xml:space="preserve">
+    <value>Deze instelling bepaalt of gebruikers e-mails of bijlagen in andere applicaties kunnen openen. Selecteer Alleen bekijken om openen in andere applicaties te blokkeren, Toestemmingslijst om specifieke applicaties toe te staan of Onbeperkt om alle applicaties toe te staan.</value>
+  </data>
+  <data name="AttachPhotos" xml:space="preserve">
+    <value>Foto's koppelen</value>
+  </data>
+  <data name="AuthenticateExchangeServerTooltip" xml:space="preserve">
+    <value>Configureren hoe u verifieert bij uw Exchange-Server</value>
+  </data>
+  <data name="AuthenticationAdvancedSectionMessage" xml:space="preserve">
+    <value>Geen geavanceerde configuraties beschikbaar voor uw selecties</value>
+  </data>
+  <data name="AuthenticationType" xml:space="preserve">
+    <value>Verificatietype</value>
+  </data>
+  <data name="AuthenticationTypeInfo" xml:space="preserve">
+    <value>Kies Basis wanneer u zich verifieert met een gebruikersnaam en wachtwoord, Certificaat wanneer u een certificaat gebruikt voor verificatie en Allebei indien u een certificaat en wachtwoord nodig heeft voor verificatie bij Exchange.</value>
+  </data>
+  <data name="AutoAppAssignedButNotInstalled" xml:space="preserve">
+    <value>Verouderd. App is toegewezen maar niet geïnstalleerd</value>
+  </data>
+  <data name="AutoAppAssignmentOutOfDate" xml:space="preserve">
+    <value>Verouderd. De toegewezen app-versie is niet hetzelfde als de versie die is geïnstalleerd</value>
+  </data>
+  <data name="AutoBootstrapPackageAssignedButNotInstalled" xml:space="preserve">
+    <value>Bootstrap-pakket toegewezen, maar toestel staat al ingeschreven. Het is beschikbaar voor implementatie op aanvraag, maar is niet aangevraagd</value>
+  </data>
+  <data name="AvailablePatchCriticality" xml:space="preserve">
+    <value>Ernst beschikbare patch</value>
+  </data>
+  <data name="AvatarsDefault" xml:space="preserve">
+    <value>Avatars</value>
+  </data>
+  <data name="BackLinkEmailSettings" xml:space="preserve">
+    <value>&lt; E-mailinstellingen</value>
+  </data>
+  <data name="BadgeOnly" xml:space="preserve">
+    <value>Geen (alleen aantal badges)</value>
+  </data>
+  <data name="BasicAndCertificate" xml:space="preserve">
+    <value>Basis en certificaat</value>
+  </data>
+  <data name="BetaAppSourceHelpText" xml:space="preserve">
+    <value>Deze kolom bepaalt of een toepassing is gedownload vanuit TestFlight en wordt beschouwd als een bètaversie van de applicatie.</value>
+  </data>
+  <data name="BlockingApplicationsInfoMessage" xml:space="preserve">
+    <value>Definieer alle applicaties of processen die kunnen verhinderen dat een installatie veilig wordt voltooid. U kunt dit ook gebruiken om te voorkomen dat applicaties worden afgesloten voordat u opslaat.</value>
+  </data>
+  <data name="BlockingApplicationsTooltip" xml:space="preserve">
+    <value>Geef de naam van de applicatie op. Als de app in de map /Applications/ staat, kan deze worden gedefinieerd met alleen de bestandsnaam; het pad wordt dan automatisch gedetecteerd.</value>
+  </data>
+  <data name="BookCategoriesHelp" xml:space="preserve">
+    <value>Maak vooraf gedefinieerde categorieën of aangepaste categorieën in het boekpakket voor gebruiksgemak in de boekcatalogus.</value>
+  </data>
+  <data name="BootstrapPackageAssignedAndInstallCommandAcknowledged" xml:space="preserve">
+    <value>Bootstrap-pakket toegewezen en installatiecommando bevestigd</value>
+  </data>
+  <data name="BootstrapPackageAssignedButInstallCommandNotAcknowledged" xml:space="preserve">
+    <value>Bootstrap-pakket toegewezen, maar installatiecommando nog niet bevestigd</value>
+  </data>
+  <data name="BoxerSmimeInfoMsg" xml:space="preserve">
+    <value>De onderstaande configuratie wordt herkend door Boxer-applicatieversies 5.21 en hoger. Voor oudere versies gebruikt u de datalading 'inloggegevens' in het aangepaste SDK-profiel dat is gekoppeld aan deze app</value>
+  </data>
+  <data name="BoxerTrustStoreOnly" xml:space="preserve">
+    <value>Alleen Boxer Trust Store</value>
+  </data>
+  <data name="BuildNumber" xml:space="preserve">
+    <value>Buildnummer</value>
+  </data>
+  <data name="BulkActionExceptionMessage" xml:space="preserve">
+    <value>Selecteer filter om de bewerking op een groot aantal toestellen uit te voeren.</value>
+  </data>
+  <data name="BulkSyncTunnelConfigAlert" xml:space="preserve">
+    <value>De Tunnel-configuratie wordt gesynchroniseerd op apparaten met geldige toewijzingen.</value>
+  </data>
+  <data name="Bundleidwarningforb2bapps" xml:space="preserve">
+    <value>Bundel-ID is vereist voor beheerde distributie en correcte implementatie van aangepaste applicaties</value>
+  </data>
+  <data name="CalendarMaxSyncPeriodInfo" xml:space="preserve">
+    <value>Hoe ver terug een gebruiker kan selecteren om hun agendagebeurtenissen te synchroniseren.</value>
+  </data>
+  <data name="CannotAllotMoreThanArgLicenses" xml:space="preserve">
+    <value>Kan niet meer dan {0} licenties toewijzen</value>
+  </data>
+  <data name="CannotRevokeLicense" xml:space="preserve">
+    <value>Applicatielicentie kan niet worden ingetrokken. Probeer het met een geldige VPP-account-ID.</value>
+  </data>
+  <data name="CardsVersionMessage" xml:space="preserve">
+    <value>Deze beleidsregels zijn alleen van toepassing op Card-versies 1.1 en hoger. Als u de Exchange-instellingen voor eerdere Card-versies wilt beheren, gaat u naar aangepaste instellingen in het SDK-profiel dat aan deze app is gekoppeld.</value>
+  </data>
+  <data name="CardsWarningToEditAllAssignments" xml:space="preserve">
+    <value>Cards-configuratie is gereed voor installatie. Zorg ervoor dat de configuraties die zijn overgebracht uit de aangepaste instellingen van het SDK-profiel voor deze app, correct zijn voordat u publiceert.</value>
+  </data>
+  <data name="CertAuthenticationTip" xml:space="preserve">
+    <value>Voor certificaatverificatie configureert/uploadt u een certificaat in het SDK-profiel.</value>
+  </data>
+  <data name="CertificateTemplateInfo" xml:space="preserve">
+    <value>Wanneer u meerdere beheerde e-mailaccounts op uw toestellen configureert, moet u voor dezelfde Exchange-server verschillende certificaatsjablonen met een andere UPN configureren.</value>
+  </data>
+  <data name="CertificateUrlOnly" xml:space="preserve">
+    <value>Alleen certificaat-URL</value>
+  </data>
+  <data name="CertUrlWithFallback" xml:space="preserve">
+    <value>Certificaat-URL met terugval</value>
+  </data>
+  <data name="ChangeWhenToCallInstallComplete" xml:space="preserve">
+    <value>Wijzigen wanneer installatie als voltooid moet worden beschouwd</value>
+  </data>
+  <data name="ChangeWhenToCallInstallCompleteDescription" xml:space="preserve">
+    <value>Wanneer u de installatievoltooid-criteria wijzigt nadat een applicatie op een toestel is geïnstalleerd, wordt de applicatie op dat toestel opnieuw beoordeeld. Als niet wordt voldaan aan de nieuwe criteria, wordt de applicatie van het toestel verwijderd. Vanwege de onderbreking die door deze actie kan worden veroorzaakt, is een beheerders-PIN vereist om de criteria te kunnen wijzigen.</value>
+  </data>
+  <data name="CheckingDeviceEligibility" xml:space="preserve">
+    <value>Geschiktheid van apparaat controleren</value>
+  </data>
+  <data name="ClearConfigurationWarningText" xml:space="preserve">
+    <value>Als u deze configuratie uitschakelt, worden alle eerder opgeslagen waarden opnieuw ingesteld. Deze kunnen niet meer worden opgehaald. Weet u zeker dat u wilt doorgaan?</value>
+  </data>
+  <data name="ClearConfigurationWarningTitleText" xml:space="preserve">
+    <value>Configuratiewaarschuwing wissen</value>
+  </data>
+  <data name="ClipboardEnabled" xml:space="preserve">
+    <value>Klembord ingeschakeld</value>
+  </data>
+  <data name="ClipboardPasteActionEnabled" xml:space="preserve">
+    <value>Plakken vanaf Klembord inschakelen</value>
+  </data>
+  <data name="CollectionMenuDescription" xml:space="preserve">
+    <value>Integreert Workspace ONE Access met virtuele applicatie- en desktopimplementaties van Horizon, Horizon Cloud, Citrix of ThinApp.</value>
+  </data>
+  <data name="Collections" xml:space="preserve">
+    <value>Verzamelingen</value>
+  </data>
+  <data name="CollectionsHelp" xml:space="preserve">
+    <value>Hiermee wordt toegang tot virtuele app-verzamelingen beheerd; alleen van toepassing op directory-beheerders.</value>
+  </data>
+  <data name="CompromisedProtectionTooltip" xml:space="preserve">
+    <value>Schakel in om automatisch bedrijfsgegevens te wissen op verdachte apparaten.</value>
+  </data>
+  <data name="ConditionIf" xml:space="preserve">
+    <value>Als</value>
+  </data>
+  <data name="ConditionIfArg" xml:space="preserve">
+    <value>Als {0}</value>
+  </data>
+  <data name="ConditionNotMet" xml:space="preserve">
+    <value>Niet aan voorwaarde voldaan</value>
+  </data>
+  <data name="ConditionPrefix" xml:space="preserve">
+    <value>Filter (Als)</value>
+  </data>
+  <data name="ConditionSuffix" xml:space="preserve">
+    <value>Actie (Dan)</value>
+  </data>
+  <data name="ConditionSuffixUpgradeApp" xml:space="preserve">
+    <value>Actie (Dan) app upgraden</value>
+  </data>
+  <data name="ConditionThen" xml:space="preserve">
+    <value>Dan</value>
+  </data>
+  <data name="ConditionThenArg" xml:space="preserve">
+    <value>Dan {0}</value>
+  </data>
+  <data name="ConditionTitle" xml:space="preserve">
+    <value>Voorwaarde controleren</value>
+  </data>
+  <data name="ConfigurationFeedbackFor" xml:space="preserve">
+    <value>Configuratiefeedback voor {0}</value>
+  </data>
+  <data name="ConfigurationPositionChangeNotice" xml:space="preserve">
+    <value>Wijzigingsmelding configuratiepositie</value>
+  </data>
+  <data name="ConfigureDLPSettingsTooltip" xml:space="preserve">
+    <value>DLP-instellingen voor dit account configureren</value>
+  </data>
+  <data name="ConfiguredUrlOnly" xml:space="preserve">
+    <value>Alleen geconfigureer de URL</value>
+  </data>
+  <data name="ConfigureEmailSeparationTooltip" xml:space="preserve">
+    <value>E-mailclassificatie voor dit account configureren</value>
+  </data>
+  <data name="ConfigureRegistryData" xml:space="preserve">
+    <value>Registergegevens configureren</value>
+  </data>
+  <data name="ConfigureRegistryDataHelpText" xml:space="preserve">
+    <value>Selecteer deze optie om te controleren op een specifieke registerwaarde</value>
+  </data>
+  <data name="ConfigureRegistryValues" xml:space="preserve">
+    <value>Registerwaarden configureren</value>
+  </data>
+  <data name="ConfigureRegistryValuesHelpText" xml:space="preserve">
+    <value>Laat deze optie uitgeschakeld om alleen het bestaan van het pad te controleren</value>
+  </data>
+  <data name="ConfigureSyncEmailCalenderTooltip" xml:space="preserve">
+    <value>Configureren hoe e-mail en agenda worden gesynchroniseerd</value>
+  </data>
+  <data name="ConfigureVpnAtApplicationLevel" xml:space="preserve">
+    <value>Selecteer een VPN-configuratieprofiel dat u wilt gebruiken voor deze applicatie. Deze instelling is niet van toepassing op tvOS-toestellen.</value>
+  </data>
+  <data name="ConfirmDeactivationApplicationRemoval" xml:space="preserve">
+    <value>Een applicatie deactiveren zal alle versies op alle toegewezen toestellen deïnstalleren waar het een door Workspace ONE beheerde applicatie is. Weet u zeker dat u deze applicatie wilt deactiveren?</value>
+  </data>
+  <data name="ConfirmRetirementApplicationRemoval" xml:space="preserve">
+    <value>Als u een applicatieversie buiten gebruik stelt, wordt die applicatieversie op alle toestellen waarop de applicatie door Workspace ONE wordt beheerd verwijderd. Als deze optie Actief is, wordt de voorgaande versie van de applicatie naar de toestellen waaraan de applicatie is toegewezen gepusht. Weet u zeker dat u deze applicatie buiten gebruik wilt stellen?</value>
+  </data>
+  <data name="ConversationThreading" xml:space="preserve">
+    <value>Gespreksgroepering</value>
+  </data>
+  <data name="CopyOf" xml:space="preserve">
+    <value>Kopie van</value>
+  </data>
+  <data name="CopyOfArg" xml:space="preserve">
+    <value>Kopie van - {0}</value>
+  </data>
+  <data name="CouldnotRetrieveApp" xml:space="preserve">
+    <value>Kan applicatie niet ophalen. De applicatie bestaat niet meer of is verwijderd.</value>
+  </data>
+  <data name="CouldnotRetrieveAssignmentForApp" xml:space="preserve">
+    <value>Kan toewijzingen voor deze applicatie niet ophalen. De applicatie bestaat niet meer of is verwijderd.</value>
+  </data>
+  <data name="CrashReporting" xml:space="preserve">
+    <value>Crashrapportage</value>
+  </data>
+  <data name="CreatedOnArgArgByArg" xml:space="preserve">
+    <value>Gemaakt op {0} door {1}</value>
+  </data>
+  <data name="CreateWorkflow" xml:space="preserve">
+    <value>Werkstroom maken</value>
+  </data>
+  <data name="CreateWorkflowBannerDescription" xml:space="preserve">
+    <value>Met applicatiewerkstromen kunt u meerdere app-implementaties of -updates in een specifieke volgorde verwerken op basis van door u gedefinieerde criteria. Het beheer van complexe implementatievereisten en het bijwerken van apps die niet aan uw beveiligings- en nalevingsbeleid voldoen, is daardoor eenvoudiger dan ooit.</value>
+  </data>
+  <data name="CreateWorkflowBannerHeader" xml:space="preserve">
+    <value>Meer controle over implementatie en updates van apps</value>
+  </data>
+  <data name="CreateWorkflowNote" xml:space="preserve">
+    <value>Momenteel alleen beschikbaar voor Windows-desktopapparaten.</value>
+  </data>
+  <data name="CurrentActiveAppAndUEMVersionArgs" xml:space="preserve">
+    <value>De huidige actieve app-versie is: {0} en de UEM-versie van de applicatie is: {1}.</value>
+  </data>
+  <data name="CurrentDeployment" xml:space="preserve">
+    <value>Huidige implementatie</value>
+  </data>
+  <data name="CurrentUemVersion" xml:space="preserve">
+    <value>Huidige UEM-versie</value>
+  </data>
+  <data name="CustomAccountConfiguration" xml:space="preserve">
+    <value>Aangepaste accountconfiguratie</value>
+  </data>
+  <data name="CustomOnlineMeetingUrlsInfo" xml:space="preserve">
+    <value>Hierdoor wordt de knop QuickJoin uitgeschakeld in agenda-uitnodigingen met online vergaderuitnodigingen voor met name vergaderingen die niet de standaardindeling gebruiken die wordt gebruikt door de cloudversies van online vergaderservices. Als u een installatie op locatie hebt, wilt u deze kunnen configureren met uw URL's.</value>
+  </data>
+  <data name="DeactivateApplication" xml:space="preserve">
+    <value>Applicatie deactiveren</value>
+  </data>
+  <data name="DefaultAppAvatarsInfo" xml:space="preserve">
+    <value>Avatars in-/uitschakelen</value>
+  </data>
+  <data name="DefaultAssignmentDescription" xml:space="preserve">
+    <value>Het beleid van deze toewijzing wordt nu standaard gebruikt voor werkstroomtoewijzingen.</value>
+  </data>
+  <data name="DefaultAssignmentPrompt" xml:space="preserve">
+    <value>Weet u zeker dat u het beleid van deze toewijzing als standaard wilt gebruiken?</value>
+  </data>
+  <data name="DefaultAssignmentPromptTitle" xml:space="preserve">
+    <value>Standaardbeleid wijzigen</value>
+  </data>
+  <data name="DefaultAssignmentTooltip" xml:space="preserve">
+    <value>Wanneer deze optie is ingeschakeld, ontvangen apparaten waaraan deze app is toegewezen vanuit werkstromen, deze beleidsregels standaard, tenzij deze worden overschreven door een andere beleidstoewijzing met een hoge prioriteit voor de apparaten. Er kan slechts één beleid als standaard worden gemarkeerd voor een app.</value>
+  </data>
+  <data name="DefaultCalendarSyncPeriod" xml:space="preserve">
+    <value>Standaard synchronisatieperiode kalender</value>
+  </data>
+  <data name="DefaultCallerIDInfo" xml:space="preserve">
+    <value>Hiermee stelt u de export van namen en telefoonnummers van contactpersonen standaard in. Deze instelling vereist dat de optie Nummerweergave in de Workspace ONE UEM console op Onbeperkt wordt ingesteld.</value>
+  </data>
+  <data name="DefaultConversationViewInfo" xml:space="preserve">
+    <value>Hiermee wordt de Gespreksweergave standaard ingesteld op E-mailberichten groeperen (True) of E-mails niet groeperen op gesprek (False)</value>
+  </data>
+  <data name="DefaultEmailSyncPeriod" xml:space="preserve">
+    <value>Standaard synchronisatieperiode e-mail</value>
+  </data>
+  <data name="DeleteEmailAccountContent" xml:space="preserve">
+    <value>Weet u zeker dat u dit e-mailaccount wilt verwijderen?</value>
+  </data>
+  <data name="DeleteEmailAccountTitle" xml:space="preserve">
+    <value>E-mailaccount verwijderen</value>
+  </data>
+  <data name="DeleteOnSpamForwardInfo" xml:space="preserve">
+    <value>Schakel deze optie in om ongewenste e-mail na doorsturen te verwijderen van het toestel van de eindgebruiker.</value>
+  </data>
+  <data name="DeleteTabContentLabel" xml:space="preserve">
+    <value>Weet u zeker dat u deze instantie wilt verwijderen? Deze configuratie wordt niet meer op de app toegepast.</value>
+  </data>
+  <data name="DeleteTabTitleLabel" xml:space="preserve">
+    <value>Instantie verwijderen</value>
+  </data>
+  <data name="DependencyMissing" xml:space="preserve">
+    <value>Afhankelijkheid ontbreekt</value>
+  </data>
+  <data name="DependentAppValidationFailed" xml:space="preserve">
+    <value>Validatie van afhankelijke app is mislukt</value>
+  </data>
+  <data name="DeploymentProgressToolTip" xml:space="preserve">
+    <value>Geeft details weer van de implementatievoortgang op toegewezen toestellen voor deze app-versie.</value>
+  </data>
+  <data name="DeploymentStatus" xml:space="preserve">
+    <value>Implementatiestatus</value>
+  </data>
+  <data name="DeploymentTimeInvalid" xml:space="preserve">
+    <value>Geef een tijd tussen {0}</value>
+    <comment>Please provide time between between 01:00 - 12:59</comment>
+  </data>
+  <data name="DeployX86FileToX64MachineInfo" xml:space="preserve">
+    <value>X86-architectuurbestand kan worden geüpload voor implementatie op een computer met X64-architectuur</value>
+  </data>
+  <data name="DerivedCredentialForFirstaccount" xml:space="preserve">
+    <value>{0} ondersteunt één verificatiecertificaat. Selecteer deze optie alleen voor het primaire beheerde e-mailaccount.
+Voor het gebruik van {0} met Boxer-applicatieversies lager dan 5.21, geeft u vanuit de sectie Applicatieconfiguratie de custom KVP 'PolicyDerivedCredentials' door.</value>
+  </data>
+  <data name="DerivedCredentialSmimeForFirstaccount" xml:space="preserve">
+    <value>PIV-D ondersteunt één S/MIME-certificaat. Selecteer deze optie alleen voor het primaire beheerde e-mailaccount.
+Voor het gebruik van PIV-D met Boxer-applicatieversies lager dan 5.21 geeft u vanuit de sectie Applicatieconfiguratie de custom KVP 'PolicyDerivedCredentials' door.</value>
+  </data>
+  <data name="Descriptions" xml:space="preserve">
+    <value>Beschrijvingen</value>
+  </data>
+  <data name="DesiredStateManagementTooltip" xml:space="preserve">
+    <value>Indien ingeschakeld, en als de eindgebruiker de applicatie verwijdert, wordt de app automatisch opnieuw geïnstalleerd bij de volgende synchronisatie van Hub.
+Indien uitgeschakeld, en als de eindgebruiker de app verwijdert, wordt de applicatie niet automatisch opnieuw geïnstalleerd, tenzij deze vanaf de UEM Console of Catalog wordt gepusht.</value>
+  </data>
+  <data name="DeviceAndBoxerTrustStore" xml:space="preserve">
+    <value>Trust Store voor apparaten en Boxer</value>
+  </data>
+  <data name="DeviceArchitecture" xml:space="preserve">
+    <value>Toestelarchitectuur</value>
+  </data>
+  <data name="DeviceAssignmentEnableCountArg" xml:space="preserve">
+    <value>Applicatie komt in aanmerking voor toestelgebonden toewijzing. Als u deze optie inschakelt, ontvangen alle toestellen met iOS 9+ en macOS 10.11+ één licentie per toestel. U hebt op dit moment {0} toegewezen toestellen met iOS 9+/macOS 10.11+. Op deze toestellen hoeft geen Apple ID te worden ingevoerd om de app te ontvangen.</value>
+  </data>
+  <data name="DeviceAssignmentEnableWithTvOSCountArg" xml:space="preserve">
+    <value>Applicatie komt in aanmerking voor toestelgebonden toewijzing. Als u deze optie inschakelt, ontvangen alle toestellen met iOS 9+ en macOS 10.11+ één licentie per toestel. U hebt op dit moment {0} toegewezen toestellen met iOS 9+/macOS 10.11+. Op deze toestellen hoeft geen Apple ID te worden ingevoerd om de app te ontvangen. tvOS-toestellen kunnen alleen op toestel gebaseerde licenties gebruiken en vereisen geen beheerdersactie voor gebruik.</value>
+  </data>
+  <data name="DeviceBasedVPPAppSourceHelpText" xml:space="preserve">
+    <value>Deze kolom bepaalt of een applicatie is geïnstalleerd op basis van een toestellicentie via het volume-aankoopprogramma.</value>
+  </data>
+  <data name="DeviceEligibilityCheckFailed" xml:space="preserve">
+    <value>Controle van geschiktheid van apparaat is mislukt</value>
+  </data>
+  <data name="DeviceGuardErrorArg" xml:space="preserve">
+    <value>Als u Device Guard wilt inschakelen, is een Windows Enterprise-licentiesleutel nodig in uw {0}.</value>
+  </data>
+  <data name="DeviceReportedReason" xml:space="preserve">
+    <value>Gerapporteerde reden toestel</value>
+  </data>
+  <data name="DeviceTrustStoreOnly" xml:space="preserve">
+    <value>Alleen Trust Store van apparaat</value>
+  </data>
+  <data name="DeviceUuIdLookUpText" xml:space="preserve">
+    <value>Toestel-UUID</value>
+  </data>
+  <data name="DisableAppConfiguration" xml:space="preserve">
+    <value>App-configuratie uitschakelen</value>
+  </data>
+  <data name="DisableAppConfigWarning" xml:space="preserve">
+    <value>Als u Applicatieconfiguratie uitschakelt, wordt de configuratie verwijderd en worden de app-instellingen op het apparaat mogelijk verwijderd of gewijzigd.</value>
+  </data>
+  <data name="DisableCDNWarning" xml:space="preserve">
+    <value>Een applicatie groter dan {0} MB wordt geüpload. Het uitschakelen van CDN is niet toegestaan.</value>
+  </data>
+  <data name="DisableKeyEscrowInfo" xml:space="preserve">
+    <value>Hiermee schakelt u de escrow-sleutel op de server in. Als u deze uitschakelt, wordt de functie "Wachtwoord vergeten" uitgeschakeld (bij SDK-login).</value>
+  </data>
+  <data name="DisableKeyEscrowYesNoInfo" xml:space="preserve">
+    <value>Hiermee wordt de escrow-sleutel op de server uitgeschakeld. Wanneer dit is ingesteld op 'Ja', wordt de functie 'Toegangscode vergeten' uitgeschakeld (bij gebruik van het SDK-loginproces).</value>
+  </data>
+  <data name="DisplayInAppCatalog" xml:space="preserve">
+    <value>In applicatiecatalogus weergeven</value>
+  </data>
+  <data name="DisplayInAppCatalogHelp" xml:space="preserve">
+    <value>Configureer met deze instelling of deze app wel of niet wordt weergegeven in de Workspace ONE-applicatiecatalogus</value>
+  </data>
+  <data name="DlpHelpText" xml:space="preserve">
+    <value>DLP-beleidsregels bieden een gecontroleerde uitwisseling van gegevens tussen beheerde en onbeheerde applicaties op het toestel. Om datalekken vanuit deze applicatie te voorkomen, dient u de applicatie op "Beheerde toegang" te zetten en "beperkingsprofielen" voor de gewenste toesteltypen aan te maken.</value>
+  </data>
+  <data name="DoNotCollectApplicationListWarningForCompliancePolicy" xml:space="preserve">
+    <value>Uw privacybeleid voor persoonlijke apps is ingesteld op Niet verzamelen voor ten minste één toestel in ten minste één organisatiegroep in de hiërarchie. Het netwerkbeleid van de applicatiegroepen voor persoonlijke apps op deze toestellen wordt niet afgedwongen.</value>
+  </data>
+  <data name="DownloadAutomaticallyAndInstall" xml:space="preserve">
+    <value>De app wordt automatisch gedownload en op uw toestel geïnstalleerd.</value>
+  </data>
+  <data name="DownloadAutomaticallyAndInstallInApplicationsFolder" xml:space="preserve">
+    <value>De app wordt automatisch gedownload en geïnstalleerd in de map Applicaties.</value>
+  </data>
+  <data name="DownloadFeedback" xml:space="preserve">
+    <value>Feedback downloaden</value>
+  </data>
+  <data name="DoYouWantToDeletePpkg" xml:space="preserve">
+    <value>Wilt u het Provisioning Package (PPKG) verwijderen?</value>
+  </data>
+  <data name="DuplicateAppConfigInTab" xml:space="preserve">
+    <value>App-configuratie op tabblad {0} dupliceren</value>
+  </data>
+  <data name="DuplicateAssignmentName" xml:space="preserve">
+    <value>Er bestaat al een toewijzingsregel met deze naam.</value>
+  </data>
+  <data name="DuplicateEmailSettings" xml:space="preserve">
+    <value>Dubbele {0} geconfigureerd op tabblad {1}</value>
+  </data>
+  <data name="DuplicateVppSmartGroupPresent" xml:space="preserve">
+    <value>Kan dezelfde smart group niet twee keer toevoegen.</value>
+  </data>
+  <data name="E_FAIL" xml:space="preserve">
+    <value>Office Deployment Tool (ODT) kan niet worden gebruikt om volumelicentie te installeren</value>
+  </data>
+  <data name="E_UNEXPECTED" xml:space="preserve">
+    <value>Er is geprobeerd om de installatie ongedaan te maken terwijl er geen C2R Office op het systeem aanwezig is.</value>
+  </data>
+  <data name="EARAppUpdateAvailable" xml:space="preserve">
+    <value>EAR-app-update beschikbaar</value>
+  </data>
+  <data name="EARAppUpdateMode" xml:space="preserve">
+    <value>Updatemeldingen</value>
+  </data>
+  <data name="EARAppUpdateModeHelp" xml:space="preserve">
+    <value>Schakel deze optie in om op de hoogte te worden gesteld telkens wanneer een nieuwe versie van deze applicatie beschikbaar wordt.</value>
+  </data>
+  <data name="EARNewAppVersionAvailable" xml:space="preserve">
+    <value>Er is nu een nieuwe versie van {0} v{1} beschikbaar om te uploaden</value>
+  </data>
+  <data name="EasilyAddWindowsAppsFromEnterpriseAppRepository" xml:space="preserve">
+    <value>Eenvoudig Windows-applicaties toevoegen vanuit de Enterprise-app opslagplaats</value>
+  </data>
+  <data name="EditApp" xml:space="preserve">
+    <value>App bewerken</value>
+  </data>
+  <data name="EditApplicationArgOpensDialog" xml:space="preserve">
+    <value>Applicatie {0} bewerken opent dialoogvenster</value>
+    <comment>The placeholder in this label key contains application name.</comment>
+  </data>
+  <data name="EditConfiguration" xml:space="preserve">
+    <value>Configuratie bewerken</value>
+  </data>
+  <data name="EditWarning" xml:space="preserve">
+    <value>Waarschuwing bewerken</value>
+  </data>
+  <data name="EditWarningMessage" xml:space="preserve">
+    <value>Als u de aan dit apparaat gekoppelde configuratie bewerkt, worden deze wijzigingen toegepast op alle andere apparaten in {0} smart groups. Weet u zeker dat u wilt doorgaan?</value>
+  </data>
+  <data name="EditWorkflow" xml:space="preserve">
+    <value>Werkstroom bewerken</value>
+  </data>
+  <data name="EditWtcicCriteriaHelpText" xml:space="preserve">
+    <value>Klik op Bewerken en voer uw beheerderspincode in om de optie Wanneer installatie als voltooid moet worden beschouwd te wijzigen nadat de applicatie in de wachtrij is geplaatst of op een toestel is geïnstalleerd. Als u onjuiste criteria opgeeft, wordt de applicatie van toestellen verwijderd.</value>
+  </data>
+  <data name="EmailClassification" xml:space="preserve">
+    <value>E-mailclassificatie</value>
+  </data>
+  <data name="EmailClassificationInfo" xml:space="preserve">
+    <value>E-mailclassificatie configureren</value>
+  </data>
+  <data name="EmailMaxSyncPeriodInfo" xml:space="preserve">
+    <value>Hoe ver terug een gebruiker kan selecteren om hun e-mailberichten te synchroniseren.</value>
+  </data>
+  <data name="EmmManagedAccessHelpInfo" xml:space="preserve">
+    <value>U kunt {0} instellingen voor deze app nog steeds aanpassen zonder toegang tot inschrijving met door EMM beheerde toegang.</value>
+  </data>
+  <data name="EnableClipboardPasteActionTip" xml:space="preserve">
+    <value>Stel dit in op True om de functie Plakken in te schakelen. Plakken wordt standaard ondersteund als deze sleutel niet is ingesteld.</value>
+  </data>
+  <data name="EnableClipboardTip" xml:space="preserve">
+    <value>Stel dit in op True om de klembordfunctie alleen in te schakelen tussen Workspace ONE-apps.</value>
+  </data>
+  <data name="EnableComplianceOnDeviceTooltip" xml:space="preserve">
+    <value>Indien ingeschakeld, worden de regels geëvalueerd door ondersteunende SDK-apps.</value>
+  </data>
+  <data name="EnableDeviceAssignmentConfirmationBulk" xml:space="preserve">
+    <value>Weet u zeker dat u een toestelgebaseerde licentietoewijzing voor de geselecteerde applicaties wilt inschakelen?</value>
+  </data>
+  <data name="EnableDeviceGuard" xml:space="preserve">
+    <value>Device Guard inschakelen na het installeren van applicaties</value>
+  </data>
+  <data name="EnableKeyEscrow" xml:space="preserve">
+    <value>FastSync inschakelen</value>
+  </data>
+  <data name="EnableKeyEscrowInfo" xml:space="preserve">
+    <value>FastSync verbetert de synchronisatie op de achtergrond en de snelheid van volgende synchronisaties. FastSync-instellingen worden toegepast wanneer de Email Notification Service is ingeschakeld en geconfigureerd</value>
+  </data>
+  <data name="EnableNewAuthEncoding" xml:space="preserve">
+    <value>Umlauts in wachtwoorden ondersteunen</value>
+  </data>
+  <data name="EnableNewAuthEncodingInfo" xml:space="preserve">
+    <value>Schakel ISO-8859-1-codering voor het Boxer-wachtwoord in om de umlaut-tekens (ä en ß enz.) te ondersteunen.</value>
+  </data>
+  <data name="EnableOfflineAccessTooltip" xml:space="preserve">
+    <value>Indien uitgeschakeld, is offlinetoegang beperkt. Als optie is ingeschakeld en Maximum toegestane tijd offline is ingesteld op 0, is offlinetoegang toegestaan voor onbepaalde tijd. Als optie is ingeschakeld en Maximum toegestane tijd offline niet nul is en deze periode wordt overschreden, dan wordt de toegang geblokkeerd</value>
+  </data>
+  <data name="EnableOsVersionTooltip" xml:space="preserve">
+    <value>Indien ingeschakeld, evalueert de applicatie de versie van het besturingssysteem van het toestel tegen de geconfigureerde regel en voert de actie uit indien de evaluatie slaagt.</value>
+  </data>
+  <data name="EnableSecurityPatchDateTooltip" xml:space="preserve">
+    <value>Indien ingeschakeld, evalueert de applicatie de beveiligingspatch op het toestel tegen de geconfigureerde regel en voert de actie uit als de patch niet actueel is. Deze instelling is alleen van toepassing op Android-toestellen</value>
+  </data>
+  <data name="EncryptionCertificateAuthority" xml:space="preserve">
+    <value>Encryptiecertificaatautoriteit</value>
+  </data>
+  <data name="EncryptionCertificateTemplate" xml:space="preserve">
+    <value>Encryptiecertificaatsjabloon</value>
+  </data>
+  <data name="ENSAPIToken" xml:space="preserve">
+    <value>ENS2 API-token</value>
+  </data>
+  <data name="ENSAPITokenInfo" xml:space="preserve">
+    <value>API-token van VMware om de Cloud ENS2-service te activeren.</value>
+  </data>
+  <data name="ENSFetchTokenInfo" xml:space="preserve">
+    <value>Haal een nieuw token op wanneer u een nieuw ENS2-serveradres invoert. U kunt geen eerder geconfigureerd token gebruiken bij een nieuw ENS2-serveradres.</value>
+  </data>
+  <data name="ENSInvalidAPITokenMessage" xml:space="preserve">
+    <value>Kan token niet ophalen. Zorg dat het ENS2-serveradres correct is en dat de ENS2-server actief is en probeer het opnieuw. Als het probleem zich blijft voordoen, raadpleegt u de UEM console-logs en/of ENS2-serverlogs en neemt u contact op met VMware-support.</value>
+  </data>
+  <data name="ENSLinkAddress" xml:space="preserve">
+    <value>ENS2-serveradres</value>
+  </data>
+  <data name="ENSLinkAddressInfo" xml:space="preserve">
+    <value>Het adres van het ENS2-systeem waarmee gebruikers verbinding kunnen maken.</value>
+  </data>
+  <data name="ENSRetrieveTokenBtnText" xml:space="preserve">
+    <value>Token ophalen</value>
+  </data>
+  <data name="ENSValidAPITokenMessage" xml:space="preserve">
+    <value>ENS2 API-token opgehaald.</value>
+  </data>
+  <data name="EnterAppUrlFromGooglePlayStore" xml:space="preserve">
+    <value>App-URL uit Google Play Store invoeren</value>
+  </data>
+  <data name="EnterKeyValuePairsForApplicationAttributes" xml:space="preserve">
+    <value>Voer sleutelwaardeparen in om kenmerken aan applicaties aan te leveren</value>
+  </data>
+  <data name="EnterKeyValuePairsToConfigureWhenAppNotSupport" xml:space="preserve">
+    <value>Deze app ondersteunt geen app-configuratie. Als u de SDK gebruikt om de app te configureren, voert u hieronder sleutelwaardeparen in</value>
+  </data>
+  <data name="EnterNumberBetweenArgAndArg" xml:space="preserve">
+    <value>Voer een getal in tussen {0} - {1}.</value>
+  </data>
+  <data name="EnterpriseAppCatalogDetailsLegalTooltip" xml:space="preserve">
+    <value>Als u hieronder op Doorgaan klikt, wordt software van een externe website gedownload. VMware geeft geen verklaringen of garantie inzake de kwaliteit, inhoud, betrouwbaarheid of beveiligingsprocedures van de software van derden en VMware is niet aansprakelijk als u ervoor kiest om de software van derden te downloaden en te gebruiken.</value>
+  </data>
+  <data name="EnterpriseAppCatalogFailedToLoad" xml:space="preserve">
+    <value>De Applicatiecatalogus kan niet worden geladen. Probeer deze opnieuw te laden en neem contact op met de beheerder als het probleem zich blijft voordoen.</value>
+  </data>
+  <data name="EnterpriseAppCatalogNoApplications" xml:space="preserve">
+    <value>Geen applicaties beschikbaar via de catalogus. Probeer deze opnieuw te laden en neem contact op met de beheerder als het probleem zich blijft voordoen.</value>
+  </data>
+  <data name="EnterpriseAppRepository" xml:space="preserve">
+    <value>Enterprise-app opslagplaats.</value>
+  </data>
+  <data name="EnterpriseAppRepositoryAddAppName" xml:space="preserve">
+    <value>Voer de naam van de applicatie in zoals deze in de Intelligent Hub-catalogus moet worden weergegeven.</value>
+  </data>
+  <data name="EnterpriseAppRepositoryAppUpdateMode" xml:space="preserve">
+    <value>Updatemeldingen</value>
+  </data>
+  <data name="EnterpriseAppRepositoryAppUpdateModeInfo" xml:space="preserve">
+    <value>Selecteer een optie voor applicatie-updates.</value>
+  </data>
+  <data name="EnterpriseAppRepositoryAppUpdateModeNone" xml:space="preserve">
+    <value>Geen</value>
+  </data>
+  <data name="EnterpriseAppRepositoryAppUpdateModeNotify" xml:space="preserve">
+    <value>Melden</value>
+  </data>
+  <data name="EnterpriseAppSourceHelpText" xml:space="preserve">
+    <value>Deze kolom bepaalt of een applicatie is ondertekend met een bedrijfsondertekeningscertificaat en niet is gedistribueerd via de App Store.</value>
+  </data>
+  <data name="EnterValidBuildVersion" xml:space="preserve">
+    <value>Voer een geldige waarde in het veld Buildversie in</value>
+  </data>
+  <data name="EnterValidWhitelistedApplications" xml:space="preserve">
+    <value>Voer geldige, toegestane applicaties in</value>
+  </data>
+  <data name="EntireChain" xml:space="preserve">
+    <value>Hele keten</value>
+  </data>
+  <data name="ERROR_ANOTHER_RUNNING_SCENARIO" xml:space="preserve">
+    <value>Er wordt een ander scenario uitgevoerd</value>
+  </data>
+  <data name="ERROR_COMPLETING_SCENARIO" xml:space="preserve">
+    <value>Het voltooien van het proces is mislukt. Mogelijke redenen:
+
+    Installatie geannuleerd door gebruiker
+    Installatie geannuleerd door een andere installatie
+    Onvoldoende schijf ruimte tijdens de installatie
+    Onbekende taal-ID</value>
+  </data>
+  <data name="ERROR_COMPLETING_SCENARIO_NEED_CLEAN_UP" xml:space="preserve">
+    <value>Mogelijke redenen:
+
+    Onbekende SKU's
+    Inhoud bestaat niet op CDN
+        zoals een poging om een niet-ondersteund LAP te installeren, zoals zh-sg
+        CDN-probleem dat inhoud niet beschikbaar is
+    Mislukte handtekeningcontrole, bijvoorbeeld voor Office-inhoud
+    Gebruiker geannuleerd</value>
+  </data>
+  <data name="ERROR_HANDLING_COMMAND_LINE" xml:space="preserve">
+    <value>Fout in commandoregel van C2RClient</value>
+  </data>
+  <data name="ERROR_INSTALL_FAILURE" xml:space="preserve">
+    <value>Kan geen controle op vereisten uitvoeren.
+
+    SxS (Poging tot installatie terwijl 2016 MSI is geïnstalleerd)
+    Bitsverschil tussen de reeds geïnstalleerde Office-versie en het Office-programma dat wordt geïnstalleerd (bijv. installatie van 32-bits versie terwijl 64-bits versie is geïnstalleerd).</value>
+  </data>
+  <data name="ERROR_INSTALL_USEREXIT" xml:space="preserve">
+    <value>Gebruiker heeft de installatie geannuleerd</value>
+  </data>
+  <data name="ERROR_INVALID_DATA" xml:space="preserve">
+    <value>Kan handtekening van de gedownloade Office Deployment Tool (ODT) niet controleren</value>
+  </data>
+  <data name="ERROR_PROCESSPOOL_INITIALIZATION" xml:space="preserve">
+    <value>Kan C2RClient niet starten</value>
+  </data>
+  <data name="ERROR_QUEUE_SCENARIO" xml:space="preserve">
+    <value>Kan installatiescenario niet in wachtrij plaatsen in C2RClient</value>
+  </data>
+  <data name="ERROR_REMOVE_INSTALLATION_NEEDED" xml:space="preserve">
+    <value>De client vraagt om het opschonen van de client in een scenario voor het verwijderen van de installatie</value>
+  </data>
+  <data name="ERROR_SCENARIO_CANCELLED" xml:space="preserve">
+    <value>Geblokkeerde update door actieve apps</value>
+  </data>
+  <data name="ERROR_SCENARIO_CANCELLED_AS_PLANNED" xml:space="preserve">
+    <value>Scenario geannuleerd zoals gepland</value>
+  </data>
+  <data name="ERROR_TIMEOUT" xml:space="preserve">
+    <value>Kan Office Deployment Tool (ODT) niet downloaden</value>
+  </data>
+  <data name="ErrorApplicationSyncJobAppPublish" xml:space="preserve">
+    <value>Fout in applicatie synchronisatietaak na het publiceren van de applicatie.</value>
+  </data>
+  <data name="EscrowExpiry" xml:space="preserve">
+    <value>FastSync vervaltijd</value>
+  </data>
+  <data name="EscrowExpiryInfo" xml:space="preserve">
+    <value>Stel de vervaltijd in uren in wanneer Workspace ONE Boxer geen FastSync-sleutel ontvangt. FastSync-instellingen worden toegepast wanneer de Email Notification Service is ingeschakeld en geconfigureerd</value>
+  </data>
+  <data name="EscrowGatewayToolTipInfo" xml:space="preserve">
+    <value>De configuratie van de Escrow Gateway is alleen van toepassing wanneer de gateway in uw omgeving is geconfigureerd</value>
+  </data>
+  <data name="EventBased" xml:space="preserve">
+    <value>Op gebeurtenis gebaseerd</value>
+  </data>
+  <data name="EventTargeted" xml:space="preserve">
+    <value>Op gebeurtenis gericht</value>
+  </data>
+  <data name="EWSConfigPositionChangeInfo" xml:space="preserve">
+    <value>Configureer of u de EWS-URL wilt instellen in de sectie E-mailinstellingen.</value>
+  </data>
+  <data name="EWSUrl" xml:space="preserve">
+    <value>EWS-URL</value>
+  </data>
+  <data name="EWSUrlInfo" xml:space="preserve">
+    <value>Adres van het EWS- (of SEG-) eindpunt</value>
+  </data>
+  <data name="EwsUrlInfoMsg" xml:space="preserve">
+    <value>Configuratie van de EWS-URL is verplaatst naar het gedeelte E-mailinstellingen</value>
+  </data>
+  <data name="ExchangeSettings" xml:space="preserve">
+    <value>Microsoft Exchange-instellingen</value>
+  </data>
+  <data name="ExchangeURL" xml:space="preserve">
+    <value>Exchange-URL</value>
+  </data>
+  <data name="ExchangeUserName" xml:space="preserve">
+    <value>Exchange-gebruikersnaam</value>
+  </data>
+  <data name="ExecutionFailed" xml:space="preserve">
+    <value>Uitvoering is mislukt</value>
+  </data>
+  <data name="ExportFactoryPpkg" xml:space="preserve">
+    <value>Export</value>
+  </data>
+  <data name="ExportPpkgMessage" xml:space="preserve">
+    <value>Selecteer applicaties uit een lijst met ondersteunde applicaties en exporteer deze naar een Windows Provisioning Package (PPKG). Wanneer de PPKG-export is voltooid, wordt een melding verzonden met een link om het pakket te downloaden.</value>
+  </data>
+  <data name="ExportPpkgWindowsNoAppsMessage" xml:space="preserve">
+    <value>Export van applicaties naar een Windows Provisioning Package (PPKG) maakt het mogelijk om applicaties in te pakken voor een fabrieksinstallatie. Upload enkele Windows-applicaties om ze naar een PPKG te exporteren.</value>
+  </data>
+  <data name="ExternalApplicationIdInfo" xml:space="preserve">
+    <value>Dit is de unieke id van de Apple App Store, zoals weergegeven in de iTunes-URL van de applicatie</value>
+  </data>
+  <data name="FactoryProvisioningServiceNotRunning" xml:space="preserve">
+    <value>Fabrieksprovisioningservice is niet geconfigureerd of actief. Controleer uw Workspace ONE UEM-installatie.</value>
+  </data>
+  <data name="FailedToUploadApplication" xml:space="preserve">
+    <value>Kan de applicatie niet uploaden.</value>
+  </data>
+  <data name="FastAsyncConfigPositionChangeInfo" xml:space="preserve">
+    <value>Configureer of u de EWS-URL wilt instellen in de sectie E-mailinstellingen.
+Configureer of u FastSync en de vervaldatum wilt inschakelen in de sectie 'App-beleid' &gt; 'Geavanceerd'.</value>
+  </data>
+  <data name="FeaturedApps" xml:space="preserve">
+    <value>Aanbevolen Apps</value>
+  </data>
+  <data name="FeedbackChannelDataNotAvailableMessage" xml:space="preserve">
+    <value>Dit apparaat meldt momenteel geen feedback en is mogelijk offline. Probeer het later opnieuw.</value>
+  </data>
+  <data name="FeedbackChannelEditConfigurationMessage" xml:space="preserve">
+    <value>De wijzigingen in de configuratie worden toegepast op alle apparaten die tot de volgende smart groups behoren:
+
+{0}.
+
+Weet u zeker dat u dit wilt wijzigen?</value>
+  </data>
+  <data name="FeedbackDateTime" xml:space="preserve">
+    <value>Door apparaat gemelde tijd</value>
+  </data>
+  <data name="FeedbackMessage" xml:space="preserve">
+    <value>Bericht</value>
+  </data>
+  <data name="FeedbackTitle" xml:space="preserve">
+    <value>Titel feedback</value>
+  </data>
+  <data name="FeedbackTriggerValue" xml:space="preserve">
+    <value>Triggerwaarde</value>
+  </data>
+  <data name="FieldShouldBeANumber" xml:space="preserve">
+    <value>Het veld moet een getal zijn</value>
+  </data>
+  <data name="FieldShouldBeBetweenArgAndMaxInt" xml:space="preserve">
+    <value>Veld moet een getal zijn tussen {0} en {1}</value>
+  </data>
+  <data name="FieldShouldBeValidColourInHexFormat" xml:space="preserve">
+    <value>In dit veld is de tekstkleur in hexadecimale notatie vereist</value>
+  </data>
+  <data name="FileFormatNotSupported" xml:space="preserve">
+    <value>De geselecteerde bestandsindeling wordt niet ondersteund. Selecteer een XML-bestand.</value>
+  </data>
+  <data name="FilterAppleSystemApps" xml:space="preserve">
+    <value>com.apple.*-apps weergeven</value>
+  </data>
+  <data name="FilterBySmartGroup" xml:space="preserve">
+    <value>Filteren op smart group</value>
+  </data>
+  <data name="FinalDetectionFailed" xml:space="preserve">
+    <value>Laatste detectie is mislukt</value>
+  </data>
+  <data name="FlexDeploymentNewMessage" xml:space="preserve">
+    <value>Apparaten ontvangen applicaties op basis van de onderstaande configuraties. Apparaten met meerdere toewijzingen ontvangen beleid op volgorde van prioriteit. Als u de prioriteit voor één toewijzing aanpast, wordt de prioriteit van andere toewijzingen automatisch aangepast. Selecteer de toewijzing die u wilt bewerken. Als u een nieuwe toewijzing toevoegt, wordt onder aan de lijst een nieuwe regel gemaakt.</value>
+  </data>
+  <data name="FlexeraCriticalAppsArrived" xml:space="preserve">
+    <value>Er zijn nieuwe Flexera SVM-patches beschikbaar</value>
+  </data>
+  <data name="FlexeraSVM" xml:space="preserve">
+    <value>Flexera SVM</value>
+  </data>
+  <data name="ForwardAddAttachments" xml:space="preserve">
+    <value>Door sturen/Bijlagen toevoegen</value>
+  </data>
+  <data name="FromEnterpriseCatalog" xml:space="preserve">
+    <value>Uit de Enterprise-app opslagplaats</value>
+  </data>
+  <data name="GetStartedWithWorkflows" xml:space="preserve">
+    <value>Aan de slag met werkstromen</value>
+  </data>
+  <data name="GoToChromeWebStore" xml:space="preserve">
+    <value>Ga naar de Chrome web store</value>
+  </data>
+  <data name="HideNotificationsLabel" xml:space="preserve">
+    <value>Meldingen verbergen</value>
+  </data>
+  <data name="HideNotificationsTooltip" xml:space="preserve">
+    <value>Schakel deze instelling in om te voorkomen dat installatie-en verwijderingsmeldingen voor deze applicatie worden weergegeven. Dit is alleen van toepassing op automatisch geïmplementeerde applicaties.</value>
+  </data>
+  <data name="HighCriticality" xml:space="preserve">
+    <value>Hoge ernst</value>
+  </data>
+  <data name="IconFile" xml:space="preserve">
+    <value>Pictogrambestand</value>
+  </data>
+  <data name="InactiveAppAlreadyExistsinConsole" xml:space="preserve">
+    <value>Deze applicatie is al toegevoegd aan de console en bevindt zich in een inactieve staat. Activeer de applicatie opnieuw in de Applicaties-lijstweergave om door te gaan met de toewijzing.</value>
+  </data>
+  <data name="IncorrectExchangeURL" xml:space="preserve">
+    <value>Gebruik de indeling https://server.domain.com/EWS/Exchange.asmx.</value>
+  </data>
+  <data name="IndividualAppSizeLimitMessage" xml:space="preserve">
+    <value>Maximale toegestane bestandsgrootte: {0} MB</value>
+  </data>
+  <data name="InstallAppExceptionMessage" xml:space="preserve">
+    <value>Selecteer filter om de applicatie op een groot aantal toestellen te installeren.</value>
+  </data>
+  <data name="InstallApplicationConfirmed" xml:space="preserve">
+    <value>Installatie van door toestel bevestigde applicatie</value>
+  </data>
+  <data name="InstallAppOnAllBspAlert" xml:space="preserve">
+    <value>U staat op het punt om de applicatie op alle apparaten te installeren. Als licenties beperkt zijn, ontvangen bepaalde apparaten de applicatie mogelijk niet. Klik op OK om door te gaan. Beschikbare licenties: {0} online, {1} offline</value>
+  </data>
+  <data name="InstallationStatus" xml:space="preserve">
+    <value>Installatiestatus</value>
+  </data>
+  <data name="InstallationStatusLastScan" xml:space="preserve">
+    <value>Installatiestatus laatste scan</value>
+  </data>
+  <data name="InstallCommandFailed" xml:space="preserve">
+    <value>Installatiecommando mislukt</value>
+  </data>
+  <data name="InstalledAndFeedbackAvailable" xml:space="preserve">
+    <value>Geïnstalleerd (configuratiefeedback beschikbaar)</value>
+  </data>
+  <data name="InstalledAppVersion" xml:space="preserve">
+    <value>Geïnstalleerde app-versie</value>
+  </data>
+  <data name="InstalledButHidden" xml:space="preserve">
+    <value>Geïnstalleerd, maar verborgen</value>
+  </data>
+  <data name="InstalledByUser" xml:space="preserve">
+    <value>Geïnstalleerd door gebruiker</value>
+  </data>
+  <data name="InstalledEqualsAssigned" xml:space="preserve">
+    <value>Geïnstalleerd = Toegewezen</value>
+  </data>
+  <data name="InstalledNotEqualsAssigned" xml:space="preserve">
+    <value>Geïnstalleerd &lt;&gt; Toegewezen</value>
+  </data>
+  <data name="InstalledPersonalApp" xml:space="preserve">
+    <value>Geïnstalleerde persoonlijke app</value>
+  </data>
+  <data name="InstalledSystemApp" xml:space="preserve">
+    <value>Geïnstalleerde systeem-app</value>
+  </data>
+  <data name="InstalledWithVersion" xml:space="preserve">
+    <value>Geïnstalleerd ({0})</value>
+  </data>
+  <data name="InstallerDeferralExitCodeInvalid" xml:space="preserve">
+    <value>Afsluitcode is ongeldig.</value>
+  </data>
+  <data name="InstallerDeferralExitCodeLabel" xml:space="preserve">
+    <value>Afsluitcode voor installatieprogramma - uitstel</value>
+  </data>
+  <data name="InstallerDeferralExitCodeRequired" xml:space="preserve">
+    <value>Afsluitcode is vereist.</value>
+  </data>
+  <data name="InstallerDeferralExitCodeTooltip" xml:space="preserve">
+    <value>Geef het gehele getal op dat door het installatieprogramma wordt geretourneerd om aan te geven dat de installatie van de app is uitgesteld. Hierdoor kan de app-installatie bij het volgende installatie-interval opnieuw worden uitgevoerd.</value>
+  </data>
+  <data name="InstallerDeferralIntervalLabel" xml:space="preserve">
+    <value>Interval voor uitstellen installatieprogramma</value>
+  </data>
+  <data name="InstallerDeferralIntervalOption12Hours" xml:space="preserve">
+    <value>12 uur</value>
+  </data>
+  <data name="InstallerDeferralIntervalOption24Hours" xml:space="preserve">
+    <value>24 uur</value>
+  </data>
+  <data name="InstallerDeferralIntervalOption2Hours" xml:space="preserve">
+    <value>2 uur</value>
+  </data>
+  <data name="InstallerDeferralIntervalOption4Hours" xml:space="preserve">
+    <value>4 uur</value>
+  </data>
+  <data name="InstallerDeferralIntervalOption8Hours" xml:space="preserve">
+    <value>8 uur</value>
+  </data>
+  <data name="InstallerDeferralIntervalTooltip" xml:space="preserve">
+    <value>Geef de uitstelperiode op</value>
+  </data>
+  <data name="InstallerDeferralNotificationCustom" xml:space="preserve">
+    <value>AANGEPAST</value>
+  </data>
+  <data name="InstallerDeferralNotificationLabel" xml:space="preserve">
+    <value>UEM- of aangepaste meldingen gebruiken</value>
+  </data>
+  <data name="InstallerDeferralNotificationTooltip" xml:space="preserve">
+    <value>Geef op of uitstel UEM- of aangepaste meldingen moet gebruiken</value>
+  </data>
+  <data name="InstallerDeferralNotificationUEM" xml:space="preserve">
+    <value>UEM</value>
+  </data>
+  <data name="InstallerPackageDeployment" xml:space="preserve">
+    <value>Implementatie van Installer-pakket</value>
+  </data>
+  <data name="InstallInProgress" xml:space="preserve">
+    <value>Installatie wordt uitgevoerd</value>
+  </data>
+  <data name="InstallOnSelectedDevices" xml:space="preserve">
+    <value>Deze app wordt alleen geïnstalleerd op toestellen met geldige toewijzingen.</value>
+  </data>
+  <data name="InstallOnSelectedDevicesBspAlert" xml:space="preserve">
+    <value>U staat op het punt om de applicatie op alle geselecteerde apparaten te installeren. Als licenties beperkt zijn, ontvangen bepaalde apparaten de applicatie mogelijk niet. Klik op OK om door te gaan. Beschikbare licenties: {0} online, {1} offline</value>
+  </data>
+  <data name="InstallStatusHeaderToolTip" xml:space="preserve">
+    <value>Dit is een weergave van de door toestellen gerapporteerde gegevens met gedetailleerde informatie over de installatiestatus van deze app die niet is gekoppeld aan een bepaalde versie.</value>
+  </data>
+  <data name="InstallSuccess" xml:space="preserve">
+    <value>Installatie geslaagd</value>
+  </data>
+  <data name="IntelligenceOptInMessageForFeedbackArg" xml:space="preserve">
+    <value>Als u app-configuratiefeedback wilt weer geven, moet u zich bij Intelligence aanmelden. {0}</value>
+  </data>
+  <data name="InternalAppAssignmentUpToDate" xml:space="preserve">
+    <value>Up-to-date. De toegewezen app-versie is dezelfde als de versie die is geïnstalleerd</value>
+  </data>
+  <data name="InternalApplication" xml:space="preserve">
+    <value>Interne applicatie</value>
+  </data>
+  <data name="InternalApplications" xml:space="preserve">
+    <value>Interne applicaties</value>
+  </data>
+  <data name="InternalDomainsFieldError" xml:space="preserve">
+    <value>Domeinlijst moet tussen vierkante haakjes worden geplaatst. Bijvoorbeeld: ["xyz.com","abc.com"]</value>
+  </data>
+  <data name="InternalDomainsInfo" xml:space="preserve">
+    <value>Definieer de domeinen die intern of toegestaan zijn. De gebruiker kan de waarschuwing uitschakelen met de optie Bevestigen vóór verzenden wanneer de interne domeinen zijn gedefinieerd en er geen externe ontvangers zijn ingesteld. Zet elk domein tussen dubbele aanhalingstekens, gebruik een komma als scheidingsteken en plaats de lijst tussen vierkante haakjes. Bijvoorbeeld: ["xyz.com","abc.com"].</value>
+  </data>
+  <data name="InternalTriggerAccountVersion" xml:space="preserve">
+    <value>Geeft details weer van de laatste actie die is uitgevoerd op toegewezen toestellen voor deze app-versie.</value>
+  </data>
+  <data name="InvalidAppAttributeVpnKey" xml:space="preserve">
+    <value>VPNUUID is niet geldig voor kenmerken. Configureer in plaats hiervan App Tunneling.</value>
+  </data>
+  <data name="InvalidApplicationBundleID" xml:space="preserve">
+    <value>Ongeldige applicatiebundel-ID</value>
+  </data>
+  <data name="InvalidApplicationError" xml:space="preserve">
+    <value>Indeling van applicatiepakket wordt niet ondersteund</value>
+  </data>
+  <data name="InvalidMultiStringValue" xml:space="preserve">
+    <value>Geef tekenreeksen zonder aanhalingstekens op</value>
+  </data>
+  <data name="InvalidNsxEntryForApplication" xml:space="preserve">
+    <value>Ongeldige NSX-invoer voor de geselecteerde applicatie</value>
+  </data>
+  <data name="InvalidPkgInfoFile" xml:space="preserve">
+    <value>Ongeldige metagegevens. Genereer het bestand via de Admin Assistant Tool en probeer opnieuw te uploaden.</value>
+  </data>
+  <data name="InvalidPlayStoreUrlEnterValidUrlToContinue" xml:space="preserve">
+    <value>Ongeldige URL voor Play Store. Voer een geldige URL voor de Play Store in om door te gaan.</value>
+  </data>
+  <data name="InvalidRegistryPath" xml:space="preserve">
+    <value>Ongeldig registerpad</value>
+  </data>
+  <data name="InvalidThresholdId" xml:space="preserve">
+    <value>Ongeldige drempel-ID</value>
+  </data>
+  <data name="IsBlockingAppsEnabled" xml:space="preserve">
+    <value>Applicaties blokkeren</value>
+  </data>
+  <data name="IsBlockingAppsEnabledTooltip" xml:space="preserve">
+    <value>Door Applicaties blokkeren in te schakelen worden alle gedefinieerde items gebruikt om te controleren of ze worden uitgevoerd voordat de installatie wordt gestart. Door Applicaties blokkeren uit te schakelen, wordt het blokkeren genegeerd en wordt de installatie voortgezet.</value>
+  </data>
+  <data name="IsForceInstallAfterDateEnabled" xml:space="preserve">
+    <value>Installatie afdwingen na datum</value>
+  </data>
+  <data name="IsForceInstallAfterDateEnabledTooltip" xml:space="preserve">
+    <value>Geef een datum op waarop de installatie moet worden uitgevoerd als het item nog niet is geïnstalleerd. Hierdoor worden eventuele blokkerende applicaties gesloten en, indien gedefinieerd, de herstartactie afgedwongen.</value>
+  </data>
+  <data name="KeyEscrow" xml:space="preserve">
+    <value>Key-Escrow</value>
+  </data>
+  <data name="KeyHelpText" xml:space="preserve">
+    <value>Bijv. HKLM\Software\.. of HKCU\Software\.. of HKEY_LOCAL_MACHINE\Software.. of HKEY_CURRENT_USER\Software.. 
+
+Voer het registerpad in met de verkorte of volledige naam voor het registeronderdeel van het hoogste niveau.</value>
+  </data>
+  <data name="KeySupportedOnlyAtAccountLevel" xml:space="preserve">
+    <value>Sleutel wordt alleen ondersteund op accountniveau</value>
+  </data>
+  <data name="KeySupportedOnlyAtAppLevel" xml:space="preserve">
+    <value>Sleutel wordt alleen ondersteund op app-niveau</value>
+  </data>
+  <data name="LastAction" xml:space="preserve">
+    <value>Laatste actie</value>
+  </data>
+  <data name="LastActionTaken" xml:space="preserve">
+    <value>Laatst uitgevoerde actie</value>
+  </data>
+  <data name="LastActionTimestamp" xml:space="preserve">
+    <value>Tijdstempel laatste actie</value>
+  </data>
+  <data name="LastReportedTime" xml:space="preserve">
+    <value>Laatste keer gerapporteerd</value>
+  </data>
+  <data name="LastServerAction" xml:space="preserve">
+    <value>Laatste serveractie</value>
+  </data>
+  <data name="LatestInstallationEvent" xml:space="preserve">
+    <value>Laatste vastgelegde installatie-gebeurtenis</value>
+  </data>
+  <data name="LatestInstallationEventTooltip" xml:space="preserve">
+    <value>Hier wordt de laatste vastgelegde installatiegebeurtenis weergegeven in het gedeelte 'problemen oplossen' voor dit toestel en deze app. Alleen actuele installatiestatussen worden vastgelegd als gebeurtenissen. Voltooide installatiestatussen worden niet als gebeurtenissen vastgelegd. Het kan zijn dat het toestel niet elke installatiestatus vermeldt. In dat geval worden er geen gebeurtenissen vastgelegd.</value>
+  </data>
+  <data name="LatestInstallationStatus" xml:space="preserve">
+    <value>Laatste installatiestatus</value>
+  </data>
+  <data name="LicenseDistribution" xml:space="preserve">
+    <value>Licentiedistributie</value>
+  </data>
+  <data name="LicenseSummary" xml:space="preserve">
+    <value>Licentiesamenvatting</value>
+  </data>
+  <data name="LogAggregationMode" xml:space="preserve">
+    <value>Modus logboeken samenvoegen</value>
+  </data>
+  <data name="LogAggregationModeInfo" xml:space="preserve">
+    <value>De modus waarin de app het logboekbestand naar het eindpunt Logboeken samenvoegen verzendt.</value>
+  </data>
+  <data name="LogAggregationUrlInfo" xml:space="preserve">
+    <value>De URL voor het eindpunt Logboeken samenvoegen.</value>
+  </data>
+  <data name="LowCriticality" xml:space="preserve">
+    <value>Lage ernst</value>
+  </data>
+  <data name="macOSDesiredStateManagement" xml:space="preserve">
+    <value>Beheer gewenste status</value>
+  </data>
+  <data name="Major" xml:space="preserve">
+    <value>Primair</value>
+  </data>
+  <data name="ManageAssignment" xml:space="preserve">
+    <value>Toewijzing beheren</value>
+  </data>
+  <data name="ManageAssignmentForApplicationArgOpensDialog" xml:space="preserve">
+    <value>Toewijzing beheren voor applicatie {0} opent dialoogvenster</value>
+    <comment>The placeholder in this label key will contain application name.</comment>
+  </data>
+  <data name="ManageAssignmentForArgOpensDialog" xml:space="preserve">
+    <value>Toewijzing beheren voor {0} opent dialoogvenster</value>
+    <comment>Placeholder in this label key is for application name.</comment>
+  </data>
+  <data name="ManagedAccess" xml:space="preserve">
+    <value>Beheerde toegang</value>
+  </data>
+  <data name="ManagedAccessDescription" xml:space="preserve">
+    <value>Door EMM beheerde toegang bepaalt welke toestellen deze app vanaf Intelligent Hub kunnen installeren.</value>
+  </data>
+  <data name="ManagedAccessOnlyEmmDevices" xml:space="preserve">
+    <value>Alleen door EMM beheerde toestellen kunnen deze app installeren.</value>
+  </data>
+  <data name="ManagedAccessSecuredByWorkspace" xml:space="preserve">
+    <value>Als deze app is beveiligd met Workspace ONE SDK-versie 20.10 of hoger, wordt toegang geblokkeerd tenzij de app wordt beheerd door EMM. Om te zorgen dat deze app wordt beheerd, schakelt u de instelling 'Applicatie onder MDM-beheer stellen als het door gebruiker is geïnstalleerd' in op het tabblad Beperkingen.</value>
+  </data>
+  <data name="ManagedAccessSettingEnabled" xml:space="preserve">
+    <value>Als deze instelling is ingeschakeld:</value>
+  </data>
+  <data name="ManagedAccessSettingEnabledOnlyEmm" xml:space="preserve">
+    <value>Als deze instelling is ingeschakeld, kunnen alleen door EMM beheerde toestellen deze app installeren.</value>
+  </data>
+  <data name="ManagedAccessSubDescription" xml:space="preserve">
+    <value>Als deze instelling is uitgeschakeld, kunnen alle geregistreerde toestellen deze app installeren.</value>
+  </data>
+  <data name="ManagedAccessTitle" xml:space="preserve">
+    <value>Door EMM beheerde toegang</value>
+  </data>
+  <data name="ManagedAppsTab" xml:space="preserve">
+    <value>Beheerde apps</value>
+  </data>
+  <data name="ManagedConfigurationErrorMessage" xml:space="preserve">
+    <value>Configuratiefouten</value>
+  </data>
+  <data name="ManagementAccess" xml:space="preserve">
+    <value>Beheertoegang</value>
+  </data>
+  <data name="ManagementIDToolTip" xml:space="preserve">
+    <value>Unieke identificatie per applicatie en toestel</value>
+  </data>
+  <data name="MaxAllowedDevicesException" xml:space="preserve">
+    <value>Selecteer een filter, aangezien het aantal geselecteerde toestellen groter is dan het aantal toegestane toestellen.</value>
+  </data>
+  <data name="MaxAttachmentSize" xml:space="preserve">
+    <value>Max. grootte bijlage</value>
+  </data>
+  <data name="MaxAttachmentSizeInfo" xml:space="preserve">
+    <value>Maximale bestandsgrootte in bytes die een gebruiker kan bijvoegen bij een uitgaande e-mail</value>
+  </data>
+  <data name="MaxCalendarSyncWindow" xml:space="preserve">
+    <value>Maximaal toegestane kalendersynchronisatieperiode</value>
+  </data>
+  <data name="MaxEmailSyncWindow" xml:space="preserve">
+    <value>Maximaal toegestane e-mailsynchronisatieperiode</value>
+  </data>
+  <data name="MaxFileSizeCDNMegabytes" xml:space="preserve">
+    <value>Maximale bestandsgrootte met CDN</value>
+  </data>
+  <data name="MaximumFileSizeWithCDNShouldBeLesserThanAppCapacity" xml:space="preserve">
+    <value>Maximale bestandsgrootte met CDN mag niet groter zijn dan de totale applicatiecapaciteit.</value>
+  </data>
+  <data name="MaxTabCountReached" xml:space="preserve">
+    <value>Er worden slechts drie beheerde e-mailaccounts ondersteund</value>
+  </data>
+  <data name="MediumCriticality" xml:space="preserve">
+    <value>Middelmatige ernst</value>
+  </data>
+  <data name="MetadataFileContainsInvalidCharactersForNameKey" xml:space="preserve">
+    <value>De waarde van de naamsleutel in het metagegevensbestand bevat ongeldige tekens. Deze sleutelwaarde kan alleen alfanumerieke tekens, onderstrepingstekens, spaties, koppeltekens en punten bevatten.</value>
+  </data>
+  <data name="MMAEmailSettingsInfoMsgInfo" xml:space="preserve">
+    <value>Configuratie van meerdere e-mailaccounts wordt alleen ondersteund door Boxer-app versie 5,21 of hoger en Single Sign-On moet zijn ingeschakeld.</value>
+  </data>
+  <data name="MobileFlowsAuthenticationServerInfo" xml:space="preserve">
+    <value>Geef een geldige URL op voor het verifiëren van de gebruikers van het apparaat. Dit kan de Workspace ONE toegangsserver URL zijn.</value>
+  </data>
+  <data name="MobileFlowsAutoEnableConnectorsInfo" xml:space="preserve">
+    <value>Als deze optie is ingeschakeld, worden na inschakelen van Mobile Flows automatisch alle connectors achter elkaar ingeschakeld. Alleen aanbevolen wanneer alle connectors verbonden zijn met Workspace ONE Access</value>
+  </data>
+  <data name="MobileFlowsHostInfo" xml:space="preserve">
+    <value>Hostnaam voor de Mobile Flows-server</value>
+  </data>
+  <data name="MobileFlowsInfo" xml:space="preserve">
+    <value>Informatie over de Mobile Flows-server configureren waarmee Boxer kan integreren</value>
+  </data>
+  <data name="MobileFlowsSyncHoursInfo" xml:space="preserve">
+    <value>Vraag geen Mobile Flows-kaarten aan voor e-mails die eerder zijn verzonden dan deze waarde (in uren)</value>
+  </data>
+  <data name="ModifiedOnArgArgByArg" xml:space="preserve">
+    <value>Gewijzigd op {0} door {1}</value>
+  </data>
+  <data name="MSTSelection" xml:space="preserve">
+    <value>Applicatietransformaties selecteren</value>
+  </data>
+  <data name="MustBePositiveIntegerValue" xml:space="preserve">
+    <value>Moet een positieve gehele waarde zijn</value>
+  </data>
+  <data name="NewWorkflow" xml:space="preserve">
+    <value>Nieuwe werkstroom</value>
+  </data>
+  <data name="NoEventLogged" xml:space="preserve">
+    <value>Geen gebeurtenis vastgelegd</value>
+  </data>
+  <data name="NotebookVersionMessage" xml:space="preserve">
+    <value>Het onderstaande beleid is alleen van toepassing op Notebook versie 1.4 en hoger. Ga voor oudere versies naar aangepaste instellingen in het SDK-profiel dat aan deze app is gekoppeld.</value>
+  </data>
+  <data name="NotebookWarningToEditAllAssignments" xml:space="preserve">
+    <value>Notebook-configuratie is gereed voor installatie. Zorg ervoor dat de configuraties die zijn overgebracht uit de aangepaste instellingen van het SDK-profiel voor deze app, correct zijn voordat u publiceert.</value>
+  </data>
+  <data name="NotEvaluated" xml:space="preserve">
+    <value>Niet geëvalueerd</value>
+  </data>
+  <data name="NotificationsInfo" xml:space="preserve">
+    <value>Configureer de ENS-service (Email Notification Service) en het gedrag ervan om realtime e-mailmeldingen te geven.</value>
+  </data>
+  <data name="NotifyEmail" xml:space="preserve">
+    <value>E-mail melden</value>
+  </data>
+  <data name="NumberOfApps" xml:space="preserve">
+    <value>{0} Applicaties</value>
+  </data>
+  <data name="NumberOfCommandsQueued" xml:space="preserve">
+    <value>Aantal commando's in wachtrij</value>
+  </data>
+  <data name="OCSP" xml:space="preserve">
+    <value>Beleid voor intrekking van certificaten</value>
+  </data>
+  <data name="OfflineLicenseAvailableArgDevicesAllocation" xml:space="preserve">
+    <value>{0} beschikbare offline licenties. Aan apparaten worden licenties toegewezen op volgorde van binnenkomst.</value>
+  </data>
+  <data name="OnDemandAppAssignedButNotInstalled" xml:space="preserve">
+    <value>App die is toegewezen voor implementatie op aanvraag is niet geïnstalleerd</value>
+  </data>
+  <data name="OnDemandAppAssignmentOutOfDate" xml:space="preserve">
+    <value>Nieuwste versie van de app die is toegewezen voor implementatie op aanvraag is niet geïnstalleerd</value>
+  </data>
+  <data name="OnDemandBootstrapPackageAssignedButNotInstalled" xml:space="preserve">
+    <value>Bootstrap-pakket toegewezen voor on demand implementatie, maar is niet aangevraagd</value>
+  </data>
+  <data name="OneDay" xml:space="preserve">
+    <value>1 dag</value>
+  </data>
+  <data name="OnlineLicenseAvailableArgDevicesAllocation" xml:space="preserve">
+    <value>{0} online licenties beschikbaar. Aan apparaten worden licenties toegewezen op volgorde van binnenkomst..</value>
+  </data>
+  <data name="OrdersLicensesMenuTitle" xml:space="preserve">
+    <value>Inwisselcodes van Volume-aankoopprogramma (VPP) bekijken en beheren</value>
+  </data>
+  <data name="OSVersionNotSetError" xml:space="preserve">
+    <value>OsVersion mag niet nul of leeg zijn als beleid is ingeschakeld</value>
+  </data>
+  <data name="OsXParseError" xml:space="preserve">
+    <value>Fout opgetreden tijdens het parseren van het OsX-bestand</value>
+  </data>
+  <data name="OtherAttributes" xml:space="preserve">
+    <value>Overige kenmerken</value>
+  </data>
+  <data name="PasswordNotCopied" xml:space="preserve">
+    <value>De wachtwoorden die tijdens uw configuratie zijn ingevoerd, zijn niet samen met dit profiel gekopieerd. Voer de juiste wachtwoorden opnieuw in voordat u opslaat.</value>
+  </data>
+  <data name="Paused" xml:space="preserve">
+    <value>Gepauzeerd</value>
+  </data>
+  <data name="PeerDistribution" xml:space="preserve">
+    <value>Peerdistributie</value>
+  </data>
+  <data name="PeerDistributionCacheBytes" xml:space="preserve">
+    <value>Cachebytes</value>
+  </data>
+  <data name="PeerDistributionCacheEnabled" xml:space="preserve">
+    <value>Cache ingeschakeld</value>
+  </data>
+  <data name="PeerDistributionCurrentClientMode" xml:space="preserve">
+    <value>Huidige clientmodus</value>
+  </data>
+  <data name="PeerDistributionDetails" xml:space="preserve">
+    <value>Details peerdistributie</value>
+  </data>
+  <data name="PeerDistributionDetailsLearnMore" xml:space="preserve">
+    <value>MEER INFORMATIE</value>
+  </data>
+  <data name="PeerDistributionDetailsToolTip" xml:space="preserve">
+    <value>Toont het aantal apparaten dat deze toepassing heeft gedownload via peerdistributie, de hoeveelheid gedownloade gegevens en de plaats waar de downloadgegevens zijn verkregen</value>
+  </data>
+  <data name="PeerDistributionDevicesUtilizingPeerDistribution" xml:space="preserve">
+    <value>Apparaten die gebruikmaken van peerdistributie</value>
+  </data>
+  <data name="PeerDistributionDevicesWithPeerDistributionOn" xml:space="preserve">
+    <value>Apparaten met peerdistributie op</value>
+  </data>
+  <data name="PeerDistributionDownloadSource" xml:space="preserve">
+    <value>Downloadbron</value>
+  </data>
+  <data name="PeerDistributionHostedCacheServerList" xml:space="preserve">
+    <value>Lijst met gehoste cacheservers</value>
+  </data>
+  <data name="PeerDistributionNotUtilized" xml:space="preserve">
+    <value>Niet gebruikt</value>
+  </data>
+  <data name="PeerDistributionOff" xml:space="preserve">
+    <value>Uit</value>
+  </data>
+  <data name="PeerDistributionOnNotUtilized" xml:space="preserve">
+    <value>Aan/Niet gebruikt</value>
+  </data>
+  <data name="PeerDistributionOnUtilized" xml:space="preserve">
+    <value>Aan/Gebruikt</value>
+  </data>
+  <data name="PeerDistributionServerBytes" xml:space="preserve">
+    <value>Serverbytes</value>
+  </data>
+  <data name="PeerDistributionSfdOriginTypeAW" xml:space="preserve">
+    <value>Toestelservices</value>
+  </data>
+  <data name="PeerDistributionSfdOriginTypeCDN" xml:space="preserve">
+    <value>CDN</value>
+  </data>
+  <data name="PeerDistributionSfdOriginTypeNone" xml:space="preserve">
+    <value>Geen</value>
+  </data>
+  <data name="PeerDistributionSfdOriginTypeP2P" xml:space="preserve">
+    <value>Adaptiva</value>
+  </data>
+  <data name="PeerDistributionSfdOriginTypeP2PBC" xml:space="preserve">
+    <value>CDN (met apparaatservices)</value>
+  </data>
+  <data name="PeerDistributionStatus" xml:space="preserve">
+    <value>Peerdistributie</value>
+  </data>
+  <data name="PeerDistributionTotalDeviceCount" xml:space="preserve">
+    <value>Totaal aantal apparaten</value>
+  </data>
+  <data name="PeerDistributionTotalSavingBytes" xml:space="preserve">
+    <value>Totale opslag - bytes</value>
+  </data>
+  <data name="PeerDistributionTotalSavingPercent" xml:space="preserve">
+    <value>Totale opslag - percentage</value>
+  </data>
+  <data name="PeerDistributionTotalUtilizedCacheBytes" xml:space="preserve">
+    <value>Totaal gebruikte cachebytes</value>
+  </data>
+  <data name="PeerDistributionTotalUtilizedServerBytes" xml:space="preserve">
+    <value>Totaal gebruikte serverbytes</value>
+  </data>
+  <data name="PeerDistributionUtilized" xml:space="preserve">
+    <value>Gebruikt</value>
+  </data>
+  <data name="PersonalAppCounts" xml:space="preserve">
+    <value>Wordt zonder toewijzingen geïnstalleerd</value>
+  </data>
+  <data name="PersonalAppCountsToolTip" xml:space="preserve">
+    <value>Geeft het aantal toestellen weer waarop verschillende versies van deze app zijn geïnstalleerd, maar die geen geldige toewijzing hebben omdat deze app side-loaded is of eerder toegewezen is vanuit Workspace ONE.</value>
+  </data>
+  <data name="Pivd" xml:space="preserve">
+    <value>PIV-D</value>
+  </data>
+  <data name="PivdAndroidDerivedCredentialSmimeForFirstaccount" xml:space="preserve">
+    <value>PIV-D ondersteunt slechts één S/MIME-certificaat. Selecteer deze optie alleen voor het primaire beheerde e-mailaccount.</value>
+  </data>
+  <data name="PivdDerivedCredentialForFirstaccount" xml:space="preserve">
+    <value>PIV-D ondersteunt alleen certificaat voor enkelvoudige verificatie. Selecteer deze optie alleen voor het primaire beheerde e-mailaccount. Voor het gebruik van PIV-D met Boxer-applicatieversies lager dan 5.21 geeft u vanuit de sectie Applicatieconfiguratie de custom KVP 'PolicyDerivedCredentials' door.</value>
+  </data>
+  <data name="PlusAdd" xml:space="preserve">
+    <value>+ Toevoegen</value>
+  </data>
+  <data name="PolicyAllowActionArchive" xml:space="preserve">
+    <value>Archiefactie</value>
+  </data>
+  <data name="PolicyAllowActionSpam" xml:space="preserve">
+    <value>Eindgebruiker toestaan om spam te melden</value>
+  </data>
+  <data name="PolicyAllowAttachments" xml:space="preserve">
+    <value>Bijlagen toestaan</value>
+  </data>
+  <data name="PolicyAllowAttachmentsDownload" xml:space="preserve">
+    <value>Downloaden van bijlagen toestaan</value>
+  </data>
+  <data name="PolicyAllowAttachmentsDownloadInfo" xml:space="preserve">
+    <value>Downloaden en doorsturen van bijlagen toestaan of blokkeren</value>
+  </data>
+  <data name="PolicyAllowAttachmentsInfo" xml:space="preserve">
+    <value>Hiermee kan de gebruiker bijlagen toevoegen/doorsturen</value>
+  </data>
+  <data name="PolicyAllowCallKitIdentification" xml:space="preserve">
+    <value>Het gebruik van CallKit inschakelen</value>
+  </data>
+  <data name="PolicyAllowCallKitIdentificationInfo" xml:space="preserve">
+    <value>Dit is alleen een iOS-instelling en vergt interactie van de gebruiker om CallKit nummerweergave in te schakelen</value>
+  </data>
+  <data name="PolicyAllowCrashReporting" xml:space="preserve">
+    <value>Crashrapportage toestaan</value>
+  </data>
+  <data name="PolicyAllowCustomKeyboards" xml:space="preserve">
+    <value>Aangepaste toetsenborden toestaan</value>
+  </data>
+  <data name="PolicyAllowCustomKeyboardsTooltip" xml:space="preserve">
+    <value>Gebruikers toestaan om toetsenborden van derden in te schakelen</value>
+  </data>
+  <data name="PolicyAllowDocProviders" xml:space="preserve">
+    <value>Bijlagen van externe providers beheren</value>
+  </data>
+  <data name="PolicyAllowEnterpriseContent" xml:space="preserve">
+    <value>Bedrijfscontent</value>
+  </data>
+  <data name="PolicyAllowLocalCalendars" xml:space="preserve">
+    <value>Lokale agenda's</value>
+  </data>
+  <data name="PolicyAllowLogging" xml:space="preserve">
+    <value>Hiermee wordt logboekregistratie toegestaan</value>
+  </data>
+  <data name="PolicyAllowLoggingInfo" xml:space="preserve">
+    <value>Deze logboeken worden niet verzonden, tenzij de gebruiker een actie uitvoert om deze te verzenden.</value>
+  </data>
+  <data name="PolicyAllowMailServerCiphers" xml:space="preserve">
+    <value>Toegestane e-mailserverversleutelingen</value>
+  </data>
+  <data name="PolicyAllowMailServerCiphersInfo" xml:space="preserve">
+    <value>Forceert Boxer om alleen deze versleutelingen te gebruiken tijdens een TLS-handshake wanneer verbinding wordt gemaakt met een e-mailserver</value>
+  </data>
+  <data name="PolicyAllowMetrics" xml:space="preserve">
+    <value>Anonieme meetgegevens</value>
+  </data>
+  <data name="PolicyAllowOpenIn" xml:space="preserve">
+    <value>Openen in beheren</value>
+  </data>
+  <data name="PolicyAllowPhotoAttachemetInfo" xml:space="preserve">
+    <value>Toestaan of blokkeren dat foto's uit camera/fotogalerie kunnen worden bijgevoegd</value>
+  </data>
+  <data name="PolicyAllowPhotoAttachment" xml:space="preserve">
+    <value>Fotobijlage toestaan</value>
+  </data>
+  <data name="PolicyAllowPrint" xml:space="preserve">
+    <value>Afdrukken toestaan</value>
+  </data>
+  <data name="PolicyAllowPrintTooltip" xml:space="preserve">
+    <value>Uitschakelen om het afdrukken van e-mails en bijlagen te blokkeren</value>
+  </data>
+  <data name="PolicyAllowTouchID" xml:space="preserve">
+    <value>Biometrische identificatie</value>
+  </data>
+  <data name="PolicyAllowTouchInfo" xml:space="preserve">
+    <value>Als u deze functie inschakelt, kunnen gebruikers hun vingerafdruk, Touch ID of Face ID op ondersteunde toestellen gebruiken.</value>
+  </data>
+  <data name="PolicyAllowUserAccountsInfo" xml:space="preserve">
+    <value>De gebruiker toestaan om andere accounts toe te voegen, zoals Gmail, iCloud en andere IMAP-accounts.</value>
+  </data>
+  <data name="PolicyCalendarMaxSyncPeriod" xml:space="preserve">
+    <value>Venster Max. agendasynchronisatie</value>
+  </data>
+  <data name="PolicyCalendarMaxSyncPeriodInfo" xml:space="preserve">
+    <value>Hoe ver terug een gebruiker kan selecteren om hun agendagebeurtenissen te synchroniseren.</value>
+  </data>
+  <data name="PolicyClassMarkings" xml:space="preserve">
+    <value>Markeringen</value>
+  </data>
+  <data name="PolicyClassMarkingsDefaultClass" xml:space="preserve">
+    <value>Standaardclassificatie</value>
+  </data>
+  <data name="PolicyClassMarkingsDefaultClassInfo" xml:space="preserve">
+    <value>(Optioneel) Stel de standaardclassificatie in voor e-mails. De waarde moet overeenkomen met een weergavenaam van een vermelding in de PolicyClassMarkings configuratiewaarde.</value>
+  </data>
+  <data name="PolicyClassMarkingsEnabled" xml:space="preserve">
+    <value>Schakelt classificatiemarkeringen in of uit</value>
+  </data>
+  <data name="PolicyClassMarkingsEnabledInfo" xml:space="preserve">
+    <value>Classificatiemarkeringen in- of uitschakelen</value>
+  </data>
+  <data name="PolicyClassMarkingsInfo" xml:space="preserve">
+    <value>Definieert de hiërarchische lijst met classificaties.</value>
+  </data>
+  <data name="PolicyClassMarkingsRankEnabled" xml:space="preserve">
+    <value>Rangschikking inschakelen</value>
+  </data>
+  <data name="PolicyClassMarkingsRankEnabledInfo" xml:space="preserve">
+    <value>(Optioneel) Hiërarchische classificatierangschikking inschakelen.</value>
+  </data>
+  <data name="PolicyClassMarkingsXHeader" xml:space="preserve">
+    <value>X-header definiëren</value>
+  </data>
+  <data name="PolicyClassMarkingsXHeaderInfo" xml:space="preserve">
+    <value>(Optioneel) Schakelt de x-header voor classificatie in en definieert deze.</value>
+  </data>
+  <data name="PolicyClassVersion" xml:space="preserve">
+    <value>Versie</value>
+  </data>
+  <data name="PolicyClassVersionInfo" xml:space="preserve">
+    <value>Versienummer voor classificatiefunctie</value>
+  </data>
+  <data name="PolicyCustomOnlineMeetingUrls" xml:space="preserve">
+    <value>QuickJoin aangepaste URL's</value>
+  </data>
+  <data name="PolicyDeleteOnSpamForward" xml:space="preserve">
+    <value>Spam verwijderen</value>
+  </data>
+  <data name="PolicyDisableKeyEscrow" xml:space="preserve">
+    <value>Sleutelbewaring derden uitschakelen (Toegangscode vergeten)</value>
+  </data>
+  <data name="PolicyEmailMaxSyncPeriod" xml:space="preserve">
+    <value>Venster Max. e-mailsynchronisatie</value>
+  </data>
+  <data name="PolicyEnforceHTTPS" xml:space="preserve">
+    <value>Onbeveiligde HTTP-verbindingen beperken</value>
+  </data>
+  <data name="PolicyEnforceHTTPSTooltip" xml:space="preserve">
+    <value>Hiermee wordt het laden van inhoud afkomstig van niet-beveiligde (HTTP) verbindingen beperkt.</value>
+  </data>
+  <data name="PolicyLimitNotificationText" xml:space="preserve">
+    <value>Inhoud van meldingen</value>
+  </data>
+  <data name="PolicyLimitNotificationTextInfo" xml:space="preserve">
+    <value>Bepaalt hoeveel informatie wordt vermeld in elke waarschuwingsmelding</value>
+  </data>
+  <data name="PolicyScepPendingMaxRetryAttempts" xml:space="preserve">
+    <value>Maximum aantal pogingen voor SCEP</value>
+  </data>
+  <data name="PolicyScepPendingRetryTimeout" xml:space="preserve">
+    <value>Interval in seconden tussen opeenvolgende pogingen voor SCEP</value>
+  </data>
+  <data name="PolicySensitivityLabelsEmailClassificationInfo" xml:space="preserve">
+    <value>Gebruikers kunnen de AIP-labels bewerken</value>
+  </data>
+  <data name="PolicySMIME" xml:space="preserve">
+    <value>S/MIME status</value>
+  </data>
+  <data name="PolicySMIMEConformingEncryptionAlgorithms" xml:space="preserve">
+    <value>Ondersteunde versleutelingsalgoritmes</value>
+  </data>
+  <data name="PolicySMIMEConformingEncryptionAlgorithmsInfo" xml:space="preserve">
+    <value>Hiermee staat u toe dat de S/MIME-versleuteling wordt beperkt tot specifieke algoritmes. Versleutelde e-mails die geen goedgekeurd algoritme gebruiken, worden gemarkeerd met een waarschuwing. Als er geen geldige waarden worden opgegeven, worden alle algoritmes als acceptabel beschouwd.</value>
+  </data>
+  <data name="PolicySMIMEConformingSigningAlgorithms" xml:space="preserve">
+    <value>Ondersteund algoritme voor ondertekening</value>
+  </data>
+  <data name="PolicySMIMEDefaultEncryptionAlgorithm" xml:space="preserve">
+    <value>Standaard versleutelingsalgoritme</value>
+  </data>
+  <data name="PolicySMIMEDefaultEncryptionAlgorithmInfo" xml:space="preserve">
+    <value>Hiermee staat u toe dat de S/MIME-versleuteling wordt beperkt tot specifieke algoritmes. Versleutelde e-mails die geen goedgekeurd algoritme gebruiken, worden gemarkeerd met een waarschuwing. Als er geen geldige waarden worden opgegeven, worden alle algoritmes als acceptabel beschouwd.</value>
+  </data>
+  <data name="PolicySMIMEDefaultSigningAlgorithm" xml:space="preserve">
+    <value>Standaard ondertekeningsalgoritme</value>
+  </data>
+  <data name="PolicySMIMEEnableRevocationCheck" xml:space="preserve">
+    <value>S/MIME-intrekkingscontrole inschakelen</value>
+  </data>
+  <data name="PolicySMIMEEnableRevocationCheckInfo" xml:space="preserve">
+    <value>Definieert het beleid voor de intrekkingscontrole van S/MIME-certificaten</value>
+  </data>
+  <data name="PolicySMIMERevocationCheckType" xml:space="preserve">
+    <value>Type S/MIME-intrekkingscontrole</value>
+  </data>
+  <data name="PolicySMIMERevocationCheckTypeInfo" xml:space="preserve">
+    <value>Bepaalt het beleid om de intrekkingsstatuscontrole uit te voeren voor de hele certificaatketen of alleen het gebruikerscertificaat.</value>
+  </data>
+  <data name="PolicySMIMERevocationCheckUrl" xml:space="preserve">
+    <value>URL voor S/MIME-intrekkingscontrole</value>
+  </data>
+  <data name="PolicySMIMERevocationCheckUrlInfo" xml:space="preserve">
+    <value>Deze URL wordt gebruikt als OCSP-responder URL</value>
+  </data>
+  <data name="PolicySMIMERevocationEnforceNonce" xml:space="preserve">
+    <value>S/MIME-intrekking enforce nonce</value>
+  </data>
+  <data name="PolicySMIMERevocationEnforceNonceInfo" xml:space="preserve">
+    <value>Indien ingeschakeld, wordt nonce afgedwongen in OCSP-aanvragen</value>
+  </data>
+  <data name="PolicySMIMERevocationStrictness" xml:space="preserve">
+    <value>S/MIME-intrekkingsstrengheid</value>
+  </data>
+  <data name="PolicySMIMERevocationStrictnessInfo" xml:space="preserve">
+    <value>Definieert het niveau van strengheid dat moet worden gebruikt om te bepalen of een ingetrokken certificaat mag worden gebruikt of niet</value>
+  </data>
+  <data name="PolicySMIMERevocationTTL" xml:space="preserve">
+    <value>TTL voor S/MIME-intrekking</value>
+  </data>
+  <data name="PolicySMIMERevocationTTLinfo" xml:space="preserve">
+    <value>Definieert de hoeveelheid tijd in dagen dat de intrekkingsgegevens worden bewaard</value>
+  </data>
+  <data name="PolicySMIMERevocationUseAIA" xml:space="preserve">
+    <value>S/MIME-intrekking gebruik van Toegang tot CA-gegevens</value>
+  </data>
+  <data name="PolicySMIMERevocationUseAIAInfo" xml:space="preserve">
+    <value>Beleid betreffende het gebruik van de Toegang tot CA-gegevens extensie in het certificaat</value>
+  </data>
+  <data name="PolicySMIMEStrictEKUCheck" xml:space="preserve">
+    <value>Controle van EKU-extensie vereisen</value>
+  </data>
+  <data name="PolicySMIMEStrictEKUCheckInfo" xml:space="preserve">
+    <value>Bepaalt of de EKU-extensie van de S/MIME-certificaten moet worden gecontroleerd. Als dit is ingesteld op True, valideren we of de EKU-extensie aanwezig is in het certificaat en of daarin de beoogde e-mailbeveiliging is ingesteld.</value>
+  </data>
+  <data name="PolicySMIMETrustStore" xml:space="preserve">
+    <value>S/MIME-Trust Store</value>
+  </data>
+  <data name="PolicyStatus" xml:space="preserve">
+    <value>Beleidsstatus</value>
+  </data>
+  <data name="PolicyTLSEnableRevocationCheck" xml:space="preserve">
+    <value>Intrekkingscontrole</value>
+  </data>
+  <data name="PolicyTLSEnableRevocationCheckInfo" xml:space="preserve">
+    <value>Schakelt TLS-intrekkingscontroles in of uit</value>
+  </data>
+  <data name="PolicyTLSRevocationCheckType" xml:space="preserve">
+    <value>Type intrekkingscontrole</value>
+  </data>
+  <data name="PolicyTLSRevocationCheckTypeInfo" xml:space="preserve">
+    <value>Geeft aan of intrekkingscontroles moeten worden toegepast op de hele keten of alleen op het servercertificaat. Dit beleid heeft geen effect als Intrekkingscontrole is uitgeschakeld.</value>
+  </data>
+  <data name="PolicyTLSRevocationCheckUrl" xml:space="preserve">
+    <value>Intrekkingscontrole URL</value>
+  </data>
+  <data name="PolicyTLSRevocationCheckUrlInfo" xml:space="preserve">
+    <value>OCSP-server URL. Dit beleid heeft geen effect als Intrekkingscontrole is uitgeschakeld.</value>
+  </data>
+  <data name="PolicyTLSRevocationEnforceNonce" xml:space="preserve">
+    <value>Nonce afdwingen</value>
+  </data>
+  <data name="PolicyTLSRevocationEnforceNonceInfo" xml:space="preserve">
+    <value>Nonce afdwingen indien ingeschakeld, anders geen nonce gebruiken. Dit beleid heeft geen effect als Intrekkingscontrole is uitgeschakeld.</value>
+  </data>
+  <data name="PolicyTLSRevocationStrictness" xml:space="preserve">
+    <value>Intrekkingsstrengheid</value>
+  </data>
+  <data name="PolicyTLSRevocationStrictnessInfo" xml:space="preserve">
+    <value>Wanneer ingesteld op negeren, wordt het resultaat van de intrekkingscontrole alleen vastgelegd en worden TLS-verbindingen niet geblokkeerd. Wanneer ingesteld op Strikt, worden TLS-verbindingen geblokkeerd als het certificaat van de server wordt ingetrokken of als de OCSP-server niet kan worden bereikt. Wanneer ingesteld op normaal, worden TLS-verbindingen geblokkeerd als het certificaat van de server wordt ingetrokken. Als de OCSP-server niet kan worden bereikt, wordt het vorige resultaat van de controle gebruikt (indien beschikbaar). Dit beleid heeft geen effect als Intrekkingscontrole is uitgeschakeld.</value>
+  </data>
+  <data name="PolicyTLSRevocationTTL" xml:space="preserve">
+    <value>Intrekkings-TTL (dagen)</value>
+  </data>
+  <data name="PolicyTLSRevocationTTLInfo" xml:space="preserve">
+    <value>Hoeveelheid tijd in dagen voor het bewaren van intrekkingsgegevens. De negatieve waarde en nul worden genegeerd. Als de responder geen nextupdate-waarde opgeeft. Als KVP is ingesteld, gebruikt u de waarde van deze KVP. Als KVP niet is ingesteld, wordt de standaardwaarde voor volgende controle op 7 dagen ingesteld. Als responder voorziet in nextupdate. Als KVP is ingesteld, gebruikt u de waarde van deze KVP, nextupdate-waarde van de responder wordt genegeerd. Als deze KVP niet is ingesteld, gebruikt u de nextupdate-waarde van de responder. Dit beleid heeft geen effect als Intrekkingscontrole is uitgeschakeld.</value>
+  </data>
+  <data name="PolicyTLSRevocationUseAIA" xml:space="preserve">
+    <value>Intrekking gebruik AIA</value>
+  </data>
+  <data name="PolicyTLSRevocationUseAIAInfo" xml:space="preserve">
+    <value>Uitgeschakeld - gebruik geen URL die in het certificaat is geconfigureerd voor intrekkingsstatus, gebruik alleen URL voor intrekkingscontrole. Ingeschakeld - gebruik URL die in het certificaat is geconfigureerd voor controle van de intrekkingsstatus, val terug op de URL voor intrekkingscontrole als deze niet beschikbaar is. Vereist - gebruik ALLEEN de URL die in het certificaat is geconfigureerd om te controleren op intrekkingsstatus, negeer de URL voor intrekkingscontrole. Dit beleid heeft geen effect als Intrekkingscontrole is uitgeschakeld.</value>
+  </data>
+  <data name="PolicyTLSStrictTrustCheck" xml:space="preserve">
+    <value>Controle van TLS-vertrouwensrelatie</value>
+  </data>
+  <data name="PolicyTLSStrictTrustCheckInfo" xml:space="preserve">
+    <value>Als deze optie is ingesteld op True, voert Boxer strengere vertrouwenscontroles uit voor de TLS-servercertificaten. We controleren of alle basis-CA-certificaten en de tussenliggende CA-certificaten die de volledige certificaatketen vormen, zijn geïnstalleerd in de Trust Store die we maken op basis van de consoleconfiguratie Trust Store. Deze sleutel speelt alleen een rol als Intrekkingscontrole is ingeschakeld.</value>
+  </data>
+  <data name="PolicyTLSTrustStore" xml:space="preserve">
+    <value>Trust Store</value>
+  </data>
+  <data name="PolicyTLSTrustStoreInfo" xml:space="preserve">
+    <value>Indien uitgeschakeld, wordt apparaat trust store en Boxer trust store gebruikt; indien ingeschakeld, wordt Boxer trust store gebruikt. Standaard is apparaat trust store + Boxer trust store. iOS: Als Intrekkingscontrole is uitgeschakeld, wordt momenteel alleen apparaat trust store gebruikt voor de waarde '0'. Voor aangepaste, tussenliggende CA’s die niet vooraf op het apparaat zijn geladen, is de enige geldige optie '1', dat wil zeggen: Altijd Boxer trust store gebruiken en alle tussenliggende CA’s moeten beschikbaar zijn in Boxer trust store om verbindingen te vertrouwen. Android: Deze KVP heeft geen effect als Intrekkingscontrole is uitgeschakeld. (In dit geval wordt de standaard trust store van het apparaat gebruikt om de certificaatketen te valideren. De trust store van Boxer heeft geen ketens voor validatie)</value>
+  </data>
+  <data name="PolicyWatermarkColor" xml:space="preserve">
+    <value>Kleur watermerk</value>
+  </data>
+  <data name="PolicyWatermarkColorInfo" xml:space="preserve">
+    <value>Definieert de tekstkleur in hexadecimale notatie. De standaardkleur is blauw</value>
+  </data>
+  <data name="PolicyWatermarkOpacity" xml:space="preserve">
+    <value>Transparantie watermerk</value>
+  </data>
+  <data name="PolicyWatermarkOpacityInfo" xml:space="preserve">
+    <value>Definieert de transparantie van de tekst. U kunt een getal tussen 0 en 100 instellen</value>
+  </data>
+  <data name="PolicyWatermarkText" xml:space="preserve">
+    <value>Tekst watermerk</value>
+  </data>
+  <data name="PolicyWatermarkTextInfo" xml:space="preserve">
+    <value>Definieert de tekst van het watermerk</value>
+  </data>
+  <data name="PositiveIntegerRequired" xml:space="preserve">
+    <value>Voer een positief geheel getal in</value>
+  </data>
+  <data name="PradeoAPIKey" xml:space="preserve">
+    <value>Pradeo API-sleutel</value>
+  </data>
+  <data name="PreReleaseVersionTooltip" xml:space="preserve">
+    <value>Als een vermelding in deze lijst ontbreekt die u verwacht te zien, is deze mogelijk verwijderd of niet meer toegewezen aan dit bedrijf.</value>
+  </data>
+  <data name="PreventRemoval" xml:space="preserve">
+    <value>Verwijdering voorkomen</value>
+  </data>
+  <data name="PreventRemovalTooltip" xml:space="preserve">
+    <value>Als deze optie is ingeschakeld, mag de gebruiker de applicatie niet verwijderen. Vereist iOS 14+.</value>
+  </data>
+  <data name="ProductApp" xml:space="preserve">
+    <value>Product-app</value>
+  </data>
+  <data name="ProductAppInstalled" xml:space="preserve">
+    <value>Op product gebaseerde app is toegewezen en geïnstalleerd</value>
+  </data>
+  <data name="ProductAppNotInstalled" xml:space="preserve">
+    <value>Op product gebaseerde app is toegewezen maar niet geïnstalleerd</value>
+  </data>
+  <data name="ProviderDisabledFileUploadMessage" xml:space="preserve">
+    <value>Het lijkt erop dat de bestandsopslag en CDN zijn uitgeschakeld of dat de databasegrootte de maximale capaciteit voor deze organisatie heeft bereikt. Neem contact op met uw beheerder of schakel deze items in en controleer uw databaseopslag om door te gaan.</value>
+  </data>
+  <data name="ProvisioningProfileExpirationExplainationArgDays" xml:space="preserve">
+    <value>Het provisioningprofiel voor deze applicatie verloopt over {0} dagen. Zodra het provisioningprofiel is verlopen, hebben ze geen toegang meer tot de applicatie. Nieuwe gebruikers die proberen de applicatie te installeren, zullen dit niet kunnen doen. Regenereer het provisioningprofiel voor de applicatie en werk het bij door te klikken op de knop Vernieuwen hieronder. Voor toestellen waarop de applicatie al is geïnstalleerd, wordt door vernieuwen van het provisioningprofiel het bestaande profiel vervangen op het toestel door het nieuwe profiel zonder de applicatie opnieuw te installeren. Voor nieuw ingeschreven toestellen of toestellen waarop de applicatie niet is geïnstalleerd, wordt door installatie van de applicatie het nieuw toegevoegde provisioningprofiel ontvangen.</value>
+  </data>
+  <data name="PublicApplication" xml:space="preserve">
+    <value>Publieke applicatie</value>
+  </data>
+  <data name="PublicApplications" xml:space="preserve">
+    <value>Publieke applicaties</value>
+  </data>
+  <data name="PublisherAddedMultipleTimesInAppGroup" xml:space="preserve">
+    <value>Dezelfde uitgever is meerdere keren toegevoegd aan deze app-groep</value>
+  </data>
+  <data name="PublisherExceptionAddedMultipleTimesInAppGroup" xml:space="preserve">
+    <value>Dezelfde applicatie is meerdere keren toegevoegd als een exceptie voor een uitgever</value>
+  </data>
+  <data name="PurchasedApplication" xml:space="preserve">
+    <value>Gekochte applicatie</value>
+  </data>
+  <data name="PurchasedApplications" xml:space="preserve">
+    <value>Gekochte applicaties</value>
+  </data>
+  <data name="PurchasedAppLicenseAssignmentBySmartGroup" xml:space="preserve">
+    <value>Licentietoewijzing voor gekochte apps per smart group</value>
+  </data>
+  <data name="Purebred" xml:space="preserve">
+    <value>Purebred</value>
+  </data>
+  <data name="QuickReply" xml:space="preserve">
+    <value>Snel antwoord</value>
+  </data>
+  <data name="Ranking" xml:space="preserve">
+    <value>Rangorde</value>
+  </data>
+  <data name="Read/Unread" xml:space="preserve">
+    <value>Gelezen/ongelezen</value>
+  </data>
+  <data name="ReasonsBreakdown" xml:space="preserve">
+    <value>Details installatiestatus</value>
+  </data>
+  <data name="ReasonsBreakdownToolTip" xml:space="preserve">
+    <value>Dit is een weergave van de door toestellen gerapporteerde gegevens met gedetailleerde informatie over de installatiestatus van deze app die niet is gekoppeld aan een bepaalde versie.</value>
+  </data>
+  <data name="RedeemingCode" xml:space="preserve">
+    <value>Code wordt ingewisseld</value>
+  </data>
+  <data name="RedemptionCode" xml:space="preserve">
+    <value>Inwisselcode</value>
+  </data>
+  <data name="RedemptionCodes" xml:space="preserve">
+    <value>Inwisselcodes</value>
+  </data>
+  <data name="RefreshApps" xml:space="preserve">
+    <value>Apps vernieuwen</value>
+  </data>
+  <data name="RemoveApplicationConfirmed" xml:space="preserve">
+    <value>Verwijdering van door toestel bevestigde applicatie</value>
+  </data>
+  <data name="RemoveArgApplicationOpensDialog" xml:space="preserve">
+    <value>Applicatie {0} verwijderen opent dialoogvenster</value>
+    <comment>Placeholder in this label key is for application name.</comment>
+  </data>
+  <data name="RemoveCommandDispatched" xml:space="preserve">
+    <value>Verwijdercommando verstuurd</value>
+  </data>
+  <data name="RemoveCommandSuccessful" xml:space="preserve">
+    <value>Toestel heeft verwijdering bevestigd</value>
+  </data>
+  <data name="RemovedByEmm" xml:space="preserve">
+    <value>Verwijderd door EMM</value>
+  </data>
+  <data name="RemovedByUser" xml:space="preserve">
+    <value>Verwijderd door gebruiker</value>
+  </data>
+  <data name="RemoveFromSelectedDevices" xml:space="preserve">
+    <value>Deze app wordt alleen verwijderd van toestellen waarop de-app is geïnstalleerd en beheerd door EMM.</value>
+  </data>
+  <data name="RemovePreviousValues" xml:space="preserve">
+    <value>Vorige waarden verwijderen</value>
+  </data>
+  <data name="RequireApprovalToInstall" xml:space="preserve">
+    <value>Toestemming vereist voor installatie</value>
+  </data>
+  <data name="RequireApprovalToInstallToolTip" xml:space="preserve">
+    <value>Gebruikers in de geselecteerde Toewijzingsgroep moeten toestemming verkrijgen om toegang te krijgen tot deze applicatie.</value>
+  </data>
+  <data name="RequiredEmailSettings" xml:space="preserve">
+    <value>Voeg {0} toe op tabblad {1}</value>
+  </data>
+  <data name="RestartDeadlineInDays" xml:space="preserve">
+    <value>Aantal dagen waarna het toestel automatisch opnieuw wordt opgestart</value>
+  </data>
+  <data name="RestrictScreenshotsInfo" xml:space="preserve">
+    <value>Hiermee voor komt u dat de gebruiker screenshots van de app maakt (alleen Android)</value>
+  </data>
+  <data name="ReviewRequestExpired" xml:space="preserve">
+    <value>Review-aanvraag is verlopen. Vernieuw de pagina en start de review opnieuw.</value>
+  </data>
+  <data name="ReviewSummaryBeforeAddingApp" xml:space="preserve">
+    <value>Review de samenvatting voordat u een applicatie toevoegt. U kunt sommige velden later bewerken via de lijstweergave van de applicaties.</value>
+  </data>
+  <data name="RevisionNumber" xml:space="preserve">
+    <value>Revisienummer</value>
+  </data>
+  <data name="RevisionVersion" xml:space="preserve">
+    <value>Voer een geldige waarde in het veld Revisienummer in</value>
+  </data>
+  <data name="S/MIMEPolicy" xml:space="preserve">
+    <value>S/MIME-beleid</value>
+  </data>
+  <data name="SaaSAppsIDMSetupArg" xml:space="preserve">
+    <value>De installatie van Workspace ONE moet zijn voltooid voordat SaaS-applicaties kunnen worden gebruikt. Ga naar {0} en rond de installatie van Workspace ONE af. Log vervolgens uit en weer in en probeer het opnieuw.</value>
+  </data>
+  <data name="SameAssignmentExists" xml:space="preserve">
+    <value>Een of meer smart groups zijn al aan deze app toegewezen in een andere toewijzing. Verwijder deze smart groups om door te gaan.</value>
+  </data>
+  <data name="SaveConfiguration" xml:space="preserve">
+    <value>Configuratie opslaan</value>
+  </data>
+  <data name="ScepPendingMaxRetryAttemptsInfo" xml:space="preserve">
+    <value>Configureert het maximale aantal nieuwe pogingen voor een SCEP-ophaalbewerking in de SDK</value>
+  </data>
+  <data name="ScepPendingRetryTimeoutInfo" xml:space="preserve">
+    <value>Interval tussen nieuwe pogingen voor een SCEP-ophaalbewerking in de SDK</value>
+  </data>
+  <data name="ScriptFileHelpText" xml:space="preserve">
+    <value>Het custom script dat moet worden geüpload</value>
+  </data>
+  <data name="SecurityPatch" xml:space="preserve">
+    <value>Beveiligingspatch</value>
+  </data>
+  <data name="SecurityPatchDateNotSetError" xml:space="preserve">
+    <value>De datum van de beveiligingspatch kan niet leeg zijn als beleid is ingeschakeld</value>
+  </data>
+  <data name="SelectedDeviceRequiresApprovalAlert" xml:space="preserve">
+    <value>Deze applicatie vereist goedkeuring voor installatie op dit specifieke toestel. Een goedkeuringsaanvraag kan door de eindgebruiker worden geïnitieerd.</value>
+  </data>
+  <data name="SelectedDevicesRequireApprovalAlert" xml:space="preserve">
+    <value>De applicatie wordt geïnstalleerd op alle toestellen, behalve die waarvoor toestemming nodig is voor toegang tot de app. Een goedkeuringsaanvraag kan door de eindgebruiker worden geïnitieerd.</value>
+  </data>
+  <data name="SendAppConfigDescription" xml:space="preserve">
+    <value>Configureer deze applicatie met behulp van de instellingen die worden geleverd door de app-ontwikkelaar.</value>
+  </data>
+  <data name="SendAppConfiguration" xml:space="preserve">
+    <value>Configuratie verzenden</value>
+  </data>
+  <data name="SendApplicationAttributes" xml:space="preserve">
+    <value>Applicatiekenmerken verzenden</value>
+  </data>
+  <data name="SendAttibutes" xml:space="preserve">
+    <value>Kenmerken verzenden</value>
+  </data>
+  <data name="SendInviteTooltip" xml:space="preserve">
+    <value>Wanneer deze optie is ingeschakeld, worden alle iOS-toestellen automatisch uitgenodigd om VPP-apps te installeren. Zo niet, dan worden toestellen uitgenodigd wanneer VPP-apps worden geïnstalleerd.</value>
+  </data>
+  <data name="ShowCallKitOption" xml:space="preserve">
+    <value>Optie CallKit weergeven</value>
+  </data>
+  <data name="SideLoadedCount" xml:space="preserve">
+    <value>Side-loaded installaties</value>
+  </data>
+  <data name="SigningCertificateAuthority" xml:space="preserve">
+    <value>Handtekeningcertificaatautoriteit</value>
+  </data>
+  <data name="SigningCertificateTemplate" xml:space="preserve">
+    <value>Handtekeningcertificaatsjabloon</value>
+  </data>
+  <data name="SmartGroupNotPresentInAssignment" xml:space="preserve">
+    <value>Smart group is niet aanwezig in de toewijzingen die aan de applicatie zijn gekoppeld.</value>
+  </data>
+  <data name="SmimeBoxerUserInfoMsg" xml:space="preserve">
+    <value>Gebruikers met S/MIME-certificaten die al zijn gekoppeld via Gebruiker &gt; Geavanceerd &gt; Certificaten, ontvangen deze naast de onderstaande bronnen. Selecteer het certificaat dat is gekoppeld aan het gebruikersaccount of de onderstaande bron</value>
+  </data>
+  <data name="SMIMEConformingEncryptionAlgorithmsInfo" xml:space="preserve">
+    <value>Hiermee staat u toe dat de S/MIME-versleuteling wordt beperkt tot specifieke algoritmes. Versleutelde e-mails die geen goedgekeurd algoritme gebruiken, worden gemarkeerd met een waarschuwing. Als er geen geldige waarden worden opgegeven, worden alle algoritmes als acceptabel beschouwd.</value>
+  </data>
+  <data name="SMIMEConformingSigningAlgorithmsInfo" xml:space="preserve">
+    <value>Hiermee staat u toe dat het S/MIME-ondertekening wordt beperkt tot specifieke algoritmen. Ondertekende e-mails die geen goedgekeurd algoritme gebruiken, worden gemarkeerd met een waarschuwing. Als er geen geldige waarden worden opgegeven, worden alle algoritmen als acceptabel beschouwd.</value>
+  </data>
+  <data name="SMIMEDefaultEncryptionAlgorithmInfo" xml:space="preserve">
+    <value>Geef een encryptiealgoritme op voor inkomende en uitgaande e-mails. Als er geen geldig algoritme is opgegeven, wordt de laagste ondersteunde algoritme gebruikt (3DES).</value>
+  </data>
+  <data name="SMIMEDefaultSigningAlgorithmInfo" xml:space="preserve">
+    <value>Geef een standaard S/MIME-ondertekeningsalgoritme op voor inkomende en uitgaande e-mails. Als er geen geldig algoritme is opgegeven, wordt de laagste ondersteunde algoritme gebruikt (SHA-1).</value>
+  </data>
+  <data name="SmimeInfo" xml:space="preserve">
+    <value>S/MIME configureren</value>
+  </data>
+  <data name="SMIMEStatusInfo" xml:space="preserve">
+    <value>S/MIME-vereisten configureren</value>
+  </data>
+  <data name="SMIMEStrictEKUCheckInfo" xml:space="preserve">
+    <value>Bepaalt of de EKU-extensie van de S/MIME-certificaten moet worden gecontroleerd. Als dit is ingesteld op True, valideren we of de EKU-extensie aanwezig is in het certificaat en of daarin de beoogde e-mailbeveiliging is ingesteld.</value>
+  </data>
+  <data name="Spam" xml:space="preserve">
+    <value>Spam</value>
+  </data>
+  <data name="SpamAndPhishingReporting" xml:space="preserve">
+    <value>Spam- en phishing-rapportering</value>
+  </data>
+  <data name="SpamAndPhishingReportingInfo" xml:space="preserve">
+    <value>De acties configureren die moeten worden uitgevoerd op e-mailberichten die worden aangemerkt als spam of phishingaanval</value>
+  </data>
+  <data name="SpamReportConfigPositionChangeInfo" xml:space="preserve">
+    <value>Configureer of u wilt dat eindgebruikers spam kunnen melden in de sectie App-beleid &gt; Bruikbaarheid</value>
+  </data>
+  <data name="SpecificApplicationIsNotSupported" xml:space="preserve">
+    <value>Ongeldige applicatie, upload alleen de Workspace ONE Launcher APK</value>
+  </data>
+  <data name="SsoInfo" xml:space="preserve">
+    <value>Als u SSO op Boxer wilt inschakelen, schakelt u deze optie en de SSO-configuratie in op uw SDK-profiel. Zodra deze optie is ingeschakeld, kan SSO niet worden uitgeschakeld zonder Workspace ONE Boxer opnieuw te installeren.</value>
+  </data>
+  <data name="StatusLastAction" xml:space="preserve">
+    <value>Status - Laatste actie</value>
+  </data>
+  <data name="StokenExpiredMessage" xml:space="preserve">
+    <value>Het geüploade sToken voor deze organisatiegroep is verlopen. Vernieuw het sToken en upload deze opnieuw.</value>
+  </data>
+  <data name="StokenRevokedMessage" xml:space="preserve">
+    <value>Het geüploade sToken voor deze organisatiegroep is ingetrokken. Upload een nieuw sToken.</value>
+  </data>
+  <data name="Strict" xml:space="preserve">
+    <value>Strikt</value>
+  </data>
+  <data name="SupportedProcessorArchitectureHelp" xml:space="preserve">
+    <value>Selecteer het architectuurtype dat de applicatie ondersteunt. Als u 32-bits selecteert, wordt deze applicatie op zowel 32-bits als 64-bits toestellen gepubliceerd.</value>
+  </data>
+  <data name="SupportEmailAddress" xml:space="preserve">
+    <value>Ondersteuningse-mailadres invoeren</value>
+  </data>
+  <data name="SupportEmailAddressInfo" xml:space="preserve">
+    <value>Op te geven e-mailadres bij het verzenden van logboeken via het ondersteuningsmenu.</value>
+  </data>
+  <data name="SwipesLeftLongInfo" xml:space="preserve">
+    <value>Stel de waarde in op een van de onderstaande waarden om de standaardactie in te stellen wanneer een gebruiker op een e-mailbericht in de e-maillijstweergave veegt. Opmerking: als de gebruiker deze instelling wijzigt, zal de console hun keuze niet overschrijven</value>
+  </data>
+  <data name="SwipesLeftShortInfo" xml:space="preserve">
+    <value>Stel de waarde in op een van de onderstaande waarden om de standaardactie in te stellen wanneer een gebruiker op een e-mailbericht in de e-maillijstweergave veegt. Opmerking: als de gebruiker deze instelling wijzigt, zal de console hun keuze niet overschrijven</value>
+  </data>
+  <data name="SwipesRightLongInfo" xml:space="preserve">
+    <value>Stel de waarde in op een van de onderstaande waarden om de standaardactie in te stellen wanneer een gebruiker op een e-mailbericht in de e-maillijstweergave veegt. Opmerking: als de gebruiker deze instelling wijzigt, zal de console hun keuze niet overschrijven</value>
+  </data>
+  <data name="SwipesRightShortInfo" xml:space="preserve">
+    <value>Stel de waarde in op een van de onderstaande waarden om de standaardactie in te stellen wanneer een gebruiker op een e-mailbericht in de e-maillijstweergave veegt. Opmerking: als de gebruiker deze instelling wijzigt, zal de console hun keuze niet overschrijven</value>
+  </data>
+  <data name="SyncContact" xml:space="preserve">
+    <value>Synchroniseren van contactpersonen</value>
+  </data>
+  <data name="SyncTunnelConfiguration" xml:space="preserve">
+    <value>Tunnel-configuratie synchroniseren</value>
+  </data>
+  <data name="TempUploadedPatch" xml:space="preserve">
+    <value>Geüploade patch</value>
+  </data>
+  <data name="TempUploadedTransform" xml:space="preserve">
+    <value>Geüploade transformatie</value>
+  </data>
+  <data name="TenantStorageCapacity" xml:space="preserve">
+    <value>Capaciteit</value>
+  </data>
+  <data name="TenantStorageCapacityMegaBytes" xml:space="preserve">
+    <value>Capaciteit (MB)</value>
+  </data>
+  <data name="TenantStorageGigaBytes" xml:space="preserve">
+    <value>GB</value>
+  </data>
+  <data name="TenantStorageMaxFileSize" xml:space="preserve">
+    <value>Max bestandsgrootte</value>
+  </data>
+  <data name="TenantStorageMaxFileSizeMegaBytes" xml:space="preserve">
+    <value>Max bestandsgrootte (MB)</value>
+  </data>
+  <data name="TenantStorageMegaBytes" xml:space="preserve">
+    <value>MB</value>
+  </data>
+  <data name="TenantStorageOverageAllowed" xml:space="preserve">
+    <value>Overmaat toegestaan</value>
+  </data>
+  <data name="TenantStorageOverageAllowedMegaBytes" xml:space="preserve">
+    <value>Overmaat toegestaan (MB)</value>
+  </data>
+  <data name="ThisFieldIsRequired" xml:space="preserve">
+    <value>Dit veld is vereist</value>
+  </data>
+  <data name="ThreeDays" xml:space="preserve">
+    <value>3 dagen</value>
+  </data>
+  <data name="TimeReceived" xml:space="preserve">
+    <value>Tijd ontvangen</value>
+  </data>
+  <data name="TimeStamp" xml:space="preserve">
+    <value>Tijdstempel</value>
+  </data>
+  <data name="TLSInfo" xml:space="preserve">
+    <value>TLS configureren</value>
+  </data>
+  <data name="TotalCount" xml:space="preserve">
+    <value>Totale aantal</value>
+  </data>
+  <data name="TotalRedeemedLicensesHelpText" xml:space="preserve">
+    <value>Het totale ingewisselde aantal is de som van de ingewisselde licenties door deze Workspace ONE UEM Console en de ingewisselde licenties buiten deze Workspace ONE UEM Console. Deze licenties zijn geclaimd door toestellen en moeten worden ingetrokken voordat ze kunnen worden gedistribueerd.</value>
+  </data>
+  <data name="TriggerAccount" xml:space="preserve">
+    <value>Details laatste actie</value>
+  </data>
+  <data name="TriggerAccountToolTip" xml:space="preserve">
+    <value>Geeft details weer van de laatste actie die is uitgevoerd op toegewezen toestellen voor deze app.</value>
+  </data>
+  <data name="TrustStore" xml:space="preserve">
+    <value>Trust Store</value>
+  </data>
+  <data name="TunnelAndOtherAttributes" xml:space="preserve">
+    <value>Tunnel en andere kenmerken</value>
+  </data>
+  <data name="TunnelConfigGridBulkActionArg" xml:space="preserve">
+    <value>Tunnel-configuratie wordt gesynchroniseerd op {0} toestellen</value>
+  </data>
+  <data name="UemVersion" xml:space="preserve">
+    <value>UEM-versie</value>
+  </data>
+  <data name="UnPause" xml:space="preserve">
+    <value>Onderbreking opheffen</value>
+  </data>
+  <data name="Unpaused" xml:space="preserve">
+    <value>Onderbreking opgeheven</value>
+  </data>
+  <data name="UnPauseToSelectedDevice" xml:space="preserve">
+    <value>Door deze actie uit te voeren, zult u de onderbreking van verwijderingen voor deze applicatie opheffen voor alle toestellen die niet langer de rechten hebben. Zorg ervoor dat alle rechten juist zijn voordat u doorgaat. Klik op OK als u wilt doorgaan.</value>
+  </data>
+  <data name="UnreleasedVersions" xml:space="preserve">
+    <value>Pre-releaseversie</value>
+  </data>
+  <data name="UpgradeApplication" xml:space="preserve">
+    <value>Applicatie upgraden</value>
+  </data>
+  <data name="UploadedPercentageFormat" xml:space="preserve">
+    <value>{0}%</value>
+    <comment>This should be changed to %{0} for languages supporting %# format for percentage</comment>
+  </data>
+  <data name="UploadedUemVersion" xml:space="preserve">
+    <value>Geüploade UEM-versie</value>
+  </data>
+  <data name="UploadedVersion" xml:space="preserve">
+    <value>Geüploade versie</value>
+  </data>
+  <data name="UploadInProgressDoNotClose" xml:space="preserve">
+    <value>Uploaden wordt uitgevoerd. Sluit het modale venster niet en vernieuw de pagina niet.</value>
+  </data>
+  <data name="UploadStillInProgress" xml:space="preserve">
+    <value>Uploaden is nog steeds bezig. Sluit het modale venster niet en vernieuw de pagina niet.</value>
+  </data>
+  <data name="UploadUninstallScript" xml:space="preserve">
+    <value>Upload het verwijderingsscript voor de applicatie</value>
+  </data>
+  <data name="Usability" xml:space="preserve">
+    <value>Bruikbaarheid</value>
+  </data>
+  <data name="UseEscrowGateway" xml:space="preserve">
+    <value>Gebruik van Escrow-gateway</value>
+  </data>
+  <data name="UseEscrowGatewayInfo" xml:space="preserve">
+    <value>Deze optie is alleen van toepassing op Boxer 5.19 of hoger en wanneer de Escrow-gateway is geconfigureerd.</value>
+  </data>
+  <data name="UserAppRatingInfo" xml:space="preserve">
+    <value>Applicatiebeoordelingsinfo van gebruikers</value>
+  </data>
+  <data name="UserCertificateOnly" xml:space="preserve">
+    <value>Alleen gebruikerscertificaat</value>
+  </data>
+  <data name="UserCertificateOptionalInfo" xml:space="preserve">
+    <value>Als de gebruiker geen certificaat heeft, wordt deze referentie overgeslagen en wordt de rest van het profiel aan eindgebruikers geleverd. Indien beschikbaar, wordt het gebruikerscertificaat van de specifieke Workspace ONE-gebruiker opgehaald. Het certificaat kan handmatig worden geüpload via de gebruikersgegevens in de console of via self-service.</value>
+  </data>
+  <data name="UserDeferredInstall" xml:space="preserve">
+    <value>Geen (installatie van applicatie uitgesteld door gebruiker)</value>
+  </data>
+  <data name="UserEngagedDeadline" xml:space="preserve">
+    <value>Geplande deadline gebruiker</value>
+  </data>
+  <data name="UserEngagedRestart" xml:space="preserve">
+    <value>Herstart door gebruiker ingeschakeld</value>
+  </data>
+  <data name="UseSameSigningAndEncryptionCertificate" xml:space="preserve">
+    <value>Zelfde handtekening- en encryptiecertificaat gebruiken</value>
+  </data>
+  <data name="UseSameSigningAndEncryptionCertificateInfo" xml:space="preserve">
+    <value>Hetzelfde S/MIME-certificaat wordt gebruikt voor ondertekening en versleuteling, tenzij Nee is geselecteerd.</value>
+  </data>
+  <data name="ValidatingDependentApps" xml:space="preserve">
+    <value>Afhankelijke apps valideren</value>
+  </data>
+  <data name="ValidationAppConfiguration" xml:space="preserve">
+    <value>Voor de geselecteerde app zijn geen toewijzingen gedefinieerd. Kies een andere app of definieer ten minste één toewijzing en probeer het opnieuw.</value>
+  </data>
+  <data name="ValidationDuplicateStep" xml:space="preserve">
+    <value>Er bestaat al een stap met een soortgelijke configuratie.</value>
+  </data>
+  <data name="ValidationErrorMessage" xml:space="preserve">
+    <value>Kan wijzigingen niet opslaan. Zorg dat elk veld is ingevuld en dat er geen fouten zijn voordat u het opnieuw probeert.</value>
+  </data>
+  <data name="VersionCodeAlreadyExistsInOG" xml:space="preserve">
+    <value>De versiecode voor deze Android-app is {0} en deze bestaat al in de OG. Vraag uw ontwikkelaar om de versiecode bij te werken. De versiecodes die al zijn toegevoegd voor de identificatie {1} in de huidige OG, zijn {2}.</value>
+  </data>
+  <data name="Versions" xml:space="preserve">
+    <value>versie(s)</value>
+  </data>
+  <data name="VersionsInstalled" xml:space="preserve">
+    <value>Geïnstalleerde versies</value>
+  </data>
+  <data name="ViewCriteria" xml:space="preserve">
+    <value>Criteria weergeven</value>
+  </data>
+  <data name="ViewFlexeraApps" xml:space="preserve">
+    <value>Bekijk applicaties</value>
+  </data>
+  <data name="ViewInstallStatusForApplication" xml:space="preserve">
+    <value>Installatiestatus voor {0} weergeven</value>
+  </data>
+  <data name="VirtualApplications" xml:space="preserve">
+    <value>Virtuele applicaties</value>
+  </data>
+  <data name="VirtualApplicationsHelp" xml:space="preserve">
+    <value>Hiermee wordt toegang tot de configuratie van virtuele apps beheerd; alleen van toepassing op directory-beheerders.</value>
+  </data>
+  <data name="VirtualApps" xml:space="preserve">
+    <value>Virtuele apps</value>
+  </data>
+  <data name="VirtualAppsHelp" xml:space="preserve">
+    <value>Bekijk een lijst met virtuele apps en desktops die beschikbaar zijn voor medewerkers vanuit de Workspace ONE Catalog.</value>
+  </data>
+  <data name="VirtualAppsIDMSetupArg" xml:space="preserve">
+    <value>De installatie van Workspace ONE moet zijn voltooid voordat virtuele applicaties kunnen worden gebruikt. Ga naar {0} en rond de installatie van Workspace ONE af. Log vervolgens uit en weer in en probeer het opnieuw.</value>
+  </data>
+  <data name="VirtualAppsMenuDescription" xml:space="preserve">
+    <value>Bekijk een lijst met virtuele apps en desktops die beschikbaar zijn voor medewerkers vanuit de Workspace ONE Catalog.</value>
+  </data>
+  <data name="VirtualBreadcrumbDescription" xml:space="preserve">
+    <value>Virtuele apps en verzamelingen bekijken en beheren.</value>
+  </data>
+  <data name="VMwareDocs" xml:space="preserve">
+    <value>VMware Docs</value>
+  </data>
+  <data name="VPPLicenseNotAvailable" xml:space="preserve">
+    <value>Geen (licentie niet beschikbaar)</value>
+  </data>
+  <data name="WaitingForEvent" xml:space="preserve">
+    <value>Wachten op gebeurtenis</value>
+  </data>
+  <data name="WaitingForSchedule" xml:space="preserve">
+    <value>Wachten op schema</value>
+  </data>
+  <data name="WaitingForTimeWindow" xml:space="preserve">
+    <value>Wachten op tijdvenster</value>
+  </data>
+  <data name="WaitingToBeRetried" xml:space="preserve">
+    <value>Wachten op opnieuw proberen</value>
+  </data>
+  <data name="WantToContinue" xml:space="preserve">
+    <value>Wilt u doorgaan?</value>
+  </data>
+  <data name="WebLinkMenus" xml:space="preserve">
+    <value>Weblinks</value>
+  </data>
+  <data name="WindowsAppsRetireDescription" xml:space="preserve">
+    <value>Als u een versie van een app uit gebruik neemt, wordt de app verwijderd van alle apparaten die door Workspace ONE worden beheerd. Als de volgende lagere versie van de app beschikbaar en toegewezen is, wordt er geen actie ondernomen omdat het besturingssysteem van het apparaat downgraden van de app niet ondersteunt.</value>
+  </data>
+  <data name="WindowsProvisioningInstallContextWarning" xml:space="preserve">
+    <value>Deze applicatie vereist een gebruikerscontext voor installatie en kan niet worden opgenomen in het geëxporteerde PPKG</value>
+  </data>
+  <data name="WindowsProvisioningNoAppSelected" xml:space="preserve">
+    <value>Selecteer de applicatie(s) om naar een Windows Provisioning Package te exporteren</value>
+  </data>
+  <data name="WindowsProvisioningOGInheritedWarning" xml:space="preserve">
+    <value>Deze applicatie is overgenomen van een andere organisatiegroep en kan niet worden opgenomen in het geëxporteerde PPKG.</value>
+  </data>
+  <data name="WindowsProvisioningPackageDeleteFailed" xml:space="preserve">
+    <value>Er is een onverwachte fout opgetreden tijdens het verwijderen van het Provisioning Package (PPKG).</value>
+  </data>
+  <data name="WindowsProvisioningPackageDeleteSuccess" xml:space="preserve">
+    <value>Windows Provisioning Package (PPKG) is verwijderd.</value>
+  </data>
+  <data name="WindowsProvisioningPackageDeleteWarning" xml:space="preserve">
+    <value>Dit Provisioningpakket kan niet worden verwijderd omdat het in een hogere organisatiegroep wordt beheerd of admin alleen-lezen toegang heeft.</value>
+  </data>
+  <data name="WindowsProvisioningPackageDownloadAction" xml:space="preserve">
+    <value>Download</value>
+  </data>
+  <data name="WindowsProvisioningPackageEditWarning" xml:space="preserve">
+    <value>Dit Provisioningpakket kan niet worden bewerkt omdat het in een hogere organisatiegroep wordt beheerd of admin alleen-lezen toegang heeft.</value>
+  </data>
+  <data name="WindowsProvisioningPackageFailed" xml:space="preserve">
+    <value>Er is een onverwachte fout opgetreden tijdens het aanvragen van het Provisioning Package (PPKG).</value>
+  </data>
+  <data name="WindowsProvisioningPackageFailedMessage" xml:space="preserve">
+    <value>Kan het Windows Provisioning Package (PPKG) niet exporteren</value>
+  </data>
+  <data name="WindowsProvisioningPackagePleaseWait" xml:space="preserve">
+    <value>Een bestaande Windows Provisioning Package (PPKG)-exportaanvraag is bezig. Wacht tot de export is voltooid.</value>
+  </data>
+  <data name="WindowsProvisioningPackageProgressActionMessage" xml:space="preserve">
+    <value>Bekijk applicaties</value>
+  </data>
+  <data name="WindowsProvisioningPackageProgressMessage" xml:space="preserve">
+    <value>Een Windows Provisioning Package (PPKG) wordt geëxporteerd.</value>
+  </data>
+  <data name="WindowsProvisioningPackageRequested" xml:space="preserve">
+    <value>De export van het Windows Provisioning Package (PPKG) is met succes aangevraagd. Wanneer de PPKG-export is voltooid, wordt een melding verzonden met een link om het te downloaden.</value>
+  </data>
+  <data name="WindowsProvisioningPackageStorageFailed" xml:space="preserve">
+    <value>Kan het Windows Provisioning Package (PPKG) niet exporteren vanwege onvoldoende opslagruimte</value>
+  </data>
+  <data name="WindowsProvisioningPackageSuccessActionMessage" xml:space="preserve">
+    <value>Download</value>
+  </data>
+  <data name="WindowsProvisioningPackageSuccessMessage" xml:space="preserve">
+    <value>Het geëxporteerde Windows Provisioning Package (PPKG) is beschikbaar voor downloaden.</value>
+  </data>
+  <data name="WindowsProvisioningPackageTitle" xml:space="preserve">
+    <value>Windows Provisioningpakket</value>
+  </data>
+  <data name="WindowsProvisioningSFDReUploadWarning" xml:space="preserve">
+    <value>Deze applicatie moet worden geüpload nadat u Implementatie van softwarepakket hebt ingeschakeld in de instellingen om de applicatie op te nemen in het geëxporteerde PPKG</value>
+  </data>
+  <data name="WinRTDesiredStateManagementTooltip" xml:space="preserve">
+    <value>Alleen van toepassing op door MDM beheerde apps die zijn geïmplementeerd via de automatische leveringsmethode. Wanneer deze optie is ingeschakeld, wordt de applicatie automatisch opnieuw geïnstalleerd wanneer verwijdering wordt gedetecteerd. Wanneer deze optie is uitgeschakeld, wordt de applicatie niet opnieuw geïnstalleerd wanneer verwijdering wordt gedetecteerd.</value>
+  </data>
+  <data name="WorkflowDefinitionDesc" xml:space="preserve">
+    <value>Geef de werkstroom een beschrijvende naam en omschrijving.</value>
+  </data>
+  <data name="WorkflowRebootPlaceholder" xml:space="preserve">
+    <value>Het apparaat wordt opnieuw opgestart voordat u verdergaat naar de eventuele volgende stap.</value>
+  </data>
+  <data name="Workflows" xml:space="preserve">
+    <value>Werkstromen</value>
+  </data>
+  <data name="WorkflowStepsDesc" xml:space="preserve">
+    <value>Zoek apps en voorwaarden en voeg deze hier toe om uw werkstroom te maken. De werkstroom wordt uitgevoerd in de onderstaande volgorde. Sleep om de volgorde te wijzigen.</value>
+  </data>
+  <data name="WorkflowStepsPlaceholder" xml:space="preserve">
+    <value>Begin met het toevoegen van apps of voorwaarden</value>
+  </data>
+  <data name="WorkflowSummaryDesc" xml:space="preserve">
+    <value>Bekijk de werkstroomgegevens en de stappen voordat u opslaat.</value>
+  </data>
+  <data name="WorkspaceOneAdminAssistantForMacOs" xml:space="preserve">
+    <value>Workspace ONE Admin Assistant voor macOS</value>
+  </data>
+  <data name="X64AppDependencies" xml:space="preserve">
+    <value>X64-afhankelijkheden</value>
+  </data>
+  <data name="X86AppDependencies" xml:space="preserve">
+    <value>X86-afhankelijkheden</value>
+  </data>
+  <data name="ZeroOrPositiveIntegerRequired" xml:space="preserve">
+    <value>Waarde moet nul of een positief geheel getal zijn</value>
+  </data>
+</root>

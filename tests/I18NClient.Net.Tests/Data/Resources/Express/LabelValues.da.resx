@@ -1,0 +1,235 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ApproveAndPublishPublicApps" xml:space="preserve">
+    <value>Godkend og Udgiv offentlige apps</value>
+  </data>
+  <data name="ApproveAndPublishPublicAppsDescription" xml:space="preserve">
+    <value>Tilføj en offentlig app igen fra dine eksisterende blueprints, som du har udgivet, før du tilmelder med Android EMM for at godkende og udgive dem til både dine Legacy- og Android Enterprise-enheder.</value>
+  </data>
+  <data name="ArgDevicesRemovedBasedOnGroupSelection" xml:space="preserve">
+    <value>{0} enheder vil blive fjernet baseret på det aktuelle valg af gruppe.</value>
+    <comment>{0} will be replaced by a number</comment>
+  </data>
+  <data name="ArgOutOfArgLegacyAndroidMigrationNotification" xml:space="preserve">
+    <value>{0} ud af {1} Legacy Android-enheder i de valgte grupper er berettiget til overførsel. Hvis du fortsætter, vil overførsel kun blive anvendt på disse enheder.</value>
+    <comment>{0} and {1} will be replaced by a number.</comment>
+  </data>
+  <data name="CollectDeviceLocationData" xml:space="preserve">
+    <value>Indsaml placeringsdata for enhed</value>
+  </data>
+  <data name="DevicesInBlueprintArg" xml:space="preserve">
+    <value>Enheder i blueprint {0}</value>
+  </data>
+  <data name="DevicesSelectionTooltipText" xml:space="preserve">
+    <value>Kun brugeres enheder, der er blevet tildelt til blueprints, kan vælges på nuværende tidspunkt. Du kan også vælge at overføre alle dine enheder på en gang ved at vælge "Alle enheder".</value>
+  </data>
+  <data name="DistributeAppCatalogToDevices" xml:space="preserve">
+    <value>Distribuer app-katalog til enheder</value>
+  </data>
+  <data name="ExpressLegacyAndroidMigrationDeviceExportArg" xml:space="preserve">
+    <value>Enheder på listen herunder var på Legacy-administration, da grupperne ovenfor blev valgt. Enheder, der fremover bliver føjet til disse grupper, vises som nyligt opdagede enheder. {0} for at se opdeling af alle enheder, der blev overført, inklusive enheder fra grupper, der kan være blevet fjernet.</value>
+    <comment>{0} will be replaced by another key with text 'Export Details'.</comment>
+  </data>
+  <data name="ExpressMigrationAllCompatible" xml:space="preserve">
+    <value>Alle {0} Legacy Android-enheder i de valgte grupper er berettiget til overførsel.</value>
+    <comment>{0} will be replaced by a number.</comment>
+  </data>
+  <data name="ExpressMigrationLimitReached" xml:space="preserve">
+    <value>Overførsel kan højst have 10 gruppetildelinger</value>
+  </data>
+  <data name="ExpressMigrationNoDevicesCompatible" xml:space="preserve">
+    <value>Ingen enheder i de valgte grupper er berettiget til overførsel. Vælg grupper, der inkluderer Legacy Android-enheder, for at fortsætte.</value>
+  </data>
+  <data name="ExpressNoNewDevices" xml:space="preserve">
+    <value>Der blev ikke fundet nogen nye berettigede Legacy Android-enheder i de valgte grupper.</value>
+  </data>
+  <data name="ExpressWelcomeMessageHeader" xml:space="preserve">
+    <value>Alt, hvad du har brug for til at sikre og styre din mobile virksomhed, er her. Du kan:</value>
+  </data>
+  <data name="IsAfwRequired" xml:space="preserve">
+    <value>Anvender dine ansatte Android-enheder?</value>
+  </data>
+  <data name="NoGroupFound" xml:space="preserve">
+    <value>Der blev ikke fundet en brugergruppe med dette navn.</value>
+  </data>
+  <data name="NotificationDevicePreviewAndroidLegacyMigration" xml:space="preserve">
+    <value>Der sendes en notifikation til berettigede enheder i de valgte grupper for at informere medarbejdere om overførslen og anmode dem om at foretage handlinger for at fortsætte. Du kan overvåge status på Legacy Android-overførselssiden.</value>
+  </data>
+  <data name="NoUserFound" xml:space="preserve">
+    <value>Der blev ikke fundet en bruger med dette navn.</value>
+  </data>
+  <data name="QuestionnaireDescription" xml:space="preserve">
+    <value>Lad os gennemgå et par simple spørgsmål, der kan hjælpe dig med din opsætning:</value>
+  </data>
+  <data name="ResaveYourPolicies" xml:space="preserve">
+    <value>Gem dine politikker igen</value>
+  </data>
+  <data name="ResaveYourPoliciesDescription" xml:space="preserve">
+    <value>Rediger og gem sektionen Politikker igen i eksisterende blueprints, som du har udgivet, før du tilmelder med Android EMM.</value>
+  </data>
+  <data name="ResaveYourResources" xml:space="preserve">
+    <value>Gem dine ressourcer igen</value>
+  </data>
+  <data name="ResaveYourResourcesDescription" xml:space="preserve">
+    <value>Rediger og gem e-mail- og Wi-Fi-ressourcer igen, som du har konfigureret i eksisterende blueprint, som du har publiceret, før du tilmelder med Android EMM.</value>
+  </data>
+  <data name="SearchCurrentGroups" xml:space="preserve">
+    <value>Søg i aktuelle grupper</value>
+  </data>
+  <data name="SearchCurrentUsers" xml:space="preserve">
+    <value>Søg i aktuelle brugere</value>
+  </data>
+  <data name="SelectMigrationDevices" xml:space="preserve">
+    <value>Vælg de grupper, som du ønsker at overføre.</value>
+  </data>
+  <data name="StartTypingToAddGroups" xml:space="preserve">
+    <value>Start indtastning for at tilføje grupper</value>
+  </data>
+  <data name="WantToCollectDeviceLocationData" xml:space="preserve">
+    <value>Ønsker du at indsamle placeringsdata for enhed?</value>
+  </data>
+  <data name="WantToDistributeAppCatalogToDevices" xml:space="preserve">
+    <value>Vil du distribuere et app-katalog til dine enheder?</value>
+  </data>
+  <data name="WarningForNotCollectingLocationData" xml:space="preserve">
+    <value>Fint. Du kan vende tilbage til denne undersøgelse fra menuen Kom i gang, hvis du ønsker at ændre dit svar.</value>
+  </data>
+  <data name="WarningForNotConfiguringAd" xml:space="preserve">
+    <value>Det er i orden. Hvis du skifter mening, kan Active Directory konfigureres senere fra indstillingsmenuen.</value>
+  </data>
+  <data name="WarningForNotConfiguringAfw" xml:space="preserve">
+    <value>Hvis du planlægger at tilmelde Android-enheder i fremtiden, kan du altid konfigurere din Android EMM-registrering fra indstillingsmenuen senere.</value>
+  </data>
+  <data name="WarningForNotConfiguringApns" xml:space="preserve">
+    <value>Hvis du planlægger at tilmelde Apple-enheder i fremtiden, kan du altid konfigurere dit APNs-certifikat fra indstillingsmenuen senere.</value>
+  </data>
+  <data name="WarningForNotConfiguringVpp" xml:space="preserve">
+    <value>Udmærket. Du kan altid gå til indstillingsmenuen, hvis du vælger at konfigurere din Apple VPP-konto senere.</value>
+  </data>
+  <data name="WarningForNotDistributingAppCatalog" xml:space="preserve">
+    <value>Forstået. Hvis du ønsker at ændre dit svar, kan du når som helst vende tilbage til denne undersøgelse fra menuen Kom i gang.</value>
+  </data>
+  <data name="WorkspaceOneExpress" xml:space="preserve">
+    <value>Workspace ONE Express</value>
+  </data>
+  <data name="WorkspaceOneExpressSetupTrackInfo" xml:space="preserve">
+    <value>Konfigurer for at starte tilmelding, sikring og styring af enheder og levering af virksomhedsressourcer til medarbejdere.</value>
+  </data>
+</root>

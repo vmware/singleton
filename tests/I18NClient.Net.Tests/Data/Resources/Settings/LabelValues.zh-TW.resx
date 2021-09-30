@@ -1,0 +1,4244 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AadTenantIdMissingOrInvalid" xml:space="preserve">
+    <value>Azure Active Directory 租用戶 ID 遺失或無效</value>
+  </data>
+  <data name="ABMActivationLockInfoMessage" xml:space="preserve">
+    <value>經由整合 Apple Business Manager 以啟用 [啟動鎖定]。只有與 Workspace ONE UEM 中 MDM 伺服器 token 相關聯的裝置才能啟用 [啟動鎖定]。</value>
+  </data>
+  <data name="AboutWorkspaceOneUemConsole" xml:space="preserve">
+    <value>關於 Workspace ONE UEM Console</value>
+  </data>
+  <data name="AccessLogs" xml:space="preserve">
+    <value>存取記錄</value>
+  </data>
+  <data name="AccSettingsMisconfiguration" xml:space="preserve">
+    <value>檢查連線失敗，這可能是因 ACC 設定錯誤所致。</value>
+  </data>
+  <data name="ActivationLockBatchSize" xml:space="preserve">
+    <value>啟用鎖定批次大小</value>
+  </data>
+  <data name="ActivationLockBatchSizeTooltip" xml:space="preserve">
+    <value>指定 [啟動鎖定] 工作的每個批次所包含的裝置數量。</value>
+  </data>
+  <data name="ActivationLockJob" xml:space="preserve">
+    <value>啟用鎖定工作</value>
+  </data>
+  <data name="ActivationLockTooltip" xml:space="preserve">
+    <value>[啟動鎖定] 是 Apple 裝置遺失或遭竊時的保護功能。如果使用者或 MDM 已啟用 [啟動鎖定]，則任何人在重新開機並使用您的裝置前，都需要使用者的 Apple ID 和密碼。啟用此功能後，裝置會在裝置重設 (手動或 MDM 起始) 後提示輸入 Apple ID 和密碼。</value>
+  </data>
+  <data name="ActiveDirectoryBasic" xml:space="preserve">
+    <value>Active Directory 基本</value>
+  </data>
+  <data name="ActivityMonitor" xml:space="preserve">
+    <value>活動監視器</value>
+  </data>
+  <data name="AdaptivaDescriptionV2" xml:space="preserve">
+    <value>此模組會為內部網路上的 Windows 裝置，提供點對點應用程式散發功能，協助加快應用程式下載，而且不需要多個散發點。</value>
+  </data>
+  <data name="AdaptivaPublicCertificate" xml:space="preserve">
+    <value>憑證</value>
+  </data>
+  <data name="AdaptivaPublicCertificateEnabled" xml:space="preserve">
+    <value>Adaptiva 公開憑證</value>
+  </data>
+  <data name="AdaptivaPublicCertificateHelp" xml:space="preserve">
+    <value>上傳 Adaptiva 公開憑證</value>
+  </data>
+  <data name="AdaptivaPublishInProgressStatus" xml:space="preserve">
+    <value>進行中</value>
+  </data>
+  <data name="AddApplicationDescription" xml:space="preserve">
+    <value>新增應用程式詳細資料，用於設定應用程式流量原則。</value>
+  </data>
+  <data name="AddCertificateAuthority" xml:space="preserve">
+    <value>新增憑證授權機構</value>
+  </data>
+  <data name="AddCustomSetting" xml:space="preserve">
+    <value>新增自訂設定</value>
+  </data>
+  <data name="AddDeviceTrafficRule" xml:space="preserve">
+    <value>新增規則</value>
+  </data>
+  <data name="AddEkuAttribute" xml:space="preserve">
+    <value>新增　EKU 屬性</value>
+  </data>
+  <data name="AddOutboundProxy" xml:space="preserve">
+    <value>新增輸出 Proxy</value>
+  </data>
+  <data name="AddProfileMessage" xml:space="preserve">
+    <value>從 [註冊狀態] 頁面建立新設定檔並指派到裝置上。</value>
+  </data>
+  <data name="AddRequestTemplate" xml:space="preserve">
+    <value>新增要求範本</value>
+  </data>
+  <data name="AddSan" xml:space="preserve">
+    <value>新增 SAN</value>
+  </data>
+  <data name="AddServerTrafficRule" xml:space="preserve">
+    <value>新增伺服器流量規則</value>
+  </data>
+  <data name="AddWindowsApp" xml:space="preserve">
+    <value>新增 Windows 應用程式</value>
+  </data>
+  <data name="AddWindowsAppDescription" xml:space="preserve">
+    <value>指定應用程式的檔案路徑或套件易記名稱 (PFN)。</value>
+  </data>
+  <data name="AdminDoesNotHaveGsxUserId" xml:space="preserve">
+    <value>此帳戶必須已獲指派有效的 GSX 使用者 ID，才能編輯此頁面。請前往 [帳戶] &gt; [管理員] 以確保您的管理員帳戶包含有效的 GSX 使用者 ID。</value>
+  </data>
+  <data name="AdminGenerated" xml:space="preserve">
+    <value>管理員已產生?</value>
+  </data>
+  <data name="AdminGeneratedToolTip" xml:space="preserve">
+    <value>針對不同整合顯示哪些 API 金鑰是自動產生以及手動產生。</value>
+  </data>
+  <data name="AdministrativePasscodeInfo" xml:space="preserve">
+    <value>防止使用者在 Windows 市集代理程式上存取設定功能表的密碼。</value>
+  </data>
+  <data name="AdminPasswordExpiryNotification" xml:space="preserve">
+    <value>管理員密碼到期通知</value>
+  </data>
+  <data name="AdminPasswordExpiryNotificationJob" xml:space="preserve">
+    <value>管理員密碼到期通知</value>
+  </data>
+  <data name="AdminPasswordExpiryNotificationMTD" xml:space="preserve">
+    <value>預設 HTML 訊息範本 ，用於通知管理員其密碼即將到期，且需採取行動重設密碼</value>
+  </data>
+  <data name="AdvancedFileExtensionDescription" xml:space="preserve">
+    <value>指定允許及不允許在 Content 內使用的副檔名。</value>
+  </data>
+  <data name="AdvancedLabelRequiredContentDescription" xml:space="preserve">
+    <value>在 Content 應用程式內啟用註冊體驗。</value>
+  </data>
+  <data name="AgentApplication" xml:space="preserve">
+    <value>Intelligent Hub 應用程式</value>
+  </data>
+  <data name="AgentApplications" xml:space="preserve">
+    <value>Intelligent Hub 應用程式</value>
+  </data>
+  <data name="AgentDownloadUrl" xml:space="preserve">
+    <value>代理程式下載 URL</value>
+  </data>
+  <data name="AgentProductCode_Description" xml:space="preserve">
+    <value>Agent 產品代碼</value>
+  </data>
+  <data name="AgentSettings" xml:space="preserve">
+    <value>Agent 設定</value>
+  </data>
+  <data name="AgentSettingsAppleiOS" xml:space="preserve">
+    <value>Intelligent Hub 設定</value>
+  </data>
+  <data name="AgentSettingsMacOS" xml:space="preserve">
+    <value>Intelligent Hub 設定</value>
+  </data>
+  <data name="AgentSettingsWin10" xml:space="preserve">
+    <value>Intelligent Hub 設定</value>
+  </data>
+  <data name="AgentUpdates" xml:space="preserve">
+    <value>Intelligent Hub 更新</value>
+  </data>
+  <data name="AirwatchAddressFooter" xml:space="preserve">
+    <value>Copyright © {0} VMware, Inc 版權所有。  |  1155 Perimeter Center West, Suite 100, Atlanta, GA 30338</value>
+  </data>
+  <data name="AirwatchAgentSettings" xml:space="preserve">
+    <value>AirWatch Agent 設定</value>
+  </data>
+  <data name="AirWatchPolicyEngine_Description" xml:space="preserve">
+    <value>AirWatch 原則引擎</value>
+  </data>
+  <data name="AirWatchProvisioningPackageService_Description" xml:space="preserve">
+    <value>AirWatch 佈建套件服務</value>
+  </data>
+  <data name="AirWatchTunnelAndProxyDisabled" xml:space="preserve">
+    <value>AirWatch Tunnel 和 Proxy 已停用</value>
+  </data>
+  <data name="AirWatchTunnelDisabled" xml:space="preserve">
+    <value>AirWatch Tunnel 已停用</value>
+  </data>
+  <data name="AlexaForBusinessServiceUrl" xml:space="preserve">
+    <value>商務服務用 Alexa Url</value>
+  </data>
+  <data name="AllOtherApps" xml:space="preserve">
+    <value>所有其他應用程式</value>
+  </data>
+  <data name="AllowAndroidContainerModeAllOgDevices" xml:space="preserve">
+    <value>此企業群組中的所有 Android 裝置</value>
+  </data>
+  <data name="AllowCDN" xml:space="preserve">
+    <value>允許 CDN</value>
+  </data>
+  <data name="AllowedClockSkew" xml:space="preserve">
+    <value>允許的時鐘誤差</value>
+  </data>
+  <data name="AllowedClockSkewToolTip" xml:space="preserve">
+    <value>設定時鐘誤差上限 (以分鐘為單位)，以處理在身分識別提供者與服務提供者的時鐘之間可能發生的時間差異或偏差，並將其視為同步以繼續進行驗證。</value>
+  </data>
+  <data name="AllowEditing" xml:space="preserve">
+    <value>允許編輯</value>
+  </data>
+  <data name="AllowEditingPrimaryUserAccountTooltip" xml:space="preserve">
+    <value>若啟用且已提供主要帳戶，則會允許主要帳戶的修改</value>
+  </data>
+  <data name="AllowIosContainerModeAllOgDevices" xml:space="preserve">
+    <value>此企業群組中的所有 iOS 裝置</value>
+  </data>
+  <data name="AllowNonFQDNDomains" xml:space="preserve">
+    <value>允許所有非 FQDN URL 通過應用程式 Tunnel</value>
+  </data>
+  <data name="AllowNonFQDNDomainsToolTip" xml:space="preserve">
+    <value>選擇以允許所有非 FQDN URL 通過應用程式 Tunnel，不論 Tunnel URL 清單是否指定。否則，將近允許 Tunnel URL 清單中的非 FQDN 項目通過應用程式 Tunnel。</value>
+  </data>
+  <data name="AllowNotify_Description" xml:space="preserve">
+    <value>允許通知</value>
+  </data>
+  <data name="AllowUserEnrollmentForIos13MacOs1015" xml:space="preserve">
+    <value>iOS 13+ 和 macOS 10.15 + 裝置的使用者註冊</value>
+  </data>
+  <data name="AllowUserEnrollmentForIos13MacOs1015Tooltip" xml:space="preserve">
+    <value>啟用此選項可讓任何欲於此組織進行註冊的使用者使用其支援的 iOS 或 macOS 裝置，透過 Apple 的使用者註冊，運用該使用者受管理的 Apple ID 來進行註冊。</value>
+  </data>
+  <data name="AllowWindowsContainerModeAllOgDevices" xml:space="preserve">
+    <value>此企業群組中的所有 Windows 裝置</value>
+  </data>
+  <data name="AllowWorkProfileEnrollment" xml:space="preserve">
+    <value>允許 Work 設定檔註冊</value>
+  </data>
+  <data name="AmbiguougOgForNetworkRange" xml:space="preserve">
+    <value>網路範圍的企業群組不明確: 不能有具相同客戶代碼的兩個或多個企業群組</value>
+  </data>
+  <data name="AnchorCertificateTooltip" xml:space="preserve">
+    <value>若有提供的話，在評估與 MDM 伺服器 URL 的連線信任度時，這些憑證會作為受信任的錨憑證。否則會使用內建的根憑證。</value>
+  </data>
+  <data name="AndroidAllowAospClosedNetwork" xml:space="preserve">
+    <value>如果您在封閉式網路上操作，或無法與 Google Play 進行通訊，可在沒有向 Google 登錄的情況下部署</value>
+  </data>
+  <data name="AndroidAndroidEMMRegistrationDescription" xml:space="preserve">
+    <value>向 Google 註冊 Workspace ONE 作為企業行動力管理 (EMM) 提供者，以開始管理 Android 裝置。</value>
+  </data>
+  <data name="AndroidAppInactivityRuleDuplicate" xml:space="preserve">
+    <value>Android 應用程式停用規則的應用程式識別碼重複。</value>
+  </data>
+  <data name="AndroidAppInactivityRuleNotValid" xml:space="preserve">
+    <value>Android 應用程式停用規則無效。請確認是否提供應用程式識別碼，且停用天數是否介於 1 至 90 之間。</value>
+  </data>
+  <data name="AndroidAppVersionRuleDuplicate" xml:space="preserve">
+    <value>Android 應用程式版本規則的應用程式識別碼重複。</value>
+  </data>
+  <data name="AndroidAppVersionRuleNotValid" xml:space="preserve">
+    <value>Android 應用程式版本規則無效。請確認應用程式識別碼或版本格式是否正確。</value>
+  </data>
+  <data name="AndroidEMMRegistrationConfigurations" xml:space="preserve">
+    <value>Android EMM 登錄組態</value>
+  </data>
+  <data name="AndroidEMMRegistrationConfigurationsHelp" xml:space="preserve">
+    <value>控制 Android EMM 登錄設定頁面上 [組態] 索引標籤的存取權。</value>
+  </data>
+  <data name="AndroidEMMRegistrationEnrollmentRestrictions" xml:space="preserve">
+    <value>Android EMM 登錄註冊限制</value>
+  </data>
+  <data name="AndroidEMMRegistrationEnrollmentRestrictionsHelp" xml:space="preserve">
+    <value>控制 Android EMM 登錄設定頁面上 [註冊限制] 索引標籤的存取權。</value>
+  </data>
+  <data name="AndroidEMMRegistrationEnrollmentSettings" xml:space="preserve">
+    <value>Android EMM 登錄註冊設定</value>
+  </data>
+  <data name="AndroidEMMRegistrationEnrollmentSettingsHelp" xml:space="preserve">
+    <value>控制 Android EMM 登錄設定頁面上 [註冊設定] 索引標籤的存取權。</value>
+  </data>
+  <data name="AndroidEMMRegistrationRequired" xml:space="preserve">
+    <value>需要有效的 Android EMM 登錄以完成此動作</value>
+  </data>
+  <data name="AndroidEnterpriseCancelMigrationDevices" xml:space="preserve">
+    <value>用於取消將 Android 舊版移轉至特定裝置之 AFW 的命令</value>
+  </data>
+  <data name="AndroidEnterpriseMigrationBatchReleaseJob" xml:space="preserve">
+    <value>Android Enterprise 移轉批次釋放工作</value>
+  </data>
+  <data name="AndroidEnterpriseOptOut" xml:space="preserve">
+    <value>部署 Android (舊版)</value>
+  </data>
+  <data name="AndroidEnterpriseOptOutMsg" xml:space="preserve">
+    <value>若您的裝置執行的是 Android 5.0 或更舊版本，則可在沒有向 Google 登錄的情況下部署 Android (舊版)。
+
+不過，強烈建議您向 Google 登錄 Workspace ONE UEM，使其成為您的 EMM 提供者。</value>
+  </data>
+  <data name="AndroidEnterpriseTestConnectionFail" xml:space="preserve">
+    <value>設定服務帳戶時發生錯誤</value>
+  </data>
+  <data name="AndroidEnterpriseTestConnectionSuccess" xml:space="preserve">
+    <value>服務帳戶設定成功</value>
+  </data>
+  <data name="AndroidForWorkEndUserWipeMessage" xml:space="preserve">
+    <value>工作設定檔企業抹除使用者訊息</value>
+  </data>
+  <data name="AndroidOsVersionNotSet" xml:space="preserve">
+    <value>Android 作業系統版本欄位未填入。</value>
+  </data>
+  <data name="AndroidPasscodeWarning" xml:space="preserve">
+    <value>自訂密碼複雜度所需的最低作業系統為 Android 4.0</value>
+  </data>
+  <data name="AndroidRelayServerHelpLink_Description" xml:space="preserve">
+    <value>Android 轉送伺服器說明連結</value>
+  </data>
+  <data name="AndroidWorkProfileEnterpriseWipeDescription" xml:space="preserve">
+    <value>使用企業抹除命令移除使用者的工作設定檔時，會向使用者顯示的預設訊息。</value>
+  </data>
+  <data name="AospClosedNetwork" xml:space="preserve">
+    <value>AOSP / 封閉式網路</value>
+  </data>
+  <data name="AospClosedNetworkDescription" xml:space="preserve">
+    <value>不會在裝置上建立 Google 帳戶。無法透過受管理的 Google Play 管理公用應用程式。這適用於 AOSP 裝置 (不含 Play 服務) 和在不具有 Google 伺服器存取權限的網路上部署。</value>
+  </data>
+  <data name="ApiAuthenticationHelpText" xml:space="preserve">
+    <value>使用管理員使用者名稱及密碼進行使用者憑證類型 API 驗證。</value>
+  </data>
+  <data name="ApiCallFailedForGsuitePasswordRotation" xml:space="preserve">
+    <value>密碼變更失敗。請檢查所選 MEM 組態中的 G Suite 認證。</value>
+  </data>
+  <data name="APIConnection" xml:space="preserve">
+    <value>API 連線</value>
+  </data>
+  <data name="APILastSyncTime" xml:space="preserve">
+    <value>API 上次同步時間</value>
+  </data>
+  <data name="APIUrl" xml:space="preserve">
+    <value>API Url</value>
+  </data>
+  <data name="ApiVersionDoesNotSupportMdmOnlyMode" xml:space="preserve">
+    <value>Workspace ONE 目錄設定為僅從 AirWatch 擷取時，不支援此功能</value>
+  </data>
+  <data name="ApnsMessagesGoViaProxy" xml:space="preserve">
+    <value>APN 訊息經由代理伺服器傳送</value>
+  </data>
+  <data name="ApnsMessagesGoViaProxyExpl" xml:space="preserve">
+    <value>此代理伺服器應被設定為 HTTP 或 SOCKS 代理伺服器，以供傳訊服務建立用來傳送 APN 的輸出連線。</value>
+  </data>
+  <data name="ApnsProxySettings" xml:space="preserve">
+    <value>APN 代理伺服器設定</value>
+  </data>
+  <data name="ApnsProxyType" xml:space="preserve">
+    <value>代理伺服器類型</value>
+  </data>
+  <data name="APNSViaHttp2Failed" xml:space="preserve">
+    <value>透過 HTTP/2 的測試連線失敗。{0}。</value>
+  </data>
+  <data name="APNSViaHttp2Succeeded" xml:space="preserve">
+    <value>透過 HTTP/2 的測試連線成功。</value>
+  </data>
+  <data name="AppApprovalRequestExpirationJob" xml:space="preserve">
+    <value>應用程式核准要求清理工作</value>
+  </data>
+  <data name="AppBrowserDescription" xml:space="preserve">
+    <value>透過 Workspace ONE Web 提供員工順暢且安全的企業資源存取權。</value>
+  </data>
+  <data name="AppInactivityInfo" xml:space="preserve">
+    <value>指定 Android 或 iOS 裝置的應用程式 ID，以及應用程式資料在遭抹除前，應用程式處於未使用狀態的天數 (1-90 之間)。</value>
+  </data>
+  <data name="AppInactivityRuleRequired" xml:space="preserve">
+    <value>至少需要一個應用程式停用規則。請新增一個應用程式停用規則，或停用應用程式停用選項。</value>
+  </data>
+  <data name="AppleAPNsForMDMDescription" xml:space="preserve">
+    <value>使用 MDM 憑證 APN，實現並維持 iOS、macOS 及 tvOS 裝置與 Workspace ONE 間的安全通訊。該 APN 憑證會向 Apple 註冊您的公司，方便您以 Workspace ONE 管理裝置。需具備企業 Apple ID。</value>
+  </data>
+  <data name="AppleAppleConfiguratorDescription" xml:space="preserve">
+    <value>使用側載註冊設定檔，透過 iOS 及 tvOS 裝置專用的 Apple Configurator 2，以及手動安裝 macOS，大量註冊 Apple 裝置。可對註冊預備使用者強制執行註冊，以利進行後續的使用者驗證，或直接註冊成為單一指定使用者。</value>
+  </data>
+  <data name="AppleAutomatedEnrollment" xml:space="preserve">
+    <value>Apple 自動註冊</value>
+  </data>
+  <data name="AppleAutomatedEnrollmentDescription" xml:space="preserve">
+    <value>在側載註冊設定檔的協助下，透過 iOS 及 tvOS 裝置專用的 Apple Configurator 2，以及手動安裝 macOS，大量將 Apple 裝置上架管理。可對註冊預備使用者強制執行註冊，以利進行後續的使用者驗證，或直接註冊成為單一指定使用者。</value>
+  </data>
+  <data name="AppleDeviceEnrollmentProgram" xml:space="preserve">
+    <value>Apple 裝置註冊方案</value>
+  </data>
+  <data name="AppleDeviceEnrollmentProgramDescription" xml:space="preserve">
+    <value>本裝置註冊方案可協助您設置並部署企業擁有的 Apple 裝置，無需 IT 人員的參與，並提供可略過裝置設定畫面、避免 MDM 管理遭移除等智慧功能。</value>
+  </data>
+  <data name="AppleEducationDescription" xml:space="preserve">
+    <value>依據 Apple School Manager 的班級名冊資訊，配置學生和教師管理的 Apple 裝置。一旦配置後，教師可使用其管理裝置及 Apple 的 Classroom 應用程式，提供學生更豐富的數位教室體驗。在 Apple School Manager 中建立的受管 Apple ID 亦可實現流暢的 iPad 共用體驗。</value>
+  </data>
+  <data name="AppleGlobalServiceExchangeDescription" xml:space="preserve">
+    <value>使用 Apple Global Service Exchange (GSX) 帳戶資訊將 AppleCare 與 Workspace ONE 整合。此功能可讓管理員直接從 Workspace ONE 查看有關顯示型號名稱、裝置購買及保固狀態的裝置詳細資料。</value>
+  </data>
+  <data name="AppleGsxServiceUrl" xml:space="preserve">
+    <value>Apple GSX 服務</value>
+  </data>
+  <data name="AppleGsxServiceUrlDescription" xml:space="preserve">
+    <value>需要 Apple GSX 服務 URL 才能擷取 Apple 裝置的保固詳細資料</value>
+  </data>
+  <data name="AppleSchoolManager" xml:space="preserve">
+    <value>Apple School Manager</value>
+  </data>
+  <data name="AppleSchoolManagerFetchFail" xml:space="preserve">
+    <value>Apple School Manager 擷取失敗</value>
+  </data>
+  <data name="AppleSchoolManagerFetchSuccess" xml:space="preserve">
+    <value>Apple School Manager 擷取成功</value>
+  </data>
+  <data name="AppleSchoolManagerSyncFail" xml:space="preserve">
+    <value>Apple School Manager 同步失敗</value>
+  </data>
+  <data name="AppleSchoolManagerSyncSuccess" xml:space="preserve">
+    <value>Apple School Manager 同步成功</value>
+  </data>
+  <data name="ApplicableOnlyForWinmoDevices" xml:space="preserve">
+    <value>僅適用於 WinMo 裝置</value>
+  </data>
+  <data name="ApplicationCategories" xml:space="preserve">
+    <value>應用程式類別</value>
+  </data>
+  <data name="ApplicationContentLockerDescription" xml:space="preserve">
+    <value>讓員工能夠隨時隨地在其各種裝置上存取所有檔案。員工可將檔案標示為最愛、離線存取文件、編輯 Office 文件，以及使用內建的編輯工具標註 PDF 檔案。</value>
+  </data>
+  <data name="ApplicationContentLockerSyncDescription" xml:space="preserve">
+    <value>讓員工能夠將其個人內容存放庫與桌上型電腦同步。</value>
+  </data>
+  <data name="ApplicationListIsRequired" xml:space="preserve">
+    <value>在核准的應用程式清單中新增至少一個可用於開啟文件的應用程式。</value>
+  </data>
+  <data name="ApplicationListSampleInfo" xml:space="preserve">
+    <value>收集裝置上受管理和未受管理應用程式清單的排程。此樣本遵循隱私權架構，且僅會收集管理員已設定的樣本。</value>
+  </data>
+  <data name="ApplicationListSampleInMinutes" xml:space="preserve">
+    <value>應用程式清單取樣</value>
+  </data>
+  <data name="ApplicationListSampleTimeMode" xml:space="preserve">
+    <value>應用程式清單取樣時間模式</value>
+  </data>
+  <data name="ApplicationLogs" xml:space="preserve">
+    <value>應用程式記錄</value>
+  </data>
+  <data name="ApplicationMappedWithDTRs" xml:space="preserve">
+    <value>一或多個裝置流量規則參考了此應用程式。請移除應用程式，然後再試一次。</value>
+  </data>
+  <data name="ApplicationNotDeleted" xml:space="preserve">
+    <value>無法刪除應用程式。</value>
+  </data>
+  <data name="AppLogs" xml:space="preserve">
+    <value>APP 記錄</value>
+  </data>
+  <data name="ApplySettingAtEnrollmentOnlyToolTip" xml:space="preserve">
+    <value>啟用時，群組指派設定僅會在註冊時套用。註冊後，對使用者的使用者群組成員資格所做的任何變更，都不會自動將其裝置移到已對應至該使用者的新使用者群組成員資格的其他企業群組。</value>
+  </data>
+  <data name="AppOffice365SettingsDescription" xml:space="preserve">
+    <value>利用 Workspace ONE UEM Console 的 Graph API 整合與 Microsoft Intune® App 保護原則，使用 Intune SDK 為應用程式設置資料遺失防護 (DLP) 原則。</value>
+  </data>
+  <data name="AppPathOrPFN" xml:space="preserve">
+    <value>路徑或 PFN</value>
+  </data>
+  <data name="AppRestrictions" xml:space="preserve">
+    <value>APP 限制</value>
+  </data>
+  <data name="AppSettingsAndPoliciesDescription" xml:space="preserve">
+    <value>針對與 Workspace ONE SDK 整合的應用程式，設置控制安全性、驗證及其他企業組態的 SDK 設定檔。</value>
+  </data>
+  <data name="AppsProvsionedFailed" xml:space="preserve">
+    <value>應用程式佈建失敗</value>
+  </data>
+  <data name="AppsProvsionedSuccessfully" xml:space="preserve">
+    <value>應用程式佈建成功</value>
+  </data>
+  <data name="AppthorityAPIKey" xml:space="preserve">
+    <value>Appthority API 金鑰</value>
+  </data>
+  <data name="AppTunnelAllowNonFQDNDomains" xml:space="preserve">
+    <value>選擇 [是] 將允許所有非 FQDN URL 通過應用程式 Tunnel，無論 Tunnel URL 清單是否指定。選擇 [否] 將僅允許 Tunnel URL 清單中的非 FQDN 項目通過。</value>
+  </data>
+  <data name="AppVersionInfo" xml:space="preserve">
+    <value>使用「Is」或「Is Not」時，針對 Android 應用程式版本的 SDK 應用程式合規性規則評估會支援任何字串，然後進行比較以找出完全相符的結果。其他運算子，例如「Less than」或「Greater than」，僅支援下列格式的數字：x、x.x、x.x.x、x.x.x.x 或 x.x.x.x.x</value>
+  </data>
+  <data name="AppVersionRuleRequired" xml:space="preserve">
+    <value>至少需要一個應用程式版本規則。請新增一個應用程式版本規則，或停用應用程式版本選項。</value>
+  </data>
+  <data name="AppWorkspaceONEDescription" xml:space="preserve">
+    <value>讓員工能隨時從任何裝置順暢且安全地自助存取工作所需的所有應用程式和資料。</value>
+  </data>
+  <data name="Areas" xml:space="preserve">
+    <value>區域</value>
+  </data>
+  <data name="AreYouSureYouWantAndroidAllowAospClosedNetwork" xml:space="preserve">
+    <value>確定要在沒有向 Google 登錄的情況下繼續?</value>
+  </data>
+  <data name="ArgAllSettingsDialogDescription" xml:space="preserve">
+    <value>管理 {0} 組織群組的設定</value>
+  </data>
+  <data name="ArgHour" xml:space="preserve">
+    <value>{0} 小時</value>
+  </data>
+  <data name="ArgHoursPlural" xml:space="preserve">
+    <value>{0} 小時</value>
+  </data>
+  <data name="ArgMinutesPlural" xml:space="preserve">
+    <value>{0} 分鐘</value>
+  </data>
+  <data name="ArgNotValidOrArgNotFoundInDefinedLDAP" xml:space="preserve">
+    <value>{0} 無效或在定義的 LDAP 中找不到 {1}</value>
+  </data>
+  <data name="ArgOfItems" xml:space="preserve">
+    <value>{0} – {1} 個項目 (共 {2} 個)</value>
+  </data>
+  <data name="ArgSecondsPlural" xml:space="preserve">
+    <value>{0} 秒</value>
+  </data>
+  <data name="ArgSettings" xml:space="preserve">
+    <value>{0} 設定</value>
+    <comment>Placeholder in this label key will contain the link text localized value.</comment>
+  </data>
+  <data name="AssignDefaultSecurityGroup" xml:space="preserve">
+    <value>指派預設的安全群組</value>
+  </data>
+  <data name="AssignPayload" xml:space="preserve">
+    <value>指派裝載</value>
+  </data>
+  <data name="AssignPayloadDescription" xml:space="preserve">
+    <value>使用智慧群組建立裝載指派至 Drop Ship 裝置</value>
+  </data>
+  <data name="AssociatedUsersOrGroupsExistsForDirectoryType" xml:space="preserve">
+    <value>必須刪除相關聯的目錄使用者或群組，才能變更目錄類型。</value>
+  </data>
+  <data name="AuthenticationHintMessage" xml:space="preserve">
+    <value>驗證提示訊息</value>
+  </data>
+  <data name="AuthenticationMessageTooltip" xml:space="preserve">
+    <value>輸入簡明扼要的訊息來協助使用者進行驗證，例如使用者名稱說明與/或有所幫助的連結。使用下列格式插入連結: [要顯示的文字] (瀏覽的位址)</value>
+  </data>
+  <data name="AuthenticationProvider" xml:space="preserve">
+    <value>驗證</value>
+  </data>
+  <data name="AuthenticationTypeTimeout" xml:space="preserve">
+    <value>逾時</value>
+  </data>
+  <data name="AuthHintHelpLabelArg" xml:space="preserve">
+    <value>使用下列格式插入連結:{0}</value>
+  </data>
+  <data name="AuthHintLinkFormat" xml:space="preserve">
+    <value>此處顯示文字訊息
+[連結文字] (http://www.example.com/)</value>
+  </data>
+  <data name="AutoDetectProxySetting" xml:space="preserve">
+    <value>自動偵測代理伺服器設定</value>
+  </data>
+  <data name="AutoDetectProxySettings" xml:space="preserve">
+    <value>自動偵測代理伺服器設定</value>
+  </data>
+  <data name="AutoDiscoverySyncError" xml:space="preserve">
+    <value>自動探索同步錯誤</value>
+  </data>
+  <data name="AutofillPrimaryUserAccountTooltip" xml:space="preserve">
+    <value>如果停用，則會忽略主要帳戶資訊</value>
+  </data>
+  <data name="AutoGeneratedApiKeysAlreadyUsed" xml:space="preserve">
+    <value>現有 Workspace ONE Access AirWatch 設定已使用自動產生的 API 金鑰</value>
+  </data>
+  <data name="AutoGeneratedApiKeysUpdated" xml:space="preserve">
+    <value>Workspace ONE Access 的 AirWatch 設定已更新為使用自動產生的 API 金鑰</value>
+  </data>
+  <data name="AutoLogoutEnabledDescription" xml:space="preserve">
+    <value>自動登出可確保裝置經過設定的時間後確實登出。此功能並不適用於 Windows 桌面裝置。</value>
+  </data>
+  <data name="AutomaticCertificateRenewalInfoTooltip" xml:space="preserve">
+    <value>若要自動更新憑證，相關設定檔的指派類型必須設定為 [自動]。對於一般 SCEP，僅在透過認證裝載傳送憑證時，才支援自動更新。</value>
+  </data>
+  <data name="AutomaticCertificateRenewalPeriodInfo" xml:space="preserve">
+    <value>如啟用自動憑證更新，可允許 Workspace ONE Unified Endpoint Management 目前憑證的到期日在已設定的自動更新期間內時，要求及部署新憑證。</value>
+  </data>
+  <data name="AutomaticDeleteFactoryPPKG" xml:space="preserve">
+    <value>自動刪除原廠 PPKG</value>
+  </data>
+  <data name="AutomaticDeleteFactoryPPKGHelp" xml:space="preserve">
+    <value>自動刪除原廠 PPKG 說明</value>
+  </data>
+  <data name="AvailabilityStartDateShouldBeGreaterThanToday" xml:space="preserve">
+    <value>可用性開始日期應晚於今天的日期。</value>
+  </data>
+  <data name="AvailableCA" xml:space="preserve">
+    <value>可用 CA</value>
+  </data>
+  <data name="AWCM" xml:space="preserve">
+    <value>AWCM</value>
+  </data>
+  <data name="AWCMConnection" xml:space="preserve">
+    <value>AWCM 連線</value>
+  </data>
+  <data name="AWCMIsDisabled" xml:space="preserve">
+    <value>必須啟用 AirWatch Cloud Messaging，才能設定 VMware Tunnel。您可在 {0} 設定 AirWatch Cloud Messaging。</value>
+  </data>
+  <data name="AWCMUrl" xml:space="preserve">
+    <value>AWCM 主機名稱</value>
+  </data>
+  <data name="AWCMUserDownloadInstallerLinuxForCertificate" xml:space="preserve">
+    <value>使用電子郵件通知服務 (ENS) 的 VMware 內部部署客戶需要下載此安裝程式並提供給 VMware 支援。這可讓他們的環境能與雲端通知服務 (CNS) 伺服器搭配使用。
+
+VMware SaaS 部署僅需要針對其在 Linux 平台上的 AWCM 部署，下載安裝程式。</value>
+  </data>
+  <data name="AzureServicesDeviceSyncStartTime" xml:space="preserve">
+    <value>重新同步開始時間：</value>
+  </data>
+  <data name="AzureServicesLastSuccessfulSync" xml:space="preserve">
+    <value>上次成功同步：</value>
+  </data>
+  <data name="AzureServicesLastSyncNotFound" xml:space="preserve">
+    <value>未找到</value>
+  </data>
+  <data name="AzureServicesReSync" xml:space="preserve">
+    <value>重新同步</value>
+  </data>
+  <data name="AzureServiceSyncFailure" xml:space="preserve">
+    <value>無法同步 Azure 服務。請再試一次。</value>
+  </data>
+  <data name="BackEndCertificate" xml:space="preserve">
+    <value>後端憑證</value>
+  </data>
+  <data name="BackendHostName" xml:space="preserve">
+    <value>後端主機名稱</value>
+  </data>
+  <data name="Balanced" xml:space="preserve">
+    <value>平衡</value>
+  </data>
+  <data name="BaselineApiUrl" xml:space="preserve">
+    <value>基準服務 URL</value>
+  </data>
+  <data name="BashExecutablePath" xml:space="preserve">
+    <value>Bash 路徑</value>
+  </data>
+  <data name="BashExecutablePathTooltip" xml:space="preserve">
+    <value>覆寫執行 Bash 指令碼的路徑。二進位檔案必須有程式碼簽署且含 755 權限，否則 Intelligent Hub 將會遞補至 /bin/bash 的預設路徑。允許使用符號連結路徑，且不需要逸出空格。</value>
+  </data>
+  <data name="BasicUserSync" xml:space="preserve">
+    <value>基本使用者同步化</value>
+  </data>
+  <data name="BatchImportSerialNumberExplanation" xml:space="preserve">
+    <value>此批次匯入功能可用於指派設定檔至大量的裝置。以下連結是此匯入的範本。</value>
+  </data>
+  <data name="BentoNavWelcomeWindowDescription" xml:space="preserve">
+    <value>現在透過新的「我的服務選取器」，您能從 Workspace ONE UEM 內的任一處快速輕鬆地導覽各個服務。</value>
+  </data>
+  <data name="BentoNavWelcomeWindowTitle" xml:space="preserve">
+    <value>存取 Workspace ONE 服務變得更加容易!</value>
+  </data>
+  <data name="BetaProgram" xml:space="preserve">
+    <value>Beta 計劃</value>
+  </data>
+  <data name="BetaProgramDescriptionOne" xml:space="preserve">
+    <value>選取您所選擇的 beta 版產品。</value>
+  </data>
+  <data name="BetaProgramDescriptionThree" xml:space="preserve">
+    <value>針對提交的意見回饋，直接與產品和工程團隊互動。</value>
+  </data>
+  <data name="BetaProgramDescriptionTwo" xml:space="preserve">
+    <value>存取 EUC 各項產品 (例如 Intelligent Hub、Boxer 等) 最新、最創新的功能和增強功能。</value>
+  </data>
+  <data name="BetaProgramIntroduction" xml:space="preserve">
+    <value>搶先存取最新的 Workspace ONE 預先發佈組建。</value>
+  </data>
+  <data name="BetaProgramParam" xml:space="preserve">
+    <value>掃描 QR 碼或 {0} 以加入。</value>
+    <comment>Placeholder in the label key contains a link to redirect the admin to the Beta Program page.</comment>
+  </data>
+  <data name="BetaProgramTitle" xml:space="preserve">
+    <value>測試新一代 Workspace ONE 產品</value>
+  </data>
+  <data name="BindUserCredentialsInvalid" xml:space="preserve">
+    <value>繫結使用者認證無效</value>
+  </data>
+  <data name="BiosSample" xml:space="preserve">
+    <value>OEM BIOS 資訊範例</value>
+  </data>
+  <data name="BiosSampleInfo" xml:space="preserve">
+    <value>針對 Dell 裝置收集 BIOS 資訊的排程。資料包括開機模式、安全開機狀態、WiFi、GPS 和藍牙無線電狀態、在 BIOS 中的充電排程等。</value>
+  </data>
+  <data name="BiosSampleInMinutes" xml:space="preserve">
+    <value>OEM BIOS 資訊範例</value>
+  </data>
+  <data name="BiosSampleTimeMode" xml:space="preserve">
+    <value>BIOS 取樣時間模式</value>
+  </data>
+  <data name="BlockNonCompliantDevices" xml:space="preserve">
+    <value>封鎖不合規的裝置</value>
+  </data>
+  <data name="BlockNonCompliantDevicesTooltip" xml:space="preserve">
+    <value>選取不合規裝置的安全群組。</value>
+  </data>
+  <data name="BlockSdkApplicationAction" xml:space="preserve">
+    <value>動作: 封鎖 SDK 應用程式</value>
+  </data>
+  <data name="BluetoothConnections" xml:space="preserve">
+    <value>藍牙連線</value>
+  </data>
+  <data name="BluetoothData" xml:space="preserve">
+    <value>藍牙資料</value>
+  </data>
+  <data name="BookmarkInfo" xml:space="preserve">
+    <value>在「顯示名稱」欄位中的輸入值會出現在 Workspace ONE Web 的書籤功能表中。如果將「顯示名稱」欄位留白，書籤功能表僅會顯示 URL。</value>
+  </data>
+  <data name="BookmarkInfoTooltip" xml:space="preserve">
+    <value>在「名稱」欄位中的輸入值會出現在 Workspace ONE Web 的書籤功能表中。如果將「名稱」欄位留白，書籤功能表則會顯示完整的書籤 URL。</value>
+  </data>
+  <data name="BranchCacheSetting" xml:space="preserve">
+    <value>BranchCache 對等式散發設定</value>
+  </data>
+  <data name="BrowserInformationSampleInfo" xml:space="preserve">
+    <value>收集瀏覽器資訊樣本的排程。此樣本包含安全區域層級資訊、外掛程式的狀態，以及指令碼和與 IE 瀏覽器相關的其他設定。</value>
+  </data>
+  <data name="BuildInformation" xml:space="preserve">
+    <value>組建資訊</value>
+  </data>
+  <data name="BulkAssignmentMaxLimit_Description" xml:space="preserve">
+    <value>大量指派上限</value>
+  </data>
+  <data name="BulkEnrollment" xml:space="preserve">
+    <value>大量註冊</value>
+  </data>
+  <data name="BYOD" xml:space="preserve">
+    <value>BYOD</value>
+  </data>
+  <data name="CABatchImportCompleted" xml:space="preserve">
+    <value>CA 批次匯入已完成</value>
+  </data>
+  <data name="CABatchImportFailed" xml:space="preserve">
+    <value>CA 批次匯入失敗</value>
+  </data>
+  <data name="CABatchImportStarted" xml:space="preserve">
+    <value>CA 批次匯入已開始</value>
+  </data>
+  <data name="CaCertificate" xml:space="preserve">
+    <value>用戶端憑證</value>
+  </data>
+  <data name="Calculator" xml:space="preserve">
+    <value>計算器</value>
+  </data>
+  <data name="CannotDeleteDefaultDTR" xml:space="preserve">
+    <value>無法刪除預設裝置流量規則集。</value>
+  </data>
+  <data name="CantWaitSkipAheadAndCheckOutTheNewConfigurationsPage" xml:space="preserve">
+    <value>等不及了嗎? 直接查看全新的 [組態] 頁面！</value>
+  </data>
+  <data name="CascadeInfoWhenClarityFeatureFlagOn" xml:space="preserve">
+    <value>受支援的部署模型有一種 - 
+適用 Proxy: 基本部署 (位於內部網路或 DMZ 的伺服器) 與轉送端點部署 (位於 DMZ 的轉送伺服器，以及位於內部網路的端點伺服器)。</value>
+  </data>
+  <data name="CatalogSettingsInfo" xml:space="preserve">
+    <value>Intelligent Hub 應用程式目錄設定已移至 Workspace ONE Hub 服務。這些唯讀設定適用於較舊的 Intelligent Hub 版本。請導覽至 Workspace ONE Hub 服務以深入瞭解。</value>
+  </data>
+  <data name="CDNNotEnabled" xml:space="preserve">
+    <value>執行測試連線作業前，請先啟用並儲存 CDN 設定。</value>
+  </data>
+  <data name="CDNTestFailed" xml:space="preserve">
+    <value>與 CDN 伺服器的連線失敗。</value>
+  </data>
+  <data name="CeipDescription" xml:space="preserve">
+    <value>本產品參與 VMware 的客戶經驗改進計劃 (「CEIP」)。CEIP 會提供 VMware 資訊，讓 VMware 得以改善其產品與服務、修正問題，並建議您如何最佳部署及使用我們的產品。VMware 會定期收集有關貴組織使用 VMware 產品與服務的技術資訊以作為 CEIP 的一部分，此係與貴組織的 VMware 授權金鑰相關聯。此資訊不會識別任何個人身分。如需 CEIP 的更多相關資訊，請詳見 Trust &amp;amp; Assurance Center (信任與保證中心)，網址為: {0}。您可以在下方選擇您喜歡的參與方式。</value>
+  </data>
+  <data name="CertificateAddedCertInfo" xml:space="preserve">
+    <value>憑證已儲存。</value>
+  </data>
+  <data name="CertificateAuthorities" xml:space="preserve">
+    <value>憑證授權機構</value>
+  </data>
+  <data name="CertificateAuthoritiesListDescription" xml:space="preserve">
+    <value>Workspace ONE Mobile 憑證管理可透過憑證授權機構，提供較傳統密碼更穩定且安全的驗證方法，以最佳化整個裝置生命週期的安全性。</value>
+  </data>
+  <data name="CertificateAuthority" xml:space="preserve">
+    <value>憑證授權機構</value>
+  </data>
+  <data name="CertificateAuthorityConfigurationDescription" xml:space="preserve">
+    <value>Workspace ONE Mobile 憑證管理可透過憑證授權機構，提供較傳統密碼更穩定且安全的驗證方法，以最佳化整個裝置生命週期的安全性。</value>
+  </data>
+  <data name="CertificateAuthorityDoesNotBelongToOg" xml:space="preserve">
+    <value>憑證授權機構不屬於目前企業群組。</value>
+  </data>
+  <data name="CertificateCannotBeUsedInCascadeMode" xml:space="preserve">
+    <value>如果增強型驗證金鑰使用方式 OID 中不存在 [用戶端驗證]，則憑證無法用於串聯模式</value>
+  </data>
+  <data name="CertificateDoesNotExists" xml:space="preserve">
+    <value>憑證不存在。</value>
+  </data>
+  <data name="CertificateHasExpired" xml:space="preserve">
+    <value>提供的憑證已到期</value>
+  </data>
+  <data name="CertificateListSampleInfo" xml:space="preserve">
+    <value>收集裝置上所有受管理憑證詳細目錄的排程。這不會收集使用者所安裝或原廠所安裝憑證的詳細目錄。</value>
+  </data>
+  <data name="CertificateListSampleInMinutes" xml:space="preserve">
+    <value>憑證清單取樣</value>
+  </data>
+  <data name="CertificateListSampleTimeMode" xml:space="preserve">
+    <value>憑證清單取樣時間模式</value>
+  </data>
+  <data name="CertificateProfilePublishFrequencyHelp" xml:space="preserve">
+    <value>此數數值為每一批次發行的命令數。增加此數值可改善憑證設定檔批次處理，但是請密切監控 CA 和 DS 伺服器效能</value>
+  </data>
+  <data name="CertificateProfiles" xml:space="preserve">
+    <value>憑證設定檔</value>
+  </data>
+  <data name="CertificateRemovedCertInfo" xml:space="preserve">
+    <value>憑證已移除。</value>
+  </data>
+  <data name="CertificateRevocationBasedOnSamplingHelpText" xml:space="preserve">
+    <value>啟用根據取樣撤銷憑證。如果停用，若樣本中缺少憑證，即無法撤銷。</value>
+  </data>
+  <data name="CertificateRevocationBasedOnSamplingPeriodHelpText" xml:space="preserve">
+    <value>輸入每次嘗試撤銷憑證 (狀態為 [未呈報]) 之間的時間段，以小時表示。時間段必須大於時間取樣的值。在定義的時間段過後，系統就會在下個樣本中撤銷憑證。</value>
+  </data>
+  <data name="CertificateRevocationBasedOnSamplingPeriodHours" xml:space="preserve">
+    <value>憑證撤銷期 (小時)</value>
+  </data>
+  <data name="CertificateSubjectHostnameMismatch" xml:space="preserve">
+    <value>憑證主體名稱未對應主機名稱。</value>
+  </data>
+  <data name="CertificateTemplateDoesNotBelongToOg" xml:space="preserve">
+    <value>憑證範本不屬於目前企業群組。</value>
+  </data>
+  <data name="CertificateUploadHelpText" xml:space="preserve">
+    <value>選擇要上傳的憑證。支援的憑證類型包含：.pfx、.p12、.cer。</value>
+  </data>
+  <data name="ChangesRequireIISAndServicesRestart" xml:space="preserve">
+    <value>若您不重新啟動，您在所有 Workspace One 伺服器上 Windows Services 中的 IIS 和所有 AirWatch 服務所做的變動將不會生效。</value>
+  </data>
+  <data name="CheckConnectionFailed" xml:space="preserve">
+    <value>檢查連線失敗 - 其他錯誤。</value>
+  </data>
+  <data name="CheckForDduiUpdatesTooltip" xml:space="preserve">
+    <value>檢查是否有新的設定檔組態可供使用。</value>
+  </data>
+  <data name="CheckingForUpdates" xml:space="preserve">
+    <value>正在檢查更新...</value>
+  </data>
+  <data name="ChooseFile" xml:space="preserve">
+    <value>選擇檔案</value>
+  </data>
+  <data name="ChooseManually" xml:space="preserve">
+    <value>手動選擇</value>
+  </data>
+  <data name="ChromeBookLegacyAgentSettings" xml:space="preserve">
+    <value>Agent 設定</value>
+  </data>
+  <data name="ChromeExtensionNotificationText" xml:space="preserve">
+    <value>若您有設定 Chrome OS EMM 登錄，則適用於 Chrome OS 的 Workspace ONE UEM 擴充功能將會自動推送至您終端使用者的裝置。相關圖示會出現在終端使用者的瀏覽器中，且使用者能夠導覽至擴充功能所收集資料的相關資訊，您只需將任何必要的注意事項提供給您的裝置終端使用者、針對擴充功能的使用，取得裝置終端使用者任何法律上必要的同意，並在將擴充功能推送至終端使用者的裝置之前，遵守所有適用法律。</value>
+  </data>
+  <data name="ChromeOS" xml:space="preserve">
+    <value>Chrome OS</value>
+  </data>
+  <data name="ChromeOSEMMRegistrationDescription" xml:space="preserve">
+    <value>向 Google 註冊 Workspace ONE UEM 作為您的企業行動力管理 (EMM) 提供者，以開始管理 Chrome 作業系統裝置。</value>
+  </data>
+  <data name="ChromeRegistrationRedirectText" xml:space="preserve">
+    <value>只需輸入您的 Google 管理員帳戶，系統即會將您重新導向至 Google 授權頁面以授與權限。請確認您已啟用快顯視窗，否則授權頁面將無法開啟。</value>
+  </data>
+  <data name="ChromeSettingsMisconfigured" xml:space="preserve">
+    <value>登錄 Chrome OS EMM 時發生錯誤。請確認您的 Google 管理控制台設定，以取得可用的授權、管理員權限和合作夥伴存取組態。</value>
+  </data>
+  <data name="CIMDEndpointLabel" xml:space="preserve">
+    <value>CIMDEndpoint</value>
+  </data>
+  <data name="CIMDEndpointTooltip" xml:space="preserve">
+    <value>https://伺服器名稱或 IP 位址/QueryStringParamLogger?user={0}&amp;pass={1}&amp;to={2}&amp;text={3}</value>
+  </data>
+  <data name="ClassManagement" xml:space="preserve">
+    <value>類別管理</value>
+  </data>
+  <data name="ClearAppDataOnLogout" xml:space="preserve">
+    <value>清除 Android 應用程式資料</value>
+  </data>
+  <data name="ClearOverride" xml:space="preserve">
+    <value>清除覆寫</value>
+  </data>
+  <data name="ClearProductProvisioningState_Description" xml:space="preserve">
+    <value>清除產品佈建狀態</value>
+  </data>
+  <data name="ClearRelayServerContentMappingJob" xml:space="preserve">
+    <value>清除 RelayServer 內容對應工作</value>
+  </data>
+  <data name="ClickToExpandArgMenu" xml:space="preserve">
+    <value>按一下以展開 [{0}] 功能表</value>
+  </data>
+  <data name="ClientAuthentication" xml:space="preserve">
+    <value>用戶端驗證</value>
+  </data>
+  <data name="ClientName" xml:space="preserve">
+    <value>用戶端名稱</value>
+  </data>
+  <data name="ClientTrafficRulesInfoWithSupportForMacOSApps" xml:space="preserve">
+    <value>備註: 這些規則僅適用於 Android、iOS、macOS 和 Windows Desktop 裝置之 VMware Tunnel 的「個別應用程式通道」元件。(如果是 iOS，請使用 App Store 的 VMware Tunnel 用戶端應用程式)。根據此頁面所指定的規則，您行動裝置上所安裝的 AirWatch Tunnel 應用程式將會決定要連通、封鎖或略過網路流量。您也可以使用另一個選項，將網路流量路由至您網路中所設定的自訂 Web Proxy。</value>
+  </data>
+  <data name="CloudConnectorCertificate" xml:space="preserve">
+    <value>無法產生 Cloud Connector 的簽署憑證</value>
+  </data>
+  <data name="CloudConnectorClientCertificate" xml:space="preserve">
+    <value>無法產生 Cloud Connector 用戶端的簽署憑證</value>
+  </data>
+  <data name="CNameVerified" xml:space="preserve">
+    <value>CNAME 已通過驗證</value>
+  </data>
+  <data name="CodeIntegrityPolicyAllowlist_Description" xml:space="preserve">
+    <value>程式碼完整性原則允許清單</value>
+  </data>
+  <data name="CodeIntegrityPolicyHashCheck_Description" xml:space="preserve">
+    <value>程式碼完整性原則雜湊檢查</value>
+  </data>
+  <data name="CollectImeiInfoMessage" xml:space="preserve">
+    <value>選擇不收集 IMEI 號碼時，請確保 Workspace ONE UEM Console 中的其他功能不需要此號碼。</value>
+  </data>
+  <data name="CollectImeiNumber" xml:space="preserve">
+    <value>收集工作設定檔上的 IMEI 號碼</value>
+  </data>
+  <data name="CollectJobStatistics_Description" xml:space="preserve">
+    <value>收集工作統計資料</value>
+  </data>
+  <data name="ColorCode" xml:space="preserve">
+    <value>色彩碼</value>
+  </data>
+  <data name="CompanyHubSettings" xml:space="preserve">
+    <value>公司 Hub 的設定</value>
+  </data>
+  <data name="ComplianceAzureADResponsePageMessage" xml:space="preserve">
+    <value>您已成功驗證 Azure Active Directory。請關閉該頁面，然後繼續前往 Workspace ONE UEM。</value>
+  </data>
+  <data name="ComplianceAzureADResponsePageTitle" xml:space="preserve">
+    <value>Azure AD 驗證</value>
+  </data>
+  <data name="ComplianceConditionalAccessAdminConsentTooltip" xml:space="preserve">
+    <value>一旦同意流程成功接受，您就可以完成整合。</value>
+  </data>
+  <data name="ComplianceConditionalAccessAzureADPopUpBodyText" xml:space="preserve">
+    <value>系統會將您重新導向至 Microsoft，以向 Azure AD 進行驗證。驗證後，請返回 Workspace ONE UEM 以完成整合。</value>
+  </data>
+  <data name="ComplianceConditionalAccessAzureADPopUpHeaderText" xml:space="preserve">
+    <value>重新導向至 Microsoft</value>
+  </data>
+  <data name="ComplianceConditionalAccessCompleteIntegrationButton" xml:space="preserve">
+    <value>完成</value>
+  </data>
+  <data name="ComplianceConditionalAccessDeletionFailure" xml:space="preserve">
+    <value>停用合規性 Azure AD 失敗。</value>
+  </data>
+  <data name="ComplianceConditionalAccessIntegrationFailure" xml:space="preserve">
+    <value>Azure AD 整合失敗。</value>
+  </data>
+  <data name="ComplianceConditionalAccessIntegrationSuccess" xml:space="preserve">
+    <value>已成功整合 Azure AD。</value>
+  </data>
+  <data name="ComplianceConditionalAccessIntegrationWarning" xml:space="preserve">
+    <value>您尚未完成與 Azure AD 的整合。</value>
+  </data>
+  <data name="ComplianceConditionalAccessWDPOptedInWarning" xml:space="preserve">
+    <value>啟用「使用合規性 Azure AD」時發生錯誤。立即 {0}，或您可以前往 [監控] &gt; [Intelligence]。如需詳細資訊，請參閱 {1}。</value>
+  </data>
+  <data name="CompliancePolicyAlertMsgOnAppListPrivacy" xml:space="preserve">
+    <value>您已將一或多個裝置類型的個人應用程式隱私權設為「不收集」，而且您也有依據階層中一或多個 OG 所建立之合規原則的應用程式清單。請確定您的原則不會根據可能由終端使用者或個人應用程式已側載的應用程式來標記裝置合規狀態。</value>
+  </data>
+  <data name="ComplianceRuleTypeDeviceLastSeen" xml:space="preserve">
+    <value>裝置最後上線時間</value>
+  </data>
+  <data name="ComplianceRuleTypeDMLastSeen" xml:space="preserve">
+    <value>OMA DM 用戶最後上線時間</value>
+  </data>
+  <data name="ComplianceRuleTypeLastCompromisedScan" xml:space="preserve">
+    <value>上次破解狀態掃描</value>
+  </data>
+  <data name="ComplianceRuleTypeMDMEULAAcceptance" xml:space="preserve">
+    <value>接受 MDM 使用條款</value>
+  </data>
+  <data name="ConditionalAccess-assign-compliance-policy-failure" xml:space="preserve">
+    <value>指派合規性原則失敗。</value>
+  </data>
+  <data name="ConditionalAccessCompleteIntegrationBodyText" xml:space="preserve">
+    <value>測試 Azure Active Directory 連線並完成整合。</value>
+  </data>
+  <data name="ConditionalAccessCompleteIntegrationHeaderText" xml:space="preserve">
+    <value>完成整合</value>
+  </data>
+  <data name="ConditionalAccess-compliance-management-partner-not-found" xml:space="preserve">
+    <value>找不到合規性管理合作夥伴。</value>
+  </data>
+  <data name="ConditionalAccessConfigurationSaveFailureMessage" xml:space="preserve">
+    <value>無法儲存條件式存取組態。</value>
+  </data>
+  <data name="ConditionalAccess-create-compliance-policy-failure" xml:space="preserve">
+    <value>建立合規性原則失敗。</value>
+  </data>
+  <data name="ConditionalAccess-delete-compliance-policy-failure" xml:space="preserve">
+    <value>刪除合規性原則失敗。</value>
+  </data>
+  <data name="ConditionalAccessEnabled" xml:space="preserve">
+    <value>在 Azure 條件式存取原則中使用合規性資料</value>
+  </data>
+  <data name="ConditionalAccessEnabledForIosAndroid" xml:space="preserve">
+    <value>在 iOS 和 Android 的 Azure 條件式存取原則中使用合規性資料</value>
+  </data>
+  <data name="ConditionalAccessEnabledForWindows" xml:space="preserve">
+    <value>在 Windows 的 Azure 條件式存取原則中使用合規性資料</value>
+  </data>
+  <data name="ConditionalAccessEnabledHelpText" xml:space="preserve">
+    <value>使用 Azure AD 條件式存取原則所需 UEM 中的裝置合規性資料。
+        Workspace ONE 利用 Microsoft Intune® 裝置合規性 API 來呼叫 Microsoft 365 服務，包括 Microsoft Intune® 和 Azure Active Directory Premium。</value>
+  </data>
+  <data name="ConditionalAccess-get-compliance-management-partners-failure" xml:space="preserve">
+    <value>合規性管理合作夥伴失敗。</value>
+  </data>
+  <data name="ConditionalAccess-get-oauth2-token-failure" xml:space="preserve">
+    <value>OAuth token2 失敗。</value>
+  </data>
+  <data name="ConditionalAccess-get-service-endpoints-failure" xml:space="preserve">
+    <value>服務端點失敗。</value>
+  </data>
+  <data name="ConditionalAccess-partner-tenant-already-provisioned" xml:space="preserve">
+    <value>合作夥伴租用戶已佈建。</value>
+  </data>
+  <data name="ConditionalAccess-partner-tenant-already-provisioned-with-different-source-tenant" xml:space="preserve">
+    <value>已使用不同的來源租用戶佈建合作夥伴租用戶。</value>
+  </data>
+  <data name="ConditionalAccess-partner-tenant-not-provisioned" xml:space="preserve">
+    <value>合作夥伴租用戶未佈建。</value>
+  </data>
+  <data name="ConditionalAccess-partner-tenant-not-provisioned-or-mismatching" xml:space="preserve">
+    <value>合作夥伴租用戶未佈建或不符。</value>
+  </data>
+  <data name="ConditionalAccessPlatformSelectionWarningMessage" xml:space="preserve">
+    <value>請停用「在 Azure 條件式存取原則中使用合規性資料」，或者啟用「在 Windows 的 Azure 條件式存取原則中使用合規性資料」或「在 iOS 和 Android 的 Azure 條件式存取原則中使用合規性資料」，以成功儲存頁面。</value>
+  </data>
+  <data name="ConditionalAccessPoliciesText" xml:space="preserve">
+    <value>條件式存取原則</value>
+  </data>
+  <data name="ConditionalAccess-provision-tenant-failure" xml:space="preserve">
+    <value>佈建租用戶失敗。</value>
+  </data>
+  <data name="ConditionalAccessWDPOptedInErrorMessage" xml:space="preserve">
+    <value>啟用「使用合規性 Azure AD」時，似乎發生錯誤。請瀏覽至 [監控] &gt; [Intelligence] 加入 Intelligence</value>
+  </data>
+  <data name="ConfigDoesntBelongToOG" xml:space="preserve">
+    <value>組態不屬於您的企業群組</value>
+  </data>
+  <data name="ConfigurationName" xml:space="preserve">
+    <value>組態名稱</value>
+  </data>
+  <data name="Configurations" xml:space="preserve">
+    <value>組態</value>
+  </data>
+  <data name="ConfigurationsHelpDescription" xml:space="preserve">
+    <value>現在，提供員工保持高效率所需的安全工具從未如此簡單。</value>
+  </data>
+  <data name="ConfigurationsHelpDescriptionArg" xml:space="preserve">
+    <value>{0} 經過重新設計，因此定義及開發企業需求所需的所有必要設定皆已提升操作性、易於尋找且以更有邏輯的方式組織於 [組態] 中。</value>
+  </data>
+  <data name="ConfigurationsListDescription" xml:space="preserve">
+    <value>建立基礎設定、自訂及整合，以提供員工驅動您的企業發展所需的資源。</value>
+  </data>
+  <data name="ConfigurationsWelcomeWindowDescription" xml:space="preserve">
+    <value>[群組與設定] 經過重新設計，因此定義及開發企業需求所需的所有必要設定皆已提升操作性、易於尋找且以更有邏輯的方式組織於 [組態] 中。</value>
+  </data>
+  <data name="ConfigurationsWelcomeWindowParam" xml:space="preserve">
+    <value>Intelligent Hub 組態已移至 {0} 頁面。</value>
+    <comment>Placeholder in the label key contains a link to redirect the admin to the Configurations page.</comment>
+  </data>
+  <data name="ConfigurationUpdateFailed" xml:space="preserve">
+    <value>更新失敗</value>
+  </data>
+  <data name="ConfigureHub" xml:space="preserve">
+    <value>設定 Workspace ONE Hub</value>
+  </data>
+  <data name="ConfigureHubHelp" xml:space="preserve">
+    <value>控制 Hub 組態頁面的存取權限</value>
+  </data>
+  <data name="ConfigureHubServicesParam" xml:space="preserve">
+    <value>{0}設定 Hub 服務。</value>
+    <comment>Placeholder in this label key contains a link to redirect admin to configure Hub services. </comment>
+  </data>
+  <data name="ConfigureKerberosUnderMagInSystemConfiguration" xml:space="preserve">
+    <value>必須啟用 Kerberos 以作為 Tunnel Proxy 組態的一部份。若要設定，請前往 [系統] &gt; [企業整合] &gt; [VMware Tunnel Proxy]</value>
+  </data>
+  <data name="ConfigureScimProvisioningForCurrentOrganizationGroup" xml:space="preserve">
+    <value>為目前的企業群組設定並儲存 SCIM 佈建設定。</value>
+  </data>
+  <data name="ConfigureTunnelSettings" xml:space="preserve">
+    <value>設定 VMware Tunnel 設定</value>
+  </data>
+  <data name="Confirmation" xml:space="preserve">
+    <value>確認</value>
+  </data>
+  <data name="ConfirmDeleteAdaptivaSettingV2" xml:space="preserve">
+    <value>是否確定要刪除此 Adaptiva 對等式散發設定?</value>
+  </data>
+  <data name="ConfirmFindDevice" xml:space="preserve">
+    <value>您確定要定位此裝置嗎?</value>
+  </data>
+  <data name="ConfirmFontDelete" xml:space="preserve">
+    <value>確定要刪除此字型嗎?</value>
+  </data>
+  <data name="ConfirmRegenerateCertificate" xml:space="preserve">
+    <value>此動作會移除 Tunnel 進行驗證所用的現有信任。您必須在此動作之後部署更新後的設定檔。</value>
+  </data>
+  <data name="ConfirmVIDMPassword" xml:space="preserve">
+    <value>確認 Workspace ONE Access 密碼</value>
+  </data>
+  <data name="ConsoleProxySettingsRequired" xml:space="preserve">
+    <value>Console 代理伺服器設定為必填</value>
+  </data>
+  <data name="ConsoleToAWCM" xml:space="preserve">
+    <value>主控台至 AWCM</value>
+  </data>
+  <data name="ConsoleToAWCMFailureMessage" xml:space="preserve">
+    <value>請確認 AWCM 服務正在執行中，且 Console 與 AWCM 伺服器的連線狀態良好。</value>
+  </data>
+  <data name="ContentCategories" xml:space="preserve">
+    <value>內容類別</value>
+  </data>
+  <data name="Contenteditreconfigurewarning" xml:space="preserve">
+    <value>對下方任何設定所做的變更，只有在 UAG 中重新儲存 CG 組態後才會生效</value>
+  </data>
+  <data name="ContentGatewayDownload" xml:space="preserve">
+    <value>Content Gateway 下載</value>
+  </data>
+  <data name="ContentGatewayIgnoreSSLErrorToolTip" xml:space="preserve">
+    <value>啟用此選項即允許 UEM Console 信任 Content Gateway，就算沒有有效的 SSL 憑證。</value>
+  </data>
+  <data name="ContentGatewayInstallationWarning" xml:space="preserve">
+    <value>Content Gateway 安裝程序有所變更。您無法再直接從 Workspace ONE Console 下載 Content Gateway 安裝程式。
+
+系統會改為將您重新導向至 Workspace ONE 資源入口網站，讓您下載安裝程式。</value>
+  </data>
+  <data name="ContentGatewayLanding" xml:space="preserve">
+    <value>備註: 您先前的 Content Gateway 設定已經移轉至 [設定] -&gt; [內容] -&gt; [Content Gateway] 頁面。
+
+Workspace ONE Content Gateway 是企業整合元件，可透過安全有效的方式從任何地點存取公司內容。
+
+您的員工在其行動裝置上透過 Workspace ONE Content 存取內部內容時，Content Gateway 將發揮裝置與企業系統之間的安全轉送功能。
+
+詳情請參閱 Workspace ONE Content Gateway 安裝和管理指南。</value>
+  </data>
+  <data name="ContentGatewayLandingNew" xml:space="preserve">
+    <value>備註: 您先前的 Content Gateway 設定已經移轉至 [設定] &gt; [系統] &gt; [企業整合] &gt; {0}。
+
+AirWatch Content Gateway 是企業整合元件，可透過安全有效的方式從任何地點存取公司內容。
+
+您的員工在其行動裝置上透過 Workspace ONE Content 存取內部內容時，Content Gateway 將發揮裝置與企業系統之間的安全轉送功能。
+
+詳情請參閱 Workspace ONE Content Gateway 安裝和管理指南。</value>
+  </data>
+  <data name="ContentGatewayPublicSslCertificateTooltip" xml:space="preserve">
+    <value>請上傳第三方公開 SSL 憑證，讓裝置可信任 Content Gateway (必須為「.pfx」格式且包含您的公開及私密金鑰組)。</value>
+  </data>
+  <data name="ContentGatewayServerSSLPortTooltip" xml:space="preserve">
+    <value>啟用 SSL 卸載後，Content Gateway 接聽的連接埠。若屬轉送端點的部署模式，則此連接埠僅適用轉送伺服器。</value>
+  </data>
+  <data name="ContentGatewaySSLOffloadingTooltip" xml:space="preserve">
+    <value>啟用後，將由 Content Gateway 前端的負載平衡器進行 SSL 卸載。若屬轉送端點的部署模式，則 SSL 卸載僅適用轉送伺服器。</value>
+  </data>
+  <data name="ContentLockRequested" xml:space="preserve">
+    <value>已要求內容鎖定。</value>
+  </data>
+  <data name="ContentOnboarding" xml:space="preserve">
+    <value>Content 上架</value>
+  </data>
+  <data name="COPE" xml:space="preserve">
+    <value>COPE</value>
+    <comment>Corporate-Owned, Personally Enabled</comment>
+  </data>
+  <data name="CorporateDevices" xml:space="preserve">
+    <value>企業裝置</value>
+  </data>
+  <data name="CreateSmartGroups" xml:space="preserve">
+    <value>使用標記來建立智慧群組</value>
+  </data>
+  <data name="CreateSmartGroupsDescription" xml:space="preserve">
+    <value>使用 DropShip 標記建立智慧群組，以為裝置建立一般組態</value>
+  </data>
+  <data name="CreateTag" xml:space="preserve">
+    <value>建立標記</value>
+  </data>
+  <data name="CreateTagDescription" xml:space="preserve">
+    <value>為 DropShip 裝置建立標記以建立邏輯群組</value>
+  </data>
+  <data name="CreateWSOneCatalogTenant" xml:space="preserve">
+    <value>建立 Workspace ONE 目錄租用戶</value>
+  </data>
+  <data name="CreateWSOneCatalogTenantHelp" xml:space="preserve">
+    <value>控制要求新 Workspace ONE Access 雲端租用戶的存取權</value>
+  </data>
+  <data name="CurrentDeviceLimitPerOrganizationGroup" xml:space="preserve">
+    <value>每個企業群組的目前裝置限制</value>
+  </data>
+  <data name="CustomAttributeSample" xml:space="preserve">
+    <value>自訂屬性範例</value>
+  </data>
+  <data name="CustomAttributeSampleInfo" xml:space="preserve">
+    <value>收集管理員所設定之登錄機碼型自訂屬性的排程。這些值位於 [裝置詳細資料] &gt; [自訂屬性] 區段中。</value>
+  </data>
+  <data name="CustomAttributeSampleInMinutes" xml:space="preserve">
+    <value>自訂屬性取樣</value>
+  </data>
+  <data name="CustomAttributeSampleTimeMode" xml:space="preserve">
+    <value>自訂屬性取樣時間模式</value>
+  </data>
+  <data name="CustomerExperienceImprovementProgram" xml:space="preserve">
+    <value>客戶經驗改進計劃</value>
+  </data>
+  <data name="CustomerOrPartnerOgOnlyError" xml:space="preserve">
+    <value>Hub 服務僅可於客戶層級或合作夥伴組織群組層級啟用。</value>
+  </data>
+  <data name="CustomGatewaySettingsInfoMessage" xml:space="preserve">
+    <value>需要 UAG v 3.9 +</value>
+  </data>
+  <data name="CustomKeyValueShouldNotBeEmpty" xml:space="preserve">
+    <value>其中一個自訂設定已設定空白的金鑰或值。</value>
+  </data>
+  <data name="CustomManagedAppleID" xml:space="preserve">
+    <value>啟用自訂受管理的 Apple ID 格式</value>
+  </data>
+  <data name="CustomOnboardingImagePreviewHelp" xml:space="preserve">
+    <value>此影像說明入門培訓體驗的基本元素，而非實際視圖。</value>
+  </data>
+  <data name="CustomOnboardingMessage" xml:space="preserve">
+    <value>本文</value>
+  </data>
+  <data name="CustomOnboardingMessageHelp" xml:space="preserve">
+    <value>最多 500 個字元。請使用以下格式插入連結：[linktext](http://www.exampleurl.com)。</value>
+  </data>
+  <data name="CustomOnboardingUserName" xml:space="preserve">
+    <value>歡迎使用標頭</value>
+  </data>
+  <data name="CustomOnboardingWelcomeText" xml:space="preserve">
+    <value>歡迎使用子標頭</value>
+  </data>
+  <data name="CustomSettingsCount" xml:space="preserve">
+    <value>{0} 自訂設定</value>
+  </data>
+  <data name="CustomSettingValueTypeMismatch" xml:space="preserve">
+    <value>下列自訂金鑰 {0} 的自訂設定驗證失敗。請更正輸入的值。</value>
+  </data>
+  <data name="DailyQuotaToolTip" xml:space="preserve">
+    <value>以 24 小時為間隔對 OG 的限制。</value>
+  </data>
+  <data name="DailyQuotaUsage" xml:space="preserve">
+    <value>每日配額使用量</value>
+  </data>
+  <data name="DailyQuotaUsageToolTip" xml:space="preserve">
+    <value>指定 API 呼叫在每日配額中使用的數量。僅在已啟用 Memcached 的情況下，才能取得此資訊。</value>
+  </data>
+  <data name="DataSampleIntervalModernAgentInfo" xml:space="preserve">
+    <value>收集裝置 GPS 資訊、推送通道健全狀況狀態，以及 Windows 市集代理程式一般健全狀況的排程。</value>
+  </data>
+  <data name="DataSampleIntervalProtectionAgentInfo" xml:space="preserve">
+    <value>收集 Hub 健全狀況資料的排程。</value>
+  </data>
+  <data name="DaysAfterWhichPPKGsWillBeDeleted" xml:space="preserve">
+    <value>刪除 PPKG 前的天數</value>
+  </data>
+  <data name="DaysAfterWhichPPKGsWillBeDeletedHelp" xml:space="preserve">
+    <value>刪除 PPKG 前的天數說明</value>
+  </data>
+  <data name="DaysInactive" xml:space="preserve">
+    <value>停用天數</value>
+  </data>
+  <data name="DduiConfigurationUpdateJob" xml:space="preserve">
+    <value>根據資料運作的 UI 組態工作</value>
+  </data>
+  <data name="DeactivatedApnsClient" xml:space="preserve">
+    <value>已停用 APN 用戶端</value>
+  </data>
+  <data name="DefaultActionForInactiveUsersOldValue" xml:space="preserve">
+    <value>非使用中之使用者的預設動作</value>
+  </data>
+  <data name="DefaultAWCMTraffic" xml:space="preserve">
+    <value>透過 [伺服器流量規則] 的預設 AWCM + API 流量</value>
+  </data>
+  <data name="DefaultAWCMTrafficTooltip" xml:space="preserve">
+    <value>依伺服器流量規則啟用與 Workspace ONE UEM API 及 AWCM 通訊。</value>
+  </data>
+  <data name="DefaultBlockEmail" xml:space="preserve">
+    <value>依預設封鎖 Email</value>
+  </data>
+  <data name="DefaultRoleOldValue" xml:space="preserve">
+    <value>預設角色</value>
+  </data>
+  <data name="DefaultStagingUserNotAuthorized" xml:space="preserve">
+    <value>預設註冊預備使用者未取得授權</value>
+  </data>
+  <data name="DeleteAllFactoryPPKGsImmediately" xml:space="preserve">
+    <value>立即刪除所有原廠 PPKG</value>
+  </data>
+  <data name="DeleteAllFactoryPPKGsImmediatelyButton" xml:space="preserve">
+    <value>刪除</value>
+  </data>
+  <data name="DeleteAllFactoryPPKGsImmediatelyFailed" xml:space="preserve">
+    <value>無法刪除所有原廠 PPKG</value>
+  </data>
+  <data name="DeleteAllFactoryPPKGsImmediatelyOk" xml:space="preserve">
+    <value>所有已完成的原廠 PPKG 將會被刪除</value>
+  </data>
+  <data name="DeleteCAConfirmMessage" xml:space="preserve">
+    <value>確定要刪除所選的憑證授權機構?</value>
+  </data>
+  <data name="DeleteCASuccessfulMessage" xml:space="preserve">
+    <value>已成功刪除所選的 CA。</value>
+  </data>
+  <data name="DeleteCertificateAuthority" xml:space="preserve">
+    <value>刪除憑證授權機構</value>
+  </data>
+  <data name="DeleteRestApiKey" xml:space="preserve">
+    <value>刪除 REST API 金鑰</value>
+  </data>
+  <data name="DeleteRestApiKeyDescription" xml:space="preserve">
+    <value>刪除 REST API 金鑰後，以該金鑰發出的所有呼叫將失敗。
+
+您將無法再次產生同樣的 REST API 金鑰。如提出要求，將建立新的金鑰。</value>
+  </data>
+  <data name="DeleteRestApiRestricted" xml:space="preserve">
+    <value>刪除 REST API 金鑰</value>
+  </data>
+  <data name="DeleteSettings" xml:space="preserve">
+    <value>刪除設定</value>
+  </data>
+  <data name="DellIntegration" xml:space="preserve">
+    <value>Dell 整合</value>
+  </data>
+  <data name="DEPAccountType" xml:space="preserve">
+    <value>如果未跳過 [帳戶設定]，此選項會定義終端使用者可以在 [設定輔助程式] 的最後步驟所建立的帳戶類型。如果選擇 [標準]，您必須在下方的 [管理員帳戶建立] 區段中定義管理員帳戶，如此才能在 DEP 註冊時，自動建立該帳戶。</value>
+  </data>
+  <data name="DeploymentDetails" xml:space="preserve">
+    <value>部署詳細資料</value>
+  </data>
+  <data name="DEPPolicyDisabled_Description" xml:space="preserve">
+    <value>已停用 DEP 原則</value>
+  </data>
+  <data name="DepTokenExpired" xml:space="preserve">
+    <value>DEP Token 似乎已過期。請至 Apple Business Manager 入口網站更新 Token。</value>
+  </data>
+  <data name="DepTokenForbidden" xml:space="preserve">
+    <value>DEP Token 似乎已遭刪除或系統無法要求所需的資訊。請至 Apple Business Manager 入口網站檢查 Token 的狀態。</value>
+  </data>
+  <data name="DepTokenNewTermsNotAccepted" xml:space="preserve">
+    <value>請登入 Apple Business Manager，並檢視更新的條款與條件。</value>
+  </data>
+  <data name="DepTokenRevoked" xml:space="preserve">
+    <value>DEP Token 似乎已遭撤銷。請至 Apple Business Manager 入口網站更新 Token。</value>
+  </data>
+  <data name="DesignatedRequirementDescription" xml:space="preserve">
+    <value>指定要求代表已簽署代碼的內部需求。</value>
+  </data>
+  <data name="DesiredStateManagement" xml:space="preserve">
+    <value>需要的狀態管理</value>
+  </data>
+  <data name="DeviceBatchSize_Description" xml:space="preserve">
+    <value>裝置批次大小</value>
+  </data>
+  <data name="DeviceDetailsSampleInfo" xml:space="preserve">
+    <value>收集裝置資料的排程，例如作業系統資訊、WiFi Mac 位址、處理器架構、製造商、型號等。</value>
+  </data>
+  <data name="DeviceDetailsSampleInMinutes" xml:space="preserve">
+    <value>裝置詳細資料取樣</value>
+  </data>
+  <data name="DeviceDetailsSampleIntervalErrorMessage" xml:space="preserve">
+    <value>裝置詳細資料取樣必須介於 2 小時到 30 天之間 (含)。</value>
+  </data>
+  <data name="DeviceDetailsSampleTimeMode" xml:space="preserve">
+    <value>裝置詳細資料取樣時間模式</value>
+  </data>
+  <data name="DeviceEnrollmentGroupingTab" xml:space="preserve">
+    <value>[所有設定] &gt; [裝置與使用者] &gt; [一般] &gt; [註冊] &gt; [群組]</value>
+  </data>
+  <data name="DeviceInformationSampleIntervalErrorMessage" xml:space="preserve">
+    <value>裝置資訊範例必須介於 2 小時到 30 天之間 (含)。</value>
+  </data>
+  <data name="DevicePolicyJobAuditing_Description" xml:space="preserve">
+    <value>裝置原則工作稽核</value>
+  </data>
+  <data name="DeviceReprocess_Description" xml:space="preserve">
+    <value>裝置重新處理</value>
+  </data>
+  <data name="DevicesGateway" xml:space="preserve">
+    <value>裝置閘道</value>
+  </data>
+  <data name="DevicesGatewayUrl" xml:space="preserve">
+    <value>裝置閘道 URL</value>
+  </data>
+  <data name="DevicesOrUsers" xml:space="preserve">
+    <value>裝置或使用者</value>
+  </data>
+  <data name="DeviceTrafficRuleDoesNotExist" xml:space="preserve">
+    <value>裝置流量規則不存在。</value>
+  </data>
+  <data name="DeviceTrafficRuleSaveConfirmMessage" xml:space="preserve">
+    <value>此動作將會導致新安裝的設定檔接收這些設定。現有的裝置不受影響。若要更新現有的裝置，請將版本新增至所需的設定檔，然後重新發佈。</value>
+  </data>
+  <data name="DeviceTrafficRuleSavePublishConfirmMessage" xml:space="preserve">
+    <value>此動作會針對此企業群組中的所有平台更新，並重新發佈所有現有的 Tunnel 設定檔。</value>
+  </data>
+  <data name="DeviceTrafficRuleSets" xml:space="preserve">
+    <value>裝置流量規則集</value>
+  </data>
+  <data name="DeviceTrafficRulesSaveFailed" xml:space="preserve">
+    <value>裝置流量規則儲存失敗。</value>
+  </data>
+  <data name="DeviceTrafficRuleWithoutAppMapping" xml:space="preserve">
+    <value>不存在適用於裝置流量規則的應用程式對應。</value>
+  </data>
+  <data name="DeviceUpdatesUrl" xml:space="preserve">
+    <value>裝置更新 URL</value>
+  </data>
+  <data name="DhasOnPremServerUrl" xml:space="preserve">
+    <value>裝置健康情況證明伺服器 URL。</value>
+  </data>
+  <data name="Diagnostics" xml:space="preserve">
+    <value>診斷</value>
+  </data>
+  <data name="DirectoryServicesAzureADIntegration" xml:space="preserve">
+    <value>Azure AD 整合</value>
+  </data>
+  <data name="DirectorySyncConcurrentSemaphoreRequestInitialLimit" xml:space="preserve">
+    <value>目錄同步並行信號要求初始限制</value>
+  </data>
+  <data name="DirectorySyncConcurrentSemaphoreRequestMaxLimit" xml:space="preserve">
+    <value>目錄同步並行信號要求上限</value>
+  </data>
+  <data name="DisableCDNWarningMessage" xml:space="preserve">
+    <value>使用此選項來停用透過 CDN 路由下載 (此企業群組或其子企業群組管理的) 裝置的資源 (應用程式及產品)。</value>
+  </data>
+  <data name="DisabledGatewayConfiguration" xml:space="preserve">
+    <value>主控台中已停用閘道/通道組態</value>
+  </data>
+  <data name="DisableDirectoryInVidmConfiguration" xml:space="preserve">
+    <value>停用 Active Directory</value>
+  </data>
+  <data name="DisableDirectoryInVidmConfigurationDescription" xml:space="preserve">
+    <value>您即將執行 [停用 Active Directory] 動作。請輸入安全 PIN 碼以繼續。請注意，此動作無法復原。</value>
+  </data>
+  <data name="DisableDirectoryInVidmWarning" xml:space="preserve">
+    <value>您即將執行 [停用 Active Directory] 動作。請注意，此動作無法復原。</value>
+  </data>
+  <data name="DisabledStatusAttributeType" xml:space="preserve">
+    <value>已停用狀態屬性類型</value>
+  </data>
+  <data name="DisableRelayServerCache_Description" xml:space="preserve">
+    <value>停用轉送伺服器快取</value>
+  </data>
+  <data name="DisableUnEnrollOptionInAgent" xml:space="preserve">
+    <value>在 Intelligent Hub 中停用 [取消註冊] 選項</value>
+  </data>
+  <data name="DisableUnenrollOptionToolTip" xml:space="preserve">
+    <value>如果啟用這項設定，使用者將無法從 Intelligent Hub 應用程式取消註冊其裝置。透過 Apple Business Manager 註冊的裝置會忽略這項設定</value>
+  </data>
+  <data name="DiskEncryptionSample" xml:space="preserve">
+    <value>裝置加密範例</value>
+  </data>
+  <data name="DiskEncryptionSampleInfo" xml:space="preserve">
+    <value>收集裝置上磁碟加密狀態的排程，並報告保護層級。</value>
+  </data>
+  <data name="DiskEncryptionSampleInMinutes" xml:space="preserve">
+    <value>裝置加密範例</value>
+  </data>
+  <data name="DiskEncryptionSampleTimeMode" xml:space="preserve">
+    <value>磁碟加密取樣時間模式</value>
+  </data>
+  <data name="DisplayAuthenticationScreenMessage" xml:space="preserve">
+    <value>顯示驗證畫面訊息</value>
+  </data>
+  <data name="DisplayAuthenticationScreenMessageTooltip" xml:space="preserve">
+    <value>在 Hub 使用者名稱和密碼畫面上顯示驗證提示。</value>
+  </data>
+  <data name="DisplayOfflineProvisioning_Description" xml:space="preserve">
+    <value>顯示離線佈建</value>
+  </data>
+  <data name="DistributionServer_Description" xml:space="preserve">
+    <value>散發伺服器</value>
+  </data>
+  <data name="DomainJoinComputerNameMaxLength" xml:space="preserve">
+    <value>最多 15 個字元</value>
+  </data>
+  <data name="DomainJoinDeviceNameFormatErrorMessage" xml:space="preserve">
+    <value>電腦名稱爲必填欄位</value>
+  </data>
+  <data name="DomainJoinDeviceNameFormatHelpText" xml:space="preserve">
+    <value>為裝置輸入 15 個字元的唯一名稱。若需產生唯一名稱的協助，您可以使用包含硬體特定序號的 %SERIAL%，也可以使用 %RAND:[#]%，這會產生 # 長度的隨機字元。若要在使用隨機數字產生時盡可能減少建立重複電腦名稱的可能性，隨機數字長度 [%RAND:[#]%] 必須大於或等於 7。
+      
+      例子:
+            Company%SERIAL%
+            CMP%RAND:10%</value>
+  </data>
+  <data name="DomainJoinDeviceNameFormatLabel" xml:space="preserve">
+    <value>電腦名稱</value>
+  </data>
+  <data name="DomainJoinDeviceNameFormatLengthErrorMessage" xml:space="preserve">
+    <value>電腦名稱格式長度超過 15 個字元</value>
+  </data>
+  <data name="DomainJoinDeviceNameFormatMatchErrorMessage" xml:space="preserve">
+    <value>電腦名稱使用非規定的格式</value>
+  </data>
+  <data name="DomainJoinOrganizationUnitErrorMessage" xml:space="preserve">
+    <value>組織單位辨別名稱為必填欄位</value>
+  </data>
+  <data name="DomainJoinOrganizationUnitHelpText" xml:space="preserve">
+    <value>範例:
+            OU=Sales,DC=Company,DC=Com</value>
+  </data>
+  <data name="DomainJoinOrganizationUnitLabel" xml:space="preserve">
+    <value>組織單位辨別名稱</value>
+  </data>
+  <data name="DomainJoinOUFormatMatchErrorMessage" xml:space="preserve">
+    <value>組織單位辨別名稱使用非規定的格式</value>
+  </data>
+  <data name="DomainJoinOUNotFoundErrorMessage" xml:space="preserve">
+    <value>Directory 設定中找不到網域控制站伺服器</value>
+  </data>
+  <data name="DownloadConfigXML" xml:space="preserve">
+    <value>下載組態 XML</value>
+  </data>
+  <data name="DownloadMacAgentPostEnrollment" xml:space="preserve">
+    <value>註冊後下載並安裝 macOS Intelligent Hub</value>
+  </data>
+  <data name="DownloadRemoteFileStorageConfiguration" xml:space="preserve">
+    <value>下載 RFS 組態</value>
+  </data>
+  <data name="DownloadRfsInstaller" xml:space="preserve">
+    <value>下載 RFS 安裝程式</value>
+  </data>
+  <data name="DownloadUagHyperV" xml:space="preserve">
+    <value>下載 Unified Access Gateway (Hyper-v)</value>
+  </data>
+  <data name="DownloadVSECCertificate" xml:space="preserve">
+    <value>下載 vSEC 憑證</value>
+  </data>
+  <data name="DownloadXML" xml:space="preserve">
+    <value>下載 XML</value>
+  </data>
+  <data name="DownstreamApiAccessError" xml:space="preserve">
+    <value>存取下游 API/微服務時發生錯誤。</value>
+  </data>
+  <data name="DownstreamApiBadRequestError" xml:space="preserve">
+    <value>下游 API 資源傳回錯誤的要求</value>
+  </data>
+  <data name="DownstreamApiResourceForebiddenError" xml:space="preserve">
+    <value>下游 API 資源傳回禁止錯誤</value>
+  </data>
+  <data name="DoYouWantToDeleteTunnelConfig" xml:space="preserve">
+    <value>您要刪除此組態嗎?</value>
+  </data>
+  <data name="DropShipConfiguration" xml:space="preserve">
+    <value>[組態] &gt; [Drop Ship Provisioning]</value>
+  </data>
+  <data name="DropShipProvisioningDescription" xml:space="preserve">
+    <value>Drop Ship Provisioning 目前適用於 Windows 10 及更新版本</value>
+  </data>
+  <data name="DropShipProvisioningIntroduction" xml:space="preserve">
+    <value>提供隨時可工作的裝置給使用者，並且利用標記、智慧群組和裝載功能，以提供合適的現成應用程式和組態。Drop Ship Provisioning 適用於 Windows 10 及更新版本</value>
+  </data>
+  <data name="DropShipProvisioningTitle" xml:space="preserve">
+    <value>介紹 Drop Ship Provisioning</value>
+  </data>
+  <data name="DsDeploymentInfoTextScim" xml:space="preserve">
+    <value>您要設定 SCIM 佈建嗎?</value>
+  </data>
+  <data name="DTRApplicationIdDoesNotExist" xml:space="preserve">
+    <value>裝置流量規則的應用程式不存在。</value>
+  </data>
+  <data name="DtrAssignmentNameMissing" xml:space="preserve">
+    <value>裝置流量規則集指派名稱為必填。</value>
+  </data>
+  <data name="DTROverrideToolTip" xml:space="preserve">
+    <value>覆寫裝置流量規則需要應用程式和設定檔受目前的企業群組所管理。</value>
+  </data>
+  <data name="DTRRulesCount" xml:space="preserve">
+    <value>規則的數量</value>
+  </data>
+  <data name="DTRSaveErrorMessageOnParentOGAppsReference" xml:space="preserve">
+    <value>參考父系企業群組的應用程式時無法儲存。請使用定義於此或更低企業群組的應用程式以繼續。</value>
+  </data>
+  <data name="DtrSpecialCharactersNotAllowed" xml:space="preserve">
+    <value>裝置流量規則目的地不能包含特殊字元。</value>
+  </data>
+  <data name="DTRSuccessMsg" xml:space="preserve">
+    <value>裝置流量規則已儲存成功</value>
+  </data>
+  <data name="DuplicateCustomKeysExists" xml:space="preserve">
+    <value>嘗試設定 [重複自訂] 設定金鑰。</value>
+  </data>
+  <data name="DuplicateDtrAssignmentNameExists" xml:space="preserve">
+    <value>無法使用重複的指派名稱來設定 DTR。請使用不同的指派名稱。</value>
+  </data>
+  <data name="DuplicateDTRSet" xml:space="preserve">
+    <value>重複</value>
+  </data>
+  <data name="EditApplicationDescription" xml:space="preserve">
+    <value>編輯應用程式詳細資料，用於設定應用程式流量原則。</value>
+  </data>
+  <data name="EditProfileMessage" xml:space="preserve">
+    <value>編輯此設定檔會將新的設定套用到目前已指派到此設定檔的所有裝置上。只有在裝置通過初始的設定輔助程式後，此設定檔的設定才會在裝置上生效。</value>
+  </data>
+  <data name="EditWSOneHubConfiguration" xml:space="preserve">
+    <value>編輯 Workspace ONE Intelligent Hub 組態。</value>
+  </data>
+  <data name="EditWSOneHubConfigurationHelp" xml:space="preserve">
+    <value>控制編輯 Workspace ONE Intelligent Hub 組態的權限。</value>
+  </data>
+  <data name="EducationSharediPads" xml:space="preserve">
+    <value>教育共用的 iPad</value>
+  </data>
+  <data name="EFOTA" xml:space="preserve">
+    <value>E-FOTA</value>
+  </data>
+  <data name="EFOTAHelp" xml:space="preserve">
+    <value>E-FOTA</value>
+  </data>
+  <data name="EfotaOnDemandPublishConfirmMessage" xml:space="preserve">
+    <value>將提示使用者先接受韌體更新，再將韌體更新安裝於裝置。是否要繼續?</value>
+  </data>
+  <data name="EmailConfigurationDescription" xml:space="preserve">
+    <value>Workspace ONE Secure Email Gateway (SEG) 可協助保護您的電子郵件基礎結構，並啟用行動電子郵件管理 (MEM) 功能。安裝 SEG 及現有的電子郵件伺服器，以將所有電子郵件流量轉送至已註冊 Workspace ONE 的裝置。</value>
+  </data>
+  <data name="EmailEmailNotificationDescription" xml:space="preserve">
+    <value>在部署新增 APN 支援，以提供員工快速且一致的新項目通知。</value>
+  </data>
+  <data name="EnableAgentInstallationCompleteNotification" xml:space="preserve">
+    <value>啟用代理程式安裝完成通知</value>
+  </data>
+  <data name="EnableAppInactivitySettings" xml:space="preserve">
+    <value>應用程式停用</value>
+  </data>
+  <data name="EnableAppInactivitySettingsTooltip" xml:space="preserve">
+    <value>一旦啟用，到達針對此規則指定的未使用天數後，應用程式資料將遭到抹除。</value>
+  </data>
+  <data name="EnableCertificateRevocationBasedOnSampling" xml:space="preserve">
+    <value>啟用根據取樣的憑證撤銷</value>
+  </data>
+  <data name="EnableCertificateRevocationTooltip" xml:space="preserve">
+    <value>在取消裝置註冊時啟用自動憑證撤銷的功能，會把特定的設定檔移除，或是從 Workspace ONE 將裝置刪除。</value>
+  </data>
+  <data name="EnableContainersInfo" xml:space="preserve">
+    <value>此動作將啟用 Knox Container 以進行 Android 舊版註冊。如果已設定 Android EMM 註冊，則此設定會啟用 Samsung 裝置的 Knox Play for Work 組態。</value>
+  </data>
+  <data name="EnableContinueDuringWindowsOobeProgress" xml:space="preserve">
+    <value>啟用 [OOBE 狀態追蹤] 頁面上的 [仍要繼續] 按鈕</value>
+  </data>
+  <data name="EnableContinueDuringWindowsOobeProgressToolTip" xml:space="preserve">
+    <value>啟用此選項可讓終端使用者略過 OOBE 追蹤頁面，並透過點選 [仍要繼續] 而進入其桌面。佈建將在背景中繼續。如果必須套用重要的原則使用者才可存取其桌面，則可以停用這項設定。</value>
+  </data>
+  <data name="EnableDropShipLabel" xml:space="preserve">
+    <value>在新增任何 Drop Ship 裝置前，請先在 {0} 中啟用 Drop Ship 註冊。</value>
+    <comment>{0} will be replaced with link to Drop Ship Configuration page with the the text "Configuration &gt; Drop Ship Provisioning"</comment>
+  </data>
+  <data name="EnableEnrollmentUserPasswordSettings_Description" xml:space="preserve">
+    <value>啟用註冊使用者密碼設定</value>
+  </data>
+  <data name="EnableFailed" xml:space="preserve">
+    <value>啟用失敗</value>
+  </data>
+  <data name="EnableHubServicesDescription" xml:space="preserve">
+    <value>使用 Hub 目錄功能並不一定需要設定連接器或同步 Active Directory。若要啟動 Hub 服務，請輸入您的託管 Workspace ONE Access 租用戶 URL；您應已收到歡迎使用電子郵件，其中即可找到此資訊。您的 VMware 代表亦可提供此資訊。</value>
+  </data>
+  <data name="EnableInProductSupport" xml:space="preserve">
+    <value>啟用產品內建支援</value>
+  </data>
+  <data name="EnableMagInSystemConfiguration" xml:space="preserve">
+    <value>尚未設定啟用 Kerberos 所需的 Tunnel Proxy。若要設定，請前往 [系統] &gt; [企業整合] &gt; [VMWare Tunnel Proxy]</value>
+  </data>
+  <data name="EnableNsxIntegration" xml:space="preserve">
+    <value>啟用 NSX 整合</value>
+  </data>
+  <data name="EnableNsxIntegrationTooltip" xml:space="preserve">
+    <value>為目前的組態啟用 NSX 整合。</value>
+  </data>
+  <data name="EnableProductHashing_Description" xml:space="preserve">
+    <value>啟用產品雜湊</value>
+  </data>
+  <data name="EnableSamsungEfota" xml:space="preserve">
+    <value>註冊 Samsung E-FOTA</value>
+  </data>
+  <data name="EnableSamsungEfotaTooltip" xml:space="preserve">
+    <value>向 Samsung E-FOTA 服務註冊，並避免消費者韌體更新</value>
+  </data>
+  <data name="EnableVMwareTunnelInSystemConfiguration" xml:space="preserve">
+    <value>尚未在此組織群組中定義 VMware Tunnel。若要為應用程式通道設定 Tunnel，請前往 [系統] &gt; [企業整合] &gt; [VMWare Tunnel]。</value>
+  </data>
+  <data name="EndEntityProfile" xml:space="preserve">
+    <value>結束實體設定檔</value>
+  </data>
+  <data name="Endpoint" xml:space="preserve">
+    <value>端點</value>
+  </data>
+  <data name="Endpoints" xml:space="preserve">
+    <value>端點</value>
+  </data>
+  <data name="EnforcePasscodePolicy_Description" xml:space="preserve">
+    <value>強制密碼原則</value>
+  </data>
+  <data name="EnhancedDomainResolution" xml:space="preserve">
+    <value>增強型網域解析</value>
+  </data>
+  <data name="EnhancedDomainResolutionTip" xml:space="preserve">
+    <value>如果啟用，則網域解析會以裝置流量規則集裡所定義的目的地為根據。</value>
+  </data>
+  <data name="EnrollmentGroupIdAssignmentTypeOldValue" xml:space="preserve">
+    <value>註冊群組 ID 指派類型</value>
+  </data>
+  <data name="EnrollmentGroupIDDirectoryUserGroupSaveWarning" xml:space="preserve">
+    <value>在儲存後，應指派目錄使用者群組角色對應。</value>
+  </data>
+  <data name="EnterNameOrCategory" xml:space="preserve">
+    <value>輸入名稱或類別</value>
+  </data>
+  <data name="EnterpriseApps" xml:space="preserve">
+    <value>企業 APP</value>
+  </data>
+  <data name="EnterpriseCA" xml:space="preserve">
+    <value>企業 CA</value>
+  </data>
+  <data name="EnterpriseCANotSupportedWarning" xml:space="preserve">
+    <value>VMware Tunnel 是以適合用戶端驗證的企業 CA 加以設定，而這一點不支援。</value>
+  </data>
+  <data name="EnterpriseCertificateAuthority" xml:space="preserve">
+    <value>企業憑證授權機構</value>
+  </data>
+  <data name="EnterpriseIntegrationDirectoryServicesDescription" xml:space="preserve">
+    <value>藉由整合組織現有的目錄服務，如 Active Directory、Lotus Domino 及 Novell e-Directory，提供目錄型帳戶存取權。目錄型帳戶存取權可讓員工透過 Workspace ONE 應用程式進行驗證，並使用現有的目錄服務認證註冊裝置。</value>
+  </data>
+  <data name="EnterpriseIntegrationEmailSMTPDescription" xml:space="preserve">
+    <value>使用組織的電子郵件伺服器，從 Workspace ONE 將電子郵件傳送至管理員或員工的裝置。</value>
+  </data>
+  <data name="EnterpriseIntegrationMagAWTDescription" xml:space="preserve">
+    <value>VMware Tunnel 可讓您在所有員工的裝置上，安全地部署個別應用程式的企業存取權。Tunnel 以 TLS 1.2 為基礎，加上憑證固定及驗證以提供最佳安全性，讓您輕鬆定義各應用程式專屬的細微流量原則、指派為個別使用案例量身制定的個別應用程式原則、帶給員工零接觸的隨選體驗，並以零停機時間及維護提供輕鬆入門培訓體驗。</value>
+  </data>
+  <data name="EnterpriseIntegrationSMSDescription" xml:space="preserve">
+    <value>傳送及接收 SMS 簡訊至員工行動裝置，以通知員工裝置啟用等重要宣告。需具備受支援的 SMS 提供者的帳戶。</value>
+  </data>
+  <data name="EnterpriseIntegrationTunnelProxyDescription" xml:space="preserve">
+    <value>VMware Tunnel Proxy 提供安全且有效的方式，讓具有 SDK 功能的應用程式存取企業資源。VMware Tunnel 會驗證並加密合規裝置上從個別應用程式到其嘗試連線之後端系統的流量。</value>
+  </data>
+  <data name="EnterpriseResetRejected" xml:space="preserve">
+    <value>企業重設遭拒</value>
+  </data>
+  <data name="EnterVmwareIdentityManagerUrlHere" xml:space="preserve">
+    <value>在此輸入 Workspace ONE Access URL</value>
+  </data>
+  <data name="EntitlementService" xml:space="preserve">
+    <value>權利服務</value>
+  </data>
+  <data name="ErrorInChildOgOemProvisioningServiceHostRegistrySync" xml:space="preserve">
+    <value>將子系企業群組與 OEM 佈建服務同步時發生錯誤。</value>
+  </data>
+  <data name="ErrorSslConnection" xml:space="preserve">
+    <value>基礎連線已關閉: 無法為 SSL/TLS 安全通道建立信任關係。</value>
+  </data>
+  <data name="ErrorWhileProcessingTheArg" xml:space="preserve">
+    <value>處理 {0} 資料時發生錯誤</value>
+  </data>
+  <data name="ErrorWhileUpdatingAutoGeneratedKeys" xml:space="preserve">
+    <value>更新自動產生的 API 金鑰時發生錯誤</value>
+  </data>
+  <data name="EverythingWithinReach" xml:space="preserve">
+    <value>一切都能輕鬆到手</value>
+  </data>
+  <data name="EverythingWithinReachDescription" xml:space="preserve">
+    <value>更直覺的標記型搜尋功能，讓您快速且輕鬆地找到所需元件。您還可依功能、類別、使用案例及關鍵字搜尋，迅速縮小搜尋範圍，並提供實用的設定指南等參考資料的連結。</value>
+  </data>
+  <data name="ExpiredCertificate" xml:space="preserve">
+    <value>提供的憑證已過期</value>
+  </data>
+  <data name="ExportXml" xml:space="preserve">
+    <value>匯出 XML</value>
+  </data>
+  <data name="ExternalDirectoryIntegrationDescription" xml:space="preserve">
+    <value>配置 Workspace ONE Access 及存取管理設定，使員工可順暢地存取全面整合的應用程式目錄，包含網路、原生及虛擬應用程式。</value>
+  </data>
+  <data name="FactoryProvisioning" xml:space="preserve">
+    <value>原廠佈建</value>
+  </data>
+  <data name="FactoryProvisioningUrl" xml:space="preserve">
+    <value>原廠佈建服務 URL</value>
+  </data>
+  <data name="FactoryProvisioningUrl_Description" xml:space="preserve">
+    <value>原廠佈建 URL</value>
+  </data>
+  <data name="FailedToAccepVidmEula" xml:space="preserve">
+    <value>嘗試接受 Workspace ONE Access 終端使用者授權合約時發生錯誤。</value>
+  </data>
+  <data name="FailedToGenerateMagConfig" xml:space="preserve">
+    <value>嘗試產生 Tunnel Proxy Config 時發生錯誤。</value>
+  </data>
+  <data name="FailedToGenerateTunnelConfig" xml:space="preserve">
+    <value>嘗試產生 Tunnel Config 時發生錯誤。</value>
+  </data>
+  <data name="FailedToGetSessionToken" xml:space="preserve">
+    <value>嘗試使用 Workspace ONE Access 進行驗證時發生錯誤。</value>
+  </data>
+  <data name="FailedToMapLocalDomainsToVidm" xml:space="preserve">
+    <value>無法將本機網域對應至 Workspace ONE Access。請檢查連線後再試一次。</value>
+  </data>
+  <data name="FailedtoPingVMESC" xml:space="preserve">
+    <value>無法連線至 VMware Enterprise Systems Connector</value>
+  </data>
+  <data name="FeaturedApplications" xml:space="preserve">
+    <value>精選應用程式</value>
+  </data>
+  <data name="FeatureNotAvailable" xml:space="preserve">
+    <value>此功能目前無法使用。</value>
+  </data>
+  <data name="FieldsetConnectionSettings" xml:space="preserve">
+    <value>連線設定</value>
+  </data>
+  <data name="FieldsetServerSettings" xml:space="preserve">
+    <value>伺服器設定</value>
+  </data>
+  <data name="FileExtensions" xml:space="preserve">
+    <value>檔案副檔名</value>
+  </data>
+  <data name="FilePathTestFailed" xml:space="preserve">
+    <value>測試連線失敗: 請與系統管理員一起從記錄取得詳細資料。</value>
+  </data>
+  <data name="FilePathTestSuccess" xml:space="preserve">
+    <value>成功連線至檔案儲存空間。</value>
+  </data>
+  <data name="FileTypeSupported" xml:space="preserve">
+    <value>支援的檔案類型</value>
+  </data>
+  <data name="FirewallGlobalStateStatusOff" xml:space="preserve">
+    <value>防火牆全域狀態關閉</value>
+  </data>
+  <data name="FirewallGlobalStateStatusOn" xml:space="preserve">
+    <value>防火牆全域狀態開啟</value>
+  </data>
+  <data name="FPSServiceIsNotReachable" xml:space="preserve">
+    <value>原廠佈建服務無法使用</value>
+  </data>
+  <data name="FPSServiceIsReachable" xml:space="preserve">
+    <value>原廠佈建服務正常運作中</value>
+  </data>
+  <data name="FromTheArgs" xml:space="preserve">
+    <value>來自 {0}</value>
+  </data>
+  <data name="FrontEndCertificate" xml:space="preserve">
+    <value>前端憑證</value>
+  </data>
+  <data name="FrontendHostName" xml:space="preserve">
+    <value>前端主機名稱</value>
+  </data>
+  <data name="FullDeviceTunnelMode" xml:space="preserve">
+    <value>完整裝置</value>
+  </data>
+  <data name="GeneralEnrollmentDescription" xml:space="preserve">
+    <value>自訂並管理裝置註冊組態，以限制或允許特定類型裝置、自動將裝置設為群組及設定擁有權類型等，藉此簡化員工的 Workspace ONE 註冊流程。</value>
+  </data>
+  <data name="GeneralLookupFieldDescription" xml:space="preserve">
+    <value>自訂查閱欄位，並套用查閱欄位顯示的內容。</value>
+  </data>
+  <data name="GeneralMessageTemplateDescription" xml:space="preserve">
+    <value>自訂並管理用以和員工通訊的訊息範本。</value>
+  </data>
+  <data name="GeneralPrivacyDescription" xml:space="preserve">
+    <value>定義裝置及使用者資訊在 Workspace ONE 內管理的方式，有助於部署自攜裝置 (BYOD) 或符合當地隱私規範。</value>
+  </data>
+  <data name="GeneralSharedDeviceDescription" xml:space="preserve">
+    <value>針對多使用者功能配置共用裝置，包含員工與其裝置的互動方式，以及員工裝置間維護的資料。</value>
+  </data>
+  <data name="GoToConfigurations" xml:space="preserve">
+    <value>前往 [組態]</value>
+  </data>
+  <data name="GreenBoxAndroid" xml:space="preserve">
+    <value>Intelligent Hub 目錄 (Android)</value>
+  </data>
+  <data name="GreenBoxIos" xml:space="preserve">
+    <value>Intelligent Hub 目錄 (iOS)</value>
+  </data>
+  <data name="GreenBoxMacOs" xml:space="preserve">
+    <value>Intelligent Hub 目錄 (macOS)</value>
+  </data>
+  <data name="GreenBoxWindows" xml:space="preserve">
+    <value>Intelligent Hub 目錄 (Windows 桌面)</value>
+  </data>
+  <data name="GroupAttribute" xml:space="preserve">
+    <value>群組屬性</value>
+  </data>
+  <data name="GroupsAndSettings" xml:space="preserve">
+    <value>群組與設定</value>
+  </data>
+  <data name="GsxApiToken" xml:space="preserve">
+    <value>GSX API Token</value>
+  </data>
+  <data name="GsxApiTokenDescription" xml:space="preserve">
+    <value>Apple GSX 中的 API Token。此值會隨著時間和在部分連線測試上重新整理。如果需要進行編輯，請從 Apple GSX 擷取新的 Token。</value>
+  </data>
+  <data name="GsxApiTokenIsRequired" xml:space="preserve">
+    <value>請輸入 GSX API Token，然後再試一次。</value>
+  </data>
+  <data name="GsxBadRequestError" xml:space="preserve">
+    <value>驗證 Token 無效。</value>
+  </data>
+  <data name="GsxCertificateIsRequired" xml:space="preserve">
+    <value>請上傳有效的 GSX 憑證，然後再試一次。</value>
+  </data>
+  <data name="GsxForbiddenError" xml:space="preserve">
+    <value>由於未經授權的要求，驗證失敗。</value>
+  </data>
+  <data name="GsxInternalServerError" xml:space="preserve">
+    <value>Apple GSX 回報內部伺服器錯誤。</value>
+  </data>
+  <data name="GsxRestMigrationLink" xml:space="preserve">
+    <value>按一下此處以移轉。</value>
+  </data>
+  <data name="GsxRestMigrationPrompt" xml:space="preserve">
+    <value>在 2019 年秋季，Apple 將取代目前的 AppleCare API 版本。為維持功能，請移轉至最新的支援版本。</value>
+  </data>
+  <data name="GsxUnauthorizedError" xml:space="preserve">
+    <value>Apple GSX 未授權呼叫。</value>
+  </data>
+  <data name="HardwareSecurity" xml:space="preserve">
+    <value>硬體安全性</value>
+  </data>
+  <data name="HealthAttestationSampleInfo" xml:space="preserve">
+    <value>從 Windows 裝置收集裝置健康情況證明資訊的排程。健康情況證明是硬體支援的安全狀態檢查，其中安全開機狀態、ELAM 狀態、程式碼完整性檢查和其他值是從裝置 TPM 收集而來，並用於檢查裝置遭破解狀態。</value>
+  </data>
+  <data name="HealthAttestationSampleInMinutes" xml:space="preserve">
+    <value>健康情況證明樣本</value>
+  </data>
+  <data name="HealthAttestationSampleTimeMode" xml:space="preserve">
+    <value>健康情況證明取樣時間模式</value>
+  </data>
+  <data name="HealthMonitoring" xml:space="preserve">
+    <value>健全狀況監控</value>
+  </data>
+  <data name="HeartbeatInterval" xml:space="preserve">
+    <value>活動訊號間隔</value>
+  </data>
+  <data name="HeartbeatIntervalInfo" xml:space="preserve">
+    <value>裝置活動訊號的排程。此樣本為低磁碟使用量樣本，可提供裝置 IP 資訊、GPS 資料樣本和裝置簽入狀態。</value>
+  </data>
+  <data name="HelpMessageAndroidWorkManagementType" xml:space="preserve">
+    <value>選擇裝置是否應該與註冊使用者相關聯。特定使用者需要與裝置建立關聯時，最好以使用者為基礎。以使用者為基礎也能夠達到最佳的應用程式授權配置。對於單一使用者不與裝置 (例如 Kiosk) 建立關聯的情況，最好以裝置為基礎。如果您在封閉式網路上操作，或無法與 Google Play 進行通訊，請選取 AOSP / 封閉式網路。</value>
+  </data>
+  <data name="HideComments" xml:space="preserve">
+    <value>隱藏註解</value>
+  </data>
+  <data name="HideCommentsMsg" xml:space="preserve">
+    <value>啟用此選項可為您的終端使用者隱藏新增和檢視應用程式註解的功能。</value>
+  </data>
+  <data name="HighAccuracy" xml:space="preserve">
+    <value>高精準度</value>
+  </data>
+  <data name="HowToEnableHubServices" xml:space="preserve">
+    <value>如何啟用 Hub 服務</value>
+  </data>
+  <data name="HowToObtainTenantDirectoryInfo" xml:space="preserve">
+    <value>如何取得租用戶目錄 ID 資訊</value>
+  </data>
+  <data name="HubAuthenticationSource" xml:space="preserve">
+    <value>Intelligent Hub 的驗證來源</value>
+  </data>
+  <data name="HubAuthenticationSourceToolTip" xml:space="preserve">
+    <value>請選取 Intelligent Hub 用於驗證的提供者。Workspace ONE UEM 為預設。</value>
+  </data>
+  <data name="HubCatalogSettingHelp" xml:space="preserve">
+    <value>此設定僅適用於較舊的 Intelligent Hub 版本。</value>
+  </data>
+  <data name="HubConfiguration" xml:space="preserve">
+    <value>Hub 組態</value>
+  </data>
+  <data name="HubConfigurationDescription" xml:space="preserve">
+    <value>檢視並編輯以下設定以配置員工的 Intelligent Hub 體驗，包含 Hub 服務、裝置管理、驗證來源及目錄設定。</value>
+  </data>
+  <data name="HubConfigurations" xml:space="preserve">
+    <value>Hub 組態</value>
+  </data>
+  <data name="HubMigrationBanner" xml:space="preserve">
+    <value>Intelligent Hub 應用程式目錄設定已移至 Workspace ONE Hub 服務。</value>
+  </data>
+  <data name="HubMigrationBannerDescription" xml:space="preserve">
+    <value>若要管理應用程式目錄設定，請啟動 Workspace ONE Hub 服務。</value>
+  </data>
+  <data name="HubServices" xml:space="preserve">
+    <value>Hub 服務</value>
+  </data>
+  <data name="HubServicesConfigurations" xml:space="preserve">
+    <value>Workspace ONE Intelligent Hub 組態</value>
+  </data>
+  <data name="HubServicesConfigurationsHelp" xml:space="preserve">
+    <value>檢視並管理 Workspace ONE Intelligent Hub 組態設定。</value>
+  </data>
+  <data name="HubServicesDescription" xml:space="preserve">
+    <value>Hub 服務讓您為員工提供單一窗口來存取、探索並連線企業資源、團隊與工作流程。啟用 Hub 服務來提供實用的新功能，包括:</value>
+  </data>
+  <data name="HubServicesDetectionFailedError" xml:space="preserve">
+    <value>無法偵測到 Hub 服務。若您已安裝 Cloud Workspace ONE Access，請前往 {0} 並於 [Hub 服務 URL] 設定中輸入您的 Workspace ONE Access URL，然後返回本頁。若未安裝，則請聯絡 VMware 代表為您啟用 Hub 服務。</value>
+  </data>
+  <data name="IDENTITYMANAGER" xml:space="preserve">
+    <value>WORKSPACE ONE ACCESS</value>
+  </data>
+  <data name="IdentityVerification" xml:space="preserve">
+    <value>身分識別驗證</value>
+  </data>
+  <data name="IDnomic" xml:space="preserve">
+    <value>IDnomic</value>
+  </data>
+  <data name="IISOrigin" xml:space="preserve">
+    <value>IIS 來源</value>
+  </data>
+  <data name="impacted" xml:space="preserve">
+    <value>受影響。</value>
+  </data>
+  <data name="IncludeSecurityIdentifier" xml:space="preserve">
+    <value>包含安全性識別碼</value>
+  </data>
+  <data name="IncorrectUserPermission" xml:space="preserve">
+    <value>測試連線失敗：使用者帳戶沒有檔案儲存路徑所需的「寫入」權限。</value>
+  </data>
+  <data name="Installcertificateprofileswithoutbatchinginfo" xml:space="preserve">
+    <value>決定憑證設定檔命令是否逐步執行憑證批次邏輯。若啟用，新註冊的憑證設定檔安裝命令將略過批次邏輯。若停用，新註冊的憑證設定檔安裝命令將逐步執行批次邏輯。</value>
+  </data>
+  <data name="InstallCompliancePolicyConfirmed" xml:space="preserve">
+    <value>安裝合規原則已確認</value>
+  </data>
+  <data name="InstallCompliancePolicyFailed" xml:space="preserve">
+    <value>安裝合規原則失敗</value>
+  </data>
+  <data name="InstallCompliancePolicyRejected" xml:space="preserve">
+    <value>安裝合規原則遭拒</value>
+  </data>
+  <data name="InstallCompliancePolicyRequested" xml:space="preserve">
+    <value>已要求安裝合規原則</value>
+  </data>
+  <data name="InstallProduct_Description" xml:space="preserve">
+    <value>安裝產品</value>
+  </data>
+  <data name="IntelligentHubApplication" xml:space="preserve">
+    <value>Intelligent Hub 應用程式</value>
+  </data>
+  <data name="IntelligentHubDescription" xml:space="preserve">
+    <value>Workspace ONE Intelligent Hub 是員工可從任何地點、以任何裝置安全存取及探索企業資源、團隊及工作流程、與其連線並採取行動的單一目的地。檢視並編輯設定以配置 Intelligent Hub 應用程式、體驗、功能，並存取企業資源。</value>
+  </data>
+  <data name="InvalidAllowlistDomain" xml:space="preserve">
+    <value>無效的允許清單網域</value>
+  </data>
+  <data name="InvalidCertificateChainUploaded" xml:space="preserve">
+    <value>上傳的憑證沒有有效的憑證鏈結</value>
+  </data>
+  <data name="InvalidJsonOrXmlFormat" xml:space="preserve">
+    <value>自訂設定中的 JSON 或 XML 格式無效</value>
+  </data>
+  <data name="InvalidMacOsApplicationData" xml:space="preserve">
+    <value>為 macOS 應用程式輸入的資料無效</value>
+  </data>
+  <data name="InvalidMemConfigPassedForGSuitePasswordRotation" xml:space="preserve">
+    <value>為密碼輪換選取的 MEM 組態不是 MEM direct Google flavor。</value>
+  </data>
+  <data name="InvalidPortNumber" xml:space="preserve">
+    <value>無效的連接埠號碼</value>
+  </data>
+  <data name="InvalidSyslogProtocol" xml:space="preserve">
+    <value>無效的通訊協定</value>
+  </data>
+  <data name="InvalidWindowsApplicationData" xml:space="preserve">
+    <value>為 Windows 應用程式輸入的資料無效</value>
+  </data>
+  <data name="IosAllowManagementInfo" xml:space="preserve">
+    <value>啟用此選項時，如果應用程式是由使用者在透過 MDM 推播之前安裝，MDM 便會負責管理該應用程式。在受監督的裝置上，會以無訊息方式管理應用程式，而不需要使用者介入處理。在未受監督的裝置上，系統會提示使用者接受 MDM 的管理。 
+
+並未重新安裝應用程式，使用者也不會遺失任何資料。管理應用程式可讓您向下傳送組態值、VPN 等管理設定。
+
+如果主控台的隱私權設定設為 [不收集] 個人應用程式資料，除非進行明確的安裝觸發，否則此設定將不會生效。</value>
+  </data>
+  <data name="IosAndMacOSDepOnly" xml:space="preserve">
+    <value>iOS 和 macOS (僅限 DEP)</value>
+  </data>
+  <data name="IosAppInactivityRuleDuplicate" xml:space="preserve">
+    <value>iOS 應用程式停用規則的應用程式識別碼重複。</value>
+  </data>
+  <data name="IosAppInactivityRuleNotValid" xml:space="preserve">
+    <value>iOS 應用程式停用規則無效。請確認是否提供應用程式識別碼，且停用天數是否介於 1 至 90 之間。</value>
+  </data>
+  <data name="IosAppVersionRuleDuplicate" xml:space="preserve">
+    <value>iOS 應用程式版本規則的應用程式識別碼重複。</value>
+  </data>
+  <data name="IosAppVersionRuleNotValid" xml:space="preserve">
+    <value>iOS 應用程式版本規則無效。請確認應用程式識別碼或版本格式是否正確。</value>
+  </data>
+  <data name="IosMinimumRequiredOsVersionInfo" xml:space="preserve">
+    <value>定義使用者應具備的最低 iOS 版本號碼要求，以取得對應用程式的安全存取。</value>
+  </data>
+  <data name="IosMinimumWarningOsVersionInfo" xml:space="preserve">
+    <value>定義使用者應具備的最低 iOS 版本號碼建議，以取得對應用程式的安全存取。</value>
+  </data>
+  <data name="IosOsVersionNotSet" xml:space="preserve">
+    <value>iOS 作業系統版本欄位未填入。</value>
+  </data>
+  <data name="iOSSingleAppMode" xml:space="preserve">
+    <value>iOS 單一應用程式模式</value>
+  </data>
+  <data name="IosSingleAppModeInfo" xml:space="preserve">
+    <value>在單一應用程式模式下，iOS 裝置會被鎖定在一個單一的應用程式上，直到裝載被移除。屆時首頁按鈕被停用，裝置會在喚醒或重新開機時自動回到指定的應用程式。這僅適用於受監督的裝置</value>
+  </data>
+  <data name="iPadAir3" xml:space="preserve">
+    <value>iPad Air 3</value>
+  </data>
+  <data name="iPadMini5" xml:space="preserve">
+    <value>iPad Mini 5</value>
+  </data>
+  <data name="IpodTouch7" xml:space="preserve">
+    <value>iPod Touch 第 7 代</value>
+  </data>
+  <data name="IsCustomOnboardingExperienceEnabled" xml:space="preserve">
+    <value>啟用註冊後入門培訓體驗</value>
+  </data>
+  <data name="IsCustomOnboardingExperienceEnabledTooltip" xml:space="preserve">
+    <value>如果啟用此設定，則在註冊並於 macOS 裝置上安裝 Intelligent Hub 之後，會立即向使用者顯示入門培訓體驗使用者介面。入門培訓體驗提供目前正在安裝的應用程式和資源相關狀態資訊，並在程序完成時通知使用者。</value>
+  </data>
+  <data name="IsProductProvisioningCommandReleaseEnabled_Description" xml:space="preserve">
+    <value>是否已啟用產品佈建命令釋放</value>
+  </data>
+  <data name="IssuerCertificate" xml:space="preserve">
+    <value>簽發者憑證</value>
+  </data>
+  <data name="IsTrustServiceEnabled" xml:space="preserve">
+    <value>信任服務</value>
+  </data>
+  <data name="IUnderstandTheRisk" xml:space="preserve">
+    <value>我了解風險</value>
+  </data>
+  <data name="JcchGleas" xml:space="preserve">
+    <value>JCCH Gléas</value>
+  </data>
+  <data name="JobLogLevel_Description" xml:space="preserve">
+    <value>工作記錄層級</value>
+  </data>
+  <data name="JoinTheVmwareCeip" xml:space="preserve">
+    <value>加入 VMware 客戶經驗改進計劃</value>
+  </data>
+  <data name="KnoxLicenseKeyRequired" xml:space="preserve">
+    <value>啟用 KNOX 容器時，需要 KNOX 授權金鑰</value>
+  </data>
+  <data name="Korea" xml:space="preserve">
+    <value>韓國</value>
+  </data>
+  <data name="LdapActiveDirectory" xml:space="preserve">
+    <value>LDAP - Active Directory</value>
+  </data>
+  <data name="LDAPDefinitionNotFound" xml:space="preserve">
+    <value>找不到指定之企業群組的 LDAP 定義</value>
+  </data>
+  <data name="LdapLotusDomino" xml:space="preserve">
+    <value>LDAP - Lotus Domino</value>
+  </data>
+  <data name="LdapNovelleDirectory" xml:space="preserve">
+    <value>LDAP - Novell e-Directory</value>
+  </data>
+  <data name="LdapOtherLdap" xml:space="preserve">
+    <value>LDAP - 其他 LDAP</value>
+  </data>
+  <data name="LearnHowWorkspaceOneAccess" xml:space="preserve">
+    <value>{0} Workspace ONE Access 可簡化員工體驗，並降低 IT 複雜性。</value>
+  </data>
+  <data name="LearnMoreParam" xml:space="preserve">
+    <value>詳情請參閱{0}。</value>
+  </data>
+  <data name="LegacyAgentApplication" xml:space="preserve">
+    <value>代理程式應用程式</value>
+  </data>
+  <data name="LegacyAppManagement" xml:space="preserve">
+    <value>舊版應用程式管理</value>
+  </data>
+  <data name="LegalPrivacyLinkLabel" xml:space="preserve">
+    <value>VMware 的隱私權政策</value>
+  </data>
+  <data name="LegalPrivacyReviewInformation" xml:space="preserve">
+    <value>請參閱 {0} 以取得透過此產品所收集不同資料類型的相關資訊，例如分析、個人資訊等。</value>
+  </data>
+  <data name="LessDetails" xml:space="preserve">
+    <value>較少詳細資料</value>
+  </data>
+  <data name="LGNameNotExistingInDB" xml:space="preserve">
+    <value>網路範圍處理器: 企業群組名稱不存在於資料庫中或不被允許</value>
+  </data>
+  <data name="Licenses" xml:space="preserve">
+    <value>授權</value>
+  </data>
+  <data name="LinkWorkspaceOneAccess" xml:space="preserve">
+    <value>瞭解怎麼做</value>
+  </data>
+  <data name="LocalAddress" xml:space="preserve">
+    <value>本機位址</value>
+    <comment>Local Network/Proxy Address</comment>
+  </data>
+  <data name="LocalBasicUserSyncDescription" xml:space="preserve">
+    <value>[本機基本使用者同步] 讓您在 Workspace ONE Access 使用 Workspace ONE UEM 基本使用者。啟用後，即無法停用 [本機基本使用者同步]。</value>
+  </data>
+  <data name="LocalBasicUserSyncJob" xml:space="preserve">
+    <value>本機基本使用者同步</value>
+  </data>
+  <data name="LocalizationEditorImportDescription" xml:space="preserve">
+    <value>首先，選取 [地區設定] 語言和下載標籤金鑰範本，以搜尋您要修改的標籤文字欄位。在更新標籤時，在該標籤的 {1} 欄中輸入 {0}。儲存變更並選取要上傳的檔案。之後，選取 [上傳] 以儲存您的變更，這會顯示在 [標籤內容編輯器] 清單中。</value>
+    <comment>{0} will be replaced by the English text "True" and {1} will be replaced with English text "Updated". These two values should not be translated and that's why these are placeholders.</comment>
+  </data>
+  <data name="LocalSyncEnableFailed" xml:space="preserve">
+    <value>無法啟用 [本機基本使用者同步]</value>
+  </data>
+  <data name="LocationDataAccuracy" xml:space="preserve">
+    <value>位置資料精準度</value>
+  </data>
+  <data name="LocationDataAccuracyTooltip" xml:space="preserve">
+    <value>平衡: 提供最佳電源和精準度平衡，精準度約為 100 公尺。
+
+高精準度: 可提供最佳精準度，但需要最多的電源。
+
+低電源: 需要的電源量較低，精準度約為 10 公里。
+
+無電源: 提供最低的精準度，且不需要電源。</value>
+  </data>
+  <data name="LocationIsCollected" xml:space="preserve">
+    <value>收集位置資料來協助尋找遺失的裝置。也可將這些資料收集起來，而只有當您身處某地理柵欄範圍內的位置時，才將一些功能和內容散發給您。您可在下方找到此裝置所收集的資訊清單。</value>
+  </data>
+  <data name="LocationIsNotCollected" xml:space="preserve">
+    <value>不收集位置資料</value>
+  </data>
+  <data name="LookupFieldsDescription" xml:space="preserve">
+    <value>自訂查閱欄位，並套用查閱欄位顯示的內容。</value>
+  </data>
+  <data name="LowPower" xml:space="preserve">
+    <value>低電源</value>
+  </data>
+  <data name="MacAgentDownloadUrl" xml:space="preserve">
+    <value>本機伺服器上前往適用於 macOS 裝置之 Intelligent Hub 檔案的完整路徑</value>
+  </data>
+  <data name="MacOsApplicationDeleteSuccess" xml:space="preserve">
+    <value>MacOs 應用程式刪除成功。</value>
+  </data>
+  <data name="MacOsApplicationFound" xml:space="preserve">
+    <value>macOS 應用程式已存在</value>
+  </data>
+  <data name="MacOsApplicationNotFound" xml:space="preserve">
+    <value>macOS 應用程式不存在</value>
+  </data>
+  <data name="MacOsApplicationSaveSuccess" xml:space="preserve">
+    <value>macOS 應用程式儲存成功</value>
+  </data>
+  <data name="MacOsIntelligentHubFilePath" xml:space="preserve">
+    <value>macOS Intelligent Hub 檔案路徑</value>
+  </data>
+  <data name="MacOsIntelligentHubFilePathHelpText" xml:space="preserve">
+    <value>此路徑包含用於用戶端裝置部署和自動升級的植入 Intelligent Hub 安裝程式和支援組態檔。</value>
+  </data>
+  <data name="MacOsIntelligentHubUpdateCheckJob" xml:space="preserve">
+    <value>檢查 macOS 植入的應用程式升級</value>
+  </data>
+  <data name="MagLanding" xml:space="preserve">
+    <value>VMware Content Gateway 提供安全且有效的方法讓終端使用者存取內部存放庫的內容。使用 VMware Content Gateway 搭配 VMware Content Locker 等內容應用程式，即可提供安全的存取管道，存取內容存放庫或內部檔案共用的企業內容。</value>
+  </data>
+  <data name="MAGLanding2" xml:space="preserve">
+    <value>安裝的需求和步驟之詳情，請參閱 VMware Tunnel 安裝指南與管理員指南。</value>
+  </data>
+  <data name="MAGPublicCertificateError" xml:space="preserve">
+    <value>SSL 憑證上傳失敗。請確認憑證正確無誤，然後再試一次。</value>
+  </data>
+  <data name="MagSettingsConfigurationWarning" xml:space="preserve">
+    <value>尚未在此企業群組定義 VMware Tunnel - Proxy 設定。若要設定應用程式通道的 Proxy，請按下面的連結。</value>
+  </data>
+  <data name="MAGThumbPrintMismatchError" xml:space="preserve">
+    <value>憑證指紋不相符錯誤</value>
+  </data>
+  <data name="MainPage" xml:space="preserve">
+    <value>主要頁面</value>
+  </data>
+  <data name="MainPages" xml:space="preserve">
+    <value>主要頁面</value>
+  </data>
+  <data name="ManageApplicationsGridApplicationNameColumn" xml:space="preserve">
+    <value>易記名稱 - 平台</value>
+  </data>
+  <data name="ManageApplicationsHeaderText" xml:space="preserve">
+    <value>這些應用程式可在裝置流量規則中使用。</value>
+  </data>
+  <data name="ManageApplicationWindowsMacOS" xml:space="preserve">
+    <value>管理 Windows 或 macOS 應用程式</value>
+  </data>
+  <data name="ManageApplicationWindowsMacOSInfo" xml:space="preserve">
+    <value>新增、編輯或刪除 Windows 或 macOS 應用程式。</value>
+  </data>
+  <data name="ManagedAppleID" xml:space="preserve">
+    <value>受管理的 Apple ID</value>
+  </data>
+  <data name="ManagedAppleIDFormat" xml:space="preserve">
+    <value>受管理的 Apple ID 格式</value>
+  </data>
+  <data name="ManagedAppleIDInfoMessage" xml:space="preserve">
+    <value>如果終端使用者的受管理 Apple ID 與 UEM 中終端使用者的電子郵件地址不同，請指定自訂格式。這將用於驗證使用者是否已登入經由 Apple Business Manager 註冊的共用 iPad。</value>
+  </data>
+  <data name="ManagedAppleIdToolTip" xml:space="preserve">
+    <value>受管理 Apple ID 是在 Apple Business Manager 中建立的使用者帳戶，註冊共用 iPad 時可用來在 Apple 裝置上驗證使用者。如果您並非出於此目的使用 Apple 裝置，則可以忽略此屬性。</value>
+  </data>
+  <data name="ManagedDistributionVPPDescription" xml:space="preserve">
+    <value>Volume Purchase Program 讓您不需 Apple ID，即可從應用程式及 B2B 商店散佈應用程式至 Apple 裝置。使用 Apple Business Manager 中的位置，您可輕鬆在帳戶間移轉授權，並同步至 Volume Purchase Program Token。</value>
+  </data>
+  <data name="ManageDTRSHeaderText" xml:space="preserve">
+    <value>管理可用的裝置流量規則集。</value>
+  </data>
+  <data name="ManagementMode" xml:space="preserve">
+    <value>管理模式</value>
+  </data>
+  <data name="ManageTrafficAssignments" xml:space="preserve">
+    <value>管理流量指派</value>
+  </data>
+  <data name="ManageTunnelEnabledApplications" xml:space="preserve">
+    <value>管理應用程式</value>
+  </data>
+  <data name="ManageTunnelEnabledApplicationsInfo" xml:space="preserve">
+    <value>按一下以新增、編輯、刪除可用的應用程式。</value>
+  </data>
+  <data name="MaxDegreeOfParallelism_Description" xml:space="preserve">
+    <value>平行處理原則的最大程度</value>
+  </data>
+  <data name="MaxForcedTimeoutTooltip" xml:space="preserve">
+    <value>若工作階段管理設定為 {0} 分鐘或更長時間，則在此時間到期後，系統會自動將您登出。</value>
+  </data>
+  <data name="MaximumPeriodAllowedOfflineTimeUnit" xml:space="preserve">
+    <value>允許離線的最大期間時間單位</value>
+  </data>
+  <data name="MaximumPublishedCommandsMultiplier" xml:space="preserve">
+    <value>佇列命令數量 (上限)</value>
+  </data>
+  <data name="MaximumPublishedCommandsMultiplierInfo" xml:space="preserve">
+    <value>這是允許的佇列命令上限。憑證設定檔發佈頻率將持續發佈，直到達到此限制為止。裝置耗用命令後，將會佇列更多命令。您在此處輸入的值會乘上「憑證設定檔發佈頻率」以取得該上限數。這個數字可增加以改善憑證批次處理，不過建議密切監控 CA 和 DS 伺服器效能。</value>
+  </data>
+  <data name="MaxJobRetryCount_Description" xml:space="preserve">
+    <value>工作重試計數上限</value>
+  </data>
+  <data name="MaxPercentageOfJobFailure_Description" xml:space="preserve">
+    <value>工作失敗的百分比上限</value>
+  </data>
+  <data name="MaxPortValidationMsg" xml:space="preserve">
+    <value>連接埠號碼不能大於 {0}</value>
+  </data>
+  <data name="MaxTimeOnWindowsOobeProgressScreen" xml:space="preserve">
+    <value>允許佈建完成的時間上限</value>
+  </data>
+  <data name="MaxTimeOnWindowsOobeProgressScreenToolTip" xml:space="preserve">
+    <value>設定此值，以設定「OOBE 狀態」畫面上的逾時上限。在逾時之後，佈建會被視為完成，而剩餘的應用程式和原則將在背景中部署。</value>
+  </data>
+  <data name="MDMDiscoveryURL" xml:space="preserve">
+    <value>MDM 探索 URL</value>
+  </data>
+  <data name="MDMSampleSchedulerIntervalHelp" xml:space="preserve">
+    <value>觸發取樣工作的頻率 (分鐘)</value>
+  </data>
+  <data name="MEMGSuitePasswordRotationFailed" xml:space="preserve">
+    <value>所選 G Suite 使用者的密碼輪換失敗。</value>
+  </data>
+  <data name="MergeDeviceRecordsFailure" xml:space="preserve">
+    <value>合併裝置記錄失敗</value>
+  </data>
+  <data name="MergeDeviceRecordsSuccess" xml:space="preserve">
+    <value>合併裝置記錄成功</value>
+  </data>
+  <data name="MetadataServiceUrl" xml:space="preserve">
+    <value>中繼資料服務 URL</value>
+  </data>
+  <data name="MetadataServiceUrlDescription" xml:space="preserve">
+    <value>此 URL 用於同步目前伺服器的中繼資料，以便取得裝置型號、平台、製造商、作業系統等項目的最新資訊。</value>
+  </data>
+  <data name="MinimumSamplingIntervalHours" xml:space="preserve">
+    <value>最小取樣時間間隔 (小時)</value>
+  </data>
+  <data name="MinimumSamplingIntervalHoursHelp" xml:space="preserve">
+    <value>取樣工作應查詢所有 MDM 取樣排程的時間間隔 (小時)</value>
+  </data>
+  <data name="MinPasswordValidationMsg" xml:space="preserve">
+    <value>密碼至少應有 {0} 個字元</value>
+  </data>
+  <data name="MinPortValidationMsg" xml:space="preserve">
+    <value>連接埠號碼不能小於 {0}</value>
+  </data>
+  <data name="Modern" xml:space="preserve">
+    <value>新式</value>
+  </data>
+  <data name="ModernAgent" xml:space="preserve">
+    <value>新式代理程式</value>
+  </data>
+  <data name="MoreDetails" xml:space="preserve">
+    <value>更多詳細資料</value>
+  </data>
+  <data name="NativeApps" xml:space="preserve">
+    <value>原生應用程式</value>
+  </data>
+  <data name="NeitherSubnetNorRouterAddressSet" xml:space="preserve">
+    <value>沒有設定子網路遮罩及路由器位址</value>
+  </data>
+  <data name="NetworkNameNotFound" xml:space="preserve">
+    <value>測試連線失敗: 無法找到所提供路徑的檔案儲存資料夾。</value>
+  </data>
+  <data name="NetworkPathNotFound" xml:space="preserve">
+    <value>測試連線失敗: 無法連線至所提供的檔案儲存路徑。</value>
+  </data>
+  <data name="NetworkRangeAssignmentNotEnabledAtOg" xml:space="preserve">
+    <value>網路範圍處理器: 此企業群組尚未啟用網路範圍指派</value>
+  </data>
+  <data name="NetworkUserLoginComplete" xml:space="preserve">
+    <value>網路使用者登入完成</value>
+  </data>
+  <data name="NewTrigger_Description" xml:space="preserve">
+    <value>新觸發器</value>
+  </data>
+  <data name="NewTunnelConfig" xml:space="preserve">
+    <value>新通道組態</value>
+  </data>
+  <data name="NoAccessToUser" xml:space="preserve">
+    <value>使用者無法存取指定的實體</value>
+  </data>
+  <data name="NoCertificatesConfigured" xml:space="preserve">
+    <value>尚未設定任何憑證授權機構。</value>
+  </data>
+  <data name="NoCustomSettings" xml:space="preserve">
+    <value>無任何設定。</value>
+  </data>
+  <data name="NoDefaultSecurityGroup" xml:space="preserve">
+    <value>沒有預設的安全群組</value>
+  </data>
+  <data name="NonCompliantDeviceSampleIntervalErrorMessage" xml:space="preserve">
+    <value>不合規裝置樣本必須介於 1 小時到 30 天 (含) 之間。</value>
+  </data>
+  <data name="NonCompliantDeviceSampleIntervalGreaterThanTimeBasedCompliancePolicyRuleValues" xml:space="preserve">
+    <value>無法儲存，因為不合規裝置取樣間隔不能超過現有以時間為基礎的合規政策 ({0})。減少該值或增加以時間為基礎的合規政策間隔。</value>
+  </data>
+  <data name="NonRepudiation" xml:space="preserve">
+    <value>不可否認性</value>
+  </data>
+  <data name="NoPower" xml:space="preserve">
+    <value>無電源</value>
+  </data>
+  <data name="Norwegian" xml:space="preserve">
+    <value>挪威文</value>
+  </data>
+  <data name="NoSpacesAllowed" xml:space="preserve">
+    <value>不允許空格</value>
+  </data>
+  <data name="NotAuthorized" xml:space="preserve">
+    <value>使用者未獲授權</value>
+  </data>
+  <data name="NoteAndroidAllowAospClosedNetwork" xml:space="preserve">
+    <value>這項選擇無法復原。</value>
+  </data>
+  <data name="NoTemplatesConfigured" xml:space="preserve">
+    <value>未設定任何憑證範本。</value>
+  </data>
+  <data name="NotificationsDescription" xml:space="preserve">
+    <value>讓員工接收通知，包括密碼到期、帳戶資訊以及其他重要更新資訊。</value>
+  </data>
+  <data name="NotificationsSettingsUpdated" xml:space="preserve">
+    <value>通知設定已更新</value>
+  </data>
+  <data name="NotifyEmailToNoneType" xml:space="preserve">
+    <value>無</value>
+  </data>
+  <data name="NotifyProductInstallStatus_Description" xml:space="preserve">
+    <value>通知產品安裝狀態</value>
+  </data>
+  <data name="NotPACUtility" xml:space="preserve">
+    <value>非 PAC 公用程式</value>
+  </data>
+  <data name="NoTunnelConfigsMsg" xml:space="preserve">
+    <value>您似乎沒有任何 Tunnel 組態</value>
+  </data>
+  <data name="NoTunnelConfiguration" xml:space="preserve">
+    <value>Tunnel 組態不存在</value>
+  </data>
+  <data name="NowInSmallCaps" xml:space="preserve">
+    <value>現在</value>
+  </data>
+  <data name="NsxAdminUsername" xml:space="preserve">
+    <value>管理員使用者名稱</value>
+  </data>
+  <data name="NsxApplicationNotFound" xml:space="preserve">
+    <value>找不到 NSX 應用程式。</value>
+  </data>
+  <data name="NsxApplications" xml:space="preserve">
+    <value>NSX 應用程式</value>
+  </data>
+  <data name="NsxConfigSavedSuccessfully" xml:space="preserve">
+    <value>NSX 組態已儲存成功</value>
+  </data>
+  <data name="NsxConfigurationDoesNotExist" xml:space="preserve">
+    <value>NSX 組態不存在。</value>
+  </data>
+  <data name="NsxIntegration" xml:space="preserve">
+    <value>NSX 整合</value>
+  </data>
+  <data name="NsxIntegrationDesc" xml:space="preserve">
+    <value>整合 Tunnel 與 NSX，讓 NSX 中定義的安全群組配合個別應用程式原則。這麼做可以盡量減少網路攻擊面，以增強網路和應用程式安全性。</value>
+  </data>
+  <data name="NsxManagerUrl" xml:space="preserve">
+    <value>NSX Manager URL</value>
+  </data>
+  <data name="NsxManagerUrlDesc" xml:space="preserve">
+    <value>NSX Manager URL。[http(s)://]hostname。目的地 URL 必須包含通訊協定和主機名稱或 IP 位址。(例如: https://nsx.example.com)</value>
+  </data>
+  <data name="NsxSecurityGroupsDesc" xml:space="preserve">
+    <value>定義每個應用程式的安全群組。</value>
+  </data>
+  <data name="NsxSecurityGroupsTitle" xml:space="preserve">
+    <value>NSX 安全群組</value>
+  </data>
+  <data name="NsxT" xml:space="preserve">
+    <value>NSX-T</value>
+  </data>
+  <data name="NsxV" xml:space="preserve">
+    <value>NSX-V</value>
+  </data>
+  <data name="NsxVersion" xml:space="preserve">
+    <value>NSX 版本</value>
+  </data>
+  <data name="NumberOfUnreadMessageOnly" xml:space="preserve">
+    <value>僅未讀取訊息的數目</value>
+  </data>
+  <data name="OauthClientEdit" xml:space="preserve">
+    <value>OAuth 用戶端管理</value>
+  </data>
+  <data name="OauthClientEditHelp" xml:space="preserve">
+    <value>控制建立、修改和刪除 OAuth 用戶端的存取權</value>
+  </data>
+  <data name="OAuthClientHelpText" xml:space="preserve">
+    <value>進行 Workspace ONE UEM API 呼叫時，會使用用戶端 ID 和密碼來證明應用程式的身分識別。在下方新增用戶端以註冊並產生用戶端 ID 和密碼</value>
+  </data>
+  <data name="OAuthClientManagement" xml:space="preserve">
+    <value>OAuth 用戶端管理</value>
+  </data>
+  <data name="OAuthClientMenuHelpText" xml:space="preserve">
+    <value>註冊用戶端以產生用戶端 ID 和密碼，在進行 Workspace ONE UEM API 呼叫時可用來證明應用程式的身分識別。</value>
+  </data>
+  <data name="OauthClientRead" xml:space="preserve">
+    <value>OAuth 用戶端管理</value>
+  </data>
+  <data name="OauthClientReadHelp" xml:space="preserve">
+    <value>控制讀取和列示 OAuth 用戶端的存取權</value>
+  </data>
+  <data name="OAuthClients" xml:space="preserve">
+    <value>OAuth 用戶端</value>
+  </data>
+  <data name="OAuthClientService" xml:space="preserve">
+    <value>OAuth 用戶端服務</value>
+  </data>
+  <data name="ObjectGuidAttributeConfigurationRequired" xml:space="preserve">
+    <value>您需要以「{0}」屬性更新身分識別提供者的設定，以獲得最佳安全性。</value>
+  </data>
+  <data name="OEMProvisioningSection" xml:space="preserve">
+    <value>OEM 佈建</value>
+  </data>
+  <data name="OemProvisioningServiceHostRegistryInitiateSyncFailedError" xml:space="preserve">
+    <value>無法啟動 OEM 佈建服務憑證固定同步。</value>
+  </data>
+  <data name="OEMProvisioningServiceIsNotReachable" xml:space="preserve">
+    <value>OEM 佈建服務無法使用</value>
+  </data>
+  <data name="OEMProvisioningServiceIsReachable" xml:space="preserve">
+    <value>OEM 佈建服務正常運作中</value>
+  </data>
+  <data name="OEMProvisioningUrl" xml:space="preserve">
+    <value>OEM 佈建服務 URL</value>
+  </data>
+  <data name="OEMUpdateSample" xml:space="preserve">
+    <value>OEM 更新範例</value>
+  </data>
+  <data name="OEMUpdateSampleInfo" xml:space="preserve">
+    <value>從特定 OEM 收集驅動程式和韌體更新狀態的排程。資料包括修補程式層級、更新日期、嚴重度、類別等。</value>
+  </data>
+  <data name="OEMUpdateSampleInMinutes" xml:space="preserve">
+    <value>OEM 更新取樣</value>
+  </data>
+  <data name="OEMUpdateSampleTimeMode" xml:space="preserve">
+    <value>OEM 更新取樣時間模式</value>
+  </data>
+  <data name="Office365AuthenticationInstruction" xml:space="preserve">
+    <value>您需在下方提供 Intune 管理員認證，讓租用戶連線到 Workspace ONE，才能設定 Microsoft Intune® 應用程式保護原則。</value>
+  </data>
+  <data name="Office365DeletedPolicyNotification" xml:space="preserve">
+    <value>已刪除 Microsoft Intune 入口網站上的原則。按一下 [刪除設定]，從 UEM 中刪除原則設定。{0}</value>
+  </data>
+  <data name="Office365Label" xml:space="preserve">
+    <value>Office 365</value>
+  </data>
+  <data name="Office365MamAndroidApplicationPolicyId_Description" xml:space="preserve">
+    <value>Office365 MAM Android 應用程式原則 ID</value>
+  </data>
+  <data name="Office365MamApplicationPolicyDeleteSuccessful" xml:space="preserve">
+    <value>已成功刪除原則。</value>
+  </data>
+  <data name="Office365MamApplicationPolicyDeleteUnsuccessful" xml:space="preserve">
+    <value>刪除原則時發生錯誤，並已記錄。</value>
+  </data>
+  <data name="Office365MamApplicationPolicySyncSuccessful" xml:space="preserve">
+    <value>已成功同步原則。</value>
+  </data>
+  <data name="Office365MamApplicationPolicySyncUnsuccessful" xml:space="preserve">
+    <value>同步原則時發生錯誤，並已記錄。</value>
+  </data>
+  <data name="Office365MamApplicationPolicyTimestamp_Description" xml:space="preserve">
+    <value>Office365 MAM 應用程式原則時間戳記</value>
+  </data>
+  <data name="Office365MamIosApplicationPolicyId_Description" xml:space="preserve">
+    <value>Office365 MAM iOS 應用程式原則 ID</value>
+  </data>
+  <data name="Office365PolicySettingAllowedInboundDataTransferSources" xml:space="preserve">
+    <value>「接收其他應用程式之間的資料」</value>
+  </data>
+  <data name="Office365PolicySettingAllowedOutboundClipboardSharingLevel" xml:space="preserve">
+    <value>「限制其他應用程式之間的剪下、複製和貼上」</value>
+  </data>
+  <data name="Office365PolicySettingAllowedOutboundDataTransferDestinations" xml:space="preserve">
+    <value>「將組織資料傳送至其他應用程式」</value>
+  </data>
+  <data name="Office365PolicySettingContactSyncBlocked" xml:space="preserve">
+    <value>「同步受原則管理的應用程式資料與原生應用程式」</value>
+  </data>
+  <data name="Office365PolicySettingDataBackupBlocked" xml:space="preserve">
+    <value>「禁止備份」</value>
+  </data>
+  <data name="Office365PolicySettingManagedBrowserToOpenLinksRequired" xml:space="preserve">
+    <value>「只能在受管瀏覽器中顯示 Web 內容」</value>
+  </data>
+  <data name="Office365PolicySettingMaximumPinRetries" xml:space="preserve">
+    <value>「PIN 嘗試次數上限」</value>
+  </data>
+  <data name="Office365PolicySettingMinimumPinLength" xml:space="preserve">
+    <value>「PIN 長度下限」</value>
+  </data>
+  <data name="Office365PolicySettingOrganizationalCredentialsRequired" xml:space="preserve">
+    <value>「用於存取的公司或學校帳戶認證」</value>
+  </data>
+  <data name="Office365PolicySettingPinCharacterSet" xml:space="preserve">
+    <value>「PIN 類型」</value>
+  </data>
+  <data name="Office365PolicySettingPinRequired" xml:space="preserve">
+    <value>「存取用 PIN」</value>
+  </data>
+  <data name="Office365PolicySettingPrintBlocked" xml:space="preserve">
+    <value>「列印組織資料」</value>
+  </data>
+  <data name="Office365PolicySettingSaveAsBlocked" xml:space="preserve">
+    <value>「儲存組織資料複本」</value>
+  </data>
+  <data name="Office365SyncPolicyNotification" xml:space="preserve">
+    <value>Microsoft Intune 入口網站上的原則設定已更新，且與 Workspace ONE UEM 不同步。按一下 [同步設定]，以在 UEM 中更新此原則。{0}</value>
+  </data>
+  <data name="Office365UnsyncedDoublePolicyNotification" xml:space="preserve">
+    <value>在 Azure 入口網站中，Android 原則和 iOS 原則的 {0} 和 {1} 原則不相同。這些設定必須相同，Workspace ONE UEM 才能同步 Android 和 iOS 原則。請聯絡 IT 管理員以解決此問題。</value>
+  </data>
+  <data name="Office365UnsyncedMultiplePolicyNotification" xml:space="preserve">
+    <value>在 Azure 入口網站中，Android 原則和 iOS 原則的下列原則設定並不相同。這些設定必須相同，Workspace ONE UEM 才能同步 Android 和 iOS 原則。請聯絡 IT 管理員以解決此問題。{0}</value>
+  </data>
+  <data name="Office365UnsyncedSinglePolicyNotification" xml:space="preserve">
+    <value>在 Azure 入口網站中，Android 原則和 iOS 原則的 {0} 原則不相同。此設定必須相同，Workspace ONE UEM 才能同步 Android 和 iOS 原則。請聯絡 IT 管理員以解決此問題。</value>
+  </data>
+  <data name="OfflineDomainJoinLabel" xml:space="preserve">
+    <value>離線網域加入</value>
+  </data>
+  <data name="OgMissingCustomerCode" xml:space="preserve">
+    <value>組織需要客戶碼，才能進行 Chrome EMM 設定</value>
+  </data>
+  <data name="OnlyIfAppDataCanNotBeCleared" xml:space="preserve">
+    <value>僅在應用程式資料無法清除的情況下</value>
+  </data>
+  <data name="OPSDeviceRegistrationJob" xml:space="preserve">
+    <value>從 OEM 佈建服務提取裝置登錄資訊的工作</value>
+  </data>
+  <data name="OrganizationGroupName" xml:space="preserve">
+    <value>企業群組名稱</value>
+  </data>
+  <data name="OrganizationGroupNotFound" xml:space="preserve">
+    <value>在系統中找不到要求的企業群組</value>
+  </data>
+  <data name="OrganizationGroupUuid" xml:space="preserve">
+    <value>企業群組 UUID</value>
+  </data>
+  <data name="OtherSuggestions" xml:space="preserve">
+    <value>其他建議...</value>
+  </data>
+  <data name="OUIdentifier" xml:space="preserve">
+    <value>OU 識別碼</value>
+  </data>
+  <data name="OutboundProxies" xml:space="preserve">
+    <value>輸出 Proxy</value>
+  </data>
+  <data name="OutboundProxy" xml:space="preserve">
+    <value>輸出 Proxy</value>
+  </data>
+  <data name="OutboundProxyDeleteSuccess" xml:space="preserve">
+    <value>輸出 Proxy 刪除成功</value>
+  </data>
+  <data name="OutboundProxyDescription" xml:space="preserve">
+    <value>提供有關要搭配此 Tunnel 伺服器組態使用之輸出 Proxy 的詳細資料。</value>
+  </data>
+  <data name="OutboundProxyRemoveToolTip" xml:space="preserve">
+    <value>伺服器流量規則正在使用此 Proxy。請移除關聯以刪除此 Proxy 組態</value>
+  </data>
+  <data name="OutboundProxySaveSuccess" xml:space="preserve">
+    <value>輸出 Proxy 儲存成功</value>
+  </data>
+  <data name="OverrideJobLogLevelRefused" xml:space="preserve">
+    <value>覆寫工作記錄層級遭拒</value>
+  </data>
+  <data name="P2PAdaptivaSetting" xml:space="preserve">
+    <value>Adaptiva</value>
+  </data>
+  <data name="P2PBranchCacheDescription" xml:space="preserve">
+    <value>Workspace ONE Peer Distribution 會為內部網路上的 Windows 裝置提供點對點的應用程式散發功能，這會加快應用程式的下載速度，而且不需要多個散發點。</value>
+  </data>
+  <data name="P2PBranchCacheEnabled" xml:space="preserve">
+    <value>Workspace ONE Peer Distribution</value>
+  </data>
+  <data name="P2PBranchCacheMovedToDeviceProfilesPage" xml:space="preserve">
+    <value>裝置設定檔頁面</value>
+  </data>
+  <data name="P2PBranchCacheProfileLandingNew" xml:space="preserve">
+    <value>Workspace ONE Peer Distribution 設定已移動至 {0}</value>
+  </data>
+  <data name="P2PBranchCacheSetting" xml:space="preserve">
+    <value>Workspace ONE Peer Distribution</value>
+  </data>
+  <data name="PACUtility" xml:space="preserve">
+    <value>VMware Tunnel PAC 讀取器</value>
+  </data>
+  <data name="PasscodeTimeoutTimeUnit" xml:space="preserve">
+    <value>密碼逾時時間單位</value>
+  </data>
+  <data name="PasswordDoNotMatch" xml:space="preserve">
+    <value>密碼不相符</value>
+  </data>
+  <data name="PasswordExpirationMustBeGreaterThanPasswordNotification" xml:space="preserve">
+    <value>密碼到期天數必須大於密碼通知天數</value>
+  </data>
+  <data name="PatchManagement" xml:space="preserve">
+    <value>修補程式管理</value>
+  </data>
+  <data name="PathDescription" xml:space="preserve">
+    <value>此為可選欄位，僅針對命令列工具 (如 Curl) 指定路徑屬性。路徑僅支援 macOS 10.15+</value>
+  </data>
+  <data name="People" xml:space="preserve">
+    <value>連絡人</value>
+  </data>
+  <data name="PeopleDescription" xml:space="preserve">
+    <value>讓員工檢視組織結構圖並輕易搜尋、聯絡同事。</value>
+  </data>
+  <data name="PerApp" xml:space="preserve">
+    <value>個別應用程式</value>
+  </data>
+  <data name="PerAppTunnelMode" xml:space="preserve">
+    <value>每個應用程式</value>
+  </data>
+  <data name="Peripherals" xml:space="preserve">
+    <value>週邊設備</value>
+  </data>
+  <data name="PersonalAppPrivacyPolicy" xml:space="preserve">
+    <value>個人應用程式隱私權政策</value>
+  </data>
+  <data name="PersonalAppPrivacyPolicyMessage" xml:space="preserve">
+    <value>您已將一或多個裝置類型的個人應用程式隱私權設定為「不收集」，而且您也有依據階層中一或多個 OG 所建立之合規性原則的應用程式清單。為遵守您的終端使用者隱私權，這些裝置即使擁有與其相關聯的應用程式型合規性原則，將來也不會繼續收集個人的應用程式資訊。請確定您的原則不會根據可能由終端使用者或個人應用程式已側載的應用程式來標記裝置合規性狀態。按一下 [確定] 以繼續，或按一下 [取消] 以檢視可能的原則 {0}</value>
+  </data>
+  <data name="PipSettingsCanBeAccessedAtGlobalOnly" xml:space="preserve">
+    <value>僅能在全域企業群組中存取「產品改善計畫」。</value>
+  </data>
+  <data name="PlatformFeatures" xml:space="preserve">
+    <value>平台功能</value>
+  </data>
+  <data name="PlatformOSValues" xml:space="preserve">
+    <value>平台作業系統值</value>
+  </data>
+  <data name="PlatformSetup" xml:space="preserve">
+    <value>平台設定</value>
+  </data>
+  <data name="PleaseEnterValueGreaterThanOrEqualToArg" xml:space="preserve">
+    <value>請輸入大於或等於 {0} 的數值。</value>
+  </data>
+  <data name="PleaseGenerateAccessToken" xml:space="preserve">
+    <value>請產生存取 Token。</value>
+  </data>
+  <data name="PleaseSelectAnAppTunnelMode" xml:space="preserve">
+    <value>請選取應用程式通道模式</value>
+  </data>
+  <data name="PolicyAllowCrashReporting_Description" xml:space="preserve">
+    <value>原則允許當機報告</value>
+  </data>
+  <data name="PolicyEngineBackoff_Description" xml:space="preserve">
+    <value>原則引擎輪詢</value>
+  </data>
+  <data name="PolicyEngineMaxConcurrentProducts_Description" xml:space="preserve">
+    <value>原則引擎同時運行產品上限</value>
+  </data>
+  <data name="PolicyEngineMaxTryCount_Description" xml:space="preserve">
+    <value>原則引擎嘗試計數上限</value>
+  </data>
+  <data name="PolicyEngineQueueAuditing_Description" xml:space="preserve">
+    <value>原則引擎佇列稽核</value>
+  </data>
+  <data name="PolicySyncInterval_Description" xml:space="preserve">
+    <value>原則同步間隔</value>
+  </data>
+  <data name="PowerShellAuthenticationWithModernAuthTypeTooltip" xml:space="preserve">
+    <value>基本：與遠端 PowerShell 端點間的連線是使用基本驗證類型建立。
+談判：與遠端 PowerShell 端點間的連線是使用 Kerberos 或 NTLM over HTTPS 建立。伺服器會使用 Kerberos 驗證本機電腦帳戶的網域帳戶和 NTLM。使用者名稱的格式必須為「網域\使用者名稱」(若是網域使用者) 或「伺服器名稱\使用者名稱」(若是伺服器電腦上的本機使用者)。
+Kerberos：連線是使用透過 HTTP 進行的 Kerberos 驗證及提供的認證建立。AirWatch 元件及 Exchange 必須位於相同網域。
+新式：連線使用 Microsoft 新式驗證和 oAuth Token 來連線。</value>
+  </data>
+  <data name="PrimaryUserAccountCreation" xml:space="preserve">
+    <value>主要使用者帳戶</value>
+  </data>
+  <data name="PrivacyEnabledPersonalAppMessage" xml:space="preserve">
+    <value>當個人應用程式啟用隱私權時，系統僅會收集和/或顯示在 [應用程式管理] 或 [合規性] 模組中定義的應用程式。如果有採用產品佈建或 iOS 單一應用程式模式，請確定已啟用該收集。</value>
+  </data>
+  <data name="PrivacyPolicyLink_Description" xml:space="preserve">
+    <value>隱私權政策連結</value>
+  </data>
+  <data name="PrivacyRemoteControlTooltip" xml:space="preserve">
+    <value>僅適用於 iOS 裝置</value>
+  </data>
+  <data name="PrivacyWarning" xml:space="preserve">
+    <value>隱私權警告</value>
+  </data>
+  <data name="ProductCache_Description" xml:space="preserve">
+    <value>產品快取</value>
+  </data>
+  <data name="ProductDeploymentGranularity" xml:space="preserve">
+    <value>產品部署細微性</value>
+  </data>
+  <data name="ProductDeploymentGranularity_Description" xml:space="preserve">
+    <value>產品部署細微性</value>
+  </data>
+  <data name="ProductDeploymentGranularityHelp" xml:space="preserve">
+    <value>此設定允許管理員選取資料是否一律依產品透過轉送伺服器傳送，或依預設容錯移轉至 Workspace ONE UEM 伺服器。</value>
+  </data>
+  <data name="ProductDownloadRetryCount" xml:space="preserve">
+    <value>產品下載重試計數</value>
+  </data>
+  <data name="ProductDownloadRetryCountTooltip" xml:space="preserve">
+    <value>此設定會定義 Hub 從轉送伺服器重試下載產品的次數。</value>
+  </data>
+  <data name="ProductProvisioningCommandReleaseBatchSize_Description" xml:space="preserve">
+    <value>產品佈建命令釋放批次大小</value>
+  </data>
+  <data name="ProductProvisioningPrivacyInfo" xml:space="preserve">
+    <value>如果有採用產品佈建，請確定已啟用該收集。</value>
+  </data>
+  <data name="ProductSetBatchSize_Description" xml:space="preserve">
+    <value>產品組批次大小</value>
+  </data>
+  <data name="ProfileInstallCommandTriggerForGSuitePasswordRotation" xml:space="preserve">
+    <value>密碼變更成功。正在將裝置的設定檔更新排入佇列</value>
+  </data>
+  <data name="ProfileRefreshInterval" xml:space="preserve">
+    <value>設定檔重新整理間隔</value>
+  </data>
+  <data name="ProtectionAgentAutomaticUpdates" xml:space="preserve">
+    <value>Intelligent Hub 自動更新</value>
+  </data>
+  <data name="ProvideValidImeiNumber" xml:space="preserve">
+    <value>請提供有效的 IMEI 號碼 (15 個數字)</value>
+  </data>
+  <data name="ProvisionEntitiesOnWindowsOobeEnrollment" xml:space="preserve">
+    <value>啟用 OOBE 的狀態追蹤頁面</value>
+  </data>
+  <data name="ProvisionEntitiesOnWindowsOobeEnrollmentToolTip" xml:space="preserve">
+    <value>啟用此設定會顯示「可立即使用的註冊」(OOBE) 期間的狀態追蹤頁面，此頁面顯示裝置的佈建狀態，並告知使用者已安裝的應用程式、資源和原則。</value>
+  </data>
+  <data name="ProvisioningPackageCapacity_Description" xml:space="preserve">
+    <value>佈建套件容量</value>
+  </data>
+  <data name="ProvisioningPackageMaxFileSize" xml:space="preserve">
+    <value>佈建套件檔案大小上限</value>
+  </data>
+  <data name="ProvisioningPackageMaxFileSize_Description" xml:space="preserve">
+    <value>佈建套件檔案大小上限</value>
+  </data>
+  <data name="ProvisioningPackageNotificationMTD" xml:space="preserve">
+    <value>預設的 HTML 訊息範本，通知管理員佈建套件已建立並可供下載。</value>
+  </data>
+  <data name="ProvisioningPackageOverageAllowed" xml:space="preserve">
+    <value>允許的佈建套件超額</value>
+  </data>
+  <data name="ProvisioningPackageOverageAllowed_Description" xml:space="preserve">
+    <value>允許的佈建套件超額</value>
+  </data>
+  <data name="ProvisioningPortalHmac_Description" xml:space="preserve">
+    <value>佈建入口網站 HMAC</value>
+  </data>
+  <data name="ProvisioningProductDeleteNotesRestricted_Description" xml:space="preserve">
+    <value>受限制的佈建產品刪除資訊</value>
+  </data>
+  <data name="ProvisioningProductDeleteRestricted_Description" xml:space="preserve">
+    <value>受限制的佈建產品刪除</value>
+  </data>
+  <data name="ProvisioningProductNewDeleteNotesRestricted_Description" xml:space="preserve">
+    <value>受限制的佈建產品新刪除資訊</value>
+  </data>
+  <data name="ProvisioningProductNewDeleteRestricted_Description" xml:space="preserve">
+    <value>受限制的佈建產品新刪除</value>
+  </data>
+  <data name="ProvisioningProfileListSample_Description" xml:space="preserve">
+    <value>佈建設定檔清單取樣</value>
+  </data>
+  <data name="ProxyActionErrorWindowsApps" xml:space="preserve">
+    <value>目前不支援 Windows 應用程式的 Proxy 動作。請修改您的規則，並再次儲存。</value>
+  </data>
+  <data name="ProxyBeingUsedArgs" xml:space="preserve">
+    <value>伺服器流量規則「{0}」正在使用此 Proxy。請移除關聯以刪除此 Proxy 組態</value>
+  </data>
+  <data name="ProxyDoesntBelongToTunnelConfigArgs" xml:space="preserve">
+    <value>Proxy: {0} 不屬於 Tunnel 組態</value>
+  </data>
+  <data name="ProxyFormatValidationError" xml:space="preserve">
+    <value>請僅輸入主機名稱，如：example.com</value>
+  </data>
+  <data name="ProxyLinuxInternalPortTooltip" xml:space="preserve">
+    <value>這是在 SEG 伺服器方塊上用於接聽傳入要求的連接埠。(預設值: 443)</value>
+  </data>
+  <data name="ProxyLinuxSegClusteringPortTooltip" xml:space="preserve">
+    <value>此連接埠由 SEG 使用，在叢集模式下執行時可與叢集中的其他 SEG 通訊。請不要使用與分散式快取相同的連接埠。(預設: 41232)。如果部署在 UAG 上，則無法設定此值。</value>
+  </data>
+  <data name="ProxyLinuxSegDistributedCachePortTooltip" xml:space="preserve">
+    <value>此連接埠供 SEG 使用，在叢集模式下執行時可與分散式快取通訊。請不要使用與叢集相同的連接埠。(預設: 5701)。如果部署在 UAG 上，則無法設定此值。</value>
+  </data>
+  <data name="ProxyLinuxSegUrlAndPortTooltip" xml:space="preserve">
+    <value>傳入郵件流量和原則的外部地址會從 UEM Console 更新。如果在 UAG 上使用 TLS 連接埠共用，也可以當成 FQDN。
+(例如: https://seg.soandso.com:8443)</value>
+  </data>
+  <data name="ProxyLinuxServerIpsTooltip" xml:space="preserve">
+    <value>指定叢集中每個 SEG 的主機名稱或 IP 位址。</value>
+  </data>
+  <data name="ProxyLinuxUseSslForSegTooltip" xml:space="preserve">
+    <value>如果在 UAG 上部署 SEG，此為必要資訊。</value>
+  </data>
+  <data name="ProxyNotFoundArgs" xml:space="preserve">
+    <value>Proxy: 找不到 {0}</value>
+  </data>
+  <data name="ProxyWithSameNameAndPortExists" xml:space="preserve">
+    <value>有重複的 Proxy 存在。</value>
+  </data>
+  <data name="PublicKeyInfrastructure" xml:space="preserve">
+    <value>公開金鑰基礎結構</value>
+  </data>
+  <data name="PublicSSL" xml:space="preserve">
+    <value>公開 SSL</value>
+  </data>
+  <data name="PublishAndroidAppCatalog" xml:space="preserve">
+    <value>舊版目錄 (Android)</value>
+  </data>
+  <data name="PublishAppCatalogInfo" xml:space="preserve">
+    <value>發佈目錄至此企業群組的裝置。舊版目錄設定將目錄做為網頁擷取/捷徑設定檔傳送。Intelligent Hub 目錄設定將在 Intelligent Hub 內傳送目錄。</value>
+  </data>
+  <data name="PublishAppCatalogInfoMultiHubEnabledGreenField" xml:space="preserve">
+    <value>將目錄發佈至此組織群組的裝置。舊版目錄設定將以網路剪輯/捷徑設定檔傳送目錄。</value>
+  </data>
+  <data name="PublishAppCatalogInfoWithMigration" xml:space="preserve">
+    <value>將目錄發佈到此組織群組中的裝置。舊版目錄設定會以網路剪輯/捷徑設定檔方式提供目錄。Intelligent Hub 應用程式目錄設定已移至 Workspace ONE Hub 服務。唯讀設定適用於較舊的 Intelligent Hub 版本。請導覽至 Workspace ONE Hub 服務以深入瞭解。</value>
+  </data>
+  <data name="PublishAppleMacOsxAppCatalog" xml:space="preserve">
+    <value>舊版目錄 (macOS)</value>
+  </data>
+  <data name="PublishAwProtectionAgent" xml:space="preserve">
+    <value>發佈 Workspace ONE Intelligent Hub</value>
+  </data>
+  <data name="PublishIosAppCatalog" xml:space="preserve">
+    <value>舊版目錄 (iOS)</value>
+  </data>
+  <data name="PublishWinRtAppCatalog" xml:space="preserve">
+    <value>舊版目錄 (Windows 桌面)</value>
+  </data>
+  <data name="PullRelayServerInactiveStateFactor" xml:space="preserve">
+    <value>提取轉送伺服器非使用中狀態因素</value>
+  </data>
+  <data name="PullRelayServerInactiveStateFactor_Description" xml:space="preserve">
+    <value>提取轉送伺服器非使用中狀態因素</value>
+  </data>
+  <data name="PullRelayServerInProgressCutOffTime" xml:space="preserve">
+    <value>提取轉送伺服器程序的截斷時間</value>
+  </data>
+  <data name="PullRelayServerInProgressCutOffTime_Description" xml:space="preserve">
+    <value>提取轉送伺服器程序的截斷時間</value>
+  </data>
+  <data name="PullServiceBasedRelayServerHelpLink" xml:space="preserve">
+    <value>提取服務式轉送伺服器說明連結</value>
+  </data>
+  <data name="PullServiceBasedRelayServerHelpLink_Description" xml:space="preserve">
+    <value>提取服務式轉送伺服器說明連結</value>
+  </data>
+  <data name="PurgeJob" xml:space="preserve">
+    <value>清除工作</value>
+  </data>
+  <data name="PushLauncherToCdnJob" xml:space="preserve">
+    <value>植入系統應用程式並推送至 CDN 工作</value>
+  </data>
+  <data name="Python3ExecutablePath" xml:space="preserve">
+    <value>Python 3 路徑</value>
+  </data>
+  <data name="Python3ExecutablePathTooltip" xml:space="preserve">
+    <value>覆寫執行 Python 3 指令碼的路徑。二進位檔案必須有程式碼簽署且含 755 權限，否則 Intelligent Hub 將會遞補至 /usr/local/hub/python3 的預設路徑。允許使用符號連結路徑，且不需要逸出空格。</value>
+  </data>
+  <data name="QueueBatchSize_Description" xml:space="preserve">
+    <value>佇列批次大小</value>
+  </data>
+  <data name="QueueDevicesInPEOnSampleChange_Description" xml:space="preserve">
+    <value>樣本變更時佇列 PE 中的裝置</value>
+  </data>
+  <data name="QuickStartGuide" xml:space="preserve">
+    <value>快速入門指南</value>
+  </data>
+  <data name="ReachedCloudConnectorRunningVersion" xml:space="preserve">
+    <value>已連結至在 {1} ({2}) 上執行的 Cloud Connector 版本 {0}</value>
+    <comment>{0}=ACC version, eg "19.7.0.2"; {1}=machine name, eg "spock.startrek.tv" or just "spock"; {2}=IPv4 address, eg "10.84.230.42"</comment>
+  </data>
+  <data name="RecurrenceFrequencyGreaterThanEqualToArgHours" xml:space="preserve">
+    <value>週期頻率必須大於或等於 {0} 小時</value>
+  </data>
+  <data name="ReferToTunnelGuide" xml:space="preserve">
+    <value>請參閱《VMware Tunnel 指南》以取得詳細資料。</value>
+  </data>
+  <data name="RegenerateCertificate" xml:space="preserve">
+    <value>重新產生憑證</value>
+  </data>
+  <data name="RegenerateProxySslCertificateDescription" xml:space="preserve">
+    <value>重新產生這些憑證將造成 Tunnel Proxy 停止運作，而且必須在每個 Tunnel Proxy 伺服器上執行安裝和組態才能再次使用該功能。</value>
+  </data>
+  <data name="RegisterYatsClient" xml:space="preserve">
+    <value>註冊新用戶端</value>
+  </data>
+  <data name="RegistryEntryForFriendlyName" xml:space="preserve">
+    <value>暱稱的登錄項目 (從 AirWatch 4.0 Agent 開始)</value>
+  </data>
+  <data name="ReinstallAppOnLogoutNeverDescription" xml:space="preserve">
+    <value>警告: VMware 不建議啟用此功能。啟用時，軟體便不需刪除該應用程式，並在其中一位使用者停止使用共用裝置，且另一位使用者開始使用相同裝置時重新安裝。
+
+這表示下一位使用者可能可存取原始使用者的應用程式資料，包含任何個人或機密資料。對於確保使用相同裝置的終端使用者之應用程式資料安全，您應自行承擔一切責任。
+ 
+VMware 對於即使已告知此類損害發生的可能性，您仍決定啟用此功能所造成的任何損壞一概不負責，包含直接、間接、附隨性、特殊性、懲罰性、衍伸性的損害，或利潤損失。</value>
+  </data>
+  <data name="ReinstallAppsOnLogOut" xml:space="preserve">
+    <value>重新安裝 Android 應用程式</value>
+  </data>
+  <data name="ReinstallAppsOnLogoutTooltip" xml:space="preserve">
+    <value>若應用程式指派至登入及登出裝置的註冊預備使用者及終端使用者，請從下列選擇一種偏好的應用程式管理行為：永遠在不同使用者工作階段間重新安裝應用程式、永不在不同使用者工作階段間重新安裝應用程式，或僅在 Hub 無法在不同使用者工作階段間清除應用程式資料時，重新安裝應用程式。</value>
+  </data>
+  <data name="RelayServerContentTransfer_Description" xml:space="preserve">
+    <value>轉送伺服器內容傳輸</value>
+  </data>
+  <data name="RemoteAddress" xml:space="preserve">
+    <value>遠端位址</value>
+    <comment>Remote Network/Proxy Address</comment>
+  </data>
+  <data name="RemoteFindSample" xml:space="preserve">
+    <value>位置資訊樣本</value>
+  </data>
+  <data name="RemoteFindSampleInfo" xml:space="preserve">
+    <value>收集裝置位置資料的排程</value>
+  </data>
+  <data name="RemoteFindSampleInMinutes" xml:space="preserve">
+    <value>位置資訊樣本</value>
+  </data>
+  <data name="RemoteFindSampleIntervalErrorMessage" xml:space="preserve">
+    <value>取樣必須介於 2 小時到 30 天之間 (含)。</value>
+  </data>
+  <data name="RemoteFindSampleTimeMode" xml:space="preserve">
+    <value>遠端搜尋取樣時間模式</value>
+  </data>
+  <data name="RemoteManagementConfirmed" xml:space="preserve">
+    <value>遠端管理已確認</value>
+  </data>
+  <data name="RemoteManagementFailed" xml:space="preserve">
+    <value>遠端管理失敗</value>
+  </data>
+  <data name="RemoteManagementRefused" xml:space="preserve">
+    <value>遠端管理遭拒</value>
+  </data>
+  <data name="RemoteManagementRequested" xml:space="preserve">
+    <value>已要求遠端管理</value>
+  </data>
+  <data name="RemoveCompliancePolicyConfirmed" xml:space="preserve">
+    <value>移除合規原則已確認</value>
+  </data>
+  <data name="RemoveCompliancePolicyFailed" xml:space="preserve">
+    <value>移除合規原則失敗</value>
+  </data>
+  <data name="RemoveCompliancePolicyRejected" xml:space="preserve">
+    <value>移除合規原則遭拒</value>
+  </data>
+  <data name="RemoveCompliancePolicyRequested" xml:space="preserve">
+    <value>已要求移除合規原則</value>
+  </data>
+  <data name="ReplaceCertificate" xml:space="preserve">
+    <value>取代憑證</value>
+  </data>
+  <data name="ReplacingAirwatchAgentApp" xml:space="preserve">
+    <value>正在取代 AirWatch Agent 應用程式</value>
+  </data>
+  <data name="RequireAgentEnrollmentForMacOsX" xml:space="preserve">
+    <value>需要 macOS 的 Intelligent Hub 註冊</value>
+  </data>
+  <data name="RequiredFieldErrorMsg" xml:space="preserve">
+    <value>必要 * (?)</value>
+  </data>
+  <data name="RequireMDMEnrollment" xml:space="preserve">
+    <value>封鎖經由 Content、Boxer 和 Web 進行註冊</value>
+  </data>
+  <data name="RestApiKey" xml:space="preserve">
+    <value>REST API 金鑰</value>
+  </data>
+  <data name="RestApiUsageNotAvailable" xml:space="preserve">
+    <value>無法取得 REST API 使用量</value>
+  </data>
+  <data name="RestApiUsageTabInfo" xml:space="preserve">
+    <value>API 伺服器節流限制、每日配額和目前使用量如下所列。如需變更這些設定，請聯絡您的系統管理員。</value>
+  </data>
+  <data name="ReSyncDeviceData" xml:space="preserve">
+    <value>將裝置資料從 UEM 重新同步至 Azure 服務</value>
+  </data>
+  <data name="ReSyncDeviceDataToolTip" xml:space="preserve">
+    <value>將裝置資料從 UEM 重新同步至 Azure 服務。</value>
+  </data>
+  <data name="RetainAgentExecutablesAfterEnterpriseWipe" xml:space="preserve">
+    <value>在企業抹除後保留代理程式可執行檔</value>
+  </data>
+  <data name="RevokeAccessTokenAlert" xml:space="preserve">
+    <value>如果移除此 Token，您的身分識別提供者將無法與 Workspace ONE UEM 通訊。</value>
+  </data>
+  <data name="RfsStandBy" xml:space="preserve">
+    <value>RFS 待機</value>
+  </data>
+  <data name="RuggedDevices" xml:space="preserve">
+    <value>強固型裝置</value>
+  </data>
+  <data name="Rules" xml:space="preserve">
+    <value>規則</value>
+  </data>
+  <data name="SafetyNetAppVerification" xml:space="preserve">
+    <value>SafetyNet 應用程式驗證</value>
+  </data>
+  <data name="SafetyNetAppVerificationTooltip" xml:space="preserve">
+    <value>如果裝置上安裝的應用程式有潛在危險性，應用程式驗證會對使用者發出警示。</value>
+  </data>
+  <data name="SaltValue" xml:space="preserve">
+    <value>Salt 值</value>
+  </data>
+  <data name="SameHostNameFrontEndBackEndNotAllowed" xml:space="preserve">
+    <value>串聯模式不允許前端/後端伺服器擁有相同的主機名稱</value>
+  </data>
+  <data name="SamlAuthSetupInformation" xml:space="preserve">
+    <value>SAML 驗證設定資訊</value>
+  </data>
+  <data name="SamlAuthWarning" xml:space="preserve">
+    <value>對目錄使用者進行 SAML 驗證，會略過其他驗證模式。請確保身分識別提供者在提供 SAML 回應時，務必傳回「{0}」屬性。</value>
+  </data>
+  <data name="SamlNotConfigured" xml:space="preserve">
+    <value>尚未設定 SAML</value>
+  </data>
+  <data name="SampleGreaterThanOneDayErrorMessage" xml:space="preserve">
+    <value>範例必須介於 1 天到 30 天之間 (含)。</value>
+  </data>
+  <data name="SampleIntervalBetweenTwoHoursAndThirtyDaysErrorMessage" xml:space="preserve">
+    <value>取樣必須介於 2 小時到 30 天之間 (含)。</value>
+  </data>
+  <data name="SampleIntervalErrorMessage" xml:space="preserve">
+    <value>取樣必須介於 6 小時到 30 天之間 (含)。</value>
+  </data>
+  <data name="SamsungEfota" xml:space="preserve">
+    <value>Samsung E-FOTA</value>
+  </data>
+  <data name="SamsungEfotaRegistrationInfo" xml:space="preserve">
+    <value>Samsung 企業 FOTA (Firmware Over-The-Air，無線韌體更新) 能夠讓您管理和限制執行 Android 7.0 Nougat (含) 以上版本之 Samsung 裝置的韌體更新。請在下方輸入授權經銷商所提供的 Samung E-FOTA 設定。儲存這些設定後，請建立 Android 限制設定檔並勾選 [註冊 Samsung E-FOTA]，以註冊指派的裝置並將其鎖定於目前的韌體版本。若要將新的韌體版本發佈到裝置，請移至 [裝置] &gt; [生命週期] &gt; [更新]，並選取 [Android] 索引標籤。</value>
+  </data>
+  <data name="SanType" xml:space="preserve">
+    <value>SAN 類型</value>
+  </data>
+  <data name="SaveCertificateAuthority" xml:space="preserve">
+    <value>儲存憑證授權機構</value>
+  </data>
+  <data name="SavedSuccessfullyPleaseRefreshToLoadChanges" xml:space="preserve">
+    <value>儲存成功，請重新整理以載入變更</value>
+  </data>
+  <data name="SavingNewSSLPublicKeysToPin" xml:space="preserve">
+    <value>將新的 SSL 公開金鑰儲存至 Pin</value>
+  </data>
+  <data name="ScheduleOSUpdateRetryJob" xml:space="preserve">
+    <value>排程作業系統更新重試工作</value>
+  </data>
+  <data name="SCIM" xml:space="preserve">
+    <value>SCIM</value>
+  </data>
+  <data name="ScimAuthTokenSuccessfulGeneration" xml:space="preserve">
+    <value>已成功產生秘密 Token。現在，請複製此 Token，並貼在您的身分識別提供者入口網站中。</value>
+  </data>
+  <data name="ScimConfigureInfoText" xml:space="preserve">
+    <value>跨網域身分識別管理系統 (System for Cross-Domain Identity Management，SCIM) 目錄是一般用途的 RESTful 伺服器，可供應用程式做為共用的身分識別資訊存放庫。目前，Workspace ONE 支援 Azure Active Directory 的 SCIM 組態。</value>
+  </data>
+  <data name="ScimProvisioning" xml:space="preserve">
+    <value>SCIM 佈建</value>
+  </data>
+  <data name="ScimProvisioningAccessTokenNeedsToBeRevoked" xml:space="preserve">
+    <value>請先撤銷此企業群組的 SCIM 佈建存取 Token，然後再切換至不同的目錄服務組態。</value>
+  </data>
+  <data name="ScimProvisioningAccessTokenNotFound" xml:space="preserve">
+    <value>找不到此目錄組態的存取 Token。</value>
+  </data>
+  <data name="ScimProvisioningAuthTokenAlreadyExists" xml:space="preserve">
+    <value>此目錄服務組態的存取 Token 已存在。如有需要，請撤銷現有 Token 並重新產生新的 Token。</value>
+  </data>
+  <data name="ScimProvisioningAuthTokenGenerationFailed" xml:space="preserve">
+    <value>無法產生存取 Token。</value>
+  </data>
+  <data name="ScimProvisioningAuthTokenRevocationFailed" xml:space="preserve">
+    <value>無法撤銷存取 Token。</value>
+  </data>
+  <data name="ScimProvisioningAuthTokenRevokedSuccessfully" xml:space="preserve">
+    <value>已成功撤銷存取 Token。</value>
+  </data>
+  <data name="ScimProvisioningConfigurationAuthToken" xml:space="preserve">
+    <value>完成並儲存您的 SCIM 組態即可產生秘密 Token，然後將之貼到您的身分識別提供者入口網站。</value>
+  </data>
+  <data name="ScimProvisioningTypeRequiredForAccessToken" xml:space="preserve">
+    <value>僅針對 SCIM 佈建目錄組態設定存取 Token。請先設定並儲存 SCIM 組態，然後嘗試再次執行相同的作業。</value>
+  </data>
+  <data name="ScriptsAndSensors" xml:space="preserve">
+    <value>指令碼與感應器</value>
+  </data>
+  <data name="SdkSettingsAndPolicies" xml:space="preserve">
+    <value>SDK 設定及原則</value>
+  </data>
+  <data name="SearchAnApp" xml:space="preserve">
+    <value>搜尋應用程式</value>
+  </data>
+  <data name="SecretToken" xml:space="preserve">
+    <value>秘密 Token</value>
+  </data>
+  <data name="SecureBootConfigPolicyAllowlist_Description" xml:space="preserve">
+    <value>安全開機組態原則允許清單</value>
+  </data>
+  <data name="SecureBootConfigPolicyHashCheck_Description" xml:space="preserve">
+    <value>安全開機組態原則雜湊檢查</value>
+  </data>
+  <data name="SecureChannelServerCertificateNotTrusted" xml:space="preserve">
+    <value>安全通道伺服器憑證不受信任</value>
+  </data>
+  <data name="SecurityGroupCompliantDevices" xml:space="preserve">
+    <value>安全性群組 - 合規裝置</value>
+  </data>
+  <data name="SecurityGroupDoesNotExist" xml:space="preserve">
+    <value>安全群組不存在。</value>
+  </data>
+  <data name="SecurityGroupNonCompliantDevices" xml:space="preserve">
+    <value>安全群組 - 不合規裝置</value>
+  </data>
+  <data name="SecurityIdentifierEnabled" xml:space="preserve">
+    <value>憑證內包含安全性識別碼 (SID)</value>
+  </data>
+  <data name="SecurityIdentifierEnabledInfo" xml:space="preserve">
+    <value>啟用此旗標會自動在憑證主題名稱中包含 LDAP 的 SID 屬性，以增加安全性。</value>
+  </data>
+  <data name="SecurityInformationSampleInfo" xml:space="preserve">
+    <value>收集安全性資訊樣本的排程，其中包含裝置上的密碼狀態、防火牆狀態和防毒狀態。</value>
+  </data>
+  <data name="SecurityInformationSampleInMinutes" xml:space="preserve">
+    <value>安全性資訊樣本</value>
+  </data>
+  <data name="SecurityInformationSampleTimeMode" xml:space="preserve">
+    <value>安全性資訊取樣時間模式</value>
+  </data>
+  <data name="SecurityPatchDateNotSet" xml:space="preserve">
+    <value>安全性修補程式日期欄位未填入。</value>
+  </data>
+  <data name="SecurityPatchDateToolTip" xml:space="preserve">
+    <value>安全性修補程式日期會儲存為 UTC 日期格式。</value>
+  </data>
+  <data name="SecuritySSLPinningDescription" xml:space="preserve">
+    <value>強化安全性在主機及裝置間提供額外信任層，以預防中間人 (MITM) 攻擊。</value>
+  </data>
+  <data name="SeedSystemAppsJob" xml:space="preserve">
+    <value>植入系統應用程式工作</value>
+  </data>
+  <data name="SegIgnoreSslErrorsWithAwToolTip" xml:space="preserve">
+    <value>略過 SEG 與 AirWatch 基礎結構之間通訊出現的任何 SSL 錯誤</value>
+  </data>
+  <data name="SelectOption" xml:space="preserve">
+    <value>選取選項</value>
+  </data>
+  <data name="SelectSecurityGroup" xml:space="preserve">
+    <value>選擇安全群組</value>
+  </data>
+  <data name="SelectToEnableAdaptivaPublicCertificate" xml:space="preserve">
+    <value>選取 [啟用] 以使用 Adaptiva 公開憑證</value>
+  </data>
+  <data name="ServerActionSource" xml:space="preserve">
+    <value>伺服器動作來源</value>
+  </data>
+  <data name="ServerAuthentication" xml:space="preserve">
+    <value>伺服器驗證</value>
+  </data>
+  <data name="ServerThrottlingToolTip" xml:space="preserve">
+    <value>以 1 分鐘為間隔對 OG 的限制。0 會關閉服務節流。</value>
+  </data>
+  <data name="ServerTrafficRuleDescription" xml:space="preserve">
+    <value>根據您的網路組態新增規則，這些規則將套用至來自通道伺服器的應用程式流量。</value>
+  </data>
+  <data name="ServerTrafficRules" xml:space="preserve">
+    <value>伺服器流量規則</value>
+  </data>
+  <data name="ServiceLogs" xml:space="preserve">
+    <value>服務記錄</value>
+  </data>
+  <data name="ServiceStatus" xml:space="preserve">
+    <value>服務狀態</value>
+  </data>
+  <data name="SettingsAdaptivaSettingDescription" xml:space="preserve">
+    <value>對等式散發可降低網路流量，並縮短安裝 Win32 應用程式，以使用分公司結構進行部署所耗費的時間。若要進行進階部署，可能需要額外的基礎結構及授權。</value>
+  </data>
+  <data name="Settingschromebookagentsettings" xml:space="preserve">
+    <value>ChromeBook Agent 設定</value>
+  </data>
+  <data name="SettingsComparisonNote" xml:space="preserve">
+    <value>選取下方的企業群組，或上傳來自其他環境的 XML 檔案，以並排比較企業群組設定。XML 檔案可從 [設定摘要] 頁面匯出。</value>
+  </data>
+  <data name="SettingsConfigurations" xml:space="preserve">
+    <value>設定組態</value>
+  </data>
+  <data name="SettingsConfigurationsHelp" xml:space="preserve">
+    <value>控制 [群組與設定] 主功能表下 [組態] 子功能表的存取</value>
+  </data>
+  <data name="SettingsOnlyValidAtCustomer" xml:space="preserve">
+    <value>此設定僅在企業群組類型為「客戶」的情況下才能啟用。</value>
+  </data>
+  <data name="SettingsSummaryNote" xml:space="preserve">
+    <value>下面是您環境中所有設定的清單。若要並排比較企業群組，請匯出 XML 檔案，並前往 [設定比較] 頁面以繼續。</value>
+  </data>
+  <data name="SetUpRequired" xml:space="preserve">
+    <value>重新整理頁面，並重新測試連線。如果測試連線持續失敗，請重試 EMM 登錄。</value>
+  </data>
+  <data name="SharedDeviceAutoLogout" xml:space="preserve">
+    <value>自動登出</value>
+  </data>
+  <data name="SharedDeviceAutoLogoutAfter" xml:space="preserve">
+    <value>以下時間後自動登出:</value>
+  </data>
+  <data name="SharedDeviceCICO" xml:space="preserve">
+    <value>共用的裝置/CICO</value>
+    <comment>Shared Device Check In Check Out</comment>
+  </data>
+  <data name="SharedDeviceClearAndroidDevicePasscode" xml:space="preserve">
+    <value>清除 Android 裝置密碼</value>
+  </data>
+  <data name="SharedDeviceCleariOSDevicePasscode" xml:space="preserve">
+    <value>清除 iOS 裝置密碼</value>
+  </data>
+  <data name="SharedDeviceLogoutSettings" xml:space="preserve">
+    <value>登出設定</value>
+  </data>
+  <data name="SharedDevicePasswordsCannotBeNull" xml:space="preserve">
+    <value>共用的裝置密碼不可為空值</value>
+  </data>
+  <data name="ShareDevicesTooltip" xml:space="preserve">
+    <value>若啟用，iPad 會以共用模式註冊，使用者使用其受管 Apple ID 登入。搭載 Apple Business Manager 的裝置需要 iOS 13.4 或以上的版本。</value>
+  </data>
+  <data name="ShipToAccountNumber" xml:space="preserve">
+    <value>寄送帳戶號碼</value>
+  </data>
+  <data name="ShipToAccountNumberIsRequired" xml:space="preserve">
+    <value>需寄送帳戶號碼</value>
+  </data>
+  <data name="ShowUserPrivacyPromptForLogCollection" xml:space="preserve">
+    <value>顯示記錄收集的使用者隱私權提示</value>
+  </data>
+  <data name="ShowUserPrivacyPromptForLogCollectionTooltip" xml:space="preserve">
+    <value>啟用時，如果使用者起始 Hub [記錄收集和傳送] 動作，系統會對使用者顯示隱私權提示。隱私權提示包含記錄檔會收集的資料類型，並要求使用者在傳送記錄前接受。</value>
+  </data>
+  <data name="SigningServiceCertificateAutoRotationJob" xml:space="preserve">
+    <value>簽署服務憑證自動輪換工作</value>
+  </data>
+  <data name="SignProfiles" xml:space="preserve">
+    <value>SignProfiles</value>
+  </data>
+  <data name="SiteUrlsPage" xml:space="preserve">
+    <value>網站 URL 頁</value>
+  </data>
+  <data name="SkeletonProfileGenerationJob" xml:space="preserve">
+    <value>基本架構設定檔產生工作</value>
+    <comment>Label for scheduler setting entry in All Settings &gt; Admin &gt; Scheduler.</comment>
+  </data>
+  <data name="SkipBiometric" xml:space="preserve">
+    <value>生物辨識 ID</value>
+  </data>
+  <data name="SkipBiometricTooltip" xml:space="preserve">
+    <value>如果跳過，在使用設定輔助程式時，使用者將不會被提示配置生物辨識 ID。</value>
+  </data>
+  <data name="SkipPrimaryAccountCreation" xml:space="preserve">
+    <value>主要帳戶設定</value>
+  </data>
+  <data name="SmartGroupManagementMode" xml:space="preserve">
+    <value>透過 Intelligent Hub 註冊的裝置依預設將由 MDM 管理。請在下方啟用並選取適當的智慧群組，以允許裝置不需 MDM 管理即可註冊。使用智慧群組時，可根據以下準則啟用註冊: 作業系統版本、擁有權類型和使用者群組。對於註冊為不需管理的 iOS 裝置，請使用「調適性管理」應用程式原則來控制裝置管理層級。</value>
+  </data>
+  <data name="SOCKS" xml:space="preserve">
+    <value>SOCKS</value>
+  </data>
+  <data name="SoftwareManagement" xml:space="preserve">
+    <value>軟體管理</value>
+  </data>
+  <data name="SoundFileName" xml:space="preserve">
+    <value>音效檔案名稱</value>
+  </data>
+  <data name="SSL" xml:space="preserve">
+    <value>SSL</value>
+  </data>
+  <data name="SslProvider" xml:space="preserve">
+    <value>SSL</value>
+  </data>
+  <data name="StartExploringDropshipProvisioning" xml:space="preserve">
+    <value>開始探索 Drop Ship Provisioning</value>
+  </data>
+  <data name="STRCardDescription" xml:space="preserve">
+    <value>設定伺服器流量規則，來運用在包括輸出 Proxy 的網路中所設定的第三方 Web Proxy。</value>
+  </data>
+  <data name="STRDoesntBelongToTunnelConfig" xml:space="preserve">
+    <value>伺服器流量規則 UUID 不屬於 Tunnel 組態。</value>
+  </data>
+  <data name="STRSuccessMsg" xml:space="preserve">
+    <value>已成功套用伺服器流量規則</value>
+  </data>
+  <data name="Subscriptions" xml:space="preserve">
+    <value>訂閲</value>
+  </data>
+  <data name="SupportedDeviceTypesForDeviceLogRequest" xml:space="preserve">
+    <value>僅適用於 Android 及 macOS 裝置</value>
+  </data>
+  <data name="SuspendProductProvisioning" xml:space="preserve">
+    <value>暫停產品佈建</value>
+  </data>
+  <data name="SuspendProductProvisioning_Description" xml:space="preserve">
+    <value>暫停產品佈建</value>
+  </data>
+  <data name="SuspiciousActivityLogs" xml:space="preserve">
+    <value>可疑的活動記錄</value>
+  </data>
+  <data name="SuspiciousActivityLogsMessage" xml:space="preserve">
+    <value>啟用 [可疑的活動記錄] 設定時，裝置將記錄所發生的每個藍牙和 USB 連線 (但藍牙耳機和 USB 充電除外)。若要存取 [可疑的活動記錄]，Syslog 設定必須正確地設定 {0}。</value>
+  </data>
+  <data name="SyncActionNumber" xml:space="preserve">
+    <value>同步動作數量</value>
+  </data>
+  <data name="SyncAzureServices" xml:space="preserve">
+    <value>同步 Azure 服務</value>
+  </data>
+  <data name="SyncAzureServicesToolTip" xml:space="preserve">
+    <value>從 Azure 服務同步至 UEM，以更新自上次成功同步以來的 Azure 裝置合作夥伴合規性狀態。</value>
+  </data>
+  <data name="SyncDeviceUpdatesJob" xml:space="preserve">
+    <value>同步裝置更新</value>
+  </data>
+  <data name="SyncFailedReferConsoleEvents" xml:space="preserve">
+    <value>使用者屬性與目錄同步失敗。請參閱主控台事件。</value>
+  </data>
+  <data name="SyncMetadataServiceJob" xml:space="preserve">
+    <value>同步中繼資料</value>
+  </data>
+  <data name="SyncWithNsx" xml:space="preserve">
+    <value>與 NSX 同步</value>
+  </data>
+  <data name="SyslogDescription" xml:space="preserve">
+    <value>安全性資訊及事件管理 (SIEM) 技術可收集網路軟硬體元件產生的安全警示之相關資訊，並產生報告以協助您監控活動、執行記錄稽核，並回應事件。Workspace ONE 透過使用 Syslog 傳送事件記錄的方式與 SIEM 工具整合。</value>
+  </data>
+  <data name="SyslogHostName" xml:space="preserve">
+    <value>Syslog 主機名稱</value>
+  </data>
+  <data name="SystemEULADescription" xml:space="preserve">
+    <value>針對各企業群組建立、自訂並指派唯一的使用條款。針對主控台使用情況、裝置註冊及 SDK 整合應用程式使用情況定義及強制執行使用條款，確保員工同意每項原則。</value>
+  </data>
+  <data name="SystemProxySetting" xml:space="preserve">
+    <value>系統代理伺服器設定</value>
+  </data>
+  <data name="SystemProxySettings" xml:space="preserve">
+    <value>系統代理伺服器設定</value>
+  </data>
+  <data name="TemplateOg" xml:space="preserve">
+    <value>範本 OG</value>
+  </data>
+  <data name="TestApnsHttp2Connection" xml:space="preserve">
+    <value>透過 HTTP/2 測試連線</value>
+  </data>
+  <data name="TestApnsHttp2ConnectionDescription" xml:space="preserve">
+    <value>Workspace ONE UEM 與 Apple HTTP/2 API 端點之間的測試連線。依預設會透過 Apple 舊版二進位介面傳送 APN 訊息，而非 HTTP/2 端點。此測試會確認此連線是否成功。未來 Workspace ONE UEM 會將預設設定更新為透過以 Apple HTTP/2 為基礎的 API 傳送 APN 訊息。</value>
+  </data>
+  <data name="ThreadDynamicDecay" xml:space="preserve">
+    <value>執行緒動態衰減</value>
+  </data>
+  <data name="ThreadDynamicDecay_Description" xml:space="preserve">
+    <value>執行緒動態衰減</value>
+  </data>
+  <data name="ThreadMax" xml:space="preserve">
+    <value>執行緒最大值</value>
+  </data>
+  <data name="ThreadMax_Description" xml:space="preserve">
+    <value>執行緒最大值</value>
+  </data>
+  <data name="ThreadMin" xml:space="preserve">
+    <value>執行緒最小值</value>
+  </data>
+  <data name="ThreadMin_Description" xml:space="preserve">
+    <value>執行緒最小值</value>
+  </data>
+  <data name="TimerInterval_Description" xml:space="preserve">
+    <value>計時器時間間隔</value>
+  </data>
+  <data name="TimerOn" xml:space="preserve">
+    <value>計時器開啟</value>
+  </data>
+  <data name="TimerOn_Description" xml:space="preserve">
+    <value>計時器開啟</value>
+  </data>
+  <data name="TimeSchedules" xml:space="preserve">
+    <value>時間排程</value>
+  </data>
+  <data name="TokenParameter" xml:space="preserve">
+    <value>Token 參數</value>
+  </data>
+  <data name="TotalAssignments" xml:space="preserve">
+    <value>指派總計</value>
+  </data>
+  <data name="TotalRules" xml:space="preserve">
+    <value>規則總計</value>
+  </data>
+  <data name="TrafficRulesDescription" xml:space="preserve">
+    <value>利用 VMware Tunnel 來將規則新增至通道、封鎖或略過網路流量</value>
+  </data>
+  <data name="TunnelAddCertificate" xml:space="preserve">
+    <value>新增憑證</value>
+  </data>
+  <data name="TunnelApplicationMappingNotExist" xml:space="preserve">
+    <value>通道應用程式對應不存在</value>
+  </data>
+  <data name="TunnelApplicationNotExist" xml:space="preserve">
+    <value>通道應用程式 API 未傳回任何應用程式。</value>
+  </data>
+  <data name="TunnelCertLoadFailedWithGivenPassword" xml:space="preserve">
+    <value>憑證載入失敗。請確認憑證密碼</value>
+  </data>
+  <data name="TunnelClientCertProviderTooltip" xml:space="preserve">
+    <value>依預設，所有元件會使用 AirWatch 所核發的憑證。若要使用企業 CA 憑證來進行用戶端-伺服器驗證，請選取 [第三方] 選項。</value>
+  </data>
+  <data name="TunnelConfigAdd" xml:space="preserve">
+    <value>新增</value>
+  </data>
+  <data name="TunnelConfigDelete" xml:space="preserve">
+    <value>刪除</value>
+  </data>
+  <data name="TunnelConfigDisable" xml:space="preserve">
+    <value>停用</value>
+  </data>
+  <data name="TunnelConfigEdit" xml:space="preserve">
+    <value>編輯</value>
+  </data>
+  <data name="TunnelConfigEnable" xml:space="preserve">
+    <value>啟動</value>
+  </data>
+  <data name="TunnelConfigMissing" xml:space="preserve">
+    <value>通道未設定。按一下此處進行設定。</value>
+  </data>
+  <data name="TunnelConfigSaveFailed" xml:space="preserve">
+    <value>錯誤，{0}</value>
+  </data>
+  <data name="TunnelConfigSaveSuccess" xml:space="preserve">
+    <value>Tunnel 組態已儲存成功</value>
+  </data>
+  <data name="TunnelConfiguration" xml:space="preserve">
+    <value>Tunnel 組態</value>
+  </data>
+  <data name="TunnelConfigurationInfoMessage" xml:space="preserve">
+    <value>配置基礎 Tunnel 架構，以在環境中建立連線及信任。</value>
+  </data>
+  <data name="TunnelConfigurations" xml:space="preserve">
+    <value>Tunnel 組態</value>
+  </data>
+  <data name="TunnelConfigurationsPaginationText" xml:space="preserve">
+    <value>組態 {0} - {1} / {2}</value>
+  </data>
+  <data name="TunnelConnection" xml:space="preserve">
+    <value>Tunnel 連線</value>
+  </data>
+  <data name="TunnelDeploymentTypeToolTip" xml:space="preserve">
+    <value>選擇級聯以使用不同的角色部署兩個執行個體 (DMZ 及內部)</value>
+  </data>
+  <data name="TunnelDomainsResolutionInfo" xml:space="preserve">
+    <value>只有輸入的網域會透過 VMware Tunnel Gateway 解析。所有其他網域則是透過裝置所設定的 DNS 解析。</value>
+  </data>
+  <data name="TunnelMode" xml:space="preserve">
+    <value>通道模式</value>
+  </data>
+  <data name="TunnelNetworkingHelpInfo" xml:space="preserve">
+    <value>決定 Tunnel 與 Workspace ONE UEM 的通訊方式，以及裝置流量流經網路的方式。</value>
+  </data>
+  <data name="TunnelProxyAuthMethod" xml:space="preserve">
+    <value>驗證</value>
+  </data>
+  <data name="TunnelSecureChannelCertMissing" xml:space="preserve">
+    <value>企業群組少了安全通道憑證。</value>
+  </data>
+  <data name="TunnelServerActiveCertExists" xml:space="preserve">
+    <value>Tunnel 伺服器已存在作用中的憑證。</value>
+  </data>
+  <data name="TunnelServerCertDoesNotHavePassword" xml:space="preserve">
+    <value>缺少 Tunnel 伺服器憑證密碼。</value>
+  </data>
+  <data name="TunnelServerCertDoesNotHavePrivateKey" xml:space="preserve">
+    <value>缺少 Tunnel 伺服器憑證私密金鑰。</value>
+  </data>
+  <data name="TunnelSettingsConfigurationWarning" xml:space="preserve">
+    <value>尚未在此組織群組定義 VMware Tunnel。若要設定應用程式通道的 Tunnel，請按下方的連結。請注意，網域允許會利用每個應用程式所指定的裝置流量規則。</value>
+  </data>
+  <data name="TunnelSslProviderTooltip" xml:space="preserve">
+    <value>依預設，此設定會使用 AirWatch 憑證進行安全伺服器/用戶端通訊。您可以選取 [第三方] 選項，上傳第三方公開 SSL 憑證作為替代使用。</value>
+  </data>
+  <data name="TunnelToAPI" xml:space="preserve">
+    <value>API 的通道</value>
+  </data>
+  <data name="UAG" xml:space="preserve">
+    <value>UAG</value>
+  </data>
+  <data name="UEIPEnabled_Description" xml:space="preserve">
+    <value>已啟用 UEIP</value>
+  </data>
+  <data name="UnableToEnableOrDisablePinning" xml:space="preserve">
+    <value>無法停用或啟用 SSL 固定。請檢查 SSL 固定組態，然後再試一次。</value>
+    <comment>This error only occurs if there is a catastrophic failure on the server side that could not be properly handled.</comment>
+  </data>
+  <data name="UnableToFetchCAProfiles" xml:space="preserve">
+    <value>無法擷取與受管 CA 相關的憑證設定檔。請確認憑證授權機構的伺服器 URL 是否正確。</value>
+    <comment>This error occurs if server fails to fetch certificate profiles associated with managed CA name.</comment>
+  </data>
+  <data name="UnenrollSetting" xml:space="preserve">
+    <value>取消註冊設定</value>
+  </data>
+  <data name="UnifiedAppCatalog" xml:space="preserve">
+    <value>統一 App Catalog</value>
+  </data>
+  <data name="UnifiedAppCatalogDescription" xml:space="preserve">
+    <value>列出熱門 APP、配合活動宣傳特定 APP、顯示常用 APP 及更多。</value>
+  </data>
+  <data name="UnifiedAppCatalogWithAppRatings" xml:space="preserve">
+    <value>內含應用程式評分的統一 App Catalog</value>
+  </data>
+  <data name="UniqueRandomPassword" xml:space="preserve">
+    <value>唯一隨機密碼</value>
+  </data>
+  <data name="UniqueRandomPasswordTooltip" xml:space="preserve">
+    <value>系統會產生14 個字元的唯一隨機密碼，其中包含至少 2 個符號、1 個小寫字母、1 個大寫字母和 1 個數字。若啟用，將無法變更回靜態密碼。</value>
+  </data>
+  <data name="UnregisteredAirWatchID" xml:space="preserve">
+    <value>指定的 AirWatch 識別碼未登錄自動探索</value>
+  </data>
+  <data name="UnregisterFailed" xml:space="preserve">
+    <value>取消註冊失敗</value>
+  </data>
+  <data name="UnregisterSuccessful" xml:space="preserve">
+    <value>取消註冊成功</value>
+  </data>
+  <data name="UnsupportedAdaptivaServerVersion" xml:space="preserve">
+    <value>已識別出不支援的對等式散發伺服器版本。目前的伺服器版本是 {1}。Console 只支援 {0} 以上版本。</value>
+  </data>
+  <data name="UpdateInProgress" xml:space="preserve">
+    <value>正在更新...</value>
+  </data>
+  <data name="UpdateManagement" xml:space="preserve">
+    <value>更新管理</value>
+  </data>
+  <data name="UpdateSampleInfo" xml:space="preserve">
+    <value>收集最新 Windows 更新資訊的排程。這包括裝置已從其更新來源探索到的新修補程式，根據原則組態，更新來源可以是 Microsoft Update 或是 WSUS 伺服器。</value>
+  </data>
+  <data name="UpdateSampleInMinutes" xml:space="preserve">
+    <value>更新取樣</value>
+  </data>
+  <data name="UpdateSampleTimeMode" xml:space="preserve">
+    <value>更新取樣時間模式</value>
+  </data>
+  <data name="UploadLauncher" xml:space="preserve">
+    <value>上傳啟動器</value>
+  </data>
+  <data name="UploadLocallyTooltip" xml:space="preserve">
+    <value>選取以在安裝期間上傳憑證。在 UAG 3.6 及以下版本中不支援此功能。</value>
+  </data>
+  <data name="UploadServerCertificate" xml:space="preserve">
+    <value>上傳伺服器憑證</value>
+  </data>
+  <data name="UrlNotValidPleaseCheckUrlFormatAndTryAgain" xml:space="preserve">
+    <value>無效的 URL。請檢查 URL 格式後再試一次。</value>
+  </data>
+  <data name="URLsForPredefinedBookmarksInBrowser" xml:space="preserve">
+    <value>Workspace ONE Web 中預先定義書籤的 URL</value>
+  </data>
+  <data name="USBConnections" xml:space="preserve">
+    <value>USB 連線</value>
+  </data>
+  <data name="UsbData" xml:space="preserve">
+    <value>USB 資料</value>
+  </data>
+  <data name="UseAsADigitalSignature" xml:space="preserve">
+    <value>用作數位簽名</value>
+  </data>
+  <data name="UseAutoGeneratedAPIKey" xml:space="preserve">
+    <value>使用自動產生的 API 金鑰</value>
+  </data>
+  <data name="UseAutoGeneratedAPIKeyHelpText" xml:space="preserve">
+    <value>使用此動作按鈕即可更新 Workspace ONE Access-UEM 組態來使用自動產生的 UEM API 金鑰</value>
+  </data>
+  <data name="UseAwcmThrottle" xml:space="preserve">
+    <value>使用 AWCM 節流</value>
+  </data>
+  <data name="UseAwcmThrottle_Description" xml:space="preserve">
+    <value>使用 AWCM 節流</value>
+  </data>
+  <data name="UseDifferentHostNames" xml:space="preserve">
+    <value>請使用不同的主機名稱</value>
+  </data>
+  <data name="UseLegacyPolicyEngineLogic" xml:space="preserve">
+    <value>使用舊版原則引擎邏輯</value>
+  </data>
+  <data name="UseLegacyPolicyEngineLogic_Description" xml:space="preserve">
+    <value>使用舊版原則引擎邏輯</value>
+  </data>
+  <data name="UsePACUtility" xml:space="preserve">
+    <value>使用 VMware Tunnel PAC 讀取器來管理伺服器流量規則</value>
+  </data>
+  <data name="UsePACUtilityTooltip" xml:space="preserve">
+    <value>使用 PAC 公用程式來自動管理動態流量規則。您必須額外安裝一個元件，才能與您的 PAC 檔案存放庫進行通訊。</value>
+  </data>
+  <data name="UserCredentials" xml:space="preserve">
+    <value>使用者認證</value>
+  </data>
+  <data name="UserDoesNotHaveAccessToSpecifiedOg" xml:space="preserve">
+    <value>使用者無權存取所要求的企業群組</value>
+  </data>
+  <data name="UserDoesNotHaveAnyDeviceForGSuitePasswordRotation" xml:space="preserve">
+    <value>密碼變更成功。沒有要更新的裝置。</value>
+  </data>
+  <data name="UserGroupSelectionMode" xml:space="preserve">
+    <value>使用者群組選擇模式</value>
+  </data>
+  <data name="UserHasNoValidProfileForGSuitePasswordRotation" xml:space="preserve">
+    <value>密碼變更成功。沒有要更新的設定檔。</value>
+  </data>
+  <data name="UserListSample" xml:space="preserve">
+    <value>使用者清單取樣</value>
+  </data>
+  <data name="UserListSampleToolTip" xml:space="preserve">
+    <value>在伺服器重新整理共用 iPad 上使用者清單的時間間隔</value>
+  </data>
+  <data name="UsernamePasswordIncorrect" xml:space="preserve">
+    <value>測試連線失敗：使用者名稱或密碼不正確</value>
+  </data>
+  <data name="UserSyncDuration" xml:space="preserve">
+    <value>持續時間</value>
+  </data>
+  <data name="UserSyncFailed" xml:space="preserve">
+    <value>使用者同步失敗</value>
+  </data>
+  <data name="UserSyncInProgress" xml:space="preserve">
+    <value>使用者同步進行中</value>
+  </data>
+  <data name="UserSyncStartedTime" xml:space="preserve">
+    <value>開始時間</value>
+  </data>
+  <data name="UserSyncStatus" xml:space="preserve">
+    <value>狀態</value>
+  </data>
+  <data name="UserSyncSucceeded" xml:space="preserve">
+    <value>使用者同步成功</value>
+  </data>
+  <data name="UseSecureContentServerConnection" xml:space="preserve">
+    <value>請為內容伺服器使用安全的 (https) 主機連線。</value>
+  </data>
+  <data name="UseSignificantLocationChange" xml:space="preserve">
+    <value>使用重大位置變更</value>
+  </data>
+  <data name="UseTunnelProxyForBackwardCompatibility" xml:space="preserve">
+    <value>回溯相容性的 Tunnel Proxy</value>
+  </data>
+  <data name="UseTunnelProxyForBackwardCompatibilityTooltip" xml:space="preserve">
+    <value>使用此設定，以支援已啟用 SDK 但尚未從 Proxy 移轉至 Tunnel 的應用程式</value>
+  </data>
+  <data name="UseUniqueApplicationEntries" xml:space="preserve">
+    <value>僅會選擇並顯示應用程式服務包 ID 及平台的唯一項目。</value>
+  </data>
+  <data name="ValidationFailed" xml:space="preserve">
+    <value>驗證失敗</value>
+  </data>
+  <data name="VidmAwConfigSettingsNotFound" xml:space="preserve">
+    <value>在 Workspace ONE Access 中找不到任何 AirWatch 設定。請在 Workspace ONE Access 中設定 AirWatch 設定，然後再試一次。</value>
+  </data>
+  <data name="VidmConfigurationFailed" xml:space="preserve">
+    <value>Workspace ONE Access 組態失敗。</value>
+  </data>
+  <data name="VidmConfigurationSucceeded" xml:space="preserve">
+    <value>Workspace ONE Access 組態成功。</value>
+  </data>
+  <data name="VIDMConnectorInstallerInfo" xml:space="preserve">
+    <value>AirWatch Cloud Connector 安裝程式不再隨附 {0}。</value>
+    <comment>{0} will be replaced with the localized value for "VIDMConnectorInstallerInfoLink"</comment>
+  </data>
+  <data name="VIDMConnectorInstallerInfoLink" xml:space="preserve">
+    <value>Workspace ONE Access Connector 安裝程式</value>
+  </data>
+  <data name="VidmInvalidBuiltInIdpAssociation" xml:space="preserve">
+    <value>內建的身分識別提供者僅可設定單一個目錄類型的關聯。請檢查 Workspace ONE Access 的內建設定後再試一次。</value>
+  </data>
+  <data name="VidmLocationGroupsMissingGroupIDs" xml:space="preserve">
+    <value>位於此層級或以下的所有企業群組都必須有群組 ID。請更新任何遺失的群組 ID，然後再試一次。</value>
+  </data>
+  <data name="ViewConfigurationsList" xml:space="preserve">
+    <value>檢視組態清單</value>
+  </data>
+  <data name="ViewConfigurationsListHelp" xml:space="preserve">
+    <value>控制檢視組態清單的存取權</value>
+  </data>
+  <data name="ViewInstructionObtainTenantDirectoryIdInformation" xml:space="preserve">
+    <value>如何取得租用戶目錄 ID 資訊</value>
+  </data>
+  <data name="ViewWSOneHubConfiguration" xml:space="preserve">
+    <value>檢視 Workspace ONE Intelligent Hub 組態。</value>
+  </data>
+  <data name="ViewWSOneHubConfigurationHelp" xml:space="preserve">
+    <value>控制檢視 Workspace ONE Intelligent Hub 組態的權限。</value>
+  </data>
+  <data name="VmUnlockFailed" xml:space="preserve">
+    <value>VM 解除鎖定失敗</value>
+  </data>
+  <data name="VMwareEnterpriseSystemsConnectorDescription" xml:space="preserve">
+    <value>Cloud Connector 可協助您安全地與企業系統通訊，包含目錄服務及憑證授權等。需具備企業資源存取權的伺服器。</value>
+  </data>
+  <data name="VmwareTunnel" xml:space="preserve">
+    <value>VMware Tunnel</value>
+  </data>
+  <data name="VmwareTunnelProxy" xml:space="preserve">
+    <value>VMware Tunnel Proxy</value>
+  </data>
+  <data name="VPNEndPointServerSSLCertificate" xml:space="preserve">
+    <value>VPN 端點伺服器 SSL 憑證</value>
+  </data>
+  <data name="VPNHostName" xml:space="preserve">
+    <value>VPN 主機名稱</value>
+  </data>
+  <data name="VppDeletionFailed" xml:space="preserve">
+    <value>無法刪除與 VPP 帳戶相連結的應用程式。請聯絡支援部門。</value>
+  </data>
+  <data name="VppDeletionInProgress" xml:space="preserve">
+    <value>刪除進行中。請重新整理頁面。</value>
+  </data>
+  <data name="WaitTimeBeforeConsideringInactive" xml:space="preserve">
+    <value>憑證佇列節流</value>
+  </data>
+  <data name="WaitTimeBeforeConsideringInactiveInfo" xml:space="preserve">
+    <value>若裝置未耗用憑證設定檔發佈頻率所新增的命令，依預設下個批次將在 30 分鐘內佇列。此時間間隔可降低以改善憑證批次處理，不過建議密切監控 CA 和 DS 伺服器效能。</value>
+  </data>
+  <data name="WAPI" xml:space="preserve">
+    <value>WAPI</value>
+    <comment>Windows Mobile WiFi Authentication options</comment>
+  </data>
+  <data name="WarningNoSecurityGroups" xml:space="preserve">
+    <value>找不到安全群組。</value>
+  </data>
+  <data name="WebTokenNotGenerated" xml:space="preserve">
+    <value>未產生 Web Token，請檢查 EMM 設定</value>
+  </data>
+  <data name="WelcomeToConfigurations" xml:space="preserve">
+    <value>歡迎來到 [組態]</value>
+  </data>
+  <data name="WhereAllThePiecesFallIntoPlace" xml:space="preserve">
+    <value>此處所有部件皆有條不紊</value>
+  </data>
+  <data name="WhereAllThePiecesFallIntoPlaceDescriptionArg" xml:space="preserve">
+    <value>所有驅動企業 UEM、行動安全及使用者體驗所需的基本元件，仍位於 {0} 內原本的位置。但現在您可在易於存取且操作性更高的單一中央位置，找到這些基本建置組塊。</value>
+  </data>
+  <data name="Windows7AgentApplication" xml:space="preserve">
+    <value>代理程式應用程式</value>
+  </data>
+  <data name="Windows8AgentApplicationSettings" xml:space="preserve">
+    <value>Intelligent Hub 應用程式</value>
+  </data>
+  <data name="WindowsAppDeployments" xml:space="preserve">
+    <value>Windows 應用程式部署</value>
+  </data>
+  <data name="WindowsApplicationDeleteSuccess" xml:space="preserve">
+    <value>Windows 應用程式刪除成功。</value>
+  </data>
+  <data name="WindowsApplicationFound" xml:space="preserve">
+    <value>Windows 應用程式已存在</value>
+  </data>
+  <data name="WindowsApplicationNotFound" xml:space="preserve">
+    <value>Windows 應用程式不存在</value>
+  </data>
+  <data name="WindowsApplicationSaveSuccess" xml:space="preserve">
+    <value>Windows 應用程式儲存成功</value>
+  </data>
+  <data name="WindowsDellAutoEnrollment" xml:space="preserve">
+    <value>Windows Dell 自動註冊</value>
+  </data>
+  <data name="WindowsPcMdmAppDeploymentsDescription" xml:space="preserve">
+    <value>讓您能夠針對 exe、msi、msp、mst、zip 資料夾等傳統 Win32 應用程式套件類型配置軟體套件部署，並配置執行指令的套件部署。停用時，此設定將僅允許使用 msi 及新式 UWP 套件類型。</value>
+  </data>
+  <data name="WindowsPcMdmAutoEnrollmentDescription" xml:space="preserve">
+    <value>Workspace ONE 支援從 Dell 購買的 Windows 桌面裝置執行自動註冊。自動註冊功能藉由自動註冊已登錄裝置，簡化註冊程序。此功能亦可確保在員工登入桌上型電腦前，所有原則、應用程式及更新皆已套用。</value>
+  </data>
+  <data name="WindowsPcMdmWindowsHealthAttestationDescription" xml:space="preserve">
+    <value>健康情況證明是 Windows 10 上的進階安全功能，可藉由從裝置收集裝置健康情況及開機參數，並將其儲存於安全硬體 TPM 中，確保裝置安全。Workspace ONE 可於開機期間以及隨選方式監控裝置完整性，並根據符合性規則採取修正動作。 若為內部部署設置，此功能需要啟用必要功能及角色的 Windows Server 2016。</value>
+  </data>
+  <data name="WindowsPcMdmWindowsRuntimeProvisioningDescription" xml:space="preserve">
+    <value>使用 Windows Configuration Designer 針對Windows 10 裝置的大量註冊建立佈建套件，此套件可在設定或正常使用裝置時，使用卸除式儲存裝置進行套用。</value>
+  </data>
+  <data name="WindowsPhoneAgentApplication" xml:space="preserve">
+    <value>代理程式應用程式</value>
+  </data>
+  <data name="WindowsRuggedRelayServerHelpLink" xml:space="preserve">
+    <value>Windows 強固型轉送伺服器說明連結</value>
+  </data>
+  <data name="WindowsRuggedRelayServerHelpLink_Description" xml:space="preserve">
+    <value>Windows 強固型轉送伺服器說明連結</value>
+  </data>
+  <data name="WindowsRuggedWorkspaceOneUemResourcePortal" xml:space="preserve">
+    <value>Windows 強固型 Workspace ONE UEM 資源入口網站</value>
+  </data>
+  <data name="WindowsRuggedWorkspaceOneUemResourcePortal_Description" xml:space="preserve">
+    <value>Windows 強固型 Workspace ONE UEM 資源入口網站</value>
+  </data>
+  <data name="WindowsRuntimeAuthPolicy_Description" xml:space="preserve">
+    <value>Windows 執行期間驗證原則</value>
+  </data>
+  <data name="WindowsRuntimeConnected" xml:space="preserve">
+    <value>Workspace ONE Drop Ship Provisioning</value>
+  </data>
+  <data name="WindowsRuntimeConnectedDomain" xml:space="preserve">
+    <value>自動探索網域</value>
+  </data>
+  <data name="WindowsRuntimeConnectedInfo" xml:space="preserve">
+    <value>VMware Workspace ONE Drop Ship Porvisioning 可讓您在製造商 (OEM) 設施中進行裝置的動態佈建。啟用此功能將會建立新的註冊預備使用者，可將其指派給您 Workspace ONE Console 中的應用程式。此註冊預備使用者將會用來佈建 OEM 設施中的裝置。
+
+備註：啟用此功能會允許裝置識別碼 (UUID、序號) 登錄對應到由美國託管之 VMware Workspace ONE 資料中心中的此企業群組和自動探索網域。</value>
+  </data>
+  <data name="WindowsRuntimeConnectedPassword" xml:space="preserve">
+    <value>密碼</value>
+  </data>
+  <data name="WindowsRuntimeConnectedPasswordHelpText" xml:space="preserve">
+    <value>如果密碼包含特殊字元 (「&amp;」、「&gt;」、或「&lt;」)，則使用此帳戶進行註冊的 Drop Ship Provisioning 工作流程就會失敗。若要變更密碼，請前往 [使用者] 頁面。</value>
+  </data>
+  <data name="WindowsRuntimeConnectedPasswordIsRequiredField" xml:space="preserve">
+    <value>密碼為必填欄位。</value>
+  </data>
+  <data name="WindowsRuntimeConnectedRegisteredDomainInfo" xml:space="preserve">
+    <value>為 Drop Ship 連線佈建而讓裝置註冊的網域。</value>
+  </data>
+  <data name="WindowsRuntimeConnectedUpn" xml:space="preserve">
+    <value>UPN</value>
+  </data>
+  <data name="WindowsRuntimeConnectedUsername" xml:space="preserve">
+    <value>使用者名稱</value>
+  </data>
+  <data name="WindowsRuntimeConnectedUsernameHelpText" xml:space="preserve">
+    <value>Drop Ship 連線佈建使用者名稱</value>
+  </data>
+  <data name="WindowsRuntimeConnectedUserNameIsRequiredField" xml:space="preserve">
+    <value>[使用者名稱] 為必填欄位。</value>
+  </data>
+  <data name="WindowsRuntimeDiscoveryUrl_Description" xml:space="preserve">
+    <value>Windows 執行期間探索 URL</value>
+  </data>
+  <data name="WindowsRuntimeEnrollmentUrl_Description" xml:space="preserve">
+    <value>Windows 執行期間註冊 URL</value>
+  </data>
+  <data name="WindowsRuntimePersistence" xml:space="preserve">
+    <value>Workspace ONE 持續性</value>
+  </data>
+  <data name="WindowsRuntimePersistenceConfirmationPopupDetailMessage" xml:space="preserve">
+    <value>此動作將停用此組織群組中所有裝置的 Workspace ONE 持續性。是否要繼續?</value>
+  </data>
+  <data name="WindowsRuntimePersistenceConfirmationPopupHeaderMessage" xml:space="preserve">
+    <value>停用 Workspace ONE 持續性</value>
+  </data>
+  <data name="WindowsRuntimePersistenceDomain" xml:space="preserve">
+    <value>網域</value>
+  </data>
+  <data name="WindowsRuntimePersistenceDomainNotExists" xml:space="preserve">
+    <value>您還沒有為 [AirWatch 自動探索] 登錄任何網域。請在 {0} 頁面新增 Email 網域，然後再導覽回此畫面。</value>
+  </data>
+  <data name="WindowsRuntimePersistenceInfo" xml:space="preserve">
+    <value>Workspace ONE 持續性是 BIOS 層級功能，讓裝置持續受到 Workspace ONE 管理，即使裝置遭到抹除、遺失或遭竊亦然。
+    啟用持續性後，裝置會註冊至已註冊自動探索服務的網域。</value>
+  </data>
+  <data name="WindowsRuntimePersistenceOemProvisioningErrorMessage" xml:space="preserve">
+    <value>無法啟用持續性，請重試。</value>
+  </data>
+  <data name="WindowsRuntimePersistenceRegisteredDomainInfo" xml:space="preserve">
+    <value>為持續性而讓裝置註冊的網域。</value>
+  </data>
+  <data name="WindowsRuntimePersistenceRegisteredUpnInfo" xml:space="preserve">
+    <value>為持續性而讓裝置註冊的註冊預備使用者 UPN。</value>
+  </data>
+  <data name="WindowsRunTimePersistenceUserErrorMessage" xml:space="preserve">
+    <value>註冊預備使用者針對持續性之註冊失敗。</value>
+  </data>
+  <data name="WindowsRuntimePolicyUrl_Description" xml:space="preserve">
+    <value>Windows 執行期間原則 Url</value>
+  </data>
+  <data name="WindowsRunTimeProvisioningUserErrorMessage" xml:space="preserve">
+    <value>註冊預備使用者的 Drop Ship 連線佈建註冊失敗。</value>
+  </data>
+  <data name="WindowsRuntimeSecret_Description" xml:space="preserve">
+    <value>Windows 執行期間密碼</value>
+  </data>
+  <data name="WindowsRuntimeSecretHelpText" xml:space="preserve">
+    <value>如果密碼包含特殊字元 (「&amp;」、「&gt;」、或「&lt;」)，則使用此帳戶進行註冊的原廠佈建工作流程就會失敗。若要變更密碼，請至 [使用者] 頁面。</value>
+  </data>
+  <data name="WindowsRuntimeUpn_Description" xml:space="preserve">
+    <value>Windows 執行期間 UPN</value>
+  </data>
+  <data name="WindowsStagingAndProvisioning" xml:space="preserve">
+    <value>Windows 註冊預備及佈建</value>
+  </data>
+  <data name="WindowsWindowsAutoDiscoveryDescription" xml:space="preserve">
+    <value>讓員工不需輸入管理伺服器位址及企業群組資訊，僅使用電子郵件地址進行註冊。</value>
+  </data>
+  <data name="WinpcStepsInfo" xml:space="preserve">
+    <value>Windows PC 和 QNX 裝置在此不需要進一步的步驟。</value>
+  </data>
+  <data name="WinRTCustomOnboardingExperienceEnabledTooltip" xml:space="preserve">
+    <value>如果啟用此設定，則在註冊 Windows 裝置上安裝 Intelligent Hub 之後，會立即向使用者顯示入門培訓體驗使用者介面。入門培訓體驗提供目前正在安裝的應用程式和資源相關狀態資訊，並在程序完成時通知使用者。</value>
+  </data>
+  <data name="WipeSdkApplicationCluster" xml:space="preserve">
+    <value>抹除所有 SDK 應用程式</value>
+  </data>
+  <data name="WipeSdkApplicationDataAction" xml:space="preserve">
+    <value>動作: 抹除 SDK 應用程式資料</value>
+  </data>
+  <data name="WorkspaceOneAccessDescription" xml:space="preserve">
+    <value>由於採用雲端託管的身分識別代理來進行多重要素驗證和條件式存取會繼續增長，因此 VMware Identity Manager 已重新命名為 Workspace ONE Access，以使用者的身分識別進一步反映此演變。</value>
+  </data>
+  <data name="WorkspaceOneAccessIntroduction" xml:space="preserve">
+    <value>數位工作區的智慧存取日新月異</value>
+  </data>
+  <data name="WorkspaceOneAccessTitle" xml:space="preserve">
+    <value>VMware Identity Manager 現在是 Workspace ONE Access</value>
+  </data>
+  <data name="WorkspaceOneAssist" xml:space="preserve">
+    <value>Workspace ONE Assist</value>
+  </data>
+  <data name="WorkspaceOneIntelligenceHubIntroduction" xml:space="preserve">
+    <value>Workspace ONE Intelligent Hub 應用程式簡介</value>
+  </data>
+  <data name="WorkspaceOneIntelligentHubConfigure" xml:space="preserve">
+    <value>Workspace ONE Intelligent Hub</value>
+  </data>
+  <data name="WorkspaceOneIntelligentHubConfigureDescription" xml:space="preserve">
+    <value>自訂 Workspace ONE 以配合您企業的品牌。併入企業標誌、新增核准的字型、企業顏色等。</value>
+  </data>
+  <data name="WorkspaceOneIntelligentHubDescription1" xml:space="preserve">
+    <value>AirWatch Agent 生產力應用程式已更名為 Intelligent Hub 應用程式。這個新的應用程式提供您足夠的靈活彈性，在幾乎任何 iOS 與 Android 裝置上都能為員工提供整合入門培訓體驗。</value>
+  </data>
+  <data name="WorkspaceOneIntelligentHubDescription2" xml:space="preserve">
+    <value>與過去相比，Hub 服務可藉由實用的新功能，更容易提供真正的數位工作區體驗，其中包括：</value>
+  </data>
+  <data name="WorkspaceOneTunnel" xml:space="preserve">
+    <value>Workspace ONE Tunnel</value>
+  </data>
+  <data name="WORKSPACEONEUEM" xml:space="preserve">
+    <value>WORKSPACE ONE UEM</value>
+  </data>
+  <data name="WorkspaceOneUemConsole" xml:space="preserve">
+    <value>Workspace ONE UEM Console</value>
+  </data>
+  <data name="WorkspaceOneUemResourcePortal" xml:space="preserve">
+    <value>Workspace ONE UEM 資源入口網站</value>
+  </data>
+  <data name="WorkspaceOneUemResourcePortal_Description" xml:space="preserve">
+    <value>Workspace ONE UEM 資源入口網站</value>
+  </data>
+  <data name="WorkspaceOneWeb" xml:space="preserve">
+    <value>Workspace ONE Web</value>
+  </data>
+  <data name="WrappingBrowserSdkConfig" xml:space="preserve">
+    <value>包裝/瀏覽器/SDK</value>
+  </data>
+  <data name="YatsCientDeletedSuccessfully" xml:space="preserve">
+    <value>成功! 已成功刪除用戶端。</value>
+  </data>
+  <data name="YatsCientRegisteredSuccessfully" xml:space="preserve">
+    <value>成功! 已成功註冊下列用戶端。</value>
+  </data>
+  <data name="YatsCientUpdatedSuccessfully" xml:space="preserve">
+    <value>成功! 已成功更新用戶端。</value>
+  </data>
+  <data name="YatsClientClientNameMustBeUnique" xml:space="preserve">
+    <value>用戶端名稱必須是唯一。</value>
+  </data>
+  <data name="YatsClientDeleteConfirmationMsg" xml:space="preserve">
+    <value>刪除 {0} 將會造成此用戶端無法對 Workspace ONE UEM 進行 REST API 呼叫，同時需要產生新的用戶端 ID 和密碼，並將其散佈至用戶端應用程式。您確定要繼續嗎?</value>
+    <comment>{0} will be replaced by Client Name. e.g. Yats-client</comment>
+  </data>
+  <data name="YatsClientDescPlaceHolderText" xml:space="preserve">
+    <value>輸入用戶端說明</value>
+  </data>
+  <data name="YatsClientDuplicateNameErrorMessage" xml:space="preserve">
+    <value>此用戶端名稱已經存在。請嘗試不同的用戶端名稱。</value>
+  </data>
+  <data name="YatsClientError" xml:space="preserve">
+    <value>要求中包含的安全性 Token 無效。</value>
+  </data>
+  <data name="YatsClientInfoDesc1" xml:space="preserve">
+    <value>此用戶端 ID 和密碼將用於驗證 Workspace ONE UEM API 呼叫。</value>
+  </data>
+  <data name="YatsClientInfoDesc2" xml:space="preserve">
+    <value>在此畫面上顯示的密碼存取金鑰不會儲存在 Workspace ONE UEM Console 中。請將其複製並儲存在安全的位置，以驗證您的 API 用戶端。</value>
+  </data>
+  <data name="YatsClientInfoDesc3" xml:space="preserve">
+    <value>如需 OAuth 用戶端管理的更多詳細資料，請參閱此 {0}。</value>
+    <comment>{0} will be replaced by another key with text 'Quick Start guide'.</comment>
+  </data>
+  <data name="YatsClientInfoHeader" xml:space="preserve">
+    <value>以下是 {0} 的用戶端 ID 和密碼。</value>
+    <comment>{0} will be replaced by Client Name. e.g. Yats-client</comment>
+  </data>
+  <data name="YatsClientNamePlaceHolderText" xml:space="preserve">
+    <value>輸入用戶端名稱</value>
+  </data>
+  <data name="YatsClientNoOgFound" xml:space="preserve">
+    <value>找不到指定企業群組 UUID 的企業群組。</value>
+  </data>
+  <data name="YatsClientOAutclientNotFound" xml:space="preserve">
+    <value>找不到 OAuth 用戶端</value>
+  </data>
+  <data name="YatsClientRoleHelpText" xml:space="preserve">
+    <value>選取具有適當權限的角色，以進行所需的 API 呼叫。</value>
+  </data>
+  <data name="YatsClientStatusHelpText" xml:space="preserve">
+    <value>此用戶端將無法接收、重新整理或建立新的 Token，或在停用時對 Workspace ONE UEM 進行 REST API 呼叫。</value>
+  </data>
+  <data name="YatsClientUnAuthorizedUser" xml:space="preserve">
+    <value>使用者沒有執行此作業的權限。</value>
+  </data>
+  <data name="YatsClientValidationFailed" xml:space="preserve">
+    <value>驗證失敗。標頭中顯示的認證驗證失敗。</value>
+  </data>
+  <data name="YatsOGPlaceHolderText" xml:space="preserve">
+    <value>開始輸入以選取企業群組</value>
+  </data>
+  <data name="YatsRolePlaceHolderText" xml:space="preserve">
+    <value>開始輸入以選取角色</value>
+  </data>
+  <data name="YourSettingsExperienceJustGotBetter" xml:space="preserve">
+    <value>您的設定體驗變得更加完善</value>
+  </data>
+  <data name="ZshExecutablePath" xml:space="preserve">
+    <value>Zsh 路徑</value>
+  </data>
+  <data name="ZshExecutablePathTooltip" xml:space="preserve">
+    <value>覆寫執行 Zsh 指令碼的路徑。二進位檔案必須有程式碼簽署且含 755 權限，否則 Intelligent Hub 將會遞補至 /bin/zsh 的預設路徑。允許使用符號連結路徑，且不需要逸出空格。</value>
+  </data>
+</root>

@@ -1,0 +1,286 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AddEditScripts" xml:space="preserve">
+    <value>Scripts toevoegen/bewerken</value>
+  </data>
+  <data name="AddEditScriptsHelp" xml:space="preserve">
+    <value>Regelt de bevoegdheid tot het toevoegen of bewerken van toestelscripts</value>
+  </data>
+  <data name="AppCatalogCustomization" xml:space="preserve">
+    <value>Aanpassing van app-catalogus</value>
+  </data>
+  <data name="CatalogCustomizationNotDefined" xml:space="preserve">
+    <value>Er zijn geen aanpassingsgegevens voor de app-catalogus aanwezig voor het script, kan Weergeven in Hub niet inschakelen</value>
+  </data>
+  <data name="CatalogIconLimit" xml:space="preserve">
+    <value>Pictogram overschrijdt de maximale grootte van 1MB.</value>
+  </data>
+  <data name="ConfigureComplexSequences" xml:space="preserve">
+    <value>Complexe reeksen configureren</value>
+  </data>
+  <data name="ConfigureComplexSequencesInfo" xml:space="preserve">
+    <value>Gebruik scripts als resource in freestyle om complexe toestelreeksen te configureren die apps en profielen bevatten.</value>
+  </data>
+  <data name="DeleteAssignmentsWarning" xml:space="preserve">
+    <value>Weet u zeker dat u deze toewijzing wilt verwijderen?
+Als u dit doet, wordt het script van alle toegewezen toestellen verwijderd.</value>
+  </data>
+  <data name="DeleteScripts" xml:space="preserve">
+    <value>Scripts verwijderen</value>
+  </data>
+  <data name="DeleteScriptsHelp" xml:space="preserve">
+    <value>Regelt de bevoegdheid tot het verwijderen van toestelscripts</value>
+  </data>
+  <data name="DuplicateServerCertificate" xml:space="preserve">
+    <value>Het geüploade certificaat bestaat al in de bestaande set servercertificaten.</value>
+  </data>
+  <data name="EditScript" xml:space="preserve">
+    <value>Script bewerken</value>
+  </data>
+  <data name="EnableSelfService" xml:space="preserve">
+    <value>Selfservice inschakelen</value>
+  </data>
+  <data name="EnableSelfServiceInfo" xml:space="preserve">
+    <value>Voeg scripts toe aan de Intelligent Hub Catalog voor toestel-selfservice.</value>
+  </data>
+  <data name="ExecutionContextWindows" xml:space="preserve">
+    <value>Uitvoeringscontext en privileges</value>
+  </data>
+  <data name="ExecutionTime" xml:space="preserve">
+    <value>Tijdstip uitvoering</value>
+  </data>
+  <data name="HoursLabel" xml:space="preserve">
+    <value>Uren</value>
+  </data>
+  <data name="LastExecutionTime" xml:space="preserve">
+    <value>Tijdstip laatste uitvoering</value>
+  </data>
+  <data name="NetworkChange" xml:space="preserve">
+    <value>Netwerkwijziging</value>
+  </data>
+  <data name="PostActionButtonText" xml:space="preserve">
+    <value>Knoptekst vóór actie</value>
+  </data>
+  <data name="PreActionButtonText" xml:space="preserve">
+    <value>Knoptekst ná actie</value>
+  </data>
+  <data name="Repair" xml:space="preserve">
+    <value>Herstellen</value>
+  </data>
+  <data name="RunImmediately" xml:space="preserve">
+    <value>Onmiddellijk eenmalig uitvoeren</value>
+  </data>
+  <data name="RunImmediatelyInfoText" xml:space="preserve">
+    <value>Deze trigger voert het script na publicatie automatisch uit op alle toegewezen toestellen. Het wordt ook onmiddellijk uitgevoerd nadat een nieuw toestel is ingeschreven.</value>
+  </data>
+  <data name="RunOnEnrollment" xml:space="preserve">
+    <value>Uitvoeren bij inschrijving</value>
+  </data>
+  <data name="RunOnPublish" xml:space="preserve">
+    <value>Uitvoeren bij publiceren/nu uitvoeren</value>
+  </data>
+  <data name="RunPeriodically" xml:space="preserve">
+    <value>Periodiek uitvoeren</value>
+  </data>
+  <data name="ScriptCategory" xml:space="preserve">
+    <value>Categorie (optioneel)</value>
+  </data>
+  <data name="ScriptDeleteWarning" xml:space="preserve">
+    <value>Weet u zeker dat u dit script wilt verwijderen?</value>
+  </data>
+  <data name="ScriptDeploymentHeader" xml:space="preserve">
+    <value>Selecteer een implementatiemethode om te definiëren wanneer het script wordt uitgevoerd</value>
+  </data>
+  <data name="ScriptDescription" xml:space="preserve">
+    <value>Omschrijving (optioneel)</value>
+  </data>
+  <data name="ScriptDetailsLoadFailed" xml:space="preserve">
+    <value>Kan scriptgegevens niet laden.</value>
+  </data>
+  <data name="ScriptDisplayDescription" xml:space="preserve">
+    <value>Beschrijving weergeven (optioneel)</value>
+  </data>
+  <data name="ScriptLanguage" xml:space="preserve">
+    <value>Scripttaal</value>
+  </data>
+  <data name="ScriptLinkedToWorkflowError" xml:space="preserve">
+    <value>Het script maakt deel uit van een of meer werkstromen. Verwijder het script uit alle werkstromen om het script te wissen.</value>
+  </data>
+  <data name="Scripts" xml:space="preserve">
+    <value>Scripts</value>
+  </data>
+  <data name="ScriptsConfigureDevices" xml:space="preserve">
+    <value>Toestellen configureren</value>
+  </data>
+  <data name="ScriptsConfigureDevicesInfo" xml:space="preserve">
+    <value>Gebruik algemene scripttalen en veilige omgevingsvariabelen om desktopapparaten te configureren.</value>
+  </data>
+  <data name="ScriptSearchFailed" xml:space="preserve">
+    <value>Zoekopdracht script mislukt </value>
+  </data>
+  <data name="ScriptsHeader" xml:space="preserve">
+    <value>Geautomatiseerde eindpuntconfiguratie</value>
+  </data>
+  <data name="ScriptsHelp" xml:space="preserve">
+    <value>Regelt de bevoegdheid tot het bekijken en beheren van toestelscripts</value>
+  </data>
+  <data name="ScriptsInfo" xml:space="preserve">
+    <value>Automatiseer aangepaste configuratietaken op eindpunten met behulp van algemene scripttalen. Lees meer over scripts in</value>
+  </data>
+  <data name="ScriptsPurpose" xml:space="preserve">
+    <value>Wat kan ik doen met scripts?</value>
+  </data>
+  <data name="ScriptsTimeOutInSeconds" xml:space="preserve">
+    <value>Time-out in seconden</value>
+  </data>
+  <data name="ScriptWorkflow" xml:space="preserve">
+    <value>Scriptwerkstroom</value>
+  </data>
+  <data name="SearchExistingScript" xml:space="preserve">
+    <value>Zoeken naar een bestaand script</value>
+  </data>
+  <data name="ShowInHubCatalog" xml:space="preserve">
+    <value>Weergeven in Hub-catalogus</value>
+  </data>
+  <data name="ShowInHubOptional" xml:space="preserve">
+    <value>Weergeven in Hub (optioneel)</value>
+  </data>
+  <data name="UnableRetrieveScriptError" xml:space="preserve">
+    <value>Kan script niet ophalen. Het script bestaat niet meer of is verwijderd.</value>
+  </data>
+  <data name="ViewScripts" xml:space="preserve">
+    <value>Scripts weergeven</value>
+  </data>
+  <data name="ViewScriptsHelp" xml:space="preserve">
+    <value>Regelt de bevoegdheid tot het weergeven van toestelscriptgegevens en -configuratie</value>
+  </data>
+  <data name="WindowsAdminExecutionContext" xml:space="preserve">
+    <value>Gebruikerscontext met adminbevoegdheden</value>
+  </data>
+  <data name="WindowsExecutionContextInfo" xml:space="preserve">
+    <value>Wanneer een script wordt uitgevoerd in de systeemcontext, wordt dit altijd uitgevoerd met adminrechten en wordt gebruikersinteractie onderdrukt. Scripts die gebruikersinteractie nodig hebben, moeten worden uitgevoerd in de gebruikerscontext met de juiste bevoegdheden indien nodig door het script. Adminbevoegdheden worden toegepast op zowel standaard- als beheerdersgebruikers op het apparaat.</value>
+  </data>
+  <data name="WindowsSystemExecutionContext" xml:space="preserve">
+    <value>System Context</value>
+  </data>
+  <data name="WindowsUserExecutionContext" xml:space="preserve">
+    <value>Gebruikerscontext zonder adminbevoegdheden</value>
+  </data>
+</root>

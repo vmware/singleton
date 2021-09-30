@@ -1,0 +1,643 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AboutMobileFlows" xml:space="preserve">
+    <value>À propos Mobile Flows</value>
+  </data>
+  <data name="AddArgMobileFlow" xml:space="preserve">
+    <value>Ajouter un flux {0} </value>
+    <comment>String will be passed in for {0}. Examples: 'Add Salesforce Flow', 'Add ServiceNow Flow' etc.</comment>
+  </data>
+  <data name="AddKeyValuePairs" xml:space="preserve">
+    <value>Ajouter toutes les paires clé-valeur applicables</value>
+  </data>
+  <data name="AddNewMobileFlow" xml:space="preserve">
+    <value>Ajouter un nouveau Mobile Flow</value>
+  </data>
+  <data name="AdobeSignDescription" xml:space="preserve">
+    <value>Connecteur Adobe pour la signature de documents</value>
+  </data>
+  <data name="AdobeSignTitle" xml:space="preserve">
+    <value>Adobe Sign</value>
+  </data>
+  <data name="Algorithm" xml:space="preserve">
+    <value>Algorithme</value>
+  </data>
+  <data name="Approvals" xml:space="preserve">
+    <value>Approbations</value>
+  </data>
+  <data name="AreYouSureToCancel" xml:space="preserve">
+    <value>Êtes-vous certain de vouloir annuler ?</value>
+  </data>
+  <data name="ArgCatalogConnector" xml:space="preserve">
+    <value>{0} connecteur de catalogue</value>
+  </data>
+  <data name="ArgCatalogConnectors" xml:space="preserve">
+    <value>{0} connecteurs de catalogue</value>
+  </data>
+  <data name="ArgMobileFlow" xml:space="preserve">
+    <value>{0} Mobile Flow</value>
+    <comment>Numeric one will be passed in for {0}</comment>
+  </data>
+  <data name="ArgMobileFlows" xml:space="preserve">
+    <value>{0} Mobile Flows</value>
+    <comment>Numeric value will be passed for {0}</comment>
+  </data>
+  <data name="AuthenticationHeader" xml:space="preserve">
+    <value>En-tête d'authentification</value>
+  </data>
+  <data name="BaseURL" xml:space="preserve">
+    <value>URL de base</value>
+  </data>
+  <data name="BasicInformation" xml:space="preserve">
+    <value>Informations de base</value>
+  </data>
+  <data name="BoxNotesDescription" xml:space="preserve">
+    <value>Connecteur Box Notes pour les notifications @-mentions</value>
+  </data>
+  <data name="BoxNotesTitle" xml:space="preserve">
+    <value>Box Notes</value>
+  </data>
+  <data name="ClientCredentials" xml:space="preserve">
+    <value>Informations d'identification du client</value>
+  </data>
+  <data name="ConcurDescription" xml:space="preserve">
+    <value>Connecteur Concur pour l'approbation de la demande de dépense</value>
+  </data>
+  <data name="ConcurTitle" xml:space="preserve">
+    <value>Concur</value>
+  </data>
+  <data name="ConcurTravelDescription" xml:space="preserve">
+    <value>Connecteur Concur pour l'approbation de la demande de voyage</value>
+  </data>
+  <data name="ConcurTravelTitle" xml:space="preserve">
+    <value>Concur Travel</value>
+  </data>
+  <data name="ConfirmConnectorDelete" xml:space="preserve">
+    <value>Voulez-vous vraiment supprimer ce connecteur ?</value>
+  </data>
+  <data name="ConnectionStatus" xml:space="preserve">
+    <value>État de la connexion</value>
+  </data>
+  <data name="ConnectorAuthConfigError" xml:space="preserve">
+    <value>Le type d'authentification est incorrect ou le connecteur est défectueux. Contactez votre administrateur informatique pour rechercher l'origine du problème.</value>
+  </data>
+  <data name="ConnectorAuthenticationTypeHelp" xml:space="preserve">
+    <value>Choisissez dans la liste déroulante le type d'authentification que le service back-end s'attend à ce que le client utilise.</value>
+  </data>
+  <data name="ConnectorBaseUrlConfigError" xml:space="preserve">
+    <value>Le connecteur est défectueux. Contactez votre administrateur informatique pour rechercher l'origine du problème.</value>
+  </data>
+  <data name="ConnectorBaseURLHelp" xml:space="preserve">
+    <value>URL du service back-end du connecteur Mobile Flows. Cette information n'est requise que pour les connecteurs VMware. Si vous exploitez le connecteur VMware Salesforce, indiquez ici l'URL Salesforce de votre organisation.</value>
+  </data>
+  <data name="ConnectorDeleteWarning" xml:space="preserve">
+    <value>Cette action supprime le connecteur de manière permanente</value>
+  </data>
+  <data name="ConnectorDiscoveryApiError" xml:space="preserve">
+    <value>Impossible de valider l'URL de détection</value>
+  </data>
+  <data name="ConnectorDiscoveryError" xml:space="preserve">
+    <value>Ce connecteur est introuvable. Contactez votre administrateur informatique pour rechercher l'origine du problème.</value>
+  </data>
+  <data name="ConnectorDiscoveryInvalidResponse" xml:space="preserve">
+    <value>La réponse de la détection du connecteur n'est pas valide</value>
+  </data>
+  <data name="ConnectorDiscoveryURLHelp" xml:space="preserve">
+    <value>Il s'agit de l'URL utilisée par le serveur Mobile Flows pour déterminer les fonctionnalités d'un connecteur déployé. Si vous hébergez votre connecteur dans le Cloud, l'URL accessible publiquement est utilisée. Si votre connecteur est hébergé derrière une API ou une passerelle Edge Gateway, l'URL complète de la passerelle est utilisée pour rediriger vers le connecteur proprement dit après authentification. La réponse de cette URL doit se conformer au format attendu tel qu'il est défini dans le guide des connecteurs de carte.</value>
+  </data>
+  <data name="ConnectorIDHelp" xml:space="preserve">
+    <value>Utilisez un ID pour identifier de manière unique les connecteurs de votre organisation</value>
+  </data>
+  <data name="ConnectorIsNotFound" xml:space="preserve">
+    <value>Connecteur introuvable</value>
+  </data>
+  <data name="ConnectorKeyValueHelp" xml:space="preserve">
+    <value>Ces champs doivent être renseignés pour que l'utilisateur puisse s'authentifier sur le système back-end du connecteur. Les champs OAuth 2.0 sont inclus ici si nécessaire. Consultez le guide des connecteurs de carte pour plus d'informations.</value>
+  </data>
+  <data name="ConnectorLoginURLHelp" xml:space="preserve">
+    <value>URL utilisée par le client pour s'authentifier sur le service back-end et fournir un jeton d'accès. Par exemple, https://login.salesforce.com</value>
+  </data>
+  <data name="ConnectorName" xml:space="preserve">
+    <value>Nom de connecteur</value>
+  </data>
+  <data name="ConnectorNameHelp" xml:space="preserve">
+    <value>Saisissez un nom identifiant votre connecteur. Il est utilisé par les utilisateurs pour activer des services sur le client et par les administrateurs de Mobile Flows pour différencier les connecteurs.</value>
+  </data>
+  <data name="ConnectorProviderHelp" xml:space="preserve">
+    <value>Choisissez si vous souhaitez déployer dans votre organisation un connecteur fourni par VMware ou un autre hébergé en interne.</value>
+  </data>
+  <data name="ConnectorServiceHelp" xml:space="preserve">
+    <value>Sélectionnez dans le menu déroulant le connecteur VMware que vous souhaitez déployer</value>
+  </data>
+  <data name="ConnectorStatusHelp" xml:space="preserve">
+    <value>Désactivez le connecteur si vous voulez empêcher tous les utilisateurs d'accéder aux informations de Mobile Flow sur leurs terminaux pour ce connecteur.</value>
+  </data>
+  <data name="ConnectorType" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="CoupaDescription" xml:space="preserve">
+    <value>Connecteur Coupa pour l'approbation de la demande de réquisition</value>
+  </data>
+  <data name="CoupaTitle" xml:space="preserve">
+    <value>Coupa</value>
+  </data>
+  <data name="DeveloperGuide" xml:space="preserve">
+    <value>guide du développeur</value>
+  </data>
+  <data name="DiscoveryURL" xml:space="preserve">
+    <value>URL de détection</value>
+  </data>
+  <data name="DiscoveryURLChanged" xml:space="preserve">
+    <value>URL de détection modifiée</value>
+  </data>
+  <data name="EditMobileFlow" xml:space="preserve">
+    <value>Modifier le Mobile Flow</value>
+  </data>
+  <data name="FieldCannotContainWhiteSpaces" xml:space="preserve">
+    <value>Le champ ne peut pas contenir d'espaces blancs</value>
+  </data>
+  <data name="FieldIsRequired" xml:space="preserve">
+    <value>Ce champ est obligatoire</value>
+  </data>
+  <data name="FieldMaxLength" xml:space="preserve">
+    <value>Le champ ne peut pas contenir plus de {0} caractères</value>
+  </data>
+  <data name="FieldMinLength" xml:space="preserve">
+    <value>Le champ ne peut pas contenir moins de {0} caractères</value>
+  </data>
+  <data name="FieldShouldBeValidHttpsURL" xml:space="preserve">
+    <value>Le champ doit contenir une URL https valide.</value>
+  </data>
+  <data name="FieldShouldBeValidURL" xml:space="preserve">
+    <value>Le champ doit être une URL valide</value>
+  </data>
+  <data name="GitHubPage" xml:space="preserve">
+    <value>Page GitHub</value>
+  </data>
+  <data name="GoogleDocsDescription" xml:space="preserve">
+    <value>Connecteur Google Docs pour les notifications @-mentions</value>
+  </data>
+  <data name="GoogleDocsTitle" xml:space="preserve">
+    <value>Google Docs</value>
+  </data>
+  <data name="GrantType" xml:space="preserve">
+    <value>Type d'autorisation</value>
+  </data>
+  <data name="GrantTypeHelp" xml:space="preserve">
+    <value>Choisissez dans la liste déroulante la méthode d'obtention du jeton d'accès. Le code d'autorisation est utilisé par les clients confidentiels et publics pour échanger un code d'autorisation et obtenir un jeton d'accès. Cette méthode est aussi appelée application Web ou serveur Web dans la configuration OAuth 2.0. Les informations d'identification client sont utilisées par les clients pour obtenir un jeton d'accès sans être un utilisateur. Cette méthode est pratique si votre fournisseur OAuth 2.0 offre un type d'autorisation par informations d'identification client avec des privilèges de compte de service. Le mot de passe est utilisé par les clients internes pour échanger les informations d'identification d'un utilisateur contre un jeton d'accès. Cette méthode est pratique si votre fournisseur OAuth 2.0 offre un type d'autorisation par mot de passe et que vous bénéficiez d'un compte de service que vous souhaitez utiliser.</value>
+  </data>
+  <data name="HideAdvancedOAuth2Options" xml:space="preserve">
+    <value>Masquer les options avancées</value>
+  </data>
+  <data name="HowMobileFlowsWork" xml:space="preserve">
+    <value>Fonctionnement</value>
+  </data>
+  <data name="HowMobileFlowsWorkDescription" xml:space="preserve">
+    <value>Mobile Flows permet à vos employés d'activer ou de désactiver les notifications actionnables via leurs applications mobiles en déployant des connecteurs pour chaque système d'activité que vous voulez connecter. Lorsque chaque nom de connecteur est mappé à une URL publique, les employés peuvent accéder facilement aux notifications sur leurs applications d'entreprise.</value>
+  </data>
+  <data name="HubSpotDealsDescription" xml:space="preserve">
+    <value>Connecteur HubSpot pour les nouvelles attributions d'offres</value>
+  </data>
+  <data name="HubSpotDealsTitle" xml:space="preserve">
+    <value>HubSpot - Offres</value>
+  </data>
+  <data name="HubSpotTicketsDescription" xml:space="preserve">
+    <value>Connecteur HubSpot pour les nouvelles attributions de tickets</value>
+  </data>
+  <data name="HubSpotTicketsTitle" xml:space="preserve">
+    <value>HubSpot - Tickets</value>
+  </data>
+  <data name="JiraServiceDeskDescription" xml:space="preserve">
+    <value>Connecteur Jira Service Desk pour l'approbation de ticket</value>
+  </data>
+  <data name="JiraServiceDeskTitle" xml:space="preserve">
+    <value>Jira Service Desk</value>
+  </data>
+  <data name="KeyValuePair" xml:space="preserve">
+    <value>Ajouter une paire clé-valeur</value>
+  </data>
+  <data name="LinkedInLearningChatbotDescription" xml:space="preserve">
+    <value>Connecteur LinkedIn Learning pour la recherche de formations via Hub Assistant</value>
+  </data>
+  <data name="LinkedInLearningChatbotTitle" xml:space="preserve">
+    <value>Agent conversationnel LinkedIn Learning</value>
+  </data>
+  <data name="LinkedInLearningDescription" xml:space="preserve">
+    <value>Connecteur LinkedIn Learning pour les nouvelles notifications de formation</value>
+  </data>
+  <data name="LinkedInLearningTitle" xml:space="preserve">
+    <value>LinkedIn Learning</value>
+  </data>
+  <data name="MicrosoftDynamicsCaseResolutionDescription" xml:space="preserve">
+    <value>Connecteur Microsoft Dynamics pour les nouvelles attributions d'incidents</value>
+  </data>
+  <data name="MicrosoftDynamicsCaseResolutionTitle" xml:space="preserve">
+    <value>Microsoft Dynamics - Résolution d'incidents</value>
+  </data>
+  <data name="MicrosoftDynamicsDescription" xml:space="preserve">
+    <value>Connecteur Microsoft Dynamics pour les nouvelles notifications de compte attribuées</value>
+  </data>
+  <data name="MicrosoftDynamicsTasksDescription" xml:space="preserve">
+    <value>Connecteur Microsoft Dynamics pour les attributions de nouvelles tâches</value>
+  </data>
+  <data name="MicrosoftDynamicsTasksTitle" xml:space="preserve">
+    <value>Microsoft Dynamics - Tâches</value>
+  </data>
+  <data name="MicrosoftDynamicsTitle" xml:space="preserve">
+    <value>Microsoft Dynamics</value>
+  </data>
+  <data name="MicrosoftOneDriveDescription" xml:space="preserve">
+    <value>Connecteur Microsoft OneDrive pour l'autorisation d'accès aux fichiers/dossiers</value>
+  </data>
+  <data name="MicrosoftOneDriveTitle" xml:space="preserve">
+    <value>Microsoft OneDrive</value>
+  </data>
+  <data name="MicrosoftPlannerDescription" xml:space="preserve">
+    <value>Connecteur Microsoft Planner pour les notifications de nouvelles tâches attribuées</value>
+  </data>
+  <data name="MicrosoftPlannerTitle" xml:space="preserve">
+    <value>Microsoft Planner</value>
+  </data>
+  <data name="MicrosoftTeamsDescription" xml:space="preserve">
+    <value>Connecteur Microsoft Teams pour les notifications @-mentions</value>
+  </data>
+  <data name="MicrosoftTeamsTitle" xml:space="preserve">
+    <value>Microsoft Teams</value>
+  </data>
+  <data name="MobileFlow" xml:space="preserve">
+    <value>Mobile Flow</value>
+  </data>
+  <data name="MobileFlowAPIURL" xml:space="preserve">
+    <value>URL de l'API Mobile Flows</value>
+  </data>
+  <data name="MobileFlowBestPracticesDescription" xml:space="preserve">
+    <value>Les meilleures pratiques de Mobile Flows sont disponibles dans le Wiki sur le site GitHub de VMware : https://github.com/vmwaresamples/card-connectors-guide/wiki.</value>
+  </data>
+  <data name="MobileFlowDescription" xml:space="preserve">
+    <value>Afficher et gérer tous les connecteurs</value>
+  </data>
+  <data name="MobileFlows" xml:space="preserve">
+    <value>Mobile Flows</value>
+  </data>
+  <data name="MobileFlowsAddConnectors" xml:space="preserve">
+    <value>Ajouter des connecteurs</value>
+  </data>
+  <data name="MobileFlowsAdminNoAccessToOG" xml:space="preserve">
+    <value>Les Mobile Flows sont accessibles aux administrateurs gérés au niveau de ce groupe organisationnel. Demandez à votre administrateur système d'attribuer le rôle requis et d'enregistrer cet administrateur dans ce groupe d'organisation. Ensuite, reconnectez-vous et utilisez ce rôle pour accéder aux Mobile Flows de ce groupe organisationnel.</value>
+  </data>
+  <data name="MobileFlowsAPIURL" xml:space="preserve">
+    <value>URL de l'API Mobile Flows</value>
+  </data>
+  <data name="MobileFlowsApiUrlNotFound" xml:space="preserve">
+    <value>Le service Cloud Mobile Flows n'est pas disponible.</value>
+  </data>
+  <data name="MobileFlowsApiUrlNotProvisioned" xml:space="preserve">
+    <value>Veuillez vous assurer que l'URL de l'API Mobile Flows est configurée au niveau du groupe organisationnel actif, ce que vous pouvez vérifier dans la section URL du site. Si le problème persiste, veuillez contacter votre administrateur système.</value>
+  </data>
+  <data name="MobileFlowsBestPractices" xml:space="preserve">
+    <value>Meilleures pratiques de Mobile Flows</value>
+  </data>
+  <data name="MobileFlowsCatalogDescription" xml:space="preserve">
+    <value>Commencez à utiliser Workspace ONE Mobile Flows immédiatement en choisissant parmi les connecteurs prêts à l'emploi (OOTB) et les workflows ci-dessous. Ajoutez, configurez et fournissez quelques détails supplémentaires et vous aurez terminé !</value>
+  </data>
+  <data name="MobileFlowsCloudServiceDescription" xml:space="preserve">
+    <value>Mobile Flows est un service Cloud qui s'intègre à VMware Intelligent Hub et Boxer pour fournir aux employés les notifications actionnables nécessaires à une meilleure productivité.</value>
+  </data>
+  <data name="MobileFlowsConnectingToCloudService" xml:space="preserve">
+    <value>Connexion au service Cloud Mobile Flows</value>
+  </data>
+  <data name="MobileFlowsConnectorGuideWikiArg" xml:space="preserve">
+    <value>Consultez ce {0} pour apprendre à créer des connecteurs</value>
+    <comment>Html string will be passed in for {0}. Example: &lt;label for='open-connectors-guide-wiki' class='wiki-link'&gt;developer guide&lt;/label&gt;`.</comment>
+  </data>
+  <data name="MobileFlowsDescription" xml:space="preserve">
+    <value>Afficher et gérer Mobile Flows</value>
+  </data>
+  <data name="MobileFlowsDirectoryBasicAdminError" xml:space="preserve">
+    <value>Vous n'avez pas accès à Workspace ONE Access. Vous devez être administrateur d'annuaire dans l'annuaire configurée au niveau de ce groupe organisationnel pour y accéder.</value>
+  </data>
+  <data name="MobileFlowsIDMNotConfigured" xml:space="preserve">
+    <value>Impossible d'accéder à Workspace ONE Access. Vérifiez vos privilèges d'accès et assurez-vous qu'ils sont configurés correctement</value>
+  </data>
+  <data name="MobileFlowsIDMSetupArg" xml:space="preserve">
+    <value>Workspace ONE Access doit être configuré avant d'accéder aux Mobile Flows. Accédez à {0} et connectez-vous à Workspace ONE Access. Une fois terminé, déconnectez-vous, puis reconnectez-vous pour réessayer.</value>
+  </data>
+  <data name="MobileFlowsIDMSetupRequired" xml:space="preserve">
+    <value>Workspace ONE doit être configuré pour pouvoir accéder à Mobile Flows. Consultez les instructions de démarrage, puis configurez Workspace ONE. Une fois la configuration terminée, déconnectez-vous puis reconnectez-vous.</value>
+  </data>
+  <data name="MobileFlowsNoAccessToIDM" xml:space="preserve">
+    <value>Vous n'avez pas accès à Workspace ONE Access. Vous devez être administrateur de répertoire pour y accéder</value>
+  </data>
+  <data name="MobileFlowsNoAccessToOrganizationGroup" xml:space="preserve">
+    <value>Cet utilisateur n'appartient pas à ce groupe organisationnel.</value>
+  </data>
+  <data name="MobileFlowsNotCustomerTypeOrganizationGroup" xml:space="preserve">
+    <value>Le locataire de Cloud ne peut être inscrit qu'au niveau du groupe organisationnel de type Client.</value>
+  </data>
+  <data name="MobileFlowsProductivityDescription" xml:space="preserve">
+    <value>En surfaçant les workflows personnalisés des employés et en agrégeant les données provenant de systèmes d'activité disparates, Mobile Flows permet aux employés de rester plus facilement connectés à toutes leurs applications de productivité à partir d'une seule application.</value>
+  </data>
+  <data name="MobileFlowsRegisteringTenant" xml:space="preserve">
+    <value>Envoi et inscription des données client dans l'URL</value>
+  </data>
+  <data name="MobileFlowsSampleConnectorWikiArg" xml:space="preserve">
+    <value>Accédez à cet(te) {0} pour rechercher des connecteurs prédéfinis</value>
+    <comment>Html string will be passed in for {0}. Example: &lt;label for='open-sample-connectors-wiki' class='wiki-link'&gt;GitHub page&lt;/label&gt;`.</comment>
+  </data>
+  <data name="MobileFlowsTenantAlreadyExists" xml:space="preserve">
+    <value>Ce locataire de Cloud existe déjà dans le service Cloud Mobile Flows.</value>
+  </data>
+  <data name="MobileFlowsTenantProvisioning" xml:space="preserve">
+    <value>Pour commencer, enregistrez le locataire client à connecter au service de Cloud Mobile Flows.</value>
+  </data>
+  <data name="MobileFlowsTenantProvisioningError" xml:space="preserve">
+    <value>Une erreur a été détectée...</value>
+  </data>
+  <data name="MobileFlowsTenantProvisioningFailed" xml:space="preserve">
+    <value>Le locataire de Cloud n'a pas pu être enregistré.</value>
+  </data>
+  <data name="MobileFlowsTenantProvisioningSuccess" xml:space="preserve">
+    <value>Connecté au service Cloud Mobile Flows !</value>
+  </data>
+  <data name="MobileFlowsVidmNotConfigured" xml:space="preserve">
+    <value>Workspace ONE Access n'a pas été configuré pour ce groupe organisationnel.</value>
+  </data>
+  <data name="MobileFlowTroubleshootDocs" xml:space="preserve">
+    <value>Consultez notre guide sur les connecteurs de Mobile Flows sur GitHub : https://github.com/vmwaresamples/card-connectors-guide.</value>
+  </data>
+  <data name="MultiTenantParameters" xml:space="preserve">
+    <value>Paramètres à locataires multiples</value>
+  </data>
+  <data name="MyFlows" xml:space="preserve">
+    <value>Mes flux</value>
+  </data>
+  <data name="NoMobileFlowsCatalogFound" xml:space="preserve">
+    <value>Aucun flux disponible trouvé</value>
+  </data>
+  <data name="NoMobileFlowsFound" xml:space="preserve">
+    <value>Il semble que vous n'ayez pas encore créé de flux mobiles !</value>
+  </data>
+  <data name="NotificationMethod" xml:space="preserve">
+    <value>Méthode de notification</value>
+  </data>
+  <data name="NotificationMethodPoll" xml:space="preserve">
+    <value>Méthode de notification - Interrogation</value>
+  </data>
+  <data name="NotificationMethodPush" xml:space="preserve">
+    <value>Méthode de notification - Push</value>
+  </data>
+  <data name="NotificationMethodPushInfo" xml:space="preserve">
+    <value>Utilisez ces informations pour configurer les paramètres de notification Push dans le système d'entreprise source.</value>
+  </data>
+  <data name="NotificationPollPushDifference" xml:space="preserve">
+    <value>Les notifications provenant des systèmes d'entreprise peuvent être interrogées ou poussées :
+Interrogées : le serveur Mobile Flows interroge les systèmes d'entreprise back-end dans un intervalle de 1 heure pour chercher les nouvelles notifications. 
+Poussées : si un système d'entreprise back-end prend en charge un mécanisme de transmission, Mobile Flows peut générer un point de terminaison que le service peut appeler lorsque des notifications sont prêtes.</value>
+  </data>
+  <data name="NoVmwareServicesFound" xml:space="preserve">
+    <value>Aucun service VMware n'a été trouvé.</value>
+  </data>
+  <data name="OAuth2Parameters" xml:space="preserve">
+    <value>Paramètres OAuth 2.0</value>
+  </data>
+  <data name="OopsSomethingWentWrong" xml:space="preserve">
+    <value>Oups ! Une erreur est survenue !</value>
+  </data>
+  <data name="PollingInterval" xml:space="preserve">
+    <value>Intervalle d'interrogation</value>
+  </data>
+  <data name="PushNotificationInfo" xml:space="preserve">
+    <value>Une fois enregistrée, l'URL Push est générée et se trouve sous la page Détails du connecteur. Utilisez ces informations pour configurer les paramètres de notification Push dans le système d'entreprise source. Vous pouvez afficher et modifier ces paramètres sous Mes flux &gt; Modifier.</value>
+  </data>
+  <data name="PushURL" xml:space="preserve">
+    <value>URL Push</value>
+  </data>
+  <data name="RegenerateSecret" xml:space="preserve">
+    <value>Régénérer le secret ?</value>
+  </data>
+  <data name="RegenerateSecretConfirm" xml:space="preserve">
+    <value>Voulez-vous vraiment régénérer le secret ? Une fois régénéré, le secret précédent ne fonctionne plus. Veillez à mettre à jour les paramètres de notification Push dans le système d'entreprise source en conséquence.</value>
+  </data>
+  <data name="SabaDescription" xml:space="preserve">
+    <value>Connecteur Saba pour les nouvelles notifications d'apprentissage</value>
+  </data>
+  <data name="SabaTitle" xml:space="preserve">
+    <value>Saba</value>
+  </data>
+  <data name="SalesforceCaseResolutionDescription" xml:space="preserve">
+    <value>Connecteur Salesforce pour les nouvelles attributions d'incidents</value>
+  </data>
+  <data name="SalesforceCaseResolutionTitle" xml:space="preserve">
+    <value>Salesforce - Résolution d'incidents</value>
+  </data>
+  <data name="SalesforceDescription" xml:space="preserve">
+    <value>Connecteur Salesforce pour l'approbation de demande de remise</value>
+  </data>
+  <data name="SalesforceLeadsDescription" xml:space="preserve">
+    <value>Connecteur Salesforce pour les nouvelles notifications de prospects attribuées</value>
+  </data>
+  <data name="SalesforceLeadsTitle" xml:space="preserve">
+    <value>Prospects Salesforce</value>
+  </data>
+  <data name="SalesforceTasksDescription" xml:space="preserve">
+    <value>Connecteur Salesforce pour les nouvelles attributions de tâches</value>
+  </data>
+  <data name="SalesforceTasksTitle" xml:space="preserve">
+    <value>Salesforce - Tâches</value>
+  </data>
+  <data name="SalesforceTitle" xml:space="preserve">
+    <value>Salesforce</value>
+  </data>
+  <data name="ServiceAccountCredential" xml:space="preserve">
+    <value>Informations d'identification du compte de service</value>
+  </data>
+  <data name="ServiceAccountCredentialHelp" xml:space="preserve">
+    <value>Entrez les informations d'identification du compte de service que le service back-end prévoit de faire utiliser au client.</value>
+  </data>
+  <data name="ServiceNowChatbotDescription" xml:space="preserve">
+    <value>Connecteur ServiceNow pour la création de tickets, l'affichage de tickets et la commande de terminaux via Hub Assistant</value>
+  </data>
+  <data name="ServiceNowChatbotTitle" xml:space="preserve">
+    <value>Agent conversationnel ServiceNow</value>
+  </data>
+  <data name="ServiceNowDescription" xml:space="preserve">
+    <value>Connecteur ServiceNow pour l'approbation de demande de réquisition</value>
+  </data>
+  <data name="ServiceNowTitle" xml:space="preserve">
+    <value>ServiceNow</value>
+  </data>
+  <data name="ShowAdvancedOAuth2Options" xml:space="preserve">
+    <value>Afficher les options avancées</value>
+  </data>
+  <data name="TokenServerHints" xml:space="preserve">
+    <value>Conseils relatifs au serveur de jetons</value>
+  </data>
+  <data name="TokenUriBodyParameters" xml:space="preserve">
+    <value>Paramètres du corps de l'URI du jeton</value>
+  </data>
+  <data name="UEMChatbotDescription" xml:space="preserve">
+    <value>Connecteur UEM pour la synchronisation des terminaux via Hub Assistant</value>
+  </data>
+  <data name="UEMChatbotTitle" xml:space="preserve">
+    <value>Agent conversationnel UEM</value>
+  </data>
+  <data name="UseCase" xml:space="preserve">
+    <value>Cas d'utilisation</value>
+  </data>
+  <data name="VirtualAssistant" xml:space="preserve">
+    <value>Assistant virtuel</value>
+  </data>
+  <data name="WhatIsMobileFlow" xml:space="preserve">
+    <value>Que sont les Mobile Flows ?</value>
+  </data>
+  <data name="WhatIsMobileFlowDescription" xml:space="preserve">
+    <value>Mobile Flows affichent des notifications intelligentes et exploitables sur les systèmes distants dans Boxer et dans d'autres applications d'entreprise qui favorisent l'efficacité et la productivité des employés. Les administrateurs peuvent configurer et déployer les connecteurs et les flux qu'ils souhaitent activer pour les utilisateurs.</value>
+  </data>
+  <data name="Wiki" xml:space="preserve">
+    <value>Wiki</value>
+  </data>
+  <data name="WorkdayDescription" xml:space="preserve">
+    <value>Connecteur Workday pour l'approbation PTO</value>
+  </data>
+  <data name="WorkdayTitle" xml:space="preserve">
+    <value>Workday</value>
+  </data>
+  <data name="WorkspaceONEHub" xml:space="preserve">
+    <value>Workspace ONE Hub</value>
+  </data>
+  <data name="ZendeskTasksDescription" xml:space="preserve">
+    <value>Connecteur Zendesk pour les approbations de tâche</value>
+  </data>
+  <data name="ZendeskTasksTitle" xml:space="preserve">
+    <value>Zendesk - Tâches</value>
+  </data>
+  <data name="ZendeskTicketResolutionDescription" xml:space="preserve">
+    <value>Connecteur Zendesk pour les nouvelles attributions de tickets</value>
+  </data>
+  <data name="ZendeskTicketResolutionTitle" xml:space="preserve">
+    <value>Zendesk - Résolution des tickets</value>
+  </data>
+  <data name="ZoomRecordingsDescription" xml:space="preserve">
+    <value>Connecteur Zoom pour la nouvelle notification d'enregistrement</value>
+  </data>
+  <data name="ZoomRecordingsTitle" xml:space="preserve">
+    <value>Enregistrements Zoom</value>
+  </data>
+</root>

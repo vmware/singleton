@@ -1,0 +1,1004 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AboutFreestyleOrchestrator" xml:space="preserve">
+    <value>關於 Freestyle Orchestrator</value>
+  </data>
+  <data name="AddEditFreestyle" xml:space="preserve">
+    <value>新增/編輯 Freestyle</value>
+  </data>
+  <data name="AddEditFreestyleHelp" xml:space="preserve">
+    <value>控制建立、編輯和發佈 Freestyle 與資源類型 (例如應用程式、設定檔及指令碼) 的存取權</value>
+  </data>
+  <data name="AddressWidth" xml:space="preserve">
+    <value>位址寬度</value>
+  </data>
+  <data name="ApplicationDoesNotExist" xml:space="preserve">
+    <value>應用程式不存在</value>
+  </data>
+  <data name="ApplicationExists" xml:space="preserve">
+    <value>應用程式已存在</value>
+  </data>
+  <data name="AppResultsDescription" xml:space="preserve">
+    <value>可能合格的應用程式實際數目可能大於所顯示的數目。</value>
+  </data>
+  <data name="AppsOfArg" xml:space="preserve">
+    <value>應用程式 {0} - {1} / {2}</value>
+  </data>
+  <data name="Archived" xml:space="preserve">
+    <value>已封存</value>
+  </data>
+  <data name="AssignmentDoesNotExistOrMightBeDeleted" xml:space="preserve">
+    <value>指派不存在，或可能已遭到刪除。</value>
+  </data>
+  <data name="AssignmentsCouldNotBeRetrieved" xml:space="preserve">
+    <value>無法擷取指派。</value>
+  </data>
+  <data name="Attributes" xml:space="preserve">
+    <value>屬性</value>
+  </data>
+  <data name="AutoDeploy" xml:space="preserve">
+    <value>自動部署</value>
+  </data>
+  <data name="AutoDeployAndShowInAppCatalog" xml:space="preserve">
+    <value>自動部署和在應用程式目錄中顯示</value>
+  </data>
+  <data name="BackoffRate" xml:space="preserve">
+    <value>輪詢速率</value>
+  </data>
+  <data name="BackoffRateDesc" xml:space="preserve">
+    <value>決定後續重試間隔的乘數。</value>
+  </data>
+  <data name="BankLocator" xml:space="preserve">
+    <value>銀行定位器</value>
+  </data>
+  <data name="BaseTimeHelpText" xml:space="preserve">
+    <value>根據本地裝置時間評估</value>
+  </data>
+  <data name="BiosPayloadWarning" xml:space="preserve">
+    <value>請確定 Dell Command Monitor 應用程式已在發佈前新增至工作流程。</value>
+  </data>
+  <data name="Bitlocker" xml:space="preserve">
+    <value>Bitlocker</value>
+  </data>
+  <data name="BrowserExtension" xml:space="preserve">
+    <value>瀏覽器延伸</value>
+  </data>
+  <data name="BrowserName" xml:space="preserve">
+    <value>瀏覽器名稱</value>
+  </data>
+  <data name="Capacity" xml:space="preserve">
+    <value>容量</value>
+  </data>
+  <data name="Caption" xml:space="preserve">
+    <value>標題</value>
+  </data>
+  <data name="CatalogIconRecommendationAndLimit" xml:space="preserve">
+    <value>PNG, JPG or GIF, 1 MB maximum, 512 by 512 px recommended.</value>
+  </data>
+  <data name="ChangeAttribute" xml:space="preserve">
+    <value>變更</value>
+    <comment>edi change attribute confirm button text</comment>
+  </data>
+  <data name="ChangeAttributeConfirmationDescription" xml:space="preserve">
+    <value>變更此選項會清除與目前選項相關聯的所有屬性。</value>
+    <comment>edi change attribute confirm model body description</comment>
+  </data>
+  <data name="ChangeAttributeConfirmationTitle" xml:space="preserve">
+    <value>變更選項</value>
+    <comment>edi change attribute confirm model title</comment>
+  </data>
+  <data name="ChangePlatform" xml:space="preserve">
+    <value>變更平台</value>
+  </data>
+  <data name="ChasisType" xml:space="preserve">
+    <value>機箱類型</value>
+  </data>
+  <data name="ClockSpeed" xml:space="preserve">
+    <value>時鐘速度</value>
+  </data>
+  <data name="CodeName" xml:space="preserve">
+    <value>代碼名稱</value>
+  </data>
+  <data name="CompletedWithException" xml:space="preserve">
+    <value>已完成，但有例外狀況</value>
+  </data>
+  <data name="Compute" xml:space="preserve">
+    <value>計算</value>
+  </data>
+  <data name="ConfigurationOptionTooltipMsg" xml:space="preserve">
+    <value>選取平臺，將更多步驟新增至工作流程。</value>
+  </data>
+  <data name="ConfirmDeleteArg" xml:space="preserve">
+    <value>刪除 {0}</value>
+    <comment>{0} will be Workflow name</comment>
+  </data>
+  <data name="ConfirmDeleteWorkflowContent" xml:space="preserve">
+    <value>刪除此工作流程，會從此工作流程中的裝置移除資源指派。此動作無法復原。除非手動移除，否則將保留目前安裝在裝置上的資源。</value>
+  </data>
+  <data name="ConfirmPauseArg" xml:space="preserve">
+    <value>暫停 {0}</value>
+  </data>
+  <data name="ConfirmPauseWorkflowContent" xml:space="preserve">
+    <value>此動作會阻止工作流程在新裝置上執行，直到您恢復為止。已執行或目前正在執行工作流程的裝置則不受影響。</value>
+  </data>
+  <data name="ConnectionId" xml:space="preserve">
+    <value>連線 ID</value>
+  </data>
+  <data name="Cores" xml:space="preserve">
+    <value>核心</value>
+  </data>
+  <data name="CPU" xml:space="preserve">
+    <value>CPU</value>
+  </data>
+  <data name="CPUBrand" xml:space="preserve">
+    <value>CPU 品牌</value>
+  </data>
+  <data name="CPUID" xml:space="preserve">
+    <value>CPU ID</value>
+  </data>
+  <data name="CPUModel" xml:space="preserve">
+    <value>CPU 型號</value>
+  </data>
+  <data name="CPUSubType" xml:space="preserve">
+    <value>CPU 子類型</value>
+  </data>
+  <data name="CPUType" xml:space="preserve">
+    <value>CPU 類型</value>
+  </data>
+  <data name="CreatedOnByArg" xml:space="preserve">
+    <value>由 {1} 在 {0} 建立</value>
+  </data>
+  <data name="CreateWorkflowsInfo" xml:space="preserve">
+    <value>當您準備就緒時，按一下 [開始使用]，即可使用您已設定的資源來建立和發佈工作流程。</value>
+  </data>
+  <data name="CreateYourWorkflows" xml:space="preserve">
+    <value>建立工作流程</value>
+  </data>
+  <data name="CustomLastDays" xml:space="preserve">
+    <value>過去 {0} 天</value>
+  </data>
+  <data name="CustomLastHours" xml:space="preserve">
+    <value>過去 {0} 小時</value>
+  </data>
+  <data name="CustomLastMonths" xml:space="preserve">
+    <value>過去 {0} 個月</value>
+  </data>
+  <data name="CustomLastWeeks" xml:space="preserve">
+    <value>過去 {0} 週</value>
+  </data>
+  <data name="DataWidth" xml:space="preserve">
+    <value>資料寬度</value>
+  </data>
+  <data name="DeleteFreestyle" xml:space="preserve">
+    <value>刪除 Freestyle</value>
+  </data>
+  <data name="DeleteFreestyleHelp" xml:space="preserve">
+    <value>控制刪除 Freestyle 和資源類型 (例如應用程式、設定檔和指令碼) 的存取權</value>
+  </data>
+  <data name="DeleteWorkflow" xml:space="preserve">
+    <value>刪除工作流程</value>
+  </data>
+  <data name="DeleteWorkflowAdditionalContent" xml:space="preserve">
+    <value>若要移除已安裝的資源，請導覽至每個裝置的 [裝置詳細資料] 視圖，或每個資源的 [指派的裝置] 視圖。</value>
+  </data>
+  <data name="DeploymentSettings" xml:space="preserve">
+    <value>部署設定</value>
+  </data>
+  <data name="DeviceBreakdown" xml:space="preserve">
+    <value>裝置明細</value>
+  </data>
+  <data name="DeviceDistributionUnavailable" xml:space="preserve">
+    <value>裝置散發無法使用。</value>
+  </data>
+  <data name="DeviceExecutionStatusInfo" xml:space="preserve">
+    <value>根據平台和智慧群組選擇</value>
+  </data>
+  <data name="DeviceLocator" xml:space="preserve">
+    <value>裝置定位器</value>
+  </data>
+  <data name="DeviceNotAssignedToWorkflow" xml:space="preserve">
+    <value>裝置未指派至此工作流程。</value>
+  </data>
+  <data name="DeviceWithStatusArg" xml:space="preserve">
+    <value>狀態為 {0} 的裝置</value>
+  </data>
+  <data name="DeviceWorkflowStatusInfo" xml:space="preserve">
+    <value>此裝置在此工作流程中每個步驟的狀態如下所示。</value>
+  </data>
+  <data name="DiskIndex" xml:space="preserve">
+    <value>磁碟索引</value>
+  </data>
+  <data name="DNSDomain" xml:space="preserve">
+    <value>DNS 網域</value>
+  </data>
+  <data name="DNSServerSearchOrder" xml:space="preserve">
+    <value>DNS 伺服器搜尋順序</value>
+  </data>
+  <data name="DoYouWantToContinue" xml:space="preserve">
+    <value>是否要繼續?</value>
+  </data>
+  <data name="DriverDate" xml:space="preserve">
+    <value>驅動程式日期</value>
+  </data>
+  <data name="DriverKey" xml:space="preserve">
+    <value>驅動程式金鑰</value>
+  </data>
+  <data name="DriverSigned" xml:space="preserve">
+    <value>驅動程式已簽署</value>
+  </data>
+  <data name="DWord32Bit" xml:space="preserve">
+    <value>DWORD</value>
+  </data>
+  <data name="EdiSelectFurther" xml:space="preserve">
+    <value>選取屬性</value>
+    <comment>edi sencondary selection default text.</comment>
+  </data>
+  <data name="EmptyStepStatus" xml:space="preserve">
+    <value>未報告任何裝置狀態。可取得更多資料時，裝置計數將會更新。</value>
+  </data>
+  <data name="EnterNumber" xml:space="preserve">
+    <value>輸入數字</value>
+  </data>
+  <data name="EnterNumberForCustomRange" xml:space="preserve">
+    <value>輸入自訂範圍的數字</value>
+  </data>
+  <data name="EntryBlock" xml:space="preserve">
+    <value>工作流程設定</value>
+  </data>
+  <data name="ErrorHandling" xml:space="preserve">
+    <value>處理時發生錯誤</value>
+  </data>
+  <data name="ErrorLoadingCategories" xml:space="preserve">
+    <value>無法擷取應用程式類別。如果此問題持續發生，請聯絡您的系統管理員。</value>
+  </data>
+  <data name="EulaSettings" xml:space="preserve">
+    <value>EULA 設定</value>
+  </data>
+  <data name="ExcludedSmartGroupAssignmentError" xml:space="preserve">
+    <value>排除的智慧群組不應屬於任何包含此應用程式之工作流程的智慧群組指派。</value>
+  </data>
+  <data name="ExecutionRate" xml:space="preserve">
+    <value>執行速率</value>
+  </data>
+  <data name="Exists" xml:space="preserve">
+    <value>存在</value>
+  </data>
+  <data name="ExpandableString" xml:space="preserve">
+    <value>可擴充字串</value>
+  </data>
+  <data name="ExtensionName" xml:space="preserve">
+    <value>副檔名</value>
+  </data>
+  <data name="FileSystem" xml:space="preserve">
+    <value>檔案系統</value>
+  </data>
+  <data name="Filters" xml:space="preserve">
+    <value>篩選條件</value>
+  </data>
+  <data name="FindOutMore" xml:space="preserve">
+    <value>若要瞭解詳情，請造訪</value>
+  </data>
+  <data name="FirstRetryAfter" xml:space="preserve">
+    <value>第一次重試前經歷時間</value>
+  </data>
+  <data name="FourthRetryAfter" xml:space="preserve">
+    <value>第四次重試前經歷時間</value>
+  </data>
+  <data name="FreeSpace" xml:space="preserve">
+    <value>可用空間</value>
+  </data>
+  <data name="Freestyle" xml:space="preserve">
+    <value>Freestyle</value>
+  </data>
+  <data name="FreestyleContext" xml:space="preserve">
+    <value>內容</value>
+  </data>
+  <data name="FreestyleHeader" xml:space="preserve">
+    <value>建立符合您需求的工作流程</value>
+  </data>
+  <data name="FreestyleInfo" xml:space="preserve">
+    <value>Workspace ONE Freestyle Orchestrator 是一種無程式碼 IT 協調平臺，可讓您彈性建立資源 (如應用程式、設定檔和指令碼) 的工作流程，並根據細微準則將其套用至裝置。</value>
+  </data>
+  <data name="FreestyleNote" xml:space="preserve">
+    <value>目前僅適用於 Windows 10 和 macOS 平台。</value>
+  </data>
+  <data name="FreestyleOrchestrator" xml:space="preserve">
+    <value>Freestyle Orchestrator</value>
+  </data>
+  <data name="FreestyleOrchestratorInfo" xml:space="preserve">
+    <value>建立資源 (例如應用程式、設定檔和指令碼) 的工作流程，並根據細微準則將這些工作流程套用至裝置。</value>
+  </data>
+  <data name="FreestyleOrchestratorPreview" xml:space="preserve">
+    <value>Freestyle Orchestrator (預覽)</value>
+  </data>
+  <data name="FreestyleWelcomeWindowDescription" xml:space="preserve">
+    <value>Freestyle Orchestrator 是一種低程式碼 IT 協調平台，可讓您彈性建立資源 (如應用程式、設定檔和指令碼) 的工作流程，並根據細微準則將其套用至裝置。</value>
+  </data>
+  <data name="FreestyleWelcomeWindowDescriptionInfo" xml:space="preserve">
+    <value>Freestyle Orchestrator 目前適用於 Windows 10 和 macOS 平台。</value>
+  </data>
+  <data name="FreestyleWorkflow" xml:space="preserve">
+    <value>Freestyle 工作流程</value>
+  </data>
+  <data name="FreestyleWorkflowDescription" xml:space="preserve">
+    <value>根據準則提供物件，或在裝置上採取特定動作。</value>
+  </data>
+  <data name="GettingStartedWithWorkflows" xml:space="preserve">
+    <value>開始工作流程</value>
+  </data>
+  <data name="HardwareSerial" xml:space="preserve">
+    <value>硬體序號</value>
+  </data>
+  <data name="HardwareVendor" xml:space="preserve">
+    <value>硬體廠商</value>
+  </data>
+  <data name="HardwareVersion" xml:space="preserve">
+    <value>硬體版本</value>
+  </data>
+  <data name="Hotfix" xml:space="preserve">
+    <value>Hotfix</value>
+  </data>
+  <data name="HotfixKBId" xml:space="preserve">
+    <value>Hotfix KB ID</value>
+  </data>
+  <data name="Includes" xml:space="preserve">
+    <value>包含</value>
+  </data>
+  <data name="InitialValueIsActivated" xml:space="preserve">
+    <value>初始值已啟用</value>
+  </data>
+  <data name="InitialValueIsEnabled" xml:space="preserve">
+    <value>初始值已啟用</value>
+  </data>
+  <data name="InitialValueIsOwned" xml:space="preserve">
+    <value>初始值有擁有者</value>
+  </data>
+  <data name="InstallationState" xml:space="preserve">
+    <value>安裝狀態</value>
+  </data>
+  <data name="InstalledBy" xml:space="preserve">
+    <value>安裝者</value>
+  </data>
+  <data name="InstalledOn" xml:space="preserve">
+    <value>安裝時間</value>
+  </data>
+  <data name="InstallLocation" xml:space="preserve">
+    <value>安裝位置</value>
+  </data>
+  <data name="InstallSource" xml:space="preserve">
+    <value>安裝來源</value>
+  </data>
+  <data name="IntroducingFreestyleOrchestrator" xml:space="preserve">
+    <value>Freestyle Orchestrator 簡介</value>
+  </data>
+  <data name="IsBootable" xml:space="preserve">
+    <value>為可開機</value>
+  </data>
+  <data name="IsFramework" xml:space="preserve">
+    <value>為架構</value>
+  </data>
+  <data name="KioskPayloadWarning" xml:space="preserve">
+    <value>請確定 kiosk 裝載的應用程式已在發佈前新增至工作流程。</value>
+  </data>
+  <data name="LastFortyFiveDays" xml:space="preserve">
+    <value>最近四十五天</value>
+  </data>
+  <data name="LastFortyFiveDaysNumeric" xml:space="preserve">
+    <value>過去 45 天</value>
+  </data>
+  <data name="LastFourteenDays" xml:space="preserve">
+    <value>最近十四天</value>
+  </data>
+  <data name="LastFourteenDaysNumeric" xml:space="preserve">
+    <value>過去 14 天</value>
+  </data>
+  <data name="LastSevenDaysNumeric" xml:space="preserve">
+    <value>過去 7 天</value>
+  </data>
+  <data name="LastSixtyDays" xml:space="preserve">
+    <value>最近六十天</value>
+  </data>
+  <data name="LastSixtyDaysNumeric" xml:space="preserve">
+    <value>過去 60 天</value>
+  </data>
+  <data name="LastThirtyDaysNumeric" xml:space="preserve">
+    <value>過去 30 天</value>
+  </data>
+  <data name="Latest" xml:space="preserve">
+    <value>最新</value>
+  </data>
+  <data name="LatestAvailable" xml:space="preserve">
+    <value>最新可用</value>
+  </data>
+  <data name="LocalTimeZone" xml:space="preserve">
+    <value>本機時區</value>
+  </data>
+  <data name="LogicalDrives" xml:space="preserve">
+    <value>邏輯磁碟機</value>
+  </data>
+  <data name="ManufacturerId" xml:space="preserve">
+    <value>製造商 ID</value>
+  </data>
+  <data name="ManufacturerVersion" xml:space="preserve">
+    <value>製造商版本</value>
+  </data>
+  <data name="ManufacturerVersionInfo" xml:space="preserve">
+    <value>製造商版本資訊</value>
+  </data>
+  <data name="MatchesFound" xml:space="preserve">
+    <value>找到 {0} 個相符</value>
+  </data>
+  <data name="MaxClockSpeed" xml:space="preserve">
+    <value>時鐘速度上限</value>
+  </data>
+  <data name="MaximumRetries" xml:space="preserve">
+    <value>重試次數上限</value>
+  </data>
+  <data name="MayNotBeFiltered" xml:space="preserve">
+    <value>結果可能不包括</value>
+  </data>
+  <data name="MayNotBeFilteredDesc" xml:space="preserve">
+    <value>使用「大於」或「小於」運算子篩選的英數字元應用程式版本。</value>
+  </data>
+  <data name="MemoryType" xml:space="preserve">
+    <value>記憶體類型</value>
+  </data>
+  <data name="ModifiedOnByArg" xml:space="preserve">
+    <value>由 {1} 在 {0} 修改</value>
+  </data>
+  <data name="MonitorPerformance" xml:space="preserve">
+    <value>監控效能</value>
+  </data>
+  <data name="MonitorWorkflowPerformanceInfo" xml:space="preserve">
+    <value>監控並深入瞭解已發佈的工作流程、檢視效能指標，以及管理已儲存和已封存的工作流程。</value>
+  </data>
+  <data name="MultipleValueHelpText" xml:space="preserve">
+    <value>用逗號分開多個值。</value>
+  </data>
+  <data name="MustBeBetweenArgs" xml:space="preserve">
+    <value>必須介於 {0} 和 {1} 之間</value>
+  </data>
+  <data name="NavigationFreestyle" xml:space="preserve">
+    <value>瀏覽 Freestyle</value>
+  </data>
+  <data name="NavigationFreestyleHelp" xml:space="preserve">
+    <value>控制 Freestyle 側邊功能表的存取權</value>
+  </data>
+  <data name="NavigationResources" xml:space="preserve">
+    <value>瀏覽資源</value>
+  </data>
+  <data name="NavigationResourcesHelp" xml:space="preserve">
+    <value>控制資源側邊功能表的存取權</value>
+  </data>
+  <data name="NetworkAdapter" xml:space="preserve">
+    <value>網路介面卡</value>
+  </data>
+  <data name="NoDefaultPolicyForVersion" xml:space="preserve">
+    <value>應用程式的版本沒有任何預設原則。請在發佈前設定一個原則。</value>
+  </data>
+  <data name="NoStepStatus" xml:space="preserve">
+    <value>此步驟沒有可報告的狀態。選取另一個步驟來檢視裝置明細。</value>
+  </data>
+  <data name="NotBetween" xml:space="preserve">
+    <value>不介於</value>
+  </data>
+  <data name="NotEquals" xml:space="preserve">
+    <value>不等於</value>
+  </data>
+  <data name="NotIn" xml:space="preserve">
+    <value>不屬於</value>
+  </data>
+  <data name="OemUpdatesPayloadWarning" xml:space="preserve">
+    <value>請確定 Dell Command Update 應用程式已在發佈前新增至工作流程。</value>
+  </data>
+  <data name="OverallDeviceExecutionStatus" xml:space="preserve">
+    <value>整體裝置執行狀態</value>
+  </data>
+  <data name="Overwritten" xml:space="preserve">
+    <value>覆寫</value>
+  </data>
+  <data name="Partitions" xml:space="preserve">
+    <value>磁碟分割</value>
+  </data>
+  <data name="PhysicalPresenceVersion" xml:space="preserve">
+    <value>實體存在版本</value>
+  </data>
+  <data name="PlatformChangeConfirmationDescription" xml:space="preserve">
+    <value>變更平台將會清除您在工作流程中輸入的所有其他資源、步驟、動作。您確定要繼續嗎?</value>
+  </data>
+  <data name="PlatformChangeConfirmationTitle" xml:space="preserve">
+    <value>警告 - 平台變更</value>
+  </data>
+  <data name="PlatformDescription" xml:space="preserve">
+    <value>資源會根據平台類型進行篩選。</value>
+  </data>
+  <data name="PlatformRole" xml:space="preserve">
+    <value>平台角色</value>
+  </data>
+  <data name="PlayDemo" xml:space="preserve">
+    <value>播放示範</value>
+  </data>
+  <data name="PotentiallyImpactedApplications" xml:space="preserve">
+    <value>可能合格的應用程式</value>
+  </data>
+  <data name="ProceedToNextStepConditionFailedError" xml:space="preserve">
+    <value>繼續執行下一步時，該步驟未正確設定或遺漏。</value>
+  </data>
+  <data name="ProductIdentificationNumber" xml:space="preserve">
+    <value>產品識別碼</value>
+  </data>
+  <data name="ProfilesAndBaselines" xml:space="preserve">
+    <value>設定檔與基準</value>
+  </data>
+  <data name="Program" xml:space="preserve">
+    <value>程式</value>
+  </data>
+  <data name="PropertyFile" xml:space="preserve">
+    <value>內容檔案</value>
+  </data>
+  <data name="ProtectionStatus" xml:space="preserve">
+    <value>保護狀態</value>
+  </data>
+  <data name="PublishedOnByArg" xml:space="preserve">
+    <value>由 {1} 於 {0} 發佈</value>
+  </data>
+  <data name="PublishedStateDescription" xml:space="preserve">
+    <value>根據裝置簽入，資料更新可能最多需要 4 小時。若要立即將工作流程同步至裝置，請導覽至 [裝置詳細資料]，按一下 [更多動作]，然後選取 [工作流程]。</value>
+  </data>
+  <data name="Publisher" xml:space="preserve">
+    <value>發佈者</value>
+  </data>
+  <data name="PublisherId" xml:space="preserve">
+    <value>發佈者 ID</value>
+  </data>
+  <data name="QWord64Bit" xml:space="preserve">
+    <value>QWORD</value>
+  </data>
+  <data name="ReevaluateCondition" xml:space="preserve">
+    <value>重新評估條件</value>
+  </data>
+  <data name="ReevaluateConditionDesc" xml:space="preserve">
+    <value>每 15 分鐘執行一次整個工作流程，以確保裝置保持所需狀態。</value>
+  </data>
+  <data name="Registry" xml:space="preserve">
+    <value>登錄</value>
+  </data>
+  <data name="RegistryDoesNotExistAt" xml:space="preserve">
+    <value>登錄不存在於</value>
+  </data>
+  <data name="RegistryExistsAt" xml:space="preserve">
+    <value>登錄存在於</value>
+  </data>
+  <data name="RegistryPath" xml:space="preserve">
+    <value>登錄路徑</value>
+  </data>
+  <data name="ReinstallIfRemoved" xml:space="preserve">
+    <value>如果已移除，請重新安裝</value>
+  </data>
+  <data name="ReinstallIfRemovedDesc" xml:space="preserve">
+    <value>如果此資源已從裝置中移除，請重新安裝。</value>
+  </data>
+  <data name="ResourceCount" xml:space="preserve">
+    <value>資源計數</value>
+  </data>
+  <data name="ResourcesWelcomeWindowDescription" xml:space="preserve">
+    <value>我們已重新整理左側導覽窗格 (主功能表)，以納入新的 [資源] 索引標籤，這樣您就可以更輕鬆地存取和管理常用的功能。在 [資源] 中，您可以找到應用程式、設定檔、條件等項目。</value>
+  </data>
+  <data name="ResourceUnauthorizedAccessContactSystemAdmin" xml:space="preserve">
+    <value>您未獲授權，無法存取此資源。請聯絡您的系統管理員以取得協助。</value>
+  </data>
+  <data name="RestoreToDefault" xml:space="preserve">
+    <value>還原成預設值</value>
+  </data>
+  <data name="Results" xml:space="preserve">
+    <value>結果</value>
+  </data>
+  <data name="RetryAfter" xml:space="preserve">
+    <value>幾分鐘後重試</value>
+  </data>
+  <data name="RetryAfterDesc" xml:space="preserve">
+    <value>重新嘗試出現錯誤之工作流程步驟的時間間隔。</value>
+  </data>
+  <data name="RetryIntervalDesc" xml:space="preserve">
+    <value>幾分鐘後重試的產品、重試次數和輪詢速率。</value>
+  </data>
+  <data name="RunScript" xml:space="preserve">
+    <value>執行指令碼</value>
+  </data>
+  <data name="SavedFailedContactAdmin" xml:space="preserve">
+    <value>無法儲存。請再試一次。如果問題仍然存在，請聯絡您的系統管理員。</value>
+  </data>
+  <data name="SavedStateDescription" xml:space="preserve">
+    <value>發佈您的工作流程以指派裝置。資料將在指派的裝置簽入後更新。</value>
+  </data>
+  <data name="SaveSuccessPublishFailedTryAgain" xml:space="preserve">
+    <value>無法發佈工作流程。已儲存工作流程，請嘗試再發佈一次。</value>
+  </data>
+  <data name="SearchAndSelect" xml:space="preserve">
+    <value>搜尋並選取</value>
+  </data>
+  <data name="SearchExistingApp" xml:space="preserve">
+    <value>搜尋既有的應用程式</value>
+  </data>
+  <data name="SearchExistingProfile" xml:space="preserve">
+    <value>搜尋既有的設定檔</value>
+  </data>
+  <data name="SearchScript" xml:space="preserve">
+    <value>搜尋指令碼</value>
+  </data>
+  <data name="SecondRetryAfter" xml:space="preserve">
+    <value>第二次重試前經歷時間</value>
+  </data>
+  <data name="SelectSmartGroupMessage" xml:space="preserve">
+    <value>選取將指派給此工作流程的智慧群組，以及遞送方式。</value>
+  </data>
+  <data name="SelectVersion" xml:space="preserve">
+    <value>選取版本</value>
+  </data>
+  <data name="SensorBaseTimeInfo" xml:space="preserve">
+    <value>選取要用於此感應器狀態的時區：裝置本機時間或伺服器時間 (UTC)。</value>
+  </data>
+  <data name="SetDefaultPolicy" xml:space="preserve">
+    <value>設定預設原則</value>
+  </data>
+  <data name="SetRegistryData" xml:space="preserve">
+    <value>設定登錄資料</value>
+  </data>
+  <data name="SetRegistryValue" xml:space="preserve">
+    <value>設定登錄值</value>
+  </data>
+  <data name="SettingsRetrievalError" xml:space="preserve">
+    <value>在擷取工作流程設定時發生錯誤</value>
+  </data>
+  <data name="SettingsSavedSuccessfully" xml:space="preserve">
+    <value>已成功儲存工作流程設定</value>
+  </data>
+  <data name="SettingsSaveFailedTryAgain" xml:space="preserve">
+    <value>儲存工作流程設定時發生錯誤。請再試一次</value>
+  </data>
+  <data name="Shares" xml:space="preserve">
+    <value>共用率</value>
+  </data>
+  <data name="Showing" xml:space="preserve">
+    <value>顯示</value>
+  </data>
+  <data name="ShowingResultsArg" xml:space="preserve">
+    <value>顯示 {0} 個結果</value>
+  </data>
+  <data name="SkipWorkflow" xml:space="preserve">
+    <value>略過工作流程步驟</value>
+  </data>
+  <data name="SkipWorkflowDesc" xml:space="preserve">
+    <value>略過失敗的工作流程步驟並報告錯誤，但繼續執行工作流程。</value>
+  </data>
+  <data name="SocketDesignation" xml:space="preserve">
+    <value>通訊端指定</value>
+  </data>
+  <data name="SpecVersion" xml:space="preserve">
+    <value>規格版本</value>
+  </data>
+  <data name="StageWorkflowInfo" xml:space="preserve">
+    <value>導覽至 [資源]，並設定在工作流程中參考的應用程式、設定檔、指令碼和感應器。</value>
+  </data>
+  <data name="StageWorkflowResources" xml:space="preserve">
+    <value>暫存工作流程資源</value>
+  </data>
+  <data name="StartExploringFreestyleOrchestrator" xml:space="preserve">
+    <value>開始探索 Freestyle Orchestrator</value>
+  </data>
+  <data name="StartType" xml:space="preserve">
+    <value>開始類型</value>
+  </data>
+  <data name="StateName" xml:space="preserve">
+    <value>狀態名稱</value>
+  </data>
+  <data name="StepStatus" xml:space="preserve">
+    <value>步驟狀態</value>
+  </data>
+  <data name="StopWorkflow" xml:space="preserve">
+    <value>停止工作流程</value>
+  </data>
+  <data name="StopWorkflowDesc" xml:space="preserve">
+    <value>將工作流程停在失敗的步驟，並報告失敗狀態。</value>
+  </data>
+  <data name="SwitchToTimeWindow" xml:space="preserve">
+    <value>以時間範圍取代</value>
+  </data>
+  <data name="SwitchToTimeWindowConfirmation" xml:space="preserve">
+    <value>您是否要以時間範圍取代此條件?</value>
+  </data>
+  <data name="SwitchToTimeWindowWarning" xml:space="preserve">
+    <value>時間範圍條件無法與其他條件結合使用。新增時間範圍將取代現有的準則。</value>
+  </data>
+  <data name="SystemEnclosure" xml:space="preserve">
+    <value>系統機殼</value>
+  </data>
+  <data name="TemplateSelectionQuestion" xml:space="preserve">
+    <value>您想為哪個項目建立工作流程?</value>
+  </data>
+  <data name="ThirdRetryAfter" xml:space="preserve">
+    <value>第三次重試前經歷時間</value>
+  </data>
+  <data name="TimeDurationDay" xml:space="preserve">
+    <value>日</value>
+  </data>
+  <data name="TimeDurationDays" xml:space="preserve">
+    <value>日</value>
+  </data>
+  <data name="TimeDurationHour" xml:space="preserve">
+    <value>小時</value>
+  </data>
+  <data name="TimeDurationHours" xml:space="preserve">
+    <value>小時</value>
+  </data>
+  <data name="TimeDurationMinute" xml:space="preserve">
+    <value>分鐘</value>
+  </data>
+  <data name="TimeDurationMinutes" xml:space="preserve">
+    <value>分鐘</value>
+  </data>
+  <data name="TimeoutDesc" xml:space="preserve">
+    <value>等候工作流程步驟完成的時間上限。</value>
+  </data>
+  <data name="TimeReported" xml:space="preserve">
+    <value>報告的時間</value>
+  </data>
+  <data name="TimeWindowRuleDescription" xml:space="preserve">
+    <value>條件會在設定的間隔重新評估，直到裝置符合該條件。不允許 ELSE 分支。</value>
+  </data>
+  <data name="TimeWindowRuleDescriptionArg" xml:space="preserve">
+    <value>條件會在設定的間隔 ({0}) 重新評估，直到裝置符合該條件。不允許 ELSE 分支。</value>
+  </data>
+  <data name="TimeWindowStateSupport" xml:space="preserve">
+    <value>狀態管理無法套用至時間範圍條件。</value>
+  </data>
+  <data name="ToLearnMore" xml:space="preserve">
+    <value>深入瞭解</value>
+  </data>
+  <data name="TotalEligibleDevices" xml:space="preserve">
+    <value>符合資格的裝置總數</value>
+  </data>
+  <data name="Troubleshoot" xml:space="preserve">
+    <value>疑難排解</value>
+  </data>
+  <data name="TrustedPlatformModule" xml:space="preserve">
+    <value>信任的平台模組</value>
+  </data>
+  <data name="UnauthorizedAccessResource" xml:space="preserve">
+    <value>您未獲授權，無法存取此資源。請聯絡您的 IT 管理員以取得協助。</value>
+  </data>
+  <data name="UninstallerFilePath" xml:space="preserve">
+    <value>解除安裝程式檔案路徑</value>
+  </data>
+  <data name="Universallyuniqueidentifier" xml:space="preserve">
+    <value>通用唯一識別碼</value>
+  </data>
+  <data name="UnsupportedProfilePayloadEcrow" xml:space="preserve">
+    <value>工作流程所含的設定檔不能有委付裝載。請選擇其他設定檔。</value>
+  </data>
+  <data name="UnsupportedProfilePayloadEWSOutlook" xml:space="preserve">
+    <value>工作流程所含的 MacOS 設定檔不能有 EWS Outlook 裝載。請選擇其他設定檔</value>
+  </data>
+  <data name="UpdateAgent" xml:space="preserve">
+    <value>更新代理程式</value>
+  </data>
+  <data name="Uuid" xml:space="preserve">
+    <value>UUID</value>
+  </data>
+  <data name="VersionUUID" xml:space="preserve">
+    <value>版本 UUID</value>
+  </data>
+  <data name="VersionValidationMessage" xml:space="preserve">
+    <value>輸入以句點隔開的版本號碼 (1.0、1.0.1、1.0.1.1)。</value>
+  </data>
+  <data name="ViewDocs" xml:space="preserve">
+    <value>檢視文件</value>
+  </data>
+  <data name="ViewFreestyle" xml:space="preserve">
+    <value>檢視 Freestyle</value>
+  </data>
+  <data name="ViewFreestyleHelp" xml:space="preserve">
+    <value>控制檢視 Freestyle 詳細資料和資源類型 (例如應用程式、設定檔和指令碼) 的存取權</value>
+  </data>
+  <data name="ViewInModal" xml:space="preserve">
+    <value>以強制回應進行檢視</value>
+  </data>
+  <data name="ViewItemDetails" xml:space="preserve">
+    <value>檢視細節</value>
+  </data>
+  <data name="ViewResults" xml:space="preserve">
+    <value>檢視結果</value>
+  </data>
+  <data name="VirtualAppsCollections" xml:space="preserve">
+    <value>虛擬應用程式集合</value>
+  </data>
+  <data name="VirtualCPU" xml:space="preserve">
+    <value>虛擬 CPU</value>
+  </data>
+  <data name="VirtualCPUs" xml:space="preserve">
+    <value>虛擬 CPU</value>
+  </data>
+  <data name="WfEmptyStepCountError" xml:space="preserve">
+    <value>工作流程必須至少有一個步驟。</value>
+  </data>
+  <data name="WfNameEmptyError" xml:space="preserve">
+    <value>未提供工作流程的名稱。請提供名稱，然後再試一次。</value>
+  </data>
+  <data name="WfTypeEmptyError" xml:space="preserve">
+    <value>儲存失敗。未提供工作流程的類型。</value>
+  </data>
+  <data name="WhenRetriesExhausted" xml:space="preserve">
+    <value>重試次數用盡時</value>
+  </data>
+  <data name="WindowsOptionalFeatures" xml:space="preserve">
+    <value>Windows 可選功能</value>
+  </data>
+  <data name="WiredNetwork" xml:space="preserve">
+    <value>有線網路</value>
+  </data>
+  <data name="WorkflowDisabledCatalogTooltip" xml:space="preserve">
+    <value>選取智慧群組來修改這些設定。</value>
+  </data>
+  <data name="WorkflowDoesNotExistOrMightBeDeleted" xml:space="preserve">
+    <value>工作流程不存在，或可能已遭到刪除。</value>
+  </data>
+  <data name="WorkflowExecutionStatus" xml:space="preserve">
+    <value>工作流程執行狀態</value>
+  </data>
+  <data name="WorkflowPausedSuccessfully" xml:space="preserve">
+    <value>已成功暫停工作流程</value>
+  </data>
+  <data name="WorkflowPauseFailedTryAgain" xml:space="preserve">
+    <value>工作流程暫停失敗。請再試一次。</value>
+  </data>
+  <data name="WorkflowRestoreDefaults" xml:space="preserve">
+    <value>還原預設值</value>
+  </data>
+  <data name="WorkflowResumedSuccessfully" xml:space="preserve">
+    <value>已成功還原工作流程</value>
+  </data>
+  <data name="WorkflowResumeFailedTryAgain" xml:space="preserve">
+    <value>工作流程還原失敗。請再試一次。</value>
+  </data>
+  <data name="WorkflowRetryInterval" xml:space="preserve">
+    <value>重試間隔</value>
+  </data>
+  <data name="WorkflowSettings" xml:space="preserve">
+    <value>工作流程設定</value>
+  </data>
+  <data name="WorkflowSettingsDesc" xml:space="preserve">
+    <value>設定工作流程的預設設定。您可以在個別工作流程中覆寫這些設定。</value>
+  </data>
+  <data name="WorkflowSmartGroupDescription" xml:space="preserve">
+    <value>裝置將在簽入時執行工作流程。</value>
+  </data>
+  <data name="WorkflowStatusNotEvaluatedInfo" xml:space="preserve">
+    <value>裝置已收到工作流程，但尚未報告工作流程步驟狀態</value>
+  </data>
+  <data name="WorkflowStep" xml:space="preserve">
+    <value>工作流程步驟</value>
+  </data>
+  <data name="WorkflowTimeout" xml:space="preserve">
+    <value>逾時</value>
+  </data>
+  <data name="WorkflowWarningExactVersionSelected" xml:space="preserve">
+    <value>如果選取了特定版本，又另外指派更新版本給裝置，則此工作流程步驟可能會失敗</value>
+  </data>
+</root>

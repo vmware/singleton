@@ -1,0 +1,967 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AC" xml:space="preserve">
+    <value>AC</value>
+  </data>
+  <data name="AccessToDeviceReprocessProductsMenuTooltip" xml:space="preserve">
+    <value>提供員工 [重新處理產品] 功能表的存取權限，以加快疑難排解速度。</value>
+  </data>
+  <data name="ACorFullBattery" xml:space="preserve">
+    <value>AC 電源或電力飽滿</value>
+  </data>
+  <data name="ACPowerCondition" xml:space="preserve">
+    <value>排程您的動作，使裝置連接至電源時 (例如：置於底座或插入電源時) 執行該些動作</value>
+  </data>
+  <data name="AddAgentPackages" xml:space="preserve">
+    <value>新增 Hub/Agent 套件</value>
+  </data>
+  <data name="AddFileServer" xml:space="preserve">
+    <value>新增檔案伺服器</value>
+  </data>
+  <data name="AddPinnedAppsHelp" xml:space="preserve">
+    <value>新增固定的應用程式列會強制啟用最小化標題列，因為裝置的主畫面有空間限制。</value>
+  </data>
+  <data name="AddPinnedAppsRow" xml:space="preserve">
+    <value>為固定的應用程式新增列</value>
+  </data>
+  <data name="AddToLauncher" xml:space="preserve">
+    <value>新增至 Launcher</value>
+  </data>
+  <data name="AfterDurationExceeded" xml:space="preserve">
+    <value>超過持續時間之後</value>
+  </data>
+  <data name="AgentPackages" xml:space="preserve">
+    <value>Hub/Agent 套件</value>
+  </data>
+  <data name="AgentPackagesMenuTitle" xml:space="preserve">
+    <value>檢視和新增 Hub/Agent 套件</value>
+  </data>
+  <data name="AirwatchMdmAgentUpgrade" xml:space="preserve">
+    <value>AirWatch MDM Agent 升級</value>
+  </data>
+  <data name="Airwatchmdmagentupgradefile" xml:space="preserve">
+    <value>AirWatch MDM Agent 升級檔案</value>
+  </data>
+  <data name="AndroidAvailableSystemActions" xml:space="preserve">
+    <value>執行宗旨、重新開機、套用自訂設定、啟動器登出。</value>
+  </data>
+  <data name="AndroidFile" xml:space="preserve">
+    <value>檔案</value>
+  </data>
+  <data name="ApplicationAssignmentsCount" xml:space="preserve">
+    <value>指派</value>
+  </data>
+  <data name="AssistCommandLine" xml:space="preserve">
+    <value>命令列</value>
+  </data>
+  <data name="AssistManageFiles" xml:space="preserve">
+    <value>管理檔案</value>
+  </data>
+  <data name="AssistRemoteAssist" xml:space="preserve">
+    <value>遠端協助</value>
+  </data>
+  <data name="AssistRemoteViewIosTooltip" xml:space="preserve">
+    <value>針對 iOS 以外的所有平臺，支援遠端檢視及控制，iOS 僅支援遠端檢視。</value>
+  </data>
+  <data name="AssistShareScreen" xml:space="preserve">
+    <value>共用畫面</value>
+  </data>
+  <data name="AtleastOneCustomAttributeAndAttributeValueIsRequired" xml:space="preserve">
+    <value>至少需要 1 個「自訂屬性」及「屬性值」</value>
+  </data>
+  <data name="AutoRetry" xml:space="preserve">
+    <value>自動重試</value>
+  </data>
+  <data name="BackgroundApplication" xml:space="preserve">
+    <value>背景應用程式</value>
+  </data>
+  <data name="Batchimportrelayserverexplanation" xml:space="preserve">
+    <value>轉送伺服器匯入功能可用於系統大量載入轉送伺服器。轉送伺服器使用者應與企業群組相關聯。
+
+請點選 [下載範本] 以供參考。</value>
+  </data>
+  <data name="BulkEnterpriseResetDescription" xml:space="preserve">
+    <value>請注意，此動作僅適用於利用 VMware 快速部署用戶端透過註冊預備程序註冊之 Zebra 或 Honeywell 強固型 Android 與 Windows 行動裝置。此動作將會執行裝置抹除並重新開機。重新開機後，裝置仍將註冊於 Workspace ONE 並會自行重新建立為需要的預先定義狀態。</value>
+  </data>
+  <data name="CannotActivatePolicy_DeactivationDateIsInPast" xml:space="preserve">
+    <value>無法啟用原則。停用日期是過去的時間。</value>
+  </data>
+  <data name="CannotBeEmptyArg" xml:space="preserve">
+    <value>{0}，不得為空值或空白</value>
+  </data>
+  <data name="CannotDeactivatePolicy_ActivationDateIsInThePast" xml:space="preserve">
+    <value>無法停用原則。啟用日期是過去時間。</value>
+  </data>
+  <data name="CannotSavePolicySmartGroupNotAssigned" xml:space="preserve">
+    <value>無法儲存自動啟用原則。尚未指派智慧群組。</value>
+  </data>
+  <data name="CASettingsCannotBeConfiguredAtThisOg" xml:space="preserve">
+    <value>自訂屬性設定無法在此企業群組進行設定。</value>
+  </data>
+  <data name="CDNShouldBeEnabled" xml:space="preserve">
+    <value>在啟用 [允許透過 CDN 下載產品] 設定前，請先啟用並儲存 CDN 設定</value>
+  </data>
+  <data name="CharactersAreRestrictedInProductName" xml:space="preserve">
+    <value>產品名稱不應包含 {0} 字元</value>
+  </data>
+  <data name="CloudRelayConnectionShouldFollowFormat" xml:space="preserve">
+    <value>雲端轉送連線應遵循 /DesiredFolder/Temp 格式</value>
+  </data>
+  <data name="ConditionActionAfterDurationHelp" xml:space="preserve">
+    <value>可決定在符合條件的持續時間之後該如何繼續。</value>
+  </data>
+  <data name="ConditionDurationHelp" xml:space="preserve">
+    <value>可設定此條件執行此動作的持續時間。</value>
+  </data>
+  <data name="ConditionFileNameHelp" xml:space="preserve">
+    <value>若要設定條件，請在裝置上下載及/或安裝產品元件之前，先輸入要檢查的裝置路徑和檔案名稱。</value>
+  </data>
+  <data name="ConditionFrequencyHelp" xml:space="preserve">
+    <value>可決定裝置執行此條件以檢查是否已找到此檔案的頻率。</value>
+  </data>
+  <data name="ConditionMetWhen" xml:space="preserve">
+    <value>符合條件的時機</value>
+  </data>
+  <data name="ConditionTestTypeHelp" xml:space="preserve">
+    <value>可決定在裝置上找到此檔案或找不到此檔案時，是否要下載及/或安裝產品元件。</value>
+  </data>
+  <data name="ConfigureAgentTakesToSettingsConfiguration" xml:space="preserve">
+    <value>[設定代理程式] 將帶您前往 [設定] 組態頁面以進行下一個步驟</value>
+  </data>
+  <data name="ConfigureWinmoAgent" xml:space="preserve">
+    <value>設定代理程式</value>
+  </data>
+  <data name="ConfirmContinueWithPreviousActivationDate" xml:space="preserve">
+    <value>您已嘗試變更啟用日期和時間。無法更新使用中產品的啟用日期。若要變更啟用日期，請 [取消] 變更，然後停用產品。編輯產品依需求變更日期，然後 [儲存] 並 [啟用] 產品。若要在此使用中的產品上保留先前的啟用日期，請選取 [確定]。</value>
+  </data>
+  <data name="ConfirmDeactivateDependentPolicy" xml:space="preserve">
+    <value>這項產品是另一項產品的相依產品。停用這項產品會影響以下產品的執行時間: {0}</value>
+  </data>
+  <data name="ConsoleConnectionShouldFollowFormat" xml:space="preserve">
+    <value>主控台連線路徑應遵循 /DesiredFolder/Temp 格式</value>
+  </data>
+  <data name="ContentPull" xml:space="preserve">
+    <value>內容提取</value>
+  </data>
+  <data name="CopyRelayServer" xml:space="preserve">
+    <value>複製轉送伺服器</value>
+  </data>
+  <data name="CopyStaging" xml:space="preserve">
+    <value>複製註冊預備</value>
+  </data>
+  <data name="CouldNotEstablishConnectionToRemoteManagementHost" xml:space="preserve">
+    <value>建立遠端管理主機的連線時發生錯誤。</value>
+  </data>
+  <data name="CustomAttributeDoesNotExist" xml:space="preserve">
+    <value>您試圖存取的自訂屬性不存在。</value>
+  </data>
+  <data name="CustomAttributeNameIsRequired" xml:space="preserve">
+    <value>自訂屬性名稱為必填</value>
+  </data>
+  <data name="CustomAttributesFieldsRequired" xml:space="preserve">
+    <value>所有欄位皆為必填</value>
+  </data>
+  <data name="CustomAttributesOnlyExplanation" xml:space="preserve">
+    <value>使用此批次匯入類型來新增或更新自訂屬性及其設定 (附註: 至少必須有一個自訂屬性值)。</value>
+  </data>
+  <data name="DailyInterval" xml:space="preserve">
+    <value>每日間隔</value>
+  </data>
+  <data name="DailyIntervalPlaceholder" xml:space="preserve">
+    <value>輸入介於 1 到 7 之間的數字</value>
+  </data>
+  <data name="DateTimeIsNotInAllowedRange" xml:space="preserve">
+    <value>僅允許 {0} 到 {1} 之間的日期時間。</value>
+  </data>
+  <data name="DeleteApplicationWithLinkedPoliciesWarning" xml:space="preserve">
+    <value>您無法刪除此應用程式，因為它正用於一或多個產品中。請使用編輯功能將此應用程式與產品中斷連結。完成後，即可刪除應用程式。</value>
+  </data>
+  <data name="DeleteApplicationWithLinkedStagingWarning" xml:space="preserve">
+    <value>您無法刪除此應用程式，因為它正用於一或多個註冊預備定義中。請編輯註冊預備定義以選取其他應用程式，或刪除註冊預備定義。完成後，即可刪除應用程式。</value>
+  </data>
+  <data name="DeleteAttributesWithLinkedRegisteredDevicesWarning" xml:space="preserve">
+    <value>無法刪除目前連結至已註冊裝置的自訂屬性。請先從已註冊裝置中斷連結屬性。</value>
+  </data>
+  <data name="DeleteEventActionWithLinkedPoliciesWarning" xml:space="preserve">
+    <value>您無法刪除此事件動作，因為它正用於一或多個產品中。請使用編輯功能將此事件動作與產品中斷連結。完成後，即可刪除事件動作。</value>
+  </data>
+  <data name="DeleteEventActionWithLinkedStagingWarning" xml:space="preserve">
+    <value>您無法刪除此事件動作，因為它正用於一或多個註冊預備定義中。請編輯註冊預備定義以選取其他事件動作，或刪除註冊預備定義。完成後，即可刪除事件動作。</value>
+  </data>
+  <data name="DeleteFileActionWithLinkedPoliciesWarning" xml:space="preserve">
+    <value>您無法刪除此檔案/動作，因為它正用於一或多個產品中。請使用編輯功能將此檔案/動作與產品中斷連結。完成後，即可刪除檔案/動作。</value>
+  </data>
+  <data name="DeleteFileActionWithLinkedStagingWarning" xml:space="preserve">
+    <value>您無法刪除此檔案/動作，因為它正用於一或多個註冊預備定義中。請編輯註冊預備定義以選取其他檔案/動作，或刪除註冊預備定義。完成後，即可刪除檔案/動作。</value>
+  </data>
+  <data name="DeleteProductWithAppTunnelingEnabledError" xml:space="preserve">
+    <value>無法刪除此產品，因為一或多個安裝應用程式資訊清單是以應用程式通道設定。請移除該設定，並再試一次</value>
+  </data>
+  <data name="DeleteProfileWithLinkedPoliciesWarning" xml:space="preserve">
+    <value>您無法刪除此設定檔，因為它正用於一或多個產品中。請使用編輯功能將此設定檔與產品中斷連結。完成後，即可刪除設定檔。</value>
+  </data>
+  <data name="DeleteProfileWithLinkedStagingWarning" xml:space="preserve">
+    <value>您無法刪除此設定檔，因為它正用於一或多個註冊預備定義中。請編輯註冊預備定義以選取其他設定檔，或刪除註冊預備定義。完成後，即可刪除設定檔。</value>
+  </data>
+  <data name="DeploymentMode" xml:space="preserve">
+    <value>部署模式</value>
+  </data>
+  <data name="DestinationMustBeDirectoryPath" xml:space="preserve">
+    <value>目的地必須是目錄路徑</value>
+  </data>
+  <data name="DeviceConnectionShouldFollowFormat" xml:space="preserve">
+    <value>裝置連線路徑應遵循 /DesiredFolder/Temp 格式</value>
+  </data>
+  <data name="DeviceFriendlyNameLookUpText" xml:space="preserve">
+    <value>裝置易記名稱</value>
+  </data>
+  <data name="DevicePlatformID" xml:space="preserve">
+    <value>裝置平台識別碼</value>
+  </data>
+  <data name="DevicePolicyJobStatusNoJobs" xml:space="preserve">
+    <value>沒有工作項目</value>
+  </data>
+  <data name="DeviceReprocess" xml:space="preserve">
+    <value>裝置重新處理</value>
+  </data>
+  <data name="DeviceReprocessTooltip" xml:space="preserve">
+    <value>允許員工重新處理產品。</value>
+  </data>
+  <data name="DeviceTypeOfTheFileIsInvalid" xml:space="preserve">
+    <value>檔案的 DeviceType 無效。DeviceType 應該是裝置平台，例如 Android、Apple 等。</value>
+  </data>
+  <data name="DeviceWillNeedToBePluggedIn" xml:space="preserve">
+    <value>裝置將需要插入或已充分充電，動作才能進行。當此條件是任何事件/動作的一部分時，訊息和延遲欄位不適用。</value>
+  </data>
+  <data name="DoubleQuotesForCommandLineIsRequired" xml:space="preserve">
+    <value>命令列必須使用雙引號</value>
+  </data>
+  <data name="DownloadAndDeployMotoDcCabFile" xml:space="preserve">
+    <value>如需 Motorola 裝置上指標的報告，請從此處下載並部署 MotoDC.cab 檔案</value>
+  </data>
+  <data name="DownloadFiles" xml:space="preserve">
+    <value>下載檔案</value>
+  </data>
+  <data name="DownloadPullServiceConfig" xml:space="preserve">
+    <value>下載提取服務組態</value>
+  </data>
+  <data name="EditFileServer" xml:space="preserve">
+    <value>編輯檔案伺服器</value>
+  </data>
+  <data name="EditStaging" xml:space="preserve">
+    <value>編輯註冊預備</value>
+  </data>
+  <data name="EndDay" xml:space="preserve">
+    <value>結束日</value>
+  </data>
+  <data name="EndHour" xml:space="preserve">
+    <value>結束小時</value>
+  </data>
+  <data name="EndMinute" xml:space="preserve">
+    <value>結束分鐘</value>
+  </data>
+  <data name="EndMonth" xml:space="preserve">
+    <value>結束月份</value>
+  </data>
+  <data name="EndTimeShouldBeLaterThanStartTime" xml:space="preserve">
+    <value>結束時間應晚於開始時間</value>
+  </data>
+  <data name="EndTimeUtc" xml:space="preserve">
+    <value>結束時間 (UTC)</value>
+  </data>
+  <data name="EndYear" xml:space="preserve">
+    <value>結束年份</value>
+  </data>
+  <data name="EnterAdminModeConfirmed" xml:space="preserve">
+    <value>已確認進入管理員模式</value>
+  </data>
+  <data name="EnterAdminModeFailed" xml:space="preserve">
+    <value>進入管理員模式失敗</value>
+  </data>
+  <data name="EnterAdminModeRefused" xml:space="preserve">
+    <value>進入管理員模式已遭拒</value>
+  </data>
+  <data name="EnterAdminModeRequested" xml:space="preserve">
+    <value>已要求進入管理員模式</value>
+  </data>
+  <data name="EnterAdminModeSuccess" xml:space="preserve">
+    <value>進入管理員模式成功</value>
+  </data>
+  <data name="ErrorParsingRemoteFeature" xml:space="preserve">
+    <value>剖析遠端協助功能「{0}」時發生錯誤</value>
+  </data>
+  <data name="ErrorReturnedFromHoneywellServer" xml:space="preserve">
+    <value>Honeywell 伺服器傳回錯誤</value>
+  </data>
+  <data name="ErrorReturnedFromZebraServer" xml:space="preserve">
+    <value>Zebra 伺服器傳回錯誤</value>
+  </data>
+  <data name="EventActionAndroidPrerequisite" xml:space="preserve">
+    <value>請至少新增一個「條件」以觸發「動作」。您可以新增之前建立的條件，或使用 [新增條件] 選項在此建立新條件。您可以一次選擇多個條件類型，但特定類型只能選取一個條件。如果所選條件與已選取的條件類型相同，它會取代先前選取的條件。允許的條件類型為 [電池閾值]、[週期性排程] 和 [AC 電源]。</value>
+  </data>
+  <data name="EventActionLinkedToPolicyOrStagingAndCanNotBeMovedToNonAccessibleOgs" xml:space="preserve">
+    <value>事件動作已連結至某些產品或註冊預備套件。因此，事件動作無法移動至連結元件無法存取的 OG。</value>
+  </data>
+  <data name="ExitAdminModeConfirmed" xml:space="preserve">
+    <value>已確認退出管理員模式</value>
+  </data>
+  <data name="ExitAdminModeFailed" xml:space="preserve">
+    <value>退出管理員模式失敗</value>
+  </data>
+  <data name="ExitAdminModeRefused" xml:space="preserve">
+    <value>退出管理員模式已遭拒</value>
+  </data>
+  <data name="ExitAdminModeRequested" xml:space="preserve">
+    <value>已要求退出管理員模式</value>
+  </data>
+  <data name="ExitAdminModeSuccess" xml:space="preserve">
+    <value>退出管理員模式成功</value>
+  </data>
+  <data name="ExitAirwatchLauncher" xml:space="preserve">
+    <value>退出 Launcher</value>
+  </data>
+  <data name="ExitAirwatchLauncherConfirmed" xml:space="preserve">
+    <value>已確認退出 Launcher</value>
+  </data>
+  <data name="ExitAirwatchLauncherFailed" xml:space="preserve">
+    <value>退出 Launcher 失敗</value>
+  </data>
+  <data name="ExitAirwatchLauncherRefused" xml:space="preserve">
+    <value>退出 Launcher 已遭拒</value>
+  </data>
+  <data name="ExitAirwatchLauncherRequested" xml:space="preserve">
+    <value>已要求退出 Launcher</value>
+  </data>
+  <data name="ExitAirWatchLauncherSuccess" xml:space="preserve">
+    <value>退出 Launcher 成功</value>
+  </data>
+  <data name="Expedited" xml:space="preserve">
+    <value>加速</value>
+  </data>
+  <data name="ExpeditedProductTooltip" xml:space="preserve">
+    <value>必須停用產品才能編輯此選項。</value>
+  </data>
+  <data name="ExpeditedProvisioningPolicyEdit" xml:space="preserve">
+    <value>加速佈建原則編輯</value>
+  </data>
+  <data name="ExpeditedProvisioningPolicyEditHelp" xml:space="preserve">
+    <value>控制對佈建原則中之編輯加速部署選項的存取權。</value>
+  </data>
+  <data name="FileActionLinkedToPolicyOrStagingAndCanNotBeMovedToNonAccessibleOgs" xml:space="preserve">
+    <value>檔案動作已連結至某些產品或註冊預備套件。因此無法移動至連結元件無法存取的 OG。</value>
+  </data>
+  <data name="FileActionsFilePathError" xml:space="preserve">
+    <value>名稱與下載路徑加起來不得超過 255 個字元</value>
+  </data>
+  <data name="FileFound" xml:space="preserve">
+    <value>找到檔案</value>
+  </data>
+  <data name="FileServerAssociatedWithEventActionArgs" xml:space="preserve">
+    <value>{0} 檔案伺服器與 {1} 搭配使用</value>
+  </data>
+  <data name="FileServerDeleteFailed" xml:space="preserve">
+    <value>由於以下事件動作正在使用此檔案伺服器，您無法將其刪除。請使用編輯功能將此檔案伺服器與事件動作分離。完成後，您即可刪除檔案伺服器</value>
+  </data>
+  <data name="FileServerDeleteSuccessful" xml:space="preserve">
+    <value>已成功刪除檔案伺服器</value>
+  </data>
+  <data name="FileServerDetails" xml:space="preserve">
+    <value>檔案伺服器詳細資料</value>
+  </data>
+  <data name="FileServerNameIsRequired" xml:space="preserve">
+    <value>需要檔案伺服器名稱</value>
+  </data>
+  <data name="FileServers" xml:space="preserve">
+    <value>檔案伺服器</value>
+  </data>
+  <data name="FileServerUsernameIsRequired" xml:space="preserve">
+    <value>需要檔案伺服器使用者名稱</value>
+  </data>
+  <data name="FileSyncDownload" xml:space="preserve">
+    <value>檔案同步下載</value>
+  </data>
+  <data name="FileSyncUpload" xml:space="preserve">
+    <value>檔案同步上傳</value>
+  </data>
+  <data name="FirstFieldShouldBeSmallerThanSecondField" xml:space="preserve">
+    <value>無效值。請確認第一欄是數字且小於第二欄數字。</value>
+  </data>
+  <data name="FiveDays" xml:space="preserve">
+    <value>5 天</value>
+  </data>
+  <data name="GenerateHoneywellBarcode" xml:space="preserve">
+    <value>產生 Honeywell 條碼</value>
+  </data>
+  <data name="GenerateHoneywellBarcodeDisclaimerText" xml:space="preserve">
+    <value>這會呼叫 Honeywell Enterprise Provisioner 條碼產生器建立代表在此頁面選取之資料的條碼。
+
+VMware 無法控制此站台，而且明確放棄該內容的任何責任。如果您從此頁面產生條碼，則風險自負。</value>
+  </data>
+  <data name="HideActionBar" xml:space="preserve">
+    <value>最小化標題列</value>
+  </data>
+  <data name="Honeywell" xml:space="preserve">
+    <value>Honeywell Enterprise Provisioner</value>
+  </data>
+  <data name="HoneywellBarcode" xml:space="preserve">
+    <value>Honeywell 條碼</value>
+  </data>
+  <data name="HoneywellEP" xml:space="preserve">
+    <value>Honeywell Enterprise Provisioner</value>
+  </data>
+  <data name="HoneywellEPUrl" xml:space="preserve">
+    <value>Honeywell Enterprise Provisioner URL</value>
+  </data>
+  <data name="HostPlaceHolder" xml:space="preserve">
+    <value>* 或 1.2.3.4 或 10.0.0.0-10.0.0.255</value>
+  </data>
+  <data name="HourlyInterval" xml:space="preserve">
+    <value>每小時間隔</value>
+  </data>
+  <data name="HourlyIntervalPlaceholder" xml:space="preserve">
+    <value>輸入介於 1 到 24 之間的數字</value>
+  </data>
+  <data name="HttpsNotSupportedForPushRelayServers" xml:space="preserve">
+    <value>推播轉送伺服器不支援裝置連線 Https 通訊協定</value>
+  </data>
+  <data name="HubPackageAlreadyExists" xml:space="preserve">
+    <value>已存在具有相同檔案名稱或套件名稱與版本的 Hub 套件</value>
+  </data>
+  <data name="IntelligentHub" xml:space="preserve">
+    <value>Intelligent Hub</value>
+  </data>
+  <data name="InvalidDateTimeInputs" xml:space="preserve">
+    <value>輸入的日期時間無效或不完整。請輸入正確的值。</value>
+  </data>
+  <data name="InvalidHoneywellRelayServerProtocol" xml:space="preserve">
+    <value>Honeywell 不支援此轉送伺服器通訊協定</value>
+  </data>
+  <data name="InvalidOrganizationGroupsForStagingAndProductionServers" xml:space="preserve">
+    <value>註冊預備和實際執行伺服器的組織群組無效</value>
+  </data>
+  <data name="IOTGateway" xml:space="preserve">
+    <value>IOTGateway</value>
+  </data>
+  <data name="IsExpedited" xml:space="preserve">
+    <value>加速部署</value>
+  </data>
+  <data name="LastContactDate" xml:space="preserve">
+    <value>上次聯絡日期</value>
+  </data>
+  <data name="LastErrorCode" xml:space="preserve">
+    <value>上次的錯誤碼</value>
+  </data>
+  <data name="Launcher" xml:space="preserve">
+    <value>Launcher</value>
+  </data>
+  <data name="LauncherAction" xml:space="preserve">
+    <value>Launcher</value>
+  </data>
+  <data name="LauncherCheckInCheckOutCondtion" xml:space="preserve">
+    <value>在 Launcher 簽入或簽出時採取動作。</value>
+  </data>
+  <data name="LauncherLogout" xml:space="preserve">
+    <value>啟動器登出</value>
+  </data>
+  <data name="LauncherMiscAppWildcardRuleInfo" xml:space="preserve">
+    <value>您可以使用「*」字元自動允許符合該模式的應用程式。範例：com.example.*</value>
+  </data>
+  <data name="LegacyAgent" xml:space="preserve">
+    <value>代理程式</value>
+  </data>
+  <data name="LegacyAirwatchAgent" xml:space="preserve">
+    <value>AirWatch Agent</value>
+  </data>
+  <data name="LinkIsRequired" xml:space="preserve">
+    <value>需要檔案伺服器連結</value>
+  </data>
+  <data name="LowMemCondition" xml:space="preserve">
+    <value>記憶體不足狀態</value>
+  </data>
+  <data name="ManifestItemAlreadyExists" xml:space="preserve">
+    <value>資訊清單項目已存在。請另選一個。</value>
+  </data>
+  <data name="MaxPullConnections" xml:space="preserve">
+    <value>提取連線數上限</value>
+  </data>
+  <data name="MaxPullConnectionsValueCannotBeNullOrInvalid" xml:space="preserve">
+    <value>提取連線數上限的值不可為空值或無效</value>
+  </data>
+  <data name="MaxPushConnections" xml:space="preserve">
+    <value>推送連線數上限</value>
+  </data>
+  <data name="MaxPushConnectionsValueCannotBeNullOrInvalid" xml:space="preserve">
+    <value>推送連線數上限的值不可為空值或無效</value>
+  </data>
+  <data name="MaxRSCCPushConnectionHelpText" xml:space="preserve">
+    <value>修改此值可節流將內容推送至轉送伺服器的同時連線數上限。預設值: 50 個連線</value>
+  </data>
+  <data name="NoContentAddedToProduct" xml:space="preserve">
+    <value>未在產品中加入任何應用程式或檔案動作。</value>
+  </data>
+  <data name="NotTested" xml:space="preserve">
+    <value>未測試</value>
+  </data>
+  <data name="NoVPNProfileSelected" xml:space="preserve">
+    <value>請選取 VPN 設定檔以設定個別應用程式 VPN</value>
+  </data>
+  <data name="OemBuildRuleHelpText" xml:space="preserve">
+    <value>具有 OEM 組建編號版本和「&gt;」和「&lt;」的指派規則，僅在版本具有相同格式，且以 ASCII 進行比較時有效</value>
+  </data>
+  <data name="OemBuildVersionShouldHaveDeviceManufacturerRule" xml:space="preserve">
+    <value>使用「&gt;」和「&lt;」運算子時，OEM 組建編號版本的規則也應納入裝置製造商屬性 (僅允許 AND 條件)</value>
+  </data>
+  <data name="OGDeleteWarningForProducts" xml:space="preserve">
+    <value>與此組織群組相關聯的元件可能會連結至一個或多個與一個或多個父系組織群組相關聯的產品。刪除此組織群組會致使該些在一個或多個父系企業群組中的產品無效。建議您在刪除此企業群組之前先將元件取消連結，或是同時刪除父系產品。</value>
+  </data>
+  <data name="OnlyAppWithSpecifiedVersionWillBeUninstalled" xml:space="preserve">
+    <value>所選取的應用程式版本會解除安裝。此應用程式的任何其他版本仍將保留在裝置上。</value>
+  </data>
+  <data name="OnlyFileServersWithCGCanBeAdded" xml:space="preserve">
+    <value>檔案伺服器必須已設定 Content Gateway，才能顯示在此清單上並新增至 [事件動作]</value>
+  </data>
+  <data name="OnlyNumericValuesAreAllowedForSpecificOperators" xml:space="preserve">
+    <value>對於 &gt;、&gt;=、&lt;、&lt;= 和 BETWEEN 等運算子，僅可使用數值</value>
+  </data>
+  <data name="OrganizationGroupIsRequired" xml:space="preserve">
+    <value>需要企業群組</value>
+  </data>
+  <data name="OutRanked" xml:space="preserve">
+    <value>高於等級</value>
+  </data>
+  <data name="PasswordForPullServiceCertificate" xml:space="preserve">
+    <value>提取服務憑證密碼</value>
+  </data>
+  <data name="PasswordIsRequired" xml:space="preserve">
+    <value>需要檔案伺服器密碼</value>
+  </data>
+  <data name="PinnedApps" xml:space="preserve">
+    <value>固定的應用程式</value>
+  </data>
+  <data name="PleaseEnterValidURL" xml:space="preserve">
+    <value>請輸入有效的 URL</value>
+  </data>
+  <data name="PolicyEngineQueue" xml:space="preserve">
+    <value>Policy Engine 佇列</value>
+  </data>
+  <data name="PolicyEngineQueueMenuTitle" xml:space="preserve">
+    <value>Policy Engine 佇列</value>
+  </data>
+  <data name="PolicyId" xml:space="preserve">
+    <value>原則識別碼</value>
+  </data>
+  <data name="PortPlaceHolder" xml:space="preserve">
+    <value>* 或 80 或 8080-8085</value>
+  </data>
+  <data name="ProductDeviceForceReprocessFailed" xml:space="preserve">
+    <value>產品裝置強制重新處理失敗</value>
+  </data>
+  <data name="ProductDownloadsThroughCDN" xml:space="preserve">
+    <value>透過 CDN 下載產品</value>
+  </data>
+  <data name="ProductionServerDescription" xml:space="preserve">
+    <value>實際執行伺服器已設定為接收生產內容，例如：檔案動作和應用程式。</value>
+  </data>
+  <data name="ProductProvisioning_ColdBoot" xml:space="preserve">
+    <value>冷開機</value>
+  </data>
+  <data name="ProductProvisioning_InstallApplication" xml:space="preserve">
+    <value>應用程式 - 安裝</value>
+  </data>
+  <data name="ProductProvisioning_InstallEventAction" xml:space="preserve">
+    <value>事件動作 - 安裝</value>
+  </data>
+  <data name="ProductProvisioning_InstallFilesActions" xml:space="preserve">
+    <value>檔案/動作 - 安裝</value>
+  </data>
+  <data name="ProductProvisioning_InstallProduct" xml:space="preserve">
+    <value>產品 - 安裝</value>
+  </data>
+  <data name="ProductProvisioning_InstallProfile" xml:space="preserve">
+    <value>設定檔 - 安裝</value>
+  </data>
+  <data name="ProductProvisioning_Reboot" xml:space="preserve">
+    <value>重新開機</value>
+  </data>
+  <data name="ProductProvisioning_UninstallApplication" xml:space="preserve">
+    <value>應用程式 - 解除安裝</value>
+  </data>
+  <data name="ProductProvisioning_UninstallEventAction" xml:space="preserve">
+    <value>事件動作 - 解除安裝</value>
+  </data>
+  <data name="ProductProvisioning_UninstallFilesActions" xml:space="preserve">
+    <value>檔案/動作 - 解除安裝</value>
+  </data>
+  <data name="ProductProvisioning_UninstallProduct" xml:space="preserve">
+    <value>產品 - 解除安裝</value>
+  </data>
+  <data name="ProductProvisioning_UninstallProfile" xml:space="preserve">
+    <value>設定檔 - 解除安裝</value>
+  </data>
+  <data name="ProductProvisioning_WarmBoot" xml:space="preserve">
+    <value>暖開機</value>
+  </data>
+  <data name="ProductProvisioningDeviceConnectionHttpsSupportFeatureDisabled" xml:space="preserve">
+    <value>裝置連線 Https 通訊協定功能已停用</value>
+  </data>
+  <data name="ProductSetForceReprocess" xml:space="preserve">
+    <value>強制重新處理</value>
+  </data>
+  <data name="ProductSetNameArgAlreadyExistsPleaseChooseAnother" xml:space="preserve">
+    <value>產品組名稱 {0} 已存在。請選擇其他名稱。</value>
+  </data>
+  <data name="ProfileLinkedToPolicyOrStagingAndCanNotBeMovedToNonAccessibleOgs" xml:space="preserve">
+    <value>設定檔已連結至某些產品或註冊預備套件。因此，設定檔無法移動至連結元件無法存取的 OG。</value>
+  </data>
+  <data name="ProvisioningCommandDeleted" xml:space="preserve">
+    <value>已刪除佈建命令</value>
+  </data>
+  <data name="ProvisioningEventAction" xml:space="preserve">
+    <value>事件動作</value>
+  </data>
+  <data name="ProvisioningEventActions" xml:space="preserve">
+    <value>事件動作</value>
+  </data>
+  <data name="PublishOnRelayServers" xml:space="preserve">
+    <value>在轉送伺服器上發佈</value>
+  </data>
+  <data name="PullRelayServerNotAllowed" xml:space="preserve">
+    <value>選取的轉送伺服器類型無效</value>
+  </data>
+  <data name="QueueContentOnRelayServer" xml:space="preserve">
+    <value>在沒有獲指派裝置之轉送伺服器上的佇列內容</value>
+  </data>
+  <data name="RelayServerCloudConnector" xml:space="preserve">
+    <value>轉送伺服器雲端連接器</value>
+  </data>
+  <data name="RelayServerCloudConnectorBatchSize" xml:space="preserve">
+    <value>轉送伺服器雲端連接器批次大小</value>
+  </data>
+  <data name="RelayServerCloudConnectorBatchSizeHelp" xml:space="preserve">
+    <value>每批次從 WS1 伺服器下載的內容指示數目上限。其他指示將在後續批次中進行處理。</value>
+  </data>
+  <data name="RelayServerCloudConnectorEnableHelp" xml:space="preserve">
+    <value>啟用此設定會將雲端連接器轉送設定為從 VMware Cloud 提取內容，並推送到您網路中的轉送伺服器。</value>
+  </data>
+  <data name="RelayServerCloudRelayAlreadyExists" xml:space="preserve">
+    <value>Cloud Relay 連線的主機名稱、連接埠、使用者和路徑均與另一個轉送伺服器相同。</value>
+  </data>
+  <data name="RelayServerCloudRelayConnection" xml:space="preserve">
+    <value>Cloud Relay 連線</value>
+  </data>
+  <data name="RelayServerCountConfirm" xml:space="preserve">
+    <value>內容將加入 {0} 轉送伺服器的佇列。確定要繼續嗎?</value>
+  </data>
+  <data name="RelayServerDoesNotExists" xml:space="preserve">
+    <value>所選 OG 中沒有任何轉送伺服器。</value>
+  </data>
+  <data name="RelayServerDomainUserFormat" xml:space="preserve">
+    <value>可接受的網域使用者格式: username@domain，網域\使用者</value>
+  </data>
+  <data name="RelayServerDomainUserFormatError" xml:space="preserve">
+    <value>網域使用者格式錯誤</value>
+  </data>
+  <data name="RelayServerId" xml:space="preserve">
+    <value>轉送伺服器 ID</value>
+  </data>
+  <data name="RelayServerOnly" xml:space="preserve">
+    <value>僅限轉送伺服器</value>
+  </data>
+  <data name="RelayServerOnlyHelp" xml:space="preserve">
+    <value>請確定指派至此產品的所有裝置都已設定轉送伺服器。</value>
+  </data>
+  <data name="RelayServerProtocolHTTPS" xml:space="preserve">
+    <value>HTTPS</value>
+  </data>
+  <data name="RelayServerPullConnectionInvalidPullDiscoveryText" xml:space="preserve">
+    <value>提取探索文字不應包含 127.0.0.1</value>
+  </data>
+  <data name="RelayServerPushOrCloudRelay" xml:space="preserve">
+    <value>推送/雲端轉送</value>
+  </data>
+  <data name="RelayServerTypeCloudRelay" xml:space="preserve">
+    <value>Cloud Relay</value>
+  </data>
+  <data name="RelayServerUserRestrictionError" xml:space="preserve">
+    <value>使用者名稱/密碼中不允許使用「:」字元。</value>
+  </data>
+  <data name="RelayServerWithDeviceServicesBackup" xml:space="preserve">
+    <value>轉送伺服器使用 Workspace ONE 伺服器作為備份</value>
+  </data>
+  <data name="RemoveFromLauncher" xml:space="preserve">
+    <value>從 Launcher 移除</value>
+  </data>
+  <data name="ReportStatusBatchSize" xml:space="preserve">
+    <value>報告狀態批次大小</value>
+  </data>
+  <data name="ReportStatusBatchSizeValueCannotBeNullOrInvalid" xml:space="preserve">
+    <value>報告狀態批次大小的值不可為空值或無效</value>
+  </data>
+  <data name="RequestDeviceServicesPinsNumberOfCertificatesReturned" xml:space="preserve">
+    <value>要求裝置服務 PIN: 傳回的憑證數</value>
+  </data>
+  <data name="RequestDeviceServicesPinsNumberOfHostsReturned" xml:space="preserve">
+    <value>要求裝置服務 PIN: 傳回的主機數</value>
+  </data>
+  <data name="RequestDeviceServicesPinsUpdated" xml:space="preserve">
+    <value>要求裝置服務 PIN 已更新</value>
+  </data>
+  <data name="RestartAirWatchAgent" xml:space="preserve">
+    <value>重新啟動 AirWatch Agent</value>
+  </data>
+  <data name="RSCCReportBatchSizeHelpText" xml:space="preserve">
+    <value>當內容散發至目標轉送伺服器時，Cloud Relay 會向 Workspace ONE Cloud 報告各轉送伺服器的傳輸狀態。修改此值可節流每個批次所包含的轉送伺服器狀態數量。預設值: 每批次 25 個狀態</value>
+  </data>
+  <data name="RSFileSize" xml:space="preserve">
+    <value>檔案大小 (以位元組為單位)</value>
+  </data>
+  <data name="Selectawifiproile" xml:space="preserve">
+    <value>選擇裝置掃描條碼後使用的 Wi-Fi 設定檔，來與一或多個 FTP 伺服器連線以下載 {0}。</value>
+  </data>
+  <data name="Selectfrompreviouslyconfiguredpackages" xml:space="preserve">
+    <value>選擇先前設定的 {0} 套件，或從 Workspace ONE UEM 資源入口網站下載最新版</value>
+  </data>
+  <data name="SelectProductFilter" xml:space="preserve">
+    <value>選取要篩選的產品</value>
+  </data>
+  <data name="Sideloadprereqs1" xml:space="preserve">
+    <value>1. 若您決定要使用最新版的 {0}，則需從 MyAirWatch 資源入口網站下載與上傳。</value>
+  </data>
+  <data name="Sideloadstagingallowsyoutodownloadandinstall" xml:space="preserve">
+    <value>側載註冊預備方法可讓您在裝置上下載和安裝 {0}，以便開始自動註冊程序。這將所有的必要元件結合在側載到裝置的一個檔案中，以便簡化註冊程序。</value>
+  </data>
+  <data name="SingleAppModeWildcardRule" xml:space="preserve">
+    <value>「雜項應用程式」萬用字元規則僅可新增到「單一應用程式模式」設定檔的 [隱藏應用程式] 索引標籤。</value>
+  </data>
+  <data name="SmartGroupNotAssignedForAnActiveProduct" xml:space="preserve">
+    <value>需要為使用中的產品指派智慧群組。請在移除所有智慧群組指派之前新增智慧群組或停用產品。</value>
+  </data>
+  <data name="SourceLocalizationKey" xml:space="preserve">
+    <value>來源</value>
+  </data>
+  <data name="StagingAddManifestInfo" xml:space="preserve">
+    <value>「新增資訊清單」可定義註冊預備期間要套用的其他內容與命令。選取要執行的任何動作之前，必須在 [佈建] &gt; [元件] 功能表中建立「應用程式」、「設定檔」與「檔案/動作」等元件。</value>
+  </data>
+  <data name="StagingPackageNameLengthExceeded" xml:space="preserve">
+    <value>註冊預備套件名稱超過 {0} 個字元的上限。請重新命名，並再次儲存註冊預備套件。</value>
+  </data>
+  <data name="StagingPackageNameShouldNotContainTheFollowingCharacters" xml:space="preserve">
+    <value>註冊預備套件名稱不應包含 {0} 字元</value>
+  </data>
+  <data name="StagingServerDescription" xml:space="preserve">
+    <value>在註冊時，配置註冊預備用伺服器來接收註冊預備的內容，比如：註冊期間的 Hub 套件和進階註冊預備配置。</value>
+  </data>
+  <data name="StartDay" xml:space="preserve">
+    <value>開始日</value>
+  </data>
+  <data name="StartHour" xml:space="preserve">
+    <value>開始小時</value>
+  </data>
+  <data name="StartMinute" xml:space="preserve">
+    <value>開始分鐘</value>
+  </data>
+  <data name="StartMonth" xml:space="preserve">
+    <value>開始月份</value>
+  </data>
+  <data name="StartTimeUtc" xml:space="preserve">
+    <value>開始時間 (UTC)</value>
+  </data>
+  <data name="StartYear" xml:space="preserve">
+    <value>開始年份</value>
+  </data>
+  <data name="StopACMRequested" xml:space="preserve">
+    <value>已要求停止 ACM</value>
+  </data>
+  <data name="StoreOsUpdatesFilesOnRelayServer" xml:space="preserve">
+    <value>在轉送伺服器上儲存作業系統更新檔案</value>
+  </data>
+  <data name="StoreOsUpdatesFilesOnRelayServerHelp" xml:space="preserve">
+    <value>空間不足的 Windows Mobile 裝置可使用此功能，以改善作業系統更新。旗標設定完成後，所有大型的映像檔都會保留在轉送伺服器上。裝置上的 OSUPDATE 公用程式會在更新程序期間每次下拉一個檔案。若未設定旗標，所有檔案都會複製到裝置，且作業系統更新公用程式會在本機上執行這些檔案。</value>
+  </data>
+  <data name="Tags" xml:space="preserve">
+    <value>標記</value>
+  </data>
+  <data name="TemplateModeWildcardRule" xml:space="preserve">
+    <value>「雜項應用程式萬用字元」規則僅可新增到「範本模式」設定檔的 [隱藏應用程式] 索引標籤。</value>
+  </data>
+  <data name="TestConnectionStatus" xml:space="preserve">
+    <value>測試連線狀態</value>
+  </data>
+  <data name="TimeFormatPlaceholder" xml:space="preserve">
+    <value>HH:MM</value>
+  </data>
+  <data name="Typetoselectanagentpackage" xml:space="preserve">
+    <value>選擇 {0}</value>
+  </data>
+  <data name="VersionIncrementMessage" xml:space="preserve">
+    <value>顯示目前的版本。一旦儲存變更，此數目將會累加。</value>
+  </data>
+  <data name="ViewAndManageCustomAttributeAssignmentRules" xml:space="preserve">
+    <value>檢視及管理自訂屬性指派原則</value>
+  </data>
+  <data name="ViewApplicationAssignments" xml:space="preserve">
+    <value>檢視應用程式指派</value>
+  </data>
+  <data name="ViewAttribute" xml:space="preserve">
+    <value>檢視屬性</value>
+  </data>
+  <data name="ViewCondition" xml:space="preserve">
+    <value>檢視條件</value>
+  </data>
+  <data name="ViewRelayServer" xml:space="preserve">
+    <value>檢視轉送伺服器</value>
+  </data>
+  <data name="ViewStaging" xml:space="preserve">
+    <value>檢視註冊預備</value>
+  </data>
+  <data name="VmwareResourcePortal" xml:space="preserve">
+    <value>VMware 資源入口網站</value>
+  </data>
+  <data name="VPNAccessNotApplicableInfoMessage" xml:space="preserve">
+    <value>如果應用程式是在產品的解除安裝應用程式資訊清單中使用，則 [VPN 管道] 將設定為 [不適用]</value>
+  </data>
+  <data name="WeeklyInterval" xml:space="preserve">
+    <value>每週間隔</value>
+  </data>
+  <data name="WeeklyIntervalPlaceholder" xml:space="preserve">
+    <value>輸入介於 1 到 52 之間的數字</value>
+  </data>
+  <data name="Wizardenrollmentcomments" xml:space="preserve">
+    <value>請逐步遵循本精靈所提供的步驟來設定轉送伺服器、Wi-Fi 設定檔、{0}、使用者註冊預備和條碼設定。完成時，您將會收到條碼，可用來註冊您的裝置，必要時還能用來取得額外說明。</value>
+  </data>
+  <data name="Wizardsideloadenrollmentcomments" xml:space="preserve">
+    <value>請遵循逐步精靈的指示，設定 {0}、使用者註冊預備和側載組態。完成後，如有必要，您會收到要載入裝置的側載檔案和其他說明的存取權。</value>
+  </data>
+  <data name="Wizardwebenrollmentcomments" xml:space="preserve">
+    <value>只要逐步按照此精靈操作，即可正確設定 AirWatch Agent 以進行註冊。完成後，如有必要，您會收到其他說明的存取權。</value>
+  </data>
+  <data name="WorkSpaceONECertificate" xml:space="preserve">
+    <value>Workspace ONE 憑證</value>
+  </data>
+  <data name="WorkSpaceOneLauncher" xml:space="preserve">
+    <value>Workspace ONE Launcher</value>
+  </data>
+  <data name="ZQ510" xml:space="preserve">
+    <value>ZQ510</value>
+  </data>
+  <data name="ZQ520" xml:space="preserve">
+    <value>ZQ520</value>
+  </data>
+</root>

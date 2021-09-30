@@ -1,0 +1,486 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AddedPolices" xml:space="preserve">
+    <value>Přidané zásady</value>
+  </data>
+  <data name="AssignBaseline" xml:space="preserve">
+    <value>Přiřadit standardní hodnotu</value>
+  </data>
+  <data name="AssignBaselineDescription" xml:space="preserve">
+    <value>Vyberte smart skupinu, které chcete přiřadit standardní hodnoty.</value>
+  </data>
+  <data name="AssignBaselineDescription2" xml:space="preserve">
+    <value>Vyberte smart skupinu (skupiny) pro přiřazení standardní hodnoty. Po výběru možnosti Vyloučení můžete vyloučit určité skupiny. Pokud přidáte vyloučení do publikované standardní hodnoty, budou standardní hodnoty odebrány z vyloučených zařízení.</value>
+  </data>
+  <data name="AssignBaselineLocationGroupNotFound" xml:space="preserve">
+    <value>Nelze přiřadit standardní hodnoty, protože nebyla nalezena organizační skupina.</value>
+  </data>
+  <data name="AssignBaselineNotFound" xml:space="preserve">
+    <value>Nelze přiřadit standardní hodnoty, protože nebyly nalezeny.</value>
+  </data>
+  <data name="AssignedDevicesArg" xml:space="preserve">
+    <value>Přiřazeno: {0} zařízení</value>
+  </data>
+  <data name="Assignments" xml:space="preserve">
+    <value>Přiřazení</value>
+  </data>
+  <data name="Baseline" xml:space="preserve">
+    <value>Standardní hodnota</value>
+  </data>
+  <data name="BaselineAssigned" xml:space="preserve">
+    <value>Standardní hodnota přiřazena</value>
+  </data>
+  <data name="BaselineAssignmentFailed" xml:space="preserve">
+    <value>Nelze přiřadit standardní hodnoty. Zkuste to znovu.</value>
+  </data>
+  <data name="BaselineAssignmentSuccessful" xml:space="preserve">
+    <value>Standardní hodnoty byly úspěšně publikovány do aktualizovaného přiřazení.</value>
+  </data>
+  <data name="BaselineBlobFailed" xml:space="preserve">
+    <value>Nepodařilo se vytvořit standardní hodnoty, protože balíček nelze vytvořit.</value>
+  </data>
+  <data name="BaselineCombinedBlobFailed" xml:space="preserve">
+    <value>Nepodařilo se vytvořit standardní hodnoty, protože balíček obsahující vlastní nastavení nelze vytvořit.</value>
+  </data>
+  <data name="BaselineContainsExe" xml:space="preserve">
+    <value>Vaše vlastní standardní hodnoty obsahují spustitelné soubory. Odstraňte je a zkuste to znovu.</value>
+  </data>
+  <data name="BaselineCopyFailed" xml:space="preserve">
+    <value>Nepodařilo se zkopírovat vybrané standardní hodnoty.</value>
+  </data>
+  <data name="BaselineCopySuccessful" xml:space="preserve">
+    <value>Vybrané standardní hodnoty byly úspěšně zkopírovány.</value>
+  </data>
+  <data name="BaselineCreated" xml:space="preserve">
+    <value>Standardní hodnota vytvořena</value>
+  </data>
+  <data name="BaselineCreationFailed" xml:space="preserve">
+    <value>Vytvoření standardní hodnoty selhalo.</value>
+  </data>
+  <data name="BaselineCreationSuccessful" xml:space="preserve">
+    <value>Standardní hodnoty úspěšně uloženy.</value>
+  </data>
+  <data name="BaselineCustomizationFailed" xml:space="preserve">
+    <value>Nepodařilo se vytvořit standardní hodnoty, protože vlastní nastavení nelze použít.</value>
+  </data>
+  <data name="BaselineDeleted" xml:space="preserve">
+    <value>Standardní hodnota odstraněna</value>
+  </data>
+  <data name="BaselineDeleteFailed" xml:space="preserve">
+    <value>Odstranění standardních hodnot se nezdařilo. Zkuste to znovu.</value>
+  </data>
+  <data name="BaselineDeleteSuccessful" xml:space="preserve">
+    <value>Standardní hodnoty byly úspěšně odstraněny.</value>
+  </data>
+  <data name="BaselineDetails" xml:space="preserve">
+    <value>Název a verze standardní hodnoty</value>
+  </data>
+  <data name="BaselineErrorCode" xml:space="preserve">
+    <value>Kód chyby zařízení</value>
+  </data>
+  <data name="BaselineErrorMessage" xml:space="preserve">
+    <value>Chybová zpráva</value>
+  </data>
+  <data name="BaselineFileCorrupt" xml:space="preserve">
+    <value>Vaše vlastní standardní hodnoty nejsou platným souborem zip.</value>
+  </data>
+  <data name="BaselineFileEmpty" xml:space="preserve">
+    <value>Vaše vlastní standardní hodnoty jsou zřejmě prázdné. Zkuste to znovu s platným souborem.</value>
+  </data>
+  <data name="BaselineFileMissingPolicies" xml:space="preserve">
+    <value>Soubor vybraný pro vlastní standardní hodnoty nesplňuje doporučené požadavky. Upravte je podle dokumentace.</value>
+  </data>
+  <data name="BaselineFileSizeError" xml:space="preserve">
+    <value>Vaše vlastní standardní hodnoty překročily limit maximální velikosti 5 MB.</value>
+  </data>
+  <data name="BaselineGetPolicyTreeFailed" xml:space="preserve">
+    <value>Nepodařilo se načíst zásady pro vlastní nastavení, zkuste to znovu později.</value>
+  </data>
+  <data name="BaselineInvalidRequest" xml:space="preserve">
+    <value>Zkontrolujte, že jsou vyplněná všechna povinná pole.</value>
+  </data>
+  <data name="BaselineMissingPolicies" xml:space="preserve">
+    <value>Nepodařilo se vytvořit standardní hodnoty, protože nejméně jedna zásada byla odstraněna nebo není k dispozici.</value>
+  </data>
+  <data name="BaselineModified" xml:space="preserve">
+    <value>Standardní hodnota upravena</value>
+  </data>
+  <data name="BaselineName" xml:space="preserve">
+    <value>Název standardní hodnoty</value>
+  </data>
+  <data name="BaselinePendingReboot" xml:space="preserve">
+    <value>Restart čeká na vyřízení</value>
+  </data>
+  <data name="BaselinePolicyFieldError" xml:space="preserve">
+    <value>Nepodařilo se vytvořit standardní hodnoty, protože nejméně jedna zásada má neplatné hodnoty.</value>
+  </data>
+  <data name="BaselinePolicyGenerationFailed" xml:space="preserve">
+    <value>Nepodařilo se vytvořit standardní hodnoty, protože nejméně jednu zásadu nelze vytvořit.</value>
+  </data>
+  <data name="Baselines" xml:space="preserve">
+    <value>Standardní hodnoty</value>
+  </data>
+  <data name="BaselinesBlobID" xml:space="preserve">
+    <value>ID objektu blob standardních hodnot</value>
+  </data>
+  <data name="BaselinesCount" xml:space="preserve">
+    <value>Počet standardních hodnot</value>
+  </data>
+  <data name="BaselineServiceUnavailable" xml:space="preserve">
+    <value>Nelze se připojit ke službě standardní hodnoty „https://www.vmwarebaselines.com“. Zkontrolujte připojení a protokoly, kde naleznete další informace.</value>
+  </data>
+  <data name="BaselinesMenuDescription" xml:space="preserve">
+    <value>Zobrazit standardní hodnoty</value>
+  </data>
+  <data name="BaselineStatusCallFailed" xml:space="preserve">
+    <value>Nelze načíst stav standardních hodnot. Zkuste to znovu později.</value>
+  </data>
+  <data name="BaselineTooltipCis" xml:space="preserve">
+    <value>Použijte doporučené nastavení srovnávacího testu CIS pro vybranou verzi a úroveň.</value>
+  </data>
+  <data name="BaselineTooltipCustom" xml:space="preserve">
+    <value>Nahrajte zálohu vlastního objektu zásad skupiny (GPO) a použijte ji na zařízení. Zálohou GPO musí být soubor ZIP s velikostí menší než 5 MB.</value>
+  </data>
+  <data name="BaselineTooltipWindows" xml:space="preserve">
+    <value>Výchozí bezpečnostní komponenty (Security Baseline Components neboli „SBC“) ze sady Microsoft Security Toolkit vytváří společnost Microsoft a jsou k dispozici pro vaše použití pouze ke správě zařízení se systémem Windows 10. Komponenty SBC jsou poskytovány tak, jak jsou, bez žádné záruky jakéhokoli druhu od společnosti VMware nebo Microsoft. Více informací o SBC najdete na stránce {0}.</value>
+  </data>
+  <data name="BaselineUUID" xml:space="preserve">
+    <value>UUID standardních hodnot</value>
+  </data>
+  <data name="BlankBaseline" xml:space="preserve">
+    <value>Vytvořte si vlastní</value>
+  </data>
+  <data name="BlankBaselineDescription" xml:space="preserve">
+    <value>Vytvořte si vlastní standardní hodnoty výběrem z našeho katalogu zásad.</value>
+  </data>
+  <data name="ChooseTemplate" xml:space="preserve">
+    <value>Vyberte standardní hodnoty</value>
+  </data>
+  <data name="ComplianceDataMissing" xml:space="preserve">
+    <value>Pro tuto standardní hodnotu ještě nejsou k dispozici data o shodě. Znovu publikujte standardní hodnotu na přiřazených zařízeních, aby se spustila tvorba hlášení o vzorcích shody.</value>
+  </data>
+  <data name="ConfirmCancelBaseline" xml:space="preserve">
+    <value>Vaše změny této standardní hodnoty nejsou uloženy. Chcete provedené změny zrušit?</value>
+  </data>
+  <data name="ConfirmCloudDescription" xml:space="preserve">
+    <value>Pomocí funkce Standardní hodnoty aplikace Workspace ONE budete přistupovat k datům, která vzdáleně ukládá společnost VMware. Pokud nechcete pokračovat, klikněte na tlačítko Storno.</value>
+  </data>
+  <data name="ConfirmCloudTitle" xml:space="preserve">
+    <value>Vzdálený přístup k datům</value>
+  </data>
+  <data name="ConfirmDeleteBaseline" xml:space="preserve">
+    <value>Pokud jsou tyto standardní hodnoty přiřazeny, jejich smazáním se odstraní ze všech zařízení. Chcete pokračovat?</value>
+  </data>
+  <data name="CopyBaseline" xml:space="preserve">
+      <value>Kopírovat standardní hodnoty</value>
+  </data>
+  <data name="CustomBaseline" xml:space="preserve">
+    <value>Vlastní standardní hodnoty</value>
+  </data>
+  <data name="CustomBaselineCompliance" xml:space="preserve">
+    <value>Data o shodě pro vlastní standardní hodnoty se vyhodnocují na základě zásad přidaných do standardní hodnoty, nikoli komprimovaných zásad.</value>
+  </data>
+  <data name="CustomBaselineComplianceDataMissing" xml:space="preserve">
+    <value>Data o shodě pro vlastní standardní hodnoty nejsou dostupná ani úplná, protože nelze zkontrolovat komprimované zásady.</value>
+  </data>
+  <data name="CustomBaselineError" xml:space="preserve">
+    <value>Vyberte soubor pro vlastní standardní hodnoty</value>
+  </data>
+  <data name="CustomBaselineHelpLink" xml:space="preserve">
+    <value>Zobrazit pokyny pro nahrání GPO</value>
+  </data>
+  <data name="CustomizeSelectPolicy" xml:space="preserve">
+    <value>Vybráním zásady zobrazte její nastavení.</value>
+  </data>
+  <data name="CustomizeStepDescription" xml:space="preserve">
+    <value>Zásady ze {0} si můžete prohlížet nebo upravovat tak, aby to vyhovovalo vašim potřebám.</value>
+  </data>
+  <data name="DefinitionStepDescription" xml:space="preserve">
+    <value>Zadejte název a popis standardní hodnoty.</value>
+  </data>
+  <data name="DeleteBaseline" xml:space="preserve">
+    <value>Odstranit standardní hodnoty</value>
+  </data>
+  <data name="DeviceBaselineLocationGroupNotFound" xml:space="preserve">
+    <value>Nelze načíst zařízení pro standardní hodnoty, protože nebyla nalezena organizační skupina.</value>
+  </data>
+  <data name="DeviceBaselineNotFound" xml:space="preserve">
+    <value>Nelze načíst zařízení pro standardní hodnoty, protože nebyly nalezeny standardní hodnoty.</value>
+  </data>
+  <data name="DiscardAndExit" xml:space="preserve">
+    <value>Zrušit a ukončit</value>
+  </data>
+  <data name="EditBaseline" xml:space="preserve">
+    <value>Upravit standardní hodnoty</value>
+  </data>
+  <data name="EditRequestError" xml:space="preserve">
+    <value>Vybraná verze standardních hodnot již není k dispozici, vytvořte novou.</value>
+  </data>
+  <data name="EmptyBaselineList" xml:space="preserve">
+    <value>Nenalezeny žádné standardní hodnoty</value>
+  </data>
+  <data name="EmptyDeviceList" xml:space="preserve">
+    <value>Nenalezena žádná zařízení</value>
+  </data>
+  <data name="EmptyListInput" xml:space="preserve">
+    <value>Vyžaduje nejméně jednu položku</value>
+  </data>
+  <data name="EmptyPolicyList" xml:space="preserve">
+    <value>Ještě nejsou přidány žádné zásady.</value>
+  </data>
+  <data name="ErrorBaselineDeviceException" xml:space="preserve">
+    <value>Nelze použít standardní hodnoty, opravte je na základě popisu chyby v protokolech.</value>
+  </data>
+  <data name="ErrorDownloadBlobFailed" xml:space="preserve">
+    <value>Přístup ke standardním hodnotám není možný, aktivujte ho na základě popisu chyby v protokolech.</value>
+  </data>
+  <data name="ErrorInvalidExecutable" xml:space="preserve">
+    <value>Soubor LGPO.exe není platný, zkuste ho vyměnit.</value>
+  </data>
+  <data name="ErrorLGPOBackupFailed" xml:space="preserve">
+    <value>Nelze použít standardní hodnoty, opravte je na základě popisu chyby v protokolech.</value>
+  </data>
+  <data name="ErrorMissingLGPO" xml:space="preserve">
+    <value>Není dostupný soubor LGPO.exe pro použití standardních hodnot.</value>
+  </data>
+  <data name="ErrorSavingFileInFolder" xml:space="preserve">
+    <value>Nelze uložit standardní hodnoty, odstraňte problém na základě popisu chyby v protokolech.</value>
+  </data>
+  <data name="ErrorUpdatingDatabase" xml:space="preserve">
+    <value>Stav standardních hodnot není znám, další informace najdete v protokolech.</value>
+  </data>
+  <data name="ErrorZipExtractionFailed" xml:space="preserve">
+    <value>Nelze extrahovat standardní hodnoty, odstraňte problém na základě popisu chyby v protokolech.</value>
+  </data>
+  <data name="ExcludedSmartGroups" xml:space="preserve">
+    <value>Vyloučené smart skupiny</value>
+  </data>
+  <data name="Exclusions" xml:space="preserve">
+    <value>Vyloučení</value>
+  </data>
+  <data name="FailedInstall" xml:space="preserve">
+    <value>Instalace selhala</value>
+  </data>
+  <data name="FailedRemoval" xml:space="preserve">
+    <value>Odebrání selhalo</value>
+  </data>
+  <data name="IntermediateDescription" xml:space="preserve">
+    <value>Zařízení, která jsou z {0} až {1} % konformní, jsou klasifikována jako zprostředkující.</value>
+  </data>
+  <data name="MaxValueArg" xml:space="preserve">
+    <value>Musí být menší než nebo rovno {0}</value>
+  </data>
+  <data name="MinValueArg" xml:space="preserve">
+    <value>Musí být větší než nebo rovno {0}</value>
+  </data>
+  <data name="NewBaseline" xml:space="preserve">
+    <value>Nová standardní hodnota</value>
+  </data>
+  <data name="NoActiveOSVersion" xml:space="preserve">
+    <value>Nenalezeny žádné verze OS. Zkuste to znovu později.</value>
+  </data>
+  <data name="NoCustomizationSupport" xml:space="preserve">
+    <value>Vlastní nastavení není momentálně pro vybrané standardní hodnoty k dispozici.</value>
+  </data>
+  <data name="NoFileSelected" xml:space="preserve">
+    <value>Není vybrán žádný soubor.</value>
+  </data>
+  <data name="NonEnglishSearchResult" xml:space="preserve">
+    <value>Nebyly nalezeny žádné výsledky pro „{0}“. Můžete se znovu pokusit o vyhledávání v angličtině a zjistit, jestli je zásada dostupná.</value>
+  </data>
+  <data name="NoResultsFoundForArg" xml:space="preserve">
+    <value>Nebyly nalezeny žádné výsledky pro „{0}“</value>
+  </data>
+  <data name="NoSmartGroupsSelected" xml:space="preserve">
+    <value>Není vybrána žádná smart skupina.</value>
+  </data>
+  <data name="PolicyNotFound" xml:space="preserve">
+    <value>Nebyly nalezeny žádné podrobnosti o zásadách.</value>
+  </data>
+  <data name="PolicyStepDescription" xml:space="preserve">
+    <value>Vyhledejte a volitelně přidejte zásady z katalogu.</value>
+  </data>
+  <data name="Proceed" xml:space="preserve">
+    <value>Pokračovat</value>
+  </data>
+  <data name="RemovalFailed" xml:space="preserve">
+    <value>Odebrání selhalo</value>
+  </data>
+  <data name="RequiredFieldError" xml:space="preserve">
+    <value>Zadejte název standardních hodnot.</value>
+  </data>
+  <data name="SaveAndPublish" xml:space="preserve">
+    <value>Uložit a publikovat</value>
+  </data>
+  <data name="SearchPolicyPlaceholder" xml:space="preserve">
+    <value>Začněte psát hledanou zásadu</value>
+  </data>
+  <data name="SearchSmartGroupPlaceholder" xml:space="preserve">
+    <value>Začněte psát hledanou smart skupinu</value>
+  </data>
+  <data name="SelectedSmartGroups" xml:space="preserve">
+    <value>Vybrané smart skupiny</value>
+  </data>
+  <data name="SelectTypeDescription" xml:space="preserve">
+    <value>Vyberte typ standardní hodnoty, který chcete přidat.</value>
+  </data>
+  <data name="SelectTypeTitle" xml:space="preserve">
+    <value>Vybrat typ standardní hodnoty</value>
+  </data>
+  <data name="SmartGroupAtLeastOneValidationDescription" xml:space="preserve">
+    <value>Na kartě Přiřazení musí být určena nejméně jedna smart skupina.</value>
+  </data>
+  <data name="SummaryStepDescription" xml:space="preserve">
+    <value>Zkontrolujte shrnutí před uložením této standardní hodnoty.</value>
+  </data>
+  <data name="TemplateStepDescription" xml:space="preserve">
+    <value>Vyberte předem konfigurované standardní hodnoty a verzi.</value>
+  </data>
+  <data name="TextareaMaxLinesError" xml:space="preserve">
+    <value>Překračuje maximální počet řádků</value>
+  </data>
+  <data name="TextareaMaxSentenceError" xml:space="preserve">
+    <value>Nejméně jedna věta překračuje maximální délku.</value>
+  </data>
+  <data name="TotalInstalledArg" xml:space="preserve">
+    <value>Celkem instalováno: {0}</value>
+  </data>
+  <data name="UnabletoLoadDevices" xml:space="preserve">
+    <value>Nepodařilo se načíst seznam zařízení, zkuste to znovu později.</value>
+  </data>
+  <data name="UnsavedChanges" xml:space="preserve">
+    <value>Neuložené změny</value>
+  </data>
+  <data name="UnsupportedLanguageError" xml:space="preserve">
+    <value>Chyba: zvolený jazyk není podporován.</value>
+  </data>
+  <data name="UseBaselineTemplate" xml:space="preserve">
+      <value>Použít šablonu</value>
+  </data>
+  <data name="UseTemplateDescription" xml:space="preserve">
+    <value>Použijte standardní oborové šablony k nastavení standardních hodnot.</value>
+  </data>
+  <data name="VersionBreakdown" xml:space="preserve">
+    <value>Rozpis verzí</value>
+  </data>
+  <data name="ViewBaselineDevicesTitle" xml:space="preserve">
+    <value>Zobrazit zařízení – standardní hodnoty</value>
+  </data>
+</root>

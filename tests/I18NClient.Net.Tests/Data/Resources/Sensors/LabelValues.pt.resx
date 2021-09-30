@@ -1,0 +1,498 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AdminExecutionContext" xml:space="preserve">
+    <value>Administrador</value>
+  </data>
+  <data name="AirWatchDataPlatformService" xml:space="preserve">
+    <value>Serviços da AirWatch DataPlatform</value>
+  </data>
+  <data name="Always32BitArchitecture" xml:space="preserve">
+    <value>32 bits (forçado)</value>
+  </data>
+  <data name="AssignedDeviceSensorRequested" xml:space="preserve">
+    <value>Atribuir sensor de dispositivo solicitado</value>
+  </data>
+  <data name="AssignmentLabel" xml:space="preserve">
+    <value>Atribuição</value>
+  </data>
+  <data name="AssignSensor" xml:space="preserve">
+    <value>Atribuir o sensor a grupos inteligentes</value>
+  </data>
+  <data name="BackButtonLabel" xml:space="preserve">
+    <value>Voltar</value>
+  </data>
+  <data name="BooleanType" xml:space="preserve">
+    <value>Boolean</value>
+  </data>
+  <data name="CannotDeleteWorkflowResource" xml:space="preserve">
+    <value>Os recursos associados ao fluxo de trabalho não podem ser excluídos.</value>
+  </data>
+  <data name="DataTypeLabel" xml:space="preserve">
+    <value>Tipo de dados</value>
+  </data>
+  <data name="DateTimeType" xml:space="preserve">
+    <value>Tempo da data</value>
+  </data>
+  <data name="DefineQueryLabel" xml:space="preserve">
+    <value>Definir consulta</value>
+  </data>
+  <data name="DeviceScriptAssignmentGroup" xml:space="preserve">
+    <value>Grupo de atribuição de script de dispositivo</value>
+  </data>
+  <data name="DeviceSensor" xml:space="preserve">
+    <value>Sensor de dispositivo</value>
+  </data>
+  <data name="DeviceSensorAssignmenGroupRankingUpdated" xml:space="preserve">
+    <value>Classificação do grupo de atribuição do sensor de dispositivo atualizada</value>
+  </data>
+  <data name="DeviceSensorAssignmentGroup" xml:space="preserve">
+    <value>Grupo de atribuição de sensores de dispositivo</value>
+  </data>
+  <data name="DeviceSensorAssignmentGroupAdded" xml:space="preserve">
+    <value>Grupo de atribuição de sensor de dispositivo adicionado</value>
+  </data>
+  <data name="DeviceSensorAssignmentGroupDeleted" xml:space="preserve">
+    <value>Grupo de atribuição de sensor de dispositivo excluído.</value>
+  </data>
+  <data name="DeviceSensorAssignmentGroupEdited" xml:space="preserve">
+    <value>Grupo de atribuição de sensor de dispositivo editado</value>
+  </data>
+  <data name="DeviceSensorAssignmentGroupName" xml:space="preserve">
+    <value>Nome da atribuição do sensor de dispositivo</value>
+  </data>
+  <data name="DeviceSensorCreated" xml:space="preserve">
+    <value>Sensor de dispositivo criado</value>
+  </data>
+  <data name="DeviceSensorDeleted" xml:space="preserve">
+    <value>Sensor de dispositivo excluído</value>
+  </data>
+  <data name="DeviceSensorDeletedSuccessfully" xml:space="preserve">
+    <value>Sensor do dispositivo excluído com sucesso</value>
+  </data>
+  <data name="DeviceSensorEdited" xml:space="preserve">
+    <value>Sensor de dispositivo editado</value>
+  </data>
+  <data name="DeviceSensorIdentifiers" xml:space="preserve">
+    <value>Identificadores de sensores de dispositivos</value>
+  </data>
+  <data name="DeviceSensorListViewTitle" xml:space="preserve">
+    <value>Visualização de Lista de sensores</value>
+  </data>
+  <data name="DeviceSensorName" xml:space="preserve">
+    <value>Nome do sensor de dispositivo</value>
+  </data>
+  <data name="DeviceSensorNotSupportedForEmployeeOwnedDevice" xml:space="preserve">
+    <value>Dispositivo de propriedade do funcionário: dados do sensor do dispositivo não solicitados</value>
+  </data>
+  <data name="DeviceSensorOg" xml:space="preserve">
+    <value>Grupo organizacional do sensor de dispositivo</value>
+  </data>
+  <data name="DeviceSensorPersistedInDeviceState" xml:space="preserve">
+    <value>Amostra de sensor salva no estado do dispositivo</value>
+  </data>
+  <data name="DeviceSensorPersistedInIntelligence" xml:space="preserve">
+    <value>Amostra de sensor salva em inteligência</value>
+  </data>
+  <data name="DeviceSensorSampleReceived" xml:space="preserve">
+    <value>Amostra do sensor do dispositivo recebida</value>
+  </data>
+  <data name="DeviceSensorSampleReceivedWithErrors" xml:space="preserve">
+    <value>Amostra recebida com erros</value>
+  </data>
+  <data name="DeviceSensorSampleSentFailed" xml:space="preserve">
+    <value>Falha no envio de valor de amostra do sensor</value>
+  </data>
+  <data name="DeviceSensorSampleSentSuccess" xml:space="preserve">
+    <value>Valor de amostra do sensor enviado com sucesso</value>
+  </data>
+  <data name="DeviceSensorSmartGroupAssigned" xml:space="preserve">
+    <value>Sensor de dispositivo atribuído ao grupo inteligente</value>
+  </data>
+  <data name="EditSensor" xml:space="preserve">
+    <value>Editar sensor</value>
+  </data>
+  <data name="Either32Or64BitArchitecture" xml:space="preserve">
+    <value>Automático</value>
+  </data>
+  <data name="EmployeeOwnedDevicesWillNotSupportSensors" xml:space="preserve">
+    <value>Os dispositivos de propriedade do funcionário serão excluídos automaticamente da atribuição do sensor por motivos de privacidade do usuário.</value>
+  </data>
+  <data name="ExecutionArchitecture" xml:space="preserve">
+    <value>Arquitetura de execução</value>
+  </data>
+  <data name="ExecutionArchitectureInfo" xml:space="preserve">
+    <value>
+32 bits (forçado): é executado como 32 bits, independentemente da arquitetura do dispositivo de destino.
+32 bits: é executado somente em dispositivos de 32 bits.
+64 bits: é executado somente em dispositivos de 64 bits.
+Automático: é executado com base na arquitetura do dispositivo de destino.</value>
+  </data>
+  <data name="ExecutionContextLabel" xml:space="preserve">
+    <value>Contexto de execução</value>
+  </data>
+  <data name="FinishButtonLabel" xml:space="preserve">
+    <value>Concluir</value>
+  </data>
+  <data name="ImportCodeButtonText" xml:space="preserve">
+    <value>Importar da biblioteca de modelos da VMware</value>
+  </data>
+  <data name="IncludeInSmartGroupLabel" xml:space="preserve">
+    <value>Incluir nos grupos inteligentes</value>
+  </data>
+  <data name="IntegerType" xml:space="preserve">
+    <value>Número inteiro</value>
+  </data>
+  <data name="LastExecutedDate" xml:space="preserve">
+    <value>Data da última execução</value>
+  </data>
+  <data name="MacOsPeriodicTriggerInfoText" xml:space="preserve">
+    <value>Executar periodicamente com base na agenda de intervalo de amostra de dados do Intelligent Hub definidas em Configurações &gt; Dispositivos e usuários &gt; Apple &gt; Apple macOS &gt; Configurações do Intelligent Hub</value>
+  </data>
+  <data name="ManageEndpointResources" xml:space="preserve">
+    <value>Gerenciar recursos do endpoint</value>
+  </data>
+  <data name="ManageEndpointResourcesInfo" xml:space="preserve">
+    <value>Use valores de sensor como condições no Freestyle para gerenciar recursos de endpoint com base em critérios personalizados.</value>
+  </data>
+  <data name="NetworkChangeTriggerInfo" xml:space="preserve">
+    <value>Executar sempre que uma alteração de rede for detectada no dispositivo (por exemplo, alternando de Ethernet para Wi-Fi)</value>
+  </data>
+  <data name="NewSensor" xml:space="preserve">
+    <value>Novo sensor</value>
+  </data>
+  <data name="NextButtonLabel" xml:space="preserve">
+    <value>Próximo</value>
+  </data>
+  <data name="NoRecordsFound" xml:space="preserve">
+    <value>Não foram encontrados scripts. Crie um novo para começar</value>
+  </data>
+  <data name="NoSensorsFound" xml:space="preserve">
+    <value>Não foram encontrados sensores. Crie um novo para começar</value>
+  </data>
+  <data name="NotRunLabel" xml:space="preserve">
+    <value>Não executar</value>
+  </data>
+  <data name="Only32BitArchitecture" xml:space="preserve">
+    <value>32 bits</value>
+  </data>
+  <data name="Only64BitArchitecture" xml:space="preserve">
+    <value>64 bits</value>
+  </data>
+  <data name="PlatformLabel" xml:space="preserve">
+    <value>Plataforma</value>
+  </data>
+  <data name="QueryType" xml:space="preserve">
+    <value>Tipo de consulta</value>
+  </data>
+  <data name="QueryTypeHelpText" xml:space="preserve">
+    <value>Esta configuração determina o destino para a consulta do dispositivo</value>
+  </data>
+  <data name="QueryTypeNotSetError" xml:space="preserve">
+    <value>O tipo de consulta não pode ficar vazio</value>
+  </data>
+  <data name="ReplaceWarningForScriptUpload" xml:space="preserve">
+    <value>
+	Carregar um script substituirá qualquer conteúdo existente no editor.
+	
+	Nota: serão armazenados um total de 4 KB de dados por dispositivo em todos os sensores
+	Note: o script atingirá o tempo limite se não for concluído em 5 minutos.
+	</value>
+  </data>
+  <data name="RequestSensorsSyncFailed" xml:space="preserve">
+    <value>Falha ao enfileirar o comando de dispositivo para sincronizar sensores</value>
+  </data>
+  <data name="RequestSensorsSyncSuccess" xml:space="preserve">
+    <value>Comando de dispositivo em fila para sincronizar sensores</value>
+  </data>
+  <data name="ResponseLabel" xml:space="preserve">
+    <value>Resposta</value>
+  </data>
+  <data name="RunButtonText" xml:space="preserve">
+    <value>Executar</value>
+  </data>
+  <data name="ScheduleTriggerInfo" xml:space="preserve">
+    <value>Quando o gatilho for definido como Agendar, esse sensor coletará e transmitirá dados com base no agendamento de sensor configurado na página de configurações Agendamento de amostras do Windows.</value>
+  </data>
+  <data name="ScriptExecutedAt" xml:space="preserve">
+    <value>Executado em</value>
+  </data>
+  <data name="ScriptLabel" xml:space="preserve">
+    <value>Script/Comando</value>
+  </data>
+  <data name="SelectSmartGroupToAssignSensor" xml:space="preserve">
+    <value>Selecione os grupos inteligentes para os quais este sensor será atribuído</value>
+  </data>
+  <data name="Sensor" xml:space="preserve">
+    <value>Sensor</value>
+  </data>
+  <data name="SensorAssignmentDeploymentTabDesc" xml:space="preserve">
+    <value>Selecione quais gatilhos devem fazer com que este sensor seja executado em dispositivos atribuídos</value>
+  </data>
+  <data name="SensorAssignmentGroups" xml:space="preserve">
+    <value>Sensores</value>
+  </data>
+  <data name="SensorDellCustomBIOSQuery" xml:space="preserve">
+    <value>BIOS personalizado da Dell</value>
+  </data>
+  <data name="SensorDuplicateNameError" xml:space="preserve">
+    <value>Já existe um sensor com o mesmo nome. Use um nome diferente.</value>
+  </data>
+  <data name="SensorEventSelectionError" xml:space="preserve">
+    <value>Selecione um ou mais tipos de eventos para prosseguir</value>
+  </data>
+  <data name="SensorEventTrigger" xml:space="preserve">
+    <value>Evento</value>
+  </data>
+  <data name="SensorGoToOptIn" xml:space="preserve">
+    <value>Clique aqui para aceitar</value>
+  </data>
+  <data name="SensorLoginEvent" xml:space="preserve">
+    <value>Entrar</value>
+  </data>
+  <data name="SensorLogoutEvent" xml:space="preserve">
+    <value>Fazer logout</value>
+  </data>
+  <data name="SensorMenuDescription" xml:space="preserve">
+    <value>Descrição do menu do Sensor</value>
+  </data>
+  <data name="SensorName" xml:space="preserve">
+    <value>Nome do sensor</value>
+  </data>
+  <data name="SensorNameFormatError" xml:space="preserve">
+    <value>Deve ter entre 2 e 64 caracteres usando apenas uma combinação de letras minúsculas, números e underlines. O primeiro caractere deve ser uma letra minúscula.</value>
+  </data>
+  <data name="SensorNameHelpText" xml:space="preserve">
+    <value>O nome do sensor é a chave para os dados retornados pelo dispositivo quando o(a) script/busca do Sensor é executado(a). A chave e o valor são retornados e armazenados no Workspace ONE Intelligence e podem ser usados em relatórios, gráficos e automações</value>
+  </data>
+  <data name="SensorNameNotSetError" xml:space="preserve">
+    <value>O nome do sensor não pode ficar vazio</value>
+  </data>
+  <data name="SensorOGNotOptedInfo" xml:space="preserve">
+    <value>A configuração dos sensores requer o Workspace ONE Intelligence. Aceite o Workspace ONE intelligence e retorne a esta página para criar os sensores.</value>
+  </data>
+  <data name="SensorPowershellQuery" xml:space="preserve">
+    <value>Power Shell</value>
+  </data>
+  <data name="Sensors" xml:space="preserve">
+    <value>Sensores</value>
+  </data>
+  <data name="SensorScheduleTrigger" xml:space="preserve">
+    <value>Agendamento</value>
+  </data>
+  <data name="SensorsCreateReports" xml:space="preserve">
+    <value>Criar relatórios e dashboards</value>
+  </data>
+  <data name="SensorsCreateReportsInfo" xml:space="preserve">
+    <value>Use o Workspace ONE Intelligence para criar relatórios e dashboards com base nos dados do Sensor. </value>
+  </data>
+  <data name="SensorScriptHash" xml:space="preserve">
+    <value>Sensor Script Hash</value>
+  </data>
+  <data name="SensorScriptInvalid" xml:space="preserve">
+    <value>O Script/Comando é um valor obrigatório. Especifique um script válido para salvar este sensor</value>
+  </data>
+  <data name="SensorsDD" xml:space="preserve">
+    <value>Sensores</value>
+  </data>
+  <data name="SensorsDDHelp" xml:space="preserve">
+    <value>Controla o acesso para visualizar os valores do sensor do dispositivo e solicitar uma sincronização</value>
+  </data>
+  <data name="SensorsHeader" xml:space="preserve">
+    <value>Coleta automatizada dos dados de endpoint</value>
+  </data>
+  <data name="SensorsHelp" xml:space="preserve">
+    <value>Controla o acesso para visualizar e gerenciar os sensores do dispositivo</value>
+  </data>
+  <data name="SensorsInfo" xml:space="preserve">
+    <value>Automatize rapidamente e com segurança a coleta de dados para seus endpoints usando linguagens de script comuns. Leia mais sobre sensores em</value>
+  </data>
+  <data name="SensorsPurpose" xml:space="preserve">
+    <value>O que posso fazer com os sensores?</value>
+  </data>
+  <data name="SensorsRetrieveDeviceData" xml:space="preserve">
+    <value>Recuperar dados do dispositivo</value>
+  </data>
+  <data name="SensorsRetrieveDeviceDataInfo" xml:space="preserve">
+    <value>Use linguagens de script comum e variáveis de ambiente seguras para recuperar dados de dispositivos do desktop.</value>
+  </data>
+  <data name="SensorsSync" xml:space="preserve">
+    <value>Sensores</value>
+  </data>
+  <data name="SensorStartupEvent" xml:space="preserve">
+    <value>Inicialização</value>
+  </data>
+  <data name="SensorStepDefinition" xml:space="preserve">
+    <value>Configure o nome da chave, a descrição e os gatilhos para os dados que serão retornados pelo sensor.</value>
+  </data>
+  <data name="SensorUserSwitchEvent" xml:space="preserve">
+    <value>Troca de usuário</value>
+  </data>
+  <data name="SensorValue" xml:space="preserve">
+    <value>Valor do sensor</value>
+  </data>
+  <data name="SetupScriptParametersMac" xml:space="preserve">
+    <value>Crie variáveis para que estejam disponíveis como parte do ambiente de script durante a execução.
+Os scripts de shell podem fazer referência a variáveis diretamente por nome (por exemplo, $myvariable) e scripts Python 3 podem fazer referência a variáveis com o módulo do sistema operacional (por exemplo: os.getenv('myvariable'))</value>
+  </data>
+  <data name="SetupScriptParametersWindow" xml:space="preserve">
+    <value>Crie variáveis a serem passadas com um script como variáveis de ambiente.
+Os scripts do PowerShell podem fazer referência a variáveis definidas aqui chamando $env:key onde key é o campo de chave definido abaixo.</value>
+  </data>
+  <data name="SmartGroupCannotBeAssignedToMultipleAssignmentGroups" xml:space="preserve">
+    <value>Não é possível atribuir um grupo inteligente duplicado a vários grupos de atribuições.</value>
+  </data>
+  <data name="StringType" xml:space="preserve">
+    <value>Sequência</value>
+  </data>
+  <data name="SyncSensors" xml:space="preserve">
+    <value>Sensores de sincronização</value>
+    <comment>Label key for DeviceCommand</comment>
+  </data>
+  <data name="SystemExecutionContext" xml:space="preserve">
+    <value>Sistema</value>
+  </data>
+  <data name="Triggers" xml:space="preserve">
+    <value>Gatilhos</value>
+  </data>
+  <data name="TriggerTypeHelpText" xml:space="preserve">
+    <value>Quando o gatilho for definido como Agendar, esse sensor coletará e transmitirá dados com base no agendamento de sensor configurado na página de configurações do Agendamento de amostras do Windows. Selecionar Evento coletará os dados com base nos eventos do dispositivo escolhido e transmitirá os dados com base nas definições da página de configurações Agendamento de amostras do Windows</value>
+  </data>
+  <data name="TriggerTypeLabel" xml:space="preserve">
+    <value>Tipo de gatilho</value>
+  </data>
+  <data name="UseInLookUpLabel" xml:space="preserve">
+    <value>Usar como um valor de pesquisa</value>
+  </data>
+  <data name="UserExecutionContext" xml:space="preserve">
+    <value>Usuário atual</value>
+  </data>
+  <data name="ValueTypeHelpText" xml:space="preserve">
+    <value>O tipo de valor determinará o tipo de dados para a amostra coletada. Isso ajudará o Workspace ONE a determinar quais operadores e comandos devem ser fornecidos para esse tipo de dados</value>
+  </data>
+  <data name="ValueTypeLabel" xml:space="preserve">
+    <value>Tipo de valor</value>
+  </data>
+  <data name="ValueTypeNotSetError" xml:space="preserve">
+    <value>O tipo de valor não pode ficar vazio</value>
+  </data>
+  <data name="WindowsPeriodicTriggerInfoText" xml:space="preserve">
+    <value>Executar periodicamente com base na agenda de intervalo de amostra de dados do Intelligent Hub definidas em Configurações &gt; Dispositivos e usuários &gt; Windows &gt; Windows Desktop &gt; Configurações do Intelligent Hub</value>
+  </data>
+</root>

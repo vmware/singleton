@@ -1,0 +1,4244 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AadTenantIdMissingOrInvalid" xml:space="preserve">
+    <value>Azure Active Directory 테넌트 ID가 누락되었거나 잘못되었습니다.</value>
+  </data>
+  <data name="ABMActivationLockInfoMessage" xml:space="preserve">
+    <value>활성화 잠금은 Apple Business Manager와의 통합을 통해 활성화됩니다. Workspace ONE UEM의 MDM 서버 토큰과 연결된 장치만 활성화 잠금을 사용하도록 설정할 수 있습니다.</value>
+  </data>
+  <data name="AboutWorkspaceOneUemConsole" xml:space="preserve">
+    <value>Workspace ONE UEM Console 정보</value>
+  </data>
+  <data name="AccessLogs" xml:space="preserve">
+    <value>액세스 로그</value>
+  </data>
+  <data name="AccSettingsMisconfiguration" xml:space="preserve">
+    <value>연결 실패를 확인하십시오. ACC 설정을 잘못 구성하여 발생했을 수 있습니다.</value>
+  </data>
+  <data name="ActivationLockBatchSize" xml:space="preserve">
+    <value>활성화 잠금 배치 크기</value>
+  </data>
+  <data name="ActivationLockBatchSizeTooltip" xml:space="preserve">
+    <value>활성화 잠금 작업을 위해 각 일괄 처리에 포함될 장치의 수를 지정합니다.</value>
+  </data>
+  <data name="ActivationLockJob" xml:space="preserve">
+    <value>활성화 잠금 작업</value>
+  </data>
+  <data name="ActivationLockTooltip" xml:space="preserve">
+    <value>활성화 잠금은 Apple 장치를 분실 또는 도난당했을 때 이를 보호하는 기능입니다. 사용자 또는 MDM에서 활성화 잠금을 활성화한 경우 장치를 재활성화하고 사용하려면 사용자의 Apple ID 및 암호가 필요합니다. 이 기능이 활성화되면 장치 재설정(수동 또는 MDM 시작) 후 장치에 Apple ID 및 암호를 묻는 메시지가 표시됩니다.</value>
+  </data>
+  <data name="ActiveDirectoryBasic" xml:space="preserve">
+    <value>Active Directory 기본</value>
+  </data>
+  <data name="ActivityMonitor" xml:space="preserve">
+    <value>활동 모니터</value>
+  </data>
+  <data name="AdaptivaDescriptionV2" xml:space="preserve">
+    <value>이 모듈은 사용자의 내부 네트워크에 피어 투 피어 애플리케이션 분포 능력을 제공해서 애플리케이션 다운로드 속도를 높이고 복수 분포점에 대한 필요를 제거합니다.</value>
+  </data>
+  <data name="AdaptivaPublicCertificate" xml:space="preserve">
+    <value>인증서</value>
+  </data>
+  <data name="AdaptivaPublicCertificateEnabled" xml:space="preserve">
+    <value>Adaptiva 공용 인증서</value>
+  </data>
+  <data name="AdaptivaPublicCertificateHelp" xml:space="preserve">
+    <value>Adaptiva 공용 인증서 업로드</value>
+  </data>
+  <data name="AdaptivaPublishInProgressStatus" xml:space="preserve">
+    <value>진행 중</value>
+  </data>
+  <data name="AddApplicationDescription" xml:space="preserve">
+    <value>애플리케이션 트래픽 정책 설정에 대한 애플리케이션 세부 사항을 추가합니다.</value>
+  </data>
+  <data name="AddCertificateAuthority" xml:space="preserve">
+    <value>인증 기관 추가</value>
+  </data>
+  <data name="AddCustomSetting" xml:space="preserve">
+    <value>사용자 지정 설정 추가</value>
+  </data>
+  <data name="AddDeviceTrafficRule" xml:space="preserve">
+    <value>규칙 추가</value>
+  </data>
+  <data name="AddEkuAttribute" xml:space="preserve">
+    <value>EKU 특성 추가</value>
+  </data>
+  <data name="AddOutboundProxy" xml:space="preserve">
+    <value>아웃바운드 프록시 추가</value>
+  </data>
+  <data name="AddProfileMessage" xml:space="preserve">
+    <value>새 프로필을 생성하고 등록 상태 페이지에서 장치에 할당합니다.</value>
+  </data>
+  <data name="AddRequestTemplate" xml:space="preserve">
+    <value>요청 템플릿 추가</value>
+  </data>
+  <data name="AddSan" xml:space="preserve">
+    <value>SAN 추가</value>
+  </data>
+  <data name="AddServerTrafficRule" xml:space="preserve">
+    <value>서버 트래픽 규칙 추가</value>
+  </data>
+  <data name="AddWindowsApp" xml:space="preserve">
+    <value>Windows 앱 추가</value>
+  </data>
+  <data name="AddWindowsAppDescription" xml:space="preserve">
+    <value>애플리케이션의 파일 경로 또는 패키지 고유 이름(PFN)을 지정합니다.</value>
+  </data>
+  <data name="AdminDoesNotHaveGsxUserId" xml:space="preserve">
+    <value>이 페이지를 편집하려면 이 계정에 유효한 GSX 사용자 ID가 할당되어 있어야 합니다. 계정 &gt; 관리자로 이동하여 관리자 계정에 올바른 GSX 사용자 ID가 포함되어 있는지 확인하십시오.</value>
+  </data>
+  <data name="AdminGenerated" xml:space="preserve">
+    <value>관리자 생성됨?</value>
+  </data>
+  <data name="AdminGeneratedToolTip" xml:space="preserve">
+    <value>자동으로 생성된 API 키와 다른 통합을 위해 수동으로 생성된 API 키를 표시합니다.</value>
+  </data>
+  <data name="AdministrativePasscodeInfo" xml:space="preserve">
+    <value>사용자가 Windows 스토어 에이전트의 설정 메뉴에 액세스하지 못하도록 하는 암호입니다.</value>
+  </data>
+  <data name="AdminPasswordExpiryNotification" xml:space="preserve">
+    <value>관리자 암호 만료 알림</value>
+  </data>
+  <data name="AdminPasswordExpiryNotificationJob" xml:space="preserve">
+    <value>관리자 암호 만료 알림</value>
+  </data>
+  <data name="AdminPasswordExpiryNotificationMTD" xml:space="preserve">
+    <value>암호가 곧 만료된다는 것과 암호를 다시 설정하기 위해 조치를 취해야 한다는 것을 관리자에게 알려주는 기본 HTML 메시지 템플릿</value>
+  </data>
+  <data name="AdvancedFileExtensionDescription" xml:space="preserve">
+    <value>Content 내에서 허용되는 파일 확장자를 지정하십시오.</value>
+  </data>
+  <data name="AdvancedLabelRequiredContentDescription" xml:space="preserve">
+    <value>Content 애플리케이션에서 등록 경험을 활성화하십시오.</value>
+  </data>
+  <data name="AgentApplication" xml:space="preserve">
+    <value>Intelligent Hub 애플리케이션</value>
+  </data>
+  <data name="AgentApplications" xml:space="preserve">
+    <value>Intelligent Hub 애플리케이션</value>
+  </data>
+  <data name="AgentDownloadUrl" xml:space="preserve">
+    <value>Agent 다운로드 URL</value>
+  </data>
+  <data name="AgentProductCode_Description" xml:space="preserve">
+    <value>Agent 제품 코드</value>
+  </data>
+  <data name="AgentSettings" xml:space="preserve">
+    <value>Agent 설정</value>
+  </data>
+  <data name="AgentSettingsAppleiOS" xml:space="preserve">
+    <value>Intelligent Hub 설정</value>
+  </data>
+  <data name="AgentSettingsMacOS" xml:space="preserve">
+    <value>Intelligent Hub 설정</value>
+  </data>
+  <data name="AgentSettingsWin10" xml:space="preserve">
+    <value>Intelligent Hub 설정</value>
+  </data>
+  <data name="AgentUpdates" xml:space="preserve">
+    <value>Intelligent Hub 업데이트</value>
+  </data>
+  <data name="AirwatchAddressFooter" xml:space="preserve">
+    <value>Copyright © {0} VMware, Inc. All rights reserved.  |  1155 Perimeter Center West, Suite 100, Atlanta, GA 30338</value>
+  </data>
+  <data name="AirwatchAgentSettings" xml:space="preserve">
+    <value>AirWatch Agent 설정</value>
+  </data>
+  <data name="AirWatchPolicyEngine_Description" xml:space="preserve">
+    <value>AirWatch 정책 엔진</value>
+  </data>
+  <data name="AirWatchProvisioningPackageService_Description" xml:space="preserve">
+    <value>AirWatch 프로비저닝 패키지 서비스</value>
+  </data>
+  <data name="AirWatchTunnelAndProxyDisabled" xml:space="preserve">
+    <value>AirWatch Tunnel 및 프록시 비활성화됨</value>
+  </data>
+  <data name="AirWatchTunnelDisabled" xml:space="preserve">
+    <value>AirWatch Tunnel 비활성화됨</value>
+  </data>
+  <data name="AlexaForBusinessServiceUrl" xml:space="preserve">
+    <value>비즈니스용 Alexa 서비스 URL</value>
+  </data>
+  <data name="AllOtherApps" xml:space="preserve">
+    <value>기타 모든 앱</value>
+  </data>
+  <data name="AllowAndroidContainerModeAllOgDevices" xml:space="preserve">
+    <value>이 조직 그룹의 모든 Android 장치</value>
+  </data>
+  <data name="AllowCDN" xml:space="preserve">
+    <value>CDN 허용</value>
+  </data>
+  <data name="AllowedClockSkew" xml:space="preserve">
+    <value>허용되는 클럭 스큐</value>
+  </data>
+  <data name="AllowedClockSkewToolTip" xml:space="preserve">
+    <value>ID 제공자와 서비스 제공자 클럭 간에 발생할 수 있는 시간 불일치 또는 드리프트를 고려하여 최대 클럭 스큐(분)를 설정하고 동기화 상태로 간주하여 인증을 진행합니다.</value>
+  </data>
+  <data name="AllowEditing" xml:space="preserve">
+    <value>편집 허용</value>
+  </data>
+  <data name="AllowEditingPrimaryUserAccountTooltip" xml:space="preserve">
+    <value>사용함으로 설정되고 기본 계정이 제공되면 기본 계정을 수정할 수 있습니다.</value>
+  </data>
+  <data name="AllowIosContainerModeAllOgDevices" xml:space="preserve">
+    <value>이 조직 그룹의 모든 iOS 장치</value>
+  </data>
+  <data name="AllowNonFQDNDomains" xml:space="preserve">
+    <value>App Tunnel을 통해 FQDN이 아닌 모든 URL 허용</value>
+  </data>
+  <data name="AllowNonFQDNDomainsToolTip" xml:space="preserve">
+    <value>Tunnel URL 목록에 명시된 URL에 관계없이 App Tunnel을 통해 FQDN이 아닌 모든 URL을 허용하십시오. 그렇지 않으면, Tunnel URL 목록에 FQDN이 아닌 항목만 App Tunnel을 통해 허용됩니다.</value>
+  </data>
+  <data name="AllowNotify_Description" xml:space="preserve">
+    <value>알림 허용</value>
+  </data>
+  <data name="AllowUserEnrollmentForIos13MacOs1015" xml:space="preserve">
+    <value>iOS 13+ 및 macOS 10.15+ 장치에 대한 사용자 등록</value>
+  </data>
+  <data name="AllowUserEnrollmentForIos13MacOs1015Tooltip" xml:space="preserve">
+    <value>이 옵션을 활성화하면 사용자의 관리된 Apple ID로 Apple의 사용자 등록을 통해 이 조직 그룹에서 지원되는 모든 iOS 또는 macOS 장치 등록을 수행할 수 있습니다.</value>
+  </data>
+  <data name="AllowWindowsContainerModeAllOgDevices" xml:space="preserve">
+    <value>이 조직 그룹의 모든 Windows 장치</value>
+  </data>
+  <data name="AllowWorkProfileEnrollment" xml:space="preserve">
+    <value>작업 프로필 등록 허용</value>
+  </data>
+  <data name="AmbiguougOgForNetworkRange" xml:space="preserve">
+    <value>네트워크 범위에 대한 모호한 조직 그룹: 동일한 고객 코드가 있는 조직 그룹을 두 개 이상 소유할 수 없음</value>
+  </data>
+  <data name="AnchorCertificateTooltip" xml:space="preserve">
+    <value>이러한 인증서는 제공될 경우 MDM 서버 URL에 대한 연결의 신뢰도를 평가할 때 신뢰할 수 있는 앵커 인증서로 사용됩니다. 그렇지 않은 경우 기본 제공된 루트 인증서가 사용됩니다.</value>
+  </data>
+  <data name="AndroidAllowAospClosedNetwork" xml:space="preserve">
+    <value>폐쇄 네트워크에서 운영하거나 Google Play와 통신할 수 없는 경우 Google 등록 없이 배포할 수 있습니다.</value>
+  </data>
+  <data name="AndroidAndroidEMMRegistrationDescription" xml:space="preserve">
+    <value>Android 장치 관리를 시작하려면 Workspace ONE을 EMM(Enterprise Mobility Management) 제공자로 Google에 등록하십시오.</value>
+  </data>
+  <data name="AndroidAppInactivityRuleDuplicate" xml:space="preserve">
+    <value>Android 애플리케이션 비활성 규칙이 애플리케이션 식별자를 복제했습니다.</value>
+  </data>
+  <data name="AndroidAppInactivityRuleNotValid" xml:space="preserve">
+    <value>Android 애플리케이션 비활성 규칙이 잘못되었습니다. 애플리케이션 식별자가 제공되고 비활성 일수가 1~90 범위에 있는지 확인하십시오.</value>
+  </data>
+  <data name="AndroidAppVersionRuleDuplicate" xml:space="preserve">
+    <value>Android 애플리케이션 버전 규칙이 애플리케이션 식별자를 복제했습니다.</value>
+  </data>
+  <data name="AndroidAppVersionRuleNotValid" xml:space="preserve">
+    <value>Android 애플리케이션 버전 규칙이 유효하지 않습니다. 애플리케이션 식별자나 버전 형식이 올바른지 확인하십시오.</value>
+  </data>
+  <data name="AndroidEMMRegistrationConfigurations" xml:space="preserve">
+    <value>Android EMM 등록 구성</value>
+  </data>
+  <data name="AndroidEMMRegistrationConfigurationsHelp" xml:space="preserve">
+    <value>Android EMM 등록 설정 페이지의 구성 탭에 대한 액세스를 제어합니다.</value>
+  </data>
+  <data name="AndroidEMMRegistrationEnrollmentRestrictions" xml:space="preserve">
+    <value>Android EMM 등록의 등록 제한</value>
+  </data>
+  <data name="AndroidEMMRegistrationEnrollmentRestrictionsHelp" xml:space="preserve">
+    <value>Android EMM 등록 설정 페이지의 등록 제한 탭에 대한 액세스를 제어합니다.</value>
+  </data>
+  <data name="AndroidEMMRegistrationEnrollmentSettings" xml:space="preserve">
+    <value>Android EMM 등록의 등록 설정</value>
+  </data>
+  <data name="AndroidEMMRegistrationEnrollmentSettingsHelp" xml:space="preserve">
+    <value>Android EMM 등록 설정 페이지의 등록 설정 탭에 대한 액세스를 제어합니다.</value>
+  </data>
+  <data name="AndroidEMMRegistrationRequired" xml:space="preserve">
+    <value>이 작업을 완료하려면 유효한 Android EMM 등록이 필요합니다.</value>
+  </data>
+  <data name="AndroidEnterpriseCancelMigrationDevices" xml:space="preserve">
+    <value>특정 장치에 대한 AFW로 Android 레거시 마이그레이션을 취소하는 명령</value>
+  </data>
+  <data name="AndroidEnterpriseMigrationBatchReleaseJob" xml:space="preserve">
+    <value>Android 엔터프라이즈 마이그레이션 배치 릴리스 작업</value>
+  </data>
+  <data name="AndroidEnterpriseOptOut" xml:space="preserve">
+    <value>Android(레거시) 배포</value>
+  </data>
+  <data name="AndroidEnterpriseOptOutMsg" xml:space="preserve">
+    <value>장치에서 Android 5.0 이하를 실행하는 경우 Google 등록 없이 Android(레거시)를 배포할 수 있습니다.
+
+그러나 Workspace ONE UEM을 EMM 제공자로 Google에 등록하는 것이 좋습니다.</value>
+  </data>
+  <data name="AndroidEnterpriseTestConnectionFail" xml:space="preserve">
+    <value>설정 오류 서비스 계정</value>
+  </data>
+  <data name="AndroidEnterpriseTestConnectionSuccess" xml:space="preserve">
+    <value>서비스 계정 설정 성공</value>
+  </data>
+  <data name="AndroidForWorkEndUserWipeMessage" xml:space="preserve">
+    <value>회사 프로필 엔터프라이즈 초기화 사용자 메시지</value>
+  </data>
+  <data name="AndroidOsVersionNotSet" xml:space="preserve">
+    <value>Android 운영 체제 버전 필드가 채워지지 않았습니다.</value>
+  </data>
+  <data name="AndroidPasscodeWarning" xml:space="preserve">
+    <value>복잡한 암호 정책은 최소 운영 체제 Android 4.0을 요구합니다.</value>
+  </data>
+  <data name="AndroidRelayServerHelpLink_Description" xml:space="preserve">
+    <value>Android 릴레이 서버 도움말 링크</value>
+  </data>
+  <data name="AndroidWorkProfileEnterpriseWipeDescription" xml:space="preserve">
+    <value>엔터프라이즈 초기화 명령으로 회사 프로필이 제거될 때 사용자에게 표시되는 기본 메시지입니다.</value>
+  </data>
+  <data name="AospClosedNetwork" xml:space="preserve">
+    <value>AOSP/폐쇄 네트워크</value>
+  </data>
+  <data name="AospClosedNetworkDescription" xml:space="preserve">
+    <value>장치에 Google 계정이 생성되지 않습니다. 관리되는 Google Play를 통한 공용 앱 관리를 사용할 수 없습니다. 이 설정은 AOSP 장치(Play 서비스 제외) 및 Google 서버에 액세스할 수 없는 네트워크에서 배포하는 경우에 적합합니다.</value>
+  </data>
+  <data name="ApiAuthenticationHelpText" xml:space="preserve">
+    <value>사용자 자격 증명 유형 API 인증을 위해 관리자의 사용자 이름 및 비밀번호가 사용되고 있습니다.</value>
+  </data>
+  <data name="ApiCallFailedForGsuitePasswordRotation" xml:space="preserve">
+    <value>비밀번호 변경에 실패했습니다. 선택한 MEM 구성에서 G Suite 자격 증명을 확인하십시오.</value>
+  </data>
+  <data name="APIConnection" xml:space="preserve">
+    <value>API 연결</value>
+  </data>
+  <data name="APILastSyncTime" xml:space="preserve">
+    <value>API 마지막 동기화 시간</value>
+  </data>
+  <data name="APIUrl" xml:space="preserve">
+    <value>API URL</value>
+  </data>
+  <data name="ApiVersionDoesNotSupportMdmOnlyMode" xml:space="preserve">
+    <value>이 기능은 Workspace ONE 카탈로그가 AirWatch에서만 가져오기로 구성되어 있을 경우 지원되지 않습니다.</value>
+  </data>
+  <data name="ApnsMessagesGoViaProxy" xml:space="preserve">
+    <value>프록시를 통해 이동하는 APN 메시지</value>
+  </data>
+  <data name="ApnsMessagesGoViaProxyExpl" xml:space="preserve">
+    <value>이 프록시가 APN에 보내는 메시징 서비스로 아웃바운드 연결로 사용되려면 HTTP 또는 소켓 프록시로 설정해야 합니다.</value>
+  </data>
+  <data name="ApnsProxySettings" xml:space="preserve">
+    <value>APN 프록시 설정</value>
+  </data>
+  <data name="ApnsProxyType" xml:space="preserve">
+    <value>프록시 유형</value>
+  </data>
+  <data name="APNSViaHttp2Failed" xml:space="preserve">
+    <value>HTTP/2를 통한 연결 테스트에 실패했습니다. {0}.</value>
+  </data>
+  <data name="APNSViaHttp2Succeeded" xml:space="preserve">
+    <value>HTTP/2를 통한 연결 테스트에 성공했습니다.</value>
+  </data>
+  <data name="AppApprovalRequestExpirationJob" xml:space="preserve">
+    <value>애플리케이션 승인 요청 정리 작업</value>
+  </data>
+  <data name="AppBrowserDescription" xml:space="preserve">
+    <value>Workspace ONE Web을 통해 직원들이 기업 리소스에 원활하고 안전하게 액세스할 수 있도록 합니다.</value>
+  </data>
+  <data name="AppInactivityInfo" xml:space="preserve">
+    <value>Android 또는 iOS 장치의 애플리케이션 ID와 애플리케이션 데이터가 삭제될 때까지 비활성 일 수(1~90 사이)를 지정합니다.</value>
+  </data>
+  <data name="AppInactivityRuleRequired" xml:space="preserve">
+    <value>최소 하나의 애플리케이션 비활성 규칙이 필요합니다. 애플리케이션 비활성 규칙을 추가하거나 애플리케이션 비활성 옵션을 사용 안 함으로 설정하십시오.</value>
+  </data>
+  <data name="AppleAPNsForMDMDescription" xml:space="preserve">
+    <value>MDM 인증서용 APN을 사용하여 iOS, MacOS 및 tvOS 장치와 Workspace ONE 간에 보안 통신을 활성화하고 유지합니다. APN 인증서는 기업에 Apple과 함께 등록되어 있으므로 Workspace ONE으로 장치를 관리할 수 있습니다. 기업 Apple ID가 필요합니다.</value>
+  </data>
+  <data name="AppleAppleConfiguratorDescription" xml:space="preserve">
+    <value>IOS 및 tvOS 장치용 Apple Configurator 2를 통해 측면 로드된 등록 프로필과 MacOS 수동 설치를 사용하여 Apple 장치를 대량으로 등록합니다. 이후 사용자 인증 또는 지정된 단일 사용자에 대한 직접 등록을 위해 스테이징 사용자에게 등록을 강제할 수 있습니다.</value>
+  </data>
+  <data name="AppleAutomatedEnrollment" xml:space="preserve">
+    <value>Apple 자동화된 등록</value>
+  </data>
+  <data name="AppleAutomatedEnrollmentDescription" xml:space="preserve">
+    <value>Apple 장치에 iOS 및 tvOS 장치용 Apple Configurator2를 통해 측면 로드된 등록 프로필과 MacOS 수동 설치의 지원을 받아 온보드 Apple 장치를 대량으로 관리합니다. 이후 사용자 인증 또는 지정된 단일 사용자에 대한 직접 등록을 위해 스테이징 사용자에게 등록을 강제할 수 있습니다.</value>
+  </data>
+  <data name="AppleDeviceEnrollmentProgram" xml:space="preserve">
+    <value>Apple 장치 등록 프로그램</value>
+  </data>
+  <data name="AppleDeviceEnrollmentProgramDescription" xml:space="preserve">
+    <value>장치 등록 프로그램을 사용하면 IT 부서의 개입 없이도 기업 소유 Apple 장치를 구성 및 배포할 수 있고 스마트 기능으로 장치 설치 화면을 건너뛰고 MDM 관리 기능 제거 방지 등을 할 수 있습니다.</value>
+  </data>
+  <data name="AppleEducationDescription" xml:space="preserve">
+    <value>Apple School Manager의 학급 명부 정보를 기반으로 학생 및 교사가 관리하는 Apple 장치를 구성하십시오. 구성된 후에는 교사들이 관리 장치 및 Apple의 Classroom 애플리케이션을 사용하여 학생들에게 더 풍부한 디지털 교실 환경을 제공할 수 있습니다. Apple School Manager에서 만든 관리된 Apple ID로 원활한 iPad 공유 환경을 제공할 수도 있습니다.</value>
+  </data>
+  <data name="AppleGlobalServiceExchangeDescription" xml:space="preserve">
+    <value>Apple Global Service Exchange(GSX) 계정 정보를 사용하여 AppleCare를 Workspace ONE과 통합하십시오. 이 기능을 통해 관리자는 Workspace ONE에서 직접 디스플레이 모델명, 장치 구입 및 보증 상태와 관련된 장치 세부 정보를 검색할 수 있습니다.</value>
+  </data>
+  <data name="AppleGsxServiceUrl" xml:space="preserve">
+    <value>Apple GSX 서비스</value>
+  </data>
+  <data name="AppleGsxServiceUrlDescription" xml:space="preserve">
+    <value>Apple 장치에 대한 보증 세부 정보를 검색하려면 Apple GSX 서비스 URL이 필요함</value>
+  </data>
+  <data name="AppleSchoolManager" xml:space="preserve">
+    <value>Apple School Manager</value>
+  </data>
+  <data name="AppleSchoolManagerFetchFail" xml:space="preserve">
+    <value>Apple School Manager 가져오기 실패</value>
+  </data>
+  <data name="AppleSchoolManagerFetchSuccess" xml:space="preserve">
+    <value>Apple School Manager 가져오기 성공</value>
+  </data>
+  <data name="AppleSchoolManagerSyncFail" xml:space="preserve">
+    <value>Apple School Manager 동기화 실패</value>
+  </data>
+  <data name="AppleSchoolManagerSyncSuccess" xml:space="preserve">
+    <value>Apple School Manager 동기화 성공</value>
+  </data>
+  <data name="ApplicableOnlyForWinmoDevices" xml:space="preserve">
+    <value>WinMo 장치만 해당</value>
+  </data>
+  <data name="ApplicationCategories" xml:space="preserve">
+    <value>애플리케이션 카테고리</value>
+  </data>
+  <data name="ApplicationContentLockerDescription" xml:space="preserve">
+    <value>직원들이 언제 어디서나 자신의 장치 간에 모든 파일에 액세스할 수 있게 하십시오. 기본 제공 편집 도구를 사용하여 파일을 즐겨찾기로 쉽게 표시하고, 문서를 오프라인으로 액세스하고, Office 문서를 편집하고, PDF 파일에 주석을 달 수 있습니다.</value>
+  </data>
+  <data name="ApplicationContentLockerSyncDescription" xml:space="preserve">
+    <value>직원이 자신의 개인 콘텐츠 저장소를 데스크톱 컴퓨터와 동기화할 수 있도록 허용하십시오.</value>
+  </data>
+  <data name="ApplicationListIsRequired" xml:space="preserve">
+    <value>문서를 열 수 있는 승인된 앱 목록에 애플리케이션을 하나 이상 추가합니다.</value>
+  </data>
+  <data name="ApplicationListSampleInfo" xml:space="preserve">
+    <value>장치에서 관리되는 애플리케이션 및 관리되지 않는 애플리케이션 목록을 수집하는 일정입니다. 이 샘플은 개인 정보 보호 프레임워크를 따르며 관리자가 구성한 샘플만 수집합니다.</value>
+  </data>
+  <data name="ApplicationListSampleInMinutes" xml:space="preserve">
+    <value>애플리케이션 목록 샘플</value>
+  </data>
+  <data name="ApplicationListSampleTimeMode" xml:space="preserve">
+    <value>애플리케이션 목록 샘플 시간 모드</value>
+  </data>
+  <data name="ApplicationLogs" xml:space="preserve">
+    <value>애플리케이션 로그</value>
+  </data>
+  <data name="ApplicationMappedWithDTRs" xml:space="preserve">
+    <value>이 애플리케이션은 하나 이상의 장치 트래픽 규칙에서 참조됩니다. 애플리케이션을 제거하고 다시 시도하십시오.</value>
+  </data>
+  <data name="ApplicationNotDeleted" xml:space="preserve">
+    <value>애플리케이션을 삭제할 수 없습니다.</value>
+  </data>
+  <data name="AppLogs" xml:space="preserve">
+    <value>앱 로그</value>
+  </data>
+  <data name="ApplySettingAtEnrollmentOnlyToolTip" xml:space="preserve">
+    <value>그룹 할당 설정은 활성화될 경우 등록할 시에만 적용됩니다. 등록되면 사용자의 사용자 그룹 멤버 자격에 대한 변경 사항은 해당 사용자의 새 사용자 그룹 멤버 자격에 이미 매핑된 다른 조직 그룹으로 해당 장치를 자동으로 이동하지 않습니다.</value>
+  </data>
+  <data name="AppOffice365SettingsDescription" xml:space="preserve">
+    <value>Workspace ONE UEM Console의 그래프 API 통합과 Microsoft Intune® App Protection 정책을 활용하여 Intune SDK를 사용하는 애플리케이션에 대한 DLP(데이터 손실 방지) 정책을 구성하십시오.</value>
+  </data>
+  <data name="AppPathOrPFN" xml:space="preserve">
+    <value>경로 또는 PFN</value>
+  </data>
+  <data name="AppRestrictions" xml:space="preserve">
+    <value>앱 제한</value>
+  </data>
+  <data name="AppSettingsAndPoliciesDescription" xml:space="preserve">
+    <value>Workspace ONE SDK와 통합된 앱의 보안, 인증 및 기타 엔터프라이즈 구성을 제어하는 SDK 프로필을 구성하십시오.</value>
+  </data>
+  <data name="AppsProvsionedFailed" xml:space="preserve">
+    <value>앱 프로비저닝 실패</value>
+  </data>
+  <data name="AppsProvsionedSuccessfully" xml:space="preserve">
+    <value>앱 프로비저닝 성공</value>
+  </data>
+  <data name="AppthorityAPIKey" xml:space="preserve">
+    <value>Appthority API 키</value>
+  </data>
+  <data name="AppTunnelAllowNonFQDNDomains" xml:space="preserve">
+    <value>Tunnel URL 목록에 명시된 URL에 관계없이 App Tunnel을 통해 FQDN이 아닌 모든 URL을 허용하려면 "예"를 선택하십시오. "아니요"를 선택하면 터널 URL 목록에서 FQDN이 아닌 항목만 허용됩니다.</value>
+  </data>
+  <data name="AppVersionInfo" xml:space="preserve">
+    <value>Android 애플리케이션 버전에 대한 SDK 애플리케이션 규정 준수 규칙은 'Is' 또는 'Is Not'을 활용하는 모든 문자열을 지원하며 정확한 일치를 비교합니다. '미만' 또는 '이상' 등 다른 연산자는 다음 형식인 x, x.x, x.x.x, x.x.x.x, 또는 x.x.x.x.x의 수만을 지원합니다.</value>
+  </data>
+  <data name="AppVersionRuleRequired" xml:space="preserve">
+    <value>최소 하나의 애플리케이션 버전 규칙이 필요합니다. 애플리케이션 버전 규칙을 추가하거나 애플리케이션 버전 옵션을 비활성화하십시오.</value>
+  </data>
+  <data name="AppWorkspaceONEDescription" xml:space="preserve">
+    <value>직원들이 장소와 장치에 상관없이 필요한 애플리케이션과 데이터에 원활하고 안전하게 액세스할 수 있는 셀프 서비스 방식을 제공하십시오.</value>
+  </data>
+  <data name="Areas" xml:space="preserve">
+    <value>영역</value>
+  </data>
+  <data name="AreYouSureYouWantAndroidAllowAospClosedNetwork" xml:space="preserve">
+    <value>Google 등록 없이 계속 진행하시겠습니까?</value>
+  </data>
+  <data name="ArgAllSettingsDialogDescription" xml:space="preserve">
+    <value>{0} 조직 그룹의 설정 관리</value>
+  </data>
+  <data name="ArgHour" xml:space="preserve">
+    <value>{0} 시간</value>
+  </data>
+  <data name="ArgHoursPlural" xml:space="preserve">
+    <value>{0} 시간</value>
+  </data>
+  <data name="ArgMinutesPlural" xml:space="preserve">
+    <value>{0} 분</value>
+  </data>
+  <data name="ArgNotValidOrArgNotFoundInDefinedLDAP" xml:space="preserve">
+    <value>{0}이(가) 유효하지 않거나 정의된 LDAP에 {1}이(가) 없음</value>
+  </data>
+  <data name="ArgOfItems" xml:space="preserve">
+    <value>{2}개의 항목 중 {0}~{1}</value>
+  </data>
+  <data name="ArgSecondsPlural" xml:space="preserve">
+    <value>{0} 초</value>
+  </data>
+  <data name="ArgSettings" xml:space="preserve">
+    <value>{0} 설정</value>
+    <comment>Placeholder in this label key will contain the link text localized value.</comment>
+  </data>
+  <data name="AssignDefaultSecurityGroup" xml:space="preserve">
+    <value>기본 보안 그룹 할당</value>
+  </data>
+  <data name="AssignPayload" xml:space="preserve">
+    <value>페이로드 할당</value>
+  </data>
+  <data name="AssignPayloadDescription" xml:space="preserve">
+    <value>스마트 그룹을 이용해 Drop Ship 장치에 페이로드 할당을 생성합니다.</value>
+  </data>
+  <data name="AssociatedUsersOrGroupsExistsForDirectoryType" xml:space="preserve">
+    <value>디렉토리 유형을 변경하려면 연결된 디렉토리 사용자 또는 그룹을 삭제해야 합니다.</value>
+  </data>
+  <data name="AuthenticationHintMessage" xml:space="preserve">
+    <value>인증 힌트 메시지</value>
+  </data>
+  <data name="AuthenticationMessageTooltip" xml:space="preserve">
+    <value>사용자 이름 설명 및/또는 도움이 되는 링크와 같이 사용자에게 도움을 주는 간단한 메시지를 입력합니다. 다음 형식을 사용하여 링크를 삽입합니다. [Text to Display](탐색할 주소)</value>
+  </data>
+  <data name="AuthenticationProvider" xml:space="preserve">
+    <value>인증</value>
+  </data>
+  <data name="AuthenticationTypeTimeout" xml:space="preserve">
+    <value>시간 초과</value>
+  </data>
+  <data name="AuthHintHelpLabelArg" xml:space="preserve">
+    <value>다음 형식을 사용하여 링크를 삽입합니다. {0}</value>
+  </data>
+  <data name="AuthHintLinkFormat" xml:space="preserve">
+    <value>텍스트 메시지 위치
+[Link text](http://www.example.com/)</value>
+  </data>
+  <data name="AutoDetectProxySetting" xml:space="preserve">
+    <value>프록시 설정 자동 감지</value>
+  </data>
+  <data name="AutoDetectProxySettings" xml:space="preserve">
+    <value>프록시 설정 자동 감지</value>
+  </data>
+  <data name="AutoDiscoverySyncError" xml:space="preserve">
+    <value>자동 검색 동기화 오류</value>
+  </data>
+  <data name="AutofillPrimaryUserAccountTooltip" xml:space="preserve">
+    <value>비활성화된 경우 기본 계정 정보를 무시함</value>
+  </data>
+  <data name="AutoGeneratedApiKeysAlreadyUsed" xml:space="preserve">
+    <value>기존 Workspace ONE Access AirWatch 설정이 이미 자동 생성된 API 키를 사용합니다.</value>
+  </data>
+  <data name="AutoGeneratedApiKeysUpdated" xml:space="preserve">
+    <value>Workspace ONE Access의 AirWatch 설정이 자동 생성된 API 키를 사용하도록 업데이트되었습니다.</value>
+  </data>
+  <data name="AutoLogoutEnabledDescription" xml:space="preserve">
+    <value>자동 로그아웃은 설정된 기간이 지나면 로그아웃되도록 해줍니다. 이 기능은 Windows 데스크톱 장치에는 적용되지 않습니다.</value>
+  </data>
+  <data name="AutomaticCertificateRenewalInfoTooltip" xml:space="preserve">
+    <value>인증서를 자동으로 갱신하려면 연결된 프로필의 할당 유형을 자동으로 설정해야 합니다. 일반 SCEP의 경우 자격 증명 페이로드를 통해 인증서를 제공하는 경우에만 자동 갱신이 지원됩니다.</value>
+  </data>
+  <data name="AutomaticCertificateRenewalPeriodInfo" xml:space="preserve">
+    <value>자동 인증서 갱신을 사용하면 현재 인증서 만료 날짜가 구성된 자동 갱신 기간 내에 있을 때 Workspace ONE Unified Endpoint Management가 새로운 인증서를 요청 및 배포할 수 있습니다.</value>
+  </data>
+  <data name="AutomaticDeleteFactoryPPKG" xml:space="preserve">
+    <value>공장 PPKG 자동 삭제</value>
+  </data>
+  <data name="AutomaticDeleteFactoryPPKGHelp" xml:space="preserve">
+    <value>공장 PPKG 자동 삭제 도움말</value>
+  </data>
+  <data name="AvailabilityStartDateShouldBeGreaterThanToday" xml:space="preserve">
+    <value>가용성 시작 날짜는 오늘 날짜보다 나중이어야 합니다.</value>
+  </data>
+  <data name="AvailableCA" xml:space="preserve">
+    <value>CA 가능</value>
+  </data>
+  <data name="AWCM" xml:space="preserve">
+    <value>AWCM</value>
+  </data>
+  <data name="AWCMConnection" xml:space="preserve">
+    <value>AWCM 연결</value>
+  </data>
+  <data name="AWCMIsDisabled" xml:space="preserve">
+    <value>VMware Tunnel을 구성하려면 AirWatch Cloud Messaging을 활성화해야 합니다. AirWatch Cloud Messaging은 {0}에서 구성할 수 있습니다.</value>
+  </data>
+  <data name="AWCMUrl" xml:space="preserve">
+    <value>AWCM 호스트 이름</value>
+  </data>
+  <data name="AWCMUserDownloadInstallerLinuxForCertificate" xml:space="preserve">
+    <value>ENS(Email Notification Service)를 사용하는 VMware 온프레미스 고객은 이 설치 프로그램을 다운로드한 후 VMware 지원 팀에 제공해야 합니다. 이는 환경이 CNS(클라우드 알림 서비스) 서버와 작동하도록 하기 위한 것입니다.
+
+VMware SaaS 배포는 Linux 플랫폼의 AWCM 배포에 대해서만 설치 프로그램을 다운로드해야 합니다.</value>
+  </data>
+  <data name="AzureServicesDeviceSyncStartTime" xml:space="preserve">
+    <value>다시 동기화 시작 시간:</value>
+  </data>
+  <data name="AzureServicesLastSuccessfulSync" xml:space="preserve">
+    <value>마지막으로 성공한 동기화:</value>
+  </data>
+  <data name="AzureServicesLastSyncNotFound" xml:space="preserve">
+    <value>찾을 수 없음</value>
+  </data>
+  <data name="AzureServicesReSync" xml:space="preserve">
+    <value>다시 동기화</value>
+  </data>
+  <data name="AzureServiceSyncFailure" xml:space="preserve">
+    <value>Azure 서비스를 동기화할 수 없습니다. 다시 시도하십시오.</value>
+  </data>
+  <data name="BackEndCertificate" xml:space="preserve">
+    <value>백엔드 인증서</value>
+  </data>
+  <data name="BackendHostName" xml:space="preserve">
+    <value>백엔드 호스트 이름</value>
+  </data>
+  <data name="Balanced" xml:space="preserve">
+    <value>균형</value>
+  </data>
+  <data name="BaselineApiUrl" xml:space="preserve">
+    <value>기준선 서비스 URL</value>
+  </data>
+  <data name="BashExecutablePath" xml:space="preserve">
+    <value>Bash 경로</value>
+  </data>
+  <data name="BashExecutablePathTooltip" xml:space="preserve">
+    <value>Bash 스크립트 실행 경로를 재정의합니다. 바이너리는 공동으로 설계되어야 하고 755 사용 권한을 가지고 있어야 합니다. 그렇지 않으면 Intelligent Hub가 /bin/bash의 기본 경로로 폴백됩니다. 심볼 링크 경로는 허용되며 공백을 이스케이프할 필요가 없습니다.</value>
+  </data>
+  <data name="BasicUserSync" xml:space="preserve">
+    <value>기본 사용자 동기화</value>
+  </data>
+  <data name="BatchImportSerialNumberExplanation" xml:space="preserve">
+    <value>이 일괄 가져오기 기능은 대량으로 장치에 프로필을 할당할 수 있습니다. 가져오기 템플릿은 아래에 링크되어 있습니다.</value>
+  </data>
+  <data name="BentoNavWelcomeWindowDescription" xml:space="preserve">
+    <value>이제 새로운 내 서비스 선택기를 사용하면 Workspace ONE UEM 내의 어느 위치에서든 신속하고 간편하게 서비스를 탐색할 수 있습니다.</value>
+  </data>
+  <data name="BentoNavWelcomeWindowTitle" xml:space="preserve">
+    <value>Workspace ONE 서비스에 액세스하는 것이 훨씬 쉬워졌습니다!</value>
+  </data>
+  <data name="BetaProgram" xml:space="preserve">
+    <value>베타 프로그램</value>
+  </data>
+  <data name="BetaProgramDescriptionOne" xml:space="preserve">
+    <value>원하는 베타 제품을 선택합니다.</value>
+  </data>
+  <data name="BetaProgramDescriptionThree" xml:space="preserve">
+    <value>제출된 피드백에 대해 제품 및 엔지니어링 팀과 직접 상호 작용합니다.</value>
+  </data>
+  <data name="BetaProgramDescriptionTwo" xml:space="preserve">
+    <value>EUC 제품(예: Intelligent Hub, Boxer 등)에서 가장 혁신적인 최신 기능 및 향상된 기능에 액세스할 수 있습니다.</value>
+  </data>
+  <data name="BetaProgramIntroduction" xml:space="preserve">
+    <value>사용 가능한 최신 Workspace ONE 사전 릴리스 빌드에 가장 먼저 액세스하십시오.</value>
+  </data>
+  <data name="BetaProgramParam" xml:space="preserve">
+    <value>QR 코드를 스캔하거나 {0}에 가입하십시오.</value>
+    <comment>Placeholder in the label key contains a link to redirect the admin to the Beta Program page.</comment>
+  </data>
+  <data name="BetaProgramTitle" xml:space="preserve">
+    <value>차세대 Workspace ONE 제품 테스트</value>
+  </data>
+  <data name="BindUserCredentialsInvalid" xml:space="preserve">
+    <value>바인딩 사용자 자격 증명 무효</value>
+  </data>
+  <data name="BiosSample" xml:space="preserve">
+    <value>OEM BIOS 정보 샘플</value>
+  </data>
+  <data name="BiosSampleInfo" xml:space="preserve">
+    <value>Dell 장치의 BIOS 정보를 수집하기 위한 일정입니다. 이 데이터에는 부팅 모드, 보안 부팅 상태, WiFi, GPS 및 블루투스 라디오 상태, BIOS에서의 충전 일정 등이 포함됩니다.</value>
+  </data>
+  <data name="BiosSampleInMinutes" xml:space="preserve">
+    <value>OEM BIOS 정보 샘플</value>
+  </data>
+  <data name="BiosSampleTimeMode" xml:space="preserve">
+    <value>BIOS 샘플 시간 모드</value>
+  </data>
+  <data name="BlockNonCompliantDevices" xml:space="preserve">
+    <value>규정 위반 장치 차단</value>
+  </data>
+  <data name="BlockNonCompliantDevicesTooltip" xml:space="preserve">
+    <value>규정 비준수 장치에 대한 보안 그룹을 선택합니다.</value>
+  </data>
+  <data name="BlockSdkApplicationAction" xml:space="preserve">
+    <value>작업: SDK 애플리케이션 차단</value>
+  </data>
+  <data name="BluetoothConnections" xml:space="preserve">
+    <value>블루투스 연결</value>
+  </data>
+  <data name="BluetoothData" xml:space="preserve">
+    <value>블루투스 데이터</value>
+  </data>
+  <data name="BookmarkInfo" xml:space="preserve">
+    <value>표시 이름 필드에 입력된 값은 Workspace ONE Web의 북마크 메뉴에 표시됩니다. 표시 이름 필드를 비워두면 북마크 메뉴에 URL만 표시됩니다.</value>
+  </data>
+  <data name="BookmarkInfoTooltip" xml:space="preserve">
+    <value>이름 필드에 입력된 값은 Workspace ONE Web의 북마크 메뉴에 표시됩니다. 이름 필드를 비워두면 북마크 메뉴에 전체 북마크 URL이 표시됩니다.</value>
+  </data>
+  <data name="BranchCacheSetting" xml:space="preserve">
+    <value>BranchCache Peer Distribution 설정</value>
+  </data>
+  <data name="BrowserInformationSampleInfo" xml:space="preserve">
+    <value>브라우저 정보 샘플을 수집하기 위한 일정입니다. 이 샘플에는 보안 영역 수준 정보, 플러그인 및 스크립트의 상태 및 IE 브라우저와 관련된 기타 설정이 포함됩니다.</value>
+  </data>
+  <data name="BuildInformation" xml:space="preserve">
+    <value>빌드 정보</value>
+  </data>
+  <data name="BulkAssignmentMaxLimit_Description" xml:space="preserve">
+    <value>대량 할당 최대 제한</value>
+  </data>
+  <data name="BulkEnrollment" xml:space="preserve">
+    <value>대량 등록</value>
+  </data>
+  <data name="BYOD" xml:space="preserve">
+    <value>BYOD</value>
+  </data>
+  <data name="CABatchImportCompleted" xml:space="preserve">
+    <value>CA 일괄 처리 가져오기 완료</value>
+  </data>
+  <data name="CABatchImportFailed" xml:space="preserve">
+    <value>CA 일괄 처리 가져오기 실패</value>
+  </data>
+  <data name="CABatchImportStarted" xml:space="preserve">
+    <value>CA 일괄 처리 가져오기 시작</value>
+  </data>
+  <data name="CaCertificate" xml:space="preserve">
+    <value>클라이언트 인증서</value>
+  </data>
+  <data name="Calculator" xml:space="preserve">
+    <value>계산기</value>
+  </data>
+  <data name="CannotDeleteDefaultDTR" xml:space="preserve">
+    <value>기본 장치 트래픽 규칙 집합은 삭제할 수 없습니다.</value>
+  </data>
+  <data name="CantWaitSkipAheadAndCheckOutTheNewConfigurationsPage" xml:space="preserve">
+    <value>기다릴 수 없으세요? 앞으로 건너뛰어 새 구성 페이지를 확인하세요.</value>
+  </data>
+  <data name="CascadeInfoWhenClarityFeatureFlagOn" xml:space="preserve">
+    <value>한 개의 배포 모델을 지원합니다. 
+프록시용: 기본 배포(내부 네트워크 또는 DMZ 내 서버) 및 릴레이 엔드포인트 배포(DMZ 내 릴레이 서버 및 내부 네트워크 내 엔드포인트 서버)입니다.</value>
+  </data>
+  <data name="CatalogSettingsInfo" xml:space="preserve">
+    <value>Intelligent Hub App Catalog 설정이 Workspace ONE Hub 서비스로 이동되었습니다. 이러한 읽기 전용 설정은 이전 버전의 Intelligent Hub에 적용됩니다. 자세한 내용을 보려면 Workspace ONE Hub 서비스로 이동하십시오.</value>
+  </data>
+  <data name="CDNNotEnabled" xml:space="preserve">
+    <value>테스트 연결 작업을 수행하기 전에 CDN 설정을 활성화하고 저장하십시오.</value>
+  </data>
+  <data name="CDNTestFailed" xml:space="preserve">
+    <value>CDN 서버에 연결하지 못했습니다.</value>
+  </data>
+  <data name="CeipDescription" xml:space="preserve">
+    <value>이 제품은 VMware의 CEIP(사용자 환경 개선 프로그램)에 참여합니다. CEIP는 VMware가 제품 및 서비스를 개선하고 문제를 해결하며 최적의 제품 구축 및 사용 방법에 대해 조언할 수 있는 정보를 VMware에 제공합니다. CEIP의 일부로 VMware는 조직의 VMware 라이센스 키와 관련하여 조직의 VMware 제품 및 서비스 사용에 대한 기술 정보를 정기적으로 수집합니다. 이 정보는 어떤 개인도 개인적으로 식별하지 않습니다. CEIP에 대한 추가 정보는 {0}에서 신뢰 및 보증 센터를 참조하십시오. 아래에서 참여 기본 설정을 선택할 수 있습니다.</value>
+  </data>
+  <data name="CertificateAddedCertInfo" xml:space="preserve">
+    <value>인증서 저장됨</value>
+  </data>
+  <data name="CertificateAuthorities" xml:space="preserve">
+    <value>인증 기관</value>
+  </data>
+  <data name="CertificateAuthoritiesListDescription" xml:space="preserve">
+    <value>Workspace ONE 모바일 인증서 관리는 기존 암호보다 더 안정적이고 안전한 인증 방법을 제공하는 인증 기관을 통해 장치 수명 주기 전반에 걸쳐 보안을 최적화합니다.</value>
+  </data>
+  <data name="CertificateAuthority" xml:space="preserve">
+    <value>인증 기관</value>
+  </data>
+  <data name="CertificateAuthorityConfigurationDescription" xml:space="preserve">
+    <value>Workspace ONE 모바일 인증서 관리는 기존 암호보다 더 안정적이고 안전한 인증 방법을 제공하는 인증 기관을 통해 장치 수명 주기 전반에 걸쳐 보안을 최적화합니다.</value>
+  </data>
+  <data name="CertificateAuthorityDoesNotBelongToOg" xml:space="preserve">
+    <value>인증 기관이 현재 조직 그룹에 속하지 않습니다.</value>
+  </data>
+  <data name="CertificateCannotBeUsedInCascadeMode" xml:space="preserve">
+    <value>클라이언트 인증이 향상된 인증 키 사용 OID에 없는 경우에는 인증서를 단계식 모드에서 사용할 수 없습니다.</value>
+  </data>
+  <data name="CertificateDoesNotExists" xml:space="preserve">
+    <value>인증서가 존재하지 않습니다.</value>
+  </data>
+  <data name="CertificateHasExpired" xml:space="preserve">
+    <value>제공된 인증서가 만료되었습니다.</value>
+  </data>
+  <data name="CertificateListSampleInfo" xml:space="preserve">
+    <value>장치에서 관리되는 모든 인증서의 인벤토리를 수집하기 위한 일정입니다. 사용자가 설치한 인증서 또는 공장 설치 인증서의 인벤토리는 수집되지 않습니다.</value>
+  </data>
+  <data name="CertificateListSampleInMinutes" xml:space="preserve">
+    <value>인증서 목록 샘플</value>
+  </data>
+  <data name="CertificateListSampleTimeMode" xml:space="preserve">
+    <value>인증서 목록 샘플 시간 모드</value>
+  </data>
+  <data name="CertificateProfilePublishFrequencyHelp" xml:space="preserve">
+    <value>여기에 입력하는 값은 매 배치마다 릴리스되는 명령의 수입니다. 이 값을 증가시켜 인증서 프로필 일괄 처리를 개선할 수도 있지만, CA 및 DS 서버 성능을 면밀하게 모니터링하는 것이 더 좋습니다.</value>
+  </data>
+  <data name="CertificateProfiles" xml:space="preserve">
+    <value>인증서 프로필</value>
+  </data>
+  <data name="CertificateRemovedCertInfo" xml:space="preserve">
+    <value>인증서 제거됨</value>
+  </data>
+  <data name="CertificateRevocationBasedOnSamplingHelpText" xml:space="preserve">
+    <value>샘플링에 따라 인증서 해지를 활성화합니다. 비활성화하면 인증서가 샘플에서 누락된 경우 해지되지 않습니다.</value>
+  </data>
+  <data name="CertificateRevocationBasedOnSamplingPeriodHelpText" xml:space="preserve">
+    <value>보고되지 않은 상태로 인증서를 해지하려는 시도 간 사용할 기간(시간)을 입력합니다. 기간은 시간 샘플링에 사용되는 값보다 커야 합니다. 정의한 기간이 지난 후 다음 샘플에서 인증서 해지가 진행됩니다.</value>
+  </data>
+  <data name="CertificateRevocationBasedOnSamplingPeriodHours" xml:space="preserve">
+    <value>인증서 해지 기간(시간)</value>
+  </data>
+  <data name="CertificateSubjectHostnameMismatch" xml:space="preserve">
+    <value>인증서 주체 이름이 호스트 이름과 일치하지 않습니다.</value>
+  </data>
+  <data name="CertificateTemplateDoesNotBelongToOg" xml:space="preserve">
+    <value>인증서 템플릿이 현재 조직 그룹에 속하지 않습니다.</value>
+  </data>
+  <data name="CertificateUploadHelpText" xml:space="preserve">
+    <value>업로드할 인증서를 선택합니다. 지원되는 인증서 유형은 .pfx, .p12, .cer입니다.</value>
+  </data>
+  <data name="ChangesRequireIISAndServicesRestart" xml:space="preserve">
+    <value>모든 Workspace One Server에서 IIS 및 Windows 서비스의 모든 AirWatch 서비스를 다시 시작할 때까지 변경은 적용되지 않습니다.</value>
+  </data>
+  <data name="CheckConnectionFailed" xml:space="preserve">
+    <value>연결 실패 확인 - 기타 오류</value>
+  </data>
+  <data name="CheckForDduiUpdatesTooltip" xml:space="preserve">
+    <value>새 프로필 구성을 사용할 수 있는지 확인합니다.</value>
+  </data>
+  <data name="CheckingForUpdates" xml:space="preserve">
+    <value>업데이트 확인 중...</value>
+  </data>
+  <data name="ChooseFile" xml:space="preserve">
+    <value>파일 선택</value>
+  </data>
+  <data name="ChooseManually" xml:space="preserve">
+    <value>수동으로 선택</value>
+  </data>
+  <data name="ChromeBookLegacyAgentSettings" xml:space="preserve">
+    <value>Agent 설정</value>
+  </data>
+  <data name="ChromeExtensionNotificationText" xml:space="preserve">
+    <value>Chrome OS EMM 등록을 구성하면 Chrome OS용 Workspace ONE UEM 확장이 최종 사용자의 장치에 자동으로 푸시됩니다.  최종 사용자의 브라우저에 아이콘이 표시되고 최종 사용자는 확장을 통해 수집되는 데이터에 대한 정보로 이동할 수 있으며, 장치 최종 사용자에게 필요한 알림을 제공하고 확장 사용과 관련하여 최종 사용자로부터 법적으로 필수적인 동의를 얻거나 최종 사용자의 장치에 확장을 푸시하기 전에 해당하는 모든 법률을 준수하는 것은 귀하의 단독 책임입니다.</value>
+  </data>
+  <data name="ChromeOS" xml:space="preserve">
+    <value>Chrome OS</value>
+  </data>
+  <data name="ChromeOSEMMRegistrationDescription" xml:space="preserve">
+    <value>Chrome OS 장치 관리를 시작하려면 Workspace ONE UEM을 EMM(Enterprise Mobility Management) 제공자로 Google에 등록하십시오.</value>
+  </data>
+  <data name="ChromeRegistrationRedirectText" xml:space="preserve">
+    <value>Google 관리자 계정만 입력하면 사용 권한을 부여하는 Google 인증 페이지로 리디렉션됩니다. 팝업을 사용하도록 설정했는지 확인합니다. 그렇지 않으면 인증 페이지가 열리지 않습니다.</value>
+  </data>
+  <data name="ChromeSettingsMisconfigured" xml:space="preserve">
+    <value>Chrome OS EMM 등록 중 오류가 발생했습니다.  사용 가능한 라이센스, 관리자 권한 및 파트너 액세스 구성에 대한 Google 관리 콘솔 설정을 확인하십시오.</value>
+  </data>
+  <data name="CIMDEndpointLabel" xml:space="preserve">
+    <value>CIMDEndpoint</value>
+  </data>
+  <data name="CIMDEndpointTooltip" xml:space="preserve">
+    <value>https://servername or IP address/QueryStringParamLogger?user={0}&amp;pass={1}&amp;to={2}&amp;text={3}</value>
+  </data>
+  <data name="ClassManagement" xml:space="preserve">
+    <value>클래스 관리</value>
+  </data>
+  <data name="ClearAppDataOnLogout" xml:space="preserve">
+    <value>Android 앱 데이터 지우기</value>
+  </data>
+  <data name="ClearOverride" xml:space="preserve">
+    <value>재정의 지우기</value>
+  </data>
+  <data name="ClearProductProvisioningState_Description" xml:space="preserve">
+    <value>제품 프로비저닝 상태 지우기</value>
+  </data>
+  <data name="ClearRelayServerContentMappingJob" xml:space="preserve">
+    <value>RelayServer 컨텐츠 매핑 작업 지우기</value>
+  </data>
+  <data name="ClickToExpandArgMenu" xml:space="preserve">
+    <value>클릭하여 {0} 메뉴 확장</value>
+  </data>
+  <data name="ClientAuthentication" xml:space="preserve">
+    <value>클라이언트 인증</value>
+  </data>
+  <data name="ClientName" xml:space="preserve">
+    <value>클라이언트 이름</value>
+  </data>
+  <data name="ClientTrafficRulesInfoWithSupportForMacOSApps" xml:space="preserve">
+    <value>참고: 이 규칙은 VMware Tunnel의 퍼앱 터널 구성 요소에만 적용할 수 있으며 Android, iOS, macOS, Windows 데스크톱 장치에서만 지원됩니다.(iOS의 경우 App Store의 VMware Tunnel 클라이언트 애플리케이션을 사용하십시오.) 모바일 장치에 설치된 VMware Tunnel 애플리케이션은 이 페이지에 지정된 규칙에 따라 네트워크 트래픽을 터널링, 차단 또는 바이패스합니다. 네트워크에 구성된 사용자 지정 웹 프록시로 네트워크 트래픽을 라우팅하는 옵션도 사용할 수 있습니다.</value>
+  </data>
+  <data name="CloudConnectorCertificate" xml:space="preserve">
+    <value>Cloud Connector에 대해 서명된 인증서를 생성할 수 없음</value>
+  </data>
+  <data name="CloudConnectorClientCertificate" xml:space="preserve">
+    <value>Cloud Connector 클라이언트에 대해 서명된 인증서를 생성할 수 없음</value>
+  </data>
+  <data name="CNameVerified" xml:space="preserve">
+    <value>CNAME 확인됨</value>
+  </data>
+  <data name="CodeIntegrityPolicyAllowlist_Description" xml:space="preserve">
+    <value>코드 무결성 정책 허용 목록</value>
+  </data>
+  <data name="CodeIntegrityPolicyHashCheck_Description" xml:space="preserve">
+    <value>코드 무결성 정책 해시 확인</value>
+  </data>
+  <data name="CollectImeiInfoMessage" xml:space="preserve">
+    <value>IMEI 번호를 수집하지 않도록 선택하는 경우 Workspace ONE UEM Console 내의 다른 기능에 필요하지 않은지 확인하십시오.</value>
+  </data>
+  <data name="CollectImeiNumber" xml:space="preserve">
+    <value>회사 프로필에 IMEI 번호 수집</value>
+  </data>
+  <data name="CollectJobStatistics_Description" xml:space="preserve">
+    <value>작업 통계 수집</value>
+  </data>
+  <data name="ColorCode" xml:space="preserve">
+    <value>색상 코드</value>
+  </data>
+  <data name="CompanyHubSettings" xml:space="preserve">
+    <value>회사 허브 설정</value>
+  </data>
+  <data name="ComplianceAzureADResponsePageMessage" xml:space="preserve">
+    <value>Azure Active Directory를 인증했습니다. 페이지를 닫고 Workspace ONE UEM으로 이동하십시오.</value>
+  </data>
+  <data name="ComplianceAzureADResponsePageTitle" xml:space="preserve">
+    <value>Azure AD 인증</value>
+  </data>
+  <data name="ComplianceConditionalAccessAdminConsentTooltip" xml:space="preserve">
+    <value>동의 흐름이 수락되면 통합을 완료할 수 있게 됩니다.</value>
+  </data>
+  <data name="ComplianceConditionalAccessAzureADPopUpBodyText" xml:space="preserve">
+    <value>Azure AD에 인증하기 위해 Microsoft로 리디렉션됩니다. 인증 후 Workspace ONE UEM으로 돌아가 통합을 완료합니다.</value>
+  </data>
+  <data name="ComplianceConditionalAccessAzureADPopUpHeaderText" xml:space="preserve">
+    <value>Microsoft로 리디렉션</value>
+  </data>
+  <data name="ComplianceConditionalAccessCompleteIntegrationButton" xml:space="preserve">
+    <value>완료</value>
+  </data>
+  <data name="ComplianceConditionalAccessDeletionFailure" xml:space="preserve">
+    <value>규정 준수를 위한 Azure AD 비활성화에 실패했습니다.</value>
+  </data>
+  <data name="ComplianceConditionalAccessIntegrationFailure" xml:space="preserve">
+    <value>Azure AD 통합에 실패했습니다.</value>
+  </data>
+  <data name="ComplianceConditionalAccessIntegrationSuccess" xml:space="preserve">
+    <value>Azure AD 통합을 완료했습니다.</value>
+  </data>
+  <data name="ComplianceConditionalAccessIntegrationWarning" xml:space="preserve">
+    <value>Azure AD와의 통합을 완료하지 못했습니다.</value>
+  </data>
+  <data name="ComplianceConditionalAccessWDPOptedInWarning" xml:space="preserve">
+    <value>"규정 준수를 위해 Azure AD 사용"을 사용하도록 설정하는 동안 오류가 발생했습니다. 지금 {0}하거나 Monitor &gt; Intelligence로 이동할 수 있습니다. 자세한 내용은 {1}을(를) 참조하십시오.</value>
+  </data>
+  <data name="CompliancePolicyAlertMsgOnAppListPrivacy" xml:space="preserve">
+    <value>하나 이상의 장치 유형에 대한 개인 앱 개인 정보 설정이 '수집하지 않음'으로 설정되어 있으며 계층의 하나 이상의 OG에서 생성된 앱 목록 기반 규정 준수 정책이 있습니다. 최종 사용자 또는 개인 앱에서 사이드로드될 수 있는 애플리케이션을 기반으로 장치 규정 준수 상태를 표시하기 위한 정책이 없는지 확인하십시오.</value>
+  </data>
+  <data name="ComplianceRuleTypeDeviceLastSeen" xml:space="preserve">
+    <value>장치 마지막 로그인</value>
+  </data>
+  <data name="ComplianceRuleTypeDMLastSeen" xml:space="preserve">
+    <value>OMA DM 클라이언트 마지막 로그인</value>
+  </data>
+  <data name="ComplianceRuleTypeLastCompromisedScan" xml:space="preserve">
+    <value>마지막 손상 스캔</value>
+  </data>
+  <data name="ComplianceRuleTypeMDMEULAAcceptance" xml:space="preserve">
+    <value>MDM 사용 약관 동의</value>
+  </data>
+  <data name="ConditionalAccess-assign-compliance-policy-failure" xml:space="preserve">
+    <value>규정 준수 정책 할당 실패</value>
+  </data>
+  <data name="ConditionalAccessCompleteIntegrationBodyText" xml:space="preserve">
+    <value>Azure Active Directory 연결을 테스트하고 통합을 완료합니다.</value>
+  </data>
+  <data name="ConditionalAccessCompleteIntegrationHeaderText" xml:space="preserve">
+    <value>통합 완료</value>
+  </data>
+  <data name="ConditionalAccess-compliance-management-partner-not-found" xml:space="preserve">
+    <value>규정 준수 관리 파트너를 찾을 수 없습니다.</value>
+  </data>
+  <data name="ConditionalAccessConfigurationSaveFailureMessage" xml:space="preserve">
+    <value>조건부 액세스 구성을 저장하지 못했습니다.</value>
+  </data>
+  <data name="ConditionalAccess-create-compliance-policy-failure" xml:space="preserve">
+    <value>규정 준수 정책 생성 실패</value>
+  </data>
+  <data name="ConditionalAccess-delete-compliance-policy-failure" xml:space="preserve">
+    <value>규정 준수 정책 삭제 실패</value>
+  </data>
+  <data name="ConditionalAccessEnabled" xml:space="preserve">
+    <value>Azure 조건부 액세스 정책에서 규정 준수 데이터 사용</value>
+  </data>
+  <data name="ConditionalAccessEnabledForIosAndroid" xml:space="preserve">
+    <value>iOS 및 Android용 Azure 조건부 액세스 정책에서 규정 준수 데이터 사용</value>
+  </data>
+  <data name="ConditionalAccessEnabledForWindows" xml:space="preserve">
+    <value>Azure 조건부 액세스 정책에서 규정 준수 데이터 사용(Windows용)</value>
+  </data>
+  <data name="ConditionalAccessEnabledHelpText" xml:space="preserve">
+    <value>Azure AD 조건부 액세스 정책에 필요한 UEM의 장치 규정 준수 데이터를 사용합니다.
+        Workspace ONE은 Microsoft Intune® 장치 규정 준수 API를 활용하여 Microsoft Intune® 및 Azure Active Directory 프리미엄을 비롯한 Microsoft 365 서비스를 호출합니다.</value>
+  </data>
+  <data name="ConditionalAccess-get-compliance-management-partners-failure" xml:space="preserve">
+    <value>규정 준수 관리 파트너 실패.</value>
+  </data>
+  <data name="ConditionalAccess-get-oauth2-token-failure" xml:space="preserve">
+    <value>OAuth token2 실패.</value>
+  </data>
+  <data name="ConditionalAccess-get-service-endpoints-failure" xml:space="preserve">
+    <value>서비스 끝점 실패.</value>
+  </data>
+  <data name="ConditionalAccess-partner-tenant-already-provisioned" xml:space="preserve">
+    <value>파트너 테넌트가 이미 프로비저닝되었습니다.</value>
+  </data>
+  <data name="ConditionalAccess-partner-tenant-already-provisioned-with-different-source-tenant" xml:space="preserve">
+    <value>파트너 테넌트가 다른 소스 테넌트를 사용하여 이미 프로비저닝되었습니다.</value>
+  </data>
+  <data name="ConditionalAccess-partner-tenant-not-provisioned" xml:space="preserve">
+    <value>파트너 테넌트가 프로비저닝되지 않았습니다.</value>
+  </data>
+  <data name="ConditionalAccess-partner-tenant-not-provisioned-or-mismatching" xml:space="preserve">
+    <value>파트너 테넌트가 프로비저닝되지 않았거나 일치하지 않습니다.</value>
+  </data>
+  <data name="ConditionalAccessPlatformSelectionWarningMessage" xml:space="preserve">
+    <value>페이지를 저장하려면 'Azure 조건부 액세스 정책에서 규정 준수 데이터 사용'을 사용하지 않도록 설정하거나 'Windows용 Azure 조건부 액세스 정책에서 규정 준수 데이터 사용' 또는 'iOS 및 Android 용 Azure 조건부 액세스 정책에서 규정 준수 데이터 사용'을 사용하도록 설정하십시오.</value>
+  </data>
+  <data name="ConditionalAccessPoliciesText" xml:space="preserve">
+    <value>조건부 액세스 정책</value>
+  </data>
+  <data name="ConditionalAccess-provision-tenant-failure" xml:space="preserve">
+    <value>테넌트 프로비저닝 실패</value>
+  </data>
+  <data name="ConditionalAccessWDPOptedInErrorMessage" xml:space="preserve">
+    <value>"규정 준수를 위해 Azure AD 사용"을 사용하는 중 오류가 발생했습니다. '모니터 &gt; Intelligence'로 이동하여 Intelligence를 선택하십시오.</value>
+  </data>
+  <data name="ConfigDoesntBelongToOG" xml:space="preserve">
+    <value>구성이 조직 그룹에 속하지 않음</value>
+  </data>
+  <data name="ConfigurationName" xml:space="preserve">
+    <value>구성 이름</value>
+  </data>
+  <data name="Configurations" xml:space="preserve">
+    <value>구성</value>
+  </data>
+  <data name="ConfigurationsHelpDescription" xml:space="preserve">
+    <value>이제 직원들에게 생산성을 유지하는 데 필요한 안전한 도구를 제공하는 것이 그 어느 때보다 쉬워졌습니다.</value>
+  </data>
+  <data name="ConfigurationsHelpDescriptionArg" xml:space="preserve">
+    <value>{0} 설정을 다시 고안해서 비즈니스 요구 사항을 정의하고 개발하는 데 필요한 모든 필수 설정이 구성에서 실행 가능하고 찾기 쉬우며 논리적으로 조직될 수 있도록 하고 있습니다.</value>
+  </data>
+  <data name="ConfigurationsListDescription" xml:space="preserve">
+    <value>기초적인 설정, 사용자 지정 및 통합을 구축하여 직원이 비즈니스를 추진하는 데 필요한 리소스를 제공할 수 있습니다.</value>
+  </data>
+  <data name="ConfigurationsWelcomeWindowDescription" xml:space="preserve">
+    <value>그룹 및 설정을 다시 고안해서 비즈니스 요구 사항을 정의하고 개발하는 데 필요한 모든 필수 설정이 구성에서 실행 가능하고 찾기 쉬우며 논리적으로 조직되될 수 있도록 하고 있습니다.</value>
+  </data>
+  <data name="ConfigurationsWelcomeWindowParam" xml:space="preserve">
+    <value>Intelligent Hub 구성이 {0} 페이지로 이동했습니다.</value>
+    <comment>Placeholder in the label key contains a link to redirect the admin to the Configurations page.</comment>
+  </data>
+  <data name="ConfigurationUpdateFailed" xml:space="preserve">
+    <value>업데이트 실패</value>
+  </data>
+  <data name="ConfigureHub" xml:space="preserve">
+    <value>Workspace One Hub 구성</value>
+  </data>
+  <data name="ConfigureHubHelp" xml:space="preserve">
+    <value>Hub 구성 페이지에 대한 액세스 제어</value>
+  </data>
+  <data name="ConfigureHubServicesParam" xml:space="preserve">
+    <value>{0} Hub 서비스를 구성합니다.</value>
+    <comment>Placeholder in this label key contains a link to redirect admin to configure Hub services. </comment>
+  </data>
+  <data name="ConfigureKerberosUnderMagInSystemConfiguration" xml:space="preserve">
+    <value>Tunnel 프록시 구성의 일부로 Kerberos를 활성화해야 합니다. 구성하려면 시스템 &gt; 엔터프라이즈 통합 &gt; VMware Tunnel 프록시로 이동하십시오.</value>
+  </data>
+  <data name="ConfigureScimProvisioningForCurrentOrganizationGroup" xml:space="preserve">
+    <value>현재 조직 그룹에 대한 SCIM 프로비저닝 설정을 구성하고 저장합니다.</value>
+  </data>
+  <data name="ConfigureTunnelSettings" xml:space="preserve">
+    <value>VMware Tunnel 설정 구성</value>
+  </data>
+  <data name="Confirmation" xml:space="preserve">
+    <value>확인</value>
+  </data>
+  <data name="ConfirmDeleteAdaptivaSettingV2" xml:space="preserve">
+    <value>이 Adaptiva Peer Distribution 설정을 삭제하시겠습니까?</value>
+  </data>
+  <data name="ConfirmFindDevice" xml:space="preserve">
+    <value>장치를 찾으시겠습니까?</value>
+  </data>
+  <data name="ConfirmFontDelete" xml:space="preserve">
+    <value>이 글꼴을 삭제하시겠습니까?</value>
+  </data>
+  <data name="ConfirmRegenerateCertificate" xml:space="preserve">
+    <value>이 작업으로 인증을 위한 기존의 신뢰된 Tunnel 사용이 제거됩니다. 이 작업 후 업데이트된 프로필을 배포해야 합니다.</value>
+  </data>
+  <data name="ConfirmVIDMPassword" xml:space="preserve">
+    <value>Workspace ONE Access 비밀번호 확인</value>
+  </data>
+  <data name="ConsoleProxySettingsRequired" xml:space="preserve">
+    <value>Console 프록시 설정 필요</value>
+  </data>
+  <data name="ConsoleToAWCM" xml:space="preserve">
+    <value>Console에서 AWCM으로</value>
+  </data>
+  <data name="ConsoleToAWCMFailureMessage" xml:space="preserve">
+    <value>AWCM 서비스가 실행 중이고 Console에서 AWCM 서버로 연결이 양호한지 확인하십시오.</value>
+  </data>
+  <data name="ContentCategories" xml:space="preserve">
+    <value>컨텐츠 카테고리</value>
+  </data>
+  <data name="Contenteditreconfigurewarning" xml:space="preserve">
+    <value>아래의 모든 설정에 대한 변경 사항은 UAG에서 CG 구성을 다시 저장한 후 적용됩니다.</value>
+  </data>
+  <data name="ContentGatewayDownload" xml:space="preserve">
+    <value>Content Gateway 다운로드</value>
+  </data>
+  <data name="ContentGatewayIgnoreSSLErrorToolTip" xml:space="preserve">
+    <value>이 값을 활성화하면 유효한 SSL 인증서가 없을 때에도 UEM Console이 Content Gateway를 신뢰하도록 해줍니다.</value>
+  </data>
+  <data name="ContentGatewayInstallationWarning" xml:space="preserve">
+    <value>Content Gateway 설치 프로세스가 변경되었습니다. 더는 Workspace ONE Console에서 Content Gateway 설치 프로그램을 바로 다운로드할 수 없습니다. 
+
+대신, 설치 프로그램을 다운로드할 수 있도록 Workspace ONE 리소스 포털로 리디렉팅됩니다.</value>
+  </data>
+  <data name="ContentGatewayLanding" xml:space="preserve">
+    <value>참고: Content Gateway에 대한 이전 설정이 설정-&gt;컨텐츠-&gt;Content Gateway 이 페이지로 마이그레이션되었습니다.
+
+Workspace ONE Content Gateway는 어디에서든 회사 컨텐츠에 안전하고 효과적으로 액세스하도록 해주는 엔터프라이즈 통합 구성 요소입니다.
+
+직원이 자신의 모바일 장치에서 Workspace ONE Content를 통해 내부 컨텐츠에 액세스하면 Content Gateway가 장치와 엔터프라이즈 시스템 사이에서 안전한 릴레이로 작동합니다.
+
+자세한 내용은 Workspace ONE Content Gateway 설치 및 관리 가이드를 참조하십시오.</value>
+  </data>
+  <data name="ContentGatewayLandingNew" xml:space="preserve">
+    <value>참고: Content Gateway에 대한 이전 설정이 설정 &gt; 시스템 &gt; 엔터프라이즈 통합 &gt; {0}(으)로 마이그레이션되었습니다.
+
+AirWatch Content Gateway는 어디에서든 회사 컨텐츠에 안전하고 효과적으로 액세스하도록 해주는 엔터프라이즈 통합 구성 요소입니다.
+
+직원이 자신의 모바일 장치에서 Workspace ONE Content를 통해 내부 컨텐츠에 액세스하면 Content Gateway가 장치와 엔터프라이즈 시스템 사이에서 안전한 릴레이로 작동합니다.
+
+자세한 내용은 Workspace ONE Content Gateway 설치 및 관리 가이드를 참조하십시오.</value>
+  </data>
+  <data name="ContentGatewayPublicSslCertificateTooltip" xml:space="preserve">
+    <value>장치가 Content Gateway('.pfx' 형식이어야 하며 공용 및 개인 키 쌍을 포함해야 함)를 신뢰하도록 하려면 타사 공용 SSL 인증서를 업로드하십시오.</value>
+  </data>
+  <data name="ContentGatewayServerSSLPortTooltip" xml:space="preserve">
+    <value>SSL 오프로딩이 활성화되어 있을 때 Content Gateway가 수신할 포트입니다. 릴레이 끝점을 포함한 배포 모드의 경우에는 릴레이 서버에만 이 포트가 적용됩니다.</value>
+  </data>
+  <data name="ContentGatewaySSLOffloadingTooltip" xml:space="preserve">
+    <value>활성화되면 Content Gateway 앞의 로드 밸런서가 SSL 오프로딩을 수행합니다. 릴레이 끝점을 포함한 배포 모드의 경우에는 릴레이 서버에만 SSL 오프로드가 적용됩니다.</value>
+  </data>
+  <data name="ContentLockRequested" xml:space="preserve">
+    <value>컨텐츠 잠금이 요청되었습니다.</value>
+  </data>
+  <data name="ContentOnboarding" xml:space="preserve">
+    <value>컨텐츠 온보딩</value>
+  </data>
+  <data name="COPE" xml:space="preserve">
+    <value>COPE</value>
+    <comment>Corporate-Owned, Personally Enabled</comment>
+  </data>
+  <data name="CorporateDevices" xml:space="preserve">
+    <value>회사 장치</value>
+  </data>
+  <data name="CreateSmartGroups" xml:space="preserve">
+    <value>태그를 이용해 스마트 그룹 생성</value>
+  </data>
+  <data name="CreateSmartGroupsDescription" xml:space="preserve">
+    <value>DropShip 태그를 이용해 스마트 그룹을 생성하여 장치에 대한 공통 구성 생성</value>
+  </data>
+  <data name="CreateTag" xml:space="preserve">
+    <value>생성 태그</value>
+  </data>
+  <data name="CreateTagDescription" xml:space="preserve">
+    <value>DropShip 장치에 대한 태그를 생성하여 논리적 그룹 생성</value>
+  </data>
+  <data name="CreateWSOneCatalogTenant" xml:space="preserve">
+    <value>Workspace ONE 카탈로그 테넌트 생성</value>
+  </data>
+  <data name="CreateWSOneCatalogTenantHelp" xml:space="preserve">
+    <value>Workspace ONE Access의 새 클라우드 테넌트 요청에 대한 액세스 제어</value>
+  </data>
+  <data name="CurrentDeviceLimitPerOrganizationGroup" xml:space="preserve">
+    <value>조직 그룹당 현재 장치 제한</value>
+  </data>
+  <data name="CustomAttributeSample" xml:space="preserve">
+    <value>사용자 지정 특성 샘플</value>
+  </data>
+  <data name="CustomAttributeSampleInfo" xml:space="preserve">
+    <value>관리자가 구성한 레지스트리 키 기반 사용자 지정 속성을 수집하기 위한 일정입니다. 값은 장치 세부 정보 &gt; 사용자 지정 속성 섹션에 표시됩니다.</value>
+  </data>
+  <data name="CustomAttributeSampleInMinutes" xml:space="preserve">
+    <value>사용자 지정 특성 샘플</value>
+  </data>
+  <data name="CustomAttributeSampleTimeMode" xml:space="preserve">
+    <value>사용자 지정 특성 샘플 시간 모드</value>
+  </data>
+  <data name="CustomerExperienceImprovementProgram" xml:space="preserve">
+    <value>고객 환경 향상 프로그램</value>
+  </data>
+  <data name="CustomerOrPartnerOgOnlyError" xml:space="preserve">
+    <value>Hub 서비스는 고객 또는 파트너 조직 그룹 수준에서만 활성화할 수 있습니다.</value>
+  </data>
+  <data name="CustomGatewaySettingsInfoMessage" xml:space="preserve">
+    <value>UAG v3.9 이상 필요</value>
+  </data>
+  <data name="CustomKeyValueShouldNotBeEmpty" xml:space="preserve">
+    <value>사용자 지정 설정 중 하나가 빈 키 또는 값으로 구성되었습니다.</value>
+  </data>
+  <data name="CustomManagedAppleID" xml:space="preserve">
+    <value>사용자 지정 관리 Apple ID 형식 사용</value>
+  </data>
+  <data name="CustomOnboardingImagePreviewHelp" xml:space="preserve">
+    <value>이 이미지는 온보딩 환경의 기본 요소(실제 보기가 아님)를 보여 줍니다.</value>
+  </data>
+  <data name="CustomOnboardingMessage" xml:space="preserve">
+    <value>본문 텍스트</value>
+  </data>
+  <data name="CustomOnboardingMessageHelp" xml:space="preserve">
+    <value>최대 500자입니다. 다음 형식을 사용하여 링크를 삽입합니다. [linktext](http://www.exampleurl.com).</value>
+  </data>
+  <data name="CustomOnboardingUserName" xml:space="preserve">
+    <value>환영 머리글</value>
+  </data>
+  <data name="CustomOnboardingWelcomeText" xml:space="preserve">
+    <value>환영 하위 머리글</value>
+  </data>
+  <data name="CustomSettingsCount" xml:space="preserve">
+    <value>{0} 사용자 지정 설정</value>
+  </data>
+  <data name="CustomSettingValueTypeMismatch" xml:space="preserve">
+    <value>다음 사용자 지정 키 {0}에 대한 사용자 지정 설정 검증에 실패했습니다. 입력한 값을 수정하십시오.</value>
+  </data>
+  <data name="DailyQuotaToolTip" xml:space="preserve">
+    <value>24시간 동안 OG에 부과된 제한사항입니다.</value>
+  </data>
+  <data name="DailyQuotaUsage" xml:space="preserve">
+    <value>일별 할당량 사용</value>
+  </data>
+  <data name="DailyQuotaUsageToolTip" xml:space="preserve">
+    <value>일별 할당량에서 사용된 API 호출 수를 지정합니다. 이 정보는 Memcached가 활성화된 경우에만 사용할 수 있습니다.</value>
+  </data>
+  <data name="DataSampleIntervalModernAgentInfo" xml:space="preserve">
+    <value>장치 GPS 데이터, 푸시 채널 상태 및 Windows 스토어 에이전트의 일반 상태를 수집하는 일정입니다.</value>
+  </data>
+  <data name="DataSampleIntervalProtectionAgentInfo" xml:space="preserve">
+    <value>Hub 상태 데이터를 수집하는 일정입니다.</value>
+  </data>
+  <data name="DaysAfterWhichPPKGsWillBeDeleted" xml:space="preserve">
+    <value>PPKG 삭제 전 일수</value>
+  </data>
+  <data name="DaysAfterWhichPPKGsWillBeDeletedHelp" xml:space="preserve">
+    <value>PPKG 삭제 전 일수 도움말</value>
+  </data>
+  <data name="DaysInactive" xml:space="preserve">
+    <value>비활성 일수</value>
+  </data>
+  <data name="DduiConfigurationUpdateJob" xml:space="preserve">
+    <value>데이터 기반 UI 구성 작업</value>
+  </data>
+  <data name="DeactivatedApnsClient" xml:space="preserve">
+    <value>APN 클라이언트가 비활성화됨</value>
+  </data>
+  <data name="DefaultActionForInactiveUsersOldValue" xml:space="preserve">
+    <value>비활성 사용자를 위한 기본 작업</value>
+  </data>
+  <data name="DefaultAWCMTraffic" xml:space="preserve">
+    <value>기본 AWCM + 서버 트래픽 규칙을 통한 API 트래픽</value>
+  </data>
+  <data name="DefaultAWCMTrafficTooltip" xml:space="preserve">
+    <value>서버 트래픽 규칙당 Workspace ONE UEM API 및 AWCM과 통신하도록 활성화하십시오.</value>
+  </data>
+  <data name="DefaultBlockEmail" xml:space="preserve">
+    <value>기본적으로 이메일 차단</value>
+  </data>
+  <data name="DefaultRoleOldValue" xml:space="preserve">
+    <value>기본 역할</value>
+  </data>
+  <data name="DefaultStagingUserNotAuthorized" xml:space="preserve">
+    <value>기본 스테이징 사용자가 인증되지 않음</value>
+  </data>
+  <data name="DeleteAllFactoryPPKGsImmediately" xml:space="preserve">
+    <value>모든 공장 PPKG 즉시 삭제</value>
+  </data>
+  <data name="DeleteAllFactoryPPKGsImmediatelyButton" xml:space="preserve">
+    <value>삭제</value>
+  </data>
+  <data name="DeleteAllFactoryPPKGsImmediatelyFailed" xml:space="preserve">
+    <value>모든 공장 PPKG를 삭제하는 데 실패함</value>
+  </data>
+  <data name="DeleteAllFactoryPPKGsImmediatelyOk" xml:space="preserve">
+    <value>모든 완료된 공장 PPKG가 삭제됩니다.</value>
+  </data>
+  <data name="DeleteCAConfirmMessage" xml:space="preserve">
+    <value>선택한 인증 기관을 삭제하시겠습니까?</value>
+  </data>
+  <data name="DeleteCASuccessfulMessage" xml:space="preserve">
+    <value>선택한 인증 기관이 삭제되었습니다.</value>
+  </data>
+  <data name="DeleteCertificateAuthority" xml:space="preserve">
+    <value>인증 기관 삭제</value>
+  </data>
+  <data name="DeleteRestApiKey" xml:space="preserve">
+    <value>REST API 키 삭제</value>
+  </data>
+  <data name="DeleteRestApiKeyDescription" xml:space="preserve">
+    <value>REST API 키 삭제 후, 모든 요청은 실패합니다.
+
+똑같은 REST API 키를 다시 생성하는 것은 불가능합니다. 요청 시 새 키가 생성됩니다.</value>
+  </data>
+  <data name="DeleteRestApiRestricted" xml:space="preserve">
+    <value>REST API 키 삭제</value>
+  </data>
+  <data name="DeleteSettings" xml:space="preserve">
+    <value>설정 삭제</value>
+  </data>
+  <data name="DellIntegration" xml:space="preserve">
+    <value>Dell 통합</value>
+  </data>
+  <data name="DEPAccountType" xml:space="preserve">
+    <value>계정 설정을 건너뛰지 않을 경우 이 옵션은 최종 사용자가 설정 지원 마지막에 만들 수 있는 계정 유형을 정의합니다. Standard(표준)를 선택하는 경우 DEP 등록 중 아래 관리자 계정 생성 섹션에서 자동으로 생성할 관리자 계정을 정의해야 합니다.</value>
+  </data>
+  <data name="DeploymentDetails" xml:space="preserve">
+    <value>배포 세부 정보</value>
+  </data>
+  <data name="DEPPolicyDisabled_Description" xml:space="preserve">
+    <value>DEP 정책 비활성화됨</value>
+  </data>
+  <data name="DepTokenExpired" xml:space="preserve">
+    <value>DEP 토큰이 만료되었습니다. Apple Business Manager 포털에서 토큰을 갱신하십시오.</value>
+  </data>
+  <data name="DepTokenForbidden" xml:space="preserve">
+    <value>DEP 토큰이 삭제되었거나 시스템에서 필요한 정보를 요청할 수 없습니다. Apple Business Manager 포털에서 토큰의 상태를 확인하십시오.</value>
+  </data>
+  <data name="DepTokenNewTermsNotAccepted" xml:space="preserve">
+    <value>Apple Business Manager에 로그인하고 업데이트된 이용 약관을 검토하십시오.</value>
+  </data>
+  <data name="DepTokenRevoked" xml:space="preserve">
+    <value>DEP 토큰이 해지되었습니다. Apple Business Manager 포털에서 토큰을 갱신하십시오.</value>
+  </data>
+  <data name="DesignatedRequirementDescription" xml:space="preserve">
+    <value>지정 요구 사항은 서명된 코드의 내부 요구 사항을 나타냅니다.</value>
+  </data>
+  <data name="DesiredStateManagement" xml:space="preserve">
+    <value>원하는 상태 관리</value>
+  </data>
+  <data name="DeviceBatchSize_Description" xml:space="preserve">
+    <value>장치 배치 크기</value>
+  </data>
+  <data name="DeviceDetailsSampleInfo" xml:space="preserve">
+    <value>OS 정보, WiFi Mac 주소, 프로세서 아키텍처, 제조업체, 모델 등과 같은 장치 데이터를 수집하는 일정입니다.</value>
+  </data>
+  <data name="DeviceDetailsSampleInMinutes" xml:space="preserve">
+    <value>장치 세부 사항 샘플</value>
+  </data>
+  <data name="DeviceDetailsSampleIntervalErrorMessage" xml:space="preserve">
+    <value>장치 세부 사항 샘플은 2시간과 30일 사이여야 합니다(경계값 포함).</value>
+  </data>
+  <data name="DeviceDetailsSampleTimeMode" xml:space="preserve">
+    <value>장치 세부 사항 샘플 시간 모드</value>
+  </data>
+  <data name="DeviceEnrollmentGroupingTab" xml:space="preserve">
+    <value>[모든 설정] &gt; [장치 및 사용자] &gt; [일반] &gt; [등록] &gt; [그룹화]</value>
+  </data>
+  <data name="DeviceInformationSampleIntervalErrorMessage" xml:space="preserve">
+    <value>장치 정보 샘플은 2시간과 30일 사이여야 합니다(경계값 포함).</value>
+  </data>
+  <data name="DevicePolicyJobAuditing_Description" xml:space="preserve">
+    <value>장치 정책 작업 감사</value>
+  </data>
+  <data name="DeviceReprocess_Description" xml:space="preserve">
+    <value>장치 재처리</value>
+  </data>
+  <data name="DevicesGateway" xml:space="preserve">
+    <value>장치 게이트웨이</value>
+  </data>
+  <data name="DevicesGatewayUrl" xml:space="preserve">
+    <value>장치 게이트웨이 URL</value>
+  </data>
+  <data name="DevicesOrUsers" xml:space="preserve">
+    <value>장치 또는 사용자</value>
+  </data>
+  <data name="DeviceTrafficRuleDoesNotExist" xml:space="preserve">
+    <value>장치 트래픽 규칙이 존재하지 않습니다.</value>
+  </data>
+  <data name="DeviceTrafficRuleSaveConfirmMessage" xml:space="preserve">
+    <value>이 작업을 수행하면 새로 설치된 프로필이 이러한 설정을 수신합니다. 기존 장치는 영향을 받지 않습니다. 기존 장치를 업데이트하려면 원하는 프로필에 버전을 추가하고 다시 게시하십시오.</value>
+  </data>
+  <data name="DeviceTrafficRuleSavePublishConfirmMessage" xml:space="preserve">
+    <value>이 작업을 수행하면 이 조직 그룹의 모든 플랫폼에 대한 모든 기존 Tunnel 프로필이 업데이트되고 다시 게시됩니다.</value>
+  </data>
+  <data name="DeviceTrafficRuleSets" xml:space="preserve">
+    <value>장치 트래픽 규칙 집합</value>
+  </data>
+  <data name="DeviceTrafficRulesSaveFailed" xml:space="preserve">
+    <value>장치 트래픽 규칙을 저장하지 못했습니다.</value>
+  </data>
+  <data name="DeviceTrafficRuleWithoutAppMapping" xml:space="preserve">
+    <value>장치 트래픽 규칙에 대한 애플리케이션 매핑이 없습니다.</value>
+  </data>
+  <data name="DeviceUpdatesUrl" xml:space="preserve">
+    <value>장치 업데이트 URL</value>
+  </data>
+  <data name="DhasOnPremServerUrl" xml:space="preserve">
+    <value>장치 상태 증명 서버 URL입니다.</value>
+  </data>
+  <data name="Diagnostics" xml:space="preserve">
+    <value>진단</value>
+  </data>
+  <data name="DirectoryServicesAzureADIntegration" xml:space="preserve">
+    <value>Azure AD 통합</value>
+  </data>
+  <data name="DirectorySyncConcurrentSemaphoreRequestInitialLimit" xml:space="preserve">
+    <value>디렉토리 동기화 동시 세마포 요청 초기 제한</value>
+  </data>
+  <data name="DirectorySyncConcurrentSemaphoreRequestMaxLimit" xml:space="preserve">
+    <value>디렉토리 동기화 동시 세마포 요청 최대 제한</value>
+  </data>
+  <data name="DisableCDNWarningMessage" xml:space="preserve">
+    <value>이 조직 그룹 또는 하위 조직 그룹에서 관리하는 장치에 대해 CDN을 통해 라우팅되는 리소스(앱, 제품) 다운로드를 비활성화하려면 이 옵션을 사용하십시오.</value>
+  </data>
+  <data name="DisabledGatewayConfiguration" xml:space="preserve">
+    <value>콘솔에서 게이트웨이/터널 구성이 사용 안 함으로 설정됨</value>
+  </data>
+  <data name="DisableDirectoryInVidmConfiguration" xml:space="preserve">
+    <value>Active Directory 비활성화</value>
+  </data>
+  <data name="DisableDirectoryInVidmConfigurationDescription" xml:space="preserve">
+    <value>Active Directory 비활성화 작업을 수행하려고 합니다. 계속하려면 보안 PIN을 입력하십시오. 이 작업은 실행 취소할 수 없습니다.</value>
+  </data>
+  <data name="DisableDirectoryInVidmWarning" xml:space="preserve">
+    <value>Active Directory 비활성화 작업을 수행하려고 합니다. 이 작업은 실행 취소할 수 없습니다.</value>
+  </data>
+  <data name="DisabledStatusAttributeType" xml:space="preserve">
+    <value>비활성화된 상태 특성 유형</value>
+  </data>
+  <data name="DisableRelayServerCache_Description" xml:space="preserve">
+    <value>릴레이 서버 캐시 사용 안 함</value>
+  </data>
+  <data name="DisableUnEnrollOptionInAgent" xml:space="preserve">
+    <value>Intelligent Hub에 등록 취소 옵션 비활성화</value>
+  </data>
+  <data name="DisableUnenrollOptionToolTip" xml:space="preserve">
+    <value>이 설정을 활성화하면 사용자가 Intelligent Hub 앱에서 장치의 등록을 취소할 수 없습니다. Apple Business Manager를 통해 등록하는 장치의 경우 이 설정이 무시됩니다.</value>
+  </data>
+  <data name="DiskEncryptionSample" xml:space="preserve">
+    <value>장치 암호화 샘플</value>
+  </data>
+  <data name="DiskEncryptionSampleInfo" xml:space="preserve">
+    <value>장치에 대한 디스크 암호화 상태 및 보호 수준에 대한 보고서를 수집하는 일정입니다.</value>
+  </data>
+  <data name="DiskEncryptionSampleInMinutes" xml:space="preserve">
+    <value>장치 암호화 샘플</value>
+  </data>
+  <data name="DiskEncryptionSampleTimeMode" xml:space="preserve">
+    <value>디스크 암호화 샘플 시간 모드</value>
+  </data>
+  <data name="DisplayAuthenticationScreenMessage" xml:space="preserve">
+    <value>인증 화면 메시지 표시</value>
+  </data>
+  <data name="DisplayAuthenticationScreenMessageTooltip" xml:space="preserve">
+    <value>Hub 사용자 이름 및 비밀번호 화면에 인증 힌트 표시</value>
+  </data>
+  <data name="DisplayOfflineProvisioning_Description" xml:space="preserve">
+    <value>오프라인 프로비저닝 표시</value>
+  </data>
+  <data name="DistributionServer_Description" xml:space="preserve">
+    <value>배포 서버</value>
+  </data>
+  <data name="DomainJoinComputerNameMaxLength" xml:space="preserve">
+    <value>최대 15자</value>
+  </data>
+  <data name="DomainJoinDeviceNameFormatErrorMessage" xml:space="preserve">
+    <value>컴퓨터 이름은 필수 필드</value>
+  </data>
+  <data name="DomainJoinDeviceNameFormatHelpText" xml:space="preserve">
+    <value>장치에 고유한 15자 이름을 입력합니다. 고유한 이름을 생성하는 데 도움이 필요하면 하드웨어 특정 일련 번호를 포함하는 %SERIAL%을(를) 사용하거나, # 길이의 임의 문자를 생성하는 %RAND:[#]%을(를) 사용할 수 있습니다. 임의 숫자 생성을 사용할 때 중복된 컴퓨터 이름이 생성될 가능성을 최소화하려면 임의의 숫자 길이 [%RAND:[#]%]이(가) 7자 이상이어야 합니다.
+      
+      예:
+            회사%SERIAL%
+            CMP%RAND:10%</value>
+  </data>
+  <data name="DomainJoinDeviceNameFormatLabel" xml:space="preserve">
+    <value>컴퓨터 이름</value>
+  </data>
+  <data name="DomainJoinDeviceNameFormatLengthErrorMessage" xml:space="preserve">
+    <value>컴퓨터 이름 형식 길이가 15자를 초과함</value>
+  </data>
+  <data name="DomainJoinDeviceNameFormatMatchErrorMessage" xml:space="preserve">
+    <value>컴퓨터 이름이 필요한 형식을 따르지 않음</value>
+  </data>
+  <data name="DomainJoinOrganizationUnitErrorMessage" xml:space="preserve">
+    <value>조직 단위 고유 이름은 필수 필드임</value>
+  </data>
+  <data name="DomainJoinOrganizationUnitHelpText" xml:space="preserve">
+    <value>예:
+            OU=Sales,DC=Company,DC=Com</value>
+  </data>
+  <data name="DomainJoinOrganizationUnitLabel" xml:space="preserve">
+    <value>조직 단위 고유 이름</value>
+  </data>
+  <data name="DomainJoinOUFormatMatchErrorMessage" xml:space="preserve">
+    <value>조직 단위 고유 이름은 필수 형식에 따라 다름</value>
+  </data>
+  <data name="DomainJoinOUNotFoundErrorMessage" xml:space="preserve">
+    <value>도메인 컨트롤러 서버를 디렉토리 설정에서 찾을 수 없음</value>
+  </data>
+  <data name="DownloadConfigXML" xml:space="preserve">
+    <value>구성 XML 다운로드</value>
+  </data>
+  <data name="DownloadMacAgentPostEnrollment" xml:space="preserve">
+    <value>macOS Intelligent Hub 사후 등록 다운로드 및 설치</value>
+  </data>
+  <data name="DownloadRemoteFileStorageConfiguration" xml:space="preserve">
+    <value>RFS 구성 다운로드</value>
+  </data>
+  <data name="DownloadRfsInstaller" xml:space="preserve">
+    <value>RFS 설치 프로그램 다운로드</value>
+  </data>
+  <data name="DownloadUagHyperV" xml:space="preserve">
+    <value>Unified Access Gateway(Hyper-v) 다운로드</value>
+  </data>
+  <data name="DownloadVSECCertificate" xml:space="preserve">
+    <value>vSEC 인증서 다운로드</value>
+  </data>
+  <data name="DownloadXML" xml:space="preserve">
+    <value>XML 다운로드</value>
+  </data>
+  <data name="DownstreamApiAccessError" xml:space="preserve">
+    <value>다운스트림 API/마이크로 서비스에 액세스하는 동안 오류가 발생했습니다.</value>
+  </data>
+  <data name="DownstreamApiBadRequestError" xml:space="preserve">
+    <value>다운스트림 API 리소스가 잘못된 요청을 반환했습니다.</value>
+  </data>
+  <data name="DownstreamApiResourceForebiddenError" xml:space="preserve">
+    <value>다운스트림 API 리소스가 금지된 오류를 반환했습니다.</value>
+  </data>
+  <data name="DoYouWantToDeleteTunnelConfig" xml:space="preserve">
+    <value>이 구성을 삭제하시겠습니까?</value>
+  </data>
+  <data name="DropShipConfiguration" xml:space="preserve">
+    <value>구성 &gt; Drop Ship Provisioning</value>
+  </data>
+  <data name="DropShipProvisioningDescription" xml:space="preserve">
+    <value>Drop Ship Provisioning은 현재 Windows 10 이상에서 사용할 수 있음</value>
+  </data>
+  <data name="DropShipProvisioningIntroduction" xml:space="preserve">
+    <value>사용자에게 바로 사용할 수 있는 장치를 제공하고 태그, 스마트 그룹 및 페이로드 기능을 사용하여 올바른 애플리케이션 및 구성을 즉시 사용할 수 있습니다. Drop Ship Provisioning은 Windows 10 이상에서 사용할 수 있습니다.</value>
+  </data>
+  <data name="DropShipProvisioningTitle" xml:space="preserve">
+    <value>Drop Ship Provisioning 소개</value>
+  </data>
+  <data name="DsDeploymentInfoTextScim" xml:space="preserve">
+    <value>SCIM 프로비저닝을 구성하시겠습니까?</value>
+  </data>
+  <data name="DTRApplicationIdDoesNotExist" xml:space="preserve">
+    <value>장치 트래픽 규칙의 애플리케이션이 존재하지 않습니다.</value>
+  </data>
+  <data name="DtrAssignmentNameMissing" xml:space="preserve">
+    <value>장치 트래픽 규칙 집합 할당 이름은 필수입니다.</value>
+  </data>
+  <data name="DTROverrideToolTip" xml:space="preserve">
+    <value>장치 트래픽 규칙을 재정의하려면 현재 조직 그룹에서 앱 및 프로필을 관리해야 합니다.</value>
+  </data>
+  <data name="DTRRulesCount" xml:space="preserve">
+    <value>규칙 수</value>
+  </data>
+  <data name="DTRSaveErrorMessageOnParentOGAppsReference" xml:space="preserve">
+    <value>상위 조직 그룹에서 앱을 참조하는 동안에는 저장할 수 없습니다. 계속하려면 이 조직 그룹 또는 이하에서 정의된 앱을 사용하십시오.</value>
+  </data>
+  <data name="DtrSpecialCharactersNotAllowed" xml:space="preserve">
+    <value>장치 트래픽 규칙 대상에는 특수 문자를 포함할 수 없습니다.</value>
+  </data>
+  <data name="DTRSuccessMsg" xml:space="preserve">
+    <value>성공, 장치 트래픽 규칙이 저장됨</value>
+  </data>
+  <data name="DuplicateCustomKeysExists" xml:space="preserve">
+    <value>중복된 사용자 지정 설정 키를 구성하려고 했습니다.</value>
+  </data>
+  <data name="DuplicateDtrAssignmentNameExists" xml:space="preserve">
+    <value>중복된 할당 이름으로 DTR을 구성할 수 없습니다. 다른 할당 이름을 사용하십시오.</value>
+  </data>
+  <data name="DuplicateDTRSet" xml:space="preserve">
+    <value>중복</value>
+  </data>
+  <data name="EditApplicationDescription" xml:space="preserve">
+    <value>애플리케이션 트래픽 정책 설정에 대한 애플리케이션 세부 사항을 편집합니다.</value>
+  </data>
+  <data name="EditProfileMessage" xml:space="preserve">
+    <value>이 프로필을 편집하면 이 프로필에 현재 할당된 모든 장치에 새로운 설정이 적용됩니다. 이 프로필 설정은 장치가 초기 설정 지원 작업을 한 후에 적용됩니다.</value>
+  </data>
+  <data name="EditWSOneHubConfiguration" xml:space="preserve">
+    <value>Workspace ONE Intelligent Hub 구성을 편집합니다.</value>
+  </data>
+  <data name="EditWSOneHubConfigurationHelp" xml:space="preserve">
+    <value>Workspace ONE Intelligent Hub 구성을 편집할 수 있는 액세스 권한을 제어합니다.</value>
+  </data>
+  <data name="EducationSharediPads" xml:space="preserve">
+    <value>교육 공유 iPad</value>
+  </data>
+  <data name="EFOTA" xml:space="preserve">
+    <value>E-FOTA</value>
+  </data>
+  <data name="EFOTAHelp" xml:space="preserve">
+    <value>E-FOTA</value>
+  </data>
+  <data name="EfotaOnDemandPublishConfirmMessage" xml:space="preserve">
+    <value>펌웨어 업데이트를 장치에 설치하기 전에 수락할지 묻는 메시지가 표시됩니다. 계속하시겠습니까?</value>
+  </data>
+  <data name="EmailConfigurationDescription" xml:space="preserve">
+    <value>Workspace ONE Secure Email Gateway(SEG)는 이메일 인프라를 보호하고 Mobile Email Management(MEM) 기능을 활성화합니다. 기존 이메일 서버와 함께 SEG를 설치하여 모든 이메일 트래픽을 Workspace ONE 등록 장치로 중계합니다.</value>
+  </data>
+  <data name="EmailEmailNotificationDescription" xml:space="preserve">
+    <value>배포에 APN 지원 기능을 추가하여 직원들에게 새 항목에 대한 빠르고 일관된 알림을 제공할 수 있습니다.</value>
+  </data>
+  <data name="EnableAgentInstallationCompleteNotification" xml:space="preserve">
+    <value>Agent 설치 완료 알림 활성화</value>
+  </data>
+  <data name="EnableAppInactivitySettings" xml:space="preserve">
+    <value>애플리케이션 비활성</value>
+  </data>
+  <data name="EnableAppInactivitySettingsTooltip" xml:space="preserve">
+    <value>사용하도록 설정된 경우 이 규칙에 대해 지정된 비활성 일 수가 경과하면 애플리케이션 데이터가 삭제됩니다.</value>
+  </data>
+  <data name="EnableCertificateRevocationBasedOnSampling" xml:space="preserve">
+    <value>샘플링에 따른 인증서 해지 활성화</value>
+  </data>
+  <data name="EnableCertificateRevocationTooltip" xml:space="preserve">
+    <value>장치 등록 취소, 특정 프로필 제거 또는 Workspace ONE에서 장치 삭제가 발생할 경우 자동 인증서 해지가 활성화됩니다.</value>
+  </data>
+  <data name="EnableContainersInfo" xml:space="preserve">
+    <value>이것으로 Android 레거시 등록을 위한 Knox Container를 활성화할 수 있습니다. Android EMM 등록이 구성된 경우, 이 설정은 삼성 장치의 Knox Play for Work 구성을 활성화합니다.</value>
+  </data>
+  <data name="EnableContinueDuringWindowsOobeProgress" xml:space="preserve">
+    <value>OOBE 상태 추적 페이지에서 [계속하기] 버튼 사용</value>
+  </data>
+  <data name="EnableContinueDuringWindowsOobeProgressToolTip" xml:space="preserve">
+    <value>이 옵션을 사용하면 최종 사용자가 [계속하기]를 클릭하여 OOBE 추적 페이지를 건너뛰고 해당 데스크톱으로 이동할 수 있습니다. 프로비저닝은 백그라운드에서 계속 실행됩니다. 사용자가 자신의 데스크톱에 액세스할 수 있도록 중요 정책을 적용해야 하는 경우 이 설정을 비활성화할 수 있습니다.</value>
+  </data>
+  <data name="EnableDropShipLabel" xml:space="preserve">
+    <value>Drop Ship 장치를 추가하기 전 {0}에서 Drop Ship 등록을 활성화합니다.</value>
+    <comment>{0} will be replaced with link to Drop Ship Configuration page with the the text "Configuration &gt; Drop Ship Provisioning"</comment>
+  </data>
+  <data name="EnableEnrollmentUserPasswordSettings_Description" xml:space="preserve">
+    <value>등록 사용자 암호 설정 활성화</value>
+  </data>
+  <data name="EnableFailed" xml:space="preserve">
+    <value>활성화 실패</value>
+  </data>
+  <data name="EnableHubServicesDescription" xml:space="preserve">
+    <value>커넥터를 설정하지 않거나 Active Directory 동기화 없이 Hub 카탈로그 기능을 활용할 수 있습니다. Hub 서비스를 시작하려면 클라우드 Workspace ONE Access 테넌트 URL을 입력합니다. 이 URL은 환영 이메일에 포함되어 있습니다. 또한 VMware 담당자가 이 정보를 제공할 수 있습니다.</value>
+  </data>
+  <data name="EnableInProductSupport" xml:space="preserve">
+    <value>제품 내 지원 활성화</value>
+  </data>
+  <data name="EnableMagInSystemConfiguration" xml:space="preserve">
+    <value>Kerberos를 활성화하려면 Tunnel 프록시가 필요한데, 구성되어 있지 않습니다. 이를 구성하려면 시스템 &gt; 엔터프라이즈 통합 &gt; VMware Tunnel 프록시로 이동하십시오.</value>
+  </data>
+  <data name="EnableNsxIntegration" xml:space="preserve">
+    <value>NSX 통합 활성화</value>
+  </data>
+  <data name="EnableNsxIntegrationTooltip" xml:space="preserve">
+    <value>현재 구성을 위해 NSX 통합 활성화</value>
+  </data>
+  <data name="EnableProductHashing_Description" xml:space="preserve">
+    <value>제품 해싱 사용</value>
+  </data>
+  <data name="EnableSamsungEfota" xml:space="preserve">
+    <value>Samsung E-FOTA 등록</value>
+  </data>
+  <data name="EnableSamsungEfotaTooltip" xml:space="preserve">
+    <value>Samsung E-FOTA 서비스 등록 및 소비자 펌웨어 업데이트 방지</value>
+  </data>
+  <data name="EnableVMwareTunnelInSystemConfiguration" xml:space="preserve">
+    <value>VMware Tunnel이 이 조직 그룹에 정의되지 않았습니다. 애플리케이션 터널링에 대한 Tunnel을 구성하려면 시스템 &gt; 엔터프라이즈 통합 &gt; VMware Tunnel로 이동하십시오.</value>
+  </data>
+  <data name="EndEntityProfile" xml:space="preserve">
+    <value>엔드 엔티티 프로필</value>
+  </data>
+  <data name="Endpoint" xml:space="preserve">
+    <value>엔드포인트</value>
+  </data>
+  <data name="Endpoints" xml:space="preserve">
+    <value>엔드포인트</value>
+  </data>
+  <data name="EnforcePasscodePolicy_Description" xml:space="preserve">
+    <value>암호 정책 시행</value>
+  </data>
+  <data name="EnhancedDomainResolution" xml:space="preserve">
+    <value>향상된 도메인 확인</value>
+  </data>
+  <data name="EnhancedDomainResolutionTip" xml:space="preserve">
+    <value>활성화된 경우 도메인 확인이 장치 트래픽 규칙 집합에 정의된 대상을 기준으로 합니다.</value>
+  </data>
+  <data name="EnrollmentGroupIdAssignmentTypeOldValue" xml:space="preserve">
+    <value>등록 그룹 ID 할당 유형</value>
+  </data>
+  <data name="EnrollmentGroupIDDirectoryUserGroupSaveWarning" xml:space="preserve">
+    <value>디렉토리 사용자 그룹 역할 매핑은 저장한 후에 할당해야 합니다.</value>
+  </data>
+  <data name="EnterNameOrCategory" xml:space="preserve">
+    <value>이름 또는 카테고리 입력</value>
+  </data>
+  <data name="EnterpriseApps" xml:space="preserve">
+    <value>엔터프라이즈 앱</value>
+  </data>
+  <data name="EnterpriseCA" xml:space="preserve">
+    <value>엔터프라이즈 CA</value>
+  </data>
+  <data name="EnterpriseCANotSupportedWarning" xml:space="preserve">
+    <value>VMware Tunnel은 클라이언트 인증을 위한 엔터프라이즈 CA로 구성되지 않으며 이러한 구성 방법을 지원하지 않습니다.</value>
+  </data>
+  <data name="EnterpriseCertificateAuthority" xml:space="preserve">
+    <value>엔터프라이즈 인증 기관</value>
+  </data>
+  <data name="EnterpriseIntegrationDirectoryServicesDescription" xml:space="preserve">
+    <value>Active Directory, Lotus Domino 및 Novell e-Directory와 같은 조직의 기존 디렉토리 서비스를 통합하여 디렉토리 기반 계정 액세스를 제공하십시오. 디렉토리 기반 계정 액세스를 통해 직원은 Workspace ONE 애플리케이션을 인증하고 기존 디렉토리 서비스 자격 증명을 사용하여 장치를 등록할 수 있습니다.</value>
+  </data>
+  <data name="EnterpriseIntegrationEmailSMTPDescription" xml:space="preserve">
+    <value>조직의 이메일 서버를 사용하여 Workspace ONE에서 관리자 또는 직원의 장치로 이메일을 보내십시오.</value>
+  </data>
+  <data name="EnterpriseIntegrationMagAWTDescription" xml:space="preserve">
+    <value>VMware Tunnel을 통해 모든 직원의 장치에 퍼 앱 엔터프라이즈 액세스를 안전하게 배포할 수 있습니다. 최적의 보안을 위한 인증서 고정 및 인증을 갖춘 TLS 1.2에 구축된 Tunnel을 사용하면 각 애플리케이션별로 세분화된 트래픽 정책을 쉽게 정의하고, 개별 사용 사례에 맞는 퍼앱 정책을 할당하고, 직원에게 제로 터치 방식의 온디맨드 경험을 제공하며, 가동 중단 시간 및 유지 관리가 전혀 없는 간편한 온보드 환경을 제공할 수 있습니다.</value>
+  </data>
+  <data name="EnterpriseIntegrationSMSDescription" xml:space="preserve">
+    <value>직원의 모바일 장치로 SMS 문자 메시지를 전송 및 수신하여 장치 활성화와 같은 중요한 공지 사항을 알릴 수 있습니다. 지원되는 SMS 제공자가 있는 계정이 필요합니다.</value>
+  </data>
+  <data name="EnterpriseIntegrationTunnelProxyDescription" xml:space="preserve">
+    <value>VMware Tunnel 프록시는 SDK 활성 애플리케이션이 기업 리소스에 액세스할 수 있는 안전하고 효과적인 방법을 제공합니다. VMware Tunnel은 규정 준수 장치의 개별 애플리케이션에서 대상 백엔드 시스템으로 이동하는 트래픽을 인증하고 암호화합니다.</value>
+  </data>
+  <data name="EnterpriseResetRejected" xml:space="preserve">
+    <value>엔터프라이즈 재설정 거부됨</value>
+  </data>
+  <data name="EnterVmwareIdentityManagerUrlHere" xml:space="preserve">
+    <value>여기에 Workspace ONE Access URL 입력</value>
+  </data>
+  <data name="EntitlementService" xml:space="preserve">
+    <value>사용 권한 서비스</value>
+  </data>
+  <data name="ErrorInChildOgOemProvisioningServiceHostRegistrySync" xml:space="preserve">
+    <value>하위 조직 그룹을 OEM 프로비저닝 서비스와 동기화하는 중 오류가 발생했습니다.</value>
+  </data>
+  <data name="ErrorSslConnection" xml:space="preserve">
+    <value>기본 연결이 닫혔습니다. SSL/TLS 보안 채널에 대한 신뢰 관계를 구축할 수 없습니다.</value>
+  </data>
+  <data name="ErrorWhileProcessingTheArg" xml:space="preserve">
+    <value>{0} 데이터를 처리하는 동안 오류가 발생했습니다.</value>
+  </data>
+  <data name="ErrorWhileUpdatingAutoGeneratedKeys" xml:space="preserve">
+    <value>자동 생성된 API 키를 업데이트하는 동안 오류가 발생했습니다.</value>
+  </data>
+  <data name="EverythingWithinReach" xml:space="preserve">
+    <value>범위 내의 모든 것</value>
+  </data>
+  <data name="EverythingWithinReachDescription" xml:space="preserve">
+    <value>보다 직관적인 태그 기반 검색 기능을 통해 필요한 구성 요소를 빠르고 쉽게 찾을 수 있습니다. 기능, 카테고리, 사용 사례, 키워드로 검색함으로써 원하는 내용을 신속하게 검색할 수 있고 유용한 설정 가이드 등에 대한 링크를 이용할 수 있습니다.</value>
+  </data>
+  <data name="ExpiredCertificate" xml:space="preserve">
+    <value>제공된 인증서 만료됨</value>
+  </data>
+  <data name="ExportXml" xml:space="preserve">
+    <value>XML 내보내기</value>
+  </data>
+  <data name="ExternalDirectoryIntegrationDescription" xml:space="preserve">
+    <value>Workspace ONE Access 및 Access Management 설정을 구성하여 직원이 웹, 네이티브 및 가상 앱을 비롯한 포괄적인 통합 애플리케이션 카탈로그에 원활하게 액세스할 수 있도록 하십시오.</value>
+  </data>
+  <data name="FactoryProvisioning" xml:space="preserve">
+    <value>공장 프로비저닝</value>
+  </data>
+  <data name="FactoryProvisioningUrl" xml:space="preserve">
+    <value>공장 프로비저닝 서비스 URL</value>
+  </data>
+  <data name="FactoryProvisioningUrl_Description" xml:space="preserve">
+    <value>공장 프로비저닝 URL</value>
+  </data>
+  <data name="FailedToAccepVidmEula" xml:space="preserve">
+    <value>Workspace ONE Access 최종 사용자 라이센스 계약 수락 시도 중 오류가 발생했습니다.</value>
+  </data>
+  <data name="FailedToGenerateMagConfig" xml:space="preserve">
+    <value>Tunnel 프록시 구성을 생성하는 동안 오류가 발생했습니다.</value>
+  </data>
+  <data name="FailedToGenerateTunnelConfig" xml:space="preserve">
+    <value>Tunnel 구성을 생성하는 동안 오류가 발생했습니다.</value>
+  </data>
+  <data name="FailedToGetSessionToken" xml:space="preserve">
+    <value>Workspace ONE Access 인증 시도 중 오류가 발생했습니다.</value>
+  </data>
+  <data name="FailedToMapLocalDomainsToVidm" xml:space="preserve">
+    <value>로컬 도메인을 Workspace ONE Access에 매핑하는 데 실패했습니다. 연결을 확인한 후 다시 시도하십시오.</value>
+  </data>
+  <data name="FailedtoPingVMESC" xml:space="preserve">
+    <value>VMware Enterprise Systems Connector Ping 실패</value>
+  </data>
+  <data name="FeaturedApplications" xml:space="preserve">
+    <value>추천 애플리케이션</value>
+  </data>
+  <data name="FeatureNotAvailable" xml:space="preserve">
+    <value>이 기능은 현재 사용할 수 없습니다.</value>
+  </data>
+  <data name="FieldsetConnectionSettings" xml:space="preserve">
+    <value>연결 설정</value>
+  </data>
+  <data name="FieldsetServerSettings" xml:space="preserve">
+    <value>서버 설정</value>
+  </data>
+  <data name="FileExtensions" xml:space="preserve">
+    <value>파일 확장자</value>
+  </data>
+  <data name="FilePathTestFailed" xml:space="preserve">
+    <value>테스트 연결 실패: 시스템 관리자와 함께 로그에서 세부 정보를 확인하십시오.</value>
+  </data>
+  <data name="FilePathTestSuccess" xml:space="preserve">
+    <value>파일 스토리지에 연결되었습니다.</value>
+  </data>
+  <data name="FileTypeSupported" xml:space="preserve">
+    <value>지원되는 파일 유형</value>
+  </data>
+  <data name="FirewallGlobalStateStatusOff" xml:space="preserve">
+    <value>방화벽 글로벌 상태 해제</value>
+  </data>
+  <data name="FirewallGlobalStateStatusOn" xml:space="preserve">
+    <value>방화벽 글로벌 상태</value>
+  </data>
+  <data name="FPSServiceIsNotReachable" xml:space="preserve">
+    <value>공장 프로비저닝 서비스를 이용할 수 없음</value>
+  </data>
+  <data name="FPSServiceIsReachable" xml:space="preserve">
+    <value>공장 프로비저닝 서비스가 가동 및 실행 중임</value>
+  </data>
+  <data name="FromTheArgs" xml:space="preserve">
+    <value>위치: {0}</value>
+  </data>
+  <data name="FrontEndCertificate" xml:space="preserve">
+    <value>프런트엔드 인증서</value>
+  </data>
+  <data name="FrontendHostName" xml:space="preserve">
+    <value>프런트엔드 호스트 이름</value>
+  </data>
+  <data name="FullDeviceTunnelMode" xml:space="preserve">
+    <value>전체 장치</value>
+  </data>
+  <data name="GeneralEnrollmentDescription" xml:space="preserve">
+    <value>장치 등록 구성을 사용자 지정하고 관리하여 특정 유형의 장치, 그룹 장치 자동, 소유권 유형 설정 등을 제한하거나 허용함으로써 직원의 Workspace ONE 등록 프로세스를 간소화할 수 있습니다.</value>
+  </data>
+  <data name="GeneralLookupFieldDescription" xml:space="preserve">
+    <value>조회 필드를 사용자 지정하고 조회 필드가 표시되는 위치에 적용할 수 있습니다.</value>
+  </data>
+  <data name="GeneralMessageTemplateDescription" xml:space="preserve">
+    <value>직원과 커뮤니케이션하는 데 사용되는 메시지 템플릿 파일을 사용자 지정하고 관리합니다.</value>
+  </data>
+  <data name="GeneralPrivacyDescription" xml:space="preserve">
+    <value>BYOD(Bring Your Own Device) 배포 또는 현지 개인 정보 규정 준수에 도움이 될 수 있는 Workspace ONE에서의 장치 및 사용자 정보를 관리하는 방법을 정의합니다.</value>
+  </data>
+  <data name="GeneralSharedDeviceDescription" xml:space="preserve">
+    <value>직원이 자신의 장치와 상호 작용하고 직원의 장치 간에 유지되는 데이터를 관리하는 방법을 비롯하여 다중 사용자 기능을 위한 공유 장치를 구성합니다.</value>
+  </data>
+  <data name="GoToConfigurations" xml:space="preserve">
+    <value>구성으로 이동</value>
+  </data>
+  <data name="GreenBoxAndroid" xml:space="preserve">
+    <value>Intelligent Hub 카탈로그(Android)</value>
+  </data>
+  <data name="GreenBoxIos" xml:space="preserve">
+    <value>Intelligent Hub 카탈로그(iOS)</value>
+  </data>
+  <data name="GreenBoxMacOs" xml:space="preserve">
+    <value>Intelligent Hub 카탈로그(macOS)</value>
+  </data>
+  <data name="GreenBoxWindows" xml:space="preserve">
+    <value>Intelligent Hub 카탈로그(Windows 데스크톱)</value>
+  </data>
+  <data name="GroupAttribute" xml:space="preserve">
+    <value>그룹 특성</value>
+  </data>
+  <data name="GroupsAndSettings" xml:space="preserve">
+    <value>그룹 및 설정</value>
+  </data>
+  <data name="GsxApiToken" xml:space="preserve">
+    <value>GSX API 토큰</value>
+  </data>
+  <data name="GsxApiTokenDescription" xml:space="preserve">
+    <value>Apple GSX의 API 토큰입니다. 이 값은 시간에 따라, 그리고 일부 연결 테스트에서 새로 고침됩니다. 이를 편집해야 하는 경우 Apple GSX에서 새 토큰을 검색하십시오.</value>
+  </data>
+  <data name="GsxApiTokenIsRequired" xml:space="preserve">
+    <value>GSX API 토큰을 입력하고 다시 시도하십시오.</value>
+  </data>
+  <data name="GsxBadRequestError" xml:space="preserve">
+    <value>인증 토큰이 잘못되었습니다.</value>
+  </data>
+  <data name="GsxCertificateIsRequired" xml:space="preserve">
+    <value>올바른 GSX 인증서를 업로드하고 다시 시도하십시오.</value>
+  </data>
+  <data name="GsxForbiddenError" xml:space="preserve">
+    <value>인증되지 않은 요청으로 인해 인증에 실패했습니다.</value>
+  </data>
+  <data name="GsxInternalServerError" xml:space="preserve">
+    <value>Apple GSX에서 내부 서버 오류를 보고했습니다.</value>
+  </data>
+  <data name="GsxRestMigrationLink" xml:space="preserve">
+    <value>마이그레이션하려면 여기를 클릭하십시오.</value>
+  </data>
+  <data name="GsxRestMigrationPrompt" xml:space="preserve">
+    <value>Apple은 2019년 가을에 AppleCare API의 현재 버전을 더 이상 제공하지 않습니다. 기능을 유지하려면 지원되는 최신 버전으로 마이그레이션하십시오.</value>
+  </data>
+  <data name="GsxUnauthorizedError" xml:space="preserve">
+    <value>Apple GSX가 호출에 권한을 부여하지 않았습니다.</value>
+  </data>
+  <data name="HardwareSecurity" xml:space="preserve">
+    <value>하드웨어 보안</value>
+  </data>
+  <data name="HealthAttestationSampleInfo" xml:space="preserve">
+    <value>Windows 장치에서 장치 상태 증명 정보를 수집하는 일정입니다. 상태 증명은 보안 부팅 상태, ELAM 상태, 코드 무결성 검사 및 기타 값이 장치 TPM에서 수집되어 장치의 손상된 상태를 확인하는 데 사용되는 하드웨어 지원 보안 방침 검사입니다.</value>
+  </data>
+  <data name="HealthAttestationSampleInMinutes" xml:space="preserve">
+    <value>상태 증명 샘플</value>
+  </data>
+  <data name="HealthAttestationSampleTimeMode" xml:space="preserve">
+    <value>상태 증명 샘플 시간 모드</value>
+  </data>
+  <data name="HealthMonitoring" xml:space="preserve">
+    <value>상태 모니터링</value>
+  </data>
+  <data name="HeartbeatInterval" xml:space="preserve">
+    <value>하트비트 간격</value>
+  </data>
+  <data name="HeartbeatIntervalInfo" xml:space="preserve">
+    <value>장치 하트비트에 대한 일정입니다. 이 샘플은 장치 IP 정보, GPS 데이터 샘플 및 장치 체크인 상태를 제공하는 사용 공간이 적은 샘플입니다.</value>
+  </data>
+  <data name="HelpMessageAndroidWorkManagementType" xml:space="preserve">
+    <value>장치를 등록 사용자와 연결할지 여부를 선택하십시오. 특정 사용자를 장치와 연결해야 할 경우 사용자 기반이 선호됩니다. 사용자 기반을 사용하면 최적의 앱 라이센스가 할당될 수 있습니다. 단일 사용자가 장치와 연결되지 않는 시나리오(예: 키오스크)의 경우 장치 기반이 선호됩니다. 폐쇄 네트워크에서 운영하거나 Google Play와 통신할 수 없는 경우 AOSP/폐쇄 네트워크를 선택하십시오.</value>
+  </data>
+  <data name="HideComments" xml:space="preserve">
+    <value>메모 숨기기</value>
+  </data>
+  <data name="HideCommentsMsg" xml:space="preserve">
+    <value>최종 사용자의 앱 메모를 추가하고 보는 기능을 숨기려면 이 옵션을 사용하도록 설정하십시오.</value>
+  </data>
+  <data name="HighAccuracy" xml:space="preserve">
+    <value>높은 정확성</value>
+  </data>
+  <data name="HowToEnableHubServices" xml:space="preserve">
+    <value>Hub 서비스 활성화 방법</value>
+  </data>
+  <data name="HowToObtainTenantDirectoryInfo" xml:space="preserve">
+    <value>테넌트 디렉토리 ID 정보를 얻는 방법</value>
+  </data>
+  <data name="HubAuthenticationSource" xml:space="preserve">
+    <value>Intelligent Hub 인증 소스</value>
+  </data>
+  <data name="HubAuthenticationSourceToolTip" xml:space="preserve">
+    <value>Intelligent Hub가 인증에 사용할 제공자를 선택합니다. Workspace ONE UEM은 기본 설정입니다.</value>
+  </data>
+  <data name="HubCatalogSettingHelp" xml:space="preserve">
+    <value>이 설정은 이전 버전의 Intelligent Hub에만 적용됩니다.</value>
+  </data>
+  <data name="HubConfiguration" xml:space="preserve">
+    <value>Hub 구성</value>
+  </data>
+  <data name="HubConfigurationDescription" xml:space="preserve">
+    <value>아래의 설정을 검토 및 편집하여 Hub 서비스, 장치 관리, 인증 소스 및 카탈로그 설정을 포함한 직원의 Intelligent Hub 환경을 구성합니다.</value>
+  </data>
+  <data name="HubConfigurations" xml:space="preserve">
+    <value>Hub 구성</value>
+  </data>
+  <data name="HubMigrationBanner" xml:space="preserve">
+    <value>Intelligent Hub App Catalog 설정이 Workspace ONE Hub 서비스로 이동되었습니다.</value>
+  </data>
+  <data name="HubMigrationBannerDescription" xml:space="preserve">
+    <value>App Catalog 설정을 관리하려면 Workspace ONE Hub 서비스를 시작하십시오.</value>
+  </data>
+  <data name="HubServices" xml:space="preserve">
+    <value>Hub 서비스</value>
+  </data>
+  <data name="HubServicesConfigurations" xml:space="preserve">
+    <value>Workspace ONE Intelligent Hub 구성</value>
+  </data>
+  <data name="HubServicesConfigurationsHelp" xml:space="preserve">
+    <value>Workspace ONE Intelligent Hub 구성 설정을 보고 관리합니다.</value>
+  </data>
+  <data name="HubServicesDescription" xml:space="preserve">
+    <value>Hub 서비스를 사용하면 기업 리소스, 팀 및 워크플로에 액세스, 검색 및 연결할 수 있는 단일 대상을 직원에게 제공할 수 있습니다. Hub 서비스를 활성화하면 다음과 같은 유용한 새 기능을 사용할 수 있습니다.</value>
+  </data>
+  <data name="HubServicesDetectionFailedError" xml:space="preserve">
+    <value>Hub 서비스를 감지할 수 없습니다. Cloud Workspace ONE Access가 있는 경우 {0}(으)로 이동한 후 Hub 서비스 URL 설정에 Workspace ONE Access URL을 입력한 다음 이 페이지로 돌아오십시오. Cloud Workspace ONE Access가 없는 경우 VMware 담당자에게 연락하여 Hub 서비스 활성화를 요청하십시오.</value>
+  </data>
+  <data name="IDENTITYMANAGER" xml:space="preserve">
+    <value>WORKSPACE ONE ACCESS</value>
+  </data>
+  <data name="IdentityVerification" xml:space="preserve">
+    <value>신원 확인</value>
+  </data>
+  <data name="IDnomic" xml:space="preserve">
+    <value>IDnomic</value>
+  </data>
+  <data name="IISOrigin" xml:space="preserve">
+    <value>IIS 원본</value>
+  </data>
+  <data name="impacted" xml:space="preserve">
+    <value>영향을 받는.</value>
+  </data>
+  <data name="IncludeSecurityIdentifier" xml:space="preserve">
+    <value>보안 식별자 포함</value>
+  </data>
+  <data name="IncorrectUserPermission" xml:space="preserve">
+    <value>테스트 연결 실패: 사용자 계정에 파일 스토리지 경로에 대한 필수 '쓰기' 권한이 없습니다.</value>
+  </data>
+  <data name="Installcertificateprofileswithoutbatchinginfo" xml:space="preserve">
+    <value>인증서 프로필 명령이 인증서 일괄 처리 로직을 통해 진행되는지 여부를 결정합니다. 활성화될 경우 새 등록을 위한 인증서 프로필 설치 명령이 일괄 처리 로직을 건너뜁니다. 비활성화될 경우 새 등록을 위한 인증서 프로필 설치 명령이 인증서 일괄 처리 로직을 거치게 됩니다.</value>
+  </data>
+  <data name="InstallCompliancePolicyConfirmed" xml:space="preserve">
+    <value>규정 준수 정책 설치 확인</value>
+  </data>
+  <data name="InstallCompliancePolicyFailed" xml:space="preserve">
+    <value>규정 준수 정책 설치 실패</value>
+  </data>
+  <data name="InstallCompliancePolicyRejected" xml:space="preserve">
+    <value>규정 준수 정책 설치 거부</value>
+  </data>
+  <data name="InstallCompliancePolicyRequested" xml:space="preserve">
+    <value>규정 준수 정책 설치 요구</value>
+  </data>
+  <data name="InstallProduct_Description" xml:space="preserve">
+    <value>제품 설치</value>
+  </data>
+  <data name="IntelligentHubApplication" xml:space="preserve">
+    <value>Intelligent Hub 애플리케이션</value>
+  </data>
+  <data name="IntelligentHubDescription" xml:space="preserve">
+    <value>Workspace ONE Intelligent Hub는 직원들이 기업 리소스, 팀 및 워크플로를 어디서나 어떤 장치에서든 안전하게 액세스하고, 검색하고, 연결하고, 작업을 수행할 수 있는 유일한 대상입니다. 설정을 검토 및 편집하여 Intelligent Hub 애플리케이션, 환경, 기능 및 엔터프라이즈 리소스에 대한 액세스를 구성하십시오.</value>
+  </data>
+  <data name="InvalidAllowlistDomain" xml:space="preserve">
+    <value>잘못된 허용 목록 도메인</value>
+  </data>
+  <data name="InvalidCertificateChainUploaded" xml:space="preserve">
+    <value>업로드된 인증서에 유효한 인증서 체인이 없습니다.</value>
+  </data>
+  <data name="InvalidJsonOrXmlFormat" xml:space="preserve">
+    <value>사용자 지정 설정의 잘못된 JSON 또는 XML 형식</value>
+  </data>
+  <data name="InvalidMacOsApplicationData" xml:space="preserve">
+    <value>macOS 애플리케이션에 잘못된 데이터가 입력됨</value>
+  </data>
+  <data name="InvalidMemConfigPassedForGSuitePasswordRotation" xml:space="preserve">
+    <value>비밀번호 순환에 대해 선택된 메모리 구성이 MEM direct Google flavor가 아닙니다.</value>
+  </data>
+  <data name="InvalidPortNumber" xml:space="preserve">
+    <value>잘못된 포트 번호</value>
+  </data>
+  <data name="InvalidSyslogProtocol" xml:space="preserve">
+    <value>잘못된 프로토콜</value>
+  </data>
+  <data name="InvalidWindowsApplicationData" xml:space="preserve">
+    <value>Windows 애플리케이션에 잘못된 데이터가 입력됨</value>
+  </data>
+  <data name="IosAllowManagementInfo" xml:space="preserve">
+    <value>이 옵션이 활성화되면 MDM을 통해서 푸시되기 전에 사용자가 설치하는 경우 MDM에서 애플리케이션이 관리됩니다. 감독되는 장치에서 애플리케이션은 사용자 개입을 요구하지 않고 자동으로 관리됩니다. 감독되지 않는 장치에서는 MDM에 의한 관리에 동의할지 묻는 메시지가 표시됩니다. 
+
+애플리케이션은 설치되지 않고 사용자는 데이터를 손실합니다. 애플리케이션을 관리하면 구성 값, VPN 등과 같은 관리 설정을 전송할 수 있습니다.
+
+콘솔 개인 정보 설정이 명시적인 설치가 트리거되지 않는 한 개인 애플리케이션 데이터 수집 안 함으로 설정된 경우 이 설정은 적용되지 않습니다.</value>
+  </data>
+  <data name="IosAndMacOSDepOnly" xml:space="preserve">
+    <value>iOS 및 macOS(DEP만 해당)</value>
+  </data>
+  <data name="IosAppInactivityRuleDuplicate" xml:space="preserve">
+    <value>iOS 애플리케이션 비활성 규칙이 애플리케이션 식별자를 복제했습니다.</value>
+  </data>
+  <data name="IosAppInactivityRuleNotValid" xml:space="preserve">
+    <value>iOS 애플리케이션 비활성 규칙이 잘못되었습니다. 애플리케이션 식별자가 제공되고 비활성 일수가 1~90 범위에 있는지 확인하십시오.</value>
+  </data>
+  <data name="IosAppVersionRuleDuplicate" xml:space="preserve">
+    <value>iOS 애플리케이션 버전 규칙이 애플리케이션 식별자를 복제했습니다.</value>
+  </data>
+  <data name="IosAppVersionRuleNotValid" xml:space="preserve">
+    <value>iOS 애플리케이션 버전 규칙이 유효하지 않습니다. 애플리케이션 식별자나 버전 형식이 올바른지 확인하십시오.</value>
+  </data>
+  <data name="IosMinimumRequiredOsVersionInfo" xml:space="preserve">
+    <value>애플리케이션에 안전하게 액세스하기 위해 사용자가 보유해야 하는 최소 필수 iOS 버전 번호를 정의합니다.</value>
+  </data>
+  <data name="IosMinimumWarningOsVersionInfo" xml:space="preserve">
+    <value>애플리케이션에 안전하게 액세스하기 위해 사용자가 보유해야 하는 최소 권장 iOS 버전 번호를 정의합니다.</value>
+  </data>
+  <data name="IosOsVersionNotSet" xml:space="preserve">
+    <value>iOS 운영 체제 버전 필드가 채워지지 않았습니다.</value>
+  </data>
+  <data name="iOSSingleAppMode" xml:space="preserve">
+    <value>iOS 단일 앱 모드</value>
+  </data>
+  <data name="IosSingleAppModeInfo" xml:space="preserve">
+    <value>단일 앱 모드에서는 iOS 장치에서 페이로드가 삭제/변경될 때까지 단일 애플리케이션만 사용할 수 있습니다. 홈 버튼은 비활성화되고 장치가 켜지거나 재부팅될 때 자동으로 특정 애플리케이션이 작동합니다. 이는 감독중인 장치에 한해 적용됩니다.</value>
+  </data>
+  <data name="iPadAir3" xml:space="preserve">
+    <value>iPad Air 3</value>
+  </data>
+  <data name="iPadMini5" xml:space="preserve">
+    <value>iPad Mini 5</value>
+  </data>
+  <data name="IpodTouch7" xml:space="preserve">
+    <value>iPod Touch 7세대</value>
+  </data>
+  <data name="IsCustomOnboardingExperienceEnabled" xml:space="preserve">
+    <value>등록 후 온보딩 환경 사용</value>
+  </data>
+  <data name="IsCustomOnboardingExperienceEnabledTooltip" xml:space="preserve">
+    <value>이 설정을 사용하도록 설정하면 Intelligent Hub가 등록 후 macOS 장치에 설치된 후 즉시 사용자에게 온보딩 환경 UI가 표시됩니다. 온보딩 환경은 현재 설치 중인 애플리케이션 및 리소스에 대한 상태 정보를 제공하고 프로세스가 완료되면 사용자에게 알립니다.</value>
+  </data>
+  <data name="IsProductProvisioningCommandReleaseEnabled_Description" xml:space="preserve">
+    <value>제품 프로비저닝 명령 릴리스가 활성화됨</value>
+  </data>
+  <data name="IssuerCertificate" xml:space="preserve">
+    <value>발급자 인증서</value>
+  </data>
+  <data name="IsTrustServiceEnabled" xml:space="preserve">
+    <value>신뢰 서비스</value>
+  </data>
+  <data name="IUnderstandTheRisk" xml:space="preserve">
+    <value>나는 위험을 이해합니다</value>
+  </data>
+  <data name="JcchGleas" xml:space="preserve">
+    <value>JCCH Gléas</value>
+  </data>
+  <data name="JobLogLevel_Description" xml:space="preserve">
+    <value>작업 로그 수준</value>
+  </data>
+  <data name="JoinTheVmwareCeip" xml:space="preserve">
+    <value>VMware 고객 환경 향상 프로그램에 참여</value>
+  </data>
+  <data name="KnoxLicenseKeyRequired" xml:space="preserve">
+    <value>KNOX 컨테이너를 사용함으로 설정하는 경우 KNOX 라이센스 키가 필요함</value>
+  </data>
+  <data name="Korea" xml:space="preserve">
+    <value>대한민국</value>
+  </data>
+  <data name="LdapActiveDirectory" xml:space="preserve">
+    <value>LDAP - Active Directory</value>
+  </data>
+  <data name="LDAPDefinitionNotFound" xml:space="preserve">
+    <value>주어진 조직 그룹에서 LDAP 정의를 찾을 수 없음</value>
+  </data>
+  <data name="LdapLotusDomino" xml:space="preserve">
+    <value>LDAP - Lotus Domino</value>
+  </data>
+  <data name="LdapNovelleDirectory" xml:space="preserve">
+    <value>LDAP - Novell e-Directory</value>
+  </data>
+  <data name="LdapOtherLdap" xml:space="preserve">
+    <value>LDAP - 기타 LDAP</value>
+  </data>
+  <data name="LearnHowWorkspaceOneAccess" xml:space="preserve">
+    <value>{0} Workspace ONE Access는 직원 경험을 단순화하고 IT 복잡성을 줄입니다.</value>
+  </data>
+  <data name="LearnMoreParam" xml:space="preserve">
+    <value>자세한 내용은 {0}를 참조하십시오.</value>
+  </data>
+  <data name="LegacyAgentApplication" xml:space="preserve">
+    <value>Windows 8 Agent 애플리케이션 설정</value>
+  </data>
+  <data name="LegacyAppManagement" xml:space="preserve">
+    <value>레거시 앱 관리</value>
+  </data>
+  <data name="LegalPrivacyLinkLabel" xml:space="preserve">
+    <value>VMware 개인 정보 보호 정책</value>
+  </data>
+  <data name="LegalPrivacyReviewInformation" xml:space="preserve">
+    <value>분석, 개인 정보 등 이 제품을 통해 수집되는 다양한 데이터 유형에 대한 자세한 내용은 {0}을(를) 참조하십시오.</value>
+  </data>
+  <data name="LessDetails" xml:space="preserve">
+    <value>더 적은 세부 정보</value>
+  </data>
+  <data name="LGNameNotExistingInDB" xml:space="preserve">
+    <value>네트워크 범위 프로세서: 조직 그룹 이름이 DB에 존재하지 않거나 허용되지 않음</value>
+  </data>
+  <data name="Licenses" xml:space="preserve">
+    <value>라이센스</value>
+  </data>
+  <data name="LinkWorkspaceOneAccess" xml:space="preserve">
+    <value>방법 알아보기</value>
+  </data>
+  <data name="LocalAddress" xml:space="preserve">
+    <value>로컬 주소</value>
+    <comment>Local Network/Proxy Address</comment>
+  </data>
+  <data name="LocalBasicUserSyncDescription" xml:space="preserve">
+    <value>로컬 기본 사용자 동기화를 사용하면 Workspace ONE Access으로 Workspace ONE UEM 기본 사용자를 사용할 수 있습니다. 이를 활성화하면 로컬 기본 사용자 동기화를 비활성화할 수 없습니다.</value>
+  </data>
+  <data name="LocalBasicUserSyncJob" xml:space="preserve">
+    <value>로컬 기본 사용자 동기화</value>
+  </data>
+  <data name="LocalizationEditorImportDescription" xml:space="preserve">
+    <value>먼저, 로케일 언어를 선택하고 레이블 키 템플릿을 다운로드하여 수정하려는 레이블 텍스트 필드를 검색합니다. 레이블을 업데이트할 경우 해당 레이블의 {1} 열에 {0}을(를) 입력하십시오. 변경 사항을 저장하고 업로드할 파일을 선택합니다. 그런 후 업데이트를 선택하여 변경 사항을 저장합니다. 그러면 레이블 컨텐츠 편집기 목록에 표시됩니다.</value>
+    <comment>{0} will be replaced by the English text "True" and {1} will be replaced with English text "Updated". These two values should not be translated and that's why these are placeholders.</comment>
+  </data>
+  <data name="LocalSyncEnableFailed" xml:space="preserve">
+    <value>로컬 기본 사용자 동기화를 활성화하지 못함</value>
+  </data>
+  <data name="LocationDataAccuracy" xml:space="preserve">
+    <value>위치 데이터 정확성</value>
+  </data>
+  <data name="LocationDataAccuracyTooltip" xml:space="preserve">
+    <value>균형: 약 100미터 정도의 정확성을 통해 전력 및 정확성 간 최상의 균형을 제공합니다.
+
+높은 정확성: 가능한 최상의 정확성을 제공하지만 가장 많은 전력이 필요합니다.
+
+저전력: 약 10킬로미터 정도의 정확성으로 더 적은 전력을 요구합니다.
+
+전력 없음: 가장 낮은 수준의 정확도를 제공하며 전력이 필요하지 않습니다.</value>
+  </data>
+  <data name="LocationIsCollected" xml:space="preserve">
+    <value>위치 데이터 수집은 잃어버린 장치의 위치를 찾는 데 도와줍니다. 특정 지오펜스된 지역에 있을 때 수집되어 기능과 콘텐츠를 배포하기도 합니다. 이 장치에서 수집된 정보 목록은 아래에서 찾을 수 있습니다.</value>
+  </data>
+  <data name="LocationIsNotCollected" xml:space="preserve">
+    <value>위치 데이터가 수집되지 않았습니다.</value>
+  </data>
+  <data name="LookupFieldsDescription" xml:space="preserve">
+    <value>조회 필드를 사용자 지정하고 조회 필드가 표시되는 위치에 적용할 수 있습니다.</value>
+  </data>
+  <data name="LowPower" xml:space="preserve">
+    <value>저전력</value>
+  </data>
+  <data name="MacAgentDownloadUrl" xml:space="preserve">
+    <value>로컬 서버상의 macOS 장치용 Intelligent Hub 파일로의 정규화된 경로</value>
+  </data>
+  <data name="MacOsApplicationDeleteSuccess" xml:space="preserve">
+    <value>macOS 애플리케이션이 삭제되었습니다.</value>
+  </data>
+  <data name="MacOsApplicationFound" xml:space="preserve">
+    <value>macOS 애플리케이션이 이미 존재함</value>
+  </data>
+  <data name="MacOsApplicationNotFound" xml:space="preserve">
+    <value>macOS 애플리케이션이 존재하지 않음</value>
+  </data>
+  <data name="MacOsApplicationSaveSuccess" xml:space="preserve">
+    <value>macOS 애플리케이션이 저장됨</value>
+  </data>
+  <data name="MacOsIntelligentHubFilePath" xml:space="preserve">
+    <value>macOS Intelligent Hub 파일 경로</value>
+  </data>
+  <data name="MacOsIntelligentHubFilePathHelpText" xml:space="preserve">
+    <value>이 경로에는 클라이언트 장치의 배포 및 자동 업그레이드를 위해 시드된 Intelligent Hub 설치 프로그램 및 보조 구성 파일이 포함됩니다.</value>
+  </data>
+  <data name="MacOsIntelligentHubUpdateCheckJob" xml:space="preserve">
+    <value>macOS 시드 애플리케이션 업그레이드 확인</value>
+  </data>
+  <data name="MagLanding" xml:space="preserve">
+    <value>VMware Content Gateway는 최종 사용자가 내부 저장소의 컨텐츠를 액세스할 수 있는 안전하고 효과적인 방법을 제공합니다. VMware Content Locker와 같은 컨텐츠 애플리케이션과 함께 VMware Content Gateway를 사용하여 컨텐츠 저장소 또는 내부 파일 공유에서 기업 컨텐츠에 안전하게 액세스할 수 있습니다.</value>
+  </data>
+  <data name="MAGLanding2" xml:space="preserve">
+    <value>설치 요구 사항 및 절차에 관한 자세한 정보는 VMware Tunnel 설치 가이드와 관리자 가이드를 참조하십시오.</value>
+  </data>
+  <data name="MAGPublicCertificateError" xml:space="preserve">
+    <value>SSL 인증서 업로드에 실패했습니다. 인증서가 올바른지 확인하고 다시 시도하십시오.</value>
+  </data>
+  <data name="MagSettingsConfigurationWarning" xml:space="preserve">
+    <value>VMware Tunnel - 프록시 설정이 이 조직 그룹에 정의되지 않았습니다. 애플리케이션 터널링에 대한 프록시를 구성하려면 아래 링크를 클릭하십시오.</value>
+  </data>
+  <data name="MAGThumbPrintMismatchError" xml:space="preserve">
+    <value>인증서 지문 불일치 오류</value>
+  </data>
+  <data name="MainPage" xml:space="preserve">
+    <value>기본 페이지</value>
+  </data>
+  <data name="MainPages" xml:space="preserve">
+    <value>기본 페이지</value>
+  </data>
+  <data name="ManageApplicationsGridApplicationNameColumn" xml:space="preserve">
+    <value>식별 이름 - 플랫폼</value>
+  </data>
+  <data name="ManageApplicationsHeaderText" xml:space="preserve">
+    <value>이러한 애플리케이션은 장치 트래픽 규칙에서 사용할 수 있습니다.</value>
+  </data>
+  <data name="ManageApplicationWindowsMacOS" xml:space="preserve">
+    <value>Windows 또는 macOS 애플리케이션 관리</value>
+  </data>
+  <data name="ManageApplicationWindowsMacOSInfo" xml:space="preserve">
+    <value>Windows 또는 macOS 애플리케이션을 추가, 편집 또는 삭제합니다. </value>
+  </data>
+  <data name="ManagedAppleID" xml:space="preserve">
+    <value>관리되는 Apple ID</value>
+  </data>
+  <data name="ManagedAppleIDFormat" xml:space="preserve">
+    <value>관리되는 Apple ID 형식</value>
+  </data>
+  <data name="ManagedAppleIDInfoMessage" xml:space="preserve">
+    <value>최종 사용자의 관리되는 Apple ID가 UEM의 최종 사용자 이메일 주소와 다른 경우 사용자 지정 형식을 지정합니다. 이는 Apple Business Manager를 통해 등록된 공유 iPad에 로그인하는 사용자를 인증하는 데 사용됩니다.</value>
+  </data>
+  <data name="ManagedAppleIdToolTip" xml:space="preserve">
+    <value>관리되는 Apple ID는 Apple Business Manager에서 생성되고 공유 iPad를 등록하는 동안 Apple 장치에서 사용자를 인증하는 데 사용되는 사용자 계정입니다. 이 용도로 Apple 장치를 사용하고 있지 않은 경우에는 이 특성을 무시할 수 있습니다.</value>
+  </data>
+  <data name="ManagedDistributionVPPDescription" xml:space="preserve">
+    <value>대량 구입 프로그램을 사용하면 Apple ID 없이 애플리케이션과 B2B 매장에서 애플리케이션을 Apple 장치에 배포할 수 있습니다. Apple Business Manager의 위치를 사용하면 계정 간에 라이센스를 쉽게 이전하고 대량 구입 프로그램 토큰으로 동기화할 수 있습니다.</value>
+  </data>
+  <data name="ManageDTRSHeaderText" xml:space="preserve">
+    <value>사용 가능한 장치 트래픽 규칙 집합을 관리합니다.</value>
+  </data>
+  <data name="ManagementMode" xml:space="preserve">
+    <value>관리 모드</value>
+  </data>
+  <data name="ManageTrafficAssignments" xml:space="preserve">
+    <value>트래픽 할당 관리</value>
+  </data>
+  <data name="ManageTunnelEnabledApplications" xml:space="preserve">
+    <value>애플리케이션 관리</value>
+  </data>
+  <data name="ManageTunnelEnabledApplicationsInfo" xml:space="preserve">
+    <value>사용 가능한 애플리케이션을 추가, 편집, 삭제하려면 클릭하십시오.</value>
+  </data>
+  <data name="MaxDegreeOfParallelism_Description" xml:space="preserve">
+    <value>최대 병렬 처리 수준</value>
+  </data>
+  <data name="MaxForcedTimeoutTooltip" xml:space="preserve">
+    <value>세션 관리를 {0}분 이상으로 설정하면 설정 시간이 만료된 후에 자동으로 로그아웃됩니다.</value>
+  </data>
+  <data name="MaximumPeriodAllowedOfflineTimeUnit" xml:space="preserve">
+    <value>오프라인 시간 단위에 허용되는 최대 기간</value>
+  </data>
+  <data name="MaximumPublishedCommandsMultiplier" xml:space="preserve">
+    <value>대기열 명령 수(최대)</value>
+  </data>
+  <data name="MaximumPublishedCommandsMultiplierInfo" xml:space="preserve">
+    <value>대기열에 허용되는 최대 명령 수입니다. 인증서 프로필 게시 주기가 이 제한에 도달할 때까지 계속 게시됩니다. 장치가 명령을 사용하면 더 많은 명령이 대기열에 추가됩니다. 여기에 입력한 값에 '인증서 프로필 게시 주기'를 곱하여 최대 개수를 얻습니다. 인증서 일괄 처리를 개선하기 위해 이 개수를 늘릴 수 있지만 CA 및 DS 서버 성능을 자세히 모니터링하는 것이 좋습니다.</value>
+  </data>
+  <data name="MaxJobRetryCount_Description" xml:space="preserve">
+    <value>최대 작업 재시도 횟수</value>
+  </data>
+  <data name="MaxPercentageOfJobFailure_Description" xml:space="preserve">
+    <value>작업 실패의 최대 비율</value>
+  </data>
+  <data name="MaxPortValidationMsg" xml:space="preserve">
+    <value>포트 번호는 {0}보다 클 수 없음</value>
+  </data>
+  <data name="MaxTimeOnWindowsOobeProgressScreen" xml:space="preserve">
+    <value>프로비저닝을 완료할 수 있는 최대 시간</value>
+  </data>
+  <data name="MaxTimeOnWindowsOobeProgressScreenToolTip" xml:space="preserve">
+    <value>OOBE 상태 화면에서 최대 초과 시간을 설정하려면 이 값을 구성합니다. 초과 시간이 지나면 프로비저닝이 완료된 것으로 간주되며 나머지 애플리케이션 및 정책이 백그라운드에 배포됩니다.</value>
+  </data>
+  <data name="MDMDiscoveryURL" xml:space="preserve">
+    <value>MDM 검색 URL</value>
+  </data>
+  <data name="MDMSampleSchedulerIntervalHelp" xml:space="preserve">
+    <value>샘플 작업이 트리거되는 빈도(분)</value>
+  </data>
+  <data name="MEMGSuitePasswordRotationFailed" xml:space="preserve">
+    <value>선택한 G Suite 사용자에 대한 비밀번호 순환이 실패했습니다.</value>
+  </data>
+  <data name="MergeDeviceRecordsFailure" xml:space="preserve">
+    <value>장치 레코드 병합 실패</value>
+  </data>
+  <data name="MergeDeviceRecordsSuccess" xml:space="preserve">
+    <value>장치 레코드 병합 성공</value>
+  </data>
+  <data name="MetadataServiceUrl" xml:space="preserve">
+    <value>메타데이터 서비스 URL</value>
+  </data>
+  <data name="MetadataServiceUrlDescription" xml:space="preserve">
+    <value>이 URL은 현재 서버의 메타데이터를 동기화하여 장치 모델, 플랫폼, 제조 업체, 운영 체제 등에 대한 가장 최신 정보를 얻기 위해 사용됩니다.</value>
+  </data>
+  <data name="MinimumSamplingIntervalHours" xml:space="preserve">
+    <value>최소 샘플링 간격(시간)</value>
+  </data>
+  <data name="MinimumSamplingIntervalHoursHelp" xml:space="preserve">
+    <value>샘플 작업에서 모든 MDM 샘플 일정을 쿼리할 간격(시간)</value>
+  </data>
+  <data name="MinPasswordValidationMsg" xml:space="preserve">
+    <value>비밀번호는 {0}자 이상이어야 함</value>
+  </data>
+  <data name="MinPortValidationMsg" xml:space="preserve">
+    <value>포트 번호는 {0}보다 작을 수 없음</value>
+  </data>
+  <data name="Modern" xml:space="preserve">
+    <value>모던</value>
+  </data>
+  <data name="ModernAgent" xml:space="preserve">
+    <value>모던 Agent</value>
+  </data>
+  <data name="MoreDetails" xml:space="preserve">
+    <value>자세한 내용</value>
+  </data>
+  <data name="NativeApps" xml:space="preserve">
+    <value>네이티브 애플리케이션</value>
+  </data>
+  <data name="NeitherSubnetNorRouterAddressSet" xml:space="preserve">
+    <value>서브넷 마스크 및 라우터 주소 모두 설정 안 됨</value>
+  </data>
+  <data name="NetworkNameNotFound" xml:space="preserve">
+    <value>테스트 접속 실패: 제공된 경로에 대한 파일 스토리지 폴더를 찾을 수 없습니다.</value>
+  </data>
+  <data name="NetworkPathNotFound" xml:space="preserve">
+    <value>테스트 접속 실패: 제공된 파일 스토리지 경로에 도달할 수 없습니다.</value>
+  </data>
+  <data name="NetworkRangeAssignmentNotEnabledAtOg" xml:space="preserve">
+    <value>네트워크 범위 프로세서: 이 조직 그룹에서 네트워크 범위 할당이 사용되도록 설정되지 않음</value>
+  </data>
+  <data name="NetworkUserLoginComplete" xml:space="preserve">
+    <value>네트워크 사용자 로그인 완료</value>
+  </data>
+  <data name="NewTrigger_Description" xml:space="preserve">
+    <value>새 트리거</value>
+  </data>
+  <data name="NewTunnelConfig" xml:space="preserve">
+    <value>새 터널 구성</value>
+  </data>
+  <data name="NoAccessToUser" xml:space="preserve">
+    <value>사용자가 지정된 엔티티에 액세스할 수 없음</value>
+  </data>
+  <data name="NoCertificatesConfigured" xml:space="preserve">
+    <value>인증 기관이 구성되지 않았습니다.</value>
+  </data>
+  <data name="NoCustomSettings" xml:space="preserve">
+    <value>설정 없음</value>
+  </data>
+  <data name="NoDefaultSecurityGroup" xml:space="preserve">
+    <value>기본 보안 그룹 없음</value>
+  </data>
+  <data name="NonCompliantDeviceSampleIntervalErrorMessage" xml:space="preserve">
+    <value>규정 위반 장치 샘플은 1시간에서 30일(까지) 사이여야 합니다.</value>
+  </data>
+  <data name="NonCompliantDeviceSampleIntervalGreaterThanTimeBasedCompliancePolicyRuleValues" xml:space="preserve">
+    <value>규정 위반 장치 샘플 간격이 기존 시간 기반 규정 준수 정책({0})의 간격을 초과할 수 없으므로 저장할 수 없습니다. 값을 줄이거나 시간 기반 규정 준수 정책 간격을 늘립니다.</value>
+  </data>
+  <data name="NonRepudiation" xml:space="preserve">
+    <value>무거부</value>
+  </data>
+  <data name="NoPower" xml:space="preserve">
+    <value>전원 없음</value>
+  </data>
+  <data name="Norwegian" xml:space="preserve">
+    <value>노르웨이어</value>
+  </data>
+  <data name="NoSpacesAllowed" xml:space="preserve">
+    <value>공백 허용되지 않음</value>
+  </data>
+  <data name="NotAuthorized" xml:space="preserve">
+    <value>사용자가 인증되지 않음</value>
+  </data>
+  <data name="NoteAndroidAllowAospClosedNetwork" xml:space="preserve">
+    <value>이 선택은 취소할 수 없습니다.</value>
+  </data>
+  <data name="NoTemplatesConfigured" xml:space="preserve">
+    <value>인증서 템플릿이 구성되지 않았습니다.</value>
+  </data>
+  <data name="NotificationsDescription" xml:space="preserve">
+    <value>직원이 암호 만료, 계정 정보 및 기타 중요한 업데이트가 포함된 알림을 받도록 허용합니다.</value>
+  </data>
+  <data name="NotificationsSettingsUpdated" xml:space="preserve">
+    <value>알림 설정 업데이트됨</value>
+  </data>
+  <data name="NotifyEmailToNoneType" xml:space="preserve">
+    <value>없음</value>
+  </data>
+  <data name="NotifyProductInstallStatus_Description" xml:space="preserve">
+    <value>제품 설치 상태 알림</value>
+  </data>
+  <data name="NotPACUtility" xml:space="preserve">
+    <value>PAC 유틸리티가 아님</value>
+  </data>
+  <data name="NoTunnelConfigsMsg" xml:space="preserve">
+    <value>Tunnel 구성이 없는 것 같습니다.</value>
+  </data>
+  <data name="NoTunnelConfiguration" xml:space="preserve">
+    <value>Tunnel 구성이 없습니다.</value>
+  </data>
+  <data name="NowInSmallCaps" xml:space="preserve">
+    <value>지금</value>
+  </data>
+  <data name="NsxAdminUsername" xml:space="preserve">
+    <value>관리자 사용자 이름</value>
+  </data>
+  <data name="NsxApplicationNotFound" xml:space="preserve">
+    <value>NSX 애플리케이션을 찾을 수 없습니다.</value>
+  </data>
+  <data name="NsxApplications" xml:space="preserve">
+    <value>NSX 애플리케이션</value>
+  </data>
+  <data name="NsxConfigSavedSuccessfully" xml:space="preserve">
+    <value>성공, NSX 구성이 저장됨</value>
+  </data>
+  <data name="NsxConfigurationDoesNotExist" xml:space="preserve">
+    <value>NSX 구성이 존재하지 않습니다.</value>
+  </data>
+  <data name="NsxIntegration" xml:space="preserve">
+    <value>NSX 통합</value>
+  </data>
+  <data name="NsxIntegrationDesc" xml:space="preserve">
+    <value>NSX에 정의된 보안 그룹과 함께 Tunnel을 NSX와 통합하여 앱별 정책과 일치시킵니다. 이렇게 하면 네트워크에 대한 공격 위험을 최소화하여 네트워크 및 앱 보안을 강화할 수 있습니다.</value>
+  </data>
+  <data name="NsxManagerUrl" xml:space="preserve">
+    <value>NSX Manager URL</value>
+  </data>
+  <data name="NsxManagerUrlDesc" xml:space="preserve">
+    <value>NSX Manager URL입니다. [http(s)://]hostname. 대상 URL에는 프로토콜 및 호스트 이름 또는 IP 주소가 포함되어야 합니다. (예: https://nsx.example.com)</value>
+  </data>
+  <data name="NsxSecurityGroupsDesc" xml:space="preserve">
+    <value>각 애플리케이션에 대해 보안 그룹을 정의합니다.</value>
+  </data>
+  <data name="NsxSecurityGroupsTitle" xml:space="preserve">
+    <value>NSX 보안 그룹</value>
+  </data>
+  <data name="NsxT" xml:space="preserve">
+    <value>NSX-T</value>
+  </data>
+  <data name="NsxV" xml:space="preserve">
+    <value>NSX-V</value>
+  </data>
+  <data name="NsxVersion" xml:space="preserve">
+    <value>NSX 버전</value>
+  </data>
+  <data name="NumberOfUnreadMessageOnly" xml:space="preserve">
+    <value>읽지 않은 메시지 갯수만</value>
+  </data>
+  <data name="OauthClientEdit" xml:space="preserve">
+    <value>OAuth 클라이언트 관리</value>
+  </data>
+  <data name="OauthClientEditHelp" xml:space="preserve">
+    <value>OAuth 클라이언트 생성, 수정 및 삭제에 대한 액세스 제어</value>
+  </data>
+  <data name="OAuthClientHelpText" xml:space="preserve">
+    <value>클라이언트 ID 및 암호는 Workspace ONE UEM API 호출을 수행할 때 애플리케이션 ID를 증명하는 데 사용됩니다. 클라이언트 ID 및 암호를 등록하고 생성하려면 아래에 클라이언트를 추가하십시오.</value>
+  </data>
+  <data name="OAuthClientManagement" xml:space="preserve">
+    <value>OAuth 클라이언트 관리</value>
+  </data>
+  <data name="OAuthClientMenuHelpText" xml:space="preserve">
+    <value>Workspace ONE UEM API 호출을 수행할 때 애플리케이션 ID를 증명하는 데 사용할 수 있는 클라이언트 ID 및 암호를 생성하도록 클라이언트를 등록합니다.</value>
+  </data>
+  <data name="OauthClientRead" xml:space="preserve">
+    <value>OAuth 클라이언트 관리</value>
+  </data>
+  <data name="OauthClientReadHelp" xml:space="preserve">
+    <value>OAuth 클라이언트 읽기 및 나열에 대한 액세스 제어</value>
+  </data>
+  <data name="OAuthClients" xml:space="preserve">
+    <value>OAuth 클라이언트</value>
+  </data>
+  <data name="OAuthClientService" xml:space="preserve">
+    <value>OAuth 클라이언트 서비스</value>
+  </data>
+  <data name="ObjectGuidAttributeConfigurationRequired" xml:space="preserve">
+    <value>최적의 보안을 위해 '{0}' 특성을 사용하여 ID 제공자 설정을 업데이트해야 합니다.</value>
+  </data>
+  <data name="OEMProvisioningSection" xml:space="preserve">
+    <value>OEM 프로비저닝</value>
+  </data>
+  <data name="OemProvisioningServiceHostRegistryInitiateSyncFailedError" xml:space="preserve">
+    <value>OEM 프로비저닝 서비스 인증서 고정 동기화를 시작하지 못했습니다.</value>
+  </data>
+  <data name="OEMProvisioningServiceIsNotReachable" xml:space="preserve">
+    <value>OEM 프로비저닝 서비스를 이용할 수 없음</value>
+  </data>
+  <data name="OEMProvisioningServiceIsReachable" xml:space="preserve">
+    <value>OEM 프로비저닝 서비스가 가동 및 실행 중임</value>
+  </data>
+  <data name="OEMProvisioningUrl" xml:space="preserve">
+    <value>OEM 프로비저닝 서비스 URL</value>
+  </data>
+  <data name="OEMUpdateSample" xml:space="preserve">
+    <value>OEM 업데이트 샘플</value>
+  </data>
+  <data name="OEMUpdateSampleInfo" xml:space="preserve">
+    <value>특정 OEM에서 드라이버 및 펌웨어 업데이트 상태를 수집하는 일정입니다. 이 데이터에는 패치 수준, 업데이트 날짜, 중요도, 카테고리 등이 포함됩니다.</value>
+  </data>
+  <data name="OEMUpdateSampleInMinutes" xml:space="preserve">
+    <value>OEM 업데이트 샘플</value>
+  </data>
+  <data name="OEMUpdateSampleTimeMode" xml:space="preserve">
+    <value>OEM 업데이트 샘플 시간 모드</value>
+  </data>
+  <data name="Office365AuthenticationInstruction" xml:space="preserve">
+    <value>Microsoft Intune® App Protection 정책을 구성하기 위해서는 아래에 Intune 관리 자격 증명을 제공하여 테넌트를 Workspace ONE에 연결해야 합니다.</value>
+  </data>
+  <data name="Office365DeletedPolicyNotification" xml:space="preserve">
+    <value>Microsoft Intune 포털에서 정책이 삭제되었습니다. 설정 삭제를 클릭하여 UEM에서 정책 설정을 삭제합니다. {0}</value>
+  </data>
+  <data name="Office365Label" xml:space="preserve">
+    <value>Office 365</value>
+  </data>
+  <data name="Office365MamAndroidApplicationPolicyId_Description" xml:space="preserve">
+    <value>Office365 MAM Android 애플리케이션 정책 ID</value>
+  </data>
+  <data name="Office365MamApplicationPolicyDeleteSuccessful" xml:space="preserve">
+    <value>정책이 삭제되었습니다.</value>
+  </data>
+  <data name="Office365MamApplicationPolicyDeleteUnsuccessful" xml:space="preserve">
+    <value>정책을 삭제하는 동안 오류가 발생하여 로깅되었습니다.</value>
+  </data>
+  <data name="Office365MamApplicationPolicySyncSuccessful" xml:space="preserve">
+    <value>정책이 동기화되었습니다.</value>
+  </data>
+  <data name="Office365MamApplicationPolicySyncUnsuccessful" xml:space="preserve">
+    <value>정책을 동기화하는 동안 오류가 발생하여 로깅되었습니다.</value>
+  </data>
+  <data name="Office365MamApplicationPolicyTimestamp_Description" xml:space="preserve">
+    <value>Office365 MAM 애플리케이션 정책 타임스탬프</value>
+  </data>
+  <data name="Office365MamIosApplicationPolicyId_Description" xml:space="preserve">
+    <value>Office365 MAM iOS 애플리케이션 정책 ID</value>
+  </data>
+  <data name="Office365PolicySettingAllowedInboundDataTransferSources" xml:space="preserve">
+    <value>"다른 애플리케이션 간에 데이터 수신"</value>
+  </data>
+  <data name="Office365PolicySettingAllowedOutboundClipboardSharingLevel" xml:space="preserve">
+    <value>"다른 애플리케이션 간 잘라내기, 복사 및 붙여넣기 제한"</value>
+  </data>
+  <data name="Office365PolicySettingAllowedOutboundDataTransferDestinations" xml:space="preserve">
+    <value>"다른 애플리케이션으로 조직 데이터 보내기"</value>
+  </data>
+  <data name="Office365PolicySettingContactSyncBlocked" xml:space="preserve">
+    <value>"정책 관리 애플리케이션 데이터를 기본 애플리케이션과 동기화"</value>
+  </data>
+  <data name="Office365PolicySettingDataBackupBlocked" xml:space="preserve">
+    <value>"백업 방지"</value>
+  </data>
+  <data name="Office365PolicySettingManagedBrowserToOpenLinksRequired" xml:space="preserve">
+    <value>"관리되는 브라우저에 표시할 웹 콘텐츠 제한"</value>
+  </data>
+  <data name="Office365PolicySettingMaximumPinRetries" xml:space="preserve">
+    <value>"최대 PIN 시도 횟수"</value>
+  </data>
+  <data name="Office365PolicySettingMinimumPinLength" xml:space="preserve">
+    <value>"최소 PIN 길이"</value>
+  </data>
+  <data name="Office365PolicySettingOrganizationalCredentialsRequired" xml:space="preserve">
+    <value>"액세스를 위한 회사 또는 학교 계정 자격 증명"</value>
+  </data>
+  <data name="Office365PolicySettingPinCharacterSet" xml:space="preserve">
+    <value>"PIN 유형"</value>
+  </data>
+  <data name="Office365PolicySettingPinRequired" xml:space="preserve">
+    <value>"액세스를 위한 PIN"</value>
+  </data>
+  <data name="Office365PolicySettingPrintBlocked" xml:space="preserve">
+    <value>"조직 데이터 인쇄"</value>
+  </data>
+  <data name="Office365PolicySettingSaveAsBlocked" xml:space="preserve">
+    <value>"조직 데이터 복사본 저장"</value>
+  </data>
+  <data name="Office365SyncPolicyNotification" xml:space="preserve">
+    <value>정책 설정이 Microsoft Intune 포털에서 업데이트되었으며 Workspace ONE UEM과 동기화되지 않습니다. 동기화 설정을 클릭하여 UEM에서 해당 정책을 업데이트합니다. {0}</value>
+  </data>
+  <data name="Office365UnsyncedDoublePolicyNotification" xml:space="preserve">
+    <value>{0} 및 {1} 정책이 Azure 포털의 Android 정책 및 iOS 정책과 다릅니다. Workspace ONE UEM에서 Android 및 iOS 정책을 동기화하려면 이러한 설정이 동일해야 합니다. IT 관리자에게 문의하여 문제를 해결하십시오.</value>
+  </data>
+  <data name="Office365UnsyncedMultiplePolicyNotification" xml:space="preserve">
+    <value>다음 정책 설정이 Azure 포털의 Android 정책 및 iOS 정책과 다릅니다. Workspace ONE UEM에서 Android 및 iOS 정책을 동기화하려면 이러한 설정이 동일해야 합니다. IT 관리자에게 문의하여 문제를 해결하십시오. {0}</value>
+  </data>
+  <data name="Office365UnsyncedSinglePolicyNotification" xml:space="preserve">
+    <value>{0} 정책은 Azure 포털의 Android 정책 및 iOS 정책과 다릅니다. Workspace ONE UEM에서 Android 및 iOS 정책을 동기화하려면 이 설정이 동일해야 합니다. IT 관리자에게 문의하여 문제를 해결하십시오.</value>
+  </data>
+  <data name="OfflineDomainJoinLabel" xml:space="preserve">
+    <value>오프라인 도메인 가입</value>
+  </data>
+  <data name="OgMissingCustomerCode" xml:space="preserve">
+    <value>Chrome EMM 설정을 구성하기 전에 조직에 고객 코드가 필요함</value>
+  </data>
+  <data name="OnlyIfAppDataCanNotBeCleared" xml:space="preserve">
+    <value>앱 데이터를 지울 수 없는 경우에만</value>
+  </data>
+  <data name="OPSDeviceRegistrationJob" xml:space="preserve">
+    <value>OEM 프로비저닝 서비스에서 장치 등록 정보를 가져오는 작업</value>
+  </data>
+  <data name="OrganizationGroupName" xml:space="preserve">
+    <value>조직 그룹 이름</value>
+  </data>
+  <data name="OrganizationGroupNotFound" xml:space="preserve">
+    <value>요청한 조직 그룹을 시스템에서 찾을 수 없음</value>
+  </data>
+  <data name="OrganizationGroupUuid" xml:space="preserve">
+    <value>조직 그룹 UUID</value>
+  </data>
+  <data name="OtherSuggestions" xml:space="preserve">
+    <value>다른 제안...</value>
+  </data>
+  <data name="OUIdentifier" xml:space="preserve">
+    <value>OU 식별자</value>
+  </data>
+  <data name="OutboundProxies" xml:space="preserve">
+    <value>아웃바운드 프록시</value>
+  </data>
+  <data name="OutboundProxy" xml:space="preserve">
+    <value>아웃바운드 프록시</value>
+  </data>
+  <data name="OutboundProxyDeleteSuccess" xml:space="preserve">
+    <value>아웃바운드 프록시가 삭제됨</value>
+  </data>
+  <data name="OutboundProxyDescription" xml:space="preserve">
+    <value>이 Tunnel 서버 구성을 사용하여 아웃바운드 프록시에 대한 세부 정보를 제공합니다.</value>
+  </data>
+  <data name="OutboundProxyRemoveToolTip" xml:space="preserve">
+    <value>이 프록시는 서버 트래픽 규칙에 사용되고 있습니다. 이 프록시 구성을 삭제하려면 연결을 제거하십시오.</value>
+  </data>
+  <data name="OutboundProxySaveSuccess" xml:space="preserve">
+    <value>아웃 바운드 프록시가 저장되었습니다.</value>
+  </data>
+  <data name="OverrideJobLogLevelRefused" xml:space="preserve">
+    <value>작업 로그 수준 재정의 거부됨</value>
+  </data>
+  <data name="P2PAdaptivaSetting" xml:space="preserve">
+    <value>Adaptiva</value>
+  </data>
+  <data name="P2PBranchCacheDescription" xml:space="preserve">
+    <value>Workspace ONE Peer Distribution은 내부 네트워크의 Windows 장치에 대한 피어 투 피어 앱 분포 기능을 제공하여 앱 다운로드 속도를 개선하고 여러 배포 지점이 더 이상 필요하지 않게 합니다.</value>
+  </data>
+  <data name="P2PBranchCacheEnabled" xml:space="preserve">
+    <value>Workspace ONE Peer Distribution</value>
+  </data>
+  <data name="P2PBranchCacheMovedToDeviceProfilesPage" xml:space="preserve">
+    <value>장치 프로필 페이지</value>
+  </data>
+  <data name="P2PBranchCacheProfileLandingNew" xml:space="preserve">
+    <value>Workspace ONE Peer Distribution 설정이 {0}(으)로 이동했습니다.</value>
+  </data>
+  <data name="P2PBranchCacheSetting" xml:space="preserve">
+    <value>Workspace ONE Peer Distribution</value>
+  </data>
+  <data name="PACUtility" xml:space="preserve">
+    <value>VMware Tunnel PAC 판독기</value>
+  </data>
+  <data name="PasscodeTimeoutTimeUnit" xml:space="preserve">
+    <value>패스코드 시간 초과 시간 단위</value>
+  </data>
+  <data name="PasswordDoNotMatch" xml:space="preserve">
+    <value>비밀번호가 일치하지 않습니다.</value>
+  </data>
+  <data name="PasswordExpirationMustBeGreaterThanPasswordNotification" xml:space="preserve">
+    <value>암호 만료 기간은 암호 알림 기간보다 커야 합니다.</value>
+  </data>
+  <data name="PatchManagement" xml:space="preserve">
+    <value>패치 관리</value>
+  </data>
+  <data name="PathDescription" xml:space="preserve">
+    <value>이 필드는 선택사항입니다. Curl과 같은 명령줄 도구에 대해서만 경로 특성을 지정하십시오. 경로는 macOS 10.15 이상만 지원합니다.</value>
+  </data>
+  <data name="People" xml:space="preserve">
+    <value>피플</value>
+  </data>
+  <data name="PeopleDescription" xml:space="preserve">
+    <value>직원이 조직 차트를 보고 동료를 쉽게 찾고 연락하도록 해줍니다.</value>
+  </data>
+  <data name="PerApp" xml:space="preserve">
+    <value>퍼 앱</value>
+  </data>
+  <data name="PerAppTunnelMode" xml:space="preserve">
+    <value>애플리케이션 당</value>
+  </data>
+  <data name="Peripherals" xml:space="preserve">
+    <value>주변장치</value>
+  </data>
+  <data name="PersonalAppPrivacyPolicy" xml:space="preserve">
+    <value>개인 앱 개인 정보 보호 정책</value>
+  </data>
+  <data name="PersonalAppPrivacyPolicyMessage" xml:space="preserve">
+    <value>하나 이상의 장치 유형에 대한 개인 앱 개인 정보 설정이 '수집하지 않음'으로 설정되어 있으며 계층의 하나 이상의 OG에서 생성된 앱 목록 기반 규정 준수 정책이 있습니다. 이러한 장치에 대한 최종 사용자 개인 정보를 보호하기 위해 전달된 개인 앱 정보를 이동하는 경우 앱 기반 규정 준수 정책이 연결되어 있어도 정보가 수집되지 않습니다. 최종 사용자 또는 개인 앱에서 사이드로드될 수 있는 애플리케이션을 기반으로 장치 규정 준수 상태를 표시하기 위한 정책이 없는지 확인하십시오. 계속하려면 확인을 클릭하고 잠재적인 {0} 정책을 검토하려면 취소하십시오.</value>
+  </data>
+  <data name="PipSettingsCanBeAccessedAtGlobalOnly" xml:space="preserve">
+    <value>제품 개선 프로그램은 글로벌 조직 그룹에서만 액세스할 수 있습니다.</value>
+  </data>
+  <data name="PlatformFeatures" xml:space="preserve">
+    <value>플랫폼 기능</value>
+  </data>
+  <data name="PlatformOSValues" xml:space="preserve">
+    <value>플랫폼 OS 값</value>
+  </data>
+  <data name="PlatformSetup" xml:space="preserve">
+    <value>플랫폼 설정</value>
+  </data>
+  <data name="PleaseEnterValueGreaterThanOrEqualToArg" xml:space="preserve">
+    <value>{0} 이상의 값을 입력하십시오.</value>
+  </data>
+  <data name="PleaseGenerateAccessToken" xml:space="preserve">
+    <value>액세스 토큰을 생성하십시오.</value>
+  </data>
+  <data name="PleaseSelectAnAppTunnelMode" xml:space="preserve">
+    <value>App Tunnel 모드를 선택하십시오.</value>
+  </data>
+  <data name="PolicyAllowCrashReporting_Description" xml:space="preserve">
+    <value>정책에서 충돌 보고 허용</value>
+  </data>
+  <data name="PolicyEngineBackoff_Description" xml:space="preserve">
+    <value>정책 엔진 백오프</value>
+  </data>
+  <data name="PolicyEngineMaxConcurrentProducts_Description" xml:space="preserve">
+    <value>정책 엔진 최대 동시 제품</value>
+  </data>
+  <data name="PolicyEngineMaxTryCount_Description" xml:space="preserve">
+    <value>정책 엔진 최대 시도 횟수</value>
+  </data>
+  <data name="PolicyEngineQueueAuditing_Description" xml:space="preserve">
+    <value>정책 엔진 대기열 감사</value>
+  </data>
+  <data name="PolicySyncInterval_Description" xml:space="preserve">
+    <value>정책 동기화 간격</value>
+  </data>
+  <data name="PowerShellAuthenticationWithModernAuthTypeTooltip" xml:space="preserve">
+    <value>기본: 원격 PowerShell 끝점의 연결은 기본 인증 유형을 사용하여 이루어집니다.
+협상: 원격 PowerShell 끝점의 연결은 Kerberos 또는 NTLM over HTTPS를 사용하여 이루어집니다. 서버는 Kerberos를 사용하여 로컬 컴퓨터 계정에 대한 도메인 계정 및 NTLM을 인증합니다. 사용자 이름은 도메인 사용자의 경우 도메인\사용자 이름 형식으로, 서버 컴퓨터의 로컬 사용자의 경우 서버 이름\사용자 이름 형식으로 지정해야 합니다.
+Kerberos: 제공된 자격 증명과 함께 HTTP를 통한 Kerberos 인증을 사용하여 연결이 설정됩니다. AirWatch 구성 요소 및 Exchange는 같은 도메인에 상주해야 합니다.
+최신: 해당 연결은 Microsoft Modern Authentication 및 oAuth 토큰을 사용하여 연결합니다.</value>
+  </data>
+  <data name="PrimaryUserAccountCreation" xml:space="preserve">
+    <value>기본 사용자 계정</value>
+  </data>
+  <data name="PrivacyEnabledPersonalAppMessage" xml:space="preserve">
+    <value>개인 애플리케이션의 개인 정보가 활성화되면, 시스템은 애플리케이션 관리 또는 규정 준수 모듈 내에 정의된 애플리케이션만 수집 및 표시합니다. 제품 프로비저닝 또는 iOS 단일 앱 모드를 사용하는 경우 컬렉션이 활성화되어 있는지 확인하십시오.</value>
+  </data>
+  <data name="PrivacyPolicyLink_Description" xml:space="preserve">
+    <value>개인 정보 보호 정책 링크</value>
+  </data>
+  <data name="PrivacyRemoteControlTooltip" xml:space="preserve">
+    <value>iOS 장치만 해당</value>
+  </data>
+  <data name="PrivacyWarning" xml:space="preserve">
+    <value>개인 정보 경고</value>
+  </data>
+  <data name="ProductCache_Description" xml:space="preserve">
+    <value>제품 캐시</value>
+  </data>
+  <data name="ProductDeploymentGranularity" xml:space="preserve">
+    <value>제품 배포 세분성</value>
+  </data>
+  <data name="ProductDeploymentGranularity_Description" xml:space="preserve">
+    <value>제품 배포 세분성</value>
+  </data>
+  <data name="ProductDeploymentGranularityHelp" xml:space="preserve">
+    <value>이 설정을 통해 관리자는 제품마다 항상 릴레이 서버를 통해 데이터를 전송할지 또는 Workspace ONE UEM 서버로 페일오버를 통해 기본적으로 전송할지 여부를 선택할 수 있습니다.</value>
+  </data>
+  <data name="ProductDownloadRetryCount" xml:space="preserve">
+    <value>제품 다운로드 재시도 횟수</value>
+  </data>
+  <data name="ProductDownloadRetryCountTooltip" xml:space="preserve">
+    <value>이 설정은 Hub가 릴레이 서버에서 제품을 다운로드하기 위해 재시도하는 횟수를 정의합니다.</value>
+  </data>
+  <data name="ProductProvisioningCommandReleaseBatchSize_Description" xml:space="preserve">
+    <value>제품 프로비저닝 명령 릴리스 배치 크기</value>
+  </data>
+  <data name="ProductProvisioningPrivacyInfo" xml:space="preserve">
+    <value>제품 프로비저닝을 사용하는 경우 컬렉션이 활성화되어 있는지 확인하십시오.</value>
+  </data>
+  <data name="ProductSetBatchSize_Description" xml:space="preserve">
+    <value>제품 세트 배치 크기</value>
+  </data>
+  <data name="ProfileInstallCommandTriggerForGSuitePasswordRotation" xml:space="preserve">
+    <value>비밀번호가 변경되었습니다. 장치에 대한 프로필 업데이트 대기열을 추가하는 중입니다.</value>
+  </data>
+  <data name="ProfileRefreshInterval" xml:space="preserve">
+    <value>프로파일 새로 고침 간격</value>
+  </data>
+  <data name="ProtectionAgentAutomaticUpdates" xml:space="preserve">
+    <value>Intelligent Hub 자동 업데이트</value>
+  </data>
+  <data name="ProvideValidImeiNumber" xml:space="preserve">
+    <value>유효한 IMEI 번호(15자리 숫자)를 제공하십시오.</value>
+  </data>
+  <data name="ProvisionEntitiesOnWindowsOobeEnrollment" xml:space="preserve">
+    <value>OOBE에 대한 상태 추적 페이지 사용</value>
+  </data>
+  <data name="ProvisionEntitiesOnWindowsOobeEnrollmentToolTip" xml:space="preserve">
+    <value>이 설정을 활성화하면 OOBE(Out of Box Enrollment) 중에 프로비저닝 상태 추적 페이지가 표시됩니다. 이 페이지에서는 장치의 프로비저닝 상태를 표시하며 사용자에게 설치된 애플리케이션, 리소스 및 정책을 알려 줍니다.</value>
+  </data>
+  <data name="ProvisioningPackageCapacity_Description" xml:space="preserve">
+    <value>프로비저닝 패키지 용량</value>
+  </data>
+  <data name="ProvisioningPackageMaxFileSize" xml:space="preserve">
+    <value>프로비저닝 패키지 최대 파일 크기</value>
+  </data>
+  <data name="ProvisioningPackageMaxFileSize_Description" xml:space="preserve">
+    <value>프로비저닝 패키지 최대 파일 크기</value>
+  </data>
+  <data name="ProvisioningPackageNotificationMTD" xml:space="preserve">
+    <value>프로비저닝 패키지가 생성되어 다운로드할 수 있음을 관리자에게 알리는 기본 HTML 메시지 템플릿입니다.</value>
+  </data>
+  <data name="ProvisioningPackageOverageAllowed" xml:space="preserve">
+    <value>프로비저닝 패키지 초과 허용됨</value>
+  </data>
+  <data name="ProvisioningPackageOverageAllowed_Description" xml:space="preserve">
+    <value>프로비저닝 패키지 초과 허용됨</value>
+  </data>
+  <data name="ProvisioningPortalHmac_Description" xml:space="preserve">
+    <value>프로비저닝 포털 HMAC</value>
+  </data>
+  <data name="ProvisioningProductDeleteNotesRestricted_Description" xml:space="preserve">
+    <value>프로비저닝 제품 메모 삭제가 제한됨</value>
+  </data>
+  <data name="ProvisioningProductDeleteRestricted_Description" xml:space="preserve">
+    <value>프로비저닝 제품 삭제가 제한됨</value>
+  </data>
+  <data name="ProvisioningProductNewDeleteNotesRestricted_Description" xml:space="preserve">
+    <value>프로비저닝 제품 신규 메모 삭제가 제한됨</value>
+  </data>
+  <data name="ProvisioningProductNewDeleteRestricted_Description" xml:space="preserve">
+    <value>프로비저닝 제품 신규 삭제가 제한됨</value>
+  </data>
+  <data name="ProvisioningProfileListSample_Description" xml:space="preserve">
+    <value>프로비저닝 프로필 목록 샘플</value>
+  </data>
+  <data name="ProxyActionErrorWindowsApps" xml:space="preserve">
+    <value>현재 Windows 애플리케이션용 프록시 작업은 지원되지 않습니다. 규칙을 수정하고 다시 저장하십시오.</value>
+  </data>
+  <data name="ProxyBeingUsedArgs" xml:space="preserve">
+    <value>{0} 프록시는 서버 트래픽 규칙에 사용되고 있습니다. 이 프록시 구성을 삭제하려면 연결을 제거하십시오.</value>
+  </data>
+  <data name="ProxyDoesntBelongToTunnelConfigArgs" xml:space="preserve">
+    <value>{0} 프록시가 터널 구성에 속하지 않습니다.</value>
+  </data>
+  <data name="ProxyFormatValidationError" xml:space="preserve">
+    <value>호스트 이름만 입력하십시오. 예: example.com</value>
+  </data>
+  <data name="ProxyLinuxInternalPortTooltip" xml:space="preserve">
+    <value>이것은 수신 요청을 수신하는 데 사용되는 SEG 서버 상자 포트입니다(기본값: 443).</value>
+  </data>
+  <data name="ProxyLinuxSegClusteringPortTooltip" xml:space="preserve">
+    <value>클러스터링 모드에서 실행할 경우 SEG에서 클러스터의 다른 SEG와 통신하기 위해 이 포트를 사용합니다. 분산 캐시와 동일한 포트를 사용하지 마십시오(기본값: 41232). UAG에서 배포하는 경우 이 값은 구성할 수 없습니다.</value>
+  </data>
+  <data name="ProxyLinuxSegDistributedCachePortTooltip" xml:space="preserve">
+    <value>클러스터링 모드에서 실행할 경우 SEG에서 분산 캐시와 통신하기 위해 이 포트를 사용합니다. 클러스터링과 동일한 포트를 사용하지 마십시오(기본값: 5701). UAG에서 배포하는 경우 이 값은 구성할 수 없습니다.</value>
+  </data>
+  <data name="ProxyLinuxSegUrlAndPortTooltip" xml:space="preserve">
+    <value>UEM Console의 수신 메일 트래픽 및 정책 업데이트에 대한 외부 주소입니다. 또한 이는 UAG에서 TLS 포트 공유를 사용하는 경우 FQDN 역할을 합니다.
+(예: https://seg.soandso.com:8443)</value>
+  </data>
+  <data name="ProxyLinuxServerIpsTooltip" xml:space="preserve">
+    <value>클러스터에 있는 각 SEG의 호스트 이름 또는 IP 주소를 지정합니다.</value>
+  </data>
+  <data name="ProxyLinuxUseSslForSegTooltip" xml:space="preserve">
+    <value>UAG에서 SEG를 배포하는 경우 이는 필수입니다.</value>
+  </data>
+  <data name="ProxyNotFoundArgs" xml:space="preserve">
+    <value>{0} 프록시가 없습니다.</value>
+  </data>
+  <data name="ProxyWithSameNameAndPortExists" xml:space="preserve">
+    <value>중복된 프록시가 있습니다.</value>
+  </data>
+  <data name="PublicKeyInfrastructure" xml:space="preserve">
+    <value>공용 키 인프라</value>
+  </data>
+  <data name="PublicSSL" xml:space="preserve">
+    <value>공용 SSL</value>
+  </data>
+  <data name="PublishAndroidAppCatalog" xml:space="preserve">
+    <value>레거시 카탈로그(Android)</value>
+  </data>
+  <data name="PublishAppCatalogInfo" xml:space="preserve">
+    <value>이 조직 그룹의 장치에 카탈로그를 게시합니다. 레거시 카탈로그 설정은 카탈로그를 웹클립/바로 가기 프로파일로 제공합니다. Intelligent Hub 카탈로그 설정은 Intelligent Hub 내에서 카탈로그를 제공합니다.</value>
+  </data>
+  <data name="PublishAppCatalogInfoMultiHubEnabledGreenField" xml:space="preserve">
+    <value>이 조직 그룹의 장치에 카탈로그를 게시합니다. 레거시 카탈로그 설정은 카탈로그를 웹클립/바로 가기 프로파일로 제공합니다.</value>
+  </data>
+  <data name="PublishAppCatalogInfoWithMigration" xml:space="preserve">
+    <value>이 조직 그룹의 장치에 카탈로그를 게시합니다. 레거시 카탈로그 설정은 카탈로그를 웹클립/바로 가기 프로필로 제공합니다. Intelligent Hub App Catalog 설정이 Workspace ONE Hub 서비스로 이동되었습니다. 이 읽기 전용 설정은 이전 버전의 Intelligent Hub에 적용됩니다. 자세한 내용을 보려면 Workspace ONE Hub 서비스로 이동하십시오.</value>
+  </data>
+  <data name="PublishAppleMacOsxAppCatalog" xml:space="preserve">
+    <value>레거시 카탈로그(macOS)</value>
+  </data>
+  <data name="PublishAwProtectionAgent" xml:space="preserve">
+    <value>Workspace ONE Intelligent Hub 게시</value>
+  </data>
+  <data name="PublishIosAppCatalog" xml:space="preserve">
+    <value>레거시 카탈로그(iOS)</value>
+  </data>
+  <data name="PublishWinRtAppCatalog" xml:space="preserve">
+    <value>레거시 카탈로그(Windows 데스크톱)</value>
+  </data>
+  <data name="PullRelayServerInactiveStateFactor" xml:space="preserve">
+    <value>끌어오기 릴레이 서버 비활성 상태 요소</value>
+  </data>
+  <data name="PullRelayServerInactiveStateFactor_Description" xml:space="preserve">
+    <value>끌어오기 릴레이 서버 비활성 상태 요소</value>
+  </data>
+  <data name="PullRelayServerInProgressCutOffTime" xml:space="preserve">
+    <value>진행 중인 끌어오기 릴레이 서버 중지 시간</value>
+  </data>
+  <data name="PullRelayServerInProgressCutOffTime_Description" xml:space="preserve">
+    <value>진행 중인 끌어오기 릴레이 서버 중지 시간</value>
+  </data>
+  <data name="PullServiceBasedRelayServerHelpLink" xml:space="preserve">
+    <value>끌어오기 서비스 기반 릴레이 서버 도움말 링크</value>
+  </data>
+  <data name="PullServiceBasedRelayServerHelpLink_Description" xml:space="preserve">
+    <value>끌어오기 서비스 기반 릴레이 서버 도움말 링크</value>
+  </data>
+  <data name="PurgeJob" xml:space="preserve">
+    <value>제거 작업</value>
+  </data>
+  <data name="PushLauncherToCdnJob" xml:space="preserve">
+    <value>시스템 애플리케이션 시드 및 CDN 작업으로 푸시</value>
+  </data>
+  <data name="Python3ExecutablePath" xml:space="preserve">
+    <value>Python 3 경로</value>
+  </data>
+  <data name="Python3ExecutablePathTooltip" xml:space="preserve">
+    <value>Python 3 스크립트 실행 경로를 재정의합니다. 바이너리는 공동으로 설계되어야 하고 755 사용 권한을 가지고 있어야 합니다. 그렇지 않으면 Intelligent Hub가 /usr/local/hub/python3의 기본 경로로 폴백됩니다. 심볼 링크 경로는 허용되며 공백을 이스케이프할 필요가 없습니다.</value>
+  </data>
+  <data name="QueueBatchSize_Description" xml:space="preserve">
+    <value>일괄 처리 크기 대기열</value>
+  </data>
+  <data name="QueueDevicesInPEOnSampleChange_Description" xml:space="preserve">
+    <value>샘플 변경 시 PE 장치 대기</value>
+  </data>
+  <data name="QuickStartGuide" xml:space="preserve">
+    <value>빠른 시작 가이드</value>
+  </data>
+  <data name="ReachedCloudConnectorRunningVersion" xml:space="preserve">
+    <value>{1}({2})에서 클라우드 커넥터 실행 버전 {0}에 도달함</value>
+    <comment>{0}=ACC version, eg "19.7.0.2"; {1}=machine name, eg "spock.startrek.tv" or just "spock"; {2}=IPv4 address, eg "10.84.230.42"</comment>
+  </data>
+  <data name="RecurrenceFrequencyGreaterThanEqualToArgHours" xml:space="preserve">
+    <value>되풀이 간격은 {0}시간보다 크거나 같아야 함</value>
+  </data>
+  <data name="ReferToTunnelGuide" xml:space="preserve">
+    <value>자세한 내용은 VMware Tunnel 가이드를 참조하십시오.</value>
+  </data>
+  <data name="RegenerateCertificate" xml:space="preserve">
+    <value>인증서 재생성</value>
+  </data>
+  <data name="RegenerateProxySslCertificateDescription" xml:space="preserve">
+    <value>이 인증서를 다시 생성하면 Tunnel 프록시 기능이 멈출 수 있으며 다시 사용되기 전에 각 Tunnel 서버에 설정과 구성 실행이 필요합니다.</value>
+  </data>
+  <data name="RegisterYatsClient" xml:space="preserve">
+    <value>새 클라이언트 등록</value>
+  </data>
+  <data name="RegistryEntryForFriendlyName" xml:space="preserve">
+    <value>식별 이름을 위한 레지스트리 항목(AirWatch 4.0 Agent 이상)</value>
+  </data>
+  <data name="ReinstallAppOnLogoutNeverDescription" xml:space="preserve">
+    <value>경고: VMware에서는 이 기능을 활성화하지 않는 것이 좋습니다. 활성화하는 경우 한 사용자가 공유 장치 사용을 중지하고 다른 사용자가 동일한 장치를 사용하기 시작하면 소프트웨어는 해당 애플리케이션을 더 이상 삭제하고 다시 설치할 필요가 없어집니다.
+
+즉, 다음 사용자는 개인 정보나 중요한 데이터를 포함하여 원본 사용자의 앱 데이터에 액세스할 수 있습니다. 최종 사용자가 동일한 장치를 사용하여 앱 데이터를 안전하게 보호하는 것은 전적으로 사용자의 책임입니다.
+
+VMware는 귀하가 직접, 간접, 부수적, 특별, 징벌적, 결과적 피해 또는 이익 손실을 포함한 본 기능의 활성화와 관련된 어떠한 손해에 대해서도 책임을 지지 않으며, 이는 이러한 종류의 피해의 가능성이 사전에 고지된 경우에도 마찬가지입니다.</value>
+  </data>
+  <data name="ReinstallAppsOnLogOut" xml:space="preserve">
+    <value>Android 앱 다시 설치</value>
+  </data>
+  <data name="ReinstallAppsOnLogoutTooltip" xml:space="preserve">
+    <value>애플리케이션이 장치에 로그인하고 로그 아웃하는 스테이징 사용자 및 최종 사용자에게 할당되어 있는 경우, 다음의 기본 애플리케이션 관리 동작 중 하나를 선택합니다. 사용자 간에 애플리케이션을 항상 다시 설치하거나, 사용자 간 애플리케이션을 재설치하지 않거나, Hub에서 사용자 세션 간에 애플리케이션 데이터를 지울 수 없는 경우에만 애플리케이션을 다시 설치.</value>
+  </data>
+  <data name="RelayServerContentTransfer_Description" xml:space="preserve">
+    <value>릴레이 서버 컨텐츠 전송</value>
+  </data>
+  <data name="RemoteAddress" xml:space="preserve">
+    <value>원격 주소</value>
+    <comment>Remote Network/Proxy Address</comment>
+  </data>
+  <data name="RemoteFindSample" xml:space="preserve">
+    <value>위치 정보 샘플</value>
+  </data>
+  <data name="RemoteFindSampleInfo" xml:space="preserve">
+    <value>장치 위치 데이터 수집 예약</value>
+  </data>
+  <data name="RemoteFindSampleInMinutes" xml:space="preserve">
+    <value>위치 정보 샘플</value>
+  </data>
+  <data name="RemoteFindSampleIntervalErrorMessage" xml:space="preserve">
+    <value>샘플은 2시간과 30일 사이여야 합니다(경계값 포함).</value>
+  </data>
+  <data name="RemoteFindSampleTimeMode" xml:space="preserve">
+    <value>원격 찾기 샘플 시간 모드</value>
+  </data>
+  <data name="RemoteManagementConfirmed" xml:space="preserve">
+    <value>원격 관리 확인</value>
+  </data>
+  <data name="RemoteManagementFailed" xml:space="preserve">
+    <value>원격 관리 실패</value>
+  </data>
+  <data name="RemoteManagementRefused" xml:space="preserve">
+    <value>원격 관리 거부</value>
+  </data>
+  <data name="RemoteManagementRequested" xml:space="preserve">
+    <value>원격 관리 요청</value>
+  </data>
+  <data name="RemoveCompliancePolicyConfirmed" xml:space="preserve">
+    <value>규정 준수 정책 제거 확인</value>
+  </data>
+  <data name="RemoveCompliancePolicyFailed" xml:space="preserve">
+    <value>규정 준수 정책 제거 실패</value>
+  </data>
+  <data name="RemoveCompliancePolicyRejected" xml:space="preserve">
+    <value>규정 준수 정책 제거 거부</value>
+  </data>
+  <data name="RemoveCompliancePolicyRequested" xml:space="preserve">
+    <value>규정 준수 정책 제거 요청</value>
+  </data>
+  <data name="ReplaceCertificate" xml:space="preserve">
+    <value>인증서 교체</value>
+  </data>
+  <data name="ReplacingAirwatchAgentApp" xml:space="preserve">
+    <value>AirWatch Agent 애플리케이션 교체</value>
+  </data>
+  <data name="RequireAgentEnrollmentForMacOsX" xml:space="preserve">
+    <value>macOS용 Intelligent Hub Enrollment 필요</value>
+  </data>
+  <data name="RequiredFieldErrorMsg" xml:space="preserve">
+    <value>필수 * (?)</value>
+  </data>
+  <data name="RequireMDMEnrollment" xml:space="preserve">
+    <value>Content, Boxer 및 Web을 통한 등록 차단</value>
+  </data>
+  <data name="RestApiKey" xml:space="preserve">
+    <value>REST API 키</value>
+  </data>
+  <data name="RestApiUsageNotAvailable" xml:space="preserve">
+    <value>REST API 사용량을 사용할 수 없습니다.</value>
+  </data>
+  <data name="RestApiUsageTabInfo" xml:space="preserve">
+    <value>API 서버 임계치 조절 제한, 일 단위 할당량, 현재 사용량은 아래 목록에서 찾을 수 있습니다. 이 설정을 변경하려면 시스템 관리자에게 문의하십시오.</value>
+  </data>
+  <data name="ReSyncDeviceData" xml:space="preserve">
+    <value>UEM에서 Azure 서비스로 장치 데이터 다시 동기화</value>
+  </data>
+  <data name="ReSyncDeviceDataToolTip" xml:space="preserve">
+    <value>UEM에서 Azure 서비스로 장치 데이터를 다시 동기화합니다.</value>
+  </data>
+  <data name="RetainAgentExecutablesAfterEnterpriseWipe" xml:space="preserve">
+    <value>엔터프라이즈 초기화 후 Agent 실행 파일 유지</value>
+  </data>
+  <data name="RevokeAccessTokenAlert" xml:space="preserve">
+    <value>이 토큰이 제거된 경우 ID 제공자는 Workspace ONE UEM와 통신할 수 없습니다.</value>
+  </data>
+  <data name="RfsStandBy" xml:space="preserve">
+    <value>RFS StandBy</value>
+  </data>
+  <data name="RuggedDevices" xml:space="preserve">
+    <value>Rugged 장치</value>
+  </data>
+  <data name="Rules" xml:space="preserve">
+    <value>규칙</value>
+  </data>
+  <data name="SafetyNetAppVerification" xml:space="preserve">
+    <value>SafetyNet 애플리케이션 검증</value>
+  </data>
+  <data name="SafetyNetAppVerificationTooltip" xml:space="preserve">
+    <value>애플리케이션 검증은 장치에 유해한 애플리케이션이 설치된 경우 사용자에게 경고합니다.</value>
+  </data>
+  <data name="SaltValue" xml:space="preserve">
+    <value>솔트 값</value>
+  </data>
+  <data name="SameHostNameFrontEndBackEndNotAllowed" xml:space="preserve">
+    <value>단계식 모드에서는 프런트엔드/백엔드 서버에 대해 동일한 HostName이 허용되지 않습니다.</value>
+  </data>
+  <data name="SamlAuthSetupInformation" xml:space="preserve">
+    <value>SAML 인증 설정 정보</value>
+  </data>
+  <data name="SamlAuthWarning" xml:space="preserve">
+    <value>디렉토리 사용자를 위한 SAML 인증을 사용하도록 설정하면 다른 인증 모드가 우회됩니다. ID 제공자가 SAML 응답의 일부로 '{0}' 속성을 반환하는지 확인하십시오.</value>
+  </data>
+  <data name="SamlNotConfigured" xml:space="preserve">
+    <value>SAML 구성 안 됨</value>
+  </data>
+  <data name="SampleGreaterThanOneDayErrorMessage" xml:space="preserve">
+    <value>샘플은 1일과 30일 사이여야 합니다(경계값 포함).</value>
+  </data>
+  <data name="SampleIntervalBetweenTwoHoursAndThirtyDaysErrorMessage" xml:space="preserve">
+    <value>샘플은 2시간과 30일 사이여야 합니다(경계값 포함).</value>
+  </data>
+  <data name="SampleIntervalErrorMessage" xml:space="preserve">
+    <value>샘플은 6시간과 30일 사이여야 합니다(경계값 포함).</value>
+  </data>
+  <data name="SamsungEfota" xml:space="preserve">
+    <value>Samsung E-FOTA</value>
+  </data>
+  <data name="SamsungEfotaRegistrationInfo" xml:space="preserve">
+    <value>Samsung Enterprise FOTA(Firmware Over the Air)를 사용하면 Android 7.0 Nougat 이상을 실행하는 Samsung 장치에서 펌웨어 업데이트를 관리하고 제한할 수 있습니다. 아래의 라이센스 리셀러가 제공한 Samung E-FOTA 설정을 입력하십시오. 이러한 설정을 저장한 후에는 Android 제한 프로필을 만들고 "Samung E-FOTA 등록"을 확인하여 할당된 장치를 등록하고 현재 펌웨어 버전으로 잠그십시오. 새 펌웨어 버전을 장치에 게시하려면 [장치] &gt; [수명 주기] &gt; [업데이트]로 이동한 후 [Android] 탭을 선택하십시오.</value>
+  </data>
+  <data name="SanType" xml:space="preserve">
+    <value>SAN 유형</value>
+  </data>
+  <data name="SaveCertificateAuthority" xml:space="preserve">
+    <value>인증 기관 저장</value>
+  </data>
+  <data name="SavedSuccessfullyPleaseRefreshToLoadChanges" xml:space="preserve">
+    <value>저장되었습니다. 변경 사항을 로드하려면 새로 고침하십시오.</value>
+  </data>
+  <data name="SavingNewSSLPublicKeysToPin" xml:space="preserve">
+    <value>고정할 새 SSL 공용 키 저장 중</value>
+  </data>
+  <data name="ScheduleOSUpdateRetryJob" xml:space="preserve">
+    <value>OS 업데이트 재시도 작업 스케줄링</value>
+  </data>
+  <data name="SCIM" xml:space="preserve">
+    <value>SCIM</value>
+  </data>
+  <data name="ScimAuthTokenSuccessfulGeneration" xml:space="preserve">
+    <value>암호 토큰이 생성되었습니다. 이제 이 토큰을 복사하여 ID 제공자 포털에 붙여 넣습니다.</value>
+  </data>
+  <data name="ScimConfigureInfoText" xml:space="preserve">
+    <value>SCIM(도메인 간 ID 관리 시스템) 디렉토리는 애플리케이션에서 공유된 ID 정보에 대한 저장소로 사용할 수 있는 범용 RESTful 서버입니다. 현재 Workspace ONE은 Azure Active Directory에 대한 SCIM 구성을 지원합니다.</value>
+  </data>
+  <data name="ScimProvisioning" xml:space="preserve">
+    <value>SCIM 프로비저닝</value>
+  </data>
+  <data name="ScimProvisioningAccessTokenNeedsToBeRevoked" xml:space="preserve">
+    <value>다른 디렉토리 서비스 구성으로 전환하기 전에 이 조직 그룹에 대한 SCIM 프로비저닝 액세스 토큰을 해지하십시오.</value>
+  </data>
+  <data name="ScimProvisioningAccessTokenNotFound" xml:space="preserve">
+    <value>이 디렉토리 구성에 대한 액세스 토큰을 찾을 수 없습니다.</value>
+  </data>
+  <data name="ScimProvisioningAuthTokenAlreadyExists" xml:space="preserve">
+    <value>이 디렉토리 서비스 구성에 대한 액세스 토큰이 이미 있습니다. 기존 토큰을 해지하고 필요한 경우 새 토큰을 다시 생성하십시오.</value>
+  </data>
+  <data name="ScimProvisioningAuthTokenGenerationFailed" xml:space="preserve">
+    <value>액세스 토큰을 생성하지 못했습니다.</value>
+  </data>
+  <data name="ScimProvisioningAuthTokenRevocationFailed" xml:space="preserve">
+    <value>액세스 토큰을 해지하지 못했습니다.</value>
+  </data>
+  <data name="ScimProvisioningAuthTokenRevokedSuccessfully" xml:space="preserve">
+    <value>액세스 토큰이 해지되었습니다.</value>
+  </data>
+  <data name="ScimProvisioningConfigurationAuthToken" xml:space="preserve">
+    <value>SCIM 구성을 완료하고 저장하여 비밀번호 토큰을 생성한 다음 이를 ID 제공자 포털에 붙여 넣습니다.</value>
+  </data>
+  <data name="ScimProvisioningTypeRequiredForAccessToken" xml:space="preserve">
+    <value>액세스 토큰은 SCIM 프로비저닝 디렉토리 구성에 대해서만 구성됩니다. 동일한 작업을 다시 수행하기 전에 SCIM 구성을 구성하고 저장하십시오.</value>
+  </data>
+  <data name="ScriptsAndSensors" xml:space="preserve">
+    <value>스크립트 및 센서</value>
+  </data>
+  <data name="SdkSettingsAndPolicies" xml:space="preserve">
+    <value>SDK 설정 및 정책</value>
+  </data>
+  <data name="SearchAnApp" xml:space="preserve">
+    <value>애플리케이션 검색</value>
+  </data>
+  <data name="SecretToken" xml:space="preserve">
+    <value>암호 토큰</value>
+  </data>
+  <data name="SecureBootConfigPolicyAllowlist_Description" xml:space="preserve">
+    <value>보안 부팅 구성 정책 허용 목록</value>
+  </data>
+  <data name="SecureBootConfigPolicyHashCheck_Description" xml:space="preserve">
+    <value>보안 부팅 구성 정책 해시 확인</value>
+  </data>
+  <data name="SecureChannelServerCertificateNotTrusted" xml:space="preserve">
+    <value>신뢰할 수 없는 보안 채널 서버 인증서</value>
+  </data>
+  <data name="SecurityGroupCompliantDevices" xml:space="preserve">
+    <value>보안 그룹 - 규정 준수 장치</value>
+  </data>
+  <data name="SecurityGroupDoesNotExist" xml:space="preserve">
+    <value>보안 그룹이 존재하지 않습니다.</value>
+  </data>
+  <data name="SecurityGroupNonCompliantDevices" xml:space="preserve">
+    <value>보안 그룹 - 규정 위반 장치</value>
+  </data>
+  <data name="SecurityIdentifierEnabled" xml:space="preserve">
+    <value>인증서에 보안 식별자(SID) 포함</value>
+  </data>
+  <data name="SecurityIdentifierEnabledInfo" xml:space="preserve">
+    <value>이 플래그를 활성화하면 자동적으로 추가 보안을 위해 인증서 주체 이름의 LDAP에서 SID 특성을 포함합니다.</value>
+  </data>
+  <data name="SecurityInformationSampleInfo" xml:space="preserve">
+    <value>장치의 암호 상태, 방화벽 상태 및 바이러스 백신 상태가 포함된 보안 정보 샘플을 수집하는 일정입니다.</value>
+  </data>
+  <data name="SecurityInformationSampleInMinutes" xml:space="preserve">
+    <value>보안 정보 샘플</value>
+  </data>
+  <data name="SecurityInformationSampleTimeMode" xml:space="preserve">
+    <value>보안 정보 샘플 시간 모드</value>
+  </data>
+  <data name="SecurityPatchDateNotSet" xml:space="preserve">
+    <value>보안 패치 날짜가 채워지지 않았습니다.</value>
+  </data>
+  <data name="SecurityPatchDateToolTip" xml:space="preserve">
+    <value>보안 패치 날짜가 UTC 날짜 형식으로 저장됩니다.</value>
+  </data>
+  <data name="SecuritySSLPinningDescription" xml:space="preserve">
+    <value>호스트와 장치 간에 추가적인 신뢰층을 제공하는 향상된 보안 기능을 통해 중간자(MITM) 공격을 방지할 수 있습니다.</value>
+  </data>
+  <data name="SeedSystemAppsJob" xml:space="preserve">
+    <value>시스템 애플리케이션 시드 작업</value>
+  </data>
+  <data name="SegIgnoreSslErrorsWithAwToolTip" xml:space="preserve">
+    <value>SEG 및 AirWatch 인프라 사이의 통신에 관련된 모든 SSL 오류 무시</value>
+  </data>
+  <data name="SelectOption" xml:space="preserve">
+    <value>옵션 선택</value>
+  </data>
+  <data name="SelectSecurityGroup" xml:space="preserve">
+    <value>보안 그룹 선택</value>
+  </data>
+  <data name="SelectToEnableAdaptivaPublicCertificate" xml:space="preserve">
+    <value>Adaptiva 공용 인증서를 사용하려면 활성화 선택</value>
+  </data>
+  <data name="ServerActionSource" xml:space="preserve">
+    <value>서버 작업 소스</value>
+  </data>
+  <data name="ServerAuthentication" xml:space="preserve">
+    <value>서버 인증</value>
+  </data>
+  <data name="ServerThrottlingToolTip" xml:space="preserve">
+    <value>1분 간격 동안 OG에 적용되는 한도입니다. 0으로 설정하면 서비스 임계치 조절이 꺼집니다.</value>
+  </data>
+  <data name="ServerTrafficRuleDescription" xml:space="preserve">
+    <value>터널 서버에서 애플리케이션 트래픽 플로에 적용될 네트워크 구성에 따라 규칙을 추가합니다.</value>
+  </data>
+  <data name="ServerTrafficRules" xml:space="preserve">
+    <value>서버 트래픽 규칙</value>
+  </data>
+  <data name="ServiceLogs" xml:space="preserve">
+    <value>서비스 로그</value>
+  </data>
+  <data name="ServiceStatus" xml:space="preserve">
+    <value>서비스 상태</value>
+  </data>
+  <data name="SettingsAdaptivaSettingDescription" xml:space="preserve">
+    <value>Peer Distribution으로 네트워크 트래픽을 줄이고 지점 구조를 사용하여 배포용 Win32 애플리케이션을 설치하는 데 걸리는 시간을 단축할 수 있습니다. 고급 배포 환경에는 추가적인 인프라와 라이센스가 필요할 수 있습니다.</value>
+  </data>
+  <data name="Settingschromebookagentsettings" xml:space="preserve">
+    <value>ChromeBook 에이전트 설정</value>
+  </data>
+  <data name="SettingsComparisonNote" xml:space="preserve">
+    <value>조직 그룹 설정을 나란히 비교하려면 아래에서 조직 그룹을 선택하거나 다른 환경에서 XML 파일을 업로드하십시오. XML 파일은 [설정 요약] 페이지에서 내보낼 수 있습니다.</value>
+  </data>
+  <data name="SettingsConfigurations" xml:space="preserve">
+    <value>설정 구성</value>
+  </data>
+  <data name="SettingsConfigurationsHelp" xml:space="preserve">
+    <value>그룹 및 설정 주 메뉴에서 구성 하위 메뉴에 대한 액세스를 제어합니다.</value>
+  </data>
+  <data name="SettingsOnlyValidAtCustomer" xml:space="preserve">
+    <value>이 설정은 ‘고객’ 유형의 조직 그룹에서만 활성화될 수 있습니다.</value>
+  </data>
+  <data name="SettingsSummaryNote" xml:space="preserve">
+    <value>아래는 환경에 있는 모든 설정 목록입니다. 조직 그룹을 나란히 비교하려면 XML 파일을 내보내고 [설정 비교] 페이지로 이동하여 계속 진행하십시오.</value>
+  </data>
+  <data name="SetUpRequired" xml:space="preserve">
+    <value>페이지를 새로 고치고 연결을 다시 테스트합니다. 테스트 연결이 계속 실패하면 EMM 등록을 다시 시도하십시오.</value>
+  </data>
+  <data name="SharedDeviceAutoLogout" xml:space="preserve">
+    <value>자동 로그아웃</value>
+  </data>
+  <data name="SharedDeviceAutoLogoutAfter" xml:space="preserve">
+    <value>자동 로그아웃</value>
+  </data>
+  <data name="SharedDeviceCICO" xml:space="preserve">
+    <value>공유 장치/CICO</value>
+    <comment>Shared Device Check In Check Out</comment>
+  </data>
+  <data name="SharedDeviceClearAndroidDevicePasscode" xml:space="preserve">
+    <value>Android 장치 암호 지우기</value>
+  </data>
+  <data name="SharedDeviceCleariOSDevicePasscode" xml:space="preserve">
+    <value>iOS 장치 암호 지우기</value>
+  </data>
+  <data name="SharedDeviceLogoutSettings" xml:space="preserve">
+    <value>로그아웃 설정</value>
+  </data>
+  <data name="SharedDevicePasswordsCannotBeNull" xml:space="preserve">
+    <value>공유 장치 암호는 null일 수 없습니다.</value>
+  </data>
+  <data name="ShareDevicesTooltip" xml:space="preserve">
+    <value>사용하도록 설정하면 iPad는 사용자가 관리된 Apple ID를 사용하여 로그인하는 공유 모드로 등록합니다. Apple Business Manager를 사용하는 공유 장치에는 iOS 13.4 이상이 필요합니다.</value>
+  </data>
+  <data name="ShipToAccountNumber" xml:space="preserve">
+    <value>Ship-To 계정 번호</value>
+  </data>
+  <data name="ShipToAccountNumberIsRequired" xml:space="preserve">
+    <value>Ship-To 계정 번호가 필요함</value>
+  </data>
+  <data name="ShowUserPrivacyPromptForLogCollection" xml:space="preserve">
+    <value>로그 수집에 대한 사용자 개인 정보 프롬프트 표시</value>
+  </data>
+  <data name="ShowUserPrivacyPromptForLogCollectionTooltip" xml:space="preserve">
+    <value>활성화되면 Hub 로그 수집 및 전송 작업을 시작하는 경우 사용자에게 개인 정보 프롬프트가 표시됩니다. 개인 정보 프롬프트에는 로그에 수집된 데이터 정보가 포함되며, 로그를 전송하기 전에 사용자 동의가 필요합니다.</value>
+  </data>
+  <data name="SigningServiceCertificateAutoRotationJob" xml:space="preserve">
+    <value>서명 서비스 인증서 자동 순환 작업</value>
+  </data>
+  <data name="SignProfiles" xml:space="preserve">
+    <value>SignProfiles</value>
+  </data>
+  <data name="SiteUrlsPage" xml:space="preserve">
+    <value>사이트 URL 페이지</value>
+  </data>
+  <data name="SkeletonProfileGenerationJob" xml:space="preserve">
+    <value>최소 프로필 생성 작업</value>
+    <comment>Label for scheduler setting entry in All Settings &gt; Admin &gt; Scheduler.</comment>
+  </data>
+  <data name="SkipBiometric" xml:space="preserve">
+    <value>Biometric ID</value>
+  </data>
+  <data name="SkipBiometricTooltip" xml:space="preserve">
+    <value>건너뛰면 사용자는 설치 프로그램을 실행하는 중 Biometric ID를 구성하라는 프롬프트를 받지 않게 됩니다.</value>
+  </data>
+  <data name="SkipPrimaryAccountCreation" xml:space="preserve">
+    <value>기본 계정 설정</value>
+  </data>
+  <data name="SmartGroupManagementMode" xml:space="preserve">
+    <value>Intelligent Hub를 통해 등록된 장치는 기본적으로 MDM에서 관리됩니다. 아래에서 적절한 스마트 그룹을 활성화 및 선택하여 장치가 MDM 관리 없이 등록되게 하십시오. 등록은 스마트 그룹을 사용할 때 OS 버전, 소유권 유형, 사용자 그룹을 기준으로 활성화할 수 있습니다. 관리 없이 등록된 iOS 장치에 대한 장치 관리 수준을 제어하려면 Adaptive Management 앱을 사용하십시오.</value>
+  </data>
+  <data name="SOCKS" xml:space="preserve">
+    <value>소켓</value>
+  </data>
+  <data name="SoftwareManagement" xml:space="preserve">
+    <value>소프트웨어 관리</value>
+  </data>
+  <data name="SoundFileName" xml:space="preserve">
+    <value>사운드 파일 이름</value>
+  </data>
+  <data name="SSL" xml:space="preserve">
+    <value>SSL</value>
+  </data>
+  <data name="SslProvider" xml:space="preserve">
+    <value>SSL</value>
+  </data>
+  <data name="StartExploringDropshipProvisioning" xml:space="preserve">
+    <value>Drop Ship Provisioning 탐색 시작</value>
+  </data>
+  <data name="STRCardDescription" xml:space="preserve">
+    <value>아웃바운드 프록시를 포함하여 네트워크에 구성된 타사 웹 프록시를 사용하려면 서버 트래픽 규칙을 구성합니다.</value>
+  </data>
+  <data name="STRDoesntBelongToTunnelConfig" xml:space="preserve">
+    <value>서버 트래픽 규칙 uuid가 터널 구성에 속하지 않습니다.</value>
+  </data>
+  <data name="STRSuccessMsg" xml:space="preserve">
+    <value>성공, 서버 트래픽 규칙이 적용됨</value>
+  </data>
+  <data name="Subscriptions" xml:space="preserve">
+    <value>구독</value>
+  </data>
+  <data name="SupportedDeviceTypesForDeviceLogRequest" xml:space="preserve">
+    <value>Android 및 macOS 장치만 해당</value>
+  </data>
+  <data name="SuspendProductProvisioning" xml:space="preserve">
+    <value>제품 프로비저닝 일시 중단</value>
+  </data>
+  <data name="SuspendProductProvisioning_Description" xml:space="preserve">
+    <value>제품 프로비저닝 일시 중단</value>
+  </data>
+  <data name="SuspiciousActivityLogs" xml:space="preserve">
+    <value>Suspicious Activity Log</value>
+  </data>
+  <data name="SuspiciousActivityLogsMessage" xml:space="preserve">
+    <value>Suspicious Activity Log 설정이 활성화되어 있으면, 블루투스 헤드셋 및 USB 충전을 제외하고 발생하는 모든 블루투스 및 USB 연결이 로깅됩니다. Suspicious Activity Log에 액세스하려면 Syslog 설정이 올바르게 구성되어 있어야 합니다 {0}.</value>
+  </data>
+  <data name="SyncActionNumber" xml:space="preserve">
+    <value>동기화 작업 번호</value>
+  </data>
+  <data name="SyncAzureServices" xml:space="preserve">
+    <value>Azure 서비스 동기화</value>
+  </data>
+  <data name="SyncAzureServicesToolTip" xml:space="preserve">
+    <value>마지막으로 성공한 동기화 이후 Azure 장치 파트너 규정 준수 상태를 업데이트하려면 Azure 서비스에서 UEM으로 동기화합니다.</value>
+  </data>
+  <data name="SyncDeviceUpdatesJob" xml:space="preserve">
+    <value>장치 동기화 업데이트</value>
+  </data>
+  <data name="SyncFailedReferConsoleEvents" xml:space="preserve">
+    <value>디렉터리와의 사용자 속성 동기화에 실패했습니다. 콘솔 이벤트를 참조하십시오.</value>
+  </data>
+  <data name="SyncMetadataServiceJob" xml:space="preserve">
+    <value>메타데이터 동기화</value>
+  </data>
+  <data name="SyncWithNsx" xml:space="preserve">
+    <value>NSX와 동기화</value>
+  </data>
+  <data name="SyslogDescription" xml:space="preserve">
+    <value>SIEM(보안 정보 및 이벤트 관리) 기술은 네트워크 하드웨어 및 소프트웨어 구성 요소에서 생성된 보안 알림에 대한 정보를 수집하고, 작업을 모니터링하고, 로그 감사를 수행하고, 사건에 대응하는 데 도움이 되는 보고서를 생성합니다. Workspace ONE은 Syslog를 사용하여 이벤트 로그를 전송함으로써 SIEM 툴과 통합합니다.</value>
+  </data>
+  <data name="SyslogHostName" xml:space="preserve">
+    <value>Syslog 호스트 이름</value>
+  </data>
+  <data name="SystemEULADescription" xml:space="preserve">
+    <value>조직 그룹별로 고유한 이용 약관을 생성, 사용자 지정 및 할당하십시오. Console 사용, 장치 등록 및 SDK 통합 애플리케이션 사용에 대한 이용 약관을 정의하고 적용함으로써 직원들이 각 정책에 동의하는지 확인하십시오.</value>
+  </data>
+  <data name="SystemProxySetting" xml:space="preserve">
+    <value>시스템 프록시 설정</value>
+  </data>
+  <data name="SystemProxySettings" xml:space="preserve">
+    <value>시스템 프록시 설정</value>
+  </data>
+  <data name="TemplateOg" xml:space="preserve">
+    <value>템플릿 OG</value>
+  </data>
+  <data name="TestApnsHttp2Connection" xml:space="preserve">
+    <value>HTTP/2를 통한 연결 테스트</value>
+  </data>
+  <data name="TestApnsHttp2ConnectionDescription" xml:space="preserve">
+    <value>Workspace ONE UEM과 Apple HTTP/2 API 엔드포인트 간의 연결을 테스트합니다. 기본적으로 APN 메시지는 HTTP/2 엔드포인트가 아닌 Apple 레거시 이진 인터페이스를 통해 전송됩니다. 이 테스트를 통해 연결이 성공했는지 확인할 수 있습니다. 향후에 Workspace ONE UEM에서 Apple HTTP/2 기반 API를 통해 APN 메시지를 전송하도록 기본 설정을 업데이트합니다.</value>
+  </data>
+  <data name="ThreadDynamicDecay" xml:space="preserve">
+    <value>스레드 동적 감소</value>
+  </data>
+  <data name="ThreadDynamicDecay_Description" xml:space="preserve">
+    <value>스레드 동적 감소</value>
+  </data>
+  <data name="ThreadMax" xml:space="preserve">
+    <value>스레드 최대값</value>
+  </data>
+  <data name="ThreadMax_Description" xml:space="preserve">
+    <value>스레드 최대값</value>
+  </data>
+  <data name="ThreadMin" xml:space="preserve">
+    <value>스레드 최소값</value>
+  </data>
+  <data name="ThreadMin_Description" xml:space="preserve">
+    <value>스레드 최소값</value>
+  </data>
+  <data name="TimerInterval_Description" xml:space="preserve">
+    <value>타이머 간격</value>
+  </data>
+  <data name="TimerOn" xml:space="preserve">
+    <value>타이머 켜기</value>
+  </data>
+  <data name="TimerOn_Description" xml:space="preserve">
+    <value>타이머 켜기</value>
+  </data>
+  <data name="TimeSchedules" xml:space="preserve">
+    <value>일정</value>
+  </data>
+  <data name="TokenParameter" xml:space="preserve">
+    <value>토큰 매개 변수</value>
+  </data>
+  <data name="TotalAssignments" xml:space="preserve">
+    <value>총 할당</value>
+  </data>
+  <data name="TotalRules" xml:space="preserve">
+    <value>총 규칙</value>
+  </data>
+  <data name="TrafficRulesDescription" xml:space="preserve">
+    <value>VMware Tunnel을 사용해 네트워크 트래픽을 터널링, 차단 또는 바이패스하기 위한 규칙 추가</value>
+  </data>
+  <data name="TunnelAddCertificate" xml:space="preserve">
+    <value>인증서 추가</value>
+  </data>
+  <data name="TunnelApplicationMappingNotExist" xml:space="preserve">
+    <value>터널 애플리케이션 매핑이 존재하지 않습니다.</value>
+  </data>
+  <data name="TunnelApplicationNotExist" xml:space="preserve">
+    <value>터널 애플리케이션 API에서 애플리케이션을 반환하지 않았습니다.</value>
+  </data>
+  <data name="TunnelCertLoadFailedWithGivenPassword" xml:space="preserve">
+    <value>인증서 로드에 실패했습니다. 인증서 암호를 확인하십시오.</value>
+  </data>
+  <data name="TunnelClientCertProviderTooltip" xml:space="preserve">
+    <value>기본적으로 모든 구성 요소는 AirWatch에서 발급한 인증서를 사용합니다. 클라이언트 서버 인증을 위해 엔터프라이즈 CA를 사용하려면 ‘타사’ 옵션을 선택하십시오.</value>
+  </data>
+  <data name="TunnelConfigAdd" xml:space="preserve">
+    <value>추가</value>
+  </data>
+  <data name="TunnelConfigDelete" xml:space="preserve">
+    <value>삭제</value>
+  </data>
+  <data name="TunnelConfigDisable" xml:space="preserve">
+    <value>비활성화</value>
+  </data>
+  <data name="TunnelConfigEdit" xml:space="preserve">
+    <value>편집</value>
+  </data>
+  <data name="TunnelConfigEnable" xml:space="preserve">
+    <value>활성화</value>
+  </data>
+  <data name="TunnelConfigMissing" xml:space="preserve">
+    <value>터널이 구성되지 않았습니다. 설정하려면 여기를 클릭하십시오.</value>
+  </data>
+  <data name="TunnelConfigSaveFailed" xml:space="preserve">
+    <value>오류, {0}</value>
+  </data>
+  <data name="TunnelConfigSaveSuccess" xml:space="preserve">
+    <value>성공, 터널 구성이 저장됨</value>
+  </data>
+  <data name="TunnelConfiguration" xml:space="preserve">
+    <value>Tunnel 구성</value>
+  </data>
+  <data name="TunnelConfigurationInfoMessage" xml:space="preserve">
+    <value>기본적인 Tunnel 아키텍처를 구성하여 환경의 접속과 신뢰성을 구축합니다.</value>
+  </data>
+  <data name="TunnelConfigurations" xml:space="preserve">
+    <value>터널 구성</value>
+  </data>
+  <data name="TunnelConfigurationsPaginationText" xml:space="preserve">
+    <value>{2}의 구성 {0} - {1}</value>
+  </data>
+  <data name="TunnelConnection" xml:space="preserve">
+    <value>Tunnel 연결</value>
+  </data>
+  <data name="TunnelDeploymentTypeToolTip" xml:space="preserve">
+    <value>개별 역할(DMZ 및 내부)이 있는 두 인스턴스를 배포하려면 단계를 선택하십시오.</value>
+  </data>
+  <data name="TunnelDomainsResolutionInfo" xml:space="preserve">
+    <value>입력한 도메인만 VMware Tunnel Gateway를 통해 해결됩니다. 다른 모든 도메인은 장치의 구성된 DNS를 통해 해결됩니다.</value>
+  </data>
+  <data name="TunnelMode" xml:space="preserve">
+    <value>터널 모드</value>
+  </data>
+  <data name="TunnelNetworkingHelpInfo" xml:space="preserve">
+    <value>Tunnel Workspace ONE UEM과 통신하는 방법과 장치 트래픽이 네트워크를 통해 흐르는 방식을 결정하십시오.</value>
+  </data>
+  <data name="TunnelProxyAuthMethod" xml:space="preserve">
+    <value>인증</value>
+  </data>
+  <data name="TunnelSecureChannelCertMissing" xml:space="preserve">
+    <value>보안 채널 인증서가 조직 그룹에 없습니다.</value>
+  </data>
+  <data name="TunnelServerActiveCertExists" xml:space="preserve">
+    <value>Tunnel 서버 활성 인증서가 이미 있습니다.</value>
+  </data>
+  <data name="TunnelServerCertDoesNotHavePassword" xml:space="preserve">
+    <value>Tunnel 서버 인증서 비밀번호가 누락되었습니다.</value>
+  </data>
+  <data name="TunnelServerCertDoesNotHavePrivateKey" xml:space="preserve">
+    <value>Tunnel 서버 인증서 개인 키가 누락되었습니다.</value>
+  </data>
+  <data name="TunnelSettingsConfigurationWarning" xml:space="preserve">
+    <value>VMware Tunnel 이 조직 그룹에 정의되지 않았습니다. 애플리케이션 터널링에 대한 Tunnel을 구성하려면 아래 링크를 클릭하십시오. 도메인 허용은 각 애플리케이션에 대해 지정된 장치 트래픽 규칙을 활용합니다.</value>
+  </data>
+  <data name="TunnelSslProviderTooltip" xml:space="preserve">
+    <value>기본적으로 이 설정은 안전한 서버/클라이언트 커뮤니케이션을 위해 AirWatch 인증서를 사용합니다. ‘타사’ 옵션을 선택하여 대신 사용할 타사 공용 SSL 인증서를 업로드할 수 있습니다.</value>
+  </data>
+  <data name="TunnelToAPI" xml:space="preserve">
+    <value>터널에서 API로</value>
+  </data>
+  <data name="UAG" xml:space="preserve">
+    <value>UAG</value>
+  </data>
+  <data name="UEIPEnabled_Description" xml:space="preserve">
+    <value>UEIP 활성화됨</value>
+  </data>
+  <data name="UnableToEnableOrDisablePinning" xml:space="preserve">
+    <value>SSL Pinning이 비활성화 또는 활성화되지 않았습니다. SSL Pinning 구성을 확인하고 다시 시도하십시오.</value>
+    <comment>This error only occurs if there is a catastrophic failure on the server side that could not be properly handled.</comment>
+  </data>
+  <data name="UnableToFetchCAProfiles" xml:space="preserve">
+    <value>관리된 CA와 연결된 인증서 프로필을 가져올 수 없습니다. 인증 기관의 서버 URL이 올바른지 확인하십시오.</value>
+    <comment>This error occurs if server fails to fetch certificate profiles associated with managed CA name.</comment>
+  </data>
+  <data name="UnenrollSetting" xml:space="preserve">
+    <value>등록 취소 설정</value>
+  </data>
+  <data name="UnifiedAppCatalog" xml:space="preserve">
+    <value>통합 앱 카탈로그</value>
+  </data>
+  <data name="UnifiedAppCatalogDescription" xml:space="preserve">
+    <value>많이 사용되는 앱을 강조 표시하고, 캠페인의 일환으로 앱을 홍보하고, 자주 사용하는 앱을 표시합니다.</value>
+  </data>
+  <data name="UnifiedAppCatalogWithAppRatings" xml:space="preserve">
+    <value>앱 등급이 포함된 통합 앱 카탈로그</value>
+  </data>
+  <data name="UniqueRandomPassword" xml:space="preserve">
+    <value>고유한 임의 비밀번호</value>
+  </data>
+  <data name="UniqueRandomPasswordTooltip" xml:space="preserve">
+    <value>최소 2개의 기호, 1개의 소문자, 1개의 대문자 및 1개의 숫자를 포함하여 14자의 고유한 임의 비밀번호를 생성하십시오. 사용하도록 설정된 경우 다시 정적 비밀번호로 변경할 수 없습니다.</value>
+  </data>
+  <data name="UnregisteredAirWatchID" xml:space="preserve">
+    <value>지정한 AirWatch ID가 자동 검색에 등록되지 않았습니다.</value>
+  </data>
+  <data name="UnregisterFailed" xml:space="preserve">
+    <value>등록 취소 실패</value>
+  </data>
+  <data name="UnregisterSuccessful" xml:space="preserve">
+    <value>등록 취소 성공</value>
+  </data>
+  <data name="UnsupportedAdaptivaServerVersion" xml:space="preserve">
+    <value>지원되지 않는 Peer Distribution 서버 버전이 식별되었습니다. 현재 서버 버전은 {1}입니다. 콘솔은 {0}보다 높은 버전만 지원합니다.</value>
+  </data>
+  <data name="UpdateInProgress" xml:space="preserve">
+    <value>업데이트 중...</value>
+  </data>
+  <data name="UpdateManagement" xml:space="preserve">
+    <value>업데이트 관리</value>
+  </data>
+  <data name="UpdateSampleInfo" xml:space="preserve">
+    <value>최신 Windows 업데이트 정보를 수집하는 일정입니다. 여기에는 장치가 업데이트 소스에서 검색한 새 패치가 포함됩니다. 이 패치는 정책 구성에 따라 Microsoft Update 또는 WSUS 서버에서 가져올 수 있습니다.</value>
+  </data>
+  <data name="UpdateSampleInMinutes" xml:space="preserve">
+    <value>업데이트된 샘플</value>
+  </data>
+  <data name="UpdateSampleTimeMode" xml:space="preserve">
+    <value>업데이트된 샘플 시간 모드</value>
+  </data>
+  <data name="UploadLauncher" xml:space="preserve">
+    <value>Launcher 업로드</value>
+  </data>
+  <data name="UploadLocallyTooltip" xml:space="preserve">
+    <value>설치 중에 인증서를 업로드하려면 선택합니다. 이는 UAG 3.6 이하에서 지원되지 않습니다.</value>
+  </data>
+  <data name="UploadServerCertificate" xml:space="preserve">
+    <value>서버 인증서 업로드</value>
+  </data>
+  <data name="UrlNotValidPleaseCheckUrlFormatAndTryAgain" xml:space="preserve">
+    <value>URL이 잘못되었습니다. URL 형식을 확인하고 다시 시도하십시오.</value>
+  </data>
+  <data name="URLsForPredefinedBookmarksInBrowser" xml:space="preserve">
+    <value>Workspace ONE Web에 미리 정의된 북마크 URL</value>
+  </data>
+  <data name="USBConnections" xml:space="preserve">
+    <value>USB 연결</value>
+  </data>
+  <data name="UsbData" xml:space="preserve">
+    <value>USB 데이터</value>
+  </data>
+  <data name="UseAsADigitalSignature" xml:space="preserve">
+    <value>디지털 서명으로 사용</value>
+  </data>
+  <data name="UseAutoGeneratedAPIKey" xml:space="preserve">
+    <value>자동 생성된 API 키 사용</value>
+  </data>
+  <data name="UseAutoGeneratedAPIKeyHelpText" xml:space="preserve">
+    <value>이 작업 버튼을 사용하면 자동 생성된 UEM API 키를 사용하도록 Workspace ONE Access-UEM 구성을 업데이트할 수 있습니다.</value>
+  </data>
+  <data name="UseAwcmThrottle" xml:space="preserve">
+    <value>AWCM 제한 사용</value>
+  </data>
+  <data name="UseAwcmThrottle_Description" xml:space="preserve">
+    <value>AWCM 제한 사용</value>
+  </data>
+  <data name="UseDifferentHostNames" xml:space="preserve">
+    <value>다른 HostName 사용</value>
+  </data>
+  <data name="UseLegacyPolicyEngineLogic" xml:space="preserve">
+    <value>레거시 정책 엔진 로직 사용</value>
+  </data>
+  <data name="UseLegacyPolicyEngineLogic_Description" xml:space="preserve">
+    <value>레거시 정책 엔진 로직 사용</value>
+  </data>
+  <data name="UsePACUtility" xml:space="preserve">
+    <value>VMware Tunnel PAC 판독기를 사용하여 서버 트래픽 규칙 관리</value>
+  </data>
+  <data name="UsePACUtilityTooltip" xml:space="preserve">
+    <value>자동으로 동적 트래픽 규칙을 관리하려면 PAC 유틸리티를 사용합니다. PAC 파일 저장소와 통신하기 위해 추가 구성 요소를 설치해야 합니다.</value>
+  </data>
+  <data name="UserCredentials" xml:space="preserve">
+    <value>사용자 자격 증명</value>
+  </data>
+  <data name="UserDoesNotHaveAccessToSpecifiedOg" xml:space="preserve">
+    <value>사용자에게 요청된 조직 그룹에 액세스할 수 있는 사용 권한이 없음</value>
+  </data>
+  <data name="UserDoesNotHaveAnyDeviceForGSuitePasswordRotation" xml:space="preserve">
+    <value>비밀번호가 변경되었습니다. 업데이트할 장치가 없습니다.</value>
+  </data>
+  <data name="UserGroupSelectionMode" xml:space="preserve">
+    <value>사용자 그룹 선택 모드</value>
+  </data>
+  <data name="UserHasNoValidProfileForGSuitePasswordRotation" xml:space="preserve">
+    <value>비밀번호가 변경되었습니다. 업데이트할 프로필이 없습니다.</value>
+  </data>
+  <data name="UserListSample" xml:space="preserve">
+    <value>사용자 목록 샘플</value>
+  </data>
+  <data name="UserListSampleToolTip" xml:space="preserve">
+    <value>공유된 iPad의 사용자 목록이 서버에서 새로 고침되는 시간 간격</value>
+  </data>
+  <data name="UsernamePasswordIncorrect" xml:space="preserve">
+    <value>테스트 연결 실패: 사용자 이름 또는 암호가 잘못되었습니다.</value>
+  </data>
+  <data name="UserSyncDuration" xml:space="preserve">
+    <value>기간</value>
+  </data>
+  <data name="UserSyncFailed" xml:space="preserve">
+    <value>사용자 동기화 실패함</value>
+  </data>
+  <data name="UserSyncInProgress" xml:space="preserve">
+    <value>사용자 동기화 진행 중</value>
+  </data>
+  <data name="UserSyncStartedTime" xml:space="preserve">
+    <value>시작 시간</value>
+  </data>
+  <data name="UserSyncStatus" xml:space="preserve">
+    <value>상태</value>
+  </data>
+  <data name="UserSyncSucceeded" xml:space="preserve">
+    <value>사용자 동기화 성공</value>
+  </data>
+  <data name="UseSecureContentServerConnection" xml:space="preserve">
+    <value>콘텐츠 서버에 대해 보안(https) 호스트 연결을 사용하십시오.</value>
+  </data>
+  <data name="UseSignificantLocationChange" xml:space="preserve">
+    <value>중요 위치 변경 사용</value>
+  </data>
+  <data name="UseTunnelProxyForBackwardCompatibility" xml:space="preserve">
+    <value>이전 버전과의 호환성을 위한 Tunnel 프록시</value>
+  </data>
+  <data name="UseTunnelProxyForBackwardCompatibilityTooltip" xml:space="preserve">
+    <value>이 설정을 사용하여 아직 프록시에서 Tunnel로 마이그레이션되지 않은 SDK 사용 애플리케이션을 지원</value>
+  </data>
+  <data name="UseUniqueApplicationEntries" xml:space="preserve">
+    <value>애플리케이션 번들 ID 및 Platform에 대한 고유 항목만 선택 및 표시됩니다.</value>
+  </data>
+  <data name="ValidationFailed" xml:space="preserve">
+    <value>유효성 검증 실패</value>
+  </data>
+  <data name="VidmAwConfigSettingsNotFound" xml:space="preserve">
+    <value>Workspace ONE Access에서 AirWatch 설정을 찾을 수 없습니다. Workspace ONE Access에서 AirWatch 설정을 구성한 다음 다시 시도하십시오.</value>
+  </data>
+  <data name="VidmConfigurationFailed" xml:space="preserve">
+    <value>Workspace ONE Access 구성에 실패했습니다.</value>
+  </data>
+  <data name="VidmConfigurationSucceeded" xml:space="preserve">
+    <value>Workspace ONE Access 구성에 성공했습니다.</value>
+  </data>
+  <data name="VIDMConnectorInstallerInfo" xml:space="preserve">
+    <value>{0}은(는) 더 이상 AirWatch Cloud Connector 설치 프로그램에 포함되지 않습니다.</value>
+    <comment>{0} will be replaced with the localized value for "VIDMConnectorInstallerInfoLink"</comment>
+  </data>
+  <data name="VIDMConnectorInstallerInfoLink" xml:space="preserve">
+    <value>Workspace ONE Access Connector 설치 프로그램</value>
+  </data>
+  <data name="VidmInvalidBuiltInIdpAssociation" xml:space="preserve">
+    <value>기본 제공 ID 제공자는 하나의 디렉토리 유형과만 연결될 수 있습니다. Workspace ONE Access에서 기본 제공 설정을 확인한 다음 다시 시도하십시오.</value>
+  </data>
+  <data name="VidmLocationGroupsMissingGroupIDs" xml:space="preserve">
+    <value>이 수준 이하의 모든 조직 그룹에는 그룹 ID가 있어야 합니다. 누락된 그룹 ID를 모두 업데이트하고 다시 시도하십시오.</value>
+  </data>
+  <data name="ViewConfigurationsList" xml:space="preserve">
+    <value>구성 목록 보기</value>
+  </data>
+  <data name="ViewConfigurationsListHelp" xml:space="preserve">
+    <value>구성 목록 보기에 대한 액세스 제어</value>
+  </data>
+  <data name="ViewInstructionObtainTenantDirectoryIdInformation" xml:space="preserve">
+    <value>테넌트 디렉토리 ID 정보를 얻는 방법</value>
+  </data>
+  <data name="ViewWSOneHubConfiguration" xml:space="preserve">
+    <value>Workspace ONE Intelligent Hub 구성을 봅니다.</value>
+  </data>
+  <data name="ViewWSOneHubConfigurationHelp" xml:space="preserve">
+    <value>Workspace ONE Intelligent Hub 구성을 볼 수 있는 액세스 권한을 제어합니다.</value>
+  </data>
+  <data name="VmUnlockFailed" xml:space="preserve">
+    <value>Vm 잠금 해제 실패</value>
+  </data>
+  <data name="VMwareEnterpriseSystemsConnectorDescription" xml:space="preserve">
+    <value>Cloud Connector를 사용하면 디렉토리 서비스, 인증 기관 등을 포함한 엔터프라이즈 시스템과의 안전한 통신을 할 수 있습니다. 기업 리소스에 액세스할 수 있는 서버가 필요합니다.</value>
+  </data>
+  <data name="VmwareTunnel" xml:space="preserve">
+    <value>VMware Tunnel</value>
+  </data>
+  <data name="VmwareTunnelProxy" xml:space="preserve">
+    <value>VMware Tunnel 프록시</value>
+  </data>
+  <data name="VPNEndPointServerSSLCertificate" xml:space="preserve">
+    <value>VPN 엔드포인트 서버 SSL 인증서</value>
+  </data>
+  <data name="VPNHostName" xml:space="preserve">
+    <value>VPN 호스트 이름</value>
+  </data>
+  <data name="VppDeletionFailed" xml:space="preserve">
+    <value>VPP 계정에 연결된 앱을 삭제하지 못했습니다. 지원팀에 문의하십시오.</value>
+  </data>
+  <data name="VppDeletionInProgress" xml:space="preserve">
+    <value>삭제를 진행 중입니다. 페이지를 새로 고침하십시오.</value>
+  </data>
+  <data name="WaitTimeBeforeConsideringInactive" xml:space="preserve">
+    <value>인증서 대기열 임계치 조절</value>
+  </data>
+  <data name="WaitTimeBeforeConsideringInactiveInfo" xml:space="preserve">
+    <value>인증서 프로필 게시 주기로 추가된 명령이 장치에서 사용되지 않는 경우 기본적으로 30분 후에 다음 일괄 처리가 대기열에 추가됩니다. 인증서 일괄 처리를 개선하기 위해 이 시간 간격을 낮출 수 있지만 CA 및 DS 서버 성능을 면밀히 모니터링하는 것이 좋습니다.</value>
+  </data>
+  <data name="WAPI" xml:space="preserve">
+    <value>WAPI</value>
+    <comment>Windows Mobile WiFi Authentication options</comment>
+  </data>
+  <data name="WarningNoSecurityGroups" xml:space="preserve">
+    <value>보안 그룹을 찾을 수 없습니다.</value>
+  </data>
+  <data name="WebTokenNotGenerated" xml:space="preserve">
+    <value>웹 토큰이 생성되지 않았습니다. EMM 설정을 확인하십시오.</value>
+  </data>
+  <data name="WelcomeToConfigurations" xml:space="preserve">
+    <value>구성에 오신 것을 환영합니다</value>
+  </data>
+  <data name="WhereAllThePiecesFallIntoPlace" xml:space="preserve">
+    <value>모든 부분이 제자리를 잡을 경우</value>
+  </data>
+  <data name="WhereAllThePiecesFallIntoPlaceDescriptionArg" xml:space="preserve">
+    <value>조직의 UEM을 구동하는 데 필요한 모든 기본 구성 요소, 모바일 보안 및 사용자 환경은 여전히 {0}에서 정확히 찾을 수 있습니다. 하지만 이제 이러한 기본 구성 요소를 쉽게 액세스할 수 있고 실행 가능한 한 곳에서 찾을 수 있습니다.</value>
+  </data>
+  <data name="Windows7AgentApplication" xml:space="preserve">
+    <value>Windows 8 Agent 애플리케이션 설정</value>
+  </data>
+  <data name="Windows8AgentApplicationSettings" xml:space="preserve">
+    <value>Intelligent Hub 애플리케이션</value>
+  </data>
+  <data name="WindowsAppDeployments" xml:space="preserve">
+    <value>Windows 애플리케이션 배포</value>
+  </data>
+  <data name="WindowsApplicationDeleteSuccess" xml:space="preserve">
+    <value>Windows 애플리케이션이 삭제되었습니다.</value>
+  </data>
+  <data name="WindowsApplicationFound" xml:space="preserve">
+    <value>Windows 애플리케이션이 이미 존재함</value>
+  </data>
+  <data name="WindowsApplicationNotFound" xml:space="preserve">
+    <value>Windows 애플리케이션이 존재하지 않음</value>
+  </data>
+  <data name="WindowsApplicationSaveSuccess" xml:space="preserve">
+    <value>Windows 애플리케이션이 저장됨</value>
+  </data>
+  <data name="WindowsDellAutoEnrollment" xml:space="preserve">
+    <value>Windows Dell 자동 등록</value>
+  </data>
+  <data name="WindowsPcMdmAppDeploymentsDescription" xml:space="preserve">
+    <value>exe, msi, msp, mst, zip 폴더 및 스크립트 패키지 배포와 같은 기존 Win32 앱 패키지 유형에 대한 소프트웨어 패키지 배포를 구성할 수 있습니다. 사용하지 않도록 설정할 경우, msi 및 모던 UWP 패키지 유형만 허용됩니다.</value>
+  </data>
+  <data name="WindowsPcMdmAutoEnrollmentDescription" xml:space="preserve">
+    <value>Workspace ONE은 Dell에서 구입한 Windows 데스크톱 장치의 자동 등록을 지원합니다. 자동 등록을 사용하면 등록된 장치를 자동으로 등록하여 등록 프로세스를 간소화할 수 있습니다. 또한 이 기능은 직원이 데스크톱에 로그인하기 전에 모든 정책, 앱 및 업데이트가 적용되도록 보장합니다.</value>
+  </data>
+  <data name="WindowsPcMdmWindowsHealthAttestationDescription" xml:space="preserve">
+    <value>상태 증명은 Windows 10의 고급 보안 기능으로, 장치에서 장치 상태 및 부팅 매개 변수를 수집하여 보안 하드웨어 TPM에 저장함으로써 장치의 보안을 유지합니다. Workspace ONE은 부팅 및 요청 시 장치 무결성을 모니터링하고 규정 준수 규칙에 따라 수정 조치를 수행합니다. 온 프레미스 설정의 경우 이 기능을 사용하려면 Windows Server 2016에서 필요한 기능과 역할을 사용하도록 설정해야 합니다.</value>
+  </data>
+  <data name="WindowsPcMdmWindowsRuntimeProvisioningDescription" xml:space="preserve">
+    <value>Windows Configuration Designer를 사용하여 Windows 10 장치의 대량 등록을 위한 프로비저닝 패키지를 만듭니다. 이 패키지는 설정 또는 정기적인 장치 사용 시 이동식 스토리지 장치를 사용하여 적용할 수 있습니다.</value>
+  </data>
+  <data name="WindowsPhoneAgentApplication" xml:space="preserve">
+    <value>Windows 8 Agent 애플리케이션 설정</value>
+  </data>
+  <data name="WindowsRuggedRelayServerHelpLink" xml:space="preserve">
+    <value>Windows Rugged 릴레이 서버 도움말 링크</value>
+  </data>
+  <data name="WindowsRuggedRelayServerHelpLink_Description" xml:space="preserve">
+    <value>Windows Rugged 릴레이 서버 도움말 링크</value>
+  </data>
+  <data name="WindowsRuggedWorkspaceOneUemResourcePortal" xml:space="preserve">
+    <value>Windows Rugged Workspace ONE UEM 리소스 포털</value>
+  </data>
+  <data name="WindowsRuggedWorkspaceOneUemResourcePortal_Description" xml:space="preserve">
+    <value>Windows Rugged Workspace ONE UEM 리소스 포털</value>
+  </data>
+  <data name="WindowsRuntimeAuthPolicy_Description" xml:space="preserve">
+    <value>Windows 런타임 인증 정책</value>
+  </data>
+  <data name="WindowsRuntimeConnected" xml:space="preserve">
+    <value>Workspace ONE Drop Ship 프로비저닝</value>
+  </data>
+  <data name="WindowsRuntimeConnectedDomain" xml:space="preserve">
+    <value>자동 검색 도메인</value>
+  </data>
+  <data name="WindowsRuntimeConnectedInfo" xml:space="preserve">
+    <value>VMware Workspace ONE Drop Ship 프로비저닝을 사용하면 제조업체(OEM) 시설에서 장치의 동적 프로비저닝을 수행할 수 있습니다. 이 기능을 사용하도록 설정하면 Workspace ONE Console에서 애플리케이션에 할당할 수 있는 새 스테이징 사용자가 생성됩니다. 이 스테이징 사용자는 OEM 시설에서 장치를 프로비저닝하는 데 사용됩니다.
+
+참고: 이 기능을 사용하도록 설정하면 미국에서 호스팅되는 VMware Workspace ONE의 데이터 센터에서 이 조직 그룹 및 자동 검색 도메인에 매핑된 장치 식별자(UUID, 일련번호) 등록이 허용됩니다.</value>
+  </data>
+  <data name="WindowsRuntimeConnectedPassword" xml:space="preserve">
+    <value>비밀번호</value>
+  </data>
+  <data name="WindowsRuntimeConnectedPasswordHelpText" xml:space="preserve">
+    <value>암호에 특수 문자('&amp;', '&gt;' 또는 '&lt;')가 포함되어 있으면 등록에 이 계정을 사용하는 Drop Ship 프로비저닝 워크플로가 실패합니다. 암호를 변경하려면 사용자 페이지로 이동하십시오.</value>
+  </data>
+  <data name="WindowsRuntimeConnectedPasswordIsRequiredField" xml:space="preserve">
+    <value>암호는 필수 기입 항목입니다.</value>
+  </data>
+  <data name="WindowsRuntimeConnectedRegisteredDomainInfo" xml:space="preserve">
+    <value>Drop Ship 연결 프로비저닝을 위해 장치가 등록되어 있는 도메인입니다.</value>
+  </data>
+  <data name="WindowsRuntimeConnectedUpn" xml:space="preserve">
+    <value>UPN</value>
+  </data>
+  <data name="WindowsRuntimeConnectedUsername" xml:space="preserve">
+    <value>사용자 이름</value>
+  </data>
+  <data name="WindowsRuntimeConnectedUsernameHelpText" xml:space="preserve">
+    <value>Drop Ship 연결 프로비저닝 사용자 이름</value>
+  </data>
+  <data name="WindowsRuntimeConnectedUserNameIsRequiredField" xml:space="preserve">
+    <value>사용자 이름은 필수 기입 항목입니다.</value>
+  </data>
+  <data name="WindowsRuntimeDiscoveryUrl_Description" xml:space="preserve">
+    <value>Windows 런타임 검색 URL</value>
+  </data>
+  <data name="WindowsRuntimeEnrollmentUrl_Description" xml:space="preserve">
+    <value>Windows 런타임 등록 URL</value>
+  </data>
+  <data name="WindowsRuntimePersistence" xml:space="preserve">
+    <value>Workspace ONE 지속성</value>
+  </data>
+  <data name="WindowsRuntimePersistenceConfirmationPopupDetailMessage" xml:space="preserve">
+    <value>이 작업은 이 조직 그룹의 모든 장치에 대해 Workspace ONE 지속성을 사용하지 않도록 설정합니다. 계속하시겠습니까?</value>
+  </data>
+  <data name="WindowsRuntimePersistenceConfirmationPopupHeaderMessage" xml:space="preserve">
+    <value>Workspace ONE 지속성 비활성화</value>
+  </data>
+  <data name="WindowsRuntimePersistenceDomain" xml:space="preserve">
+    <value>도메인</value>
+  </data>
+  <data name="WindowsRuntimePersistenceDomainNotExists" xml:space="preserve">
+    <value>AirWatch 자동 검색을 위해 등록된 도메인이 없습니다. {0}페이지에서 이메일 도메인을 추가한 후 이 화면으로 다시 돌아오십시오.</value>
+  </data>
+  <data name="WindowsRuntimePersistenceInfo" xml:space="preserve">
+    <value>Workspace ONE 지속성은 장치가 초기화, 손실 또는 도난되더라도 장치를 Workspace ONE에서 관리하도록 유지하는 BIOS 수준 기능입니다. 
+    지속성을 사용하도록 설정한 후에는 장치가 자동 검색 서비스로 등록된 도메인에 등록됩니다.</value>
+  </data>
+  <data name="WindowsRuntimePersistenceOemProvisioningErrorMessage" xml:space="preserve">
+    <value>지속성을 활성화하지 못했습니다. 다시 시도하십시오.</value>
+  </data>
+  <data name="WindowsRuntimePersistenceRegisteredDomainInfo" xml:space="preserve">
+    <value>지속성을 위해 장치가 등록되어 있는 도메인입니다.</value>
+  </data>
+  <data name="WindowsRuntimePersistenceRegisteredUpnInfo" xml:space="preserve">
+    <value>장치가 지속성을 위해 등록되어 있는 스테이징 사용자의 UPN입니다.</value>
+  </data>
+  <data name="WindowsRunTimePersistenceUserErrorMessage" xml:space="preserve">
+    <value>지속성에 대해 스테이징 사용자를 등록하지 못했습니다.</value>
+  </data>
+  <data name="WindowsRuntimePolicyUrl_Description" xml:space="preserve">
+    <value>Windows 런타임 정책 URL</value>
+  </data>
+  <data name="WindowsRunTimeProvisioningUserErrorMessage" xml:space="preserve">
+    <value>Drop Ship 연결 프로비저닝에 대해 스테이징 사용자를 등록하지 못했습니다.</value>
+  </data>
+  <data name="WindowsRuntimeSecret_Description" xml:space="preserve">
+    <value>Windows 런타임 암호</value>
+  </data>
+  <data name="WindowsRuntimeSecretHelpText" xml:space="preserve">
+    <value>암호에 특수 문자('&amp;', '&gt;' 또는 '&lt;')가 포함되어 있으면 등록에 이 계정을 사용하는 공장 프로비저닝 워크플로가 실패합니다. 암호를 변경하려면 사용자 페이지로 이동하십시오.</value>
+  </data>
+  <data name="WindowsRuntimeUpn_Description" xml:space="preserve">
+    <value>Windows 런타임 UPN</value>
+  </data>
+  <data name="WindowsStagingAndProvisioning" xml:space="preserve">
+    <value>Windows 스테이징 및 프로비저닝</value>
+  </data>
+  <data name="WindowsWindowsAutoDiscoveryDescription" xml:space="preserve">
+    <value>관리 서버 주소 및 조직 그룹 정보를 입력할 필요 없이 직원이 자신의 이메일 주소만 사용하여 등록할 수 있도록 허용합니다.</value>
+  </data>
+  <data name="WinpcStepsInfo" xml:space="preserve">
+    <value>여기에서 Windows PC 및 QNX 장치에 필요한 단계는 더 이상 없습니다.</value>
+  </data>
+  <data name="WinRTCustomOnboardingExperienceEnabledTooltip" xml:space="preserve">
+    <value>이 설정을 사용하도록 설정하면 Intelligent Hub가 등록 후 Windows 장치에 설치된 다음 즉시 사용자에게 온보딩 환경 UI가 표시됩니다. 온보딩 환경은 현재 설치 중인 애플리케이션 및 리소스에 대한 상태 정보를 제공하고 프로세스가 완료되면 사용자에게 알립니다.</value>
+  </data>
+  <data name="WipeSdkApplicationCluster" xml:space="preserve">
+    <value>모든 SDK 애플리케이션 초기화</value>
+  </data>
+  <data name="WipeSdkApplicationDataAction" xml:space="preserve">
+    <value>작업: SDK 애플리케이션 데이터 초기화</value>
+  </data>
+  <data name="WorkspaceOneAccessDescription" xml:space="preserve">
+    <value>다중 요소 인증 및 조건부 액세스를 위한 클라우드 호스팅 ID 브로커링 채택이 계속 증가함에 따라, 단순히 사용자의 ID를 넘어 이러한 발전을 보다 원활하게 반영하기 위해 VMware Identity Manager에서 Workspace ONE Access로 이름이 변경되었습니다.</value>
+  </data>
+  <data name="WorkspaceOneAccessIntroduction" xml:space="preserve">
+    <value>진화하는 디지털 업무 공간에 대한 지능형 액세스</value>
+  </data>
+  <data name="WorkspaceOneAccessTitle" xml:space="preserve">
+    <value>이제 Workspace ONE Access가 된 VMware Identity Manager</value>
+  </data>
+  <data name="WorkspaceOneAssist" xml:space="preserve">
+    <value>Workspace ONE Assist</value>
+  </data>
+  <data name="WorkspaceOneIntelligenceHubIntroduction" xml:space="preserve">
+    <value>Workspace ONE Intelligent Hub 소개</value>
+  </data>
+  <data name="WorkspaceOneIntelligentHubConfigure" xml:space="preserve">
+    <value>Workspace ONE Intelligent Hub</value>
+  </data>
+  <data name="WorkspaceOneIntelligentHubConfigureDescription" xml:space="preserve">
+    <value>Workspace One을 조직의 브랜드에 맞게 사용자 지정합니다. 회사 로고를 통합하고, 승인된 글꼴, 회사 색상 등을 추가합니다.</value>
+  </data>
+  <data name="WorkspaceOneIntelligentHubDescription1" xml:space="preserve">
+    <value>AirWatch Agent 생산성 애플리케이션이 Intelligent Hub 애플리케이션이라는 새로운 이름으로 돌아왔습니다. 이 신규 앱을 통해서 직원들에게 필요한 거의 모든 iOS 및 Android 장치를 아우르는 통합된 온보딩 경험을 제공할 수 있는 유연성을 확보할 수 있습니다.</value>
+  </data>
+  <data name="WorkspaceOneIntelligentHubDescription2" xml:space="preserve">
+    <value>Hub 서비스는 다음과 같은 유용하고도 새로운 기능을 통해 한층 쉬운 진정한 디지털 업무 공간을 선사합니다.</value>
+  </data>
+  <data name="WorkspaceOneTunnel" xml:space="preserve">
+    <value>Workspace ONE Tunnel</value>
+  </data>
+  <data name="WORKSPACEONEUEM" xml:space="preserve">
+    <value>WORKSPACE ONE UEM</value>
+  </data>
+  <data name="WorkspaceOneUemConsole" xml:space="preserve">
+    <value>Workspace ONE UEM Console</value>
+  </data>
+  <data name="WorkspaceOneUemResourcePortal" xml:space="preserve">
+    <value>Workspace ONE UEM 리소스 포털</value>
+  </data>
+  <data name="WorkspaceOneUemResourcePortal_Description" xml:space="preserve">
+    <value>Workspace ONE UEM 리소스 포털</value>
+  </data>
+  <data name="WorkspaceOneWeb" xml:space="preserve">
+    <value>Workspace ONE Web</value>
+  </data>
+  <data name="WrappingBrowserSdkConfig" xml:space="preserve">
+    <value>래핑/브라우저/SDK</value>
+  </data>
+  <data name="YatsCientDeletedSuccessfully" xml:space="preserve">
+    <value>성공! 클라이언트를 성공적으로 삭제했습니다.</value>
+  </data>
+  <data name="YatsCientRegisteredSuccessfully" xml:space="preserve">
+    <value>성공! 아래의 클라이언트를 성공적으로 등록했습니다.</value>
+  </data>
+  <data name="YatsCientUpdatedSuccessfully" xml:space="preserve">
+    <value>성공! 클라이언트를 성공적으로 업데이트했습니다.</value>
+  </data>
+  <data name="YatsClientClientNameMustBeUnique" xml:space="preserve">
+    <value>클라이언트 이름은 고유해야 합니다.</value>
+  </data>
+  <data name="YatsClientDeleteConfirmationMsg" xml:space="preserve">
+    <value>{0}을(를) 삭제하면 이 클라이언트가 Workspace ONE UEM에 대한 REST API 호출을 수행할 수 없으며 새 클라이언트 ID와 암호가 클라이언트 애플리케이션 생성 및 배포에 필요하게 됩니다. 계속하시겠습니까?</value>
+    <comment>{0} will be replaced by Client Name. e.g. Yats-client</comment>
+  </data>
+  <data name="YatsClientDescPlaceHolderText" xml:space="preserve">
+    <value>클라이언트 설명 입력</value>
+  </data>
+  <data name="YatsClientDuplicateNameErrorMessage" xml:space="preserve">
+    <value>이 클라이언트 이름은 이미 있습니다. 다른 클라이언트 이름으로 시도하십시오.</value>
+  </data>
+  <data name="YatsClientError" xml:space="preserve">
+    <value>요청에 포함된 보안 토큰이 유효하지 않습니다.</value>
+  </data>
+  <data name="YatsClientInfoDesc1" xml:space="preserve">
+    <value>이 클라이언트 ID 및 암호는 Workspace ONE UEM API 호출 인증에 사용됩니다.</value>
+  </data>
+  <data name="YatsClientInfoDesc2" xml:space="preserve">
+    <value>이 화면에 표시되는 암호 액세스 키는 Workspace ONE UEM Console에 저장되지 않습니다. API 클라이언트를 인증하려면 이 키를 복사하고 안전한 위치에 저장하십시오.</value>
+  </data>
+  <data name="YatsClientInfoDesc3" xml:space="preserve">
+    <value>OAuth 클라이언트 관리에 대한 자세한 내용은 {0}을(를) 참조하십시오.</value>
+    <comment>{0} will be replaced by another key with text 'Quick Start guide'.</comment>
+  </data>
+  <data name="YatsClientInfoHeader" xml:space="preserve">
+    <value>다음은 {0}에 대한 클라이언트 ID 및 암호입니다.</value>
+    <comment>{0} will be replaced by Client Name. e.g. Yats-client</comment>
+  </data>
+  <data name="YatsClientNamePlaceHolderText" xml:space="preserve">
+    <value>클라이언트 이름 입력</value>
+  </data>
+  <data name="YatsClientNoOgFound" xml:space="preserve">
+    <value>지정된 조직 그룹 UUID에 대한 조직 그룹을 찾을 수 없습니다.</value>
+  </data>
+  <data name="YatsClientOAutclientNotFound" xml:space="preserve">
+    <value>OAuth 클라이언트 찾을 수 없음</value>
+  </data>
+  <data name="YatsClientRoleHelpText" xml:space="preserve">
+    <value>적절한 권한이 있는 역할을 선택하여 필요한 API 호출을 수행합니다.</value>
+  </data>
+  <data name="YatsClientStatusHelpText" xml:space="preserve">
+    <value>이 클라이언트는 비활성화된 경우 새 토큰을 수신, 새로 고침 또는 생성하거나 Workspace ONE UEM으로 REST API 호출을 할 수 없습니다.</value>
+  </data>
+  <data name="YatsClientUnAuthorizedUser" xml:space="preserve">
+    <value>사용자에게 이 작업을 수행할 수 있는 사용 권한이 없습니다.</value>
+  </data>
+  <data name="YatsClientValidationFailed" xml:space="preserve">
+    <value>인증에 실패했습니다. 헤더에 제공된 자격 증명이 검증에 실패했습니다.</value>
+  </data>
+  <data name="YatsOGPlaceHolderText" xml:space="preserve">
+    <value>입력을 시작하여 조직 그룹 선택</value>
+  </data>
+  <data name="YatsRolePlaceHolderText" xml:space="preserve">
+    <value>입력을 시작하여 역할 선택</value>
+  </data>
+  <data name="YourSettingsExperienceJustGotBetter" xml:space="preserve">
+    <value>설정 환경이 개선되었습니다.</value>
+  </data>
+  <data name="ZshExecutablePath" xml:space="preserve">
+    <value>Zsh 경로</value>
+  </data>
+  <data name="ZshExecutablePathTooltip" xml:space="preserve">
+    <value>Zsh 스크립트 실행 경로를 재정의합니다. 바이너리는 공동으로 설계되어야 하고 755 사용 권한을 가지고 있어야 합니다. 그렇지 않으면 Intelligent Hub가 /bin/zsh의 기본 경로로 폴백됩니다. 심볼 링크 경로는 허용되며 공백을 이스케이프할 필요가 없습니다.</value>
+  </data>
+</root>

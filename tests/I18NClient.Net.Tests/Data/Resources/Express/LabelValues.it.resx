@@ -1,0 +1,235 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ApproveAndPublishPublicApps" xml:space="preserve">
+    <value>Approva e pubblica app pubbliche</value>
+  </data>
+  <data name="ApproveAndPublishPublicAppsDescription" xml:space="preserve">
+    <value>Aggiungi nuovamente qualsiasi app pubblica dai Blueprint esistenti che hai già pubblicato, prima della registrazione con Android EMM, per approvarle e pubblicarle sui dispositivi legacy e Android Enterprise.</value>
+  </data>
+  <data name="ArgDevicesRemovedBasedOnGroupSelection" xml:space="preserve">
+    <value>{0} dispositivi verranno rimossi in base all'attuale selezione del gruppo.</value>
+    <comment>{0} will be replaced by a number</comment>
+  </data>
+  <data name="ArgOutOfArgLegacyAndroidMigrationNotification" xml:space="preserve">
+    <value>{0} di {1} dispositivi Android legacy nei gruppi selezionati sono idonei per la migrazione. Se decidi di continuare, la migrazione verrà applicata solo a questi dispositivi.</value>
+    <comment>{0} and {1} will be replaced by a number.</comment>
+  </data>
+  <data name="CollectDeviceLocationData" xml:space="preserve">
+    <value>Raccogli dati di posizione del dispositivo</value>
+  </data>
+  <data name="DevicesInBlueprintArg" xml:space="preserve">
+    <value>Dispositivi nel Blueprint {0}</value>
+  </data>
+  <data name="DevicesSelectionTooltipText" xml:space="preserve">
+    <value>In questo momento è possibile selezionare solo i dispositivi degli utenti assegnati ai Blueprint. È inoltre possibile scegliere di migrare tutti i dispositivi in una sola volta selezionando "Tutti i dispositivi".</value>
+  </data>
+  <data name="DistributeAppCatalogToDevices" xml:space="preserve">
+    <value>Distribuisci Catalogo app ai dispositivi</value>
+  </data>
+  <data name="ExpressLegacyAndroidMigrationDeviceExportArg" xml:space="preserve">
+    <value>I dispositivi elencati di seguito si trovavano in amministrazione legacy quando sono stati selezionati i gruppi elencati in precedenza. Tutti i dispositivi aggiunti in futuro a questi gruppi saranno visualizzati come nuovi dispositivi individuati. {0} consente di visualizzare la ripartizione di tutti i dispositivi di cui è stata eseguita la migrazione, inclusi i dispositivi dei gruppi che potrebbero essere stati rimossi.</value>
+    <comment>{0} will be replaced by another key with text 'Export Details'.</comment>
+  </data>
+  <data name="ExpressMigrationAllCompatible" xml:space="preserve">
+    <value>Tutti i {0} dispositivi Android legacy presenti nei gruppi selezionati sono idonei per la migrazione.</value>
+    <comment>{0} will be replaced by a number.</comment>
+  </data>
+  <data name="ExpressMigrationLimitReached" xml:space="preserve">
+    <value>La migrazione può avere al massimo 10 assegnazioni di gruppi.</value>
+  </data>
+  <data name="ExpressMigrationNoDevicesCompatible" xml:space="preserve">
+    <value>Nessun dispositivo nei gruppi selezionati è idoneo per la migrazione. Seleziona gruppi che includono dispositivi Android legacy per continuare.</value>
+  </data>
+  <data name="ExpressNoNewDevices" xml:space="preserve">
+    <value>Non è stato trovato alcun nuovo dispositivo Android legacy nei gruppi selezionati.</value>
+  </data>
+  <data name="ExpressWelcomeMessageHeader" xml:space="preserve">
+    <value>Hai tutto ciò che ti occorre per proteggere e gestire i dispositivi mobili della tua azienda. Puoi:</value>
+  </data>
+  <data name="IsAfwRequired" xml:space="preserve">
+    <value>I tuoi dipendenti utilizzeranno dispositivi Android?</value>
+  </data>
+  <data name="NoGroupFound" xml:space="preserve">
+    <value>Nessun gruppo utente trovato con quel nome.</value>
+  </data>
+  <data name="NotificationDevicePreviewAndroidLegacyMigration" xml:space="preserve">
+    <value>Una notifica verrà inviata ai dispositivi idonei nei gruppi selezionati per informare i dipendenti della migrazione e per chiedere loro di confermare che desiderano procedere. È possibile monitorarne l'avanzamento nella pagina Migrazione Android legacy.</value>
+  </data>
+  <data name="NoUserFound" xml:space="preserve">
+    <value>Nessun utente trovato con quel nome.</value>
+  </data>
+  <data name="QuestionnaireDescription" xml:space="preserve">
+    <value>Rispondiamo ad alcune semplici domande per semplificare la configurazione:</value>
+  </data>
+  <data name="ResaveYourPolicies" xml:space="preserve">
+    <value>Salva nuovamente i criteri</value>
+  </data>
+  <data name="ResaveYourPoliciesDescription" xml:space="preserve">
+    <value>Modifica e salva nuovamente la sezione Criteri di tutti i Blueprint esistenti che hai pubblicato, prima della registrazione con Android EMM.</value>
+  </data>
+  <data name="ResaveYourResources" xml:space="preserve">
+    <value>Salva nuovamente le risorse</value>
+  </data>
+  <data name="ResaveYourResourcesDescription" xml:space="preserve">
+    <value>Modifica e salva nuovamente le risorse E-mail e Wi-Fi configurate nei Blueprint esistenti che hai pubblicato, prima della registrazione con Android EMM.</value>
+  </data>
+  <data name="SearchCurrentGroups" xml:space="preserve">
+    <value>Cerca gruppi attuali</value>
+  </data>
+  <data name="SearchCurrentUsers" xml:space="preserve">
+    <value>Cerca utenti attuali</value>
+  </data>
+  <data name="SelectMigrationDevices" xml:space="preserve">
+    <value>Seleziona i gruppi di cui desideri eseguire la migrazione.</value>
+  </data>
+  <data name="StartTypingToAddGroups" xml:space="preserve">
+    <value>Inizia a digitare per aggiungere i gruppi</value>
+  </data>
+  <data name="WantToCollectDeviceLocationData" xml:space="preserve">
+    <value>Vuoi raccogliere i dati di posizione del dispositivo?</value>
+  </data>
+  <data name="WantToDistributeAppCatalogToDevices" xml:space="preserve">
+    <value>Vuoi distribuire un catalogo delle app sui dispositivi?</value>
+  </data>
+  <data name="WarningForNotCollectingLocationData" xml:space="preserve">
+    <value>Certo. Se desideri modificare la risposta, puoi tornare a questo sondaggio in qualsiasi momento dal menu Guida introduttiva.</value>
+  </data>
+  <data name="WarningForNotConfiguringAd" xml:space="preserve">
+    <value>Va bene. Se cambi idea, puoi configurare Active Directory in un secondo momento dal menu Impostazioni.</value>
+  </data>
+  <data name="WarningForNotConfiguringAfw" xml:space="preserve">
+    <value>Se in futuro prevedi di registrare dispositivi Android, puoi sempre configurare la registrazione EMM di Android in un secondo momento dal menu Impostazioni.</value>
+  </data>
+  <data name="WarningForNotConfiguringApns" xml:space="preserve">
+    <value>Se in futuro prevedi di registrare dispositivi Apple, puoi sempre configurare il certificato APN in un secondo momento dal menu Impostazioni.</value>
+  </data>
+  <data name="WarningForNotConfiguringVpp" xml:space="preserve">
+    <value>Bene. Se decidi di configurare in un secondo momento il tuo account Apple VPP, puoi sempre accedere al menu Impostazioni.</value>
+  </data>
+  <data name="WarningForNotDistributingAppCatalog" xml:space="preserve">
+    <value>Capito. Se desideri modificare la risposta, puoi tornare a questo sondaggio in qualsiasi momento dal menu Guida introduttiva.</value>
+  </data>
+  <data name="WorkspaceOneExpress" xml:space="preserve">
+    <value>Workspace ONE Express</value>
+  </data>
+  <data name="WorkspaceOneExpressSetupTrackInfo" xml:space="preserve">
+    <value>Configura per avviare la registrazione, la protezione e la gestione dei dispositivi, e la fornitura di risorse aziendali ai dipendenti.</value>
+  </data>
+</root>

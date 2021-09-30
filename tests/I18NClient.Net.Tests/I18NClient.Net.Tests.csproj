@@ -1,0 +1,1019 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\..\packages\MSTest.TestAdapter.2.1.2\build\net45\MSTest.TestAdapter.props" Condition="Exists('..\..\packages\MSTest.TestAdapter.2.1.2\build\net45\MSTest.TestAdapter.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{42A798B8-5079-4D31-BDF7-A036B252290C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SingletonClient.Net.Tests</RootNamespace>
+    <AssemblyName>SingletonClient.Net.Tests</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">15.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
+    <IsCodedUITest>False</IsCodedUITest>
+    <TestProjectType>UnitTest</TestProjectType>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\I18NClient.Net.Tests.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\MSTest.TestFramework.2.1.2\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\MSTest.TestFramework.2.1.2\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Annotations, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.ComponentModel.Annotations.4.4.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.IO, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.IO.4.3.0\lib\net462\System.IO.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http, Version=4.1.1.3, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.Net.Http.4.3.4\lib\net46\System.Net.Http.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.Runtime.4.3.0\lib\net462\System.Runtime.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Algorithms, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.Security.Cryptography.Algorithms.4.3.0\lib\net463\System.Security.Cryptography.Algorithms.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Encoding, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.Security.Cryptography.Encoding.4.3.0\lib\net46\System.Security.Cryptography.Encoding.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.Security.Cryptography.Primitives.4.3.0\lib\net46\System.Security.Cryptography.Primitives.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.X509Certificates, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.Security.Cryptography.X509Certificates.4.3.0\lib\net461\System.Security.Cryptography.X509Certificates.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Builder\I18NClientBuilderTests.cs" />
+    <Compile Include="Data\Resources\Accounts\LabelValues.Designer.cs" />
+    <Compile Include="Data\Resources\Apps\LabelValues.Designer.cs" />
+    <Compile Include="Data\Resources\Baselines\LabelValues.Designer.cs" />
+    <Compile Include="Data\Resources\Blob\LabelValues.Designer.cs" />
+    <Compile Include="Data\Resources\Blueprints\LabelValues.Designer.cs" />
+    <Compile Include="Data\Resources\Books\LabelValues.Designer.cs" />
+    <Compile Include="Data\Resources\Common\LabelValues.Designer.cs" />
+    <Compile Include="Data\Resources\Compliance\LabelValues.Designer.cs" />
+    <Compile Include="Data\Resources\Content\LabelValues.Designer.cs" />
+    <Compile Include="Data\Resources\DeviceManagement\LabelValues.Designer.cs" />
+    <Compile Include="Data\Resources\Devices\LabelValues.Designer.cs" />
+    <Compile Include="Data\Resources\DomainJoinConfig\LabelValues.Designer.cs" />
+    <Compile Include="Data\Resources\Email\LabelValues.Designer.cs" />
+    <Compile Include="Data\Resources\Enrollment\LabelValues.Designer.cs" />
+    <Compile Include="Data\Resources\Events\LabelValues.Designer.cs" />
+    <Compile Include="Data\Resources\Express\LabelValues.Designer.cs" />
+    <Compile Include="Data\Resources\Freestyle\LabelValues.Designer.cs" />
+    <Compile Include="Data\Resources\GettingStarted\LabelValues.Designer.cs" />
+    <Compile Include="Data\Resources\HubConfigurations\LabelValues.Designer.cs" />
+    <Compile Include="Data\Resources\InProductSupport\LabelValues.Designer.cs" />
+    <Compile Include="Data\Resources\LegacyAndroidMigration\LabelValues.Designer.cs" />
+    <Compile Include="Data\Resources\MessageTemplates\LabelValues.Designer.cs" />
+    <Compile Include="Data\Resources\MobileFlows\LabelValues.Designer.cs" />
+    <Compile Include="Data\Resources\Monitor\LabelValues.Designer.cs" />
+    <Compile Include="Data\Resources\Notifications\LabelValues.Designer.cs" />
+    <Compile Include="Data\Resources\OrganizationGroup\LabelValues.Designer.cs" />
+    <Compile Include="Data\Resources\Peripherals\LabelValues.Designer.cs" />
+    <Compile Include="Data\Resources\Profiles\LabelValues.Designer.cs" />
+    <Compile Include="Data\Resources\Reports\LabelValues.Designer.cs" />
+    <Compile Include="Data\Resources\ResourceKeys\LabelValues.Designer.cs" />
+    <Compile Include="Data\Resources\Rugged\LabelValues.Designer.cs" />
+    <Compile Include="Data\Resources\Scripts\LabelValues.Designer.cs" />
+    <Compile Include="Data\Resources\Search\LabelValues.Designer.cs" />
+    <Compile Include="Data\Resources\Sensors\LabelValues.Designer.cs" />
+    <Compile Include="Data\Resources\Settings\LabelValues.Designer.cs" />
+    <Compile Include="Data\Resources\SmartGroups\LabelValues.Designer.cs" />
+    <Compile Include="Data\Resources\Tags\LabelValues.Designer.cs" />
+    <Compile Include="Data\Resources\Telecom\LabelValues.Designer.cs" />
+    <Compile Include="Data\Resources\TimeWindows\LabelValues.Designer.cs" />
+    <Compile Include="Data\Resources\Workflows\LabelValues.Designer.cs" />
+    <Compile Include="Resources\ResourceServiceTests.cs" />
+    <Compile Include="Caches\ComponentMessageCacheManagerTests.cs" />
+    <Compile Include="Caches\ComponentMessageCacheTests.cs" />
+    <Compile Include="Loaders\ResxLocalLoaderTests.cs" />
+    <Compile Include="Loaders\SingletonRemoteLoaderTests.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\I18NClient.Net.Abstractions\I18NClient.Net.Abstractions.csproj">
+      <Project>{5413b095-f8e3-419d-b6c6-e8625d30998c}</Project>
+      <Name>I18NClient.Net.Abstractions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\I18NClient.Net\I18NClient.Net.csproj">
+      <Project>{2b8f7a31-e12f-434a-a02b-057e6e40b86d}</Project>
+      <Name>I18NClient.Net</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Data\Resources\Accounts\LabelValues.cs.resx" />
+    <EmbeddedResource Include="Data\Resources\Accounts\LabelValues.da.resx" />
+    <EmbeddedResource Include="Data\Resources\Accounts\LabelValues.de.resx" />
+    <EmbeddedResource Include="Data\Resources\Accounts\LabelValues.es.resx" />
+    <EmbeddedResource Include="Data\Resources\Accounts\LabelValues.fr.resx" />
+    <EmbeddedResource Include="Data\Resources\Accounts\LabelValues.it.resx" />
+    <EmbeddedResource Include="Data\Resources\Accounts\LabelValues.ja.resx" />
+    <EmbeddedResource Include="Data\Resources\Accounts\LabelValues.ko.resx" />
+    <EmbeddedResource Include="Data\Resources\Accounts\LabelValues.nl.resx" />
+    <EmbeddedResource Include="Data\Resources\Accounts\LabelValues.pl.resx" />
+    <EmbeddedResource Include="Data\Resources\Accounts\LabelValues.pt.resx" />
+    <EmbeddedResource Include="Data\Resources\Accounts\LabelValues.resx" />
+    <EmbeddedResource Include="Data\Resources\Accounts\LabelValues.ru.resx" />
+    <EmbeddedResource Include="Data\Resources\Accounts\LabelValues.sv.resx" />
+    <EmbeddedResource Include="Data\Resources\Accounts\LabelValues.tr.resx" />
+    <EmbeddedResource Include="Data\Resources\Accounts\LabelValues.zh-CN.resx" />
+    <EmbeddedResource Include="Data\Resources\Accounts\LabelValues.zh-TW.resx" />
+    <EmbeddedResource Include="Data\Resources\Apps\LabelValues.cs.resx" />
+    <EmbeddedResource Include="Data\Resources\Apps\LabelValues.da.resx" />
+    <EmbeddedResource Include="Data\Resources\Apps\LabelValues.de.resx" />
+    <EmbeddedResource Include="Data\Resources\Apps\LabelValues.es.resx" />
+    <EmbeddedResource Include="Data\Resources\Apps\LabelValues.fr.resx" />
+    <EmbeddedResource Include="Data\Resources\Apps\LabelValues.it.resx" />
+    <EmbeddedResource Include="Data\Resources\Apps\LabelValues.ja.resx" />
+    <EmbeddedResource Include="Data\Resources\Apps\LabelValues.ko.resx" />
+    <EmbeddedResource Include="Data\Resources\Apps\LabelValues.nl.resx" />
+    <EmbeddedResource Include="Data\Resources\Apps\LabelValues.pl.resx" />
+    <EmbeddedResource Include="Data\Resources\Apps\LabelValues.pt.resx" />
+    <EmbeddedResource Include="Data\Resources\Apps\LabelValues.resx" />
+    <EmbeddedResource Include="Data\Resources\Apps\LabelValues.ru.resx" />
+    <EmbeddedResource Include="Data\Resources\Apps\LabelValues.sv.resx" />
+    <EmbeddedResource Include="Data\Resources\Apps\LabelValues.tr.resx" />
+    <EmbeddedResource Include="Data\Resources\Apps\LabelValues.zh-CN.resx" />
+    <EmbeddedResource Include="Data\Resources\Apps\LabelValues.zh-TW.resx" />
+    <EmbeddedResource Include="Data\Resources\Baselines\LabelValues.cs.resx" />
+    <EmbeddedResource Include="Data\Resources\Baselines\LabelValues.da.resx" />
+    <EmbeddedResource Include="Data\Resources\Baselines\LabelValues.de.resx" />
+    <EmbeddedResource Include="Data\Resources\Baselines\LabelValues.es.resx" />
+    <EmbeddedResource Include="Data\Resources\Baselines\LabelValues.fr.resx" />
+    <EmbeddedResource Include="Data\Resources\Baselines\LabelValues.it.resx" />
+    <EmbeddedResource Include="Data\Resources\Baselines\LabelValues.ja.resx" />
+    <EmbeddedResource Include="Data\Resources\Baselines\LabelValues.ko.resx" />
+    <EmbeddedResource Include="Data\Resources\Baselines\LabelValues.nl.resx" />
+    <EmbeddedResource Include="Data\Resources\Baselines\LabelValues.pl.resx" />
+    <EmbeddedResource Include="Data\Resources\Baselines\LabelValues.pt.resx" />
+    <EmbeddedResource Include="Data\Resources\Baselines\LabelValues.resx" />
+    <EmbeddedResource Include="Data\Resources\Baselines\LabelValues.ru.resx" />
+    <EmbeddedResource Include="Data\Resources\Baselines\LabelValues.sv.resx" />
+    <EmbeddedResource Include="Data\Resources\Baselines\LabelValues.tr.resx" />
+    <EmbeddedResource Include="Data\Resources\Baselines\LabelValues.zh-CN.resx" />
+    <EmbeddedResource Include="Data\Resources\Baselines\LabelValues.zh-TW.resx" />
+    <EmbeddedResource Include="Data\Resources\Blob\LabelValues.cs.resx" />
+    <EmbeddedResource Include="Data\Resources\Blob\LabelValues.da.resx" />
+    <EmbeddedResource Include="Data\Resources\Blob\LabelValues.de.resx" />
+    <EmbeddedResource Include="Data\Resources\Blob\LabelValues.es.resx" />
+    <EmbeddedResource Include="Data\Resources\Blob\LabelValues.fr.resx" />
+    <EmbeddedResource Include="Data\Resources\Blob\LabelValues.it.resx" />
+    <EmbeddedResource Include="Data\Resources\Blob\LabelValues.ja.resx" />
+    <EmbeddedResource Include="Data\Resources\Blob\LabelValues.ko.resx" />
+    <EmbeddedResource Include="Data\Resources\Blob\LabelValues.nl.resx" />
+    <EmbeddedResource Include="Data\Resources\Blob\LabelValues.pl.resx" />
+    <EmbeddedResource Include="Data\Resources\Blob\LabelValues.pt.resx" />
+    <EmbeddedResource Include="Data\Resources\Blob\LabelValues.resx" />
+    <EmbeddedResource Include="Data\Resources\Blob\LabelValues.ru.resx" />
+    <EmbeddedResource Include="Data\Resources\Blob\LabelValues.sv.resx" />
+    <EmbeddedResource Include="Data\Resources\Blob\LabelValues.tr.resx" />
+    <EmbeddedResource Include="Data\Resources\Blob\LabelValues.zh-CN.resx" />
+    <EmbeddedResource Include="Data\Resources\Blob\LabelValues.zh-TW.resx" />
+    <EmbeddedResource Include="Data\Resources\Blueprints\LabelValues.cs.resx" />
+    <EmbeddedResource Include="Data\Resources\Blueprints\LabelValues.da.resx" />
+    <EmbeddedResource Include="Data\Resources\Blueprints\LabelValues.de.resx" />
+    <EmbeddedResource Include="Data\Resources\Blueprints\LabelValues.es.resx" />
+    <EmbeddedResource Include="Data\Resources\Blueprints\LabelValues.fr.resx" />
+    <EmbeddedResource Include="Data\Resources\Blueprints\LabelValues.it.resx" />
+    <EmbeddedResource Include="Data\Resources\Blueprints\LabelValues.ja.resx" />
+    <EmbeddedResource Include="Data\Resources\Blueprints\LabelValues.ko.resx" />
+    <EmbeddedResource Include="Data\Resources\Blueprints\LabelValues.nl.resx" />
+    <EmbeddedResource Include="Data\Resources\Blueprints\LabelValues.pl.resx" />
+    <EmbeddedResource Include="Data\Resources\Blueprints\LabelValues.pt.resx" />
+    <EmbeddedResource Include="Data\Resources\Blueprints\LabelValues.resx" />
+    <EmbeddedResource Include="Data\Resources\Blueprints\LabelValues.ru.resx" />
+    <EmbeddedResource Include="Data\Resources\Blueprints\LabelValues.sv.resx" />
+    <EmbeddedResource Include="Data\Resources\Blueprints\LabelValues.tr.resx" />
+    <EmbeddedResource Include="Data\Resources\Blueprints\LabelValues.zh-CN.resx" />
+    <EmbeddedResource Include="Data\Resources\Blueprints\LabelValues.zh-TW.resx" />
+    <EmbeddedResource Include="Data\Resources\Books\LabelValues.cs.resx" />
+    <EmbeddedResource Include="Data\Resources\Books\LabelValues.da.resx" />
+    <EmbeddedResource Include="Data\Resources\Books\LabelValues.de.resx" />
+    <EmbeddedResource Include="Data\Resources\Books\LabelValues.es.resx" />
+    <EmbeddedResource Include="Data\Resources\Books\LabelValues.fr.resx" />
+    <EmbeddedResource Include="Data\Resources\Books\LabelValues.it.resx" />
+    <EmbeddedResource Include="Data\Resources\Books\LabelValues.ja.resx" />
+    <EmbeddedResource Include="Data\Resources\Books\LabelValues.ko.resx" />
+    <EmbeddedResource Include="Data\Resources\Books\LabelValues.nl.resx" />
+    <EmbeddedResource Include="Data\Resources\Books\LabelValues.pl.resx" />
+    <EmbeddedResource Include="Data\Resources\Books\LabelValues.pt.resx" />
+    <EmbeddedResource Include="Data\Resources\Books\LabelValues.resx" />
+    <EmbeddedResource Include="Data\Resources\Books\LabelValues.ru.resx" />
+    <EmbeddedResource Include="Data\Resources\Books\LabelValues.sv.resx" />
+    <EmbeddedResource Include="Data\Resources\Books\LabelValues.tr.resx" />
+    <EmbeddedResource Include="Data\Resources\Books\LabelValues.zh-CN.resx" />
+    <EmbeddedResource Include="Data\Resources\Books\LabelValues.zh-TW.resx" />
+    <EmbeddedResource Include="Data\Resources\Common\LabelValues.cs.resx" />
+    <EmbeddedResource Include="Data\Resources\Common\LabelValues.da.resx" />
+    <EmbeddedResource Include="Data\Resources\Common\LabelValues.de.resx" />
+    <EmbeddedResource Include="Data\Resources\Common\LabelValues.es.resx" />
+    <EmbeddedResource Include="Data\Resources\Common\LabelValues.fr.resx" />
+    <EmbeddedResource Include="Data\Resources\Common\LabelValues.it.resx" />
+    <EmbeddedResource Include="Data\Resources\Common\LabelValues.ja.resx" />
+    <EmbeddedResource Include="Data\Resources\Common\LabelValues.ko.resx" />
+    <EmbeddedResource Include="Data\Resources\Common\LabelValues.nl.resx" />
+    <EmbeddedResource Include="Data\Resources\Common\LabelValues.pl.resx" />
+    <EmbeddedResource Include="Data\Resources\Common\LabelValues.pt.resx" />
+    <EmbeddedResource Include="Data\Resources\Common\LabelValues.resx" />
+    <EmbeddedResource Include="Data\Resources\Common\LabelValues.ru.resx" />
+    <EmbeddedResource Include="Data\Resources\Common\LabelValues.sv.resx" />
+    <EmbeddedResource Include="Data\Resources\Common\LabelValues.tr.resx" />
+    <EmbeddedResource Include="Data\Resources\Common\LabelValues.zh-CN.resx" />
+    <EmbeddedResource Include="Data\Resources\Common\LabelValues.zh-TW.resx" />
+    <EmbeddedResource Include="Data\Resources\Compliance\LabelValues.cs.resx" />
+    <EmbeddedResource Include="Data\Resources\Compliance\LabelValues.da.resx" />
+    <EmbeddedResource Include="Data\Resources\Compliance\LabelValues.de.resx" />
+    <EmbeddedResource Include="Data\Resources\Compliance\LabelValues.es.resx" />
+    <EmbeddedResource Include="Data\Resources\Compliance\LabelValues.fr.resx" />
+    <EmbeddedResource Include="Data\Resources\Compliance\LabelValues.it.resx" />
+    <EmbeddedResource Include="Data\Resources\Compliance\LabelValues.ja.resx" />
+    <EmbeddedResource Include="Data\Resources\Compliance\LabelValues.ko.resx" />
+    <EmbeddedResource Include="Data\Resources\Compliance\LabelValues.nl.resx" />
+    <EmbeddedResource Include="Data\Resources\Compliance\LabelValues.pl.resx" />
+    <EmbeddedResource Include="Data\Resources\Compliance\LabelValues.pt.resx" />
+    <EmbeddedResource Include="Data\Resources\Compliance\LabelValues.resx" />
+    <EmbeddedResource Include="Data\Resources\Compliance\LabelValues.ru.resx" />
+    <EmbeddedResource Include="Data\Resources\Compliance\LabelValues.sv.resx" />
+    <EmbeddedResource Include="Data\Resources\Compliance\LabelValues.tr.resx" />
+    <EmbeddedResource Include="Data\Resources\Compliance\LabelValues.zh-CN.resx" />
+    <EmbeddedResource Include="Data\Resources\Compliance\LabelValues.zh-TW.resx" />
+    <EmbeddedResource Include="Data\Resources\Content\LabelValues.cs.resx" />
+    <EmbeddedResource Include="Data\Resources\Content\LabelValues.da.resx" />
+    <EmbeddedResource Include="Data\Resources\Content\LabelValues.de.resx" />
+    <EmbeddedResource Include="Data\Resources\Content\LabelValues.es.resx" />
+    <EmbeddedResource Include="Data\Resources\Content\LabelValues.fr.resx" />
+    <EmbeddedResource Include="Data\Resources\Content\LabelValues.it.resx" />
+    <EmbeddedResource Include="Data\Resources\Content\LabelValues.ja.resx" />
+    <EmbeddedResource Include="Data\Resources\Content\LabelValues.ko.resx" />
+    <EmbeddedResource Include="Data\Resources\Content\LabelValues.nl.resx" />
+    <EmbeddedResource Include="Data\Resources\Content\LabelValues.pl.resx" />
+    <EmbeddedResource Include="Data\Resources\Content\LabelValues.pt.resx" />
+    <EmbeddedResource Include="Data\Resources\Content\LabelValues.resx" />
+    <EmbeddedResource Include="Data\Resources\Content\LabelValues.ru.resx" />
+    <EmbeddedResource Include="Data\Resources\Content\LabelValues.sv.resx" />
+    <EmbeddedResource Include="Data\Resources\Content\LabelValues.tr.resx" />
+    <EmbeddedResource Include="Data\Resources\Content\LabelValues.zh-CN.resx" />
+    <EmbeddedResource Include="Data\Resources\Content\LabelValues.zh-TW.resx" />
+    <EmbeddedResource Include="Data\Resources\DeviceManagement\LabelValues.cs.resx" />
+    <EmbeddedResource Include="Data\Resources\DeviceManagement\LabelValues.da.resx" />
+    <EmbeddedResource Include="Data\Resources\DeviceManagement\LabelValues.de.resx" />
+    <EmbeddedResource Include="Data\Resources\DeviceManagement\LabelValues.es.resx" />
+    <EmbeddedResource Include="Data\Resources\DeviceManagement\LabelValues.fr.resx" />
+    <EmbeddedResource Include="Data\Resources\DeviceManagement\LabelValues.it.resx" />
+    <EmbeddedResource Include="Data\Resources\DeviceManagement\LabelValues.ja.resx" />
+    <EmbeddedResource Include="Data\Resources\DeviceManagement\LabelValues.ko.resx" />
+    <EmbeddedResource Include="Data\Resources\DeviceManagement\LabelValues.nl.resx" />
+    <EmbeddedResource Include="Data\Resources\DeviceManagement\LabelValues.pl.resx" />
+    <EmbeddedResource Include="Data\Resources\DeviceManagement\LabelValues.pt.resx" />
+    <EmbeddedResource Include="Data\Resources\DeviceManagement\LabelValues.resx" />
+    <EmbeddedResource Include="Data\Resources\DeviceManagement\LabelValues.ru.resx" />
+    <EmbeddedResource Include="Data\Resources\DeviceManagement\LabelValues.sv.resx" />
+    <EmbeddedResource Include="Data\Resources\DeviceManagement\LabelValues.tr.resx" />
+    <EmbeddedResource Include="Data\Resources\DeviceManagement\LabelValues.zh-CN.resx" />
+    <EmbeddedResource Include="Data\Resources\DeviceManagement\LabelValues.zh-TW.resx" />
+    <EmbeddedResource Include="Data\Resources\Devices\LabelValues.cs.resx" />
+    <EmbeddedResource Include="Data\Resources\Devices\LabelValues.da.resx" />
+    <EmbeddedResource Include="Data\Resources\Devices\LabelValues.de.resx" />
+    <EmbeddedResource Include="Data\Resources\Devices\LabelValues.es.resx" />
+    <EmbeddedResource Include="Data\Resources\Devices\LabelValues.fr.resx" />
+    <EmbeddedResource Include="Data\Resources\Devices\LabelValues.it.resx" />
+    <EmbeddedResource Include="Data\Resources\Devices\LabelValues.ja.resx" />
+    <EmbeddedResource Include="Data\Resources\Devices\LabelValues.ko.resx" />
+    <EmbeddedResource Include="Data\Resources\Devices\LabelValues.nl.resx" />
+    <EmbeddedResource Include="Data\Resources\Devices\LabelValues.pl.resx" />
+    <EmbeddedResource Include="Data\Resources\Devices\LabelValues.pt.resx" />
+    <EmbeddedResource Include="Data\Resources\Devices\LabelValues.resx" />
+    <EmbeddedResource Include="Data\Resources\Devices\LabelValues.ru.resx" />
+    <EmbeddedResource Include="Data\Resources\Devices\LabelValues.sv.resx" />
+    <EmbeddedResource Include="Data\Resources\Devices\LabelValues.tr.resx" />
+    <EmbeddedResource Include="Data\Resources\Devices\LabelValues.zh-CN.resx" />
+    <EmbeddedResource Include="Data\Resources\Devices\LabelValues.zh-TW.resx" />
+    <EmbeddedResource Include="Data\Resources\DomainJoinConfig\LabelValues.cs.resx" />
+    <EmbeddedResource Include="Data\Resources\DomainJoinConfig\LabelValues.da.resx" />
+    <EmbeddedResource Include="Data\Resources\DomainJoinConfig\LabelValues.de.resx" />
+    <EmbeddedResource Include="Data\Resources\DomainJoinConfig\LabelValues.es.resx" />
+    <EmbeddedResource Include="Data\Resources\DomainJoinConfig\LabelValues.fr.resx" />
+    <EmbeddedResource Include="Data\Resources\DomainJoinConfig\LabelValues.it.resx" />
+    <EmbeddedResource Include="Data\Resources\DomainJoinConfig\LabelValues.ja.resx" />
+    <EmbeddedResource Include="Data\Resources\DomainJoinConfig\LabelValues.ko.resx" />
+    <EmbeddedResource Include="Data\Resources\DomainJoinConfig\LabelValues.nl.resx" />
+    <EmbeddedResource Include="Data\Resources\DomainJoinConfig\LabelValues.pl.resx" />
+    <EmbeddedResource Include="Data\Resources\DomainJoinConfig\LabelValues.pt.resx" />
+    <EmbeddedResource Include="Data\Resources\DomainJoinConfig\LabelValues.resx" />
+    <EmbeddedResource Include="Data\Resources\DomainJoinConfig\LabelValues.ru.resx" />
+    <EmbeddedResource Include="Data\Resources\DomainJoinConfig\LabelValues.sv.resx" />
+    <EmbeddedResource Include="Data\Resources\DomainJoinConfig\LabelValues.tr.resx" />
+    <EmbeddedResource Include="Data\Resources\DomainJoinConfig\LabelValues.zh-CN.resx" />
+    <EmbeddedResource Include="Data\Resources\DomainJoinConfig\LabelValues.zh-TW.resx" />
+    <EmbeddedResource Include="Data\Resources\Email\LabelValues.cs.resx" />
+    <EmbeddedResource Include="Data\Resources\Email\LabelValues.da.resx" />
+    <EmbeddedResource Include="Data\Resources\Email\LabelValues.de.resx" />
+    <EmbeddedResource Include="Data\Resources\Email\LabelValues.es.resx" />
+    <EmbeddedResource Include="Data\Resources\Email\LabelValues.fr.resx" />
+    <EmbeddedResource Include="Data\Resources\Email\LabelValues.it.resx" />
+    <EmbeddedResource Include="Data\Resources\Email\LabelValues.ja.resx" />
+    <EmbeddedResource Include="Data\Resources\Email\LabelValues.ko.resx" />
+    <EmbeddedResource Include="Data\Resources\Email\LabelValues.nl.resx" />
+    <EmbeddedResource Include="Data\Resources\Email\LabelValues.pl.resx" />
+    <EmbeddedResource Include="Data\Resources\Email\LabelValues.pt.resx" />
+    <EmbeddedResource Include="Data\Resources\Email\LabelValues.resx" />
+    <EmbeddedResource Include="Data\Resources\Email\LabelValues.ru.resx" />
+    <EmbeddedResource Include="Data\Resources\Email\LabelValues.sv.resx" />
+    <EmbeddedResource Include="Data\Resources\Email\LabelValues.tr.resx" />
+    <EmbeddedResource Include="Data\Resources\Email\LabelValues.zh-CN.resx" />
+    <EmbeddedResource Include="Data\Resources\Email\LabelValues.zh-TW.resx" />
+    <EmbeddedResource Include="Data\Resources\Enrollment\LabelValues.cs.resx" />
+    <EmbeddedResource Include="Data\Resources\Enrollment\LabelValues.da.resx" />
+    <EmbeddedResource Include="Data\Resources\Enrollment\LabelValues.de.resx" />
+    <EmbeddedResource Include="Data\Resources\Enrollment\LabelValues.es.resx" />
+    <EmbeddedResource Include="Data\Resources\Enrollment\LabelValues.fr.resx" />
+    <EmbeddedResource Include="Data\Resources\Enrollment\LabelValues.it.resx" />
+    <EmbeddedResource Include="Data\Resources\Enrollment\LabelValues.ja.resx" />
+    <EmbeddedResource Include="Data\Resources\Enrollment\LabelValues.ko.resx" />
+    <EmbeddedResource Include="Data\Resources\Enrollment\LabelValues.nl.resx" />
+    <EmbeddedResource Include="Data\Resources\Enrollment\LabelValues.pl.resx" />
+    <EmbeddedResource Include="Data\Resources\Enrollment\LabelValues.pt.resx" />
+    <EmbeddedResource Include="Data\Resources\Enrollment\LabelValues.resx" />
+    <EmbeddedResource Include="Data\Resources\Enrollment\LabelValues.ru.resx" />
+    <EmbeddedResource Include="Data\Resources\Enrollment\LabelValues.sv.resx" />
+    <EmbeddedResource Include="Data\Resources\Enrollment\LabelValues.tr.resx" />
+    <EmbeddedResource Include="Data\Resources\Enrollment\LabelValues.zh-CN.resx" />
+    <EmbeddedResource Include="Data\Resources\Enrollment\LabelValues.zh-TW.resx" />
+    <EmbeddedResource Include="Data\Resources\Events\LabelValues.cs.resx" />
+    <EmbeddedResource Include="Data\Resources\Events\LabelValues.da.resx" />
+    <EmbeddedResource Include="Data\Resources\Events\LabelValues.de.resx" />
+    <EmbeddedResource Include="Data\Resources\Events\LabelValues.es.resx" />
+    <EmbeddedResource Include="Data\Resources\Events\LabelValues.fr.resx" />
+    <EmbeddedResource Include="Data\Resources\Events\LabelValues.it.resx" />
+    <EmbeddedResource Include="Data\Resources\Events\LabelValues.ja.resx" />
+    <EmbeddedResource Include="Data\Resources\Events\LabelValues.ko.resx" />
+    <EmbeddedResource Include="Data\Resources\Events\LabelValues.nl.resx" />
+    <EmbeddedResource Include="Data\Resources\Events\LabelValues.pl.resx" />
+    <EmbeddedResource Include="Data\Resources\Events\LabelValues.pt.resx" />
+    <EmbeddedResource Include="Data\Resources\Events\LabelValues.resx" />
+    <EmbeddedResource Include="Data\Resources\Events\LabelValues.ru.resx" />
+    <EmbeddedResource Include="Data\Resources\Events\LabelValues.sv.resx" />
+    <EmbeddedResource Include="Data\Resources\Events\LabelValues.tr.resx" />
+    <EmbeddedResource Include="Data\Resources\Events\LabelValues.zh-CN.resx" />
+    <EmbeddedResource Include="Data\Resources\Events\LabelValues.zh-TW.resx" />
+    <EmbeddedResource Include="Data\Resources\Express\LabelValues.cs.resx" />
+    <EmbeddedResource Include="Data\Resources\Express\LabelValues.da.resx" />
+    <EmbeddedResource Include="Data\Resources\Express\LabelValues.de.resx" />
+    <EmbeddedResource Include="Data\Resources\Express\LabelValues.es.resx" />
+    <EmbeddedResource Include="Data\Resources\Express\LabelValues.fr.resx" />
+    <EmbeddedResource Include="Data\Resources\Express\LabelValues.it.resx" />
+    <EmbeddedResource Include="Data\Resources\Express\LabelValues.ja.resx" />
+    <EmbeddedResource Include="Data\Resources\Express\LabelValues.ko.resx" />
+    <EmbeddedResource Include="Data\Resources\Express\LabelValues.nl.resx" />
+    <EmbeddedResource Include="Data\Resources\Express\LabelValues.pl.resx" />
+    <EmbeddedResource Include="Data\Resources\Express\LabelValues.pt.resx" />
+    <EmbeddedResource Include="Data\Resources\Express\LabelValues.resx" />
+    <EmbeddedResource Include="Data\Resources\Express\LabelValues.ru.resx" />
+    <EmbeddedResource Include="Data\Resources\Express\LabelValues.sv.resx" />
+    <EmbeddedResource Include="Data\Resources\Express\LabelValues.tr.resx" />
+    <EmbeddedResource Include="Data\Resources\Express\LabelValues.zh-CN.resx" />
+    <EmbeddedResource Include="Data\Resources\Express\LabelValues.zh-TW.resx" />
+    <EmbeddedResource Include="Data\Resources\Freestyle\LabelValues.cs.resx" />
+    <EmbeddedResource Include="Data\Resources\Freestyle\LabelValues.da.resx" />
+    <EmbeddedResource Include="Data\Resources\Freestyle\LabelValues.de.resx" />
+    <EmbeddedResource Include="Data\Resources\Freestyle\LabelValues.es.resx" />
+    <EmbeddedResource Include="Data\Resources\Freestyle\LabelValues.fr.resx" />
+    <EmbeddedResource Include="Data\Resources\Freestyle\LabelValues.it.resx" />
+    <EmbeddedResource Include="Data\Resources\Freestyle\LabelValues.ja.resx" />
+    <EmbeddedResource Include="Data\Resources\Freestyle\LabelValues.ko.resx" />
+    <EmbeddedResource Include="Data\Resources\Freestyle\LabelValues.nl.resx" />
+    <EmbeddedResource Include="Data\Resources\Freestyle\LabelValues.pl.resx" />
+    <EmbeddedResource Include="Data\Resources\Freestyle\LabelValues.pt.resx" />
+    <EmbeddedResource Include="Data\Resources\Freestyle\LabelValues.resx" />
+    <EmbeddedResource Include="Data\Resources\Freestyle\LabelValues.ru.resx" />
+    <EmbeddedResource Include="Data\Resources\Freestyle\LabelValues.sv.resx" />
+    <EmbeddedResource Include="Data\Resources\Freestyle\LabelValues.tr.resx" />
+    <EmbeddedResource Include="Data\Resources\Freestyle\LabelValues.zh-CN.resx" />
+    <EmbeddedResource Include="Data\Resources\Freestyle\LabelValues.zh-TW.resx" />
+    <EmbeddedResource Include="Data\Resources\GettingStarted\LabelValues.cs.resx" />
+    <EmbeddedResource Include="Data\Resources\GettingStarted\LabelValues.da.resx" />
+    <EmbeddedResource Include="Data\Resources\GettingStarted\LabelValues.de.resx" />
+    <EmbeddedResource Include="Data\Resources\GettingStarted\LabelValues.es.resx" />
+    <EmbeddedResource Include="Data\Resources\GettingStarted\LabelValues.fr.resx" />
+    <EmbeddedResource Include="Data\Resources\GettingStarted\LabelValues.it.resx" />
+    <EmbeddedResource Include="Data\Resources\GettingStarted\LabelValues.ja.resx" />
+    <EmbeddedResource Include="Data\Resources\GettingStarted\LabelValues.ko.resx" />
+    <EmbeddedResource Include="Data\Resources\GettingStarted\LabelValues.nl.resx" />
+    <EmbeddedResource Include="Data\Resources\GettingStarted\LabelValues.pl.resx" />
+    <EmbeddedResource Include="Data\Resources\GettingStarted\LabelValues.pt.resx" />
+    <EmbeddedResource Include="Data\Resources\GettingStarted\LabelValues.resx" />
+    <EmbeddedResource Include="Data\Resources\GettingStarted\LabelValues.ru.resx" />
+    <EmbeddedResource Include="Data\Resources\GettingStarted\LabelValues.sv.resx" />
+    <EmbeddedResource Include="Data\Resources\GettingStarted\LabelValues.tr.resx" />
+    <EmbeddedResource Include="Data\Resources\GettingStarted\LabelValues.zh-CN.resx" />
+    <EmbeddedResource Include="Data\Resources\GettingStarted\LabelValues.zh-TW.resx" />
+    <EmbeddedResource Include="Data\Resources\HubConfigurations\LabelValues.cs.resx" />
+    <EmbeddedResource Include="Data\Resources\HubConfigurations\LabelValues.da.resx" />
+    <EmbeddedResource Include="Data\Resources\HubConfigurations\LabelValues.de.resx" />
+    <EmbeddedResource Include="Data\Resources\HubConfigurations\LabelValues.es.resx" />
+    <EmbeddedResource Include="Data\Resources\HubConfigurations\LabelValues.fr.resx" />
+    <EmbeddedResource Include="Data\Resources\HubConfigurations\LabelValues.it.resx" />
+    <EmbeddedResource Include="Data\Resources\HubConfigurations\LabelValues.ja.resx" />
+    <EmbeddedResource Include="Data\Resources\HubConfigurations\LabelValues.ko.resx" />
+    <EmbeddedResource Include="Data\Resources\HubConfigurations\LabelValues.nl.resx" />
+    <EmbeddedResource Include="Data\Resources\HubConfigurations\LabelValues.pl.resx" />
+    <EmbeddedResource Include="Data\Resources\HubConfigurations\LabelValues.pt.resx" />
+    <EmbeddedResource Include="Data\Resources\HubConfigurations\LabelValues.resx" />
+    <EmbeddedResource Include="Data\Resources\HubConfigurations\LabelValues.ru.resx" />
+    <EmbeddedResource Include="Data\Resources\HubConfigurations\LabelValues.sv.resx" />
+    <EmbeddedResource Include="Data\Resources\HubConfigurations\LabelValues.tr.resx" />
+    <EmbeddedResource Include="Data\Resources\HubConfigurations\LabelValues.zh-CN.resx" />
+    <EmbeddedResource Include="Data\Resources\HubConfigurations\LabelValues.zh-TW.resx" />
+    <EmbeddedResource Include="Data\Resources\InProductSupport\LabelValues.cs.resx" />
+    <EmbeddedResource Include="Data\Resources\InProductSupport\LabelValues.da.resx" />
+    <EmbeddedResource Include="Data\Resources\InProductSupport\LabelValues.de.resx" />
+    <EmbeddedResource Include="Data\Resources\InProductSupport\LabelValues.es.resx" />
+    <EmbeddedResource Include="Data\Resources\InProductSupport\LabelValues.fr.resx" />
+    <EmbeddedResource Include="Data\Resources\InProductSupport\LabelValues.it.resx" />
+    <EmbeddedResource Include="Data\Resources\InProductSupport\LabelValues.ja.resx" />
+    <EmbeddedResource Include="Data\Resources\InProductSupport\LabelValues.ko.resx" />
+    <EmbeddedResource Include="Data\Resources\InProductSupport\LabelValues.nl.resx" />
+    <EmbeddedResource Include="Data\Resources\InProductSupport\LabelValues.pl.resx" />
+    <EmbeddedResource Include="Data\Resources\InProductSupport\LabelValues.pt.resx" />
+    <EmbeddedResource Include="Data\Resources\InProductSupport\LabelValues.resx" />
+    <EmbeddedResource Include="Data\Resources\InProductSupport\LabelValues.ru.resx" />
+    <EmbeddedResource Include="Data\Resources\InProductSupport\LabelValues.sv.resx" />
+    <EmbeddedResource Include="Data\Resources\InProductSupport\LabelValues.tr.resx" />
+    <EmbeddedResource Include="Data\Resources\InProductSupport\LabelValues.zh-CN.resx" />
+    <EmbeddedResource Include="Data\Resources\InProductSupport\LabelValues.zh-TW.resx" />
+    <EmbeddedResource Include="Data\Resources\LegacyAndroidMigration\LabelValues.cs.resx" />
+    <EmbeddedResource Include="Data\Resources\LegacyAndroidMigration\LabelValues.da.resx" />
+    <EmbeddedResource Include="Data\Resources\LegacyAndroidMigration\LabelValues.de.resx" />
+    <EmbeddedResource Include="Data\Resources\LegacyAndroidMigration\LabelValues.es.resx" />
+    <EmbeddedResource Include="Data\Resources\LegacyAndroidMigration\LabelValues.fr.resx" />
+    <EmbeddedResource Include="Data\Resources\LegacyAndroidMigration\LabelValues.it.resx" />
+    <EmbeddedResource Include="Data\Resources\LegacyAndroidMigration\LabelValues.ja.resx" />
+    <EmbeddedResource Include="Data\Resources\LegacyAndroidMigration\LabelValues.ko.resx" />
+    <EmbeddedResource Include="Data\Resources\LegacyAndroidMigration\LabelValues.nl.resx" />
+    <EmbeddedResource Include="Data\Resources\LegacyAndroidMigration\LabelValues.pl.resx" />
+    <EmbeddedResource Include="Data\Resources\LegacyAndroidMigration\LabelValues.pt.resx" />
+    <EmbeddedResource Include="Data\Resources\LegacyAndroidMigration\LabelValues.resx" />
+    <EmbeddedResource Include="Data\Resources\LegacyAndroidMigration\LabelValues.ru.resx" />
+    <EmbeddedResource Include="Data\Resources\LegacyAndroidMigration\LabelValues.sv.resx" />
+    <EmbeddedResource Include="Data\Resources\LegacyAndroidMigration\LabelValues.tr.resx" />
+    <EmbeddedResource Include="Data\Resources\LegacyAndroidMigration\LabelValues.zh-CN.resx" />
+    <EmbeddedResource Include="Data\Resources\LegacyAndroidMigration\LabelValues.zh-TW.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\A\LabelValues.cs.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\A\LabelValues.da.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\A\LabelValues.de.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\A\LabelValues.es.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\A\LabelValues.fr.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\A\LabelValues.it.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\A\LabelValues.ja.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\A\LabelValues.ko.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\A\LabelValues.nl.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\A\LabelValues.pl.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\A\LabelValues.pt.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\A\LabelValues.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\A\LabelValues.ru.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\A\LabelValues.sv.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\A\LabelValues.tr.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\A\LabelValues.zh-CN.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\A\LabelValues.zh-TW.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\BC\LabelValues.cs.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\BC\LabelValues.da.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\BC\LabelValues.de.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\BC\LabelValues.es.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\BC\LabelValues.fr.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\BC\LabelValues.it.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\BC\LabelValues.ja.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\BC\LabelValues.ko.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\BC\LabelValues.nl.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\BC\LabelValues.pl.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\BC\LabelValues.pt.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\BC\LabelValues.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\BC\LabelValues.ru.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\BC\LabelValues.sv.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\BC\LabelValues.tr.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\BC\LabelValues.zh-CN.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\BC\LabelValues.zh-TW.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\DE\LabelValues.cs.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\DE\LabelValues.da.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\DE\LabelValues.de.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\DE\LabelValues.es.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\DE\LabelValues.fr.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\DE\LabelValues.it.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\DE\LabelValues.ja.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\DE\LabelValues.ko.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\DE\LabelValues.nl.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\DE\LabelValues.pl.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\DE\LabelValues.pt.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\DE\LabelValues.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\DE\LabelValues.ru.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\DE\LabelValues.sv.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\DE\LabelValues.tr.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\DE\LabelValues.zh-CN.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\DE\LabelValues.zh-TW.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\FL\LabelValues.cs.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\FL\LabelValues.da.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\FL\LabelValues.de.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\FL\LabelValues.es.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\FL\LabelValues.fr.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\FL\LabelValues.it.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\FL\LabelValues.ja.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\FL\LabelValues.ko.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\FL\LabelValues.nl.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\FL\LabelValues.pl.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\FL\LabelValues.pt.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\FL\LabelValues.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\FL\LabelValues.ru.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\FL\LabelValues.sv.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\FL\LabelValues.tr.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\FL\LabelValues.zh-CN.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\FL\LabelValues.zh-TW.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\MQ\LabelValues.cs.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\MQ\LabelValues.da.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\MQ\LabelValues.de.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\MQ\LabelValues.es.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\MQ\LabelValues.fr.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\MQ\LabelValues.it.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\MQ\LabelValues.ja.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\MQ\LabelValues.ko.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\MQ\LabelValues.nl.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\MQ\LabelValues.pl.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\MQ\LabelValues.pt.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\MQ\LabelValues.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\MQ\LabelValues.ru.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\MQ\LabelValues.sv.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\MQ\LabelValues.tr.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\MQ\LabelValues.zh-CN.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\MQ\LabelValues.zh-TW.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\Numbers09\LabelValues.cs.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\Numbers09\LabelValues.da.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\Numbers09\LabelValues.de.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\Numbers09\LabelValues.es.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\Numbers09\LabelValues.fr.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\Numbers09\LabelValues.it.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\Numbers09\LabelValues.ja.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\Numbers09\LabelValues.ko.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\Numbers09\LabelValues.nl.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\Numbers09\LabelValues.pl.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\Numbers09\LabelValues.pt.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\Numbers09\LabelValues.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\Numbers09\LabelValues.ru.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\Numbers09\LabelValues.sv.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\Numbers09\LabelValues.tr.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\Numbers09\LabelValues.zh-CN.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\Numbers09\LabelValues.zh-TW.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\R\LabelValues.cs.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\R\LabelValues.da.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\R\LabelValues.de.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\R\LabelValues.es.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\R\LabelValues.fr.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\R\LabelValues.it.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\R\LabelValues.ja.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\R\LabelValues.ko.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\R\LabelValues.nl.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\R\LabelValues.pl.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\R\LabelValues.pt.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\R\LabelValues.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\R\LabelValues.ru.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\R\LabelValues.sv.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\R\LabelValues.tr.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\R\LabelValues.zh-CN.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\R\LabelValues.zh-TW.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\ST\LabelValues.cs.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\ST\LabelValues.da.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\ST\LabelValues.de.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\ST\LabelValues.es.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\ST\LabelValues.fr.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\ST\LabelValues.it.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\ST\LabelValues.ja.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\ST\LabelValues.ko.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\ST\LabelValues.nl.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\ST\LabelValues.pl.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\ST\LabelValues.pt.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\ST\LabelValues.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\ST\LabelValues.ru.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\ST\LabelValues.sv.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\ST\LabelValues.tr.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\ST\LabelValues.zh-CN.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\ST\LabelValues.zh-TW.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\UZ\LabelValues.cs.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\UZ\LabelValues.da.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\UZ\LabelValues.de.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\UZ\LabelValues.es.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\UZ\LabelValues.fr.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\UZ\LabelValues.it.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\UZ\LabelValues.ja.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\UZ\LabelValues.ko.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\UZ\LabelValues.nl.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\UZ\LabelValues.pl.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\UZ\LabelValues.pt.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\UZ\LabelValues.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\UZ\LabelValues.ru.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\UZ\LabelValues.sv.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\UZ\LabelValues.tr.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\UZ\LabelValues.zh-CN.resx" />
+    <EmbeddedResource Include="Data\Resources\Legacy\UZ\LabelValues.zh-TW.resx" />
+    <EmbeddedResource Include="Data\Resources\MessageTemplates\LabelValues.cs.resx" />
+    <EmbeddedResource Include="Data\Resources\MessageTemplates\LabelValues.da.resx" />
+    <EmbeddedResource Include="Data\Resources\MessageTemplates\LabelValues.de.resx" />
+    <EmbeddedResource Include="Data\Resources\MessageTemplates\LabelValues.es.resx" />
+    <EmbeddedResource Include="Data\Resources\MessageTemplates\LabelValues.fr.resx" />
+    <EmbeddedResource Include="Data\Resources\MessageTemplates\LabelValues.it.resx" />
+    <EmbeddedResource Include="Data\Resources\MessageTemplates\LabelValues.ja.resx" />
+    <EmbeddedResource Include="Data\Resources\MessageTemplates\LabelValues.ko.resx" />
+    <EmbeddedResource Include="Data\Resources\MessageTemplates\LabelValues.nl.resx" />
+    <EmbeddedResource Include="Data\Resources\MessageTemplates\LabelValues.pl.resx" />
+    <EmbeddedResource Include="Data\Resources\MessageTemplates\LabelValues.pt.resx" />
+    <EmbeddedResource Include="Data\Resources\MessageTemplates\LabelValues.resx" />
+    <EmbeddedResource Include="Data\Resources\MessageTemplates\LabelValues.ru.resx" />
+    <EmbeddedResource Include="Data\Resources\MessageTemplates\LabelValues.sv.resx" />
+    <EmbeddedResource Include="Data\Resources\MessageTemplates\LabelValues.tr.resx" />
+    <EmbeddedResource Include="Data\Resources\MessageTemplates\LabelValues.zh-CN.resx" />
+    <EmbeddedResource Include="Data\Resources\MessageTemplates\LabelValues.zh-TW.resx" />
+    <EmbeddedResource Include="Data\Resources\MobileFlows\LabelValues.cs.resx" />
+    <EmbeddedResource Include="Data\Resources\MobileFlows\LabelValues.da.resx" />
+    <EmbeddedResource Include="Data\Resources\MobileFlows\LabelValues.de.resx" />
+    <EmbeddedResource Include="Data\Resources\MobileFlows\LabelValues.es.resx" />
+    <EmbeddedResource Include="Data\Resources\MobileFlows\LabelValues.fr.resx" />
+    <EmbeddedResource Include="Data\Resources\MobileFlows\LabelValues.it.resx" />
+    <EmbeddedResource Include="Data\Resources\MobileFlows\LabelValues.ja.resx" />
+    <EmbeddedResource Include="Data\Resources\MobileFlows\LabelValues.ko.resx" />
+    <EmbeddedResource Include="Data\Resources\MobileFlows\LabelValues.nl.resx" />
+    <EmbeddedResource Include="Data\Resources\MobileFlows\LabelValues.pl.resx" />
+    <EmbeddedResource Include="Data\Resources\MobileFlows\LabelValues.pt.resx" />
+    <EmbeddedResource Include="Data\Resources\MobileFlows\LabelValues.resx" />
+    <EmbeddedResource Include="Data\Resources\MobileFlows\LabelValues.ru.resx" />
+    <EmbeddedResource Include="Data\Resources\MobileFlows\LabelValues.sv.resx" />
+    <EmbeddedResource Include="Data\Resources\MobileFlows\LabelValues.tr.resx" />
+    <EmbeddedResource Include="Data\Resources\MobileFlows\LabelValues.zh-CN.resx" />
+    <EmbeddedResource Include="Data\Resources\MobileFlows\LabelValues.zh-TW.resx" />
+    <EmbeddedResource Include="Data\Resources\Monitor\LabelValues.cs.resx" />
+    <EmbeddedResource Include="Data\Resources\Monitor\LabelValues.da.resx" />
+    <EmbeddedResource Include="Data\Resources\Monitor\LabelValues.de.resx" />
+    <EmbeddedResource Include="Data\Resources\Monitor\LabelValues.es.resx" />
+    <EmbeddedResource Include="Data\Resources\Monitor\LabelValues.fr.resx" />
+    <EmbeddedResource Include="Data\Resources\Monitor\LabelValues.it.resx" />
+    <EmbeddedResource Include="Data\Resources\Monitor\LabelValues.ja.resx" />
+    <EmbeddedResource Include="Data\Resources\Monitor\LabelValues.ko.resx" />
+    <EmbeddedResource Include="Data\Resources\Monitor\LabelValues.nl.resx" />
+    <EmbeddedResource Include="Data\Resources\Monitor\LabelValues.pl.resx" />
+    <EmbeddedResource Include="Data\Resources\Monitor\LabelValues.pt.resx" />
+    <EmbeddedResource Include="Data\Resources\Monitor\LabelValues.resx" />
+    <EmbeddedResource Include="Data\Resources\Monitor\LabelValues.ru.resx" />
+    <EmbeddedResource Include="Data\Resources\Monitor\LabelValues.sv.resx" />
+    <EmbeddedResource Include="Data\Resources\Monitor\LabelValues.tr.resx" />
+    <EmbeddedResource Include="Data\Resources\Monitor\LabelValues.zh-CN.resx" />
+    <EmbeddedResource Include="Data\Resources\Monitor\LabelValues.zh-TW.resx" />
+    <EmbeddedResource Include="Data\Resources\Notifications\LabelValues.cs.resx" />
+    <EmbeddedResource Include="Data\Resources\Notifications\LabelValues.da.resx" />
+    <EmbeddedResource Include="Data\Resources\Notifications\LabelValues.de.resx" />
+    <EmbeddedResource Include="Data\Resources\Notifications\LabelValues.es.resx" />
+    <EmbeddedResource Include="Data\Resources\Notifications\LabelValues.fr.resx" />
+    <EmbeddedResource Include="Data\Resources\Notifications\LabelValues.it.resx" />
+    <EmbeddedResource Include="Data\Resources\Notifications\LabelValues.ja.resx" />
+    <EmbeddedResource Include="Data\Resources\Notifications\LabelValues.ko.resx" />
+    <EmbeddedResource Include="Data\Resources\Notifications\LabelValues.nl.resx" />
+    <EmbeddedResource Include="Data\Resources\Notifications\LabelValues.pl.resx" />
+    <EmbeddedResource Include="Data\Resources\Notifications\LabelValues.pt.resx" />
+    <EmbeddedResource Include="Data\Resources\Notifications\LabelValues.resx" />
+    <EmbeddedResource Include="Data\Resources\Notifications\LabelValues.ru.resx" />
+    <EmbeddedResource Include="Data\Resources\Notifications\LabelValues.sv.resx" />
+    <EmbeddedResource Include="Data\Resources\Notifications\LabelValues.tr.resx" />
+    <EmbeddedResource Include="Data\Resources\Notifications\LabelValues.zh-CN.resx" />
+    <EmbeddedResource Include="Data\Resources\Notifications\LabelValues.zh-TW.resx" />
+    <EmbeddedResource Include="Data\Resources\OrganizationGroup\LabelValues.cs.resx" />
+    <EmbeddedResource Include="Data\Resources\OrganizationGroup\LabelValues.da.resx" />
+    <EmbeddedResource Include="Data\Resources\OrganizationGroup\LabelValues.de.resx" />
+    <EmbeddedResource Include="Data\Resources\OrganizationGroup\LabelValues.es.resx" />
+    <EmbeddedResource Include="Data\Resources\OrganizationGroup\LabelValues.fr.resx" />
+    <EmbeddedResource Include="Data\Resources\OrganizationGroup\LabelValues.it.resx" />
+    <EmbeddedResource Include="Data\Resources\OrganizationGroup\LabelValues.ja.resx" />
+    <EmbeddedResource Include="Data\Resources\OrganizationGroup\LabelValues.ko.resx" />
+    <EmbeddedResource Include="Data\Resources\OrganizationGroup\LabelValues.nl.resx" />
+    <EmbeddedResource Include="Data\Resources\OrganizationGroup\LabelValues.pl.resx" />
+    <EmbeddedResource Include="Data\Resources\OrganizationGroup\LabelValues.pt.resx" />
+    <EmbeddedResource Include="Data\Resources\OrganizationGroup\LabelValues.resx" />
+    <EmbeddedResource Include="Data\Resources\OrganizationGroup\LabelValues.ru.resx" />
+    <EmbeddedResource Include="Data\Resources\OrganizationGroup\LabelValues.sv.resx" />
+    <EmbeddedResource Include="Data\Resources\OrganizationGroup\LabelValues.tr.resx" />
+    <EmbeddedResource Include="Data\Resources\OrganizationGroup\LabelValues.zh-CN.resx" />
+    <EmbeddedResource Include="Data\Resources\OrganizationGroup\LabelValues.zh-TW.resx" />
+    <EmbeddedResource Include="Data\Resources\Peripherals\LabelValues.cs.resx" />
+    <EmbeddedResource Include="Data\Resources\Peripherals\LabelValues.da.resx" />
+    <EmbeddedResource Include="Data\Resources\Peripherals\LabelValues.de.resx" />
+    <EmbeddedResource Include="Data\Resources\Peripherals\LabelValues.es.resx" />
+    <EmbeddedResource Include="Data\Resources\Peripherals\LabelValues.fr.resx" />
+    <EmbeddedResource Include="Data\Resources\Peripherals\LabelValues.it.resx" />
+    <EmbeddedResource Include="Data\Resources\Peripherals\LabelValues.ja.resx" />
+    <EmbeddedResource Include="Data\Resources\Peripherals\LabelValues.ko.resx" />
+    <EmbeddedResource Include="Data\Resources\Peripherals\LabelValues.nl.resx" />
+    <EmbeddedResource Include="Data\Resources\Peripherals\LabelValues.pl.resx" />
+    <EmbeddedResource Include="Data\Resources\Peripherals\LabelValues.pt.resx" />
+    <EmbeddedResource Include="Data\Resources\Peripherals\LabelValues.resx" />
+    <EmbeddedResource Include="Data\Resources\Peripherals\LabelValues.ru.resx" />
+    <EmbeddedResource Include="Data\Resources\Peripherals\LabelValues.sv.resx" />
+    <EmbeddedResource Include="Data\Resources\Peripherals\LabelValues.tr.resx" />
+    <EmbeddedResource Include="Data\Resources\Peripherals\LabelValues.zh-CN.resx" />
+    <EmbeddedResource Include="Data\Resources\Peripherals\LabelValues.zh-TW.resx" />
+    <EmbeddedResource Include="Data\Resources\Profiles\LabelValues.cs.resx" />
+    <EmbeddedResource Include="Data\Resources\Profiles\LabelValues.da.resx" />
+    <EmbeddedResource Include="Data\Resources\Profiles\LabelValues.de.resx" />
+    <EmbeddedResource Include="Data\Resources\Profiles\LabelValues.es.resx" />
+    <EmbeddedResource Include="Data\Resources\Profiles\LabelValues.fr.resx" />
+    <EmbeddedResource Include="Data\Resources\Profiles\LabelValues.it.resx" />
+    <EmbeddedResource Include="Data\Resources\Profiles\LabelValues.ja.resx" />
+    <EmbeddedResource Include="Data\Resources\Profiles\LabelValues.ko.resx" />
+    <EmbeddedResource Include="Data\Resources\Profiles\LabelValues.nl.resx" />
+    <EmbeddedResource Include="Data\Resources\Profiles\LabelValues.pl.resx" />
+    <EmbeddedResource Include="Data\Resources\Profiles\LabelValues.pt.resx" />
+    <EmbeddedResource Include="Data\Resources\Profiles\LabelValues.resx" />
+    <EmbeddedResource Include="Data\Resources\Profiles\LabelValues.ru.resx" />
+    <EmbeddedResource Include="Data\Resources\Profiles\LabelValues.sv.resx" />
+    <EmbeddedResource Include="Data\Resources\Profiles\LabelValues.tr.resx" />
+    <EmbeddedResource Include="Data\Resources\Profiles\LabelValues.zh-CN.resx" />
+    <EmbeddedResource Include="Data\Resources\Profiles\LabelValues.zh-TW.resx" />
+    <EmbeddedResource Include="Data\Resources\Reports\LabelValues.cs.resx" />
+    <EmbeddedResource Include="Data\Resources\Reports\LabelValues.da.resx" />
+    <EmbeddedResource Include="Data\Resources\Reports\LabelValues.de.resx" />
+    <EmbeddedResource Include="Data\Resources\Reports\LabelValues.es.resx" />
+    <EmbeddedResource Include="Data\Resources\Reports\LabelValues.fr.resx" />
+    <EmbeddedResource Include="Data\Resources\Reports\LabelValues.it.resx" />
+    <EmbeddedResource Include="Data\Resources\Reports\LabelValues.ja.resx" />
+    <EmbeddedResource Include="Data\Resources\Reports\LabelValues.ko.resx" />
+    <EmbeddedResource Include="Data\Resources\Reports\LabelValues.nl.resx" />
+    <EmbeddedResource Include="Data\Resources\Reports\LabelValues.pl.resx" />
+    <EmbeddedResource Include="Data\Resources\Reports\LabelValues.pt.resx" />
+    <EmbeddedResource Include="Data\Resources\Reports\LabelValues.resx" />
+    <EmbeddedResource Include="Data\Resources\Reports\LabelValues.ru.resx" />
+    <EmbeddedResource Include="Data\Resources\Reports\LabelValues.sv.resx" />
+    <EmbeddedResource Include="Data\Resources\Reports\LabelValues.tr.resx" />
+    <EmbeddedResource Include="Data\Resources\Reports\LabelValues.zh-CN.resx" />
+    <EmbeddedResource Include="Data\Resources\Reports\LabelValues.zh-TW.resx" />
+    <EmbeddedResource Include="Data\Resources\ResourceKeys\LabelValues.cs.resx" />
+    <EmbeddedResource Include="Data\Resources\ResourceKeys\LabelValues.da.resx" />
+    <EmbeddedResource Include="Data\Resources\ResourceKeys\LabelValues.de.resx" />
+    <EmbeddedResource Include="Data\Resources\ResourceKeys\LabelValues.es.resx" />
+    <EmbeddedResource Include="Data\Resources\ResourceKeys\LabelValues.fr.resx" />
+    <EmbeddedResource Include="Data\Resources\ResourceKeys\LabelValues.it.resx" />
+    <EmbeddedResource Include="Data\Resources\ResourceKeys\LabelValues.ja.resx" />
+    <EmbeddedResource Include="Data\Resources\ResourceKeys\LabelValues.ko.resx" />
+    <EmbeddedResource Include="Data\Resources\ResourceKeys\LabelValues.nl.resx" />
+    <EmbeddedResource Include="Data\Resources\ResourceKeys\LabelValues.pl.resx" />
+    <EmbeddedResource Include="Data\Resources\ResourceKeys\LabelValues.pt.resx" />
+    <EmbeddedResource Include="Data\Resources\ResourceKeys\LabelValues.resx" />
+    <EmbeddedResource Include="Data\Resources\ResourceKeys\LabelValues.ru.resx" />
+    <EmbeddedResource Include="Data\Resources\ResourceKeys\LabelValues.sv.resx" />
+    <EmbeddedResource Include="Data\Resources\ResourceKeys\LabelValues.tr.resx" />
+    <EmbeddedResource Include="Data\Resources\ResourceKeys\LabelValues.zh-CN.resx" />
+    <EmbeddedResource Include="Data\Resources\ResourceKeys\LabelValues.zh-TW.resx" />
+    <EmbeddedResource Include="Data\Resources\Rugged\LabelValues.cs.resx" />
+    <EmbeddedResource Include="Data\Resources\Rugged\LabelValues.da.resx" />
+    <EmbeddedResource Include="Data\Resources\Rugged\LabelValues.de.resx" />
+    <EmbeddedResource Include="Data\Resources\Rugged\LabelValues.es.resx" />
+    <EmbeddedResource Include="Data\Resources\Rugged\LabelValues.fr.resx" />
+    <EmbeddedResource Include="Data\Resources\Rugged\LabelValues.it.resx" />
+    <EmbeddedResource Include="Data\Resources\Rugged\LabelValues.ja.resx" />
+    <EmbeddedResource Include="Data\Resources\Rugged\LabelValues.ko.resx" />
+    <EmbeddedResource Include="Data\Resources\Rugged\LabelValues.nl.resx" />
+    <EmbeddedResource Include="Data\Resources\Rugged\LabelValues.pl.resx" />
+    <EmbeddedResource Include="Data\Resources\Rugged\LabelValues.pt.resx" />
+    <EmbeddedResource Include="Data\Resources\Rugged\LabelValues.resx" />
+    <EmbeddedResource Include="Data\Resources\Rugged\LabelValues.ru.resx" />
+    <EmbeddedResource Include="Data\Resources\Rugged\LabelValues.sv.resx" />
+    <EmbeddedResource Include="Data\Resources\Rugged\LabelValues.tr.resx" />
+    <EmbeddedResource Include="Data\Resources\Rugged\LabelValues.zh-CN.resx" />
+    <EmbeddedResource Include="Data\Resources\Rugged\LabelValues.zh-TW.resx" />
+    <EmbeddedResource Include="Data\Resources\Scripts\LabelValues.cs.resx" />
+    <EmbeddedResource Include="Data\Resources\Scripts\LabelValues.da.resx" />
+    <EmbeddedResource Include="Data\Resources\Scripts\LabelValues.de.resx" />
+    <EmbeddedResource Include="Data\Resources\Scripts\LabelValues.es.resx" />
+    <EmbeddedResource Include="Data\Resources\Scripts\LabelValues.fr.resx" />
+    <EmbeddedResource Include="Data\Resources\Scripts\LabelValues.it.resx" />
+    <EmbeddedResource Include="Data\Resources\Scripts\LabelValues.ja.resx" />
+    <EmbeddedResource Include="Data\Resources\Scripts\LabelValues.ko.resx" />
+    <EmbeddedResource Include="Data\Resources\Scripts\LabelValues.nl.resx" />
+    <EmbeddedResource Include="Data\Resources\Scripts\LabelValues.pl.resx" />
+    <EmbeddedResource Include="Data\Resources\Scripts\LabelValues.pt.resx" />
+    <EmbeddedResource Include="Data\Resources\Scripts\LabelValues.resx" />
+    <EmbeddedResource Include="Data\Resources\Scripts\LabelValues.ru.resx" />
+    <EmbeddedResource Include="Data\Resources\Scripts\LabelValues.sv.resx" />
+    <EmbeddedResource Include="Data\Resources\Scripts\LabelValues.tr.resx" />
+    <EmbeddedResource Include="Data\Resources\Scripts\LabelValues.zh-CN.resx" />
+    <EmbeddedResource Include="Data\Resources\Scripts\LabelValues.zh-TW.resx" />
+    <EmbeddedResource Include="Data\Resources\Search\LabelValues.cs.resx" />
+    <EmbeddedResource Include="Data\Resources\Search\LabelValues.da.resx" />
+    <EmbeddedResource Include="Data\Resources\Search\LabelValues.de.resx" />
+    <EmbeddedResource Include="Data\Resources\Search\LabelValues.es.resx" />
+    <EmbeddedResource Include="Data\Resources\Search\LabelValues.fr.resx" />
+    <EmbeddedResource Include="Data\Resources\Search\LabelValues.it.resx" />
+    <EmbeddedResource Include="Data\Resources\Search\LabelValues.ja.resx" />
+    <EmbeddedResource Include="Data\Resources\Search\LabelValues.ko.resx" />
+    <EmbeddedResource Include="Data\Resources\Search\LabelValues.nl.resx" />
+    <EmbeddedResource Include="Data\Resources\Search\LabelValues.pl.resx" />
+    <EmbeddedResource Include="Data\Resources\Search\LabelValues.pt.resx" />
+    <EmbeddedResource Include="Data\Resources\Search\LabelValues.resx" />
+    <EmbeddedResource Include="Data\Resources\Search\LabelValues.ru.resx" />
+    <EmbeddedResource Include="Data\Resources\Search\LabelValues.sv.resx" />
+    <EmbeddedResource Include="Data\Resources\Search\LabelValues.tr.resx" />
+    <EmbeddedResource Include="Data\Resources\Search\LabelValues.zh-CN.resx" />
+    <EmbeddedResource Include="Data\Resources\Search\LabelValues.zh-TW.resx" />
+    <EmbeddedResource Include="Data\Resources\Sensors\LabelValues.cs.resx" />
+    <EmbeddedResource Include="Data\Resources\Sensors\LabelValues.da.resx" />
+    <EmbeddedResource Include="Data\Resources\Sensors\LabelValues.de.resx" />
+    <EmbeddedResource Include="Data\Resources\Sensors\LabelValues.es.resx" />
+    <EmbeddedResource Include="Data\Resources\Sensors\LabelValues.fr.resx" />
+    <EmbeddedResource Include="Data\Resources\Sensors\LabelValues.it.resx" />
+    <EmbeddedResource Include="Data\Resources\Sensors\LabelValues.ja.resx" />
+    <EmbeddedResource Include="Data\Resources\Sensors\LabelValues.ko.resx" />
+    <EmbeddedResource Include="Data\Resources\Sensors\LabelValues.nl.resx" />
+    <EmbeddedResource Include="Data\Resources\Sensors\LabelValues.pl.resx" />
+    <EmbeddedResource Include="Data\Resources\Sensors\LabelValues.pt.resx" />
+    <EmbeddedResource Include="Data\Resources\Sensors\LabelValues.resx" />
+    <EmbeddedResource Include="Data\Resources\Sensors\LabelValues.ru.resx" />
+    <EmbeddedResource Include="Data\Resources\Sensors\LabelValues.sv.resx" />
+    <EmbeddedResource Include="Data\Resources\Sensors\LabelValues.tr.resx" />
+    <EmbeddedResource Include="Data\Resources\Sensors\LabelValues.zh-CN.resx" />
+    <EmbeddedResource Include="Data\Resources\Sensors\LabelValues.zh-TW.resx" />
+    <EmbeddedResource Include="Data\Resources\Settings\LabelValues.cs.resx" />
+    <EmbeddedResource Include="Data\Resources\Settings\LabelValues.da.resx" />
+    <EmbeddedResource Include="Data\Resources\Settings\LabelValues.de.resx" />
+    <EmbeddedResource Include="Data\Resources\Settings\LabelValues.es.resx" />
+    <EmbeddedResource Include="Data\Resources\Settings\LabelValues.fr.resx" />
+    <EmbeddedResource Include="Data\Resources\Settings\LabelValues.it.resx" />
+    <EmbeddedResource Include="Data\Resources\Settings\LabelValues.ja.resx" />
+    <EmbeddedResource Include="Data\Resources\Settings\LabelValues.ko.resx" />
+    <EmbeddedResource Include="Data\Resources\Settings\LabelValues.nl.resx" />
+    <EmbeddedResource Include="Data\Resources\Settings\LabelValues.pl.resx" />
+    <EmbeddedResource Include="Data\Resources\Settings\LabelValues.pt.resx" />
+    <EmbeddedResource Include="Data\Resources\Settings\LabelValues.resx" />
+    <EmbeddedResource Include="Data\Resources\Settings\LabelValues.ru.resx" />
+    <EmbeddedResource Include="Data\Resources\Settings\LabelValues.sv.resx" />
+    <EmbeddedResource Include="Data\Resources\Settings\LabelValues.tr.resx" />
+    <EmbeddedResource Include="Data\Resources\Settings\LabelValues.zh-CN.resx" />
+    <EmbeddedResource Include="Data\Resources\Settings\LabelValues.zh-TW.resx" />
+    <EmbeddedResource Include="Data\Resources\SmartGroups\LabelValues.cs.resx" />
+    <EmbeddedResource Include="Data\Resources\SmartGroups\LabelValues.da.resx" />
+    <EmbeddedResource Include="Data\Resources\SmartGroups\LabelValues.de.resx" />
+    <EmbeddedResource Include="Data\Resources\SmartGroups\LabelValues.es.resx" />
+    <EmbeddedResource Include="Data\Resources\SmartGroups\LabelValues.fr.resx" />
+    <EmbeddedResource Include="Data\Resources\SmartGroups\LabelValues.it.resx" />
+    <EmbeddedResource Include="Data\Resources\SmartGroups\LabelValues.ja.resx" />
+    <EmbeddedResource Include="Data\Resources\SmartGroups\LabelValues.ko.resx" />
+    <EmbeddedResource Include="Data\Resources\SmartGroups\LabelValues.nl.resx" />
+    <EmbeddedResource Include="Data\Resources\SmartGroups\LabelValues.pl.resx" />
+    <EmbeddedResource Include="Data\Resources\SmartGroups\LabelValues.pt.resx" />
+    <EmbeddedResource Include="Data\Resources\SmartGroups\LabelValues.resx" />
+    <EmbeddedResource Include="Data\Resources\SmartGroups\LabelValues.ru.resx" />
+    <EmbeddedResource Include="Data\Resources\SmartGroups\LabelValues.sv.resx" />
+    <EmbeddedResource Include="Data\Resources\SmartGroups\LabelValues.tr.resx" />
+    <EmbeddedResource Include="Data\Resources\SmartGroups\LabelValues.zh-CN.resx" />
+    <EmbeddedResource Include="Data\Resources\SmartGroups\LabelValues.zh-TW.resx" />
+    <EmbeddedResource Include="Data\Resources\Tags\LabelValues.cs.resx" />
+    <EmbeddedResource Include="Data\Resources\Tags\LabelValues.da.resx" />
+    <EmbeddedResource Include="Data\Resources\Tags\LabelValues.de.resx" />
+    <EmbeddedResource Include="Data\Resources\Tags\LabelValues.es.resx" />
+    <EmbeddedResource Include="Data\Resources\Tags\LabelValues.fr.resx" />
+    <EmbeddedResource Include="Data\Resources\Tags\LabelValues.it.resx" />
+    <EmbeddedResource Include="Data\Resources\Tags\LabelValues.ja.resx" />
+    <EmbeddedResource Include="Data\Resources\Tags\LabelValues.ko.resx" />
+    <EmbeddedResource Include="Data\Resources\Tags\LabelValues.nl.resx" />
+    <EmbeddedResource Include="Data\Resources\Tags\LabelValues.pl.resx" />
+    <EmbeddedResource Include="Data\Resources\Tags\LabelValues.pt.resx" />
+    <EmbeddedResource Include="Data\Resources\Tags\LabelValues.resx" />
+    <EmbeddedResource Include="Data\Resources\Tags\LabelValues.ru.resx" />
+    <EmbeddedResource Include="Data\Resources\Tags\LabelValues.sv.resx" />
+    <EmbeddedResource Include="Data\Resources\Tags\LabelValues.tr.resx" />
+    <EmbeddedResource Include="Data\Resources\Tags\LabelValues.zh-CN.resx" />
+    <EmbeddedResource Include="Data\Resources\Tags\LabelValues.zh-TW.resx" />
+    <EmbeddedResource Include="Data\Resources\Telecom\LabelValues.cs.resx" />
+    <EmbeddedResource Include="Data\Resources\Telecom\LabelValues.da.resx" />
+    <EmbeddedResource Include="Data\Resources\Telecom\LabelValues.de.resx" />
+    <EmbeddedResource Include="Data\Resources\Telecom\LabelValues.es.resx" />
+    <EmbeddedResource Include="Data\Resources\Telecom\LabelValues.fr.resx" />
+    <EmbeddedResource Include="Data\Resources\Telecom\LabelValues.it.resx" />
+    <EmbeddedResource Include="Data\Resources\Telecom\LabelValues.ja.resx" />
+    <EmbeddedResource Include="Data\Resources\Telecom\LabelValues.ko.resx" />
+    <EmbeddedResource Include="Data\Resources\Telecom\LabelValues.nl.resx" />
+    <EmbeddedResource Include="Data\Resources\Telecom\LabelValues.pl.resx" />
+    <EmbeddedResource Include="Data\Resources\Telecom\LabelValues.pt.resx" />
+    <EmbeddedResource Include="Data\Resources\Telecom\LabelValues.resx" />
+    <EmbeddedResource Include="Data\Resources\Telecom\LabelValues.ru.resx" />
+    <EmbeddedResource Include="Data\Resources\Telecom\LabelValues.sv.resx" />
+    <EmbeddedResource Include="Data\Resources\Telecom\LabelValues.tr.resx" />
+    <EmbeddedResource Include="Data\Resources\Telecom\LabelValues.zh-CN.resx" />
+    <EmbeddedResource Include="Data\Resources\Telecom\LabelValues.zh-TW.resx" />
+    <EmbeddedResource Include="Data\Resources\TimeWindows\LabelValues.cs.resx" />
+    <EmbeddedResource Include="Data\Resources\TimeWindows\LabelValues.da.resx" />
+    <EmbeddedResource Include="Data\Resources\TimeWindows\LabelValues.de.resx" />
+    <EmbeddedResource Include="Data\Resources\TimeWindows\LabelValues.es.resx" />
+    <EmbeddedResource Include="Data\Resources\TimeWindows\LabelValues.fr.resx" />
+    <EmbeddedResource Include="Data\Resources\TimeWindows\LabelValues.it.resx" />
+    <EmbeddedResource Include="Data\Resources\TimeWindows\LabelValues.ja.resx" />
+    <EmbeddedResource Include="Data\Resources\TimeWindows\LabelValues.ko.resx" />
+    <EmbeddedResource Include="Data\Resources\TimeWindows\LabelValues.nl.resx" />
+    <EmbeddedResource Include="Data\Resources\TimeWindows\LabelValues.pl.resx" />
+    <EmbeddedResource Include="Data\Resources\TimeWindows\LabelValues.pt.resx" />
+    <EmbeddedResource Include="Data\Resources\TimeWindows\LabelValues.resx" />
+    <EmbeddedResource Include="Data\Resources\TimeWindows\LabelValues.ru.resx" />
+    <EmbeddedResource Include="Data\Resources\TimeWindows\LabelValues.sv.resx" />
+    <EmbeddedResource Include="Data\Resources\TimeWindows\LabelValues.tr.resx" />
+    <EmbeddedResource Include="Data\Resources\TimeWindows\LabelValues.zh-CN.resx" />
+    <EmbeddedResource Include="Data\Resources\TimeWindows\LabelValues.zh-TW.resx" />
+    <EmbeddedResource Include="Data\Resources\UpdatesPolicy\LabelValues.cs.resx" />
+    <EmbeddedResource Include="Data\Resources\UpdatesPolicy\LabelValues.da.resx" />
+    <EmbeddedResource Include="Data\Resources\UpdatesPolicy\LabelValues.de.resx" />
+    <EmbeddedResource Include="Data\Resources\UpdatesPolicy\LabelValues.es.resx" />
+    <EmbeddedResource Include="Data\Resources\UpdatesPolicy\LabelValues.fr.resx" />
+    <EmbeddedResource Include="Data\Resources\UpdatesPolicy\LabelValues.it.resx" />
+    <EmbeddedResource Include="Data\Resources\UpdatesPolicy\LabelValues.ja.resx" />
+    <EmbeddedResource Include="Data\Resources\UpdatesPolicy\LabelValues.ko.resx" />
+    <EmbeddedResource Include="Data\Resources\UpdatesPolicy\LabelValues.nl.resx" />
+    <EmbeddedResource Include="Data\Resources\UpdatesPolicy\LabelValues.pl.resx" />
+    <EmbeddedResource Include="Data\Resources\UpdatesPolicy\LabelValues.pt.resx" />
+    <EmbeddedResource Include="Data\Resources\UpdatesPolicy\LabelValues.resx" />
+    <EmbeddedResource Include="Data\Resources\UpdatesPolicy\LabelValues.ru.resx" />
+    <EmbeddedResource Include="Data\Resources\UpdatesPolicy\LabelValues.sv.resx" />
+    <EmbeddedResource Include="Data\Resources\UpdatesPolicy\LabelValues.tr.resx" />
+    <EmbeddedResource Include="Data\Resources\UpdatesPolicy\LabelValues.zh-CN.resx" />
+    <EmbeddedResource Include="Data\Resources\UpdatesPolicy\LabelValues.zh-TW.resx" />
+    <EmbeddedResource Include="Data\Resources\Workflows\LabelValues.cs.resx" />
+    <EmbeddedResource Include="Data\Resources\Workflows\LabelValues.da.resx" />
+    <EmbeddedResource Include="Data\Resources\Workflows\LabelValues.de.resx" />
+    <EmbeddedResource Include="Data\Resources\Workflows\LabelValues.es.resx" />
+    <EmbeddedResource Include="Data\Resources\Workflows\LabelValues.fr.resx" />
+    <EmbeddedResource Include="Data\Resources\Workflows\LabelValues.it.resx" />
+    <EmbeddedResource Include="Data\Resources\Workflows\LabelValues.ja.resx" />
+    <EmbeddedResource Include="Data\Resources\Workflows\LabelValues.ko.resx" />
+    <EmbeddedResource Include="Data\Resources\Workflows\LabelValues.nl.resx" />
+    <EmbeddedResource Include="Data\Resources\Workflows\LabelValues.pl.resx" />
+    <EmbeddedResource Include="Data\Resources\Workflows\LabelValues.pt.resx" />
+    <EmbeddedResource Include="Data\Resources\Workflows\LabelValues.resx" />
+    <EmbeddedResource Include="Data\Resources\Workflows\LabelValues.ru.resx" />
+    <EmbeddedResource Include="Data\Resources\Workflows\LabelValues.sv.resx" />
+    <EmbeddedResource Include="Data\Resources\Workflows\LabelValues.tr.resx" />
+    <EmbeddedResource Include="Data\Resources\Workflows\LabelValues.zh-CN.resx" />
+    <EmbeddedResource Include="Data\Resources\Workflows\LabelValues.zh-TW.resx" />
+  </ItemGroup>
+  <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。使用“NuGet 程序包还原”可下载这些程序包。有关更多信息，请参见 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\..\packages\MSTest.TestAdapter.2.1.2\build\net45\MSTest.TestAdapter.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\MSTest.TestAdapter.2.1.2\build\net45\MSTest.TestAdapter.props'))" />
+    <Error Condition="!Exists('..\..\packages\MSTest.TestAdapter.2.1.2\build\net45\MSTest.TestAdapter.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\MSTest.TestAdapter.2.1.2\build\net45\MSTest.TestAdapter.targets'))" />
+  </Target>
+  <Import Project="..\..\packages\MSTest.TestAdapter.2.1.2\build\net45\MSTest.TestAdapter.targets" Condition="Exists('..\..\packages\MSTest.TestAdapter.2.1.2\build\net45\MSTest.TestAdapter.targets')" />
+</Project>

@@ -1,0 +1,556 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ActivateHubServices" xml:space="preserve">
+    <value>Aktivovat služby centra Hub</value>
+  </data>
+  <data name="ActivateHubServicesDescription" xml:space="preserve">
+    <value>Služby centra Hub jsou hostovány aplikací Workspace ONE Access v cloudu. Pro jejich aktivaci zadejte podrobnosti o cloudovém klientu Workspace ONE Access nebo si jednoho vyžádejte. Pokud neznáte svůj cloudový klient, najdete potřebné informace v e-mailu od společnosti VMware nebo vytvořte servisní požadavek, pokud tyto informace najít nedokážete.</value>
+  </data>
+  <data name="ActivateHubServicesGeneralDescription" xml:space="preserve">
+    <value>Služby centra Hub jsou ve stejném umístění jako aplikace Workspace ONE Access. Chcete-li je nakonfigurovat, zadejte níže podrobnosti o klientu Workspace ONE Access. Pokud jej neznáte, najdete potřebné informace v e-mailu od společnosti VMware. V případě, že tyto informace nenajdete, vytvořte servisní požadavek.</value>
+  </data>
+  <data name="ActivateHubServicesGeneralNote" xml:space="preserve">
+    <value>Poznámka: Některé možnosti služeb centra Hub můžete využívat bez konfigurace aplikace Workspace ONE Access.</value>
+  </data>
+  <data name="ActivateHubServicesNote" xml:space="preserve">
+    <value>Poznámka: Funkce katalogu centra Hub jsou dostupné i bez nastavení konektorů nebo synchronizace Active Directory.</value>
+  </data>
+  <data name="AdministratorDetails" xml:space="preserve">
+    <value>Podrobnosti administrátora</value>
+  </data>
+  <data name="ArgOrganizationGroups" xml:space="preserve">
+    <value>Počet organizačních skupin: {0}</value>
+    <comment>{0} will be integer</comment>
+  </data>
+  <data name="AuthenticationSourceSettingsFetchFailedError" xml:space="preserve">
+    <value>Nastavení zdroje autentizace nelze načíst.</value>
+  </data>
+  <data name="Avenger" xml:space="preserve">
+    <value>Android Avenger</value>
+  </data>
+  <data name="BluetoothLocationServiceHubPassport" xml:space="preserve">
+    <value>*Zařízení Bluetooth musí být aktivováno na zařízeních zaměstnanců a pro dosažení nejlepších výsledků by měly být aktivovány služby zjišťování polohy.</value>
+  </data>
+  <data name="CatalogSettings" xml:space="preserve">
+    <value>Nastavení katalogu</value>
+  </data>
+  <data name="CatalogSettingsDescription" xml:space="preserve">
+    <value>Centrum Hub zobrazí katalog integrovaných aplikací na základě následujícího nastavení.</value>
+  </data>
+  <data name="CloudTenant" xml:space="preserve">
+    <value>Cloudový klient</value>
+  </data>
+  <data name="CloudTenantAlreadyConfigured" xml:space="preserve">
+    <value>Klient cloudu již byl konfigurován pro aplikaci Workspace ONE Access.</value>
+  </data>
+  <data name="CloudTenantHelpText" xml:space="preserve">
+    <value>Nemáte cloudový klient? Nyní můžete požádat o cloudový klient Workspace ONE Access.</value>
+  </data>
+  <data name="CloudTenantHostedInOneOfTheRegion" xml:space="preserve">
+    <value>Váš cloudový klient může být hostován v jedné z níže uvedených oblastí. Vyberte tu oblast, která nejvíce vyhovuje požadavkům na konformitu a zabezpečení vaší organizace a dalším podnikovým faktorům.</value>
+  </data>
+  <data name="CloudTenantSameAsExisting" xml:space="preserve">
+    <value>Cloudový klient je stejný jako ten stávající. Pokračujte uložením.</value>
+  </data>
+  <data name="CloudTenantSuccessfullyCreatedActivateHubServices" xml:space="preserve">
+    <value>Váš cloudový klient byl úspěšně vytvořen. Chcete-li aktivovat služby centra Hub, klikněte na možnost Začínáme a zadejte podrobnosti o cloudovém klientu Workspace ONE Access, které jste obdrželi e-mailem.</value>
+  </data>
+  <data name="CloudTenantUrl" xml:space="preserve">
+    <value>Adresa URL cloudového klienta</value>
+  </data>
+  <data name="CollectLocationDataTooltip" xml:space="preserve">
+    <value>Vyzve zaměstnance k povolení sběru dat GPS o jejich poloze.</value>
+  </data>
+  <data name="ConfigurationOverwrite" xml:space="preserve">
+    <value>Přepsání konfigurace</value>
+  </data>
+  <data name="ConsiderUpdatingArgLanguage" xml:space="preserve">
+    <value>Zvažte patřičnou aktualizaci {0} jazyka rozhraní pro zaměstnance.</value>
+    <comment>{0} will be "Terms of Use"</comment>
+  </data>
+  <data name="DeviceDatafromGoogleNotReceived" xml:space="preserve">
+    <value>Data zařízení z Google nebyla přijata. Požádejte svého administrátora IT o vyřešení problému.</value>
+  </data>
+  <data name="DifferentVidmTenantConfiguredAtCurrentOg" xml:space="preserve">
+    <value>V této organizační skupině je konfigurován jiný klient Workspace ONE Access.</value>
+  </data>
+  <data name="DisabledByDefault" xml:space="preserve">
+    <value>Deaktivováno ve výchozím nastavení</value>
+  </data>
+  <data name="DisableManagedAppNotAcceptable" xml:space="preserve">
+    <value>Zadejte platný identifikátor aplikace.</value>
+  </data>
+  <data name="DisplayPrivacyDialogTooltip" xml:space="preserve">
+    <value>Při prvním spuštění zobrazí standardní obrazovku ochrany soukromí.</value>
+  </data>
+  <data name="DownloadLatestMacOsHubVersion" xml:space="preserve">
+    <value>Stáhnout nejnovější verzi</value>
+  </data>
+  <data name="EditHidPassportServiceSettings" xml:space="preserve">
+    <value>Upravit nastavení služby HID Passport</value>
+  </data>
+  <data name="EditHidPassportServiceSettingsHelp" xml:space="preserve">
+    <value>Řídí přístup k úpravám nastavení služby HID Passport.</value>
+  </data>
+  <data name="EnableAutomaticUpdates" xml:space="preserve">
+    <value>Automatické aktualizace</value>
+  </data>
+  <data name="EnableAutomaticUpdatesTooltip" xml:space="preserve">
+    <value>Automaticky kontroluje dostupnost aktualizací. Když je možnost vypnuta, zaměstnanci musí ručně kontrolovat jejich dostupnost v centru Hub.</value>
+  </data>
+  <data name="EnableAwcmTooltip" xml:space="preserve">
+    <value>AirWatch Cloud Messaging (AWCM) umožňuje komunikaci mezi serverem a centrem Hub. Když je možnost vypnuta, příkazy a vzorky nebudou centrem Hub přijímány až do příštího plánovaného intervalového přihlášení.</value>
+  </data>
+  <data name="EnableConfigureHubPassportDescription" xml:space="preserve">
+    <value>Aktivujte a nakonfigurujte aplikaci Hub Passport ve službách centra Hub, která zaměstnancům poskytne přístup k firemním kancelářím pomocí jejich zařízení iOS a Android v rolích virtuální přístupové identifikační karty.</value>
+  </data>
+  <data name="EnabledByDefault" xml:space="preserve">
+    <value>Aktivováno ve výchozím nastavení</value>
+  </data>
+  <data name="EnableHubExperienceModeInfo" xml:space="preserve">
+    <value>Vyberte Aktivováno, aby se zařízení v této organizační skupině mohla připojit ke službám Workspace ONE Hub pro funkce, jako je App Catalog a People.</value>
+  </data>
+  <data name="EnableMacOsHubDownloadAfterEnrollment" xml:space="preserve">
+    <value>Instalovat centrum Hub po registraci</value>
+  </data>
+  <data name="EnableMacOsHubDownloadAfterEnrollmentTooltip" xml:space="preserve">
+    <value>Automaticky instaluje centrum Hub na zařízeních po registraci prostřednictvím DEP nebo webu.</value>
+  </data>
+  <data name="EnforcePasscodePolicyTooltip" xml:space="preserve">
+    <value>Vyzve zaměstnance k vytvoření nového hesla splňujícího požadavky profilu MDM. Když je možnost vypnuta, zaměstnanci budou vyzváni jen při odhlášení a zpětném přihlášení.</value>
+  </data>
+  <data name="ExcludesOrganizationGroups" xml:space="preserve">
+    <value>Vyloučené organizační skupiny</value>
+  </data>
+  <data name="FailedToRetrieveAvailableHostingRegionsContactSupport" xml:space="preserve">
+    <value>Nepodařilo se načíst dostupné hostingové regiony pro klient Workspace ONE Access. Zkuste to znovu. Pokud problém přetrvává, kontaktujte podporu.</value>
+  </data>
+  <data name="GeneratingCloudTenant" xml:space="preserve">
+    <value>Generuje se cloudový klient</value>
+  </data>
+  <data name="HubCatalogAndroid" xml:space="preserve">
+    <value>Katalog centra Hub (Android)</value>
+  </data>
+  <data name="HubCatalogIos" xml:space="preserve">
+    <value>Katalog centra Hub (iOS)</value>
+  </data>
+  <data name="HubCatalogMacos" xml:space="preserve">
+    <value>Katalog centra Hub (macOS)</value>
+  </data>
+  <data name="HubCatalogSettingsFetchFailedError" xml:space="preserve">
+    <value>Nelze načíst nastavení režimu povolení katalogu centra Hub.</value>
+  </data>
+  <data name="HubCatalogWinRT" xml:space="preserve">
+    <value>Katalog centra Hub (Windows)</value>
+  </data>
+  <data name="HubEnabledSelectedOg" xml:space="preserve">
+    <value>Nastavení aplikace Hub Passport je již aktivováno pro vybranou organizační skupinu.</value>
+  </data>
+  <data name="HubIntegration" xml:space="preserve">
+    <value>Integrace centra Hub</value>
+  </data>
+  <data name="HubPassport" xml:space="preserve">
+    <value>Hub Passport</value>
+  </data>
+  <data name="HubPassportDescription" xml:space="preserve">
+    <value>Účet aplikace Hub Passport umožňuje zaměstnancům přístup k firemním kancelářím pomocí svých zařízení iOS a Android, které plní roli virtuální přístupové identifikační karty a musí být aktivovány ve službách centra Hub. Vyberte organizační skupiny, které budou provádět správu přístupu pro tuto funkci.</value>
+  </data>
+  <data name="HubPassportEnabledAtChildArgOgInfo" xml:space="preserve">
+    <value>Podřízené položky vybrané organizační skupiny jsou již zahrnuty ve výběru. Nadřízenou položku vyberete odebráním {0}.</value>
+    <comment>{0} will be list of Organization groups name</comment>
+  </data>
+  <data name="HubPassportEnabledAtParentArgOgInfo" xml:space="preserve">
+    <value>Vybraná organizační skupina je již zahrnuta jako podřízená položka {0}.</value>
+    <comment>{0} will be Organization group name</comment>
+  </data>
+  <data name="HubPassportSettingChildOgDescription" xml:space="preserve">
+    <value>Po aktivaci bude funkčnost aplikace Hub Passport automaticky uplatněna ve vaší organizační skupině a všech jejích podřízených skupinách. Tuto funkčnost však můžete omezit na konkrétní organizační skupiny tím, že je níže vyberete.</value>
+  </data>
+  <data name="HubServicesActivatedLaunchHubServicesToConfigure" xml:space="preserve">
+    <value>Centrum služeb bylo úspěšně aktivováno. Nyní ho můžete spustit a konfigurovat.</value>
+  </data>
+  <data name="HubServicesActivationInfo" xml:space="preserve">
+    <value>Nakonfigurujte služby centra Hub přes stránku konfigurace Intelligent Hub, abyste umožnili níže uvedené možnosti integrace.</value>
+  </data>
+  <data name="HubServicesFeature" xml:space="preserve">
+    <value>Použití funkcí služeb centra Hub v Intelligent Hub</value>
+  </data>
+  <data name="HubServicesFeaturesSettingsFetchFailedError" xml:space="preserve">
+    <value>Nastavení funkcí služeb Hub se nepodařilo získat</value>
+  </data>
+  <data name="HubServicesGeneralNote" xml:space="preserve">
+    <value>Poznámka: Možnosti Oznámení a Lidé jsou k dispozici pouze u cloudových služeb centra Hub a klientu aplikace Access.</value>
+  </data>
+  <data name="HubServicesHostingDescription" xml:space="preserve">
+    <value>Služby centra Hub jsou hostovány v cloudové aplikaci Workspace ONE Access.</value>
+  </data>
+  <data name="HubServicesHostingGeneralDescription" xml:space="preserve">
+    <value>Služby centra Hub jsou ve stejném umístění jako aplikace Workspace ONE Access.</value>
+  </data>
+  <data name="HubServicesSuccessfullyReactivatedLaunchHubServicesToConfigureIntelligentHubExperience" xml:space="preserve">
+    <value>Služby centra Hub byly úspěšně znovu aktivovány. Nyní můžete služby centra Hub spustit za účelem konfigurace uživatelského prostředí aplikace Intelligent Hub.</value>
+  </data>
+  <data name="HubServicesURL" xml:space="preserve">
+    <value>Adresa URL služeb centra Hub</value>
+  </data>
+  <data name="HubServicesURLSaveError" xml:space="preserve">
+    <value>Selhalo uložení adresy URL konfigurace služeb Hub</value>
+  </data>
+  <data name="HubSettingsConfiguredSuccess" xml:space="preserve">
+    <value>Nastavení aplikace Hub Passport bylo úspěšně uloženo.</value>
+  </data>
+  <data name="HubSettingsInvalidInputError" xml:space="preserve">
+    <value>Zdroje pro tuto organizační skupinu nebyly nalezeny nebo tento uživatel nemá přístup k organizační skupině.</value>
+  </data>
+  <data name="HubSettingsUnauthorizedAccessError" xml:space="preserve">
+    <value>Neautorizovaný přístup.</value>
+  </data>
+  <data name="IDMAuthentication" xml:space="preserve">
+    <value>Workspace ONE Access</value>
+  </data>
+  <data name="IncorrectEmailAddress" xml:space="preserve">
+    <value>E-mailová adresa není platná. Zkontrolujte formát e-mailové adresy a zkuste to znovu.</value>
+  </data>
+  <data name="InvalidCloudTenantUrl" xml:space="preserve">
+    <value>Neplatná adresa URL Chcete-li pokračovat, zadejte adresu URL cloudového klientu Workspace ONE Access.</value>
+  </data>
+  <data name="InvalidFirstName" xml:space="preserve">
+    <value>Neplatné jméno. Zkuste to znovu.</value>
+  </data>
+  <data name="InvalidLastName" xml:space="preserve">
+    <value>Neplatné příjmení. Zkuste to znovu.</value>
+  </data>
+  <data name="InvalidPasswordTryAgain" xml:space="preserve">
+    <value>Neplatné heslo. Zkuste to prosím znovu.</value>
+  </data>
+  <data name="InvalidUserNameErrorMessage" xml:space="preserve">
+    <value>Neplatné uživatelské jméno. Změňte uživatelské jméno a zkuste to znovu.</value>
+  </data>
+  <data name="InvalidUserNamePleaseTryAgain" xml:space="preserve">
+    <value>Neplatné uživatelské jméno. Zkuste to znovu.</value>
+  </data>
+  <data name="InvalidUsernameTryAgain" xml:space="preserve">
+    <value>Neplatné uživatelské jméno. Zkuste to znovu.</value>
+  </data>
+  <data name="macOSCheckInIntervalTooltip" xml:space="preserve">
+    <value>Nastaví frekvenci, ve které bude centrum Hub kontrolovat na serveru nové příkazy.</value>
+  </data>
+  <data name="MacOsCollectAnalytics" xml:space="preserve">
+    <value>Shromáždit analýzu</value>
+  </data>
+  <data name="MacOsCollectCrashReports" xml:space="preserve">
+    <value>Požadavek na sběr hlášení o selhání</value>
+  </data>
+  <data name="MacOsCollectLocationData" xml:space="preserve">
+    <value>Požadavek na sběr dat o poloze</value>
+  </data>
+  <data name="macOsEnforcePasscode" xml:space="preserve">
+    <value>Vynutit heslo</value>
+  </data>
+  <data name="MacOsPrivacyLink" xml:space="preserve">
+    <value>Odkaz na zásady soukromí</value>
+  </data>
+  <data name="MacOsRequestPermission" xml:space="preserve">
+    <value>Vyžádat oprávnění</value>
+  </data>
+  <data name="macOSSampleIntervalTooltip" xml:space="preserve">
+    <value>Nastaví frekvenci, se kterou bude centrum Hub skenovat zařízení a shromažďovat data, například stav zřízení produktu, stav šifrováni disku, vlastní atributy, pozice GPS a další základní systémové informace.</value>
+  </data>
+  <data name="MacOsShowPrivacyScreen" xml:space="preserve">
+    <value>Zobrazit obrazovku ochrany soukromí</value>
+  </data>
+  <data name="macOSTransmitIntervalTooltip" xml:space="preserve">
+    <value>Nastaví frekvenci, se kterou bude centrum Hub odesílat vzorky dat na server Hub UEM.</value>
+  </data>
+  <data name="MacOsUninstallHub" xml:space="preserve">
+    <value>Odinstalovat oprávnění</value>
+  </data>
+  <data name="MacOsVMwareWorkspaceONEIntelligentHub" xml:space="preserve">
+    <value>VMware Workspace ONE Intelligent Hub</value>
+  </data>
+  <data name="ManagementModeDescription" xml:space="preserve">
+    <value>Povoluje registraci zařízení bez správy MDM (registrace v pracovním prostoru).</value>
+  </data>
+  <data name="ManagementModeSettingsFetchFailedError" xml:space="preserve">
+    <value>Nastavení režimu kontejneru nelze přečíst.</value>
+  </data>
+  <data name="OptInFlowAlreadyCompletedInformationMessage" xml:space="preserve">
+    <value>Workspace ONE Access byl již konfigurován pro stávající organizaci. Kontaktujte svého správce IT.</value>
+  </data>
+  <data name="OrganizationGroupNotFoundError" xml:space="preserve">
+    <value>Organizační skupina nebyla nalezena.</value>
+  </data>
+  <data name="OrganizationGroupRestrictedError" xml:space="preserve">
+    <value>Zdroje pro tuto organizační skupinu nebyly nalezeny nebo tento uživatel nemá přístup k organizační skupině.</value>
+  </data>
+  <data name="PickARegion" xml:space="preserve">
+    <value>Zvolte oblast</value>
+  </data>
+  <data name="PickDataCenterLocation" xml:space="preserve">
+    <value>Zvolte lokalitu datového centra</value>
+  </data>
+  <data name="PleaseWaitWhileYourCloudTenantIsCreated" xml:space="preserve">
+    <value>Počkejte několik minut, dokud nebude vytvořen váš cloudový klient.</value>
+  </data>
+  <data name="PolicyAllowCrashReportingTooltip" xml:space="preserve">
+    <value>Shromažďuje hlášení o selhání a automaticky je zasílá na server.</value>
+  </data>
+  <data name="PrivacyPolicyLinkTooltip" xml:space="preserve">
+    <value>Přesměruje obrazovku ochrany soukromí na jiný odkaz, než je oficiální stránka ochrany soukromí VMware.</value>
+  </data>
+  <data name="ProvideInformationBelowToRequestAdministratorAccessAndvIDMCloudTenant" xml:space="preserve">
+    <value>Zapište níže svou žádost o udělení přístupu administrátora a zřízení cloudového klientu Workspace ONE Access, na kterou dostanete e-mailem během několika minut reakci.</value>
+  </data>
+  <data name="ReadAndAcceptHubServicesTOS" xml:space="preserve">
+    <value>Přečtěte si a potvrďte svůj souhlas s následujícími Podmínkami použití služeb centra Hub.</value>
+  </data>
+  <data name="ReconfigureHubServices" xml:space="preserve">
+    <value>Znovu konfigurovat služby centra Hub</value>
+  </data>
+  <data name="ReconfigureHubServicesDescription" xml:space="preserve">
+    <value>Služby centra Hub jsou hostovány aplikací Workspace ONE Access v cloudu. Pro jejich opětovnou konfiguraci zadejte podrobnosti o cloudovém klientu Workspace ONE Access. Pokud neznáte svůj cloudový klient, najdete potřebné informace v e-mailu od společnosti VMware nebo vytvořte servisní požadavek, pokud tyto informace najít nedokážete.</value>
+  </data>
+  <data name="ReconfigureHubServicesGeneralDescription" xml:space="preserve">
+    <value>Služby centra Hub jsou ve stejném umístění jako aplikace Workspace ONE Access. Chcete-li je znovu nakonfigurovat, zadejte níže podrobnosti o klientu Workspace ONE Access. Pokud jej neznáte, najdete potřebné informace v e-mailu od společnosti VMware. V případě, že tyto informace nenajdete, vytvořte servisní požadavek.</value>
+  </data>
+  <data name="RequestCloudTenant" xml:space="preserve">
+    <value>Požádat o vydání cloudového klientu</value>
+  </data>
+  <data name="RequestCloudTenantInfo" xml:space="preserve">
+    <value>Poznámka: Klient cloudu musí mít připojení k datovému centru. Může být odlišný od vašeho stávajícího poskytovatele služby datového centra a může se nacházet v jiné zemi.</value>
+  </data>
+  <data name="RequireGroupIdForVidmWithoutLink" xml:space="preserve">
+    <value>Tato organizační skupina nemá ID skupiny, které je nezbytné pro nastavení aplikace Workspace ONE Access. ID skupiny můžete přidat na stránce podrobností organizační skupiny.</value>
+  </data>
+  <data name="SaveFailedTryAgain" xml:space="preserve">
+    <value>Uložení selhalo. Zkuste to znovu.</value>
+  </data>
+  <data name="SdkProfileV2" xml:space="preserve">
+    <value>Profil SDK</value>
+  </data>
+  <data name="SourceOfAuthentication" xml:space="preserve">
+    <value>Zdroj autentizace</value>
+  </data>
+  <data name="SourceOfAuthenticationDescription" xml:space="preserve">
+    <value>Centrum Hub bude používat pro autentizaci níže zvoleného poskytovatele.</value>
+  </data>
+  <data name="SourceOfAuthenticationForHub" xml:space="preserve">
+    <value>Zdroj autentizace centra Hub</value>
+  </data>
+  <data name="StartTypeToAddGroup" xml:space="preserve">
+    <value>Chcete-li přidat skupinu, začněte psát.</value>
+  </data>
+  <data name="TechnicalErrorOccurredPleaseContactAdministrator" xml:space="preserve">
+    <value>Došlo k technické chybě. Zkuste to prosím znovu. Pokud problém přetrvává, kontaktujte svého správce IT.</value>
+  </data>
+  <data name="TenantAlreadyConfigured" xml:space="preserve">
+    <value>Pro aplikaci Workspace ONE Access je klient již nakonfigurován.</value>
+  </data>
+  <data name="TenantNameWillBeCreatedBasedOnOG" xml:space="preserve">
+    <value>Název klientu, který bude vytvořen na základě nyní přihlášené organizační skupiny, najdete níže.</value>
+  </data>
+  <data name="TenantUrlLabel" xml:space="preserve">
+    <value>URL klienta</value>
+  </data>
+  <data name="TermsOfService" xml:space="preserve">
+    <value>Smluvní podmínky</value>
+  </data>
+  <data name="TermsOfServices" xml:space="preserve">
+    <value>Podmínky použití služeb</value>
+  </data>
+  <data name="UEMAirwatch" xml:space="preserve">
+    <value>UEM (AirWatch)</value>
+  </data>
+  <data name="UninstallAgentTooltip" xml:space="preserve">
+    <value>Dává zaměstnancům možnost odinstalovat aplikaci centra Hub z jejich zařízení.</value>
+  </data>
+  <data name="UpgradeSilentlyTooltip" xml:space="preserve">
+    <value>Aktualizace budou instalovány automaticky na pozadí, bez dotazování zaměstnanců. Když bude možnost vypnuta, zaměstnanci uvidí výzvu k aktualizaci, až budou nové aktualizace dostupné.</value>
+  </data>
+  <data name="UseHubServicesFeatures" xml:space="preserve">
+    <value>Použít funkce služeb centra Hub</value>
+  </data>
+  <data name="UserNameLabel" xml:space="preserve">
+    <value>Uživatelské jméno</value>
+  </data>
+  <data name="VidmConfigOverwriteNote" xml:space="preserve">
+    <value>Poznámka: Jestliže používáte aplikaci Workspace ONE s aktuální konfigurací, nebudou registrovaní zaměstnanci nijak ovlivněni. Noví zaměstnanci však budou smět používat pouze aplikaci Intelligent Hub.</value>
+  </data>
+  <data name="VidmConfigRemoveWarning" xml:space="preserve">
+    <value>Vaše aktuální konfigurace Workspace ONE Access bude nahrazena nově zadanými informacemi.</value>
+  </data>
+  <data name="VidmConfigRemoveWarningDescription" xml:space="preserve">
+    <value>Jestliže používáte aplikaci Workspace ONE s aktuální konfigurací, nebudou registrovaní zaměstnanci nijak ovlivněni. Noví zaměstnanci však budou smět používat jen aplikaci Intelligent Hub.</value>
+  </data>
+  <data name="VidmConfigReplacedWithNewCloudTenantWarning" xml:space="preserve">
+    <value>Až dokončíte tento požadavek, vaše konfigurace Workspace ONE Access bude nahrazena novým cloudovým klientem.</value>
+  </data>
+  <data name="VIDMConfigureCertificateError" xml:space="preserve">
+    <value>Selhalo vytvoření certifikátu pro účet služby Workspace ONE UEM. Není možné konfigurovat nastavení aplikace Workspace ONE Access.</value>
+  </data>
+  <data name="VIDMConfigureExistingUEMSettingError" xml:space="preserve">
+    <value>Zdá se, že došlo k chybě během načítání konfiguračních podrobností Workspace ONE UEM z vašeho klientu Workspace ONE Access. Zkontrolujte tato nastavení, zkuste to znovu a pokračujte.</value>
+  </data>
+  <data name="VIDMConfigureUEMSettingsError" xml:space="preserve">
+    <value>Zdá se, že došlo k chybě během konfigurace nastavení Workspace ONE UEM ve vašem klientu Workspace ONE Access. Zkuste to znovu a pokračujte.</value>
+  </data>
+  <data name="VidmImpactedConfigDescription" xml:space="preserve">
+    <value>Chcete-li používat funkce služeb centra Hub, které vyžadují aplikaci Workspace ONE Access, budete muset znovu nakonfigurovat novou instanci aplikace Workspace ONE Access se všemi použitelnými konfiguracemi. Kompletní seznam ovlivněných konfigurací naleznete v tématu {0} v průvodci Workspace ONE Hub Services Guide.</value>
+  </data>
+  <data name="VIDMInvalidOGTypeError" xml:space="preserve">
+    <value>Workspace ONE Access lze konfigurovat jen u typu zákazníka Organizační skupina.</value>
+  </data>
+  <data name="VIDMInvalidSettingsError" xml:space="preserve">
+    <value>Neplatné přihlašovací údaje cloudového klientu Workspace ONE Access. Měli byste dostat e-mailovou zprávu od společnosti VMware s vašimi přihlašovacími údaji. Vytvořte servisní požadavek, pokud tyto údaje nemůžete najít.</value>
+  </data>
+  <data name="VidmNotConfiguredError" xml:space="preserve">
+    <value>Aplikace Workspace ONE Access není konfigurována pro požadovanou organizační skupinu.</value>
+  </data>
+  <data name="VidmTenantRemoveFailed" xml:space="preserve">
+    <value>Selhalo odebrání existující konfigurace klientu Workspace ONE Access.</value>
+  </data>
+  <data name="ViewHidPassportServiceSettings" xml:space="preserve">
+    <value>Zobrazit nastavení služby HID Passport</value>
+  </data>
+  <data name="ViewHidPassportServiceSettingsHelp" xml:space="preserve">
+    <value>Řídí přístup k zobrazení nastavení služby HID Passport.</value>
+  </data>
+  <data name="ViewTermsOfServiceAndAccept" xml:space="preserve">
+    <value>Prohlédněte si smluvní podmínky {0} a níže vyjádřete souhlas.</value>
+  </data>
+  <data name="VMwarePrivacyNotice" xml:space="preserve">
+    <value>Oznámení ochrany osobních údajů VMware</value>
+  </data>
+  <data name="WantToUseSameCloudTenant" xml:space="preserve">
+    <value>Chcete použít tento stejný cloudový klient k aktivaci služeb centra Hub?</value>
+  </data>
+  <data name="WantToUseSameTenant" xml:space="preserve">
+    <value>Chcete použít tento stejný klient k aktivaci služeb centra Hub?</value>
+  </data>
+  <data name="WindowsDesktopCollectAnalytics" xml:space="preserve">
+    <value>Shromáždit analýzu</value>
+  </data>
+  <data name="WindowsDesktopPrivacyLink" xml:space="preserve">
+    <value>Odkaz na zásady soukromí</value>
+  </data>
+  <data name="WindowsDesktopShowPrivacyScreen" xml:space="preserve">
+    <value>Zobrazit obrazovku ochrany soukromí</value>
+  </data>
+</root>

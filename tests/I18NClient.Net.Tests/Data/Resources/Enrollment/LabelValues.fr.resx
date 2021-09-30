@@ -1,0 +1,584 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AMAPIEnrollmentFeatureNotSupported" xml:space="preserve">
+    <value>La fonctionnalité d'inscription à l'API de gestion d'Android n'est pas prise en charge pour votre organisation. Veuillez ontacter votre administrateur.</value>
+  </data>
+  <data name="AMAPIEnrollmentNotAllowed" xml:space="preserve">
+    <value>Les paramètres de l'API de gestion d'Android n'ont pas été activés dans l'organisation du terminal.</value>
+  </data>
+  <data name="AMAPIRegistration" xml:space="preserve">
+    <value>Enregistrement de l'API de gestion Android</value>
+  </data>
+  <data name="AndroidEnterpriseNotAllowed" xml:space="preserve">
+    <value>L'enrôlement d'Android Enterprise n'est pas autorisé pour le terminal.</value>
+  </data>
+  <data name="AndroidEnterpriseNotFound" xml:space="preserve">
+    <value>Les paramètres d'Android Enterprise n'ont pas été activés dans l'organisation du terminal.</value>
+  </data>
+  <data name="AndroidLegacyEnrollmentNotAllowed" xml:space="preserve">
+    <value>L'enrôlement à Android Legacy n'est pas autorisé en mode propriétaire du terminal.</value>
+  </data>
+  <data name="AndroidManagementAPI" xml:space="preserve">
+    <value>API de gestion Android</value>
+  </data>
+  <data name="AndroidWorkEnrollmentUserAddError" xml:space="preserve">
+    <value>L'utilisateur d'inscription n'a pas pu être ajouté à GSuite. Veuillez contacter votre administrateur ou réessayer.</value>
+  </data>
+  <data name="AndroidWorkEnrollmentUserEmailNotFound" xml:space="preserve">
+    <value>Nous n'avons pas pu trouver votre compte, veuillez contacter votre administrateur ou réessayer.</value>
+  </data>
+  <data name="AndroidWorkEnrollmentUserNotFound" xml:space="preserve">
+    <value>Il s'agit d'un compte Google non valide.</value>
+  </data>
+  <data name="AndroidWorkProfileEnrollmentNotAllowed" xml:space="preserve">
+    <value>Le serveur et l'ID de groupe fournis n'autorisent pas l'enrôlement de profils professionnels. Veuillez contacter votre administrateur si vous avez des questions.</value>
+  </data>
+  <data name="AndroidWorkUserEmailDomainNotASubDomain" xml:space="preserve">
+    <value>Le domaine utilisé n'est pas un sous-domaine enregistré. Veuillez contacter votre administrateur.</value>
+  </data>
+  <data name="ApplicationIsNotAllowedToRegister" xml:space="preserve">
+    <value>L'enregistrement de l'application n'est pas autorisé.</value>
+  </data>
+  <data name="AssignUserRole" xml:space="preserve">
+    <value>Attribuer un rôle utilisateur</value>
+  </data>
+  <data name="AutoEnrollmentDisabled" xml:space="preserve">
+    <value>L'enregistrement automatique n'est pas activé pour le groupe organisationnel indiqué. Veuillez contacter votre administrateur ou réessayer.</value>
+  </data>
+  <data name="CannotChangeOGForDEPTokenArg" xml:space="preserve">
+    <value>Impossible de modifier le groupe organisationnel pour le jeton DEP {0}</value>
+  </data>
+  <data name="CannotUseStagingUserForCustomDep" xml:space="preserve">
+    <value>Les utilisateurs de préenrôlement ne sont pas pris en charge. Veuillez contacter votre administrateur.</value>
+  </data>
+  <data name="CaptchaText" xml:space="preserve">
+    <value>Captcha</value>
+  </data>
+  <data name="ChangeRankOrOrganizationGroup" xml:space="preserve">
+    <value>Modifier le classement ou le groupe organisationnel</value>
+  </data>
+  <data name="ChangeRankOrOrganizationGroupForUserGroup" xml:space="preserve">
+    <value>Modifier le classement ou le groupe organisationnel d'un groupe d'utilisateurs</value>
+  </data>
+  <data name="ChangeRankOrUserRole" xml:space="preserve">
+    <value>Modifier le classement ou le rôle utilisateur</value>
+  </data>
+  <data name="ChangeRankOrUserRoleForUserGroup" xml:space="preserve">
+    <value>Modifier le classement ou le rôle utilisateur d'un groupe d'utilisateurs</value>
+  </data>
+  <data name="ChangeUserRoleAssignmentRankUsingEdit" xml:space="preserve">
+    <value>Afin de modifier le classement ou le rôle utilisateur d'un groupe d'utilisateurs, cliquez sur le bouton Modifier en regard de l'enregistrement.</value>
+  </data>
+  <data name="ConfirmEnterpriseWipeDeviceTitleMessage" xml:space="preserve">
+    <value>Cette action annule l'enrôlement et supprime toutes les ressources d'entreprise gérées du terminal sélectionné (y compris les applications et les profils). Vous ne pouvez pas annuler cette action sans réenrôler ce terminal.</value>
+  </data>
+  <data name="CopeEnrollmentNotSupported" xml:space="preserve">
+    <value>Inscription bloquée en raison d'une version de Workspace ONE Intelligent Hub non prise en charge</value>
+  </data>
+  <data name="CopyEMMToken" xml:space="preserve">
+    <value>3. Copiez le jeton EMM fourni pour une utilisation à l'étape suivante.</value>
+  </data>
+  <data name="CustomEnrollmentFeatureNotEnabled" xml:space="preserve">
+    <value>L'enrôlement personnalisé a été désactivé pour votre organisation. Veuillez contacter votre administrateur pour enregistrer à nouveau le profil d'enrôlement de ce terminal et tenter de vous réenrôler.</value>
+  </data>
+  <data name="DefaultActionForInactiveUsersChanged" xml:space="preserve">
+    <value>Action par défaut pour les utilisateurs inactifs modifiée</value>
+  </data>
+  <data name="DefaultDeviceOwnershipChanged" xml:space="preserve">
+    <value>Propriété du terminal par défaut modifiée</value>
+  </data>
+  <data name="DefaultDeviceUserRoleChanged" xml:space="preserve">
+    <value>Rôle de l'utilisateur du terminal par défaut modifié</value>
+  </data>
+  <data name="DeleteDeviceCountMessage" xml:space="preserve">
+    <value>Nombre de terminaux qui seront définitivement supprimés :</value>
+  </data>
+  <data name="DepFetchInfoMessage" xml:space="preserve">
+    <value>L'option Extraire tous les terminaux synchronise tous les terminaux attribués à ce jeton dans Apple Business Manager avec UEM console, y compris les terminaux déjà synchronisés. Cette option ne doit être utilisée qu'en dernier recours pour actualiser et resynchroniser entièrement tous vos terminaux à partir d'Apple Business Manager.</value>
+  </data>
+  <data name="DepFetchInfoMessageSchool" xml:space="preserve">
+    <value>L'option Extraire tous les terminaux synchronise tous les terminaux attribués à ce jeton dans Apple School Manager avec UEM console, y compris les terminaux déjà synchronisés. Cette option ne doit être utilisée qu'en dernier recours pour actualiser et resynchroniser entièrement tous vos terminaux à partir d'Apple School Manager.</value>
+  </data>
+  <data name="DEPTokenArgCannotBeDeleted" xml:space="preserve">
+    <value>Le jeton DEP {0} ne peut pas être supprimé</value>
+  </data>
+  <data name="DEPTokenArgCannotBeRevoked" xml:space="preserve">
+    <value>Le jeton DEP {0} ne peut pas être révoqué</value>
+  </data>
+  <data name="DeviceEnrolledArg" xml:space="preserve">
+    <value>Terminal désenrôlé {0}</value>
+  </data>
+  <data name="DeviceMacAddressDenylisted" xml:space="preserve">
+    <value>Le terminal ne peut pas être enrôlé, car son adresse MAC est bloquée.</value>
+  </data>
+  <data name="DeviceManagementRemoved" xml:space="preserve">
+    <value>Device Management a été supprimé par l'administrateur UEM Workspace ONE UEM.</value>
+  </data>
+  <data name="DeviceNotAllowlisted" xml:space="preserve">
+    <value>Type de modèle de terminal non autorisé et/ou SE de terminal non autorisé.</value>
+  </data>
+  <data name="DeviceNotAllowlistedManufacturererNotAllowed" xml:space="preserve">
+    <value>Le terminal ne figure pas dans la liste autorisée et/ou le fabricant n'est pas autorisé.</value>
+  </data>
+  <data name="DeviceNotAllowlistedModelNotAllowed" xml:space="preserve">
+    <value>Type de modèle de terminal non autorisé.</value>
+  </data>
+  <data name="DeviceNotEnrolled" xml:space="preserve">
+    <value>Le terminal n'est pas enrôlé.</value>
+  </data>
+  <data name="DeviceNotRegistered" xml:space="preserve">
+    <value>Terminal non enregistré. Type de modèle de terminal et/ou système d'exploitation non valide</value>
+  </data>
+  <data name="DeviceSNArgNotExistsForArgToken" xml:space="preserve">
+    <value>Le numéro de série de terminal {0} n'existe pas pour le jeton {1}</value>
+  </data>
+  <data name="DeviceStateIsAndroidEnterprise" xml:space="preserve">
+    <value>Le terminal est déjà enrôlé dans Android Enterprise.</value>
+  </data>
+  <data name="DeviceUserNotFound" xml:space="preserve">
+    <value>L'utilisateur de l'enrôlement est introuvable pour le terminal.</value>
+  </data>
+  <data name="DirectoryGroupBasedMappingChanged" xml:space="preserve">
+    <value>Paramètre Activer le groupe de répertoires sur la base du mappage modifié</value>
+  </data>
+  <data name="DropshipProvisioning" xml:space="preserve">
+    <value>Drop Ship Provisioning</value>
+  </data>
+  <data name="EMMToken" xml:space="preserve">
+    <value>Jeton EMM</value>
+  </data>
+  <data name="EmptyDeviceIdentifierPleaseTryAgain" xml:space="preserve">
+    <value>L'UDID du terminal n'est pas présent dans la demande d'inscription. Veuillez contacter votre administrateur ou réessayer.</value>
+  </data>
+  <data name="EmptyPasswordPleaseTryAgain" xml:space="preserve">
+    <value>Le mot de passe n'est pas présent dans la demande d'inscription. Veuillez contacter votre administrateur ou réessayer.</value>
+  </data>
+  <data name="EmptyUserNameOrEmailAddressPleaseTryAgain" xml:space="preserve">
+    <value>Le nom d'utilisateur ou l'adresse e-mail n'est pas présent(e) dans la demande d'inscription. Veuillez contacter votre administrateur ou réessayer.</value>
+  </data>
+  <data name="EnableDropShipProvisioning" xml:space="preserve">
+    <value>Autoriser Workspace ONE Drop Ship Provisioning</value>
+  </data>
+  <data name="EnrollmentDisabled" xml:space="preserve">
+    <value>L'inscription est désactivée, car le bon de commande MDM est introuvable dans la référence SKU.</value>
+  </data>
+  <data name="EnrollmentSecurityTypeNotSupported" xml:space="preserve">
+    <value>Tentative d'inscription effectuée avec un type de sécurité non pris en charge. Veuillez contacter votre administrateur ou réessayer.</value>
+  </data>
+  <data name="EnrollmentTypeCriteriaMustContainOneEnrollmentType" xml:space="preserve">
+    <value>Les critères de type d'inscription doivent contenir au moins un type d'inscription</value>
+  </data>
+  <data name="EnrollmentUserNotFound" xml:space="preserve">
+    <value>Utilisateur d'inscription introuvable. Indiquez un utilisateur existant.</value>
+  </data>
+  <data name="EnrollmentWelcomeMessageBody" xml:space="preserve">
+    <value>Workspace ONE UEM permet à votre service informatique de fournir à votre terminal un accès sécurisé aux ressources. Les étapes suivantes vous permettront de configurer votre terminal conformément aux politiques de votre entreprise.</value>
+  </data>
+  <data name="EnrollmentWelcomeMessageHeader" xml:space="preserve">
+    <value>Bienvenue dans Workspace ONE UEM.</value>
+  </data>
+  <data name="EnterpriseWipeDeviceCountMessage" xml:space="preserve">
+    <value>{0} terminal ou terminaux</value>
+  </data>
+  <data name="EnterpriseWipeDeviceCountTitle" xml:space="preserve">
+    <value>Nombre de terminaux dont le contenu d'entreprise sera effacé :</value>
+  </data>
+  <data name="ErrorAddingUserAccount" xml:space="preserve">
+    <value>Erreur lors de l'ajout automatique d'un compte utilisateur. Veuillez contacter votre administrateur ou réessayer.</value>
+  </data>
+  <data name="ErrorThrownWhenResolvingDeviceIdentifier" xml:space="preserve">
+    <value>Erreur renvoyée lors de la tentative de résolution de l'identifiant du terminal</value>
+  </data>
+  <data name="ExistingClientIDDontMatch" xml:space="preserve">
+    <value>Impossible d’enregistrer les modifications, car les champs de texte doivent correspondre aux valeurs d’enregistrement existantes. Seul le certificat peut être modifié.</value>
+  </data>
+  <data name="ExternalAccessRole" xml:space="preserve">
+    <value>Rôle d'accès externe</value>
+  </data>
+  <data name="FailedToCreateAgentInstallUrl" xml:space="preserve">
+    <value>Échec de la création de l'URL d'installation d'Agent. Veuillez contacter votre administrateur ou réessayer.</value>
+  </data>
+  <data name="FailedToCreateDeviceAuthenticationToken" xml:space="preserve">
+    <value>Échec de la création du jeton d'authentification du terminal. Veuillez contacter votre administrateur ou réessayer.</value>
+  </data>
+  <data name="FailedToDisplayAgentAppStoreLink" xml:space="preserve">
+    <value>Échec de l'affichage du lien App Store d'Agent. Veuillez contacter votre administrateur ou réessayer.</value>
+  </data>
+  <data name="FailedToDisplayWelcomeMessage" xml:space="preserve">
+    <value>Échec de l'affichage du message de bienvenue. Veuillez contacter votre administrateur ou réessayer.</value>
+  </data>
+  <data name="FailedToProcessDisplayMdmInstallationMessage" xml:space="preserve">
+    <value>Échec de l'affichage du message d'installation de MDM. Veuillez contacter votre administrateur ou réessayer.</value>
+  </data>
+  <data name="FailedToRedirectToAgentInstallUrl" xml:space="preserve">
+    <value>Échec de la redirection vers l'URL d'installation d'Agent. Veuillez contacter votre administrateur ou réessayer.</value>
+  </data>
+  <data name="FailedToRedirectToMdmInstallUrl" xml:space="preserve">
+    <value>Échec de la redirection vers l'URL d'installation de MDM. Veuillez contacter votre administrateur ou réessayer.</value>
+  </data>
+  <data name="FailedToRedirectToWorkspaceSchema" xml:space="preserve">
+    <value>Échec de la redirection vers le schéma de l'espace de travail. Veuillez contacter votre administrateur ou réessayer.</value>
+  </data>
+  <data name="FailedToRegisterApplication" xml:space="preserve">
+    <value>Échec de l'enregistrement de l'application. Veuillez contacter votre administrateur ou réessayer.</value>
+  </data>
+  <data name="FailedToRetrieveNextStep" xml:space="preserve">
+    <value>Échec de la récupération de la prochaine étape d'inscription. Veuillez contacter votre administrateur ou réessayer.</value>
+  </data>
+  <data name="FailedToRetrieveSessionId" xml:space="preserve">
+    <value>Échec de la récupération de l'ID de session d'inscription du terminal. Veuillez contacter votre administrateur ou réessayer.</value>
+  </data>
+  <data name="FailedToValidateDeviceRestrictions" xml:space="preserve">
+    <value>Échec de la validation des restrictions d'inscription du terminal. Veuillez contacter votre administrateur ou réessayer.</value>
+  </data>
+  <data name="FailedToValidateEmailAddress" xml:space="preserve">
+    <value>Échec de la validation de l'adresse e-mail de l'utilisateur d'inscription. Veuillez contacter votre administrateur ou réessayer.</value>
+  </data>
+  <data name="FailedValidatingDeviceIdentifier" xml:space="preserve">
+    <value>Échec de la validation de l'UDID du terminal. Veuillez contacter votre administrateur ou réessayer.</value>
+  </data>
+  <data name="FailedValidatingStagingMode" xml:space="preserve">
+    <value>Échec de la validation du mode de préenrôlement. Veuillez contacter votre administrateur ou réessayer.</value>
+  </data>
+  <data name="FieldMustBeOfArgCharacters" xml:space="preserve">
+    <value>Le champ doit contenir {0} caractère(s).</value>
+  </data>
+  <data name="FollowingTokensOwnershipWillNotChange" xml:space="preserve">
+    <value>La propriété des jetons suivants ne sera pas modifiée</value>
+  </data>
+  <data name="ForceAospEnrollment" xml:space="preserve">
+    <value>Forcer l'enrôlement de réseau AOSP/fermé</value>
+  </data>
+  <data name="GeneralCheckIn" xml:space="preserve">
+    <value>Check-in</value>
+  </data>
+  <data name="GetStarted:" xml:space="preserve">
+    <value>Commencer :</value>
+  </data>
+  <data name="GetSuccessfully" xml:space="preserve">
+    <value>L'URL du serveur MDM a été récupérée</value>
+  </data>
+  <data name="GoogleAdminConsole" xml:space="preserve">
+    <value>Console d'administration Google</value>
+  </data>
+  <data name="GoogleDeviceIdRequired" xml:space="preserve">
+    <value>L'ID du terminal Google est requis.</value>
+  </data>
+  <data name="GoogleUserIdRequired" xml:space="preserve">
+    <value>L'ID d'utilisateur Google est requis.</value>
+  </data>
+  <data name="GoToThe" xml:space="preserve">
+    <value>1. Accéder à </value>
+  </data>
+  <data name="GroupIdAssignmentModeChanged" xml:space="preserve">
+    <value>Mode d'attribution de l'ID de groupe modifié</value>
+  </data>
+  <data name="HubRegistered" xml:space="preserve">
+    <value>Hub enregistré</value>
+  </data>
+  <data name="IntelligentHubManaged" xml:space="preserve">
+    <value>Intelligent Hub géré</value>
+  </data>
+  <data name="InvalidDeviceAttributes" xml:space="preserve">
+    <value>Veuillez entrer l'un des attributs de terminal suivants : numéro de série/IMEI/UDID</value>
+  </data>
+  <data name="InvalidDeviceModel" xml:space="preserve">
+    <value>Terminal non enregistré. Type de modèle de terminal non valide</value>
+  </data>
+  <data name="InvalidDeviceOS" xml:space="preserve">
+    <value>Terminal non enregistré. Système d'exploitation du terminal non valide</value>
+  </data>
+  <data name="InvalidDeviceType" xml:space="preserve">
+    <value>Type de terminal non valide</value>
+  </data>
+  <data name="InvalidHeaderUsedInTemplate" xml:space="preserve">
+    <value>En-tête non valide utilisé dans le modèle. Téléchargez et utilisez le modèle fourni dans la fenêtre Modifier l'attribution.</value>
+  </data>
+  <data name="InvalidImeiAttributeArgs" xml:space="preserve">
+    <value>IMEI doit être une valeur numérique et contenir exactement 15 caractères.</value>
+  </data>
+  <data name="InvalidMigrationRequest" xml:space="preserve">
+    <value>Terminal UDID vide</value>
+  </data>
+  <data name="InvalidOrganizationGroupFromVidm" xml:space="preserve">
+    <value>L'utilisateur d'enrôlement ne se trouve pas dans le groupe organisationnel attribué par Workspace ONE Access indiqué.</value>
+  </data>
+  <data name="InvalidSerialNumberAttributeArgs" xml:space="preserve">
+    <value>La longueur du numéro de série doit être inférieure à {0} caractères.</value>
+  </data>
+  <data name="InvalidSerialNumberValuesFoundArgs" xml:space="preserve">
+    <value>La longueur de chaque numéro de série doit être inférieure à {0}</value>
+  </data>
+  <data name="InvalidTokenDetails" xml:space="preserve">
+    <value>Échec de l'authentification en raison de détails de jeton non valides.</value>
+  </data>
+  <data name="InvalidUdidAttributeArgs" xml:space="preserve">
+    <value>La longueur de l'UDID doit être inférieure à {0} caractères.</value>
+  </data>
+  <data name="InvalidUDIDValuesFoundArgs" xml:space="preserve">
+    <value>La longueur de chaque UDID doit être inférieure à {0}.</value>
+  </data>
+  <data name="IosProfileDownloadHeaderTitle" xml:space="preserve">
+    <value>Étapes de téléchargement du profil</value>
+  </data>
+  <data name="IosProfileDownloadSteps" xml:space="preserve">
+    <value>1. Lorsque vous êtes invité à télécharger le profil, appuyez sur {0}
+
+2. Une fois le téléchargement terminé, appuyez sur {1}</value>
+  </data>
+  <data name="LaforgeUserCreationFailed" xml:space="preserve">
+    <value>Échec de la création de l'utilisateur Android Enterprise</value>
+  </data>
+  <data name="LinkToConfigurationTab" xml:space="preserve">
+    <value>Lien vers l'onglet Configuration</value>
+  </data>
+  <data name="MigrationFeatureDisabled" xml:space="preserve">
+    <value>La fonctionnalité de migration d'Android Enterprise n'est pas prise en charge pour votre organisation. Contactez votre administrateur.</value>
+  </data>
+  <data name="MoveDevicesToUserOrOGBAsedOnIPOrCA" xml:space="preserve">
+    <value>Attribuez des terminaux à un utilisateur ou à un groupe organisationnel en fonction d'une attribution de plage d'adresses IP, ou attribuez des terminaux à un groupe organisationnel en fonction de règles d'attributs personnalisés. Les règles d'attribution de terminaux ne peuvent pas être activées si l'option Groupe organisationnel par plage d'adresses IP ou Groupe organisationnel par attribut personnalisé est sélectionnée pour un groupe organisationnel dans la hiérarchie. Toutefois, les règles d'attribution de terminaux peuvent être activées si l'option Nom d'utilisateur par plage d'adresses IP est sélectionnée dans la hiérarchie.</value>
+  </data>
+  <data name="MultiuserFFSetup" xml:space="preserve">
+    <value>Enrôlement multi-utilisateurs bloqué, car la fonctionnalité n'est pas correctement configurée.</value>
+  </data>
+  <data name="MultiuserNonMdmSupport" xml:space="preserve">
+    <value>L'enrôlement multi-utilisateurs n'est pas pris en charge pour le protocole d'enrôlement utilisé.</value>
+  </data>
+  <data name="NoMDMOrderFound" xml:space="preserve">
+    <value>L'inscription est interrompue, car l'interrogation MDM est introuvable dans la référence SKU.</value>
+  </data>
+  <data name="NotAuthorizedToCreateEnrollmentUser" xml:space="preserve">
+    <value>L'utilisateur n'est pas autorisé à créer un utilisateur d'inscription.</value>
+  </data>
+  <data name="OperationNotAuthorized" xml:space="preserve">
+    <value>Non autorisé à effectuer cette opération</value>
+  </data>
+  <data name="OrganizationGroupInherited" xml:space="preserve">
+    <value>Groupe organisationnel hérité</value>
+  </data>
+  <data name="PasscodeExpired" xml:space="preserve">
+    <value>Le code secret a expiré.</value>
+  </data>
+  <data name="PhoneNumberPrivacyCheck" xml:space="preserve">
+    <value>Vérification de la confidentialité du numéro de téléphone</value>
+  </data>
+  <data name="PreventReEnrollmentMessage" xml:space="preserve">
+    <value>En cochant la case « Empêcher le réenrôlement » ci-dessous, vous le placez sur une liste bloquée de terminaux et vous empêchez l'utilisateur de l'enrôler à nouveau dans Workspace ONE UEM. Un administrateur sera en mesure de supprimer ultérieurement ce terminal de la liste bloquée si besoin.</value>
+  </data>
+  <data name="PrivacyNotificationDisabled" xml:space="preserve">
+    <value>La déclaration de confidentialité conviviale est désactivée</value>
+  </data>
+  <data name="PromptToBeginDownloadMessageForAppleOsX" xml:space="preserve">
+    <value>Intelligent Hub est téléchargé et installé automatiquement sur votre ordinateur. En fonction de votre connexion réseau, cela devrait prendre entre 1 et 5 minutes. Une fois l'agent installé, appuyez sur Continuer pour terminer le processus d'inscription.</value>
+  </data>
+  <data name="RegisterAMAPI" xml:space="preserve">
+    <value>Enregistrer AMAPI. {0}</value>
+  </data>
+  <data name="RegisterAMAPIAtParentOG" xml:space="preserve">
+    <value>Enregistrez AMAPI dans le groupe organisationnel dans lequel l'enregistrement EMM Android est configuré. {0}</value>
+  </data>
+  <data name="RegisterAMAPIHelpText" xml:space="preserve">
+    <value>L'enregistrement de l'API de gestion Android (AMAPI) est requis avant de pouvoir l'utiliser avec ce groupe organisationnel.</value>
+  </data>
+  <data name="RegisteredOrAppEnrolled" xml:space="preserve">
+    <value>Application enregistrée ou autonome enrôlée</value>
+  </data>
+  <data name="RegisterManagedDomain" xml:space="preserve">
+    <value>2. Enregistrez un domaine Google géré s'il n'en existe pas.</value>
+  </data>
+  <data name="RegisterMultiuserDeviceConfirmationMessage" xml:space="preserve">
+    <value>Les informations utilisateur liées à l'enregistrement du terminal seront supprimées pour les terminaux Windows.</value>
+  </data>
+  <data name="Requirements" xml:space="preserve">
+    <value>Exigences</value>
+  </data>
+  <data name="RequireSharedDeviceEnrollmentEulaAcceptance" xml:space="preserve">
+    <value>Inviter à lire et accepter les conditions d'utilisation ne peut pas être activé tant que les conditions d'utilisation d'enrôlement n'ont pas été créées. Accédez à l'onglet Groupes et paramètres &gt; Terminaux et utilisateurs &gt; Général &gt; Enrôlement &gt; Conditions d'utilisation pour créer des conditions d'utilisation.</value>
+  </data>
+  <data name="SerialNumberAssignmentFailed" xml:space="preserve">
+    <value>Échec de l'attribution du numéro de série.</value>
+  </data>
+  <data name="SetUpDirectoryServices" xml:space="preserve">
+    <value>Configurer les services d'annuaire</value>
+  </data>
+  <data name="SubOrganizationGroup" xml:space="preserve">
+    <value>Sous-groupe organisationnel </value>
+  </data>
+  <data name="SubsequentUserEnrollmentBlocked" xml:space="preserve">
+    <value>L'enrôlement de l'utilisateur suivant a été bloqué.</value>
+  </data>
+  <data name="TapHereIfNotPromptedAutomatically" xml:space="preserve">
+    <value>Appuyer ici si l'invite ne s'affiche pas automatiquement</value>
+  </data>
+  <data name="TapHereWhenDownloadFinishes" xml:space="preserve">
+    <value>Appuyer ici lorsque le téléchargement est terminé</value>
+  </data>
+  <data name="TargetOwnershipRestrictedByDefaultPolicyAtGivenOG" xml:space="preserve">
+    <value>La propriété cible est limitée par la stratégie par défaut au groupe organisationnel concerné</value>
+  </data>
+  <data name="TokenSaveFailed" xml:space="preserve">
+    <value>Échec de l'enregistrement du jeton.</value>
+  </data>
+  <data name="UemManaged" xml:space="preserve">
+    <value>Géré par UEM</value>
+  </data>
+  <data name="UnapprovedUser" xml:space="preserve">
+    <value>L'utilisateur est un utilisateur authentifié SAML externe et n'est pas autorisé à s'inscrire. Veuillez contacter votre administrateur ou réessayer.</value>
+  </data>
+  <data name="UploadedCertMisMatch" xml:space="preserve">
+    <value>Certificat manquant. Chargez un certificat valide pour continuer.</value>
+  </data>
+  <data name="UserEnrolled" xml:space="preserve">
+    <value>Utilisateur enrôlé</value>
+  </data>
+  <data name="UserEnrollmentFeatureNotEnabled" xml:space="preserve">
+    <value>L'enrôlement de l'utilisateur a été désactivé pour votre organisation. Veuillez contacter votre administrateur pour activer l'enrôlement et réessayer.</value>
+  </data>
+  <data name="UserHasExceededMaxAllowedDevices" xml:space="preserve">
+    <value>L'utilisateur a dépassé le nombre maximal de terminaux autorisés.</value>
+  </data>
+  <data name="UsernameAlreadyExists" xml:space="preserve">
+    <value>Ce nom d'utilisateur existe déjà pour un autre utilisateur. Veuillez réessayer.</value>
+  </data>
+  <data name="UserSetup" xml:space="preserve">
+    <value>Configuration utilisateur</value>
+  </data>
+  <data name="ValidatePhoneNumberFailed" xml:space="preserve">
+    <value>Échec de la validation du numéro de téléphone de l'utilisateur d'inscription. Veuillez contacter votre administrateur ou réessayer.</value>
+  </data>
+  <data name="WipeInitiated" xml:space="preserve">
+    <value>Effacement initialisé</value>
+  </data>
+  <data name="WipeInitiatedTooltip" xml:space="preserve">
+    <value>L'effacement des données a été initialisé.</value>
+  </data>
+  <data name="WorkProfileManagementMode" xml:space="preserve">
+    <value>Mode de gestion des profils professionnels</value>
+  </data>
+  <data name="WorkProfileManagementModeInfoMessage" xml:space="preserve">
+    <value>Spécifie si les terminaux nouvellement inscrits seront gérés par Intelligent Hub ou par l'API de gestion Android. AMAPI est recommandé. Intelligent Hub sera toujours présent sur le terminal, mais les fonctionnalités de gestion seront déléguées au système d'exploitation Android natif. Les terminaux enrôlés existants ne seront pas affectés.</value>
+  </data>
+  <data name="WorkProfileManagementModeToggleSuccessfulMessage" xml:space="preserve">
+    <value>Enregistrement réussi ! Le mode de gestion a été mis à jour vers l'API de gestion Android. Reportez-vous à la section paramètres d'inscription pour afficher ou modifier le mode de gestion configuré.</value>
+  </data>
+  <data name="Ws1RealTimeUserGroupSyncChanged" xml:space="preserve">
+    <value>Paramètre de synchronisation du groupe d'utilisateurs Workspace ONE en temps réel modifié</value>
+  </data>
+</root>

@@ -1,0 +1,556 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ActivateHubServices" xml:space="preserve">
+    <value>激活 Hub 服务</value>
+  </data>
+  <data name="ActivateHubServicesDescription" xml:space="preserve">
+    <value>Hub 服务由云中的 Workspace ONE Access 托管。若要激活，请在下面提供有关您的 Workspace ONE Access 云租户的详细信息或申请一个云租户。如果您不了解您的云租户，则可以在 VMware 发来的电子邮件中找到此信息；如果找不到此信息，请提交一个支持请求单。</value>
+  </data>
+  <data name="ActivateHubServicesGeneralDescription" xml:space="preserve">
+    <value>Hub 服务与 Workspace ONE Access 位于同一位置。若要配置，请在下面提供有关您的 Workspace ONE Access 租户的详细信息。如果您不了解您的租户，则可以在 VMware 发来的电子邮件中找到此信息；如果找不到此信息，请提交一个支持请求单。</value>
+  </data>
+  <data name="ActivateHubServicesGeneralNote" xml:space="preserve">
+    <value>注意: 您无需配置 Workspace ONE Access，即可使用 Hub 服务的某些功能。</value>
+  </data>
+  <data name="ActivateHubServicesNote" xml:space="preserve">
+    <value>注意：无需设置连接器或同步 Active Directory 即可访问 Hub 目录功能。</value>
+  </data>
+  <data name="AdministratorDetails" xml:space="preserve">
+    <value>管理员详细信息</value>
+  </data>
+  <data name="ArgOrganizationGroups" xml:space="preserve">
+    <value>{0} 组织组</value>
+    <comment>{0} will be integer</comment>
+  </data>
+  <data name="AuthenticationSourceSettingsFetchFailedError" xml:space="preserve">
+    <value>无法获取身份验证源设置。</value>
+  </data>
+  <data name="Avenger" xml:space="preserve">
+    <value>Android Avenger</value>
+  </data>
+  <data name="BluetoothLocationServiceHubPassport" xml:space="preserve">
+    <value>*必须在员工的设备上启用蓝牙，并且应启用定位服务以获得最佳效果。</value>
+  </data>
+  <data name="CatalogSettings" xml:space="preserve">
+    <value>目录设置</value>
+  </data>
+  <data name="CatalogSettingsDescription" xml:space="preserve">
+    <value>Hub 将根据以下设置显示集成的应用目录。</value>
+  </data>
+  <data name="CloudTenant" xml:space="preserve">
+    <value>云租户</value>
+  </data>
+  <data name="CloudTenantAlreadyConfigured" xml:space="preserve">
+    <value>已为 Workspace ONE Access 配置云租户。</value>
+  </data>
+  <data name="CloudTenantHelpText" xml:space="preserve">
+    <value>没有云租户? 您现在可以申请一个 Workspace ONE Access 云租户。</value>
+  </data>
+  <data name="CloudTenantHostedInOneOfTheRegion" xml:space="preserve">
+    <value>您的云租户可以托管在以下某个区域。请选择最符合您组织的合规性、安全性和总体业务要求的区域。</value>
+  </data>
+  <data name="CloudTenantSameAsExisting" xml:space="preserve">
+    <value>此云租户与现有云租户相同。请保存以继续。</value>
+  </data>
+  <data name="CloudTenantSuccessfullyCreatedActivateHubServices" xml:space="preserve">
+    <value>您的云租户已创建成功。若要激活 Hub 服务，请单击“入门”以提供有关您的 Workspace ONE Access 云租户的详细信息，您应已通过电子邮件收到这些信息。</value>
+  </data>
+  <data name="CloudTenantUrl" xml:space="preserve">
+    <value>云租户 URL</value>
+  </data>
+  <data name="CollectLocationDataTooltip" xml:space="preserve">
+    <value>提示员工允许收集 GPS 位置数据。</value>
+  </data>
+  <data name="ConfigurationOverwrite" xml:space="preserve">
+    <value>配置覆盖</value>
+  </data>
+  <data name="ConsiderUpdatingArgLanguage" xml:space="preserve">
+    <value>请考虑相应地更新面向员工的 {0} 语言。</value>
+    <comment>{0} will be "Terms of Use"</comment>
+  </data>
+  <data name="DeviceDatafromGoogleNotReceived" xml:space="preserve">
+    <value>未收到来自 Google 的设备数据。请联系您的 IT 管理员以解决此问题。</value>
+  </data>
+  <data name="DifferentVidmTenantConfiguredAtCurrentOg" xml:space="preserve">
+    <value>此组织组配置了不同的 Workspace ONE Access 租户。</value>
+  </data>
+  <data name="DisabledByDefault" xml:space="preserve">
+    <value>默认情况下禁用</value>
+  </data>
+  <data name="DisableManagedAppNotAcceptable" xml:space="preserve">
+    <value>请输入有效的应用程序标识符。</value>
+  </data>
+  <data name="DisplayPrivacyDialogTooltip" xml:space="preserve">
+    <value>首次启动时显示标准隐私屏幕。</value>
+  </data>
+  <data name="DownloadLatestMacOsHubVersion" xml:space="preserve">
+    <value>下载最新版本</value>
+  </data>
+  <data name="EditHidPassportServiceSettings" xml:space="preserve">
+    <value>编辑 HID Passport 服务设置</value>
+  </data>
+  <data name="EditHidPassportServiceSettingsHelp" xml:space="preserve">
+    <value>控制访问权限以编辑 HID Passport 服务设置。</value>
+  </data>
+  <data name="EnableAutomaticUpdates" xml:space="preserve">
+    <value>自动更新</value>
+  </data>
+  <data name="EnableAutomaticUpdatesTooltip" xml:space="preserve">
+    <value>自动检查是否有可用的更新。禁用时，员工需要手动在 Hub 内检查更新。</value>
+  </data>
+  <data name="EnableAwcmTooltip" xml:space="preserve">
+    <value>AirWatch Cloud Messaging (AWCM) 允许服务器和 Hub 之间进行实时通信。禁用时，在下一个计划的间隔签入之前，Hub 将不会收到命令和样本。</value>
+  </data>
+  <data name="EnableConfigureHubPassportDescription" xml:space="preserve">
+    <value>在 Hub 服务中启用并配置 Hub Passport，以允许员工使用其 iOS 和 Android 设备作为虚拟访问 ID 卡来访问企业办公室。</value>
+  </data>
+  <data name="EnabledByDefault" xml:space="preserve">
+    <value>默认情况下启用</value>
+  </data>
+  <data name="EnableHubExperienceModeInfo" xml:space="preserve">
+    <value>选择“启用”以允许此组织组中的设备连接到 Workspace ONE Hub 服务，以使用应用目录和 People 等功能。</value>
+  </data>
+  <data name="EnableMacOsHubDownloadAfterEnrollment" xml:space="preserve">
+    <value>注册后安装 Hub</value>
+  </data>
+  <data name="EnableMacOsHubDownloadAfterEnrollmentTooltip" xml:space="preserve">
+    <value>通过 DEP 或 Web 注册后，自动在设备上安装 Hub。</value>
+  </data>
+  <data name="EnforcePasscodePolicyTooltip" xml:space="preserve">
+    <value>提示员工创建符合 MDM 配置文件要求的新密码。禁用时，只有在注销并重新登录时，员工才会收到提示。</value>
+  </data>
+  <data name="ExcludesOrganizationGroups" xml:space="preserve">
+    <value>排除的组织组</value>
+  </data>
+  <data name="FailedToRetrieveAvailableHostingRegionsContactSupport" xml:space="preserve">
+    <value>无法检索 Workspace ONE Access 租户的可用托管区域。请稍后再试。如果问题仍然存在，请联系支持部门。</value>
+  </data>
+  <data name="GeneratingCloudTenant" xml:space="preserve">
+    <value>生成云租户</value>
+  </data>
+  <data name="HubCatalogAndroid" xml:space="preserve">
+    <value>Hub 目录 (Android)</value>
+  </data>
+  <data name="HubCatalogIos" xml:space="preserve">
+    <value>Hub 目录 (iOS)</value>
+  </data>
+  <data name="HubCatalogMacos" xml:space="preserve">
+    <value>Hub 目录 (macOS)</value>
+  </data>
+  <data name="HubCatalogSettingsFetchFailedError" xml:space="preserve">
+    <value>无法获取 Hub 目录启用模式设置。</value>
+  </data>
+  <data name="HubCatalogWinRT" xml:space="preserve">
+    <value>Hub 目录 (Windows)</value>
+  </data>
+  <data name="HubEnabledSelectedOg" xml:space="preserve">
+    <value>已为选定的组织组启用 Hub Passport 设置。</value>
+  </data>
+  <data name="HubIntegration" xml:space="preserve">
+    <value>Hub 集成</value>
+  </data>
+  <data name="HubPassport" xml:space="preserve">
+    <value>Hub Passport</value>
+  </data>
+  <data name="HubPassportDescription" xml:space="preserve">
+    <value>Hub Passport 让员工能够使用其 iOS 和 Android 设备作为虚拟访问 ID 卡来访问企业办公室，必须在 Hub 服务中启用。请选择组织组以管理此功能的访问权限。</value>
+  </data>
+  <data name="HubPassportEnabledAtChildArgOgInfo" xml:space="preserve">
+    <value>所选 OG 的子项已包含在选择中。请移除 {0} 以选择父项。</value>
+    <comment>{0} will be list of Organization groups name</comment>
+  </data>
+  <data name="HubPassportEnabledAtParentArgOgInfo" xml:space="preserve">
+    <value>所选 OG 已作为 {0} 的子项包括在内。</value>
+    <comment>{0} will be Organization group name</comment>
+  </data>
+  <data name="HubPassportSettingChildOgDescription" xml:space="preserve">
+    <value>启用后，默认情况下，Hub Passport 功能将自动应用于您的组织组及其所有子项。但是，您可以通过在下面选择特定组织组，来将此功能限制为仅这些组可用。</value>
+  </data>
+  <data name="HubServicesActivatedLaunchHubServicesToConfigure" xml:space="preserve">
+    <value>Hub 服务已成功激活。您现在可以启动 Hub 服务进行配置。</value>
+  </data>
+  <data name="HubServicesActivationInfo" xml:space="preserve">
+    <value>通过 Intelligent Hub 配置页面配置 Hub 服务，以启用下方的集成选项。</value>
+  </data>
+  <data name="HubServicesFeature" xml:space="preserve">
+    <value>在 Intelligent Hub 中使用 Hub 服务功能</value>
+  </data>
+  <data name="HubServicesFeaturesSettingsFetchFailedError" xml:space="preserve">
+    <value>无法获取 Hub 服务功能设置</value>
+  </data>
+  <data name="HubServicesGeneralNote" xml:space="preserve">
+    <value>注意: 通知和人员功能仅适用于云 Hub 服务和 Access 租户。</value>
+  </data>
+  <data name="HubServicesHostingDescription" xml:space="preserve">
+    <value>Hub 服务由云中的 Workspace ONE Access 托管。</value>
+  </data>
+  <data name="HubServicesHostingGeneralDescription" xml:space="preserve">
+    <value>Hub 服务与 Workspace ONE Access 位于同一位置。</value>
+  </data>
+  <data name="HubServicesSuccessfullyReactivatedLaunchHubServicesToConfigureIntelligentHubExperience" xml:space="preserve">
+    <value>Hub 服务已成功重新激活。您现在可以启动 Hub 服务以配置 Intelligent Hub 体验。</value>
+  </data>
+  <data name="HubServicesURL" xml:space="preserve">
+    <value>Hub 服务 URL</value>
+  </data>
+  <data name="HubServicesURLSaveError" xml:space="preserve">
+    <value>无法保存 Hub 服务配置 URL。</value>
+  </data>
+  <data name="HubSettingsConfiguredSuccess" xml:space="preserve">
+    <value>已成功保存 Hub Passport 设置。</value>
+  </data>
+  <data name="HubSettingsInvalidInputError" xml:space="preserve">
+    <value>找不到此组织组的资源，或者此用户无权访问此组织组。</value>
+  </data>
+  <data name="HubSettingsUnauthorizedAccessError" xml:space="preserve">
+    <value>未经授权访问。</value>
+  </data>
+  <data name="IDMAuthentication" xml:space="preserve">
+    <value>Workspace ONE Access</value>
+  </data>
+  <data name="IncorrectEmailAddress" xml:space="preserve">
+    <value>电子邮件地址无效。请检查电子邮件地址格式，然后重试。</value>
+  </data>
+  <data name="InvalidCloudTenantUrl" xml:space="preserve">
+    <value>URL 无效。请输入您的 Workspace ONE Access 云租户 URL 以继续。</value>
+  </data>
+  <data name="InvalidFirstName" xml:space="preserve">
+    <value>名字无效，请重试。</value>
+  </data>
+  <data name="InvalidLastName" xml:space="preserve">
+    <value>姓氏无效，请重试。</value>
+  </data>
+  <data name="InvalidPasswordTryAgain" xml:space="preserve">
+    <value>密码无效，请重试。</value>
+  </data>
+  <data name="InvalidUserNameErrorMessage" xml:space="preserve">
+    <value>用户名无效。请修改用户名，然后重试。</value>
+  </data>
+  <data name="InvalidUserNamePleaseTryAgain" xml:space="preserve">
+    <value>用户名无效。请重试。</value>
+  </data>
+  <data name="InvalidUsernameTryAgain" xml:space="preserve">
+    <value>用户名无效。请重试。</value>
+  </data>
+  <data name="macOSCheckInIntervalTooltip" xml:space="preserve">
+    <value>设置 Hub 将签入服务器以接收新命令的频率。</value>
+  </data>
+  <data name="MacOsCollectAnalytics" xml:space="preserve">
+    <value>收集分析</value>
+  </data>
+  <data name="MacOsCollectCrashReports" xml:space="preserve">
+    <value>请求收集崩溃报告</value>
+  </data>
+  <data name="MacOsCollectLocationData" xml:space="preserve">
+    <value>请求收集位置数据</value>
+  </data>
+  <data name="macOsEnforcePasscode" xml:space="preserve">
+    <value>强制密码</value>
+  </data>
+  <data name="MacOsPrivacyLink" xml:space="preserve">
+    <value>隐私链接</value>
+  </data>
+  <data name="MacOsRequestPermission" xml:space="preserve">
+    <value>请求权限</value>
+  </data>
+  <data name="macOSSampleIntervalTooltip" xml:space="preserve">
+    <value>设置 Hub 将扫描设备以收集数据的频率，例如产品置备状态、磁盘加密状态、自定义属性、GPS 位置以及其他基本系统信息。</value>
+  </data>
+  <data name="MacOsShowPrivacyScreen" xml:space="preserve">
+    <value>显示隐私屏幕</value>
+  </data>
+  <data name="macOSTransmitIntervalTooltip" xml:space="preserve">
+    <value>设置 Hub 将数据样本发送到 Hub UEM 服务器的频率。</value>
+  </data>
+  <data name="MacOsUninstallHub" xml:space="preserve">
+    <value>卸载权限</value>
+  </data>
+  <data name="MacOsVMwareWorkspaceONEIntelligentHub" xml:space="preserve">
+    <value>VMware Workspace ONE Intelligent Hub</value>
+  </data>
+  <data name="ManagementModeDescription" xml:space="preserve">
+    <value>允许设备在没有 MDM 管理的情况下注册（Workspace 已注册）。</value>
+  </data>
+  <data name="ManagementModeSettingsFetchFailedError" xml:space="preserve">
+    <value>无法获取容器模式设置。</value>
+  </data>
+  <data name="OptInFlowAlreadyCompletedInformationMessage" xml:space="preserve">
+    <value>已为当前组织组配置 Workspace ONE Access。请联系您的 IT 管理员。</value>
+  </data>
+  <data name="OrganizationGroupNotFoundError" xml:space="preserve">
+    <value>找不到组织组。</value>
+  </data>
+  <data name="OrganizationGroupRestrictedError" xml:space="preserve">
+    <value>找不到此组织组的资源，或者此用户无权访问此组织组。</value>
+  </data>
+  <data name="PickARegion" xml:space="preserve">
+    <value>选择一个区域</value>
+  </data>
+  <data name="PickDataCenterLocation" xml:space="preserve">
+    <value>选择数据中心位置</value>
+  </data>
+  <data name="PleaseWaitWhileYourCloudTenantIsCreated" xml:space="preserve">
+    <value>正在创建您的云租户，请稍等几分钟。</value>
+  </data>
+  <data name="PolicyAllowCrashReportingTooltip" xml:space="preserve">
+    <value>收集崩溃报告并自动将其发送到服务器。</value>
+  </data>
+  <data name="PrivacyPolicyLinkTooltip" xml:space="preserve">
+    <value>将隐私屏幕重定向到 VMware 官方隐私页面以外的其他链接。</value>
+  </data>
+  <data name="ProvideInformationBelowToRequestAdministratorAccessAndvIDMCloudTenant" xml:space="preserve">
+    <value>请提供以下信息以申请管理员访问权限和 Workspace ONE Access 云租户，您将在几分钟内通过电子邮件收到这些信息。</value>
+  </data>
+  <data name="ReadAndAcceptHubServicesTOS" xml:space="preserve">
+    <value>阅读并接受以下服务条款，以使用 Hub 服务。</value>
+  </data>
+  <data name="ReconfigureHubServices" xml:space="preserve">
+    <value>重新配置 Hub 服务</value>
+  </data>
+  <data name="ReconfigureHubServicesDescription" xml:space="preserve">
+    <value>Hub 服务由云中的 Workspace ONE Access 托管。若要重新配置，请在下面提供有关您的 Workspace ONE Access 云租户的详细信息。如果您不了解您的云租户，则可以在 VMware 发来的电子邮件中找到此信息；如果找不到此信息，请提交一个支持请求单。</value>
+  </data>
+  <data name="ReconfigureHubServicesGeneralDescription" xml:space="preserve">
+    <value>Hub 服务与 Workspace ONE Access 位于同一位置。若要重新配置，请在下面提供有关您的 Workspace ONE Access 租户的详细信息。如果您不了解您的租户，则可以在 VMware 发来的电子邮件中找到此信息；如果找不到此信息，请提交一个支持请求单。</value>
+  </data>
+  <data name="RequestCloudTenant" xml:space="preserve">
+    <value>申请云租户</value>
+  </data>
+  <data name="RequestCloudTenantInfo" xml:space="preserve">
+    <value>注意：云租户需要与数据中心建立连接，该租户可能与您当前的数据中心服务提供商不同，并且可能位于其他国家/地区。</value>
+  </data>
+  <data name="RequireGroupIdForVidmWithoutLink" xml:space="preserve">
+    <value>此组织组没有 Workspace ONE Access 设置所需的组 ID。您可以在“组织组详细信息”页面上添加组 ID。</value>
+  </data>
+  <data name="SaveFailedTryAgain" xml:space="preserve">
+    <value>保存失败，请重试。</value>
+  </data>
+  <data name="SdkProfileV2" xml:space="preserve">
+    <value>SDK 配置文件</value>
+  </data>
+  <data name="SourceOfAuthentication" xml:space="preserve">
+    <value>身份验证源</value>
+  </data>
+  <data name="SourceOfAuthenticationDescription" xml:space="preserve">
+    <value>Hub 将使用下面选择的提供程序进行身份验证。</value>
+  </data>
+  <data name="SourceOfAuthenticationForHub" xml:space="preserve">
+    <value>Hub 身份验证源</value>
+  </data>
+  <data name="StartTypeToAddGroup" xml:space="preserve">
+    <value>请键入一个要添加的组</value>
+  </data>
+  <data name="TechnicalErrorOccurredPleaseContactAdministrator" xml:space="preserve">
+    <value>发生了技术错误。请重试。如果问题仍然存在，请与您的 IT 管理员联系。</value>
+  </data>
+  <data name="TenantAlreadyConfigured" xml:space="preserve">
+    <value>已为 Workspace ONE Access 配置租户。</value>
+  </data>
+  <data name="TenantNameWillBeCreatedBasedOnOG" xml:space="preserve">
+    <value>将根据当前登录的组织组名称创建的租户名称如下所示。</value>
+  </data>
+  <data name="TenantUrlLabel" xml:space="preserve">
+    <value>租户 URL</value>
+  </data>
+  <data name="TermsOfService" xml:space="preserve">
+    <value>服务条款</value>
+  </data>
+  <data name="TermsOfServices" xml:space="preserve">
+    <value>服务条款</value>
+  </data>
+  <data name="UEMAirwatch" xml:space="preserve">
+    <value>UEM (AirWatch)</value>
+  </data>
+  <data name="UninstallAgentTooltip" xml:space="preserve">
+    <value>使员工能够从其设备卸载 Hub 应用。</value>
+  </data>
+  <data name="UpgradeSilentlyTooltip" xml:space="preserve">
+    <value>升级将自动在后台安装，而不会提示员工。禁用时，将在新的更新可用时提示员工进行升级。</value>
+  </data>
+  <data name="UseHubServicesFeatures" xml:space="preserve">
+    <value>使用 Hub 服务功能</value>
+  </data>
+  <data name="UserNameLabel" xml:space="preserve">
+    <value>用户名</value>
+  </data>
+  <data name="VidmConfigOverwriteNote" xml:space="preserve">
+    <value>注意: 如果您将 Workspace ONE 应用与当前配置一起使用，则已注册的员工不受影响。但是，新员工只能使用 Intelligent Hub 应用。</value>
+  </data>
+  <data name="VidmConfigRemoveWarning" xml:space="preserve">
+    <value>您当前的 Workspace ONE Access 配置将替换为您刚输入的新信息。</value>
+  </data>
+  <data name="VidmConfigRemoveWarningDescription" xml:space="preserve">
+    <value>如果您将 Workspace ONE 应用与当前配置一起使用，则已注册的员工不受影响。但是，新员工只能使用 Intelligent Hub 应用。</value>
+  </data>
+  <data name="VidmConfigReplacedWithNewCloudTenantWarning" xml:space="preserve">
+    <value>完成此请求后，您的 Workspace ONE Access 配置将替换为新的云租户。</value>
+  </data>
+  <data name="VIDMConfigureCertificateError" xml:space="preserve">
+    <value>无法为 Workspace ONE UEM 服务帐户创建证书。无法配置 Workspace ONE Access 设置。</value>
+  </data>
+  <data name="VIDMConfigureExistingUEMSettingError" xml:space="preserve">
+    <value>系统显示从 Workspace ONE Access 租户检索 Workspace ONE UEM 配置详细信息时出错。请检查这些设置，然后重试以继续。</value>
+  </data>
+  <data name="VIDMConfigureUEMSettingsError" xml:space="preserve">
+    <value>系统显示在 Workspace ONE Access 租户上配置 Workspace ONE UEM 设置时出错。请重试以继续。</value>
+  </data>
+  <data name="VidmImpactedConfigDescription" xml:space="preserve">
+    <value>要使用需要 Workspace ONE Access 的 Hub 服务功能，您需要使用所有适用的配置重新配置新的 Workspace ONE Access 实例。有关受影响配置的完整列表，请参见《Workspace ONE Hub Services Guide》中的此 {0}。</value>
+  </data>
+  <data name="VIDMInvalidOGTypeError" xml:space="preserve">
+    <value>只能在组织组客户类型配置 Workspace ONE Access。</value>
+  </data>
+  <data name="VIDMInvalidSettingsError" xml:space="preserve">
+    <value>Workspace ONE Access 云租户凭证无效。您应该已收到来自 VMware 的电子邮件，其中包含您的凭证。如果找不到此信息，请提交一个支持请求单。</value>
+  </data>
+  <data name="VidmNotConfiguredError" xml:space="preserve">
+    <value>未为请求的组织组配置 Workspace ONE Access。</value>
+  </data>
+  <data name="VidmTenantRemoveFailed" xml:space="preserve">
+    <value>无法移除现有 Workspace ONE Access 租户配置。</value>
+  </data>
+  <data name="ViewHidPassportServiceSettings" xml:space="preserve">
+    <value>查看 HID Passport 服务设置</value>
+  </data>
+  <data name="ViewHidPassportServiceSettingsHelp" xml:space="preserve">
+    <value>控制访问权限以查看 HID Passport 服务设置。</value>
+  </data>
+  <data name="ViewTermsOfServiceAndAccept" xml:space="preserve">
+    <value>在{0}查看服务条款，然后在下方接受这些条款。</value>
+  </data>
+  <data name="VMwarePrivacyNotice" xml:space="preserve">
+    <value>VMware 隐私声明</value>
+  </data>
+  <data name="WantToUseSameCloudTenant" xml:space="preserve">
+    <value>是否要使用此同一云租户激活 Hub 服务?</value>
+  </data>
+  <data name="WantToUseSameTenant" xml:space="preserve">
+    <value>是否要使用此同一租户激活 Hub 服务?</value>
+  </data>
+  <data name="WindowsDesktopCollectAnalytics" xml:space="preserve">
+    <value>收集分析</value>
+  </data>
+  <data name="WindowsDesktopPrivacyLink" xml:space="preserve">
+    <value>隐私链接</value>
+  </data>
+  <data name="WindowsDesktopShowPrivacyScreen" xml:space="preserve">
+    <value>显示隐私屏幕</value>
+  </data>
+</root>

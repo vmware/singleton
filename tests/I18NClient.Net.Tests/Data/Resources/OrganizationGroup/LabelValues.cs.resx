@@ -1,0 +1,211 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AboutActiveDevices" xml:space="preserve">
+    <value>Aktivní zařízení jsou ta, která se přihlásila v posledních 8 hodinách.</value>
+  </data>
+  <data name="AboutInactiveDevices" xml:space="preserve">
+    <value>Neaktivní zařízení jsou ta, která se přihlásila před více než 8 hodinami.</value>
+  </data>
+  <data name="AddEditLocationStatus" xml:space="preserve">
+    <value>Přidat/upravit stav umístění</value>
+  </data>
+  <data name="AddEditLocationType" xml:space="preserve">
+    <value>Přidat/upravit typ umístění</value>
+  </data>
+  <data name="ArgOrganizationGroupDropDownMenu" xml:space="preserve">
+    <value>Rozevírací nabídka organizační skupiny {0}</value>
+  </data>
+  <data name="BatchImportNetworkRangesExplanation" xml:space="preserve">
+    <value>Funkci importu síťového rozsahu lze použít pro hromadné načtení síťového rozsahu do systému. Síťové rozsahy by měly být přidružené k organizační skupině.
+
+Více se dozvíte po kliknutí na položku Stáhnout šablonu.</value>
+  </data>
+  <data name="ChangeOGAboveOGBulkOperation" xml:space="preserve">
+    <value>Změna organizační skupiny je nad organizační skupinou, kde byla provedena hromadná operace</value>
+  </data>
+  <data name="CustomerIndustry" xml:space="preserve">
+    <value>Zákaznický obor</value>
+  </data>
+  <data name="EgressTenantAdaptorSyncJob" xml:space="preserve">
+    <value>Synchronizace organizační skupiny s úlohou adaptéru klienta egress.</value>
+  </data>
+  <data name="ErrorMatchingAvailableOG" xml:space="preserve">
+    <value>Chyba při pokusu o spárování dostupné organizační skupiny</value>
+  </data>
+  <data name="ErrorResolvingDefaultLocationForArg" xml:space="preserve">
+    <value>Chyba při řešení výchozího umístění organizační skupiny {0}.</value>
+  </data>
+  <data name="ErrorResolvingValidCustomerCodeForOGArg" xml:space="preserve">
+    <value>Chyba při řešení platného kódu CustomerCode pro organizační skupinu {0}</value>
+  </data>
+  <data name="ErrorValidatingCustomerCodeArgAgainstOGArg" xml:space="preserve">
+    <value>Chyba při ověřování kódu CustomerCode {0} proti organizační skupině {1}</value>
+  </data>
+  <data name="GroupIDCannotBeEmptyForPermission" xml:space="preserve">
+    <value>GroupID nemůže být pro oprávnění prázdné, tedy {0} je přeskočeno.</value>
+  </data>
+  <data name="LocationStatuses" xml:space="preserve">
+    <value>Stavy místa</value>
+  </data>
+  <data name="LocationTypes" xml:space="preserve">
+    <value>Typy místa</value>
+  </data>
+  <data name="OGRequiredOrInvalid" xml:space="preserve">
+    <value>Organizační skupina je povinná nebo daná organizační skupina není platná.</value>
+  </data>
+  <data name="OrganizationGroupAssignmentToUserGroupHelpMessage" xml:space="preserve">
+    <value>Toto přiřazení se projeví pouze v případě, že je vybrána hodnota {0} u možnosti {1} v {2}</value>
+  </data>
+  <data name="OrganizationGroupDeleteDescription" xml:space="preserve">
+    <value>Odstranění organizační skupiny odebere organizační skupinu a všechny přidružené zdroje z aplikace Workspace ONE UEM.
+Administrátoři, jejichž jediná role je v této organizační skupině, budou také odstraněni. Ostatní administrátoři budou přesunuti do jedné z jejich ostatních rolí, pokud to bude nutné.
+Tuto akci nelze vzít zpět. Postupujte opatrně.</value>
+  </data>
+  <data name="OrganizationGroupDetails" xml:space="preserve">
+    <value>Detaily organizační skupiny</value>
+  </data>
+  <data name="OrganizationGroups" xml:space="preserve">
+    <value>Organizační skupiny</value>
+  </data>
+  <data name="OrganizationUUIDNotFound" xml:space="preserve">
+    <value>Organizační skupina s UUID „{0}“ nebyla nalezena</value>
+  </data>
+  <data name="PermissionOGNotChildOfCurrentOG" xml:space="preserve">
+    <value>Organizační skupina s oprávněním není podřízenou položkou aktuální organizační skupiny, a proto je přeskočeno {0}.</value>
+  </data>
+  <data name="PermissionOGNotChildOfUserGroupsRootOG" xml:space="preserve">
+    <value>Organizační skupina s oprávněním není podřízenou položkou kořenové organizační skupiny uživatelské skupiny, a proto je {0} přeskočeno.</value>
+  </data>
+  <data name="PermissionOGNotValid" xml:space="preserve">
+    <value>Daná organizační skupina oprávnění není platná nebo dostupná, {0} je tedy přeskočeno.</value>
+  </data>
+  <data name="PleaseSelectCustomerIndustry" xml:space="preserve">
+    <value>Vyberte prosím obor zákazníka</value>
+  </data>
+  <data name="RestrictedCharacterInOrganizationGroupName" xml:space="preserve">
+    <value>Název organizační skupiny obsahuje jeden nebo více zakázaných znaků.</value>
+  </data>
+  <data name="Types" xml:space="preserve">
+    <value>Druh</value>
+  </data>
+  <data name="UnauthorizedOgAccessContactSystemAdmin" xml:space="preserve">
+    <value>Nemáte oprávnění přístupu k této organizační skupině. Potřebujete-li pomoc, obraťte se na administrátora IT.</value>
+  </data>
+</root>

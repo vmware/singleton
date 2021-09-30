@@ -1,0 +1,2555 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AboutToPerformResumeBitlocker" xml:space="preserve">
+    <value>Vous êtes sur le point d'exécuter l'action Reprendre le chiffrement BitLocker. Veuillez lire attentivement les informations ci-dessous pour continuer.</value>
+  </data>
+  <data name="ActivateBacklight" xml:space="preserve">
+    <value>Activer le rétroéclairage</value>
+  </data>
+  <data name="ActivationLockClearFailure" xml:space="preserve">
+    <value>Échec de la désactivation du verrouillage d'activation</value>
+  </data>
+  <data name="ActivationLockClearRequested" xml:space="preserve">
+    <value>Désactivation du verrouillage d'activation demandée</value>
+  </data>
+  <data name="ActivationLockClearSuccess" xml:space="preserve">
+    <value>Désactivation du verrouillage d'activation réussie</value>
+  </data>
+  <data name="ActivationLockCommandWarning" xml:space="preserve">
+    <value>Le verrouillage d'activation est activé pour ce terminal. L'identifiant Apple et le mot de passe utilisés pour activer cette fonctionnalité sont nécessaires pour réactiver le terminal. Si vous ne connaissez pas l'identifiant Apple et le mot de passe, sélectionnez la commande Désactiver le verrouillage d'activation ci-dessous.</value>
+  </data>
+  <data name="ActivationLockEnabledSuccessfully" xml:space="preserve">
+    <value>Verrouillage d'activation activé</value>
+  </data>
+  <data name="ActivationLockWarning" xml:space="preserve">
+    <value>Il est détecté que le verrouillage d'activation du terminal a été activé via la fonction Localiser mon iPhone. Même après une réinitialisation aux paramètres usine, un terminal ne peut pas être réactivé sans l'identifiant et le mot de passe iCloud d'Apple qui ont été utilisés pour actionner le verrouillage d'activation.</value>
+  </data>
+  <data name="AddDropShipDevice" xml:space="preserve">
+    <value>Ajouter un terminal de livraison directe</value>
+  </data>
+  <data name="AddNewSchedule" xml:space="preserve">
+    <value>Ajouter une planification</value>
+  </data>
+  <data name="AddSideLoadingKey" xml:space="preserve">
+    <value>Ajouter une clé de chargement indépendant</value>
+  </data>
+  <data name="AffectedDeviceTagManagementMessage" xml:space="preserve">
+    <value>Les balises sélectionnées seront appliquées à tous les terminaux sélectionnés</value>
+  </data>
+  <data name="AgentEnrollmentUrl" xml:space="preserve">
+    <value>URL d'inscription de l'Agent</value>
+  </data>
+  <data name="AirWatchHuaweiService" xml:space="preserve">
+    <value>Service Huawei d'AirWatch</value>
+  </data>
+  <data name="AirWatchInterrogatorQueueMonitor" xml:space="preserve">
+    <value>Le moniteur de file d'attente d'interrogateur lit les informations envoyées aux files d'attente par le serveur d'interrogateur et les écrit dans la base de données.</value>
+  </data>
+  <data name="AirWatchInterrogatorServer" xml:space="preserve">
+    <value>Le serveur d'interrogateur est un serveur de socket qui reçoit des données entrantes des terminaux sur le port 8087.</value>
+  </data>
+  <data name="AndroidAvailableFileActions" xml:space="preserve">
+    <value>Téléchargez et importez les fichiers.</value>
+  </data>
+  <data name="AndroidDeviceLogSourceToolTipText" xml:space="preserve">
+    <value>Sélectionnez « Hub » pour collecter les journaux générés par le Workspace ONE Intelligent Hub.
+
+Sélectionnez « Système » pour collecter un journal système complet pour les appareils Android Legacy sur lesquels un service Platform OEM est installé. Un rapport de bogue sera collecté si le terminal est géré par Android Work et exécute Android 7.0 ou une version ultérieure.
+
+Sélectionnez « Réseau » pour collecter un journal des événements réseau sur le terminal.
+
+Sélectionnez « Sécurité » pour collecter les journaux de sécurité avant et après le démarrage. Les journaux sont téléchargés dans la console dès qu'ils sont disponibles sur le terminal.</value>
+  </data>
+  <data name="AndroidEnterpriseCancelMigration" xml:space="preserve">
+    <value>Commande pour annuler la migration d'Android Enterprise.</value>
+  </data>
+  <data name="AndroidEnterpriseMigration" xml:space="preserve">
+    <value>Commande pour commencer la migration d'Android Legacy vers AFW.</value>
+  </data>
+  <data name="AndroidManagement" xml:space="preserve">
+    <value>Gestion des terminaux Android</value>
+  </data>
+  <data name="AndroidRequestDeviceLogSettingsInformation" xml:space="preserve">
+    <value>Personnalisez votre demande de journalisation ci-dessous. Accédez à Informations sur le terminal &gt; Plus &gt; Pièces jointes &gt; Documents pour passer en revue les fichiers journaux. La réception des journaux de réseau ou de sécurité peut prendre jusqu'à 90 minutes. Certaines options peuvent être indisponibles si elles ne sont pas prises en charge par le terminal.</value>
+  </data>
+  <data name="AndroidWorkProfileEndUserMessageSetupHelp" xml:space="preserve">
+    <value>Ce message facultatif s'affichera pour les utilisateurs finaux sur les terminaux Android pour expliquer pourquoi leur profil professionnel a été supprimé.</value>
+  </data>
+  <data name="AndroidWorkProfileEndUserWipeMessage" xml:space="preserve">
+    <value>Message d'effacement utilisateur final du profil professionnel Android</value>
+  </data>
+  <data name="AndroidWorkSharedDeviceModeNotReported" xml:space="preserve">
+    <value>Non signalé</value>
+  </data>
+  <data name="ApnsMessageForRemoteView" xml:space="preserve">
+    <value>Votre administrateur souhaite afficher à distance l'écran de votre terminal. Accédez à votre centre de contrôle iOS pour diffuser l'écran de votre terminal.</value>
+  </data>
+  <data name="ApnsMessageNotSent" xml:space="preserve">
+    <value>Une erreur s'est produite lors de la tentative d'envoi du message d'affichage à distance. Contactez le support pour obtenir de l'aide.</value>
+  </data>
+  <data name="ApnsMessageSentForRemoteView" xml:space="preserve">
+    <value>Message envoyé avec succès au terminal pour inviter l'utilisateur à lancer une session d'affichage à distance.</value>
+  </data>
+  <data name="AppAssignmentEditWarning" xml:space="preserve">
+    <value>Modifier la configuration associée à cette application entraîne l'application de ces modifications aux autres terminaux de ces workflows.</value>
+  </data>
+  <data name="AppleBusinessManager" xml:space="preserve">
+    <value>Apple Business Manager</value>
+  </data>
+  <data name="AppleBusinessManagerFetchFail" xml:space="preserve">
+    <value>Échec de l'extraction d'Apple Business Manager</value>
+  </data>
+  <data name="AppleBusinessManagerFetchSuccess" xml:space="preserve">
+    <value>Réussite de l'extraction d'Apple Business Manager</value>
+  </data>
+  <data name="AppleBusinessManagerSyncFail" xml:space="preserve">
+    <value>Échec de la synchronisation d'Apple Business Manager</value>
+  </data>
+  <data name="AppleBusinessManagerSyncSuccess" xml:space="preserve">
+    <value>Réussite de la synchronisation d'Apple Business Manager</value>
+  </data>
+  <data name="ApplicationConfigurationConfirmed" xml:space="preserve">
+    <value>Configuration de l'application confirmée</value>
+  </data>
+  <data name="ApplicationConfigurationFailed" xml:space="preserve">
+    <value>Échec de la configuration de l'application</value>
+  </data>
+  <data name="ApplicationConfigurationRefused" xml:space="preserve">
+    <value>Configuration de l'application refusée</value>
+  </data>
+  <data name="ApplyTimeWindow" xml:space="preserve">
+    <value>Pour appliquer la fenêtre de temps à un terminal, vous devez le référencer en tant que condition de workflow.</value>
+  </data>
+  <data name="ApplyToAllAdmin" xml:space="preserve">
+    <value>Appliquer à tous les administrateurs au niveau de ce groupe organisationnel ou d'un groupe inférieur</value>
+  </data>
+  <data name="ApprovedByClassification" xml:space="preserve">
+    <value>Approuvé par classification</value>
+  </data>
+  <data name="ApprovedByRevisionAndClassification" xml:space="preserve">
+    <value>Approuvé par la révision et la classification</value>
+  </data>
+  <data name="ApproveWipe" xml:space="preserve">
+    <value>Approuver l'effacement</value>
+  </data>
+  <data name="ApproveWipeConfirm" xml:space="preserve">
+    <value>Approve wipe successful</value>
+  </data>
+  <data name="AssignedTags" xml:space="preserve">
+    <value>Balises attribuées</value>
+  </data>
+  <data name="AssignmentName" xml:space="preserve">
+    <value>Nom de l'attribution</value>
+  </data>
+  <data name="Athena" xml:space="preserve">
+    <value>Athena</value>
+  </data>
+  <data name="AttributesNotPresent" xml:space="preserve">
+    <value>Attributs du terminal manquants.</value>
+  </data>
+  <data name="Auto_Detect" xml:space="preserve">
+    <value>Détection automatique</value>
+  </data>
+  <data name="AutoInstall" xml:space="preserve">
+    <value>Installation automatique</value>
+  </data>
+  <data name="AutoUpdateStatus" xml:space="preserve">
+    <value>État de mise à jour automatique</value>
+  </data>
+  <data name="AutoUpdateStatusFail" xml:space="preserve">
+    <value>État de mise à jour automatique – Échec</value>
+  </data>
+  <data name="AutoUpdateStatusPass" xml:space="preserve">
+    <value>État de mise à jour automatique – Réussite</value>
+  </data>
+  <data name="AutoUpdateStatusUnknown" xml:space="preserve">
+    <value>État de mises à jour automatique – Inconnu</value>
+  </data>
+  <data name="AvailableByApple" xml:space="preserve">
+    <value>Disponible sous Apple</value>
+  </data>
+  <data name="Bash" xml:space="preserve">
+    <value>Bash</value>
+  </data>
+  <data name="BatchImportCustomAttributesExplanation" xml:space="preserve">
+    <value>La fonctionnalité d'importation des lots d'attribution personnalisée peut être utilisée pour importer en masse les attributs personnalisés et leurs valeurs correspondantes dans le système. Chaque colonne correspond à un attribut personnalisé et chaque ligne correspond à différents paramètres de celui-ci.</value>
+  </data>
+  <data name="BeginRollOut" xml:space="preserve">
+    <value>Commencer le déploiement</value>
+  </data>
+  <data name="BiosAttestationFailed" xml:space="preserve">
+    <value>Échec de la vérification du BIOS</value>
+  </data>
+  <data name="BiosAttestationPassed" xml:space="preserve">
+    <value>Vérification du BIOS réussie</value>
+  </data>
+  <data name="BiosAttestationStatus" xml:space="preserve">
+    <value>Vérification du BIOS</value>
+  </data>
+  <data name="BiosAttestationStatusUnknown" xml:space="preserve">
+    <value>État de vérification du BIOS inconnu</value>
+  </data>
+  <data name="BiosDate" xml:space="preserve">
+    <value>Date du BIOS</value>
+  </data>
+  <data name="BiosVendor" xml:space="preserve">
+    <value>Fournisseur du BIOS</value>
+  </data>
+  <data name="BiosVerificationCheck" xml:space="preserve">
+    <value>Vérification du BIOS</value>
+  </data>
+  <data name="BitLockerCipherMismatch" xml:space="preserve">
+    <value>Le niveau de chiffrement sur le terminal ne correspond pas au profil</value>
+  </data>
+  <data name="BitLockerCipherStrengthMismatch" xml:space="preserve">
+    <value>Niveau de chiffrement sur le profil : {0}, sur le terminal : {1}.</value>
+  </data>
+  <data name="BitLockerDriveStatusDecryptionInProgress" xml:space="preserve">
+    <value>Déchiffrement en cours</value>
+  </data>
+  <data name="BitLockerDriveStatusEncrypted" xml:space="preserve">
+    <value>Chiffré</value>
+  </data>
+  <data name="BitLockerDriveStatusEncryptionInProgress" xml:space="preserve">
+    <value>Chiffrement en cours</value>
+  </data>
+  <data name="BitLockerDriveStatusNotEncrypted" xml:space="preserve">
+    <value>Non chiffré</value>
+  </data>
+  <data name="BitLockerDriveStatusSuspended" xml:space="preserve">
+    <value>Interrompu</value>
+  </data>
+  <data name="BitLockerDriveStatusSuspendedScheduled" xml:space="preserve">
+    <value>Interrompu (selon la planification du profil)</value>
+  </data>
+  <data name="BitLockerDriveStatusSuspendedWithRebootCount" xml:space="preserve">
+    <value>Interrompu ({0} redémarrage(s) restant(s))</value>
+  </data>
+  <data name="BitLockerDriveStatusUnknown" xml:space="preserve">
+    <value>Inconnu(e)</value>
+  </data>
+  <data name="BitLockerEncryptionResumed" xml:space="preserve">
+    <value>Reprise du chiffrement BitLocker</value>
+  </data>
+  <data name="BitLockerProtection" xml:space="preserve">
+    <value>Protection par BitLocker</value>
+  </data>
+  <data name="BitLockerRecoveryKeyModalHelpText" xml:space="preserve">
+    <value>Utilisez la clé de récupération pour déverrouiller un terminal chiffré avec BitLocker.</value>
+  </data>
+  <data name="BitLockerRecoveryKeyModalText" xml:space="preserve">
+    <value>Utilisez la clé de récupération pour déverrouiller un terminal chiffré avec BitLocker. Les clés de récupération statiques sont disponibles uniquement si elles sont ajoutées au profil.</value>
+  </data>
+  <data name="BitlockerResume" xml:space="preserve">
+    <value>Reprendre BitLocker</value>
+  </data>
+  <data name="BitLockerStatusDecryptionInProgress" xml:space="preserve">
+    <value>État BitLocker : Déchiffrement en cours</value>
+  </data>
+  <data name="BitLockerStatusEncrypted" xml:space="preserve">
+    <value>État BitLocker : Chiffré</value>
+  </data>
+  <data name="BitLockerStatusEncryptionInProgress" xml:space="preserve">
+    <value>État BitLocker : Chiffrement en cours</value>
+  </data>
+  <data name="BitLockerStatusNotEncrypted" xml:space="preserve">
+    <value>État BitLocker : Non chiffré</value>
+  </data>
+  <data name="BitLockerStatusPartiallyProtected" xml:space="preserve">
+    <value>État BitLocker : Partiellement protégé</value>
+  </data>
+  <data name="BitLockerStatusSuspended" xml:space="preserve">
+    <value>État BitLocker : Interrompu ({0} redémarrage(s) restant(s))</value>
+  </data>
+  <data name="BitLockerStatusSuspendedScheduled" xml:space="preserve">
+    <value>État BitLocker : Interrompu (selon la planification du profil)</value>
+  </data>
+  <data name="BitLockerStatusUnknown" xml:space="preserve">
+    <value>État BitLocker : Inconnu</value>
+  </data>
+  <data name="BitLockerSuspendedPerProfileSchedule" xml:space="preserve">
+    <value>Chiffrement BitLocker interrompu selon la planification du profil</value>
+  </data>
+  <data name="Blueprints" xml:space="preserve">
+    <value>Blueprints</value>
+  </data>
+  <data name="BuildOrRevisionNumber" xml:space="preserve">
+    <value>Numéro de version/de révision de build</value>
+  </data>
+  <data name="BulkActivationLockCommandWarning" xml:space="preserve">
+    <value>Le verrouillage d'activation est activé pour un ou plusieurs des terminaux sélectionnés. L'identifiant Apple et le mot de passe utilisés pour activer cette fonctionnalité sont nécessaires pour réactiver les terminaux. Si vous ne connaissez pas l'identifiant Apple et le mot de passe, sélectionnez la commande Désactiver le verrouillage d'activation ci-dessous.</value>
+  </data>
+  <data name="BulkApiAction" xml:space="preserve">
+    <value>Action de l'API en masse</value>
+  </data>
+  <data name="BulkTagManagementSelectTipArg" xml:space="preserve">
+    <value>{0} terminal(aux) sélectionné(s)</value>
+  </data>
+  <data name="BusinessHours" xml:space="preserve">
+    <value>Heures ouvrées</value>
+  </data>
+  <data name="CancelFirmwareUpdate" xml:space="preserve">
+    <value>Annuler la mise à jour</value>
+  </data>
+  <data name="CancelSchedule" xml:space="preserve">
+    <value>Annuler la planification</value>
+  </data>
+  <data name="CanNotDeleteTagBecauseAssignedToSmartGroup" xml:space="preserve">
+    <value>Impossible de supprimer la balise, car elle est attribuée aux Smart Groups suivants : {0}</value>
+  </data>
+  <data name="CertificateInfo" xml:space="preserve">
+    <value>Informations sur le certificat</value>
+  </data>
+  <data name="CertificateSerialNumber" xml:space="preserve">
+    <value>Numéro de série du certificat</value>
+  </data>
+  <data name="ChangePasscodeMsgSamsung" xml:space="preserve">
+    <value>Sur les terminaux Android (hérités), la modification du code secret fonctionne uniquement sur les terminaux Samsung ou si un code secret n'est pas encore défini sur le terminal</value>
+  </data>
+  <data name="ChangeWorkProfilePasscodeNote" xml:space="preserve">
+    <value>Cette action force un nouveau mot de passe de déverrouillage du profil professionnel pour l'utilisateur. Le mot de passe indiqué doit être conforme aux contraintes de la stratégie de code secret actuellement installée, à l'exception de l'historique des codes secrets. S'il ne répond pas à ces contraintes, il sera rejeté.</value>
+  </data>
+  <data name="CheckInDevice" xml:space="preserve">
+    <value>Check-in du terminal</value>
+  </data>
+  <data name="CheckInDeviceFailed" xml:space="preserve">
+    <value>Échec du check-in du terminal</value>
+  </data>
+  <data name="CheckInDeviceRequested" xml:space="preserve">
+    <value>Check-in du terminal demandé</value>
+  </data>
+  <data name="CheckInDeviceSucceeded" xml:space="preserve">
+    <value>Check-in du terminal effectué</value>
+  </data>
+  <data name="ChromeOSDeviceDisableLostMode" xml:space="preserve">
+    <value>Le terminal Chrome OS restera enrôlé, mais sera complètement désactivé et affichera l'ensemble des messages personnalisés dans le profil du terminal Chrome OS &gt; Sécurité et confidentialité &gt; Message mode Perdu si le mode Perdu est activé. Désactivez le mode Perdu pour déverrouiller le terminal Chrome OS.</value>
+  </data>
+  <data name="ChromeOSDeviceEnableLostMode" xml:space="preserve">
+    <value>Le terminal Chrome OS restera enrôlé, mais sera complètement désactivé et affichera l'ensemble des messages personnalisés dans le profil du terminal Chrome OS &gt; Sécurité et confidentialité &gt; Message mode Perdu si le mode Perdu est activé. Activez le mode Perdu pour verrouiller le terminal Chrome OS.</value>
+  </data>
+  <data name="ChromeOsEnterpriseWipeReason" xml:space="preserve">
+    <value>Raison d'effacement de Chrome OS Enterprise</value>
+  </data>
+  <data name="ClearAndroidDevicePasscodeConfirmation" xml:space="preserve">
+    <value>Êtes-vous sûr de vouloir effacer le code secret du terminal ?</value>
+  </data>
+  <data name="ClearAndroidWorkProfilePasscode" xml:space="preserve">
+    <value>Effacer le code secret professionnel</value>
+  </data>
+  <data name="ClearAndroidWorkProfilePasscodeConfirmation" xml:space="preserve">
+    <value>Voulez-vous vraiment effacer le code secret professionnel du terminal ?</value>
+  </data>
+  <data name="ClearApplicationPasscode" xml:space="preserve">
+    <value>Effacer le code secret de l'application</value>
+  </data>
+  <data name="ClearPasscodeLockDevice" xml:space="preserve">
+    <value>Effacer le code secret du terminal/Verrouiller le terminal/Arrêter/Redémarrer</value>
+  </data>
+  <data name="CommandDisableActivationLockComment" xml:space="preserve">
+    <value>Lorsque le verrouillage d'activation est activé sur un terminal iOS ou macOS, l'identifiant Apple et le mot de passe ou le code secret du terminal sont requis avant de désactiver la fonctionnalité Trouver mon iPhone/Mac, d'effacer le terminal ou de réactiver et d'utiliser le terminal.
+
+Sélectionnez Désactiver pour désactiver le verrouillage d'activation sur le terminal.</value>
+  </data>
+  <data name="CommandDisableActivationLockCommentBypass" xml:space="preserve">
+    <value>Pour désactiver le verrouillage d'activation, vous pouvez également entrer le code de contournement suivant sur le terminal lors de l'exécution de l'assistant de configuration. Entrez ce code de contournement comme mot de passe du verrouillage d'activation et laissez le champ Nom d'utilisateur identifiant Apple vide.</value>
+  </data>
+  <data name="CompromisedDevicesChartDescription" xml:space="preserve">
+    <value>{0} Terminaux compromis. {1} Nombre total de terminaux compromis.</value>
+  </data>
+  <data name="CompromisedDevicesChartTitle" xml:space="preserve">
+    <value>Graphique en anneau des terminaux compromis. </value>
+  </data>
+  <data name="ConditionError" xml:space="preserve">
+    <value>Une ou plusieurs conditions dans ce workflow ne disposent pas d'une action suivante. Ajoutez une action pour continuer.</value>
+  </data>
+  <data name="ConfigureLocationGroup" xml:space="preserve">
+    <value>Configurer le groupe organisationnel</value>
+  </data>
+  <data name="ConfigureLoginCredentials" xml:space="preserve">
+    <value>Configurer les identifiants de connexion</value>
+  </data>
+  <data name="ConfirmDeleteDevice" xml:space="preserve">
+    <value>Souhaitez-vous supprimer le terminal ? Toutes les informations associées seront aussi supprimées.</value>
+  </data>
+  <data name="ConfirmDeleteDeviceWithRecoveryKey" xml:space="preserve">
+    <value>Souhaitez-vous supprimer le terminal ? Toutes les informations associées seront aussi supprimées. Avertissement : la clé de récupération du chiffrement sera également supprimée. Vous pouvez perdre des données.</value>
+  </data>
+  <data name="ConfirmDeviceRebootAfterHubRepair" xml:space="preserve">
+    <value>Cette action répare les problèmes de résolution du Hub, comme les erreurs HMAC, les services arrêtés ou les fichiers manquants ou corrompus. Il peut mettre à niveau le Hub sur le terminal vers la dernière version disponible dans votre console. Dans certains cas, cette action peut lancer un redémarrage</value>
+  </data>
+  <data name="ConfirmPauseTitle" xml:space="preserve">
+    <value>Confirmer la pause</value>
+  </data>
+  <data name="ConfirmResumeTitle" xml:space="preserve">
+    <value>Confirmer la reprise</value>
+  </data>
+  <data name="ConfirmUnenrollDeleteDeviceWithRecoveryKey" xml:space="preserve">
+    <value>Ce terminal est toujours enrôlé. La suppression du terminal annule son enrôlement. Avertissement : la clé de récupération du chiffrement sera également supprimée. Vous pouvez perdre des données.</value>
+  </data>
+  <data name="ConfirmUpdateRollOutContent" xml:space="preserve">
+    <value>La fonction Commencer le déploiement permet de lancer le déploiement des mises à jour si le processus n'a pas encore été démarré et de reprendre le déploiement des mises à jour s'il a été précédemment interrompu. Voulez-vous vraiment déployer la mise à jour ?</value>
+  </data>
+  <data name="ConfirmUpdateRollOutTitle" xml:space="preserve">
+    <value>Confirmer le déploiement</value>
+  </data>
+  <data name="ConnectDeviceToWifiPriorToEnrollment" xml:space="preserve">
+    <value>Connecter le terminal au Wi-Fi (WPA/WPA2) avant l'inscription</value>
+  </data>
+  <data name="ConnectionState" xml:space="preserve">
+    <value>État de la connexion</value>
+    <comment>Either Connected or Disconnected</comment>
+  </data>
+  <data name="COPEDeviceInfoMessage" xml:space="preserve">
+    <value>La gestion complète du terminal reste intacte. Les employés recevront un profil professionnel pour accéder aux applications professionnelles et auront accès à leurs applications personnelles Google Play Store, en dehors de leur profil professionnel. Cette option est disponible pour les versions Android 8.0 et ultérieures.</value>
+  </data>
+  <data name="CouldNotStartRemoteViewSession" xml:space="preserve">
+    <value>Nous n'avons pas pu démarrer la session pour le terminal avec l'UDID {0} avec le système d'affichage à distance. Contactez le support pour obtenir de l'aide.</value>
+  </data>
+  <data name="CpuTitle" xml:space="preserve">
+    <value>Architecture du CPU</value>
+  </data>
+  <data name="CpuTooltip" xml:space="preserve">
+    <value>Ce critère filtre les terminaux par architecture du CPU. Ce filtrage s'applique uniquement aux terminaux Windows et macOS. Si vous ne sélectionnez aucune option, les critères de filtrage ne seront pas appliqués.</value>
+  </data>
+  <data name="CreateDevice" xml:space="preserve">
+    <value>Créer</value>
+  </data>
+  <data name="CreateNewUserMessageArg" xml:space="preserve">
+    <value>Si l'utilisateur recherché est introuvable, veuillez créer un utilisateur ici : {0}</value>
+    <comment>{0} will be replaced by a hyperlink with text Create New User</comment>
+  </data>
+  <data name="CreateTimeWindow" xml:space="preserve">
+    <value>Créer une fenêtre de temps</value>
+  </data>
+  <data name="CriteriaPreviewNote" xml:space="preserve">
+    <value>L'aperçu actuel se base uniquement sur le nom de l'application, mais l'évaluation de la condition sur les terminaux inclura les critères de l'opérateur.</value>
+  </data>
+  <data name="CustomDateRange" xml:space="preserve">
+    <value>Personnalisé(e)</value>
+  </data>
+  <data name="CustomFieldAdded" xml:space="preserve">
+    <value>Champ personnalisé ajouté</value>
+  </data>
+  <data name="CustomFieldDeleted" xml:space="preserve">
+    <value>Champ personnalisé supprimé</value>
+  </data>
+  <data name="CustomFieldModified" xml:space="preserve">
+    <value>Champ personnalisé modifié</value>
+  </data>
+  <data name="DailyArg" xml:space="preserve">
+    <value>Quotidien {0} - {1} ({2})</value>
+    <comment>Placehoders: 0 - StartTime, 1 - EndTime, 2 - Duration.
+Example: Daily 11:00 PM - 4:30 AM (5 hours 30 mins)</comment>
+  </data>
+  <data name="DataCompromisedOrCorrupted" xml:space="preserve">
+    <value>Les données peuvent avoir été compromises ou corrompues. Contactez votre administrateur informatique.</value>
+  </data>
+  <data name="DataNotCollectedDueToPrivacySettings" xml:space="preserve">
+    <value>Données GPS non disponibles. Pour afficher les données GPS, mettez à jour les paramètres de confidentialité pour autoriser la collecte et l'affichage des données de localisation.</value>
+  </data>
+  <data name="DataValidationFailed" xml:space="preserve">
+    <value>Échec de l'enregistrement. Veuillez réessayer.</value>
+  </data>
+  <data name="DateEncrypted" xml:space="preserve">
+    <value>Date chiffrée</value>
+  </data>
+  <data name="DateLabel" xml:space="preserve">
+    <value>Date et heure</value>
+  </data>
+  <data name="DateLastSeen" xml:space="preserve">
+    <value>Date de la dernière visualisation</value>
+  </data>
+  <data name="DateMustBeInFuture" xml:space="preserve">
+    <value>La date doit être ultérieure à celle du jour</value>
+  </data>
+  <data name="DayAgo" xml:space="preserve">
+    <value>il y a un jour</value>
+  </data>
+  <data name="DefineAssignmentAndSelectSmartGroups" xml:space="preserve">
+    <value>Définir l'attribution et sélectionner les Smart Groups</value>
+  </data>
+  <data name="DefineDeploymentDateTimeAndMethod" xml:space="preserve">
+    <value>Définir la date/l'heure et la méthode du déploiement</value>
+  </data>
+  <data name="DeleteDeviceConfirmation" xml:space="preserve">
+    <value>Confirmation de la suppression d'un terminal</value>
+  </data>
+  <data name="DeleteSensor" xml:space="preserve">
+    <value>Supprimer le capteur</value>
+  </data>
+  <data name="DeleteSensorConfirmArg" xml:space="preserve">
+    <value>Voulez-vous vraiment supprimer le capteur « {0} » ?</value>
+  </data>
+  <data name="DeleteTimeWindowConfirmation" xml:space="preserve">
+    <value>Voulez-vous vraiment supprimer cette fenêtre de temps ?</value>
+  </data>
+  <data name="DeleteTimeWindowTitle" xml:space="preserve">
+    <value>Supprimer fenêtre de temps</value>
+  </data>
+  <data name="DeleteUserConfirmation" xml:space="preserve">
+    <value>La commande Supprimer l'utilisateur forcera la suppression de l'utilisateur du terminal, même si l'utilisateur doit synchroniser des données. Voulez-vous vraiment continuer ?</value>
+  </data>
+  <data name="DeleteUserConfirmed" xml:space="preserve">
+    <value>Commande Supprimer l'utilisateur confirmée</value>
+  </data>
+  <data name="DeleteUserFailed" xml:space="preserve">
+    <value>La commande Supprimer l'utilisateur n'a pas pu être envoyée correctement.</value>
+  </data>
+  <data name="DeleteUserRefused" xml:space="preserve">
+    <value>Commande Supprimer l'utilisateur refusée</value>
+  </data>
+  <data name="DeleteUserRequested" xml:space="preserve">
+    <value>Commande Supprimer l'utilisateur demandée</value>
+  </data>
+  <data name="DeleteUserSuccess" xml:space="preserve">
+    <value>La commande Supprimer l'utilisateur a bien été envoyée.</value>
+  </data>
+  <data name="DEPAdminPasswordRotationJob" xml:space="preserve">
+    <value>Tâche de rotation du mot de passe administrateur DEP</value>
+  </data>
+  <data name="DeploymentAlreadyExists" xml:space="preserve">
+    <value>Un déploiement avec des propriétés similaires existe déjà</value>
+  </data>
+  <data name="DeploymentBegins" xml:space="preserve">
+    <value>Début du déploiement</value>
+  </data>
+  <data name="DeploymentDownloadAndInstall" xml:space="preserve">
+    <value>Télécharger et installer</value>
+  </data>
+  <data name="DeploymentDownloadOnly" xml:space="preserve">
+    <value>Télécharger uniquement</value>
+  </data>
+  <data name="DeploymentForDeviceUpdateNotFound" xml:space="preserve">
+    <value>Aucun déploiement trouvé pour cette mise à jour du terminal.</value>
+  </data>
+  <data name="DeploymentInstallOnly" xml:space="preserve">
+    <value>Installer uniquement</value>
+  </data>
+  <data name="DeploymentMethod" xml:space="preserve">
+    <value>Méthode de déploiement</value>
+  </data>
+  <data name="DeploymentStartAfterUpdateExpiry" xml:space="preserve">
+    <value>L'heure de début du déploiement ne peut pas être postérieure à la date d'expiration de la mise à jour.</value>
+  </data>
+  <data name="DeploymentStartTime" xml:space="preserve">
+    <value>Date de début du déploiement</value>
+  </data>
+  <data name="DescriptionofQRCodeEnrollment" xml:space="preserve">
+    <value>Sur les terminaux fonctionnant sous Android 7.0+, vous pouvez lancer l'inscription par code QR sur l'écran d'accueil Android après la réinitialisation des paramètres en appuyant 6 fois n'importe où sur l'écran. En fonction du terminal utilisé, une invite peut s'afficher pour permettre la connexion à un réseau Wi-Fi avant l'analyse QR.</value>
+  </data>
+  <data name="DestinationPath" xml:space="preserve">
+    <value>Chemin de destination</value>
+  </data>
+  <data name="DeviceAlreadyLocked" xml:space="preserve">
+    <value>Le terminal est déjà verrouillé.</value>
+  </data>
+  <data name="DeviceBatchSizeHelp" xml:space="preserve">
+    <value>Nombre de terminaux dans le champ d'application du moteur de stratégie.</value>
+  </data>
+  <data name="DeviceBulkManagementForceBiosPasswordReset" xml:space="preserve">
+    <value>Forcer la réinitialisation du mot de passe du BIOS de gestion des terminaux en masse</value>
+  </data>
+  <data name="DeviceBulkManagementForceBiosPasswordResetHelp" xml:space="preserve">
+    <value>Autorise l'utilisateur à forcer la réinitialisation du mot de passe du BIOS pour les terminaux en masse</value>
+  </data>
+  <data name="DeviceCapability" xml:space="preserve">
+    <value>Capacité du terminal</value>
+  </data>
+  <data name="DeviceCICOCheckIn" xml:space="preserve">
+    <value>Archivage CICO du terminal</value>
+  </data>
+  <data name="DeviceCICOCheckInHelp" xml:space="preserve">
+    <value>Autorise le réarchivage d'un terminal vers l'utilisateur à plusieurs niveaux qui lui est associé, à partir de la console</value>
+  </data>
+  <data name="DeviceDeferralDate" xml:space="preserve">
+    <value>Date de report</value>
+  </data>
+  <data name="DeviceDenylist" xml:space="preserve">
+    <value>Action de liste bloquée du terminal</value>
+  </data>
+  <data name="DeviceDetailsApplicationSdkAppComplianceBanner" xml:space="preserve">
+    <value>Le dernier rapport de conformité d'application SDK a été effectué par {0}. Vous pouvez accéder à l'application dans la liste ci-dessous pour plus de détails.</value>
+    <comment>{0} will be replaced by a ApplicationName (Application Bundle Identifier).</comment>
+  </data>
+  <data name="DeviceDetailsComplianceSdkAppComplianceBanner" xml:space="preserve">
+    <value>Des stratégies de conformité d'application SDK sont attribuées à ce terminal. Accédez à l'onglet Applications dans les informations relatives au terminal pour afficher l'état de conformité de l'application SDK.</value>
+  </data>
+  <data name="DeviceDetailsNumberOfApprovedUpdatesArg" xml:space="preserve">
+    <value>{0} Nouvelles mises à jour autorisées</value>
+  </data>
+  <data name="DeviceDetailsNumberOfAvailableUpdatesArg" xml:space="preserve">
+    <value>{0} Nouvelles mises à jour disponibles</value>
+  </data>
+  <data name="DeviceDetailsNumberOfInstalledUpdatesArg" xml:space="preserve">
+    <value>{0} mise(s) à jour totale(s) installée(s)</value>
+  </data>
+  <data name="DeviceDoesNotExistOrMightBeDeleted" xml:space="preserve">
+    <value>Le terminal n'existe pas ou a peut-être été supprimé.</value>
+  </data>
+  <data name="DeviceDomainJoinResourceCreationJob" xml:space="preserve">
+    <value>Tâche de création de ressource de jonction de domaine d'un terminal</value>
+  </data>
+  <data name="DeviceEnrolled" xml:space="preserve">
+    <value>Terminal enrôlé</value>
+  </data>
+  <data name="DeviceEnrollmentChartDescription" xml:space="preserve">
+    <value>{0}</value>
+  </data>
+  <data name="DeviceEnrollmentChartTitle" xml:space="preserve">
+    <value>Graphique à barres de l'enrôlement des terminaux. </value>
+  </data>
+  <data name="DeviceHasBeenOverriddenSuccessfully" xml:space="preserve">
+    <value>Commande envoyée</value>
+  </data>
+  <data name="DeviceListCannotBeEmpty" xml:space="preserve">
+    <value>La liste des terminaux ne peut pas être vide.</value>
+  </data>
+  <data name="DeviceLocationGroupChangeFailed" xml:space="preserve">
+    <value>Échec de la modification du groupe organisationnel du terminal. Assurez-vous que le groupe organisationnel cible dispose d'un ID de groupe et se trouve au niveau ou au-dessous de la hiérarchie du groupe organisationnel de l'utilisateur d'enrôlement.</value>
+  </data>
+  <data name="DeviceLogSourceToolTipText" xml:space="preserve">
+    <value>Sélectionnez Hub pour collecter les journaux générés par Workspace ONE Intelligent Hub. Sélectionnez Système pour collecter un journal système complet pour les terminaux sur lesquels Platform OEM Service est installé. Un rapport de bogue est collecté si le terminal est géré par Android Work et fonctionne sous Android 7.0 ou une version ultérieure. Un journal système et un rapport de bogue peuvent être collectés si le terminal est géré par Android Work et que Platform OEM Service est installé.</value>
+  </data>
+  <data name="DeviceLogTypeToolTipText" xml:space="preserve">
+    <value>Sélectionnez Snapshot pour récupérer les derniers enregistrements de journal disponibles sur les terminaux. Sélectionnez Période limitée pour collecter un journal roulant pendant une période donnée. Plusieurs fichiers journaux peuvent être envoyés à Workspace ONE UEM.</value>
+  </data>
+  <data name="DeviceNameMaxCharacters" xml:space="preserve">
+    <value>Le nom du terminal ne peut pas avoir plus de 512 caractères</value>
+  </data>
+  <data name="DeviceNotFound" xml:space="preserve">
+    <value>Terminal introuvable</value>
+  </data>
+  <data name="DeviceNotRegisteredForRemoteView" xml:space="preserve">
+    <value>Le terminal avec l'UDID {0} n'est pas inscrit pour l'affichage à distance. Cliquez sur le bouton Inscrire un terminal ci-dessous pour inscrire le terminal.</value>
+  </data>
+  <data name="DeviceOfflineDomainJoinBlobCreationFailed" xml:space="preserve">
+    <value>Échec de la création du blob de jonction de domaine hors ligne</value>
+  </data>
+  <data name="DeviceOfflineDomainJoinFailed" xml:space="preserve">
+    <value>Échec de la jonction de domaine hors ligne</value>
+  </data>
+  <data name="DeviceOwnerEnrollmentMode" xml:space="preserve">
+    <value>Mode de gestion pour les terminaux d'entreprise</value>
+  </data>
+  <data name="DeviceOwnershipChartDescription" xml:space="preserve">
+    <value>{0}</value>
+  </data>
+  <data name="DeviceOwnershipChartTitle" xml:space="preserve">
+    <value>Graphique à barres de la propriété des terminaux. </value>
+  </data>
+  <data name="DevicePolicyJobAuditing" xml:space="preserve">
+    <value>Tâche de stratégie d'audit de terminal</value>
+  </data>
+  <data name="DevicePolicyJobAuditingHelp" xml:space="preserve">
+    <value>Lorsque cette option est activée, les tâches de produit traitées sont stockées dans l'audit de tâche de stratégie.</value>
+  </data>
+  <data name="DeviceReadiness" xml:space="preserve">
+    <value>Disponibilité du terminal</value>
+  </data>
+  <data name="DeviceRegisteredForRemoteView" xml:space="preserve">
+    <value>Le terminal avec l'UDID {0} est inscrit pour l'affichage à distance.</value>
+  </data>
+  <data name="DeviceSavedSuccessfully" xml:space="preserve">
+    <value>Terminal enregistré avec succès</value>
+  </data>
+  <data name="DeviceShutdownFailed" xml:space="preserve">
+    <value>Échec de l'arrêt du terminal</value>
+  </data>
+  <data name="DeviceShutdownSuccess" xml:space="preserve">
+    <value>Arrêt du terminal réussi</value>
+  </data>
+  <data name="DevicesSeenInLastDay" xml:space="preserve">
+    <value>Terminaux actifs dans les dernières 24 heures</value>
+  </data>
+  <data name="DevicesSettings" xml:space="preserve">
+    <value>Paramètres des terminaux</value>
+  </data>
+  <data name="DevicesStagingMenuTitle" xml:space="preserve">
+    <value>Préenrôlement</value>
+  </data>
+  <data name="DeviceStateAndSearchHubConfigurationErrorMessage" xml:space="preserve">
+    <value>Impossible d'extraire les données, car le service sous-jacent est arrêté ou n'est pas configuré</value>
+  </data>
+  <data name="DeviceSyncInitiated" xml:space="preserve">
+    <value>Lancement de la synchronisation du terminal</value>
+  </data>
+  <data name="DeviceTime" xml:space="preserve">
+    <value>Heure du terminal</value>
+  </data>
+  <data name="DeviceTimeWindowCardEmpty" xml:space="preserve">
+    <value>Aucune planification disponible.</value>
+  </data>
+  <data name="DeviceTimeWindowCardNote" xml:space="preserve">
+    <value>Affiche les dernières fenêtres horaires configurées sur la console pour ce terminal.</value>
+  </data>
+  <data name="DeviceTimeWindowCardTitle" xml:space="preserve">
+    <value>Fenêtres de temps d'aujourd'hui</value>
+  </data>
+  <data name="DeviceUnenrollmentRequested" xml:space="preserve">
+    <value>Désenrôlement du terminal requis</value>
+  </data>
+  <data name="DeviceUpdateDeferralDate" xml:space="preserve">
+    <value>Date maximale du report</value>
+  </data>
+  <data name="DeviceUpdateExpirationDate" xml:space="preserve">
+    <value>Date d'expiration</value>
+  </data>
+  <data name="DeviceUpdateInstallInProgress" xml:space="preserve">
+    <value>Installation en cours</value>
+  </data>
+  <data name="DeviceUpdateName" xml:space="preserve">
+    <value>Mise à jour</value>
+  </data>
+  <data name="DeviceUpdatePublish" xml:space="preserve">
+    <value>Publication de mise à jour de terminal</value>
+  </data>
+  <data name="DeviceUpdateReasonTooltipInfo" xml:space="preserve">
+    <value>Seules les réponses des terminaux iOS admissibles peuvent être filtrées.</value>
+  </data>
+  <data name="DeviceUpdateReleaseDate" xml:space="preserve">
+    <value>Date de publication</value>
+  </data>
+  <data name="DeviceUpdates" xml:space="preserve">
+    <value>Mises à jour du terminal</value>
+  </data>
+  <data name="DeviceUpdateStatus" xml:space="preserve">
+    <value>État de la mise à jour</value>
+  </data>
+  <data name="DeviceUpdateType" xml:space="preserve">
+    <value>Type de mise à jour</value>
+  </data>
+  <data name="DeviceUpdateUUIDNotFound" xml:space="preserve">
+    <value>La mise à jour du terminal avec l'UUID spécifié est introuvable</value>
+  </data>
+  <data name="DeviceWipeDescription" xml:space="preserve">
+    <value>L'effacement du contenu du terminal supprime toutes les applications, données, e-mails, profils et fonctionnalités MDM. Le terminal est réinitialisé aux paramètres d'usine. Cela inclut toutes données personnelles de l'utilisateur présentes sur le terminal. Cette action est irréversible. Veuillez poursuivre avec précaution.</value>
+  </data>
+  <data name="DeviceWipeDescriptionForMac" xml:space="preserve">
+    <value>L'effacement du contenu du terminal supprime toutes les applications, données, e-mails, profils et fonctionnalités MDM, ainsi que le système d'exploitation macOS. Cela inclut toutes données personnelles, le cas échéant. Cette action est irréversible. Veuillez poursuivre avec précaution.</value>
+  </data>
+  <data name="DeviceWipeEmailNotification" xml:space="preserve">
+    <value>Notification par e-mail de l'effacement du terminal</value>
+  </data>
+  <data name="DevUnlockCommand" xml:space="preserve">
+    <value>Commande de déverrouillage du terminal</value>
+  </data>
+  <data name="DirectoryOrFilePathExample" xml:space="preserve">
+    <value>Entrez un répertoire ou un chemin de fichier</value>
+  </data>
+  <data name="DisableActivationLock" xml:space="preserve">
+    <value>Désactiver le verrouillage d'activation</value>
+  </data>
+  <data name="DisableManagedApplication" xml:space="preserve">
+    <value>Désactiver une application gérée</value>
+  </data>
+  <data name="DisallowProximitySetup" xml:space="preserve">
+    <value>Bloquer la configuration de la proximité</value>
+  </data>
+  <data name="DisallowProximitySetupTooltip" xml:space="preserve">
+    <value>Lorsque cette option est activée, l'écran Configuration de la proximité sera ignoré par l'assistant de configuration lors du prochain redémarrage du terminal.</value>
+  </data>
+  <data name="DomainJoinConfigAssignmentCreated" xml:space="preserve">
+    <value>L'attribution de la configuration de jonction de domaine a été créée</value>
+  </data>
+  <data name="DomainJoinConfigAssignmentDeleted" xml:space="preserve">
+    <value>L'attribution de la configuration de jonction de domaine a été supprimée</value>
+  </data>
+  <data name="DomainJoinConfigAssignmentUpdated" xml:space="preserve">
+    <value>L'attribution de la configuration de jonction de domaine a été mise à jour</value>
+  </data>
+  <data name="DomainJoinConfigCreated" xml:space="preserve">
+    <value>Configuration de jonction de domaine créée</value>
+  </data>
+  <data name="DomainJoinConfigDeleted" xml:space="preserve">
+    <value>Configuration de jonction de domaine supprimée</value>
+  </data>
+  <data name="DomainJoinConfigUpdated" xml:space="preserve">
+    <value>Configuration de jonction de domaine mise à jour</value>
+  </data>
+  <data name="DomainJoinConfigurationError" xml:space="preserve">
+    <value>Erreur de configuration de jonction de domaine</value>
+  </data>
+  <data name="DomainJoinDescription" xml:space="preserve">
+    <value>Jonction de domaine</value>
+  </data>
+  <data name="DownloadAndInstall" xml:space="preserve">
+    <value>Télécharger et installer</value>
+  </data>
+  <data name="DownloadAndInstallDesc" xml:space="preserve">
+    <value>La mise à jour sera téléchargée et installée sur les terminaux</value>
+  </data>
+  <data name="DownloadAndInstallNow" xml:space="preserve">
+    <value>Télécharger et installer maintenant</value>
+  </data>
+  <data name="DownloadInsufficientNetwork" xml:space="preserve">
+    <value>Télécharger un réseau insuffisant</value>
+  </data>
+  <data name="DownloadInsufficientPower" xml:space="preserve">
+    <value>Télécharger une alimentation insuffisante</value>
+  </data>
+  <data name="DownloadInsufficientSpace" xml:space="preserve">
+    <value>Télécharger un espace insuffisant</value>
+  </data>
+  <data name="DownloadNow" xml:space="preserve">
+    <value>Télécharger maintenant</value>
+  </data>
+  <data name="DownloadOnly" xml:space="preserve">
+    <value>Télécharger uniquement</value>
+  </data>
+  <data name="DownloadOnlyDesc" xml:space="preserve">
+    <value>La mise à jour sera téléchargée sur les terminaux</value>
+  </data>
+  <data name="DownloadRequiresComputer" xml:space="preserve">
+    <value>Le téléchargement nécessite un ordinateur</value>
+  </data>
+  <data name="Drive" xml:space="preserve">
+    <value>Lecteur</value>
+  </data>
+  <data name="DriveLetter" xml:space="preserve">
+    <value>Lettre du lecteur</value>
+  </data>
+  <data name="DropshipDeviceName" xml:space="preserve">
+    <value>Nom du terminal</value>
+  </data>
+  <data name="DropshipDeviceNameToolTip" xml:space="preserve">
+    <value>Nom du terminal lisible par l'être humain</value>
+  </data>
+  <data name="DropshipModelNumber" xml:space="preserve">
+    <value>Numéro de modèle</value>
+  </data>
+  <data name="DropshipModelNumberToolTip" xml:space="preserve">
+    <value>Modèle de terminal OEM</value>
+  </data>
+  <data name="DropshipOptional" xml:space="preserve">
+    <value>Facultatif</value>
+  </data>
+  <data name="DropshipOrganizationGroup" xml:space="preserve">
+    <value>Groupe organisationnel</value>
+  </data>
+  <data name="DropshipOwnership" xml:space="preserve">
+    <value>Type de propriété</value>
+  </data>
+  <data name="DropshipOwnershipToolTip" xml:space="preserve">
+    <value>Société/Utilisation de terminaux personnels</value>
+  </data>
+  <data name="DropShipProvisioningMenuTitle" xml:space="preserve">
+    <value>Drop Ship Provisioning</value>
+  </data>
+  <data name="DropshipSerialNumber" xml:space="preserve">
+    <value>Numéro de série</value>
+  </data>
+  <data name="DropshipSerialNumberToolTip" xml:space="preserve">
+    <value>Numéro de série du terminal fourni par l'OEM</value>
+  </data>
+  <data name="DropshipSyncDeviceSuccessful" xml:space="preserve">
+    <value>Synchronisation des terminaux réussie</value>
+  </data>
+  <data name="DropshipSyncDeviceUnsuccessful" xml:space="preserve">
+    <value>Impossible d'initialiser la synchronisation pour le moment</value>
+  </data>
+  <data name="DropshipTag" xml:space="preserve">
+    <value>Étiquette</value>
+  </data>
+  <data name="DropshipTagToolTip" xml:space="preserve">
+    <value>Étiquette DropShip pour regrouper logiquement les terminaux</value>
+  </data>
+  <data name="DynamicActionFailed" xml:space="preserve">
+    <value>Le système n'a pas pu envoyer la commande au terminal. La connexion n'est pas disponible ou une erreur s'est produite sur le terminal.</value>
+  </data>
+  <data name="EasSample" xml:space="preserve">
+    <value>Échantillon EAS</value>
+  </data>
+  <data name="EditDeviceArgOpensDialog" xml:space="preserve">
+    <value>Modifier le terminal {0} ouvre une boîte de dialogue</value>
+    <comment>The placeholder in this label key contains device friendly name.</comment>
+  </data>
+  <data name="EditTimeWindow" xml:space="preserve">
+    <value>Modifier la fenêtre de temps</value>
+  </data>
+  <data name="EfotaCancelScheduleMessage" xml:space="preserve">
+    <value>Désormais, les terminaux ne recevront plus cette mise à jour. Les mises à jour précédentes de cette planification ne peuvent pas être révoquées. Voulez-vous annuler cette mise à jour planifiée ?</value>
+  </data>
+  <data name="EfotaDeliveryMethod" xml:space="preserve">
+    <value>Méthode d'installation</value>
+  </data>
+  <data name="EfotaInstallOnDemandPublishMessage" xml:space="preserve">
+    <value>Les utilisateurs seront invités à accepter la mise à jour du microprogramme avant son installation sur leur terminal.</value>
+  </data>
+  <data name="Eligible" xml:space="preserve">
+    <value>Éligible</value>
+  </data>
+  <data name="EligibleHoverText" xml:space="preserve">
+    <value>Admissible
+Inclut tous les terminaux pris en charge, DEP et supervisés                                                                                           </value>
+  </data>
+  <data name="EnableActivationLock" xml:space="preserve">
+    <value>Activer le verrouillage d'activation</value>
+  </data>
+  <data name="EnableManagedApplication" xml:space="preserve">
+    <value>Activer une application gérée</value>
+  </data>
+  <data name="EndDateLessThanStartDate" xml:space="preserve">
+    <value>L'heure de la date de début ne doit pas être postérieure à l'heure de la date de fin planifiée.</value>
+  </data>
+  <data name="EndDateSameAsStartDate" xml:space="preserve">
+    <value>L'heure de la date de début et l'heure de la date de fin ne doivent pas être identiques.</value>
+  </data>
+  <data name="EndUserWipeMessage" xml:space="preserve">
+    <value>Message d'effacement utilisateur final du profil professionnel Android</value>
+  </data>
+  <data name="EnrollmentConfigurationWizard" xml:space="preserve">
+    <value>Assistant de configuration pour l'inscription</value>
+  </data>
+  <data name="EnrollmentDetail" xml:space="preserve">
+    <value>Détails d'inscription</value>
+  </data>
+  <data name="EnrollmentID" xml:space="preserve">
+    <value>ID d'enrôlement</value>
+  </data>
+  <data name="EnterAssignmentName" xml:space="preserve">
+    <value>Saisir le nom de l'attribution</value>
+  </data>
+  <data name="EnterDeviceName" xml:space="preserve">
+    <value>Entrer le nom du terminal</value>
+  </data>
+  <data name="EnterModelNumber" xml:space="preserve">
+    <value>Entrer le numéro de modèle</value>
+  </data>
+  <data name="EnterpriseWipeWarningAADDevices" xml:space="preserve">
+    <value>Pour les terminaux enrôlés d'Azure Active Directory, assurez-vous qu'un compte d'administrateur local existe avant d'émettre la commande d'effacement de données professionnelles, car cela supprimera le compte Azure AD. Si le compte d'administrateur local n'existe pas, il faudra alors procéder à une réinitialisation aux paramètres d'usine pour le récupérer.</value>
+  </data>
+  <data name="EnterSerialNumber" xml:space="preserve">
+    <value>Entrer le numéro de série</value>
+  </data>
+  <data name="EnvironmentVariables" xml:space="preserve">
+    <value>Variables d'environnement</value>
+  </data>
+  <data name="ErrorGeneratingAppToken" xml:space="preserve">
+    <value>Erreur lors de la génération d'un jeton d'application. Veuillez réessayer.</value>
+  </data>
+  <data name="ErrorInitiatingDeviceSync" xml:space="preserve">
+    <value>Erreur inconnue lors du lancement de la synchronisation du terminal</value>
+  </data>
+  <data name="ErrorResolvingDeviceGroupArg" xml:space="preserve">
+    <value>Erreur lors de la résolution du groupe de terminaux {0}</value>
+  </data>
+  <data name="ErrorWhileSendingEmailNotification" xml:space="preserve">
+    <value>Erreur lors de l'envoi d'une notification par e-mail. Veuillez réessayer.</value>
+  </data>
+  <data name="EsimUrl" xml:space="preserve">
+    <value>URL de l'eSIM</value>
+  </data>
+  <data name="EsimUrlTooltip" xml:space="preserve">
+    <value>L'URL de l'eSIM est l'URL du serveur eSIM du transporteur que le terminal doit demander pour actualiser son forfait mobile.</value>
+  </data>
+  <data name="EveryArg" xml:space="preserve">
+    <value>Chaque {0} {1}-{2} ({3})</value>
+    <comment>Placehoders: 0 - Days on which schedule is repeated, 1 - StartTime, 2 - EndTime, 3 - Duration.
+Example: Every Mon/Tue 11:00 PM - 4:30 AM (5 hours 30 mins)</comment>
+  </data>
+  <data name="EveryWeekdayArg" xml:space="preserve">
+    <value>Chaque jour de la semaine {0}-{1} ({2})</value>
+    <comment>Placehoders: 0 - StartTime, 1 - EndTime, 2 - Duration.
+Example: Every Weekday 11:00 PM - 4:30 AM (5 hours 30 mins)</comment>
+  </data>
+  <data name="ExecutionContext" xml:space="preserve">
+    <value>Contexte d’exécution</value>
+  </data>
+  <data name="Existing" xml:space="preserve">
+    <value>Existant(es)</value>
+  </data>
+  <data name="ExistingDeviceUpdatedInDeviceState" xml:space="preserve">
+    <value>Mise à jour du terminal existant dans État du terminal</value>
+  </data>
+  <data name="Expires" xml:space="preserve">
+    <value>Date d'expiration</value>
+  </data>
+  <data name="ExportPPKGWindowsMoved" xml:space="preserve">
+    <value>Exporter le module de provisionnement</value>
+  </data>
+  <data name="ExportPPKGWindowsMovedMessage" xml:space="preserve">
+    <value>Cette action vous redirige vers la section de préenrôlement, où vous pouvez exporter des applications pour créer un module de provisionnement. Voulez-vous continuer ?</value>
+  </data>
+  <data name="ExtendedDeviceInventory" xml:space="preserve">
+    <value>Inventaire de terminal complet</value>
+  </data>
+  <data name="ExternalBootStatusAllowed" xml:space="preserve">
+    <value>État du démarrage externe - Autorisé</value>
+  </data>
+  <data name="ExternalBootStatusDisallowed" xml:space="preserve">
+    <value>État du démarrage externe - Non autorisé</value>
+  </data>
+  <data name="ExternalBootStatusNotSupported" xml:space="preserve">
+    <value>État de démarrage externe - Non pris en charge</value>
+  </data>
+  <data name="ExternalStorage" xml:space="preserve">
+    <value>Stockage externe</value>
+  </data>
+  <data name="FailedItemsBackOffTime" xml:space="preserve">
+    <value>Temps d'interruption pour les éléments ayant échoué</value>
+  </data>
+  <data name="FailedItemsMaxTryCount" xml:space="preserve">
+    <value>Nombre maximum d'essais pour les éléments ayant échoué</value>
+  </data>
+  <data name="FewSecondsAgo" xml:space="preserve">
+    <value>il y a quelques secondes</value>
+  </data>
+  <data name="FileActionNoNewFileEntities" xml:space="preserve">
+    <value>Aucune nouvelle entité de fichier trouvée.</value>
+  </data>
+  <data name="FilePathOnFileServerExample" xml:space="preserve">
+    <value>Entrez le chemin de fichier sur le serveur de fichiers</value>
+  </data>
+  <data name="FileServer" xml:space="preserve">
+    <value>Serveur de fichiers</value>
+  </data>
+  <data name="FileUploadInfoMessage" xml:space="preserve">
+    <value>Les fichiers seront téléchargés dans des dossiers enfants générés dynamiquement pour chaque terminal attribué. Si plusieurs actions de téléchargement de fichier(s) utilisent les mêmes règles de nommage de dossier de destination, les fichiers nommés de la même façon peuvent se remplacer les uns les autres. Il est recommandé d'utiliser un nom unique.</value>
+  </data>
+  <data name="FindDeviceAlarmSoundMessage" xml:space="preserve">
+    <value>L'alarme retentit en utilisant la sonnerie configurée du terminal, celle-ci peut se répéter continuellement jusqu'à ce que l'alarme soit désactivée en appuyant sur la notification du terminal.</value>
+  </data>
+  <data name="FirmwareUpdateDeploymentEndDateTime" xml:space="preserve">
+    <value>Fin du déploiement</value>
+  </data>
+  <data name="FirmwareUpdateDeploymentStartDateTime" xml:space="preserve">
+    <value>Début du déploiement</value>
+  </data>
+  <data name="FolderNaming" xml:space="preserve">
+    <value>Nommage des dossiers</value>
+  </data>
+  <data name="FollowingAssignmentArgWillBeDeleted" xml:space="preserve">
+    <value>Voulez-vous vraiment supprimer l'attribution « {0} » ?</value>
+  </data>
+  <data name="FollowingDeploymentsWillBeDeleted" xml:space="preserve">
+    <value>Voulez-vous vraiment supprimer cette attribution ? Cela empêchera les terminaux d'effectuer cette mise à jour. Toutefois, celle-ci ne sera pas supprimée des terminaux l'ayant déjà installée.</value>
+  </data>
+  <data name="ForceAospDisabledPromtText" xml:space="preserve">
+    <value>Le terminal est enrôlé en fonction du type d'enrôlement des terminaux gérés pour le travail défini dans les paramètres d'enrôlement Android</value>
+  </data>
+  <data name="ForceAospEnabledPromtText" xml:space="preserve">
+    <value>Le terminal est enrôlé comme réseau AOSP/fermé, indépendamment du type d'enrôlement des terminaux gérés pour le travail défini dans les paramètres d'enrôlement Android</value>
+  </data>
+  <data name="ForceBiosPasswordReset" xml:space="preserve">
+    <value>Forcer la réinitialisation du mot de passe du BIOS</value>
+  </data>
+  <data name="ForceBiosPasswordResetFailure" xml:space="preserve">
+    <value>Échec de la réinitialisation du mot de passe du BIOS.</value>
+  </data>
+  <data name="ForceBiosPasswordResetHelp" xml:space="preserve">
+    <value>Autorisation de forcer la réinitialisation du mot de passe BIOS sur la page Détails du terminal.</value>
+  </data>
+  <data name="ForceBiosPasswordResetMessage" xml:space="preserve">
+    <value>Cette action se produira lorsque le terminal se connectera à Workspace ONE UEM. Le terminal doit avoir le profil BIOS et être d'un type compatible et pris en charge. Saisissez votre code PIN de sécurité pour continuer.</value>
+  </data>
+  <data name="ForceBiosPasswordResetRestricted" xml:space="preserve">
+    <value>Forcer la réinitialisation du mot de passe BIOS</value>
+  </data>
+  <data name="ForceBiosPasswordResetSuccess" xml:space="preserve">
+    <value>La réinitialisation du mot de passe du BIOS a bien été demandée pour ce terminal.</value>
+  </data>
+  <data name="ForceDeviceReportAppConfigFeedbackSuccess" xml:space="preserve">
+    <value>Les commentaires ont bien été demandés. Cela peut prendre quelques minutes pour que les nouveaux commentaires soient disponibles.</value>
+  </data>
+  <data name="ForceDeviceReportAppConfigFeedbackTitle" xml:space="preserve">
+    <value>Demander des commentaires de configuration d'application</value>
+  </data>
+  <data name="ForceRequestFeedbackConfirmationMessage" xml:space="preserve">
+    <value>Les nouveaux commentaires relatifs aux applications sont signalés, si disponibles, par le terminal, et peuvent être affichés dans Applications et livres &gt; Applications &gt; Vue Détails &gt; Terminaux &gt; colonne Configuration attribuée ou en cliquant sur le nom de l'application ici et en accédant à l'onglet Configuration de l'application.</value>
+  </data>
+  <data name="ForceRequestFeedbackConfirmationMessageSecond" xml:space="preserve">
+    <value>Cette demande ne peut être envoyée que 3 fois par jour. Voulez-vous vraiment envoyer cette demande ?</value>
+  </data>
+  <data name="ForceRequestFeedbackTitle" xml:space="preserve">
+    <value>Demander des commentaires de configuration d'application</value>
+  </data>
+  <data name="FreshDeviceCreatedInDeviceState" xml:space="preserve">
+    <value>Création d'un nouveau terminal dans État du terminal</value>
+  </data>
+  <data name="GenerateNewCode" xml:space="preserve">
+    <value>Générer un nouveau code</value>
+  </data>
+  <data name="GetSensor" xml:space="preserve">
+    <value>Get(Sensor)</value>
+  </data>
+  <data name="GoogleApiError" xml:space="preserve">
+    <value>Exception/Erreur liée à l'API Google.</value>
+  </data>
+  <data name="GooglePlayServiceDisable" xml:space="preserve">
+    <value>La version des services Google Play installés a été désactivée sur ce terminal.</value>
+  </data>
+  <data name="GooglePlayServiceMissing" xml:space="preserve">
+    <value>Les services Google Play ne sont pas installés sur ce terminal.</value>
+  </data>
+  <data name="GooglePlayServiceUpdateRequired" xml:space="preserve">
+    <value>La version des services Google Play installés n'est pas à jour.</value>
+  </data>
+  <data name="GooglePlayServiceUpdating" xml:space="preserve">
+    <value>Les services Google Play sont en cours de mise à jour sur ce terminal.</value>
+  </data>
+  <data name="GoToAppleBusinessManager" xml:space="preserve">
+    <value>Apple Business Manager</value>
+  </data>
+  <data name="GoToWorkflowList" xml:space="preserve">
+    <value>Accéder aux workflows</value>
+  </data>
+  <data name="GPSDataCollectionNotEnabledForDeviceType" xml:space="preserve">
+    <value>La collecte des données de localisation n'a pas été activée pour ce type de terminal.</value>
+  </data>
+  <data name="GracePeriodRecoveryKey" xml:space="preserve">
+    <value>Clé de récupération de la période de grâce</value>
+  </data>
+  <data name="HealthAttestationStatus" xml:space="preserve">
+    <value>État d'attestation de santé</value>
+  </data>
+  <data name="HmacRecovery" xml:space="preserve">
+    <value>Récupération HMAC</value>
+  </data>
+  <data name="HostedOnAnExternalURL" xml:space="preserve">
+    <value>Hébergé sur une URL externe</value>
+  </data>
+  <data name="HourAgo" xml:space="preserve">
+    <value>il y a une heure</value>
+  </data>
+  <data name="HubEnrollmentUrl" xml:space="preserve">
+    <value>URL d'inscription du Hub</value>
+  </data>
+  <data name="HubRepair" xml:space="preserve">
+    <value>Réparer le Hub</value>
+  </data>
+  <data name="HumanReadableName" xml:space="preserve">
+    <value>Mise à jour signalée</value>
+  </data>
+  <data name="Idle" xml:space="preserve">
+    <value>Inactivité</value>
+  </data>
+  <data name="IGEL_THIN_CLIENT" xml:space="preserve">
+    <value>SYSTÈME D'EXPLOITATION IGEL</value>
+  </data>
+  <data name="IMSI" xml:space="preserve">
+    <value>IMSI</value>
+  </data>
+  <data name="IncorrectFilter" xml:space="preserve">
+    <value>Filtre incorrect</value>
+  </data>
+  <data name="InstallComplete" xml:space="preserve">
+    <value>Installation terminée</value>
+  </data>
+  <data name="InstallEventAction" xml:space="preserve">
+    <value>Installer l'action d'événement</value>
+  </data>
+  <data name="InstallInsufficientPower" xml:space="preserve">
+    <value>Installer une alimentation insuffisante</value>
+  </data>
+  <data name="InstallInsufficientSpace" xml:space="preserve">
+    <value>Installer un espace insuffisant</value>
+  </data>
+  <data name="InstallNow" xml:space="preserve">
+    <value>Installer maintenant</value>
+  </data>
+  <data name="InstallOnDemand" xml:space="preserve">
+    <value>Installer à la demande</value>
+  </data>
+  <data name="InstallOnly" xml:space="preserve">
+    <value>Installer uniquement</value>
+  </data>
+  <data name="InstallOnlyDesc" xml:space="preserve">
+    <value>Les mises à jour déjà téléchargées seront installées sur les terminaux</value>
+  </data>
+  <data name="InstallPackage" xml:space="preserve">
+    <value>Installer un module</value>
+  </data>
+  <data name="InstallPhoneCallInProgress" xml:space="preserve">
+    <value>Installer l'appel téléphonique en cours</value>
+  </data>
+  <data name="InternalStorage" xml:space="preserve">
+    <value>Stockage interne</value>
+  </data>
+  <data name="Interrogator" xml:space="preserve">
+    <value>Interrogateur</value>
+  </data>
+  <data name="InterrogatorIntervalRequired" xml:space="preserve">
+    <value>Intervalle de l'interrogateur nécessaire</value>
+  </data>
+  <data name="InterrogatorIntervalSeconds" xml:space="preserve">
+    <value>Intervalle entre les interrogateurs (en secondes)</value>
+  </data>
+  <data name="InterrogatorPort" xml:space="preserve">
+    <value>Port d'interrogateur</value>
+  </data>
+  <data name="InterrogatorQueueService" xml:space="preserve">
+    <value>Moniteur de file d'attente de l'interrogateur AirWatch</value>
+  </data>
+  <data name="InterrogatorService" xml:space="preserve">
+    <value>Serveur de l'interrogateur AirWatch</value>
+  </data>
+  <data name="InterrogatorSettings" xml:space="preserve">
+    <value>Paramètres de l'interrogateur</value>
+  </data>
+  <data name="InvalidGooglePlayService" xml:space="preserve">
+    <value>La version des services Google Play installés sur cet appareil n'est pas authentique.</value>
+  </data>
+  <data name="InvalidGroupIdentifier" xml:space="preserve">
+    <value>Le groupe organisationnel sélectionné ne dispose pas d'un ID de groupe valide.</value>
+  </data>
+  <data name="InvalidPeriodEnd" xml:space="preserve">
+    <value>Valeur de fin non valide</value>
+  </data>
+  <data name="InvalidSuspendBitLockerRebootCount" xml:space="preserve">
+    <value>La valeur du compte de redémarrage doit être comprise entre 1 et 15.</value>
+  </data>
+  <data name="InvalidTargetedLoggingFilterFormat" xml:space="preserve">
+    <value>Format non valide pour le filtre de journalisation ciblée.</value>
+  </data>
+  <data name="IosCodeSigningChecks" xml:space="preserve">
+    <value>Le contrôle des vérifications de signature du code système est désactivé.</value>
+  </data>
+  <data name="IosDebugChecks" xml:space="preserve">
+    <value>L'application est en cours de débogage actif.</value>
+  </data>
+  <data name="IosDisallowedOperationChecks" xml:space="preserve">
+    <value>L'intégrité de ce terminal est compromise.</value>
+  </data>
+  <data name="IosEnvironmentChecks" xml:space="preserve">
+    <value>L'application s'exécute dans un environnement non contrôlé par le fournisseur du terminal.</value>
+  </data>
+  <data name="IosMountCheck" xml:space="preserve">
+    <value>Le terminal contient des montages potentiellement dangereux et/ou compromis.</value>
+  </data>
+  <data name="Iospost103managementcapabilityunavailable" xml:space="preserve">
+    <value>Ce terminal n'est actuellement pas surveillé. Vous ne pouvez pas agir sur les mises à jour.</value>
+  </data>
+  <data name="Iospre103managementcapabilityunavailable" xml:space="preserve">
+    <value>Ce terminal n'est ni enrôlé dans le DEP ni surveillé. Vous ne pouvez pas agir sur les mises à jour.</value>
+  </data>
+  <data name="IosProhibitedFileExistenceChecks" xml:space="preserve">
+    <value>L'application contient ou utilise des bibliothèques non autorisées.</value>
+  </data>
+  <data name="IosQueryStatusTooltip" xml:space="preserve">
+    <value>Interrogez l'état des mises à jour pour ce terminal. Seules les mises à jour qui ont été planifiées par Workspace ONE peuvent être interrogées.</value>
+  </data>
+  <data name="IosUpdateDeviceCountWarning" xml:space="preserve">
+    <value>Vous êtes sur le point d'envoyer une demande de mise à jour iOS à {0} terminal/terminaux. Cette demande sera seulement envoyée aux terminaux iOS 10.3 ou plus s'ils sont supervisés, ainsi qu'aux terminaux iOS 9 ou plus s'ils sont supervisés et enrôlés dans DEP.</value>
+  </data>
+  <data name="iPad7" xml:space="preserve">
+    <value>iPad 7e génération</value>
+  </data>
+  <data name="iPadMini4" xml:space="preserve">
+    <value>iPad Mini 4</value>
+  </data>
+  <data name="iPadPro11inch2" xml:space="preserve">
+    <value>iPad Pro 11 pouces 2e génération</value>
+  </data>
+  <data name="iPadPro12.9inch4" xml:space="preserve">
+    <value>iPad Pro 12,9 pouces 4e génération</value>
+  </data>
+  <data name="iPhone11" xml:space="preserve">
+    <value>iPhone 11</value>
+  </data>
+  <data name="iPhone11Pro" xml:space="preserve">
+    <value>iPhone 11 Pro</value>
+  </data>
+  <data name="iPhone11ProMax" xml:space="preserve">
+    <value>iPhone 11 Pro Max</value>
+  </data>
+  <data name="iPhoneSE2" xml:space="preserve">
+    <value>iPhone SE 2e génération</value>
+  </data>
+  <data name="iPhoneX" xml:space="preserve">
+    <value>iPhone X</value>
+  </data>
+  <data name="iPhoneXʀ" xml:space="preserve">
+    <value>iPhone Xʀ</value>
+  </data>
+  <data name="iPhoneXs" xml:space="preserve">
+    <value>iPhone Xs</value>
+  </data>
+  <data name="iPhoneXsMax" xml:space="preserve">
+    <value>iPhone Xs Max</value>
+  </data>
+  <data name="IsDataPreferred" xml:space="preserve">
+    <value>Est « Préférence pour les données »</value>
+  </data>
+  <data name="IsNotEnabledSIP" xml:space="preserve">
+    <value>Est désactivé</value>
+  </data>
+  <data name="IsSecurityPatchUpdate" xml:space="preserve">
+    <value>Mise à jour de la sécurité ?</value>
+  </data>
+  <data name="IsVoicePreferred" xml:space="preserve">
+    <value>Est « Préférence pour la voix »</value>
+  </data>
+  <data name="KeepAppsOnDevice" xml:space="preserve">
+    <value>Conserver les applications sur le terminal</value>
+  </data>
+  <data name="KeyCopied" xml:space="preserve">
+    <value>Clé copiée</value>
+  </data>
+  <data name="KeyRotationRequestFailed" xml:space="preserve">
+    <value>Impossible de demander la rotation des clés pour {0} pour le moment.</value>
+  </data>
+  <data name="KeyRotationSuccessfullyRequested" xml:space="preserve">
+    <value>La rotation des clés a été demandée pour {0}.</value>
+  </data>
+  <data name="KeyShouldNotBeEmpty" xml:space="preserve">
+    <value>La valeur de la clé doit être renseignée.</value>
+  </data>
+  <data name="LastApplied" xml:space="preserve">
+    <value>Dernière application</value>
+  </data>
+  <data name="LastAppliedPassword" xml:space="preserve">
+    <value>Dernier mot de passe appliqué</value>
+  </data>
+  <data name="LastAppliedPasswordTooltip" xml:space="preserve">
+    <value>Il s'agit du dernier mot de passe du BIOS qui a été confirmé comme étant appliqué au terminal.</value>
+  </data>
+  <data name="LastLoggedInTime" xml:space="preserve">
+    <value>Heure de dernière connexion</value>
+  </data>
+  <data name="LastReboot" xml:space="preserve">
+    <value>Dernier redémarrage</value>
+  </data>
+  <data name="LastSeenBreakdownChartDescription" xml:space="preserve">
+    <value>{0}</value>
+  </data>
+  <data name="LastSeenBreakdownChartTitle" xml:space="preserve">
+    <value>Graphique à barres de la répartition des derniers terminaux connectés. </value>
+  </data>
+  <data name="LastSeenDays" xml:space="preserve">
+    <value>Dernière connexion (jours)</value>
+  </data>
+  <data name="LastSeenOverviewChartDescription" xml:space="preserve">
+    <value> {0} terminaux connectés au cours des dernières 24 heures. {1} terminaux connectés récemment.</value>
+  </data>
+  <data name="LastSeenOverviewChartTitle" xml:space="preserve">
+    <value>Aperçu des terminaux connectés récemment. </value>
+  </data>
+  <data name="LastSevenDays" xml:space="preserve">
+    <value>Sept derniers jours</value>
+  </data>
+  <data name="LastSixMonths" xml:space="preserve">
+    <value>Six derniers mois</value>
+  </data>
+  <data name="LastSubmittedPassword" xml:space="preserve">
+    <value>Dernier mot de passe envoyé</value>
+  </data>
+  <data name="LastSubmittedPasswordTooltip" xml:space="preserve">
+    <value>Il s'agit du dernier mot de passe du BIOS envoyé au terminal en tant que mise à jour lors d'une rotation automatique ou planifiée, ou au cours d'une mise à jour forcée. Si aucune demande de mise à jour de mot de passe n'a été envoyée, la mention « Aucun » s'affiche.</value>
+  </data>
+  <data name="LastSuccessfulScan" xml:space="preserve">
+    <value>Dernière analyse réussie</value>
+  </data>
+  <data name="LastSuccessfulSync" xml:space="preserve">
+    <value>Dernière synchronisation réussie</value>
+  </data>
+  <data name="LastThirtyDays" xml:space="preserve">
+    <value>Trente derniers jours</value>
+  </data>
+  <data name="LastUsername" xml:space="preserve">
+    <value>Dernier nom d'utilisateur</value>
+  </data>
+  <data name="LatestAgent" xml:space="preserve">
+    <value>Dernier Hub</value>
+  </data>
+  <data name="LatestAvailableOsUpdate" xml:space="preserve">
+    <value>Dernière mise à jour du système d'exploitation disponible</value>
+  </data>
+  <data name="LauncherImageWarningMessage" xml:space="preserve">
+    <value>AirWatch Agent 8.2 ou version ultérieure, Workspace ONE Intelligent Hub 9.0 ou version ultérieure et AirWatch Launcher 3.4 ou version ultérieure sont requis pour déployer une image de qualité supérieure.</value>
+  </data>
+  <data name="LicensedUntil" xml:space="preserve">
+    <value>Licence valide jusqu'au {0}</value>
+  </data>
+  <data name="LicenseSample" xml:space="preserve">
+    <value>Exemple de licence</value>
+  </data>
+  <data name="LocationDataHasNotBeenReceived" xml:space="preserve">
+    <value>Les données de localisation n'ont pas été reçues</value>
+  </data>
+  <data name="LogoutUserConfirmation" xml:space="preserve">
+    <value>Voulez-vous vraiment déconnecter l'utilisateur actuellement connecté au terminal ?</value>
+  </data>
+  <data name="LostMessage" xml:space="preserve">
+    <value>Message perdu</value>
+  </data>
+  <data name="LostMessageTooltip" xml:space="preserve">
+    <value>Message perdu à afficher sur le terminal.</value>
+  </data>
+  <data name="LostModeDisabledMessage" xml:space="preserve">
+    <value>Le mode Perdu est désactivé.</value>
+  </data>
+  <data name="LostModeDisableFailedMessage" xml:space="preserve">
+    <value>Échec de la désactivation du mode Perdu, veuillez réessayer</value>
+  </data>
+  <data name="LostModeEnabledMessage" xml:space="preserve">
+    <value>Le mode Perdu est activé.</value>
+  </data>
+  <data name="LostModeEnableFailedMessage" xml:space="preserve">
+    <value>Échec de l'activation du mode Perdu, veuillez réessayer.</value>
+  </data>
+  <data name="LTE" xml:space="preserve">
+    <value>LTE</value>
+    <comment>Cellular technology</comment>
+  </data>
+  <data name="MacOsDeviceLogLevelInfo" xml:space="preserve">
+    <value>Choisissez le niveau de données de journalisation à collecter. Sélectionnez Informations pour collecter les journaux dans leur état par défaut. Sélectionnez Débogage pour activer la journalisation supplémentaire et la collecte de données.</value>
+  </data>
+  <data name="MacOsHostName" xml:space="preserve">
+    <value>Nom d'hôte</value>
+  </data>
+  <data name="MacOsLocalHostName" xml:space="preserve">
+    <value>Nom d'hôte local</value>
+  </data>
+  <data name="MacOsRequestDeviceLogSettingsInformation" xml:space="preserve">
+    <value>Personnalisez votre demande de journalisation ci-dessous. Accédez à Informations sur le terminal &amp;gt; Plus &amp;gt; Pièces jointes &amp;gt; Documents pour passer en revue les fichiers journaux. </value>
+  </data>
+  <data name="MacOsViewLocalAdminPassword" xml:space="preserve">
+    <value>Afficher le mot de passe administrateur</value>
+  </data>
+  <data name="MaintenanceHours" xml:space="preserve">
+    <value>Heures de maintenance</value>
+  </data>
+  <data name="ManageAssignments" xml:space="preserve">
+    <value>Gérer les attributions</value>
+  </data>
+  <data name="ManagedAdminPasswordAccessed" xml:space="preserve">
+    <value>Mot de passe administrateur géré accédé</value>
+  </data>
+  <data name="ManagedAdminPasswordRotationInformation" xml:space="preserve">
+    <value>Pour des raisons de sécurité, une commande de rotation de ce mot de passe sera ajoutée dans 8 heures</value>
+  </data>
+  <data name="ManagedAdminStaticPasswordRotationInformation" xml:space="preserve">
+    <value>Mot de passe administrateur aléatoire n'est pas activé pour le profil d'enrôlement du terminal utilisé. Aucune rotation de ce mot de passé n'aura lieu.</value>
+  </data>
+  <data name="ManagedAdminUser" xml:space="preserve">
+    <value>Utilisateur Admin géré</value>
+  </data>
+  <data name="ManagedApplicationAttributesConfirmed" xml:space="preserve">
+    <value>Attributs d'applications gérées confirmés</value>
+  </data>
+  <data name="ManagedApplicationAttributesFailed" xml:space="preserve">
+    <value>Échec des attributs d'applications gérées</value>
+  </data>
+  <data name="ManagedApplicationAttributesRefused" xml:space="preserve">
+    <value>Attributs d'applications gérées refusés</value>
+  </data>
+  <data name="ManagedApplicationAttributesRequested" xml:space="preserve">
+    <value>Attributs d'applications gérées demandés</value>
+  </data>
+  <data name="ManageTags" xml:space="preserve">
+    <value>Gérer les balises</value>
+  </data>
+  <data name="ManageUpdate" xml:space="preserve">
+    <value>Gérer la mise à jour</value>
+  </data>
+  <data name="MaxArgCharacters" xml:space="preserve">
+    <value>{0} caractères max</value>
+  </data>
+  <data name="MEID" xml:space="preserve">
+    <value>MEID</value>
+  </data>
+  <data name="MemorySize" xml:space="preserve">
+    <value>Taille de la mémoire</value>
+  </data>
+  <data name="MinOrMaxCannotBeLessThanZero" xml:space="preserve">
+    <value>La valeur minimale ou maximale ne peut pas être inférieure à 0.</value>
+  </data>
+  <data name="MinuteAgo" xml:space="preserve">
+    <value>il y a une minute</value>
+  </data>
+  <data name="MinValCannotBeGreaterThanMaxVal" xml:space="preserve">
+    <value>La valeur minimale ne peut pas être supérieure à la valeur maximale.</value>
+  </data>
+  <data name="ModelDetailSearchHelpText" xml:space="preserve">
+    <value>Saisir le modèle de recherche</value>
+  </data>
+  <data name="ModelNotSupported" xml:space="preserve">
+    <value>Modèle non pris en charge</value>
+  </data>
+  <data name="ModelNumberMaxCharacters" xml:space="preserve">
+    <value>Le numéro de modèle ne peut pas avoir plus de 500 caractères</value>
+  </data>
+  <data name="MonitorFilter" xml:space="preserve">
+    <value>Filtre Monitor</value>
+  </data>
+  <data name="MonitorIdentifier" xml:space="preserve">
+    <value>Identifiant Monitor</value>
+  </data>
+  <data name="MultiuserDeviceRegistrationNotAllowed" xml:space="preserve">
+    <value>L'enrôlement de terminaux multi-utilisateurs n'est pas autorisée.</value>
+  </data>
+  <data name="NavigateToNextDevice" xml:space="preserve">
+    <value>Détails du terminal flèche suivante</value>
+  </data>
+  <data name="NavigateToPreviousDevice" xml:space="preserve">
+    <value>Détails du terminal flèche précédente</value>
+  </data>
+  <data name="NetworkErrorOccurredPleaseRefresh" xml:space="preserve">
+    <value>Une erreur de connexion réseau s'est produite. Veuillez actualiser le navigateur et réessayer.</value>
+  </data>
+  <data name="NewAssignment" xml:space="preserve">
+    <value>Nouvelle attribution</value>
+  </data>
+  <data name="NewFileServer" xml:space="preserve">
+    <value>Nouveau serveur de fichiers</value>
+  </data>
+  <data name="NewRoutine" xml:space="preserve">
+    <value>Nouvelle planification</value>
+  </data>
+  <data name="NewScript" xml:space="preserve">
+    <value>Nouveau script</value>
+  </data>
+  <data name="NewTimeWindow" xml:space="preserve">
+    <value>Nouvelle fenêtre de temps</value>
+  </data>
+  <data name="NextReTry" xml:space="preserve">
+    <value>Nouvelle tentative</value>
+  </data>
+  <data name="NextSevenDays" xml:space="preserve">
+    <value>Sept prochains jours</value>
+  </data>
+  <data name="NextSixMonths" xml:space="preserve">
+    <value>Six prochains mois</value>
+  </data>
+  <data name="NextThirtyDays" xml:space="preserve">
+    <value>Trente prochains jours</value>
+  </data>
+  <data name="NextThreeMonths" xml:space="preserve">
+    <value>Trois prochains mois</value>
+  </data>
+  <data name="NoAssignedTagsFound" xml:space="preserve">
+    <value>Aucune balise attribuée trouvée</value>
+  </data>
+  <data name="NoAssignmentsFound" xml:space="preserve">
+    <value>Aucune attribution trouvée</value>
+  </data>
+  <data name="NoAvailableTagsFound" xml:space="preserve">
+    <value>Aucune balise disponible trouvée</value>
+  </data>
+  <data name="NoDeploymentFound" xml:space="preserve">
+    <value>Aucun déploiement trouvé pour la mise à jour du terminal sous le groupe organisationnel actif.</value>
+  </data>
+  <data name="NoDeviceUpdatesMsg" xml:space="preserve">
+    <value>Aucune mise à jour de terminal n'est disponible</value>
+  </data>
+  <data name="NoGroupIdAtEnrollmentOg" xml:space="preserve">
+    <value>Le groupe organisationnel d'enrôlement n'a pas d'ID de groupe.</value>
+  </data>
+  <data name="NonceError" xml:space="preserve">
+    <value>Erreur de génération de la valeur unique.</value>
+  </data>
+  <data name="NoPasscodeDevicesChartDescription" xml:space="preserve">
+    <value>{0} terminaux sans code secret. {1} Nombre total de terminaux sans code secret.</value>
+  </data>
+  <data name="NoPasscodeDevicesChartTitle" xml:space="preserve">
+    <value>Graphique en anneau des terminaux sans code secret. </value>
+  </data>
+  <data name="NoRemovableDrivesInOG" xml:space="preserve">
+    <value>Aucun lecteur amovible n'est disponible</value>
+  </data>
+  <data name="NoSafetyNetScanData" xml:space="preserve">
+    <value>Aucune donnée d'analyse précédente</value>
+  </data>
+  <data name="NoSmartGroupsFound" xml:space="preserve">
+    <value>Aucun Smart Group n'a été trouvé</value>
+  </data>
+  <data name="NotDepOrSupervised" xml:space="preserve">
+    <value>Non DEP ou supervisé</value>
+  </data>
+  <data name="NoteKeepAppsOnDevice" xml:space="preserve">
+    <value>L'aperçu du terminal peut être utilisé pour trouver les terminaux qui ne possèdent pas la version d'Intelligent Hub requise pour prendre en charge cette option en recherchant « Non pris en charge ».</value>
+  </data>
+  <data name="NotEligible" xml:space="preserve">
+    <value>Non éligible</value>
+  </data>
+  <data name="NotEligibleHoverText" xml:space="preserve">
+    <value>Non éligible
+Inclut tous les terminaux qui n'utilisent pas cette version ou une version ultérieure et qui ne sont pas pris en charge, supervisés ou DEP</value>
+  </data>
+  <data name="NotEncryptedDevicesChartDescription" xml:space="preserve">
+    <value>{0} terminaux non chiffrés. {1} Nombre total de terminaux non chiffrés.</value>
+  </data>
+  <data name="NotEncryptedDevicesChartTitle" xml:space="preserve">
+    <value>Graphique en anneau des terminaux non chiffrés.</value>
+  </data>
+  <data name="NotificationForDownloadSuccess" xml:space="preserve">
+    <value>Notification de téléchargement réussi</value>
+  </data>
+  <data name="NotificationForInstallSuccess" xml:space="preserve">
+    <value>Notification d'installation réussie</value>
+  </data>
+  <data name="NotificationType" xml:space="preserve">
+    <value>Type de notification</value>
+  </data>
+  <data name="NotifyVidmConfigChange" xml:space="preserve">
+    <value>Notifier un changement de configuration de Workspace ONE Access</value>
+  </data>
+  <data name="NumberOfReboots" xml:space="preserve">
+    <value>Nombre de redémarrages</value>
+  </data>
+  <data name="OemUpdateSampleProcessorJob" xml:space="preserve">
+    <value>Tâche du processeur de résumé OemUpdate</value>
+  </data>
+  <data name="OfflineDomainJoin" xml:space="preserve">
+    <value>Jonction de domaine hors ligne</value>
+  </data>
+  <data name="OneTime" xml:space="preserve">
+    <value>Une seule fois</value>
+  </data>
+  <data name="OneTimeOnly" xml:space="preserve">
+    <value>Une seule fois</value>
+  </data>
+  <data name="OneTimeOnlyArg" xml:space="preserve">
+    <value>Une seule fois {0} - {1} ({2})</value>
+    <comment>Placehoders: 0 - StartTime, 1 - EndTime, 2 - Duration.
+Example: One Time Only 11:00 PM - 4:30 AM (5 hours 30 mins)</comment>
+  </data>
+  <data name="OneTimeTitleArg" xml:space="preserve">
+    <value>{0} - {1} ({2})</value>
+    <comment>Placehoders: 0 - StartTime, 1 - EndTime, 2 - Duration.
+Example: 11:00 PM - 4:30 AM (5 hours 30 mins)</comment>
+  </data>
+  <data name="OnHigherVersion" xml:space="preserve">
+    <value>Sur les versions ultérieures</value>
+  </data>
+  <data name="OnHigherVersionHoverText" xml:space="preserve">
+    <value>Sur les versions ultérieures
+Inclut tous les terminaux d'une version ultérieure, indépendamment de leur éligibilité </value>
+  </data>
+  <data name="OnThisVersion" xml:space="preserve">
+    <value>Sur cette version</value>
+  </data>
+  <data name="OnThisVersionHoverText" xml:space="preserve">
+    <value>Sur cette version
+Inclut tous les terminaux de cette version, indépendamment de leur éligibilité</value>
+  </data>
+  <data name="OpenWiFi" xml:space="preserve">
+    <value>Ouvrir le Wi-Fi</value>
+  </data>
+  <data name="OperatingSystemBreakDownChartDescription" xml:space="preserve">
+    <value>{0} Graphique à barres. {1}</value>
+  </data>
+  <data name="OperatingSystemBreakDownChartTitle" xml:space="preserve">
+    <value>Répartition des systèmes d'exploitation </value>
+  </data>
+  <data name="OrganizationUnits" xml:space="preserve">
+    <value>Unités d'organisation</value>
+  </data>
+  <data name="OrganizationUnitsHelpMessage" xml:space="preserve">
+    <value>Nom unique complet de l'unité d'organisation (UO) où les objets ordinateur doivent être créés</value>
+  </data>
+  <data name="OsUpdateEditAssignment" xml:space="preserve">
+    <value>Modifier l'attribution</value>
+  </data>
+  <data name="OutOfDateState" xml:space="preserve">
+    <value>Obsolète</value>
+  </data>
+  <data name="OutOfDateStatus" xml:space="preserve">
+    <value>Obsolète</value>
+  </data>
+  <data name="OverrideDeviceUpdatesContentArg" xml:space="preserve">
+    <value>Cette action remplacera toutes les options d'attribution planifiées pour ce terminal. Une interruption potentielle pour l'utilisateur final peut également se produire si une commande d'installation est envoyée. Voulez-vous vraiment [{0}] ?</value>
+  </data>
+  <data name="OverrideJobLogLevelConfirmation" xml:space="preserve">
+    <value>Confirmation du remplacement du niveau de journalisation de la tâche</value>
+  </data>
+  <data name="OverrideWarning" xml:space="preserve">
+    <value>Ignorer l'avertissement</value>
+  </data>
+  <data name="OwnershipAndPlatformChangeNotAllowed" xml:space="preserve">
+    <value>Les modifications de propriété et de plateforme ne sont pas autorisées.</value>
+  </data>
+  <data name="PasswordSetOn" xml:space="preserve">
+    <value>Mot de passe défini pour</value>
+  </data>
+  <data name="Pause" xml:space="preserve">
+    <value>Mettre en pause</value>
+  </data>
+  <data name="PausedSuccessfully" xml:space="preserve">
+    <value>Mise en pause réussie</value>
+  </data>
+  <data name="PauseUpdatesContent" xml:space="preserve">
+    <value>La pause n'arrêtera pas les terminaux qui ont déjà téléchargé cette mise à jour. Cependant, elle suspendra tous les prochains téléchargements de la mise à jour. Vous pouvez gérer les attributions existantes, mais les modifications ne prendront effet qu'après la reprise de la mise à jour. Voulez-vous vraiment suspendre la mise à jour ?</value>
+  </data>
+  <data name="PendingSync" xml:space="preserve">
+    <value>Synchronisation en attente</value>
+  </data>
+  <data name="PendingSystemUpdate" xml:space="preserve">
+    <value>Mise à jour du système en attente</value>
+  </data>
+  <data name="PerAppVpnProfile" xml:space="preserve">
+    <value>Profil VPN par application</value>
+  </data>
+  <data name="Periodically" xml:space="preserve">
+    <value>Périodiquement</value>
+  </data>
+  <data name="PhoneNumberIsRequiredField" xml:space="preserve">
+    <value>Le champ Numéro de téléphone est obligatoire</value>
+  </data>
+  <data name="PlatformsChartDescription" xml:space="preserve">
+    <value>{0}</value>
+  </data>
+  <data name="PlatformsChartTitle" xml:space="preserve">
+    <value>Graphique à barres des plateformes. </value>
+  </data>
+  <data name="PlayAirPlayErrorMessage" xml:space="preserve">
+    <value>Une erreur s'est produite lors de la tentative d'installation d'AirPlay sur ce terminal. Vérifiez vos paramètres et réessayez.</value>
+  </data>
+  <data name="PleaseEnterValidIPAddress" xml:space="preserve">
+    <value>Veuillez saisir une adresse IP valide.</value>
+  </data>
+  <data name="PolicyEngineBackoffHelp" xml:space="preserve">
+    <value>Fréquence, en minutes, à laquelle le moteur de stratégie retentera de traiter un élément.</value>
+  </data>
+  <data name="PolicyEngineMaxTryCountHelp" xml:space="preserve">
+    <value>Nombre de fois où le moteur de stratégie retentera de traiter un élément.</value>
+  </data>
+  <data name="PolicyEngineQueueAuditing" xml:space="preserve">
+    <value>Audit de la file d'attente du moteur de stratégie</value>
+  </data>
+  <data name="PolicyEngineQueueAuditingHelp" xml:space="preserve">
+    <value>Lorsque cette option est activée, les éléments de file d'attente du moteur de stratégie traités sont stockés dans l'audit de la file d'attente du moteur de stratégie.</value>
+  </data>
+  <data name="PollOnLogin" xml:space="preserve">
+    <value>Interroger à la connexion</value>
+  </data>
+  <data name="PreserveDataPlan" xml:space="preserve">
+    <value>Conserver le plan de données</value>
+  </data>
+  <data name="PreserveDataPlanTooltip" xml:space="preserve">
+    <value>Lorsque cette option est activée, et qu'un plan de données existe sur le terminal, le plan de données est conservé après l'effacement du terminal.</value>
+  </data>
+  <data name="PreviousPassword" xml:space="preserve">
+    <value>Mot de passe précédent</value>
+  </data>
+  <data name="ProductProvisioningAWCMThrottle" xml:space="preserve">
+    <value>Limitation de bande passante AWCM de provisionnement de produit</value>
+  </data>
+  <data name="ProductProvisioningAwcmThrottleHelp" xml:space="preserve">
+    <value>Lorsque cette option est activée, le provisionnement du produit utilise la file d'attente sortante pour les notifications AWCM.</value>
+  </data>
+  <data name="ProductProvisioningAWCMThrottleRate" xml:space="preserve">
+    <value>Taux de limitation de bande passante AWCM de provisionnement de produit</value>
+  </data>
+  <data name="ProductProvisioningAwcmThrottleRateHelp" xml:space="preserve">
+    <value>Nombre de notifications AWCM envoyées par seconde.</value>
+  </data>
+  <data name="ProductProvisioningBatchReleaseJob" xml:space="preserve">
+    <value>Tâche de lancement par lots de provisionnement de produit</value>
+  </data>
+  <data name="ProductProvisioningCommandReleaseBatchSize" xml:space="preserve">
+    <value>Taille des lots de lancement de commande de provisionnement de produit</value>
+  </data>
+  <data name="ProductProvisioningCommandReleaseBatchSizeHelp" xml:space="preserve">
+    <value>Nombre de commandes lancées à partir de la file d'attente de commandes de terminal par intervalle de tâches du planificateur de lancement par lots de provisionnement de produit.</value>
+  </data>
+  <data name="ProductsBatchSizeHelp" xml:space="preserve">
+    <value>Nombre de produits dans le champ d'application du moteur de stratégie.</value>
+  </data>
+  <data name="ProvisioningDescription" xml:space="preserve">
+    <value>Le provisionnement sert à enrôler automatiquement des terminaux et offre des fonctionnalités avancées de gestion.</value>
+  </data>
+  <data name="PublishDummyFirmware" xml:space="preserve">
+    <value>Publier le microprogramme factice</value>
+  </data>
+  <data name="Python" xml:space="preserve">
+    <value>Python 3</value>
+  </data>
+  <data name="QRCodeConfiguredComponents" xml:space="preserve">
+    <value>Vous avez configuré les composants suivants. Veuillez noter que ces données n'ont pas été enregistrées. Par conséquent, assurez-vous que la configuration est correcte avant de fermer cette fenêtre. Si vous avez besoin d'effectuer un changement après la fermeture de cette fenêtre, vous devrez à nouveau passer par l'assistant.</value>
+  </data>
+  <data name="QRCodeEnrollmentDetailsMessage" xml:space="preserve">
+    <value>Pour utiliser l'authentification basée sur les jetons, laissez les deux premières options ci-dessous désactivées</value>
+  </data>
+  <data name="QRCodeEnrollmentWiFiHelpText" xml:space="preserve">
+    <value>Les paramètres Wi-Fi sont configurés après l'analyse du code QR. Les terminaux dotés d'un lecteur QR préinstallé nécessitent les paramètres Wi-Fi si les données cellulaires ne sont pas disponibles. Les terminaux qui n'ont pas de lecteur QR préinstallé ont besoin d'une connexion réseau distincte configurée pour télécharger et installer le lecteur. Une fois le lecteur QR installé, ce réseau est utilisé pour enrôler le terminal. Seule l'authentification WPA/WPA2 est prise en charge.</value>
+  </data>
+  <data name="QRCodePromptForEnteringLoginCredentials" xml:space="preserve">
+    <value>L'utilisateur sera invité à entrer les identifiants de connexion</value>
+  </data>
+  <data name="QRCodePromptForEnteringOG" xml:space="preserve">
+    <value>L'utilisateur sera invité à entrer un jeton de groupe organisationnel ou d'inscription</value>
+  </data>
+  <data name="QRcodeSheetTitle" xml:space="preserve">
+    <value>Code QR généré par AirWatch</value>
+  </data>
+  <data name="QRCodeWizardCloseConfirmation" xml:space="preserve">
+    <value>Assurez-vous d'avoir enregistré le code QR avant de fermer cette fenêtre, car la configuration ne sera pas enregistrée dans la console. Voulez-vous continuer ?</value>
+  </data>
+  <data name="Quality" xml:space="preserve">
+    <value>Qualité</value>
+  </data>
+  <data name="QueriedSuccessfully" xml:space="preserve">
+    <value>Interrogation réussie</value>
+  </data>
+  <data name="QueryDeviceSecurity" xml:space="preserve">
+    <value>Interroger la sécurité du terminal</value>
+  </data>
+  <data name="Querystatus" xml:space="preserve">
+    <value>Rechercher l'avancement de la mise à jour</value>
+  </data>
+  <data name="Querystatustooltip" xml:space="preserve">
+    <value>Interrogez l'état des mises à jour pour ce terminal.</value>
+  </data>
+  <data name="RebootCount" xml:space="preserve">
+    <value>Nombre de redémarrages</value>
+  </data>
+  <data name="RecommendedTasks" xml:space="preserve">
+    <value>Tâches recommandées</value>
+  </data>
+  <data name="RecoveryID" xml:space="preserve">
+    <value>ID de récupération</value>
+  </data>
+  <data name="RecurringScheduleCondition" xml:space="preserve">
+    <value>Planifiez les actions à mettre en œuvre pour une condition de temps récurrente.</value>
+  </data>
+  <data name="ReDeviceLogFailedToSendToDevice" xml:space="preserve">
+    <value>Échec de l'envoi de la demande du journal du terminal au terminal.</value>
+  </data>
+  <data name="Refreshed" xml:space="preserve">
+    <value>Actualisé</value>
+  </data>
+  <data name="RefreshEsim" xml:space="preserve">
+    <value>Actualiser l'eSIM</value>
+  </data>
+  <data name="RegisterRemoteManagement" xml:space="preserve">
+    <value>Inscrire pour la gestion à distance</value>
+  </data>
+  <data name="RegisterRemoteViewCommandAlreadyOnQueue" xml:space="preserve">
+    <value>La commande d'inscription du terminal pour l'affichage à distance se trouve déjà dans la file d'attente de commandes et sera prise en compte lorsque le terminal se connectera à la console.</value>
+  </data>
+  <data name="RegisterRemoteViewCommandCouldNotBeQueued" xml:space="preserve">
+    <value>La commande d'inscription du terminal pour l'affichage à distance n'a pas pu être envoyée. Contactez le support pour obtenir de l'aide.</value>
+  </data>
+  <data name="RegisterRemoteViewCommandQueued" xml:space="preserve">
+    <value>La commande d'inscription du terminal pour l'affichage à distance a été mise en file d'attente avec succès.</value>
+  </data>
+  <data name="RegistryOperation" xml:space="preserve">
+    <value>Opération de registre</value>
+  </data>
+  <data name="RejectWipe" xml:space="preserve">
+    <value>Rejeter l'effacement</value>
+  </data>
+  <data name="RejectWipeConfirm" xml:space="preserve">
+    <value>Reject wipe successful</value>
+  </data>
+  <data name="RelayServerContactDelayHelp" xml:space="preserve">
+    <value>Fréquence, en minutes, à laquelle le service de distribution de contenu traitera les éléments de service de contenu pour un serveur de relais présentant un état incorrect/d'erreur.</value>
+  </data>
+  <data name="RelayServerTestConnectionResultsExportFailed" xml:space="preserve">
+    <value>L'exportation des résultats de la connexion de test a échoué.</value>
+  </data>
+  <data name="RemoteFindWindowsDevice" xml:space="preserve">
+    <value>Recherche distante de terminal Windows</value>
+  </data>
+  <data name="RemovableDrives" xml:space="preserve">
+    <value>Lecteurs amovibles</value>
+  </data>
+  <data name="RemovableDrivesMessage" xml:space="preserve">
+    <value>Lecteurs amovibles chiffrés avec BitLocker.</value>
+  </data>
+  <data name="RemoveEnterpriseFactoryProtection" xml:space="preserve">
+    <value>Supprimer la protection de réinitialisation des paramètres d'usine de l'entreprise avant l'effacement ?</value>
+  </data>
+  <data name="RemoveEventAction" xml:space="preserve">
+    <value>Supprimer l'action d'événement</value>
+  </data>
+  <data name="RemoveUpdate" xml:space="preserve">
+    <value>Supprimer la mise à jour</value>
+  </data>
+  <data name="RepeatDaily" xml:space="preserve">
+    <value>Répéter tous les jours</value>
+  </data>
+  <data name="RepeatDailyArg" xml:space="preserve">
+    <value>Répéter tous les jours {0} - {1} ({2})</value>
+    <comment>Placehoders: 0 - StartTime, 1 - EndTime, 2 - Duration.
+Example: Repeat Daily 11:00 PM - 4:30 AM (5 hours 30 mins)</comment>
+  </data>
+  <data name="RepeatEvery" xml:space="preserve">
+    <value>Répéter tous les</value>
+  </data>
+  <data name="RepeatEveryArg" xml:space="preserve">
+    <value>Répéter tous les {0} {1}-{2} ({3})</value>
+    <comment>Placehoders: 0 - Days, 1 - StartTime, 2 - EndTime, 3 - Duration.
+Example: Repeat Every Mon/Wed 11:00 PM - 4:30 AM (5 hours 30 mins)</comment>
+  </data>
+  <data name="RepeatEveryWeekdayArg" xml:space="preserve">
+    <value>Répéter tous les jours de la semaine {0} - {1} ({2})</value>
+    <comment>Placehoders: 0 - StartTime, 1 - EndTime, 2 - Duration.
+Example: Repeat Every Weekday 11:00 PM - 4:30 AM (5 hours 30 mins)</comment>
+  </data>
+  <data name="RepeatWeekly" xml:space="preserve">
+    <value>Répéter toutes les semaines</value>
+  </data>
+  <data name="Requestcompliancecheckmtd" xml:space="preserve">
+    <value>Modèle de message HTML par défaut demandant à l'utilisateur de lancer Workspace ONE Intelligent Hub pour permettre le check-in du terminal et effectuer une analyse en cas de compromission.</value>
+  </data>
+  <data name="RequestError" xml:space="preserve">
+    <value>Erreur de demande d'approbation</value>
+  </data>
+  <data name="RequestExpired" xml:space="preserve">
+    <value>Demande d'approbation expirée</value>
+  </data>
+  <data name="RequestFailed" xml:space="preserve">
+    <value>Échec de la demande</value>
+  </data>
+  <data name="RequestHubLogs" xml:space="preserve">
+    <value>Demander les journaux Intelligent Hub</value>
+  </data>
+  <data name="RequestHubRepairFailure" xml:space="preserve">
+    <value>Échec de la mise en file d'attente de la commande pour réparer le Hub</value>
+  </data>
+  <data name="RequestHubRepairSuccess" xml:space="preserve">
+    <value>Mise en file d'attente réussie de la commande pour réparer le Hub</value>
+  </data>
+  <data name="RequestLimitHasBeenReached" xml:space="preserve">
+    <value>La limite de demande a été atteinte. Patientez quelques minutes, puis réessayez.</value>
+  </data>
+  <data name="RequestRejected" xml:space="preserve">
+    <value>Demande d'approbation rejetée</value>
+  </data>
+  <data name="RequestUserConsent" xml:space="preserve">
+    <value>Demander le consentement de l'utilisateur</value>
+  </data>
+  <data name="RequestUserConsentInfo" xml:space="preserve">
+    <value>Lorsque cette fonctionnalité est activée, l'utilisateur reçoit une invite de confidentialité pour autoriser la collecte des journaux. L'invite de confidentialité contient des informations sur les données collectées dans les journaux et exige l'accord de l'utilisateur pour transmettre les journaux.</value>
+  </data>
+  <data name="RequestUserListFailed" xml:space="preserve">
+    <value>Échec de la demande de listes des utilisateurs</value>
+  </data>
+  <data name="ResetAndroidWorkProfilePasscode" xml:space="preserve">
+    <value>Modifier le code secret professionnel</value>
+  </data>
+  <data name="ResetBiosPassword" xml:space="preserve">
+    <value>Réinitialiser le mot de passe du BIOS</value>
+  </data>
+  <data name="ResponseDataType" xml:space="preserve">
+    <value>Type de données de réponse</value>
+  </data>
+  <data name="Resume" xml:space="preserve">
+    <value>Reprise</value>
+  </data>
+  <data name="ResumeBitLocker" xml:space="preserve">
+    <value>Reprendre BitLocker</value>
+  </data>
+  <data name="ResumeBitLockerConfirmed" xml:space="preserve">
+    <value>Reprise de BitLocker</value>
+  </data>
+  <data name="ResumeBitlockerEncryption" xml:space="preserve">
+    <value>Reprendre le chiffrement BitLocker</value>
+  </data>
+  <data name="ResumeBitlockerEncryptionMessage" xml:space="preserve">
+    <value>Veuillez confirmer que vous souhaitez reprendre le chiffrement BitLocker.</value>
+  </data>
+  <data name="ResumeBitlockerEncryptionRestricted" xml:space="preserve">
+    <value>Interrompre le chiffrement BitLocker - Restreint</value>
+  </data>
+  <data name="ResumeBitLockerFailed" xml:space="preserve">
+    <value>Impossible de reprendre BitLocker pour le moment</value>
+  </data>
+  <data name="ResumeBitLockerFailure" xml:space="preserve">
+    <value>Échec de la reprise de BitLocker.</value>
+  </data>
+  <data name="ResumeBitLockerRequested" xml:space="preserve">
+    <value>Reprise de BitLocker demandée</value>
+  </data>
+  <data name="ResumeBitLockerSuccess" xml:space="preserve">
+    <value>La reprise de BitLocker a été demandée pour ce terminal.</value>
+  </data>
+  <data name="ResumeSuccessfully" xml:space="preserve">
+    <value>Reprise réussie</value>
+  </data>
+  <data name="ResumeUpdatesContent" xml:space="preserve">
+    <value>La reprise permet de lancer le déploiement des mises à jour si le processus n'a pas encore été démarré et de reprendre le déploiement des mises à jour s'il a été précédemment interrompu. Voulez-vous vraiment reprendre la mise à jour ?</value>
+  </data>
+  <data name="RevocationDate" xml:space="preserve">
+    <value>Date de révocation</value>
+  </data>
+  <data name="RevocationError" xml:space="preserve">
+    <value>Erreur de révocation</value>
+  </data>
+  <data name="RevocationPending" xml:space="preserve">
+    <value>Révocation en attente</value>
+  </data>
+  <data name="RevocationReason" xml:space="preserve">
+    <value>Motif de la révocation</value>
+  </data>
+  <data name="RevokeGoogleRefreshToken" xml:space="preserve">
+    <value>Révoquer les jetons G Suite</value>
+  </data>
+  <data name="RotateBitLockerRecoveryKey" xml:space="preserve">
+    <value>Faire pivoter la clé de récupération BitLocker</value>
+  </data>
+  <data name="RotateBitLockerRecoveryKeyConfirmed" xml:space="preserve">
+    <value>Rotation de la clé de récupération BitLocker confirmée</value>
+  </data>
+  <data name="RotateBitLockerRecoveryKeyFailed" xml:space="preserve">
+    <value>Échec de la rotation de la clé de récupération BitLocker</value>
+  </data>
+  <data name="RotateBitLockerRecoveryKeyRefused" xml:space="preserve">
+    <value>Rotation de la clé de récupération BitLocker refusée</value>
+  </data>
+  <data name="RotateBitLockerRecoveryKeyRequested" xml:space="preserve">
+    <value>Rotation de la clé de récupération BitLocker demandée</value>
+  </data>
+  <data name="RotateDEPAdminPassword" xml:space="preserve">
+    <value>Changer le mot de passe de l'administrateur DEP</value>
+  </data>
+  <data name="RotateDEPAdminPasswordConfirmed" xml:space="preserve">
+    <value>Changer le mot de passe de l'administrateur DEP – Confirmation</value>
+  </data>
+  <data name="RotateDEPAdminPasswordFailed" xml:space="preserve">
+    <value>Échec du changement de mot de passe de l'administrateur DEP</value>
+  </data>
+  <data name="RotateDEPAdminPasswordRequested" xml:space="preserve">
+    <value>Changer le mot de passe de l'administrateur DEP – Demandé</value>
+  </data>
+  <data name="RotateDeviceRecoveryKeyConfirmed" xml:space="preserve">
+    <value>Réception de la clé de récupération du chiffrement du disque</value>
+  </data>
+  <data name="RuntimeInformation" xml:space="preserve">
+    <value>Informations sur l'exécution</value>
+  </data>
+  <data name="SafetyNetAttestationError" xml:space="preserve">
+    <value>Erreur liée à l'attestation SafetyNet.</value>
+  </data>
+  <data name="SafetyNetBasicIntegrityFailure" xml:space="preserve">
+    <value>Échec de l'intégrité de base de SafetyNet.</value>
+  </data>
+  <data name="SafetyNetCtsNotCompatible" xml:space="preserve">
+    <value>CTS SafetyNet incompatible.</value>
+  </data>
+  <data name="SafetyNetResponseValidationFailed" xml:space="preserve">
+    <value>Échec de la validation de la réponse de SafetyNet.</value>
+  </data>
+  <data name="SafetyNetStatementInvalid" xml:space="preserve">
+    <value>L'analyse de l'attestation SafetyNet n'est pas valide.</value>
+  </data>
+  <data name="SamsungEFOTAPublishUpdateTimeZoneInfo" xml:space="preserve">
+    <value>Sélectionnez une période pour planifier cette mise à jour ci-dessous. Les mises à jour ne peuvent être planifiées plus de 30 jours à l'avance avec une fenêtre de mise à jour maximale de 7 jours. Les mises à jour dans cette fenêtre seront publiées sur les terminaux toutes les 4 heures dans le fuseau horaire du serveur.</value>
+  </data>
+  <data name="SaveAsEncrypted" xml:space="preserve">
+    <value>Enregistrer comme chiffré</value>
+  </data>
+  <data name="SavePriority" xml:space="preserve">
+    <value>Enregistrer la priorité</value>
+  </data>
+  <data name="ScanTimeInSeconds" xml:space="preserve">
+    <value>Durée de l'analyse</value>
+  </data>
+  <data name="ScheduledRotateDEPAdminPasswordRequested" xml:space="preserve">
+    <value>Rotation planifiée du mot de passe administrateur DEP demandée</value>
+  </data>
+  <data name="ScriptCommand" xml:space="preserve">
+    <value>Commande de script</value>
+  </data>
+  <data name="ScriptCommandTooltipText" xml:space="preserve">
+    <value>Le chargement d'un nouveau script remplace toutes les commandes de script existantes.</value>
+  </data>
+  <data name="ScriptsAssignmentWizardDefinitionTabDesc" xml:space="preserve">
+    <value>Configurer le nom de la clé, la description et d'autres informations générales du script</value>
+  </data>
+  <data name="ScriptsAssignmentWizardDeploymentTabDesc" xml:space="preserve">
+    <value>Configurer le nom de la clé, la description et d'autres informations générales du script</value>
+  </data>
+  <data name="ScriptsMenuDescription" xml:space="preserve">
+    <value>Les scripts définissent des actions avancées personnalisées pour un terminal de poste de travail</value>
+  </data>
+  <data name="SearchAssignedTags" xml:space="preserve">
+    <value>Rechercher des balises attribuées</value>
+  </data>
+  <data name="SearchAvailableTags" xml:space="preserve">
+    <value>Rechercher les balises disponibles</value>
+  </data>
+  <data name="SearchOrganizationUnits" xml:space="preserve">
+    <value>Rechercher des unités d'organisation</value>
+  </data>
+  <data name="SecureBootStatusFull" xml:space="preserve">
+    <value>État du démarrage sécurisé - Complet</value>
+  </data>
+  <data name="SecureBootStatusMedium" xml:space="preserve">
+    <value>État du démarrage sécurisé - Intermédiaire</value>
+  </data>
+  <data name="SecureBootStatusNotSupported" xml:space="preserve">
+    <value>État du démarrage sécurisé - Non pris en charge</value>
+  </data>
+  <data name="SecureBootStatusOff" xml:space="preserve">
+    <value>État du démarrage sécurisé - Désactivé</value>
+  </data>
+  <data name="SecureWiFI" xml:space="preserve">
+    <value>Sécurisé (WPA/WPA2)</value>
+  </data>
+  <data name="SelectAndroidAgentVersionToInstall" xml:space="preserve">
+    <value>Sélectionner la version du Hub Android à installer sur le terminal</value>
+  </data>
+  <data name="SelectNotifications" xml:space="preserve">
+    <value>Sélectionner les notifications</value>
+  </data>
+  <data name="SerialNumberCannotHaveSpecialCharacters" xml:space="preserve">
+    <value>Numéro(s) de série non valide(s). Les numéros de série ne peuvent contenir que des lettres et des chiffres. Corrigez le fichier et rechargez le chariot.</value>
+  </data>
+  <data name="SerialNumberMaxCharacters" xml:space="preserve">
+    <value>Le numéro de série peut comporter un maximum de 200 caractères</value>
+  </data>
+  <data name="ServerTimeUTC" xml:space="preserve">
+    <value>Heure du serveur (UTC)</value>
+  </data>
+  <data name="ServerTimeZone" xml:space="preserve">
+    <value>Fuseau horaire du serveur :</value>
+  </data>
+  <data name="Set" xml:space="preserve">
+    <value>Définir</value>
+  </data>
+  <data name="SetBitLockerRecoveryKey" xml:space="preserve">
+    <value>Définir la clé de récupération BitLocker</value>
+  </data>
+  <data name="SetUpConfiguration" xml:space="preserve">
+    <value>Configuration de l'installation</value>
+  </data>
+  <data name="SetupScriptParameters" xml:space="preserve">
+    <value>Configurez une ou plusieurs variables d'environnement pour les informations dynamiques ou sensibles dans ce script</value>
+  </data>
+  <data name="SharedIpad" xml:space="preserve">
+    <value>iPad partagé</value>
+  </data>
+  <data name="SIMCardArg" xml:space="preserve">
+    <value>Carte SIM {0}</value>
+    <comment>{0} will be replaced with the SIM card number</comment>
+  </data>
+  <data name="SimLabel" xml:space="preserve">
+    <value>Étiquette</value>
+  </data>
+  <data name="SimLabelID" xml:space="preserve">
+    <value>ID Libellé</value>
+  </data>
+  <data name="Slot" xml:space="preserve">
+    <value>Emplacement</value>
+  </data>
+  <data name="SmartGroupAssignmentError" xml:space="preserve">
+    <value>Un Smart Group ne peut être attribué qu'à une seule jonction de domaine.</value>
+  </data>
+  <data name="SmsSettingsAreNotConfigured" xml:space="preserve">
+    <value>Les paramètres SMS ne sont pas configurés. Pour les configurer, accédez à Tous les paramètres &gt; Système &gt; Intégration d'entreprise &gt; SMS</value>
+  </data>
+  <data name="StagingListView" xml:space="preserve">
+    <value>Affichage en liste</value>
+  </data>
+  <data name="StagingWindows" xml:space="preserve">
+    <value>Windows</value>
+  </data>
+  <data name="StartedSuccessfully" xml:space="preserve">
+    <value>Démarrage réussi</value>
+  </data>
+  <data name="StopDeviceUpdate" xml:space="preserve">
+    <value>Arrêter la mise à jour du terminal</value>
+  </data>
+  <data name="SubRuleType" xml:space="preserve">
+    <value>Type de sous-règle</value>
+  </data>
+  <data name="Supported" xml:space="preserve">
+    <value>Pris en charge</value>
+  </data>
+  <data name="SupportedDevicesInfoText" xml:space="preserve">
+    <value>Inclut les terminaux éligibles et non éligibles de ce groupe organisationnel et des groupes de niveau inférieur, ainsi que l'état des mises à jour déclenchées à partir d'une attribution. </value>
+  </data>
+  <data name="SuspendBitLocker" xml:space="preserve">
+    <value>Interrompre BitLocker</value>
+  </data>
+  <data name="SuspendBitLockerConfirmed" xml:space="preserve">
+    <value>BitLocker interrompu</value>
+  </data>
+  <data name="SuspendBitlockerEncryption" xml:space="preserve">
+    <value>Interrompre le chiffrement BitLocker</value>
+  </data>
+  <data name="SuspendBitlockerEncryptionMessage" xml:space="preserve">
+    <value>L'interruption de BitLocker désactive la protection jusqu'à ce que le nombre de redémarrages spécifié soit atteint, ou que l'administrateur reprenne la protection. Le système reste chiffré.</value>
+  </data>
+  <data name="SuspendBitlockerEncryptionRestricted" xml:space="preserve">
+    <value>Interrompre le chiffrement BitLocker - Restreint</value>
+  </data>
+  <data name="SuspendBitLockerFailed" xml:space="preserve">
+    <value>Impossible d'interrompre BitLocker pour le moment</value>
+  </data>
+  <data name="SuspendBitLockerFailure" xml:space="preserve">
+    <value>Impossible d'interrompre BitLocker pour le moment.</value>
+  </data>
+  <data name="SuspendBitLockerRequested" xml:space="preserve">
+    <value>Interruption de BitLocker demandée</value>
+  </data>
+  <data name="SuspendBitLockerSuccess" xml:space="preserve">
+    <value>L'interruption de BitLocker a été demandée pour ce terminal.</value>
+  </data>
+  <data name="SuspendDevice" xml:space="preserve">
+    <value>Terminal interrompu</value>
+  </data>
+  <data name="SyncEntitlements" xml:space="preserve">
+    <value>Synchronisation des droits</value>
+  </data>
+  <data name="SyncUpdates" xml:space="preserve">
+    <value>Synchronisation des mises à jour</value>
+  </data>
+  <data name="SystemApps" xml:space="preserve">
+    <value>Applications système</value>
+  </data>
+  <data name="SystemManufacturerAndModel" xml:space="preserve">
+    <value>Fabricant et modèle du système</value>
+  </data>
+  <data name="SystemManufacturerAndModelTooltip" xml:space="preserve">
+    <value>Fabricant et filtre de modèle pour Smart Group</value>
+  </data>
+  <data name="Systemunlocked" xml:space="preserve">
+    <value>Système déverrouillé.</value>
+  </data>
+  <data name="SystemUpdateReceivedTime" xml:space="preserve">
+    <value>Mise à jour disponible depuis</value>
+  </data>
+  <data name="TagAssignmentHelp" xml:space="preserve">
+    <value>Sélectionner une ou plusieurs balises pour l'attribution de terminal</value>
+  </data>
+  <data name="TagRemovalHelp" xml:space="preserve">
+    <value>Sélectionner une ou plusieurs balises à supprimer</value>
+  </data>
+  <data name="TargetedLoggingDeviceId" xml:space="preserve">
+    <value>Entrez dans l'un des formats pour activer la journalisation ciblée pour les ID de terminaux donnés.
+			 1. {deviceId1},{deviceId2},..
+			 2. {deviceId1}|{Timestamp},{deviceId2}|{Timestamp},..
+			 L'horodatage doit être au format aaaa-MM-jj HH:mm:ss. Par exemple, 100|2018-12-30 18:30:00. 8 heures est la période de journalisation ciblée par défaut.</value>
+  </data>
+  <data name="TargetedLoggingNeedsAtleastOneDeviceIdFilter" xml:space="preserve">
+    <value>Entrez au moins un ID de terminal pour la journalisation ciblée.</value>
+  </data>
+  <data name="TestPrint" xml:space="preserve">
+    <value>Test d'impression</value>
+  </data>
+  <data name="TestPrintConfirmation" xml:space="preserve">
+    <value>Confirmation de l'impression du test</value>
+  </data>
+  <data name="TheUserShouldLockDeviceBootloader" xml:space="preserve">
+    <value>L'utilisateur doit verrouiller le chargeur de démarrage de son terminal</value>
+  </data>
+  <data name="TheUserShouldRestoreDeviceToCleanFactoryROM" xml:space="preserve">
+    <value>L'utilisateur doit restaurer son terminal sur une mémoire ROM d'usine propre</value>
+  </data>
+  <data name="ThirdPartyRemoteManagement" xml:space="preserve">
+    <value>Gestion à distance tierce</value>
+  </data>
+  <data name="Throttled" xml:space="preserve">
+    <value>Limité(e)</value>
+    <comment>One of the Device Command Queue status</comment>
+  </data>
+  <data name="TimeWindow" xml:space="preserve">
+    <value>Fenêtre de temps</value>
+  </data>
+  <data name="TimeWindowBannerDescription" xml:space="preserve">
+    <value>Utilisez les fenêtres de temps dans vos workflows pour planifier les mises à jour et mettre à jour les ressources en temps opportun pour votre activité.</value>
+  </data>
+  <data name="TimeWindowBannerTitle" xml:space="preserve">
+    <value>Rationaliser les workflows avec des fenêtres de temps</value>
+  </data>
+  <data name="TimeWindowBaseTimeInfo" xml:space="preserve">
+    <value>Sélectionnez le fuseau horaire à utiliser pour cette fenêtre de temps : heure locale ou heure du serveur (UTC) du terminal.</value>
+  </data>
+  <data name="TimeWindowCategoryInfo" xml:space="preserve">
+    <value>Sélectionner une catégorie de fenêtre de temps : heures ouvrées ou heures de maintenance.</value>
+  </data>
+  <data name="TimeWindowGroupRestriction" xml:space="preserve">
+    <value>Cette fenêtre de temps ne peut pas être modifiée car elle est gérée par un groupe organisationnel de niveau supérieur ou bien l'administrateur dispose d'un accès en lecture seule uniquement.</value>
+  </data>
+  <data name="TimeWindowMenuDescription" xml:space="preserve">
+    <value>Fenêtre de temps de gestion</value>
+  </data>
+  <data name="TimeWindowMenuItem" xml:space="preserve">
+    <value>Fenêtre de temps</value>
+  </data>
+  <data name="TimeWindowStepDesc1" xml:space="preserve">
+    <value>Créez une « Planification de maintenance hebdomadaire de premier trimestre » pour répondre aux besoins uniques de votre entreprise.</value>
+  </data>
+  <data name="TimeWindowStepDesc2" xml:space="preserve">
+    <value>Créez une planification hebdomadaire qui se répète tous les mardis de 21 h à 4 heures.</value>
+  </data>
+  <data name="TimeWindowStepDesc3" xml:space="preserve">
+    <value>Référencez « Planification de maintenance hebdomadaire de premier trimestre » pour transférer les mises à jour dans le workflow.</value>
+  </data>
+  <data name="TimeWindowSteps" xml:space="preserve">
+    <value>Commencer par ces étapes</value>
+  </data>
+  <data name="TimeWindowStepTitle1" xml:space="preserve">
+    <value>Sélectionner une catégorie de fenêtre de temps : heures ouvrées ou heures de maintenance</value>
+  </data>
+  <data name="TimeWindowStepTitle2" xml:space="preserve">
+    <value>Créer une planification pour traiter la récurrence</value>
+  </data>
+  <data name="TimeWindowStepTitle3" xml:space="preserve">
+    <value>Utiliser comme condition de workflow</value>
+  </data>
+  <data name="Tools" xml:space="preserve">
+    <value>Outils</value>
+  </data>
+  <data name="ToolTipKeepAppsOnDevice" xml:space="preserve">
+    <value>Sélectionnez cette option pour permettre aux applications gérées existantes et à leurs données mises en cache de rester sur le terminal. Les terminaux dont la version de l'agent est antérieure à 2105 ne seront pas effacés par l'entreprise si cette option est sélectionnée.</value>
+  </data>
+  <data name="TotalDevicesArg" xml:space="preserve">
+    <value>Nombre total de terminaux : {0}</value>
+  </data>
+  <data name="TotalEligibleDevicesArg" xml:space="preserve">
+    <value>Nombre total de terminaux éligibles : {0}</value>
+  </data>
+  <data name="ToViewGPSDataInstallAirwatchAgent" xml:space="preserve">
+    <value>Pour afficher les données GPS, installez VMware AirWatch Agent à partir de Microsoft Store.</value>
+  </data>
+  <data name="Trigger" xml:space="preserve">
+    <value>Déclenchement</value>
+  </data>
+  <data name="UnitId" xml:space="preserve">
+    <value>ID de l'unité</value>
+  </data>
+  <data name="Unlicensed" xml:space="preserve">
+    <value>Sans licence</value>
+  </data>
+  <data name="UpdateAgentApplication" xml:space="preserve">
+    <value>Mettre à jour l'application de l'agent</value>
+  </data>
+  <data name="UpdateInstallPendingReboot" xml:space="preserve">
+    <value>La mise à jour sera installée au redémarrage</value>
+  </data>
+  <data name="UpdateNoLongerAvailable" xml:space="preserve">
+    <value>Cette mise à jour n'est plus disponible. Aucune autre action liée à cette mise à jour ne sera effectuée sur aucun terminal.</value>
+  </data>
+  <data name="UpdatesLastSync" xml:space="preserve">
+    <value>Dernière synchronisation :</value>
+  </data>
+  <data name="UpdatesNextSync" xml:space="preserve">
+    <value>Prochaine synchronisation :</value>
+  </data>
+  <data name="UptoDateStatus" xml:space="preserve">
+    <value>À jour</value>
+  </data>
+  <data name="UseCDSV1" xml:space="preserve">
+    <value>Service de livraison de contenu V1</value>
+  </data>
+  <data name="UseLatestAirWatchAgent" xml:space="preserve">
+    <value>Utiliser le dernier Workspace ONE Intelligent Hub</value>
+  </data>
+  <data name="UseLegacyCDSLogicHelp" xml:space="preserve">
+    <value>Lorsque cette option est activée, utilise l'ancienne version de la logique Service de livraison de contenu.</value>
+  </data>
+  <data name="UsePolicyEngineV1" xml:space="preserve">
+    <value>Moteur de stratégie V1</value>
+  </data>
+  <data name="UserBasedAccountDescription" xml:space="preserve">
+    <value>Le compte Google créé pour ce terminal sera le même pour tous les terminaux enrôlés par cet employé. Ce type d'enrôlement est préférable pour les employés affectés à des terminaux, mais pas pour les enrôlements échelonnés. Il peut y avoir des limites de terminaux par compte utilisateur.</value>
+  </data>
+  <data name="UserGroupAssignmentsWithEmptyGroupIDWarning" xml:space="preserve">
+    <value>Tous les groupes organisationnels sans ID de groupe provoquent l'échec de l'inscription des groupes d'utilisateurs attribués. Pour éviter ce problème, mettez le ou les ID de groupe à jour pour chaque groupe organisationnel.</value>
+  </data>
+  <data name="UserRemovableDrivesMessage" xml:space="preserve">
+    <value>Lecteurs amovibles chiffrés avec BitLocker.</value>
+  </data>
+  <data name="UserSwitch" xml:space="preserve">
+    <value>Changement d'utilisateur</value>
+  </data>
+  <data name="ValueShouldNotBeEmpty" xml:space="preserve">
+    <value>La valeur doit être renseignée.</value>
+  </data>
+  <data name="VerifyResponseError" xml:space="preserve">
+    <value>Vérifiez l'erreur de réponse.</value>
+  </data>
+  <data name="ViewBiosPassword" xml:space="preserve">
+    <value>Afficher le mot de passe du BIOS</value>
+  </data>
+  <data name="ViewBiosPasswordHeader" xml:space="preserve">
+    <value>Mot de passe BIOS</value>
+  </data>
+  <data name="ViewBiosPasswordHelp" xml:space="preserve">
+    <value>Autorisation d'afficher le mot de passe BIOS sur la page Détails du terminal.</value>
+  </data>
+  <data name="ViewBypassCode" xml:space="preserve">
+    <value>Afficher le code de contournement</value>
+  </data>
+  <data name="ViewManagedAdminPassword" xml:space="preserve">
+    <value>Afficher le mot de passe administrateur géré</value>
+  </data>
+  <data name="ViewManagedAppConfigFeedback" xml:space="preserve">
+    <value>Afficher les commentaires</value>
+  </data>
+  <data name="ViewRecoveryKeyRotationInformation" xml:space="preserve">
+    <value>Pour des raisons de sécurité, une commande de rotation de la clé sera ajoutée dans 15 minutes.</value>
+  </data>
+  <data name="VolumeIdentifier" xml:space="preserve">
+    <value>Identificateur de volume</value>
+  </data>
+  <data name="WiFiConfiguration" xml:space="preserve">
+    <value>Configurez le Wi-Fi en option auquel le terminal se connecte avant l'inscription</value>
+  </data>
+  <data name="WifiOnly" xml:space="preserve">
+    <value>Wi-Fi uniquement</value>
+  </data>
+  <data name="WiFiSsid" xml:space="preserve">
+    <value>Wi-Fi SSID</value>
+  </data>
+  <data name="Windows10KioskPublishingProcessorJob" xml:space="preserve">
+    <value>Tâche du processeur de publication du kiosque Windows 10</value>
+  </data>
+  <data name="WindowsCompromisedRuleWarning" xml:space="preserve">
+    <value>Cette stratégie s'applique aux terminaux Windows 10 compatibles avec le TPM 2.0 uniquement. La compatibilité avec le TPM 2.0 ne s'applique pas au contrôle de vérification du BIOS.</value>
+  </data>
+  <data name="WindowsDevicePowerOffWarningMessage" xml:space="preserve">
+    <value>Les terminaux Windows 10 redémarrent dans un délai de 5 minutes pour permettre à l'utilisateur de terminer un travail actif.</value>
+  </data>
+  <data name="WindowsDhaBiosAttestationFailed" xml:space="preserve">
+    <value>Nécessite l'utilitaire de vérification du BIOS de Dell. Applicable uniquement aux terminaux Dell sélectionnés. La compatibilité TPM 2.0 ne s'applique pas au contrôle de vérification du BIOS.</value>
+  </data>
+  <data name="WindowsProvisioningPackageServiceProcessorJob" xml:space="preserve">
+    <value>Tâche du processeur du service du module de provisionnement Windows</value>
+  </data>
+  <data name="WinRTEnterpriseResetDescription" xml:space="preserve">
+    <value>La réinitialisation entreprise restaure un terminal à un état Prêt à fonctionner lorsque celui-ci est corrompu ou présente des applications défectueuses. Le système d'exploitation Windows est réinstallé alors que les données utilisateur, les comptes utilisateur et les applications gérées sont préservés. Une fois la réinitialisation terminée, le terminal resynchronise les paramètres, les stratégies et les applications d'entreprise automatiquement déployés, tout en restant géré par Workspace ONE.</value>
+  </data>
+  <data name="WipeDeviceStorage" xml:space="preserve">
+    <value>Effacer le stockage du terminal</value>
+  </data>
+  <data name="WipeLogDescription" xml:space="preserve">
+    <value>Affichez les terminaux effacés, vérifiez les commandes d'effacement mises en attente et réinitialisez le compteur de seuil d'effacement.</value>
+  </data>
+  <data name="WipeRemovableStorage" xml:space="preserve">
+    <value>Effacer le stockage amovible</value>
+  </data>
+  <data name="WipeThresholdMessage" xml:space="preserve">
+    <value>Le seuil d'effacement sur la page {0} a été atteint. Aucun autre terminal ou contenu d'entreprise de terminal ne sera effacé par l'entreprise tant que le système ne sera pas déverrouillé.</value>
+  </data>
+  <data name="WizardQRCodesummarycongratulations" xml:space="preserve">
+    <value>La configuration est complète et le code QR est disponible pour le téléchargement. Le code QR est en texte brut et peut être interprété par n'importe quel lecteur/décodeur QR. Prenez les précautions nécessaires pour éviter toute fuite des informations sensibles.</value>
+  </data>
+  <data name="WorkflowAssignments" xml:space="preserve">
+    <value>Attributions de workflows</value>
+  </data>
+  <data name="WorkManagedDeviceInfoMessage" xml:space="preserve">
+    <value>Un terminal entièrement géré et verrouillé. Les employés n'auront accès qu'aux applications de l'entreprise et aucun accès aux applications personnelles via le Google Play Store.</value>
+  </data>
+  <data name="WorkManagedEnrollmentType" xml:space="preserve">
+    <value>Génération de comptes Google pour les terminaux d'entreprise</value>
+  </data>
+  <data name="WorkProfileStatus" xml:space="preserve">
+    <value>Profil professionnel</value>
+  </data>
+  <data name="Zsh" xml:space="preserve">
+    <value>Zsh</value>
+  </data>
+</root>

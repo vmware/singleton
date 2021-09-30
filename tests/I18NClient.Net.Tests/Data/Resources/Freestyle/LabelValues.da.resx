@@ -1,0 +1,1004 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AboutFreestyleOrchestrator" xml:space="preserve">
+    <value>Om Freestyle Orchestrator</value>
+  </data>
+  <data name="AddEditFreestyle" xml:space="preserve">
+    <value>Tilføj/rediger freestyle</value>
+  </data>
+  <data name="AddEditFreestyleHelp" xml:space="preserve">
+    <value>Styr adgangen til at oprette, redigere og udgive freestyle- og ressourcetyper som apps, profiler og scripts</value>
+  </data>
+  <data name="AddressWidth" xml:space="preserve">
+    <value>Adressebredde</value>
+  </data>
+  <data name="ApplicationDoesNotExist" xml:space="preserve">
+    <value>App findes ikke</value>
+  </data>
+  <data name="ApplicationExists" xml:space="preserve">
+    <value>App findes</value>
+  </data>
+  <data name="AppResultsDescription" xml:space="preserve">
+    <value>Det faktiske antal potentielt kvalificerede apps kan være større end vist.</value>
+  </data>
+  <data name="AppsOfArg" xml:space="preserve">
+    <value>Apps {0} – {1} af {2}</value>
+  </data>
+  <data name="Archived" xml:space="preserve">
+    <value>Arkiveret</value>
+  </data>
+  <data name="AssignmentDoesNotExistOrMightBeDeleted" xml:space="preserve">
+    <value>Tildelingen eksisterer ikke eller er måske blevet slettet.</value>
+  </data>
+  <data name="AssignmentsCouldNotBeRetrieved" xml:space="preserve">
+    <value>Kunne ikke hente tildelinger.</value>
+  </data>
+  <data name="Attributes" xml:space="preserve">
+    <value>Attributter</value>
+  </data>
+  <data name="AutoDeploy" xml:space="preserve">
+    <value>Auto-udrul</value>
+  </data>
+  <data name="AutoDeployAndShowInAppCatalog" xml:space="preserve">
+    <value>Auto-udrul, og vis i app-kataloget</value>
+  </data>
+  <data name="BackoffRate" xml:space="preserve">
+    <value>Backoff-rate</value>
+  </data>
+  <data name="BackoffRateDesc" xml:space="preserve">
+    <value>Multiplikator, der bestemmer intervallet mellem efterfølgende forsøg.</value>
+  </data>
+  <data name="BankLocator" xml:space="preserve">
+    <value>Rækkepositionsindikator</value>
+  </data>
+  <data name="BaseTimeHelpText" xml:space="preserve">
+    <value>Evalueret baseret på lokal enhedstid</value>
+  </data>
+  <data name="BiosPayloadWarning" xml:space="preserve">
+    <value>Sørg for, at Dell Command Monitor-app er føjet til arbejdsprocessen inden udgivelsen.</value>
+  </data>
+  <data name="Bitlocker" xml:space="preserve">
+    <value>Bitlocker</value>
+  </data>
+  <data name="BrowserExtension" xml:space="preserve">
+    <value>Browserudvidelse</value>
+  </data>
+  <data name="BrowserName" xml:space="preserve">
+    <value>Browsernavn</value>
+  </data>
+  <data name="Capacity" xml:space="preserve">
+    <value>Kapacitet</value>
+  </data>
+  <data name="Caption" xml:space="preserve">
+    <value>Billedtekst</value>
+  </data>
+  <data name="CatalogIconRecommendationAndLimit" xml:space="preserve">
+    <value>PNG, JPG or GIF, 1 MB maximum, 512 by 512 px recommended.</value>
+  </data>
+  <data name="ChangeAttribute" xml:space="preserve">
+    <value>Skift</value>
+    <comment>edi change attribute confirm button text</comment>
+  </data>
+  <data name="ChangeAttributeConfirmationDescription" xml:space="preserve">
+    <value>Ændring af denne indstilling sletter alle attributter associeret med det aktuelle udvalg.</value>
+    <comment>edi change attribute confirm model body description</comment>
+  </data>
+  <data name="ChangeAttributeConfirmationTitle" xml:space="preserve">
+    <value>Skift udvalg</value>
+    <comment>edi change attribute confirm model title</comment>
+  </data>
+  <data name="ChangePlatform" xml:space="preserve">
+    <value>Skift platform</value>
+  </data>
+  <data name="ChasisType" xml:space="preserve">
+    <value>Kabinettype</value>
+  </data>
+  <data name="ClockSpeed" xml:space="preserve">
+    <value>Clockhastighed</value>
+  </data>
+  <data name="CodeName" xml:space="preserve">
+    <value>Kodenavn</value>
+  </data>
+  <data name="CompletedWithException" xml:space="preserve">
+    <value>Fuldført med undtagelse</value>
+  </data>
+  <data name="Compute" xml:space="preserve">
+    <value>Beregn</value>
+  </data>
+  <data name="ConfigurationOptionTooltipMsg" xml:space="preserve">
+    <value>Vælg platform for at tilføje flere trin til arbejdsprocessen.</value>
+  </data>
+  <data name="ConfirmDeleteArg" xml:space="preserve">
+    <value>Slet {0}</value>
+    <comment>{0} will be Workflow name</comment>
+  </data>
+  <data name="ConfirmDeleteWorkflowContent" xml:space="preserve">
+    <value>Hvis du sletter denne arbejdsgang, fjernes ressourcetildelingen fra enhederne i denne arbejdsgang. Denne handling kan ikke fortrydes. De ressourcer, der aktuelt er installeret på enhederne, forbliver, medmindre de fjernes manuelt.</value>
+  </data>
+  <data name="ConfirmPauseArg" xml:space="preserve">
+    <value>Pause {0}</value>
+  </data>
+  <data name="ConfirmPauseWorkflowContent" xml:space="preserve">
+    <value>Denne handling forhindrer arbejdsgangen i at køre på nye enheder, indtil du genoptager den. Enheder, der har kørt eller kører arbejdsgangen, påvirkes ikke.</value>
+  </data>
+  <data name="ConnectionId" xml:space="preserve">
+    <value>Forbindelses-ID</value>
+  </data>
+  <data name="Cores" xml:space="preserve">
+    <value>Kerner</value>
+  </data>
+  <data name="CPU" xml:space="preserve">
+    <value>CPU</value>
+  </data>
+  <data name="CPUBrand" xml:space="preserve">
+    <value>CPU-mærke</value>
+  </data>
+  <data name="CPUID" xml:space="preserve">
+    <value>CPU-ID</value>
+  </data>
+  <data name="CPUModel" xml:space="preserve">
+    <value>CPU-model</value>
+  </data>
+  <data name="CPUSubType" xml:space="preserve">
+    <value>CPU-undertype</value>
+  </data>
+  <data name="CPUType" xml:space="preserve">
+    <value>CPU-type</value>
+  </data>
+  <data name="CreatedOnByArg" xml:space="preserve">
+    <value>Oprettet den {0} af {1}</value>
+  </data>
+  <data name="CreateWorkflowsInfo" xml:space="preserve">
+    <value>Når du er klar, skal du klikke på Kom i gang for at oprette og udgive arbejdsgange med de ressourcer, du har konfigureret.</value>
+  </data>
+  <data name="CreateYourWorkflows" xml:space="preserve">
+    <value>Opret dine arbejdsgange</value>
+  </data>
+  <data name="CustomLastDays" xml:space="preserve">
+    <value>Sidste {0} dag(e)</value>
+  </data>
+  <data name="CustomLastHours" xml:space="preserve">
+    <value>Sidste {0} time(r)</value>
+  </data>
+  <data name="CustomLastMonths" xml:space="preserve">
+    <value>Sidste {0} måned(er)</value>
+  </data>
+  <data name="CustomLastWeeks" xml:space="preserve">
+    <value>Sidste {0} uge(r)</value>
+  </data>
+  <data name="DataWidth" xml:space="preserve">
+    <value>Databredde</value>
+  </data>
+  <data name="DeleteFreestyle" xml:space="preserve">
+    <value>Slet Freestyle</value>
+  </data>
+  <data name="DeleteFreestyleHelp" xml:space="preserve">
+    <value>Styr adgang til at slette freestyle- og ressourcetyper som apps, profiler og scripts</value>
+  </data>
+  <data name="DeleteWorkflow" xml:space="preserve">
+    <value>Slet arbejdsgang</value>
+  </data>
+  <data name="DeleteWorkflowAdditionalContent" xml:space="preserve">
+    <value>Hvis du vil fjerne de installerede ressourcer, skal du navigere til visningen Enhedsoplysninger for hver enhed eller visningen Tildelte enheder for hver ressource.</value>
+  </data>
+  <data name="DeploymentSettings" xml:space="preserve">
+    <value>Indstillinger for udrulning</value>
+  </data>
+  <data name="DeviceBreakdown" xml:space="preserve">
+    <value>Enhedsopdeling</value>
+  </data>
+  <data name="DeviceDistributionUnavailable" xml:space="preserve">
+    <value>Enhedsdistribution er ikke tilgængelig.</value>
+  </data>
+  <data name="DeviceExecutionStatusInfo" xml:space="preserve">
+    <value>Baseret på valg af platform og smart-gruppe</value>
+  </data>
+  <data name="DeviceLocator" xml:space="preserve">
+    <value>Enhedspositionsindikator</value>
+  </data>
+  <data name="DeviceNotAssignedToWorkflow" xml:space="preserve">
+    <value>Enheden er ikke tildelt til denne arbejdsgang.</value>
+  </data>
+  <data name="DeviceWithStatusArg" xml:space="preserve">
+    <value>Enhed med status {0}</value>
+  </data>
+  <data name="DeviceWorkflowStatusInfo" xml:space="preserve">
+    <value>Status for hvert trin i denne arbejdsgang for denne enhed er angivet nedenfor.</value>
+  </data>
+  <data name="DiskIndex" xml:space="preserve">
+    <value>Diskindeks</value>
+  </data>
+  <data name="DNSDomain" xml:space="preserve">
+    <value>DNS-domæne</value>
+  </data>
+  <data name="DNSServerSearchOrder" xml:space="preserve">
+    <value>DNS-server-søgerækkefølge</value>
+  </data>
+  <data name="DoYouWantToContinue" xml:space="preserve">
+    <value>Vil du fortsætte?</value>
+  </data>
+  <data name="DriverDate" xml:space="preserve">
+    <value>Driverdato</value>
+  </data>
+  <data name="DriverKey" xml:space="preserve">
+    <value>Drivernøgle</value>
+  </data>
+  <data name="DriverSigned" xml:space="preserve">
+    <value>Driver signeret</value>
+  </data>
+  <data name="DWord32Bit" xml:space="preserve">
+    <value>DWORD</value>
+  </data>
+  <data name="EdiSelectFurther" xml:space="preserve">
+    <value>Vælg attribut</value>
+    <comment>edi sencondary selection default text.</comment>
+  </data>
+  <data name="EmptyStepStatus" xml:space="preserve">
+    <value>Ingen enhedsstatus rapporteret. Enhedsantal opdateres, når der er flere tilgængelige data.</value>
+  </data>
+  <data name="EnterNumber" xml:space="preserve">
+    <value>Indtast et tal</value>
+  </data>
+  <data name="EnterNumberForCustomRange" xml:space="preserve">
+    <value>Indtast antal for brugerdefineret interval</value>
+  </data>
+  <data name="EntryBlock" xml:space="preserve">
+    <value>Arbejdsgangsindstillinger</value>
+  </data>
+  <data name="ErrorHandling" xml:space="preserve">
+    <value>Fejlhåndtering</value>
+  </data>
+  <data name="ErrorLoadingCategories" xml:space="preserve">
+    <value>Kunne ikke hente app-kategorier. Kontakt din systemadministrator, hvis problemet fortsætter.</value>
+  </data>
+  <data name="EulaSettings" xml:space="preserve">
+    <value>EULA-indstillinger</value>
+  </data>
+  <data name="ExcludedSmartGroupAssignmentError" xml:space="preserve">
+    <value>Ekskluderede smart-grupper bør ikke være en del af smart-gruppetildelinger i nogen arbejdsproces, der indeholder denne app.</value>
+  </data>
+  <data name="ExecutionRate" xml:space="preserve">
+    <value>Udførelseshastighed</value>
+  </data>
+  <data name="Exists" xml:space="preserve">
+    <value>Findes</value>
+  </data>
+  <data name="ExpandableString" xml:space="preserve">
+    <value>Udvidelig streng</value>
+  </data>
+  <data name="ExtensionName" xml:space="preserve">
+    <value>Udvidelsesnavn</value>
+  </data>
+  <data name="FileSystem" xml:space="preserve">
+    <value>Filsystem</value>
+  </data>
+  <data name="Filters" xml:space="preserve">
+    <value>Filtre</value>
+  </data>
+  <data name="FindOutMore" xml:space="preserve">
+    <value>For at se mere skal du besøge</value>
+  </data>
+  <data name="FirstRetryAfter" xml:space="preserve">
+    <value>Første forsøg efter</value>
+  </data>
+  <data name="FourthRetryAfter" xml:space="preserve">
+    <value>Fjerde forsøg efter</value>
+  </data>
+  <data name="FreeSpace" xml:space="preserve">
+    <value>Ledig plads</value>
+  </data>
+  <data name="Freestyle" xml:space="preserve">
+    <value>Freestyle</value>
+  </data>
+  <data name="FreestyleContext" xml:space="preserve">
+    <value>Kontekst</value>
+  </data>
+  <data name="FreestyleHeader" xml:space="preserve">
+    <value>Opret arbejdsgange, der opfylder dine behov</value>
+  </data>
+  <data name="FreestyleInfo" xml:space="preserve">
+    <value>Workspace ONE Freestyle Orchestrator er en platform til IT-orkestrering uden kode, der giver dig fleksibilitet til at oprette arbejdsprocesser for ressourcer såsom apps, profiler og scripts og anvende dem på enheder baseret på findelte kriterier.</value>
+  </data>
+  <data name="FreestyleNote" xml:space="preserve">
+    <value>Fås i øjeblikket kun til Windows 10- og macOS-platforme.</value>
+  </data>
+  <data name="FreestyleOrchestrator" xml:space="preserve">
+    <value>Freestyle Orchestrator</value>
+  </data>
+  <data name="FreestyleOrchestratorInfo" xml:space="preserve">
+    <value>Opret arbejdsgange for ressourcer som f.eks. apps, profiler og scripts, og anvend dem på enheder baseret på findelte kriterier.</value>
+  </data>
+  <data name="FreestyleOrchestratorPreview" xml:space="preserve">
+    <value>Freestyle Orchestrator (prøveversion)</value>
+  </data>
+  <data name="FreestyleWelcomeWindowDescription" xml:space="preserve">
+    <value>Freestyle Orchestrator er en platform til IT-orkestrering, som kun kræver lidt kodning, og som giver dig fleksibilitet til at oprette arbejdsprocesser for ressourcer såsom apps, profiler og scripts og anvende dem på enheder baseret på findelte kriterier.</value>
+  </data>
+  <data name="FreestyleWelcomeWindowDescriptionInfo" xml:space="preserve">
+    <value>Freestyle Orchestrator er i øjeblikket tilgængelig til Windows 10- og macOS-platforme.</value>
+  </data>
+  <data name="FreestyleWorkflow" xml:space="preserve">
+    <value>Freestyle-arbejdsgang</value>
+  </data>
+  <data name="FreestyleWorkflowDescription" xml:space="preserve">
+    <value>Send objekter, eller udfør specifikke handlinger på enheder baseret på kriterier.</value>
+  </data>
+  <data name="GettingStartedWithWorkflows" xml:space="preserve">
+    <value>Kom i gang med arbejdsgange</value>
+  </data>
+  <data name="HardwareSerial" xml:space="preserve">
+    <value>Hardwareserienummer</value>
+  </data>
+  <data name="HardwareVendor" xml:space="preserve">
+    <value>Hardwareleverandør</value>
+  </data>
+  <data name="HardwareVersion" xml:space="preserve">
+    <value>Hardwareversion</value>
+  </data>
+  <data name="Hotfix" xml:space="preserve">
+    <value>Hotfix</value>
+  </data>
+  <data name="HotfixKBId" xml:space="preserve">
+    <value>Hotfix KB-ID</value>
+  </data>
+  <data name="Includes" xml:space="preserve">
+    <value>Inkluderer</value>
+  </data>
+  <data name="InitialValueIsActivated" xml:space="preserve">
+    <value>Startværdi er aktiveret</value>
+  </data>
+  <data name="InitialValueIsEnabled" xml:space="preserve">
+    <value>Startværdi er aktiveret</value>
+  </data>
+  <data name="InitialValueIsOwned" xml:space="preserve">
+    <value>Startværdi er ejet</value>
+  </data>
+  <data name="InstallationState" xml:space="preserve">
+    <value>Installationstilstand</value>
+  </data>
+  <data name="InstalledBy" xml:space="preserve">
+    <value>Installeret af</value>
+  </data>
+  <data name="InstalledOn" xml:space="preserve">
+    <value>Installeret den</value>
+  </data>
+  <data name="InstallLocation" xml:space="preserve">
+    <value>Installationsplacering</value>
+  </data>
+  <data name="InstallSource" xml:space="preserve">
+    <value>Installationskilde</value>
+  </data>
+  <data name="IntroducingFreestyleOrchestrator" xml:space="preserve">
+    <value>Vi præsenterer Freestyle Orchestrator</value>
+  </data>
+  <data name="IsBootable" xml:space="preserve">
+    <value>Kan genstartes</value>
+  </data>
+  <data name="IsFramework" xml:space="preserve">
+    <value>Is-ramme</value>
+  </data>
+  <data name="KioskPayloadWarning" xml:space="preserve">
+    <value>Sørg for, at apps fra kiosknyttelast føjes til arbejdsprocessen før udgivelsen.</value>
+  </data>
+  <data name="LastFortyFiveDays" xml:space="preserve">
+    <value>Sidste femogfyrre dage</value>
+  </data>
+  <data name="LastFortyFiveDaysNumeric" xml:space="preserve">
+    <value>Sidste 45 dage</value>
+  </data>
+  <data name="LastFourteenDays" xml:space="preserve">
+    <value>Sidste fjorten dage</value>
+  </data>
+  <data name="LastFourteenDaysNumeric" xml:space="preserve">
+    <value>Sidste 14 dage</value>
+  </data>
+  <data name="LastSevenDaysNumeric" xml:space="preserve">
+    <value>Sidste 7 dage</value>
+  </data>
+  <data name="LastSixtyDays" xml:space="preserve">
+    <value>Sidste tres dage</value>
+  </data>
+  <data name="LastSixtyDaysNumeric" xml:space="preserve">
+    <value>Sidste 60 dage</value>
+  </data>
+  <data name="LastThirtyDaysNumeric" xml:space="preserve">
+    <value>Sidste 30 dage</value>
+  </data>
+  <data name="Latest" xml:space="preserve">
+    <value>Seneste</value>
+  </data>
+  <data name="LatestAvailable" xml:space="preserve">
+    <value>Seneste tilgængelige</value>
+  </data>
+  <data name="LocalTimeZone" xml:space="preserve">
+    <value>Lokal tidszone</value>
+  </data>
+  <data name="LogicalDrives" xml:space="preserve">
+    <value>Logiske drev</value>
+  </data>
+  <data name="ManufacturerId" xml:space="preserve">
+    <value>Producent-DI</value>
+  </data>
+  <data name="ManufacturerVersion" xml:space="preserve">
+    <value>Producentversion</value>
+  </data>
+  <data name="ManufacturerVersionInfo" xml:space="preserve">
+    <value>Oplysninger om producentversion</value>
+  </data>
+  <data name="MatchesFound" xml:space="preserve">
+    <value>{0} match(es) fundet</value>
+  </data>
+  <data name="MaxClockSpeed" xml:space="preserve">
+    <value>Maksimal clockhastighed</value>
+  </data>
+  <data name="MaximumRetries" xml:space="preserve">
+    <value>Maksimalt antal nye forsøg</value>
+  </data>
+  <data name="MayNotBeFiltered" xml:space="preserve">
+    <value>Resultaterne omfatter muligvis ikke</value>
+  </data>
+  <data name="MayNotBeFilteredDesc" xml:space="preserve">
+    <value>Alfanumeriske app-versioner filtreret med "større end"- eller "mindre end"-operatører.</value>
+  </data>
+  <data name="MemoryType" xml:space="preserve">
+    <value>Hukommelsestype</value>
+  </data>
+  <data name="ModifiedOnByArg" xml:space="preserve">
+    <value>Ændret den {0} af {1}</value>
+  </data>
+  <data name="MonitorPerformance" xml:space="preserve">
+    <value>Overvåg ydeevnen</value>
+  </data>
+  <data name="MonitorWorkflowPerformanceInfo" xml:space="preserve">
+    <value>Overvåg og få indsigt i offentliggjorte arbejdsgange, få vist ydeevneparametre, og administrer gemte og arkiverede arbejdsgange.</value>
+  </data>
+  <data name="MultipleValueHelpText" xml:space="preserve">
+    <value>Adskil flere værdier med kommaer.</value>
+  </data>
+  <data name="MustBeBetweenArgs" xml:space="preserve">
+    <value>Skal være mellem {0} og {1}</value>
+  </data>
+  <data name="NavigationFreestyle" xml:space="preserve">
+    <value>Navigation i freestyle</value>
+  </data>
+  <data name="NavigationFreestyleHelp" xml:space="preserve">
+    <value>Styr adgang til freestyle-sidemenuen</value>
+  </data>
+  <data name="NavigationResources" xml:space="preserve">
+    <value>Navigationsressourcer</value>
+  </data>
+  <data name="NavigationResourcesHelp" xml:space="preserve">
+    <value>Styr adgang til ressourcesidemenuen</value>
+  </data>
+  <data name="NetworkAdapter" xml:space="preserve">
+    <value>Netværkskort</value>
+  </data>
+  <data name="NoDefaultPolicyForVersion" xml:space="preserve">
+    <value>App-versionen har ikke nogen standardpolitikker. Angiv en, før der udgives.</value>
+  </data>
+  <data name="NoStepStatus" xml:space="preserve">
+    <value>Ingen status at rapportere for dette trin. Vælg et andet trin for at få vist opdeling af enhed.</value>
+  </data>
+  <data name="NotBetween" xml:space="preserve">
+    <value>Ikke mellem</value>
+  </data>
+  <data name="NotEquals" xml:space="preserve">
+    <value>Ikke lig med</value>
+  </data>
+  <data name="NotIn" xml:space="preserve">
+    <value>Ikke i</value>
+  </data>
+  <data name="OemUpdatesPayloadWarning" xml:space="preserve">
+    <value>Sørg for, at Dell Command Update-app er føjet til arbejdsprocessen inden udgivelsen.</value>
+  </data>
+  <data name="OverallDeviceExecutionStatus" xml:space="preserve">
+    <value>Samlet status for enhedsudførelse</value>
+  </data>
+  <data name="Overwritten" xml:space="preserve">
+    <value>Overskrevet</value>
+  </data>
+  <data name="Partitions" xml:space="preserve">
+    <value>Partitioner</value>
+  </data>
+  <data name="PhysicalPresenceVersion" xml:space="preserve">
+    <value>Fysisk tilstedeværelsesversion</value>
+  </data>
+  <data name="PlatformChangeConfirmationDescription" xml:space="preserve">
+    <value>Hvis platformen ændres, slettes alle andre ressourcer, trin og handlinger, du har indtastet i arbejdsprocessen. Er du sikker på, at du vil fortsætte?</value>
+  </data>
+  <data name="PlatformChangeConfirmationTitle" xml:space="preserve">
+    <value>Advarsel – ændring af platform</value>
+  </data>
+  <data name="PlatformDescription" xml:space="preserve">
+    <value>Ressourcer filtreres baseret på platformstypen.</value>
+  </data>
+  <data name="PlatformRole" xml:space="preserve">
+    <value>Platformrolle</value>
+  </data>
+  <data name="PlayDemo" xml:space="preserve">
+    <value>Afspil demo</value>
+  </data>
+  <data name="PotentiallyImpactedApplications" xml:space="preserve">
+    <value>Potentielt kvalificerede apps</value>
+  </data>
+  <data name="ProceedToNextStepConditionFailedError" xml:space="preserve">
+    <value>Ellers-trinnet er ikke indstillet korrekt eller mangler, når du bruger fortsæt til næste trin.</value>
+  </data>
+  <data name="ProductIdentificationNumber" xml:space="preserve">
+    <value>Produkt-ID-nummer</value>
+  </data>
+  <data name="ProfilesAndBaselines" xml:space="preserve">
+    <value>Profiler og grundlinjer</value>
+  </data>
+  <data name="Program" xml:space="preserve">
+    <value>Program</value>
+  </data>
+  <data name="PropertyFile" xml:space="preserve">
+    <value>Egenskabsfil</value>
+  </data>
+  <data name="ProtectionStatus" xml:space="preserve">
+    <value>Beskyttelsesstatus</value>
+  </data>
+  <data name="PublishedOnByArg" xml:space="preserve">
+    <value>Udgivet d. {0} af {1}</value>
+  </data>
+  <data name="PublishedStateDescription" xml:space="preserve">
+    <value>Det kan tage op til 4 timer at opdatere data baseret på enhedsindtjekninger. Hvis du vil synkronisere din arbejdsgang til enheder nu, skal du navigere til Enhedsoplysninger, klikke på Flere handlinger og vælge Arbejdsgange.</value>
+  </data>
+  <data name="Publisher" xml:space="preserve">
+    <value>Udgiver</value>
+  </data>
+  <data name="PublisherId" xml:space="preserve">
+    <value>Udgiver-ID</value>
+  </data>
+  <data name="QWord64Bit" xml:space="preserve">
+    <value>QWORD</value>
+  </data>
+  <data name="ReevaluateCondition" xml:space="preserve">
+    <value>Evaluer betingelse igen</value>
+  </data>
+  <data name="ReevaluateConditionDesc" xml:space="preserve">
+    <value>Udfører hele arbejdsgangen hvert 15. minut for at sikre at enheden bevarer den ønskede tilstand.</value>
+  </data>
+  <data name="Registry" xml:space="preserve">
+    <value>Registreringsdatabase</value>
+  </data>
+  <data name="RegistryDoesNotExistAt" xml:space="preserve">
+    <value>Registreringsdatabase findes ikke i</value>
+  </data>
+  <data name="RegistryExistsAt" xml:space="preserve">
+    <value>Registreringsdatabase findes i</value>
+  </data>
+  <data name="RegistryPath" xml:space="preserve">
+    <value>Sti i registreringsdatabasen</value>
+  </data>
+  <data name="ReinstallIfRemoved" xml:space="preserve">
+    <value>Installer igen hvis fjernet</value>
+  </data>
+  <data name="ReinstallIfRemovedDesc" xml:space="preserve">
+    <value>Installer denne ressource igen, hvis den fjernes fra en enhed.</value>
+  </data>
+  <data name="ResourceCount" xml:space="preserve">
+    <value>Ressourceantal</value>
+  </data>
+  <data name="ResourcesWelcomeWindowDescription" xml:space="preserve">
+    <value>Vi har omorganiseret den venstre navigationsrude (hovedmenu) for at medtage en ny fane med ressourcer, så du nemmere kan få adgang til og administrere ofte anvendte funktioner. I Ressourcer kan du finde apps, profiler, betingelser og meget mere.</value>
+  </data>
+  <data name="ResourceUnauthorizedAccessContactSystemAdmin" xml:space="preserve">
+    <value>Du er ikke godkendt til at få adgang til denne ressource. Kontakt din systemadministrator for at få hjælp.</value>
+  </data>
+  <data name="RestoreToDefault" xml:space="preserve">
+    <value>Gendan til standard</value>
+  </data>
+  <data name="Results" xml:space="preserve">
+    <value>Resultater</value>
+  </data>
+  <data name="RetryAfter" xml:space="preserve">
+    <value>Prøv igen efter</value>
+  </data>
+  <data name="RetryAfterDesc" xml:space="preserve">
+    <value>Tidsinterval, hvorefter arbejdsgangstrin med fejl forsøges igen.</value>
+  </data>
+  <data name="RetryIntervalDesc" xml:space="preserve">
+    <value>Produkt af Forsøg igen efter, Prøv tal igen og Backoff-rate.</value>
+  </data>
+  <data name="RunScript" xml:space="preserve">
+    <value>Kør script</value>
+  </data>
+  <data name="SavedFailedContactAdmin" xml:space="preserve">
+    <value>Kunne ikke gemme. Prøv igen. Hvis problemet fortsætter, skal du kontakte systemadministratoren.</value>
+  </data>
+  <data name="SavedStateDescription" xml:space="preserve">
+    <value>Udgiv din arbejdsgang for at tildele enheder. Data opdateres, når tildelte enheder tjekker ind.</value>
+  </data>
+  <data name="SaveSuccessPublishFailedTryAgain" xml:space="preserve">
+    <value>Arbejdsprocessen kunne ikke udgives. Arbejdsprocessen blev gemt. Prøv at udgive igen.</value>
+  </data>
+  <data name="SearchAndSelect" xml:space="preserve">
+    <value>Søg og vælg</value>
+  </data>
+  <data name="SearchExistingApp" xml:space="preserve">
+    <value>Søg efter en eksisterende app</value>
+  </data>
+  <data name="SearchExistingProfile" xml:space="preserve">
+    <value>Søg efter en eksisterende profil</value>
+  </data>
+  <data name="SearchScript" xml:space="preserve">
+    <value>Søg efter script</value>
+  </data>
+  <data name="SecondRetryAfter" xml:space="preserve">
+    <value>Andet forsøg efter</value>
+  </data>
+  <data name="SelectSmartGroupMessage" xml:space="preserve">
+    <value>Vælg de smart-grupper, der skal tildeles til denne arbejdsgang, og hvordan de skal leveres.</value>
+  </data>
+  <data name="SelectVersion" xml:space="preserve">
+    <value>Vælg version</value>
+  </data>
+  <data name="SensorBaseTimeInfo" xml:space="preserve">
+    <value>Vælg den tidszone, der skal bruges til denne sensortilstand: enhedens lokale tid eller servertid (UTC).</value>
+  </data>
+  <data name="SetDefaultPolicy" xml:space="preserve">
+    <value>Angiv standardpolitik</value>
+  </data>
+  <data name="SetRegistryData" xml:space="preserve">
+    <value>Indstil data til registreringsdatabase</value>
+  </data>
+  <data name="SetRegistryValue" xml:space="preserve">
+    <value>Indstil værdi for registreringsdatabase</value>
+  </data>
+  <data name="SettingsRetrievalError" xml:space="preserve">
+    <value>Der opstod en fejl under hentning af indstillinger for arbejdsgangen</value>
+  </data>
+  <data name="SettingsSavedSuccessfully" xml:space="preserve">
+    <value>Arbejdsgangsindstillinger blev gemt</value>
+  </data>
+  <data name="SettingsSaveFailedTryAgain" xml:space="preserve">
+    <value>Der opstod en fejl under lagring af arbejdsgangsindstillinger. Prøv venligst igen</value>
+  </data>
+  <data name="Shares" xml:space="preserve">
+    <value>Delinger</value>
+  </data>
+  <data name="Showing" xml:space="preserve">
+    <value>Viser</value>
+  </data>
+  <data name="ShowingResultsArg" xml:space="preserve">
+    <value>Viser {0} resultater</value>
+  </data>
+  <data name="SkipWorkflow" xml:space="preserve">
+    <value>Spring trin over i arbejdsgangen</value>
+  </data>
+  <data name="SkipWorkflowDesc" xml:space="preserve">
+    <value>Spring den mislykkede arbejdsgang over, og rapporter en fejl, men fortsæt arbejdsgangen.</value>
+  </data>
+  <data name="SocketDesignation" xml:space="preserve">
+    <value>Socket-angivelse</value>
+  </data>
+  <data name="SpecVersion" xml:space="preserve">
+    <value>Specifikation for version</value>
+  </data>
+  <data name="StageWorkflowInfo" xml:space="preserve">
+    <value>Naviger til ressourcer, og konfigurer apps, profiler, scripts og sensorer til reference i en arbejdsgang.</value>
+  </data>
+  <data name="StageWorkflowResources" xml:space="preserve">
+    <value>Ressourcer til arbejdsgang i faser</value>
+  </data>
+  <data name="StartExploringFreestyleOrchestrator" xml:space="preserve">
+    <value>Begynd at udforske Freestyle Orchestrator</value>
+  </data>
+  <data name="StartType" xml:space="preserve">
+    <value>Starttype</value>
+  </data>
+  <data name="StateName" xml:space="preserve">
+    <value>Tilstandsnavn</value>
+  </data>
+  <data name="StepStatus" xml:space="preserve">
+    <value>Status for trin</value>
+  </data>
+  <data name="StopWorkflow" xml:space="preserve">
+    <value>Stop arbejdsgang</value>
+  </data>
+  <data name="StopWorkflowDesc" xml:space="preserve">
+    <value>Stop arbejdsgangen ved det mislykkede trin, og rapporter en fejlstatus.</value>
+  </data>
+  <data name="SwitchToTimeWindow" xml:space="preserve">
+    <value>Erstat med tidsvindue</value>
+  </data>
+  <data name="SwitchToTimeWindowConfirmation" xml:space="preserve">
+    <value>Ønsker du at erstatte denne tilstand med et tidsvindue?</value>
+  </data>
+  <data name="SwitchToTimeWindowWarning" xml:space="preserve">
+    <value>En tidsvinduestilstand kan ikke kombineres med andre tilstande. Tilføjelse af tidsvindue vil erstatte eksisterende kriterier.</value>
+  </data>
+  <data name="SystemEnclosure" xml:space="preserve">
+    <value>Systemkabinet</value>
+  </data>
+  <data name="TemplateSelectionQuestion" xml:space="preserve">
+    <value>Hvad vil du oprette en arbejdsgang til?</value>
+  </data>
+  <data name="ThirdRetryAfter" xml:space="preserve">
+    <value>Tredje forsøg efter</value>
+  </data>
+  <data name="TimeDurationDay" xml:space="preserve">
+    <value>Dag</value>
+  </data>
+  <data name="TimeDurationDays" xml:space="preserve">
+    <value>Dag(e)</value>
+  </data>
+  <data name="TimeDurationHour" xml:space="preserve">
+    <value>Time</value>
+  </data>
+  <data name="TimeDurationHours" xml:space="preserve">
+    <value>Time(r)</value>
+  </data>
+  <data name="TimeDurationMinute" xml:space="preserve">
+    <value>Minut</value>
+  </data>
+  <data name="TimeDurationMinutes" xml:space="preserve">
+    <value>Minut(ter)</value>
+  </data>
+  <data name="TimeoutDesc" xml:space="preserve">
+    <value>Maks. tid at vente på, at et arbejdsgangstrin fuldføres.</value>
+  </data>
+  <data name="TimeReported" xml:space="preserve">
+    <value>Rapporteret tid</value>
+  </data>
+  <data name="TimeWindowRuleDescription" xml:space="preserve">
+    <value>Tilstanden evalueres igen med et konfigureret interval, indtil enheden opfylder den. ELLERS er afdelinger ikke tilladt.</value>
+  </data>
+  <data name="TimeWindowRuleDescriptionArg" xml:space="preserve">
+    <value>Tilstanden evalueres igen med et konfigureret interval ({0}), indtil enheden opfylder den. ELLERS er afdelinger ikke tilladt.</value>
+  </data>
+  <data name="TimeWindowStateSupport" xml:space="preserve">
+    <value>Tilstandsadministration kan ikke anvendes på en tidsvinduesbetingelse.</value>
+  </data>
+  <data name="ToLearnMore" xml:space="preserve">
+    <value>For at se mere</value>
+  </data>
+  <data name="TotalEligibleDevices" xml:space="preserve">
+    <value>Samlet antal berettigede enheder</value>
+  </data>
+  <data name="Troubleshoot" xml:space="preserve">
+    <value>Udfør fejlfinding</value>
+  </data>
+  <data name="TrustedPlatformModule" xml:space="preserve">
+    <value>Trusted Platform Module</value>
+  </data>
+  <data name="UnauthorizedAccessResource" xml:space="preserve">
+    <value>Du er ikke godkendt til at få adgang til denne ressource. Kontakt din IT-administrator for at få hjælp.</value>
+  </data>
+  <data name="UninstallerFilePath" xml:space="preserve">
+    <value>Filsti til afinstallationsprogram</value>
+  </data>
+  <data name="Universallyuniqueidentifier" xml:space="preserve">
+    <value>Universelt unikt ID</value>
+  </data>
+  <data name="UnsupportedProfilePayloadEcrow" xml:space="preserve">
+    <value>Arbejdsgangen kan ikke indeholde en profil med en deponeret nyttelast. Vælg en anden profil.</value>
+  </data>
+  <data name="UnsupportedProfilePayloadEWSOutlook" xml:space="preserve">
+    <value>Arbejdsgangen kan ikke indeholde en MacOS-profil med en EWS Outlook-nyttelast. Vælg en anden profil.</value>
+  </data>
+  <data name="UpdateAgent" xml:space="preserve">
+    <value>Opdateringsagent</value>
+  </data>
+  <data name="Uuid" xml:space="preserve">
+    <value>UUID</value>
+  </data>
+  <data name="VersionUUID" xml:space="preserve">
+    <value>Versions-UUID</value>
+  </data>
+  <data name="VersionValidationMessage" xml:space="preserve">
+    <value>Indtast versionen som tal adskilt af punktummer (1.0, 1.0.1, 1.0.1.1).</value>
+  </data>
+  <data name="ViewDocs" xml:space="preserve">
+    <value>Se dokumenter</value>
+  </data>
+  <data name="ViewFreestyle" xml:space="preserve">
+    <value>Vis Freestyle</value>
+  </data>
+  <data name="ViewFreestyleHelp" xml:space="preserve">
+    <value>Styr adgangen for at få vist freestyle-oplysninger og ressourcetyper som f.eks. apps, profiler og scripts</value>
+  </data>
+  <data name="ViewInModal" xml:space="preserve">
+    <value>Vis i modal</value>
+  </data>
+  <data name="ViewItemDetails" xml:space="preserve">
+    <value>Vis detaljer</value>
+  </data>
+  <data name="ViewResults" xml:space="preserve">
+    <value>Vis resultater</value>
+  </data>
+  <data name="VirtualAppsCollections" xml:space="preserve">
+    <value>Rediger samlinger af virtuelle apps</value>
+  </data>
+  <data name="VirtualCPU" xml:space="preserve">
+    <value>Virtuel CPU</value>
+  </data>
+  <data name="VirtualCPUs" xml:space="preserve">
+    <value>Virtuelle CPU'er</value>
+  </data>
+  <data name="WfEmptyStepCountError" xml:space="preserve">
+    <value>Arbejdsgangen skal have mindst ét trin.</value>
+  </data>
+  <data name="WfNameEmptyError" xml:space="preserve">
+    <value>Der er ikke angivet et navn til arbejdsgangen. Angiv et navn, og prøv igen.</value>
+  </data>
+  <data name="WfTypeEmptyError" xml:space="preserve">
+    <value>Lagring mislykkedes. Der blev ikke angivet nogen type for arbejdsgang.</value>
+  </data>
+  <data name="WhenRetriesExhausted" xml:space="preserve">
+    <value>Når nye forsøg er opbrugt</value>
+  </data>
+  <data name="WindowsOptionalFeatures" xml:space="preserve">
+    <value>Windows valgfrie funktioner</value>
+  </data>
+  <data name="WiredNetwork" xml:space="preserve">
+    <value>Kablet netværk</value>
+  </data>
+  <data name="WorkflowDisabledCatalogTooltip" xml:space="preserve">
+    <value>Vælg en smart-gruppe for at redigere disse indstillinger.</value>
+  </data>
+  <data name="WorkflowDoesNotExistOrMightBeDeleted" xml:space="preserve">
+    <value>Arbejdsgangen eksisterer ikke eller er måske blevet slettet.</value>
+  </data>
+  <data name="WorkflowExecutionStatus" xml:space="preserve">
+    <value>Status for udførelse af arbejdsgang</value>
+  </data>
+  <data name="WorkflowPausedSuccessfully" xml:space="preserve">
+    <value>Arbejdsgangen blev afbrudt midlertidigt</value>
+  </data>
+  <data name="WorkflowPauseFailedTryAgain" xml:space="preserve">
+    <value>Midlertidig afbrydelse af arbejdsgang mislykkedes. Prøv igen.</value>
+  </data>
+  <data name="WorkflowRestoreDefaults" xml:space="preserve">
+    <value>Gendan standarder</value>
+  </data>
+  <data name="WorkflowResumedSuccessfully" xml:space="preserve">
+    <value>Arbejdsgangen blev genoptaget</value>
+  </data>
+  <data name="WorkflowResumeFailedTryAgain" xml:space="preserve">
+    <value>Genoptagelse af arbejdsgang mislykkedes. Prøv igen.</value>
+  </data>
+  <data name="WorkflowRetryInterval" xml:space="preserve">
+    <value>Gentagelsesinterval</value>
+  </data>
+  <data name="WorkflowSettings" xml:space="preserve">
+    <value>Arbejdsgangsindstillinger</value>
+  </data>
+  <data name="WorkflowSettingsDesc" xml:space="preserve">
+    <value>Konfigurer standardindstillinger for arbejdsgange. Du kan tilsidesætte disse indstillinger under individuelle arbejdsprocesser.</value>
+  </data>
+  <data name="WorkflowSmartGroupDescription" xml:space="preserve">
+    <value>Enheder vil udføre arbejdsprocessen ved indtjekning.</value>
+  </data>
+  <data name="WorkflowStatusNotEvaluatedInfo" xml:space="preserve">
+    <value>Enhed modtog arbejdsgangen, men har endnu ikke rapporteret en status for arbejdsgangstrin.</value>
+  </data>
+  <data name="WorkflowStep" xml:space="preserve">
+    <value>Trin i arbejdsgang</value>
+  </data>
+  <data name="WorkflowTimeout" xml:space="preserve">
+    <value>Timeout</value>
+  </data>
+  <data name="WorkflowWarningExactVersionSelected" xml:space="preserve">
+    <value>Dette trin i arbejdsgangen mislykkes muligvis, hvis der er valgt en bestemt version, og en senere version også er tildelt til enheden</value>
+  </data>
+</root>

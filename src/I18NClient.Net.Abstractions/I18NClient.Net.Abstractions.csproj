@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<RootNamespace>I18NClient.Net.Abstractions</RootNamespace>
+		<Authors>Raymond Peng</Authors>
+		<Company>VMware</Company>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<Version>1.0.0</Version>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<DocumentationFile>bin\Debug\I18NClient.Net.Abstractions\I18NClient.Net.Abstractions.xml</DocumentationFile>
+	</PropertyGroup>
+
+</Project>

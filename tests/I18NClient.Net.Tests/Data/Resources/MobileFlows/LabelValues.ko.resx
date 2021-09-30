@@ -1,0 +1,643 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AboutMobileFlows" xml:space="preserve">
+    <value>Mobile Flows 정보</value>
+  </data>
+  <data name="AddArgMobileFlow" xml:space="preserve">
+    <value>{0} Flow 추가</value>
+    <comment>String will be passed in for {0}. Examples: 'Add Salesforce Flow', 'Add ServiceNow Flow' etc.</comment>
+  </data>
+  <data name="AddKeyValuePairs" xml:space="preserve">
+    <value>적용 가능한 모든 키 값 쌍 추가</value>
+  </data>
+  <data name="AddNewMobileFlow" xml:space="preserve">
+    <value>새 Mobile Flow 추가</value>
+  </data>
+  <data name="AdobeSignDescription" xml:space="preserve">
+    <value>문서 서명을 위한 Adobe 커넥터</value>
+  </data>
+  <data name="AdobeSignTitle" xml:space="preserve">
+    <value>Adobe 서명</value>
+  </data>
+  <data name="Algorithm" xml:space="preserve">
+    <value>알고리즘</value>
+  </data>
+  <data name="Approvals" xml:space="preserve">
+    <value>승인</value>
+  </data>
+  <data name="AreYouSureToCancel" xml:space="preserve">
+    <value>취소하시겠습니까?</value>
+  </data>
+  <data name="ArgCatalogConnector" xml:space="preserve">
+    <value>{0} 카탈로그 커넥터</value>
+  </data>
+  <data name="ArgCatalogConnectors" xml:space="preserve">
+    <value>{0} 카탈로그 커넥터</value>
+  </data>
+  <data name="ArgMobileFlow" xml:space="preserve">
+    <value>{0}개의 Mobile Flow</value>
+    <comment>Numeric one will be passed in for {0}</comment>
+  </data>
+  <data name="ArgMobileFlows" xml:space="preserve">
+    <value>{0}개의 Mobile Flows</value>
+    <comment>Numeric value will be passed for {0}</comment>
+  </data>
+  <data name="AuthenticationHeader" xml:space="preserve">
+    <value>인증 헤더</value>
+  </data>
+  <data name="BaseURL" xml:space="preserve">
+    <value>기본 URL</value>
+  </data>
+  <data name="BasicInformation" xml:space="preserve">
+    <value>기본 정보</value>
+  </data>
+  <data name="BoxNotesDescription" xml:space="preserve">
+    <value>@-언급 알림을 위한 Box 메모 커넥터</value>
+  </data>
+  <data name="BoxNotesTitle" xml:space="preserve">
+    <value>Box 메모</value>
+  </data>
+  <data name="ClientCredentials" xml:space="preserve">
+    <value>클라이언트 자격 증명</value>
+  </data>
+  <data name="ConcurDescription" xml:space="preserve">
+    <value>비용 요청 승인을 위한 Concur 커넥터</value>
+  </data>
+  <data name="ConcurTitle" xml:space="preserve">
+    <value>Concur</value>
+  </data>
+  <data name="ConcurTravelDescription" xml:space="preserve">
+    <value>출장 요청 승인을 위한 Concur 커넥터</value>
+  </data>
+  <data name="ConcurTravelTitle" xml:space="preserve">
+    <value>Concur 출장</value>
+  </data>
+  <data name="ConfirmConnectorDelete" xml:space="preserve">
+    <value>이 커넥터를 삭제하시겠습니까?</value>
+  </data>
+  <data name="ConnectionStatus" xml:space="preserve">
+    <value>연결 상태</value>
+  </data>
+  <data name="ConnectorAuthConfigError" xml:space="preserve">
+    <value>인증 유형이 잘못되었거나 커넥터에 문제가 있습니다. IT 관리자에게 문의하여 문제를 조사하십시오.</value>
+  </data>
+  <data name="ConnectorAuthenticationTypeHelp" xml:space="preserve">
+    <value>백엔드 서비스에서 클라이언트가 사용할 것으로 예상되는 인증 유형을 드롭다운 목록에서 선택하십시오.</value>
+  </data>
+  <data name="ConnectorBaseUrlConfigError" xml:space="preserve">
+    <value>커넥터에 문제가 있습니다. IT 관리자에게 문의하여 문제를 조사하십시오.</value>
+  </data>
+  <data name="ConnectorBaseURLHelp" xml:space="preserve">
+    <value>Mobile Flows 커넥터의 백엔드 서비스 URL입니다. VMware 커넥터에만 필요합니다. 즉, Vmware Salesforce Connector를 사용하려는 경우 여기에 조직의 Salesforce URL을 입력하십시오.</value>
+  </data>
+  <data name="ConnectorDeleteWarning" xml:space="preserve">
+    <value>이 작업은 커넥터를 영구적으로 제거합니다.</value>
+  </data>
+  <data name="ConnectorDiscoveryApiError" xml:space="preserve">
+    <value>검색 URL을 검증하지 못했음</value>
+  </data>
+  <data name="ConnectorDiscoveryError" xml:space="preserve">
+    <value>이 커넥터를 찾을 수 없습니다. IT 관리자에게 문의하여 문제를 조사하십시오.</value>
+  </data>
+  <data name="ConnectorDiscoveryInvalidResponse" xml:space="preserve">
+    <value>커넥터 검색 응답이 잘못되었음</value>
+  </data>
+  <data name="ConnectorDiscoveryURLHelp" xml:space="preserve">
+    <value>배포된 커넥터의 기능을 확인하기 위해 Mobile Flows 서버에서 사용하는 URL입니다. 커넥터를 클라우드에 호스팅하는 경우 공개적으로 액세스할 수 있는 URL이 사용됩니다. 커넥터가 API 또는 Edge Gateway 뒤에 호스팅되는 경우 인증 시 커넥터 자체로 리디렉션되는 게이트웨이의 전체 URL 경로가 사용됩니다. 이 URL의 응답은 카드 커넥터 가이드에 정의된 예상 형식을 준수해야 합니다.</value>
+  </data>
+  <data name="ConnectorIDHelp" xml:space="preserve">
+    <value>조직의 커넥터를 고유하게 식별하는 ID를 입력하십시오.</value>
+  </data>
+  <data name="ConnectorIsNotFound" xml:space="preserve">
+    <value>커넥터를 찾을 수 없음</value>
+  </data>
+  <data name="ConnectorKeyValueHelp" xml:space="preserve">
+    <value>커넥터 백엔드 시스템에서 사용자를 인증하는 데 필요한 필드입니다. OAuth 2.0 필드는 필요에 따라 여기에 포함됩니다. 자세한 내용은 카드 커넥터 안내를 참조하십시오.</value>
+  </data>
+  <data name="ConnectorLoginURLHelp" xml:space="preserve">
+    <value>클라이언트가 백엔드 서비스에서 인증을 받고 액세스 토큰을 제공하는 데 사용하는 URL입니다. 예: https://login.salesforce.com</value>
+  </data>
+  <data name="ConnectorName" xml:space="preserve">
+    <value>커넥터 이름</value>
+  </data>
+  <data name="ConnectorNameHelp" xml:space="preserve">
+    <value>커넥터를 식별하는 이름을 입력하십시오. 최종 사용자가 클라이언트에서 서비스를 활성화하고 Mobile Flows 관리자가 여러 다른 커넥터를 구분하는 데 사용합니다.</value>
+  </data>
+  <data name="ConnectorProviderHelp" xml:space="preserve">
+    <value>VMware에서 제공한 커넥터를 배포할지 조직에 내부적으로 호스팅되는 커넥터를 배포할지를 선택하십시오.</value>
+  </data>
+  <data name="ConnectorServiceHelp" xml:space="preserve">
+    <value>드롭다운 메뉴에서 배포하려는 VMware 커넥터를 선택하십시오.</value>
+  </data>
+  <data name="ConnectorStatusHelp" xml:space="preserve">
+    <value>모든 사용자가 자신의 장치에서 이 커넥터에 대해 Mobile Flow 정보에 액세스하지 못하게 하려면 커넥터를 비활성합니다.</value>
+  </data>
+  <data name="ConnectorType" xml:space="preserve">
+    <value>유형</value>
+  </data>
+  <data name="CoupaDescription" xml:space="preserve">
+    <value>요구 요청 승인을 위한 Coupa 커넥터</value>
+  </data>
+  <data name="CoupaTitle" xml:space="preserve">
+    <value>Coupa</value>
+  </data>
+  <data name="DeveloperGuide" xml:space="preserve">
+    <value>개발자 가이드</value>
+  </data>
+  <data name="DiscoveryURL" xml:space="preserve">
+    <value>검색 URL</value>
+  </data>
+  <data name="DiscoveryURLChanged" xml:space="preserve">
+    <value>검색 URL 변경됨</value>
+  </data>
+  <data name="EditMobileFlow" xml:space="preserve">
+    <value>Mobile Flow 편집</value>
+  </data>
+  <data name="FieldCannotContainWhiteSpaces" xml:space="preserve">
+    <value>필드는 공백을 포함할 수 없습니다.</value>
+  </data>
+  <data name="FieldIsRequired" xml:space="preserve">
+    <value>필수 필드입니다.</value>
+  </data>
+  <data name="FieldMaxLength" xml:space="preserve">
+    <value>필드 길이는 {0}자를 넘을 수 없음</value>
+  </data>
+  <data name="FieldMinLength" xml:space="preserve">
+    <value>필드 길이는 {0}자 이상이어야 함</value>
+  </data>
+  <data name="FieldShouldBeValidHttpsURL" xml:space="preserve">
+    <value>필드는 유효한 https URL이어야 함</value>
+  </data>
+  <data name="FieldShouldBeValidURL" xml:space="preserve">
+    <value>필드는 유효한 URL이어야 합니다.</value>
+  </data>
+  <data name="GitHubPage" xml:space="preserve">
+    <value>GitHub 페이지</value>
+  </data>
+  <data name="GoogleDocsDescription" xml:space="preserve">
+    <value>@-언급 알림을 위한 Google Docs 커넥터</value>
+  </data>
+  <data name="GoogleDocsTitle" xml:space="preserve">
+    <value>Google Docs</value>
+  </data>
+  <data name="GrantType" xml:space="preserve">
+    <value>허용 유형</value>
+  </data>
+  <data name="GrantTypeHelp" xml:space="preserve">
+    <value>드롭다운 목록에서 액세스 토큰을 가져오는 방법을 선택합니다. 인증 코드는 기밀 및 공용 클라이언트가 액세스 토큰에 대한 인증 코드를 교환하는 데 사용됩니다. 이를 OAuth 2.0 구성에서는 웹 애플리케이션 또는 웹 서버라고 부르기도 합니다. 클라이언트 자격 증명은 클라이언트가 사용자 컨텍스트 외부에서 액세스 토큰을 가져오는 데 사용됩니다. 이는 OAuth 2.0 제공자가 서비스 계정 권한이 있는 클라이언트 자격 증명 허용 유형을 제공하는 경우에 유용합니다. 비밀번호는 제조사 클라이언트가 액세스 토큰에 대한 사용자 자격 증명을 교환하는 데 사용됩니다. 이는 OAuth 2.0 제공자가 비밀번호 허용 유형을 제공하고 사용자에게 사용하려는 서비스 계정이 있는 경우에 유용합니다.</value>
+  </data>
+  <data name="HideAdvancedOAuth2Options" xml:space="preserve">
+    <value>고급 옵션 숨기기</value>
+  </data>
+  <data name="HowMobileFlowsWork" xml:space="preserve">
+    <value>작동 방식</value>
+  </data>
+  <data name="HowMobileFlowsWorkDescription" xml:space="preserve">
+    <value>Mobile Flows를 사용하면 연결하려는 각 비즈니스 시스템마다 커넥터를 배포함으로써 직원들에게 자신의 모바일 애플리케이션을 통해 조치 가능한 알림을 활성화하거나 비활성화할 수 있는 기능을 제공할 수 있습니다. 각 커넥터 이름이 각 커넥터에 대한 공용 URL에 매핑되면 직원들은 자신의 생산성 애플리케이션에서 알림에 쉽게 액세스할 수 있습니다.</value>
+  </data>
+  <data name="HubSpotDealsDescription" xml:space="preserve">
+    <value>새 거래 할당을 위한 HubSpot 커넥터</value>
+  </data>
+  <data name="HubSpotDealsTitle" xml:space="preserve">
+    <value>HubSpot - 거래</value>
+  </data>
+  <data name="HubSpotTicketsDescription" xml:space="preserve">
+    <value>새 티켓 할당을 위한 HubSpot 커넥터</value>
+  </data>
+  <data name="HubSpotTicketsTitle" xml:space="preserve">
+    <value>HubSpot - 티켓</value>
+  </data>
+  <data name="JiraServiceDeskDescription" xml:space="preserve">
+    <value>티켓 승인을 위한 Jira Service Desk 커넥터</value>
+  </data>
+  <data name="JiraServiceDeskTitle" xml:space="preserve">
+    <value>Jira Service Desk</value>
+  </data>
+  <data name="KeyValuePair" xml:space="preserve">
+    <value>키 값 쌍 추가</value>
+  </data>
+  <data name="LinkedInLearningChatbotDescription" xml:space="preserve">
+    <value>Hub Assistant를 통해 교육을 검색하기 위한 LinkedIn 학습 커넥터</value>
+  </data>
+  <data name="LinkedInLearningChatbotTitle" xml:space="preserve">
+    <value>LinkedIn 학습 챗봇</value>
+  </data>
+  <data name="LinkedInLearningDescription" xml:space="preserve">
+    <value>새 교육 알림을 위한 LinkedIn 학습 커넥터</value>
+  </data>
+  <data name="LinkedInLearningTitle" xml:space="preserve">
+    <value>LinkedIn 학습</value>
+  </data>
+  <data name="MicrosoftDynamicsCaseResolutionDescription" xml:space="preserve">
+    <value>새 사례 할당을 위한 Microsoft Dynamics 커넥터</value>
+  </data>
+  <data name="MicrosoftDynamicsCaseResolutionTitle" xml:space="preserve">
+    <value>Microsoft Dynamics – 사례 해결</value>
+  </data>
+  <data name="MicrosoftDynamicsDescription" xml:space="preserve">
+    <value>새 할당된 계정 알림을 위한 Microsoft Dynamics 커넥터</value>
+  </data>
+  <data name="MicrosoftDynamicsTasksDescription" xml:space="preserve">
+    <value>새 작업 할당을 위한 Microsoft Dynamics 커넥터</value>
+  </data>
+  <data name="MicrosoftDynamicsTasksTitle" xml:space="preserve">
+    <value>Microsoft Dynamics – 작업</value>
+  </data>
+  <data name="MicrosoftDynamicsTitle" xml:space="preserve">
+    <value>Microsoft Dynamics</value>
+  </data>
+  <data name="MicrosoftOneDriveDescription" xml:space="preserve">
+    <value>파일/폴더 액세스 승인을 위한 Microsoft OneDrive 커넥터</value>
+  </data>
+  <data name="MicrosoftOneDriveTitle" xml:space="preserve">
+    <value>Microsoft OneDrive</value>
+  </data>
+  <data name="MicrosoftPlannerDescription" xml:space="preserve">
+    <value>새 할당된 작업 알림을 위한 Microsoft Planner 커넥터</value>
+  </data>
+  <data name="MicrosoftPlannerTitle" xml:space="preserve">
+    <value>Microsoft Planner</value>
+  </data>
+  <data name="MicrosoftTeamsDescription" xml:space="preserve">
+    <value>@-언급 알림을 위한 Microsoft Teams 커넥터</value>
+  </data>
+  <data name="MicrosoftTeamsTitle" xml:space="preserve">
+    <value>Microsoft Teams</value>
+  </data>
+  <data name="MobileFlow" xml:space="preserve">
+    <value>Mobile Flow</value>
+  </data>
+  <data name="MobileFlowAPIURL" xml:space="preserve">
+    <value>Mobile Flows API URL</value>
+  </data>
+  <data name="MobileFlowBestPracticesDescription" xml:space="preserve">
+    <value>Mobile Flows 모범 사례는 VMware GitHub 사이트의 Wiki에서 확인할 수 있습니다(https://github.com/vmwaresamples/card-connectors-guide/wiki).</value>
+  </data>
+  <data name="MobileFlowDescription" xml:space="preserve">
+    <value>모든 커넥터 보기 및 관리</value>
+  </data>
+  <data name="MobileFlows" xml:space="preserve">
+    <value>Mobile Flows</value>
+  </data>
+  <data name="MobileFlowsAddConnectors" xml:space="preserve">
+    <value>커넥터 추가</value>
+  </data>
+  <data name="MobileFlowsAdminNoAccessToOG" xml:space="preserve">
+    <value>Mobile Flows는 이 조직 그룹에서 관리되는 관리자가 액세스할 수 있습니다. 시스템 관리자에게 필요한 역할을 할당하고 이 관리자를 이 조직 그룹에 저장하도록 요청하십시오. 그런 다음 다시 로그인하고 해당 역할을 사용하여 이 조직 그룹의 Mobile Flows에 액세스하십시오.</value>
+  </data>
+  <data name="MobileFlowsAPIURL" xml:space="preserve">
+    <value>Mobile Flows API URL</value>
+  </data>
+  <data name="MobileFlowsApiUrlNotFound" xml:space="preserve">
+    <value>Mobile Flows 클라우드 서비스를 사용할 수 없습니다.</value>
+  </data>
+  <data name="MobileFlowsApiUrlNotProvisioned" xml:space="preserve">
+    <value>Mobile Flows API URL이 사이트 URL 섹션에서 확인할 수 있는 현재 조직 그룹에서 구성되도록 하십시오. 문제가 지속되는 경우 시스템 관리자에게 문의하십시오.</value>
+  </data>
+  <data name="MobileFlowsBestPractices" xml:space="preserve">
+    <value>Mobile Flows 모범 사례</value>
+  </data>
+  <data name="MobileFlowsCatalogDescription" xml:space="preserve">
+    <value>아래의 즉시 사용 가능한(OOTB) 커넥터 및 워크플로에서 선택하여 Workspace ONE Mobile Flows 사용을 바로 시작합니다. 몇 가지 추가 세부 정보를 추가, 구성, 제공하기만 하면 됩니다!</value>
+  </data>
+  <data name="MobileFlowsCloudServiceDescription" xml:space="preserve">
+    <value>Mobile Flows는 VMware Intelligent Hub 및 Boxer와 통합되어 직원들에게 실행 가능한 알림을 제공함으로써 생산성을 높일 수 있도록 하는 클라우드 서비스입니다.</value>
+  </data>
+  <data name="MobileFlowsConnectingToCloudService" xml:space="preserve">
+    <value>Mobile Flows 클라우드 서비스에 연결 중</value>
+  </data>
+  <data name="MobileFlowsConnectorGuideWikiArg" xml:space="preserve">
+    <value>이 {0}을(를) 읽고 커넥터 구축 방법을 알아보십시오.</value>
+    <comment>Html string will be passed in for {0}. Example: &lt;label for='open-connectors-guide-wiki' class='wiki-link'&gt;developer guide&lt;/label&gt;`.</comment>
+  </data>
+  <data name="MobileFlowsDescription" xml:space="preserve">
+    <value>Mobile Flows 보기 및 관리</value>
+  </data>
+  <data name="MobileFlowsDirectoryBasicAdminError" xml:space="preserve">
+    <value>Workspace ONE Access에 액세스할 수 있는 권한이 없습니다. Workspace ONE Access에 액세스하려면 이 조직 그룹에서 구성한 디렉토리의 디렉토리 관리자여야 합니다.</value>
+  </data>
+  <data name="MobileFlowsIDMNotConfigured" xml:space="preserve">
+    <value>Workspace ONE Access에 액세스할 수 없습니다. 액세스 권한을 확인하고 올바르게 구성되어 있는지 검토하십시오.</value>
+  </data>
+  <data name="MobileFlowsIDMSetupArg" xml:space="preserve">
+    <value>Mobile Flows에 액세스하려면 먼저 Workspace ONE Access를 구성해야 합니다. {0}(으)로 이동하여 Workspace ONE Access에 연결하십시오. 완료되면 로그아웃한 다음 다시 로그인하여 다시 시도하십시오.</value>
+  </data>
+  <data name="MobileFlowsIDMSetupRequired" xml:space="preserve">
+    <value>Mobile Flows에 액세스하려면 Workspace ONE을 설정해야 합니다. 시작하기로 이동하고 Workspace ONE 설정을 완료하십시오. 완료한 후에는 로그아웃한 후 다시 로그인하십시오.</value>
+  </data>
+  <data name="MobileFlowsNoAccessToIDM" xml:space="preserve">
+    <value>Workspace ONE Access에 액세스할 수 있는 권한이 없습니다. Workspace ONE Access에 액세스하려면 디렉토리 관리자여야 합니다.</value>
+  </data>
+  <data name="MobileFlowsNoAccessToOrganizationGroup" xml:space="preserve">
+    <value>이 사용자는 이 조직 그룹에 속해 있지 않습니다.</value>
+  </data>
+  <data name="MobileFlowsNotCustomerTypeOrganizationGroup" xml:space="preserve">
+    <value>클라우드 테넌트는 고객 유형 조직 그룹에만 등록할 수 있습니다.</value>
+  </data>
+  <data name="MobileFlowsProductivityDescription" xml:space="preserve">
+    <value>직원의 개인화된 워크플로를 활용하고 다양한 비즈니스 시스템의 데이터를 통합하는 Mobile Flows를 통해서 직원들은 하나의 애플리케이션을 통해서 모든 생산성 애플리케이션과의 연결 상태를 더 쉽게 유지할 수 있습니다.</value>
+  </data>
+  <data name="MobileFlowsRegisteringTenant" xml:space="preserve">
+    <value>고객 데이터를 URL에 전송 및 등록 중</value>
+  </data>
+  <data name="MobileFlowsSampleConnectorWikiArg" xml:space="preserve">
+    <value>{0}(으)로 이동해 사전 구축된 커넥터를 찾아보십시오.</value>
+    <comment>Html string will be passed in for {0}. Example: &lt;label for='open-sample-connectors-wiki' class='wiki-link'&gt;GitHub page&lt;/label&gt;`.</comment>
+  </data>
+  <data name="MobileFlowsTenantAlreadyExists" xml:space="preserve">
+    <value>이 클라우드 테넌트가 Mobile Flows 클라우드 서비스에 이미 있습니다.</value>
+  </data>
+  <data name="MobileFlowsTenantProvisioning" xml:space="preserve">
+    <value>시작하려면 Mobile Flows 클라우드 서비스에 연결할 고객 테넌트를 등록하십시오.</value>
+  </data>
+  <data name="MobileFlowsTenantProvisioningError" xml:space="preserve">
+    <value>문제가 있음…</value>
+  </data>
+  <data name="MobileFlowsTenantProvisioningFailed" xml:space="preserve">
+    <value>클라우드 테넌트를 등록할 수 없습니다.</value>
+  </data>
+  <data name="MobileFlowsTenantProvisioningSuccess" xml:space="preserve">
+    <value>Mobile Flows 클라우드 서비스에 성공적으로 연결되었습니다!</value>
+  </data>
+  <data name="MobileFlowsVidmNotConfigured" xml:space="preserve">
+    <value>이 조직 그룹에 대해 Workspace ONE Access가 구성되지 않았습니다.</value>
+  </data>
+  <data name="MobileFlowTroubleshootDocs" xml:space="preserve">
+    <value>GitHub https://github.com/vmwaresamples/card-connectors-guide에서 당사의 Mobile Flows 커넥터를 참조하십시오.</value>
+  </data>
+  <data name="MultiTenantParameters" xml:space="preserve">
+    <value>다중 테넌트 매개 변수</value>
+  </data>
+  <data name="MyFlows" xml:space="preserve">
+    <value>내 흐름</value>
+  </data>
+  <data name="NoMobileFlowsCatalogFound" xml:space="preserve">
+    <value>사용 가능한 흐름을 찾을 수 없음</value>
+  </data>
+  <data name="NoMobileFlowsFound" xml:space="preserve">
+    <value>Mobile Flows를모바일 흐름을 아직 생성하지 않은 것 같습니다.</value>
+  </data>
+  <data name="NotificationMethod" xml:space="preserve">
+    <value>알림 방법</value>
+  </data>
+  <data name="NotificationMethodPoll" xml:space="preserve">
+    <value>알림 방법 - 폴링</value>
+  </data>
+  <data name="NotificationMethodPush" xml:space="preserve">
+    <value>알림 방법 - 푸시</value>
+  </data>
+  <data name="NotificationMethodPushInfo" xml:space="preserve">
+    <value>이 정보를 사용하여 소스 비즈니스 시스템에서 푸시 알림 설정을 구성하십시오.</value>
+  </data>
+  <data name="NotificationPollPushDifference" xml:space="preserve">
+    <value>비즈니스 시스템의 알림은 폴링 또는 푸시할 수 있습니다.
+폴링 - Mobile Flows 서버는 새 알림을 위해 1시간 간격으로 백엔드 비즈니스 시스템을 폴링합니다. 
+푸시 - 백엔드 비즈니스 시스템이 푸시 메커니즘을 지원하는 경우, Mobile Flows는 알림이 준비되었을 때 서비스가 호출할 수 있도록 끝점을 생성할 수 있습니다.</value>
+  </data>
+  <data name="NoVmwareServicesFound" xml:space="preserve">
+    <value>VMware 서비스를 찾을 수 없습니다.</value>
+  </data>
+  <data name="OAuth2Parameters" xml:space="preserve">
+    <value>OAuth 2.0 매개 변수</value>
+  </data>
+  <data name="OopsSomethingWentWrong" xml:space="preserve">
+    <value>죄송합니다. 문제가 있습니다.</value>
+  </data>
+  <data name="PollingInterval" xml:space="preserve">
+    <value>폴링 간격</value>
+  </data>
+  <data name="PushNotificationInfo" xml:space="preserve">
+    <value>저장되면 푸시 URL이 생성되고 커넥터 세부 정보 페이지에서 찾을 수 있습니다. 이 정보를 사용하여 소스 비즈니스 시스템에서 푸시 알림 설정을 구성하십시오. 내 흐름 &gt; 편집에서 해당 설정을 보고 편집할 수 있습니다.</value>
+  </data>
+  <data name="PushURL" xml:space="preserve">
+    <value>푸시 URL</value>
+  </data>
+  <data name="RegenerateSecret" xml:space="preserve">
+    <value>암호를 재생성하시겠습니까?</value>
+  </data>
+  <data name="RegenerateSecretConfirm" xml:space="preserve">
+    <value>암호를 재생성하시겠습니까? 재생성되면 이전 암호는 더 이상 작동하지 않습니다. 소스 비즈니스 시스템에서 그에 따라 푸시 알림 설정을 업데이트하십시오.</value>
+  </data>
+  <data name="SabaDescription" xml:space="preserve">
+    <value>새 학습 알림을 위한 Saba 커넥터</value>
+  </data>
+  <data name="SabaTitle" xml:space="preserve">
+    <value>Saba</value>
+  </data>
+  <data name="SalesforceCaseResolutionDescription" xml:space="preserve">
+    <value>새 사례 할당을 위한 Salesforce 커넥터</value>
+  </data>
+  <data name="SalesforceCaseResolutionTitle" xml:space="preserve">
+    <value>Salesforce – 사례 해결</value>
+  </data>
+  <data name="SalesforceDescription" xml:space="preserve">
+    <value>할인 요청 승인을 위한 Salesforce 커넥터</value>
+  </data>
+  <data name="SalesforceLeadsDescription" xml:space="preserve">
+    <value>새로 할당된 리드 알림을 위한 Salesforce 커넥터</value>
+  </data>
+  <data name="SalesforceLeadsTitle" xml:space="preserve">
+    <value>Salesforce 리드</value>
+  </data>
+  <data name="SalesforceTasksDescription" xml:space="preserve">
+    <value>새 작업 할당을 위한 Salesforce 커넥터</value>
+  </data>
+  <data name="SalesforceTasksTitle" xml:space="preserve">
+    <value>Salesforce – 작업</value>
+  </data>
+  <data name="SalesforceTitle" xml:space="preserve">
+    <value>Salesforce</value>
+  </data>
+  <data name="ServiceAccountCredential" xml:space="preserve">
+    <value>서비스 계정 자격 증명</value>
+  </data>
+  <data name="ServiceAccountCredentialHelp" xml:space="preserve">
+    <value>백엔드 서비스에서 클라이언트가 사용할 것으로 예상되는 서비스 계정 자격 증명을 입력하십시오.</value>
+  </data>
+  <data name="ServiceNowChatbotDescription" xml:space="preserve">
+    <value>Hub Assistant를 통해 티켓을 생성하고 티켓을 보고, 장치를 주문하기 위한 ServiceNow 커넥터</value>
+  </data>
+  <data name="ServiceNowChatbotTitle" xml:space="preserve">
+    <value>ServiceNow-챗봇</value>
+  </data>
+  <data name="ServiceNowDescription" xml:space="preserve">
+    <value>요구 요청 승인을 위한 ServiceNow 커넥터</value>
+  </data>
+  <data name="ServiceNowTitle" xml:space="preserve">
+    <value>ServiceNow</value>
+  </data>
+  <data name="ShowAdvancedOAuth2Options" xml:space="preserve">
+    <value>고급 옵션 표시</value>
+  </data>
+  <data name="TokenServerHints" xml:space="preserve">
+    <value>토큰 서버 힌트</value>
+  </data>
+  <data name="TokenUriBodyParameters" xml:space="preserve">
+    <value>토큰 URI 본문 매개 변수</value>
+  </data>
+  <data name="UEMChatbotDescription" xml:space="preserve">
+    <value>Hub Assistant를 통해 장치를 동기화하기 위한 UEM 커넥터</value>
+  </data>
+  <data name="UEMChatbotTitle" xml:space="preserve">
+    <value>UEM-챗봇</value>
+  </data>
+  <data name="UseCase" xml:space="preserve">
+    <value>활용 사례</value>
+  </data>
+  <data name="VirtualAssistant" xml:space="preserve">
+    <value>가상 지원</value>
+  </data>
+  <data name="WhatIsMobileFlow" xml:space="preserve">
+    <value>Mobile Flows란?</value>
+  </data>
+  <data name="WhatIsMobileFlowDescription" xml:space="preserve">
+    <value>Mobile Flows는 Boxer의 원격 시스템 및 기타 엔터프라이즈 앱에 대한 지능적이고 조치할 수 있는 알림을 제공할 수 있게 하여 직원의 업무 효율성과 생산성을 높여줍니다. 여기서 관리자는 최종 사용자를 위해 활성화하려는 커넥터 및 플로우를 구성하고 배포할 수 있습니다.</value>
+  </data>
+  <data name="Wiki" xml:space="preserve">
+    <value>Wiki</value>
+  </data>
+  <data name="WorkdayDescription" xml:space="preserve">
+    <value>PTO 승인을 위한 Workday 커넥터</value>
+  </data>
+  <data name="WorkdayTitle" xml:space="preserve">
+    <value>Workday</value>
+  </data>
+  <data name="WorkspaceONEHub" xml:space="preserve">
+    <value>Workspace ONE Hub</value>
+  </data>
+  <data name="ZendeskTasksDescription" xml:space="preserve">
+    <value>작업 승인을 위한 Zendesk 커넥터</value>
+  </data>
+  <data name="ZendeskTasksTitle" xml:space="preserve">
+    <value>Zendesk – 작업</value>
+  </data>
+  <data name="ZendeskTicketResolutionDescription" xml:space="preserve">
+    <value>새 티켓 할당을 위한 Zendesk 커넥터</value>
+  </data>
+  <data name="ZendeskTicketResolutionTitle" xml:space="preserve">
+    <value>Zendesk – 티켓 해결</value>
+  </data>
+  <data name="ZoomRecordingsDescription" xml:space="preserve">
+    <value>새 녹화 알림을 위한 Zoom 커넥터</value>
+  </data>
+  <data name="ZoomRecordingsTitle" xml:space="preserve">
+    <value>Zoom 녹화</value>
+  </data>
+</root>

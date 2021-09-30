@@ -1,0 +1,218 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AddDomainJoinConfig" xml:space="preserve">
+    <value>신규 도메인 가입</value>
+  </data>
+  <data name="AddedDJSuccessfully" xml:space="preserve">
+    <value>도메인 가입 추가 성공</value>
+  </data>
+  <data name="AddedDJUnSuccessfully" xml:space="preserve">
+    <value>도메인 가입 저장 실패</value>
+  </data>
+  <data name="CreateLocalUser" xml:space="preserve">
+    <value>로컬 사용자 만들기</value>
+  </data>
+  <data name="CreateLocalUserTooltip" xml:space="preserve">
+    <value>로컬 사용자 계정을 선택하여 장치에 로그인합니다. 선택하지 않으면 사용자 지정 프로필을 사용하여 사용자 계정을 생성해야 합니다.</value>
+  </data>
+  <data name="DeletedDJSuccessfully" xml:space="preserve">
+    <value>도메인 가입 삭제 성공</value>
+  </data>
+  <data name="DeleteDomainJoinConfig" xml:space="preserve">
+    <value>도메인 가입 삭제</value>
+  </data>
+  <data name="DJDeleteFailure" xml:space="preserve">
+    <value>도메인 가입 삭제 실패</value>
+  </data>
+  <data name="DJUsernameCannotHaveRestrictedCharacters" xml:space="preserve">
+    <value>사용자 이름에는 다음 문자를 포함할 수 없습니다. / \ [ ] : | &lt; &gt; + = ; , ? * % @</value>
+  </data>
+  <data name="DomainFriendlyName" xml:space="preserve">
+    <value>도메인 식별 이름</value>
+  </data>
+  <data name="DomainFriendlyNameTooltip" xml:space="preserve">
+    <value>디렉토리 서비스 설정에 구성된 레거시 도메인 이름 매개 변수입니다. 이 값은 일반적으로 Active Directory 도메인 자격 증명으로 로그인할 때 DOMAIN\username 형식으로 사용됩니다. 이 매개 변수가 구성되지 않은 경우에는 도메인 이름(이전 필드)과 동일한 값을 사용합니다.</value>
+  </data>
+  <data name="DomainJoin" xml:space="preserve">
+    <value>도메인 가입</value>
+  </data>
+  <data name="DomainJoinConfigListDescription" xml:space="preserve">
+    <value>도메인 가입 </value>
+  </data>
+  <data name="DomainJoinConfigWillBeDeleted" xml:space="preserve">
+    <value>이 도메인 가입 구성을 삭제하면 등록되었지만 Enrolled가 아닌 장치에서 제거됩니다. Enrolled 장치는 영향을 받지 않습니다.
+계속하시겠습니까?</value>
+  </data>
+  <data name="DomainJoinName" xml:space="preserve">
+    <value>이름</value>
+  </data>
+  <data name="DomainJoinType" xml:space="preserve">
+    <value>도메인 가입 유형</value>
+  </data>
+  <data name="DomainServerUrl" xml:space="preserve">
+    <value>도메인 이름</value>
+  </data>
+  <data name="DomainServerUrlHelptext" xml:space="preserve">
+    <value>{0} 설정에서 이 값을 구성하려면 여기를 클릭하십시오.</value>
+    <comment>{0} will be replaced with link to Directory Services settings page with the the text "Directory Services"</comment>
+  </data>
+  <data name="DomainServerUrlTooltip" xml:space="preserve">
+    <value>Active Directory 도메인의 전체 도메인 구성 요소 이름입니다(예: dc01.contoso.com). 도메인 가입을 추가하기 전에 디렉토리 서비스 설정에서 해당 서버를 구성해야 합니다.</value>
+  </data>
+  <data name="EditDomainJoinConfig" xml:space="preserve">
+    <value>도메인 가입 편집</value>
+  </data>
+  <data name="LocalUsername" xml:space="preserve">
+    <value>로컬 사용자 이름</value>
+  </data>
+  <data name="LocalUsernamePassword" xml:space="preserve">
+    <value>로컬 사용자 암호</value>
+  </data>
+  <data name="MachineNameFormat" xml:space="preserve">
+    <value>장치 이름 형식</value>
+  </data>
+  <data name="MachineNameFormatTooltip" xml:space="preserve">
+    <value>장치에 고유한 15자 이름을 입력합니다. 고유한 이름을 생성하는 데 도움이 필요하면 하드웨어 특정 일련 번호를 포함하는 %SERIAL%을(를) 사용하거나, # 길이의 임의 문자를 생성하는 %RAND:[#]%을(를) 사용할 수 있습니다. 임의 숫자 생성을 사용할 때 중복된 컴퓨터 이름이 생성될 가능성을 최소화하려면 임의의 숫자 길이 [%RAND:[#]%]이(가) 7자 이상이어야 합니다.</value>
+  </data>
+  <data name="MakeAdministrator" xml:space="preserve">
+    <value>관리자 만들기</value>
+  </data>
+  <data name="MakeAdministratorTooltip" xml:space="preserve">
+    <value>로컬 사용자 계정을 장치의 관리자 그룹에 추가합니다.</value>
+  </data>
+  <data name="NoDomainJoinConfig" xml:space="preserve">
+    <value>이 OG에 도메인 가입 구성이 추가되지 않음</value>
+  </data>
+  <data name="OnPremActiveDirectory" xml:space="preserve">
+    <value>온프레미스 Active Directory</value>
+  </data>
+  <data name="SmartGroupAlreadyAssigned" xml:space="preserve">
+    <value>이(가) 이미 다음에 할당됨:</value>
+  </data>
+  <data name="Workgroup" xml:space="preserve">
+    <value>작업 그룹</value>
+  </data>
+  <data name="WorkGroupName" xml:space="preserve">
+    <value>작업 그룹</value>
+  </data>
+  <data name="WorkgroupNameTooltip" xml:space="preserve">
+    <value>클라이언트가 가입하게 되는 작업 그룹 이름입니다.</value>
+  </data>
+</root>
