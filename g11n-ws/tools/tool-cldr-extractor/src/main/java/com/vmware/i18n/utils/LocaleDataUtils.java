@@ -206,7 +206,7 @@ public class LocaleDataUtils {
 	}
 
 	/**
-	 * Get CLDR locales region data
+	 * Get CLDR locales language data
 	 *
 	 * @param locale
 	 * @return
@@ -310,17 +310,6 @@ public class LocaleDataUtils {
 		return JSONUtil.string2SortMap(localeDataJson);
 	}
 
-	/**
-	 * Get CLDR locales localeDisplayPattern data
-	 *
-	 * @param locale
-	 * @return
-	 */
-	public Map<String, String> getLocaleDisplayPattern(String locale) {
-		Map localeDisplayNamesMap = getLocaleDisplayNamesData(locale);
-		return (Map<String, String>)localeDisplayNamesMap.get("localeDisplayPattern");
-	}
-
 	public static void localesExtract() {
 		logger.info("Start to extract cldr locales data ... ");
 		Map<String, String> allLocales = CLDRUtils.getAllCldrLocales();
@@ -361,8 +350,6 @@ public class LocaleDataUtils {
 	private static void extractScriptsData(String locale){
 		Map<String, Object> scriptsMap = new LinkedHashMap<String, Object>();
 		Map<String, String> scriptsData = LocaleDataUtils.getInstance().getScriptsData(locale);
-		//CLDR cldr = new CLDR(locale);
-		//scriptsMap.put(Constants.DISPLAY_LANGUAGE, cldr.getLanguage());
 		scriptsMap.put(Constants.SCRIPTS, scriptsData);
 		CLDRUtils.writePatternDataIntoFile(
 				CLDRConstants.GEN_CLDR_LOCALEDATA_DIR + locale + File.separator + "scripts.json", scriptsMap);
@@ -371,8 +358,6 @@ public class LocaleDataUtils {
 	private static void extractVariantsData(String locale){
 		Map<String, Object> variantsMap = new LinkedHashMap<String, Object>();
 		Map<String, String> variantsData = LocaleDataUtils.getInstance().getVariantsData(locale);
-		//CLDR cldr = new CLDR(locale);
-		//variantsMap.put(Constants.DISPLAY_LANGUAGE, cldr.getLanguage());
 		variantsMap.put(Constants.VARIANTS, variantsData);
 		CLDRUtils.writePatternDataIntoFile(
 				CLDRConstants.GEN_CLDR_LOCALEDATA_DIR + locale + File.separator + "variants.json", variantsMap);
@@ -381,8 +366,6 @@ public class LocaleDataUtils {
 	private static void extractLocaleDisplayNamesData(String locale){
 		Map<String, Object> localeDisplayNamesMap = new LinkedHashMap<String, Object>();
 		Map<String, Object> localeDisplayNamesData = LocaleDataUtils.getInstance().getLocaleDisplayNamesData(locale);
-		//CLDR cldr = new CLDR(locale);
-		//localeDisplayNamesMap.put(Constants.DISPLAY_LANGUAGE, cldr.getLanguage());
 		localeDisplayNamesMap.put(Constants.LOCALEDISPLAYNAMES, localeDisplayNamesData);
 		CLDRUtils.writePatternDataIntoFile(
 				CLDRConstants.GEN_CLDR_LOCALEDATA_DIR + locale + File.separator + "localeDisplayNames.json", localeDisplayNamesMap);
