@@ -605,10 +605,15 @@ class SingletonReleaseScopeInfo:
         self.component_list = []
 
     def update_locale_list_from_path(self, cache_path):
-        self.locale_list = FileUtil.read_json_file(os.path.join(cache_path, 'locale_list.json'))
+        locale_list = FileUtil.read_json_file(os.path.join(cache_path, 'locale_list.json'))
+        if locale_list is None:
+            locale_list = []
+        self.locale_list = locale_list
 
     def update_component_list_from_path(self, cache_path):
         component_list = FileUtil.read_json_file(os.path.join(cache_path, 'component_list.json'))
+        if component_list is None:
+            component_list = []
         component_list.sort()
         self.component_list = component_list
 
@@ -629,11 +634,12 @@ class SingletonReleaseScopeInfo:
                     self.locale_list.append(locale)
 
     def _mix_list(self, target, first, second):
-        for one in first:
-            target.append(one)
-        for one in second:
-            if one not in target:
-                target.append(one)
+        ar = [first, second]
+        for from_list in ar:
+            if from_list:
+                for one in from_list:
+                    if one not in target:
+                        target.append(one)
 
     def mix(self, first, second):
         self._mix_list(self.locale_list, first.locale_list, second.locale_list)

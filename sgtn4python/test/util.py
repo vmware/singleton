@@ -256,6 +256,7 @@ class TestSimulate(NetSimulate):
         return self.simulate_data is not None
 
     def get_data(self, url, request_headers):
+        time.sleep(0.01)
         if not self.has_data():
             return None, None
 
