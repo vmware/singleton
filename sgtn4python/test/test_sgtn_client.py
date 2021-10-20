@@ -46,6 +46,7 @@ class TestClient(unittest.TestCase):
     def do_test(self, plan):
         outside = plan['outside']
         outside['l10n_version'] = VERSION
+        #outside['cache_path'] = '../singleton/'
         cfg = I18N.add_config_file(plan['config'], outside)
         self.assertEqual(cfg.get_info()['version'], VERSION)
 
