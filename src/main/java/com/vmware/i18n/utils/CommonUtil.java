@@ -159,10 +159,10 @@ public class CommonUtil {
 
                 if (isEmpty(cldrLocale) && !isEmpty(languageDataMap.get(segmentedLanguage))) {
                     @SuppressWarnings("unchecked")
-					Map<String, Object> languageData = (Map<String, Object>) languageDataMap.get(segmentedLanguage);
-                    if (!isEmpty(languageData.get(Constants.SCRIPTS))) {
+                    Map<String, Object> languageData = (Map<String, Object>) languageDataMap.get(segmentedLanguage);
+                    if (!isEmpty(languageData.get(Constants._SCRIPTS))) {
                         @SuppressWarnings("unchecked")
-						List<String> scripts = (List<String>) languageData.get(Constants.SCRIPTS);
+                        List<String> scripts = (List<String>) languageData.get(Constants._SCRIPTS);
                         boolean existenceOfScript = false;
                         for (String script : scripts) {
                             if (languageScript.toLowerCase().equals(script.toLowerCase())) {
