@@ -190,7 +190,7 @@ class Util(object):
 
     @staticmethod
     def is_async_supported():
-        return sys.version_info.major * 1000 + sys.version_info.minor >= 3005
+        return sys.version_info.major * 1000 + sys.version_info.minor >= 3007
 
     @staticmethod
     def get_test_group(groupName):
