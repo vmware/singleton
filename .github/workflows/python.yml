@@ -44,7 +44,7 @@ jobs:
       runs-on: ubuntu-latest
       needs: pre-process
       if: needs.pre-process.outputs.were-only-docs-updated != 'yes'
-      strategy:
+      strategy: 
         matrix:
           python-version: [ '2.7', '3.5', '3.7' ]
       name: Python ${{ matrix.python-version }} sample
