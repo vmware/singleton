@@ -58,18 +58,14 @@ jobs:
             architecture: x64
         - name: Unit test
           run: |
-            pip install pyyaml
+            cd sgtn4python/test
+            pip install requests coverage pyyaml
             str=$(printf '=%.0s' {1..50})
             echo $str Unit Test Start $str
             python -m unittest discover
             echo $str Unit Test End $str
-            pip install requests coverage pyyaml
-            cd sgtn4python/test
             coverage run --source='.' -m unittest
-            coverage report -m
-            coverage xml -I
-            ls -la
-            -Dsonar.python.coverage.reportPaths="*coverage*.xml"
+
             
 
  
