@@ -64,8 +64,13 @@ jobs:
             echo $str Unit Test Start $str
             python -m unittest discover
             echo $str Unit Test End $str
+            echo "--------------11111---------------"
             coverage run --source='.' -m unittest
+            echo "--------------22222---------------"
+            coverage report -m
+            echo "--------------33333---------------"
             coverage xml -i
+            echo "--------------44444---------------"
             
 
  
