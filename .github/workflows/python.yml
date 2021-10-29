@@ -69,9 +69,7 @@ jobs:
             coverage report -m
             coverage xml -I
             ls -la
-        - name: Upload Codecov report
-          uses: codecov/codecov-action@v2
-          with:
-            files: ./sgtn4python/test/jacoco.xml
+       
+         
   
             
