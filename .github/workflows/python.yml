@@ -63,3 +63,15 @@ jobs:
             str=$(printf '=%.0s' {1..50})
             echo $str Unit Test Start $str
             python -m unittest discover
+            pip install requests coverage pyyaml
+            cd sgtn4python/test
+            coverage run --source='.' -m unittest
+            coverage report -m
+            coverage xml -I
+            ls -la
+        - name: Upload Codecov report
+          uses: codecov/codecov-action@v2
+          with:
+            files: ./sgtn4python/test/jacoco.xml
+  
+            
