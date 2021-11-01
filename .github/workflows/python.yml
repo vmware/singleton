@@ -58,19 +58,15 @@ jobs:
             architecture: x64
         - name: Unit test
           run: |
-            vim sgtn4python/test_*.py
+            vi sgtn4python/test_*.py
             pip install requests coverage pyyaml
             str=$(printf '=%.0s' {1..50})
             echo $str Unit Test Start $str
             python -m unittest discover
             echo $str Unit Test End $str
-            echo "--------------11111---------------"
             coverage run --source='.' -m unittest
-            echo "--------------22222---------------"
             coverage report -m
-            echo "--------------33333---------------"
             coverage xml -i
-            echo "--------------44444---------------"
             ls -la
              
 
