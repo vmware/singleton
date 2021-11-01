@@ -58,7 +58,7 @@ jobs:
             architecture: x64
         - name: Unit test
           run: |
-            cd sgtn4python/test_*.py
+            cd sgtn4python/test/test_*.py
             pip install requests coverage pyyaml
             str=$(printf '=%.0s' {1..50})
             echo $str Unit Test Start $str
