@@ -58,13 +58,18 @@ jobs:
             architecture: x64
         - name: Unit test
           run: |
-            vi sgtn4python/test_properties_parser.py
+            cd sgtn4python/test
             pip install requests coverage pyyaml
             str=$(printf '=%.0s' {1..50})
             echo $str Unit Test Start $str
             python -m unittest discover
             echo $str Unit Test End $str
-            coverage run --source='.' -m unittest
+            coverage run --source='.' test_sgtn_client.py
+            coverage run --source='../sgtnclient' test_sgtn_client.py
+            coverage run --append --source='../sgtnclient' test_properties_parser.py
+            coverage run --append --source='../sgtnclient' test_sgtn_bykey.py
+            coverage run --append --source='../sgtnclient' test_sgtn_multitask.py
+            coverage run --append --source='../sgtnclient' test_sgtn_util.py
             coverage report -m
             coverage xml -i
             ls -la
