@@ -70,7 +70,6 @@ jobs:
             coverage run --append --source='../sgtnclient' test_sgtn_bykey.py
             coverage run --append --source='../sgtnclient' test_sgtn_multitask.py
             coverage run --append --source='../sgtnclient' test_sgtn_util.py
-            coverage report
             coverage xml -i
              
 
