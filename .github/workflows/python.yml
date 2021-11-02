@@ -64,7 +64,8 @@ jobs:
             echo $str Unit Test Start $str
             python -m unittest discover
             echo $str Unit Test End $str
-            coverage run --source='../sgtnclient' test_sgtn_client.py
+            coverage run --append --source='../sgtnclient' test_properties_parser.py
+            coverage report -m
             ls -la
              
 
