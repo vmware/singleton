@@ -65,9 +65,6 @@ jobs:
             python -m unittest discover
             echo $str Unit Test End $str
             coverage run --source='.' test_sgtn_client.py
-            coverage report -m
-            coverage xml -i
-            ls -la
              
 
  
