@@ -46,7 +46,7 @@ jobs:
       if: needs.pre-process.outputs.were-only-docs-updated != 'yes'
       strategy: 
         matrix:
-          python-version: [ '2.7' ]
+          python-version: [ '3.7' ]
       name: Python ${{ matrix.python-version }} sample
       steps: 
         - name: checkout code
