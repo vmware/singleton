@@ -63,9 +63,8 @@ jobs:
             pip install requests coverage pyyaml
             str=$(printf '=%.0s' {1..50})
             echo $str Unit Test Start $str
-            python -m unittest discover
-            echo $str Unit Test End $str
             coverage run --source='.' -m unittest discover
+            echo $str Unit Test End $str
             ls -la
             coverage report -m
             coverage xml -i
