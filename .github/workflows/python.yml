@@ -65,6 +65,9 @@ jobs:
             echo $str Unit Test Start $str
             coverage run --source='.' -m unittest discover
             echo $str Unit Test End $str
+            python -V
+            pip -V
+            pip list | grep coverage
             ls -la
             coverage report -m
             coverage xml -i
