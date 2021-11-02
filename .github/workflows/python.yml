@@ -59,14 +59,17 @@ jobs:
         - name: Unit test
           run: |
             cd sgtn4python/test
+            ls -la
             pip install requests coverage pyyaml
             str=$(printf '=%.0s' {1..50})
             echo $str Unit Test Start $str
             python -m unittest discover
             echo $str Unit Test End $str
             coverage run --source='.' -m unittest discover
+            ls -la
             coverage report -m
             coverage xml -i
+            ls -la
              
 
  
