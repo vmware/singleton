@@ -60,7 +60,7 @@ jobs:
           run: |
             cd sgtn4python/test
             ls -la
-            pip install requests coverage pyyaml
+            pip install requests coverage==5.0 pyyaml
             str=$(printf '=%.0s' {1..50})
             echo $str Unit Test Start $str
             coverage run --source='.' -m unittest discover
