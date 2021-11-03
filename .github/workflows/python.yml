@@ -83,7 +83,7 @@ jobs:
     needs: pre-process
     strategy: 
         matrix:
-          python-version: [ '2.7', '3.5', '3.7' ]
+          python-version: [ '3.7' ]
     if: needs.pre-process.outputs.were-only-docs-updated != 'yes'
     permissions:
       actions: read
