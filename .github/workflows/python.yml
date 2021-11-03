@@ -72,22 +72,11 @@ jobs:
             coverage report -m
             coverage xml -i
             ls -la            
-        - name: Upload Codecov report for vip-manager-i18n
+        - name: Upload Codecov report for coverage.xml
           uses: codecov/codecov-action@v2
           with:
-            files: ./g11n-ws/vip-manager-i18n/build/reports/jacoco.xml
-            flags: vip-manager-i18n
-        - name: Upload Codecov report for vip-manager-l10n
-          uses: codecov/codecov-action@v2
-          with:
-            files: ./g11n-ws/vip-manager-l10n/build/reports/jacoco.xml
-            flags: vip-manager-l10n
-        - name: Upload Codecov report for vip-manager-lite-i18n
-          uses: codecov/codecov-action@v2
-          with:
-            files: ./g11n-ws/vip-manager-lite-i18n/build/reports/jacoco.xml
-            flags: vip-manager-lite-i18n
- 
+            files: ./sgtn4python/test
+            flags: coverage.xml
             
             
             
