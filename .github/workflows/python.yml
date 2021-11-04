@@ -81,9 +81,9 @@ jobs:
     name: Security Analysis
     runs-on: ubuntu-latest
     needs: pre-process
-#     strategy: 
-#         matrix:
-#           python-version: [ '3.7' ]
+    strategy: 
+          matrix:
+            python-version: [ '3.7', '3.5', '2.7' ]
     if: needs.pre-process.outputs.were-only-docs-updated != 'yes'
     permissions:
       actions: read
