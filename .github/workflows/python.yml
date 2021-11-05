@@ -68,10 +68,8 @@ jobs:
             python -V
             pip -V
             pip list | grep coverage
-            ls -la
             coverage report -m
-            coverage xml -i
-            ls -la            
+            coverage xml -i           
         - name: Upload Codecov report for coverage.xml
           uses: codecov/codecov-action@v2
           with:
