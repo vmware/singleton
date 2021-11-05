@@ -68,7 +68,7 @@ jobs:
         - name: Upload Codecov report for coverage.xml
           uses: codecov/codecov-action@v2
           with:
-            files: ./sgtn4python/test
+            files: ./sgtn4python/test/coverage*.xml
             flags: coverage.xml
   security-analysis:
     name: Security Analysis
