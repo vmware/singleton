@@ -61,9 +61,7 @@ jobs:
             cd sgtn4python/test
             pip install requests coverage==4.5 pyyaml
             str=$(printf '=%.0s' {1..50})
-            echo $str Unit Test Start $str
             coverage run --source='.' -m unittest discover
-            echo $str Unit Test End $str
             pip list | grep coverage
             coverage report -m
             coverage xml -i           
