@@ -38,7 +38,11 @@ describe SgtnClient do
 
       expect(SgtnClient::Translation.getString_f("JAVA", "login", ["VM", "Robot"], "zh-Hans")).to eq 'Robot login VM!'
       # get from cache in 2nd time
-      expect(SgtnClient::Translation.getString_f("JAVA", "login", ["VM", "Robot"], "zh-Hans")).to eq 'Robot login VM!'    
+      expect(SgtnClient::Translation.getString_f("JAVA", "login", ["VM", "Robot"], "zh-Hans")).to eq 'Robot login VM!' 
+      
+      expect(SgtnClient::Translation.getString_f("JAVA", "type_error", %({"error": "错误数字类型", "correct": "正确数字类型"}), "zh-Hans")).to eq '检测到错误数字类型，请输入正确数字类型!'
+      # get from cache in 2nd time
+      expect(SgtnClient::Translation.getString_f("JAVA", "type_error", %({"error": "错误数字类型", "correct": "正确数字类型"}), "zh-Hans")).to eq '检测到错误数字类型，请输入正确数字类型!'
     end
 
     it "Component" do
@@ -47,6 +51,9 @@ describe SgtnClient do
       # get from cache in 2nd time
       jsonObj_c = SgtnClient::Translation.getStrings("JAVA", "zh-Hans");
       expect(jsonObj_c["component"]).to eq 'JAVA'
+      # get non-translation of a locale and fallback to source file
+      default_sources = SgtnClient::Translation.getStrings("JAVA", "zh-ff");
+      expect(default_sources["locale"]).to eq 'source'
     end
   end
 

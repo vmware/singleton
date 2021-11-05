@@ -1,5 +1,5 @@
 # 0.0.1
-- Support singleton client configuration
+- Support Singleton client configuration
 - Support memory-based cache
 - Support log
 - Support string-based API(online mode)
@@ -63,5 +63,11 @@
 - Support request_store to reduce component and locale arugments in APIs
 
 # 0.1.5
-- Support placeholders order adjustment, e.g "%2$s, welcome login %1$s!"
+- Support placeholders order adjustment, e.g. "%2$s, welcome login %1$s!"
 - Code cleanup
+
+# 0.1.6
+- Support symbol placeholder, e.g. "{error} detected, please enter {correct}!"
+
+# 0.1.7
+- Fix issue: getStrings should return same format for both translation bundles and sources

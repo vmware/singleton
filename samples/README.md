@@ -129,4 +129,10 @@ d.to_medium_s(:es)
 d.to_short_s(:es)
 # Note: for the date and time, the usages are same with dateTime
 
+
+# pluralize a string
+str = 'there %<{ "cat_count": { "0": "no cat", one": "is one cat", "other": "are %{cat_count} cats" } }> in the room'
+result0 = str.to_plural_s(:en, { :cat_count => 0 })
+result = str.to_plural_s(:en, { :cat_count => 1 }) # the result would be 'there is one cat in the room'
+
 ```
