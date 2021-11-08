@@ -122,7 +122,7 @@ module SgtnClient
         begin
           result = MultiJson.load(value)
           result.is_a?(Hash) || result.is_a?(Array)
-        rescue => exception
+        rescue
           false
         end
       end
