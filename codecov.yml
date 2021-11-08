@@ -1,0 +1,16 @@
+coverage:
+  status:
+    project:
+      default:
+        target: 50%
+        if_ci_failed: error
+        flags:
+          - coverage.xml
+    patch:
+      default:
+        target: 100%
+flags:
+  coverage.xml:
+    paths:
+      - sgtn4python/test/coverage.xml
+    carryforward: true
