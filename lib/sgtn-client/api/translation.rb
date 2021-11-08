@@ -36,11 +36,10 @@ module SgtnClient
 
       def self.getString_f(component, key, args, locale)
          s = getString(component, key, locale)
-         if is_json?(args)
-            jsonstr = MultiJson.load(args)
-            jsonstr.each do |source, arg|
-              s.gsub! "{#{source}}", arg
-            end
+         if args.is_a?(Hash)
+          args.each do |source, arg|
+            s.gsub! "{#{source}}", arg
+          end
          elsif args.is_a?(Array)
           s = sprintf s % args
          end
@@ -62,8 +61,8 @@ module SgtnClient
         if items.nil? || items["messages"] == nil
           items = {}
           s = SgtnClient::Source.getSources(component, default)
-          key, value = s.first
-          items["component"] = key
+          default_component, value = s.first
+          items["component"] = default_component
           items["messages"] = value
           items["locale"] = 'source'
         end
@@ -116,15 +115,6 @@ module SgtnClient
           obj = obj["data"]
         end
         return obj
-      end
-
-      def self.is_json?(value)
-        begin
-          result = MultiJson.load(value)
-          result.is_a?(Hash) || result.is_a?(Array)
-        rescue
-          false
-        end
       end
 
   end
