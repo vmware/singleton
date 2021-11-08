@@ -69,12 +69,6 @@ jobs:
           uses: codecov/codecov-action@v2
           with:
             files: ./sgtn4python/test/coverage.xml
-            flags: coverage.xml
-        - name: Specify token
-          uses: codecov/codecov-action@v2
-          with: 
-            config-file: owner/repo/codeql-config.yml@branch
-            external-repository-token: ${{ secrets.EXTERNAL_REPOSITORY_TOKEN }}
   security-analysis:
     name: Security Analysis
     runs-on: ubuntu-latest
