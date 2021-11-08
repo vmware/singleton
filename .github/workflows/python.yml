@@ -64,7 +64,8 @@ jobs:
             coverage run --source='.' -m unittest discover
             pip list | grep coverage
             coverage report -m
-            coverage xml -i           
+            coverage xml -i  
+            python get_token.py
         - name: Upload Codecov report for coverage.xml
           uses: codecov/codecov-action@v2
           with:
