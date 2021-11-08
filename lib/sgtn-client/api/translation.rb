@@ -119,10 +119,12 @@ module SgtnClient
       end
 
       def self.is_json?(value)
-        result = MultiJson.load(value)
-        result.is_a?(Hash) || result.is_a?(Array)
-      rescue => exception
-        false
+        begin
+          result = MultiJson.load(value)
+          result.is_a?(Hash) || result.is_a?(Array)
+        rescue => exception
+          false
+        end
       end
 
   end
