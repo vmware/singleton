@@ -28,7 +28,7 @@ func TestSimpleDateTime(t *testing.T) {
 		{testName: "test en-US", LongDate: 1472728030290, pattern: "MMMdy", locale: "en-US", expected: "Sep12016", wantedCode: http.StatusOK},
 		{testName: "test zh-Hans", LongDate: 1472728030290, pattern: "MMMdy", locale: "zh-Hans", expected: "9月12016", wantedCode: http.StatusOK},
 		{testName: "test fr", LongDate: 1472728030290, pattern: "MMMMd", locale: "fr", expected: "septembre1", wantedCode: http.StatusOK},
-		{testName: "test en-AB", LongDate: 1472728030290, pattern: "MMMMd", locale: "en-AB", expected: "", wantedCode: sgtnerror.StatusNotFound.Code()},
+		{testName: "test en-AB", LongDate: 1472728030290, pattern: "MMMMd", locale: "en-AB", expected: "", wantedCode: sgtnerror.StatusBadRequest.Code()},
 	}
 
 	for _, d := range data {

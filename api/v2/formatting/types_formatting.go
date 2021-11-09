@@ -8,7 +8,7 @@ package formatting
 type (
 	DateReq struct {
 		Locale   string `form:"locale" binding:"locale"`
-		LongDate int64  `form:"longDate" binding:"required"`
+		LongDate int64  `form:"longDate" binding:"numeric"`
 		Pattern  string `form:"pattern" binding:"required"`
 	}
 

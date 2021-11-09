@@ -91,7 +91,7 @@ func getLanguageListOfDispLang(c *gin.Context) {
 	if params.DisplayLanguage != "" {
 		cldrLocale := coreutil.GetCLDRLocale(params.DisplayLanguage)
 		if cldrLocale == "" {
-			api.AbortWithError(c, sgtnerror.StatusNotFound.WithUserMessage(cldr.InvalidLocale, params.DisplayLanguage))
+			api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(cldr.InvalidLocale, params.DisplayLanguage))
 			return
 		}
 		languagesDataOfLocale, err = localeutil.GetLocaleLanguages(ctx, cldrLocale)
