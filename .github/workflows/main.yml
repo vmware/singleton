@@ -54,12 +54,12 @@ jobs:
           go-version: 1.16.x
       - name: Unit test
         run: |
-           make test
-  #     - name: Upload Codecov report for vip-manager-i18n
-  #       uses: codecov/codecov-action@v2
-  #       with:
-  #         files: ./g11n-ws/vip-manager-i18n/build/reports/jacoco.xml
-  #         flags: vip-manager-i18n
+          make test
+      - name: Upload Codecov report for vip-manager-i18n
+        uses: codecov/codecov-action@v2
+        with:
+          files: ./cover.out
+          flags: coverage
   #     - name: Upload Codecov report for vip-manager-l10n
   #       uses: codecov/codecov-action@v2
   #       with:
