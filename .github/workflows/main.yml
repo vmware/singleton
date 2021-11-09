@@ -55,7 +55,7 @@ jobs:
       - name: Unit test
         run: |
           make test
-      -name: Coverage
+      - name: Coverage
         run: |
           make coverage
       - name: Upload Codecov report for go-coverage
