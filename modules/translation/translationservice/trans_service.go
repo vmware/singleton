@@ -9,9 +9,6 @@ import (
 	"context"
 	"strings"
 
-	"github.com/fatih/structs"
-	"go.uber.org/zap"
-
 	"sgtnserver/internal/cache"
 	"sgtnserver/internal/common"
 	"sgtnserver/internal/config"
@@ -21,6 +18,9 @@ import (
 	"sgtnserver/modules/translation/bundleinfo"
 	"sgtnserver/modules/translation/dao"
 	"sgtnserver/modules/translation/translationcache"
+
+	"github.com/fatih/structs"
+	"go.uber.org/zap"
 )
 
 type Service struct {
@@ -52,7 +52,13 @@ func (ts Service) GetAvailableLocales(ctx context.Context, name, version string)
 		return nil, returnErr
 	}
 
-	return convertSetToList(locales), nil
+	for _, e := range locales.Values() {
+		locale := e.(string)
+		if locale != translation.Latest {
+			data = append(data, locale)
+		}
+	}
+	return data, nil
 }
 
 // GetAvailableBundles ...
@@ -66,15 +72,18 @@ func (ts Service) GetAvailableBundles(ctx context.Context, name, version string)
 		return nil, returnErr
 	}
 	values := IDs.Values()
-	data = make([]translation.CompactBundleID, len(values))
-	for i, v := range values {
-		data[i] = v.(translation.CompactBundleID)
+	data = make([]translation.CompactBundleID, 0, len(values))
+	for _, v := range values {
+		id := v.(translation.CompactBundleID)
+		if id.Locale != translation.Latest {
+			data = append(data, id)
+		}
 	}
 	return data, nil
 }
 
 // GetMultipleBundles Get translation of multiple bundles
-func (ts Service) GetMultipleBundles(ctx context.Context, name, version, localeString, componentString string) (data []*translation.Bundle, err error) {
+func (ts Service) GetMultipleBundles(ctx context.Context, name, version, localeString, componentString string) ([]*translation.Bundle, error) {
 	log := logger.FromContext(ctx)
 	log.Debug("Get bundles", zap.String(translation.Name, name), zap.String(translation.Version, version),
 		zap.String("locales", localeString), zap.String("components", componentString))
@@ -87,28 +96,27 @@ func (ts Service) GetMultipleBundles(ctx context.Context, name, version, localeS
 		return ts.getMultipleBundles(ctx, name, version, bundleIDs)
 	}
 
+	var err error
 	var components, locales []string
 	if localeString != "" {
 		locales = PickupLocales(name, version, strings.Split(localeString, common.ParamSep))
 	} else {
-		localeSet, ok := bundleinfo.GetLocaleNames(name, version)
-		if !ok {
-			err := sgtnerror.StatusNotFound.WithUserMessage(translation.ReleaseNonexistent, name, version)
+		locales, err = ts.GetAvailableLocales(ctx, name, version)
+		if err != nil {
+			err = sgtnerror.StatusNotFound.WithUserMessage(translation.ReleaseNonexistent, name, version)
 			log.Error(err.Error())
 			return nil, err
 		}
-		locales = convertSetToList(localeSet)
 	}
 	if componentString != "" {
 		components = strings.Split(componentString, common.ParamSep)
 	} else {
-		componentSet, ok := bundleinfo.GetComponentNames(name, version)
-		if !ok {
-			err := sgtnerror.StatusNotFound.WithUserMessage(translation.ReleaseNonexistent, name, version)
+		components, err = ts.GetAvailableComponents(ctx, name, version)
+		if err != nil {
+			err = sgtnerror.StatusNotFound.WithUserMessage(translation.ReleaseNonexistent, name, version)
 			log.Error(err.Error())
 			return nil, err
 		}
-		components = convertSetToList(componentSet)
 	}
 
 	bundleIDs := make([]translation.CompactBundleID, 0, len(locales)*len(components))
@@ -145,26 +153,75 @@ func (ts Service) GetBundle(ctx context.Context, id *translation.BundleID) (*tra
 }
 
 // GetString ...
-func (ts Service) GetString(ctx context.Context, name, version, locale, component, key string) (*translation.StringMessage, error) {
-	b, err := ts.GetBundle(ctx, &translation.BundleID{Name: name, Version: version, Locale: locale, Component: component})
+func (ts Service) GetString(ctx context.Context, id *translation.MessageID) (*translation.StringMessage, error) {
+	b, err := ts.GetBundle(ctx, &translation.BundleID{Name: id.Name, Version: id.Version, Locale: id.Locale, Component: id.Component})
 	if err != nil {
 		return nil, err
 	}
 
-	anyValue := b.Messages.Get(key)
+	anyValue := b.Messages.Get(id.Key)
 	if anyValue.LastError() == nil {
 		return &translation.StringMessage{
-				Name:        name,
-				Version:     version,
+				Name:        id.Name,
+				Version:     id.Version,
 				Locale:      b.ID.Locale,
-				Component:   component,
-				Key:         key,
+				Component:   id.Component,
+				Key:         id.Key,
 				Translation: anyValue.ToString()},
 			nil
 	}
 
-	return nil, sgtnerror.StatusNotFound.WithUserMessage("Key isn't found: '%s'", key)
+	return nil, sgtnerror.StatusNotFound.WrapErrorWithMessage(translation.ErrStringNotFound, "Fail to get translation for key '%s'", id.Key)
 	// Log.Debug(returnErr)//Don't log because of key is very small granularity
+}
+
+func (ts Service) GetStringWithSource(ctx context.Context, id *translation.MessageID, source string) (result map[string]interface{}, returnErr error) {
+	var stringTrans, locale string
+	var status translation.TranslationStatus
+	msg, err := ts.GetString(ctx, id)
+
+	msgEn, errEn := msg, err
+	if id.Locale != translation.EnLocale {
+		idEn := *id
+		idEn.Locale = translation.EnLocale
+		msgEn, errEn = ts.GetString(ctx, &idEn)
+	}
+	if source != "" {
+		if errEn != nil || msgEn.Translation != source {
+			stringTrans, locale, status = source, translation.EnLocale, translation.SourceUpdated
+		} else {
+			if err == nil {
+				stringTrans, locale, status = msg.Translation, msg.Locale, translation.TranslationValid
+			} else {
+				if errEn == nil {
+					stringTrans, locale, status = msgEn.Translation, msgEn.Locale, translation.FallbackToEn
+				} else {
+					stringTrans, locale, status = source, translation.EnLocale, translation.FallbackToSource
+				}
+			}
+		}
+	} else {
+		if err == nil {
+			stringTrans, locale, status = msg.Translation, msg.Locale, translation.TranslationValid
+		} else {
+			if errEn == nil {
+				stringTrans, locale, status = msgEn.Translation, msgEn.Locale, translation.FallbackToEn
+			} else {
+				return nil, err
+			}
+		}
+	}
+
+	return map[string]interface{}{
+			"productName": id.Name,
+			"version":     id.Version,
+			"locale":      locale,
+			"component":   id.Component,
+			"key":         id.Key,
+			"translation": stringTrans,
+			"source":      source,
+			"status":      status},
+		nil
 }
 
 // PutBundles ...
@@ -229,6 +286,55 @@ func (ts Service) ClearCache(ctx context.Context) (err error) {
 	}
 
 	return
+}
+
+func (ts Service) GetTranslationStatus(ctx context.Context, id *translation.BundleID) (map[string]interface{}, error) {
+	logger.FromContext(ctx).Debug("Get a bundle's translation status", zap.String(translation.Name, id.Name), zap.String(translation.Version, id.Version),
+		zap.String(translation.Locale, id.Locale), zap.String(translation.Component, id.Component))
+
+	id.Locale = PickupLocales(id.Name, id.Version, []string{id.Locale})[0]
+
+	const ready, notready = "1", "0"
+
+	translationData, tErr := ts.GetBundle(ctx, id)
+	if tErr != nil {
+		return nil, sgtnerror.TranslationNotReady
+	}
+
+	latestID := *id
+	latestID.Locale = translation.Latest
+	latestData, latestErr := ts.GetBundle(ctx, &latestID)
+	if latestErr != nil {
+		return nil, sgtnerror.TranslationReady
+	}
+
+	var enErr error
+	var enData = translationData
+	if translationData.ID.Locale != translation.EnLocale {
+		enID := *id
+		enID.Locale = translation.EnLocale
+		enData, enErr = ts.GetBundle(ctx, &enID)
+		if enErr != nil {
+			return nil, sgtnerror.TranslationNotReady
+		}
+	}
+
+	var latestMessages, enMessages map[string]string
+	latestData.Messages.ToVal(&latestMessages)
+	enData.Messages.ToVal(&enMessages)
+
+	var result = make(map[string]interface{}, len(latestMessages))
+	var err = sgtnerror.TranslationReady
+	for k, latestValue := range latestMessages {
+		if latestValue == enMessages[k] {
+			result[k] = ready
+		} else {
+			result[k] = notready
+			err = sgtnerror.TranslationNotReady
+		}
+	}
+
+	return result, err
 }
 
 var service Service

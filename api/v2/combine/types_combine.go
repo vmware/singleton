@@ -13,13 +13,12 @@ import (
 // Request
 type (
 	translationWithPatternReq struct {
-		Combine int `form:"combine" binding:"required"`
+		Combine int `form:"combine" binding:"oneof=1 2"`
 		translation.ReleaseID
-		Language    string `form:"language" binding:"required,language"`
-		Region      string `form:"region" binding:"omitempty,region"`
-		Components  string `form:"components" binding:"required,components"`
-		Scope       string `form:"scope" binding:"required,scope"`
-		ScopeFilter string `form:"scopeFilter"`
+		Language   string `form:"language" binding:"language"`
+		Region     string `form:"region" binding:"omitempty,region"`
+		Components string `form:"components" binding:"components"`
+		cldr.PatternScope
 	}
 
 	languageListReq struct {
@@ -29,21 +28,20 @@ type (
 
 	// translationWithPatternPostReq Deprecated because GET method is ready
 	translationWithPatternPostReq struct {
-		Combine int `form:"combine" binding:"required"`
+		Combine int `form:"combine" binding:"oneof=1 2"`
 		translation.ReleaseID
-		Language    string   `form:"language" binding:"required,language"`
-		Region      string   `form:"region" binding:"omitempty,region"`
-		Components  []string `form:"components" binding:"required,dive,component"`
-		Scope       string   `form:"scope" binding:"required,scope"`
-		ScopeFilter string   `form:"scopeFilter"`
+		Language   string   `form:"language" binding:"language"`
+		Region     string   `form:"region" binding:"omitempty,region"`
+		Components []string `form:"components" binding:"dive,component"`
+		cldr.PatternScope
 	}
 )
 
 // Response
 type (
 	translationWithPatternData struct {
-		Components []*translation.SingleBundleData `json:"components,omitempty"`
-		Pattern    patternData                     `json:"pattern,omitempty"`
+		Bundles []*translation.SingleBundleData `json:"components,omitempty"`
+		Pattern *patternData                    `json:"pattern,omitempty"`
 	}
 
 	patternData struct {

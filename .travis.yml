@@ -1,0 +1,79 @@
+language: go
+go:
+  - 1.16
+python:
+  - 3.4
+
+before_install:
+- |
+    git diff --name-only $TRAVIS_COMMIT_RANGE | grep -qvE '\.md$' || {
+      echo "Only docs were updated, stopping build process."
+      exit
+    }
+
+    
+jobs:
+  include:
+  - name: "Check Header"
+    env: TEST=check_header
+  - name: "Build"
+    env: TEST=build
+  - name: "Unit Test"
+    env: TEST=unit_test
+  - name: "Code Scan"
+    env: TEST=code_scan
+  - name: "Smoke Test"
+    env: TEST=smoke_test
+ 
+script: >
+  if [ x${TEST} = xcheck_header ]; then
+    git clone --branch=devops https://github.com/vmware/singleton.git devops
+    cp $TRAVIS_BUILD_DIR/devops/check_headers.py .
+    chmod +x check_headers.py
+    python3 ./check_headers.py -f "$(git diff --name-only --diff-filter=d $TRAVIS_COMMIT_RANGE)"
+  fi &&
+
+  if [ x${TEST} = xbuild ]; then
+    make build
+  fi &&
+
+  if [ x${TEST} = xunit_test ]; then
+    make test
+  fi &&
+
+  if [ x${TEST} = xcode_scan ]; then
+    SONARSCANNER='sonar-scanner-cli-4.0.0.1744-linux'
+    SONARSCANNERINNER='sonar-scanner-4.0.0.1744-linux'
+    wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/$SONARSCANNER.zip
+    unzip $SONARSCANNER.zip
+    rm -f $SONARSCANNER.zip
+    make coverage 
+    git clone --branch=devops https://github.com/vmware/singleton.git devops
+    str=$(printf '=%.0s' {1..50})
+    echo $str Unit Test Start $str
+    cd $TRAVIS_BUILD_DIR/devops/sonar/ && python ./config_sonar_project.py -ProjectName=$SONAR_ORG-singleton-go-service-$TRAVIS_BRANCH -ProjectKey=$SONAR_ORG-singleton-go-service-$TRAVIS_BRANCH -OrgKey=$SONAR_ORG -QualityGateName=go-service-gate -QualityGateConditions="./quality_gates/go-service.json" -SonarToken=$SONAR_TOKEN
+    cd $TRAVIS_BUILD_DIR && ./$SONARSCANNERINNER/bin/sonar-scanner -Dsonar.sources=. -Dsonar.exclusions=**/testdata/**/*,**/$SONARSCANNERINNER/**/*,**/bindata/bindata.go,tests/**,api/v1/**,api/v2/swagger/**,assets/**,cmd/**,bindata/**,coverage.html -Dsonar.coverage.exclusions=**/testdata/**/*,**/$SONARSCANNERINNER/**/*,**/bindata/bindata.go,tests/**,api/v1/**,api/v2/swagger/**,assets/**,cmd/**,bindata/**,coverage.html -Dsonar.projectName=$SONAR_ORG-singleton-go-service-$TRAVIS_BRANCH -Dsonar.branch.name=master -Dsonar.projectKey=$SONAR_ORG-singleton-go-service-$TRAVIS_BRANCH -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=$SONAR_ORG -Dsonar.login=$SONAR_TOKEN -Dsonar.go.coverage.reportPaths=./cover.out
+    echo $str Unit Test End $str
+    git diff --name-only $TRAVIS_COMMIT_RANGE | grep -qvE '\.travis\.yml$' || {
+      echo "No need to check sonar quality gate for only travis configuration updates"
+      exit 
+    }
+    cd $TRAVIS_BUILD_DIR/devops/sonar && sleep 5 && python3 ./check_sonar_qualitygate.py -ProjectKeyPrefixArray=$SONAR_ORG-singleton-go-service-$TRAVIS_BRANCH -HostName=https://sonarcloud.io
+  fi &&
+
+  if [ x${TEST} = xsmoke_test ]; then
+    export PATH=${PATH/:\/usr\/local\/lib\/jvm\/openjdk11\/bin:/:}
+    sudo apt-get update
+    sudo apt-get install -y openjdk-8-jdk
+    export JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64"
+    java -version
+    git clone --branch=master https://github.com/vmware/singleton.git server
+    git clone --branch=devops https://github.com/vmware/singleton.git devops
+    make build
+    ./builds/singleton-linux-amd64 --config="tests/testdata/config/config.yaml"
+    cd $TRAVIS_BUILD_DIR/devops/autotest/service/goservice && gradle build
+    str=$(printf '=%.0s' {1..50})
+    echo $str Smoke Test Start $str
+    java -cp "target/:resource/" org.testng.TestNG testng.xml
+    echo $str Smoke Test End $str
+  fi

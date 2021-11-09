@@ -8,19 +8,17 @@ package cldr
 import (
 	"strings"
 
-	"github.com/emirpasic/gods/maps/treemap"
-	"github.com/gin-gonic/gin"
-	"github.com/go-playground/validator/v10"
-	jsoniter "github.com/json-iterator/go"
-
 	"sgtnserver/api"
 	"sgtnserver/internal/common"
 	"sgtnserver/internal/logger"
-	"sgtnserver/internal/sgtnerror"
 	"sgtnserver/modules/cldr"
 	"sgtnserver/modules/cldr/cldrservice"
 	"sgtnserver/modules/cldr/coreutil"
 	"sgtnserver/modules/cldr/localeutil"
+
+	"github.com/emirpasic/gods/maps/treemap"
+	"github.com/gin-gonic/gin"
+	jsoniter "github.com/json-iterator/go"
 )
 
 var json = jsoniter.ConfigDefault
@@ -40,34 +38,22 @@ var json = jsoniter.ConfigDefault
 // @Failure 500 {string} string "Internal Server Error"
 // @Router /formatting/patterns/locales/{locale} [get]
 func GetPatternByLocale(c *gin.Context) {
-	req := new(PatternByLocaleReq)
-	if err := c.ShouldBindQuery(req); err != nil {
-		vErrors, _ := err.(validator.ValidationErrors)
-		for _, e := range vErrors {
-			if !(e.Field() == api.LocaleAPIKey) {
-				api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(e.Translate(api.ValidatorTranslator)))
-				return
-			}
-		}
-	}
-	if err := c.ShouldBindUri(req); err != nil {
-		vErrors, _ := err.(validator.ValidationErrors)
-		for _, e := range vErrors {
-			if e.Field() == api.LocaleAPIKey {
-				api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(e.Translate(api.ValidatorTranslator)))
-				return
-			}
-		}
+	locale := struct {
+		Locale string `uri:"locale" binding:"locale"`
+	}{}
+	scope := PatternScope{}
+	if err := api.ExtractParameters(c, &locale, &scope); err != nil {
+		return
 	}
 
 	ctx := logger.NewContext(c, c.MustGet(api.LoggerKey))
-	cldrLocale, dataMap, err := cldrservice.GetPatternByLocale(ctx, req.Locale, req.Scope, req.ScopeFilter)
+	cldrLocale, dataMap, err := cldrservice.GetPatternByLocale(ctx, locale.Locale, scope.Scope, scope.ScopeFilter)
 	var data interface{}
 	if len(dataMap) > 0 {
 		parts := strings.Split(cldrLocale, cldr.LocalePartSep)
 		region := coreutil.ParseRegion(parts)
 		if region == "" {
-			region = localeutil.GetLocaleDefaultRegion(ctx, cldrLocale)
+			region, _ = localeutil.GetLocaleDefaultRegion(ctx, cldrLocale)
 		}
 		data = PatternData{
 			LocaleID:   cldrLocale,
@@ -96,13 +82,8 @@ func GetPatternByLocale(c *gin.Context) {
 // @Failure 500 {string} string "Internal Server Error"
 // @Router /formatting/patterns [get]
 func GetPatternDataByLangReg(c *gin.Context) {
-	params := new(PatternByLangRegReq)
-	if err := c.ShouldBindQuery(params); err != nil {
-		var msg interface{} = err.Error()
-		if vErrors, ok := err.(validator.ValidationErrors); ok {
-			msg = api.RemoveStruct(vErrors.Translate(api.ValidatorTranslator))
-		}
-		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage("%+v", msg))
+	params := PatternByLangRegReq{}
+	if err := api.ExtractParameters(c, nil, &params); err != nil {
 		return
 	}
 
@@ -133,13 +114,8 @@ func GetPatternDataByLangReg(c *gin.Context) {
 // @Failure 500 {string} string "Internal Server Error"
 // @Router /locale/regionList [get]
 func GetRegionListOfLanguages(c *gin.Context) {
-	params := new(LocaleRegionsReq)
-	if err := c.ShouldBindQuery(params); err != nil {
-		var msg interface{} = err.Error()
-		if vErrors, ok := err.(validator.ValidationErrors); ok {
-			msg = api.RemoveStruct(vErrors.Translate(api.ValidatorTranslator))
-		}
-		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage("%+v", msg))
+	params := LocaleRegionsReq{}
+	if err := api.ExtractParameters(c, nil, &params); err != nil {
 		return
 	}
 

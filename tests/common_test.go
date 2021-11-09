@@ -6,6 +6,7 @@
 package tests
 
 import (
+	"context"
 	"errors"
 	"math/rand"
 	"sync"
@@ -13,10 +14,13 @@ import (
 	"testing"
 	"time"
 
+	"sgtnserver/internal/cache"
 	"sgtnserver/internal/common"
+	"sgtnserver/internal/config"
 	"sgtnserver/internal/logger"
 	"sgtnserver/internal/sgtnerror"
 
+	"github.com/fatih/structs"
 	"github.com/stretchr/testify/assert"
 	"go.uber.org/zap"
 )
@@ -44,7 +48,7 @@ func TestDoAndCheck(t *testing.T) {
 		group.Add(1)
 		go func(n int) {
 			if n == r {
-				common.DoAndCheck(logger.NewContext(nil, logger.Log.With(zap.Int("thread", n))), done, doer, waiter)
+				common.DoAndCheck(logger.NewContext(context.TODO(), logger.Log.With(zap.Int("thread", n))), done, doer, waiter)
 			} else {
 				<-done
 				waiter()
@@ -66,60 +70,60 @@ func TestMultiError(t *testing.T) {
 		testName           string
 		firstError         error
 		errorsToAdd        []error
-		wantedErrorsLength int
+		wantedErrorsNumber int
 		isNilError         bool
 		isAllFailed        bool
 	}{
 		{testName: "Nil+", firstError: nil, errorsToAdd: nil,
-			wantedErrorsLength: 0, isNilError: true, isAllFailed: false},
+			wantedErrorsNumber: 0, isNilError: true, isAllFailed: false},
 
 		{testName: "NoNil+", firstError: firstError, errorsToAdd: nil,
-			wantedErrorsLength: 1, isNilError: false, isAllFailed: true},
+			wantedErrorsNumber: 1, isNilError: false, isAllFailed: true},
 
 		{testName: "NilMulti+", firstError: (*sgtnerror.MultiError)(nil), errorsToAdd: nil,
-			wantedErrorsLength: 0, isNilError: true, isAllFailed: false},
+			wantedErrorsNumber: 0, isNilError: true, isAllFailed: false},
 
 		{testName: "NonNilMulti+", firstError: sgtnerror.Append(firstError), errorsToAdd: nil,
-			wantedErrorsLength: 1, isNilError: false, isAllFailed: true},
+			wantedErrorsNumber: 1, isNilError: false, isAllFailed: true},
 
 		{testName: "Nil+Nil", firstError: nil, errorsToAdd: nil,
-			wantedErrorsLength: 0, isNilError: true, isAllFailed: false},
+			wantedErrorsNumber: 0, isNilError: true, isAllFailed: false},
 
 		{testName: "NoNil+NonNil", firstError: firstError, errorsToAdd: []error{secondError},
-			wantedErrorsLength: 2, isNilError: false, isAllFailed: true},
+			wantedErrorsNumber: 2, isNilError: false, isAllFailed: true},
 
 		{testName: "NilMulti+NilMulti", firstError: (*sgtnerror.MultiError)(nil), errorsToAdd: []error{(*sgtnerror.MultiError)(nil)},
-			wantedErrorsLength: 0, isNilError: true, isAllFailed: false},
+			wantedErrorsNumber: 0, isNilError: true, isAllFailed: false},
 
 		{testName: "NonNilMulti+NonNilMulti", firstError: sgtnerror.Append(firstError), errorsToAdd: []error{sgtnerror.Append(secondError)},
-			wantedErrorsLength: 2, isNilError: false, isAllFailed: true},
+			wantedErrorsNumber: 2, isNilError: false, isAllFailed: true},
 
 		{testName: "Nil+Nil+Nil", firstError: nil, errorsToAdd: []error{nil, nil},
-			wantedErrorsLength: 0, isNilError: true, isAllFailed: false},
+			wantedErrorsNumber: 0, isNilError: true, isAllFailed: false},
 
 		{testName: "NoNil+Nil+NonNil", firstError: firstError, errorsToAdd: []error{nil, secondError},
-			wantedErrorsLength: 2, isNilError: false, isAllFailed: false},
+			wantedErrorsNumber: 2, isNilError: false, isAllFailed: false},
 
 		{testName: "NilMulti+NilMulti+NilMulti", firstError: (*sgtnerror.MultiError)(nil), errorsToAdd: []error{(*sgtnerror.MultiError)(nil), (*sgtnerror.MultiError)(nil)},
-			wantedErrorsLength: 0, isNilError: true, isAllFailed: false},
+			wantedErrorsNumber: 0, isNilError: true, isAllFailed: false},
 
 		{testName: "NonNilMulti+NonNilMulti+NonNilMulti", firstError: sgtnerror.Append(firstError), errorsToAdd: []error{sgtnerror.Append(secondError), sgtnerror.Append(thirdError)},
-			wantedErrorsLength: 3, isNilError: false, isAllFailed: true},
+			wantedErrorsNumber: 3, isNilError: false, isAllFailed: true},
 
 		{testName: "Nil+Nil+NonNilMulti", firstError: nil, errorsToAdd: []error{nil, sgtnerror.Append(secondError)},
-			wantedErrorsLength: 1, isNilError: false, isAllFailed: false},
+			wantedErrorsNumber: 1, isNilError: false, isAllFailed: false},
 
 		{testName: "NonNilMulti+NonNilMulti+Nil", firstError: sgtnerror.Append(firstError), errorsToAdd: []error{sgtnerror.Append(secondError), nil},
-			wantedErrorsLength: 2, isNilError: false, isAllFailed: false},
+			wantedErrorsNumber: 2, isNilError: false, isAllFailed: false},
 
 		{testName: "Nil+Nil", firstError: nil, errorsToAdd: nil,
-			wantedErrorsLength: 0, isNilError: true, isAllFailed: false},
+			wantedErrorsNumber: 0, isNilError: true, isAllFailed: false},
 
 		{testName: "Nil+NonNil", firstError: nil, errorsToAdd: []error{secondError},
-			wantedErrorsLength: 1, isNilError: false, isAllFailed: false},
+			wantedErrorsNumber: 1, isNilError: false, isAllFailed: false},
 
 		{testName: "NilMulti+NoNil", firstError: (*sgtnerror.MultiError)(nil), errorsToAdd: []error{secondError},
-			wantedErrorsLength: 1, isNilError: false, isAllFailed: true},
+			wantedErrorsNumber: 1, isNilError: false, isAllFailed: true},
 	}
 
 	for _, tt := range tests {
@@ -128,7 +132,7 @@ func TestMultiError(t *testing.T) {
 		t.Run(tt.testName, func(t *testing.T) {
 			actualMultiError := sgtnerror.Append(tt.firstError, tt.errorsToAdd...)
 
-			assert.Equal(t, tt.wantedErrorsLength, len(actualMultiError.Errors()))
+			assert.Equal(t, tt.wantedErrorsNumber, len(actualMultiError.Errors()))
 
 			if tt.isNilError {
 				assert.Nil(t, actualMultiError.ErrorOrNil())
@@ -138,4 +142,21 @@ func TestMultiError(t *testing.T) {
 			assert.Equal(t, tt.isAllFailed, actualMultiError.IsAllFailed())
 		})
 	}
+}
+
+func TestCacheExpiration(t *testing.T) {
+	expirationDuration := time.Millisecond * 10
+	settings := structs.Map(config.Settings.Cache)
+	settings["Expiration"] = expirationDuration
+
+	newCache := cache.NewCache("test_expiration", settings)
+
+	key, value := "key", "value"
+	err := newCache.Set(key, value)
+	assert.Nil(t, err)
+
+	time.Sleep(expirationDuration)
+	actual, err := newCache.Get(key)
+	assert.NotNil(t, err)
+	assert.Nil(t, actual)
 }

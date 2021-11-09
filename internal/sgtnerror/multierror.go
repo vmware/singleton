@@ -86,12 +86,12 @@ func (e *MultiError) IsAllFailed() bool {
 
 func FormatFunc(es []error) string {
 	if len(es) == 1 {
-		return fmt.Sprintf("1 error occurred. %s", es[0])
+		return GetUserMessage(es[0])
 	}
 
 	points := make([]string, len(es))
 	for i, err := range es {
-		points[i] = err.Error()
+		points[i] = GetUserMessage(err)
 	}
 
 	return fmt.Sprintf(

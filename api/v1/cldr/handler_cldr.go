@@ -8,16 +8,14 @@ package cldr
 import (
 	"strings"
 
-	"github.com/gin-gonic/gin"
-	"github.com/go-playground/validator/v10"
-
 	"sgtnserver/api"
 	"sgtnserver/internal/logger"
-	"sgtnserver/internal/sgtnerror"
 	"sgtnserver/modules/cldr"
 	"sgtnserver/modules/cldr/cldrservice"
 	"sgtnserver/modules/cldr/coreutil"
 	"sgtnserver/modules/cldr/localeutil"
+
+	"github.com/gin-gonic/gin"
 )
 
 // GetPatternData godoc
@@ -36,24 +34,19 @@ import (
 // @Router /i18nPattern [get]
 // @Deprecated
 func GetPatternData(c *gin.Context) {
-	req := new(PatternByLocaleReq)
-	if err := c.ShouldBindQuery(req); err != nil {
-		var msg interface{} = err.Error()
-		if vErrors, ok := err.(validator.ValidationErrors); ok {
-			msg = api.RemoveStruct(vErrors.Translate(api.ValidatorTranslator))
-		}
-		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage("%+v", msg))
+	params := PatternByLocaleReq{}
+	if err := api.ExtractParameters(c, nil, &params); err != nil {
 		return
 	}
 
 	ctx := logger.NewContext(c, c.MustGet(api.LoggerKey))
-	cldrLocale, dataMap, err := cldrservice.GetPatternByLocale(ctx, req.Locale, req.Scope, req.ScopeFilter)
+	cldrLocale, dataMap, err := cldrservice.GetPatternByLocale(ctx, params.Locale, params.Scope, params.ScopeFilter)
 	var data interface{}
 	if len(dataMap) > 0 {
 		parts := strings.Split(cldrLocale, cldr.LocalePartSep)
 		region := coreutil.ParseRegion(parts)
 		if region == "" {
-			region = localeutil.GetLocaleDefaultRegion(ctx, cldrLocale)
+			region, _ = localeutil.GetLocaleDefaultRegion(ctx, cldrLocale)
 		}
 		data = PatternData{
 			LocaleID:   cldrLocale,

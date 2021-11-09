@@ -15,7 +15,6 @@ import (
 	"sgtnserver/internal/sgtnerror"
 	"sgtnserver/modules/cldr"
 	"sgtnserver/modules/cldr/coreutil"
-	"sgtnserver/modules/cldr/dao"
 	"sgtnserver/modules/cldr/localeutil"
 
 	"github.com/emirpasic/gods/sets/hashset"
@@ -24,15 +23,23 @@ import (
 	"go.uber.org/zap"
 )
 
-var ArgSplitter = regexp.MustCompile(`\s*,\s*`)
+var (
+	ArgSplitter = regexp.MustCompile(`\s*` + common.ParamSep + `\s*`)
 
-// SpecialCategories Data is always form language
-var SpecialCategories = hashset.New(dao.PatternDateFields, dao.PatternPlurals)
+	// SpecialCategories Data is always form language
+	SpecialCategories = hashset.New(cldr.PatternDateFields, cldr.PatternPlurals)
 
-// SupplementalCategories Need to get some extra data for these categories
-var SupplementalCategories = map[string]dao.CoreDataType{
-	dao.PatternCurrencies: dao.CoreSplmtCurrencyData,
-	dao.PatternNumbers:    dao.CoreSplmtNumberingSystems}
+	// SupplementalCategories Need to get some extra data for these categories
+	SupplementalCategories = map[string]cldr.CoreDataType{
+		cldr.PatternCurrencies: cldr.CoreSplmtCurrencyData,
+		cldr.PatternNumbers:    cldr.CoreSplmtNumberingSystems,
+	}
+)
+
+const (
+	scopeFilterSep = "_"
+	objxMapPathSep = "."
+)
 
 func GetPatternByLangReg(ctx context.Context, language, region, catgs, filter string) (resultMap map[string]interface{}, cldrLocale string, err error) {
 	log := logger.FromContext(ctx)
@@ -51,14 +58,14 @@ func GetPatternByLangReg(ctx context.Context, language, region, catgs, filter st
 		var err error
 		if SpecialCategories.Contains(catg) { // dateFields and Plural always follow language
 			if normalizedLanguage == "" {
-				err = sgtnerror.StatusNotFound.WithUserMessage(cldr.InvalidLocale, language)
+				err = sgtnerror.StatusBadRequest.WithUserMessage(cldr.InvalidLocale, language)
 				log.Error(err.Error())
 			} else if catgData, err = localeutil.GetPatternData(ctx, normalizedLanguage, catg); err == nil {
 				specialCatgNumber++
 			}
 		} else {
 			if combinedLocale == "" {
-				err = sgtnerror.StatusNotFound.WithUserMessage("Can't get a locale ID with '%s' and '%s'", language, region)
+				err = sgtnerror.StatusBadRequest.WithUserMessage("Can't get a locale ID with '%s' and '%s'", language, region)
 				log.Error(err.Error())
 			} else {
 				catgData, err = localeutil.GetPatternData(ctx, combinedLocale, catg)
@@ -68,8 +75,8 @@ func GetPatternByLangReg(ctx context.Context, language, region, catgs, filter st
 		if err == nil {
 			resultMap[catg] = catgData
 
-			if catg == dao.PatternCurrencies && common.Contains(categories, dao.PatternNumbers) < 0 {
-				categories = append(categories, dao.PatternNumbers)
+			if catg == cldr.PatternCurrencies && common.Contains(categories, cldr.PatternNumbers) < 0 {
+				categories = append(categories, cldr.PatternNumbers)
 			}
 		}
 	}
@@ -98,7 +105,7 @@ func GetPatternByLocale(ctx context.Context, locale, catgs, filter string) (newL
 		newLocale = coreutil.GetPathLocale(locale)
 	}
 	if newLocale == "" {
-		err := sgtnerror.StatusNotFound.WithUserMessage(cldr.InvalidLocale, locale)
+		err := sgtnerror.StatusBadRequest.WithUserMessage(cldr.InvalidLocale, locale)
 		log.Error(err.Error())
 		return "", nil, err
 	}
@@ -114,8 +121,8 @@ func GetPatternByLocale(ctx context.Context, locale, catgs, filter string) (newL
 		if err == nil {
 			resultMap[catg] = catgData
 
-			if catg == dao.PatternCurrencies && common.Contains(categories, dao.PatternNumbers) < 0 {
-				categories = append(categories, dao.PatternNumbers)
+			if catg == cldr.PatternCurrencies && common.Contains(categories, cldr.PatternNumbers) < 0 {
+				categories = append(categories, cldr.PatternNumbers)
 			}
 		}
 	}
@@ -140,7 +147,7 @@ func getSupplementalData(ctx context.Context, resultMap map[string]interface{}, 
 			coreData, err := coreutil.GetCoreData(ctx, coreType)
 			returnErr = sgtnerror.Append(returnErr, err)
 			if err == nil {
-				suppleMap[catg] = coreData
+				suppleMap[catg] = coreData.(jsoniter.Any)
 			}
 		}
 	}
@@ -161,9 +168,6 @@ func processFilters(data map[string]interface{}, scopeFilter string) map[string]
 		return includeNodes(data, scopeFilter)
 	}
 }
-
-const scopeFilterSep = "_"
-const objxMapPathSep = "."
 
 func excludeNodes(data map[string]interface{}, filters string) map[string]interface{} {
 	objxMap := objx.Map(data)
@@ -192,19 +196,23 @@ func includeNodes(data map[string]interface{}, filters string) map[string]interf
 		if filter == "" {
 			continue
 		}
-		var v interface{}
+
 		filterParts := strings.Split(filter, scopeFilterSep)
-		objxPath := strings.Join(filterParts, objxMapPathSep)
-		if partData := oldData[filterParts[0]]; partData != nil {
-			if anyValue, ok := partData.(jsoniter.Any); ok {
-				if targetAnyValue := anyValue.Get(common.ToGenericArray(filterParts[1:])...); targetAnyValue.LastError() == nil {
-					v = targetAnyValue
-				}
-			} else {
-				logger.Log.Error("Pattern data type is not jsoniter.Any!")
+		if catgData := oldData[filterParts[0]]; catgData != nil {
+			if anyValue, ok := catgData.(jsoniter.Any); ok && len(filterParts) > 1 {
+				oldData[filterParts[0]] = anyValue.GetInterface()
 			}
 		}
-		newData.Set(objxPath, v)
+
+		objxPath := strings.Join(filterParts, objxMapPathSep)
+		newData.Set(objxPath, oldData.Get(objxPath).Data())
 	}
+
+	for k, v := range oldData {
+		if _, ok := newData[k]; !ok {
+			newData[k] = v
+		}
+	}
+
 	return newData
 }

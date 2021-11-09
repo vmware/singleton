@@ -10,11 +10,9 @@ import (
 
 	"sgtnserver/api"
 	"sgtnserver/internal/logger"
-	"sgtnserver/internal/sgtnerror"
 	"sgtnserver/modules/formatting"
 
 	"github.com/gin-gonic/gin"
-	"github.com/go-playground/validator/v10"
 )
 
 // GetLocalizedDate godoc
@@ -32,13 +30,8 @@ import (
 // @Router /formatting/date/localizedDate [get]
 // @Deprecated
 func GetLocalizedDate(c *gin.Context) {
-	params := new(DateReq)
-	if err := c.ShouldBindQuery(params); err != nil {
-		var msg interface{} = err.Error()
-		if vErrors, ok := err.(validator.ValidationErrors); ok {
-			msg = api.RemoveStruct(vErrors.Translate(api.ValidatorTranslator))
-		}
-		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage("%+v", msg))
+	params := DateReq{}
+	if err := api.ExtractParameters(c, nil, &params); err != nil {
 		return
 	}
 

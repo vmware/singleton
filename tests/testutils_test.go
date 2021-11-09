@@ -7,28 +7,29 @@ package tests
 
 import (
 	"flag"
-	"io"
 	"math/rand"
 	"net/http"
 	"os"
 	"path/filepath"
 	"reflect"
+	"strings"
 	"testing"
-	"time"
+
+	"sgtnserver/api"
+	v2 "sgtnserver/api/v2"
+	"sgtnserver/internal/config"
+	"sgtnserver/internal/logger"
 
 	"github.com/gavv/httpexpect/v2"
 	"github.com/gin-gonic/gin"
 	jsoniter "github.com/json-iterator/go"
 	"github.com/jucardi/go-osx/paths"
-
-	"sgtnserver/api"
-	v2 "sgtnserver/api/v2"
-	"sgtnserver/internal/logger"
 )
 
 var (
 	json          = jsoniter.ConfigDefault
 	log           = logger.Log.Sugar()
+	logFolder     = filepath.Dir(config.Settings.LOG.Filename) + string(os.PathSeparator)
 	GinTestEngine *gin.Engine
 )
 
@@ -61,6 +62,15 @@ const (
 func TestMain(m *testing.M) {
 	defer logger.Log.Sync()
 
+	testArgs := os.Args[:1]
+	for _, arg := range os.Args {
+		if strings.HasPrefix(arg, "-test.") {
+			testArgs = append(testArgs, arg)
+		}
+	}
+	os.Args = testArgs
+	log.Infof("CLI args are: %v", os.Args)
+
 	flag.Parse()
 
 	GinTestEngine = api.InitServer()
@@ -88,8 +98,6 @@ func init() {
 			log.Infof("Now current directory is: %s", cwd)
 		}
 	}
-
-	log.Infof("CLI args are: %v", os.Args)
 }
 
 func CreateHTTPExpect(t *testing.T, ginEngine *gin.Engine) *httpexpect.Expect {
@@ -107,9 +115,9 @@ func CreateHTTPExpect(t *testing.T, ginEngine *gin.Engine) *httpexpect.Expect {
 	})
 }
 
-func GetErrorAndData(r io.Reader) (bError *api.BusinessError, data interface{}) {
+func GetErrorAndData(r string) (bError *api.BusinessError, data interface{}) {
 	body := new(api.Response)
-	err := json.NewDecoder(r).Decode(body)
+	err := json.UnmarshalFromString(r, body)
 	if err != nil {
 		log.Error(err.Error())
 	}
@@ -125,7 +133,6 @@ func RandomInt(min, max int) int {
 
 // Generate a random string of a-z chars with len
 func RandomString(len int) string {
-	rand.Seed(time.Now().UnixNano())
 	bytes := make([]byte, len)
 	for i := 0; i < len; i++ {
 		bytes[i] = byte(RandomInt(97, 122))
@@ -166,4 +173,30 @@ func Contain(list interface{}, target interface{}) int {
 		}
 	}
 	return -1
+}
+
+// Replace stdout and stderr
+func ReplaceStds() (reader, writer *os.File, revert func()) {
+	rescueStdout, rescueStderr := os.Stdout, os.Stderr
+	reader, writer, _ = os.Pipe()
+	os.Stdout, os.Stderr = writer, writer
+
+	revert = func() {
+		os.Stdout, os.Stderr = rescueStdout, rescueStderr
+	}
+	return
+}
+
+func ReplaceLogger(tempLogFile string) func() {
+	os.Remove(tempLogFile)
+	oldLogFile := config.Settings.LOG.Filename
+
+	config.Settings.LOG.Filename = tempLogFile
+	logger.InitLogger()
+
+	return func() {
+		config.Settings.LOG.Filename = oldLogFile
+		logger.InitLogger()
+		os.Remove(tempLogFile)
+	}
 }

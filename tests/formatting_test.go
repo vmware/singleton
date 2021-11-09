@@ -6,6 +6,7 @@
 package tests
 
 import (
+	"context"
 	"net/http"
 	"testing"
 	"time"
@@ -27,7 +28,7 @@ func TestSimpleDateTime(t *testing.T) {
 		{testName: "test en-US", LongDate: 1472728030290, pattern: "MMMdy", locale: "en-US", expected: "Sep12016", wantedCode: http.StatusOK},
 		{testName: "test zh-Hans", LongDate: 1472728030290, pattern: "MMMdy", locale: "zh-Hans", expected: "9月12016", wantedCode: http.StatusOK},
 		{testName: "test fr", LongDate: 1472728030290, pattern: "MMMMd", locale: "fr", expected: "septembre1", wantedCode: http.StatusOK},
-		{testName: "test en-AB", LongDate: 1472728030290, pattern: "MMMMd", locale: "en-AB", expected: "", wantedCode: http.StatusNotFound},
+		{testName: "test en-AB", LongDate: 1472728030290, pattern: "MMMMd", locale: "en-AB", expected: "", wantedCode: sgtnerror.StatusBadRequest.Code()},
 	}
 
 	for _, d := range data {
@@ -40,7 +41,7 @@ func TestSimpleDateTime(t *testing.T) {
 			tm := time.Unix(seconds, milliseconds)
 			log.Infof("time is:%+v", tm)
 
-			actual, err := formatting.SimpleFormatDateTime(nil, tm, d.pattern, d.locale)
+			actual, err := formatting.SimpleFormatDateTime(context.TODO(), tm, d.pattern, d.locale)
 			if d.wantedCode == http.StatusOK {
 				assert.Nil(t, err)
 				assert.Equal(t, d.expected, actual)

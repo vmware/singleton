@@ -32,15 +32,15 @@ CrossDomain:
   Enable: true
   AllowCredentials: true
   AllowOrigin: "*"
-  AllowMethods: GET, POST, PUT, DELETE, OPTIONS
-  AllowHeaders: csp-auth-token, Content-Type, x-xmp-ui, Authorization
-  MaxAge: 3600
+  AllowMethods: GET,POST,PUT,DELETE,OPTIONS
+  AllowHeaders: csp-auth-token,Content-Type,x-xmp-ui,Authorization
+  MaxAge: 3600s
 
 LOG:
-  Filename: 
-  MaxSize:    5 # megabytes
+  Filename:
+  MaxSize: 50 # megabytes
   MaxBackups: 20
-  MaxAge:     365 # days
+  MaxAge: 365 # days
   FileLevel: debug
   Level: info
 

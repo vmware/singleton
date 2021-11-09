@@ -6,6 +6,7 @@
 package tests
 
 import (
+	"context"
 	"crypto/rsa"
 	"crypto/x509"
 	"encoding/base64"
@@ -110,7 +111,7 @@ func TestGetBundleFromS3(t *testing.T) {
 			id: translation.BundleID{Name: Name, Version: Version, Locale: Locale, Component: Component}},
 		{testName: "FileContentWrong", mockOutput: fmt.Sprintf(bundleFile, "anotherLocale"), mockReturnError: nil, wantedCode: http.StatusOK,
 			id: translation.BundleID{Name: Name, Version: Version, Locale: "yue", Component: Component}},
-		{testName: "ReturnNotFound", mockOutput: fmt.Sprintf(bundleFile, Locale), mockReturnError: MockAWSError{s3.ErrCodeNoSuchKey}, wantedCode: http.StatusNotFound,
+		{testName: "ReturnNotFound", mockOutput: fmt.Sprintf(bundleFile, Locale), mockReturnError: MockAWSError{s3.ErrCodeNoSuchKey}, wantedCode: sgtnerror.StatusNotFound.Code(),
 			id: translation.BundleID{Name: Name, Version: Version, Locale: Locale, Component: Component}},
 		{testName: "ReturnOtherError", mockOutput: fmt.Sprintf(bundleFile, Locale), mockReturnError: errors.New("other type of error"), wantedCode: http.StatusInternalServerError,
 			id: translation.BundleID{Name: Name, Version: Version, Locale: Locale, Component: Component}},
@@ -126,7 +127,7 @@ func TestGetBundleFromS3(t *testing.T) {
 			s3api.EXPECT().GetObject(gomock.Eq(&mockInput)).Return(&s3.GetObjectOutput{Body: ioutil.NopCloser(strings.NewReader(tt.mockOutput))}, tt.mockReturnError)
 
 			// Test
-			b, err := s3b.GetBundle(nil, &tt.id)
+			b, err := s3b.GetBundle(context.TODO(), &tt.id)
 			if tt.wantedCode == http.StatusOK {
 				assert.Nil(t, err)
 				assert.Equal(t, tt.id.Locale, b.ID.Locale)
@@ -164,7 +165,7 @@ func TestPutBundleToS3(t *testing.T) {
 
 			s3api.EXPECT().PutObject(gomock.AssignableToTypeOf(&s3.PutObjectInput{})).Return(nil, tt.mockReturnError)
 
-			err := s3b.PutBundle(nil, &bundleToPut)
+			err := s3b.PutBundle(context.TODO(), &bundleToPut)
 			if tt.wantedCode == http.StatusOK {
 				assert.Nil(t, err)
 			} else {
@@ -176,7 +177,7 @@ func TestPutBundleToS3(t *testing.T) {
 
 func TestGetBundleInfoOfS3(t *testing.T) {
 	getExpectedInfo := func() *translation.BundleInfo {
-		localInfo, err := localBundle.GetBundleInfo(nil)
+		localInfo, err := localBundle.GetBundleInfo(context.TODO())
 		assert.Nil(t, err)
 
 		info := translation.NewBundleInfo()
@@ -239,7 +240,7 @@ func TestGetBundleInfoOfS3(t *testing.T) {
 	createMock(t).EXPECT().ListObjectsV2Pages(gomock.Eq(expectedInput), gomock.Any()).DoAndReturn(sendKeysMock(keys, nil))
 
 	// Test
-	info, err := s3b.GetBundleInfo(nil)
+	info, err := s3b.GetBundleInfo(context.TODO())
 	assert.Nil(t, err)
 	if diff := deep.Equal(expectedInfo, info); diff != nil {
 		t.Error(diff)

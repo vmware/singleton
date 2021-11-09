@@ -8,6 +8,10 @@ package cldr
 import "sgtnserver/api/v2/cldr"
 
 type (
-	PatternByLocaleReq cldr.PatternByLocaleReq
-	PatternData        cldr.PatternData
+	PatternByLocaleReq struct {
+		Locale string `form:"locale" binding:"locale"`
+		cldr.PatternScope
+	}
+
+	PatternData cldr.PatternData
 )

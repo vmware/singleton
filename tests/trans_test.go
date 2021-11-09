@@ -6,11 +6,11 @@
 package tests
 
 import (
+	"context"
 	"fmt"
 	"os"
 	"path"
 	"testing"
-	"time"
 
 	"sgtnserver/internal/cache"
 	"sgtnserver/internal/config"
@@ -68,32 +68,31 @@ func TestTransCache(t *testing.T) {
 	viFilePath := path.Join(config.Settings.LocalBundle.BasePath, Name, Version, Component, translation.GetBundleFilename(locale))
 	zhFilePath := path.Join(config.Settings.LocalBundle.BasePath, Name, Version, Component, translation.GetBundleFilename("zh-Hans"))
 
-	l3Service.ClearCache(nil)
+	l3Service.ClearCache(context.TODO())
 
 	c, ok := cache.GetCache("translation")
 	assert.True(t, ok)
 
 	// Query first to make sure vi doesn't exist
 	id := &translation.BundleID{Name: Name, Version: Version, Locale: locale, Component: Component}
-	_, err := l3Service.GetBundle(nil, id)
+	_, err := l3Service.GetBundle(context.TODO(), id)
 	assert.NotNil(t, err)
-	assert.Contains(t, err.Error(), "Not Found")
+	assert.Contains(t, err.Error(), "Fail to get translation for")
 
 	err = fileutils.CopyFile(viFilePath, zhFilePath)
 	assert.Nil(t, err)
 	defer func() {
 		os.Remove(viFilePath)
-		l3Service.ClearCache(nil)
+		l3Service.ClearCache(context.TODO())
 	}()
 
-	err = l3Service.ClearCache(nil)
+	err = l3Service.ClearCache(context.TODO())
 	assert.Nil(t, err)
 
 	// Query again to populate cache
-	_, err = l3Service.GetBundle(nil, id)
+	_, err = l3Service.GetBundle(context.TODO(), id)
 	assert.Nil(t, err)
 
-	time.Sleep(time.Millisecond)
 	// query from cache to check entry exists
 	_, err = c.Get(fmt.Sprintf("%s:%s:%s:%s", id.Name, id.Version, id.Locale, id.Component))
 	assert.Nil(t, err)
@@ -105,111 +104,117 @@ func TestTransExceptionArgs(t *testing.T) {
 	invalidKey := "invalid_key"
 	normalBundleID := translation.BundleID{Name: invalidName, Version: Version, Locale: Locale, Component: Component}
 
-	_, err = translationservice.GetService().GetString(nil, Name, Version, Locale, Component, invalidKey)
+	msgID := translation.MessageID{Name: Name, Version: Version, Locale: Locale, Component: Component, Key: invalidKey}
+	_, err = translationservice.GetService().GetString(context.TODO(), &msgID)
 	assert.NotNil(t, err)
 	assert.Contains(t, err.Error(), invalidKey)
 
 	// invalid product name
 	id := normalBundleID
 	id.Name = invalidName
-	_, err = translationservice.GetService().GetBundle(nil, &id)
+	_, err = translationservice.GetService().GetBundle(context.TODO(), &id)
 	assert.NotNil(t, err)
 	assert.Contains(t, err.Error(), invalidName)
 
-	_, err = translationservice.GetService().GetAvailableBundles(nil, id.Name, id.Version)
+	_, err = translationservice.GetService().GetAvailableBundles(context.TODO(), id.Name, id.Version)
 	assert.NotNil(t, err)
 	assert.Contains(t, err.Error(), invalidName)
 
-	_, err = translationservice.GetService().GetAvailableComponents(nil, id.Name, id.Version)
+	_, err = translationservice.GetService().GetAvailableComponents(context.TODO(), id.Name, id.Version)
 	assert.NotNil(t, err)
 	assert.Contains(t, err.Error(), invalidName)
 
-	_, err = translationservice.GetService().GetAvailableLocales(nil, id.Name, id.Version)
+	_, err = translationservice.GetService().GetAvailableLocales(context.TODO(), id.Name, id.Version)
 	assert.NotNil(t, err)
 	assert.Contains(t, err.Error(), invalidName)
 
-	_, err = translationservice.GetService().GetMultipleBundles(nil, id.Name, id.Version, id.Locale, id.Component)
+	_, err = translationservice.GetService().GetMultipleBundles(context.TODO(), id.Name, id.Version, id.Locale, id.Component)
 	assert.NotNil(t, err)
 	assert.Contains(t, err.Error(), invalidName)
 
-	_, err = translationservice.GetService().GetMultipleBundles(nil, id.Name, id.Version, "", "") // both locales and components are empty
+	_, err = translationservice.GetService().GetMultipleBundles(context.TODO(), id.Name, id.Version, "", "") // both locales and components are empty
 	assert.NotNil(t, err)
 	assert.Contains(t, err.Error(), invalidName)
 
-	_, err = translationservice.GetService().GetMultipleBundles(nil, id.Name, id.Version, "", id.Component) // locales are empty
+	_, err = translationservice.GetService().GetMultipleBundles(context.TODO(), id.Name, id.Version, "", id.Component) // locales are empty
 	assert.NotNil(t, err)
 	assert.Contains(t, err.Error(), invalidName)
 
-	_, err = translationservice.GetService().GetMultipleBundles(nil, id.Name, id.Version, id.Locale, "") // components are empty
+	_, err = translationservice.GetService().GetMultipleBundles(context.TODO(), id.Name, id.Version, id.Locale, "") // components are empty
 	assert.NotNil(t, err)
 	assert.Contains(t, err.Error(), invalidName)
 
-	_, err = translationservice.GetService().GetString(nil, id.Name, id.Version, id.Locale, id.Component, "")
+	msgID = translation.MessageID{Name: id.Name, Version: id.Version, Locale: id.Locale, Component: id.Component, Key: ""}
+	_, err = translationservice.GetService().GetString(context.TODO(), &msgID)
 	assert.NotNil(t, err)
 	assert.Contains(t, err.Error(), invalidName)
 
 	// Invalid version
 	id = normalBundleID
 	id.Version = invalidVersion
-	_, err = translationservice.GetService().GetBundle(nil, &id)
+	_, err = translationservice.GetService().GetBundle(context.TODO(), &id)
 	assert.NotNil(t, err)
 	assert.Contains(t, err.Error(), invalidVersion)
 
-	_, err = translationservice.GetService().GetAvailableBundles(nil, id.Name, id.Version)
+	_, err = translationservice.GetService().GetAvailableBundles(context.TODO(), id.Name, id.Version)
 	assert.NotNil(t, err)
 	assert.Contains(t, err.Error(), invalidVersion)
 
-	_, err = translationservice.GetService().GetAvailableComponents(nil, id.Name, id.Version)
+	_, err = translationservice.GetService().GetAvailableComponents(context.TODO(), id.Name, id.Version)
 	assert.NotNil(t, err)
 	assert.Contains(t, err.Error(), invalidVersion)
 
-	_, err = translationservice.GetService().GetAvailableLocales(nil, id.Name, id.Version)
+	_, err = translationservice.GetService().GetAvailableLocales(context.TODO(), id.Name, id.Version)
 	assert.NotNil(t, err)
 	assert.Contains(t, err.Error(), invalidVersion)
 
-	_, err = translationservice.GetService().GetMultipleBundles(nil, id.Name, id.Version, id.Locale, id.Component)
+	_, err = translationservice.GetService().GetMultipleBundles(context.TODO(), id.Name, id.Version, id.Locale, id.Component)
 	assert.NotNil(t, err)
 	assert.Contains(t, err.Error(), invalidVersion)
 
-	_, err = translationservice.GetService().GetString(nil, id.Name, id.Version, id.Locale, id.Component, "")
+	msgID = translation.MessageID{Name: id.Name, Version: id.Version, Locale: id.Locale, Component: id.Component, Key: ""}
+	_, err = translationservice.GetService().GetString(context.TODO(), &msgID)
 	assert.NotNil(t, err)
 	assert.Contains(t, err.Error(), invalidVersion)
 
 	// Invalid locale
 	id = normalBundleID
 	id.Locale = invalidLocale
-	_, err = translationservice.GetService().GetBundle(nil, &id)
+	_, err = translationservice.GetService().GetBundle(context.TODO(), &id)
 	assert.NotNil(t, err)
 	assert.Contains(t, err.Error(), invalidLocale)
 
-	_, err = translationservice.GetService().GetMultipleBundles(nil, id.Name, id.Version, id.Locale, id.Component)
+	_, err = translationservice.GetService().GetMultipleBundles(context.TODO(), id.Name, id.Version, id.Locale, id.Component)
 	assert.NotNil(t, err)
 	assert.Contains(t, err.Error(), invalidLocale)
 
-	_, err = translationservice.GetService().GetString(nil, id.Name, id.Version, id.Locale, id.Component, "")
+	msgID = translation.MessageID{Name: id.Name, Version: id.Version, Locale: id.Locale, Component: id.Component, Key: ""}
+	_, err = translationservice.GetService().GetString(context.TODO(), &msgID)
 	assert.NotNil(t, err)
 	assert.Contains(t, err.Error(), invalidLocale)
 
 	// Invalid component
 	id = normalBundleID
 	id.Component = invalidComponent
-	_, err = translationservice.GetService().GetBundle(nil, &id)
+	_, err = translationservice.GetService().GetBundle(context.TODO(), &id)
 	assert.NotNil(t, err)
 	assert.Contains(t, err.Error(), invalidComponent)
 
-	_, err = translationservice.GetService().GetMultipleBundles(nil, id.Name, id.Version, id.Locale, id.Component)
+	_, err = translationservice.GetService().GetMultipleBundles(context.TODO(), id.Name, id.Version, id.Locale, id.Component)
 	assert.NotNil(t, err)
 	assert.Contains(t, err.Error(), invalidComponent)
 
-	_, err = translationservice.GetService().GetString(nil, id.Name, id.Version, id.Locale, id.Component, "")
+	msgID = translation.MessageID{Name: id.Name, Version: id.Version, Locale: id.Locale, Component: id.Component, Key: ""}
+	_, err = translationservice.GetService().GetString(context.TODO(), &msgID)
 	assert.NotNil(t, err)
 	assert.Contains(t, err.Error(), invalidComponent)
 }
 
 func TestLocaleMapping(t *testing.T) {
 	id := translation.BundleID{Name: Name, Version: Version, Locale: "zh-CN", Component: Component}
-	_, err := translationservice.GetService().GetBundle(nil, &id)
+	bundle, err := translationservice.GetService().GetBundle(context.TODO(), &id)
 	assert.Nil(t, err)
+	assert.Equal(t, bundle.ID.Locale, "zh-Hans")
 }
 
 func TestPickupLocaleFromListFunc(t *testing.T) {
@@ -241,7 +246,7 @@ func TestPickupLocaleFromListFunc(t *testing.T) {
 }
 
 func TestBundleInfoByGetBundle(t *testing.T) {
-	l3Service.ClearCache(nil)
+	l3Service.ClearCache(context.TODO())
 
 	id := &translation.BundleID{Name: Name, Version: Version, Locale: Locale, Component: Component}
 	compactID := translation.CompactBundleID{Locale: Locale, Component: Component}
@@ -251,7 +256,7 @@ func TestBundleInfoByGetBundle(t *testing.T) {
 	assert.True(t, ok)
 	assert.NotContains(t, availableBundles.Values(), compactID)
 
-	_, err := l3Service.GetBundle(nil, id)
+	_, err := l3Service.GetBundle(context.TODO(), id)
 	assert.Nil(t, err)
 
 	availableBundles, ok = bundleinfo.GetAvailableBundles(Name, Version)
@@ -270,11 +275,11 @@ func TestBundleInfoByPutBundle(t *testing.T) {
 	json.UnmarshalFromString(`{"one.arg": "test one argument {0}"}`, &msg)
 	bundles = append(bundles, &translation.Bundle{ID: id, Messages: msg})
 
-	err := l3Service.PutBundles(nil, bundles)
+	err := l3Service.PutBundles(context.TODO(), bundles)
 	assert.Nil(t, err)
 	defer func() {
 		os.RemoveAll(path.Join(config.Settings.LocalBundle.BasePath, Name, Version, component))
-		l3Service.ClearCache(nil)
+		l3Service.ClearCache(context.TODO())
 	}()
 
 	// Check bundle information is updated

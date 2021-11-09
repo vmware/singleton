@@ -5,13 +5,16 @@
 
 package translation
 
-import (
-	"sgtnserver/api/v2/translation"
-)
+import "sgtnserver/api/v2/translation"
 
 type (
-	ReleaseID            translation.ReleaseID
-	BundleID             translation.BundleID
-	MessageID            translation.MessageID
-	UpdateTranslationDTO translation.UpdateTranslationDTO
+	ReleaseID translation.ReleaseID
+
+	GetStringReq struct {
+		ReleaseID
+		Locale    string `form:"locale" binding:"locale"`
+		Component string `form:"component" binding:"component"`
+		Key       string `form:"key" binding:"key"`
+		Source    string `form:"source"`
+	}
 )

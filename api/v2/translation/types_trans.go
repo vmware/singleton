@@ -5,24 +5,37 @@
 
 package translation
 
-import jsoniter "github.com/json-iterator/go"
+import (
+	jsoniter "github.com/json-iterator/go"
+)
 
 // Request
 type (
 	ReleaseID struct {
-		ProductName string `uri:"productName" form:"productName" binding:"required,alphanum"`
-		Version     string `uri:"version" form:"version" binding:"required,version"`
+		ProductName string `uri:"productName" form:"productName" binding:"alphanum"`
+		Version     string `uri:"version" form:"version" binding:"version"`
 	}
 
 	BundleID struct {
 		ReleaseID
-		Locale    string `uri:"locale" form:"locale" binding:"required,locale"`
-		Component string `uri:"component" form:"component" binding:"required,component"`
+		Locale    string `uri:"locale" binding:"locale"`
+		Component string `uri:"component" binding:"component"`
 	}
 
-	MessageID struct {
+	StringID struct {
 		BundleID
-		Key string `uri:"key" form:"key" binding:"required,key"`
+		Key string `uri:"key" binding:"key"`
+	}
+
+	GetStringReq struct {
+		StringID
+		Source string `form:"source"`
+	}
+
+	GetStringByPostReq struct {
+		StringID
+		Source                 string `form:"source"`
+		CheckTranslationStatus bool   `form:"checkTranslationStatus"`
 	}
 
 	ProductReq struct {
@@ -37,16 +50,21 @@ type (
 	}
 	UpdateBundle struct {
 		ReleaseID
-		Translation []*BundleData `json:"translation" binding:"required"`
+		Translation []*BundleData `json:"translation" binding:"required,dive"`
 		DataOrigin  string        `json:"dataOrigin"`
 		Creation    struct {
 			OperationID string `json:"operationid"`
 		} `json:"creation"`
 	}
 	BundleData struct {
-		Component string       `json:"component" binding:"required,component"`
-		Locale    string       `json:"locale" binding:"required,locale"`
+		Component string       `json:"component" binding:"component"`
+		Locale    string       `json:"locale" binding:"locale"`
 		Messages  jsoniter.Any `json:"messages" binding:"required"`
+	}
+
+	GetBundleReq struct {
+		BundleID
+		CheckTranslationStatus bool `form:"checkTranslationStatus" default:"false"`
 	}
 )
 
@@ -59,6 +77,8 @@ type (
 		Component   string       `json:"component"`
 		ID          int          `json:"id,omitempty"`
 		Messages    jsoniter.Any `json:"messages"`
+
+		Status map[string]interface{} `json:"status,omitempty"`
 	}
 
 	ReleaseData struct {

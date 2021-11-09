@@ -6,6 +6,7 @@
 package tests
 
 import (
+	"context"
 	"fmt"
 	"reflect"
 	"strings"
@@ -13,17 +14,17 @@ import (
 	"testing"
 	"time"
 
-	"github.com/go-test/deep"
-	"github.com/stretchr/objx"
-	"github.com/stretchr/testify/assert"
-	"go.uber.org/zap"
-
 	"sgtnserver/internal/cache"
 	"sgtnserver/internal/common"
 	"sgtnserver/internal/logger"
 	"sgtnserver/modules/cldr/cldrservice"
 	"sgtnserver/modules/cldr/coreutil"
 	"sgtnserver/modules/cldr/localeutil"
+
+	"github.com/go-test/deep"
+	"github.com/stretchr/objx"
+	"github.com/stretchr/testify/assert"
+	"go.uber.org/zap"
 )
 
 func TestGetCLDRLocale(t *testing.T) {
@@ -66,7 +67,7 @@ func TestGetLanguageFunc(t *testing.T) {
 		d := d
 		t.Run(d.input, func(t *testing.T) {
 			normalLocale := strings.ToLower(coreutil.GetCLDRLocale(d.input))
-			data, err := localeutil.GetLocaleLanguages(nil, normalLocale)
+			data, err := localeutil.GetLocaleLanguages(context.TODO(), normalLocale)
 			assert.Nil(t, err)
 
 			var expected map[string]string
@@ -100,7 +101,7 @@ func TestGetRegionsFunc(t *testing.T) {
 	} {
 		d := d
 		t.Run(d.input, func(t *testing.T) {
-			data, err := localeutil.GetTerritoriesOfMultipleLocales(nil, []string{d.input})
+			data, err := localeutil.GetTerritoriesOfMultipleLocales(context.TODO(), []string{d.input})
 			assert.Nil(t, err)
 			bts, _ := json.Marshal(data)
 			assert.Contains(t, string(bts), d.wanted)
@@ -115,7 +116,7 @@ func TestScopeFilter(t *testing.T) {
 	} {
 		d := d
 		t.Run(fmt.Sprintf("%v", d), func(t *testing.T) {
-			cldrLocale, result, err := cldrservice.GetPatternByLocale(nil, d.locale, d.scope, d.scopeFilter)
+			cldrLocale, result, err := cldrservice.GetPatternByLocale(context.TODO(), d.locale, d.scope, d.scopeFilter)
 			assert.Nil(t, err)
 			assert.Equal(t, "en", cldrLocale)
 
@@ -135,12 +136,16 @@ func TestScopeFilter(t *testing.T) {
 }
 
 func TestCLDRCache(t *testing.T) {
+	if !localeutil.EnableCache {
+		return
+	}
+
 	c, ok := cache.GetCache("cldr")
 	assert.True(t, ok)
 	c.Clear()
 
 	locale, scope := "en", "dates"
-	_, data, err := cldrservice.GetPatternByLocale(nil, locale, scope, "")
+	_, data, err := cldrservice.GetPatternByLocale(context.TODO(), locale, scope, "")
 	assert.Nil(t, err)
 
 	time.Sleep(time.Millisecond)
@@ -149,11 +154,12 @@ func TestCLDRCache(t *testing.T) {
 	assert.NotNil(t, cachedData)
 
 	// query again to verify Cache works properly
-	_, data2, err := cldrservice.GetPatternByLocale(nil, locale, scope, "")
+	_, data2, err := cldrservice.GetPatternByLocale(context.TODO(), locale, scope, "")
 	assert.Nil(t, err)
 	assert.True(t, assert.ObjectsAreEqual(data, data2))
 }
 
+// TestParallelGetPattern Test DoAndWait by getting pattern parallelly
 func TestParallelGetPattern(t *testing.T) {
 	// clear the cache to test querying parallelly
 	c, _ := cache.GetCache("cldr")
@@ -164,7 +170,11 @@ func TestParallelGetPattern(t *testing.T) {
 		wg.Add(1)
 		go func(i int) {
 			defer wg.Done()
-			_, _, err := cldrservice.GetPatternByLocale(logger.NewContext(nil, logger.Log.With(zap.Int("thread", i))), Locale, "dates", "")
+			_, _, err := cldrservice.GetPatternByLocale(
+				logger.NewContext(context.TODO(), logger.Log.With(zap.Int("thread", i))),
+				Locale,
+				"dates",
+				"")
 			assert.Nil(t, err, "error is %+v", err)
 		}(i)
 	}

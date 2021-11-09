@@ -1,0 +1,26 @@
+version: '2.1'
+orbs:
+  go: circleci/go@1.7.0
+jobs:
+  build:
+    executor:
+        name: go/default
+        tag: '1.16'
+    steps:
+    - checkout
+    - run:
+        name: build
+        command: |
+          make build
+          ls -ltr builds
+
+workflows:
+  main:
+    jobs:
+      - build:
+          filters:
+            branches:
+              only:
+                - g11n-go-service
+
+          

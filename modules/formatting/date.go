@@ -14,16 +14,15 @@ import (
 	"sgtnserver/modules/cldr"
 	"sgtnserver/modules/cldr/coreutil"
 
-	"golang.org/x/text/language"
-
 	"github.com/xiaochao8/format/date"
+	"golang.org/x/text/language"
 )
 
 // SimpleFormatDateTime
 func SimpleFormatDateTime(ctx context.Context, tm time.Time, pattern, locale string) (string, error) {
 	cldrLocale := coreutil.GetCLDRLocale(locale)
 	if len(cldrLocale) == 0 {
-		err := sgtnerror.StatusNotFound.WithUserMessage(cldr.InvalidLocale, locale)
+		err := sgtnerror.StatusBadRequest.WithUserMessage(cldr.InvalidLocale, locale)
 		logger.FromContext(ctx).Error(err.Error())
 		return "", err
 	}

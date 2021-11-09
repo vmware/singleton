@@ -8,13 +8,12 @@ package api
 import (
 	"crypto/sha1"
 	"fmt"
-	"net/http"
-
-	"github.com/gin-gonic/gin"
-	"go.uber.org/zap"
 
 	"sgtnserver/internal/logger"
 	"sgtnserver/internal/sgtnerror"
+
+	"github.com/gin-gonic/gin"
+	"go.uber.org/zap"
 )
 
 func IsHTTPSuccess(status int) bool {
@@ -41,9 +40,8 @@ func GetLogger(c *gin.Context) *zap.Logger {
 
 func HandleResponse(c *gin.Context, data interface{}, err error) {
 	se := ToBusinessError(err)
-	httpCode := se.Code
 
-	if c.Request.Method == http.MethodGet && IsHTTPSuccess(httpCode) {
+	if IsHTTPSuccess(se.HTTPCode) {
 		if _, ok := c.Get(VerFallbackKey); ok {
 			se = &BusinessError{
 				Code:    sgtnerror.StatusVersionFallbackTranslation.Code(),
@@ -55,41 +53,58 @@ func HandleResponse(c *gin.Context, data interface{}, err error) {
 		ce.Write(zap.Any("business response", se))
 	}
 
-	c.JSON(httpCode, Response{Error: se, Data: data})
+	c.JSON(se.HTTPCode, Response{Error: se, Data: data})
 }
 
 func AbortWithError(c *gin.Context, err error) {
 	GetLogger(c).Error(err.Error())
-	c.AbortWithStatusJSON(sgtnerror.GetCode(err), Response{Error: ToBusinessError(err)})
+	bError := ToBusinessError(err)
+	c.AbortWithStatusJSON(bError.HTTPCode, Response{Error: bError})
+}
+
+func ExtractParameters(c *gin.Context, uriPart, formPart interface{}) (err error) {
+	if uriPart != nil {
+		if err = c.ShouldBindUri(uriPart); err != nil {
+			AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(ExtractErrorMsg(err)))
+			return err
+		}
+	}
+
+	if formPart != nil {
+		if err = c.ShouldBindQuery(formPart); err != nil {
+			AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(ExtractErrorMsg(err)))
+			return err
+		}
+	}
+
+	return nil
 }
 
 // ToBusinessError ...
 func ToBusinessError(err error) *BusinessError {
 	if err == nil {
-		return &BusinessError{Code: sgtnerror.StatusSuccess.Code(), UserMsg: sgtnerror.StatusSuccess.Message()}
+		return err_success
 	}
 
 	switch e := err.(type) {
 	case *sgtnerror.MultiError:
 		if e.ErrorOrNil() == nil {
-			return &BusinessError{Code: sgtnerror.StatusSuccess.Code(), UserMsg: sgtnerror.StatusSuccess.Message()}
+			return err_success
 		}
 		if e.IsAllFailed() {
 			// If all the operations are failed, return the first error code.
 			for _, err := range e.Errors() {
-				if se, ok := err.(*sgtnerror.Error); ok {
-					return &BusinessError{Code: se.Code(), UserMsg: e.Error()}
+				if se, ok := err.(sgtnerror.Error); ok {
+					return &BusinessError{Code: se.Code(), HTTPCode: se.HTTPCode(), UserMsg: e.Error()}
 				}
 			}
-			return &BusinessError{Code: sgtnerror.UnknownError.Code(), UserMsg: e.Error()}
+			return &BusinessError{Code: sgtnerror.UnknownError.Code(), HTTPCode: sgtnerror.UnknownError.HTTPCode(), UserMsg: e.Error()}
+		} else {
+			return err_207
 		}
-		return &BusinessError{Code: sgtnerror.StatusPartialSuccess.Code(), UserMsg: e.Error()}
-	case *sgtnerror.Error:
-		if e == nil {
-			return &BusinessError{Code: sgtnerror.StatusSuccess.Code(), UserMsg: sgtnerror.StatusSuccess.Message()}
-		}
-		return &BusinessError{Code: e.Code(), UserMsg: e.Message()}
+	case sgtnerror.Error:
+		return &BusinessError{Code: e.Code(), HTTPCode: e.HTTPCode(), UserMsg: e.Message()}
 	default:
-		return &BusinessError{Code: sgtnerror.UnknownError.Code(), UserMsg: err.Error()}
+		return &BusinessError{Code: sgtnerror.UnknownError.Code(), HTTPCode: sgtnerror.UnknownError.HTTPCode(), UserMsg: err.Error()}
 	}
 }

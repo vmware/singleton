@@ -6,8 +6,6 @@
 package translation
 
 import (
-	"net/http"
-
 	"sgtnserver/api"
 	"sgtnserver/internal/sgtnerror"
 	"sgtnserver/modules/translation/translationservice"
@@ -18,26 +16,35 @@ import (
 
 // HandleVersionFallback ...
 func HandleVersionFallback(c *gin.Context) {
-	if c.Request.Method != http.MethodGet {
-		return
-	}
-
-	id := &ReleaseID{}
-	if c.ShouldBindUri(id) == nil || c.ShouldBindQuery(id) == nil {
-		pickedVersion := translationservice.PickupVersion(id.ProductName, id.Version)
-		c.Set(api.SgtnVersionKey, pickedVersion)
-		if pickedVersion != id.Version {
-			c.Set(api.VerFallbackKey, true)
-			api.GetLogger(c).Warn("Version fallback occurs", zap.String("from", id.Version), zap.String("to", pickedVersion))
+	var ok bool
+	name := c.Param(api.ProductNameAPIKey)
+	if name == "" {
+		if name, ok = c.GetQuery(api.ProductNameAPIKey); !ok {
+			return
 		}
 	}
+	version := c.Param(api.VersionAPIKey)
+	if version == "" {
+		if version, ok = c.GetQuery(api.VersionAPIKey); !ok {
+			return
+		}
+	}
+
+	DoVersionFallback(c, name, version)
+}
+
+func DoVersionFallback(c *gin.Context, name, version string) string {
+	pickedVersion := translationservice.PickupVersion(name, version)
+	c.Set(api.SgtnVersionKey, pickedVersion)
+	if pickedVersion != version {
+		c.Set(api.VerFallbackKey, true)
+		api.GetLogger(c).Warn("Version fallback occurs", zap.String("from", version), zap.String("to", pickedVersion))
+	}
+
+	return pickedVersion
 }
 
 func HandleAllowList(c *gin.Context) {
-	if c.IsAborted() || c.Request.Method != http.MethodGet {
-		return
-	}
-
 	productName := c.Param(api.ProductNameAPIKey)
 	if productName == "" {
 		var ok bool

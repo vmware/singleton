@@ -7,6 +7,7 @@ package common
 
 import (
 	"context"
+	"reflect"
 	"strings"
 	"time"
 
@@ -81,4 +82,8 @@ func ToGenericArray(x []string) []interface{} {
 		s[i] = v
 	}
 	return s
+}
+
+func IsZeroOfUnderlyingType(x interface{}) bool {
+	return reflect.DeepEqual(x, reflect.Zero(reflect.TypeOf(x)).Interface())
 }

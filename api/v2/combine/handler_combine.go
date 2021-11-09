@@ -8,10 +8,6 @@ package combine
 import (
 	"strings"
 
-	"github.com/gin-gonic/gin"
-	"github.com/go-playground/validator/v10"
-	"go.uber.org/zap"
-
 	"sgtnserver/api"
 	cldrApi "sgtnserver/api/v2/cldr"
 	transApi "sgtnserver/api/v2/translation"
@@ -24,6 +20,8 @@ import (
 	"sgtnserver/modules/cldr/localeutil"
 	"sgtnserver/modules/translation"
 	"sgtnserver/modules/translation/translationservice"
+
+	"github.com/gin-gonic/gin"
 )
 
 var l3Service translation.Service = translationservice.GetService()
@@ -48,17 +46,13 @@ var l3Service translation.Service = translationservice.GetService()
 // @Failure 500 {string} string "Internal Server Error"
 // @Router /combination/translationsAndPattern [get]
 func getCombinedData(c *gin.Context) {
-	params := new(translationWithPatternReq)
-	if err := c.ShouldBindQuery(params); err != nil {
-		var msg interface{} = err.Error()
-		if vErrors, ok := err.(validator.ValidationErrors); ok {
-			msg = api.RemoveStruct(vErrors.Translate(api.ValidatorTranslator))
-		}
-		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage("%+v", msg))
+	params := translationWithPatternReq{}
+	if err := api.ExtractParameters(c, nil, &params); err != nil {
 		return
 	}
 
-	doGetCombinedData(c, params)
+	params.Version = c.GetString(api.SgtnVersionKey)
+	doGetCombinedData(c, &params)
 }
 
 // getLanguageListOfDispLang godoc
@@ -76,13 +70,8 @@ func getCombinedData(c *gin.Context) {
 // @Failure 500 {string} string "Internal Server Error"
 // @Router /locale/supportedLanguageList [get]
 func getLanguageListOfDispLang(c *gin.Context) {
-	params := new(languageListReq)
-	if err := c.ShouldBindQuery(params); err != nil {
-		var msg interface{} = err.Error()
-		if vErrors, ok := err.(validator.ValidationErrors); ok {
-			msg = api.RemoveStruct(vErrors.Translate(api.ValidatorTranslator))
-		}
-		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage("%+v", msg))
+	params := languageListReq{}
+	if err := api.ExtractParameters(c, nil, &params); err != nil {
 		return
 	}
 	version := c.GetString(api.SgtnVersionKey)
@@ -102,7 +91,7 @@ func getLanguageListOfDispLang(c *gin.Context) {
 	if params.DisplayLanguage != "" {
 		cldrLocale := coreutil.GetCLDRLocale(params.DisplayLanguage)
 		if cldrLocale == "" {
-			api.AbortWithError(c, sgtnerror.StatusNotFound.WithUserMessage(cldr.InvalidLocale, params.DisplayLanguage))
+			api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(cldr.InvalidLocale, params.DisplayLanguage))
 			return
 		}
 		languagesDataOfLocale, err = localeutil.GetLocaleLanguages(ctx, cldrLocale)
@@ -171,45 +160,39 @@ func getLanguageListOfDispLang(c *gin.Context) {
 // @Router /combination/translationsAndPattern [post]
 // @Deprecated
 func getCombinedDataByPost(c *gin.Context) {
-	params := new(translationWithPatternPostReq)
-	if err := c.ShouldBindJSON(params); err != nil {
-		var msg interface{} = err.Error()
-		if vErrors, ok := err.(validator.ValidationErrors); ok {
-			msg = api.RemoveStruct(vErrors.Translate(api.ValidatorTranslator))
-		}
-		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage("%+v", msg))
+	params := translationWithPatternPostReq{}
+	if err := c.ShouldBindJSON(&params); err != nil {
+		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(api.ExtractErrorMsg(err)))
 		return
 	}
 
-	// Do version fallback
-	id := params.ReleaseID
-	pickedVersion := translationservice.PickupVersion(id.ProductName, id.Version)
-	c.Set(api.SgtnVersionKey, pickedVersion)
-	if pickedVersion != id.Version {
-		c.Set(api.VerFallbackKey, true)
-		api.GetLogger(c).Warn("Version fallback occurs", zap.String("from", id.Version), zap.String("to", pickedVersion))
+	if !translationservice.IsProductExist(params.ProductName) {
+		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage("Product '%s' doesn't exist", params.ProductName))
+		return
 	}
 
+	params.Version = transApi.DoVersionFallback(c, params.ProductName, params.Version)
+
 	req := translationWithPatternReq{
-		Combine:     params.Combine,
-		ReleaseID:   params.ReleaseID,
-		Language:    params.Language,
-		Region:      params.Region,
-		Components:  strings.Join(params.Components, common.ParamSep),
-		Scope:       params.Scope,
-		ScopeFilter: params.ScopeFilter}
+		Combine:    params.Combine,
+		ReleaseID:  params.ReleaseID,
+		Language:   params.Language,
+		Region:     params.Region,
+		Components: strings.Join(params.Components, common.ParamSep),
+		PatternScope: cldrApi.PatternScope{
+			Scope:       params.Scope,
+			ScopeFilter: params.ScopeFilter}}
 	doGetCombinedData(c, &req)
 }
 
 func doGetCombinedData(c *gin.Context, params *translationWithPatternReq) {
-	version := c.GetString(api.SgtnVersionKey)
 	ctx := logger.NewContext(c, c.MustGet(api.LoggerKey))
 
 	var allErrors, translationError, patternError error
 	var transData []*translation.Bundle
 	var patternDataMap map[string]interface{}
 	var localeToSet, language, region = "", params.Language, params.Region
-	data := translationWithPatternData{}
+	data := new(translationWithPatternData)
 
 	switch params.Combine {
 	// get pattern use parameter: language, scope, region, get the translation use parameters language, productName, version, component
@@ -219,7 +202,7 @@ func doGetCombinedData(c *gin.Context, params *translationWithPatternReq) {
 			return
 		}
 		patternDataMap, localeToSet, patternError = cldrservice.GetPatternByLangReg(ctx, params.Language, params.Region, params.Scope, params.ScopeFilter)
-		transData, translationError = l3Service.GetMultipleBundles(ctx, params.ProductName, version, params.Language, params.Components)
+		transData, translationError = l3Service.GetMultipleBundles(ctx, params.ProductName, params.Version, params.Language, params.Components)
 	// get pattern use parameter: language, scope, get the translation use parameters language, productName, version, component
 	case 2:
 		localeToSet, patternDataMap, patternError = cldrservice.GetPatternByLocale(ctx, params.Language, params.Scope, params.ScopeFilter)
@@ -227,10 +210,10 @@ func doGetCombinedData(c *gin.Context, params *translationWithPatternReq) {
 			parts := strings.Split(localeToSet, cldr.LocalePartSep)
 			language = parts[0]
 			if region = coreutil.ParseRegion(parts); region == "" {
-				region = localeutil.GetLocaleDefaultRegion(ctx, localeToSet)
+				region, _ = localeutil.GetLocaleDefaultRegion(ctx, localeToSet)
 			}
 		}
-		transData, translationError = l3Service.GetMultipleBundles(ctx, params.ProductName, version, params.Language, params.Components)
+		transData, translationError = l3Service.GetMultipleBundles(ctx, params.ProductName, params.Version, params.Language, params.Components)
 	default:
 		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage("Unsupported combination type: %d", params.Combine))
 		return
@@ -238,26 +221,28 @@ func doGetCombinedData(c *gin.Context, params *translationWithPatternReq) {
 	allErrors = sgtnerror.Append(patternError, translationError)
 
 	for _, t := range transData {
-		data.Components = append(data.Components, transApi.ConvertBundleToAPI(t))
+		data.Bundles = append(data.Bundles, transApi.ConvertBundleToAPI(t))
 	}
-	if len(patternDataMap) > 0 {
-		data.Pattern = patternData{
+	if len(patternDataMap) > 0 && isExistPattern(patternDataMap) {
+		data.Pattern = &patternData{
 			PatternData: cldrApi.PatternData{
 				LocaleID:   localeToSet,
 				Language:   language,
 				Region:     region,
 				Categories: patternDataMap,
 			},
-			IsExistPattern: func() bool {
-				for _, v := range patternDataMap {
-					if v != nil {
-						return true
-					}
-				}
-				return false
-			}(),
+			IsExistPattern: true,
 		}
 	}
 
 	api.HandleResponse(c, data, allErrors)
+}
+
+func isExistPattern(patternDataMap map[string]interface{}) bool {
+	for _, v := range patternDataMap {
+		if v != nil && !common.IsZeroOfUnderlyingType(v) {
+			return true
+		}
+	}
+	return false
 }
