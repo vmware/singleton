@@ -1,16 +1,16 @@
-coverage:
-  status:
-    project:
-      default:
-        target: 50%
-        if_ci_failed: error
-        flags:
-          - coverage
-    patch:
-      default:
-        target: 100%
-flags:
-  coverage:
-    paths:
-      - ./cover.out
-    carryforward: true
+# coverage:
+#   status:
+#     project:
+#       default:
+#         target: 50%
+#         if_ci_failed: error
+#         flags:
+#           - coverage
+#     patch:
+#       default:
+#         target: 100%
+# flags:
+#   coverage:
+#     paths:
+#       - ./cover.out
+#     carryforward: true
