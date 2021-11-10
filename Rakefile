@@ -1,4 +1,3 @@
-# load `rake build/install/release tasks'
 require 'bundler/setup'
 require_relative './lib/version'
 
