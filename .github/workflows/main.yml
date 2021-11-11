@@ -56,15 +56,16 @@ jobs:
         run: |
           go build
           go test -v | tee unittest.log
-      # - name: Coverage
-      #   run: |
-      #     make coverage
-      # - name: Upload Codecov report for go-coverage
-      #   uses: codecov/codecov-action@v2
-      #   with:
-      #     token: bb02a13d-4b5d-4217-8e68-074b6326977b
-      #     files: ./cover.out
-      #     flags: coverage
+      - name: Coverage
+        run: |
+          go test -json > report.json
+          go test -coverprofile=coverage.out
+      - name: Upload Codecov report for goclient-coverage
+        uses: codecov/codecov-action@v2
+        with:
+          token: bb02a13d-4b5d-4217-8e68-074b6326977b
+          files: ./coverage.out
+          flags: coverage
 
   # security-analysis:
   #   name: Security Analysis
