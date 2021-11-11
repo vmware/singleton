@@ -14,7 +14,7 @@ module SgtnClient
                 reg = Regexp.union(
                   /%<(\{.*?\})>/
                 )
-                string.gsub(reg) do |match|
+                string.gsub(reg) do
                   count_placeholder, patterns = if $1
                     pluralization_hash = JSON.parse($1)
                     if pluralization_hash.is_a?(Hash) && pluralization_hash.size == 1
