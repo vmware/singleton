@@ -12,6 +12,11 @@ module SgtnClient
       autoload :ValidateUtil,       "sgtn-client/util/validate-util"
       autoload :LocaleUtil,         "sgtn-client/util/locale-util"
 
+      module Formatters
+            autoload :PluralFormatter,    "sgtn-client/formatters/plurals/plural_formatter"
+      end
+
+
       class << self
             def configure(options = {}, &block)
             SgtnClient::Config.configure(options, &block)
