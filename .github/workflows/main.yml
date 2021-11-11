@@ -40,30 +40,31 @@ jobs:
           git diff ${{ steps.get-commit-range-action.outputs.commit-range }} --stat
           git diff --name-only --diff-filter=d ${{ steps.get-commit-range-action.outputs.commit-range }}
           python ./check_headers.py -f "$(git diff --name-only --diff-filter=d ${{ steps.get-commit-range-action.outputs.commit-range }})"
-  # unit-test:
-  #   name: Unit Test
-  #   runs-on: ubuntu-latest
-  #   needs: pre-process
-  #   if: needs.pre-process.outputs.were-only-docs-updated != 'yes'
-  #   steps:
-  #     - name: Checkout code
-  #       uses: actions/checkout@v2
-  #     - name: Install Go
-  #       uses: actions/setup-go@v2
-  #       with:
-  #         go-version: 1.16.x
-  #     - name: Unit test
-  #       run: |
-  #         make test
-  #     - name: Coverage
-  #       run: |
-  #         make coverage
-  #     - name: Upload Codecov report for go-coverage
-  #       uses: codecov/codecov-action@v2
-  #       with:
-  #         token: bb02a13d-4b5d-4217-8e68-074b6326977b
-  #         files: ./cover.out
-  #         flags: coverage
+  unit-test:
+    name: Unit Test
+    runs-on: ubuntu-latest
+    needs: pre-process
+    if: needs.pre-process.outputs.were-only-docs-updated != 'yes'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Install Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: 1.13
+      - name: Unit test
+        run: |
+          go build
+          go test -v | tee unittest.log
+      # - name: Coverage
+      #   run: |
+      #     make coverage
+      # - name: Upload Codecov report for go-coverage
+      #   uses: codecov/codecov-action@v2
+      #   with:
+      #     token: bb02a13d-4b5d-4217-8e68-074b6326977b
+      #     files: ./cover.out
+      #     flags: coverage
 
   # security-analysis:
   #   name: Security Analysis
