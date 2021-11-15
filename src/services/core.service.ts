@@ -331,4 +331,21 @@ export class CoreService {
         }
         this.cacheManager.addPatternByLocale(patterns, language, region);
     }
+
+    public setCurrentLanguage(language: string) {
+        this.currentLanguage = language;
+    }
+
+    public setCurrentRegion(region: string) {
+        this.currentRegion = region;
+    }
+
+    public getCurrentLanguage() {
+        return this.currentLanguage ? this.currentLanguage : undefined;
+    }
+
+    public getCurrentRegion() {
+        return this.currentRegion ? this.currentRegion : undefined;
+    }
+
 }

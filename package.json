@@ -1,6 +1,6 @@
 {
     "name": "@vip/vip-core-sdk-server",
-    "version": "0.4.3",
+    "version": "0.4.4",
     "publishConfig": {
         "registry": ""
     },
@@ -35,13 +35,13 @@
         "decimal.js-light": "^2.4.1"
     },
     "peerDependencies": {
-        "axios": "^0.18.0"
+        "axios": "^0.21.1"
     },
     "devDependencies": {
         "@types/jest": "^24.0.11",
         "@types/node": "^10.11.7",
         "awesome-typescript-loader": "^5.2.1",
-        "axios": "^0.18.0",
+        "axios": "^0.21.1",
         "jest": "^24.5.0",
         "ts-jest": "^24.0.0",
         "ts-node": "^7.0.1",
@@ -54,6 +54,15 @@
         "webpack-cli": "^3.3.0"
     },
     "changelogHistory": [
+        {
+            "date": "11/15/21",
+            "version": "0.4.4",
+            "notes": [
+                {
+                    "description": "Update axios version and enhance unit test coverage as well as Add setCurrentLanguage/setCurrentRegion methods for CoreService"
+                }
+            ]
+        },
         {
             "date": "07/26/21",
             "version": "0.4.3",
