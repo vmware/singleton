@@ -20,13 +20,16 @@ describe('L10nService', () => {
                 'application': '欢迎来到 VIP Angular 示例应用!',
                 'demo.string.one': 'VIP Angular 客户端同时支持 {0} 和 {1}',
                 'test.split.message-default': '点击链接 ##1 获取最新 ##2 文件。',
-                'test.split.message-custom': `点击链接 '1 获取最新 '2 文件。`
+                'test.split.message-custom': `点击链接 '1 获取最新 '2 文件。`,
+                'test.param-object': '懒加载模块来自于{0}'
             }
         }
     };
+
     function initVIPConfig(service: VIPService, localeService: LocaleService) {
         localeService.init('zh-Hans');
-        return () => service.initData(Object.assign({}, baseConfig, config));
+        const i18nConfig = Object.assign({}, baseConfig, config);
+        return () => service.initData(i18nConfig);
     }
 
     beforeEach(() => {
@@ -68,8 +71,8 @@ describe('L10nService', () => {
     });
 
     it('should call registerSourceBundles method along with souce bundle objects as parameters', () => {
-        spyOn(l10nService,'registerSourceBundles').and.callThrough();
-        expect(l10nService.registerSourceBundles({ENGLISH:'source bundles'})).toHaveBeenCalled;
+        spyOn(l10nService, 'registerSourceBundles').and.callThrough();
+        expect(l10nService.registerSourceBundles({ ENGLISH: 'source bundles' })).toHaveBeenCalled;
     });
 
     it('whether key exists in resource', () => {
@@ -83,12 +86,33 @@ describe('L10nService', () => {
     });
 
     it('should getSplitedMessage', () => {
-        const expectRes = ['点击链接 ', ' 获取最新 ',' 文件。'];
+        const expectRes = ['点击链接 ', ' 获取最新 ', ' 文件。'];
         expect(l10nService.getSplitedMessage('test.split.message-default')).toEqual(expectRes);
 
         const customReg = /\'\d+/;
-        expect( l10nService.getSplitedMessage(
+        expect(l10nService.getSplitedMessage(
             'test.split.message-custom', undefined, undefined, customReg
-            )).toEqual(expectRes);
+        )).toEqual(expectRes);
+    })
+
+    it('should turn object param into string', () => {
+        const translatedStr = l10nService.getMessage(
+            'test.param-object',
+            [{
+                listItems: ['Dascom', 'Vmware', 'Google'],
+                separatorType: '+',
+                type: 1
+            }]
+        );
+        expect(translatedStr).toEqual('懒加载模块来自于Dascom+Vmware+Google');
+
+        const consoleErrorSpy = spyOn(console, 'error');
+        l10nService.getMessage(
+            'test.param-object',
+            [{
+                type: 2, listItems: ['Dascom', 'Vmware', 'Google'],
+                separatorType: '+',
+            }]);
+        expect(consoleErrorSpy).toHaveBeenCalledTimes(1);
     })
 });
