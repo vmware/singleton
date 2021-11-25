@@ -104,6 +104,12 @@ SgtnClient::Source.loadBundles("default")
 # Get translation
 @Result = SgtnClient::Translation.getString("JAVA", "helloworld", "zh-Hans")
 
+# Get pluralized translation
+@Result = SgtnClient::Translation.getString_p("JAVA", "plural_key", { :cat_count => 1 }, "zh-Hans")
+
+# Get formatting translation
+@Result = SgtnClient::Translation.getString_f("JAVA", "helloworld", "zh-Hans")
+
 ```
 
 ## API Usage: DateTime/Date/Time
@@ -123,10 +129,10 @@ More detailed examples:
 ```ruby
 # localize a datetime to es(Spanish)
 d = DateTime.new(2007,11,19,8,37,48,"-06:00")
-d.to_full_s(:es)
-d.to_long_s(:es)
-d.to_medium_s(:es)
-d.to_short_s(:es)
+d.l_full_s(:es)
+d.l_long_s(:es)
+d.l_medium_s(:es)
+d.l_short_s(:es)
 # Note: for the date and time, the usages are same with dateTime
 
 

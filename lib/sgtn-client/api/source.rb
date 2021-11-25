@@ -17,11 +17,14 @@ module SgtnClient
         else
           SgtnClient.logger.debug "Getting sources from cache with key: " + cache_key
         end
-        if items.nil?
-          return key
+        s = items[locale][key]
+        if items.nil? || s.nil?
+          SgtnClient.logger.debug "Source not found, return key: " + key
+          #return key
+          return nil
+        else
+          return s
         end
-        str = items[locale][key]
-        return str
       end
 
       def self.getSources(component, locale)
