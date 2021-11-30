@@ -116,7 +116,7 @@ jobs:
         run: |
           git clone --branch=devops https://github.com/vmware/singleton.git devops
           mv $GITHUB_WORKSPACE/devops/autotest/cldrpattern .
-          docker run -it -v $(pwd):/root/app python:3.7 sh -c 'pip install ddt datetime openpyxl && \
+          docker run -i -v $(pwd):/root/app python:3.7 sh -c 'pip install ddt datetime openpyxl && \
           cd /root/app/cldrpattern && \
           cp HTMLTestRunner.py /usr/lib/python3.7 && \
           python test.py'
