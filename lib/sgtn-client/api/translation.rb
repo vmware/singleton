@@ -12,30 +12,25 @@ module SgtnClient
   class Translation
 
       def self.getString(component, key, locale)
-        flocale = SgtnClient::LocaleUtil.fallback(locale)
-        cache_key = SgtnClient::CacheUtil.get_cachekey(component, flocale)
-        items = SgtnClient::CacheUtil.get_cache(cache_key)
-        if items.nil?
-          items = getTranslations(component, flocale)
-          SgtnClient::CacheUtil.write_cache(cache_key, items)
-        else
-          SgtnClient.logger.debug "Getting translations from cache with key: " + cache_key
-        end
-
-        default = SgtnClient::Config.configurations.default
-        if items.nil? || items["messages"] == nil
-          return SgtnClient::Source.getSource(component, key, default)
-        end
-        str = items["messages"][key]
+        str = getTranslation(component, key, locale)
         if str.nil?
-          return SgtnClient::Source.getSource(component, key, default)
-        else
-          return str
+          str = SgtnClient::Source.getSource(component, key, SgtnClient::Config.configurations.default)
         end
-       end
+        str
+      end
 
-      def self.getString_f(component, key, args, locale)
-         s = getString(component, key, locale)
+      def self.getString_p(component, key, plural_args, locale)
+        str = getTranslation(component, key, locale)
+        if str.nil?
+          str = SgtnClient::Source.getSource(component, key, SgtnClient::Config.configurations.default)
+          str.to_plural_s(:en, plural_args)
+        else
+          str.to_plural_s(locale, plural_args)
+        end
+      end
+
+      def self.getString_f(component, key, args, locale, *optionals)
+         s = getString(component, key, locale, *optionals)
          if args.is_a?(Hash)
           args.each do |source, arg|
             s.gsub! "{#{source}}", arg
@@ -62,7 +57,7 @@ module SgtnClient
           items = {}
           s = SgtnClient::Source.getSources(component, default)
           default_component, value = s.first
-          items["component"] = default_component
+          items["component"] = component
           items["messages"] = value
           items["locale"] = 'source'
         end
@@ -72,6 +67,23 @@ module SgtnClient
 
       private
 
+      def self.getTranslation(component, key, locale)
+        flocale = SgtnClient::LocaleUtil.fallback(locale)
+        cache_key = SgtnClient::CacheUtil.get_cachekey(component, flocale)
+        items = SgtnClient::CacheUtil.get_cache(cache_key)
+        if items.nil?
+          items = getTranslations(component, flocale)
+          SgtnClient::CacheUtil.write_cache(cache_key, items)
+        else
+          SgtnClient.logger.debug "Getting translations from cache with key: " + cache_key
+        end
+        if items.nil? || items["messages"] == nil
+          nil
+        else
+          items["messages"][key]
+        end
+      end
+      
       def self.getTranslations(component, locale)
         env = SgtnClient::Config.default_environment
         mode = SgtnClient::Config.configurations[env]["bundle_mode"]

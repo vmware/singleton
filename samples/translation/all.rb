@@ -9,7 +9,13 @@ SgtnClient.load("./config/sgtnclient.yml", "test")
 SgtnClient::Source.loadBundles("default")
 
 # get translation
-@Result = SgtnClient::Translation.getString("JAVA", "helloworld", "zh-Hans")
+#@Result = SgtnClient::Translation.getString("JAVA", "helloworld", "zh-Hans")
 
 # get non-existing translation
-#@Result = SgtnClient::Translation.getString("JAVA", "helloworld", "zh-Hans")
+puts SgtnClient::Translation.getString("JAVA", "hello", "zh-Hans")
+
+# get pluralized translation
+#@Result = SgtnClient::Translation.getString_p("JAVA", "plural_key", { :cat_count => 1 }, "zh-Hans")
+
+# get formatting translation
+#@Result = SgtnClient::Translation.getString_f("JAVA", "welcome", ["虚拟世界", "机器人"], "zh-Hans")

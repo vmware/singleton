@@ -21,9 +21,7 @@ describe SgtnClient do
 
       # get from server again after data is expired
       SgtnClient.logger.debug "----------Sleep 70s---------"
-      puts Time.now
       #sleep 70
-      puts Time.now
       SgtnClient.logger.debug "----------Start to get translation from expired cache---------"
       expect(SgtnClient::Translation.getString("JAVA", "helloworld", "zh-Hans")).to eq '你好世界'
 
