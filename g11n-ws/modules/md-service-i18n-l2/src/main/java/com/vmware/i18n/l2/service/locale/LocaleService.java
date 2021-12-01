@@ -90,7 +90,8 @@ public class LocaleService implements ILocaleService {
 			Map<String, Object> displayNamesMap = null;
 			if (StringUtils.isEmpty(dispLanguage)) {
 				for (String language : languageList) {
-					displayNamesMap = languagesParser.getDisplayNames(language);
+					normalizedDispLanguage = CommonUtil.getCLDRLocale(language, localePathMap, localeAliasesMap);
+					displayNamesMap = languagesParser.getDisplayNames(normalizedDispLanguage);
 					getDisplayNameForLanguage(language, displayNamesMap, tmp);
 				}
 			} else {
