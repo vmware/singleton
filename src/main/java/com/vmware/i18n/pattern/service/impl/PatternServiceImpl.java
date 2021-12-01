@@ -4,17 +4,6 @@
  */
 package com.vmware.i18n.pattern.service.impl;
 
-import java.text.MessageFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -26,7 +15,18 @@ import com.vmware.i18n.pattern.service.IPatternService;
 import com.vmware.i18n.utils.CommonUtil;
 import com.vmware.i18n.utils.JSONUtil;
 import com.vmware.i18n.utils.LocalJSONReader;
+import com.vmware.i18n.utils.PathUtils;
 import com.vmware.i18n.utils.timezone.TimeZoneName;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.text.MessageFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 
 @SuppressWarnings("unchecked")
 public class PatternServiceImpl implements IPatternService {
@@ -137,14 +137,11 @@ public class PatternServiceImpl implements IPatternService {
 		IPatternDao dao = new PatternDaoImpl();
 		String[] cateList = categories.split(",");
 
-		String resourcePath = CLDRConstants.RESOURCES_PATH;
-		if (CLDRConstants.JSON_PATH.lastIndexOf(".jar") > 0) {
-			resourcePath = CLDRConstants.JSON_PATH;
-		}
+		String resourcePath = PathUtils.getResourcePath();
 
 		for (String cat : cateList) {
 			String filePath = MessageFormat.format(CLDRConstants.SUPPLEMENTAL_PATH, cat);
-			String suppleData = dao.getPattern(resourcePath, filePath);
+			String suppleData = dao.getPattern(PathUtils.getCoreResourcePath(), filePath);
 			if (!CommonUtil.isEmpty(suppleData)) {
 				suppleMap.put(cat, JSONUtil.string2SortMap(suppleData));
 			}
@@ -192,7 +189,7 @@ public class PatternServiceImpl implements IPatternService {
 		String pathLocale = CommonUtil.getPathLocale(tmpLocale, localePathMap, likelySubtagMap);
 		if (CommonUtil.isEmpty(pathLocale))
 			return null;
-		String patternStr = dao.getPattern(CLDRConstants.JSON_PATH,
+		String patternStr = dao.getPattern(PathUtils.getResourcePath(),
 				MessageFormat.format(CLDRConstants.DATE_TIMEZONENAME_JSON_PATH, pathLocale));
 		TimeZoneName timeZoneObj = null;
 		try {
