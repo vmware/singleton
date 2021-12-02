@@ -71,8 +71,8 @@ describe('L10nService', () => {
     });
 
     it('should call registerSourceBundles method along with souce bundle objects as parameters', () => {
-        spyOn(l10nService, 'registerSourceBundles').and.callThrough();
-        expect(l10nService.registerSourceBundles({ ENGLISH: 'source bundles' })).toHaveBeenCalled;
+        l10nService.registerSourceBundles({ ENGLISH: 'source bundles' });
+        expect(l10nService.getMessage('ENGLISH')).toEqual('source bundles');
     });
 
     it('whether key exists in resource', () => {

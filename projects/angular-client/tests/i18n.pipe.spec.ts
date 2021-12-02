@@ -49,5 +49,5 @@ describe('I18n Pipe', () => {
         expect(() => pipe.transform(1)).not.toThrow();
         expect(pipe.transform('')).toBeNull();
         pipe.ngOnDestroy();
-    })
+    });
 });
