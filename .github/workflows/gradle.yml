@@ -57,6 +57,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 2.
       - name: Unit test
         run: |
           ./gradlew test jacocoTestReport
@@ -81,6 +83,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 2.
       - name: Set up JDK 8
         uses: actions/setup-java@v2
         with:
