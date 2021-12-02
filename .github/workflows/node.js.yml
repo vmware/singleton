@@ -90,6 +90,10 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
+      - name: Create cache folder
+        run: |
+          mkdir -p /home/runner/.npm
+        continue-on-error: true  
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v2
         with:
