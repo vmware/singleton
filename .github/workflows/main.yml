@@ -61,7 +61,6 @@ jobs:
       - name: Upload Codecov report for go-coverage
         uses: codecov/codecov-action@v2
         with:
-          token: bb02a13d-4b5d-4217-8e68-074b6326977b
           files: ./cover.out
           flags: coverage
 
