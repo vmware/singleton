@@ -57,7 +57,7 @@ jobs:
     if: needs.pre-process.outputs.were-only-docs-updated != 'yes'
     strategy:
       matrix:
-        node-version: [12.x, 14.x, 16.x]
+        node-version: [10.x]
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -86,7 +86,7 @@ jobs:
       security-events: write
     strategy:
       matrix:
-        node-version: [12.x, 14.x, 16.x]    
+        node-version: [10.x]    
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -114,7 +114,7 @@ jobs:
     if: needs.pre-process.outputs.were-only-docs-updated != 'yes'
     strategy:
       matrix:
-        node-version: [12.x, 14.x, 16.x]
+        node-version: [10.x]
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
