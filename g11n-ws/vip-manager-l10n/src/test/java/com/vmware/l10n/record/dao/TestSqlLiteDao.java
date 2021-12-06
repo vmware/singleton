@@ -40,24 +40,39 @@ public class TestSqlLiteDao {
 	@Test
 	public void test002getSyncRecord() {
 		SqlLiteDaoImpl dao = webApplicationContext.getBean(SqlLiteDaoImpl.class);
-		dao.getSynRecords(grmFlag);
-		dao.getSynRecords(singletonFlag);
+		ComponentSourceDTO csd = new ComponentSourceDTO();
+		csd.setProductName("unitTest");
+		csd.setVersion("1.0.0");
+		csd.setComponent("default");
+		csd.setLocale("en");
+		dao.createSyncRecord(csd, grmFlag, System.currentTimeMillis());
+		ComponentSourceDTO csdSig = new ComponentSourceDTO();
+		csdSig.setProductName("unitTest");
+		csdSig.setVersion("1.0.0");
+		csdSig.setComponent("dev");
+		csdSig.setLocale("en");
+		dao.createSyncRecord(csd, singletonFlag, System.currentTimeMillis());
 		
-		Assert.assertNotNull(dao);
+		Assert.assertNotNull(dao.getSynRecords(grmFlag));
+		Assert.assertNotNull(dao.getSynRecords(singletonFlag));
 	}
 	
 	@Test
 	public void test003deleteSyncRecord() {
-		SyncRecordModel csd = new SyncRecordModel();
 		SqlLiteDao dao = webApplicationContext.getBean(SqlLiteDao.class);
+		ComponentSourceDTO csdSig = new ComponentSourceDTO();
+		csdSig.setProductName("unitTest");
+		csdSig.setVersion("1.0.0");
+		csdSig.setComponent("dev");
+		csdSig.setLocale("en");
+		dao.createSyncRecord(csdSig, singletonFlag, System.currentTimeMillis());
+		SyncRecordModel csd = new SyncRecordModel();
 		csd.setProduct("unitTest");
 		csd.setVersion("1.0.0");
 		csd.setComponent("default");
 		csd.setLocale("en");
 		csd.setType(grmFlag);
-		dao.deleteSyncRecord(csd);
-		
-		Assert.assertNotNull(dao);
+		Assert.assertNotNull(dao.deleteSyncRecord(csd));
 	}
 	
 }
