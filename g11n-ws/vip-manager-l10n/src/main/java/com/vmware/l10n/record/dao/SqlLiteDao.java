@@ -19,6 +19,6 @@ public interface SqlLiteDao {
 	
 	public int createSyncRecord(ComponentSourceDTO csd, int type, long timestamp);
 	public List<SyncRecordModel> getSynRecords(int type);
-	
+	public int deleteSyncRecord(SyncRecordModel syncRecordModel);
 	
 }

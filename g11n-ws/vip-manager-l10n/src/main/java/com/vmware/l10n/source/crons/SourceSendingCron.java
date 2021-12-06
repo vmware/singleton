@@ -6,16 +6,17 @@ package com.vmware.l10n.source.crons;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
 import javax.annotation.PostConstruct;
 
-import org.ehcache.Cache;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 import org.json.simple.parser.ParseException;
@@ -37,10 +38,7 @@ import com.vmware.l10n.source.service.impl.SourceServiceImpl;
 import com.vmware.l10n.utils.DiskQueueUtils;
 import com.vmware.vip.api.rest.APIParamName;
 import com.vmware.vip.api.rest.APIV2;
-import com.vmware.vip.common.cache.CacheName;
-import com.vmware.vip.common.cache.TranslationCache3;
 import com.vmware.vip.common.constants.ConstantsKeys;
-import com.vmware.vip.common.exceptions.VIPCacheException;
 import com.vmware.vip.common.exceptions.VIPHttpException;
 import com.vmware.vip.common.http.HTTPRequester;
 import com.vmware.vip.common.i18n.dto.SingleComponentDTO;
@@ -116,16 +114,7 @@ public class SourceSendingCron {
 		if (!remoteGRMURL.equalsIgnoreCase(LOCAL_STR)) {
 			try {
 				remoteSyncService.ping(remoteGRMURL);
-
-				List<SyncRecordModel> syncGrmList = sqlLite.getSynRecords(grmFlag);
-				if (syncGrmList != null) {
-					for (SyncRecordModel syncGrm : syncGrmList) {
-						ComponentSourceDTO comDTO = getCachedLocalBundle(syncGrm);
-						remoteSyncService.send(comDTO, remoteGRMURL);
-
-					}
-				}
-
+				setGrmConnected(true);
 			} catch (L10nAPIException e) {
 				setGrmConnected(false);
 				LOGGER.error("Remote [" + remoteGRMURL + "] is not connected.", e);
@@ -136,18 +125,10 @@ public class SourceSendingCron {
 		if (!remoteVIPURL.equalsIgnoreCase(LOCAL_STR)) {
 			try {
 				pingSingleton(remoteVIPURL);
-				List<SyncRecordModel> syncSlgList = sqlLite.getSynRecords(singletonFlag);
-				if (syncSlgList != null) {
-					for (SyncRecordModel syncSlg : syncSlgList) {
-						ComponentSourceDTO comDTO = getCachedLocalBundle(syncSlg);
-						putDataToRemoteVIP(comDTO);
-					}
-				}
-
-			} catch (L10nAPIException | VIPHttpException e) {
+				setSingletonConnected(true);
+			} catch (L10nAPIException e) {
 				setSingletonConnected(false);
 				LOGGER.error("Remote [" + remoteVIPURL + "] is not connected.", e);
-
 			}
 		}
 	}
@@ -307,8 +288,6 @@ public class SourceSendingCron {
 		}else if (!remoteVIPURL.equalsIgnoreCase(LOCAL_STR) && !singletonConnected) {
 			sqlLite.createSyncRecord(cachedComDTO, singletonFlag, System.currentTimeMillis());
 		}
-
-
 	}
 	
 	public void pingSingleton(String remoteURL) throws L10nAPIException{
@@ -355,9 +334,6 @@ public class SourceSendingCron {
 		
 	}
 
-	
-
-	
 	/**
 	 * Polling the service of GRM is available.
 	 */
@@ -367,45 +343,77 @@ public class SourceSendingCron {
 			return;
 		}
 		
-		if (!remoteGRMURL.equalsIgnoreCase(LOCAL_STR) && !grmConnected) {
+		if (!remoteGRMURL.equalsIgnoreCase(LOCAL_STR)) {
 			try {
 				remoteSyncService.ping(remoteGRMURL);
+				setGrmConnected(true);
 				List<SyncRecordModel> syncGrmList = sqlLite.getSynRecords(grmFlag);
 				if(syncGrmList != null) {
 					for(SyncRecordModel syncGrm : syncGrmList) {
 						ComponentSourceDTO comDTO = getCachedLocalBundle(syncGrm);
-						remoteSyncService.send(comDTO, remoteGRMURL);
-						
+                        try {
+						   remoteSyncService.send(comDTO, remoteGRMURL);
+                        } catch (L10nAPIException e) {
+                        	sendKeySource2GRM(comDTO, remoteGRMURL);
+            			}
+                        remoteSyncService.ping(remoteGRMURL);
+						sqlLite.deleteSyncRecord(syncGrm);
 					}
 				}
-				setGrmConnected(true);
 			} catch (L10nAPIException e) {
 				LOGGER.error("Remote [" + remoteGRMURL + "] is not connected.", e);
-
+				setGrmConnected(false);
 			}
 		}
 
-		if (!remoteVIPURL.equalsIgnoreCase(LOCAL_STR) && !singletonConnected) {
+		if (!remoteVIPURL.equalsIgnoreCase(LOCAL_STR)) {
 			try {
 				pingSingleton(remoteVIPURL);
+				setSingletonConnected(true);
 				List<SyncRecordModel> syncSlgList = sqlLite.getSynRecords(singletonFlag);
 				if(syncSlgList != null) {
 					for(SyncRecordModel syncSlg : syncSlgList) {
 						ComponentSourceDTO comDTO = getCachedLocalBundle(syncSlg);
-						 putDataToRemoteVIP(comDTO);
+						try {
+						    putDataToRemoteVIP(comDTO);
+						}catch (VIPHttpException e) {
+							String content = comDTO.toJSONString();
+							int size = content.getBytes(StandardCharsets.UTF_8).length;
+							LOGGER.error("Sync source to Singleton failule: size{}, content: {} ", size, content);
+							continue;
+						}
+						sqlLite.deleteSyncRecord(syncSlg);
 					}
 				}
-				setSingletonConnected(true);
-				
 			} catch (L10nAPIException e) {
 				LOGGER.error("Remote [" + remoteVIPURL + "] is not connected.", e);
+				setSingletonConnected(false);
 
-			} catch (VIPHttpException e) {
-				LOGGER.error(e.getMessage(), e);
-			}
+			} 
 		}
 	}
 
+	private void sendKeySource2GRM(ComponentSourceDTO componentSourceDTO, String remoteGRM) {
+		@SuppressWarnings("unchecked")
+		Set<Entry<String, String>> entrys = componentSourceDTO.getMessages().entrySet();
+		for(Entry<String, String> entry : entrys) {
+			ComponentSourceDTO comDTO = new ComponentSourceDTO();
+			comDTO.setProductName(componentSourceDTO.getProductName());
+			comDTO.setVersion(componentSourceDTO.getVersion());
+			comDTO.setComponent(componentSourceDTO.getComponent());
+			comDTO.setLocale(componentSourceDTO.getLocale());
+			comDTO.setMessages(entry.getKey(), entry.getValue());
+			try {
+				remoteSyncService.send(comDTO, remoteGRM);
+			} catch (L10nAPIException e) {
+				String content = comDTO.toJSONString();
+				int size = content.getBytes(StandardCharsets.UTF_8).length;
+				LOGGER.error("Sync source to GRM failule: size{}, content: {} ", size, content);
+			}
+		}
+	}
+	
+	
 	public String getBasePath() {
 		return basePath;
 	}

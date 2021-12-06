@@ -306,4 +306,41 @@ public class SqlLiteDaoImpl implements SqlLiteDao {
 		}
 		return list;
 	}
+
+	@Override
+	public int deleteSyncRecord(SyncRecordModel syncRecordModel) {
+		logger.info("begin update souce record!!!");
+		String delSql = "DELETE FROM sync_record WHERE product=? AND version=? AND component=? AND locale=? AND type=?";
+		
+		
+		Connection conn = null;
+		PreparedStatement ps = null;
+		int result = 0;
+		try {
+			conn = getConnection();
+			ps = conn.prepareStatement(delSql);
+			ps.setString(1, syncRecordModel.getProduct());
+			ps.setString(2, syncRecordModel.getVersion());
+			ps.setString(3, syncRecordModel.getComponent());
+			ps.setString(4, syncRecordModel.getLocale());
+			ps.setInt(5, syncRecordModel.getType());
+			result = ps.executeUpdate();
+		} catch (SQLException e) {
+			logger.error(e.getMessage(), e);
+		} catch (NullPointerException e) {
+			logger.error(LOGERRSTR, e);
+		} finally {
+			try {
+				if (ps != null) {
+					ps.close();
+				}
+				if (conn != null) {
+					conn.close();
+				}
+			} catch (SQLException e) {
+				logger.error(e.getMessage(), e);
+			}
+		}
+		return result;
+	}
 }
