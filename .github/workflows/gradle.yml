@@ -72,7 +72,7 @@ jobs:
           cp $GITHUB_WORKSPACE/devops/deploy/i18n-service/Dockerfile $GITHUB_WORKSPACE/server/publish/
           cd $GITHUB_WORKSPACE/server/publish && mv singleton-[0~9]*.jar i18n-service.jar
           docker build -t singleton .
-          docker run -d -p 8099:8090 --name singleton singleton
+          docker run -d -p 8090:8090 --name singleton singleton
           docker ps
           cd $GITHUB_WORKSPACE
           ./gradlew test jacocoTestReport
@@ -133,7 +133,7 @@ jobs:
           cp $GITHUB_WORKSPACE/devops/deploy/i18n-service/Dockerfile $GITHUB_WORKSPACE/server/publish/
           cd $GITHUB_WORKSPACE/server/publish && mv singleton-[0~9]*.jar i18n-service.jar
           docker build -t singleton .
-          docker run -d -p 8099:8090 --name singleton singleton
+          docker run -d -p 8090:8090 --name singleton singleton
           docker ps
           cd $GITHUB_WORKSPACE && ./gradlew clean build -x test && cp ./build/libs/*.jar $GITHUB_WORKSPACE/devops/autotest/client/java/lib/
           cd $GITHUB_WORKSPACE/devops/autotest/client/java && ./gradlew build
