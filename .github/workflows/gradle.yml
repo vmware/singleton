@@ -74,6 +74,7 @@ jobs:
           docker build -t singleton .
           docker run -d -p 8099:8090 --name singleton singleton
           docker ps
+          cd $GITHUB_WORKSPACE
           ./gradlew test jacocoTestReport
       - name: Upload Codecov report for g11n-java-client
         uses: codecov/codecov-action@v2
