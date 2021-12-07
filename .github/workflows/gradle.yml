@@ -112,6 +112,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 2.
       - name: Set up JDK 8
         uses: actions/setup-java@v2
         with:
@@ -129,7 +131,7 @@ jobs:
           docker run -d -p 8090:8090 --name singleton singleton
           docker ps
           cd $GITHUB_WORKSPACE && ./gradlew clean build -x test && cp ./build/libs/*.jar $GITHUB_WORKSPACE/devops/autotest/client/java/lib/
-          cd $GITHUB_WORKSPACE/devops/autotest/client/java && ./gradlew build
+          cd $GITHUB_WORKSPACE/devops/autotest/client/java && ./gradlew build -x test
           docker cp src/main/resources/l10n singleton:/
           str=$(printf '=%.0s' {1..50})
           echo $str Smoke Test Start $str
