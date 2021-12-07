@@ -56,7 +56,7 @@ public class CacheExpiredTest extends TestBase {
 					vipCfg.isPseudo(), localeWithoutTranslation.toLanguageTag());
 			MessageCacheItem cacheItem = cachedTranslationMap.get(cacheKey);
 //			cacheItem.setMaxAgeMillis(0l);
-			cacheItem.setCacheItem(cacheItem.getLocale(), cacheItem.getEtag(), cacheItem.getTimestamp(), 0l);
+			cacheItem.setCacheItem(cacheItem.getCachedData(), cacheItem.getEtag(), cacheItem.getTimestamp(), 0l);
 
 			log.info("Update English string");
 			//TODO
@@ -93,7 +93,7 @@ public class CacheExpiredTest extends TestBase {
 					vipCfg.isPseudo(), localeWithoutTranslation.toLanguageTag());
 			MessageCacheItem cacheItem = cachedTranslationMap.get(cacheKey);
 //			cacheItem.setMaxAgeMillis(0l);
-			cacheItem.setCacheItem(cacheItem.getLocale(), cacheItem.getEtag(), cacheItem.getTimestamp(), 0l);
+			cacheItem.setCacheItem(cacheItem.getCachedData(), cacheItem.getEtag(), cacheItem.getTimestamp(), 0l);
 
 			log.info("Update English string");
 			//TODO
@@ -131,7 +131,7 @@ public class CacheExpiredTest extends TestBase {
 				vipCfg.isPseudo(), locale.toLanguageTag());
 		MessageCacheItem cacheItem = cachedTranslationMap.get(cacheKey);
 //		cacheItem.setMaxAgeMillis(0l);
-		cacheItem.setCacheItem(cacheItem.getLocale(), cacheItem.getEtag(), cacheItem.getTimestamp(), 0l);
+		cacheItem.setCacheItem(cacheItem.getCachedData(), cacheItem.getEtag(), cacheItem.getTimestamp(), 0l);
 		try {
 			Thread.sleep(1000*5);
 		} catch (InterruptedException e) {
