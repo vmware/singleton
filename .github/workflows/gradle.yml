@@ -51,7 +51,7 @@ jobs:
           python ./check_headers.py -f "$(git diff --name-only --diff-filter=d ${{ steps.get-commit-range-action.outputs.commit-range }})"
   unit-test:
     name: Unit Test
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
     needs: pre-process
     if: needs.pre-process.outputs.were-only-docs-updated != 'yes'
     steps:
@@ -106,7 +106,7 @@ jobs:
         uses: github/codeql-action/analyze@v1
   smoke-test:
     name: Smoke Test
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
     needs: pre-process
     if: needs.pre-process.outputs.were-only-docs-updated != 'yes'
     steps:
