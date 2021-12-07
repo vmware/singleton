@@ -66,15 +66,7 @@ jobs:
           java-version: '8'
       - name: Unit test
         run: |
-          git clone --branch=master https://github.com/vmware/singleton.git server
-          git clone --branch=devops https://github.com/vmware/singleton.git devops
-          cd $GITHUB_WORKSPACE/server/g11n-ws && ./gradlew build -x test
-          cp $GITHUB_WORKSPACE/devops/deploy/i18n-service/Dockerfile $GITHUB_WORKSPACE/server/publish/
-          cd $GITHUB_WORKSPACE/server/publish && mv singleton-[0~9]*.jar i18n-service.jar
-          docker build -t singleton .
-          docker run -d -p 8090:8090 --name singleton singleton
-          docker ps
-          cd $GITHUB_WORKSPACE
+          TZ='Asia/Shanghai'; export TZ 
           ./gradlew test jacocoTestReport
       - name: Upload Codecov report for g11n-java-client
         uses: codecov/codecov-action@v2
@@ -127,6 +119,7 @@ jobs:
           java-version: '8'
       - name: Smoke Test
         run: |
+          TZ='Asia/Shanghai'; export TZ 
           git clone --branch=master https://github.com/vmware/singleton.git server
           git clone --branch=devops https://github.com/vmware/singleton.git devops
           cd $GITHUB_WORKSPACE/server/g11n-ws && ./gradlew build -x test
