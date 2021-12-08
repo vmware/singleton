@@ -273,9 +273,15 @@ public class SourceSendingCron {
 			try {
 				remoteSyncService.send(cachedComDTO, remoteGRMURL);
 			} catch (L10nAPIException e) {
-				setGrmConnected(false);
+				sendKeySource2GRM(cachedComDTO, remoteGRMURL);
+				try {
+					remoteSyncService.ping(remoteGRMURL);
+				} catch (L10nAPIException e1) {
+					setGrmConnected(false);
+				}
 			}
-		}else if(!remoteGRMURL.equalsIgnoreCase(LOCAL_STR) && !grmConnected) {
+		}
+		if(!remoteGRMURL.equalsIgnoreCase(LOCAL_STR) && !grmConnected) {
 			sqlLite.createSyncRecord(cachedComDTO, grmFlag, System.currentTimeMillis());
 		}
 		// push the source to VIP.
@@ -392,7 +398,11 @@ public class SourceSendingCron {
 			} 
 		}
 	}
-
+	
+/**
+ * send source to GRM by key when 
+ * @param componentSourceDTO
+ */
 	private void sendKeySource2GRM(ComponentSourceDTO componentSourceDTO, String remoteGRM) {
 		@SuppressWarnings("unchecked")
 		Set<Entry<String, String>> entrys = componentSourceDTO.getMessages().entrySet();
