@@ -362,7 +362,6 @@ export class I18nService extends BaseService {
             .toPromise()
             .then(
                 (res: any) => {
-                    console.log(res.cities)
                     if (isDefined(res) && isDefined(res.cities)) {
                         return res.cities[region];
                     }

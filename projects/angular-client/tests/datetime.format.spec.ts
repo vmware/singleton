@@ -6,7 +6,7 @@ import localeDe from './locale_de';
 import { DateFormatter } from '../src/formatters/date.formatter';
 import { SOURCE_LOCALE_DATA } from '../src/data/locale_en';
 
-describe('Date Format', () => {
+describe('Date Formatter', () => {
 
     const date = new Date(2018, 1, 22, 9, 3, 1, 550);
     const formatter = new DateFormatter();

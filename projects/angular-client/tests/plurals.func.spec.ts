@@ -54,6 +54,7 @@ describe("PLURALFUNCS",() =>{
         expect(PLURALFUNCS['as'](3,true)).toEqual('two');
         expect(PLURALFUNCS['as'](4,true)).toEqual('few');
         expect(PLURALFUNCS['as'](6,true)).toEqual('many');
+        expect(PLURALFUNCS['as'](11,true)).toEqual('other');
         expect(PLURALFUNCS['as'](0,false)).toEqual('one');
         expect(PLURALFUNCS['as'](2,false)).toEqual('other');
     });
@@ -61,6 +62,7 @@ describe("PLURALFUNCS",() =>{
         expect(PLURALFUNCS['az'](80,true)).toEqual('one');
         expect(PLURALFUNCS['az'](900,true)).toEqual('few');
         expect(PLURALFUNCS['az'](90,true)).toEqual('many');
+        expect(PLURALFUNCS['az'](1000,true)).toEqual('other');
         expect(PLURALFUNCS['az'](1,false)).toEqual('one');
         expect(PLURALFUNCS['az'](2,false)).toEqual('other');
     });
@@ -70,6 +72,8 @@ describe("PLURALFUNCS",() =>{
         expect(PLURALFUNCS['be'](101,false)).toEqual('one');
         expect(PLURALFUNCS['be'](144,false)).toEqual('few');
         expect(PLURALFUNCS['be'](112,false)).toEqual('many');
+        expect(PLURALFUNCS['be'](115,false)).toEqual('many');
+        expect(PLURALFUNCS['be'](1.5,false)).toEqual('other');
     });
     it( 'bn', () => {
         expect(PLURALFUNCS['bn'](10,true)).toEqual('one');
@@ -85,11 +89,13 @@ describe("PLURALFUNCS",() =>{
         expect(PLURALFUNCS['br'](81,false)).toEqual('one');
         expect(PLURALFUNCS['br'](82,false)).toEqual('two');
         expect(PLURALFUNCS['br'](83,false)).toEqual('few');
+        expect(PLURALFUNCS['br'](199,false)).toEqual('other');
         expect(PLURALFUNCS['br'](1000000,false)).toEqual('many');
-        expect(PLURALFUNCS['br'](1100000,false)).toEqual('other');
+        expect(PLURALFUNCS['br'](1000000.5,false)).toEqual('other');
     });
     it( 'bs', () => {
         expect(PLURALFUNCS['bs'](1,true)).toEqual('other');
+        expect(PLURALFUNCS['bs'](21,false)).toEqual('one');
         expect(PLURALFUNCS['bs'](1.01,false)).toEqual('one');
         expect(PLURALFUNCS['bs'](124,false)).toEqual('few');
         expect(PLURALFUNCS['bs'](1.24,false)).toEqual('few');
@@ -99,6 +105,7 @@ describe("PLURALFUNCS",() =>{
         expect(PLURALFUNCS['ca'](3,true)).toEqual('one');
         expect(PLURALFUNCS['ca'](2,true)).toEqual('two');
         expect(PLURALFUNCS['ca'](4,true)).toEqual('few');
+        expect(PLURALFUNCS['ca'](5,true)).toEqual('other');
         expect(PLURALFUNCS['ca'](1,false)).toEqual('one');
         expect(PLURALFUNCS['ca'](1.1,false)).toEqual('other');
     });
@@ -111,6 +118,11 @@ describe("PLURALFUNCS",() =>{
     });
     it( 'cy', () => {
         expect(PLURALFUNCS['cy'](9,true)).toEqual('zero');
+        expect(PLURALFUNCS['cy'](1,true)).toEqual('one');
+        expect(PLURALFUNCS['cy'](2,true)).toEqual('two');
+        expect(PLURALFUNCS['cy'](4,true)).toEqual('few');
+        expect(PLURALFUNCS['cy'](6,true)).toEqual('many');
+        expect(PLURALFUNCS['cy'](10,true)).toEqual('other');
         expect(PLURALFUNCS['cy'](0,false)).toEqual('zero');
         expect(PLURALFUNCS['cy'](1,false)).toEqual('one');
         expect(PLURALFUNCS['cy'](2,false)).toEqual('two');
@@ -121,6 +133,7 @@ describe("PLURALFUNCS",() =>{
     it( 'da', () => {
         expect(PLURALFUNCS['da'](1,true)).toEqual('other');
         expect(PLURALFUNCS['da'](1.0,false)).toEqual('one');
+        expect(PLURALFUNCS['da'](1.1,false)).toEqual('one');
         expect(PLURALFUNCS['da'](2,false)).toEqual('other');
     });
     it( 'dsb', () => {
@@ -214,13 +227,18 @@ describe("PLURALFUNCS",() =>{
     it( 'hr', () => {
         expect(PLURALFUNCS['hr'](1,true)).toEqual('other');
         expect(PLURALFUNCS['hr'](121,false)).toEqual('one');
+        expect(PLURALFUNCS['hr'](1.101,false)).toEqual('one');
+        expect(PLURALFUNCS['hr'](23,false)).toEqual('few');
         expect(PLURALFUNCS['hr'](1.23,false)).toEqual('few');
         expect(PLURALFUNCS['hr'](1.25,false)).toEqual('other');
     });
     it( 'hsb', () => {
         expect(PLURALFUNCS['hsb'](1,true)).toEqual('other');
+        expect(PLURALFUNCS['hsb'](1,false)).toEqual('one');
         expect(PLURALFUNCS['hsb'](11.01,false)).toEqual('one');
+        expect(PLURALFUNCS['hsb'](2,false)).toEqual('two');
         expect(PLURALFUNCS['hsb'](22.02,false)).toEqual('two');
+        expect(PLURALFUNCS['hsb'](4,false)).toEqual('few');
         expect(PLURALFUNCS['hsb'](44.04,false)).toEqual('few');
         expect(PLURALFUNCS['hsb'](55.05,false)).toEqual('other');
     });
@@ -243,7 +261,7 @@ describe("PLURALFUNCS",() =>{
     });
     it( 'it', () => {
         expect(PLURALFUNCS['it'](800,true)).toEqual('many');
-        expect(PLURALFUNCS['it'](801,false)).toEqual('other');
+        expect(PLURALFUNCS['it'](801,true)).toEqual('other');
         expect(PLURALFUNCS['it'](1,false)).toEqual('one');
         expect(PLURALFUNCS['it'](2,false)).toEqual('other');
     });
@@ -316,6 +334,7 @@ describe("PLURALFUNCS",() =>{
     it( 'lv', () => {
         expect(PLURALFUNCS['lv'](1.5,true)).toEqual('other');
         expect(PLURALFUNCS['lv'](20.18,false)).toEqual('zero');
+        expect(PLURALFUNCS['lv'](21,false)).toEqual('one');
         expect(PLURALFUNCS['lv'](11.21,false)).toEqual('one');
         expect(PLURALFUNCS['lv'](25,false)).toEqual('other');
     });
@@ -324,6 +343,7 @@ describe("PLURALFUNCS",() =>{
         expect(PLURALFUNCS['mk'](22,true)).toEqual('two');
         expect(PLURALFUNCS['mk'](28,true)).toEqual('many');
         expect(PLURALFUNCS['mk'](29,true)).toEqual('other');
+        expect(PLURALFUNCS['mk'](21,false)).toEqual('one');
         expect(PLURALFUNCS['mk'](1.21,false)).toEqual('one');
         expect(PLURALFUNCS['mk'](1.11,false)).toEqual('other');
     });
@@ -374,5 +394,183 @@ describe("PLURALFUNCS",() =>{
         expect(PLURALFUNCS['or'](10,true)).toEqual('other');
         expect(PLURALFUNCS['or'](1,false)).toEqual('one');
         expect(PLURALFUNCS['or'](2,false)).toEqual('other');
+    });
+    it( 'pl', () => {
+        expect(PLURALFUNCS['pl'](1.23,true)).toEqual('other');
+        expect(PLURALFUNCS['pl'](1,false)).toEqual('one');
+        expect(PLURALFUNCS['pl'](22,false)).toEqual('few');
+        expect(PLURALFUNCS['pl'](113,false)).toEqual('many');
+        expect(PLURALFUNCS['pl'](115,false)).toEqual('many');
+        expect(PLURALFUNCS['pl'](1.23,false)).toEqual('other');
+    });
+    it( 'prg', () => {
+        expect(PLURALFUNCS['prg'](1.23,true)).toEqual('other');
+        expect(PLURALFUNCS['prg'](0.15,false)).toEqual('zero');
+        expect(PLURALFUNCS['prg'](21,false)).toEqual('one');
+        expect(PLURALFUNCS['prg'](0.21,false)).toEqual('one');
+        expect(PLURALFUNCS['prg'](55,false)).toEqual('other');
+    });
+    it( 'pt', () => {
+        expect(PLURALFUNCS['pt'](1.23,true)).toEqual('other');
+        expect(PLURALFUNCS['pt'](1.0,false)).toEqual('one');
+        expect(PLURALFUNCS['pt'](2.0,false)).toEqual('other');
+    });
+
+    it( 'ro', () => {
+        expect(PLURALFUNCS['ro'](1,true)).toEqual('one');
+        expect(PLURALFUNCS['ro'](2,true)).toEqual('other');
+        expect(PLURALFUNCS['ro'](1,false)).toEqual('one');
+        expect(PLURALFUNCS['ro'](19,false)).toEqual('few');
+        expect(PLURALFUNCS['ro'](20,false)).toEqual('other');
+    });
+    it( 'ru', () => {
+        expect(PLURALFUNCS['ru'](1,true)).toEqual('other'); 
+        expect(PLURALFUNCS['ru'](1,false)).toEqual('one');
+        expect(PLURALFUNCS['ru'](23,false)).toEqual('few');
+        expect(PLURALFUNCS['ru'](14,false)).toEqual('many');
+        expect(PLURALFUNCS['ru'](19,false)).toEqual('many');
+        expect(PLURALFUNCS['ru'](101.1,false)).toEqual('other');
+    });
+    it( 'sc', () => {
+        expect(PLURALFUNCS['sc'](800,true)).toEqual('many');
+        expect(PLURALFUNCS['sc'](801,true)).toEqual('other');
+        expect(PLURALFUNCS['sc'](1,false)).toEqual('one');
+        expect(PLURALFUNCS['sc'](2,false)).toEqual('other');
+    });
+    it( 'scn', () => {
+        expect(PLURALFUNCS['scn'](800,true)).toEqual('many');
+        expect(PLURALFUNCS['scn'](801,true)).toEqual('other');
+        expect(PLURALFUNCS['scn'](1,false)).toEqual('one');
+        expect(PLURALFUNCS['scn'](2,false)).toEqual('other');
+    });
+    it( 'se', () => {
+        expect(PLURALFUNCS['se'](1,true)).toEqual('other');
+        expect(PLURALFUNCS['se'](1,false)).toEqual('one');
+        expect(PLURALFUNCS['se'](2,false)).toEqual('two');
+        expect(PLURALFUNCS['se'](3,false)).toEqual('other');
+    });
+    it( 'sh', () => {
+        expect(PLURALFUNCS['sh'](1,true)).toEqual('other');
+        expect(PLURALFUNCS['sh'](101,false)).toEqual('one');
+        expect(PLURALFUNCS['sh'](1.101,false)).toEqual('one');
+        expect(PLURALFUNCS['sh'](23,false)).toEqual('few');
+        expect(PLURALFUNCS['sh'](1.23,false)).toEqual('few');
+        expect(PLURALFUNCS['sh'](1.15,false)).toEqual('other');
+    });
+    it( 'shi', () => {
+        expect(PLURALFUNCS['shi'](1,true)).toEqual('other');
+        expect(PLURALFUNCS['shi'](1,false)).toEqual('one');
+        expect(PLURALFUNCS['shi'](2,false)).toEqual('few');
+        expect(PLURALFUNCS['shi'](11,false)).toEqual('other');
+    });
+    it( 'si', () => {
+        expect(PLURALFUNCS['si'](1,true)).toEqual('other');
+        expect(PLURALFUNCS['si'](1,false)).toEqual('one');
+        expect(PLURALFUNCS['si'](0.1,false)).toEqual('one');
+        expect(PLURALFUNCS['si'](2,false)).toEqual('other');
+    });
+    it( 'sk', () => {
+        expect(PLURALFUNCS['sk'](1,true)).toEqual('other');
+        expect(PLURALFUNCS['sk'](1,false)).toEqual('one');
+        expect(PLURALFUNCS['sk'](2,false)).toEqual('few');
+        expect(PLURALFUNCS['sk'](5.5,false)).toEqual('many');
+        expect(PLURALFUNCS['sk'](5,false)).toEqual('other');
+    });
+    it( 'sl', () => {
+        expect(PLURALFUNCS['sl'](1,true)).toEqual('other');
+        expect(PLURALFUNCS['sl'](101,false)).toEqual('one');
+        expect(PLURALFUNCS['sl'](102,false)).toEqual('two');
+        expect(PLURALFUNCS['sl'](104,false)).toEqual('few');
+        expect(PLURALFUNCS['sl'](104.5,false)).toEqual('few');
+        expect(PLURALFUNCS['sl'](105,false)).toEqual('other');
+    });
+    it( 'sma', () => {
+        expect(PLURALFUNCS['sma'](1,true)).toEqual('other');
+        expect(PLURALFUNCS['sma'](1,false)).toEqual('one');
+        expect(PLURALFUNCS['sma'](2,false)).toEqual('two');
+        expect(PLURALFUNCS['sma'](3,false)).toEqual('other');
+    });
+    it( 'smi', () => {
+        expect(PLURALFUNCS['smi'](1,true)).toEqual('other');
+        expect(PLURALFUNCS['smi'](1,false)).toEqual('one');
+        expect(PLURALFUNCS['smi'](2,false)).toEqual('two');
+        expect(PLURALFUNCS['smi'](3,false)).toEqual('other');
+    });
+    it( 'smj', () => {
+        expect(PLURALFUNCS['smj'](1,true)).toEqual('other');
+        expect(PLURALFUNCS['smj'](1,false)).toEqual('one');
+        expect(PLURALFUNCS['smj'](2,false)).toEqual('two');
+        expect(PLURALFUNCS['smj'](3,false)).toEqual('other');
+    });
+    it( 'smn', () => {
+        expect(PLURALFUNCS['smn'](1,true)).toEqual('other');
+        expect(PLURALFUNCS['smn'](1,false)).toEqual('one');
+        expect(PLURALFUNCS['smn'](2,false)).toEqual('two');
+        expect(PLURALFUNCS['smn'](3,false)).toEqual('other');
+    });
+    it( 'sms', () => {
+        expect(PLURALFUNCS['sms'](1,true)).toEqual('other');
+        expect(PLURALFUNCS['sms'](1,false)).toEqual('one');
+        expect(PLURALFUNCS['sms'](2,false)).toEqual('two');
+        expect(PLURALFUNCS['sms'](3,false)).toEqual('other');
+    });
+    it( 'sq', () => {
+        expect(PLURALFUNCS['sq'](1,true)).toEqual('one');
+        expect(PLURALFUNCS['sq'](24,true)).toEqual('many');
+        expect(PLURALFUNCS['sq'](25,true)).toEqual('other');
+        expect(PLURALFUNCS['sq'](25,false)).toEqual('other');
+        expect(PLURALFUNCS['sq'](1,false)).toEqual('one');
+        expect(PLURALFUNCS['sq'](2,false)).toEqual('other');
+    });
+    it( 'sr', () => {
+        expect(PLURALFUNCS['sr'](1,true)).toEqual('other');
+        expect(PLURALFUNCS['sr'](101,false)).toEqual('one');
+        expect(PLURALFUNCS['sr'](1.101,false)).toEqual('one');
+        expect(PLURALFUNCS['sr'](23,false)).toEqual('few');
+        expect(PLURALFUNCS['sr'](1.23,false)).toEqual('few');
+        expect(PLURALFUNCS['sr'](25,false)).toEqual('other');
+    });
+    it( 'sv', () => {
+        expect(PLURALFUNCS['sv'](102,true)).toEqual('one');
+        expect(PLURALFUNCS['sv'](103,true)).toEqual('other');
+        expect(PLURALFUNCS['sv'](1,false)).toEqual('one');
+        expect(PLURALFUNCS['sv'](2,false)).toEqual('other');
+    });
+    it( 'tk', () => {
+        expect(PLURALFUNCS['tk'](10,true)).toEqual('few');
+        expect(PLURALFUNCS['tk'](1,true)).toEqual('other');
+        expect(PLURALFUNCS['tk'](1,false)).toEqual('one');
+        expect(PLURALFUNCS['tk'](2,false)).toEqual('other');
+    });
+    it( 'tl', () => {
+        expect(PLURALFUNCS['tl'](1,true)).toEqual('one');
+        expect(PLURALFUNCS['tl'](2,true)).toEqual('other');
+        expect(PLURALFUNCS['tl'](5,false)).toEqual('one');
+        expect(PLURALFUNCS['tl'](5.5,false)).toEqual('one');
+        expect(PLURALFUNCS['tl'](9,false)).toEqual('other');
+    });
+    it( 'tzm', () => {
+        expect(PLURALFUNCS['tzm'](1,true)).toEqual('other');
+        expect(PLURALFUNCS['tzm'](11,false)).toEqual('one');
+        expect(PLURALFUNCS['tzm'](100,false)).toEqual('other');
+    });
+    it( 'uk', () => {
+        expect(PLURALFUNCS['uk'](23,true)).toEqual('few');
+        expect(PLURALFUNCS['uk'](13,true)).toEqual('other');
+        expect(PLURALFUNCS['uk'](21,false)).toEqual('one');
+        expect(PLURALFUNCS['uk'](24,false)).toEqual('few');
+        expect(PLURALFUNCS['uk'](114,false)).toEqual('many');
+        expect(PLURALFUNCS['uk'](119,false)).toEqual('many');
+        expect(PLURALFUNCS['uk'](114.5,false)).toEqual('other');
+    });
+    it( 'vi', () => {
+        expect(PLURALFUNCS['vi'](1,true)).toEqual('one');
+        expect(PLURALFUNCS['vi'](2,true)).toEqual('other');
+        expect(PLURALFUNCS['vi'](1,false)).toEqual('other');
+    });
+    it( 'zu', () => {
+        expect(PLURALFUNCS['zu'](1,true)).toEqual('other');
+        expect(PLURALFUNCS['zu'](0,false)).toEqual('one');
+        expect(PLURALFUNCS['zu'](2,false)).toEqual('other');
     });
 });

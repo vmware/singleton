@@ -5,7 +5,7 @@
 import { Injector, APP_INITIALIZER, Injectable } from '@angular/core';
 import { TestBed, getTestBed } from '@angular/core/testing';
 import { L10nService, VIPModule, VIPService, LocaleService, I18nLoader, getNameSpace } from '../index';
-import { L10nPipe } from '../src/l10n.pipe';
+import { L10nPipe, L10nPipePlus } from '../src/l10n.pipe';
 import { Observable, of } from 'rxjs';
 import { TestLoader, baseConfig } from './test.util';
 
@@ -44,6 +44,8 @@ describe('L10nPipe', () => {
     let injector: Injector;
     let l10nService: L10nService;
     let l10nPipe: L10nPipe;
+    let plusPipe: L10nPipePlus;
+
     let localeService: LocaleService;
     beforeEach(() => {
 
@@ -69,27 +71,34 @@ describe('L10nPipe', () => {
         injector = getTestBed();
         l10nService = injector.get(L10nService);
         l10nPipe = new L10nPipe(l10nService);
+        plusPipe = new L10nPipePlus(l10nService);
         localeService = injector.get(LocaleService);
         localeService.setCurrentLocale(locale);
     });
 
     it('should defined', () => {
         expect(L10nPipe).toBeDefined();
-        expect(l10nPipe).toBeDefined();
+        expect(plusPipe).toBeDefined();
         expect(l10nPipe instanceof L10nPipe).toBeTruthy();
-
+        expect(plusPipe instanceof L10nPipePlus).toBeTruthy();
     });
 
     it('should transform with translation', () => {
-        const res = l10nPipe.transform('test.string', 'test string for en');
-        expect(res).toEqual('test string for other locale');
+        const res1 = l10nPipe.transform('test.string', 'test string for en');
+        const res2 = plusPipe.transform('test.string');
+        const expectRes = 'test string for other locale';
+        expect(res1).toEqual(expectRes);
+        expect(res2).toEqual(expectRes);
         locale = localeArr[1];
     });
 
     it('should transform with string in source', () => {
         localeService.setCurrentLocale(localeArr[1]);
-        const res = l10nPipe.transform('test.string', 'test string for en');
-        expect(res).toEqual('test string for en');
+        const sourceStr = 'test string for en';
+        const res1 = l10nPipe.transform('test.string', sourceStr);
+        expect(res1).toEqual(sourceStr);
+        const res2 = plusPipe.transform('application.title');
+        expect(res2).toEqual('Welcome to VIP Angular sample application!');
         locale = localeArr[2];
     });
 
@@ -97,5 +106,10 @@ describe('L10nPipe', () => {
         expect(() => {
             l10nPipe.transform('', 'test string for en');
         }).toThrowError(`InvalidParamater: 'key in L10nPipe'`);
+        expect(() => {
+            plusPipe.transform('');
+        }).toThrowError(`InvalidParamater: 'key in L10nPipePlus'`);
+        l10nPipe.ngOnDestroy();
+        plusPipe.ngOnDestroy();
     });
 });
