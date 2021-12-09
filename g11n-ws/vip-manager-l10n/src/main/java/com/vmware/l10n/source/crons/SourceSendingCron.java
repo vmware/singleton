@@ -271,6 +271,8 @@ public class SourceSendingCron {
 		// push the source to GRM.
 		if (!remoteGRMURL.equalsIgnoreCase(LOCAL_STR) && grmConnected) {
 			try {
+				
+				
 				remoteSyncService.send(cachedComDTO, remoteGRMURL);
 			} catch (L10nAPIException e) {
 				sendKeySource2GRM(cachedComDTO, remoteGRMURL);
@@ -348,7 +350,12 @@ public class SourceSendingCron {
 		if (!syncEnabled) {
 			return;
 		}
-		
+		processReqGRMFailure();
+		processReqI18nFailure();
+
+    }
+	
+	private void processReqGRMFailure(){
 		if (!remoteGRMURL.equalsIgnoreCase(LOCAL_STR)) {
 			try {
 				remoteSyncService.ping(remoteGRMURL);
@@ -356,13 +363,16 @@ public class SourceSendingCron {
 				List<SyncRecordModel> syncGrmList = sqlLite.getSynRecords(grmFlag);
 				if(syncGrmList != null) {
 					for(SyncRecordModel syncGrm : syncGrmList) {
+						LOGGER.info("process request GRM failure:{}-{}-{}", syncGrm.getProduct(), syncGrm.getVersion(), syncGrm.getComponent());
 						ComponentSourceDTO comDTO = getCachedLocalBundle(syncGrm);
-                        try {
-						   remoteSyncService.send(comDTO, remoteGRMURL);
-                        } catch (L10nAPIException e) {
-                        	sendKeySource2GRM(comDTO, remoteGRMURL);
-            			}
-                        remoteSyncService.ping(remoteGRMURL);
+						if(comDTO != null) {
+							 try {
+								   remoteSyncService.send(comDTO, remoteGRMURL);
+		                        } catch (L10nAPIException e) {
+		                        	sendKeySource2GRM(comDTO, remoteGRMURL);
+		            			}
+		                        remoteSyncService.ping(remoteGRMURL);
+						}
 						sqlLite.deleteSyncRecord(syncGrm);
 					}
 				}
@@ -371,7 +381,9 @@ public class SourceSendingCron {
 				setGrmConnected(false);
 			}
 		}
-
+	}
+	
+	private void processReqI18nFailure(){
 		if (!remoteVIPURL.equalsIgnoreCase(LOCAL_STR)) {
 			try {
 				pingSingleton(remoteVIPURL);
@@ -379,7 +391,9 @@ public class SourceSendingCron {
 				List<SyncRecordModel> syncSlgList = sqlLite.getSynRecords(singletonFlag);
 				if(syncSlgList != null) {
 					for(SyncRecordModel syncSlg : syncSlgList) {
+						LOGGER.info("process request Singleton failure:{}-{}-{}", syncSlg.getProduct(), syncSlg.getVersion(), syncSlg.getComponent());
 						ComponentSourceDTO comDTO = getCachedLocalBundle(syncSlg);
+						if(comDTO != null) {
 						try {
 						    putDataToRemoteVIP(comDTO);
 						}catch (VIPHttpException e) {
@@ -387,6 +401,7 @@ public class SourceSendingCron {
 							int size = content.getBytes(StandardCharsets.UTF_8).length;
 							LOGGER.error("Sync source to Singleton failule: size{}, content: {} ", size, content);
 							continue;
+						}
 						}
 						sqlLite.deleteSyncRecord(syncSlg);
 					}
@@ -397,6 +412,7 @@ public class SourceSendingCron {
 
 			} 
 		}
+
 	}
 	
 /**
