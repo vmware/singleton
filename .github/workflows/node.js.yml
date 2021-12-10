@@ -74,7 +74,7 @@ jobs:
         uses: codecov/codecov-action@v2
         with:
           files: ./g11n-js-client/coverage/lcov.info
-          flags: g11n-cldr-pattern
+          flags: g11n-js-client
   security-analysis:
     name: Security Analysis
     runs-on: ubuntu-latest
