@@ -1,6 +1,6 @@
 ---
 title: "Python Client Introduction"
-date: 2020-07-30T20:07:51+08:00
+date: 2021-12-10T10:07:51+08:00
 draft: false
 weight: 10
 ---
@@ -26,15 +26,29 @@ Python 3.x
 It's better to install [PyYAML](https://pypi.org/project/PyYAML/) module of python. Otherwise, the configuration file should be written in json.
 
 
-# How to get the client code
+# How to use python client as a python package
+Install [sgtnclient](https://pypi.org/project/sgtnclient) as a python package.
+```
+pip install sgtnclient
+```
+```
+pip3 install sgtnclient
+```
+
+
+# How to get and use the client code
 ```
 git clone -b g11n-python-client https://github.com/vmware/singleton.git
 ```
-The client code is [sgtn_client.py](https://github.com/vmware/singleton/blob/g11n-python-client/sgtn4python/sgtn_client.py), [sgtn_properties.py](https://github.com/vmware/singleton/blob/g11n-python-client/sgtn4python/sgtn_properties.py) and [sgtn_util.py](https://github.com/vmware/singleton/blob/g11n-python-client/sgtn4python/sgtn_util.py). Put them to a place where they can be imported to the application code.
-It needs a configuration file, for example, [sgtn_client.yml](https://github.com/vmware/singleton/blob/g11n-python-client/sgtn4python/test/sgtn_client.yml).
+Install it as a python package.
+```
+python setup.py install
+```
+Or use its code directly by putting them to a place where they can be imported to the application code.
 
 
 # How to write a configuration file
+The python client of Singleton needs a configuration file. Here is an [example](https://github.com/vmware/singleton/blob/g11n-python-client/sgtn4python/sample/sample_online_localsource.yml).
 
 * Basic definition
 
@@ -52,10 +66,13 @@ It needs a configuration file, for example, [sgtn_client.yml](https://github.com
 | ------ | ------ | ------ | ------ |
 | default_locale | string | Default locale | en-US |
 | source_locale | string | Source locale | Same with default locale |
-| log_path | string | Log path, './' means the path of configuration. |  |
-| cache_path | string | Cache file path, './' means the path of configuration. |  |
-| try_delay | integer | Interval to try again when failed | 10 |
+| log_path | string | Log path, './' means the path of configuration. | None. Not in use |
+| cache_type | string | Cache type. 'by_key' means not using component in api. | default |
+| cache_path | string | Cache file path, './' means the path of configuration. | None. Not in use |
+| try_wait | integer | Interval to try again when failed and max delay of http request | 10 |
 | cache_expired_time | integer | Interval to update data | 3600 |
+| pseudo | string | Switch of pseudo testing | false |
+| multitask | string | 'async' means using coroutine | None. Not by coroutine |
 
 * Component definition
 
@@ -137,7 +154,7 @@ components:
 ```
 
 # APIs Available
-* [Factory Class](#Factory-Class)
+* [Entry of library](#Entry-of-library)
    * [I18N](#I18N)
 * [Interface For Release](#Interface-For-Release)
    * [Release](#Release)
@@ -146,18 +163,17 @@ components:
 * [Interface For Translation](#Interface-For-Translation)
    * [Translation](#Translation)
 
-## Factory Class
+## Entry of library
 ### I18N
 
-* It's the factory class that creates and initializes the configuration object and the release object.
+* It's the entry code that creates and initializes the configuration object and the release object.
 
 ```python
-class I18N():
-    def add_config_file(cls, config_file)
-    def add_config(cls, base_path, config_data)
-    def set_current_locale(cls, locale)
-    def get_current_locale(cls)
-    def get_release(cls, product, version)
+def add_config_file(config_file, outside_config=None)
+def add_config(base_path, config_data)
+def set_current_locale(locale)
+def get_current_locale()
+def get_release(product, version)
 ```
 
 ### I18N / add_config_file
@@ -167,6 +183,7 @@ class I18N():
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | config_file | string | Configuration file |
+| outside_config | dict | Configuration that overrides the configuration file |
 
 ### I18N / add_config
 
@@ -175,7 +192,7 @@ class I18N():
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | base_path | string | The path of configuration |
-| config_data | string | Configuration text in json or yaml |
+| config_data | dict | Configuration data |
 
 ### I18N / set_current_locale
 
