@@ -8,7 +8,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="sgtnclient",
-    version="0.6.0",
+    version="0.7.0",
     author="Jasper Jin",
     author_email="jasperj@vmware.com",
     description="Singleton Client",
