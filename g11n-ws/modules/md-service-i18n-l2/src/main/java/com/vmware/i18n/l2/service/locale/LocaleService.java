@@ -250,7 +250,7 @@ public class LocaleService implements ILocaleService {
 				TerritoryDTO cacheTerritoryCities = TranslationCache3.getCachedObject(CacheName.REGION,
 						TERRITORY_CITIES + lang, TerritoryDTO.class);
 				if (cacheTerritoryCities == null) {
-					logger.info("cache citys is null, get data from file");
+					logger.info("cache cities is null, get data from file");
 					cacheTerritoryCities = territoriesParser.getCitiesByLanguage(lang);
 					if (cacheTerritoryCities.getCities() != null) {
 						TranslationCache3.addCachedObject(CacheName.REGION, TERRITORY_CITIES + lang, TerritoryDTO.class,
