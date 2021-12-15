@@ -38,6 +38,8 @@ public class LocaleService implements ILocaleService {
 	private static final String UI_LIST_OR_MENU = "uiListOrMenu";
 	private static final String NO_CHANGES = "no-change";
 	private static final Logger logger = LoggerFactory.getLogger(LocaleService.class.getName());
+	private static final String TERRITORY_REGIONS = "terr-region";
+	private static final String TERRITORY_CITIES = "terr-city";
 
 	@Autowired
 	IProductService productService;
@@ -224,8 +226,9 @@ public class LocaleService implements ILocaleService {
 		return String.valueOf(chars);
 	}
 
-	@Override
-	public List<TerritoryDTO> getTerritoriesFromCLDR(String languageList, String displayCity, String regions) throws Exception {
+@Override
+	public List<TerritoryDTO> getTerritoriesFromCLDR(String languageList, String displayCity, String regions)
+			throws Exception {
 		TerritoriesFileParser territoriesParser = new TerritoriesFileParser();
 		List<TerritoryDTO> territoryList = new ArrayList<TerritoryDTO>();
 		String[] langArr = languageList.split(",");
@@ -233,20 +236,31 @@ public class LocaleService implements ILocaleService {
 			String locale = lang.replace("_", "-");
 			lang = CommonUtil.getCLDRLocale(locale, localePathMap, localeAliasesMap).toLowerCase();
 			logger.info("get data from cache");
-			TerritoryDTO cacheTerritory = TranslationCache3.getCachedObject(CacheName.REGION, lang, TerritoryDTO.class);
-			if (cacheTerritory == null) {
-				logger.info("cache is null, get data from file");
-				cacheTerritory = territoriesParser.getTerritoriesByLanguage(lang);
-				if (cacheTerritory.getTerritories() != null) {
-					TranslationCache3.addCachedObject(CacheName.REGION, lang, TerritoryDTO.class, cacheTerritory);
+			TerritoryDTO cacheTerritoryRegions = TranslationCache3.getCachedObject(CacheName.REGION,
+					TERRITORY_REGIONS + lang, TerritoryDTO.class);
+			if (cacheTerritoryRegions == null) {
+				logger.info("cache regions is null, get data from file");
+				cacheTerritoryRegions = territoriesParser.getRegionsByLanguage(lang);
+				if (cacheTerritoryRegions.getTerritories() != null) {
+					TranslationCache3.addCachedObject(CacheName.REGION, TERRITORY_REGIONS + lang, TerritoryDTO.class,
+							cacheTerritoryRegions);
 				}
 			}
-
-			TerritoryDTO territory = cacheTerritory.shallowCopy();
-			if (!StringUtils.isEmpty(territory.getCities()) && Boolean.parseBoolean(displayCity)) {
-				if (!StringUtils.isEmpty(regions)) {
+			if (Boolean.parseBoolean(displayCity)) {
+				TerritoryDTO cacheTerritoryCities = TranslationCache3.getCachedObject(CacheName.REGION,
+						TERRITORY_CITIES + lang, TerritoryDTO.class);
+				if (cacheTerritoryCities == null) {
+					logger.info("cache cities is null, get data from file");
+					cacheTerritoryCities = territoriesParser.getCitiesByLanguage(lang);
+					if (cacheTerritoryCities.getCities() != null) {
+						TranslationCache3.addCachedObject(CacheName.REGION, TERRITORY_CITIES + lang, TerritoryDTO.class,
+								cacheTerritoryCities);
+					}
+				}
+				TerritoryDTO territory = cacheTerritoryRegions.shallowCopy();
+				if (!StringUtils.isEmpty(regions) && !StringUtils.isEmpty(cacheTerritoryCities.getCities())) {
 					Map<String, Object> cityMap = new HashMap<>();
-					Map<String, Object> originCityMap = territory.getCities();
+					Map<String, Object> originCityMap = cacheTerritoryCities.getCities();
 					Arrays.stream(regions.split(",")).forEach(regionName -> {
 						regionName = regionName.toUpperCase();
 						if (originCityMap.containsKey(regionName)) {
@@ -254,14 +268,17 @@ public class LocaleService implements ILocaleService {
 						}
 					});
 					territory.setCities(cityMap);
+				} else {
+					territory.setCities(cacheTerritoryCities.getCities());
+					
 				}
+				territoryList.add(territory);
 			} else {
-				territory.setCities(null);
+				territoryList.add(cacheTerritoryRegions);
 			}
 
-			territoryList.add(territory);
 		}
+
 		return territoryList;
 	}
-
 }
