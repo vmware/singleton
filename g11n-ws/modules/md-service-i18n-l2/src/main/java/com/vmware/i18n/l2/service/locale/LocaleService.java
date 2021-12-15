@@ -4,26 +4,22 @@
  */
 package com.vmware.i18n.l2.service.locale;
 
-import java.text.MessageFormat;
-import java.util.*;
-import java.util.stream.Collectors;
-
-import com.vmware.i18n.PatternUtil;
+import com.ibm.icu.impl.LocaleUtility;
 import com.vmware.i18n.cldr.CLDR;
 import com.vmware.i18n.utils.CommonUtil;
-import com.vmware.vip.common.utils.JSONUtils;
-import org.apache.commons.lang3.SerializationUtils;
+import com.vmware.vip.common.cache.CacheName;
+import com.vmware.vip.common.cache.TranslationCache3;
+import com.vmware.vip.common.utils.LocaleUtils;
+import com.vmware.vip.core.messages.service.product.IProductService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
-import com.ibm.icu.impl.LocaleUtility;
-import com.vmware.vip.common.cache.CacheName;
-import com.vmware.vip.common.cache.TranslationCache3;
-import com.vmware.vip.common.utils.LocaleUtils;
-import com.vmware.vip.core.messages.service.product.IProductService;
+import java.text.MessageFormat;
+import java.util.*;
+import java.util.stream.Collectors;
 
 import static com.vmware.i18n.pattern.service.impl.PatternServiceImpl.localeAliasesMap;
 import static com.vmware.i18n.pattern.service.impl.PatternServiceImpl.localePathMap;
