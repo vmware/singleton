@@ -34,7 +34,7 @@ public class TerritoriesFileParser {
 	}
 
 	@SuppressWarnings("unchecked")
-	public TerritoryDTO getCitysByLanguage(String language) {
+	public TerritoryDTO getCitiesByLanguage(String language) {
 		TerritoryDTO dto = new TerritoryDTO();
 		dto.setLanguage(language);
 		String citiesJson = PatternUtil.getCitiesFromLib(language.replace("_", "-"));

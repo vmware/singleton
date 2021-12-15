@@ -39,7 +39,7 @@ public class LocaleService implements ILocaleService {
 	private static final String NO_CHANGES = "no-change";
 	private static final Logger logger = LoggerFactory.getLogger(LocaleService.class.getName());
 	private static final String TERRITORY_REGIONS = "terr-region";
-	private static final String TERRITORY_CITYS = "terr-city";
+	private static final String TERRITORY_CITIES = "terr-city";
 
 	@Autowired
 	IProductService productService;
@@ -247,20 +247,20 @@ public class LocaleService implements ILocaleService {
 				}
 			}
 			if (Boolean.parseBoolean(displayCity)) {
-				TerritoryDTO cacheTerritoryCitys = TranslationCache3.getCachedObject(CacheName.REGION,
-						TERRITORY_CITYS + lang, TerritoryDTO.class);
-				if (cacheTerritoryCitys == null) {
+				TerritoryDTO cacheTerritoryCities = TranslationCache3.getCachedObject(CacheName.REGION,
+						TERRITORY_CITIES + lang, TerritoryDTO.class);
+				if (cacheTerritoryCities == null) {
 					logger.info("cache citys is null, get data from file");
-					cacheTerritoryCitys = territoriesParser.getCitysByLanguage(lang);
-					if (cacheTerritoryCitys.getCities() != null) {
-						TranslationCache3.addCachedObject(CacheName.REGION, TERRITORY_CITYS + lang, TerritoryDTO.class,
-								cacheTerritoryCitys);
+					cacheTerritoryCities = territoriesParser.getCitiesByLanguage(lang);
+					if (cacheTerritoryCities.getCities() != null) {
+						TranslationCache3.addCachedObject(CacheName.REGION, TERRITORY_CITIES + lang, TerritoryDTO.class,
+								cacheTerritoryCities);
 					}
 				}
 				TerritoryDTO territory = cacheTerritoryRegions.shallowCopy();
-				if (!StringUtils.isEmpty(regions) && !StringUtils.isEmpty(cacheTerritoryCitys.getCities())) {
+				if (!StringUtils.isEmpty(regions) && !StringUtils.isEmpty(cacheTerritoryCities.getCities())) {
 					Map<String, Object> cityMap = new HashMap<>();
-					Map<String, Object> originCityMap = cacheTerritoryCitys.getCities();
+					Map<String, Object> originCityMap = cacheTerritoryCities.getCities();
 					Arrays.stream(regions.split(",")).forEach(regionName -> {
 						regionName = regionName.toUpperCase();
 						if (originCityMap.containsKey(regionName)) {
@@ -269,7 +269,7 @@ public class LocaleService implements ILocaleService {
 					});
 					territory.setCities(cityMap);
 				} else {
-					territory.setCities(cacheTerritoryCitys.getCities());
+					territory.setCities(cacheTerritoryCities.getCities());
 					
 				}
 				territoryList.add(territory);
