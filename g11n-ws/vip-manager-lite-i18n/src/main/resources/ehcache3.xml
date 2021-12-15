@@ -52,6 +52,12 @@ SPDX-License-Identifier: EPL-2.0
 			<tti unit="hours">1</tti>
 			<!--<ttl unit="hours">24</ttl> -->
 		</expiry>
+		<resources>
+			<heap unit="entries">2</heap>     <!--cache item count in heap -->
+			<!-- <offheap unit="MB">20</offheap> -->  <!--speed is lower than heap, but faster than disk -->
+			<!-- <disk unit="MB" persistent="true">100</disk> -->   <!--disk storage, speed is the lowest -->
+		</resources>
+		
 	</cache>
 
 	<cache alias="LANGUAGE" uses-template="default">
