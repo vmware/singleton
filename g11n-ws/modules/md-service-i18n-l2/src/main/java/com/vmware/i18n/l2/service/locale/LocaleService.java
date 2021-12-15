@@ -246,7 +246,7 @@ public class LocaleService implements ILocaleService {
 				}
 			}
 
-			TerritoryDTO territory = SerializationUtils.clone(cacheTerritory);
+			TerritoryDTO territory = cacheTerritory.shallowCopy();
 			if (!StringUtils.isEmpty(territory.getCities()) && Boolean.parseBoolean(displayCity)) {
 				if (!StringUtils.isEmpty(regions)) {
 					Map<String, Object> cityMap = new HashMap<>();

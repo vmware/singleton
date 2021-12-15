@@ -51,4 +51,13 @@ public class TerritoryDTO implements Serializable {
 	public void setCities(Map<String, Object> cities) {
 		this.cities = cities;
 	}
+
+	public TerritoryDTO shallowCopy() {
+		TerritoryDTO newDTO = new TerritoryDTO();
+		newDTO.language = language;
+		newDTO.defaultRegionCode = defaultRegionCode;
+		newDTO.territories = territories;
+		newDTO.cities = cities;
+		return newDTO;
+	}
 }
