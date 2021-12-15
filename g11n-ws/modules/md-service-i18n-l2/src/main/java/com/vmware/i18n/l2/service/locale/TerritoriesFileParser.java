@@ -15,7 +15,7 @@ import com.vmware.vip.common.utils.JSONUtils;
 public class TerritoriesFileParser {
 
 	@SuppressWarnings("unchecked")
-	public TerritoryDTO getTerritoriesByLanguage(String language) {
+	public TerritoryDTO getRegionsByLanguage(String language) {
 		TerritoryDTO dto = new TerritoryDTO();
 		dto.setLanguage(language);
 		String regionJson = PatternUtil.getRegionFromLib(language.replace("_", "-"));
@@ -24,14 +24,23 @@ public class TerritoriesFileParser {
 			dto.setDefaultRegionCode("");
 			return dto;
 		}
-		Map<String, String> terrMap = (Map<String, String>)JSONUtils.getMapFromJson(regionJson).get(ConstantsKeys.TERRITORIES);
+		Map<String, String> terrMap = (Map<String, String>) JSONUtils.getMapFromJson(regionJson)
+				.get(ConstantsKeys.TERRITORIES);
 		Object defaultRegionCode = JSONUtils.getMapFromJson(regionJson).get(ConstantsKeys.DEFAULT_REGION_CODE);
 		dto.setTerritories(terrMap);
 		dto.setDefaultRegionCode(defaultRegionCode.toString());
+		dto.setCities(null);
+		return dto;
+	}
 
+	@SuppressWarnings("unchecked")
+	public TerritoryDTO getCitysByLanguage(String language) {
+		TerritoryDTO dto = new TerritoryDTO();
+		dto.setLanguage(language);
 		String citiesJson = PatternUtil.getCitiesFromLib(language.replace("_", "-"));
 		if (!StringUtils.isEmpty(citiesJson)) {
-			Map<String, Object> citiesMap = (Map<String, Object>)JSONUtils.getMapFromJson(citiesJson).get(ConstantsKeys.CITIES);
+			Map<String, Object> citiesMap = (Map<String, Object>) JSONUtils.getMapFromJson(citiesJson)
+					.get(ConstantsKeys.CITIES);
 			dto.setCities(citiesMap);
 		}
 		return dto;

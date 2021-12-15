@@ -8,11 +8,8 @@ import java.text.MessageFormat;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import com.vmware.i18n.PatternUtil;
 import com.vmware.i18n.cldr.CLDR;
 import com.vmware.i18n.utils.CommonUtil;
-import com.vmware.vip.common.utils.JSONUtils;
-import org.apache.commons.lang3.SerializationUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,6 +39,8 @@ public class LocaleService implements ILocaleService {
 	private static final String UI_LIST_OR_MENU = "uiListOrMenu";
 	private static final String NO_CHANGES = "no-change";
 	private static final Logger logger = LoggerFactory.getLogger(LocaleService.class.getName());
+	private static final String TERRITORY_REGIONS = "terr-region";
+	private static final String TERRITORY_CITYS = "terr-city";
 
 	@Autowired
 	IProductService productService;
@@ -228,7 +227,8 @@ public class LocaleService implements ILocaleService {
 	}
 
 	@Override
-	public List<TerritoryDTO> getTerritoriesFromCLDR(String languageList, String displayCity, String regions) throws Exception {
+	public List<TerritoryDTO> getTerritoriesFromCLDR(String languageList, String displayCity, String regions)
+			throws Exception {
 		TerritoriesFileParser territoriesParser = new TerritoriesFileParser();
 		List<TerritoryDTO> territoryList = new ArrayList<TerritoryDTO>();
 		String[] langArr = languageList.split(",");
@@ -236,20 +236,31 @@ public class LocaleService implements ILocaleService {
 			String locale = lang.replace("_", "-");
 			lang = CommonUtil.getCLDRLocale(locale, localePathMap, localeAliasesMap).toLowerCase();
 			logger.info("get data from cache");
-			TerritoryDTO cacheTerritory = TranslationCache3.getCachedObject(CacheName.REGION, lang, TerritoryDTO.class);
-			if (cacheTerritory == null) {
-				logger.info("cache is null, get data from file");
-				cacheTerritory = territoriesParser.getTerritoriesByLanguage(lang);
-				if (cacheTerritory.getTerritories() != null) {
-					TranslationCache3.addCachedObject(CacheName.REGION, lang, TerritoryDTO.class, cacheTerritory);
+			TerritoryDTO cacheTerritoryRegions = TranslationCache3.getCachedObject(CacheName.REGION,
+					TERRITORY_REGIONS + lang, TerritoryDTO.class);
+			if (cacheTerritoryRegions == null) {
+				logger.info("cache regions is null, get data from file");
+				cacheTerritoryRegions = territoriesParser.getRegionsByLanguage(lang);
+				if (cacheTerritoryRegions.getTerritories() != null) {
+					TranslationCache3.addCachedObject(CacheName.REGION, TERRITORY_REGIONS + lang, TerritoryDTO.class,
+							cacheTerritoryRegions);
 				}
 			}
-
-			TerritoryDTO territory = SerializationUtils.clone(cacheTerritory);
-			if (!StringUtils.isEmpty(territory.getCities()) && Boolean.parseBoolean(displayCity)) {
-				if (!StringUtils.isEmpty(regions)) {
+			if (Boolean.parseBoolean(displayCity)) {
+				TerritoryDTO cacheTerritoryCitys = TranslationCache3.getCachedObject(CacheName.REGION,
+						TERRITORY_CITYS + lang, TerritoryDTO.class);
+				if (cacheTerritoryCitys == null) {
+					logger.info("cache citys is null, get data from file");
+					cacheTerritoryCitys = territoriesParser.getCitysByLanguage(lang);
+					if (cacheTerritoryCitys.getCities() != null) {
+						TranslationCache3.addCachedObject(CacheName.REGION, TERRITORY_CITYS + lang, TerritoryDTO.class,
+								cacheTerritoryCitys);
+					}
+				}
+				TerritoryDTO territory = cacheTerritoryRegions.shallowCopy();
+				if (!StringUtils.isEmpty(regions) && !StringUtils.isEmpty(cacheTerritoryCitys.getCities())) {
 					Map<String, Object> cityMap = new HashMap<>();
-					Map<String, Object> originCityMap = territory.getCities();
+					Map<String, Object> originCityMap = cacheTerritoryCitys.getCities();
 					Arrays.stream(regions.split(",")).forEach(regionName -> {
 						regionName = regionName.toUpperCase();
 						if (originCityMap.containsKey(regionName)) {
@@ -257,13 +268,17 @@ public class LocaleService implements ILocaleService {
 						}
 					});
 					territory.setCities(cityMap);
+				} else {
+					territory.setCities(cacheTerritoryCitys.getCities());
+					
 				}
+				territoryList.add(territory);
 			} else {
-				territory.setCities(null);
+				territoryList.add(cacheTerritoryRegions);
 			}
 
-			territoryList.add(territory);
 		}
+
 		return territoryList;
 	}
 
