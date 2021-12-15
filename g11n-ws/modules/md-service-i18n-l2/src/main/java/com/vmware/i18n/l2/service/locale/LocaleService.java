@@ -16,11 +16,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
-import com.ibm.icu.impl.LocaleUtility;
-import com.vmware.vip.common.cache.CacheName;
-import com.vmware.vip.common.cache.TranslationCache3;
-import com.vmware.vip.common.utils.LocaleUtils;
-import com.vmware.vip.core.messages.service.product.IProductService;
+import java.text.MessageFormat;
+import java.util.*;
+import java.util.stream.Collectors;
 
 import static com.vmware.i18n.pattern.service.impl.PatternServiceImpl.localeAliasesMap;
 import static com.vmware.i18n.pattern.service.impl.PatternServiceImpl.localePathMap;
@@ -89,7 +87,8 @@ public class LocaleService implements ILocaleService {
 			Map<String, Object> displayNamesMap = null;
 			if (StringUtils.isEmpty(dispLanguage)) {
 				for (String language : languageList) {
-					displayNamesMap = languagesParser.getDisplayNames(language);
+					normalizedDispLanguage = CommonUtil.getCLDRLocale(language, localePathMap, localeAliasesMap);
+					displayNamesMap = languagesParser.getDisplayNames(normalizedDispLanguage);
 					getDisplayNameForLanguage(language, displayNamesMap, tmp);
 				}
 			} else {
@@ -226,7 +225,7 @@ public class LocaleService implements ILocaleService {
 		return String.valueOf(chars);
 	}
 
-	@Override
+@Override
 	public List<TerritoryDTO> getTerritoriesFromCLDR(String languageList, String displayCity, String regions)
 			throws Exception {
 		TerritoriesFileParser territoriesParser = new TerritoriesFileParser();
@@ -281,5 +280,4 @@ public class LocaleService implements ILocaleService {
 
 		return territoryList;
 	}
-
 }
