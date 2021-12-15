@@ -1,32 +1,10 @@
 //Copyright 2019-2021 VMware, Inc.
 //SPDX-License-Identifier: EPL-2.0
-apply plugin: 'java'
-apply plugin: 'eclipse'
+apply plugin: 'java-library'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'   
-apply plugin: "org.sonarqube"
-apply plugin: "jacoco"
 
 archivesBaseName = 'md-restful-synch'
-sourceCompatibility = 1.8
-
-
-buildscript {
-	repositories {
-	  maven {
-		url "https://plugins.gradle.org/m2/"
-	  }
-	}
-	dependencies {
-	  classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.5"
-	}
-}
-
-
-tasks.withType(JavaCompile) {
-    options.encoding = 'UTF-8'
-}
-
 
 configurations {
     providedRuntime
@@ -35,22 +13,19 @@ configurations {
 }
 
 dependencies {
-    compile project(":vip-common")
-    compile project(":md-restful-api")
-    compile project(":md-service-i18n-l3")
-    compile("org.apache.httpcomponents:httpclient:$httpclient")
-    compile("com.alibaba:fastjson:1.2.51")
-    compile("io.springfox:springfox-swagger-ui:2.9.2")
-    compile("io.springfox:springfox-swagger2:2.9.2")
-    compile("org.springframework:spring-webmvc:$springWebVersion")
-    compile ('org.apache.tomcat.embed:tomcat-embed-core:9.0.37')
-    compile ('org.springframework.boot:spring-boot-starter-log4j2'){
+    api project(":vip-common")
+    api project(":md-restful-api")
+    api project(":md-service-i18n-l3")
+    compileOnly("org.apache.httpcomponents:httpclient:$httpclient")
+    api("com.alibaba:fastjson:1.2.51")
+    compileOnly("io.springfox:springfox-swagger-ui:$swagger2Version")
+    compileOnly("io.springfox:springfox-swagger2:$swagger2Version")
+    compileOnly("org.springframework:spring-webmvc:$springWebVersion")
+    compileOnly("org.apache.tomcat.embed:tomcat-embed-core:$tomcatVersion")
+    compileOnly('org.springframework.boot:spring-boot-starter-log4j2'){
               exclude group: "org.apache.logging.log4j"
     }
-}
-
-jar {
-    enabled = true
+    compileOnly('org.springframework.boot:spring-boot-autoconfigure')
 }
 
 bootJar {

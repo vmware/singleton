@@ -1,25 +1,30 @@
 //Copyright 2019-2021 VMware, Inc.
 //SPDX-License-Identifier: EPL-2.0
+
 buildscript {
+    ext {
+     springBootVersion = '2.5.7'
+    }
     repositories {
         mavenLocal()
         jcenter()
         mavenCentral()
     }
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.3.12.RELEASE")
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:$springBootVersion")
         classpath("org.asciidoctor:asciidoctor-gradle-plugin:1.5.7")
         classpath("io.github.swagger2markup:swagger2markup-gradle-plugin:1.3.3")
         classpath("org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.7.1")
     }
 }
 
+/**
 apply plugin: "org.sonarqube"
 
 ext {
     javaLevel = 1.8
     projectVersion = '0.0.1-SNAPSHOT'
-    springWebVersion='5.2.15.RELEASE'
+    springWebVersion='5.2.18.RELEASE'
     httpclient='4.5.13'
     jacksonVersion = '2.11.4'
     sqliteVersion= '3.36.0.1'
@@ -37,7 +42,7 @@ ext {
     snakeyam="1.29"
     jjwt="0.9.1"
     hibernateJpa21Api = "1.0.2"
-    log4j2Version="2.16.0"
+    log4j2Version="2.14.1"
     slf4jVersion="1.7.31"
     buildRelease = 'beta'
     remoteServer = ""
@@ -78,4 +83,81 @@ idea {
 
 tasks.withType(JavaCompile) {
     options.encoding = "UTF-8"
+}
+**/
+
+
+
+
+
+allprojects{
+    version = project.getProperty('buildNumber')
+    
+    apply plugin: 'java'
+    apply plugin: 'eclipse'
+    apply plugin: 'idea'
+    apply plugin: "org.sonarqube"
+    apply plugin: "jacoco"
+
+    
+    group = 'com.vmware'
+   
+    repositories {
+        mavenLocal() 
+        maven { url "https://repo1.maven.org/maven2/" }
+        mavenCentral()
+        jcenter()
+       
+       
+    }
+     
+   
+     
+}
+
+subprojects{
+
+
+    sourceCompatibility = '1.8'
+     
+    ext {
+        projectVersion = '0.0.1-SNAPSHOT'
+        springWebVersion='5.3.13'
+        tomcatVersion= '9.0.55'
+        httpclient='4.5.13'
+   		jacksonVersion = '2.11.4'
+    	sqliteVersion= '3.36.0.1'
+    	commonsCollectionsVersion = '3.2.2'
+    	ehCacheVersion = '3.9.2'
+    	cacheApiVersion='1.1.1'
+    	hsqlVersion = '2.3.3'
+    	junitVersion = '4.13.2'
+    	jsonSimpleVersion = '1.1.1'
+    	commonsLangVersion = '3.12.0'
+    	commonsIoVersion = '2.10.0'
+    	commonsCodecVersion='1.15'
+    	guavaVersion="30.1.1-jre"
+    	snakeyam="1.29"
+    	jjwtVersion="0.9.1"
+    	hibernateJpa21Api = "1.0.2"
+    	log4j2Version="2.16.0"
+    	slf4jVersion="1.7.31"
+    	
+    	postgresqlVersion = "42.1.4"
+    	druidVersion = "1.1.8"
+    	awsS3Version = "1.12.14"
+        swagger2Version = "2.9.2"
+        micrometerVersion = "1.5.5"
+        icu4jVersion = "60.3"
+        
+    	buildRelease = 'beta'
+    	remoteServer = ""
+    	deployPath="$rootDir/../publish/"
+    }
+    
+   tasks.withType(JavaCompile) {
+       options.encoding = "UTF-8"
+    }
+    
+
 }

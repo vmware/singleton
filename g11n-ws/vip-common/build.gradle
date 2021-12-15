@@ -1,37 +1,22 @@
 //Copyright 2019-2021 VMware, Inc.
 //SPDX-License-Identifier: EPL-2.0
-apply plugin: 'java'
-
+apply plugin: 'java-library'
 description = 'common tools module'
 
 configurations {
     jar
 }
 
-buildscript {
-	repositories {
-	  maven {
-		url "https://plugins.gradle.org/m2/"
-	  }
-	}
-	dependencies {
-	  classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.5"
-	}
-  }
-   
-apply plugin: "org.sonarqube"
-apply plugin: "jacoco"
-
-
 dependencies {
-    compile("org.apache.commons:commons-lang3:$commonsLangVersion")
-    compile("commons-io:commons-io:$commonsIoVersion")
-    compile("com.googlecode.json-simple:json-simple:$jsonSimpleVersion"){
+    api("org.apache.commons:commons-lang3:$commonsLangVersion")
+    api("commons-io:commons-io:$commonsIoVersion")
+    api("com.fasterxml.jackson.core:jackson-databind:$jacksonVersion")
+    api("com.googlecode.json-simple:json-simple:$jsonSimpleVersion"){
           exclude group: 'junit'
     }
-    compile("org.ehcache:ehcache:$ehCacheVersion")
-    compile("javax.cache:cache-api:$cacheApiVersion")
-    compile("com.fasterxml.jackson.core:jackson-databind:$jacksonVersion")
+    compileOnly("org.ehcache:ehcache:$ehCacheVersion")
+    compileOnly("javax.cache:cache-api:$cacheApiVersion")
+    
 }
 
 jar {
@@ -46,8 +31,5 @@ task copyCommonJars(type :Copy, dependsOn: jar) {
     include "**/*.jar"
 }
 
-tasks.withType(JavaCompile) {
-    options.encoding = 'UTF-8'
-}
 
 assemble.dependsOn.add copyCommonJars

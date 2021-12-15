@@ -1,27 +1,10 @@
 //Copyright 2019-2021 VMware, Inc.
 //SPDX-License-Identifier: EPL-2.0
-apply plugin: 'java'
-apply plugin: 'eclipse'
+apply plugin: 'java-library'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
+
 archivesBaseName = 'md-data-api-pgimpl'
-sourceCompatibility = 1.8
-
-
-
-buildscript {
-	repositories {
-	  maven {
-		url "https://plugins.gradle.org/m2/"
-	  }
-	}
-	dependencies {
-	  classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.5"
-	}
-  }
-   
-apply plugin: "org.sonarqube"
-apply plugin: "jacoco"
 
 jar {
     manifest {
@@ -30,11 +13,6 @@ jar {
     }
 }
 
-repositories {
-    mavenCentral()
-}
-
-
 configurations {
     providedRuntime
    // remove default logger
@@ -42,42 +20,20 @@ configurations {
 }
 
 dependencies {
-    compile project(":md-data-api")
-    //compile project(":vip-common")
-    compile("com.fasterxml.jackson.core:jackson-databind:$jacksonVersion")
-    compile ("org.springframework.boot:spring-boot-starter-log4j2"){
+    api project(":md-data-api")
+    implementation("com.fasterxml.jackson.core:jackson-databind:$jacksonVersion")
+    implementation("org.springframework.boot:spring-boot-starter-log4j2"){
               exclude group: 'org.apache.logging.log4j'
     }
-    compile("org.apache.logging.log4j:log4j-api:$log4j2Version")
-    compile ("org.springframework.boot:spring-boot-starter-jdbc"){
+    implementation("org.apache.logging.log4j:log4j-api:$log4j2Version")
+    implementation("org.springframework.boot:spring-boot-starter-jdbc"){
               exclude module: "tomcat-jdbc"
     }
-     compile "org.postgresql:postgresql:42.1.4"
-     compile "com.alibaba:druid:1.1.8" 
-     compile "commons-collections:commons-collections:$commonsCollectionsVersion"
+    api("org.postgresql:postgresql:$postgresqlVersion")
+    api("com.alibaba:druid:$druidVersion") 
+    implementation("commons-collections:commons-collections:$commonsCollectionsVersion")
 }
 
 bootJar {
-  enabled = false
-}
-jar {
-	enabled = true
-}
-
-
-
-test {
-    systemProperties 'property': 'value'
-}
-
-tasks.withType(JavaCompile) {
-    options.encoding = 'UTF-8'
-}
-
-uploadArchives {
-    repositories {
-       flatDir {
-           dirs 'repos'
-       }
-    }
+    enabled = false
 }
