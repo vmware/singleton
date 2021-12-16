@@ -8,8 +8,6 @@ description = 'l10n manager'
 
 
 configurations {
-    bootJar
-    providedRuntime
     // remove default logger
     all*.exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
 }
@@ -92,6 +90,9 @@ bootJar.doFirst {
     }
 }
 
+jar {
+	enabled = false
+}
 
 task profile {
     if (project.hasProperty('profileType')) {

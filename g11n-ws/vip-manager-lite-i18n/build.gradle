@@ -126,6 +126,11 @@ bootJar{
   classifier = 'boot'
   enabled = true
 }
+
+jar {
+	enabled = false
+}
+
 assemble.dependsOn.add copyLibs
 
 

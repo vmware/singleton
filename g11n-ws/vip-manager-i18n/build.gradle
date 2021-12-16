@@ -158,8 +158,6 @@ bootJar.doFirst {
 
 
 bootJar {
-   
-   
     baseName = "singleton"
     if(project.hasProperty('productName')){
       def productName = project.getProperty('productName')
@@ -185,6 +183,11 @@ bootJar {
 bootJar.doLast {
 	delete "${baseOutputDir}/generated","${baseOutputDir}/html5"
 }
+
+jar {
+	enabled = false
+}
+
 /**
 war {
     baseName = "singleton"
