@@ -124,11 +124,11 @@ bootJar.doFirst {
 
 bootJar{
   classifier = 'boot'
-  enabled = true
+  enabled = true  
 }
 
 jar {
-	enabled = false
+	classifier = ''
 }
 
 assemble.dependsOn.add copyLibs
