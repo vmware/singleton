@@ -56,7 +56,9 @@ public class CustomizeHeader extends TestBase{
 	public void addHeaderParameters() {
 		WireMockServer wireMockServer = new WireMockServer(wireMockConfig().port(mockPort));
 	    wireMockServer.start();
-	    String url = "/i18n/api/v2/translation/products/JavaClient/versions/1.0.0/locales/zh-CN/components/default?pseudo=false";
+	    String url = "/i18n/api/v2/translation/products/JavaClient/versions/1.0.0/locales/[^/]*?/components/default\\?pseudo=false";
+	    String url2 = "/i18n/api/v2/translation/products/JavaClient/versions/1.0.0/localelist";
+	    String url3 = "/i18n/api/v2/translation/products/JavaClient/versions/1.0.0/locales/latest/components/default\\?pseudo=true";
 
 		HashMap<String, String> params = new HashMap<>();
 		String key1 = "key1";
@@ -70,14 +72,62 @@ public class CustomizeHeader extends TestBase{
 		WireMock.configureFor(mockHost, mockPort);
 		WireMock.stubFor(WireMock.get(WireMock.urlMatching(url)).willReturn(
 				WireMock.aResponse().withStatus(200)));
+		WireMock.stubFor(WireMock.get(WireMock.urlMatching(url2)).willReturn(
+				WireMock.aResponse().withStatus(200)));
+		WireMock.stubFor(WireMock.get(WireMock.urlMatching(url3)).willReturn(
+				WireMock.aResponse().withStatus(200)));
 
 		tm.getString2("default", "JavaClient", new Locale("zh", "CN"), "table.host");
 		try {
-			WireMock.verify(WireMock.getRequestedFor(WireMock.urlEqualTo(url)).
+			WireMock.verify(WireMock.getRequestedFor(WireMock.urlMatching(url2+"|"+url)).
 					withHeader(key1, WireMock.equalTo(value1)).withHeader(key2, WireMock.equalTo(value2)));
 			log.verifyTrue("Verify parameters in header", true);
 		} catch(VerificationException e) {
 			log.verifyTrue("Verify parameters in header", false, e.toString());
+		} finally {
+			wireMockServer.stop();
+		}
+	}
+	
+	@Test(enabled=true, priority=0)
+	@TestCase(id = "002", name = "Add HeaderParams", description = "test desc")
+	public void addHeaderParameters_getMessage() {
+		
+		WireMockServer wireMockServer = new WireMockServer(wireMockConfig().port(mockPort));
+		wireMockServer.start();
+		String url = "/i18n/api/v2/translation/products/JavaClient/versions/1.0.0/locales/[^/]*?/components/TranslationReady\\?pseudo=false";
+		String url2 = "/i18n/api/v2/translation/products/JavaClient/versions/1.0.0/localelist";
+		String url3 = "/i18n/api/v2/translation/products/JavaClient/versions/1.0.0/locales/latest/components/TranslationReady\\?pseudo=true";
+
+		HashMap<String, String> params = new HashMap<>();
+		String key1 = "key1";
+		String value1 = "value1";
+		String key2 = "key-2";
+		String value2 = "value-2";
+		params.put(key1, value1);
+		params.put(key2, value2);
+		VIPCfg.getInstance().getVipService().setHeaderParams(params);
+
+		WireMock.configureFor(mockHost, mockPort);
+		WireMock.stubFor(WireMock.get(WireMock.urlMatching(url)).willReturn(WireMock.aResponse().withStatus(200)));
+		WireMock.stubFor(WireMock.get(WireMock.urlMatching(url2)).willReturn(WireMock.aResponse().withStatus(200)));
+		WireMock.stubFor(WireMock.get(WireMock.urlMatching(url3)).willReturn(WireMock.aResponse().withStatus(200)));
+
+		
+		
+		try {
+			tm.getMessage(new Locale("zh", "CN"), "TranslationReady", "messages.welcome1");
+        } catch (Exception e) {
+        	// Exception is expected
+        }
+		
+		try {
+			WireMock.verify(WireMock.getRequestedFor(WireMock.urlMatching(url2+"|"+url)).
+					withHeader(key1, WireMock.equalTo(value1)).withHeader(key2, WireMock.equalTo(value2)));
+			log.verifyTrue("Verify parameters in header1", true);
+		} catch(VerificationException e) {
+			e.printStackTrace();
+			log.verifyTrue("Verify parameters in header2", false, e.toString());
 		} finally {
 			wireMockServer.stop();
 		}
