@@ -58,7 +58,6 @@ public class CustomizeHeader extends TestBase{
 	    wireMockServer.start();
 	    String url = "/i18n/api/v2/translation/products/JavaClient/versions/1.0.0/locales/[^/]*?/components/default\\?pseudo=false";
 	    String url2 = "/i18n/api/v2/translation/products/JavaClient/versions/1.0.0/localelist";
-	    String url3 = "/i18n/api/v2/translation/products/JavaClient/versions/1.0.0/locales/latest/components/default\\?pseudo=true";
 
 		HashMap<String, String> params = new HashMap<>();
 		String key1 = "key1";
@@ -73,8 +72,6 @@ public class CustomizeHeader extends TestBase{
 		WireMock.stubFor(WireMock.get(WireMock.urlMatching(url)).willReturn(
 				WireMock.aResponse().withStatus(200)));
 		WireMock.stubFor(WireMock.get(WireMock.urlMatching(url2)).willReturn(
-				WireMock.aResponse().withStatus(200)));
-		WireMock.stubFor(WireMock.get(WireMock.urlMatching(url3)).willReturn(
 				WireMock.aResponse().withStatus(200)));
 
 		tm.getString2("default", "JavaClient", new Locale("zh", "CN"), "table.host");
@@ -97,8 +94,7 @@ public class CustomizeHeader extends TestBase{
 		wireMockServer.start();
 		String url = "/i18n/api/v2/translation/products/JavaClient/versions/1.0.0/locales/[^/]*?/components/TranslationReady\\?pseudo=false";
 		String url2 = "/i18n/api/v2/translation/products/JavaClient/versions/1.0.0/localelist";
-		String url3 = "/i18n/api/v2/translation/products/JavaClient/versions/1.0.0/locales/latest/components/TranslationReady\\?pseudo=true";
-
+		
 		HashMap<String, String> params = new HashMap<>();
 		String key1 = "key1";
 		String value1 = "value1";
@@ -111,7 +107,6 @@ public class CustomizeHeader extends TestBase{
 		WireMock.configureFor(mockHost, mockPort);
 		WireMock.stubFor(WireMock.get(WireMock.urlMatching(url)).willReturn(WireMock.aResponse().withStatus(200)));
 		WireMock.stubFor(WireMock.get(WireMock.urlMatching(url2)).willReturn(WireMock.aResponse().withStatus(200)));
-		WireMock.stubFor(WireMock.get(WireMock.urlMatching(url3)).willReturn(WireMock.aResponse().withStatus(200)));
 
 		
 		
