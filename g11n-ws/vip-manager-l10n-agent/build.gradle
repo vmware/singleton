@@ -19,6 +19,11 @@ dependencies {
     compile "org.springframework.boot:spring-boot-starter"
     compile ('org.springframework.boot:spring-boot-starter-log4j2')
     compile group: 'com.alibaba', name: 'fastjson', version: '1.2.75'
+    compile("org.apache.logging.log4j:log4j-api:$log4j2Version")
+    compile("org.apache.logging.log4j:log4j-core:$log4j2Version")
+    compile("org.apache.logging.log4j:log4j-slf4j-impl:$log4j2Version")
+    compile("org.slf4j:slf4j-api:$slf4jVersion")
+    compile("org.slf4j:jul-to-slf4j:$slf4jVersion")
     testCompile("org.springframework.boot:spring-boot-starter-test")
 }
 
