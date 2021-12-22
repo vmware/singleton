@@ -28,6 +28,11 @@ bootJar {
     classifier = "$buildNumber"
 }
 
+jar {
+    classifier = ''
+	enabled = false
+}
+
 task copyCommonJars(type :Copy, dependsOn: bootJar) {
     from "$buildDir/libs"
     into "$rootDir/../publish/"

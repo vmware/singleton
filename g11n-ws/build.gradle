@@ -18,77 +18,6 @@ buildscript {
     }
 }
 
-/**
-apply plugin: "org.sonarqube"
-
-ext {
-    javaLevel = 1.8
-    projectVersion = '0.0.1-SNAPSHOT'
-    springWebVersion='5.2.18.RELEASE'
-    httpclient='4.5.13'
-    jacksonVersion = '2.11.4'
-    sqliteVersion= '3.36.0.1'
-    tomcatVersion= '9.0.54'
-    commonsCollectionsVersion = '3.2.2'
-    ehCacheVersion = '3.9.2'
-    cacheApiVersion='1.1.1'
-    hsqlVersion = '2.3.3'
-    junitVersion = '3.8.1'
-    jsonSimpleVersion = '1.1.1'
-    commonsLangVersion = '3.12.0'
-    commonsIoVersion = '2.10.0'
-    commonsCodecVersion='1.15'
-    guavaVersion="30.1.1-jre"
-    snakeyam="1.29"
-    jjwt="0.9.1"
-    hibernateJpa21Api = "1.0.2"
-    log4j2Version="2.14.1"
-    slf4jVersion="1.7.31"
-    buildRelease = 'beta'
-    remoteServer = ""
-    deployPath="$rootDir/../publish/"
-    sourceCompatibility = javaLevel
-}
-
-allprojects  {
-    version= project.getProperty('buildNumber')
-    apply plugin: 'idea'
-    group = 'com.vmware'
-
-    buildscript {
-        repositories {
-            mavenLocal()
-            mavenCentral()
-            jcenter()
-        }
-    }
-
-    repositories {
-        mavenLocal() 
-        maven { url "https://repo1.maven.org/maven2/" }
-        mavenCentral()
-        maven { url "http://repository.jboss.org/nexus/content/groups/public-jboss/" }
-        jcenter()
-       
-       
-    }
-}
-
-
-idea {
-    project {
-        languageLevel = javaLevel
-    }
-}
-
-tasks.withType(JavaCompile) {
-    options.encoding = "UTF-8"
-}
-**/
-
-
-
-
 
 allprojects{
     version = project.getProperty('buildNumber')
@@ -140,7 +69,7 @@ subprojects{
     	snakeyam="1.29"
     	jjwtVersion="0.9.1"
     	hibernateJpa21Api = "1.0.2"
-    	log4j2Version="2.16.0"
+    	log4j2Version="2.17.0"
     	slf4jVersion="1.7.31"
     	
     	postgresqlVersion = "42.1.4"
