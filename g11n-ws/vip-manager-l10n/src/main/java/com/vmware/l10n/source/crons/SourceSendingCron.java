@@ -392,7 +392,9 @@ public class SourceSendingCron {
 				if(syncSlgList != null) {
 					for(SyncRecordModel syncSlg : syncSlgList) {
 						ComponentSourceDTO comDTO = getCachedLocalBundle(syncSlg);
-						 putDataToRemoteVIP(comDTO);
+						if(comDTO != null) {
+						   putDataToRemoteVIP(comDTO);
+						}
 					}
 				}
 				setSingletonConnected(true);
