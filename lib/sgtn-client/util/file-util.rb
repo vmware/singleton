@@ -5,10 +5,10 @@ module SgtnClient
 
   class FileUtil
 
-      @@mutex = Mutex.new
+      @mutex = Mutex.new
 
       def self.load_file(bundlepath)
-        @@mutex.synchronize do
+        @mutex.synchronize do
           data_hash = nil
           begin
             file = File.read(bundlepath)
@@ -21,7 +21,7 @@ module SgtnClient
       end
 
       def self.read_yml(file_name)
-        @@mutex.synchronize do
+        @mutex.synchronize do
           erb = ERB.new(File.read(file_name))
           erb.filename = file_name
           YAML.load(erb.result)
