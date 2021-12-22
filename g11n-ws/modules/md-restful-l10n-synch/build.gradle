@@ -25,10 +25,10 @@ dependencies {
     api group: 'org.eclipse.jgit', name: 'org.eclipse.jgit', version: '4.11.8.201904181247-r'
 }
 
-jar {
-    enabled = true
-}
-
 bootJar {
   enabled = false
+}
+jar {
+    classifier = ''
+	enabled = true
 }
