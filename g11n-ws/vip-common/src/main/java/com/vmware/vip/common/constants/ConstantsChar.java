@@ -24,4 +24,5 @@ public class ConstantsChar {
     public static final String REVERSE = "^";
     public static final String LEFT_PARENTHESIS = "(";
     public static final String RIGHT_PARENTHESIS = ")";
+    public static final String ASTERISK = "*";
 }
