@@ -19,6 +19,11 @@ dependencies {
     api ("org.springframework.boot:spring-boot-starter")
     api ("org.springframework.boot:spring-boot-starter-log4j2")
     api ("com.alibaba:fastjson:1.2.75")
+    implementation("org.apache.logging.log4j:log4j-api:$log4j2Version")
+    implementation("org.apache.logging.log4j:log4j-core:$log4j2Version")
+    implementation("org.apache.logging.log4j:log4j-slf4j-impl:$log4j2Version")
+    implementation("org.slf4j:slf4j-api:$slf4jVersion")
+    implementation("org.slf4j:jul-to-slf4j:$slf4jVersion")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
 
