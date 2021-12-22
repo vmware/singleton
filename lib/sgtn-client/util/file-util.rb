@@ -7,7 +7,7 @@ module SgtnClient
 
       @mutex = Mutex.new
 
-      def self.load_file(bundlepath)
+      def self.read_json(bundlepath)
         @mutex.synchronize do
           data_hash = nil
           begin
