@@ -374,8 +374,9 @@ public class SourceSendingCron {
 				if(syncGrmList != null) {
 					for(SyncRecordModel syncGrm : syncGrmList) {
 						ComponentSourceDTO comDTO = getCachedLocalBundle(syncGrm);
-						remoteSyncService.send(comDTO, remoteGRMURL);
-						
+						if(comDTO != null) {
+							remoteSyncService.send(comDTO, remoteGRMURL);
+						}
 					}
 				}
 				setGrmConnected(true);
