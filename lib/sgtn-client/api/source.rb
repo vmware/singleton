@@ -1,5 +1,3 @@
-require 'erb'
-require 'yaml'
 
 module SgtnClient
   
@@ -45,9 +43,10 @@ module SgtnClient
         SgtnClient::Config.configurations.default = locale
         source_bundle = SgtnClient::Config.configurations[env]["source_bundle"]
         SgtnClient.logger.debug "Loading [" + locale + "] source bundles from path: " + source_bundle
-        Dir.children(source_bundle).each do |component|
+        Dir.foreach(source_bundle) do |component|
+          next if component == '.' || component == '..'
           yamlfile = File.join(source_bundle, component + "/" + locale + ".yml")
-          bundle = read_yml(yamlfile)
+          bundle = SgtnClient::FileUtil.read_yml(yamlfile)
           cachekey = SgtnClient::CacheUtil.get_cachekey(component, locale)
           SgtnClient::CacheUtil.write_cache(cachekey,bundle)
         end
@@ -60,18 +59,13 @@ module SgtnClient
         bundlepath = source_bundle  + "/" + component + "/" + locale + ".yml"
         SgtnClient.logger.debug "Getting source from  bundle: " + bundlepath
         begin
-          bundle = read_yml(bundlepath)
+          bundle = SgtnClient::FileUtil.read_yml(bundlepath)
         rescue => exception
           SgtnClient.logger.error exception.message
         end
         return bundle
       end
 
-      def self.read_yml(file_name)
-        erb = ERB.new(File.read(file_name))
-        erb.filename = file_name
-        YAML.load(erb.result)
-      end
   end
 
 end

@@ -101,13 +101,7 @@ module SgtnClient
         translation_bundle = SgtnClient::Config.configurations[env]["translation_bundle"]
         bundlepath = translation_bundle + "/" + product_name + "/" + version + "/" + component + "/messages_" + locale + ".json"
         SgtnClient.logger.debug "Getting translations from offline bundle: " + bundlepath
-        begin
-          file = File.read(bundlepath)
-          data_hash = MultiJson.load(file)
-        rescue => exception
-          SgtnClient.logger.error exception.message
-        end
-        return data_hash
+        SgtnClient::FileUtil.read_json(bundlepath)
       end
 
       def self.get_server(component, locale)
