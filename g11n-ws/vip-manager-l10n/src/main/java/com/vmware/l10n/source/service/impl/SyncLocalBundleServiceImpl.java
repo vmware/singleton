@@ -20,6 +20,7 @@ import com.vmware.l10n.utils.DiskQueueUtils;
 import com.vmware.vip.common.l10n.exception.L10nAPIException;
 import com.vmware.vip.common.l10n.source.dto.ComponentMessagesDTO;
 import com.vmware.vip.common.l10n.source.dto.ComponentSourceDTO;
+
 /**
  * 
  * This class used to merge the collection source to locale bundle
@@ -33,10 +34,10 @@ public class SyncLocalBundleServiceImpl implements SyncLocalBundleService {
 	/** the path of local resource file,can be configured in spring config file **/
 	@Value("${source.bundle.file.basepath}")
 	private String basePath;
-    /**the l10n server start type: bundle or S3**/
+	/** the l10n server start type: bundle or S3 **/
 	@Value("${spring.profiles.active}")
 	private String activeDaoType;
-	
+
 	/** the url of GRM API,can be configured in spring config file **/
 	@Value("${grm.server.url}")
 	private String remoteGRMURL;
@@ -44,31 +45,31 @@ public class SyncLocalBundleServiceImpl implements SyncLocalBundleService {
 	/** the url of Singleton API,can be configured in spring config file **/
 	@Value("${vip.server.url}")
 	private String remoteVIPURL;
-	
-	/**switch of the sync collection translation cached file**/
+
+	/** switch of the sync collection translation cached file **/
 	@Value("${sync.source.enable}")
 	private boolean syncEnabled;
 
 	@Autowired
 	private SourceDao sourceDao;
 
-
 	/**
 	 * According to the remote url route the send file to GRM or I18n path
+	 * 
 	 * @param basePath
 	 * @param source
 	 * @throws IOException
 	 */
 	private void processSendFilePath(String basePath, File source) throws IOException {
 
-		if(!this.remoteGRMURL.equalsIgnoreCase(LOCAL_STR)) {
+		if (!this.remoteGRMURL.equalsIgnoreCase(LOCAL_STR)) {
 			DiskQueueUtils.moveFile2GRMPath(basePath, source);
-		}else if(!this.remoteVIPURL.equalsIgnoreCase(LOCAL_STR)) {
+		} else if (!this.remoteVIPURL.equalsIgnoreCase(LOCAL_STR)) {
 			DiskQueueUtils.moveFile2I18nPath(basePath, source);
-		}else {
+		} else {
 			DiskQueueUtils.delQueueFile(source);
 		}
-		
+
 	}
 
 	/**
@@ -79,7 +80,7 @@ public class SyncLocalBundleServiceImpl implements SyncLocalBundleService {
 		if (!syncEnabled) {
 			return;
 		}
-		
+
 		logger.debug("--Synchronize the updated source to local--");
 
 		List<File> queueFiles = DiskQueueUtils.listSourceQueueFile(basePath);
@@ -90,25 +91,25 @@ public class SyncLocalBundleServiceImpl implements SyncLocalBundleService {
 
 		for (File quefile : queueFiles) {
 			try {
-			Map<String, ComponentSourceDTO> mapObj = DiskQueueUtils.getQueueFile2Obj(quefile);
-			for (Entry<String, ComponentSourceDTO> entry : mapObj.entrySet()) {
+				Map<String, ComponentSourceDTO> mapObj = DiskQueueUtils.getQueueFile2Obj(quefile);
+				for (Entry<String, ComponentSourceDTO> entry : mapObj.entrySet()) {
 
-				String ehcachekey = entry.getKey();
-				ComponentSourceDTO cachedComDTO = entry.getValue();
-				if (!StringUtils.isEmpty(cachedComDTO)) {
-					ComponentMessagesDTO sdto = new ComponentMessagesDTO();
-					BeanUtils.copyProperties(cachedComDTO, sdto);
-					boolean updateFlag = sourceDao.updateToBundle(sdto);
-					if (!updateFlag) {
-						throw new L10nAPIException("Failed to update source:"+ehcachekey);
+					String ehcachekey = entry.getKey();
+					ComponentSourceDTO cachedComDTO = entry.getValue();
+					if (!StringUtils.isEmpty(cachedComDTO)) {
+						ComponentMessagesDTO sdto = new ComponentMessagesDTO();
+						BeanUtils.copyProperties(cachedComDTO, sdto);
+						boolean updateFlag = sourceDao.updateToBundle(sdto);
+						if (!updateFlag) {
+							throw new L10nAPIException("Failed to update source:" + ehcachekey);
+						}
 					}
 				}
-			}
-			
-			processSendFilePath(this.basePath, quefile);
-			
+
+				processSendFilePath(this.basePath, quefile);
+
 			} catch (L10nAPIException e) {
-				//process s3 update bundle failure
+				// process s3 update bundle failure
 				logger.error(e.getMessage(), e);
 				continue;
 			} catch (Exception e) {
