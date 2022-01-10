@@ -32,7 +32,7 @@ public class SyncGrmSourceServiceImpl implements SyncGrmSourceService {
 
 	private final static String LOCAL_STR = "local";
 	private final static String GRM_STR = "grm";
-	private final static int reqSplitLimit = 1024*1024*8;
+	private final static int reqSplitLimit = 1024*1024*10;
 
 	/** switch of the sync collection translation cached file **/
 	@Value("${sync.source.enable}")
@@ -104,7 +104,13 @@ public class SyncGrmSourceServiceImpl implements SyncGrmSourceService {
 			}
 		}
 	}
-
+	
+    /**
+     * process send the source to GRM by keys or one key
+     * @param cachedComDTO
+     * @throws L10nAPIException
+     * @throws IOException
+     */
 	public void sendSource2GRM(ComponentSourceDTO cachedComDTO) throws L10nAPIException, IOException {
 		try {
 			if (!StringUtils.isEmpty(cachedComDTO) && isGrmConnected()) {
@@ -121,6 +127,13 @@ public class SyncGrmSourceServiceImpl implements SyncGrmSourceService {
 		} 
 	}
 	
+	/**
+	 * send the source to GRM by one key if the request source bigger than reqSplitLimit
+	 * @param componentSourceDTO
+	 * @param remoteGRM
+	 * @throws L10nAPIException
+	 * @throws IOException
+	 */
 	private void sendKeySource2GRM(ComponentSourceDTO componentSourceDTO, String remoteGRM) throws L10nAPIException, IOException{
 		@SuppressWarnings("unchecked")
 		Set<Entry<String, String>> entrys = componentSourceDTO.getMessages().entrySet();
