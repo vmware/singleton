@@ -1,0 +1,156 @@
+package com.vmware.l10n.source.service.impl;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
+
+import com.vmware.l10n.source.service.SyncI18nSourceService;
+import com.vmware.l10n.utils.DiskQueueUtils;
+import com.vmware.vip.api.rest.APIParamName;
+import com.vmware.vip.api.rest.APIV2;
+import com.vmware.vip.common.constants.ConstantsKeys;
+import com.vmware.vip.common.exceptions.VIPHttpException;
+import com.vmware.vip.common.http.HTTPRequester;
+import com.vmware.vip.common.l10n.exception.L10nAPIException;
+import com.vmware.vip.common.l10n.source.dto.ComponentSourceDTO;
+
+/**
+ * 
+ * This class used to send the collection source to singleton server
+ *
+ */
+
+@Service
+public class SyncI18nSourceServiceImpl implements SyncI18nSourceService {
+
+	private static Logger logger = LoggerFactory.getLogger(SyncI18nSourceServiceImpl.class);
+
+	private final static String I18N_STR = "i18n";
+
+	@Value("${sync.source.enable}")
+	private boolean syncEnabled;
+
+	/** the path of local resource file,can be configured in spring config file **/
+	@Value("${source.bundle.file.basepath}")
+	private String basePath;
+
+	/** the url of Singleton API,can be configed in spring config file **/
+	@Value("${vip.server.url}")
+	private String remoteVIPURL;
+
+	@Value("${vip.server.authentication.enable}")
+	private boolean remoteVIPAuthEnable;
+
+	@Value("${vip.server.authentication.appId:#}")
+	private String remoteVIPAuthAppId;
+
+	@Value("${vip.server.authentication.token:#}")
+	private String remoteVIPAuthAppToken;
+
+	private boolean singletonConnected = false;
+
+	/**
+	 * 
+	 * Synchronize the updated source to remote Singleton server
+	 *
+	 */
+	@Override
+	public void sendSourceToI18n() {
+		if (!syncEnabled) {
+			return;
+		}
+		try {
+			pingSingleton(this.remoteVIPURL);
+			setSingletonConnected(true);
+			processSingletonQueueFiles();
+		} catch (L10nAPIException e) {
+
+			logger.error("Remote [" + remoteVIPURL + "] is not connected.", e);
+
+		}
+	}
+
+	private synchronized void processSingletonQueueFiles() {
+
+		List<File> queueFiles = DiskQueueUtils.listQueueFiles(new File(basePath + DiskQueueUtils.L10N_TMP_I18N_PATH));
+		if (queueFiles == null) {
+			return;
+		}
+		logger.debug("the Singleton cache file size---{}", queueFiles.size());
+
+		for (File quefile : queueFiles) {
+			try {
+				Map<String, ComponentSourceDTO> mapObj = DiskQueueUtils.getQueueFile2Obj(quefile);
+				for (Entry<String, ComponentSourceDTO> entry : mapObj.entrySet()) {
+					ComponentSourceDTO cachedComDTO = entry.getValue();
+					sendData2RemoteVIP(cachedComDTO);
+				}
+				DiskQueueUtils.moveFile2IBackupPath(basePath, quefile, I18N_STR);
+			} catch (IOException e) {
+				logger.error("Read source file from singleton error:" + quefile.getAbsolutePath(), e);
+				DiskQueueUtils.moveFile2ExceptPath(basePath, quefile, I18N_STR);
+				continue;
+			} catch (VIPHttpException e) {
+				break;
+			}
+		}
+	}
+
+	private void sendData2RemoteVIP(ComponentSourceDTO cachedComDTO) throws VIPHttpException {
+		try {
+			if (!StringUtils.isEmpty(cachedComDTO) && isSingletonConnected()) {
+				String urlStr = remoteVIPURL + APIV2.PRODUCT_TRANSLATION_PUT
+						.replace("{" + APIParamName.PRODUCT_NAME + "}", cachedComDTO.getProductName())
+						.replace("{" + APIParamName.VERSION2 + "}", cachedComDTO.getVersion());
+				String locale = ConstantsKeys.LATEST;
+				String jsonStr = "{\"data\":{\"productName\": \"" + cachedComDTO.getProductName()
+						+ "\",\"pseudo\": false,\"translation\": [{\"component\": \"" + cachedComDTO.getComponent()
+						+ "\",\"locale\": \"" + locale + "\",\"messages\": " + cachedComDTO.getMessages().toJSONString()
+						+ "}],\"version\": \"" + cachedComDTO.getVersion() + "\"},\"requester\": \""
+						+ ConstantsKeys.VL10N + "\"}";
+				Map<String, String> header = null;
+				if (remoteVIPAuthEnable) {
+					header = new HashMap<String, String>();
+					header.put("appId", remoteVIPAuthAppId);
+					header.put("token", remoteVIPAuthAppToken);
+				}
+				HTTPRequester.putJSONStr(jsonStr, urlStr, header);
+			}
+		} catch (VIPHttpException e) {
+			logger.error("Send source file to Singleton error:" + cachedComDTO.toJSONString(), e);
+			setSingletonConnected(false);
+			throw e;
+		}
+	}
+
+	private void pingSingleton(String remoteURL) throws L10nAPIException {
+		String reqUrl = remoteURL + APIV2.BROWSER_LOCALE;
+		Map<String, String> header = null;
+		if (remoteVIPAuthEnable) {
+			header = new HashMap<String, String>();
+			header.put("appId", remoteVIPAuthAppId);
+			header.put("token", remoteVIPAuthAppToken);
+		}
+		if (StringUtils.isEmpty(HTTPRequester.getData(reqUrl, "GET", header))) {
+			throw new L10nAPIException("Error occur when send to singleton [" + reqUrl + "].");
+		}
+	}
+
+	private boolean isSingletonConnected() {
+		return singletonConnected;
+	}
+
+	private void setSingletonConnected(boolean singletonConnected) {
+		this.singletonConnected = singletonConnected;
+	}
+
+}

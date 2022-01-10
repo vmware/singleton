@@ -16,7 +16,7 @@ import org.springframework.web.context.WebApplicationContext;
 
 import com.vmware.l10n.BootApplication;
 import com.vmware.vip.common.l10n.exception.L10nAPIException;
-import com.vmware.l10n.source.crons.SourceSendingCron;
+//import com.vmware.l10n.source.crons.SourceSendingCron;
 import com.vmware.l10n.source.service.impl.SourceServiceImpl;
 import com.vmware.vip.common.cache.CacheName;
 import com.vmware.vip.common.cache.TranslationCache3;
@@ -32,7 +32,7 @@ public class SourceSendingCronTest {
 		
 	@Autowired
 	private WebApplicationContext webApplicationContext;
-	
+	/**
 	@Test
 	public void test001init() {
 		SourceSendingCron sourceSend =  webApplicationContext.getBean(SourceSendingCron.class);
@@ -152,7 +152,7 @@ public class SourceSendingCronTest {
 		logger.info("test005syncBkSourceToRemote");
 	}
 	
-
+**/
 
 	
 }
