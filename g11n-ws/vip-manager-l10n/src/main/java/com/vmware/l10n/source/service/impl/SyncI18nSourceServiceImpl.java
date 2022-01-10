@@ -79,6 +79,9 @@ public class SyncI18nSourceServiceImpl implements SyncI18nSourceService {
 		}
 	}
 
+	/**
+     * scan the Singleton cached source file DIR and process the cached source file
+     */
 	private synchronized void processSingletonQueueFiles() {
 
 		List<File> queueFiles = DiskQueueUtils.listQueueFiles(new File(basePath + DiskQueueUtils.L10N_TMP_I18N_PATH));
@@ -105,6 +108,11 @@ public class SyncI18nSourceServiceImpl implements SyncI18nSourceService {
 		}
 	}
 
+	/**
+	 * process send the source to Singleton by ComponentSourceDTO object
+	 * @param cachedComDTO
+	 * @throws VIPHttpException
+	 */
 	private void sendData2RemoteVIP(ComponentSourceDTO cachedComDTO) throws VIPHttpException {
 		try {
 			if (!StringUtils.isEmpty(cachedComDTO) && isSingletonConnected()) {
@@ -132,6 +140,11 @@ public class SyncI18nSourceServiceImpl implements SyncI18nSourceService {
 		}
 	}
 
+	/**
+	 * the singleton server heart beat test 
+	 * @param remoteURL
+	 * @throws L10nAPIException
+	 */
 	private void pingSingleton(String remoteURL) throws L10nAPIException {
 		String reqUrl = remoteURL + APIV2.BROWSER_LOCALE;
 		Map<String, String> header = null;
