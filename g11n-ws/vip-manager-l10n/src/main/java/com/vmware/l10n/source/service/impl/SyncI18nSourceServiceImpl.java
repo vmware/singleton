@@ -38,6 +38,7 @@ public class SyncI18nSourceServiceImpl implements SyncI18nSourceService {
 
 	private static Logger logger = LoggerFactory.getLogger(SyncI18nSourceServiceImpl.class);
 
+	private final static String LOCAL_STR = "local";
 	private final static String I18N_STR = "i18n";
 
 	@Value("${sync.source.enable}")
@@ -68,8 +69,8 @@ public class SyncI18nSourceServiceImpl implements SyncI18nSourceService {
 	 *
 	 */
 	@Override
-	public void sendSourceToI18n() {
-		if (!syncEnabled) {
+	public synchronized void sendSourceToI18n() {
+		if (!syncEnabled || LOCAL_STR.equalsIgnoreCase(remoteVIPURL)) {
 			return;
 		}
 		try {

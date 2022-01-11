@@ -67,9 +67,9 @@ public class SyncGrmSourceServiceImpl implements SyncGrmSourceService {
 	 *
 	 */
 	@Override
-	public void sendSourceToGRM() {
+	public synchronized void sendSourceToGRM() {
 
-		if (!syncEnabled) {
+		if (!syncEnabled || LOCAL_STR.equalsIgnoreCase(remoteGRMURL)) {
 			return;
 		}
 		try {
