@@ -16,7 +16,6 @@ import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 
 import org.junit.Test;
-import org.springframework.beans.BeanUtils;
 
 import com.vmware.l10n.conf.PublicKeyResponse;
 import com.vmware.l10n.conf.RsaCryptUtil;
@@ -26,12 +25,6 @@ import  com.vmware.l10n.source.dto.GRMResponseDTO;
 import com.vmware.l10n.source.dto.SourceDTO;
 import com.vmware.l10n.translation.dto.UpdateListDTO;
 import com.vmware.l10n.translation.readers.LocalJSONReader;
-import com.vmware.l10n.utils.SourceCacheUtils;
-import com.vmware.vip.common.constants.ConstantsKeys;
-import com.vmware.vip.common.exceptions.VIPCacheException;
-import com.vmware.vip.common.l10n.source.dto.ComponentSourceDTO;
-import com.vmware.vip.common.l10n.source.dto.StringSourceDTO;
-import com.vmware.vip.common.l10n.source.util.PathUtil;
 
 public class TestModels {
     @Test
@@ -83,6 +76,7 @@ public class TestModels {
         
     }
     
+   /**
     @Test 
     public void testSourceCacheUtils() {
         StringSourceDTO sourceDTO = new StringSourceDTO();
@@ -110,7 +104,7 @@ public class TestModels {
             e.printStackTrace();
         }
     }
-    
+    **/
     @Test 
     public void testLocalJSONReader() {
         try {
