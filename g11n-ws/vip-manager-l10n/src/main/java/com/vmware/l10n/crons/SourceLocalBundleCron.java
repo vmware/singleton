@@ -24,6 +24,11 @@ public class SourceLocalBundleCron {
 	@Autowired
 	private SyncLocalBundleService syncLocalBundleService;
 	
+	/**
+	 * 
+	 * Synchronize the updated source to local bundle or s3 bundle
+	 *
+	 */
 	@Scheduled(fixedDelay = THREESECOND)
 	public void syncSourceToLocalBundleCron() {
 		syncLocalBundleService.mergeSourceToLocalBundle();

@@ -87,27 +87,32 @@ public class SyncGrmSourceServiceImpl implements SyncGrmSourceService {
      * scan the GRM cached source file DIR and process the cached source file
      */
 	private synchronized void processGRMQueueFiles() {
-
+        
+		//Get the all source cached files under L10N_TMP_GRM_PATH Directory 
 		List<File> queueFiles = DiskQueueUtils.listQueueFiles(new File(basePath + DiskQueueUtils.L10N_TMP_GRM_PATH));
 		if (queueFiles == null) {
 			return;
 		}
 		logger.debug("the GRM cache file size---{}", queueFiles.size());
-
+        //Trace the file 
 		for (File quefile : queueFiles) {
 			try {
+				//Read the source cached file and convert to Object
 				Map<String, ComponentSourceDTO> mapObj = DiskQueueUtils.getQueueFile2Obj(quefile);
 				for (Entry<String, ComponentSourceDTO> entry : mapObj.entrySet()) {
 					ComponentSourceDTO cachedComDTO = entry.getValue();
 					sendSource2GRM(cachedComDTO);
 				}
 				routeQueueFilePath(basePath, quefile);
-			} catch (IOException e) {
+			}catch (L10nAPIException e) {
+				//process the network issue exception
+				break;
+			}catch (Exception e) {
+				//process the read source error, convert json to object error 
+				//and bigger source issue
 				logger.error("Read source file to GRM error:" + quefile.getAbsolutePath(), e);
 				DiskQueueUtils.moveFile2ExceptPath(basePath, quefile, GRM_STR);
 				continue;
-			} catch (L10nAPIException e) {
-				break;
 			}
 		}
 	}
@@ -121,6 +126,8 @@ public class SyncGrmSourceServiceImpl implements SyncGrmSourceService {
 	public void sendSource2GRM(ComponentSourceDTO cachedComDTO) throws L10nAPIException, IOException {
 		try {
 			if (!StringUtils.isEmpty(cachedComDTO) && isGrmConnected()) {
+				//compare the GRM request body size, if the size bigger than limit, send
+				//the source by one key
 				if(cachedComDTO.toJSONString().getBytes(StandardCharsets.UTF_8).length > reqSplitLimit) {
 					sendKeySource2GRM(cachedComDTO, remoteGRMURL);
 				}else {
@@ -128,6 +135,7 @@ public class SyncGrmSourceServiceImpl implements SyncGrmSourceService {
 				}
 			}
 		} catch (L10nAPIException e) {
+			//process the network not work issue 
 			logger.error("Send source file to GRM error:" + cachedComDTO.toJSONString(), e);
 			setGrmConnected(false);
 			throw new L10nAPIException(e.getMessage(), e);
@@ -154,7 +162,10 @@ public class SyncGrmSourceServiceImpl implements SyncGrmSourceService {
 			try {
 				remoteSyncService.send(comDTO, remoteGRM);
 			} catch (L10nAPIException e) {
+				//if the network issue, then it will throw L10nAPIException exception 
 				remoteSyncService.ping(remoteGRMURL);
+				//if not network issue, then it will print bigger source content
+				// and throw the IOException exception
 				String content = comDTO.toJSONString();
 				int size = content.getBytes(StandardCharsets.UTF_8).length;
 				String msg = String.format("Sync source to GRM failule: size: %s, productName: %s, version: %s, component: %s, locale: %s, key: %s", size, comDTO.getProductName(), comDTO.getVersion(), comDTO.getComponent(), comDTO.getLocale(), entry.getKey());
