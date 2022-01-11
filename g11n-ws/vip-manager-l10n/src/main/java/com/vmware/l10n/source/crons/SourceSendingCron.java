@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2021 VMware, Inc.
+ * Copyright 2019-2022 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.l10n.source.crons;
@@ -374,8 +374,9 @@ public class SourceSendingCron {
 				if(syncGrmList != null) {
 					for(SyncRecordModel syncGrm : syncGrmList) {
 						ComponentSourceDTO comDTO = getCachedLocalBundle(syncGrm);
-						remoteSyncService.send(comDTO, remoteGRMURL);
-						
+						if(comDTO != null) {
+							remoteSyncService.send(comDTO, remoteGRMURL);
+						}
 					}
 				}
 				setGrmConnected(true);
