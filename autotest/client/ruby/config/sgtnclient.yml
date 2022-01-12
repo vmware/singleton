@@ -1,0 +1,111 @@
+test: &default
+
+  # Credentials for REST APIs
+  client_id: tee
+  client_secret: 89987
+
+  # Mode can be 'live' or 'sandbox'
+  mode: sandbox
+
+  # Credentials for Classic APIs
+  app_id: APP-80W284485P519543T
+  username: linr
+  password: fdasf
+  signature: sfds-RWy
+  # # With Certificate
+  # cert_path: "config/cert_key.pem"
+  sandbox_email_address: linr@vmware.com
+
+  # #Product Name
+  product_name: RubyClient
+
+  # # bundle version
+  version: 4.8.1
+
+  # # HTTP Proxy
+  vip_server: http://localhost:8091
+
+  # # mode of bundle: online/offline
+  bundle_mode: online
+  # # translation bundle Path
+  translation_bundle: ./config/locales/l10n/bundles
+
+  # # source bundle Path
+  source_bundle: ./config/locales/default
+
+  # # memory cache's expration(minutes), default value is 24*60
+  cache_expiry_period: 1
+
+  # # disable cache, it's optional setting
+  #disable_cache: true
+
+development:
+  <<: *default
+  bundle_mode: offline
+
+production:
+  <<: *default
+  version: 1.1
+
+productcache1:
+  <<: *default
+  version: 1.2
+
+productcache2:
+  <<: *default
+  version: 1.3
+
+testmode:
+  <<: *default
+  mode: live
+
+testcache_expiry_periodmode:
+  <<: *default
+  version: 1.1
+  cache_expiry_period: 0
+
+testdisable_cache:
+  <<: *default
+  version: 1.1
+  disable_cache: true
+
+testversion_fallback:
+  <<: *default
+  version: 4.8.2
+
+testproductname:
+  <<: *default
+  product_name: NOTRubyClient
+
+testversion:
+  <<: *default
+  version: 0.1
+
+testvipserver:
+  <<: *default
+  vip_server: http://192.168.1.142:8095
+
+testbundlemode:
+  <<: *default
+  bundle_mode: notonline
+
+testtranslationbundle:
+  <<: *default
+  bundle_mode: offline
+  translation_bundle: ./config/locales/l10n/nobundles
+
+testsourcebundle:
+  <<: *default
+  source_bundle: ./config/locales/nodefault
+
+testcacheexpiryperiod:
+  <<: *default
+  cache_expiry_period: 10Pkl
+
+testdisablecache:
+  <<: *default
+  disable_cache: Notrue
+
+testdebug:
+  <<: *default
+  source_bundle: ./config/locales/default2
