@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2021 VMware, Inc.
+ * Copyright 2019-2022 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.i18n.utils;
@@ -159,8 +159,8 @@ public class CommonUtil {
 
                 if (isEmpty(cldrLocale) && !isEmpty(languageDataMap.get(segmentedLanguage))) {
                     Map<String, Object> languageData = (Map<String, Object>) languageDataMap.get(segmentedLanguage);
-                    if (!isEmpty(languageData.get(Constants.SCRIPTS))) {
-                        List<String> scripts = (List<String>) languageData.get(Constants.SCRIPTS);
+                    if (!isEmpty(languageData.get(Constants._SCRIPTS))) {
+                        List<String> scripts = (List<String>) languageData.get(Constants._SCRIPTS);
                         boolean existenceOfScript = false;
                         for (String script : scripts) {
                             if (languageScript.toLowerCase().equals(script.toLowerCase())) {

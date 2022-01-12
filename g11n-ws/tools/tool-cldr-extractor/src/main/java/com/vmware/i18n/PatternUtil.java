@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2021 VMware, Inc.
+ * Copyright 2019-2022 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.i18n;
@@ -51,6 +51,33 @@ public class PatternUtil {
 	public static String getLanguageFromLib(String displayLanguage) {
 		LocaleAction la = LocaleAction.getInstance();
 		return la.getLocaleData(displayLanguage, CLDRConstants.LOCALE_LANGUAGES_PATH);
+	}
+
+	/**
+	 * @param displayLanguage
+	 * @return scripts json string
+	 */
+	public static String getScriptsFromLib(String displayLanguage) {
+		LocaleAction la = LocaleAction.getInstance();
+		return la.getLocaleData(displayLanguage, CLDRConstants.LOCALE_SCRIPTS_PATH);
+	}
+
+	/**
+	 * @param displayLanguage
+	 * @return variants json string
+	 */
+	public static String getVariantsFromLib(String displayLanguage) {
+		LocaleAction la = LocaleAction.getInstance();
+		return la.getLocaleData(displayLanguage, CLDRConstants.LOCALE_VARIANTS_PATH);
+	}
+
+	/**
+	 * @param displayLanguage
+	 * @return localeDisplayNames json string
+	 */
+	public static String getLocaleDisplayNamesFromLib(String displayLanguage) {
+		LocaleAction la = LocaleAction.getInstance();
+		return la.getLocaleData(displayLanguage, CLDRConstants.LOCALE_LOCALEDISPLAYNAMES_PATH);
 	}
 
 	/**

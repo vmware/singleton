@@ -1,11 +1,10 @@
 /*
- * Copyright 2019-2021 VMware, Inc.
+ * Copyright 2019-2022 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.i18n.l2.service.locale;
 
 import java.io.Serializable;
-import java.util.List;
 import java.util.Map;
 
 public class TerritoryDTO implements Serializable {
@@ -50,5 +49,14 @@ public class TerritoryDTO implements Serializable {
 
 	public void setCities(Map<String, Object> cities) {
 		this.cities = cities;
+	}
+
+	public TerritoryDTO shallowCopy() {
+		TerritoryDTO newDTO = new TerritoryDTO();
+		newDTO.language = language;
+		newDTO.defaultRegionCode = defaultRegionCode;
+		newDTO.territories = territories;
+		newDTO.cities = cities;
+		return newDTO;
 	}
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2021 VMware, Inc.
+ * Copyright 2019-2022 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.common.cache;
@@ -10,8 +10,7 @@ package com.vmware.vip.common.cache;
  */
 public enum CacheName {
 
-	DEFAULT("DEFAULT"), ONECOMPONENT("ONECOMPONENT"), MULTCOMPONENT(
-			"MULTCOMPONENT"), SOURCE("SOURCE"), SOURCEBACKUP("SOURCEBACKUP"), TOKEN(
+	DEFAULT("DEFAULT"), ONECOMPONENT("ONECOMPONENT"), SOURCE("SOURCE"), SOURCEBACKUP("SOURCEBACKUP"), TOKEN(
 			"TOKEN"), MT("MT"), MTSOURCE("MTSOURCE"), REGION("REGION"), LANGUAGE("LANGUAGE"), PATTERN("PATTERN");
 
 	private String name;

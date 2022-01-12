@@ -1,3 +1,7 @@
+<!--
+Copyright 2019-2022 VMware, Inc.
+SPDX-License-Identifier: EPL-2.0
+-->
 <config xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
 	xmlns='http://www.ehcache.org/v3' xmlns:jsr107='http://www.ehcache.org/v3/jsr107'
 	xsi:schemaLocation="
@@ -31,14 +35,6 @@
 		<key-type>java.lang.String</key-type>      <!--cache item index type, default is java.lang.Object -->
 		<value-type>com.vmware.vip.core.messages.service.singlecomponent.ComponentMessagesDTO
 		</value-type>   <!--cache item value type, default is java.lang.Object -->
-	</cache>
-
-
-
-	<cache alias="MULTCOMPONENT" uses-template="default">
-		<key-type>java.lang.String</key-type>
-		<value-type>com.vmware.vip.core.messages.service.multcomponent.TranslationDTO
-		</value-type>
 	</cache>
 
 	<cache alias="MT" uses-template="default">

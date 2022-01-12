@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2021 VMware, Inc.
+ * Copyright 2019-2022 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.l10n.conf;
@@ -235,8 +235,10 @@ public class CollectSourceValidationInterceptor extends HandlerInterceptorAdapte
 		if (StringUtils.isEmpty(productName) || StringUtils.isEmpty(version)) {
 			return;
 		}
-		if(null != allowList && !allowList.isEmpty() && allowList.containsKey(productName)
-				&& allowList.get(productName).contains(version)) {
+		
+		if(allowList != null && allowList.containsKey(productName)
+				&& (allowList.get(productName).contains(ConstantsChar.ASTERISK) || allowList.get(productName).contains(version))) {
+			return;
 		}else {
 			throw new VIPAPIException(String.format(ValidationMsg.PRODUCTNAME_NOT_SUPPORTED, productName));
 		}

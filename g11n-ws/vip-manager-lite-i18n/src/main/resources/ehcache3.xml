@@ -1,3 +1,7 @@
+<!--
+Copyright 2019-2022 VMware, Inc.
+SPDX-License-Identifier: EPL-2.0
+-->
 <config xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
 	xmlns='http://www.ehcache.org/v3'
 	xmlns:jsr107='http://www.ehcache.org/v3/jsr107'
@@ -41,22 +45,6 @@
 		</resources>
 	</cache>
 
-
-
-	<cache alias="MULTCOMPONENT" uses-template="default">
-		<key-type>java.lang.String</key-type>
-		<value-type>com.vmware.vip.core.messages.service.multcomponent.TranslationDTO</value-type>
-	</cache>
-
-
-<!-- 	<cache alias="MTSOURCE" uses-template="default">
-		<key-type>java.lang.String</key-type>
-		<value-type>com.vmware.vip.core.messages.service.singlecomponent.ComponentMessagesDTO</value-type>
-		<resources>
-			<heap unit="entries">1</heap>     cache item count in heap
-		</resources>
-	</cache> -->
-
 	<cache alias="REGION" uses-template="default">
 		<key-type>java.lang.String</key-type>
 		<value-type>com.vmware.i18n.l2.service.locale.TerritoryDTO</value-type>
@@ -64,6 +52,12 @@
 			<tti unit="hours">1</tti>
 			<!--<ttl unit="hours">24</ttl> -->
 		</expiry>
+		<resources>
+			<heap unit="entries">2</heap>     <!--cache item count in heap -->
+			<!-- <offheap unit="MB">20</offheap> -->  <!--speed is lower than heap, but faster than disk -->
+			<!-- <disk unit="MB" persistent="true">100</disk> -->   <!--disk storage, speed is the lowest -->
+		</resources>
+		
 	</cache>
 
 	<cache alias="LANGUAGE" uses-template="default">

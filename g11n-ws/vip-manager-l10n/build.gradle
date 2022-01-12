@@ -1,4 +1,4 @@
-//Copyright 2019-2021 VMware, Inc.
+//Copyright 2019-2022 VMware, Inc.
 //SPDX-License-Identifier: EPL-2.0
 
 apply plugin: 'java'
@@ -64,6 +64,7 @@ dependencies {
     //commonsCodecVersion
     compile("commons-codec:commons-codec:$commonsCodecVersion")
     testCompile("org.springframework.boot:spring-boot-starter-test")
+    compile ('org.springframework.boot:spring-boot-starter-actuator')
 }
 
 bootJar {

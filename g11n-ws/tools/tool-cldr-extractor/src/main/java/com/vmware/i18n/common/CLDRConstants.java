@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2021 VMware, Inc.
+ * Copyright 2019-2022 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.i18n.common;
@@ -54,6 +54,9 @@ public class CLDRConstants {
 	public static final String ALL_CATEGORIES = "dates,numbers,plurals,measurements,currencies,dateFields";
 	public static final String LOCALE_TERRITORIES_PATH = "cldr/localedata/{0}/territories.json";
 	public static final String LOCALE_LANGUAGES_PATH = "cldr/localedata/{0}/languages.json";
+	public static final String LOCALE_SCRIPTS_PATH = "cldr/localedata/{0}/scripts.json";
+	public static final String LOCALE_VARIANTS_PATH = "cldr/localedata/{0}/variants.json";
+	public static final String LOCALE_LOCALEDISPLAYNAMES_PATH = "cldr/localedata/{0}/localeDisplayNames.json";
 	public static final String LOCALE_CITIES_PATH = "cldr/localedata/{0}/cities.json";
 	public static final String CONTEXT_TRANSFORM_PATH = "cldr/misc/{0}/contextTransforms.json";
 	public static final String DEFAULT_CONTENT_PATH = "cldr/defaultContent/defaultContent.json";

@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2021 VMware, Inc.
+ * Copyright 2019-2022 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.core.messages.service.product;
@@ -164,32 +164,9 @@ public class ProductService implements IProductService {
 						+ componentMessagesDTO.getVersion(), e);
 			}
 		}
-		updateMultComponentCache(componentMessagesDTOList.get(0).getProductName(), componentMessagesDTOList.get(0).getVersion());
 		return translationDTOList;
 	}
 	
-	/**
-	 * update the MultComponent Cache project when update translations
-	 * 
-	 * @param productName
-	 * @param version
-	 * @throws L3APIException
-	 */
-	private void updateMultComponentCache(String productName, String version) throws L3APIException {
-		com.vmware.vip.core.messages.service.multcomponent.TranslationDTO multComp = new com.vmware.vip.core.messages.service.multcomponent.TranslationDTO();
-		multComp.setProductName(productName);
-		multComp.setVersion(version);
-		multComp.setLocales(getSupportedLocaleList(productName, version));
-		multComp.setComponents(getComponentNameList(productName, version));
-		String multKey = CachedKeyGetter.getMultiComponentsCachedKey(multComp);
-		try {
-			TranslationCache3.deleteCachedObject(CacheName.MULTCOMPONENT, multKey,
-					com.vmware.vip.core.messages.service.multcomponent.TranslationDTO.class);
-		} catch (VIPCacheException e) {
-			throw new L3APIException("MULTCOMPONENT cache occurs error when update translation.", e);
-		}
-	}
-
 	/**
 	 * Synchronize the translation in the componentMessagesDTO to the local
 	 * bundle and cache.
