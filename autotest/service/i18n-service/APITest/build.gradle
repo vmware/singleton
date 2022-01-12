@@ -1,4 +1,4 @@
-apply plugin: 'java'
+apply plugin: 'java-library'
 
 sourceSets {
     main {
@@ -17,13 +17,13 @@ repositories {
 }
 
 dependencies {
-    compile group: 'org.testng', name: 'testng', version:'6.14.3'
-    compile group: 'com.jayway.jsonpath', name: 'json-path', version:'2.4.0'
-    compile group: 'org.json', name: 'json', version:'20171018'
-    compile group: 'org.apache.poi', name: 'poi', version:'3.17'
-    compile group: 'org.apache.poi', name: 'poi-ooxml', version:'3.17'
-    compile group: 'org.apache.xmlbeans', name: 'xmlbeans', version:'2.6.0'
-    compile group: 'com.github.virtuald', name: 'curvesapi', version:'1.04'
+    implementation("org.testng:testng:6.14.3")
+    implementation("com.jayway.jsonpath:json-path:2.4.0")
+    implementation("org.json:json:20171018")
+    implementation("org.apache.poi:poi:3.17")
+    implementation("org.apache.poi:poi-ooxml:3.17")
+    implementation("org.apache.xmlbeans:xmlbeans:2.6.0")
+    implementation("com.github.virtuald:curvesapi:1.04")
 }
 
 task copy(type: Copy) {
