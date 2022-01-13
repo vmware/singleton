@@ -34,7 +34,7 @@ task copy(type: Copy) {
 }
 
 task copyDependencies(type: Copy, dependsOn: [copy]) {
-    from configurations.compile
+    from configurations.runtimeClasspath
     into 'target'
 }
 
