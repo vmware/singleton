@@ -50,10 +50,6 @@ public class SyncLocalBundleServiceImpl implements SyncLocalBundleService {
 	@Value("${vip.server.url}")
 	private String remoteVIPURL;
 
-	/** switch of the sync collection translation cached file **/
-	@Value("${sync.source.enable}")
-	private boolean syncEnabled;
-
 	@Autowired
 	private SourceDao sourceDao;
 
@@ -81,12 +77,8 @@ public class SyncLocalBundleServiceImpl implements SyncLocalBundleService {
 	 */
 	@Override
 	public void mergeSourceToLocalBundle() {
-		if (!syncEnabled) {
-			return;
-		}
-
+		
 		logger.debug("--Synchronize the updated source to local--");
-
 		List<File> queueFiles = DiskQueueUtils.listSourceQueueFile(basePath);
 		if (queueFiles == null) {
 			return;

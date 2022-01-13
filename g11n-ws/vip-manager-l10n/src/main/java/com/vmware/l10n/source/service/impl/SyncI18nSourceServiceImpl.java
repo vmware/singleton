@@ -41,9 +41,6 @@ public class SyncI18nSourceServiceImpl implements SyncI18nSourceService {
 	private final static String LOCAL_STR = "local";
 	private final static String I18N_STR = "i18n";
 
-	@Value("${sync.source.enable}")
-	private boolean syncEnabled;
-
 	/** the path of local resource file,can be configured in spring config file **/
 	@Value("${source.bundle.file.basepath}")
 	private String basePath;
@@ -70,7 +67,7 @@ public class SyncI18nSourceServiceImpl implements SyncI18nSourceService {
 	 */
 	@Override
 	public synchronized void sendSourceToI18n() {
-		if (!syncEnabled || LOCAL_STR.equalsIgnoreCase(remoteVIPURL)) {
+		if (LOCAL_STR.equalsIgnoreCase(remoteVIPURL)) {
 			return;
 		}
 		try {
@@ -169,6 +166,10 @@ public class SyncI18nSourceServiceImpl implements SyncI18nSourceService {
 
 	private void setSingletonConnected(boolean singletonConnected) {
 		this.singletonConnected = singletonConnected;
+	}
+
+	public String getBasePath() {
+		return basePath;
 	}
 
 }

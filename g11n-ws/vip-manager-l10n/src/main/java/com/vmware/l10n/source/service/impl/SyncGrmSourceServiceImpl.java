@@ -38,10 +38,6 @@ public class SyncGrmSourceServiceImpl implements SyncGrmSourceService {
 	private final static String GRM_STR = "grm";
 	private final static int reqSplitLimit = 1024*1024*10;
 
-	/** switch of the sync collection translation cached file **/
-	@Value("${sync.source.enable}")
-	private boolean syncEnabled;
-
 	/** the path of local resource file,can be configured in spring config file **/
 	@Value("${source.bundle.file.basepath}")
 	private String basePath;
@@ -69,7 +65,7 @@ public class SyncGrmSourceServiceImpl implements SyncGrmSourceService {
 	@Override
 	public synchronized void sendSourceToGRM() {
 
-		if (!syncEnabled || LOCAL_STR.equalsIgnoreCase(remoteGRMURL)) {
+		if (LOCAL_STR.equalsIgnoreCase(remoteGRMURL)) {
 			return;
 		}
 		try {
@@ -101,7 +97,7 @@ public class SyncGrmSourceServiceImpl implements SyncGrmSourceService {
 				Map<String, ComponentSourceDTO> mapObj = DiskQueueUtils.getQueueFile2Obj(quefile);
 				for (Entry<String, ComponentSourceDTO> entry : mapObj.entrySet()) {
 					ComponentSourceDTO cachedComDTO = entry.getValue();
-					sendSource2GRM(cachedComDTO);
+					sendData2GRM(cachedComDTO);
 				}
 				routeQueueFilePath(basePath, quefile);
 			}catch (L10nAPIException e) {
@@ -123,7 +119,7 @@ public class SyncGrmSourceServiceImpl implements SyncGrmSourceService {
      * @throws L10nAPIException
      * @throws IOException
      */
-	public void sendSource2GRM(ComponentSourceDTO cachedComDTO) throws L10nAPIException, IOException {
+	private void sendData2GRM(ComponentSourceDTO cachedComDTO) throws L10nAPIException, IOException {
 		try {
 			if (!StringUtils.isEmpty(cachedComDTO) && isGrmConnected()) {
 				//compare the GRM request body size, if the size bigger than limit, send
@@ -197,6 +193,10 @@ public class SyncGrmSourceServiceImpl implements SyncGrmSourceService {
 
 	private void setGrmConnected(boolean grmConnected) {
 		this.grmConnected = grmConnected;
+	}
+
+	public String getBasePath() {
+		return basePath;
 	}
 
 }
