@@ -6,11 +6,9 @@ package com.vmware.l10n.source.service.impl;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.Set;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -36,7 +34,7 @@ public class SyncGrmSourceServiceImpl implements SyncGrmSourceService {
 
 	private final static String LOCAL_STR = "local";
 	private final static String GRM_STR = "grm";
-	private final static int reqSplitLimit = 1024*1024*10;
+	private final static long reqSplitLimit = 1024*1024*15;
 
 	/** the path of local resource file,can be configured in spring config file **/
 	@Value("${source.bundle.file.basepath}")
@@ -92,6 +90,10 @@ public class SyncGrmSourceServiceImpl implements SyncGrmSourceService {
 		logger.debug("the GRM cache file size---{}", queueFiles.size());
         //Trace the file 
 		for (File quefile : queueFiles) {
+			if(quefile == null || quefile.length()>reqSplitLimit) {
+				DiskQueueUtils.moveFile2ExceptPath(basePath, quefile, GRM_STR);
+				continue;
+			}
 			try {
 				//Read the source cached file and convert to Object
 				Map<String, ComponentSourceDTO> mapObj = DiskQueueUtils.getQueueFile2Obj(quefile);
@@ -100,77 +102,33 @@ public class SyncGrmSourceServiceImpl implements SyncGrmSourceService {
 					sendData2GRM(cachedComDTO);
 				}
 				routeQueueFilePath(basePath, quefile);
-			}catch (L10nAPIException e) {
+			}catch (Exception e) {
 				//process the network issue exception
 				break;
-			}catch (Exception e) {
-				//process the read source error, convert json to object error 
-				//and bigger source issue
-				logger.error("Read source file to GRM error:" + quefile.getAbsolutePath(), e);
-				DiskQueueUtils.moveFile2ExceptPath(basePath, quefile, GRM_STR);
-				continue;
 			}
 		}
 	}
 	
     /**
-     * process send the source to GRM by keys or one key
+     * process send the source to GRM by keys
      * @param cachedComDTO
      * @throws L10nAPIException
      * @throws IOException
      */
 	private void sendData2GRM(ComponentSourceDTO cachedComDTO) throws L10nAPIException, IOException {
 		try {
-			if (!StringUtils.isEmpty(cachedComDTO) && isGrmConnected()) {
-				//compare the GRM request body size, if the size bigger than limit, send
-				//the source by one key
-				if(cachedComDTO.toJSONString().getBytes(StandardCharsets.UTF_8).length > reqSplitLimit) {
-					sendKeySource2GRM(cachedComDTO, remoteGRMURL);
-				}else {
+			if (!StringUtils.isEmpty(cachedComDTO) && isGrmConnected()) {	
 					remoteSyncService.send(cachedComDTO, remoteGRMURL);
-				}
 			}
 		} catch (L10nAPIException e) {
 			//process the network not work issue 
 			logger.error("Send source file to GRM error:" + cachedComDTO.toJSONString(), e);
 			setGrmConnected(false);
-			throw new L10nAPIException(e.getMessage(), e);
+			throw e;
 		} 
 	}
 	
-	/**
-	 * send the source to GRM by one key if the request source bigger than reqSplitLimit
-	 * @param componentSourceDTO
-	 * @param remoteGRM
-	 * @throws L10nAPIException
-	 * @throws IOException
-	 */
-	private void sendKeySource2GRM(ComponentSourceDTO componentSourceDTO, String remoteGRM) throws L10nAPIException, IOException{
-		@SuppressWarnings("unchecked")
-		Set<Entry<String, String>> entrys = componentSourceDTO.getMessages().entrySet();
-		for(Entry<String, String> entry : entrys) {
-			ComponentSourceDTO comDTO = new ComponentSourceDTO();
-			comDTO.setProductName(componentSourceDTO.getProductName());
-			comDTO.setVersion(componentSourceDTO.getVersion());
-			comDTO.setComponent(componentSourceDTO.getComponent());
-			comDTO.setLocale(componentSourceDTO.getLocale());
-			comDTO.setMessages(entry.getKey(), entry.getValue());
-			try {
-				remoteSyncService.send(comDTO, remoteGRM);
-			} catch (L10nAPIException e) {
-				//if the network issue, then it will throw L10nAPIException exception 
-				remoteSyncService.ping(remoteGRMURL);
-				//if not network issue, then it will print bigger source content
-				// and throw the IOException exception
-				String content = comDTO.toJSONString();
-				int size = content.getBytes(StandardCharsets.UTF_8).length;
-				String msg = String.format("Sync source to GRM failule: size: %s, productName: %s, version: %s, component: %s, locale: %s, key: %s", size, comDTO.getProductName(), comDTO.getVersion(), comDTO.getComponent(), comDTO.getLocale(), entry.getKey());
-				logger.error(msg);
-				throw new IOException(msg);
-			}
-		}
-	}
-
+	
 	/**
 	 * According to the remote url route the send file to I18n DIR or backup DIR
 	 * 

@@ -13,7 +13,7 @@ import com.vmware.l10n.source.service.SyncLocalBundleService;
 
 /**
  * 
- * This class used to scheduled merg the collection source to locale bundle
+ * This class used to scheduled merge cached file source to locale bundle
  *
  */
 @Service
@@ -25,9 +25,7 @@ public class SourceLocalBundleCron {
 	private SyncLocalBundleService syncLocalBundleService;
 	
 	/**
-	 * 
 	 * Synchronize the updated source to local bundle or s3 bundle
-	 *
 	 */
 	@Scheduled(fixedDelay = THREESECOND)
 	public void syncSourceToLocalBundleCron() {

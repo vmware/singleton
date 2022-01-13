@@ -23,9 +23,7 @@ public class SourceSendI18nCron {
 	private SyncI18nSourceService syncI18nSourceService;
 	
 	/**
-	 * 
 	 * Synchronize the updated source to remote Singleton server
-	 *
 	 */
 	@Scheduled(cron = "${sync.source.schedule.cron}")
 	public void syncSource2I18nCron() {

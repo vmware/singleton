@@ -18,4 +18,10 @@ public interface SourceService {
      * @return cache result, true represents success and false represents failed.
      */
     public boolean cacheSource(StringSourceDTO stringSourceDTO)  throws L10nAPIException;
+    
+    
+    /**
+     * merge and write the collection source to cached file
+     */
+    public void writeSourceToCachedFile() ;
 }

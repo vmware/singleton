@@ -100,13 +100,13 @@ public class SyncI18nSourceServiceImpl implements SyncI18nSourceService {
 					sendData2RemoteVIP(cachedComDTO);
 				}
 				DiskQueueUtils.moveFile2IBackupPath(basePath, quefile, I18N_STR);
-			} catch (IOException e) {
-				logger.error("Read source file from singleton error:" + quefile.getAbsolutePath(), e);
-				DiskQueueUtils.moveFile2ExceptPath(basePath, quefile, I18N_STR);
-				continue;
 			} catch (VIPHttpException e) {
+				logger.error(e.getMessage(), e);
 				break;
-			}
+			} catch (Exception e) {
+				logger.error("Read source file from singleton directory error:" + quefile.getAbsolutePath(), e);
+				continue;
+			} 
 		}
 	}
 
