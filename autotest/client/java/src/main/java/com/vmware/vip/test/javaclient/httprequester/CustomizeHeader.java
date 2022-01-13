@@ -92,7 +92,7 @@ public class CustomizeHeader extends TestBase{
 		
 		WireMockServer wireMockServer = new WireMockServer(wireMockConfig().port(mockPort));
 		wireMockServer.start();
-		String url = "/i18n/api/v2/translation/products/JavaClient/versions/1.0.0/locales/[^/]*?/components/TranslationReady\\?pseudo=false";
+		String url = "/i18n/api/v2/translation/products/JavaClient/versions/1.0.0/locales/[^/]*?/components/default\\?pseudo=false";
 		String url2 = "/i18n/api/v2/translation/products/JavaClient/versions/1.0.0/localelist";
 		
 		HashMap<String, String> params = new HashMap<>();
@@ -111,7 +111,7 @@ public class CustomizeHeader extends TestBase{
 		
 		
 		try {
-			tm.getMessage(new Locale("zh", "CN"), "TranslationReady", "messages.welcome1");
+			tm.getMessage(new Locale("zh", "CN"), "default", "messages.welcome1");
         } catch (Exception e) {
         	// Exception is expected
         }
