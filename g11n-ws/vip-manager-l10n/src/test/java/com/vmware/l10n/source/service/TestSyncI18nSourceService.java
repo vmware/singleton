@@ -26,6 +26,8 @@ import com.vmware.vip.common.constants.ConstantsKeys;
 import com.vmware.vip.common.l10n.exception.L10nAPIException;
 import com.vmware.vip.common.l10n.source.dto.StringSourceDTO;
 
+import io.jsonwebtoken.lang.Assert;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = BootApplication.class)
 public class TestSyncI18nSourceService {
@@ -79,7 +81,17 @@ public class TestSyncI18nSourceService {
 			}
 		
 		}
-		syncSource.sendSourceToI18n();
+		
+		Exception ex = null;
+		try {
+			syncSource.sendSourceToI18n();
+		}catch (Exception e) {
+			// TODO Auto-generated catch block
+			logger.error(e.getMessage(), e);
+			ex =e;
+		}
+		Assert.isNull(ex);
+		
 		
 	}
 
