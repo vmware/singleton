@@ -30,11 +30,11 @@ import com.vmware.vip.common.l10n.source.dto.ComponentSourceDTO;
  */
 @Service
 public class SyncGrmSourceServiceImpl implements SyncGrmSourceService {
-	private static Logger logger = LoggerFactory.getLogger(SyncGrmSourceServiceImpl.class);
-
+	
+	private final static Logger LOGGER = LoggerFactory.getLogger(SyncGrmSourceServiceImpl.class);
 	private final static String LOCAL_STR = "local";
 	private final static String GRM_STR = "grm";
-	private final static long reqSplitLimit = 1024*1024*15;
+	private final static long REQ_SPLIT_LIMIT = 1024*1024*10;
 
 	/** the path of local resource file,can be configured in spring config file **/
 	@Value("${source.bundle.file.basepath}")
@@ -51,8 +51,9 @@ public class SyncGrmSourceServiceImpl implements SyncGrmSourceService {
 	@Autowired
 	private RemoteSyncService remoteSyncService;
 
-	// it represents the remote service is available.
-	// private static boolean connected = true;
+	/**
+	 * it represents the remote service is available.
+	 */
 	private boolean grmConnected = false;
 
 	/**
@@ -72,7 +73,7 @@ public class SyncGrmSourceServiceImpl implements SyncGrmSourceService {
 			processGRMQueueFiles();
 		} catch (L10nAPIException e) {
 			setGrmConnected(false);
-			logger.error("Remote [" + remoteGRMURL + "] is not connected.", e);
+			LOGGER.error("Remote [" + remoteGRMURL + "] is not connected.", e);
 
 		}
 	}
@@ -82,29 +83,28 @@ public class SyncGrmSourceServiceImpl implements SyncGrmSourceService {
      */
 	private synchronized void processGRMQueueFiles() {
         
-		//Get the all source cached files under L10N_TMP_GRM_PATH Directory 
 		List<File> queueFiles = DiskQueueUtils.listQueueFiles(new File(basePath + DiskQueueUtils.L10N_TMP_GRM_PATH));
 		if (queueFiles == null) {
 			return;
 		}
-		logger.debug("the GRM cache file size---{}", queueFiles.size());
-        //Trace the file 
+		LOGGER.debug("the GRM cache file size---{}", queueFiles.size());
+        
 		for (File quefile : queueFiles) {
-			if(quefile == null || quefile.length()>reqSplitLimit) {
+			if(quefile == null || quefile.length()>REQ_SPLIT_LIMIT) {
 				DiskQueueUtils.moveFile2ExceptPath(basePath, quefile, GRM_STR);
-				continue;
-			}
-			try {
-				//Read the source cached file and convert to Object
-				Map<String, ComponentSourceDTO> mapObj = DiskQueueUtils.getQueueFile2Obj(quefile);
-				for (Entry<String, ComponentSourceDTO> entry : mapObj.entrySet()) {
-					ComponentSourceDTO cachedComDTO = entry.getValue();
-					sendData2GRM(cachedComDTO);
+			}else {
+				try {
+					Map<String, ComponentSourceDTO> mapObj = DiskQueueUtils.getQueueFile2Obj(quefile);
+					for (Entry<String, ComponentSourceDTO> entry : mapObj.entrySet()) {
+						ComponentSourceDTO cachedComDTO = entry.getValue();
+						sendData2GRM(cachedComDTO);
+					}
+					routeQueueFilePath(basePath, quefile);
+				}catch (Exception e) {
+					LOGGER.error("Send source file to GRM error:", e);
+					setGrmConnected(false);
+					break;
 				}
-				routeQueueFilePath(basePath, quefile);
-			}catch (Exception e) {
-				//process the network issue exception
-				break;
 			}
 		}
 	}
@@ -116,16 +116,10 @@ public class SyncGrmSourceServiceImpl implements SyncGrmSourceService {
      * @throws IOException
      */
 	private void sendData2GRM(ComponentSourceDTO cachedComDTO) throws L10nAPIException, IOException {
-		try {
+	
 			if (!StringUtils.isEmpty(cachedComDTO) && isGrmConnected()) {	
 					remoteSyncService.send(cachedComDTO, remoteGRMURL);
 			}
-		} catch (L10nAPIException e) {
-			//process the network not work issue 
-			logger.error("Send source file to GRM error:" + cachedComDTO.toJSONString(), e);
-			setGrmConnected(false);
-			throw e;
-		} 
 	}
 	
 	

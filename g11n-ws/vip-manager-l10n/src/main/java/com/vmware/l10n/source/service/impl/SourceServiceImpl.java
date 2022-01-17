@@ -32,25 +32,24 @@ import com.vmware.vip.common.l10n.source.util.PathUtil;
  */
 @Service
 public class SourceServiceImpl implements SourceService {
+	
+	private final static Logger LOGGER = LoggerFactory.getLogger(SourceService.class);
+	private final static BlockingQueue<StringSourceDTO> STRING_SOURCES = new LinkedBlockingQueue<StringSourceDTO>();
+	private final static ConcurrentMap<String, ComponentSourceDTO> PREPARE_MAP = new  ConcurrentHashMap<String, ComponentSourceDTO>();
+	
 	/** the path of local resource file,can be configed in spring config file **/
 	@Value("${source.bundle.file.basepath}")
 	private String basePath;
 	
-	private static Logger LOGGER = LoggerFactory.getLogger(SourceService.class);
 
-	private final static BlockingQueue<StringSourceDTO> stringSources = new LinkedBlockingQueue<StringSourceDTO>();
-	
-	private final static ConcurrentMap<String, ComponentSourceDTO> prepareMap = new  ConcurrentHashMap<String, ComponentSourceDTO>();
-	
 	public boolean cacheSource(StringSourceDTO stringSourceDTO) throws L10nAPIException {
 		if (StringUtils.isEmpty(stringSourceDTO) || StringUtils.isEmpty(stringSourceDTO.getKey())) {
 			return false;
 		}
 
 		try {
-			stringSources.put(stringSourceDTO);
+			STRING_SOURCES.put(stringSourceDTO);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			 LOGGER.error(e.getMessage(), e);
 			 Thread.currentThread().interrupt();
 			 return false;
@@ -66,17 +65,17 @@ public class SourceServiceImpl implements SourceService {
 	public void writeSourceToCachedFile() {
 		int index = 1;
 		LOGGER.debug("begin process queue's collection string to map ComponentSourceDTO ");
-		while (!stringSources.isEmpty()) {
+		while (!STRING_SOURCES.isEmpty()) {
 			mergeSource2Map();
 			if (index % 2048 == 0) {
-				catcheMapDTO(prepareMap);
+				catcheMapDTO(PREPARE_MAP);
 			}
 			index = index + 1;
 
 		}
 
-		if (!prepareMap.isEmpty()) {
-			catcheMapDTO(prepareMap);
+		if (!PREPARE_MAP.isEmpty()) {
+			catcheMapDTO(PREPARE_MAP);
 		}
 
 	}	
@@ -87,13 +86,13 @@ public class SourceServiceImpl implements SourceService {
 	 */
 	private void mergeSource2Map() {
 
-		StringSourceDTO strDTO = stringSources.poll();
+		StringSourceDTO strDTO = STRING_SOURCES.poll();
 		strDTO.setLocale(ConstantsKeys.LATEST);
 		String key = getKey(strDTO);
 		String source = strDTO.getSource();
 		String comment = strDTO.getComment();
 		String catcheKey = PathUtil.generateCacheKey(strDTO);
-		ComponentSourceDTO comp = prepareMap.get(catcheKey);
+		ComponentSourceDTO comp = PREPARE_MAP.get(catcheKey);
 		
 		if (StringUtils.isEmpty(comp)) {
 			addNewStringSource(strDTO, catcheKey, key, source, comment);
@@ -119,7 +118,7 @@ public class SourceServiceImpl implements SourceService {
 		if (!StringUtils.isEmpty(comment)) {
 			comp.setComments(key, comment);
 		}
-	   prepareMap.put(catcheKey, comp);
+		PREPARE_MAP.put(catcheKey, comp);
 	}
 	
 	

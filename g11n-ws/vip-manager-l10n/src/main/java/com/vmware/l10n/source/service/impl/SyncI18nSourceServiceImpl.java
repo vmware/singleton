@@ -5,7 +5,6 @@
 package com.vmware.l10n.source.service.impl;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -35,9 +34,8 @@ import com.vmware.vip.common.l10n.source.dto.ComponentSourceDTO;
 
 @Service
 public class SyncI18nSourceServiceImpl implements SyncI18nSourceService {
-
-	private static Logger logger = LoggerFactory.getLogger(SyncI18nSourceServiceImpl.class);
-
+	
+	private final static Logger LOGGER = LoggerFactory.getLogger(SyncI18nSourceServiceImpl.class);
 	private final static String LOCAL_STR = "local";
 	private final static String I18N_STR = "i18n";
 
@@ -58,6 +56,9 @@ public class SyncI18nSourceServiceImpl implements SyncI18nSourceService {
 	@Value("${vip.server.authentication.token:#}")
 	private String remoteVIPAuthAppToken;
 
+	/**
+	 * it represents the remote singleton service is available.
+	 */
 	private boolean singletonConnected = false;
 
 	/**
@@ -76,7 +77,7 @@ public class SyncI18nSourceServiceImpl implements SyncI18nSourceService {
 			processSingletonQueueFiles();
 		} catch (L10nAPIException e) {
 
-			logger.error("Remote [" + remoteVIPURL + "] is not connected.", e);
+			LOGGER.error("Remote [" + remoteVIPURL + "] is not connected.", e);
 
 		}
 	}
@@ -90,7 +91,7 @@ public class SyncI18nSourceServiceImpl implements SyncI18nSourceService {
 		if (queueFiles == null) {
 			return;
 		}
-		logger.debug("the Singleton cache file size---{}", queueFiles.size());
+		LOGGER.debug("the Singleton cache file size---{}", queueFiles.size());
 
 		for (File quefile : queueFiles) {
 			try {
@@ -101,11 +102,11 @@ public class SyncI18nSourceServiceImpl implements SyncI18nSourceService {
 				}
 				DiskQueueUtils.moveFile2IBackupPath(basePath, quefile, I18N_STR);
 			} catch (VIPHttpException e) {
-				logger.error(e.getMessage(), e);
+				LOGGER.error("Send source file to Singleton error:", e);
+				setSingletonConnected(false);
 				break;
 			} catch (Exception e) {
-				logger.error("Read source file from singleton directory error:" + quefile.getAbsolutePath(), e);
-				continue;
+				LOGGER.error("Read source file from singleton directory error:" + quefile.getAbsolutePath(), e);
 			} 
 		}
 	}
@@ -116,7 +117,7 @@ public class SyncI18nSourceServiceImpl implements SyncI18nSourceService {
 	 * @throws VIPHttpException
 	 */
 	private void sendData2RemoteVIP(ComponentSourceDTO cachedComDTO) throws VIPHttpException {
-		try {
+		
 			if (!StringUtils.isEmpty(cachedComDTO) && isSingletonConnected()) {
 				String urlStr = remoteVIPURL + APIV2.PRODUCT_TRANSLATION_PUT
 						.replace("{" + APIParamName.PRODUCT_NAME + "}", cachedComDTO.getProductName())
@@ -135,11 +136,6 @@ public class SyncI18nSourceServiceImpl implements SyncI18nSourceService {
 				}
 				HTTPRequester.putJSONStr(jsonStr, urlStr, header);
 			}
-		} catch (VIPHttpException e) {
-			logger.error("Send source file to Singleton error:" + cachedComDTO.toJSONString(), e);
-			setSingletonConnected(false);
-			throw e;
-		}
 	}
 
 	/**

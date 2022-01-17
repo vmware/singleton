@@ -32,12 +32,14 @@ import com.vmware.vip.common.l10n.source.dto.ComponentSourceDTO;
  */
 @Service
 public class SyncLocalBundleServiceImpl implements SyncLocalBundleService {
-	private static Logger logger = LoggerFactory.getLogger(SyncLocalBundleServiceImpl.class);
+	
+	private final static Logger LOGGER = LoggerFactory.getLogger(SyncLocalBundleServiceImpl.class);
 	private final static String LOCAL_STR = "local";
 
 	/** the path of local resource file,can be configured in spring config file **/
 	@Value("${source.bundle.file.basepath}")
 	private String basePath;
+	
 	/** the l10n server start type: bundle or S3 **/
 	@Value("${spring.profiles.active}")
 	private String activeDaoType;
@@ -78,12 +80,12 @@ public class SyncLocalBundleServiceImpl implements SyncLocalBundleService {
 	@Override
 	public void mergeSourceToLocalBundle() {
 		
-		logger.debug("--Synchronize the updated source to local--");
+		LOGGER.debug("--Synchronize the updated source to local--");
 		List<File> queueFiles = DiskQueueUtils.listSourceQueueFile(basePath);
 		if (queueFiles == null) {
 			return;
 		}
-		logger.debug("the source cache file size---{}", queueFiles.size());
+		LOGGER.debug("the source cache file size---{}", queueFiles.size());
 
 		for (File quefile : queueFiles) {
 			try {
@@ -106,12 +108,10 @@ public class SyncLocalBundleServiceImpl implements SyncLocalBundleService {
 
 			} catch (L10nAPIException e) {
 				// process s3 update bundle failure
-				logger.error(e.getMessage(), e);
-				continue;
+				LOGGER.error(e.getMessage(), e);
 			} catch (Exception e) {
-				logger.error(e.getMessage(), e);
+				LOGGER.error(e.getMessage(), e);
 				DiskQueueUtils.moveFile2ExceptPath(basePath, quefile, LOCAL_STR);
-				continue;
 			}
 		}
 
