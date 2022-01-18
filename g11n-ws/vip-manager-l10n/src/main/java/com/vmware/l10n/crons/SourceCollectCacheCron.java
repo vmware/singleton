@@ -15,7 +15,6 @@ import com.vmware.l10n.source.service.SourceService;
  * This class used to scheduled merge the collection source to cached file
  *
  */
-
 @Service
 public class SourceCollectCacheCron {
 	private final static long ONESECOND = 1000;
