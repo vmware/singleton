@@ -62,48 +62,21 @@ public class StringService implements IStringService {
 				ConstantsUnicode.EN, ConstantsKeys.FALSE);
 
 		String translation = "", enString = "";
+		StringBasedDTO strDTO = null;
 
 		// get translation
 		try {
 			translation = getString(comDTO, key);
+			strDTO = createStringDTO(comDTO, key, source == null? "" : source, translation == null ? "" : translation);
+			if (!StringUtils.isEmpty(source) && source.equals(getString(enComDTO, key))) {
+				strDTO.setStatus(String.format(ConstantsMsg.TRANS_FOUND_RETURN, ConstantsMsg.TRANS_IS_FOUND));
+			} else if(!StringUtils.isEmpty(translation)) {
+				strDTO.setStatus(String.format(ConstantsMsg.EN_NOT_SOURCE, ConstantsMsg.TRANS_IS_FOUND));
+			} else {
+				strDTO.setStatus(String.format(ConstantsMsg.TRANS_NOTFOUND_NOTLATEST, ConstantsMsg.TRANS_IS_NOT_FOUND));
+			}
 		} catch (L3APIException e) {
 			logger.error(e.getMessage(), e);
-		}
-
-		// get en-US string
-		try {
-			enString = getString(enComDTO, key);
-		} catch (L3APIException e) {
-			logger.warn(e.getMessage(), e);
-		}
-
-		StringBasedDTO strDTO = createStringDTO(comDTO, key, source,
-				translation);
-
-		// update the translation if the translation is not found.
-		if (StringUtils.isEmpty(translation)
-				&& LocaleUtils.isDefaultLocale(strDTO.getLocale()) == false) {
-			if (StringUtils.isEmpty(enString)) {
-				strDTO.setTranslation(source);				
-				strDTO.setStatus(String.format(ConstantsMsg.TRANS_NOT_EN_NOT, ConstantsMsg.TRANS_IS_NOT_FOUND));
-			} else {
-				strDTO.setTranslation(enString);
-				strDTO.setStatus(String.format(ConstantsMsg.TRANS_NOTFOUND_EN_FOUND, ConstantsMsg.TRANS_IS_NOT_FOUND));
-			}
-		} else {
-			if((source!= null)&& source.equals(enString)) {
-				strDTO.setStatus(String.format(ConstantsMsg.TRANS_FOUND_RETURN, ConstantsMsg.TRANS_IS_FOUND));
-			} else {
-				strDTO.setStatus(String.format(ConstantsMsg.EN_NOT_SOURCE, ConstantsMsg.TRANS_IS_FOUND));
-				
-			}
-		}
-
-		// update the translation if the source is not empty.
-		if (!StringUtils.isEmpty(source) && !isSourceEqualToEnString(source, enString)
-					&& (!comDTO.getPseudo())) {
-				strDTO.setTranslation(source);
-				strDTO.setStatus(String.format(ConstantsMsg.TRANS_NOTFOUND_NOTLATEST, ConstantsMsg.TRANS_IS_NOT_FOUND));
 		}
 
 		// update the translation for pseudo

@@ -13,7 +13,7 @@ public class ConstantsMsg {
    public static final String TRANS_IS_NOT_FOUND = "translation is not found";
    public static final String TRANS_IS_FOUND = "translation is found";
    public static final String EN_NOT_SOURCE =
-         "The {0} and returned, English is not equal to recieved source.";
+         "The %s and returned, but the according en string is not matched to source.";
    public static final String TRANS_NOT_EN_NOT =
          "The %s , English not found, return the recieved source as translation.";
    public static final String TRANS_NOTFOUND_EN_FOUND =
