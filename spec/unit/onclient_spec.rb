@@ -24,6 +24,7 @@ describe SgtnClient do
 
     it "NewComponent" do
       expect(SgtnClient::Translation.getString("NEW", "new_hello", "zh-Hans")).to eq 'Hello'
+      expect(SgtnClient::CacheUtil.get_cache("test_4.8.1_NEW_zh-Hans")["default"]["new_hello"]).to eq 'Hello'
       # get from cache in 2nd time
       expect(SgtnClient::Translation.getString("NEW", "new_hello", "zh-Hans")).to eq 'Hello'
     end
