@@ -73,7 +73,12 @@ module SgtnClient
         items = SgtnClient::CacheUtil.get_cache(cache_key)
         if items.nil?
           items = getTranslations(component, flocale)
-          SgtnClient::CacheUtil.write_cache(cache_key, items)
+          if items.nil?
+            items = SgtnClient::Source.getSources(component, SgtnClient::Config.configurations.default)
+            SgtnClient::Core::Cache.put(cache_key, items, 60)
+          else
+            SgtnClient::CacheUtil.write_cache(cache_key, items)
+          end
         else
           SgtnClient.logger.debug "Getting translations from cache with key: " + cache_key
         end
