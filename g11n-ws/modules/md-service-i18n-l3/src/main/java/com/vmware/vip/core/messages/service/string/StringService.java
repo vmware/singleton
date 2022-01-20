@@ -4,17 +4,6 @@
  */
 package com.vmware.vip.core.messages.service.string;
 
-import java.util.Map;
-
-import javax.annotation.Resource;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
-
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.vmware.vip.common.constants.ConstantsKeys;
@@ -26,6 +15,15 @@ import com.vmware.vip.core.messages.exception.L3APIException;
 import com.vmware.vip.core.messages.service.singlecomponent.ComponentMessagesDTO;
 import com.vmware.vip.core.messages.service.singlecomponent.IOneComponentService;
 import com.vmware.vip.core.messages.utils.PseudoConfig;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
+
+import javax.annotation.Resource;
+import java.util.Map;
 
 /**
  * This class handles the translation by String.
@@ -56,27 +54,54 @@ public class StringService implements IStringService {
 	 */
 	@Override
 	public StringBasedDTO getStringTranslation(
-			final ComponentMessagesDTO comDTO, String key, String source)
+            final ComponentMessagesDTO comDTO, String key, String source)
 			throws L3APIException {
 		ComponentMessagesDTO enComDTO = createComponentDTO(comDTO,
 				ConstantsUnicode.EN, ConstantsKeys.FALSE);
 
 		String translation = "", enString = "";
-		StringBasedDTO strDTO = null;
 
 		// get translation
 		try {
 			translation = getString(comDTO, key);
-			strDTO = createStringDTO(comDTO, key, source == null? "" : source, translation == null ? "" : translation);
-			if (!StringUtils.isEmpty(source) && source.equals(getString(enComDTO, key))) {
-				strDTO.setStatus(String.format(ConstantsMsg.TRANS_FOUND_RETURN, ConstantsMsg.TRANS_IS_FOUND));
-			} else if(!StringUtils.isEmpty(translation)) {
-				strDTO.setStatus(String.format(ConstantsMsg.EN_NOT_SOURCE, ConstantsMsg.TRANS_IS_FOUND));
-			} else {
-				strDTO.setStatus(String.format(ConstantsMsg.TRANS_NOTFOUND_NOTLATEST, ConstantsMsg.TRANS_IS_NOT_FOUND));
-			}
 		} catch (L3APIException e) {
 			logger.error(e.getMessage(), e);
+		}
+
+		// get en-US string
+		try {
+			enString = getString(enComDTO, key);
+		} catch (L3APIException e) {
+			logger.warn(e.getMessage(), e);
+		}
+
+		StringBasedDTO strDTO = createStringDTO(comDTO, key, source,
+				translation);
+
+		// update the translation if the translation is not found.
+		if (StringUtils.isEmpty(translation)
+				&& LocaleUtils.isDefaultLocale(strDTO.getLocale()) == false) {
+			if (StringUtils.isEmpty(enString)) {
+				strDTO.setTranslation(source);
+				strDTO.setStatus(String.format(ConstantsMsg.TRANS_NOT_EN_NOT, ConstantsMsg.TRANS_IS_NOT_FOUND));
+			} else {
+				strDTO.setTranslation(enString);
+				strDTO.setStatus(String.format(ConstantsMsg.TRANS_NOTFOUND_EN_FOUND, ConstantsMsg.TRANS_IS_NOT_FOUND));
+			}
+		} else {
+			if((source!= null)&& source.equals(enString)) {
+				strDTO.setStatus(String.format(ConstantsMsg.TRANS_FOUND_RETURN, ConstantsMsg.TRANS_IS_FOUND));
+			} else {
+				strDTO.setStatus(String.format(ConstantsMsg.EN_NOT_SOURCE, ConstantsMsg.TRANS_IS_FOUND));
+				
+			}
+		}
+
+		// update the translation if the source is not empty.
+		if (!StringUtils.isEmpty(source) && !isSourceEqualToEnString(source, enString)
+					&& (!comDTO.getPseudo())) {
+				strDTO.setTranslation(source);
+				strDTO.setStatus(String.format(ConstantsMsg.TRANS_NOTFOUND_NOTLATEST, ConstantsMsg.TRANS_IS_NOT_FOUND));
 		}
 
 		// update the translation for pseudo
@@ -125,8 +150,8 @@ public class StringService implements IStringService {
 	 * with received source.
 	 */
 	private ComponentMessagesDTO createComponentDTO(
-			final ComponentMessagesDTO componentMessagesDTO, String locale,
-			String pseudo) {
+            final ComponentMessagesDTO componentMessagesDTO, String locale,
+            String pseudo) {
 		ComponentMessagesDTO newComponentMessagesDTO = new ComponentMessagesDTO();
 		BeanUtils.copyProperties(componentMessagesDTO, newComponentMessagesDTO);
 		newComponentMessagesDTO.setLocale(locale);
@@ -139,7 +164,7 @@ public class StringService implements IStringService {
 	 */
 	@SuppressWarnings("rawtypes")
 	private String getString(ComponentMessagesDTO componentMsgDTOWithParams,
-			String key) throws L3APIException {
+                             String key) throws L3APIException {
 		String strTranslation = "";
 		ComponentMessagesDTO componentMsgDTOWithData = singleComponentService
 				.getComponentTranslation(componentMsgDTOWithParams);
@@ -154,8 +179,8 @@ public class StringService implements IStringService {
 	 * convert component-base DTO to string-base DTO as the response object.
 	 */
 	private StringBasedDTO createStringDTO(
-			ComponentMessagesDTO componentMessagesDTO, String key,
-			String source, String translation) {
+            ComponentMessagesDTO componentMessagesDTO, String key,
+            String source, String translation) {
 		StringBasedDTO stringBasedDTO = new StringBasedDTO();
 		BeanUtils.copyProperties(componentMessagesDTO, stringBasedDTO);
 		stringBasedDTO.setKey(key);
