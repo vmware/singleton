@@ -64,7 +64,7 @@ public class ConstantsForTest {
     public static final String PUT = "PUT";
 
     public static final String JA_JP = "ja_JP";
-    public static final String ZH_CN = "zh_CN";
+    public static final String zh_HANS = "zh-Hans";
 
     public static final String VCG = "vCG";
     public static final String VERSION = "2.0.0";
