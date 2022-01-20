@@ -82,10 +82,10 @@ public class StringService implements IStringService {
 		if (StringUtils.isEmpty(translation)
 				&& LocaleUtils.isDefaultLocale(strDTO.getLocale()) == false) {
 			if (StringUtils.isEmpty(enString)) {
-				//strDTO.setTranslation(source);
+				strDTO.setTranslation(source);
 				strDTO.setStatus(String.format(ConstantsMsg.TRANS_NOT_EN_NOT, ConstantsMsg.TRANS_IS_NOT_FOUND));
 			} else {
-				//strDTO.setTranslation(enString);
+				strDTO.setTranslation(enString);
 				strDTO.setStatus(String.format(ConstantsMsg.TRANS_NOTFOUND_EN_FOUND, ConstantsMsg.TRANS_IS_NOT_FOUND));
 			}
 		} else {
@@ -100,7 +100,7 @@ public class StringService implements IStringService {
 		// update the translation if the source is not empty.
 		if (!StringUtils.isEmpty(source) && !isSourceEqualToEnString(source, enString)
 					&& (!comDTO.getPseudo())) {
-				//strDTO.setTranslation(source);
+				strDTO.setTranslation(source);
 				strDTO.setStatus(String.format(ConstantsMsg.TRANS_NOTFOUND_NOTLATEST, ConstantsMsg.TRANS_IS_NOT_FOUND));
 		}
 
