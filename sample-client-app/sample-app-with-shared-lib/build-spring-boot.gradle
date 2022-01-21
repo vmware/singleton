@@ -15,12 +15,20 @@ archivesBaseName = 'sample-spring-boot-with-shared-lib'
 
 repositories {
 	mavenCentral()
+	maven {
+		url 'https://build-artifactory.eng.vmware.com/vip-gradle-local/'
+	}
+}
+
+configurations {
+	zipArchive
 }
 
 dependencies {
 	implementation files('lib/sample-shared-library-1.0.jar')
 	implementation files('lib/vip4java-0.1.0.jar')
 	compile group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
+	zipArchive group: 'g11n-translation', name: 'JavaSample', version: '1.0.0.0', ext: 'zip'
 
 	// tag::actuator[]
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
@@ -35,4 +43,13 @@ dependencies {
 
 test {
 	useJUnitPlatform()
+}
+
+task unzip(type: Copy) {
+	from zipTree(configurations.zipArchive.singleFile)
+	into file("${buildDir}/resources/main/offlineBundles")
+}
+
+bootJar {
+	dependsOn unzip
 }
