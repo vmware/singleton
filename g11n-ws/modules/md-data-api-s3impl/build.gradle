@@ -21,7 +21,7 @@ dependencies {
     compileOnly("org.springframework.boot:spring-boot")
     compileOnly ("commons-codec:commons-codec:$commonsCodecVersion")
     compileOnly("org.slf4j:slf4j-api:$slf4jVersion")
-    compileOnly ("com.amazonaws:aws-java-sdk-s3:$awsS3Version")
+    implementation ("com.amazonaws:aws-java-sdk-s3:$awsS3Version")
     
 }
 
