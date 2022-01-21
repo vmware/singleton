@@ -47,7 +47,7 @@ public class TranslationSyncAPITest {
 		List<TranslationDTO> translationDTOList = new ArrayList<TranslationDTO>();
 		TranslationDTO translationDTO = new TranslationDTO();
 		translationDTO.setComponent(ConstantsForTest.CIM);
-		translationDTO.setLocale(ConstantsForTest.ZH_CN);
+		translationDTO.setLocale(ConstantsForTest.ZH_HANS);
 		String key = "Partner_Name";
 		String translation = "合作伙伴名称";
 		Map<String,String> messages = new HashMap<String,String>();
