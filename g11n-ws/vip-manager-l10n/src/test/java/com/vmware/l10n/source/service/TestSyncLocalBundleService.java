@@ -50,9 +50,6 @@ public class TestSyncLocalBundleService {
 		sourceDTO.setComment("dc new string");
 		source.cacheSource(sourceDTO);
 		source.writeSourceToCachedFile();
-		List<File> files = DiskQueueUtils.listSourceQueueFile("viprepo-bundle" + File.separator);
-		int fileNumb = files.size();
-
 		try {
 			syncSource.mergeSourceToLocalBundle();
 			SourceDao sourcedao = webApplicationContext.getBean(SourceDao.class);
@@ -63,12 +60,7 @@ public class TestSyncLocalBundleService {
 			sdto.setLocale(ConstantsKeys.LATEST);
 			Assert.notNull(sourcedao.getFromBundle(sdto));
 
-			List<File> queueFiles = DiskQueueUtils
-					.listQueueFiles(new File("viprepo-bundle" + File.separator + DiskQueueUtils.L10N_TMP_GRM_PATH));
-			
-			Assert.isTrue(queueFiles.size() == fileNumb);
-			
-			
+			List<File> queueFiles = DiskQueueUtils.listQueueFiles(new File("viprepo-bundle" + File.separator + DiskQueueUtils.L10N_TMP_GRM_PATH));
 			for (File delFile : queueFiles) {
 				DiskQueueUtils.delQueueFile(delFile);
 			}

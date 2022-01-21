@@ -7,6 +7,8 @@ package com.vmware.l10n.source.service;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -16,14 +18,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.web.context.WebApplicationContext;
 
 import com.vmware.l10n.BootApplication;
-import com.vmware.l10n.source.service.impl.SourceServiceImpl;
 import com.vmware.l10n.source.service.impl.SyncGrmSourceServiceImpl;
 import com.vmware.l10n.utils.DiskQueueUtils;
-import com.vmware.vip.common.constants.ConstantsKeys;
-import com.vmware.vip.common.l10n.source.dto.StringSourceDTO;
+import com.vmware.vip.common.l10n.source.dto.ComponentSourceDTO;
 
 import io.jsonwebtoken.lang.Assert;
 
@@ -31,57 +30,43 @@ import io.jsonwebtoken.lang.Assert;
 @SpringBootTest(classes = BootApplication.class)
 public class TestSyncGrmSourceService {
 	private static Logger logger = LoggerFactory.getLogger(TestSyncGrmSourceService.class);
-
-	@Autowired
-	private WebApplicationContext webApplicationContext;
 	
 	@Autowired
 	SyncGrmSourceServiceImpl syncSource;
 	
 	@Before
-	public void testBefore() {
-			StringSourceDTO csd = new StringSourceDTO();
+	public void testBefore() throws IOException {
 
+
+			ConcurrentMap<String, ComponentSourceDTO> prepareMap = new ConcurrentHashMap<String, ComponentSourceDTO>();
+			ComponentSourceDTO csd = new ComponentSourceDTO();
 			csd.setProductName("test");
-			csd.setVersion("2.0.0");
+			csd.setVersion("1.0.0");
 			csd.setComponent("default");
 			csd.setLocale("latest");
-			csd.setKey("dc.myhome.open3");
-			csd.setSource("this open3's value");
-			csd.setComment("dc new string");
-
-			StringSourceDTO sourceDTO = new StringSourceDTO();
-			sourceDTO.setProductName("test");
-			sourceDTO.setVersion("1.0.0");
-			sourceDTO.setComponent("default");
-			sourceDTO.setLocale(ConstantsKeys.LATEST);
-			sourceDTO.setKey("dc.myhome.open3");
-			sourceDTO.setSource("this open3's value");
-			sourceDTO.setComment("dc new string");
-
-			SourceServiceImpl sourceService = webApplicationContext.getBean(SourceServiceImpl.class);
-			sourceService.cacheSource(sourceDTO);
-			sourceService.cacheSource(csd);
-			sourceService.writeSourceToCachedFile();
+			csd.setMessages("test1.l10n", "this is a test1");
+			csd.setMessages("test2.l10n", "this is a test2");
+			ComponentSourceDTO csd2 = new ComponentSourceDTO();
+			csd2.setProductName("test");
+			csd2.setVersion("2.0.0");
+			csd2.setComponent("default");
+			csd2.setLocale("latest");
+			csd2.setMessages("test1.l10n", "this is a test1");
+			csd2.setMessages("test2.l10n", "this is a test2");
+			
+			prepareMap.put(csd.getProductName() + "." + csd.getComponent() + "." + csd.getVersion(), csd);
+			prepareMap.put(csd2.getProductName() + "." + csd2.getComponent() + "." + csd2.getVersion(), csd);
 			
 			String basePath = syncSource.getBasePath();
-			List<File> files = DiskQueueUtils.listSourceQueueFile(basePath);
-	        int fileNumb = files.size();
+	        File sourceFile =  DiskQueueUtils.createQueueFile(prepareMap, basePath);
 	        
-			if (files != null) {
-				for (File source : files) {
-					try {
-						DiskQueueUtils.moveFile2GRMPath(basePath, source);
-					} catch (IOException e) {
-						logger.error(e.getMessage(), e);
-						Assert.isNull(e);
-					}
-				}
-
+	        List<File> delFiles = DiskQueueUtils.listQueueFiles(new File(basePath + DiskQueueUtils.L10N_TMP_GRM_PATH));
+			for (File delFile : delFiles) {
+				DiskQueueUtils.delQueueFile(delFile);
 			}
-
+			DiskQueueUtils.moveFile2GRMPath(basePath, sourceFile);
 			List<File> queueFiles = DiskQueueUtils.listQueueFiles(new File(basePath + DiskQueueUtils.L10N_TMP_GRM_PATH));
-			Assert.isTrue(queueFiles.size() == fileNumb);
+			Assert.isTrue(queueFiles.size() == 1);
 	}
 
 	@Test

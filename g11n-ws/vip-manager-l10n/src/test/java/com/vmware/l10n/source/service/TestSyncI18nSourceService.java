@@ -66,6 +66,12 @@ public class TestSyncI18nSourceService {
 			List<File> files = DiskQueueUtils.listSourceQueueFile(syncSource.getBasePath());
 			int fileNumb = files.size();
 
+			  
+	        List<File> delFiles = DiskQueueUtils.listQueueFiles(new File(syncSource.getBasePath() + DiskQueueUtils.L10N_TMP_I18N_PATH));
+			for (File delFile : delFiles) {
+				DiskQueueUtils.delQueueFile(delFile);
+			}
+			
 			if (files != null) {
 
 				for (File sourceFile : files) {
@@ -93,7 +99,10 @@ public class TestSyncI18nSourceService {
 
 		syncSource.sendSourceToI18n();
 		List<File> backFiles = DiskQueueUtils.listQueueFiles(new File(basePath + DiskQueueUtils.L10N_TMP_BACKUP_PATH));
-		Assert.isTrue(backFiles.size() < 1);
+		if(backFiles != null) {
+			logger.info("backFiles size:{}", backFiles.size());
+		}
+		Assert.isTrue(backFiles == null || backFiles.size() < 1);
 
 		List<File> i18nQueueFiles = DiskQueueUtils
 				.listQueueFiles(new File(syncSource.getBasePath() + DiskQueueUtils.L10N_TMP_I18N_PATH));

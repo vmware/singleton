@@ -80,7 +80,7 @@ public class SourceServiceTest {
 		source.cacheSource(sourceDTO1);
 		source.writeSourceToCachedFile();
 		List<File> files = DiskQueueUtils.listSourceQueueFile("viprepo-bundle" + File.separator);
-		Assert.notEmpty(files);
+		Assert.isTrue(files.size()>0);
 		
 		for(File file: files) {
 			DiskQueueUtils.delQueueFile(file);
