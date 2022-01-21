@@ -95,6 +95,10 @@ public class S3Cfg {
 		this.publicKey = publicKey;
 	}
 
+	public String getRoleArn() {
+		return roleArn;
+	}
+	
 	/**
 	 * the s3 password is encryption or not
 	 */
@@ -130,4 +134,12 @@ public class S3Cfg {
 	 */
 	@Value("${s3.bucketName}")
 	private String bucketName;
+	
+	/**
+	 * the s3 RoleArn
+	 */
+	
+	@Value("${s3.roleArn}")
+	private String roleArn;
+	
 }

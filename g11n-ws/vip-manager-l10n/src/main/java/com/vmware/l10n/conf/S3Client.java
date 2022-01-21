@@ -12,12 +12,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
+import com.amazonaws.auth.AWSCredentialsProvider;
 import com.amazonaws.auth.AWSStaticCredentialsProvider;
 import com.amazonaws.auth.BasicAWSCredentials;
+import com.amazonaws.auth.BasicSessionCredentials;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import com.amazonaws.services.s3.model.GetBucketLocationRequest;
 import com.amazonaws.services.s3.model.PutObjectResult;
+import com.amazonaws.services.securitytoken.AWSSecurityTokenService;
+import com.amazonaws.services.securitytoken.AWSSecurityTokenServiceClientBuilder;
+import com.amazonaws.services.securitytoken.model.AssumeRoleRequest;
+import com.amazonaws.services.securitytoken.model.AssumeRoleResult;
+import com.amazonaws.services.securitytoken.model.Credentials;
 
 /**
  * the configuration of the S3 client
@@ -25,49 +32,87 @@ import com.amazonaws.services.s3.model.PutObjectResult;
 @Configuration
 @Profile("s3")
 public class S3Client {
-	private static Logger logger = LoggerFactory.getLogger(S3Client.class);
+	private final static Logger LOGGER = LoggerFactory.getLogger(S3Client.class);
+	private final static int DURATIONSEC = 900;
+	private final static long THREESEC = 3000;
 
+	private static long retryTime;
+	private static AmazonS3 s3Client;
+	private static Credentials sessionCreds;
+	
 	@Autowired
 	private S3Cfg config;
 
-	private AmazonS3 s3Client;
-
-	/**
-	 * initialize the the S3 client environment
-	 */
 	@PostConstruct
 	private void init() {
-		s3Client = AmazonS3ClientBuilder.standard()
-				.withCredentials(new AWSStaticCredentialsProvider(
-						new BasicAWSCredentials(config.getAccessKey(), config.getSecretkey())))
-				.withRegion(config.getS3Region()).enablePathStyleAccess().build();
+
+		sessionCreds = getRoleCredentials();
+		s3Client = getAmazonS3();
 		if (!s3Client.doesBucketExistV2(config.getBucketName())) {
 			s3Client.createBucket(config.getBucketName());
 			// Verify that the bucket was created by retrieving it and checking its
-			String bucketLocation =
-					s3Client.getBucketLocation(new GetBucketLocationRequest(config.getBucketName()));
-			logger.info("Bucket location: {}", bucketLocation);
+			// location.
+			String bucketLocation = s3Client.getBucketLocation(new GetBucketLocationRequest(config.getBucketName()));
+			LOGGER.info("Bucket location: {}", bucketLocation);
 		}
+
 	}
 
-	public AmazonS3 getS3Client() {
-		return s3Client;
+	public synchronized AmazonS3 getS3Client() {
+		if ((sessionCreds.getExpiration().getTime() - System.currentTimeMillis()) > retryTime) {
+			return s3Client;
+		} else {
+			sessionCreds = getRoleCredentials();
+			s3Client = getAmazonS3();
+			return s3Client;
+		}
+
 	}
 
+	private synchronized Credentials getRoleCredentials() {
+
+		AWSCredentialsProvider awsCredentialsProvider = new AWSStaticCredentialsProvider(
+				new BasicAWSCredentials(config.getAccessKey(), config.getSecretkey()));
+		AWSSecurityTokenService stsClient = AWSSecurityTokenServiceClientBuilder.standard()
+				.withCredentials(awsCredentialsProvider).withRegion(config.getS3Region()).build();
+
+		AssumeRoleRequest arreq = new AssumeRoleRequest();
+		arreq.setDurationSeconds(DURATIONSEC);
+		arreq.setRoleArn(config.getRoleArn());
+		arreq.setRoleSessionName("SingletonRoleSession");
+
+		AssumeRoleResult sessionTokenResult = stsClient.assumeRole(arreq);
+		long time = System.currentTimeMillis();
+		Credentials result = sessionTokenResult.getCredentials();
+		retryTime = (result.getExpiration().getTime() - time - (DURATIONSEC * 1000)) + THREESEC;
+		return result;
+	}
+
+	private synchronized AmazonS3 getAmazonS3() {
+
+		BasicSessionCredentials sessionCredentials = new BasicSessionCredentials(sessionCreds.getAccessKeyId(),
+				sessionCreds.getSecretAccessKey(), sessionCreds.getSessionToken());
+		return AmazonS3ClientBuilder.standard().withCredentials(new AWSStaticCredentialsProvider(sessionCredentials))
+				.withRegion(config.getS3Region()).enablePathStyleAccess().build();
+	}
+
+	
+	
+	
 	public String readObject(String key) {
-		return s3Client.getObjectAsString(config.getBucketName(), normalizePath(key));
+		return getS3Client().getObjectAsString(config.getBucketName(), normalizePath(key));
 	}
 
-    public PutObjectResult putObject(String key, String content) {
-        return s3Client.putObject(config.getBucketName(), normalizePath(key), content);
-    }
+	public PutObjectResult putObject(String key, String content) {
+		return getS3Client().putObject(config.getBucketName(), normalizePath(key), content);
+	}
 
 	public void deleteObject(String key) {
-		s3Client.deleteObject(config.getBucketName(), normalizePath(key));
+		getS3Client().deleteObject(config.getBucketName(), normalizePath(key));
 	}
 
 	public boolean isObjectExist(String key) {
-		return s3Client.doesObjectExist(config.getBucketName(), normalizePath(key));
+		return getS3Client().doesObjectExist(config.getBucketName(), normalizePath(key));
 	}
 
 	public String normalizePath(String path) {
