@@ -223,7 +223,7 @@ public class DiskQueueUtils {
      * @throws IOException
      */
     public static void moveFile2IBackupPath(String basePath, File source, String fromPath) throws IOException {
-    	String targetFileName = basePath+L10N_TMP_BACKUP_PATH+(source.getName().replace(SourceStr, fromPath+ConstantsChar.UNDERLINE));
+    	String targetFileName = basePath+L10N_TMP_BACKUP_PATH+(source.getName().replace(SourceStr, SourceStr+fromPath+ConstantsChar.UNDERLINE));
     	File file = new File(targetFileName);
     	moveQueueFile(source, file);
     }

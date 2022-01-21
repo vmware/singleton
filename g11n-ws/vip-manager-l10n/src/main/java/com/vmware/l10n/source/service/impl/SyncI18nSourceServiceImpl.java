@@ -78,6 +78,8 @@ public class SyncI18nSourceServiceImpl implements SyncI18nSourceService {
 		} catch (L10nAPIException e) {
 			LOGGER.error("Remote [" + remoteVIPURL + "] is not connected.", e);
 			setSingletonConnected(false);
+		}catch (Exception e) {
+			LOGGER.error(e.getMessage(), e);
 		}
 	}
 

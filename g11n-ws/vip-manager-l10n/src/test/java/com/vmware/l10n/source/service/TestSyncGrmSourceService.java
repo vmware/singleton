@@ -27,12 +27,11 @@ import com.vmware.vip.common.l10n.source.dto.StringSourceDTO;
 
 import io.jsonwebtoken.lang.Assert;
 
-
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = BootApplication.class)
 public class TestSyncGrmSourceService {
 	private static Logger logger = LoggerFactory.getLogger(TestSyncGrmSourceService.class);
-	
+
 	@Autowired
 	private WebApplicationContext webApplicationContext;
 
@@ -47,7 +46,7 @@ public class TestSyncGrmSourceService {
 		csd.setKey("dc.myhome.open3");
 		csd.setSource("this open3's value");
 		csd.setComment("dc new string");
-		
+
 		SourceServiceImpl source = webApplicationContext.getBean(SourceServiceImpl.class);
 		StringSourceDTO sourceDTO = new StringSourceDTO();
 		sourceDTO.setProductName("test");
@@ -61,7 +60,7 @@ public class TestSyncGrmSourceService {
 			source.cacheSource(sourceDTO);
 			source.cacheSource(csd);
 			source.writeSourceToCachedFile();
-			List<File> files = DiskQueueUtils.listSourceQueueFile("viprepo-bundle"+File.separator);
+			List<File> files = DiskQueueUtils.listSourceQueueFile("viprepo-bundle" + File.separator);
 			Assert.notEmpty(files);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -75,9 +74,9 @@ public class TestSyncGrmSourceService {
 		SyncGrmSourceServiceImpl syncSource = webApplicationContext.getBean(SyncGrmSourceServiceImpl.class);
 		String basePath = syncSource.getBasePath();
 		List<File> files = DiskQueueUtils.listSourceQueueFile(basePath);
-		
-		if(files != null) {
-			for(File source: files) {
+
+		if (files != null) {
+			for (File source : files) {
 				try {
 					DiskQueueUtils.moveFile2GRMPath(basePath, source);
 				} catch (IOException e) {
@@ -85,18 +84,25 @@ public class TestSyncGrmSourceService {
 					Assert.isNull(e);
 				}
 			}
-		
+
 		}
-		
+
 		List<File> queueFiles = DiskQueueUtils.listQueueFiles(new File(basePath + DiskQueueUtils.L10N_TMP_GRM_PATH));
-        Assert.notEmpty(queueFiles);
+		Assert.notEmpty(queueFiles);
 
 		try {
 			syncSource.sendSourceToGRM();
-			List<File> i18nQueueFiles = DiskQueueUtils.listQueueFiles(new File(basePath + DiskQueueUtils.L10N_TMP_I18N_PATH));
-	        Assert.notEmpty(i18nQueueFiles);
+			List<File> i18nQueueFiles = DiskQueueUtils
+					.listQueueFiles(new File(basePath + DiskQueueUtils.L10N_TMP_I18N_PATH));
+			
+			Assert.isTrue(i18nQueueFiles == null || i18nQueueFiles.size() < 1);
+			
 
-		}catch (Exception e) {
+			for (File delFile : queueFiles) {
+				DiskQueueUtils.delQueueFile(delFile);
+			}
+
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			logger.error(e.getMessage(), e);
 			Assert.isNull(e);

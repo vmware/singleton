@@ -42,6 +42,10 @@ public class TestDiskQueueUtils {
 			DiskQueueUtils.moveFile2ExceptPath(basePath, file, "locale");
 			List<File> exepQueueFiles = DiskQueueUtils.listExceptQueueFile(basePath);
 	        Assert.notEmpty(exepQueueFiles);
+	        
+			for(File delFile : exepQueueFiles) {
+				DiskQueueUtils.delQueueFile(delFile);
+			}
 		} catch (IOException e) {
 			logger.error(e.getMessage(), e);
 			Assert.isNull(e);
@@ -69,6 +73,9 @@ public class TestDiskQueueUtils {
 			DiskQueueUtils.moveFile2I18nPath(basePath, file);
 			List<File> i18nQueueFiles = DiskQueueUtils.listQueueFiles(new File(basePath + DiskQueueUtils.L10N_TMP_I18N_PATH));
 	        Assert.notEmpty(i18nQueueFiles);
+	        for(File delFile : i18nQueueFiles) {
+				DiskQueueUtils.delQueueFile(delFile);
+			}
 		} catch (IOException e) {
 			logger.error(e.getMessage(), e);
 			Assert.isNull(e);

@@ -74,7 +74,8 @@ public class SyncGrmSourceServiceImpl implements SyncGrmSourceService {
 		} catch (L10nAPIException e) {
 			setGrmConnected(false);
 			LOGGER.error("Remote [" + remoteGRMURL + "] is not connected.", e);
-
+		}catch (Exception e) {
+			LOGGER.error(e.getMessage(), e);
 		}
 	}
 	

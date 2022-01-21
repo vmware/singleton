@@ -68,6 +68,11 @@ public class TestSyncLocalBundleService {
 			sdto.setComponent("default");
 			sdto.setLocale(ConstantsKeys.LATEST);
 			Assert.notNull(sourcedao.getFromBundle(sdto));
+			
+			List<File> queueFiles = DiskQueueUtils.listQueueFiles(new File("viprepo-bundle"+File.separator + DiskQueueUtils.L10N_TMP_GRM_PATH));
+			for (File delFile : queueFiles) {
+				DiskQueueUtils.delQueueFile(delFile);
+			}
 		} catch (Exception e) {
 			logger.error(e.getMessage(), e);
 			Assert.isNull(e);

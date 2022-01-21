@@ -5,8 +5,10 @@
 package com.vmware.l10n.source.service;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
+import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -54,7 +56,7 @@ public class SourceServiceTest {
 	
 	
 	@Test
-	public void test002writeSourceToCachedFile() {
+	public void test002writeSourceToCachedFile() throws IOException {
 		SourceServiceImpl source = webApplicationContext.getBean(SourceServiceImpl.class);
 		StringSourceDTO sourceDTO = new StringSourceDTO();
 		sourceDTO.setProductName("test");
@@ -80,7 +82,12 @@ public class SourceServiceTest {
 		List<File> files = DiskQueueUtils.listSourceQueueFile("viprepo-bundle" + File.separator);
 		Assert.notEmpty(files);
 		
+		for(File file: files) {
+			DiskQueueUtils.delQueueFile(file);
+		}
+		
 	}
+	
 	
 	
 
