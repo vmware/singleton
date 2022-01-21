@@ -81,8 +81,9 @@ public class SyncGrmSourceServiceImpl implements SyncGrmSourceService {
 	
     /**
      * scan the GRM cached source file DIR and process the cached source file
+     * @throws IOException 
      */
-	private synchronized void processGRMQueueFiles() {
+	private synchronized void processGRMQueueFiles() throws IOException {
         
 		List<File> queueFiles = DiskQueueUtils.listQueueFiles(new File(basePath + DiskQueueUtils.L10N_TMP_GRM_PATH));
 		if (queueFiles == null) {
@@ -101,9 +102,8 @@ public class SyncGrmSourceServiceImpl implements SyncGrmSourceService {
 						sendData2GRM(cachedComDTO);
 					}
 					routeQueueFilePath(basePath, quefile);
-				}catch (Exception e) {
+				}catch (L10nAPIException e) {
 					LOGGER.error("Send source file to GRM error:", e);
-					setGrmConnected(false);
 					break;
 				}
 			}
@@ -116,10 +116,12 @@ public class SyncGrmSourceServiceImpl implements SyncGrmSourceService {
      * @throws L10nAPIException
      * @throws IOException
      */
-	private void sendData2GRM(ComponentSourceDTO cachedComDTO) throws L10nAPIException, IOException {
+	private void sendData2GRM(ComponentSourceDTO cachedComDTO) throws L10nAPIException{
 	
 			if (!StringUtils.isEmpty(cachedComDTO) && isGrmConnected()) {	
-					remoteSyncService.send(cachedComDTO, remoteGRMURL);
+				remoteSyncService.send(cachedComDTO, remoteGRMURL);
+			}else if(!isGrmConnected()) {
+				throw new L10nAPIException("Remote [" + remoteGRMURL + "] is not connected.");
 			}
 	}
 	

@@ -4,6 +4,7 @@
  */
 package com.vmware.l10n.source.service.impl;
 
+import java.io.File;
 import java.util.Map;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ConcurrentHashMap;
@@ -127,8 +128,10 @@ public class SourceServiceImpl implements SourceService {
 		LOGGER.debug("begin process catcheMapDTO collection string to tem cache queue");
 
 		try {
-			DiskQueueUtils.createQueueFile(sources, basePath);
-			sources.clear();
+			File file = DiskQueueUtils.createQueueFile(sources, basePath);
+			if(file.exists()) {
+				sources.clear();
+			}
 		} catch (Exception e) {
 			LOGGER.error(e.getMessage(), e);
 			return false;

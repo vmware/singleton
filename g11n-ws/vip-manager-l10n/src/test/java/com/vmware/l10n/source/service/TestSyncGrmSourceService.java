@@ -34,71 +34,68 @@ public class TestSyncGrmSourceService {
 
 	@Autowired
 	private WebApplicationContext webApplicationContext;
-
+	
+	@Autowired
+	SyncGrmSourceServiceImpl syncSource;
+	
 	@Before
 	public void testBefore() {
-		StringSourceDTO csd = new StringSourceDTO();
+			StringSourceDTO csd = new StringSourceDTO();
 
-		csd.setProductName("test");
-		csd.setVersion("2.0.0");
-		csd.setComponent("default");
-		csd.setLocale("latest");
-		csd.setKey("dc.myhome.open3");
-		csd.setSource("this open3's value");
-		csd.setComment("dc new string");
+			csd.setProductName("test");
+			csd.setVersion("2.0.0");
+			csd.setComponent("default");
+			csd.setLocale("latest");
+			csd.setKey("dc.myhome.open3");
+			csd.setSource("this open3's value");
+			csd.setComment("dc new string");
 
-		SourceServiceImpl source = webApplicationContext.getBean(SourceServiceImpl.class);
-		StringSourceDTO sourceDTO = new StringSourceDTO();
-		sourceDTO.setProductName("test");
-		sourceDTO.setVersion("1.0.0");
-		sourceDTO.setComponent("default");
-		sourceDTO.setLocale(ConstantsKeys.LATEST);
-		sourceDTO.setKey("dc.myhome.open3");
-		sourceDTO.setSource("this open3's value");
-		sourceDTO.setComment("dc new string");
-		try {
-			source.cacheSource(sourceDTO);
-			source.cacheSource(csd);
-			source.writeSourceToCachedFile();
-			List<File> files = DiskQueueUtils.listSourceQueueFile("viprepo-bundle" + File.separator);
-			Assert.notEmpty(files);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			logger.error(e.getMessage(), e);
-			Assert.isNull(e);
-		}
+			StringSourceDTO sourceDTO = new StringSourceDTO();
+			sourceDTO.setProductName("test");
+			sourceDTO.setVersion("1.0.0");
+			sourceDTO.setComponent("default");
+			sourceDTO.setLocale(ConstantsKeys.LATEST);
+			sourceDTO.setKey("dc.myhome.open3");
+			sourceDTO.setSource("this open3's value");
+			sourceDTO.setComment("dc new string");
+
+			SourceServiceImpl sourceService = webApplicationContext.getBean(SourceServiceImpl.class);
+			sourceService.cacheSource(sourceDTO);
+			sourceService.cacheSource(csd);
+			sourceService.writeSourceToCachedFile();
+			
+			String basePath = syncSource.getBasePath();
+			List<File> files = DiskQueueUtils.listSourceQueueFile(basePath);
+	        int fileNumb = files.size();
+	        
+			if (files != null) {
+				for (File source : files) {
+					try {
+						DiskQueueUtils.moveFile2GRMPath(basePath, source);
+					} catch (IOException e) {
+						logger.error(e.getMessage(), e);
+						Assert.isNull(e);
+					}
+				}
+
+			}
+
+			List<File> queueFiles = DiskQueueUtils.listQueueFiles(new File(basePath + DiskQueueUtils.L10N_TMP_GRM_PATH));
+			Assert.isTrue(queueFiles.size() == fileNumb);
 	}
 
 	@Test
 	public void test001sendSourceToGRM() {
-		SyncGrmSourceServiceImpl syncSource = webApplicationContext.getBean(SyncGrmSourceServiceImpl.class);
 		String basePath = syncSource.getBasePath();
-		List<File> files = DiskQueueUtils.listSourceQueueFile(basePath);
-
-		if (files != null) {
-			for (File source : files) {
-				try {
-					DiskQueueUtils.moveFile2GRMPath(basePath, source);
-				} catch (IOException e) {
-					logger.error(e.getMessage(), e);
-					Assert.isNull(e);
-				}
-			}
-
-		}
-
-		List<File> queueFiles = DiskQueueUtils.listQueueFiles(new File(basePath + DiskQueueUtils.L10N_TMP_GRM_PATH));
-		Assert.notEmpty(queueFiles);
 
 		try {
 			syncSource.sendSourceToGRM();
 			List<File> i18nQueueFiles = DiskQueueUtils
 					.listQueueFiles(new File(basePath + DiskQueueUtils.L10N_TMP_I18N_PATH));
+			Assert.isTrue(i18nQueueFiles.size() < 1);
 			
-			Assert.isTrue(i18nQueueFiles == null || i18nQueueFiles.size() < 1);
-			
-
-			for (File delFile : queueFiles) {
+			List<File> delFiles = DiskQueueUtils.listQueueFiles(new File(basePath + DiskQueueUtils.L10N_TMP_GRM_PATH));
+			for (File delFile : delFiles) {
 				DiskQueueUtils.delQueueFile(delFile);
 			}
 

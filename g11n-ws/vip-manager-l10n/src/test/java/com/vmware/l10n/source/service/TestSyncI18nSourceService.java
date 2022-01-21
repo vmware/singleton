@@ -34,6 +34,10 @@ public class TestSyncI18nSourceService {
 	@Autowired
 	private WebApplicationContext webApplicationContext;
 	
+	@Autowired
+	SyncI18nSourceServiceImpl syncSource;
+	
+	
 	@Before
 	public void testBefore() {
 		StringSourceDTO csd = new StringSourceDTO();
@@ -60,8 +64,22 @@ public class TestSyncI18nSourceService {
 			source.cacheSource(sourceDTO);
 			source.cacheSource(csd);
 			source.writeSourceToCachedFile();
-			List<File> files = DiskQueueUtils.listSourceQueueFile("viprepo-bundle"+File.separator);
-			Assert.notEmpty(files);
+			List<File> files = DiskQueueUtils.listSourceQueueFile(syncSource.getBasePath());
+			int fileNumb = files.size();
+			
+			if(files != null) {
+				
+				for(File sourceFile: files) {
+					try {
+						DiskQueueUtils.moveFile2I18nPath(syncSource.getBasePath(), sourceFile);
+					} catch (IOException e) {
+						logger.error(e.getMessage(), e);
+					}
+				}
+			
+			}
+			List<File> i18nQueueFiles = DiskQueueUtils.listQueueFiles(new File(syncSource.getBasePath() + DiskQueueUtils.L10N_TMP_I18N_PATH));
+			Assert.isTrue(i18nQueueFiles.size() == fileNumb);
 		} catch (Exception e) {
 			logger.error(e.getMessage(), e);
 		}
@@ -72,27 +90,15 @@ public class TestSyncI18nSourceService {
 	public void test001sendSourceToI18n() {
 		SyncI18nSourceServiceImpl syncSource = webApplicationContext.getBean(SyncI18nSourceServiceImpl.class);
 		String basePath = syncSource.getBasePath();
-		List<File> files = DiskQueueUtils.listSourceQueueFile(basePath);
 		
-		if(files != null) {
-			for(File source: files) {
-				try {
-					DiskQueueUtils.moveFile2I18nPath(basePath, source);
-				} catch (IOException e) {
-					logger.error(e.getMessage(), e);
-				}
-			}
-		
-		}
-		List<File> i18nQueueFiles = DiskQueueUtils.listQueueFiles(new File(basePath + DiskQueueUtils.L10N_TMP_I18N_PATH));
-        Assert.notEmpty(i18nQueueFiles);
 		
 		Exception ex = null;
 		try {
 			syncSource.sendSourceToI18n();
 			List<File> backFiles = DiskQueueUtils.listQueueFiles(new File(basePath + DiskQueueUtils.L10N_TMP_BACKUP_PATH));
-		    Assert.isTrue(backFiles == null || backFiles.size()<1);
+		    Assert.isTrue(backFiles.size()<1);
 		   
+		    List<File> i18nQueueFiles = DiskQueueUtils.listQueueFiles(new File(syncSource.getBasePath() + DiskQueueUtils.L10N_TMP_I18N_PATH));
 		    for(File delFile : i18nQueueFiles) {
 				DiskQueueUtils.delQueueFile(delFile);
 			}

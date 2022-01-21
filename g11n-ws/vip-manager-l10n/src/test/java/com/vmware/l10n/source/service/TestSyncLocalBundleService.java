@@ -34,6 +34,9 @@ public class TestSyncLocalBundleService {
 	@Autowired
 	private WebApplicationContext webApplicationContext;
 
+	@Autowired
+	SyncLocalBundleServiceImpl syncSource;
+
 	@Test
 	public void test001MergeSourceToLocalBundle() {
 		SourceServiceImpl source = webApplicationContext.getBean(SourceServiceImpl.class);
@@ -45,20 +48,11 @@ public class TestSyncLocalBundleService {
 		sourceDTO.setKey("dc.myhome.open3");
 		sourceDTO.setSource("this open3's value");
 		sourceDTO.setComment("dc new string");
-		
-		try {
-			source.cacheSource(sourceDTO);
-			source.writeSourceToCachedFile();
-			List<File> files = DiskQueueUtils.listSourceQueueFile("viprepo-bundle"+File.separator);
-			Assert.notEmpty(files);
+		source.cacheSource(sourceDTO);
+		source.writeSourceToCachedFile();
+		List<File> files = DiskQueueUtils.listSourceQueueFile("viprepo-bundle" + File.separator);
+		int fileNumb = files.size();
 
-		} catch (Exception e) {
-			logger.error(e.getMessage(), e);
-			Assert.isNull(e);
-		}
-		
-		
-		SyncLocalBundleServiceImpl syncSource = webApplicationContext.getBean(SyncLocalBundleServiceImpl.class);
 		try {
 			syncSource.mergeSourceToLocalBundle();
 			SourceDao sourcedao = webApplicationContext.getBean(SourceDao.class);
@@ -68,8 +62,13 @@ public class TestSyncLocalBundleService {
 			sdto.setComponent("default");
 			sdto.setLocale(ConstantsKeys.LATEST);
 			Assert.notNull(sourcedao.getFromBundle(sdto));
+
+			List<File> queueFiles = DiskQueueUtils
+					.listQueueFiles(new File("viprepo-bundle" + File.separator + DiskQueueUtils.L10N_TMP_GRM_PATH));
 			
-			List<File> queueFiles = DiskQueueUtils.listQueueFiles(new File("viprepo-bundle"+File.separator + DiskQueueUtils.L10N_TMP_GRM_PATH));
+			Assert.isTrue(queueFiles.size() == fileNumb);
+			
+			
 			for (File delFile : queueFiles) {
 				DiskQueueUtils.delQueueFile(delFile);
 			}
@@ -78,12 +77,5 @@ public class TestSyncLocalBundleService {
 			Assert.isNull(e);
 		}
 	}
-	
 
-	
-
-	
-	
-	
-	
 }

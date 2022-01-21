@@ -36,12 +36,9 @@ public class TestDiskQueueUtils {
 		
 		try {
 			File file = DiskQueueUtils.createQueueFile(prepareMap, basePath);
-			if(file.exists()) {
-				logger.info(file.getAbsolutePath());
-			}
 			DiskQueueUtils.moveFile2ExceptPath(basePath, file, "locale");
 			List<File> exepQueueFiles = DiskQueueUtils.listExceptQueueFile(basePath);
-	        Assert.notEmpty(exepQueueFiles);
+	        Assert.isTrue(exepQueueFiles.size() == 1);
 	        
 			for(File delFile : exepQueueFiles) {
 				DiskQueueUtils.delQueueFile(delFile);
@@ -72,7 +69,7 @@ public class TestDiskQueueUtils {
 			File file = DiskQueueUtils.createQueueFile(prepareMap, basePath);
 			DiskQueueUtils.moveFile2I18nPath(basePath, file);
 			List<File> i18nQueueFiles = DiskQueueUtils.listQueueFiles(new File(basePath + DiskQueueUtils.L10N_TMP_I18N_PATH));
-	        Assert.notEmpty(i18nQueueFiles);
+	        Assert.isTrue(i18nQueueFiles.size() == 1);
 	        for(File delFile : i18nQueueFiles) {
 				DiskQueueUtils.delQueueFile(delFile);
 			}
