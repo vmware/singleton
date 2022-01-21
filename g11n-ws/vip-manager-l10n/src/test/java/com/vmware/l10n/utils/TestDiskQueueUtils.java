@@ -27,7 +27,7 @@ public class TestDiskQueueUtils {
 		ConcurrentMap<String, ComponentSourceDTO> prepareMap = new ConcurrentHashMap<String, ComponentSourceDTO>();
 		ComponentSourceDTO csd = new ComponentSourceDTO();
 		csd.setProductName("test");
-		csd.setVersion("2.0.0");
+		csd.setVersion("1.0.0");
 		csd.setComponent("default");
 		csd.setLocale("latest");
 		csd.setMessages("test1.l10n", "this is a test1");
@@ -36,6 +36,9 @@ public class TestDiskQueueUtils {
 		
 		try {
 			File file = DiskQueueUtils.createQueueFile(prepareMap, basePath);
+			if(file.exists()) {
+				logger.info(file.getAbsolutePath());
+			}
 			DiskQueueUtils.moveFile2ExceptPath(basePath, file, "locale");
 			List<File> exepQueueFiles = DiskQueueUtils.listExceptQueueFile(basePath);
 	        Assert.notEmpty(exepQueueFiles);

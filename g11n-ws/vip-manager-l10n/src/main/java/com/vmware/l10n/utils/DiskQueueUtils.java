@@ -171,7 +171,7 @@ public class DiskQueueUtils {
      * @param prefix
      */
     public static void moveFile2ExceptPath(String basePath, File source, String prefix){
-    	String targetFileName = basePath+L10N_TMP_EXCEP_PATH+prefix+ConstantsChar.UNDERLINE+source.getName();
+    	String targetFileName = basePath+L10N_TMP_EXCEP_PATH+source.getName().replace(SourceStr, SourceStr+prefix+ConstantsChar.UNDERLINE);
     	File file = new File(targetFileName);
     	try {
 			moveQueueFile(source, file);

@@ -49,7 +49,7 @@ public class TestSyncLocalBundleService {
 		try {
 			source.cacheSource(sourceDTO);
 			source.writeSourceToCachedFile();
-			List<File> files = DiskQueueUtils.listExceptQueueFile("viprepo-bundle"+File.separator);
+			List<File> files = DiskQueueUtils.listSourceQueueFile("viprepo-bundle"+File.separator);
 			Assert.notEmpty(files);
 
 		} catch (Exception e) {
