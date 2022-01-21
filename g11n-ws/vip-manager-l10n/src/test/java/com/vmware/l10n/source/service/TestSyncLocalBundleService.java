@@ -4,6 +4,9 @@
  */
 package com.vmware.l10n.source.service;
 
+import java.io.File;
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -14,10 +17,12 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.context.WebApplicationContext;
 
 import com.vmware.l10n.BootApplication;
+import com.vmware.l10n.source.dao.SourceDao;
 import com.vmware.l10n.source.service.impl.SourceServiceImpl;
 import com.vmware.l10n.source.service.impl.SyncLocalBundleServiceImpl;
+import com.vmware.l10n.utils.DiskQueueUtils;
 import com.vmware.vip.common.constants.ConstantsKeys;
-import com.vmware.vip.common.l10n.exception.L10nAPIException;
+import com.vmware.vip.common.i18n.dto.SingleComponentDTO;
 import com.vmware.vip.common.l10n.source.dto.StringSourceDTO;
 
 import io.jsonwebtoken.lang.Assert;
@@ -40,24 +45,33 @@ public class TestSyncLocalBundleService {
 		sourceDTO.setKey("dc.myhome.open3");
 		sourceDTO.setSource("this open3's value");
 		sourceDTO.setComment("dc new string");
+		
 		try {
 			source.cacheSource(sourceDTO);
-		} catch (L10nAPIException e) {
-			// TODO Auto-generated catch block
+			source.writeSourceToCachedFile();
+			List<File> files = DiskQueueUtils.listExceptQueueFile("viprepo-bundle"+File.separator);
+			Assert.notEmpty(files);
+
+		} catch (Exception e) {
 			logger.error(e.getMessage(), e);
+			Assert.isNull(e);
 		}
 		
 		
 		SyncLocalBundleServiceImpl syncSource = webApplicationContext.getBean(SyncLocalBundleServiceImpl.class);
-		Exception ex = null;
 		try {
 			syncSource.mergeSourceToLocalBundle();
-		}catch (Exception e) {
-			// TODO Auto-generated catch block
+			SourceDao sourcedao = webApplicationContext.getBean(SourceDao.class);
+			SingleComponentDTO sdto = new SingleComponentDTO();
+			sdto.setProductName("test");
+			sdto.setVersion("1.0.0");
+			sdto.setComponent("default");
+			sdto.setLocale(ConstantsKeys.LATEST);
+			Assert.notNull(sourcedao.getFromBundle(sdto));
+		} catch (Exception e) {
 			logger.error(e.getMessage(), e);
-			ex =e;
+			Assert.isNull(e);
 		}
-		Assert.isNull(ex);
 	}
 	
 

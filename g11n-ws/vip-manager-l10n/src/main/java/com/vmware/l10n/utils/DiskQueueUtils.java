@@ -40,7 +40,7 @@ public class DiskQueueUtils {
 	//Singleton source cached files Directory
 	public static final String L10N_TMP_I18N_PATH = L10N_TMP_DIR + "i18n" + File.separator;
 	//backup source cached files Directory
-	private static final String L10N_TMP_BACKUP_PATH = L10N_TMP_DIR + "backup" + File.separator;
+	public static final String L10N_TMP_BACKUP_PATH = L10N_TMP_DIR + "backup" + File.separator;
 	//exception source cached files Directory
 	private static final String L10N_TMP_EXCEP_PATH = L10N_TMP_DIR + "excep" + File.separator;
 	private final static String SourceStr = "source_";

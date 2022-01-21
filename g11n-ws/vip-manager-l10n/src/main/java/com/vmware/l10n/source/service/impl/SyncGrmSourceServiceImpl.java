@@ -90,7 +90,7 @@ public class SyncGrmSourceServiceImpl implements SyncGrmSourceService {
 		LOGGER.debug("the GRM cache file size---{}", queueFiles.size());
         
 		for (File quefile : queueFiles) {
-			if(quefile == null || quefile.length()>REQ_SPLIT_LIMIT) {
+			if(quefile.length()>REQ_SPLIT_LIMIT) {
 				DiskQueueUtils.moveFile2ExceptPath(basePath, quefile, GRM_STR);
 			}else {
 				try {

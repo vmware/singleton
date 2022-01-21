@@ -6,6 +6,7 @@ package com.vmware.l10n.utils;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
@@ -24,7 +25,6 @@ public class TestDiskQueueUtils {
 	@Test
 	public void test001moveFile2ExceptPath() {
 		ConcurrentMap<String, ComponentSourceDTO> prepareMap = new ConcurrentHashMap<String, ComponentSourceDTO>();
-
 		ComponentSourceDTO csd = new ComponentSourceDTO();
 		csd.setProductName("test");
 		csd.setVersion("2.0.0");
@@ -32,19 +32,18 @@ public class TestDiskQueueUtils {
 		csd.setLocale("latest");
 		csd.setMessages("test1.l10n", "this is a test1");
 		csd.setMessages("test2.l10n", "this is a test2");
-
 		prepareMap.put(csd.getProductName() + "." + csd.getComponent() + "." + csd.getVersion(), csd);
 		
-		Exception ex=null;
 		try {
 			File file = DiskQueueUtils.createQueueFile(prepareMap, basePath);
 			DiskQueueUtils.moveFile2ExceptPath(basePath, file, "locale");
+			List<File> exepQueueFiles = DiskQueueUtils.listExceptQueueFile(basePath);
+	        Assert.notEmpty(exepQueueFiles);
 		} catch (IOException e) {
 			logger.error(e.getMessage(), e);
-			ex = e;
+			Assert.isNull(e);
 		}
 		
-		Assert.isNull(ex);
 		
 		
 
@@ -61,19 +60,17 @@ public class TestDiskQueueUtils {
 		csd.setLocale("latest");
 		csd.setMessages("test1.l10n", "this is a test1");
 		csd.setMessages("test2.l10n", "this is a test2");
-
 		prepareMap.put(csd.getProductName() + "." + csd.getComponent() + "." + csd.getVersion(), csd);
-		
-		Exception ex=null;
 		try {
 			File file = DiskQueueUtils.createQueueFile(prepareMap, basePath);
 			DiskQueueUtils.moveFile2I18nPath(basePath, file);
+			List<File> i18nQueueFiles = DiskQueueUtils.listQueueFiles(new File(basePath + DiskQueueUtils.L10N_TMP_I18N_PATH));
+	        Assert.notEmpty(i18nQueueFiles);
 		} catch (IOException e) {
 			logger.error(e.getMessage(), e);
-			ex = e;
+			Assert.isNull(e);
 		}
 		
-		Assert.isNull(ex);
 
 	}
 
@@ -89,18 +86,14 @@ public class TestDiskQueueUtils {
 		csd.setLocale("latest");
 		csd.setMessages("test1.l10n", "this is a test1");
 		csd.setMessages("test2.l10n", "this is a test2");
-
 		prepareMap.put(csd.getProductName() + "." + csd.getComponent() + "." + csd.getVersion(), csd);
-		
-		Exception ex=null;
 		try {
 			File file = DiskQueueUtils.createQueueFile(prepareMap, basePath);
 			DiskQueueUtils.delQueueFile(file);
+			Assert.isTrue(!file.exists());
 		} catch (IOException e) {
 			logger.error(e.getMessage(), e);
-			ex = e;
+			Assert.isNull(e);
 		}
-		
-		Assert.isNull(ex);
 	}
 }

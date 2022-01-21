@@ -76,9 +76,8 @@ public class SyncI18nSourceServiceImpl implements SyncI18nSourceService {
 			setSingletonConnected(true);
 			processSingletonQueueFiles();
 		} catch (L10nAPIException e) {
-
 			LOGGER.error("Remote [" + remoteVIPURL + "] is not connected.", e);
-
+			setSingletonConnected(false);
 		}
 	}
 
@@ -103,10 +102,10 @@ public class SyncI18nSourceServiceImpl implements SyncI18nSourceService {
 				DiskQueueUtils.moveFile2IBackupPath(basePath, quefile, I18N_STR);
 			} catch (VIPHttpException e) {
 				LOGGER.error("Send source file to Singleton error:", e);
-				setSingletonConnected(false);
 				break;
 			} catch (Exception e) {
 				LOGGER.error("Read source file from singleton directory error:" + quefile.getAbsolutePath(), e);
+				DiskQueueUtils.moveFile2ExceptPath(basePath, quefile, I18N_STR);
 			} 
 		}
 	}
@@ -135,6 +134,8 @@ public class SyncI18nSourceServiceImpl implements SyncI18nSourceService {
 					header.put("token", remoteVIPAuthAppToken);
 				}
 				HTTPRequester.putJSONStr(jsonStr, urlStr, header);
+			}else if(!isSingletonConnected()) {
+				throw new VIPHttpException("remote singleton service not available");
 			}
 	}
 

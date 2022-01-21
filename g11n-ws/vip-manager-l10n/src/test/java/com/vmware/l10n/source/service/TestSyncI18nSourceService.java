@@ -23,7 +23,6 @@ import com.vmware.l10n.source.service.impl.SourceServiceImpl;
 import com.vmware.l10n.source.service.impl.SyncI18nSourceServiceImpl;
 import com.vmware.l10n.utils.DiskQueueUtils;
 import com.vmware.vip.common.constants.ConstantsKeys;
-import com.vmware.vip.common.l10n.exception.L10nAPIException;
 import com.vmware.vip.common.l10n.source.dto.StringSourceDTO;
 
 import io.jsonwebtoken.lang.Assert;
@@ -56,12 +55,17 @@ public class TestSyncI18nSourceService {
 		sourceDTO.setKey("dc.myhome.open3");
 		sourceDTO.setSource("this open3's value");
 		sourceDTO.setComment("dc new string");
+		
 		try {
 			source.cacheSource(sourceDTO);
 			source.cacheSource(csd);
-		} catch (L10nAPIException e) {
+			source.writeSourceToCachedFile();
+			List<File> files = DiskQueueUtils.listExceptQueueFile("viprepo-bundle"+File.separator);
+			Assert.notEmpty(files);
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			logger.error(e.getMessage(), e);
+			Assert.isNull(e);
 		}
 	}
 
@@ -71,26 +75,30 @@ public class TestSyncI18nSourceService {
 		SyncI18nSourceServiceImpl syncSource = webApplicationContext.getBean(SyncI18nSourceServiceImpl.class);
 		String basePath = syncSource.getBasePath();
 		List<File> files = DiskQueueUtils.listSourceQueueFile(basePath);
+		
 		if(files != null) {
 			for(File source: files) {
 				try {
 					DiskQueueUtils.moveFile2I18nPath(basePath, source);
 				} catch (IOException e) {
 					logger.error(e.getMessage(), e);
+					Assert.isNull(e);
 				}
 			}
 		
 		}
+		List<File> i18nQueueFiles = DiskQueueUtils.listQueueFiles(new File(basePath + DiskQueueUtils.L10N_TMP_I18N_PATH));
+        Assert.notEmpty(i18nQueueFiles);
 		
-		Exception ex = null;
 		try {
 			syncSource.sendSourceToI18n();
+			List<File> backupQueueFiles = DiskQueueUtils.listQueueFiles(new File(basePath + DiskQueueUtils.L10N_TMP_BACKUP_PATH));
+	        Assert.notEmpty(backupQueueFiles);
 		}catch (Exception e) {
-			// TODO Auto-generated catch block
 			logger.error(e.getMessage(), e);
-			ex =e;
+			Assert.isNull(e);
 		}
-		Assert.isNull(ex);
+
 		
 		
 	}

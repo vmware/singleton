@@ -4,6 +4,9 @@
  */
 package com.vmware.l10n.source.service;
 
+import java.io.File;
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -15,8 +18,8 @@ import org.springframework.web.context.WebApplicationContext;
 
 import com.vmware.l10n.BootApplication;
 import com.vmware.l10n.source.service.impl.SourceServiceImpl;
+import com.vmware.l10n.utils.DiskQueueUtils;
 import com.vmware.vip.common.constants.ConstantsKeys;
-import com.vmware.vip.common.l10n.exception.L10nAPIException;
 import com.vmware.vip.common.l10n.source.dto.StringSourceDTO;
 
 import io.jsonwebtoken.lang.Assert;
@@ -39,14 +42,13 @@ public class SourceServiceTest {
 		sourceDTO.setKey("dc.myhome.open3");
 		sourceDTO.setSource("this open3's value");
 		sourceDTO.setComment("dc new string");
-		Exception ex = null;
 		try {
 			source.cacheSource(sourceDTO);
-		} catch (L10nAPIException e) {
+		} catch (Exception e) {
 			logger.error(e.getMessage(), e);
-			ex = e;
+			Assert.isNull(e);
 		}
-		Assert.isNull(ex);
+		
 		
 	}
 	
@@ -71,17 +73,12 @@ public class SourceServiceTest {
 		sourceDTO1.setKey("dc.myhome.open1");
 		sourceDTO1.setSource("this open3's value");
 		sourceDTO1.setComment("dc new string");
-		Exception ex = null;
-		try {
-			source.cacheSource(sourceDTO);
-			source.cacheSource(sourceDTO1);
-			source.writeSourceToCachedFile();
-		} catch (L10nAPIException e) {
-			logger.error(e.getMessage(), e);
-			ex = e;
-		}
-		Assert.isNull(ex);
-		
+
+		source.cacheSource(sourceDTO);
+		source.cacheSource(sourceDTO1);
+		source.writeSourceToCachedFile();
+		List<File> files = DiskQueueUtils.listSourceQueueFile("viprepo-bundle" + File.separator);
+		Assert.notEmpty(files);
 		
 	}
 	

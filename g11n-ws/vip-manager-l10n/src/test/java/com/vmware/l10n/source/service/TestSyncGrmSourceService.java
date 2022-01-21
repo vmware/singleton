@@ -23,7 +23,6 @@ import com.vmware.l10n.source.service.impl.SourceServiceImpl;
 import com.vmware.l10n.source.service.impl.SyncGrmSourceServiceImpl;
 import com.vmware.l10n.utils.DiskQueueUtils;
 import com.vmware.vip.common.constants.ConstantsKeys;
-import com.vmware.vip.common.l10n.exception.L10nAPIException;
 import com.vmware.vip.common.l10n.source.dto.StringSourceDTO;
 
 import io.jsonwebtoken.lang.Assert;
@@ -33,6 +32,7 @@ import io.jsonwebtoken.lang.Assert;
 @SpringBootTest(classes = BootApplication.class)
 public class TestSyncGrmSourceService {
 	private static Logger logger = LoggerFactory.getLogger(TestSyncGrmSourceService.class);
+	
 	@Autowired
 	private WebApplicationContext webApplicationContext;
 
@@ -60,9 +60,13 @@ public class TestSyncGrmSourceService {
 		try {
 			source.cacheSource(sourceDTO);
 			source.cacheSource(csd);
-		} catch (L10nAPIException e) {
+			source.writeSourceToCachedFile();
+			List<File> files = DiskQueueUtils.listSourceQueueFile("viprepo-bundle"+File.separator);
+			Assert.notEmpty(files);
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			logger.error(e.getMessage(), e);
+			Assert.isNull(e);
 		}
 	}
 
@@ -71,26 +75,32 @@ public class TestSyncGrmSourceService {
 		SyncGrmSourceServiceImpl syncSource = webApplicationContext.getBean(SyncGrmSourceServiceImpl.class);
 		String basePath = syncSource.getBasePath();
 		List<File> files = DiskQueueUtils.listSourceQueueFile(basePath);
+		
 		if(files != null) {
 			for(File source: files) {
 				try {
 					DiskQueueUtils.moveFile2GRMPath(basePath, source);
 				} catch (IOException e) {
 					logger.error(e.getMessage(), e);
+					Assert.isNull(e);
 				}
 			}
 		
 		}
 		
-		Exception ex = null;
+		List<File> queueFiles = DiskQueueUtils.listQueueFiles(new File(basePath + DiskQueueUtils.L10N_TMP_GRM_PATH));
+        Assert.notEmpty(queueFiles);
+
 		try {
 			syncSource.sendSourceToGRM();
+			List<File> i18nQueueFiles = DiskQueueUtils.listQueueFiles(new File(basePath + DiskQueueUtils.L10N_TMP_I18N_PATH));
+	        Assert.notEmpty(i18nQueueFiles);
+
 		}catch (Exception e) {
 			// TODO Auto-generated catch block
 			logger.error(e.getMessage(), e);
-			ex =e;
+			Assert.isNull(e);
 		}
-		Assert.isNull(ex);
 
 	}
 

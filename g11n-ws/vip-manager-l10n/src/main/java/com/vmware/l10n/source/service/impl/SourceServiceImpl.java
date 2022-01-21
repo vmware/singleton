@@ -22,7 +22,6 @@ import com.vmware.l10n.utils.DiskQueueUtils;
 import com.vmware.l10n.utils.MapUtil;
 import com.vmware.vip.common.constants.ConstantsChar;
 import com.vmware.vip.common.constants.ConstantsKeys;
-import com.vmware.vip.common.l10n.exception.L10nAPIException;
 import com.vmware.vip.common.l10n.source.dto.ComponentSourceDTO;
 import com.vmware.vip.common.l10n.source.dto.StringSourceDTO;
 import com.vmware.vip.common.l10n.source.util.PathUtil;
@@ -42,7 +41,7 @@ public class SourceServiceImpl implements SourceService {
 	private String basePath;
 	
 
-	public boolean cacheSource(StringSourceDTO stringSourceDTO) throws L10nAPIException {
+	public boolean cacheSource(StringSourceDTO stringSourceDTO){
 		if (StringUtils.isEmpty(stringSourceDTO) || StringUtils.isEmpty(stringSourceDTO.getKey())) {
 			return false;
 		}
@@ -68,14 +67,14 @@ public class SourceServiceImpl implements SourceService {
 		while (!STRING_SOURCES.isEmpty()) {
 			mergeSource2Map();
 			if (index % 2048 == 0) {
-				catcheMapDTO(PREPARE_MAP);
+				cacheMapDTO(PREPARE_MAP);
 			}
 			index = index + 1;
 
 		}
 
 		if (!PREPARE_MAP.isEmpty()) {
-			catcheMapDTO(PREPARE_MAP);
+			cacheMapDTO(PREPARE_MAP);
 		}
 
 	}	
@@ -124,7 +123,7 @@ public class SourceServiceImpl implements SourceService {
 	
 	
 	
-	private boolean catcheMapDTO(Map<String, ComponentSourceDTO> sources) {
+	private boolean cacheMapDTO(Map<String, ComponentSourceDTO> sources) {
 		LOGGER.debug("begin process catcheMapDTO collection string to tem cache queue");
 
 		try {
