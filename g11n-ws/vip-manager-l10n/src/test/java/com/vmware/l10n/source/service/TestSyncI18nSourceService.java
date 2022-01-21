@@ -68,9 +68,12 @@ public class TestSyncI18nSourceService {
 
 			  
 	        List<File> delFiles = DiskQueueUtils.listQueueFiles(new File(syncSource.getBasePath() + DiskQueueUtils.L10N_TMP_I18N_PATH));
-			for (File delFile : delFiles) {
-				DiskQueueUtils.delQueueFile(delFile);
+			if(delFiles != null) {
+				 for (File delFile : delFiles) {
+						DiskQueueUtils.delQueueFile(delFile);
+				 }
 			}
+	       
 			
 			if (files != null) {
 

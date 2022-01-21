@@ -61,9 +61,12 @@ public class TestSyncGrmSourceService {
 	        File sourceFile =  DiskQueueUtils.createQueueFile(prepareMap, basePath);
 	        
 	        List<File> delFiles = DiskQueueUtils.listQueueFiles(new File(basePath + DiskQueueUtils.L10N_TMP_GRM_PATH));
-			for (File delFile : delFiles) {
-				DiskQueueUtils.delQueueFile(delFile);
-			}
+	        if(delFiles != null) {
+	        	for (File delFile : delFiles) {
+					DiskQueueUtils.delQueueFile(delFile);
+				}
+	        }
+			
 			DiskQueueUtils.moveFile2GRMPath(basePath, sourceFile);
 			List<File> queueFiles = DiskQueueUtils.listQueueFiles(new File(basePath + DiskQueueUtils.L10N_TMP_GRM_PATH));
 			Assert.isTrue(queueFiles.size() == 1);
