@@ -5,6 +5,7 @@
 package com.vmware.vip.i18n;
 
 import java.text.FieldPosition;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
@@ -35,7 +36,7 @@ public class MessageFormatTest extends BaseTestClass {
     }
 
     @Test
-    public void testFormat() {
+    public void testFormatPluralMessage() {
         String message1 = "{num_files, plural, "
                 + "=0{There are no files on disk \"{disk_name}\".}"
                 + "=1{There is one file on disk \"{disk_name}\".}"
@@ -98,5 +99,36 @@ public class MessageFormatTest extends BaseTestClass {
                 msgFmt4.format(new Object[] { 101 }, new StringBuilder(), new FieldPosition(0)).toString());
         Assert.assertEquals("102 psa",
                 msgFmt4.format(new Object[] { 102 }, new StringBuilder(), new FieldPosition(0)).toString());
+    }
+
+    @Test
+    public void testFormatMessageWithSimpleArg(){
+        //String messageWithSimpleArg = "At {1,time,short} on {1,date,long}, there was {2} on planet {0,number,integer}.";
+        String messageWithSimpleArg = "At {1,date,shortTime} on {1,date,longDate}, there was {2} on planet {0,number}.";
+        final long timestamp = 1511156364801l;
+        Object[] arguments = {
+                7,
+                new Date(timestamp),
+                "a disturbance in the Force"
+        };
+
+        MessageFormat msgFmt1 = new MessageFormat(messageWithSimpleArg, Locale.ENGLISH);
+        System.out.println(msgFmt1.format(arguments, new StringBuilder(), new FieldPosition(0)).toString());
+        Assert.assertEquals("At 1:39 PM on November 20, 2017, there was a disturbance in the Force on planet 7.",
+                msgFmt1.format(arguments, new StringBuilder(), new FieldPosition(0)).toString());
+
+        /*String messageWithSimpleArg_percent = "{0,number, percent}.";
+        Object[] arguments4Percent = { 0.354 };
+        MessageFormat msgFmt2 = new MessageFormat(messageWithSimpleArg_percent, Locale.ENGLISH);
+        System.out.println(msgFmt1.format(arguments4Percent, new StringBuilder(), new FieldPosition(0)).toString());
+        Assert.assertEquals("At 1:39 PM on November 20, 2017, there was a disturbance in the Force on planet 7",
+                msgFmt1.format(arguments4Percent, new StringBuilder(), new FieldPosition(0)).toString());
+
+        String messageWithSimpleArg_currency = "{0,number, currency}.";
+        Object[] arguments4Currency = { 201703 };
+        MessageFormat msgFmt3 = new MessageFormat(messageWithSimpleArg_currency, Locale.ENGLISH);
+        System.out.println(msgFmt1.format(arguments4Currency, new StringBuilder(), new FieldPosition(0)).toString());
+        Assert.assertEquals("At 1:39 PM on November 20, 2017, there was a disturbance in the Force on planet 7",
+                msgFmt1.format(arguments4Currency, new StringBuilder(), new FieldPosition(0)).toString());*/
     }
 }

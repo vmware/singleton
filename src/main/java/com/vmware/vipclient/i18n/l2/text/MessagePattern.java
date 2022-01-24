@@ -326,7 +326,9 @@ public class MessagePattern {
             }
         } else /* ',' */ {
             ++index;
-            if (argType == ArgType.PLURAL || argType == ArgType.SELECT) {
+            if(argType==ArgType.SIMPLE) {
+                index=parseSimpleStyle(index);
+            } else if (argType == ArgType.PLURAL || argType == ArgType.SELECT) {
                 index = parsePluralOrSelectStyle(argType, index, nestingLevel);
             } else {
                 throw new Level2Exception("Unsupported argument type '" + argType.toString() + "'!");
@@ -345,6 +347,42 @@ public class MessagePattern {
             // continue parsing after the '}'
             return index;
         }
+    }
+
+    private int parseSimpleStyle(int index) {
+        int start=index;
+        int nestedBraces=0;
+        while(index<msg.length()) {
+            char c=msg.charAt(index++);
+            if(c=='\'') {
+                // Treat apostrophe as quoting but include it in the style part.
+                // Find the end of the quoted literal text.
+                index=msg.indexOf('\'', index);
+                if(index<0) {
+                    throw new IllegalArgumentException(
+                            "Quoted literal argument style text reaches to the end of the message: "+
+                                    prefix(start));
+                }
+                // skip the quote-ending apostrophe
+                ++index;
+            } else if(c=='{') {
+                ++nestedBraces;
+            } else if(c=='}') {
+                if(nestedBraces>0) {
+                    --nestedBraces;
+                } else {
+                    int length=--index-start;
+                    if(length>Part.MAX_LENGTH) {
+                        throw new IndexOutOfBoundsException(
+                                "Argument style text too long: "+prefix(start));
+                    }
+                    addPart(Part.Type.ARG_STYLE, start, length, 0);
+                    return index;
+                }
+            }  // c is part of literal text
+        }
+        throw new IllegalArgumentException(
+                "Unmatched '{' braces in message "+prefix());
     }
 
     private int parsePluralOrSelectStyle(ArgType argType, int index, int nestingLevel) {

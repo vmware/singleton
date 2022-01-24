@@ -18,6 +18,7 @@ import java.util.Locale;
 import java.util.Map;
 
 import com.vmware.vipclient.i18n.I18nFactory;
+import com.vmware.vipclient.i18n.base.instances.DateFormatting;
 import com.vmware.vipclient.i18n.base.instances.NumberFormatting;
 import com.vmware.vipclient.i18n.exceptions.VIPUncheckedIOException;
 import com.vmware.vipclient.i18n.l2.plural.parser.PluralRules;
@@ -25,6 +26,7 @@ import com.vmware.vipclient.i18n.l2.plural.parser.PluralRules.PluralType;
 import com.vmware.vipclient.i18n.l2.text.MessagePattern.ArgType;
 import com.vmware.vipclient.i18n.l2.text.MessagePattern.Part;
 import com.vmware.vipclient.i18n.util.LocaleUtility;
+import com.vmware.vipclient.i18n.util.PatternProps;
 
 public class MessageFormat {
     private Locale                           locale;
@@ -272,6 +274,24 @@ public class MessageFormat {
                 // that formats the number without subtracting the offset.
                 dest.formatAndAppend(pluralNumber.formatter, arg);
             }
+        } else if (argType == ArgType.SIMPLE){
+            String argFormatType = msgPattern.getSubstring(msgPattern.getPart(i++));
+            String argFormatStyle = "";
+            if ((part = msgPattern.getPart(i)).getType() == MessagePattern.Part.Type.ARG_STYLE) {
+                argFormatStyle = msgPattern.getSubstring(part);
+            }
+            int intFormatType  = findKeyword(argFormatType, typeList);
+            switch (intFormatType) {
+                case TYPE_NUMBER:
+                    int intStyle = findKeyword(argFormatStyle, modifierList);
+                    dest.append(new NumberFormatting().format(arg, locale, intStyle));
+                    break;
+                case TYPE_DATE:
+                    dest.append(new DateFormatting().formatDate(arg, argFormatStyle, locale));// + StringUtil.upperFirstLetter(argFormatType)
+                    break;
+                default:
+                    throw new IllegalArgumentException("Unsupported format type \"" + argFormatType + "\"");
+            }
         } else if (argType == ArgType.NONE ||
                 (cachedFormatters != null && cachedFormatters.containsKey(i - 2))) {
             dest.append(arg.toString());
@@ -341,6 +361,47 @@ public class MessageFormat {
             cachedFormatters.clear();
         }
     }
+
+        private static final String[] typeList =
+                { "number", "date", "time", "spellout", "ordinal", "duration" };
+        private static final int
+                TYPE_NUMBER = 0,
+                TYPE_DATE = 1,
+                TYPE_TIME = 2,
+                TYPE_SPELLOUT = 3,
+                TYPE_ORDINAL = 4,
+                TYPE_DURATION = 5;
+
+        private static final String[] modifierList =
+                {"", "currency", "percent", "scientific", "integer"};
+
+        private static final int
+                MODIFIER_EMPTY = 0,
+                MODIFIER_CURRENCY = 1,
+                MODIFIER_PERCENT = 2,
+                MODIFIER_SCIENTIFIC = 3,
+                MODIFIER_INTEGER = 4;
+
+        private static final String[] dateModifierList =
+                {"", "short", "medium", "long", "full"};
+
+        private static final int
+                DATE_MODIFIER_EMPTY = 0,
+                DATE_MODIFIER_SHORT = 1,
+                DATE_MODIFIER_MEDIUM = 2,
+                DATE_MODIFIER_LONG = 3,
+                DATE_MODIFIER_FULL = 4;
+
+        private static final Locale rootLocale = new Locale("");  // Locale.ROOT only @since 1.6
+
+        private static final int findKeyword(String s, String[] list) {
+            s = PatternProps.trimWhiteSpace(s).toLowerCase(rootLocale);
+            for (int i = 0; i < list.length; ++i) {
+                if (s.equals(list[i]))
+                    return i;
+            }
+            return -1;
+        }
 
     public static class Field2 extends Format.Field {
 
