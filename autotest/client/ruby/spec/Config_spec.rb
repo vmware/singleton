@@ -92,6 +92,13 @@ describe SgtnClient do
             #expect(SgtnClient::Translation.getString("JAVA", "com.vmware.loginsight.web.settings.stats.StatsTable.host", "de-DE")).to eq("host__de_online")
         end
 
+        it "test testdisablecache" do
+            SgtnClient.load("./config/sgtnclient.yml", "testdisablecache")
+            SgtnClient::Source.loadBundles("default")
+            expect(SgtnClient::Translation.getString("about", "about.message", "fr")).to eq("test fr key")
+            #expect(SgtnClient::Translation.getString("JAVA", "com.vmware.loginsight.web.settings.stats.StatsTable.host", "de-DE")).to eq("host__de_online")
+        end
+
         it "config testtranslationbundle" do
             SgtnClient.load("./config/sgtnclient.yml", "testtranslationbundle")
             SgtnClient::Source.loadBundles("default")
@@ -113,11 +120,5 @@ describe SgtnClient do
         #     #expect(SgtnClient::Translation.getString("JAVA", "com.vmware.loginsight.web.settings.stats.StatsTable.host", "de-DE")).to eq("host__de_online")
         # end
 
-        it "test testdisablecache" do
-            SgtnClient.load("./config/sgtnclient.yml", "testdisablecache")
-            SgtnClient::Source.loadBundles("default")
-            expect(SgtnClient::Translation.getString("about", "about.message", "fr")).to eq("test fr key")
-            #expect(SgtnClient::Translation.getString("JAVA", "com.vmware.loginsight.web.settings.stats.StatsTable.host", "de-DE")).to eq("host__de_online")
-        end
     end
 end
