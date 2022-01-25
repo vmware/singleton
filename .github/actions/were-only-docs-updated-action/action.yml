@@ -3,6 +3,7 @@ inputs:
   commit-range:
     description: 'commit range'
     required: true
+    value: ${{ github.event.pull_request.base.ref github.event.pull_request.base.sha }}
 outputs:
   were-only-docs-updated:
     description: "Were only docs updated"
