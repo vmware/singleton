@@ -29,6 +29,16 @@ describe SgtnClient do
       expect(SgtnClient::Translation.getString("NEW", "new_hello", "zh-Hans")).to eq 'New Hello'
     end
 
+    it "NonExistingLanuage" do
+      expect(SgtnClient::Translation.getString("JAVA", "hello", "kk_NonExistingLanuage")).to eq 'Hello'
+      # get from cache in 2nd time
+      expect(SgtnClient::Translation.getString("JAVA", "hello", "kk_NonExistingLanuage")).to eq 'Hello'
+      # get from cache in 3rd time
+      expect(SgtnClient::Translation.getString("JAVA", "hello", "kk_NonExistingLanuage")).to eq 'Hello'
+      # get from cache in 4th time
+      expect(SgtnClient::Translation.getString("JAVA", "hello", "kk_NonExistingLanuage")).to eq 'Hello'
+    end
+
     it "NonExistingKey" do
       expect(SgtnClient::Translation.getString("JAVA", "hello", "zh-Hans")).to eq 'Hello'
       # get from cache in 2nd time

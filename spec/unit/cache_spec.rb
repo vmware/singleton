@@ -27,6 +27,24 @@ describe SgtnClient do
 
       SgtnClient.logger.debug "----------End to get translation from server---------"
     end
+
+
+    it "default" do
+      env = SgtnClient::Config.default_environment
+      default_language = "default"
+      component = "JAVA"
+      SgtnClient::Source.loadBundles(default_language)
+      config_lang = SgtnClient::Config.configurations[env]["default_language"]
+      if config_lang == nil || config_lang == 'en'
+        expect(SgtnClient::CacheUtil.get_cachekey(component, SgtnClient::LocaleUtil.fallback('en-US'))).to eq 'test_4.8.1_JAVA_default'
+        expect(SgtnClient::CacheUtil.get_cachekey(component, SgtnClient::LocaleUtil.fallback('de-DE'))).to eq 'test_4.8.1_JAVA_de'
+      end
+      SgtnClient::Config.configurations[env]["default_language"] = 'zh-Hans'
+      expect(SgtnClient::CacheUtil.get_cachekey(component, SgtnClient::LocaleUtil.fallback('en-US'))).to eq 'test_4.8.1_JAVA_en'
+      expect(SgtnClient::CacheUtil.get_cachekey(component, SgtnClient::LocaleUtil.fallback('zh-Hans'))).to eq 'test_4.8.1_JAVA_default'
+      expect(SgtnClient::CacheUtil.get_cachekey(component, SgtnClient::LocaleUtil.fallback('zh-CN'))).to eq 'test_4.8.1_JAVA_default'
+    end
+
   end
 
 end

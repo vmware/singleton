@@ -19,7 +19,7 @@ test: &default
   version: 4.8.1
 
   # # HTTP Proxy
-  vip_server: https://server:8090
+  vip_server: https:////server:8090
 
   # # mode of bundle: online/offline
   bundle_mode: offline
@@ -36,6 +36,8 @@ test: &default
   # # disable cache, it's optional setting
   ##disable_cache: true
   
+  #default_language: en
+
 development:
   <<: *default
 
