@@ -33,10 +33,14 @@ describe SgtnClient do
       expect(SgtnClient::Translation.getString("JAVA", "hello", "kk_NonExistingLanuage")).to eq 'Hello'
       # get from cache in 2nd time
       expect(SgtnClient::Translation.getString("JAVA", "hello", "kk_NonExistingLanuage")).to eq 'Hello'
-      # get from cache in 3rd time
-      expect(SgtnClient::Translation.getString("JAVA", "hello", "kk_NonExistingLanuage")).to eq 'Hello'
-      # get from cache in 4th time
-      expect(SgtnClient::Translation.getString("JAVA", "hello", "kk_NonExistingLanuage")).to eq 'Hello'
+
+      # observe the log to see if there are more request to server
+      jsonObj = SgtnClient::Translation.getStrings("JAVA", "kk_NonExistingLanuage");
+      jsonObj = SgtnClient::Translation.getStrings("JAVA", "kk_NonExistingLanuage");
+      jsonObj = SgtnClient::Translation.getStrings("JAVA", "kk_NonExistingLanuage");
+      expect(jsonObj["component"]).to eq 'JAVA'
+      expect(jsonObj["locale"]).to eq 'source'
+
     end
 
     it "NonExistingKey" do
