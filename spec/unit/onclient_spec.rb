@@ -34,7 +34,7 @@ describe SgtnClient do
       # get from cache in 2nd time
       expect(SgtnClient::Translation.getString("JAVA", "hello", "kk_NonExistingLanuage")).to eq 'Hello'
 
-      # observe the log to see if there are more request to server
+      # enable to 'online' mode and observe the log file to see if there are more requests to server
       jsonObj = SgtnClient::Translation.getStrings("JAVA", "kk_NonExistingLanuage");
       jsonObj = SgtnClient::Translation.getStrings("JAVA", "kk_NonExistingLanuage");
       jsonObj = SgtnClient::Translation.getStrings("JAVA", "kk_NonExistingLanuage");
