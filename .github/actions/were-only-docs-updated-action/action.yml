@@ -13,8 +13,8 @@ runs:
     - id: were-only-docs-updated-id
       shell: bash
       run: |
-        echo "commit range: ${{ github.event.base_ref }} ${{ github.event.before }}"
-        git diff --name-only ${{ github.event.base_ref }} ${{ github.event.before }} | grep -qvE '(\.md$)|(^(docs|g11n-ws/docs))/' || {
+        echo "commit range: ${{ inputs.commit-range }}"
+        git diff --name-only ${{ inputs.commit-range }} | grep -qvE '(\.md$)|(^(docs|g11n-ws/docs))/' || {
           echo "::set-output name=were-only-docs-updated::yes"
           echo "were-only-docs-updated: yes."
           exit
