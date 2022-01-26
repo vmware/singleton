@@ -29,6 +29,20 @@ describe SgtnClient do
       expect(SgtnClient::Translation.getString("NEW", "new_hello", "zh-Hans")).to eq 'New Hello'
     end
 
+    it "NonExistingLanuage" do
+      expect(SgtnClient::Translation.getString("JAVA", "hello", "kk_NonExistingLanuage")).to eq 'Hello'
+      # get from cache in 2nd time
+      expect(SgtnClient::Translation.getString("JAVA", "hello", "kk_NonExistingLanuage")).to eq 'Hello'
+
+      # enable to 'online' mode and observe the log file to see if there are more requests to server
+      jsonObj = SgtnClient::Translation.getStrings("JAVA", "kk_NonExistingLanuage");
+      jsonObj = SgtnClient::Translation.getStrings("JAVA", "kk_NonExistingLanuage");
+      jsonObj = SgtnClient::Translation.getStrings("JAVA", "kk_NonExistingLanuage");
+      expect(jsonObj["component"]).to eq 'JAVA'
+      expect(jsonObj["locale"]).to eq 'source'
+
+    end
+
     it "NonExistingKey" do
       expect(SgtnClient::Translation.getString("JAVA", "hello", "zh-Hans")).to eq 'Hello'
       # get from cache in 2nd time

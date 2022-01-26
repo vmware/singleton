@@ -42,16 +42,7 @@ module SgtnClient
       end
 
       def self.getStrings(component, locale)
-        flocale = SgtnClient::LocaleUtil.fallback(locale)
-        cache_key = SgtnClient::CacheUtil.get_cachekey(component, flocale)
-        items = SgtnClient::CacheUtil.get_cache(cache_key)
-        if items.nil?
-          items = getTranslations(component, flocale)
-          SgtnClient::CacheUtil.write_cache(cache_key, items)
-        else
-          SgtnClient.logger.debug "Getting translations from cache with key: " + cache_key
-        end
-
+        items = get_cs(component, locale)
         default = SgtnClient::Config.configurations.default
         if items.nil? || items["messages"] == nil
           items = {}
@@ -68,11 +59,20 @@ module SgtnClient
       private
 
       def self.getTranslation(component, key, locale)
+        items = get_cs(component, locale)
+        if items.nil? || items["messages"] == nil
+          nil
+        else
+          items["messages"][key]
+        end
+      end
+
+      def self.get_cs(component, locale)
         flocale = SgtnClient::LocaleUtil.fallback(locale)
         cache_key = SgtnClient::CacheUtil.get_cachekey(component, flocale)
         items = SgtnClient::CacheUtil.get_cache(cache_key)
         if items.nil?
-          items = getTranslations(component, flocale)
+          items = load(component, flocale)
           if items.nil?
             items = SgtnClient::Source.getSources(component, SgtnClient::Config.configurations.default)
             SgtnClient::Core::Cache.put(cache_key, items, 60)
@@ -82,24 +82,21 @@ module SgtnClient
         else
           SgtnClient.logger.debug "Getting translations from cache with key: " + cache_key
         end
-        if items.nil? || items["messages"] == nil
-          nil
-        else
-          items["messages"][key]
-        end
-      end
-      
-      def self.getTranslations(component, locale)
+
+        return items
+       end
+
+      def self.load(component, locale)
         env = SgtnClient::Config.default_environment
         mode = SgtnClient::Config.configurations[env]["bundle_mode"]
         if mode == 'offline'
-          return get_offbundle(component, locale)
+          return load_o(component, locale)
         else
-          return get_server(component, locale)
+          return load_s(component, locale)
         end
       end
 
-      def self.get_offbundle(component, locale)
+      def self.load_o(component, locale)
         env = SgtnClient::Config.default_environment
         product_name = SgtnClient::Config.configurations[env]["product_name"]
         version = SgtnClient::Config.configurations[env]["version"].to_s
@@ -109,7 +106,7 @@ module SgtnClient
         SgtnClient::FileUtil.read_json(bundlepath)
       end
 
-      def self.get_server(component, locale)
+      def self.load_s(component, locale)
         env = SgtnClient::Config.default_environment
         product_name = SgtnClient::Config.configurations[env]["product_name"]
         vip_server = SgtnClient::Config.configurations[env]["vip_server"]
