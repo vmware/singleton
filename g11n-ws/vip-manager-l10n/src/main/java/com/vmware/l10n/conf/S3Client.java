@@ -33,10 +33,10 @@ import com.amazonaws.services.securitytoken.model.Credentials;
 @Profile("s3")
 public class S3Client {
 	private final static Logger LOGGER = LoggerFactory.getLogger(S3Client.class);
-	private final static int DURATIONSEC = 900;
+	private final static int DURATIONSEC = 3600;
 	private final static long THREESEC = 3000;
-
-	private static long retryTime;
+	   
+	private static long reducedTime;
 	private static AmazonS3 s3Client;
 	private static Credentials sessionCreds;
 	
@@ -59,7 +59,7 @@ public class S3Client {
 	}
 
 	public synchronized AmazonS3 getS3Client() {
-		if ((sessionCreds.getExpiration().getTime() - System.currentTimeMillis()) > retryTime) {
+		if ((sessionCreds.getExpiration().getTime() - System.currentTimeMillis()) > reducedTime) {
 			return s3Client;
 		} else {
 			sessionCreds = getRoleCredentials();
@@ -84,7 +84,7 @@ public class S3Client {
 		AssumeRoleResult sessionTokenResult = stsClient.assumeRole(arreq);
 		long time = System.currentTimeMillis();
 		Credentials result = sessionTokenResult.getCredentials();
-		retryTime = (result.getExpiration().getTime() - time - (DURATIONSEC * 1000)) + THREESEC;
+		reducedTime = (result.getExpiration().getTime() - (DURATIONSEC * 1000) - time) + THREESEC;
 		return result;
 	}
 
