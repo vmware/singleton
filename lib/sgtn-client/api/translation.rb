@@ -47,10 +47,14 @@ module SgtnClient
         if items.nil? || items["messages"] == nil
           items = {}
           s = SgtnClient::Source.getSources(component, default)
-          default_component, value = s.first
-          items["component"] = component
-          items["messages"] = value
-          items["locale"] = 'source'
+          if s.nil?
+            SgtnClient.logger.error "Can't find the component " + component + "in source path!"
+          else
+            default_component, value = s.first
+            items["component"] = component
+            items["messages"] = value
+            items["locale"] = 'source'
+          end
         end
         return items
        end
@@ -70,8 +74,8 @@ module SgtnClient
       def self.get_cs(component, locale)
         flocale = SgtnClient::LocaleUtil.fallback(locale)
         cache_key = SgtnClient::CacheUtil.get_cachekey(component, flocale)
-        items = SgtnClient::CacheUtil.get_cache(cache_key)
-        if items.nil?
+        expired, items = SgtnClient::CacheUtil.get_cache(cache_key)
+        if items.nil? || expired
           items = load(component, flocale)
           if items.nil?
             items = SgtnClient::Source.getSources(component, SgtnClient::Config.configurations.default)

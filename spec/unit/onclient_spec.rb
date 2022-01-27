@@ -24,9 +24,19 @@ describe SgtnClient do
 
     it "NewComponent" do
       expect(SgtnClient::Translation.getString("NEW", "new_hello", "zh-Hans")).to eq 'New Hello'
-      expect(SgtnClient::CacheUtil.get_cache("test_4.8.1_NEW_zh-Hans")["default"]["new_hello"]).to eq 'New Hello'
+      env = SgtnClient::Config.default_environment
+      if SgtnClient::Config.configurations[env]["disable_cache"] == false
+        expect(SgtnClient::CacheUtil.get_cache("test_4.8.1_NEW_zh-Hans")[1]["default"]["new_hello"]).to eq 'New Hello'
+      end
       # get from cache in 2nd time
       expect(SgtnClient::Translation.getString("NEW", "new_hello", "zh-Hans")).to eq 'New Hello'
+
+    end
+
+    it "NonExistingComponent" do
+      expect(SgtnClient::Translation.getString("NonExisting", "new_hello", "zh-Hans")).to eq nil
+      emptyObj = {}
+      expect(SgtnClient::Translation.getStrings("NonExisting", "zh-Hans")).to eq emptyObj
     end
 
     it "NonExistingLanuage" do

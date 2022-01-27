@@ -10,8 +10,8 @@ module SgtnClient
   class CacheUtil
 
       def self.get_cache(cache_key)
-        items = SgtnClient::Core::Cache.get(cache_key)
-        return items
+        expired, items = SgtnClient::Core::Cache.get(cache_key)
+        return expired, items
       end
 
       def self.clear_cache()

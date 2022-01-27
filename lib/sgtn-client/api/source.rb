@@ -7,7 +7,7 @@ module SgtnClient
 
       def self.getSource(component, key, locale)
         cache_key = SgtnClient::CacheUtil.get_cachekey(component, locale)
-        items = SgtnClient::CacheUtil.get_cache(cache_key)
+        expired, items = SgtnClient::CacheUtil.get_cache(cache_key)
         if items.nil?
           items = getBundle(component, locale)
           SgtnClient.logger.debug "Putting sources items into cache with key: " + cache_key
@@ -15,7 +15,7 @@ module SgtnClient
         else
           SgtnClient.logger.debug "Getting sources from cache with key: " + cache_key
         end
-        s = items[locale][key]
+        s = items.nil?? nil : items[locale][key]
         if items.nil? || s.nil?
           SgtnClient.logger.debug "Source not found, return key: " + key
           #return key
@@ -27,8 +27,8 @@ module SgtnClient
 
       def self.getSources(component, locale)
         cache_key = SgtnClient::CacheUtil.get_cachekey(component, locale)
-        items = SgtnClient::CacheUtil.get_cache(cache_key)
-        if items.nil?
+        expired, items = SgtnClient::CacheUtil.get_cache(cache_key)
+        if items.nil? || expired
           items = getBundle(component, locale)
           SgtnClient.logger.debug "Putting sources items into cache with key: " + cache_key
           SgtnClient::CacheUtil.write_cache(cache_key, items)
