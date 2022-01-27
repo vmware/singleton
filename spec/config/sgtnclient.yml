@@ -34,9 +34,9 @@ test: &default
   cache_expiry_period: 10
 
   # # disable cache, it's optional setting
-  ##disable_cache: true
+  disable_cache: true
   
-  #default_language: en
+  default_language: en
 
 development:
   <<: *default

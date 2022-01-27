@@ -70,8 +70,8 @@ module SgtnClient
       def self.get_cs(component, locale)
         flocale = SgtnClient::LocaleUtil.fallback(locale)
         cache_key = SgtnClient::CacheUtil.get_cachekey(component, flocale)
-        items = SgtnClient::CacheUtil.get_cache(cache_key)
-        if items.nil?
+        expired, items = SgtnClient::CacheUtil.get_cache(cache_key)
+        if items.nil? || expired
           items = load(component, flocale)
           if items.nil?
             items = SgtnClient::Source.getSources(component, SgtnClient::Config.configurations.default)

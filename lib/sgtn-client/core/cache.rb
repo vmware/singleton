@@ -12,6 +12,7 @@ module SgtnClient::Core
                     @@data = Hash.new
                     SgtnClient.logger.debug "Cache is enabled!"
                 else
+                    @@data = nil
                     SgtnClient.logger.debug "Cache is disabled!"
                 end
             end
@@ -26,11 +27,11 @@ module SgtnClient::Core
 
             def self.get(key)
                 if @@data == nil
-                    return nil
+                    return nil, nil
                 end
                 SgtnClient.logger.debug "Get cache for key: " + key
-                invalidate
-                @@data[key][:value] if has(key)
+                invalidate(key)
+                #@@data[key][:value] if has(key)
             end
 
             def self.has(key)
@@ -73,18 +74,27 @@ module SgtnClient::Core
                 end
             end
 
-            def self.invalidate
+            def self.invalidate(key)
                 @mutex.synchronize do
                     if @@data == nil
-                        return nil
+                        return nil, nil
                     end
                     SgtnClient.logger.debug "Invalidating expired cache......"
                     now = Time.now
-                    @@data.each {
-                        |k, v|
-                            SgtnClient.logger.debug "Checking cache: key=#{k}, expiredtime=#{v[:expiry]}, now=#{now}, expired=#{(v[:expiry] < now)}"
-                        }
-                        @@data.delete_if {|k, v| v[:expiry] < now}
+                    if has(key)
+                        v = @@data[key]
+                        expired = false
+                        SgtnClient.logger.debug "Checking cache: key=#{key}, expiredtime=#{v[:expiry]}, now=#{now}, expired=#{(v[:expiry] < now)}"
+                        if v[:expiry] < now
+                            SgtnClient.logger.debug "Before deleting the cache: data=#{@@data}"
+                            @@data.delete(key)
+                            SgtnClient.logger.debug "After deleting the cache: data=#{@@data}"
+                            expired = true
+                        end
+                        return expired, v[:value]
+                    else
+                        return nil, nil
+                    end
                 end
             end
         end
