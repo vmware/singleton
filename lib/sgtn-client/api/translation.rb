@@ -47,10 +47,14 @@ module SgtnClient
         if items.nil? || items["messages"] == nil
           items = {}
           s = SgtnClient::Source.getSources(component, default)
-          default_component, value = s.first
-          items["component"] = component
-          items["messages"] = value
-          items["locale"] = 'source'
+          if s.nil?
+            SgtnClient.logger.error "Can't find the component " + component + "in source path!"
+          else
+            default_component, value = s.first
+            items["component"] = component
+            items["messages"] = value
+            items["locale"] = 'source'
+          end
         end
         return items
        end

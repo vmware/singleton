@@ -15,7 +15,7 @@ module SgtnClient
         else
           SgtnClient.logger.debug "Getting sources from cache with key: " + cache_key
         end
-        s = items[locale][key]
+        s = items.nil?? nil : items[locale][key]
         if items.nil? || s.nil?
           SgtnClient.logger.debug "Source not found, return key: " + key
           #return key
