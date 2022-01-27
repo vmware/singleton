@@ -31,7 +31,6 @@ module SgtnClient::Core
                 end
                 SgtnClient.logger.debug "Get cache for key: " + key
                 invalidate(key)
-                #@@data[key][:value] if has(key)
             end
 
             def self.has(key)
