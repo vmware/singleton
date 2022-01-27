@@ -30,7 +30,9 @@ describe SgtnClient do
       end
       # get from cache in 2nd time
       expect(SgtnClient::Translation.getString("NEW", "new_hello", "zh-Hans")).to eq 'New Hello'
-
+      jsonObj =  SgtnClient::Translation.getStrings("NEW", "zh-Hans")
+      expect(jsonObj["component"]).to eq 'NEW'
+      expect(jsonObj["locale"]).to eq 'source'
     end
 
     it "NonExistingComponent" do
