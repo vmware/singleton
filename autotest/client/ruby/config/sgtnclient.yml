@@ -109,3 +109,54 @@ testdisablecache:
 testdebug:
   <<: *default
   source_bundle: ./config/locales/default2
+
+testdisablecachetrue:
+  <<: *default
+  disable_cache: true
+
+testsourcelocale1:
+  <<: *default
+  default_language: en
+
+
+testsourcelocale2:
+  <<: *default
+  default_language: zh-Hans
+
+testsourcelocale3:
+  <<: *default
+  default_language: da
+
+testsourcelocale4:
+  <<: *default
+  default_language: abcd
+
+testsourcelocale5:
+  <<: *default
+  default_language: fr
+
+testsourcelocaleoffline1:
+  <<: *default
+  bundle_mode: offline
+  default_language: en
+
+
+testsourcelocaleoffline2:
+  <<: *default
+  bundle_mode: offline
+  default_language: zh-Hans
+
+testsourcelocaleoffline3:
+  <<: *default
+  bundle_mode: offline
+  default_language: da
+
+testsourcelocaleoffline4:
+  <<: *default
+  bundle_mode: offline
+  default_language: abcd
+
+testsourcelocaleoffline5:
+  <<: *default
+  bundle_mode: offline
+  default_language: fr

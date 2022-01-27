@@ -16,8 +16,18 @@ describe "Translation test" do
             RequestStore.store[:locale] = 'en-US'
             RequestStore.store[:component] = 'about'
             #SgtnClient::Source.loadBundles("de")
-            expect(SgtnClient::T.s("about.message")).to eq("Your application description page. offline")
+            expect(SgtnClient::T.s("about.message")).to eq("fall back about")
         end
+
+        # it "Get a string's translation and locale is en-US and key not exist in default" do
+        #     RequestStore.store[:locale] = 'en-US'
+        #     RequestStore.store[:component] = 'about'
+        #     #SgtnClient::Source.loadBundles("de")
+        #     expect(SgtnClient::T.s("about.description")).to eq("fall back about")
+        # end
+
+        # about.description
+        # add test default_language
 
         it "Get a string's translation and locale is zh-Hans" do
             RequestStore.store[:locale] = 'zh-Hans'
@@ -163,7 +173,7 @@ describe "Translation test" do
         it "Get a component's translations en-US" do
             RequestStore.store[:locale] = "en-US"
             RequestStore.store[:component] = 'about'
-            expect(SgtnClient::T.c()["messages"]["about.description"]).to eq("Use this area to provide additional information")
+            expect(SgtnClient::T.c()["messages"]["about.description"]).to eq(nil)
         end
 
         it "Get a component's translations zh-CN" do
