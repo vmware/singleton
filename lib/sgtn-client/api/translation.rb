@@ -15,6 +15,9 @@ module SgtnClient
         str = getTranslation(component, key, locale)
         if str.nil?
           str = SgtnClient::Source.getSource(component, key, SgtnClient::Config.configurations.default)
+          if str.nil?
+            SgtnClient.logger.error "Can't find the key " + key + " in source path!"
+          end
         end
         str
       end
@@ -23,6 +26,10 @@ module SgtnClient
         str = getTranslation(component, key, locale)
         if str.nil?
           str = SgtnClient::Source.getSource(component, key, SgtnClient::Config.configurations.default)
+          if str.nil?
+            SgtnClient.logger.error "Can't find the key " + key + " in source path!"
+            return nil
+          end
           str.to_plural_s(:en, plural_args)
         else
           str.to_plural_s(locale, plural_args)
@@ -31,6 +38,9 @@ module SgtnClient
 
       def self.getString_f(component, key, args, locale, *optionals)
          s = getString(component, key, locale, *optionals)
+         if s.nil?
+          return nil
+         end
          if args.is_a?(Hash)
           args.each do |source, arg|
             s.gsub! "{#{source}}", arg
@@ -48,7 +58,7 @@ module SgtnClient
           items = {}
           s = SgtnClient::Source.getSources(component, default)
           if s.nil?
-            SgtnClient.logger.error "Can't find the component " + component + "in source path!"
+            SgtnClient.logger.error "Can't find the component " + component + " in source path!"
           else
             default_component, value = s.first
             items["component"] = component
