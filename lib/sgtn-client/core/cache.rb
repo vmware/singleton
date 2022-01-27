@@ -37,13 +37,13 @@ module SgtnClient::Core
                 if @@data == nil
                     return nil
                 end
-                SgtnClient.logger.debug "Has cache for key: " + key
+                SgtnClient.logger.debug "Check if the cache has key: #{(@@data.has_key? key)}"
                 @@data.has_key? key
             end
 
             def self.put(key, value, ttl=nil)
                 @mutex.synchronize do
-                    if @@data == nil
+                    if @@data == nil || value == nil
                         return nil
                     end
                     ttl ||= @@opts[:ttl]

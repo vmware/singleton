@@ -19,6 +19,10 @@ module SgtnClient
       end
 
       def self.write_cache(cache_key, items)
+        if items.nil?
+          SgtnClient.logger.debug "write cache with key #{cache_key}, itmes #{items}"
+          return nil
+        end
         env = SgtnClient::Config.default_environment
         cache_expiry_period = SgtnClient::Config.configurations[env]["cache_expiry_period"]
         # expired after 24 hours
