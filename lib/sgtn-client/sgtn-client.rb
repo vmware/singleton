@@ -38,6 +38,7 @@ module SgtnClient
 
                   # create log file
                   file = './sgtnclient_d.log'
+                  SgtnClient.logger.debug "[Client][load]create log file=#{file}"
                   if args[2] != nil
                         file = args[2]
                   end
@@ -48,7 +49,7 @@ module SgtnClient
                   # Set log level for sandbox mode
                   env = SgtnClient::Config.default_environment
                   mode = SgtnClient::Config.configurations[env]["mode"]
-                  SgtnClient.logger.info "Current mode is: " + mode
+                  SgtnClient.logger.debug "[Client][load]set log level, mode=#{mode}"
                   if mode == 'sandbox'
                         SgtnClient.logger.level = Logger::DEBUG
                   else 
@@ -57,6 +58,7 @@ module SgtnClient
 
                   # initialize cache
                   disable_cache = SgtnClient::Config.configurations[env]["disable_cache"]
+                  SgtnClient.logger.debug "[Client][load]cache initialize, disable_cache=#{disable_cache}"
                   if disable_cache != nil
                         SgtnClient::Core::Cache.initialize(disable_cache)
                   else

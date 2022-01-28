@@ -11,8 +11,8 @@ describe SgtnClient do
       d = DateTime.new(2007,11,19,8,37,48,"-06:00")
       expect(d.l_full_s(:es)).to eq 'lunes, 19 de noviembre de 2007, 14:37:48 (tiempo universal coordinado)'
       expect(d.l_long_s(:es)).to eq '19 de noviembre de 2007, 14:37:48 UTC'
-      expect(d.l_medium_s(:es)).to eq '19 nov 2007 14:37:48'
-      expect(d.l_short_s(:es)).to eq '19/11/07 14:37'
+      expect(d.l_medium_s(:es)).to eq '19 nov 2007, 14:37:48'
+      expect(d.l_short_s(:es)).to eq '19/11/07, 14:37'
     end
 
     it "Date" do
@@ -44,8 +44,8 @@ describe SgtnClient do
 
       expect(d.l_full_s(:es, 'America/Los_Angeles')).to eq 'lunes, 19 de noviembre de 2007, 6:37:48 (hora estándar del Pacífico)'
       expect(d.l_long_s(:es, 'America/Los_Angeles')).to eq '19 de noviembre de 2007, 6:37:48 GMT-8'
-      expect(d.l_medium_s(:es, 'America/Los_Angeles')).to eq '19 nov 2007 6:37:48'
-      expect(d.l_short_s(:es, 'America/Los_Angeles')).to eq '19/11/07 6:37'
+      expect(d.l_medium_s(:es, 'America/Los_Angeles')).to eq '19 nov 2007, 6:37:48'
+      expect(d.l_short_s(:es, 'America/Los_Angeles')).to eq '19/11/07, 6:37'
     
       expect(d.l_full_s(:es, 'America/Los_Angeles', :long_gmt)).to eq 'GMT-08:00'
 
