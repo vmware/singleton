@@ -12,22 +12,24 @@ module SgtnClient
   class Translation
 
       def self.getString(component, key, locale)
+        SgtnClient.logger.debug "[Translation][getString_p]component=#{component}, key=#{key}, locale=#{locale}"
         str = getTranslation(component, key, locale)
         if str.nil?
           str = SgtnClient::Source.getSource(component, key, SgtnClient::Config.configurations.default)
           if str.nil?
-            SgtnClient.logger.error "Can't find the key '" + key + "' in source path!"
+            SgtnClient.logger.error "[Translation]can't find the key '" + key + "' in source path!"
           end
         end
         str
       end
 
       def self.getString_p(component, key, plural_args, locale)
+        SgtnClient.logger.debug "[Translation][getString_p]component=#{component}, key=#{key}, locale=#{locale}"
         str = getTranslation(component, key, locale)
         if str.nil?
           str = SgtnClient::Source.getSource(component, key, SgtnClient::Config.configurations.default)
           if str.nil?
-            SgtnClient.logger.error "Can't find the key '" + key + "' in source path!"
+            SgtnClient.logger.error "[Translation]can't find the key '" + key + "' in source path!"
             return nil
           end
           str.to_plural_s(:en, plural_args)
@@ -37,6 +39,7 @@ module SgtnClient
       end
 
       def self.getString_f(component, key, args, locale, *optionals)
+         SgtnClient.logger.debug "[Translation][getString_f]component=#{component}, key=#{key}, locale=#{locale}"
          s = getString(component, key, locale, *optionals)
          if s.nil?
           return nil
@@ -52,13 +55,14 @@ module SgtnClient
       end
 
       def self.getStrings(component, locale)
+        SgtnClient.logger.debug "[Translation][getStrings]component=#{component}, locale=#{locale}"
         items = get_cs(component, locale)
         default = SgtnClient::Config.configurations.default
         if items.nil? || items["messages"] == nil
           items = {}
           s = SgtnClient::Source.getSources(component, default)
           if s.nil?
-            SgtnClient.logger.error "Can't find the component '" + component + "' in source path!"
+            SgtnClient.logger.error "[Translation]can't find the component '" + component + "' in source path!"
           else
             default_component, value = s.first
             items["component"] = component
@@ -84,6 +88,7 @@ module SgtnClient
       def self.get_cs(component, locale)
         flocale = SgtnClient::LocaleUtil.fallback(locale)
         cache_key = SgtnClient::CacheUtil.get_cachekey(component, flocale)
+        SgtnClient.logger.debug "[Translation][get_cs]cache_key=#{cache_key}"
         expired, items = SgtnClient::CacheUtil.get_cache(cache_key)
         if items.nil? || expired
           items = load(component, flocale)
@@ -94,7 +99,7 @@ module SgtnClient
             SgtnClient::CacheUtil.write_cache(cache_key, items)
           end
         else
-          SgtnClient.logger.debug "Getting translations from cache with key: " + cache_key
+          SgtnClient.logger.debug "[Translation]get translations from cache with key: " + cache_key
         end
 
         return items
@@ -103,6 +108,7 @@ module SgtnClient
       def self.load(component, locale)
         env = SgtnClient::Config.default_environment
         mode = SgtnClient::Config.configurations[env]["bundle_mode"]
+        SgtnClient.logger.debug "[Translation][load]mode=#{mode}"
         if mode == 'offline'
           return load_o(component, locale)
         else
@@ -116,7 +122,6 @@ module SgtnClient
         version = SgtnClient::Config.configurations[env]["version"].to_s
         translation_bundle = SgtnClient::Config.configurations[env]["translation_bundle"]
         bundlepath = translation_bundle + "/" + product_name + "/" + version + "/" + component + "/messages_" + locale + ".json"
-        SgtnClient.logger.debug "Getting translations from offline bundle: " + bundlepath
         SgtnClient::FileUtil.read_json(bundlepath)
       end
 
@@ -124,10 +129,8 @@ module SgtnClient
         env = SgtnClient::Config.default_environment
         product_name = SgtnClient::Config.configurations[env]["product_name"]
         vip_server = SgtnClient::Config.configurations[env]["vip_server"]
-        SgtnClient.logger.debug "Getting translations from server: " + vip_server
         version = SgtnClient::Config.configurations[env]["version"].to_s
         url = vip_server + "/i18n/api/v2/translation/products/" + product_name + "/versions/" + version + "/locales/" + locale + "/components/" + component+ "?checkTranslationStatus=false&machineTranslation=false&pseudo=false"
-        SgtnClient.logger.debug url
         begin
           obj = SgtnClient::Core::Request.get(url)
         rescue => exception

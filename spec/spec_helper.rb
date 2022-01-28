@@ -21,9 +21,6 @@ SgtnClient.load("./spec/config/sgtnclient.yml", "test", './sgtnclient.log')
 
 Dir[File.expand_path("../support/**/*.rb", __FILE__)].each {|f| require f }
 
-# Set logger for http
-http_log = File.open(File.expand_path('../log/http.log', __FILE__), "w")
-
 RSpec.configure do |config|
   config.filter_run_excluding :integration => true
   config.filter_run_excluding :disabled => true

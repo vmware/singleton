@@ -7,13 +7,12 @@ module SgtnClient::Core
             def self.initialize(disabled=false, opts={})
                 @@opts = opts
                 @mutex = Mutex.new
-                SgtnClient.logger.debug "Initialize cache......"
                 if disabled == false
                     @@data = Hash.new
-                    SgtnClient.logger.debug "Cache is enabled!"
+                    SgtnClient.logger.debug "[Cache][initialize]cache is enabled!"
                 else
                     @@data = nil
-                    SgtnClient.logger.debug "Cache is disabled!"
+                    SgtnClient.logger.debug "[Cache][initialize]cache is disabled!"
                 end
             end
 
@@ -21,7 +20,7 @@ module SgtnClient::Core
                 if @@data == nil
                     return nil
                 end
-                SgtnClient.logger.debug "Get cache keys"
+                SgtnClient.logger.debug "[Cache][keys]get cache keys"
                 @@data.keys
             end
 
@@ -29,7 +28,7 @@ module SgtnClient::Core
                 if @@data == nil
                     return nil, nil
                 end
-                SgtnClient.logger.debug "Get cache for key: " + key
+                SgtnClient.logger.debug "[Cache][get]get cache for key: " + key
                 invalidate(key)
             end
 
@@ -37,7 +36,7 @@ module SgtnClient::Core
                 if @@data == nil
                     return nil
                 end
-                SgtnClient.logger.debug "Check if the cache has key: #{(@@data.has_key? key)}"
+                SgtnClient.logger.debug "[Cache][has]check if the cache has key: #{(@@data.has_key? key)}"
                 @@data.has_key? key
             end
 
@@ -48,7 +47,7 @@ module SgtnClient::Core
                     end
                     ttl ||= @@opts[:ttl]
                     # hours from new
-                    SgtnClient.logger.debug "Put cache for key '" + key + "' with expired time at'" + (Time.now + ttl*60).to_s
+                    SgtnClient.logger.debug "[Cache][put]put cache for key '" + key + "' with expired time at'" + (Time.now + ttl*60).to_s
                     @@data[key] = Entry.new(Time.now + ttl*60, value)
                 end
             end
@@ -58,7 +57,7 @@ module SgtnClient::Core
                     if @@data == nil
                         return nil
                     end
-                    SgtnClient.logger.debug "Delete cache for key: " + key
+                    SgtnClient.logger.debug "[Cache][delete]delete cache for key: " + key
                     @@data.delete key
                 end
             end
@@ -68,7 +67,7 @@ module SgtnClient::Core
                     if @@data == nil
                         return nil
                     end
-                    SgtnClient.logger.debug "Clear cache!"
+                    SgtnClient.logger.debug "[Cache][clear]clear cache!"
                     @@data = Hash.new
                 end
             end
@@ -78,16 +77,16 @@ module SgtnClient::Core
                     if @@data == nil
                         return nil, nil
                     end
-                    SgtnClient.logger.debug "Invalidating expired cache......"
+                    SgtnClient.logger.debug "[Cache][invalidate]invalidate expired cache......"
                     now = Time.now
                     if has(key)
                         v = @@data[key]
                         expired = false
-                        SgtnClient.logger.debug "Checking cache: key=#{key}, expiredtime=#{v[:expiry]}, now=#{now}, expired=#{(v[:expiry] < now)}"
+                        SgtnClient.logger.debug "[Cache][invalidate]check cache: key=#{key}, expiredtime=#{v[:expiry]}, now=#{now}, expired=#{(v[:expiry] < now)}"
                         if v[:expiry] < now
-                            SgtnClient.logger.debug "Before deleting the cache: data=#{@@data}"
+                            SgtnClient.logger.debug "[Cache][invalidate]before deleting the cache: data=#{@@data}"
                             @@data.delete(key)
-                            SgtnClient.logger.debug "After deleting the cache: data=#{@@data}"
+                            SgtnClient.logger.debug "[Cache][invalidate]after deleting the cache: data=#{@@data}"
                             expired = true
                         end
                         return expired, v[:value]

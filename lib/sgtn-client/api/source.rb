@@ -6,18 +6,18 @@ module SgtnClient
   class Source
 
       def self.getSource(component, key, locale)
+        SgtnClient.logger.debug "[Source][getSource]component=#{component}, key=#{key}, locale=#{locale}"
         cache_key = SgtnClient::CacheUtil.get_cachekey(component, locale)
         expired, items = SgtnClient::CacheUtil.get_cache(cache_key)
         if items.nil?
-          items = getBundle(component, locale)
-          SgtnClient.logger.debug "Putting sources items into cache with key: " + cache_key
+          items = getBundle(component, locale)    
           SgtnClient::CacheUtil.write_cache(cache_key, items)
         else
-          SgtnClient.logger.debug "Getting sources from cache with key: " + cache_key
+          SgtnClient.logger.debug "[Source][getSource]getting sources from cache with key: " + cache_key
         end
         s = items.nil?? nil : items[locale][key]
         if items.nil? || s.nil?
-          SgtnClient.logger.debug "Source not found, return key: " + key
+          SgtnClient.logger.debug "[Source][getSource]source not found, return key: " + key
           #return key
           return nil
         else
@@ -26,23 +26,23 @@ module SgtnClient
       end
 
       def self.getSources(component, locale)
+        SgtnClient.logger.debug "[Source][getSources]component=#{component}, locale=#{locale}"
         cache_key = SgtnClient::CacheUtil.get_cachekey(component, locale)
         expired, items = SgtnClient::CacheUtil.get_cache(cache_key)
         if items.nil? || expired
           items = getBundle(component, locale)
-          SgtnClient.logger.debug "Putting sources items into cache with key: " + cache_key
           SgtnClient::CacheUtil.write_cache(cache_key, items)
         else
-          SgtnClient.logger.debug "Getting sources from cache with key: " + cache_key
+          SgtnClient.logger.debug "[Source][getSources]getting sources from cache with key: " + cache_key
         end
         return items
       end
 
       def self.loadBundles(locale)
+        SgtnClient.logger.debug "[Source][loadBundles]locale=#{locale}"
         env = SgtnClient::Config.default_environment
         SgtnClient::Config.configurations.default = locale
         source_bundle = SgtnClient::Config.configurations[env]["source_bundle"]
-        SgtnClient.logger.debug "Loading [" + locale + "] source bundles from path: " + source_bundle
         Dir.foreach(source_bundle) do |component|
           next if component == '.' || component == '..'
           yamlfile = File.join(source_bundle, component + "/" + locale + ".yml")
@@ -54,10 +54,10 @@ module SgtnClient
 
       private
       def self.getBundle(component, locale)
+        SgtnClient.logger.debug "[Source][getBundle]component=#{component}, locale=#{locale}"
         env = SgtnClient::Config.default_environment
         source_bundle = SgtnClient::Config.configurations[env]["source_bundle"]
         bundlepath = source_bundle  + "/" + component + "/" + locale + ".yml"
-        SgtnClient.logger.debug "Getting source from  bundle: " + bundlepath
         begin
           bundle = SgtnClient::FileUtil.read_yml(bundlepath)
         rescue => exception
