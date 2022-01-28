@@ -19,6 +19,20 @@ describe "Translation test" do
             expect(SgtnClient::T.s("about.message")).to eq("fall back about")
         end
 
+        it "Get a string's translation and locale is en-UK" do
+            RequestStore.store[:locale] = 'en-Uk'
+            RequestStore.store[:component] = 'about'
+            #SgtnClient::Source.loadBundles("de")
+            expect(SgtnClient::T.s("about.message")).to eq("fall back about")
+        end
+
+        it "Get a string's translation and locale is fr-FR" do
+            RequestStore.store[:locale] = 'fr-FR'
+            RequestStore.store[:component] = 'about'
+            #SgtnClient::Source.loadBundles("de")
+            expect(SgtnClient::T.s("about.message")).to eq("test fr key")
+        end
+
         it "Get a string's translation and locale is zh-Hans" do
             RequestStore.store[:locale] = 'zh-Hans'
             RequestStore.store[:component] = 'about'

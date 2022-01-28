@@ -5,142 +5,142 @@ require 'singleton-ruby'
 include SgtnClient
 describe SgtnClient do
 
-    context "string the cache expiry period is 1 minute" do
-        before :each do
-            SgtnClient.load("./config/sgtnclient.yml", "production")
-            SgtnClient::Source.loadBundles("default")
-        end
+    # context "string the cache expiry period is 1 minute" do
+    #     before :each do
+    #         SgtnClient.load("./config/sgtnclient.yml", "production")
+    #         SgtnClient::Source.loadBundles("default")
+    #     end
 
-        it "update value of key" do
-            system("E:\\E2\\ruby_client\\bat_script\\RevertString_de.bat")
-            expect(SgtnClient::Translation.getString("about", "about.message", "de")).to eq("test__de_value")
-            puts SgtnClient::Translation.getStrings("about", "de")
-            system("E:\\E2\\ruby_client\\bat_script\\ModifyString_de.bat")
-            sleep 55
-            expect(SgtnClient::Translation.getString("about", "about.message", "de")).to eq("test__de_value")
-            puts SgtnClient::Translation.getStrings("about", "de")
-            sleep 10
-            expect(SgtnClient::Translation.getString("about", "about.message", "de")).to eq("test__de_value_change")
-            #puts SgtnClient::Translation.getStrings("about", "de")
-        end
+    #     it "update value of key" do
+    #         system("E:\\E2\\ruby_client\\bat_script\\RevertString_de.bat")
+    #         expect(SgtnClient::Translation.getString("about", "about.message", "de")).to eq("test__de_value")
+    #         puts SgtnClient::Translation.getStrings("about", "de")
+    #         system("E:\\E2\\ruby_client\\bat_script\\ModifyString_de.bat")
+    #         sleep 55
+    #         expect(SgtnClient::Translation.getString("about", "about.message", "de")).to eq("test__de_value")
+    #         puts SgtnClient::Translation.getStrings("about", "de")
+    #         sleep 10
+    #         expect(SgtnClient::Translation.getString("about", "about.message", "de")).to eq("test__de_value_change")
+    #         #puts SgtnClient::Translation.getStrings("about", "de")
+    #     end
 
-        ### Because keys cannot be removed through the API, they need to be changed manually if repeated testing is required
-        it "add new key" do
-            expect(SgtnClient::Translation.getString("about", "about.addkey", "de")).to eq(nil)
-            expect(SgtnClient::Translation.getString("about", "about.addkey", "en")).to eq(nil)
-            system("E:\\E2\\ruby_client\\bat_script\\addkey_en.bat")
-            system("E:\\E2\\ruby_client\\bat_script\\addkey_de.bat")
-            sleep 55
-            expect(SgtnClient::Translation.getString("about", "about.addkey", "de")).to eq(nil)
-            expect(SgtnClient::Translation.getString("about", "about.addkey", "en")).to eq(nil)
-            sleep 10
-            expect(SgtnClient::Translation.getString("about", "about.addkey", "de")).to eq("add de value")
-            expect(SgtnClient::Translation.getString("about", "about.addkey", "en")).to eq("add en value")
-        end
+    #     ### Because keys cannot be removed through the API, they need to be changed manually if repeated testing is required
+    #     it "add new key" do
+    #         expect(SgtnClient::Translation.getString("about", "about.addkey", "de")).to eq(nil)
+    #         expect(SgtnClient::Translation.getString("about", "about.addkey", "en")).to eq(nil)
+    #         system("E:\\E2\\ruby_client\\bat_script\\addkey_en.bat")
+    #         system("E:\\E2\\ruby_client\\bat_script\\addkey_de.bat")
+    #         sleep 55
+    #         expect(SgtnClient::Translation.getString("about", "about.addkey", "de")).to eq(nil)
+    #         expect(SgtnClient::Translation.getString("about", "about.addkey", "en")).to eq(nil)
+    #         sleep 10
+    #         expect(SgtnClient::Translation.getString("about", "about.addkey", "de")).to eq("add de value")
+    #         expect(SgtnClient::Translation.getString("about", "about.addkey", "en")).to eq("add en value")
+    #     end
 
-        ### Because locale file cannot be removed through the API, they need to be changed manually if repeated testing is required
-        ##The new default expiry time is 60min 
-        it "string add new locale" do
-            expect(SgtnClient::Translation.getString("about", "about.title", "pl")).to eq(nil)
-            expect(SgtnClient::Translation.getString("about", "about.title", "en")).to eq(nil)
-            system("E:\\E2\\ruby_client\\bat_script\\ModifyString_pl.bat")
-            sleep 3590
-            #puts SgtnClient::Translation.getString("about", "about.title", "pl")
-            expect(SgtnClient::Translation.getString("about", "about.title", "pl")).to eq("test_pl_value_change")
-            expect(SgtnClient::Translation.getString("about", "about.title", "en")).to eq("About")
-            sleep 20
-            #puts SgtnClient::Translation.getString("about", "about.title", "pl")
-            expect(SgtnClient::Translation.getString("about", "about.title", "pl")).to eq("test_pl_value_change")
-            expect(SgtnClient::Translation.getString("about", "about.title", "en")).to eq("About")
-        end
+    #     ### Because locale file cannot be removed through the API, they need to be changed manually if repeated testing is required
+    #     ##The new default expiry time is 60min 
+    #     # it "string add new locale" do
+    #     #     expect(SgtnClient::Translation.getString("about", "about.title", "pl")).to eq(nil)
+    #     #     expect(SgtnClient::Translation.getString("about", "about.title", "en")).to eq(nil)
+    #     #     system("E:\\E2\\ruby_client\\bat_script\\ModifyString_pl.bat")
+    #     #     sleep 3590
+    #     #     #puts SgtnClient::Translation.getString("about", "about.title", "pl")
+    #     #     expect(SgtnClient::Translation.getString("about", "about.title", "pl")).to eq("test_pl_value_change")
+    #     #     expect(SgtnClient::Translation.getString("about", "about.title", "en")).to eq("About")
+    #     #     sleep 20
+    #     #     #puts SgtnClient::Translation.getString("about", "about.title", "pl")
+    #     #     expect(SgtnClient::Translation.getString("about", "about.title", "pl")).to eq("test_pl_value_change")
+    #     #     expect(SgtnClient::Translation.getString("about", "about.title", "en")).to eq("About")
+    #     # end
         
-        ### Because component cannot be removed through the API, they need to be changed manually if repeated testing is required
-        it "add new component" do
-            # puts SgtnClient::Translation.getString("addcomponent", "addabout.message", "en")
-            # puts SgtnClient::Translation.getString("addcomponent", "addabout.message", "fr")
-            begin
-                expect(SgtnClient::Translation.getString("addcomponent", "addabout.message", "en")).to eq("addabout.message")
-                expect(SgtnClient::Translation.getString("addcomponent", "addabout.message", "fr")).to eq("addabout.message")
-              rescue => ex
-                SgtnClient.logger.error ex.message
-                SgtnClient.logger.error ex.backtrace
-                translation = nil
-            end
-            system("E:\\E2\\ruby_client\\bat_script\\Addcomponenten.bat")
-            system("E:\\E2\\ruby_client\\bat_script\\Addcomponent.bat")
-            sleep 5
-            expect(SgtnClient::Translation.getString("addcomponent", "addabout.message", "en")).to eq("test_en_change123")
-            expect(SgtnClient::Translation.getString("addcomponent", "addabout.message", "fr")).to eq("test_value_change123")
-        end
-    end
+    #     ### Because component cannot be removed through the API, they need to be changed manually if repeated testing is required
+    #     it "string add new component" do
+    #         # puts SgtnClient::Translation.getString("addcomponent", "addabout.message", "en")
+    #         # puts SgtnClient::Translation.getString("addcomponent", "addabout.message", "fr")
+    #         begin
+    #             expect(SgtnClient::Translation.getString("addcomponent", "addabout.message", "en")).to eq(nil)
+    #             expect(SgtnClient::Translation.getString("addcomponent", "addabout.message", "fr")).to eq(nil)
+    #           rescue => ex
+    #             SgtnClient.logger.error ex.message
+    #             SgtnClient.logger.error ex.backtrace
+    #             translation = nil
+    #         end
+    #         system("E:\\E2\\ruby_client\\bat_script\\Addcomponenten.bat")
+    #         system("E:\\E2\\ruby_client\\bat_script\\Addcomponent.bat")
+    #         sleep 5
+    #         #expect(SgtnClient::Translation.getString("addcomponent", "addabout.message", "en")).to eq("test_en_change123")
+    #         expect(SgtnClient::Translation.getString("addcomponent", "addabout.message", "fr")).to eq("test_value_change123")
+    #     end
+    # end
 
-    context "string_f the cache expiry period is 1 minute" do
-        before :each do
-            SgtnClient.load("./config/sgtnclient.yml", "production")
-            SgtnClient::Source.loadBundles("default")
-        end
+    # context "string_f the cache expiry period is 1 minute" do
+    #     before :each do
+    #         SgtnClient.load("./config/sgtnclient.yml", "production")
+    #         SgtnClient::Source.loadBundles("default")
+    #     end
 
-        it "string_f: update value of key" do
-            system("E:\\E2\\ruby_client\\bat_script\\RevertString_f_de.bat")
-            expect(SgtnClient::Translation.getString_f("about", "about.welcome", ["a1","a2"],"de")).to eq("a2, welcome login a1!")
-            #puts SgtnClient::Translation.getString_f("about", "de")
-            system("E:\\E2\\ruby_client\\bat_script\\ModifyString_f_de.bat")
-            sleep 55
-            expect(SgtnClient::Translation.getString_f("about", "about.welcome", ["a1","a2"],"de")).to eq("a2, welcome login a1!")
-            #puts SgtnClient::Translation.getStrings("about", "de")
-            sleep 10
-            expect(SgtnClient::Translation.getString_f("about", "about.welcome", ["a1","a2"],"de")).to eq("a2, welcome change login a1!")
-            #puts SgtnClient::Translation.getStrings("about", "de")
-        end
+    #     it "string_f: update value of key" do
+    #         system("E:\\E2\\ruby_client\\bat_script\\RevertString_f_de.bat")
+    #         expect(SgtnClient::Translation.getString_f("about", "about.welcome", ["a1","a2"],"de")).to eq("a2, welcome login a1!")
+    #         #puts SgtnClient::Translation.getString_f("about", "de")
+    #         system("E:\\E2\\ruby_client\\bat_script\\ModifyString_f_de.bat")
+    #         sleep 55
+    #         expect(SgtnClient::Translation.getString_f("about", "about.welcome", ["a1","a2"],"de")).to eq("a2, welcome login a1!")
+    #         #puts SgtnClient::Translation.getStrings("about", "de")
+    #         sleep 10
+    #         expect(SgtnClient::Translation.getString_f("about", "about.welcome", ["a1","a2"],"de")).to eq("a2, welcome change login a1!")
+    #         #puts SgtnClient::Translation.getStrings("about", "de")
+    #     end
 
-        ### Because keys cannot be removed through the API, they need to be changed manually if repeated testing is required
-        it "add new key" do
-            expect(SgtnClient::Translation.getString("about", "about.addkey1", "de")).to eq(nil)
-            expect(SgtnClient::Translation.getString("about", "about.addkey1", "en")).to eq(nil)
-            # expect(SgtnClient::Translation.getString_f("about", "about.addkey1", ["a1","a2"],"de")).to eq(nil)
-            # expect(SgtnClient::Translation.getString_f("about", "about.addkey1",["a1","a2"], "en")).to eq(nil)
-            system("E:\\E2\\ruby_client\\bat_script\\addkey_f_en.bat")
-            system("E:\\E2\\ruby_client\\bat_script\\addkey_f_de.bat")
-            sleep 55
-            # expect(SgtnClient::Translation.getString_f("about", "about.addkey1", ["a1","a2"],"de")).to eq(nil)
-            # expect(SgtnClient::Translation.getString_f("about", "about.addkey1", ["a1","a2"],"en")).to eq(nil)
-            sleep 10
-            expect(SgtnClient::Translation.getString_f("about", "about.addkey1", ["a1","a2"],"de")).to eq("add de value a2")
-            expect(SgtnClient::Translation.getString_f("about", "about.addkey1", ["a1","a2"],"en")).to eq("add en value a2")
-        end
+    #     ### Because keys cannot be removed through the API, they need to be changed manually if repeated testing is required
+    #     it "add new key" do
+    #         expect(SgtnClient::Translation.getString("about", "about.addkey1", "de")).to eq(nil)
+    #         expect(SgtnClient::Translation.getString("about", "about.addkey1", "en")).to eq(nil)
+    #         # expect(SgtnClient::Translation.getString_f("about", "about.addkey1", ["a1","a2"],"de")).to eq(nil)
+    #         # expect(SgtnClient::Translation.getString_f("about", "about.addkey1",["a1","a2"], "en")).to eq(nil)
+    #         system("E:\\E2\\ruby_client\\bat_script\\addkey_f_en.bat")
+    #         system("E:\\E2\\ruby_client\\bat_script\\addkey_f_de.bat")
+    #         sleep 55
+    #         # expect(SgtnClient::Translation.getString_f("about", "about.addkey1", ["a1","a2"],"de")).to eq(nil)
+    #         # expect(SgtnClient::Translation.getString_f("about", "about.addkey1", ["a1","a2"],"en")).to eq(nil)
+    #         sleep 10
+    #         expect(SgtnClient::Translation.getString_f("about", "about.addkey1", ["a1","a2"],"de")).to eq("add de value a2")
+    #         expect(SgtnClient::Translation.getString_f("about", "about.addkey1", ["a1","a2"],"en")).to eq("add en value a2")
+    #     end
 
-        ### Because locale file cannot be removed through the API, they need to be changed manually if repeated testing is required
-        ##The new default expiry time is 60min 
-        # it "getstring_f add new locale" do
-        #     expect(SgtnClient::Translation.getString("about", "about.description", "pl")).to eq(nil)
-        #     #expect(SgtnClient::Translation.getString_f("about", "about.description", ["a1","a2"],"pl")).to eq(nil)
-        #     #expect(SgtnClient::Translation.getString_f("about", "about.description", ["a1","a2"],"en")).to eq("Use this area to provide additional information")
-        #     system("E:\\E2\\ruby_client\\bat_script\\ModifyString_f_pl.bat")
-        #     sleep 3610
-        #     #puts SgtnClient::Translation.getString("about", "about.title", "pl")
-        #     expect(SgtnClient::Translation.getString_f("about", "about.description",["a1","a2"], "pl")).to eq("a2, welcome change pl login a1!")
-        #     #expect(SgtnClient::Translation.getString_f("about", "about.description", ["a1","a2"],"en")).to eq("Use this area to provide additional information")
-        # end
+    #     ### Because locale file cannot be removed through the API, they need to be changed manually if repeated testing is required
+    #     ##The new default expiry time is 60min 
+    #     # it "getstring_f add new locale" do
+    #     #     expect(SgtnClient::Translation.getString("about", "about.description", "pl")).to eq(nil)
+    #     #     #expect(SgtnClient::Translation.getString_f("about", "about.description", ["a1","a2"],"pl")).to eq(nil)
+    #     #     #expect(SgtnClient::Translation.getString_f("about", "about.description", ["a1","a2"],"en")).to eq("Use this area to provide additional information")
+    #     #     system("E:\\E2\\ruby_client\\bat_script\\ModifyString_f_pl.bat")
+    #     #     sleep 3610
+    #     #     #puts SgtnClient::Translation.getString("about", "about.title", "pl")
+    #     #     expect(SgtnClient::Translation.getString_f("about", "about.description",["a1","a2"], "pl")).to eq("a2, welcome change pl login a1!")
+    #     #     #expect(SgtnClient::Translation.getString_f("about", "about.description", ["a1","a2"],"en")).to eq("Use this area to provide additional information")
+    #     # end
         
-        ### Because component cannot be removed through the API, they need to be changed manually if repeated testing is required
-        it "add new component" do
-            # puts SgtnClient::Translation.getString("addcomponent", "addabout.message", "en")
-            # puts SgtnClient::Translation.getString("addcomponent", "addabout.message", "fr")
-            begin
-                expect(SgtnClient::Translation.getString_f("addcomponent1", "addabout.message", ["a1","a2"],"en")).to eq("addabout.message")
-                expect(SgtnClient::Translation.getString_f("addcomponent1", "addabout.message", ["a1","a2"],"fr")).to eq("addabout.message")
-              rescue => ex
-                SgtnClient.logger.error ex.message
-                SgtnClient.logger.error ex.backtrace
-                translation = nil
-            end
-            system("E:\\E2\\ruby_client\\bat_script\\Addcomponenten1.bat")
-            system("E:\\E2\\ruby_client\\bat_script\\Addcomponent1.bat")
-            sleep 5
-            #expect(SgtnClient::Translation.getString_f("addcomponent1", "addabout.message", ["a1","a2"],"en")).to eq("test_en_change123")
-            expect(SgtnClient::Translation.getString_f("addcomponent1", "addabout.message", ["a1","a2"],"fr")).to eq("test_value_change123 a2")
-        end
-    end
+    #     ### Because component cannot be removed through the API, they need to be changed manually if repeated testing is required
+    #     it "add new component" do
+    #         # puts SgtnClient::Translation.getString("addcomponent", "addabout.message", "en")
+    #         # puts SgtnClient::Translation.getString("addcomponent", "addabout.message", "fr")
+    #         begin
+    #             expect(SgtnClient::Translation.getString_f("addcomponent1", "addabout.message", ["a1","a2"],"en")).to eq(nil)
+    #             expect(SgtnClient::Translation.getString_f("addcomponent1", "addabout.message", ["a1","a2"],"fr")).to eq(nil)
+    #           rescue => ex
+    #             SgtnClient.logger.error ex.message
+    #             SgtnClient.logger.error ex.backtrace
+    #             translation = nil
+    #         end
+    #         system("E:\\E2\\ruby_client\\bat_script\\Addcomponenten1.bat")
+    #         system("E:\\E2\\ruby_client\\bat_script\\Addcomponent1.bat")
+    #         sleep 5
+    #         #expect(SgtnClient::Translation.getString_f("addcomponent1", "addabout.message", ["a1","a2"],"en")).to eq("test_en_change123")
+    #         expect(SgtnClient::Translation.getString_f("addcomponent1", "addabout.message", ["a1","a2"],"fr")).to eq("test_value_change123 a2")
+    #     end
+    # end
 
     context "strings the cache expiry period is 1 minute" do
         before :each do
@@ -188,7 +188,7 @@ describe SgtnClient do
             # expect(SgtnClient::Translation.getString("about", "about.title", "pl")).to eq(nil)
             # expect(SgtnClient::Translation.getString("about", "about.title", "en")).to eq("About")
             expect(SgtnClient::Translation.getStrings("about", "pl")["messages"]["about.title"]).to eq(nil)
-            expect(SgtnClient::Translation.getStrings("about", "en")["messages"]["about.title"]).to eq("nil")
+            expect(SgtnClient::Translation.getStrings("about", "en")["messages"]["about.title"]).to eq(nil)
             system("E:\\E2\\ruby_client\\bat_script\\ModifyString_pl.bat")
             sleep 5
             expect(SgtnClient::Translation.getStrings("about", "pl")["messages"]["about.title"]).to eq("test_pl_value_change")
@@ -216,7 +216,7 @@ describe SgtnClient do
             system("E:\\E2\\ruby_client\\bat_script\\Addcomponenten.bat")
             system("E:\\E2\\ruby_client\\bat_script\\Addcomponent.bat")
             sleep 5
-            expect(SgtnClient::Translation.getStrings("addcomponent", "en")["messages"]["addabout.message"]).to eq("test_en_change123")
+            #expect(SgtnClient::Translation.getStrings("addcomponent", "en")["messages"]["addabout.message"]).to eq("test_en_change123")
             expect(SgtnClient::Translation.getStrings("addcomponent", "fr")["messages"]["addabout.message"]).to eq("test_value_change123")
             # expect(SgtnClient::Translation.getString("addcomponent", "addabout.message", "en")).to eq("test_en_change123")
             # expect(SgtnClient::Translation.getString("addcomponent", "addabout.message", "fr")).to eq("test_value_change123")
