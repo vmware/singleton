@@ -13,7 +13,17 @@ describe "Translation test" do
 
         it "Get a string's translation and locale is en-US" do
             #SgtnClient::Source.loadBundles("de")
-            expect(SgtnClient::Translation.getString("about", "about.message", "en-US")).to eq("Your application description page.")
+            expect(SgtnClient::Translation.getString("about", "about.message", "en")).to eq("fall back about")
+        end
+
+        it "Get a string's translation and locale is en-UK" do
+            #SgtnClient::Source.loadBundles("de")
+            expect(SgtnClient::Translation.getString("about", "about.message", "en")).to eq("fall back about")
+        end
+
+        it "Get a string's translation and locale is fr-FR" do
+            #SgtnClient::Source.loadBundles("de")
+            expect(SgtnClient::Translation.getString("about", "about.message", "fr-FR")).to eq("test fr key")
         end
 
         it "Get a string's translation and locale is zh-Hans" do
@@ -120,7 +130,7 @@ describe "Translation test" do
     context "getStrings component" do
 
         it "Get a component's translations en-US" do
-            expect(SgtnClient::Translation.getStrings("about", "en-US")["messages"]["about.description"]).to eq("Use this area to provide additional information")
+            expect(SgtnClient::Translation.getStrings("about", "en-US")["messages"]["about.description"]).to eq(nil)
         end
 
         it "Get a component's translations zh-CN" do
@@ -170,5 +180,137 @@ describe "Translation test" do
         end
     end
 
+    context "test default_language config" do
+        it "no default_labguage and loadbundle is default.yml" do
+            SgtnClient.load("./config/sgtnclient.yml", "test")
+            SgtnClient::Source.loadBundles("default")
+            expect(SgtnClient::Translation.getString("about", "about.description", "en")).to eq(nil)     
+            expect(SgtnClient::Translation.getString("about", "about.message", "en-US")).to eq("fall back about")
+            expect(SgtnClient::Translation.getString("about", "about.message", "de")).to eq("test de key")
+            expect(SgtnClient::Translation.getString("about", "about.message", "da")).to eq("fall back about")          
+        end
+
+        it "default_language is en and loadbundle is default.yml" do
+            SgtnClient.load("./config/sgtnclient.yml", "testsourcelocale1")
+            SgtnClient::Source.loadBundles("default")
+            expect(SgtnClient::Translation.getString("about", "about.message", "en-US")).to eq("fall back about")
+            expect(SgtnClient::Translation.getString("about", "about.message", "de")).to eq("test de key")
+            expect(SgtnClient::Translation.getString("about", "about.message", "da")).to eq("fall back about")       
+        end
+
+        it "default_language is zh-Hans and loadbundle is default.yml" do
+            SgtnClient.load("./config/sgtnclient.yml", "testsourcelocale2")
+            SgtnClient::Source.loadBundles("default")
+            expect(SgtnClient::Translation.getString("about", "about.message", "en")).to eq("Your application description page.")
+            expect(SgtnClient::Translation.getString("about", "about.message", "zh-Hans")).to eq("fall back about")
+            expect(SgtnClient::Translation.getString("about", "about.message", "da")).to eq("fall back about")   
+        end
+
+        
+        it "default_language is da and loadbundle is default.yml" do
+            SgtnClient.load("./config/sgtnclient.yml", "testsourcelocale3")
+            SgtnClient::Source.loadBundles("default")
+            expect(SgtnClient::Translation.getString("about", "about.message", "en")).to eq("Your application description page.")
+            expect(SgtnClient::Translation.getString("about", "about.message", "da")).to eq("fall back about")
+            expect(SgtnClient::Translation.getString("about", "about.message", "es")).to eq("fall back about")   
+        end
+
+        
+        it "default_language is abcd and loadbundle is default.yml" do
+            SgtnClient.load("./config/sgtnclient.yml", "testsourcelocale4")
+            SgtnClient::Source.loadBundles("default")
+            expect(SgtnClient::Translation.getString("about", "about.message", "en")).to eq("Your application description page.")
+            expect(SgtnClient::Translation.getString("about", "about.message", "de")).to eq("test de key") 
+            expect(SgtnClient::Translation.getString("about", "about.message", "abcd")).to eq("fall back about")
+            expect(SgtnClient::Translation.getString("about", "about.message", "da")).to eq("fall back about")  
+        end
+
+        it "default_language is en and loadbundle is en.yml" do
+            SgtnClient.load("./config/sgtnclient.yml", "testsourcelocale1")
+            SgtnClient::Source.loadBundles("en")
+            expect(SgtnClient::Translation.getString("about", "about.message", "en")).to eq("fall back about")
+            expect(SgtnClient::Translation.getString("about", "about.message", "de")).to eq("test de key")
+            expect(SgtnClient::Translation.getString("about", "about.message", "da")).to eq("fall back about")  
+
+        end
+
+        it "getstring default_language is fr and loadbundle is en.yml" do
+            SgtnClient.load("./config/sgtnclient.yml", "testsourcelocale5")
+            SgtnClient::Source.loadBundles("en")
+            expect(SgtnClient::Translation.getString("about", "about.message", "en")).to eq("fall back about")
+            # expect(SgtnClient::Translation.getString("about", "about.message", "fr")).to eq("fall back about") 
+            # expect(SgtnClient::Translation.getString("about", "about.message", "da")).to eq("fall back about") 
+
+        end
+
+
+    end
+
+    context "test getstrings default_language config" do
+        it "getstrings no default_labguage and loadbundle is default.yml" do
+            SgtnClient.load("./config/sgtnclient.yml", "test")
+            SgtnClient::Source.loadBundles("default")
+            expect(SgtnClient::Translation.getStrings("about", "en-US")["messages"]["about.description"]).to eq(nil)  
+            expect(SgtnClient::Translation.getStrings("about", "en-US")["messages"]["about.message"]).to eq("fall back about")
+            expect(SgtnClient::Translation.getStrings("about", "de")["messages"]["about.message"]).to eq("test de key")
+            expect(SgtnClient::Translation.getStrings("about", "da")["messages"]["about.message"]).to eq("fall back about")   
+        end
+
+        it "getstrings default_language is en and loadbundle is default.yml" do
+            SgtnClient.load("./config/sgtnclient.yml", "testsourcelocale1")
+            SgtnClient::Source.loadBundles("default")
+            expect(SgtnClient::Translation.getStrings("about", "en-US")["messages"]["about.message"]).to eq("fall back about")
+            expect(SgtnClient::Translation.getStrings("about", "de")["messages"]["about.message"]).to eq("test de key")
+            expect(SgtnClient::Translation.getStrings("about", "da")["messages"]["about.message"]).to eq("fall back about")  
+    
+        end
+
+        it "getstrings default_language is zh-Hans and loadbundle is default.yml" do
+            SgtnClient.load("./config/sgtnclient.yml", "testsourcelocale2")
+            SgtnClient::Source.loadBundles("default")
+            expect(SgtnClient::Translation.getStrings("about", "en")["messages"]["about.message"]).to eq("Your application description page.")
+            expect(SgtnClient::Translation.getStrings("about", "zh-Hans")["messages"]["about.message"]).to eq("fall back about")
+            expect(SgtnClient::Translation.getStrings("about", "da")["messages"]["about.message"]).to eq("fall back about")   
+        end
+
+        
+        it "getstrings default_language is da and loadbundle is default.yml" do
+            SgtnClient.load("./config/sgtnclient.yml", "testsourcelocale3")
+            SgtnClient::Source.loadBundles("default")
+            expect(SgtnClient::Translation.getStrings("about", "en")["messages"]["about.message"]).to eq("Your application description page.")
+            expect(SgtnClient::Translation.getStrings("about", "da")["messages"]["about.message"]).to eq("fall back about")
+            expect(SgtnClient::Translation.getStrings("about", "es")["messages"]["about.message"]).to eq("fall back about")   
+
+        end
+
+        
+        it "getstrings default_language is abcd and loadbundle is default.yml" do
+            SgtnClient.load("./config/sgtnclient.yml", "testsourcelocale4")
+            SgtnClient::Source.loadBundles("default")
+            expect(SgtnClient::Translation.getStrings("about", "en")["messages"]["about.message"]).to eq("Your application description page.")
+            expect(SgtnClient::Translation.getStrings("about", "de")["messages"]["about.message"]).to eq("test de key")
+            expect(SgtnClient::Translation.getStrings("about", "da")["messages"]["about.message"]).to eq("fall back about")   
+        end
+
+        it "getstrings default_language is en and loadbundle is en.yml" do
+            SgtnClient.load("./config/sgtnclient.yml", "testsourcelocale1")
+            SgtnClient::Source.loadBundles("en")
+            expect(SgtnClient::Translation.getStrings("about", "en")["messages"]["about.message"]).to eq("fall back about")
+            expect(SgtnClient::Translation.getStrings("about", "de")["messages"]["about.message"]).to eq("test de key")
+            expect(SgtnClient::Translation.getStrings("about", "da")["messages"]["about.message"]).to eq("fall back about") 
+
+
+        end
+
+        it "getstrings default_language is fr and loadbundle is en.yml" do
+            SgtnClient.load("./config/sgtnclient.yml", "testsourcelocale5")
+            SgtnClient::Source.loadBundles("en")
+            expect(SgtnClient::Translation.getStrings("about", "en")["messages"]["about.message"]).to eq("fall back about")
+            expect(SgtnClient::Translation.getStrings("about", "fr")["messages"]["about.message"]).to eq("fall back about")
+            expect(SgtnClient::Translation.getStrings("about", "da")["messages"]["about.message"]).to eq("fall back about") 
+        end
+
+
+    end
 
 end
