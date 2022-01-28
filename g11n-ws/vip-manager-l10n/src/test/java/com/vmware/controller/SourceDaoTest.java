@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2021 VMware, Inc.
+ * Copyright 2019-2022 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.controller;
@@ -18,7 +18,6 @@ import org.springframework.web.context.WebApplicationContext;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.vmware.l10n.BootApplication;
-import com.vmware.l10n.source.crons.SourceSendingCron;
 import com.vmware.l10n.source.dao.SourceDao;
 import com.vmware.vip.common.l10n.source.dto.ComponentMessagesDTO;
 
@@ -34,9 +33,7 @@ public class SourceDaoTest {
 	
 @Test
 public void  test001() throws JsonProcessingException {
-	SourceDao sourceDao = webApplicationContext.getBean(SourceDao.class);
-	SourceSendingCron sourceSend =  webApplicationContext.getBean(SourceSendingCron.class);
-	
+	SourceDao sourceDao = webApplicationContext.getBean(SourceDao.class);	
 	ComponentMessagesDTO single= new ComponentMessagesDTO();
 	
 	single.setProductName("unitTest");

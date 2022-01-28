@@ -1,10 +1,9 @@
 /*
- * Copyright 2019-2021 VMware, Inc.
+ * Copyright 2019-2022 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.l10n.source.service;
 
-import com.vmware.vip.common.l10n.exception.L10nAPIException;
 import com.vmware.vip.common.l10n.source.dto.StringSourceDTO;
 
 /**
@@ -17,5 +16,11 @@ public interface SourceService {
      * @param stringSourceDTO the object which packages source
      * @return cache result, true represents success and false represents failed.
      */
-    public boolean cacheSource(StringSourceDTO stringSourceDTO)  throws L10nAPIException;
+    public boolean cacheSource(StringSourceDTO stringSourceDTO);
+    
+    
+    /**
+     * merge and write the collection source to cached file
+     */
+    public void writeSourceToCachedFile() ;
 }

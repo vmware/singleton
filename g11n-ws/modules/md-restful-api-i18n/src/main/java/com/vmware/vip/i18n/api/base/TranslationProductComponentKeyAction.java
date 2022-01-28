@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2021 VMware, Inc.
+ * Copyright 2019-2022 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.i18n.api.base;
@@ -38,9 +38,8 @@ public class TranslationProductComponentKeyAction extends BaseAction {
 	IMTService mtService;
 
 	public APIResponseDTO getTransByGet(String productName, String version,
-			String locale, String component, String key, String source,
-			String commentForSource, String sourceFormat, String collectSource,
-			String pseudo, HttpServletRequest request) throws L3APIException {
+			String locale, String component, String key, String source, String sourceFormat,
+			String pseudo) throws L3APIException {
 		ComponentMessagesDTO c = new ComponentMessagesDTO();
 		c.setProductName(productName);
 		c.setComponent(StringUtils.isEmpty(component) ? ConstantsKeys.DEFAULT
@@ -50,11 +49,11 @@ public class TranslationProductComponentKeyAction extends BaseAction {
 		if (ConstantsKeys.TRUE.equalsIgnoreCase(pseudo)) {
 			c.setPseudo(new Boolean(pseudo));
 		}
-		String keycomp = StringUtils.isEmpty(sourceFormat) ? key : (key
+		String keyComp = StringUtils.isEmpty(sourceFormat) ? key : (key
 				+ ConstantsChar.DOT + ConstantsChar.POUND + sourceFormat
 				.toUpperCase());
 		StringBasedDTO stringBasedDTO = stringBasedService
-				.getStringTranslation(c, keycomp, source);
+				.getStringTranslation(c, keyComp, source);
 		return super.handleResponse(APIResponseStatus.OK, stringBasedDTO);
 	}
 

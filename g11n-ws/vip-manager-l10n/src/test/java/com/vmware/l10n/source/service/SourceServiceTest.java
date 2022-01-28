@@ -1,26 +1,30 @@
 /*
- * Copyright 2019-2021 VMware, Inc.
+ * Copyright 2019-2022 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
-package com.vmware.controller;
+package com.vmware.l10n.source.service;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.List;
+
+import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.context.WebApplicationContext;
 
 import com.vmware.l10n.BootApplication;
-import com.vmware.vip.common.l10n.exception.L10nAPIException;
 import com.vmware.l10n.source.service.impl.SourceServiceImpl;
+import com.vmware.l10n.utils.DiskQueueUtils;
 import com.vmware.vip.common.constants.ConstantsKeys;
-import com.vmware.vip.common.l10n.source.dto.ComponentSourceDTO;
 import com.vmware.vip.common.l10n.source.dto.StringSourceDTO;
-import com.vmware.vip.common.l10n.source.util.PathUtil;
+
+import io.jsonwebtoken.lang.Assert;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = BootApplication.class)
@@ -30,7 +34,7 @@ public class SourceServiceTest {
 	private WebApplicationContext webApplicationContext;	
 
 	@Test
-	public void test002SourceServiceImpl() {
+	public void test001cacheSource() {
 		SourceServiceImpl source = webApplicationContext.getBean(SourceServiceImpl.class);
 		StringSourceDTO sourceDTO = new StringSourceDTO();
 		sourceDTO.setProductName("devCenter");
@@ -42,19 +46,20 @@ public class SourceServiceTest {
 		sourceDTO.setComment("dc new string");
 		try {
 			source.cacheSource(sourceDTO);
-		} catch (L10nAPIException e) {
-			// TODO Auto-generated catch block
+		} catch (Exception e) {
 			logger.error(e.getMessage(), e);
+			Assert.isNull(e);
 		}
+		
 		
 	}
 	
 	
 	@Test
-	public void test003SourceServiceImpl() {
+	public void test002writeSourceToCachedFile() throws IOException {
 		SourceServiceImpl source = webApplicationContext.getBean(SourceServiceImpl.class);
 		StringSourceDTO sourceDTO = new StringSourceDTO();
-		sourceDTO.setProductName("devCenter");
+		sourceDTO.setProductName("test");
 		sourceDTO.setVersion("1.0.0");
 		sourceDTO.setComponent("default");
 		sourceDTO.setLocale(ConstantsKeys.LATEST);
@@ -62,18 +67,27 @@ public class SourceServiceTest {
 		sourceDTO.setSource("this open3's value");
 		sourceDTO.setComment("dc new string");
 		
-		String catcheKey  = PathUtil.generateCacheKey(sourceDTO);
-		ComponentSourceDTO comp = new ComponentSourceDTO();
-		BeanUtils.copyProperties(sourceDTO, comp);
-		source.setParpareMap(comp, catcheKey);
-		source.setParpareMap(comp, catcheKey);
+		StringSourceDTO sourceDTO1 = new StringSourceDTO();
+		sourceDTO1.setProductName("test");
+		sourceDTO1.setVersion("1.0.0");
+		sourceDTO1.setComponent("default");
+		sourceDTO1.setLocale(ConstantsKeys.LATEST);
+		sourceDTO1.setKey("dc.myhome.open1");
+		sourceDTO1.setSource("this open3's value");
+		sourceDTO1.setComment("dc new string");
+
+		source.cacheSource(sourceDTO);
+		source.cacheSource(sourceDTO1);
+		source.writeSourceToCachedFile();
+		List<File> files = DiskQueueUtils.listSourceQueueFile("viprepo-bundle" + File.separator);
+		Assert.isTrue(files.size()>0);
 		
-		
-		
-		
-		
+		for(File file: files) {
+			DiskQueueUtils.delQueueFile(file);
+		}
 		
 	}
+	
 	
 	
 

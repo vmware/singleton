@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2021 VMware, Inc.
+ * Copyright 2019-2022 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.i18n.api.v1.translation;
@@ -47,7 +47,7 @@ public class TranslationSyncAPITest {
 		List<TranslationDTO> translationDTOList = new ArrayList<TranslationDTO>();
 		TranslationDTO translationDTO = new TranslationDTO();
 		translationDTO.setComponent(ConstantsForTest.CIM);
-		translationDTO.setLocale(ConstantsForTest.ZH_CN);
+		translationDTO.setLocale(ConstantsForTest.ZH_HANS);
 		String key = "Partner_Name";
 		String translation = "合作伙伴名称";
 		Map<String,String> messages = new HashMap<String,String>();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2021 VMware, Inc.
+ * Copyright 2019-2022 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.i18n.api.v1.common;
@@ -64,7 +64,7 @@ public class ConstantsForTest {
     public static final String PUT = "PUT";
 
     public static final String JA_JP = "ja_JP";
-    public static final String ZH_CN = "zh_CN";
+    public static final String ZH_HANS = "zh-Hans";
 
     public static final String VCG = "vCG";
     public static final String VERSION = "2.0.0";
