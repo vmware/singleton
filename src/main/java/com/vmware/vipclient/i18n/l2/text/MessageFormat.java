@@ -183,10 +183,7 @@ public class MessageFormat {
                     dest.formatAndAppend(pluralNumber.formatter,
                             pluralNumber.number, pluralNumber.numberString);
                 } else {
-                    I18nFactory factory = I18nFactory.getInstance();
-                    NumberFormatting p = (NumberFormatting) factory.getFormattingInstance(NumberFormatting.class);
-                    // dest.append(new NumberFormatting().formatNumber(pluralNumber.number, locale.toLanguageTag()));
-                    dest.append(p.formatNumber(pluralNumber.number, locale));
+                    dest.append(new NumberFormatting().formatNumber(pluralNumber.number, locale));
                 }
                 continue;
             }
@@ -287,7 +284,7 @@ public class MessageFormat {
                     dest.append(new NumberFormatting().format(arg, locale, intStyle));
                     break;
                 case TYPE_DATE:
-                    dest.append(new DateFormatting().formatDate(arg, argFormatStyle, locale));// + StringUtil.upperFirstLetter(argFormatType)
+                    dest.append(new DateFormatting().formatDate(arg, PatternProps.trimWhiteSpace(argFormatStyle), locale));// + StringUtil.upperFirstLetter(argFormatType)
                     break;
                 default:
                     throw new IllegalArgumentException("Unsupported format type \"" + argFormatType + "\"");
