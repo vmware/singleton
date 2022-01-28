@@ -6,6 +6,7 @@ package com.vmware.vip.i18n;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -156,12 +157,13 @@ public class TranslationMessageTest extends BaseTestClass {
 
     }
 
-    // @Test
+    @Test
     public void testGetPatternMessageWithBundle() {
         this.init();
         String component = "JAVA", bundle = "messages";
         Locale locale1 = new Locale("en", "US");
 
+        //test message with plural
         String pluralKey = "sample.plural.key1";
 
         Object[] en_pluralArgs1 = { 0, "MyDisk" };
@@ -194,6 +196,18 @@ public class TranslationMessageTest extends BaseTestClass {
         String pluralMessage6 = translation.getString2(component, bundle, locale7, pluralKey,
                 zh_pluralArgs3);
         Assert.assertEquals("\"我的硬盘\"上有345,678个文件。", pluralMessage6);
+
+        //test message with simple arg
+        final long timestamp = 1511156364801l;
+        Object[] arguments = {
+                7,
+                new Date(timestamp),
+                "a disturbance in the Force"
+        };
+
+        String includeFormatMessage = translation.getMessage(bundle, locale1, component, "sample.includeFormat.message",
+                arguments);
+        Assert.assertEquals("At 1:39 PM on November 20, 2017, there was a disturbance in the Force on planet 7.", includeFormatMessage);
     }
 
     @Test
