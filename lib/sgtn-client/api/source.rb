@@ -13,7 +13,7 @@ module SgtnClient
         cache_key = SgtnClient::CacheUtil.get_cachekey(component, locale)
         expired, items = SgtnClient::CacheUtil.get_cache(cache_key)
         if items.nil?
-          items = getBundle(component, locale=SgtnClient::Config.configurations.default)    
+          items = getBundle(component, locale)    
           SgtnClient::CacheUtil.write_cache(cache_key, items)
         else
           SgtnClient.logger.debug "[Source][getSource]getting sources from cache with key: " + cache_key
