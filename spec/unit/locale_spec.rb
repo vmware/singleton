@@ -17,6 +17,7 @@ describe SgtnClient do
       expect(SgtnClient::LocaleUtil.fallback('zh-Hans-CN')).to eq 'zh-Hans'
       expect(SgtnClient::LocaleUtil.fallback('zh-Hant-TW')).to eq 'zh-Hant'
       expect(SgtnClient::LocaleUtil.fallback('kong-kong')).to eq 'kong-kong'
+      expect(SgtnClient::LocaleUtil.fallback(nil)).to eq nil
     end
   end
 

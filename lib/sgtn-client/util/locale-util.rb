@@ -11,6 +11,9 @@ module SgtnClient
 
     class LocaleUtil
         def self.fallback(locale)
+            if locale.nil?
+                return nil
+            end
             found = SgtnClient::DEFAULT_LOCALES.select {|e| e == locale}
             if !found.empty?
                 return found[0]

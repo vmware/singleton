@@ -11,7 +11,10 @@ module SgtnClient
   
   class Translation
 
-      def self.getString(component, key, locale)
+      def self.getString(component, key, locale=SgtnClient::Config.configurations.default)
+        if locale.nil?
+          locale=SgtnClient::Config.configurations.default
+        end
         SgtnClient.logger.debug "[Translation][getString_p]component=#{component}, key=#{key}, locale=#{locale}"
         str = getTranslation(component, key, locale)
         if str.nil?
@@ -23,7 +26,10 @@ module SgtnClient
         str
       end
 
-      def self.getString_p(component, key, plural_args, locale)
+      def self.getString_p(component, key, plural_args, locale=SgtnClient::Config.configurations.default)
+        if locale.nil?
+          locale=SgtnClient::Config.configurations.default
+        end
         SgtnClient.logger.debug "[Translation][getString_p]component=#{component}, key=#{key}, locale=#{locale}"
         str = getTranslation(component, key, locale)
         if str.nil?
@@ -38,7 +44,10 @@ module SgtnClient
         end
       end
 
-      def self.getString_f(component, key, args, locale, *optionals)
+      def self.getString_f(component, key, args, locale=SgtnClient::Config.configurations.default, *optionals)
+         if locale.nil?
+           locale=SgtnClient::Config.configurations.default
+         end
          SgtnClient.logger.debug "[Translation][getString_f]component=#{component}, key=#{key}, locale=#{locale}"
          s = getString(component, key, locale, *optionals)
          if s.nil?
@@ -54,7 +63,10 @@ module SgtnClient
          return s
       end
 
-      def self.getStrings(component, locale)
+      def self.getStrings(component, locale=SgtnClient::Config.configurations.default)
+        if locale.nil?
+          locale=SgtnClient::Config.configurations.default
+        end
         SgtnClient.logger.debug "[Translation][getStrings]component=#{component}, locale=#{locale}"
         items = get_cs(component, locale)
         default = SgtnClient::Config.configurations.default

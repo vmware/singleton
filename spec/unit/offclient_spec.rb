@@ -9,6 +9,17 @@ describe SgtnClient do
       SgtnClient::Source.loadBundles("default")
     end
 
+    it "GET_nil" do
+      expect(SgtnClient::Translation.getString("JAVA", "helloworld")).to eq 'Hello world'
+      expect(SgtnClient::Translation.getString("JAVA", "helloworld", nil)).to eq 'Hello world'
+
+      jsonObj = SgtnClient::Translation.getStrings("JAVA");
+      expect(jsonObj["locale"]).to eq 'source'
+      jsonNilObj = SgtnClient::Translation.getStrings("JAVA", nil);
+      expect(jsonNilObj["locale"]).to eq 'source'
+
+    end
+
     it "GET" do
       expect(SgtnClient::Translation.getString("JAVA", "helloworld", "zh-Hans")).to eq '你好世界'
       # get from cache in 2nd time

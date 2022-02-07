@@ -5,12 +5,15 @@ module SgtnClient
 
   class Source
 
-      def self.getSource(component, key, locale)
+      def self.getSource(component, key, locale=SgtnClient::Config.configurations.default)
+        if locale.nil?
+          locale=SgtnClient::Config.configurations.default
+        end
         SgtnClient.logger.debug "[Source][getSource]component=#{component}, key=#{key}, locale=#{locale}"
         cache_key = SgtnClient::CacheUtil.get_cachekey(component, locale)
         expired, items = SgtnClient::CacheUtil.get_cache(cache_key)
         if items.nil?
-          items = getBundle(component, locale)    
+          items = getBundle(component, locale=SgtnClient::Config.configurations.default)    
           SgtnClient::CacheUtil.write_cache(cache_key, items)
         else
           SgtnClient.logger.debug "[Source][getSource]getting sources from cache with key: " + cache_key
@@ -25,8 +28,11 @@ module SgtnClient
         end
       end
 
-      def self.getSources(component, locale)
+      def self.getSources(component, locale=SgtnClient::Config.configurations.default)
         SgtnClient.logger.debug "[Source][getSources]component=#{component}, locale=#{locale}"
+        if locale.nil?
+          locale=SgtnClient::Config.configurations.default
+        end
         cache_key = SgtnClient::CacheUtil.get_cachekey(component, locale)
         expired, items = SgtnClient::CacheUtil.get_cache(cache_key)
         if items.nil? || expired
@@ -38,8 +44,11 @@ module SgtnClient
         return items
       end
 
-      def self.loadBundles(locale)
+      def self.loadBundles(locale="en")
         SgtnClient.logger.debug "[Source][loadBundles]locale=#{locale}"
+        if locale.nil?
+          locale="en"
+        end
         env = SgtnClient::Config.default_environment
         SgtnClient::Config.configurations.default = locale
         source_bundle = SgtnClient::Config.configurations[env]["source_bundle"]
