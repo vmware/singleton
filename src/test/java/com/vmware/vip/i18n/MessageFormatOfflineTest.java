@@ -103,7 +103,8 @@ public class MessageFormatOfflineTest extends BaseTestClass {
     @Test
     public void testFormatMessageWithSimpleArg(){
         Locale locale = null;
-        // test argument type: number, style: none, percent, currency
+        // test argument type: number,
+        // style: none, percent, currency
         long num1 = 201703;
         double num2 = 201703.54;
         String num3 = "201704.5456926";
