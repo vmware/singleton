@@ -46,10 +46,11 @@ module SgtnClient
         return items
       end
 
-      def self.loadBundles(locale="en")
+      def self.loadBundles(locale)
         SgtnClient.logger.debug "[Source][loadBundles]locale=#{locale}"
         if locale.nil?
-          locale="en"
+          SgtnClient.logger.error "[Source][loadBundles]the input is nil!"
+          return
         end
         env = SgtnClient::Config.default_environment
         SgtnClient::Config.configurations.default = locale
