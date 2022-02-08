@@ -50,7 +50,7 @@ module SgtnClient
         end
         lc = locale == default_l ? SgtnClient::Config.configurations.default: locale
         SgtnClient.logger.debug "[CacheUtil]get cache key: #{lc}"
-        return product_name + "_" + version + "_" + component + "_" + lc
+        return product_name + "_" + version + "_" + component + "_" + lc.to_s
       end
   end
 

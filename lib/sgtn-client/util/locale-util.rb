@@ -21,7 +21,7 @@ module SgtnClient
             if SgtnClient::MAP_LOCALES.key?(locale)
                 return SgtnClient::MAP_LOCALES[locale]
             end
-            parts = locale.split("-")
+            parts = locale.to_s.split("-")
             if parts.size > 1
                 f = SgtnClient::DEFAULT_LOCALES.select {|e| e == parts[0]}
                 if !f.empty?

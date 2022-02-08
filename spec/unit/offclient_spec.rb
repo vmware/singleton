@@ -17,8 +17,14 @@ describe SgtnClient do
       expect(jsonObj["locale"]).to eq 'source'
       jsonNilObj = SgtnClient::Translation.getStrings("JAVA", nil);
       expect(jsonNilObj["locale"]).to eq 'source'
-
     end
+
+    it "GET_symbol" do
+      expect(SgtnClient::Translation.getString("JAVA", "hello", :en)).to eq 'Hello'
+      expect(SgtnClient::Translation.getString("JAVA", "helloworld", :en)).to eq 'Hello world'
+      expect(SgtnClient::Translation.getString("JAVA", "helloworld", :de)).to eq 'Hallo Welt'
+    end
+
 
     it "GET" do
       expect(SgtnClient::Translation.getString("JAVA", "helloworld", "zh-Hans")).to eq '你好世界'
