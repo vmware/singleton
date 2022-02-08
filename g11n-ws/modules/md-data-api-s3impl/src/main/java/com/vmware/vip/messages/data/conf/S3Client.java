@@ -32,17 +32,29 @@ import com.amazonaws.services.securitytoken.model.Credentials;
 public class S3Client {
 	
    private final static Logger LOGGER = LoggerFactory.getLogger(S3Client.class);
+   
+   /**
+	* session credentials expired seconds
+	*/
    private final static int DURATIONSEC = 3600;
+   
+   /**
+    * three seconds time error range the unit is microsecond
+    */
    private final static long THREESEC = 3000;
    
+   /**
+    * Time errors between current OS systems time with AWS time
+    */
    private static long reducedTime;
+   
    private static AmazonS3  s3Client;
    private static Credentials sessionCreds;
    @Autowired
    private S3Config config;
 
    @PostConstruct
-   private void init() {
+   private void initS3Client() {
 	   
 	   sessionCreds = getRoleCredentials();
 	   s3Client = getAmazonS3();

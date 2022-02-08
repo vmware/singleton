@@ -19,6 +19,50 @@ import org.springframework.context.annotation.Profile;
 @Profile("s3")
 public class S3Cfg {
 	private static Logger logger = LoggerFactory.getLogger(S3Cfg.class);
+	
+	/**
+	 * the s3 password is encryption or not
+	 */
+	@Value("${s3.keysEncryptEnable:false}")
+	private Boolean encryption;
+
+	/**
+	 * the s3 password public key used to decrypt data
+	 */
+	@Value("${s3.publicKey}")
+	private String publicKey;
+
+	/**
+	 * the s3 access Key
+	 */
+	@Value("${s3.accessKey}")
+	private String accessKey;
+
+	/**
+	 * the s3 secret key
+	 */
+	@Value("${s3.secretkey}")
+	private String secretkey;
+
+	/**
+	 * the s3 region name
+	 */
+	@Value("${s3.region}")
+	private String s3Region;
+
+	/**
+	 * the s3 buncket Name
+	 */
+	@Value("${s3.bucketName}")
+	private String bucketName;
+	
+	/**
+	 * the s3 RoleArn
+	 */
+	
+	@Value("${s3.roleArn}")
+	private String roleArn;
+	
 	public String getAccessKey() {
 		if (this.encryption) {
 			try {
@@ -98,48 +142,5 @@ public class S3Cfg {
 	public String getRoleArn() {
 		return roleArn;
 	}
-	
-	/**
-	 * the s3 password is encryption or not
-	 */
-	@Value("${s3.keysEncryptEnable:false}")
-	private Boolean encryption;
-
-	/**
-	 * the s3 password public key use to decrypt data
-	 */
-	@Value("${s3.publicKey}")
-	private String publicKey;
-
-	/**
-	 * the s3 access Key
-	 */
-	@Value("${s3.accessKey}")
-	private String accessKey;
-
-	/**
-	 * the s3 secret key
-	 */
-	@Value("${s3.secretkey}")
-	private String secretkey;
-
-	/**
-	 * the s3 region name
-	 */
-	@Value("${s3.region}")
-	private String s3Region;
-
-	/**
-	 * the s3 buncket Name
-	 */
-	@Value("${s3.bucketName}")
-	private String bucketName;
-	
-	/**
-	 * the s3 RoleArn
-	 */
-	
-	@Value("${s3.roleArn}")
-	private String roleArn;
 	
 }

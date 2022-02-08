@@ -28,14 +28,14 @@ public class S3Config {
 	private Boolean encryption;
 	
 	/**
-	 * the s3 password public key use to decrypt data
+	 * the s3 password public key used to decrypt data
 	 */
 	@Value("${s3.publicKey:#}")
 	private String publicKey;
 	
 
 	/**
-	 * the s3 password public key use to decrypt data
+	 * the s3 password public key used to decrypt data
 	 */
 	@Value("${secret.rsa.publicKeyPath:#}")
 	private String publicKeyPath;
