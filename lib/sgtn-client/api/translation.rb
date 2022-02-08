@@ -14,9 +14,8 @@ module SgtnClient
       def self.getString(component, key, locale=SgtnClient::Config.configurations.default)
         if locale.nil?
           locale=SgtnClient::Config.configurations.default
-        else
-          locale = locale.to_s
         end
+        locale = locale.to_s
         SgtnClient.logger.debug "[Translation][getString_p]component=#{component}, key=#{key}, locale=#{locale}"
         str = getTranslation(component, key, locale)
         if str.nil?
@@ -31,9 +30,8 @@ module SgtnClient
       def self.getString_p(component, key, plural_args, locale=SgtnClient::Config.configurations.default)
         if locale.nil?
           locale=SgtnClient::Config.configurations.default
-        else
-          locale = locale.to_s
         end
+        locale = locale.to_s
         SgtnClient.logger.debug "[Translation][getString_p]component=#{component}, key=#{key}, locale=#{locale}"
         str = getTranslation(component, key, locale)
         if str.nil?
@@ -51,9 +49,8 @@ module SgtnClient
       def self.getString_f(component, key, args, locale=SgtnClient::Config.configurations.default, *optionals)
          if locale.nil?
            locale=SgtnClient::Config.configurations.default
-         else
-           locale = locale.to_s
          end
+         locale = locale.to_s
          SgtnClient.logger.debug "[Translation][getString_f]component=#{component}, key=#{key}, locale=#{locale}"
          s = getString(component, key, locale, *optionals)
          if s.nil?
@@ -73,6 +70,7 @@ module SgtnClient
         if locale.nil?
           locale=SgtnClient::Config.configurations.default
         end
+        locale = locale.to_s
         SgtnClient.logger.debug "[Translation][getStrings]component=#{component}, locale=#{locale}"
         items = get_cs(component, locale)
         default = SgtnClient::Config.configurations.default
