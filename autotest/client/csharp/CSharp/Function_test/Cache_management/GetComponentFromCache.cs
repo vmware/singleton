@@ -181,7 +181,7 @@ namespace CSharp
             String component = CM_translation_en.GetComponent();
             Assert.AreEqual("RESX", component);
 
-            ICollection keys = CM_translation_en.GetKeys();
+            ICollection<string> keys = CM_translation_en.GetKeys();
             Assert.AreEqual(count1, keys.Count);
 
 
@@ -216,7 +216,7 @@ namespace CSharp
             String component = CM_translation_cn.GetComponent();
             Assert.AreEqual("RESX", component);
 
-            ICollection keys = CM_translation_cn.GetKeys();
+            ICollection<string> keys = CM_translation_cn.GetKeys();
             Assert.AreEqual(count1, keys.Count);
 
 
@@ -248,7 +248,7 @@ namespace CSharp
             String component = CM_translation_cn.GetComponent();
             Assert.AreEqual("RESX", component);
 
-            ICollection keys = CM_translation_cn.GetKeys();
+            ICollection<string> keys = CM_translation_cn.GetKeys();
             Assert.AreEqual(count1, keys.Count);
 
 

@@ -66,7 +66,7 @@ namespace CSharp
             Assert.IsTrue(AllTranslation.ContainsKey("zh-Hans"));
             List<string> componentlist1 = PM.GetLocaleMessages("de").GetComponentList();
             String result4 = Common.ParseListStringContent(componentlist1);
-            Assert.AreEqual("ResourceResx, RESX", result4);
+            Assert.AreEqual("RESX", result4);
             String result5 = PM.GetLocaleMessages("de").GetString("RESX", "RESX.ARGUMENT");
             Assert.AreEqual("d111Add {0} to the object.", result5);
             String result6 = PM.GetLocaleMessages("de").GetString("RESX", "contact.address");
