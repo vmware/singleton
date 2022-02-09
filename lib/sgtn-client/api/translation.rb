@@ -12,10 +12,6 @@ module SgtnClient
   class Translation
 
       def self.getString(component, key, locale=SgtnClient::Config.configurations.default)
-        if locale.nil?
-          locale=SgtnClient::Config.configurations.default
-        end
-        locale = locale.to_s
         SgtnClient.logger.debug "[Translation][getString]component=#{component}, key=#{key}, locale=#{locale}"
         str = getTranslation(component, key, locale)
         if str.nil?
@@ -28,10 +24,6 @@ module SgtnClient
       end
 
       def self.getString_p(component, key, plural_args, locale=SgtnClient::Config.configurations.default)
-        if locale.nil?
-          locale=SgtnClient::Config.configurations.default
-        end
-        locale = locale.to_s
         SgtnClient.logger.debug "[Translation][getString_p]component=#{component}, key=#{key}, locale=#{locale}"
         str = getTranslation(component, key, locale)
         if str.nil?
@@ -47,10 +39,6 @@ module SgtnClient
       end
 
       def self.getString_f(component, key, args, locale=SgtnClient::Config.configurations.default, *optionals)
-         if locale.nil?
-           locale=SgtnClient::Config.configurations.default
-         end
-         locale = locale.to_s
          SgtnClient.logger.debug "[Translation][getString_f]component=#{component}, key=#{key}, locale=#{locale}"
          s = getString(component, key, locale, *optionals)
          if s.nil?
@@ -67,10 +55,6 @@ module SgtnClient
       end
 
       def self.getStrings(component, locale=SgtnClient::Config.configurations.default)
-        if locale.nil?
-          locale=SgtnClient::Config.configurations.default
-        end
-        locale = locale.to_s
         SgtnClient.logger.debug "[Translation][getStrings]component=#{component}, locale=#{locale}"
         items = get_cs(component, locale)
         default = SgtnClient::Config.configurations.default
@@ -102,6 +86,10 @@ module SgtnClient
       end
 
       def self.get_cs(component, locale)
+        if locale.nil?
+          locale=SgtnClient::Config.configurations.default
+        end
+        locale = locale.to_s
         flocale = SgtnClient::LocaleUtil.fallback(locale)
         cache_key = SgtnClient::CacheUtil.get_cachekey(component, flocale)
         SgtnClient.logger.debug "[Translation][get_cs]cache_key=#{cache_key}"

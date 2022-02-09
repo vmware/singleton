@@ -6,10 +6,6 @@ module SgtnClient
   class Source
 
       def self.getSource(component, key, locale=SgtnClient::Config.configurations.default)
-        if locale.nil?
-          locale=SgtnClient::Config.configurations.default
-        end
-        locale = locale.to_s
         SgtnClient.logger.debug "[Source][getSource]component=#{component}, key=#{key}, locale=#{locale}"
         cache_key = SgtnClient::CacheUtil.get_cachekey(component, locale)
         expired, items = SgtnClient::CacheUtil.get_cache(cache_key)
@@ -31,10 +27,6 @@ module SgtnClient
 
       def self.getSources(component, locale=SgtnClient::Config.configurations.default)
         SgtnClient.logger.debug "[Source][getSources]component=#{component}, locale=#{locale}"
-        if locale.nil?
-          locale=SgtnClient::Config.configurations.default
-        end
-        locale = locale.to_s
         cache_key = SgtnClient::CacheUtil.get_cachekey(component, locale)
         expired, items = SgtnClient::CacheUtil.get_cache(cache_key)
         t = Thread.new {
