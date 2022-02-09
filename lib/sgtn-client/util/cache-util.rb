@@ -44,7 +44,7 @@ module SgtnClient
         env = SgtnClient::Config.default_environment
         product_name = SgtnClient::Config.configurations[env]["product_name"]
         version = SgtnClient::Config.configurations[env]["version"].to_s
-        default_l = SgtnClient::Config.configurations[env]["default_language"]
+        default_l = SgtnClient::Config.configurations[env]["source_locale"]
         if default_l == nil
           default_l = 'en'
         end
