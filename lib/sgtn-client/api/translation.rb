@@ -94,21 +94,16 @@ module SgtnClient
         cache_key = SgtnClient::CacheUtil.get_cachekey(component, flocale)
         SgtnClient.logger.debug "[Translation][get_cs]cache_key=#{cache_key}"
         expired, items = SgtnClient::CacheUtil.get_cache(cache_key)
-        t = Thread.new {
-          if items.nil? || expired 
-            items = load(component, flocale)
-            if items.nil?
-              items = SgtnClient::Source.getSources(component, SgtnClient::Config.configurations.default)
-              SgtnClient::Core::Cache.put(cache_key, items, 60)
-            else
-              SgtnClient::CacheUtil.write_cache(cache_key, items)
-            end
+        if items.nil? || expired 
+          items = load(component, flocale)
+          if items.nil?
+            items = SgtnClient::Source.getSources(component, SgtnClient::Config.configurations.default)
+            SgtnClient::Core::Cache.put(cache_key, items, 60)
           else
-            SgtnClient.logger.debug "[Translation]get translations from cache with key: " + cache_key
+            SgtnClient::CacheUtil.write_cache(cache_key, items)
           end
-        }
-        if !expired
-          t.join
+        else
+          SgtnClient.logger.debug "[Translation]get translations from cache with key: " + cache_key
         end
         return items
        end

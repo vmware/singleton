@@ -29,16 +29,11 @@ module SgtnClient
         SgtnClient.logger.debug "[Source][getSources]component=#{component}, locale=#{locale}"
         cache_key = SgtnClient::CacheUtil.get_cachekey(component, locale)
         expired, items = SgtnClient::CacheUtil.get_cache(cache_key)
-        t = Thread.new {
-          if items.nil? || expired
-            items = getBundle(component, locale)
-            SgtnClient::CacheUtil.write_cache(cache_key, items)
-          else
-            SgtnClient.logger.debug "[Source][getSources]getting sources from cache with key: " + cache_key
-          end
-        }
-        if !expired
-          t.join
+        if items.nil? || expired
+          items = getBundle(component, locale)
+          SgtnClient::CacheUtil.write_cache(cache_key, items)
+        else
+          SgtnClient.logger.debug "[Source][getSources]getting sources from cache with key: " + cache_key
         end
         return items
       end
