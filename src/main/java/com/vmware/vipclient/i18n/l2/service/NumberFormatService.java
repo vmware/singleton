@@ -104,12 +104,14 @@ public class NumberFormatService {
             throw new RuntimeException("No format pattern data found for locale " + locale + " !");
         }
         if (style == NumberFormat.CURRENCYSTYLE) {
+            String actualCurrencyCode;
             if(currencyCode == null){
-                currencyCode = ConstantsKeys.USD;
+                actualCurrencyCode = ConstantsKeys.USD;
             }else {
-                validateCurrencyCode(currencyCode);
+                actualCurrencyCode = currencyCode;
+                validateCurrencyCode(actualCurrencyCode);
             }
-            numberFormatData = getCurrencyRelatedData(localeFormatData, currencyCode);
+            numberFormatData = getCurrencyRelatedData(localeFormatData, actualCurrencyCode);
         } else {
             numberFormatData = (JSONObject) localeFormatData.get(PatternCategory.NUMBERS.toString());
         }
@@ -119,9 +121,7 @@ public class NumberFormatService {
         }
         NumberFormat numberFormat = NumberFormat.getInstance(numberFormatData, style);
         formatNumber = numberFormat.format(value, fractionSize);
-        if (style == NumberFormat.INTEGERSTYLE) {
-            //TODO
-        } else if (style == NumberFormat.PERCENTSTYLE) {
+        if (style == NumberFormat.PERCENTSTYLE) {
             String percentSymbol = (String) ((JSONObject) numberFormatData.get(PatternKeys.NUMBERSYMBOLS))
                     .get(PatternKeys.PERCENTSIGN);
             formatNumber = formatNumber.replace(String.valueOf(ConstantChars.PERCENTSIGN), percentSymbol);

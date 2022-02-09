@@ -142,7 +142,7 @@ public class MessageFormatOfflineTest extends BaseTestClass {
         // test argument type: date,
         // style: fullDate, longDate, mediumDate, shortDate, fullTime, longTime, mediumTime, shortTime, full, long, medium, short
         final long timestamp = 1511156364801l;
-        final String timeZone = "GMT+8";
+        //final String timeZone = "GMT+8";
         Date date = new Date(timestamp);
 
         String messageWithSimpleArg_date =

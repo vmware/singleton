@@ -350,34 +350,35 @@ public class MessagePattern {
     }
 
     private int parseSimpleStyle(int index) {
-        int start=index;
+        int start = index;
+        int styleIndex = index;
         int nestedBraces=0;
-        while(index<msg.length()) {
-            char c=msg.charAt(index++);
+        while(styleIndex<msg.length()) {
+            char c=msg.charAt(styleIndex++);
             if(c=='\'') {
                 // Treat apostrophe as quoting but include it in the style part.
                 // Find the end of the quoted literal text.
-                index=msg.indexOf('\'', index);
-                if(index<0) {
+                styleIndex=msg.indexOf('\'', styleIndex);
+                if(styleIndex<0) {
                     throw new IllegalArgumentException(
                             "Quoted literal argument style text reaches to the end of the message: "+
                                     prefix(start));
                 }
                 // skip the quote-ending apostrophe
-                ++index;
+                ++styleIndex;
             } else if(c=='{') {
                 ++nestedBraces;
             } else if(c=='}') {
                 if(nestedBraces>0) {
                     --nestedBraces;
                 } else {
-                    int length=--index-start;
+                    int length=--styleIndex-start;
                     if(length>Part.MAX_LENGTH) {
                         throw new IndexOutOfBoundsException(
                                 "Argument style text too long: "+prefix(start));
                     }
                     addPart(Part.Type.ARG_STYLE, start, length, 0);
-                    return index;
+                    return styleIndex;
                 }
             }  // c is part of literal text
         }
