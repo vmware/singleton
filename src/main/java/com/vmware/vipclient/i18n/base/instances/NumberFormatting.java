@@ -10,7 +10,6 @@ import com.vmware.vipclient.i18n.l2.service.NumberFormatService;
 import com.vmware.vipclient.i18n.util.ConstantsKeys;
 
 import static com.vmware.vipclient.i18n.l2.text.NumberFormat.CURRENCYSTYLE;
-import static com.vmware.vipclient.i18n.l2.text.NumberFormat.INTEGERSTYLE;
 import static com.vmware.vipclient.i18n.l2.text.NumberFormat.NUMBERSTYLE;
 import static com.vmware.vipclient.i18n.l2.text.NumberFormat.PERCENTSTYLE;
 

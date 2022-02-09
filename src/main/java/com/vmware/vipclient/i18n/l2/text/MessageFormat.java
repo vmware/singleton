@@ -29,7 +29,19 @@ import com.vmware.vipclient.i18n.util.LocaleUtility;
 import com.vmware.vipclient.i18n.util.PatternProps;
 
 public class MessageFormat {
-    private Locale                           locale;
+    private Locale locale;
+
+    private static final String[] typeList =
+            { "number", "date", "time", "spellout", "ordinal", "duration" };
+
+    private static final int
+            TYPE_NUMBER = 0,
+            TYPE_DATE = 1;
+
+    private static final String[] modifierList =
+            {"", "currency", "percent", "scientific", "integer"};
+
+    private static final Locale rootLocale = new Locale("");  // Locale.ROOT only @since 1.6
 
     // ===========================privates============================
 
@@ -360,25 +372,13 @@ public class MessageFormat {
         }
     }
 
-        private static final String[] typeList =
-                { "number", "date", "time", "spellout", "ordinal", "duration" };
-        private static final int
-                TYPE_NUMBER = 0,
-                TYPE_DATE = 1;
-
-        private static final String[] modifierList =
-                {"", "currency", "percent", "scientific", "integer"};
-
-        private static final Locale rootLocale = new Locale("");  // Locale.ROOT only @since 1.6
-
-        private static final int findKeyword(String s, String[] list) {
-            String trimmedS = PatternProps.trimWhiteSpace(s).toLowerCase(rootLocale);
-            for (int i = 0; i < list.length; ++i) {
-                if (trimmedS.equals(list[i]))
-                    return i;
-            }
-            return -1;
+    private static final int findKeyword(String s, String[] list) {
+        String trimmedS = PatternProps.trimWhiteSpace(s).toLowerCase(rootLocale);
+        for (int i = 0; i < list.length; ++i) {
+            if (trimmedS.equals(list[i])) { return i; }
         }
+        return -1;
+    }
 
     public static class Field2 extends Format.Field {
 
