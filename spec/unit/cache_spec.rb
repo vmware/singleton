@@ -18,6 +18,7 @@ describe SgtnClient do
       # get from server again after data is expired
       #sleep 70
       expect(SgtnClient::Translation.getString("JAVA", "helloworld", "zh-Hans")).to eq '你好世界'
+      #sleep 10
     end
 
 

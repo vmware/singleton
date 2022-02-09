@@ -16,12 +16,12 @@ module SgtnClient
           locale=SgtnClient::Config.configurations.default
         end
         locale = locale.to_s
-        SgtnClient.logger.debug "[Translation][getString_p]component=#{component}, key=#{key}, locale=#{locale}"
+        SgtnClient.logger.debug "[Translation][getString]component=#{component}, key=#{key}, locale=#{locale}"
         str = getTranslation(component, key, locale)
         if str.nil?
           str = SgtnClient::Source.getSource(component, key, SgtnClient::Config.configurations.default)
           if str.nil?
-            SgtnClient.logger.error "[Translation]can't find the key '" + key + "' in source path!"
+            SgtnClient.logger.error "[Translation][getString]can't find '" + key + "' in '" + component + "'!"
           end
         end
         str
@@ -37,7 +37,7 @@ module SgtnClient
         if str.nil?
           str = SgtnClient::Source.getSource(component, key, SgtnClient::Config.configurations.default)
           if str.nil?
-            SgtnClient.logger.error "[Translation]can't find the key '" + key + "' in source path!"
+            SgtnClient.logger.error "[Translation][getString_p]can't find '" + key + "' in '" + component + "'!"
             return nil
           end
           str.to_plural_s(:en, plural_args)
@@ -106,18 +106,22 @@ module SgtnClient
         cache_key = SgtnClient::CacheUtil.get_cachekey(component, flocale)
         SgtnClient.logger.debug "[Translation][get_cs]cache_key=#{cache_key}"
         expired, items = SgtnClient::CacheUtil.get_cache(cache_key)
-        if items.nil? || expired
-          items = load(component, flocale)
-          if items.nil?
-            items = SgtnClient::Source.getSources(component, SgtnClient::Config.configurations.default)
-            SgtnClient::Core::Cache.put(cache_key, items, 60)
+        t = Thread.new {
+          if items.nil? || expired 
+            items = load(component, flocale)
+            if items.nil?
+              items = SgtnClient::Source.getSources(component, SgtnClient::Config.configurations.default)
+              SgtnClient::Core::Cache.put(cache_key, items, 60)
+            else
+              SgtnClient::CacheUtil.write_cache(cache_key, items)
+            end
           else
-            SgtnClient::CacheUtil.write_cache(cache_key, items)
+            SgtnClient.logger.debug "[Translation]get translations from cache with key: " + cache_key
           end
-        else
-          SgtnClient.logger.debug "[Translation]get translations from cache with key: " + cache_key
+        }
+        if !expired
+          t.join
         end
-
         return items
        end
 
