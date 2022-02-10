@@ -18,6 +18,7 @@ import java.util.Locale;
 import java.util.Map;
 
 import com.vmware.vipclient.i18n.I18nFactory;
+import com.vmware.vipclient.i18n.base.instances.DateFormatting;
 import com.vmware.vipclient.i18n.base.instances.NumberFormatting;
 import com.vmware.vipclient.i18n.exceptions.VIPUncheckedIOException;
 import com.vmware.vipclient.i18n.l2.plural.parser.PluralRules;
@@ -25,9 +26,22 @@ import com.vmware.vipclient.i18n.l2.plural.parser.PluralRules.PluralType;
 import com.vmware.vipclient.i18n.l2.text.MessagePattern.ArgType;
 import com.vmware.vipclient.i18n.l2.text.MessagePattern.Part;
 import com.vmware.vipclient.i18n.util.LocaleUtility;
+import com.vmware.vipclient.i18n.util.PatternProps;
 
 public class MessageFormat {
-    private Locale                           locale;
+    private Locale locale;
+
+    private static final String[] typeList =
+            { "number", "date", "time", "spellout", "ordinal", "duration" };
+
+    private static final int
+            TYPE_NUMBER = 0,
+            TYPE_DATE = 1;
+
+    private static final String[] modifierList =
+            {"", "currency", "percent", "scientific", "integer"};
+
+    private static final Locale rootLocale = new Locale("");  // Locale.ROOT only @since 1.6
 
     // ===========================privates============================
 
@@ -181,10 +195,7 @@ public class MessageFormat {
                     dest.formatAndAppend(pluralNumber.formatter,
                             pluralNumber.number, pluralNumber.numberString);
                 } else {
-                    I18nFactory factory = I18nFactory.getInstance();
-                    NumberFormatting p = (NumberFormatting) factory.getFormattingInstance(NumberFormatting.class);
-                    // dest.append(new NumberFormatting().formatNumber(pluralNumber.number, locale.toLanguageTag()));
-                    dest.append(p.formatNumber(pluralNumber.number, locale));
+                    dest.append(new NumberFormatting().formatNumber(pluralNumber.number, locale));
                 }
                 continue;
             }
@@ -199,16 +210,16 @@ public class MessageFormat {
 
     private Map formatArg(PluralSelectorContext pluralNumber,
             Object[] args, Map<String, Object> argsMap,
-            AppendableWrapper dest, FieldPosition fp, int i) {
+            AppendableWrapper dest, FieldPosition fp, int argStartIndex) {
         Map<String, Integer> dataMap = new HashMap<String, Integer>();
-        int argLimit = msgPattern.getLimitPartIndex(i);
-        Part part = msgPattern.getPart(++i);
-        String argName = msgPattern.getSubstring(part);
-        Map<String, Object> argMap = getArgValue(args, argsMap, dest, part);
+        int argLimit = msgPattern.getLimitPartIndex(argStartIndex);
+        Part argNumberOrNamePart = msgPattern.getPart(argStartIndex+1);
+        String argName = msgPattern.getSubstring(argNumberOrNamePart);
+        Map<String, Object> argMap = getArgValue(args, argsMap, dest, argNumberOrNamePart);
         Object argId = argMap.get("argId");
-        ++i;
+        int argTypeIndex = argStartIndex +2;
         int prevDestLength = dest.length;
-        format(pluralNumber, i, argName, argMap, args, argsMap,
+        format(pluralNumber, argTypeIndex, argName, argMap, args, argsMap,
                 dest);
         updateMetaData(dest, prevDestLength, fp, argId);
         int prevIndex = msgPattern.getPart(argLimit).getLimit();
@@ -218,14 +229,14 @@ public class MessageFormat {
     }
 
     private Map<String, Object> getArgValue(Object[] args, Map<String, Object> argsMap,
-            AppendableWrapper dest, Part part) {
+            AppendableWrapper dest, Part argNumberOrNamePart) {
         Map<String, Object> map = new HashMap<String, Object>();
         Object arg;
         boolean noArg = false;
         Object argId = null;
-        String argName = msgPattern.getSubstring(part);
+        String argName = msgPattern.getSubstring(argNumberOrNamePart);
         if (args != null) {
-            int argNumber = part.getValue(); // ARG_NUMBER
+            int argNumber = argNumberOrNamePart.getValue(); // ARG_NUMBER
             if (dest.attributes != null) {
                 // We only need argId if we add it into the attributes.
                 argId = Integer.valueOf(argNumber);
@@ -251,19 +262,19 @@ public class MessageFormat {
         return map;
     }
 
-    private void format(PluralSelectorContext pluralNumber, int i, String argName, Map map, Object[] args,
+    private void format(PluralSelectorContext pluralNumber, int argTypeIndex, String argName, Map map, Object[] args,
             Map<String, Object> argsMap,
             AppendableWrapper dest) {
         Format formatter = null;
-        Part part = msgPattern.getPart(i - 2);
-        ArgType argType = part.getArgType();
+        Part argStartPart = msgPattern.getPart(argTypeIndex - 2);
+        ArgType argType = argStartPart.getArgType();
         Object arg = map.get("arg");
         boolean noArg = (boolean) map.get("noArg");
         if (noArg) {
             dest.append("{" + argName + "}");
         } else if (arg == null) {
             dest.append("null");
-        } else if (pluralNumber != null && pluralNumber.numberArgIndex == (i - 2)) {
+        } else if (pluralNumber != null && pluralNumber.numberArgIndex == (argTypeIndex - 2)) {
             if (pluralNumber.offset == 0) {
                 // The number was already formatted with this formatter.
                 dest.formatAndAppend(pluralNumber.formatter, pluralNumber.number, pluralNumber.numberString);
@@ -272,18 +283,37 @@ public class MessageFormat {
                 // that formats the number without subtracting the offset.
                 dest.formatAndAppend(pluralNumber.formatter, arg);
             }
+        } else if (argType == ArgType.SIMPLE){
+            String argFormatType = msgPattern.getSubstring(msgPattern.getPart(argTypeIndex));
+            String argFormatStyle = "";
+            Part argStylePart = msgPattern.getPart(argTypeIndex + 1);
+            if (argStylePart.getType() == MessagePattern.Part.Type.ARG_STYLE) {
+                argFormatStyle = msgPattern.getSubstring(argStylePart);
+            }
+            int intFormatType  = findKeyword(argFormatType, typeList);
+            switch (intFormatType) {
+                case TYPE_NUMBER:
+                    int intStyle = findKeyword(argFormatStyle, modifierList);
+                    dest.append(new NumberFormatting().format(arg, locale, intStyle));
+                    break;
+                case TYPE_DATE:
+                    dest.append(new DateFormatting().formatDate(arg, PatternProps.trimWhiteSpace(argFormatStyle), locale));// + StringUtil.upperFirstLetter(argFormatType)
+                    break;
+                default:
+                    throw new IllegalArgumentException("Unsupported format type \"" + argFormatType + "\"");
+            }
         } else if (argType == ArgType.NONE ||
-                (cachedFormatters != null && cachedFormatters.containsKey(i - 2))) {
+                (cachedFormatters != null && cachedFormatters.containsKey(argTypeIndex - 2))) {
             dest.append(arg.toString());
         } else if (argType.hasPluralStyle()) {
-            formatPluralOrSelectMsg(argType, i, argName, arg, args, argsMap, dest);
+            formatPluralOrSelectMsg(argType, argTypeIndex, argName, arg, args, argsMap, dest);
         } else {
             // This should never happen.
             throw new IllegalStateException("unexpected argType " + argType);
         }
     }
 
-    private void formatPluralOrSelectMsg(ArgType argType, int i, String argName, Object arg, Object[] args,
+    private void formatPluralOrSelectMsg(ArgType argType, int argTypeIndex, String argName, Object arg, Object[] args,
             Map<String, Object> argsMap,
             AppendableWrapper dest) {
         if (!(arg instanceof Number)) {
@@ -302,10 +332,10 @@ public class MessageFormat {
             selector = ordinalProvider;
         }
         Number number = (Number) arg;
-        double offset = msgPattern.getPluralOffset(i);
-        PluralSelectorContext context = new PluralSelectorContext(i, argName, number, offset);
+        double offset = msgPattern.getPluralOffset(argTypeIndex);
+        PluralSelectorContext context = new PluralSelectorContext(argTypeIndex, argName, number, offset);
         int subMsgStart = PluralFormat.findSubMessage(
-                msgPattern, i, selector, context, number.doubleValue());
+                msgPattern, argTypeIndex, selector, context, number.doubleValue());
         formatComplexSubMessage(subMsgStart, context, args, argsMap, dest);
     }
 
@@ -340,6 +370,14 @@ public class MessageFormat {
         if (cachedFormatters != null) {
             cachedFormatters.clear();
         }
+    }
+
+    private static final int findKeyword(String s, String[] list) {
+        String trimmedS = PatternProps.trimWhiteSpace(s).toLowerCase(rootLocale);
+        for (int i = 0; i < list.length; ++i) {
+            if (trimmedS.equals(list[i])) { return i; }
+        }
+        return -1;
     }
 
     public static class Field2 extends Format.Field {

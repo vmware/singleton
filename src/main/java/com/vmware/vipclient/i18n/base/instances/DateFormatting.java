@@ -64,7 +64,7 @@ public class DateFormatting implements Formatting {
         if (null == obj || "".equalsIgnoreCase(obj.toString())) {
             return null;
         }
-        if (null == pattern) {
+        if (null == pattern || "".equalsIgnoreCase(pattern)) {
             pattern = com.vmware.vipclient.i18n.l2.text.DateFormat.DEFAULT;
         }
         if (null == timeZone) {

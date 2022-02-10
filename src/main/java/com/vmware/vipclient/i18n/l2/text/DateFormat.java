@@ -103,9 +103,9 @@ public abstract class DateFormat {
             pattern = (String) patternObj.get(patternType);
             if (PatternKeys.DATETIMEFORMATS.equalsIgnoreCase(patternStyle)) {
                 String datePattern = (String) ((JSONObject) formatData.get(PatternKeys.DATEFORMATS))
-                        .get(format);
+                        .get(patternType);
                 String timePattern = (String) ((JSONObject) formatData.get(PatternKeys.TIMEFORMATS))
-                        .get(format);
+                        .get(patternType);
                 pattern = FormatUtils.format(pattern, timePattern, datePattern);
             }
         } else {

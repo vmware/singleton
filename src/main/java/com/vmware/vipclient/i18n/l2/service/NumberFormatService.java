@@ -10,6 +10,7 @@ import com.vmware.vipclient.i18n.l2.common.ConstantChars;
 import com.vmware.vipclient.i18n.l2.common.PatternCategory;
 import com.vmware.vipclient.i18n.l2.common.PatternKeys;
 import com.vmware.vipclient.i18n.l2.text.NumberFormat;
+import com.vmware.vipclient.i18n.util.ConstantsKeys;
 import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -103,8 +104,14 @@ public class NumberFormatService {
             throw new RuntimeException("No format pattern data found for locale " + locale + " !");
         }
         if (style == NumberFormat.CURRENCYSTYLE) {
-            validateCurrencyCode(currencyCode);
-            numberFormatData = getCurrencyRelatedData(localeFormatData, currencyCode);
+            String actualCurrencyCode;
+            if(currencyCode == null){
+                actualCurrencyCode = ConstantsKeys.USD;
+            }else {
+                actualCurrencyCode = currencyCode;
+                validateCurrencyCode(actualCurrencyCode);
+            }
+            numberFormatData = getCurrencyRelatedData(localeFormatData, actualCurrencyCode);
         } else {
             numberFormatData = (JSONObject) localeFormatData.get(PatternCategory.NUMBERS.toString());
         }
@@ -149,9 +156,6 @@ public class NumberFormatService {
     }
 
     public boolean validateCurrencyCode(String theISOCode) {
-        if (theISOCode == null) {
-            throw new NullPointerException("The input currency code is null.");
-        }
         if (!isAlpha3Code(theISOCode)) {
             throw new IllegalArgumentException(
                     "The input currency code is not 3-letter alphabetic code.");

@@ -14,6 +14,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.text.FieldPosition;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
@@ -34,7 +35,7 @@ public class MessageFormatOfflineTest extends BaseTestClass {
     }
 
     @Test
-    public void testFormat() {
+    public void testFormatPluralMessage() {
         String message1 = "{num_files, plural, "
                 + "=0{There are no files on disk \"{disk_name}\".}"
                 + "=1{There is one file on disk \"{disk_name}\".}"
@@ -97,5 +98,99 @@ public class MessageFormatOfflineTest extends BaseTestClass {
                 msgFmt4.format(new Object[] { 101 }, new StringBuilder(), new FieldPosition(0)).toString());
         Assert.assertEquals("102 psa",
                 msgFmt4.format(new Object[] { 102 }, new StringBuilder(), new FieldPosition(0)).toString());
+    }
+
+    @Test
+    public void testFormatMessageWithSimpleArg(){
+        Locale locale = null;
+        // test argument type: number,
+        // style: none, percent, currency
+        long num1 = 201703;
+        double num2 = 201703.54;
+        String num3 = "201704.5456926";
+        double num4 = 0.354;
+
+        String messageWithSimpleArg_number =
+                "number: {0,number} {1,number} {2,number} " +
+                        "percent: {3,number, percent} " +
+                        "currency: {4,number, currency} {5,number, currency} {6,number, currency}";
+        Object[] arguments4Number = {
+                num1, num2, num3,
+                num4,
+                num1, num2, num3,};
+
+        String expectedNumberFormat_en =
+                "number: 201,703 201,703.54 201,704.546 " +
+                        "percent: 35% " +
+                        "currency: $201,703.00 $201,703.54 $201,704.55";
+        locale = new Locale("en", "");
+        MessageFormat msgFmt4Number_en = new MessageFormat(messageWithSimpleArg_number, locale);
+        System.out.println("en number format result: "+ msgFmt4Number_en.format(arguments4Number, new StringBuilder(), new FieldPosition(0)).toString());
+        Assert.assertEquals(expectedNumberFormat_en,
+                msgFmt4Number_en.format(arguments4Number, new StringBuilder(), new FieldPosition(0)).toString());
+
+        String expectedNumberFormat_fr =
+                "number: 201 703 201 703,54 201 704,546 " +
+                        "percent: 35 % " +
+                        "currency: 201 703,00 $US 201 703,54 $US 201 704,55 $US";
+        locale = new Locale("fr", "");
+        MessageFormat msgFmt4Number_fr = new MessageFormat(messageWithSimpleArg_number, locale);
+        System.out.println("fr number format result: "+ msgFmt4Number_fr.format(arguments4Number, new StringBuilder(), new FieldPosition(0)).toString());
+        Assert.assertEquals(expectedNumberFormat_fr,
+                msgFmt4Number_fr.format(arguments4Number, new StringBuilder(), new FieldPosition(0)).toString());
+
+        // test argument type: date,
+        // style: fullDate, longDate, mediumDate, shortDate, fullTime, longTime, mediumTime, shortTime, full, long, medium, short
+        final long timestamp = 1511156364801l;
+        //final String timeZone = "GMT+8";
+        Date date = new Date(timestamp);
+
+        String messageWithSimpleArg_date =
+                "default style is mediumDateTime: {0, date} " +
+                        "fullDate: {1, date, fullDate} longDate: {2, date, longDate} mediumDate: {3, date, mediumDate} shortDate: {4, date, shortDate} " +
+                        "fullTime: {5, date, fullTime} longTime: {6, date, longTime} mediumTime: {7, date, mediumTime} shortTime: {8, date, shortTime} " +
+                        "fullDateTime: {9, date, full} longDateTime: {10, date, long} mediumDateTime: {11, date, medium} shortDateTime: {12, date, short}";
+        Object[] arguments4Date = {
+                1511156364801l,
+                1511156364801l, date, 1511156364801l, date,
+                1511156364801l, date, 1511156364801l, date,
+                1511156364801l, date, 1511156364801l, date
+        };
+
+        String expectedDateFormat_en =
+                "default style is mediumDateTime: Nov 20, 2017, 1:39:24 PM " +
+                        "fullDate: Monday, November 20, 2017 longDate: November 20, 2017 mediumDate: Nov 20, 2017 shortDate: 11/20/17 " +
+                        "fullTime: 1:39:24 PM GMT+08:00 longTime: 1:39:24 PM GMT+8 mediumTime: 1:39:24 PM shortTime: 1:39 PM " +
+                        "fullDateTime: Monday, November 20, 2017 at 1:39:24 PM GMT+08:00 longDateTime: November 20, 2017 at 1:39:24 PM GMT+8 mediumDateTime: Nov 20, 2017, 1:39:24 PM shortDateTime: 11/20/17, 1:39 PM";
+        locale = new Locale("en", "");
+        MessageFormat msgFmt4Date_en = new MessageFormat(messageWithSimpleArg_date, locale);
+        System.out.println("en date format result: "+ msgFmt4Date_en.format(arguments4Date, new StringBuilder(), new FieldPosition(0)).toString());
+        Assert.assertEquals(expectedDateFormat_en,
+                msgFmt4Date_en.format(arguments4Date, new StringBuilder(), new FieldPosition(0)).toString());
+
+        String expectedDateFormat_fr =
+                "default style is mediumDateTime: 20 nov. 2017 à 13:39:24 " +
+                        "fullDate: lundi 20 novembre 2017 longDate: 20 novembre 2017 mediumDate: 20 nov. 2017 shortDate: 20/11/2017 " +
+                        "fullTime: 13:39:24 GMT+08:00 longTime: 13:39:24 GMT+8 mediumTime: 13:39:24 shortTime: 13:39 " +
+                        "fullDateTime: lundi 20 novembre 2017 à 13:39:24 GMT+08:00 longDateTime: 20 novembre 2017 à 13:39:24 GMT+8 mediumDateTime: 20 nov. 2017 à 13:39:24 shortDateTime: 20/11/2017 13:39";
+        locale = new Locale("fr", "");
+        MessageFormat msgFmt4Date_fr = new MessageFormat(messageWithSimpleArg_date, locale);
+        System.out.println("fr date format result: "+ msgFmt4Date_fr.format(arguments4Date, new StringBuilder(), new FieldPosition(0)).toString());
+        Assert.assertEquals(expectedDateFormat_fr,
+                msgFmt4Date_fr.format(arguments4Date, new StringBuilder(), new FieldPosition(0)).toString());
+
+
+
+        String messageWithSimpleArg = "At {1,date,shortTime} on {1,date,longDate}, there was {2} on planet {0,number}.";
+        Object[] arguments = {
+                7,
+                new Date(timestamp),
+                "a disturbance in the Force"
+        };
+
+        MessageFormat msgFmt1 = new MessageFormat(messageWithSimpleArg, Locale.ENGLISH);
+        System.out.println(msgFmt1.format(arguments, new StringBuilder(), new FieldPosition(0)).toString());
+        Assert.assertEquals("At 1:39 PM on November 20, 2017, there was a disturbance in the Force on planet 7.",
+                msgFmt1.format(arguments, new StringBuilder(), new FieldPosition(0)).toString());
     }
 }
