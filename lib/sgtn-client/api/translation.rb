@@ -17,7 +17,7 @@ module SgtnClient
         if str.nil?
           str = SgtnClient::Source.getSource(component, key, SgtnClient::Config.configurations.default)
           if str.nil?
-            SgtnClient.logger.error "[Translation]can't find the key '" + key + "' in source path!"
+            SgtnClient.logger.debug "[Translation]can't find the key '" + key + "' in source path! component: " + component 
           end
         end
         str
@@ -29,7 +29,7 @@ module SgtnClient
         if str.nil?
           str = SgtnClient::Source.getSource(component, key, SgtnClient::Config.configurations.default)
           if str.nil?
-            SgtnClient.logger.error "[Translation]can't find the key '" + key + "' in source path!"
+            SgtnClient.logger.debug "[Translation]can't find the key '" + key + "' in source path!"
             return nil
           end
           str.to_plural_s(:en, plural_args)
