@@ -16,6 +16,11 @@ describe SgtnClient do
       expect(SgtnClient::Translation.getString("JAVA", "helloworld", "en")).to eq 'Hello world'
     end
 
+    it "GET_INVALID_LOCALE" do
+      expect(SgtnClient::Translation.getString("JAVA", "helloworld", locale: nil)).to eq 'Hello world'
+      expect(SgtnClient::Translation.getString("JAVA", "helloworld", locale: 'garbage')).to eq 'Hello world'
+    end 
+
     it "GET" do
       expect(SgtnClient::Translation.getString("JAVA", "helloworld", "zh-Hans")).to eq '你好世界'
       # get from cache in 2nd time
