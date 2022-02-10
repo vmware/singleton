@@ -14,6 +14,7 @@ describe SgtnClient do
       expect(SgtnClient::Translation.getString("JAVA", "helloworld", "en")).to eq 'Hello world'
       # get from cache in 2nd time
       expect(SgtnClient::Translation.getString("JAVA", "helloworld", "en")).to eq 'Hello world'
+      expect(SgtnClient::Translation.getString("JAVA", "helloworld", :en)).to eq 'Hello world'
     end
 
     it "GET" do
