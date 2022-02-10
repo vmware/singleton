@@ -41,7 +41,7 @@ module SgtnClient
       def self.loadBundles(locale)
         SgtnClient.logger.debug "[Source][loadBundles]locale=#{locale}"
         if locale.nil?
-          SgtnClient.logger.error "[Source][loadBundles]the input is nil!"
+          SgtnClient.logger.error "[Source][loadBundles]the argument locale is nil!"
           return
         end
         env = SgtnClient::Config.default_environment
