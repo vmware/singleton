@@ -1,6 +1,6 @@
 # -*-coding:UTF-8 -*-
 #
-# Copyright 2020-2021 VMware, Inc.
+# Copyright 2020-2022 VMware, Inc.
 # SPDX-License-Identifier: EPL-2.0
 #
 
@@ -57,6 +57,10 @@ class Translation(object):
         raise Exception(NOT_IMP_EXCEPTION)
 
     def get_locale_supported(self, locale):
+        raise Exception(NOT_IMP_EXCEPTION)
+
+    def format(self, locale, text, array):
+        """format 'text' with values of 'array' according to locale"""
         raise Exception(NOT_IMP_EXCEPTION)
 
 

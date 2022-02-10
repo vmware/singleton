@@ -1,6 +1,6 @@
 # -*-coding:UTF-8 -*-
 #
-# Copyright 2020-2021 VMware, Inc.
+# Copyright 2020-2022 VMware, Inc.
 # SPDX-License-Identifier: EPL-2.0
 #
 
@@ -53,6 +53,24 @@ class SampleApplication():
             return True
         return False
 
+    def use_icu(self, cfg, trans):
+        _support_icu = False
+        try:
+            from icu import Locale
+            _temp = Locale('en')
+            _support_icu = True
+        except:
+            return
+        
+        if cfg.format_type != 'icu':
+            return
+        print('--- use icu ---')
+        txt = trans.format('en', 'I bought {0, plural, one {# book} other {# books}}.', [12])
+        print('--- plural --- %s ---' % txt)
+        txt = trans.get_string('about', 'icu.plural1', locale = 'en-US', format_items = [1])
+        print('--- plural --- %s ---' % txt)
+        print('--- end icu ---')
+
     def main(self):
 
         KEY = 'about.title'
@@ -92,6 +110,7 @@ class SampleApplication():
         trans = rel.get_translation()
         self.check_locale(trans, 'ZH_cn')
         self.check_locale(trans, 'EN_us')
+        self.use_icu(cfg, trans)
 
         #
         # step 4
