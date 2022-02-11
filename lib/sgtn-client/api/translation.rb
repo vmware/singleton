@@ -17,7 +17,7 @@ module SgtnClient
         if str.nil?
           str = SgtnClient::Source.getSource(component, key, SgtnClient::Config.configurations.default)
           if str.nil?
-            SgtnClient.logger.debug "[Translation.getString] Missing source string with key: #{key}, component: #{component}, locale=#{locale}"
+            SgtnClient.logger.debug "[Translation.getString] Missing source string with key: #{key}, component: #{component}, locale: #{locale}"
           end
         end
         str
