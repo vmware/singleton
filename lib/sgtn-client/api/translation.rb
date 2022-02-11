@@ -62,7 +62,7 @@ module SgtnClient
           items = {}
           s = SgtnClient::Source.getSources(component, default)
           if s.nil?
-            SgtnClient.logger.error "[Translation.getStrings] Missing source string with key: #{key}, component: #{component}, locale=#{locale}"
+            SgtnClient.logger.error "[Translation.getStrings] Missing source string with key: #{key}, component: #{component}, locale: #{locale}"
           else
             default_component, value = s.first
             items["component"] = component
