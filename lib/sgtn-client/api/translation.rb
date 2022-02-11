@@ -86,8 +86,8 @@ module SgtnClient
       end
 
       def self.get_cs(component, locale=nil)
-        locale = locale.to_s
         locale ||= SgtnClient::Config.configurations.default
+        locale = locale.to_s
         flocale = SgtnClient::LocaleUtil.fallback(locale)
         cache_key = SgtnClient::CacheUtil.get_cachekey(component, flocale)
         SgtnClient.logger.debug "[Translation][get_cs]cache_key=#{cache_key}"
