@@ -17,7 +17,7 @@ module SgtnClient
         if str.nil?
           str = SgtnClient::Source.getSource(component, key, SgtnClient::Config.configurations.default)
           if str.nil?
-            SgtnClient.logger.debug "[Translation.getString] Missing source string with key: #{key}, component: #{component}, locale: #{locale}"
+            SgtnClient.logger.debug "[Translation][getString] Missing source string with key: #{key}, component: #{component}, locale: #{locale}"
           end
         end
         str
@@ -29,7 +29,7 @@ module SgtnClient
         if str.nil?
           str = SgtnClient::Source.getSource(component, key, SgtnClient::Config.configurations.default)
           if str.nil?
-            SgtnClient.logger.debug "[Translation.getString_p] Missing source string with key: #{key}, component: #{component}, locale: #{locale}"
+            SgtnClient.logger.debug "[Translation][getString_p] Missing source string with key: #{key}, component: #{component}, locale: #{locale}"
             return nil
           end
           str.to_plural_s(:en, plural_args)
@@ -62,7 +62,7 @@ module SgtnClient
           items = {}
           s = SgtnClient::Source.getSources(component, default)
           if s.nil?
-            SgtnClient.logger.error "[Translation.getStrings] Missing source string with key: #{key}, component: #{component}, locale: #{locale}"
+            SgtnClient.logger.error "[Translation][getStrings] Missing source string with key: #{key}, component: #{component}, locale: #{locale}"
           else
             default_component, value = s.first
             items["component"] = component
