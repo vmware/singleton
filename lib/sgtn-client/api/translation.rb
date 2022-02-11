@@ -12,7 +12,7 @@ module SgtnClient
   class Translation
 
       def self.getString(component, key, locale)
-        SgtnClient.logger.debug "[Translation][getString]component=#{component}, key=#{key}, locale=#{locale}"
+        SgtnClient.logger.debug "[Translation.getString]component: #{component}, key: #{key}, locale: #{locale}"
         str = getTranslation(component, key, locale)
         if str.nil?
           str = SgtnClient::Source.getSource(component, key, SgtnClient::Config.configurations.default)
