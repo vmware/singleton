@@ -10,6 +10,11 @@ module SgtnClient
                   }
 
     class LocaleUtil
+        def self.process_locale(locale=nil)
+            locale = locale.class == Hash ? locale[:locale] : locale
+            locale ||= SgtnClient::Config.configurations.default
+        end
+
         def self.fallback(locale)
             found = SgtnClient::DEFAULT_LOCALES.select {|e| e == locale}
             if !found.empty?
