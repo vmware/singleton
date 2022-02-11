@@ -85,8 +85,6 @@ module SgtnClient
         end
       end
 
-      
-      
       def self.get_cs(component, locale)
         locale = SgtnClient::LocaleUtil.process_locale(locale)
         flocale = SgtnClient::LocaleUtil.fallback(locale)
