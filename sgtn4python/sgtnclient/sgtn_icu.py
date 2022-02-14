@@ -9,7 +9,7 @@ try:
     from icu import Locale, Formattable, MessageFormat
     _temp = Locale('en')
     _support_icu = True
-except Exception as e:
+except Exception:
     pass
 
 
@@ -33,5 +33,5 @@ def sgtn_icu_format(locale, text, array):
 
     try:
         return _icu_format(locale, text, array)
-    except Exception as e:
+    except Exception:
         return text.format(*array)
