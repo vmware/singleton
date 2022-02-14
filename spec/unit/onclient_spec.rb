@@ -18,7 +18,6 @@ describe SgtnClient do
 
     it "GET_NIL_LOCALE" do
       expect(SgtnClient::Translation.getString("JAVA", "helloworld", nil)).to eq 'Hello world'
-      expect(SgtnClient::Translation.getString("JAVA", "helloworld", locale:nil)).to eq 'Hello world'
     end 
 
     it "GET" do
