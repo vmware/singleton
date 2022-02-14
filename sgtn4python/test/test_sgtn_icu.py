@@ -10,13 +10,12 @@ import sys
 sys.path.append('../sgtnclient')
 import sgtn_icu
 
-_support_icu = False
 try:
     from icu import Locale
     _temp = Locale('en')
     _support_icu = True
-except:
-    pass
+except Exception:
+    _support_icu = False
 
 
 class TestIcu(unittest.TestCase):

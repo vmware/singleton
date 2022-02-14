@@ -4,13 +4,12 @@
 # SPDX-License-Identifier: EPL-2.0
 #
 
-_support_icu = False
 try:
     from icu import Locale, Formattable, MessageFormat
     _temp = Locale('en')
     _support_icu = True
 except Exception:
-    pass
+    _support_icu = False
 
 
 def _icu_format(locale, text, array):
