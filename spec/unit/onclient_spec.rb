@@ -17,6 +17,7 @@ describe SgtnClient do
     end
 
     it "GET_NIL_LOCALE" do
+      allow(SgtnClient::LocaleUtil).to receive(:process_locale).and_return(SgtnClient::Config.configurations.default)
       expect(SgtnClient::Translation.getString("JAVA", "helloworld", nil)).to eq 'Hello world'
     end 
 
