@@ -22,7 +22,6 @@ describe SgtnClient do
 
     it "process_locale" do
       expect(SgtnClient::LocaleUtil.process_locale(nil)).to eq SgtnClient::Config.configurations.default
-      expect(SgtnClient::LocaleUtil.process_locale(locale:nil)).to eq SgtnClient::Config.configurations.default
     end
   end
 
