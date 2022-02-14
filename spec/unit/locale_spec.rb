@@ -18,6 +18,12 @@ describe SgtnClient do
       expect(SgtnClient::LocaleUtil.fallback('zh-Hant-TW')).to eq 'zh-Hant'
       expect(SgtnClient::LocaleUtil.fallback('kong-kong')).to eq 'kong-kong'
     end
+
+    it "process_locale" do
+      expect(SgtnClient::LocaleUtil.process_locale(:'de-DE')).to eq 'de-DE'
+      expect(SgtnClient::LocaleUtil.process_locale(:ja)).to eq 'ja'
+      expect(SgtnClient::LocaleUtil.process_locale(:'ja')).to eq 'ja'
+    end
   end
 
 end
