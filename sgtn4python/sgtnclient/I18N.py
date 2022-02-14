@@ -60,7 +60,7 @@ class Translation(object):
         raise Exception(NOT_IMP_EXCEPTION)
 
     def format(self, locale, text, array):
-        """Format 'text' with values of 'array' according to locale."""
+        # Format 'text' with values of 'array' according to locale.
         raise Exception(NOT_IMP_EXCEPTION)
 
 
