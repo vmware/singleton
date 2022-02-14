@@ -12,8 +12,6 @@ if _libPath not in sys.path:
     sys.path.append(_libPath)
 
 
-NOT_IMP_EXCEPTION = 'NotImplementedException'
-
 _release_manager = None
 
 
@@ -25,43 +23,47 @@ def _get_release_manager():
     return _release_manager
 
 
-class Config(object):
+class Interface(object):
+    NOT_IMP_EXCEPTION = Exception('NotImplementedException')
+
+
+class Config(Interface):
     """Config interface"""
 
     def get_config_data(self):
-        raise Exception()
+        raise self.NOT_IMP_EXCEPTION
 
     def get_info(self):
-        raise Exception(NOT_IMP_EXCEPTION)
+        raise self.NOT_IMP_EXCEPTION
 
 
-class Release(object):
+class Release(Interface):
     """Release interface"""
 
     def get_config(self):
         """get config interface Config"""
-        raise Exception(NOT_IMP_EXCEPTION)
+        raise self.NOT_IMP_EXCEPTION
 
     def get_translation(self):
         """get translation interface Translation"""
-        raise Exception(NOT_IMP_EXCEPTION)
+        raise self.NOT_IMP_EXCEPTION
 
 
-class Translation(object):
+class Translation(Interface):
     """Translation interface"""
 
     def get_string(self, component, key, **kwargs):
-        raise Exception(NOT_IMP_EXCEPTION)
+        raise self.NOT_IMP_EXCEPTION
 
     def get_locale_strings(self, locale, as_source):
-        raise Exception(NOT_IMP_EXCEPTION)
+        raise self.NOT_IMP_EXCEPTION
 
     def get_locale_supported(self, locale):
-        raise Exception(NOT_IMP_EXCEPTION)
+        raise self.NOT_IMP_EXCEPTION
 
     def format(self, locale, text, array):
-        # Format 'text' with values of 'array' according to locale.
-        raise Exception(NOT_IMP_EXCEPTION)
+        """Format 'text' with values of 'array' according to locale."""
+        raise self.NOT_IMP_EXCEPTION
 
 
 def add_config_file(config_file, outside_config=None):
