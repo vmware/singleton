@@ -51,7 +51,7 @@ public class TranslationProductComponentKeyAPI extends
 			@ApiParam(name = APIParamName.COMPONENT, required = true, value = APIParamValue.COMPONENT) @PathVariable(APIParamName.COMPONENT) String component,
 			@ApiParam(name = APIParamName.VERSION, required = true, value = APIParamValue.VERSION) @RequestParam(value = APIParamName.VERSION, required = true) String version,
 			@ApiParam(name = APIParamName.KEY, required = true, value = APIParamValue.KEY) @PathVariable(APIParamName.KEY) String key,
-			@ApiParam(name = APIParamName.SOURCE, value = APIParamValue.SOURCE) @RequestParam(value = APIParamName.SOURCE) String source,
+			@ApiParam(name = APIParamName.SOURCE, value = APIParamValue.SOURCE) @RequestParam(value = APIParamName.SOURCE, required = false) String source,
 			@ApiParam(name = APIParamName.COMMENT_SOURCE, value = APIParamValue.COMMENT_SOURCE) @RequestParam(value = APIParamName.COMMENT_SOURCE, required = false) String commentForSource,
 			@ApiParam(name = APIParamName.LOCALE, value = APIParamValue.LOCALE) @RequestParam(value = APIParamName.LOCALE, required = false) String locale,
 			@ApiParam(name = APIParamName.SOURCE_FORMAT, value = APIParamValue.SOURCE_FORMAT) @RequestParam(value = APIParamName.SOURCE_FORMAT, required = false) String sourceFormat,
