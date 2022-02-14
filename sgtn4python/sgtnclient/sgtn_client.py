@@ -1,6 +1,6 @@
 # -*-coding:UTF-8 -*-
 #
-# Copyright 2020-2021 VMware, Inc.
+# Copyright 2020-2022 VMware, Inc.
 # SPDX-License-Identifier: EPL-2.0
 #
 
@@ -16,6 +16,7 @@ from sgtn_util import FileUtil, NetUtil, SysUtil
 from sgtn_util import LOG_TYPE_INFO, KEY_RESULT, KEY_HEADERS
 from sgtn_bykey import SingletonByKey
 from sgtn_locale import SingletonLocaleUtil
+from sgtn_icu import sgtn_icu_format
 from sgtn_py_base import pybase, SgtnException
 
 from I18N import Config, Release, Translation
@@ -37,6 +38,7 @@ KEY_LOCAL_PATH = 'offline_resources_path'
 KEY_SOURCE_PATH = 'source_resources_path'
 KEY_LOAD_ON_STARTUP = 'load_on_startup'
 KEY_MULTITASK = 'multitask'
+KEY_FORMAT = 'format'
 
 KEY_DEFAULT_LOCALE = 'default_locale'
 KEY_SOURCE_LOCALE = 'source_locale'
@@ -132,6 +134,7 @@ class SingletonConfig(Config):
         self.is_online_supported = True if self.remote_url else False
         self.is_offline_supported = True if self.local_url else False
         self.is_load_on_startup = True if config_data.get(KEY_LOAD_ON_STARTUP) else False
+        self.format_type = self._get_item(KEY_FORMAT, 'default')
 
         if self.local_url:
             parts = self.local_url.split('/')
@@ -818,11 +821,13 @@ class SingletonReleaseForCache(SingletonReleaseBase):
         msg = self._get_message(component, key, locale)
         return self._check_with_key(msg, sourceInCode, key)
 
-    def _format_by_array(self, text, array):
-        return text.format(*array)
-
     def _format_by_map(self, text, map):
         return text.format(**map)
+
+    def format(self, locale, text, array):
+        if 'icu' == self.cfg.format_type:
+            return sgtn_icu_format(locale, text, array)
+        return text.format(*array)
 
 
 class SingletonReleaseInternal(SingletonReleaseForCache):
@@ -954,7 +959,7 @@ class SingletonRelease(SingletonReleaseInternal, Release, Translation):
         text = self._get_raw_msg(component, key, sourceInCode, locale, items)
         if text and items:
             if isinstance(items, list):
-                text = self._format_by_array(text, items)
+                text = self.format(locale, text, items)
             elif isinstance(items, dict):
                 text = self._format_by_map(text, items)
 
