@@ -6,6 +6,7 @@ package com.vmware.l10n.conf;
 
 import javax.annotation.PostConstruct;
 
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,9 +40,10 @@ public class S3Client {
 	private final static int DURATIONSEC = 3600;
 
 	/**
-	 * three seconds time error range the unit is microsecond
+	 * time error range(microsecond)
 	 */
-	private final static long THREESEC = 3000;
+
+	private final static long TIME_ERR_RANGE = 3000;
 
 	/**
 	 * Time errors between current OS systems time with AWS time
@@ -54,16 +56,21 @@ public class S3Client {
 	private S3Cfg config;
 
 	@PostConstruct
-	private void initS3Client() {
+	protected void initS3Client() {
 
 		sessionCreds = getRoleCredentials();
 		s3Client = getAmazonS3();
 		if (!s3Client.doesBucketExistV2(config.getBucketName())) {
 			s3Client.createBucket(config.getBucketName());
-			// Verify that the bucket was created by retrieving it and checking its
-			// location.
+			// Verify that the bucket was created by retrieving it and checking its location.
 			String bucketLocation = s3Client.getBucketLocation(new GetBucketLocationRequest(config.getBucketName()));
-			LOGGER.info("Bucket location: {}", bucketLocation);
+			
+			if(StringUtils.isEmpty(bucketLocation)) {
+				LOGGER.error("create new bucket failure: {}", config.getBucketName());
+			}else {
+				LOGGER.info("create new bucket location: {}", bucketLocation);
+			}
+			
 		}
 
 	}
@@ -94,7 +101,7 @@ public class S3Client {
 		AssumeRoleResult sessionTokenResult = stsClient.assumeRole(arreq);
 		long time = System.currentTimeMillis();
 		Credentials result = sessionTokenResult.getCredentials();
-		reducedTime = (result.getExpiration().getTime() - (DURATIONSEC * 1000) - time) + THREESEC;
+		reducedTime = (result.getExpiration().getTime() - (DURATIONSEC * 1000) - time) + TIME_ERR_RANGE;
 		return result;
 	}
 
