@@ -80,7 +80,7 @@ public class TestSyncGrmSourceService {
 			syncSource.sendSourceToGRM();
 			List<File> i18nQueueFiles = DiskQueueUtils
 					.listQueueFiles(new File(basePath + DiskQueueUtils.L10N_TMP_I18N_PATH));
-			Assert.isTrue(i18nQueueFiles.size() < 1);
+			Assert.isTrue(i18nQueueFiles == null || i18nQueueFiles.size() < 1);
 			
 			List<File> delFiles = DiskQueueUtils.listQueueFiles(new File(basePath + DiskQueueUtils.L10N_TMP_GRM_PATH));
 			for (File delFile : delFiles) {
