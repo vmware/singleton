@@ -6,6 +6,7 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 
 description = 'VIP4Java'
+archivesBaseName = 'singleton-client-java'
 
 apply plugin: "jacoco"
 apply plugin: "org.sonarqube"
@@ -27,12 +28,6 @@ version = '0.1.0'
  
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
-}
-
-task copyJars(type :Copy, dependsOn: jar) {
-	from "$buildDir/libs"
-	into "$rootDir/../publish/"
-	include "**/*.jar"
 }
 
 repositories {
@@ -80,7 +75,6 @@ jar {
         attributes 'Implementation-Title': 'Gradle Quickstart',
                    'Implementation-Version': version
     }
-    baseName = "vip4java"
     classifier = ''
 }
 
@@ -91,8 +85,6 @@ uploadArchives {
        }
     }
 }
-
-assemble.dependsOn.add copyJars
 
 task createWrapper(type: Wrapper) {
     gradleVersion = '5.6.1'
@@ -106,15 +98,21 @@ if (JavaVersion.current().isJava8Compatible()) {
     }
 }
 
-task sourcesJar(type: Jar) {
+task sourcesJar(type: Jar, dependsOn: classes) {
     from sourceSets.main.allJava
     archiveClassifier = 'sources'
 }
 
-task javadocJar(type: Jar) {
+task javadocJar(type: Jar, dependsOn: javadoc) {
     from javadoc
     archiveClassifier = 'javadoc'
 
+}
+
+task copyJars(type :Copy, dependsOn: [jar, sourcesJar, javadocJar]) {
+    from "$buildDir/libs"
+    into "$rootDir/../publish/"
+    include "**/*.jar"
 }
 
 jacocoTestReport {
@@ -132,3 +130,5 @@ test {
         exceptionFormat "full"
     }
 }
+
+assemble.dependsOn.add copyJars
