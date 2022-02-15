@@ -18,6 +18,7 @@ module SgtnClient
           str = SgtnClient::Source.getSource(component, key, SgtnClient::Config.configurations.default)
           if str.nil?
             SgtnClient.logger.debug "[Translation][getString]can't find key=#{key}, component=#{component}, locale=#{locale}!!!"
+            raise("Can't find key=#{key}, component=#{component}, locale=#{locale}!!!")
           end
         end
         str
@@ -30,7 +31,7 @@ module SgtnClient
           str = SgtnClient::Source.getSource(component, key, SgtnClient::Config.configurations.default)
           if str.nil?
             SgtnClient.logger.debug "[Translation][getString_p]can't find key=#{key}, component=#{component}, locale=#{locale}!!!"
-            return nil
+            raise("can't find key=#{key}, component=#{component}, locale=#{locale}!!!")
           end
           str.to_plural_s(:en, plural_args)
         else
@@ -63,6 +64,7 @@ module SgtnClient
           s = SgtnClient::Source.getSources(component, default)
           if s.nil?
             SgtnClient.logger.debug "[Translation][getStrings]can't find component=#{component}, locale=#{locale}!!!"
+            raise("can't find component=#{component}, locale=#{locale}!!!")
           else
             default_component, value = s.first
             items["component"] = component
