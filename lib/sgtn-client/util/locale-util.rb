@@ -11,7 +11,7 @@ module SgtnClient
 
     class LocaleUtil
         def self.process_locale(locale=nil)
-            locale ||= SgtnClient::Config.configurations.default
+            locale || SgtnClient::Config.configurations.default
         end
 
         def self.fallback(locale)
