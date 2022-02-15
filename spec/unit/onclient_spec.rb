@@ -41,13 +41,9 @@ describe SgtnClient do
     end
 
     it "NonExistingComponent" do
-      begin
-        expect(SgtnClient::Translation.getString("NonExisting", "new_hello", "zh-Hans")).to eq nil
-        emptyObj = {}
-        expect(SgtnClient::Translation.getStrings("NonExisting", "zh-Hans")).to eq emptyObj
-      rescue => exception
-        puts exception.message
-      end
+      expect(SgtnClient::Translation.getString("NonExisting", "new_hello", "zh-Hans")).to eq nil
+      emptyObj = {}
+      expect(SgtnClient::Translation.getStrings("NonExisting", "zh-Hans")).to eq emptyObj
     end
 
     it "NonExistingLanuage" do

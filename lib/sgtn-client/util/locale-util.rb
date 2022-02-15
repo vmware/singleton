@@ -15,9 +15,6 @@ module SgtnClient
         end
 
         def self.fallback(locale)
-            if locale.nil?
-                return nil
-            end
             found = SgtnClient::DEFAULT_LOCALES.select {|e| e == locale}
             if !found.empty?
                 return found[0]
@@ -25,7 +22,7 @@ module SgtnClient
             if SgtnClient::MAP_LOCALES.key?(locale)
                 return SgtnClient::MAP_LOCALES[locale]
             end
-            parts = locale.to_s.split("-")
+            parts = locale.split("-")
             if parts.size > 1
                 f = SgtnClient::DEFAULT_LOCALES.select {|e| e == parts[0]}
                 if !f.empty?

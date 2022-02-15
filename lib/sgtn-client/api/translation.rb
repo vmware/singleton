@@ -23,7 +23,7 @@ module SgtnClient
         str
       end
 
-      def self.getString_p(component, key, plural_args, locale=SgtnClient::Config.configurations.default)
+      def self.getString_p(component, key, plural_args, locale)
         SgtnClient.logger.debug "[Translation][getString_p]component=#{component}, key=#{key}, locale=#{locale}"
         str = getTranslation(component, key, locale)
         if str.nil?
@@ -38,7 +38,7 @@ module SgtnClient
         end
       end
 
-      def self.getString_f(component, key, args, locale=SgtnClient::Config.configurations.default, *optionals)
+      def self.getString_f(component, key, args, locale, *optionals)
          SgtnClient.logger.debug "[Translation][getString_f]component=#{component}, key=#{key}, locale=#{locale}"
          s = getString(component, key, locale, *optionals)
          if s.nil?
@@ -54,7 +54,7 @@ module SgtnClient
          return s
       end
 
-      def self.getStrings(component, locale=SgtnClient::Config.configurations.default)
+      def self.getStrings(component, locale)
         SgtnClient.logger.debug "[Translation][getStrings]component=#{component}, locale=#{locale}"
         items = get_cs(component, locale)
         default = SgtnClient::Config.configurations.default
@@ -92,19 +92,17 @@ module SgtnClient
         SgtnClient.logger.debug "[Translation][get_cs]cache_key=#{cache_key}"
         expired, items = SgtnClient::CacheUtil.get_cache(cache_key)
         if items.nil? || expired
-            t = Thread.new {
-              items = load(component, flocale)
-              if items.nil?
-                items = SgtnClient::Source.getSources(component, SgtnClient::Config.configurations.default)
-                SgtnClient::Core::Cache.put(cache_key, items, 60)
-              else
-                SgtnClient::CacheUtil.write_cache(cache_key, items)
-              end
-            }
-            t.join if !expired
+          items = load(component, flocale)
+          if items.nil?
+            items = SgtnClient::Source.getSources(component, SgtnClient::Config.configurations.default)
+            SgtnClient::Core::Cache.put(cache_key, items, 60)
+          else
+            SgtnClient::CacheUtil.write_cache(cache_key, items)
+          end
         else
           SgtnClient.logger.debug "[Translation]get translations from cache with key: " + cache_key
         end
+
         return items
        end
 
