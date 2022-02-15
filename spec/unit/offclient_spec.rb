@@ -32,22 +32,25 @@ describe SgtnClient do
     end
 
     it "NonExistingKey" do
+      begin
+        expect(SgtnClient::Translation.getString("JAVA", "hello.nonexisting", "zh-Hans")).to eq nil
+        # get from cache in 2nd time
+        expect(SgtnClient::Translation.getString("JAVA", "hello.nonexisting", "zh-Hans")).to eq nil
 
-      expect(SgtnClient::Translation.getString("JAVA", "hello.nonexisting", "zh-Hans")).to eq nil
-      # get from cache in 2nd time
-      expect(SgtnClient::Translation.getString("JAVA", "hello.nonexisting", "zh-Hans")).to eq nil
+        expect(SgtnClient::Translation.getString("JAVA", "hello", "zh-Hans")).to eq 'Hello'
+        # get from cache in 2nd time
+        expect(SgtnClient::Translation.getString("JAVA", "hello", "zh-Hans")).to eq 'Hello'
 
-      expect(SgtnClient::Translation.getString("JAVA", "hello", "zh-Hans")).to eq 'Hello'
-      # get from cache in 2nd time
-      expect(SgtnClient::Translation.getString("JAVA", "hello", "zh-Hans")).to eq 'Hello'
-
-      expect(SgtnClient::Translation.getString_f("JAVA", "login", ["VM", "Robot"], "zh-Hans")).to eq 'Robot login VM!'
-      # get from cache in 2nd time
-      expect(SgtnClient::Translation.getString_f("JAVA", "login", ["VM", "Robot"], "zh-Hans")).to eq 'Robot login VM!' 
-      
-      expect(SgtnClient::Translation.getString_f("JAVA", "type_error", {"error": "错误数字类型", "correct": "正确数字类型"}, "zh-Hans")).to eq '检测到错误数字类型，请输入正确数字类型!'
-      # get from cache in 2nd time
-      expect(SgtnClient::Translation.getString_f("JAVA", "type_error", {"error": "错误数字类型", "correct": "正确数字类型"}, "zh-Hans")).to eq '检测到错误数字类型，请输入正确数字类型!'
+        expect(SgtnClient::Translation.getString_f("JAVA", "login", ["VM", "Robot"], "zh-Hans")).to eq 'Robot login VM!'
+        # get from cache in 2nd time
+        expect(SgtnClient::Translation.getString_f("JAVA", "login", ["VM", "Robot"], "zh-Hans")).to eq 'Robot login VM!' 
+        
+        expect(SgtnClient::Translation.getString_f("JAVA", "type_error", {"error": "错误数字类型", "correct": "正确数字类型"}, "zh-Hans")).to eq '检测到错误数字类型，请输入正确数字类型!'
+        # get from cache in 2nd time
+        expect(SgtnClient::Translation.getString_f("JAVA", "type_error", {"error": "错误数字类型", "correct": "正确数字类型"}, "zh-Hans")).to eq '检测到错误数字类型，请输入正确数字类型!'
+      rescue => exception
+        puts exception.message
+      end
     end
 
     it "Component" do

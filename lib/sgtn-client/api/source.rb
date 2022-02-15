@@ -18,8 +18,7 @@ module SgtnClient
         s = items.nil?? nil : items[locale][key]
         if items.nil? || s.nil?
           SgtnClient.logger.debug "[Source][getSource]source not found, return key: " + key
-          #return key
-          return nil
+          raise("source is missing, component=#{component}, key=#{key}")
         else
           return s
         end
