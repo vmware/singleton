@@ -21,7 +21,6 @@ import org.springframework.util.StringUtils;
 import com.vmware.l10n.source.service.SourceService;
 import com.vmware.l10n.utils.DiskQueueUtils;
 import com.vmware.l10n.utils.MapUtil;
-import com.vmware.vip.common.constants.ConstantsChar;
 import com.vmware.vip.common.constants.ConstantsKeys;
 import com.vmware.vip.common.l10n.source.dto.ComponentSourceDTO;
 import com.vmware.vip.common.l10n.source.dto.StringSourceDTO;
@@ -90,7 +89,7 @@ public class SourceServiceImpl implements SourceService {
 
 		StringSourceDTO strDTO = STRING_SOURCES.poll();
 		strDTO.setLocale(ConstantsKeys.LATEST);
-		String key = getKey(strDTO);
+		String key = strDTO.getKey();
 		String source = strDTO.getSource();
 		String comment = strDTO.getComment();
 		String sourceFormat = strDTO.getSourceFormat();
@@ -153,17 +152,7 @@ public class SourceServiceImpl implements SourceService {
 		return true;
 	}
 
-	/*
-	 * get the key from StringSourceDTO, if there's source format(e.g. HTML), will
-	 * append '.#'(e.g key.#HTML).
-	 */
-	private static String getKey(StringSourceDTO stringSourceDTO) {
-		String key = stringSourceDTO.getKey();
-		if (!StringUtils.isEmpty(stringSourceDTO.getSourceFormat()))
-			key = key + ConstantsChar.DOT + ConstantsChar.POUND + stringSourceDTO.getSourceFormat().toUpperCase();
 
-		return key;
-	}
 
 
 }

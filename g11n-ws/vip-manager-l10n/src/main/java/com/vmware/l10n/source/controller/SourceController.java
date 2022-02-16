@@ -129,13 +129,16 @@ public class SourceController {
 				String k = kscDTO.getKey();
 				String s = kscDTO.getSource();
 				String c = kscDTO.getCommentForSource();
+				String sf = kscDTO.getSourceFormat();
+				
 				final StringSourceDTO stringSourceDTO = createSourceDTO(
-						productName, version, component, k, s, c, sourceFormat);
+						productName, version, component, k, s, c, sf);
 				if (!sourceService.cacheSource(stringSourceDTO)) {
 					isSourceCached = false;
 				}
 			}
 		} else {
+			LOGGER.info(key);
 			final StringSourceDTO stringSourceDTO = createSourceDTO(
 					productName, version, component, key, sourceStr,
 					commentForSource, sourceFormat);

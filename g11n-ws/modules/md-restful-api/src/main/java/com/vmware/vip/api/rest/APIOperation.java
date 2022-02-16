@@ -28,6 +28,8 @@ public class APIOperation {
 	public final static String KEY_TRANSLATION_POST_NOTES = "Post a source under the component";
 	public final static String KEY_SET_POST_VALUE = "Post a set of sources";
 	public final static String KEY_SET_POST_NOTES = "Post a set of sources under the component";
+	public final static String KEY_SET_GET_VALUE = "Get mult-keys' translation";
+	public final static String KEY_SET_GET_NOTES = "Get mult-keys' translation in specific component";
 
 	public final static String SOURCE_TRANSLATION_GET_VALUE = "Get translation by source";
 	public final static String SOURCE_TRANSLATION_GET_NOTES = "Get translation by source";

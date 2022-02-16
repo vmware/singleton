@@ -130,4 +130,26 @@ public class TranslationProductComponentKeyAPI extends TranslationProductCompone
 		}
 		return super.handleResponse(APIResponseStatus.OK, "Recieved the sources and comments(please use translation-product-component-api to confirm it).");
 	}
+	
+	/**
+	 * API to post a bunch of strings
+	 *
+	 */
+	@ApiOperation(value = APIOperation.KEY_SET_GET_VALUE, notes = APIOperation.KEY_SET_GET_NOTES)
+	@RequestMapping(value = APIV2.KEY_SET_GET, method = RequestMethod.GET, produces = { API.API_CHARSET })
+	@ResponseStatus(HttpStatus.OK)
+	public APIResponseDTO getKeysSources(
+			@ApiParam(name = APIParamName.PRODUCT_NAME, required = true, value = APIParamValue.PRODUCT_NAME) @PathVariable(APIParamName.PRODUCT_NAME) String productName,
+			@ApiParam(name = APIParamName.VERSION, required = true, value = APIParamValue.VERSION) @PathVariable(value = APIParamName.VERSION) String version,
+			@ApiParam(name = APIParamName.LOCALE, required = true, value = APIParamValue.LOCALE) @PathVariable(value = APIParamName.LOCALE) String locale,
+			@ApiParam(name = APIParamName.COMPONENT, required = true, value = APIParamValue.COMPONENT) @PathVariable(APIParamName.COMPONENT) String component,
+			@ApiParam(name = APIParamName.KEYS, required = true, value = APIParamValue.KEYS) @RequestParam(value = APIParamName.KEYS) String keys,
+			@ApiParam(name = APIParamName.PSEUDO, value = APIParamValue.PSEUDO) @RequestParam(value = APIParamName.PSEUDO, required = false, defaultValue = "false") String pseudo,
+			HttpServletRequest request) throws L3APIException {
+		
+		return super.getMultTransByGet(productName, version, locale, component, keys, pseudo);
+
+	}
+	
+	
 }
