@@ -101,7 +101,9 @@ module SgtnClient
                 SgtnClient::CacheUtil.write_cache(cache_key, items)
               end
             }
-            t.join if !expired
+            unless expired
+              t.join 
+            end 
         else
           SgtnClient.logger.debug "[Translation]get translations from cache with key: " + cache_key
         end

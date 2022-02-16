@@ -34,7 +34,9 @@ module SgtnClient
             items = getBundle(component, locale)
             SgtnClient::CacheUtil.write_cache(cache_key, items)
           }
-          t.join if !expired
+          unless expired
+            t.join 
+          end 
         else
           SgtnClient.logger.debug "[Source][getSources]getting sources from cache with key: " + cache_key
         end
