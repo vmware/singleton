@@ -39,6 +39,8 @@ dependencies {
 	compile group: 'commons-codec', name: 'commons-codec', version: '1.15'
     compile group: 'org.springframework.boot', name: 'spring-boot'
     compile group: 'com.amazonaws', name: 'aws-java-sdk-s3', version: '1.12.14'
+    implementation group: 'com.amazonaws', name: 'aws-java-sdk-sts', version: '1.12.14'
+    implementation group: 'com.amazonaws', name: 'aws-java-sdk-iam', version: '1.12.14'
 }
 bootJar {
   enabled = false
