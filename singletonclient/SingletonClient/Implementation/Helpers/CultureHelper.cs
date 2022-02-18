@@ -35,6 +35,10 @@ namespace SingletonClient.Implementation.Helpers
             }
             catch (CultureNotFoundException)
             {
+                if (cultureName.Contains("_"))
+                {
+                    return GetCulture(cultureName.Replace('_', '-'));
+                }
                 return null;
             }
 
