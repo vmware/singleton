@@ -23,7 +23,6 @@ public class APIV2 {
 	public static final String KEY_TRANSLATION_GET        = API_TRANSLATOIN + "/products/{"+APIParamName.PRODUCT_NAME+"}/versions/{"+APIParamName.VERSION2+"}/locales/{"+APIParamName.LOCALE+"}/components/{"+APIParamName.COMPONENT+"}/keys/{"+APIParamName.KEY2+"}";
 	public static final String KEY_TRANSLATION_POST       = API_TRANSLATOIN + "/products/{"+APIParamName.PRODUCT_NAME+"}/versions/{"+APIParamName.VERSION2+"}/locales/{"+APIParamName.LOCALE+"}/components/{"+APIParamName.COMPONENT+"}/keys/{"+APIParamName.KEY2+"}";
 	public static final String KEY_SET_POST               = API_TRANSLATOIN + "/products/{"+APIParamName.PRODUCT_NAME+"}/versions/{"+APIParamName.VERSION2+"}/locales/{"+APIParamName.LOCALE+"}/components/{"+APIParamName.COMPONENT+"}/keys";
-	public static final String KEY_SET_GET               = API_TRANSLATOIN + "/products/{"+APIParamName.PRODUCT_NAME+"}/versions/{"+APIParamName.VERSION2+"}/locales/{"+APIParamName.LOCALE+"}/components/{"+APIParamName.COMPONENT+"}/keys";
 	// source-based
 	public static final String SOURCE_TRANSLATION_GET     = API_TRANSLATOIN + "/products/{"+APIParamName.PRODUCT_NAME+"}/versions/{"+APIParamName.VERSION2+"}/locales/{"+APIParamName.LOCALE+"}/components/{"+APIParamName.COMPONENT+"}/sources/{"+APIParamName.SOURCE+"}";
 	public static final String SOURCE_TRANSLATION_POST    = API_TRANSLATOIN + "/products/{"+APIParamName.PRODUCT_NAME+"}/versions/{"+APIParamName.VERSION2+"}/locales/{"+APIParamName.LOCALE+"}/components/{"+APIParamName.COMPONENT+"}";

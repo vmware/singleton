@@ -107,39 +107,6 @@ public class TranslationProductComponentKeyAction extends BaseAction {
 				locale, key, source, pseudo, machineTranslation, sourceFormat, checkTranslationStatus);
 	}
 
-	/**
-	 *
-	 * Get the translation by mult-key-based
-	 *
-	 * @param productName
-	 * @param version
-	 * @param locale
-	 * @param component
-	 * @param keys
-	 * @param pseudo
-	 * @return
-	 * @throws L3APIException
-	 */
-	public APIResponseDTO getMultTransByGet(String productName, String version, String locale, String component,
-			String keys, String pseudo) throws L3APIException {
-		
-		Map<String, Object> msgs = new HashMap<String, Object>();
-        for (String key : keys.split(ConstantsChar.COMMA)) {
-        	StringBasedDTO stringBasedDTO = getTransByKey( productName, version,
-        			 locale, component, key.trim(), null, pseudo);
-        	msgs.put(stringBasedDTO.getKey(), stringBasedDTO.getTranslation());
-        }
-        
-        SingleComponentDTO compDTo = new SingleComponentDTO();
-        compDTo.setProductName(productName);
-        compDTo.setVersion(version);
-        compDTo.setComponent(component);
-        compDTo.setLocale(locale);
-        compDTo.setPseudo(Boolean.parseBoolean(pseudo));
-        compDTo.setMessages(msgs);
-        
-		return super.handleResponse(APIResponseStatus.OK, compDTo);
-	}
 	
 	private StringBasedDTO getTransByKey(String productName, String version,
 			String locale, String component, String key, String source,

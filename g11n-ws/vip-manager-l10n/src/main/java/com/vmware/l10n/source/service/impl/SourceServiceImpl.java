@@ -5,6 +5,8 @@
 package com.vmware.l10n.source.service.impl;
 
 import java.io.File;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ConcurrentHashMap;
@@ -33,8 +35,7 @@ import com.vmware.vip.common.l10n.source.util.PathUtil;
 public class SourceServiceImpl implements SourceService {
 	
 	private final static Logger LOGGER = LoggerFactory.getLogger(SourceService.class);
-	private final static String MD = "MD";
-	private final static String HTML = "HTML";
+	private final static List<String> SOURSE_FORMATS = Arrays.asList("MD", "HTML");
 	private final static BlockingQueue<StringSourceDTO> STRING_SOURCES = new LinkedBlockingQueue<StringSourceDTO>();
 	private final static ConcurrentMap<String, ComponentSourceDTO> PREPARE_MAP = new  ConcurrentHashMap<String, ComponentSourceDTO>();
 	
@@ -101,12 +102,9 @@ public class SourceServiceImpl implements SourceService {
 		} else {
 			updateStringSource(comp, key, source, comment, sourceFormat);
 		}
-        if(!StringUtils.isEmpty(sourceFormat) && (MD.equals(sourceFormat) || HTML.equals(sourceFormat))) {
-        	return true;
-        }else {
-        	return false;
-        }
-
+        
+		return SOURSE_FORMATS.contains(sourceFormat);
+		
 	}
 	
     @SuppressWarnings("unchecked")
