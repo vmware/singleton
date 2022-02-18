@@ -5,6 +5,8 @@
 package com.vmware.vip.i18n.api.base;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,6 +19,7 @@ import com.vmware.vip.common.constants.ConstantsChar;
 import com.vmware.vip.common.constants.ConstantsKeys;
 import com.vmware.vip.common.constants.ConstantsMsg;
 import com.vmware.vip.common.constants.ConstantsUnicode;
+import com.vmware.vip.common.i18n.dto.SingleComponentDTO;
 import com.vmware.vip.common.i18n.dto.StringBasedDTO;
 import com.vmware.vip.common.i18n.dto.response.APIResponseDTO;
 import com.vmware.vip.common.i18n.status.APIResponseStatus;
@@ -121,5 +124,55 @@ public class TranslationProductComponentKeyAction extends BaseAction {
 
 		return stringBasedService.getStringTranslation(c, key, source);
 		
+	}
+	
+	
+	/**
+	 *
+	 * Get the translation by mult-key-based
+	 *
+	 * @param productName
+	 * @param version
+	 * @param locale
+	 * @param component
+	 * @param keys
+	 * @param pseudo
+	 * @return
+	 * @throws L3APIException
+	 */
+	public APIResponseDTO getMultTransByGet(String productName, String version, String locale, String component,
+			String keys, String pseudo) throws L3APIException {
+		
+		Map<String, Object> msgs = new HashMap<String, Object>();
+		String[] keyArr = null;
+		if(keys.contains(ConstantsChar.COMMA)) {
+			keyArr = keys.split(ConstantsChar.COMMA);
+		}else {
+			keyArr = new String[]{keys};
+		}
+		 
+       for (String key : keyArr) {
+       	StringBasedDTO stringBasedDTO = getTransByKey( productName, version,
+       			 locale, component, key.trim(), null, pseudo);
+       	if(!StringUtils.isEmpty(stringBasedDTO.getTranslation())) {
+       		msgs.put(stringBasedDTO.getKey(), stringBasedDTO.getTranslation());
+       	}
+       }
+      
+       if(msgs.size()<1) {
+       	 throw new L3APIException(ConstantsMsg.TRANS_IS_NOT_FOUND);
+       }
+       SingleComponentDTO compDTo = new SingleComponentDTO();
+       compDTo.setProductName(productName);
+       compDTo.setVersion(version);
+       compDTo.setComponent(component);
+       compDTo.setLocale(locale);
+       compDTo.setPseudo(Boolean.parseBoolean(pseudo));
+       compDTo.setMessages(msgs);
+       if (msgs.size() != keyArr.length){
+       	return handleResponse(APIResponseStatus.MULTTRANSLATION_PART_CONTENT, compDTo);
+       }else {
+       	return super.handleResponse(APIResponseStatus.OK, compDTo);
+       }
 	}
 }
