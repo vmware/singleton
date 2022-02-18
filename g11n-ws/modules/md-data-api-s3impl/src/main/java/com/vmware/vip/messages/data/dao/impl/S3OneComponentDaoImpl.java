@@ -21,7 +21,7 @@ import com.vmware.vip.common.constants.ConstantsChar;
 import com.vmware.vip.common.constants.ConstantsFile;
 import com.vmware.vip.common.constants.ConstantsKeys;
 import com.vmware.vip.common.i18n.resourcefile.ResourceFilePathGetter;
-import com.vmware.vip.messages.data.conf.S3Cient;
+import com.vmware.vip.messages.data.conf.S3Client;
 import com.vmware.vip.messages.data.conf.S3Config;
 import com.vmware.vip.messages.data.dao.api.IOneComponentDao;
 import com.vmware.vip.messages.data.dao.exception.DataException;
@@ -36,7 +36,7 @@ import com.vmware.vip.messages.data.util.S3Utils;
 public class S3OneComponentDaoImpl implements IOneComponentDao {
 
    @Autowired
-   private S3Cient s3Client;
+   private S3Client s3Client;
 
    @Autowired
    private S3Config config;

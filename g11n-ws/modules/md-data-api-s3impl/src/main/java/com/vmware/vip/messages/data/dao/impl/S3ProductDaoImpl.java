@@ -6,7 +6,6 @@ package com.vmware.vip.messages.data.dao.impl;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -22,7 +21,7 @@ import com.amazonaws.services.s3.model.S3Object;
 import com.amazonaws.services.s3.model.S3ObjectSummary;
 import com.vmware.vip.common.constants.ConstantsChar;
 import com.vmware.vip.common.constants.ConstantsFile;
-import com.vmware.vip.messages.data.conf.S3Cient;
+import com.vmware.vip.messages.data.conf.S3Client;
 import com.vmware.vip.messages.data.conf.S3Config;
 import com.vmware.vip.messages.data.dao.api.IProductDao;
 import com.vmware.vip.messages.data.dao.exception.DataException;
@@ -38,7 +37,7 @@ public class S3ProductDaoImpl implements IProductDao {
    private static Logger logger = LoggerFactory.getLogger(S3ProductDaoImpl.class);
 
    @Autowired
-   private S3Cient s3Client;
+   private S3Client s3Client;
 
    @Autowired
    private S3Config config;

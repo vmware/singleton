@@ -60,9 +60,12 @@ dependencies {
     implementation("com.google.guava:guava:$guavaVersion")
     //swagger UI -END
     implementation("org.apache.httpcomponents:httpclient:$httpclient")
-    implementation("com.amazonaws:aws-java-sdk-s3:1.12.14")
+    implementation ("com.amazonaws:aws-java-sdk-s3:$awsS3Version")
+    implementation ("com.amazonaws:aws-java-sdk-sts:$awsS3Version")
+    implementation ("com.amazonaws:aws-java-sdk-iam:$awsS3Version")
     implementation ('org.springframework.boot:spring-boot-starter-actuator')
     
+
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("junit:junit:$junitVersion")
    
