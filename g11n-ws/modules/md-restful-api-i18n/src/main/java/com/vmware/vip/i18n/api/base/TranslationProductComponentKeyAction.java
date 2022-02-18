@@ -5,8 +5,6 @@
 package com.vmware.vip.i18n.api.base;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,7 +17,6 @@ import com.vmware.vip.common.constants.ConstantsChar;
 import com.vmware.vip.common.constants.ConstantsKeys;
 import com.vmware.vip.common.constants.ConstantsMsg;
 import com.vmware.vip.common.constants.ConstantsUnicode;
-import com.vmware.vip.common.i18n.dto.SingleComponentDTO;
 import com.vmware.vip.common.i18n.dto.StringBasedDTO;
 import com.vmware.vip.common.i18n.dto.response.APIResponseDTO;
 import com.vmware.vip.common.i18n.status.APIResponseStatus;
