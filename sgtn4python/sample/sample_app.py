@@ -135,6 +135,9 @@ class SampleApplication():
         found = trans.get_string('TT', KEY)
         print('--- found --- wrong component --- %s ---' % found)
 
+        _locales = trans.get_locales('zh-CN')
+        print('--- locales --- %s' % self.dict2string(_locales))
+
         if (self.need_wait(cfg_info)):
             for i in range(10):
                 time.sleep(5)

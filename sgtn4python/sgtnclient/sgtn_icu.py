@@ -5,7 +5,7 @@
 #
 
 try:
-    from icu import Locale, Formattable, MessageFormat
+    from icu import Locale, Formattable, MessageFormat, UnicodeString
     _temp = Locale('en')
     _support_icu = True
 except Exception:
@@ -22,15 +22,29 @@ def _icu_format(locale, text, array):
     return result
 
 
-def sgtn_is_icu_available():
-    return _support_icu
+class SgtnIcu:
 
+    @classmethod
+    def is_available(cls):
+        return _support_icu
 
-def sgtn_icu_format(locale, text, array):
-    if not _support_icu:
-        return text.format(*array)
+    @classmethod
+    def format(cls, locale, text, array):
+        if not _support_icu:
+            return text.format(*array)
 
-    try:
-        return _icu_format(locale, text, array)
-    except Exception:
-        return text.format(*array)
+        try:
+            return _icu_format(locale, text, array)
+        except Exception:
+            return text.format(*array)
+
+    @classmethod
+    def get_locale_display_name(cls, locale, display_locale):
+        if not cls.is_available() or not display_locale:
+            return None
+
+        icu_locale = Locale(locale)
+        icu_locale_display = Locale(display_locale)
+        string = UnicodeString()
+        display_name = '{0}'.format(icu_locale.getDisplayName(icu_locale_display, string))
+        return display_name

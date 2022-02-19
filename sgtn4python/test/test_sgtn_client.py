@@ -124,6 +124,9 @@ class TestClient(unittest.TestCase):
             Util.run_test_data(self, trans, 'TestGetString1C')
             time.sleep(3)
 
+        locales = trans.get_locales('zh-CN')
+        print('--- locales --- %s' % Util.dict2string(locales))
+
         spent = time.time() - start
         time.sleep(1)
         print('--- test --- end --- %s ---\n\n\n\n' % spent)
