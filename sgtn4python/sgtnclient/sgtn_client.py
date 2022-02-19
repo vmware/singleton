@@ -12,7 +12,7 @@ from threading import Thread
 from collections import OrderedDict
 
 from sgtn_properties import Properties
-from sgtn_util import FileUtil, NetUtil, SysUtil
+from sgtn_util import FileUtil, NetUtil, SysUtil, Data
 from sgtn_util import LOG_TYPE_INFO, KEY_RESULT, KEY_HEADERS
 from sgtn_bykey import SingletonByKey
 from sgtn_locale import SingletonLocaleUtil
@@ -66,6 +66,9 @@ RES_TYPE_PROPERTIES = '.properties'
 RES_TYPE_SGTN = '.json'
 
 _SOURCE_ALIAS = 'latest'
+
+_FROM_LOCAL = 'from_local'
+_FROM_REMOTE = 'from_remote'
 
 
 class ClientUtil:
@@ -967,54 +970,55 @@ class SingletonRelease(SingletonReleaseInternal, Release, Translation):
             text = key
         return text
 
-    def get_locales(self, display_locale=None):
-        FROM_LOCAL = 'from_local'
-        FROM_REMOTE = 'from_remote'
-
+    def _get_locale_pool(self, obj):
         source_locale = self.cfg.source_locale
         source_near_list = SingletonLocaleUtil.get_singleton_locale(source_locale).get_near_locale_list()
-        actual_source_locale = None
         other_source_locales = []
 
-        locale_pool = {}
+        obj.actual_source_locale = None
+        obj.locale_pool = {}
         if self.local_scope.locale_list:
             if source_locale in self.local_scope.locale_list:
-                actual_source_locale = source_locale
+                obj.actual_source_locale = source_locale
 
             for one in self.local_scope.locale_list:
-                locale_pool[one] = {FROM_LOCAL: True, FROM_REMOTE: False}
+                obj.locale_pool[one] = {_FROM_LOCAL: True, _FROM_REMOTE: False}
 
-                if actual_source_locale == None and one in source_near_list:
-                    actual_source_locale = one
+                if obj.actual_source_locale is None and one in source_near_list:
+                    obj.actual_source_locale = one
 
         # must follow local scope
         if self.remote_scope.locale_list:
-            if actual_source_locale == None and source_locale in self.remote_scope.locale_list:
-                actual_source_locale = source_locale
+            if obj.actual_source_locale is None and source_locale in self.remote_scope.locale_list:
+                obj.actual_source_locale = source_locale
 
             for one in self.remote_scope.locale_list:
-                if one not in locale_pool:
-                    locale_pool[one] = {FROM_LOCAL: False}
-                locale_pool[one][FROM_REMOTE] = True
+                if one not in obj.locale_pool:
+                    obj.locale_pool[one] = {_FROM_LOCAL: False}
+                obj.locale_pool[one][_FROM_REMOTE] = True
 
-                if actual_source_locale == None and one in source_near_list:
-                    actual_source_locale = one
+                if obj.actual_source_locale is None and one in source_near_list:
+                    obj.actual_source_locale = one
 
-        for one in locale_pool:
-            if one != actual_source_locale and one in source_near_list:
+        for one in obj.locale_pool:
+            if one != obj.actual_source_locale and one in source_near_list:
                 other_source_locales.append(one)
 
         for one in other_source_locales:
-            del locale_pool[one]
+            del obj.locale_pool[one]
+
+    def get_locales(self, display_locale=None):
+        obj = Data()
+        self._get_locale_pool(obj)
 
         locales = {}
-        for one in locale_pool:
+        for one in obj.locale_pool:
             locales[one] = {}
-            if one == actual_source_locale:
+            if one == obj.actual_source_locale:
                 locales[one]['as'] = 'source'
-                locales[one]['from'] = 'local' if locale_pool[one][FROM_LOCAL] else 'remote'
+                locales[one]['from'] = 'local' if obj.locale_pool[one][_FROM_LOCAL] else 'remote'
             else:
-                locales[one]['from'] = 'remote' if locale_pool[one][FROM_REMOTE] else 'local'
+                locales[one]['from'] = 'remote' if obj.locale_pool[one][_FROM_REMOTE] else 'local'
 
             display_name = SgtnIcu.get_locale_display_name(one, display_locale)
             if display_name:
