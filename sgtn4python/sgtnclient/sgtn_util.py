@@ -39,6 +39,10 @@ LOCALE_MAP = {
     }
 
 
+class Data:
+    pass
+
+
 class FileUtil:
 
     dir_map = {}

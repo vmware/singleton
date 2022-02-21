@@ -65,6 +65,9 @@ class Translation(Interface):
         """Format 'text' with values of 'array' according to locale."""
         raise self.NOT_IMP_EXCEPTION
 
+    def get_locales(self, display_locale=None):
+        raise self.NOT_IMP_EXCEPTION
+
 
 def add_config_file(config_file, outside_config=None):
     """add config by filename and an outside config above itself"""

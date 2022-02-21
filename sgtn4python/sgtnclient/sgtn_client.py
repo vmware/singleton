@@ -12,11 +12,11 @@ from threading import Thread
 from collections import OrderedDict
 
 from sgtn_properties import Properties
-from sgtn_util import FileUtil, NetUtil, SysUtil
+from sgtn_util import FileUtil, NetUtil, SysUtil, Data
 from sgtn_util import LOG_TYPE_INFO, KEY_RESULT, KEY_HEADERS
 from sgtn_bykey import SingletonByKey
 from sgtn_locale import SingletonLocaleUtil
-from sgtn_icu import sgtn_icu_format
+from sgtn_icu import SgtnIcu
 from sgtn_py_base import pybase, SgtnException
 
 from I18N import Config, Release, Translation
@@ -66,6 +66,9 @@ RES_TYPE_PROPERTIES = '.properties'
 RES_TYPE_SGTN = '.json'
 
 _SOURCE_ALIAS = 'latest'
+
+_FROM_LOCAL = 'from_local'
+_FROM_REMOTE = 'from_remote'
 
 
 class ClientUtil:
@@ -826,7 +829,7 @@ class SingletonReleaseForCache(SingletonReleaseBase):
 
     def format(self, locale, text, array):
         if 'icu' == self.cfg.format_type:
-            return sgtn_icu_format(locale, text, array)
+            return SgtnIcu.format(locale, text, array)
         return text.format(*array)
 
 
@@ -966,6 +969,62 @@ class SingletonRelease(SingletonReleaseInternal, Release, Translation):
         if text is None:
             text = key
         return text
+
+    def _get_locale_pool(self, obj):
+        source_locale = self.cfg.source_locale
+        source_near_list = SingletonLocaleUtil.get_singleton_locale(source_locale).get_near_locale_list()
+        other_source_locales = []
+
+        obj.actual_source_locale = None
+        obj.locale_pool = {}
+        if self.local_scope.locale_list:
+            if source_locale in self.local_scope.locale_list:
+                obj.actual_source_locale = source_locale
+
+            for one in self.local_scope.locale_list:
+                obj.locale_pool[one] = {_FROM_LOCAL: True, _FROM_REMOTE: False}
+
+                if obj.actual_source_locale is None and one in source_near_list:
+                    obj.actual_source_locale = one
+
+        # must follow local scope
+        if self.remote_scope.locale_list:
+            if obj.actual_source_locale is None and source_locale in self.remote_scope.locale_list:
+                obj.actual_source_locale = source_locale
+
+            for one in self.remote_scope.locale_list:
+                if one not in obj.locale_pool:
+                    obj.locale_pool[one] = {_FROM_LOCAL: False}
+                obj.locale_pool[one][_FROM_REMOTE] = True
+
+                if obj.actual_source_locale is None and one in source_near_list:
+                    obj.actual_source_locale = one
+
+        for one in obj.locale_pool:
+            if one != obj.actual_source_locale and one in source_near_list:
+                other_source_locales.append(one)
+
+        for one in other_source_locales:
+            del obj.locale_pool[one]
+
+    def get_locales(self, display_locale=None):
+        obj = Data()
+        self._get_locale_pool(obj)
+
+        locales = {}
+        for one in obj.locale_pool:
+            locales[one] = {}
+            if one == obj.actual_source_locale:
+                locales[one]['as'] = 'source'
+                locales[one]['from'] = 'local' if obj.locale_pool[one][_FROM_LOCAL] else 'remote'
+            else:
+                locales[one]['from'] = 'remote' if obj.locale_pool[one][_FROM_REMOTE] else 'local'
+
+            display_name = SgtnIcu.get_locale_display_name(one, display_locale)
+            if display_name:
+                locales[one]['display'] =  display_name
+
+        return locales
 
 
 class SingletonReleaseManager(object):
