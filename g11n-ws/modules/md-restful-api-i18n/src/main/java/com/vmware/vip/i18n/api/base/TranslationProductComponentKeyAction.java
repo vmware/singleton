@@ -125,8 +125,8 @@ public class TranslationProductComponentKeyAction extends BaseAction {
 		return stringBasedService.getStringTranslation(c, key, source);
 		
 	}
-	
-	
+
+  
 	/**
 	 *
 	 * Get the translation by mult-key-based
@@ -175,4 +175,5 @@ public class TranslationProductComponentKeyAction extends BaseAction {
        	return super.handleResponse(APIResponseStatus.OK, compDTo);
        }
 	}
+
 }
