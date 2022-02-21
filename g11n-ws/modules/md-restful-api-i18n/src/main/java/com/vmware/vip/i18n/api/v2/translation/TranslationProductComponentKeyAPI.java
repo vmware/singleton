@@ -130,4 +130,5 @@ public class TranslationProductComponentKeyAPI extends TranslationProductCompone
 		}
 		return super.handleResponse(APIResponseStatus.OK, "Recieved the sources and comments(please use translation-product-component-api to confirm it).");
 	}
+	
 }

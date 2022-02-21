@@ -13,7 +13,8 @@ public class APIParamValue {
 	public final static String LOCALES        = "a String contains multiple locales, separated by commas. e.g. 'zh-CN, ja-JP'";
 	public final static String PSEUDO         = "a flag for returnning pseudo translation";
 	public final static String MT             = "a flag to get machine translation";
-	public final static String KEY            = "a id value to identify translation";
+	public final static String KEY            = "an id value to identify translation";
+	public final static String KEYS           = "a String contains multiple keys, separated by commas. e.g. 'abc, common, time, cde'";
 	public final static String SOURCE         = "a source String needs to be translated";
 	public final static String COMMENT_SOURCE = "detailed comment to the source for better transaltion";
 	public final static String SOURCE_FORMAT  = "the format of source(used to identify the source's secial chars like html tags)";

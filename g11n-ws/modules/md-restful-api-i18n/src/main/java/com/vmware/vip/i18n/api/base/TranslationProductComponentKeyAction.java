@@ -40,20 +40,10 @@ public class TranslationProductComponentKeyAction extends BaseAction {
 	public APIResponseDTO getTransByGet(String productName, String version,
 			String locale, String component, String key, String source, String sourceFormat,
 			String pseudo) throws L3APIException {
-		ComponentMessagesDTO c = new ComponentMessagesDTO();
-		c.setProductName(productName);
-		c.setComponent(StringUtils.isEmpty(component) ? ConstantsKeys.DEFAULT
-				: component);
-		c.setVersion(version);
-		c.setLocale(locale == null ? ConstantsUnicode.EN : locale);
-		if (ConstantsKeys.TRUE.equalsIgnoreCase(pseudo)) {
-			c.setPseudo(new Boolean(pseudo));
-		}
-		String keyComp = StringUtils.isEmpty(sourceFormat) ? key : (key
-				+ ConstantsChar.DOT + ConstantsChar.POUND + sourceFormat
-				.toUpperCase());
-		StringBasedDTO stringBasedDTO = stringBasedService
-				.getStringTranslation(c, keyComp, source);
+
+		StringBasedDTO stringBasedDTO = getTransByKey( productName, version,
+		 locale, component, key, source, pseudo);
+		
 		return super.handleResponse(APIResponseStatus.OK, stringBasedDTO);
 	}
 
@@ -70,16 +60,14 @@ public class TranslationProductComponentKeyAction extends BaseAction {
 		c.setVersion(version);
 		c.setPseudo(new Boolean(pseudo));
 		c.setLocale(locale == null ? ConstantsUnicode.EN : locale);
-		String ckey = StringUtils.isEmpty(sourceFormat) ? key : (key
-				+ ConstantsChar.DOT + ConstantsChar.POUND + sourceFormat
-				.toUpperCase());
+
 		StringBasedDTO stringBasedDTO = null;
 		if (new Boolean(machineTranslation)) {
-			stringBasedDTO = mtService.getStringMTTranslation(c, ckey, source);
+			stringBasedDTO = mtService.getStringMTTranslation(c, key, source);
 			stringBasedDTO
 					.setMachineTranslation(new Boolean(machineTranslation));
 		} else {
-			stringBasedDTO = stringBasedService.getStringTranslation(c, ckey,
+			stringBasedDTO = stringBasedService.getStringTranslation(c, key,
 					source);
 		}
 		if(new Boolean(checkTranslationStatus)) {
@@ -114,5 +102,24 @@ public class TranslationProductComponentKeyAction extends BaseAction {
 		}
 		return this.getStringBasedTranslation(productName, version, component,
 				locale, key, source, pseudo, machineTranslation, sourceFormat, checkTranslationStatus);
+	}
+
+	
+	private StringBasedDTO getTransByKey(String productName, String version,
+			String locale, String component, String key, String source,
+			String pseudo) throws L3APIException {
+		
+		ComponentMessagesDTO c = new ComponentMessagesDTO();
+		c.setProductName(productName);
+		c.setComponent(StringUtils.isEmpty(component) ? ConstantsKeys.DEFAULT
+				: component);
+		c.setVersion(version);
+		c.setLocale(locale == null ? ConstantsUnicode.EN : locale);
+		if (ConstantsKeys.TRUE.equalsIgnoreCase(pseudo)) {
+			c.setPseudo(new Boolean(pseudo));
+		}
+
+		return stringBasedService.getStringTranslation(c, key, source);
+		
 	}
 }

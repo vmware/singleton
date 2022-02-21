@@ -81,6 +81,8 @@ public class RemoteSyncServicempl implements RemoteSyncService {
 					componentSourceDTO.getMessages());
 			requestParam.put(ConstantsKeys.COMMENTS,
 					componentSourceDTO.getComments());
+			requestParam.put(ConstantsKeys.CONTENT_TYPES,
+					componentSourceDTO.getSourceFormats());
 			pushFlag = sendToRemote(url.toString(), requestParam);
 		}
 		if (!pushFlag) {

@@ -16,6 +16,7 @@ public class KeySourceCommentDTO {
 	private String source = "";
 	private String key = "";
 	private String commentForSource = "";
+	private String sourceFormat = "";
 
 	public String getSource() {
 		return source;
@@ -41,12 +42,23 @@ public class KeySourceCommentDTO {
 		this.commentForSource = commentForSource;
 	}
 
+	public String getSourceFormat() {
+		return sourceFormat;
+	}
+
+	public void setSourceFormat(String sourceFormat) {
+		this.sourceFormat = sourceFormat;
+	}
+	
 	@SuppressWarnings("unchecked")
 	public String toJSONString() {
 		JSONObject jo = new JSONObject();
 		jo.put(ConstantsKeys.SOURCE, this.getSource());
 		jo.put(ConstantsKeys.KEY, this.getKey());
 		jo.put(ConstantsKeys.COMMENT_FOR_SOURCE, this.getCommentForSource());
+		jo.put(ConstantsKeys.SOURCE_FORMAT, this.getSourceFormat());
 		return jo.toJSONString();
 	}
+
+	
 }

@@ -25,6 +25,9 @@ public class ComponentSourceDTO extends ComponentBaseDTO implements
 
 	/* put comments key-value pairs to this messages */
 	private JSONObject comments = new JSONObject();
+	
+	/* put source format key-value pairs to this messages */
+	private JSONObject sourceFormats = new JSONObject();
 
 	public JSONObject getMessages() {
 		return messages;
@@ -43,6 +46,15 @@ public class ComponentSourceDTO extends ComponentBaseDTO implements
 	public void setComments(String key, String comment) {
 		this.comments.put(key, comment);
 	}
+	
+	public JSONObject getSourceFormats() {
+		return sourceFormats;
+	}
+
+	@SuppressWarnings("unchecked")
+	public void setSourceFormats(String key, String sourceFormat) {
+		this.sourceFormats.put(key, sourceFormat);
+	}
 
 	@SuppressWarnings("unchecked")
 	public String toJSONString() {
@@ -53,4 +65,6 @@ public class ComponentSourceDTO extends ComponentBaseDTO implements
 		jo.put(ConstantsKeys.COMPONENT, this.getComponent());
 		return jo.toJSONString();
 	}
+
+	
 }
