@@ -132,7 +132,7 @@ public class TranslationProductComponentKeyAPI extends TranslationProductCompone
 	}
 	
 	/**
-	 * API to post a bunch of strings
+	 * API to get a bunch of strings
 	 *
 	 */
 	@ApiOperation(value = APIOperation.KEY_SET_GET_VALUE, notes = APIOperation.KEY_SET_GET_NOTES)
