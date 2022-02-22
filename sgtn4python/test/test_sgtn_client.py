@@ -7,7 +7,6 @@ import unittest
 
 import os
 import time
-import json
 
 import sys
 sys.path.append('../sgtnclient')

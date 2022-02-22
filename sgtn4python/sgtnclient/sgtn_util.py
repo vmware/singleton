@@ -258,6 +258,7 @@ class NetUtil:
 class SgtnLogger(Logger):
 
     def __init__(self, cfg):
+        """Constructor function"""
         log_file = os.path.join(cfg.log_path, '{0}_{1}.log'.format(cfg.product, cfg.version))
         handler = logging.FileHandler(log_file)
         formatter = logging.Formatter('%(asctime)s %(message)s')
