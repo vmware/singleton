@@ -74,7 +74,7 @@ class Translation(Interface):
 
 
 class Logger(Interface):
-    """Logger interface"""
+
     def log(self, text, log_type):
         raise self.NOT_IMP_EXCEPTION
 
