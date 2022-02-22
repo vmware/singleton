@@ -5,6 +5,7 @@
 #
 
 import os
+import sys
 import re
 import time
 import copy
@@ -676,12 +677,17 @@ class SingletonReleaseBase:
         relateLocale = singletonLocale.get_relate_locale(mix_scope.locale_list)
         return relateLocale
 
+    def set_logger(self, logger):
+        self.logger = logger
+        self.log('')
+        self.log('--- start --- python --- {0}'.format(sys.version.split('\n')[0]))
+        self.log('--- release --- {0} --- {1} --- {2} ---'.format(self.cfg.product, self.cfg.version, time.time()))
+
     def log(self, text, log_type=LOG_TYPE_INFO):
         SysUtil.log(self.logger, text, log_type)
 
     def _init_logger(self, log_file):
-        self.logger = SysUtil.init_logger(log_file, 'sgtn_{0}_{1}'.format(self.cfg.product, self.cfg.version))
-        self.log('--- release --- {0} --- {1} --- {2} ---'.format(self.cfg.product, self.cfg.version, time.time()))
+        self.set_logger(SysUtil.init_logger(self.cfg))
 
     def _get_scope(self):
         if self.cache_path:
@@ -848,9 +854,7 @@ class SingletonReleaseInternal(SingletonReleaseForCache):
         # follow above
         self.api = SingletonApi(self)
 
-        if cfg.log_path:
-            log_file = os.path.join(cfg.log_path, '{0}_{1}.log'.format(self.cfg.product, self.cfg.version))
-            self._init_logger(log_file)
+        self._init_logger(cfg)
 
         if cfg.cache_path:
             self.cache_path = os.path.join(cfg.cache_path, self.cfg.product, self.cfg.version)

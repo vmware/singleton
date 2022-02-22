@@ -23,6 +23,15 @@ COMPONENT = 'about'
 LOCALE = 'de'
 
 
+class TestLogger(I18N.Logger):
+
+    def __init__(self, cfg):
+        self.name = '%s-%s' % (cfg.product, cfg.version)
+
+    def log(self, text, log_type):
+        print('+++ log +++ %s +++ %s +++ %s' % (self.name, log_type, text))
+
+
 class TestClient(unittest.TestCase):
 
     def prepare_sub_path(self, sub):
@@ -57,6 +66,9 @@ class TestClient(unittest.TestCase):
         cfg = rel.get_config()
         cfg_info = cfg.get_info()
         self.show('config', 'info', Util.dict2string(cfg_info))
+        if cfg_info['pseudo']:
+            rel.set_logger(TestLogger(cfg))
+            rel.log('this is pseudo', 'error')
 
         I18N.set_current_locale(LOCALE)
         I18N.set_current_locale(LOCALE)

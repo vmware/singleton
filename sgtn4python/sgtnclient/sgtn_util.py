@@ -11,6 +11,7 @@ import re
 import logging
 from collections import OrderedDict
 
+from I18N import Logger
 from sgtn_py_base import pybase, SgtnException
 from sgtn_debug import SgtnDebug
 
@@ -254,32 +255,42 @@ class NetUtil:
         return etag, float(parts[1])
 
 
-class SysUtil:
+class SgtnLogger(Logger):
 
-    @classmethod
-    def init_logger(cls, log_file, log_name):
+    def __init__(self, cfg):
+        log_file = os.path.join(cfg.log_path, '{0}_{1}.log'.format(cfg.product, cfg.version))
         handler = logging.FileHandler(log_file)
         formatter = logging.Formatter('%(asctime)s %(message)s')
         handler.setFormatter(formatter)
 
-        logger = logging.getLogger(log_name)
-        logger.addHandler(handler)
-        logger.setLevel(logging.INFO)
+        log_name = 'sgtn_{0}_{1}'.format(cfg.product, cfg.version)
+        self.logger = logging.getLogger(log_name)
+        self.logger.addHandler(handler)
+        self.logger.setLevel(logging.INFO)
 
-        cls.log(logger, '')
-        cls.log(logger, '--- start --- python --- {0}'.format(sys.version.split('\n')[0]))
-        return logger
-
-    @classmethod
-    def log(cls, logger, text, log_type=LOG_TYPE_INFO):
-        if logger:
+    def log(self, text, log_type):
+        if self.logger:
             if log_type == LOG_TYPE_INFO:
-                logger.info(text)
+                self.logger.info(text)
                 return
             elif log_type == LOG_TYPE_ERROR:
-                logger.error(text)
+                self.logger.error(text)
                 return
         print(text)
+
+
+class SysUtil:
+
+    @classmethod
+    def init_logger(cls, cfg):
+        if not cfg or not cfg.log_path:
+            return None
+        return SgtnLogger(cfg)
+
+    @classmethod
+    def log(cls, release_logger, text, log_type=LOG_TYPE_INFO):
+        if release_logger:
+            release_logger.log(text, log_type)
 
     @classmethod
     def get_fallback_locale(cls, locale):
