@@ -48,6 +48,10 @@ class Release(Interface):
         """get translation interface Translation"""
         raise self.NOT_IMP_EXCEPTION
 
+    def set_logger(self, logger):
+        """Set logger derived from Logger to a release object."""
+        raise self.NOT_IMP_EXCEPTION
+
 
 class Translation(Interface):
     """Translation interface"""
@@ -66,6 +70,12 @@ class Translation(Interface):
         raise self.NOT_IMP_EXCEPTION
 
     def get_locales(self, display_locale=None):
+        raise self.NOT_IMP_EXCEPTION
+
+
+class Logger(Interface):
+
+    def log(self, text, log_type):
         raise self.NOT_IMP_EXCEPTION
 
 
