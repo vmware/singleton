@@ -25,6 +25,7 @@ LOCALE = 'de'
 class TestLogger(I18N.Logger):
 
     def __init__(self, cfg):
+        """It's the constructor function."""
         self.name = '%s-%s' % (cfg.product, cfg.version)
 
     def log(self, text, log_type):
