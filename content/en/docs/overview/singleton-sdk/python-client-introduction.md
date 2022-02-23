@@ -1,6 +1,6 @@
 ---
 title: "Python Client Introduction"
-date: 2021-12-10T10:07:51+08:00
+date: 2022-02-22T10:08:10+08:00
 draft: false
 weight: 10
 ---
@@ -73,6 +73,8 @@ The python client of Singleton needs a configuration file. Here is an [example](
 | cache_expired_time | integer | Interval to update data | 3600 |
 | pseudo | string | Switch of pseudo testing | false |
 | multitask | string | 'async' means using coroutine | None. Not by coroutine |
+| format | string | 'icu' means using ICU message format | default. Use python format |
+| load_on_startup | bool | True means loading all translations on startup | False |
 
 * Component definition
 
@@ -230,6 +232,7 @@ def get_release(product, version)
 class Release:
     def get_config(self)
     def get_translation(self)
+    def set_logger(self, logger)
 ```
 
 ### Release / get_config
@@ -247,6 +250,14 @@ class Release:
 | Return | Description |
 | ------ | ------ |
 | [Translation](#Translation) | The translation object |
+
+### Release / set_logger
+
+* Set customized logger to the release object for it to use.
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| logger | [Logger](#Logger) | Customized logger derived from [Logger](#Logger) |
 
 
 ## Interface For Configuration
@@ -272,6 +283,18 @@ class Config:
 | ------ | ------ |
 | object | Brief information data |
 
+```json
+{
+  "product": "PYTHON1",
+  "version": "1.0.0",
+  "remote": null,
+  "local": "/tmp/data/l10n",
+  "pseudo": true,
+  "source_locale": "en-US",
+  "default_locale": "en-US"
+}
+```
+
 
 ## Interface For Translation
 ### Translation
@@ -280,6 +303,8 @@ class Translation:
     def get_string(self, component, key, **kwargs)
     def get_locale_strings(self, locale)
     def get_locale_supported(self, locale)
+    def format(self, locale, text, array)
+    def get_locales(self, display_locale=None)
 ```
 
 ### Translation / get_string
@@ -300,13 +325,19 @@ class Translation:
 | source | string | Source message | Source from resource file |
 | format_items | string | Items for string formatting | Nothing |
 
-* Example of string formatting which follows the python format function
+* Examples of string formatting which follow the python format function when 'format' in configuration is set to 'default'.
 ```python
 msg = trans.get_string(COMPONENT, KEY) => 'AAA{0}BBB{1}CCC'
 msg = trans.get_string(COMPONENT, KEY, format_items = ['11', '22']) => 'AAA11BBB22CCC'
 
 msg = trans.get_string(COMPONENT, KEY) => 'AAA{x}BBB{y}CCC'
 msg = trans.get_string(COMPONENT, KEY, format_items = {'x': 'ee', 'y': 'ff'}) => 'AAAeeBBBffCCC'
+```
+* Example which follows the rules of CLDR MessageFormat when 'format' in configuration is set to 'icu'.
+```python
+msg = trans.get_string(COMPONENT, KEY, locale = 'en-US', format_items = [1, 7])
+# COMPONENT, KEY => I bought {0, plural, one {# book} other {# books}} and {1, plural, one {# cup} other {# cups}}.
+# msg => I bought 1 book and 7 cups.
 ```
 
 | Return | Description |
@@ -336,3 +367,66 @@ msg = trans.get_string(COMPONENT, KEY, format_items = {'x': 'ee', 'y': 'ff'}) =>
 | Return | Description |
 | ------ | ------ |
 | string | Supported locale name |
+
+### Translation / format
+
+* Get the formatted string by given locale, format text and arguments.
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| locale | string | Locale |
+| text | string | Format string |
+| array | array | Format arguments |
+
+* Example which follows the rules of CLDR MessageFormat when 'format' in configuration is set to 'icu'.
+```python
+msg = trans.format('en', 'I bought {0, plural, one {# book} other {# books}}.', [1])
+```
+* When 'format' in configuration is set to 'default', its format string follows the python format function.
+
+| Return | Description |
+| ------ | ------ |
+| string | The formatted string |
+
+### Translation / get_locales
+
+* Get information of locales being used.
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| display_locale | string | The locale for display |
+
+| Return | Description |
+| ------ | ------ |
+| object | Information of all supported locales |
+
+```json
+{
+  "en-US": {
+    "as": "source",
+    "from": "local",
+    "display": "英语（美国）"
+  },
+  "de": {
+    "from": "remote",
+    "display": "德语"
+  }
+}
+```
+
+
+## Interface For Logger
+### Logger
+```python
+class Logger:
+    def log(self, text, log_type)
+```
+
+### Translation / log
+
+* Log text with type of log_type.
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| text | string | Content |
+| log_type | string | info: Information<br>error: Error message |
