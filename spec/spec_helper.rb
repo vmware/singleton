@@ -3,9 +3,10 @@ require_relative '../lib/sgtn-client/sgtn-client.rb'
 require 'logger'
 
 if ENV['COVERAGE']
-  require 'simplecov'
-  require 'coveralls'
-  Coveralls.wear!
+  require 'simplecov-json'
+  SimpleCov.formatter = SimpleCov::Formatter::JSONFormatter
+  # require 'coveralls'
+  # Coveralls.wear!
   SimpleCov.start do
     add_filter "/spec/"
   end
