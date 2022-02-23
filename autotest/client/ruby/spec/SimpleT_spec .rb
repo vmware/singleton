@@ -46,7 +46,7 @@ describe "Translation test" do
         end
 
         it "Get a string's translation and locale not exist in server" do
-            RequestStore.store[:locale] = 'da'
+            RequestStore.store[:locale] = "da"
             RequestStore.store[:component] = 'about'
             #SgtnClient::Source.loadBundles("en")
             expect(SgtnClient::T.s("about.message")).to eq("fall back about")
@@ -84,7 +84,15 @@ describe "Translation test" do
         it "Get a string's translation and locale argument type is incorrect" do
             RequestStore.store[:locale] = 123
             RequestStore.store[:component] = 'about'
-            expect{SgtnClient::T.s("about.message")}.to raise_error(NoMethodError)
+            expect(SgtnClient::T.s("about.message")).to eq("fall back about")
+            #expect{SgtnClient::T.s("about.message")}.to raise_error(NoMethodError)
+        end
+
+        it "Get a string's translation and locale argument type is nil" do
+            RequestStore.store[:locale] = nil
+            RequestStore.store[:component] = 'about'
+            expect(SgtnClient::T.s("about.message")).to eq("fall back about")
+            #expect{SgtnClient::T.s("about.message")}.to raise_error(NoMethodError)
         end
 
         # it "Get a string's translation and key type is incorrect" do
@@ -225,7 +233,8 @@ describe "Translation test" do
         it "Get a component's translations and locale type is incorrect" do
             RequestStore.store[:locale] = 123
             RequestStore.store[:component] = 'about'
-            expect{SgtnClient::T.c()}.to raise_error(NoMethodError)
+            expect(SgtnClient::T.c()["messages"]["about.key3"]).to eq("fall back key31")
+            #expect{SgtnClient::T.c()}.to raise_error(NoMethodError)
             ##puts SgtnClient::T.c("about", "zh-CN")
         end
 

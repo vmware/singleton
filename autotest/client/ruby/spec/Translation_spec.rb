@@ -21,9 +21,9 @@ describe "Translation test" do
             expect(SgtnClient::Translation.getString("about", "about.message", "en")).to eq("fall back about")
         end
 
-        it "Get a string's translation and locale is fr-FR" do
+        it "Get a string's translation and locale is fr" do
             #SgtnClient::Source.loadBundles("de")
-            expect(SgtnClient::Translation.getString("about", "about.message", "fr-FR")).to eq("test fr key")
+            expect(SgtnClient::Translation.getString("about", "about.message", :fr)).to eq("test fr key")
         end
 
         it "Get a string's translation and locale is zh-Hans" do
@@ -61,7 +61,13 @@ describe "Translation test" do
 
 
         it "Get a string's translation and locale argument type is incorrect" do
-            expect{SgtnClient::Translation.getString("about", "about.message", 123)}.to raise_error(NoMethodError)
+            #expect{SgtnClient::Translation.getString("about", "about.message", 123)}.to raise_error(NoMethodError)
+            expect(SgtnClient::Translation.getString("about", "about.message", 123)).to eq("fall back about")
+        end
+
+        it "Get a string's translation and locale argument type is nil" do
+            #expect{SgtnClient::Translation.getString("about", "about.message", 123)}.to raise_error(NoMethodError)
+            expect(SgtnClient::Translation.getString("about", "about.message", nil)).to eq("fall back about")
         end
 
         # it "Get a string's translation and key type is incorrect" do
@@ -165,7 +171,14 @@ describe "Translation test" do
         end
 
         it "Get a component's translations and locale type is incorrect" do
-            expect{SgtnClient::Translation.getStrings("about", 123)}.to raise_error(NoMethodError)
+            #expect{SgtnClient::Translation.getStrings("about", 123)}.to raise_error(NoMethodError)
+            expect(SgtnClient::Translation.getStrings("about", 123)["messages"]["about.message"]).to eq("fall back about")
+            ##puts SgtnClient::Translation.getStrings("about", "zh-CN")
+        end
+
+        it "Get a component's translations and locale type is nil" do
+            expect(SgtnClient::Translation.getStrings("about", nil)["messages"]["about.message"]).to eq("fall back about")
+            #expect{SgtnClient::Translation.getStrings("about", 123)}.to raise_error(NoMethodError)
             ##puts SgtnClient::Translation.getStrings("about", "zh-CN")
         end
 

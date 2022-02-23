@@ -14,21 +14,21 @@ describe "Translation test" do
         end
 
         it "default_language is en and loadbundle is default.yml" do
-            SgtnClient.load("./config/sgtnclient.yml", "test")
+            SgtnClient.load("./config/sgtnclient.yml", "testsourcelocale1")
             SgtnClient::Source.loadBundles("default")
             expect(SgtnClient::Translation.getString("abou34324t", "about.message", "de")).to eq(nil)
             expect(SgtnClient::Translation.getString("about43242", "about.key3", "de")).to eq(nil)          
         end
 
         it "default_language is zh-Hans and loadbundle is default.yml" do
-            SgtnClient.load("./config/sgtnclient.yml", "test")
+            SgtnClient.load("./config/sgtnclient.yml", "testsourcelocale2")
             SgtnClient::Source.loadBundles("default")
             expect(SgtnClient::Translation.getString_f("about32", "about.test123",["a1","a2","a3"], "de")).to eq(nil)
         end
 
         
         it "default_language is da and loadbundle is default.yml" do
-            SgtnClient.load("./config/sgtnclient.yml", "test")
+            SgtnClient.load("./config/sgtnclient.yml", "testsourcelocale3")
             SgtnClient::Source.loadBundles("default")
             puts SgtnClient::Translation.getStrings("about12", "en-US")
         end
