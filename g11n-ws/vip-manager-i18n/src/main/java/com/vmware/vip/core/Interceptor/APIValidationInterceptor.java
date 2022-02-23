@@ -4,7 +4,6 @@
  */
 package com.vmware.vip.core.Interceptor;
 
-import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -18,11 +17,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.vmware.vip.common.constants.ConstantsChar;
-import com.vmware.vip.common.exceptions.ValidationException;
-import com.vmware.vip.common.i18n.status.APIResponseStatus;
-import com.vmware.vip.common.i18n.status.Response;
 import com.vmware.vip.core.auth.AuthenException;
 import com.vmware.vip.core.auth.IAuthen;
 import com.vmware.vip.core.auth.IPAuthentication;

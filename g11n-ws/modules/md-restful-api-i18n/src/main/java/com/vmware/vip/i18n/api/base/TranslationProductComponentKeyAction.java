@@ -6,7 +6,6 @@ package com.vmware.vip.i18n.api.base;
 
 import java.io.IOException;
 import java.util.HashMap;
-
 import java.util.List;
 import java.util.Map;
 
@@ -23,7 +22,6 @@ import com.vmware.vip.common.constants.ConstantsMsg;
 import com.vmware.vip.common.constants.ConstantsSupportList;
 import com.vmware.vip.common.constants.ConstantsUnicode;
 import com.vmware.vip.common.constants.ValidationMsg;
-import com.vmware.vip.common.exceptions.VIPAPIException;
 import com.vmware.vip.common.exceptions.ValidationException;
 import com.vmware.vip.common.i18n.dto.KeySourceCommentDTO;
 import com.vmware.vip.common.i18n.dto.SingleComponentDTO;
@@ -34,7 +32,6 @@ import com.vmware.vip.core.messages.exception.L3APIException;
 import com.vmware.vip.core.messages.service.mt.IMTService;
 import com.vmware.vip.core.messages.service.singlecomponent.ComponentMessagesDTO;
 import com.vmware.vip.core.messages.service.string.IStringService;
-import com.vmware.vip.i18n.api.base.BaseAction;
 
 /**
  * Provide RESTful API for product to get translation by String base.
