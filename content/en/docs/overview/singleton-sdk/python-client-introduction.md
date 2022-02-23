@@ -25,6 +25,7 @@ Python 3.x
 
 It's better to install [PyYAML](https://pypi.org/project/PyYAML/) module of python. Otherwise, the configuration file should be written in json.
 
+If formats like Plural, Date, Number are needed, please install [PyICU](https://pypi.org/project/PyICU/) after icu4c is installed on the operating system.
 
 # How to use python client as a python package
 Install [sgtnclient](https://pypi.org/project/sgtnclient) as a python package.
