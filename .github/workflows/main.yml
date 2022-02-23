@@ -72,7 +72,7 @@ jobs:
         uses: codecov/codecov-action@v1
         with:
           token: bb02a13d-4b5d-4217-8e68-074b6326977b
-          files: ./coverage/index.html
+          files: .coverage/coverage.json
           flags: coverage
 
   security-analysis:
@@ -101,7 +101,7 @@ jobs:
         uses: github/codeql-action/autobuild@v1
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v1
-        
+
 
   smoke-test:
     name: Smoke Test
