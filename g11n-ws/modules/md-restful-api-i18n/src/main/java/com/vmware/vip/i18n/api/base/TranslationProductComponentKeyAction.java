@@ -23,6 +23,7 @@ import com.vmware.vip.common.constants.ConstantsSupportList;
 import com.vmware.vip.common.constants.ConstantsUnicode;
 import com.vmware.vip.common.constants.ValidationMsg;
 import com.vmware.vip.common.exceptions.VIPAPIException;
+import com.vmware.vip.common.exceptions.ValidationException;
 import com.vmware.vip.common.i18n.dto.KeySourceCommentDTO;
 import com.vmware.vip.common.i18n.dto.SingleComponentDTO;
 import com.vmware.vip.common.i18n.dto.StringBasedDTO;
@@ -181,12 +182,12 @@ public class TranslationProductComponentKeyAction extends BaseAction {
        }
 	}
 	
-	protected void validateSourceSet(List<KeySourceCommentDTO> sourceSet) throws VIPAPIException {
+	protected void validateSourceSet(List<KeySourceCommentDTO> sourceSet) throws ValidationException {
 	
 		for(KeySourceCommentDTO ksc:sourceSet) {
 			String sft = ksc.getSourceFormat();
 			if (!StringUtils.isEmpty(sft) && !ConstantsSupportList.SOURCE_FORMAT_LIST.contains(sft)) {
-			   throw new VIPAPIException(ValidationMsg.SOURCEFORMAT_NOT_VALIDE);
+			   throw new ValidationException(ValidationMsg.SOURCEFORMAT_NOT_VALIDE);
 			}
 		}
 			

@@ -10,6 +10,7 @@ import com.vmware.vip.common.constants.ConstantsChar;
 import com.vmware.vip.common.constants.ConstantsKeys;
 import com.vmware.vip.common.constants.ConstantsSupportList;
 import com.vmware.vip.common.constants.ValidationMsg;
+import com.vmware.vip.common.exceptions.ValidationException;
 import com.vmware.vip.common.utils.RegExpValidatorUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.servlet.HandlerMapping;

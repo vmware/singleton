@@ -58,23 +58,8 @@ public class CollectSourceValidationInterceptor extends HandlerInterceptorAdapte
 		String logOfQueryStr = "The request query string is: " + request.getQueryString();
 		LOGGER.debug(logOfUrl);
 		LOGGER.debug(logOfQueryStr);
-		try {
-			validate(request, this.allowList); 
-		} catch (VIPAPIException e) {
-			LOGGER.warn(e.getMessage());
-			Response r = new Response();
-			r.setCode(APIResponseStatus.BAD_REQUEST.getCode());
-			r.setMessage(e.getMessage());
-			try {
-				response.getWriter().write(
-						new ObjectMapper().writerWithDefaultPrettyPrinter()
-								.writeValueAsString(r));
-				return false;
-			} catch (IOException e1) {
-				LOGGER.warn(e1.getMessage());
-				return false;
-			}
-		}
+		
+		validate(request, this.allowList); 
 		String startHandle = "[thread-" + Thread.currentThread().getId() + "] Start to handle request...";
 		LOGGER.info(startHandle);
 		LOGGER.info(logOfUrl);

@@ -19,8 +19,8 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.common.base.Strings;
 import com.vmware.vip.common.constants.ConstantsChar;
+import com.vmware.vip.common.exceptions.ValidationException;
 import com.vmware.vip.common.i18n.status.APIResponseStatus;
 import com.vmware.vip.common.i18n.status.Response;
 import com.vmware.vip.core.auth.AuthenException;
@@ -31,8 +31,6 @@ import com.vmware.vip.core.validation.IVlidation;
 import com.vmware.vip.core.validation.ParameterValidation;
 import com.vmware.vip.core.validation.URLValidation;
 import com.vmware.vip.core.validation.VIPValidation;
-import com.vmware.vip.core.validation.ValidationException;
-
 /**
  * Interceptor for collection new resource
  */
@@ -75,27 +73,12 @@ public class APIValidationInterceptor extends HandlerInterceptorAdapter {
 		LOGGER.debug(logOfUrl);
 		LOGGER.debug(logOfQueryStr);
 		IVlidation u = VIPValidation.getInstance(URLValidation.class, request);
-		IVlidation p = VIPValidation.getInstance(ParameterValidation.class,
-				request);
-		try {
-			u.validate();
-			request.setAttribute(ParameterValidation.TAG_ALLOW_PRODUCT_LIST_MAP, this.allowedListMap);
-			p.validate();
-		} catch (ValidationException e) {
-			LOGGER.warn(e.getMessage());
-			Response r = new Response();
-			r.setCode(APIResponseStatus.BAD_REQUEST.getCode());
-			r.setMessage(e.getMessage());
-			try {
-				response.getWriter().write(
-						new ObjectMapper().writerWithDefaultPrettyPrinter()
-								.writeValueAsString(r));
-				return false;
-			} catch (IOException e1) {
-				LOGGER.warn(e1.getMessage());
-				return false;
-			}
-		}
+		IVlidation p = VIPValidation.getInstance(ParameterValidation.class, request);
+		
+		u.validate();
+		request.setAttribute(ParameterValidation.TAG_ALLOW_PRODUCT_LIST_MAP, this.allowedListMap);
+		p.validate();
+			
 		String startHandle = singletonRequestID + "[thread-" + Thread.currentThread().getId() + "] Start to handle request...";
 		LOGGER.info(startHandle);
 		LOGGER.info(logOfUrl);

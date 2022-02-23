@@ -19,12 +19,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.vmware.vip.api.rest.APIParamName;
 import com.vmware.vip.api.rest.APIParamValue;
+import com.vmware.vip.common.exceptions.ValidationException;
 import com.vmware.vip.common.i18n.dto.response.APIResponseDTO;
 import com.vmware.vip.common.i18n.status.Response;
 import com.vmware.vip.core.csp.service.JwtTokenService;
 import com.vmware.vip.core.login.ADAuthenticator;
 import com.vmware.vip.core.login.VipAuthConfig;
-import com.vmware.vip.core.validation.ValidationException;
+
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiParam;
