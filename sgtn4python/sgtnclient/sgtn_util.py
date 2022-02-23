@@ -92,8 +92,8 @@ class FileUtil:
             return dict_data
         except ModuleNotFoundError as e:
             raise SgtnException(str(e))
-        except AttributeError as e:
-            dict_data = yaml.load(text)
+        except AttributeError:
+            dict_data = yaml.safe_load(text)
             return dict_data
         except yaml.YAMLError as e:
             raise SgtnException(str(e))
