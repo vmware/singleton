@@ -21,6 +21,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.vmware.vip.api.rest.APIParamName;
 import com.vmware.vip.common.constants.ConstantsChar;
 import com.vmware.vip.common.constants.ConstantsKeys;
+import com.vmware.vip.common.constants.ConstantsSupportList;
 import com.vmware.vip.common.constants.ValidationMsg;
 import com.vmware.vip.common.exceptions.VIPAPIException;
 import com.vmware.vip.common.i18n.status.APIResponseStatus;
@@ -183,14 +184,14 @@ public class CollectSourceValidationInterceptor extends HandlerInterceptorAdapte
 		}
 	}
 
-	private static void validateSourceformat(HttpServletRequest request)
+	public static void validateSourceformat(HttpServletRequest request)
 			throws VIPAPIException {
 		String sourceformat = request.getParameter(APIParamName.SOURCE_FORMAT) == null ? ConstantsKeys.EMPTY_STRING
 				: request.getParameter(APIParamName.SOURCE_FORMAT);
 		if (StringUtils.isEmpty(sourceformat)) {
 			return;
 		}
-		if (!RegExpValidatorUtils.IsLetterOrNumber(sourceformat)) {
+		if (!(RegExpValidatorUtils.IsLetterOrNumber(sourceformat) && ConstantsSupportList.SOURCE_FORMAT_LIST.contains(sourceformat))) {
 			throw new VIPAPIException(ValidationMsg.SOURCEFORMAT_NOT_VALIDE);
 		}
 	}

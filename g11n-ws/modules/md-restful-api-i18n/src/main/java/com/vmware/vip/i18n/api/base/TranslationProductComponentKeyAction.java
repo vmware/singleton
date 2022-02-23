@@ -6,6 +6,7 @@ package com.vmware.vip.i18n.api.base;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -18,7 +19,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.vmware.vip.common.constants.ConstantsChar;
 import com.vmware.vip.common.constants.ConstantsKeys;
 import com.vmware.vip.common.constants.ConstantsMsg;
+import com.vmware.vip.common.constants.ConstantsSupportList;
 import com.vmware.vip.common.constants.ConstantsUnicode;
+import com.vmware.vip.common.constants.ValidationMsg;
+import com.vmware.vip.common.exceptions.VIPAPIException;
+import com.vmware.vip.common.i18n.dto.KeySourceCommentDTO;
 import com.vmware.vip.common.i18n.dto.SingleComponentDTO;
 import com.vmware.vip.common.i18n.dto.StringBasedDTO;
 import com.vmware.vip.common.i18n.dto.response.APIResponseDTO;
@@ -174,6 +179,18 @@ public class TranslationProductComponentKeyAction extends BaseAction {
        }else {
        	return super.handleResponse(APIResponseStatus.OK, compDTo);
        }
+	}
+	
+	protected void validateSourceSet(List<KeySourceCommentDTO> sourceSet) throws VIPAPIException {
+	
+		for(KeySourceCommentDTO ksc:sourceSet) {
+			String sft = ksc.getSourceFormat();
+			if (!StringUtils.isEmpty(sft) && !ConstantsSupportList.SOURCE_FORMAT_LIST.contains(sft)) {
+			   throw new VIPAPIException(ValidationMsg.SOURCEFORMAT_NOT_VALIDE);
+			}
+		}
+			
+			
 	}
 
 }

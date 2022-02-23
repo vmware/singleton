@@ -8,6 +8,7 @@ package com.vmware.vip.core.validation;
 import com.vmware.vip.api.rest.APIParamName;
 import com.vmware.vip.common.constants.ConstantsChar;
 import com.vmware.vip.common.constants.ConstantsKeys;
+import com.vmware.vip.common.constants.ConstantsSupportList;
 import com.vmware.vip.common.constants.ValidationMsg;
 import com.vmware.vip.common.utils.RegExpValidatorUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -47,6 +48,7 @@ public class ParameterValidation implements IVlidation {
 		validateScope(request);
 	}
 
+	
 	@SuppressWarnings("unchecked")
 	private void validateProductname(HttpServletRequest request)
 			throws ValidationException {
@@ -277,7 +279,7 @@ public class ParameterValidation implements IVlidation {
 		if (StringUtils.isEmpty(sourceformat)) {
 			return;
 		}
-		if (!RegExpValidatorUtils.IsLetterOrNumber(sourceformat)) {
+		if (!(RegExpValidatorUtils.IsLetterOrNumber(sourceformat) && ConstantsSupportList.SOURCE_FORMAT_LIST.contains(sourceformat))) {
 			throw new ValidationException(ValidationMsg.SOURCEFORMAT_NOT_VALIDE);
 		}
 	}

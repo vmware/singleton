@@ -30,7 +30,9 @@ import com.vmware.vip.api.rest.APIParamName;
 import com.vmware.vip.api.rest.APIParamValue;
 import com.vmware.vip.api.rest.l10n.L10nI18nAPI;
 import com.vmware.vip.common.constants.ConstantsFile;
+import com.vmware.vip.common.constants.ConstantsSupportList;
 import com.vmware.vip.common.constants.ConstantsUnicode;
+import com.vmware.vip.common.constants.ValidationMsg;
 import com.vmware.vip.common.i18n.dto.KeySourceCommentDTO;
 import com.vmware.vip.common.l10n.exception.L10nAPIException;
 import com.vmware.vip.common.l10n.source.dto.StringSourceDTO;
@@ -201,6 +203,9 @@ public class TranslationCollectKeyAPI {
 			String newKey = sto.getKey();
 			String newSource =sto.getSource();
 			String sf = sto.getSourceFormat();
+			if (!StringUtils.isEmpty(sf) && !ConstantsSupportList.SOURCE_FORMAT_LIST.contains(sf)) {
+				   throw new L10nAPIException(ValidationMsg.SOURCEFORMAT_NOT_VALIDE);
+			}
 			StringSourceDTO sourceObj = SourceUtils.createSourceDTO(productName, version, component, newLocale, newKey,
 					newSource, sto.getCommentForSource(), sf);
 			boolean isSourceCached = sourceService.cacheSource(sourceObj);
