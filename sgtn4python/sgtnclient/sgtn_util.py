@@ -90,6 +90,11 @@ class FileUtil:
             import yaml
             dict_data = yaml.load(text, Loader=yaml.FullLoader)
             return dict_data
+        except ModuleNotFoundError as e:
+            raise SgtnException(str(e))
+        except AttributeError:
+            dict_data = yaml.safe_load(text)
+            return dict_data
         except yaml.YAMLError as e:
             raise SgtnException(str(e))
 
