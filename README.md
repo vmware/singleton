@@ -66,6 +66,5 @@ Request for contributions from the community
 
 Sample application
 ------------
- * Sample python code that uses the python client: [sample_app.py](https://github.com/vmware/singleton/blob/g11n-python-client/sgtn4python/sample/sample_app.py)
- * Sample configuration for the application: [sample_online_only.yml](https://github.com/vmware/singleton/blob/g11n-python-client/sgtn4python/sample/sample_online_only.yml)
-
+ * Sample python code that uses the python client: [sample_app.py](sgtn4python/sample/sample_app.py)
+ * Sample configuration for the application: [sample_online_only.yml](sgtn4python/sample/sample_online_only.yml)
