@@ -23,6 +23,9 @@ describe SgtnClient do
     it "process_locale" do
       expect(SgtnClient::LocaleUtil.process_locale('en')).to eq 'en'
       expect(SgtnClient::LocaleUtil.process_locale('de-DE')).to eq 'de-DE'
+      expect(SgtnClient::LocaleUtil.process_locale(:'de-DE')).to eq 'de-DE'
+      expect(SgtnClient::LocaleUtil.process_locale(:ja)).to eq 'ja'
+      expect(SgtnClient::LocaleUtil.process_locale(:'ja')).to eq 'ja'
     end
 
     it "process_locale_nil" do
