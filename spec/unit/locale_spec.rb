@@ -36,7 +36,7 @@ describe SgtnClient do
     it "default" do
       env = SgtnClient::Config.default_environment
       config_lang = SgtnClient::Config.configurations[env]["default_language"]
-      if config_lang == nil || config_lang == 'en'
+      if config_lang.nil? || config_lang == 'en'
         expect(SgtnClient::LocaleUtil.look_default()).to eq 'en'
       end
       # reset the default language to 'zh-Hans'

@@ -24,12 +24,12 @@ describe SgtnClient do
     end 
 
     it "GET" do
-      allow(SgtnClient::LocaleUtil).to receive(:process_locale).exactly(3).times.and_return('zh-Hans')
+      allow(SgtnClient::LocaleUtil).to receive(:process_locale).exactly(5).times.and_return('zh-Hans')
       expect(SgtnClient::Translation.getString("JAVA", "helloworld", "zh-Hans")).to eq '你好世界'
       # get from cache in 2nd time
       expect(SgtnClient::Translation.getString("JAVA", "helloworld", "zh-Hans")).to eq '你好世界'
       expect(SgtnClient::Translation.getString("JAVA", "helloworld", :"zh-Hans")).to eq '你好世界'
-      
+
       expect(SgtnClient::Translation.getString("JAVA", "old_helloworld", "zh-Hans")).to eq 'Source Hello world'
       # get from cache in 2nd time
       expect(SgtnClient::Translation.getString("JAVA", "old_helloworld", "zh-Hans")).to eq 'Source Hello world'

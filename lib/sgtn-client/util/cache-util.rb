@@ -38,7 +38,7 @@ module SgtnClient
         env = SgtnClient::Config.default_environment
         product_name = SgtnClient::Config.configurations[env]["product_name"]
         version = SgtnClient::Config.configurations[env]["version"].to_s
-        cachedkey = product_name + "_" + version + "_" + component + "_" + locale
+        product_name + "_" + version + "_" + component + "_" + locale
       end
   end
 

@@ -8,7 +8,7 @@ module SgtnClient
       def getTranslation(component, key, locale)
         locale = fallback_locale(locale)
         items = get_cs(component, locale)
-        if items.nil? || items["messages"] == nil
+        if items.nil? || items["messages"].nil?
           nil
         else
           items["messages"][key]
@@ -83,7 +83,7 @@ module SgtnClient
         rescue => exception
           SgtnClient.logger.error exception.message
         end
-        if obj != nil
+        if !obj.nil?
           obj = obj["data"]
         end
         return obj
