@@ -10,7 +10,12 @@ module SgtnClient
                   }
 
     class LocaleUtil
-        def self.process_locale(locale=nil)
+        def self.process_locale(locale)
+            flocale = fallback(process_input(locale))
+            flocale = SgtnClient::Config.configurations.default if flocale == get_source_locale()
+            return flocale
+        end
+        def self.process_input(locale=nil)
             locale ||= SgtnClient::Config.configurations.default
             locale.to_s
         end
@@ -30,6 +35,11 @@ module SgtnClient
                 end
             end 
             return locale
+        end
+        def self.get_source_locale
+            env = SgtnClient::Config.default_environment
+            source_locale = SgtnClient::Config.configurations[env]["default_language"]
+            source_locale || 'en'
         end
     end
 end
