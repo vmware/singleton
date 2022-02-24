@@ -14,6 +14,16 @@ module SgtnClient
             locale || SgtnClient::Config.configurations.default
         end
 
+        def self.look_default
+            env = SgtnClient::Config.default_environment
+            default_l = SgtnClient::Config.configurations[env]["default_language"]
+            default_l || 'en'
+        end
+
+        def self.is_default(locale=nil)
+            locale == look_default
+        end
+
         def self.fallback(locale)
             found = SgtnClient::DEFAULT_LOCALES.select {|e| e == locale}
             if !found.empty?

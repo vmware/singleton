@@ -9,7 +9,7 @@ module SgtnClient
     autoload :LocaleUtil,   "sgtn-client/util/locale-util"
   end
   
-  class Translation
+  class Translation < Base
 
       def self.getString(component, key, locale)
         SgtnClient.logger.debug "[Translation.getString]component: #{component}, key: #{key}, locale: #{locale}"
@@ -18,6 +18,11 @@ module SgtnClient
           str = SgtnClient::Source.getSource(component, key, SgtnClient::Config.configurations.default)
           if str.nil?
             SgtnClient.logger.debug "[Translation][getString] Missing source string with key: #{key}, component: #{component}, locale: #{locale}"
+          end
+        else
+          source = SgtnClient::Source.getSource(component, key, SgtnClient::Config.configurations.default)
+          unless SgtnClient::LocaleUtil.is_default(locale)
+            str = compareSource(component, key, SgtnClient::LocaleUtil.look_default, source, str) if !SgtnClient::LocaleUtil.is_default(locale)
           end
         end
         str
@@ -56,6 +61,7 @@ module SgtnClient
 
       def self.getStrings(component, locale)
         SgtnClient.logger.debug "[Translation][getStrings]component=#{component}, locale=#{locale}"
+        locale = fallback_locale(locale)
         items = get_cs(component, locale)
         default = SgtnClient::Config.configurations.default
         if items.nil? || items["messages"] == nil
@@ -72,77 +78,5 @@ module SgtnClient
         end
         return items
        end
-
-
-      private
-
-      def self.getTranslation(component, key, locale)
-        items = get_cs(component, locale)
-        if items.nil? || items["messages"] == nil
-          nil
-        else
-          items["messages"][key]
-        end
-      end
-
-      def self.get_cs(component, locale)
-        locale = SgtnClient::LocaleUtil.process_locale(locale)
-        flocale = SgtnClient::LocaleUtil.fallback(locale)
-        cache_key = SgtnClient::CacheUtil.get_cachekey(component, flocale)
-        SgtnClient.logger.debug "[Translation][get_cs]cache_key=#{cache_key}"
-        expired, items = SgtnClient::CacheUtil.get_cache(cache_key)
-        if items.nil? || expired
-          items = load(component, flocale)
-          if items.nil?
-            items = SgtnClient::Source.getSources(component, SgtnClient::Config.configurations.default)
-            SgtnClient::Core::Cache.put(cache_key, items, 60)
-          else
-            SgtnClient::CacheUtil.write_cache(cache_key, items)
-          end
-        else
-          SgtnClient.logger.debug "[Translation]get translations from cache with key: " + cache_key
-        end
-
-        return items
-       end
-
-      def self.load(component, locale)
-        env = SgtnClient::Config.default_environment
-        mode = SgtnClient::Config.configurations[env]["bundle_mode"]
-        SgtnClient.logger.debug "[Translation][load]mode=#{mode}"
-        if mode == 'offline'
-          return load_o(component, locale)
-        else
-          return load_s(component, locale)
-        end
-      end
-
-      def self.load_o(component, locale)
-        env = SgtnClient::Config.default_environment
-        product_name = SgtnClient::Config.configurations[env]["product_name"]
-        version = SgtnClient::Config.configurations[env]["version"].to_s
-        translation_bundle = SgtnClient::Config.configurations[env]["translation_bundle"]
-        bundlepath = translation_bundle + "/" + product_name + "/" + version + "/" + component + "/messages_" + locale + ".json"
-        SgtnClient::FileUtil.read_json(bundlepath)
-      end
-
-      def self.load_s(component, locale)
-        env = SgtnClient::Config.default_environment
-        product_name = SgtnClient::Config.configurations[env]["product_name"]
-        vip_server = SgtnClient::Config.configurations[env]["vip_server"]
-        version = SgtnClient::Config.configurations[env]["version"].to_s
-        url = vip_server + "/i18n/api/v2/translation/products/" + product_name + "/versions/" + version + "/locales/" + locale + "/components/" + component+ "?checkTranslationStatus=false&machineTranslation=false&pseudo=false"
-        begin
-          obj = SgtnClient::Core::Request.get(url)
-        rescue => exception
-          SgtnClient.logger.error exception.message
-        end
-        if obj != nil
-          obj = obj["data"]
-        end
-        return obj
-      end
-
   end
-
 end

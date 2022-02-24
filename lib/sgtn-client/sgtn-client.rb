@@ -3,6 +3,7 @@ module SgtnClient
             autoload :Cache,        "sgtn-client/core/cache"
       end
 
+      autoload :Base,               "sgtn-client/api/base"
       autoload :Translation,        "sgtn-client/api/translation"
       autoload :T,                  "sgtn-client/api/t"
       autoload :Source,             "sgtn-client/api/source"

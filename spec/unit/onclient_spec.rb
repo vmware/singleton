@@ -21,10 +21,14 @@ describe SgtnClient do
       expect(SgtnClient::Translation.getString("JAVA", "helloworld", nil)).to eq 'Hello world'
     end 
 
-    it "GET" do
+    it "GET_zh-Hans" do
       expect(SgtnClient::Translation.getString("JAVA", "helloworld", "zh-Hans")).to eq '你好世界'
       # get from cache in 2nd time
       expect(SgtnClient::Translation.getString("JAVA", "helloworld", "zh-Hans")).to eq '你好世界'
+
+      expect(SgtnClient::Translation.getString("JAVA", "old_helloworld", "zh-Hans")).to eq 'Source Hello world'
+      # get from cache in 2nd time
+      expect(SgtnClient::Translation.getString("JAVA", "old_helloworld", "zh-Hans")).to eq 'Source Hello world'
     end
 
     it "NewComponent" do
