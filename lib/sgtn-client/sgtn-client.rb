@@ -1,3 +1,8 @@
+# 
+#  Copyright 2019-2022 VMware, Inc.
+#  SPDX-License-Identifier: EPL-2.0
+#
+
 module SgtnClient
       module Core
             autoload :Cache,        "sgtn-client/core/cache"
