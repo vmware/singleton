@@ -109,7 +109,7 @@ public class CacheServiceTest extends BaseTestClass {
         
         // No update should happen.
         try {
-			Thread.sleep(3000);
+			Thread.sleep(5000);
 		} catch (InterruptedException e) {
 			Thread.currentThread().interrupt();
 		}
@@ -159,7 +159,7 @@ public class CacheServiceTest extends BaseTestClass {
         assertTrue(responseTime2.equals(responseTime)); 
         assertTrue(cacheItem.getMaxAgeMillis() == 0l);
         
-//        Thread.sleep(3000);
+//        Thread.sleep(5000);
         // TODO: Testing for asynchronous thread
         // The response time has been updated by the separate thread 
 //        responseTime2 = cacheItem.getTimestamp();
@@ -214,7 +214,7 @@ public class CacheServiceTest extends BaseTestClass {
         c.setExpiredTime(VIPCfg.getInstance().getCacheExpiredTime());
         
         // Give time for the separate thread to finish.
-        Thread.sleep(3000);
+        Thread.sleep(5000);
         
         //fetch the messages again because the cache was cleaned before setting the expired time back
         translation.getMessage(locale, component, key, args);
