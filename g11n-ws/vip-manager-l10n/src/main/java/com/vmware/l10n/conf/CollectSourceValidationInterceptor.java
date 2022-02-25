@@ -4,7 +4,6 @@
  */
 package com.vmware.l10n.conf;
 
-import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -17,15 +16,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.web.servlet.HandlerMapping;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.vmware.vip.api.rest.APIParamName;
 import com.vmware.vip.common.constants.ConstantsChar;
 import com.vmware.vip.common.constants.ConstantsKeys;
-import com.vmware.vip.common.constants.ConstantsSupportList;
 import com.vmware.vip.common.constants.ValidationMsg;
-import com.vmware.vip.common.exceptions.VIPAPIException;
-import com.vmware.vip.common.i18n.status.APIResponseStatus;
-import com.vmware.vip.common.i18n.status.Response;
+import com.vmware.vip.common.exceptions.ValidationException;
 import com.vmware.vip.common.utils.RegExpValidatorUtils;
 
 
@@ -71,9 +66,9 @@ public class CollectSourceValidationInterceptor extends HandlerInterceptorAdapte
 	 * 
 	 * @param request
 	 * @param language types that can collect source 
-	 * @throws VIPAPIException
+	 * @throws ValidationException
 	 */
-	private static void validate(HttpServletRequest request, Map<String, List<String>> allowList) throws VIPAPIException {
+	private static void validate(HttpServletRequest request, Map<String, List<String>> allowList) throws ValidationException {
 		if (request == null) { 
 			return;
 		}
@@ -90,7 +85,7 @@ public class CollectSourceValidationInterceptor extends HandlerInterceptorAdapte
 
 	@SuppressWarnings("unchecked")
 	private static void validateProductname(HttpServletRequest request)
-			throws VIPAPIException {
+			throws ValidationException {
 		Map<String, String> pathVariables = (Map<String, String>) request
 				.getAttribute(HandlerMapping.URI_TEMPLATE_VARIABLES_ATTRIBUTE);
 		String productName = pathVariables.get(APIParamName.PRODUCT_NAME) == null ? request
@@ -100,13 +95,13 @@ public class CollectSourceValidationInterceptor extends HandlerInterceptorAdapte
 			return;
 		}
 		if (!RegExpValidatorUtils.IsLetterOrNumber(productName)) {
-			throw new VIPAPIException(ValidationMsg.PRODUCTNAME_NOT_VALIDE);
+			throw new ValidationException(ValidationMsg.PRODUCTNAME_NOT_VALIDE);
 		}
 	}
 
 	@SuppressWarnings("unchecked")
 	private static void validateVersion(HttpServletRequest request)
-			throws VIPAPIException {
+			throws ValidationException {
 		Map<String, String> pathVariables = (Map<String, String>) request
 				.getAttribute(HandlerMapping.URI_TEMPLATE_VARIABLES_ATTRIBUTE);
 		String version = pathVariables.get(APIParamName.VERSION) == null ? request
@@ -116,13 +111,13 @@ public class CollectSourceValidationInterceptor extends HandlerInterceptorAdapte
 			return;
 		}
 		if (!RegExpValidatorUtils.IsNumberAndDot(version)) {
-			throw new VIPAPIException(ValidationMsg.VERSION_NOT_VALIDE);
+			throw new ValidationException(ValidationMsg.VERSION_NOT_VALIDE);
 		}
 	}
 
 	@SuppressWarnings("unchecked")
 	private static void validateComponent(HttpServletRequest request)
-			throws VIPAPIException {
+			throws ValidationException {
 		Map<String, String> pathVariables = (Map<String, String>) request
 				.getAttribute(HandlerMapping.URI_TEMPLATE_VARIABLES_ATTRIBUTE);
 		String component = pathVariables.get(APIParamName.COMPONENT) == null ? request
@@ -132,14 +127,14 @@ public class CollectSourceValidationInterceptor extends HandlerInterceptorAdapte
 			return;
 		}
 		if (!RegExpValidatorUtils.IsLetterAndNumberAndValidchar(component)) {
-			throw new VIPAPIException(ValidationMsg.COMPONENT_NOT_VALIDE);
+			throw new ValidationException(ValidationMsg.COMPONENT_NOT_VALIDE);
 		}
 	}
 
 
 	@SuppressWarnings("unchecked")
 	private static void validateKey(HttpServletRequest request)
-			throws VIPAPIException {
+			throws ValidationException {
 		Map<String, String> pathVariables = (Map<String, String>) request
 				.getAttribute(HandlerMapping.URI_TEMPLATE_VARIABLES_ATTRIBUTE);
 		String key = pathVariables.get(APIParamName.KEY) == null ? request
@@ -149,13 +144,13 @@ public class CollectSourceValidationInterceptor extends HandlerInterceptorAdapte
 			return;
 		}
 		if (!RegExpValidatorUtils.IsLetterAndNumberAndValidchar(key)) {
-			throw new VIPAPIException(ValidationMsg.KEY_NOT_VALIDE);
+			throw new ValidationException(ValidationMsg.KEY_NOT_VALIDE);
 		}
 	}
 
 	@SuppressWarnings("unchecked")
 	private static void validateLocale(HttpServletRequest request)
-			throws VIPAPIException {
+			throws ValidationException {
 		Map<String, String> pathVariables = (Map<String, String>) request
 				.getAttribute(HandlerMapping.URI_TEMPLATE_VARIABLES_ATTRIBUTE);
 		String locale = pathVariables.get(APIParamName.LOCALE) == null ? request
@@ -165,24 +160,24 @@ public class CollectSourceValidationInterceptor extends HandlerInterceptorAdapte
 			return;
 		}
 		if (!RegExpValidatorUtils.IsLetterAndNumberAndValidchar(locale)) {
-			throw new VIPAPIException(ValidationMsg.LOCALE_NOT_VALIDE);
+			throw new ValidationException(ValidationMsg.LOCALE_NOT_VALIDE);
 		}
 	}
 
 	public static void validateSourceformat(HttpServletRequest request)
-			throws VIPAPIException {
+			throws ValidationException {
 		String sourceformat = request.getParameter(APIParamName.SOURCE_FORMAT) == null ? ConstantsKeys.EMPTY_STRING
 				: request.getParameter(APIParamName.SOURCE_FORMAT);
 		if (StringUtils.isEmpty(sourceformat)) {
 			return;
 		}
-		if (!(RegExpValidatorUtils.IsLetterOrNumber(sourceformat) && ConstantsSupportList.SOURCE_FORMAT_LIST.contains(sourceformat))) {
-			throw new VIPAPIException(ValidationMsg.SOURCEFORMAT_NOT_VALIDE);
+		if (!(RegExpValidatorUtils.IsLetterOrNumber(sourceformat) && ConstantsKeys.SOURCE_FORMAT_LIST.contains(sourceformat))) {
+			throw new ValidationException(ValidationMsg.SOURCEFORMAT_NOT_VALIDE);
 		}
 	}
 
 	private static void validateCollectsource(HttpServletRequest request)
-			throws VIPAPIException {
+			throws ValidationException {
 		String collectsource = request
 				.getParameter(APIParamName.COLLECT_SOURCE) == null ? ConstantsKeys.EMPTY_STRING
 				: request.getParameter(APIParamName.COLLECT_SOURCE);
@@ -190,27 +185,27 @@ public class CollectSourceValidationInterceptor extends HandlerInterceptorAdapte
 			return;
 		}
 		if (!RegExpValidatorUtils.IsTrueOrFalse(collectsource)) {
-			throw new VIPAPIException(ValidationMsg.COLLECTSOURCE_NOT_VALIDE_L10N);
+			throw new ValidationException(ValidationMsg.COLLECTSOURCE_NOT_VALIDE_L10N);
 		}else if(collectsource.toLowerCase().equals("false")){
-			throw new VIPAPIException(ValidationMsg.COLLECTSOURCE_NOT_VALIDE_L10N);
+			throw new ValidationException(ValidationMsg.COLLECTSOURCE_NOT_VALIDE_L10N);
 		}
 	}
 
 	private static void validatePseudo(HttpServletRequest request)
-			throws VIPAPIException {
+			throws ValidationException {
 		String pseudo = request.getParameter(APIParamName.PSEUDO) == null ? ConstantsKeys.EMPTY_STRING
 				: request.getParameter(APIParamName.PSEUDO);
 		if (StringUtils.isEmpty(pseudo)) {
 			return;
 		}
 		if (!RegExpValidatorUtils.IsTrueOrFalse(pseudo)) {
-			throw new VIPAPIException(ValidationMsg.PSEUDO_NOT_VALIDE);
+			throw new ValidationException(ValidationMsg.PSEUDO_NOT_VALIDE);
 		}
 	}
 	
 	@SuppressWarnings("unchecked")
 	private static void validateAllowList(HttpServletRequest request, Map<String, List<String>> allowList) 
-			throws VIPAPIException {
+			throws ValidationException {
 		Map<String, String> pathVariables = (Map<String, String>) request
 				.getAttribute(HandlerMapping.URI_TEMPLATE_VARIABLES_ATTRIBUTE);
 		String productName = pathVariables.get(APIParamName.PRODUCT_NAME) == null
@@ -226,7 +221,7 @@ public class CollectSourceValidationInterceptor extends HandlerInterceptorAdapte
 				&& (allowList.get(productName).contains(ConstantsChar.ASTERISK) || allowList.get(productName).contains(version))) {
 			return;
 		}else {
-			throw new VIPAPIException(String.format(ValidationMsg.PRODUCTNAME_NOT_SUPPORTED, productName));
+			throw new ValidationException(String.format(ValidationMsg.PRODUCTNAME_NOT_SUPPORTED, productName));
 		}
 	}
 

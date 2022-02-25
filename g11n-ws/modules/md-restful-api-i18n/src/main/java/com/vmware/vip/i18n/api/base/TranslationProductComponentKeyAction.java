@@ -19,7 +19,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.vmware.vip.common.constants.ConstantsChar;
 import com.vmware.vip.common.constants.ConstantsKeys;
 import com.vmware.vip.common.constants.ConstantsMsg;
-import com.vmware.vip.common.constants.ConstantsSupportList;
 import com.vmware.vip.common.constants.ConstantsUnicode;
 import com.vmware.vip.common.constants.ValidationMsg;
 import com.vmware.vip.common.exceptions.ValidationException;
@@ -184,7 +183,7 @@ public class TranslationProductComponentKeyAction extends BaseAction {
 	
 		for(KeySourceCommentDTO ksc:sourceSet) {
 			String sft = ksc.getSourceFormat();
-			if (!StringUtils.isEmpty(sft) && !ConstantsSupportList.SOURCE_FORMAT_LIST.contains(sft)) {
+			if (!StringUtils.isEmpty(sft) && !ConstantsKeys.SOURCE_FORMAT_LIST.contains(sft)) {
 			   throw new ValidationException(ValidationMsg.SOURCEFORMAT_NOT_VALIDE);
 			}
 		}

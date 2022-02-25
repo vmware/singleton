@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.vmware.vip.common.exceptions.VIPAPIException;
+import com.vmware.vip.common.exceptions.ValidationException;
 import com.vmware.vip.common.i18n.dto.response.APIResponseDTO;
 import com.vmware.vip.common.i18n.status.APIResponseStatus;
 import com.vmware.vip.common.i18n.status.Response;
@@ -30,7 +30,7 @@ public class ExceptionHandle {
 			logger.error(e.getMessage(), e);
 			
 			response.setResponse(APIResponseStatus.INTERNAL_SERVER_ERROR);
-		} else if(e instanceof VIPAPIException){
+		} else if(e instanceof ValidationException){
 			response.setResponse(new Response(APIResponseStatus.BAD_REQUEST.getCode(), e.getMessage()));
 			logger.error(e.getMessage(),e);
 		} else {
