@@ -16,6 +16,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.vmware.vip.common.constants.ConstantsUnicode;
+import com.vmware.vip.common.http.HTTPRequester;
 import com.vmware.vip.common.l10n.source.util.IOUtil;
 import com.vmware.vip.common.l10n.source.util.PathUtil;
 

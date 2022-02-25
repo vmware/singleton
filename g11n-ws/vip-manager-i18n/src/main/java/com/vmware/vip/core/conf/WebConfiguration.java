@@ -52,12 +52,6 @@ public class WebConfiguration implements WebMvcConfigurer {
 	@Value("${source.cache.flag}")
 	private String sourceCacheFlag;
 
-	/**
-	 * l10n server url,it's loaded and init from "application.properties"
-	 */
-	@Value("${source.cache.server.url}")
-	private String sourceCacheServerUrl;
-
 	@Value("${csp.api.auth.enable}")
 	private String cspAuthFlag;
 
@@ -99,6 +93,9 @@ public class WebConfiguration implements WebMvcConfigurer {
 	
 	@Autowired
 	private IProductService productService;
+	
+	@Autowired
+	private APISourceInterceptor apiSourceInterceptor;
 
 	/**
 	 * Add ETag into response header for data cache
@@ -150,7 +147,7 @@ public class WebConfiguration implements WebMvcConfigurer {
 		// Source collection
 		if (sourceCacheFlag.equalsIgnoreCase("true")) {
 			logger.info("add enable Source collection interceptor");
-			registry.addInterceptor(new APISourceInterceptor(sourceCacheServerUrl))
+			registry.addInterceptor(apiSourceInterceptor)
 					.addPathPatterns(API.I18N_API_ROOT + APIV1.V + "/**")
 					.addPathPatterns(API.I18N_API_ROOT + APIV2.V + "/**");
 		}

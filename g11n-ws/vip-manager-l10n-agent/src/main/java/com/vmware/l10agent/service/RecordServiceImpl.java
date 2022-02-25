@@ -79,11 +79,14 @@ public class RecordServiceImpl implements RecordService {
 			refreshToken();
 			result = HttpRequester.sendGet(getRecodeUrl, params, null);
 		}
+		
 		logger.info(result);
 		if(result == null || result.trim().equals("")) {
 			return null;
 		}
-		JSONObject resultJsonObj = JSONObject.parseObject(result);
+		
+		StringBuilder sb = new StringBuilder(result);
+		JSONObject resultJsonObj = JSONObject.parseObject(sb.toString());
 		int responseCode = resultJsonObj.getJSONObject("response").getInteger("code");
 
 		if (responseCode == 204) {
@@ -119,7 +122,8 @@ public class RecordServiceImpl implements RecordService {
 		
 		if(result != null) {
         logger.info(result);
-		JSONObject resultJsonObj = JSONObject.parseObject(result);
+        StringBuilder sb = new StringBuilder(result);
+		JSONObject resultJsonObj = JSONObject.parseObject(sb.toString());
 		int responseCode = resultJsonObj.getJSONObject("response").getInteger("code");
 		if (responseCode == 204 ) {
 			return null;
@@ -159,8 +163,8 @@ public class RecordServiceImpl implements RecordService {
 			refreshToken();
 			result = HttpRequester.post(synchRecordUrl, param, null);
 		}
-		
-		Response response = JSONObject.parseObject(result, Response.class);
+		StringBuilder resultsb = new StringBuilder(result);
+		Response response = JSONObject.parseObject(resultsb.toString(), Response.class);
 		if (response.getCode() == 204) {
 			return false;
 		} else {
@@ -190,7 +194,8 @@ public class RecordServiceImpl implements RecordService {
 		if(result == null || result.trim().equals("")) {
 			return;
 		}
-		JSONObject resultJsonObj = JSONObject.parseObject(result);
+		StringBuilder resultsb = new StringBuilder(result);
+		JSONObject resultJsonObj = JSONObject.parseObject(resultsb.toString());
 		int responseCode = resultJsonObj.getJSONObject("response").getInteger("code");
 
 		if (responseCode == 204) {
@@ -242,7 +247,9 @@ public class RecordServiceImpl implements RecordService {
 		if(result == null || result.trim().equals("")) {
 			return null;
 		}
-		JSONObject resultJsonObj = JSONObject.parseObject(result);
+		
+		StringBuilder resultsb = new StringBuilder(result);
+		JSONObject resultJsonObj = JSONObject.parseObject(resultsb.toString());
 		int responseCode = resultJsonObj.getJSONObject("response").getInteger("code");
 
 		if (responseCode == 204) {

@@ -76,12 +76,16 @@ public class HTTPRequester {
 	 * @return
 	 */
 	public static HttpURLConnection createConnection(URL url) {
-		assert (null != url);
-		assert (HTTP_PROTOCOL.equals(url.getProtocol()) || HTTPS_PROTOCOL
-				.equals(url.getProtocol()));
+		
 		HttpURLConnection result = null;
 		try {
-			result = (HttpURLConnection) url.openConnection();
+			if(url != null) {
+				assert (HTTP_PROTOCOL.equals(url.getProtocol()) || HTTPS_PROTOCOL
+						.equals(url.getProtocol()));
+				result = (HttpURLConnection) url.openConnection();
+				
+			}
+			
 			if (result instanceof HttpsURLConnection) {
 				HttpsURLConnection httpsConn = (HttpsURLConnection) result;
 				httpsConn.setHostnameVerifier(new HostnameVerifier() {

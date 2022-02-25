@@ -15,6 +15,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerMapping;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
@@ -31,23 +33,20 @@ import com.vmware.vip.common.i18n.dto.UpdateTranslationDTO;
 /**
  * Interceptor for collection new resource
  */
+@Component
 public class APISourceInterceptor extends HandlerInterceptorAdapter {
 
     private Logger LOGGER = LoggerFactory.getLogger(APISourceInterceptor.class);
     private static String PARAM = "param";
     private static String URL = "url";
 
-    /**
-     * l10n server url
-     */
-    private String sourceCacheServerUrl;
+	/**
+	 * l10n server url,it's loaded and init from "application.properties"
+	 */
+	@Value("${source.cache.server.url}")
+	private String sourceCacheServerUrl;
 
-    /**
-     * Construction method for init sourceCacheFlag and sourceCacheServerUrl
-     */
-    public APISourceInterceptor(String sourceCacheServerUrl) {
-        this.sourceCacheServerUrl = sourceCacheServerUrl;
-    }
+
 
     @SuppressWarnings("unchecked")
     public void handleParams(HttpServletRequest request) throws IOException {
