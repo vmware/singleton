@@ -11,19 +11,18 @@ describe SgtnClient do
     end
 
     it "process_locale" do
-      allow(SgtnClient::LocaleUtil).to receive(:get_source_locale).exactly(1).times.and_return('en')
       expect(SgtnClient::LocaleUtil.process_locale('ja')).to eq 'ja'
     end
     it "process_locale_sameSourceAndTarget" do
-      allow(SgtnClient::LocaleUtil).to receive(:get_source_locale).exactly(1).times.and_return('en')
       expect(SgtnClient::LocaleUtil.process_locale('en')).to eq SgtnClient::Config.configurations.default
     end
-    it "process_locale_differentSourceAndTarget" do
-      allow(SgtnClient::LocaleUtil).to receive(:get_source_locale).exactly(2).times.and_return('en')
-      expect(SgtnClient::LocaleUtil.process_locale('ja')).to eq 'ja'
-      expect(SgtnClient::LocaleUtil.process_locale('zh-Hans')).to eq 'zh-Hans'
+    it "process_locale_targetLocaleIsNil" do
+      expect(SgtnClient::LocaleUtil.process_locale(nil)).to eq SgtnClient::Config.configurations.default
     end
-
+    
+    it "fallback_targetLocaleIsSource" do
+      expect(SgtnClient::LocaleUtil.fallback(SgtnClient::Config.configurations.default)).to eq SgtnClient::Config.configurations.default
+    end 
     it "fallback" do
       expect(SgtnClient::LocaleUtil.fallback('ja-JP')).to eq 'ja'
       expect(SgtnClient::LocaleUtil.fallback('de-DE')).to eq 'de'
