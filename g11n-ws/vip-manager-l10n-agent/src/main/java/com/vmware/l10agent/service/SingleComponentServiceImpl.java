@@ -257,7 +257,7 @@ public class SingleComponentServiceImpl implements SingleComponentService{
 	}
 	
 	private String postData(String source, String urlStr)  throws VIPHttpException {
-		String response =  HTTPRequester.postJSONStr(source, urlStr);
+		String response =  HTTPRequester.postData(source, urlStr, "application/json", "POST", null);
 		if(response == null || response.equalsIgnoreCase("")) {
 			throw new VIPHttpException("postFormData error.");
 		}
