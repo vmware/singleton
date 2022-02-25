@@ -200,7 +200,8 @@ public class SingleComponentServiceImpl implements SingleComponentService{
             logger.debug("{}----------{}", key, srcValue);
             String response = postData(srcValue, urlStr.toString().replaceAll(" ", "%20"));
             logger.info(response);
-          JSONObject resultJsonObj = JSONObject.parseObject(response);
+            StringBuilder resultsb = new StringBuilder(response);
+            JSONObject resultJsonObj = JSONObject.parseObject(resultsb.toString());          
    		  int responseCode = resultJsonObj.getJSONObject("response").getInteger("code");
            if(responseCode != 200) {
         	   logger.error("Failed to sync the source to l10n -> {} : {}", key, srcValue);
@@ -256,7 +257,7 @@ public class SingleComponentServiceImpl implements SingleComponentService{
 	}
 	
 	private String postData(String source, String urlStr)  throws VIPHttpException {
-		String response =  HTTPRequester.postData(source, urlStr, "application/json", "POST", null);
+		String response =  HTTPRequester.postJSONStr(source, urlStr);
 		if(response == null || response.equalsIgnoreCase("")) {
 			throw new VIPHttpException("postFormData error.");
 		}

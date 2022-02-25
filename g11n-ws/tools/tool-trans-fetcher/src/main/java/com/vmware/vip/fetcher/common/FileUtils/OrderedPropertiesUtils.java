@@ -16,7 +16,7 @@ import java.util.Map;
 import java.util.Properties;
 
 import com.vmware.vip.common.constants.ConstantsUnicode;
-import com.vmware.vip.common.utils.HTTPRequester;
+import com.vmware.vip.common.http.HTTPRequester;
 import com.vmware.vip.common.utils.PropertiesFileUtil;
 import com.vmware.vip.fetcher.common.dto.OrderedProperties;
 

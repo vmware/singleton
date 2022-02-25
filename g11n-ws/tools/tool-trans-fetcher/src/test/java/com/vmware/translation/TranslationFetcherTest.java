@@ -10,12 +10,11 @@ import java.net.URL;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.junit.Test;
 
 import com.vmware.vip.common.exceptions.VIPResourceOperationException;
+import com.vmware.vip.common.http.HTTPRequester;
 import com.vmware.vip.common.i18n.resourcefile.ResourceFileWritter;
 import com.vmware.vip.common.l10n.source.util.IOUtil;
-import com.vmware.vip.common.utils.HTTPRequester;
 
 import junit.framework.TestCase;
 

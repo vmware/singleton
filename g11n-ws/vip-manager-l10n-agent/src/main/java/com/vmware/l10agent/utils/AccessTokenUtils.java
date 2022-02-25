@@ -25,8 +25,9 @@ public class AccessTokenUtils {
 		params.put("grant_type", grantType);
 		
 		String result = HttpRequester.sendGet(url, params, null);
+		StringBuilder resultsb = new StringBuilder(result);
 		
-		JSONObject jobj = JSONObject.parseObject(result);
+		JSONObject jobj = JSONObject.parseObject(resultsb.toString());
 		boolean ok = jobj.getBoolean("success");
 		if(ok) {
 			JSONObject data = jobj.getJSONObject("data");
@@ -48,7 +49,8 @@ public class AccessTokenUtils {
 		
 		String result = HttpRequester.sendGet(url, params, null);
 		
-		JSONObject jobj = JSONObject.parseObject(result);
+		StringBuilder resultsb = new StringBuilder(result);
+		JSONObject jobj = JSONObject.parseObject(resultsb.toString());
 		boolean ok = jobj.getBoolean("success");
 		if(ok) {
 			JSONObject data = jobj.getJSONObject("data");

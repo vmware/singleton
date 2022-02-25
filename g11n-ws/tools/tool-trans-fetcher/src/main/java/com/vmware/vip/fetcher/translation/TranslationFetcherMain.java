@@ -11,9 +11,9 @@ import java.net.URL;
 import org.apache.commons.io.IOUtils;
 
 import com.vmware.vip.common.exceptions.VIPResourceOperationException;
+import com.vmware.vip.common.http.HTTPRequester;
 import com.vmware.vip.common.i18n.resourcefile.ResourceFileWritter;
 import com.vmware.vip.common.l10n.source.util.IOUtil;
-import com.vmware.vip.common.utils.HTTPRequester;
 
 /**
  * The class represents to fetch the translation from remote server during building process
