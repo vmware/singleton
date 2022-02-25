@@ -171,7 +171,7 @@ public class CollectSourceValidationInterceptor extends HandlerInterceptorAdapte
 		if (StringUtils.isEmpty(sourceformat)) {
 			return;
 		}
-		if (!(RegExpValidatorUtils.IsLetterOrNumber(sourceformat) && ConstantsKeys.SOURCE_FORMAT_LIST.contains(sourceformat))) {
+		if (!ConstantsKeys.SOURCE_FORMAT_LIST.contains(sourceformat)) {
 			throw new ValidationException(ValidationMsg.SOURCEFORMAT_NOT_VALIDE);
 		}
 	}
