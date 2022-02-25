@@ -21,7 +21,7 @@ public final class ValidationMsg {
 	public final static String PSEUDO_NOT_VALIDE = "Incorrect pseudo(only allows true, false)";
 	public final static String NUMBER_NOT_VALIDE = "Incorrect number";
 	public final static String SCALE_NOT_VALIDE = "Scale is empty or scale < 0";
-	public final static String SOURCEFORMAT_NOT_VALIDE = "Incorrect sourceformat(only allows null, \"\", MD, HTML, SVG)";
+	public final static String SOURCEFORMAT_NOT_VALIDE = "Incorrect sourceformat(only allows empty, MD, HTML, SVG)";
 	public final static String INVALID_URL = "Invalid URL or no mapping resources";
 	public final static String PATTERN_NOT_VALIDE = "Incorrect pattern(only allows letter)";
 	public final static String PRODUCTNAME_NOT_SUPPORTED = "The product '%s' is NOT supported yet!";
