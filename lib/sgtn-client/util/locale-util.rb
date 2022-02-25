@@ -12,9 +12,9 @@ module SgtnClient
                   }
 
     class LocaleUtil
-        def self.process_locale(locale, remoteSource=false)
+        def self.process_locale(locale)
             flocale = fallback(process_input(locale))
-            flocale = SgtnClient::Config.configurations.default if flocale == get_source_locale() and remoteSource == false
+            flocale = SgtnClient::Config.configurations.default if flocale == get_source_locale()
             return flocale
         end
         def self.process_input(locale=nil)
