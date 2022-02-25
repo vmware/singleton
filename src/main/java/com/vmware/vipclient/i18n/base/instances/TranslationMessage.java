@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2021 VMware, Inc.
+ * Copyright 2019-2022 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vipclient.i18n.base.instances;
@@ -21,6 +21,33 @@ import java.util.*;
 /**
  * This class provide some APIs to get translation from VIP service in
  * string-based, component-based level.
+ *
+ * For string-based level APIs, some need the source string as parameter, some don't, instead the source string is put to the resource bundle.
+ * Currently we support source string of the following form:
+ *
+ *      message = messageText (argument messageText)*
+ *      argument = noneArg | simpleArg | complexArg
+ *      complexArg = pluralArg
+ *
+ *      noneArg = '{' argNameOrNumber '}'
+ *      simpleArg = '{' argNameOrNumber ',' argType [',' argStyle] '}'
+ *      pluralArg = '{' argNameOrNumber ',' "plural" ',' pluralStyle '}'
+ *
+ *      pluralStyle: see PluralFormat
+ *
+ *      argNameOrNumber = argName | argNumber
+ *      argName = [^[[:Pattern_Syntax:][:Pattern_White_Space:]]]+
+ *      argNumber = '0' | ('1'..'9' ('0'..'9')*)
+ *
+ *      argType = "number" | "date"
+ *      argStyle for "number" type = "currency" | "percent" (argStyle is optional, when it's not specified, the number will be formatted in decimal format)
+ *      argStyle for "date" type = "shortDate" | "mediumDate" | "longDate" | "fullDate" | "shortTime" | "mediumTime" | "longTime" | "fullTime" | "short" | "medium" | "long" | "full"
+ *      (The format results of "short" | "medium" | "long" | "full" style are the combination of date and time.)
+ *      (When argStyle for "date" is not specified, the date will be formatted in "medium" style)
+ *
+ *      Below is an example for the format of source:
+ *      "At {1,date,shortTime} on {1,date,longDate}, there was {2} on planet {0,number}."
+ *
  */
 public class TranslationMessage implements Message {
     Logger logger = LoggerFactory.getLogger(TranslationMessage.class);
@@ -127,7 +154,7 @@ public class TranslationMessage implements Message {
      *            identify the source
      * @param source
      *            it's English source which will be return if no translation
-     *            available
+     *            available. For the format of source, please refer to the class annotation.
      * @param comment
      *            used to describe the source to help understand the source for
      *            the translators.
@@ -156,7 +183,7 @@ public class TranslationMessage implements Message {
      *            identify the source
      * @param source
      *            it's English source which will be return if no translation
-     *            available
+     *            available. For the format of source, please refer to the class annotation.
      * @param comment
      *            used to describe the source to help understand the source for
      *            the translators.
@@ -275,7 +302,7 @@ public class TranslationMessage implements Message {
      *            auto-created first time
      * @param sources
      *            the JSONObject should contain three attributes(key, source,
-     *            commentForSource).
+     *            commentForSource). For the format of source, please refer to the class annotation.
      * @return a boolean to indicate the post status
      * @deprecated Collection of source message is not supported at runtime.
      */
@@ -326,7 +353,7 @@ public class TranslationMessage implements Message {
      *            identify the source
      * @param source
      *            it's English source which will be return if no translation
-     *            available
+     *            available. For the format of source, please refer to the class annotation.
      * @param comment
      *            used to describe the source to help understand the source for
      *            the translators.

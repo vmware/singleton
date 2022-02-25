@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2021 VMware, Inc.
+ * Copyright 2019-2022 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vipclient.i18n.util;
@@ -75,6 +75,28 @@ public final class PatternProps {
             ++i;
         }
         return i;
+    }
+
+    /**
+     * @return s except with leading and trailing Pattern_White_Space removed.
+     */
+    public static String trimWhiteSpace(String s) {
+        if(s.length()==0 || (!isWhiteSpace(s.charAt(0)) && !isWhiteSpace(s.charAt(s.length()-1)))) {
+            return s;
+        }
+        int start=0;
+        int limit=s.length();
+        while(start<limit && isWhiteSpace(s.charAt(start))) {
+            ++start;
+        }
+        if(start<limit) {
+            // There is non-white space at start; we will not move limit below that,
+            // so we need not test start<limit in the loop.
+            while(isWhiteSpace(s.charAt(limit-1))) {
+                --limit;
+            }
+        }
+        return s.substring(start, limit);
     }
 
     /**

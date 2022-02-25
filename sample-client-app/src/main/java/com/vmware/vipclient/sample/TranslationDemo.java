@@ -1,11 +1,12 @@
 /*
- * Copyright 2019-2021 VMware, Inc.
+ * Copyright 2019-2022 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vipclient.sample;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.Date;
 import java.util.Locale;
 
 import com.vmware.vipclient.i18n.I18nFactory;
@@ -13,6 +14,7 @@ import com.vmware.vipclient.i18n.base.instances.TranslationMessage;
 import com.vmware.vipclient.i18n.common.ConstantsMsg;
 import com.vmware.vipclient.i18n.exceptions.VIPJavaClientException;
 import com.vmware.vipclient.i18n.util.FormatUtils;
+import org.junit.Assert;
 
 public class TranslationDemo {
 	static TranslationMessage t = (TranslationMessage) I18nFactory.getInstance().getMessageInstance(TranslationMessage.class);
@@ -28,7 +30,7 @@ public class TranslationDemo {
 		getMessageNewKeyInSource();
 		getMessageNewlyUpdatedSourceMsg();
 		getMessageKeyNotFound();
-		
+		getMessageWithSimpleArg();
 	}
 	
 	public static String getMessage(Locale locale) {
@@ -124,5 +126,19 @@ public class TranslationDemo {
 		System.out.println(">>>>>> TranslationDemo.getMessageKeyNotFound success");
 	}
 
-	
+	private static void getMessageWithSimpleArg(){
+		System.out.println(">>>>>> TranslationDemo.getMessageWithSimpleArg start");
+		final long timestamp = 1511156364801l;
+		Object[] arguments = {
+				7,
+				new Date(timestamp),
+				"a disturbance in the Force"
+		};
+
+		String includeFormatMessage = t.getMessage(Locale.ENGLISH, component, "sample.includeFormat.message",
+				arguments);
+		System.out.println("message with number&date arguments: " + includeFormatMessage);
+		Assert.assertEquals("At 1:39 PM on November 20, 2017, there was a disturbance in the Force on planet 7.", includeFormatMessage);
+		System.out.println(">>>>>> TranslationDemo.getMessageWithSimpleArg success");
+	}
 }
