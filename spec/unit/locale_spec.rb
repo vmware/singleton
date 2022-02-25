@@ -18,6 +18,10 @@ describe SgtnClient do
       allow(SgtnClient::LocaleUtil).to receive(:get_source_locale).exactly(1).times.and_return('en')
       expect(SgtnClient::LocaleUtil.process_locale('en')).to eq SgtnClient::Config.configurations.default
     end
+    it "process_locale_remoteSource" do
+      allow(SgtnClient::LocaleUtil).to receive(:get_source_locale).exactly(1).times.and_return('en')
+      expect(SgtnClient::LocaleUtil.process_locale('en', true)).to eq 'en'
+    end
     it "process_locale_differentSourceAndTarget" do
       allow(SgtnClient::LocaleUtil).to receive(:get_source_locale).exactly(2).times.and_return('en')
       expect(SgtnClient::LocaleUtil.process_locale('ja')).to eq 'ja'
