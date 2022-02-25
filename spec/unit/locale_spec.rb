@@ -50,8 +50,27 @@ describe SgtnClient do
       
       SgtnClient::Config.configurations[env]["default_language"] = 'zh-Hans'
       expect(SgtnClient::LocaleUtil.get_source_locale()).to eq 'zh-Hans'
-      
+
       SgtnClient::Config.configurations[env]["default_language"] = config_lang
+    end
+
+    it "fallback_locale" do
+      env = SgtnClient::Config.default_environment
+      default_language = SgtnClient::Config.configurations[env]["default_language"]
+      
+      SgtnClient::Config.configurations[env]["default_language"] = nil
+      expect(SgtnClient::LocaleUtil.get_best_locale('en')).to eq 'default'
+      expect(SgtnClient::LocaleUtil.get_best_locale('zh-Hans')).to eq 'zh-Hans'
+
+      SgtnClient::Config.configurations[env]["default_language"] = 'en'
+      expect(SgtnClient::LocaleUtil.get_best_locale('en')).to eq 'default'
+      expect(SgtnClient::LocaleUtil.get_best_locale('zh-Hans')).to eq 'zh-Hans'
+
+      SgtnClient::Config.configurations[env]["default_language"] = 'zh-Hans'
+      expect(SgtnClient::LocaleUtil.get_best_locale('en')).to eq 'en'
+      expect(SgtnClient::LocaleUtil.get_best_locale('zh-Hans')).to eq 'default'
+      
+      SgtnClient::Config.configurations[env]["default_language"] = default_language
     end
   end
 

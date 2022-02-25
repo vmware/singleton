@@ -66,7 +66,7 @@ module SgtnClient
 
       def self.getStrings(component, locale)
         SgtnClient.logger.debug "[Translation][getStrings]component=#{component}, locale=#{locale}"
-        locale = fallback_locale(locale)
+        locale = SgtnClient::LocaleUtil.get_best_locale(locale)
         items = get_cs(component, locale)
         default = SgtnClient::Config.configurations.default
         if items.nil? || items["messages"] == nil

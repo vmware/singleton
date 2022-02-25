@@ -27,25 +27,6 @@ describe SgtnClient do
       allow(SgtnClient::Base).to receive(:compareSource).exactly(5).times.and_return('Source Hello world')
       expect(SgtnClient::Base.compareSource("JAVA", "old_helloworld", default_language, 'Source Hello world', 'Source Hello world')).to eq 'Source Hello world'
     end
-
-    it "fallback_locale" do
-      env = SgtnClient::Config.default_environment
-      default_language = SgtnClient::Config.configurations[env]["default_language"]
-      
-      SgtnClient::Config.configurations[env]["default_language"] = nil
-      expect(SgtnClient::Base.fallback_locale('en')).to eq 'default'
-      expect(SgtnClient::Base.fallback_locale('zh-Hans')).to eq 'zh-Hans'
-
-      SgtnClient::Config.configurations[env]["default_language"] = 'en'
-      expect(SgtnClient::Base.fallback_locale('en')).to eq 'default'
-      expect(SgtnClient::Base.fallback_locale('zh-Hans')).to eq 'zh-Hans'
-
-      SgtnClient::Config.configurations[env]["default_language"] = 'zh-Hans'
-      expect(SgtnClient::Base.fallback_locale('en')).to eq 'en'
-      expect(SgtnClient::Base.fallback_locale('zh-Hans')).to eq 'default'
-      
-      SgtnClient::Config.configurations[env]["default_language"] = default_language
-    end
     
   end
 

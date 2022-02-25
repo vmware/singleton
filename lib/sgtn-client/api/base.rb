@@ -11,7 +11,7 @@ module SgtnClient
     class << self
 
       def getTranslation(component, key, locale)
-        locale = fallback_locale(locale)
+        locale = SgtnClient::LocaleUtil.get_best_locale(locale)
         items = get_cs(component, locale)
         if items.nil? || items["messages"].nil?
           nil
@@ -29,13 +29,6 @@ module SgtnClient
           target = items["messages"][key]
           source == target ? translation : source
         end
-      end
-
-      def fallback_locale(locale)
-        locale = SgtnClient::LocaleUtil.process_locale(locale)
-        flocale = SgtnClient::LocaleUtil.fallback(locale)
-        flocale = SgtnClient::Config.configurations.default if flocale == SgtnClient::LocaleUtil.get_source_locale()
-        return flocale
       end
 
       def get_cs(component, locale)
