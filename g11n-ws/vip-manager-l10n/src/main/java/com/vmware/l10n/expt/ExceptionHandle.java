@@ -10,8 +10,10 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.vmware.vip.common.exceptions.ValidationException;
 import com.vmware.vip.common.i18n.dto.response.APIResponseDTO;
 import com.vmware.vip.common.i18n.status.APIResponseStatus;
+import com.vmware.vip.common.i18n.status.Response;
 import com.vmware.vip.common.l10n.exception.L10nAPIException;
 @ControllerAdvice
 public class ExceptionHandle {
@@ -28,6 +30,9 @@ public class ExceptionHandle {
 			logger.error(e.getMessage(), e);
 			
 			response.setResponse(APIResponseStatus.INTERNAL_SERVER_ERROR);
+		} else if(e instanceof ValidationException){
+			response.setResponse(new Response(APIResponseStatus.BAD_REQUEST.getCode(), e.getMessage()));
+			logger.error(e.getMessage(),e);
 		} else {
 			logger.error("unknown error");
 			logger.error(e.getMessage(),e);

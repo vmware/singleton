@@ -2,7 +2,7 @@
  * Copyright 2019-2022 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
-package com.vmware.vip.core.validation;
+package com.vmware.vip.common.exceptions;
 
 import com.vmware.vip.common.exceptions.VIPAPIException;
 

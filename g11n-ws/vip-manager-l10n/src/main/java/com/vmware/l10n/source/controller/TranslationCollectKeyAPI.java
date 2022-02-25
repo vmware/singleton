@@ -30,7 +30,10 @@ import com.vmware.vip.api.rest.APIParamName;
 import com.vmware.vip.api.rest.APIParamValue;
 import com.vmware.vip.api.rest.l10n.L10nI18nAPI;
 import com.vmware.vip.common.constants.ConstantsFile;
+import com.vmware.vip.common.constants.ConstantsKeys;
 import com.vmware.vip.common.constants.ConstantsUnicode;
+import com.vmware.vip.common.constants.ValidationMsg;
+import com.vmware.vip.common.exceptions.ValidationException;
 import com.vmware.vip.common.i18n.dto.KeySourceCommentDTO;
 import com.vmware.vip.common.l10n.exception.L10nAPIException;
 import com.vmware.vip.common.l10n.source.dto.StringSourceDTO;
@@ -182,6 +185,7 @@ public class TranslationCollectKeyAPI {
 
 	/**
 	 * API to post a bunch of strings
+	 * @throws ValidationException 
 	 *
 	 */
 	@ApiOperation(value = APIOperation.KEY_SET_POST_VALUE, notes = APIOperation.KEY_SET_POST_NOTES)
@@ -194,13 +198,16 @@ public class TranslationCollectKeyAPI {
 			@ApiParam(name = APIParamName.COMPONENT, required = true, value = APIParamValue.COMPONENT) @PathVariable(APIParamName.COMPONENT) String component,
 			@RequestBody List<KeySourceCommentDTO> sourceSet,
 			@ApiParam(name = APIParamName.COLLECT_SOURCE, value = APIParamValue.COLLECT_SOURCE) @RequestParam(value = APIParamName.COLLECT_SOURCE, required = true, defaultValue = "true") String collectSource,
-			HttpServletRequest request) throws L10nAPIException {
+			HttpServletRequest request) throws ValidationException  {
 		logger.info("The parameters are: productName={}, version={}, component={}, locale={}", productName, version, component, locale);
 		for (KeySourceCommentDTO sto : sourceSet) {
 			String newLocale = locale == null ? ConstantsUnicode.EN : locale;
 			String newKey = sto.getKey();
 			String newSource =sto.getSource();
 			String sf = sto.getSourceFormat();
+			if (!StringUtils.isEmpty(sf) && !ConstantsKeys.SOURCE_FORMAT_LIST.contains(sf)) {
+				   throw new ValidationException(ValidationMsg.SOURCEFORMAT_NOT_VALIDE);
+			}
 			StringSourceDTO sourceObj = SourceUtils.createSourceDTO(productName, version, component, newLocale, newKey,
 					newSource, sto.getCommentForSource(), sf);
 			boolean isSourceCached = sourceService.cacheSource(sourceObj);
