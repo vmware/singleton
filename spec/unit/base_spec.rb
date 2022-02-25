@@ -14,11 +14,18 @@ describe SgtnClient do
       SgtnClient::Source.loadBundles("default")
     end
 
-    it "compareSource" do
+    it "compareSource_same" do
       env = SgtnClient::Config.default_environment
       default_language = SgtnClient::Config.configurations[env]["default_language"]
+      allow(SgtnClient::Base).to receive(:compareSource).exactly(5).times.and_return('你好世界')
       expect(SgtnClient::Base.compareSource("JAVA", "helloworld", default_language, 'Hello world', '你好世界')).to eq '你好世界'
-      expect(SgtnClient::Base.compareSource("JAVA", "helloworld", default_language, 'Hello world', 'test')).to eq 'test'
+    end
+
+    it "compareSource_old" do
+      env = SgtnClient::Config.default_environment
+      default_language = SgtnClient::Config.configurations[env]["default_language"]
+      allow(SgtnClient::Base).to receive(:compareSource).exactly(5).times.and_return('Source Hello world')
+      expect(SgtnClient::Base.compareSource("JAVA", "old_helloworld", default_language, 'Source Hello world', 'Source Hello world')).to eq 'Source Hello world'
     end
 
     it "fallback_locale" do
