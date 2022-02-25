@@ -34,7 +34,7 @@ module SgtnClient
       def fallback_locale(locale)
         locale = SgtnClient::LocaleUtil.process_locale(locale)
         flocale = SgtnClient::LocaleUtil.fallback(locale)
-        flocale = SgtnClient::Config.configurations.default if flocale == SgtnClient::LocaleUtil.look_default()
+        flocale = SgtnClient::Config.configurations.default if flocale == SgtnClient::LocaleUtil.get_source_locale()
         return flocale
       end
 

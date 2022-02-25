@@ -27,7 +27,7 @@ module SgtnClient
         else
           unless SgtnClient::LocaleUtil.is_default(locale)
             source = SgtnClient::Source.getSource(component, key, SgtnClient::Config.configurations.default)
-            str = compareSource(component, key, SgtnClient::LocaleUtil.look_default, source, str)
+            str = compareSource(component, key, SgtnClient::LocaleUtil.get_source_locale, source, str)
           end
         end
         str
