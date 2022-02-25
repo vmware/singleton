@@ -24,13 +24,19 @@ describe SgtnClient do
     it "fallback_locale" do
       env = SgtnClient::Config.default_environment
       default_language = SgtnClient::Config.configurations[env]["default_language"]
-      if default_language.nil? || default_language == 'en'
-        expect(SgtnClient::Base.fallback_locale('en')).to eq 'default'
-        expect(SgtnClient::Base.fallback_locale('zh-Hans')).to eq 'zh-Hans'
-      end
+      
+      SgtnClient::Config.configurations[env]["default_language"] = nil
+      expect(SgtnClient::Base.fallback_locale('en')).to eq 'default'
+      expect(SgtnClient::Base.fallback_locale('zh-Hans')).to eq 'zh-Hans'
+
+      SgtnClient::Config.configurations[env]["default_language"] = 'en'
+      expect(SgtnClient::Base.fallback_locale('en')).to eq 'default'
+      expect(SgtnClient::Base.fallback_locale('zh-Hans')).to eq 'zh-Hans'
+
       SgtnClient::Config.configurations[env]["default_language"] = 'zh-Hans'
       expect(SgtnClient::Base.fallback_locale('en')).to eq 'en'
       expect(SgtnClient::Base.fallback_locale('zh-Hans')).to eq 'default'
+      
       SgtnClient::Config.configurations[env]["default_language"] = default_language
     end
     
