@@ -16,7 +16,7 @@ describe "Translation test" do
             RequestStore.store[:locale] = 'en-US'
             RequestStore.store[:component] = 'about'
             #SgtnClient::Source.loadBundles("de")
-            expect(SgtnClient::T.s("about.message")).to eq("fall back about")
+            expect(SgtnClient::T.s("about.message")).to eq("Your application description page. offline")
         end
 
         # it "Get a string's translation and locale is en-US and key not exist in default" do
@@ -33,7 +33,7 @@ describe "Translation test" do
             RequestStore.store[:locale] = 'en-Uk'
             RequestStore.store[:component] = 'about'
             #SgtnClient::Source.loadBundles("de")
-            expect(SgtnClient::T.s("about.message")).to eq("fall back about")
+            expect(SgtnClient::T.s("about.message")).to eq("Your application description page. offline")
         end
 
         it "Get a string's translation and locale is fr-FR" do
@@ -59,7 +59,7 @@ describe "Translation test" do
             RequestStore.store[:locale] = 'da'
             RequestStore.store[:component] = 'about'
             #SgtnClient::Source.loadBundles("en")
-            expect(SgtnClient::T.s("about.message")).to eq("fall back about")
+            expect(SgtnClient::T.s("about.message")).to eq("Your application description page. offline")
         end
 
         it "Get a string's translation and key not exist in server but exist in source" do
@@ -95,7 +95,7 @@ describe "Translation test" do
             RequestStore.store[:locale] = 123
             RequestStore.store[:component] = 'about'
             #puts SgtnClient::T.s("about.message")
-            expect(SgtnClient::T.s("about.message")).to eq("fall back about")
+            expect(SgtnClient::T.s("about.message")).to eq("Your application description page. offline")
             #expect{SgtnClient::T.s("about.message")}.to raise_error(NoMethodError)
         end
 
@@ -103,7 +103,7 @@ describe "Translation test" do
             RequestStore.store[:locale] = nil
             RequestStore.store[:component] = 'about'
             #puts SgtnClient::T.s("about.message")
-            expect(SgtnClient::T.s("about.message")).to eq("fall back about")
+            expect(SgtnClient::T.s("about.message")).to eq("Your application description page. offline")
             #expect{SgtnClient::T.s("about.message")}.to raise_error(NoMethodError)
         end
 
@@ -216,7 +216,7 @@ describe "Translation test" do
             RequestStore.store[:locale] = 'da'
             RequestStore.store[:component] = 'about'
             #puts SgtnClient::T.c("about", "da")
-            expect(SgtnClient::T.c()["messages"]["about.message"]).to eq("fall back about")
+            expect(SgtnClient::T.c()["messages"]["about.message"]).to eq("Your application description page. offline")
         end
 
         it "Get a component's translations not exist in server but exist in source" do
