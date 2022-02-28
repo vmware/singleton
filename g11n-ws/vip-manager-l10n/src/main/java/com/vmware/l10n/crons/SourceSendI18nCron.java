@@ -18,14 +18,14 @@ import com.vmware.l10n.source.service.SyncI18nSourceService;
 @Service
 @ConditionalOnProperty(value="sync.source.enable", havingValue="true",  matchIfMissing=false)
 public class SourceSendI18nCron {
-
+	private final static long THREESECOND = 3000;
 	@Autowired
 	private SyncI18nSourceService syncI18nSourceService;
 	
 	/**
 	 * Synchronize the updated source to remote Singleton server
 	 */
-	@Scheduled(cron = "${sync.source.schedule.cron}")
+	@Scheduled(fixedDelay = THREESECOND)
 	public void syncSource2I18nCron() {
 		syncI18nSourceService.sendSourceToI18n();
 	}

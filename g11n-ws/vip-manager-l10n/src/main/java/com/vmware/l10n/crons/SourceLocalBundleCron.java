@@ -19,7 +19,6 @@ import com.vmware.l10n.source.service.SyncLocalBundleService;
 @Service
 @ConditionalOnProperty(value="sync.source.enable", havingValue="true",  matchIfMissing=false)
 public class SourceLocalBundleCron {
-	private final static long THREESECOND = 3000;
 
 	@Autowired
 	private SyncLocalBundleService syncLocalBundleService;
@@ -27,7 +26,7 @@ public class SourceLocalBundleCron {
 	/**
 	 * Synchronize the updated source to local bundle or s3 bundle
 	 */
-	@Scheduled(fixedDelay = THREESECOND)
+	@Scheduled(cron = "${sync.source.schedule.cron}")
 	public void syncSourceToLocalBundleCron() {
 		syncLocalBundleService.mergeSourceToLocalBundle();
 	}
