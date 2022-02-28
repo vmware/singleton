@@ -13,7 +13,7 @@ describe "Translation test" do
 
         it "Get a string's translation and locale is en-US" do
             #SgtnClient::Source.loadBundles("de")
-            expect(SgtnClient::Translation.getString("about", "about.message", "en-US")).to eq("fall back about")
+            expect(SgtnClient::Translation.getString("about", "about.message", "en-US")).to eq("Your application description page. offline")
         end
 
         it "Get a string's translation and locale is zh-Hans" do
@@ -22,7 +22,7 @@ describe "Translation test" do
 
         it "Get a string's translation and locale is en-UK" do
             #SgtnClient::Source.loadBundles("de")
-            expect(SgtnClient::Translation.getString("about", "about.message", "en")).to eq("fall back about")
+            expect(SgtnClient::Translation.getString("about", "about.message", "en")).to eq("Your application description page. offline")
         end
 
         it "Get a string's translation and locale is fr" do
@@ -36,7 +36,7 @@ describe "Translation test" do
 
         it "Get a string's translation and locale not exist in server" do
             #SgtnClient::Source.loadBundles("en")
-            expect(SgtnClient::Translation.getString("about", "about.message", "da")).to eq("fall back about")
+            expect(SgtnClient::Translation.getString("about", "about.message", "da")).to eq("Your application description page. offline")
         end
 
         it "Get a string's translation and key not exist in server but exist in source" do
@@ -62,12 +62,12 @@ describe "Translation test" do
 
         it "Get a string's translation and locale argument type is incorrect" do
             #expect{SgtnClient::Translation.getString("about", "about.message", 123)}.to raise_error(NoMethodError)
-            expect(SgtnClient::Translation.getString("about", "about.message", 123)).to eq("fall back about")
+            expect(SgtnClient::Translation.getString("about", "about.message", 123)).to eq("Your application description page. offline")
         end
 
         it "Get a string's translation and locale argument type is nil" do
             #expect{SgtnClient::Translation.getString("about", "about.message", 123)}.to raise_error(NoMethodError)
-            expect(SgtnClient::Translation.getString("about", "about.message", nil)).to eq("fall back about")
+            expect(SgtnClient::Translation.getString("about", "about.message", nil)).to eq("Your application description page. offline")
         end
 
         # it "Get a string's translation and key type is incorrect" do
@@ -147,7 +147,7 @@ describe "Translation test" do
 
         it "Get a component's translations da" do
             #puts SgtnClient::Translation.getStrings("about", "da")
-            expect(SgtnClient::Translation.getStrings("about", "da")["messages"]["about.message"]).to eq("fall back about")
+            expect(SgtnClient::Translation.getStrings("about", "da")["messages"]["about.message"]).to eq("Your application description page. offline")
         end
 
         it "Get a component's translations not exist in server but exist in source" do
@@ -169,12 +169,12 @@ describe "Translation test" do
 
         it "Get a component's translations and locale type is incorrect" do
             #expect{SgtnClient::Translation.getStrings("about", 123)}.to raise_error(NoMethodError)
-            expect(SgtnClient::Translation.getStrings("about", 123)["messages"]["about.message"]).to eq("fall back about")
+            expect(SgtnClient::Translation.getStrings("about", 123)["messages"]["about.message"]).to eq("Your application description page. offline")
             ##puts SgtnClient::Translation.getStrings("about", "zh-CN")
         end
 
         it "Get a component's translations and locale type is nil" do
-            expect(SgtnClient::Translation.getStrings("about", nil)["messages"]["about.message"]).to eq("fall back about")
+            expect(SgtnClient::Translation.getStrings("about", nil)["messages"]["about.message"]).to eq("Your application description page. offline")
             #expect{SgtnClient::Translation.getStrings("about", 123)}.to raise_error(NoMethodError)
             ##puts SgtnClient::Translation.getStrings("about", "zh-CN")
         end
@@ -195,25 +195,25 @@ describe "Translation test" do
             SgtnClient.load("./config/sgtnclient.yml", "development")
             SgtnClient::Source.loadBundles("default")
             expect(SgtnClient::Translation.getString("about", "about.description", "en")).to eq(nil)     
-            expect(SgtnClient::Translation.getString("about", "about.message", "en-US")).to eq("fall back about")
+            expect(SgtnClient::Translation.getString("about", "about.message", "en-US")).to eq("Your application description page. offline")
             expect(SgtnClient::Translation.getString("about", "about.message", "de")).to eq("test de key offline")
-            expect(SgtnClient::Translation.getString("about", "about.message", "da")).to eq("fall back about")          
+            expect(SgtnClient::Translation.getString("about", "about.message", "da")).to eq("Your application description page. offline")          
         end
 
         it "default_language is en and loadbundle is default.yml" do
             SgtnClient.load("./config/sgtnclient.yml", "testsourcelocaleoffline1")
             SgtnClient::Source.loadBundles("default")
-            expect(SgtnClient::Translation.getString("about", "about.message", "en-US")).to eq("fall back about")
+            expect(SgtnClient::Translation.getString("about", "about.message", "en-US")).to eq("Your application description page. offline")
             expect(SgtnClient::Translation.getString("about", "about.message", "de")).to eq("test de key offline")
-            expect(SgtnClient::Translation.getString("about", "about.message", "da")).to eq("fall back about")       
+            expect(SgtnClient::Translation.getString("about", "about.message", "da")).to eq("Your application description page. offline")       
         end
                     
         it "default_language is zh-Hans and loadbundle is default.yml" do
             SgtnClient.load("./config/sgtnclient.yml", "testsourcelocaleoffline2")
             SgtnClient::Source.loadBundles("default")
             expect(SgtnClient::Translation.getString("about", "about.message", "en")).to eq("Your application description page. offline")
-            expect(SgtnClient::Translation.getString("about", "about.message", "zh-Hans")).to eq("fall back about")
-            expect(SgtnClient::Translation.getString("about", "about.message", "da")).to eq("fall back about")  
+            expect(SgtnClient::Translation.getString("about", "about.message", "zh-Hans")).to eq("Your application description page. offline")
+            expect(SgtnClient::Translation.getString("about", "about.message", "da")).to eq("Your application description page. offline")  
         end
 
         
@@ -221,8 +221,8 @@ describe "Translation test" do
             SgtnClient.load("./config/sgtnclient.yml", "testsourcelocaleoffline3")
             SgtnClient::Source.loadBundles("default")
             expect(SgtnClient::Translation.getString("about", "about.message", "en")).to eq("Your application description page. offline")
-            expect(SgtnClient::Translation.getString("about", "about.message", "da")).to eq("fall back about") 
-            expect(SgtnClient::Translation.getString("about", "about.message", "es")).to eq("fall back about") 
+            expect(SgtnClient::Translation.getString("about", "about.message", "da")).to eq("Your application description page. offline") 
+            expect(SgtnClient::Translation.getString("about", "about.message", "es")).to eq("Your application description page. offline") 
         end
 
         
@@ -231,28 +231,28 @@ describe "Translation test" do
             SgtnClient::Source.loadBundles("default")
             expect(SgtnClient::Translation.getString("about", "about.message", "en")).to eq("Your application description page. offline")
             expect(SgtnClient::Translation.getString("about", "about.message", "de")).to eq("test de key offline") 
-            expect(SgtnClient::Translation.getString("about", "about.message", "abcd")).to eq("fall back about")
-            expect(SgtnClient::Translation.getString("about", "about.message", "da")).to eq("fall back about") 
+            expect(SgtnClient::Translation.getString("about", "about.message", "abcd")).to eq("Your application description page. offline")
+            expect(SgtnClient::Translation.getString("about", "about.message", "da")).to eq("Your application description page. offline") 
         end
 
-        it "default_language is en and loadbundle is en.yml" do
-            SgtnClient.load("./config/sgtnclient.yml", "testsourcelocaleoffline1")
-            SgtnClient::Source.loadBundles("en")
-            expect(SgtnClient::Translation.getString("about", "about.message", "en")).to eq("fall back about")
-            expect(SgtnClient::Translation.getString("about", "about.message", "de")).to eq("test de key offline")
-            expect(SgtnClient::Translation.getString("about", "about.message", "da")).to eq("fall back about") 
+        # it "default_language is en and loadbundle is en.yml" do
+        #     SgtnClient.load("./config/sgtnclient.yml", "testsourcelocaleoffline1")
+        #     SgtnClient::Source.loadBundles("en")
+        #     expect(SgtnClient::Translation.getString("about", "about.message", "en")).to eq("fall back about")
+        #     expect(SgtnClient::Translation.getString("about", "about.message", "de")).to eq("fall back about")
+        #     expect(SgtnClient::Translation.getString("about", "about.message", "da")).to eq("fall back about") 
 
-        end
+        # end
 
-        it "default_language is fr and loadbundle is en.yml" do
-            SgtnClient.load("./config/sgtnclient.yml", "testsourcelocaleoffline5")
-            SgtnClient::Source.loadBundles("en")
-            expect(SgtnClient::Translation.getString("about", "about.message", "en")).to eq("fall back about")
-            expect(SgtnClient::Translation.getString("about", "about.message", "fr")).to eq("fall back about")
-            expect(SgtnClient::Translation.getString("about", "about.message", "da")).to eq("fall back about")
-            expect(SgtnClient::Translation.getString("about", "about.message", "de")).to eq("test de key offline")
+        # it "default_language is fr and loadbundle is en.yml" do
+        #     SgtnClient.load("./config/sgtnclient.yml", "testsourcelocaleoffline5")
+        #     SgtnClient::Source.loadBundles("en")
+        #     expect(SgtnClient::Translation.getString("about", "about.message", "en")).to eq("fall back about")
+        #     expect(SgtnClient::Translation.getString("about", "about.message", "fr")).to eq("fall back about")
+        #     expect(SgtnClient::Translation.getString("about", "about.message", "da")).to eq("fall back about")
+        #     expect(SgtnClient::Translation.getString("about", "about.message", "de")).to eq("test de key offline")
 
-        end
+        # end
 
 
     end
@@ -262,17 +262,17 @@ describe "Translation test" do
             SgtnClient.load("./config/sgtnclient.yml", "development")
             SgtnClient::Source.loadBundles("default")
             expect(SgtnClient::Translation.getStrings("about", "en-US")["messages"]["about.description"]).to eq(nil)  
-            expect(SgtnClient::Translation.getStrings("about", "en-US")["messages"]["about.message"]).to eq("fall back about")
+            expect(SgtnClient::Translation.getStrings("about", "en-US")["messages"]["about.message"]).to eq("Your application description page. offline")
             expect(SgtnClient::Translation.getStrings("about", "de")["messages"]["about.message"]).to eq("test de key offline")
-            expect(SgtnClient::Translation.getStrings("about", "da")["messages"]["about.message"]).to eq("fall back about")   
+            expect(SgtnClient::Translation.getStrings("about", "da")["messages"]["about.message"]).to eq("Your application description page. offline")   
         end
 
         it "getstrings default_language is en and loadbundle is default.yml" do
             SgtnClient.load("./config/sgtnclient.yml", "testsourcelocaleoffline1")
             SgtnClient::Source.loadBundles("default")
-            expect(SgtnClient::Translation.getStrings("about", "en-US")["messages"]["about.message"]).to eq("fall back about")
+            expect(SgtnClient::Translation.getStrings("about", "en-US")["messages"]["about.message"]).to eq("Your application description page. offline")
             expect(SgtnClient::Translation.getStrings("about", "de")["messages"]["about.message"]).to eq("test de key offline")
-            expect(SgtnClient::Translation.getStrings("about", "da")["messages"]["about.message"]).to eq("fall back about")    
+            expect(SgtnClient::Translation.getStrings("about", "da")["messages"]["about.message"]).to eq("Your application description page. offline")    
     
         end
 
@@ -280,8 +280,8 @@ describe "Translation test" do
             SgtnClient.load("./config/sgtnclient.yml", "testsourcelocaleoffline2")
             SgtnClient::Source.loadBundles("default")
             expect(SgtnClient::Translation.getStrings("about", "en")["messages"]["about.message"]).to eq("Your application description page. offline")
-            expect(SgtnClient::Translation.getStrings("about", "zh-Hans")["messages"]["about.message"]).to eq("fall back about")
-            expect(SgtnClient::Translation.getStrings("about", "da")["messages"]["about.message"]).to eq("fall back about")    
+            expect(SgtnClient::Translation.getStrings("about", "zh-Hans")["messages"]["about.message"]).to eq("Your application description page. offline")
+            expect(SgtnClient::Translation.getStrings("about", "da")["messages"]["about.message"]).to eq("Your application description page. offline")    
         end
 
         
@@ -289,8 +289,8 @@ describe "Translation test" do
             SgtnClient.load("./config/sgtnclient.yml", "testsourcelocaleoffline3")
             SgtnClient::Source.loadBundles("default")
             expect(SgtnClient::Translation.getStrings("about", "en")["messages"]["about.message"]).to eq("Your application description page. offline")
-            expect(SgtnClient::Translation.getStrings("about", "da")["messages"]["about.message"]).to eq("fall back about")
-            expect(SgtnClient::Translation.getStrings("about", "es")["messages"]["about.message"]).to eq("fall back about")    
+            expect(SgtnClient::Translation.getStrings("about", "da")["messages"]["about.message"]).to eq("Your application description page. offline")
+            expect(SgtnClient::Translation.getStrings("about", "es")["messages"]["about.message"]).to eq("Your application description page. offline")    
 
         end
 
@@ -300,7 +300,7 @@ describe "Translation test" do
             SgtnClient::Source.loadBundles("default")
             expect(SgtnClient::Translation.getStrings("about", "en")["messages"]["about.message"]).to eq("Your application description page. offline")
             expect(SgtnClient::Translation.getStrings("about", "de")["messages"]["about.message"]).to eq("test de key offline")
-            expect(SgtnClient::Translation.getStrings("about", "da")["messages"]["about.message"]).to eq("fall back about")    
+            expect(SgtnClient::Translation.getStrings("about", "da")["messages"]["about.message"]).to eq("Your application description page. offline")    
         end
 
         it "getstrings default_language is en and loadbundle is en.yml" do

@@ -42,6 +42,7 @@ test: &default
 development:
   <<: *default
   bundle_mode: offline
+  source_bundle: ./config/locales/defaultoffline
 
 production:
   <<: *default
@@ -76,14 +77,17 @@ testversion_fallback:
 testproductname:
   <<: *default
   product_name: NOTRubyClient
+  source_bundle: ./config/locales/defaultback
 
 testversion:
   <<: *default
   version: 0.1
+  source_bundle: ./config/locales/defaultback
 
 testvipserver:
   <<: *default
   vip_server: http://192.168.1.142:8095
+  source_bundle: ./config/locales/defaultback
 
 testbundlemode:
   <<: *default
@@ -93,6 +97,7 @@ testtranslationbundle:
   <<: *default
   bundle_mode: offline
   translation_bundle: ./config/locales/l10n/nobundles
+  source_bundle: ./config/locales/defaultback
 
 testsourcebundle:
   <<: *default
@@ -139,24 +144,29 @@ testsourcelocaleoffline1:
   <<: *default
   bundle_mode: offline
   default_language: en
+  source_bundle: ./config/locales/defaultoffline
 
 
 testsourcelocaleoffline2:
   <<: *default
   bundle_mode: offline
   default_language: zh-Hans
+  source_bundle: ./config/locales/defaultoffline
 
 testsourcelocaleoffline3:
   <<: *default
   bundle_mode: offline
   default_language: da
+  source_bundle: ./config/locales/defaultoffline
 
 testsourcelocaleoffline4:
   <<: *default
   bundle_mode: offline
   default_language: abcd
+  source_bundle: ./config/locales/defaultoffline
 
 testsourcelocaleoffline5:
   <<: *default
   bundle_mode: offline
   default_language: fr
+  source_bundle: ./config/locales/defaultoffline
