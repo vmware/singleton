@@ -14,11 +14,11 @@ module SgtnClient
     autoload :LocaleUtil,   "sgtn-client/util/locale-util"
   end
   
-  class Translation < Base
+  class Translation
 
       def self.getString(component, key, locale)
         SgtnClient.logger.debug "[Translation.getString]component: #{component}, key: #{key}, locale: #{locale}"
-        str = get_translation(component, key, locale)
+        str = SgtnClient::ServiceUtil.get_translation(component, key, locale)
         if str.nil?
           str = SgtnClient::Source.getSource(component, key, SgtnClient::Config.configurations.default)
           if str.nil?
@@ -27,7 +27,7 @@ module SgtnClient
         else
           unless SgtnClient::LocaleUtil.is_default(locale)
             source = SgtnClient::Source.getSource(component, key, SgtnClient::Config.configurations.default)
-            str = compare_source(component, key, SgtnClient::LocaleUtil.get_source_locale, source, str)
+            str = SgtnClient::ServiceUtil.compare_source(component, key, SgtnClient::LocaleUtil.get_source_locale, source, str)
           end
         end
         str
@@ -35,7 +35,7 @@ module SgtnClient
 
       def self.getString_p(component, key, plural_args, locale)
         SgtnClient.logger.debug "[Translation][getString_p]component=#{component}, key=#{key}, locale=#{locale}"
-        str = get_translation(component, key, locale)
+        str = SgtnClient::ServiceUtil.get_translation(component, key, locale)
         if str.nil?
           str = SgtnClient::Source.getSource(component, key, SgtnClient::Config.configurations.default)
           if str.nil?
@@ -67,7 +67,7 @@ module SgtnClient
       def self.getStrings(component, locale)
         SgtnClient.logger.debug "[Translation][getStrings]component=#{component}, locale=#{locale}"
         locale = SgtnClient::LocaleUtil.get_best_locale(locale)
-        items = get_cs(component, locale)
+        items = SgtnClient::ServiceUtil.get_cs(component, locale)
         default = SgtnClient::Config.configurations.default
         if items.nil? || items["messages"] == nil
           items = {}

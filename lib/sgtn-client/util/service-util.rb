@@ -7,7 +7,7 @@ require 'multi_json'
 
 module SgtnClient
 
-  class Base
+  class ServiceUtil
     class << self
 
       def get_translation(component, key, locale)
@@ -21,7 +21,7 @@ module SgtnClient
       end
 
       def compare_source(component, key, source_locale, source, translation)
-        SgtnClient.logger.debug "[Base][compare_source]component=#{component},key=#{key},default_locale=#{source_locale},source=#{source},translation=#{translation}"
+        SgtnClient.logger.debug "[ServiceUtil][compare_source]component=#{component},key=#{key},default_locale=#{source_locale},source=#{source},translation=#{translation}"
         items = get_cs(component, source_locale)
         if items.nil? || items["messages"].nil?
           translation
@@ -33,7 +33,7 @@ module SgtnClient
 
       def get_cs(component, locale)
         cache_key = SgtnClient::CacheUtil.get_cachekey(component, locale)
-        SgtnClient.logger.debug "[Base][get_cs]cache_key=#{cache_key}"
+        SgtnClient.logger.debug "[ServiceUtil][get_cs]cache_key=#{cache_key}"
         expired, items = SgtnClient::CacheUtil.get_cache(cache_key)
         if items.nil? || expired
           items = load(component, locale)
@@ -44,7 +44,7 @@ module SgtnClient
             SgtnClient::CacheUtil.write_cache(cache_key, items)
           end
         else
-          SgtnClient.logger.debug "[Base]get translations from cache with key: " + cache_key
+          SgtnClient.logger.debug "[ServiceUtil]get translations from cache with key: " + cache_key
         end
 
         return items
@@ -53,7 +53,7 @@ module SgtnClient
       def load(component, locale)
         env = SgtnClient::Config.default_environment
         mode = SgtnClient::Config.configurations[env]["bundle_mode"]
-        SgtnClient.logger.debug "[Base][load]mode=#{mode}"
+        SgtnClient.logger.debug "[ServiceUtil][load]mode=#{mode}"
         if mode == 'offline'
           return load_o(component, locale)
         else

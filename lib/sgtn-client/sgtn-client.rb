@@ -8,7 +8,6 @@ module SgtnClient
             autoload :Cache,        "sgtn-client/core/cache"
       end
 
-      autoload :Base,               "sgtn-client/api/base"
       autoload :Translation,        "sgtn-client/api/translation"
       autoload :T,                  "sgtn-client/api/t"
       autoload :Source,             "sgtn-client/api/source"
@@ -18,6 +17,7 @@ module SgtnClient
       autoload :ValidateUtil,       "sgtn-client/util/validate-util"
       autoload :LocaleUtil,         "sgtn-client/util/locale-util"
       autoload :FileUtil,           "sgtn-client/util/file-util"
+      autoload :ServiceUtil,        "sgtn-client/util/service-util"
 
       module Formatters
             autoload :PluralFormatter,    "sgtn-client/formatters/plurals/plural_formatter"

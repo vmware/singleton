@@ -6,7 +6,7 @@
 require 'spec_helper'
 
 describe SgtnClient do
-  describe "Base" do
+  describe "ServiceUtil" do
 
     before :each do
       env = SgtnClient::Config.default_environment
@@ -17,13 +17,13 @@ describe SgtnClient do
     it "compareSource_same" do
       env = SgtnClient::Config.default_environment
       default_language = SgtnClient::Config.configurations[env]["default_language"]
-      expect(SgtnClient::Base.compare_source("JAVA", "helloworld", default_language, 'Hello world', '你好世界')).to eq '你好世界'
+      expect(SgtnClient::ServiceUtil.compare_source("JAVA", "helloworld", default_language, 'Hello world', '你好世界')).to eq '你好世界'
     end
 
     it "compareSource_old" do
       env = SgtnClient::Config.default_environment
       default_language = SgtnClient::Config.configurations[env]["default_language"]
-      expect(SgtnClient::Base.compare_source("JAVA", "old_helloworld", default_language, 'Source Hello world', 'Source Hello world')).to eq 'Source Hello world'
+      expect(SgtnClient::ServiceUtil.compare_source("JAVA", "old_helloworld", default_language, 'Source Hello world', 'Source Hello world')).to eq 'Source Hello world'
     end
     
   end
