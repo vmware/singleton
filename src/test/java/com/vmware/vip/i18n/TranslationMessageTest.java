@@ -17,6 +17,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import com.ibm.icu.text.DateFormat;
 import org.json.simple.JSONObject;
 import org.junit.Assert;
 import org.junit.Before;
@@ -199,20 +200,19 @@ public class TranslationMessageTest extends BaseTestClass {
 
         //test message with simple arg
         final long timestamp = 1511156364801l;
+        Date date = new Date(timestamp);
         Object[] arguments = {
                 7,
                 new Date(timestamp),
                 "a disturbance in the Force"
         };
-
+        String expectedMsg = "At "+ DateFormat.getTimeInstance(DateFormat.SHORT, Locale.ENGLISH).format(date) +
+                " on " + DateFormat.getDateInstance(DateFormat.LONG, Locale.ENGLISH).format(date) +
+                ", there was a disturbance in the Force on planet 7.";
         String includeFormatMessage = translation.getMessage(bundle, locale1, component, "sample.includeFormat.message",
                 arguments);
         System.out.println("includeFormatMessage result: " + includeFormatMessage);
-        //comment out this comparision temporarily due to the actual result is different on different timezone,
-        //but the expected result is hardcode on Chinese timezone, which leads to comparision failure on non-Chinese timezone.
-        /*
-        Assert.assertEquals("At 1:39 PM on November 20, 2017, there was a disturbance in the Force on planet 7.", includeFormatMessage);
-        */
+        Assert.assertEquals(expectedMsg, includeFormatMessage);
     }
 
     @Test
