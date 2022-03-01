@@ -34,7 +34,7 @@ module SgtnClient
             default_l || 'en'
         end
 
-        def self.is_default(locale=nil)
+        def self.is_source_locale(locale=nil)
             locale == get_source_locale
         end
 

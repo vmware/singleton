@@ -25,7 +25,7 @@ module SgtnClient
             SgtnClient.logger.debug "[Translation][getString] Missing source string with key: #{key}, component: #{component}, locale: #{locale}"
           end
         else
-          unless SgtnClient::LocaleUtil.is_default(locale)
+          unless SgtnClient::LocaleUtil.is_source_locale(locale)
             source = SgtnClient::Source.getSource(component, key, SgtnClient::Config.configurations.default)
             str = SgtnClient::ServiceUtil.compare_source(component, key, SgtnClient::LocaleUtil.get_source_locale, source, str)
           end
