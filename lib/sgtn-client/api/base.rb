@@ -10,7 +10,7 @@ module SgtnClient
   class Base
     class << self
 
-      def getTranslation(component, key, locale)
+      def get_translation(component, key, locale)
         locale = SgtnClient::LocaleUtil.get_best_locale(locale)
         items = get_cs(component, locale)
         if items.nil? || items["messages"].nil?
@@ -20,8 +20,8 @@ module SgtnClient
         end
       end
 
-      def compareSource(component, key, default_locale, source, translation)
-        SgtnClient.logger.debug "[Base][compareSource]component=#{component},key=#{key},default_locale=#{default_locale},source=#{source},translation=#{translation}"
+      def compare_source(component, key, default_locale, source, translation)
+        SgtnClient.logger.debug "[Base][compare_source]component=#{component},key=#{key},default_locale=#{default_locale},source=#{source},translation=#{translation}"
         items = get_cs(component, default_locale)
         if items.nil? || items["messages"].nil?
           translation
