@@ -20,9 +20,9 @@ module SgtnClient
         end
       end
 
-      def compare_source(component, key, default_locale, source, translation)
-        SgtnClient.logger.debug "[Base][compare_source]component=#{component},key=#{key},default_locale=#{default_locale},source=#{source},translation=#{translation}"
-        items = get_cs(component, default_locale)
+      def compare_source(component, key, source_locale, source, translation)
+        SgtnClient.logger.debug "[Base][compare_source]component=#{component},key=#{key},default_locale=#{source_locale},source=#{source},translation=#{translation}"
+        items = get_cs(component, source_locale)
         if items.nil? || items["messages"].nil?
           translation
         else
