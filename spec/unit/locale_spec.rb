@@ -10,14 +10,14 @@ describe SgtnClient do
       SgtnClient::Source.loadBundles("default")
     end
 
-    it "process_locale" do
-      expect(SgtnClient::LocaleUtil.process_locale('ja')).to eq 'ja'
+    it "get_best_locale" do
+      expect(SgtnClient::LocaleUtil.get_best_locale('ja')).to eq 'ja'
     end
-    it "process_locale_sameSourceAndTarget" do
-      expect(SgtnClient::LocaleUtil.process_locale('en')).to eq SgtnClient::Config.configurations.default
+    it "get_best_locale_sameSourceAndTarget" do
+      expect(SgtnClient::LocaleUtil.get_best_locale('en')).to eq SgtnClient::Config.configurations.default
     end
-    it "process_locale_targetLocaleIsNil" do
-      expect(SgtnClient::LocaleUtil.process_locale(nil)).to eq SgtnClient::Config.configurations.default
+    it "get_best_locale_targetLocaleIsNil" do
+      expect(SgtnClient::LocaleUtil.get_best_locale(nil)).to eq SgtnClient::Config.configurations.default
     end
     
     it "fallback_targetLocaleIsSource" do
@@ -36,16 +36,16 @@ describe SgtnClient do
       expect(SgtnClient::LocaleUtil.fallback('kong-kong')).to eq 'kong-kong'
     end
 
-    it "process_input" do
-      expect(SgtnClient::LocaleUtil.process_input('en')).to eq 'en'
-      expect(SgtnClient::LocaleUtil.process_input('de-DE')).to eq 'de-DE'
-      expect(SgtnClient::LocaleUtil.process_input(:'de-DE')).to eq 'de-DE'
-      expect(SgtnClient::LocaleUtil.process_input(:ja)).to eq 'ja'
-      expect(SgtnClient::LocaleUtil.process_input(:'ja')).to eq 'ja'
+    it "process_locale" do
+      expect(SgtnClient::LocaleUtil.process_locale('en')).to eq 'en'
+      expect(SgtnClient::LocaleUtil.process_locale('de-DE')).to eq 'de-DE'
+      expect(SgtnClient::LocaleUtil.process_locale(:'de-DE')).to eq 'de-DE'
+      expect(SgtnClient::LocaleUtil.process_locale(:ja)).to eq 'ja'
+      expect(SgtnClient::LocaleUtil.process_locale(:'ja')).to eq 'ja'
     end
 
-    it "process_input_nil" do
-      expect(SgtnClient::LocaleUtil.process_input(nil)).to eq SgtnClient::Config.configurations.default
+    it "process_locale_nil" do
+      expect(SgtnClient::LocaleUtil.process_locale(nil)).to eq SgtnClient::Config.configurations.default
     end
 
     it "get_source_locale" do
