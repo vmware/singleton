@@ -31,5 +31,9 @@ module SgtnClient
             end 
             return locale
         end
+        def self.get_source_locale
+            # TODO get the source locale from client config file
+            'en'
+        end
     end
 end

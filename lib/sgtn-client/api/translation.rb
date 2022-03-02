@@ -145,7 +145,7 @@ module SgtnClient
       end
       
       # Compare local source with remote source
-      def compare_source(component, translations)
+      def self.compare_source(component, translations)
         targets = get_cs(component, SgtnClient::LocaleUtil.get_source_locale)
         translations["messages"].each do |message| 
           key = message[0]

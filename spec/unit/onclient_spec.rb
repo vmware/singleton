@@ -23,8 +23,12 @@ describe SgtnClient do
       expect(SgtnClient::Translation.getString("JAVA", "helloworld", nil)).to eq 'Hello world'
     end 
 
+    it "get_string_source_out_of_sync" do
+      expect(SgtnClient::Translation.getString("JAVA", "updated_source_test", "en")).to eq 'Updated source string'
+      expect(SgtnClient::Translation.getString("JAVA", "updated_source_test", "zh-Hans")).to eq 'Updated source string'
+    end
+
     it "GET" do
-      allow(SgtnClient::LocaleUtil).to receive(:process_locale).exactly(3).times.and_return('zh-Hans')
       expect(SgtnClient::Translation.getString("JAVA", "helloworld", "zh-Hans")).to eq '你好世界'
       # get from cache in 2nd time
       expect(SgtnClient::Translation.getString("JAVA", "helloworld", "zh-Hans")).to eq '你好世界'
