@@ -13,14 +13,14 @@ describe SgtnClient do
     it "get_best_locale" do
       expect(SgtnClient::LocaleUtil.get_best_locale('ja')).to eq 'ja'
     end
-    it "get_best_locale_sameSourceAndTarget" do
+    it "get_best_locale_same_source_and_target" do
       expect(SgtnClient::LocaleUtil.get_best_locale('en')).to eq SgtnClient::Config.configurations.default
     end
-    it "get_best_locale_targetLocaleIsNil" do
+    it "get_best_locale_target_locale_is_nil" do
       expect(SgtnClient::LocaleUtil.get_best_locale(nil)).to eq SgtnClient::Config.configurations.default
     end
     
-    it "fallback_targetLocaleIsSource" do
+    it "fallback_target_locale_is_source" do
       expect(SgtnClient::LocaleUtil.fallback(SgtnClient::Config.configurations.default)).to eq SgtnClient::Config.configurations.default
     end 
     it "fallback" do
@@ -54,7 +54,7 @@ describe SgtnClient do
       expect(SgtnClient::LocaleUtil.get_source_locale()).to eq 'ja'
     end
     
-    it "get_source_locale_sourceIsNil" do
+    it "get_source_locale_source_is_nil" do
       env = SgtnClient::Config.default_environment
       SgtnClient::Config.configurations[env]["default_language"] = nil
       expect(SgtnClient::LocaleUtil.get_source_locale()).to eq 'en'
