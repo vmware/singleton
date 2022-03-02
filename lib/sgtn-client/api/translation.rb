@@ -99,7 +99,7 @@ module SgtnClient
 
       def self.get_cs(component, locale)
         cache_key = SgtnClient::CacheUtil.get_cachekey(component, locale)
-        SgtnClient.logger.debug "[ServiceUtil][get_cs]cache_key=#{cache_key}"
+        SgtnClient.logger.debug "[Translation][get_cs]cache_key=#{cache_key}"
         expired, items = SgtnClient::CacheUtil.get_cache(cache_key)
         if items.nil? || expired
           items = load(component, locale)
@@ -110,7 +110,7 @@ module SgtnClient
             SgtnClient::CacheUtil.write_cache(cache_key, items)
           end
         else
-          SgtnClient.logger.debug "[ServiceUtil]get translations from cache with key: " + cache_key
+          SgtnClient.logger.debug "[Translation]get translations from cache with key: " + cache_key
         end
 
         return items
@@ -156,7 +156,7 @@ module SgtnClient
       # Compare local source with remote source
       def self.compare_source(component, key, source, translation)
         source_locale = SgtnClient::LocaleUtil.get_source_locale
-        SgtnClient.logger.debug "[ServiceUtil][compare_source]component=#{component},key=#{key},default_locale=#{source_locale},source=#{source},translation=#{translation}"
+        SgtnClient.logger.debug "[Translation][compare_source]component=#{component},key=#{key},default_locale=#{source_locale},source=#{source},translation=#{translation}"
         items = get_cs(component, source_locale)
         if items.nil? || items["messages"].nil?
           translation
