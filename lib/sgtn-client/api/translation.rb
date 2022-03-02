@@ -97,6 +97,7 @@ module SgtnClient
             items = SgtnClient::Source.getSources(component, SgtnClient::Config.configurations.default)
             SgtnClient::Core::Cache.put(cache_key, items, 60)
           else
+            self.compare_source(component, items)
             SgtnClient::CacheUtil.write_cache(cache_key, items)
           end
         else
@@ -141,6 +142,20 @@ module SgtnClient
           obj = obj["data"]
         end
         return obj
+      end
+      
+      # Compare local source with remote source
+      def compare_source(component, translations)
+        targets = get_cs(component, SgtnClient::LocaleUtil.get_source_locale)
+        translations["messages"].each do |message| 
+          key = message[0]
+          source = SgtnClient::Source.getSource(component, key, SgtnClient::Config.configurations.default)
+          target = targets["messages"][key] if targets["messages"] != nil
+          if source != nil and target != nil and source != target
+            SgtnClient.logger.debug "[#{self.class}][#{__method__}] Source is used instead of translation for component=#{component}, key=#{key} source=#{source}, translation=#{translations["messages"][key]}"
+            translations["messages"][key] = source 
+          end
+        end
       end
 
   end
