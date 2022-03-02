@@ -10,6 +10,9 @@ describe SgtnClient do
 
     before :each do
       SgtnClient::Config.configurations.default = 'default'
+      env = SgtnClient::Config.default_environment
+      config_lang = SgtnClient::Config.configurations[env]["default_language"]
+      SgtnClient::Config.configurations[env]["default_language"] = config_lang
     end
 
     it "fallback" do
