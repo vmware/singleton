@@ -24,7 +24,6 @@ describe SgtnClient do
     end 
 
     it "get_string_source_out_of_sync" do
-      expect(SgtnClient::Translation.getString("JAVA", "updated_source_test", "en")).to eq 'Updated source string'
       expect(SgtnClient::Translation.getString("JAVA", "updated_source_test", "zh-Hans")).to eq 'Updated source string'
     end
 
