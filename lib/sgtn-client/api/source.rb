@@ -5,7 +5,8 @@ module SgtnClient
 
   class Source
 
-      def self.getSource(component, key, locale)
+      def self.getSource(component, key)
+        locale = SgtnClient::Config.configurations.default
         SgtnClient.logger.debug "[Source][getSource]component=#{component}, key=#{key}, locale=#{locale}"
         cache_key = SgtnClient::CacheUtil.get_cachekey(component, locale)
         expired, items = SgtnClient::CacheUtil.get_cache(cache_key)

@@ -23,7 +23,8 @@ module SgtnClient
       end
 
       # Compare local source with remote source
-      def compare_source(component, key, source_locale, source, translation)
+      def compare_source(component, key, source, translation)
+        source_locale = SgtnClient::LocaleUtil.get_source_locale
         SgtnClient.logger.debug "[ServiceUtil][compare_source]component=#{component},key=#{key},default_locale=#{source_locale},source=#{source},translation=#{translation}"
         items = get_cs(component, source_locale)
         if items.nil? || items["messages"].nil?
@@ -88,7 +89,7 @@ module SgtnClient
         rescue => exception
           SgtnClient.logger.error exception.message
         end
-        unless obj.nil?
+        if obj
           obj = obj["data"]
         end
         return obj

@@ -20,14 +20,14 @@ module SgtnClient
         SgtnClient.logger.debug "[Translation.getString]component: #{component}, key: #{key}, locale: #{locale}"
         str = SgtnClient::ServiceUtil.get_translation(component, key, locale)
         if str.nil?
-          str = SgtnClient::Source.getSource(component, key, SgtnClient::Config.configurations.default)
+          str = SgtnClient::Source.getSource(component, key)
           if str.nil?
             SgtnClient.logger.debug "[Translation][getString] Missing source string with key: #{key}, component: #{component}, locale: #{locale}"
           end
         else
-          unless SgtnClient::LocaleUtil.is_source_locale(locale)
-            source = SgtnClient::Source.getSource(component, key, SgtnClient::Config.configurations.default)
-            str = SgtnClient::ServiceUtil.compare_source(component, key, SgtnClient::LocaleUtil.get_source_locale, source, str)
+          unless LocaleUtil.is_source_locale(locale)
+            source = Source.getSource(component, key)
+            str = ServiceUtil.compare_source(component, key, source, str)
           end
         end
         str
@@ -37,7 +37,7 @@ module SgtnClient
         SgtnClient.logger.debug "[Translation][getString_p]component=#{component}, key=#{key}, locale=#{locale}"
         str = SgtnClient::ServiceUtil.get_translation(component, key, locale)
         if str.nil?
-          str = SgtnClient::Source.getSource(component, key, SgtnClient::Config.configurations.default)
+          str = SgtnClient::Source.getSource(component, key)
           if str.nil?
             SgtnClient.logger.debug "[Translation][getString_p] Missing source string with key: #{key}, component: #{component}, locale: #{locale}"
             return nil

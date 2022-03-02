@@ -15,15 +15,11 @@ describe SgtnClient do
     end
 
     it "compareSource_same" do
-      env = SgtnClient::Config.default_environment
-      default_language = SgtnClient::Config.configurations[env]["default_language"]
-      expect(SgtnClient::ServiceUtil.compare_source("JAVA", "helloworld", default_language, 'Hello world', '你好世界')).to eq '你好世界'
+      expect(SgtnClient::ServiceUtil.compare_source("JAVA", "helloworld", 'Hello world', '你好世界')).to eq '你好世界'
     end
 
     it "compareSource_old" do
-      env = SgtnClient::Config.default_environment
-      default_language = SgtnClient::Config.configurations[env]["default_language"]
-      expect(SgtnClient::ServiceUtil.compare_source("JAVA", "old_helloworld", default_language, 'Source Hello world', 'Source Hello world')).to eq 'Source Hello world'
+      expect(SgtnClient::ServiceUtil.compare_source("JAVA", "old_helloworld", 'Source Hello world', 'Source Hello world')).to eq 'Source Hello world'
     end
     
   end

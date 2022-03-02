@@ -38,7 +38,7 @@ describe SgtnClient do
     end
 
 
-    it "default" do
+    it "get_source_locale" do
       env = SgtnClient::Config.default_environment
       config_lang = SgtnClient::Config.configurations[env]["default_language"]
 
