@@ -10,7 +10,6 @@ import java.util.Locale;
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.DataSourceEnum;
 import com.vmware.vipclient.i18n.base.cache.MessageCacheItem;
-import com.vmware.vipclient.i18n.base.cache.TranslationCacheManager;
 import com.vmware.vipclient.i18n.common.ConstantsMsg;
 import com.vmware.vipclient.i18n.messages.api.opt.server.ComponentBasedOpt;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
@@ -157,7 +156,7 @@ public class ComponentService {
 		CacheService cacheService = new CacheService(dto);
 
 		// Allow only one thread to create the new cache item
-		synchronized (TranslationCacheManager.getCache(VIPCfg.CACHE_L3)) {
+		synchronized (dto.getCompositStrAsCacheKey()) {
 			MessageCacheItem cacheItem = cacheService.getCacheOfComponent();
 			if (cacheItem == null) { // If the cache item hasn't been created by any other thread
 				cacheItem = new MessageCacheItem(); // Create a new cacheItem object to be stored in cache
