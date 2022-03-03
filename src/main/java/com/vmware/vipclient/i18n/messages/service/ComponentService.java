@@ -157,7 +157,7 @@ public class ComponentService {
 		CacheService cacheService = new CacheService(dto);
 
 		// Allow only one thread to create the new cache item
-		synchronized (TranslationCacheManager.getInstance().getCache(VIPCfg.CACHE_L3)) {
+		synchronized (TranslationCacheManager.getCache(VIPCfg.CACHE_L3)) {
 			MessageCacheItem cacheItem = cacheService.getCacheOfComponent();
 			if (cacheItem == null) { // If the cache item hasn't been created by any other thread
 				cacheItem = new MessageCacheItem(); // Create a new cacheItem object to be stored in cache
