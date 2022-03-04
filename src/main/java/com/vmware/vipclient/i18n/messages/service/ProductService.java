@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2020 VMware, Inc.
+ * Copyright 2019-2022 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vipclient.i18n.messages.service;
@@ -35,10 +35,10 @@ public class ProductService {
      */
     public List<Map> getAllComponentTranslation() {
         List<Map> list = new ArrayList<Map>();
-        Set<Locale> locales = this.getSupportedLocales();
+        Set<String> locales = this.getSupportedLocales();
         List<String> components = this.getComponents();
         if (locales != null && components != null) {
-            for (Locale locale : locales) {
+            for (String locale : locales) {
                 for (Object component : components) {
                     MessagesDTO msgDTO = new MessagesDTO(((String) component).trim(), LocaleUtility.fmtToMappedLocale(locale).toString().trim(),
                             dto.getProductID(), dto.getVersion());
@@ -73,24 +73,66 @@ public class ProductService {
     }
 
     /**
-     * Retrieves the list of locales of a product. It recursively applies data source fallback mechanism in case of failure.
+     * Retrieves the combined set of supported locales from all data sources.
      *
-     * @return list of locales of the product specified in the dto object, or an empty list in case of failure to retrieve from any data source.
+     * @return The combined set of supported locales from all data sources. An empty set if fetch fails.
      */
-    public Set<Locale> getSupportedLocales() {
-        return langTagtoLocaleSet(getSupportedLanguageTags());
+    private Set<String> getSupportedLocales() {
+        return combineSupportedLocales(true);
     }
 
-    public Set<String> getSupportedLanguageTags() {
+    /**
+     * Retrieves the combined set of cached supported locales from all data sources.
+     * It also refreshes/populates the cache if expired/not yet cached in a separate thread.
+     *
+     * @return The combined set of supported locales from all data sources found in cache.
+     * An empty set if cache is empty or not yet populated.
+     */
+    public Set<String> getCachedSupportedLocales() {
+        return combineSupportedLocales(false);
+    }
+
+    /**
+     * Retrieves the combined set of supported locales from all data sources.
+     *
+     * @param refreshCache If true, it will trigger a cache populate or refresh as necessary before returning.
+     *                         If false, it will return the data from the cache as is, or an empty Set if not in cache.
+     * @return The set of supported locales.
+     */
+    private Set<String> combineSupportedLocales(boolean refreshCache) {
         Iterator<DataSourceEnum> msgSourceQueueIter = VIPCfg.getInstance().getMsgOriginsQueue().iterator();
         Set<String> supportedLangTags = new HashSet<>();
         while(msgSourceQueueIter.hasNext()) {
-            supportedLangTags.addAll(getSupportedLanguageTags(msgSourceQueueIter.next()));
+            if (refreshCache)
+                supportedLangTags.addAll(getSupportedLocales(msgSourceQueueIter.next()));
+            else
+                supportedLangTags.addAll(getCachedSupportedLocales(msgSourceQueueIter.next()));
         }
         return supportedLangTags;
     }
 
-    public Set<String> getSupportedLanguageTags(DataSourceEnum dataSource) {
+    /**
+     * Retrieves the cached set of locales that are supported in the given data source.
+     *
+     * @param dataSource The data source
+     * @return The data from the cache as is, or an empty Set if not in cache.
+     */
+    public Set<String> getCachedSupportedLocales(DataSourceEnum dataSource) {
+        return processSupportedLocales(dataSource, false);
+    }
+
+    /**
+     * Retrieves the set of locales that are supported in the given data source.
+     * It will trigger a cache populate or refresh as necessary before returning.
+     *
+     * @param dataSource The data source
+     * @return The set of locales supported in the given data source. An empty set if fetch fails.
+     */
+    public Set<String> getSupportedLocales(DataSourceEnum dataSource) {
+        return processSupportedLocales(dataSource, true);
+    }
+
+    private Set<String> processSupportedLocales(DataSourceEnum dataSource, boolean waitFetchFromDS) {
         CacheService cs = new CacheService(new MessagesDTO(dto));
         MessageCacheItem cacheItem = cs.getCacheOfLocales(dataSource);
         if (cacheItem != null) {
@@ -98,18 +140,16 @@ public class ProductService {
                 refreshLocalesCacheItemTask(cacheItem, dataSource);
             return cacheItem.getCachedData().keySet();
         } else {
-            cacheItem = createLocalesCacheItem(dataSource);
+            if (waitFetchFromDS)
+                cacheItem = createLocalesCacheItem(dataSource);
+            else
+                createLocalesCacheItemTask(dataSource);
+
             if (cacheItem == null)
                 return new HashSet<>();
             return cacheItem.getCachedData().keySet();
         }
     }
-
-    public boolean isSupportedLocale(Locale locale) {
-        return getSupportedLanguageTags().contains(LocaleUtility.fmtToMappedLocale(locale).toLanguageTag());
-    }
-
-
     private void refreshLocalesCacheItem(final MessageCacheItem cacheItem, DataSourceEnum dataSource) {
         long timestampOld = cacheItem.getTimestamp();
         dataSource.createProductOpt(dto).getSupportedLocales(cacheItem);
@@ -143,13 +183,15 @@ public class ProductService {
         }
         return null;
     }
-    private Set<Locale> langTagtoLocaleSet (Set<String> languageTags) {
-        Set<Locale> locales = new HashSet<>();
-        if (languageTags != null) {
-            for (String languageTag : languageTags) {
-                locales.add(Locale.forLanguageTag(languageTag));
+
+    private void createLocalesCacheItemTask(DataSourceEnum dataSource) {
+        Runnable runnable = () -> {
+            try {
+                createLocalesCacheItem(dataSource);
+            } catch (Exception e) {
+                logger.error("Failed to refresh list of supported locales for data source " + dataSource);
             }
-        }
-        return locales;
+        };
+        new Thread(runnable).start();
     }
 }

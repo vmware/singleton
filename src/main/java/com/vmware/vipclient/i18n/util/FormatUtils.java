@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2020 VMware, Inc.
+ * Copyright 2019-2022 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vipclient.i18n.util;
@@ -63,8 +63,10 @@ public class FormatUtils {
 
 		return pattern;
     }
- 
-    
+
+	/**
+	 * @deprecated Use {@link #formatMsg(String, Locale, Object)}.
+	 */
     public static String format(String pattern, Locale locale, Object... arguments) {
     	try {
 	        MessageFormat messageFormat = new MessageFormat(pattern, locale);

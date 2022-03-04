@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2020 VMware, Inc.
+ * Copyright 2019-2022 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vipclient.i18n.base.instances;
@@ -8,6 +8,10 @@ import java.util.Locale;
 
 import com.vmware.vipclient.i18n.l2.service.NumberFormatService;
 import com.vmware.vipclient.i18n.util.ConstantsKeys;
+
+import static com.vmware.vipclient.i18n.l2.text.NumberFormat.CURRENCYSTYLE;
+import static com.vmware.vipclient.i18n.l2.text.NumberFormat.NUMBERSTYLE;
+import static com.vmware.vipclient.i18n.l2.text.NumberFormat.PERCENTSTYLE;
 
 /**
  * Provides functions to get the formatted number, percent, currency and so on.
@@ -33,6 +37,10 @@ public class NumberFormatting implements Formatting {
         return formatNumber(value, null, locale);
     }
 
+    public String formatNumber(Object value, String language, String region) {
+        return formatNumber(value, null, language, region);
+    }
+
     /**
      * Format a number to an localized number string in decimal style using user self defined fraction size.
      * cldr decimal format's fraction size will be ignored.
@@ -46,8 +54,7 @@ public class NumberFormatting implements Formatting {
      * @return The formatted number string.
      */
     public String formatNumber(Object value, Integer fractionSize, Locale locale) {
-        return new NumberFormatService().format(value, fractionSize, locale,
-                com.vmware.vipclient.i18n.l2.text.NumberFormat.NUMBERSTYLE);
+        return format(value, fractionSize, locale, NUMBERSTYLE);
     }
 
     /**
@@ -65,13 +72,7 @@ public class NumberFormatting implements Formatting {
      * @return The formatted number string.
      */
     public String formatNumber(Object value, Integer fractionSize, String language, String region) {
-        return new NumberFormatService().format(value, fractionSize, language, region,
-                com.vmware.vipclient.i18n.l2.text.NumberFormat.NUMBERSTYLE);
-    }
-
-    public String formatNumber(Object value, String language, String region) {
-        return new NumberFormatService().format(value, null, language, region,
-                com.vmware.vipclient.i18n.l2.text.NumberFormat.NUMBERSTYLE);
+        return format(value, fractionSize, language, region, NUMBERSTYLE);
     }
 
     /**
@@ -89,6 +90,10 @@ public class NumberFormatting implements Formatting {
         return formatPercent(value, null, locale);
     }
 
+    public String formatPercent(Object value, String language, String region) {
+        return formatPercent(value, null, language, region);
+    }
+
     /**
      * Format a number to an localized number string in percent style using user self defined fraction size.
      * cldr percent format's fraction size will be ignored.
@@ -102,8 +107,7 @@ public class NumberFormatting implements Formatting {
      * @return The formatted percent string.
      */
     public String formatPercent(Object value, Integer fractionSize, Locale locale) {
-        return new NumberFormatService().format(value, fractionSize, locale,
-                com.vmware.vipclient.i18n.l2.text.NumberFormat.PERCENTSTYLE);
+        return format(value, fractionSize, locale, PERCENTSTYLE);
     }
 
     /**
@@ -121,13 +125,7 @@ public class NumberFormatting implements Formatting {
      * @return The formatted percent string.
      */
     public String formatPercent(Object value, Integer fractionSize, String language, String region) {
-        return new NumberFormatService().format(value, fractionSize, language, region,
-                com.vmware.vipclient.i18n.l2.text.NumberFormat.PERCENTSTYLE);
-    }
-
-    public String formatPercent(Object value, String language, String region) {
-        return new NumberFormatService().format(value, null, language, region,
-                com.vmware.vipclient.i18n.l2.text.NumberFormat.PERCENTSTYLE);
+        return format(value, fractionSize, language, region, PERCENTSTYLE);
     }
 
     /**
@@ -145,6 +143,10 @@ public class NumberFormatting implements Formatting {
         return formatCurrency(amount, ConstantsKeys.USD, locale);
     }
 
+    public String formatCurrency(Object amount, String language, String region) {
+        return formatCurrency(amount, ConstantsKeys.USD, language, region);
+    }
+
     /**
      * Format a number to an localized number string with currency symbol specified by 3-letter currency code according
      * to locale's currency format defined in cldr.
@@ -160,8 +162,7 @@ public class NumberFormatting implements Formatting {
      * @return The formatted currency string.
      */
     public String formatCurrency(Object amount, String currencyCode, Locale locale) {
-        return new NumberFormatService().format(amount, currencyCode, null, locale,
-                com.vmware.vipclient.i18n.l2.text.NumberFormat.CURRENCYSTYLE);
+        return format(amount, null, currencyCode, locale, CURRENCYSTYLE);
     }
 
     /**
@@ -181,12 +182,62 @@ public class NumberFormatting implements Formatting {
      * @return The formatted currency string.
      */
     public String formatCurrency(Object amount, String currencyCode, String language, String region) {
-        return new NumberFormatService().format(amount, currencyCode, null, language, region,
-                com.vmware.vipclient.i18n.l2.text.NumberFormat.CURRENCYSTYLE);
+        return format(amount, null, currencyCode, language, region, CURRENCYSTYLE);
     }
 
-    public String formatCurrency(Object amount, String language, String region) {
-        return new NumberFormatService().format(amount, ConstantsKeys.USD, null, language, region,
-                com.vmware.vipclient.i18n.l2.text.NumberFormat.CURRENCYSTYLE);
+    /**
+     * Returns a specific style number format for a specific locale.
+     *
+     * @param value
+     * @param locale
+     * @param style
+     *          number format style, currently only support NUMBERSTYLE, PERCENTSTYLE, CURRENCYSTYLE,
+     * @return
+     */
+    public String format(Object value, Locale locale, int style) {
+        return format(value, null, locale, style);
+    }
+
+    public String format(Object value, String language, String region, int style) {
+        return format(value, null,  language, region, style);
+    }
+
+    /**
+     * Returns a specific style number format with specified fractionSize for a specific locale.
+     *
+     * @param value
+     * @param fractionSize
+     * @param locale
+     * @param style
+     *          number format style, currently only support NUMBERSTYLE, PERCENTSTYLE, CURRENCYSTYLE,
+     * @return
+     */
+    public String format(Object value, Integer fractionSize, Locale locale, int style) {
+        return format(value, fractionSize, null, locale, style);
+    }
+
+    public String format(Object value, Integer fractionSize, String language, String region, int style) {
+        return format(value, fractionSize, null, language, region, style);
+    }
+
+    /**
+     * Returns a specific style number format or currency format with specified fractionSize for a specific locale.
+     *
+     * @param value
+     * @param fractionSize
+     * @param currencyCode
+     * @param locale
+     * @param style
+     *          number format style, currently only support NUMBERSTYLE, PERCENTSTYLE, CURRENCYSTYLE,
+     * @return
+     */
+    public String format(Object value, Integer fractionSize, String currencyCode, Locale locale, int style) {
+        return new NumberFormatService().format(value, currencyCode, fractionSize, locale,
+                style);
+    }
+
+    public String format(Object value, Integer fractionSize, String currencyCode, String language, String region, int style) {
+        return new NumberFormatService().format(value, currencyCode, fractionSize,  language, region,
+                style);
     }
 }

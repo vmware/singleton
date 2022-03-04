@@ -1,10 +1,8 @@
 /*
- * Copyright 2019-2020 VMware, Inc.
+ * Copyright 2019-2022 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vipclient.i18n.messages.service;
-
-import java.util.*;
 
 import com.vmware.vip.i18n.BaseTestClass;
 import com.vmware.vipclient.i18n.I18nFactory;
@@ -26,8 +24,16 @@ import org.json.simple.parser.ParseException;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import static org.junit.Assert.*;
+
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertThrows;
 import static org.junit.Assert.assertTrue;
 
 public class OfflineModeTest extends BaseTestClass {
@@ -187,7 +193,50 @@ public class OfflineModeTest extends BaseTestClass {
     	cfg.setOfflineResourcesBaseUrl(offlineResourcesBaseUrlOrig);
     	cfg.setMsgOriginsQueue(msgOriginsQueueOrig);
     }
-    
+
+    @Test
+    public void testGetMsgsFailedSourceProps() {
+        // Offline mode only; Source messages are in multiple properties file
+        String offlineResourcesBaseUrlOrig = cfg.getOfflineResourcesBaseUrl();
+        cfg.setOfflineResourcesBaseUrl("offlineBundles/");
+        List<DataSourceEnum> msgOriginsQueueOrig = cfg.getMsgOriginsQueue();
+        cfg.setMsgOriginsQueue(new LinkedList<>(Arrays.asList(DataSourceEnum.Bundle)));
+
+        Cache c = VIPCfg.getInstance().createTranslationCache(MessageCache.class);
+        TranslationCacheManager.cleanCache(c);
+        I18nFactory i18n = I18nFactory.getInstance(VIPCfg.getInstance());
+        TranslationMessage translation = (TranslationMessage) i18n.getMessageInstance(TranslationMessage.class);
+
+        dto.setProductID(VIPCfg.getInstance().getProductName());
+        dto.setVersion(VIPCfg.getInstance().getVersion());
+
+        String component = "JAVA2";
+        String message = translation.getMessage("offlineBundles.JAVA2.messages", locale, component, "props.key.1", args);
+        // Returns the source message from props file when source not collected
+        assertEquals("props.value.1", message);
+
+        message = translation.getMessage("offlineBundles.JAVA2.messages", locale, component, "props.key.2", args);
+        // Returns the source message from props file when source is collected but hasn't been translated
+        assertEquals("props.value.2", message);
+
+        try {
+            message = translation.getMessage("offlineBundles.JAVA2.messages", locale, component, "props.key.4", args);
+        }catch (VIPJavaClientException e){
+            // throw exception when no source found
+            assertEquals(FormatUtils.format(ConstantsMsg.GET_MESSAGE_FAILED, "props.key.4", component, locale), e.getMessage());
+        }
+
+        message = translation.getMessage("offlineBundles.JAVA2.subdir.messages", locale, component, "props.key.3", args);
+        // Returns the source message from another props file
+        assertEquals("props.value.3", message);
+
+        message = translation.getMessage(locale, component, key, args);
+        assertEquals(FormatUtils.format(messageFil, args), message);
+
+        cfg.setOfflineResourcesBaseUrl(offlineResourcesBaseUrlOrig);
+        cfg.setMsgOriginsQueue(msgOriginsQueueOrig);
+    }
+
     @Test
     public void testGetMsgsFailedNewSource() { 
     	// Offline mode only; Message is new and hasn't been collected

@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2020 VMware, Inc.
+ * Copyright 2019-2022 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vipclient.i18n.messages.api.opt.server;
@@ -58,8 +58,7 @@ public class RemotePatternOpt extends RemoteL2BaseOpt implements PatternOpt{
                         logger.debug("Found the pattern from Singleton Service for locale [{}].\n", locale);
                         cacheItem.set(patterns, etag, timestamp, maxAgeMillis);
                     }else{
-                        logger.debug("Didn't find the pattern from Singleton Service for locale [{}].\n", locale);
-                        cacheItem.set(etag, timestamp, maxAgeMillis);
+                        logger.warn("Didn't find the pattern from Singleton Service for locale [{}].\n", locale);
                     }
                 } catch (Exception e) {
                     logger.error("Failed to get pattern data from remote!");

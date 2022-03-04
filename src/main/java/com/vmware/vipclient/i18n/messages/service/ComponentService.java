@@ -1,12 +1,15 @@
 /*
- * Copyright 2019-2020 VMware, Inc.
+ * Copyright 2019-2022 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vipclient.i18n.messages.service;
 
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Locale;
 import java.util.concurrent.Semaphore;
+import java.util.Map;
+import java.util.Set;
 
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.DataSourceEnum;
@@ -50,39 +53,51 @@ public class ComponentService {
 			return;
 		}
 
-		long timestampOld = cacheItem.getTimestamp();
 		DataSourceEnum dataSource = msgSourceQueueIter.next();
-		String localeOrig = dto.getLocale();
-		if (dataSource.equals(DataSourceEnum.VIP) && dto.getLocale().equals(ConstantsKeys.SOURCE)) {
-			dto.setLocale(ConstantsKeys.LATEST);
-		}
-		dataSource.createMessageOpt(dto).getComponentMessages(cacheItem);
-		long timestamp = cacheItem.getTimestamp();
-		if (timestampOld == timestamp) {
-			logger.debug(FormatUtils.format(ConstantsMsg.GET_MESSAGES_FAILED, dto.getComponent(), dto.getLocale(), dataSource.toString()));
-		}
-		dto.setLocale(localeOrig);
+		if (!proceed(dataSource)) { //Requested locale is not supported, does not match any supported locales
+			refreshCacheItem(cacheItem, msgSourceQueueIter); // Try the next dataSource
+		} else {
+			long timestampOld = cacheItem.getTimestamp();
+			String localeOrig = dto.getLocale();
+			if (dataSource.equals(DataSourceEnum.VIP) && dto.getLocale().equals(ConstantsKeys.SOURCE)) {
+				dto.setLocale(ConstantsKeys.LATEST);
+			}
+			dataSource.createMessageOpt(dto).getComponentMessages(cacheItem);
+			long timestamp = cacheItem.getTimestamp();
+			if (timestampOld == timestamp) {
+				logger.debug(FormatUtils.format(ConstantsMsg.GET_MESSAGES_FAILED, dto.getComponent(), dto.getLocale(), dataSource.toString()));
+			}
+			dto.setLocale(localeOrig);
 
-		// If timestamp is 0, it means that cacheItem not yet in cache. So try the next data source.
-		if (timestamp == 0) {
-			// Try the next dataSource in the queue
-			refreshCacheItem(cacheItem, msgSourceQueueIter);
+			// If timestamp is 0, it means that cacheItem not yet in cache. So try the next data source.
+			if (timestamp == 0) {
+				// Try the next dataSource in the queue
+				refreshCacheItem(cacheItem, msgSourceQueueIter);
+			}
 		}
-
 	}
 
 	/**
-	 * Get MessageCacheItem from cache.
-	 * The cache is refreshed if MessageCacheItem is expired or not found.
-	 * Pre-configured locale fallback queue is used on failure.
-	 *
-	 * @return A MessageCacheItem whose message map is one of the items in the following priority-ordered list:
+	 * @return 'true' for either of the following cases. Otherwise, false (locale not supported in data source).
 	 * <ul>
-	 * 		<li>The messages in the requested locale</li>
-	 * 		<li>The messages in a default locale</li>
-	 * 		<li>The source messages</li>
-	 * 		<li>An empty map</li>
+	 * 	<li>the dataSource's set of supported locales is not in cache. If the list is not in cache, it should not block refreshCacheItem</li>
+	 * 	<li>the requested locale is found in the data source's cached set of supported locales.</li>
 	 * </ul>
+	 */
+	private boolean proceed(DataSourceEnum dataSource) {
+		ProductService ps = new ProductService(dto);
+		Set<String> supportedLocales = ps.getCachedSupportedLocales(dataSource);
+		logger.debug("supported languages: [{}]", supportedLocales);
+
+		/*
+		 * Do not block refreshCacheItem if set of supported locales is not in cache (i.e. supportedLocales.isEmpty()).
+		 * This happens either when cache is not initialized, OR previous attempts to fetch the set had failed.
+		 */
+		return (supportedLocales.isEmpty() || supportedLocales.contains(dto.getLocale()) || VIPCfg.getInstance().isPseudo());
+	}
+
+	/**
+	 * @deprecated Use {@link #getTranslations()}.
 	 */
 	public MessageCacheItem getMessages() {
 		Iterator<Locale> fallbackLocalesIter = LocaleUtility.getFallbackLocales().iterator();
@@ -90,18 +105,47 @@ public class ComponentService {
 	}
 
 	/**
-	 * Get MessageCacheItem from cache.
-	 * The cache is refreshed if MessageCacheItem is expired or not found.
-	 *
-	 * @param fallbackLocalesIter The locale fallback queue to be used on failure. If null, there will be no fallback mechanism on failure so the message map will be empty.
-	 *
-	 * @return A MessageCacheItem whose data map is one of the following:
-	 * <ul>
-	 * 		<li>The messages in the requested locale</li>
-	 * 	 	<li>The messages in a fallback locale</li>
-	 * </ul>
+	 * @deprecated Use {@link #getTranslations(Iterator)}.
 	 */
 	public MessageCacheItem getMessages(Iterator<Locale> fallbackLocalesIter) {
+		return new MessageCacheItem(this.getMessageCacheItem(fallbackLocalesIter).getMessages());
+	}
+
+	/**
+	 * Calls {@link #getTranslations(Iterator)} using the pre-configured locale fallback queue.
+	 *
+	 * @return A TranslationsDTO whose message map is one of the items in the following priority-ordered list:
+	 * <ul>
+	 * 		<li>The messages in the requested locale</li>
+	 * 		<li>The messages in a fallback locale</li>
+	 * 		<li>The source messages</li>
+	 * 		<li>An empty map</li>
+	 * </ul>
+	 */
+	public TranslationsDTO getTranslations() {
+		Iterator<Locale> fallbackLocalesIter = LocaleUtility.getFallbackLocales().iterator();
+		return this.getTranslations(fallbackLocalesIter);
+	}
+
+	/**
+	 * Gets messages from cache.
+	 * The cache is refreshed if the set of localized messages is expired or not found.
+	 *
+	 * @param fallbackLocalesIter The locale fallback queue iterator to be used on failure. If null, there will be no fallback mechanism on failure so the message map will be empty.
+	 *
+	 * @return A TranslationsDTO whose data map is one of the following:
+	 * <ul>
+	 * 		<li>The messages in the requested locale</li>
+	 * 	    <li>The messages in a fallback locale </li>
+	 * 	 	<li>The source messages</li>
+	 * 	 	<li>An empty map</li>
+	 * </ul>
+	 */
+	public TranslationsDTO getTranslations(Iterator<Locale> fallbackLocalesIter) {
+		return this.getMessageCacheItem(fallbackLocalesIter);
+	}
+
+	private TranslationsDTO getMessageCacheItem(Iterator<Locale> fallbackLocalesIter) {
 		this.doLocaleMatching();
 
 		CacheService cacheService = new CacheService(dto);
@@ -114,22 +158,22 @@ public class ComponentService {
 				}
 			}
 		} else { // Item is not in cache.
-			ProductService ps = new ProductService(dto);
-			Locale locale = Locale.forLanguageTag(dto.getLocale());
-			if (ps.isSupportedLocale(locale) || VIPCfg.getInstance().isPseudo()) {
-				cacheItem = createCacheItem(); // Fetch for the requested locale from data store, create cacheItem and store in cache
-				if (cacheItem.getCachedData().isEmpty())  // Failed to fetch messages for the requested locale
-					cacheItem = getFallbackLocaleMessages(fallbackLocalesIter);
-			} else   // Requested locale is not supported and does not match any supported locales
-				cacheItem = getFallbackLocaleMessages(fallbackLocalesIter);
+			cacheItem = createCacheItem(); // Fetch for the requested locale from data store, create cacheItem and store in cache
+			if (cacheItem.getCachedData().isEmpty())  // Failed to fetch messages for the requested locale
+				return getFallbackLocaleMessages(fallbackLocalesIter);
 		}
-		return cacheItem;
+		return new TranslationsDTO(dto.getLocale(), cacheItem);
 	}
 
 	private void doLocaleMatching() {
-		Locale matchedLocale = LocaleUtility.pickupLocaleFromList(new ProductService(dto).getSupportedLocales(), Locale.forLanguageTag(dto.getLocale()));
-		if (matchedLocale != null) // Requested locale matches a supported locale (eg. requested locale "fr_CA matches supported locale "fr")
+		dto.setLocale(LocaleUtility.fmtToMappedLocale(dto.getLocale()).toLanguageTag());
+
+		//Match against list of supported locales that is already in the cache
+		Set<Locale> supportedLocales = LocaleUtility.langTagtoLocaleSet(new ProductService(dto).getCachedSupportedLocales());
+		Locale matchedLocale = LocaleUtility.pickupLocaleFromList(supportedLocales, Locale.forLanguageTag(dto.getLocale()));
+		if (matchedLocale != null) { // Requested locale matches a supported locale (eg. requested locale "fr_CA matches supported locale "fr")
 			dto.setLocale(matchedLocale.toLanguageTag());
+		}
 	}
 
     /**
@@ -137,7 +181,7 @@ public class ComponentService {
 	 * and then invoking {@link #getMessages(Iterator)}.
 	 * @param fallbackLocalesIter The fallback locale queue to use in case of failure. If null, no locale fallback will be applied.
      */
-    private MessageCacheItem getFallbackLocaleMessages(Iterator<Locale> fallbackLocalesIter) {
+    private TranslationsDTO getFallbackLocaleMessages(Iterator<Locale> fallbackLocalesIter) {
 		if (fallbackLocalesIter != null && fallbackLocalesIter.hasNext()) {
 			Locale fallbackLocale = fallbackLocalesIter.next();
 			if (fallbackLocale.toLanguageTag().equals(dto.getLocale())) {
@@ -145,9 +189,9 @@ public class ComponentService {
 			}
 			// Use MessageCacheItem of the next fallback locale.
 			MessagesDTO fallbackLocaleDTO = new MessagesDTO(dto.getComponent(), fallbackLocale.toLanguageTag(), dto.getProductID(), dto.getVersion());
-			return new ComponentService(fallbackLocaleDTO).getMessages(fallbackLocalesIter);
+			return new ComponentService(fallbackLocaleDTO).getMessageCacheItem(fallbackLocalesIter);
 		}
-		return new MessageCacheItem();
+		return new TranslationsDTO(dto.getLocale(), new MessageCacheItem());
 	}
 
 	/**
@@ -199,4 +243,26 @@ public class ComponentService {
         }
         return r;
     }
+
+	/**
+	 * A Data Transfer Object (DTO) for localized messages retrieved from cache.
+	 */
+	public class TranslationsDTO {
+		String locale;
+		Map<String, String> messages;
+
+		TranslationsDTO(String locale, MessageCacheItem messageCacheItem) {
+			this.locale = locale;
+			this.messages = new HashMap<>();
+			this.messages.putAll(messageCacheItem.getCachedData());
+		}
+
+		public String getLocale() {
+			return locale;
+		}
+
+		public Map<String, String> getMessages() {
+			return messages;
+		}
+	}
 }

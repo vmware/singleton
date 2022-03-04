@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2020 VMware, Inc.
+ * Copyright 2019-2022 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vipclient.i18n.l2.text;
@@ -103,9 +103,9 @@ public abstract class DateFormat {
             pattern = (String) patternObj.get(patternType);
             if (PatternKeys.DATETIMEFORMATS.equalsIgnoreCase(patternStyle)) {
                 String datePattern = (String) ((JSONObject) formatData.get(PatternKeys.DATEFORMATS))
-                        .get(format);
+                        .get(patternType);
                 String timePattern = (String) ((JSONObject) formatData.get(PatternKeys.TIMEFORMATS))
-                        .get(format);
+                        .get(patternType);
                 pattern = FormatUtils.format(pattern, timePattern, datePattern);
             }
         } else {

@@ -1,11 +1,12 @@
 /*
- * Copyright 2019-2020 VMware, Inc.
+ * Copyright 2019-2022 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.i18n;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -156,12 +157,13 @@ public class TranslationMessageTest extends BaseTestClass {
 
     }
 
-    // @Test
+    @Test
     public void testGetPatternMessageWithBundle() {
         this.init();
         String component = "JAVA", bundle = "messages";
         Locale locale1 = new Locale("en", "US");
 
+        //test message with plural
         String pluralKey = "sample.plural.key1";
 
         Object[] en_pluralArgs1 = { 0, "MyDisk" };
@@ -194,6 +196,18 @@ public class TranslationMessageTest extends BaseTestClass {
         String pluralMessage6 = translation.getString2(component, bundle, locale7, pluralKey,
                 zh_pluralArgs3);
         Assert.assertEquals("\"我的硬盘\"上有345,678个文件。", pluralMessage6);
+
+        //test message with simple arg
+        final long timestamp = 1511156364801l;
+        Object[] arguments = {
+                7,
+                new Date(timestamp),
+                "a disturbance in the Force"
+        };
+
+        String includeFormatMessage = translation.getMessage(bundle, locale1, component, "sample.includeFormat.message",
+                arguments);
+        Assert.assertEquals("At 1:39 PM on November 20, 2017, there was a disturbance in the Force on planet 7.", includeFormatMessage);
     }
 
     @Test
@@ -553,4 +567,36 @@ public class TranslationMessageTest extends BaseTestClass {
         // more cases to test cache
         // more cases to test the message sending to server
     }
+
+    @Test
+    public void testNamedArgs() {
+        String component = "JAVA";
+        String key = "NamedArgs";
+        Locale locale_en = new Locale("en", "US");
+        Locale locale_de = Locale.forLanguageTag("de");
+        Map<String, Object> msgArgs = new HashMap<>();
+        msgArgs.put("start", 1);
+        msgArgs.put("to", 5);
+        msgArgs.put("total", 10);
+
+        String message_en = translation.getMessage(locale_en, component, key, msgArgs);
+        Assert.assertEquals("1 - 5 of 10 customers", message_en);
+
+        String message_de = translation.getMessage(locale_de, component, key, msgArgs);
+        Assert.assertEquals("1 - 5 of 10 kunden", message_de);
+    }
+
+	@Test
+	public void testPluralFallback() {
+		String component = "JAVA";
+		String plural_key = "sample.plural.key1";
+		Locale locale_ar = Locale.forLanguageTag("ar");
+		
+		int argInt = 3;
+		String argString = "MyDisk";
+		Object[] msgArgs = new Object[] {argInt, argString}; //In ar, 3 belongs to 'few' type.
+
+		String message_ar = translation.getMessage(locale_ar, component, plural_key, msgArgs);
+		Assert.assertEquals("There are "+argInt+" files on disk \""+argString+"\".", message_ar);
+	}
 }
