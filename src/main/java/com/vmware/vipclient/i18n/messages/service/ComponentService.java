@@ -154,7 +154,9 @@ public class ComponentService {
 			if (cacheItem.isExpired()) {
 				if(cacheItem.getSem().tryAcquire()) { // Launch another thread only if sem permit was acquired.
 					if (cacheItem.isExpired()) // Check again after acquiring sem permit.
-						refreshCacheItemTask(cacheItem); // Refresh the cacheItem in a separate thread.
+						refreshCacheItemTask(cacheItem); // Refresh the cacheItem and release permit in a separate thread.
+					else
+						cacheItem.getSem().release(); 
 				}
 			}
 		} else { // Item is not in cache.
