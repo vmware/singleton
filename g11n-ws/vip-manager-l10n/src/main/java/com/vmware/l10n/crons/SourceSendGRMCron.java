@@ -19,7 +19,7 @@ import com.vmware.l10n.source.service.SyncGrmSourceService;
 @Service
 @ConditionalOnProperty(value="sync.source.enable", havingValue="true",  matchIfMissing=false)
 public class SourceSendGRMCron {
-	private final static long THREESECOND = 3000;
+	
 	@Autowired
 	private SyncGrmSourceService syncGrmSourceService;
 	
@@ -27,7 +27,7 @@ public class SourceSendGRMCron {
 	/**
 	 * Synchronize the updated source to remote GRM server
 	 */
-	@Scheduled(fixedDelay = THREESECOND)
+	@Scheduled(fixedDelayString  = "${sync.source.schedule.fixed-delay:3000}")
 	public void syncSource2GRMCron(){
 		syncGrmSourceService.sendSourceToGRM();
 	}
