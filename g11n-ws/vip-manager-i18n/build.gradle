@@ -1,13 +1,10 @@
 //Copyright 2019-2022 VMware, Inc.
 //SPDX-License-Identifier: EPL-2.0
-apply plugin: 'java'
+apply plugin: 'java-library'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
-apply plugin: 'war'
-apply plugin: "jacoco"
-apply plugin: "org.sonarqube"
+//apply plugin: 'war'
 
-sourceCompatibility = 1.8
 description = 'singleton server'
 archivesBaseName = 'singleton'
 configurations {
@@ -16,23 +13,6 @@ configurations {
     providedRuntime
    // remove default logger
    all*.exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
-}
-
-
-buildscript {
-  repositories {
-    maven {
-      url "https://plugins.gradle.org/m2/"
-    }
-  }
-  dependencies {
-    classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.5"
-  }
-}
- 
-
-repositories {
-    mavenCentral()
 }
 
 sourceSets {
@@ -51,64 +31,65 @@ ext {
 
 dependencies {
   if (project.hasProperty('datatype') && project.getProperty('datatype') == 'pgdb') {
-        compile project(":md-data-api-pgimpl")
+        api project(":md-data-api-pgimpl")
     }else{
-        compile project(":md-data-api-s3impl")
-        compile project(":md-data-api-bundleimpl")
+        api project(":md-data-api-s3impl")
+        api project(":md-data-api-bundleimpl")
     }
-    compile project(":vip-common")
-    compile project(":md-restful-api-i18n")
-    compile project(":md-service-authen")
+    api project(":vip-common")
+    api project(":md-restful-api-i18n")
+    api project(":md-service-authen")
     if (project.hasProperty('datatype') && project.getProperty('datatype') == 'bundle' && project.getProperty('syncdata') == 'true') {
-       compile project(":md-restful-synch")
+       api project(":md-restful-synch")
     }
-    compile ("org.apache.tomcat.embed:tomcat-embed-core:$tomcatVersion")
-    compile ("org.apache.tomcat:tomcat-annotations-api:$tomcatVersion")
-    compile("org.springframework:spring-webmvc:$springWebVersion")
-    compile ('org.springframework.boot:spring-boot-starter-log4j2'){
+    implementation("org.apache.tomcat.embed:tomcat-embed-core:$tomcatVersion")
+    implementation("org.apache.tomcat:tomcat-annotations-api:$tomcatVersion")
+    implementation("org.springframework:spring-webmvc:$springWebVersion")
+    implementation('org.springframework.boot:spring-boot-starter-log4j2'){
               exclude group: "org.apache.logging.log4j"
     }
-    compile("org.apache.logging.log4j:log4j-api:$log4j2Version")
-    compile("org.apache.logging.log4j:log4j-core:$log4j2Version")
-    compile("org.apache.logging.log4j:log4j-slf4j-impl:$log4j2Version")
-    compile("org.slf4j:slf4j-api:$slf4jVersion")
-    compile("org.slf4j:jul-to-slf4j:$slf4jVersion")
-    compile("org.apache.commons:commons-lang3:$commonsLangVersion")
-    compile("commons-io:commons-io:$commonsIoVersion")
-    compile("com.google.guava:guava:$guavaVersion")
-    compile("commons-codec:commons-codec:$commonsCodecVersion")
-    compile("org.yaml:snakeyaml:$snakeyam")
-    compile("io.jsonwebtoken:jjwt:$jjwt")
-    compile("org.hibernate.javax.persistence:hibernate-jpa-2.1-api:$hibernateJpa21Api")
-    compile("com.fasterxml.jackson.core:jackson-databind:$jacksonVersion")
-    compile("com.fasterxml.jackson.core:jackson-core:$jacksonVersion")
-    compile("org.ehcache:ehcache:$ehCacheVersion")
-    compile("javax.cache:cache-api:$cacheApiVersion")
-    compile("org.apache.httpcomponents:httpclient:$httpclient")
+    implementation("org.apache.logging.log4j:log4j-api:$log4j2Version")
+    implementation("org.apache.logging.log4j:log4j-core:$log4j2Version")
+    implementation("org.apache.logging.log4j:log4j-slf4j-impl:$log4j2Version")
+    implementation("org.slf4j:slf4j-api:$slf4jVersion")
+    implementation("org.slf4j:jul-to-slf4j:$slf4jVersion")
+    implementation("org.apache.commons:commons-lang3:$commonsLangVersion")
+    implementation("commons-io:commons-io:$commonsIoVersion")
+    implementation("commons-codec:commons-codec:$commonsCodecVersion")
+    implementation("org.yaml:snakeyaml:$snakeyam")
+    implementation("io.jsonwebtoken:jjwt:$jjwtVersion")
+    implementation("org.hibernate.javax.persistence:hibernate-jpa-2.1-api:$hibernateJpa21Api")
+    implementation("com.fasterxml.jackson.core:jackson-databind:$jacksonVersion")
+    implementation("com.fasterxml.jackson.core:jackson-core:$jacksonVersion")
+    implementation("org.ehcache:ehcache:$ehCacheVersion")
+    implementation("javax.cache:cache-api:$cacheApiVersion")
+    implementation("org.apache.httpcomponents:httpclient:$httpclient")
     // Actuator - START
-    compile group: 'io.micrometer', name: 'micrometer-registry-prometheus', version: '1.5.5'
-	compile group: 'io.micrometer', name: 'micrometer-core', version: '1.5.5'
-	compile ('org.springframework.boot:spring-boot-starter-actuator')
+    implementation("io.micrometer:micrometer-registry-prometheus:$micrometerVersion")
+	implementation("io.micrometer:micrometer-core:$micrometerVersion")
+	implementation ('org.springframework.boot:spring-boot-starter-actuator')
     // Actuator - END
     //swagger UI -START  
-     compile('io.springfox:springfox-swagger2:2.9.2'){
+    implementation("io.springfox:springfox-swagger2:$swagger2Version"){
        exclude group: 'io.swagger', module:'swagger-annotations'
        exclude group: 'io.swagger', module:'swagger-models'
     }
-    compile group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.9.2'
-    compile('io.swagger:swagger-annotations:1.5.22')
-    compile('io.swagger:swagger-models:1.5.22')
+    implementation("io.springfox:springfox-swagger-ui:$swagger2Version")
+    implementation('io.swagger:swagger-annotations:1.5.22')
+    implementation('io.swagger:swagger-models:1.5.22')
+    implementation("com.google.guava:guava:$guavaVersion")
     //swagger UI -END
     //jdk 11
-    runtime 'javax.xml.bind:jaxb-api:+'
-    runtime 'javax.activation:activation:+'
-    runtime 'com.sun.xml.bind:jaxb-impl:+'
-    runtime 'com.sun.xml.bind:jaxb-core:+'
+    runtimeOnly 'javax.xml.bind:jaxb-api:+'
+    runtimeOnly 'javax.activation:activation:+'
+    runtimeOnly 'com.sun.xml.bind:jaxb-impl:+'
+    runtimeOnly 'com.sun.xml.bind:jaxb-core:+'
     //end jdk 11
-    testCompile("org.springframework.boot:spring-boot-starter-test")
-    testCompile("org.asciidoctor:asciidoctorj:1.5.6")
-    testCompile("io.github.swagger2markup:swagger2markup:1.3.3")
-    testCompile("org.springframework.restdocs:spring-restdocs-mockmvc")
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testImplementation("org.asciidoctor:asciidoctorj:1.5.6")
+    testImplementation("io.github.swagger2markup:swagger2markup:1.3.3")
+    testImplementation("org.springframework.restdocs:spring-restdocs-mockmvc")
+    testImplementation("junit:junit:$junitVersion")
 }
 
 
@@ -177,8 +158,6 @@ bootJar.doFirst {
 
 
 bootJar {
-   
-   
     baseName = "singleton"
     if(project.hasProperty('productName')){
       def productName = project.getProperty('productName')
@@ -205,6 +184,12 @@ bootJar.doLast {
 	delete "${baseOutputDir}/generated","${baseOutputDir}/html5"
 }
 
+jar {
+    classifier = ''
+	enabled = false
+}
+
+/**
 war {
     baseName = "singleton"
     if(project.hasProperty('productName')){
@@ -219,7 +204,7 @@ war {
     version = "$branchName"
     classifier = "$buildNumber"
 }
-
+**/
 assemble.dependsOn.add copyLibs
 assemble.dependsOn.add zipSingletonScripts
 
@@ -257,9 +242,6 @@ if (project.hasProperty('datatype') && (project.getProperty('datatype') == 'pgdb
 	check.dependsOn.remove(test)
 }
 
-springBoot {
-	mainClassName = "com.vmware.vip.BootApplication"
-}
 
 task sourcesJar(type: Jar) {
     from sourceSets.main.allJava

@@ -1,25 +1,9 @@
 //Copyright 2019-2022 VMware, Inc.
 //SPDX-License-Identifier: EPL-2.0
-apply plugin: 'java'
-apply plugin: 'eclipse'
+apply plugin: 'java-library'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 
-sourceCompatibility = 1.8
-
-buildscript {
-	repositories {
-	  maven {
-		url "https://plugins.gradle.org/m2/"
-	  }
-	}
-	dependencies {
-	  classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.5"
-	}
-  }
-   
-apply plugin: "org.sonarqube"
-apply plugin: "jacoco"
 
 jar {
     manifest {
@@ -28,21 +12,18 @@ jar {
     }
 }
 
-repositories {
-    mavenCentral()
-}
 
 dependencies {
-    compile project(":md-restful-api")
-	compile project(":md-service-about")
-    compile project(":md-service-i18n-l2")
-    compile project(":md-service-i18n-l3")
-    compile("org.springframework:spring-webmvc:$springWebVersion")
-    compile ("org.apache.tomcat.embed:tomcat-embed-core:$tomcatVersion")
-    compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2'
-	compile("commons-codec:commons-codec:1.10")
+    api project(":md-restful-api")
+	api project(":md-service-about")
+    api project(":md-service-i18n-l2")
+    api project(":md-service-i18n-l3")
+    compileOnly("org.springframework:spring-webmvc:$springWebVersion")
+    compileOnly("org.apache.tomcat.embed:tomcat-embed-core:$tomcatVersion")
+    compileOnly("io.springfox:springfox-swagger2:$swagger2Version")
+	compileOnly("commons-codec:commons-codec:$commonsCodecVersion")
 	// Actuator - START
-    compile group: 'io.micrometer', name: 'micrometer-registry-prometheus', version: '1.1.0'
+    compileOnly("io.micrometer:micrometer-registry-prometheus:$micrometerVersion")
     // Actuator - END
 }
 
@@ -50,21 +31,6 @@ bootJar {
   enabled = false
 }
 jar {
+    classifier = ''
 	enabled = true
-}
-
-test {
-    systemProperties 'property': 'value'
-}
-
-tasks.withType(JavaCompile) {
-    options.encoding = 'UTF-8'
-}
-
-uploadArchives {
-    repositories {
-       flatDir {
-           dirs 'repos'
-       }
-    }
 }

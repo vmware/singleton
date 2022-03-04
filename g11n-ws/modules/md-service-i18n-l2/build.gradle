@@ -1,47 +1,28 @@
 //Copyright 2019-2022 VMware, Inc.
 //SPDX-License-Identifier: EPL-2.0
-apply plugin: 'java'
+apply plugin: 'java-library'
 apply plugin: 'io.spring.dependency-management'
 apply plugin: 'org.springframework.boot'
 
 description = 'locale-libs'
-sourceCompatibility = 1.8
 
 configurations {
     jar
 }
 
 dependencies {
-    compile group: 'com.ibm.icu', name: 'icu4j', version: '60.3'
-   //compile group: 'org.webjars.bower', name: 'cldr-data', version: '28.0.1'
-    compile("com.vmware.singleton:singleton-i18n-patterns-core:+")
-    compile project(":vip-common")
-    compile project(":md-service-i18n-l3")
-    compile group: 'org.springframework', name: 'spring-context'
-    //compile fileTree(dir: 'lib', include: [ '*.jar'])
-
+    api project(":vip-common")
+    api project(":md-service-i18n-l3")
+    api("com.vmware.singleton:singleton-i18n-patterns-core:+")
+    api("com.ibm.icu:icu4j:$icu4jVersion")
+    compileOnly("org.springframework:spring-context")
+    compileOnly("org.slf4j:slf4j-api:$slf4jVersion")
 }
 
 bootJar {
   enabled = false
 }
-jar {
-	enabled = true
-}
 
-buildscript {
-	repositories {
-	  maven {
-		url "https://plugins.gradle.org/m2/"
-	  }
-	}
-	dependencies {
-	  classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.5"
-	}
-  }
-   
-apply plugin: "org.sonarqube"
-apply plugin: "jacoco"
 
 jar {
     baseName = 'locale-libs'

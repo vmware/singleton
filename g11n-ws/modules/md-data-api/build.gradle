@@ -1,24 +1,8 @@
 //Copyright 2019-2022 VMware, Inc.
 //SPDX-License-Identifier: EPL-2.0
-apply plugin: 'java'
-apply plugin: 'eclipse'
 archivesBaseName = 'md-data-api'
-sourceCompatibility = 1.8
 
 
-buildscript {
-	repositories {
-	  maven {
-		url "https://plugins.gradle.org/m2/"
-	  }
-	}
-	dependencies {
-	  classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.5"
-	}
-  }
-   
-apply plugin: "org.sonarqube"
-apply plugin: "jacoco"
 
 jar {
     manifest {
@@ -26,24 +10,5 @@ jar {
                    'Implementation-Version': version
     }
 }
-
-repositories {
-    mavenCentral()
-}
-
-
-test {
-    systemProperties 'property': 'value'
-}
-
-tasks.withType(JavaCompile) {
-    options.encoding = 'UTF-8'
-}
-
-uploadArchives {
-    repositories {
-       flatDir {
-           dirs 'repos'
-       }
-    }
-}
+ 
+ 
