@@ -6,6 +6,7 @@ package com.vmware.vipclient.i18n.messages.service;
 
 import java.util.Iterator;
 import java.util.Locale;
+import java.util.concurrent.Semaphore;
 
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.DataSourceEnum;
@@ -107,9 +108,9 @@ public class ComponentService {
 		MessageCacheItem cacheItem = cacheService.getCacheOfComponent();
 		if (cacheItem != null) { // Item is in cache
 			if (cacheItem.isExpired()) {
-				synchronized (dto.getCompositStrAsCacheKey().intern()) { // Allow only one thread to refresh the cacheItem
-					if (cacheItem.isExpired()) // Check again after acquiring lock
-						refreshCacheItemTask(cacheItem); // Refresh the cacheItem in a separate thread
+				if(cacheItem.getSem().tryAcquire()) { // Launch another thread only if sem permit was acquired.
+					if (cacheItem.isExpired()) // Check again after acquiring sem permit.
+						refreshCacheItemTask(cacheItem); // Refresh the cacheItem in a separate thread.
 				}
 			}
 		} else { // Item is not in cache.
@@ -176,6 +177,7 @@ public class ComponentService {
     			refreshCacheItem(cacheItem, VIPCfg.getInstance().getMsgOriginsQueue().listIterator());
     		} catch (Exception e) {
 		    }
+    		cacheItem.getSem().release(); // Release cacheItem's semaphore permit
 		};
 		new Thread(runnable).start();
 	}
