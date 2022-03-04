@@ -107,8 +107,8 @@ public class ComponentService {
 		MessageCacheItem cacheItem = cacheService.getCacheOfComponent();
 		if (cacheItem != null) { // Item is in cache
 			if (cacheItem.isExpired()) {
-				synchronized (cacheItem) { // Allow only one thread to refresh the cacheItem
-					if (cacheItem.isExpired())
+				synchronized (dto.getCompositStrAsCacheKey().intern()) { // Allow only one thread to refresh the cacheItem
+					if (cacheItem.isExpired()) // Check again after acquiring lock
 						refreshCacheItemTask(cacheItem); // Refresh the cacheItem in a separate thread
 				}
 			}
@@ -156,9 +156,9 @@ public class ComponentService {
 		CacheService cacheService = new CacheService(dto);
 
 		// Allow only one thread to create the new cache item
-		synchronized (dto.getCompositStrAsCacheKey().intern()) {
+		synchronized (dto.getCompositStrAsCacheKey().intern()) { // Allow only one thread to refresh the cacheItem
 			MessageCacheItem cacheItem = cacheService.getCacheOfComponent();
-			if (cacheItem == null) { // If the cache item hasn't been created by any other thread
+			if (cacheItem == null) { // Check again after acquiring lock
 				cacheItem = new MessageCacheItem(); // Create a new cacheItem object to be stored in cache
 
 				refreshCacheItem(cacheItem, VIPCfg.getInstance().getMsgOriginsQueue().iterator());
