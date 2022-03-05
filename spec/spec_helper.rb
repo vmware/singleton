@@ -30,6 +30,7 @@ RSpec.configure do |config|
   config.filter_run_excluding :integration => true
   config.filter_run_excluding :disabled => true
   config.include SampleData
+  config.include RSpec::Benchmark::Matchers
 end
 
 WebMock.allow_net_connect!

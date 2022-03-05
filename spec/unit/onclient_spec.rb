@@ -1,5 +1,3 @@
-#Copyright 2019-2022 VMware, Inc.
-#SPDX-License-Identifier: EPL-2.0
 require 'spec_helper'
 
 describe SgtnClient do
@@ -24,10 +22,6 @@ describe SgtnClient do
       allow(SgtnClient::LocaleUtil).to receive(:process_locale).and_return(SgtnClient::Config.configurations.default)
       expect(SgtnClient::Translation.getString("JAVA", "helloworld", nil)).to eq 'Hello world'
     end 
-
-    it "get_string_source_out_of_sync" do
-      expect(SgtnClient::Translation.getString("JAVA", "updated_source_test", "zh-Hans")).to eq 'Updated source string'
-    end
 
     it "GET" do
       expect(SgtnClient::Translation.getString("JAVA", "helloworld", "zh-Hans")).to eq '你好世界'

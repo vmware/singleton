@@ -1,5 +1,8 @@
-#Copyright 2019-2022 VMware, Inc.
-#SPDX-License-Identifier: EPL-2.0
+# 
+#  Copyright 2019-2022 VMware, Inc.
+#  SPDX-License-Identifier: EPL-2.0
+#
+
 require 'multi_json'
 
 module SgtnClient
@@ -99,7 +102,9 @@ module SgtnClient
             items = SgtnClient::Source.getSources(component, SgtnClient::Config.configurations.default)
             SgtnClient::Core::Cache.put(cache_key, items, 60)
           else
-            self.compare_source(component, items)
+            #if locale != SgtnClient::LocaleUtil.get_source_locale && locale != SgtnClient::Config.configurations.default
+            #  self.compare_source(component, items) 
+            #end
             SgtnClient::CacheUtil.write_cache(cache_key, items)
           end
         else
@@ -146,15 +151,25 @@ module SgtnClient
         return obj
       end
       
-      # Compare local source with remote source
-      def self.compare_source(component, translations)
-        targets = get_cs(component, SgtnClient::LocaleUtil.get_source_locale)
+      def self.compare_source(component, translations)        
+        sources, old_sources = self.get_bundles_for_source_comparison(component)
+        self.compare_each_source_key(translations, sources, old_sources)
+      end
+
+      def self.get_bundles_for_source_comparison(component)
+        old_sources = get_cs(component, SgtnClient::LocaleUtil.get_source_locale)
+        sources = SgtnClient::Source.getSources(component, SgtnClient::Config.configurations.default)
+        return sources, old_sources
+      end
+
+      def self.compare_each_source_key(translations, sources, old_sources)
+        source_bundle_key = SgtnClient::Config.configurations.default
         translations["messages"].each do |message| 
           key = message[0]
-          source = SgtnClient::Source.getSource(component, key, SgtnClient::Config.configurations.default)
-          target = targets["messages"][key] if targets["messages"] != nil
-          if source != nil and target != nil and source != target
-            SgtnClient.logger.debug "[#{self.class}][#{__method__}] Source is used instead of translation for component=#{component}, key=#{key} source=#{source}, translation=#{translations["messages"][key]}"
+          source = sources[source_bundle_key][key] if sources[source_bundle_key] != nil
+          old_source = old_sources["messages"][key] if old_sources["messages"] != nil
+          if source != nil and old_source != nil and source != old_source
+            SgtnClient.logger.debug "[#{self.class}][#{__method__}] Source is used instead of translation for key=#{key} source=#{source}, translation=#{translations["messages"][key]}"
             translations["messages"][key] = source 
           end
         end

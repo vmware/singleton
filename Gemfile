@@ -11,6 +11,7 @@ else
 end
 
 gem 'rake', :require => false
+gem 'rspec-benchmark'
 
 group :test do
   gem 'simplecov-json', :require => false
