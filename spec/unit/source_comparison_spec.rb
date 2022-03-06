@@ -30,7 +30,7 @@ describe SgtnClient do
       expect {
         updated_source = @sources[SgtnClient::Config.configurations.default][@key_updated_source]
         expect(@translations["messages"][@key_updated_source]).to eq updated_source 
-      }.to perform_under(1).ms
+      }.to perform_under(0.1).ms
     end
   end
 end
