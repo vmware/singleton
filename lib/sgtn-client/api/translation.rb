@@ -102,9 +102,9 @@ module SgtnClient
             items = SgtnClient::Source.getSources(component, SgtnClient::Config.configurations.default)
             SgtnClient::Core::Cache.put(cache_key, items, 60)
           else
-            #if locale != SgtnClient::LocaleUtil.get_source_locale && locale != SgtnClient::Config.configurations.default
-            #  self.compare_source(component, items) 
-            #end
+            if locale != SgtnClient::LocaleUtil.get_source_locale && locale != SgtnClient::Config.configurations.default
+              self.compare_source(component, items) 
+            end
             SgtnClient::CacheUtil.write_cache(cache_key, items)
           end
         else
