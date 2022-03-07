@@ -1,4 +1,6 @@
 module SgtnClient
+      LOGFILE_SHIFT_AGE = 4
+
       module Core
             autoload :Cache,        "sgtn-client/core/cache"
       end
@@ -32,7 +34,7 @@ module SgtnClient
                   rescue => exception
                     file = File.open('./error.log', 'a')
                     file.sync = true
-                    log = Logger.new(file)
+                    log = Logger.new(file, LOGFILE_SHIFT_AGE)
                     log.error exception.message
                   end
 
@@ -44,7 +46,7 @@ module SgtnClient
                   end
                   file = File.open(file, 'a')
                   file.sync = true
-                  SgtnClient.logger = Logger.new(file)
+                  SgtnClient.logger = Logger.new(file, LOGFILE_SHIFT_AGE)
 
                   # Set log level for sandbox mode
                   env = SgtnClient::Config.default_environment
