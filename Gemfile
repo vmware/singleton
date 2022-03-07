@@ -1,3 +1,7 @@
+# 
+#  Copyright 2019-2022 VMware, Inc.
+#  SPDX-License-Identifier: EPL-2.0
+#  
 source "https://rubygems.org"
 
 if !!File::ALT_SEPARATOR
@@ -9,7 +13,7 @@ end
 gem 'rake', :require => false
 
 group :test do
-  gem 'simplecov', :require => false
+  gem 'simplecov-json', :require => false
   gem 'rspec'
   gem 'webmock'
 end
