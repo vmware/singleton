@@ -64,7 +64,7 @@ module SgtnClient
          return s
       end
 
-      def self.getStrings(component, locale, *source_compared)
+      def self.getStrings(component, locale, args = {})
         SgtnClient.logger.debug "[Translation][getStrings]component=#{component}, locale=#{locale}"
         locale = SgtnClient::LocaleUtil.get_best_locale(locale)
         items = get_cs(component, locale)
@@ -80,7 +80,7 @@ module SgtnClient
             items["messages"] = value
             items["locale"] = 'source'
           end
-        elsif !LocaleUtil.is_source_locale(locale) && source_compared
+        elsif LocaleUtil.is_source_locale(locale) == false and args[:source_compared] == true
             items = compare_component_sources(component, items)
         end
         return items

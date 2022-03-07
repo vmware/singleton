@@ -18,10 +18,10 @@ module SgtnClient
             return getString_f(component, key, args, locale)
         end
 
-        def self.c(*source_compared)
+        def self.c(args = {})
             locale = RequestStore.store[:locale]
             component = RequestStore.store[:component]
-            return getStrings(component, locale, source_compared)
+            return getStrings(component, locale, args)
         end
     end
 end
