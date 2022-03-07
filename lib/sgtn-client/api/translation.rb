@@ -64,7 +64,7 @@ module SgtnClient
          return s
       end
 
-      def self.getStrings(component, locale)
+      def self.getStrings(component, locale, *source_compared)
         SgtnClient.logger.debug "[Translation][getStrings]component=#{component}, locale=#{locale}"
         locale = SgtnClient::LocaleUtil.get_best_locale(locale)
         items = get_cs(component, locale)
@@ -80,6 +80,8 @@ module SgtnClient
             items["messages"] = value
             items["locale"] = 'source'
           end
+        elsif !LocaleUtil.is_source_locale(locale) && source_compared
+            items = compare_component_sources(component, items)
         end
         return items
        end
@@ -166,6 +168,24 @@ module SgtnClient
         end
       end
 
+      # Compare locale component's sources with remote
+      def self.compare_component_sources(component, translations)
+        old_sources = get_cs(component, SgtnClient::LocaleUtil.get_source_locale)
+        new_sources = SgtnClient::Source.getSources(component, SgtnClient::Config.configurations.default)
+        source_bundle_key = SgtnClient::Config.configurations.default
+        if !translations["messages"].nil?
+          translations["messages"].each do |message|
+            key = message[0]
+            new_s = new_sources[source_bundle_key][key] if new_sources[source_bundle_key] != nil
+            old_s = old_sources["messages"][key] if old_sources["messages"] != nil
+            if new_s != nil and old_s != nil and new_s != old_s
+              SgtnClient.logger.debug "[#{self.class}][#{__method__}] Source is used instead of translation for key=#{key} source=#{new_s}, translation=#{translations["messages"][key]}"
+              translations["messages"][key] = new_s
+            end
+          end
+        end
+        translations
+      end
   end
 
 end
