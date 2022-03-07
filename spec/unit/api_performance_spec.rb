@@ -16,6 +16,15 @@ describe SgtnClient do
       expect(t2.to_i-t1.to_i).to be < 100
     end
 
+    it "get_strings_performance" do
+      RequestStore.store[:locale] = 'zh-Hant'
+      RequestStore.store[:component] = 'JAVA'
+      t1 = DateTime.now.strftime("%Q")
+      SgtnClient::T.c(true)["messages"]["old_helloworld"]
+      t2 = DateTime.now.strftime("%Q")
+      expect(t2.to_i-t1.to_i).to be < 100
+    end
+
   end
 
 end
