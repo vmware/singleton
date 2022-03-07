@@ -5,7 +5,7 @@ module SgtnClient
 
   class Source
 
-      def self.getSource(component, key, locale=SgtnClient::Config.configurations.default)
+      def self.getSource(component, key, locale)
         SgtnClient.logger.debug "[Source][getSource]component=#{component}, key=#{key}, locale=#{locale}"
         cache_key = SgtnClient::CacheUtil.get_cachekey(component, locale)
         expired, items = SgtnClient::CacheUtil.get_cache(cache_key)
@@ -17,23 +17,20 @@ module SgtnClient
         end
         s = items.nil?? nil : items[locale][key]
         if items.nil? || s.nil?
-          SgtnClient.logger.debug "[Source][getSource]source not found, omponent=#{component}, key=#{key}"
-          raise("source not found, omponent=#{component}, key=#{key}")
+          SgtnClient.logger.debug "[Source][getSource]source not found, return key: " + key
+          raise("source is missing, component=#{component}, key=#{key}")
         else
           return s
         end
       end
 
-      def self.getSources(component, locale=SgtnClient::Config.configurations.default)
+      def self.getSources(component, locale)
         SgtnClient.logger.debug "[Source][getSources]component=#{component}, locale=#{locale}"
         cache_key = SgtnClient::CacheUtil.get_cachekey(component, locale)
         expired, items = SgtnClient::CacheUtil.get_cache(cache_key)
         if items.nil? || expired
-          t = Thread.new {
-            items = getBundle(component, locale)
-            SgtnClient::CacheUtil.write_cache(cache_key, items)
-          }
-          t.join if !expired
+          items = getBundle(component, locale)
+          SgtnClient::CacheUtil.write_cache(cache_key, items)
         else
           SgtnClient.logger.debug "[Source][getSources]getting sources from cache with key: " + cache_key
         end
@@ -42,10 +39,6 @@ module SgtnClient
 
       def self.loadBundles(locale)
         SgtnClient.logger.debug "[Source][loadBundles]locale=#{locale}"
-        if locale.nil?
-          SgtnClient.logger.error "[Source][loadBundles]the argument locale is nil!"
-          return
-        end
         env = SgtnClient::Config.default_environment
         SgtnClient::Config.configurations.default = locale
         source_bundle = SgtnClient::Config.configurations[env]["source_bundle"]
