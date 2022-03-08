@@ -34,7 +34,7 @@ module SgtnClient
                   rescue => exception
                     file = File.open('./error.log', 'a')
                     file.sync = true
-                    log = Logger.new(file, LOGFILE_SHIFT_AGE)
+                    log = Logger.new(file)
                     log.error exception.message
                   end
 
