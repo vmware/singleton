@@ -83,7 +83,7 @@ public class SyncGrmSourceServiceImpl implements SyncGrmSourceService {
      * scan the GRM cached source file DIR and process the cached source file
      * @throws IOException 
      */
-	private synchronized void processGRMQueueFiles() throws IOException {
+	private void processGRMQueueFiles() throws IOException {
         
 		List<File> queueFiles = DiskQueueUtils.listQueueFiles(new File(basePath + DiskQueueUtils.L10N_TMP_GRM_PATH));
 		if (queueFiles == null) {

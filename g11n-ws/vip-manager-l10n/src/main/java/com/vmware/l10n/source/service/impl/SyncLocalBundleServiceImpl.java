@@ -78,7 +78,7 @@ public class SyncLocalBundleServiceImpl implements SyncLocalBundleService {
 	 * Synchronize the updated source to local bundle file
 	 */
 	@Override
-	public void mergeSourceToLocalBundle() {
+	public synchronized void mergeSourceToLocalBundle() {
 		
 		LOGGER.debug("--Synchronize the updated source to local--");
 		List<File> queueFiles = DiskQueueUtils.listSourceQueueFile(basePath);

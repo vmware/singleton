@@ -27,7 +27,7 @@ public class SourceSendGRMCron {
 	/**
 	 * Synchronize the updated source to remote GRM server
 	 */
-	@Scheduled(cron = "${sync.source.schedule.cron}")
+	@Scheduled(fixedDelayString  = "${sync.source.schedule.fixed-delay:3000}")
 	public void syncSource2GRMCron(){
 		syncGrmSourceService.sendSourceToGRM();
 	}

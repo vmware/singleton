@@ -67,7 +67,7 @@ public class SyncI18nSourceServiceImpl implements SyncI18nSourceService {
 	 *
 	 */
 	@Override
-	public synchronized void sendSourceToI18n() {
+	public void sendSourceToI18n() {
 		if (LOCAL_STR.equalsIgnoreCase(remoteVIPURL)) {
 			return;
 		}
