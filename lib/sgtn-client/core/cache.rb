@@ -52,16 +52,6 @@ module SgtnClient::Core
                 end
             end
 
-            def self.delete(key)
-                @mutex.synchronize do
-                    if @@data == nil
-                        return nil
-                    end
-                    SgtnClient.logger.debug "[Cache][delete]delete cache for key: " + key
-                    @@data.delete key
-                end
-            end
-
             def self.clear
                 @mutex.synchronize do
                     if @@data == nil
