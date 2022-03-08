@@ -4,6 +4,8 @@
  */
 package com.vmware.vip.core.validation;
 
+import com.vmware.vip.common.exceptions.ValidationException;
+
 public class TokenValidation implements IVlidation{
 
 	public void validate() throws ValidationException {

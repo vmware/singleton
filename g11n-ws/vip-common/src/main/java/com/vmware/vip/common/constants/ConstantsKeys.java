@@ -4,6 +4,10 @@
  */
 package com.vmware.vip.common.constants;
 
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * Constant strings.
  *
@@ -53,6 +57,7 @@ public class ConstantsKeys {
    public static final String COMBINE = "combine";
    public static final String SCOPE = "scope";
    public static final String CITIES = "cities";
+   public static final String CONTENT_TYPES = "content_types";
    // millisecond
    public static final Integer DELAY_TIME = 10000;
    public static final String VALIDATE_TOKEN_RESULT = "validateTokenResult";
@@ -100,4 +105,6 @@ public class ConstantsKeys {
 
    public static final String SCOPE_FILTER_MATCH = "(^[a-zA-Z]+[,-_a-zA-Z0-9]+[a-zA-Z0-9]+$)|(^[\\^\\(]+[,-_a-zA-Z0-9]+[\\)]+$)";
 
+   public final static Set<String> SOURCE_FORMAT_LIST = new HashSet<String>(Arrays.asList("SVG", "MD", "HTML"));
+	
 }

@@ -5,6 +5,8 @@
 package com.vmware.l10n.source.service.impl;
 
 import java.io.File;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ConcurrentHashMap;
@@ -21,7 +23,6 @@ import org.springframework.util.StringUtils;
 import com.vmware.l10n.source.service.SourceService;
 import com.vmware.l10n.utils.DiskQueueUtils;
 import com.vmware.l10n.utils.MapUtil;
-import com.vmware.vip.common.constants.ConstantsChar;
 import com.vmware.vip.common.constants.ConstantsKeys;
 import com.vmware.vip.common.l10n.source.dto.ComponentSourceDTO;
 import com.vmware.vip.common.l10n.source.dto.StringSourceDTO;
@@ -34,6 +35,7 @@ import com.vmware.vip.common.l10n.source.util.PathUtil;
 public class SourceServiceImpl implements SourceService {
 	
 	private final static Logger LOGGER = LoggerFactory.getLogger(SourceService.class);
+	private final static List<String> SOURSE_FORMATS = Arrays.asList("MD", "HTML");
 	private final static BlockingQueue<StringSourceDTO> STRING_SOURCES = new LinkedBlockingQueue<StringSourceDTO>();
 	private final static ConcurrentMap<String, ComponentSourceDTO> PREPARE_MAP = new  ConcurrentHashMap<String, ComponentSourceDTO>();
 	
@@ -66,8 +68,8 @@ public class SourceServiceImpl implements SourceService {
 		int index = 1;
 		LOGGER.debug("begin process queue's collection string to map ComponentSourceDTO ");
 		while (!STRING_SOURCES.isEmpty()) {
-			mergeSource2Map();
-			if (index % 2048 == 0) {
+			boolean flashFlag = mergeSource2Map();
+			if (index % 512 == 0 || flashFlag) {
 				cacheMapDTO(PREPARE_MAP);
 			}
 			index = index + 1;
@@ -84,39 +86,48 @@ public class SourceServiceImpl implements SourceService {
 	/**
 	 * merge the string queue source to component Map source
 	 */
-	private void mergeSource2Map() {
+	private boolean mergeSource2Map() {
 
 		StringSourceDTO strDTO = STRING_SOURCES.poll();
 		strDTO.setLocale(ConstantsKeys.LATEST);
-		String key = getKey(strDTO);
+		String key = strDTO.getKey();
 		String source = strDTO.getSource();
 		String comment = strDTO.getComment();
+		String sourceFormat = strDTO.getSourceFormat();
 		String catcheKey = PathUtil.generateCacheKey(strDTO);
 		ComponentSourceDTO comp = PREPARE_MAP.get(catcheKey);
 		
 		if (StringUtils.isEmpty(comp)) {
-			addNewStringSource(strDTO, catcheKey, key, source, comment);
+			addNewStringSource(strDTO, catcheKey, key, source, comment, sourceFormat);
 		} else {
-			updateStringSource(comp, key, source, comment);
+			updateStringSource(comp, key, source, comment, sourceFormat);
 		}
-
+        
+		return SOURSE_FORMATS.contains(sourceFormat);
+		
 	}
 	
     @SuppressWarnings("unchecked")
-	private void updateStringSource(ComponentSourceDTO comp, String key, String source, String comment) {
+	private void updateStringSource(ComponentSourceDTO comp, String key, String source, String comment, String sourceFormat) {
     	   MapUtil.updateKeyValue(comp.getMessages(), key, source);
 			if (!StringUtils.isEmpty(comment)) {
-				MapUtil.updateKeyValue(comp.getComments(), key, comment);
+				comp.setComments(key, comment);
+			}
+			if (!StringUtils.isEmpty(sourceFormat)) {
+				comp.setSourceFormats(key, sourceFormat);
 			}
     }
 	
 	
-	private void  addNewStringSource(StringSourceDTO  strDTO, String catcheKey, String key, String source, String comment) {
+	private void  addNewStringSource(StringSourceDTO  strDTO, String catcheKey, String key, String source, String comment, String sourceFormat) {
 		ComponentSourceDTO comp = new ComponentSourceDTO();
 		BeanUtils.copyProperties(strDTO, comp);
 		comp.setMessages(key, source);
 		if (!StringUtils.isEmpty(comment)) {
 			comp.setComments(key, comment);
+		}
+		if (!StringUtils.isEmpty(sourceFormat)) {
+			comp.setSourceFormats(key, sourceFormat);
 		}
 		PREPARE_MAP.put(catcheKey, comp);
 	}
@@ -139,17 +150,7 @@ public class SourceServiceImpl implements SourceService {
 		return true;
 	}
 
-	/*
-	 * get the key from StringSourceDTO, if there's source format(e.g. HTML), will
-	 * append '.#'(e.g key.#HTML).
-	 */
-	private static String getKey(StringSourceDTO stringSourceDTO) {
-		String key = stringSourceDTO.getKey();
-		if (!StringUtils.isEmpty(stringSourceDTO.getSourceFormat()))
-			key = key + ConstantsChar.DOT + ConstantsChar.POUND + stringSourceDTO.getSourceFormat().toUpperCase();
 
-		return key;
-	}
 
 
 }

@@ -29,6 +29,7 @@ import com.vmware.vip.api.rest.APIParamName;
 import com.vmware.vip.api.rest.APIParamValue;
 import com.vmware.vip.api.rest.APIV2;
 import com.vmware.vip.common.constants.ConstantsKeys;
+import com.vmware.vip.common.exceptions.VIPAPIException;
 import com.vmware.vip.common.i18n.dto.KeySourceCommentDTO;
 import com.vmware.vip.common.i18n.dto.response.APIResponseDTO;
 import com.vmware.vip.common.i18n.status.APIResponseStatus;
@@ -109,6 +110,7 @@ public class TranslationProductComponentKeyAPI extends TranslationProductCompone
 
 	/**
 	 * API to post a bunch of strings
+	 * @throws VIPAPIException 
 	 *
 	 */
 	@ApiOperation(value = APIOperation.KEY_SET_POST_VALUE, notes = APIOperation.KEY_SET_POST_NOTES)
@@ -121,13 +123,35 @@ public class TranslationProductComponentKeyAPI extends TranslationProductCompone
 			@ApiParam(name = APIParamName.COMPONENT, required = true, value = APIParamValue.COMPONENT) @PathVariable(APIParamName.COMPONENT) String component,
 			@RequestBody List<KeySourceCommentDTO> sourceSet,
 			@ApiParam(name = APIParamName.COLLECT_SOURCE, value = APIParamValue.COLLECT_SOURCE) @RequestParam(value = APIParamName.COLLECT_SOURCE, required = false, defaultValue = "false") String collectSource,
-			HttpServletRequest request) throws JsonProcessingException {
+			HttpServletRequest request) throws JsonProcessingException, VIPAPIException {
 		request.setAttribute(ConstantsKeys.KEY, ConstantsKeys.JSON_KEYSET);
 		ObjectMapper mapper = new ObjectMapper();
 		String requestJson = mapper.writeValueAsString(sourceSet);
 		if (!StringUtils.isEmpty(requestJson)) {
+			validateSourceSet(sourceSet);
 			request.setAttribute(ConstantsKeys.SOURCE, requestJson);
 		}
 		return super.handleResponse(APIResponseStatus.OK, "Recieved the sources and comments(please use translation-product-component-api to confirm it).");
 	}
+	
+	/**
+	 * API to get a bunch of strings
+	 *
+	 */
+	@ApiOperation(value = APIOperation.KEY_SET_GET_VALUE, notes = APIOperation.KEY_SET_GET_NOTES)
+	@RequestMapping(value = APIV2.KEY_SET_GET, method = RequestMethod.GET, produces = { API.API_CHARSET })
+	@ResponseStatus(HttpStatus.OK)
+	public APIResponseDTO getKeysTranslation(
+			@ApiParam(name = APIParamName.PRODUCT_NAME, required = true, value = APIParamValue.PRODUCT_NAME) @PathVariable(APIParamName.PRODUCT_NAME) String productName,
+			@ApiParam(name = APIParamName.VERSION, required = true, value = APIParamValue.VERSION) @PathVariable(value = APIParamName.VERSION) String version,
+			@ApiParam(name = APIParamName.LOCALE, required = true, value = APIParamValue.LOCALE) @PathVariable(value = APIParamName.LOCALE) String locale,
+			@ApiParam(name = APIParamName.COMPONENT, required = true, value = APIParamValue.COMPONENT) @PathVariable(APIParamName.COMPONENT) String component,
+			@ApiParam(name = APIParamName.KEYS, required = true, value = APIParamValue.KEYS) @RequestParam(value = APIParamName.KEYS) String keys,
+			@ApiParam(name = APIParamName.PSEUDO, value = APIParamValue.PSEUDO) @RequestParam(value = APIParamName.PSEUDO, required = false, defaultValue = "false") String pseudo,
+			HttpServletRequest request) throws L3APIException {
+		
+		return super.getMultTransByGet(productName, version, locale, component, keys, pseudo);
+
+	}
+	
 }

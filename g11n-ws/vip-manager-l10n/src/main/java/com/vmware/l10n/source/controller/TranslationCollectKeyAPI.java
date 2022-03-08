@@ -29,9 +29,11 @@ import com.vmware.vip.api.rest.APIOperation;
 import com.vmware.vip.api.rest.APIParamName;
 import com.vmware.vip.api.rest.APIParamValue;
 import com.vmware.vip.api.rest.l10n.L10nI18nAPI;
-import com.vmware.vip.common.constants.ConstantsChar;
 import com.vmware.vip.common.constants.ConstantsFile;
+import com.vmware.vip.common.constants.ConstantsKeys;
 import com.vmware.vip.common.constants.ConstantsUnicode;
+import com.vmware.vip.common.constants.ValidationMsg;
+import com.vmware.vip.common.exceptions.ValidationException;
 import com.vmware.vip.common.i18n.dto.KeySourceCommentDTO;
 import com.vmware.vip.common.l10n.exception.L10nAPIException;
 import com.vmware.vip.common.l10n.source.dto.StringSourceDTO;
@@ -66,11 +68,9 @@ public class TranslationCollectKeyAPI {
 			//@ApiParam(name = APIParamName.PSEUDO, value = APIParamValue.PSEUDO) @RequestParam(value = APIParamName.PSEUDO, required = false, defaultValue = "false") String pseudo,
 			HttpServletRequest request) throws L10nAPIException {
 		String newLocale =  StringUtils.isEmpty(locale) ? ConstantsUnicode.EN : locale;
-		String newKey = StringUtils.isEmpty(sourceFormat) ? key
-				: (key + ConstantsChar.DOT + ConstantsChar.POUND + sourceFormat.toUpperCase());
 		String newSource = source == null ? "" : source;
 		logger.info("The parameters are: productName={}, version={}, component={}, locale={}, key={}, source={}", productName, version, component, locale, key, newSource);
-		StringSourceDTO sourceObj = SourceUtils.createSourceDTO(productName, version, component, newLocale, newKey,
+		StringSourceDTO sourceObj = SourceUtils.createSourceDTO(productName, version, component, newLocale, key,
 				newSource, commentForSource, sourceFormat);
 		boolean isSourceCached = sourceService.cacheSource(sourceObj);
 		return SourceUtils.handleSourceResponse(isSourceCached);
@@ -111,15 +111,13 @@ public class TranslationCollectKeyAPI {
 			HttpServletRequest request)
 			throws L10nAPIException {
 		String newLocale = locale == null ? ConstantsUnicode.EN : locale;
-		String newKey = StringUtils.isEmpty(sourceFormat) ? key
-				: (key + ConstantsChar.DOT + ConstantsChar.POUND + sourceFormat.toUpperCase());
 		String querySource = request.getParameter(APIParamName.SOURCE);
 		String newSource = "";
 		if(!StringUtils.isEmpty(source) || !StringUtils.isEmpty(querySource)) {
 		   newSource = source == null ? querySource : source;
 		}
 		logger.info("The parameters are: productName={}, version={}, component={}, locale={}, key={}, source={}", productName, version, component, locale, key, newSource);
-		StringSourceDTO sourceObj = SourceUtils.createSourceDTO(productName, version, component, newLocale, newKey,
+		StringSourceDTO sourceObj = SourceUtils.createSourceDTO(productName, version, component, newLocale, key,
 				newSource, commentForSource, sourceFormat);
 		boolean isSourceCached = sourceService.cacheSource(sourceObj);
 		return SourceUtils.handleSourceResponse(isSourceCached);
@@ -146,10 +144,9 @@ public class TranslationCollectKeyAPI {
 		//	@ApiParam(name = APIParamName.PSEUDO, value = APIParamValue.PSEUDO) @RequestParam(value = APIParamName.PSEUDO, required = false, defaultValue = ConstantsKeys.FALSE) String pseudo,
 			HttpServletRequest request) throws L10nAPIException {
 		String newLocale = locale == null ? ConstantsUnicode.EN : locale;
-		String newKey = StringUtils.isEmpty(sourceFormat) ? key
-				: (key + ConstantsChar.DOT + ConstantsChar.POUND + sourceFormat.toUpperCase());
+	
 		String newSource = source == null ? "" : source;
-		StringSourceDTO sourceObj = SourceUtils.createSourceDTO(productName, version, ConstantsFile.DEFAULT_COMPONENT, newLocale, newKey,
+		StringSourceDTO sourceObj = SourceUtils.createSourceDTO(productName, version, ConstantsFile.DEFAULT_COMPONENT, newLocale, key,
 				newSource, commentForSource, sourceFormat);
 		logger.info("The parameters are: productName={}, version={}, locale={}, key={}, source={}", productName, version, locale, key, newSource);
 		boolean isSourceCached = sourceService.cacheSource(sourceObj);
@@ -177,10 +174,9 @@ public class TranslationCollectKeyAPI {
 			@ApiParam(name = APIParamName.COLLECT_SOURCE, value = APIParamValue.COLLECT_SOURCE) @RequestParam(value = APIParamName.COLLECT_SOURCE, required = true, defaultValue = "true") String collectSource
       )
 			throws L10nAPIException {
-		String newKey = StringUtils.isEmpty(sourceFormat) ? key
-				: (key + ConstantsChar.DOT + ConstantsChar.POUND + sourceFormat.toUpperCase());
+	
 		String newSource = source == null ? "" : source;
-		StringSourceDTO sourceObj = SourceUtils.createSourceDTO(productName, version, component, locale, newKey,
+		StringSourceDTO sourceObj = SourceUtils.createSourceDTO(productName, version, component, locale, key,
 				newSource, commentForSource, sourceFormat);
 		logger.info("The parameters are: productName={}, version={}, component={}, locale={}, key={}, source={}", productName, version, component, locale, key, newSource);
 		boolean isSourceCached = sourceService.cacheSource(sourceObj);
@@ -189,6 +185,7 @@ public class TranslationCollectKeyAPI {
 
 	/**
 	 * API to post a bunch of strings
+	 * @throws ValidationException 
 	 *
 	 */
 	@ApiOperation(value = APIOperation.KEY_SET_POST_VALUE, notes = APIOperation.KEY_SET_POST_NOTES)
@@ -201,14 +198,18 @@ public class TranslationCollectKeyAPI {
 			@ApiParam(name = APIParamName.COMPONENT, required = true, value = APIParamValue.COMPONENT) @PathVariable(APIParamName.COMPONENT) String component,
 			@RequestBody List<KeySourceCommentDTO> sourceSet,
 			@ApiParam(name = APIParamName.COLLECT_SOURCE, value = APIParamValue.COLLECT_SOURCE) @RequestParam(value = APIParamName.COLLECT_SOURCE, required = true, defaultValue = "true") String collectSource,
-			HttpServletRequest request) throws L10nAPIException {
+			HttpServletRequest request) throws ValidationException  {
 		logger.info("The parameters are: productName={}, version={}, component={}, locale={}", productName, version, component, locale);
 		for (KeySourceCommentDTO sto : sourceSet) {
 			String newLocale = locale == null ? ConstantsUnicode.EN : locale;
 			String newKey = sto.getKey();
 			String newSource =sto.getSource();
+			String sf = sto.getSourceFormat();
+			if (!StringUtils.isEmpty(sf) && !ConstantsKeys.SOURCE_FORMAT_LIST.contains(sf)) {
+				   throw new ValidationException(ValidationMsg.SOURCEFORMAT_NOT_VALIDE);
+			}
 			StringSourceDTO sourceObj = SourceUtils.createSourceDTO(productName, version, component, newLocale, newKey,
-					newSource, sto.getCommentForSource(), null);
+					newSource, sto.getCommentForSource(), sf);
 			boolean isSourceCached = sourceService.cacheSource(sourceObj);
 			if(!isSourceCached) {
 				return SourceUtils.handleSourceResponse(isSourceCached); 

@@ -15,6 +15,7 @@ public class APIParamName {
 	public final static String PSEUDO = "pseudo";
 	public final static String MT = "machineTranslation";
 	public final static String KEY = "key";
+	public final static String KEYS = "keys";
 	public final static String KEY2 = "key:.+";
 	public final static String SOURCE = "source";
 	public final static String SOURCE_SET = "sourceSet";

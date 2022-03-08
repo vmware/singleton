@@ -5,6 +5,7 @@
 package com.vmware.vip.core.except;
 
 import com.vmware.vip.common.exceptions.VIPHttpException;
+import com.vmware.vip.common.exceptions.ValidationException;
 import com.vmware.vip.common.i18n.dto.response.APIResponseDTO;
 import com.vmware.vip.common.i18n.status.APIResponseStatus;
 import com.vmware.vip.common.i18n.status.Response;
@@ -44,7 +45,11 @@ public class ExceptionHandle {
 			logger.error("====== HTTP Exception =======");
 			logger.error(e.getMessage());
 			response.setResponse(new Response(APIResponseStatus.INTERNAL_SERVER_ERROR.getCode(), e.getMessage()));
-		} else {
+		} else if (e instanceof ValidationException) {
+			logger.error("====== Validation Exception =======");
+			logger.error(e.getMessage());
+			response.setResponse(new Response(APIResponseStatus.BAD_REQUEST.getCode(), e.getMessage()));
+		}else {
 			response.setResponse(new Response(APIResponseStatus.UNKNOWN_ERROR.getCode(), e.getMessage()));
 			String errorStr = MessageFormat.format("unknown error: {0}" ,e.getMessage());
 			logger.error(errorStr);

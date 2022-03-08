@@ -5,6 +5,9 @@
 package com.vmware.vip.i18n.api.base;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,6 +20,10 @@ import com.vmware.vip.common.constants.ConstantsChar;
 import com.vmware.vip.common.constants.ConstantsKeys;
 import com.vmware.vip.common.constants.ConstantsMsg;
 import com.vmware.vip.common.constants.ConstantsUnicode;
+import com.vmware.vip.common.constants.ValidationMsg;
+import com.vmware.vip.common.exceptions.ValidationException;
+import com.vmware.vip.common.i18n.dto.KeySourceCommentDTO;
+import com.vmware.vip.common.i18n.dto.SingleComponentDTO;
 import com.vmware.vip.common.i18n.dto.StringBasedDTO;
 import com.vmware.vip.common.i18n.dto.response.APIResponseDTO;
 import com.vmware.vip.common.i18n.status.APIResponseStatus;
@@ -24,7 +31,6 @@ import com.vmware.vip.core.messages.exception.L3APIException;
 import com.vmware.vip.core.messages.service.mt.IMTService;
 import com.vmware.vip.core.messages.service.singlecomponent.ComponentMessagesDTO;
 import com.vmware.vip.core.messages.service.string.IStringService;
-import com.vmware.vip.i18n.api.base.BaseAction;
 
 /**
  * Provide RESTful API for product to get translation by String base.
@@ -40,20 +46,10 @@ public class TranslationProductComponentKeyAction extends BaseAction {
 	public APIResponseDTO getTransByGet(String productName, String version,
 			String locale, String component, String key, String source, String sourceFormat,
 			String pseudo) throws L3APIException {
-		ComponentMessagesDTO c = new ComponentMessagesDTO();
-		c.setProductName(productName);
-		c.setComponent(StringUtils.isEmpty(component) ? ConstantsKeys.DEFAULT
-				: component);
-		c.setVersion(version);
-		c.setLocale(locale == null ? ConstantsUnicode.EN : locale);
-		if (ConstantsKeys.TRUE.equalsIgnoreCase(pseudo)) {
-			c.setPseudo(new Boolean(pseudo));
-		}
-		String keyComp = StringUtils.isEmpty(sourceFormat) ? key : (key
-				+ ConstantsChar.DOT + ConstantsChar.POUND + sourceFormat
-				.toUpperCase());
-		StringBasedDTO stringBasedDTO = stringBasedService
-				.getStringTranslation(c, keyComp, source);
+
+		StringBasedDTO stringBasedDTO = getTransByKey( productName, version,
+		 locale, component, key, source, pseudo);
+		
 		return super.handleResponse(APIResponseStatus.OK, stringBasedDTO);
 	}
 
@@ -70,16 +66,14 @@ public class TranslationProductComponentKeyAction extends BaseAction {
 		c.setVersion(version);
 		c.setPseudo(new Boolean(pseudo));
 		c.setLocale(locale == null ? ConstantsUnicode.EN : locale);
-		String ckey = StringUtils.isEmpty(sourceFormat) ? key : (key
-				+ ConstantsChar.DOT + ConstantsChar.POUND + sourceFormat
-				.toUpperCase());
+
 		StringBasedDTO stringBasedDTO = null;
 		if (new Boolean(machineTranslation)) {
-			stringBasedDTO = mtService.getStringMTTranslation(c, ckey, source);
+			stringBasedDTO = mtService.getStringMTTranslation(c, key, source);
 			stringBasedDTO
 					.setMachineTranslation(new Boolean(machineTranslation));
 		} else {
-			stringBasedDTO = stringBasedService.getStringTranslation(c, ckey,
+			stringBasedDTO = stringBasedService.getStringTranslation(c, key,
 					source);
 		}
 		if(new Boolean(checkTranslationStatus)) {
@@ -115,4 +109,86 @@ public class TranslationProductComponentKeyAction extends BaseAction {
 		return this.getStringBasedTranslation(productName, version, component,
 				locale, key, source, pseudo, machineTranslation, sourceFormat, checkTranslationStatus);
 	}
+
+	
+	private StringBasedDTO getTransByKey(String productName, String version,
+			String locale, String component, String key, String source,
+			String pseudo) throws L3APIException {
+		
+		ComponentMessagesDTO c = new ComponentMessagesDTO();
+		c.setProductName(productName);
+		c.setComponent(StringUtils.isEmpty(component) ? ConstantsKeys.DEFAULT
+				: component);
+		c.setVersion(version);
+		c.setLocale(locale == null ? ConstantsUnicode.EN : locale);
+		if (ConstantsKeys.TRUE.equalsIgnoreCase(pseudo)) {
+			c.setPseudo(new Boolean(pseudo));
+		}
+
+		return stringBasedService.getStringTranslation(c, key, source);
+		
+	}
+
+  
+	/**
+	 *
+	 * Get the translation by mult-key-based
+	 *
+	 * @param productName
+	 * @param version
+	 * @param locale
+	 * @param component
+	 * @param keys
+	 * @param pseudo
+	 * @return
+	 * @throws L3APIException
+	 */
+	public APIResponseDTO getMultTransByGet(String productName, String version, String locale, String component,
+			String keys, String pseudo) throws L3APIException {
+		
+		Map<String, Object> msgs = new HashMap<String, Object>();
+		String[] keyArr = null;
+		if(keys.contains(ConstantsChar.COMMA)) {
+			keyArr = keys.split(ConstantsChar.COMMA);
+		}else {
+			keyArr = new String[]{keys};
+		}
+		 
+       for (String key : keyArr) {
+       	StringBasedDTO stringBasedDTO = getTransByKey( productName, version,
+       			 locale, component, key.trim(), null, pseudo);
+       	if(!StringUtils.isEmpty(stringBasedDTO.getTranslation())) {
+       		msgs.put(stringBasedDTO.getKey(), stringBasedDTO.getTranslation());
+       	}
+       }
+      
+       if(msgs.size()<1) {
+       	 throw new L3APIException(ConstantsMsg.TRANS_IS_NOT_FOUND);
+       }
+       SingleComponentDTO compDTo = new SingleComponentDTO();
+       compDTo.setProductName(productName);
+       compDTo.setVersion(version);
+       compDTo.setComponent(component);
+       compDTo.setLocale(locale);
+       compDTo.setPseudo(Boolean.parseBoolean(pseudo));
+       compDTo.setMessages(msgs);
+       if (msgs.size() != keyArr.length){
+       	return handleResponse(APIResponseStatus.MULTTRANSLATION_PART_CONTENT, compDTo);
+       }else {
+       	return super.handleResponse(APIResponseStatus.OK, compDTo);
+       }
+	}
+  
+	protected void validateSourceSet(List<KeySourceCommentDTO> sourceSet) throws ValidationException {
+	
+		for(KeySourceCommentDTO ksc:sourceSet) {
+			String sft = ksc.getSourceFormat();
+			if (!StringUtils.isEmpty(sft) && !ConstantsKeys.SOURCE_FORMAT_LIST.contains(sft)) {
+			   throw new ValidationException(ValidationMsg.SOURCEFORMAT_NOT_VALIDE);
+			}
+		}
+			
+			
+	}
+
 }

@@ -24,7 +24,7 @@ import com.vmware.vip.api.rest.APIParamName;
 import com.vmware.vip.common.constants.ConstantsChar;
 import com.vmware.vip.common.constants.ConstantsKeys;
 import com.vmware.vip.common.constants.ValidationMsg;
-import com.vmware.vip.common.exceptions.VIPAPIException;
+import com.vmware.vip.common.exceptions.ValidationException;
 import com.vmware.vip.common.i18n.status.APIResponseStatus;
 import com.vmware.vip.common.i18n.status.Response;
 import com.vmware.vip.common.utils.RegExpValidatorUtils;
@@ -67,23 +67,9 @@ public class LiteAPIValidationInterceptor extends HandlerInterceptorAdapter {
 		String logOfUrl = singletonRequestID + "The request url is: " + request.getRequestURL();
 		String logOfQueryStr = singletonRequestID + "The request query string is: " + request.getQueryString();
 		String startHandle = singletonRequestID + "[thread-" + Thread.currentThread().getId() + "] Start to handle request...";
-		try {
-			validate(request);
-		} catch (VIPAPIException e) {
-			LOGGER.warn(e.getMessage());
-			Response r = new Response();
-			r.setCode(APIResponseStatus.BAD_REQUEST.getCode());
-			r.setMessage(e.getMessage());
-			try {
-				response.getWriter().write(
-						new ObjectMapper().writerWithDefaultPrettyPrinter()
-								.writeValueAsString(r));
-				return false;
-			} catch (IOException e1) {
-				LOGGER.warn(e1.getMessage());
-				return false;
-			}
-		}
+		
+		validate(request);
+
 		LOGGER.info(startHandle);
 		LOGGER.info(logOfUrl);
 		LOGGER.info(logOfQueryStr);
@@ -121,7 +107,7 @@ public class LiteAPIValidationInterceptor extends HandlerInterceptorAdapter {
 		return singletonReqIds.toString();
 	}
 	
-	public void validate(HttpServletRequest request) throws VIPAPIException {
+	public void validate(HttpServletRequest request) throws ValidationException {
 		validateProductname(request);
 		validateVersion(request);
 		validateComponent(request);
@@ -142,7 +128,7 @@ public class LiteAPIValidationInterceptor extends HandlerInterceptorAdapter {
 
 	@SuppressWarnings("unchecked")
 	private void validateProductname(HttpServletRequest request)
-			throws VIPAPIException {
+			throws ValidationException {
 		Map<String, String> pathVariables = (Map<String, String>) request
 				.getAttribute(HandlerMapping.URI_TEMPLATE_VARIABLES_ATTRIBUTE);
 		String productName = pathVariables.get(APIParamName.PRODUCT_NAME) == null ? request
@@ -152,13 +138,13 @@ public class LiteAPIValidationInterceptor extends HandlerInterceptorAdapter {
 			return;
 		}
 		if (!RegExpValidatorUtils.IsLetterOrNumber(productName)) {
-			throw new VIPAPIException(ValidationMsg.PRODUCTNAME_NOT_VALIDE);
+			throw new ValidationException(ValidationMsg.PRODUCTNAME_NOT_VALIDE);
 		}
 	}
 
 	@SuppressWarnings("unchecked")
 	private void validateVersion(HttpServletRequest request)
-			throws VIPAPIException {
+			throws ValidationException {
 		Map<String, String> pathVariables = (Map<String, String>) request
 				.getAttribute(HandlerMapping.URI_TEMPLATE_VARIABLES_ATTRIBUTE);
 		String version = pathVariables.get(APIParamName.VERSION) == null ? request
@@ -168,13 +154,13 @@ public class LiteAPIValidationInterceptor extends HandlerInterceptorAdapter {
 			return;
 		}
 		if (!RegExpValidatorUtils.IsNumberAndDot(version)) {
-			throw new VIPAPIException(ValidationMsg.VERSION_NOT_VALIDE);
+			throw new ValidationException(ValidationMsg.VERSION_NOT_VALIDE);
 		}
 	}
 
 	@SuppressWarnings("unchecked")
 	private void validateComponent(HttpServletRequest request)
-			throws VIPAPIException {
+			throws ValidationException {
 		Map<String, String> pathVariables = (Map<String, String>) request
 				.getAttribute(HandlerMapping.URI_TEMPLATE_VARIABLES_ATTRIBUTE);
 		String component = pathVariables.get(APIParamName.COMPONENT) == null ? request
@@ -184,13 +170,13 @@ public class LiteAPIValidationInterceptor extends HandlerInterceptorAdapter {
 			return;
 		}
 		if (!RegExpValidatorUtils.IsLetterAndNumberAndValidchar(component)) {
-			throw new VIPAPIException(ValidationMsg.COMPONENT_NOT_VALIDE);
+			throw new ValidationException(ValidationMsg.COMPONENT_NOT_VALIDE);
 		}
 	}
 
 	@SuppressWarnings("unchecked")
 	private void validateRegion(HttpServletRequest request)
-			throws VIPAPIException {
+			throws ValidationException {
 		Map<String, String> pathVariables = (Map<String, String>) request
 				.getAttribute(HandlerMapping.URI_TEMPLATE_VARIABLES_ATTRIBUTE);
 		String region = pathVariables.get(APIParamName.REGION) == null ? request
@@ -200,13 +186,13 @@ public class LiteAPIValidationInterceptor extends HandlerInterceptorAdapter {
 			return;
 		}
 		if (!RegExpValidatorUtils.IsLetterAndNumberAndValidchar(region)) {
-			throw new VIPAPIException(ValidationMsg.REGION_NOT_VALIDE);
+			throw new ValidationException(ValidationMsg.REGION_NOT_VALIDE);
 		}
 	}
 	
 	@SuppressWarnings("unchecked")
 	private void validateScope(HttpServletRequest request)
-			throws VIPAPIException {
+			throws ValidationException {
 		Map<String, String> pathVariables = (Map<String, String>) request
 				.getAttribute(HandlerMapping.URI_TEMPLATE_VARIABLES_ATTRIBUTE);
 		String scope = pathVariables.get(APIParamName.SCOPE) == null ? request
@@ -216,12 +202,12 @@ public class LiteAPIValidationInterceptor extends HandlerInterceptorAdapter {
 			return;
 		}
 		if (!RegExpValidatorUtils.isLetterArray(scope)) {
-			throw new VIPAPIException(ValidationMsg.SCOPE_NOT_VALIDE);
+			throw new ValidationException(ValidationMsg.SCOPE_NOT_VALIDE);
 		}
 	}
 	@SuppressWarnings("unchecked")
 	private void validateCombine(HttpServletRequest request)
-			throws VIPAPIException {
+			throws ValidationException {
 		Map<String, String> pathVariables = (Map<String, String>) request
 				.getAttribute(HandlerMapping.URI_TEMPLATE_VARIABLES_ATTRIBUTE);
 		String combine = pathVariables.get(APIParamName.COMBINE) == null ? request
@@ -231,13 +217,13 @@ public class LiteAPIValidationInterceptor extends HandlerInterceptorAdapter {
 			return;
 		}
 		if (!RegExpValidatorUtils.isOneOrTwo(combine)) {
-			throw new VIPAPIException(ValidationMsg.COMBINE_NOT_VALIDE);
+			throw new ValidationException(ValidationMsg.COMBINE_NOT_VALIDE);
 		}
 	}
 	
 	@SuppressWarnings("unchecked")
 	private void validateComponents(HttpServletRequest request)
-			throws VIPAPIException {
+			throws ValidationException {
 		Map<String, String> pathVariables = (Map<String, String>) request
 				.getAttribute(HandlerMapping.URI_TEMPLATE_VARIABLES_ATTRIBUTE);
 		String components = pathVariables.get(APIParamName.COMPONENTS) == null ? request
@@ -249,14 +235,14 @@ public class LiteAPIValidationInterceptor extends HandlerInterceptorAdapter {
 		String[] compArr = components.split(ConstantsChar.COMMA);
 		for(int i=0; i<compArr.length; i++) {
 			if(StringUtils.isEmpty(compArr[i]) || !RegExpValidatorUtils.IsLetterAndNumberAndValidchar(compArr[i])) {
-				throw new VIPAPIException(ValidationMsg.COMPONENTS_NOT_VALIDE);
+				throw new ValidationException(ValidationMsg.COMPONENTS_NOT_VALIDE);
 			}
 		}
 	}
 	
 	@SuppressWarnings("unchecked")
 	private void validateLocales(HttpServletRequest request)
-			throws VIPAPIException {
+			throws ValidationException {
 		Map<String, String> pathVariables = (Map<String, String>) request
 				.getAttribute(HandlerMapping.URI_TEMPLATE_VARIABLES_ATTRIBUTE);
 		String locales = pathVariables.get(APIParamName.LOCALES) == null ? request
@@ -266,13 +252,13 @@ public class LiteAPIValidationInterceptor extends HandlerInterceptorAdapter {
 			return;
 		}
 		if (!RegExpValidatorUtils.isLetterNumbCommaAndValidchar(locales)) {
-			throw new VIPAPIException(ValidationMsg.LOCALES_NOT_VALIDE);
+			throw new ValidationException(ValidationMsg.LOCALES_NOT_VALIDE);
 		}
 	}
 	
 	@SuppressWarnings("unchecked")
 	private void validateKey(HttpServletRequest request)
-			throws VIPAPIException {
+			throws ValidationException {
 		Map<String, String> pathVariables = (Map<String, String>) request
 				.getAttribute(HandlerMapping.URI_TEMPLATE_VARIABLES_ATTRIBUTE);
 		String key = pathVariables.get(APIParamName.KEY) == null ? request
@@ -282,13 +268,13 @@ public class LiteAPIValidationInterceptor extends HandlerInterceptorAdapter {
 			return;
 		}
 		if (!RegExpValidatorUtils.IsLetterAndNumberAndValidchar(key)) {
-			throw new VIPAPIException(ValidationMsg.KEY_NOT_VALIDE);
+			throw new ValidationException(ValidationMsg.KEY_NOT_VALIDE);
 		}
 	}
 
 	@SuppressWarnings("unchecked")
 	private void validateLocale(HttpServletRequest request)
-			throws VIPAPIException {
+			throws ValidationException {
 		Map<String, String> pathVariables = (Map<String, String>) request
 				.getAttribute(HandlerMapping.URI_TEMPLATE_VARIABLES_ATTRIBUTE);
 		String locale = pathVariables.get(APIParamName.LOCALE) == null ? request
@@ -298,13 +284,13 @@ public class LiteAPIValidationInterceptor extends HandlerInterceptorAdapter {
 			return;
 		}
 		if (!RegExpValidatorUtils.IsLetterAndNumberAndValidchar(locale)) {
-			throw new VIPAPIException(ValidationMsg.LOCALE_NOT_VALIDE);
+			throw new ValidationException(ValidationMsg.LOCALE_NOT_VALIDE);
 		}
 	}
 
 	@SuppressWarnings("unchecked")
 	private void validateLanguage(HttpServletRequest request)
-			throws VIPAPIException {
+			throws ValidationException {
 		Map<String, String> pathVariables = (Map<String, String>) request
 				.getAttribute(HandlerMapping.URI_TEMPLATE_VARIABLES_ATTRIBUTE);
 		String language = pathVariables.get(APIParamName.LANGUAGE) == null ? request
@@ -314,14 +300,14 @@ public class LiteAPIValidationInterceptor extends HandlerInterceptorAdapter {
 			return;
 		}
 		if (!RegExpValidatorUtils.IsLetterAndNumberAndValidchar(language)) {
-			throw new VIPAPIException(ValidationMsg.LANGUAGE_NOT_VALIDE);
+			throw new ValidationException(ValidationMsg.LANGUAGE_NOT_VALIDE);
 		}
 	}
 	
 	
 	@SuppressWarnings("unchecked")
 	private void validateNumber(HttpServletRequest request)
-			throws VIPAPIException {
+			throws ValidationException {
 		Map<String, String> pathVariables = (Map<String, String>) request
 				.getAttribute(HandlerMapping.URI_TEMPLATE_VARIABLES_ATTRIBUTE);
 		String number = pathVariables.get(APIParamName.NUMBER) == null ? request
@@ -331,38 +317,38 @@ public class LiteAPIValidationInterceptor extends HandlerInterceptorAdapter {
 			return;
 		}
 		if (!RegExpValidatorUtils.isNumeric(number)) {
-			throw new VIPAPIException(ValidationMsg.NUMBER_NOT_VALIDE);
+			throw new ValidationException(ValidationMsg.NUMBER_NOT_VALIDE);
 		}
 	}
 
 	private void validateScale(HttpServletRequest request)
-			throws VIPAPIException {
+			throws ValidationException {
 		String scale = request.getParameter(APIParamName.SCALE) == null ? ConstantsKeys.EMPTY_STRING
 				: request.getParameter(APIParamName.SCALE);
 		try {
 			if (!StringUtils.isEmpty(scale)
 					&& new Integer(scale).intValue() < 0) {
-				throw new VIPAPIException(ValidationMsg.SCALE_NOT_VALIDE);
+				throw new ValidationException(ValidationMsg.SCALE_NOT_VALIDE);
 			}
 		} catch (NumberFormatException e) {
-			throw new VIPAPIException("NumberFormatException: " + e.getMessage());
+			throw new ValidationException("NumberFormatException: " + e.getMessage());
 		}
 	}
-
+	
 	private void validateSourceformat(HttpServletRequest request)
-			throws VIPAPIException {
+			throws ValidationException {
 		String sourceformat = request.getParameter(APIParamName.SOURCE_FORMAT) == null ? ConstantsKeys.EMPTY_STRING
 				: request.getParameter(APIParamName.SOURCE_FORMAT);
 		if (StringUtils.isEmpty(sourceformat)) {
 			return;
 		}
-		if (!RegExpValidatorUtils.IsLetterOrNumber(sourceformat)) {
-			throw new VIPAPIException(ValidationMsg.SOURCEFORMAT_NOT_VALIDE);
+		if (!ConstantsKeys.SOURCE_FORMAT_LIST.contains(sourceformat)) {
+			throw new ValidationException(ValidationMsg.SOURCEFORMAT_NOT_VALIDE);
 		}
 	}
 
 	private void validateCollectsource(HttpServletRequest request)
-			throws VIPAPIException {
+			throws ValidationException {
 		String collectsource = request
 				.getParameter(APIParamName.COLLECT_SOURCE) == null ? ConstantsKeys.EMPTY_STRING
 				: request.getParameter(APIParamName.COLLECT_SOURCE);
@@ -370,20 +356,20 @@ public class LiteAPIValidationInterceptor extends HandlerInterceptorAdapter {
 			return;
 		}
 		if (!RegExpValidatorUtils.IsTrueOrFalse(collectsource)) {
-			throw new VIPAPIException(
+			throw new ValidationException(
 					ValidationMsg.COLLECTSOURCE_NOT_VALIDE);
 		}
 	}
 
 	private void validatePseudo(HttpServletRequest request)
-			throws VIPAPIException {
+			throws ValidationException {
 		String pseudo = request.getParameter(APIParamName.PSEUDO) == null ? ConstantsKeys.EMPTY_STRING
 				: request.getParameter(APIParamName.PSEUDO);
 		if (StringUtils.isEmpty(pseudo)) {
 			return;
 		}
 		if (!RegExpValidatorUtils.IsTrueOrFalse(pseudo)) {
-			throw new VIPAPIException(ValidationMsg.PSEUDO_NOT_VALIDE);
+			throw new ValidationException(ValidationMsg.PSEUDO_NOT_VALIDE);
 		}
 	}
 
