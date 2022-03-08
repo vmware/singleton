@@ -1,3 +1,8 @@
+# 
+#  Copyright 2019-2022 VMware, Inc.
+#  SPDX-License-Identifier: EPL-2.0
+#
+
 module SgtnClient
       module Core
             autoload :Cache,        "sgtn-client/core/cache"
@@ -12,6 +17,7 @@ module SgtnClient
       autoload :ValidateUtil,       "sgtn-client/util/validate-util"
       autoload :LocaleUtil,         "sgtn-client/util/locale-util"
       autoload :FileUtil,           "sgtn-client/util/file-util"
+      autoload :CacheUtil,           "sgtn-client/util/cache-util"
 
       module Formatters
             autoload :PluralFormatter,    "sgtn-client/formatters/plurals/plural_formatter"

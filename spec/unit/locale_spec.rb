@@ -1,3 +1,8 @@
+# 
+#  Copyright 2019-2022 VMware, Inc.
+#  SPDX-License-Identifier: EPL-2.0
+#
+
 require 'spec_helper'
 
 describe SgtnClient do
@@ -30,6 +35,42 @@ describe SgtnClient do
 
     it "process_locale_nil" do
       expect(SgtnClient::LocaleUtil.process_locale(nil)).to eq SgtnClient::Config.configurations.default
+    end
+
+
+    it "get_source_locale" do
+      env = SgtnClient::Config.default_environment
+      config_lang = SgtnClient::Config.configurations[env]["default_language"]
+
+      SgtnClient::Config.configurations[env]["default_language"] = nil
+      expect(SgtnClient::LocaleUtil.get_source_locale()).to eq 'en'
+
+      SgtnClient::Config.configurations[env]["default_language"] = 'en'
+      expect(SgtnClient::LocaleUtil.get_source_locale()).to eq 'en'
+      
+      SgtnClient::Config.configurations[env]["default_language"] = 'zh-Hans'
+      expect(SgtnClient::LocaleUtil.get_source_locale()).to eq 'zh-Hans'
+
+      SgtnClient::Config.configurations[env]["default_language"] = config_lang
+    end
+
+    it "fallback_locale" do
+      env = SgtnClient::Config.default_environment
+      default_language = SgtnClient::Config.configurations[env]["default_language"]
+      
+      SgtnClient::Config.configurations[env]["default_language"] = nil
+      expect(SgtnClient::LocaleUtil.get_best_locale('en')).to eq 'en'
+      expect(SgtnClient::LocaleUtil.get_best_locale('zh-Hans')).to eq 'zh-Hans'
+
+      SgtnClient::Config.configurations[env]["default_language"] = 'en'
+      expect(SgtnClient::LocaleUtil.get_best_locale('en')).to eq 'en'
+      expect(SgtnClient::LocaleUtil.get_best_locale('zh-Hans')).to eq 'zh-Hans'
+
+      SgtnClient::Config.configurations[env]["default_language"] = 'zh-Hans'
+      expect(SgtnClient::LocaleUtil.get_best_locale('en')).to eq 'en'
+      expect(SgtnClient::LocaleUtil.get_best_locale('zh-Hans')).to eq 'zh-Hans'
+      
+      SgtnClient::Config.configurations[env]["default_language"] = default_language
     end
   end
 
