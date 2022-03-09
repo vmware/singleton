@@ -143,42 +143,53 @@ public class TranslationProductComponentKeyAction extends BaseAction {
 	 * @return
 	 * @throws L3APIException
 	 */
-	public APIResponseDTO getMultTransByGet(String productName, String version, String locale, String component,
+	@SuppressWarnings("rawtypes")
+	protected APIResponseDTO getMultTransByGet(String productName, String version, String locale, String component,
 			String keys, String pseudo) throws L3APIException {
 		
-		Map<String, Object> msgs = new HashMap<String, Object>();
+
 		String[] keyArr = null;
 		if(keys.contains(ConstantsChar.COMMA)) {
 			keyArr = keys.split(ConstantsChar.COMMA);
 		}else {
 			keyArr = new String[]{keys};
 		}
-		 
-       for (String key : keyArr) {
-       	StringBasedDTO stringBasedDTO = getTransByKey( productName, version,
-       			 locale, component, key.trim(), null, pseudo);
-       	if(!StringUtils.isEmpty(stringBasedDTO.getTranslation())) {
-       		msgs.put(stringBasedDTO.getKey(), stringBasedDTO.getTranslation());
-       	}
-       }
-      
-       if(msgs.size()<1) {
+		
+		
+		SingleComponentDTO compDTo = getTransByKeys( productName, version,
+       			 locale, component, keyArr, pseudo);
+       
+		
+       if(compDTo == null || ((Map) compDTo.getMessages()).size()<1) {
        	 throw new L3APIException(ConstantsMsg.TRANS_IS_NOT_FOUND);
        }
-       SingleComponentDTO compDTo = new SingleComponentDTO();
-       compDTo.setProductName(productName);
-       compDTo.setVersion(version);
-       compDTo.setComponent(component);
-       compDTo.setLocale(locale);
-       compDTo.setPseudo(Boolean.parseBoolean(pseudo));
-       compDTo.setMessages(msgs);
-       if (msgs.size() != keyArr.length){
+      
+       if (((Map) compDTo.getMessages()).size() != keyArr.length){
        	return handleResponse(APIResponseStatus.MULTTRANSLATION_PART_CONTENT, compDTo);
        }else {
        	return super.handleResponse(APIResponseStatus.OK, compDTo);
        }
 	}
   
+	private SingleComponentDTO getTransByKeys(String productName, String version,
+			String locale, String component, String[] keyArr,
+			String pseudo) throws L3APIException {
+		
+		ComponentMessagesDTO c = new ComponentMessagesDTO();
+		c.setProductName(productName);
+		c.setComponent(StringUtils.isEmpty(component) ? ConstantsKeys.DEFAULT
+				: component);
+		c.setVersion(version);
+		c.setLocale(locale == null ? ConstantsUnicode.EN : locale);
+		if (ConstantsKeys.TRUE.equalsIgnoreCase(pseudo)) {
+			c.setPseudo(new Boolean(pseudo));
+		}
+
+		return stringBasedService.getStringMultKeyTranslation(c, keyArr);
+		
+	}
+	
+	
 	protected void validateSourceSet(List<KeySourceCommentDTO> sourceSet) throws ValidationException {
 	
 		for(KeySourceCommentDTO ksc:sourceSet) {
