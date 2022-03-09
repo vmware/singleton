@@ -71,8 +71,7 @@ public class MessagesDTO extends BaseDTO {
         key.append(ConstantsKeys.UNDERLINE);
         key.append(super.getVersion());
         key.append(ConstantsKeys.UNDERLINE);
-        key.append(component == null ? ConstantsKeys.DEFAULT_COMPONENT
-                : component);
+        key.append(component);
         key.append(ConstantsKeys.UNDERLINE);
         key.append(VIPCfg.getInstance().isPseudo());
         key.append(ConstantsKeys.UNDERLINE_POUND);
