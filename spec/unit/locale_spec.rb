@@ -13,9 +13,7 @@ describe SgtnClient do
     it "get_best_locale" do
       expect(SgtnClient::LocaleUtil.get_best_locale('ja')).to eq 'ja'
     end
-    it "get_best_locale_same_source_and_target" do
-      expect(SgtnClient::LocaleUtil.get_best_locale('en')).to eq SgtnClient::Config.configurations.default
-    end
+    
     it "get_best_locale_target_locale_is_nil" do
       expect(SgtnClient::LocaleUtil.get_best_locale(nil)).to eq SgtnClient::Config.configurations.default
     end
