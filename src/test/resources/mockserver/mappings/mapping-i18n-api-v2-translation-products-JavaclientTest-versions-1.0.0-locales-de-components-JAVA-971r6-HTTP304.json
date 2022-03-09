@@ -2,7 +2,12 @@
   "id" : "513afaa7-2693-3dd0-ac83-b40c6e165c08",
   "request" : {
     "url" : "/i18n/api/v2/translation/products/JavaclientTest/versions/1.0.0/locales/de/components/JAVA?pseudo=false",
-    "method" : "GET"
+    "method" : "GET",
+    "headers" : {
+      "If-None-Match" : {
+        "absent" : false
+      }
+    }
   },
   "response" : {
     "status" : 304,

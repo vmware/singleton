@@ -1,0 +1,16 @@
+coverage:
+  status:
+    project:
+      default:
+        target: 50%
+        if_ci_failed: error
+        flags:
+          - g11n-java-client
+    patch:
+      default:
+        target: 100%
+flags:
+  g11n-cldr-pattern:
+    paths:
+      - src/main/java/com/vmware/vip/
+    carryforward: true
