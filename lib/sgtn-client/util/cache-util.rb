@@ -41,13 +41,7 @@ module SgtnClient
         env = SgtnClient::Config.default_environment
         product_name = SgtnClient::Config.configurations[env]["product_name"]
         version = SgtnClient::Config.configurations[env]["version"].to_s
-        default_l = SgtnClient::Config.configurations[env]["default_language"]
-        if default_l == nil
-          default_l = 'en'
-        end
-        lc = locale == default_l ? SgtnClient::Config.configurations.default: locale
-        SgtnClient.logger.debug "[CacheUtil]get cache key: #{lc}"
-        return product_name + "_" + version + "_" + component + "_" + lc
+        product_name + "_" + version + "_" + component + "_" + locale
       end
   end
 

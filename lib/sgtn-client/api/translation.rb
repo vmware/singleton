@@ -59,6 +59,7 @@ module SgtnClient
 
       def self.getStrings(component, locale)
         SgtnClient.logger.debug "[Translation][getStrings]component=#{component}, locale=#{locale}"
+        locale = SgtnClient::LocaleUtil.get_best_locale(locale)
         items = get_cs(component, locale)
         default = SgtnClient::Config.configurations.default
         if items.nil? || items["messages"] == nil
@@ -80,6 +81,7 @@ module SgtnClient
       private
 
       def self.getTranslation(component, key, locale)
+        locale = SgtnClient::LocaleUtil.get_best_locale(locale)
         items = get_cs(component, locale)
         if items.nil? || items["messages"] == nil
           nil
@@ -89,13 +91,18 @@ module SgtnClient
       end
 
       def self.get_cs(component, locale)
-        locale = SgtnClient::LocaleUtil.process_locale(locale)
-        flocale = SgtnClient::LocaleUtil.fallback(locale)
-        cache_key = SgtnClient::CacheUtil.get_cachekey(component, flocale)
+        # source locale always return source bundle
+        if locale == LocaleUtil.get_source_locale
+          sources = SgtnClient::Source.getSources(component, SgtnClient::Config.configurations.default)
+          messages = sources&.first&.last
+          return {'locale' => locale, 'component' => component, 'messages' => messages} if messages
+        end
+
+        cache_key = SgtnClient::CacheUtil.get_cachekey(component, locale)
         SgtnClient.logger.debug "[Translation][get_cs]cache_key=#{cache_key}"
         expired, items = SgtnClient::CacheUtil.get_cache(cache_key)
         if items.nil? || expired
-          items = load(component, flocale)
+          items = load(component, locale)
           if items.nil?
             items = SgtnClient::Source.getSources(component, SgtnClient::Config.configurations.default)
             SgtnClient::Core::Cache.put(cache_key, items, 60)
