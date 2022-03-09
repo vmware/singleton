@@ -90,6 +90,13 @@ module SgtnClient
       end
 
       def self.get_cs(component, locale)
+        # source locale always return source bundle
+        if locale == LocaleUtil.get_source_locale
+          sources = SgtnClient::Source.getSources(component, SgtnClient::Config.configurations.default)
+          messages = sources&.first&.last
+          return {'locale' => locale, 'component' => component, 'messages' => messages} if messages
+        end
+
         cache_key = SgtnClient::CacheUtil.get_cachekey(component, locale)
         SgtnClient.logger.debug "[Translation][get_cs]cache_key=#{cache_key}"
         expired, items = SgtnClient::CacheUtil.get_cache(cache_key)
