@@ -1,0 +1,209 @@
+name: Singleton CSharp(C#)-Client CI
+on:
+  push:
+    branches: [ g11n-csharp-client ]
+  pull_request:
+    branches: [ g11n-csharp-client ]
+
+jobs:
+  pre-process:
+    name: Pre process
+    runs-on: ubuntu-latest
+    outputs:
+      were-only-docs-updated: ${{ steps.were-only-docs-updated-action.outputs.were-only-docs-updated }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 2.
+      - name: Get commit range
+        id: get-commit-range-action
+        uses: ./.github/actions/get-commit-range-action
+      - name: Were only docs updated
+        id: were-only-docs-updated-action
+        uses: ./.github/actions/were-only-docs-updated-action
+        with:
+          commit-range: ${{ steps.get-commit-range-action.outputs.commit-range }}
+
+  check-header:
+    name: Check Header
+    runs-on: ubuntu-latest
+    needs: pre-process
+    if: needs.pre-process.outputs.were-only-docs-updated != 'yes'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 2.
+      - name: Get commit range
+        id: get-commit-range-action
+        uses: ./.github/actions/get-commit-range-action
+      - name: Get Python
+        uses: actions/setup-python@v2
+      - name: Check header
+        shell: bash
+        run: |
+          git clone --branch=devops https://github.com/emyasarvmw/singleton.git devops
+          git diff ${{ steps.get-commit-range-action.outputs.commit-range }} --stat
+          git diff --name-only --diff-filter=d ${{ steps.get-commit-range-action.outputs.commit-range }}
+          python devops/check_headers.py -f "$(git diff --name-only --diff-filter=d ${{ steps.get-commit-range-action.outputs.commit-range }})"
+
+  run-unit-test:
+    name: Run Unit Test
+    runs-on: windows-2019
+    defaults:
+      run:
+        shell: bash
+    needs: [pre-process]
+    if: needs.pre-process.outputs.were-only-docs-updated != 'yes'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Add msbuild to PATH
+        uses: microsoft/setup-msbuild@v1.1
+      - name: PreFlight Check for Unit Tests
+        run: |
+          choco install --no-progress opencover.portable
+          choco install --no-progress codecov
+          cd $GITHUB_WORKSPACE/singletonclient && nuget restore SingletonClient.sln
+      - name: Run ICU Unit Tests
+        run: |
+          export VSTEST="/c/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/Common7/IDE/Extensions/TestPlatform"
+          export PATH="$PATH:$VSTEST"
+          cd  $GITHUB_WORKSPACE/singletonclient/UnitTestSingletonIcu
+          MSBuild.exe UnitTestSingletonIcu.csproj -t:rebuild
+          cd  $GITHUB_WORKSPACE/singletonclient/UnitTestSingletonIcu/bin/Debug
+          OpenCover.Console.exe -register -target:"/c/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/Common7/IDE/Extensions/TestPlatform/vstest.console.exe" -targetargs:".\UnitTestSingletonIcu.dll --logger:trx /Parallel " -filter:"+[SingletonIcu*]* -[UnitTestSingletonIcu*]*" -output:".\UnitTestSingletonIcu.xml"
+          cp UnitTestSingletonIcu.xml $GITHUB_WORKSPACE
+      - name: Run Unit Tests
+        run: |
+          export VSTEST="/c/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/Common7/IDE/Extensions/TestPlatform"
+          export PATH="$PATH:$VSTEST"
+          cd $GITHUB_WORKSPACE/singletonclient/UnitTestSingleton && MSBuild.exe UnitTestSingleton.csproj -t:rebuild 
+          cd $GITHUB_WORKSPACE/singletonclient/UnitTestSingleton/bin/Debug
+          OpenCover.Console.exe -register:path32 -target:"/c/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/Common7/IDE/Extensions/TestPlatform/vstest.console.exe" -targetargs:".\UnitTestSingleton.dll --logger:trx /Parallel " -filter:"+[SingletonClient*]* -[UnitTestSingleton*]*" -output:".\UnitTestSingleton.xml"
+          cp UnitTestSingleton.xml $GITHUB_WORKSPACE
+      - name: Upload CodeCov Reports
+        uses: codecov/codecov-action@v2
+        with:
+          files: ./UnitTestSingleton.xml,./UnitTestSingletonIcu.xml
+          flags: unittests
+
+  security-analysis:
+    name: CodeQL Scan
+    runs-on: windows-2019
+    defaults:
+     run:
+       shell: bash
+    needs: pre-process
+    if: needs.pre-process.outputs.were-only-docs-updated != 'yes'
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v1
+        with:
+          languages: csharp
+          debug: true
+      - name: Add msbuild to PATH
+        uses: microsoft/setup-msbuild@v1.1
+      - name: Creat Build Script for Auto Build
+        run: |-
+          cat <<EOF > build.bat
+          cd singletonclient  
+          nuget restore SingletonClient.sln
+          cd SingletonClient
+          MSBuild.exe SingletonClient.csproj -t:rebuild -p:UseSharedCompilation=false
+          EOF
+          ls -al
+      - name: Autobuild
+        uses: github/codeql-action/autobuild@v1
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v1
+
+  preflight-smoke-test-check:
+    name: Preflight Check for Smoke Test
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    needs: pre-process
+    if: needs.pre-process.outputs.were-only-docs-updated != 'yes'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Set up JDK 8
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'adopt'
+          java-version: '8'
+      - name: Package Singleton Service
+        run: |
+          git clone --branch=master https://github.com/vmware/singleton.git service
+          git clone --branch=devops https://github.com/vmware/singleton.git devops
+          cp -r devops/autotest/client/jscoresdk/resources/bundles/JSCoreSDKTest service/g11n-ws/vip-manager-i18n/src/main/resources/l10n/bundles/
+          echo "source.cache.flag = true" >> service/g11n-ws/vip-manager-i18n/src/main/resources/application-bundle.properties
+          cd $GITHUB_WORKSPACE/service/g11n-ws && ./gradlew build -x test
+          find $GITHUB_WORKSPACE/service/publish/ -name 'singleton-[0~9]*.jar' -exec mv '{}' $GITHUB_WORKSPACE/service/publish/singleton.jar \;
+      - uses: actions/upload-artifact@v2
+        with:
+          name: singleton-service
+          path: ./service/publish/singleton.jar
+
+  run-smoke-test:
+    name: Run Smoke Test
+    runs-on: windows-2019
+    defaults:
+      run:
+        shell: bash
+    needs: [pre-process,preflight-smoke-test-check]
+    if: needs.pre-process.outputs.were-only-docs-updated != 'yes'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Add msbuild to PATH
+        uses: microsoft/setup-msbuild@v1.1
+      - name: Set up JDK 8
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'adopt'
+          java-version: '8'
+      - uses: actions/download-artifact@v2
+        with:
+          name: singleton-service
+      - name: Start Singleton Service
+        run: |
+          nohup java -jar singleton.jar > singletonService.log 2>&1 &
+          until [ -d l10n/bundles ] ; do sleep 2; echo waiting for bundles. . . ; done
+          git clone --branch=devops https://github.com/emyasarvmw/singleton.git devops
+          cp -r devops/autotest/client/csharp/l10n/bundles/CSharpClient l10n/bundles
+          ls -la $GITHUB_WORKSPACE/l10n/bundles
+      - name: Run Smoke Test
+        run: |
+          export VSTEST="/c/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/Common7/IDE/Extensions/TestPlatform"
+          export PATH="$PATH:$VSTEST"
+          cd $GITHUB_WORKSPACE/singletonclient && nuget restore SingletonClient.sln
+          cd SingletonClient && MSBuild.exe SingletonClient.csproj -t:rebuild -p:WarningLevel=0
+          cp bin/Debug/netstandard2.0/SingletonClient.dll $GITHUB_WORKSPACE/devops/autotest/client/csharp/SingletonClient.dll
+          cd $GITHUB_WORKSPACE/devops/autotest/client/csharp && nuget restore csharp.sln
+          cd $GITHUB_WORKSPACE/devops/autotest/client/csharp/CSharp && MSBuild.exe CSharp.csproj -t:rebuild -p:WarningLevel=0
+          cd bin/Debug && pwd && ls -la
+          curl -X GET 'http://localhost:8091/i18n/api/v2/formatting/patterns?language=en&region=TW&scope=dates'
+          powershell -Command 'vstest.console CSharp.dll /TestCaseFilter:"Priority=0" /Logger:trx'
+          powershell -Command 'Get-Process -Name java | Stop-Process'
+      - uses: actions/upload-artifact@v2
+        with:
+          name: client.dll
+          path: ./devops/autotest/client/csharp/SingletonClient.dll
+      - uses: actions/upload-artifact@v2
+        with:
+          name: Singleton Service Log
+          path: ./singletonService.log
+      - uses: actions/upload-artifact@v2
+        with:
+          name: TestResults
+          path: ./devops/autotest/client/csharp/CSharp/bin/Debug/TestResults
