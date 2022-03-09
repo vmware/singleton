@@ -1,5 +1,6 @@
-#Copyright 2019-2022 VMware, Inc.
-#SPDX-License-Identifier: EPL-2.0
+# Copyright 2022 VMware, Inc.
+# SPDX-License-Identifier: EPL-2.0
+
 module SgtnClient
 
     DEFAULT_LOCALES = ['en', 'de', 'es', 'fr', 'ko', 'ja', 'zh-Hans', 'zh-Hant']
