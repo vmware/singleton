@@ -183,7 +183,7 @@ public class TranslationProductComponentKeyAction extends BaseAction {
 	
 		for(KeySourceCommentDTO ksc:sourceSet) {
 			String sft = ksc.getSourceFormat();
-			if (!StringUtils.isEmpty(sft) && !ConstantsKeys.SOURCE_FORMAT_LIST.contains(sft)) {
+			if (!StringUtils.isEmpty(sft) && !ConstantsKeys.SOURCE_FORMAT_LIST.contains(sft.toUpperCase())) {
 			   throw new ValidationException(ValidationMsg.SOURCEFORMAT_NOT_VALIDE);
 			}
 		}

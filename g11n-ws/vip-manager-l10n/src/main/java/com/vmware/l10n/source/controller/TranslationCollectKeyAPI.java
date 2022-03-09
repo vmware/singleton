@@ -205,7 +205,7 @@ public class TranslationCollectKeyAPI {
 			String newKey = sto.getKey();
 			String newSource =sto.getSource();
 			String sf = sto.getSourceFormat();
-			if (!StringUtils.isEmpty(sf) && !ConstantsKeys.SOURCE_FORMAT_LIST.contains(sf)) {
+			if (!StringUtils.isEmpty(sf) && !ConstantsKeys.SOURCE_FORMAT_LIST.contains(sf.toUpperCase())) {
 				   throw new ValidationException(ValidationMsg.SOURCEFORMAT_NOT_VALIDE);
 			}
 			StringSourceDTO sourceObj = SourceUtils.createSourceDTO(productName, version, component, newLocale, newKey,
