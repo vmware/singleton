@@ -185,7 +185,7 @@ public class TranslationProductComponentKeyAction extends BaseAction {
 			c.setPseudo(new Boolean(pseudo));
 		}
 
-		return stringBasedService.getStringMultKeyTranslation(c, keyArr);
+		return stringBasedService.getMultKeyTranslation(c, keyArr);
 		
 	}
 	

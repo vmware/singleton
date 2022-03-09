@@ -194,7 +194,7 @@ public class StringService implements IStringService {
 
 	@SuppressWarnings("rawtypes")
 	@Override
-	public SingleComponentDTO getStringMultKeyTranslation(ComponentMessagesDTO compMsg, String[] keyArr)
+	public SingleComponentDTO getMultKeyTranslation(ComponentMessagesDTO compMsg, String[] keyArr)
 			throws L3APIException {
 
 		ComponentMessagesDTO componentMsgDTOWithData = singleComponentService.getComponentTranslation(compMsg);

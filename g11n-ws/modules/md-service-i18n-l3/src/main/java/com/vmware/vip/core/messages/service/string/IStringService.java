@@ -32,7 +32,7 @@ public interface IStringService {
     public StringBasedDTO getStringTranslation(ComponentMessagesDTO componentMessagesDTO,String key,String source) throws L3APIException;
 
     /**
-     * Get multiple string of translation.
+     * Get multiple keys' translations.
      * <p>
      * If the translation is cached, get it directly;
      * otherwise get it from local bundle.
@@ -42,5 +42,5 @@ public interface IStringService {
      * @return
      * @throws L3APIException
      */
-	public SingleComponentDTO getStringMultKeyTranslation(ComponentMessagesDTO compMsg, String[] keyArr)throws L3APIException;
+	public SingleComponentDTO getMultKeyTranslation(ComponentMessagesDTO compMsg, String[] keyArr)throws L3APIException;
 }
