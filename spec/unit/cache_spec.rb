@@ -1,3 +1,6 @@
+# Copyright 2022 VMware, Inc.
+# SPDX-License-Identifier: EPL-2.0
+
 require 'spec_helper'
 
 describe SgtnClient do
@@ -20,23 +23,30 @@ describe SgtnClient do
       expect(SgtnClient::Translation.getString("JAVA", "helloworld", "zh-Hans")).to eq '你好世界'
     end
 
-
-    it "default" do
+    it "get_cachekey" do
       env = SgtnClient::Config.default_environment
-      component = "JAVA"
-      default_language = "default"
-      default_cache_key = "test_4.8.1_JAVA_default"
-      SgtnClient::Source.loadBundles(default_language)
-      config_lang = SgtnClient::Config.configurations[env]["default_language"]
-      if config_lang == nil || config_lang == 'en'
-        expect(SgtnClient::CacheUtil.get_cachekey(component, SgtnClient::LocaleUtil.fallback('en-US'))).to eq default_cache_key
-        expect(SgtnClient::CacheUtil.get_cachekey(component, SgtnClient::LocaleUtil.fallback('de-DE'))).to eq 'test_4.8.1_JAVA_de'
-      end
-      # reset the default language to 'zh-Hans'
-      SgtnClient::Config.configurations[env]["default_language"] = 'zh-Hans'
-      expect(SgtnClient::CacheUtil.get_cachekey(component, SgtnClient::LocaleUtil.fallback('zh-Hans'))).to eq default_cache_key
-      expect(SgtnClient::CacheUtil.get_cachekey(component, SgtnClient::LocaleUtil.fallback('zh-CN'))).to eq default_cache_key
-      expect(SgtnClient::CacheUtil.get_cachekey(component, SgtnClient::LocaleUtil.fallback('en-US'))).to eq 'test_4.8.1_JAVA_en'
+      product_name = SgtnClient::Config.configurations[env]["product_name"].to_s
+      version = SgtnClient::Config.configurations[env]["version"].to_s
+      locale = "zh-Hans"
+      expect(SgtnClient::CacheUtil.get_cachekey("java", locale)).to eq "#{product_name}_#{version}_java_#{locale}"
+    end
+
+    it "get_cachekey_source_bundle" do
+      env = SgtnClient::Config.default_environment
+      product_name = SgtnClient::Config.configurations[env]["product_name"].to_s
+      version = SgtnClient::Config.configurations[env]["version"].to_s
+      locale = SgtnClient::Config.configurations.default
+      expect(locale).to eq 'default'
+      expect(SgtnClient::CacheUtil.get_cachekey("java", locale)).to eq "#{product_name}_#{version}_java_#{locale}"
+    end
+
+    it "get_cachekey_en_locale" do
+      env = SgtnClient::Config.default_environment
+      product_name = SgtnClient::Config.configurations[env]["product_name"].to_s
+      version = SgtnClient::Config.configurations[env]["version"].to_s
+      locale = SgtnClient::LocaleUtil.get_source_locale()
+      expect(locale).to eq 'en'
+      expect(SgtnClient::CacheUtil.get_cachekey("java", locale)).to eq "#{product_name}_#{version}_java_#{locale}"
     end
 
   end
