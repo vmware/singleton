@@ -83,7 +83,11 @@ module SgtnClient
 
       def self.getTranslation(component, key, locale)
         locale = SgtnClient::LocaleUtil.get_best_locale(locale)
-        items = get_cs(component, locale)
+        if locale == LocaleUtil.get_source_locale
+          items = Source.getSources(component, locale)
+        else
+          items = get_cs(component, locale)
+        end
         if items.nil? || items["messages"] == nil
           nil
         else
