@@ -111,7 +111,7 @@ jobs:
       - name: Smoke Test
         run: |
           git clone --branch=devops https://github.com/vmware/singleton.git devops
-          cd $GITHUB_WORKSPACE/g11n-ws && ./gradlew build
+          cd $GITHUB_WORKSPACE/g11n-ws && ./gradlew assemble
           cp $GITHUB_WORKSPACE/devops/deploy/i18n-service/Dockerfile $GITHUB_WORKSPACE/publish/
           cd $GITHUB_WORKSPACE/publish && ls
           mv singleton-[0~9]*.jar i18n-service.jar && ls
