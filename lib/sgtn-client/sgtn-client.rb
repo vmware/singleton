@@ -1,9 +1,9 @@
-# 
-#  Copyright 2019-2022 VMware, Inc.
-#  SPDX-License-Identifier: EPL-2.0
-#
+# Copyright 2022 VMware, Inc.
+# SPDX-License-Identifier: EPL-2.0
 
 module SgtnClient
+      LOGFILE_SHIFT_AGE = 4
+
       module Core
             autoload :Cache,        "sgtn-client/core/cache"
       end
@@ -50,7 +50,7 @@ module SgtnClient
                   end
                   file = File.open(file, 'a')
                   file.sync = true
-                  SgtnClient.logger = Logger.new(file)
+                  SgtnClient.logger = Logger.new(file, LOGFILE_SHIFT_AGE)
 
                   # Set log level for sandbox mode
                   env = SgtnClient::Config.default_environment
