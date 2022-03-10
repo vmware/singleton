@@ -4,6 +4,7 @@
  */
 package com.vmware.vip.core.messages.service.string;
 
+import com.vmware.vip.common.i18n.dto.SingleComponentDTO;
 import com.vmware.vip.common.i18n.dto.StringBasedDTO;
 import com.vmware.vip.core.messages.exception.L3APIException;
 import com.vmware.vip.core.messages.service.singlecomponent.ComponentMessagesDTO;
@@ -29,4 +30,17 @@ public interface IStringService {
      *         a DTO object of StringBasedDTO, containing translation.
      */
     public StringBasedDTO getStringTranslation(ComponentMessagesDTO componentMessagesDTO,String key,String source) throws L3APIException;
+
+    /**
+     * Get multiple keys' translations.
+     * <p>
+     * If the translation is cached, get it directly;
+     * otherwise get it from local bundle.
+     *
+     * @param c
+     * @param keyArr
+     * @return
+     * @throws L3APIException
+     */
+	public SingleComponentDTO getMultKeyTranslation(ComponentMessagesDTO compMsg, String[] keyArr)throws L3APIException;
 }

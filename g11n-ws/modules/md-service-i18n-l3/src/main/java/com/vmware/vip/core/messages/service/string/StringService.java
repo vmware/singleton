@@ -9,6 +9,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.vmware.vip.common.constants.ConstantsKeys;
 import com.vmware.vip.common.constants.ConstantsMsg;
 import com.vmware.vip.common.constants.ConstantsUnicode;
+import com.vmware.vip.common.i18n.dto.SingleComponentDTO;
 import com.vmware.vip.common.i18n.dto.StringBasedDTO;
 import com.vmware.vip.common.utils.LocaleUtils;
 import com.vmware.vip.core.messages.exception.L3APIException;
@@ -23,6 +24,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
+
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -187,5 +190,30 @@ public class StringService implements IStringService {
 		stringBasedDTO.setSource(source);
 		stringBasedDTO.setTranslation(translation);
 		return stringBasedDTO;
+	}
+
+	@SuppressWarnings("rawtypes")
+	@Override
+	public SingleComponentDTO getMultKeyTranslation(ComponentMessagesDTO compMsg, String[] keyArr)
+			throws L3APIException {
+
+		ComponentMessagesDTO componentMsgDTOWithData = singleComponentService.getComponentTranslation(compMsg);
+		Object messages = componentMsgDTOWithData.getMessages();
+		if (!StringUtils.isEmpty(messages)) {
+
+			Map<String, Object> msgMap = new HashMap<String, Object>();
+			for (String key : keyArr) {
+				Object value = (String) ((Map) messages).get(key);
+				if (value != null) {
+					msgMap.put(key, value);
+				}
+
+			}
+			componentMsgDTOWithData.setMessages(msgMap);
+
+			return componentMsgDTOWithData;
+		} else {
+			return null;
+		}
 	}
 }
