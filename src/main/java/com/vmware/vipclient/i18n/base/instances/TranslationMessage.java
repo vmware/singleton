@@ -133,7 +133,7 @@ public class TranslationMessage implements Message {
         if(locale == null){
             throw new VIPJavaClientException(ConstantsMsg.LOCALE_CANNOT_NULL);
         }
-        if(component == null || "".equalsIgnoreCase(component)){
+        if(StringUtil.isEmpty(component)){
             throw new VIPJavaClientException(ConstantsMsg.COMPONENT_CANNOT_EMPTY);
         }
         ComponentService.TranslationsDTO msgsItemDTO = getMessages(locale, component, true);
