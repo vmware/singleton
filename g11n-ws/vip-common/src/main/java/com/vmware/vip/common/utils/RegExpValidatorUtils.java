@@ -66,6 +66,14 @@ public final class RegExpValidatorUtils {
 		String regex = "^[A-Za-z0-9_\\-\\.]+$";
 		return match(regex, str);
 	}
+	
+	/*
+	 * is letter and -, _, #
+	 */
+	public static boolean isLetterNumbPoundAndValidchar(String str) {
+		String regex = "^[A-Za-z0-9_\\-\\.#]+$";
+		return match(regex, str);
+	}
 	/*
 	 * is letter number,comma, -, _
 	 */
@@ -98,6 +106,6 @@ public final class RegExpValidatorUtils {
 		System.out.println(RegExpValidatorUtils.isNumeric("1.90"));
 		System.out.println(RegExpValidatorUtils.IsLetterAndValidchar("zhcn.-_"));
 		System.out.println(RegExpValidatorUtils.IsTrueOrFalse("false"));
-		System.out.println(RegExpValidatorUtils.IsLetterAndNumberAndValidchar("zhcn,55.-_"));
+		System.out.println(RegExpValidatorUtils.isLetterNumbPoundAndValidchar("#zhCN55.-_#"));
 	}
 }
