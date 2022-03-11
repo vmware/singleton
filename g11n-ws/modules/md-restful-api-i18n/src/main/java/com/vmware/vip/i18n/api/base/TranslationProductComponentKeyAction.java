@@ -5,7 +5,6 @@
 package com.vmware.vip.i18n.api.base;
 
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -27,6 +26,7 @@ import com.vmware.vip.common.i18n.dto.SingleComponentDTO;
 import com.vmware.vip.common.i18n.dto.StringBasedDTO;
 import com.vmware.vip.common.i18n.dto.response.APIResponseDTO;
 import com.vmware.vip.common.i18n.status.APIResponseStatus;
+import com.vmware.vip.common.utils.RegExpValidatorUtils;
 import com.vmware.vip.core.messages.exception.L3APIException;
 import com.vmware.vip.core.messages.service.mt.IMTService;
 import com.vmware.vip.core.messages.service.singlecomponent.ComponentMessagesDTO;
@@ -194,12 +194,16 @@ public class TranslationProductComponentKeyAction extends BaseAction {
 	
 		for(KeySourceCommentDTO ksc:sourceSet) {
 			String sft = ksc.getSourceFormat();
+			String key = ksc.getKey();
 			if (!StringUtils.isEmpty(sft) && !ConstantsKeys.SOURCE_FORMAT_LIST.contains(sft.toUpperCase())) {
 			   throw new ValidationException(ValidationMsg.SOURCEFORMAT_NOT_VALIDE);
 			}
+			
+			if (StringUtils.isEmpty(key) || !RegExpValidatorUtils.isLetterNumbPoundAndValidchar(key)) {
+				throw new ValidationException(ValidationMsg.KEY_NOT_VALIDE);
+			}
 		}
-			
-			
+					
 	}
 
 }

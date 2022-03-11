@@ -37,6 +37,7 @@ import com.vmware.vip.common.exceptions.ValidationException;
 import com.vmware.vip.common.i18n.dto.KeySourceCommentDTO;
 import com.vmware.vip.common.l10n.exception.L10nAPIException;
 import com.vmware.vip.common.l10n.source.dto.StringSourceDTO;
+import com.vmware.vip.common.utils.RegExpValidatorUtils;
 
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -207,6 +208,9 @@ public class TranslationCollectKeyAPI {
 			String sf = sto.getSourceFormat();
 			if (!StringUtils.isEmpty(sf) && !ConstantsKeys.SOURCE_FORMAT_LIST.contains(sf.toUpperCase())) {
 				   throw new ValidationException(ValidationMsg.SOURCEFORMAT_NOT_VALIDE);
+			}
+			if (StringUtils.isEmpty(newKey) || !RegExpValidatorUtils.isLetterNumbPoundAndValidchar(newKey)) {
+				throw new ValidationException(ValidationMsg.KEY_NOT_VALIDE);
 			}
 			StringSourceDTO sourceObj = SourceUtils.createSourceDTO(productName, version, component, newLocale, newKey,
 					newSource, sto.getCommentForSource(), sf);

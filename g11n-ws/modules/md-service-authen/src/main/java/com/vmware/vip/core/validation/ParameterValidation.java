@@ -34,6 +34,7 @@ public class ParameterValidation implements IVlidation {
 		validateComponent(request);
 		validateComponents(request);
 		validateKey(request);
+		validateKeys(request);
 		validateLocale(request);
 		validateLanguage(request);
 		validateLocales(request);
@@ -206,6 +207,22 @@ public class ParameterValidation implements IVlidation {
 		}
 		if (!RegExpValidatorUtils.isLetterNumbPoundAndValidchar(key)) {
 			throw new ValidationException(ValidationMsg.KEY_NOT_VALIDE);
+		}
+	}
+	
+	@SuppressWarnings("unchecked")
+	private void validateKeys(HttpServletRequest request)
+			throws ValidationException {
+		Map<String, String> pathVariables = (Map<String, String>) request
+				.getAttribute(HandlerMapping.URI_TEMPLATE_VARIABLES_ATTRIBUTE);
+		String keys = pathVariables.get(APIParamName.KEYS) == null ? request
+				.getParameter(APIParamName.KEYS) : pathVariables
+				.get(APIParamName.KEYS);
+		if (StringUtils.isEmpty(keys)) {
+			return;
+		}
+		if (!RegExpValidatorUtils.isLetterNumbPoundCommAndValidchar(keys)) {
+			throw new ValidationException(ValidationMsg.KEYS_NOT_VALIDE);
 		}
 	}
 

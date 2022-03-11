@@ -74,6 +74,14 @@ public final class RegExpValidatorUtils {
 		String regex = "^[A-Za-z0-9_\\-\\.#]+$";
 		return match(regex, str);
 	}
+	
+	/*
+	 * is letter comma， -, _, 
+	 */
+	public static boolean isLetterNumbPoundCommAndValidchar(String str) {
+		String regex = "^[A-Za-z0-9_\\-\\.\\,\\s#]+$";
+		return match(regex, str);
+	}
 	/*
 	 * is letter number,comma, -, _
 	 */
