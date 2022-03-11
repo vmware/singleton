@@ -267,7 +267,7 @@ public class LiteAPIValidationInterceptor extends HandlerInterceptorAdapter {
 		if (StringUtils.isEmpty(key)) {
 			return;
 		}
-		if (!RegExpValidatorUtils.IsLetterAndNumberAndValidchar(key)) {
+		if (!RegExpValidatorUtils.isLetterNumbPoundAndValidchar(key)) {
 			throw new ValidationException(ValidationMsg.KEY_NOT_VALIDE);
 		}
 	}
