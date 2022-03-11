@@ -113,7 +113,7 @@ module SgtnClient
       obj && obj['data']
     end
 
-    def self.load_and_compare_source(component, locale)
+    def self.fetch(component, locale)
       # source locale always uses source bundles
       return Source.getBundle(component) if LocaleUtil.is_source_locale(locale)
 
@@ -122,6 +122,10 @@ module SgtnClient
       old_source_bundle = load(component, LocaleUtil.get_source_locale)
       translation_bundle = translation_bundle_thread.value
 
+      compare_source(translation_bundle, old_source_bundle, source_bundle)
+    end
+
+    def self.compare_source(translation_bundle, old_source_bundle, source_bundle)
       if translation_bundle.nil? || source_bundle.nil? || old_source_bundle.nil? ||
          translation_bundle.empty? || source_bundle.empty? || old_source_bundle.empty?
         return translation_bundle
@@ -159,7 +163,7 @@ module SgtnClient
           expired, items = SgtnClient::CacheUtil.get_cache(cache_key)
           if expired || items.nil?
             thread = Thread.new do
-              items = load_and_compare_source(component, locale)
+              items = fetch(component, locale)
               SgtnClient::CacheUtil.write_cache(cache_key, items) if items&.empty? == false
               items
             end
