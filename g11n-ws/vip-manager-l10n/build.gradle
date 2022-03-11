@@ -1,72 +1,74 @@
 //Copyright 2019-2022 VMware, Inc.
 //SPDX-License-Identifier: EPL-2.0
-
-apply plugin: 'java'
+apply plugin: 'java-library'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 
 description = 'l10n manager'
 
-buildscript {
-    repositories {
-        maven {
-            url "https://plugins.gradle.org/m2/"
-        }
-    }
-    dependencies {
-        classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.5"
-    }
-}
-
-apply plugin: "org.sonarqube"
-apply plugin: "jacoco"
 
 configurations {
-    bootJar
-    providedRuntime
     // remove default logger
     all*.exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
 }
 
 dependencies {
-    compile project(":vip-common")
-    compile project(":md-restful-api")
+    api project(":vip-common")
+    api project(":md-restful-api")
     if (project.hasProperty('datatype') && project.getProperty('datatype') == 'bundle' && project.getProperty('syncdata') == 'true') {
-        compile project(":md-restful-l10n-synch")
+        api project(":md-restful-l10n-synch")
     }
-    compile("org.apache.commons:commons-lang3:$commonsLangVersion")
-    compile("commons-io:commons-io:$commonsIoVersion")
-    compile('org.springframework.boot:spring-boot-starter-log4j2') {
+    implementation("org.apache.commons:commons-lang3:$commonsLangVersion")
+    implementation("commons-io:commons-io:$commonsIoVersion")
+    implementation("commons-codec:commons-codec:$commonsCodecVersion")
+    implementation("com.googlecode.json-simple:json-simple:$jsonSimpleVersion"){
+          exclude group: 'junit'
+    }
+    
+    implementation('org.springframework.boot:spring-boot-starter-log4j2') {
         exclude group: "org.apache.logging.log4j"
     }
-    compile("org.apache.logging.log4j:log4j-api:$log4j2Version")
-    compile("org.apache.logging.log4j:log4j-core:$log4j2Version")
-    compile("org.apache.logging.log4j:log4j-slf4j-impl:$log4j2Version")
-    compile("org.slf4j:slf4j-api:$slf4jVersion")
-    compile("org.slf4j:jul-to-slf4j:$slf4jVersion")
-    compile("org.springframework.boot:spring-boot-starter-web") {
+    implementation("org.apache.logging.log4j:log4j-api:$log4j2Version")
+    implementation("org.apache.logging.log4j:log4j-core:$log4j2Version")
+    implementation("org.apache.logging.log4j:log4j-slf4j-impl:$log4j2Version")
+    implementation("org.slf4j:slf4j-api:$slf4jVersion")
+    implementation("org.slf4j:jul-to-slf4j:$slf4jVersion")
+    
+    implementation("org.springframework.boot:spring-boot-starter-web") {
         exclude group: 'org.springframework.boot', module: 'spring-boot-starter-tomcat'
     }
-    compile("org.apache.tomcat.embed:tomcat-embed-core:$tomcatVersion")
-    compile("org.apache.tomcat:tomcat-annotations-api:$tomcatVersion")
-    compile("org.xerial:sqlite-jdbc:$sqliteVersion")
-    compile("com.fasterxml.jackson.core:jackson-databind:$jacksonVersion")
-    compile("com.fasterxml.jackson.core:jackson-core:$jacksonVersion")
-     compile("org.yaml:snakeyaml:$snakeyam")
-    compile("io.jsonwebtoken:jjwt:$jjwt")
-    compile("org.hibernate.javax.persistence:hibernate-jpa-2.1-api:$hibernateJpa21Api")
-    compile("io.springfox:springfox-swagger-ui:2.9.2")
-    compile("io.springfox:springfox-swagger2:2.9.2")
-    compile("com.google.guava:guava:$guavaVersion")
-    compile("org.apache.httpcomponents:httpclient:$httpclient")
+    implementation("org.apache.tomcat.embed:tomcat-embed-core:$tomcatVersion")
+    implementation("org.apache.tomcat:tomcat-annotations-api:$tomcatVersion")
     
-    compile group: 'com.amazonaws', name: 'aws-java-sdk-s3', version: '1.12.14'
-    implementation group: 'com.amazonaws', name: 'aws-java-sdk-sts', version: '1.12.14'
-    implementation group: 'com.amazonaws', name: 'aws-java-sdk-iam', version: '1.12.14'
-    //commonsCodecVersion
-    compile("commons-codec:commons-codec:$commonsCodecVersion")
-    testCompile("org.springframework.boot:spring-boot-starter-test")
-    compile ('org.springframework.boot:spring-boot-starter-actuator')
+    implementation("org.xerial:sqlite-jdbc:$sqliteVersion")
+    implementation("com.fasterxml.jackson.core:jackson-databind:$jacksonVersion")
+    implementation("com.fasterxml.jackson.core:jackson-core:$jacksonVersion")
+    implementation("org.yaml:snakeyaml:$snakeyam")
+    implementation("io.jsonwebtoken:jjwt:$jjwtVersion")
+    implementation("org.hibernate.javax.persistence:hibernate-jpa-2.1-api:$hibernateJpa21Api")
+    implementation("org.ehcache:ehcache:$ehCacheVersion")
+    implementation("javax.cache:cache-api:$cacheApiVersion")
+    
+     //swagger UI -START  
+    implementation("io.springfox:springfox-swagger2:$swagger2Version"){
+       exclude group: 'io.swagger', module:'swagger-annotations'
+       exclude group: 'io.swagger', module:'swagger-models'
+    }
+    implementation("io.springfox:springfox-swagger-ui:$swagger2Version")
+    implementation('io.swagger:swagger-annotations:1.5.22')
+    implementation('io.swagger:swagger-models:1.5.22')
+    implementation("com.google.guava:guava:$guavaVersion")
+    //swagger UI -END
+    implementation("org.apache.httpcomponents:httpclient:$httpclient")
+    implementation ("com.amazonaws:aws-java-sdk-s3:$awsS3Version")
+    implementation ("com.amazonaws:aws-java-sdk-sts:$awsS3Version")
+    implementation ("com.amazonaws:aws-java-sdk-iam:$awsS3Version")
+    implementation ('org.springframework.boot:spring-boot-starter-actuator')
+    
+
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testImplementation("junit:junit:$junitVersion")
+   
 }
 
 bootJar {
@@ -91,6 +93,10 @@ bootJar.doFirst {
     }
 }
 
+jar {
+    classifier = ''
+	enabled = false
+}
 
 task profile {
     if (project.hasProperty('profileType')) {

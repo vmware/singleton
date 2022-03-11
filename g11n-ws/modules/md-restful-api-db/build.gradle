@@ -1,21 +1,17 @@
 //Copyright 2019-2022 VMware, Inc.
 //SPDX-License-Identifier: EPL-2.0
-apply plugin: 'java'
-apply plugin: 'eclipse'
+apply plugin: 'java-library'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
+
 archivesBaseName = 'md-restful-api-db'
-sourceCompatibility = 1.8
+
 
 jar {
     manifest {
         attributes 'Implementation-Title': 'Gradle Quickstart',
                    'Implementation-Version': version
     }
-}
-
-repositories {
-    mavenCentral()
 }
 
 configurations {
@@ -26,31 +22,19 @@ configurations {
 }
 
 dependencies {
-	compile project(":md-data-api")
-	compile project(":md-data-api-pgimpl")
-    compile("org.springframework.boot:spring-boot-starter-web")
-    compile ('org.springframework.boot:spring-boot-starter-log4j2')
-    compile ("commons-collections:commons-collections:$commonsCollectionsVersion")
-    compile("io.springfox:springfox-swagger-ui:2.9.2")
-    compile("io.springfox:springfox-swagger2:2.9.2")
-    testCompile("org.springframework.boot:spring-boot-starter-test")
+    api project(":md-data-api")
+	api project(":md-data-api-pgimpl")
+    implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation('org.springframework.boot:spring-boot-starter-log4j2')
+    implementation ("commons-collections:commons-collections:$commonsCollectionsVersion")
+    implementation("io.springfox:springfox-swagger-ui:$swagger2Version")
+    implementation("io.springfox:springfox-swagger2:$swagger2Version")
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testImplementation ("junit:junit:$junitVersion")
 }
-
-
 
 test {
     exclude 'com/vmware/vip/test/**'
     systemProperties 'property': 'value'
 }
 
-tasks.withType(JavaCompile) {
-    options.encoding = 'UTF-8'
-}
-
-uploadArchives {
-    repositories {
-       flatDir {
-           dirs 'repos'
-       }
-    }
-}

@@ -1,25 +1,11 @@
 //Copyright 2019-2022 VMware, Inc.
 //SPDX-License-Identifier: EPL-2.0
-apply plugin: 'java'
-apply plugin: 'eclipse'
+apply plugin: 'java-library'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
+
 archivesBaseName = 'md-restful-l10n-synch'
-sourceCompatibility = 1.8
 
-apply plugin: "org.sonarqube"
-apply plugin: "jacoco"
-
-buildscript {
-	repositories {
-	  maven {
-		url "https://plugins.gradle.org/m2/"
-	  }
-	}
-	dependencies {
-	  classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.5"
-	}
-  }
 configurations {
 	bootJar
     war
@@ -28,26 +14,21 @@ configurations {
    all*.exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
 }
 
-tasks.withType(JavaCompile) {
-    options.encoding = 'UTF-8'
-}
-
-
 dependencies {
-    compile project(":vip-common")
-    compile project(":md-restful-api")
-    compile("org.springframework.boot:spring-boot")
-    compile("org.springframework:spring-webmvc:$springWebVersion")
-    compile ('org.springframework.boot:spring-boot-starter-log4j2'){
+    implementation project(":vip-common")
+    implementation project(":md-restful-api")
+    compileOnly("org.springframework.boot:spring-boot")
+    compileOnly("org.springframework:spring-webmvc:$springWebVersion")
+    compileOnly ('org.springframework.boot:spring-boot-starter-log4j2'){
               exclude group: "org.apache.logging.log4j"
     }
-    compile group: 'org.eclipse.jgit', name: 'org.eclipse.jgit', version: '4.11.8.201904181247-r'
-}
-
-jar {
-    enabled = true
+    api group: 'org.eclipse.jgit', name: 'org.eclipse.jgit', version: '4.11.8.201904181247-r'
 }
 
 bootJar {
   enabled = false
+}
+jar {
+    classifier = ''
+	enabled = true
 }

@@ -1,26 +1,9 @@
 //Copyright 2019-2022 VMware, Inc.
 //SPDX-License-Identifier: EPL-2.0
-apply plugin: 'java'
-apply plugin: 'eclipse'
+apply plugin: 'java-library'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 
-sourceCompatibility = 1.8
-
-
-buildscript {
-	repositories {
-	  maven {
-		url "https://plugins.gradle.org/m2/"
-	  }
-	}
-	dependencies {
-	  classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.5"
-	}
-  }
-   
-apply plugin: "org.sonarqube"
-apply plugin: "jacoco"
 
 jar {
     manifest {
@@ -37,34 +20,20 @@ repositories {
 }
 
 dependencies {
-    compile project(":md-data-api-mt")
-    compile project(":md-data-api")
-    compile project(":vip-common")
-    compile("org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.0.Final")
-    compile "org.springframework.boot:spring-boot"
-    compile('org.springframework.boot:spring-boot-autoconfigure')
+    api project(":md-data-api-mt")
+    api project(":md-data-api")
+    api project(":vip-common")
+    compileOnly("org.hibernate.javax.persistence:hibernate-jpa-2.1-api:$hibernateJpa21Api")
+    compileOnly("org.springframework.boot:spring-boot")
+    compileOnly("org.slf4j:slf4j-api:$slf4jVersion")
+    implementation('org.springframework.boot:spring-boot-autoconfigure')
 }
 
 bootJar {
   enabled = false
 }
 jar {
-  enabled = true
+    classifier = ''
+	enabled = true
 }
 
-test {
-    systemProperties 'property': 'value'
-}
-
-
-tasks.withType(JavaCompile) {
-    options.encoding = 'UTF-8'
-}
-
-uploadArchives {
-    repositories {
-       flatDir {
-           dirs 'repos'
-       }
-    }
-}

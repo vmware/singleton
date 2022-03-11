@@ -1,12 +1,8 @@
 //Copyright 2019-2022 VMware, Inc.
 //SPDX-License-Identifier: EPL-2.0
-apply plugin: 'java'
-apply plugin: "eclipse"
+apply plugin: 'java-library'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
-apply plugin: "jacoco"
-apply plugin: "org.sonarqube"
-
 sourceCompatibility = 1.8
 description = 'singleton lite manager'
 
@@ -22,20 +18,6 @@ configurations {
  // default encoding is utf-8
 [compileJava,compileTestJava,javadoc]*.options*.encoding = 'UTF-8'
 
-buildscript {
-  repositories {
-    maven {
-      url "https://plugins.gradle.org/m2/"
-    }
-  }
-  dependencies {
-    classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.5"
-  }
-}
- 
-repositories {
-    mavenCentral()
-}
 sourceSets {
 test {
     java.srcDirs = ['src/test/java']
@@ -50,58 +32,59 @@ test {
 
 dependencies {
    if (project.hasProperty('datatype') && project.getProperty('datatype') == 'pgdb') {
-        compile project(":md-data-api-pgimpl")
+        api project(":md-data-api-pgimpl")
     }else if (project.hasProperty('datatype') && project.getProperty('datatype') == 's3') {
-        compile project(":md-data-api-s3impl")
+        api project(":md-data-api-s3impl")
     }else {
-        compile project(":md-data-api-bundleimpl")
+        api project(":md-data-api-bundleimpl")
     }
-    compile project(":vip-common")
-    compile project(":md-restful-api-i18n")
-    compile("org.apache.commons:commons-lang3:$commonsLangVersion")
-    compile("commons-io:commons-io:$commonsIoVersion")
-    compile("com.googlecode.json-simple:json-simple:$jsonSimpleVersion"){
+    api project(":vip-common")
+    api project(":md-restful-api-i18n")
+    implementation("org.apache.commons:commons-lang3:$commonsLangVersion")
+    implementation("commons-io:commons-io:$commonsIoVersion")
+    implementation("com.googlecode.json-simple:json-simple:$jsonSimpleVersion"){
           exclude group: 'junit'
     }
-    compile("org.ehcache:ehcache:$ehCacheVersion")
-    compile("javax.cache:cache-api:$cacheApiVersion")
-    compile("com.fasterxml.jackson.core:jackson-databind:$jacksonVersion")
-    compile ("com.fasterxml.jackson.core:jackson-core:$jacksonVersion")
-    compile ("com.fasterxml.jackson.core:jackson-annotations:$jacksonVersion")
-    compile('io.springfox:springfox-swagger2:2.9.2'){
+    implementation("org.ehcache:ehcache:$ehCacheVersion")
+    implementation("javax.cache:cache-api:$cacheApiVersion")
+    implementation("com.fasterxml.jackson.core:jackson-databind:$jacksonVersion")
+    implementation ("com.fasterxml.jackson.core:jackson-core:$jacksonVersion")
+    implementation ("com.fasterxml.jackson.core:jackson-annotations:$jacksonVersion")
+    compileOnly('io.springfox:springfox-swagger2:2.9.2'){
        exclude group: 'io.swagger', module:'swagger-annotations'
        exclude group: 'io.swagger', module:'swagger-models'
        exclude group: 'io.springfox'
     }
-    compile("com.google.guava:guava:$guavaVersion")
-	compile("commons-codec:commons-codec:$commonsCodecVersion")
-    compile group: 'com.ibm.icu', name: 'icu4j', version: '57.1'
-    compile group: 'org.webjars.bower', name: 'cldr-data', version: '28.0.1'
-    compile("org.springframework:spring-webmvc:$springWebVersion")
-    compile ("org.apache.tomcat.embed:tomcat-embed-core:$tomcatVersion")
-    compile ("org.apache.tomcat:tomcat-annotations-api:$tomcatVersion")
-    compile('org.springframework.boot:spring-boot-autoconfigure')
-      compile ('org.springframework.boot:spring-boot-starter-log4j2'){
+    compileOnly("com.google.guava:guava:$guavaVersion")
+	implementation("commons-codec:commons-codec:$commonsCodecVersion")
+    implementation("com.ibm.icu:icu4j:$icu4jVersion")
+    api group: 'org.webjars.bower', name: 'cldr-data', version: '28.0.1'
+    api("org.springframework:spring-webmvc:$springWebVersion")
+    api ("org.apache.tomcat.embed:tomcat-embed-core:$tomcatVersion")
+    api ("org.apache.tomcat:tomcat-annotations-api:$tomcatVersion")
+    api('org.springframework.boot:spring-boot-autoconfigure')
+      api ('org.springframework.boot:spring-boot-starter-log4j2'){
               exclude group: "org.apache.logging.log4j"
     }
-    compile("org.apache.logging.log4j:log4j-api:$log4j2Version")
-    compile("org.apache.logging.log4j:log4j-core:$log4j2Version")
-    compile("org.apache.logging.log4j:log4j-slf4j-impl:$log4j2Version")
-    compile("org.slf4j:slf4j-api:$slf4jVersion")
-    compile("org.slf4j:jul-to-slf4j:$slf4jVersion")
-    compile("org.yaml:snakeyaml:$snakeyam")
-    compile("org.hibernate.javax.persistence:hibernate-jpa-2.1-api:$hibernateJpa21Api")
-    compile("org.apache.httpcomponents:httpclient:$httpclient")
-    compile ('org.springframework.boot:spring-boot-starter-actuator')
+    implementation("org.apache.logging.log4j:log4j-api:$log4j2Version")
+    implementation("org.apache.logging.log4j:log4j-core:$log4j2Version")
+    implementation("org.apache.logging.log4j:log4j-slf4j-impl:$log4j2Version")
+    implementation("org.slf4j:slf4j-api:$slf4jVersion")
+    implementation("org.slf4j:jul-to-slf4j:$slf4jVersion")
+    implementation("org.yaml:snakeyaml:$snakeyam")
+    implementation("org.hibernate.javax.persistence:hibernate-jpa-2.1-api:$hibernateJpa21Api")
+    implementation("org.apache.httpcomponents:httpclient:$httpclient")
+    implementation ('org.springframework.boot:spring-boot-starter-actuator')
      //jdk 11
-    runtime 'javax.xml.bind:jaxb-api:+'
-    runtime 'javax.activation:activation:+'
-    runtime 'com.sun.xml.bind:jaxb-impl:+'
-    runtime 'com.sun.xml.bind:jaxb-core:+'
+    runtimeOnly 'javax.xml.bind:jaxb-api:+'
+    runtimeOnly 'javax.activation:activation:+'
+    runtimeOnly 'com.sun.xml.bind:jaxb-impl:+'
+    runtimeOnly 'com.sun.xml.bind:jaxb-core:+'
     //end jdk 11
-    testCompile("org.springframework.boot:spring-boot-starter-test")
-    testCompile("org.asciidoctor:asciidoctorj:1.5.6")
-    testCompile("org.springframework.restdocs:spring-restdocs-mockmvc")
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testImplementation("org.asciidoctor:asciidoctorj:1.5.6")
+    testImplementation("org.springframework.restdocs:spring-restdocs-mockmvc")
+    testImplementation("junit:junit:$junitVersion")
 }
 
 processResources {
@@ -141,13 +124,16 @@ bootJar.doFirst {
 
 bootJar{
   classifier = 'boot'
-  enabled = true
+  enabled = true  
 }
+
+jar {
+    classifier = ''
+	enabled = false
+}
+
 assemble.dependsOn.add copyLibs
 
-springBoot {
-	mainClassName = "com.vmware.vip.LiteBootApplication"
-}
 
 jacocoTestReport {
     reports {
