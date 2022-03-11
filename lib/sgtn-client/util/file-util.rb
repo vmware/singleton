@@ -18,9 +18,7 @@ module SgtnClient
       end
 
       def self.read_yml(file_name)
-        File.open(file_name) do |file|
-          sources = YAML::load(file)
-        end
+        YAML::load(File.read(file_name))
       end
   end
 end
