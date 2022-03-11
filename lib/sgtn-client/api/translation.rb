@@ -2,7 +2,6 @@
 # SPDX-License-Identifier: EPL-2.0
 
 require 'multi_json'
-require 'weakref'
 
 module SgtnClient
   module Core
@@ -15,23 +14,23 @@ module SgtnClient
   class Translation
     def self.getString(component, key, locale)
       SgtnClient.logger.debug "[Translation.getString]component: #{component}, key: #{key}, locale: #{locale}"
-      translation = getTranslation(component, key, locale)
-      if translation.nil? && !LocaleUtil.is_source_locale(locale)
-        translation = getTranslation(component, key, LocaleUtil.get_source_locale)
+      str = getTranslation(component, key, locale)
+      if str.nil? && !LocaleUtil.is_source_locale(locale)
+        str = getTranslation(component, key, LocaleUtil.get_source_locale)
       end
-      translation
+      str
     end
 
     def self.getString_p(component, key, plural_args, locale)
       SgtnClient.logger.debug "[Translation][getString_p]component=#{component}, key=#{key}, locale=#{locale}"
-      translation = getTranslation(component, key, locale)
-      if translation.nil?
+      str = getTranslation(component, key, locale)
+      if str.nil?
         unless LocaleUtil.is_source_locale(locale)
-          translation = getTranslation(component, key, LocaleUtil.get_source_locale)
-          translation.to_plural_s(LocaleUtil.get_source_locale.to_sym, plural_args) if translation
+          str = getTranslation(component, key, LocaleUtil.get_source_locale)
+          str.to_plural_s(LocaleUtil.get_source_locale.to_sym, plural_args) if str
         end
       else
-        translation.to_plural_s(locale, plural_args)
+        str.to_plural_s(locale, plural_args)
       end
     end
 
@@ -76,7 +75,7 @@ module SgtnClient
       if items.nil?
         items = single_refresh(component, locale).value # refresh synchronously if not in cache
       elsif expired && locale != LocaleUtil.get_source_locale # local source never expires.
-          single_refresh(component, locale)  # refresh in background
+        single_refresh(component, locale)  # refresh in background
       end
 
       items
@@ -84,34 +83,34 @@ module SgtnClient
 
     def self.load(component, locale)
       env = SgtnClient::Config.default_environment
-      mode = SgtnClient::Config.configurations[env]['bundle_mode']
+      mode = SgtnClient::Config.configurations[env]["bundle_mode"]
       SgtnClient.logger.debug "[Translation][load]mode=#{mode}"
       if mode == 'offline'
-        load_o(component, locale)
+        return load_o(component, locale)
       else
-        load_s(component, locale)
+        return load_s(component, locale)
       end
     end
 
     def self.load_o(component, locale)
       env = SgtnClient::Config.default_environment
-      product_name = SgtnClient::Config.configurations[env]['product_name']
-      version = SgtnClient::Config.configurations[env]['version'].to_s
-      translation_bundle = SgtnClient::Config.configurations[env]['translation_bundle']
-      bundlepath = translation_bundle + '/' + product_name + '/' + version + '/' + component + '/messages_' + locale + '.json'
+      product_name = SgtnClient::Config.configurations[env]["product_name"]
+      version = SgtnClient::Config.configurations[env]["version"].to_s
+      translation_bundle = SgtnClient::Config.configurations[env]["translation_bundle"]
+      bundlepath = translation_bundle + "/" + product_name + "/" + version + "/" + component + "/messages_" + locale + ".json"
       SgtnClient::FileUtil.read_json(bundlepath)
     end
 
     def self.load_s(component, locale)
       env = SgtnClient::Config.default_environment
-      product_name = SgtnClient::Config.configurations[env]['product_name']
-      vip_server = SgtnClient::Config.configurations[env]['vip_server']
-      version = SgtnClient::Config.configurations[env]['version'].to_s
-      url = vip_server + '/i18n/api/v2/translation/products/' + product_name + '/versions/' + version + '/locales/' + locale + '/components/' + component + '?checkTranslationStatus=false&machineTranslation=false&pseudo=false'
+      product_name = SgtnClient::Config.configurations[env]["product_name"]
+      vip_server = SgtnClient::Config.configurations[env]["vip_server"]
+      version = SgtnClient::Config.configurations[env]["version"].to_s
+      url = vip_server + "/i18n/api/v2/translation/products/" + product_name + "/versions/" + version + "/locales/" + locale + "/components/" + component+ "?checkTranslationStatus=false&machineTranslation=false&pseudo=false"
       begin
         obj = SgtnClient::Core::Request.get(url)
-      rescue StandardError => e
-        SgtnClient.logger.error e.message
+      rescue => exception
+        SgtnClient.logger.error exception.message
       end
       obj && obj['data']
     end
