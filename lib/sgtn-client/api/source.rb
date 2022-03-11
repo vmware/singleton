@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: EPL-2.0
 
 module SgtnClient
-  autoload :CacheUtil,       'sgtn-client/util/cache-util'
+  autoload :CacheUtil, 'sgtn-client/util/cache-util'
 
   class Source
     def self.loadBundles(locale)
@@ -13,9 +13,10 @@ module SgtnClient
       Dir.foreach(source_bundle) do |component|
         next if component == '.' || component == '..'
 
-        getBundle(component)
-        # TODO: Save to cache
-        # SgtnClient::CacheUtil.write_cache(cache_key, items) if items&.empty? == false
+        bundle = getBundle(component)
+        # save to cache
+        cachekey = SgtnClient::CacheUtil.get_cachekey(component, LocaleUtil.get_source_locale)
+        SgtnClient::CacheUtil.write_cache(cachekey, bundle)
       end
     end
 
