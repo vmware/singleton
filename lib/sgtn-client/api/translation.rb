@@ -77,7 +77,6 @@ module SgtnClient
         items = single_refresh(component, locale).value # refresh synchronously if not in cache
       elsif expired && locale != LocaleUtil.get_source_locale # local source never expires.
           single_refresh(component, locale)  # refresh in background
-        end
       end
 
       items
@@ -118,16 +117,7 @@ module SgtnClient
     end
 
     def self.load_and_compare_source(component, locale)
-      source_cache_key = SgtnClient::CacheUtil.get_cachekey(component, LocaleUtil.get_source_locale)
-      expired, source_bundle = SgtnClient::CacheUtil.get_cache(source_cache_key)
-      if source_bundle.nil? || source_bundle.empty?
-        SgtnClient.logger.info { message = source_bundle.nil? ? 'Source is nil' : 'Source is empty'
-          sprintf("%-18s %-16s %-15s %s", Thread.current.name, "[#{__method__}]", "[#{component}.#{locale}]", message) }
-        source_bundle = single_load(component, SgtnClient::Config.configurations.default).value
-        SgtnClient::CacheUtil.write_cache(source_cache_key, source_bundle)
-      else
-        SgtnClient.logger.info { sprintf("%-18s %-16s %-15s %s", Thread.current.name, "[#{__method__}]", "[#{component}.#{locale}]", "Source isn't empty and expired: #{expired}") }
-      end
+      source_bundle = Source.getBundle(component)
       return source_bundle if LocaleUtil.is_source_locale(locale)
 
       translation_bundle_thread = single_load(component, locale)
@@ -168,7 +158,7 @@ module SgtnClient
             Thread.current.name = "#{parent_thread_name}:#{Thread.current.name}"
             SgtnClient.logger.info { sprintf("%-18s %-16s %-15s %s", Thread.current.name, "[#{__method__}]", "[#{component}.#{locale}]", "Thread is started") }
             bundle = if locale == SgtnClient::Config.configurations.default
-              Source.getBundle(component, SgtnClient::Config.configurations.default)
+              Source.getBundle(component)
             else
               load(component, locale)
             end
@@ -214,7 +204,5 @@ module SgtnClient
         return thread
       end
     end
-
-    private_class_method :load, :load_o, :load_s, :load_and_compare_source, :single_load, :single_refresh
   end
 end

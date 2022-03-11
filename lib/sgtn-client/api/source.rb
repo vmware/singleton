@@ -4,6 +4,7 @@
 module SgtnClient
   
   autoload :CacheUtil,       "sgtn-client/util/cache-util"
+  autoload :Concurrent,      'current'
 
   class Source
 
@@ -14,26 +15,29 @@ module SgtnClient
         source_bundle = SgtnClient::Config.configurations[env]["source_bundle"]
         Dir.foreach(source_bundle) do |component|
           next if component == '.' || component == '..'
-          yamlfile = File.join(source_bundle, component + "/" + locale + ".yml")
-          bundle = SgtnClient::FileUtil.read_yml(yamlfile)
-          cachekey = SgtnClient::CacheUtil.get_cachekey(component, locale)
-          SgtnClient::CacheUtil.write_cache(cachekey,bundle)
+          getBundle(component)
         end
       end
 
-      def self.getBundle(component, locale)
+      @source_bundles = Concurrent::Hash.new
+      def self.getBundle(component)
+        bundle = @source_bundles[component]
+        return bundle if bundle
+
+        locale = SgtnClient::Config.configurations.default
         SgtnClient.logger.debug "[Source][getBundle]component=#{component}, locale=#{locale}"
         env = SgtnClient::Config.default_environment
         source_bundle = SgtnClient::Config.configurations[env]["source_bundle"]
         bundlepath = source_bundle  + "/" + component + "/" + locale + ".yml"
         begin
           bundle = SgtnClient::FileUtil.read_yml(bundlepath)
+          @source_bundles[component] = { 'component' => component, 'locale' => locale, 'messages' => bundle&.first&.last }
         rescue => exception
           SgtnClient.logger.error exception.message
         end
         return bundle
       end
-
+      
+      private_class_method :getBundle
   end
-
 end
