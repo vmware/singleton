@@ -17,7 +17,7 @@ module SgtnClient
     end
 
     def self.process_locale(locale)
-      locale ||= SgtnClient::Config.configurations.default
+      locale ||= get_default_locale
       locale.to_s
     end
 
@@ -38,14 +38,13 @@ module SgtnClient
       locale
     end
 
-    # def self.get_default_locale
-    #   env = SgtnClient::Config.default_environment
-    #   SgtnClient::Config.configurations[env]['default_language'] || 'en'
-    # end
-
-    def self.get_source_locale
+    def self.get_default_locale
       env = SgtnClient::Config.default_environment
       SgtnClient::Config.configurations[env]['default_language'] || 'en'
+    end
+
+    def self.get_source_locale
+      'en'
     end
   end
 end
