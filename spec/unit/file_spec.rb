@@ -14,7 +14,6 @@ describe SgtnClient do
       product_name = @configurations["product_name"]
       version = @configurations["version"].to_s
       jsonfile = @configurations["translation_bundle"] + "/" + product_name + "/" + version + "/" + @component + "/messages_en.json"
-      puts jsonfile
       expect(SgtnClient::FileUtil.read_json(jsonfile)["messages"]["helloworld"]).to eq "Hello world"
     end
 
