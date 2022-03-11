@@ -113,9 +113,24 @@ module SgtnClient
       obj && obj['data']
     end
 
-    def self.load_and_compare_source(component, locale)
+    def self.load_bundles_for_comparison(component, locale)
       # source locale always uses source bundles
       return Source.getBundle(component) if LocaleUtil.is_source_locale(locale)
+
+      source_bundle = Source.getBundle(component)
+      translation_bundle_thread = single_load(component, locale)
+      old_source_bundle_thread = single_load(component, LocaleUtil.get_source_locale)
+      translation_bundle = translation_bundle_thread.value
+      old_source_bundle = old_source_bundle_thread.value
+
+      [source_bundle, old_source_bundle, translation_bundle]
+    end
+
+    def self.load_and_compare_source(component, locale)
+      source_bundle, old_source_bundle, translation_bundle = load_bundles_for_comparison(component, locale)
+
+      # source locale always uses source bundles
+      return source_bundle if LocaleUtil.is_source_locale(locale)
 
       source_bundle = Source.getBundle(component)
       translation_bundle_thread = single_load(component, locale)
