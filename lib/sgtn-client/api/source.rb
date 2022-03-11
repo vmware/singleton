@@ -3,7 +3,6 @@
 
 module SgtnClient
   autoload :CacheUtil,       'sgtn-client/util/cache-util'
-  autoload :Concurrent,      'concurrent'
 
   class Source
     def self.loadBundles(locale)
@@ -18,11 +17,7 @@ module SgtnClient
       end
     end
 
-    @source_bundles = Concurrent::Hash.new
     def self.getBundle(component)
-      bundle = @source_bundles[component]
-      return bundle if bundle
-
       locale = SgtnClient::Config.configurations.default
       SgtnClient.logger.debug "[Source][getBundle]component=#{component}, locale=#{locale}"
       env = SgtnClient::Config.default_environment
@@ -30,11 +25,11 @@ module SgtnClient
       bundlepath = source_bundle + '/' + component + '/' + locale + '.yml'
       begin
         bundle = SgtnClient::FileUtil.read_yml(bundlepath)
-        @source_bundles[component] = { 'component' => component, 'locale' => locale, 'messages' => bundle&.first&.last }
+        return { 'component' => component, 'locale' => locale, 'messages' => bundle&.first&.last }
       rescue StandardError => e
         SgtnClient.logger.error e.message
       end
-      bundle
+      nil
     end
   end
 end

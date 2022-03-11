@@ -17,6 +17,7 @@ Gem::Specification.new do |s|
   s.test_files    = s.files.grep(%r{^(test|spec|features)/})
   s.require_paths = ["lib"]
 
+  s.add_development_dependency('rest-client', '~> 2.0')
   s.add_development_dependency('request_store', '~> 1.1')
   s.add_development_dependency('webmock', '~> 2.0')
   s.add_development_dependency('rspec', '~> 3.0')
@@ -24,7 +25,6 @@ Gem::Specification.new do |s|
   s.add_development_dependency('rubocop', '~> 0.49')
   s.add_development_dependency('pry-byebug')
 
-  s.add_dependency('concurrent-ruby', '~> 1.0')
   s.add_dependency('http-accept', '>= 1.7.0', '< 2.0')
   s.add_dependency('http-cookie', '>= 1.0.2', '< 2.0')
   s.add_dependency('mime-types', '>= 1.16', '< 4.0')

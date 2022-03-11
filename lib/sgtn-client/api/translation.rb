@@ -117,26 +117,17 @@ module SgtnClient
       # source locale always uses source bundles
       return Source.getBundle(component) if LocaleUtil.is_source_locale(locale)
 
-      source_bundle = Source.getBundle(component)
-      translation_bundle_thread = single_load(component, locale)
-      old_source_bundle_thread = single_load(component, LocaleUtil.get_source_locale)
+      source_bundle = get_cs(component, LocaleUtil.get_source_locale)
+      translation_bundle_thread = Thread.new { load(component, locale) }
+      old_source_bundle = load(component, LocaleUtil.get_source_locale)
       translation_bundle = translation_bundle_thread.value
-      old_source_bundle = old_source_bundle_thread.value
 
       [source_bundle, old_source_bundle, translation_bundle]
     end
 
     def self.load_and_compare_source(component, locale)
       source_bundle, old_source_bundle, translation_bundle = load_bundles_for_comparison(component, locale)
-
-      # source locale always uses source bundles
       return source_bundle if LocaleUtil.is_source_locale(locale)
-
-      source_bundle = Source.getBundle(component)
-      translation_bundle_thread = single_load(component, locale)
-      old_source_bundle_thread = single_load(component, LocaleUtil.get_source_locale)
-      translation_bundle = translation_bundle_thread.value
-      old_source_bundle = old_source_bundle_thread.value
 
       if translation_bundle.nil? || source_bundle.nil? || old_source_bundle.nil? ||
          translation_bundle.empty? || source_bundle.empty? || old_source_bundle.empty?
@@ -148,42 +139,10 @@ module SgtnClient
       translation_messages = translation_bundle['messages']
       new_translation_messages = {}
       source_messages.each do |key, value|
-        new_translation_messages[key] = if old_source_messages[key] == value
-                                          translation_messages[key] || value
-                                        else
-                                          value
-                                        end
+        new_translation_messages[key] = old_source_messages[key] == value ? translation_messages[key] : value
       end
       translation_bundle['messages'] = new_translation_messages
       translation_bundle
-    end
-
-    @@load_threads_lock = Mutex.new
-    @@load_threads = {}
-    def self.single_load(component, locale)
-      cache_key = SgtnClient::CacheUtil.get_cachekey(component, locale)
-      @@load_threads_lock.synchronize do
-        thread = @@load_threads[cache_key]
-        if thread.nil? || thread.alive? == false
-          SgtnClient.logger.info { format('%-18s %-16s %-15s %s', Thread.current.name, "[#{__method__}]", "[#{component}.#{locale}]", 'Starting a new thread') }
-          thread = Thread.new(Thread.current.name) do |parent_thread_name|
-            Thread.current.name = (0...3).map { rand(65..90).chr }.join
-            Thread.current.name = "#{parent_thread_name}:#{Thread.current.name}"
-            SgtnClient.logger.info { format('%-18s %-16s %-15s %s', Thread.current.name, "[#{__method__}]", "[#{component}.#{locale}]", 'Thread is started') }
-            bundle = if locale == SgtnClient::Config.configurations.default
-                       Source.getBundle(component)
-                     else
-                       load(component, locale)
-                     end
-            SgtnClient.logger.info { format('%-18s %-16s %-15s %s', Thread.current.name, "[#{__method__}]", "[#{component}.#{locale}]", 'Thread is going to end') }
-            bundle
-          end
-          @@load_threads[cache_key] = thread
-        else
-          SgtnClient.logger.info { format('%-18s %-16s %-15s %s', Thread.current.name, "[#{__method__}]", "[#{component}.#{locale}]", 'Another thread is alive') }
-        end
-        return thread
-      end
     end
 
     @@refresh_threads_lock = Mutex.new
