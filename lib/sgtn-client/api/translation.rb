@@ -151,26 +151,13 @@ module SgtnClient
         if thread.nil? || thread.alive? == false
           expired, items = SgtnClient::CacheUtil.get_cache(cache_key)
           if expired || items.nil?
-            SgtnClient.logger.info do
-              message = expired ? 'Cache expired' : 'Initialize cache'
-              format('%-18s %-16s %-15s %s', Thread.current.name, "[#{__method__}]", "[#{component}.#{locale}]", "Starting a new thread: #{message}")
-            end
             thread = Thread.new(Thread.current.name) do |parent_thread_name|
-              Thread.current.name = (0...3).map { rand(65..90).chr }.join
-              Thread.current.name = "#{parent_thread_name}:#{Thread.current.name}"
-              SgtnClient.logger.info { format('%-18s %-16s %-15s %s', Thread.current.name, "[#{__method__}]", "[#{component}.#{locale}]", 'Thread is started') }
               items = load_and_compare_source(component, locale)
               SgtnClient::CacheUtil.write_cache(cache_key, items) if items&.empty? == false
-
-              SgtnClient.logger.info { format('%-18s %-16s %-15s %s', Thread.current.name, "[#{__method__}]", "[#{component}.#{locale}]", 'Thread is going to end') }
               items
             end
             @@refresh_threads[cache_key] = thread
-          else
-            SgtnClient.logger.info { format('%-18s %-16s %-15s %s', Thread.current.name, "[#{__method__}]", "[#{component}.#{locale}]", ' Not expired') }
           end
-        else
-          SgtnClient.logger.info { format('%-18s %-16s %-15s %s', Thread.current.name, "[#{__method__}]", "[#{component}.#{locale}]", 'Another thread is alive') }
         end
         return thread
       end
