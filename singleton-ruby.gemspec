@@ -4,11 +4,12 @@ Gem::Specification.new do |s|
   s.name = 'singleton-ruby'
   s.version = VERSION
   s.authors = ['VMware G11n Team']
-  s.description = 's.summary = 'Singleton Ruby client'
+  s.description = 'Singleton Ruby client'
   s.license = 'EPL 2.0'
   s.email = 'g11n-vip-project@vmware.com'
   s.extra_rdoc_files = ['README.md']
   s.homepage = 'https://github.com/vmware/singleton'
+  s.summary = 'Singleton Ruby client'
 
   require 'rake'
   s.files         = FileList['lib/**/*.rb', 'bin/*'].to_a
@@ -21,6 +22,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency('rspec', '~> 3.0')
   s.add_development_dependency('rubocop', '~> 0.49')
   s.add_development_dependency('webmock', '~> 2.0')
+  s.add_development_dependency('request_store', '~> 1.1')
 
   s.add_dependency('concurrent-ruby', '~> 1.0')
   s.add_dependency('multi_json', '~> 1.0')

@@ -48,7 +48,7 @@ describe SgtnClient do
       expect(SgtnClient::Translation.getString("NEW", "new_hello", "zh-Hans")).to eq 'New Hello'
       jsonObj =  SgtnClient::Translation.getStrings("NEW", "zh-Hans")
       expect(jsonObj["component"]).to eq 'NEW'
-      expect(jsonObj["locale"]).to eq 'source'
+      expect(jsonObj["locale"]).to eq SgtnClient::Config.configurations.default
     end
 
     it "NonExistingComponent" do
@@ -67,7 +67,7 @@ describe SgtnClient do
       jsonObj = SgtnClient::Translation.getStrings("JAVA", "kk_NonExistingLanuage");
       jsonObj = SgtnClient::Translation.getStrings("JAVA", "kk_NonExistingLanuage");
       expect(jsonObj["component"]).to eq 'JAVA'
-      expect(jsonObj["locale"]).to eq 'source'
+      expect(jsonObj["locale"]).to eq SgtnClient::Config.configurations.default
 
     end
 

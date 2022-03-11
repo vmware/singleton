@@ -16,17 +16,17 @@ describe SgtnClient do
       SgtnClient::Source.loadBundles(@locale)
     end
 
-    it "getSource" do
-      key="new_welcome"
-      str = SgtnClient::Source.getSource(@component, key, @locale)
-      expect(str).to eq 'New %2$s, welcome login %1$s!'
-    end
+    # it "getSource" do
+    #   key="new_welcome"
+    #   str = SgtnClient::Source.getSource(@component, key, @locale)
+    #   expect(str).to eq 'New %2$s, welcome login %1$s!'
+    # end
 
-    it "getSources" do
-      str = SgtnClient::Source.getSources(@component, @locale)
-      puts str[@locale]
-      expect(str).not_to eq be_nil
-    end
+    # it "getSources" do
+    #   str = SgtnClient::Source.getSources(@component, @locale)
+    #   puts str[@locale]
+    #   expect(str).not_to eq be_nil
+    # end
 
     it "loadBundles" do
       cache_key = SgtnClient::CacheUtil.get_cachekey(@component, @locale)

@@ -4,7 +4,7 @@
 module SgtnClient
   
   autoload :CacheUtil,       "sgtn-client/util/cache-util"
-  autoload :Concurrent,      'current'
+  autoload :Concurrent,      'concurrent'
 
   class Source
 
@@ -37,7 +37,5 @@ module SgtnClient
         end
         return bundle
       end
-      
-      private_class_method :getBundle
   end
 end

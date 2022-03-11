@@ -45,7 +45,7 @@ module SgtnClient
           s.gsub! "{#{source}}", arg
         end
       elsif args.is_a?(Array)
-        s = SgtnClient.logger.info { sprintf(s % args) }
+        s = sprintf(s % args)
       end
       s
     end
@@ -130,7 +130,7 @@ module SgtnClient
         return translation_bundle
       end
 
-      source_messages = source_bundle.first[1]
+      source_messages = source_bundle['messages']
       old_source_messages = old_source_bundle['messages']
       translation_messages = translation_bundle['messages']
       new_translation_messages = {}

@@ -61,7 +61,7 @@ describe SgtnClient do
       expect(jsonObj_c["component"]).to eq 'JAVA'
       # get non-translation of a locale and fallback to source file
       default_sources = SgtnClient::Translation.getStrings("JAVA", "zh-ff");
-      expect(default_sources["locale"]).to eq 'source'
+      expect(default_sources["locale"]).to eq SgtnClient::Config.configurations.default
     end
   end
 
