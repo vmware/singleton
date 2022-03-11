@@ -7,8 +7,6 @@ describe SgtnClient do
 
     before :each do
       @configurations = SgtnClient::Config.configurations[SgtnClient::Config.default_environment]
-      @source_bundle = @configurations["source_bundle"] 
-      SgtnClient::Config.configurations.default = 'default'
       @component = 'JAVA'
     end
 
@@ -21,7 +19,8 @@ describe SgtnClient do
     end
 
     it "read_yml" do
-      yamlfile = File.join(@source_bundle, @component + "/" + SgtnClient::Config.configurations.default + ".yml")
+      SgtnClient::Config.configurations.default = 'default'
+      yamlfile = File.join(@configurations["source_bundle"], @component + "/" + SgtnClient::Config.configurations.default + ".yml")
       expect(SgtnClient::FileUtil.read_yml(yamlfile)[SgtnClient::Config.configurations.default]["hello"]).to eq "Hello"
     end
 
