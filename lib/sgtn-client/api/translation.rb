@@ -151,7 +151,7 @@ module SgtnClient
         if thread.nil? || thread.alive? == false
           expired, items = SgtnClient::CacheUtil.get_cache(cache_key)
           if expired || items.nil?
-            thread = Thread.new(Thread.current.name) do |parent_thread_name|
+            thread = Thread.new do
               items = load_and_compare_source(component, locale)
               SgtnClient::CacheUtil.write_cache(cache_key, items) if items&.empty? == false
               items
