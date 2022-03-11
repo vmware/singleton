@@ -14,6 +14,8 @@ module SgtnClient
         next if component == '.' || component == '..'
 
         getBundle(component)
+        # TODO: Save to cache
+        # SgtnClient::CacheUtil.write_cache(cache_key, items) if items&.empty? == false
       end
     end
 
