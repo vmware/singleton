@@ -11,9 +11,7 @@ describe SgtnClient do
     end
 
     it "read_json" do
-      product_name = @configurations["product_name"]
-      version = @configurations["version"].to_s
-      jsonfile = @configurations["translation_bundle"] + "/" + product_name + "/" + version + "/" + @component + "/messages_en.json"
+      jsonfile = @configurations["translation_bundle"] + "/" + @configurations["product_name"] + "/" + @configurations["version"].to_s + "/" + @component + "/messages_en.json"
       expect(SgtnClient::FileUtil.read_json(jsonfile)["messages"]["helloworld"]).to eq "Hello world"
     end
 
