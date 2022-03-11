@@ -1,3 +1,6 @@
+# Copyright 2022 VMware, Inc.
+# SPDX-License-Identifier: EPL-2.0
+
 require 'spec_helper'
 
 describe SgtnClient do
@@ -11,7 +14,7 @@ describe SgtnClient do
     end
 
     it "GET_EN" do
-      allow(SgtnClient::LocaleUtil).to receive(:process_locale).exactly(3).times.and_return('en')
+      allow(SgtnClient::LocaleUtil).to receive(:get_best_locale).exactly(3).times.and_return('en')
       expect(SgtnClient::Translation.getString("JAVA", "helloworld", "en")).to eq 'Hello world'
       # get from cache in 2nd time
       expect(SgtnClient::Translation.getString("JAVA", "helloworld", "en")).to eq 'Hello world'
@@ -19,12 +22,12 @@ describe SgtnClient do
     end
 
     it "GET_NIL_LOCALE" do
-      allow(SgtnClient::LocaleUtil).to receive(:process_locale).and_return(SgtnClient::Config.configurations.default)
+      allow(SgtnClient::LocaleUtil).to receive(:get_best_locale).and_return(SgtnClient::Config.configurations.default)
       expect(SgtnClient::Translation.getString("JAVA", "helloworld", nil)).to eq 'Hello world'
     end 
 
     it "GET" do
-      allow(SgtnClient::LocaleUtil).to receive(:process_locale).exactly(3).times.and_return('zh-Hans')
+      allow(SgtnClient::LocaleUtil).to receive(:get_best_locale).exactly(3).times.and_return('zh-Hans')
       expect(SgtnClient::Translation.getString("JAVA", "helloworld", "zh-Hans")).to eq '你好世界'
       # get from cache in 2nd time
       expect(SgtnClient::Translation.getString("JAVA", "helloworld", "zh-Hans")).to eq '你好世界'

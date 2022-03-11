@@ -1,12 +1,27 @@
+# Copyright 2022 VMware, Inc.
+# SPDX-License-Identifier: EPL-2.0
+
 require 'spec_helper'
 
 describe SgtnClient do
   describe "Locale" do
 
     before :each do
-      SgtnClient::Config.configurations.default = 'default'
+      SgtnClient.load("./config/sgtnclients.yml", 'test')
+      SgtnClient::Source.loadBundles("default")
     end
 
+    it "get_best_locale" do
+      expect(SgtnClient::LocaleUtil.get_best_locale('ja')).to eq 'ja'
+    end
+    
+    it "get_best_locale_target_locale_is_nil" do
+      expect(SgtnClient::LocaleUtil.get_best_locale(nil)).to eq SgtnClient::Config.configurations.default
+    end
+    
+    it "fallback_target_locale_is_source" do
+      expect(SgtnClient::LocaleUtil.fallback(SgtnClient::Config.configurations.default)).to eq SgtnClient::Config.configurations.default
+    end 
     it "fallback" do
       expect(SgtnClient::LocaleUtil.fallback('ja-JP')).to eq 'ja'
       expect(SgtnClient::LocaleUtil.fallback('de-DE')).to eq 'de'
@@ -31,6 +46,17 @@ describe SgtnClient do
     it "process_locale_nil" do
       expect(SgtnClient::LocaleUtil.process_locale(nil)).to eq SgtnClient::Config.configurations.default
     end
-  end
 
+    it "get_source_locale" do
+      env = SgtnClient::Config.default_environment
+      SgtnClient::Config.configurations[env]["default_language"] = 'ja'
+      expect(SgtnClient::LocaleUtil.get_source_locale()).to eq 'ja'
+    end
+    
+    it "get_source_locale_source_is_nil" do
+      env = SgtnClient::Config.default_environment
+      SgtnClient::Config.configurations[env]["default_language"] = nil
+      expect(SgtnClient::LocaleUtil.get_source_locale()).to eq 'en'
+    end
+  end
 end

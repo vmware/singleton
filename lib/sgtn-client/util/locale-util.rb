@@ -1,3 +1,6 @@
+# Copyright 2022 VMware, Inc.
+# SPDX-License-Identifier: EPL-2.0
+
 module SgtnClient
 
     DEFAULT_LOCALES = ['en', 'de', 'es', 'fr', 'ko', 'ja', 'zh-Hans', 'zh-Hant']
@@ -10,6 +13,9 @@ module SgtnClient
                   }
 
     class LocaleUtil
+        def self.get_best_locale(locale)
+            fallback(process_locale(locale))
+        end
         def self.process_locale(locale=nil)
             locale ||= SgtnClient::Config.configurations.default
             locale.to_s
@@ -30,6 +36,11 @@ module SgtnClient
                 end
             end 
             return locale
+        end
+        def self.get_source_locale
+            env = SgtnClient::Config.default_environment
+            source_locale = SgtnClient::Config.configurations[env]["default_language"]
+            source_locale || 'en'
         end
     end
 end
