@@ -4,9 +4,6 @@ require 'yaml'
 module SgtnClient
 
   class FileUtil
-
-      @mutex = Mutex.new
-
       def self.read_json(bundlepath)
         SgtnClient.logger.debug "[FileUtil]read json file from: " + bundlepath
         @mutex.synchronize do
@@ -22,13 +19,9 @@ module SgtnClient
       end
 
       def self.read_yml(file_name)
-        SgtnClient.logger.debug "[FileUtil]read yml file from: " + file_name
-        @mutex.synchronize do
-          erb = ERB.new(File.read(file_name))
-          erb.filename = file_name
-          YAML.load(erb.result)
+        File.open(file_name) do |file|
+          sources = YAML::load(file)
         end
       end
   end
-
 end
