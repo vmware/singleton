@@ -9,14 +9,12 @@ module SgtnClient
   class FileUtil
       def self.read_json(bundlepath)
         SgtnClient.logger.debug "[FileUtil]read json file from: " + bundlepath
-        data_hash = nil
         begin
-          file = File.read(bundlepath)
-          data_hash = MultiJson.load(file)
+          return MultiJson.load(File.read(bundlepath))
         rescue => exception
           SgtnClient.logger.error exception.message
         end
-        return data_hash
+        nil
       end
 
       def self.read_yml(file_name)
