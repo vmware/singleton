@@ -44,7 +44,7 @@ module SgtnClient
           s.gsub! "{#{source}}", arg
         end
       elsif args.is_a?(Array)
-        s = sprintf(s % args)
+        s = s % args
       end
       s
     end
@@ -114,20 +114,18 @@ module SgtnClient
     end
 
     def self.load_bundles_for_comparison(component, locale)
-      # source locale always uses source bundles
-      return Source.getBundle(component) if LocaleUtil.is_source_locale(locale)
-
       source_bundle = get_cs(component, LocaleUtil.get_source_locale)
       translation_bundle_thread = Thread.new { load(component, locale) }
       old_source_bundle = load(component, LocaleUtil.get_source_locale)
-      translation_bundle = translation_bundle_thread.value
 
-      [source_bundle, old_source_bundle, translation_bundle]
+      [source_bundle, old_source_bundle, translation_bundle_thread.value]
     end
 
     def self.load_and_compare_source(component, locale)
+      # source locale always uses source bundles
+      return Source.getBundle(component) if LocaleUtil.is_source_locale(locale)
+
       source_bundle, old_source_bundle, translation_bundle = load_bundles_for_comparison(component, locale)
-      return source_bundle if LocaleUtil.is_source_locale(locale)
 
       if translation_bundle.nil? || source_bundle.nil? || old_source_bundle.nil? ||
          translation_bundle.empty? || source_bundle.empty? || old_source_bundle.empty?
@@ -137,11 +135,10 @@ module SgtnClient
       source_messages = source_bundle['messages']
       old_source_messages = old_source_bundle['messages']
       translation_messages = translation_bundle['messages']
-      new_translation_messages = {}
       source_messages.each do |key, value|
-        new_translation_messages[key] = old_source_messages[key] == value ? translation_messages[key] : value
+        # removed keys will be kept, but shouldn't be an issue.
+        translation_messages[key] = value if translation_messages[key].nil? || old_source_messages[key] != value
       end
-      translation_bundle['messages'] = new_translation_messages
       translation_bundle
     end
 
