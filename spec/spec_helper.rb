@@ -1,7 +1,6 @@
-# 
-#  Copyright 2019-2022 VMware, Inc.
+#  Copyright 2022 VMware, Inc.
 #  SPDX-License-Identifier: EPL-2.0
-#  
+
 require 'bundler/setup'
 require_relative '../lib/sgtn-client/sgtn-client.rb'
 require 'logger'

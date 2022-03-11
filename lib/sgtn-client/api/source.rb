@@ -1,3 +1,5 @@
+# Copyright 2022 VMware, Inc.
+# SPDX-License-Identifier: EPL-2.0
 
 module SgtnClient
   
@@ -15,7 +17,7 @@ module SgtnClient
         else
           SgtnClient.logger.debug "[Source][getSource]getting sources from cache with key: " + cache_key
         end
-        s = items.nil?? nil : items[locale][key]
+        s = (items.nil? || items[locale].nil?)? nil : items[locale][key]  
         if items.nil? || s.nil?
           SgtnClient.logger.debug "[Source][getSource]source not found, return key: " + key
           #return key
