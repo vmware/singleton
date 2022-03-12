@@ -72,6 +72,7 @@ module SgtnClient
       expired, items = SgtnClient::CacheUtil.get_cache(cache_key)
       if items.nil?
         items = refresh_cache(component, locale).value # refresh synchronously if not in cache
+        # TODO: if an error occurs when requesting a bundle, need to avoid more requests
       elsif expired && locale != LocaleUtil.get_source_locale # local source never expires.
         refresh_cache(component, locale) # refresh in background
       end
