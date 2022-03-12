@@ -71,9 +71,9 @@ module SgtnClient
       SgtnClient.logger.debug "[Translation][get_cs]cache_key=#{cache_key}"
       expired, items = SgtnClient::CacheUtil.get_cache(cache_key)
       if items.nil?
-        items = single_refresh(component, locale).value # refresh synchronously if not in cache
+        items = refresh_cache(component, locale).value # refresh synchronously if not in cache
       elsif expired && locale != LocaleUtil.get_source_locale # local source never expires.
-        single_refresh(component, locale) # refresh in background
+        refresh_cache(component, locale) # refresh in background
       end
 
       items
@@ -117,10 +117,11 @@ module SgtnClient
       # source locale always uses source bundles
       return Source.getBundle(component) if LocaleUtil.is_source_locale(locale)
 
-      source_bundle = Source.getBundle(component)
       translation_bundle_thread = Thread.new { load(component, locale) }
+      source_bundle_thread = Thread.new { Source.getBundle(component) }
       old_source_bundle = load(component, LocaleUtil.get_source_locale)
       translation_bundle = translation_bundle_thread.value
+      source_bundle = source_bundle_thread.value
 
       compare_source(translation_bundle, old_source_bundle, source_bundle)
     end
@@ -155,7 +156,7 @@ module SgtnClient
 
     @@refresh_threads_lock = Mutex.new
     @@refresh_threads = {}
-    def self.single_refresh(component, locale)
+    def self.refresh_cache(component, locale)
       cache_key = SgtnClient::CacheUtil.get_cachekey(component, locale)
       @@refresh_threads_lock.synchronize do
         thread = @@refresh_threads[cache_key]
