@@ -121,37 +121,25 @@ module SgtnClient
       translation_bundle_thread = Thread.new { load(component, locale) }
       source_bundle_thread = Thread.new { Source.getBundle(component) }
       old_source_bundle = load(component, LocaleUtil.get_source_locale)
-      translation_bundle = translation_bundle_thread.value
       source_bundle = source_bundle_thread.value
+      translation_bundle = translation_bundle_thread.value
 
       compare_source(translation_bundle, old_source_bundle, source_bundle)
     end
 
     def self.compare_source(translation_bundle, old_source_bundle, source_bundle)
-      if translation_bundle.nil? || source_bundle.nil? || old_source_bundle.nil? ||
-         translation_bundle.empty? || source_bundle.empty? || old_source_bundle.empty?
-        return translation_bundle
-      end
+      return translation_bundle if translation_bundle.nil? || source_bundle.nil? || old_source_bundle.nil?
 
-      source_messages = source_bundle['messages']
       old_source_messages = old_source_bundle['messages']
       translation_messages = translation_bundle['messages']
-
-      # source_messages.each do |key, value|
-      #   # removed keys will be kept, but shouldn't be an issue.
-      #   translation_messages[key] = value if translation_messages[key].nil? || old_source_messages[key] != value
-      # end
-
-      new_translation_messages = {}
-      source_messages.each do |key, value|
+      translation_bundle['messages'] = new_translation_messages = {}
+      source_bundle['messages'].each do |key, value|
         new_translation_messages[key] = if old_source_messages[key] == value
                                           translation_messages[key] || value
                                         else
                                           value
                                         end
       end
-      translation_bundle['messages'] = new_translation_messages
-
       translation_bundle
     end
 
