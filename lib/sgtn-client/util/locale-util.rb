@@ -12,8 +12,8 @@ module SgtnClient
   }.freeze
 
   class LocaleUtil
-    def self.get_best_locale(locale)
-      locale ||= get_default_locale
+    def self.get_best_locale(locale)      
+      locale = get_default_locale if locale.nil || locale.empty?
       fallback(locale.to_s)
     end
 
@@ -40,8 +40,7 @@ module SgtnClient
 
     def self.get_default_locale
       env = SgtnClient::Config.default_environment
-      default_locale = SgtnClient::Config.configurations[env]['default_language']
-      default_locale || 'en'
+      SgtnClient::Config.configurations[env]['default_language'] || 'en'
     end
   end
 end
