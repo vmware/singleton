@@ -11,7 +11,7 @@ module SgtnClient
     autoload :LocaleUtil, 'sgtn-client/util/locale-util'
   end
 
-  class Translation
+  module Translation
     def self.getString(component, key, locale)
       SgtnClient.logger.debug "[Translation.getString]component: #{component}, key: #{key}, locale: #{locale}"
       str = getTranslation(component, key, locale)
@@ -143,12 +143,12 @@ module SgtnClient
       translation_bundle
     end
 
-    @@refresh_threads_lock = Mutex.new
-    @@refresh_threads = {}
+    @refresh_threads_lock = Mutex.new
+    @refresh_threads = {}
     def self.refresh_cache(component, locale)
       cache_key = SgtnClient::CacheUtil.get_cachekey(component, locale)
-      @@refresh_threads_lock.synchronize do
-        thread = @@refresh_threads[cache_key]
+      @refresh_threads_lock.synchronize do
+        thread = @refresh_threads[cache_key]
         if thread.nil? || thread.alive? == false
           expired, items = SgtnClient::CacheUtil.get_cache(cache_key)
           if expired || items.nil?
@@ -157,7 +157,7 @@ module SgtnClient
               SgtnClient::CacheUtil.write_cache(cache_key, items) if items&.empty? == false
               items
             end
-            @@refresh_threads[cache_key] = thread
+            @refresh_threads[cache_key] = thread
           end
         end
         return thread
