@@ -33,7 +33,7 @@ module SgtnClient
         if cache_expiry_period == nil
             cache_expiry_period = 24*60
         end
-        SgtnClient.logger.debug "[CacheUtil]write cache with key #{cache_key}, cache_expiry_period #{cache_expiry_period}, itmes #{items}"
+        SgtnClient.logger.debug "[CacheUtil]write cache with key #{cache_key}, cache_expiry_period #{cache_expiry_period}"
         SgtnClient::Core::Cache.put(cache_key, items, cache_expiry_period)
       end
 

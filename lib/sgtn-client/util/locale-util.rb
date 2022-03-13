@@ -12,11 +12,10 @@ module SgtnClient
   }.freeze
 
   class LocaleUtil
-    @local_map = {}
     def self.get_best_locale(locale)
       return get_default_locale if locale.nil? || locale.empty?
 
-      @local_map[locale] ||= fallback(locale.to_s)
+      fallback(locale.to_s)
     end
 
     def self.is_source_locale(locale = nil)
