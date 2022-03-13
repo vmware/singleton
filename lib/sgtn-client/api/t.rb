@@ -7,19 +7,19 @@ module SgtnClient
         def self.s(key)
             locale = RequestStore.store[:locale]
             component = RequestStore.store[:component]
-            return Translation::getString(component, key, locale)
+            return Translation.getString(component, key, locale)
         end
 
         def self.s_f(key, args)
             locale = RequestStore.store[:locale]
             component = RequestStore.store[:component]
-            return Translation::getString_f(component, key, args, locale)
+            return Translation.getString_f(component, key, args, locale)
         end
 
         def self.c()
             locale = RequestStore.store[:locale]
             component = RequestStore.store[:component]
-            return Translation::getStrings(component, locale)
+            return Translation.getStrings(component, locale)
         end
     end
 end
