@@ -4,12 +4,7 @@
 require 'multi_json'
 
 module SgtnClient
-  module Core
-    autoload :Request,     'sgtn-client/core/request'
-    autoload :Cache,       'sgtn-client/core/cache'
-    autoload :CacheUtil,   'sgtn-client/util/cache-util'
-    autoload :LocaleUtil, 'sgtn-client/util/locale-util'
-  end
+  autoload :SingleOperation, 'sgtn-client/common'
 
   module Translation
     def self.getString(component, key, locale)
@@ -143,25 +138,21 @@ module SgtnClient
       translation_bundle
     end
 
-    @refresh_threads_lock = Mutex.new
-    @refresh_threads = {}
+    is_alive = proc { |_, thread| thread.nil? || thread.alive? == false }
+    to_run = proc do |cache_key|
+      expired, items = SgtnClient::CacheUtil.get_cache(cache_key)
+      expired || items.nil?
+    end
+    @refresh_cache_lock = SingleOperation.new(is_alive, to_run) do |cache_key, _, component, locale|
+      Thread.new do
+        items = fetch(component, locale)
+        SgtnClient::CacheUtil.write_cache(cache_key, items) if items&.empty? == false
+        items
+      end
+    end
     def self.refresh_cache(component, locale)
       cache_key = SgtnClient::CacheUtil.get_cachekey(component, locale)
-      @refresh_threads_lock.synchronize do
-        thread = @refresh_threads[cache_key]
-        if thread.nil? || thread.alive? == false
-          expired, items = SgtnClient::CacheUtil.get_cache(cache_key)
-          if expired || items.nil?
-            thread = Thread.new do
-              items = fetch(component, locale)
-              SgtnClient::CacheUtil.write_cache(cache_key, items) if items&.empty? == false
-              items
-            end
-            @refresh_threads[cache_key] = thread
-          end
-        end
-        return thread
-      end
+      @refresh_cache_lock.single_operation(cache_key, component, locale)
     end
   end
 end

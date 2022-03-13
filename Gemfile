@@ -15,4 +15,5 @@ group :test do
   gem 'simplecov-json', :require => false
   gem 'rspec'
   gem 'webmock'
+  gem 'pry-byebug', require: true
 end
