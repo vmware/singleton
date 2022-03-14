@@ -140,12 +140,12 @@ module SgtnClient
       translation_bundle
     end
 
-    is_alive = proc { |_, thread| thread.nil? || thread.alive? == false }
+    none_alive = proc { |_, thread| thread.nil? || thread.alive? == false }
     to_run = proc do |cache_key|
       expired, items = SgtnClient::CacheUtil.get_cache(cache_key)
       expired || items.nil?
     end
-    @refresh_cache_operator = SingleOperation.new(is_alive, to_run) do |cache_key, _, component, locale|
+    @refresh_cache_operator = SingleOperation.new(none_alive, to_run) do |cache_key, _, component, locale|
       Thread.new do
         items = fetch(component, locale)
         SgtnClient::CacheUtil.write_cache(cache_key, items) if items&.empty? == false
