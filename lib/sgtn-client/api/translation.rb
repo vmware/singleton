@@ -117,9 +117,8 @@ module SgtnClient
       return Source.getBundle(component) if LocaleUtil.is_source_locale(locale)
 
       translation_bundle_thread = Thread.new { load(component, locale) }
-      source_bundle_thread = Thread.new { Source.getBundle(component) }
       old_source_bundle = load(component, LocaleUtil.get_source_locale)
-      source_bundle = source_bundle_thread.value
+      source_bundle = get_cs(component, LocaleUtil.get_source_locale)
       translation_bundle = translation_bundle_thread.value
 
       compare_source(translation_bundle, old_source_bundle, source_bundle)

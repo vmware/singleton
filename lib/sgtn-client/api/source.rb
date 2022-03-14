@@ -11,7 +11,7 @@ module SgtnClient
       SgtnClient::Config.configurations.default = locale
       source_bundle = SgtnClient::Config.configurations[env]['source_bundle']
       Dir.foreach(source_bundle) do |component|
-        next if %w{'.', '..'}.include? component
+        next if %w[. ..].include? component
 
         bundle = getBundle(component)
         cachekey = SgtnClient::CacheUtil.get_cachekey(component, LocaleUtil.get_source_locale)
