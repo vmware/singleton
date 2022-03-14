@@ -14,13 +14,19 @@ module SgtnClient
     end
 
     # return new created object
-    def single_operation(id, *args)
+    def operate(id, *args)
       @lock.synchronize do
         obj = @hash[id]
         @conditions.each do |con|
           return obj unless con.call(id, obj, *args)
         end
         @hash[@id] = @creator.call(id, obj, *args)
+      end
+    end
+
+    def remove_object(id)
+      @lock.synchronize do
+        @hash.delete(id)
       end
     end
   end

@@ -146,16 +146,18 @@ module SgtnClient
       expired, items = SgtnClient::CacheUtil.get_cache(cache_key)
       expired || items.nil?
     end
-    @refresh_cache_lock = SingleOperation.new(is_alive, to_run) do |cache_key, _, component, locale|
+    @refresh_cache_operator = SingleOperation.new(is_alive, to_run) do |cache_key, _, component, locale|
       Thread.new do
         items = fetch(component, locale)
         SgtnClient::CacheUtil.write_cache(cache_key, items) if items&.empty? == false
+        # delete thread from hash after finish
+        Thread.new { @refresh_cache_operator.remove_object(cache_key) }
         items
       end
     end
     def self.refresh_cache(component, locale)
       cache_key = SgtnClient::CacheUtil.get_cachekey(component, locale)
-      @refresh_cache_lock.single_operation(cache_key, component, locale)
+      @refresh_cache_operator.operate(cache_key, component, locale)
     end
   end
 end
