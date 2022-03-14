@@ -3,6 +3,7 @@
 
 require 'erb'
 require 'yaml'
+require 'multi_json'
 
 module SgtnClient
 

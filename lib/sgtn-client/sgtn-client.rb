@@ -17,7 +17,6 @@ module SgtnClient
       autoload :ValidateUtil,       "sgtn-client/util/validate-util"
       autoload :LocaleUtil,         "sgtn-client/util/locale-util"
       autoload :FileUtil,           "sgtn-client/util/file-util"
-      autoload :CacheUtil,           "sgtn-client/util/cache-util"
 
       module Formatters
             autoload :PluralFormatter,    "sgtn-client/formatters/plurals/plural_formatter"

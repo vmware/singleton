@@ -3,6 +3,11 @@
 
 module SgtnClient
   autoload :SingleOperation, 'sgtn-client/common'
+  autoload :CacheUtil, 'sgtn-client/util/cache-util'
+
+  module Core
+    autoload :Request, 'sgtn-client/core/request'
+  end
 
   module Translation
     def self.getString(component, key, locale)

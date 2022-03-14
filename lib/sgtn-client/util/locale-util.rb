@@ -13,9 +13,12 @@ module SgtnClient
 
   class LocaleUtil
     def self.get_best_locale(locale)
-      return get_default_locale if locale.nil? || locale.empty?
+      return get_default_locale if locale.nil?
 
-      fallback(locale.to_s)
+      locale = locale.to_s
+      return get_default_locale if locale.empty?
+
+      fallback(locale)
     end
 
     def self.is_source_locale(locale = nil)
