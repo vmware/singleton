@@ -20,7 +20,7 @@ module SgtnClient
         @conditions.each do |con|
           return obj unless con.call(id, obj, *args)
         end
-        @hash[@id] = @creator.call(id, obj, *args)
+        @hash[id] = @creator.call(id, obj, *args)
       end
     end
 
