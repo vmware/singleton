@@ -6,15 +6,15 @@ package com.vmware.vip.core.conf;
 
 import java.util.Arrays;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
-import com.vmware.vip.core.Interceptor.*;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.web.server.WebServerFactoryCustomizer;
+import org.springframework.boot.web.servlet.server.ConfigurableServletWebServerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.filter.ShallowEtagHeaderFilter;
@@ -31,6 +31,10 @@ import org.springframework.web.util.UrlPathHelper;
 import com.vmware.vip.api.rest.API;
 import com.vmware.vip.api.rest.APIV1;
 import com.vmware.vip.api.rest.APIV2;
+import com.vmware.vip.core.Interceptor.APICacheControlInterceptor;
+import com.vmware.vip.core.Interceptor.APICrossDomainInterceptor;
+import com.vmware.vip.core.Interceptor.APISourceInterceptor;
+import com.vmware.vip.core.Interceptor.APIValidationInterceptor;
 import com.vmware.vip.core.auth.interceptor.AuthInterceptor;
 import com.vmware.vip.core.auth.interceptor.VipAPIAuthInterceptor;
 import com.vmware.vip.core.csp.service.TokenService;
@@ -40,7 +44,7 @@ import com.vmware.vip.core.messages.service.product.IProductService;
 /**
  * Web Configuration
  */
-@Configuration
+@Configuration(proxyBeanMethods=false)
 @EnableWebMvc
 public class WebConfiguration implements WebMvcConfigurer {
 	
@@ -200,5 +204,10 @@ public class WebConfiguration implements WebMvcConfigurer {
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
         configurer.enable();
     }
+	
+	@Bean
+	WebServerFactoryCustomizer<ConfigurableServletWebServerFactory> enableDefaultServlet() {
+	    return (factory) -> factory.setRegisterDefaultServlet(true);
+	}
 
 }

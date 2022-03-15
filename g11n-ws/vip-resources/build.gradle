@@ -1,5 +1,5 @@
-apply plugin: 'java'
-apply plugin: 'eclipse'
+//Copyright 2019-2022 VMware, Inc.
+//SPDX-License-Identifier: EPL-2.0
 
 sourceCompatibility = 1.8
 version = '1.0'
@@ -7,24 +7,5 @@ jar {
     manifest {
         attributes 'Implementation-Title': 'Gradle Quickstart',
                    'Implementation-Version': version
-    }
-}
-
-repositories {
-    mavenCentral()
-}
-
-dependencies {
-}
-
-test {
-    systemProperties 'property': 'value'
-}
-
-uploadArchives {
-    repositories {
-       flatDir {
-           dirs 'repos'
-       }
     }
 }

@@ -1,6 +1,6 @@
 //Copyright 2019-2022 VMware, Inc.
 //SPDX-License-Identifier: EPL-2.0
-apply plugin: 'java'
+apply plugin: 'java-library'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 
@@ -14,23 +14,28 @@ configurations {
 }
 
 dependencies {
-    compile project(":vip-common")
-    compile project(":md-restful-api")
-    compile "org.springframework.boot:spring-boot-starter"
-    compile ('org.springframework.boot:spring-boot-starter-log4j2')
-    compile group: 'com.alibaba', name: 'fastjson', version: '1.2.75'
-    compile("org.apache.logging.log4j:log4j-api:$log4j2Version")
-    compile("org.apache.logging.log4j:log4j-core:$log4j2Version")
-    compile("org.apache.logging.log4j:log4j-slf4j-impl:$log4j2Version")
-    compile("org.slf4j:slf4j-api:$slf4jVersion")
-    compile("org.slf4j:jul-to-slf4j:$slf4jVersion")
-    testCompile("org.springframework.boot:spring-boot-starter-test")
+    api project(":vip-common")
+    api project(":md-restful-api")
+    api ("org.springframework.boot:spring-boot-starter")
+    api ("org.springframework.boot:spring-boot-starter-log4j2")
+    api ("com.alibaba:fastjson:1.2.75")
+    implementation("org.apache.logging.log4j:log4j-api:$log4j2Version")
+    implementation("org.apache.logging.log4j:log4j-core:$log4j2Version")
+    implementation("org.apache.logging.log4j:log4j-slf4j-impl:$log4j2Version")
+    implementation("org.slf4j:slf4j-api:$slf4jVersion")
+    implementation("org.slf4j:jul-to-slf4j:$slf4jVersion")
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
 
 bootJar {
     baseName = 'vip-manager-l10n-agent'
     version =  "$branchName"
     classifier = "$buildNumber"
+}
+
+jar {
+    classifier = ''
+	enabled = false
 }
 
 task copyCommonJars(type :Copy, dependsOn: bootJar) {
