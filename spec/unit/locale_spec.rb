@@ -16,7 +16,7 @@ describe SgtnClient do
     end
     
     it "get_best_locale_target_locale_is_nil" do
-      expect(SgtnClient::LocaleUtil.get_best_locale(nil)).to eq SgtnClient::Config.configurations.default
+      expect(SgtnClient::LocaleUtil.get_best_locale(nil)).to eq LocaleUtil.get_default_locale
     end
     
     it "fallback_target_locale_is_source" do
@@ -35,28 +35,55 @@ describe SgtnClient do
       expect(SgtnClient::LocaleUtil.fallback('kong-kong')).to eq 'kong-kong'
     end
 
-    it "process_locale" do
-      expect(SgtnClient::LocaleUtil.process_locale('en')).to eq 'en'
-      expect(SgtnClient::LocaleUtil.process_locale('de-DE')).to eq 'de-DE'
-      expect(SgtnClient::LocaleUtil.process_locale(:'de-DE')).to eq 'de-DE'
-      expect(SgtnClient::LocaleUtil.process_locale(:ja)).to eq 'ja'
-      expect(SgtnClient::LocaleUtil.process_locale(:'ja')).to eq 'ja'
-    end
+    # it "process_locale" do
+    #   expect(SgtnClient::LocaleUtil.process_locale('en')).to eq 'en'
+    #   expect(SgtnClient::LocaleUtil.process_locale('de-DE')).to eq 'de-DE'
+    #   expect(SgtnClient::LocaleUtil.process_locale(:'de-DE')).to eq 'de-DE'
+    #   expect(SgtnClient::LocaleUtil.process_locale(:ja)).to eq 'ja'
+    #   expect(SgtnClient::LocaleUtil.process_locale(:'ja')).to eq 'ja'
+    # end
 
-    it "process_locale_nil" do
-      expect(SgtnClient::LocaleUtil.process_locale(nil)).to eq SgtnClient::Config.configurations.default
-    end
+    # it "process_locale_nil" do
+    #   expect(SgtnClient::LocaleUtil.process_locale(nil)).to eq SgtnClient::Config.configurations.default
+    # end
+
 
     it "get_source_locale" do
       env = SgtnClient::Config.default_environment
-      SgtnClient::Config.configurations[env]["default_language"] = 'ja'
-      expect(SgtnClient::LocaleUtil.get_source_locale()).to eq 'ja'
-    end
-    
-    it "get_source_locale_source_is_nil" do
-      env = SgtnClient::Config.default_environment
+      config_lang = SgtnClient::Config.configurations[env]["default_language"]
+
       SgtnClient::Config.configurations[env]["default_language"] = nil
       expect(SgtnClient::LocaleUtil.get_source_locale()).to eq 'en'
+
+      SgtnClient::Config.configurations[env]["default_language"] = 'en'
+      expect(SgtnClient::LocaleUtil.get_source_locale()).to eq 'en'
+      
+      # SgtnClient::Config.configurations[env]["default_language"] = 'zh-Hans'
+      # expect(SgtnClient::LocaleUtil.get_source_locale()).to eq 'zh-Hans'
+
+    ensure
+      SgtnClient::Config.configurations[env]["default_language"] = config_lang
+    end
+
+    it "fallback_locale" do
+      env = SgtnClient::Config.default_environment
+      default_language = SgtnClient::Config.configurations[env]["default_language"]
+      
+      SgtnClient::Config.configurations[env]["default_language"] = nil
+      expect(SgtnClient::LocaleUtil.get_best_locale('en')).to eq 'en'
+      expect(SgtnClient::LocaleUtil.get_best_locale('zh-Hans')).to eq 'zh-Hans'
+
+      SgtnClient::Config.configurations[env]["default_language"] = 'en'
+      expect(SgtnClient::LocaleUtil.get_best_locale('en')).to eq 'en'
+      expect(SgtnClient::LocaleUtil.get_best_locale('zh-Hans')).to eq 'zh-Hans'
+
+      SgtnClient::Config.configurations[env]["default_language"] = 'zh-Hans'
+      expect(SgtnClient::LocaleUtil.get_best_locale('en')).to eq 'en'
+      expect(SgtnClient::LocaleUtil.get_best_locale('zh-Hans')).to eq 'zh-Hans'
+      
+    ensure
+      SgtnClient::Config.configurations[env]["default_language"] = default_language
     end
   end
+
 end

@@ -27,11 +27,10 @@ describe SgtnClient do
       env = SgtnClient::Config.default_environment
       product_name = SgtnClient::Config.configurations[env]["product_name"].to_s
       version = SgtnClient::Config.configurations[env]["version"].to_s
-      locale = "zh-Hans"
-      expect(SgtnClient::CacheUtil.get_cachekey("java", locale)).to eq "#{product_name}_#{version}_java_#{locale}"
+      expect(SgtnClient::CacheUtil.get_cachekey("java", "zh-Hans")).to eq "#{product_name}_#{version}_java_zh-Hans"
     end
 
-    it "get_cachekey_source_bundle" do
+    it "get_cachekey_source_locale" do
       env = SgtnClient::Config.default_environment
       product_name = SgtnClient::Config.configurations[env]["product_name"].to_s
       version = SgtnClient::Config.configurations[env]["version"].to_s
@@ -48,7 +47,6 @@ describe SgtnClient do
       expect(locale).to eq 'en'
       expect(SgtnClient::CacheUtil.get_cachekey("java", locale)).to eq "#{product_name}_#{version}_java_#{locale}"
     end
-
   end
 
 end

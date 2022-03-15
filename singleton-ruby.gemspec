@@ -1,5 +1,3 @@
-# -*- encoding: utf-8 -*-
-
 require File.expand_path('../lib/version', __FILE__)
 
 Gem::Specification.new do |s|
@@ -23,11 +21,8 @@ Gem::Specification.new do |s|
   s.add_development_dependency('multi_json', '~> 1.0')
   s.add_development_dependency('request_store', '~> 1.1')
   s.add_development_dependency('twitter_cldr', '~> 6.6')
-
   s.add_development_dependency('webmock', '~> 2.0')
   s.add_development_dependency('rspec', '~> 3.0')
-  s.add_development_dependency('pry', '~> 0')
-  s.add_development_dependency('pry-doc', '~> 0')
   s.add_development_dependency('rdoc', '>= 2.4.2', '< 6.0')
   s.add_development_dependency('rubocop', '~> 0.49')
 
@@ -39,5 +34,4 @@ Gem::Specification.new do |s|
   s.add_dependency('twitter_cldr', '~> 6.6')
 
   s.required_ruby_version = '>= 2.0.0'
-
 end

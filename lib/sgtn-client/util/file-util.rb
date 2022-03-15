@@ -1,8 +1,8 @@
 # Copyright 2022 VMware, Inc.
 # SPDX-License-Identifier: EPL-2.0
 
-require 'erb'
-require 'yaml'
+autoload :YAML, 'yaml'
+autoload :MultiJson, 'multi_json'
 
 module SgtnClient
 
@@ -22,4 +22,3 @@ module SgtnClient
       end
   end
 end
-

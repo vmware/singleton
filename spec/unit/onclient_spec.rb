@@ -22,35 +22,38 @@ describe SgtnClient do
     end
 
     it "GET_NIL_LOCALE" do
-      allow(SgtnClient::LocaleUtil).to receive(:get_best_locale).and_return(SgtnClient::Config.configurations.default)
+      allow(SgtnClient::LocaleUtil).to receive(:get_best_locale).and_return('en')
       expect(SgtnClient::Translation.getString("JAVA", "helloworld", nil)).to eq 'Hello world'
     end 
 
     it "GET" do
-      allow(SgtnClient::LocaleUtil).to receive(:get_best_locale).exactly(3).times.and_return('zh-Hans')
+      allow(SgtnClient::LocaleUtil).to receive(:get_best_locale).exactly(5).times.and_return('zh-Hans')
       expect(SgtnClient::Translation.getString("JAVA", "helloworld", "zh-Hans")).to eq '你好世界'
       # get from cache in 2nd time
       expect(SgtnClient::Translation.getString("JAVA", "helloworld", "zh-Hans")).to eq '你好世界'
       expect(SgtnClient::Translation.getString("JAVA", "helloworld", :"zh-Hans")).to eq '你好世界'
+
+      expect(SgtnClient::Translation.getString("JAVA", "old_helloworld", "zh-Hans")).to eq 'Source Hello world'
+      # get from cache in 2nd time
+      expect(SgtnClient::Translation.getString("JAVA", "old_helloworld", "zh-Hans")).to eq 'Source Hello world'
     end
 
     it "NewComponent" do
       expect(SgtnClient::Translation.getString("NEW", "new_hello", "zh-Hans")).to eq 'New Hello'
       env = SgtnClient::Config.default_environment
       if SgtnClient::Config.configurations[env]["disable_cache"] == false
-        expect(SgtnClient::CacheUtil.get_cache("test_4.8.1_NEW_zh-Hans")[1]["default"]["new_hello"]).to eq 'New Hello'
+        expect(SgtnClient::CacheUtil.get_cache("test_4.8.1_NEW_en")[1]['messages']["new_hello"]).to eq 'New Hello'
       end
       # get from cache in 2nd time
       expect(SgtnClient::Translation.getString("NEW", "new_hello", "zh-Hans")).to eq 'New Hello'
       jsonObj =  SgtnClient::Translation.getStrings("NEW", "zh-Hans")
       expect(jsonObj["component"]).to eq 'NEW'
-      expect(jsonObj["locale"]).to eq 'source'
+      expect(jsonObj["locale"]).to eq SgtnClient::Config.configurations.default
     end
 
     it "NonExistingComponent" do
       expect(SgtnClient::Translation.getString("NonExisting", "new_hello", "zh-Hans")).to eq nil
-      emptyObj = {}
-      expect(SgtnClient::Translation.getStrings("NonExisting", "zh-Hans")).to eq emptyObj
+      expect(SgtnClient::Translation.getStrings("NonExisting", "zh-Hans")).to eq nil
     end
 
     it "NonExistingLanuage" do
@@ -63,7 +66,7 @@ describe SgtnClient do
       jsonObj = SgtnClient::Translation.getStrings("JAVA", "kk_NonExistingLanuage");
       jsonObj = SgtnClient::Translation.getStrings("JAVA", "kk_NonExistingLanuage");
       expect(jsonObj["component"]).to eq 'JAVA'
-      expect(jsonObj["locale"]).to eq 'source'
+      expect(jsonObj["locale"]).to eq SgtnClient::Config.configurations.default
 
     end
 

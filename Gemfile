@@ -1,7 +1,6 @@
-# 
 #  Copyright 2022 VMware, Inc.
 #  SPDX-License-Identifier: EPL-2.0
-#  
+
 source "https://rubygems.org"
 
 if !!File::ALT_SEPARATOR
@@ -16,4 +15,5 @@ group :test do
   gem 'simplecov-json', :require => false
   gem 'rspec'
   gem 'webmock'
+  gem 'pry-byebug', require: true
 end

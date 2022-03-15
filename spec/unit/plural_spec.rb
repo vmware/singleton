@@ -13,7 +13,7 @@ describe SgtnClient do
     end
 
     it "plural_fallback" do
-      expect(SgtnClient::Translation.getString_p("JAVA", "plural_key", { :cat_count => 1 }, "zh-Hans")).to eq 'there is one cat in the room'
+      # expect(SgtnClient::Translation.getString_p("JAVA", "plural_key", { :cat_count => 1 }, "zh-Hans")).to eq 'there is one cat in the room'
       expect(SgtnClient::Translation.getString_p("JAVA", "plural_key", { :cat_count => 0 }, "zh-Hans")).to eq 'there are 0 cats in the room'
       expect(SgtnClient::Translation.getString_p("JAVA", "plural_key", { :cat_count => 5 }, "zh-Hans")).to eq 'there are 5 cats in the room'
       expect(SgtnClient::Translation.getString_p("JAVA", "plural_key", { :cat_count => 3 }, "zh-Hans")).to eq 'there are 3 cats in the room'
