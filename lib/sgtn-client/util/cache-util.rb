@@ -8,9 +8,9 @@ module SgtnClient
 
   class CacheUtil
     def self.get_cache(cache_key)
-      expired, items = SgtnClient::Core::Cache.get(cache_key)
-      SgtnClient.logger.debug "[CacheUtil]get cache with key #{cache_key}, expired #{expired}"
-      [expired, items]
+      cache_item = SgtnClient::Core::Cache.get(cache_key)
+      SgtnClient.logger.debug "[CacheUtil]get cache with key #{cache_key}"
+      cache_item
     end
 
     def self.clear_cache
@@ -18,7 +18,7 @@ module SgtnClient
       SgtnClient.logger.debug '[CacheUtil]clear cache'
     end
 
-    def self.write_cache(cache_key, items)
+    def self.write_cache(cache_key, items, fallback_keys=nil, fallback_locale=nil)
       return nil if items.nil?
 
       env = SgtnClient::Config.default_environment
@@ -26,7 +26,7 @@ module SgtnClient
       # expired after 24 hours
       cache_expiry_period = 24 * 60 if cache_expiry_period.nil?
       SgtnClient.logger.debug "[CacheUtil]write cache with key #{cache_key}, cache_expiry_period #{cache_expiry_period}"
-      SgtnClient::Core::Cache.put(cache_key, items, cache_expiry_period)
+      SgtnClient::Core::Cache.put(cache_key, items, cache_expiry_period, fallback_keys, fallback_locale)
     end
 
     def self.get_cachekey(component, locale)
@@ -34,6 +34,10 @@ module SgtnClient
       product_name = SgtnClient::Config.configurations[env]['product_name']
       version = SgtnClient::Config.configurations[env]['version'].to_s
       product_name + '_' + version + '_' + component + '_' + locale
+    end
+
+    def self.is_expired(cache_item)
+      cache_item[:expiry] < Time.now
     end
   end
 end

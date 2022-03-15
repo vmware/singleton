@@ -1,5 +1,6 @@
 # Copyright 2022 VMware, Inc.
 # SPDX-License-Identifier: EPL-2.0
+require 'set'
 
 module SgtnClient
   autoload :SingleOperation, 'sgtn-client/common'
@@ -12,24 +13,16 @@ module SgtnClient
   module Translation
     def self.getString(component, key, locale)
       SgtnClient.logger.debug "[Translation.getString]component: #{component}, key: #{key}, locale: #{locale}"
-      str = getTranslation(component, key, locale)
-      if str.nil? && !LocaleUtil.is_source_locale(locale)
-        str = getTranslation(component, key, LocaleUtil.get_source_locale)
-      end
-      str
+      getTranslation(component, key, locale)
     end
 
     def self.getString_p(component, key, plural_args, locale)
       SgtnClient.logger.debug "[Translation][getString_p]component=#{component}, key=#{key}, locale=#{locale}"
-      str = getTranslation(component, key, locale)
-      if str.nil?
-        unless LocaleUtil.is_source_locale(locale)
-          str = getTranslation(component, key, LocaleUtil.get_source_locale)
-          str.to_plural_s(LocaleUtil.get_source_locale, plural_args) if str
-        end
-      else
-        str.to_plural_s(locale, plural_args)
-      end
+      locale = SgtnClient::LocaleUtil.get_best_locale(locale)
+      cache_item = get_cs(component, locale)
+      str = cache_item&.dig(:items, 'messages', key)
+      locale = cache_item[:fallback_locale] || (LocaleUtil.get_source_locale if cache_item[:fallback_keys] && cache_item[:fallback_keys].include?(key)) || locale
+      str.to_plural_s(locale, plural_args)
     end
 
     def self.getString_f(component, key, args, locale, *optionals)
@@ -50,32 +43,26 @@ module SgtnClient
     def self.getStrings(component, locale)
       SgtnClient.logger.debug "[Translation][getStrings]component=#{component}, locale=#{locale}"
       locale = SgtnClient::LocaleUtil.get_best_locale(locale)
-      items = get_cs(component, locale)
-      if (items.nil? || items['messages'].nil?) && !LocaleUtil.is_source_locale(locale)
-        items = get_cs(component, LocaleUtil.get_source_locale)
-      end
-
-      items
+      items = get_cs(component, locale)&.dig(:items)
+      items = items&.dig('messages').nil? && !LocaleUtil.is_source_locale(locale) ? get_cs(component, LocaleUtil.get_source_locale)&.dig(:items) : items
     end
 
     def self.getTranslation(component, key, locale)
       locale = SgtnClient::LocaleUtil.get_best_locale(locale)
-      items = get_cs(component, locale)
-      items&.dig('messages', key)
+      get_cs(component, locale)&.dig(:items, 'messages', key)
     end
 
     def self.get_cs(component, locale)
       cache_key = SgtnClient::CacheUtil.get_cachekey(component, locale)
       SgtnClient.logger.debug "[Translation][get_cs]cache_key=#{cache_key}"
-      expired, items = SgtnClient::CacheUtil.get_cache(cache_key)
-      if items.nil?
-        items = refresh_cache(component, locale).value # refresh synchronously if not in cache
-        # TODO: if an error occurs when requesting a bundle, need to avoid more requests
-      elsif expired && locale != LocaleUtil.get_source_locale # local source never expires.
+      cache_item = SgtnClient::CacheUtil.get_cache(cache_key)
+      if cache_item.nil?
+        cache_item = refresh_cache(component, locale).value # refresh synchronously if not in cache
+      elsif CacheUtil.is_expired(cache_item) && locale != LocaleUtil.get_source_locale # local source never expires.
         refresh_cache(component, locale) # refresh in background
       end
 
-      items
+      return cache_item
     end
 
     def self.load(component, locale)
@@ -118,15 +105,19 @@ module SgtnClient
 
       translation_bundle_thread = Thread.new { load(component, locale) }
       old_source_bundle = load(component, LocaleUtil.get_source_locale)
-      source_bundle = get_cs(component, LocaleUtil.get_source_locale)
+      source_bundle = get_cs(component, LocaleUtil.get_source_locale)&.dig(:items)
       translation_bundle = translation_bundle_thread.value
 
-      compare_source(translation_bundle, old_source_bundle, source_bundle)
+      return source_bundle, nil, LocaleUtil.get_source_locale if translation_bundle.nil?
+
+      items, fallback_keys = compare_source(translation_bundle, old_source_bundle, source_bundle)
+      return items, fallback_keys
     end
 
     def self.compare_source(translation_bundle, old_source_bundle, source_bundle)
-      return translation_bundle if translation_bundle.nil? || source_bundle.nil? || old_source_bundle.nil?
-
+      return translation_bundle if source_bundle.nil? || old_source_bundle.nil?
+ 
+      fallback_keys = Set.new
       old_source_messages = old_source_bundle['messages']
       translation_messages = translation_bundle['messages']
       translation_bundle['messages'] = new_translation_messages = {}
@@ -136,22 +127,24 @@ module SgtnClient
                                         else
                                           value
                                         end
+        fallback_keys.add(key) if new_translation_messages[key] == value
       end
-      translation_bundle
+      fallback_keys = nil if fallback_keys.empty?
+      return translation_bundle, fallback_keys
     end
 
     none_alive = proc { |_, thread| thread.nil? || thread.alive? == false }
     to_run = proc do |cache_key|
-      expired, items = SgtnClient::CacheUtil.get_cache(cache_key)
-      expired || items.nil?
+      cache_item = SgtnClient::CacheUtil.get_cache(cache_key)
+      cache_item.nil? || CacheUtil.is_expired(cache_item)
     end
     @refresh_cache_operator = SingleOperation.new(none_alive, to_run) do |cache_key, _, component, locale|
       Thread.new do
-        items = fetch(component, locale)
-        SgtnClient::CacheUtil.write_cache(cache_key, items) if items&.empty? == false
+        items, fallback_keys, locale = fetch(component, locale)
+        cache_item = SgtnClient::CacheUtil.write_cache(cache_key, items, fallback_keys, locale) if items&.empty? == false
         # delete thread from hash after finish
         Thread.new { @refresh_cache_operator.remove_object(cache_key) }
-        items
+        cache_item
       end
     end
     def self.refresh_cache(component, locale)
