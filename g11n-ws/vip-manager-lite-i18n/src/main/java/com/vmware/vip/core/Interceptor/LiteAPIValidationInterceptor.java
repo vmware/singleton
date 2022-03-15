@@ -4,7 +4,6 @@
  */
 package com.vmware.vip.core.Interceptor;
 
-import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -19,14 +18,11 @@ import org.springframework.web.servlet.HandlerMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.vmware.vip.api.rest.APIParamName;
 import com.vmware.vip.common.constants.ConstantsChar;
 import com.vmware.vip.common.constants.ConstantsKeys;
 import com.vmware.vip.common.constants.ValidationMsg;
 import com.vmware.vip.common.exceptions.ValidationException;
-import com.vmware.vip.common.i18n.status.APIResponseStatus;
-import com.vmware.vip.common.i18n.status.Response;
 import com.vmware.vip.common.utils.RegExpValidatorUtils;
 
 /**
@@ -113,6 +109,7 @@ public class LiteAPIValidationInterceptor extends HandlerInterceptorAdapter {
 		validateComponent(request);
 		validateComponents(request);
 		validateKey(request);
+		validateKeys(request);
 		validateLocale(request);
 		validateLanguage(request);
 		validateLocales(request);
@@ -269,6 +266,22 @@ public class LiteAPIValidationInterceptor extends HandlerInterceptorAdapter {
 		}
 		if (!RegExpValidatorUtils.isLetterNumbPoundAndValidchar(key)) {
 			throw new ValidationException(ValidationMsg.KEY_NOT_VALIDE);
+		}
+	}
+	
+	@SuppressWarnings("unchecked")
+	private void validateKeys(HttpServletRequest request)
+			throws ValidationException {
+		Map<String, String> pathVariables = (Map<String, String>) request
+				.getAttribute(HandlerMapping.URI_TEMPLATE_VARIABLES_ATTRIBUTE);
+		String keys = pathVariables.get(APIParamName.KEYS) == null ? request
+				.getParameter(APIParamName.KEYS) : pathVariables
+				.get(APIParamName.KEYS);
+		if (StringUtils.isEmpty(keys)) {
+			return;
+		}
+		if (!RegExpValidatorUtils.isLetterNumbPoundCommAndValidchar(keys)) {
+			throw new ValidationException(ValidationMsg.KEYS_NOT_VALIDE);
 		}
 	}
 
