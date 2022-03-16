@@ -9,10 +9,8 @@ module SgtnClient::Core
 
             def self.initialize(disabled=false, opts={})
                 @@opts = opts
-                @mutex = Mutex.new
                 SgtnClient.logger.debug "[Cache][initialize] Disable cache? #{disabled}"
-                @@data = nil
-                @@data = Hash.new if !disabled
+                @@data = Hash.new
             end
 
             def self.get(key)
@@ -21,9 +19,7 @@ module SgtnClient::Core
             end
 
             def self.put(key, items, ttl=nil, fallback_keys=nil, fallback_locale=nil)
-                if @@data == nil || items == nil
-                    return nil
-                end
+                fallback_keys = nil if !fallback_keys.nil? && fallback_keys.empty?
                 ttl ||= @@opts[:ttl]
                 # hours from new
                 SgtnClient.logger.debug "[Cache][put]put cache for key '" + key + "' with expired time at'" + (Time.now + ttl*60).to_s

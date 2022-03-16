@@ -44,7 +44,7 @@ module SgtnClient
       locale = SgtnClient::LocaleUtil.get_best_locale(locale)
       items = get_cs(component, locale)&.dig(:items)
       return items unless items&.dig('messages').nil?
-      get_cs(component, LocaleUtil.get_source_locale)&.dig(:items) if !LocaleUtil.is_source_locale(locale)
+      get_cs(component, LocaleUtil.get_source_locale)&.dig(:items) unless LocaleUtil.is_source_locale(locale)
     end
 
     def self.getTranslation(component, key, locale)
@@ -109,9 +109,7 @@ module SgtnClient
       translation_bundle = translation_bundle_thread.value
 
       return source_bundle, nil, LocaleUtil.get_source_locale if translation_bundle.nil?
-
-      items, fallback_keys = compare_source(translation_bundle, old_source_bundle, source_bundle)
-      return items, fallback_keys
+      compare_source(translation_bundle, old_source_bundle, source_bundle)
     end
 
     def self.compare_source(translation_bundle, old_source_bundle, source_bundle)
@@ -141,7 +139,7 @@ module SgtnClient
     @refresh_cache_operator = SingleOperation.new(none_alive, to_run) do |cache_key, _, component, locale|
       Thread.new do
         items, fallback_keys, locale = fetch(component, locale)
-        cache_item = SgtnClient::CacheUtil.write_cache(cache_key, items, fallback_keys, locale) if items&.empty? == false
+        cache_item = SgtnClient::CacheUtil.write_cache(cache_key, items, fallback_keys, locale)
         # delete thread from hash after finish
         Thread.new { @refresh_cache_operator.remove_object(cache_key) }
         cache_item
