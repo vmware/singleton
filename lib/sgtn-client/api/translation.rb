@@ -43,7 +43,8 @@ module SgtnClient
       SgtnClient.logger.debug "[Translation][getStrings]component=#{component}, locale=#{locale}"
       locale = SgtnClient::LocaleUtil.get_best_locale(locale)
       items = get_cs(component, locale)&.dig(:items)
-      items = items&.dig('messages').nil? && !LocaleUtil.is_source_locale(locale) ? get_cs(component, LocaleUtil.get_source_locale)&.dig(:items) : items
+      return items unless items&.dig('messages').nil?
+      get_cs(component, LocaleUtil.get_source_locale)&.dig(:items) if !LocaleUtil.is_source_locale(locale)
     end
 
     def self.getTranslation(component, key, locale)

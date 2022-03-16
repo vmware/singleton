@@ -11,7 +11,8 @@ module SgtnClient::Core
                 @@opts = opts
                 @mutex = Mutex.new
                 SgtnClient.logger.debug "[Cache][initialize] Disable cache? #{disabled}"
-                @@data = disabled ? nil : Hash.new 
+                @@data = nil
+                @@data = Hash.new if !disabled
             end
 
             def self.get(key)
