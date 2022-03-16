@@ -4,12 +4,10 @@
  */
 package com.vmware.vip.i18n.api.base;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,9 +16,7 @@ import org.springframework.util.StringUtils;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.vmware.vip.api.rest.API;
 import com.vmware.vip.common.constants.ConstantsKeys;
-import com.vmware.vip.common.constants.ConstantsUnicode;
 import com.vmware.vip.common.i18n.dto.UpdateTranslationDTO;
 import com.vmware.vip.common.i18n.dto.UpdateTranslationDTO.UpdateTranslationDataDTO;
 import com.vmware.vip.common.i18n.dto.UpdateTranslationDTO.UpdateTranslationDataDTO.TranslationDTO;
@@ -28,26 +24,12 @@ import com.vmware.vip.common.i18n.dto.response.APIResponseDTO;
 import com.vmware.vip.common.i18n.status.APIResponseStatus;
 import com.vmware.vip.core.messages.service.product.IProductService;
 import com.vmware.vip.core.messages.service.singlecomponent.ComponentMessagesDTO;
-import com.vmware.vip.i18n.api.base.BaseAction;
 
 public class TranslationSyncAction extends BaseAction {
 	private static Logger LOGGER = LoggerFactory.getLogger(TranslationSyncAction.class);
 	@Autowired
 	IProductService productService;
-
-	public void processMethod(Exception e, HttpServletRequest request,
-			HttpServletResponse response) throws IOException {
-		LOGGER.error("abnormal server:" + e.getLocalizedMessage());
-		response.setCharacterEncoding(ConstantsUnicode.UTF8);
-		response.setContentType(API.API_CHARSET);
-		APIResponseDTO apiResponseDTO = new APIResponseDTO();
-		apiResponseDTO.setResponse(APIResponseStatus.INTERNAL_SERVER_ERROR);
-		ObjectMapper mapper = new ObjectMapper();
-		String responseJson = mapper.writeValueAsString(apiResponseDTO);
-		response.getWriter().printf(responseJson);
-		response.flushBuffer();
-	}
-
+   
 	public APIResponseDTO updateTranslation(
 			UpdateTranslationDTO updateTranslationDTO, String productName,
 			String version, HttpServletRequest request) throws Exception {
