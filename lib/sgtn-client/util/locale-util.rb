@@ -28,13 +28,9 @@ module SgtnClient
 
     def self.get_best_match(locale)
       locale = SgtnClient::MAP_LOCALES[locale] if SgtnClient::MAP_LOCALES.key?(locale)
-
-      while locale.length > 0 do
-        return locale if SUPPORTED_LOCALES.include?(locale)
-        return LocaleUtil.get_source_locale if locale.index('-').nil?
-        locale = locale.slice(0..(locale.rindex('-')-1))  
-      end
-      locale
+      return locale if SUPPORTED_LOCALES.include?(locale)
+      return LocaleUtil.get_source_locale if locale.index('-').nil?
+      get_best_match(locale.slice(0..(locale.rindex('-')-1)) )  
     end
 
     def self.get_source_locale

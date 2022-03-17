@@ -22,9 +22,7 @@ describe SgtnClient do
     it "get_best_locale_special_mapping" do
       expect(SgtnClient::LocaleUtil.get_best_locale('zh-CN')).to eq 'zh-Hans'
       expect(SgtnClient::LocaleUtil.get_best_locale('zh-TW')).to eq 'zh-Hant'
-      expect(SgtnClient::LocaleUtil.get_best_locale('zh-Hans-CN')).to eq 'zh-Hans'
-      expect(SgtnClient::LocaleUtil.get_best_locale('zh-Hant-TW')).to eq 'zh-Hant'
-      expect(SgtnClient::LocaleUtil.get_best_locale('zh-Hant-TW')).to eq 'zh-Hant'
+      expect(SgtnClient::LocaleUtil.get_best_locale('zh-TW-subtag')).to eq 'zh-Hant'
     end
 
     it "get_best_locale_best_match" do
@@ -34,6 +32,8 @@ describe SgtnClient do
       expect(SgtnClient::LocaleUtil.get_best_locale('fr-LATN-CA')).to eq 'fr'
       expect(SgtnClient::LocaleUtil.get_best_locale('de-CH-1901')).to eq 'de-CH'
       expect(SgtnClient::LocaleUtil.get_best_locale('zh-Hant-HK')).to eq 'zh-Hant'
+      expect(SgtnClient::LocaleUtil.get_best_locale('zh-Hans-CN')).to eq 'zh-Hans'
+      expect(SgtnClient::LocaleUtil.get_best_locale('zh-Hant-TW')).to eq 'zh-Hant'
     end
     
     it "get_best_locale_target_locale_is_nil" do
