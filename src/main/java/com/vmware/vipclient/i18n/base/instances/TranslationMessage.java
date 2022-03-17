@@ -130,7 +130,12 @@ public class TranslationMessage implements Message {
                 return FormatUtils.formatMsg(source, LocaleUtility.getSourceLocale(), args);
             }
         }
-
+        if(locale == null){
+            throw new VIPJavaClientException(ConstantsMsg.LOCALE_CANNOT_NULL);
+        }
+        if(StringUtil.isEmpty(component)){
+            throw new VIPJavaClientException(ConstantsMsg.COMPONENT_CANNOT_EMPTY);
+        }
         ComponentService.TranslationsDTO msgsItemDTO = getMessages(locale, component, true);
         String message = msgsItemDTO.getMessages().get(key);
         if (message == null || message.isEmpty()) {
