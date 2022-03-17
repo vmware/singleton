@@ -20,7 +20,7 @@ module SgtnClient
       locale = SgtnClient::LocaleUtil.get_best_locale(locale)
       cache_item = get_cs(component, locale)
       str = cache_item&.dig(:items, 'messages', key)
-      locale = cache_item[:fallback_locale] || (LocaleUtil.get_source_locale if cache_item[:fallback_keys] && cache_item[:fallback_keys].include?(key)) || locale
+      locale = cache_item&.dig(:metadata, FALLBACK_LOCALE) || cache_item&.dig(:items, 'messages', FALLBACK_LOCALE, key) || locale
       str.to_plural_s(locale, plural_args)
     end
 
@@ -108,27 +108,28 @@ module SgtnClient
       source_bundle = get_cs(component, LocaleUtil.get_source_locale)&.dig(:items)
       translation_bundle = translation_bundle_thread.value
 
-      return source_bundle, nil, LocaleUtil.get_source_locale if translation_bundle.nil?
+      return source_bundle, LocaleUtil.get_source_locale if translation_bundle.nil?
       compare_source(translation_bundle, old_source_bundle, source_bundle)
     end
 
+    FALLBACK_LOCALE = :fallback_locale
     def self.compare_source(translation_bundle, old_source_bundle, source_bundle)
       return translation_bundle if source_bundle.nil? || old_source_bundle.nil?
  
-      fallback_keys = Set.new
       old_source_messages = old_source_bundle['messages']
       translation_messages = translation_bundle['messages']
       translation_bundle['messages'] = new_translation_messages = {}
       source_bundle['messages'].each do |key, value|
-        new_translation_messages[key] = if old_source_messages[key] == value
-                                          translation_messages[key] || value
-                                        else
-                                          value
-                                        end
-        fallback_keys.add(key) if new_translation_messages[key] == value
+        translation = translation_messages[key]
+        if old_source_messages[key] == value && !translation.nil?
+          new_translation_messages[key] = translation
+        else
+          new_translation_messages[key] = value
+          new_translation_messages[FALLBACK_LOCALE] ||= Hash.new
+          new_translation_messages[FALLBACK_LOCALE][key] = LocaleUtil.get_source_locale
+        end
       end
-      fallback_keys = nil if fallback_keys.empty?
-      return translation_bundle, fallback_keys
+      translation_bundle
     end
 
     none_alive = proc { |_, thread| thread.nil? || thread.alive? == false }
@@ -138,8 +139,9 @@ module SgtnClient
     end
     @refresh_cache_operator = SingleOperation.new(none_alive, to_run) do |cache_key, _, component, locale|
       Thread.new do
-        items, fallback_keys, locale = fetch(component, locale)
-        cache_item = SgtnClient::CacheUtil.write_cache(cache_key, items, fallback_keys, locale)
+        items, locale = fetch(component, locale)
+        metadata = {FALLBACK_LOCALE => locale} unless locale.nil?
+        cache_item = SgtnClient::CacheUtil.write_cache(cache_key, items, metadata)
         # delete thread from hash after finish
         Thread.new { @refresh_cache_operator.remove_object(cache_key) }
         cache_item

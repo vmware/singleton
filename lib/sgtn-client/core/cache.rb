@@ -5,7 +5,7 @@ require 'date'
 
 module SgtnClient::Core
         class Cache
-            Entry = Struct.new(:expiry, :items, :fallback_keys, :fallback_locale)
+            Entry = Struct.new(:expiry, :items, :metadata)
 
             def self.initialize(disabled=false, opts={})
                 @@opts = opts
@@ -18,12 +18,11 @@ module SgtnClient::Core
                 return @@data&.dig(key)
             end
 
-            def self.put(key, items, ttl=nil, fallback_keys=nil, fallback_locale=nil)
-                fallback_keys = nil if !fallback_keys.nil? && fallback_keys.empty?
+            def self.put(key, items, ttl=nil, metadata=nil)
                 ttl ||= @@opts[:ttl]
                 # hours from new
                 SgtnClient.logger.debug "[Cache][put]put cache for key '" + key + "' with expired time at'" + (Time.now + ttl*60).to_s
-                @@data[key] = Entry.new(Time.now + ttl*60, items, fallback_keys, fallback_locale)
+                @@data[key] = Entry.new(Time.now + ttl*60, items, metadata)
             end
 
             def self.clear

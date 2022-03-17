@@ -18,7 +18,7 @@ module SgtnClient
       SgtnClient.logger.debug '[CacheUtil]clear cache'
     end
 
-    def self.write_cache(cache_key, items, fallback_keys=nil, fallback_locale=nil)
+    def self.write_cache(cache_key, items, metadata=nil)
       return nil if items.nil? || items&.empty?
 
       env = SgtnClient::Config.default_environment
@@ -26,7 +26,7 @@ module SgtnClient
       # expired after 24 hours
       cache_expiry_period = 24 * 60 if cache_expiry_period.nil?
       SgtnClient.logger.debug "[CacheUtil]write cache with key #{cache_key}, cache_expiry_period #{cache_expiry_period}"
-      SgtnClient::Core::Cache.put(cache_key, items, cache_expiry_period, fallback_keys, fallback_locale)
+      SgtnClient::Core::Cache.put(cache_key, items, cache_expiry_period, metadata)
     end
 
     def self.get_cachekey(component, locale)
