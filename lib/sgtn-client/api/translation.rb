@@ -61,8 +61,7 @@ module SgtnClient
       elsif CacheUtil.is_expired(cache_item) && locale != LocaleUtil.get_source_locale # local source never expires.
         refresh_cache(component, locale) # refresh in background
       end
-
-      return cache_item
+      cache_item
     end
 
     def self.load(component, locale)
