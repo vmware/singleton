@@ -8,9 +8,8 @@ module SgtnClient
 
   class CacheUtil
     def self.get_cache(cache_key)
-      cache_item = SgtnClient::Core::Cache.get(cache_key)
       SgtnClient.logger.debug "[CacheUtil]get cache with key #{cache_key}"
-      cache_item
+      SgtnClient::Core::Cache.get(cache_key)
     end
 
     def self.clear_cache
