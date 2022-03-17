@@ -1,9 +1,10 @@
 # Copyright 2022 VMware, Inc.
 # SPDX-License-Identifier: EPL-2.0
+require 'set'
 
 module SgtnClient
-  DEFAULT_LOCALES = %w[en de es fr ko ja zh-Hans zh-Hant].freeze
-
+  SUPPORTED_LOCALES = %w[en de es fr ko ja zh-Hans zh-Hant zh de-CH].freeze # TODO get this from service in online mode
+  
   MAP_LOCALES = {
     'zh-CN' => 'zh-Hans',
     'zh-TW' => 'zh-Hant',
@@ -18,22 +19,20 @@ module SgtnClient
       locale = locale.to_s
       return get_default_locale if locale.empty?
 
-      fallback(locale)
+      get_best_match(locale)
     end
 
     def self.is_source_locale(locale = nil)
       locale == get_source_locale
     end
 
-    def self.fallback(locale)
-      found = SgtnClient::DEFAULT_LOCALES.select { |e| e == locale }
-      return found[0] unless found.empty?
-      return SgtnClient::MAP_LOCALES[locale] if SgtnClient::MAP_LOCALES.key?(locale)
+    def self.get_best_match(locale)
+      locale = SgtnClient::MAP_LOCALES[locale] if SgtnClient::MAP_LOCALES.key?(locale)
 
-      parts = locale.split('-')
-      if parts.size > 1
-        f = SgtnClient::DEFAULT_LOCALES.select { |e| e == parts[0] }
-        return f[0] unless f.empty?
+      while locale.length > 0 do
+        return locale if SUPPORTED_LOCALES.include?(locale)
+        return LocaleUtil.get_source_locale if locale.index('-').nil?
+        locale = locale.slice(0..(locale.rindex('-')-1))  
       end
       locale
     end
@@ -46,5 +45,7 @@ module SgtnClient
       env = SgtnClient::Config.default_environment
       SgtnClient::Config.configurations[env]['default_language'] || 'en'
     end
+
+    private_class_method :get_best_match
   end
 end
