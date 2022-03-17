@@ -28,6 +28,7 @@ module SgtnClient
           str.to_plural_s(LocaleUtil.get_source_locale, plural_args) if str
         end
       else
+        locale = get_cs(component, locale)&.dig('messages', FALLBACK_LOCALE, key) || locale
         str.to_plural_s(locale, plural_args)
       end
     end
@@ -124,6 +125,7 @@ module SgtnClient
       compare_source(translation_bundle, old_source_bundle, source_bundle)
     end
 
+    FALLBACK_LOCALE = :fallback_locale
     def self.compare_source(translation_bundle, old_source_bundle, source_bundle)
       return translation_bundle if translation_bundle.nil? || source_bundle.nil? || old_source_bundle.nil?
 
@@ -131,11 +133,14 @@ module SgtnClient
       translation_messages = translation_bundle['messages']
       translation_bundle['messages'] = new_translation_messages = {}
       source_bundle['messages'].each do |key, value|
-        new_translation_messages[key] = if old_source_messages[key] == value
-                                          translation_messages[key] || value
-                                        else
-                                          value
-                                        end
+        translation = translation_messages[key]
+        if old_source_messages[key] == value && !translation.nil?
+          new_translation_messages[key] = translation
+        else
+          new_translation_messages[key] = value
+          new_translation_messages[FALLBACK_LOCALE] ||= Hash.new
+          new_translation_messages[FALLBACK_LOCALE][key] = LocaleUtil.get_source_locale
+        end
       end
       translation_bundle
     end
