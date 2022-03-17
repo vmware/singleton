@@ -197,7 +197,7 @@ describe "Translation test" do
         it "Get a component's translations en-US" do
             RequestStore.store[:locale] = "en-US"
             RequestStore.store[:component] = 'about'
-            expect(SgtnClient::T.c()["messages"]["about.description"]).to eq(nil)
+            expect(SgtnClient::T.c()["messages"]["about.description"]).to eq("Use this area to provide additional information")
         end
 
         it "Get a component's translations zh-CN" do
