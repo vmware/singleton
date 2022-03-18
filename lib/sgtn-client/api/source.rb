@@ -27,7 +27,7 @@ module SgtnClient
       bundlepath = source_bundle + '/' + component + '/' + locale + '.yml'
       begin
         bundle = SgtnClient::FileUtil.read_yml(bundlepath)
-        return { 'component' => component, 'locale' => locale, 'messages' => bundle&.first&.last }
+        return { 'component' => component, 'locale' => LocaleUtil.get_source_locale, 'messages' => bundle&.first&.last }
       rescue StandardError => e
         SgtnClient.logger.error e.message
       end
