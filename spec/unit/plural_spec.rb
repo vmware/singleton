@@ -12,16 +12,16 @@ describe SgtnClient do
       SgtnClient::Source.loadBundles("default")
     end
 
-    it "getString_p_key_does_not_exist_in_bundle_use_source" do
+    it "getString_p_bundle_does_not_exist_use_fallback_bundle" do
+      expect(SgtnClient::Translation.getString_p("JAVA", "plural_key", { :cat_count => 1 }, "zh-Hant")).to eq 'there is one cat in the room'
+    end
+    
+    it "plural_fallback" do
       expect(SgtnClient::Translation.getString_p("JAVA", "plural_key", { :cat_count => 1 }, "zh-Hans")).to eq 'there is one cat in the room'
       expect(SgtnClient::Translation.getString_p("JAVA", "plural_key", { :cat_count => 0 }, "zh-Hans")).to eq 'there are 0 cats in the room'
       expect(SgtnClient::Translation.getString_p("JAVA", "plural_key", { :cat_count => 5 }, "zh-Hans")).to eq 'there are 5 cats in the room'
       expect(SgtnClient::Translation.getString_p("JAVA", "plural_key", { :cat_count => 3 }, "zh-Hans")).to eq 'there are 3 cats in the room'
       expect(SgtnClient::Translation.getString_p("JAVA", "plural_key", { :cat_count => 2 }, "zh-Hans")).to eq 'there are 2 cats in the room'
-    end
-
-    it "getString_p_bundle_does_not_exist_use_fallback_bundle" do
-      expect(SgtnClient::Translation.getString_p("JAVA", "plural_key", { :cat_count => 1 }, "zh-Hant")).to eq 'there is one cat in the room'
     end
 
     it "plural_normal" do

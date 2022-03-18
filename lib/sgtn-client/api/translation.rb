@@ -4,6 +4,7 @@
 module SgtnClient
   autoload :SingleOperation, 'sgtn-client/common'
   autoload :CacheUtil, 'sgtn-client/util/cache-util'
+  autoload :StringUtil, 'sgtn-client/util/string-util'
 
   module Core
     autoload :Request, 'sgtn-client/core/request'
@@ -20,7 +21,8 @@ module SgtnClient
       locale = SgtnClient::LocaleUtil.get_best_locale(locale)
       cache_item = get_cs(component, locale)
       str = cache_item&.dig(:items, 'messages', key)
-      locale = cache_item&.dig(:metadata, FALLBACK_LOCALE) || cache_item&.dig(:items, 'messages', FALLBACK_LOCALE, key) || locale
+      locale = cache_item&.dig(:metadata, FALLBACK_LOCALE) || locale
+      locale = str.locale if str.is_a?(SgtnClient::StringUtil)
       str.to_plural_s(locale, plural_args)
     end
 
@@ -120,12 +122,10 @@ module SgtnClient
       translation_bundle['messages'] = new_translation_messages = {}
       source_bundle['messages'].each do |key, value|
         translation = translation_messages[key]
-        if old_source_messages[key] == value && !translation.nil?
-          new_translation_messages[key] = translation
-        else
-          new_translation_messages[key] = value
-          new_translation_messages[FALLBACK_LOCALE] ||= Hash.new
-          new_translation_messages[FALLBACK_LOCALE][key] = LocaleUtil.get_source_locale
+        new_translation_messages[key] = if old_source_messages[key] == value && !translation.nil?
+                                          translation
+                                        else
+                                          SgtnClient::StringUtil.new(value, LocaleUtil.get_source_locale)
         end
       end
       translation_bundle
