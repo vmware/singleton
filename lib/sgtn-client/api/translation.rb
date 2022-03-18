@@ -67,11 +67,12 @@ module SgtnClient
     def self.get_cs(component, locale)
       cache_key = SgtnClient::CacheUtil.get_cachekey(component, locale)
       SgtnClient.logger.debug "[Translation][get_cs]cache_key=#{cache_key}"
-      expired, items = SgtnClient::CacheUtil.get_cache(cache_key)
+      cache_item = SgtnClient::CacheUtil.get_cache(cache_key)
+      items = cache_item&.dig(:items)
       if items.nil?
         items = refresh_cache(component, locale).value # refresh synchronously if not in cache
         # TODO: if an error occurs when requesting a bundle, need to avoid more requests
-      elsif expired && locale != LocaleUtil.get_source_locale # local source never expires.
+      elsif CacheUtil.is_expired(cache_item) && locale != LocaleUtil.get_source_locale # local source never expires.
         refresh_cache(component, locale) # refresh in background
       end
 
@@ -142,8 +143,8 @@ module SgtnClient
 
     none_alive = proc { |_, thread| thread.nil? || thread.alive? == false }
     to_run = proc do |cache_key|
-      expired, items = SgtnClient::CacheUtil.get_cache(cache_key)
-      expired || items.nil?
+      cache_item = SgtnClient::CacheUtil.get_cache(cache_key)
+      cache_item&.dig(:items).nil? || CacheUtil.is_expired(cache_item)
     end
     @refresh_cache_operator = SingleOperation.new(none_alive, to_run) do |cache_key, _, component, locale|
       Thread.new do
