@@ -53,21 +53,6 @@ public class TranslationSyncServerController {
     @Autowired
     TranslationSyncServerService translationSyncServerService;
 
-    @ExceptionHandler(Exception.class)
-    @ResponseStatus(HttpStatus.OK)
-    public void processMethod(Exception e, HttpServletRequest request,
-            HttpServletResponse response) throws IOException {
-        LOGGER.error("abnormal server:{}", e.getLocalizedMessage(), e);
-        response.setCharacterEncoding(ConstantsUnicode.UTF8);
-        response.setContentType("application/json; charset=utf-8");
-        APIResponseDTO apiResponseDTO = new APIResponseDTO();
-        apiResponseDTO.setResponse(APIResponseStatus.INTERNAL_SERVER_ERROR);
-        ObjectMapper mapper = new ObjectMapper();
-        String responseJson = mapper.writeValueAsString(apiResponseDTO);
-        response.getWriter().printf(responseJson);
-        response.flushBuffer();
-    }
-
     /**
      * Synchronize the latest translation from GRM or other third party.
      * <p>
