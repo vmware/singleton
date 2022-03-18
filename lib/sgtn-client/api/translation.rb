@@ -137,9 +137,7 @@ module SgtnClient
         new_translation_messages[key] = if old_source_messages[key] == value && !translation.nil?
                                           translation
                                         else
-                                          value = SgtnClient::StringUtil.new value
-                                          value.locale = LocaleUtil.get_source_locale
-                                          value
+                                          SgtnClient::StringUtil.new(value, LocaleUtil.get_source_locale)
         end
       end
       translation_bundle

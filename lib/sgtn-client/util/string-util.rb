@@ -3,6 +3,10 @@
 
 module SgtnClient
   class StringUtil < String
+    def initialize(str, locale)
+      super(str)
+      @locale = locale
+    end
     attr_accessor :locale
   end
 end 
