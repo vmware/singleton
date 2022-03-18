@@ -18,7 +18,7 @@ module SgtnClient
     end
 
     def self.write_cache(cache_key, items)
-      return nil if items.nil?
+      return nil if items.nil? || items.empty?
 
       env = SgtnClient::Config.default_environment
       cache_expiry_period = SgtnClient::Config.configurations[env]['cache_expiry_period']
