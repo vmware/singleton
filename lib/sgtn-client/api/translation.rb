@@ -4,6 +4,7 @@
 module SgtnClient
   autoload :SingleOperation, 'sgtn-client/common'
   autoload :CacheUtil, 'sgtn-client/util/cache-util'
+  autoload :StringUtil, 'sgtn-client/util/string-util'
 
   module Core
     autoload :Request, 'sgtn-client/core/request'
@@ -28,6 +29,7 @@ module SgtnClient
           str.to_plural_s(LocaleUtil.get_source_locale, plural_args) if str
         end
       else
+        locale = str.locale if str.is_a?(SgtnClient::StringUtil)
         str.to_plural_s(locale, plural_args)
       end
     end
@@ -130,11 +132,12 @@ module SgtnClient
       translation_messages = translation_bundle['messages']
       translation_bundle['messages'] = new_translation_messages = {}
       source_bundle['messages'].each do |key, value|
-        new_translation_messages[key] = if old_source_messages[key] == value
-                                          translation_messages[key] || value
+        translation = translation_messages[key]
+        new_translation_messages[key] = if old_source_messages[key] == value && !translation.nil?
+                                          translation
                                         else
-                                          value
-                                        end
+                                          SgtnClient::StringUtil.new(value, LocaleUtil.get_source_locale)
+        end
       end
       translation_bundle
     end
