@@ -27,6 +27,7 @@ module SgtnClient
     end
 
     def self.get_best_match(locale)
+      locale = locale.gsub('_', '-')
       locale = SgtnClient::MAP_LOCALES[locale] if SgtnClient::MAP_LOCALES.key?(locale)
       return locale if SUPPORTED_LOCALES.include?(locale)
       return LocaleUtil.get_source_locale if locale.index('-').nil?
