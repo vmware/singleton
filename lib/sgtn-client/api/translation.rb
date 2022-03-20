@@ -11,42 +11,39 @@ module SgtnClient
   end
 
   module Translation
-    def self.getString(component, key, locale)
-      SgtnClient.logger.debug "[Translation.getString]component: #{component}, key: #{key}, locale: #{locale}"
+    def self.getString(component, key, locale, *args, **kwargs)
+      SgtnClient.logger.debug "[Translation.getString]component: #{component}, key: #{key}, locale: #{locale}, args: #{args}"
+      locale = LocaleUtil.get_best_locale(locale)
       str = getTranslation(component, key, locale)
-      if str.nil? && !LocaleUtil.is_source_locale(locale)
-        str = getTranslation(component, key, LocaleUtil.get_source_locale)
+      if str
+        locale = str.locale if str.is_a?(SgtnClient::StringUtil)
+      elsif !LocaleUtil.is_source_locale(locale)
+        locale = LocaleUtil.get_source_locale
+        str = getTranslation(component, key, locale)
       end
-      str
+      return if str.nil?
+
+      if !kwargs.empty?
+        str.localize(locale) % kwargs
+      elsif !args.empty?
+        str.localize(locale) % args
+      else
+        str
+      end
     end
 
     def self.getString_p(component, key, plural_args, locale)
       SgtnClient.logger.debug "[Translation][getString_p]component=#{component}, key=#{key}, locale=#{locale}"
-      str = getTranslation(component, key, locale)
-      if str.nil?
-        unless LocaleUtil.is_source_locale(locale)
-          str = getTranslation(component, key, LocaleUtil.get_source_locale)
-          str.to_plural_s(LocaleUtil.get_source_locale, plural_args) if str
-        end
-      else
-        locale = str.locale if str.is_a?(SgtnClient::StringUtil)
-        str.to_plural_s(locale, plural_args)
-      end
+      getString(component, key, locale, **plural_args)
     end
 
     def self.getString_f(component, key, args, locale, *optionals)
       SgtnClient.logger.debug "[Translation][getString_f]component=#{component}, key=#{key}, locale=#{locale}"
-      s = getString(component, key, locale, *optionals)
-      return nil if s.nil?
-
       if args.is_a?(Hash)
-        args.each do |source, arg|
-          s.gsub! "{#{source}}", arg
-        end
+        getString(component, key, locale, *optionals, **args)
       elsif args.is_a?(Array)
-        s = s % args
+        getString(component, key, locale, *args, *optionals)
       end
-      s
     end
 
     def self.getStrings(component, locale)
@@ -61,9 +58,7 @@ module SgtnClient
     end
 
     def self.getTranslation(component, key, locale)
-      locale = SgtnClient::LocaleUtil.get_best_locale(locale)
-      items = get_cs(component, locale)
-      items&.dig('messages', key)
+      get_cs(component, locale)&.dig('messages', key)
     end
 
     def self.get_cs(component, locale)
@@ -138,7 +133,7 @@ module SgtnClient
                                           translation
                                         else
                                           SgtnClient::StringUtil.new(value, LocaleUtil.get_source_locale)
-        end
+                                        end
       end
       translation_bundle
     end
