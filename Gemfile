@@ -16,4 +16,5 @@ group :test do
   gem 'rspec'
   gem 'webmock'
   gem 'pry-byebug', require: true
+  gem 'pry-inline', require: true
 end
