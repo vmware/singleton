@@ -199,9 +199,6 @@ public class TranslationProductComponentKeyAction extends BaseAction {
 			   throw new ValidationException(ValidationMsg.SOURCEFORMAT_NOT_VALIDE);
 			}
 			
-			if (StringUtils.isEmpty(key) || !RegExpValidatorUtils.isLetterNumbPoundAndValidchar(key)) {
-				throw new ValidationException(ValidationMsg.KEY_NOT_VALIDE);
-			}
 		}
 					
 	}
