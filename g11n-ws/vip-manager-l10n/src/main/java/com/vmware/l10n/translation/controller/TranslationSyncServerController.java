@@ -14,7 +14,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -148,6 +147,7 @@ public class TranslationSyncServerController {
         }
         List<TranslationDTO> translationDTOList = null;
         try {
+            translationSyncServerService.saveCreationInfo(updateTranslationDTO);
             translationDTOList = translationSyncServerService
                     .updateBatchTranslation(componentMessagesDTOList);
         } catch (L10nAPIException e) {
@@ -162,7 +162,6 @@ public class TranslationSyncServerController {
             response.setData(translationDTOList);
             response.setResponse(APIResponseStatus.OK);
         }
-        translationSyncServerService.saveCreationInfo(updateTranslationDTO);
         return response;
     }
 }
