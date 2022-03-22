@@ -4,13 +4,9 @@
  */
 package com.vmware.vip.i18n.api.v1.translation;
 
-import java.io.IOException;
-
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,13 +32,6 @@ import io.swagger.annotations.ApiOperation;
 @RestController
 public class TranslationSyncAPI extends TranslationSyncAction {
 	
-	@ExceptionHandler(Exception.class)
-	@ResponseStatus(HttpStatus.OK)
-	public void processMethod(Exception e, HttpServletRequest request,
-			HttpServletResponse response) throws IOException {
-		super.processMethod(e, request, response);
-	}
-
 	/**
 	 * Synchronize the latest translation from GRM or other third party.
 	 * <p>
