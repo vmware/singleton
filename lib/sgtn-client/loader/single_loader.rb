@@ -9,22 +9,23 @@ module SgtnClient::TranslationData::SingleLoader
   def load_bundle(component, locale)
     @single_loader ||= begin
       none_alive = proc { |_, thread| thread.nil? || thread.alive? == false }
-      to_run = proc do |cache_key|
-        cache_item = SgtnClient::CacheUtil.get_cache(cache_key)
+      to_run = proc do |id|
+        cache_item = SgtnClient::CacheUtil.get_cache(id)
         cache_item&.dig(:items).nil? || CacheUtil.is_expired(cache_item)
       end
-
-      SingleOperation.new(none_alive, to_run) do |cache_key, _, component, locale|
+      creator = proc do |id, _, c, l|
         Thread.new do
-          cache_item = SgtnClient::CacheUtil.write_cache(cache_key, super(component, locale))
+          cache_item = SgtnClient::CacheUtil.write_cache(id, super(c, l))
           # delete thread from hash after finish
-          Thread.new { @single_loader.remove_object(cache_key) }
+          Thread.new { @single_loader.remove_object(id) }
           cache_item
         end
       end
+
+      SingleOperation.new(none_alive, to_run, &creator)
     end
 
-    cache_key = SgtnClient::CacheUtil.get_cachekey(component, locale)
-    @single_loader.operate(cache_key, component, locale).value
+    id = SgtnClient::CacheUtil.get_cachekey(component, locale)
+    @single_loader.operate(id, component, locale).value
   end
 end
