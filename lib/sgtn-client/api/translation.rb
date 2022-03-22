@@ -4,7 +4,7 @@
 module SgtnClient
   autoload :StringUtil, 'sgtn-client/util/string-util'
 
-  module TranslationData
+  module TranslationLoader
     autoload :LocalBundle, 'sgtn-client/loader/local_bundle'
     autoload :ServerBundle, 'sgtn-client/loader/server_bundle'
     autoload :SourceComparer, 'sgtn-client/loader/source_comparer'
@@ -90,14 +90,14 @@ module SgtnClient
         SgtnClient.logger.debug "[Translation][init_translations]mode=#{mode}"
 
         if mode == 'offline'
-          extend SgtnClient::TranslationData::LocalBundle
+          extend SgtnClient::TranslationLoader::LocalBundle
         else
-          extend SgtnClient::TranslationData::ServerBundle
+          extend SgtnClient::TranslationLoader::ServerBundle
         end
 
-        extend SgtnClient::TranslationData::SourceComparer
-        extend SgtnClient::TranslationData::SingleLoader
-        extend SgtnClient::TranslationData::Cache
+        extend SgtnClient::TranslationLoader::SourceComparer
+        extend SgtnClient::TranslationLoader::SingleLoader
+        extend SgtnClient::TranslationLoader::Cache
 
         load_translations
         @initialized = true

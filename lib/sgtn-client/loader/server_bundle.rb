@@ -5,7 +5,7 @@ module SgtnClient::Core
   autoload :Request, 'sgtn-client/core/request'
 end
 
-module SgtnClient::TranslationData::ServerBundle
+module SgtnClient::TranslationLoader::ServerBundle
   def load_bundle(component, locale)
     env = SgtnClient::Config.default_environment
     product_name = SgtnClient::Config.configurations[env]['product_name']

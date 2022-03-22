@@ -4,14 +4,14 @@
 module SgtnClient
   autoload :Source, 'sgtn-client/loader/local_source_bundle'
 end
-module SgtnClient::TranslationData::SourceComparer
+module SgtnClient::TranslationLoader::SourceComparer
   def load_bundle(component, locale)
     # source locale always uses source bundles
-    return Source.load_bundle(component) if LocaleUtil.is_source_locale(locale)
+    return SgtnClient::Source.load_bundle(component) if SgtnClient::LocaleUtil.is_source_locale(locale)
 
     translation_bundle_thread = Thread.new { super(component, locale) }
-    old_source_bundle = super(component, LocaleUtil.get_source_locale)
-    source_bundle = get_cs(component, LocaleUtil.get_source_locale)
+    old_source_bundle = super(component, SgtnClient::LocaleUtil.get_source_locale)
+    source_bundle = get_cs(component, SgtnClient::LocaleUtil.get_source_locale)
     translation_bundle = translation_bundle_thread.value
 
     compare_source(translation_bundle, old_source_bundle, source_bundle)
@@ -30,7 +30,7 @@ module SgtnClient::TranslationData::SourceComparer
       new_translation_messages[key] = if old_source_messages[key] == value && !translation.nil?
                                         translation
                                       else
-                                        SgtnClient::StringUtil.new(value, LocaleUtil.get_source_locale)
+                                        SgtnClient::StringUtil.new(value, SgtnClient::LocaleUtil.get_source_locale)
                                       end
     end
     translation_bundle
