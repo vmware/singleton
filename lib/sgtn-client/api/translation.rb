@@ -96,7 +96,6 @@ module SgtnClient
         end
 
         extend SgtnClient::TranslationLoader::SourceComparer
-        extend SgtnClient::TranslationLoader::SingleLoader
         extend SgtnClient::TranslationLoader::Cache
 
         load_translations
