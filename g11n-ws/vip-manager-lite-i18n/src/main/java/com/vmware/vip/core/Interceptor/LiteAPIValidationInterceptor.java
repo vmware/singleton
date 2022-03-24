@@ -355,7 +355,7 @@ public class LiteAPIValidationInterceptor extends HandlerInterceptorAdapter {
 		if (StringUtils.isEmpty(sourceformat)) {
 			return;
 		}
-		if (!ConstantsKeys.SOURCE_FORMAT_LIST.contains(sourceformat)) {
+		if (!ConstantsKeys.SOURCE_FORMAT_LIST.contains(sourceformat.toUpperCase())) {
 			throw new ValidationException(ValidationMsg.SOURCEFORMAT_NOT_VALIDE);
 		}
 	}
