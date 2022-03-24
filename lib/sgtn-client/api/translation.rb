@@ -10,6 +10,7 @@ module SgtnClient
     autoload :SourceComparer, 'sgtn-client/loader/source_comparer'
     autoload :SingleLoader, 'sgtn-client/loader/single_loader'
     autoload :Cache, 'sgtn-client/loader/cache'
+    autoload :Chain, 'sgtn-client/loader/chain_loader'
   end
 
   module Translation
@@ -75,7 +76,7 @@ module SgtnClient
 
     def self.load_bundle(component, locale)
       init_translations unless initialized?
-      super
+      @loader.load_bundle(component, locale)
     end
 
     class << self
@@ -85,19 +86,20 @@ module SgtnClient
 
       def init_translations
         # TODO: Lock to initialize?
-        env = SgtnClient::Config.default_environment
-        mode = SgtnClient::Config.configurations[env]['bundle_mode']
-        SgtnClient.logger.debug "[Translation][init_translations]mode=#{mode}"
+        @loader ||= begin
+          loader_class = Class.new(SgtnClient::TranslationLoader::Chain)
+          loader_class.include SgtnClient::TranslationLoader::SourceComparer
+          loader_class.include SgtnClient::TranslationLoader::Cache
 
-        if mode == 'offline'
-          extend SgtnClient::TranslationLoader::LocalBundle
-        else
-          extend SgtnClient::TranslationLoader::ServerBundle
+          env = SgtnClient::Config.default_environment
+          mode = SgtnClient::Config.configurations[env]['bundle_mode']
+          SgtnClient.logger.debug "[Translation][init_translations]mode=#{mode}"
+          if mode == 'offline'
+            loader_class.new(SgtnClient::TranslationLoader::LocalBundle.new)
+          else
+            loader_class.new(SgtnClient::TranslationLoader::ServerBundle.new)
+          end
         end
-
-        extend SgtnClient::TranslationLoader::SourceComparer
-        extend SgtnClient::TranslationLoader::Cache
-
         load_translations
         @initialized = true
       end
