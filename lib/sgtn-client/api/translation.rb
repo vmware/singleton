@@ -87,9 +87,10 @@ module SgtnClient
       def init_translations
         # TODO: Lock to initialize?
         @loader ||= begin
-          loader_class = Class.new(SgtnClient::TranslationLoader::Chain)
-          loader_class.include SgtnClient::TranslationLoader::SourceComparer
-          loader_class.include SgtnClient::TranslationLoader::Cache
+          loader_class = Class.new(SgtnClient::TranslationLoader::Chain) do
+            include SgtnClient::TranslationLoader::SourceComparer
+            include SgtnClient::TranslationLoader::Cache
+          end
 
           env = SgtnClient::Config.default_environment
           mode = SgtnClient::Config.configurations[env]['bundle_mode']
