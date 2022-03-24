@@ -11,9 +11,8 @@ module SgtnClient::TranslationLoader::Cache
     SgtnClient.logger.debug "[Translation][get_cs]cache_key=#{cache_key}"
     cache_item = SgtnClient::CacheUtil.get_cache(cache_key)
     if cache_item.nil?
-      # cache_item = populate_cache(cache_key, component, locale) {|c, l| super(c, l) }
-      load_thread = (single_loader { |c, l| super(c, l) }) .operate(cache_key, component, locale)
-      cache_item = load_thread.value # refresh synchronously if not in cache
+      # refresh synchronously if not in cache
+      cache_item = (single_loader { |c, l| super(c, l) }).operate(cache_key, component, locale).value 
       # TODO: if an error occurs when requesting a bundle, need to avoid more requests
     elsif SgtnClient::CacheUtil.is_expired(cache_item) && locale != SgtnClient::LocaleUtil.get_source_locale # local source never expires.
       @single_loader.operate(cache_key, component, locale) # refresh in background
@@ -32,6 +31,7 @@ module SgtnClient::TranslationLoader::Cache
       end
       creator = proc do |id, _, c, l|
         Thread.new do
+          SgtnClient.logger.debug "Refreshing cache for #{c}/#{l}"
           cache_item = SgtnClient::CacheUtil.write_cache(id, yield(c, l))
           # delete thread from hash after finish
           Thread.new { @single_loader.remove_object(id) }
