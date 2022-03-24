@@ -8,7 +8,7 @@ end
 module SgtnClient::TranslationLoader::Cache
   def load_bundle(component, locale)
     cache_key = SgtnClient::CacheUtil.get_cachekey(component, locale)
-    SgtnClient.logger.debug "[Translation][get_cs]cache_key=#{cache_key}"
+    SgtnClient.logger.debug "[#{self.to_s}][#{__FILE__}][#{__method__}] cache_key=#{cache_key}"
     cache_item = SgtnClient::CacheUtil.get_cache(cache_key)
     if cache_item.nil?
       # refresh synchronously if not in cache
