@@ -476,6 +476,55 @@
 						"dataType": "string"
 					}
 				]
+			},
+			{
+				"name": "getKeysTranslationUsingGET",
+				"path": "/i18n/api/v2/translation/products/{productName}/versions/{version}/locales/{locale}/components/{component}/keys",
+				"description": "Get multiple key’s translation in specific component",
+				"method": "get",
+				"params": [{
+						"name": "productName",
+						"required": true,
+						"desc": "",
+						"paramType": "path",
+						"dataType": "string"
+					},
+					{
+						"name": "version",
+						"required": true,
+						"desc": "",
+						"paramType": "path",
+						"dataType": "string"
+					},
+					{
+						"name": "locale",
+						"required": true,
+						"desc": "",
+						"paramType": "path",
+						"dataType": "string"
+					},
+					{
+						"name": "component",
+						"required": true,
+						"desc": "",
+						"paramType": "path",
+						"dataType": "string"
+					},
+					{
+						"name": "keys",
+						"required": true,
+						"desc": "",
+						"paramType": "query",
+						"dataType": "string"
+					},
+					{
+						"name": "pseudo",
+						"required": false,
+						"desc": "",
+						"paramType": "query",
+						"dataType": "string"
+					}
+				]
 			}
 			]
 		},
