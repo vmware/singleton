@@ -37,6 +37,9 @@ public class WebConfiguration implements WebMvcConfigurer {
 
 	@Value("${csp.api.auth.enable:false}")
 	private String cspAuthFlag;
+	
+	@Value("${source.collect.request.max-size:10485760}")
+	private Integer sourceCollectReqSize;
 
 	@Autowired
 	private TokenService tokenService;
@@ -86,6 +89,9 @@ public class WebConfiguration implements WebMvcConfigurer {
 		logger.info("add source collection validation interceptor");
 		registry.addInterceptor(new CollectSourceValidationInterceptor(allowlistUtils.getAllowList()))
 		.addPathPatterns(L10nI18nAPI.BASE_COLLECT_SOURCE_PATH + "/api/v2/translation/**", L10nI18nAPI.BASE_COLLECT_SOURCE_PATH + "/api/v1/translation/**");
+		registry.addInterceptor(new CollectSourceReqBodyInterceptor(this.sourceCollectReqSize))
+		.addPathPatterns(L10nI18nAPI.BASE_COLLECT_SOURCE_PATH+"/i18n/l10n/api/v2/translation/products/**");
+	
 	}
 	
 	@Bean

@@ -91,6 +91,9 @@ public class WebConfiguration implements WebMvcConfigurer {
 	
 	@Value("${config.client.requestIds:}")
 	private String requestIdsStr; 
+	
+	@Value("${source.request.max-size:10485760}")
+	private Integer sourceReqBodySize; 
 
 	@Autowired
 	private TokenService tokenService;
@@ -154,7 +157,7 @@ public class WebConfiguration implements WebMvcConfigurer {
 		// Source collection
 		if (sourceCacheFlag.equalsIgnoreCase("true")) {
 			logger.info("add enable Source collection interceptor");
-			registry.addInterceptor(new APISourceInterceptor(sourceCacheServerUrl))
+			registry.addInterceptor(new APISourceInterceptor(sourceCacheServerUrl, this.sourceReqBodySize))
 					.addPathPatterns(API.I18N_API_ROOT + APIV1.V + "/**")
 					.addPathPatterns(API.I18N_API_ROOT + APIV2.V + "/**");
 		}
