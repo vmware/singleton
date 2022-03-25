@@ -90,7 +90,7 @@ public class WebConfiguration implements WebMvcConfigurer {
 		registry.addInterceptor(new CollectSourceValidationInterceptor(allowlistUtils.getAllowList()))
 		.addPathPatterns(L10nI18nAPI.BASE_COLLECT_SOURCE_PATH + "/api/v2/translation/**", L10nI18nAPI.BASE_COLLECT_SOURCE_PATH + "/api/v1/translation/**");
 		registry.addInterceptor(new CollectSourceReqBodyInterceptor(this.sourceCollectReqSize))
-		.addPathPatterns(L10nI18nAPI.BASE_COLLECT_SOURCE_PATH+"/i18n/l10n/api/v2/translation/products/**");
+		.addPathPatterns(L10nI18nAPI.BASE_COLLECT_SOURCE_PATH + "/api/v2/translation/products/**");
 	
 	}
 	
