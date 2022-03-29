@@ -18,6 +18,7 @@ end
 Bundler.require :default, :test
 
 require 'singleton-ruby'
+require 'sgtn-client/api/source'
 
 include SgtnClient
 include SgtnClient::Logging

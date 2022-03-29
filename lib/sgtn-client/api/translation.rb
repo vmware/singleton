@@ -76,7 +76,7 @@ module SgtnClient
 
     def self.load_bundle(component, locale)
       init_translations unless initialized?
-      @loader.load_bundle(component, locale)
+      SgtnClient::Config.loader.load_bundle(component, locale)
     end
 
     class << self
@@ -85,22 +85,6 @@ module SgtnClient
       end
 
       def init_translations
-        # TODO: Lock to initialize?
-        @loader ||= begin
-          loader_class = Class.new(SgtnClient::TranslationLoader::Chain) do
-            include SgtnClient::TranslationLoader::SourceComparer
-            include SgtnClient::TranslationLoader::Cache
-          end
-
-          env = SgtnClient::Config.default_environment
-          mode = SgtnClient::Config.configurations[env]['bundle_mode']
-          SgtnClient.logger.debug "[Translation][init_translations]mode=#{mode}"
-          if mode == 'offline'
-            loader_class.new(SgtnClient::TranslationLoader::LocalBundle.new)
-          else
-            loader_class.new(SgtnClient::TranslationLoader::ServerBundle.new)
-          end
-        end
         load_translations
         @initialized = true
       end

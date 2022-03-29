@@ -4,8 +4,21 @@
 require 'erb'
 require 'yaml'
 
+
 module SgtnClient
   #include Exceptions
+
+  autoload :Source, 'sgtn-client/loader/local_source_bundle'
+
+  module TranslationLoader
+    autoload :LocalBundle, 'sgtn-client/loader/local_bundle'
+    autoload :ServerBundle, 'sgtn-client/loader/server_bundle'
+    autoload :SourceComparer, 'sgtn-client/loader/source_comparer'
+    autoload :SingleLoader, 'sgtn-client/loader/single_loader'
+    autoload :Cache, 'sgtn-client/loader/cache'
+    autoload :Chain, 'sgtn-client/loader/chain_loader'
+  end
+
   module Configuration
 
     def config
@@ -152,6 +165,31 @@ module SgtnClient
           Logging.logger
         end
 
+
+      def loader
+        @loader ||= begin
+          # TODO: raise error if anny problems
+          env = SgtnClient::Config.default_environment
+          config = SgtnClient::Config.configurations[env]
+          mode = config['bundle_mode']
+          SgtnClient.logger.debug "[Translation][init_translations]mode=#{mode}"
+
+          chain_loader = Class.new(SgtnClient::TranslationLoader::Chain)
+          loaders = []
+          if SgtnClient::Config.configurations[env]['source_bundle']
+            chain_loader.include SgtnClient::TranslationLoader::SourceComparer
+          end
+          chain_loader.include SgtnClient::TranslationLoader::Cache
+
+          if mode == 'offline'
+            loaders << SgtnClient::TranslationLoader::LocalBundle.new
+          else
+            loaders << SgtnClient::TranslationLoader::SgtnServer.new << SgtnClient::TranslationLoader::LocalBundle.new
+          end
+          chain_loader.new(*loaders)
+        end
+      end
+      
         private
         # Read configurations from the given file name
         # === Arguments
@@ -161,9 +199,8 @@ module SgtnClient
           erb.filename = file_name
           YAML.load(erb.result)
         end       
-          
 
-    end
+      end
   end
 
 end
