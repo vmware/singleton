@@ -14,12 +14,7 @@ module SgtnClient
         if mode != 'sandbox' && mode != 'live'
           messages =  messages + "Configuration[mode] has to be 'sandbox' or 'live'!\n"
         end
-        
-        bundle_mode = SgtnClient::Config.configurations[env]["bundle_mode"]
-        if bundle_mode != 'offline' && bundle_mode != 'online'
-          messages = messages +  "Configuration[bundle_mode] has to be 'offline' or 'online'!\n"
-        end
-        
+
         #version = SgtnClient::Config.configurations[env]["version"]
         #if version.is_a? Integer
           #messages = messages +  "Configuration[version] has to be standard as '#.#.#, e.g '1.0.0'!\n"

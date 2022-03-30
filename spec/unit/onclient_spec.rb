@@ -10,7 +10,7 @@ describe SgtnClient do
     before :each do
       env = SgtnClient::Config.default_environment
       SgtnClient::CacheUtil.clear_cache()
-      SgtnClient::Config.configurations[env]["bundle_mode"] = 'offline'
+      SgtnClient::Config.configurations[env]["vip_server"] = nil
       SgtnClient::Source.loadBundles("default")
     end
 
