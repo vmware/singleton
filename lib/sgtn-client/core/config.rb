@@ -175,7 +175,7 @@ module SgtnClient
             raise 'No translation is available!' if loaders.empty? && config['source_bundle'].nil?
 
             chain_loader = Class.new(SgtnClient::TranslationLoader::Chain)
-            chain_loader.include SgtnClient::TranslationLoader::SourceComparer  if config['source_bundle']
+            chain_loader.include SgtnClient::TranslationLoader::SourceComparer if config['source_bundle']
             chain_loader.include SgtnClient::TranslationLoader::Cache
 
             chain_loader.new(*loaders)
@@ -192,7 +192,7 @@ module SgtnClient
           YAML.load(erb.result)
         end       
 
-      end
+    end
   end
 
 end
