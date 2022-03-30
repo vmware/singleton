@@ -8,11 +8,10 @@ require 'yaml'
 module SgtnClient
   #include Exceptions
 
-  autoload :Source, 'sgtn-client/loader/source'
-
   module TranslationLoader
     autoload :LocalTranslation, 'sgtn-client/loader/local_translation'
     autoload :SgtnServer, 'sgtn-client/loader/server'
+    autoload :Source, 'sgtn-client/loader/source'
     autoload :SourceComparer, 'sgtn-client/loader/source_comparer'
     autoload :SingleLoader, 'sgtn-client/loader/single_loader'
     autoload :Cache, 'sgtn-client/loader/cache'
