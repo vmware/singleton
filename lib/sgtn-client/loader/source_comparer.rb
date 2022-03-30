@@ -2,16 +2,16 @@
 # SPDX-License-Identifier: EPL-2.0
 
 module SgtnClient
-  autoload :Source, 'sgtn-client/loader/local_source_bundle'
+  autoload :Source, 'sgtn-client/loader/source'
 end
 module SgtnClient::TranslationLoader::SourceComparer
   def load_bundle(component, locale)
     # source locale always uses source bundles
-    return SgtnClient::Source.load_bundle(component) if SgtnClient::LocaleUtil.is_source_locale(locale)
+    return SgtnClient::TranslationLoader::Source.load_bundle(component) if SgtnClient::LocaleUtil.is_source_locale(locale)
 
     translation_bundle_thread = Thread.new { super(component, locale) }
     old_source_bundle = super(component, SgtnClient::LocaleUtil.get_source_locale)
-    source_bundle = SgtnClient::Source.load_bundle(component)
+    source_bundle = SgtnClient::TranslationLoader::Source.load_bundle(component)
     translation_bundle = translation_bundle_thread.value
 
     compare_source(translation_bundle, old_source_bundle, source_bundle)

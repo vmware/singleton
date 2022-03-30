@@ -8,11 +8,11 @@ require 'yaml'
 module SgtnClient
   #include Exceptions
 
-  autoload :Source, 'sgtn-client/loader/local_source_bundle'
+  autoload :Source, 'sgtn-client/loader/source'
 
   module TranslationLoader
-    autoload :LocalBundle, 'sgtn-client/loader/local_bundle'
-    autoload :ServerBundle, 'sgtn-client/loader/server_bundle'
+    autoload :LocalTranslation, 'sgtn-client/loader/local_translation'
+    autoload :SgtnServer, 'sgtn-client/loader/server'
     autoload :SourceComparer, 'sgtn-client/loader/source_comparer'
     autoload :SingleLoader, 'sgtn-client/loader/single_loader'
     autoload :Cache, 'sgtn-client/loader/cache'
@@ -182,9 +182,9 @@ module SgtnClient
           chain_loader.include SgtnClient::TranslationLoader::Cache
 
           if mode == 'offline'
-            loaders << SgtnClient::TranslationLoader::LocalBundle.new
+            loaders << SgtnClient::TranslationLoader::LocalTranslation.new
           else
-            loaders << SgtnClient::TranslationLoader::SgtnServer.new << SgtnClient::TranslationLoader::LocalBundle.new
+            loaders << SgtnClient::TranslationLoader::SgtnServer.new << SgtnClient::TranslationLoader::LocalTranslation.new
           end
           chain_loader.new(*loaders)
         end

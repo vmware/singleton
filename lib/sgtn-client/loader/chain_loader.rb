@@ -17,10 +17,6 @@ module SgtnClient
         end
         nil
       end
-
-      def available_locales; end
-
-      def available_components; end
     end
   end
 end

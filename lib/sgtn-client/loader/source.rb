@@ -1,7 +1,7 @@
 # Copyright 2022 VMware, Inc.
 # SPDX-License-Identifier: EPL-2.0
 
-module SgtnClient
+module SgtnClient::TranslationLoader
   class Source
     def self.load_bundle(component)
       SgtnClient.logger.debug "[Source][getBundle]component=#{component}"

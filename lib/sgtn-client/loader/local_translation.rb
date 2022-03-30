@@ -1,7 +1,7 @@
 # Copyright 2022 VMware, Inc.
 # SPDX-License-Identifier: EPL-2.0
 
-class SgtnClient::TranslationLoader::LocalBundle
+class SgtnClient::TranslationLoader::LocalTranslation
   def load_bundle(component, locale)
     env = SgtnClient::Config.default_environment
     product_name = SgtnClient::Config.configurations[env]['product_name']

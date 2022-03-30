@@ -4,15 +4,6 @@
 module SgtnClient
   autoload :StringUtil, 'sgtn-client/util/string-util'
 
-  module TranslationLoader
-    autoload :LocalBundle, 'sgtn-client/loader/local_bundle'
-    autoload :ServerBundle, 'sgtn-client/loader/server_bundle'
-    autoload :SourceComparer, 'sgtn-client/loader/source_comparer'
-    autoload :SingleLoader, 'sgtn-client/loader/single_loader'
-    autoload :Cache, 'sgtn-client/loader/cache'
-    autoload :Chain, 'sgtn-client/loader/chain_loader'
-  end
-
   module Translation
     def self.getString(component, key, locale)
       SgtnClient.logger.debug "[Translation.getString]component: #{component}, key: #{key}, locale: #{locale}"
@@ -70,28 +61,10 @@ module SgtnClient
     end
 
     def self.get_cs(component, locale)
-      cache_item = load_bundle(component, locale)
+      cache_item = SgtnClient::Config.loader.load_bundle(component, locale)
       cache_item&.dig(:items)
     end
 
-    def self.load_bundle(component, locale)
-      init_translations unless initialized?
-      SgtnClient::Config.loader.load_bundle(component, locale)
-    end
-
-    class << self
-      def initialized?
-        @initialized ||= false
-      end
-
-      def init_translations
-        load_translations
-        @initialized = true
-      end
-
-      def load_translations; end
-    end
-
-    private_class_method :getTranslation, :get_cs, :load_bundle, :initialized?, :load_translations
+    private_class_method :getTranslation, :get_cs
   end
 end
