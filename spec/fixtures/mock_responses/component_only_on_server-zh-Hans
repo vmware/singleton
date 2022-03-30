@@ -7,14 +7,14 @@
         "productName": "test",
         "version": "4.8.1",
         "locales": [
-            "en"
+            "zh-Hans"
         ],
         "components": [
-            "zh-Hans"
+            "component_only_on_server"
         ],
         "bundles": [
             {
-                "component": "JAVA",
+                "component": "component_only_on_server",
                 "messages": {
                     "helloworld": "你好世界",
                     "old_helloworld": "旧 Hello world",

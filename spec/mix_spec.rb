@@ -11,7 +11,7 @@ describe 'Singleton Server' do
   server_url = File.join(config['vip_server'], '/i18n/api/v2/translation/products', config['product_name'], 'versions', config['version'])
   components_url = File.join(server_url, 'componentlist')
   locales_url =  File.join(server_url, 'localelist')
-  component = 'JAVA'
+  component_only_on_server = 'component_only_on_server'
   locale = 'zh-Hans'
   en_locale = 'en'
 
@@ -29,13 +29,14 @@ describe 'Singleton Server' do
     config['vip_server'] = back_config['vip_server']
     stubs = []
 
-    zh_response = File.new("spec/fixtures/mock_responses/#{component}_#{locale}")
-    stubs << stub_request(:get, server_url).with(query: { 'components' => component, 'locales' => locale }).to_return(body: zh_response)
-    en_response = File.new("spec/fixtures/mock_responses/#{component}_#{en_locale}")
-    stubs << stub_request(:get, server_url).with(query: { 'components' => component, 'locales' => en_locale }).to_return(body: en_response)
+    zh_response = File.new("spec/fixtures/mock_responses/#{component_only_on_server}-#{locale}")
+    stubs << stub_request(:get, server_url).with(query: { 'components' => component_only_on_server, 'locales' => locale }).to_return(body: zh_response)
+    en_response = File.new("spec/fixtures/mock_responses/#{component_only_on_server}-#{en_locale}")
+    stubs << stub_request(:get, server_url).with(query: { 'components' => component_only_on_server, 'locales' => en_locale }).to_return(body: en_response)
 
-    result = SgtnClient::Translation.send(:get_cs, component, locale)
+    result = SgtnClient::Translation.send(:get_cs, component_only_on_server, locale)
 
+    expect(SgtnClient::Config.loader.loaders.size).to eq(1)
     expect(result).to_not be_nil
     expect(result.size).to be >  0
     stubs.each { |stub| expect(stub).to have_been_requested }
