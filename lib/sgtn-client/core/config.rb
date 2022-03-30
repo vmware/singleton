@@ -165,29 +165,22 @@ module SgtnClient
         end
 
 
-      def loader
-        @loader ||= begin
-          # TODO: raise error if anny problems
-          env = SgtnClient::Config.default_environment
-          config = SgtnClient::Config.configurations[env]
-          mode = config['bundle_mode']
-          SgtnClient.logger.debug "[Translation][init_translations]mode=#{mode}"
+        def loader
+          @loader ||= begin
+            config = SgtnClient::Config.configurations[SgtnClient::Config.default_environment]
 
-          chain_loader = Class.new(SgtnClient::TranslationLoader::Chain)
-          loaders = []
-          if SgtnClient::Config.configurations[env]['source_bundle']
-            chain_loader.include SgtnClient::TranslationLoader::SourceComparer
-          end
-          chain_loader.include SgtnClient::TranslationLoader::Cache
+            loaders = []
+            loaders << SgtnClient::TranslationLoader::SgtnServer.new if config['vip_server']
+            loaders << SgtnClient::TranslationLoader::LocalTranslation.new if config['translation_bundle']
+            raise 'No translation is available!' if loaders.empty? && config['source_bundle'].nil?
 
-          if mode == 'offline'
-            loaders << SgtnClient::TranslationLoader::LocalTranslation.new
-          else
-            loaders << SgtnClient::TranslationLoader::SgtnServer.new << SgtnClient::TranslationLoader::LocalTranslation.new
+            chain_loader = Class.new(SgtnClient::TranslationLoader::Chain)
+            chain_loader.include SgtnClient::TranslationLoader::SourceComparer  if config['source_bundle']
+            chain_loader.include SgtnClient::TranslationLoader::Cache
+
+            chain_loader.new(*loaders)
           end
-          chain_loader.new(*loaders)
         end
-      end
       
         private
         # Read configurations from the given file name
