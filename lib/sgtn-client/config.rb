@@ -9,13 +9,7 @@ module SgtnClient
   #include Exceptions
 
   module TranslationLoader
-    autoload :LocalTranslation, 'sgtn-client/loader/local_translation'
-    autoload :SgtnServer, 'sgtn-client/loader/server'
-    autoload :Source, 'sgtn-client/loader/source'
-    autoload :SourceComparer, 'sgtn-client/loader/source_comparer'
-    autoload :SingleLoader, 'sgtn-client/loader/single_loader'
-    autoload :Cache, 'sgtn-client/loader/cache'
-    autoload :Chain, 'sgtn-client/loader/chain_loader'
+    autoload :LoaderFactory, 'sgtn-client/loader/loader_factory'
   end
 
   module Configuration
@@ -168,19 +162,7 @@ module SgtnClient
         def loader
           @loader ||= begin
             config = SgtnClient::Config.configurations[SgtnClient::Config.default_environment]
-
-            loaders = []
-            loaders << SgtnClient::TranslationLoader::Source.new if config['source_bundle']
-            loaders << SgtnClient::TranslationLoader::SgtnServer.new if config['vip_server']
-            loaders << SgtnClient::TranslationLoader::LocalTranslation.new if config['translation_bundle']
-            raise SingletonError, 'No translation is available!' if loaders.empty?
-
-            chain_loader = Class.new(SgtnClient::TranslationLoader::Chain)
-            chain_loader.include SgtnClient::TranslationLoader::SourceComparer if config['source_bundle']
-            chain_loader.include SgtnClient::TranslationLoader::SingleLoader
-            chain_loader.include SgtnClient::TranslationLoader::Cache
-
-            chain_loader.new(*loaders)
+            SgtnClient::TranslationLoader::LoaderFactory.create(config)
           end
         end
       
