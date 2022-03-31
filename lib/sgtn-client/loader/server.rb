@@ -43,7 +43,7 @@ class SgtnClient::TranslationLoader::SgtnServer
 
     messages = query_server(
       @bundle_url,
-      ['bundles', 0],
+      ['bundles', 0, 'messages'],
       { locales: locale, components: component }
     )
      messages

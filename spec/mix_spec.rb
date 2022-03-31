@@ -8,12 +8,18 @@ describe 'Singleton Server' do
 
   config = SgtnClient::Config.configurations[SgtnClient::Config.default_environment]
   back_config = config.dup
+
   server_url = File.join(config['vip_server'], '/i18n/api/v2/translation/products', config['product_name'], 'versions', config['version'])
   components_url = File.join(server_url, 'componentlist')
   locales_url =  File.join(server_url, 'localelist')
+
   component_only_on_server = 'component_only_on_server'
+  component_local_source = 'NEW'
+
   locale = 'zh-Hans'
   en_locale = 'en'
+
+  message_only_on_server_key = 'message_only_on_server'
 
   before :each do
     config['vip_server'] = nil
@@ -28,6 +34,15 @@ describe 'Singleton Server' do
   end
 
   describe '#only local source is available' do
+    before :each do
+      config['source_bundle'] = back_config['source_bundle']
+    end
+
+    it 'should return the local source' do
+      result = SgtnClient::Translation.send(:get_cs, component_local_source, en_locale)
+      expect(result).to_not be_nil
+      expect(result.dig('new_helloworld')).to eq "New Hello world"
+    end
   end
 
   describe '#only local translation is available' do
@@ -45,7 +60,7 @@ describe 'Singleton Server' do
       stubs << stub_request(:get, server_url).with(query: { 'components' => component_only_on_server, 'locales' => locale }).to_return(body: zh_response)
       result = SgtnClient::Translation.send(:get_cs, component_only_on_server, locale)
       expect(result).to_not be_nil
-      expect(result.size).to be >  0
+      expect(result.dig(message_only_on_server_key)).to eq "仅在服务器上的消息"
 
       stubs.each { |stub| expect(stub).to have_been_requested }
     end
@@ -56,7 +71,7 @@ describe 'Singleton Server' do
       stubs << stub_request(:get, server_url).with(query: { 'components' => component_only_on_server, 'locales' => en_locale }).to_return(body: en_response)
       result = SgtnClient::Translation.send(:get_cs, component_only_on_server, en_locale)
       expect(result).to_not be_nil
-      expect(result.size).to be >  0
+      expect(result.dig(message_only_on_server_key)).to eq "Message only on server"
 
       stubs.each { |stub| expect(stub).to have_been_requested }
     end
