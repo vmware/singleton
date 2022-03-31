@@ -47,22 +47,22 @@ module SgtnClient
       SgtnClient.logger.debug "[Translation][getStrings]component=#{component}, locale=#{locale}"
       locale = SgtnClient::LocaleUtil.get_best_locale(locale)
       items = get_cs(component, locale)
-      if (items.nil? || items['messages'].nil?) && !LocaleUtil.is_source_locale(locale)
+      if items.nil? && !LocaleUtil.is_source_locale(locale)
         items = get_cs(component, LocaleUtil.get_source_locale)
+        locale = LocaleUtil.get_source_locale
       end
 
-      items
+      { 'component' => component, 'locale' => locale, 'messages' => items || {} } if items
     end
 
     def self.getTranslation(component, key, locale)
       locale = SgtnClient::LocaleUtil.get_best_locale(locale)
       items = get_cs(component, locale)
-      items&.dig('messages', key)
+      items&.fetch(key, nil)
     end
 
     def self.get_cs(component, locale)
-      cache_item = SgtnClient::Config.loader.load_bundle(component, locale)
-      cache_item&.dig(:items)
+      SgtnClient::Config.loader.get_bundle(component, locale)
     end
 
     private_class_method :getTranslation, :get_cs
