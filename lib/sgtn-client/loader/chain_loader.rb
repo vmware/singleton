@@ -14,6 +14,8 @@ module SgtnClient
         loaders.each do |loader|
           bundle = loader.load_bundle(component, locale)
           return bundle if bundle
+        rescue => e
+          SgtnClient.logger.warn "Failed to load bundle from #{loader.class.name}: #{e}"
         end
         nil
       end

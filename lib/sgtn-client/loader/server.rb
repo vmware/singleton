@@ -60,8 +60,6 @@ class SgtnClient::TranslationLoader::SgtnServer
     end
     resp = conn.get(url, queries, headers)
 
-    return nil, extract_cacheinfo(resp.headers) if resp.status == 304
-
     process_business_error(resp.body)
     extract_data(resp.body, path_to_data)
   end
