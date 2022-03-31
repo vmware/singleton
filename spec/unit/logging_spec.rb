@@ -18,7 +18,7 @@ describe SgtnClient::Logging do
     #file = File.open('./spec/unit/foo.log', File::WRONLY | File::APPEND)
     #Logging.logger = Logger.new(file)
     #SgtnClient.logger = Logger.new(file)
-    SgtnClient.load("./spec/config/sgtnclient.yml", "test", './sgtnclient.log')
+    SgtnClient.load("./spec/config/sgtnclient.yml", "test", './sgtnclient_d.log')
   end
 
   it "get logger object" do

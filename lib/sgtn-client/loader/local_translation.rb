@@ -21,10 +21,10 @@ class SgtnClient::TranslationLoader::LocalTranslation
     file_name = BUNDLE_PREFIX + locale + BUNDLE_SUFFIX
     file_path = @base_path + component + file_name
 
-      json_data = JSON.parse(File.read(file_path))
-      messages = json_data['messages']
+    json_data = JSON.parse(File.read(file_path))
+    messages = json_data['messages']
 
-      raise Error::SingletonError, 'no messages in bundle.' unless messages
+    raise Error::SingletonError, 'no messages in bundle.' unless messages
 
     messages
   end

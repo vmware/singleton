@@ -19,7 +19,6 @@ module SgtnClient::TranslationLoader::SourceComparer
     old_source_bundle = old_source_bundle_thread.value
     source_bundle = source_bundle_thread.value
 
-    # TODO: use etags to avoid unnecessary comparison
     compare_source(translation_bundle, old_source_bundle, source_bundle)
   end
 
