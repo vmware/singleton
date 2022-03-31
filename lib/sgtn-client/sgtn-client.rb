@@ -11,7 +11,7 @@ module SgtnClient
       autoload :Translation,        "sgtn-client/api/translation"
       autoload :T,                  "sgtn-client/api/t"
       autoload :Source,             "sgtn-client/api/source"
-      autoload :Config,             "sgtn-client/config"
+      autoload :Config,             "sgtn-client/core/config"
       autoload :Logging,            "sgtn-client/core/logging"
       autoload :Exceptions,         "sgtn-client/core/exceptions"
       autoload :ValidateUtil,       "sgtn-client/util/validate-util"
