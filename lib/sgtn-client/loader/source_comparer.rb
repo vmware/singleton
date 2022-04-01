@@ -13,11 +13,9 @@ module SgtnClient::TranslationLoader::SourceComparer
     end
 
     old_source_bundle_thread = Thread.new { load_bundle(component, SgtnClient::LocaleUtil::OLD_SOURCE_LOCALE) }
-    source_bundle_thread = Thread.new { load_bundle(component, SgtnClient::LocaleUtil.get_source_locale) }
-
     translation_bundle = super(component, locale)
+    source_bundle = get_bundle(component, SgtnClient::LocaleUtil.get_source_locale) # source is in cache and does not expire.
     old_source_bundle = old_source_bundle_thread.value
-    source_bundle = source_bundle_thread.value
 
     compare_source(translation_bundle, old_source_bundle, source_bundle)
   end

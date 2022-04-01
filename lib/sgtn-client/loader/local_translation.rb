@@ -16,7 +16,7 @@ class SgtnClient::TranslationLoader::LocalTranslation
   end
 
   def load_bundle(component, locale)
-    return if locale == LocaleUtil::REAL_SOURCE_LOCALE # only return when NOT querying source
+    return if locale == SgtnClient::LocaleUtil::REAL_SOURCE_LOCALE # only return when NOT querying source
 
     file_name = BUNDLE_PREFIX + locale + BUNDLE_SUFFIX
     file_path = @base_path + component + file_name
@@ -24,7 +24,7 @@ class SgtnClient::TranslationLoader::LocalTranslation
     json_data = JSON.parse(File.read(file_path))
     messages = json_data['messages']
 
-    raise Error::SingletonError, 'no messages in bundle.' unless messages
+    raise SingletonError, 'no messages in bundle.' unless messages
 
     messages
   end

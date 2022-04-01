@@ -9,7 +9,6 @@ module SgtnClient
   class Source
     def self.loadBundles(locale)
       SgtnClient.logger.debug "[Source][loadBundles]locale=#{locale}"
-      env = SgtnClient::Config.default_environment
       SgtnClient::Config.configurations.default = locale
     end
   end

@@ -21,6 +21,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency('webmock', '~> 2.0')
   s.add_development_dependency('rspec', '~> 3.0')
   s.add_development_dependency('rdoc', '>= 2.4.2', '< 6.0')
+  s.add_development_dependency('rubocop', '~> 0.49')
 
   s.add_dependency('multi_json', '~> 1.0')
   s.add_dependency('twitter_cldr', '~> 6.6')

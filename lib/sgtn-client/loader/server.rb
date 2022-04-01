@@ -20,7 +20,7 @@ class SgtnClient::TranslationLoader::SgtnServer
   ERROR_ILLEGAL_DATA = 'server returned illegal data.'
   ERROR_BUSINESS_ERROR = 'server returned business error.'
 
-  @@request_arguments = { timeout: 10 }
+  REQUEST_ARGUMENTS = { timeout: 10 }.freeze
 
   def initialize
     env = SgtnClient::Config.default_environment
@@ -39,7 +39,7 @@ class SgtnClient::TranslationLoader::SgtnServer
   end
 
   def load_bundle(component, locale)
-    return if locale == LocaleUtil::REAL_SOURCE_LOCALE # server source is disabled
+    return if locale == SgtnClient::LocaleUtil::REAL_SOURCE_LOCALE # server source is disabled
 
     messages = query_server(
       @bundle_url,
@@ -52,7 +52,7 @@ class SgtnClient::TranslationLoader::SgtnServer
   private
 
   def query_server(url, path_to_data = [], queries = nil, headers = nil)
-    conn = Faraday.new(@server_url, request: @@request_arguments) do |f|
+    conn = Faraday.new(@server_url, request: self.class::REQUEST_ARGUMENTS) do |f|
       f.response :json # decode response bodies as JSON
       f.use :gzip
       f.response :raise_error

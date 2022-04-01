@@ -10,8 +10,6 @@ describe 'Singleton Server' do
   back_config = config.dup
 
   server_url = File.join(config['vip_server'], '/i18n/api/v2/translation/products', config['product_name'], 'versions', config['version'])
-  components_url = File.join(server_url, 'componentlist')
-  locales_url =  File.join(server_url, 'localelist')
 
   component_only_on_server = 'component_only_on_server'
   component_local_source = 'NEW'
@@ -123,8 +121,6 @@ describe 'Singleton Server' do
     end
 
     it "should be able to get component in local source" do
-      stubs = []
-
       result = SgtnClient::Translation.send(:get_cs, component_local_source, en_locale)
 
       expect(result).to_not be_nil
