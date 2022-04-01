@@ -128,8 +128,6 @@ describe 'Singleton Server' do
     end
 
     it "should return local source for En" do
-      stubs = []
-
       result = SgtnClient::Translation.send(:get_cs, component, en_locale)
 
       expect(result).to_not be_nil
