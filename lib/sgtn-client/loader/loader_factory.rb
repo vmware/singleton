@@ -2,14 +2,13 @@
 # SPDX-License-Identifier: EPL-2.0
 
 module SgtnClient::TranslationLoader
-  autoload :Source , 'sgtn-client/loader/source'
-  autoload :SgtnServer , 'sgtn-client/loader/server'
-  autoload :LocalTranslation , 'sgtn-client/loader/local_translation'
+  autoload :Source, 'sgtn-client/loader/source'
+  autoload :SgtnServer, 'sgtn-client/loader/server'
+  autoload :LocalTranslation, 'sgtn-client/loader/local_translation'
   autoload :Chain, 'sgtn-client/loader/chain_loader'
   autoload :SourceComparer, 'sgtn-client/loader/source_comparer'
   autoload :SingleLoader, 'sgtn-client/loader/single_loader'
   autoload :Cache, 'sgtn-client/loader/cache'
-
 
   module LoaderFactory
     def self.create(config)

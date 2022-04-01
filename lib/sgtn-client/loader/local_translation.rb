@@ -4,8 +4,8 @@
 require 'multi_json'
 
 class SgtnClient::TranslationLoader::LocalTranslation
-  BUNDLE_PREFIX = 'messages_'
-  BUNDLE_SUFFIX = '.json'
+  BUNDLE_PREFIX = 'messages_'.freeze
+  BUNDLE_SUFFIX = '.json'.freeze
 
   def initialize
     env = SgtnClient::Config.default_environment

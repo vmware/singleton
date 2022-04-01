@@ -38,7 +38,6 @@ describe 'Singleton Server' do
     SgtnClient::Config.configurations[SgtnClient::Config.default_environment] = back_config
   end
 
-
   describe '#only local source is available' do
     before :each do
       config['source_bundle'] = back_config['source_bundle']
@@ -47,7 +46,7 @@ describe 'Singleton Server' do
     it 'should be able to return En' do
       result = SgtnClient::Translation.send(:get_cs, component_local_source_only, en_locale)
       expect(result).to_not be_nil
-      expect(result.dig(message_only_in_local_source_key)).to eq "New Hello world"
+      expect(result.dig(message_only_in_local_source_key)).to eq 'New Hello world'
     end
 
     it "should return nil for #{locale}" do
@@ -68,13 +67,13 @@ describe 'Singleton Server' do
     it 'query source locale - English' do
       result = SgtnClient::Translation.send(:get_cs, component, en_locale)
       expect(result).to_not be_nil
-      expect(result.dig(source_changed_key)).to eq "old Hello world"
+      expect(result.dig(source_changed_key)).to eq 'old Hello world'
     end
 
     it "should return #{locale}" do
       result = SgtnClient::Translation.send(:get_cs, component, locale)
       expect(result).to_not be_nil
-      expect(result.dig(source_changed_key)).to eq "旧 Hello world"
+      expect(result.dig(source_changed_key)).to eq '旧 Hello world'
     end
 
     it 'should have only 1 loader' do
@@ -94,7 +93,7 @@ describe 'Singleton Server' do
       stubs << stub_request(:get, server_url).with(query: { 'components' => component_only_on_server, 'locales' => en_locale }).to_return(body: en_response)
       result = SgtnClient::Translation.send(:get_cs, component_only_on_server, en_locale)
       expect(result).to_not be_nil
-      expect(result.dig(message_only_on_server_key)).to eq "Message only on server"
+      expect(result.dig(message_only_on_server_key)).to eq 'Message only on server'
 
       stubs.each { |stub| expect(stub).to have_been_requested }
     end
@@ -106,7 +105,7 @@ describe 'Singleton Server' do
       stubs << stub_request(:get, server_url).with(query: { 'components' => component_only_on_server, 'locales' => locale }).to_return(body: zh_response)
       result = SgtnClient::Translation.send(:get_cs, component_only_on_server, locale)
       expect(result).to_not be_nil
-      expect(result.dig(message_only_on_server_key)).to eq "仅在服务器上的消息"
+      expect(result.dig(message_only_on_server_key)).to eq '仅在服务器上的消息'
 
       stubs.each { |stub| expect(stub).to have_been_requested }
     end
@@ -124,18 +123,18 @@ describe 'Singleton Server' do
       config['source_bundle'] = back_config['source_bundle']
     end
 
-    it "should be able to get component in local source" do
+    it 'should be able to get component in local source' do
       result = SgtnClient::Translation.send(:get_cs, component_local_source_only, en_locale)
 
       expect(result).to_not be_nil
-      expect(result.dig(message_only_in_local_source_key)).to eq "New Hello world"
+      expect(result.dig(message_only_in_local_source_key)).to eq 'New Hello world'
     end
 
-    it "should return local source for En" do
+    it 'should return local source for En' do
       result = SgtnClient::Translation.send(:get_cs, component, en_locale)
 
       expect(result).to_not be_nil
-      expect(result.dig(source_changed_key)).to eq "Source Hello world"
+      expect(result.dig(source_changed_key)).to eq 'Source Hello world'
     end
 
     it "should be able to get #{locale}" do
@@ -149,11 +148,11 @@ describe 'Singleton Server' do
       result = SgtnClient::Translation.send(:get_cs, component, locale)
 
       expect(result).to_not be_nil
-      expect(result.dig(server_local_source_key)).to eq "server_local_source - 从服务器来的消息"
+      expect(result.dig(server_local_source_key)).to eq 'server_local_source - 从服务器来的消息'
       stubs.each { |stub| expect(stub).to have_been_requested }
     end
 
-    it "should NOT be able to get a component(on server only) for En because En will only use local source" do
+    it 'should NOT be able to get a component(on server only) for En because En will only use local source' do
       result = SgtnClient::Translation.send(:get_cs, component_only_on_server, en_locale)
       expect(result).to be_nil
     end
@@ -171,7 +170,7 @@ describe 'Singleton Server' do
       config['translation_bundle'] = back_config['translation_bundle']
     end
 
-    it "should be able to get En" do
+    it 'should be able to get En' do
       stubs = []
 
       en_response = File.new("spec/fixtures/mock_responses/#{component}-#{en_locale}")
@@ -180,7 +179,7 @@ describe 'Singleton Server' do
       result = SgtnClient::Translation.send(:get_cs, component, en_locale)
 
       expect(result).to_not be_nil
-      expect(result.dig(server_local_translation_key)).to eq "Message from server"
+      expect(result.dig(server_local_translation_key)).to eq 'Message from server'
       stubs.each { |stub| expect(stub).to have_been_requested }
     end
 
@@ -193,7 +192,7 @@ describe 'Singleton Server' do
       result = SgtnClient::Translation.send(:get_cs, component, locale)
 
       expect(result).to_not be_nil
-      expect(result.dig(server_local_translation_key)).to eq "从服务器来的消息"
+      expect(result.dig(server_local_translation_key)).to eq '从服务器来的消息'
       stubs.each { |stub| expect(stub).to have_been_requested }
     end
 
@@ -206,7 +205,7 @@ describe 'Singleton Server' do
       result = SgtnClient::Translation.send(:get_cs, component_local_translation_only, en_locale)
 
       expect(result).to_not be_nil
-      expect(result.dig(message_only_in_local_translation_key)).to eq "local only message"
+      expect(result.dig(message_only_in_local_translation_key)).to eq 'local only message'
       stubs.each { |stub| expect(stub).to have_been_requested }
     end
 
@@ -219,7 +218,7 @@ describe 'Singleton Server' do
       result = SgtnClient::Translation.send(:get_cs, component_local_translation_only, locale)
 
       expect(result).to_not be_nil
-      expect(result.dig(message_only_in_local_translation_key)).to eq "仅在本地的消息"
+      expect(result.dig(message_only_in_local_translation_key)).to eq '仅在本地的消息'
       stubs.each { |stub| expect(stub).to have_been_requested }
     end
 
@@ -234,22 +233,22 @@ describe 'Singleton Server' do
       config['source_bundle'] = back_config['source_bundle']
     end
 
-    it "En should use local source bundle" do
+    it 'En should use local source bundle' do
       result = SgtnClient::Translation.send(:get_cs, component, en_locale)
       expect(result).to_not be_nil
-      expect(result.dig(source_changed_key)).to eq "Source Hello world"
+      expect(result.dig(source_changed_key)).to eq 'Source Hello world'
     end
 
     it "#{locale} should use local translation bundle" do
       result = SgtnClient::Translation.send(:get_cs, component, locale)
       expect(result).to_not be_nil
-      expect(result.dig(key)).to eq "你好世界"
+      expect(result.dig(key)).to eq '你好世界'
     end
 
     it "#{locale} should use local source bundle if source is changed" do
       result = SgtnClient::Translation.send(:get_cs, component, locale)
       expect(result).to_not be_nil
-      expect(result.dig(source_changed_key)).to eq "Source Hello world"
+      expect(result.dig(source_changed_key)).to eq 'Source Hello world'
     end
 
     it 'should have 2 loaders' do
@@ -258,7 +257,7 @@ describe 'Singleton Server' do
   end
 
   describe '#Singleton server, local translation and local source are ALL available' do
-    server_local_translation_source_key = "server_local_translation_source_key"
+    server_local_translation_source_key = 'server_local_translation_source_key'
 
     before :each do
       config['vip_server'] = back_config['vip_server']
@@ -266,10 +265,10 @@ describe 'Singleton Server' do
       config['translation_bundle'] = back_config['translation_bundle']
     end
 
-    it "En should use local source bundle" do
+    it 'En should use local source bundle' do
       result = SgtnClient::Translation.send(:get_cs, component, en_locale)
       expect(result).to_not be_nil
-      expect(result.dig(source_changed_key)).to eq "Source Hello world"
+      expect(result.dig(source_changed_key)).to eq 'Source Hello world'
     end
 
     it "#{locale} should use translation from server" do
@@ -283,7 +282,7 @@ describe 'Singleton Server' do
       result = SgtnClient::Translation.send(:get_cs, component, locale)
 
       expect(result).to_not be_nil
-      expect(result.dig(server_local_translation_source_key)).to eq "从服务器来的消息 server-local-translation-source"
+      expect(result.dig(server_local_translation_source_key)).to eq '从服务器来的消息 server-local-translation-source'
       stubs.each { |stub| expect(stub).to have_been_requested }
     end
 
@@ -298,17 +297,10 @@ describe 'Singleton Server' do
       result = SgtnClient::Translation.send(:get_cs, component_local_translation_only, locale)
 
       expect(result).to_not be_nil
-      expect(result.dig(message_only_in_local_translation_key)).to eq "仅在本地的消息"
+      expect(result.dig(message_only_in_local_translation_key)).to eq '仅在本地的消息'
       stubs.each { |stub| expect(stub).to have_been_requested }
     end
 
-    it "should use local source for En" do
-      result = SgtnClient::Translation.send(:get_cs, component_local_source_only, en_locale)
-
-      expect(result).to_not be_nil
-      expect(result.dig(message_only_in_local_source_key)).to eq "New Hello world"
-    end
-    
     it 'should have 3 loaders' do
       expect(SgtnClient::Config.loader.loaders.size).to eq(3)
     end
