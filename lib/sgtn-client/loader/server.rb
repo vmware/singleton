@@ -46,7 +46,7 @@ class SgtnClient::TranslationLoader::SgtnServer
       ['bundles', 0, 'messages'],
       { locales: locale, components: component }
     )
-     messages
+    messages
   end
 
   def available_locales
