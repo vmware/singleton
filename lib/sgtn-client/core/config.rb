@@ -4,8 +4,14 @@
 require 'erb'
 require 'yaml'
 
+
 module SgtnClient
   #include Exceptions
+
+  module TranslationLoader
+    autoload :LoaderFactory, 'sgtn-client/loader/loader_factory'
+  end
+
   module Configuration
 
     def config
@@ -42,7 +48,7 @@ module SgtnClient
     :mode, :endpoint, :merchant_endpoint, :platform_endpoint, :ipn_endpoint,
     :rest_endpoint, :rest_token_endpoint, :client_id, :client_secret,
     :openid_endpoint, :openid_redirect_uri, :openid_client_id, :openid_client_secret,
-    :verbose_logging, :product_name, :version, :vip_server, :bundle_mode,
+    :verbose_logging, :product_name, :version, :vip_server,
     :translation_bundle, :source_bundle, :cache_expiry_period, :disable_cache, :default_language
 
 
@@ -152,6 +158,14 @@ module SgtnClient
           Logging.logger
         end
 
+
+        def loader
+          @loader ||= begin
+            config = SgtnClient::Config.configurations[SgtnClient::Config.default_environment]
+            SgtnClient::TranslationLoader::LoaderFactory.create(config)
+          end
+        end
+      
         private
         # Read configurations from the given file name
         # === Arguments
@@ -161,7 +175,6 @@ module SgtnClient
           erb.filename = file_name
           YAML.load(erb.result)
         end       
-          
 
     end
   end

@@ -4,14 +4,6 @@
 module SgtnClient
   autoload :StringUtil, 'sgtn-client/util/string-util'
 
-  module TranslationLoader
-    autoload :LocalBundle, 'sgtn-client/loader/local_bundle'
-    autoload :ServerBundle, 'sgtn-client/loader/server_bundle'
-    autoload :SourceComparer, 'sgtn-client/loader/source_comparer'
-    autoload :SingleLoader, 'sgtn-client/loader/single_loader'
-    autoload :Cache, 'sgtn-client/loader/cache'
-  end
-
   module Translation
     def self.getString(component, key, locale)
       SgtnClient.logger.debug "[Translation.getString]component: #{component}, key: #{key}, locale: #{locale}"
@@ -55,56 +47,24 @@ module SgtnClient
       SgtnClient.logger.debug "[Translation][getStrings]component=#{component}, locale=#{locale}"
       locale = SgtnClient::LocaleUtil.get_best_locale(locale)
       items = get_cs(component, locale)
-      if (items.nil? || items['messages'].nil?) && !LocaleUtil.is_source_locale(locale)
+      if items.nil? && !LocaleUtil.is_source_locale(locale)
         items = get_cs(component, LocaleUtil.get_source_locale)
+        locale = LocaleUtil.get_source_locale
       end
 
-      items
+      { 'component' => component, 'locale' => locale, 'messages' => items || {} } if items
     end
 
     def self.getTranslation(component, key, locale)
       locale = SgtnClient::LocaleUtil.get_best_locale(locale)
       items = get_cs(component, locale)
-      items&.dig('messages', key)
+      items&.fetch(key, nil)
     end
 
     def self.get_cs(component, locale)
-      cache_item = load_bundle(component, locale)
-      cache_item&.dig(:items)
+      SgtnClient::Config.loader.get_bundle(component, locale)
     end
 
-    def self.load_bundle(component, locale)
-      init_translations unless initialized?
-      super
-    end
-
-    class << self
-      def initialized?
-        @initialized ||= false
-      end
-
-      def init_translations
-        # TODO: Lock to initialize?
-        env = SgtnClient::Config.default_environment
-        mode = SgtnClient::Config.configurations[env]['bundle_mode']
-        SgtnClient.logger.debug "[Translation][init_translations]mode=#{mode}"
-
-        if mode == 'offline'
-          extend SgtnClient::TranslationLoader::LocalBundle
-        else
-          extend SgtnClient::TranslationLoader::ServerBundle
-        end
-
-        extend SgtnClient::TranslationLoader::SourceComparer
-        extend SgtnClient::TranslationLoader::Cache
-
-        load_translations
-        @initialized = true
-      end
-
-      def load_translations; end
-    end
-
-    private_class_method :getTranslation, :get_cs, :load_bundle, :initialized?, :load_translations
+    private_class_method :getTranslation, :get_cs
   end
 end
