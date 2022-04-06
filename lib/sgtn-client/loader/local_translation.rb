@@ -28,4 +28,30 @@ class SgtnClient::TranslationLoader::LocalTranslation
 
     messages
   end
+
+  def available_locales
+    locales = Set.new
+    @base_path.glob('*/*.json') do |f|
+      locale = f.basename.to_s.sub!(BUNDLE_PREFIX, '').sub!(BUNDLE_SUFFIX, '')
+      locales.add locale
+    end
+    locales
+  end
+
+  def available_components
+    components = Set.new
+    @base_path.glob('*/') do |f| # TODO: folder shouldn't be empty?
+      components << f.basename.to_s
+    end
+    components
+  end
+
+  def available_bundles
+    bundles = Set.new
+    @base_path.glob('*/*.json') do |f|
+      locale = f.basename.to_s.sub!(BUNDLE_PREFIX, '').sub!(BUNDLE_SUFFIX, '')
+      bundles.add [f.parent.basename.to_s, locale]
+    end
+    bundles
+  end
 end

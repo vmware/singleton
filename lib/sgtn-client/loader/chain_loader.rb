@@ -19,6 +19,16 @@ module SgtnClient
         end
         nil
       end
+
+      def available_bundles
+        total_data = Set.new
+        loaders.each do |loader|
+          item = loader.available_bundles
+          total_data += item if item
+        end
+
+        total_data.empty? ? nil : total_data
+      end
     end
   end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2022 VMware, Inc.
 # SPDX-License-Identifier: EPL-2.0
 
@@ -31,6 +33,28 @@ module SgtnClient::TranslationLoader::Cache # :nodoc:
     item
   rescue StandardError => e
     SgtnClient.logger.error "[TranslationLoader::Cache][load_bundle]#{component}/#{locale}, error=#{e.message}"
+    SgtnClient.logger.error e.backtrace
+    nil
+  end
+
+  AVAILABLE_BUNDLES_KEY = 'available_bundles'
+  def available_bundles
+    SgtnClient.logger.debug "[#{self}][#{__FILE__}][#{__method__}]"
+    item = SgtnClient::CacheUtil.get_cache(AVAILABLE_BUNDLES_KEY)
+    if item.nil?
+      item = super
+      SgtnClient::CacheUtil.write_cache(AVAILABLE_BUNDLES_KEY, item) if item
+    elsif expired?(item)
+      Thread.new do
+        item = super
+        SgtnClient::CacheUtil.write_cache(AVAILABLE_BUNDLES_KEY, item) if item
+      end
+      return item.dig(:items)
+    end
+
+    item
+  rescue StandardError => e
+    SgtnClient.logger.error "[TranslationLoader::Cache][#{__method__}], error=#{e.message}"
     SgtnClient.logger.error e.backtrace
     nil
   end

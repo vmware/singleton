@@ -25,5 +25,30 @@ module SgtnClient::TranslationLoader
 
       total_messages.empty? ? nil : total_messages
     end
+
+    def available_bundles
+      bundles = Set.new
+      @source_bundle_path.glob('*/') do |component|
+        component.glob('**/*.{yml, yaml}') do |f|
+          bundles << [component.basename.to_s, LocaleUtil.get_source_locale]
+          break
+        end
+      end
+      bundles
+    end
+
+    def available_locales
+      Set.new([LocaleUtil.get_source_locale])
+    end
+
+    def available_components
+      SgtnClient.logger.debug '[Source][available_components]'
+
+      components = Set.new
+      @source_bundle_path.glob('*/') do |f| # TODO: folder shouldn't be empty?
+        components << f.basename.to_s
+      end
+      components
+    end
   end
 end

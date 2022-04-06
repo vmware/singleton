@@ -165,7 +165,43 @@ module SgtnClient
             SgtnClient::TranslationLoader::LoaderFactory.create(config)
           end
         end
-      
+
+        def available_bundles
+          loader.available_bundles
+        end
+
+        def available_locales
+          available_bundles = loader.available_bundles
+          return unless available_bundles
+
+          if !available_bundles.respond_to?(:locales)
+            def available_bundles.locales
+              @locales ||= begin
+                locales = Set.new
+                self.each { |_, locale| locales << locale }
+                locales
+              end
+            end
+          end
+          available_bundles.locales
+        end
+
+        def available_components
+          available_bundles = loader.available_bundles
+          return unless available_bundles
+
+          if !available_bundles.respond_to?(:components)
+            def available_bundles.components
+              @components ||= begin
+                components = Set.new
+                self.each { |component, _| components << component }
+                components
+              end
+            end
+          end
+          available_bundles.components
+        end
+
         private
         # Read configurations from the given file name
         # === Arguments

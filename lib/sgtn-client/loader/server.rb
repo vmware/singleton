@@ -49,6 +49,25 @@ class SgtnClient::TranslationLoader::SgtnServer
      messages
   end
 
+  def available_locales
+    query_server(@locales_url, ['locales'])
+  end
+
+  def available_components
+    query_server(@components_url, ['components'])
+  end
+
+  def available_bundles
+    bundles = Set.new
+    components = (Thread.new { available_components }).value
+    available_locales.each do |locale|
+      components.each do |component|
+        bundles << [component, locale]
+      end
+    end
+    bundles
+  end
+
   private
 
   def query_server(url, path_to_data = [], queries = nil, headers = nil)
