@@ -39,8 +39,6 @@ class SgtnClient::TranslationLoader::SgtnServer
   end
 
   def load_bundle(component, locale)
-    return if locale == SgtnClient::LocaleUtil::REAL_SOURCE_LOCALE # server source is disabled
-
     messages = query_server(
       @bundle_url,
       ['bundles', 0, 'messages'],

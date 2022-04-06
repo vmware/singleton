@@ -14,8 +14,9 @@ module SgtnClient::TranslationLoader
     def self.create(config)
       loaders = []
       loaders << Source.new if config['source_bundle']
-      loaders << SgtnServer.new if config['vip_server']
+      # local translation takes precedence over remote
       loaders << LocalTranslation.new if config['translation_bundle']
+      loaders << SgtnServer.new if config['vip_server']
       raise SingletonError, 'No translation is available!' if loaders.empty?
 
       chain_loader = Class.new(Chain)
