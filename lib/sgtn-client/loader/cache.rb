@@ -12,7 +12,7 @@ module SgtnClient::TranslationLoader::Cache # :nodoc:
     SgtnClient.logger.debug "[#{self}][#{__FILE__}][#{__method__}] #{key}"
     item = SgtnClient::CacheUtil.get_cache(key)
     if item
-      if SgtnClient::CacheUtil.is_expired(item) && !SgtnClient::LocaleUtil.is_source_locale(locale)
+      if SgtnClient::CacheUtil.is_expired(item)
         SgtnClient.logger.debug "[#{self}][#{__FILE__}][#{__method__}] Bundle cache is expired. key=#{key}"
         Thread.new { load_bundle(component, locale) } # TODO: Use one thread # refresh in background
       end
