@@ -26,14 +26,9 @@ describe 'Mix' do
   message_only_in_local_translation_key = 'local_only_key'
   source_changed_key = 'old_helloworld'
   key = 'helloworld'
-
+  
   let(:nonexistent_response) { File.new('spec/fixtures/mock_responses/nonexistent').read }
-
-  # let (:en_stub) { stub_request(:get, server_url).with(query: { 'components' => component, 'locales' => en_locale }).to_return(body: File.new("spec/fixtures/mock_responses/#{component}-#{en_locale}")) }
-  # let (:zh_stub) { stub_request(:get, server_url).with(query: { 'components' => component, 'locales' => locale }).to_return(body: File.new("spec/fixtures/mock_responses/#{component}-#{locale}")) }
-
   let(:stubs) { [] }
-
   let(:loader) { SgtnClient::TranslationLoader::LoaderFactory.create(config) }
 
   before :all do

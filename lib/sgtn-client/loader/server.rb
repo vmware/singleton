@@ -59,9 +59,9 @@ class SgtnClient::TranslationLoader::SgtnServer
 
   def available_bundles
     bundles = Set.new
-    components = (Thread.new { available_components }).value
+    components_thread = Thread.new { available_components }
     available_locales.each do |locale|
-      components.each do |component|
+      components_thread.value.each do |component|
         bundles << [component, locale]
       end
     end
