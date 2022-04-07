@@ -13,7 +13,7 @@ module SgtnClient
   }.freeze
 
   class LocaleUtil
-    OLD_SOURCE_LOCALE = 'old_source_locale'.freeze
+    OLD_SOURCE_LOCALE = 'old_source'.freeze
     REAL_SOURCE_LOCALE = 'latest'.freeze
 
     def self.get_best_locale(locale)

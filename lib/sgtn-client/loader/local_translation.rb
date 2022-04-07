@@ -2,6 +2,7 @@
 # SPDX-License-Identifier: EPL-2.0
 
 require 'multi_json'
+require 'sgtn-client/common/data'
 
 class SgtnClient::TranslationLoader::LocalTranslation
   BUNDLE_PREFIX = 'messages_'.freeze
@@ -50,7 +51,7 @@ class SgtnClient::TranslationLoader::LocalTranslation
     bundles = Set.new
     @base_path.glob('*/*.json') do |f|
       locale = f.basename.to_s.sub!(BUNDLE_PREFIX, '').sub!(BUNDLE_SUFFIX, '')
-      bundles.add [f.parent.basename.to_s, locale]
+      bundles.add Common::BundleID.new(f.parent.basename.to_s, locale)
     end
     bundles
   end

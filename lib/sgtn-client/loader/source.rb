@@ -1,6 +1,8 @@
 # Copyright 2022 VMware, Inc.
 # SPDX-License-Identifier: EPL-2.0
 
+require 'sgtn-client/common/data'
+
 module SgtnClient::TranslationLoader
   class Source
     def initialize
@@ -30,7 +32,7 @@ module SgtnClient::TranslationLoader
       bundles = Set.new
       @source_bundle_path.glob('*/') do |component|
         component.glob('**/*.{yml, yaml}') do |f|
-          bundles << [component.basename.to_s, LocaleUtil.get_source_locale]
+          bundles << Common::BundleID.new(component.basename.to_s, LocaleUtil.get_source_locale)
           break
         end
       end
