@@ -9,7 +9,8 @@ describe 'Available Bundles' do
   orig_config = SgtnClient::Config.configurations[SgtnClient::Config.default_environment]
   config = orig_config.dup
 
-  server_url = File.join(config['vip_server'], '/i18n/api/v2/translation/products', config['product_name'], 'versions', config['version'])
+  vip_server = 'https://localhost:8090'
+  server_url = File.join(vip_server, '/i18n/api/v2/translation/products', config['product_name'], 'versions', config['version'])
   components_url = File.join(server_url, 'componentlist')
   locales_url =  File.join(server_url, 'localelist')
 
@@ -31,6 +32,7 @@ describe 'Available Bundles' do
   before :each do
     SgtnClient::CacheUtil.clear_cache
     WebMock.reset!
+    config['vip_server'] = vip_server
   end
 
   it '#should be able to get available bundles' do

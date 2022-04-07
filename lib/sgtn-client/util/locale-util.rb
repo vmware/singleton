@@ -3,16 +3,14 @@
 require 'set'
 
 module SgtnClient
-  SUPPORTED_LOCALES = %w[en de es fr ko ja zh-Hans zh-Hant zh de-CH].freeze # TODO: get this from service in online mode
-
-  MAP_LOCALES = {
-    'zh-CN' => 'zh-Hans',
-    'zh-TW' => 'zh-Hant',
-    'zh-Hans-CN' => 'zh-Hans',
-    'zh-Hant-TW' => 'zh-Hant'
-  }.freeze
-
   class LocaleUtil
+    MAP_LOCALES = {
+      'zh-CN' => 'zh-Hans',
+      'zh-TW' => 'zh-Hant',
+      'zh-Hans-CN' => 'zh-Hans',
+      'zh-Hant-TW' => 'zh-Hant'
+    }.freeze
+
     OLD_SOURCE_LOCALE = 'old_source'.freeze
     REAL_SOURCE_LOCALE = 'latest'.freeze
 
@@ -31,8 +29,8 @@ module SgtnClient
 
     def self.get_best_match(locale)
       locale = locale.gsub('_', '-')
-      locale = SgtnClient::MAP_LOCALES[locale] if SgtnClient::MAP_LOCALES.key?(locale)
-      return locale if SUPPORTED_LOCALES.include?(locale)
+      locale = MAP_LOCALES[locale] if MAP_LOCALES.key?(locale)
+      return locale if Config.available_locales.include?(locale)
       return LocaleUtil.get_source_locale if locale.index('-').nil?
 
       get_best_match(locale.slice(0..(locale.rindex('-') - 1)))

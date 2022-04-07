@@ -9,7 +9,8 @@ describe 'Mix' do
   orig_config = SgtnClient::Config.configurations[SgtnClient::Config.default_environment]
   config = orig_config.dup
 
-  server_url = File.join(config['vip_server'], '/i18n/api/v2/translation/products', config['product_name'], 'versions', config['version'])
+  vip_server = 'https://localhost:8090'
+  server_url = File.join(vip_server, '/i18n/api/v2/translation/products', config['product_name'], 'versions', config['version'])
 
   component_only_on_server = 'component_only_on_server'
   component_local_source_only = 'NEW'
@@ -112,7 +113,7 @@ describe 'Mix' do
 
   describe '#only Singleton server is available' do
     before :each do
-      config['vip_server'] = orig_config['vip_server']
+      config['vip_server'] = vip_server
     end
 
     it "get '#{en_locale}' translation" do
@@ -162,7 +163,7 @@ describe 'Mix' do
     server_local_source_key = 'server_local_source_key'
 
     before :each do
-      config['vip_server'] = orig_config['vip_server']
+      config['vip_server'] = vip_server
       config['source_bundle'] = orig_config['source_bundle']
     end
 
@@ -227,7 +228,7 @@ describe 'Mix' do
     server_local_translation_key = 'server_local_translation_key'
 
     before :each do
-      config['vip_server'] = orig_config['vip_server']
+      config['vip_server'] = vip_server
       config['translation_bundle'] = orig_config['translation_bundle']
     end
 
@@ -341,7 +342,7 @@ describe 'Mix' do
     server_local_translation_source_key = 'server_local_translation_source_key'
 
     before :each do
-      config['vip_server'] = orig_config['vip_server']
+      config['vip_server'] = vip_server
       config['source_bundle'] = orig_config['source_bundle']
       config['translation_bundle'] = orig_config['translation_bundle']
     end

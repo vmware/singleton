@@ -5,12 +5,9 @@ require 'sgtn-client/common/data'
 
 module SgtnClient::TranslationLoader
   class Source
-    def initialize
-      env = SgtnClient::Config.default_environment
-      @config = SgtnClient::Config.configurations[env]
-
-      # raise error if @config['source_bundle']
-      @source_bundle_path = Pathname.new(@config['source_bundle'])
+    def initialize(config)
+      # raise error if config['source_bundle']
+      @source_bundle_path = Pathname.new(config['source_bundle'])
     end
 
     def load_bundle(component, locale = nil)
@@ -31,7 +28,7 @@ module SgtnClient::TranslationLoader
     def available_bundles
       bundles = Set.new
       @source_bundle_path.glob('*/') do |component|
-        component.glob('**/*.{yml, yaml}') do |f|
+        component.glob('**/*.{yml, yaml}') do |_|
           bundles << Common::BundleID.new(component.basename.to_s, LocaleUtil.get_source_locale)
           break
         end
@@ -39,18 +36,18 @@ module SgtnClient::TranslationLoader
       bundles
     end
 
-    def available_locales
-      Set.new([LocaleUtil.get_source_locale])
-    end
+    # def available_locales
+    #   Set.new([LocaleUtil.get_source_locale])
+    # end
 
-    def available_components
-      SgtnClient.logger.debug '[Source][available_components]'
+    # def available_components
+    #   SgtnClient.logger.debug '[Source][available_components]'
 
-      components = Set.new
-      @source_bundle_path.glob('*/') do |f| # TODO: folder shouldn't be empty?
-        components << f.basename.to_s
-      end
-      components
-    end
+    #   components = Set.new
+    #   @source_bundle_path.glob('*/') do |f| # TODO: folder shouldn't be empty?
+    #     components << f.basename.to_s
+    #   end
+    #   components
+    # end
   end
 end

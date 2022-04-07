@@ -20,14 +20,11 @@ class SgtnClient::TranslationLoader::SgtnServer
 
   REQUEST_ARGUMENTS = { timeout: 10 }.freeze
 
-  def initialize
-    env = SgtnClient::Config.default_environment
-    @config = SgtnClient::Config.configurations[env]
+  def initialize(config)
+    @server_url = config['vip_server']
 
-    @server_url = @config['vip_server']
-
-    product_name = @config['product_name']
-    version = @config['version']
+    product_name = config['product_name']
+    version = config['version']
 
     # TODO: none is defined, throw error
 
@@ -47,14 +44,6 @@ class SgtnClient::TranslationLoader::SgtnServer
     messages
   end
 
-  def available_locales
-    query_server(@locales_url, ['locales'])
-  end
-
-  def available_components
-    query_server(@components_url, ['components'])
-  end
-
   def available_bundles
     bundles = Set.new
     components_thread = Thread.new { available_components }
@@ -67,6 +56,14 @@ class SgtnClient::TranslationLoader::SgtnServer
   end
 
   private
+
+  def available_locales
+    query_server(@locales_url, ['locales'])
+  end
+
+  def available_components
+    query_server(@components_url, ['components'])
+  end
 
   def query_server(url, path_to_data = [], queries = nil, headers = nil)
     conn = Faraday.new(@server_url, request: REQUEST_ARGUMENTS) do |f|
