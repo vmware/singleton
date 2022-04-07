@@ -15,9 +15,17 @@ Bundler.require :default, :test
 require 'singleton-ruby'
 require 'sgtn-client/api/source'
 
+require 'support/helpers'
+
+RSpec.configure do |c|
+  c.include Helpers, :include_helpers
+  c.extend  Helpers, :extend_helpers
+end
+
 include SgtnClient
 include SgtnClient::Logging
 include SgtnClient::Exceptions
+
 
 SgtnClient.load("./spec/config/sgtnclient.yml", "test", './sgtnclient_d.log')
 

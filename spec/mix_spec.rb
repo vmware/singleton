@@ -4,16 +4,9 @@
 #  SPDX-License-Identifier: EPL-2.0
 
 require 'webmock/rspec'
-require 'support/helpers'
-
-RSpec.configure do |c|
-  c.include Helpers, :include_helpers
-  c.extend  Helpers, :extend_helpers
-end
 
 describe 'Mix', :include_helpers, :extend_helpers do
-  orig_config = SgtnClient::Config.configurations[SgtnClient::Config.default_environment]
-  config = orig_config.dup
+  new_config = config.dup
 
   component_only_on_server = 'component_only_on_server'
   component_local_source_only = 'NEW'
@@ -28,7 +21,7 @@ describe 'Mix', :include_helpers, :extend_helpers do
   source_changed_key = 'old_helloworld'
   key = 'helloworld'
 
-  let(:loader) { SgtnClient::TranslationLoader::LoaderFactory.create(config) }
+  let(:loader) { SgtnClient::TranslationLoader::LoaderFactory.create(new_config) }
 
   before :all do
     WebMock.enable!
@@ -39,16 +32,16 @@ describe 'Mix', :include_helpers, :extend_helpers do
   end
 
   before :each do
-    config['vip_server'] = nil
-    config['translation_bundle'] = nil
-    config['source_bundle'] = nil
+    new_config['vip_server'] = nil
+    new_config['translation_bundle'] = nil
+    new_config['source_bundle'] = nil
     SgtnClient::CacheUtil.clear_cache
     WebMock.reset!
   end
 
   describe '#only local source is available' do
     before :each do
-      config['source_bundle'] = orig_config['source_bundle']
+      new_config['source_bundle'] = config['source_bundle']
     end
 
     it 'should be able to return En' do
@@ -79,7 +72,7 @@ describe 'Mix', :include_helpers, :extend_helpers do
 
   describe '#only local translation is available' do
     before :each do
-      config['translation_bundle'] = orig_config['translation_bundle']
+      new_config['translation_bundle'] = config['translation_bundle']
     end
 
     it 'query source locale - English' do
@@ -111,7 +104,7 @@ describe 'Mix', :include_helpers, :extend_helpers do
 
   describe '#only Singleton server is available' do
     before :each do
-      config['vip_server'] = singleton_server
+      new_config['vip_server'] = singleton_server
     end
 
     it "get '#{en_locale}' translation" do
@@ -161,8 +154,8 @@ describe 'Mix', :include_helpers, :extend_helpers do
     server_local_source_key = 'server_local_source_key'
 
     before :each do
-      config['vip_server'] = singleton_server
-      config['source_bundle'] = orig_config['source_bundle']
+      new_config['vip_server'] = singleton_server
+      new_config['source_bundle'] = config['source_bundle']
     end
 
     it 'should be able to get component in local source' do
@@ -226,8 +219,8 @@ describe 'Mix', :include_helpers, :extend_helpers do
     server_local_translation_key = 'server_local_translation_key'
 
     before :each do
-      config['vip_server'] = singleton_server
-      config['translation_bundle'] = orig_config['translation_bundle']
+      new_config['vip_server'] = singleton_server
+      new_config['translation_bundle'] = config['translation_bundle']
     end
 
     it 'should be able to get En' do
@@ -299,8 +292,8 @@ describe 'Mix', :include_helpers, :extend_helpers do
 
   describe '#both local translation and local source are available' do
     before :each do
-      config['translation_bundle'] = orig_config['translation_bundle']
-      config['source_bundle'] = orig_config['source_bundle']
+      new_config['translation_bundle'] = config['translation_bundle']
+      new_config['source_bundle'] = config['source_bundle']
     end
 
     it 'En should use local source bundle' do
@@ -340,9 +333,9 @@ describe 'Mix', :include_helpers, :extend_helpers do
     server_local_translation_source_key = 'server_local_translation_source_key'
 
     before :each do
-      config['vip_server'] = singleton_server
-      config['source_bundle'] = orig_config['source_bundle']
-      config['translation_bundle'] = orig_config['translation_bundle']
+      new_config['vip_server'] = singleton_server
+      new_config['source_bundle'] = config['source_bundle']
+      new_config['translation_bundle'] = config['translation_bundle']
     end
 
     it 'En should use local source bundle' do
