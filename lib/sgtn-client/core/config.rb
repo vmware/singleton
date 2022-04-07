@@ -174,7 +174,7 @@ module SgtnClient
           available_bundles = loader.available_bundles
           return {} unless available_bundles
 
-          if !available_bundles.respond_to?(:locales)
+          unless available_bundles.respond_to?(:locales)
             def available_bundles.locales
               @available_locales ||= begin
                 locales = Set.new
