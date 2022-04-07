@@ -4,32 +4,30 @@
 #  SPDX-License-Identifier: EPL-2.0
 
 require 'webmock/rspec'
+require 'support/helpers'
 
-describe 'Mix' do
+RSpec.configure do |c|
+  c.include Helpers, :include_helpers
+  c.extend  Helpers, :extend_helpers
+end
+
+describe 'Mix', :include_helpers, :extend_helpers do
   orig_config = SgtnClient::Config.configurations[SgtnClient::Config.default_environment]
   config = orig_config.dup
-
-  vip_server = 'https://localhost:8090'
-  server_url = File.join(vip_server, '/i18n/api/v2/translation/products', config['product_name'], 'versions', config['version'])
 
   component_only_on_server = 'component_only_on_server'
   component_local_source_only = 'NEW'
   component_local_translation_only = 'local_only'
   component_nonexistent = 'nonexistent_component'
-  component = 'JAVA'
 
   locale_nonexistent = 'nonexistent_locale'
-  locale = 'zh-Hans'
-  en_locale = 'en'
 
   message_only_on_server_key = 'message_only_on_server'
   message_only_in_local_source_key = 'new_helloworld'
   message_only_in_local_translation_key = 'local_only_key'
   source_changed_key = 'old_helloworld'
   key = 'helloworld'
-  
-  let(:nonexistent_response) { File.new('spec/fixtures/mock_responses/nonexistent').read }
-  let(:stubs) { [] }
+
   let(:loader) { SgtnClient::TranslationLoader::LoaderFactory.create(config) }
 
   before :all do
@@ -113,7 +111,7 @@ describe 'Mix' do
 
   describe '#only Singleton server is available' do
     before :each do
-      config['vip_server'] = vip_server
+      config['vip_server'] = singleton_server
     end
 
     it "get '#{en_locale}' translation" do
@@ -163,7 +161,7 @@ describe 'Mix' do
     server_local_source_key = 'server_local_source_key'
 
     before :each do
-      config['vip_server'] = vip_server
+      config['vip_server'] = singleton_server
       config['source_bundle'] = orig_config['source_bundle']
     end
 
@@ -228,7 +226,7 @@ describe 'Mix' do
     server_local_translation_key = 'server_local_translation_key'
 
     before :each do
-      config['vip_server'] = vip_server
+      config['vip_server'] = singleton_server
       config['translation_bundle'] = orig_config['translation_bundle']
     end
 
@@ -342,7 +340,7 @@ describe 'Mix' do
     server_local_translation_source_key = 'server_local_translation_source_key'
 
     before :each do
-      config['vip_server'] = vip_server
+      config['vip_server'] = singleton_server
       config['source_bundle'] = orig_config['source_bundle']
       config['translation_bundle'] = orig_config['translation_bundle']
     end
