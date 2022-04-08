@@ -18,15 +18,48 @@ describe 'Available Bundles', :include_helpers, :extend_helpers do
   end
 
   before :each do
+    new_config['vip_server'] = nil
+    new_config['translation_bundle'] = nil
+    new_config['source_bundle'] = nil
     SgtnClient::CacheUtil.clear_cache
     WebMock.reset!
-    new_config['vip_server'] = singleton_server
   end
 
-  it '#should be able to get available bundles' do
-    stubs << components_stub << locales_stub
-    result = loader.available_bundles
-    expect(result).to_not be_nil
-    stubs.each { |stub| expect(stub).to have_been_requested }
+  describe '#Only Singleton Server is available' do
+    before :each do
+      new_config['vip_server'] = singleton_server
+    end
+
+    it '#should be able to get available bundles' do
+      stubs << components_stub << locales_stub
+      result = loader.available_bundles
+      expect(result).to_not be_nil
+      expect(result).to include(SgtnClient::Common::BundleID.new(component_only_on_server, locale))
+      stubs.each { |stub| expect(stub).to have_been_requested }
+    end
+  end
+
+  describe '#Only local translation is available' do
+    before :each do
+      new_config['translation_bundle'] = translation_path
+    end
+
+    it '#should be able to get available bundles' do
+      result = loader.available_bundles
+      expect(result).to_not be_nil
+      expect(result).to include(SgtnClient::Common::BundleID.new(component_local_translation_only, en_locale))
+    end
+  end
+
+  describe '#Only local source is available' do
+    before :each do
+      new_config['source_bundle'] = source_path
+    end
+
+    it '#should be able to get available bundles' do
+      result = loader.available_bundles
+      expect(result).to_not be_nil
+      expect(result).to include(SgtnClient::Common::BundleID.new(component_local_source_only, source_locale))
+    end
   end
 end

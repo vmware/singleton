@@ -7,20 +7,6 @@ require 'webmock/rspec'
 
 describe 'Mix', :include_helpers, :extend_helpers do
   new_config = config.dup
-
-  component_only_on_server = 'component_only_on_server'
-  component_local_source_only = 'NEW'
-  component_local_translation_only = 'local_only'
-  component_nonexistent = 'nonexistent_component'
-
-  locale_nonexistent = 'nonexistent_locale'
-
-  message_only_on_server_key = 'message_only_on_server'
-  message_only_in_local_source_key = 'new_helloworld'
-  message_only_in_local_translation_key = 'local_only_key'
-  source_changed_key = 'old_helloworld'
-  key = 'helloworld'
-
   let(:loader) { SgtnClient::TranslationLoader::LoaderFactory.create(new_config) }
 
   before :all do
