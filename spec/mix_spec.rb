@@ -118,16 +118,20 @@ describe 'Mix' do
     end
 
     it "get '#{en_locale}' translation" do
-      en_response = File.new("spec/fixtures/mock_responses/#{component_only_on_server}-#{en_locale}")
-      stubs << stub_request(:get, server_url).with(query: { 'components' => component_only_on_server, 'locales' => en_locale }).to_return(body: en_response)
+      latest_response = File.new("spec/fixtures/mock_responses/#{component_only_on_server}-latest")
+      stubs << stub_request(:get, server_url).with(query: { 'components' => component_only_on_server, 'locales' => 'latest' }).to_return(body: latest_response)
       result = SgtnClient::Translation.send(:get_cs, component_only_on_server, en_locale)
       expect(result).to_not be_nil
-      expect(result.dig(message_only_on_server_key)).to eq 'Message only on server'
+      expect(result.dig('message_new_added')).to eq 'new message'
 
       stubs.each { |stub| expect(stub).to have_been_requested }
     end
 
     it "should be able to get #{locale} translation" do
+      latest_response = File.new("spec/fixtures/mock_responses/#{component_only_on_server}-latest")
+      stubs << stub_request(:get, server_url).with(query: { 'components' => component_only_on_server, 'locales' => 'latest' }).to_return(body: latest_response)
+      en_response = File.new("spec/fixtures/mock_responses/#{component_only_on_server}-#{en_locale}")
+      stubs << stub_request(:get, server_url).with(query: { 'components' => component_only_on_server, 'locales' => en_locale }).to_return(body: en_response)
       zh_response = File.new("spec/fixtures/mock_responses/#{component_only_on_server}-#{locale}")
       stubs << stub_request(:get, server_url).with(query: { 'components' => component_only_on_server, 'locales' => locale }).to_return(body: zh_response)
       result = SgtnClient::Translation.send(:get_cs, component_only_on_server, locale)
