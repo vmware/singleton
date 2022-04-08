@@ -3,8 +3,6 @@
 #  Copyright 2022 VMware, Inc.
 #  SPDX-License-Identifier: EPL-2.0
 
-require 'webmock/rspec'
-
 describe 'Available Bundles', :include_helpers, :extend_helpers do
   new_config = config.dup
   let(:loader) { SgtnClient::TranslationLoader::LoaderFactory.create(new_config) }

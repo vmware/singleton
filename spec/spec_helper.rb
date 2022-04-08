@@ -15,6 +15,7 @@ Bundler.require :default, :test
 require 'singleton-ruby'
 require 'sgtn-client/api/source'
 
+require 'webmock/rspec'
 require 'support/helpers'
 
 RSpec.configure do |c|

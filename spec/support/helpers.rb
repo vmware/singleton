@@ -4,7 +4,6 @@
 # SPDX-License-Identifier: EPL-2.0
 
 require 'active_support'
-require 'webmock/rspec'
 
 module Helpers
   mattr_accessor :singleton_server, :server_url, :component, :locale, :en_locale, :source_locale, :components_url, :locales_url,
