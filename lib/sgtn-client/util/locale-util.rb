@@ -31,7 +31,7 @@ module SgtnClient
       locale = locale.gsub('_', '-')
       locale = MAP_LOCALES[locale] if MAP_LOCALES.key?(locale)
       return locale if Config.available_locales.include?(locale)
-      return LocaleUtil.get_source_locale if locale.index('-').nil?
+      return get_source_locale if locale.index('-').nil?
 
       get_best_match(locale.slice(0..(locale.rindex('-') - 1)))
     end

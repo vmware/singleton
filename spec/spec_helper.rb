@@ -2,8 +2,7 @@
 #  SPDX-License-Identifier: EPL-2.0
 
 require 'bundler/setup'
-require_relative '../lib/sgtn-client/sgtn-client.rb'
-require 'logger'
+require 'sgtn-client/sgtn-client.rb'
 
 require 'simplecov'
 SimpleCov.start do
@@ -13,29 +12,19 @@ end
 Bundler.require :default, :test
 
 require 'singleton-ruby'
-require 'sgtn-client/api/source'
-
 require 'webmock/rspec'
-require 'support/helpers'
 
-RSpec.configure do |c|
-  c.include Helpers, :include_helpers
-  c.extend  Helpers, :extend_helpers
-end
+SgtnClient.load('./spec/config/sgtnclient.yml', 'test', './sgtnclient_d.log')
 
-include SgtnClient
-include SgtnClient::Logging
-include SgtnClient::Exceptions
-
-
-SgtnClient.load("./spec/config/sgtnclient.yml", "test", './sgtnclient_d.log')
-
-Dir[File.expand_path("../support/**/*.rb", __FILE__)].each {|f| require f }
+Dir[File.expand_path('support/**/*.rb', __dir__)].sort.each { |f| require f }
 
 RSpec.configure do |config|
-  config.filter_run_excluding :integration => true
-  config.filter_run_excluding :disabled => true
+  config.filter_run_excluding integration: true
+  config.filter_run_excluding disabled: true
   config.include SampleData
 end
 
-WebMock.allow_net_connect!
+RSpec.configure do |config|
+  config.include Helpers, :include_helpers
+  config.extend  Helpers, :extend_helpers
+end

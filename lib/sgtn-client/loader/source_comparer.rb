@@ -23,7 +23,10 @@ module SgtnClient::TranslationLoader::SourceComparer
   private
 
   def compare_source(translation_bundle, old_source_bundle, source_bundle)
-    return translation_bundle if translation_bundle.nil? || source_bundle.nil? || old_source_bundle.nil?
+    if translation_bundle.nil? || source_bundle.nil? || old_source_bundle.nil?
+      SgtnClient.logger.warn "Fail to compare source because some bundle(s) nil"
+      return translation_bundle
+    end
 
     source_bundle.each do |key, value|
       if old_source_bundle[key] != value || translation_bundle[key].nil?

@@ -4,10 +4,10 @@
 module SgtnClient
   module TranslationLoader
     class Chain
-      attr_accessor :loaders
+      attr_reader :loaders
 
       def initialize(*loaders)
-        self.loaders = loaders
+        @loaders = loaders
       end
 
       def load_bundle(component, locale)
@@ -15,7 +15,8 @@ module SgtnClient
           bundle = loader.load_bundle(component, locale)
           return bundle if bundle
         rescue StandardError => e
-          SgtnClient.logger.warn "Failed to load bundle from #{loader.class.name}: #{e}"
+          SgtnClient.logger.error "Failed to load bundle from #{loader.class}: #{e}"
+          SgtnClient.logger.error e.backtrace
         end
         nil
       end
@@ -25,6 +26,9 @@ module SgtnClient
         loaders.each do |loader|
           item = loader.available_bundles
           total_data += item if item
+        rescue StandardError => e
+          SgtnClient.logger.error "Failed to load available bundles from #{loader.class}: #{e}"
+          SgtnClient.logger.error e.backtrace
         end
 
         total_data.empty? ? nil : total_data

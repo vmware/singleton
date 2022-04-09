@@ -9,7 +9,7 @@ module SgtnClient
       SgtnClient.logger.debug "[Translation.getString]component: #{component}, key: #{key}, locale: #{locale}"
       str = getTranslation(component, key, locale)
       if str.nil? && !LocaleUtil.is_source_locale(locale)
-        str = getTranslation(component, key, LocaleUtil.get_source_locale)
+        str = getTranslation(component, key, SgtnClient::LocaleUtil.get_source_locale)
       end
       str
     end
@@ -18,8 +18,8 @@ module SgtnClient
       SgtnClient.logger.debug "[Translation][getString_p]component=#{component}, key=#{key}, locale=#{locale}"
       str = getTranslation(component, key, locale)
       if str.nil?
-        unless LocaleUtil.is_source_locale(locale)
-          str = getTranslation(component, key, LocaleUtil.get_source_locale)
+        unless SgtnClient::LocaleUtil.is_source_locale(locale)
+          str = getTranslation(component, key, SgtnClient::LocaleUtil.get_source_locale)
           str.to_plural_s(LocaleUtil.get_source_locale, plural_args) if str
         end
       else
@@ -48,8 +48,8 @@ module SgtnClient
       locale = SgtnClient::LocaleUtil.get_best_locale(locale)
       items = get_cs(component, locale)
       if items.nil? && !LocaleUtil.is_source_locale(locale)
-        items = get_cs(component, LocaleUtil.get_source_locale)
-        locale = LocaleUtil.get_source_locale
+        items = get_cs(component, SgtnClient::LocaleUtil.get_source_locale)
+        locale = SgtnClient::LocaleUtil.get_source_locale
       end
 
       { 'component' => component, 'locale' => locale, 'messages' => items || {} } if items
@@ -62,7 +62,11 @@ module SgtnClient
     end
 
     def self.get_cs(component, locale)
-      return nil unless SgtnClient::Config.available_bundles.include?(Common::BundleID.new(component, locale))
+      id = SgtnClient::Common::BundleID.new(component, locale)
+      unless SgtnClient::Config.available_bundles.include?(id)
+        SgtnClient.logger.warn "query an unavailable bundle: #{id}"
+        return nil 
+      end
 
       SgtnClient::Config.loader.get_bundle(component, locale)
     end

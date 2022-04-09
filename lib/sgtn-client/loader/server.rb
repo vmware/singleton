@@ -9,11 +9,9 @@ require 'faraday_middleware'
 require 'sgtn-client/common/data'
 
 class SgtnClient::TranslationLoader::SgtnServer
-  PPRODUCT_ROOT = '/i18n/api/v2/translation/products/%s/versions/%s'
-
-  PRODUCT_TRANSLATION = PPRODUCT_ROOT
-  PRODUCT_LOCALE_LIST = "#{PPRODUCT_ROOT}/localelist"
-  PRODUCT_COMPONENT_LIST = "#{PPRODUCT_ROOT}/componentlist"
+  PRODUCT_ROOT = '/i18n/api/v2/translation/products/%s/versions/%s'
+  PRODUCT_LOCALE_LIST = "#{PRODUCT_ROOT}/localelist"
+  PRODUCT_COMPONENT_LIST = "#{PRODUCT_ROOT}/componentlist"
 
   ERROR_ILLEGAL_DATA = 'server returned illegal data.'
   ERROR_BUSINESS_ERROR = 'server returned business error.'
@@ -26,9 +24,7 @@ class SgtnClient::TranslationLoader::SgtnServer
     product_name = config['product_name']
     version = config['version']
 
-    # TODO: none is defined, throw error
-
-    @bundle_url = format(PRODUCT_TRANSLATION, product_name, version)
+    @bundle_url = format(PRODUCT_ROOT, product_name, version)
     @locales_url = format(PRODUCT_LOCALE_LIST, product_name, version)
     @components_url = format(PRODUCT_COMPONENT_LIST, product_name, version)
   end
@@ -49,7 +45,7 @@ class SgtnClient::TranslationLoader::SgtnServer
     components_thread = Thread.new { available_components }
     available_locales.each do |locale|
       components_thread.value.each do |component|
-        bundles << Common::BundleID.new(component, locale)
+        bundles << SgtnClient::Common::BundleID.new(component, locale)
       end
     end
     bundles
@@ -91,7 +87,8 @@ class SgtnClient::TranslationLoader::SgtnServer
       raise SingletonError, "#{ERROR_BUSINESS_ERROR} #{parsedbody['response']}"
     end
 
-    logger.warn "#{ERROR_BUSINESS_ERROR} #{parsedbody['response']}" if b_code > 600
+    # 600 means a successful response, 6xx means partial successful.
+    SgtnClient.logger.warn "#{ERROR_BUSINESS_ERROR} #{parsedbody['response']}" if b_code > 600
   rescue TypeError, ArgumentError, NoMethodError => e
     raise SingletonError, "#{ERROR_ILLEGAL_DATA} #{e}. Body is: #{parsedbody}"
   end
