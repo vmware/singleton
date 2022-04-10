@@ -63,12 +63,17 @@ module SgtnClient
 
     def self.get_cs(component, locale)
       id = SgtnClient::Common::BundleID.new(component, locale)
-      unless SgtnClient::Config.available_bundles.include?(id)
+      available_bundles = SgtnClient::Config.available_bundles
+      unless (available_bundles && available_bundles.empty?) || available_bundles.include?(id)
         SgtnClient.logger.warn "query an unavailable bundle: #{id}"
-        return nil 
+        return nil
       end
 
       SgtnClient::Config.loader.get_bundle(component, locale)
+    rescue StandardError => e
+      SgtnClient.logger.error "Fail to get bundle #{id}"
+      SgtnClient.logger.error e
+      nil
     end
 
     private_class_method :getTranslation, :get_cs

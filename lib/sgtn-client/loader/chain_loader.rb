@@ -11,27 +11,40 @@ module SgtnClient
       end
 
       def load_bundle(component, locale)
+        exception = nil
+
         loaders.each do |loader|
-          bundle = loader.load_bundle(component, locale)
-          return bundle if bundle
-        rescue StandardError => e
-          SgtnClient.logger.error "Failed to load bundle from #{loader.class}: #{e}"
-          SgtnClient.logger.error e.backtrace
+          begin
+            bundle = loader.load_bundle(component, locale)
+            return bundle if bundle
+          rescue StandardError => e
+            exception ||= e
+            SgtnClient.logger.error "[#{method(__method__).owner}.#{__method__}] Failed on #{loader.class}: #{e}"
+          end
         end
+
+        raise exception if exception
+
         nil
       end
 
       def available_bundles
+        exception = nil
         total_data = Set.new
+
         loaders.each do |loader|
-          item = loader.available_bundles
-          total_data += item if item
-        rescue StandardError => e
-          SgtnClient.logger.error "Failed to load available bundles from #{loader.class}: #{e}"
-          SgtnClient.logger.error e.backtrace
+          begin
+            item = loader.available_bundles
+            total_data += item
+          rescue StandardError => e
+            exception ||= e
+            SgtnClient.logger.error "[#{method(__method__).owner}.#{__method__}] Failed on #{loader.class}: #{e}"
+          end
         end
 
-        total_data.empty? ? nil : total_data
+        raise exception if total_data.empty? && exception
+
+        total_data
       end
     end
   end

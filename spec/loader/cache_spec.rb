@@ -50,4 +50,6 @@ describe 'Cache' do
     expect(locale).to eq 'en'
     expect(SgtnClient::CacheUtil.get_cachekey("java", locale)).to eq "#{product_name}_#{version}_java_#{locale}"
   end
+
+  #TODO: cache is expired for bundle and available bundles
 end

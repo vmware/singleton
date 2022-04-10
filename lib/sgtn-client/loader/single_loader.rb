@@ -8,6 +8,8 @@ module SgtnClient
   module TranslationLoader
     module SingleLoader
       def load_bundle(component, locale)
+        SgtnClient.logger.debug "[#{method(__method__).owner}.#{__method__}] component=#{component}, locale=#{locale}"
+
         @single_loader ||= begin
           none_alive = proc { |_, thread| thread.nil? || thread.alive? == false }
           creator = proc do |id, _, *args|
@@ -18,17 +20,14 @@ module SgtnClient
               # delete thread from hash after finish
               Thread.new { @single_loader.remove_object(id) }
               item
-            rescue StandardError => e
-              SgtnClient.logger.error "Error while loading: '#{id}', args: #{args}. error: #{e.message}"
-              SgtnClient.logger.error e.backtrace
-              nil
             end
           end
 
           SgtnClient::SingleOperation.new(none_alive, &creator)
         end
 
-        @single_loader.operate(SgtnClient::CacheUtil.get_cachekey(component, locale), component, locale)&.value
+        thread = @single_loader.operate(SgtnClient::CacheUtil.get_cachekey(component, locale), component, locale)
+        thread&.value
       end
     end
   end

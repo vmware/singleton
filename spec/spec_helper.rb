@@ -14,6 +14,10 @@ Bundler.require :default, :test
 require 'singleton-ruby'
 require 'webmock/rspec'
 
+module SgtnClient
+  autoload :CacheUtil, 'sgtn-client/util/cache-util'
+end
+
 SgtnClient.load('./spec/config/sgtnclient.yml', 'test', './sgtnclient_d.log')
 
 Dir[File.expand_path('support/**/*.rb', __dir__)].sort.each { |f| require f }

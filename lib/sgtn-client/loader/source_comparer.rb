@@ -7,15 +7,24 @@ module SgtnClient
   module TranslationLoader
     module SourceComparer
       def load_bundle(component, locale)
+        SgtnClient.logger.debug "[#{method(__method__).owner}.#{__method__}] component=#{component}, locale=#{locale}"
+
         # source locale and old source locale don't need comparison because they are bases of comparison
         if SgtnClient::LocaleUtil.cache_to_real_map.key?(locale)
           return super(component, SgtnClient::LocaleUtil.cache_to_real_map[locale])
         end
 
         old_source_bundle_thread = Thread.new { load_bundle(component, SgtnClient::LocaleUtil::OLD_SOURCE_LOCALE) }
+        source_bundle_thread = Thread.new { load_bundle(component, SgtnClient::LocaleUtil.get_source_locale) }
         translation_bundle = super(component, locale)
-        source_bundle = get_bundle(component, SgtnClient::LocaleUtil.get_source_locale) # source is in cache and does not expire.
-        old_source_bundle = old_source_bundle_thread.value
+
+        begin
+          old_source_bundle = old_source_bundle_thread.value
+          source_bundle = source_bundle_thread.value
+        rescue StandardError => e
+          SgtnClient.logger.error "Fail to load (|old) source bundle. component:#{component}. error: #{e}"
+          return translation_bundle
+        end
 
         compare_source(translation_bundle, old_source_bundle, source_bundle)
       end
@@ -23,8 +32,8 @@ module SgtnClient
       private
 
       def compare_source(translation_bundle, old_source_bundle, source_bundle)
-        if translation_bundle.nil? || source_bundle.nil? || old_source_bundle.nil?
-          SgtnClient.logger.warn 'Fail to compare source because some bundle(s) nil'
+        if !translation_bundle.is_a?(Hash) || !source_bundle.is_a?(Hash) || !old_source_bundle.is_a?(Hash)
+          SgtnClient.logger.warn 'Fail to compare source because some bundle data are wrong'
           return translation_bundle
         end
 

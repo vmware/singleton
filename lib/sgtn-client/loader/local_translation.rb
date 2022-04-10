@@ -18,8 +18,9 @@ module SgtnClient
       end
 
       def load_bundle(component, locale)
-        # TODO: make sure data is valid
         return if locale == SgtnClient::LocaleUtil::REAL_SOURCE_LOCALE # only return when NOT querying source
+
+        SgtnClient.logger.debug "[#{method(__method__).owner}.#{__method__}] component=#{component}, locale=#{locale}"
 
         file_name = BUNDLE_PREFIX + locale + BUNDLE_SUFFIX
         file_path = @base_path + component + file_name
@@ -27,13 +28,14 @@ module SgtnClient
         bundle_data = JSON.parse(File.read(file_path))
         messages = bundle_data['messages']
 
-        raise SgtnClient::SingletonError, 'no messages in bundle.' unless messages
+        raise SgtnClient::SingletonError, "no messages in local bundle: #{file_path}." unless messages
 
         messages
       end
 
       def available_bundles
-        # TODO: make sure data is valid
+        SgtnClient.logger.debug "[#{method(__method__).owner}.#{__method__}]"
+
         bundles = Set.new
         @base_path.glob('*/*.json') do |f|
           locale = f.basename.to_s.sub(/\A#{BUNDLE_PREFIX}/i, '').sub(/#{BUNDLE_SUFFIX}\z/i, '')

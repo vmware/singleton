@@ -49,7 +49,7 @@ module SgtnClient
                   end
                   file = File.open(file, 'a')
                   file.sync = true
-                  SgtnClient.logger = Logger.new(file, LOGFILE_SHIFT_AGE)
+                  SgtnClient.logger = Logger.new(file, LOGFILE_SHIFT_AGE, progname: 'SGTN')
 
                   # Set log level for sandbox mode
                   env = SgtnClient::Config.default_environment
