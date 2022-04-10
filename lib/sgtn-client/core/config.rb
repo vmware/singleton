@@ -168,6 +168,10 @@ module SgtnClient
 
         def available_bundles
           loader.available_bundles
+        rescue StandardError => e
+          SgtnClient.logger.error "Fail to get available_bundles"
+          SgtnClient.logger.error e
+          {}
         end
 
         def available_locales
