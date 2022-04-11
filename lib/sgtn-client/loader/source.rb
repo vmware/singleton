@@ -1,9 +1,11 @@
 # Copyright 2022 VMware, Inc.
 # SPDX-License-Identifier: EPL-2.0
 
-require 'sgtn-client/common/data'
-
 module SgtnClient
+  module Common
+    autoload :BundleID, 'sgtn-client/common/data'
+  end
+
   module TranslationLoader
     autoload :CONSTS, 'sgtn-client/loader/consts'
 
@@ -34,7 +36,7 @@ module SgtnClient
         bundles = Set.new
         @source_bundle_path.glob('*/') do |component|
           component.glob('**/*.{yml, yaml}') do |_|
-            bundles << SgtnClient::Common::BundleID.new(component.basename.to_s, SgtnClient::LocaleUtil.get_source_locale)
+            bundles << Common::BundleID.new(component.basename.to_s, SgtnClient::LocaleUtil.get_source_locale)
             break
           end
         end

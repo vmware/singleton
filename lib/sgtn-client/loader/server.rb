@@ -6,8 +6,11 @@
 require 'faraday'
 require 'faraday_middleware'
 
-require 'sgtn-client/common/data'
 module SgtnClient
+  module Common
+    autoload :BundleID, 'sgtn-client/common/data'
+  end
+
   module TranslationLoader
     autoload :CONSTS, 'sgtn-client/loader/consts'
 
@@ -54,7 +57,7 @@ module SgtnClient
         components_thread = Thread.new { available_components }
         available_locales.each do |locale|
           components_thread.value.each do |component|
-            bundles << SgtnClient::Common::BundleID.new(component, locale)
+            bundles << Common::BundleID.new(component, locale)
           end
         end
         bundles

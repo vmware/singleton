@@ -30,7 +30,7 @@ module SgtnClient
         end
 
         thread = @single_loader.operate(SgtnClient::CacheUtil.get_cachekey(component, locale), component, locale)
-        thread&.value
+        thread&.value # TODO: nil check?
       end
     end
   end

@@ -40,7 +40,7 @@ module SgtnClient
         bundles = Set.new
         @base_path.glob('*/*.json') do |f|
           locale = f.basename.to_s.sub(/\A#{BUNDLE_PREFIX}/i, '').sub(/#{BUNDLE_SUFFIX}\z/i, '')
-          bundles.add SgtnClient::Common::BundleID.new(f.parent.basename.to_s, locale)
+          bundles.add Common::BundleID.new(f.parent.basename.to_s, locale)
         end
         bundles
       end
