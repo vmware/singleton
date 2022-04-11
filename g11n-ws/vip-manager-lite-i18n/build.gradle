@@ -48,8 +48,8 @@ dependencies {
     implementation("org.ehcache:ehcache:$ehCacheVersion")
     implementation("javax.cache:cache-api:$cacheApiVersion")
     implementation("com.fasterxml.jackson.core:jackson-databind:$jacksonVersion")
-    implementation ("com.fasterxml.jackson.core:jackson-core:$jacksonVersion")
-    implementation ("com.fasterxml.jackson.core:jackson-annotations:$jacksonVersion")
+    //implementation ("com.fasterxml.jackson.core:jackson-core:$jacksonVersion")
+    //implementation ("com.fasterxml.jackson.core:jackson-annotations:$jacksonVersion")
     compileOnly('io.springfox:springfox-swagger2:2.9.2'){
        exclude group: 'io.swagger', module:'swagger-annotations'
        exclude group: 'io.swagger', module:'swagger-models'
