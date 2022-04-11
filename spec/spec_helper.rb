@@ -19,6 +19,7 @@ module SgtnClient
 end
 
 SgtnClient.load('./spec/config/sgtnclient.yml', 'test', './sgtnclient_d.log')
+SgtnClient.logger = Logger.new(STDOUT)
 
 Dir[File.expand_path('support/**/*.rb', __dir__)].sort.each { |f| require f }
 

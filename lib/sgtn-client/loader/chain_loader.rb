@@ -19,7 +19,7 @@ module SgtnClient
             return bundle if bundle
           rescue StandardError => e
             exception ||= e
-            SgtnClient.logger.error "[#{method(__method__).owner}.#{__method__}] Failed on #{loader.class}: #{e}"
+            SgtnClient.logger.error "[#{method(__method__).owner}.#{__method__}] failed on #{loader.class}: #{e}"
           end
         end
 
@@ -38,7 +38,7 @@ module SgtnClient
             total_data += item
           rescue StandardError => e
             exception ||= e
-            SgtnClient.logger.error "[#{method(__method__).owner}.#{__method__}] Failed on #{loader.class}: #{e}"
+            SgtnClient.logger.error "[#{method(__method__).owner}.#{__method__}] failed on #{loader.class}: #{e}"
           end
         end
 

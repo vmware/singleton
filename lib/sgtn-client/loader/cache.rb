@@ -16,7 +16,7 @@ module SgtnClient
         cache_item = SgtnClient::CacheUtil.get_cache(key)
         if cache_item
           if SgtnClient::CacheUtil.is_expired(cache_item) && !SgtnClient::LocaleUtil.is_source_locale(locale)
-            SgtnClient.logger.debug "[#{method(__method__).owner}.#{__method__}] Bundle cache is expired. key=#{key}"
+            SgtnClient.logger.debug "[#{method(__method__).owner}.#{__method__}] bundle cache is expired. key=#{key}"
 
             Thread.new do # TODO: Use one thread # refresh in background
               begin
