@@ -2,54 +2,48 @@
 # SPDX-License-Identifier: EPL-2.0
 
 require 'multi_json'
-require 'sgtn-client/common/data'
 
-class SgtnClient::TranslationLoader::LocalTranslation
-  BUNDLE_PREFIX = 'messages_'.freeze
-  BUNDLE_SUFFIX = '.json'.freeze
-
-  def initialize(config)
-    #  config['translation_bundle'] isn't defined, throw error
-    @base_path = Pathname.new(config['translation_bundle']) + config['product_name'] + config['version']
+module SgtnClient
+  module Common
+    autoload :BundleID, 'sgtn-client/common/data'
   end
 
-  def load_bundle(component, locale)
-    return if locale == SgtnClient::LocaleUtil::REAL_SOURCE_LOCALE # only return when NOT querying source
+  module TranslationLoader
+    autoload :CONSTS, 'sgtn-client/loader/consts'
 
-    file_name = BUNDLE_PREFIX + locale + BUNDLE_SUFFIX
-    file_path = @base_path + component + file_name
+    class LocalTranslation
+      BUNDLE_PREFIX = 'messages_'.freeze
+      BUNDLE_SUFFIX = '.json'.freeze
 
-    json_data = JSON.parse(File.read(file_path))
-    messages = json_data['messages']
+      def initialize(config)
+        #  config['translation_bundle'] isn't defined, throw error
+        @base_path = Pathname.new(config['translation_bundle']) + config['product_name'] + config['version']
+      end
 
-    raise SingletonError, 'no messages in bundle.' unless messages
+      def load_bundle(component, locale)
+        return if locale == CONSTS::REAL_SOURCE_LOCALE # only return when NOT querying source
 
-    messages
-  end
+        file_name = BUNDLE_PREFIX + locale + BUNDLE_SUFFIX
+        file_path = @base_path + component + file_name
 
-  # def available_locales
-  #   locales = Set.new
-  #   @base_path.glob('*/*.json') do |f|
-  #     locale = f.basename.to_s.sub!(BUNDLE_PREFIX, '').sub!(BUNDLE_SUFFIX, '')
-  #     locales.add locale
-  #   end
-  #   locales
-  # end
+        json_data = JSON.parse(File.read(file_path))
+        messages = json_data['messages']
 
-  # def available_components
-  #   components = Set.new
-  #   @base_path.glob('*/') do |f| # TODO: folder shouldn't be empty?
-  #     components << f.basename.to_s
-  #   end
-  #   components
-  # end
+        raise SingletonError, 'no messages in bundle.' unless messages
 
-  def available_bundles
-    bundles = Set.new
-    @base_path.glob('*/*.json') do |f|
-      locale = f.basename.to_s.sub!(BUNDLE_PREFIX, '').sub!(BUNDLE_SUFFIX, '')
-      bundles.add Common::BundleID.new(f.parent.basename.to_s, locale)
+        messages
+      end
+
+      def available_bundles
+        SgtnClient.logger.debug "[#{method(__method__).owner}.#{__method__}]"
+
+        bundles = Set.new
+        @base_path.glob('*/*.json') do |f|
+          locale = f.basename.to_s.sub(/\A#{BUNDLE_PREFIX}/i, '').sub(/#{BUNDLE_SUFFIX}\z/i, '')
+          bundles.add SgtnClient::Common::BundleID.new(f.parent.basename.to_s, locale)
+        end
+        bundles
+      end
     end
-    bundles
   end
 end
