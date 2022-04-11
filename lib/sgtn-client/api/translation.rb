@@ -64,7 +64,7 @@ module SgtnClient
     def self.get_cs(component, locale)
       id = SgtnClient::Common::BundleID.new(component, locale)
       available_bundles = SgtnClient::Config.available_bundles
-      unless (available_bundles && available_bundles.empty?) || available_bundles.include?(id)
+      unless available_bundles.nil? || available_bundles.empty? || available_bundles.include?(id)
         SgtnClient.logger.warn "query an unavailable bundle: #{id}"
         return nil
       end
