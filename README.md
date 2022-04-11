@@ -17,7 +17,7 @@ How to build and use the client library
 ------------
  * Clone the repository using Git.
     ```
-    git clone git@github.com:vmware/singleton.git g11n-java-client
+    git clone -b g11n-java-client git@github.com:vmware/singleton.git g11n-java-client
     ```
     
  * Go to the project's root directory.
