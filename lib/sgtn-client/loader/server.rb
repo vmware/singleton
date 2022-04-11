@@ -88,7 +88,7 @@ module SgtnClient
 
       def extract_data(parsedbody, path_to_data)
         data = parsedbody.dig('data', *path_to_data)
-        raise SingletonError, "no expected data in response. Body is: #{parsedbody}" unless data
+        raise SgtnClient::SingletonError, "no expected data in response. Body is: #{parsedbody}" unless data
 
         data
       end
@@ -96,12 +96,13 @@ module SgtnClient
       def process_business_error(parsedbody)
         b_code = parsedbody.dig('response', 'code')
         unless b_code >= 200 && b_code < 300 || b_code >= 600 && b_code < 700
-          raise SingletonError, "#{ERROR_BUSINESS_ERROR} #{parsedbody['response']}"
+          raise SgtnClient::SingletonError, "#{ERROR_BUSINESS_ERROR} #{parsedbody['response']}"
         end
 
-        logger.warn "#{ERROR_BUSINESS_ERROR} #{parsedbody['response']}" if b_code > 600
+        # 600 means a successful response, 6xx means partial successful.
+        SgtnClient.logger.warn "#{ERROR_BUSINESS_ERROR} #{parsedbody['response']}" if b_code > 600
       rescue TypeError, ArgumentError, NoMethodError => e
-        raise SingletonError, "#{ERROR_ILLEGAL_DATA} #{e}. Body is: #{parsedbody}"
+        raise SgtnClient::SingletonError, "#{ERROR_ILLEGAL_DATA} #{e}. Body is: #{parsedbody}"
       end
     end
   end
