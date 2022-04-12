@@ -23,7 +23,7 @@ describe 'Available Bundles', :include_helpers, :extend_helpers do
     WebMock.reset!
   end
 
-  describe '#Only Singleton Server is available' do
+  describe '#Only Singleton server is available' do
     before :each do
       new_config['vip_server'] = singleton_server
     end
@@ -31,7 +31,7 @@ describe 'Available Bundles', :include_helpers, :extend_helpers do
     it '#should be able to get available bundles' do
       stubs << components_stub << locales_stub
       result = loader.available_bundles
-      expect(result).to_not be_nil
+      expect(result).to be_a_kind_of(Set)
       expect(result).to include(SgtnClient::Common::BundleID.new(component_only_on_server, locale))
       stubs.each { |stub| expect(stub).to have_been_requested }
     end
@@ -44,7 +44,7 @@ describe 'Available Bundles', :include_helpers, :extend_helpers do
 
     it '#should be able to get available bundles' do
       result = loader.available_bundles
-      expect(result).to_not be_nil
+      expect(result).to be_a_kind_of(Set)
       expect(result).to include(SgtnClient::Common::BundleID.new(component_local_translation_only, en_locale))
     end
   end
@@ -56,8 +56,69 @@ describe 'Available Bundles', :include_helpers, :extend_helpers do
 
     it '#should be able to get available bundles' do
       result = loader.available_bundles
-      expect(result).to_not be_nil
+      expect(result).to be_a_kind_of(Set)
       expect(result).to include(SgtnClient::Common::BundleID.new(component_local_source_only, source_locale))
+    end
+  end
+
+  describe '#Singleton server and local source are available' do
+    before :each do
+      new_config['vip_server'] = singleton_server
+      new_config['source_bundle'] = source_path
+    end
+
+    it '#should be able to get available bundles' do
+      stubs << components_stub << locales_stub
+      result = loader.available_bundles
+      expect(result).to be_a_kind_of(Set)
+      expect(result).to include(SgtnClient::Common::BundleID.new(component_only_on_server, locale), SgtnClient::Common::BundleID.new(component_local_source_only, source_locale))
+      stubs.each { |stub| expect(stub).to have_been_requested }
+    end
+  end
+
+  describe '#Singleton server and local translation are available' do
+    before :each do
+      new_config['vip_server'] = singleton_server
+      new_config['translation_bundle'] = translation_path
+    end
+
+    it '#should be able to get available bundles' do
+      stubs << components_stub << locales_stub
+      result = loader.available_bundles
+      expect(result).to be_a_kind_of(Set)
+      expect(result).to include(SgtnClient::Common::BundleID.new(component_only_on_server, locale), SgtnClient::Common::BundleID.new(component_local_translation_only, en_locale))
+      stubs.each { |stub| expect(stub).to have_been_requested }
+    end
+  end
+
+  describe '#local translation and local source are available' do
+    before :each do
+      new_config['translation_bundle'] = translation_path
+      new_config['source_bundle'] = source_path
+    end
+
+    it '#should be able to get available bundles' do
+      result = loader.available_bundles
+      expect(result).to be_a_kind_of(Set)
+      expect(result).to include(SgtnClient::Common::BundleID.new(component_local_translation_only, en_locale), SgtnClient::Common::BundleID.new(component_local_source_only, source_locale))
+    end
+  end
+
+  describe '#Singleton server, local translation and local source are available' do
+    before :each do
+      new_config['vip_server'] = singleton_server
+      new_config['translation_bundle'] = translation_path
+      new_config['source_bundle'] = source_path
+    end
+
+    it '#should be able to get available bundles' do
+      stubs << components_stub << locales_stub
+      result = loader.available_bundles
+      expect(result).to be_a_kind_of(Set)
+      expect(result).to include(SgtnClient::Common::BundleID.new(component_only_on_server, locale),
+                                SgtnClient::Common::BundleID.new(component_local_translation_only, en_locale),
+                                SgtnClient::Common::BundleID.new(component_local_source_only, source_locale))
+      stubs.each { |stub| expect(stub).to have_been_requested }
     end
   end
 end
