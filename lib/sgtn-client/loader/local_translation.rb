@@ -20,7 +20,7 @@ module SgtnClient
       def load_bundle(component, locale)
         return if locale == SgtnClient::LocaleUtil::REAL_SOURCE_LOCALE # only return when NOT querying source
 
-        SgtnClient.logger.debug "[#{method(__method__).owner}.#{__method__}] component=#{component}, locale=#{locale}"
+        SgtnClient.logger.debug "[#{method(__callee__).owner}.#{__callee__}] component=#{component}, locale=#{locale}"
 
         file_name = BUNDLE_PREFIX + locale + BUNDLE_SUFFIX
         file_path = @base_path + component + file_name
@@ -34,7 +34,7 @@ module SgtnClient
       end
 
       def available_bundles
-        SgtnClient.logger.debug "[#{method(__method__).owner}.#{__method__}]"
+        SgtnClient.logger.debug "[#{method(__callee__).owner}.#{__callee__}]"
 
         bundles = Set.new
         @base_path.glob('*/*.json') do |f|

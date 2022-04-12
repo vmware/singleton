@@ -7,6 +7,8 @@ module SgtnClient
   module Translation
     def self.getString(component, key, locale)
       SgtnClient.logger.debug "[Translation.getString]component: #{component}, key: #{key}, locale: #{locale}"
+      # return nil if component.nil? || key.nil? || locale.nil?
+
       str = getTranslation(component, key, locale)
       if str.nil? && !LocaleUtil.is_source_locale(locale)
         str = getTranslation(component, key, SgtnClient::LocaleUtil.get_source_locale)
@@ -45,6 +47,8 @@ module SgtnClient
 
     def self.getStrings(component, locale)
       SgtnClient.logger.debug "[Translation][getStrings]component=#{component}, locale=#{locale}"
+      return nil if component.nil? || locale.nil?
+
       locale = SgtnClient::LocaleUtil.get_best_locale(locale)
       items = get_cs(component, locale)
       if items.nil? && !LocaleUtil.is_source_locale(locale)

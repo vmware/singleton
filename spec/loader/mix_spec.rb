@@ -72,13 +72,11 @@ describe 'Mix', :include_helpers, :extend_helpers do
     end
 
     it "should return nil for #{component_nonexistent}" do
-      result = loader.get_bundle(component_nonexistent, locale)
-      expect(result).to be_nil
+      expect { loader.get_bundle(component_nonexistent, locale) }.to raise_error(Errno::ENOENT)
     end
 
     it "should return nil for #{locale_nonexistent}" do
-      result = loader.get_bundle(component, locale_nonexistent)
-      expect(result).to be_nil
+      expect { loader.get_bundle(component, locale_nonexistent) }.to raise_error(Errno::ENOENT)
     end
 
     it 'should have only 1 loader' do
@@ -114,18 +112,16 @@ describe 'Mix', :include_helpers, :extend_helpers do
     it "should return nil for #{component_nonexistent}" do
       stubs << stub_request(:get, server_url).with(query: { 'components' => component_nonexistent, 'locales' => locale }).to_return(body: nonexistent_response)
 
-      result = loader.get_bundle(component_nonexistent, locale)
+      expect { loader.get_bundle(component_nonexistent, locale) }.to raise_error(SgtnClient::SingletonError)
 
-      expect(result).to be_nil
       stubs.each { |stub| expect(stub).to have_been_requested }
     end
 
     it "should return nil for #{locale_nonexistent}" do
       stubs << stub_request(:get, server_url).with(query: { 'components' => component, 'locales' => locale_nonexistent }).to_return(body: nonexistent_response)
 
-      result = loader.get_bundle(component, locale_nonexistent)
+      expect { loader.get_bundle(component, locale_nonexistent) }.to raise_error(SgtnClient::SingletonError)
 
-      expect(result).to be_nil
       stubs.each { |stub| expect(stub).to have_been_requested }
     end
 
@@ -170,17 +166,15 @@ describe 'Mix', :include_helpers, :extend_helpers do
     end
 
     it 'should NOT be able to get a component(on server only) for En because En will only use local source' do
-      result = loader.get_bundle(component_only_on_server, en_locale)
-      expect(result).to be_nil
+      expect { loader.get_bundle(component_only_on_server, en_locale) }.to raise_error(SgtnClient::SingletonError)
     end
 
     it "should return nil for #{component_nonexistent}" do
       stubs << stub_request(:get, server_url).with(query: { 'components' => component_nonexistent, 'locales' => en_locale }).to_return(body: nonexistent_response)
       stubs << stub_request(:get, server_url).with(query: { 'components' => component_nonexistent, 'locales' => locale }).to_return(body: nonexistent_response)
 
-      result = loader.get_bundle(component_nonexistent, locale)
+      expect { loader.get_bundle(component_nonexistent, locale) }.to raise_error(SgtnClient::SingletonError)
 
-      expect(result).to be_nil
       stubs.each { |stub| expect(stub).to have_been_requested }
     end
 
@@ -188,9 +182,8 @@ describe 'Mix', :include_helpers, :extend_helpers do
       stubs << stub_request(:get, server_url).with(query: { 'components' => component, 'locales' => en_locale }).to_return(body: nonexistent_response)
       stubs << stub_request(:get, server_url).with(query: { 'components' => component, 'locales' => locale_nonexistent }).to_return(body: nonexistent_response)
 
-      result = loader.get_bundle(component, locale_nonexistent)
+      expect { loader.get_bundle(component, locale_nonexistent) }.to raise_error(SgtnClient::SingletonError)
 
-      expect(result).to be_nil
       stubs.each { |stub| expect(stub).to have_been_requested }
     end
 
@@ -254,18 +247,16 @@ describe 'Mix', :include_helpers, :extend_helpers do
     it "should return nil for #{component_nonexistent}" do
       stubs << stub_request(:get, server_url).with(query: { 'components' => component_nonexistent, 'locales' => locale }).to_return(body: nonexistent_response)
 
-      result = loader.get_bundle(component_nonexistent, locale)
+      expect { loader.get_bundle(component_nonexistent, locale) }.to raise_error(Errno::ENOENT)
 
-      expect(result).to be_nil
       stubs.each { |stub| expect(stub).to have_been_requested }
     end
 
     it "should return nil for #{locale_nonexistent}" do
       stubs << stub_request(:get, server_url).with(query: { 'components' => component, 'locales' => locale_nonexistent }).to_return(body: nonexistent_response)
 
-      result = loader.get_bundle(component, locale_nonexistent)
+      expect { loader.get_bundle(component, locale_nonexistent) }.to raise_error(Errno::ENOENT)
 
-      expect(result).to be_nil
       stubs.each { |stub| expect(stub).to have_been_requested }
     end
 
@@ -299,13 +290,11 @@ describe 'Mix', :include_helpers, :extend_helpers do
     end
 
     it "should return nil for #{component_nonexistent}" do
-      result = loader.get_bundle(component_nonexistent, locale)
-      expect(result).to be_nil
+      expect { loader.get_bundle(component_nonexistent, locale) }.to raise_error(Errno::ENOENT)
     end
 
     it "should return nil for #{locale_nonexistent}" do
-      result = loader.get_bundle(component, locale_nonexistent)
-      expect(result).to be_nil
+      expect { loader.get_bundle(component, locale_nonexistent) }.to raise_error(Errno::ENOENT)
     end
 
     it 'should have 2 loaders' do
@@ -364,4 +353,6 @@ describe 'Mix', :include_helpers, :extend_helpers do
       expect { loader.get_bundle('', '') }.to raise_error(SgtnClient::SingletonError)
     end
   end
+
+  # TODO: test priority of local source and remote source
 end

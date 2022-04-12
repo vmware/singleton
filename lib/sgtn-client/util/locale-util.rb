@@ -37,12 +37,17 @@ module SgtnClient
     end
 
     def self.get_source_locale
-      'en'
+      @source_locale ||= begin
+        env = SgtnClient::Config.default_environment
+        SgtnClient::Config.configurations[env]['source_locale'] || 'en'
+      end
     end
 
     def self.get_default_locale
-      env = SgtnClient::Config.default_environment
-      SgtnClient::Config.configurations[env]['default_language'] || 'en'
+      @default_locale ||= begin
+        env = SgtnClient::Config.default_environment
+        SgtnClient::Config.configurations[env]['default_language'] || 'en'
+      end
     end
 
     def self.cache_to_real_map

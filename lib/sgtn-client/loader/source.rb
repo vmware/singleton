@@ -13,7 +13,7 @@ module SgtnClient
       def load_bundle(component, locale = nil)
         return if locale && locale != SgtnClient::LocaleUtil::REAL_SOURCE_LOCALE # only return when querying source
 
-        SgtnClient.logger.debug "[#{method(__method__).owner}.#{__method__}] component=#{component}"
+        SgtnClient.logger.debug "[#{method(__callee__).owner}.#{__callee__}] component=#{component}"
 
         total_messages = {}
 
@@ -33,7 +33,7 @@ module SgtnClient
       end
 
       def available_bundles
-        SgtnClient.logger.debug "[#{method(__method__).owner}.#{__method__}]"
+        SgtnClient.logger.debug "[#{method(__callee__).owner}.#{__callee__}]"
 
         bundles = Set.new
         @source_bundle_path.glob('*/') do |component|

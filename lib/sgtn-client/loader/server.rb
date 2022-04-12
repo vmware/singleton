@@ -34,7 +34,7 @@ module SgtnClient
       def load_bundle(component, locale)
         return if locale == SgtnClient::LocaleUtil::REAL_SOURCE_LOCALE # server source is disabled
 
-        SgtnClient.logger.debug "[#{method(__method__).owner}.#{__method__}] component=#{component}, locale=#{locale}"
+        SgtnClient.logger.debug "[#{method(__callee__).owner}.#{__callee__}] component=#{component}, locale=#{locale}"
 
         messages = query_server(
           @bundle_url,
@@ -45,7 +45,7 @@ module SgtnClient
       end
 
       def available_bundles
-        SgtnClient.logger.debug "[#{method(__method__).owner}.#{__method__}]"
+        SgtnClient.logger.debug "[#{method(__callee__).owner}.#{__callee__}]"
 
         bundles = Set.new
         components_thread = Thread.new { available_components }

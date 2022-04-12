@@ -10,13 +10,13 @@ module SgtnClient
     module Cache # :nodoc:
       # get from cache, return expired data immediately
       def get_bundle(component, locale)
-        SgtnClient.logger.debug "[#{method(__method__).owner}.#{__method__}] component=#{component}, locale=#{locale}"
+        SgtnClient.logger.debug "[#{method(__callee__).owner}.#{__callee__}] component=#{component}, locale=#{locale}"
 
         key = SgtnClient::CacheUtil.get_cachekey(component, locale)
         cache_item = SgtnClient::CacheUtil.get_cache(key)
         if cache_item
           if SgtnClient::CacheUtil.is_expired(cache_item) && !SgtnClient::LocaleUtil.is_source_locale(locale)
-            SgtnClient.logger.debug "[#{method(__method__).owner}.#{__method__}] bundle cache is expired. key=#{key}"
+            SgtnClient.logger.debug "[#{method(__callee__).owner}.#{__callee__}] bundle cache is expired. key=#{key}"
 
             Thread.new do # TODO: Use one thread # refresh in background
               begin
@@ -35,7 +35,8 @@ module SgtnClient
 
       # load and save to cache
       def load_bundle(component, locale)
-        SgtnClient.logger.debug "[#{method(__method__).owner}.#{__method__}] #{component}/#{locale}"
+        SgtnClient.logger.debug "[#{method(__callee__).owner}.#{__callee__}] component=#{component}, locale=#{locale}"
+
         key = SgtnClient::CacheUtil.get_cachekey(component, locale)
         item = super
         SgtnClient::CacheUtil.write_cache(key, item) if item
@@ -44,11 +45,11 @@ module SgtnClient
 
       AVAILABLE_BUNDLES_KEY = 'available_bundles'
       def available_bundles
-        SgtnClient.logger.debug "[#{method(__method__).owner}.#{__method__}]"
+        SgtnClient.logger.debug "[#{method(__callee__).owner}.#{__callee__}]"
         cache_item = SgtnClient::CacheUtil.get_cache(AVAILABLE_BUNDLES_KEY)
         if cache_item
           if SgtnClient::CacheUtil.is_expired(cache_item)
-            SgtnClient.logger.debug "[#{method(__method__).owner}.#{__method__}] available_bundles cache is expired."
+            SgtnClient.logger.debug "[#{method(__callee__).owner}.#{__callee__}] available_bundles cache is expired."
             Thread.new do # TODO: Use one thread
               begin
                 item = super

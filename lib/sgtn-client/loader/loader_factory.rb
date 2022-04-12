@@ -13,7 +13,7 @@ module SgtnClient
 
     module LoaderFactory
       def self.create(config)
-        SgtnClient.logger.debug "[#{method(__method__).owner}.#{__method__}] config=#{config}"
+        SgtnClient.logger.info "[#{method(__callee__).owner}.#{__callee__}] config=#{config}"
 
         loaders = []
         loaders << Source.new(config) if config['source_bundle']

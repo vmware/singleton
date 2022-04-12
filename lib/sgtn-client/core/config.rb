@@ -48,9 +48,13 @@ module SgtnClient
     :mode, :endpoint, :merchant_endpoint, :platform_endpoint, :ipn_endpoint,
     :rest_endpoint, :rest_token_endpoint, :client_id, :client_secret,
     :openid_endpoint, :openid_redirect_uri, :openid_client_id, :openid_client_secret,
-    :verbose_logging, :product_name, :version, :vip_server,
-    :translation_bundle, :source_bundle, :cache_expiry_period, :disable_cache, :default_language
+    :verbose_logging, :product_name, :version, :server_url, :source_locale,
+    :translation_bundle, :source_bundle, :cache_expiry_period, :disable_cache, :default_locale
 
+    alias_method :default_language, :default_locale
+    alias_method :default_language=, :default_locale=
+    alias_method :vip_server, :server_url
+    alias_method :vip_server=, :server_url=
 
     # Create Config object
     # === Options(Hash)
@@ -169,7 +173,7 @@ module SgtnClient
         def available_bundles
           loader.available_bundles
         rescue StandardError => e
-          SgtnClient.logger.error "Fail to get available_bundles"
+          SgtnClient.logger.error 'fail to get available_bundles'
           SgtnClient.logger.error e
           {}
         end
