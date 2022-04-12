@@ -30,7 +30,7 @@ module SgtnClient
             total_data += item
           rescue StandardError => e
             exception ||= e
-            SgtnClient.logger.error "[#{method(__method__).owner}.#{__method__}] failed on #{loader.class}: #{e}"
+            SgtnClient.logger.error "[#{method(__callee__).owner}.#{__callee__}] failed on #{loader.class}: #{e}"
           end
         end
 

@@ -183,7 +183,7 @@ module SgtnClient
               @locales ||= reduce(Set.new) { |locales, id| locales << id.locale }
             end
           end
-          bundles.locales || {}
+          bundles.locales
         end
 
         private

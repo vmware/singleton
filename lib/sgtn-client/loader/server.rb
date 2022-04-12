@@ -51,7 +51,7 @@ module SgtnClient
       end
 
       def available_bundles
-        SgtnClient.logger.debug "[#{method(__method__).owner}.#{__method__}]"
+        SgtnClient.logger.debug "[#{method(__callee__).owner}.#{__callee__}]"
 
         bundles = Set.new
         components_thread = Thread.new { available_components }
