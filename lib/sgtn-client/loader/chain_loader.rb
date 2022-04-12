@@ -29,7 +29,7 @@ module SgtnClient
             item = loader.available_bundles
             total_data += item
           rescue StandardError => e
-            exception ||= e
+            exception = e
             SgtnClient.logger.error "[#{method(__callee__).owner}.#{__callee__}] failed on #{loader.class}: #{e}"
           end
         end
