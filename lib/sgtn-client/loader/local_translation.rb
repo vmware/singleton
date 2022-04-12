@@ -36,9 +36,11 @@ module SgtnClient
       def available_bundles
         SgtnClient.logger.debug "[#{method(__callee__).owner}.#{__callee__}]"
 
-        @base_path.glob('*/*.json').reduce(Set.new) do |bundles, f|
-          locale = f.basename.to_s.sub(/\A#{BUNDLE_PREFIX}/i, '').sub(/#{BUNDLE_SUFFIX}\z/i, '')
-          bundles.add Common::BundleID.new(f.parent.basename.to_s, locale)
+        @available_bundles ||= begin
+          @base_path.glob('*/*.json').reduce(Set.new) do |bundles, f|
+            locale = f.basename.to_s.sub(/\A#{BUNDLE_PREFIX}/i, '').sub(/#{BUNDLE_SUFFIX}\z/i, '')
+            bundles.add Common::BundleID.new(f.parent.basename.to_s, locale)
+          end
         end
       end
     end
