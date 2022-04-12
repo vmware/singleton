@@ -34,7 +34,9 @@ module SgtnClient
         SgtnClient.logger.debug "[#{method(__callee__).owner}.#{__callee__}]"
 
         bundles = Set.new
-        @source_bundle_path.glob('*/') do |component|
+        @source_bundle_path.each_child do |component|
+          next unless component.directory?
+
           component.glob('**/*.{yml, yaml}') do |_|
             bundles << Common::BundleID.new(component.basename.to_s, SgtnClient::LocaleUtil.get_source_locale)
             break
