@@ -15,7 +15,7 @@ module SgtnClient
         cache_item = SgtnClient::CacheUtil.get_cache(key)
         if cache_item
           if SgtnClient::CacheUtil.is_expired(cache_item) && !SgtnClient::LocaleUtil.is_source_locale(locale)
-            SgtnClient.logger.debug "[#{__FILE__}][#{__callee__}] Bundle cache is expired. key=#{key}"
+            SgtnClient.logger.debug "[#{__FILE__}][#{__callee__}] cache is expired. key=#{key}"
             Thread.new { load_bundle(component, locale) } # TODO: Use one thread # refresh in background
           end
           return cache_item.dig(:items)
@@ -43,7 +43,7 @@ module SgtnClient
         cache_item = SgtnClient::CacheUtil.get_cache(AVAILABLE_BUNDLES_KEY)
         if cache_item
           if SgtnClient::CacheUtil.is_expired(cache_item)
-            SgtnClient.logger.debug "[#{__FILE__}.#{__callee__}] available_bundles cache is expired."
+            SgtnClient.logger.debug "[#{__FILE__}.#{__callee__}] cache is expired."
             Thread.new do # TODO: Use one thread
               begin
                 item = super

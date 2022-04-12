@@ -29,7 +29,7 @@ module SgtnClient
 
         source_bundle.each do |key, value|
           if old_source_bundle[key] != value || translation_bundle[key].nil?
-            translation_bundle[key] = SgtnClient::StringUtil.new(value, LocaleUtil.get_source_locale)
+            translation_bundle[key] = StringUtil.new(value, LocaleUtil.get_source_locale)
           end
         end
         translation_bundle

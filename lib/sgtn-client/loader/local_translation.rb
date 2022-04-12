@@ -16,7 +16,6 @@ module SgtnClient
       BUNDLE_SUFFIX = '.json'.freeze
 
       def initialize(config)
-        #  config['translation_bundle'] isn't defined, throw error
         @base_path = Pathname.new(config['translation_bundle']) + config['product_name'] + config['version']
       end
 
@@ -37,12 +36,10 @@ module SgtnClient
       def available_bundles
         SgtnClient.logger.debug "[#{method(__callee__).owner}.#{__callee__}]"
 
-        bundles = Set.new
-        @base_path.glob('*/*.json') do |f|
+        @base_path.glob('*/*.json').reduce(Set.new) do |bundles, f|
           locale = f.basename.to_s.sub(/\A#{BUNDLE_PREFIX}/i, '').sub(/#{BUNDLE_SUFFIX}\z/i, '')
           bundles.add Common::BundleID.new(f.parent.basename.to_s, locale)
         end
-        bundles
       end
     end
   end

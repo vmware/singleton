@@ -32,8 +32,6 @@ module SgtnClient
         product_name = config['product_name']
         version = config['version']
 
-        # TODO: none is defined, throw error
-
         @bundle_url = format(PRODUCT_TRANSLATION, product_name, version)
         @locales_url = format(PRODUCT_LOCALE_LIST, product_name, version)
         @components_url = format(PRODUCT_COMPONENT_LIST, product_name, version)
@@ -53,14 +51,12 @@ module SgtnClient
       def available_bundles
         SgtnClient.logger.debug "[#{method(__callee__).owner}.#{__callee__}]"
 
-        bundles = Set.new
         components_thread = Thread.new { available_components }
-        available_locales.each do |locale|
-          components_thread.value.each do |component|
+        available_locales.reduce(Set.new) do |bundles, locale|
+          components_thread.value.reduce(bundles) do |bundles, component|
             bundles << Common::BundleID.new(component, locale)
           end
         end
-        bundles
       end
 
       private

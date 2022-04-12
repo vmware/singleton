@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 #  Copyright 2022 VMware, Inc.
 #  SPDX-License-Identifier: EPL-2.0
 
@@ -361,7 +359,7 @@ describe 'Mix', :include_helpers, :extend_helpers do
 
   describe '#verify configuration' do
     it 'source configuration item is nil' do
-      expect { loader.get_bundle('', '') }.to raise_error
+      expect { loader.get_bundle('', '') }.to raise_error(SgtnClient::SingletonError)
     end
   end
 end

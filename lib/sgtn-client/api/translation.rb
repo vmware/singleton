@@ -65,13 +65,13 @@ module SgtnClient
       id = SgtnClient::Common::BundleID.new(component, locale)
       available_bundles = SgtnClient::Config.available_bundles
       unless available_bundles.nil? || available_bundles.empty? || available_bundles.include?(id)
-        SgtnClient.logger.warn "query an unavailable bundle: #{id}"
+        SgtnClient.logger.warn "[#{method(__callee__).owner}.#{__callee__}] get an unavailable bundle: #{id}"
         return nil
       end
 
       SgtnClient::Config.loader.get_bundle(component, locale)
     rescue StandardError => e
-      SgtnClient.logger.error "failed to get bundle #{id}"
+      SgtnClient.logger.error "failed to get a bundle. #{id}"
       SgtnClient.logger.error e
       nil
     end

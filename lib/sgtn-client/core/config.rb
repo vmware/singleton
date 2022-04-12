@@ -169,7 +169,7 @@ module SgtnClient
         def available_bundles
           loader.available_bundles
         rescue StandardError => e
-          SgtnClient.logger.error 'fail to get available_bundles'
+          SgtnClient.logger.error 'failed to get available bundles'
           SgtnClient.logger.error e
           {}
         end

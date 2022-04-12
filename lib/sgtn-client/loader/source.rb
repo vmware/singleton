@@ -11,7 +11,6 @@ module SgtnClient
 
     class Source
       def initialize(config)
-        # raise error if config['source_bundle']
         @source_bundle_path = Pathname.new(config['source_bundle'])
       end
 
@@ -33,16 +32,12 @@ module SgtnClient
       def available_bundles
         SgtnClient.logger.debug "[#{method(__callee__).owner}.#{__callee__}]"
 
-        bundles = Set.new
-        @source_bundle_path.each_child do |component|
-          next unless component.directory?
-
+        @source_bundle_path.children.select(&:directory?).reduce(Set.new) do |bundles, component|
           component.glob('**/*.{yml, yaml}') do |_|
             bundles << Common::BundleID.new(component.basename.to_s, SgtnClient::LocaleUtil.get_source_locale)
-            break
+            break bundles
           end
         end
-        bundles
       end
     end
   end
