@@ -16,7 +16,7 @@ require 'singleton-ruby'
 require 'sgtn-client/api/source'
 
 require 'webmock/rspec'
-require 'support/helpers'
+Dir[File.expand_path("../support/**/*.rb", __FILE__)].each {|f| require f }
 
 RSpec.configure do |c|
   c.include Helpers, :include_helpers
@@ -27,10 +27,9 @@ include SgtnClient
 include SgtnClient::Logging
 include SgtnClient::Exceptions
 
-
 SgtnClient.load("./spec/config/sgtnclient.yml", "test", './sgtnclient_d.log')
-SgtnClient.logger = Logger.new(STDOUT)
-Dir[File.expand_path("../support/**/*.rb", __FILE__)].each {|f| require f }
+log_file = File.open('./unit_test.log', "a")
+SgtnClient.logger = Logger.new MultiIO.new(STDOUT, log_file)
 
 RSpec.configure do |config|
   config.filter_run_excluding :integration => true
