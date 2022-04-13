@@ -43,7 +43,6 @@ module SgtnClient
         cache_item = SgtnClient::CacheUtil.get_cache(AVAILABLE_BUNDLES_KEY)
         if cache_item
           if SgtnClient::CacheUtil.is_expired(cache_item)
-            SgtnClient.logger.debug "[#{__FILE__}.#{__callee__}] cache is expired."
             Thread.new do # TODO: Use one thread
               begin
                 item = super
