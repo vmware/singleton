@@ -53,8 +53,8 @@ module SgtnClient
 
         components_thread = Thread.new { available_components }
         available_locales.reduce(Set.new) do |bundles, locale|
-          components_thread.value.reduce(bundles) do |bundles, component|
-            bundles << Common::BundleID.new(component, locale)
+          components_thread.value.reduce(bundles) do |inner_bundles, component|
+            inner_bundles << Common::BundleID.new(component, locale)
           end
         end
       end
