@@ -6,8 +6,6 @@
 require 'faraday'
 require 'faraday_middleware'
 
-require 'sgtn-client/common/data'
-
 module SgtnClient
   module Common
     autoload :BundleID, 'sgtn-client/common/data'

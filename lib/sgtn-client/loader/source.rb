@@ -1,8 +1,6 @@
 # Copyright 2022 VMware, Inc.
 # SPDX-License-Identifier: EPL-2.0
 
-require 'sgtn-client/common/data'
-
 module SgtnClient
   module Common
     autoload :BundleID, 'sgtn-client/common/data'
@@ -33,7 +31,7 @@ module SgtnClient
           end
         end
 
-        raise SgtnClient::SingletonError, "No local source messages for component #{component}" if total_messages.empty?
+        raise SgtnClient::SingletonError, "no local source messages for component #{component}" if total_messages.empty?
 
         total_messages
       end

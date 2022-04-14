@@ -12,7 +12,7 @@ module SgtnClient
     module Cache # :nodoc:
       # get from cache, return expired data immediately
       def get_bundle(component, locale)
-        SgtnClient.logger.debug "[#{__FILE__}.#{__callee__}] component=#{component}, locale=#{locale}"
+        SgtnClient.logger.debug "[#{__FILE__}][#{__callee__}] component=#{component}, locale=#{locale}"
 
         key = SgtnClient::CacheUtil.get_cachekey(component, locale)
         cache_item = SgtnClient::CacheUtil.get_cache(key)
@@ -35,7 +35,7 @@ module SgtnClient
 
       # load and save to cache
       def load_bundle(component, locale)
-        SgtnClient.logger.debug "[#{__FILE__}.#{__callee__}] component=#{component}, locale=#{locale}"
+        SgtnClient.logger.debug "[#{__FILE__}][#{__callee__}] component=#{component}, locale=#{locale}"
 
         key = SgtnClient::CacheUtil.get_cachekey(component, locale)
         item = super
@@ -44,7 +44,7 @@ module SgtnClient
       end
 
       def available_bundles
-        SgtnClient.logger.debug "[#{__FILE__}.#{__callee__}]"
+        SgtnClient.logger.debug "[#{__FILE__}][#{__callee__}]"
 
         cache_item = SgtnClient::CacheUtil.get_cache(CONSTS::AVAILABLE_BUNDLES_KEY)
         if cache_item

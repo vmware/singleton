@@ -10,20 +10,21 @@ module SgtnClient
 
     module SourceComparer
       def load_bundle(component, locale)
-        SgtnClient.logger.debug "[#{__FILE__}.#{__callee__}] component=#{component}, locale=#{locale}"
+        SgtnClient.logger.debug "[#{__FILE__}][#{__callee__}] component=#{component}, locale=#{locale}"
 
         # source locale and old source locale don't need comparison because they are bases of comparison
         real_locale = cache_to_real_map[locale]
         return super(component, real_locale) if real_locale
 
         old_source_bundle_thread = Thread.new { load_bundle(component, CONSTS::OLD_SOURCE_LOCALE) }
+        source_bundle_thread = Thread.new { load_bundle(component, SgtnClient::LocaleUtil.get_source_locale) }
         translation_bundle = super(component, locale)
 
         begin
           old_source_bundle = old_source_bundle_thread.value
           source_bundle = source_bundle_thread.value
         rescue StandardError => e
-          SgtnClient.logger.error "[#{__FILE__}.#{__callee__}] failed to load soruce(or old source) bundle. component:#{component}. error: #{e}"
+          SgtnClient.logger.error "[#{__FILE__}][#{__callee__}] failed to load soruce(or old source) bundle. component:#{component}. error: #{e}"
           return translation_bundle
         end
 

@@ -30,7 +30,7 @@ module SgtnClient
         bundle_data = JSON.parse(File.read(file_path))
         messages = bundle_data['messages']
 
-        raise SgtnClient::SingletonError, "no messages in local bundle: #{file_path}." unless messages
+        raise SgtnClient::SingletonError, "no messages in local bundle file: #{file_path}." unless messages
 
         messages
       end
