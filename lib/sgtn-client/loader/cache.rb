@@ -12,8 +12,9 @@ module SgtnClient
     module Cache # :nodoc:
       # get from cache, return expired data immediately
       def get_bundle(component, locale)
+        SgtnClient.logger.debug "[#{__FILE__}][#{__callee__}] component=#{component}, locale=#{locale}"
+
         key = SgtnClient::CacheUtil.get_cachekey(component, locale)
-        SgtnClient.logger.debug "[#{__FILE__}][#{__callee__}] #{key}"
         cache_item = SgtnClient::CacheUtil.get_cache(key)
         if cache_item
           if SgtnClient::CacheUtil.is_expired(cache_item) && !SgtnClient::LocaleUtil.is_source_locale(locale)
@@ -27,10 +28,11 @@ module SgtnClient
 
       # load and save to cache
       def load_bundle(component, locale)
-        SgtnClient.logger.debug "[#{__FILE__}][#{__callee__}] #{component}/#{locale}"
+        SgtnClient.logger.debug "[#{__FILE__}][#{__callee__}] component=#{component}, locale=#{locale}"
+
         key = SgtnClient::CacheUtil.get_cachekey(component, locale)
         item = super
-        SgtnClient::CacheUtil.write_cache(key, item)
+        SgtnClient::CacheUtil.write_cache(key, item) if item
         item
       rescue StandardError => e
         SgtnClient.logger.error "[TranslationLoader::Cache][load_bundle]#{component}/#{locale}, error=#{e.message}"
@@ -39,7 +41,7 @@ module SgtnClient
       end
 
       def available_bundles
-        SgtnClient.logger.debug "[#{__FILE__}.#{__callee__}]"
+        SgtnClient.logger.debug "[#{__FILE__}][#{__callee__}]"
         cache_item = SgtnClient::CacheUtil.get_cache(CONSTS::AVAILABLE_BUNDLES_KEY)
         if cache_item
           if SgtnClient::CacheUtil.is_expired(cache_item)
