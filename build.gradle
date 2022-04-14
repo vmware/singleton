@@ -42,6 +42,7 @@ dependencies {
 	   exclude group: 'junit'
 	}
 	compile group: 'com.vmware.singleton', name: 'singleton-i18n-patterns-core', version: '[0.5.1,)'
+	compile("com.fasterxml.jackson.core:jackson-databind:2.12.6.1")
 	compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.30'
 
 	testCompile group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.7.30'
