@@ -7,11 +7,11 @@ module SgtnClient
   module Translation
     def self.getString(component, key, locale)
       SgtnClient.logger.debug "[Translation.getString]component: #{component}, key: #{key}, locale: #{locale}"
-      # return nil if component.nil? || key.nil? || locale.nil?
+      return nil if component.nil? || key.nil? || locale.nil?
 
       str = getTranslation(component, key, locale)
       if str.nil? && !LocaleUtil.is_source_locale(locale)
-        str = getTranslation(component, key, SgtnClient::LocaleUtil.get_source_locale)
+        str = getTranslation(component, key, LocaleUtil.get_source_locale)
       end
       str
     end
@@ -20,8 +20,8 @@ module SgtnClient
       SgtnClient.logger.debug "[Translation][getString_p]component=#{component}, key=#{key}, locale=#{locale}"
       str = getTranslation(component, key, locale)
       if str.nil?
-        unless SgtnClient::LocaleUtil.is_source_locale(locale)
-          str = getTranslation(component, key, SgtnClient::LocaleUtil.get_source_locale)
+        unless LocaleUtil.is_source_locale(locale)
+          str = getTranslation(component, key, LocaleUtil.get_source_locale)
           str.to_plural_s(LocaleUtil.get_source_locale, plural_args) if str
         end
       else
@@ -47,13 +47,12 @@ module SgtnClient
 
     def self.getStrings(component, locale)
       SgtnClient.logger.debug "[Translation][getStrings]component=#{component}, locale=#{locale}"
-      return nil if component.nil? || locale.nil?
 
       locale = SgtnClient::LocaleUtil.get_best_locale(locale)
       items = get_cs(component, locale)
       if items.nil? && !LocaleUtil.is_source_locale(locale)
-        items = get_cs(component, SgtnClient::LocaleUtil.get_source_locale)
-        locale = SgtnClient::LocaleUtil.get_source_locale
+        items = get_cs(component, LocaleUtil.get_source_locale)
+        locale = LocaleUtil.get_source_locale
       end
 
       { 'component' => component, 'locale' => locale, 'messages' => items || {} } if items
@@ -69,13 +68,13 @@ module SgtnClient
       id = SgtnClient::Common::BundleID.new(component, locale)
       available_bundles = SgtnClient::Config.available_bundles
       unless available_bundles.nil? || available_bundles.empty? || available_bundles.include?(id)
-        SgtnClient.logger.warn "query an unavailable bundle: #{id}"
+        SgtnClient.logger.warn "[#{method(__callee__).owner}.#{__callee__}] get an unavailable bundle: #{id}"
         return nil
       end
 
       SgtnClient::Config.loader.get_bundle(component, locale)
     rescue StandardError => e
-      SgtnClient.logger.error "Fail to get bundle #{id}"
+      SgtnClient.logger.error "[#{method(__callee__).owner}.#{__callee__}] failed to get a bundle. #{id}"
       SgtnClient.logger.error e
       nil
     end

@@ -17,13 +17,13 @@ module SgtnClient
       end
 
       def ==(other)
-        self.class === other && @locale == other.locale && @component == other.component
+       (other.is_a? self.class) && @locale == other.locale && @component == other.component
       end
 
       alias eql? ==
 
       def to_s
-        "locale:#{@locale}, component:#{@component}}"
+        "{ component: #{@component}, locale: #{@locale}}"
       end
     end
   end

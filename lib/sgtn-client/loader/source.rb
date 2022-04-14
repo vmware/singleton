@@ -4,14 +4,20 @@
 require 'sgtn-client/common/data'
 
 module SgtnClient
+  module Common
+    autoload :BundleID, 'sgtn-client/common/data'
+  end
+
   module TranslationLoader
+    autoload :CONSTS, 'sgtn-client/loader/consts'
+
     class Source
       def initialize(config)
         @source_bundle_path = Pathname.new(config['source_bundle'])
       end
 
       def load_bundle(component, locale = nil)
-        return if locale && locale != SgtnClient::LocaleUtil::REAL_SOURCE_LOCALE # only return when querying source
+        return if locale && locale != CONSTS::REAL_SOURCE_LOCALE # only return when querying source
 
         SgtnClient.logger.debug "[#{method(__callee__).owner}.#{__callee__}] component=#{component}"
 
@@ -23,7 +29,7 @@ module SgtnClient
           if messages.is_a?(Hash)
             total_messages.merge!(messages)
           else
-            SgtnClient.logger.error "Illegal bundle data in #{f}"
+            SgtnClient.logger.error "[#{method(__callee__).owner}.#{__callee__}] Illegal bundle data in #{f}"
           end
         end
 
@@ -35,14 +41,14 @@ module SgtnClient
       def available_bundles
         SgtnClient.logger.debug "[#{method(__callee__).owner}.#{__callee__}]"
 
-        bundles = Set.new
-        @source_bundle_path.glob('*/') do |component|
-          component.glob('**/*.{yml, yaml}') do |_|
-            bundles << SgtnClient::Common::BundleID.new(component.basename.to_s, SgtnClient::LocaleUtil.get_source_locale)
-            break
+        @available_bundles ||= begin
+          @source_bundle_path.children.select(&:directory?).reduce(Set.new) do |bundles, component|
+            component.glob('**/*.{yml, yaml}') do |_|
+              bundles << Common::BundleID.new(component.basename.to_s, SgtnClient::LocaleUtil.get_source_locale)
+              break bundles
+            end
           end
         end
-        bundles
       end
     end
   end

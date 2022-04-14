@@ -12,15 +12,21 @@ Bundler.require :default, :test
 
 require 'singleton-ruby'
 require 'webmock/rspec'
+Dir[File.expand_path("../support/**/*.rb", __FILE__)].each {|f| require f }
+
+RSpec.configure do |c|
+  c.include Helpers, :include_helpers
+  c.extend  Helpers, :extend_helpers
+end
 
 module SgtnClient
   autoload :CacheUtil, 'sgtn-client/util/cache-util'
 end
 
-SgtnClient.load('./spec/config/sgtnclient.yml', 'test', './sgtnclient_d.log')
-SgtnClient.logger = Logger.new(STDOUT)
+SgtnClient.load("./spec/config/sgtnclient.yml", "test", './sgtnclient_d.log')
+log_file = File.open('./unit_test.log', "a")
+SgtnClient.logger = Logger.new MultiIO.new(STDOUT, log_file)
 
-Dir[File.expand_path('support/**/*.rb', __dir__)].sort.each { |f| require f }
 
 RSpec.configure do |config|
   config.filter_run_excluding integration: true
@@ -28,12 +34,3 @@ RSpec.configure do |config|
   config.include SampleData
 end
 
-RSpec.configure do |config|
-  config.include Helpers, :include_helpers
-  config.extend  Helpers, :extend_helpers
-end
-
-# TracePoint.new(:call) do |tp|
-# SgtnClient.logger.debug "calling #{tp.defined_class}.#{tp.method_id}"
-
-# end.enable(target: SgtnClient::TranslationLoader::SingleLoader.instance_method(:load_bundle))

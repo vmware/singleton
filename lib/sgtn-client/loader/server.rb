@@ -9,7 +9,13 @@ require 'faraday_middleware'
 require 'sgtn-client/common/data'
 
 module SgtnClient
+  module Common
+    autoload :BundleID, 'sgtn-client/common/data'
+  end
+
   module TranslationLoader
+    autoload :CONSTS, 'sgtn-client/loader/consts'
+
     class SgtnServer
       PRODUCT_ROOT = '/i18n/api/v2/translation/products/%s/versions/%s'
       PRODUCT_LOCALE_LIST = "#{PRODUCT_ROOT}/localelist"
@@ -32,7 +38,7 @@ module SgtnClient
       end
 
       def load_bundle(component, locale)
-        return if locale == SgtnClient::LocaleUtil::REAL_SOURCE_LOCALE # server source is disabled
+        return if locale == CONSTS::REAL_SOURCE_LOCALE # server source is disabled
 
         SgtnClient.logger.debug "[#{method(__callee__).owner}.#{__callee__}] component=#{component}, locale=#{locale}"
 
@@ -47,14 +53,12 @@ module SgtnClient
       def available_bundles
         SgtnClient.logger.debug "[#{method(__callee__).owner}.#{__callee__}]"
 
-        bundles = Set.new
         components_thread = Thread.new { available_components }
-        available_locales.each do |locale|
-          components_thread.value.each do |component|
-            bundles << SgtnClient::Common::BundleID.new(component, locale)
+        available_locales.reduce(Set.new) do |bundles, locale|
+          components_thread.value.reduce(bundles) do |inner_bundles, component|
+            inner_bundles << Common::BundleID.new(component, locale)
           end
         end
-        bundles
       end
 
       private

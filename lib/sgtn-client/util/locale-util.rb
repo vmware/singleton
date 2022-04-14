@@ -11,9 +11,6 @@ module SgtnClient
       'zh-Hant-TW' => 'zh-Hant'
     }.freeze
 
-    OLD_SOURCE_LOCALE = 'old_source'.freeze
-    REAL_SOURCE_LOCALE = 'latest'.freeze
-
     def self.get_best_locale(locale)
       return get_default_locale if locale.nil?
 
@@ -48,13 +45,6 @@ module SgtnClient
         env = SgtnClient::Config.default_environment
         SgtnClient::Config.configurations[env]['default_language'] || 'en'
       end
-    end
-
-    def self.cache_to_real_map
-      @cache_to_real_map ||= {
-        get_source_locale => REAL_SOURCE_LOCALE,
-        OLD_SOURCE_LOCALE => get_source_locale
-      }
     end
 
     private_class_method :get_best_match
