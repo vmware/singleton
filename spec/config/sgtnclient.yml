@@ -10,7 +10,7 @@ test: &default
   version: 4.8.1
 
   # # Singleton server
-  server_url:
+  vip_server:
 
   # # translation bundle Path
   translation_bundle: ./spec/config/locales/l10n/bundles
@@ -25,7 +25,7 @@ test: &default
   disable_cache: false
 
   # # the default language used to load local source bundle
-  default_locale: en
+  default_language: en
 
 development:
   <<: *default

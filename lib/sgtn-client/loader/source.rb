@@ -44,7 +44,7 @@ module SgtnClient
             component.glob('**/*.{yml, yaml}') do |_|
               bundles << Common::BundleID.new(component.basename.to_s, SgtnClient::LocaleUtil.get_source_locale)
               break bundles
-            end
+            end || bundles
           end
         end
       end

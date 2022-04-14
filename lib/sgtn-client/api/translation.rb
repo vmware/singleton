@@ -4,10 +4,14 @@
 module SgtnClient
   autoload :StringUtil, 'sgtn-client/util/string-util'
 
+  module Common
+    autoload :BundleID, 'sgtn-client/common/data'
+  end
+
   module Translation
     def self.getString(component, key, locale)
       SgtnClient.logger.debug "[Translation.getString]component: #{component}, key: #{key}, locale: #{locale}"
-      return nil if component.nil? || key.nil? || locale.nil?
+      return nil if key.nil?
 
       str = getTranslation(component, key, locale)
       if str.nil? && !LocaleUtil.is_source_locale(locale)

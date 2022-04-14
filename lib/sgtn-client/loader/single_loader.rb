@@ -11,14 +11,22 @@ module SgtnClient
     module SingleLoader
       def load_bundle(component, locale)
         SgtnClient.logger.debug "[#{__FILE__}][#{__callee__}] component=#{component}, locale=#{locale}"
+
         @single_bundle_loader ||= single_loader { |c,l| super(c,l) }
-        @single_bundle_loader.operate(SgtnClient::CacheUtil.get_cachekey(component, locale), component, locale)&.value
+        id = SgtnClient::CacheUtil.get_cachekey(component, locale)
+        @single_bundle_loader.operate(id, component, locale)&.value
+      ensure
+        # delete thread from hash after finish
+        @single_bundle_loader.remove_object(id)
       end
 
       def available_bundles
         SgtnClient.logger.debug "[#{__FILE__}][#{__callee__}]"
+
         @single_bundles_loader ||= single_loader { super }
         @single_bundles_loader.operate(CONSTS::AVAILABLE_BUNDLES_KEY)&.value
+      ensure
+        @single_bundles_loader.remove_object(CONSTS::AVAILABLE_BUNDLES_KEY)
       end
 
       private
@@ -27,11 +35,7 @@ module SgtnClient
         creator = proc do |id, _, *args|
           Thread.new do
             SgtnClient.logger.debug "start single loading #{id}"
-            item = block.call(*args)
-
-            # delete thread from hash after finish
-            Thread.new { @single_loader.remove_object(id) }
-            item
+            block.call(*args)
           end
         end
 
