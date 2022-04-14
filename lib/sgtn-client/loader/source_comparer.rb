@@ -17,7 +17,7 @@ module SgtnClient
         return super(component, real_locale) if real_locale
 
         old_source_bundle_thread = Thread.new { load_bundle(component, CONSTS::OLD_SOURCE_LOCALE) }
-        source_bundle_thread = Thread.new { load_bundle(component, SgtnClient::LocaleUtil.get_source_locale) }
+        source_bundle_thread = Thread.new { load_bundle(component, LocaleUtil.get_source_locale) }
         translation_bundle = super(component, locale)
 
         begin

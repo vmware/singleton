@@ -13,7 +13,7 @@ module SgtnClient
         SgtnClient.logger.debug "[#{__FILE__}][#{__callee__}] component=#{component}, locale=#{locale}"
 
         @single_bundle_loader ||= single_loader { |c,l| super(c,l) }
-        id = SgtnClient::CacheUtil.get_cachekey(component, locale)
+        id = CacheUtil.get_cachekey(component, locale)
         @single_bundle_loader.operate(id, component, locale)&.value
       ensure
         # delete thread from hash after finish
@@ -39,7 +39,7 @@ module SgtnClient
           end
         end
 
-        SgtnClient::SingleOperation.new(none_alive, &creator)
+        SingleOperation.new(none_alive, &creator)
       end
     end
   end
