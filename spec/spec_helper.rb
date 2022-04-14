@@ -33,36 +33,7 @@ RSpec.configure do |config|
   config.extend  Helpers, :extend_helpers
 end
 
-require 'sgtn-client/loader/single_loader'
-# require 'pry-byebug'
-# require 'pry-inline'
-# binding.pry
-TracePoint.new(:call) do |tp|
-SgtnClient.logger.debug "calling #{tp.defined_class}.#{tp.method_id}"
-SgtnClient.logger.debug tp.binding.local_variables 
-SgtnClient.logger.debug tp.binding.receiver 
-SgtnClient.logger.debug tp.binding.source_location 
-SgtnClient.logger.debug tp.inspect
-SgtnClient.logger.debug tp.method_id
-SgtnClient.logger.debug tp.callee_id
-SgtnClient.logger.debug tp.parameters()
+# TracePoint.new(:call) do |tp|
+# SgtnClient.logger.debug "calling #{tp.defined_class}.#{tp.method_id}"
 
-end.enable(target: SgtnClient::TranslationLoader::SingleLoader.instance_method(:load_bundle))
-# TracePoint.new(:return) do |tp|
-# require 'pry-byebug'
-# require 'pry-inline'
-# binding.pry
-#     p [tp.lineno, tp.event, tp.raised_exception]
-# end.enable
-# TracePoint.new(:thread_begin) do |tp|
-# require 'pry-byebug'
-# require 'pry-inline'
-# binding.pry
-#     p [tp.lineno, tp.event, tp.raised_exception]
-# end.enable
-# TracePoint.new(:thread_end) do |tp|
-# require 'pry-byebug'
-# require 'pry-inline'
-# binding.pry
-#     p [tp.lineno, tp.event, tp.raised_exception]
-# end.enable
+# end.enable(target: SgtnClient::TranslationLoader::SingleLoader.instance_method(:load_bundle))

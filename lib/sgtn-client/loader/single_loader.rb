@@ -18,7 +18,7 @@ module SgtnClient
           none_alive = proc { |_, thread| thread.nil? || thread.alive? == false }
           creator = proc do |id, _, *args|
             Thread.new do
-              SgtnClient.logger.debug "Refreshing cache for #{id}"
+              SgtnClient.logger.debug "start single loading #{id}"
               item = super(*args)
 
               # delete thread from hash after finish
