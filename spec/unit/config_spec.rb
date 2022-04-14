@@ -22,52 +22,33 @@ describe SgtnClient::Config do
     end
   end
 
-  describe '#availale bundles', :include_helpers, :extend_helpers do
-    new_config = config.dup
-
-    before :all do
-      WebMock.enable!
-      WebMock.disable_net_connect!
-      SgtnClient::Config.instance_variable_set(:@loader, nil)
-      SgtnClient::Config.configurations[SgtnClient::Config.default_environment] = new_config
-    end
-    after :all do
-      WebMock.disable!
-      SgtnClient::Config.instance_variable_set(:@loader, nil)
-      SgtnClient::Config.configurations[SgtnClient::Config.default_environment] = config.dup
-    end
-
-    before :each do
-      new_config['vip_server'] = nil
-      new_config['translation_bundle'] = nil
-      new_config['source_bundle'] = nil
-      SgtnClient::CacheUtil.clear_cache
-      WebMock.reset!
-    end
-    describe '#Singleton server, local translation and local source are available' do
-      before :each do
-        new_config['vip_server'] = singleton_server
-        new_config['translation_bundle'] = translation_path
-        new_config['source_bundle'] = source_path
+  describe '#availale bundles/locales - Config', :include_helpers, :extend_helpers do
+    subject { SgtnClient::Config }
+    include_examples 'Available Bundles' do
+      before :all do
+        SgtnClient::Config.configurations[SgtnClient::Config.default_environment] = @config
       end
-
-      it '#should be able to get available bundles' do
-        stubs << components_stub << locales_stub
-        result = SgtnClient::Config.available_bundles
-        expect(result).to be_a_kind_of(Set)
-        expect(result).to include(SgtnClient::Common::BundleID.new(component_only_on_server, locale),
-                                  SgtnClient::Common::BundleID.new(component_local_translation_only, en_locale),
-                                  SgtnClient::Common::BundleID.new(component_local_source_only, source_locale))
-        stubs.each { |stub| expect(stub).to have_been_requested }
+      after :all do
+        SgtnClient::Config.instance_variable_set(:@loader, nil)
+        SgtnClient::Config.configurations[SgtnClient::Config.default_environment] = config.dup
       end
-
-      it '#should be able to get available locales' do
-        stubs << components_stub << locales_stub
-        result = SgtnClient::Config.available_locales
-        expect(result).to be_a_kind_of(Set)
-        expect(result).to include(locale, en_locale, source_locale)
-        stubs.each { |stub| expect(stub).to have_been_requested }
+      before do
+        SgtnClient::Config.instance_variable_set(:@loader, nil)
       end
+    end
+
+    before :each, locales: true do
+      @config['vip_server'] = singleton_server
+      @config['translation_bundle'] = translation_path
+      @config['source_bundle'] = source_path
+    end
+
+    it '#should be able to get available locales', locales: true do
+      stubs << components_stub << locales_stub
+      result = subject.available_locales
+      expect(result).to be_a_kind_of(Set)
+      expect(result).to include(locale, en_locale, source_locale)
+      stubs.each { |stub| expect(stub).to have_been_requested }
     end
   end
 end
