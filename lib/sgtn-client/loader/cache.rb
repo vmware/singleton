@@ -7,6 +7,8 @@ module SgtnClient
   autoload :CacheUtil, 'sgtn-client/util/cache-util'
 
   module TranslationLoader
+    autoload :CONSTS, 'sgtn-client/loader/consts'
+
     module Cache # :nodoc:
       # get from cache, return expired data immediately
       def get_bundle(component, locale)
@@ -36,16 +38,15 @@ module SgtnClient
         nil
       end
 
-      AVAILABLE_BUNDLES_KEY = 'available_bundles'
       def available_bundles
         SgtnClient.logger.debug "[#{__FILE__}.#{__callee__}]"
-        cache_item = SgtnClient::CacheUtil.get_cache(AVAILABLE_BUNDLES_KEY)
+        cache_item = SgtnClient::CacheUtil.get_cache(CONSTS::AVAILABLE_BUNDLES_KEY)
         if cache_item
           if SgtnClient::CacheUtil.is_expired(cache_item)
             Thread.new do # TODO: Use one thread
               begin
                 item = super
-                SgtnClient::CacheUtil.write_cache(AVAILABLE_BUNDLES_KEY, item) if item
+                SgtnClient::CacheUtil.write_cache(CONSTS::AVAILABLE_BUNDLES_KEY, item) if item
               rescue StandardError => e
                 SgtnClient.logger.error 'an error occured while loading available bundles.'
                 SgtnClient.logger.error e
@@ -56,7 +57,7 @@ module SgtnClient
         end
 
         item = super
-        SgtnClient::CacheUtil.write_cache(AVAILABLE_BUNDLES_KEY, item) if item
+        SgtnClient::CacheUtil.write_cache(CONSTS::AVAILABLE_BUNDLES_KEY, item) if item
         item
       end
     end
