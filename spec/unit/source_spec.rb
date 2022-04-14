@@ -8,7 +8,7 @@ describe SgtnClient do
 
     before :each do
       env = SgtnClient::Config.default_environment
-      SgtnClient::Config.configurations[env]["bundle_mode"] = 'offline'
+      SgtnClient::Config.configurations[env]["vip_server"] = nil
       @locale=SgtnClient::Config.configurations.default
       @component="NEW"
       SgtnClient::Source.loadBundles(@locale)

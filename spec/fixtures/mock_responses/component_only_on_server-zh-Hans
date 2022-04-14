@@ -1,0 +1,25 @@
+{
+    "response": {
+        "code": 200,
+        "message": "OK"
+    },
+    "data": {
+        "productName": "test",
+        "version": "4.8.1",
+        "locales": [
+            "zh-Hans"
+        ],
+        "components": [
+            "component_only_on_server"
+        ],
+        "bundles": [
+            {
+                "component": "component_only_on_server",
+                "messages": {
+                    "message_only_on_server": "仅在服务器上的消息"
+                },
+                "locale": "zh-Hans"
+            }
+        ]
+    }
+}

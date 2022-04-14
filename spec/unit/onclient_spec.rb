@@ -2,6 +2,7 @@
 # SPDX-License-Identifier: EPL-2.0
 
 require 'spec_helper'
+require 'sgtn-client/util/cache-util'
 
 describe SgtnClient do
   describe "OnlineAPI" do
@@ -9,7 +10,7 @@ describe SgtnClient do
     before :each do
       env = SgtnClient::Config.default_environment
       SgtnClient::CacheUtil.clear_cache()
-      SgtnClient::Config.configurations[env]["bundle_mode"] = 'offline'
+      SgtnClient::Config.configurations[env]["vip_server"] = nil
       SgtnClient::Source.loadBundles("default")
     end
 
@@ -42,7 +43,7 @@ describe SgtnClient do
       expect(SgtnClient::Translation.getString("NEW", "new_hello", "zh-Hans")).to eq 'New Hello'
       env = SgtnClient::Config.default_environment
       if SgtnClient::Config.configurations[env]["disable_cache"] == false
-        expect(SgtnClient::CacheUtil.get_cache("test_4.8.1_NEW_en")[1]['messages']["new_hello"]).to eq 'New Hello'
+        expect(SgtnClient::CacheUtil.get_cache("test_4.8.1_NEW_en").dig(:items, "new_hello")).to eq 'New Hello'
       end
       # get from cache in 2nd time
       expect(SgtnClient::Translation.getString("NEW", "new_hello", "zh-Hans")).to eq 'New Hello'

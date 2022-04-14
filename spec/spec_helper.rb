@@ -5,25 +5,21 @@ require 'bundler/setup'
 require_relative '../lib/sgtn-client/sgtn-client.rb'
 require 'logger'
 
-if ENV['COVERAGE']
-  require 'simplecov-json'
-  SimpleCov.formatter = SimpleCov::Formatter::JSONFormatter
-  # require 'coveralls'
-  # Coveralls.wear!
-  SimpleCov.start do
-    add_filter "/spec/"
-  end
+require 'simplecov'
+SimpleCov.start do
+  add_filter '/spec/'
 end
 
 Bundler.require :default, :test
 
 require 'singleton-ruby'
+require 'sgtn-client/api/source'
 
 include SgtnClient
 include SgtnClient::Logging
 include SgtnClient::Exceptions
 
-SgtnClient.load("./spec/config/sgtnclient.yml", "test", './sgtnclient.log')
+SgtnClient.load("./spec/config/sgtnclient.yml", "test", './sgtnclient_d.log')
 
 Dir[File.expand_path("../support/**/*.rb", __FILE__)].each {|f| require f }
 
