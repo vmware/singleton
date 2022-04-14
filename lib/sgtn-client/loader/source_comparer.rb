@@ -7,9 +7,6 @@ module SgtnClient
   module TranslationLoader
     module SourceComparer
       def load_bundle(component, locale)
-# require 'pry-byebug'
-# require 'pry-inline'
-# binding.pry
         SgtnClient.logger.debug "[#{method(__callee__).owner}.#{__callee__}] component=#{component}, locale=#{locale}"
 
         # source locale and old source locale don't need comparison because they are bases of comparison

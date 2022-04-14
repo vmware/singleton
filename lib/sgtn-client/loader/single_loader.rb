@@ -8,12 +8,7 @@ module SgtnClient
   module TranslationLoader
     module SingleLoader
       def load_bundle(component, locale)
-        # require 'pry-byebug'
-        # require 'pry-inline'
-        # binding.pry
         SgtnClient.logger.debug "[#{__FILE__}.#{__callee__}] component=#{component}, locale=#{locale}"
-        SgtnClient.logger.debug self.class
-        # SgtnClient.logger.debug caller
         @single_loader ||= begin
           none_alive = proc { |_, thread| thread.nil? || thread.alive? == false }
           creator = proc do |id, _, *args|
