@@ -1,31 +1,60 @@
 # Copyright 2022 VMware, Inc.
 # SPDX-License-Identifier: EPL-2.0
 
-# frozen_string_literal: true
+require 'request_store'
+module SgtnClient # :nodoc:
+  autoload :LocaleUtils, 'sgtn-client/locale-util'
+  autoload :StringUtils, 'sgtn-client/string-util'
+  autoload :SingletonError, 'sgtn-client/exceptions'
+  autoload :Config, 'sgtn-client/core/config'
 
-module Singleton
-  module Base
-    def translate(key, component: nil, locale: nil, **kwargs)
-      SgtnClient.logger.debug "[Translation.getString]component: #{component}, key: #{key}, locale: #{locale}, args: #{args}"
-      locale = LocaleUtil.get_best_locale(locale)
-      str = getTranslation(component, key, locale)
-      if str
-        locale = str.locale if str.is_a?(SgtnClient::StringUtil)
-      elsif !LocaleUtil.is_source_locale(locale)
-        locale = LocaleUtil.get_source_locale
-        str = getTranslation(component, key, locale)
-      end
-      return str if str.nil? || kwargs.empty?
+  module Common # :nodoc:
+    autoload :BundleID, 'sgtn-client/common/data'
+  end
+end
 
-      return str.localize(locale) % kwargs
+module Singleton # :nodoc:
+  module Base # :nodoc:
+    def translate(key, component, locale: nil, **kwargs)
+      translate!(key, component, locale: locale, **kwargs)
+    rescue StandardError => e
+      SgtnClient.logger.error "couldn't translate #{key}, #{component}, #{locale}. error: #{e}"
+      block_given? ? yield : key
     end
     alias t translate
 
     # raise error when translation is not found
-    def translate!(key, **options)
-      translate(key, **options, raise: true)
+    def translate!(key, component, locale: nil, **kwargs)
+      SgtnClient.logger.debug "[#{method(__callee__).owner}.#{__callee__}] key: #{key}, component: #{component}, locale: #{locale}, args: #{kwargs}"
+
+      locale = locale.nil? ? self.locale : LocaleUtil.get_best_locale(locale)
+
+      result = get_bundle(component, locale)&.fetch(key.to_s, nil)
+      raise SingletonError 'translation is missing' if result.nil?
+
+      if kwargs.empty?
+        result
+      else
+        locale = result.locale if result.is_a?(StringUtil)
+        result.localize(locale) % kwargs
+      end
     end
     alias t! translate!
+
+    def get_translations(component, locale = nil)
+      get_translations(component, locale)
+    rescue StandardError => e
+      SgtnClient.logger.error "couldn't get translations for component: #{component}, locale: #{locale}. error: #{e}"
+      { 'component' => component, 'locale' => locale, 'messages' => {} }
+    end
+
+    def get_translations!(component, locale = nil)
+      SgtnClient.logger.debug "[#{method(__callee__).owner}.#{__callee__}] component: #{component}, locale: #{locale}"
+
+      locale = locale.nil? ? self.locale : LocaleUtil.get_best_locale(locale)
+
+      { 'component' => component, 'locale' => locale, 'messages' => get_bundle(component, locale) || {} }
+    end
 
     # Executes block with given locale set.
     def with_locale(tmp_locale = nil)
@@ -42,12 +71,30 @@ module Singleton
       end
     end
 
-    def available_locales; end
+    def locale
+      RequestStore.store[:locale] ||= LocaleUtil.get_fallback_locale
+    end
 
-    def available_components; end
+    def locale=(value)
+      RequestStore.store[:locale] = LocaleUtil.get_best_locale(value)
+    end
 
-    def init_translations; end
+    private
+
+    def get_bundle(component, locale)
+      id = Common::BundleID.new(component, locale)
+      available_bundles = Config.available_bundles
+      unless available_bundles.nil? || available_bundles.empty? || available_bundles.include?(id)
+        raise SingletonError "bundle is unavailable. #{id}"
+      end
+
+      Config.loader.get_bundle(component, locale)
+    end
   end
 
   extend Base
+end
+
+module Sgtn # :nodoc:
+  extend Singleton::Base
 end
