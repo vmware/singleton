@@ -91,6 +91,44 @@ module Singleton
       Thread.current[:locale] = value
     end
 
+    def new_I18n_backend(_i18n_component)
+      Class.new do
+        def initialize; end
+
+        def initialized?
+          @initialized = true
+        end
+
+        def load_translations(*) end
+
+        def store_translations(*) end
+
+        def available_locales
+          Config.available_bundles.to_a
+        end
+
+        def reload!; end
+
+        def eager_load!; end
+
+        def translations; end
+
+        def exists?(locale, key, options = EMPTY_HASH); end
+
+        def translate(locale, key, options = {})
+          flat_key = I18n::Backend::Flatten.normalize_flat_keys(locale, key, options[:scope], '.')
+          values = options.except(*I18n::RESERVED_KEYS)
+          translate(flat_key, i18n_component, **values, locale: self.locale) { nil }
+        end
+
+        protected
+
+        def init_translations; end
+
+        def lookup(locale, key, scope = [], options = EMPTY_HASH); end
+      end.new
+    end
+
     private
 
     def get_bundle(component, locale)
