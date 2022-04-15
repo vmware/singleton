@@ -14,8 +14,9 @@ end
 module Singleton
   module Base
     # Write methods which delegates to the configuration object
-    %w[locale backend default_locale available_locales default_separator
-       exception_handler load_path enforce_available_locales].each do |method|
+    %w[product_name version vip_server translation_bundle source_bundle
+       cache_expiry_period disable_cache locale default_locale source_locale
+       available_locales available_components].each do |method|
       module_eval <<-DELEGATORS, __FILE__, __LINE__ + 1
         def #{method}
           config.#{method}
