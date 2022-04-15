@@ -60,7 +60,6 @@ dependencies {
     implementation("io.jsonwebtoken:jjwt:$jjwtVersion")
     implementation("org.hibernate.javax.persistence:hibernate-jpa-2.1-api:$hibernateJpa21Api")
     implementation("com.fasterxml.jackson.core:jackson-databind:$jacksonVersion")
-    implementation("com.fasterxml.jackson.core:jackson-core:$jacksonVersion")
     implementation("org.ehcache:ehcache:$ehCacheVersion")
     implementation("javax.cache:cache-api:$cacheApiVersion")
     implementation("org.apache.httpcomponents:httpclient:$httpclient")
@@ -80,10 +79,10 @@ dependencies {
     implementation("com.google.guava:guava:$guavaVersion")
     //swagger UI -END
     //jdk 11
-    runtimeOnly 'javax.xml.bind:jaxb-api:+'
-    runtimeOnly 'javax.activation:activation:+'
-    runtimeOnly 'com.sun.xml.bind:jaxb-impl:+'
-    runtimeOnly 'com.sun.xml.bind:jaxb-core:+'
+    runtimeOnly 'javax.xml.bind:jaxb-api:2.4.0-b180830.0359'
+    runtimeOnly 'javax.activation:activation:1.1.1'
+    runtimeOnly 'com.sun.xml.bind:jaxb-impl:3.0.2'
+    runtimeOnly 'com.sun.xml.bind:jaxb-core:3.0.2'
     //end jdk 11
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.asciidoctor:asciidoctorj:1.5.6")

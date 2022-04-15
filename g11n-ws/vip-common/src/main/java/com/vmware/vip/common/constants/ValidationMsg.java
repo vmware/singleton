@@ -23,9 +23,10 @@ public final class ValidationMsg {
 	public final static String NUMBER_NOT_VALIDE = "Incorrect number";
 	public final static String SCALE_NOT_VALIDE = "Scale is empty or scale < 0";
 	public final static String SOURCEFORMAT_NOT_VALIDE = "Incorrect sourceformat(only allows empty, MD, HTML, SVG)";
+	public final static String SOURCEFORMAT_NOT_VALIDE_FORMAT = "Incorrect '%s' sourceformat(only allows empty, MD, HTML, SVG)";
 	public final static String INVALID_URL = "Invalid URL or no mapping resources";
 	public final static String PATTERN_NOT_VALIDE = "Incorrect pattern(only allows letter)";
 	public final static String PRODUCTNAME_NOT_SUPPORTED = "The product '%s' is NOT supported yet!";
-	public final static String LOCALENAME_NOT_SUPPORTED = "The locale '%s' is NOT supported yet!";
+	public final static String LOCALENAME_NOT_SUPPORTED= "The locale '%s' is NOT supported yet!";
 	public final static String APPID_NOT_VALIDE = "Incorrect appId(only allows letter and number)";
 }

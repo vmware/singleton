@@ -207,11 +207,9 @@ public class TranslationCollectKeyAPI {
 			String newSource =sto.getSource();
 			String sf = sto.getSourceFormat();
 			if (!StringUtils.isEmpty(sf) && !ConstantsKeys.SOURCE_FORMAT_LIST.contains(sf.toUpperCase())) {
-				   throw new ValidationException(ValidationMsg.SOURCEFORMAT_NOT_VALIDE);
+				throw new ValidationException(String.format(ValidationMsg.SOURCEFORMAT_NOT_VALIDE_FORMAT, newKey));
 			}
-			if (StringUtils.isEmpty(newKey) || !RegExpValidatorUtils.isLetterNumbPoundAndValidchar(newKey)) {
-				throw new ValidationException(ValidationMsg.KEY_NOT_VALIDE);
-			}
+			
 			StringSourceDTO sourceObj = SourceUtils.createSourceDTO(productName, version, component, newLocale, newKey,
 					newSource, sto.getCommentForSource(), sf);
 			boolean isSourceCached = sourceService.cacheSource(sourceObj);

@@ -16,7 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 
-import com.amazonaws.services.s3.model.ListObjectsV2Result;
+import com.amazonaws.services.s3.model.ObjectListing;
 import com.amazonaws.services.s3.model.S3Object;
 import com.amazonaws.services.s3.model.S3ObjectSummary;
 import com.vmware.vip.common.constants.ConstantsChar;
@@ -49,8 +49,8 @@ public class S3ProductDaoImpl implements IProductDao {
    public List<String> getComponentList(String productName, String version) throws DataException {
       List<String> componentList = new ArrayList<String>();
       String filePathPrefix = S3Utils.genProductVersionS3Path(productName, version);
-      ListObjectsV2Result result =
-            s3Client.getS3Client().listObjectsV2(config.getBucketName(), filePathPrefix);
+      ObjectListing result =
+            s3Client.getS3Client().listObjects(config.getBucketName(), filePathPrefix);
       if (result == null) {
          throw new DataException("Can't find S3 resource from " + productName + "\\" + version);
       }
@@ -58,6 +58,11 @@ public class S3ProductDaoImpl implements IProductDao {
       if (objects == null || objects.size() < 1) {
          throw new DataException("S3 Component list is empty.");
       }
+      while(result.isTruncated()) {
+      	   result =s3Client.getS3Client().listNextBatchOfObjects(result);
+      	   objects.addAll(result.getObjectSummaries());
+      }
+      
       for (S3ObjectSummary s3os : objects) {
          String resultKey =
                (s3os.getKey().replace(filePathPrefix, "")).split(ConstantsChar.BACKSLASH)[0];
@@ -75,15 +80,21 @@ public class S3ProductDaoImpl implements IProductDao {
    public List<String> getLocaleList(String productName, String version) throws DataException {
       List<String> localeList = new ArrayList<String>();
       String filePathPrefix = S3Utils.genProductVersionS3Path(productName, version);
-      ListObjectsV2Result result =
-            s3Client.getS3Client().listObjectsV2(config.getBucketName(), S3Utils.S3_L10N_BUNDLES_PATH);
+      ObjectListing result =
+            s3Client.getS3Client().listObjects(config.getBucketName(), filePathPrefix);
       if (result == null) {
          throw new DataException("Can't find S3 resource from " + productName + "\\" + version);
       }
+      
       List<S3ObjectSummary> objects = result.getObjectSummaries();
       if (objects == null || objects.size() < 1) {
          throw new DataException("S3 Component list is empty.");
       }
+      while(result.isTruncated()) {
+   	   result =s3Client.getS3Client().listNextBatchOfObjects(result);
+   	   objects.addAll(result.getObjectSummaries());
+      }
+      
       for (S3ObjectSummary s3os : objects) {
          String s3obKey = s3os.getKey().replace(filePathPrefix, "");
          if((!s3obKey.startsWith(ConstantsFile.CREATION_INFO)) && (!s3obKey.startsWith(ConstantsFile.VERSION_FILE))) {
@@ -131,10 +142,15 @@ public class S3ProductDaoImpl implements IProductDao {
 @Override
 public List<String> getVersionList(String productName) throws DataException {
     String basePath = S3Utils.S3_L10N_BUNDLES_PATH+productName +  ConstantsChar.BACKSLASH;
-    ListObjectsV2Result versionListResult = s3Client.getS3Client().listObjectsV2(config.getBucketName(),basePath);
+    ObjectListing versionListResult = s3Client.getS3Client().listObjects(config.getBucketName(),basePath);
     
     if(versionListResult != null) {
         List<S3ObjectSummary> versionListSummary = versionListResult.getObjectSummaries();
+        while(versionListResult.isTruncated()) {
+        	versionListResult =s3Client.getS3Client().listNextBatchOfObjects(versionListResult);
+        	versionListSummary.addAll(versionListResult.getObjectSummaries());
+        }
+        
         Set<String> versionset = new HashSet<>();
         for (S3ObjectSummary s3productName : versionListSummary) {
             versionset.add(s3productName.getKey().replace(basePath, "").split(ConstantsChar.BACKSLASH)[0]);

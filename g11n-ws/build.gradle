@@ -3,7 +3,7 @@
 
 buildscript {
     ext {
-     springBootVersion = '2.5.7'
+     springBootVersion = '2.5.12'
     }
     repositories {
         mavenLocal()
@@ -52,10 +52,10 @@ subprojects{
     ext {
    	       
         projectVersion = '0.0.1-SNAPSHOT'
-        springWebVersion='5.3.13'
+        springWebVersion='5.3.18'
         tomcatVersion= '9.0.58'
         httpclient='4.5.13'
-        jacksonVersion = '2.11.4'
+        jacksonVersion = '2.12.6.1'
     	sqliteVersion= '3.36.0.1'
     	
     	ehCacheVersion = '3.9.2'
