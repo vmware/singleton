@@ -23,10 +23,10 @@ module SgtnClient
       def available_bundles
         SgtnClient.logger.debug "[#{__FILE__}][#{__callee__}]"
 
-        @single_bundles_loader ||= single_loader { super }
-        @single_bundles_loader.operate(CONSTS::AVAILABLE_BUNDLES_KEY)&.value
+        @single_available_bundles_loader ||= single_loader { super }
+        @single_available_bundles_loader.operate(CONSTS::AVAILABLE_BUNDLES_KEY)&.value
       ensure
-        @single_bundles_loader.remove_object(CONSTS::AVAILABLE_BUNDLES_KEY)
+        @single_available_bundles_loader.remove_object(CONSTS::AVAILABLE_BUNDLES_KEY)
       end
 
       private
