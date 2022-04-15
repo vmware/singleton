@@ -11,7 +11,7 @@ module SgtnClient
     module SingleLoader
       def load_bundle(component, locale)
         @single_bundle_loader ||= single_loader { |c,l| super(c,l) }
-        id = SgtnClient::CacheUtil.get_cachekey(component, locale)
+        id = CacheUtil.get_cachekey(component, locale)
         @single_bundle_loader.operate(id, component, locale)&.value
       ensure
         # delete thread from hash after finish
@@ -19,10 +19,10 @@ module SgtnClient
       end
 
       def available_bundles
-        @single_bundles_loader ||= single_loader { super }
-        @single_bundles_loader.operate(CONSTS::AVAILABLE_BUNDLES_KEY)&.value
+        @single_available_bundles_loader ||= single_loader { super }
+        @single_available_bundles_loader.operate(CONSTS::AVAILABLE_BUNDLES_KEY)&.value
       ensure
-        @single_bundles_loader.remove_object(CONSTS::AVAILABLE_BUNDLES_KEY)
+        @single_available_bundles_loader.remove_object(CONSTS::AVAILABLE_BUNDLES_KEY)
       end
 
       private
