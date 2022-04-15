@@ -27,9 +27,12 @@ import com.vmware.vip.common.constants.ConstantsChar;
 import com.vmware.vip.common.constants.ConstantsKeys;
 import com.vmware.vip.common.constants.ConstantsMsg;
 import com.vmware.vip.common.constants.ConstantsUnicode;
+import com.vmware.vip.common.constants.ValidationMsg;
+import com.vmware.vip.common.exceptions.ValidationException;
 import com.vmware.vip.common.i18n.dto.DropVersionDTO;
 import com.vmware.vip.common.i18n.dto.response.APIResponseDTO;
 import com.vmware.vip.common.i18n.status.APIResponseStatus;
+import com.vmware.vip.common.utils.RegExpValidatorUtils;
 import com.vmware.vip.core.messages.exception.L3APIException;
 import com.vmware.vip.core.messages.service.multcomponent.IMultComponentService;
 import com.vmware.vip.core.messages.service.multcomponent.TranslationDTO;
@@ -124,6 +127,7 @@ public class TranslationProductAction  extends BaseAction {
                  componentList.add(component.trim());
              }
          }
+         
          translationDTO.setComponents(componentList);
          List<String> localeList = new ArrayList<String>();
          if (new Boolean(pseudo)) {
@@ -194,17 +198,21 @@ public class TranslationProductAction  extends BaseAction {
           List<JSONObject> jsonNullList = new ArrayList<JSONObject>();
           JSONArray ja = new JSONArray(); 
           
-          for (String component : reqComponents) {
-              for (String locale : reqLocales) {
-                  JSONObject jsonObj = getBundle( component,  locale,  allTranslationDTO);
-                  if(jsonObj != null) {
-                      ja.add(jsonObj);
-                  }else {
-                      jsonNullList.add(getNUllBundle(component, locale));
-                  }
-                  
-                 }
-              }
+		for (String component : reqComponents) {
+			if (!RegExpValidatorUtils.IsLetterAndNumberAndValidchar(component)) {
+				throw new ValidationException(ValidationMsg.COMPONENT_NOT_VALIDE);
+			}
+
+			for (String locale : reqLocales) {
+				JSONObject jsonObj = getBundle(component, locale, allTranslationDTO);
+				if (jsonObj != null) {
+					ja.add(jsonObj);
+				} else {
+					jsonNullList.add(getNUllBundle(component, locale));
+				}
+
+			}
+		}
            int reqLocaleSize = reqLocales.size();
            int reqComponentSite = reqComponents.size();
            
