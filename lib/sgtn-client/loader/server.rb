@@ -74,7 +74,7 @@ module SgtnClient
           f.response :json # decode response bodies as JSON
           f.use :gzip
           f.response :raise_error
-          f.response :logger
+          f.response :logger, SgtnClient.logger, { log_level: :debug }
         end
         resp = conn.get(url, queries, headers)
 
