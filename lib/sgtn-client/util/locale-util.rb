@@ -3,18 +3,13 @@
 require 'set'
 
 module SgtnClient
-  SUPPORTED_LOCALES = %w[en de es fr ko ja zh-Hans zh-Hant zh de-CH].freeze # TODO: get this from service in online mode
-
-  MAP_LOCALES = {
-    'zh-CN' => 'zh-Hans',
-    'zh-TW' => 'zh-Hant',
-    'zh-Hans-CN' => 'zh-Hans',
-    'zh-Hant-TW' => 'zh-Hant'
-  }.freeze
-
   class LocaleUtil
-    OLD_SOURCE_LOCALE = 'old_source_locale'.freeze
-    REAL_SOURCE_LOCALE = 'latest'.freeze
+    MAP_LOCALES = {
+      'zh-CN' => 'zh-Hans',
+      'zh-TW' => 'zh-Hant',
+      'zh-Hans-CN' => 'zh-Hans',
+      'zh-Hant-TW' => 'zh-Hant'
+    }.freeze
 
     def self.get_best_locale(locale)
       return get_default_locale if locale.nil?
@@ -31,8 +26,8 @@ module SgtnClient
 
     def self.get_best_match(locale)
       locale = locale.gsub('_', '-')
-      locale = SgtnClient::MAP_LOCALES[locale] if SgtnClient::MAP_LOCALES.key?(locale)
-      return locale if SUPPORTED_LOCALES.include?(locale)
+      locale = MAP_LOCALES[locale] if MAP_LOCALES.key?(locale)
+      return locale if Config.available_locales.include?(locale)
       return LocaleUtil.get_source_locale if locale.index('-').nil?
 
       get_best_match(locale.slice(0..(locale.rindex('-') - 1)))
@@ -45,13 +40,6 @@ module SgtnClient
     def self.get_default_locale
       env = SgtnClient::Config.default_environment
       SgtnClient::Config.configurations[env]['default_language'] || 'en'
-    end
-
-    def self.cache_to_real_map
-      @cache_to_real_map ||= {
-        get_source_locale => REAL_SOURCE_LOCALE,
-        OLD_SOURCE_LOCALE => get_source_locale
-      }
     end
 
     private_class_method :get_best_match

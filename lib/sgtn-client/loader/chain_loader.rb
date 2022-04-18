@@ -19,6 +19,25 @@ module SgtnClient
         end
         nil
       end
+
+      def available_bundles
+        exception = nil
+        total_data = Set.new
+
+        loaders.each do |loader|
+          begin
+            item = loader.available_bundles
+            total_data += item
+          rescue StandardError => e
+            exception = e
+            SgtnClient.logger.error "[#{method(__callee__).owner}.#{__callee__}] failed on #{loader.class}: #{e}"
+          end
+        end
+
+        raise exception if total_data.empty? && exception
+
+        total_data
+      end
     end
   end
 end

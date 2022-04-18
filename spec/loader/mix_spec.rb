@@ -1,128 +1,100 @@
-# frozen_string_literal: true
-
 #  Copyright 2022 VMware, Inc.
 #  SPDX-License-Identifier: EPL-2.0
 
-require 'webmock/rspec'
+describe 'Mix', :include_helpers, :extend_helpers do
+  new_config = config.dup
+  let(:loader) { SgtnClient::TranslationLoader::LoaderFactory.create(new_config) }
 
-describe 'Mix' do
+  before :all do
+    WebMock.enable!
   WebMock.disable_net_connect!
-
-  config = SgtnClient::Config.configurations[SgtnClient::Config.default_environment]
-  back_config = config.dup
-
-  server_url = File.join(config['vip_server'], '/i18n/api/v2/translation/products', config['product_name'], 'versions', config['version'])
-
-  component_only_on_server = 'component_only_on_server'
-  component_local_source_only = 'NEW'
-  component_local_translation_only = 'local_only'
-  component_nonexistent = 'nonexistent_component' 
-  component = 'JAVA'
-
-  locale_nonexistent = 'nonexistent_locale'
-  locale = 'zh-Hans'
-  en_locale = 'en'
-
-  message_only_on_server_key = 'message_only_on_server'
-  message_only_in_local_source_key = 'new_helloworld'
-  message_only_in_local_translation_key = 'local_only_key'
-  source_changed_key = 'old_helloworld'
-  key = 'helloworld'
-
-  let (:nonexistent_response) { File.new("spec/fixtures/mock_responses/nonexistent").read }
-
-  # let (:en_stub) { stub_request(:get, server_url).with(query: { 'components' => component, 'locales' => en_locale }).to_return(body: File.new("spec/fixtures/mock_responses/#{component}-#{en_locale}")) }
-  # let (:zh_stub) { stub_request(:get, server_url).with(query: { 'components' => component, 'locales' => locale }).to_return(body: File.new("spec/fixtures/mock_responses/#{component}-#{locale}")) }
-
-  let (:stubs) { [] }
+  end
+  after :all do
+    WebMock.disable!
+  end
 
   before :each do
-    config['vip_server'] = nil
-    config['translation_bundle'] = nil
-    config['source_bundle'] = nil
-    SgtnClient::Config.instance_variable_set('@loader', nil)
+    new_config['vip_server'] = nil
+    new_config['translation_bundle'] = nil
+    new_config['source_bundle'] = nil
     SgtnClient::CacheUtil.clear_cache
     WebMock.reset!
   end
 
-  after :all do
-    SgtnClient::Config.configurations[SgtnClient::Config.default_environment] = back_config
-  end
-
   describe '#only local source is available' do
     before :each do
-      config['source_bundle'] = back_config['source_bundle']
+      new_config['source_bundle'] = config['source_bundle']
     end
 
     it 'should be able to return En' do
-      result = SgtnClient::Translation.send(:get_cs, component_local_source_only, en_locale)
+      result = loader.get_bundle(component_local_source_only, en_locale)
       expect(result).to_not be_nil
-      expect(result.dig(message_only_in_local_source_key)).to eq 'New Hello world'
+      expect(result[message_only_in_local_source_key]).to eq 'New Hello world'
     end
 
     it "should return nil for #{locale}" do
-      result = SgtnClient::Translation.send(:get_cs, component_local_source_only, locale)
+      result = loader.get_bundle(component_local_source_only, locale)
       expect(result).to be_nil
     end
 
     it "should return nil for #{component_nonexistent}" do
-      result = SgtnClient::Translation.send(:get_cs, component_nonexistent, locale)
+      result = loader.get_bundle(component_nonexistent, locale)
       expect(result).to be_nil
     end
 
     it "should return nil for #{locale_nonexistent}" do
-      result = SgtnClient::Translation.send(:get_cs, component, locale_nonexistent)
+      result = loader.get_bundle(component, locale_nonexistent)
       expect(result).to be_nil
     end
 
     it 'should have only 1 loader' do
-      expect(SgtnClient::Config.loader.loaders.size).to eq(1)
+      expect(loader.loaders.size).to eq(1)
     end
   end
 
   describe '#only local translation is available' do
     before :each do
-      config['translation_bundle'] = back_config['translation_bundle']
+      new_config['translation_bundle'] = config['translation_bundle']
     end
 
     it 'query source locale - English' do
-      result = SgtnClient::Translation.send(:get_cs, component, en_locale)
+      result = loader.get_bundle(component, en_locale)
       expect(result).to_not be_nil
-      expect(result.dig(source_changed_key)).to eq 'old Hello world'
+      expect(result[source_changed_key]).to eq 'old Hello world'
     end
 
     it "should return #{locale}" do
-      result = SgtnClient::Translation.send(:get_cs, component, locale)
+      result = loader.get_bundle(component, locale)
       expect(result).to_not be_nil
-      expect(result.dig(source_changed_key)).to eq '旧 Hello world'
+      expect(result[source_changed_key]).to eq '旧 Hello world'
     end
 
     it "should return nil for #{component_nonexistent}" do
-      result = SgtnClient::Translation.send(:get_cs, component_nonexistent, locale)
+      result = loader.get_bundle(component_nonexistent, locale)
       expect(result).to be_nil
     end
 
     it "should return nil for #{locale_nonexistent}" do
-      result = SgtnClient::Translation.send(:get_cs, component, locale_nonexistent)
+      result = loader.get_bundle(component, locale_nonexistent)
       expect(result).to be_nil
     end
 
     it 'should have only 1 loader' do
-      expect(SgtnClient::Config.loader.loaders.size).to eq(1)
+      expect(loader.loaders.size).to eq(1)
     end
   end
 
   describe '#only Singleton server is available' do
     before :each do
-      config['vip_server'] = back_config['vip_server']
+      new_config['vip_server'] = singleton_server
     end
 
     it "get '#{en_locale}' translation" do
       latest_response = File.new("spec/fixtures/mock_responses/#{component_only_on_server}-latest")
       stubs << stub_request(:get, server_url).with(query: { 'components' => component_only_on_server, 'locales' => 'latest' }).to_return(body: latest_response)
-      result = SgtnClient::Translation.send(:get_cs, component_only_on_server, en_locale)
+      result = loader.get_bundle(component_only_on_server, en_locale)
       expect(result).to_not be_nil
-      expect(result.dig('message_new_added')).to eq 'new message'
+      expect(result['message_new_added']).to eq 'new message'
 
       stubs.each { |stub| expect(stub).to have_been_requested }
     end
@@ -134,9 +106,9 @@ describe 'Mix' do
       stubs << stub_request(:get, server_url).with(query: { 'components' => component_only_on_server, 'locales' => en_locale }).to_return(body: en_response)
       zh_response = File.new("spec/fixtures/mock_responses/#{component_only_on_server}-#{locale}")
       stubs << stub_request(:get, server_url).with(query: { 'components' => component_only_on_server, 'locales' => locale }).to_return(body: zh_response)
-      result = SgtnClient::Translation.send(:get_cs, component_only_on_server, locale)
+      result = loader.get_bundle(component_only_on_server, locale)
       expect(result).to_not be_nil
-      expect(result.dig(message_only_on_server_key)).to eq '仅在服务器上的消息'
+      expect(result[message_only_on_server_key]).to eq '仅在服务器上的消息'
 
       stubs.each { |stub| expect(stub).to have_been_requested }
     end
@@ -144,7 +116,7 @@ describe 'Mix' do
     it "should return nil for #{component_nonexistent}" do
       stubs << stub_request(:get, server_url).with(query: { 'components' => component_nonexistent, 'locales' => locale }).to_return(body: nonexistent_response)
 
-      result = SgtnClient::Translation.send(:get_cs, component_nonexistent, locale)
+      result = loader.get_bundle(component_nonexistent, locale)
 
       expect(result).to be_nil
       stubs.each { |stub| expect(stub).to have_been_requested }
@@ -153,14 +125,14 @@ describe 'Mix' do
     it "should return nil for #{locale_nonexistent}" do
       stubs << stub_request(:get, server_url).with(query: { 'components' => component, 'locales' => locale_nonexistent }).to_return(body: nonexistent_response)
 
-      result = SgtnClient::Translation.send(:get_cs, component, locale_nonexistent)
+      result = loader.get_bundle(component, locale_nonexistent)
 
       expect(result).to be_nil
       stubs.each { |stub| expect(stub).to have_been_requested }
     end
 
     it 'should have only 1 loader' do
-      expect(SgtnClient::Config.loader.loaders.size).to eq(1)
+      expect(loader.loaders.size).to eq(1)
     end
   end
 
@@ -168,22 +140,22 @@ describe 'Mix' do
     server_local_source_key = 'server_local_source_key'
 
     before :each do
-      config['vip_server'] = back_config['vip_server']
-      config['source_bundle'] = back_config['source_bundle']
+      new_config['vip_server'] = singleton_server
+      new_config['source_bundle'] = config['source_bundle']
     end
 
     it 'should be able to get component in local source' do
-      result = SgtnClient::Translation.send(:get_cs, component_local_source_only, en_locale)
+      result = loader.get_bundle(component_local_source_only, en_locale)
 
       expect(result).to_not be_nil
-      expect(result.dig(message_only_in_local_source_key)).to eq 'New Hello world'
+      expect(result[message_only_in_local_source_key]).to eq 'New Hello world'
     end
 
     it 'should return local source for En' do
-      result = SgtnClient::Translation.send(:get_cs, component, en_locale)
+      result = loader.get_bundle(component, en_locale)
 
       expect(result).to_not be_nil
-      expect(result.dig(source_changed_key)).to eq 'Source Hello world'
+      expect(result[source_changed_key]).to eq 'Source Hello world'
     end
 
     it "should be able to get #{locale}" do
@@ -192,15 +164,15 @@ describe 'Mix' do
       en_response = File.new("spec/fixtures/mock_responses/#{component}-#{en_locale}")
       stubs << stub_request(:get, server_url).with(query: { 'components' => component, 'locales' => en_locale }).to_return(body: en_response)
 
-      result = SgtnClient::Translation.send(:get_cs, component, locale)
+      result = loader.get_bundle(component, locale)
 
       expect(result).to_not be_nil
-      expect(result.dig(server_local_source_key)).to eq 'server_local_source - 从服务器来的消息'
+      expect(result[server_local_source_key]).to eq 'server_local_source - 从服务器来的消息'
       stubs.each { |stub| expect(stub).to have_been_requested }
     end
 
     it 'should NOT be able to get a component(on server only) for En because En will only use local source' do
-      result = SgtnClient::Translation.send(:get_cs, component_only_on_server, en_locale)
+      result = loader.get_bundle(component_only_on_server, en_locale)
       expect(result).to be_nil
     end
 
@@ -208,7 +180,7 @@ describe 'Mix' do
       stubs << stub_request(:get, server_url).with(query: { 'components' => component_nonexistent, 'locales' => en_locale }).to_return(body: nonexistent_response)
       stubs << stub_request(:get, server_url).with(query: { 'components' => component_nonexistent, 'locales' => locale }).to_return(body: nonexistent_response)
 
-      result = SgtnClient::Translation.send(:get_cs, component_nonexistent, locale)
+      result = loader.get_bundle(component_nonexistent, locale)
 
       expect(result).to be_nil
       stubs.each { |stub| expect(stub).to have_been_requested }
@@ -218,14 +190,14 @@ describe 'Mix' do
       stubs << stub_request(:get, server_url).with(query: { 'components' => component, 'locales' => en_locale }).to_return(body: nonexistent_response)
       stubs << stub_request(:get, server_url).with(query: { 'components' => component, 'locales' => locale_nonexistent }).to_return(body: nonexistent_response)
 
-      result = SgtnClient::Translation.send(:get_cs, component, locale_nonexistent)
+      result = loader.get_bundle(component, locale_nonexistent)
 
       expect(result).to be_nil
       stubs.each { |stub| expect(stub).to have_been_requested }
     end
 
     it 'should have 2 loaders' do
-      expect(SgtnClient::Config.loader.loaders.size).to eq(2)
+      expect(loader.loaders.size).to eq(2)
     end
   end
 
@@ -233,18 +205,18 @@ describe 'Mix' do
     server_local_translation_key = 'server_local_translation_key'
 
     before :each do
-      config['vip_server'] = back_config['vip_server']
-      config['translation_bundle'] = back_config['translation_bundle']
+      new_config['vip_server'] = singleton_server
+      new_config['translation_bundle'] = config['translation_bundle']
     end
 
     it 'should be able to get En' do
       en_response = File.new("spec/fixtures/mock_responses/#{component}-#{en_locale}")
       stubs << stub_request(:get, server_url).with(query: { 'components' => component, 'locales' => en_locale }).to_return(body: en_response)
 
-      result = SgtnClient::Translation.send(:get_cs, component, en_locale)
+      result = loader.get_bundle(component, en_locale)
 
       expect(result).to_not be_nil
-      expect(result.dig(server_local_translation_key)).to eq 'Message from server'
+      expect(result[server_local_translation_key]).to eq 'Message from server'
       stubs.each { |stub| expect(stub).to have_been_requested }
     end
 
@@ -252,10 +224,10 @@ describe 'Mix' do
       zh_response = File.new("spec/fixtures/mock_responses/#{component}-#{locale}")
       stubs << stub_request(:get, server_url).with(query: { 'components' => component, 'locales' => locale }).to_return(body: zh_response)
 
-      result = SgtnClient::Translation.send(:get_cs, component, locale)
+      result = loader.get_bundle(component, locale)
 
       expect(result).to_not be_nil
-      expect(result.dig(server_local_translation_key)).to eq '从服务器来的消息'
+      expect(result[server_local_translation_key]).to eq '从服务器来的消息'
       stubs.each { |stub| expect(stub).to have_been_requested }
     end
 
@@ -263,10 +235,10 @@ describe 'Mix' do
       en_response = File.new("spec/fixtures/mock_responses/#{component_local_translation_only}-#{en_locale}")
       stubs << stub_request(:get, server_url).with(query: { 'components' => component_local_translation_only, 'locales' => en_locale }).to_return(body: en_response)
 
-      result = SgtnClient::Translation.send(:get_cs, component_local_translation_only, en_locale)
+      result = loader.get_bundle(component_local_translation_only, en_locale)
 
       expect(result).to_not be_nil
-      expect(result.dig(message_only_in_local_translation_key)).to eq 'local only message'
+      expect(result[message_only_in_local_translation_key]).to eq 'local only message'
       stubs.each { |stub| expect(stub).to have_been_requested }
     end
 
@@ -274,17 +246,17 @@ describe 'Mix' do
       response = File.new("spec/fixtures/mock_responses/#{component_local_translation_only}-#{locale}")
       stubs << stub_request(:get, server_url).with(query: { 'components' => component_local_translation_only, 'locales' => locale }).to_return(body: response)
 
-      result = SgtnClient::Translation.send(:get_cs, component_local_translation_only, locale)
+      result = loader.get_bundle(component_local_translation_only, locale)
 
       expect(result).to_not be_nil
-      expect(result.dig(message_only_in_local_translation_key)).to eq '仅在本地的消息'
+      expect(result[message_only_in_local_translation_key]).to eq '仅在本地的消息'
       stubs.each { |stub| expect(stub).to have_been_requested }
     end
 
     it "should return nil for #{component_nonexistent}" do
       stubs << stub_request(:get, server_url).with(query: { 'components' => component_nonexistent, 'locales' => locale }).to_return(body: nonexistent_response)
 
-      result = SgtnClient::Translation.send(:get_cs, component_nonexistent, locale)
+      result = loader.get_bundle(component_nonexistent, locale)
 
       expect(result).to be_nil
       stubs.each { |stub| expect(stub).to have_been_requested }
@@ -293,53 +265,53 @@ describe 'Mix' do
     it "should return nil for #{locale_nonexistent}" do
       stubs << stub_request(:get, server_url).with(query: { 'components' => component, 'locales' => locale_nonexistent }).to_return(body: nonexistent_response)
 
-      result = SgtnClient::Translation.send(:get_cs, component, locale_nonexistent)
+      result = loader.get_bundle(component, locale_nonexistent)
 
       expect(result).to be_nil
       stubs.each { |stub| expect(stub).to have_been_requested }
     end
 
     it 'should have 2 loaders' do
-      expect(SgtnClient::Config.loader.loaders.size).to eq(2)
+      expect(loader.loaders.size).to eq(2)
     end
   end
 
   describe '#both local translation and local source are available' do
     before :each do
-      config['translation_bundle'] = back_config['translation_bundle']
-      config['source_bundle'] = back_config['source_bundle']
+      new_config['translation_bundle'] = config['translation_bundle']
+      new_config['source_bundle'] = config['source_bundle']
     end
 
     it 'En should use local source bundle' do
-      result = SgtnClient::Translation.send(:get_cs, component, en_locale)
+      result = loader.get_bundle(component, en_locale)
       expect(result).to_not be_nil
-      expect(result.dig(source_changed_key)).to eq 'Source Hello world'
+      expect(result[source_changed_key]).to eq 'Source Hello world'
     end
 
     it "#{locale} should use local translation bundle" do
-      result = SgtnClient::Translation.send(:get_cs, component, locale)
+      result = loader.get_bundle(component, locale)
       expect(result).to_not be_nil
-      expect(result.dig(key)).to eq '你好世界'
+      expect(result[key]).to eq '你好世界'
     end
 
     it "#{locale} should use local source bundle if source is changed" do
-      result = SgtnClient::Translation.send(:get_cs, component, locale)
+      result = loader.get_bundle(component, locale)
       expect(result).to_not be_nil
-      expect(result.dig(source_changed_key)).to eq 'Source Hello world'
+      expect(result[source_changed_key]).to eq 'Source Hello world'
     end
 
     it "should return nil for #{component_nonexistent}" do
-      result = SgtnClient::Translation.send(:get_cs, component_nonexistent, locale)
+      result = loader.get_bundle(component_nonexistent, locale)
       expect(result).to be_nil
     end
 
     it "should return nil for #{locale_nonexistent}" do
-      result = SgtnClient::Translation.send(:get_cs, component, locale_nonexistent)
+      result = loader.get_bundle(component, locale_nonexistent)
       expect(result).to be_nil
     end
 
     it 'should have 2 loaders' do
-      expect(SgtnClient::Config.loader.loaders.size).to eq(2)
+      expect(loader.loaders.size).to eq(2)
     end
   end
 
@@ -347,15 +319,15 @@ describe 'Mix' do
     server_local_translation_source_key = 'server_local_translation_source_key'
 
     before :each do
-      config['vip_server'] = back_config['vip_server']
-      config['source_bundle'] = back_config['source_bundle']
-      config['translation_bundle'] = back_config['translation_bundle']
+      new_config['vip_server'] = singleton_server
+      new_config['source_bundle'] = config['source_bundle']
+      new_config['translation_bundle'] = config['translation_bundle']
     end
 
     it 'En should use local source bundle' do
-      result = SgtnClient::Translation.send(:get_cs, component, en_locale)
+      result = loader.get_bundle(component, en_locale)
       expect(result).to_not be_nil
-      expect(result.dig(source_changed_key)).to eq 'Source Hello world'
+      expect(result[source_changed_key]).to eq 'Source Hello world'
     end
 
     it "#{locale} should use translation from server" do
@@ -364,36 +336,34 @@ describe 'Mix' do
       zh_response = File.new("spec/fixtures/mock_responses/#{component}-#{locale}")
       stubs << stub_request(:get, server_url).with(query: { 'components' => component, 'locales' => locale }).to_return(body: zh_response)
 
-      result = SgtnClient::Translation.send(:get_cs, component, locale)
+      result = loader.get_bundle(component, locale)
 
       expect(result).to_not be_nil
-      expect(result.dig(server_local_translation_source_key)).to eq '从服务器来的消息 server-local-translation-source'
+      expect(result[server_local_translation_source_key]).to eq '从服务器来的消息 server-local-translation-source'
       stubs.each { |stub| expect(stub).to have_been_requested }
     end
 
     it "should be able to fallback to local translation for #{locale}" do
-      stubs = []
-
       en_response = File.new("spec/fixtures/mock_responses/#{component_local_translation_only}-#{en_locale}")
       stubs << stub_request(:get, server_url).with(query: { 'components' => component_local_translation_only, 'locales' => en_locale }).to_return(body: en_response)
       response = File.new("spec/fixtures/mock_responses/#{component_local_translation_only}-#{locale}")
       stubs << stub_request(:get, server_url).with(query: { 'components' => component_local_translation_only, 'locales' => locale }).to_return(body: response)
 
-      result = SgtnClient::Translation.send(:get_cs, component_local_translation_only, locale)
+      result = loader.get_bundle(component_local_translation_only, locale)
 
       expect(result).to_not be_nil
-      expect(result.dig(message_only_in_local_translation_key)).to eq '仅在本地的消息'
+      expect(result[message_only_in_local_translation_key]).to eq '仅在本地的消息'
       stubs.each { |stub| expect(stub).to have_been_requested }
     end
 
     it 'should have 3 loaders' do
-      expect(SgtnClient::Config.loader.loaders.size).to eq(3)
+      expect(loader.loaders.size).to eq(3)
     end
   end
 
   describe '#verify configuration' do
     it 'source configuration item is nil' do
-      expect { SgtnClient::Translation.send(:get_cs, '', '') }.to raise_error
+      expect { loader.get_bundle('', '') }.to raise_error(SgtnClient::SingletonError)
     end
   end
 end

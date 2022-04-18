@@ -3,29 +3,46 @@
 
 require 'multi_json'
 
-class SgtnClient::TranslationLoader::LocalTranslation
-  BUNDLE_PREFIX = 'messages_'.freeze
-  BUNDLE_SUFFIX = '.json'.freeze
-
-  def initialize
-    env = SgtnClient::Config.default_environment
-    @config = SgtnClient::Config.configurations[env]
-
-    #  @config['translation_bundle'] isn't defined, throw error
-    @base_path = Pathname.new(@config['translation_bundle']) + @config['product_name'] + @config['version']
+module SgtnClient
+  module Common
+    autoload :BundleID, 'sgtn-client/common/data'
   end
 
-  def load_bundle(component, locale)
-    return if locale == SgtnClient::LocaleUtil::REAL_SOURCE_LOCALE # only return when NOT querying source
+  module TranslationLoader
+    autoload :CONSTS, 'sgtn-client/loader/consts'
 
-    file_name = BUNDLE_PREFIX + locale + BUNDLE_SUFFIX
-    file_path = @base_path + component + file_name
+    class LocalTranslation
+      BUNDLE_PREFIX = 'messages_'.freeze
+      BUNDLE_SUFFIX = '.json'.freeze
 
-    json_data = JSON.parse(File.read(file_path))
-    messages = json_data['messages']
+      def initialize(config)
+        @base_path = Pathname.new(config['translation_bundle']) + config['product_name'] + config['version']
+      end
 
-    raise SingletonError, 'no messages in bundle.' unless messages
+      def load_bundle(component, locale)
+        return if locale == CONSTS::REAL_SOURCE_LOCALE # only return when NOT querying source
 
-    messages
+        file_name = BUNDLE_PREFIX + locale + BUNDLE_SUFFIX
+        file_path = @base_path + component + file_name
+
+        json_data = JSON.parse(File.read(file_path))
+        messages = json_data['messages']
+
+        raise SingletonError, 'no messages in bundle.' unless messages
+
+        messages
+      end
+
+      def available_bundles
+        SgtnClient.logger.debug "[#{method(__callee__).owner}.#{__callee__}]"
+
+        @available_bundles ||= begin
+          @base_path.glob('*/*.json').reduce(Set.new) do |bundles, f|
+            locale = f.basename.to_s.sub(/\A#{BUNDLE_PREFIX}/i, '').sub(/#{BUNDLE_SUFFIX}\z/i, '')
+            bundles.add Common::BundleID.new(f.parent.basename.to_s, locale)
+          end
+        end
+      end
+    end
   end
 end

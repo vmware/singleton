@@ -8,13 +8,11 @@ module SgtnClient
 
   class CacheUtil
     def self.get_cache(cache_key)
-      SgtnClient.logger.debug "[CacheUtil]get cache with key #{cache_key}"
       SgtnClient::Core::Cache.get(cache_key)
     end
 
     def self.clear_cache
       SgtnClient::Core::Cache.clear
-      SgtnClient.logger.debug '[CacheUtil]clear cache'
     end
 
     def self.write_cache(cache_key, items)
@@ -24,7 +22,6 @@ module SgtnClient
       cache_expiry_period = SgtnClient::Config.configurations[env]['cache_expiry_period']
       # expired after 24 hours
       cache_expiry_period = 24 * 60 if cache_expiry_period.nil?
-      SgtnClient.logger.debug "[CacheUtil]write cache with key #{cache_key}, cache_expiry_period #{cache_expiry_period}"
       SgtnClient::Core::Cache.put(cache_key, items, cache_expiry_period)
     end
 
