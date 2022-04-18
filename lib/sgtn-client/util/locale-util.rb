@@ -50,7 +50,7 @@ module SgtnClient
     end
 
     def self.get_fallback_locale
-      get_default_locale || get_source_locale || 'en'
+      @fallback_locale ||= get_default_locale || get_source_locale || 'en'
     end
 
     def self.cache_to_real_map

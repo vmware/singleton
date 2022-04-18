@@ -2,11 +2,13 @@
 # SPDX-License-Identifier: EPL-2.0
 
 require 'request_store'
+require 'sgtn-client/util/locale-util'
+require 'sgtn-client/util/string-util'
+require 'sgtn-client/exceptions'
+require 'sgtn-client/core/config'
+
 module SgtnClient # :nodoc:
-  autoload :LocaleUtils, 'sgtn-client/locale-util'
-  autoload :StringUtils, 'sgtn-client/string-util'
-  autoload :SingletonError, 'sgtn-client/exceptions'
-  autoload :Config, 'sgtn-client/core/config'
+  autoload :TranslationLoader, 'sgtn-client/loader'
 
   module Common # :nodoc:
     autoload :BundleID, 'sgtn-client/common/data'
@@ -15,8 +17,13 @@ end
 
 module Singleton # :nodoc:
   module Base # :nodoc:
-    def translate(key, component, locale: nil, **kwargs)
-      translate!(key, component, locale: locale, **kwargs)
+    # Gets configuration object.
+    def load_config(config_file = "./config/singleton.yml")
+      SgtnClient.load(config_file, SgtnClient::Config.default_environment)
+    end
+
+    def translate(key, component: component, locale: nil, **kwargs)
+      translate!(key, component: component, locale: locale, **kwargs)
     rescue StandardError => e
       SgtnClient.logger.error "couldn't translate #{key}, #{component}, #{locale}. error: #{e}"
       block_given? ? yield : key
@@ -24,7 +31,7 @@ module Singleton # :nodoc:
     alias t translate
 
     # raise error when translation is not found
-    def translate!(key, component, locale: nil, **kwargs)
+    def translate!(key, component: component, locale: nil, **kwargs)
       SgtnClient.logger.debug "[#{method(__callee__).owner}.#{__callee__}] key: #{key}, component: #{component}, locale: #{locale}, args: #{kwargs}"
 
       locale = locale.nil? ? self.locale : LocaleUtil.get_best_locale(locale)
@@ -41,14 +48,14 @@ module Singleton # :nodoc:
     end
     alias t! translate!
 
-    def get_translations(component, locale = nil)
+    def get_translations(component: component, locale: nil)
       get_translations(component, locale)
     rescue StandardError => e
       SgtnClient.logger.error "couldn't get translations for component: #{component}, locale: #{locale}. error: #{e}"
       { 'component' => component, 'locale' => locale, 'messages' => {} }
     end
 
-    def get_translations!(component, locale = nil)
+    def get_translations!(component: component, locale: nil)
       SgtnClient.logger.debug "[#{method(__callee__).owner}.#{__callee__}] component: #{component}, locale: #{locale}"
 
       locale = locale.nil? ? self.locale : LocaleUtil.get_best_locale(locale)
@@ -83,8 +90,8 @@ module Singleton # :nodoc:
 
     def get_bundle(component, locale)
       id = Common::BundleID.new(component, locale)
-      available_bundles = Config.available_bundles
-      unless available_bundles.nil? || available_bundles.empty? || available_bundles.include?(id)
+      bundles = Config.available_bundles
+      unless bundles.nil? || bundles.empty? || bundles.include?(id)
         raise SingletonError "bundle is unavailable. #{id}"
       end
 

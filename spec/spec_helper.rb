@@ -12,6 +12,7 @@ end
 
 Bundler.require :default, :test
 
+require 'singleton-client'
 require 'singleton-ruby'
 require 'sgtn-client/api/source'
 
