@@ -27,7 +27,7 @@ module SgtnClient
 
     def self.get_best_match(locale)
       locale = MAP_LOCALES[locale] || locale
-      return locale if SUPPORTED_LOCALES.include?(locale)
+      return locale if Config.available_locales.include?(locale)
 
       index = locale.rindex('-')
       return get_fallback_locale if index.nil?

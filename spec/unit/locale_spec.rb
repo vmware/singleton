@@ -8,7 +8,6 @@ describe SgtnClient do
 
     before :each do
       SgtnClient.load("./config/sgtnclients.yml", 'test')
-      SgtnClient::Source.loadBundles("default")
     end
 
     it "get_best_locale_exact_match" do

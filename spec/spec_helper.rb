@@ -28,7 +28,7 @@ include SgtnClient
 include SgtnClient::Logging
 include SgtnClient::Exceptions
 
-SgtnClient.load("./spec/config/sgtnclient.yml", "test", './sgtnclient_d.log')
+Singleton.load_config("./spec/config/sgtnclient.yml", "test")
 log_file = File.open('./unit_test.log', "a")
 SgtnClient.logger = Logger.new MultiIO.new(STDOUT, log_file)
 
