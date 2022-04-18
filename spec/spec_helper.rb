@@ -24,10 +24,6 @@ RSpec.configure do |c|
   c.extend  Helpers, :extend_helpers
 end
 
-include SgtnClient
-include SgtnClient::Logging
-include SgtnClient::Exceptions
-
 Singleton.load_config("./spec/config/sgtnclient.yml", "test")
 log_file = File.open('./unit_test.log', "a")
 SgtnClient.logger = Logger.new MultiIO.new(STDOUT, log_file)

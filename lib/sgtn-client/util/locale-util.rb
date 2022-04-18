@@ -17,8 +17,7 @@ module SgtnClient
       locale = locale.to_s
       return get_fallback_locale if locale.empty?
 
-      locale.gsub!('_', '-')
-      get_best_match(locale)
+      get_best_match(locale.gsub('_', '-'))
     end
 
     def self.is_source_locale(locale = nil)

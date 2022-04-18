@@ -6,10 +6,12 @@
 require 'active_support'
 
 module Helpers
-  mattr_accessor :singleton_server, :server_url, :component, :locale, :en_locale, :source_locale, :components_url, :locales_url,
-                 :component_only_on_server, :component_local_source_only, :component_local_translation_only, :component_nonexistent,
-                 :locale_nonexistent, :message_only_on_server_key, :message_only_in_local_source_key,
-                 :message_only_in_local_translation_key, :source_changed_key, :key
+  mattr_accessor :singleton_server, :server_url, :component, :locale, :en_locale, :source_locale, :components_url,
+                 :locales_url, :component_only_on_server, :component_local_source_only, :component_local_translation_only,
+                 :component_nonexistent, :locale_nonexistent, :message_only_on_server_key, :message_only_in_local_source_key,
+                 :message_only_in_local_translation_key, :source_changed_key, :key, :key_nonexistent, :value, :defaut_value,
+                 :en_value
+
   def config
     @@config ||= SgtnClient::Config.configurations[SgtnClient::Config.default_environment]
   end
@@ -45,6 +47,11 @@ module Helpers
   self.message_only_in_local_translation_key = 'local_only_key'
   self.source_changed_key = 'old_helloworld'
   self.key = 'helloworld'
+  self.key_nonexistent = 'nonexistent_key'
+
+  self.value = '你好世界'
+  self.en_value = 'Hello world'
+  self.defaut_value = 'defaut value'
 
   def components_stub
     stub_request(:get, components_url).to_return(body: File.new('spec/fixtures/mock_responses/componentlist'))
