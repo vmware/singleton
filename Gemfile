@@ -18,4 +18,5 @@ group :test do
   gem 'pry-byebug', require: true
   gem 'pry-inline', require: true
   gem 'pry-doc'
+  gem 'activesupport'
 end
