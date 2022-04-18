@@ -16,7 +16,7 @@ module SgtnClient
       BUNDLE_SUFFIX = '.json'.freeze
 
       def initialize(config)
-        @base_path = Pathname.new(config['translation_bundle']) + config['product_name'] + config['version']
+        @base_path = Pathname.new(config['translation_bundle']) + config['product_name'] + config['version'].to_s
       end
 
       def load_bundle(component, locale)
