@@ -1,7 +1,6 @@
 # Copyright 2022 VMware, Inc.
 # SPDX-License-Identifier: EPL-2.0
 
-require 'request_store'
 require 'sgtn-client/api/translation'
 
 module Singleton # :nodoc:

@@ -135,6 +135,31 @@ describe Singleton, :include_helpers, :extend_helpers do
     end
   end
 
-  describe '#set locale' do
+  describe '#set locale and get translation' do
+    it "should be able to set #{en_locale}" do
+      Singleton.locale = en_locale
+      expect(Singleton.locale ).to eq en_locale
+      expect(Singleton.translate(key, component)).to eq en_value
+    end
+    it "should be able to set #{locale}" do
+      Singleton.locale = locale
+      expect(Singleton.locale ).to eq locale
+      expect(Singleton.translate(key, component)).to eq value
+    end
+    it 'should be able to set locale with nil' do
+      Singleton.locale = nil
+      expect(Singleton.locale).to eq en_locale
+      expect(Singleton.translate(key, component)).to eq en_value
+    end
+    it 'should be able to set locale with empty string' do
+      Singleton.locale = ''
+      expect(Singleton.locale).to eq en_locale
+      expect(Singleton.translate(key, component)).to eq en_value
+    end
+    it 'should be able to set locale with invalid locale' do
+      Singleton.locale = 'invalid'
+      expect(Singleton.locale).to eq 'en'
+      expect(Singleton.translate(key, component)).to eq en_value
+    end
   end
 end

@@ -18,7 +18,7 @@ module Helpers
       'mode' => 'sandbox',
       'product_name' => product_name,
       'version' => version,
-      'vip_server' => singleton_server,
+      # 'vip_server' => singleton_server,
       'translation_bundle' => './spec/fixtures/bundles',
       'source_bundle' => './spec/fixtures/sources',
       'cache_expiry_period' => 10,
@@ -64,7 +64,6 @@ module Helpers
   self.value = '你好世界'
   self.en_value = 'Hello world'
   self.defaut_value = 'defaut value'
-  # self.formatting_value =
 
   def components_stub
     stub_request(:get, components_url).to_return(body: File.new('spec/fixtures/mock_responses/componentlist'))
