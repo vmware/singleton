@@ -4,11 +4,6 @@ require 'set'
 
 module SgtnClient
   class LocaleUtil
-    OLD_SOURCE_LOCALE = 'old_source_locale'.freeze
-    REAL_SOURCE_LOCALE = 'latest'.freeze
-
-    SUPPORTED_LOCALES = %w[en de es fr ko ja zh-Hans zh-Hant zh de-CH].freeze # TODO: get this from service in online mode
-
     MAP_LOCALES = {
       'zh-CN' => 'zh-Hans',
       'zh-TW' => 'zh-Hant',

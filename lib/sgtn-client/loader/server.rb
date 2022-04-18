@@ -6,9 +6,7 @@
 require 'faraday'
 require 'faraday_middleware'
 
-module SgtnClient::Core
-  autoload :Request, 'sgtn-client/core/request'
-end
+require 'sgtn-client/common/data'
 
 class SgtnClient::TranslationLoader::SgtnServer
   PPRODUCT_ROOT = '/i18n/api/v2/translation/products/%s/versions/%s'
@@ -22,14 +20,11 @@ class SgtnClient::TranslationLoader::SgtnServer
 
   REQUEST_ARGUMENTS = { timeout: 10 }.freeze
 
-  def initialize
-    env = SgtnClient::Config.default_environment
-    @config = SgtnClient::Config.configurations[env]
+  def initialize(config)
+    @server_url = config['vip_server']
 
-    @server_url = @config['vip_server']
-
-    product_name = @config['product_name']
-    version = @config['version']
+    product_name = config['product_name']
+    version = config['version']
 
     # TODO: none is defined, throw error
 
@@ -46,13 +41,32 @@ class SgtnClient::TranslationLoader::SgtnServer
       ['bundles', 0, 'messages'],
       { locales: locale, components: component }
     )
-     messages
+    messages
+  end
+
+  def available_bundles
+    bundles = Set.new
+    components_thread = Thread.new { available_components }
+    available_locales.each do |locale|
+      components_thread.value.each do |component|
+        bundles << Common::BundleID.new(component, locale)
+      end
+    end
+    bundles
   end
 
   private
 
+  def available_locales
+    query_server(@locales_url, ['locales'])
+  end
+
+  def available_components
+    query_server(@components_url, ['components'])
+  end
+
   def query_server(url, path_to_data = [], queries = nil, headers = nil)
-    conn = Faraday.new(@server_url, request: self.class::REQUEST_ARGUMENTS) do |f|
+    conn = Faraday.new(@server_url, request: REQUEST_ARGUMENTS) do |f|
       f.response :json # decode response bodies as JSON
       f.use :gzip
       f.response :raise_error
@@ -74,10 +88,10 @@ class SgtnClient::TranslationLoader::SgtnServer
   def process_business_error(parsedbody)
     b_code = parsedbody.dig('response', 'code')
     unless b_code >= 200 && b_code < 300 || b_code >= 600 && b_code < 700
-      raise SingletonError, "ERROR_BUSINESS_ERROR #{parsedbody['response']}"
+      raise SingletonError, "#{ERROR_BUSINESS_ERROR} #{parsedbody['response']}"
     end
 
-    Common.logger.warn "ERROR_BUSINESS_ERROR #{parsedbody['response']}" if b_code > 600
+    logger.warn "#{ERROR_BUSINESS_ERROR} #{parsedbody['response']}" if b_code > 600
   rescue TypeError, ArgumentError, NoMethodError => e
     raise SingletonError, "#{ERROR_ILLEGAL_DATA} #{e}. Body is: #{parsedbody}"
   end

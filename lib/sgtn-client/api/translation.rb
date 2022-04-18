@@ -62,6 +62,8 @@ module SgtnClient
     end
 
     def self.get_cs(component, locale)
+      return nil unless SgtnClient::Config.available_bundles.include?(Common::BundleID.new(component, locale))
+
       SgtnClient::Config.loader.get_bundle(component, locale)
     end
 
