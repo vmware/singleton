@@ -48,13 +48,6 @@ module SgtnClient
       @fallback_locale ||= get_default_locale || get_source_locale || 'en'
     end
 
-    def self.cache_to_real_map
-      @cache_to_real_map ||= {
-        get_source_locale => REAL_SOURCE_LOCALE,
-        OLD_SOURCE_LOCALE => get_source_locale
-      }
-    end
-
     private_class_method :get_best_match
   end
 end

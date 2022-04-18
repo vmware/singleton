@@ -168,22 +168,22 @@ module SgtnClient
 
         def available_bundles
           loader.available_bundles
+        rescue StandardError => e
+          SgtnClient.logger.error 'failed to get available bundles'
+          SgtnClient.logger.error e
+          {}
         end
 
         def available_locales
-          available_bundles = loader.available_bundles
-          return {} unless available_bundles
+          bundles = loader.available_bundles
+          return {} unless bundles
 
-          unless available_bundles.respond_to?(:locales)
-            def available_bundles.locales
-              @available_locales ||= begin
-                locales = Set.new
-                each { |id| locales << id.locale }
-                locales
-              end
+          unless bundles.respond_to?(:locales)
+            def bundles.locales
+              @locales ||= reduce(Set.new) { |locales, id| locales << id.locale }
             end
           end
-          available_bundles.locales || {}
+          bundles.locales
         end
 
         private
