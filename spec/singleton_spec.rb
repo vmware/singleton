@@ -2,6 +2,12 @@
 #  SPDX-License-Identifier: EPL-2.0
 
 describe Singleton, :include_helpers, :extend_helpers do
+  include_context 'reset client' do
+    before(:all) do
+      SgtnClient::Config.configurations[SgtnClient::Config.default_environment] = config.dup
+    end
+  end
+
   describe '#translate a key' do
     it 'translate a key' do
       expect(Singleton.translate(key, component, locale: locale)).to eq value
@@ -89,5 +95,46 @@ describe Singleton, :include_helpers, :extend_helpers do
     it 'get translations of a nil locale and nil component with exception enabled' do
       expect { Singleton.get_translations!(nil, locale: locale) }.to raise_error(SgtnClient::SingletonError)
     end
+  end
+
+  describe '#format messages' do
+    it '#format english messages' do
+      expect(Singleton.translate(formatting_key, component, locale: en_locale, error: 'syntax error', correct: 'correct words')).to eq 'syntax error detected, please enter correct words!'
+    end
+    it "#format #{locale} messages" do
+      expect(Singleton.translate(formatting_key, component, locale: locale, error: '语法error', correct: 'correct单词')).to eq '检测到语法error，请输入correct单词!'
+    end
+
+    it '#format messages with insufficient arguments' do
+      expect(Singleton.translate(formatting_key, component, locale: en_locale, error: 'syntax error')) .to eq formatting_key
+    end
+    it '#format messages with empty arguments' do
+      expect(Singleton.translate(formatting_key, component, locale: locale)).to eq '检测到%{error}，请输入%{correct}!'
+    end
+    it '#format messages with additional arguments' do
+      expect(Singleton.translate(formatting_key, component, locale: locale, error: '语法error', correct: 'correct单词', additional: 'additional')).to eq '检测到语法error，请输入correct单词!'
+    end
+  end
+
+  describe '#format messages with exception enabled' do
+    it '#format english messages' do
+      expect(Singleton.translate!(formatting_key, component, locale: en_locale, error: 'syntax error', correct: 'correct words')).to eq 'syntax error detected, please enter correct words!'
+    end
+    it "#format #{locale} messages" do
+      expect(Singleton.translate!(formatting_key, component, locale: locale, error: '语法error', correct: 'correct单词')).to eq '检测到语法error，请输入correct单词!'
+    end
+
+    it '#format messages with insufficient arguments' do
+      expect { Singleton.translate!(formatting_key, component, locale: en_locale, error: 'syntax error') } .to raise_error(KeyError)
+    end
+    it '#format messages with empty arguments' do
+      expect(Singleton.translate!(formatting_key, component, locale: locale)).to  eq '检测到%{error}，请输入%{correct}!'
+    end
+    it '#format messages with additional arguments' do
+      expect(Singleton.translate!(formatting_key, component, locale: locale, error: '语法error', correct: 'correct单词', additional: 'additional')).to eq '检测到语法error，请输入correct单词!'
+    end
+  end
+
+  describe '#set locale' do
   end
 end
