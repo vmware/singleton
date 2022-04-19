@@ -38,6 +38,8 @@ module SgtnClient
       end
 
       def load_bundle(component, locale)
+        SgtnClient.logger.debug "[#{method(__callee__).owner}.#{__callee__}] component=#{component}, locale=#{locale}"
+
         messages = query_server(
           @bundle_url,
           ['bundles', 0, 'messages'],
@@ -72,7 +74,7 @@ module SgtnClient
           f.response :json # decode response bodies as JSON
           f.use :gzip
           f.response :raise_error
-          f.response :logger
+          f.response :logger, SgtnClient.logger, { log_level: :debug }
         end
         resp = conn.get(url, queries, headers)
 

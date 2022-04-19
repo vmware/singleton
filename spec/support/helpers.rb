@@ -67,8 +67,4 @@ module Helpers
   def nonexistent_response
     File.new('spec/fixtures/mock_responses/nonexistent').read
   end
-
-  def stubs
-    []
-  end
 end
