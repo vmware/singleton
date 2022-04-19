@@ -20,7 +20,7 @@ module SgtnClient
       end
 
       def load_bundle(component, locale)
-        return if locale == CONSTS::REAL_SOURCE_LOCALE # only return when NOT querying source
+        return if locale == CONSTS::REAL_SOURCE_LOCALE # return when querying source
 
         file_name = BUNDLE_PREFIX + locale + BUNDLE_SUFFIX
         file_path = @base_path + component + file_name

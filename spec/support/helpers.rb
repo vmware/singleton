@@ -9,7 +9,8 @@ module Helpers
   mattr_accessor :singleton_server, :server_url, :component, :locale, :en_locale, :source_locale, :components_url, :locales_url,
                  :component_only_on_server, :component_local_source_only, :component_local_translation_only, :component_nonexistent,
                  :locale_nonexistent, :message_only_on_server_key, :message_only_in_local_source_key,
-                 :message_only_in_local_translation_key, :source_changed_key, :key
+                 :message_only_in_local_translation_key, :source_changed_key, :key,
+                 :latest_locale
   def config
     @@config ||= SgtnClient::Config.configurations[SgtnClient::Config.default_environment]
   end
@@ -32,6 +33,7 @@ module Helpers
   self.locale = 'zh-Hans'
   self.en_locale = 'en'
   self.source_locale = 'en'
+  self.latest_locale = 'latest'
 
   self.component_only_on_server = 'component_only_on_server'
   self.component_local_source_only = 'NEW'

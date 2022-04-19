@@ -71,7 +71,7 @@ module SgtnClient
 
       SgtnClient::Config.loader.get_bundle(component, locale)
     rescue StandardError => e
-      SgtnClient.logger.error "failed to get a bundle. #{id}"
+      SgtnClient.logger.error "[#{method(__callee__).owner}.#{__callee__}] failed to get a bundle. #{id}"
       SgtnClient.logger.error e
       nil
     end
