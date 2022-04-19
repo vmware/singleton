@@ -173,7 +173,7 @@ module SgtnClient
         def available_bundles
           loader.available_bundles
         rescue StandardError => e
-          SgtnClient.logger.error 'fail to get available_bundles'
+          SgtnClient.logger.error 'failed to get available bundles'
           SgtnClient.logger.error e
           {}
         end
@@ -187,7 +187,7 @@ module SgtnClient
               @locales ||= reduce(Set.new) { |locales, id| locales << id.locale }
             end
           end
-          bundles.locales || {}
+          bundles.locales
         end
 
         private

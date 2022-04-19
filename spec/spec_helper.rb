@@ -19,10 +19,6 @@ RSpec.configure do |c|
   c.extend  Helpers, :extend_helpers
 end
 
-module SgtnClient
-  autoload :CacheUtil, 'sgtn-client/util/cache-util'
-end
-
 SgtnClient.load("./spec/config/sgtnclient.yml", "test", './sgtnclient_d.log')
 log_file = File.open('./unit_test.log', "a")
 SgtnClient.logger = Logger.new MultiIO.new(STDOUT, log_file)
