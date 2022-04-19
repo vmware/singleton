@@ -10,28 +10,34 @@ module SgtnClient
 
     module SourceComparer
       def load_bundle(component, locale)
+        SgtnClient.logger.debug "[#{__FILE__}][#{__callee__}] component=#{component}, locale=#{locale}"
+
         # source locale and old source locale don't need comparison because they are bases of comparison
         real_locale = cache_to_real_map[locale]
         return super(component, real_locale) if real_locale
 
         old_source_bundle_thread = Thread.new { load_bundle(component, CONSTS::OLD_SOURCE_LOCALE) }
-        source_bundle_thread = Thread.new { load_bundle(component, SgtnClient::LocaleUtil.get_source_locale) }
+        source_bundle_thread = Thread.new { load_bundle(component, LocaleUtil.get_source_locale) }
         translation_bundle = super(component, locale)
 
         begin
           old_source_bundle = old_source_bundle_thread.value
           source_bundle = source_bundle_thread.value
-          compare_source(translation_bundle, old_source_bundle, source_bundle)
         rescue StandardError => e
-          SgtnClient.logger.error "failed to get (|old) source bundle. component:#{component}. error: #{e}"
-          translation_bundle
+          SgtnClient.logger.error "[#{__FILE__}][#{__callee__}] failed to load soruce(or old source) bundle. component:#{component}. error: #{e}"
+          return translation_bundle
         end
+
+        compare_source(translation_bundle, old_source_bundle, source_bundle)
       end
 
       private
 
       def compare_source(translation_bundle, old_source_bundle, source_bundle)
-        return translation_bundle if translation_bundle.nil? || source_bundle.nil? || old_source_bundle.nil?
+        if !translation_bundle.is_a?(Hash) || !source_bundle.is_a?(Hash) || !old_source_bundle.is_a?(Hash)
+          SgtnClient.logger.warn "can't do source comparison because some bundle data are wrong."
+          return translation_bundle
+        end
 
         source_bundle.each do |key, value|
           if old_source_bundle[key] != value || translation_bundle[key].nil?
