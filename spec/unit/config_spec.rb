@@ -24,7 +24,6 @@ describe SgtnClient::Config do
 
   describe '#availale bundles/locales - Config', :include_helpers, :extend_helpers do
     subject { SgtnClient::Config }
-    let(:stubs) { [] }
     include_examples 'Available Bundles' do
       before :all do
         SgtnClient::Config.configurations[SgtnClient::Config.default_environment] = @config
