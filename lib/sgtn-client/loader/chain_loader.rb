@@ -19,7 +19,7 @@ module SgtnClient
             return bundle if bundle
           rescue StandardError => e
             exception = e
-            SgtnClient.logger.error "[#{__FILE__}][#{__callee__}] failed on #{loader.class}: #{e}"
+            SgtnClient.logger.error "[#{__FILE__}][#{__callee__}] {component: #{component},locale: #{locale}}, failed on #{loader.class}: #{e}"
           end
         end
 

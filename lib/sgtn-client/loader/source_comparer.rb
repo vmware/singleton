@@ -35,7 +35,7 @@ module SgtnClient
 
       def compare_source(translation_bundle, old_source_bundle, source_bundle)
         if !translation_bundle.is_a?(Hash) || !source_bundle.is_a?(Hash) || !old_source_bundle.is_a?(Hash)
-          SgtnClient.logger.warn "can't do source comparison because some bundle data are wrong."
+          SgtnClient.logger.error "can't do source comparison because some bundle data are wrong."
           return translation_bundle
         end
 
