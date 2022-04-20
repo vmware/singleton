@@ -351,6 +351,4 @@ describe 'Mix', :include_helpers, :extend_helpers do
       expect { loader.get_bundle('', '') }.to raise_error(SgtnClient::SingletonError)
     end
   end
-
-  # TODO: test priority of local source and remote source
 end
