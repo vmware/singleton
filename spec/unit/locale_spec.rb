@@ -8,7 +8,6 @@ describe SgtnClient do
 
     before :each do
       SgtnClient.load("./config/sgtnclients.yml", 'test')
-      SgtnClient::Source.loadBundles("default")
     end
 
     it "get_best_locale_exact_match" do
@@ -37,12 +36,12 @@ describe SgtnClient do
     end
     
     it "get_best_locale_target_locale_is_nil" do
-      expect(SgtnClient::LocaleUtil.get_best_locale(nil)).to eq LocaleUtil.get_default_locale
+      expect(SgtnClient::LocaleUtil.get_best_locale(nil)).to eq SgtnClient::LocaleUtil.get_default_locale
     end
 
     it "get_best_locale_invalid_or_unsupported_target" do
-      expect(SgtnClient::LocaleUtil.get_best_locale('invalid')).to eq LocaleUtil.get_default_locale
-      expect(SgtnClient::LocaleUtil.get_best_locale('fil_PH')).to eq LocaleUtil.get_default_locale
+      expect(SgtnClient::LocaleUtil.get_best_locale('invalid')).to eq SgtnClient::LocaleUtil.get_default_locale
+      expect(SgtnClient::LocaleUtil.get_best_locale('fil_PH')).to eq SgtnClient::LocaleUtil.get_default_locale
     end
 
     it "get_source_locale" do

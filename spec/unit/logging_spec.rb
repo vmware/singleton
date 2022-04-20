@@ -12,14 +12,14 @@ describe SgtnClient::Logging do
     #include Logging
   end
 
-  before :each do
-    #@logger_file = StringIO.new
-    #Logging.logger = Logger.new(@logger_file)
-    #file = File.open('./spec/unit/foo.log', File::WRONLY | File::APPEND)
-    #Logging.logger = Logger.new(file)
-    #SgtnClient.logger = Logger.new(file)
-    SgtnClient.load("./spec/config/sgtnclient.yml", "test", './sgtnclient_d.log')
-  end
+  # before :each do
+  #   @logger_file = StringIO.new
+  #   Logging.logger = Logger.new(@logger_file)
+  #   file = File.open('./spec/unit/foo.log', File::WRONLY | File::APPEND)
+  #   Logging.logger = Logger.new(file)
+  #   SgtnClient.logger = Logger.new(file)
+  #   SgtnClient.load("./spec/config/sgtnclient.yml", "test", './sgtnclient_d.log')
+  # end
 
   it "get logger object" do
     #expect(@test_logging.logger).to be_a Logger
