@@ -12,12 +12,12 @@ module SgtnClient
     }.freeze
 
     def self.get_best_locale(locale)
-      return get_default_locale if locale.nil?
+      return get_fallback_locale if locale.nil?
 
       locale = locale.to_s
-      return get_default_locale if locale.empty?
+      return get_fallback_locale if locale.empty?
 
-      get_best_match(locale)
+      get_best_match(locale.gsub('_', '-'))
     end
 
     def self.is_source_locale(locale = nil)
@@ -25,12 +25,13 @@ module SgtnClient
     end
 
     def self.get_best_match(locale)
-      locale = locale.gsub('_', '-')
-      locale = MAP_LOCALES[locale] if MAP_LOCALES.key?(locale)
+      locale = MAP_LOCALES[locale] || locale
       return locale if Config.available_locales.include?(locale)
-      return get_source_locale if locale.index('-').nil?
 
-      get_best_match(locale.slice(0..(locale.rindex('-') - 1)))
+      index = locale.rindex('-')
+      return get_fallback_locale if index.nil?
+
+      get_best_match(locale[0...index])
     end
 
     def self.get_source_locale
@@ -39,7 +40,11 @@ module SgtnClient
 
     def self.get_default_locale
       env = SgtnClient::Config.default_environment
-      SgtnClient::Config.configurations[env]['default_language'] || 'en'
+      SgtnClient::Config.configurations[env]['default_language']
+    end
+
+    def self.get_fallback_locale
+      @fallback_locale ||= get_default_locale || get_source_locale || 'en'
     end
 
     private_class_method :get_best_match
