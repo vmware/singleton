@@ -13,13 +13,14 @@ module SgtnClient
       @creator = block
     end
 
-    # return new created object(return nil possibly)
+    # return new created object
     def operate(id, *args)
       @lock.synchronize do
         obj = @hash[id]
         @conditions.each do |con|
           return obj unless con.call(id, obj, *args)
         end
+        # TODO: whatif returning nil
         @hash[id] = @creator.call(id, obj, *args)
       end
     end

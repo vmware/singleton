@@ -2,6 +2,7 @@
 # SPDX-License-Identifier: EPL-2.0
 
 module SgtnClient
+  autoload :SingleOperation, 'sgtn-client/common/single_operation'
   autoload :CacheUtil, 'sgtn-client/util/cache-util'
 
   module TranslationLoader
