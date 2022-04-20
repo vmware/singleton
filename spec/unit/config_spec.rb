@@ -25,12 +25,10 @@ describe SgtnClient::Config do
   describe '#availale bundles/locales - Config', :include_helpers, :extend_helpers do
     subject { SgtnClient::Config }
     include_examples 'Available Bundles' do
+      include_context 'reset client'
+
       before :all do
         SgtnClient::Config.configurations[SgtnClient::Config.default_environment] = @config
-      end
-      after :all do
-        SgtnClient::Config.instance_variable_set(:@loader, nil)
-        SgtnClient::Config.configurations[SgtnClient::Config.default_environment] = config.dup
       end
       before do
         SgtnClient::Config.instance_variable_set(:@loader, nil)

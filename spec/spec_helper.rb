@@ -10,21 +10,21 @@ end
 
 Bundler.require :default, :test
 
+require 'singleton-client'
 require 'singleton-ruby'
 require 'webmock/rspec'
-Dir[File.expand_path("../support/**/*.rb", __FILE__)].each {|f| require f }
-
-RSpec.configure do |c|
-  c.include Helpers, :include_helpers
-  c.extend  Helpers, :extend_helpers
-end
-
-SgtnClient.load("./spec/config/sgtnclient.yml", "test", './sgtnclient_d.log')
-log_file = File.open('./unit_test.log', "a")
-SgtnClient.logger = Logger.new MultiIO.new(STDOUT, log_file)
+Dir[File.expand_path('support/**/*.rb', __dir__)].each { |f| require f }
 
 RSpec.configure do |config|
+  config.include Helpers, :include_helpers
+  config.extend  Helpers, :extend_helpers
+
   config.filter_run_excluding integration: true
   config.filter_run_excluding disabled: true
-  config.include SampleData
 end
+
+Singleton.load_config('./spec/config/sgtnclient.yml', 'test')
+log_file = File.open('./unit_test.log', 'a')
+SgtnClient.logger = Logger.new MultiIO.new(STDOUT, log_file)
+
+WebMock.allow_net_connect!
