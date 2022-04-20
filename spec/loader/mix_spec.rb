@@ -165,7 +165,7 @@ describe 'Mix', :include_helpers, :extend_helpers do
       result = loader.get_bundle(component, en_locale)
 
       expect(result).to_not be_nil
-      expect(result[source_changed_key]).to eq 'Source Hello world-local'
+      expect(result[source_changed_key]).to eq 'Source Hello world'
     end
 
     it "should be able to get #{locale}" do
@@ -318,19 +318,19 @@ describe 'Mix', :include_helpers, :extend_helpers do
     it 'En should use local source bundle' do
       result = loader.get_bundle(component, en_locale)
       expect(result).to_not be_nil
-      expect(result[source_changed_key]).to eq 'Source Hello world-local'
+      expect(result[source_changed_key]).to eq 'Source Hello world'
     end
 
     it "#{locale} should use local translation bundle" do
       result = loader.get_bundle(component, locale)
       expect(result).to_not be_nil
-      expect(result[key]).to eq '你好世界-local'
+      expect(result[key]).to eq '你好世界'
     end
 
     it "#{locale} should use local source bundle if source is changed" do
       result = loader.get_bundle(component, locale)
       expect(result).to_not be_nil
-      expect(result[source_changed_key]).to eq 'Source Hello world-local'
+      expect(result[source_changed_key]).to eq 'Source Hello world'
     end
 
     it "should return nil for #{component_nonexistent}" do
@@ -360,7 +360,7 @@ describe 'Mix', :include_helpers, :extend_helpers do
     it 'En should use local source bundle' do
       result = loader.get_bundle(component, en_locale)
       expect(result).to_not be_nil
-      expect(result[source_changed_key]).to eq 'Source Hello world-local'
+      expect(result[source_changed_key]).to eq 'Source Hello world'
     end
 
     it "#{locale} should use translation from server" do
