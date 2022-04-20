@@ -175,7 +175,7 @@ module SgtnClient
         end
 
         def available_locales
-          bundles = loader.available_bundles
+          bundles = available_bundles
           return {} unless bundles
 
           unless bundles.respond_to?(:locales)

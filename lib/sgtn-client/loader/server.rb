@@ -33,10 +33,7 @@ module SgtnClient
       def load_bundle(component, locale)
         SgtnClient.logger.debug "[#{method(__callee__).owner}.#{__callee__}] component=#{component}, locale=#{locale}"
 
-        messages = query_server(
-          format(@bundle_url, locale, component),
-          ['bundles', 0, 'messages']
-        )
+        messages = query_server(format(@bundle_url, locale, component), ['messages'])
         messages
       end
 
