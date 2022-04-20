@@ -2,6 +2,8 @@
 #  SPDX-License-Identifier: EPL-2.0
 
 require 'bundler/setup'
+require_relative '../lib/sgtn-client/sgtn-client.rb'
+require 'logger'
 
 require 'simplecov'
 SimpleCov.start do
@@ -11,8 +13,11 @@ end
 Bundler.require :default, :test
 
 require 'singleton-client'
+require 'singleton-ruby'
+require 'sgtn-client/api/source'
+
 require 'webmock/rspec'
-Dir[File.expand_path('support/**/*.rb', __dir__)].sort.each { |f| require f }
+Dir[File.expand_path('support/**/*.rb', __dir__)].each { |f| require f }
 
 RSpec.configure do |config|
   config.include Helpers, :include_helpers

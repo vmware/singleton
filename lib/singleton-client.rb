@@ -1,7 +1,7 @@
 # Copyright 2022 VMware, Inc.
 # SPDX-License-Identifier: EPL-2.0
 
-require_relative 'singleton-ruby'
+require 'sgtn-client/api/translation'
 
 module Singleton # :nodoc:
   # load configuration from a file
