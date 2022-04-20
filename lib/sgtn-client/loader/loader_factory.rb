@@ -23,7 +23,8 @@ module SgtnClient
 
         chain_loader = Class.new(Chain)
         chain_loader.include SourceComparer if config['source_bundle'] || config['vip_server']
-        chain_loader.include SingleLoader, Cache
+        chain_loader.include SingleLoader
+        chain_loader.include Cache
 
         chain_loader.new(*loaders)
       end
