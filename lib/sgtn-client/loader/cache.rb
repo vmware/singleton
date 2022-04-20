@@ -14,10 +14,10 @@ module SgtnClient
       def get_bundle(component, locale)
         SgtnClient.logger.debug "[#{__FILE__}][#{__callee__}] component=#{component}, locale=#{locale}"
 
-        key = CacheUtil.get_cachekey(component, locale)
-        cache_item = CacheUtil.get_cache(key)
+        key = SgtnClient::CacheUtil.get_cachekey(component, locale)
+        cache_item = SgtnClient::CacheUtil.get_cache(key)
         if cache_item
-          if CacheUtil.is_expired(cache_item) && !SgtnClient::LocaleUtil.is_source_locale(locale)
+          if SgtnClient::CacheUtil.is_expired(cache_item) && !SgtnClient::LocaleUtil.is_source_locale(locale)
             Thread.new do # TODO: Use one thread # refresh in background
               begin
                 load_bundle(component, locale)
@@ -37,22 +37,22 @@ module SgtnClient
       def load_bundle(component, locale)
         SgtnClient.logger.debug "[#{__FILE__}][#{__callee__}] component=#{component}, locale=#{locale}"
 
-        key = CacheUtil.get_cachekey(component, locale)
+        key = SgtnClient::CacheUtil.get_cachekey(component, locale)
         item = super
-        CacheUtil.write_cache(key, item) if item
+        SgtnClient::CacheUtil.write_cache(key, item) if item
         item
       end
 
       def available_bundles
         SgtnClient.logger.debug "[#{__FILE__}][#{__callee__}]"
 
-        cache_item = CacheUtil.get_cache(CONSTS::AVAILABLE_BUNDLES_KEY)
+        cache_item = SgtnClient::CacheUtil.get_cache(CONSTS::AVAILABLE_BUNDLES_KEY)
         if cache_item
-          if CacheUtil.is_expired(cache_item)
+          if SgtnClient::CacheUtil.is_expired(cache_item)
             Thread.new do # TODO: Use one thread
               begin
                 item = super
-                CacheUtil.write_cache(CONSTS::AVAILABLE_BUNDLES_KEY, item) if item
+                SgtnClient::CacheUtil.write_cache(CONSTS::AVAILABLE_BUNDLES_KEY, item) if item
               rescue StandardError => e
                 SgtnClient.logger.error 'an error occured while loading available bundles.'
                 SgtnClient.logger.error e
@@ -63,7 +63,7 @@ module SgtnClient
         end
 
         item = super
-        CacheUtil.write_cache(CONSTS::AVAILABLE_BUNDLES_KEY, item) if item
+        SgtnClient::CacheUtil.write_cache(CONSTS::AVAILABLE_BUNDLES_KEY, item) if item
         item
       end
     end

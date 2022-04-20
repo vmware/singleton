@@ -4,10 +4,10 @@
 module SgtnClient
   module TranslationLoader
     class Chain
-      attr_reader :loaders
+      attr_accessor :loaders
 
       def initialize(*loaders)
-        @loaders = loaders
+        self.loaders = loaders
       end
 
       def load_bundle(component, locale)
