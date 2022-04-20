@@ -39,10 +39,8 @@ module SgtnClient
     end
 
     def self.get_default_locale
-      @default_locale ||= begin
         env = SgtnClient::Config.default_environment
         SgtnClient::Config.configurations[env]['default_language']
-      end
     end
 
     def self.get_fallback_locale

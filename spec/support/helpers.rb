@@ -85,14 +85,6 @@ module Helpers
     File.new('spec/fixtures/mock_responses/nonexistent').read
   end
 
-  def bs_601_response
-    File.new('spec/fixtures/mock_responses/business_error_601').read
-  end
-
-  def bs_701_response
-    File.new('spec/fixtures/mock_responses/business_error_701').read
-  end
-
   def stubs
     []
   end
