@@ -12,7 +12,7 @@ module Helpers
                  :message_only_on_server_key, :message_only_in_local_source_key,
                  :message_only_in_local_translation_key, :source_changed_key, :key, :formatting_key,
                  :key_nonexistent, :value, :defaut_value, :en_value, :product_name, :version,
-                 :latest_locale
+                 :latest_locale, :bundle_url
 
   def config
     {
@@ -39,6 +39,7 @@ module Helpers
   end
 
   self.server_url = File.join(singleton_server, '/i18n/api/v2/translation/products', product_name, 'versions', version)
+  self.bundle_url = "#{server_url}/locales/%s/components/%s"
   self.components_url = File.join(server_url, 'componentlist')
   self.locales_url = File.join(server_url, 'localelist')
 
@@ -76,7 +77,7 @@ module Helpers
   end
 
   def bundle_stub(component, locale, response)
-    stub_request(:get, server_url).with(query: { 'components' => component, 'locales' => locale }).to_return(body: response)
+    stub_request(:get, bundle_url % [locale, component]).to_return(body: response)
   end
 
   def stub_response(file_name)
