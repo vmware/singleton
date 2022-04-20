@@ -409,6 +409,17 @@ describe 'Mix', :include_helpers, :extend_helpers do
       stubs.each { |stub| expect(stub).to have_been_requested }
     end
 
+    it "fallback translation from remote to local when querying #{locale}" do
+      stubs << stub_request(:get, format(bundle_url, en_locale, component)).to_return(body: stub_response("#{component}-#{en_locale}"))
+      stubs << stub_request(:get, format(bundle_url, locale, component)).to_return(body: nonexistent_response)
+
+      result = loader.get_bundle(component, locale)
+
+      expect(result).to_not be_nil
+      expect(result[key]).to eq '你好世界'
+      stubs.each { |stub| expect(stub).to have_been_requested }
+    end
+
     it "should return nil for #{component_nonexistent}" do
       stubs << stub_request(:get, format(bundle_url, latest_locale, component_nonexistent)).to_return(body: nonexistent_response)
       stubs << stub_request(:get, format(bundle_url, en_locale, component_nonexistent)).to_return(body: nonexistent_response)
