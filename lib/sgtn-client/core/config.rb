@@ -171,12 +171,12 @@ module SgtnClient
         rescue StandardError => e
           SgtnClient.logger.error 'failed to get available bundles'
           SgtnClient.logger.error e
-          {}
+          Set.new
         end
 
         def available_locales
           bundles = available_bundles
-          return {} unless bundles || bundles.empty?
+          return Set.new unless bundles || bundles.empty?
 
           unless bundles.respond_to?(:locales)
             def bundles.locales
