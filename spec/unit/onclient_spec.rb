@@ -40,9 +40,6 @@ describe SgtnClient do
     end
 
     it "NewComponent" do
-require 'pry-byebug'
-require 'pry-inline'
-binding.pry
       expect(SgtnClient::Translation.getString("NEW", "new_hello", "zh-Hans")).to eq 'New Hello'
       env = SgtnClient::Config.default_environment
       if SgtnClient::Config.configurations[env]["disable_cache"] == false

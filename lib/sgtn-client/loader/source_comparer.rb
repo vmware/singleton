@@ -14,9 +14,6 @@ module SgtnClient
         real_locale = cache_to_real_map[locale]
         return super(component, real_locale) if real_locale
 
-require 'pry-byebug'
-require 'pry-inline'
-binding.pry
         old_source_bundle_thread = Thread.new { load_bundle(component, CONSTS::OLD_SOURCE_LOCALE) }
         translation_bundle = super(component, locale)
         source_bundle = get_bundle(component, LocaleUtil.get_source_locale) # source is in cache and does not expire.

@@ -74,28 +74,28 @@ describe Singleton, :include_helpers, :extend_helpers do
     end
   end
 
-  describe '#get messages of a bundle with exception enabled' do
-    it 'should be able to get translations of a bundle with exception enabled' do
-      expect(Singleton.get_translations!(component, locale).dig('messages')).to include({ key => value })
-    end
+  # describe '#get messages of a bundle with exception enabled' do
+  #   it 'should be able to get translations of a bundle with exception enabled' do
+  #     expect(Singleton.get_translations!(component, locale).dig('messages')).to include({ key => value })
+  #   end
 
-    it 'get translations of a nonexistent component with exception enabled' do
-      expect { Singleton.get_translations!(component_nonexistent, locale: locale) }.to raise_error(SgtnClient::SingletonError)
-    end
-    it 'get translations of a nil component with exception enabled' do
-      expect { Singleton.get_translations!(nil, locale: locale) }.to raise_error(SgtnClient::SingletonError)
-    end
+  #   it 'get translations of a nonexistent component with exception enabled' do
+  #     expect { Singleton.get_translations!(component_nonexistent, locale: locale) }.to raise_error(SgtnClient::SingletonError)
+  #   end
+  #   it 'get translations of a nil component with exception enabled' do
+  #     expect { Singleton.get_translations!(nil, locale: locale) }.to raise_error(SgtnClient::SingletonError)
+  #   end
 
-    it 'get translations of a nonexistent locale with exception enabled' do
-      expect(Singleton.get_translations!(component,  locale_nonexistent).dig('messages')).to include({ key => en_value })
-    end
-    it 'get translations of a nil locale. should fallback to en' do
-      expect(Singleton.get_translations!(component,  nil).dig('messages')).to include({ key => en_value })
-    end
-    it 'get translations of a nil locale and nil component with exception enabled' do
-      expect { Singleton.get_translations!(nil, locale: locale) }.to raise_error(SgtnClient::SingletonError)
-    end
-  end
+  #   it 'get translations of a nonexistent locale with exception enabled' do
+  #     expect(Singleton.get_translations!(component,  locale_nonexistent).dig('messages')).to include({ key => en_value })
+  #   end
+  #   it 'get translations of a nil locale. should fallback to en' do
+  #     expect(Singleton.get_translations!(component,  nil).dig('messages')).to include({ key => en_value })
+  #   end
+  #   it 'get translations of a nil locale and nil component with exception enabled' do
+  #     expect { Singleton.get_translations!(nil, locale: locale) }.to raise_error(SgtnClient::SingletonError)
+  #   end
+  # end
 
   describe '#format messages' do
     it '#format english messages' do

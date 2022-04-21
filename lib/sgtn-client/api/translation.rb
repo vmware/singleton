@@ -38,8 +38,15 @@ module SgtnClient
 
       # <b>DEPRECATED:</b> Please use <tt>Singleton:get_translations</tt> instead.
       def getStrings(component, locale)
-        warn '[DEPRECATION] `getStrings` is deprecated.  Please use `Singleton:get_translations` instead.'
-        get_translations(component, locale)
+        SgtnClient.logger.debug "[Translation][getStrings]component=#{component}, locale=#{locale}"
+        locale = SgtnClient::LocaleUtil.get_best_locale(locale)
+        items = get_cs(component, locale)
+        if items.nil? && !LocaleUtil.is_source_locale(locale)
+          items = get_cs(component, LocaleUtil.get_source_locale)
+          locale = LocaleUtil.get_source_locale
+        end
+
+        { 'component' => component, 'locale' => locale, 'messages' => items || {} } if items
       end
 
       def translate(key, component, locale: nil, **kwargs, &block)
@@ -66,7 +73,7 @@ module SgtnClient
           if block_given?
             result = yield
           else
-            raise SgtnClient::SingletonError, 'translation is missing' if result.nil?
+            raise SgtnClient::SingletonError, 'translation is missing'
           end
         end
 
@@ -82,18 +89,14 @@ module SgtnClient
       alias t! translate!
 
       def get_translations(component, locale = nil)
-        get_translations!(component, locale)
-      rescue StandardError => e
-        SgtnClient.logger.error "couldn't get translations for component: #{component}, locale: #{locale}. error: #{e}"
-        { 'component' => component, 'locale' => locale, 'messages' => {} }
-      end
-
-      def get_translations!(component, locale = nil)
-        SgtnClient.logger.debug "[#{method(__callee__).owner}.#{__callee__}] component: #{component}, locale: #{locale}"
-
         locale = locale.nil? ? self.locale : SgtnClient::LocaleUtil.get_best_locale(locale)
+        items = get_cs(component, locale)
+        if items.nil? && !LocaleUtil.is_source_locale(locale)
+          items = get_cs(component, LocaleUtil.get_source_locale)
+          locale = LocaleUtil.get_source_locale
+        end
 
-        { 'component' => component, 'locale' => locale, 'messages' => get_bundle(component, locale) || {} }
+        { 'component' => component, 'locale' => locale, 'messages' => items || {} }
       end
 
       def locale
