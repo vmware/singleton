@@ -53,7 +53,6 @@ describe SgtnClient do
     end
 
     it "NonExistingComponent" do
-
       expect(SgtnClient::Translation.getString("NonExisting", "new_hello", "zh-Hans")).to eq nil
       expect(SgtnClient::Translation.getStrings("NonExisting", "zh-Hans")).to eq nil
     end

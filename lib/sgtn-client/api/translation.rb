@@ -49,31 +49,23 @@ module SgtnClient
         { 'component' => component, 'locale' => locale, 'messages' => items || {} } if items
       end
 
-      def translate(key, component, locale: nil, **kwargs, &block)
-        translate!(key, component, locale: locale, **kwargs, &block)
-      rescue StandardError => e
-        SgtnClient.logger.debug "couldn't translate #{key}, #{component}, #{locale}, #{kwargs}. error: #{e}"
-        key
-      end
-      alias t translate
-
       # raise error when translation is not found
-      def translate!(key, component, locale: nil, **kwargs)
+      def translate(key, component, locale: nil, **kwargs)
         SgtnClient.logger.debug "[#{method(__callee__).owner}.#{__callee__}] key: #{key}, component: #{component}, locale: #{locale}, args: #{kwargs}"
 
         locale = locale.nil? ? self.locale : SgtnClient::LocaleUtil.get_best_locale(locale)
 
-        result = getTranslation(component, key, locale)
+        result = get_cs(component, locale)&.fetch(key, nil)
         if result.nil? && !LocaleUtil.is_source_locale(locale)
           locale = LocaleUtil.get_fallback_locale
-          result = getTranslation(component, key, locale)
+          result = get_cs(component, locale)&.fetch(key, nil)
         end
 
         if result.nil?
           if block_given?
             result = yield
           else
-            raise SgtnClient::SingletonError, 'translation is missing'
+            return key
           end
         end
 
@@ -86,7 +78,7 @@ module SgtnClient
           result.localize(locale) % kwargs
         end
       end
-      alias t! translate!
+      alias t translate
 
       def get_translations(component, locale = nil)
         locale = locale.nil? ? self.locale : SgtnClient::LocaleUtil.get_best_locale(locale)
@@ -108,12 +100,6 @@ module SgtnClient
       end
 
       private
-
-      def getTranslation(component, key, locale)
-        locale = SgtnClient::LocaleUtil.get_best_locale(locale)
-        items = get_cs(component, locale)
-        items&.fetch(key, nil)
-      end
 
       def get_cs(component, locale)
         get_bundle(component, locale)

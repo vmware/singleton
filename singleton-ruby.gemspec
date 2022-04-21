@@ -1,7 +1,7 @@
 require File.expand_path('lib/version', __dir__)
 
 Gem::Specification.new do |s|
-  s.name = 'singleton-client'
+  s.name = 'singleton-ruby'
   s.version = VERSION
   s.authors = ['VMware G11n Team']
   s.description = 'Singleton Ruby client'
