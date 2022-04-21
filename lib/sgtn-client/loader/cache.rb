@@ -17,7 +17,7 @@ module SgtnClient
         key = SgtnClient::CacheUtil.get_cachekey(component, locale)
         cache_item = SgtnClient::CacheUtil.get_cache(key)
         if cache_item
-          if SgtnClient::CacheUtil.is_expired(cache_item) && !SgtnClient::LocaleUtil.is_source_locale(locale)
+          if SgtnClient::CacheUtil.is_expired(cache_item)
             Thread.new do # TODO: Use one thread # refresh in background
               begin
                 load_bundle(component, locale)

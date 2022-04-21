@@ -4,10 +4,11 @@
 describe 'Mix', :include_helpers, :extend_helpers do
   new_config = config.dup
   let(:loader) { SgtnClient::TranslationLoader::LoaderFactory.create(new_config) }
+  let(:stubs) { [] }
 
   before :all do
     WebMock.enable!
-    WebMock.disable_net_connect!
+    WebMock.allow_net_connect!
   end
   after :all do
     WebMock.disable!
@@ -29,7 +30,7 @@ describe 'Mix', :include_helpers, :extend_helpers do
     it 'should be able to return En' do
       result = loader.get_bundle(component_local_source_only, en_locale)
       expect(result).to_not be_nil
-      expect(result.dig(message_only_in_local_source_key)).to eq 'New Hello world'
+      expect(result[message_only_in_local_source_key]).to eq 'New Hello world'
     end
 
     it "should return nil for #{locale}" do
@@ -60,13 +61,13 @@ describe 'Mix', :include_helpers, :extend_helpers do
     it 'query source locale - English' do
       result = loader.get_bundle(component, en_locale)
       expect(result).to_not be_nil
-      expect(result.dig(source_changed_key)).to eq 'old Hello world'
+      expect(result[source_changed_key]).to eq 'old Hello world'
     end
 
     it "should return #{locale}" do
       result = loader.get_bundle(component, locale)
       expect(result).to_not be_nil
-      expect(result.dig(source_changed_key)).to eq '旧 Hello world'
+      expect(result[source_changed_key]).to eq '旧 Hello world'
     end
 
     it "should return nil for #{component_nonexistent}" do
@@ -87,39 +88,52 @@ describe 'Mix', :include_helpers, :extend_helpers do
       new_config['vip_server'] = singleton_server
     end
 
-    it "get '#{en_locale}' translation" do
-      en_response = File.new("spec/fixtures/mock_responses/#{component_only_on_server}-#{en_locale}")
-      stubs << stub_request(:get, server_url).with(query: { 'components' => component_only_on_server, 'locales' => en_locale }).to_return(body: en_response)
-      result = loader.get_bundle(component_only_on_server, en_locale)
-      expect(result).to_not be_nil
-      expect(result.dig(message_only_on_server_key)).to eq 'Message only on server'
+    it "get '#{en_locale}' translation - (get #{latest_locale} actually)" do
+      latest_response = File.new("spec/fixtures/mock_responses/#{component_only_on_server}-#{latest_locale}")
+      stubs << stub_request(:get, format(bundle_url, latest_locale, component_only_on_server)).to_return(body: latest_response)
 
+      result = loader.get_bundle(component_only_on_server, en_locale)
+
+      expect(result).to_not be_nil
+      expect(result['message_new_added']).to eq 'new message'
       stubs.each { |stub| expect(stub).to have_been_requested }
     end
 
     it "should be able to get #{locale} translation" do
+      latest_response = File.new("spec/fixtures/mock_responses/#{component_only_on_server}-#{latest_locale}")
+      stubs << stub_request(:get, format(bundle_url, latest_locale, component_only_on_server)).to_return(body: latest_response)
+      en_response = File.new("spec/fixtures/mock_responses/#{component_only_on_server}-#{en_locale}")
+      stubs << stub_request(:get, format(bundle_url, en_locale, component_only_on_server)).to_return(body: en_response)
       zh_response = File.new("spec/fixtures/mock_responses/#{component_only_on_server}-#{locale}")
-      stubs << stub_request(:get, server_url).with(query: { 'components' => component_only_on_server, 'locales' => locale }).to_return(body: zh_response)
+      stubs << stub_request(:get, format(bundle_url, locale, component_only_on_server)).to_return(body: zh_response)
+
       result = loader.get_bundle(component_only_on_server, locale)
+
       expect(result).to_not be_nil
-      expect(result.dig(message_only_on_server_key)).to eq '仅在服务器上的消息'
+      expect(result[message_only_on_server_key]).to eq '仅在服务器上的消息'
 
       stubs.each { |stub| expect(stub).to have_been_requested }
     end
 
     it "should return nil for #{component_nonexistent}" do
-      stubs << stub_request(:get, server_url).with(query: { 'components' => component_nonexistent, 'locales' => locale }).to_return(body: nonexistent_response)
+      stubs << stub_request(:get, format(bundle_url, en_locale, component_nonexistent)).to_return(body: nonexistent_response)
+      stubs << stub_request(:get, format(bundle_url, latest_locale, component_nonexistent)).to_return(body: nonexistent_response)
+      stubs << stub_request(:get, format(bundle_url, locale, component_nonexistent)).to_return(body: nonexistent_response)
 
       expect { loader.get_bundle(component_nonexistent, locale) }.to raise_error(SgtnClient::SingletonError)
 
+      sleep 0.05
       stubs.each { |stub| expect(stub).to have_been_requested }
     end
 
     it "should return nil for #{locale_nonexistent}" do
-      stubs << stub_request(:get, server_url).with(query: { 'components' => component, 'locales' => locale_nonexistent }).to_return(body: nonexistent_response)
+      stubs << stub_request(:get, format(bundle_url, latest_locale, component)).to_return(body: nonexistent_response)
+      stubs << stub_request(:get, format(bundle_url, en_locale, component)).to_return(body: nonexistent_response)
+      stubs << stub_request(:get, format(bundle_url, locale_nonexistent, component)).to_return(body: nonexistent_response)
 
       expect { loader.get_bundle(component, locale_nonexistent) }.to raise_error(SgtnClient::SingletonError)
 
+      sleep 0.05
       stubs.each { |stub| expect(stub).to have_been_requested }
     end
 
@@ -136,52 +150,57 @@ describe 'Mix', :include_helpers, :extend_helpers do
       new_config['source_bundle'] = config['source_bundle']
     end
 
-    it 'should be able to get component in local source' do
+    it 'should be able to get a bundle in local source' do
       result = loader.get_bundle(component_local_source_only, en_locale)
 
       expect(result).to_not be_nil
-      expect(result.dig(message_only_in_local_source_key)).to eq 'New Hello world'
+      expect(result[message_only_in_local_source_key]).to eq 'New Hello world'
     end
 
     it 'should return local source for En' do
       result = loader.get_bundle(component, en_locale)
 
       expect(result).to_not be_nil
-      expect(result.dig(source_changed_key)).to eq 'Source Hello world'
+      expect(result[source_changed_key]).to eq 'Source Hello world'
     end
 
     it "should be able to get #{locale}" do
       zh_response = File.new("spec/fixtures/mock_responses/#{component}-#{locale}")
-      stubs << stub_request(:get, server_url).with(query: { 'components' => component, 'locales' => locale }).to_return(body: zh_response)
+      stubs << stub_request(:get, format(bundle_url, locale, component)).to_return(body: zh_response)
       en_response = File.new("spec/fixtures/mock_responses/#{component}-#{en_locale}")
-      stubs << stub_request(:get, server_url).with(query: { 'components' => component, 'locales' => en_locale }).to_return(body: en_response)
+      stubs << stub_request(:get, format(bundle_url, en_locale, component)).to_return(body: en_response)
 
       result = loader.get_bundle(component, locale)
 
       expect(result).to_not be_nil
-      expect(result.dig(server_local_source_key)).to eq 'server_local_source - 从服务器来的消息'
+      expect(result[server_local_source_key]).to eq 'server_local_source - 从服务器来的消息'
       stubs.each { |stub| expect(stub).to have_been_requested }
     end
 
-    it 'should NOT be able to get a component(on server only) for En because En will only use local source' do
+    it 'fallback to server when a component is unavailable in local source' do
+      stubs << stub_request(:get, format(bundle_url, latest_locale, component_only_on_server)).to_return(body: stub_response("#{component_only_on_server}-#{latest_locale}"))
+
       expect { loader.get_bundle(component_only_on_server, en_locale) }.to raise_error(SgtnClient::SingletonError)
     end
 
     it "should return nil for #{component_nonexistent}" do
-      stubs << stub_request(:get, server_url).with(query: { 'components' => component_nonexistent, 'locales' => en_locale }).to_return(body: nonexistent_response)
-      stubs << stub_request(:get, server_url).with(query: { 'components' => component_nonexistent, 'locales' => locale }).to_return(body: nonexistent_response)
+      stubs << stub_request(:get, format(bundle_url, en_locale, component_nonexistent)).to_return(body: nonexistent_response)
+      stubs << stub_request(:get, format(bundle_url, latest_locale, component_nonexistent)).to_return(body: nonexistent_response)
+      stubs << stub_request(:get, format(bundle_url, locale, component_nonexistent)).to_return(body: nonexistent_response)
 
       expect { loader.get_bundle(component_nonexistent, locale) }.to raise_error(SgtnClient::SingletonError)
 
+      sleep 0.05
       stubs.each { |stub| expect(stub).to have_been_requested }
     end
 
     it "should return nil for #{locale_nonexistent}" do
-      stubs << stub_request(:get, server_url).with(query: { 'components' => component, 'locales' => en_locale }).to_return(body: nonexistent_response)
-      stubs << stub_request(:get, server_url).with(query: { 'components' => component, 'locales' => locale_nonexistent }).to_return(body: nonexistent_response)
+      stubs << stub_request(:get, format(bundle_url, en_locale, component)).to_return(body: nonexistent_response)
+      stubs << stub_request(:get, format(bundle_url, locale_nonexistent, component)).to_return(body: nonexistent_response)
 
       expect { loader.get_bundle(component, locale_nonexistent) }.to raise_error(SgtnClient::SingletonError)
 
+      sleep 0.05
       stubs.each { |stub| expect(stub).to have_been_requested }
     end
 
@@ -199,62 +218,78 @@ describe 'Mix', :include_helpers, :extend_helpers do
     end
 
     it 'should be able to get En' do
-      en_response = File.new("spec/fixtures/mock_responses/#{component}-#{en_locale}")
-      stubs << stub_request(:get, server_url).with(query: { 'components' => component, 'locales' => en_locale }).to_return(body: en_response)
+      stubs << stub_request(:get, format(bundle_url, latest_locale, component)).to_return(body: stub_response("#{component}-#{latest_locale}"))
 
       result = loader.get_bundle(component, en_locale)
 
       expect(result).to_not be_nil
-      expect(result.dig(server_local_translation_key)).to eq 'Message from server'
+      expect(result[server_local_translation_key]).to eq 'Message from server'
       stubs.each { |stub| expect(stub).to have_been_requested }
     end
 
     it "should be able to get #{locale}" do
-      zh_response = File.new("spec/fixtures/mock_responses/#{component}-#{locale}")
-      stubs << stub_request(:get, server_url).with(query: { 'components' => component, 'locales' => locale }).to_return(body: zh_response)
+      stubs << stub_request(:get, format(bundle_url, latest_locale, component)).to_return(body: stub_response("#{component}-#{latest_locale}"))
+      stubs << stub_request(:get, format(bundle_url, en_locale, component)).to_return(body: stub_response("#{component}-#{en_locale}"))
+      stubs << stub_request(:get, format(bundle_url, locale, component)).to_return(body: stub_response("#{component}-#{locale}"))
 
       result = loader.get_bundle(component, locale)
 
       expect(result).to_not be_nil
-      expect(result.dig(server_local_translation_key)).to eq '从服务器来的消息'
+      expect(result[server_local_translation_key]).to eq '从服务器来的消息'
       stubs.each { |stub| expect(stub).to have_been_requested }
     end
 
-    it 'should be able to fallback to local translation for En' do
-      en_response = File.new("spec/fixtures/mock_responses/#{component_local_translation_only}-#{en_locale}")
-      stubs << stub_request(:get, server_url).with(query: { 'components' => component_local_translation_only, 'locales' => en_locale }).to_return(body: en_response)
+    it "fallback En from remote to local when querying #{locale}" do
+      stubs << stub_request(:get, format(bundle_url, latest_locale, component)).to_return(body: stub_response("#{component}-#{latest_locale}"))
+      # stubs << stub_request(:get, format(bundle_url, en_locale, component)).to_return(body: stub_response("#{component}-#{en_locale}"))
+      stubs << stub_request(:get, format(bundle_url, locale, component)).to_return(body: stub_response("#{component}-#{locale}"))
 
-      result = loader.get_bundle(component_local_translation_only, en_locale)
+      result = loader.get_bundle(component, locale)
 
       expect(result).to_not be_nil
-      expect(result.dig(message_only_in_local_translation_key)).to eq 'local only message'
+      expect(result[key]).to eq '你好世界-server'
+      stubs.each { |stub| expect(stub).to have_been_requested }
+    end
+
+    it '#raise exception when querying En and there is no latest_locale bundle on server' do
+      stubs << stub_request(:get, format(bundle_url, latest_locale, component_local_translation_only)).to_return(body: nonexistent_response)
+
+      expect { loader.get_bundle(component_local_translation_only, en_locale) }.to_not raise_error(SgtnClient::SingletonError)
+
       stubs.each { |stub| expect(stub).to have_been_requested }
     end
 
     it "should be able to fallback to local translation for #{locale}" do
-      response = File.new("spec/fixtures/mock_responses/#{component_local_translation_only}-#{locale}")
-      stubs << stub_request(:get, server_url).with(query: { 'components' => component_local_translation_only, 'locales' => locale }).to_return(body: response)
+      stubs << stub_request(:get, format(bundle_url, latest_locale, component_local_translation_only)).to_return(body: nonexistent_response)
+      stubs << stub_request(:get, format(bundle_url, en_locale, component_local_translation_only)).to_return(body: nonexistent_response)
+      stubs << stub_request(:get, format(bundle_url, locale, component_local_translation_only)).to_return(body: nonexistent_response)
 
       result = loader.get_bundle(component_local_translation_only, locale)
 
       expect(result).to_not be_nil
-      expect(result.dig(message_only_in_local_translation_key)).to eq '仅在本地的消息'
+      expect(result[message_only_in_local_translation_key]).to eq '仅在本地的消息'
       stubs.each { |stub| expect(stub).to have_been_requested }
     end
 
     it "should return nil for #{component_nonexistent}" do
-      stubs << stub_request(:get, server_url).with(query: { 'components' => component_nonexistent, 'locales' => locale }).to_return(body: nonexistent_response)
+      stubs << stub_request(:get, format(bundle_url, latest_locale, component_nonexistent)).to_return(body: nonexistent_response)
+      stubs << stub_request(:get, format(bundle_url, en_locale, component_nonexistent)).to_return(body: nonexistent_response)
+      stubs << stub_request(:get, format(bundle_url, locale, component_nonexistent)).to_return(body: nonexistent_response)
 
       expect { loader.get_bundle(component_nonexistent, locale) }.to raise_error(Errno::ENOENT)
 
+      sleep 0.05
       stubs.each { |stub| expect(stub).to have_been_requested }
     end
 
     it "should return nil for #{locale_nonexistent}" do
-      stubs << stub_request(:get, server_url).with(query: { 'components' => component, 'locales' => locale_nonexistent }).to_return(body: nonexistent_response)
+      stubs << stub_request(:get, format(bundle_url, latest_locale, component)).to_return(body: nonexistent_response)
+      stubs << stub_request(:get, format(bundle_url, en_locale, component)).to_return(body: nonexistent_response)
+      stubs << stub_request(:get, format(bundle_url, locale_nonexistent, component)).to_return(body: nonexistent_response)
 
       expect { loader.get_bundle(component, locale_nonexistent) }.to raise_error(Errno::ENOENT)
 
+      sleep 0.05
       stubs.each { |stub| expect(stub).to have_been_requested }
     end
 
@@ -272,19 +307,19 @@ describe 'Mix', :include_helpers, :extend_helpers do
     it 'En should use local source bundle' do
       result = loader.get_bundle(component, en_locale)
       expect(result).to_not be_nil
-      expect(result.dig(source_changed_key)).to eq 'Source Hello world'
+      expect(result[source_changed_key]).to eq 'Source Hello world'
     end
 
     it "#{locale} should use local translation bundle" do
       result = loader.get_bundle(component, locale)
       expect(result).to_not be_nil
-      expect(result.dig(key)).to eq '你好世界'
+      expect(result[key]).to eq '你好世界'
     end
 
     it "#{locale} should use local source bundle if source is changed" do
       result = loader.get_bundle(component, locale)
       expect(result).to_not be_nil
-      expect(result.dig(source_changed_key)).to eq 'Source Hello world'
+      expect(result[source_changed_key]).to eq 'Source Hello world'
     end
 
     it "should return nil for #{component_nonexistent}" do
@@ -312,32 +347,86 @@ describe 'Mix', :include_helpers, :extend_helpers do
     it 'En should use local source bundle' do
       result = loader.get_bundle(component, en_locale)
       expect(result).to_not be_nil
-      expect(result.dig(source_changed_key)).to eq 'Source Hello world'
+      expect(result[source_changed_key]).to eq 'Source Hello world'
     end
 
     it "#{locale} should use translation from server" do
       en_response = File.new("spec/fixtures/mock_responses/#{component}-#{en_locale}")
-      stubs << stub_request(:get, server_url).with(query: { 'components' => component, 'locales' => en_locale }).to_return(body: en_response)
+      stubs << stub_request(:get, format(bundle_url, en_locale, component)).to_return(body: en_response)
       zh_response = File.new("spec/fixtures/mock_responses/#{component}-#{locale}")
-      stubs << stub_request(:get, server_url).with(query: { 'components' => component, 'locales' => locale }).to_return(body: zh_response)
+      stubs << stub_request(:get, format(bundle_url, locale, component)).to_return(body: zh_response)
 
       result = loader.get_bundle(component, locale)
 
       expect(result).to_not be_nil
-      expect(result.dig(server_local_translation_source_key)).to eq '从服务器来的消息 server-local-translation-source'
+      expect(result[server_local_translation_source_key]).to eq '从服务器来的消息 server-local-translation-source'
       stubs.each { |stub| expect(stub).to have_been_requested }
     end
 
     it "should be able to fallback to local translation for #{locale}" do
-      en_response = File.new("spec/fixtures/mock_responses/#{component_local_translation_only}-#{en_locale}")
-      stubs << stub_request(:get, server_url).with(query: { 'components' => component_local_translation_only, 'locales' => en_locale }).to_return(body: en_response)
-      response = File.new("spec/fixtures/mock_responses/#{component_local_translation_only}-#{locale}")
-      stubs << stub_request(:get, server_url).with(query: { 'components' => component_local_translation_only, 'locales' => locale }).to_return(body: response)
+      stubs << stub_request(:get, format(bundle_url, latest_locale, component_local_translation_only)).to_return(body: nonexistent_response)
+      stubs << stub_request(:get, format(bundle_url, en_locale, component_local_translation_only)).to_return(body: nonexistent_response)
+      stubs << stub_request(:get, format(bundle_url, locale, component_local_translation_only)).to_return(body: nonexistent_response)
 
       result = loader.get_bundle(component_local_translation_only, locale)
 
       expect(result).to_not be_nil
-      expect(result.dig(message_only_in_local_translation_key)).to eq '仅在本地的消息'
+      expect(result[message_only_in_local_translation_key]).to eq '仅在本地的消息'
+      stubs.each { |stub| expect(stub).to have_been_requested }
+    end
+
+    it 'source bundle fallback to server when a component is unavailable in local source' do
+      stubs << stub_request(:get, format(bundle_url, latest_locale, component_only_on_server)).to_return(body: stub_response("#{component_only_on_server}-#{latest_locale}"))
+
+      result = loader.get_bundle(component_only_on_server, en_locale)
+      expect(result[message_only_on_server_key]).to eq 'Message only on server'
+
+      stubs.each { |stub| expect(stub).to have_been_requested }
+    end
+
+    it "fallback latest from remote to local when querying #{locale}" do
+      # stubs << stub_request(:get, format(bundle_url, latest_locale, component)).to_return(body: stub_response("#{component}-#{latest_locale}"))
+      stubs << stub_request(:get, format(bundle_url, en_locale, component)).to_return(body: stub_response("#{component}-#{en_locale}"))
+      stubs << stub_request(:get, format(bundle_url, locale, component)).to_return(body: stub_response("#{component}-#{locale}"))
+
+      result = loader.get_bundle(component, locale)
+
+      expect(result).to_not be_nil
+      expect(result[key]).to eq '你好世界-server'
+      stubs.each { |stub| expect(stub).to have_been_requested }
+    end
+
+    it "fallback translation from remote to local when querying #{locale}" do
+      stubs << stub_request(:get, format(bundle_url, en_locale, component)).to_return(body: stub_response("#{component}-#{en_locale}"))
+      stubs << stub_request(:get, format(bundle_url, locale, component)).to_return(body: nonexistent_response)
+
+      result = loader.get_bundle(component, locale)
+
+      expect(result).to_not be_nil
+      expect(result[key]).to eq '你好世界'
+      stubs.each { |stub| expect(stub).to have_been_requested }
+    end
+
+    it "should return nil for #{component_nonexistent}" do
+      stubs << stub_request(:get, format(bundle_url, latest_locale, component_nonexistent)).to_return(body: nonexistent_response)
+      stubs << stub_request(:get, format(bundle_url, en_locale, component_nonexistent)).to_return(body: nonexistent_response)
+      stubs << stub_request(:get, format(bundle_url, locale, component_nonexistent)).to_return(body: nonexistent_response)
+
+      result = loader.get_bundle(component_nonexistent, locale)
+
+      expect(result).to be_nil
+      sleep 0.05
+      stubs.each { |stub| expect(stub).to have_been_requested }
+    end
+
+    it "should return nil for #{locale_nonexistent}" do
+      stubs << stub_request(:get, format(bundle_url, en_locale, component)).to_return(body: nonexistent_response)
+      stubs << stub_request(:get, format(bundle_url, locale_nonexistent, component)).to_return(body: nonexistent_response)
+
+      result = loader.get_bundle(component, locale_nonexistent)
+
+      expect(result).to be_nil
+      sleep 0.05
       stubs.each { |stub| expect(stub).to have_been_requested }
     end
 

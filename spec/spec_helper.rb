@@ -29,6 +29,6 @@ end
 
 Singleton.load_config('./spec/config/sgtnclient.yml', 'test')
 log_file = File.open('./unit_test.log', 'a')
-SgtnClient.logger = Logger.new MultiIO.new(STDOUT, log_file)
+SgtnClient.logger = Logger.new(MultiIO.new(STDOUT, log_file))
 
 WebMock.allow_net_connect!

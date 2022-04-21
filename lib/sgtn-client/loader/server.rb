@@ -15,10 +15,6 @@ module SgtnClient
     autoload :CONSTS, 'sgtn-client/loader/consts'
 
     class SgtnServer
-      PRODUCT_ROOT = '/i18n/api/v2/translation/products/%s/versions/%s'
-      PRODUCT_LOCALE_LIST = "#{PRODUCT_ROOT}/localelist"
-      PRODUCT_COMPONENT_LIST = "#{PRODUCT_ROOT}/componentlist"
-
       ERROR_ILLEGAL_DATA = 'server returned illegal data.'
       ERROR_BUSINESS_ERROR = 'server returned business error.'
 
@@ -27,24 +23,17 @@ module SgtnClient
       def initialize(config)
         @server_url = config['vip_server']
 
-        product_name = config['product_name']
-        version = config['version']
+        product_root = format('/i18n/api/v2/translation/products/%s/versions/%s', config['product_name'], config['version'])
 
-        @bundle_url = format(PRODUCT_ROOT, product_name, version)
-        @locales_url = format(PRODUCT_LOCALE_LIST, product_name, version)
-        @components_url = format(PRODUCT_COMPONENT_LIST, product_name, version)
+        @bundle_url = "#{product_root}/locales/%s/components/%s"
+        @locales_url = "#{product_root}/localelist"
+        @components_url = "#{product_root}/componentlist"
       end
 
       def load_bundle(component, locale)
-        return if locale == CONSTS::REAL_SOURCE_LOCALE # server source is disabled
-
         SgtnClient.logger.debug "[#{method(__callee__).owner}.#{__callee__}] component=#{component}, locale=#{locale}"
 
-        messages = query_server(
-          @bundle_url,
-          ['bundles', 0, 'messages'],
-          { locales: locale, components: component }
-        )
+        messages = query_server(format(@bundle_url, locale, component), ['messages'])
         messages
       end
 
