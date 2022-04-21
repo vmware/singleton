@@ -38,15 +38,7 @@ module SgtnClient
 
       # <b>DEPRECATED:</b> Please use <tt>Singleton:get_translations</tt> instead.
       def getStrings(component, locale)
-        SgtnClient.logger.debug "[Translation][getStrings]component=#{component}, locale=#{locale}"
-        locale = SgtnClient::LocaleUtil.get_best_locale(locale)
-        items = get_cs(component, locale)
-        if items.nil? && !LocaleUtil.is_source_locale(locale)
-          items = get_cs(component, LocaleUtil.get_source_locale)
-          locale = LocaleUtil.get_source_locale
-        end
-
-        { 'component' => component, 'locale' => locale, 'messages' => items || {} } if items
+        get_translations(component, locale)
       end
 
       # raise error when translation is not found
@@ -57,7 +49,7 @@ module SgtnClient
 
         result = get_cs(component, locale)&.fetch(key, nil)
         if result.nil? && !LocaleUtil.is_source_locale(locale)
-          locale = LocaleUtil.get_fallback_locale
+          locale = LocaleUtil.get_source_locale
           result = get_cs(component, locale)&.fetch(key, nil)
         end
 
@@ -81,6 +73,8 @@ module SgtnClient
       alias t translate
 
       def get_translations(component, locale = nil)
+        SgtnClient.logger.debug "[#{method(__callee__).owner}.#{__callee__}] component: #{component}, locale: #{locale}"
+
         locale = locale.nil? ? self.locale : SgtnClient::LocaleUtil.get_best_locale(locale)
         items = get_cs(component, locale)
         if items.nil? && !LocaleUtil.is_source_locale(locale)
@@ -88,7 +82,7 @@ module SgtnClient
           locale = LocaleUtil.get_source_locale
         end
 
-        { 'component' => component, 'locale' => locale, 'messages' => items || {} }
+        { 'component' => component, 'locale' => locale, 'messages' => items || {} } if items
       end
 
       def locale

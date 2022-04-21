@@ -55,11 +55,11 @@ describe Singleton, :include_helpers, :extend_helpers do
       expect(Singleton.get_translations(component, locale).dig('messages')).to include({ key => value })
     end
 
-    it 'get translations of a nonexistent component, should return empty messages' do
-      expect(Singleton.get_translations(component_nonexistent, locale).dig('messages')).to eq({})
+    it 'get translations of a nonexistent component, should return nil' do
+      expect(Singleton.get_translations(component_nonexistent, locale)).to be_nil
     end
-    it 'get translations of a nil component, should return empty messages' do
-      expect(Singleton.get_translations(nil, locale).dig('messages')).to eq({})
+    it 'get translations of a nil component, should return nil' do
+      expect(Singleton.get_translations(nil, locale)).to be_nil
     end
 
     it 'get translations of a nonexistent locale. should fallback to en' do
@@ -69,8 +69,8 @@ describe Singleton, :include_helpers, :extend_helpers do
     it 'get translations of a nil locale. should fallback to en' do
       expect(Singleton.get_translations(component, nil).dig('messages')).to include({ key => en_value })
     end
-    it 'get translations of a nil locale and nil component, should return empty messages' do
-      expect(Singleton.get_translations(nil, locale: locale).dig('messages')).to eq({})
+    it 'get translations of a nil locale and nil component, should return nil' do
+      expect(Singleton.get_translations(nil, locale: locale)).to be_nil
     end
   end
 
