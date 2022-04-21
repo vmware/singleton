@@ -180,7 +180,10 @@ describe 'Mix', :include_helpers, :extend_helpers do
     it 'fallback to server when a component is unavailable in local source' do
       stubs << stub_request(:get, format(bundle_url, latest_locale, component_only_on_server)).to_return(body: stub_response("#{component_only_on_server}-#{latest_locale}"))
 
-      expect { loader.get_bundle(component_only_on_server, en_locale) }.to raise_error(SgtnClient::SingletonError)
+      result = loader.get_bundle(component_only_on_server, en_locale)
+      expect(result[message_only_on_server_key]).to eq 'Message only on server'
+
+      stubs.each { |stub| expect(stub).to have_been_requested }
     end
 
     it "should return nil for #{component_nonexistent}" do
