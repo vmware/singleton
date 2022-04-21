@@ -4,9 +4,9 @@
 source "https://rubygems.org"
 
 if !!File::ALT_SEPARATOR
-  gemspec :name => 'singleton-ruby.windows'
+gemspec :name => "singleton-client.windows"
 else
-  gemspec :name => 'singleton-ruby'
+gemspec :name => "singleton-client"
 end
 
 gem 'rake', :require => false

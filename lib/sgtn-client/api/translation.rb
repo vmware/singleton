@@ -10,36 +10,20 @@ module SgtnClient
     module Implementation
       # <b>DEPRECATED:</b> Please use <tt>Singleton:translate</tt> instead.
       def getString(component, key, locale)
-        warn '[DEPRECATION] `getString` is deprecated.  Please use `Singleton:translate` instead.'
         SgtnClient.logger.debug "[Translation.getString]component: #{component}, key: #{key}, locale: #{locale}"
-        str = getTranslation(component, key, locale)
-        if str.nil? && !LocaleUtil.is_source_locale(locale)
-          str = getTranslation(component, key, LocaleUtil.get_source_locale)
-        end
-        str
+        translate(key, component, locale: locale) { nil }
       end
 
       # <b>DEPRECATED:</b> Please use <tt>Singleton:translate</tt> instead.
       def getString_p(component, key, plural_args, locale)
-        warn '[DEPRECATION] `getString_p` is deprecated.  Please use `Singleton:translate` instead.'
         SgtnClient.logger.debug "[Translation][getString_p]component=#{component}, key=#{key}, locale=#{locale}"
-        str = getTranslation(component, key, locale)
-        if str.nil?
-          unless LocaleUtil.is_source_locale(locale)
-            str = getTranslation(component, key, LocaleUtil.get_source_locale)
-            str.to_plural_s(LocaleUtil.get_source_locale, plural_args) if str
-          end
-        else
-          locale = str.locale if str.is_a?(SgtnClient::StringUtil)
-          str.to_plural_s(locale, plural_args)
-        end
+        translate(key, component, locale: locale, **plural_args) { nil }
       end
 
       # <b>DEPRECATED:</b> Please use <tt>Singleton:translate</tt> instead.
       def getString_f(component, key, args, locale, *optionals)
-        warn '[DEPRECATION] `getString_f` is deprecated.  Please use `Singleton:translate` instead.'
         SgtnClient.logger.debug "[Translation][getString_f]component=#{component}, key=#{key}, locale=#{locale}"
-        s = getString(component, key, locale, *optionals)
+        s = translate(key, component, locale: locale) { nil }
         return nil if s.nil?
 
         if args.is_a?(Hash)
@@ -55,21 +39,13 @@ module SgtnClient
       # <b>DEPRECATED:</b> Please use <tt>Singleton:get_translations</tt> instead.
       def getStrings(component, locale)
         warn '[DEPRECATION] `getStrings` is deprecated.  Please use `Singleton:get_translations` instead.'
-        SgtnClient.logger.debug "[Translation][getStrings]component=#{component}, locale=#{locale}"
-        locale = SgtnClient::LocaleUtil.get_best_locale(locale)
-        items = get_cs(component, locale)
-        if items.nil? && !LocaleUtil.is_source_locale(locale)
-          items = get_cs(component, LocaleUtil.get_source_locale)
-          locale = LocaleUtil.get_source_locale
-        end
-
-        { 'component' => component, 'locale' => locale, 'messages' => items || {} } if items
+        get_translations(component, locale)
       end
 
       def translate(key, component, locale: nil, **kwargs, &block)
         translate!(key, component, locale: locale, **kwargs, &block)
       rescue StandardError => e
-        SgtnClient.logger.error "couldn't translate #{key}, #{component}, #{locale}, #{kwargs}. error: #{e}"
+        SgtnClient.logger.debug "couldn't translate #{key}, #{component}, #{locale}, #{kwargs}. error: #{e}"
         key
       end
       alias t translate
@@ -127,7 +103,7 @@ module SgtnClient
       def get_cs(component, locale)
         get_bundle(component, locale)
       rescue StandardError => e
-        SgtnClient.logger.error "failed to get a bundle. component: #{component}, locale: #{locale}"
+        SgtnClient.logger.error "[#{method(__callee__).owner}.#{__callee__}] failed to get a bundle. component: #{component}, locale: #{locale}"
         SgtnClient.logger.error e
         nil
       end

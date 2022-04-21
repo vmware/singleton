@@ -12,7 +12,7 @@ rake spec:unit
 Basic Usage:
 
 ```ruby
-require 'singleton-ruby'
+require 'singleton-client'
 
 include SgtnClient
 
@@ -47,8 +47,3 @@ SgtnClient::T.s_f(key, args)
 
 ### Get a component's translations
 SgtnClient::T.c()
-
-
-
-
-
