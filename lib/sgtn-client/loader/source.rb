@@ -15,9 +15,9 @@ module SgtnClient
       end
 
       def load_bundle(component, locale = nil)
-        return if locale && locale != CONSTS::REAL_SOURCE_LOCALE # only return when querying source
+        return if locale && locale != CONSTS::REAL_SOURCE_LOCALE # return when NOT querying source
 
-        SgtnClient.logger.debug "[Source][getBundle]component=#{component}"
+        SgtnClient.logger.debug "[#{method(__callee__).owner}.#{__callee__}] component=#{component}"
 
         total_messages = {}
 

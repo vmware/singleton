@@ -11,12 +11,20 @@ module SgtnClient
       end
 
       def load_bundle(component, locale)
+        exception = nil
+
         loaders.each do |loader|
-          bundle = loader.load_bundle(component, locale)
-          return bundle if bundle
-        rescue StandardError => e
-          SgtnClient.logger.warn "Failed to load bundle from #{loader.class.name}: #{e}"
+          begin
+            bundle = loader.load_bundle(component, locale)
+            return bundle if bundle
+          rescue StandardError => e
+            exception = e
+            SgtnClient.logger.error "[#{__FILE__}][#{__callee__}] {component: #{component},locale: #{locale}}, failed on #{loader.class}: #{e}"
+          end
         end
+
+        raise exception if exception
+
         nil
       end
 

@@ -2,6 +2,7 @@
 #  SPDX-License-Identifier: EPL-2.0
 
 shared_examples 'Available Bundles' do
+  let(:stubs) { [] }
   prepend_before :all do
     @config = config.dup
     WebMock.enable!
