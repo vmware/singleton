@@ -21,7 +21,7 @@ module SgtnClient
       end
 
       # <b>DEPRECATED:</b> Please use <tt>Singleton:translate</tt> instead.
-      def getString_f(component, key, args, locale, *optionals)
+      def getString_f(component, key, args, locale, *_optionals)
         SgtnClient.logger.debug "[Translation][getString_f]component=#{component}, key=#{key}, locale=#{locale}"
         s = translate(key, component, locale: locale) { nil }
         return nil if s.nil?
@@ -56,9 +56,21 @@ module SgtnClient
 
         locale = locale.nil? ? self.locale : SgtnClient::LocaleUtil.get_best_locale(locale)
 
-        result = get_bundle(component, locale)&.fetch(key.to_s, nil)
-        result = yield if result.nil? && block_given?
-        raise SgtnClient::SingletonError, 'translation is missing' if result.nil?
+        result = getTranslation(component, key, locale)
+        if result.nil? && !LocaleUtil.is_source_locale(locale)
+          locale = LocaleUtil.get_fallback_locale
+          result = getTranslation(component, key, locale)
+        end
+
+        if result.nil?
+          if block_given?
+            result = yield
+          else
+            raise SgtnClient::SingletonError, 'translation is missing' if result.nil?
+          end
+        end
+
+        return if result.nil?
 
         if kwargs.empty?
           result
@@ -103,8 +115,7 @@ module SgtnClient
       def get_cs(component, locale)
         get_bundle(component, locale)
       rescue StandardError => e
-        SgtnClient.logger.error "[#{method(__callee__).owner}.#{__callee__}] failed to get a bundle. component: #{component}, locale: #{locale}"
-        SgtnClient.logger.error e
+        SgtnClient.logger.warn "[#{method(__callee__).owner}.#{__callee__}] failed to get a bundle. component: #{component}, locale: #{locale}"
         nil
       end
 

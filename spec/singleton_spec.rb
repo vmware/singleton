@@ -162,4 +162,5 @@ describe Singleton, :include_helpers, :extend_helpers do
       expect(Singleton.translate(key, component)).to eq en_value
     end
   end
+  # default nil value
 end

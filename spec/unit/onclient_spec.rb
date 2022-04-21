@@ -40,6 +40,9 @@ describe SgtnClient do
     end
 
     it "NewComponent" do
+require 'pry-byebug'
+require 'pry-inline'
+binding.pry
       expect(SgtnClient::Translation.getString("NEW", "new_hello", "zh-Hans")).to eq 'New Hello'
       env = SgtnClient::Config.default_environment
       if SgtnClient::Config.configurations[env]["disable_cache"] == false
@@ -53,6 +56,7 @@ describe SgtnClient do
     end
 
     it "NonExistingComponent" do
+
       expect(SgtnClient::Translation.getString("NonExisting", "new_hello", "zh-Hans")).to eq nil
       expect(SgtnClient::Translation.getStrings("NonExisting", "zh-Hans")).to eq nil
     end
