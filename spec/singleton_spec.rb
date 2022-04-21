@@ -52,31 +52,31 @@ describe Singleton, :include_helpers, :extend_helpers do
 
   describe '#get messages of a bundle' do
     it 'should be able to get translations of a bundle' do
-      expect(Singleton.get_translations(component, locale: locale).dig('messages')).to include({ key => value })
+      expect(Singleton.get_translations(component,  locale).dig('messages')).to include({ key => value })
     end
 
     it 'get translations of a nonexistent component, should return empty messages' do
-      expect(Singleton.get_translations(component_nonexistent, locale: locale).dig('messages')).to eq({})
+      expect(Singleton.get_translations(component_nonexistent, locale).dig('messages')).to eq({})
     end
     it 'get translations of a nil component, should return empty messages' do
-      expect(Singleton.get_translations(nil, locale: locale).dig('messages')).to eq({})
+      expect(Singleton.get_translations(nil, locale).dig('messages')).to eq({})
     end
 
     it 'get translations of a nonexistent locale. should fallback to en' do
-      expect(Singleton.get_translations(component, locale: locale_nonexistent).dig('messages')).to include({ key => en_value })
+      expect(Singleton.get_translations(component,  locale_nonexistent).dig('messages')).to include({ key => en_value })
     end
 
     it 'get translations of a nil locale. should fallback to en' do
-      expect(Singleton.get_translations(component, locale: nil).dig('messages')).to include({ key => en_value })
+      expect(Singleton.get_translations(component,  nil).dig('messages')).to include({ key => en_value })
     end
     it 'get translations of a nil locale and nil component' do
-      expect(Singleton.get_translations(nil, locale: locale).dig('messages')).to eq({})
+      expect(Singleton.get_translations(nil, locale).dig('messages')).to eq({})
     end
   end
 
   describe '#get messages of a bundle with exception enabled' do
     it 'should be able to get translations of a bundle with exception enabled' do
-      expect(Singleton.get_translations!(component, locale: locale).dig('messages')).to include({ key => value })
+      expect(Singleton.get_translations!(component, locale).dig('messages')).to include({ key => value })
     end
 
     it 'get translations of a nonexistent component with exception enabled' do
@@ -87,10 +87,10 @@ describe Singleton, :include_helpers, :extend_helpers do
     end
 
     it 'get translations of a nonexistent locale with exception enabled' do
-      expect(Singleton.get_translations!(component, locale: locale_nonexistent).dig('messages')).to include({ key => en_value })
+      expect(Singleton.get_translations!(component,  locale_nonexistent).dig('messages')).to include({ key => en_value })
     end
     it 'get translations of a nil locale. should fallback to en' do
-      expect(Singleton.get_translations!(component, locale: nil).dig('messages')).to include({ key => en_value })
+      expect(Singleton.get_translations!(component,  nil).dig('messages')).to include({ key => en_value })
     end
     it 'get translations of a nil locale and nil component with exception enabled' do
       expect { Singleton.get_translations!(nil, locale: locale) }.to raise_error(SgtnClient::SingletonError)

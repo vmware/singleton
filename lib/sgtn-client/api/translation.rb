@@ -69,14 +69,14 @@ module SgtnClient
       end
       alias t! translate!
 
-      def get_translations(component, locale: nil)
-        get_translations!(component, locale: locale)
+      def get_translations(component, locale = nil)
+        get_translations!(component, locale)
       rescue StandardError => e
         SgtnClient.logger.error "couldn't get translations for component: #{component}, locale: #{locale}. error: #{e}"
         { 'component' => component, 'locale' => locale, 'messages' => {} }
       end
 
-      def get_translations!(component, locale: nil)
+      def get_translations!(component, locale = nil)
         SgtnClient.logger.debug "[#{method(__callee__).owner}.#{__callee__}] component: #{component}, locale: #{locale}"
 
         locale = locale.nil? ? self.locale : SgtnClient::LocaleUtil.get_best_locale(locale)
