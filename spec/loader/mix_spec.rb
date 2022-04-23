@@ -34,18 +34,15 @@ describe 'Mix', :include_helpers, :extend_helpers do
     end
 
     it "should return nil for #{locale}" do
-      result = loader.get_bundle(component_local_source_only, locale)
-      expect(result).to be_nil
+      expect{ loader.get_bundle(component_local_source_only, locale) }.to raise_error(SgtnClient::SingletonError)
     end
 
     it "should return nil for #{component_nonexistent}" do
-      result = loader.get_bundle(component_nonexistent, locale)
-      expect(result).to be_nil
+      expect{ loader.get_bundle(component_nonexistent, locale) }.to raise_error(SgtnClient::SingletonError)
     end
 
     it "should return nil for #{locale_nonexistent}" do
-      result = loader.get_bundle(component, locale_nonexistent)
-      expect(result).to be_nil
+      expect{ loader.get_bundle(component, locale_nonexistent) }.to raise_error(SgtnClient::SingletonError)
     end
 
     it 'should have only 1 loader' do
