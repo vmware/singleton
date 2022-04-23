@@ -11,19 +11,19 @@ module SgtnClient
       # <b>DEPRECATED:</b> Please use <tt>Singleton:translate</tt> instead.
       def getString(component, key, locale)
         SgtnClient.logger.debug "[Translation.getString]component: #{component}, key: #{key}, locale: #{locale}"
-        translate(key, component, locale: locale) { nil }
+        translate(key, component: component, locale: locale) { nil }
       end
 
       # <b>DEPRECATED:</b> Please use <tt>Singleton:translate</tt> instead.
       def getString_p(component, key, plural_args, locale)
         SgtnClient.logger.debug "[Translation][getString_p]component=#{component}, key=#{key}, locale=#{locale}"
-        translate(key, component, locale: locale, **plural_args) { nil }
+        translate(key, component: component, locale: locale, **plural_args) { nil }
       end
 
       # <b>DEPRECATED:</b> Please use <tt>Singleton:translate</tt> instead.
       def getString_f(component, key, args, locale, *_optionals)
         SgtnClient.logger.debug "[Translation][getString_f]component=#{component}, key=#{key}, locale=#{locale}"
-        s = translate(key, component, locale: locale) { nil }
+        s = translate(key, component: component, locale: locale) { nil }
         return nil if s.nil?
 
         if args.is_a?(Hash)
@@ -42,26 +42,23 @@ module SgtnClient
       end
 
       # raise error when translation is not found
-      def translate(key, component, locale: nil, **kwargs)
+      def translate(key, component:, locale: nil, **kwargs)
         SgtnClient.logger.debug "[#{method(__callee__).owner}.#{__callee__}] key: #{key}, component: #{component}, locale: #{locale}, args: #{kwargs}"
 
         locale = locale.nil? ? self.locale : SgtnClient::LocaleUtil.get_best_locale(locale)
 
-        result = get_cs(component, locale)&.fetch(key, nil)
+        result = get_bundle(component, locale)&.fetch(key, nil)
         if result.nil? && !LocaleUtil.is_source_locale(locale)
           locale = LocaleUtil.get_source_locale
-          result = get_cs(component, locale)&.fetch(key, nil)
+          result = get_bundle(component, locale)&.fetch(key, nil)
         end
 
         if result.nil?
-          if block_given?
-            result = yield
-          else
-            return key
-          end
-        end
+          return key unless block_given?
 
-        return if result.nil?
+          result = yield
+          return if result.nil?
+        end
 
         if kwargs.empty?
           result
@@ -76,9 +73,9 @@ module SgtnClient
         SgtnClient.logger.debug "[#{method(__callee__).owner}.#{__callee__}] component: #{component}, locale: #{locale}"
 
         locale = locale.nil? ? self.locale : SgtnClient::LocaleUtil.get_best_locale(locale)
-        items = get_cs(component, locale)
+        items = get_bundle(component, locale)
         if items.nil? && !LocaleUtil.is_source_locale(locale)
-          items = get_cs(component, LocaleUtil.get_source_locale)
+          items = get_bundle(component, LocaleUtil.get_source_locale)
           locale = LocaleUtil.get_source_locale
         end
 
@@ -95,14 +92,15 @@ module SgtnClient
 
       private
 
-      def get_cs(component, locale)
-        get_bundle(component, locale)
+      def get_bundle(component, locale)
+        get_bundle!(component, locale)
       rescue StandardError => e
-        SgtnClient.logger.warn "[#{method(__callee__).owner}.#{__callee__}] failed to get a bundle. component: #{component}, locale: #{locale}"
+        SgtnClient.logger.error "[#{method(__callee__).owner}.#{__callee__}] failed to get a bundle. component: #{component}, locale: #{locale}"
+        SgtnClient.logger.error e
         nil
       end
 
-      def get_bundle(component, locale)
+      def get_bundle!(component, locale)
         id = SgtnClient::Common::BundleID.new(component, locale)
         bundles = SgtnClient::Config.available_bundles
         unless bundles.nil? || bundles.empty? || bundles.include?(id)
