@@ -11,7 +11,7 @@ module SgtnClient
     module SingleLoader
       def load_bundle(component, locale)
         @single_bundle_loader ||= single_loader { |c,l| super(c,l) }
-        id = CacheUtil.get_cachekey(component, locale)
+        id = SgtnClient::Common::BundleID.new(component, locale)
         @single_bundle_loader.operate(id, component, locale)&.value
       ensure
         # delete thread from hash after finish

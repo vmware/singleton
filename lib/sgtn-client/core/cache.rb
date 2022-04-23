@@ -14,14 +14,14 @@ module SgtnClient::Core
             end
 
             def self.get(key)
-                SgtnClient.logger.debug "[Cache][get]get cache for key: " + key
+                SgtnClient.logger.debug "[Cache][get]get cache for key: #{key}"
                 return @@data&.dig(key)
             end
 
             def self.put(key, items, ttl=nil)
                 ttl ||= @@opts[:ttl]
                 # hours from new
-                SgtnClient.logger.debug "[Cache][put]put cache for key '" + key + "' with expired time at'" + (Time.now + ttl*60).to_s
+                SgtnClient.logger.debug "[Cache][put]put cache for key '#{key}' with expired time at'" + (Time.now + ttl*60).to_s
                 @@data[key] = Entry.new(Time.now + ttl*60, items)
             end
 

@@ -23,7 +23,7 @@ module SgtnClient
       alias eql? ==
 
       def to_s
-        "locale=#{@locale}, component=#{@component}}"
+        "{component=#{@component}, locale=#{@locale}}"
       end
     end
   end

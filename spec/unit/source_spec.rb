@@ -27,7 +27,7 @@ describe SgtnClient do
     # end
 
     it "loadBundles" do
-      cache_key = SgtnClient::CacheUtil.get_cachekey(@component, @locale)
+      cache_key = SgtnClient::Common::BundleID.new(@component, @locale)
       expect(SgtnClient::CacheUtil.get_cache(cache_key)).not_to eq be_nil
     end
 

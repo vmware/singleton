@@ -10,15 +10,32 @@ module SgtnClient
     autoload :CONSTS, 'sgtn-client/loader/consts'
 
     module Cache # :nodoc:
+      @queue = Queue.new
+      Thread.new do
+        loop do
+          begin
+            id, block = Cache.instance_variable_get(:@queue).pop
+            cache_item = SgtnClient::CacheUtil.get_cache(id)
+            next unless cache_item && SgtnClient::CacheUtil.is_expired(cache_item)
+
+            block.call
+          rescue StandardError => e
+            SgtnClient.logger.error "an error occured while loading #{id}."
+            SgtnClient.logger.error e
+          end
+        end
+      end
+
       # get from cache, return expired data immediately
       def get_bundle(component, locale)
         SgtnClient.logger.debug "[#{__FILE__}][#{__callee__}] component=#{component}, locale=#{locale}"
 
-        key = SgtnClient::CacheUtil.get_cachekey(component, locale)
+        key = SgtnClient::Common::BundleID.new(component, locale)
         cache_item = SgtnClient::CacheUtil.get_cache(key)
         if cache_item
           if SgtnClient::CacheUtil.is_expired(cache_item)
-            Thread.new { load_bundle(component, locale) } # TODO: Use one thread # refresh in background
+            # refresh in background
+            Cache.instance_variable_get(:@queue) << [key, proc { load_bundle(component, locale) }]
           end
           return cache_item.dig(:items)
         end
@@ -30,7 +47,7 @@ module SgtnClient
       def load_bundle(component, locale)
         SgtnClient.logger.debug "[#{__FILE__}][#{__callee__}] component=#{component}, locale=#{locale}"
 
-        key = SgtnClient::CacheUtil.get_cachekey(component, locale)
+        key = SgtnClient::Common::BundleID.new(component, locale)
         item = super
         SgtnClient::CacheUtil.write_cache(key, item) if item
         item
@@ -45,15 +62,10 @@ module SgtnClient
         cache_item = SgtnClient::CacheUtil.get_cache(CONSTS::AVAILABLE_BUNDLES_KEY)
         if cache_item
           if SgtnClient::CacheUtil.is_expired(cache_item)
-            Thread.new do # TODO: Use one thread
-              begin
-                item = super
-                SgtnClient::CacheUtil.write_cache(CONSTS::AVAILABLE_BUNDLES_KEY, item) if item
-              rescue StandardError => e
-                SgtnClient.logger.error 'an error occured while loading available bundles.'
-                SgtnClient.logger.error e
-              end
-            end
+            Cache.instance_variable_get(:@queue) << [CONSTS::AVAILABLE_BUNDLES_KEY, proc do
+              item = super
+              SgtnClient::CacheUtil.write_cache(CONSTS::AVAILABLE_BUNDLES_KEY, item) if item
+            end]
           end
           return cache_item.dig(:items)
         end
