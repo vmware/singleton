@@ -18,10 +18,10 @@ module SgtnClient
         cache_item = SgtnClient::CacheUtil.get_cache(key)
         if cache_item
           load_bundle(component, locale, false) if SgtnClient::CacheUtil.is_expired(cache_item)
-          return cache_item.dig(:items)
+          cache_item.dig(:items)
+        else
+          load_bundle(component, locale)
         end
-
-        load_bundle(component, locale)
       end
 
       def available_bundles
