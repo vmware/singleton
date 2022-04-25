@@ -9,18 +9,20 @@ module SgtnClient
     autoload :CONSTS, 'sgtn-client/loader/consts'
 
     module SingleLoader
-      def load_bundle(component, locale)
+      def load_bundle(component, locale, sync = true)
         @single_bundle_loader ||= single_loader { |c,l| super(c,l) }
         id = SgtnClient::Common::BundleID.new(component, locale)
-        @single_bundle_loader.operate(id, component, locale)&.value
+        thread = @single_bundle_loader.operate(id, component, locale)
+        thread&.value if sync
       ensure
         # delete thread from hash after finish
         @single_bundle_loader.remove_object(id)
       end
 
-      def available_bundles
-        @single_available_bundles_loader ||= single_loader { super }
-        @single_available_bundles_loader.operate(CONSTS::AVAILABLE_BUNDLES_KEY)&.value
+      def available_bundles(sync = true)
+        @single_available_bundles_loader ||= single_loader { super() }
+        thread = @single_available_bundles_loader.operate(CONSTS::AVAILABLE_BUNDLES_KEY)
+        thread&.value if sync
       ensure
         @single_available_bundles_loader.remove_object(CONSTS::AVAILABLE_BUNDLES_KEY)
       end

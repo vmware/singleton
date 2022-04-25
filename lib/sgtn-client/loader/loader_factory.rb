@@ -10,6 +10,7 @@ module SgtnClient
     autoload :SourceComparer, 'sgtn-client/loader/source_comparer'
     autoload :SingleLoader, 'sgtn-client/loader/single_loader'
     autoload :Cache, 'sgtn-client/loader/cache'
+    autoload :CacheFiller, 'sgtn-client/loader/cache'
 
     module LoaderFactory
       def self.create(config)
@@ -23,6 +24,7 @@ module SgtnClient
 
         chain_loader = Class.new(Chain)
         chain_loader.include SourceComparer if config['source_bundle'] || config['vip_server']
+        chain_loader.include CacheFiller
         chain_loader.include SingleLoader
         chain_loader.include Cache
 

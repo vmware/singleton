@@ -176,7 +176,7 @@ module SgtnClient
 
         def available_locales
           bundles = available_bundles
-          return Set.new unless bundles || bundles.empty?
+          return Set.new unless bundles && !bundles.empty?
 
           unless bundles.respond_to?(:locales)
             def bundles.locales
