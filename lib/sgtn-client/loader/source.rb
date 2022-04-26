@@ -27,7 +27,7 @@ module SgtnClient
           if messages.is_a?(Hash)
             total_messages.merge!(messages)
           else
-            SgtnClient.logger.error "[#{method(__callee__).owner}.#{__callee__}] Illegal bundle data in #{f}"
+            SgtnClient.logger.error "[#{method(__callee__).owner}.#{__callee__}] invalid bundle data in #{f}"
           end
         end
 
