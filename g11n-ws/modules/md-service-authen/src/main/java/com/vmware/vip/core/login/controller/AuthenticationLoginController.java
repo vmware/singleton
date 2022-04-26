@@ -23,9 +23,7 @@ import com.vmware.vip.common.exceptions.ValidationException;
 import com.vmware.vip.common.i18n.dto.response.APIResponseDTO;
 import com.vmware.vip.common.i18n.status.Response;
 import com.vmware.vip.core.csp.service.JwtTokenService;
-import com.vmware.vip.core.login.ADAuthenticator;
-import com.vmware.vip.core.login.VipAuthConfig;
-
+import com.vmware.vip.core.login.LdapAuthenticator;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiParam;
@@ -42,11 +40,9 @@ public class AuthenticationLoginController {
 
 	@Autowired
 	private JwtTokenService tokenService;
-	
 	@Autowired
-	private VipAuthConfig authConfig;
+	private LdapAuthenticator ldapAuthenticator;
 	
-
 	@PostMapping("/auth/login")
 	public APIResponseDTO vipLogin(
 			 @ApiParam(name = APIParamName.USERNAME, value = APIParamValue.USERNAME) 
@@ -59,7 +55,7 @@ public class AuthenticationLoginController {
 		logger.info("{} begin to login", username );
 		logger.debug(password);
 		
-		String userId = ADAuthenticator.doLogin(username, password, authConfig.getLdapServerUri(), authConfig.getTdomain(), authConfig.getSearchbase());
+		String userId = ldapAuthenticator.doLogin(username, password);
 		
 		if(userId != null) {
 		   
