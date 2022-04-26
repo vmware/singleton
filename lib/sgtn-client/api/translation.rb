@@ -11,19 +11,19 @@ module SgtnClient
       # <b>DEPRECATED:</b> Please use <tt>Singleton:translate</tt> instead.
       def getString(component, key, locale)
         SgtnClient.logger.debug "[Translation.getString]component: #{component}, key: #{key}, locale: #{locale}"
-        translate(key, component: component, locale: locale) { nil }
+        translate(key, component, locale) { nil }
       end
 
       # <b>DEPRECATED:</b> Please use <tt>Singleton:translate</tt> instead.
       def getString_p(component, key, plural_args, locale)
         SgtnClient.logger.debug "[Translation][getString_p]component=#{component}, key=#{key}, locale=#{locale}"
-        translate(key, component: component, locale: locale, **plural_args) { nil }
+        translate(key, component, locale, **plural_args) { nil }
       end
 
       # <b>DEPRECATED:</b> Please use <tt>Singleton:translate</tt> instead.
       def getString_f(component, key, args, locale, *_optionals)
         SgtnClient.logger.debug "[Translation][getString_f]component=#{component}, key=#{key}, locale=#{locale}"
-        s = translate(key, component: component, locale: locale) { nil }
+        s = translate(key, component, locale) { nil }
         return nil if s.nil?
 
         if args.is_a?(Hash)
@@ -42,7 +42,7 @@ module SgtnClient
       end
 
       # raise error when translation is not found
-      def translate(key, component:, locale: nil, **kwargs)
+      def translate(key, component, locale = nil, **kwargs)
         SgtnClient.logger.debug "[#{method(__callee__).owner}.#{__callee__}] key: #{key}, component: #{component}, locale: #{locale}, args: #{kwargs}"
 
         locale = locale.nil? ? self.locale : SgtnClient::LocaleUtil.get_best_locale(locale)
