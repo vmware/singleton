@@ -2,7 +2,7 @@
  * Copyright 2019-2022 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
-package com.vmware.vip.messages.data.conf;
+package com.vmware.vip.common.utils;
 
 import java.io.BufferedReader;
 import java.io.File;

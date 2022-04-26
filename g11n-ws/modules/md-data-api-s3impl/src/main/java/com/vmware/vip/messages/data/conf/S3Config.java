@@ -13,6 +13,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
 import com.vmware.vip.common.constants.ConstantsChar;
+import com.vmware.vip.common.utils.RsaCryptUtils;
 
 /**
  * the configuration of the S3 client
