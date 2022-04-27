@@ -22,13 +22,15 @@ module SgtnClient
       def load_bundle(component, locale)
         return if locale == CONSTS::REAL_SOURCE_LOCALE # return when querying source
 
+        SgtnClient.logger.debug "[#{method(__callee__).owner}.#{__callee__}] component=#{component}, locale=#{locale}"
+
         file_name = BUNDLE_PREFIX + locale + BUNDLE_SUFFIX
         file_path = @base_path + component + file_name
 
-        json_data = JSON.parse(File.read(file_path))
-        messages = json_data['messages']
+        bundle_data = JSON.parse(File.read(file_path))
+        messages = bundle_data['messages']
 
-        raise SingletonError, 'no messages in bundle.' unless messages
+        raise SgtnClient::SingletonError, "no messages in local bundle file: #{file_path}." unless messages
 
         messages
       end

@@ -10,6 +10,8 @@ module SgtnClient
 
     module SingleLoader
       def load_bundle(component, locale)
+        SgtnClient.logger.debug "[#{__FILE__}][#{__callee__}] component=#{component}, locale=#{locale}"
+
         @single_bundle_loader ||= single_loader { |c,l| super(c,l) }
         id = CacheUtil.get_cachekey(component, locale)
         @single_bundle_loader.operate(id, component, locale)&.value
@@ -19,6 +21,8 @@ module SgtnClient
       end
 
       def available_bundles
+        SgtnClient.logger.debug "[#{__FILE__}][#{__callee__}]"
+
         @single_available_bundles_loader ||= single_loader { super }
         @single_available_bundles_loader.operate(CONSTS::AVAILABLE_BUNDLES_KEY)&.value
       ensure
@@ -32,10 +36,6 @@ module SgtnClient
           Thread.new do
             SgtnClient.logger.debug "start single loading #{id}"
             block.call(*args)
-          rescue StandardError => e
-            SgtnClient.logger.error "Error while loading: '#{id}', args: #{args}. error: #{e.message}"
-            SgtnClient.logger.error e.backtrace
-            nil
           end
         end
 

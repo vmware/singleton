@@ -4,8 +4,6 @@
 require 'request_store'
 
 module SgtnClient
-  autoload :StringUtil, 'sgtn-client/util/string-util'
-
   module Translation
     module Implementation
       # <b>DEPRECATED:</b> Please use <tt>Singleton:translate</tt> instead.

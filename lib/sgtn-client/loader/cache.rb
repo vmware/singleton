@@ -18,7 +18,14 @@ module SgtnClient
         cache_item = SgtnClient::CacheUtil.get_cache(key)
         if cache_item
           if SgtnClient::CacheUtil.is_expired(cache_item)
-            Thread.new { load_bundle(component, locale) } # TODO: Use one thread # refresh in background
+            Thread.new do # TODO: Use one thread # refresh in background
+              begin
+                load_bundle(component, locale)
+              rescue StandardError => e
+                SgtnClient.logger.error "an error occured while loading bundle: component=#{component}, locale=#{locale}"
+                SgtnClient.logger.error e
+              end
+            end
           end
           return cache_item.dig(:items)
         end
@@ -34,14 +41,11 @@ module SgtnClient
         item = super
         SgtnClient::CacheUtil.write_cache(key, item) if item
         item
-      rescue StandardError => e
-        SgtnClient.logger.error "[TranslationLoader::Cache][load_bundle]#{component}/#{locale}, error=#{e.message}"
-        SgtnClient.logger.error e.backtrace
-        nil
       end
 
       def available_bundles
         SgtnClient.logger.debug "[#{__FILE__}][#{__callee__}]"
+
         cache_item = SgtnClient::CacheUtil.get_cache(CONSTS::AVAILABLE_BUNDLES_KEY)
         if cache_item
           if SgtnClient::CacheUtil.is_expired(cache_item)
