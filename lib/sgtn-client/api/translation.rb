@@ -92,6 +92,7 @@ module SgtnClient
 
       def get_bundle(component, locale)
         get_bundle!(component, locale)
+      rescue UnavailableBundleError
       rescue StandardError => e
         SgtnClient.logger.error "[#{method(__callee__).owner}.#{__callee__}] failed to get a bundle. component: #{component}, locale: #{locale}"
         SgtnClient.logger.error e
@@ -102,7 +103,7 @@ module SgtnClient
         id = SgtnClient::Common::BundleID.new(component, locale)
         bundles = SgtnClient::Config.available_bundles
         unless bundles.nil? || bundles.empty? || bundles.include?(id)
-          raise SgtnClient::SingletonError, 'bundle is unavailable.'
+          raise SgtnClient::UnavailableBundleError, 'bundle is unavailable.'
         end
 
         SgtnClient::Config.loader.get_bundle(component, locale)
