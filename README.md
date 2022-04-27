@@ -12,43 +12,20 @@ rake spec:unit
 Basic Usage:
 
 ```ruby
-require 'singleton-ruby'
+require 'singleton-client'
 
-include SgtnClient
+Singleton.load_config(file, mode)
 
-SgtnClient.load(file, mode)
-
-SgtnClient::Source.loadBundles(locale)
-
-@Result = SgtnClient::Translation.getString(component, key, locale)
+result = Singleton.translate(key, component, locale)
 
 ```
 ## API Usage
 
 ### Get a string's translation
-SgtnClient::Translation.getString(component, key, locale)
+Singleton.translate(key, component, locale)
 
 ### Get a string's translation and format it with placeholders
-SgtnClient::Translation.getString_f(component, key, args, locale)
+Singleton.translate(key, component, locale, **args)
 
-### Get a component's translations
-SgtnClient::Translation.getStrings(component, locale)
-
-
-## API Usage(with request_store)
-
-Before call below APIs(without locale and component arguments), it requires to set the locale and component in the initial codes.
-
-### Get a string's translation
-SgtnClient::T.s(key)
-
-### Get a string's translation and format it with placeholders
-SgtnClient::T.s_f(key, args)
-
-### Get a component's translations
-SgtnClient::T.c()
-
-
-
-
-
+### Get translations of a bundle
+Singleton.get_translations(component, locale)

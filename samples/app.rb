@@ -13,10 +13,11 @@ class App < Sinatra::Application
   end
 
   get "/translation/all" do
-    @Result  = RunSample.run("translation/all.rb", "@Result")
+    @Result = RunSample.run("translation/all.rb", "@Result")
     haml :display_hash, :locals => {
-      :header => "Got 1 matching payments",
-      :display_hash => {"success": true, "result": @Result} }
+                          :header => "translations",
+                          :display_hash => @Result,
+                        }
   end
 
   get "/formatting/all" do
