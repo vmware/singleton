@@ -46,7 +46,7 @@ describe 'Cache' do
         cache_item = SgtnClient::CacheUtil.get_cache(bundle_id)
         expect(cache_item).to be_nil
 
-        translations = Singleton.get_translations(component, locale: locale)
+        translations = Singleton.get_translations(component, locale)
         expect(translations['messages']).to include({ key => value })
       end
 
@@ -54,7 +54,7 @@ describe 'Cache' do
         SgtnClient::Config.loader.loaders.each do |loader|
           expect(loader).to_not receive(:load_bundle)
         end
-        translations = Singleton.get_translations(component, locale: locale)
+        translations = Singleton.get_translations(component, locale)
         expect(translations['messages']).to include({ key => value })
         cache_item = SgtnClient::CacheUtil.get_cache(bundle_id)
         expect(SgtnClient::CacheUtil.is_expired(cache_item)).to be false
@@ -64,7 +64,7 @@ describe 'Cache' do
         SgtnClient::Config.loader.loaders.each do |loader|
           expect(loader).to_not receive(:load_bundle)
         end
-        translations = Singleton.get_translations(component, locale: locale)
+        translations = Singleton.get_translations(component, locale)
         expect(translations['messages']).to include({ key => value })
         cache_item = SgtnClient::CacheUtil.get_cache(bundle_id)
         expect(SgtnClient::CacheUtil.is_expired(cache_item)).to be false
@@ -88,7 +88,7 @@ describe 'Cache' do
         end
 
         # still return expired value
-        translations = Singleton.get_translations(component, locale: locale)
+        translations = Singleton.get_translations(component, locale)
         expect(translations['messages']).to include({ key => value })
         expect(translations['messages']).not_to include({ key => new_value })
         wait_threads_finish
@@ -100,7 +100,7 @@ describe 'Cache' do
         end
 
         # return new value
-        translations = Singleton.get_translations(component, locale: locale)
+        translations = Singleton.get_translations(component, locale)
         expect(translations['messages']).to include({ key => new_value })
         cache_item = SgtnClient::CacheUtil.get_cache(bundle_id)
         expect(SgtnClient::CacheUtil.is_expired(cache_item)).to be false

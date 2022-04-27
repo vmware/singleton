@@ -14,7 +14,7 @@ module SgtnClient
       def get_bundle(component, locale)
         SgtnClient.logger.debug "[#{__FILE__}][#{__callee__}] component=#{component}, locale=#{locale}"
 
-        key = SgtnClient::Common::BundleID.new(component, locale)
+        key = Common::BundleID.new(component, locale)
         cache_item = SgtnClient::CacheUtil.get_cache(key)
         if cache_item
           load_bundle(component, locale, false) if SgtnClient::CacheUtil.is_expired(cache_item)
@@ -42,7 +42,7 @@ module SgtnClient
         SgtnClient.logger.debug "[#{__FILE__}][#{__callee__}] component=#{component}, locale=#{locale}"
 
         item = super
-        SgtnClient::CacheUtil.write_cache(SgtnClient::Common::BundleID.new(component, locale), item) if item
+        SgtnClient::CacheUtil.write_cache(Common::BundleID.new(component, locale), item) if item
         item
       end
 

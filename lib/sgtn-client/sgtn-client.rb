@@ -4,6 +4,9 @@
 module SgtnClient
       LOGFILE_SHIFT_AGE = 4
 
+      module Common
+            autoload :BundleID,     "sgtn-client/common/data"
+      end
       module Core
             autoload :Cache,        "sgtn-client/core/cache"
       end

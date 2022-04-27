@@ -12,8 +12,8 @@ module SgtnClient
       def load_bundle(component, locale, sync = true)
         SgtnClient.logger.debug "[#{__FILE__}][#{__callee__}] component=#{component}, locale=#{locale}"
 
-        @single_bundle_loader ||= single_loader { |c,l| super(c,l) }
-        id = SgtnClient::Common::BundleID.new(component, locale)
+        @single_bundle_loader ||= single_loader { |c, l| super(c, l) }
+        id = Common::BundleID.new(component, locale)
         thread = @single_bundle_loader.operate(id, component, locale)
         thread&.value if sync
       ensure
@@ -32,6 +32,7 @@ module SgtnClient
       end
 
       private
+
       def single_loader(&block)
         none_alive = proc { |_, thread| thread.nil? || thread.alive? == false }
         creator = proc do |id, _, *args|
