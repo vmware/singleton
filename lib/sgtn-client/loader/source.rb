@@ -22,11 +22,18 @@ module SgtnClient
         total_messages = {}
 
         (@source_bundle_path + component).glob('**/*.{yml, yaml}') do |f|
-          bundle = YAML.load(File.read(f))
-          total_messages.merge!(bundle&.first&.last) # TODO: Warning about inconsistent source locale
+          bundle = YAML.safe_load(File.read(f))
+          messages = bundle&.first&.last # TODO: Warn about inconsistent source locale
+          if messages.is_a?(Hash)
+            total_messages.merge!(messages)
+          else
+            SgtnClient.logger.error "[#{method(__callee__).owner}.#{__callee__}] invalid bundle data in #{f}"
+          end
         end
 
-        total_messages.empty? ? nil : total_messages
+        raise SgtnClient::SingletonError, "no local source messages for component #{component}" if total_messages.empty?
+
+        total_messages
       end
 
       def available_bundles

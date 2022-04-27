@@ -23,9 +23,7 @@ module SgtnClient
           end
         end
 
-        raise exception if exception
-
-        nil
+        raise exception || SgtnClient::SingletonError.new("can't load component: #{component}, locale: #{locale}")
       end
 
       def available_bundles
@@ -38,7 +36,7 @@ module SgtnClient
             total_data += item
           rescue StandardError => e
             exception = e
-            SgtnClient.logger.error "[#{method(__callee__).owner}.#{__callee__}] failed on #{loader.class}: #{e}"
+            SgtnClient.logger.error "[#{__FILE__}][#{__callee__}] failed on #{loader.class}: #{e}"
           end
         end
 
