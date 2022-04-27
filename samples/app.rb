@@ -16,7 +16,7 @@ class App < Sinatra::Application
     @Result = RunSample.run("translation/all.rb", "@Result")
     haml :display_hash, :locals => {
                           :header => "translations",
-                          :display_hash => @Result,
+                          :display_hash => @Result
                         }
   end
 
