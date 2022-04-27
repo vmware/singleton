@@ -74,8 +74,9 @@ public class LdapAuthenticator {
 						amap.put(attr.getID(), attr.get());
 					}
 					ne.close();
+					return amap;
 				}
-				return amap;
+				
 
 			}
 

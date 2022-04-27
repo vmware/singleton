@@ -9,10 +9,18 @@ import java.security.cert.X509Certificate;
 
 import javax.net.ssl.X509TrustManager;
 
-public class LTSTrustmanager implements X509TrustManager {
-    public void checkClientTrusted(X509Certificate[] xcs, String string) throws CertificateException {}
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-    public void checkServerTrusted(X509Certificate[] xcs, String string) throws CertificateException {}
+public class LTSTrustmanager implements X509TrustManager {
+	private static Logger LOGGER = LoggerFactory.getLogger(LTSTrustmanager.class);
+    public void checkClientTrusted(X509Certificate[] xcs, String client) throws CertificateException {
+    	LOGGER.info("ClientTrusted:{}", client);
+    }
+
+    public void checkServerTrusted(X509Certificate[] xcs, String server) throws CertificateException {
+    	LOGGER.info("ServerTrusted:{}", server);
+    }
 
     public X509Certificate[] getAcceptedIssuers() {
         return new X509Certificate[0];
