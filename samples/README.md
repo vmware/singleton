@@ -30,7 +30,6 @@ Configuration in `config/sgtnclient.yml`
 
 ```yaml
 test: &default
-
   # Mode can be 'live' or 'sandbox'
   # For sandbox mode, it will produce debug log messages
   mode: sandbox
@@ -41,7 +40,7 @@ test: &default
   # # Bundle version
   version: 4.8.1
 
-  # # HTTP proxy
+  # # Singleton server
   vip_server: https://server:8090
 
   # # Translation bundle path, the child folder is product name
@@ -59,38 +58,42 @@ development:
 production:
   <<: *default
   mode: live
-
 ```
 
-## API Usage: getString
+## API Usage: Singleton.translate
 
 Basic Usage:
 
 ```ruby
 require 'singleton-client'
 
-Singleton.load_config(file, mode)
-
+Singleton.load_config(file, env)
 result = Singleton.translate(key, component, locale)
-
 ```
 
 More detailed examples:
 
 ```ruby
-
 require 'singleton-client'
-
 
 # Load config file to initialize app
 Singleton.load_config("./config/sgtnclient.yml", "test")
 
-# Get translation
+# Get a string's translation
 result = Singleton.translate("helloworld", "JAVA", "zh-Hans")
+
+# Get a string's translation with default value when no translation
+result = Singleton.translate("helloworld", "JAVA", "zh-Hans") { 'default value' }
+
+# Get a string's translation and format it with placeholders
+result = Singleton.translate("welcome", "JAVA", "zh-Hans", name: 'robot', place: 'world')
 
 # Get pluralized translation
 result = Singleton.translate("plural_key", "JAVA", "zh-Hans", :cat_count => 1)
 
+# Get a string's translation with locale set before translating
+Singleton.locale = 'en'
+result = Singleton.translate("helloworld", "JAVA")
 ```
 
 ## API Usage: DateTime/Date/Time
@@ -103,7 +106,6 @@ require 'singleton-cldr'
 DateTime.new(...).to_<format>_s(locale)
 Date.new(...).to_<format>_s(locale)
 Time.new(...).to_<format>_s(locale)
-
 ```
 
 More detailed examples:

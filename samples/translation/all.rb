@@ -1,3 +1,6 @@
+# Copyright 2022 VMware, Inc.
+# SPDX-License-Identifier: EPL-2.0
+
 require 'singleton-client'
 
 # load config file to initialize app
@@ -36,13 +39,14 @@ plural_cases['translate an English plural string - 1'] = Singleton.t('plural_key
 plural_cases['translate an English plural string - 2'] = Singleton.t('plural_key', component, en_locale, cat_count: 2, place: 'bush')
 
 # format translation
-formatting_cases['translate a string with placeholders'] = Singleton.t('welcome', component, locale, place: '虚拟世界', name: '机器人')
+formatting_cases["translate a string with placeholders - #{locale}"] = Singleton.t('welcome', component, locale, place: '虚拟世界', name: '机器人')
+formatting_cases["translate a string with placeholders - #{en_locale}"] = Singleton.t('welcome', component, en_locale, place: '虚拟世界', name: '机器人')
 
 # set locale
 Singleton.locale = locale
-setting_locale["set loale to #{locale}"] = Singleton.t('helloworld', component)
+setting_locale["set loale to #{locale} before translating"] = Singleton.t('helloworld', component)
 Singleton.locale = en_locale
-setting_locale["set loale to #{en_locale}"] = Singleton.t('helloworld', component)
+setting_locale["set loale to #{en_locale} before translating"] = Singleton.t('helloworld', component)
 
 bundle_translations = {}
 bundle_translations["#{locale} translations"] = Singleton.get_translations(component, locale)
@@ -50,4 +54,6 @@ bundle_translations['English translations'] = Singleton.get_translations(compone
 Singleton.locale = locale
 bundle_translations["set loale to #{locale}"] = Singleton.get_translations(component)
 
-@Result = { 'string translation' => string_translation, 'bundle translation' => bundle_translations }
+@Result = { 'string translation' => string_translation, 'bundle translations' => bundle_translations }
+
+pp @Result
