@@ -107,6 +107,9 @@ module SgtnClient
         end
 
         SgtnClient::Config.loader.get_bundle(component, locale)
+      rescue StandardError
+        SgtnClient::Config.available_bundles.delete(id)
+        raise
       end
     end
     extend Implementation
