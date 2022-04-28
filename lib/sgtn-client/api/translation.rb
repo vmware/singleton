@@ -106,10 +106,12 @@ module SgtnClient
           raise SgtnClient::UnavailableBundleError, 'bundle is unavailable.'
         end
 
-        SgtnClient::Config.loader.get_bundle(component, locale)
-      rescue StandardError
-        SgtnClient::Config.available_bundles.delete(id)
-        raise
+        begin
+          SgtnClient::Config.loader.get_bundle(component, locale)
+        rescue StandardError
+          SgtnClient::Config.available_bundles.delete(id)
+          raise
+        end
       end
     end
     extend Implementation
