@@ -1,3 +1,6 @@
+# Copyright 2022 VMware, Inc.
+# SPDX-License-Identifier: EPL-2.0
+
 # Configure Bundler
 require 'bundler/setup'
 require './runner.rb'
@@ -13,10 +16,11 @@ class App < Sinatra::Application
   end
 
   get "/translation/all" do
-    @Result  = RunSample.run("translation/all.rb", "@Result")
+    @Result = RunSample.run("translation/all.rb", "@Result")
     haml :display_hash, :locals => {
-      :header => "Got 1 matching payments",
-      :display_hash => {"success": true, "result": @Result} }
+                          :header => "translations",
+                          :display_hash => @Result
+                        }
   end
 
   get "/formatting/all" do

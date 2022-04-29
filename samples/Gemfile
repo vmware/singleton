@@ -1,13 +1,11 @@
 source "https://rubygems.org"
 
-#gem 'singleton-ruby', '~> 0.2.1', :path => '/opt/git/github/linr211/rb-app/ruby-app/singleton-ruby'
-gem 'singleton-ruby', '~> 0.2.1'
-
-gem 'rest-client', '~> 2.0'
-gem 'multi_json'
+gem "singleton-ruby", :path => ".."
+gem "multi_json"
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
 gem 'coderay'
 gem 'sinatra'
 gem 'haml'
 gem 'pry-byebug'
+gem "pry-inline"
