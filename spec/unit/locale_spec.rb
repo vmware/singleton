@@ -8,14 +8,12 @@ describe SgtnClient do
 
     before :each do
       SgtnClient.load("./config/sgtnclients.yml", 'test')
-      SgtnClient::Source.loadBundles("default")
     end
 
     it "get_best_locale_exact_match" do
-      expect(SgtnClient::LocaleUtil.get_best_locale('ja')).to eq 'ja'
+      expect(SgtnClient::LocaleUtil.get_best_locale('de')).to eq 'de'
       expect(SgtnClient::LocaleUtil.get_best_locale('en')).to eq 'en'
       expect(SgtnClient::LocaleUtil.get_best_locale('zh-Hans')).to eq 'zh-Hans'
-      expect(SgtnClient::LocaleUtil.get_best_locale('zh')).to eq 'zh'
       expect(SgtnClient::LocaleUtil.get_best_locale('zh-Hant')).to eq 'zh-Hant'
     end
 
@@ -26,11 +24,9 @@ describe SgtnClient do
     end
 
     it "get_best_locale_best_match" do
-      expect(SgtnClient::LocaleUtil.get_best_locale('ja-JP')).to eq 'ja'
       expect(SgtnClient::LocaleUtil.get_best_locale('de-DE')).to eq 'de'
       expect(SgtnClient::LocaleUtil.get_best_locale('zh-Hant-HK')).to eq 'zh-Hant'
-      expect(SgtnClient::LocaleUtil.get_best_locale('fr-LATN-CA')).to eq 'fr'
-      expect(SgtnClient::LocaleUtil.get_best_locale('de-CH-1901')).to eq 'de-CH'
+      expect(SgtnClient::LocaleUtil.get_best_locale('de-CH-1901')).to eq 'de'
       expect(SgtnClient::LocaleUtil.get_best_locale('zh-Hant-HK')).to eq 'zh-Hant'
       expect(SgtnClient::LocaleUtil.get_best_locale('zh-Hans-CN')).to eq 'zh-Hans'
       expect(SgtnClient::LocaleUtil.get_best_locale('zh-Hant-TW')).to eq 'zh-Hant'
@@ -40,12 +36,12 @@ describe SgtnClient do
     end
     
     it "get_best_locale_target_locale_is_nil" do
-      expect(SgtnClient::LocaleUtil.get_best_locale(nil)).to eq LocaleUtil.get_default_locale
+      expect(SgtnClient::LocaleUtil.get_best_locale(nil)).to eq SgtnClient::LocaleUtil.get_default_locale
     end
 
     it "get_best_locale_invalid_or_unsupported_target" do
-      expect(SgtnClient::LocaleUtil.get_best_locale('invalid')).to eq LocaleUtil.get_default_locale
-      expect(SgtnClient::LocaleUtil.get_best_locale('fil_PH')).to eq LocaleUtil.get_default_locale
+      expect(SgtnClient::LocaleUtil.get_best_locale('invalid')).to eq SgtnClient::LocaleUtil.get_default_locale
+      expect(SgtnClient::LocaleUtil.get_best_locale('fil_PH')).to eq SgtnClient::LocaleUtil.get_default_locale
     end
 
     it "get_source_locale" do

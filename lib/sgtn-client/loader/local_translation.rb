@@ -1,31 +1,50 @@
 # Copyright 2022 VMware, Inc.
 # SPDX-License-Identifier: EPL-2.0
 
-require 'multi_json'
+require 'json'
 
-class SgtnClient::TranslationLoader::LocalTranslation
-  BUNDLE_PREFIX = 'messages_'.freeze
-  BUNDLE_SUFFIX = '.json'.freeze
-
-  def initialize
-    env = SgtnClient::Config.default_environment
-    @config = SgtnClient::Config.configurations[env]
-
-    #  @config['translation_bundle'] isn't defined, throw error
-    @base_path = Pathname.new(@config['translation_bundle']) + @config['product_name'] + @config['version']
+module SgtnClient
+  module Common
+    autoload :BundleID, 'sgtn-client/common/data'
   end
 
-  def load_bundle(component, locale)
-    return if locale == SgtnClient::LocaleUtil::REAL_SOURCE_LOCALE # only return when NOT querying source
+  module TranslationLoader
+    autoload :CONSTS, 'sgtn-client/loader/consts'
 
-    file_name = BUNDLE_PREFIX + locale + BUNDLE_SUFFIX
-    file_path = @base_path + component + file_name
+    class LocalTranslation
+      BUNDLE_PREFIX = 'messages_'.freeze
+      BUNDLE_SUFFIX = '.json'.freeze
 
-    json_data = JSON.parse(File.read(file_path))
-    messages = json_data['messages']
+      def initialize(config)
+        @base_path = Pathname.new(config['translation_bundle']) + config['product_name'] + config['version'].to_s
+      end
 
-    raise SingletonError, 'no messages in bundle.' unless messages
+      def load_bundle(component, locale)
+        return if locale == CONSTS::REAL_SOURCE_LOCALE # return when querying source
 
-    messages
+        SgtnClient.logger.debug "[#{method(__callee__).owner}.#{__callee__}] component=#{component}, locale=#{locale}"
+
+        file_name = BUNDLE_PREFIX + locale + BUNDLE_SUFFIX
+        file_path = @base_path + component + file_name
+
+        bundle_data = JSON.parse(File.read(file_path))
+        messages = bundle_data['messages']
+
+        raise SgtnClient::SingletonError, "no messages in local bundle file: #{file_path}." unless messages
+
+        messages
+      end
+
+      def available_bundles
+        SgtnClient.logger.debug "[#{method(__callee__).owner}.#{__callee__}]"
+
+        @available_bundles ||= begin
+          @base_path.glob('*/*.json').reduce(Set.new) do |bundles, f|
+            locale = f.basename.to_s.sub(/\A#{BUNDLE_PREFIX}/i, '').sub(/#{BUNDLE_SUFFIX}\z/i, '')
+            bundles.add Common::BundleID.new(f.parent.basename.to_s, locale)
+          end
+        end
+      end
+    end
   end
 end

@@ -165,7 +165,27 @@ module SgtnClient
             SgtnClient::TranslationLoader::LoaderFactory.create(config)
           end
         end
-      
+
+        def available_bundles
+          loader.available_bundles
+        rescue StandardError => e
+          SgtnClient.logger.error 'failed to get available bundles'
+          SgtnClient.logger.error e
+          Set.new
+        end
+
+        def available_locales
+          bundles = available_bundles
+          return Set.new if bundles.nil? || bundles.empty?
+
+          unless bundles.respond_to?(:locales)
+            def bundles.locales
+              @locales ||= reduce(Set.new) { |locales, id| locales << id.locale }
+            end
+          end
+          bundles.locales
+        end
+
         private
         # Read configurations from the given file name
         # === Arguments

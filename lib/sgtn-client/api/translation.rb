@@ -1,70 +1,113 @@
 # Copyright 2022 VMware, Inc.
 # SPDX-License-Identifier: EPL-2.0
 
+require 'request_store'
+
 module SgtnClient
-  autoload :StringUtil, 'sgtn-client/util/string-util'
-
   module Translation
-    def self.getString(component, key, locale)
-      SgtnClient.logger.debug "[Translation.getString]component: #{component}, key: #{key}, locale: #{locale}"
-      str = getTranslation(component, key, locale)
-      if str.nil? && !LocaleUtil.is_source_locale(locale)
-        str = getTranslation(component, key, LocaleUtil.get_source_locale)
+    module Implementation
+      # <b>DEPRECATED:</b> Please use <tt>Singleton:translate</tt> instead.
+      def getString(component, key, locale)
+        SgtnClient.logger.debug "[Translation.getString]component: #{component}, key: #{key}, locale: #{locale}"
+        translate(key, component, locale) { nil }
       end
-      str
-    end
 
-    def self.getString_p(component, key, plural_args, locale)
-      SgtnClient.logger.debug "[Translation][getString_p]component=#{component}, key=#{key}, locale=#{locale}"
-      str = getTranslation(component, key, locale)
-      if str.nil?
-        unless LocaleUtil.is_source_locale(locale)
-          str = getTranslation(component, key, LocaleUtil.get_source_locale)
-          str.to_plural_s(LocaleUtil.get_source_locale, plural_args) if str
+      # <b>DEPRECATED:</b> Please use <tt>Singleton:translate</tt> instead.
+      def getString_p(component, key, plural_args, locale)
+        SgtnClient.logger.debug "[Translation][getString_p]component=#{component}, key=#{key}, locale=#{locale}"
+        translate(key, component, locale, **plural_args) { nil }
+      end
+
+      # <b>DEPRECATED:</b> Please use <tt>Singleton:translate</tt> instead.
+      def getString_f(component, key, args, locale, *_optionals)
+        SgtnClient.logger.debug "[Translation][getString_f]component=#{component}, key=#{key}, locale=#{locale}"
+        s = translate(key, component, locale) { nil }
+        return nil if s.nil?
+
+        if args.is_a?(Hash)
+          args.each do |source, arg|
+            s.gsub! "{#{source}}", arg
+          end
+        elsif args.is_a?(Array)
+          s = s % args
         end
-      else
-        locale = str.locale if str.is_a?(SgtnClient::StringUtil)
-        str.to_plural_s(locale, plural_args)
+        s
       end
-    end
 
-    def self.getString_f(component, key, args, locale, *optionals)
-      SgtnClient.logger.debug "[Translation][getString_f]component=#{component}, key=#{key}, locale=#{locale}"
-      s = getString(component, key, locale, *optionals)
-      return nil if s.nil?
+      # <b>DEPRECATED:</b> Please use <tt>Singleton:get_translations</tt> instead.
+      def getStrings(component, locale)
+        get_translations(component, locale)
+      end
 
-      if args.is_a?(Hash)
-        args.each do |source, arg|
-          s.gsub! "{#{source}}", arg
+      # raise error when translation is not found
+      def translate(key, component, locale = nil, **kwargs)
+        SgtnClient.logger.debug "[#{method(__callee__).owner}.#{__callee__}] key: #{key}, component: #{component}, locale: #{locale}, args: #{kwargs}"
+
+        locale = locale.nil? ? self.locale : SgtnClient::LocaleUtil.get_best_locale(locale)
+
+        result = get_bundle(component, locale)&.fetch(key, nil)
+        if result.nil? && !LocaleUtil.is_source_locale(locale)
+          locale = LocaleUtil.get_source_locale
+          result = get_bundle(component, locale)&.fetch(key, nil)
         end
-      elsif args.is_a?(Array)
-        s = s % args
+
+        if result.nil?
+          return key unless block_given?
+
+          result = yield
+          return if result.nil?
+        end
+
+        if kwargs.empty?
+          result
+        else
+          locale = result.locale if result.is_a?(SgtnClient::StringUtil)
+          result.localize(locale) % kwargs
+        end
       end
-      s
-    end
+      alias t translate
 
-    def self.getStrings(component, locale)
-      SgtnClient.logger.debug "[Translation][getStrings]component=#{component}, locale=#{locale}"
-      locale = SgtnClient::LocaleUtil.get_best_locale(locale)
-      items = get_cs(component, locale)
-      if items.nil? && !LocaleUtil.is_source_locale(locale)
-        items = get_cs(component, LocaleUtil.get_source_locale)
-        locale = LocaleUtil.get_source_locale
+      def get_translations(component, locale = nil)
+        SgtnClient.logger.debug "[#{method(__callee__).owner}.#{__callee__}] component: #{component}, locale: #{locale}"
+
+        locale = locale.nil? ? self.locale : SgtnClient::LocaleUtil.get_best_locale(locale)
+        items = get_bundle(component, locale)
+        if items.nil? && !LocaleUtil.is_source_locale(locale)
+          items = get_bundle(component, LocaleUtil.get_source_locale)
+          locale = LocaleUtil.get_source_locale
+        end
+
+        { 'component' => component, 'locale' => locale, 'messages' => items || {} } if items
       end
 
-      { 'component' => component, 'locale' => locale, 'messages' => items || {} } if items
-    end
+      def locale
+        RequestStore.store[:locale] ||= SgtnClient::LocaleUtil.get_fallback_locale
+      end
 
-    def self.getTranslation(component, key, locale)
-      locale = SgtnClient::LocaleUtil.get_best_locale(locale)
-      items = get_cs(component, locale)
-      items&.fetch(key, nil)
-    end
+      def locale=(value)
+        RequestStore.store[:locale] = SgtnClient::LocaleUtil.get_best_locale(value)
+      end
 
-    def self.get_cs(component, locale)
-      SgtnClient::Config.loader.get_bundle(component, locale)
-    end
+      private
 
-    private_class_method :getTranslation, :get_cs
+      def get_bundle(component, locale)
+        get_bundle!(component, locale)
+      rescue StandardError => e
+        SgtnClient.logger.error "[#{method(__callee__).owner}.#{__callee__}] failed to get a bundle. component: #{component}, locale: #{locale}"
+        SgtnClient.logger.error e
+        nil
+      end
+
+      def get_bundle!(component, locale)
+        id = SgtnClient::Common::BundleID.new(component, locale)
+        bundles = SgtnClient::Config.available_bundles
+        unless bundles.nil? || bundles.empty? || bundles.include?(id)
+          raise SgtnClient::SingletonError, 'bundle is unavailable.'
+        end
+
+        SgtnClient::Config.loader.get_bundle(component, locale)
+      end
+    end
+    extend Implementation
   end
 end

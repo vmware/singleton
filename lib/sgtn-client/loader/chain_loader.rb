@@ -11,13 +11,38 @@ module SgtnClient
       end
 
       def load_bundle(component, locale)
+        exception = nil
+
         loaders.each do |loader|
-          bundle = loader.load_bundle(component, locale)
-          return bundle if bundle
-        rescue StandardError => e
-          SgtnClient.logger.warn "Failed to load bundle from #{loader.class.name}: #{e}"
+          begin
+            bundle = loader.load_bundle(component, locale)
+            return bundle if bundle
+          rescue StandardError => e
+            exception = e
+            SgtnClient.logger.error "[#{__FILE__}][#{__callee__}] {component: #{component},locale: #{locale}}, failed on #{loader.class}: #{e}"
+          end
         end
-        nil
+
+        raise exception || SgtnClient::SingletonError.new("can't load component: #{component}, locale: #{locale}")
+      end
+
+      def available_bundles
+        exception = nil
+        total_data = Set.new
+
+        loaders.each do |loader|
+          begin
+            item = loader.available_bundles
+            total_data += item
+          rescue StandardError => e
+            exception = e
+            SgtnClient.logger.error "[#{__FILE__}][#{__callee__}] failed on #{loader.class}: #{e}"
+          end
+        end
+
+        raise exception if total_data.empty? && exception
+
+        total_data
       end
     end
   end

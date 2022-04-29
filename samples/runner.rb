@@ -1,15 +1,9 @@
+# Copyright 2022 VMware, Inc.
+# SPDX-License-Identifier: EPL-2.0
+
 # Run Samples on different scope
-#require 'sgtn-client'
-
-#require 'singleton-ruby'
-
-#include SgtnClient
 
 module RunSample
-  def self.logger
-    SgtnClient.logger
-  end
-
   def self.run(file, variable)
     object_binding = binding
     object_binding.eval(File.read("./#{file}"))
