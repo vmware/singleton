@@ -21,6 +21,10 @@ describe Singleton, :include_helpers, :extend_helpers do
       expect(Singleton.translate(key_nonexistent, component, locale) { defaut_value }).to eq defaut_value
     end
 
+    it 'translate a nonexistent key with nil as default value, should return nil' do
+      expect(Singleton.translate(key_nonexistent, component, locale) { nil }).to eq nil
+    end
+
     it 'translate a nil key, should return nil' do
       expect(Singleton.translate(nil, component, locale)).to be_nil
     end
@@ -154,14 +158,28 @@ describe Singleton, :include_helpers, :extend_helpers do
     end
     it 'should be able to set locale with empty string' do
       Singleton.locale = ''
-      expect(Singleton.locale).to eq en_locale
+      expect(Singleton.locale).to eq ''
       expect(Singleton.translate(key, component)).to eq en_value
     end
     it 'should be able to set locale with invalid locale' do
       Singleton.locale = 'invalid'
-      expect(Singleton.locale).to eq 'en'
+      expect(Singleton.locale).to eq 'invalid'
       expect(Singleton.translate(key, component)).to eq en_value
     end
   end
-  # default nil value
+
+  it "#don't repeat to access server for failed bundles" do
+    err_msg = 'temporary error'
+    expect( SgtnClient::Config.loader).to receive(:get_bundle).with(component, locale).once.and_raise(SgtnClient::SingletonError.new(err_msg)).ordered
+    expect( SgtnClient::Config.loader).to receive(:get_bundle).with(component, source_locale).once.and_call_original.ordered
+    
+    # fail first time
+    expect { Singleton.send(:get_bundle!, component, locale) }.to raise_error(err_msg)
+
+    # return source second time
+    expect(Singleton.get_translations(component, locale)['locale']).to eq source_locale
+  ensure
+    SgtnClient::Config.available_bundles.add(SgtnClient::Common::BundleID.new(component, locale))
+    SgtnClient::Config.available_locales(component).add(locale)
+  end
 end

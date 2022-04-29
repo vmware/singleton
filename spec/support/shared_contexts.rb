@@ -13,3 +13,17 @@ RSpec.shared_context 'reset client' do
     SgtnClient::CacheUtil.clear_cache
   end
 end
+
+RSpec.shared_context 'webmock' do
+  before :all do
+    WebMock.enable!
+    WebMock.disable_net_connect!
+  end
+  after :all do
+    WebMock.disable!
+  end
+
+  before :each do
+    WebMock.reset!
+  end
+end

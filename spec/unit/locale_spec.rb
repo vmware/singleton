@@ -6,10 +6,6 @@ require 'spec_helper'
 describe SgtnClient do
   describe "Locale" do
 
-    before :each do
-      SgtnClient.load("./config/sgtnclients.yml", 'test')
-    end
-
     it "get_best_locale_exact_match" do
       expect(SgtnClient::LocaleUtil.get_best_locale('de')).to eq 'de'
       expect(SgtnClient::LocaleUtil.get_best_locale('en')).to eq 'en'

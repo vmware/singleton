@@ -22,6 +22,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency('rubocop', '~> 0.49')
   s.add_development_dependency('webmock', '~> 2.0')
 
+  s.add_dependency('concurrent-ruby')
   s.add_dependency('faraday')
   s.add_dependency('faraday_middleware')
   s.add_dependency('multi_json', '~> 1.0')

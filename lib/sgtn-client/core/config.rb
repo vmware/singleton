@@ -1,6 +1,7 @@
 # Copyright 2022 VMware, Inc.
 # SPDX-License-Identifier: EPL-2.0
 
+require 'concurrent'
 require 'erb'
 require 'yaml'
 
@@ -174,16 +175,37 @@ module SgtnClient
           Set.new
         end
 
-        def available_locales
+        def available_components
+          bundles = available_bundles
+          return Set.new if bundles.nil? || bundles.empty?
+
+          unless bundles.respond_to?(:components)
+            def bundles.components
+              @components ||= reduce(Set.new) { |components, id| components << id.component }
+            end
+          end
+          bundles.components
+        end
+
+        def available_locales(component = nil)
           bundles = available_bundles
           return Set.new if bundles.nil? || bundles.empty?
 
           unless bundles.respond_to?(:locales)
-            def bundles.locales
-              @locales ||= reduce(Set.new) { |locales, id| locales << id.locale }
+            def bundles.locales(component)
+              if component.nil?
+                @locales ||= reduce(Set.new) { |locales, id| locales << id.locale }
+              else
+                if Config.available_components.include?(component)
+                  @component_locales ||= Concurrent::Hash.new
+                  @component_locales[component] ||= reduce(Set.new) { |locales, id| id.component == component ? locales << id.locale : locales }
+                else
+                  nil
+                end
+              end
             end
           end
-          bundles.locales
+          bundles.locales(component)
         end
 
         private

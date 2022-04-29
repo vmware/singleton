@@ -3,10 +3,6 @@
 
 describe SgtnClient::Config do
   describe 'load_config' do
-    before :each do
-      SgtnClient.load('./spec/config/sgtnclient.yml', 'test', './sgtnclient_config.log')
-    end
-
     it 'define configuration' do
       env = SgtnClient::Config.default_environment
       mode = SgtnClient::Config.configurations[env]['mode']
@@ -24,7 +20,7 @@ describe SgtnClient::Config do
 
   describe '#availale bundles/locales - Config', :include_helpers, :extend_helpers do
     subject { SgtnClient::Config }
-    include_examples 'Available Bundles' do
+    it_behaves_like 'Available Bundles' do
       include_context 'reset client'
 
       before :all do
@@ -35,18 +31,58 @@ describe SgtnClient::Config do
       end
     end
 
-    before :each, locales: true do
-      @config['vip_server'] = singleton_server
-      @config['translation_bundle'] = translation_path
-      @config['source_bundle'] = source_path
-    end
+    describe '#available locales' do
+      include_context 'reset client'
+      include_context 'webmock'
+      let(:stubs) { [] }
+      before :all do
+        config = SgtnClient::Config.configurations[SgtnClient::Config.default_environment]
+        config['vip_server'] = singleton_server
+      end
 
-    it '#should be able to get available locales', locales: true do
-      stubs << components_stub << locales_stub
-      result = subject.available_locales
-      expect(result).to be_a_kind_of(Set)
-      expect(result).to include(locale, en_locale, source_locale)
-      stubs.each { |stub| expect(stub).to have_been_requested }
+      before :each do
+        SgtnClient::CacheUtil.clear_cache
+      end
+
+      it '#should be able to get available locales of all' do
+        stubs << components_stub << locales_stub
+        result = subject.available_locales
+        expect(result).to be_a_kind_of(Set)
+        expect(result).to include(locale, en_locale, source_locale)
+        stubs.each { |stub| expect(stub).to have_been_requested }
+      end
+
+      it '#should be able to get available locales of a component' do
+        stubs << components_stub << locales_stub
+        result = subject.available_locales(component)
+        expect(result).to be_a_kind_of(Set)
+        expect(result).to include(locale, en_locale, source_locale)
+        stubs.each { |stub| expect(stub).to have_been_requested }
+      end
+
+      it '#should be able to get available locales of a component only in source' do
+        stubs << components_stub << locales_stub
+        result = subject.available_locales(component_local_source_only)
+        expect(result).to be_a_kind_of(Set)
+        expect(result).to contain_exactly(source_locale)
+        stubs.each { |stub| expect(stub).to have_been_requested }
+      end
+
+      it '#should be able to get available locales of a component only in local' do
+        stubs << components_stub << locales_stub
+        result = subject.available_locales(component_local_translation_only)
+        expect(result).to be_a_kind_of(Set)
+        expect(result).to contain_exactly(en_locale, locale)
+        stubs.each { |stub| expect(stub).to have_been_requested }
+      end
+
+      it '#should be able to get available locales of a component only on server' do
+        stubs << components_stub << locales_stub
+        result = subject.available_locales(component_only_on_server)
+        expect(result).to be_a_kind_of(Set)
+        expect(result).to contain_exactly(en_locale, locale)
+        stubs.each { |stub| expect(stub).to have_been_requested }
+      end
     end
   end
 end

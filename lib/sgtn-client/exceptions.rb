@@ -3,5 +3,4 @@
 
 module SgtnClient
   class SingletonError < StandardError; end
-  class UnavailableBundleError < SingletonError; end
 end

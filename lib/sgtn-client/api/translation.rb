@@ -43,12 +43,13 @@ module SgtnClient
       def translate(key, component, locale = nil, **kwargs)
         SgtnClient.logger.debug "[#{method(__callee__).owner}.#{__callee__}] key: #{key}, component: #{component}, locale: #{locale}, args: #{kwargs}"
 
-        locale = locale.nil? ? self.locale : SgtnClient::LocaleUtil.get_best_locale(locale)
+        begin
+          locale = SgtnClient::LocaleUtil.get_best_locale(locale || self.locale, component)
 
-        result = get_bundle(component, locale)&.fetch(key, nil)
-        if result.nil? && !LocaleUtil.is_source_locale(locale)
-          locale = LocaleUtil.get_source_locale
           result = get_bundle(component, locale)&.fetch(key, nil)
+        rescue StandardError => e
+          SgtnClient.logger.debug "[#{method(__callee__).owner}.#{__callee__}] translation missing. {#{key}, #{component}, #{locale}}. #{e}"
+          result = nil
         end
 
         if result.nil?
@@ -70,14 +71,13 @@ module SgtnClient
       def get_translations(component, locale = nil)
         SgtnClient.logger.debug "[#{method(__callee__).owner}.#{__callee__}] component: #{component}, locale: #{locale}"
 
-        locale = locale.nil? ? self.locale : SgtnClient::LocaleUtil.get_best_locale(locale)
+        locale = SgtnClient::LocaleUtil.get_best_locale(locale || self.locale, component)
         items = get_bundle(component, locale)
-        if items.nil? && !LocaleUtil.is_source_locale(locale)
-          items = get_bundle(component, LocaleUtil.get_source_locale)
-          locale = LocaleUtil.get_source_locale
-        end
 
-        { 'component' => component, 'locale' => locale, 'messages' => items || {} } if items
+        { 'component' => component, 'locale' => locale, 'messages' => items } if items
+      rescue StandardError => e
+        SgtnClient.logger.error "[#{method(__callee__).owner}.#{__callee__}] translation missing. {#{component}, #{locale}}. #{e}"
+        nil
       end
 
       def locale
@@ -85,14 +85,13 @@ module SgtnClient
       end
 
       def locale=(value)
-        RequestStore.store[:locale] = SgtnClient::LocaleUtil.get_best_locale(value)
+        RequestStore.store[:locale] = value
       end
 
       private
 
       def get_bundle(component, locale)
         get_bundle!(component, locale)
-      rescue UnavailableBundleError
       rescue StandardError => e
         SgtnClient.logger.error "[#{method(__callee__).owner}.#{__callee__}] failed to get a bundle. component: #{component}, locale: #{locale}"
         SgtnClient.logger.error e
@@ -100,20 +99,16 @@ module SgtnClient
       end
 
       def get_bundle!(component, locale)
-        id = SgtnClient::Common::BundleID.new(component, locale)
+        SgtnClient::Config.loader.get_bundle(component, locale)
+      rescue StandardError
+        # delete the locale from the available_bundles of component to avoid repeated calls to server
         bundles = SgtnClient::Config.available_bundles
-        unless bundles.nil? || bundles.empty? || bundles.include?(id)
-          raise SgtnClient::UnavailableBundleError, 'bundle is unavailable.'
-        end
-
-        begin
-          SgtnClient::Config.loader.get_bundle(component, locale)
-        rescue StandardError
-          SgtnClient::Config.available_bundles.delete(id)
-          raise
-        end
+        bundles.delete(SgtnClient::Common::BundleID.new(component, locale))
+        SgtnClient::Config.available_locales(component)&.delete(locale)
+        raise
       end
     end
+
     extend Implementation
   end
 end
