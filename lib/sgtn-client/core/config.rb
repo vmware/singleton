@@ -200,7 +200,6 @@ module SgtnClient
                 end
               end
             RUBY_EVAL
-
           end
           bundles.locales(component)
         end
