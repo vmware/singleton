@@ -44,13 +44,13 @@ describe SgtnClient::Config do
         SgtnClient::CacheUtil.clear_cache
       end
 
-      it '#should be able to get available locales of all' do
-        stubs << components_stub << locales_stub
-        result = subject.available_locales
-        expect(result).to be_a_kind_of(Set)
-        expect(result).to include(locale, en_locale, source_locale)
-        stubs.each { |stub| expect(stub).to have_been_requested }
-      end
+      # it '#should be able to get available locales of all' do
+      #   stubs << components_stub << locales_stub
+      #   result = subject.available_locales
+      #   expect(result).to be_a_kind_of(Set)
+      #   expect(result).to include(locale, en_locale, source_locale)
+      #   stubs.each { |stub| expect(stub).to have_been_requested }
+      # end
 
       it '#should be able to get available locales of a component' do
         stubs << components_stub << locales_stub

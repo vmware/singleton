@@ -12,7 +12,7 @@ module SgtnClient
       'zh-Hant-TW' => 'zh-Hant'
     }.freeze
 
-    def self.get_best_locale(locale, component = nil)
+    def self.get_best_locale(locale, component)
       candidates = Config.available_locales(component)
       if candidates.nil? || candidates.empty?
         raise SgtnClient::SingletonError, "component '#{component}' doesn't exist!"
