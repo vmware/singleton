@@ -192,16 +192,15 @@ module SgtnClient
           return Set.new if bundles.nil? || bundles.empty?
 
           unless bundles.respond_to?(:locales)
-            bundles.instance_eval do |obj|
+            bundles.instance_eval <<-RUBY_EVAL, __FILE__, __LINE__
               @component_locales = Concurrent::Hash.new
-              def bundles.locales(component)
+              def locales(component)
                 if Config.available_components.include?(component)
                   @component_locales[component] ||= reduce(Set.new) { |locales, id| id.component == component ? locales << id.locale : locales }
-                else
-                  nil
                 end
               end
-            end
+            RUBY_EVAL
+
           end
           bundles.locales(component)
         end
