@@ -27,6 +27,7 @@ Gem::Specification.new do |s|
   s.add_dependency('multi_json', '~> 1.0')
   s.add_dependency('request_store')
   s.add_dependency('twitter_cldr', '~> 6.6')
+  s.add_dependency('i18n')
 
   s.required_ruby_version = '>= 2.0.0'
 end
