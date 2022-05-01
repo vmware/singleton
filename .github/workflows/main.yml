@@ -63,7 +63,7 @@ jobs:
           gem build singleton-ruby.gemspec
           mkdir spec/log
           touch spec/log/http.log
-          rake spec:unit
+          rake spec
       - name: Coverage
         run: |
           COVERAGE=true bundle exec rspec './spec/spec_helper.rb' 
