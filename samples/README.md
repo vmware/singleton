@@ -60,15 +60,15 @@ production:
   mode: live
 ```
 
-## API Usage: Singleton.translate
+## API Usage: Sgtn.translate
 
 Basic Usage:
 
 ```ruby
 require 'singleton-client'
 
-Singleton.load_config(file, env)
-result = Singleton.translate(key, component, locale)
+Sgtn.load_config(file, env)
+result = Sgtn.translate(key, component, locale)
 ```
 
 More detailed examples:
@@ -77,23 +77,23 @@ More detailed examples:
 require 'singleton-client'
 
 # Load config file to initialize app
-Singleton.load_config("./config/sgtnclient.yml", "test")
+Sgtn.load_config("./config/sgtnclient.yml", "test")
 
 # Get a string's translation
-result = Singleton.translate("helloworld", "JAVA", "zh-Hans")
+result = Sgtn.translate("helloworld", "JAVA", "zh-Hans")
 
 # Get a string's translation with default value when no translation
-result = Singleton.translate("helloworld", "JAVA", "zh-Hans") { 'default value' }
+result = Sgtn.translate("helloworld", "JAVA", "zh-Hans") { 'default value' }
 
 # Get a string's translation and format it with placeholders
-result = Singleton.translate("welcome", "JAVA", "zh-Hans", name: 'robot', place: 'world')
+result = Sgtn.translate("welcome", "JAVA", "zh-Hans", name: 'robot', place: 'world')
 
 # Get pluralized translation
-result = Singleton.translate("plural_key", "JAVA", "zh-Hans", :cat_count => 1)
+result = Sgtn.translate("plural_key", "JAVA", "zh-Hans", :cat_count => 1)
 
 # Get a string's translation with locale set before translating
-Singleton.locale = 'en'
-result = Singleton.translate("helloworld", "JAVA")
+Sgtn.locale = 'en'
+result = Sgtn.translate("helloworld", "JAVA")
 ```
 
 ## API Usage: DateTime/Date/Time
