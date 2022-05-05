@@ -157,7 +157,9 @@ public List<String> getVersionList(String productName) throws DataException {
           }
         List<String> result = new ArrayList<>();
         for(String version: versionset) {
-            result.add(version);
+        	if(!version.equals(ConstantsChar.EMPTY)) {
+        		 result.add(version);
+        	}
         }
       return result;
       
