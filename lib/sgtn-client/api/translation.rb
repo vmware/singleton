@@ -43,9 +43,13 @@ module SgtnClient
         SgtnClient.logger.debug "[#{method(__callee__).owner}.#{__callee__}] key: #{key}, component: #{component}, locale: #{locale}, args: #{kwargs}"
 
         begin
-          locale = SgtnClient::LocaleUtil.get_best_locale(locale || self.locale, component)
+          actual_locale = SgtnClient::LocaleUtil.get_best_locale(locale || self.locale, component)
 
-          result = get_bundle(component, locale)&.fetch(key, nil)
+          result = get_bundle(component, actual_locale)&.fetch(key, nil)
+          if result.nil? && !LocaleUtil.is_source_locale(actual_locale)
+            actual_locale = LocaleUtil.get_source_locale
+            result = get_bundle(component, actual_locale)&.fetch(key, nil)
+          end
         rescue StandardError => e
           SgtnClient.logger.debug "[#{method(__callee__).owner}.#{__callee__}] translation is missing. {#{key}, #{component}, #{locale}}. #{e}"
           result = nil
@@ -61,8 +65,8 @@ module SgtnClient
         if kwargs.empty?
           result
         else
-          locale = result.locale if result.is_a?(SgtnClient::StringUtil)
-          result.localize(locale) % kwargs
+          actual_locale = result.locale if result.is_a?(SgtnClient::StringUtil)
+          result.localize(actual_locale) % kwargs
         end
       end
       alias t translate
@@ -70,12 +74,16 @@ module SgtnClient
       def get_translations(component, locale = nil)
         SgtnClient.logger.debug "[#{method(__callee__).owner}.#{__callee__}] component: #{component}, locale: #{locale}"
 
-        locale = SgtnClient::LocaleUtil.get_best_locale(locale || self.locale, component)
-        items = get_bundle(component, locale)
+        actual_locale = SgtnClient::LocaleUtil.get_best_locale(locale || self.locale, component)
+        items = get_bundle(component, actual_locale)
+        if items.nil? && !LocaleUtil.is_source_locale(actual_locale)
+          actual_locale = LocaleUtil.get_source_locale
+          items = get_bundle(component, actual_locale)
+        end
 
-        { 'component' => component, 'locale' => locale, 'messages' => items } if items
+        { 'component' => component, 'locale' => actual_locale, 'messages' => items } if items
       rescue StandardError => e
-        SgtnClient.logger.error "[#{method(__callee__).owner}.#{__callee__}] translation missing. {#{component}, #{locale}}. #{e}"
+        SgtnClient.logger.error "[#{method(__callee__).owner}.#{__callee__}] translation is missing. {#{component}, #{locale}}. #{e}"
         nil
       end
 
@@ -101,8 +109,7 @@ module SgtnClient
         SgtnClient::Config.loader.get_bundle(component, locale)
       rescue StandardError
         # delete the locale from the available_bundles of component to avoid repeated calls to server
-        bundles = SgtnClient::Config.available_bundles
-        bundles.delete(SgtnClient::Common::BundleID.new(component, locale))
+        SgtnClient::Config.available_bundles.delete(SgtnClient::Common::BundleID.new(component, locale))
         SgtnClient::Config.available_locales(component)&.delete(locale)
         raise
       end
