@@ -2,6 +2,7 @@
 # SPDX-License-Identifier: EPL-2.0
 
 require 'json'
+require 'pathname'
 
 module SgtnClient
   module Common

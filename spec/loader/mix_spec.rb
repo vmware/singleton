@@ -119,7 +119,7 @@ describe 'Mix', :include_helpers, :extend_helpers do
 
       expect { loader.get_bundle(component_nonexistent, locale) }.to raise_error(SgtnClient::SingletonError)
 
-      sleep 0.05
+      wait_threads_finish
       stubs.each { |stub| expect(stub).to have_been_requested }
     end
 
@@ -130,7 +130,7 @@ describe 'Mix', :include_helpers, :extend_helpers do
 
       expect { loader.get_bundle(component, locale_nonexistent) }.to raise_error(SgtnClient::SingletonError)
 
-      sleep 0.05
+      wait_threads_finish
       stubs.each { |stub| expect(stub).to have_been_requested }
     end
 
@@ -190,7 +190,7 @@ describe 'Mix', :include_helpers, :extend_helpers do
 
       expect { loader.get_bundle(component_nonexistent, locale) }.to raise_error(SgtnClient::SingletonError)
 
-      sleep 0.05
+      wait_threads_finish
       stubs.each { |stub| expect(stub).to have_been_requested }
     end
 
@@ -200,7 +200,7 @@ describe 'Mix', :include_helpers, :extend_helpers do
 
       expect { loader.get_bundle(component, locale_nonexistent) }.to raise_error(SgtnClient::SingletonError)
 
-      sleep 0.05
+      wait_threads_finish
       stubs.each { |stub| expect(stub).to have_been_requested }
     end
 
@@ -278,7 +278,7 @@ describe 'Mix', :include_helpers, :extend_helpers do
 
       expect { loader.get_bundle(component_nonexistent, locale) }.to raise_error(Errno::ENOENT)
 
-      sleep 0.05
+      wait_threads_finish
       stubs.each { |stub| expect(stub).to have_been_requested }
     end
 
@@ -289,7 +289,7 @@ describe 'Mix', :include_helpers, :extend_helpers do
 
       expect { loader.get_bundle(component, locale_nonexistent) }.to raise_error(Errno::ENOENT)
 
-      sleep 0.05
+      wait_threads_finish
       stubs.each { |stub| expect(stub).to have_been_requested }
     end
 
@@ -414,7 +414,7 @@ describe 'Mix', :include_helpers, :extend_helpers do
 
       expect { loader.get_bundle(component_nonexistent, locale) }.to raise_error(Errno::ENOENT)
 
-      sleep 0.05
+      wait_threads_finish
       stubs.each { |stub| expect(stub).to have_been_requested }
     end
 
@@ -424,7 +424,7 @@ describe 'Mix', :include_helpers, :extend_helpers do
 
       expect { loader.get_bundle(component, locale_nonexistent) }.to raise_error(Errno::ENOENT)
 
-      sleep 0.05
+      wait_threads_finish
       stubs.each { |stub| expect(stub).to have_been_requested }
     end
 
