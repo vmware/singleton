@@ -39,7 +39,6 @@ module SgtnClient
         get_translations(component, locale)
       end
 
-      # raise error when translation is not found
       def translate(key, component, locale = nil, **kwargs)
         SgtnClient.logger.debug "[#{method(__callee__).owner}.#{__callee__}] key: #{key}, component: #{component}, locale: #{locale}, args: #{kwargs}"
 
@@ -48,7 +47,7 @@ module SgtnClient
 
           result = get_bundle(component, locale)&.fetch(key, nil)
         rescue StandardError => e
-          SgtnClient.logger.debug "[#{method(__callee__).owner}.#{__callee__}] translation missing. {#{key}, #{component}, #{locale}}. #{e}"
+          SgtnClient.logger.debug "[#{method(__callee__).owner}.#{__callee__}] translation is missing. {#{key}, #{component}, #{locale}}. #{e}"
           result = nil
         end
 
