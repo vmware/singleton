@@ -6,19 +6,19 @@ require 'request_store'
 module SgtnClient
   module Translation
     module Implementation
-      # <b>DEPRECATED:</b> Please use <tt>Singleton:translate</tt> instead.
+      # <b>DEPRECATED:</b> Please use <tt>Sgtn:translate</tt> instead.
       def getString(component, key, locale)
         SgtnClient.logger.debug "[Translation.getString]component: #{component}, key: #{key}, locale: #{locale}"
         translate(key, component, locale) { nil }
       end
 
-      # <b>DEPRECATED:</b> Please use <tt>Singleton:translate</tt> instead.
+      # <b>DEPRECATED:</b> Please use <tt>Sgtn:translate</tt> instead.
       def getString_p(component, key, plural_args, locale)
         SgtnClient.logger.debug "[Translation][getString_p]component=#{component}, key=#{key}, locale=#{locale}"
         translate(key, component, locale, **plural_args) { nil }
       end
 
-      # <b>DEPRECATED:</b> Please use <tt>Singleton:translate</tt> instead.
+      # <b>DEPRECATED:</b> Please use <tt>Sgtn:translate</tt> instead.
       def getString_f(component, key, args, locale, *_optionals)
         SgtnClient.logger.debug "[Translation][getString_f]component=#{component}, key=#{key}, locale=#{locale}"
         s = translate(key, component, locale) { nil }
@@ -34,7 +34,7 @@ module SgtnClient
         s
       end
 
-      # <b>DEPRECATED:</b> Please use <tt>Singleton:get_translations</tt> instead.
+      # <b>DEPRECATED:</b> Please use <tt>Sgtn:get_translations</tt> instead.
       def getStrings(component, locale)
         get_translations(component, locale)
       end
