@@ -21,7 +21,7 @@ module SgtnClient
           return obj unless con.call(id, obj, *args)
         end
         # TODO: whatif returning nil
-        @hash[id] = @creator.call(id, obj, *args, block)
+        @hash[id] = @creator.call(id, obj, *args, &block)
       end
     end
 
