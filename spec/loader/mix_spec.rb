@@ -35,14 +35,17 @@ describe 'Mix', :include_helpers, :extend_helpers do
 
     it "should return nil for #{locale}" do
       expect { loader.get_bundle(component_local_source_only, locale) }.to raise_error(SgtnClient::SingletonError)
+      wait_threads_finish
     end
 
     it "should return nil for #{component_nonexistent}" do
       expect { loader.get_bundle(component_nonexistent, locale) }.to raise_error(SgtnClient::SingletonError)
+      wait_threads_finish
     end
 
     it "should return nil for #{locale_nonexistent}" do
-      expect{ loader.get_bundle(component, locale_nonexistent) }.to raise_error(SgtnClient::SingletonError)
+      expect { loader.get_bundle(component, locale_nonexistent) }.to raise_error(SgtnClient::SingletonError)
+      wait_threads_finish
     end
 
     it 'should have only 1 loader' do
@@ -69,10 +72,12 @@ describe 'Mix', :include_helpers, :extend_helpers do
 
     it "should return nil for #{component_nonexistent}" do
       expect { loader.get_bundle(component_nonexistent, locale) }.to raise_error(Errno::ENOENT)
+      wait_threads_finish
     end
 
     it "should return nil for #{locale_nonexistent}" do
       expect { loader.get_bundle(component, locale_nonexistent) }.to raise_error(Errno::ENOENT)
+      wait_threads_finish
     end
 
     it 'should have only 1 loader' do
@@ -255,6 +260,7 @@ describe 'Mix', :include_helpers, :extend_helpers do
       stubs << stub_request(:get, format(bundle_url, latest_locale, component_local_translation_only)).to_return(body: nonexistent_response)
 
       expect { loader.get_bundle(component_local_translation_only, en_locale) }.to raise_error(SgtnClient::SingletonError)
+      wait_threads_finish
 
       stubs.each { |stub| expect(stub).to have_been_requested }
     end
@@ -324,10 +330,12 @@ describe 'Mix', :include_helpers, :extend_helpers do
 
     it "should return nil for #{component_nonexistent}" do
       expect { loader.get_bundle(component_nonexistent, locale) }.to raise_error(Errno::ENOENT)
+      wait_threads_finish
     end
 
     it "should return nil for #{locale_nonexistent}" do
       expect { loader.get_bundle(component, locale_nonexistent) }.to raise_error(Errno::ENOENT)
+      wait_threads_finish
     end
 
     it 'should have 2 loaders' do
