@@ -13,45 +13,52 @@ describe SgtnClient::TranslationLoader::SingleLoader, :include_helpers, :extend_
   end.new
   return_value = {}
 
+  prefix = '-----------------------------'
+  trace = TracePoint.new(:call, :return) do |tp|
+    if tp.event == :return
+      SgtnClient.logger.debug "#{prefix}#{[tp.method_id, tp.event, tp.return_value]}"
+    else
+      SgtnClient.logger.debug "#{prefix}#{[tp.method_id, tp.event, tp.binding.local_variables.map { |var| tp.binding.local_variable_get(var) }]}"
+    end
+  end
+
   include_context 'reset client' do
     before(:all) do
       SgtnClient::Config.configurations[SgtnClient::Config.default_environment] = config
+      trace.enable(target: SgtnClient::TranslationLoader::SingleLoader.instance_method(:load_bundle))
+    end
+    after(:all) do
+      trade.disable
     end
   end
 
   it '#only one request is made' do
     max_thread_num = 100
-    pool = Concurrent::ThreadPoolExecutor.new(min_threads: max_thread_num, max_threads: max_thread_num * 10, max_queue: 0)
-    TracePoint.new(:return) do |tp|
-      SgtnClient.logger.debug tp.inspect
-    end.enable(target: SgtnClient::TranslationLoader::SingleLoader.instance_method(:load_bundle))
 
     semaphore = Concurrent::Semaphore.new(max_thread_num)
     lock = Concurrent::ReadWriteLock.new
     expect(lock.acquire_write_lock).to be true # make all threads to wait for the lock
 
-    expect(loader).to receive(:super_load).with(component, locale).once do
+    expect(loader).to receive(:super_load).with(component, locale).at_least(:once) do
       SgtnClient.logger.debug 'Start Loading...................'
-      sleep 0.01
+      sleep 0.001
       SgtnClient.logger.debug 'End Loading...................'
-      return_value
+
+      # return_value
+      Thread.current.name
     end
 
     start = Time.now
     (0...max_thread_num).each do |_|
-      queued = pool.post(component, locale) do |c, l|
+      Thread.new do
         semaphore.acquire
-        lock.with_read_lock { loader.load_bundle(c, l) }
+        lock.with_read_lock { expect(loader.load_bundle(component, locale)).not_to be nil }
       end
-      SgtnClient.logger.debug "queued: #{queued}"
     end
     sleep 0.001 while semaphore.available_permits != 0 # wait for all threads ready to load
     lock.release_write_lock # let all threads to load simultaneously
 
-    pool.shutdown
-    pool.wait_for_termination
-    expect(pool.shutdown?).to be true
-
+    wait_threads_finish
     SgtnClient.logger.info "test time: #{Time.now - start}"
   end
 

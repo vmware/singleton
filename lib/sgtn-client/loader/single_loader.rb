@@ -14,7 +14,10 @@ module SgtnClient
         creator = proc do |id, _, &block|
           Thread.new do
             SgtnClient.logger.debug "start single loading #{id}"
-            block.call
+            result = block.call
+            # delete thread from hash after finish
+            single_loader.remove_object(id)
+            result
           end
         end
 
@@ -39,9 +42,6 @@ module SgtnClient
         single_loader = SingleLoader.instance_variable_get(:@single_loader)
         thread = single_loader.operate(id, &block)
         thread&.value if sync
-      ensure
-        # delete thread from hash after finish
-        single_loader.remove_object(id)
       end
     end
   end

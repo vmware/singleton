@@ -21,6 +21,9 @@ describe 'Mix', :include_helpers, :extend_helpers do
     SgtnClient::CacheUtil.clear_cache
     WebMock.reset!
   end
+  after :each do
+    wait_threads_finish
+  end
 
   describe '#only local source is available' do
     before :each do
@@ -34,11 +37,11 @@ describe 'Mix', :include_helpers, :extend_helpers do
     end
 
     it "should return nil for #{locale}" do
-      expect{ loader.get_bundle(component_local_source_only, locale) }.to raise_error(SgtnClient::SingletonError)
+      expect { loader.get_bundle(component_local_source_only, locale) }.to raise_error(SgtnClient::SingletonError)
     end
 
     it "should return nil for #{component_nonexistent}" do
-      expect{ loader.get_bundle(component_nonexistent, locale) }.to raise_error(SgtnClient::SingletonError)
+      expect { loader.get_bundle(component_nonexistent, locale) }.to raise_error(SgtnClient::SingletonError)
     end
 
     it "should return nil for #{locale_nonexistent}" do
