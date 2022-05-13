@@ -1,7 +1,8 @@
 # Copyright 2022 VMware, Inc.
 # SPDX-License-Identifier: EPL-2.0
 
-require 'multi_json'
+require 'json'
+require 'pathname'
 
 module SgtnClient
   module Common

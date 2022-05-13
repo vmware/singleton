@@ -30,7 +30,6 @@ Configuration in `config/sgtnclient.yml`
 
 ```yaml
 test: &default
-
   # Mode can be 'live' or 'sandbox'
   # For sandbox mode, it will produce debug log messages
   mode: sandbox
@@ -41,11 +40,8 @@ test: &default
   # # Bundle version
   version: 4.8.1
 
-  # # HTTP proxy
+  # # Singleton server
   vip_server: https://server:8090
-
-  # # Mode of bundle: online/offline
-  bundle_mode: offline
 
   # # Translation bundle path, the child folder is product name
   translation_bundle: ./spec/config/locales/l10n/bundles
@@ -56,60 +52,48 @@ test: &default
   # # memory cache's expration(minutes), default value is 24*60
   cache_expiry_period: 36
 
-  # # disable cache, it's optional setting
-  disable_cache: true
-
 development:
   <<: *default
 
 production:
   <<: *default
   mode: live
-
 ```
 
-## API Usage: getString
+## API Usage: Sgtn.translate
 
 Basic Usage:
 
 ```ruby
-require 'singleton-ruby'
+require 'singleton-client'
 
-include SgtnClient
-
-SgtnClient.load(file, mode)
-
-SgtnClient::Source.loadBundles(locale)
-
-@Result = SgtnClient::Translation.getString(component, key, locale)
-
+Sgtn.load_config(file, env)
+result = Sgtn.translate(key, component, locale)
 ```
 
 More detailed examples:
 
 ```ruby
-
-require 'singleton-ruby'
-
-include SgtnClient
-
+require 'singleton-client'
 
 # Load config file to initialize app
-SgtnClient.load("./config/sgtnclient.yml", "test")
+Sgtn.load_config("./config/sgtnclient.yml", "test")
 
-# Load the default bundles of all components existing in the path {source_bundle}
-# The {source_bundle} is defined in configuration file sgtnclient.yaml
-SgtnClient::Source.loadBundles("default")
+# Get a string's translation
+result = Sgtn.translate("helloworld", "JAVA", "zh-Hans")
 
-# Get translation
-@Result = SgtnClient::Translation.getString("JAVA", "helloworld", "zh-Hans")
+# Get a string's translation with default value when no translation
+result = Sgtn.translate("helloworld", "JAVA", "zh-Hans") { 'default value' }
+
+# Get a string's translation and format it with placeholders
+result = Sgtn.translate("welcome", "JAVA", "zh-Hans", name: 'robot', place: 'world')
 
 # Get pluralized translation
-@Result = SgtnClient::Translation.getString_p("JAVA", "plural_key", { :cat_count => 1 }, "zh-Hans")
+result = Sgtn.translate("plural_key", "JAVA", "zh-Hans", :cat_count => 1)
 
-# Get formatting translation
-@Result = SgtnClient::Translation.getString_f("JAVA", "helloworld", "zh-Hans")
-
+# Get a string's translation with locale set before translating
+Sgtn.locale = 'en'
+result = Sgtn.translate("helloworld", "JAVA")
 ```
 
 ## API Usage: DateTime/Date/Time
@@ -122,7 +106,6 @@ require 'singleton-cldr'
 DateTime.new(...).to_<format>_s(locale)
 Date.new(...).to_<format>_s(locale)
 Time.new(...).to_<format>_s(locale)
-
 ```
 
 More detailed examples:
@@ -134,11 +117,4 @@ d.l_long_s(:es)
 d.l_medium_s(:es)
 d.l_short_s(:es)
 # Note: for the date and time, the usages are same with dateTime
-
-
-# pluralize a string
-str = 'there %<{ "cat_count": { "0": "no cat", one": "is one cat", "other": "are %{cat_count} cats" } }> in the room'
-result0 = str.to_plural_s(:en, { :cat_count => 0 })
-result = str.to_plural_s(:en, { :cat_count => 1 }) # the result would be 'there is one cat in the room'
-
 ```

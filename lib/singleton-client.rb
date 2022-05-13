@@ -3,7 +3,7 @@
 
 require_relative 'singleton-ruby'
 
-module Singleton # :nodoc:
+module Sgtn # :nodoc:
   # load configuration from a file
   def self.load_config(*args)
     SgtnClient.load(*args)

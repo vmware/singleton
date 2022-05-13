@@ -6,6 +6,7 @@
 def wait_threads_finish
   Thread.list.each do |thread|
     thread.join(1) if thread.alive? && !thread.equal?(Thread.main)
+  rescue
   end
 end
 

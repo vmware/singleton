@@ -1,54 +1,53 @@
-# Singeleton client for Ruby
+# Singleton Client for Ruby
 
 ## Prerequisites
 - Ruby version: 3.0.0 or above
 - Bundler version: 2.2.3 or above
 
 ## Run Unit Test
-rake spec:unit
+`rake spec`
 
 ## Usage
 
 Basic Usage:
 
 ```ruby
-require 'singleton-ruby'
+require 'singleton-client'
 
-include SgtnClient
-
-SgtnClient.load(file, mode)
-
-SgtnClient::Source.loadBundles(locale)
-
-@Result = SgtnClient::Translation.getString(component, key, locale)
-
+Sgtn.load_config(file, env)
+result = Sgtn.translate(key, component, locale)
 ```
 ## API Usage
 
 ### Get a string's translation
-SgtnClient::Translation.getString(component, key, locale)
+`result = Sgtn.translate(key, component, locale)`
+
+### Get a string's translation with default value when no translation
+`result = Sgtn.translate(key, component, locale) { 'default value' }`
 
 ### Get a string's translation and format it with placeholders
-SgtnClient::Translation.getString_f(component, key, args, locale)
+`result = Sgtn.translate(key, component, locale, **args)`
 
-### Get a component's translations
-SgtnClient::Translation.getStrings(component, locale)
+### Get pluralized translation
+`result = Sgtn.translate(key, component, locale, **args)`
 
+### Get translations of a bundle
+`result = Sgtn.get_translations(component, locale)`
 
-## API Usage(with request_store)
+### Set locale for a request
+`Sgtn.locale = 'en'`
 
-Before call below APIs(without locale and component arguments), it requires to set the locale and component in the initial codes.
+### Get locale of the request
+`result = Sgtn.locale`
 
-### Get a string's translation
-SgtnClient::T.s(key)
+### Get a string's translation with locale set
+```ruby
+Sgtn.locale = 'en'
+result = Sgtn.translate(key, component)
+```
 
-### Get a string's translation and format it with placeholders
-SgtnClient::T.s_f(key, args)
-
-### Get a component's translations
-SgtnClient::T.c()
-
-
-
-
-
+### Get translations of a bundle with locale set
+```ruby
+Sgtn.locale = 'en'
+result = Sgtn.get_translations(component)
+```
