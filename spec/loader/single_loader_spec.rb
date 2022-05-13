@@ -7,6 +7,7 @@ autoload :Concurrent, 'concurrent'
 describe SgtnClient::TranslationLoader::SingleLoader, :include_helpers, :extend_helpers do
   loader = Class.new do
     prepend SgtnClient::TranslationLoader::SingleLoader
+
     def load_bundle(component, locale)
       super_load(component, locale)
     end
@@ -39,20 +40,31 @@ describe SgtnClient::TranslationLoader::SingleLoader, :include_helpers, :extend_
     lock = Concurrent::ReadWriteLock.new
     expect(lock.acquire_write_lock).to be true # make all threads to wait for the lock
 
+    loading = Concurrent::AtomicBoolean.new
     expect(loader).to receive(:super_load).with(component, locale).at_least(:once) do
+      raise 'The data has been already updating' if loading.true?
+
+      loading.make_true
+
       SgtnClient.logger.debug 'Start Loading...................'
       sleep 0.001
       SgtnClient.logger.debug 'End Loading...................'
 
       # return_value
       Thread.current.name
+    ensure
+      loading.make_false
     end
 
     start = Time.now
     (0...max_thread_num).each do |_|
       Thread.new do
         semaphore.acquire
-        lock.with_read_lock { expect(loader.load_bundle(component, locale)).not_to be nil }
+        lock.with_read_lock do
+          result = nil
+          expect { result = loader.load_bundle(component, locale) }.to_not raise_error
+          expect(result).to_not be_nil
+        end
       end
     end
     sleep 0.001 while semaphore.available_permits != 0 # wait for all threads ready to load
