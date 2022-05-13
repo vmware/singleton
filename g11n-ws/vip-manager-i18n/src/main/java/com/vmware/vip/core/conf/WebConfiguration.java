@@ -83,8 +83,6 @@ public class WebConfiguration implements WebMvcConfigurer {
 	@Value("${vipservice.cross.domain.maxage}")
 	private String maxAge;
 	
-	@Value("${swagger-ui.enable}")
-	private boolean swagger2enable;
 
 	@Value("${cache-control.value:}")
 	private String cacheControlValue;
@@ -130,7 +128,8 @@ public class WebConfiguration implements WebMvcConfigurer {
 		 */
 
 		// Request Validation
-		InterceptorRegistration apival = registry.addInterceptor(new APIValidationInterceptor(productService.getAllowPrductList(), this.requestIdsStr)).addPathPatterns("/**").excludePathPatterns(API.I18N_API_ROOT+"doc/**");
+		InterceptorRegistration apival = registry.addInterceptor(new APIValidationInterceptor(productService.getAllowPrductList(), this.requestIdsStr)).addPathPatterns("/**")
+				.excludePathPatterns(API.I18N_API_ROOT+"doc/**", "/swagger-ui/**");
 
 		// authentication
 
@@ -189,7 +188,7 @@ public class WebConfiguration implements WebMvcConfigurer {
 	 */
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-
+      /**
 		if(swagger2enable) {
 			registry.addResourceHandler("/i18n/api/doc/webjars/**")
 			.addResourceLocations("classpath:/META-INF/resources/webjars/");	
@@ -197,7 +196,7 @@ public class WebConfiguration implements WebMvcConfigurer {
 			registry.addResourceHandler("/swagger-ui.html")
 			.addResourceLocations("classpath:/META-INF/swagger-ui.html");
 		}
-			
+			**/
 	}
 	
 	@Override
