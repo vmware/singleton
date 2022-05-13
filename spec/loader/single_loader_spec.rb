@@ -28,7 +28,7 @@ describe SgtnClient::TranslationLoader::SingleLoader, :include_helpers, :extend_
       trace.enable(target: SgtnClient::TranslationLoader::SingleLoader.instance_method(:load_bundle))
     end
     after(:all) do
-      trade.disable
+      trace.disable
     end
   end
 
