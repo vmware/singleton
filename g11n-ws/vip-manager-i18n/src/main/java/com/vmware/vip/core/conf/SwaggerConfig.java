@@ -138,7 +138,6 @@ public class SwaggerConfig {
 	}
 
 	public VipAuthConfig getAuthConfig() {
-		// TODO Auto-generated method stub
 		return authConfig;
 	}
 

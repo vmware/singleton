@@ -183,21 +183,6 @@ public class WebConfiguration implements WebMvcConfigurer {
 		configurer.favorPathExtension(false);
 	}
 
-	/**
-	 * For swagger-ui static files(css,js) import
-	 */
-	@Override
-	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-      /**
-		if(swagger2enable) {
-			registry.addResourceHandler("/i18n/api/doc/webjars/**")
-			.addResourceLocations("classpath:/META-INF/resources/webjars/");	
-		} else {
-			registry.addResourceHandler("/swagger-ui.html")
-			.addResourceLocations("classpath:/META-INF/swagger-ui.html");
-		}
-			**/
-	}
 	
 	@Override
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {

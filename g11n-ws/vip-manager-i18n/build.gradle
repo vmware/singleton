@@ -68,19 +68,12 @@ dependencies {
 	implementation("io.micrometer:micrometer-core:$micrometerVersion")
 	implementation ('org.springframework.boot:spring-boot-starter-actuator')
     // Actuator - END
-    /**
+    
     //swagger UI -START  
-    implementation("io.springfox:springfox-swagger2:$swagger2Version"){
-       exclude group: 'io.swagger', module:'swagger-annotations'
-       exclude group: 'io.swagger', module:'swagger-models'
-    }
-    implementation("io.springfox:springfox-swagger-ui:$swagger2Version")
-    implementation('io.swagger:swagger-annotations:1.5.22')
-    implementation('io.swagger:swagger-models:1.5.22')
-    implementation("com.google.guava:guava:$guavaVersion")
-    //swagger UI -END
-    **/
     implementation("io.springfox:springfox-boot-starter:$swaggerVersion")
+    //swagger UI -END
+    
+    
     //jdk 11
     runtimeOnly 'javax.xml.bind:jaxb-api:2.4.0-b180830.0359'
     runtimeOnly 'javax.activation:activation:1.1.1'
