@@ -16,7 +16,7 @@ module SgtnClient
             SgtnClient.logger.debug "start single loading #{id}"
             result = block.call
             # delete thread from hash after finish
-            single_loader.remove_object(id)
+            SingleLoader.instance_variable_get(:@single_loader).remove_object(id)
             result
           end
         end
