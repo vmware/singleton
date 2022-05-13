@@ -11,10 +11,10 @@ module SgtnClient
     module SingleLoader
       @single_loader = begin
         none_alive = proc { |_, thread| thread.nil? || thread.alive? == false }
-        creator = proc do |id, _, &block|
+        creator = proc do |id, _, *args, &block|
           Thread.new do
             SgtnClient.logger.debug "start single loading #{id}"
-            result = block.call
+            result = block.call(*args)
             # delete thread from hash after finish
             SingleLoader.instance_variable_get(:@single_loader).remove_object(id)
             result
