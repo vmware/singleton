@@ -21,9 +21,6 @@ describe 'Mix', :include_helpers, :extend_helpers do
     SgtnClient::CacheUtil.clear_cache
     WebMock.reset!
   end
-  after :each do
-    wait_threads_finish
-  end
 
   describe '#only local source is available' do
     before :each do
