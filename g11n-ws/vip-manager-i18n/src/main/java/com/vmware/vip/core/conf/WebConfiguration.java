@@ -92,7 +92,7 @@ public class WebConfiguration implements WebMvcConfigurer {
 	@Value("${config.client.requestIds:}")
 	private String requestIdsStr; 
 	
-	@Value("${source.request.max-size:10485760}")
+	@Value("${source.request.max-size}")
 	private Integer sourceReqBodySize; 
 
 	@Autowired
