@@ -196,7 +196,7 @@ public class TranslationProductComponentKeyAction extends BaseAction {
 			String sft = ksc.getSourceFormat();
 			if (!StringUtils.isEmpty(sft) && !ConstantsKeys.SOURCE_FORMAT_LIST.contains(sft.toUpperCase())) {
 				String key = ksc.getKey();
-				throw new ValidationException(String.format(ValidationMsg.SOURCEFORMAT_NOT_VALIDE_FORMAT, key));
+				throw new ValidationException(String.format(ValidationMsg.SOURCEFORMAT_NOT_VALIDE_FORMAT, sft, key));
 			}
 			
 		}
