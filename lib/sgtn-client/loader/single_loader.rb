@@ -9,19 +9,21 @@ module SgtnClient
     autoload :CONSTS, 'sgtn-client/loader/consts'
 
     module SingleLoader
-      @single_loader = begin
+      def initialize(*args)
         none_alive = proc { |_, thread| thread.nil? || thread.alive? == false }
         creator = proc do |id, _, *args, &block|
           Thread.new do
             SgtnClient.logger.debug "start single loading #{id}"
             result = block.call(*args)
             # delete thread from hash after finish
-            SingleLoader.instance_variable_get(:@single_loader).remove_object(id)
+            @single_loader.remove_object(id)
             result
           end
         end
 
-        SgtnClient::SingleOperation.new(none_alive, &creator)
+        @single_loader = SgtnClient::SingleOperation.new(none_alive, &creator)
+
+        super
       end
 
       def load_bundle(component, locale, sync = true)
@@ -39,8 +41,7 @@ module SgtnClient
       private
 
       def do_load(sync, id, &block)
-        single_loader = SingleLoader.instance_variable_get(:@single_loader)
-        thread = single_loader.operate(id, &block)
+        thread = @single_loader.operate(id, &block)
         thread&.value if sync
       end
     end

@@ -15,9 +15,9 @@ module SgtnClient
         SgtnClient.logger.debug "[#{__FILE__}][#{__callee__}] component=#{component}, locale=#{locale}"
 
         key = Common::BundleID.new(component, locale)
-        cache_item = SgtnClient::CacheUtil.get_cache(key)
+        cache_item = CacheUtil.get_cache(key)
         if cache_item
-          load_bundle(component, locale, false) if SgtnClient::CacheUtil.is_expired(cache_item)
+          load_bundle(component, locale, false) if CacheUtil.is_expired(cache_item)
           cache_item.dig(:items)
         else
           load_bundle(component, locale)
@@ -27,9 +27,9 @@ module SgtnClient
       def available_bundles
         SgtnClient.logger.debug "[#{__FILE__}][#{__callee__}]"
 
-        cache_item = SgtnClient::CacheUtil.get_cache(CONSTS::AVAILABLE_BUNDLES_KEY)
+        cache_item = CacheUtil.get_cache(CONSTS::AVAILABLE_BUNDLES_KEY)
         if cache_item
-          super(false) if SgtnClient::CacheUtil.is_expired(cache_item)
+          super(false) if CacheUtil.is_expired(cache_item)
           cache_item.dig(:items)
         else
           super
@@ -42,7 +42,7 @@ module SgtnClient
         SgtnClient.logger.debug "[#{__FILE__}][#{__callee__}] component=#{component}, locale=#{locale}"
 
         item = super
-        SgtnClient::CacheUtil.write_cache(Common::BundleID.new(component, locale), item) if item
+        CacheUtil.write_cache(Common::BundleID.new(component, locale), item) if item
         item
       end
 
@@ -50,7 +50,7 @@ module SgtnClient
         SgtnClient.logger.debug "[#{__FILE__}][#{__callee__}]"
 
         item = super
-        SgtnClient::CacheUtil.write_cache(CONSTS::AVAILABLE_BUNDLES_KEY, item) if item
+        CacheUtil.write_cache(CONSTS::AVAILABLE_BUNDLES_KEY, item) if item
         item
       end
     end

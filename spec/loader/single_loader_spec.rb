@@ -80,6 +80,6 @@ describe SgtnClient::TranslationLoader::SingleLoader, :include_helpers, :extend_
     expect(loader.load_bundle(component, locale)).to be return_value
 
     id = SgtnClient::Common::BundleID.new(component, locale)
-    expect(SgtnClient::TranslationLoader::SingleLoader.instance_variable_get(:@single_loader).remove_object(id)).to be nil
+    expect(loader.instance_variable_get(:@single_loader).remove_object(id)).to be nil
   end
 end
