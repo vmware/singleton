@@ -38,7 +38,7 @@ public class WebConfiguration implements WebMvcConfigurer {
 	@Value("${csp.api.auth.enable:false}")
 	private String cspAuthFlag;
 	
-	@Value("${source.collect.request.max-size:10485760}")
+	@Value("${source.collect.request.max-size}")
 	private Integer sourceCollectReqSize;
 
 	@Autowired
