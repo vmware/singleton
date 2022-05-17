@@ -24,6 +24,7 @@ import com.vmware.vip.common.i18n.dto.response.APIResponseDTO;
 import com.vmware.vip.i18n.api.base.TranslationWithPatternAction;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import springfox.documentation.annotations.ApiIgnore;
 
 @RestController("v2-TranslationWithPattern")
 public class TranslationWithPatternAPI extends TranslationWithPatternAction {
@@ -32,6 +33,7 @@ public class TranslationWithPatternAPI extends TranslationWithPatternAction {
     * This is use to get the combine pattern and translation
     *
     */
+   @ApiIgnore
    @ApiOperation(value = APIOperation.TRANSLATION_WITH_PATTERN_VALUE, notes = APIOperation.TRANSLATION_WITH_PATTERN_NOTES)
    @Deprecated
    @RequestMapping(value = APIV2.TRANSLATION_WITH_PATTERN, method = RequestMethod.POST, produces = {
