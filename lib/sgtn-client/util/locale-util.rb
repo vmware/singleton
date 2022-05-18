@@ -59,6 +59,6 @@ module SgtnClient
       end
     end
 
-    private_class_method :get_best_match
+    private_class_method :get_best_match, :lowercase_locales_map
   end
 end
