@@ -28,7 +28,7 @@ module SgtnClient
 
       def single_loader(&block)
         loader = nil
-        none_alive = proc { |_, thread| thread.nil? || thread.alive? == false }
+        none_alive = proc { |_, thread| thread.nil? }
         creator = proc do |id, _, *args|
           Thread.new do
             SgtnClient.logger.debug "start single loading #{id}"
