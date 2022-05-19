@@ -3,9 +3,14 @@
 
 require 'bundler/setup'
 
-require 'simplecov'
-SimpleCov.start do
-  add_filter '/spec/'
+if ENV['COVERAGE']
+  require 'simplecov-json'
+  SimpleCov.formatter = SimpleCov::Formatter::JSONFormatter
+  # require 'coveralls'
+  # Coveralls.wear!
+  SimpleCov.start do
+    add_filter "/spec/"
+  end
 end
 
 Bundler.require :default, :test

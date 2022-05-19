@@ -3,7 +3,7 @@
 
 require 'erb'
 require 'yaml'
-
+require "observer"
 
 module SgtnClient
   #include Exceptions
@@ -40,6 +40,7 @@ module SgtnClient
   
 
   class Config
+    extend Observable
 
     attr_accessor :username, :password, :signature, :app_id, :cert_path,
     :token, :token_secret, :subject,
@@ -182,6 +183,8 @@ module SgtnClient
             def bundles.locales
               @locales ||= reduce(Set.new) { |locales, id| locales << id.locale }
             end
+            changed
+            notify_observers(self, :available_locales)
           end
           bundles.locales
         end

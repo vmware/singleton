@@ -59,6 +59,12 @@ module SgtnClient
       end
     end
 
+    def self.update(_config, type)
+      @lowercase_locales_map = nil if type == :available_locales
+    end
+
+    SgtnClient::Config.add_observer(self)
+
     private_class_method :get_best_match, :lowercase_locales_map
   end
 end
