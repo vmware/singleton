@@ -3,7 +3,7 @@
 
 require 'erb'
 require 'yaml'
-require "observer"
+require 'observer'
 
 module SgtnClient
   #include Exceptions
