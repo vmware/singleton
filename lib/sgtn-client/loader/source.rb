@@ -2,6 +2,7 @@
 # SPDX-License-Identifier: EPL-2.0
 
 require 'pathname'
+require 'json'
 
 module SgtnClient
   module Common
@@ -23,9 +24,13 @@ module SgtnClient
 
         total_messages = {}
 
-        (@source_bundle_path + component).glob('**/*.{yml, yaml}') do |f|
-          bundle = YAML.safe_load(File.read(f))
-          messages = bundle&.first&.last # TODO: Warn about inconsistent source locale
+        (@source_bundle_path + component).glob('**/*.{yml,yaml,json}') do |f|
+          if File.extname(f) == '.json'
+            messages = JSON.parse(File.read(f))
+          else
+            bundle = YAML.safe_load(File.read(f))
+            messages = bundle&.first&.last # TODO: Warn about inconsistent source locale
+          end
           if messages.is_a?(Hash)
             total_messages.merge!(messages)
           else
