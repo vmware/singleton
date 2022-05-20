@@ -14,10 +14,12 @@ module SgtnClient
         creator = proc do |id, _, *args, &block|
           Thread.new do
             SgtnClient.logger.debug "start single loading #{id}"
-            result = block.call(*args)
-            # delete thread from hash after finish
-            @single_loader.remove_object(id)
-            result
+            begin
+              block.call(*args)
+            ensure
+              # delete thread from hash after finish
+              @single_loader.remove_object(id)
+            end
           end
         end
 
