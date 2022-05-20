@@ -1,14 +1,14 @@
 # Copyright 2022 VMware, Inc.
 # SPDX-License-Identifier: EPL-2.0
 
-module SgtnClient
+module SgtnClient # :nodoc:
   autoload :SingleOperation, 'sgtn-client/common/single_operation'
   autoload :CacheUtil, 'sgtn-client/util/cache-util'
 
-  module TranslationLoader
+  module TranslationLoader # :nodoc:
     autoload :CONSTS, 'sgtn-client/loader/consts'
 
-    module SingleLoader
+    module SingleLoader # :nodoc:
       def initialize(*args)
         none_alive = proc { |_, thread| thread.nil? || thread.alive? == false }
         creator = proc do |id, &block|
@@ -28,13 +28,13 @@ module SgtnClient
         super
       end
 
-      def load_bundle(component, locale, sync = true)
+      def load_bundle(component, locale, sync: true)
         SgtnClient.logger.debug "[#{__FILE__}][#{__callee__}] component=#{component}, locale=#{locale}"
 
         do_load(Common::BundleID.new(component, locale), sync) { super(component, locale) }
       end
 
-      def available_bundles(sync = true)
+      def available_bundles(sync: true)
         SgtnClient.logger.debug "[#{__FILE__}][#{__callee__}]"
 
         do_load(CONSTS::AVAILABLE_BUNDLES_KEY, sync) { super() }

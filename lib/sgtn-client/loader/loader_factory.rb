@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: EPL-2.0
 
 module SgtnClient
-  module TranslationLoader
+  module TranslationLoader # :nodoc:
     autoload :Source, 'sgtn-client/loader/source'
     autoload :SgtnServer, 'sgtn-client/loader/server'
     autoload :LocalTranslation, 'sgtn-client/loader/local_translation'
@@ -12,7 +12,7 @@ module SgtnClient
     autoload :Cache, 'sgtn-client/loader/cache'
     autoload :CacheFiller, 'sgtn-client/loader/cache'
 
-    module LoaderFactory
+    module LoaderFactory # :nodoc:
       def self.create(config)
         SgtnClient.logger.info "[#{method(__callee__).owner}.#{__callee__}] config=#{config}"
 
