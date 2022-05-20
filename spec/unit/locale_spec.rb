@@ -33,6 +33,10 @@ describe SgtnClient do
       expect(SgtnClient::LocaleUtil.get_best_locale('zh_Hant_TW')).to eq 'zh-Hant'
       expect(SgtnClient::LocaleUtil.get_best_locale('zh-Hant_TW')).to eq 'zh-Hant'
       expect(SgtnClient::LocaleUtil.get_best_locale('zh_Hant-TW')).to eq 'zh-Hant'
+      expect(SgtnClient::LocaleUtil.get_best_locale('zh_cn')).to eq 'zh-Hans'
+      expect(SgtnClient::LocaleUtil.get_best_locale('ZH-Cn')).to eq 'zh-Hans'
+      expect(SgtnClient::LocaleUtil.get_best_locale('DE')).to eq 'de'
+      expect(SgtnClient::LocaleUtil.get_best_locale('ZH-HANS-CN')).to eq 'zh-Hans'
     end
     
     it "get_best_locale_target_locale_is_nil" do
