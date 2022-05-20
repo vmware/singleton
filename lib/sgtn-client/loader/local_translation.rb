@@ -4,15 +4,15 @@
 require 'json'
 require 'pathname'
 
-module SgtnClient
+module SgtnClient # :nodoc:
   module Common
     autoload :BundleID, 'sgtn-client/common/data'
   end
 
-  module TranslationLoader
+  module TranslationLoader # :nodoc:
     autoload :CONSTS, 'sgtn-client/loader/consts'
 
-    class LocalTranslation
+    class LocalTranslation # :nodoc:
       BUNDLE_PREFIX = 'messages_'.freeze
       BUNDLE_SUFFIX = '.json'.freeze
 
@@ -39,12 +39,11 @@ module SgtnClient
       def available_bundles
         SgtnClient.logger.debug "[#{method(__callee__).owner}.#{__callee__}]"
 
-        @available_bundles ||= begin
+        @available_bundles ||=
           @base_path.glob('*/*.json').reduce(Set.new) do |bundles, f|
             locale = f.basename.to_s.sub(/\A#{BUNDLE_PREFIX}/i, '').sub(/#{BUNDLE_SUFFIX}\z/i, '')
             bundles.add Common::BundleID.new(f.parent.basename.to_s, locale)
           end
-        end
       end
     end
   end

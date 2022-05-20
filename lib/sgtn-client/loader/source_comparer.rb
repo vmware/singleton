@@ -1,14 +1,14 @@
 # Copyright 2022 VMware, Inc.
 # SPDX-License-Identifier: EPL-2.0
 
-module SgtnClient
+module SgtnClient # :nodoc:
   autoload :StringUtil, 'sgtn-client/util/string-util'
   autoload :LocaleUtil, 'sgtn-client/util/locale-util'
 
-  module TranslationLoader
+  module TranslationLoader # :nodoc:
     autoload :CONSTS, 'sgtn-client/loader/consts'
 
-    module SourceComparer
+    module SourceComparer # :nodoc:
       def load_bundle(component, locale)
         SgtnClient.logger.debug "[#{__FILE__}][#{__callee__}] component=#{component}, locale=#{locale}"
 
