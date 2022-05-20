@@ -184,7 +184,7 @@ module SgtnClient
               @locales ||= reduce(Set.new) { |locales, id| locales << id.locale }
             end
             changed
-            notify_observers(self, :available_locales)
+            notify_observers(:available_locales)
           end
           bundles.locales
         end

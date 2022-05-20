@@ -65,8 +65,8 @@ describe SgtnClient::Config do
 
       wait_threads_finish
 
-      expect(subject).to receive(:notify_observers).once.with(subject, :available_locales).and_call_original
-      expect(SgtnClient::LocaleUtil).to receive(:reset_lowercase_locales_map).once.with(subject, :available_locales).and_call_original
+      expect(subject).to receive(:notify_observers).once.with(:available_locales).and_call_original
+      expect(SgtnClient::LocaleUtil).to receive(:reset_available_locales).once.with(:available_locales).and_call_original
 
       # return updated data
       new_locales = subject.available_locales
