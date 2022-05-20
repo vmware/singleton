@@ -1,7 +1,7 @@
 #  Copyright 2022 VMware, Inc.
 #  SPDX-License-Identifier: EPL-2.0
 
-require 'bundler/setup'
+Bundler.require :default, :test
 
 if ENV['COVERAGE']
   require 'simplecov-json'
@@ -12,8 +12,6 @@ if ENV['COVERAGE']
     add_filter "/spec/"
   end
 end
-
-Bundler.require :default, :test
 
 require 'singleton-client'
 
