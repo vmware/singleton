@@ -2,7 +2,6 @@
 # SPDX-License-Identifier: EPL-2.0
 
 require 'pathname'
-require 'psych'
 require 'psych/simple'
 
 module SgtnClient
