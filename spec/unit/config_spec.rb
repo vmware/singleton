@@ -53,12 +53,25 @@ describe SgtnClient::Config do
 
       wait_threads_finish
 
-      expect(subject).to receive(:notify_observers).once.with(:available_locales).and_call_original
-      expect(SgtnClient::LocaleUtil).to receive(:reset_available_locales).once.with(:available_locales).and_call_original
-
-      # return updated data
+      # return updated data but it's the same object because data isn't changed.
       new_locales = subject.available_locales
-      expect(new_locales).to_not be locales
+      expect(new_locales).to be locales
+
+      # TODO: data is changed
+      # expire_cache(SgtnClient::TranslationLoader::CONSTS::AVAILABLE_BUNDLES_KEY)
+
+      # # return expired data
+      # second_locales = subject.available_locales
+      # expect(second_locales).to be locales
+
+      # wait_threads_finish
+
+      # expect(subject).to receive(:notify_observers).once.with(:available_locales).and_call_original
+      # expect(SgtnClient::LocaleUtil).to receive(:reset_available_locales).once.with(:available_locales).and_call_original
+
+      # # return updated data
+      # new_locales = subject.available_locales
+      # expect(new_locales).to be locales
     end
   end
 end

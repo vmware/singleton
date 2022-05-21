@@ -19,7 +19,6 @@ describe 'Mix', :include_helpers, :extend_helpers do
     SgtnClient.config.vip_server = nil
     SgtnClient.config.translation_bundle = nil
     SgtnClient.config.source_bundle = nil
-    SgtnClient::CacheUtil.clear_cache
     WebMock.reset!
   end
 

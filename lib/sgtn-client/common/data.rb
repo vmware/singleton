@@ -17,7 +17,7 @@ module SgtnClient
       end
 
       def ==(other)
-       (other.is_a? self.class) && @locale == other.locale && @component == other.component
+        (other.is_a? self.class) && @locale == other.locale && @component == other.component
       end
 
       alias eql? ==
@@ -25,6 +25,38 @@ module SgtnClient
       def to_s
         "{component: #{@component}, locale: #{@locale}}"
       end
+    end
+
+    module DataInfo # :nodoc:
+      attr_accessor :last_update
+
+      def initialize(*)
+        @last_update = Time.now
+        super
+      end
+
+      def expired?
+        Time.now >= @last_update + age
+      end
+
+      private
+
+      def age
+        @@age ||= begin
+          env = SgtnClient::Config.default_environment
+          SgtnClient::Config.configurations[env]['cache_expiry_period'] * 60
+        end
+      end
+    end
+
+    class BundleData < Hash # :nodoc:
+      include DataInfo
+
+      attr_reader :locale, :component
+    end
+
+    class SetData < Set # :nodoc:
+      include DataInfo
     end
   end
 end
