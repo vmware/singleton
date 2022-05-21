@@ -9,6 +9,18 @@ module SgtnClient # :nodoc:
     autoload :CONSTS, 'sgtn-client/loader/consts'
 
     module SingleLoader # :nodoc:
+      def load_bundle(component, locale, sync: true)
+        SgtnClient.logger.debug "[#{__FILE__}][#{__callee__}] component=#{component}, locale=#{locale}"
+
+        do_single_load(Common::BundleID.new(component, locale), sync) { super(component, locale) }
+      end
+
+      def available_bundles(sync: true)
+        SgtnClient.logger.debug "[#{__FILE__}][#{__callee__}]"
+
+        do_single_load(CONSTS::AVAILABLE_BUNDLES_KEY, sync) { super() }
+      end
+
       def initialize(*args)
         none_alive = proc { |_, thread| thread.nil? || thread.alive? == false }
         creator = proc do |id, &block|
@@ -28,21 +40,9 @@ module SgtnClient # :nodoc:
         super
       end
 
-      def load_bundle(component, locale, sync: true)
-        SgtnClient.logger.debug "[#{__FILE__}][#{__callee__}] component=#{component}, locale=#{locale}"
-
-        do_load(Common::BundleID.new(component, locale), sync) { super(component, locale) }
-      end
-
-      def available_bundles(sync: true)
-        SgtnClient.logger.debug "[#{__FILE__}][#{__callee__}]"
-
-        do_load(CONSTS::AVAILABLE_BUNDLES_KEY, sync) { super() }
-      end
-
       private
 
-      def do_load(id, sync, &block)
+      def do_single_load(id, sync, &block)
         thread = @single_loader.operate(id, &block)
         thread&.value if sync
       end
