@@ -146,6 +146,7 @@ processResources {
 
 
 
+
 bootJar.doFirst {
       def propPath = "${buildDir}/resources/main/application.properties"
        println propPath
@@ -241,7 +242,7 @@ if (project.hasProperty('datatype') && (project.getProperty('datatype') == 'pgdb
 	check.dependsOn.remove(test)
 }
 
-
+/**
 task sourcesJar(type: Jar) {
     from sourceSets.main.allJava
     archiveClassifier = 'sources'
@@ -252,6 +253,28 @@ task javadocJar(type: Jar) {
     archiveClassifier = 'javadoc'
 
 }
+**/
+task sourcesJar(type: Jar, dependsOn: classes) {
+    classifier = 'sources'
+    from sourceSets.main.allJava
+}
+ 
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+ 
+tasks.withType(Javadoc) {
+    options.addStringOption('Xdoclint:none', '-quiet')
+    options.addStringOption('encoding', 'UTF-8')
+    options.addStringOption('charSet', 'UTF-8')
+}
+ 
+artifacts {
+    archives sourcesJar
+    archives javadocJar
+}
+
 
 jacocoTestReport {
     reports {

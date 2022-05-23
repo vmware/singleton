@@ -72,6 +72,7 @@ task download(type: JavaExec, dependsOn: classes){
 	classpath sourceSets.main.runtimeClasspath
 }
 
+/**
 task sourcesJar(type: Jar) {
     from sourceSets.main.allJava
     archiveClassifier = 'sources'
@@ -82,5 +83,30 @@ task javadocJar(type: Jar) {
     archiveClassifier = 'javadoc'
 }
 
-assemble.dependsOn.add download
+**/
+task sourcesJar(type: Jar, dependsOn: classes) {
+    baseName = "i18n-patterns-core"
+    version = "$projectVersion"
+    classifier = 'sources'
+    from sourceSets.main.allJava
+}
+ 
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    baseName = "i18n-patterns-core"
+    version = "$projectVersion"
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+ 
+tasks.withType(Javadoc) {
+    options.addStringOption('Xdoclint:none', '-quiet')
+    options.addStringOption('encoding', 'UTF-8')
+    options.addStringOption('charSet', 'UTF-8')
+}
+ 
+artifacts {
+    archives sourcesJar
+    archives javadocJar
+}
+//assemble.dependsOn.add download
 assemble.dependsOn.add copyLibs
