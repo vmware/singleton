@@ -84,5 +84,29 @@ describe SgtnClient::Config do
         stubs.each { |stub| expect(stub).to have_been_requested }
       end
     end
+
+    it '#available bundles is expired' do
+      @config['translation_bundle'] = translation_path
+      @config['source_bundle'] = source_path
+
+      # populate cache
+      locales = subject.available_locales
+      expect(locales).to_not be_empty
+
+      expire_cache(SgtnClient::TranslationLoader::CONSTS::AVAILABLE_BUNDLES_KEY)
+
+      # return expired data
+      second_locales = subject.available_locales
+      expect(second_locales).to be locales
+
+      wait_threads_finish
+
+      expect(subject).to receive(:notify_observers).once.with(:available_locales).and_call_original
+      expect(SgtnClient::LocaleUtil).to receive(:reset_available_locales).once.with(:available_locales).and_call_original
+
+      # return updated data
+      new_locales = subject.available_locales
+      expect(new_locales).to_not be locales
+    end
   end
 end

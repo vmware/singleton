@@ -1,29 +1,45 @@
+# frozen_string_literal: true
+
 # Copyright 2022 VMware, Inc.
 # SPDX-License-Identifier: EPL-2.0
 
+require 'concurrent'
 require 'set'
 
 module SgtnClient
   class LocaleUtil
     MAP_LOCALES = {
-      'zh-CN' => 'zh-Hans',
-      'zh-TW' => 'zh-Hant',
-      'zh-Hans-CN' => 'zh-Hans',
-      'zh-Hant-TW' => 'zh-Hant'
+      'zh-cn' => 'zh-hans',
+      'zh-tw' => 'zh-hant',
+      'zh-hans-cn' => 'zh-hans',
+      'zh-hant-tw' => 'zh-hant'
     }.freeze
+    LOCALE_SEPARATOR = '-'
+    @match_results = Concurrent::Hash.new
+    @lowercase_locales_map = Concurrent::Hash.new
 
     def self.get_best_locale(locale, component)
-      candidates = Config.available_locales(component)
-      if candidates.nil? || candidates.empty?
-        raise SgtnClient::SingletonError, "component '#{component}' doesn't exist!"
+      @match_results[locale] ||= begin
+        @match_results.shift if @match_results.size >= 50
+
+        if Config.available_locales(component).include?(locale)
+          locale
+        elsif locale.nil?
+          get_fallback_locale
+        else
+          locale = locale.to_s
+          if locale.empty?
+            get_fallback_locale
+          else
+            candidates = lowercase_locales_map(component)
+            if candidates.nil? || candidates.empty?
+              raise SgtnClient::SingletonError, "component '#{component}' doesn't exist!"
+            end
+
+            get_best_match(locale.gsub('_', LOCALE_SEPARATOR).downcase, candidates)
+          end
+        end
       end
-
-      return get_fallback_locale if locale.nil?
-
-      locale = locale.to_s
-      return get_fallback_locale if locale.empty?
-
-      get_best_match(locale.gsub('_', '-'), candidates)
     end
 
     def self.is_source_locale(locale = nil)
@@ -32,12 +48,12 @@ module SgtnClient
 
     def self.get_best_match(locale, candidates)
       locale = MAP_LOCALES[locale] || locale
-      return locale if candidates.include?(locale)
+      candidates[locale] or begin
+        index = locale.rindex(LOCALE_SEPARATOR)
+        return get_fallback_locale if index.nil?
 
-      index = locale.rindex('-')
-      return get_fallback_locale if index.nil?
-
-      get_best_match(locale[0...index], candidates)
+        get_best_match(locale[0...index], candidates)
+      end
     end
 
     def self.get_source_locale
@@ -53,6 +69,21 @@ module SgtnClient
       @fallback_locale ||= get_default_locale || get_source_locale || 'en'
     end
 
-    private_class_method :get_best_match
+    def self.lowercase_locales_map(component)
+      @lowercase_locales_map[component] ||= Config.available_locales(component).each_with_object({}) do |locale, memo|
+        memo[locale.to_s.downcase] = locale
+      end
+    end
+
+    def self.reset_locale_data(type)
+      return unless type == :available_locales
+
+      @lowercase_locales_map.clear
+      @match_results.clear
+    end
+
+    SgtnClient::Config.add_observer(self, :reset_locale_data)
+
+    private_class_method :get_best_match, :lowercase_locales_map, :reset_locale_data
   end
 end

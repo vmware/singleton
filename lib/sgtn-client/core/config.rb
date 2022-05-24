@@ -4,7 +4,7 @@
 require 'concurrent'
 require 'erb'
 require 'yaml'
-
+require 'observer'
 
 module SgtnClient
   #include Exceptions
@@ -41,6 +41,7 @@ module SgtnClient
   
 
   class Config
+    extend Observable
 
     attr_accessor :username, :password, :signature, :app_id, :cert_path,
     :token, :token_secret, :subject,
@@ -199,6 +200,8 @@ module SgtnClient
                   @component_locales[component] ||= reduce(Set.new) { |locales, id| id.component == component ? locales << id.locale : locales }
                 end
               end
+              changed
+              notify_observers(:available_locales)
             RUBY_EVAL
           end
           bundles.locales(component)

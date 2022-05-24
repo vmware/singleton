@@ -26,6 +26,14 @@ describe SgtnClient do
       expect(SgtnClient::LocaleUtil.get_best_locale('zh-Hant-HK', 'JAVA')).to eq 'zh-Hant'
       expect(SgtnClient::LocaleUtil.get_best_locale('zh-Hans-CN', 'JAVA')).to eq 'zh-Hans'
       expect(SgtnClient::LocaleUtil.get_best_locale('zh-Hant-TW', 'JAVA')).to eq 'zh-Hant'
+
+      expect(SgtnClient::LocaleUtil.get_best_locale('zh_Hant_TW', 'JAVA')).to eq 'zh-Hant'
+      expect(SgtnClient::LocaleUtil.get_best_locale('zh-Hant_TW', 'JAVA')).to eq 'zh-Hant'
+      expect(SgtnClient::LocaleUtil.get_best_locale('zh_Hant-TW', 'JAVA')).to eq 'zh-Hant'
+      expect(SgtnClient::LocaleUtil.get_best_locale('zh_cn', 'JAVA')).to eq 'zh-Hans'
+      expect(SgtnClient::LocaleUtil.get_best_locale('ZH-Cn', 'JAVA')).to eq 'zh-Hans'
+      expect(SgtnClient::LocaleUtil.get_best_locale('DE', 'JAVA')).to eq 'de'
+      expect(SgtnClient::LocaleUtil.get_best_locale('ZH-HANS-CN', 'JAVA')).to eq 'zh-Hans'
     end
     
     it "get_best_locale_target_locale_is_nil" do
