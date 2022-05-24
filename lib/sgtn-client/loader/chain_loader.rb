@@ -3,7 +3,7 @@
 
 module SgtnClient
   module TranslationLoader
-    class Chain # :nodoc:
+    class Chain
       attr_accessor :loaders
 
       def initialize(*loaders)

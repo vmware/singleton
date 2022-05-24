@@ -11,10 +11,10 @@ module SgtnClient
     autoload :BundleID, 'sgtn-client/common/data'
   end
 
-  module TranslationLoader # :nodoc:
+  module TranslationLoader
     autoload :CONSTS, 'sgtn-client/loader/consts'
 
-    class SgtnServer # :nodoc:
+    class SgtnServer
       ERROR_ILLEGAL_DATA = 'server returned illegal data.'
       ERROR_BUSINESS_ERROR = 'server returned business error.'
 
@@ -33,7 +33,8 @@ module SgtnClient
       def load_bundle(component, locale)
         SgtnClient.logger.debug "[#{method(__callee__).owner}.#{__callee__}] component=#{component}, locale=#{locale}"
 
-        query_server(format(@bundle_url, locale, component), ['messages'])
+        messages = query_server(format(@bundle_url, locale, component), ['messages'])
+        messages
       end
 
       def available_bundles

@@ -9,10 +9,10 @@ module SgtnClient
     autoload :BundleID, 'sgtn-client/common/data'
   end
 
-  module TranslationLoader # :nodoc:
+  module TranslationLoader
     autoload :CONSTS, 'sgtn-client/loader/consts'
 
-    class Source # :nodoc:
+    class Source
       def initialize(config)
         @source_bundle_path = Pathname.new(config['source_bundle'])
       end
@@ -42,13 +42,14 @@ module SgtnClient
       def available_bundles
         SgtnClient.logger.debug "[#{method(__callee__).owner}.#{__callee__}]"
 
-        @available_bundles ||=
+        @available_bundles ||= begin
           @source_bundle_path.children.select(&:directory?).reduce(Set.new) do |bundles, component|
             component.glob('**/*.{yml, yaml}') do |_|
               bundles << Common::BundleID.new(component.basename.to_s, SgtnClient::LocaleUtil.get_source_locale)
               break bundles
             end || bundles
           end
+        end
       end
     end
   end

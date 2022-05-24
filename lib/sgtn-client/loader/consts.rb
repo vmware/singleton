@@ -5,7 +5,7 @@
 
 module SgtnClient
   module TranslationLoader
-    module CONSTS # :nodoc:
+    module CONSTS
       OLD_SOURCE_LOCALE = 'old_source'
       REAL_SOURCE_LOCALE = 'latest'
 
