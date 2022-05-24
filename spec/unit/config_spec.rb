@@ -36,8 +36,8 @@ describe SgtnClient::Config do
       include_context 'webmock'
       let(:stubs) { [] }
       before :all do
-        config = SgtnClient::Config.configurations[SgtnClient::Config.default_environment]
-        config['vip_server'] = singleton_server
+        @config = SgtnClient::Config.configurations[SgtnClient::Config.default_environment]
+        @config['vip_server'] = singleton_server
       end
 
       before :each do
@@ -84,29 +84,36 @@ describe SgtnClient::Config do
         stubs.each { |stub| expect(stub).to have_been_requested }
       end
     end
+    describe '#available_locales expired' do
+      include_context 'reset client' do
+        before(:all) do
+          @config = SgtnClient::Config.configurations[SgtnClient::Config.default_environment] = config.dup
+        end
+      end
 
-    it '#available bundles is expired' do
-      @config['translation_bundle'] = translation_path
-      @config['source_bundle'] = source_path
+      it '#available bundles is expired' do
+        @config['translation_bundle'] = translation_path
+        @config['source_bundle'] = source_path
 
-      # populate cache
-      locales = subject.available_locales
-      expect(locales).to_not be_empty
+        # populate cache
+        locales = subject.available_locales(component)
+        expect(locales).to_not be_empty
 
-      expire_cache(SgtnClient::TranslationLoader::CONSTS::AVAILABLE_BUNDLES_KEY)
+        expire_cache(SgtnClient::TranslationLoader::CONSTS::AVAILABLE_BUNDLES_KEY)
 
-      # return expired data
-      second_locales = subject.available_locales
-      expect(second_locales).to be locales
+        # return expired data
+        second_locales = subject.available_locales(component)
+        expect(second_locales).to be locales
 
-      wait_threads_finish
+        wait_threads_finish
 
-      expect(subject).to receive(:notify_observers).once.with(:available_locales).and_call_original
-      expect(SgtnClient::LocaleUtil).to receive(:reset_available_locales).once.with(:available_locales).and_call_original
+        expect(subject).to receive(:notify_observers).once.with(:available_locales).and_call_original
+        expect(SgtnClient::LocaleUtil).to receive(:reset_locale_data).once.with(:available_locales).and_call_original
 
-      # return updated data
-      new_locales = subject.available_locales
-      expect(new_locales).to_not be locales
+        # return updated data
+        new_locales = subject.available_locales(component)
+        expect(new_locales).to_not be locales
+      end
     end
   end
 end
