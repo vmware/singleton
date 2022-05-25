@@ -5,6 +5,7 @@ require 'concurrent'
 require 'erb'
 require 'yaml'
 require 'observer'
+require 'sgtn-client/common/hash'
 
 module SgtnClient
   #include Exceptions
@@ -194,10 +195,12 @@ module SgtnClient
 
           unless bundles.respond_to?(:locales)
             bundles.instance_eval <<-RUBY_EVAL, __FILE__, __LINE__ + 1
-              @component_locales = Concurrent::Hash.new
+              @component_locales = SgtnClient::Common::ConcurrentHash.new
               def locales(component)
-                if Config.available_components.include?(component)
-                  @component_locales[component] ||= each_with_object(Set.new) { |id, locales| locales << id.locale if id.component == component }
+                @component_locales[component] ||= begin
+                  return unless Config.available_components.include?(component)
+
+                  each_with_object(Set.new) { |id, locales| locales << id.locale if id.component == component }
                 end
               end
             RUBY_EVAL

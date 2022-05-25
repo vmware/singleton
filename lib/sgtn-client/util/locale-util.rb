@@ -5,6 +5,7 @@
 
 require 'concurrent'
 require 'set'
+require 'sgtn-client/common/hash'
 
 module SgtnClient
   class LocaleUtil
@@ -15,12 +16,13 @@ module SgtnClient
       'zh-hant-tw' => 'zh-hant'
     }.freeze
     LOCALE_SEPARATOR = '-'
-    @match_results = Concurrent::Hash.new
-    @lowercase_locales_map = Concurrent::Hash.new
+    @locale_match_results = SgtnClient::Common::ConcurrentHash.new { |hash, key| hash[key] = SgtnClient::Common::ConcurrentHash.new }
+    @lowercase_locales_map = SgtnClient::Common::ConcurrentHash.new
 
     def self.get_best_locale(locale, component)
-      @match_results[locale] ||= begin
-        @match_results.shift if @match_results.size >= 50
+      component_result = @locale_match_results[component]
+      component_result[locale] ||= begin
+        component_result.shift if component_result.size >= 50
 
         if Config.available_locales(component).include?(locale)
           locale
@@ -78,8 +80,8 @@ module SgtnClient
     def self.reset_locale_data(type)
       return unless type == :available_locales
 
+      @locale_match_results.clear
       @lowercase_locales_map.clear
-      @match_results.clear
     end
 
     SgtnClient::Config.add_observer(self, :reset_locale_data)
