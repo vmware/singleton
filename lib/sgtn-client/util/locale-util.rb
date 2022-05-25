@@ -33,16 +33,15 @@ module SgtnClient
           locale = locale.to_s
           if locale.empty?
             get_fallback_locale
+          elsif Config.available_components.empty? # if having trouble to get available components, use the fallback locale
+            get_fallback_locale
           else
             candidates = lowercase_locales_map(component)
             if candidates.nil? || candidates.empty?
-              # only when available bundles aren't empty, raise an error.
-              raise SgtnClient::SingletonError, "component '#{component}' doesn't exist!" unless Config.available_components.empty?
-
-              get_fallback_locale
-            else
-              get_best_match(locale.gsub('_', LOCALE_SEPARATOR).downcase, candidates)
+              raise SgtnClient::SingletonError, "component '#{component}' doesn't exist!"
             end
+
+            get_best_match(locale.gsub('_', LOCALE_SEPARATOR).downcase, candidates)
           end
         end
       end
@@ -82,7 +81,7 @@ module SgtnClient
         yield fallback if fallback != locale
       end
     end
-    
+
     def self.fallback_chain
       @fallback_chain ||= SgtnClient::Common::OrderedSet[get_fallback_locale, get_source_locale]
     end
