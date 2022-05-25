@@ -6,6 +6,7 @@
 require 'concurrent'
 require 'set'
 require 'sgtn-client/common/hash'
+require 'sgtn-client/common/set'
 
 module SgtnClient
   class LocaleUtil
@@ -71,6 +72,18 @@ module SgtnClient
       @fallback_locale ||= get_default_locale || get_source_locale || 'en'
     end
 
+    def self.locales(locale)
+      yield locale
+
+      fallback_chain.each do |fallback|
+        yield fallback if fallback != locale
+      end
+    end
+    
+    def self.fallback_chain
+      @fallback_chain ||= SgtnClient::Common::OrderedSet[get_fallback_locale, get_source_locale]
+    end
+
     def self.lowercase_locales_map(component)
       @lowercase_locales_map[component] ||= Config.available_locales(component).each_with_object({}) do |locale, memo|
         memo[locale.to_s.downcase] = locale
@@ -86,6 +99,6 @@ module SgtnClient
 
     SgtnClient::Config.add_observer(self, :reset_locale_data)
 
-    private_class_method :get_best_match, :lowercase_locales_map, :reset_locale_data
+    private_class_method :get_best_match, :lowercase_locales_map, :reset_locale_data, :fallback_chain
   end
 end
