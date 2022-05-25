@@ -84,6 +84,7 @@ describe SgtnClient::Config do
         stubs.each { |stub| expect(stub).to have_been_requested }
       end
     end
+
     describe '#available_locales expired' do
       include_context 'reset client' do
         before(:all) do
