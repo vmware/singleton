@@ -36,8 +36,8 @@ describe SgtnClient::Config do
       include_context 'webmock'
       let(:stubs) { [] }
       before :all do
-        @config = SgtnClient::Config.configurations[SgtnClient::Config.default_environment]
-        @config['vip_server'] = singleton_server
+        config = SgtnClient::Config.configurations[SgtnClient::Config.default_environment]
+        config['vip_server'] = singleton_server
       end
 
       before :each do
