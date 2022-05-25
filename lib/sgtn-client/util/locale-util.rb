@@ -36,10 +36,13 @@ module SgtnClient
           else
             candidates = lowercase_locales_map(component)
             if candidates.nil? || candidates.empty?
-              raise SgtnClient::SingletonError, "component '#{component}' doesn't exist!"
-            end
+              # only when available bundles aren't empty, raise an error.
+              raise SgtnClient::SingletonError, "component '#{component}' doesn't exist!" unless Config.available_components.empty?
 
-            get_best_match(locale.gsub('_', LOCALE_SEPARATOR).downcase, candidates)
+              get_fallback_locale
+            else
+              get_best_match(locale.gsub('_', LOCALE_SEPARATOR).downcase, candidates)
+            end
           end
         end
       end
