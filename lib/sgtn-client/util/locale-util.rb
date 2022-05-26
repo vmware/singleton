@@ -21,26 +21,28 @@ module SgtnClient
     @lowercase_locales_map = SgtnClient::Common::ConcurrentHash.new
 
     def self.get_best_locale(locale, component)
-      component_result = @locale_match_results[component]
-      component_result[locale] ||= begin
-        component_result.shift if component_result.size >= 50
+      @locale_match_results[component][locale] ||= _get_best_locale(locale, component)
+    end
 
-        if Config.available_locales(component).include?(locale) || Config.available_components.empty?
-          locale
-        elsif locale.nil?
+    def self._get_best_locale(locale, component)
+      component_result = @locale_match_results[component]
+      component_result.shift if component_result.size >= 50
+
+      if Config.available_locales(component).include?(locale) || Config.available_components.empty?
+        locale
+      elsif locale.nil?
+        get_fallback_locale
+      else
+        locale = locale.to_s
+        if locale.empty?
           get_fallback_locale
         else
-          locale = locale.to_s
-          if locale.empty?
-            get_fallback_locale
-          else
-            candidates = lowercase_locales_map(component)
-            if candidates.nil? || candidates.empty?
-              raise SgtnClient::SingletonError, "component '#{component}' doesn't exist!"
-            end
-
-            get_best_match(locale.gsub('_', LOCALE_SEPARATOR).downcase, candidates)
+          candidates = lowercase_locales_map(component)
+          if candidates.nil? || candidates.empty?
+            raise SgtnClient::SingletonError, "component '#{component}' doesn't exist!"
           end
+
+          get_best_match(locale.gsub('_', LOCALE_SEPARATOR).downcase, candidates)
         end
       end
     end
@@ -99,6 +101,6 @@ module SgtnClient
 
     SgtnClient::Config.add_observer(self, :reset_locale_data)
 
-    private_class_method :get_best_match, :lowercase_locales_map, :reset_locale_data, :fallback_chain
+    private_class_method :get_best_match, :lowercase_locales_map, :reset_locale_data, :fallback_chain, :_get_best_locale
   end
 end
