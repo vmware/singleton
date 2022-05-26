@@ -3,9 +3,14 @@
 
 require 'bundler/setup'
 
-require 'simplecov'
-SimpleCov.start do
-  add_filter '/spec/'
+if ENV['COVERAGE']
+  require 'simplecov-json'
+  SimpleCov.formatter = SimpleCov::Formatter::JSONFormatter
+  # require 'coveralls'
+  # Coveralls.wear!
+  SimpleCov.start do
+    add_filter "/spec/"
+  end
 end
 
 Bundler.require :default, :test
@@ -23,7 +28,7 @@ RSpec.configure do |config|
   config.filter_run_excluding disabled: true
 end
 
-Singleton.load_config('./spec/config/sgtnclient.yml', 'test')
+Sgtn.load_config('./spec/config/sgtnclient.yml', 'test')
 log_file = File.open('./unit_test.log', 'a')
 SgtnClient.logger = Logger.new(MultiIO.new(STDOUT, log_file),
                                formatter: proc { |severity, datetime, progname, msg|

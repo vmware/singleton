@@ -1,23 +1,29 @@
+# frozen_string_literal: true
+
 # Copyright 2022 VMware, Inc.
 # SPDX-License-Identifier: EPL-2.0
+
 require 'set'
 
 module SgtnClient
   class LocaleUtil
     MAP_LOCALES = {
-      'zh-CN' => 'zh-Hans',
-      'zh-TW' => 'zh-Hant',
-      'zh-Hans-CN' => 'zh-Hans',
-      'zh-Hant-TW' => 'zh-Hant'
+      'zh-cn' => 'zh-hans',
+      'zh-tw' => 'zh-hant',
+      'zh-hans-cn' => 'zh-hans',
+      'zh-hant-tw' => 'zh-hant'
     }.freeze
+    LOCALE_SEPARATOR = '-'
 
     def self.get_best_locale(locale)
+      return locale if Config.available_locales.include?(locale)
+
       return get_fallback_locale if locale.nil?
 
       locale = locale.to_s
       return get_fallback_locale if locale.empty?
 
-      get_best_match(locale.gsub('_', '-'))
+      get_best_match(locale.gsub('_', LOCALE_SEPARATOR).downcase)
     end
 
     def self.is_source_locale(locale = nil)
@@ -26,12 +32,12 @@ module SgtnClient
 
     def self.get_best_match(locale)
       locale = MAP_LOCALES[locale] || locale
-      return locale if Config.available_locales.include?(locale)
+      lowercase_locales_map[locale] or begin
+        index = locale.rindex(LOCALE_SEPARATOR)
+        return get_fallback_locale if index.nil?
 
-      index = locale.rindex('-')
-      return get_fallback_locale if index.nil?
-
-      get_best_match(locale[0...index])
+        get_best_match(locale[0...index])
+      end
     end
 
     def self.get_source_locale
@@ -47,6 +53,18 @@ module SgtnClient
       @fallback_locale ||= get_default_locale || get_source_locale || 'en'
     end
 
-    private_class_method :get_best_match
+    def self.lowercase_locales_map
+      @lowercase_locales_map ||= Config.available_locales.each_with_object({}) do |locale, memo|
+        memo[locale.to_s.downcase] = locale
+      end
+    end
+
+    def self.reset_available_locales(type)
+      @lowercase_locales_map = nil if type == :available_locales
+    end
+
+    SgtnClient::Config.add_observer(self, :reset_available_locales)
+
+    private_class_method :get_best_match, :lowercase_locales_map, :reset_available_locales
   end
 end
