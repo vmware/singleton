@@ -3,8 +3,8 @@
 
 require 'i18n'
 
-module SgtnClient
-  class I18nBackend
+module SgtnClient # :nodoc:
+  class I18nBackend # :nodoc:
     def initialize(component)
       @component = component
     end
