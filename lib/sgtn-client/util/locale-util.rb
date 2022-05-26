@@ -25,15 +25,13 @@ module SgtnClient
       component_result[locale] ||= begin
         component_result.shift if component_result.size >= 50
 
-        if Config.available_locales(component).include?(locale)
+        if Config.available_locales(component).include?(locale) || Config.available_components.empty?
           locale
         elsif locale.nil?
           get_fallback_locale
         else
           locale = locale.to_s
           if locale.empty?
-            get_fallback_locale
-          elsif Config.available_components.empty? # if having trouble to get available components, use the fallback locale
             get_fallback_locale
           else
             candidates = lowercase_locales_map(component)
