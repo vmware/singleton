@@ -1,6 +1,6 @@
 {
     "name": "@vip/vip-core-sdk-server",
-    "version": "0.4.4",
+    "version": "0.4.5",
     "publishConfig": {
         "registry": ""
     },
@@ -29,7 +29,7 @@
         "build": "webpack",
         "prepublish": "rimraf dist && tsc -p ./ --outDir dist/ && npm run build",
         "jest": "NODE_ENV=test jest -c jest.config.json",
-        "test": "npm run jest"
+        "test": "rimraf dist && npm run jest"
     },
     "dependencies": {
         "decimal.js-light": "^2.4.1"
@@ -54,6 +54,15 @@
         "webpack-cli": "^3.3.0"
     },
     "changelogHistory": [
+        {
+            "date": "05/26/22",
+            "version": "0.4.5",
+            "notes": [
+                {
+                    "description": "Improve collect-source-bundle CLI script in support of transforming ECMAScript modules to CommonJS"
+                }
+            ]
+        },
         {
             "date": "11/15/21",
             "version": "0.4.4",

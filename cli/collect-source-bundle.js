@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /*
- * Copyright 2019-2021 VMware, Inc.
+ * Copyright 2019-2022 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 
@@ -139,10 +139,23 @@ function run() {
             required: false,
             action: 'storeTrue'
         }
-    )
+    );
+
+    parser.addArgument(
+        ['--moduletype'],
+        {
+            help: 'transform ECMAScript modules to CommonJS',
+            required: false
+        }
+    );
 
     const args = parser.parseArgs();
     const logger = LogService.getLogServiceInstance(args.verbose);
+    if (args.moduletype === 'ES6') {
+        require('@babel/register')({
+            plugins: ['@babel/plugin-transform-modules-commonjs']
+        });
+    }
     logger.debug('command line args', args);
     const workspace = path.resolve(process.cwd(), args.source_dir);
     logger.debug('workspace', workspace);
