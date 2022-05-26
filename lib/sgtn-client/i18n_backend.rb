@@ -27,18 +27,14 @@ module SgtnClient # :nodoc:
 
     def translations; end
 
-    def exists?(locale, key, options); end
+    def exists?(locale, key)
+      !!(translate(locale, key) { nil })
+    end
 
     def translate(locale, key, options)
       flat_key = I18n::Backend::Flatten.normalize_flat_keys(locale, key, options[:scope], '.')
       values = options.except(*I18n::RESERVED_KEYS)
       SgtnClient::Translation.translate(flat_key, @component, locale, **values) { nil }
     end
-
-    protected
-
-    def init_translations; end
-
-    def lookup(locale, key, scope = [], options); end
   end
 end
