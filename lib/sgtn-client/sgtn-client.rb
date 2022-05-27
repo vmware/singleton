@@ -32,15 +32,15 @@ module SgtnClient
 
       class << self
             def configure(options = {}, &block)
-            SgtnClient::Config.configure(options, &block)
+            Config.configure(options, &block)
             end
 
             include Logging
             def load(*args)
                   # load configuration file
                   begin
-                    SgtnClient::Config.load(args[0], args[1])
-                    SgtnClient::ValidateUtil.validate_config()
+                    Config.load(args[0], args[1])
+                    ValidateUtil.validate_config()
                   rescue => exception
                     file = File.open('./error.log', 'a')
                     file.sync = true
@@ -59,8 +59,8 @@ module SgtnClient
                   SgtnClient.logger = Logger.new(file, LOGFILE_SHIFT_AGE)
 
                   # Set log level for sandbox mode
-                  env = SgtnClient::Config.default_environment
-                  mode = SgtnClient::Config.configurations[env]["mode"]
+                  env = Config.default_environment
+                  mode = Config.configurations[env]["mode"]
                   SgtnClient.logger.debug "[Client][load]set log level, mode=#{mode}"
                   if mode == 'sandbox'
                         SgtnClient.logger.level = Logger::DEBUG
@@ -69,7 +69,7 @@ module SgtnClient
                   end
 
                   # initialize cache
-                  disable_cache = SgtnClient::Config.configurations[env]["disable_cache"]
+                  disable_cache = Config.configurations[env]["disable_cache"]
                   SgtnClient.logger.debug "[Client][load]cache initialize, disable_cache=#{disable_cache}"
                   if disable_cache != nil
                         SgtnClient::Core::Cache.initialize(disable_cache)
@@ -79,11 +79,11 @@ module SgtnClient
             end
 
             def logger
-                  SgtnClient::Config.logger
+                  Config.logger
             end
 
             def logger=(log)
-                  SgtnClient::Config.logger = log
+                  Config.logger = log
             end           
       end
   

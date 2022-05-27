@@ -23,7 +23,7 @@ module SgtnClient
           end
         end
 
-        raise exception || SgtnClient::SingletonError.new("can't load component: #{component}, locale: #{locale}")
+        raise exception || SingletonError.new("can't load component: #{component}, locale: #{locale}")
       end
 
       def available_bundles

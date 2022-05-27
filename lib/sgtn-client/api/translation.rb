@@ -43,7 +43,7 @@ module SgtnClient
       def translate(key, component, locale = nil, **kwargs)
         SgtnClient.logger.debug "[#{method(__callee__).owner}.#{__callee__}] key: #{key}, component: #{component}, locale: #{locale}, args: #{kwargs}"
 
-        locale = locale.nil? ? self.locale : SgtnClient::LocaleUtil.get_best_locale(locale)
+        locale = locale.nil? ? self.locale : LocaleUtil.get_best_locale(locale)
 
         result = get_bundle(component, locale)&.fetch(key, nil)
         if result.nil? && !LocaleUtil.is_source_locale(locale)
@@ -61,7 +61,7 @@ module SgtnClient
         if kwargs.empty?
           result
         else
-          locale = result.locale if result.is_a?(SgtnClient::StringUtil)
+          locale = result.locale if result.is_a?(StringUtil)
           result.localize(locale) % kwargs
         end
       end
@@ -70,7 +70,7 @@ module SgtnClient
       def get_translations(component, locale = nil)
         SgtnClient.logger.debug "[#{method(__callee__).owner}.#{__callee__}] component: #{component}, locale: #{locale}"
 
-        locale = locale.nil? ? self.locale : SgtnClient::LocaleUtil.get_best_locale(locale)
+        locale = locale.nil? ? self.locale : LocaleUtil.get_best_locale(locale)
         items = get_bundle(component, locale)
         if items.nil? && !LocaleUtil.is_source_locale(locale)
           items = get_bundle(component, LocaleUtil.get_source_locale)
@@ -81,11 +81,11 @@ module SgtnClient
       end
 
       def locale
-        RequestStore.store[:locale] ||= SgtnClient::LocaleUtil.get_fallback_locale
+        RequestStore.store[:locale] ||= LocaleUtil.get_fallback_locale
       end
 
       def locale=(value)
-        RequestStore.store[:locale] = SgtnClient::LocaleUtil.get_best_locale(value)
+        RequestStore.store[:locale] = LocaleUtil.get_best_locale(value)
       end
 
       private
@@ -99,13 +99,13 @@ module SgtnClient
       end
 
       def get_bundle!(component, locale)
-        id = SgtnClient::Common::BundleID.new(component, locale)
-        bundles = SgtnClient::Config.available_bundles
+        id = Common::BundleID.new(component, locale)
+        bundles = Config.available_bundles
         unless bundles.nil? || bundles.empty? || bundles.include?(id)
-          raise SgtnClient::SingletonError, 'bundle is unavailable.'
+          raise SingletonError, 'bundle is unavailable.'
         end
 
-        SgtnClient::Config.loader.get_bundle(component, locale)
+        Config.loader.get_bundle(component, locale)
       end
     end
     extend Implementation

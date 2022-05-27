@@ -29,7 +29,7 @@ module SgtnClient
           end
         end
 
-        raise SgtnClient::SingletonError, "no local source messages for component #{component}" if total_messages.empty?
+        raise SingletonError, "no local source messages for component #{component}" if total_messages.empty?
 
         total_messages
       end
@@ -40,7 +40,7 @@ module SgtnClient
         @available_bundles ||= begin
           @source_bundle_path.children.select(&:directory?).reduce(Set.new) do |bundles, component|
             component.glob('**/*.{yml, yaml}') do |_|
-              bundles << Common::BundleID.new(component.basename.to_s, SgtnClient::LocaleUtil.get_source_locale)
+              bundles << Common::BundleID.new(component.basename.to_s, LocaleUtil.get_source_locale)
               break bundles
             end || bundles
           end

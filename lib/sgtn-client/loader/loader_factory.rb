@@ -11,7 +11,7 @@ module SgtnClient
         loaders << Source.new(config) if config['source_bundle']
         loaders << SgtnServer.new(config) if config['vip_server']
         loaders << LocalTranslation.new(config) if config['translation_bundle']
-        raise SgtnClient::SingletonError, 'no translation is available!' if loaders.empty?
+        raise SingletonError, 'no translation is available!' if loaders.empty?
 
         chain_loader = Class.new(Chain)
         chain_loader.include SourceComparer if config['source_bundle'] || config['vip_server']

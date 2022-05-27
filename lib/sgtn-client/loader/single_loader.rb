@@ -36,7 +36,7 @@ module SgtnClient
           end
         end
 
-        loader = SgtnClient::SingleOperation.new(none_alive, &creator)
+        loader = SingleOperation.new(none_alive, &creator)
       end
     end
   end
