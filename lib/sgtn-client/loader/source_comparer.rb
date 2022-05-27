@@ -10,7 +10,7 @@ module SgtnClient
 
     module SourceComparer
       def load_bundle(component, locale)
-        SgtnClient.logger.debug "[#{__FILE__}][#{__callee__}] component=#{component}, locale=#{locale}"
+        SgtnClient.logger.debug { "[#{__FILE__}][#{__callee__}] component=#{component}, locale=#{locale}" }
 
         # source locale and old source locale don't need comparison because they are bases of comparison
         real_locale = cache_to_real_map[locale]
