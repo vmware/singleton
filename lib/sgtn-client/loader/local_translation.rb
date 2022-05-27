@@ -5,13 +5,7 @@ require 'json'
 require 'pathname'
 
 module SgtnClient
-  module Common
-    autoload :BundleID, 'sgtn-client/common/data'
-  end
-
   module TranslationLoader
-    autoload :CONSTS, 'sgtn-client/loader/consts'
-
     class LocalTranslation
       BUNDLE_PREFIX = 'messages_'.freeze
       BUNDLE_SUFFIX = '.json'.freeze

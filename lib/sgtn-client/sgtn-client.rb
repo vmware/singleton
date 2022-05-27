@@ -4,6 +4,10 @@
 module SgtnClient
       LOGFILE_SHIFT_AGE = 4
 
+      autoload :Common,             'sgtn-client/common'
+      autoload :TranslationLoader,  'sgtn-client/loader'
+      autoload :SingleOperation,    'sgtn-client/common/single_operation'
+
       module Core
             autoload :Cache,        "sgtn-client/core/cache"
       end
@@ -18,6 +22,8 @@ module SgtnClient
       autoload :LocaleUtil,         "sgtn-client/util/locale-util"
       autoload :FileUtil,           "sgtn-client/util/file-util"
       autoload :CacheUtil,          "sgtn-client/util/cache-util"
+      autoload :StringUtil,         "sgtn-client/util/string-util"
+      autoload :SingletonError,     'sgtn-client/exceptions.rb'
 
       module Formatters
             autoload :PluralFormatter,    "sgtn-client/formatters/plurals/plural_formatter"

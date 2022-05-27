@@ -2,10 +2,6 @@
 # SPDX-License-Identifier: EPL-2.0
 
 module SgtnClient
-  module Core
-    autoload :Cache, 'sgtn-client/core/cache'
-  end
-
   class CacheUtil
     def self.get_cache(cache_key)
       SgtnClient::Core::Cache.get(cache_key)

@@ -4,11 +4,7 @@
 # SPDX-License-Identifier: EPL-2.0
 
 module SgtnClient
-  autoload :CacheUtil, 'sgtn-client/util/cache-util'
-
   module TranslationLoader
-    autoload :CONSTS, 'sgtn-client/loader/consts'
-
     module Cache # :nodoc:
       # get from cache, return expired data immediately
       def get_bundle(component, locale)

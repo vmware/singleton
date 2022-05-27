@@ -3,15 +3,10 @@
 
 require 'pathname'
 require 'psych/simple'
+require 'set'
 
 module SgtnClient
-  module Common
-    autoload :BundleID, 'sgtn-client/common/data'
-  end
-
   module TranslationLoader
-    autoload :CONSTS, 'sgtn-client/loader/consts'
-
     class Source
       def initialize(config)
         @source_bundle_path = Pathname.new(config['source_bundle'])

@@ -3,6 +3,7 @@
 
 require 'erb'
 require 'yaml'
+require 'set'
 require 'observer'
 
 module SgtnClient

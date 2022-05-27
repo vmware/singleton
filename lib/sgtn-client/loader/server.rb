@@ -5,15 +5,10 @@
 
 require 'faraday'
 require 'faraday_middleware'
+require 'set'
 
 module SgtnClient
-  module Common
-    autoload :BundleID, 'sgtn-client/common/data'
-  end
-
   module TranslationLoader
-    autoload :CONSTS, 'sgtn-client/loader/consts'
-
     class SgtnServer
       ERROR_ILLEGAL_DATA = 'server returned illegal data.'
       ERROR_BUSINESS_ERROR = 'server returned business error.'

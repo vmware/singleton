@@ -3,14 +3,6 @@
 
 module SgtnClient
   module TranslationLoader
-    autoload :Source, 'sgtn-client/loader/source'
-    autoload :SgtnServer, 'sgtn-client/loader/server'
-    autoload :LocalTranslation, 'sgtn-client/loader/local_translation'
-    autoload :Chain, 'sgtn-client/loader/chain_loader'
-    autoload :SourceComparer, 'sgtn-client/loader/source_comparer'
-    autoload :SingleLoader, 'sgtn-client/loader/single_loader'
-    autoload :Cache, 'sgtn-client/loader/cache'
-
     module LoaderFactory
       def self.create(config)
         SgtnClient.logger.info "[#{method(__callee__).owner}.#{__callee__}] config=#{config}"
