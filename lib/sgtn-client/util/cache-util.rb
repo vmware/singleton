@@ -1,6 +1,8 @@
 # Copyright 2022 VMware, Inc.
 # SPDX-License-Identifier: EPL-2.0
 
+require 'time'
+
 module SgtnClient
   class CacheUtil
     def self.get_cache(cache_key)

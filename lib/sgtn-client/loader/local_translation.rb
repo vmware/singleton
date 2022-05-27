@@ -3,6 +3,7 @@
 
 require 'json'
 require 'pathname'
+require 'set'
 
 module SgtnClient
   module TranslationLoader
