@@ -4,7 +4,14 @@
 require 'i18n'
 
 module SgtnClient # :nodoc:
-  class I18nBackend # :nodoc:
+  # Sometimes it is needed to use Singleton as an I18n backend to minimize the changes when integrating Singleton with
+  # your application. Here is the common usage:
+  #
+  #   I18n::Backend::Simple.include(I18n::Backend::Fallbacks) # add fallbacks behavior to current backend
+  #   I18n.backend = I18n::Backend::Chain.new(Sgtn::I18nBackend.new(component_name), I18n.backend)
+  #   I18n.enforce_available_locales=false # disable available locales check
+  #   I18n.default_locale = :en
+  class I18nBackend
     def initialize(component)
       @component = component
     end
