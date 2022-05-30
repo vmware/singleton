@@ -7,12 +7,6 @@ require 'set'
 require 'observer'
 
 module SgtnClient
-  #include Exceptions
-
-  module TranslationLoader
-    autoload :LoaderFactory, 'sgtn-client/loader/loader_factory'
-  end
-
   module Configuration
 
     def config

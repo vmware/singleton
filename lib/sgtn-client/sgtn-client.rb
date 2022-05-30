@@ -20,10 +20,9 @@ module SgtnClient
       autoload :Exceptions,         "sgtn-client/core/exceptions"
       autoload :ValidateUtil,       "sgtn-client/util/validate-util"
       autoload :LocaleUtil,         "sgtn-client/util/locale-util"
-      autoload :FileUtil,           "sgtn-client/util/file-util"
       autoload :CacheUtil,          "sgtn-client/util/cache-util"
       autoload :StringUtil,         "sgtn-client/util/string-util"
-      autoload :SingletonError,     'sgtn-client/exceptions.rb'
+      autoload :SingletonError,     'sgtn-client/exceptions'
 
       module Formatters
             autoload :PluralFormatter,    "sgtn-client/formatters/plurals/plural_formatter"
