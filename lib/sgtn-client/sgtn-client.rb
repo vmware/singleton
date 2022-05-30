@@ -71,9 +71,9 @@ module SgtnClient
                   disable_cache = Config.configurations[env]["disable_cache"]
                   SgtnClient.logger.debug "[Client][load]cache initialize, disable_cache=#{disable_cache}"
                   if disable_cache != nil
-                        SgtnClient::Core::Cache.initialize(disable_cache)
+                        Core::Cache.initialize(disable_cache)
                   else
-                        SgtnClient::Core::Cache.initialize()
+                        Core::Cache.initialize()
                   end
             end
 

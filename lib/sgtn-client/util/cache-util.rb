@@ -6,11 +6,11 @@ require 'time'
 module SgtnClient
   class CacheUtil
     def self.get_cache(cache_key)
-      SgtnClient::Core::Cache.get(cache_key)
+      Core::Cache.get(cache_key)
     end
 
     def self.clear_cache
-      SgtnClient::Core::Cache.clear
+      Core::Cache.clear
     end
 
     def self.write_cache(cache_key, items)
@@ -20,7 +20,7 @@ module SgtnClient
       cache_expiry_period = Config.configurations[env]['cache_expiry_period']
       # expired after 24 hours
       cache_expiry_period = 24 * 60 if cache_expiry_period.nil?
-      SgtnClient::Core::Cache.put(cache_key, items, cache_expiry_period)
+      Core::Cache.put(cache_key, items, cache_expiry_period)
     end
 
     def self.get_cachekey(component, locale)
