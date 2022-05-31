@@ -34,6 +34,7 @@ def traverse_modules(m, &block)
       SgtnClient.logger.info "Enable trace on const #{const}"
       const.methods(false).each { |method| block.call(const.method(method)) }
       const.instance_methods(false).each { |method| block.call(const.instance_method(method)) }
+      # const.singleton_methods(false).each { |method| block.call(const.singleton_method(method)) }
       
       traverse_modules(const, &block)
     end
