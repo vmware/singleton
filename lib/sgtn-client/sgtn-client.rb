@@ -49,27 +49,27 @@ module SgtnClient
 
                   # create log file
                   file = './sgtnclient_d.log'
-                  SgtnClient.logger.debug "[Client][load]create log file=#{file}"
+                  logger.debug "[Client][load]create log file=#{file}"
                   if args[2] != nil
                         file = args[2]
                   end
                   file = File.open(file, 'a')
                   file.sync = true
-                  SgtnClient.logger = Logger.new(file, LOGFILE_SHIFT_AGE)
+                  logger = Logger.new(file, LOGFILE_SHIFT_AGE)
 
                   # Set log level for sandbox mode
                   env = Config.default_environment
                   mode = Config.configurations[env]["mode"]
-                  SgtnClient.logger.debug "[Client][load]set log level, mode=#{mode}"
+                  logger.debug "[Client][load]set log level, mode=#{mode}"
                   if mode == 'sandbox'
-                        SgtnClient.logger.level = Logger::DEBUG
+                        logger.level = Logger::DEBUG
                   else 
-                        SgtnClient.logger.level = Logger::INFO
+                        logger.level = Logger::INFO
                   end
 
                   # initialize cache
                   disable_cache = Config.configurations[env]["disable_cache"]
-                  SgtnClient.logger.debug "[Client][load]cache initialize, disable_cache=#{disable_cache}"
+                  logger.debug "[Client][load]cache initialize, disable_cache=#{disable_cache}"
                   if disable_cache != nil
                         Core::Cache.initialize(disable_cache)
                   else
