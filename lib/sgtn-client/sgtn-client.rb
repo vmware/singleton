@@ -1,9 +1,9 @@
 # Copyright 2022 VMware, Inc.
 # SPDX-License-Identifier: EPL-2.0
 
-module SgtnClient
-      LOGFILE_SHIFT_AGE = 4
+require 'logger'
 
+module SgtnClient
       module Core
             autoload :Cache,        "sgtn-client/core/cache"
       end
@@ -26,15 +26,10 @@ module SgtnClient
 
 
       class << self
-            def configure(options = {}, &block)
-            SgtnClient::Config.configure(options, &block)
-            end
-
-            include Logging
-            def load(*args)
+            def load(config_file, env, log_file = './sgtnclient.log')
                   # load configuration file
                   begin
-                    SgtnClient::Config.load(args[0], args[1])
+                    SgtnClient::Config.load(config_file, env)
                     SgtnClient::ValidateUtil.validate_config()
                   rescue => exception
                     file = File.open('./error.log', 'a')
@@ -44,24 +39,16 @@ module SgtnClient
                   end
 
                   # create log file
-                  file = './sgtnclient_d.log'
-                  SgtnClient.logger.debug "[Client][load]create log file=#{file}"
-                  if args[2] != nil
-                        file = args[2]
-                  end
-                  file = File.open(file, 'a')
+                  SgtnClient.logger.info "[Client][load]create log file=#{log_file}"
+                  file = File.open(log_file, 'a')
                   file.sync = true
-                  SgtnClient.logger = Logger.new(file, LOGFILE_SHIFT_AGE)
+                  SgtnClient.logger = Logger.new(file, 4)
 
                   # Set log level for sandbox mode
                   env = SgtnClient::Config.default_environment
                   mode = SgtnClient::Config.configurations[env]["mode"]
                   SgtnClient.logger.debug "[Client][load]set log level, mode=#{mode}"
-                  if mode == 'sandbox'
-                        SgtnClient.logger.level = Logger::DEBUG
-                  else 
-                        SgtnClient.logger.level = Logger::INFO
-                  end
+                  SgtnClient.logger.level = mode == 'sandbox' ? Logger::DEBUG : Logger::INFO
 
                   # initialize cache
                   disable_cache = SgtnClient::Config.configurations[env]["disable_cache"]
@@ -74,11 +61,11 @@ module SgtnClient
             end
 
             def logger
-                  SgtnClient::Config.logger
+                  @logger ||= Logger.new(STDERR)
             end
 
             def logger=(log)
-                  SgtnClient::Config.logger = log
+                  @logger = log
             end           
       end
   

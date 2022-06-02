@@ -145,21 +145,6 @@ module SgtnClient
           @@configurations = configs && Hash[configs.map{|k,v| [k.to_s, v] }]
         end
 
-        # Set logger
-        def logger=(logger)
-          Logging.logger = logger
-        end
-
-        # Get logger
-        def logger
-          if @@configurations[:mode] == 'live' and Logging.logger.level == Logger::DEBUG
-            Logging.logger.warn "DEBUG log level not allowed in live mode for security of confidential information. Changing log level to INFO..."
-            Logging.logger.level = Logger::INFO
-          end
-          Logging.logger
-        end
-
-
         def loader
           @loader ||= begin
             config = SgtnClient::Config.configurations[SgtnClient::Config.default_environment]
