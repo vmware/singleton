@@ -2,8 +2,8 @@
 # SPDX-License-Identifier: EPL-2.0
 
 require 'pathname'
-require 'psych/simple'
 require 'set'
+require 'yaml'
 
 module SgtnClient
   module TranslationLoader
@@ -20,7 +20,7 @@ module SgtnClient
         total_messages = {}
 
         (@source_bundle_path + component).glob('**/*.{yml, yaml}') do |f|
-          bundle = Psych.simple_load(File.read(f))
+          bundle = YAML.load(File.read(f))
           messages = bundle&.first&.last # TODO: Warn about inconsistent source locale
           if messages.is_a?(Hash)
             total_messages.merge!(messages)
