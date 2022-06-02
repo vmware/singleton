@@ -1,7 +1,8 @@
 # Copyright 2022 VMware, Inc.
 # SPDX-License-Identifier: EPL-2.0
 
-require 'logging'
+require 'logger'
+require 'lumberjack'
 
 module SgtnClient
       module Core
@@ -37,19 +38,17 @@ module SgtnClient
                     log.error exception.message
                   end
 
-                  # create log file
-                  SgtnClient.logger.info "[Client][load]create log file=#{log_file}"
-                  SgtnClient.logger = Logging.logger(log_file, 4, 104857)
-
                   # Set log level for sandbox mode
                   env = SgtnClient::Config.default_environment
                   mode = SgtnClient::Config.configurations[env]["mode"]
-                  SgtnClient.logger.debug "[Client][load]set log level, mode=#{mode}"
-                  SgtnClient.logger.level = mode == 'sandbox' ? :debug : :info
+                  level = mode == 'sandbox' ? :debug : :info
+                  # create log file
+                  logger.info "[Client][load]create log file=#{log_file}, log level=#{level}"
+                  logger = Lumberjack::Logger.new(log_file, level: level, :max_size => 1, keep: 4)
 
                   # initialize cache
                   disable_cache = SgtnClient::Config.configurations[env]["disable_cache"]
-                  SgtnClient.logger.debug "[Client][load]cache initialize, disable_cache=#{disable_cache}"
+                  logger.debug "[Client][load]cache initialize, disable_cache=#{disable_cache}"
                   if disable_cache != nil
                         SgtnClient::Core::Cache.initialize(disable_cache)
                   else
@@ -58,7 +57,7 @@ module SgtnClient
             end
 
             def logger
-                  @logger ||= Logging.logger(STDOUT)
+                  @logger ||= Logger.new(STDOUT)
             end
 
             def logger=(log)
