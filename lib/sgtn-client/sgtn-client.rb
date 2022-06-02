@@ -26,7 +26,7 @@ module SgtnClient
 
 
       class << self
-            def load(config_file, env, log_file = './sgtnclient.log')
+            def load(config_file, env, log_file = './singleton.log')
                   # load configuration file
                   begin
                     SgtnClient::Config.load(config_file, env)
@@ -44,7 +44,7 @@ module SgtnClient
                   level = mode == 'sandbox' ? :debug : :info
                   # create log file
                   logger.info "[Client][load]create log file=#{log_file}, log level=#{level}"
-                  logger = Lumberjack::Logger.new(log_file, level: level, :max_size => 1, keep: 4)
+                  @logger = Lumberjack::Logger.new(log_file, level: level, :max_size => '1M', keep: 4)
 
                   # initialize cache
                   disable_cache = SgtnClient::Config.configurations[env]["disable_cache"]
