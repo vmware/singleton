@@ -1,7 +1,7 @@
 # Copyright 2022 VMware, Inc.
 # SPDX-License-Identifier: EPL-2.0
 
-require 'logger'
+require 'logging'
 
 module SgtnClient
       module Core
@@ -12,7 +12,6 @@ module SgtnClient
       autoload :T,                  "sgtn-client/api/t"
       autoload :Source,             "sgtn-client/api/source"
       autoload :Config,             "sgtn-client/core/config"
-      autoload :Logging,            "sgtn-client/core/logging"
       autoload :Exceptions,         "sgtn-client/core/exceptions"
       autoload :ValidateUtil,       "sgtn-client/util/validate-util"
       autoload :LocaleUtil,         "sgtn-client/util/locale-util"
@@ -40,15 +39,13 @@ module SgtnClient
 
                   # create log file
                   SgtnClient.logger.info "[Client][load]create log file=#{log_file}"
-                  file = File.open(log_file, 'a')
-                  file.sync = true
-                  SgtnClient.logger = Logger.new(file, 4)
+                  SgtnClient.logger = Logging.logger(log_file, 4, 104857)
 
                   # Set log level for sandbox mode
                   env = SgtnClient::Config.default_environment
                   mode = SgtnClient::Config.configurations[env]["mode"]
                   SgtnClient.logger.debug "[Client][load]set log level, mode=#{mode}"
-                  SgtnClient.logger.level = mode == 'sandbox' ? Logger::DEBUG : Logger::INFO
+                  SgtnClient.logger.level = mode == 'sandbox' ? :debug : :info
 
                   # initialize cache
                   disable_cache = SgtnClient::Config.configurations[env]["disable_cache"]
@@ -61,7 +58,7 @@ module SgtnClient
             end
 
             def logger
-                  @logger ||= Logger.new(STDERR)
+                  @logger ||= Logging.logger(STDOUT)
             end
 
             def logger=(log)
