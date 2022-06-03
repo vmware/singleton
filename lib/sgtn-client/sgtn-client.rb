@@ -9,16 +9,16 @@ module SgtnClient
     autoload :Cache, 'sgtn-client/core/cache'
   end
 
-  autoload :Translation,        'sgtn-client/api/translation'
-  autoload :T,                  'sgtn-client/api/t'
-  autoload :Source,             'sgtn-client/api/source'
-  autoload :Config,             'sgtn-client/core/config'
-  autoload :Exceptions,         'sgtn-client/core/exceptions'
-  autoload :ValidateUtil,       'sgtn-client/util/validate-util'
-  autoload :LocaleUtil,         'sgtn-client/util/locale-util'
-  autoload :FileUtil,           'sgtn-client/util/file-util'
-  autoload :CacheUtil,          'sgtn-client/util/cache-util'
-  autoload :StringUtil,         'sgtn-client/util/string-util'
+  autoload :Translation,   'sgtn-client/api/translation'
+  autoload :T,             'sgtn-client/api/t'
+  autoload :Source,        'sgtn-client/api/source'
+  autoload :Config,        'sgtn-client/core/config'
+  autoload :Exceptions,    'sgtn-client/core/exceptions'
+  autoload :ValidateUtil,  'sgtn-client/util/validate-util'
+  autoload :LocaleUtil,    'sgtn-client/util/locale-util'
+  autoload :FileUtil,      'sgtn-client/util/file-util'
+  autoload :CacheUtil,     'sgtn-client/util/cache-util'
+  autoload :StringUtil,    'sgtn-client/util/string-util'
 
   module Formatters
     autoload :PluralFormatter, 'sgtn-client/formatters/plurals/plural_formatter'
