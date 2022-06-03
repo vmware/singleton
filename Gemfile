@@ -19,6 +19,4 @@ group :test do
   gem 'pry-inline', require: true
   gem 'pry-doc'
   gem 'activesupport'
-  gem 'rubocop-rake', require: false
-  gem 'rubocop-rspec', require: false
 end
