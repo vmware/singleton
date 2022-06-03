@@ -36,6 +36,8 @@ test: &default
   # # the default language used to load local source bundle
   default_language: en
 
+  log_file: # ./singleton.log
+
 development:
   <<: *default
 

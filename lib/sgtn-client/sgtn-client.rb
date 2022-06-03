@@ -25,16 +25,19 @@ module SgtnClient
   end
 
   class << self
-    def load(config_file, env, log_file = './singleton.log')
-      SgtnClient::Config.load(config_file, env)
+    def load(config_file, env, log_file = nil)
+      config = SgtnClient::Config.load(config_file, env)
       SgtnClient::ValidateUtil.validate_config
 
       # create logger
-      env = SgtnClient::Config.default_environment
-      mode = SgtnClient::Config.configurations[env]['mode']
-      level = mode == 'sandbox' ? :debug : :info
-      logger.info "[Client][load]create log file=#{log_file}, log level=#{level}"
-      @logger = Lumberjack::Logger.new(log_file, level: level, max_size: '1M', keep: 4)
+      log_file ||= config.log_file
+      if log_file
+        env = SgtnClient::Config.default_environment
+        mode = SgtnClient::Config.configurations[env]['mode']
+        level = mode == 'sandbox' ? :debug : :info
+        logger.info "[Client][load]create log file=#{log_file}, log level=#{level}"
+        @logger = Lumberjack::Logger.new(log_file, level: level, max_size: '1M', keep: 4)
+      end
     end
 
     def logger
