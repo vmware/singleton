@@ -26,10 +26,6 @@ describe SgtnClient do
     #   expect(str).not_to eq be_nil
     # end
 
-    it "loadBundles" do
-      cache_key = SgtnClient::CacheUtil.get_cachekey(@component, @locale)
-      expect(SgtnClient::CacheUtil.get_cache(cache_key)).not_to eq be_nil
-    end
 
   end
 
