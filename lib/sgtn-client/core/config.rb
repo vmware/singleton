@@ -150,7 +150,6 @@ module SgtnClient
       # Get logger
       def logger
         @logger ||= begin
-            # create logger
             config = SgtnClient::Config.configurations[SgtnClient::Config.default_environment]
             log_file = config['log_file']
             log_level = config['log_level']
