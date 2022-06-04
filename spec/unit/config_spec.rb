@@ -7,11 +7,6 @@ describe SgtnClient::Config do
     #   SgtnClient.load('./spec/config/sgtnclient.yml', 'test', './sgtnclient_config.log')
     # end
 
-    it 'define configuration' do
-      env = SgtnClient::Config.default_environment
-      mode = SgtnClient::Config.configurations[env]['mode']
-      expect(mode).to eq 'sandbox'
-    end
 
     it 'not define configuration' do
       begin

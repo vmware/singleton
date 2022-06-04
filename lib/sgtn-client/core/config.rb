@@ -51,8 +51,7 @@ module SgtnClient
     :openid_endpoint, :openid_redirect_uri, :openid_client_id, :openid_client_secret,
     :verbose_logging, :product_name, :version, :vip_server,
     :translation_bundle, :source_bundle, :cache_expiry_period, :disable_cache, :default_language,
-    :log_file
-
+    :log_file, :log_level
 
     # Create Config object
     # === Options(Hash)
@@ -145,6 +144,24 @@ module SgtnClient
           @@config_cache   = {}
           @@configurations = configs && Hash[configs.map{|k,v| [k.to_s, v] }]
         end
+
+      attr_writer :logger
+
+      # Get logger
+      def logger
+        @logger ||= begin
+            # create logger
+            config = SgtnClient::Config.configurations[SgtnClient::Config.default_environment]
+            log_file = config['log_file']
+            log_level = config['log_level']
+            @logger = if log_file
+                        puts "[Client][load]create log file=#{log_file}, log level=#{log_level}"
+                        Lumberjack::Logger.new(log_file, level: log_level, max_size: '1M', keep: 4)
+                      else
+                        Logger.new(STDOUT, level: log_level)
+                      end
+          end
+      end
 
         def loader
           @loader ||= begin

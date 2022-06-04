@@ -5,8 +5,8 @@ require_relative 'singleton-ruby'
 
 module Sgtn # :nodoc:
   # load configuration from a file
-  def self.load_config(*args)
-    SgtnClient.load(*args)
+  def self.load_config(config_file, env)
+    SgtnClient.load(config_file, env)
   end
 
   extend SgtnClient::Translation::Implementation

@@ -1,11 +1,12 @@
 # Copyright 2022 VMware, Inc.
 # SPDX-License-Identifier: EPL-2.0
 
+require 'forwardable'
 require 'logger'
 require 'lumberjack'
 
-module SgtnClient
-  module Core
+module SgtnClient # :nodoc:
+  module Core # :nodoc:
     autoload :Cache, 'sgtn-client/core/cache'
   end
 
@@ -20,28 +21,21 @@ module SgtnClient
   autoload :CacheUtil,     'sgtn-client/util/cache-util'
   autoload :StringUtil,    'sgtn-client/util/string-util'
 
-  module Formatters
+  module Formatters # :nodoc:
     autoload :PluralFormatter, 'sgtn-client/formatters/plurals/plural_formatter'
   end
 
-  class << self
-    attr_accessor :logger
+  module Implementation # :nodoc:
+    extend Forwardable
+
+    def_delegators Config, :logger, :logger=
 
     def load(config_file, env, log_file = nil)
-      config = SgtnClient::Config.load(config_file, env)
+      SgtnClient::Config.load(config_file, env)
+      SgtnClient::Config.configurations[SgtnClient::Config.default_environment]['log_file'] = log_file if log_file
       SgtnClient::ValidateUtil.validate_config
-
-      # create logger
-      env = SgtnClient::Config.default_environment
-      mode = SgtnClient::Config.configurations[env]['mode']
-      level = mode == 'sandbox' ? :debug : :info
-      log_file ||= config.log_file
-      @logger = if log_file
-                  puts "[Client][load]create log file=#{log_file}, log level=#{level}"
-                  Lumberjack::Logger.new(log_file, level: level, max_size: '1M', keep: 4)
-                else
-                  Logger.new(STDOUT, level: level)
-                end
     end
   end
+
+  extend Implementation
 end

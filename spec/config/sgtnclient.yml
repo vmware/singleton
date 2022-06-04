@@ -1,8 +1,5 @@
 test: &default
 
-  # Mode can be 'live' or 'sandbox'
-  mode: sandbox
-
   # Credentials for Classic APIs
   app_id: APP-80W284485P519543T
   username: linr
@@ -30,17 +27,16 @@ test: &default
   # # memory cache's expration(minutes), default value is 24*60
   cache_expiry_period: 10
 
-  # # disable cache, it's optional setting
-  disable_cache: false
-
   # # the default language used to load local source bundle
   default_language: en
 
-  log_file: # ./singleton.log
+  log_file: ./unit_test.log
+
+  log_level: DEBUG
 
 development:
   <<: *default
 
 production:
   <<: *default
-  mode: live
+  log_level: INFO

@@ -29,9 +29,6 @@ test: &default
 
   # # memory cache's expration(minutes), default value is 24*60
   cache_expiry_period: 36t
-
-  # # disable cache, it's optional setting
-  disable_cache: true1
   
 development:
   <<: *default

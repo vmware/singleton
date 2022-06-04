@@ -7,13 +7,8 @@ module SgtnClient
 
       def self.validate_config()
         env = SgtnClient::Config.default_environment
-        SgtnClient.logger.debug "[ValidateUtil][validate_config] env = #{env}"
+        puts "[ValidateUtil][validate_config] env = #{env}"
         messages = "\n"
-
-        mode = SgtnClient::Config.configurations[env]["mode"]
-        if mode != 'sandbox' && mode != 'live'
-          messages =  messages + "Configuration[mode] has to be 'sandbox' or 'live'!\n"
-        end
 
         #version = SgtnClient::Config.configurations[env]["version"]
         #if version.is_a? Integer
