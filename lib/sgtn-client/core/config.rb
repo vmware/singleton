@@ -149,7 +149,6 @@ module SgtnClient
 
       attr_writer :logger
 
-      # Get logger
       def logger
         @logger ||= begin
             config = SgtnClient::Config.configurations[SgtnClient::Config.default_environment]
