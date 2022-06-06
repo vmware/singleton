@@ -107,7 +107,7 @@ module SgtnClient
       end
 
       def get_bundle_with_fallback(component, locale)
-        LocaleUtil.locales(locale) do |l|
+        LocaleUtil.fallback_locales(locale) do |l|
           messages = get_bundle(component, l)
           return l, messages if messages
         end

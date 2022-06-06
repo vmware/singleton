@@ -74,7 +74,7 @@ module SgtnClient
       @fallback_locale ||= get_default_locale || get_source_locale || 'en'
     end
 
-    def self.locales(locale)
+    def self.fallback_locales(locale)
       yield locale
 
       fallback_chain.each do |fallback|
