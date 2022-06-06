@@ -61,21 +61,23 @@ describe 'Mix', :include_helpers, :extend_helpers do
     it 'query source locale - English' do
       result = loader.get_bundle(component, en_locale)
       expect(result).to_not be_nil
-      expect(result[source_changed_key]).to eq 'old Hello world'
+      expect(result[source_changed_key]).to eq 'latest Hello world'
     end
 
     it "should return #{locale}" do
       result = loader.get_bundle(component, locale)
       expect(result).to_not be_nil
-      expect(result[source_changed_key]).to eq '旧 Hello world'
+      expect(result[key]).to eq value
     end
 
     it "should return nil for #{component_nonexistent}" do
       expect { loader.get_bundle(component_nonexistent, locale) }.to raise_error(Errno::ENOENT)
+      wait_threads_finish
     end
 
     it "should return nil for #{locale_nonexistent}" do
       expect { loader.get_bundle(component, locale_nonexistent) }.to raise_error(Errno::ENOENT)
+      wait_threads_finish
     end
 
     it 'should have only 1 loader' do
@@ -254,10 +256,10 @@ describe 'Mix', :include_helpers, :extend_helpers do
       stubs.each { |stub| expect(stub).to have_been_requested }
     end
 
-    it '#raise exception when querying En and there is no latest_locale bundle on server' do
+    it '#raise exception when querying En and there is no latest_locale bundle on both server and local' do
       stubs << stub_request(:get, format(bundle_url, latest_locale, component_local_translation_only)).to_return(body: nonexistent_response)
 
-      expect { loader.get_bundle(component_local_translation_only, en_locale) }.to raise_error(SgtnClient::SingletonError)
+      expect { loader.get_bundle(component_local_translation_only, en_locale) }.to raise_error(Errno::ENOENT)
 
       stubs.each { |stub| expect(stub).to have_been_requested }
     end
@@ -323,6 +325,13 @@ describe 'Mix', :include_helpers, :extend_helpers do
       result = loader.get_bundle(component, locale)
       expect(result).to_not be_nil
       expect(result[source_changed_key]).to eq 'Source Hello world'
+    end
+
+    it "fallback En from local translation to local source when querying #{en_locale}" do
+      result = loader.get_bundle(component_local_translation_only, en_locale)
+
+      expect(result).to_not be_nil
+      expect(result[message_only_in_local_translation_key]).to eq 'local only message - latest'
     end
 
     it "should return nil for #{component_nonexistent}" do
