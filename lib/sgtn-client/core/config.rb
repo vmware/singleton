@@ -2,8 +2,10 @@
 # SPDX-License-Identifier: EPL-2.0
 
 require 'erb'
-require 'yaml'
+require 'logger'
+require 'lumberjack'
 require 'observer'
+require 'yaml'
 
 module SgtnClient
   #include Exceptions

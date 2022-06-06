@@ -2,8 +2,6 @@
 # SPDX-License-Identifier: EPL-2.0
 
 require 'forwardable'
-require 'logger'
-require 'lumberjack'
 
 module SgtnClient # :nodoc:
   module Core # :nodoc:
