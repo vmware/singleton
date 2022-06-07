@@ -54,6 +54,8 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.0.0
+      - name: Install dependencies
+        run: bundle install
       - name: Unit test
         run: |
           COVERAGE=true 
