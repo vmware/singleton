@@ -54,20 +54,10 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.0.0
-      - name: Install dependencies
-        run: bundle install
-      - name: Run tests
-        run: bundle exec rake
       - name: Unit test
         run: |
-          gem build singleton-ruby.gemspec
-          mkdir spec/log
-          touch spec/log/http.log
-          rake spec
-      - name: Coverage
-        run: |
-          COVERAGE=true bundle exec rspec './spec/spec_helper.rb' 
-          cd coverage
+          COVERAGE=true 
+          bundle exec rspec
       - name: Upload Codecov report for ruby-client
         uses: codecov/codecov-action@v1
         with:
