@@ -59,7 +59,7 @@ jobs:
       - name: Unit test
         run: |
           COVERAGE=true 
-          bundle exec rspec
+          rake spec
       - name: Upload Codecov report for ruby-client
         uses: codecov/codecov-action@v1
         with:
