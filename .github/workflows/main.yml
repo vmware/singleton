@@ -61,9 +61,10 @@ jobs:
           COVERAGE=true 
           rake spec
       - name: Upload Codecov report for ruby-client
-        uses: codecov/codecov-action@v1
+        uses: codecov/codecov-action@v2
         with:
-          files: ./coverage/coverage.json
+          directory: ./coverage/
+          files: ./coverage.json
           flags: g11n-ruby-client
 
   security-analysis:
