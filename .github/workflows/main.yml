@@ -64,7 +64,7 @@ jobs:
         uses: codecov/codecov-action@v1
         with:
           files: ./coverage/coverage.json
-          flags: coverage
+          flags: g11n-ruby-client
 
   security-analysis:
     name: Security Analysis
