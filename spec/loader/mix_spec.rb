@@ -256,11 +256,21 @@ describe 'Mix', :include_helpers, :extend_helpers do
       stubs.each { |stub| expect(stub).to have_been_requested }
     end
 
-    it '#raise exception when querying En and there is no latest_locale bundle on both server and local' do
+    it '#raise exception when querying En and there is no latest_locale bundle on both server and local translations' do
+      stubs << stub_request(:get, format(bundle_url, latest_locale, component_local_source_only)).to_return(body: nonexistent_response)
+
+      expect { loader.get_bundle(component_local_source_only, en_locale) }.to raise_error(Errno::ENOENT)
+
+      stubs.each { |stub| expect(stub).to have_been_requested }
+    end
+
+    it "should be able to fallback to local latest for #{en_locale}" do
       stubs << stub_request(:get, format(bundle_url, latest_locale, component_local_translation_only)).to_return(body: nonexistent_response)
 
-      expect { loader.get_bundle(component_local_translation_only, en_locale) }.to raise_error(Errno::ENOENT)
+      result = loader.get_bundle(component_local_translation_only, en_locale)
 
+      expect(result).to_not be_nil
+      expect(result[message_only_in_local_translation_key]).to eq 'local only message'
       stubs.each { |stub| expect(stub).to have_been_requested }
     end
 
@@ -328,10 +338,10 @@ describe 'Mix', :include_helpers, :extend_helpers do
     end
 
     it "fallback En from local translation to local source when querying #{en_locale}" do
-      result = loader.get_bundle(component_local_translation_only, en_locale)
+      result = loader.get_bundle(component_local_source_only, en_locale)
 
       expect(result).to_not be_nil
-      expect(result[message_only_in_local_translation_key]).to eq 'local only message - latest'
+      expect(result[message_only_in_local_source_key]).to eq 'New Hello world'
     end
 
     it "should return nil for #{component_nonexistent}" do
