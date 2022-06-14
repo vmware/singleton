@@ -59,12 +59,12 @@ jobs:
       - name: Unit test
         run: |
           COVERAGE=true 
-          rake spec
+          bundle exec rspec
+          echo `pwd`
       - name: Upload Codecov report for ruby-client
         uses: codecov/codecov-action@v2
         with:
-          directory: ./coverage/
-          files: ./coverage.json
+          files: ./coverage/coverage.json
           flags: g11n-ruby-client
 
   security-analysis:
