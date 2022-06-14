@@ -18,7 +18,7 @@ module SgtnClient
       def initialize(config)
         @server_url = config['vip_server']
 
-        product_root = format('/i18n/api/v2/translation/products/%s/versions/%s', config['product_name'], config['version'])
+        product_root = format('i18n/api/v2/translation/products/%s/versions/%s', config['product_name'], config['version'])
 
         @bundle_url = "#{product_root}/locales/%s/components/%s"
         @locales_url = "#{product_root}/localelist"
