@@ -105,6 +105,14 @@ task sourcesJar(type: Jar, dependsOn: classes) {
     archiveClassifier = 'sources'
 }
 
+
+javadoc {  
+    options{
+        encoding "UTF-8"
+        charSet "UTF-8"
+    }
+}
+
 task javadocJar(type: Jar, dependsOn: javadoc) {
     from javadoc
     archiveClassifier = 'javadoc'
