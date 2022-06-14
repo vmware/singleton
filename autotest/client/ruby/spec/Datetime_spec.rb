@@ -1,12 +1,10 @@
 require 'rest-client'
 require 'rspec'
-require 'singleton-ruby'
+require 'singleton-client'
 
-include SgtnClient
 describe "Translation test" do
     before :each do
-        SgtnClient.load("./config/sgtnclient.yml", "development")
-        SgtnClient::Source.loadBundles("default")
+      Sgtn.load_config("./config/sgtnclient.yml", "mixed")
     end
 
       it "DateTime1" do
