@@ -4,25 +4,30 @@
  */
 apply plugin: 'java'
 apply plugin: 'eclipse'
-
-description = 'VIP4Java'
-archivesBaseName = 'singleton-client-java'
-
 apply plugin: "jacoco"
 apply plugin: "org.sonarqube"
+apply plugin: 'de.undercouch.download'
+apply plugin: 'maven-publish'
+apply plugin: "com.jfrog.artifactory"
 
 buildscript {
   repositories {
+    mavenLocal()
+    maven { url "https://repo1.maven.org/maven2/" }
     mavenCentral()
+    jcenter()
   }
   dependencies {
     classpath("org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.7.1")
     classpath 'de.undercouch:gradle-download-task:3.4.3'
+    classpath "org.jfrog.buildinfo:build-info-extractor-gradle:4+"
   }
 }
 
-apply plugin: 'de.undercouch.download'
 
+
+description = 'VIP4Java'
+archivesBaseName = 'singleton-client-java'
 sourceCompatibility = 1.8
 version = '0.1.0'
  
@@ -47,7 +52,7 @@ dependencies {
 
 	testCompile group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.7.30'
 	testCompile group: 'log4j', name: 'log4j', version: '1.2.17'
-	testCompile group: 'junit', name: 'junit', version: '4.+'
+	testCompile group: 'junit', name: 'junit', version: '4.13.2'
 	testCompile "com.github.tomakehurst:wiremock-jre8:2.25.1"
 	testCompile group: 'org.hamcrest', name: 'hamcrest', version: '2.1'
     testCompile group: 'com.ibm.icu', name: 'icu4j', version: '60.3'
@@ -89,7 +94,7 @@ uploadArchives {
 }
 
 task createWrapper(type: Wrapper) {
-    gradleVersion = '5.6.1'
+    gradleVersion = '6.4.1'
 }
 
 if (JavaVersion.current().isJava8Compatible()) {
@@ -142,3 +147,46 @@ test {
 }
 
 assemble.dependsOn.add copyJars
+
+artifactory {
+    contextUrl = "${artifactory_contextUrl}"
+    publish {
+        repository {
+            repoKey = 'vip-gradle-local'
+            username = "${artifactory_user}"
+            password = "${artifactory_password}"
+            maven = true
+            
+        }
+	defaults {
+            publications ('mavenJava')
+	}
+    }
+    resolve {
+        repository {
+            repoKey = 'libs-release'
+            username = "${artifactory_user}"
+            password = "${artifactory_password}"
+            maven = true
+        }
+    }
+}
+
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+        from components.java
+	    artifactId = "singleton-client-java"
+        artifact file("a.zip")
+           pom.withXml {
+               def dependencies = asNode().appendNode('dependencies')
+               def dependency = dependencies.appendNode('dependency')
+               dependency.appendNode('groupID', 'log4j')
+               dependency.appendNode('artifactID', 'log4j')
+               dependency.appendNode('version', '1.2.17')
+           }
+        }
+    }
+}
+
