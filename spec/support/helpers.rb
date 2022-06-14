@@ -29,7 +29,7 @@ module Helpers
 
   self.product_name = 'test'
   self.version = '4.8.1'
-  self.singleton_server = 'https://localhost:8090'
+  self.singleton_server = 'http://localhost:8091/vipserver'
   def translation_path
     config['translation_bundle']
   end

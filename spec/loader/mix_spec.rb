@@ -8,7 +8,7 @@ describe 'Mix', :include_helpers, :extend_helpers do
 
   before :all do
     WebMock.enable!
-    WebMock.allow_net_connect!
+    WebMock.disable_net_connect!
   end
   after :all do
     WebMock.disable!
@@ -246,7 +246,7 @@ describe 'Mix', :include_helpers, :extend_helpers do
 
     it "fallback En from remote to local when querying #{locale}" do
       stubs << stub_request(:get, format(bundle_url, latest_locale, component)).to_return(body: stub_response("#{component}-#{latest_locale}"))
-      # stubs << stub_request(:get, format(bundle_url, en_locale, component)).to_return(body: stub_response("#{component}-#{en_locale}"))
+      stubs << stub_request(:get, format(bundle_url, en_locale, component)).to_return(body: nonexistent_response)
       stubs << stub_request(:get, format(bundle_url, locale, component)).to_return(body: stub_response("#{component}-#{locale}"))
 
       result = loader.get_bundle(component, locale)
