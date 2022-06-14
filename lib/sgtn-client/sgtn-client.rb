@@ -23,6 +23,7 @@ module SgtnClient
       autoload :CacheUtil,          "sgtn-client/util/cache-util"
       autoload :StringUtil,         "sgtn-client/util/string-util"
       autoload :SingletonError,     'sgtn-client/exceptions'
+      autoload :I18nBackend,        "sgtn-client/i18n_backend"
 
       module Formatters
             autoload :PluralFormatter,    "sgtn-client/formatters/plurals/plural_formatter"
