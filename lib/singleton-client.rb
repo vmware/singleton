@@ -1,15 +1,15 @@
 # Copyright 2022 VMware, Inc.
 # SPDX-License-Identifier: EPL-2.0
 
+require 'forwardable'
 require_relative 'singleton-ruby'
 
 module Sgtn # :nodoc:
-  # load configuration from a file
-  def self.load_config(*args)
-    SgtnClient.load(*args)
+  class << self
+    extend Forwardable
+    def_delegator SgtnClient, :load, :load_config
+    def_delegators SgtnClient::Translation, :translate, :t, :get_translations, :locale, :locale=
   end
 
-  extend SgtnClient::Translation::Implementation
-
-  private_class_method :getString, :getString_p, :getString_f, :getStrings
+  I18nBackend = SgtnClient::I18nBackend
 end

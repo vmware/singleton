@@ -21,7 +21,8 @@ module SgtnClient
       autoload :LocaleUtil,         "sgtn-client/util/locale-util"
       autoload :FileUtil,           "sgtn-client/util/file-util"
       autoload :CacheUtil,          "sgtn-client/util/cache-util"
-      autoload :StringUtil,          "sgtn-client/util/string-util"
+      autoload :StringUtil,         "sgtn-client/util/string-util"
+      autoload :I18nBackend,        "sgtn-client/i18n_backend"
 
       module Formatters
             autoload :PluralFormatter,    "sgtn-client/formatters/plurals/plural_formatter"
