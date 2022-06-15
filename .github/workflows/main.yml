@@ -60,11 +60,10 @@ jobs:
         run: |
           COVERAGE=true 
           bundle exec rspec
-          echo `pwd`
       - name: Upload Codecov report for ruby-client
         uses: codecov/codecov-action@v2
         with:
-          files: singleton/coverage/coverage.json
+          files: ./coverage/coverage.json
           flags: g11n-ruby-client
 
   security-analysis:
@@ -135,4 +134,4 @@ jobs:
           cp -r $GITHUB_WORKSPACE/devops/autotest/client/ruby/l10n/bundles/* $GITHUB_WORKSPACE/l10n/bundles
           cd $GITHUB_WORKSPACE/devops/autotest/client/ruby
           sed -i 's|path => "../../../../ruby_client/singleton|path => "/home/runner/work/singleton/singleton|g' Gemfile
-          bundle exec rspec './spec/Config_spec.rb' './spec/Datetime_spec.rb' './spec/SimpleT_offline_spec.rb' './spec/SimpleT_spec .rb' './spec/Translation_offline_spec.rb' './spec/Translation_spec.rb'
+          rspec .\spec\
