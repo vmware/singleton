@@ -58,8 +58,7 @@ jobs:
         run: bundle install
       - name: Unit test
         run: |
-          COVERAGE=true 
-          bundle exec rspec
+          COVERAGE=true bundle exec rspec
       - name: Upload Codecov report for ruby-client
         uses: codecov/codecov-action@v2
         with:
