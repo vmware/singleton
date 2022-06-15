@@ -16,16 +16,16 @@ describe "Autoload" do
     prefix = "-----------------------------"
     expect {
       traverse_modules(SgtnClient) do |method|
-        trace = TracePoint.new(:call, :return) do |tp|
-          if tp.event == :return
-            SgtnClient.logger.info "#{prefix}#{[tp.defined_class, tp.method_id, tp.event]}"
-          else
-            SgtnClient.logger.info "#{prefix}#{[tp.defined_class, tp.method_id, tp.event, extract_arguments(tp)]}"
-          end
-        end
+        # trace = TracePoint.new(:call, :return) do |tp|
+        #   if tp.event == :return
+        #     SgtnClient.logger.info "#{prefix}#{[tp.defined_class, tp.method_id, tp.event]}"
+        #   else
+        #     SgtnClient.logger.info "#{prefix}#{[tp.defined_class, tp.method_id, tp.event, extract_arguments(tp)]}"
+        #   end
+        # end
         # trace.enable(target: method)
       rescue ArgumentError => e
-        SgtnClient.logger.error "********************Failed trace on #{method} | #{e.message}"
+        SgtnClient.logger.error "********************Failed to enable trace on #{method} | #{e.message}"
       else
         SgtnClient.logger.info "#{prefix}Enabled trace on #{method}"
       end
