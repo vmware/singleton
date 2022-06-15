@@ -128,7 +128,7 @@ public class TranslationProductComponentKeyAPI extends TranslationProductCompone
 		ObjectMapper mapper = new ObjectMapper();
 		String requestJson = mapper.writeValueAsString(sourceSet);
 		if (!StringUtils.isEmpty(requestJson)) {
-			validateSourceSet(sourceSet);
+			validateSourceSetAndKey(sourceSet);
 			request.setAttribute(ConstantsKeys.SOURCE, requestJson);
 		}
 		return super.handleResponse(APIResponseStatus.OK, "Recieved the sources and comments(please use translation-product-component-api to confirm it).");

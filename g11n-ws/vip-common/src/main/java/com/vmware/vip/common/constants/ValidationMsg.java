@@ -9,8 +9,9 @@ public final class ValidationMsg {
 	public final static String VERSION_NOT_VALIDE = "Incorrect version(only allows number and dot, e.g. 1.2.0)";
 	public final static String COMPONENT_NOT_VALIDE = "Incorrect component(only allows letter, number, dot, underline, dashline)";
 	public final static String COMPONENTS_NOT_VALIDE = "Incorrect components(only allows letter, number, comma, dot, underline, dashline)";
-	public final static String KEY_NOT_VALIDE = "Incorrect key(only allows letter, dot, underline, dashline, pound)";
-	public final static String KEYS_NOT_VALIDE = "Incorrect keys(only allows letter, dot, comma, underline, dashline, pound)";
+	public final static String KEY_NOT_VALIDE = "Incorrect key(only allows ASCII char)";
+	public final static String KEY_NOT_VALIDE_FORMAT = "Incorrect key name '%s' contains non-ASCII char(only allows ASCII char)";
+	public final static String KEYS_NOT_VALIDE = "Incorrect keys(only allows ASCII char)";
 	public final static String LOCALE_NOT_VALIDE = "Incorrect locale(only allows letter, number, dot, underline, dashline)";
 	public final static String LOCALES_NOT_VALIDE = "Incorrect locales(only allows letter, number, comma, dot, underline, dashline)";
 	public final static String LANGUAGE_NOT_VALIDE = "Incorrect language(only allows letter, number, dot, underline, dashline)";

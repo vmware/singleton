@@ -104,8 +104,15 @@ public final class RegExpValidatorUtils {
 	public static boolean IsTrueOrFalse(String b) {
 		String regex = "^(true|false)$";
 		return match(regex, b);
-	}	
+	}
 	
+	/**
+	 * 
+	 * 
+	 */
+	public static boolean isAscii(String inputStr) {
+		return inputStr.matches("\\A\\p{ASCII}*\\z");
+	}
 	
 	public static void main(String[] args) {
 		System.out.println(RegExpValidatorUtils.IsLetter("bba"));
