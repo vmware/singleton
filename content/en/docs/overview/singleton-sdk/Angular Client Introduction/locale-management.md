@@ -2,7 +2,7 @@
 title: "Locale Management"
 date: 2019-09-24T20:08:31+08:00
 draft: false
-weight: 16
+weight: 17
 ---
 
 #### **Overview**
@@ -33,7 +33,11 @@ getBrowserCultureLang(): string
 
 ```
 
-![locale-management-1](https://github.com/zmengjiao/singleton/raw/website/content/en/images/locale-management/locale-management-1.png)
+```
+import { getBrowserCultureLang } from '@singleton-i18n/angular-client';
+const language = getBrowserCultureLang(); // eg: zh-CN
+
+```
 
 
 Get supported languages list from singleton:
@@ -43,7 +47,17 @@ getSupportedLanguages(): Promise<languagesList>;
 
 ```
 
-![locale-management-2](https://github.com/zmengjiao/singleton/raw/website/content/en/images/locale-management/locale-management-2.png)
+```
+import { I18nService } from '@singleton-i18n/angular-client';
+...
+this.i18nService.getSupportedLanguages().then( languages => {
+    this.languages = languages;
+    // eg: [ { displayName: "English", languageTag: "en" },
+    //       { displayName: "français", languageTag: "fr } ]
+});
+...
+
+```
 
 
 ##### **Region**
@@ -56,12 +70,24 @@ getSupportedRegions( languageTag: string): Promise<languagesList>;
 
 ```
 
-|  Parameter  |  Type  | Required |                        Description                         |
-| :---------: | :----: | :------: | :--------------------------------------------------------: |
+|  Parameter  |  Type  | Required | <div style="text-align:center">Description</div>           |
+|:-----------:|:------:|:--------:|:-----------------------------------------------------------|
 | languageTag | string | required | Define which language will be used to display region list. |
 
 
-![locale-management-3](https://github.com/zmengjiao/singleton/raw/website/content/en/images/locale-management/locale-management-3.png)
+```
+import { I18nService } from '@singleton-i18n/angular-client';
+...
+this.i18nService.getSupportedRegions('fr').then( regions => {
+    this.regions = regions;
+    // eg: assuming that language is fr
+    // [ [ 'FR': 'France'],
+    //   [ 'GE': 'Géorgie' ],
+    //   [ 'CN': 'Chine' ] ]
+});
+...
+
+```
 
 
 
@@ -88,12 +114,12 @@ setDefaultLocale({
 
 Parameters
 
-|  Parameter   |  Type  |                      Description                      |
-| :----------: | :----: | :---------------------------------------------------: |
-| languageCode | string |  The language code for translation and plural rule.   |
+|  Parameter   |  Type  | <div style="text-align:center">Description</div>      |
+|:------------:|:------:|:------------------------------------------------------|
+| languageCode | string | The language code for translation and plural rule.    |
 | languageName | string | The language name corresponding to the language code. |
-|  regionCode  | string |    The region code for the l2 formatting patterns.    |
-|  regionName  | string |   The region name corresponding to the region code.   |
+|  regionCode  | string | The region code for the l2 formatting patterns.       |
+|  regionName  | string | The region name corresponding to the region code.     |
 
 
 ##### **Set current locale**
@@ -117,10 +143,10 @@ setCurrentRegion(regionCode: string)
 
 Parameters
 
-|  Parameter  |  Type  |                    Description                     |
-| :---------: | :----: | :------------------------------------------------: |
+|  Parameter  |  Type  | <div style="text-align:center">Description</div>   |
+|:-----------:|:------:|:---------------------------------------------------|
 | languageTag | string | The language code for translation and plural rule. |
-| regionCode  | string |  The region code for the l2 formatting patterns.   |
+| regionCode  | string | The region code for the l2 formatting patterns.    |
 
 
 #### **Get current locale**
@@ -147,7 +173,10 @@ getCurrentRegion(): string
 
 ```
 
-![locale-management-4](https://github.com/zmengjiao/singleton/raw/website/content/en/images/locale-management/locale-management-4.png)
+```
+this.currentLocale = this.localeService.getCurrentLocale();
+
+```
 
 
 ##### **Asynchronous API**
@@ -162,15 +191,31 @@ get stream(): Observable<string|any>
 
 ```
 
-![locale-management-5](https://github.com/zmengjiao/singleton/raw/website/content/en/images/locale-management/locale-management-5.png)
+```
+this.i18nService.stream.subscribe( locale => {
+    this.formattedDate = this.i18nService.formatDate(new Date(), 'short', locale);
+});
+
+```
 
 
 #### **Live Update**
 
 Automatically refresh the UI when the language and region are changed. The translations and formatting strings will be updated on UI when the i18n data is loaded.
 
+```
+import { LocaleService } from '@singleton-i18n/angular-client';
+...
+// use language from browser as locale
+this.localeService.setCurrentLocale(locale);
+...
 
-![locale-management-6](https://github.com/zmengjiao/singleton/raw/website/content/en/images/locale-management/locale-management-6.png)
+// use language and region from UI
+this.localeService.setCurrentLanguage(language);
+this.localeService.setCurrentRegion(region);
+...
+
+```
 
 
 #### **Static Refresh**
@@ -178,9 +223,26 @@ Automatically refresh the UI when the language and region are changed. The trans
 Besides live update, the other choice is using browser refresh to reload the resource according to the new language and region which can be stored in LocalStorage.
 
 
-![locale-management-7](https://github.com/zmengjiao/singleton/raw/website/content/en/images/locale-management/locale-management-7.png)
+```
+changeLocale() {
+    ...
+    localStorage.setItem('language', language);
+    localStorage.setItem('region', region);
+    window.location.reload();
+}
 
-![locale-management-8](https://github.com/zmengjiao/singleton/raw/website/content/en/images/locale-management/locale-management-8.png)
+```
+
+```
+// app initial
+...
+const language = localStorage.getItem('language'),
+    region = localStorage.getItem('region');
+localeService.init(language, region);
+vipService.initData(I18nConfig);
+...
+
+```
 
 
 
@@ -188,7 +250,7 @@ Besides live update, the other choice is using browser refresh to reload the res
 
 
 
-<style>
+<style>  
     html {
         font-family: Metropolis;
         color: #575757;
@@ -200,13 +262,33 @@ Besides live update, the other choice is using browser refresh to reload the res
         font-weight: 600;
     }
     article section.page pre {
-        background-color: #fafafa;
-        border:1px solid #ccc;
-        padding-top: 2rem;
+        background-color: #444;
+        border: 0.5px solid #DBDBDB; 
+        padding: 1.5rem 1rem 1.5rem 1rem;
+        border-radius: 5px;
+        margin: 16px auto;
+    }
+    article section.page code {
+        font-size: 90%;
+        color: #17ff0b;  
+        white-space: pre-wrap;
+    }
+    article section.page pre span.copy-to-clipboard {
+        color: #b0bec5;
+        cursor: pointer;
     }
     article section.page table th {
         font-weight:500;
         text-transform: inherit;
+    }
+    table thead tr th:first-child {
+        width:13rem;
+    }
+    table thead tr th:nth-child(2) {
+        width:10rem;
+    }
+    table thead tr th:nth-child(3) {
+        width:10rem;
     }
     article section.page h1:first-of-type {
         text-transform: inherit;
