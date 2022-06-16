@@ -133,4 +133,5 @@ jobs:
           cp -r $GITHUB_WORKSPACE/devops/autotest/client/ruby/l10n/bundles/* $GITHUB_WORKSPACE/l10n/bundles
           cd $GITHUB_WORKSPACE/devops/autotest/client/ruby
           sed -i 's|path => "../../../../ruby_client/singleton|path => "/home/runner/work/singleton/singleton|g' Gemfile
+          bundle install
           rspec spec
