@@ -3,8 +3,6 @@
 # Copyright 2022 VMware, Inc.
 # SPDX-License-Identifier: EPL-2.0
 
-require 'set'
-
 module SgtnClient
   class LocaleUtil
     MAP_LOCALES = {
@@ -45,8 +43,8 @@ module SgtnClient
     end
 
     def self.get_default_locale
-      env = SgtnClient::Config.default_environment
-      SgtnClient::Config.configurations[env]['default_language']
+      env = Config.default_environment
+      Config.configurations[env]['default_language']
     end
 
     def self.get_fallback_locale
@@ -63,7 +61,7 @@ module SgtnClient
       @lowercase_locales_map = nil if type == :available_locales
     end
 
-    SgtnClient::Config.add_observer(self, :reset_available_locales)
+    Config.add_observer(self, :reset_available_locales)
 
     private_class_method :get_best_match, :lowercase_locales_map, :reset_available_locales
   end

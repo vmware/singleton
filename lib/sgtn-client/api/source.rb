@@ -4,12 +4,10 @@
 require 'sgtn-client/loader/source'
 
 module SgtnClient
-  autoload :CacheUtil, 'sgtn-client/util/cache-util'
-
   class Source
     def self.loadBundles(locale)
       SgtnClient.logger.debug "[Source][loadBundles]locale=#{locale}"
-      SgtnClient::Config.configurations.default = locale
+      Config.configurations.default = locale
     end
   end
 end

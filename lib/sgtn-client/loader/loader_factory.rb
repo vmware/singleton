@@ -3,14 +3,6 @@
 
 module SgtnClient
   module TranslationLoader
-    autoload :Source, 'sgtn-client/loader/source'
-    autoload :SgtnServer, 'sgtn-client/loader/server'
-    autoload :LocalTranslation, 'sgtn-client/loader/local_translation'
-    autoload :Chain, 'sgtn-client/loader/chain_loader'
-    autoload :SourceComparer, 'sgtn-client/loader/source_comparer'
-    autoload :SingleLoader, 'sgtn-client/loader/single_loader'
-    autoload :Cache, 'sgtn-client/loader/cache'
-
     module LoaderFactory
       def self.create(config)
         SgtnClient.logger.info "[#{method(__callee__).owner}.#{__callee__}] config=#{config}"
@@ -19,7 +11,7 @@ module SgtnClient
         loaders << Source.new(config) if config['source_bundle']
         loaders << SgtnServer.new(config) if config['vip_server']
         loaders << LocalTranslation.new(config) if config['translation_bundle']
-        raise SgtnClient::SingletonError, 'no translation is available!' if loaders.empty?
+        raise SingletonError, 'no translation is available!' if loaders.empty?
 
         chain_loader = Class.new(Chain)
         chain_loader.include SourceComparer

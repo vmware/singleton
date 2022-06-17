@@ -3,15 +3,10 @@
 
 require 'erb'
 require 'yaml'
+require 'set'
 require 'observer'
 
 module SgtnClient
-  #include Exceptions
-
-  module TranslationLoader
-    autoload :LoaderFactory, 'sgtn-client/loader/loader_factory'
-  end
-
   module Configuration
 
     def config
@@ -130,7 +125,7 @@ module SgtnClient
           if configurations[env]
             @@config_cache[env] ||= new(configurations[env])
           else
-            raise SgtnClient::Exceptions::MissingConfig.new("Configuration[#{env}] NotFound")
+            raise Exceptions::MissingConfig.new("Configuration[#{env}] NotFound")
           end
         end
         
@@ -162,8 +157,8 @@ module SgtnClient
 
         def loader
           @loader ||= begin
-            config = SgtnClient::Config.configurations[SgtnClient::Config.default_environment]
-            SgtnClient::TranslationLoader::LoaderFactory.create(config)
+            config = Config.configurations[Config.default_environment]
+            TranslationLoader::LoaderFactory.create(config)
           end
         end
 
