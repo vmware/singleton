@@ -4,7 +4,7 @@
 shared_examples 'Available Bundles' do
   let(:stubs) { [] }
   prepend_before :all do
-    @config = config.dup
+    @config = config
     WebMock.enable!
     WebMock.disable_net_connect!
   end
@@ -13,16 +13,16 @@ shared_examples 'Available Bundles' do
   end
 
   before :each do
-    @config['vip_server'] = nil
-    @config['translation_bundle'] = nil
-    @config['source_bundle'] = nil
+    @config.vip_server = nil
+    @config.translation_bundle = nil
+    @config.source_bundle = nil
     SgtnClient::CacheUtil.clear_cache
     WebMock.reset!
   end
 
   describe '#Only Singleton server is available' do
     before :each do
-      @config['vip_server'] = singleton_server
+      @config.vip_server = singleton_server
     end
 
     it '#should be able to get available bundles' do
@@ -36,7 +36,7 @@ shared_examples 'Available Bundles' do
 
   describe '#Only local translation is available' do
     before :each do
-      @config['translation_bundle'] = translation_path
+      @config.translation_bundle = translation_path
     end
 
     it '#should be able to get available bundles' do
@@ -48,7 +48,7 @@ shared_examples 'Available Bundles' do
 
   describe '#Only local source is available' do
     before :each do
-      @config['source_bundle'] = source_path
+      @config.source_bundle = source_path
     end
 
     it '#should be able to get available bundles' do
@@ -60,8 +60,8 @@ shared_examples 'Available Bundles' do
 
   describe '#Singleton server and local source are available' do
     before :each do
-      @config['vip_server'] = singleton_server
-      @config['source_bundle'] = source_path
+      @config.vip_server = singleton_server
+      @config.source_bundle = source_path
     end
 
     it '#should be able to get available bundles' do
@@ -75,8 +75,8 @@ shared_examples 'Available Bundles' do
 
   describe '#Singleton server and local translation are available' do
     before :each do
-      @config['vip_server'] = singleton_server
-      @config['translation_bundle'] = translation_path
+      @config.vip_server = singleton_server
+      @config.translation_bundle = translation_path
     end
 
     it '#should be able to get available bundles' do
@@ -90,8 +90,8 @@ shared_examples 'Available Bundles' do
 
   describe '#local translation and local source are available' do
     before :each do
-      @config['translation_bundle'] = translation_path
-      @config['source_bundle'] = source_path
+      @config.translation_bundle = translation_path
+      @config.source_bundle = source_path
     end
 
     it '#should be able to get available bundles' do
@@ -103,9 +103,9 @@ shared_examples 'Available Bundles' do
 
   describe '#Singleton server, local translation and local source are available' do
     before :each do
-      @config['vip_server'] = singleton_server
-      @config['translation_bundle'] = translation_path
-      @config['source_bundle'] = source_path
+      @config.vip_server = singleton_server
+      @config.translation_bundle = translation_path
+      @config.source_bundle = source_path
     end
 
     it '#should be able to get available bundles' do

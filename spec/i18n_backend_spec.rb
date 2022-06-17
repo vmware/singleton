@@ -4,7 +4,7 @@
 describe SgtnClient::I18nBackend, :include_helpers, :extend_helpers do
   include_context 'reset client' do
     before(:all) do
-      SgtnClient::Config.configurations[SgtnClient::Config.default_environment] = config.dup
+      SgtnClient.config = config
     end
   end
 

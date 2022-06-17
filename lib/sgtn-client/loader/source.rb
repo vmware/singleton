@@ -14,7 +14,7 @@ module SgtnClient
 
     class Source
       def initialize(config)
-        @source_bundle_path = Pathname.new(config['source_bundle'])
+        @source_bundle_path = Pathname.new(config.source_bundle)
       end
 
       def load_bundle(component, locale = nil)

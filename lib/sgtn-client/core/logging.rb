@@ -40,10 +40,6 @@ module SgtnClient
       #   Logging.logger = Logger.new(STDERR)
       def logger=(logger)
         @logger = logger
-        if Config.config.mode.eql? 'live' and @logger.level == Logger::DEBUG
-          @logger.warn "DEBUG log level not allowed in live mode for security of confidential information. Changing log level to INFO..."
-          @logger.level = Logger::INFO
-        end
       end
 
     end

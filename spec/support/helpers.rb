@@ -14,7 +14,7 @@ module Helpers
                  :key_nonexistent, :value, :defaut_value, :en_value, :product_name, :version,
                  :latest_locale, :bundle_url
 
-  def config
+  def config_hash
     {
       'mode' => 'sandbox',
       'product_name' => product_name,
@@ -22,20 +22,28 @@ module Helpers
       # 'vip_server' => singleton_server,
       'translation_bundle' => './spec/fixtures/bundles',
       'source_bundle' => './spec/fixtures/sources',
-      'cache_expiry_period' => 10,
-      'default_language' => 'en'
+      'cache_expiry_period' => 10
+      # 'default_language' => 'en'
     }
+  end
+
+  def config
+    config_inst = SgtnClient::Config.new
+    config_hash.each do |key, value|
+      config_inst.send("#{key}=", value)
+    end
+    config_inst
   end
 
   self.product_name = 'test'
   self.version = '4.8.1'
   self.singleton_server = 'http://localhost:8091/vipserver'
   def translation_path
-    config['translation_bundle']
+    config_hash['translation_bundle']
   end
 
   def source_path
-    config['source_bundle']
+    config_hash['source_bundle']
   end
 
   self.server_url = File.join(singleton_server, '/i18n/api/v2/translation/products', product_name, 'versions', version)
@@ -77,7 +85,7 @@ module Helpers
   end
 
   def bundle_stub(component, locale, response)
-    stub_request(:get, bundle_url % [locale, component]).to_return(body: response)
+    stub_request(:get, format(bundle_url, locale, component)).to_return(body: response)
   end
 
   def stub_response(file_name)

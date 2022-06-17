@@ -2,7 +2,7 @@
 #  SPDX-License-Identifier: EPL-2.0
 
 describe 'Mix', :include_helpers, :extend_helpers do
-  new_config = config.dup
+  new_config = config
   let(:loader) { SgtnClient::TranslationLoader::LoaderFactory.create(new_config) }
   let(:stubs) { [] }
 
@@ -15,16 +15,16 @@ describe 'Mix', :include_helpers, :extend_helpers do
   end
 
   before :each do
-    new_config['vip_server'] = nil
-    new_config['translation_bundle'] = nil
-    new_config['source_bundle'] = nil
+    new_config.vip_server = nil
+    new_config.translation_bundle = nil
+    new_config.source_bundle = nil
     SgtnClient::CacheUtil.clear_cache
     WebMock.reset!
   end
 
   describe '#only local source is available' do
     before :each do
-      new_config['source_bundle'] = config['source_bundle']
+      new_config.source_bundle = config.source_bundle
     end
 
     it 'should be able to return En' do
@@ -55,7 +55,7 @@ describe 'Mix', :include_helpers, :extend_helpers do
 
   describe '#only local translation is available' do
     before :each do
-      new_config['translation_bundle'] = config['translation_bundle']
+      new_config.translation_bundle = config.translation_bundle
     end
 
     it 'query source locale - English' do
@@ -87,7 +87,7 @@ describe 'Mix', :include_helpers, :extend_helpers do
 
   describe '#only Singleton server is available' do
     before :each do
-      new_config['vip_server'] = singleton_server
+      new_config.vip_server = singleton_server
     end
 
     it "get '#{en_locale}' translation - (get #{latest_locale} actually)" do
@@ -148,8 +148,8 @@ describe 'Mix', :include_helpers, :extend_helpers do
     server_local_source_key = 'server_local_source_key'
 
     before :each do
-      new_config['vip_server'] = singleton_server
-      new_config['source_bundle'] = config['source_bundle']
+      new_config.vip_server = singleton_server
+      new_config.source_bundle = config.source_bundle
     end
 
     it 'should be able to get a bundle in local source' do
@@ -218,8 +218,8 @@ describe 'Mix', :include_helpers, :extend_helpers do
     server_local_translation_key = 'server_local_translation_key'
 
     before :each do
-      new_config['vip_server'] = singleton_server
-      new_config['translation_bundle'] = config['translation_bundle']
+      new_config.vip_server = singleton_server
+      new_config.translation_bundle = config.translation_bundle
     end
 
     it 'should be able to get En' do
@@ -315,8 +315,8 @@ describe 'Mix', :include_helpers, :extend_helpers do
 
   describe '#both local translation and local source are available' do
     before :each do
-      new_config['translation_bundle'] = config['translation_bundle']
-      new_config['source_bundle'] = config['source_bundle']
+      new_config.translation_bundle = config.translation_bundle
+      new_config.source_bundle = config.source_bundle
     end
 
     it 'En should use local source bundle' do
@@ -363,9 +363,9 @@ describe 'Mix', :include_helpers, :extend_helpers do
     server_local_translation_source_key = 'server_local_translation_source_key'
 
     before :each do
-      new_config['vip_server'] = singleton_server
-      new_config['source_bundle'] = config['source_bundle']
-      new_config['translation_bundle'] = config['translation_bundle']
+      new_config.vip_server = singleton_server
+      new_config.source_bundle = config.source_bundle
+      new_config.translation_bundle = config.translation_bundle
     end
 
     it 'En should use local source bundle' do

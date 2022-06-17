@@ -6,26 +6,26 @@ module SgtnClient
   class ValidateUtil
 
       def self.validate_config()
-        env = SgtnClient::Config.default_environment
+        
         SgtnClient.logger.debug "[ValidateUtil][validate_config] env = #{env}"
         messages = "\n"
 
-        mode = SgtnClient::Config.configurations[env]["mode"]
+        mode = SgtnClient.config.mode
         if mode != 'sandbox' && mode != 'live'
           messages =  messages + "Configuration[mode] has to be 'sandbox' or 'live'!\n"
         end
 
-        #version = SgtnClient::Config.configurations[env]["version"]
+        #version = SgtnClient.config.version
         #if version.is_a? Integer
           #messages = messages +  "Configuration[version] has to be standard as '#.#.#, e.g '1.0.0'!\n"
         #end
         
-        cache_expiry_period = SgtnClient::Config.configurations[env]["cache_expiry_period"]
+        cache_expiry_period = SgtnClient.config.cache_expiry_period
         if cache_expiry_period != nil && (cache_expiry_period.is_a? Integer) == false
           messages = messages +  "Configuration[cache_expiry_period] has to be a number!\n"
         end
         
-        disable_cache = SgtnClient::Config.configurations[env]["disable_cache"]
+        disable_cache = SgtnClient.config.disable_cache
         if disable_cache != nil && disable_cache != false && disable_cache != true
           messages = messages +  "Configuration[disable_cache] has to be a 'true' or 'false'!\n"
         end

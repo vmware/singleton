@@ -77,7 +77,7 @@ More detailed examples:
 require 'singleton-client'
 
 # Load config file to initialize app
-Sgtn.load_config("./config/sgtnclient.yml", "test")
+Sgtn.load_config("./spec/config/sgtnclient.yml", "test")
 
 # Get a string's translation
 result = Sgtn.translate("helloworld", "JAVA", "zh-Hans")

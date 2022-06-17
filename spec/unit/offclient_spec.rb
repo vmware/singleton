@@ -7,8 +7,7 @@ describe SgtnClient do
   describe "OfflineAPI" do
 
     before :each do
-      env = SgtnClient::Config.default_environment
-      SgtnClient::Config.configurations[env]["vip_server"] = nil
+      SgtnClient.config.vip_server = nil
       SgtnClient::Source.loadBundles("default")
     end
 

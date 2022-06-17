@@ -100,12 +100,12 @@ module SgtnClient
 
       def get_bundle!(component, locale)
         id = SgtnClient::Common::BundleID.new(component, locale)
-        bundles = SgtnClient::Config.available_bundles
+        bundles = SgtnClient.config.available_bundles
         unless bundles.nil? || bundles.empty? || bundles.include?(id)
           raise SgtnClient::SingletonError, 'bundle is unavailable.'
         end
 
-        SgtnClient::Config.loader.get_bundle(component, locale)
+        SgtnClient.config.loader.get_bundle(component, locale)
       end
     end
     extend Implementation
