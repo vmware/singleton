@@ -4,6 +4,9 @@
  */
 package com.vmware.vip.core.messages.service.multcomponent;
 
+import java.nio.channels.WritableByteChannel;
+import java.util.List;
+
 import com.vmware.vip.core.messages.exception.L3APIException;
 
 
@@ -25,4 +28,9 @@ public interface IMultComponentService {
      *         The object of TranslationDTO, containing translation.
      */
     public TranslationDTO getMultiComponentsTranslation(TranslationDTO translationDTO)  throws L3APIException;
+    
+    
+    public void readTranslationsToStream(String productName, String version, List<String> components,
+			List<String> locales, WritableByteChannel channel ) throws L3APIException;
+    
 }
