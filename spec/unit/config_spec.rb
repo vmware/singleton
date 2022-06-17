@@ -26,9 +26,6 @@ describe SgtnClient::Config do
     include_examples 'Available Bundles' do
       include_context 'reset client'
 
-      before :all do
-        SgtnClient.config = @config
-      end
       before do
         SgtnClient.config.instance_variable_set(:@loader, nil)
       end

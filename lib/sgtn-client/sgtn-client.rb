@@ -35,10 +35,7 @@ module SgtnClient
             include Logging
 
             def config
-                  @config ||= SgtnClient::Config.new
-            end
-            def config=(value)
-                  @config = value
+                  @config ||= SgtnClient::Config.instance
             end
 
             def load(file_name, env = nil, log_file = nil)

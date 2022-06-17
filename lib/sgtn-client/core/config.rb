@@ -10,6 +10,15 @@ module SgtnClient
 
     attr_accessor :product_name, :version, :vip_server, :translation_bundle, :source_bundle, :cache_expiry_period, :disable_cache, :mode
 
+    @instance_mutex = Mutex.new
+
+    private_class_method :new
+    def initialize; end
+
+    def self.instance
+      @instance || @instance_mutex.synchronize { @instance ||= new }
+    end
+
     # Set logger
     def logger=(logger)
       Logging.logger = logger
