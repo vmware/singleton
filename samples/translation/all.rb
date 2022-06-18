@@ -4,7 +4,7 @@
 require 'singleton-client'
 
 # load config file to initialize app
-Sgtn.load_config('./spec/config/sgtnclient.yml', 'test')
+Sgtn.load_config('./config/sgtnclient.yml', 'test')
 
 component = 'JAVA'
 locale = 'zh-CN'

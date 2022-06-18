@@ -24,7 +24,7 @@ module SgtnClient # :nodoc:
     def store_translations(*) end
 
     def available_locales
-      SgtnClient.config.available_locales.to_a
+      SgtnClient.config.available_locales.to_a # TODO: get by component
     end
 
     def reload!; end

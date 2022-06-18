@@ -27,6 +27,10 @@ module SgtnClient
 
     # Get logger
     def logger
+      if mode == 'live' and Logging.logger.level == Logger::DEBUG
+        Logging.logger.warn "DEBUG log level not allowed in live mode for security of confidential information. Changing log level to INFO..."
+        Logging.logger.level = Logger::INFO
+      end
       Logging.logger
     end
 

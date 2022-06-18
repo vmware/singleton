@@ -1,8 +1,6 @@
 # Copyright 2022 VMware, Inc.
 # SPDX-License-Identifier: EPL-2.0
 
-require 'sgtn-client/loader/loader_factory'
-
 module SgtnClient
       LOGFILE_SHIFT_AGE = 4
 
@@ -36,7 +34,7 @@ module SgtnClient
             include Logging
 
             def config
-                  @config ||= SgtnClient::Config.instance
+                  Config.instance
             end
 
             def load(file_name, env = nil, log_file = nil)
@@ -49,7 +47,7 @@ module SgtnClient
                         config_hash.each do |key, value|
                               config.send("#{key}=", value)
                         end
-						ValidateUtil.validate_config()
+                        ValidateUtil.validate_config()
                   rescue => exception
                     file = File.open('./error.log', 'a')
                     file.sync = true
@@ -76,7 +74,7 @@ module SgtnClient
                         logger.level = Logger::INFO
                   end
 
-                  SgtnClient::Core::Cache.initialize()
+                  Core::Cache.initialize()
             end
 
             def logger
