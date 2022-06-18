@@ -66,8 +66,8 @@ module SgtnClient
                   logger = Logger.new(file, LOGFILE_SHIFT_AGE)
 
                   # Set log level for sandbox mode
-                  mode = SgtnClient.config.mode
-                  SgtnClient.logger.debug "[Client][load]set log level, mode=#{mode}"
+                  mode = config.mode
+                  logger.debug "[Client][load]set log level, mode=#{mode}"
                   if mode == 'sandbox'
                         logger.level = Logger::DEBUG
                   else 

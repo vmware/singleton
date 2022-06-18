@@ -35,7 +35,7 @@ module SgtnClient
     end
 
     def loader
-      @loader ||= SgtnClient::TranslationLoader::LoaderFactory.create(self)
+      @loader ||= TranslationLoader::LoaderFactory.create(self)
     end
 
     def available_bundles
