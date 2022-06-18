@@ -47,7 +47,8 @@ module SgtnClient
                         config_hash.each do |key, value|
                               config.send("#{key}=", value)
                         end
-                        ValidateUtil.validate_config()
+
+                        ValidateUtil.validate_config
                   rescue => exception
                     file = File.open('./error.log', 'a')
                     file.sync = true

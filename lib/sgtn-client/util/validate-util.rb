@@ -6,18 +6,19 @@ module SgtnClient
   class ValidateUtil
 
       def self.validate_config()
-        SgtnClient.logger.debug "[ValidateUtil][validate_config] env = #{env}"
-        messages = "\n"
+        SgtnClient.logger.debug "[ValidateUtil][validate_config]"
+        messages = ""
 
         mode = SgtnClient.config.mode
         if mode != 'sandbox' && mode != 'live'
           messages =  messages + "Configuration[mode] has to be 'sandbox' or 'live'!\n"
         end
 
-        #version = SgtnClient.config.version
-        #if version.is_a? Integer
-          #messages = messages +  "Configuration[version] has to be standard as '#.#.#, e.g '1.0.0'!\n"
-        #end
+        version = SgtnClient.config.version
+        SgtnClient.config.version = version.to_s
+        if version.to_s !~ /\A(\d+\.)*\d+\z/
+          messages = messages +  "Configuration[version] has to be standard as '#.#.#, e.g '1.0.0'!\n"
+        end
         
         cache_expiry_period = SgtnClient.config.cache_expiry_period
         if cache_expiry_period != nil && (cache_expiry_period.is_a? Integer) == false
