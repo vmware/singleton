@@ -6,7 +6,6 @@ describe SgtnClient do
 
     before :each do
       SgtnClient.config.vip_server = nil
-      SgtnClient::Source.loadBundles("default")
     end
 
     it "GET" do
