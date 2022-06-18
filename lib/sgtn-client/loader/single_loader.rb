@@ -2,12 +2,7 @@
 # SPDX-License-Identifier: EPL-2.0
 
 module SgtnClient
-  autoload :SingleOperation, 'sgtn-client/common/single_operation'
-  autoload :CacheUtil, 'sgtn-client/util/cache-util'
-
   module TranslationLoader
-    autoload :CONSTS, 'sgtn-client/loader/consts'
-
     module SingleLoader
       def load_bundle(component, locale)
         SgtnClient.logger.debug "[#{__FILE__}][#{__callee__}] component=#{component}, locale=#{locale}"
@@ -41,7 +36,7 @@ module SgtnClient
           end
         end
 
-        loader = SgtnClient::SingleOperation.new(none_alive, &creator)
+        loader = SingleOperation.new(none_alive, &creator)
       end
     end
   end

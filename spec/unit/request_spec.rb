@@ -1,9 +1,6 @@
 # Copyright 2022 VMware, Inc.
 # SPDX-License-Identifier: EPL-2.0
 
-require 'spec_helper'
-require 'request_store'
-
 describe SgtnClient do
   describe "Locale" do
 

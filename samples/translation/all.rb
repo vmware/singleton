@@ -10,6 +10,7 @@ component = 'JAVA'
 locale = 'zh-CN'
 en_locale = 'en'
 
+################## string translations ###################
 normal_cases = {}
 plural_cases = {}
 formatting_cases = {}
@@ -19,11 +20,14 @@ string_translation = { 'normal' => normal_cases, 'plural' => plural_cases, 'form
 # translate a string
 normal_cases['translate a string'] = Sgtn.t('helloworld', component, locale)
 
-# translate a string
+# translate an English string
 normal_cases['translate an English string'] = Sgtn.t('helloworld', component, en_locale)
 
 # translate a string only in source
 normal_cases['translate a string only in source'] = Sgtn.t('hello', component, locale)
+
+# translate a string whose source is changed
+normal_cases['translate a string whose source is changed'] = Sgtn.t('source_changed_key', component, locale, place_holder: 'sky')
 
 # translate a non-existing string
 normal_cases['translate a nonexistent string returning key'] = Sgtn.t('nonexistent', component, locale)
@@ -47,12 +51,16 @@ Sgtn.locale = locale
 setting_locale["set loale to #{locale} before translating"] = Sgtn.t('helloworld', component)
 Sgtn.locale = en_locale
 setting_locale["set loale to #{en_locale} before translating"] = Sgtn.t('helloworld', component)
+##########################################################
 
+################## bundle translations ###################
 bundle_translations = {}
 bundle_translations["#{locale} translations"] = Sgtn.get_translations(component, locale)
 bundle_translations['English translations'] = Sgtn.get_translations(component, en_locale)
 Sgtn.locale = locale
 bundle_translations["set loale to #{locale}"] = Sgtn.get_translations(component)
+##########################################################
+
 
 @Result = { 'string translation' => string_translation, 'bundle translations' => bundle_translations }
 

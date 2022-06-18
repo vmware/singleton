@@ -1,8 +1,6 @@
 # Copyright 2022 VMware, Inc.
 # SPDX-License-Identifier: EPL-2.0
 
-require 'spec_helper'
-
 describe 'Cache' do
   before :all do
     SgtnClient.config.instance_variable_set('@loader', nil)

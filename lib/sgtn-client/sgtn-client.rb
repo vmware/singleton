@@ -6,9 +6,10 @@ require 'sgtn-client/loader/loader_factory'
 module SgtnClient
       LOGFILE_SHIFT_AGE = 4
 
-      module Common
-        autoload :BundleID,        "sgtn-client/common/data"
-      end
+      autoload :Common,             'sgtn-client/common'
+      autoload :TranslationLoader,  'sgtn-client/loader'
+      autoload :SingleOperation,    'sgtn-client/common/single_operation'
+
       module Core
             autoload :Cache,        "sgtn-client/core/cache"
       end
@@ -21,9 +22,9 @@ module SgtnClient
       autoload :Exceptions,         "sgtn-client/core/exceptions"
       autoload :ValidateUtil,       "sgtn-client/util/validate-util"
       autoload :LocaleUtil,         "sgtn-client/util/locale-util"
-      autoload :FileUtil,           "sgtn-client/util/file-util"
       autoload :CacheUtil,          "sgtn-client/util/cache-util"
       autoload :StringUtil,         "sgtn-client/util/string-util"
+      autoload :SingletonError,     'sgtn-client/exceptions'
       autoload :I18nBackend,        "sgtn-client/i18n_backend"
 
       module Formatters
@@ -48,6 +49,7 @@ module SgtnClient
                         config_hash.each do |key, value|
                               config.send("#{key}=", value)
                         end
+						ValidateUtil.validate_config()
                   rescue => exception
                     file = File.open('./error.log', 'a')
                     file.sync = true
@@ -57,21 +59,21 @@ module SgtnClient
 
                   # create log file
                   file = './sgtnclient_d.log'
-                  SgtnClient.logger.debug "[Client][load]create log file=#{file}"
+                  logger.debug "[Client][load]create log file=#{file}"
                   if log_file != nil
                         file = log_file
                   end
                   file = File.open(file, 'a')
                   file.sync = true
-                  SgtnClient.logger = Logger.new(file, LOGFILE_SHIFT_AGE)
+                  logger = Logger.new(file, LOGFILE_SHIFT_AGE)
 
                   # Set log level for sandbox mode
                   mode = SgtnClient.config.mode
                   SgtnClient.logger.debug "[Client][load]set log level, mode=#{mode}"
                   if mode == 'sandbox'
-                        SgtnClient.logger.level = Logger::DEBUG
+                        logger.level = Logger::DEBUG
                   else 
-                        SgtnClient.logger.level = Logger::INFO
+                        logger.level = Logger::INFO
                   end
 
                   SgtnClient::Core::Cache.initialize()

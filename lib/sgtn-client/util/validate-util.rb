@@ -6,7 +6,6 @@ module SgtnClient
   class ValidateUtil
 
       def self.validate_config()
-        
         SgtnClient.logger.debug "[ValidateUtil][validate_config] env = #{env}"
         messages = "\n"
 
@@ -31,7 +30,7 @@ module SgtnClient
         end
         
         if messages != "\n"
-          raise SgtnClient::Exceptions::MissingConfig.new(messages)
+          raise Exceptions::MissingConfig.new(messages)
         end
       end
 

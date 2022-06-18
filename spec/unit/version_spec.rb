@@ -1,8 +1,6 @@
 # Copyright 2022 VMware, Inc.
 # SPDX-License-Identifier: EPL-2.0
 
-require 'spec_helper'
-
 describe VERSION do
   describe 'version' do
     # test that there is a sane version number to avoid accidental 0.0.0 again

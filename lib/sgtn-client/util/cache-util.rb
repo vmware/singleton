@@ -1,18 +1,16 @@
 # Copyright 2022 VMware, Inc.
 # SPDX-License-Identifier: EPL-2.0
 
-module SgtnClient
-  module Core
-    autoload :Cache, 'sgtn-client/core/cache'
-  end
+require 'time'
 
+module SgtnClient
   class CacheUtil
     def self.get_cache(cache_key)
-      SgtnClient::Core::Cache.get(cache_key)
+      Core::Cache.get(cache_key)
     end
 
     def self.clear_cache
-      SgtnClient::Core::Cache.clear
+      Core::Cache.clear
     end
 
     def self.write_cache(cache_key, items)
@@ -21,13 +19,13 @@ module SgtnClient
       cache_expiry_period = SgtnClient.config.cache_expiry_period
       # expired after 24 hours
       cache_expiry_period = 24 * 60 if cache_expiry_period.nil?
-      SgtnClient::Core::Cache.put(cache_key, items, cache_expiry_period)
+      Core::Cache.put(cache_key, items, cache_expiry_period)
     end
 
     def self.get_cachekey(component, locale)
       product_name = SgtnClient.config.product_name
       version = SgtnClient.config.version.to_s
-      "#{product_name}_#{version}_#{component}_#{locale}"
+      product_name + '_' + version + '_' + component + '_' + locale
     end
 
     def self.is_expired(cache_item)

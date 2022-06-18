@@ -2,6 +2,7 @@
 # SPDX-License-Identifier: EPL-2.0
 
 require 'observer'
+require 'set'
 require 'yaml'
 
 module SgtnClient
