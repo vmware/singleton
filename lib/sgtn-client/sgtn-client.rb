@@ -1,6 +1,8 @@
 # Copyright 2022 VMware, Inc.
 # SPDX-License-Identifier: EPL-2.0
 
+require 'yaml'
+
 module SgtnClient
       LOGFILE_SHIFT_AGE = 4
 
