@@ -30,7 +30,7 @@ module SgtnClient
           messages = messages +  "Configuration[disable_cache] has to be a 'true' or 'false'!\n"
         end
         
-        if messages != "\n"
+        if messages != ""
           raise Exceptions::MissingConfig.new(messages)
         end
       end
