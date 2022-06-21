@@ -111,7 +111,15 @@ task copyLibs(type :Copy, dependsOn: [jar, generateBundleZip, generateEnZip]) {
     include "**/*.jar", "**/*.zip"
 }
 
-
+task sourcesJar(type: Jar) {
+    from sourceSets.main.allJava
+    archiveClassifier = 'sources'
+}
+ 
+task javadocJar(type: Jar) {
+    from javadoc
+    archiveClassifier = 'javadoc'
+}
 
 
 assemble.dependsOn.add copyLibs
