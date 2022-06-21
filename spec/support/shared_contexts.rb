@@ -3,9 +3,7 @@
 
 RSpec.shared_context 'reset client' do
   prepend_before :all do
-    Helpers::CONFIG_HASH.each do |key, value|
-      SgtnClient.config.send("#{key}=", value)
-    end
+    SgtnClient.config.update(Helpers::CONFIG_HASH)
 
     SgtnClient.config.instance_variable_set(:@loader, nil)
     SgtnClient::CacheUtil.clear_cache

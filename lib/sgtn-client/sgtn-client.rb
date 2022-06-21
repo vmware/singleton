@@ -46,10 +46,7 @@ module SgtnClient
                         config_hash = configurations[env]
                         raise "Configuration[#{env}] NotFound" unless config_hash
 
-                        config_hash.each do |key, value|
-                              config.send("#{key}=", value)
-                        end
-
+                        config.update(config_hash)
                         ValidateUtil.validate_config
                   rescue => exception
                     file = File.open('./error.log', 'a')

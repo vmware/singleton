@@ -51,5 +51,11 @@ module SgtnClient
       end
       bundles.locales
     end
+
+    def update(options)
+      options.each do |key, value|
+        send("#{key}=", value)
+      end
+    end
   end
 end
