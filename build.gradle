@@ -84,6 +84,8 @@ task copyResources(type: Copy, dependsOn: download) {
     into "${buildDir}/resources/main"
 }
 
+processTestResources.dependsOn copyResources
+
 task generateBundleZip(type: Zip, dependsOn: copyResources){
     archiveBaseName='cldr'
     archiveVersion = "$projectVersion"
@@ -104,21 +106,41 @@ task generateEnZip(type: Zip, dependsOn: copyResources){
 
 }
 
-task copyLibs(type :Copy, dependsOn: [jar, generateBundleZip, generateEnZip]) {
+
+
+task sourceCodeJar(type: Jar, dependsOn: classes) {
+    baseName = "i18n-patterns-core"
+    version = "$projectVersion"
+    classifier = 'sources'
+    from sourceSets.main.allJava
+}
+ 
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    baseName = "i18n-patterns-core"
+    version = "$projectVersion"
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+
+task copyLibs(type :Copy, dependsOn: [jar, generateBundleZip, generateEnZip, sourceCodeJar, javadocJar]) {
     from "$buildDir/libs", "$buildDir/distributions"
     into "$rootDir/publish/"
     println "The build was output to -> $rootDir/publish/"
     include "**/*.jar", "**/*.zip"
 }
 
-task sourcesJar(type: Jar) {
-    from sourceSets.main.allJava
-    archiveClassifier = 'sources'
+
+ 
+tasks.withType(Javadoc) {
+    options.addStringOption('Xdoclint:none', '-quiet')
+    options.addStringOption('encoding', 'UTF-8')
+    options.addStringOption('charSet', 'UTF-8')
 }
  
-task javadocJar(type: Jar) {
-    from javadoc
-    archiveClassifier = 'javadoc'
+artifacts {
+    archives sourceCodeJar
+    archives javadocJar
 }
 
 
