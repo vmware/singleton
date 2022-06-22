@@ -131,7 +131,7 @@ jobs:
           docker cp $GITHUB_WORKSPACE/l10n singleton:/
           cd $GITHUB_WORKSPACE
           cp -r $GITHUB_WORKSPACE/devops/autotest/client/ruby/l10n/bundles/* $GITHUB_WORKSPACE/l10n/bundles
-          cd $GITHUB_WORKSPACE/singleton
+          cd $GITHUB_WORKSPACE
           gem build singleton-ruby.gemspec
           cd $GITHUB_WORKSPACE/devops/autotest/client/ruby
           sed -i 's|singleton-client|singleton-ruby|g' Gemfile
