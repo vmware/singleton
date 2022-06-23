@@ -138,4 +138,4 @@ jobs:
           cd $GITHUB_WORKSPACE/devops/autotest/client/ruby
           sed -i 's|path => "../../../../ruby_client/singleton|path => "/home/runner/work/singleton/singleton|g' Gemfile
           bundle install
-          rspec spec
+          bundle exec rspec spec
