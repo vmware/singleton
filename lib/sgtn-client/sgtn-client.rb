@@ -39,10 +39,9 @@ module SgtnClient
                   Config.instance
             end
 
-            def load(file_name, env = nil, log_file = nil)
+            def load(file_name, env, log_file = nil)
                   begin
                         configurations = YAML.load(File.read(file_name))
-                        env ||= ENV['SGTN_ENV'] || ENV['RACK_ENV'] || ENV['RAILS_ENV'] || 'development'
                         config_hash = configurations[env]
                         raise "Configuration[#{env}] NotFound" unless config_hash
 
@@ -58,7 +57,7 @@ module SgtnClient
                   # create log file
                   file = './sgtnclient_d.log'
                   logger.debug "[Client][load]create log file=#{file}"
-                  if log_file != nil
+                  if !log_file.nil?
                         file = log_file
                   end
                   file = File.open(file, 'a')
