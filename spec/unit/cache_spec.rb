@@ -3,15 +3,13 @@
 
 describe 'Cache' do
   before :all do
-    SgtnClient::Config.instance_variable_set('@loader', nil)
+    SgtnClient.config.instance_variable_set('@loader', nil)
     SgtnClient::CacheUtil.clear_cache
   end
 
   before :each do
-    env = SgtnClient::Config.default_environment
-    SgtnClient::Config.configurations[env]["vip_server"] = nil
-    SgtnClient::Config.configurations[env]["cache_expiry_period"] = 1
-    SgtnClient::Source.loadBundles("default")
+    SgtnClient.config.vip_server = nil
+    SgtnClient.config.cache_expiry_period = 1
   end
 
   it "GETTranslation" do
@@ -25,25 +23,21 @@ describe 'Cache' do
   end
 
   it "get_cachekey" do
-    env = SgtnClient::Config.default_environment
-    product_name = SgtnClient::Config.configurations[env]["product_name"].to_s
-    version = SgtnClient::Config.configurations[env]["version"].to_s
+    product_name = SgtnClient.config.product_name.to_s
+    version = SgtnClient.config.version.to_s
     expect(SgtnClient::CacheUtil.get_cachekey("java", "zh-Hans")).to eq "#{product_name}_#{version}_java_zh-Hans"
   end
 
   it "get_cachekey_source_locale" do
-    env = SgtnClient::Config.default_environment
-    product_name = SgtnClient::Config.configurations[env]["product_name"].to_s
-    version = SgtnClient::Config.configurations[env]["version"].to_s
-    locale = SgtnClient::Config.configurations.default
-    expect(locale).to eq 'default'
+    product_name = SgtnClient.config.product_name.to_s
+    version = SgtnClient.config.version.to_s
+    locale = SgtnClient::LocaleUtil.get_source_locale
     expect(SgtnClient::CacheUtil.get_cachekey("java", locale)).to eq "#{product_name}_#{version}_java_#{locale}"
   end
 
   it "get_cachekey_en_locale" do
-    env = SgtnClient::Config.default_environment
-    product_name = SgtnClient::Config.configurations[env]["product_name"].to_s
-    version = SgtnClient::Config.configurations[env]["version"].to_s
+    product_name = SgtnClient.config.product_name.to_s
+    version = SgtnClient.config.version.to_s
     locale = SgtnClient::LocaleUtil.get_source_locale()
     expect(locale).to eq 'en'
     expect(SgtnClient::CacheUtil.get_cachekey("java", locale)).to eq "#{product_name}_#{version}_java_#{locale}"

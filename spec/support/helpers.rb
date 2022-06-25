@@ -14,31 +14,35 @@ module Helpers
                  :key_nonexistent, :value, :defaut_value, :en_value, :product_name, :version,
                  :latest_locale, :bundle_url
 
-  def config
+  CONFIG_HASH =
     {
       'mode' => 'sandbox',
-      'product_name' => product_name,
-      'version' => version,
-      # 'vip_server' => singleton_server,
+      'product_name' => 'test',
+      'version' => '4.8.1',
+      'vip_server' => nil,
       'translation_bundle' => './spec/fixtures/bundles',
       'source_bundle' => './spec/fixtures/sources',
-      'cache_expiry_period' => 10,
-      'default_language' => 'en'
-    }
+      'cache_expiry_period' => 10
+      # 'default_language' => 'en'
+    }.freeze
+
+  def product_name
+    CONFIG_HASH['product_name']
   end
 
-  self.product_name = 'test'
-  self.version = '4.8.1'
+  def version
+    CONFIG_HASH['version']
+  end
   self.singleton_server = 'http://localhost:8091/vipserver'
   def translation_path
-    config['translation_bundle']
+    CONFIG_HASH['translation_bundle']
   end
 
   def source_path
-    config['source_bundle']
+    CONFIG_HASH['source_bundle']
   end
 
-  self.server_url = File.join(singleton_server, '/i18n/api/v2/translation/products', product_name, 'versions', version)
+  self.server_url = File.join(singleton_server, '/i18n/api/v2/translation/products', CONFIG_HASH['product_name'], 'versions', CONFIG_HASH['version'])
   self.bundle_url = "#{server_url}/locales/%s/components/%s"
   self.components_url = File.join(server_url, 'componentlist')
   self.locales_url = File.join(server_url, 'localelist')
@@ -77,7 +81,7 @@ module Helpers
   end
 
   def bundle_stub(component, locale, response)
-    stub_request(:get, bundle_url % [locale, component]).to_return(body: response)
+    stub_request(:get, format(bundle_url, locale, component)).to_return(body: response)
   end
 
   def stub_response(file_name)

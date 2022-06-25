@@ -2,11 +2,7 @@
 #  SPDX-License-Identifier: EPL-2.0
 
 describe SgtnClient::I18nBackend, :include_helpers, :extend_helpers do
-  include_context 'reset client' do
-    before(:all) do
-      SgtnClient::Config.configurations[SgtnClient::Config.default_environment] = config.dup
-    end
-  end
+  include_context 'reset client'
 
   let(:backend) { Sgtn::I18nBackend.new(component) }
 

@@ -5,12 +5,12 @@ module SgtnClient
   module TranslationLoader
     module LoaderFactory
       def self.create(config)
-        SgtnClient.logger.info "[#{method(__callee__).owner}.#{__callee__}] config=#{config}"
+        SgtnClient.logger.info "[#{method(__callee__).owner}.#{__callee__}] config=#{config.inspect}"
 
         loaders = []
-        loaders << Source.new(config) if config['source_bundle']
-        loaders << SgtnServer.new(config) if config['vip_server']
-        loaders << LocalTranslation.new(config) if config['translation_bundle']
+        loaders << Source.new(config) if config.source_bundle
+        loaders << SgtnServer.new(config) if config.vip_server
+        loaders << LocalTranslation.new(config) if config.translation_bundle
         raise SingletonError, 'no translation is available!' if loaders.empty?
 
         chain_loader = Class.new(Chain)

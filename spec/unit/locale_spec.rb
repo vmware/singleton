@@ -5,7 +5,7 @@ describe SgtnClient do
   describe "Locale" do
 
     before :each do
-      SgtnClient.load("./config/sgtnclients.yml", 'test')
+      SgtnClient.load("./spec/config/sgtnclient.yml", 'test')
     end
 
     it "get_best_locale_exact_match" do
@@ -46,22 +46,22 @@ describe SgtnClient do
       expect(SgtnClient::LocaleUtil.get_best_locale('fil_PH')).to eq SgtnClient::LocaleUtil.get_default_locale
     end
 
-    it "get_source_locale" do
-      env = SgtnClient::Config.default_environment
-      config_lang = SgtnClient::Config.configurations[env]["default_language"]
+    # it "get_source_locale" do
+    #   env = SgtnClient::Config.default_environment
+    #   config_lang = SgtnClient::Config.configurations[env]["default_language"]
 
-      SgtnClient::Config.configurations[env]["default_language"] = nil
-      expect(SgtnClient::LocaleUtil.get_source_locale()).to eq 'en'
+    #   SgtnClient::Config.configurations[env]["default_language"] = nil
+    #   expect(SgtnClient::LocaleUtil.get_source_locale()).to eq 'en'
 
-      SgtnClient::Config.configurations[env]["default_language"] = 'en'
-      expect(SgtnClient::LocaleUtil.get_source_locale()).to eq 'en'
+    #   SgtnClient::Config.configurations[env]["default_language"] = 'en'
+    #   expect(SgtnClient::LocaleUtil.get_source_locale()).to eq 'en'
       
-      # SgtnClient::Config.configurations[env]["default_language"] = 'zh-Hans'
-      # expect(SgtnClient::LocaleUtil.get_source_locale()).to eq 'zh-Hans'
+    #   # SgtnClient::Config.configurations[env]["default_language"] = 'zh-Hans'
+    #   # expect(SgtnClient::LocaleUtil.get_source_locale()).to eq 'zh-Hans'
 
-    ensure
-      SgtnClient::Config.configurations[env]["default_language"] = config_lang
-    end
+    # ensure
+    #   SgtnClient::Config.configurations[env]["default_language"] = config_lang
+    # end
   end
 
 end

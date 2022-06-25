@@ -14,7 +14,7 @@ module SgtnClient
     LOCALE_SEPARATOR = '-'
 
     def self.get_best_locale(locale)
-      return locale if Config.available_locales.include?(locale)
+      return locale if SgtnClient.config.available_locales.include?(locale)
 
       return get_fallback_locale if locale.nil?
 
@@ -43,8 +43,7 @@ module SgtnClient
     end
 
     def self.get_default_locale
-      env = Config.default_environment
-      Config.configurations[env]['default_language']
+      'en'
     end
 
     def self.get_fallback_locale
@@ -52,7 +51,7 @@ module SgtnClient
     end
 
     def self.lowercase_locales_map
-      @lowercase_locales_map ||= Config.available_locales.each_with_object({}) do |locale, memo|
+      @lowercase_locales_map ||= SgtnClient.config.available_locales.each_with_object({}) do |locale, memo|
         memo[locale.to_s.downcase] = locale
       end
     end
@@ -61,7 +60,7 @@ module SgtnClient
       @lowercase_locales_map = nil if type == :available_locales
     end
 
-    Config.add_observer(self, :reset_available_locales)
+    SgtnClient.config.add_observer(self, :reset_available_locales)
 
     private_class_method :get_best_match, :lowercase_locales_map, :reset_available_locales
   end

@@ -8,7 +8,10 @@ module Sgtn # :nodoc:
   class << self
     extend Forwardable
     def_delegator SgtnClient, :load, :load_config
-    def_delegators SgtnClient::Translation, :translate, :t, :get_translations, :locale, :locale=
+    delegate %i[translate t get_translations locale locale=] => SgtnClient::Translation,
+             %i[product_name version vip_server translation_bundle source_bundle cache_expiry_period mode].flat_map { |m|
+               [m, "#{m}=".to_sym]
+             } => SgtnClient::Config.instance
   end
 
   I18nBackend = SgtnClient::I18nBackend

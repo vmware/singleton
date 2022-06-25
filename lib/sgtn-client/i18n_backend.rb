@@ -24,7 +24,7 @@ module SgtnClient # :nodoc:
     def store_translations(*) end
 
     def available_locales
-      SgtnClient::Config.available_locales.to_a
+      SgtnClient.config.available_locales.to_a # TODO: get by component
     end
 
     def reload!; end
@@ -40,7 +40,7 @@ module SgtnClient # :nodoc:
     def translate(locale, key, options)
       flat_key = I18n::Backend::Flatten.normalize_flat_keys(locale, key, options[:scope], '.')
       values = options.except(*I18n::RESERVED_KEYS)
-      SgtnClient::Translation.translate(flat_key, @component, locale, **values) { nil }
+      Translation.translate(flat_key, @component, locale, **values) { nil }
     end
   end
 end

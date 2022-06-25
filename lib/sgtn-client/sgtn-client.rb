@@ -1,6 +1,8 @@
 # Copyright 2022 VMware, Inc.
 # SPDX-License-Identifier: EPL-2.0
 
+require 'yaml'
+
 module SgtnClient
       LOGFILE_SHIFT_AGE = 4
 
@@ -31,16 +33,20 @@ module SgtnClient
 
 
       class << self
-            def configure(options = {}, &block)
-            Config.configure(options, &block)
+            include Logging
+
+            def config
+                  Config.instance
             end
 
-            include Logging
-            def load(*args)
-                  # load configuration file
+            def load(file_name, env, log_file = nil)
                   begin
-                    Config.load(args[0], args[1])
-                    ValidateUtil.validate_config()
+                        configurations = YAML.load(File.read(file_name))
+                        config_hash = configurations[env]
+                        raise "Configuration[#{env}] NotFound" unless config_hash
+
+                        config.update(config_hash)
+                        ValidateUtil.validate_config
                   rescue => exception
                     file = File.open('./error.log', 'a')
                     file.sync = true
@@ -51,16 +57,15 @@ module SgtnClient
                   # create log file
                   file = './sgtnclient_d.log'
                   logger.debug "[Client][load]create log file=#{file}"
-                  if args[2] != nil
-                        file = args[2]
+                  if !log_file.nil?
+                        file = log_file
                   end
                   file = File.open(file, 'a')
                   file.sync = true
                   logger = Logger.new(file, LOGFILE_SHIFT_AGE)
 
                   # Set log level for sandbox mode
-                  env = Config.default_environment
-                  mode = Config.configurations[env]["mode"]
+                  mode = config.mode
                   logger.debug "[Client][load]set log level, mode=#{mode}"
                   if mode == 'sandbox'
                         logger.level = Logger::DEBUG
@@ -68,22 +73,15 @@ module SgtnClient
                         logger.level = Logger::INFO
                   end
 
-                  # initialize cache
-                  disable_cache = Config.configurations[env]["disable_cache"]
-                  logger.debug "[Client][load]cache initialize, disable_cache=#{disable_cache}"
-                  if disable_cache != nil
-                        Core::Cache.initialize(disable_cache)
-                  else
-                        Core::Cache.initialize()
-                  end
+                  Core::Cache.initialize()
             end
 
             def logger
-                  Config.logger
+                  config.logger
             end
 
             def logger=(log)
-                  Config.logger = log
+                  config.logger = log
             end           
       end
   
