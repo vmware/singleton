@@ -12,13 +12,13 @@ module SgtnClient
     include Observable
     include Singleton
 
-    attr_accessor :product_name, :version, :vip_server, :translation_bundle, :source_bundle, :cache_expiry_period, :disable_cache, :log_file, :log_level
+    attr_accessor :product_name, :version, :vip_server, :translation_bundle, :source_bundle, :cache_expiry_period, :log_file, :log_level
 
     attr_writer :logger
 
     def logger
       @logger ||= if log_file
-                    puts "create log file=#{log_file}, level=#{log_level}"
+                    puts "create log file: '#{log_file}', level: #{log_level}"
                     Lumberjack::Logger.new(log_file, level: log_level, max_size: '1M', keep: 4)
                   else
                     Logger.new(STDOUT, level: log_level)

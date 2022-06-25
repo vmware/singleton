@@ -19,12 +19,7 @@ module SgtnClient
         if cache_expiry_period != nil && (cache_expiry_period.is_a? Integer) == false
           messages = messages +  "Configuration[cache_expiry_period] has to be a number!\n"
         end
-        
-        disable_cache = SgtnClient.config.disable_cache
-        if disable_cache != nil && disable_cache != false && disable_cache != true
-          messages = messages +  "Configuration[disable_cache] has to be a 'true' or 'false'!\n"
-        end
-        
+
         if messages != ""
           raise Exceptions::MissingConfig.new(messages)
         end

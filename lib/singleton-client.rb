@@ -7,11 +7,20 @@ require_relative 'singleton-ruby'
 module Sgtn # :nodoc:
   class << self
     extend Forwardable
-    def_delegator SgtnClient, :load, :load_config
+
+    # load configuration from a file
+    def load_config(config_file, env)
+      SgtnClient.load(config_file, env)
+    end
+
+    def config
+      SgtnClient::Config.instance
+    end
+
     delegate %i[translate t get_translations locale locale=] => SgtnClient::Translation,
-             %i[product_name version vip_server translation_bundle source_bundle cache_expiry_period log_file log_level].flat_map { |m|
+             %i[logger product_name version vip_server translation_bundle source_bundle cache_expiry_period log_file log_level].flat_map { |m|
                [m, "#{m}=".to_sym]
-             } => SgtnClient::Config.instance
+             } => :config
   end
 
   I18nBackend = SgtnClient::I18nBackend
