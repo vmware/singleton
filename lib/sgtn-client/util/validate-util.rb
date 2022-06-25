@@ -6,13 +6,8 @@ module SgtnClient
   class ValidateUtil
 
       def self.validate_config()
-        puts "[ValidateUtil][validate_config]"
+        puts "validating config..."
         messages = ""
-
-        mode = SgtnClient.config.mode
-        if mode != 'sandbox' && mode != 'live'
-          messages =  messages + "Configuration[mode] has to be 'sandbox' or 'live'!\n"
-        end
 
         version = SgtnClient.config.version
         SgtnClient.config.version = version.to_s

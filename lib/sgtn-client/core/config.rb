@@ -1,6 +1,8 @@
 # Copyright 2022 VMware, Inc.
 # SPDX-License-Identifier: EPL-2.0
 
+require 'logger'
+require 'lumberjack'
 require 'observer'
 require 'set'
 require 'singleton'
@@ -10,20 +12,19 @@ module SgtnClient
     include Observable
     include Singleton
 
-    attr_accessor :product_name, :version, :vip_server, :translation_bundle, :source_bundle, :cache_expiry_period, :disable_cache, :mode
+    attr_accessor :product_name, :version, :vip_server, :translation_bundle, :source_bundle, :cache_expiry_period, :disable_cache, :log_file, :log_level
 
-    # Set logger
-    def logger=(logger)
-      Logging.logger = logger
-    end
+    attr_writer :logger
 
-    # Get logger
     def logger
-      if (mode == 'live') && (Logging.logger.level == Logger::DEBUG)
-        Logging.logger.warn 'DEBUG log level not allowed in live mode for security of confidential information. Changing log level to INFO...'
-        Logging.logger.level = Logger::INFO
-      end
-      Logging.logger
+      @logger ||= begin
+          @logger = if log_file
+                      puts "create log file=#{log_file}, level=#{log_level}"
+                      Lumberjack::Logger.new(log_file, level: log_level, max_size: '1M', keep: 4)
+                    else
+                      Logger.new(STDOUT, level: log_level)
+                    end
+        end
     end
 
     def loader
