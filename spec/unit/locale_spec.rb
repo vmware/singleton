@@ -4,7 +4,7 @@
 describe SgtnClient do
   describe "Locale" do
 
-    before :all do
+    before :each do
       SgtnClient.load("./spec/config/sgtnclient.yml", 'test')
     end
 
