@@ -21,7 +21,7 @@ module SgtnClient
                     puts "create log file: '#{log_file}', level: #{log_level}"
                     Lumberjack::Logger.new(log_file, level: log_level, max_size: '1M', keep: 4)
                   else
-                    Logger.new(STDOUT, level: log_level)
+                    Logger.new(STDOUT, level: log_level || Logger::INFO)
                   end
     end
 
