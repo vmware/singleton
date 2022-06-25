@@ -9,7 +9,7 @@ module Sgtn # :nodoc:
     extend Forwardable
     def_delegator SgtnClient, :load, :load_config
     delegate %i[translate t get_translations locale locale=] => SgtnClient::Translation,
-             %i[product_name version vip_server translation_bundle source_bundle cache_expiry_period mode].flat_map { |m|
+             %i[product_name version vip_server translation_bundle source_bundle cache_expiry_period log_file log_level].flat_map { |m|
                [m, "#{m}=".to_sym]
              } => SgtnClient::Config.instance
   end

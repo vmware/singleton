@@ -8,7 +8,7 @@ require 'set'
 require 'singleton'
 
 module SgtnClient
-  class Config
+  class Config # :nodoc:
     include Observable
     include Singleton
 
@@ -17,14 +17,12 @@ module SgtnClient
     attr_writer :logger
 
     def logger
-      @logger ||= begin
-          @logger = if log_file
-                      puts "create log file=#{log_file}, level=#{log_level}"
-                      Lumberjack::Logger.new(log_file, level: log_level, max_size: '1M', keep: 4)
-                    else
-                      Logger.new(STDOUT, level: log_level)
-                    end
-        end
+      @logger ||= if log_file
+                    puts "create log file=#{log_file}, level=#{log_level}"
+                    Lumberjack::Logger.new(log_file, level: log_level, max_size: '1M', keep: 4)
+                  else
+                    Logger.new(STDOUT, level: log_level)
+                  end
     end
 
     def loader

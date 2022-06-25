@@ -3,9 +3,6 @@
 
 describe SgtnClient::Config do
   describe 'load_config' do
-    # before :each do
-    #   SgtnClient.load('./spec/config/sgtnclient.yml', 'test', './sgtnclient_config.log')
-    # end
 
     it 'not define configuration' do
       begin

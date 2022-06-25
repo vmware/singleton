@@ -1,17 +1,5 @@
 test: &default
 
-  # Mode can be 'live' or 'sandbox'
-  mode: sandbox1
-
-  # Credentials for Classic APIs
-  app_id: APP-80W284485P519543T
-  username: linr
-  password: fdasf
-  signature: sfds-RWy
-  # # With Certificate
-  # cert_path: "config/cert_key.pem"
-  sandbox_email_address: linr@aa.com
-
   # #Product Name
   product_name: test
 
@@ -29,7 +17,7 @@ test: &default
 
   # # memory cache's expration(minutes), default value is 24*60
   cache_expiry_period: 36t
-  
+
 development:
   <<: *default
 

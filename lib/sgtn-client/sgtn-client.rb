@@ -25,18 +25,17 @@ module SgtnClient # :nodoc:
       autoload :SingletonError,     'sgtn-client/exceptions'
       autoload :I18nBackend,        "sgtn-client/i18n_backend"
 
-  module Formatters # :nodoc:
-    autoload :PluralFormatter, 'sgtn-client/formatters/plurals/plural_formatter'
-  end
+      module Formatters # :nodoc:
+            autoload :PluralFormatter, 'sgtn-client/formatters/plurals/plural_formatter'
+      end
 
-  module Implementation # :nodoc:
-    extend Forwardable
-    def_delegators config, :logger, :logger=
-
+      module Implementation # :nodoc:
+            extend Forwardable
 
             def config
                   Config.instance
             end
+            def_delegators :config, :logger, :logger=
 
             def load(file_name, env, log_file = nil)
                         configurations = YAML.load(File.read(file_name))
@@ -49,5 +48,5 @@ module SgtnClient # :nodoc:
             end
       end
 
-  extend Implementation         
+      extend Implementation
 end
