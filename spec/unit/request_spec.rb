@@ -1,16 +1,11 @@
 # Copyright 2022 VMware, Inc.
 # SPDX-License-Identifier: EPL-2.0
 
-require 'spec_helper'
-require 'request_store'
-
 describe SgtnClient do
   describe "Locale" do
 
     before :each do
-      env = SgtnClient::Config.default_environment
-      SgtnClient::Config.configurations[env]["vip_server"] = nil
-      SgtnClient::Source.loadBundles("default")
+      SgtnClient.config.vip_server = nil
       RequestStore.store[:locale] = 'zh-Hans'
       RequestStore.store[:component] = 'JAVA'
     end

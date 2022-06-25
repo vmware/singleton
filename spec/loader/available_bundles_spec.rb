@@ -3,5 +3,7 @@
 
 RSpec.describe 'Available Bundles - loader', :include_helpers, :extend_helpers do
   subject { SgtnClient::TranslationLoader::LoaderFactory.create(@config) }
-  include_examples 'Available Bundles'
+  include_examples 'Available Bundles' do
+    include_context 'reset client'
+  end
 end

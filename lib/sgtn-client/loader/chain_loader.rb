@@ -1,6 +1,8 @@
 # Copyright 2022 VMware, Inc.
 # SPDX-License-Identifier: EPL-2.0
 
+require 'set'
+
 module SgtnClient
   module TranslationLoader
     class Chain
@@ -23,7 +25,7 @@ module SgtnClient
           end
         end
 
-        raise exception || SgtnClient::SingletonError.new("can't load component: #{component}, locale: #{locale}")
+        raise exception || SingletonError.new("can't load component: #{component}, locale: #{locale}")
       end
 
       def available_bundles
