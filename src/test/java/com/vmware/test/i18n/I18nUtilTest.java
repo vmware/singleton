@@ -25,7 +25,7 @@ public class I18nUtilTest {
 	final String testURL = "https://github.com/unicode-cldr/cldr-core/archive/32.0.0.zip";
 	final String[] catesArr = { "dates", "numbers", "plurals", "measurements"};
 
-	//@Before
+	@Before
 	public void network() throws Exception {
 		URL urlObj = new URL(testURL);
 		HttpURLConnection conn = (HttpURLConnection) urlObj.openConnection();
