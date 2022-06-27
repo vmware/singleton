@@ -18,8 +18,10 @@ test: &default
   # # memory cache's expration(minutes), default value is 24*60
   cache_expiry_period: 10
 
+  # # the path to log file, default target is STDOUT
   log_file: ./unit_test.log
 
+  # # the lowest level to be logged, default value is INFO
   log_level: DEBUG
 
 development:
