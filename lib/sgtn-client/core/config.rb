@@ -1,8 +1,6 @@
 # Copyright 2022 VMware, Inc.
 # SPDX-License-Identifier: EPL-2.0
 
-require 'logger'
-require 'lumberjack'
 require 'observer'
 require 'set'
 require 'singleton'
@@ -19,8 +17,10 @@ module SgtnClient
     def logger
       @logger ||= if log_file
                     puts "create log file: '#{log_file}', level: #{log_level}"
+                    require 'lumberjack'
                     Lumberjack::Logger.new(log_file, level: log_level, max_size: '1M', keep: 4)
                   else
+                    require 'logger'
                     Logger.new(STDOUT, level: log_level || Logger::INFO)
                   end
     end
