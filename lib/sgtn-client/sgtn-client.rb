@@ -32,9 +32,7 @@ module SgtnClient # :nodoc:
   module Implementation # :nodoc:
     extend Forwardable
 
-    def config
-      Config.instance
-    end
+    def_delegator SgtnClient::Config, :instance, :config
     def_delegators :config, :logger, :logger=
 
     def load(config_file, env, log_file = nil)
