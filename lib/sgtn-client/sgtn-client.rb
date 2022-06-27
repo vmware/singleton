@@ -29,7 +29,7 @@ module SgtnClient # :nodoc:
     autoload :PluralFormatter, 'sgtn-client/formatters/plurals/plural_formatter'
   end
 
-  module Implementation # :nodoc:
+  class << self
     extend Forwardable
 
     def_delegator SgtnClient::Config, :instance, :config
@@ -45,6 +45,4 @@ module SgtnClient # :nodoc:
       ValidateUtil.validate_config
     end
   end
-
-  extend Implementation
 end
