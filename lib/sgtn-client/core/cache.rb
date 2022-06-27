@@ -20,11 +20,11 @@ module SgtnClient::Core
 
             def self.clear
                 SgtnClient.logger.debug "[Cache][clear]clear cache!"
-                @@data = {}
+                @data = {}
             end
 
             def self.data
-                @@data ||= {}
+                @data ||= {}
             end
         end
 
