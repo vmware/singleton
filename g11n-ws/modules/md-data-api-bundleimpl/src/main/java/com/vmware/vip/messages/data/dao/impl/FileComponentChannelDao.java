@@ -28,19 +28,9 @@ public class FileComponentChannelDao implements IComponentChannelDao{
 	@Autowired
 	private BundleConfig bundleConfig;
 	
-	@Autowired
-	private ProductDao productDao;
-
-
 	@Override
 	public List<ReadableByteChannel> getTransReadableByteChannels(String productName, String version,
 			List<String> components, List<String> locales) throws DataException {
-		if (components == null ) {
-			components = productDao.getComponentList(productName, version);
-		}
-		if (locales == null) {
-			locales = productDao.getLocaleList(productName, version);
-		}
 		
 		List<ReadableByteChannel> resultChannels = new ArrayList<ReadableByteChannel>();
 		for (String component : components) {
