@@ -9,7 +9,6 @@ apply plugin: "org.sonarqube"
 apply plugin: 'de.undercouch.download'
 apply plugin: 'maven-publish'
 apply plugin: "com.jfrog.artifactory"
-
 buildscript {
   repositories {
     mavenLocal()
@@ -23,9 +22,6 @@ buildscript {
     classpath "org.jfrog.buildinfo:build-info-extractor-gradle:4+"
   }
 }
-
-
-
 description = 'VIP4Java'
 archivesBaseName = 'singleton-client-java'
 sourceCompatibility = 1.8
@@ -34,30 +30,26 @@ version = '0.1.0'
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
-
 repositories {
     mavenCentral()
 }
-
 dependencies {
-	compile group: 'javax.servlet.jsp', name: 'javax.servlet.jsp-api', version: '2.3.1'
-	compile group: 'javax.servlet', name: 'javax.servlet-api', version: '3.1.0'
-	compile group: 'org.apache.taglibs', name: 'taglibs-standard-impl', version: '1.2.5'
-	compile("com.googlecode.json-simple:json-simple:1.1.1") {
-	   exclude group: 'junit'
-	}
-	compile group: 'com.vmware.singleton', name: 'singleton-i18n-patterns-core', version: '[0.5.1,)'
-	compile("com.fasterxml.jackson.core:jackson-databind:2.12.6.1")
-	compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.30'
-
-	testCompile group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.7.30'
-	testCompile group: 'log4j', name: 'log4j', version: '1.2.17'
-	testCompile group: 'junit', name: 'junit', version: '4.13.2'
-	testCompile "com.github.tomakehurst:wiremock-jre8:2.25.1"
-	testCompile group: 'org.hamcrest', name: 'hamcrest', version: '2.1'
+    compile group: 'javax.servlet.jsp', name: 'javax.servlet.jsp-api', version: '2.3.1'
+    compile group: 'javax.servlet', name: 'javax.servlet-api', version: '3.1.0'
+    compile group: 'org.apache.taglibs', name: 'taglibs-standard-impl', version: '1.2.5'
+    compile("com.googlecode.json-simple:json-simple:1.1.1") {
+       exclude group: 'junit'
+    }
+    compile group: 'com.vmware.singleton', name: 'singleton-i18n-patterns-core', version: '[0.5.1,)'
+    compile("com.fasterxml.jackson.core:jackson-databind:2.12.6.1")
+    compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.30'
+    testCompile group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.7.30'
+    testCompile group: 'log4j', name: 'log4j', version: '1.2.17'
+    testCompile group: 'junit', name: 'junit', version: '4.13.2'
+    testCompile "com.github.tomakehurst:wiremock-jre8:2.25.1"
+    testCompile group: 'org.hamcrest', name: 'hamcrest', version: '2.1'
     testCompile group: 'com.ibm.icu', name: 'icu4j', version: '60.3'
 }
-
 sourceSets {
   main {
     java {
@@ -76,7 +68,6 @@ sourceSets {
     output.resourcesDir = file("${buildDir}/classes/java/test")
   }
 }
-
 jar {
     manifest {
         attributes 'Implementation-Title': 'Gradle Quickstart',
@@ -84,7 +75,6 @@ jar {
     }
     classifier = ''
 }
-
 uploadArchives {
     repositories {
        flatDir {
@@ -92,11 +82,9 @@ uploadArchives {
        }
     }
 }
-
 task createWrapper(type: Wrapper) {
     gradleVersion = '6.4.1'
 }
-
 if (JavaVersion.current().isJava8Compatible()) {
     allprojects {
       tasks.withType(Javadoc) {
@@ -104,32 +92,25 @@ if (JavaVersion.current().isJava8Compatible()) {
       }
     }
 }
-
 task sourcesJar(type: Jar, dependsOn: classes) {
     from sourceSets.main.allJava
     archiveClassifier = 'sources'
 }
-
-
 javadoc {  
     options{
         encoding "UTF-8"
         charSet "UTF-8"
     }
 }
-
 task javadocJar(type: Jar, dependsOn: javadoc) {
     from javadoc
     archiveClassifier = 'javadoc'
-
 }
-
 task copyJars(type :Copy, dependsOn: [jar, sourcesJar, javadocJar]) {
     from "$buildDir/libs"
     into "$rootDir/../publish/"
     include "**/*.jar"
 }
-
 jacocoTestReport {
     reports {
         xml.enabled true
@@ -138,16 +119,13 @@ jacocoTestReport {
         xml.destination file("${buildDir}/reports/jacoco.xml")
     }
 }
-
 test {
     testLogging {
         events "passed", "skipped", "failed"
         exceptionFormat "full"
     }
 }
-
 assemble.dependsOn.add copyJars
-
 artifactory {
     contextUrl = "${artifactory_contextUrl}"
     publish {
@@ -158,9 +136,9 @@ artifactory {
             maven = true
             
         }
-	defaults {
+    defaults {
             publications ('mavenJava')
-	}
+    }
     }
     resolve {
         repository {
@@ -171,22 +149,34 @@ artifactory {
         }
     }
 }
-
-
 publishing {
     publications {
         mavenJava(MavenPublication) {
         from components.java
-	    artifactId = "singleton-client-java"
+        artifactId = "singleton-client-java"
         artifact file("a.zip")
            pom.withXml {
-               def dependencies = asNode().appendNode('dependencies')
-               def dependency = dependencies.appendNode('dependency')
-               dependency.appendNode('groupID', 'log4j')
-               dependency.appendNode('artifactID', 'log4j')
-               dependency.appendNode('version', '1.2.17')
-           }
+                def depsNode  = asNode().appendNode('dependencies')
+                configurations.compile.allDependencies.each {  dep ->
+                    def depNode  = depsNode.appendNode('dependency')
+                    depNode.appendNode('groupId', dep.group)
+                    depNode.appendNode('artifactId', dep.name)
+                    depNode.appendNode('version', dep.version)
+                    depNode.appendNode('scope', 'compile')
+                    if (!dep.transitive) {
+                        final exclusionNode = depNode.appendNode('exclusions').appendNode('exclusion')
+                        exclusionNode.appendNode('groupId', '*')
+                        exclusionNode.appendNode('artifactId', '*')
+                    } else if (!dep.properties.excludeRules.empty) {
+                        final exclusionsNode = depNode.appendNode('exclusions')
+                        dep.properties.excludeRules.each { final ExcludeRule rule ->
+                            final exclusionNode = exclusionsNode.appendNode('exclusion')
+                            exclusionNode.appendNode('groupId', rule.group ?: '*')
+                            exclusionNode.appendNode('artifactId', rule.module ?: '*')
+                        }
+                    }
+                }
+            }
         }
     }
 }
-
