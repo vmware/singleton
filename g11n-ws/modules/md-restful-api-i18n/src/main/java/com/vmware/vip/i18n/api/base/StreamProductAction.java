@@ -22,6 +22,8 @@ import com.vmware.vip.core.messages.service.multcomponent.IMultComponentService;
 import com.vmware.vip.core.messages.service.product.IProductService;
 
 public class StreamProductAction extends TranslationProductAction{
+	 private static byte[] byteComm = (ConstantsChar.COMMA+"\r\n").getBytes();
+	
 	@Autowired
 	IProductService productService;
 	
@@ -76,13 +78,26 @@ public class StreamProductAction extends TranslationProductAction{
 		 }else {
 			 wbc.write(sr.getRespStartBytes(APIResponseStatus.VERSION_FALLBACK_TRANSLATION.getCode()));
 		 }
+		 ByteBuffer buf = null;
+		 ReadableByteChannel firstReadChannel =  readChannels.get(0);
+		 boolean flag = (firstReadChannel instanceof FileChannel);
+		 if(flag) {
+			 transferTo(readChannels.get(0), wbc, null);
+			 buf = ByteBuffer.wrap(byteComm);
+		 }else {
+			 buf = ByteBuffer.allocateDirect(16384);
+			 transferTo(readChannels.get(0), wbc, buf);
+		 }
 		 
-		 transferTo(readChannels.get(0), wbc);
-		 ByteBuffer byteComm = ByteBuffer.wrap((ConstantsChar.COMMA+"\r\n").getBytes());
+		 
 		 for (int idx =1;  idx <readChannels.size(); idx++ ) {
-			 byteComm.rewind();
-			 wbc.write(byteComm);
-			 transferTo(readChannels.get(idx), wbc);
+			 if(flag) {
+				 buf.rewind();
+				 wbc.write(buf);
+			 }else {
+				 buf.put(byteComm);
+			 }
+			 transferTo(readChannels.get(idx), wbc, buf);
 		 }
 		 
 		 wbc.write(sr.getEndBytes());
@@ -93,20 +108,21 @@ public class StreamProductAction extends TranslationProductAction{
 
 
 
-	private void transferTo(ReadableByteChannel readChannel, WritableByteChannel writeChannel) throws Exception {
+	private void transferTo(ReadableByteChannel readChannel, WritableByteChannel writeChannel, ByteBuffer buf) throws Exception {
 
 		if (readChannel instanceof FileChannel) {
 			try (FileChannel fileChannel = (FileChannel) readChannel) {
 				fileChannel.transferTo(0, fileChannel.size(), writeChannel);
 			}
 		} else {
-			ByteBuffer buf = ByteBuffer.allocateDirect(4096);
+			
 			try {
 				while ((readChannel.read(buf)) != -1) {
 					buf.flip();
-					while (buf.hasRemaining()) {
+					do {
 						writeChannel.write(buf);
-					}
+					}while (buf.hasRemaining());
+					
 					buf.clear();
 				}
 			} catch (Exception e) {
