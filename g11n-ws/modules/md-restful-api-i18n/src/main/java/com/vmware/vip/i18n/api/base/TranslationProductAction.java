@@ -239,7 +239,7 @@ public class TranslationProductAction  extends BaseAction {
        *this function use to locale fallback 
        *
        */
-      private String getMappingLocale(String productName, String version,
+      public String getMappingLocale(String productName, String version,
               String inputLocale) throws L3APIException {
           List<String> supportedLocaleList = productService
                   .getSupportedLocaleList(productName, version);
@@ -253,6 +253,8 @@ public class TranslationProductAction  extends BaseAction {
                   supportedLocales, Locale.forLanguageTag(requestLocale));
           return fallbackLocale.toLanguageTag();
       }
+      
+      
       
     
 	@SuppressWarnings({ "rawtypes", "unchecked" })

@@ -42,7 +42,7 @@ public class FileComponentChannelDao implements IComponentChannelDao{
 			locales = productDao.getLocaleList(productName, version);
 		}
 		
-		List<ReadableByteChannel> resultfiles = new ArrayList<ReadableByteChannel>();
+		List<ReadableByteChannel> resultChannels = new ArrayList<ReadableByteChannel>();
 		for (String component : components) {
 			for (String locale : locales) {
 				String subpath = ConstantsFile.L10N_BUNDLES_PATH + productName
@@ -52,7 +52,7 @@ public class FileComponentChannelDao implements IComponentChannelDao{
 				File file = new File(jsonfile);
 				if (file.exists()) {
 					try {
-						resultfiles.add(FileChannel.open(file.toPath(), StandardOpenOption.READ));
+						resultChannels.add(FileChannel.open(file.toPath(), StandardOpenOption.READ));
 					} catch (IOException e) {
 						logger.error(e.getMessage(), e);
 						throw new BundleException(e.getMessage(), e);
@@ -60,9 +60,9 @@ public class FileComponentChannelDao implements IComponentChannelDao{
 				}
 			}
 		}
-		logger.info("fileSize: {}", resultfiles.size());
+		logger.info("fileSize: {}", resultChannels.size());
 		
-		return resultfiles;
+		return resultChannels;
 	}
 
 	@Override
