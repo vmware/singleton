@@ -1,3 +1,7 @@
+/*
+ * Copyright 2019-2022 VMware, Inc.
+ * SPDX-License-Identifier: EPL-2.0
+ */
 package com.vmware.vip.messages.data.dao.api;
 
 import java.nio.channels.ReadableByteChannel;
