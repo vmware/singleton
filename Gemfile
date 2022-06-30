@@ -3,11 +3,7 @@
 
 source "https://rubygems.org"
 
-if !!File::ALT_SEPARATOR
-  gemspec :name => 'singleton-ruby.windows'
-else
-  gemspec :name => 'singleton-ruby'
-end
+gemspec :name => 'singleton-client'
 
 gem 'rake', :require => false
 
