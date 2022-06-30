@@ -24,6 +24,7 @@ import com.vmware.vip.common.i18n.resourcefile.ResourceFilePathGetter;
 import com.vmware.vip.messages.data.bundle.BundleConfig;
 import com.vmware.vip.messages.data.dao.api.IComponentChannelDao;
 import com.vmware.vip.messages.data.dao.exception.DataException;
+import com.vmware.vip.messages.data.dao.model.ResultMessageChannel;
 import com.vmware.vip.messages.data.exception.BundleException;
 @Profile("bundle")
 @Repository
@@ -33,10 +34,10 @@ public class FileComponentChannelDao implements IComponentChannelDao{
 	private BundleConfig bundleConfig;
 	
 	@Override
-	public List<ReadableByteChannel> getTransReadableByteChannels(String productName, String version,
+	public List<ResultMessageChannel> getTransReadableByteChannels(String productName, String version,
 			List<String> components, List<String> locales) throws DataException {
 		
-		List<ReadableByteChannel> resultChannels = new ArrayList<ReadableByteChannel>();
+		List<ResultMessageChannel> resultChannels = new ArrayList<ResultMessageChannel>();
 		for (String component : components) {
 			for (String locale : locales) {
 				String subpath = ConstantsFile.L10N_BUNDLES_PATH + productName
@@ -46,7 +47,7 @@ public class FileComponentChannelDao implements IComponentChannelDao{
 				File file = new File(jsonfile);
 				if (file.exists()) {
 					try {
-						resultChannels.add(FileChannel.open(file.toPath(), StandardOpenOption.READ));
+						resultChannels.add(new ResultMessageChannel(component, locale, FileChannel.open(file.toPath(), StandardOpenOption.READ)));
 					} catch (IOException e) {
 						logger.error(e.getMessage(), e);
 						throw new BundleException(e.getMessage(), e);

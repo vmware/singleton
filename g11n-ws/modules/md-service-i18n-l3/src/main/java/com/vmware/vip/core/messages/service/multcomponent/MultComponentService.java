@@ -30,6 +30,7 @@ import com.vmware.vip.core.messages.utils.PseudoMessagesUtils;
 import com.vmware.vip.messages.data.dao.api.IComponentChannelDao;
 import com.vmware.vip.messages.data.dao.api.IMultComponentDao;
 import com.vmware.vip.messages.data.dao.exception.DataException;
+import com.vmware.vip.messages.data.dao.model.ResultMessageChannel;
 
 /**
  * This class handles the translation by single component.
@@ -91,7 +92,7 @@ public class MultComponentService implements IMultComponentService {
 	}
 
 	@Override
-	public List<ReadableByteChannel> getTranslationChannels(String productName, String version,
+	public List<ResultMessageChannel> getTranslationChannels(String productName, String version,
 			List<String> components, List<String> locales) throws L3APIException {
 		
 		try {

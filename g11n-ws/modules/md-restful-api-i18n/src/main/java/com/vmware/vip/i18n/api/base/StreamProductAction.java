@@ -24,6 +24,7 @@ import com.vmware.vip.common.i18n.status.APIResponseStatus;
 import com.vmware.vip.core.messages.exception.L3APIException;
 import com.vmware.vip.core.messages.service.multcomponent.IMultComponentService;
 import com.vmware.vip.core.messages.service.product.IProductService;
+import com.vmware.vip.messages.data.dao.model.ResultMessageChannel;
 
 public class StreamProductAction extends TranslationProductAction{
 	 private static byte[] byteComm = (ConstantsChar.COMMA+"\r\n").getBytes();
@@ -63,7 +64,7 @@ public class StreamProductAction extends TranslationProductAction{
 
 		
 	
-		List<ReadableByteChannel>  readChannels = multComponentService.getTranslationChannels(productName, version, componentList, localeList);
+		List<ResultMessageChannel>  readChannels = multComponentService.getTranslationChannels(productName, version, componentList, localeList);
 		if(readChannels.isEmpty()) {
             throw new L3APIException(ConstantsMsg.TRANS_IS_NOT_FOUND);
         }
@@ -72,25 +73,26 @@ public class StreamProductAction extends TranslationProductAction{
 		StreamProductResp sr = new StreamProductResp(productName, version, localeList, componentList, pseudo, false);
 		resp.setContentType("application/json;charset=UTF-8"); 
 		WritableByteChannel wbc = Channels.newChannel(resp.getOutputStream());
-		
+		boolean isPartContent = false;
 		 if(oldVersion.equals(version)) {
-			 if(readChannels.size() == expSize) {
-				 wbc.write(sr.getRespStartBytes(APIResponseStatus.OK.getCode()));
-			 }else {
+			 isPartContent = !(readChannels.size() == expSize);
+			 if(isPartContent) {
 				 wbc.write(sr.getRespStartBytes(APIResponseStatus.MULTTRANSLATION_PART_CONTENT.getCode()));
+			 }else {
+				 wbc.write(sr.getRespStartBytes(APIResponseStatus.OK.getCode())); 
 			 }
 		 }else {
 			 wbc.write(sr.getRespStartBytes(APIResponseStatus.VERSION_FALLBACK_TRANSLATION.getCode()));
 		 }
 		 ByteBuffer buf = null;
-		 ReadableByteChannel firstReadChannel =  readChannels.get(0);
+		 ReadableByteChannel firstReadChannel =  readChannels.get(0).getReadableByteChannel();
 		 boolean flag = (firstReadChannel instanceof FileChannel);
 		 if(flag) {
-			 transferTo(readChannels.get(0), wbc, null);
+			 transferTo(readChannels.get(0).getReadableByteChannel(), wbc, null);
 			 buf = ByteBuffer.wrap(byteComm);
 		 }else {
 			 buf = ByteBuffer.allocateDirect(16384);
-			 transferTo(readChannels.get(0), wbc, buf);
+			 transferTo(readChannels.get(0).getReadableByteChannel(), wbc, buf);
 		 }
 		 
 		 
@@ -101,15 +103,30 @@ public class StreamProductAction extends TranslationProductAction{
 			 }else {
 				 buf.put(byteComm);
 			 }
-			 transferTo(readChannels.get(idx), wbc, buf);
+			 transferTo(readChannels.get(idx).getReadableByteChannel(), wbc, buf);
 		 }
-		 
+		 if(isPartContent){
+			 wbc.write(ByteBuffer.wrap(addNullMessage(readChannels, componentList, localeList)));
+		 }
 		 wbc.write(sr.getEndBytes());
 	}
 	
 
-	
-
+	private byte[] addNullMessage(List<ResultMessageChannel>  readChannels, List<String> components, List<String> locales) {
+		StringBuilder sb = new StringBuilder();
+		for (String component : components) {
+			for (String locale : locales) {
+				ResultMessageChannel rmc = new ResultMessageChannel(component, locale, null);
+				if(!readChannels.contains(rmc)) {
+					sb.append(",");
+					sb.append(rmc.generateNullMessage());
+				}
+				
+			}
+		}
+		return sb.toString().getBytes();
+	}
+  
 
 
 	private void transferTo(ReadableByteChannel readChannel, WritableByteChannel writeChannel, ByteBuffer buf) throws Exception {

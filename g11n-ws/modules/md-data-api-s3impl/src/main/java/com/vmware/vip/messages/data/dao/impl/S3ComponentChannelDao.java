@@ -23,6 +23,7 @@ import com.vmware.vip.messages.data.conf.S3Client;
 import com.vmware.vip.messages.data.conf.S3Config;
 import com.vmware.vip.messages.data.dao.api.IComponentChannelDao;
 import com.vmware.vip.messages.data.dao.exception.DataException;
+import com.vmware.vip.messages.data.dao.model.ResultMessageChannel;
 import com.vmware.vip.messages.data.util.S3Utils;
 
 @Profile("s3")
@@ -31,19 +32,16 @@ public class S3ComponentChannelDao implements IComponentChannelDao {
 	private static Logger logger = LoggerFactory.getLogger(S3ComponentChannelDao.class);
 
 	@Autowired
-	private S3ProductDaoImpl productDao;
-
-	@Autowired
 	private S3Client s3Client;
 
 	@Autowired
 	private S3Config config;
 
 	@Override
-	public List<ReadableByteChannel> getTransReadableByteChannels(String productName, String version,
+	public List<ResultMessageChannel> getTransReadableByteChannels(String productName, String version,
 			List<String> components, List<String> locales) throws DataException {
 
-		List<ReadableByteChannel> resultChannels = new ArrayList<ReadableByteChannel>();
+		List<ResultMessageChannel> resultChannels = new ArrayList<ResultMessageChannel>();
 		for (String component : components) {
 			for (String locale : locales) {
 				String filePath = S3Utils.genProductVersionS3Path(productName, version) + component + ConstantsChar.BACKSLASH
@@ -52,7 +50,7 @@ public class S3ComponentChannelDao implements IComponentChannelDao {
 					S3Object s3Obj = s3Client.getS3Client().getObject(config.getBucketName(), filePath);
 					if (s3Obj != null) {
 						S3ObjectInputStream s3is = s3Obj.getObjectContent();
-						 resultChannels.add(Channels.newChannel(s3is));
+						resultChannels.add(new ResultMessageChannel(component, locale, Channels.newChannel(s3is)));
 					} 
 					
 				}
