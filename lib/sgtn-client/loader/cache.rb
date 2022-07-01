@@ -4,11 +4,7 @@
 # SPDX-License-Identifier: EPL-2.0
 
 module SgtnClient
-  autoload :CacheUtil, 'sgtn-client/util/cache-util'
-
   module TranslationLoader
-    autoload :CONSTS, 'sgtn-client/loader/consts'
-
     module Cache # :nodoc:
       # get from cache, return expired data immediately
       def get_bundle(component, locale)
@@ -50,7 +46,7 @@ module SgtnClient
         SgtnClient.logger.debug "[#{__FILE__}][#{__callee__}]"
 
         item = super
-        CacheUtil.write_cache(CONSTS::AVAILABLE_BUNDLES_KEY, item) if item
+        CacheUtil.write_cache(CONSTS::AVAILABLE_BUNDLES_KEY, item) if item # TODO: don't save when empty
         item
       end
     end

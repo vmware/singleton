@@ -1,18 +1,15 @@
 # Copyright 2022 VMware, Inc.
 # SPDX-License-Identifier: EPL-2.0
 
-require 'spec_helper'
-
 describe 'Cache' do
   before :all do
-    SgtnClient::Config.instance_variable_set('@loader', nil)
+    SgtnClient.config.instance_variable_set('@loader', nil)
     SgtnClient::CacheUtil.clear_cache
   end
 
   before :each do
-    env = SgtnClient::Config.default_environment
-    SgtnClient::Config.configurations[env]['vip_server'] = nil
-    SgtnClient::Config.configurations[env]['cache_expiry_period'] = 1
+    SgtnClient.config.vip_server = nil
+    SgtnClient.config.cache_expiry_period = 1
   end
 
   it 'GETTranslation' do

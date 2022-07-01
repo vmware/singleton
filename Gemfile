@@ -3,7 +3,7 @@
 
 source 'https://rubygems.org'
 
-gemspec name: 'singleton-ruby'
+gemspec name: 'singleton-client'
 
 group :development, :test do
   gem 'pry-byebug'

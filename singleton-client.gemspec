@@ -1,7 +1,7 @@
 require File.expand_path('lib/version', __dir__)
 
 Gem::Specification.new do |s|
-  s.name = 'singleton-ruby'
+  s.name = 'singleton-client'
   s.version = VERSION
   s.authors = ['VMware G11n Team']
   s.description = 'Singleton Ruby client'
@@ -22,6 +22,8 @@ Gem::Specification.new do |s|
   s.add_dependency('multi_json', '~> 1.0')
   s.add_dependency('request_store', '~> 1.0')
   s.add_dependency('twitter_cldr', '~> 6.6')
+  s.add_dependency('i18n')
+  s.add_dependency('lumberjack')
 
   s.required_ruby_version = '>= 2.0.0'
 end
