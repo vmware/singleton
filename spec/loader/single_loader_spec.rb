@@ -13,14 +13,14 @@ describe SgtnClient::TranslationLoader::SingleLoader, :include_helpers, :extend_
   end.new
   return_value = {}
 
-  prefix = '-----------------------------'
-  trace = TracePoint.new(:call, :return) do |tp|
-    if tp.event == :return
-      SgtnClient.logger.debug "#{prefix}#{[tp.method_id, tp.event, tp.return_value]}"
-    else
-      SgtnClient.logger.debug "#{prefix}#{[tp.method_id, tp.event, tp.binding.local_variables.map { |var| tp.binding.local_variable_get(var) }]}"
-    end
-  end
+  # prefix = '-----------------------------'
+  # trace = TracePoint.new(:call, :return) do |tp|
+  #   if tp.event == :return
+  #     SgtnClient.logger.debug "#{prefix}#{[tp.method_id, tp.event, tp.return_value]}"
+  #   else
+  #     SgtnClient.logger.debug "#{prefix}#{[tp.method_id, tp.event, tp.binding.local_variables.map { |var| tp.binding.local_variable_get(var) }]}"
+  #   end
+  # end
 
   include_context 'reset client' do
     # before(:all) do
