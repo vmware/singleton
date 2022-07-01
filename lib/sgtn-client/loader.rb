@@ -6,6 +6,7 @@
 module SgtnClient
   module TranslationLoader # :nodoc:
     autoload :Cache, 'sgtn-client/loader/cache'
+    autoload :CacheFiller, 'sgtn-client/loader/cache'
     autoload :Chain, 'sgtn-client/loader/chain_loader'
     autoload :CONSTS, 'sgtn-client/loader/consts'
     autoload :LoaderFactory, 'sgtn-client/loader/loader_factory'

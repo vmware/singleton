@@ -24,13 +24,12 @@ describe SgtnClient::TranslationLoader::SingleLoader, :include_helpers, :extend_
   end
 
   include_context 'reset client' do
-    before(:all) do
-      SgtnClient::Config.configurations[SgtnClient::Config.default_environment] = config
-      trace.enable(target: SgtnClient::TranslationLoader::SingleLoader.instance_method(:load_bundle))
-    end
-    after(:all) do
-      trace.disable
-    end
+    # before(:all) do
+    #   trace.enable(target: SgtnClient::TranslationLoader::SingleLoader.instance_method(:load_bundle))
+    # end
+    # after(:all) do
+    #   trace.disable
+    # end
   end
 
   it '#only one request is made' do
