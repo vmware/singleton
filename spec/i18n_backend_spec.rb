@@ -1,7 +1,7 @@
 #  Copyright 2022 VMware, Inc.
 #  SPDX-License-Identifier: EPL-2.0
 
-describe SgtnClient::I18nBackend, :include_helpers, :extend_helpers do
+describe Sgtn::I18nBackend, :include_helpers, :extend_helpers do
   include_context 'reset client'
 
   let(:backend) { Sgtn::I18nBackend.new(component) }

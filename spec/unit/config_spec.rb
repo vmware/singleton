@@ -3,14 +3,6 @@
 
 describe SgtnClient::Config do
   describe 'load_config' do
-    before :each do
-      SgtnClient.load('./spec/config/sgtnclient.yml', 'test', './sgtnclient_config.log')
-    end
-
-    it 'define configuration' do
-      mode = SgtnClient.config.mode
-      expect(mode).to eq 'sandbox'
-    end
 
     it 'not define configuration' do
       begin

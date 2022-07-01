@@ -16,7 +16,6 @@ module Helpers
 
   CONFIG_HASH =
     {
-      'mode' => 'sandbox',
       'product_name' => 'test',
       'version' => '4.8.1',
       'vip_server' => nil,

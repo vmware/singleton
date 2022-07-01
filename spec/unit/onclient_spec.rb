@@ -36,9 +36,9 @@ describe SgtnClient do
 
     it "NewComponent" do
       expect(SgtnClient::Translation.getString("NEW", "new_hello", "zh-Hans")).to eq 'New Hello'
-      if SgtnClient.config.disable_cache == false
+      # if SgtnClient.config.disable_cache == false
         expect(SgtnClient::CacheUtil.get_cache("test_4.8.1_NEW_en").dig(:items, "new_hello")).to eq 'New Hello'
-      end
+      # end
       # get from cache in 2nd time
       expect(SgtnClient::Translation.getString("NEW", "new_hello", "zh-Hans")).to eq 'New Hello'
       jsonObj =  SgtnClient::Translation.getStrings("NEW", "zh-Hans")
