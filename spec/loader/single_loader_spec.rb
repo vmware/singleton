@@ -1,7 +1,6 @@
 #  Copyright 2022 VMware, Inc.
 #  SPDX-License-Identifier: EPL-2.0
 
-require 'sgtn-client/loader/single_loader'
 autoload :Concurrent, 'concurrent'
 
 describe SgtnClient::TranslationLoader::SingleLoader, :include_helpers, :extend_helpers do
