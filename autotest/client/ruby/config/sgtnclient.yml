@@ -1,20 +1,20 @@
 test: &default
 
   # Credentials for REST APIs
-  client_id: tee
-  client_secret: 89987
+  # client_id: tee
+  # client_secret: 89987
 
   # Mode can be 'live' or 'sandbox'
   mode: sandbox
 
   # Credentials for Classic APIs
-  app_id: APP-80W284485P519543T
-  username: linr
-  password: fdasf
-  signature: sfds-RWy
-  # # With Certificate
-  # cert_path: "config/cert_key.pem"
-  sandbox_email_address: linr@vmware.com
+  # app_id: APP-80W284485P519543T
+  # username: linr
+  # password: fdasf
+  # signature: sfds-RWy
+  # # # With Certificate
+  # # cert_path: "config/cert_key.pem"
+  # sandbox_email_address: linr@vmware.com
 
   # #Product Name
   product_name: RubyClient
@@ -26,147 +26,178 @@ test: &default
   vip_server: http://localhost:8091
 
   # # mode of bundle: online/offline
-  bundle_mode: online
+
   # # translation bundle Path
   translation_bundle: ./config/locales/l10n/bundles
 
-  # # source bundle Path
+  # # source bundle Path'about.testw'
   source_bundle: ./config/locales/default
 
   # # memory cache's expration(minutes), default value is 24*60
   cache_expiry_period: 1
 
-  # # disable cache, it's optional setting
-  #disable_cache: true
+#  disable_cache: true
+
+
 
 development:
   <<: *default
-  bundle_mode: offline
+  vip_server: 
   source_bundle: ./config/locales/defaultoffline
+
+onlinemode:
+  <<: *default
+
+  vip_server: http://localhost:8091
+  source_bundle: ./config/locales/defaultonlineserver
+  translation_bundle:
+
+devel:
+  <<: *default
+  vip_server:
+  source_bundle: ./config/locales/defaultoffline
+  translation_bundle:
+
+onlinetranslations:
+  <<: *default
+  version: 1.0
+  vip_server: http://localhost:8091
+  source_bundle: ./config/locales/defaultonlinetranslations
+  translation_bundle:
+
+translations:
+  <<: *default
+  version: 1.0
+  vip_server:
+  source_bundle: ./config/locales/defaultofflinetranslations
+  translation_bundle: ./config/locales/l10n/bundles
+
+
+onlyonlinemode:
+  <<: *default
+
+  vip_server: http://localhost:8091
+  source_bundle: 
+  translation_bundle:
+
+onlyonlinetranslations:
+  <<: *default
+
+  version: 1.0
+  vip_server: http://localhost:8091
+  source_bundle: 
+  translation_bundle:
+
+onlyofflinemode:
+  <<: *default
+  vip_server: 
+  source_bundle: 
+  translation_bundle: ./config/locales/l10n/bundles
+
+onlyofflinetranslations:
+  <<: *default
+  version: 1.0
+  vip_server: 
+  source_bundle: 
+  translation_bundle: ./config/locales/l10n/bundles
+
+onlineandofflinemode:
+  <<: *default
+
+  vip_server: http://localhost:8091
+  source_bundle: 
+  translation_bundle: ./config/locales/l10n/bundles
+
+onlineandofflinetranslations:
+  <<: *default
+  version: 1.0
+  vip_server: http://localhost:8091
+  source_bundle: 
+  translation_bundle: ./config/locales/l10n/bundles
+
+onlysource:
+  <<: *default
+
+  vip_server: 
+  source_bundle: ./config/locales/defaultonline
+  translation_bundle:
+  disable_cache: true
+
+onlysourcetranslations:
+  <<: *default
+
+  version: 1.0
+  vip_server: 
+  source_bundle: ./config/locales/defaultonlinetranslations
+  translation_bundle:
+
+mixed:
+  <<: *default
+
+  version: 4.8.2
+  vip_server: http://localhost:8091
+  source_bundle: ./config/locales/defaultmixed
+  translation_bundle: ./config/locales/l10n/bundles
+
+mixedtranslations:
+  <<: *default
+
+  version: 4.8.2
+  vip_server: http://localhost:8091
+  source_bundle: ./config/locales/defaultmixedtranslations
+  translation_bundle: ./config/locales/l10n/bundles
 
 production:
   <<: *default
   version: 1.1
+  source_bundle: ./config/locales/default
+  cache_expiry_period: 1
+#  disable_cache: true
 
-productcache1:
+onlinemodedebug:
   <<: *default
-  version: 1.2
 
-productcache2:
+  version: 4.8.1
+  vip_server: http://localhost:8091
+  source_bundle: ./config/locales/defaultonline
+  #source_bundle: ./config/locales/default
+  translation_bundle:
+  cache_expiry_period: 1
+
+onlinemodedebug2:
   <<: *default
-  version: 1.3
 
-testmode:
+  version: chanegre
+  vip_server: http://localhost:8091
+  source_bundle: 
+  #source_bundle: ./config/locales/default
+  translation_bundle:
+  cache_expiry_period: 1
+
+
+mixdebug:
   <<: *default
-  mode: live
 
-testcache_expiry_periodmode:
+  version: 4.8.1
+  vip_server: http://localhost:8098
+  source_bundle: ./config/locales/defaultmixed
+  #source_bundle: ./config/locales/default
+  translation_bundle: ./config/locales/l10n/bundles
+  cache_expiry_period: 1
+
+
+versionfallback:
   <<: *default
-  version: 1.1
-  cache_expiry_period: 0
+  version: 4.8.3
+  source_bundle: 
+  translation_bundle: 
 
-testdisable_cache:
+
+testhttps:
   <<: *default
-  version: 1.1
-  disable_cache: true
-
-testversion_fallback:
-  <<: *default
-  version: 4.8.2
-
-testproductname:
-  <<: *default
-  product_name: NOTRubyClient
-  source_bundle: ./config/locales/defaultback
-
-testversion:
-  <<: *default
-  version: 0.1
-  source_bundle: ./config/locales/defaultback
-
-testvipserver:
-  <<: *default
-  vip_server: http://192.168.1.142:8095
-  source_bundle: ./config/locales/defaultback
-
-testbundlemode:
-  <<: *default
-  bundle_mode: notonline
-
-testtranslationbundle:
-  <<: *default
-  bundle_mode: offline
-  translation_bundle: ./config/locales/l10n/nobundles
-  source_bundle: ./config/locales/defaultback
-
-testsourcebundle:
-  <<: *default
-  source_bundle: ./config/locales/nodefault
-
-testcacheexpiryperiod:
-  <<: *default
-  cache_expiry_period: 10Pkl
-
-testdisablecache:
-  <<: *default
-  disable_cache: Notrue
-
-testdebug:
-  <<: *default
-  source_bundle: ./config/locales/default2
-
-testdisablecachetrue:
-  <<: *default
-  disable_cache: true
-
-testsourcelocale1:
-  <<: *default
-  default_language: en
+  vip_server: https://g11n-vip-dev-1.eng.vmware.com:8090
+  version: 4.8.1
+  source_bundle: 
+  translation_bundle: 
 
 
-testsourcelocale2:
-  <<: *default
-  default_language: zh-Hans
-
-testsourcelocale3:
-  <<: *default
-  default_language: da
-
-testsourcelocale4:
-  <<: *default
-  default_language: abcd
-
-testsourcelocale5:
-  <<: *default
-  default_language: fr
-
-testsourcelocaleoffline1:
-  <<: *default
-  bundle_mode: offline
-  default_language: en
-  source_bundle: ./config/locales/defaultoffline
-
-
-testsourcelocaleoffline2:
-  <<: *default
-  bundle_mode: offline
-  default_language: en
-  source_bundle: ./config/locales/defaultoffline
-
-testsourcelocaleoffline3:
-  <<: *default
-  bundle_mode: offline
-  default_language: da
-  source_bundle: ./config/locales/defaultoffline
-
-testsourcelocaleoffline4:
-  <<: *default
-  bundle_mode: offline
-  default_language: abcd
-  source_bundle: ./config/locales/defaultoffline
-
-testsourcelocaleoffline5:
-  <<: *default
-  bundle_mode: offline
-  default_language: fr
-  source_bundle: ./config/locales/defaultoffline
