@@ -81,6 +81,7 @@ class HttpCollection:
             'thread_id': thread_id,
             'case_name': case.get("name")
         }
+
         request_default: str = "https://127.0.0.1:8090"
 
         try:
