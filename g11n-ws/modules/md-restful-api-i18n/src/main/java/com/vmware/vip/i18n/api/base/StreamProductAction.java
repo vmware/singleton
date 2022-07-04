@@ -36,46 +36,25 @@ public class StreamProductAction extends TranslationProductAction{
 	IMultComponentService multComponentService;
 	
 	
-	public void writeMultTranslationResponse(String productName, String version, String components, String locales,
+	public void writeMultTranslationResponse(String productName, String versionStr, String components, String locales,
 			String pseudo, HttpServletResponse resp) throws Exception {
-		String oldVersion = version;
-		version = super.getAvailableVersion(productName, oldVersion);
-
-		List<String> componentList = null;
-		if (StringUtils.isEmpty(components)) {
-			componentList = productService.getComponentNameList(productName, version);
-		} else {
-			componentList = new ArrayList<String>();
-			for (String component : components.split(",")) {
-				componentList.add(component.trim());
-			}
-		}
-
-		List<String> localeList = new ArrayList<String>();
-		if (new Boolean(pseudo)) {
-			localeList.add(ConstantsKeys.LATEST);
-		} else if (!StringUtils.isEmpty(locales)) {
-			for (String locale : locales.split(",")) {
-				localeList.add(super.getMappingLocale(productName, version, locale.trim()));
-			}
-		} else {
-			localeList = productService.getSupportedLocaleList(productName, version);
-		}
-
+		String oldVersion = versionStr;
+		versionStr = super.getAvailableVersion(productName, oldVersion);
+		List<String> componentList = getcomponentList(productName, versionStr, components);
+		List<String> localeList = getlocaleList(productName, versionStr, locales, pseudo);
 		
-	
-		List<ResultMessageChannel>  readChannels = multComponentService.getTranslationChannels(productName, version, componentList, localeList);
+		List<ResultMessageChannel>  readChannels = multComponentService.getTranslationChannels(productName, versionStr, componentList, localeList);
 		if(readChannels.isEmpty()) {
             throw new L3APIException(ConstantsMsg.TRANS_IS_NOT_FOUND);
         }
 		
 		int expSize = componentList.size() * localeList.size();
-		StreamProductResp sr = new StreamProductResp(productName, version, localeList, componentList, pseudo, false);
+		StreamProductResp sr = new StreamProductResp(productName, versionStr, localeList, componentList, pseudo, false);
 		resp.setContentType("application/json;charset=UTF-8"); 
 		WritableByteChannel wbc = Channels.newChannel(resp.getOutputStream());
 		boolean isPartContent = false;
-		 if(oldVersion.equals(version)) {
-			 isPartContent = !(readChannels.size() == expSize);
+		 if(oldVersion.equals(versionStr)) {
+			 isPartContent = (readChannels.size() != expSize);
 			 if(isPartContent) {
 				 wbc.write(sr.getRespStartBytes(APIResponseStatus.MULTTRANSLATION_PART_CONTENT.getCode()));
 			 }else {
@@ -111,7 +90,36 @@ public class StreamProductAction extends TranslationProductAction{
 		 wbc.write(sr.getEndBytes());
 	}
 	
-
+	
+	private List<String> getcomponentList(String productName, String versionStr, String components) throws L3APIException{
+		List<String> componentList = null;
+		if (StringUtils.isEmpty(components)) {
+			componentList = productService.getComponentNameList(productName, versionStr);
+		} else {
+			componentList = new ArrayList<String>();
+			for (String component : components.split(",")) {
+				componentList.add(component.trim());
+			}
+		}
+		
+		return componentList;
+	}
+	
+	private List<String> getlocaleList(String productName, String versionStr, String locales, String pseudo) throws L3APIException{
+		List<String> localeList = new ArrayList<String>();
+		if (Boolean.valueOf(pseudo)) {
+			localeList.add(ConstantsKeys.LATEST);
+		} else if (!StringUtils.isEmpty(locales)) {
+			for (String locale : locales.split(",")) {
+				localeList.add(super.getMappingLocale(productName, versionStr, locale.trim()));
+			}
+		} else {
+			localeList = productService.getSupportedLocaleList(productName, versionStr);
+		}
+		
+		return localeList;
+	}
+	
 	private byte[] addNullMessage(List<ResultMessageChannel>  readChannels, List<String> components, List<String> locales) {
 		StringBuilder sb = new StringBuilder();
 		for (String component : components) {

@@ -42,7 +42,6 @@ public class PgComponentChannelDao implements IComponentChannelDao {
 			for (String locale : locales) {
 				String result = docOperate.findByDocId(productName, version, comp, locale,
 						datanodes.getDataNodeByProduct(productName));
-				;
 				if (result != null) {
 					ByteArrayInputStream stringInputStream = new ByteArrayInputStream(result.getBytes());
 					resultList.add(new ResultMessageChannel(comp, locale, Channels.newChannel(stringInputStream)));
