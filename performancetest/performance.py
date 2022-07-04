@@ -81,7 +81,7 @@ class HttpCollection:
             'thread_id': thread_id,
             'case_name': case.get("name")
         }
-        request_default: str = "http://127.0.0.1:8091"
+        request_default: str = "https://127.0.0.1:8090"
 
         try:
             r: requests.Response = self.http_session.request(case.get('method'), request_default + case.get('url'),
