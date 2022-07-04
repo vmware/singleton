@@ -8,6 +8,22 @@ import java.nio.ByteBuffer;
 import java.util.List;
 
 public class StreamProductResp {
+    private static String fallbackStateStr = "{\r\n  \"response\": {\r\n    \"code\": 604,\r\n    \"message\": \"The content of response have been version fallback\",\r\n    \"serverTime\": \"\"\r\n  },\r\n  \"signature\": \"\",\r\n  \"data\": {\r\n";
+    
+	private static String partSuccStateStr = "{\r\n  \"response\": {\r\n    \"code\": 207,\r\n    \"message\": \"Part of the translation is available\",\r\n    \"serverTime\": \"\"\r\n  },\r\n  \"signature\": \"\",\r\n  \"data\": {\r\n";
+	
+	private static String succStateStr = "{\r\n  \"response\": {\r\n    \"code\": 200,\r\n    \"message\": \"OK\",\r\n    \"serverTime\": \"\"\r\n  },\r\n  \"signature\": \"\",\r\n  \"data\": {\r\n";
+	
+	private static byte[] endStr =" ],\r\n    \"url\": \"\",\r\n    \"id\": 0\r\n  }\r\n}".getBytes();
+	
+	private String productName;
+    private String version;
+    private String dataOrigin = "";
+    private String pseudo = "false";
+    private boolean machineTranslation = false;
+    private List<String> locales;
+    private List<String> components;
+    
 	public StreamProductResp(String productName, String version, 
 			List<String> locales, List<String> components, String pseudo, boolean machineTranslation) {
 		this.productName = productName;
@@ -19,22 +35,10 @@ public class StreamProductResp {
 		this.locales = locales;
 		this.components = components;
 	}
-
-
-	private String productName;
-    private String version;
-    private String dataOrigin = "";
-    private String pseudo = "false";
-    private boolean machineTranslation = false;
-    private List<String> locales;
-    private List<String> components;
-    
-    
+	
     public ByteBuffer getRespStartBytes(int respNumb) {
 			return ByteBuffer.wrap(getParamStr(respNumb).getBytes());
     }
-    
-    
     
     public ByteBuffer getEndBytes() {
 			return ByteBuffer.wrap(endStr);
@@ -43,20 +47,19 @@ public class StreamProductResp {
     private String getParamStr(int respNumb) {
     	StringBuilder paramBuilder = new StringBuilder();
     	
-    	switch(respNumb) {
+		switch (respNumb) {
+		case 200:
+			paramBuilder.append(succStateStr);
+			break;
 
-    	case 200:
-    		paramBuilder.append(succStateStr);
-            break;
+		case 207:
+			paramBuilder.append(partSuccStateStr);
+			break;
 
-    	case 207:
-    		paramBuilder.append(partSuccStateStr);
-    	    break;
-
-    	case 604:
-    		paramBuilder.append(fallbackStateStr);
-
-    	}
+		default:
+			paramBuilder.append(fallbackStateStr);
+			break;
+		}
   
     	paramBuilder.append("    \"productName\": \""+this.productName+"\",\r\n" );
     	paramBuilder.append("    \"version\": \""+this.version+"\",\r\n" );
@@ -105,13 +108,6 @@ public class StreamProductResp {
     	paramBuilder.append(" ],\r\n");
     }
 	
-    private static String fallbackStateStr = "{\r\n  \"response\": {\r\n    \"code\": 604,\r\n    \"message\": \"The content of response have been version fallback\",\r\n    \"serverTime\": \"\"\r\n  },\r\n  \"signature\": \"\",\r\n  \"data\": {\r\n";
-    
-	private static String partSuccStateStr = "{\r\n  \"response\": {\r\n    \"code\": 207,\r\n    \"message\": \"Part of the translation is available\",\r\n    \"serverTime\": \"\"\r\n  },\r\n  \"signature\": \"\",\r\n  \"data\": {\r\n";
-	
-	private static String succStateStr = "{\r\n  \"response\": {\r\n    \"code\": 200,\r\n    \"message\": \"OK\",\r\n    \"serverTime\": \"\"\r\n  },\r\n  \"signature\": \"\",\r\n  \"data\": {\r\n";
-	
-	private static byte[] endStr =" ],\r\n    \"url\": \"\",\r\n    \"id\": 0\r\n  }\r\n}".getBytes();
-	
+
 
 }

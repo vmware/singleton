@@ -36,24 +36,24 @@ public class StreamProductAction extends TranslationProductAction{
 	IMultComponentService multComponentService;
 	
 	
-	public void writeMultTranslationResponse(String productName, String versionStr, String components, String locales,
+	public void writeMultTranslationResponse(String productName, String version, String components, String locales,
 			String pseudo, HttpServletResponse resp) throws Exception {
-		String oldVersion = versionStr;
-		versionStr = super.getAvailableVersion(productName, oldVersion);
-		List<String> componentList = getcomponentList(productName, versionStr, components);
-		List<String> localeList = getlocaleList(productName, versionStr, locales, pseudo);
 		
-		List<ResultMessageChannel>  readChannels = multComponentService.getTranslationChannels(productName, versionStr, componentList, localeList);
+		String newVersion = super.getAvailableVersion(productName, version);
+		List<String> componentList = getcomponentList(productName, newVersion, components);
+		List<String> localeList = getlocaleList(productName, newVersion, locales, pseudo);
+		
+		List<ResultMessageChannel>  readChannels = multComponentService.getTranslationChannels(productName, newVersion, componentList, localeList);
 		if(readChannels.isEmpty()) {
             throw new L3APIException(ConstantsMsg.TRANS_IS_NOT_FOUND);
         }
 		
 		int expSize = componentList.size() * localeList.size();
-		StreamProductResp sr = new StreamProductResp(productName, versionStr, localeList, componentList, pseudo, false);
+		StreamProductResp sr = new StreamProductResp(productName, newVersion, localeList, componentList, pseudo, false);
 		resp.setContentType("application/json;charset=UTF-8"); 
 		WritableByteChannel wbc = Channels.newChannel(resp.getOutputStream());
 		boolean isPartContent = false;
-		 if(oldVersion.equals(versionStr)) {
+		 if(version.equals(newVersion)) {
 			 isPartContent = (readChannels.size() != expSize);
 			 if(isPartContent) {
 				 wbc.write(sr.getRespStartBytes(APIResponseStatus.MULTTRANSLATION_PART_CONTENT.getCode()));
