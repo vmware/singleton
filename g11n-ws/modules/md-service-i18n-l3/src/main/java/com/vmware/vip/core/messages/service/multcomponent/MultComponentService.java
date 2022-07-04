@@ -4,11 +4,6 @@
  */
 package com.vmware.vip.core.messages.service.multcomponent;
 
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.nio.channels.FileChannel;
-import java.nio.channels.ReadableByteChannel;
-import java.nio.channels.WritableByteChannel;
 import java.util.List;
 
 import javax.annotation.Resource;
