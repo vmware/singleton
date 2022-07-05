@@ -36,6 +36,7 @@ import sys
 logger.remove()
 logger.add(sys.stderr, level="INFO")
 
+BASE_URL:str = "https://127.0.0.1:8090"
 
 class HttpCollection:
     """
@@ -61,12 +62,7 @@ class HttpCollection:
                     f' expected status_code: {case.get("response_data").get("response").get("code")} are inconsistent'
         assert response.status_code == case.get('response_data').get("response").get("code"), error_msg
 
-        ## The returned data dict contains a list, and the order of the list cannot be determined
-        # error_msg2 = f'{self.id}- Actualresponse_data: {response.json()} ' \
-        #              f'expectedresponse_data: {case.get("response_data")} are inconsistent'
-        # assert response.json() == case.get('response_data'), error_msg2
 
-        ## Verify response time and development given time
         validate_time: float = case.get("validate_time")
         error_msg3 = f'{self.id}- Actual response time: {"%.3f" % (response.elapsed.total_seconds() * 1000)}ms' \
                      f'longer than expected response time: {case.get("validate_time")}ms'
@@ -82,10 +78,8 @@ class HttpCollection:
             'case_name': case.get("name")
         }
 
-        request_default: str = "http://127.0.0.1:8091"
-
         try:
-            r: requests.Response = self.http_session.request(case.get('method'), request_default + case.get('url'),
+            r: requests.Response = self.http_session.request(case.get('method'), Base_url + case.get('url'),
                                                              json=case.get('request_data'))
             logger.debug(
                 f'thread_id={threading.current_thread().name},case_name={case.get("name")}  response_time={"%.3f" % (r.elapsed.total_seconds() * 1000)}ms')
