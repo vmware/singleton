@@ -251,7 +251,5 @@ if __name__ == '__main__':
     pmeter = PMeter()
     pmeter.create_task(collection=HttpCollection(name='Scenes1', file='data.json'), thread_number=1, loop_count=10,
                        thread_group='Singleton_api_by_times')
-    pmeter.create_task(collection=HttpCollection(name='Scenes2', file='data.json'), thread_number=1, duration=60,
-                       thread_group='Singleton_api_by_duration')
     pmeter.run()
     pmeter.analysis()
