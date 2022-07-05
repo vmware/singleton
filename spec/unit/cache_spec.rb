@@ -24,7 +24,7 @@ describe 'Cache' do
 
   it "get_cachekey" do
     product_name = SgtnClient.config.product_name.to_s
-    version = SgtnClient.config.version.to_s
+    version = SgtnClient.config.version
     expect(SgtnClient::CacheUtil.get_cachekey("java", "zh-Hans")).to eq "#{product_name}_#{version}_java_zh-Hans"
   end
 

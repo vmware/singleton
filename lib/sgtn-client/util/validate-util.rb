@@ -6,13 +6,8 @@ module SgtnClient
   class ValidateUtil
 
       def self.validate_config()
-        SgtnClient.logger.debug "[ValidateUtil][validate_config]"
+        puts "validating config..."
         messages = ""
-
-        mode = SgtnClient.config.mode
-        if mode != 'sandbox' && mode != 'live'
-          messages =  messages + "Configuration[mode] has to be 'sandbox' or 'live'!\n"
-        end
 
         version = SgtnClient.config.version
         SgtnClient.config.version = version.to_s
@@ -24,12 +19,7 @@ module SgtnClient
         if cache_expiry_period != nil && (cache_expiry_period.is_a? Integer) == false
           messages = messages +  "Configuration[cache_expiry_period] has to be a number!\n"
         end
-        
-        disable_cache = SgtnClient.config.disable_cache
-        if disable_cache != nil && disable_cache != false && disable_cache != true
-          messages = messages +  "Configuration[disable_cache] has to be a 'true' or 'false'!\n"
-        end
-        
+
         if messages != ""
           raise Exceptions::MissingConfig.new(messages)
         end
