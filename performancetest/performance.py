@@ -35,6 +35,7 @@ import sys
 
 logger.remove()
 logger.add(sys.stderr, level="INFO")
+requests.packages.urllib3.disable_warnings()
 
 BASE_URL:str = "https://127.0.0.1:8090"
 
