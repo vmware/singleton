@@ -37,7 +37,8 @@ logger.remove()
 logger.add(sys.stderr, level="INFO")
 requests.packages.urllib3.disable_warnings()
 
-BASE_URL:str = "https://127.0.0.1:8090"
+BASE_URL: str = "https://127.0.0.1:8090"
+
 
 class HttpCollection:
     """
@@ -62,7 +63,6 @@ class HttpCollection:
         error_msg = f'{self.id}- Actual status_code: {response.status_code} ' \
                     f' expected status_code: {case.get("response_data").get("response").get("code")} are inconsistent'
         assert response.status_code == case.get('response_data').get("response").get("code"), error_msg
-
 
         validate_time: float = case.get("validate_time")
         error_msg3 = f'{self.id}- Actual response time: {"%.3f" % (response.elapsed.total_seconds() * 1000)}ms' \
@@ -182,6 +182,7 @@ class PMeter:
             task_group_thread.join()
 
     def analysis(self):
+        result: bool = True
         collections_map: dict[HttpCollection, dict] = {}
         collections_result: dict[HttpCollection, bool] = {}
         logger.debug(f'*********** Start analysis ************')
@@ -197,11 +198,11 @@ class PMeter:
                 response_time: float = data.get('response_time')
                 _collection.setdefault(case_name, []).append(data)
             collections_map[collection] = _collection
-        for collection, result in collections_result.items():
-            if not result:
+        for collection, _result in collections_result.items():
+            if not _result:
                 logger.error(f'exit with {result} ')
                 logger.error(f'This CI execution failed')
-                exit(-1)
+                result = result and False
 
         for collection, data in collections_map.items():
             logger.debug(f'{"-" * 20} analysis {collection.name} start!!! {"-" * 20}')
@@ -215,6 +216,8 @@ class PMeter:
 
         logger.debug(f'*********** Finished analysis ************')
         logger.info('The test is completed, the CI execution is successful')
+
+        return result
 
     def average(self, collections: dict[str, list]):
         for case_name, response_list in collections.items():
@@ -247,4 +250,4 @@ if __name__ == '__main__':
     pmeter.create_task(collection=HttpCollection(name='Scenes1', file='data.json'), thread_number=1, loop_count=1,
                        thread_group='Singleton_api_by_times')
     pmeter.run()
-    pmeter.analysis()
+    exit(0) if pmeter.analysis() else exit(-1)
