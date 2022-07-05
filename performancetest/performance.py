@@ -34,7 +34,7 @@ from datetime import datetime, timedelta
 import sys
 
 logger.remove()
-logger.add(sys.stderr, level="INFO")
+# logger.add(sys.stderr, level="INFO")
 requests.packages.urllib3.disable_warnings()
 
 BASE_URL: str = "https://127.0.0.1:8090"
@@ -103,7 +103,7 @@ class HttpCollection:
                 data['response_time'] = r.elapsed.total_seconds()
                 data['data'] = r.json()
                 data['success'] = True
-                # logger.debug(f'{case.get("name")} response data {data}')
+                logger.debug(f'{case.get("name")} ')
         q.put(data)
 
     def __call__(self, q: Queue, loop_count: Optional[int], duration: Optional[float]):
@@ -200,7 +200,7 @@ class PMeter:
             collections_map[collection] = _collection
         for collection, _result in collections_result.items():
             if not _result:
-                logger.error(f'exit with {result} ')
+                logger.error(f'exit with {_result} ')
                 logger.error(f'This CI execution failed')
                 result = result and False
 
@@ -214,7 +214,7 @@ class PMeter:
             self.ninety(data)
             logger.debug(f'{"-" * 20} analysis {collection.name} end!!! {"-" * 20}')
 
-        logger.debug(f'*********** Finished analysis ************')
+        logger.info(f'*********** Finished analysis ************')
         logger.info('The test is completed, the CI execution is successful')
 
         return result
