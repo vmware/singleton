@@ -79,7 +79,7 @@ class HttpCollection:
         }
 
         try:
-            r: requests.Response = self.http_session.request(case.get('method'), Base_url + case.get('url'),
+            r: requests.Response = self.http_session.request(case.get('method'), BASE_URL + case.get('url'),
                                                              json=case.get('request_data'))
             logger.debug(
                 f'thread_id={threading.current_thread().name},case_name={case.get("name")}  response_time={"%.3f" % (r.elapsed.total_seconds() * 1000)}ms')
