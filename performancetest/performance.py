@@ -82,7 +82,7 @@ class HttpCollection:
             'case_name': case.get("name")
         }
 
-        request_default: str = "https://127.0.0.1:8090"
+        request_default: str = "http://127.0.0.1:8091"
 
         try:
             r: requests.Response = self.http_session.request(case.get('method'), request_default + case.get('url'),
