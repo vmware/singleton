@@ -96,9 +96,9 @@ class HttpCollection:
                 logger.error((f'[{case_name}] validate failed.\n'
                               f'{"*" * 30} request_data {"*" * 30}\n'
                               f'url={url}\n'
-                              f'json={resp_data}\n'
+                              f'json={req_json}\n'
                               f'error_msg={e}\n'
-                              f'{"*" * 30} request_data {"*" * 30}\n'))
+                              f'{"*" * 74}\n'))
 
             except Exception as e:
                 logger.critical(f'Execution exception, please contact the administrator!!!')

@@ -1,7 +1,7 @@
 import logging
 from logging import Formatter, StreamHandler
 
-fmt = f'%(asctime)s | %(levelname)s | %(name)s | ThreadId:%(thread)d | %(filename)s:%(funcName)s:%(lineno)d | %(message)s'
+fmt = f'%(asctime)s | %(levelname)s | ThreadId:%(thread)d | %(funcName)s:%(lineno)d | %(message)s'
 
 
 def format_logger(log_name: str = None, level='INFO') -> logging.Logger:
