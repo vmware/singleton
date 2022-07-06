@@ -108,6 +108,7 @@ public final class RegExpValidatorUtils {
 	
 	/**
 	 * 
+	 * return true when the input parameter only contain ASCII code
 	 * 
 	 */
 	public static boolean isAscii(String inputStr) {
