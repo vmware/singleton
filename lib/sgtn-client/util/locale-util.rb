@@ -4,7 +4,6 @@
 # SPDX-License-Identifier: EPL-2.0
 
 require 'sgtn-client/common/hash'
-require 'sgtn-client/common/set'
 
 module SgtnClient
   class LocaleUtil # :nodoc:
@@ -72,7 +71,7 @@ module SgtnClient
     end
 
     def self.fallback_locales
-      @fallback_locales ||= [get_default_locale, get_source_locale, 'en'].uniq
+      @fallback_locales ||= [get_default_locale, get_source_locale, 'en'].uniq(&:to_s) - [nil, '']
     end
 
     def self.lowercase_locales_map(component)
@@ -90,6 +89,6 @@ module SgtnClient
 
     SgtnClient.config.add_observer(self, :reset_locale_data)
 
-    private_class_method :get_best_match, :lowercase_locales_map, :reset_locale_data, :fallback_chain, :_get_best_locale
+    private_class_method :get_best_match, :lowercase_locales_map, :reset_locale_data, :_get_best_locale
   end
 end
