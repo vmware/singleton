@@ -47,7 +47,7 @@ module SgtnClient
           actual_locale, messages = get_bundle_with_fallback(component, best_match_locale)
           result = messages&.fetch(key, nil)
         rescue StandardError => e
-          SgtnClient.logger.debug "[#{method(__callee__).owner}.#{__callee__}] translation is missing. {#{key}, #{component}, #{locale}}. #{e}"
+          SgtnClient.logger.debug { "[#{method(__callee__).owner}.#{__callee__}] translation is missing. {#{key}, #{component}, #{locale}}. #{e}" }
           result = nil
         end
 
@@ -107,7 +107,12 @@ module SgtnClient
       end
 
       def get_bundle_with_fallback(component, locale)
-        LocaleUtil.fallback_locales(locale) do |l|
+        messages = get_bundle(component, locale)
+        return locale, messages if messages
+
+        LocaleUtil.fallback_locales.each do |l|
+          next if l == locale
+
           messages = get_bundle(component, l)
           return l, messages if messages
         end

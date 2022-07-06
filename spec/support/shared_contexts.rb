@@ -12,6 +12,7 @@ RSpec.shared_context 'reset client' do
   after :all do
     # wait_threads_finish
     SgtnClient.config.instance_variable_set(:@loader, nil)
+    SgtnClient::LocaleUtil.send(:reset_locale_data, :available_locales)
     SgtnClient::CacheUtil.clear_cache
   end
 end

@@ -71,16 +71,8 @@ module SgtnClient
       @fallback_locale ||= get_default_locale || get_source_locale || 'en'
     end
 
-    def self.fallback_locales(locale)
-      yield locale
-
-      fallback_chain.each do |fallback|
-        yield fallback if fallback != locale
-      end
-    end
-
-    def self.fallback_chain
-      @fallback_chain ||= Common::OrderedSet[get_fallback_locale, get_source_locale]
+    def self.fallback_locales
+      @fallback_locales ||= [get_default_locale, get_source_locale, 'en'].uniq
     end
 
     def self.lowercase_locales_map(component)
