@@ -91,7 +91,7 @@ class HttpCollection:
             try:
                 self.validate(r, case)
             except AssertionError as e:
-                resp_data['response_time'] = round(r.elapsed.total_seconds(), 3)
+                resp_data['response_time'] = round(r.elapsed.total_seconds() * 1000, 3)
                 resp_data['data'] = r.json()
                 logger.error((f'[{case_name}] validate failed.\n'
                               f'{"*" * 30} request_data {"*" * 30}\n'
@@ -105,7 +105,7 @@ class HttpCollection:
                 q.put(resp_data)
                 raise e
             else:
-                resp_data['response_time'] = round(r.elapsed.total_seconds(), 3)
+                resp_data['response_time'] = round(r.elapsed.total_seconds() * 1000, 3)
                 resp_data['data'] = r.json()
                 resp_data['success'] = True
                 logger.info(f'[{case_name}] success, response_time={resp_data["response_time"]}.')
@@ -178,12 +178,13 @@ class PMeter:
 
     def create_task(self, collection: HttpCollection, thread_group_name: str = None,
                     thread_number: int = 1, loop_count: Optional[int] = 1,
-                    duration: Optional[float] = None) -> 'PMeter':
+                    duration: Optional[float] = None, need_analysis: bool = True) -> 'PMeter':
         q = Queue()
         target = ThreadGroup(thread_number=thread_number, q=q,
                              loop_count=loop_count, duration=duration).create(collection)
         self.task_group.append(threading.Thread(target=target, name=thread_group_name))
-        self.q_map[collection] = q
+        if need_analysis:
+            self.q_map[collection] = q
         return self
 
     def run(self) -> 'PMeter':
@@ -262,7 +263,7 @@ class PMeter:
 if __name__ == '__main__':
     print('start~~~~~~~~~~~~~~~')
     pmeter = PMeter()
-    pmeter.create_task(collection=HttpCollection(name='VMCUI', file='data.json'), thread_number=2, loop_count=2,
+    pmeter.create_task(collection=HttpCollection(name='VMCUI', file='data.json'), thread_number=2, loop_count=10,
                        thread_group_name='Singleton_api_testing')
     pmeter.run()
     pmeter.analysis()
