@@ -233,8 +233,7 @@ class PMeter:
         for case_name, response_list in collection_data.items():
             response_list: list[dict]
 
-            response_time_list: list[float] = [response_time.get('response_time') for response_time in
-                                               response_list]
+            response_time_list: list[float] = [response_time.get('response_time') for response_time in response_list]
             avg: float = sum(response_time_list) / len(response_time_list)
             logger.info(f'{case_name} Response Time average is {avg * 1000}ms')
 
