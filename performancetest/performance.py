@@ -24,6 +24,7 @@ thread_group.run()
 """
 import json
 import os
+import sys
 import uuid
 import threading
 from typing import Optional
@@ -32,7 +33,8 @@ import requests
 from queue import Queue
 from datetime import datetime, timedelta
 
-logger.level('INFO')
+logger.remove()
+logger.add(sys.stderr, level='INFO')
 requests.packages.urllib3.disable_warnings()
 
 BASE_URL: str = "https://127.0.0.1:8090"
