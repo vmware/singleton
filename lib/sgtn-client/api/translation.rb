@@ -43,7 +43,7 @@ module SgtnClient
         SgtnClient.logger.debug "[#{method(__callee__).owner}.#{__callee__}] key: #{key}, component: #{component}, locale: #{locale}, args: #{kwargs}"
 
         begin
-          best_match_locale = SgtnClient::LocaleUtil.get_best_locale(locale || self.locale, component)
+          best_match_locale = LocaleUtil.get_best_locale(locale || self.locale, component)
           actual_locale, messages = get_bundle_with_fallback(component, best_match_locale)
           result = messages&.fetch(key, nil)
         rescue StandardError => e
@@ -61,7 +61,7 @@ module SgtnClient
         if kwargs.empty?
           result
         else
-          actual_locale = result.locale if result.is_a?(SgtnClient::StringUtil)
+          actual_locale = result.locale if result.is_a?(StringUtil)
           result.localize(actual_locale) % kwargs
         end
       end
@@ -70,7 +70,7 @@ module SgtnClient
       def get_translations(component, locale = nil)
         SgtnClient.logger.debug "[#{method(__callee__).owner}.#{__callee__}] component: #{component}, locale: #{locale}"
 
-        best_match_locale = SgtnClient::LocaleUtil.get_best_locale(locale || self.locale, component)
+        best_match_locale = LocaleUtil.get_best_locale(locale || self.locale, component)
         actual_locale, messages = get_bundle_with_fallback(component, best_match_locale)
 
         { 'component' => component, 'locale' => actual_locale, 'messages' => messages } if messages
@@ -80,7 +80,7 @@ module SgtnClient
       end
 
       def locale
-        RequestStore.store[:locale] ||= SgtnClient::LocaleUtil.get_fallback_locale
+        RequestStore.store[:locale] ||= LocaleUtil.get_fallback_locale
       end
 
       def locale=(value)
@@ -98,11 +98,11 @@ module SgtnClient
       end
 
       def get_bundle!(component, locale)
-        SgtnClient::Config.loader.get_bundle(component, locale)
+        SgtnClient.config.loader.get_bundle(component, locale)
       rescue StandardError
         # delete the locale from the available_bundles of component to avoid repeated calls to server
-        SgtnClient::Config.available_bundles.delete(SgtnClient::Common::BundleID.new(component, locale))
-        SgtnClient::Config.available_locales(component)&.delete(locale)
+        SgtnClient.config.available_bundles.delete(Common::BundleID.new(component, locale))
+        SgtnClient.config.available_locales(component)&.delete(locale)
         raise
       end
 

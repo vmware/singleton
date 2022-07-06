@@ -1,15 +1,11 @@
 # Copyright 2022 VMware, Inc.
 # SPDX-License-Identifier: EPL-2.0
 
-require 'spec_helper'
-
 describe SgtnClient do
   describe "OfflineAPI" do
 
     before :each do
-      env = SgtnClient::Config.default_environment
-      SgtnClient::Config.configurations[env]["vip_server"] = nil
-      SgtnClient::Source.loadBundles("default")
+      SgtnClient.config.vip_server = nil
     end
 
     it "GET" do

@@ -2,225 +2,79 @@
 # SPDX-License-Identifier: EPL-2.0
 
 require 'concurrent'
-require 'erb'
-require 'yaml'
 require 'observer'
+require 'set'
+require 'singleton'
 require 'sgtn-client/common/hash'
 
 module SgtnClient
-  #include Exceptions
+  class Config # :nodoc:
+    include Observable
+    include Singleton
 
-  module TranslationLoader
-    autoload :LoaderFactory, 'sgtn-client/loader/loader_factory'
-  end
+    attr_accessor :product_name, :version, :vip_server, :translation_bundle, :source_bundle, :cache_expiry_period, :log_file, :log_level
 
-  module Configuration
+    attr_writer :logger
 
-    def config
-        @config ||= Config.config
+    def logger
+      @logger ||= if log_file
+                    puts "create log file: '#{log_file}', level: #{log_level}"
+                    require 'lumberjack'
+                    Lumberjack::Logger.new(log_file, level: log_level, max_size: '1M', keep: 4)
+                  else
+                    require 'logger'
+                    Logger.new(STDOUT, level: log_level || Logger::INFO)
+                  end
     end
 
-    def set_config(env, override_configurations = {})
-      @config =
-        case env
-        when Config
-          env
-        when Hash
-          begin
-            config.dup.merge!(env)
-          rescue Errno::ENOENT => error
-            Config.new(env)
-          end
-        else
-          Config.config(env, override_configurations)
+    def loader
+      @loader ||= TranslationLoader::LoaderFactory.create(self)
+    end
+
+    def available_bundles
+      loader.available_bundles
+    rescue StandardError => e
+      SgtnClient.logger.error 'failed to get available bundles'
+      SgtnClient.logger.error e
+      Set.new
+    end
+
+    def available_components
+      bundles = available_bundles
+      return Set.new if bundles.nil? || bundles.empty?
+
+      unless bundles.respond_to?(:components)
+        def bundles.components
+          @components ||= reduce(Set.new) { |components, id| components << id.component }
         end
-    end
-
-    alias_method :config=, :set_config
-
-  end
-  
-
-  class Config
-    extend Observable
-
-    attr_accessor :username, :password, :signature, :app_id, :cert_path,
-    :token, :token_secret, :subject,
-    :http_timeout, :http_proxy,
-    :device_ipaddress, :sandbox_email_address,
-    :mode, :endpoint, :merchant_endpoint, :platform_endpoint, :ipn_endpoint,
-    :rest_endpoint, :rest_token_endpoint, :client_id, :client_secret,
-    :openid_endpoint, :openid_redirect_uri, :openid_client_id, :openid_client_secret,
-    :verbose_logging, :product_name, :version, :vip_server,
-    :translation_bundle, :source_bundle, :cache_expiry_period, :disable_cache, :default_language
-
-
-    # Create Config object
-    # === Options(Hash)
-    # * <tt>username</tt>   -- Username
-    # * <tt>password</tt>   -- Password
-    # * <tt>signature</tt> (Optional if certificate present) -- Signature
-    # * <tt>app_id</tt>     -- Application ID
-    # * <tt>cert_path</tt> (Optional if signature present)  -- Certificate file path
-    def initialize(options)
-      merge!(options)
-    end
-
-    # Override configurations
-    def merge!(options)
-      options.each do |key, value|
-        send("#{key}=", value)
       end
-      self
+      bundles.components
     end
-    
-    class << self
 
-        @@config_cache = {}
-        def load(file_name, default_env = default_environment)
-          @@config_cache        = {}
-          @@configurations      = read_configurations(file_name)
-          @@default_environment = default_env
-          config
-        end
+    def available_locales(component)
+      bundles = available_bundles
+      return Set.new if bundles.nil? || bundles.empty?
 
-
-        # Get default environment name
-        def default_environment
-          @@default_environment ||= ENV['SGTN_ENV'] || ENV['RACK_ENV'] || ENV['RAILS_ENV'] || "development"
-        end
-
-
-        # Set default environment
-        def default_environment=(env)
-          @@default_environment = env.to_s
-        end
-
-        def configure(options = {}, &block)
-          begin
-            self.config.merge!(options)
-          rescue Errno::ENOENT
-            self.configurations = { default_environment => options }
-          end
-          block.call(self.config) if block
-          self.config
-        end
-        alias_method :set_config, :configure
-
-        # Create or Load Config object based on given environment and configurations.
-        # === Attributes
-        # * <tt>env</tt> (Optional) -- Environment name
-        # * <tt>override_configuration</tt> (Optional) -- Override the configuration given in file.
-        # === Example
-        #   Config.config
-        #   Config.config(:development)
-        #   Config.config(:development, { :app_id => "XYZ" })
-        def config(env = default_environment, override_configuration = {})
-          if env.is_a? Hash
-            override_configuration = env
-            env = default_environment
-          end
-          if override_configuration.nil? or override_configuration.empty?
-            default_config(env)
-          else
-            default_config(env).dup.merge!(override_configuration)
-          end
-        end
-  
-        def default_config(env = nil)
-          env = (env || default_environment).to_s
-          if configurations[env]
-            @@config_cache[env] ||= new(configurations[env])
-          else
-            raise SgtnClient::Exceptions::MissingConfig.new("Configuration[#{env}] NotFound")
-          end
-        end
-        
-        # Get raw configurations in Hash format.
-        def configurations
-          @@configurations ||= read_configurations
-        end
-  
-        # Set configuration
-        def configurations=(configs)
-          @@config_cache   = {}
-          @@configurations = configs && Hash[configs.map{|k,v| [k.to_s, v] }]
-        end
-
-        # Set logger
-        def logger=(logger)
-          Logging.logger = logger
-        end
-
-        # Get logger
-        def logger
-          if @@configurations[:mode] == 'live' and Logging.logger.level == Logger::DEBUG
-            Logging.logger.warn "DEBUG log level not allowed in live mode for security of confidential information. Changing log level to INFO..."
-            Logging.logger.level = Logger::INFO
-          end
-          Logging.logger
-        end
-
-
-        def loader
-          @loader ||= begin
-            config = SgtnClient::Config.configurations[SgtnClient::Config.default_environment]
-            SgtnClient::TranslationLoader::LoaderFactory.create(config)
-          end
-        end
-
-        def available_bundles
-          loader.available_bundles
-        rescue StandardError => e
-          SgtnClient.logger.error 'failed to get available bundles'
-          SgtnClient.logger.error e
-          Set.new
-        end
-
-        def available_components
-          bundles = available_bundles
-          return Set.new if bundles.nil? || bundles.empty?
-
-          unless bundles.respond_to?(:components)
-            def bundles.components
-              @components ||= reduce(Set.new) { |components, id| components << id.component }
-            end
-          end
-          bundles.components
-        end
-
-        def available_locales(component)
-          bundles = available_bundles
-          return Set.new if bundles.nil? || bundles.empty?
-
-          unless bundles.respond_to?(:locales)
-            bundles.instance_eval <<-RUBY_EVAL, __FILE__, __LINE__ + 1
-              @component_locales = SgtnClient::Common::ConcurrentHash.new
+      unless bundles.respond_to?(:locales)
+        bundles.instance_eval <<-RUBY_EVAL, __FILE__, __LINE__ + 1
+              @component_locales = Common::ConcurrentHash.new
               def locales(component)
                 @component_locales[component] ||= begin
                   return unless Config.available_components.include?(component)
-
                   each_with_object(Set.new) { |id, locales| locales << id.locale if id.component == component }
                 end
               end
-            RUBY_EVAL
-            changed
-            notify_observers(:available_locales)
-          end
-          bundles.locales(component)
-        end
+        RUBY_EVAL
+        changed
+        notify_observers(:available_locales)
+      end
+      bundles.locales(component)
+    end
 
-        private
-        # Read configurations from the given file name
-        # === Arguments
-        # * <tt>file_name</tt> (Optional) -- Configuration file path
-        def read_configurations(file_name = "config/sgtnclient.yml")
-          erb = ERB.new(File.read(file_name))
-          erb.filename = file_name
-          YAML.load(erb.result)
-        end       
-
+    def update(options)
+      options.each do |key, value|
+        send("#{key}=", value)
+      end
     end
   end
-
 end

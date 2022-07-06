@@ -3,19 +3,19 @@
 
 source 'https://rubygems.org'
 
-if !!File::ALT_SEPARATOR
-  gemspec name: 'singleton-ruby.windows'
-else
-  gemspec name: 'singleton-ruby'
+gemspec name: 'singleton-client'
+
+group :development, :test do
+  gem 'pry-byebug'
+  gem 'pry-inline'
+  gem 'rake', require: false
+  gem 'rubocop', require: false
 end
 
-gem 'rake', require: false
-
 group :test do
-  gem 'pry-byebug', require: true
-  gem 'pry-doc'
-  gem 'pry-inline', require: true
+  gem 'activesupport', require: false
   gem 'rspec'
+  gem 'simplecov', require: false
   gem 'simplecov-json', require: false
-  gem 'webmock'
+  gem 'webmock', require: false
 end
