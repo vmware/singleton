@@ -12,12 +12,11 @@ Gem::Specification.new do |s|
   s.summary = 'Singleton Ruby client'
 
   require 'rake'
-  s.files = FileList['lib/**/*.rb', 'bin/*'].to_a
-  s.executables = s.files.grep(%r{^bin/}).map { |f| File.basename(f) }
-  s.test_files = s.files.grep(%r{^(test|spec|features)/})
+  s.files         = FileList['lib/**/*.rb', 'bin/*'].to_a
+  s.executables   = s.files.grep(%r{^bin/}).map { |f| File.basename(f) }
+  s.test_files    = s.files.grep(%r{^(test|spec|features)/})
   s.require_paths = ['lib']
 
-  s.add_dependency('activesupport', '~> 6.1')
   s.add_dependency('concurrent-ruby')
   s.add_dependency('faraday', '~> 1.10')
   s.add_dependency('faraday_middleware', '~> 1.2')
