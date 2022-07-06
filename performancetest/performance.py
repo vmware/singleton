@@ -31,10 +31,8 @@ from loguru import logger
 import requests
 from queue import Queue
 from datetime import datetime, timedelta
-import sys
 
-logger.remove()
-logger.add(sys.stderr, level="INFO")
+logger.level('INFO')
 requests.packages.urllib3.disable_warnings()
 
 BASE_URL: str = "https://127.0.0.1:8090"
@@ -47,9 +45,9 @@ class HttpCollection:
     3，
     """
 
-    def __init__(self, file: str, name: str = None):
+    def __init__(self, name: str, file: str):
         self.id: str = str(uuid.uuid4())
-        self.name: str = name if name else f'TaskName'
+        self.name: str = name
         self.http_session = requests.Session()
         self.base_dir: str = os.getcwd()
         self.cases: list[dict] = self.read_json(file)
@@ -60,52 +58,58 @@ class HttpCollection:
             return json.load(f)
 
     def validate(self, response: requests.Response, case: dict):
-        error_msg = f' Actual status_code: {response.status_code} ' \
-                    f' expected status_code: {case.get("response_data").get("response").get("code")} are inconsistent'
-        assert response.status_code == case.get('response_data').get("response").get("code"), error_msg
+        expected_status_code = case.get('response_data').get("response").get("code")
+        error_msg = (f'Actual status_code: {response.status_code} '
+                     f'Expected status_code: {expected_status_code} are inconsistent.')
+        assert response.status_code == expected_status_code, error_msg
 
-        validate_time: float = case.get("validate_time")
-        error_msg3 = f' Actual response time: {"%.3f" % (response.elapsed.total_seconds() * 1000)}ms' \
-                     f'longer than expected response time: {case.get("validate_time")}ms'
-        assert response.elapsed.total_seconds() * 1000 < validate_time, error_msg3
+        expected_validate_time: float = case.get("validate_time")
+        response_time: float = round(response.elapsed.total_seconds() * 1000, 3)
+        error_msg3 = (f'Actual response time: {"%.3f" % response_time}ms '
+                      f'Expected response time: {expected_validate_time}ms')
+        assert response_time > expected_validate_time, error_msg3
 
-    def execute(self, case, q, stop=None, i=None):
+    def execute(self, case: dict, q: Queue) -> None:
+        method: str = case.get('method')
+        url: str = BASE_URL + case.get('url')
+        req_json: dict = case.get('request_data')
+        case_name: str = case.get("name")
         thread_id: str = threading.current_thread().name
-        data: dict = {
+        resp_data: dict = {
             'success': False,
             'response_time': 1000,
             'data': {},
             'thread_id': thread_id,
-            'case_name': case.get("name")
+            'case_name': case_name
         }
 
         try:
-            r: requests.Response = self.http_session.request(case.get('method'), BASE_URL + case.get('url'),
-                                                             json=case.get('request_data'), verify=False)
-            logger.debug(
-                f'thread_id={threading.current_thread().name},case_name={case.get("name")}  response_time={"%.3f" % (r.elapsed.total_seconds() * 1000)}ms')
+            r: requests.Response = self.http_session.request(method, url, json=req_json, verify=False)
+            response_time: float = r.elapsed.total_seconds() * 1000
+            logger.debug(f'thread_id={thread_id},case_name={case_name},response_time={"%.3f" % response_time}ms')
 
         except Exception as e:
-            logger.error(f'Request failed, {data}, {e}')
+            logger.error(f'Request failed, {resp_data}, {e}')
 
         else:
             try:
                 self.validate(r, case)
             except AssertionError as e:
-                data['response_time'] = r.elapsed.total_seconds()
-                data['data'] = r.json()
-                logger.error(
-                    f'Response time verification failed, case_name="{case.get("name")}" , url="{BASE_URL}{case.get("url")}",json="{case.get("request_data")}",error_msg="{e}"')
+                resp_data['response_time'] = round(r.elapsed.total_seconds(), 3)
+                resp_data['data'] = r.json()
+                logger.error(f'Validate Error. case_name="{case_name}", url="{url}",json="{req_json}",error_msg="{e}"')
 
             except Exception as e:
-                logger.error(f'{data}')
+                logger.error(f'{resp_data}')
+                q.put(resp_data)
                 raise e
             else:
-                data['response_time'] = r.elapsed.total_seconds()
-                data['data'] = r.json()
-                data['success'] = True
-                logger.debug(f'{case.get("name")} ')
-        q.put(data)
+                resp_data['response_time'] = round(r.elapsed.total_seconds(), 3)
+                resp_data['data'] = r.json()
+                resp_data['success'] = True
+                logger.info(f'{case_name} execute success.')
+
+        q.put(resp_data)
 
     def __call__(self, q: Queue, loop_count: Optional[int], duration: Optional[float]):
         """
@@ -119,13 +123,13 @@ class HttpCollection:
 
             while start <= stop:
                 for case in self.cases:
-                    self.execute(case, q, stop=stop)
+                    self.execute(case, q)
                     start = datetime.now().timestamp()
 
         else:
             for i in range(loop_count):
                 for case in self.cases:
-                    self.execute(case, q, i=i)
+                    self.execute(case, q)
 
 
 class ThreadGroup:
@@ -167,6 +171,10 @@ class PMeter:
         self.task_group: list[threading.Thread] = []
         self.q_map: dict[HttpCollection, Queue] = {}
 
+        self.collections_data: dict[HttpCollection, list[dict]] = {}
+        self.collections_map: dict[HttpCollection, dict] = {}
+        self.collections_result: dict[HttpCollection, bool] = {}
+
     def create_task(self, collection: HttpCollection, thread_group: str = None,
                     thread_number: int = 1, loop_count: Optional[int] = 1,
                     duration: Optional[float] = None) -> 'PMeter':
@@ -177,78 +185,83 @@ class PMeter:
         self.q_map[collection] = q
         return self
 
-    def run(self):
+    def run(self) -> 'PMeter':
         for task_group_thread in self.task_group:
             task_group_thread.start()
             task_group_thread.join()
 
-    def analysis(self):
-        result: bool = True
-        collections_map: dict[HttpCollection, dict] = {}
-        collections_result: dict[HttpCollection, bool] = {}
-        logger.debug(f'*********** Start analysis ************')
         for collection, q in self.q_map.items():
-            _collection: dict = {}
-            data_list: list = list()
+            q_list: list[dict] = []
             for _ in range(q.qsize()):
-                data: dict = q.get()
-                data_list.append(data)
-            collections_result[collection] = all([_data.get('success') for _data in data_list])
-            for data in data_list:
-                case_name: str = data.get('case_name')
-                response_time: float = data.get('response_time')
-                _collection.setdefault(case_name, []).append(data)
-            collections_map[collection] = _collection
-        for collection, _result in collections_result.items():
-            if not _result:
-                logger.error(f'exit with {_result} ')
-                logger.error(f'This CI execution failed')
-                result = result and False
+                resp_data: dict = q.get()
+                q_list.append(resp_data)
+            self.collections_data[collection] = q_list
 
-        for collection, data in collections_map.items():
-            logger.debug(f'{"-" * 20} analysis {collection.name} start!!! {"-" * 20}')
-            logger.debug(f'{"-" * 20} start calculating the average {"-" * 20}')
+        for collection, q_list in self.collections_data.items():
+            q_list: list[dict]
+
+            _collection: dict[str, list[dict]] = {}
+            for _resp in q_list:
+                _resp: dict
+
+                case_name: str = _resp.get('case_name')
+                _collection.setdefault(case_name, []).append(_resp)
+            self.collections_map[collection] = _collection
+
+        for collection, q_list in self.collections_data.items():
+            self.collections_result[collection] = all([_data.get('success') for _data in q_list])
+
+        return self
+
+    def exit(self) -> None:
+        result: bool = True
+        for _result in self.collections_result.values():
+            _result: bool
+            result = result and _result
+        exit(-1) if not result else None
+
+    def analysis(self):
+        for collection, data in self.collections_map.items():
+            logger.info(f'{"-" * 20} analysis {collection.name} start!!! {"-" * 20}')
             self.average(data)
-            logger.debug(f'{"-" * 20} start calculating the Median {"-" * 20}')
             self.median(data)
-            logger.debug(f'{"-" * 20} start calculating the 90% Line {"-" * 20}')
             self.ninety(data)
-            logger.debug(f'{"-" * 20} analysis {collection.name} end!!! {"-" * 20}')
+            logger.info(f'{"-" * 20} analysis {collection.name} end!!! {"-" * 20}')
 
         logger.info(f'*********** Finished analysis ************')
-        logger.info('The test is completed, the CI execution is successful')
 
-        return result
+    def average(self, collection_data: dict[str, list[dict]]):
+        logger.debug(f'{"-" * 20} start calculating the average {"-" * 20}')
+        for case_name, response_list in collection_data.items():
+            response_list: list[dict]
 
-    def average(self, collections: dict[str, list]):
-        for case_name, response_list in collections.items():
-            response_time_list: list[float] = [response_time.get('response_time') for response_time in response_list]
+            response_time_list: list[float] = [response_time.get('response_time') for response_time in
+                                               response_list]
             avg: float = sum(response_time_list) / len(response_time_list)
-            logger.debug(f'{case_name} Response Time average is {avg * 1000}ms')
+            logger.info(f'{case_name} Response Time average is {avg * 1000}ms')
 
     def median(self, collections: dict[str, list]):
+        logger.debug(f'{"-" * 20} start calculating the Median {"-" * 20}')
         for case_name, response_list in collections.items():
             response_time_list: list[float] = [response_time.get('response_time') for response_time in response_list]
             response_time_list.sort()
             size: int = len(response_time_list)
-            if size % 2 == 0:
-                median_time: float = (response_time_list[size // 2] + response_time_list[(size // 2) - 1]) / 2
-            else:
-                median_time: float = response_time_list[size // 2]
+            median_time: float = response_time_list[size // 2]
             logger.debug(f'{case_name} Response Time Median is {median_time * 1000}ms')
 
     def ninety(self, collections: dict[str, list]):
+        logger.debug(f'{"-" * 20} start calculating the 90% Line {"-" * 20}')
         for case_name, response_list in collections.items():
             response_time_list: list[float] = [response_time.get('response_time') for response_time in response_list]
             response_time_list.sort()
             size: int = len(response_time_list)
-            ninety_time: float = response_time_list[int(size * 0.9) - 1]
+            ninety_time: float = response_time_list[int(size * 0.9)]
             logger.debug(f'{case_name} Response Time 90% Line is {ninety_time * 1000}ms')
 
 
 if __name__ == '__main__':
     pmeter = PMeter()
-    pmeter.create_task(collection=HttpCollection(name='Scenes1', file='data.json'), thread_number=1, loop_count=1,
+    pmeter.create_task(collection=HttpCollection(name='VMCUI', file='data.json'), thread_number=1, loop_count=1,
                        thread_group='Singleton_api_by_times')
     pmeter.run()
-    exit(0) if pmeter.analysis() else exit(-1)
+    pmeter.exit()
