@@ -210,6 +210,10 @@ public class TranslationCollectKeyAPI {
 				throw new ValidationException(String.format(ValidationMsg.SOURCEFORMAT_NOT_VALIDE_FORMAT, newKey));
 			}
 			
+			if(!RegExpValidatorUtils.isAscii(newKey)) {
+				throw new ValidationException(String.format(ValidationMsg.KEY_NOT_VALIDE_FORMAT, newKey));
+			}
+			
 			StringSourceDTO sourceObj = SourceUtils.createSourceDTO(productName, version, component, newLocale, newKey,
 					newSource, sto.getCommentForSource(), sf);
 			boolean isSourceCached = sourceService.cacheSource(sourceObj);

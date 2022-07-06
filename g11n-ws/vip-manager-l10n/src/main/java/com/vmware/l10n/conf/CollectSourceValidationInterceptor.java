@@ -143,7 +143,7 @@ public class CollectSourceValidationInterceptor extends HandlerInterceptorAdapte
 		if (StringUtils.isEmpty(key)) {
 			return;
 		}
-		if (!RegExpValidatorUtils.isLetterNumbPoundAndValidchar(key)) {
+		if (!RegExpValidatorUtils.isAscii(key)) {
 			throw new ValidationException(ValidationMsg.KEY_NOT_VALIDE);
 		}
 	}
