@@ -43,11 +43,7 @@ module SgtnClient
       bundles = available_bundles
       return Set.new if bundles.nil? || bundles.empty?
 
-      unless bundles.respond_to?(:components)
-        def bundles.components
-          @components ||= reduce(Set.new) { |components, id| components << id.component }
-        end
-      end
+      define_bundles_methods(bundles) unless bundles.respond_to?(:components)
       bundles.components
     end
 
@@ -56,16 +52,7 @@ module SgtnClient
       return Set.new if bundles.nil? || bundles.empty?
 
       unless bundles.respond_to?(:locales)
-        bundles.instance_eval do |_|
-          @component_locales = Common::ConcurrentHash.new
-          def locales(component)
-            @component_locales[component] ||= begin
-              return unless SgtnClient.config.available_components.include?(component)
-
-              each_with_object(Set.new) { |id, locales| locales << id.locale if id.component == component }
-            end
-          end
-        end
+        define_bundles_methods(bundles)
         changed
         notify_observers(:available_locales)
       end
@@ -75,6 +62,25 @@ module SgtnClient
     def update(options)
       options.each do |key, value|
         send("#{key}=", value)
+      end
+    end
+
+    private
+
+    def define_bundles_methods(bundles)
+      bundles.instance_eval do |_|
+        @component_locales ||= Common::ConcurrentHash.new
+        def components
+          @components ||= reduce(Set.new) { |components, id| components << id.component }
+        end
+
+        def locales(component)
+          @component_locales[component] ||= begin
+            return unless components.include?(component)
+
+            each_with_object(Set.new) { |id, locales| locales << id.locale if id.component == component }
+          end
+        end
       end
     end
   end
