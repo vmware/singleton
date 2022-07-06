@@ -239,7 +239,7 @@ class PMeter:
 
             response_time_list: list[float] = [response_time.get('response_time') for response_time in response_list]
             avg: float = round(sum(response_time_list) / len(response_time_list), 3)
-            logger.info(f'[{case_name}] average response_time is {avg * 1000}ms')
+            logger.info(f'[{case_name}] average response_time is {avg}ms')
 
     def median(self, collections: dict[str, list]):
         logger.debug(f'{"-" * 20} start calculating the Median {"-" * 20}')
@@ -248,7 +248,7 @@ class PMeter:
             response_time_list.sort()
             size: int = len(response_time_list)
             median_time: float = round(response_time_list[size // 2], 3)
-            logger.debug(f'{case_name} Response Time Median is {median_time * 1000}ms')
+            logger.debug(f'{case_name} Response Time Median is {median_time}ms')
 
     def ninety(self, collections: dict[str, list]):
         logger.debug(f'{"-" * 20} start calculating the 90% Line {"-" * 20}')
@@ -257,13 +257,13 @@ class PMeter:
             response_time_list.sort()
             size: int = len(response_time_list)
             ninety_time: float = round(response_time_list[int(size * 0.9)], 3)
-            logger.debug(f'{case_name} Response Time 90% Line is {ninety_time * 1000}ms')
+            logger.debug(f'{case_name} Response Time 90% Line is {ninety_time}ms')
 
 
 if __name__ == '__main__':
     print('start~~~~~~~~~~~~~~~')
     pmeter = PMeter()
-    pmeter.create_task(collection=HttpCollection(name='VMCUI', file='data.json'), thread_number=2, loop_count=10,
+    pmeter.create_task(collection=HttpCollection(name='VMCUI', file='data.json'), thread_number=2, loop_count=2,
                        thread_group_name='Singleton_api_testing')
     pmeter.run()
     pmeter.analysis()
