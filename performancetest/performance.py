@@ -34,7 +34,7 @@ from datetime import datetime, timedelta
 import sys
 
 logger.remove()
-# logger.add(sys.stderr, level="INFO")
+logger.add(sys.stderr, level="INFO")
 requests.packages.urllib3.disable_warnings()
 
 BASE_URL: str = "https://127.0.0.1:8090"
@@ -60,12 +60,12 @@ class HttpCollection:
             return json.load(f)
 
     def validate(self, response: requests.Response, case: dict):
-        error_msg = f'{self.id}- Actual status_code: {response.status_code} ' \
+        error_msg = f' Actual status_code: {response.status_code} ' \
                     f' expected status_code: {case.get("response_data").get("response").get("code")} are inconsistent'
         assert response.status_code == case.get('response_data').get("response").get("code"), error_msg
 
         validate_time: float = case.get("validate_time")
-        error_msg3 = f'{self.id}- Actual response time: {"%.3f" % (response.elapsed.total_seconds() * 1000)}ms' \
+        error_msg3 = f' Actual response time: {"%.3f" % (response.elapsed.total_seconds() * 1000)}ms' \
                      f'longer than expected response time: {case.get("validate_time")}ms'
         assert response.elapsed.total_seconds() * 1000 < validate_time, error_msg3
 
@@ -94,7 +94,8 @@ class HttpCollection:
             except AssertionError as e:
                 data['response_time'] = r.elapsed.total_seconds()
                 data['data'] = r.json()
-                logger.error(f'Data verification failed, {case.get("name")} {e}')
+                logger.error(
+                    f'Response time verification failed, case_name="{case.get("name")}" , url="{BASE_URL}{case.get("url")}",json="{case.get("request_data")}",error_msg="{e}"')
 
             except Exception as e:
                 logger.error(f'{data}')
