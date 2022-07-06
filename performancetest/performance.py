@@ -68,7 +68,7 @@ class HttpCollection:
         response_time: float = round(response.elapsed.total_seconds() * 1000, 3)
         error_msg3 = (f'Actual response time: {"%.3f" % response_time}ms '
                       f'Expected response time: {expected_validate_time}ms')
-        assert response_time > expected_validate_time, error_msg3
+        assert response_time < expected_validate_time, error_msg3
 
     def execute(self, case: dict, q: Queue) -> None:
         method: str = case.get('method')
@@ -86,11 +86,8 @@ class HttpCollection:
 
         try:
             r: requests.Response = self.http_session.request(method, url, json=req_json, verify=False)
-            response_time: float = r.elapsed.total_seconds() * 1000
-            logger.debug(f'thread_id={thread_id},case_name={case_name},response_time={"%.3f" % response_time}ms')
-
         except Exception as e:
-            logger.error(f'Request failed, {resp_data}, {e}')
+            logger.error(f'{resp_data.get("case_name")} request failed, {e}')
 
         else:
             try:
@@ -98,7 +95,7 @@ class HttpCollection:
             except AssertionError as e:
                 resp_data['response_time'] = round(r.elapsed.total_seconds(), 3)
                 resp_data['data'] = r.json()
-                logger.error(f'Validate Error. case_name="{case_name}", url="{url}",json="{req_json}",error_msg="{e}"')
+                logger.error(f'Validate Error. \ncase_name={case_name}, \nurl={url},\njson={req_json},\nerror_msg={e}')
 
             except Exception as e:
                 logger.error(f'{resp_data}')
@@ -154,12 +151,12 @@ class ThreadGroup:
         return self
 
     def __call__(self, *args, **kwargs):
-        logger.info(f'ThreadGroups{threading.current_thread().name} start')
+        logger.info(f'ThreadGroups [{threading.current_thread().name}] start')
         for _task in self.group:
             _task.start()
         for _task in self.group:
             _task.join()
-        logger.info(f'ThreadGroups{threading.current_thread().name} done!!!')
+        logger.info(f'ThreadGroups [{threading.current_thread().name}] done!!!')
 
 
 class PMeter:
@@ -176,13 +173,13 @@ class PMeter:
         self.collections_map: dict[HttpCollection, dict] = {}
         self.collections_result: dict[HttpCollection, bool] = {}
 
-    def create_task(self, collection: HttpCollection, thread_group: str = None,
+    def create_task(self, collection: HttpCollection, thread_group_name: str = None,
                     thread_number: int = 1, loop_count: Optional[int] = 1,
                     duration: Optional[float] = None) -> 'PMeter':
         q = Queue()
         target = ThreadGroup(thread_number=thread_number, q=q,
                              loop_count=loop_count, duration=duration).create(collection)
-        self.task_group.append(threading.Thread(target=target, name=thread_group))
+        self.task_group.append(threading.Thread(target=target, name=thread_group_name))
         self.q_map[collection] = q
         return self
 
@@ -263,6 +260,6 @@ class PMeter:
 if __name__ == '__main__':
     pmeter = PMeter()
     pmeter.create_task(collection=HttpCollection(name='VMCUI', file='data.json'), thread_number=1, loop_count=1,
-                       thread_group='Singleton_api_by_times')
+                       thread_group_name='Singleton_api_testing')
     pmeter.run()
     pmeter.exit()
