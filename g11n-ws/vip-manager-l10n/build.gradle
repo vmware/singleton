@@ -48,16 +48,12 @@ dependencies {
     implementation("org.ehcache:ehcache:$ehCacheVersion")
     implementation("javax.cache:cache-api:$cacheApiVersion")
     
-     //swagger UI -START  
-    implementation("io.springfox:springfox-swagger2:$swagger2Version"){
-       exclude group: 'io.swagger', module:'swagger-annotations'
-       exclude group: 'io.swagger', module:'swagger-models'
-    }
-    implementation("io.springfox:springfox-swagger-ui:$swagger2Version")
-    implementation('io.swagger:swagger-annotations:1.5.22')
-    implementation('io.swagger:swagger-models:1.5.22')
-    implementation("com.google.guava:guava:$guavaVersion")
-    //swagger UI -END
+    //swagger UI -START  
+    implementation("io.springfox:springfox-boot-starter:$swaggerVersion")
+    //swagger UI -END    
+    
+    
+    implementation("io.springfox:springfox-boot-starter:$swaggerVersion")
     implementation("org.apache.httpcomponents:httpclient:$httpclient")
     implementation ("com.amazonaws:aws-java-sdk-s3:$awsS3Version")
     implementation ("com.amazonaws:aws-java-sdk-sts:$awsS3Version")
