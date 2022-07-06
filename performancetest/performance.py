@@ -44,7 +44,6 @@ class HttpCollection:
     """
     1. To achieve support for multiple APIs, loop execution, and provide a unified scheduling entry __call__()
     2，read from json file
-    3，
     """
 
     def __init__(self, name: str, file: str):
