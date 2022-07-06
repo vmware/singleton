@@ -85,7 +85,7 @@ class HttpCollection:
         try:
             r: requests.Response = self.http_session.request(method, url, json=req_json, verify=False)
         except Exception as e:
-            logger.error(f'{resp_data.get("case_name")} request failed, {e}')
+            logger.error(f'[{case_name}] request failed, {e}')
 
         else:
             try:
@@ -93,17 +93,22 @@ class HttpCollection:
             except AssertionError as e:
                 resp_data['response_time'] = round(r.elapsed.total_seconds(), 3)
                 resp_data['data'] = r.json()
-                logger.error(f'Validate Error. \ncase_name={case_name}, \nurl={url},\njson={req_json},\nerror_msg={e}')
+                logger.error((f'[{case_name}] validate failed.\n'
+                              f'{"*" * 30} request_data {"*" * 30}\n'
+                              f'url={url}\n'
+                              f'json={resp_data}\n'
+                              f'error_msg={e}\n'
+                              f'{"*" * 30} request_data {"*" * 30}\n'))
 
             except Exception as e:
-                logger.error(f'{resp_data}')
+                logger.critical(f'Execution exception, please contact the administrator!!!')
                 q.put(resp_data)
                 raise e
             else:
                 resp_data['response_time'] = round(r.elapsed.total_seconds(), 3)
                 resp_data['data'] = r.json()
                 resp_data['success'] = True
-                logger.info(f'{case_name} execute success.')
+                logger.info(f'[{case_name}] success, response_time={resp_data["response_time"]}.')
 
         q.put(resp_data)
 
@@ -232,8 +237,8 @@ class PMeter:
             response_list: list[dict]
 
             response_time_list: list[float] = [response_time.get('response_time') for response_time in response_list]
-            avg: float = sum(response_time_list) / len(response_time_list)
-            logger.info(f'{case_name} Response Time average is {avg * 1000}ms')
+            avg: float = round(sum(response_time_list) / len(response_time_list), 3)
+            logger.info(f'[{case_name}] average response_time is {avg * 1000}ms')
 
     def median(self, collections: dict[str, list]):
         logger.debug(f'{"-" * 20} start calculating the Median {"-" * 20}')
@@ -241,7 +246,7 @@ class PMeter:
             response_time_list: list[float] = [response_time.get('response_time') for response_time in response_list]
             response_time_list.sort()
             size: int = len(response_time_list)
-            median_time: float = response_time_list[size // 2]
+            median_time: float = round(response_time_list[size // 2], 3)
             logger.debug(f'{case_name} Response Time Median is {median_time * 1000}ms')
 
     def ninety(self, collections: dict[str, list]):
@@ -250,13 +255,13 @@ class PMeter:
             response_time_list: list[float] = [response_time.get('response_time') for response_time in response_list]
             response_time_list.sort()
             size: int = len(response_time_list)
-            ninety_time: float = response_time_list[int(size * 0.9)]
+            ninety_time: float = round(response_time_list[int(size * 0.9)], 3)
             logger.debug(f'{case_name} Response Time 90% Line is {ninety_time * 1000}ms')
 
 
 if __name__ == '__main__':
-    pmeter = PMeter()
     print('start~~~~~~~~~~~~~~~')
+    pmeter = PMeter()
     pmeter.create_task(collection=HttpCollection(name='VMCUI', file='data.json'), thread_number=2, loop_count=2,
                        thread_group_name='Singleton_api_testing')
     pmeter.run()
