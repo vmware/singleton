@@ -262,4 +262,5 @@ if __name__ == '__main__':
     pmeter.create_task(collection=HttpCollection(name='VMCUI', file='data.json'), thread_number=1, loop_count=1,
                        thread_group_name='Singleton_api_testing')
     pmeter.run()
+    pmeter.analysis()
     pmeter.exit()
