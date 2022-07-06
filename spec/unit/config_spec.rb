@@ -3,19 +3,10 @@
 
 describe SgtnClient::Config do
   describe 'load_config' do
-    before :each do
-      SgtnClient.load('./spec/config/sgtnclient.yml', 'test', './sgtnclient_config.log')
-    end
-
-    it 'define configuration' do
-      env = SgtnClient::Config.default_environment
-      mode = SgtnClient::Config.configurations[env]['mode']
-      expect(mode).to eq 'sandbox'
-    end
 
     it 'not define configuration' do
       begin
-        SgtnClient::Config.config('aa', { app_id: 'XYZ' })
+        SgtnClient.load('./spec/config/sgtnclient.yml', 'aa')
       rescue StandardError => e
         expect(e.message).to eq 'Configuration[aa] NotFound'
       end
@@ -23,22 +14,19 @@ describe SgtnClient::Config do
   end
 
   describe '#availale bundles/locales - Config', :include_helpers, :extend_helpers do
-    subject { SgtnClient::Config }
+    subject { SgtnClient.config }
     include_examples 'Available Bundles' do
       include_context 'reset client'
 
-      before :all do
-        SgtnClient::Config.configurations[SgtnClient::Config.default_environment] = @config
-      end
       before do
-        SgtnClient::Config.instance_variable_set(:@loader, nil)
+        SgtnClient.config.instance_variable_set(:@loader, nil)
       end
     end
 
     before :each, locales: true do
-      @config['vip_server'] = singleton_server
-      @config['translation_bundle'] = translation_path
-      @config['source_bundle'] = source_path
+      @config.vip_server = singleton_server
+      @config.translation_bundle = translation_path
+      @config.source_bundle = source_path
     end
 
     it '#should be able to get available locales', locales: true do
@@ -50,8 +38,8 @@ describe SgtnClient::Config do
     end
 
     it '#available bundles is expired' do
-      @config['translation_bundle'] = translation_path
-      @config['source_bundle'] = source_path
+      @config.translation_bundle = translation_path
+      @config.source_bundle = source_path
 
       # populate cache
       locales = subject.available_locales

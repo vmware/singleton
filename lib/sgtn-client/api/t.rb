@@ -1,6 +1,8 @@
 # Copyright 2022 VMware, Inc.
 # SPDX-License-Identifier: EPL-2.0
 
+require 'request_store'
+
 module SgtnClient
   class T
     def self.s(key)

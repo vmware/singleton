@@ -3,21 +3,16 @@
 
 require 'json'
 require 'pathname'
+require 'set'
 
 module SgtnClient
-  module Common
-    autoload :BundleID, 'sgtn-client/common/data'
-  end
-
   module TranslationLoader
-    autoload :CONSTS, 'sgtn-client/loader/consts'
-
     class LocalTranslation
       BUNDLE_PREFIX = 'messages_'.freeze
       BUNDLE_SUFFIX = '.json'.freeze
 
       def initialize(config)
-        @base_path = Pathname.new(config['translation_bundle']) + config['product_name'] + config['version'].to_s
+        @base_path = Pathname.new(config.translation_bundle) + config.product_name + config.version.to_s
       end
 
       def load_bundle(component, locale)
@@ -29,7 +24,7 @@ module SgtnClient
         bundle_data = JSON.parse(File.read(file_path))
         messages = bundle_data['messages']
 
-        raise SgtnClient::SingletonError, "no messages in local bundle file: #{file_path}." unless messages
+        raise SingletonError, "no messages in local bundle file: #{file_path}." unless messages
 
         messages
       end

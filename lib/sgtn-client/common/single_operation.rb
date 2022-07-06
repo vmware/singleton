@@ -3,25 +3,24 @@
 
 module SgtnClient
   class SingleOperation
-    def initialize(*conditions, &block)
-      raise 'no way to create a new obj' unless block
+    def initialize(*conditions, &creator)
+      raise 'no way to create a new obj' unless creator
 
       @lock = Mutex.new
       @hash = {}
 
       @conditions = conditions
-      @creator = block
+      @creator = creator
     end
 
-    # return new created object
-    def operate(id, *args)
+    # return new created object (return nil possibly)
+    def operate(id, &block)
       @lock.synchronize do
         obj = @hash[id]
         @conditions.each do |con|
-          return obj unless con.call(id, obj, *args)
+          return obj unless con.call(id, obj)
         end
-        # TODO: whatif returning nil
-        @hash[id] = @creator.call(id, obj, *args)
+        @hash[id] = @creator.call(id, &block)
       end
     end
 

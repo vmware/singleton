@@ -4,66 +4,49 @@
 # SPDX-License-Identifier: EPL-2.0
 
 module SgtnClient
-  autoload :CacheUtil, 'sgtn-client/util/cache-util'
-
   module TranslationLoader
-    autoload :CONSTS, 'sgtn-client/loader/consts'
-
     module Cache # :nodoc:
       # get from cache, return expired data immediately
       def get_bundle(component, locale)
         SgtnClient.logger.debug { "[#{__FILE__}][#{__callee__}] component=#{component}, locale=#{locale}" }
 
-        key = SgtnClient::CacheUtil.get_cachekey(component, locale)
-        cache_item = SgtnClient::CacheUtil.get_cache(key)
+        key = Common::BundleID.new(component, locale)
+        cache_item = CacheUtil.get_cache(key)
         if cache_item
-          if SgtnClient::CacheUtil.is_expired(cache_item)
-            Thread.new do # TODO: Use one thread # refresh in background
-              begin
-                load_bundle(component, locale)
-              rescue StandardError => e
-                SgtnClient.logger.error "an error occured while loading bundle: component=#{component}, locale=#{locale}"
-                SgtnClient.logger.error e
-              end
-            end
-          end
-          return cache_item.dig(:items)
+          load_bundle(component, locale, sync: false) if CacheUtil.is_expired(cache_item)
+          cache_item[:items]
+        else
+          load_bundle(component, locale)
         end
-
-        load_bundle(component, locale) # refresh synchronously if not in cache
       end
 
-      # load and save to cache
+      def available_bundles
+        SgtnClient.logger.debug "[#{__FILE__}][#{__callee__}]"
+
+        cache_item = CacheUtil.get_cache(CONSTS::AVAILABLE_BUNDLES_KEY)
+        if cache_item
+          super(sync: false) if CacheUtil.is_expired(cache_item)
+          cache_item[:items]
+        else
+          super
+        end
+      end
+    end
+
+    module CacheFiller
       def load_bundle(component, locale)
         SgtnClient.logger.debug { "[#{__FILE__}][#{__callee__}] component=#{component}, locale=#{locale}" }
 
-        key = SgtnClient::CacheUtil.get_cachekey(component, locale)
         item = super
-        SgtnClient::CacheUtil.write_cache(key, item) if item
+        CacheUtil.write_cache(Common::BundleID.new(component, locale), item) if item
         item
       end
 
       def available_bundles
         SgtnClient.logger.debug { "[#{__FILE__}][#{__callee__}]" }
 
-        cache_item = SgtnClient::CacheUtil.get_cache(CONSTS::AVAILABLE_BUNDLES_KEY)
-        if cache_item
-          if SgtnClient::CacheUtil.is_expired(cache_item)
-            Thread.new do # TODO: Use one thread
-              begin
-                item = super
-                SgtnClient::CacheUtil.write_cache(CONSTS::AVAILABLE_BUNDLES_KEY, item) if item
-              rescue StandardError => e
-                SgtnClient.logger.error 'an error occured while loading available bundles.'
-                SgtnClient.logger.error e
-              end
-            end
-          end
-          return cache_item.dig(:items)
-        end
-
         item = super
-        SgtnClient::CacheUtil.write_cache(CONSTS::AVAILABLE_BUNDLES_KEY, item) if item
+        CacheUtil.write_cache(CONSTS::AVAILABLE_BUNDLES_KEY, item) if item # TODO: don't save when empty
         item
       end
     end

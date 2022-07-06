@@ -27,12 +27,32 @@ def extract_locals(trace)
   }.to_h
 end
 
-def traverse_modules(m)
+def traverse_modules(m, &block)
   m.constants(false).each do |c|
-    const = root.const_get(c, false)
+    const = m.const_get(c, false)
     if [Class, Module].include? const.class
-      const.methods.each { |method| yield method }
-      traverse_modules(const)
+      SgtnClient.logger.info "Enable trace on const #{const}"
+      const.methods(false).each { |method| block.call(const.method(method)) }
+      const.instance_methods(false).each { |method| block.call(const.instance_method(method)) }
+      # const.singleton_methods(false).each { |method| block.call(const.singleton_method(method)) }
+      
+      traverse_modules(const, &block)
+    end
+  end
+end
+
+class Thread
+  class << self
+    alias origin_new new
+    def new(*args, &block)
+      new_thread = origin_new(*args, &block)
+    ensure
+      new_thread[:parent] = Thread.current
+      new_thread.name = if Thread.current != Thread.main
+                          "#{Thread.current.name}.#{new_thread.name || new_thread.object_id}"
+                        else
+                          new_thread.name || new_thread.object_id.to_s
+                        end
     end
   end
 end
