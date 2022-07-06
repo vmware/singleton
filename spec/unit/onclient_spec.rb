@@ -36,8 +36,8 @@ describe SgtnClient do
 
     it "NewComponent" do
       expect(SgtnClient::Translation.getString("NEW", "new_hello", "zh-Hans")).to eq 'New Hello'
-      # if SgtnClient.config.disable_cache == false
-        expect(SgtnClient::CacheUtil.get_cache("test_4.8.1_NEW_en").dig(:items, "new_hello")).to eq 'New Hello'
+      # if SgtnClient::Config.configurations[env]["disable_cache"] == false
+        expect(SgtnClient::CacheUtil.get_cache(SgtnClient::Common::BundleID.new("NEW", "en")).dig(:items, "new_hello")).to eq 'New Hello'
       # end
       # get from cache in 2nd time
       expect(SgtnClient::Translation.getString("NEW", "new_hello", "zh-Hans")).to eq 'New Hello'

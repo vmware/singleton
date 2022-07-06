@@ -4,39 +4,42 @@
 module SgtnClient
   module TranslationLoader
     module SingleLoader
-      def load_bundle(component, locale)
+      def load_bundle(component, locale, sync: true)
         SgtnClient.logger.debug "[#{__FILE__}][#{__callee__}] component=#{component}, locale=#{locale}"
 
-        @single_bundle_loader ||= single_loader { |c, l| super(c, l) }
-        id = CacheUtil.get_cachekey(component, locale)
-        @single_bundle_loader.operate(id, component, locale)&.value
+        do_single_load(Common::BundleID.new(component, locale), sync) { super(component, locale) }
       end
 
-      def available_bundles
+      def available_bundles(sync: true)
         SgtnClient.logger.debug "[#{__FILE__}][#{__callee__}]"
 
-        @single_available_bundles_loader ||= single_loader { super }
-        @single_available_bundles_loader.operate(CONSTS::AVAILABLE_BUNDLES_KEY)&.value
+        do_single_load(CONSTS::AVAILABLE_BUNDLES_KEY, sync) { super() }
       end
 
-      private
-
-      def single_loader(&block)
-        loader = nil
-        none_alive = proc { |_, thread| thread.nil? }
-        creator = proc do |id, _, *args|
+      def initialize(*args)
+        none_alive = proc { |_, thread| thread.nil? || thread.alive? == false }
+        creator = proc do |id, &block|
           Thread.new do
             SgtnClient.logger.debug "start single loading #{id}"
             begin
-              block.call(*args)
+              block.call
             ensure
               # delete thread from hash after finish
-              loader.remove_object(id)
+              @single_loader.remove_object(id)
             end
           end
         end
 
-        loader = SingleOperation.new(none_alive, &creator)
+        @single_loader = SingleOperation.new(none_alive, &creator)
+
+        super
+      end
+
+      private
+
+      def do_single_load(id, sync, &block)
+        thread = @single_loader.operate(id, &block)
+        thread&.value if sync
       end
     end
   end

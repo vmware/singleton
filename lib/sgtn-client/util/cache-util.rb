@@ -22,12 +22,6 @@ module SgtnClient
       Core::Cache.put(cache_key, items, cache_expiry_period)
     end
 
-    def self.get_cachekey(component, locale)
-      product_name = SgtnClient.config.product_name
-      version = SgtnClient.config.version.to_s
-      product_name + '_' + version + '_' + component + '_' + locale
-    end
-
     def self.is_expired(cache_item)
       cache_item[:expiry] < Time.now
     end

@@ -12,7 +12,7 @@ module Helpers
                  :message_only_on_server_key, :message_only_in_local_source_key,
                  :message_only_in_local_translation_key, :source_changed_key, :key, :formatting_key,
                  :key_nonexistent, :value, :defaut_value, :en_value, :product_name, :version,
-                 :latest_locale, :bundle_url
+                 :latest_locale, :bundle_url, :bundle_id
 
   CONFIG_HASH =
     {
@@ -58,6 +58,8 @@ module Helpers
   self.component_nonexistent = 'nonexistent_component'
 
   self.locale_nonexistent = 'nonexistent_locale'
+
+  self.bundle_id = SgtnClient::Common::BundleID.new(component, locale)
 
   self.message_only_on_server_key = 'message_only_on_server'
   self.message_only_in_local_source_key = 'new_helloworld'
