@@ -56,15 +56,16 @@ module SgtnClient
       return Set.new if bundles.nil? || bundles.empty?
 
       unless bundles.respond_to?(:locales)
-        bundles.instance_eval <<-RUBY_EVAL, __FILE__, __LINE__ + 1
-              @component_locales = Common::ConcurrentHash.new
-              def locales(component)
-                @component_locales[component] ||= begin
-                  return unless Config.available_components.include?(component)
-                  each_with_object(Set.new) { |id, locales| locales << id.locale if id.component == component }
-                end
-              end
-        RUBY_EVAL
+        bundles.instance_eval do |_|
+          @component_locales = Common::ConcurrentHash.new
+          def locales(component)
+            @component_locales[component] ||= begin
+              return unless SgtnClient.config.available_components.include?(component)
+
+              each_with_object(Set.new) { |id, locales| locales << id.locale if id.component == component }
+            end
+          end
+        end
         changed
         notify_observers(:available_locales)
       end

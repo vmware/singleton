@@ -62,7 +62,7 @@ describe SgtnClient::Config do
         stubs << components_stub << locales_stub
         result = subject.available_locales(component_local_translation_only)
         expect(result).to be_a_kind_of(Set)
-        expect(result).to contain_exactly(en_locale, locale)
+        expect(result).to contain_exactly(en_locale, locale, latest_locale)
         stubs.each { |stub| expect(stub).to have_been_requested }
       end
 

@@ -5,11 +5,8 @@ describe Sgtn, :include_helpers, :extend_helpers do
   include_context 'reset client'
 
   describe '#translate a key' do
-    include_context 'reset client' do
-      before(:all) do
-        SgtnClient::Config.configurations[SgtnClient::Config.default_environment] = config.dup
-      end
-    end
+    include_context 'reset client'
+
     it 'translate a key' do
       expect(Sgtn.translate(key, component, locale)).to eq value
     end
@@ -171,16 +168,16 @@ describe Sgtn, :include_helpers, :extend_helpers do
 
   it "#don't repeat to access server for failed bundles" do
     err_msg = 'temporary error'
-    expect(SgtnClient::Config.loader).to receive(:get_bundle).with(component, locale).once.and_raise(SgtnClient::SingletonError.new(err_msg)).ordered
-    expect(SgtnClient::Config.loader).to receive(:get_bundle).with(component, source_locale).once.and_call_original.ordered
+    expect(SgtnClient.config.loader).to receive(:get_bundle).with(component, locale).once.and_raise(SgtnClient::SingletonError.new(err_msg)).ordered
+    expect(SgtnClient.config.loader).to receive(:get_bundle).with(component, source_locale).once.and_call_original.ordered
 
     # fail first time
-    expect { Sgtn.send(:get_bundle!, component, locale) }.to raise_error(err_msg)
+    expect { SgtnClient::Translation.send(:get_bundle!, component, locale) }.to raise_error(err_msg)
 
     # return source second time
     expect(Sgtn.get_translations(component, locale)['locale']).to eq source_locale
   ensure
-    SgtnClient::Config.available_bundles.add(SgtnClient::Common::BundleID.new(component, locale))
-    SgtnClient::Config.available_locales(component).add(locale)
+    SgtnClient.config.available_bundles.add(SgtnClient::Common::BundleID.new(component, locale))
+    SgtnClient.config.available_locales(component).add(locale)
   end
 end
