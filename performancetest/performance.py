@@ -229,7 +229,7 @@ class PMeter:
         logger.info(f'*********** Finished analysis ************')
 
     def average(self, collection_data: dict[str, list[dict]]):
-        logger.debug(f'{"-" * 20} start calculating the average {"-" * 20}')
+        logger.info(f'{"-" * 20} start calculating the average {"-" * 20}')
         for case_name, response_list in collection_data.items():
             response_list: list[dict]
 
