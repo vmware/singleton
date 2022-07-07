@@ -1,6 +1,6 @@
 {
   "name": "@singleton-i18n/angular-client",
-  "version": "0.5.2",
+  "version": "0.5.3",
   "description": "Singleton client code for Angular 10.",
   "license": "EPL-2.0",
   "keywords": [
@@ -24,13 +24,22 @@
     "@angular/core": "^10.0.14",
     "debug": "^4.1.0",
     "html-element": "^2.2.0",
-    "superagent": "^5.2.2"
+    "superagent": ">=5.2.2 <9"
   },
   "dependencies": {
     "tslib": "^2.0.0",
     "decimal.js-light": "^2.4.1"
   },
   "changelogHistory": [
+    {
+      "date": "07/06/22",
+      "version": "0.5.3",
+      "notes": [
+        {
+          "description": "Update superagent peerDependency version."
+        }
+      ]
+    },
     {
       "date": "07/23/21",
       "version": "0.5.2",
