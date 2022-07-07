@@ -1,0 +1,392 @@
+[
+  {
+    "name": "/i18n/api/v2/about/version",
+    "url": "/i18n/api/v2/about/version?productName=VMCUI&version=1.0.0",
+    "method": "GET",
+    "headers": {
+      "content-type": "application/json"
+    },
+    "request_data": {},
+    "response": {
+      "code": 200,
+      "message": "OK"
+    },
+    "validate_time": 40
+  },
+  {
+    "name": "/i18n/api/v2/formatting/date/localizedDate ",
+    "url": "/i18n/api/v2/formatting/date/localizedDate?locale=zh_CN&longDate=1655084911868&pattern=MMMEd",
+    "method": "GET",
+    "headers": {
+      "content-type": "application/json"
+    },
+    "request_data": {},
+    "response": {
+      "code": 200,
+      "message": "OK"
+    },
+    "validate_time": 40
+  },
+  {
+    "name": "/i18n/api/v2/formatting/date/timezoneNameList",
+    "url": "/i18n/api/v2/formatting/date/timezoneNameList?displayLanguage=zh",
+    "method": "GET",
+    "headers": {
+      "content-type": "application/json"
+    },
+    "request_data": {},
+    "response": {
+      "code": 200,
+      "message": "OK"
+    },
+    "validate_time": 153
+  },
+  {
+    "name": "/i18n/api/v2/formatting/number/localizedNumber",
+    "url": "/i18n/api/v2/formatting/number/localizedNumber?locale=ja&number=1234567890&scale=2",
+    "method": "GET",
+    "headers": {
+      "content-type": "application/json"
+    },
+    "request_data": {},
+    "response": {
+      "code": 200,
+      "message": "OK"
+    },
+    "validate_time": 40
+  },
+  {
+    "name": "/i18n/api/v2/formatting/patterns",
+    "url": "/i18n/api/v2/formatting/patterns?language=ja-JP&region=JP&scope=dates&scopeFilter=dates_eras",
+    "method": "GET",
+    "headers": {
+      "content-type": "application/json"
+    },
+    "request_data": {},
+    "response": {
+      "code": 200,
+      "message": "OK"
+    },
+    "validate_time": 44
+  },
+  {
+    "name": "/i18n/api/v2/formatting/patterns/locales/{locale}",
+    "url": "/i18n/api/v2/formatting/patterns/locales/ja?scope=dates&scopeFilter=dates_eras",
+    "method": "GET",
+    "headers": {
+      "content-type": "application/json"
+    },
+    "request_data": {},
+    "response": {
+      "code": 200,
+      "message": "OK"
+    },
+    "validate_time": 53
+  },
+  {
+    "name": "/i18n/api/v2/locale/browserLocale",
+    "url": "/i18n/api/v2/locale/browserLocale",
+    "method": "GET",
+    "headers": {
+      "content-type": "application/json"
+    },
+    "request_data": {},
+    "response": {
+      "code": 200,
+      "message": "OK"
+    },
+    "validate_time": 43
+  },
+  {
+    "name": "/i18n/api/v2/locale/normalizedBrowserLocale",
+    "url": "/i18n/api/v2/locale/normalizedBrowserLocale",
+    "method": "GET",
+    "headers": {
+      "content-type": "application/json"
+    },
+    "request_data": {},
+    "response": {
+      "code": 200,
+      "message": "OK"
+    },
+    "validate_time": 40
+  },
+  {
+    "name": "/i18n/api/v2/locale/regionList ",
+    "url": "/i18n/api/v2/locale/regionList?supportedLanguageList=en,zh,ja&displayCity=true&regions=CN",
+    "method": "GET",
+    "headers": {
+      "content-type": "application/json"
+    },
+    "request_data": {},
+    "response": {
+      "code": 200,
+      "message": "OK"
+    },
+    "validate_time": 74
+  },
+  {
+    "name": "/i18n/api/v2/locale/supportedLanguageList",
+    "url": "/i18n/api/v2/locale/supportedLanguageList?productName=VMCUI&version=1.0.0&displayLanguage=zh",
+    "method": "GET",
+    "headers": {
+      "content-type": "application/json"
+    },
+    "request_data": {},
+    "response": {
+      "code": 200,
+      "message": "OK"
+    },
+    "validate_time": 50
+  },
+  {
+    "name": "/i18n/api/v2/translation/products/{productName}/versions/{version}",
+    "url": "/i18n/api/v2/translation/products/VMCUI/versions/1.0.0?components=AngularJS2&locales=ja-JP,es-ES&pseudo=false",
+    "method": "GET",
+    "headers": {
+      "content-type": "application/json"
+    },
+    "request_data": {},
+    "response": {
+      "code": 200,
+      "message": "OK"
+    },
+    "validate_time": 50
+  },
+  {
+    "name": "/i18n/api/v2/translation/products/{productName}/versions/{version}/componentlist",
+    "url": "/i18n/api/v2/translation/products/VMCUI/versions/1.0.0/componentlist?productName=VMCUI&version=1.0.0",
+    "method": "GET",
+    "headers": {
+      "content-type": "application/json"
+    },
+    "request_data": {},
+    "response": {
+      "code": 200,
+      "message": "OK"
+    },
+    "validate_time": 43
+  },
+  {
+    "name": "/i18n/api/v2/translation/products/{productName}/versions/{version}/versioninfo",
+    "url": "/i18n/api/v2/translation/products/VMCUI/versions/1.0.0/versioninfo",
+    "method": "GET",
+    "headers": {
+      "content-type": "application/json"
+    },
+    "request_data": {},
+    "response": {
+      "code": 200,
+      "message": "OK"
+    },
+    "validate_time": 68
+  },
+  {
+    "name": "/i18n/api/v2/translation/products/{productName}/versions/{version}/locales/{locale}/components/{component} ",
+    "url": "/i18n/api/v2/translation/products/VMCUI/versions/1.0.0/locales/ja/components/AngularJS2?checkTranslationStatus=false&pseudo=false&machineTranslation=false",
+    "method": "GET",
+    "headers": {
+      "content-type": "application/json"
+    },
+    "request_data": {},
+    "response": {
+      "code": 200,
+      "message": "OK"
+    },
+    "validate_time": 41
+  },
+  {
+    "name": "/i18n/api/v2/translation/products/{productName}/versions/{version}/localelist",
+    "url": "/i18n/api/v2/translation/products/VMCUI/versions/1.0.0/localelist",
+    "method": "GET",
+    "headers": {
+      "content-type": "application/json"
+    },
+    "request_data": {},
+    "response": {
+      "code": 200,
+      "message": "OK"
+    },
+    "validate_time": 41
+  },
+  {
+    "name": "/i18n/api/v2/translation/products/{productName}/versions/{version}/locales/{locale}/components/{component}/keys",
+    "url": "/i18n/api/v2/translation/products/VMCUI/versions/1.0.0/locales/ja/components/AngularJS2/keys?keys=sample.apple",
+    "method": "GET",
+    "headers": {
+      "content-type": "application/json"
+    },
+    "request_data": {},
+    "response": {
+      "code": 200,
+      "message": "OK"
+    },
+    "validate_time": 40
+  },
+  {
+    "name": "/i18n/api/v2/translation/products/{productName}/versions/{version}/locales/{locale}/components/{component}/keys",
+    "url": "/i18n/api/v2/translation/products/VMCUI/versions/1.0.0/locales/latest/components/AngularJS2/keys",
+    "method": "POST",
+    "headers": {
+      "content-type": "application/json"
+    },
+    "request_data": [
+      {
+        "commentForSource": "AngularJS2",
+        "key": "key",
+        "source": "source",
+        "sourceFormat": "string"
+      }
+    ],
+    "response": {
+      "code": 200,
+      "message": "OK"
+    },
+    "validate_time": 41
+  },
+  {
+    "name": "/i18n/api/v2/translation/products/{productName}/versions/{version}/locales/{locale}/components/{component}/keys/{key}",
+    "url": "/i18n/api/v2/translation/products/VMCUI/versions/1.0.0/locales/ja/components/AngularJS2/keys/sample.apple",
+    "method": "GET",
+    "headers": {
+      "content-type": "application/json"
+    },
+    "request_data": {},
+    "response": {
+      "code": 200,
+      "message": "OK"
+    },
+    "validate_time": 41
+  },
+  {
+    "name": "/i18n/api/v2/translation/products/{productName}/versions/{version}/locales/{locale}/components/{component}/keys/{key}",
+    "url": "/i18n/api/v2/translation/products/VMCUI/versions/1.0.0/locales/latest/components/AngularJS2/keys/sample.six?machineTranslation=false&pseudo=false",
+    "method": "POST",
+    "headers": {
+      "content-type": "application/json"
+    },
+    "request_data": "string",
+    "response": {
+      "code": 200,
+      "message": "OK"
+    },
+    "validate_time": 41
+  },
+  {
+    "name": "/i18n/api/v2/translation/products/{productName}/versions/{version}/locales/{locale}/components/{component}",
+    "url": "/i18n/api/v2/translation/products/VMCUI/versions/1.0.0/locales/ja/components/AngularJS2",
+    "method": "POST",
+    "headers": {
+      "content-type": "application/json"
+    },
+    "request_data": "string",
+    "response": {
+      "code": 200,
+      "message": "OK"
+    },
+    "validate_time": 41
+  },
+  {
+    "name": "/i18n/api/v2/translation/products/{productName}/versions/{version}",
+    "url": "/i18n/api/v2/translation/products/VMCUI/versions/1.0.0",
+    "method": "PUT",
+    "headers": {
+      "content-type": "application/json"
+    },
+    "request_data": {
+      "data": {
+        "creation": {
+          "operationid": "string"
+        },
+        "dataOrigin": "string",
+        "machineTranslation": true,
+        "productName": "VMCUI",
+        "pseudo": true,
+        "translation": [
+          {
+            "component": "ui",
+            "locale": "zh-Hans-CN",
+            "messages": {
+              "additionalProp1": "string",
+              "additionalProp2": "string",
+              "additionalProp3": "string"
+            }
+          },
+          {
+            "component": "ui",
+            "locale": "en",
+            "messages": {
+              "sample.apple": "apple",
+              "sample.banana": "banana",
+              "sample.cat": "cat",
+              "sample.dog": "dog",
+              "sample.egg": "egg",
+              "sample.fly": "fly",
+              "sample.giant": "giant"
+            }
+          },
+          {
+            "component": "ui",
+            "locale": "es",
+            "messages": {
+              "sample.apple": "manzana",
+              "sample.banana": "plátano",
+              "sample.cat": "gato",
+              "sample.dog": "perro",
+              "sample.egg": "huevo",
+              "sample.fly": "volar",
+              "sample.giant": "gigante"
+            }
+          },
+          {
+            "component": "ui",
+            "locale": "ja",
+            "messages": {
+              "sample.apple": "林檎",
+              "sample.banana": "バナナ",
+              "sample.cat": "ネコ",
+              "sample.dog": "犬",
+              "sample.egg": "卵",
+              "sample.fly": "飛ぶ",
+              "sample.giant": "巨人"
+            }
+          },
+          {
+            "component": "ui",
+            "locale": "latest",
+            "messages": {
+              "sample.apple": "apple",
+              "sample.banana": "banana",
+              "sample.cat": "cat",
+              "sample.dog": "dog",
+              "sample.egg": "egg",
+              "sample.fly": "fly",
+              "sample.giant": "giant"
+            }
+          }
+        ],
+        "version": "1.0.0"
+      },
+      "requester": "string"
+    },
+    "response": {
+      "code": 200,
+      "message": "OK"
+    },
+    "validate_time": 50
+  },
+  {
+    "name": "/i18n/api/v2/combination/translationsAndPattern",
+    "url": "/i18n/api/v2/combination/translationsAndPattern?combine=2&components=AngularJS2&language=ja-JP&productName=VMCUI&scope=dates&version=1.0.0&scopeFilter=dates_dayPeriodsFormat",
+    "method": "GET",
+    "headers": {
+      "content-type": "application/json"
+    },
+    "request_data": {},
+    "response": {
+      "code": 200,
+      "message": "OK"
+    },
+    "validate_time": 54
+  }
+]
