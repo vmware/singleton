@@ -102,6 +102,8 @@ module SgtnClient
         # delete the locale from the available_bundles of component to avoid repeated calls to server
         SgtnClient.config.available_bundles.delete(Common::BundleID.new(component, locale))
         SgtnClient.config.available_locales(component)&.delete(locale)
+        SgtnClient.config.changed
+        SgtnClient.config.notify_observers(:available_locales, component)
         raise
       end
 

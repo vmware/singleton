@@ -82,11 +82,16 @@ module SgtnClient
       end
     end
 
-    def self.reset_locale_data(type)
+    def self.reset_locale_data(type, component = nil)
       return unless type == :available_locales
 
-      @locale_match_results.clear
-      @lowercase_locales_map.clear
+      if component.nil?
+        @locale_match_results.clear
+        @lowercase_locales_map.clear
+      else
+        @locale_match_results[component]&.clear
+        @lowercase_locales_map[component]&.clear
+      end
     end
 
     SgtnClient.config.add_observer(self, :reset_locale_data)

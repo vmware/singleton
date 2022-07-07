@@ -171,6 +171,8 @@ describe Sgtn, :include_helpers, :extend_helpers do
     expect(SgtnClient.config.loader).to receive(:get_bundle).with(component, locale).once.and_raise(SgtnClient::SingletonError.new(err_msg)).ordered
     expect(SgtnClient.config.loader).to receive(:get_bundle).with(component, source_locale).once.and_call_original.ordered
 
+    expect(SgtnClient::LocaleUtil.get_best_locale(locale, component)).to eq locale
+
     # fail first time
     expect { SgtnClient::Translation.send(:get_bundle!, component, locale) }.to raise_error(err_msg)
 
