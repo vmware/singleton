@@ -1,10 +1,10 @@
 # Copyright 2022 VMware, Inc.
 # SPDX-License-Identifier: EPL-2.0
 
+require 'concurrent/map'
 require 'observer'
 require 'set'
 require 'singleton'
-require 'sgtn-client/common/hash'
 
 module SgtnClient
   class Config # :nodoc:
@@ -50,11 +50,7 @@ module SgtnClient
       bundles = available_bundles
       return Set.new if bundles.nil? || bundles.empty?
 
-      unless bundles.respond_to?(:locales)
-        define_bundles_methods(bundles)
-        changed
-        notify_observers(:available_locales)
-      end
+      define_bundles_methods(bundles) unless bundles.respond_to?(:locales)
       bundles.locales(component)
     end
 
@@ -68,19 +64,23 @@ module SgtnClient
 
     def define_bundles_methods(bundles)
       bundles.instance_eval do |_|
-        @component_locales ||= Common::ConcurrentHash.new
+        @component_locales ||= Concurrent::Map.new
+
         def components
           @components ||= reduce(Set.new) { |components, id| components << id.component }
         end
 
         def locales(component)
           @component_locales[component] ||= begin
-            return unless components.include?(component)
+            return {} unless components.include?(component)
 
             each_with_object(Set.new) { |id, locales| locales << id.locale if id.component == component }
           end
         end
       end
+
+      changed
+      notify_observers(:available_locales)
     end
   end
 end

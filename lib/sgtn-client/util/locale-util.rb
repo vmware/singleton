@@ -3,7 +3,7 @@
 # Copyright 2022 VMware, Inc.
 # SPDX-License-Identifier: EPL-2.0
 
-require 'sgtn-client/common/hash'
+require 'concurrent/map'
 
 module SgtnClient
   class LocaleUtil # :nodoc:
@@ -14,38 +14,40 @@ module SgtnClient
       'zh-hant-tw' => 'zh-hant'
     }.freeze
     LOCALE_SEPARATOR = '-'
-    @locale_match_results = Common::ConcurrentHash.new { |hash, key| hash[key] = Common::ConcurrentHash.new }
-    @lowercase_locales_map = Common::ConcurrentHash.new
+    EN_LOCALE = 'en'
+    @locale_match_results = Concurrent::Map.new
+    @lowercase_locales_map = Concurrent::Map.new
 
     def self.get_best_locale(locale, component)
-      @locale_match_results[component][locale] ||= _get_best_locale(locale, component)
-    end
-
-    def self._get_best_locale(locale, component)
-      component_result = @locale_match_results[component]
-      component_result.shift if component_result.size >= 50
-
-      if SgtnClient.config.available_locales(component).include?(locale) || SgtnClient.config.available_components.empty?
-        locale
-      elsif locale.nil?
-        get_fallback_locale
-      else
-        locale = locale.to_s
-        if locale.empty?
-          get_fallback_locale
-        else
-          candidates = lowercase_locales_map(component)
-          if candidates.nil? || candidates.empty?
-            raise SingletonError, "component '#{component}' doesn't exist!"
-          end
-
-          get_best_match(locale.gsub('_', LOCALE_SEPARATOR).downcase, candidates)
+      component_result = @locale_match_results[component] ||= begin
+        components = SgtnClient.config.available_components
+        unless components.empty? || components.include?(component)
+          raise SingletonError, "component '#{component}' doesn't exist!"
         end
-      end
-    end
 
-    def self.is_source_locale(locale = nil)
-      locale == get_source_locale
+        Concurrent::Map.new
+      end
+
+      component_result[locale] ||= begin
+                # component_result.shift if component_result.size >= 50
+                if SgtnClient.config.available_locales(component).include?(locale)
+                  locale
+                elsif locale.nil?
+                  get_fallback_locale
+                else
+                  locale = locale.to_s
+                  if locale.empty?
+                    get_fallback_locale
+                  else
+                    candidates = lowercase_locales_map(component)
+                    if candidates.empty?
+                      locale
+                    else
+                      get_best_match(locale.gsub('_', LOCALE_SEPARATOR).downcase, candidates)
+                    end
+                  end
+                end
+              end
     end
 
     def self.get_best_match(locale, candidates)
@@ -59,19 +61,19 @@ module SgtnClient
     end
 
     def self.get_source_locale
-      'en'
+      EN_LOCALE
     end
 
     def self.get_default_locale
-      'en'
+      EN_LOCALE
     end
 
     def self.get_fallback_locale
-      @fallback_locale ||= get_default_locale || get_source_locale || 'en'
+      locale_fallbacks[0]
     end
 
     def self.locale_fallbacks
-      @locale_fallbacks ||= [get_default_locale, get_source_locale, 'en'].uniq(&:to_s) - [nil, '']
+      @locale_fallbacks ||= [get_default_locale, get_source_locale, EN_LOCALE].uniq(&:to_s) - [nil, '']
     end
 
     def self.lowercase_locales_map(component)
@@ -89,6 +91,6 @@ module SgtnClient
 
     SgtnClient.config.add_observer(self, :reset_locale_data)
 
-    private_class_method :get_best_match, :lowercase_locales_map, :reset_locale_data, :_get_best_locale
+    private_class_method :get_best_match, :lowercase_locales_map, :reset_locale_data
   end
 end
