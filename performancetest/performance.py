@@ -57,7 +57,7 @@ class HttpCollection:
             return json.load(f)
 
     def validate(self, response: requests.Response, case: dict):
-        expected_status_code = case.get('response_data').get("response").get("code")
+        expected_status_code = case.get('response').get("code")
         error_msg = (f'Actual status_code: {response.status_code} '
                      f'Expected status_code: {expected_status_code} are inconsistent.')
         assert response.status_code == expected_status_code, error_msg
