@@ -42,10 +42,7 @@ module SgtnClient
       private
 
       def age
-        @@age ||= begin
-          env = SgtnClient::Config.default_environment
-          SgtnClient::Config.configurations[env]['cache_expiry_period'] * 60
-        end
+        @@age ||= SgtnClient.config.cache_expiry_period * 60
       end
     end
 

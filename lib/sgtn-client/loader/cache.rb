@@ -3,11 +3,13 @@
 # Copyright 2022 VMware, Inc.
 # SPDX-License-Identifier: EPL-2.0
 
+require 'concurrent/map'
+
 module SgtnClient
   module TranslationLoader
     module Cache # :nodoc:
       def initialize(*)
-        @cache_hash = SgtnClient::Common::ConcurrentHash.new
+        @cache_hash = Concurrent::Map.new
         super
       end
 
@@ -33,7 +35,7 @@ module SgtnClient
       def load_bundle(component, locale)
         SgtnClient.logger.debug { "[#{__FILE__}][#{__callee__}] component=#{component}, locale=#{locale}" }
 
-        item = SgtnClient::Common::BundleData[super]
+        item = Common::BundleData[super]
         item.last_update = Time.now
         @cache_hash[Common::BundleID.new(component, locale)] = item
       end
@@ -46,7 +48,7 @@ module SgtnClient
         #item
         return if item.nil? || item.empty?
 
-        item = SgtnClient::Common::SetData.new(item)
+        item = Common::SetData.new(item)
         old_item = @cache_hash[CONSTS::AVAILABLE_BUNDLES_KEY]
         if item != old_item # only update if different
           @cache_hash[CONSTS::AVAILABLE_BUNDLES_KEY] = item

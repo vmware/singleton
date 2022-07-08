@@ -15,11 +15,11 @@ def expire_cache(id)
   cache_item.last_update = Time.at(0)
 end
 
-def clear_cache(loader = SgtnClient::Config.instance_variable_get(:@loader))
+def clear_cache(loader = SgtnClient.config.instance_variable_get(:@loader))
   loader&.instance_variable_get(:@cache_hash)&.clear
 end
 
-def get_cache(key, loader = SgtnClient::Config.instance_variable_get(:@loader))
+def get_cache(key, loader = SgtnClient.config.instance_variable_get(:@loader))
   loader&.instance_variable_get(:@cache_hash)&.fetch(key, nil)
 end
 

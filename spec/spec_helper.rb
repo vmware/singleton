@@ -32,7 +32,7 @@ RSpec.configure do |config|
 end
 
 Sgtn.load_config('./spec/config/sgtnclient.yml', 'test')
-SgtnClient.logger = Logger.new(MultiIO.new(STDOUT, log_file),
+Sgtn.logger = Logger.new(MultiIO.new(STDOUT, log_file),
                                formatter: proc { |severity, datetime, progname, msg|
                                  "[#{datetime.strftime('%Y-%m-%d %H:%M:%S:%6N')} #{Thread.current.name}] #{severity[0]} - #{progname}: #{msg}\n"
                                })
