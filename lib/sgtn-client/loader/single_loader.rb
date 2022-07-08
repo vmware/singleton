@@ -3,7 +3,7 @@
 
 module SgtnClient
   module TranslationLoader
-    module SingleLoader # :nodoc:
+    module SingleLoader
       def load_bundle(component, locale, sync: true)
         SgtnClient.logger.debug { "[#{__FILE__}][#{__callee__}] component=#{component}, locale=#{locale}" }
 
