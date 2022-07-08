@@ -72,7 +72,7 @@ module SgtnClient
 
         def locales(component)
           @component_locales[component] ||= begin
-            return {} unless components.include?(component)
+            return Set.new unless components.include?(component)
 
             each_with_object(Set.new) { |id, locales| locales << id.locale if id.component == component }
           end
