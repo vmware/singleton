@@ -74,7 +74,7 @@ module SgtnClient
 
         { 'component' => component, 'locale' => actual_locale, 'messages' => messages } if messages
       rescue StandardError => e
-        SgtnClient.logger.error "[#{method(__callee__).owner}.#{__callee__}] translation is missing. {#{component}, #{locale}}. #{e}"
+        SgtnClient.logger.error "[#{method(__callee__).owner}.#{__callee__}] translations are missing. {#{component}, #{locale}}. #{e}"
         nil
       end
 

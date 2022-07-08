@@ -89,8 +89,8 @@ module SgtnClient
         @locale_match_results.clear
         @lowercase_locales_map.clear
       else
-        @locale_match_results[component]&.clear
-        @lowercase_locales_map[component]&.clear
+        @locale_match_results.delete(component)
+        @lowercase_locales_map.delete(component)
       end
     end
 
