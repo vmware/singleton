@@ -5,13 +5,13 @@ module SgtnClient
   module TranslationLoader
     module SingleLoader
       def load_bundle(component, locale, sync: true)
-        SgtnClient.logger.debug "[#{__FILE__}][#{__callee__}] component=#{component}, locale=#{locale}"
+        SgtnClient.logger.debug { "[#{__FILE__}][#{__callee__}] component=#{component}, locale=#{locale}" }
 
         do_single_load(Common::BundleID.new(component, locale), sync) { super(component, locale) }
       end
 
       def available_bundles(sync: true)
-        SgtnClient.logger.debug "[#{__FILE__}][#{__callee__}]"
+        SgtnClient.logger.debug { "[#{__FILE__}][#{__callee__}]" }
 
         do_single_load(CONSTS::AVAILABLE_BUNDLES_KEY, sync) { super() }
       end
@@ -20,7 +20,7 @@ module SgtnClient
         none_alive = proc { |_, thread| thread.nil? || thread.alive? == false }
         creator = proc do |id, &block|
           Thread.new do
-            SgtnClient.logger.debug "start single loading #{id}"
+            SgtnClient.logger.debug { "start single loading #{id}" }
             begin
               block.call
             ensure

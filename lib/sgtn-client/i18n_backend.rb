@@ -16,7 +16,7 @@ module SgtnClient # :nodoc:
     end
 
     def initialized?
-      @initialized = true
+      @initialized ||= true
     end
 
     def load_translations(*) end
@@ -33,8 +33,8 @@ module SgtnClient # :nodoc:
 
     def translations; end
 
-    def exists?(locale, key)
-      !!(translate(locale, key) { nil })
+    def exists?(locale, key, options)
+      !!(translate(locale, key, options) { nil })
     end
 
     def translate(locale, key, options)
@@ -42,5 +42,7 @@ module SgtnClient # :nodoc:
       values = options.except(*I18n::RESERVED_KEYS)
       Translation.translate(flat_key, @component, locale, **values) { nil }
     end
+
+    def localize(locale, object, format, options) end
   end
 end

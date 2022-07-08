@@ -8,19 +8,19 @@ module SgtnClient
     module Implementation
       # <b>DEPRECATED:</b> Please use <tt>Sgtn:translate</tt> instead.
       def getString(component, key, locale)
-        SgtnClient.logger.debug "[Translation.getString]component: #{component}, key: #{key}, locale: #{locale}"
+        SgtnClient.logger.debug { "[Translation.getString]component: #{component}, key: #{key}, locale: #{locale}" }
         translate(key, component, locale) { nil }
       end
 
       # <b>DEPRECATED:</b> Please use <tt>Sgtn:translate</tt> instead.
       def getString_p(component, key, plural_args, locale)
-        SgtnClient.logger.debug "[Translation][getString_p]component=#{component}, key=#{key}, locale=#{locale}"
+        SgtnClient.logger.debug { "[Translation][getString_p]component=#{component}, key=#{key}, locale=#{locale}" }
         translate(key, component, locale, **plural_args) { nil }
       end
 
       # <b>DEPRECATED:</b> Please use <tt>Sgtn:translate</tt> instead.
       def getString_f(component, key, args, locale, *_optionals)
-        SgtnClient.logger.debug "[Translation][getString_f]component=#{component}, key=#{key}, locale=#{locale}"
+        SgtnClient.logger.debug { "[Translation][getString_f]component=#{component}, key=#{key}, locale=#{locale}" }
         s = translate(key, component, locale) { nil }
         return nil if s.nil?
 
@@ -40,7 +40,7 @@ module SgtnClient
       end
 
       def translate(key, component, locale = nil, **kwargs)
-        SgtnClient.logger.debug "[#{method(__callee__).owner}.#{__callee__}] key: #{key}, component: #{component}, locale: #{locale}, args: #{kwargs}"
+        SgtnClient.logger.debug { "[#{method(__callee__).owner}.#{__callee__}] key: #{key}, component: #{component}, locale: #{locale}, args: #{kwargs}" }
 
         begin
           best_match_locale = LocaleUtil.get_best_locale(locale || self.locale, component)
@@ -67,7 +67,7 @@ module SgtnClient
       alias t translate
 
       def get_translations(component, locale = nil)
-        SgtnClient.logger.debug "[#{method(__callee__).owner}.#{__callee__}] component: #{component}, locale: #{locale}"
+        SgtnClient.logger.debug { "[#{method(__callee__).owner}.#{__callee__}] component: #{component}, locale: #{locale}" }
 
         best_match_locale = LocaleUtil.get_best_locale(locale || self.locale, component)
         messages, actual_locale = get_bundle_with_fallback(component, best_match_locale)
