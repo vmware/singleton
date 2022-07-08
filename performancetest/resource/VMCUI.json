@@ -140,7 +140,7 @@
     "validate_time": 50
   },
   {
-    "name": "/i18n/api/v2/translation/products/{productName}/versions/{version}",
+    "name": "/i18n/api/v2/translation/products/{productName}/versions/{version}_GET",
     "url": "/i18n/api/v2/translation/products/VMCUI/versions/1.0.0?components=AngularJS2&locales=ja-JP,es-ES&pseudo=false",
     "method": "GET",
     "headers": {
@@ -211,12 +211,18 @@
   },
   {
     "name": "/i18n/api/v2/translation/products/{productName}/versions/{version}/locales/{locale}/components/{component}/keys",
-    "url": "/i18n/api/v2/translation/products/VMCUI/versions/1.0.0/locales/ja/components/AngularJS2/keys?keys=sample.apple",
-    "method": "GET",
+    "url": "/i18n/api/v2/translation/products/AngularJS2/versions/1.0.0/locales/ja/components/component1/keys?collectSource=false",
+    "method": "POST",
     "headers": {
       "content-type": "application/json"
     },
-    "request_data": {},
+    "request_data": [
+      {
+        "commentForSource": "string",
+        "key": "string",
+        "source": "string"
+      }
+    ],
     "response": {
       "code": 200,
       "message": "OK"
@@ -224,28 +230,7 @@
     "validate_time": 40
   },
   {
-    "name": "/i18n/api/v2/translation/products/{productName}/versions/{version}/locales/{locale}/components/{component}/keys",
-    "url": "/i18n/api/v2/translation/products/VMCUI/versions/1.0.0/locales/latest/components/AngularJS2/keys",
-    "method": "POST",
-    "headers": {
-      "content-type": "application/json"
-    },
-    "request_data": [
-      {
-        "commentForSource": "AngularJS2",
-        "key": "key",
-        "source": "source",
-        "sourceFormat": "string"
-      }
-    ],
-    "response": {
-      "code": 200,
-      "message": "OK"
-    },
-    "validate_time": 41
-  },
-  {
-    "name": "/i18n/api/v2/translation/products/{productName}/versions/{version}/locales/{locale}/components/{component}/keys/{key}",
+    "name": "/i18n/api/v2/translation/products/{productName}/versions/{version}/locales/{locale}/components/{component}/keys/{key}_GET",
     "url": "/i18n/api/v2/translation/products/VMCUI/versions/1.0.0/locales/ja/components/AngularJS2/keys/sample.apple",
     "method": "GET",
     "headers": {
@@ -259,7 +244,7 @@
     "validate_time": 41
   },
   {
-    "name": "/i18n/api/v2/translation/products/{productName}/versions/{version}/locales/{locale}/components/{component}/keys/{key}",
+    "name": "/i18n/api/v2/translation/products/{productName}/versions/{version}/locales/{locale}/components/{component}/keys/{key}_POST",
     "url": "/i18n/api/v2/translation/products/VMCUI/versions/1.0.0/locales/latest/components/AngularJS2/keys/sample.six?machineTranslation=false&pseudo=false",
     "method": "POST",
     "headers": {
@@ -287,7 +272,7 @@
     "validate_time": 41
   },
   {
-    "name": "/i18n/api/v2/translation/products/{productName}/versions/{version}",
+    "name": "/i18n/api/v2/translation/products/{productName}/versions/{version}_PUT",
     "url": "/i18n/api/v2/translation/products/VMCUI/versions/1.0.0",
     "method": "PUT",
     "headers": {
