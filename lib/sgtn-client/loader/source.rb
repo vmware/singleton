@@ -37,11 +37,13 @@ module SgtnClient
       def available_bundles
         SgtnClient.logger.debug { "[#{method(__callee__).owner}.#{__callee__}]" }
 
-        @available_bundles ||= @source_bundle_path.children.select(&:directory?).reduce(Set.new) do |bundles, component|
-          component.glob('**/*.{yml, yaml}') do |_|
-            bundles << Common::BundleID.new(component.basename.to_s, LocaleUtil.get_source_locale)
-            break bundles
-          end || bundles
+        @available_bundles ||= begin
+          @source_bundle_path.children.select(&:directory?).reduce(Set.new) do |bundles, component|
+            component.glob('**/*.{yml, yaml}') do |_|
+              bundles << Common::BundleID.new(component.basename.to_s, LocaleUtil.get_source_locale)
+              break bundles
+            end || bundles
+          end
         end
       end
     end
