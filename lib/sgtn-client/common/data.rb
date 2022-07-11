@@ -36,20 +36,25 @@ module SgtnClient
       end
 
       def expired?
-        Time.now >= @last_update + age
+        Time.now >= @last_update + DataInfo.age
       end
 
-      private
-
-      def age
-        @@age ||= SgtnClient.config.cache_expiry_period * 60
+      def self.age
+        @age ||= SgtnClient.config.cache_expiry_period * 60
       end
     end
 
     class BundleData < Hash # :nodoc:
       include DataInfo
 
-      attr_reader :locale, :component
+      def initialize(*args)
+        if !args.empty? && args[0].is_a?(Hash)
+          update(args[0])
+          super()
+        else
+          super
+        end
+      end
     end
 
     class SetData < Set # :nodoc:

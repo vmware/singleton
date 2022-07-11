@@ -15,7 +15,7 @@ module SgtnClient
 
       # get from cache, return expired data immediately
       def get_bundle(component, locale)
-        SgtnClient.logger.debug { "[#{__FILE__}][#{__callee__}] component=#{component}, locale=#{locale}" }
+        SgtnClient.logger.debug { "[#{caller[2]}] component=#{component}, locale=#{locale}" }
 
         result = @cache_hash[Common::BundleID.new(component, locale)] || load_bundle(component, locale)
       ensure
@@ -23,7 +23,7 @@ module SgtnClient
       end
 
       def available_bundles
-        SgtnClient.logger.debug { "[#{__FILE__}][#{__callee__}]" }
+        SgtnClient.logger.debug { "[#{caller[2]}]" }
 
         result = @cache_hash[CONSTS::AVAILABLE_BUNDLES_KEY] || super
       ensure
@@ -33,19 +33,15 @@ module SgtnClient
 
     module CacheFiller
       def load_bundle(component, locale)
-        SgtnClient.logger.debug { "[#{__FILE__}][#{__callee__}] component=#{component}, locale=#{locale}" }
+        SgtnClient.logger.debug { "[#{caller[2]}] component=#{component}, locale=#{locale}" }
 
-        item = Common::BundleData[super]
-        item.last_update = Time.now
-        @cache_hash[Common::BundleID.new(component, locale)] = item
+        @cache_hash[Common::BundleID.new(component, locale)] = Common::BundleData.new(super)
       end
 
       def available_bundles
-        SgtnClient.logger.debug { "[#{__FILE__}][#{__callee__}]" }
+        SgtnClient.logger.debug { "[#{caller[2]}]" }
 
         item = super
-        #CacheUtil.write_cache(CONSTS::AVAILABLE_BUNDLES_KEY, item) if item # TODO: don't save when empty
-        #item
         return if item.nil? || item.empty?
 
         item = Common::SetData.new(item)
