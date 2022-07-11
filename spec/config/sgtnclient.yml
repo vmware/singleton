@@ -10,10 +10,10 @@ test: &default
   vip_server:
 
   # # translation bundle Path
-  translation_bundle: ./spec/config/locales/l10n/bundles
+  translation_bundle: ./spec/fixtures/bundles
 
   # # source bundle Path
-  source_bundle: ./spec/config/locales/default
+  source_bundle: ./spec/fixtures/sources
 
   # # memory cache's expration(minutes), default value is 24*60
   cache_expiry_period: 10

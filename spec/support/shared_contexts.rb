@@ -6,11 +6,27 @@ RSpec.shared_context 'reset client' do
     SgtnClient.config.update(Helpers::CONFIG_HASH)
 
     SgtnClient.config.instance_variable_set(:@loader, nil)
+    SgtnClient::LocaleUtil.send(:reset_locale_data, :available_locales)
     SgtnClient::CacheUtil.clear_cache
   end
   after :all do
     # wait_threads_finish
     SgtnClient.config.instance_variable_set(:@loader, nil)
+    SgtnClient::LocaleUtil.send(:reset_locale_data, :available_locales)
     SgtnClient::CacheUtil.clear_cache
+  end
+end
+
+RSpec.shared_context 'webmock' do
+  before :all do
+    WebMock.enable!
+    WebMock.disable_net_connect!
+  end
+  after :all do
+    WebMock.disable!
+  end
+
+  before :each do
+    WebMock.reset!
   end
 end

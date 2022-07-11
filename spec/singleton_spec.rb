@@ -5,6 +5,8 @@ describe Sgtn, :include_helpers, :extend_helpers do
   include_context 'reset client'
 
   describe '#translate a key' do
+    include_context 'reset client'
+
     it 'translate a key' do
       expect(Sgtn.translate(key, component, locale)).to eq value
     end
@@ -15,6 +17,10 @@ describe Sgtn, :include_helpers, :extend_helpers do
 
     it 'translate a nonexistent key with default value in block, should return defaut_value' do
       expect(Sgtn.translate(key_nonexistent, component, locale) { defaut_value }).to eq defaut_value
+    end
+
+    it 'translate a nonexistent key with nil as default value, should return nil' do
+      expect(Sgtn.translate(key_nonexistent, component, locale) { nil }).to eq nil
     end
 
     it 'translate a nil key, should return nil' do
@@ -150,14 +156,30 @@ describe Sgtn, :include_helpers, :extend_helpers do
     end
     it 'should be able to set locale with empty string' do
       Sgtn.locale = ''
-      expect(Sgtn.locale).to eq en_locale
+      expect(Sgtn.locale).to eq ''
       expect(Sgtn.translate(key, component)).to eq en_value
     end
     it 'should be able to set locale with invalid locale' do
       Sgtn.locale = 'invalid'
-      expect(Sgtn.locale).to eq 'en'
+      expect(Sgtn.locale).to eq 'invalid'
       expect(Sgtn.translate(key, component)).to eq en_value
     end
   end
-  # default nil value
+
+  it "#don't repeat to access server for failed bundles" do
+    err_msg = 'temporary error'
+    expect(SgtnClient.config.loader).to receive(:get_bundle).with(component, locale).once.and_raise(SgtnClient::SingletonError.new(err_msg)).ordered
+    expect(SgtnClient.config.loader).to receive(:get_bundle).with(component, source_locale).once.and_call_original.ordered
+
+    expect(SgtnClient::LocaleUtil.get_best_locale(locale, component)).to eq locale
+
+    # fail first time
+    expect { SgtnClient::Translation.send(:get_bundle!, component, locale) }.to raise_error(err_msg)
+
+    # return source second time
+    expect(Sgtn.get_translations(component, locale)['locale']).to eq source_locale
+  ensure
+    SgtnClient.config.available_bundles.add(SgtnClient::Common::BundleID.new(component, locale))
+    SgtnClient.config.available_locales(component).add(locale)
+  end
 end

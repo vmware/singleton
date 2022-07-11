@@ -1,6 +1,7 @@
 # Copyright 2022 VMware, Inc.
 # SPDX-License-Identifier: EPL-2.0
 
+require 'concurrent/map'
 require 'observer'
 require 'set'
 require 'singleton'
@@ -37,24 +38,49 @@ module SgtnClient
       Set.new
     end
 
-    def available_locales
+    def available_components
       bundles = available_bundles
       return Set.new if bundles.nil? || bundles.empty?
 
-      unless bundles.respond_to?(:locales)
-        def bundles.locales
-          @locales ||= reduce(Set.new) { |locales, id| locales << id.locale }
-        end
-        changed
-        notify_observers(:available_locales)
-      end
-      bundles.locales
+      define_bundles_methods(bundles) unless bundles.respond_to?(:components)
+      bundles.components
+    end
+
+    def available_locales(component)
+      bundles = available_bundles
+      return Set.new if bundles.nil? || bundles.empty?
+
+      define_bundles_methods(bundles) unless bundles.respond_to?(:locales)
+      bundles.locales(component)
     end
 
     def update(options)
       options.each do |key, value|
         send("#{key}=", value)
       end
+    end
+
+    private
+
+    def define_bundles_methods(bundles)
+      bundles.instance_eval do |_|
+        @component_locales ||= Concurrent::Map.new
+
+        def components
+          @components ||= reduce(Set.new) { |components, id| components << id.component }
+        end
+
+        def locales(component)
+          @component_locales[component] ||= begin
+            return Set.new unless components.include?(component)
+
+            each_with_object(Set.new) { |id, locales| locales << id.locale if id.component == component }
+          end
+        end
+      end
+
+      changed
+      notify_observers(:available_locales)
     end
   end
 end
