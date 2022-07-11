@@ -7,6 +7,9 @@ module SgtnClient
       super(str)
       @locale = locale
     end
-    attr_accessor :locale
+
+    def localize(locale)
+      super(@locale || locale)
+    end
   end
-end 
+end

@@ -17,13 +17,14 @@ Gem::Specification.new do |s|
   s.test_files    = s.files.grep(%r{^(test|spec|features)/})
   s.require_paths = ['lib']
 
+  s.add_dependency('concurrent-ruby')
   s.add_dependency('faraday', '~> 1.10')
   s.add_dependency('faraday_middleware', '~> 1.2')
+  s.add_dependency('i18n')
+  s.add_dependency('lumberjack')
   s.add_dependency('multi_json', '~> 1.0') # TODO
   s.add_dependency('request_store', '~> 1.0')
   s.add_dependency('twitter_cldr', '~> 6.6')
-  s.add_dependency('i18n')
-  s.add_dependency('lumberjack')
 
   s.required_ruby_version = '>= 2.0.0'
 end
