@@ -42,12 +42,9 @@ module SgtnClient
         SgtnClient.logger.debug { "[#{caller[2]}]" }
 
         item = super
-        return if item.nil? || item.empty?
-
-        item = Common::SetData.new(item)
         old_item = @cache_hash[CONSTS::AVAILABLE_BUNDLES_KEY]
         if item != old_item # only update if different
-          @cache_hash[CONSTS::AVAILABLE_BUNDLES_KEY] = item
+          @cache_hash[CONSTS::AVAILABLE_BUNDLES_KEY] = Common::SetData.new(item)
         else # if same, don't need to update the data, but update last_update
           old_item.last_update = Time.now
           old_item
