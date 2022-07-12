@@ -95,7 +95,6 @@ describe SgtnClient::Config do
         # return expired data
         second_locales = subject.available_locales(component)
         expect(second_locales).to be locales
-
         wait_threads_finish
 
         # return updated data but it's the same object because data isn't changed.
@@ -109,13 +108,11 @@ describe SgtnClient::Config do
         ### return expired data
         locales1 = subject.available_locales(component)
         expect(locales1).to be locales
-
         wait_threads_finish
 
+        ### return updated data
         expect(subject).to receive(:notify_observers).once.with(:available_locales).and_call_original
         expect(SgtnClient::LocaleUtil).to receive(:reset_locale_data).once.with(:available_locales).and_call_original
-
-        ## return updated data
         locales2 = subject.available_locales(component)
         expect(locales2).to_not be locales
         expect(locales2).to include 'fr'
