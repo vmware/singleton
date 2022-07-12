@@ -3,42 +3,20 @@ Singleton Library for Angular Clients
 
 Several client libraries are provided to support sending API requests to Singleton service. Each library, when integrated on the client side, also provides additional features such as post-processing of localized resources and caching.
 
-Below are details on how to use the library for Angular 7 clients.
+Below are details on how to use the library for Angular clients.
 
 Prerequisites
 ------------
  * Run the Singleton service by following the instructions in [here](https://github.com/vmware/singleton/blob/master/README.md).
- * Ensure the following are installed and compatible with Angular 7:     
+ * Ensure the following are installed and compatible with Angular:     
     - [Git](https://git-scm.com/downloads)
     - [Node.js](https://nodejs.org/en/download/package-manager/) 10
 
-How to build and use the client library
+How to use the client library
 ------------
- * Clone the repository using Git.
-    ```
-    git clone git@github.com:vmware/singleton.git g11n-angular-client
-    ```
- * Go to the project's root directory.
-    ```
-    cd g11n-angular-client
-    ```
- * Checkout the client library branch
-    ```
-    git checkout g11n-angular-client
-    ```
- * Download dependencies
-   ```
-   npm install
-   ```
- * Package the client library
-    ```
-    npm pack
-    ```
-    The library will be packaged in the same directory (eg. singleton-i18n-angular-client-0.1.0.tgz)
- * Import the library in your Angular 7 application
-   ```
-   cd <root-of-your-app>
-   npm install <path-to-location-of-library-in-previous-step/singleton-i18n-angular-client-0.1.0.tgz>
+ * Install the library
+   ```sh
+   npm install @singleton-i18n/angular-client --save
    ```
  * Configure your source bundle :
    ```ts
