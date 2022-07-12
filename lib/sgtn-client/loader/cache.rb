@@ -31,7 +31,7 @@ module SgtnClient
       end
     end
 
-    module CacheFiller
+    module CacheFiller # :nodoc:
       def load_bundle(component, locale)
         SgtnClient.logger.debug { "[#{caller[2]}] component=#{component}, locale=#{locale}" }
 

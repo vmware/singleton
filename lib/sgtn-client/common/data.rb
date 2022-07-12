@@ -1,9 +1,12 @@
 # Copyright 2022 VMware, Inc.
 # SPDX-License-Identifier: EPL-2.0
 
+require 'set'
+require 'time'
+
 module SgtnClient
   module Common
-    class BundleID
+    class BundleID # :nodoc:
       attr_reader :locale, :component
 
       def initialize(component, locale)
