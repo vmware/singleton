@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2021 VMware, Inc.
+ * Copyright 2019-2022 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 import { HttpClient } from '@angular/common/http';
@@ -56,19 +56,15 @@ describe('I18nLoader', () => {
 
     it('get translation and pattern', () => {
         const configWithI18n = Object.assign({ i18nScope: [PatternCategories.DATE] }, baseConfig);
-        const requestParam = {
-            language: 'zh-Hans',
-            region: undefined,
-            productName: configWithI18n.productID,
-            version: configWithI18n.version,
-            components: [configWithI18n.component],
-            scope: PatternCategories.DATE,
-            pseudo: configWithI18n.isPseudo,
-            combine: 2,
-            machineTranslation: false
-        };
+        const requestParam = '?productName=' + configWithI18n.productID
+                    .concat('&version=' + configWithI18n.version)
+                    .concat('&components=' + configWithI18n.component)
+                    .concat('&language=' + 'zh-Hans')
+                    .concat('&scope=' + PatternCategories.DATE)
+                    .concat('&pseudo=' + configWithI18n.isPseudo)
+                    .concat('&combine=' + 2);
         // mock response
-        spyOn(httpClient, 'post').and.returnValue(
+        spyOn(httpClient, 'get').and.returnValue(
             of({
                 response: { code: 200 },
                 data: mockTranslationAndPattern
@@ -85,7 +81,7 @@ describe('I18nLoader', () => {
             });
         });
         const url = configWithI18n.host.concat(VIPServiceConstants.TRANSLATION_PATTERN);
-        expect(httpClient.post).toHaveBeenCalledWith(url, requestParam);
+        expect(httpClient.get).toHaveBeenCalledWith(url + requestParam);
     });
 
     it('get translation', () => {

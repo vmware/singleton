@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2021 VMware, Inc.
+ * Copyright 2019-2022 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 import { timeoutWith, catchError, map } from 'rxjs/operators';
@@ -97,17 +97,15 @@ export class VIPLoader implements I18nLoader {
         const scope = conf.i18nScope.join(',');
         const url = this.getI18nResourceUrl(conf);
         const combine = region ? 1 : 2;
-        return this.postRequest(url, {
-            language: language,
-            region: region,
-            productName: conf.productID,
-            version: conf.version,
-            components: [conf.component],
-            scope: scope,
-            pseudo: conf.isPseudo,
-            combine: combine,
-            machineTranslation: false
-        }, conf.timeout, (res: any) => {
+        const params = '?productName=' + conf.productID
+                    .concat('&version=' + conf.version)
+                    .concat('&components=' + conf.component)
+                    .concat('&language=' + language)
+                    .concat('&scope=' + scope)
+                    .concat('&pseudo=' + conf.isPseudo)
+                    .concat('&combine=' + combine)
+                    .concat(region ? '&region=' +region : '');
+        return this.getRequest(url + params, conf.timeout, (res: any) => {
             return this.responseParser.ParseLocaleData(res, conf);
         });
     }
@@ -134,26 +132,6 @@ export class VIPLoader implements I18nLoader {
      */
     private getRequest(url: string, timeout: number, fn?: Function): Observable<any> {
         return this.http.get(url)
-            .pipe(
-                timeoutWith(timeout, defer(() => {
-                    return throwError(new VIPTimeOutError('Timeout error'));
-                })),
-                map((res: Object) => fn && typeof fn === 'function' ? fn(res) : res),
-                catchError((err: any) => {
-                    return throwError(err);
-                })
-            );
-    }
-
-    /**
-     * Fetch I18N resource from backend service through post request.
-     * @param url request url.
-     * @param vipRequestBody parameters
-     * @param timeout default value is 3000ms, timeoutWith default value is 0ms.
-     * @param fn a callback function that is executed after the request is completed.
-     */
-    private postRequest(url: string, vipRequestBody: VIPRequestBody, timeout: number, fn?: Function) {
-        return this.http.post(url, vipRequestBody)
             .pipe(
                 timeoutWith(timeout, defer(() => {
                     return throwError(new VIPTimeOutError('Timeout error'));
