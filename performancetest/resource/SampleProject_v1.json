@@ -1,7 +1,7 @@
 [
   {
-    "name": "/i18n/api/v2/about/version",
-    "url": "/i18n/api/v2/about/version?productName=SampleProject&version=1.0.0",
+    "name": "/i18n/api/v1/date/localizedDate",
+    "url": "/i18n/api/v1/date/localizedDate?locale=zh-CN&longDate=1472728030290&pattern=EEEEMMMMd",
     "method": "GET",
     "headers": {
       "content-type": "application/json"
@@ -11,11 +11,11 @@
       "code": 200,
       "message": "OK"
     },
-    "validate_time": 40
+    "validate_time": 91
   },
   {
-    "name": "/i18n/api/v2/formatting/date/localizedDate ",
-    "url": "/i18n/api/v2/formatting/date/localizedDate?locale=zh_CN&longDate=1655084911868&pattern=MMMEd",
+    "name": "/i18n/api/v1/number/localizedNumber",
+    "url": "/i18n/api/v1/number/localizedNumber?locale=zh-CN&number=123456789",
     "method": "GET",
     "headers": {
       "content-type": "application/json"
@@ -25,11 +25,11 @@
       "code": 200,
       "message": "OK"
     },
-    "validate_time": 40
+    "validate_time": 20
   },
   {
-    "name": "/i18n/api/v2/formatting/date/timezoneNameList",
-    "url": "/i18n/api/v2/formatting/date/timezoneNameList?displayLanguage=zh",
+    "name": "/i18n/api/v1/i18nPattern",
+    "url": "/i18n/api/v1/i18nPattern?locale=zh-CN&scope=dates",
     "method": "GET",
     "headers": {
       "content-type": "application/json"
@@ -39,11 +39,11 @@
       "code": 200,
       "message": "OK"
     },
-    "validate_time": 153
+    "validate_time": 57
   },
   {
-    "name": "/i18n/api/v2/formatting/number/localizedNumber",
-    "url": "/i18n/api/v2/formatting/number/localizedNumber?locale=ja&number=1234567890&scale=2",
+    "name": "/i18n/api/v1/locale/browserLocale",
+    "url": "/i18n/api/v1/locale/browserLocale",
     "method": "GET",
     "headers": {
       "content-type": "application/json"
@@ -53,11 +53,11 @@
       "code": 200,
       "message": "OK"
     },
-    "validate_time": 40
+    "validate_time": 20
   },
   {
-    "name": "/i18n/api/v2/formatting/patterns",
-    "url": "/i18n/api/v2/formatting/patterns?language=ja-JP&region=JP&scope=dates&scopeFilter=dates_eras",
+    "name": "/i18n/api/v1/locale/normalizedBrowserLocale",
+    "url": "/i18n/api/v1/locale/normalizedBrowserLocale",
     "method": "GET",
     "headers": {
       "content-type": "application/json"
@@ -67,11 +67,11 @@
       "code": 200,
       "message": "OK"
     },
-    "validate_time": 44
+    "validate_time": 17
   },
   {
-    "name": "/i18n/api/v2/formatting/patterns/locales/{locale}",
-    "url": "/i18n/api/v2/formatting/patterns/locales/ja?scope=dates&scopeFilter=dates_eras",
+    "name": "/i18n/api/v1/translation/component",
+    "url": "/i18n/api/v1/translation/component?component=component1&locale=ja&productName=SampleProject&pseudo=false&version=1.0.0",
     "method": "GET",
     "headers": {
       "content-type": "application/json"
@@ -81,11 +81,11 @@
       "code": 200,
       "message": "OK"
     },
-    "validate_time": 53
+    "validate_time": 23
   },
   {
-    "name": "/i18n/api/v2/locale/browserLocale",
-    "url": "/i18n/api/v2/locale/browserLocale",
+    "name": "/i18n/api/v1/translation/components",
+    "url": "/i18n/api/v1/translation/components?components=component1%2Ccomponent2&locales=ja&productName=SampleProject&pseudo=false&version=1.0.0",
     "method": "GET",
     "headers": {
       "content-type": "application/json"
@@ -95,11 +95,11 @@
       "code": 200,
       "message": "OK"
     },
-    "validate_time": 43
+    "validate_time": 21
   },
   {
-    "name": "/i18n/api/v2/locale/normalizedBrowserLocale",
-    "url": "/i18n/api/v2/locale/normalizedBrowserLocale",
+    "name": "/i18n/api/v1/translation/string",
+    "url": "/i18n/api/v1/translation/string?collectSource=false&component=component1&key=sample.apple&locale=ja&productName=SampleProject&pseudo=false&version=1.0.0",
     "method": "GET",
     "headers": {
       "content-type": "application/json"
@@ -109,11 +109,11 @@
       "code": 200,
       "message": "OK"
     },
-    "validate_time": 40
+    "validate_time": 23
   },
   {
-    "name": "/i18n/api/v2/locale/regionList ",
-    "url": "/i18n/api/v2/locale/regionList?supportedLanguageList=en,zh,ja&displayCity=true&regions=CN",
+    "name": "/i18n/api/v1/translation",
+    "url": "/i18n/api/v1/translation?locale=ja&productName=SampleProject&pseudo=false&version=1.0.0",
     "method": "GET",
     "headers": {
       "content-type": "application/json"
@@ -123,11 +123,11 @@
       "code": 200,
       "message": "OK"
     },
-    "validate_time": 74
+    "validate_time": 26
   },
   {
-    "name": "/i18n/api/v2/locale/supportedLanguageList",
-    "url": "/i18n/api/v2/locale/supportedLanguageList?productName=SampleProject&version=1.0.0&displayLanguage=zh",
+    "name": "/i18n/api/v1/translation/product/{productName}/version/{version}/supportedLocales",
+    "url": "/i18n/api/v1/translation/product/SampleProject/version/1.0.0/supportedLocales",
     "method": "GET",
     "headers": {
       "content-type": "application/json"
@@ -137,11 +137,11 @@
       "code": 200,
       "message": "OK"
     },
-    "validate_time": 50
+    "validate_time": 21
   },
   {
-    "name": "/i18n/api/v2/translation/products/{productName}/versions/{version}",
-    "url": "/i18n/api/v2/translation/products/SampleProject/versions/1.0.0?components=component1&locales=ja-JP,es-ES&pseudo=false",
+    "name": "/l10n/api/v1/bundles/components",
+    "url": "/l10n/api/v1/bundles/components?productName=SampleProject&version=1.0.0",
     "method": "GET",
     "headers": {
       "content-type": "application/json"
@@ -151,11 +151,11 @@
       "code": 200,
       "message": "OK"
     },
-    "validate_time": 50
+    "validate_time": 20
   },
   {
-    "name": "/i18n/api/v2/translation/products/{productName}/versions/{version}/componentlist",
-    "url": "/i18n/api/v2/translation/products/SampleProject/versions/1.0.0/componentlist?productName=SampleProject&version=1.0.0",
+    "name": "/i18n/api/v1/translation/product/{productName}/component/{component}",
+    "url": "/i18n/api/v1/translation/product/SampleProject/component/component1?locale=ja&pseudo=false&version=1.0.0",
     "method": "GET",
     "headers": {
       "content-type": "application/json"
@@ -165,11 +165,11 @@
       "code": 200,
       "message": "OK"
     },
-    "validate_time": 43
+    "validate_time": 21
   },
   {
-    "name": "/i18n/api/v2/translation/products/{productName}/versions/{version}/versioninfo",
-    "url": "/i18n/api/v2/translation/products/SampleProject/versions/1.0.0/versioninfo",
+    "name": "/i18n/api/v1/translation/product/{productName}/components/{components}",
+    "url": "/i18n/api/v1/translation/product/SampleProject/components/component1%2Ccomponent2?locales=ja&pseudo=false&version=1.0.0",
     "method": "GET",
     "headers": {
       "content-type": "application/json"
@@ -179,11 +179,11 @@
       "code": 200,
       "message": "OK"
     },
-    "validate_time": 68
+    "validate_time": 20
   },
   {
-    "name": "/i18n/api/v2/translation/products/{productName}/versions/{version}/locales/{locale}/components/{component} ",
-    "url": "/i18n/api/v2/translation/products/SampleProject/versions/1.0.0/locales/ja/components/component1?checkTranslationStatus=false&pseudo=false&machineTranslation=false",
+    "name": "/i18n/api/v1/translation/product/{productName}/component/{component}/key/{key}_GET",
+    "url": "/i18n/api/v1/translation/product/SampleProject/component/component1/key/sample.leg?collectSource=false&locale=ja&pseudo=false&source=leg&version=1.0.0",
     "method": "GET",
     "headers": {
       "content-type": "application/json"
@@ -193,60 +193,25 @@
       "code": 200,
       "message": "OK"
     },
-    "validate_time": 41
+    "validate_time": 23
   },
   {
-    "name": "/i18n/api/v2/translation/products/{productName}/versions/{version}/localelist",
-    "url": "/i18n/api/v2/translation/products/SampleProject/versions/1.0.0/localelist",
-    "method": "GET",
-    "headers": {
-      "content-type": "application/json"
-    },
-    "request_data": {},
-    "response": {
-      "code": 200,
-      "message": "OK"
-    },
-    "validate_time": 41
-  },
-  {
-    "name": "/i18n/api/v2/translation/products/{productName}/versions/{version}/locales/{locale}/components/{component}/keys",
-    "url": "/i18n/api/v2/translation/products/SampleProject/versions/1.0.0/locales/ja/components/component1/keys?keys=sample.apple",
-    "method": "GET",
-    "headers": {
-      "content-type": "application/json"
-    },
-    "request_data": {},
-    "response": {
-      "code": 200,
-      "message": "OK"
-    },
-    "validate_time": 40
-  },
-  {
-    "name": "/i18n/api/v2/translation/products/{productName}/versions/{version}/locales/{locale}/components/{component}/keys",
-    "url": "/i18n/api/v2/translation/products/SampleProject/versions/1.0.0/locales/latest/components/component1/keys",
+    "name": "/i18n/api/v1/translation/product/{productName}/component/{component}/key/{key}_POST",
+    "url": "/i18n/api/v1/translation/product/SampleProject/component/component1/key/sample.leg?collectSource=false&locale=ja&pseudo=false&source=leg&version=1.0.0",
     "method": "POST",
     "headers": {
       "content-type": "application/json"
     },
-    "request_data": [
-      {
-        "commentForSource": "component1",
-        "key": "key",
-        "source": "source",
-        "sourceFormat": "string"
-      }
-    ],
+    "request_data": "leg",
     "response": {
       "code": 200,
       "message": "OK"
     },
-    "validate_time": 41
+    "validate_time": 54
   },
   {
-    "name": "/i18n/api/v2/translation/products/{productName}/versions/{version}/locales/{locale}/components/{component}/keys/{key}",
-    "url": "/i18n/api/v2/translation/products/SampleProject/versions/1.0.0/locales/ja/components/component1/keys/sample.apple",
+    "name": "/i18n/api/v1/translation/product/{productName}/key/{key}",
+    "url": "/i18n/api/v1/translation/product/SampleProject/key/sample.leg?collectSource=false&locale=latest&pseudo=false&source=leg&version=1.0.0",
     "method": "GET",
     "headers": {
       "content-type": "application/json"
@@ -256,39 +221,39 @@
       "code": 200,
       "message": "OK"
     },
-    "validate_time": 41
+    "validate_time": 97
   },
   {
-    "name": "/i18n/api/v2/translation/products/{productName}/versions/{version}/locales/{locale}/components/{component}/keys/{key}",
-    "url": "/i18n/api/v2/translation/products/SampleProject/versions/1.0.0/locales/latest/components/component1/keys/sample.six?machineTranslation=false&pseudo=false",
-    "method": "POST",
+    "name": "/i18n/api/v1/translation/product/{productName}/component/{component}/sources_GET",
+    "url": "/i18n/api/v1/translation/product/SampleProject/component/component1/sources?collectSource=false&locale=latest&pseudo=false&source=sample.leg&version=1.0.0",
+    "method": "GET",
     "headers": {
       "content-type": "application/json"
     },
-    "request_data": "string",
+    "request_data": {},
     "response": {
       "code": 200,
       "message": "OK"
     },
-    "validate_time": 41
+    "validate_time": 35
   },
   {
-    "name": "/i18n/api/v2/translation/products/{productName}/versions/{version}/locales/{locale}/components/{component}",
-    "url": "/i18n/api/v2/translation/products/SampleProject/versions/1.0.0/locales/ja/components/component1",
+    "name": "/i18n/api/v1/translation/product/{productName}/component/{component}/sources_POST",
+    "url": "/i18n/api/v1/translation/product/SampleProject/component/component1/sources?collectSource=false&locale=latest&pseudo=false&version=1.0.0",
     "method": "POST",
     "headers": {
       "content-type": "application/json"
     },
-    "request_data": "string",
+    "request_data": "leg",
     "response": {
       "code": 200,
       "message": "OK"
     },
-    "validate_time": 41
+    "validate_time": 27
   },
   {
-    "name": "/i18n/api/v2/translation/products/{productName}/versions/{version}",
-    "url": "/i18n/api/v2/translation/products/SampleProject/versions/1.0.0",
+    "name": "/i18n/api/v1/translation/product/{productName}/version/{version}",
+    "url": "/i18n/api/v1/translation/product/SampleProject/version/1.0.0",
     "method": "PUT",
     "headers": {
       "content-type": "application/json"
@@ -373,20 +338,6 @@
       "code": 200,
       "message": "OK"
     },
-    "validate_time": 50
-  },
-  {
-    "name": "/i18n/api/v2/combination/translationsAndPattern",
-    "url": "/i18n/api/v2/combination/translationsAndPattern?combine=2&components=component1&language=ja-JP&productName=SampleProject&scope=dates&version=1.0.0&scopeFilter=dates_dayPeriodsFormat",
-    "method": "GET",
-    "headers": {
-      "content-type": "application/json"
-    },
-    "request_data": {},
-    "response": {
-      "code": 200,
-      "message": "OK"
-    },
-    "validate_time": 54
+    "validate_time": 49
   }
-]
+  ]

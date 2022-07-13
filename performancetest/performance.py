@@ -57,10 +57,14 @@ class HttpCollection:
             return json.load(f)
 
     def validate(self, response: requests.Response, case: dict):
-        expected_status_code = case.get('response').get("code")
         error_msg = (f'Actual status_code: {response.status_code} '
-                     f'Expected status_code: {expected_status_code} are inconsistent.')
-        assert response.status_code == expected_status_code, error_msg
+                     f'Expected status_code: {200} are inconsistent.')
+        assert response.status_code == 200, error_msg
+
+        code: int = response.json().get("response").get("code")
+        error_msg2 = (f'Actual status_code: {code} '
+                      f'Expected status_code: {case.get("response").get("code")} are inconsistent.')
+        assert code == case.get("response").get("code"), error_msg2
 
         expected_validate_time: float = case.get("validate_time")
         response_time: float = round(response.elapsed.total_seconds() * 1000, 3)
@@ -261,9 +265,8 @@ class PMeter:
 
 
 if __name__ == '__main__':
-    print('start~~~~~~~~~~~~~~~')
     pmeter = PMeter()
-    pmeter.create_task(collection=HttpCollection(name='VMCUI', file='data.json'), thread_number=2, loop_count=2,
+    pmeter.create_task(collection=HttpCollection(name='VMCUI', file='VMCUI.json'), thread_number=2, loop_count=2,
                        thread_group_name='Singleton_api_testing')
     pmeter.run()
     pmeter.analysis()
