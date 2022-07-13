@@ -5,10 +5,8 @@ describe SgtnClient do
   describe "OnlineAPI" do
 
     before :each do
-      env = SgtnClient::Config.default_environment
       SgtnClient::CacheUtil.clear_cache()
-      SgtnClient::Config.configurations[env]["vip_server"] = nil
-      SgtnClient::Source.loadBundles("default")
+      SgtnClient.config.vip_server = nil
     end
 
     it "GET_EN" do
@@ -38,10 +36,9 @@ describe SgtnClient do
 
     it "NewComponent" do
       expect(SgtnClient::Translation.getString("NEW", "new_hello", "zh-Hans")).to eq 'New Hello'
-      env = SgtnClient::Config.default_environment
-      if SgtnClient::Config.configurations[env]["disable_cache"] == false
-        expect(SgtnClient::CacheUtil.get_cache("test_4.8.1_NEW_en").dig(:items, "new_hello")).to eq 'New Hello'
-      end
+      # if SgtnClient::Config.configurations[env]["disable_cache"] == false
+        expect(SgtnClient::CacheUtil.get_cache(SgtnClient::Common::BundleID.new("NEW", "en")).dig(:items, "new_hello")).to eq 'New Hello'
+      # end
       # get from cache in 2nd time
       expect(SgtnClient::Translation.getString("NEW", "new_hello", "zh-Hans")).to eq 'New Hello'
       jsonObj =  SgtnClient::Translation.getStrings("NEW", "zh-Hans")

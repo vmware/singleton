@@ -4,10 +4,8 @@
 describe SgtnClient do
   describe "OfflineAPI" do
 
-    before :each do
-      env = SgtnClient::Config.default_environment
-      SgtnClient::Config.configurations[env]["vip_server"] = nil
-      SgtnClient::Source.loadBundles("default")
+    before :all do
+      SgtnClient.config.vip_server = nil
     end
 
     it "GET" do
@@ -44,11 +42,11 @@ describe SgtnClient do
 
       expect(SgtnClient::Translation.getString_f("JAVA", "login", ["VM", "Robot"], "zh-Hans")).to eq 'Robot login VM!'
       # get from cache in 2nd time
-      expect(SgtnClient::Translation.getString_f("JAVA", "login", ["VM", "Robot"], "zh-Hans")).to eq 'Robot login VM!' 
-      
-      expect(SgtnClient::Translation.getString_f("JAVA", "type_error", {"error": "错误数字类型", "correct": "正确数字类型"}, "zh-Hans")).to eq '检测到错误数字类型，请输入正确数字类型!'
+      expect(SgtnClient::Translation.getString_f("JAVA", "login", ["VM", "Robot"], "zh-Hans")).to eq 'Robot login VM!'
+
+      expect(SgtnClient::Translation.getString_f("JAVA", "type_error", {"error": "错误数字类型", "correct": "正确数字类型"}, "zh-Hans")).to eq '检测到%错误数字类型，请输入%正确数字类型!'
       # get from cache in 2nd time
-      expect(SgtnClient::Translation.getString_f("JAVA", "type_error", {"error": "错误数字类型", "correct": "正确数字类型"}, "zh-Hans")).to eq '检测到错误数字类型，请输入正确数字类型!'
+      expect(SgtnClient::Translation.getString_f("JAVA", "type_error", {"error": "错误数字类型", "correct": "正确数字类型"}, "zh-Hans")).to eq '检测到%错误数字类型，请输入%正确数字类型!'
     end
 
     it "Component" do

@@ -1,7 +1,7 @@
 #  Copyright 2022 VMware, Inc.
 #  SPDX-License-Identifier: EPL-2.0
 
-require 'bundler/setup'
+Bundler.require :default, :test
 
 if ENV['COVERAGE']
   require 'simplecov-json'
@@ -13,12 +13,12 @@ if ENV['COVERAGE']
   end
 end
 
-Bundler.require :default, :test
-
 require 'singleton-client'
 
 require 'webmock/rspec'
 Dir[File.expand_path('support/**/*.rb', __dir__)].sort.each { |f| require f }
+
+log_file = File.open('./unit_test.log', 'a')
 
 RSpec.configure do |config|
   config.include Helpers, :include_helpers
@@ -26,13 +26,15 @@ RSpec.configure do |config|
 
   config.filter_run_excluding integration: true
   config.filter_run_excluding disabled: true
+
+  config.color = true
+  config.add_formatter(:documentation, log_file)
 end
 
 Sgtn.load_config('./spec/config/sgtnclient.yml', 'test')
-log_file = File.open('./unit_test.log', 'a')
 SgtnClient.logger = Logger.new(MultiIO.new(STDOUT, log_file),
                                formatter: proc { |severity, datetime, progname, msg|
-                                 "[#{datetime.strftime('%Y-%m-%d %H:%M:%S')} #{Thread.current.object_id}] #{severity[0]} - #{progname}: #{msg}\n"
+                                 "[#{datetime.strftime('%Y-%m-%d %H:%M:%S:%6N')} #{Thread.current.name}] #{severity[0]} - #{progname}: #{msg}\n"
                                })
 
 WebMock.allow_net_connect!
