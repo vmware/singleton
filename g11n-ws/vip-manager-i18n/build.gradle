@@ -64,8 +64,6 @@ dependencies {
     implementation("javax.cache:cache-api:$cacheApiVersion")
     implementation("org.apache.httpcomponents:httpclient:$httpclient")
     // Actuator - START
-    implementation("io.micrometer:micrometer-registry-prometheus:$micrometerVersion")
-	implementation("io.micrometer:micrometer-core:$micrometerVersion")
 	implementation ('org.springframework.boot:spring-boot-starter-actuator')
     // Actuator - END
     

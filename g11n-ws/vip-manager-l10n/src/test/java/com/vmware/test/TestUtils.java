@@ -16,9 +16,9 @@ import org.springframework.web.context.WebApplicationContext;
 
 import com.vmware.l10n.BootApplication;
 import com.vmware.l10n.conf.RsaCryptUtil;
+import com.vmware.l10n.source.dao.AllowListDao;
 import com.vmware.l10n.source.dto.GRMAPIResponseStatus;
 import com.vmware.l10n.utils.SourceUtils;
-import com.vmware.l10n.utils.AllowListUtils;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = BootApplication.class)
@@ -44,7 +44,7 @@ public class TestUtils {
 
 	@Test
 	public void testAllowList() {
-		AllowListUtils allowListUtils = webApplicationContext.getBean(AllowListUtils.class);		allowListUtils.getAllowList();
+		AllowListDao allowListUtils = webApplicationContext.getBean(AllowListDao.class);		allowListUtils.getAllowList();
 	}
 	
 	@Test
