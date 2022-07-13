@@ -266,7 +266,9 @@ class PMeter:
 
 if __name__ == '__main__':
     pmeter = PMeter()
-    pmeter.create_task(collection=HttpCollection(name='VMCUI', file='VMCUI.json'), thread_number=2, loop_count=2,
+    pmeter.create_task(collection=HttpCollection(name='VMCUI1', file='VMCUI_v1.json'), thread_number=1, loop_count=1,
+                       thread_group_name='Singleton_api_testing')
+    pmeter.create_task(collection=HttpCollection(name='VMCUI2', file='VMCUI_v2.json'), thread_number=2, loop_count=2,
                        thread_group_name='Singleton_api_testing')
     pmeter.run()
     pmeter.analysis()
