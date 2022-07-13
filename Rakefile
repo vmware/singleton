@@ -2,7 +2,7 @@ require 'bundler/setup'
 require_relative './lib/version'
 
 namespace :ruby do
-  Bundler::GemHelper.install_tasks(:name => 'singleton-ruby')
+  Bundler::GemHelper.install_tasks(:name => 'singleton-client')
 end
 
 require "rspec/core/rake_task"

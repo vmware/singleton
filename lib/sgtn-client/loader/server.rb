@@ -16,9 +16,9 @@ module SgtnClient
       REQUEST_ARGUMENTS = { timeout: 10 }.freeze
 
       def initialize(config)
-        @server_url = config['vip_server']
+        @server_url = config.vip_server
 
-        product_root = format('i18n/api/v2/translation/products/%s/versions/%s', config['product_name'], config['version'])
+        product_root = format('i18n/api/v2/translation/products/%s/versions/%s', config.product_name, config.version)
 
         @bundle_url = "#{product_root}/locales/%s/components/%s"
         @locales_url = "#{product_root}/localelist"
@@ -26,14 +26,14 @@ module SgtnClient
       end
 
       def load_bundle(component, locale)
-        SgtnClient.logger.debug "[#{method(__callee__).owner}.#{__callee__}] component=#{component}, locale=#{locale}"
+        SgtnClient.logger.debug { "[#{method(__callee__).owner}.#{__callee__}] component=#{component}, locale=#{locale}" }
 
         messages = query_server(format(@bundle_url, locale, component), ['messages'])
         messages
       end
 
       def available_bundles
-        SgtnClient.logger.debug "[#{method(__callee__).owner}.#{__callee__}]"
+        SgtnClient.logger.debug { "[#{method(__callee__).owner}.#{__callee__}]" }
 
         components_thread = Thread.new { available_components }
         available_locales.reduce(Set.new) do |bundles, locale|

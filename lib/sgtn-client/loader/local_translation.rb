@@ -12,11 +12,11 @@ module SgtnClient
       BUNDLE_SUFFIX = '.json'.freeze
 
       def initialize(config)
-        @base_path = Pathname.new(config['translation_bundle']) + config['product_name'] + config['version'].to_s
+        @base_path = Pathname.new(config.translation_bundle) + config.product_name + config.version.to_s
       end
 
       def load_bundle(component, locale)
-        SgtnClient.logger.debug "[#{method(__callee__).owner}.#{__callee__}] component=#{component}, locale=#{locale}"
+        SgtnClient.logger.debug { "[#{method(__callee__).owner}.#{__callee__}] component=#{component}, locale=#{locale}" }
 
         file_name = BUNDLE_PREFIX + locale + BUNDLE_SUFFIX
         file_path = @base_path + component + file_name
@@ -30,7 +30,7 @@ module SgtnClient
       end
 
       def available_bundles
-        SgtnClient.logger.debug "[#{method(__callee__).owner}.#{__callee__}]"
+        SgtnClient.logger.debug { "[#{method(__callee__).owner}.#{__callee__}]" }
 
         @available_bundles ||= begin
           @base_path.glob('*/*.json').reduce(Set.new) do |bundles, f|
