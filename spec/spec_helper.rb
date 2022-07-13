@@ -9,7 +9,7 @@ if ENV['COVERAGE']
   # require 'coveralls'
   # Coveralls.wear!
   SimpleCov.start do
-    add_filter "/spec/"
+    add_filter '/spec/'
   end
 end
 
@@ -33,8 +33,8 @@ end
 
 Sgtn.load_config('./spec/config/sgtnclient.yml', 'test')
 Sgtn.logger = Logger.new(MultiIO.new(STDOUT, log_file),
-                               formatter: proc { |severity, datetime, progname, msg|
-                                 "[#{datetime.strftime('%Y-%m-%d %H:%M:%S:%6N')} #{Thread.current.name}] #{severity[0]} - #{progname}: #{msg}\n"
-                               })
+                         formatter: proc { |severity, datetime, progname, msg|
+                           "[#{datetime.strftime('%Y-%m-%d %H:%M:%S:%6N')} #{Thread.current.name}] #{severity[0]} - #{progname}: #{msg}\n"
+                         })
 
 WebMock.allow_net_connect!
