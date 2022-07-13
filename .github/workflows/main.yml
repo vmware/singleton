@@ -132,8 +132,6 @@ jobs:
           cd $GITHUB_WORKSPACE
           cp -r $GITHUB_WORKSPACE/devops/autotest/client/ruby/l10n/bundles/* $GITHUB_WORKSPACE/l10n/bundles
           cd $GITHUB_WORKSPACE
-          sed -i 's|singleton-ruby|singleton-client|g' singleton-ruby.gemspec
-          mv singleton-ruby.gemspec singleton-client.gemspec
           gem build singleton-client.gemspec
           cd $GITHUB_WORKSPACE/devops/autotest/client/ruby
           sed -i 's|path => "../../../../ruby_client/singleton|path => "/home/runner/work/singleton/singleton|g' Gemfile
