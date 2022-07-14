@@ -7,6 +7,8 @@ package com.vmware.l10n.translation.controller;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -34,12 +36,15 @@ import com.vmware.vip.api.rest.API;
 import com.vmware.vip.api.rest.APIParamName;
 import com.vmware.vip.api.rest.l10n.L10NAPIV1;
 import com.vmware.vip.common.constants.ConstantsUnicode;
+import com.vmware.vip.common.constants.ValidationMsg;
+import com.vmware.vip.common.exceptions.ValidationException;
 import com.vmware.vip.common.i18n.dto.UpdateTranslationDTO;
 import com.vmware.vip.common.i18n.dto.UpdateTranslationDTO.UpdateTranslationDataDTO;
 import com.vmware.vip.common.i18n.dto.UpdateTranslationDTO.UpdateTranslationDataDTO.TranslationDTO;
 import com.vmware.vip.common.i18n.dto.response.APIResponseDTO;
 import com.vmware.vip.common.i18n.status.APIResponseStatus;
 import com.vmware.vip.common.l10n.exception.L10nAPIException;
+import com.vmware.vip.common.utils.RegExpValidatorUtils;
 
 /**
  *
@@ -69,6 +74,7 @@ public class TranslationSyncServerController {
      *            Extends the ServletRequest interface to provide request
      *            information for HTTP servlets.
      * @return APIResponseDTO The object which represents response status.
+     * @throws ValidationException 
      */
     @CrossOrigin
     @RequestMapping(value = L10NAPIV1.UPDATE_TRANSLATION_L10N, method = RequestMethod.POST, produces = { API.API_CHARSET })
@@ -76,7 +82,7 @@ public class TranslationSyncServerController {
     public APIResponseDTO updateTranslation(
             @RequestBody UpdateTranslationDTO updateTranslationDTO,
             @PathVariable(APIParamName.PRODUCT_NAME) String productName,
-            @PathVariable(APIParamName.VERSION) String version, HttpServletRequest request) {
+            @PathVariable(APIParamName.VERSION) String version, HttpServletRequest request) throws ValidationException {
         LOGGER.info("The request url is "
                 + request.getRequestURL()
                 + (request.getQueryString() == null ? "" : "?"
@@ -127,7 +133,9 @@ public class TranslationSyncServerController {
                     .getVersion());
             componentMessagesDTO.setComponent(translationDTO.getComponent());
             componentMessagesDTO.setLocale(translationDTO.getLocale());
-            componentMessagesDTO.setMessages(translationDTO.getMessages());
+            Map<String, String> msgs = translationDTO.getMessages();
+            validateKeys(msgs);
+            componentMessagesDTO.setMessages(msgs);
             componentMessagesDTO.setId(System.currentTimeMillis());
             componentMessagesDTOList.add(componentMessagesDTO);
         }
@@ -150,4 +158,14 @@ public class TranslationSyncServerController {
         translationSyncServerService.saveCreationInfo(updateTranslationDTO);
         return response;
     }
+    
+    public void validateKeys(Map<String, String> msgs) throws ValidationException {
+		for(Entry<String,String> entry : msgs.entrySet()) {
+			String key = entry.getKey();
+			if(!RegExpValidatorUtils.isAscii(key)) {
+				throw new ValidationException(String.format(ValidationMsg.KEY_NOT_VALIDE_FORMAT, key));
+			}
+		}
+		
+	}
 }

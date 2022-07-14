@@ -6,6 +6,8 @@ package com.vmware.vip.i18n.api.base;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -17,11 +19,14 @@ import org.springframework.util.StringUtils;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.vmware.vip.common.constants.ConstantsKeys;
+import com.vmware.vip.common.constants.ValidationMsg;
+import com.vmware.vip.common.exceptions.ValidationException;
 import com.vmware.vip.common.i18n.dto.UpdateTranslationDTO;
 import com.vmware.vip.common.i18n.dto.UpdateTranslationDTO.UpdateTranslationDataDTO;
 import com.vmware.vip.common.i18n.dto.UpdateTranslationDTO.UpdateTranslationDataDTO.TranslationDTO;
 import com.vmware.vip.common.i18n.dto.response.APIResponseDTO;
 import com.vmware.vip.common.i18n.status.APIResponseStatus;
+import com.vmware.vip.common.utils.RegExpValidatorUtils;
 import com.vmware.vip.core.messages.service.product.IProductService;
 import com.vmware.vip.core.messages.service.singlecomponent.ComponentMessagesDTO;
 
@@ -79,7 +84,9 @@ public class TranslationSyncAction extends BaseAction {
 					.getVersion());
 			componentMessagesDTO.setComponent(translationDTO.getComponent());
 			componentMessagesDTO.setLocale(translationDTO.getLocale());
-			componentMessagesDTO.setMessages(translationDTO.getMessages());
+			Map<String, String> msgs = translationDTO.getMessages();
+			validateKeys(msgs);
+			componentMessagesDTO.setMessages(msgs);
 			componentMessagesDTOList.add(componentMessagesDTO);
 		}
 		List<TranslationDTO> translationDTOList = productService
@@ -92,6 +99,17 @@ public class TranslationSyncAction extends BaseAction {
 			return super.handleResponse(APIResponseStatus.OK,
 					"Update translation sucessfully!");
 		}
+	}
+	
+	
+	public void validateKeys(Map<String, String> msgs) throws ValidationException {
+		for(Entry<String,String> entry : msgs.entrySet()) {
+			String key = entry.getKey();
+			if(!RegExpValidatorUtils.isAscii(key)) {
+				throw new ValidationException(String.format(ValidationMsg.KEY_NOT_VALIDE_FORMAT, key));
+			}
+		}
+		
 	}
 
 }
