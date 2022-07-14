@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -122,10 +123,19 @@ public class TranslationProductComponentAction extends BaseAction {
 	}
 	
 	
+	@SuppressWarnings("unchecked")
 	public APIResponseDTO checkTranslationResult(String productName, String component, String version, String locale, APIResponseDTO resp) {
 		Map<String, String> r = checkTranslationStatus(productName, component, version, locale, resp);
 		Object o = resp.getData();
 		if(o instanceof ComponentMessagesDTO) {
+			
+			Map<String, Object> msgs = (Map<String, Object>) ((ComponentMessagesDTO)o).getMessages();
+			for(Entry<String,String> entry: r.entrySet()) {
+				if(!msgs.containsKey(entry.getKey())) {
+					r.put(entry.getKey(), "0");
+				}
+			}
+			
 			((ComponentMessagesDTO)o).setStatus(JSONObject.toJSONString(r));
 		}
     	if(!r.isEmpty() && !r.containsValue("0")) {
