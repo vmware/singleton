@@ -21,8 +21,8 @@ import java.util.*;
 /**
  * This class provide some APIs to get translation from VIP service in
  * string-based, component-based level.
- *
- * For string-based level APIs, some need the source string as parameter, some don't, instead the source string is put to the resource bundle.
+ * <pre>
+ * <p>For string-based level APIs, some need the source string as parameter, some don't, instead the source string is put to the resource bundle.
  * Currently we support source string of the following form:
  *
  *      message = messageText (argument messageText)*
@@ -47,7 +47,7 @@ import java.util.*;
  *
  *      Below is an example for the format of source:
  *      "At {1,date,shortTime} on {1,date,longDate}, there was {2} on planet {0,number}."
- *
+ *</pre>
  */
 public class TranslationMessage implements Message {
     Logger logger = LoggerFactory.getLogger(TranslationMessage.class);
