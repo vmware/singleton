@@ -16,7 +16,6 @@ shared_examples 'Available Bundles' do
     @config.vip_server = nil
     @config.translation_bundle = nil
     @config.source_bundle = nil
-    SgtnClient::CacheUtil.clear_cache
     WebMock.reset!
   end
 

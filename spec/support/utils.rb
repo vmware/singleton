@@ -11,8 +11,16 @@ def wait_threads_finish
 end
 
 def expire_cache(id)
-  cache_item = SgtnClient::CacheUtil.get_cache(id)
-  cache_item[:expiry] = Time.now
+  cache_item = get_cache(id)
+  cache_item.last_update = Time.at(0)
+end
+
+def clear_cache(loader = SgtnClient.config.instance_variable_get(:@loader))
+  loader&.instance_variable_get(:@cache_hash)&.clear
+end
+
+def get_cache(key, loader = SgtnClient.config.instance_variable_get(:@loader))
+  loader&.instance_variable_get(:@cache_hash)&.fetch(key, nil)
 end
 
 def extract_arguments(trace)

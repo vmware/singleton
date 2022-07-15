@@ -3,51 +3,52 @@
 # Copyright 2022 VMware, Inc.
 # SPDX-License-Identifier: EPL-2.0
 
+require 'concurrent/map'
+
 module SgtnClient
   module TranslationLoader
     module Cache # :nodoc:
+      def initialize(*)
+        @cache_hash = Concurrent::Map.new
+        super
+      end
+
       # get from cache, return expired data immediately
       def get_bundle(component, locale)
-        SgtnClient.logger.debug { "[#{__FILE__}][#{__callee__}] component=#{component}, locale=#{locale}" }
+        SgtnClient.logger.debug { "[#{caller[2]}] component=#{component}, locale=#{locale}" }
 
-        key = Common::BundleID.new(component, locale)
-        cache_item = CacheUtil.get_cache(key)
-        if cache_item
-          load_bundle(component, locale, sync: false) if CacheUtil.is_expired(cache_item)
-          cache_item[:items]
-        else
-          load_bundle(component, locale)
-        end
+        result = @cache_hash[Common::BundleID.new(component, locale)] || load_bundle(component, locale)
+      ensure
+        load_bundle(component, locale, sync: false) if result&.expired?
       end
 
       def available_bundles
-        SgtnClient.logger.debug { "[#{__FILE__}][#{__callee__}]" }
+        SgtnClient.logger.debug { "[#{caller[2]}]" }
 
-        cache_item = CacheUtil.get_cache(CONSTS::AVAILABLE_BUNDLES_KEY)
-        if cache_item
-          super(sync: false) if CacheUtil.is_expired(cache_item)
-          cache_item[:items]
-        else
-          super
-        end
+        result = @cache_hash[CONSTS::AVAILABLE_BUNDLES_KEY] || super
+      ensure
+        super(sync: false) if result&.expired?
       end
     end
 
-    module CacheFiller
+    module CacheFiller # :nodoc:
       def load_bundle(component, locale)
-        SgtnClient.logger.debug { "[#{__FILE__}][#{__callee__}] component=#{component}, locale=#{locale}" }
+        SgtnClient.logger.debug { "[#{caller[2]}] component=#{component}, locale=#{locale}" }
 
-        item = super
-        CacheUtil.write_cache(Common::BundleID.new(component, locale), item) if item
-        item
+        @cache_hash[Common::BundleID.new(component, locale)] = Common::BundleData.new(super)
       end
 
       def available_bundles
-        SgtnClient.logger.debug { "[#{__FILE__}][#{__callee__}]" }
+        SgtnClient.logger.debug { "[#{caller[2]}]" }
 
         item = super
-        CacheUtil.write_cache(CONSTS::AVAILABLE_BUNDLES_KEY, item) if item # TODO: don't save when empty
-        item
+        old_item = @cache_hash[CONSTS::AVAILABLE_BUNDLES_KEY]
+        if item != old_item # only update if different
+          @cache_hash[CONSTS::AVAILABLE_BUNDLES_KEY] = Common::SetData.new(item)
+        else # if same, don't need to update the data, but update last_update
+          old_item.last_update = Time.now
+          old_item
+        end
       end
     end
   end

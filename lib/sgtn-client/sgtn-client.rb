@@ -8,11 +8,6 @@ module SgtnClient # :nodoc:
   autoload :Common,             'sgtn-client/common'
   autoload :TranslationLoader,  'sgtn-client/loader'
   autoload :SingleOperation,    'sgtn-client/common/single_operation'
-
-  module Core # :nodoc:
-    autoload :Cache, 'sgtn-client/core/cache'
-  end
-
   autoload :Translation,        'sgtn-client/api/translation'
   autoload :T,                  'sgtn-client/api/t'
   autoload :Source,             'sgtn-client/api/source'
@@ -20,7 +15,6 @@ module SgtnClient # :nodoc:
   autoload :Exceptions,         'sgtn-client/core/exceptions'
   autoload :ValidateUtil,       'sgtn-client/util/validate-util'
   autoload :LocaleUtil,         'sgtn-client/util/locale-util'
-  autoload :CacheUtil,          'sgtn-client/util/cache-util'
   autoload :StringUtil,         'sgtn-client/util/string-util'
   autoload :SingletonError,     'sgtn-client/exceptions'
   autoload :I18nBackend,        'sgtn-client/i18n_backend'

@@ -31,7 +31,7 @@ describe SgtnClient::Config do
       end
 
       before :each do
-        SgtnClient::CacheUtil.clear_cache
+        clear_cache
       end
 
       # it '#should be able to get available locales of all' do
@@ -83,8 +83,8 @@ describe SgtnClient::Config do
       end
 
       it '#available bundles is expired' do
-        @config.translation_bundle = translation_path
-        @config.source_bundle = source_path
+        # @config.translation_bundle = translation_path
+        # @config.source_bundle = source_path
 
         # populate cache
         locales = subject.available_locales(component)
@@ -95,15 +95,27 @@ describe SgtnClient::Config do
         # return expired data
         second_locales = subject.available_locales(component)
         expect(second_locales).to be locales
-
         wait_threads_finish
 
+        # return updated data but it's the same object because data isn't changed.
+        new_locales = subject.available_locales(component)
+        expect(new_locales).to be locales
+
+        ### data is changed
+        expire_cache(SgtnClient::TranslationLoader::CONSTS::AVAILABLE_BUNDLES_KEY)
+        expect(SgtnClient.config.loader.loaders[1]).to(receive(:available_bundles).with(no_args).once { Set[SgtnClient::Common::BundleID.new(component, 'fr')] })
+
+        ### return expired data
+        locales1 = subject.available_locales(component)
+        expect(locales1).to be locales
+        wait_threads_finish
+
+        ### return updated data
         expect(subject).to receive(:notify_observers).once.with(:available_locales).and_call_original
         expect(SgtnClient::LocaleUtil).to receive(:reset_locale_data).once.with(:available_locales).and_call_original
-
-        # return updated data
-        new_locales = subject.available_locales(component)
-        expect(new_locales).to_not be locales
+        locales2 = subject.available_locales(component)
+        expect(locales2).to_not be locales
+        expect(locales2).to include 'fr'
       end
     end
   end
