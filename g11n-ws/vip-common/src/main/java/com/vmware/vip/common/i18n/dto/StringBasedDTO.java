@@ -14,7 +14,10 @@ import com.vmware.vip.common.utils.LocaleUtils;
  * 
  */
 public class StringBasedDTO extends BaseDTO {
-    // The source for translation
+
+    private static final long serialVersionUID = 2670911000421739213L;
+
+	// The source for translation
     private String source = "";
 
     // The key's translation
@@ -61,7 +64,9 @@ public class StringBasedDTO extends BaseDTO {
     }
 
     public void setTranslation(String translation) {
-        this.translation = translation;
+    	if(translation != null) {
+    		this.translation = translation;
+    	}
     }
 
     public String getKey() {
