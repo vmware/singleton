@@ -6,7 +6,6 @@
 package main
 
 import (
-	"sgtnserver/api"
 	_ "sgtnserver/api/v1/cldr"
 	_ "sgtnserver/api/v1/formatting"
 	_ "sgtnserver/api/v1/translation"
@@ -14,11 +13,13 @@ import (
 	_ "sgtnserver/api/v2/combine"
 	_ "sgtnserver/api/v2/formatting"
 	_ "sgtnserver/api/v2/translation"
+	"sgtnserver/graph"
 	"sgtnserver/internal/logger"
 )
 
 func main() {
 	defer logger.Log.Sync()
 
-	api.StartServer()
+	//api.StartServer()
+	graph.GraphQL()
 }

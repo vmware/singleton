@@ -1,0 +1,25 @@
+# GraphQL schema example
+#
+# https://gqlgen.com/getting-started/
+scalar Bytes
+
+type Bundle {
+  id: ID!
+  product: String!
+  version: String!
+  component: String!
+  locale: String!
+  messages: Bytes
+}
+
+type Locales {
+  id: ID!
+  languageTags: [String!]!
+}
+
+type Query {
+  bundles(product: String!, version: String!, locales: [String!], components: [String]): [Bundle!]!
+  locales(product: String!, version: String!): Locales!
+}
+
+
