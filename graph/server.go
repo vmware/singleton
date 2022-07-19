@@ -1,8 +1,8 @@
-package main
+package graph
 
 import (
 	"github.com/gin-gonic/gin"
-	"sgtnserver/graph"
+
 	"sgtnserver/graph/generated"
 
 	"context"
@@ -13,7 +13,7 @@ import (
 func graphqlHandler() gin.HandlerFunc {
 	// NewExecutableSchema and Config are in the generated.go file
 	// Resolver is in the resolver.go file
-	h := handler.NewDefaultServer(generated.NewExecutableSchema(generated.Config{Resolvers: &graph.Resolver{}}))
+	h := handler.NewDefaultServer(generated.NewExecutableSchema(generated.Config{Resolvers: &Resolver{}}))
 
 	return func(c *gin.Context) {
 		h.ServeHTTP(c.Writer, c.Request)
@@ -37,7 +37,7 @@ func GinContextToContextMiddleware() gin.HandlerFunc {
 	}
 }
 
-func main() {
+func GraphQL() {
 	// Setting up Gin
 	r := gin.Default()
 	r.Use(GinContextToContextMiddleware())
