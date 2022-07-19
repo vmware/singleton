@@ -24,7 +24,6 @@ import com.vmware.vip.api.rest.APIV2;
 import com.vmware.vip.common.i18n.dto.response.APIResponseDTO;
 import com.vmware.vip.core.messages.exception.L3APIException;
 import com.vmware.vip.i18n.api.base.StreamProductAction;
-import com.vmware.vip.i18n.api.base.TranslationProductAction;
 
 /**
  * Provide API for product to get translation by component base.
