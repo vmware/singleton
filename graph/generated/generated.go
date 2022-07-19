@@ -8,7 +8,7 @@ import (
 	"errors"
 	"fmt"
 	"sgtnserver/graph/model"
-	"sgtnserver/types"
+	"sgtnserver/graph/types"
 	"strconv"
 	"sync"
 	"sync/atomic"
@@ -613,7 +613,7 @@ func (ec *executionContext) _Bundle_messages(ctx context.Context, field graphql.
 	}
 	res := resTmp.(types.Bytes)
 	fc.Result = res
-	return ec.marshalOBytes2sgtnserverᚋtypesᚐBytes(ctx, field.Selections, res)
+	return ec.marshalOBytes2sgtnserverᚋgraphᚋtypesᚐBytes(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Bundle_messages(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -3682,7 +3682,7 @@ func (ec *executionContext) marshalOBoolean2ᚖbool(ctx context.Context, sel ast
 	return res
 }
 
-func (ec *executionContext) unmarshalOBytes2sgtnserverᚋtypesᚐBytes(ctx context.Context, v interface{}) (types.Bytes, error) {
+func (ec *executionContext) unmarshalOBytes2sgtnserverᚋgraphᚋtypesᚐBytes(ctx context.Context, v interface{}) (types.Bytes, error) {
 	if v == nil {
 		return nil, nil
 	}
@@ -3690,7 +3690,7 @@ func (ec *executionContext) unmarshalOBytes2sgtnserverᚋtypesᚐBytes(ctx conte
 	return res, graphql.ErrorOnPath(ctx, err)
 }
 
-func (ec *executionContext) marshalOBytes2sgtnserverᚋtypesᚐBytes(ctx context.Context, sel ast.SelectionSet, v types.Bytes) graphql.Marshaler {
+func (ec *executionContext) marshalOBytes2sgtnserverᚋgraphᚋtypesᚐBytes(ctx context.Context, sel ast.SelectionSet, v types.Bytes) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}

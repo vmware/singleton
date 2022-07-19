@@ -3,7 +3,7 @@
 package model
 
 import (
-	"sgtnserver/types"
+	"sgtnserver/graph/types"
 )
 
 type Bundle struct {

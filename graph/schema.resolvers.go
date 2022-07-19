@@ -5,19 +5,15 @@ package graph
 
 import (
 	"context"
+	"github.com/go-http-utils/headers"
+	jsoniter "github.com/json-iterator/go"
 	"sgtnserver/api"
 	"sgtnserver/graph/generated"
 	"sgtnserver/graph/model"
 	"sgtnserver/internal/config"
-	"time"
-
-	"github.com/go-http-utils/headers"
-	jsoniter "github.com/json-iterator/go"
-	"gopkg.in/jucardi/go-logger-lib.v1/log"
 )
 
 func (r *queryResolver) Bundles(ctx context.Context, product string, version string, locales []string, components []*string) ([]*model.Bundle, error) {
-	log.Error("TIME0 ", time.Now().UnixMilli())
 	var bundles []*model.Bundle
 
 	if len(locales) == 0 {
