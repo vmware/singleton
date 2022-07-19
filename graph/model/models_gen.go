@@ -2,13 +2,17 @@
 
 package model
 
+import (
+	"sgtnserver/types"
+)
+
 type Bundle struct {
-	ID        string                 `json:"id"`
-	Product   string                 `json:"product"`
-	Version   string                 `json:"version"`
-	Component string                 `json:"component"`
-	Locale    string                 `json:"locale"`
-	Messages  map[string]interface{} `json:"messages"`
+	ID        string      `json:"id"`
+	Product   string      `json:"product"`
+	Version   string      `json:"version"`
+	Component string      `json:"component"`
+	Locale    string      `json:"locale"`
+	Messages  types.Bytes `json:"messages"`
 }
 
 type Locales struct {

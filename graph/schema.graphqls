@@ -1,7 +1,7 @@
 # GraphQL schema example
 #
 # https://gqlgen.com/getting-started/
-scalar Map
+scalar Bytes
 
 type Bundle {
   id: ID!
@@ -9,7 +9,7 @@ type Bundle {
   version: String!
   component: String!
   locale: String!
-  messages: Map!
+  messages: Bytes
 }
 
 type Locales {

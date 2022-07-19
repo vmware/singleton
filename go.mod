@@ -3,7 +3,7 @@ module sgtnserver
 go 1.18
 
 require (
-	github.com/99designs/gqlgen v0.17.12
+	github.com/99designs/gqlgen v0.17.10
 	github.com/alecthomas/template v0.0.0-20190718012654-fb15b899a751
 	github.com/anargu/gin-brotli v0.0.0-20220116052358-12bf532d5267
 	github.com/aws/aws-sdk-go v1.44.49
@@ -32,9 +32,11 @@ require (
 	github.com/swaggo/files v0.0.0-20220610200504-28940afbdbfe
 	github.com/swaggo/gin-swagger v1.5.0
 	github.com/swaggo/swag v1.8.3
+	github.com/vektah/gqlparser/v2 v2.4.6
 	github.com/xiaochao8/format v0.1.1
 	go.uber.org/zap v1.21.0
 	golang.org/x/text v0.3.7
+	gopkg.in/jucardi/go-logger-lib.v1 v1.0.4
 	gopkg.in/natefinch/lumberjack.v2 v2.0.0
 	gopkg.in/yaml.v3 v3.0.1
 )
@@ -58,6 +60,7 @@ require (
 	github.com/google/uuid v1.3.0 // indirect
 	github.com/gorilla/websocket v1.5.0 // indirect
 	github.com/hashicorp/errwrap v1.1.0 // indirect
+	github.com/hashicorp/golang-lru v0.5.4 // indirect
 	github.com/imkira/go-interpol v1.1.0 // indirect
 	github.com/jmespath/go-jmespath v0.4.0 // indirect
 	github.com/josharian/intern v1.0.0 // indirect
@@ -70,6 +73,7 @@ require (
 	github.com/leodido/go-urn v1.2.1 // indirect
 	github.com/mailru/easyjson v0.7.7 // indirect
 	github.com/mattn/go-isatty v0.0.14 // indirect
+	github.com/mitchellh/mapstructure v1.3.1 // indirect
 	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect
 	github.com/modern-go/reflect2 v1.0.2 // indirect
 	github.com/pelletier/go-toml/v2 v2.0.2 // indirect
@@ -80,7 +84,6 @@ require (
 	github.com/ugorji/go/codec v1.2.7 // indirect
 	github.com/valyala/bytebufferpool v1.0.0 // indirect
 	github.com/valyala/fasthttp v1.38.0 // indirect
-	github.com/vektah/gqlparser/v2 v2.4.6 // indirect
 	github.com/xeipuuv/gojsonpointer v0.0.0-20190905194746-02993c407bfb // indirect
 	github.com/xeipuuv/gojsonreference v0.0.0-20180127040603-bd5ef7bd5415 // indirect
 	github.com/xeipuuv/gojsonschema v1.2.0 // indirect
@@ -95,7 +98,6 @@ require (
 	golang.org/x/tools v0.1.11 // indirect
 	google.golang.org/protobuf v1.28.0 // indirect
 	gopkg.in/jucardi/go-iso8601.v1 v1.0.2 // indirect
-	gopkg.in/jucardi/go-logger-lib.v1 v1.0.4 // indirect
 	gopkg.in/jucardi/go-streams.v1 v1.0.2 // indirect
 	gopkg.in/jucardi/go-strings.v1 v1.0.3 // indirect
 	gopkg.in/jucardi/go-terminal-colors.v1 v1.0.1 // indirect

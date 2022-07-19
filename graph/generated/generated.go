@@ -8,6 +8,7 @@ import (
 	"errors"
 	"fmt"
 	"sgtnserver/graph/model"
+	"sgtnserver/types"
 	"strconv"
 	"sync"
 	"sync/atomic"
@@ -218,7 +219,7 @@ var sources = []*ast.Source{
 	{Name: "../schema.graphqls", Input: `# GraphQL schema example
 #
 # https://gqlgen.com/getting-started/
-scalar Map
+scalar Bytes
 
 type Bundle {
   id: ID!
@@ -226,7 +227,7 @@ type Bundle {
   version: String!
   component: String!
   locale: String!
-  messages: Map!
+  messages: Bytes
 }
 
 type Locales {
@@ -608,14 +609,11 @@ func (ec *executionContext) _Bundle_messages(ctx context.Context, field graphql.
 		return graphql.Null
 	}
 	if resTmp == nil {
-		if !graphql.HasFieldError(ctx, fc) {
-			ec.Errorf(ctx, "must not be null")
-		}
 		return graphql.Null
 	}
-	res := resTmp.(map[string]interface{})
+	res := resTmp.(types.Bytes)
 	fc.Result = res
-	return ec.marshalNMap2map(ctx, field.Selections, res)
+	return ec.marshalOBytes2sgtnserverᚋtypesᚐBytes(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Bundle_messages(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -625,7 +623,7 @@ func (ec *executionContext) fieldContext_Bundle_messages(ctx context.Context, fi
 		IsMethod:   false,
 		IsResolver: false,
 		Child: func(ctx context.Context, field graphql.CollectedField) (*graphql.FieldContext, error) {
-			return nil, errors.New("field of type Map does not have child fields")
+			return nil, errors.New("field of type Bytes does not have child fields")
 		},
 	}
 	return fc, nil
@@ -2808,9 +2806,6 @@ func (ec *executionContext) _Bundle(ctx context.Context, sel ast.SelectionSet, o
 
 			out.Values[i] = ec._Bundle_messages(ctx, field, obj)
 
-			if out.Values[i] == graphql.Null {
-				invalids++
-			}
 		default:
 			panic("unknown field " + strconv.Quote(field.Name))
 		}
@@ -3361,27 +3356,6 @@ func (ec *executionContext) marshalNLocales2ᚖsgtnserverᚋgraphᚋmodelᚐLoca
 	return ec._Locales(ctx, sel, v)
 }
 
-func (ec *executionContext) unmarshalNMap2map(ctx context.Context, v interface{}) (map[string]interface{}, error) {
-	res, err := graphql.UnmarshalMap(v)
-	return res, graphql.ErrorOnPath(ctx, err)
-}
-
-func (ec *executionContext) marshalNMap2map(ctx context.Context, sel ast.SelectionSet, v map[string]interface{}) graphql.Marshaler {
-	if v == nil {
-		if !graphql.HasFieldError(ctx, graphql.GetFieldContext(ctx)) {
-			ec.Errorf(ctx, "the requested element is null which the schema does not allow")
-		}
-		return graphql.Null
-	}
-	res := graphql.MarshalMap(v)
-	if res == graphql.Null {
-		if !graphql.HasFieldError(ctx, graphql.GetFieldContext(ctx)) {
-			ec.Errorf(ctx, "the requested element is null which the schema does not allow")
-		}
-	}
-	return res
-}
-
 func (ec *executionContext) unmarshalNString2string(ctx context.Context, v interface{}) (string, error) {
 	res, err := graphql.UnmarshalString(v)
 	return res, graphql.ErrorOnPath(ctx, err)
@@ -3705,6 +3679,22 @@ func (ec *executionContext) marshalOBoolean2ᚖbool(ctx context.Context, sel ast
 		return graphql.Null
 	}
 	res := graphql.MarshalBoolean(*v)
+	return res
+}
+
+func (ec *executionContext) unmarshalOBytes2sgtnserverᚋtypesᚐBytes(ctx context.Context, v interface{}) (types.Bytes, error) {
+	if v == nil {
+		return nil, nil
+	}
+	res, err := types.UnmarshalBytes(v)
+	return res, graphql.ErrorOnPath(ctx, err)
+}
+
+func (ec *executionContext) marshalOBytes2sgtnserverᚋtypesᚐBytes(ctx context.Context, sel ast.SelectionSet, v types.Bytes) graphql.Marshaler {
+	if v == nil {
+		return graphql.Null
+	}
+	res := types.MarshalBytes(v)
 	return res
 }
 

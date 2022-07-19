@@ -45,9 +45,9 @@ LOG:
   Level: info
 
 Cache:
-  Enable: false
+  Enable: true
   MaxCost: 1000 # number of entities to store
   BufferItems: 64
-  Expiration: 0s #seconds
+  Expiration: 60s #seconds
 
 SwaggerUI: true
