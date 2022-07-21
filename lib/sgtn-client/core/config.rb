@@ -18,8 +18,10 @@ module SgtnClient
     def logger
       @logger ||= if log_file
                     puts "create log file: '#{log_file}', level: #{log_level}"
-                    require 'lumberjack'
-                    Lumberjack::Logger.new(log_file, level: log_level, max_size: '1M', keep: 4)
+                    require 'logging'
+                    logger = Logging.logger(log_file, 4, 1_048_576)
+                    logger.level = log_level
+                    logger
                   else
                     require 'logger'
                     Logger.new(STDOUT, level: log_level || Logger::INFO)
