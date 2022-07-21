@@ -6,9 +6,9 @@ require 'i18n'
 module SgtnClient # :nodoc:
   # When integrating Singleton in a client application that is already using [I18n::Backend (https://www.rubydoc.info/github/svenfuchs/i18n/master/I18n/Backend/), it would be useful to have Singleton override the said module in order to minimize necessary changes. Here is a common usage:
   #
-  #   I18n::Backend::Simple.include(I18n::Backend::Fallbacks) # add fallbacks behavior to current backend
+  #   I18n::Backend::Simple.include(I18n::Backend::Fallbacks) # add fallbacks behavior to current backend because localize method needs this
   #   I18n.backend = I18n::Backend::Chain.new(Sgtn::I18nBackend.new(component_name), I18n.backend)
-  #   I18n.enforce_available_locales=false # disable available locales check
+  #   I18n.enforce_available_locales=false # disable available locales check because Singleton does fallback by default
   #   I18n.default_locale = :en
   class I18nBackend
     def initialize(component)
