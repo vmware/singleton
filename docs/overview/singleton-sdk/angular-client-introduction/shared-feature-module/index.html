@@ -6,7 +6,7 @@
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="revised" content="2022-07-22T16:28:57 CST">
-<title>Enable Pseudo Translation :: Singleton</title>
+<title>Shared Feature Module :: Singleton</title>
 <link rel="shortcut icon" href="https://vmware.github.io/singleton/images/favicon.png" type="image/x-icon" />
 <link href="https://vmware.github.io/singleton/css/nucleus.css" rel="stylesheet">
 <link href="https://vmware.github.io/singleton/css/font-awesome.min.css" rel="stylesheet">
@@ -23,7 +23,7 @@
 
     
   </head>
-  <body data-url="/docs/overview/singleton-service/configurations/enable-pseudo-translation/">
+  <body data-url="/docs/overview/singleton-sdk/angular-client-introduction/shared-feature-module/">
     
       <header>
   <div class="logo">
@@ -451,24 +451,41 @@
    Overview</option> 
     <option value="/docs/overview/singleton-service/" >
   -- 
-   Singleton Service</option> 
-      <option value="/docs/overview/singleton-service/singleton-service-db-build-introducation/" >--- DB builder for User guideline</option>
-      <option value="/docs/overview/singleton-service/singleton-service-script/" >--- Singleton Service Script</option>
-    <option value="/docs/overview/singleton-service/configurations/" >
-  --- 
-   Configurations</option> 
-      <option value="/docs/overview/singleton-service/configurations/enable-source-collection/" >---- Enable Source Collection</option>
-      <option value="/docs/overview/singleton-service/configurations/enable-pseudo-translation/"  selected>---- Enable Pseudo Translation</option>
-      <option value="/docs/overview/singleton-service/configurations/enable-s3-key-encrypted/" >---- Enable S3 Key Encrypted</option>
-      <option value="/docs/overview/singleton-service/configurations/enable-new-product/" >---- Enable New Product(s)</option>
-      <option value="/docs/overview/singleton-service/configurations/enable-product-white-list/" >---- Enable Product White List</option>
-      <option value="/docs/overview/singleton-service/configurations/enable-s3-storage/" >---- Enable S3 Storage</option>
-  
-      <option value="/docs/overview/singleton-service/singleton-service-apis/" >--- Singleton Service APIs</option>
-  
+   Singleton Service</option>
     <option value="/docs/overview/singleton-sdk/" >
   -- 
-   Singleton SDK</option>
+   Singleton SDK</option> 
+      <option value="/docs/overview/singleton-sdk/python-client-introduction/" >--- Python Client Introduction</option>
+      <option value="/docs/overview/singleton-sdk/java-client-introduction/" >--- Java Client Introduction</option>
+      <option value="/docs/overview/singleton-sdk/javascript-client-introduction/" >--- JavaScript Client Introduction</option>
+    <option value="/docs/overview/singleton-sdk/angular-client-introduction/" >
+  --- 
+   Angular Client Introduction</option> 
+      <option value="/docs/overview/singleton-sdk/angular-client-introduction/data-initialization/" >---- Data Initialization</option>
+      <option value="/docs/overview/singleton-sdk/angular-client-introduction/locale-management/" >---- Locale Management</option>
+      <option value="/docs/overview/singleton-sdk/angular-client-introduction/lazy-load-module/" >---- Lazy Load Module</option>
+      <option value="/docs/overview/singleton-sdk/angular-client-introduction/localized-component-mixin/" >---- Localized Component Mixin</option>
+      <option value="/docs/overview/singleton-sdk/angular-client-introduction/translate-pipe/" >---- Translate Pipe</option>
+      <option value="/docs/overview/singleton-sdk/angular-client-introduction/translate-directive/" >---- Translate Directive</option>
+      <option value="/docs/overview/singleton-sdk/angular-client-introduction/l10n-service/" >---- L10n Service</option>
+      <option value="/docs/overview/singleton-sdk/angular-client-introduction/i18n-service/" >---- I18n Service</option>
+      <option value="/docs/overview/singleton-sdk/angular-client-introduction/i18n-context/" >---- I18n Context</option>
+      <option value="/docs/overview/singleton-sdk/angular-client-introduction/plural-format/" >---- Plural Format</option>
+      <option value="/docs/overview/singleton-sdk/angular-client-introduction/relative-time-format/" >---- Relative Time Format</option>
+      <option value="/docs/overview/singleton-sdk/angular-client-introduction/date-time-format-pipe/" >---- Date Time Format Pipe</option>
+      <option value="/docs/overview/singleton-sdk/angular-client-introduction/number-format-pipe/" >---- Number Format Pipe</option>
+      <option value="/docs/overview/singleton-sdk/angular-client-introduction/currency-format-pipe/" >---- Currency Format Pipe</option>
+      <option value="/docs/overview/singleton-sdk/angular-client-introduction/percent-format-pipe/" >---- Percent Format Pipe</option>
+      <option value="/docs/overview/singleton-sdk/angular-client-introduction/command-line-utils/" >---- Command Line Utils</option>
+      <option value="/docs/overview/singleton-sdk/angular-client-introduction/standalone-mode/" >---- Standalone Mode</option>
+      <option value="/docs/overview/singleton-sdk/angular-client-introduction/shared-feature-module/"  selected>---- Shared Feature Module</option>
+      <option value="/docs/overview/singleton-sdk/angular-client-introduction/error-handling/" >---- Error Handling</option>
+  
+      <option value="/docs/overview/singleton-sdk/csharp-client-introduction/" >--- C# Client Introduction</option>
+      <option value="/docs/overview/singleton-sdk/go-client-introduction/" >--- Go Client Introduction</option>
+      <option value="/docs/overview/singleton-sdk/resources/java-client/0.5.1/javadoc/" >--- </option>
+      <option value="/docs/overview/singleton-sdk/resources/java-client/0.6.1/javadoc/" >--- </option>
+  
   
     <option value="/docs/tutorials/" >
   - 
@@ -487,18 +504,150 @@
       </div>
     
 
-    <h1>Enable Pseudo Translation</h1>
+    <h1>Shared Feature Module</h1>
     
     
     
+    <h4 id="overview"><strong>Overview</strong></h4>
+<p>Creating shared modules allows you to organize and streamline your code. You can put commonly used directives, pipes, and components into one module and then import just that module wherever you need it in other parts of your application.
+Therefore from the perspective of internationalization, singleton Angular client also provides corresponding support for the shared modules.</p>
+<h4 id="resource-isolation"><strong>Resource Isolation</strong></h4>
+<p>By default, the resources of each Singleton component are isolated and registered in different namespaces to avoid duplicate keys causing content to be unexpectedly overwritten.</p>
+<h4 id="example-code"><strong>Example Code</strong></h4>
+<h5 id="configuration"><strong>Configuration</strong></h5>
+<pre><code>// i18n.config.ts
+import { ENGLISH } from './header.l10n';
+import { PatternCategories } from '@singleton-i18n/angular-client';
+
+const I18nConfig = {
+    productID: 'vipuiheader',
+    component: 'default',
+    version: '1.0.0',
+    i18nScope: [
+        PatternCategories.DATE,
+        PatternCategories.NUMBER,
+        PatternCategories.CURRENCIES
+    ],
+    host: 'https://singleton.service.com:8090/',
+    // By default, the resources of each component are isolated.
+    // Please set isolated as false in a shared module.
+    isolated: false,
+    sourceBundles: [ENGLISH]
+};
+
+</code></pre><h5 id="configuration-registration"><strong>Configuration Registration</strong></h5>
+<blockquote>
+<p>Note: Never call a forRoot static method in a shared module. You might end up with different instances of the service in your injector tree.</p>
+</blockquote>
+<pre><code>// shared-module.module.ts
+import { VIPModule, VIPService } from ' @singleton-i18n/angular-client';
+import { libConfig } from './i18n.util';
+
+@NgModule({
+    imports: [
+        ...
+        VIPModule
+    ]
+})
+
+export class SharedFeatureModule {
+    constructor(private vipService: VIPService) {
+        // register feature module configuration
+        vipService.registerComponent(libConfig);
+    }
+}
+
+</code></pre><h5 id="usages"><strong>Usages</strong></h5>
+<p>Since the resource loading method in a shared module is uncertain, it may be synchronous or asynchronous depending on the calling scenario, when calling synchronous &lsquo;getMessage&rsquo; or data formatting-related methods,
+be sure to use these synchronous methods safely by subscribing to the &lsquo;stream&rsquo; API. All pipe utilities encapsulated in the library support both synchronous and asynchronous scenarios without any difference.</p>
+<pre><code>// shared-module.module.ts
+import { L10nService, I18nService, VIPService } from '@singleton-i18n/angular-client';
+import { Component, OnInit, OnDestroy } from '@angular/core';
     
+@Component({
+    selector: 'shared',
+    templateUrl: './shared.component.html'
+})
+export class SharedComponent implements OnInit, OnDestroy {
+    subscription: any;
+    constructor(private l10nService: L10nService, private i18nService: I18nService, private vipService: VIPService) { }
+
+    ngOnInit() {
+        this.subscription = this.vipService.stream.subscribe((locale: string) =&gt; {
+            this.translation = this.l10nService.getMessage('singleton.description', [ 'Singleton for Angular client' ], locale);
+            this.date = this.i18nService.formatDate(new Date(), 'short', locale );
+        });
+    }
+
+    ngOnDestroy() {
+        this.subscription.unsubscribe();
+        this.subscription = undefined;
+    }
+}
+
+</code></pre><style>
+    html {
+        font-family: Metropolis;
+        color: #575757;
+    }
+    section strong {
+        font-weight: 400;
+    }
+    section p>strong {
+        font-weight: 600;
+    }
+    article section.page pre {
+        background-color: #444;
+        border: 0.5px solid #DBDBDB; 
+        padding: 1.5rem 1rem 1.5rem 1rem;
+        border-radius: 5px;
+        margin: 16px auto;
+    }
+    article section.page code {
+        font-size: 90%;
+        color: #17ff0b;  
+        white-space: pre-wrap;
+    }
+    article section.page pre span.copy-to-clipboard {
+        color: #b0bec5;
+        cursor: pointer;
+    }
+    article section.page table th {
+        font-weight:500;
+        text-transform: inherit;
+    }
+    table thead tr th:first-child {
+        width:13rem;
+    }
+    table thead tr th:nth-child(2) {
+        width:10rem;
+    }
+    table thead tr th:nth-child(3) {
+        width:10rem;
+    }
+    article section.page h1:first-of-type {
+        text-transform: inherit;
+        font-family: inherit;
+    }
+   blockquote {
+        background: #f5dddb;
+        border: 1px solid #f8b5b4;
+        color: #575757;
+    }    
+    blockquote>p {
+        display: inline-block;
+        margin: 1rem 0;
+    }
+</style><blockquote>
+</blockquote>
+
 
     
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-prev" href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-source-collection/" title="Enable Source Collection"> <i class="fa fa-chevron-left"></i><label>Enable Source Collection</label></a>
-    <a class="nav nav-next" href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-s3-key-encrypted/" title="Enable S3 Key Encrypted" style="margin-right: 0px;"><label>Enable S3 Key Encrypted</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/standalone-mode/" title="Standalone Mode"> <i class="fa fa-chevron-left"></i><label>Standalone Mode</label></a>
+    <a class="nav nav-next" href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/error-handling/" title="Error Handling" style="margin-right: 0px;"><label>Error Handling</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>
@@ -513,7 +662,7 @@
 
     
     <div class="date">
-        <i class='fa fa-calendar'></i> Last update on 24/09/2019
+        <i class='fa fa-calendar'></i> Last update on 16/06/2022
     </div>
     
 

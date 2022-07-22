@@ -5,20 +5,18 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2021-02-26T09:59:30 CST">
+<meta name="revised" content="2022-07-22T16:28:58 CST">
 <title>Angular Client Introduction :: Singleton</title>
 <link rel="shortcut icon" href="https://vmware.github.io/singleton/images/favicon.png" type="image/x-icon" />
-<link href="https://vmware.github.io/singleton/css/font-awesome.min.css" rel="stylesheet">
 <link href="https://vmware.github.io/singleton/css/nucleus.css" rel="stylesheet">
+<link href="https://vmware.github.io/singleton/css/font-awesome.min.css" rel="stylesheet">
+<link href="https://vmware.github.io/singleton/css/featherlight.min.css" rel="stylesheet">
+<link href="https://vmware.github.io/singleton/css/auto-complete.css" rel="stylesheet">
 <link href="https://vmware.github.io/singleton/theme-flex/style.css" rel="stylesheet">
 
 	<link href="https://vmware.github.io/singleton/theme-flex/variant-blue.css" rel="stylesheet">
 
 <link rel="stylesheet" href="https://vmware.github.io/singleton/css/bootstrap.min.css">
-<script src="https://vmware.github.io/singleton/js/jquery-2.x.min.js"></script>
-<script type="text/javascript">
-      var baseurl = "https:\/\/vmware.github.io\/singleton\/";
-</script>
 <meta name="description" content="One-fits-all Internationalization Solution">
 
 
@@ -64,27 +62,26 @@
 <article>
   <aside>
     <ul class="menu">
-    <li data-nav-id="/docs/" class="dd-item parent haschildren
+    <li data-nav-id="https://vmware.github.io/singleton/docs/" class="dd-item haschildren
         ">
       <div>
-      <a href="https://vmware.github.io/singleton/docs/">Documentation</a>
-            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="https://vmware.github.io/singleton/docs/">Documentation</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-    <li data-nav-id="/docs/get-started/" class="dd-item haschildren
+    <li data-nav-id="https://vmware.github.io/singleton/docs/get-started/" class="dd-item haschildren
         ">
       <div>
       <a href="https://vmware.github.io/singleton/docs/get-started/">Get Started</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-      <li data-nav-id="/docs/get-started/download-and-installation/" class="dd-item">
+      <li data-nav-id="https://vmware.github.io/singleton/docs/get-started/download-and-installation/" class="dd-item">
         <div>
           <a href="https://vmware.github.io/singleton/docs/get-started/download-and-installation/">
             Download and Installation
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/docs/get-started/quick-start/" class="dd-item">
+      <li data-nav-id="https://vmware.github.io/singleton/docs/get-started/quick-start/" class="dd-item">
         <div>
           <a href="https://vmware.github.io/singleton/docs/get-started/quick-start/">
             Quick Start
@@ -93,75 +90,74 @@
     </li>
         </ul>
     </li>
-    <li data-nav-id="/docs/overview/" class="dd-item parent haschildren
+    <li data-nav-id="https://vmware.github.io/singleton/docs/overview/" class="dd-item haschildren
         ">
       <div>
-      <a href="https://vmware.github.io/singleton/docs/overview/">Overview</a>
-            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="https://vmware.github.io/singleton/docs/overview/">Overview</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-    <li data-nav-id="/docs/overview/singleton-service/" class="dd-item haschildren
+    <li data-nav-id="https://vmware.github.io/singleton/docs/overview/singleton-service/" class="dd-item haschildren
         ">
       <div>
       <a href="https://vmware.github.io/singleton/docs/overview/singleton-service/">Singleton Service</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-      <li data-nav-id="/docs/overview/singleton-service/singleton-service-db-build-introducation/" class="dd-item">
+      <li data-nav-id="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-db-build-introducation/" class="dd-item">
         <div>
           <a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-db-build-introducation/">
             DB builder for User guideline
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/docs/overview/singleton-service/singleton-service-script/" class="dd-item">
+      <li data-nav-id="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-script/" class="dd-item">
         <div>
           <a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-script/">
             Singleton Service Script
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-    <li data-nav-id="/docs/overview/singleton-service/configurations/" class="dd-item haschildren
+    <li data-nav-id="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/" class="dd-item haschildren
         ">
       <div>
       <a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/">Configurations</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-      <li data-nav-id="/docs/overview/singleton-service/configurations/enable-source-collection/" class="dd-item">
+      <li data-nav-id="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-source-collection/" class="dd-item">
         <div>
           <a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-source-collection/">
             Enable Source Collection
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/docs/overview/singleton-service/configurations/enable-pseudo-translation/" class="dd-item">
+      <li data-nav-id="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-pseudo-translation/" class="dd-item">
         <div>
           <a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-pseudo-translation/">
             Enable Pseudo Translation
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/docs/overview/singleton-service/configurations/enable-s3-key-encrypted/" class="dd-item">
+      <li data-nav-id="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-s3-key-encrypted/" class="dd-item">
         <div>
           <a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-s3-key-encrypted/">
             Enable S3 Key Encrypted
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/docs/overview/singleton-service/configurations/enable-new-product/" class="dd-item">
+      <li data-nav-id="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-new-product/" class="dd-item">
         <div>
           <a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-new-product/">
             Enable New Product(s)
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/docs/overview/singleton-service/configurations/enable-product-white-list/" class="dd-item">
+      <li data-nav-id="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-product-white-list/" class="dd-item">
         <div>
           <a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-product-white-list/">
             Enable Product White List
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/docs/overview/singleton-service/configurations/enable-s3-storage/" class="dd-item">
+      <li data-nav-id="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-s3-storage/" class="dd-item">
         <div>
           <a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-s3-storage/">
             Enable S3 Storage
@@ -170,7 +166,7 @@
     </li>
         </ul>
     </li>
-      <li data-nav-id="/docs/overview/singleton-service/singleton-service-apis/" class="dd-item">
+      <li data-nav-id="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-apis/" class="dd-item">
         <div>
           <a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-apis/">
             Singleton Service APIs
@@ -179,179 +175,198 @@
     </li>
         </ul>
     </li>
-    <li data-nav-id="/docs/overview/singleton-sdk/" class="dd-item parent haschildren
+    <li data-nav-id="https://vmware.github.io/singleton/docs/overview/singleton-sdk/" class="dd-item haschildren
         ">
       <div>
-      <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/">Singleton SDK</a>
-            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/">Singleton SDK</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-      <li data-nav-id="/docs/overview/singleton-sdk/python-client-introduction/" class="dd-item">
+      <li data-nav-id="https://vmware.github.io/singleton/docs/overview/singleton-sdk/python-client-introduction/" class="dd-item">
         <div>
           <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/python-client-introduction/">
             Python Client Introduction
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/docs/overview/singleton-sdk/java-client-introduction/" class="dd-item">
+      <li data-nav-id="https://vmware.github.io/singleton/docs/overview/singleton-sdk/java-client-introduction/" class="dd-item">
         <div>
           <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/java-client-introduction/">
             Java Client Introduction
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/docs/overview/singleton-sdk/javascript-client-introduction/" class="dd-item">
+      <li data-nav-id="https://vmware.github.io/singleton/docs/overview/singleton-sdk/javascript-client-introduction/" class="dd-item">
         <div>
           <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/javascript-client-introduction/">
-            Javascript Client Introduction
+            JavaScript Client Introduction
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-    <li data-nav-id="/docs/overview/singleton-sdk/angular-client-introduction/" class="dd-item parent active haschildren
+    <li data-nav-id="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/" class="dd-item haschildren
         ">
       <div>
-      <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/">Angular Client Introduction</a>
-            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/">Angular Client Introduction</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-      <li data-nav-id="/docs/overview/singleton-sdk/angular-client-introduction/data-initialization/" class="dd-item">
+      <li data-nav-id="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/data-initialization/" class="dd-item">
         <div>
           <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/data-initialization/">
             Data Initialization
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/docs/overview/singleton-sdk/angular-client-introduction/locale-management/" class="dd-item">
+      <li data-nav-id="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/locale-management/" class="dd-item">
         <div>
           <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/locale-management/">
             Locale Management
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/docs/overview/singleton-sdk/angular-client-introduction/isolated-feature-module/" class="dd-item">
-        <div>
-          <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/isolated-feature-module/">
-            Isolated Feature Module
-          </a><i class="fa fa-circle-thin read-icon"></i>
-        </div>
-    </li>
-      <li data-nav-id="/docs/overview/singleton-sdk/angular-client-introduction/lazy-load-module/" class="dd-item">
+      <li data-nav-id="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/lazy-load-module/" class="dd-item">
         <div>
           <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/lazy-load-module/">
             Lazy Load Module
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/docs/overview/singleton-sdk/angular-client-introduction/localized-component-mixin/" class="dd-item">
+      <li data-nav-id="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/localized-component-mixin/" class="dd-item">
         <div>
           <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/localized-component-mixin/">
             Localized Component Mixin
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/docs/overview/singleton-sdk/angular-client-introduction/translate-pipe/" class="dd-item">
+      <li data-nav-id="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/translate-pipe/" class="dd-item">
         <div>
           <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/translate-pipe/">
             Translate Pipe
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/docs/overview/singleton-sdk/angular-client-introduction/translate-directive/" class="dd-item">
+      <li data-nav-id="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/translate-directive/" class="dd-item">
         <div>
           <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/translate-directive/">
             Translate Directive
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/docs/overview/singleton-sdk/angular-client-introduction/l10n-service/" class="dd-item">
+      <li data-nav-id="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/l10n-service/" class="dd-item">
         <div>
           <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/l10n-service/">
             L10n Service
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/docs/overview/singleton-sdk/angular-client-introduction/i18n-service/" class="dd-item">
+      <li data-nav-id="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/i18n-service/" class="dd-item">
         <div>
           <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/i18n-service/">
             I18n Service
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/docs/overview/singleton-sdk/angular-client-introduction/plural-format/" class="dd-item">
+      <li data-nav-id="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/i18n-context/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/i18n-context/">
+            I18n Context
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/plural-format/" class="dd-item">
         <div>
           <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/plural-format/">
             Plural Format
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/docs/overview/singleton-sdk/angular-client-introduction/relative-time-format/" class="dd-item">
+      <li data-nav-id="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/relative-time-format/" class="dd-item">
         <div>
           <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/relative-time-format/">
             Relative Time Format
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/docs/overview/singleton-sdk/angular-client-introduction/date-time-format-pipe/" class="dd-item">
+      <li data-nav-id="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/date-time-format-pipe/" class="dd-item">
         <div>
           <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/date-time-format-pipe/">
             Date Time Format Pipe
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/docs/overview/singleton-sdk/angular-client-introduction/number-format-pipe/" class="dd-item">
+      <li data-nav-id="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/number-format-pipe/" class="dd-item">
         <div>
           <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/number-format-pipe/">
             Number Format Pipe
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/docs/overview/singleton-sdk/angular-client-introduction/currency-format-pipe/" class="dd-item">
+      <li data-nav-id="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/currency-format-pipe/" class="dd-item">
         <div>
           <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/currency-format-pipe/">
             Currency Format Pipe
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/docs/overview/singleton-sdk/angular-client-introduction/percent-format-pipe/" class="dd-item">
+      <li data-nav-id="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/percent-format-pipe/" class="dd-item">
         <div>
           <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/percent-format-pipe/">
             Percent Format Pipe
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/docs/overview/singleton-sdk/angular-client-introduction/command-line-utils/" class="dd-item">
+      <li data-nav-id="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/command-line-utils/" class="dd-item">
         <div>
           <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/command-line-utils/">
             Command Line Utils
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/docs/overview/singleton-sdk/angular-client-introduction/standalone-mode/" class="dd-item">
+      <li data-nav-id="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/standalone-mode/" class="dd-item">
         <div>
           <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/standalone-mode/">
             Standalone Mode
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
+      <li data-nav-id="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/shared-feature-module/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/shared-feature-module/">
+            Shared Feature Module
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/error-handling/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/error-handling/">
+            Error Handling
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
         </ul>
     </li>
-      <li data-nav-id="/docs/overview/singleton-sdk/csharp-client-introduction/" class="dd-item">
+      <li data-nav-id="https://vmware.github.io/singleton/docs/overview/singleton-sdk/csharp-client-introduction/" class="dd-item">
         <div>
           <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/csharp-client-introduction/">
             C# Client Introduction
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/docs/overview/singleton-sdk/go-client-introduction/" class="dd-item">
+      <li data-nav-id="https://vmware.github.io/singleton/docs/overview/singleton-sdk/go-client-introduction/" class="dd-item">
         <div>
           <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/go-client-introduction/">
             Go Client Introduction
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/docs/overview/singleton-sdk/resources/java-client/0.5.1/javadoc/" class="dd-item">
+      <li data-nav-id="https://vmware.github.io/singleton/docs/overview/singleton-sdk/resources/java-client/0.5.1/javadoc/" class="dd-item">
         <div>
           <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/resources/java-client/0.5.1/javadoc/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="https://vmware.github.io/singleton/docs/overview/singleton-sdk/resources/java-client/0.6.1/javadoc/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/resources/java-client/0.6.1/javadoc/">
             
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
@@ -360,48 +375,48 @@
     </li>
         </ul>
     </li>
-    <li data-nav-id="/docs/tutorials/" class="dd-item haschildren
+    <li data-nav-id="https://vmware.github.io/singleton/docs/tutorials/" class="dd-item haschildren
         ">
       <div>
       <a href="https://vmware.github.io/singleton/docs/tutorials/">Tutorials</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-      <li data-nav-id="/docs/tutorials/integrate-singleton-in-java-app/" class="dd-item">
+      <li data-nav-id="https://vmware.github.io/singleton/docs/tutorials/integrate-singleton-in-java-app/" class="dd-item">
         <div>
           <a href="https://vmware.github.io/singleton/docs/tutorials/integrate-singleton-in-java-app/">
             Integrate Singleton in Java App
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/docs/tutorials/integrate-singleton-in-javascript-app/" class="dd-item">
+      <li data-nav-id="https://vmware.github.io/singleton/docs/tutorials/integrate-singleton-in-javascript-app/" class="dd-item">
         <div>
           <a href="https://vmware.github.io/singleton/docs/tutorials/integrate-singleton-in-javascript-app/">
             Integrate Singleton in Javascript App
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/docs/tutorials/integrate-singleton-in-angular-app/" class="dd-item">
+      <li data-nav-id="https://vmware.github.io/singleton/docs/tutorials/integrate-singleton-in-angular-app/" class="dd-item">
         <div>
           <a href="https://vmware.github.io/singleton/docs/tutorials/integrate-singleton-in-angular-app/">
             Integrate Singleton in Angular App
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/docs/tutorials/integrate-singleton-in-csharp-app/" class="dd-item">
+      <li data-nav-id="https://vmware.github.io/singleton/docs/tutorials/integrate-singleton-in-csharp-app/" class="dd-item">
         <div>
           <a href="https://vmware.github.io/singleton/docs/tutorials/integrate-singleton-in-csharp-app/">
             Integrate Singleton in C# App
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/docs/tutorials/integrate-singleton-in-python-app/" class="dd-item">
+      <li data-nav-id="https://vmware.github.io/singleton/docs/tutorials/integrate-singleton-in-python-app/" class="dd-item">
         <div>
           <a href="https://vmware.github.io/singleton/docs/tutorials/integrate-singleton-in-python-app/">
             Integrate Singleton in Python App
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/docs/tutorials/deploy-singleton-service-in-your-app/" class="dd-item">
+      <li data-nav-id="https://vmware.github.io/singleton/docs/tutorials/deploy-singleton-service-in-your-app/" class="dd-item">
         <div>
           <a href="https://vmware.github.io/singleton/docs/tutorials/deploy-singleton-service-in-your-app/">
             Deploy Singleton Service in Your App
@@ -442,19 +457,19 @@
    Singleton SDK</option> 
       <option value="/docs/overview/singleton-sdk/python-client-introduction/" >--- Python Client Introduction</option>
       <option value="/docs/overview/singleton-sdk/java-client-introduction/" >--- Java Client Introduction</option>
-      <option value="/docs/overview/singleton-sdk/javascript-client-introduction/" >--- Javascript Client Introduction</option>
+      <option value="/docs/overview/singleton-sdk/javascript-client-introduction/" >--- JavaScript Client Introduction</option>
     <option value="/docs/overview/singleton-sdk/angular-client-introduction/"  selected>
   --- 
    Angular Client Introduction</option> 
       <option value="/docs/overview/singleton-sdk/angular-client-introduction/data-initialization/" >---- Data Initialization</option>
       <option value="/docs/overview/singleton-sdk/angular-client-introduction/locale-management/" >---- Locale Management</option>
-      <option value="/docs/overview/singleton-sdk/angular-client-introduction/isolated-feature-module/" >---- Isolated Feature Module</option>
       <option value="/docs/overview/singleton-sdk/angular-client-introduction/lazy-load-module/" >---- Lazy Load Module</option>
       <option value="/docs/overview/singleton-sdk/angular-client-introduction/localized-component-mixin/" >---- Localized Component Mixin</option>
       <option value="/docs/overview/singleton-sdk/angular-client-introduction/translate-pipe/" >---- Translate Pipe</option>
       <option value="/docs/overview/singleton-sdk/angular-client-introduction/translate-directive/" >---- Translate Directive</option>
       <option value="/docs/overview/singleton-sdk/angular-client-introduction/l10n-service/" >---- L10n Service</option>
       <option value="/docs/overview/singleton-sdk/angular-client-introduction/i18n-service/" >---- I18n Service</option>
+      <option value="/docs/overview/singleton-sdk/angular-client-introduction/i18n-context/" >---- I18n Context</option>
       <option value="/docs/overview/singleton-sdk/angular-client-introduction/plural-format/" >---- Plural Format</option>
       <option value="/docs/overview/singleton-sdk/angular-client-introduction/relative-time-format/" >---- Relative Time Format</option>
       <option value="/docs/overview/singleton-sdk/angular-client-introduction/date-time-format-pipe/" >---- Date Time Format Pipe</option>
@@ -463,10 +478,13 @@
       <option value="/docs/overview/singleton-sdk/angular-client-introduction/percent-format-pipe/" >---- Percent Format Pipe</option>
       <option value="/docs/overview/singleton-sdk/angular-client-introduction/command-line-utils/" >---- Command Line Utils</option>
       <option value="/docs/overview/singleton-sdk/angular-client-introduction/standalone-mode/" >---- Standalone Mode</option>
+      <option value="/docs/overview/singleton-sdk/angular-client-introduction/shared-feature-module/" >---- Shared Feature Module</option>
+      <option value="/docs/overview/singleton-sdk/angular-client-introduction/error-handling/" >---- Error Handling</option>
   
       <option value="/docs/overview/singleton-sdk/csharp-client-introduction/" >--- C# Client Introduction</option>
       <option value="/docs/overview/singleton-sdk/go-client-introduction/" >--- Go Client Introduction</option>
       <option value="/docs/overview/singleton-sdk/resources/java-client/0.5.1/javadoc/" >--- </option>
+      <option value="/docs/overview/singleton-sdk/resources/java-client/0.6.1/javadoc/" >--- </option>
   
   
     <option value="/docs/tutorials/" >
@@ -483,15 +501,6 @@
         <div class="searchbox">
           <input data-search-input id="search-by" type="text" placeholder="Search...">
         </div>
-        <script type="text/javascript" src="https://vmware.github.io/singleton/js/lunr.min.js"></script>
-        <script type="text/javascript" src="https://vmware.github.io/singleton/js/auto-complete.js"></script>
-        <link href="https://vmware.github.io/singleton/css/auto-complete.css" rel="stylesheet">
-        <script type="text/javascript">
-          
-              var baseurl = "https:\/\/vmware.github.io\/singleton\/";
-          
-        </script>
-        <script type="text/javascript" src="https://vmware.github.io/singleton/js/search.js"></script>
       </div>
     
 
@@ -500,40 +509,91 @@
     
     
 
-<p>singleton for Angular client is common lib developed by VMware G11n team to provide i18n support for Angular framework. The client will communicate with singleton server for fetching translation and i18n patterns.</p>
+<p>Singleton for Angular client is common lib developed by VMware G11n team to provide i18n support for Angular framework. The client will communicate with singleton server for fetching translation and i18n patterns.</p>
 <p>Most translations provided by singleton service comes from Human translators, when new application is connected to singleton service, source strings (English strings), required language and related information will be sent to singleton service, singleton service doesn’t return real translation immediately since the human translators need time to figure out the quilted translation, at this moment, singleton service just delivers pseudo tag as placeholder to indicate singleton client works well with singleton service and App itself in development stage. Once the translations are ready, when the client side calls singleton service again, the real translations will be delivered via HTTP request. Please note that under English locale, the client doesn&rsquo;t make a network call to singleton service, but return English directly.</p>
 <p>Besides Localization, singleton client also provides I18n support for Datetime format, number format, currency and plural. singleton I18n service is based on CLDR data repository and keep the same scope in supported locales set. For the specific usages and API details please refer to following sections, if you find below APIs can&rsquo;t cover all usages of your application requirement, please feel free to contact with our team to add related API.</p>
 <h4 id="features"><strong>Features</strong></h4>
 <ul>
-<li>Internationalization. Such as Dates, Times, Numbers and Currencies formatting support.</li>
-<li>Localization support.</li>
+<li>Level-2 Dates, Times, Numbers and Currencies formatting support. For more details refer to i18n Level-2.</li>
+<li>Level-3 support. For more details refer to i18n Level-3.</li>
 </ul>
 <h4 id="version"><strong>Version</strong></h4>
 <ul>
+<li>10.x (support Angular10)</li>
+<li>9.x (support Angular9)</li>
 <li>8.x (support Angular8)</li>
 <li>7.x (support Angular7.x)</li>
 <li>6.x (support Angular6.x)</li>
 <li>1.x (support Angular4.x &amp; Angular5.x)</li>
 <li>0.7.x is no longer maintained, only for bugfix</li>
 </ul>
-<blockquote>
-<p>&quot;VIPServiceConfig&rdquo; has been removed from Version 8.x. For more changes in Version 8.x, please check the changelog.</p>
-</blockquote>
-<h4 id="installation"><strong>Installation</strong></h4>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<h4 id="strings-externalization"><strong>Strings externalization</strong></h4>
-<p><img src="https://github.com/zmengjiao/singleton/raw/website/content/en/images/ngx-2.png" alt="ngx-2"></p>
-<h4 id="configuration"><strong>Configuration</strong></h4>
-<p><img src="https://github.com/zmengjiao/singleton/raw/website/content/en/images/ngx-3.png" alt="ngx-3"></p>
-<h4 id="parameters"><strong>Parameters</strong></h4>
+<h4 id="installing-the-npm-module"><strong>Installing the NPM module</strong></h4>
+<p>The module is published internal to VMware only, on the build-artifactory NPM registry. To install it,
+you need to set your NPM registry either in your .npmrc or on the command line with &ndash;registry.</p>
+<p>The command below will install this library and all its peer dependencies. The internal registry is added as an argument.</p>
+<pre><code>npm install @i18n-singleton/angualr-client \
+    @angular/core@^10.0.0 \
+    debug@^4.1.0 \
+    html-element@^2.2.0 \
+    rxjs@^7.0.0 \
+    superagent@^5.2.2 \
+    typescript@^4.0.0 \
+    --save
+
+</code></pre><h4 id="strings-externalization"><strong>Strings externalization</strong></h4>
+<pre><code>// intro.l10n.ts
+
+export const ENGLISH = {
+    ...
+    'some.unique.key' : 'English for some.unique.key',
+    'singleton.description' : '{0} is common lib developed by VMware G11n team.',
+
+    // if the comment is required, please use array as the value
+    // the first item represents actual value, the second is the comment
+    'create.time': ['This example was created on {0}', 'the variable is a date']
+    ...
+};
+
+</code></pre><pre><code>// error.l10n.ts
+
+export const ENGLISH = {
+    ...
+    'timeout': 'network connection timeout'
+    ...
+};
+
+</code></pre><h4 id="configuration"><strong>Configuration</strong></h4>
+<pre><code>// i18n.config.ts
+// Since the variable name exported in the resource file can only be ENGLISH,
+// when importing the resource file, please use import as to distinguish the resource files.
+
+import { ENGLISH as IntroMessages } from './intro.l10n';
+import { ENGLISH as ErrorMessages } from './error.l10n';
+import { PatternCategories } from '@singleton-i18n/angular-client';
+
+export const I18nConfig = {
+    productID: 'SingletonNgxSample',
+    component: 'default',
+    version: '1.0.0',
+    i18nScope: [
+        PatternCategories.DATE,
+        PatternCategories.NUMBER,
+        PatternCategories.CURRENCIES
+    ],
+    host: 'https://singleton.service.com:8090/',
+    isPseudo: false,
+    sourceBundles: [IntroMessages, ErrorMessages],
+    timeout: 5000
+};
+
+</code></pre><h4 id="parameters"><strong>Parameters</strong></h4>
 <table>
 <thead>
 <tr>
 <th align="center">Parameter</th>
 <th align="center">Required</th>
 <th align="center">Type</th>
-<th align="center">Description</th>
+<th align="left"><div style="text-align:center">Description</div></th>
 </tr>
 </thead>
 <tbody>
@@ -541,71 +601,219 @@
 <td align="center">productID</td>
 <td align="center">required</td>
 <td align="center">string</td>
-<td align="center">Product name. singleton service doesn’t explicitly restrict name of product, but it&rsquo;s better to keep short and sync with the name in release master.</td>
+<td align="left">Product name. singleton service doesn’t explicitly restrict name of product, but it&rsquo;s better to keep short and sync with the name in release master.</td>
 </tr>
 <tr>
 <td align="center">component</td>
 <td align="center">required</td>
 <td align="center">string</td>
-<td align="center">Component name. singleton internal concept is used to divide UI strings into different units according to certain rules, make sure each component doesn’t exceed 5000 strings.</td>
+<td align="left">Component name. singleton internal concept is used to divide UI strings into different units according to certain rules, make sure each component doesn’t exceed 5000 strings.</td>
 </tr>
 <tr>
 <td align="center">version</td>
 <td align="center">required</td>
 <td align="center">string</td>
-<td align="center">Release version. singleton internal concept is used to indicate the current version of the UI strings.</td>
+<td align="left">Release version. singleton internal concept is used to indicate the current version of the UI strings.</td>
 </tr>
 <tr>
 <td align="center">host</td>
 <td align="center">required</td>
 <td align="center">string</td>
-<td align="center">This is singleton service which provides clients with translations and pattern.  The host can be optional when an isolated feature module which configured with translationBundles.</td>
+<td align="left">URL of Singleton host, please refer to the known Singleton Instances. The host can be optional when an isolated feature module which configured with translationBundles.</td>
+</tr>
+<tr>
+<td align="center">isolated</td>
+<td align="center">optional</td>
+<td align="center">boolean</td>
+<td align="left">Determine whether the resources of this singleton component are isolated. The default value is true. The resources are isolated between different singleton components via different namespaces. If this value is false, the current singleton component&rsquo;s resources will be shared with other singleton components. It is generally recommended to set this field to false in the shared singleton component configuration for the shared module or standalone Angular lib.</td>
 </tr>
 <tr>
 <td align="center">i18nScope</td>
 <td align="center">optional</td>
 <td align="center">[]</td>
-<td align="center">Define the scope of i18n support. The default scope is empty.<!-- raw HTML omitted -->PatternCategories.DATE means date&amp;time format support.<!-- raw HTML omitted -->PatternCategories.NUMBER means decimal and percent format support.<!-- raw HTML omitted -->PatternCategories.PLURAL means single plural support.<!-- raw HTML omitted -->PatternCategories.CURRENCIES means currency format support.<!-- raw HTML omitted -->PatternCategories.DATEFIELDS means relative time format support.</td>
+<td align="left">Define the scope of i18n support. The default scope is empty.<br/>PatternCategories.DATE means date&amp;time format support.<br/>PatternCategories.NUMBER means decimal and percent format support.<br/>PatternCategories.PLURAL means single plural support.<br/>PatternCategories.CURRENCIES means currency format support.<br/>PatternCategories.DATEFIELDS means relative time format support.</td>
 </tr>
 <tr>
 <td align="center">isPseudo</td>
 <td align="center">optional</td>
 <td align="center">string</td>
-<td align="center">A flag to determine whether to show pseudo translation in debugging or developing stage.</td>
+<td align="left">A flag to determine whether to show pseudo translation in debugging or developing stage.</td>
 </tr>
 <tr>
-<td align="center">collectSource</td>
-<td align="center">optional</td>
-<td align="center">string</td>
-<td align="center">A flag to determine whether to push source strings to singleton service, but new UI strings will be only collected on singleton staging instance for the translations when collectSource is set properly to true. The application in CSP platform which needs to consume singleton service should add auth token for source collection request.</td>
-</tr>
-<tr>
-<td align="center">sourceBundle</td>
+<td align="center">sourceBundles</td>
 <td align="center">optional</td>
 <td align="center">{key: string]: source: string}</td>
-<td align="center">Source string collection.<!-- raw HTML omitted -->Externalize all source strings to separated typescript file instead of hardcode strings in template files. Thus use <a href="./translate-pipe">L10nPlusPipe</a> and <a href="./translate-directive">translate directive</a> to consume translation without specifying source strings in template.</td>
+<td align="left">Array of the source string collections.The source strings of the project can be managed in the multiple objects and set as sourceBundles in the configuration. If there are duplicate keys among the source collections, a warning message will popped up in the console. Use the command line util to collect them to the singlethon server.</td>
+</tr>
+<tr>
+<td align="center">timeout</td>
+<td align="center">optional</td>
+<td align="center">number</td>
+<td align="left">An integer denoting milliseconds. Default value is 3000. Limit i18n and l10n resource request time, if the request exceeds this time, the request will be cancelled and a timeout error will be generated.</td>
 </tr>
 <tr>
 <td align="center">i18nAssets</td>
 <td align="center">optional</td>
 <td align="center">string</td>
-<td align="center">The folder path is used to save translation files. Files naming rule: translation_${language}.json<!-- raw HTML omitted -->The all translations could be fetched from singleton service into local bundle files at build time, thus the application can support localization without singleton service at runtime.</td>
+<td align="left">The folder path is used to save translation files. Files naming rule: translation_${language}.json<br/>The all translations could be fetched from singleton service into local bundle files at build time, thus the application can support localization without singleton service at runtime.</td>
 </tr>
 <tr>
 <td align="center">translationBundles</td>
 <td align="center">optional</td>
 <td align="center">{ [key: string]: object }</td>
-<td align="center">A collection of languages and their corresponding translations. Naming rule: { ${language}: { key: translation_string } }<!-- raw HTML omitted -->The difference with &lsquo;i18nAssets&rsquo; is this object will compiled into the final bundle, but &lsquo;i18nAssets&rsquo; relies on Http call to get translation bundle per language.</td>
+<td align="left">A collection of languages and their corresponding translations. Naming rule: { ${language}: { key: translation_string } }<br/>The difference with &lsquo;i18nAssets&rsquo; is this object will compiled into the final bundle, but &lsquo;i18nAssets&rsquo; relies on Http call to get translation bundle per language.</td>
 </tr>
 </tbody>
 </table>
-<h4 id="singleton-module-initialization"><strong>singleton module initialization</strong></h4>
-<p><img src="https://github.com/zmengjiao/singleton/raw/website/content/en/images/ngx-4.png" alt="ngx-4"></p>
-<h4 id="getting-help"><strong>Getting Help</strong></h4>
-<p>If you cannot find the necessary documentation or the answer to your question by looking through the <a href="https://gitlab.eng.vmware.com/core-build/vmw-ngx-components/tree/master">code</a>, reach out in the <a href="slack://channel?id=CNCHU5R4N&amp;team=T024JFTN4">#ngx</a> Slack channel.</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<h4 id="singleton-module-initialization"><strong>Singleton module initialization</strong></h4>
+<p>The <strong>forRoot</strong> static method is a convention that provides and configures services at the same time. 
+Make sure you only call this method in the root module of your application, most of the time called AppModule.</p>
 <blockquote>
+<p>Note: Never call a <strong>forRoot</strong> static method in the shared module. You might end up with different instances of the service in your injector tree.</p>
+</blockquote>
+<pre><code>// app.module.ts
+...
+import { NgModule, APP_INITIALIZER } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+import { VIPModule, VIPService, LocaleService, getBrowserCultureLang } from '@singleton-i18n/angular-client';
+import { I18nConfig } from './i18n.config';
+
+export function initVIPConfig(vipService: VIPService, localeService: LocaleService) {
+    // Specify locale, either from browser language or user's profile.
+    const currentlocale: string  = getBrowserCultureLang();
+    localeService.init(currentlocale);
+    return () =&gt; vipService.initData(I18nConfig);
+}
+
+@NgModule({
+    ...
+    imports: [
+        ...
+        HttpClientModule,
+        VIPModule.forRoot(),
+        ...
+    ],
+    providers: [{
+        provide: APP_INITIALIZER,
+        useFactory: initVIPConfig,
+        deps: [
+            VIPService,
+            LocaleService
+        ],
+        multi: true
+    }],
+    ...
+})
+export class AppModule {} 
+
+</code></pre><h4 id="usages"><strong>Usages</strong></h4>
+<p>After importing the VIPModule and initializing the related services, now you can start using the utilities provided by ngx-vip to 
+consume translations and format data according to different locale patterns.</p>
+<h4 id="html-template-usage"><strong>Html Template Usage</strong></h4>
+<pre><code>// app.component.html
+
+// Translate Pipe
+{{'some.unique.key' | vtranslate }}
+
+{{'singleton.description' | vtranslate: 'Singleton for Angular client'}}
+
+// Translate Directive
+&lt;span l10n='some.unique.key' &gt;&lt;/span&gt;
+
+&lt;span l10n='singleton.description' [params]=&quot;['Singleton for Angular client']&quot; &gt;
+
+// Date &amp; Time Format Pipe
+{{ date | dateFormat }}
+
+// Number Format Pipe
+{{ num | numberFormat }}
+
+</code></pre><h4 id="component-usage"><strong>Component Usage</strong></h4>
+<pre><code>// shared.component.ts
+
+import { L10nService, I18nService, VIPService } from '@singleton-i18n/angular-client';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+    
+@Component({
+    selector: 'shared',
+    templateUrl: './shared.component.html'
+})
+export class SharedComponent implements OnInit, OnDestroy {
+    subscription: any;
+    constructor(private l10nService: L10nService, private i18nService: I18nService, private vipService: VIPService) { }
+
+    ngOnInit() {
+        this.subscription = this.vipService.stream.subscribe((locale: string) =&gt; {
+            this.translation = this.l10nService.getMessage('singleton.description', [ 'Singleton for Angular client' ], locale);
+            this.date = this.i18nService.formatDate(new Date(), 'short', locale );
+        });
+    }
+
+    ngOnDestroy() {
+        this.subscription.unsubscribe();
+        this.subscription = undefined;
+    }
+}
+
+</code></pre><h4 id="getting-help"><strong>Getting Help</strong></h4>
+<p>If you cannot find the necessary documentation or the answer to your question by looking through the <a href="https://gitlab.eng.vmware.com/core-build/vmw-ngx-components/tree/master">code</a>, reach out in the <a href="slack://channel?id=CNCHU5R4N&amp;team=T024JFTN4">#ngx</a> Slack channel.</p>
+<style>
+    html {
+        font-family: Metropolis;
+        color: #575757;
+    }
+    section strong {
+        font-weight: 400;
+    }
+    section p>strong {
+        font-weight: 600;
+    }
+    ul li {
+        list-style: circle;
+    }
+    article section.page pre {
+        background-color: #444;
+        border: 0.5px solid #DBDBDB; 
+        padding: 1.5rem 1rem 1.5rem 1rem;
+        border-radius: 5px;
+        margin: 16px auto;
+    }
+    article section.page code {
+        font-size: 90%;
+        color: #17ff0b;  
+        white-space: pre-wrap;
+    }
+    article section.page pre span.copy-to-clipboard {
+        color: #b0bec5;
+        cursor: pointer;
+    }
+    article section.page table th {
+        font-weight:500;
+        text-transform: inherit;
+    }
+    table thead tr th:first-child {
+        width:13rem;
+    }
+    table thead tr th:nth-child(2) {
+        width:10rem;
+    }
+    table thead tr th:nth-child(3) {
+        width:10rem;
+    }
+    article section.page h1:first-of-type {
+        text-transform: inherit;
+        font-family: inherit;
+    }
+    blockquote {
+        background: #f5dddb;
+        border: 1px solid #f8b5b4;
+        color: #575757;
+    }    
+    blockquote>p {
+        display: inline-block;
+        margin: 1rem 0;
+    }
+</style><blockquote>
 </blockquote>
 
 
@@ -614,7 +822,7 @@
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-prev" href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/javascript-client-introduction/" title="Javascript Client Introduction"> <i class="fa fa-chevron-left"></i><label>Javascript Client Introduction</label></a>
+<a class="nav nav-prev" href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/javascript-client-introduction/" title="JavaScript Client Introduction"> <i class="fa fa-chevron-left"></i><label>JavaScript Client Introduction</label></a>
     <a class="nav nav-next" href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/data-initialization/" title="Data Initialization" style="margin-right: 0px;"><label>Data Initialization</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
@@ -650,16 +858,24 @@
 	</div>
 </footer>
 
+<script src="https://vmware.github.io/singleton/js/jquery-2.x.min.js"></script>
+<script type="text/javascript">
+    
+        var baseurl = "https:\/\/vmware.github.io\/singleton\/";
+    
+</script>
 <script src="https://vmware.github.io/singleton/js/clipboard.min.js"></script>
-
-<link href="https://vmware.github.io/singleton/css/featherlight.min.css" rel="stylesheet">
 <script src="https://vmware.github.io/singleton/js/featherlight.min.js"></script>
 
-
-
+<script type="text/javascript" src="https://vmware.github.io/singleton/js/lunr.min.js"></script>
+<script type="text/javascript" src="https://vmware.github.io/singleton/js/auto-complete.js"></script>
+<script type="text/javascript" src="https://vmware.github.io/singleton/js/search.js"></script>
 <script src="https://vmware.github.io/singleton/theme-flex/script.js"></script>
 
 
+
+
+<script src="https://vmware.github.io/singleton/js/scripts.min.js"></script>
     
 
     

@@ -6,7 +6,7 @@
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="revised" content="2022-07-22T16:28:57 CST">
-<title>Enable Pseudo Translation :: Singleton</title>
+<title>I18n Context :: Singleton</title>
 <link rel="shortcut icon" href="https://vmware.github.io/singleton/images/favicon.png" type="image/x-icon" />
 <link href="https://vmware.github.io/singleton/css/nucleus.css" rel="stylesheet">
 <link href="https://vmware.github.io/singleton/css/font-awesome.min.css" rel="stylesheet">
@@ -23,7 +23,7 @@
 
     
   </head>
-  <body data-url="/docs/overview/singleton-service/configurations/enable-pseudo-translation/">
+  <body data-url="/docs/overview/singleton-sdk/angular-client-introduction/i18n-context/">
     
       <header>
   <div class="logo">
@@ -451,24 +451,41 @@
    Overview</option> 
     <option value="/docs/overview/singleton-service/" >
   -- 
-   Singleton Service</option> 
-      <option value="/docs/overview/singleton-service/singleton-service-db-build-introducation/" >--- DB builder for User guideline</option>
-      <option value="/docs/overview/singleton-service/singleton-service-script/" >--- Singleton Service Script</option>
-    <option value="/docs/overview/singleton-service/configurations/" >
-  --- 
-   Configurations</option> 
-      <option value="/docs/overview/singleton-service/configurations/enable-source-collection/" >---- Enable Source Collection</option>
-      <option value="/docs/overview/singleton-service/configurations/enable-pseudo-translation/"  selected>---- Enable Pseudo Translation</option>
-      <option value="/docs/overview/singleton-service/configurations/enable-s3-key-encrypted/" >---- Enable S3 Key Encrypted</option>
-      <option value="/docs/overview/singleton-service/configurations/enable-new-product/" >---- Enable New Product(s)</option>
-      <option value="/docs/overview/singleton-service/configurations/enable-product-white-list/" >---- Enable Product White List</option>
-      <option value="/docs/overview/singleton-service/configurations/enable-s3-storage/" >---- Enable S3 Storage</option>
-  
-      <option value="/docs/overview/singleton-service/singleton-service-apis/" >--- Singleton Service APIs</option>
-  
+   Singleton Service</option>
     <option value="/docs/overview/singleton-sdk/" >
   -- 
-   Singleton SDK</option>
+   Singleton SDK</option> 
+      <option value="/docs/overview/singleton-sdk/python-client-introduction/" >--- Python Client Introduction</option>
+      <option value="/docs/overview/singleton-sdk/java-client-introduction/" >--- Java Client Introduction</option>
+      <option value="/docs/overview/singleton-sdk/javascript-client-introduction/" >--- JavaScript Client Introduction</option>
+    <option value="/docs/overview/singleton-sdk/angular-client-introduction/" >
+  --- 
+   Angular Client Introduction</option> 
+      <option value="/docs/overview/singleton-sdk/angular-client-introduction/data-initialization/" >---- Data Initialization</option>
+      <option value="/docs/overview/singleton-sdk/angular-client-introduction/locale-management/" >---- Locale Management</option>
+      <option value="/docs/overview/singleton-sdk/angular-client-introduction/lazy-load-module/" >---- Lazy Load Module</option>
+      <option value="/docs/overview/singleton-sdk/angular-client-introduction/localized-component-mixin/" >---- Localized Component Mixin</option>
+      <option value="/docs/overview/singleton-sdk/angular-client-introduction/translate-pipe/" >---- Translate Pipe</option>
+      <option value="/docs/overview/singleton-sdk/angular-client-introduction/translate-directive/" >---- Translate Directive</option>
+      <option value="/docs/overview/singleton-sdk/angular-client-introduction/l10n-service/" >---- L10n Service</option>
+      <option value="/docs/overview/singleton-sdk/angular-client-introduction/i18n-service/" >---- I18n Service</option>
+      <option value="/docs/overview/singleton-sdk/angular-client-introduction/i18n-context/"  selected>---- I18n Context</option>
+      <option value="/docs/overview/singleton-sdk/angular-client-introduction/plural-format/" >---- Plural Format</option>
+      <option value="/docs/overview/singleton-sdk/angular-client-introduction/relative-time-format/" >---- Relative Time Format</option>
+      <option value="/docs/overview/singleton-sdk/angular-client-introduction/date-time-format-pipe/" >---- Date Time Format Pipe</option>
+      <option value="/docs/overview/singleton-sdk/angular-client-introduction/number-format-pipe/" >---- Number Format Pipe</option>
+      <option value="/docs/overview/singleton-sdk/angular-client-introduction/currency-format-pipe/" >---- Currency Format Pipe</option>
+      <option value="/docs/overview/singleton-sdk/angular-client-introduction/percent-format-pipe/" >---- Percent Format Pipe</option>
+      <option value="/docs/overview/singleton-sdk/angular-client-introduction/command-line-utils/" >---- Command Line Utils</option>
+      <option value="/docs/overview/singleton-sdk/angular-client-introduction/standalone-mode/" >---- Standalone Mode</option>
+      <option value="/docs/overview/singleton-sdk/angular-client-introduction/shared-feature-module/" >---- Shared Feature Module</option>
+      <option value="/docs/overview/singleton-sdk/angular-client-introduction/error-handling/" >---- Error Handling</option>
+  
+      <option value="/docs/overview/singleton-sdk/csharp-client-introduction/" >--- C# Client Introduction</option>
+      <option value="/docs/overview/singleton-sdk/go-client-introduction/" >--- Go Client Introduction</option>
+      <option value="/docs/overview/singleton-sdk/resources/java-client/0.5.1/javadoc/" >--- </option>
+      <option value="/docs/overview/singleton-sdk/resources/java-client/0.6.1/javadoc/" >--- </option>
+  
   
     <option value="/docs/tutorials/" >
   - 
@@ -487,18 +504,171 @@
       </div>
     
 
-    <h1>Enable Pseudo Translation</h1>
+    <h1>I18n Context</h1>
     
     
     
-    
+    <h4 id="overview"><strong>Overview</strong></h4>
+<p>I18n context is designed to manage the variables from different environments which carries pseudoEnabled, i18nEnabled, preferredLanguage, and other user-scoped values, provides a way to load and share these values between services without having to explicitly pass a parameter through every level of the service. In this way, users can use this interface to modify the default behavior regardless of the development or testing phase.
+The storage of these variables is configurable, and the default is saved in localstorage.</p>
+<pre><code>import { I18nContext } from &quot;@singleton-i18n/angular-client&quot;;
+
+</code></pre><h4 id="context-attributes"><strong>Context Attributes</strong></h4>
+<table>
+<thead>
+<tr>
+<th align="center">Attribute</th>
+<th align="center">Type</th>
+<th>Writable</th>
+<th>Default</th>
+<th align="left"><div style="text-align:center">Description</div></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">pseudoEnabled</td>
+<td align="center">boolean</td>
+<td>readonly</td>
+<td>undefined</td>
+<td align="left">The pseudo setting from localStorage, determine whether to show pseudo translation in debugging or developing stage. The value can be changed by localStorage, it will override the pseudo setting in i18n configs.</td>
+</tr>
+<tr>
+<td align="center">i18nEnabled</td>
+<td align="center">boolean</td>
+<td>writable</td>
+<td>undefined</td>
+<td align="left">The i18n enable setting from localStorage, determine whether to use Singleton features in testing or product stage.</td>
+</tr>
+<tr>
+<td align="center">preferredLanguage</td>
+<td align="center">string</td>
+<td>writable</td>
+<td>undefined</td>
+<td align="left">The preferred language from localStorage.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="default-storage"><strong>Default storage</strong></h5>
+<p>The default context storage is based on localstorage, which can be replaced by cookie, session storage, etc. Developers and testers can directly modify the corresponding attribute values in the localstorage to change the default behavior of the application to achieve the purpose of testing. However, this requires certain development work in the application itself. The specific development and usage scenarios will be explained in detail in the following sessions.</p>
+<table>
+<thead>
+<tr>
+<th align="center">Key</th>
+<th align="left"><div style="text-align:center">Description</div></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">vip.pseudoEnabled</td>
+<td align="left">The key in localStorage determines whether to enable pseudo. The value can be true or false.</td>
+</tr>
+<tr>
+<td align="center">vip.i18nEnabled</td>
+<td align="left">The key in localStorage determines whether to enable i18n. The value can be true or false.</td>
+</tr>
+<tr>
+<td align="center">vip.preferredLanguage</td>
+<td align="left">The key in the local storage to store the preferred language which is controlled by the application.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="usage-scenarios"><strong>Usage Scenarios</strong></h4>
+<h5 id="i18n-feature-switch"><strong>I18n feature switch</strong></h5>
+<p>Under normal circumstances, international development is cross-release. Before the official release of the internationalization function, we need to disable the function of i18n at the code level, but in the testing and development stage, we need to debug and test i18n, so it is suitable for using context in this situation to override the default settings.</p>
+<pre><code>const i18nEnabled = false;
+// Initialize the current state of i18n feature.
+i18nContext.i18nEnabled = i18nContext.i18nEnabled || i18nEnabled;
+
+</code></pre><h5 id="pseudo-translation"><strong>Pseudo translation</strong></h5>
+<p>To override the pseudo setting in the testing and development stage.</p>
+<pre><code>const pseudoEnabled = false;
+i18nContext.pseudoEnabled = i18nContext.pseudoEnabled || pseudoEnabled;
+
+</code></pre><h5 id="preferred-language"><strong>Preferred language</strong></h5>
+<p>It is mainly used to load the login page in the user&rsquo;s preferred language before loading the user preference.</p>
+<pre><code>const browserLanguage: string = getBrowserCultureLang();
+const currentLanguage = i18nContext.preferredLanguage ||
+    localeService.normalizeLanguageCode(browserLanguage);
+
+</code></pre><pre><code>import {
+    getBrowserCultureLang,
+    I18nContext,
+    LocaleService,
+    VIPService,
+} from '@singleton-i18n/angular-client';
+
+// Initialize the current state of i18n feature.
+const i18nEnabled = false;
+i18nContext.i18nEnabled = i18nContext.i18nEnabled || i18nEnabled;
+
+const browserLanguage: string = getBrowserCultureLang();
+const currentLanguage = i18nContext.preferredLanguage || localeService.normalizeLanguageCode(browserLanguage);
+
+localeService.init(currentLanguage);
+return () =&gt; vipService.initData(I18nConfig);
+
+</code></pre><style>
+    html {
+        font-family: Metropolis;
+        color: #575757;
+    }
+    section strong {
+        font-weight: 400;
+    }
+    section p>strong {
+        font-weight: 600;
+    }
+    article section.page pre {
+        background-color: #444;
+        border: 0.5px solid #DBDBDB; 
+        padding: 1.5rem 1rem 1.5rem 1rem;
+        border-radius: 5px;
+        margin: 16px auto;
+    }
+    article section.page code {
+        font-size: 90%;
+        color: #17ff0b;  
+        white-space: pre-wrap;
+    }
+    article section.page pre span.copy-to-clipboard {
+        color: #b0bec5;
+        cursor: pointer;
+    }
+    article section.page table th {
+        font-weight:500;
+        text-transform: inherit;
+    }
+    table thead tr th:first-child {
+        width:13rem;
+    }
+    table thead tr th:nth-child(2) {
+        width:10rem;
+    }
+    table thead tr th:nth-child(3) {
+        width:10rem;
+    }
+    article section.page h1:first-of-type {
+        text-transform: inherit;
+        font-family: inherit;
+    }
+   blockquote {
+        background: #f5dddb;
+        border: 1px solid #f8b5b4;
+        color: #575757;
+    }    
+    blockquote>p {
+        display: inline-block;
+        margin: 1rem 0;
+    }
+</style>
+
 
     
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-prev" href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-source-collection/" title="Enable Source Collection"> <i class="fa fa-chevron-left"></i><label>Enable Source Collection</label></a>
-    <a class="nav nav-next" href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-s3-key-encrypted/" title="Enable S3 Key Encrypted" style="margin-right: 0px;"><label>Enable S3 Key Encrypted</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/i18n-service/" title="I18n Service"> <i class="fa fa-chevron-left"></i><label>I18n Service</label></a>
+    <a class="nav nav-next" href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/plural-format/" title="Plural Format" style="margin-right: 0px;"><label>Plural Format</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>
@@ -513,7 +683,7 @@
 
     
     <div class="date">
-        <i class='fa fa-calendar'></i> Last update on 24/09/2019
+        <i class='fa fa-calendar'></i> Last update on 16/06/2022
     </div>
     
 
