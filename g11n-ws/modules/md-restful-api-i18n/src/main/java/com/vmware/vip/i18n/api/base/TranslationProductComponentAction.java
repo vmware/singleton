@@ -107,8 +107,10 @@ public class TranslationProductComponentAction extends BaseAction {
 		if (new Boolean(pseudo)) {
 			localeList.add(ConstantsKeys.LATEST);
 		} else if (!StringUtils.isEmpty(locales)) {
+			List<String> supportedLocaleList = productService
+	                  .getSupportedLocaleList(productName, version);
 			for (String locale : locales.split(",")) {
-				localeList.add(locale.trim());
+				localeList.add(getFormatLocale(productName, version, locale.trim(), supportedLocaleList));
 			}
 		} else {
 			localeList = productService.getSupportedLocaleList(productName,
