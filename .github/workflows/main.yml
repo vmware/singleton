@@ -56,23 +56,14 @@ jobs:
           ruby-version: 3.0.0
       - name: Install dependencies
         run: bundle install
-      - name: Run tests
-        run: bundle exec rake
       - name: Unit test
         run: |
-          gem build singleton-ruby.gemspec
-          mkdir spec/log
-          touch spec/log/http.log
-          rake spec
-      - name: Coverage
-        run: |
-          COVERAGE=true bundle exec rspec './spec/spec_helper.rb' 
-          cd coverage
+          COVERAGE=true bundle exec rspec
       - name: Upload Codecov report for ruby-client
-        uses: codecov/codecov-action@v1
+        uses: codecov/codecov-action@v2
         with:
           files: ./coverage/coverage.json
-          flags: coverage
+          flags: g11n-ruby-client
 
   security-analysis:
     name: Security Analysis
@@ -140,6 +131,9 @@ jobs:
           docker cp $GITHUB_WORKSPACE/l10n singleton:/
           cd $GITHUB_WORKSPACE
           cp -r $GITHUB_WORKSPACE/devops/autotest/client/ruby/l10n/bundles/* $GITHUB_WORKSPACE/l10n/bundles
+          cd $GITHUB_WORKSPACE
+          gem build singleton-client.gemspec
           cd $GITHUB_WORKSPACE/devops/autotest/client/ruby
           sed -i 's|path => "../../../../ruby_client/singleton|path => "/home/runner/work/singleton/singleton|g' Gemfile
-          bundle exec rspec './spec/Config_spec.rb' './spec/Datetime_spec.rb' './spec/SimpleT_offline_spec.rb' './spec/SimpleT_spec .rb' './spec/Translation_offline_spec.rb' './spec/Translation_spec.rb'
+          bundle install
+          bundle exec rspec spec
