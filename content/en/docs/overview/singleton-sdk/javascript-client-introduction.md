@@ -5,345 +5,349 @@ draft: false
 weight: 20
 ---
 
-The Singleton JavaScript Client is a Singleton Service-based JavaScript library used for SW i18n. It supports all JavaScript frameworks, you can run it in browsers, as well as NodeJS environments. With the Singleton JavaScript Client, it is much easier to use the Web front-end for SW i18n. Now, let's look at what the Client does, and how it is used.
-
-#### **Features Overview** 
-
-- Getting and managing locales.
-- Getting the i18n resources from Singleton Service.
-- Loading the local translation resource files (for environments without Singleton Service).
-- Formatting the data: Formatting the time, number, and currency as defined in CLDR is supported at this time.
-- Formatting the string, including the singular and plural variations.
-- Providing support for pseudo translation, mainly for integration testing and local debugging.
-- Collecting source language strings in bulk.
-
-#### **Introducing Modules**
-
-##### **Getting and managing locales**
-
-A locale includes two parts: language and region.
-
-Language determines the translations to be shown in the current user interface, as well as rules to deal with singular and plural variations.
-
-The combination of language and region determines how strings like the current date and time, number, and currency are shown.
-
-##### **Defining components**
-
-Singleton provides a parameter named "component" to organize strings to be translated. For products with a large data volume, it is recommended to manage resources by component.
-
-Components can be categorized by function modules, or front-end/back-end attributes, provided that a component does not contain more than 5,000 strings.
-
-##### **Loading i18n data**
-
-The i18n data (i.e. the information required for translation and data formatting) can be extracted according to the product information and the locale setting.
-
-Please be sure to load all the i18n data before calling the relevant i18n API.
-
-#### **APIs Available**
-
-##### **Getting locales**
-
-Getting locales in two ways.
-
-**Getting the language and region settings in the browser**
-
-API: getBrowserCultureLang (): string
-
-Return value
-
-The language and region settings used by the browser
-
-Example
-
-```
-import { getBrowserCultureLang  } from ‘@singleton-i18n/js-core-sdk’;
-const locale = getBrowserCultureLang(); // eg: zh-CN
-
-```
-
-**Get the languages and regions supported by the product from Singleton Service**
-
-- Get the list of languages supported by the product
-
-API: getSupportedLanguages( displayLang?: string ): Promise
-
-Parameters
-
-displayLang: string (optional) Used to show the list of languages returned. If it is left blank, each language in the list shall be shown in its native way. The default value is blank.
-
-Return value
-
-The list of languages supported.
-
-- Get the list of regions supported by the product
-
-API: getSupportedRegions(language: string): Promise
-
-Parameters
-
-language: string (required) Used to show the list of regions returned.
-
-Return value
-
-The list of regions shown in the chosen language.
-
-Example
-
-```
-…
-i18nClient.i18nService. getSupportedLanguages().then(
-    (languageList) => { this. languageList = languageList; }
-    // eg: [ { displayName: ‘français’, languageTag: ‘fr’ } ]
-);
-…
-const currentLanguage = localStorage.getItem(‘currentLanguage’);
-    i18nClient.i18nService. getSupportedRegions(currentLanguage).then(
-    (regionList) => { this. regionList = regionList; });
-    // eg: [ [ ‘FR’: ‘France’], [ ‘GE’: ‘Géorgie’ ] ]
-…
-
-```
-
-##### **Loading i18n data** 
-
-Loading the i18n resources from Singleton Service according to the product information.
-
-##### **Creating an instance of the Client for i18n**
-
-**Initializing the configuration items**
-
-Methods
-
-init(configs)
-
-createInstance(configs)
-
-Parameters
-
-productId: string (required), to indicate the product name
-
-component: string (required), to indicate the component name
-
-version: string (required), to indicate the release number
-
-host: string (required), to indicate the Singleton server address. Example: http://localhost:8091
-
-isPseudo: boolean (optional) , to indicate whether the pseudo translation is used. Setting to true specifies that the pseudo translation shall be returned, regardless of whether the translated string is here. The default value is false.
-
-language: string (optional), to indicate the language string (e.g. 'zh-Hans'). You can use the current language in the browser. The default value is 'en'.
-
-region: string (optional), to indicate the region string (e.g. 'CN'). The language and the region must be defined together. The default value is 'US'.
-
-i18nScope: PatternCategories [ ] (optional), to indicate the scope for i18n support. The default value is empty.
-
-- PatternCategories.DATE, to indicate the date and time format.
-- PatternCategories.NUMBER, to indicate the number and percentage format.
-- PatternCategories.CURRENCIES, to indicate the currency format.
-
-sourceBundle: {[key: string]: string} (optional), which is a collection of all source language strings. It is recommended to extract these strings into separate js/ts files.
-
-- Value: An object with the key as the unique string, and its value as the source English string.
-- All the resource files should be named as "xxx.l10n.js", which is helpful to collect the source language strings with scripts.
-- To ensure that every key (key name) is unique in the project, the following naming convention is recommended for keys: 'namespace.moduleName'.
-- The type of Array is supported, and the duplicate entries can be removed.
-
-timeout: number (optional), to limit the time duration of the request, the default value is 3,000ms.
-
-##### **Load the data**
-
-Load the i18n data according to the configuration of the instance. If you divide the product into several components, you should call this method multiple times for different instances.
-
-Methods: loadI18nData( callback?: () => void ): Promise
-
-Parameters
-
-The callback function to be executed when the request is complete, which is used to initialize the UI.
-
-Return value
-
-Promise of the data request.
-
-Example
+#### **Overview**
+
+The Singleton JSClient(@singleton-i18n/js-core-sdk) is a Singleton Service-based JavaScript library used for l10n and i18n. It almost supports all JavaScript frameworks, and it can run in browsers, as well as NodeJS environments. With the Singleton JavaScript Client, it makes l10n and i18n implementation more easier in most projects. Now, let's look at what it is and how it works.
+
+#### **Features** 
+- JSClient Initilization
+- Language and region management
+- Load data API
+- Provide string localization API
+- Provide datetime,number,currency,percentage formatting API
+- Source management via CLI scripts
+- Runtime / Offline Mode
+
+#### **JSClient Initilization**
+
+How to initilize Singleton JSClient in frontend framework? it requires to figure out the root loading point where JSClient is able to comminicate with Singele Service fetching translations and patterns. E.g. index.js in React framework is the root loading point, during the initilizing process, it needs to provice basic product information (E.g. ProductID, Component, Version) and interacts with Singleton Service runtime, it will load corresponding translations and patterns by language and region when switching locale. Singleton JSClient offers API ***i18nClient.init(Configuration)*** as below snippet which is used to initilize JSClient when App startup. At the same time, Singleton JSClient also provides l10nService and i18nService APIs so that it is able to use their exposed methods to translate strings and format the data regarding datetime, number, percentage and currency. 
+
+Configuration
+|  Parameter  |  Type  | Required | <div style="text-align:center">Description</div>                                |
+|:-----------:|:----------------:|:----------:|:---------------------------------------------------------------------------------------------------------|
+| productID | String | Required | Product name. |
+| version | string | Required | Translation version. |
+| component | string | Optional | From Singleton service perspective, it typically has backend component,frontend component.And default component is 'default'. |
+| host | string | Required | Singleton service with which Singleton JSClient commnicaites to fetch translations and patterns by language and region. |
+| language | string | Optional | Language determines which languge translations should be loaded. |
+| region | string | Optional | Region determines which region patterns should be loaded.  |
+| i18nScope | PatternCategories[] | Optional | i18nScope determines what kinds of patterns data should be loaded, such as Number, Datetime, Percentage, Currency. |
+| sourceBundle | { [key: string]: any } | Optional | Mount source strings with key:value pair. |
+| sourceBundles | Array<{ [key: string]: any }> | Optional | Mount source strings with key:value Objects.  |
+| i18nAssets | string | Optional | This parameter is used to load translations and patterns from specified folder with Offline Mode, once setting this parameter, [host] parameter will disable without having to communicate with Singleton Service. |
+| httpOptions | HttpRequestOptions | Optional | This paramter is used to set network request parameters, E.g  timeout，withCredentials. |
+| isPseudo | boolean | Optional | isPseudo is used to development debugging and QE testing. |
 
 ```
 import { i18nClient as jsClient, getBrowserCultureLang, PatternCategories} from '@singleton-i18n/js-core-sdk';
-…
-const i18nClient = jsClient.init({
-       productID: 'nodesample',
-       version: '1.0.0',
-       component: 'NodeJS',
-       host: 'http://localhost:8091',
-       language: currentLanguage,
-       i18nScope: [PatternCategories.DATE],
-       region: currentRegion,
-       sourceBundle : {
-            'app.title': 'Hello, world!',
-            'plural.apples': '{0, one{ # apple}  other{ # apples} }'
-        },
-       timeout: 5000
-});
-i18nClient.loadI18nData().then( () => {
-…
-});
+
+const currentLanguage  = getBrowserCultureLang();
+
+const initI18nClient = () => {
+
+    const i18nClient = jsClient.init({
+        productID: 'ProductName',
+        version: '1.0.0',
+        component: 'ReactUI',
+        host: 'http://Single-Service:8091',
+        language: currentLanguage,
+        i18nScope: [PatternCategories.DATE],
+        sourceBundle : {
+                'app.title': 'Hello, world!',
+                'plural.apples': '{0, one{ # apple}  other{ # apples} }'
+            },
+        timeout: 5000
+    });
+
+    return i18nClient;
+}
+
+export const i18nClient = initI18nClient();
 
 ```
 
-#### **Translation API**
+#### **Language and region management**
 
-##### **Getting the Translation**
+Singleton JSClient provides two approaches to resolve Language and Region, the first one is directly detecting current user language preference in the browser settings, The other one is strongly recommended to be adopted in both SaaS and on-premise deployment mode through the language and region list provided by Singleton JSClient API fetching from Singleton service.
 
-Getting the Translation of a String
+##### **Resolve Browser Locale**
 
-Methods: getMessage(key: string, args?:[ number|string ]): string
-
-Parameters
-
-key: string (required), to indicate the key value in sourceBundle
-
-args: number|string[ ] (optional), to indicate the variable for index placeholders in the source string specified by key
-
-Return value
-
-The translation of the source string specified by key in SourceBundlekey.
-
-Example
+Resolve browser locale through the API ***getBrowserCultureLang*** as below snippet.
 
 ```
-const translation = i18nClient.l10nService.getMessage('app.title');  // eg:  it translates into '你好，世界！' on zh-CN locale
-// Plural example
-const apple =  i18nClient.l10nService.getMessage('plural.apples', [2]);  // eg: 2 apples
-```
+import { getBrowserCultureLang } from '@singleton-i18n/js-core-sdk';
 
-#### **Formatting API**
-
-##### **Formatting the Date and Time**
-
-Format the specified date and time according to the locale setting
-
-Methods: formatDate(dateTime: number|Date|string, pattern: string = ‘short’, timezone?: string): string
-
-Parameters
-
-date: (required), to indicate the standard date object for i18n (ms or ISO-compliant date string). https://www.w3.org/TR/NOTE-datetime
-
-pattern: (required), to indicate the date format shown after i18n
-
-timezone: (optional), to indicate the time zone
-
-Return value
-
-The formatted date string
-
-Example
-
-```
-i18nClient.i18nService.formatDate(new Date(),' short');  // eg: 8/19/19, 3:51 PM
-```
-
-##### Formatting the Number
-
-Format the specified number according to the locale setting.
-
-Methods: formatNumber(value: number): string
-
-Parameters
-
-The number to be formatted
-
-Return value
-
-The formatted numeric string
-
-Example
-
-```
-i18nClient.i18nService.formatNumber(1123.7892);   // eg: 1,123.789
-```
-
-##### **Formatting the Percentage**
-
-Format the specified number as a percentage according to the locale setting.
-
-Methods: formatPercent(value: number): string
-
-Parameters
-
-The number to be formatted
-
-Return value
-
-The formatted number in percentage
-
-Example
-
-```
-i18nClient.i18nService. formatPercent (0.123);   // eg: 12%
-```
-
-##### **Formatting the Currency**
-
-Format the specified currency number as another style according to the locale setting. The default currency is USD.
-
-Methods: formatCurrency(value: number|string, currencyCode: string = ‘USD’): string
-
-Parameters
-
-value: The number to be formatted
-
-currencyCode: The currency code. See https://en.wikipedia.org/wiki/ISO_4217
-
-Return value
-
-The formatted string
-
-Example
-
-```
-i18nClient. i18nService.formatCurrency(0.23, 'JPY');   // eg: 0¥
-```
-
-#### **Scripting Tool**
-
-##### **Collecting the Source Language Strings in Bulk**
-
-After you extract the source language strings into a single type of resource files, you can use the command tool to send the strings to Singleton Service in bulk, for the translation team to work on.
-
-Parameters in CLI
-
-```
-collect-source-bundle
---source-dir <The Path where are source files>
---host <Singleton service URL>
---product <Singleton product name>
---component <Singleton component name>
---version <Singleton release version>
+const currentLanguage  = getBrowserCultureLang();
 
 ```
 
-Defining Commands in package.json
+##### **User Preference Of Language List**
+
+Singleton JSClient offers the API ***getSupportedLanguages(): Promise<Object[] | null>*** through i18nService to fetch the supported languages of App from Singleton service runtime.
+
+```
+import { i18nClient } from '@singleton-i18n/js-core-sdk';
+
+i18nClient.i18nService.getSupportedLanguages()
+    .then(
+        ...
+    );
+
+```
+
+#### **Load Data API**
+
+Singleton JSClient offers the load data API through coreService in order to load latest translations and patterns when switching locale(language and region). there are certain situations as below.
+- When App startup, it needs to load translations and patterns according to user perference language and region.
+- When user switching language list, it should load corresponding translations and patterns
+
+```
+/**
+* Load resource prior to perform callback.
+* @param callback
+*/
+async loadI18nData(callback?: () => void): Promise<any>
+
+
+// Example in React index.jsx
+import { i18nClient } from '@singleton-i18n/js-core-sdk';
+
+const render = async () => {
+    try {
+        await i18nClient.coreService.loadI18nData();
+    } catch (e) {
+        console.error(e);
+    } finally {
+        ReactDOM.render();
+    }
+};
+
+render();
+
+```
+
+#### **Localization API**
+
+Singleton JSClient also offers localization API ***getMessage(key: string, args?: any[] | {}): string*** through l10nService which is mainly used to translate strings along with varibles involved as below snippet.
+
+| Parameter |    Type     | Required | <div style="text-align:center">Description</div>                                                                                         |
+|:--------:|:--------:|:--------:|:-----------------------------------------------------------------------------------------------------------------------------------------|
+|    key    |   string    | Required | Singleton JSClient bases on the key to figure out the translation of its value on Non-English locale.                          |
+|    args   | string[]/{} |    No    | When variables involved in one string, it typically replace placeholders in string using these variables, and placeholder is something like {0} {1} ...  | 
 
 ```
 {
-...
-scripts: {
-"collect-source ": " collect-source-bundle --source-dir ./src/source --product sample --component NodeJS --host http://localhost:8090 --version 1.0.0"
-}
-...
+    'product.login.success': '{0} has logged in successfully!',
 }
 
+import { i18nClient } from '@singleton-i18n/js-core-sdk';
+
+const username = 'Tom';
+
+i18nClient.l10nService.getMessage('product.login.success', ['product.login.success', [username]);
+
 ```
 
-Running Commands for Bulk Collection
+#### **Internationalization API**
+
+Singleton JSClient also provides I18n APIs through i18nService to format the data regarding Datetime, Number, Percentage and Currency.
+
+##### **Datetime Format API**
 
 ```
-npm run collect-source
+public formatDate(value: any, pattern: string = 'mediumDate', timezone?: string): any
 
 ```
 
-#### **Sample Project**
+| Parameter |    Type     | Required | <div style="text-align:center">Description</div>                                                                                     |
+|:--------:|:--------:|:--------:|:-----------------------------------------------------------------------------------------------------------------------------------------|
+|value|any|Required| A date object or a number (milliseconds since UTC epoch) or an ISO string (https://www.w3.org/TR/NOTE-datetime). |
+|pattern|string|Required| The format can be predefined as shown below (all examples are given for en-US) or custom as shown in the table. Default is 'mediumDate'. |
+|timezone|string|No| It is used for formatting. It understands UTC/GMT and the continental US time zone abbreviations, but for general use, use a time zone offset, for example, '+0430' (4 hours, 30 minutes east of the Greenwich meridian) If not specified, the local system timezone of the end-user's browser will be used. |
+
+
+Pre-defined format options
+|   Format  |   Unit    | Output |
+|:------|:------|:------------------------------------------|
+|'shortTime'|'h:mm a'| e.g. 5:40 PM |
+|'mediumTime'|'h:mm:ss a'| e.g. 5:40:22 PM |
+|'longTime'|'h:mm:ss z'| e.g. 5:40:22 PM GMT+8 |
+|'fullTime'|'h:mm:ss zzzz'| e.g. 5:40:22 PM GMT+08:00 |
+|'shortDate'|'M/d/yy'| e.g. 2/9/18 |
+|'mediumDate'|'MMM d, y'| e.g. Feb 9, 2018 |
+|'longDate'|'MMMM d, y'| e.g. February 9, 2018 |
+|'fullDate'|'EEEE, MMMM d, y'| e.g. Friday, February 9, 2018 |
+|'short'|'M/d/yy, h:mm a'| e.g. 2/9/18, 5:40 PM |
+|'medium'|'MMM d, y, h:mm:ss a'| e.g. Feb 9, 2018, 5:40:22 PM |
+|'long'|'MMMM d, y, h:mm:ss a z'| e.g. February 9, 2018 at 5:40:22 PM GMT+8 |
+|'full'|'EEEE, MMMM d, y, h:mm:ss a zzzz'| e.g. Friday, February 9, 2018 at 5:40:22 PM GMT+08:00 |
+
+##### **Number Format API**
+
+```
+public formatNumber(value: any, locale?: string): string
+
+```
+
+| Parameter |    Type     | Required | <div style="text-align:center">Description</div>                                                                                     |
+|:--------:|:--------:|:--------:|:-----------------------------------------------------------------------------------------------------------------------------------------|
+|value|any|Required| A number or a string to be formatted |
+|locale|string|No| The method will format number data according to specified locale, if without specified locale, it will resolve the default locale from i18nClient.  |
+
+##### **Percentage Format API**
+
+```
+public formatPercent(value: any): string
+
+```
+
+| Parameter |    Type     | Required | <div style="text-align:center">Description</div>                                                                                     |
+|:--------:|:--------:|:--------:|:-----------------------------------------------------------------------------------------------------------------------------------------|
+|value     |  any     | Required| The value to be formatted |
+
+##### **Currency Format API**
+
+```
+public formatCurrency(value: any, currencyCode?: string): any 
+
+```
+
+| Parameter |    Type     | Required | <div style="text-align:center">Description</div>                                                                                     |
+|:--------:|:--------:|:--------:|:-----------------------------------------------------------------------------------------------------------------------------------------|
+|value     |  any     | Required| The value to be formatted |
+|currencyCode     |  string     | No| Currency code should be in accordance with [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) standard, such as USD for the US dollar and EUR for the euro. Optional. Default value is USD. |
+
+
+#### **Source Management via CLI Scripts**
+
+Singleton JSClient similarly exposes two CLI scripts which are seperately used to upload source bundle onto Singleton service for translations and to download translations & patterns from Singleton service by locale.
+
+##### **Upload Source Bundle**
+
+This script typically collects the collection named **ENGLISH** from the files named ***.l10n.js*** or ***.l10n.ts***, and then send them to the Singleton service.
+
+- Command line arguments description
+
+|    Parameter    |       Type       |  Required  | <div style="text-align:center">Description</div>                                                                                                              |
+|:---------------:|:----------------:|:--------:|:--------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|  --source-dir   |      string      | required | The root directory where App source files are involved.                                                                                                       |
+|     --host      |      string      | required | This is singleton service which provides clients with translations and pattern.                                                                               |
+|    --product    |      string      | required | Product name. For now, singleton service doesn’t explicitly restrict name of product, but it's better to keep short and sync with the name in release master. |
+|   --component   |      string      | required | Component name.                                                                                                                                               |
+|    --version    |      string      | required | Release version.                                                                                                                                              |
+| --refresh-token |      string      | No | Refresh token is only required for the CSP environment.                                                                                                       |
+|    --verbose    |      -           | No | If set, will show all information during command execution for debug purpose.                                                                                 |
+|    --moduletype |      string      | No | Sometimes source files have ES6 statement involved,  due script itself is based on commonJS, so it requires to convert ES6 syntax to commonJS one.          |
+
+- Create source bundle
+```
+export const ENGLISH = {
+    "network-error": 'Network instability.'',
+    "data-error": 'Data error.',
+    ...
+}
+
+```
+
+- Configure script in package.json
+
+```
+collect-source-bundle
+            --source-dir `pwd`/src/app
+            --host https://singleton.service.com:8090
+            --product Testing
+            --component ReactUI
+            --version 1.0
+    
+```
+
+
+```
+{
+    ...
+    scripts: {   
+        "upload-source-bundle": "collect-source-bundle 
+                                --source-dir `pwd`/src/app 
+                                --host <Singleton Service host>
+                                --product <product>
+                                --component <component>
+                                --version <product version>
+    }
+    ...
+}
+    
+```
+        
+- Run the script
+
+```
+npm run upload-source-bundle
+
+```
+
+##### **Download Translations & Patterns**
+
+Download translations and Patterns by language and region when ***Offline Mode***.
+
+- Command line arguments description
+
+|  Parameter  |    Type    |  Value   | <div style="text-align:center">Description</div>                                                                                                              |
+|:-----------:|:----------:|:--------:|:--------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| --directory |   string   | required | The directory should be consistent with the parameter 'i18nAssets' at [Configuration], which is used to store translations and patterns on local.             |
+|   --host    |   string   | required | This is singleton service which clients are able to communicate with and fetch translations and patterns.                                                     |
+|  --product  |   string   | required | Product name. For now, singleton service doesn’t explicitly restrict name of product, but it's better to keep short and sync with the name in release master. |
+| --component |   string   | required | Component name.                                                                                                                                               |
+|  --version  |   string   | required | Release version.                                                                                                                                              |
+| --languages |   string   | required | Specified the languages your product supports; Separated by , for example, zh-cn,en-US.                                                                       |
+|  --verbose  |   -        | optional | If set, it will show all information during command execution for debug purpose.                                                                              |
+
+```
+load-locale-data
+  --directory `pwd`/src/app/assets
+  --host https://singleton.service.com:8090
+  --product Testing
+  --component default
+  --version 1.0
+  --languages zh-cn,en-US
+
+```
+
+- Configure script in package.json
+
+```
+{
+    ...
+    scripts: {   
+        "download-locale-data": "load-locale-data 
+                            --directory `pwd`/src/app/assets
+                            --host <Singleton Service host>
+                            --product <product>
+                            --component <component>
+                            --version <product version>
+    }
+    ...
+}
+
+```
+
+Run the script
+
+```
+npm run download-locale-data
+
+```
+
+#### **Runtime / Offline Mode**
+
+##### **Runtime Mode**
+
+Runtime mode means JSClient has to communicate with Singleton Service runtime fetching translations and patterns, it requires to deploy Singleon Service on backend.
+
+##### **Offline Mode**
+
+Offline mode doesn't require to deploy Singleton Service on backend, it will be enabled no longer communicating with Singleton Service when setting 'i18nAssets' parameter at [Configuration], but it needs to depend on CLI script 'download-locale-data' exposed by Singleton JSClient to asynchronously fetch translations and patterns to local specified directory, then Singleton JSClient is able to load translations and patterns from local.
 
 Link to the sample project: https://github.com/vmware/singleton/tree/g11n-js-client
-
 
 <style>
     html {
