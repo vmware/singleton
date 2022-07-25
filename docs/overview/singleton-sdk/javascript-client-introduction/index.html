@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2022-07-25T14:46:39 CST">
+<meta name="revised" content="2022-07-25T15:47:12 CST">
 <title>JavaScript Client Introduction :: Singleton</title>
 <link rel="shortcut icon" href="https://vmware.github.io/singleton/images/favicon.png" type="image/x-icon" />
 <link href="https://vmware.github.io/singleton/css/nucleus.css" rel="stylesheet">
@@ -502,21 +502,91 @@
 </ul>
 <h4 id="jsclient-initilization"><strong>JSClient Initilization</strong></h4>
 <p>How to initilize Singleton JSClient in frontend framework? it requires to figure out the root loading point where JSClient is able to comminicate with Singele Service fetching translations and patterns. E.g. index.js in React framework is the root loading point, during the initilizing process, it needs to provice basic product information (E.g. ProductID, Component, Version) and interacts with Singleton Service runtime, it will load corresponding translations and patterns by language and region when switching locale. Singleton JSClient offers API <em><strong>i18nClient.init(Configuration)</strong></em> as below snippet which is used to initilize JSClient when App startup. At the same time, Singleton JSClient also provides l10nService and i18nService APIs so that it is able to use their exposed methods to translate strings and format the data regarding datetime, number, percentage and currency.</p>
-<p>Configuration
-|  Parameter  |  Type  | Required | <div style="text-align:center">Description</div>                                |
-|:&mdash;&mdash;&mdash;&ndash;:|:&mdash;&mdash;&mdash;&mdash;&mdash;-:|:&mdash;&mdash;&mdash;-:|:&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;|
-| productID | String | Required | Product name. |
-| version | string | Required | Translation version. |
-| component | string | Optional | From Singleton service perspective, it typically has backend component,frontend component.And default component is &lsquo;default&rsquo;. |
-| host | string | Required | Singleton service with which Singleton JSClient commnicaites to fetch translations and patterns by language and region. |
-| language | string | Optional | Language determines which languge translations should be loaded. |
-| region | string | Optional | Region determines which region patterns should be loaded.  |
-| i18nScope | PatternCategories[] | Optional | i18nScope determines what kinds of patterns data should be loaded, such as Number, Datetime, Percentage, Currency. |
-| sourceBundle | { [key: string]: any } | Optional | Mount source strings with key:value pair. |
-| sourceBundles | Array&lt;{ [key: string]: any }&gt; | Optional | Mount source strings with key:value Objects.  |
-| i18nAssets | string | Optional | This parameter is used to load translations and patterns from specified folder with Offline Mode, once setting this parameter, [host] parameter will disable without having to communicate with Singleton Service. |
-| httpOptions | HttpRequestOptions | Optional | This paramter is used to set network request parameters, E.g  timeout，withCredentials. |
-| isPseudo | boolean | Optional | isPseudo is used to development debugging and QE testing. |</p>
+<h6 id="configuration"><strong>Configuration</strong></h6>
+<table>
+<thead>
+<tr>
+<th align="left">Parameter</th>
+<th align="left">Type</th>
+<th align="left">Required</th>
+<th align="left"><div style="text-align:center">Description</div></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">productID</td>
+<td align="left">string</td>
+<td align="left">Required</td>
+<td align="left">Product name.</td>
+</tr>
+<tr>
+<td align="left">version</td>
+<td align="left">string</td>
+<td align="left">Required</td>
+<td align="left">Translation version.</td>
+</tr>
+<tr>
+<td align="left">component</td>
+<td align="left">string</td>
+<td align="left">Optional</td>
+<td align="left">From Singleton service perspective, it typically has backend component,frontend component.And default component is &lsquo;default&rsquo;.</td>
+</tr>
+<tr>
+<td align="left">host</td>
+<td align="left">string</td>
+<td align="left">Required</td>
+<td align="left">Singleton service with which Singleton JSClient commnicaites to fetch translations and patterns by language and region.</td>
+</tr>
+<tr>
+<td align="left">language</td>
+<td align="left">string</td>
+<td align="left">Optional</td>
+<td align="left">Language determines which languge translations should be loaded.</td>
+</tr>
+<tr>
+<td align="left">region</td>
+<td align="left">string</td>
+<td align="left">Optional</td>
+<td align="left">Region determines which region patterns should be loaded.</td>
+</tr>
+<tr>
+<td align="left">i18nScope</td>
+<td align="left">PatternCategories[]</td>
+<td align="left">Optional</td>
+<td align="left">i18nScope determines what kinds of patterns data should be loaded, such as Number, Datetime, Percentage, Currency.</td>
+</tr>
+<tr>
+<td align="left">sourceBundle</td>
+<td align="left">{ [key: string]: any }</td>
+<td align="left">Optional</td>
+<td align="left">Mount source strings with key:value pair.</td>
+</tr>
+<tr>
+<td align="left">sourceBundles</td>
+<td align="left">Array&lt;{ [key: string]: any }&gt;</td>
+<td align="left">Optional</td>
+<td align="left">Mount source strings with key:value Objects.</td>
+</tr>
+<tr>
+<td align="left">i18nAssets</td>
+<td align="left">string</td>
+<td align="left">Optional</td>
+<td align="left">This parameter is used to load translations and patterns from specified folder with Offline Mode, once setting this parameter, [host] parameter will disable without having to communicate with Singleton Service.</td>
+</tr>
+<tr>
+<td align="left">httpOptions</td>
+<td align="left">HttpRequestOptions</td>
+<td align="left">Optional</td>
+<td align="left">This paramter is used to set network request parameters, E.g  timeout，withCredentials.</td>
+</tr>
+<tr>
+<td align="left">isPseudo</td>
+<td align="left">boolean</td>
+<td align="left">Optional</td>
+<td align="left">isPseudo is used to development debugging and QE testing.</td>
+</tr>
+</tbody>
+</table>
 <pre><code>import { i18nClient as jsClient, getBrowserCultureLang, PatternCategories} from '@singleton-i18n/js-core-sdk';
 
 const currentLanguage  = getBrowserCultureLang();
@@ -621,7 +691,7 @@ import { i18nClient } from '@singleton-i18n/js-core-sdk';
 
 const username = 'Tom';
 
-i18nClient.l10nService.getMessage('product.login.success', ['product.login.success', [username]);
+i18nClient.l10nService.getMessage('product.login.success', [username]);
 
 </code></pre><h4 id="internationalization-api"><strong>Internationalization API</strong></h4>
 <p>Singleton JSClient also provides I18n APIs through i18nService to format the data regarding Datetime, Number, Percentage and Currency.</p>
@@ -631,48 +701,105 @@ i18nClient.l10nService.getMessage('product.login.success', ['product.login.succe
 </code></pre><table>
 <thead>
 <tr>
-<th align="center">Parameter</th>
-<th align="center">Type</th>
-<th align="center">Required</th>
+<th align="left">Parameter</th>
+<th align="left">Type</th>
+<th align="left">Required</th>
 <th align="left"><div style="text-align:center">Description</div></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="center">value</td>
-<td align="center">any</td>
-<td align="center">Required</td>
+<td align="left">value</td>
+<td align="left">any</td>
+<td align="left">Required</td>
 <td align="left">A date object or a number (milliseconds since UTC epoch) or an ISO string (<a href="https://www.w3.org/TR/NOTE-datetime)">https://www.w3.org/TR/NOTE-datetime)</a>.</td>
 </tr>
 <tr>
-<td align="center">pattern</td>
-<td align="center">string</td>
-<td align="center">Required</td>
+<td align="left">pattern</td>
+<td align="left">string</td>
+<td align="left">Required</td>
 <td align="left">The format can be predefined as shown below (all examples are given for en-US) or custom as shown in the table. Default is &lsquo;mediumDate&rsquo;.</td>
 </tr>
 <tr>
-<td align="center">timezone</td>
-<td align="center">string</td>
-<td align="center">No</td>
+<td align="left">timezone</td>
+<td align="left">string</td>
+<td align="left">No</td>
 <td align="left">It is used for formatting. It understands UTC/GMT and the continental US time zone abbreviations, but for general use, use a time zone offset, for example, &lsquo;+0430&rsquo; (4 hours, 30 minutes east of the Greenwich meridian) If not specified, the local system timezone of the end-user&rsquo;s browser will be used.</td>
 </tr>
 </tbody>
 </table>
-<p>Pre-defined format options
-|   Format  |   Unit    | Output |
-|:&mdash;&mdash;|:&mdash;&mdash;|:&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;|
-|'shortTime'|'h:mm a'| e.g. 5:40 PM |
-|'mediumTime'|'h:mm:ss a'| e.g. 5:40:22 PM |
-|'longTime'|'h:mm:ss z'| e.g. 5:40:22 PM GMT+8 |
-|'fullTime'|'h:mm:ss zzzz'| e.g. 5:40:22 PM GMT+08:00 |
-|'shortDate'|'M/d/yy'| e.g. 2/9/18 |
-|'mediumDate'|'MMM d, y'| e.g. Feb 9, 2018 |
-|'longDate'|'MMMM d, y'| e.g. February 9, 2018 |
-|'fullDate'|'EEEE, MMMM d, y'| e.g. Friday, February 9, 2018 |
-|'short'|'M/d/yy, h:mm a'| e.g. 2/9/18, 5:40 PM |
-|'medium'|'MMM d, y, h:mm:ss a'| e.g. Feb 9, 2018, 5:40:22 PM |
-|'long'|'MMMM d, y, h:mm:ss a z'| e.g. February 9, 2018 at 5:40:22 PM GMT+8 |
-|'full'|'EEEE, MMMM d, y, h:mm:ss a zzzz'| e.g. Friday, February 9, 2018 at 5:40:22 PM GMT+08:00 |</p>
+<h6 id="pre-defined-format-options"><strong>Pre-defined format options</strong></h6>
+<table>
+<thead>
+<tr>
+<th align="left">Format</th>
+<th align="left">Unit</th>
+<th align="left">Output</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">'shortTime&rsquo;</td>
+<td align="left">'h:mm a&rsquo;</td>
+<td align="left">e.g. 5:40 PM</td>
+</tr>
+<tr>
+<td align="left">'mediumTime&rsquo;</td>
+<td align="left">'h:mm:ss a&rsquo;</td>
+<td align="left">e.g. 5:40:22 PM</td>
+</tr>
+<tr>
+<td align="left">'longTime&rsquo;</td>
+<td align="left">'h:mm:ss z&rsquo;</td>
+<td align="left">e.g. 5:40:22 PM GMT+8</td>
+</tr>
+<tr>
+<td align="left">'fullTime&rsquo;</td>
+<td align="left">'h:mm:ss zzzz&rsquo;</td>
+<td align="left">e.g. 5:40:22 PM GMT+08:00</td>
+</tr>
+<tr>
+<td align="left">'shortDate&rsquo;</td>
+<td align="left">'M/d/yy&rsquo;</td>
+<td align="left">e.g. 2/9/18</td>
+</tr>
+<tr>
+<td align="left">'mediumDate&rsquo;</td>
+<td align="left">'MMM d, y&rsquo;</td>
+<td align="left">e.g. Feb 9, 2018</td>
+</tr>
+<tr>
+<td align="left">'longDate&rsquo;</td>
+<td align="left">'MMMM d, y&rsquo;</td>
+<td align="left">e.g. February 9, 2018</td>
+</tr>
+<tr>
+<td align="left">'fullDate&rsquo;</td>
+<td align="left">'EEEE, MMMM d, y&rsquo;</td>
+<td align="left">e.g. Friday, February 9, 2018</td>
+</tr>
+<tr>
+<td align="left">'short&rsquo;</td>
+<td align="left">'M/d/yy, h:mm a&rsquo;</td>
+<td align="left">e.g. 2/9/18, 5:40 PM</td>
+</tr>
+<tr>
+<td align="left">'medium&rsquo;</td>
+<td align="left">'MMM d, y, h:mm:ss a&rsquo;</td>
+<td align="left">e.g. Feb 9, 2018, 5:40:22 PM</td>
+</tr>
+<tr>
+<td align="left">'long&rsquo;</td>
+<td align="left">'MMMM d, y, h:mm:ss a z&rsquo;</td>
+<td align="left">e.g. February 9, 2018 at 5:40:22 PM GMT+8</td>
+</tr>
+<tr>
+<td align="left">'full&rsquo;</td>
+<td align="left">'EEEE, MMMM d, y, h:mm:ss a zzzz&rsquo;</td>
+<td align="left">e.g. Friday, February 9, 2018 at 5:40:22 PM GMT+08:00</td>
+</tr>
+</tbody>
+</table>
 <h5 id="number-format-api"><strong>Number Format API</strong></h5>
 <pre><code>public formatNumber(value: any, locale?: string): string
 
@@ -727,23 +854,23 @@ i18nClient.l10nService.getMessage('product.login.success', ['product.login.succe
 </code></pre><table>
 <thead>
 <tr>
-<th align="center">Parameter</th>
-<th align="center">Type</th>
-<th align="center">Required</th>
+<th align="left">Parameter</th>
+<th align="left">Type</th>
+<th align="left">Required</th>
 <th align="left"><div style="text-align:center">Description</div></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="center">value</td>
-<td align="center">any</td>
-<td align="center">Required</td>
+<td align="left">value</td>
+<td align="left">any</td>
+<td align="left">Required</td>
 <td align="left">The value to be formatted</td>
 </tr>
 <tr>
-<td align="center">currencyCode</td>
-<td align="center">string</td>
-<td align="center">No</td>
+<td align="left">currencyCode</td>
+<td align="left">string</td>
+<td align="left">No</td>
 <td align="left">Currency code should be in accordance with <a href="https://en.wikipedia.org/wiki/ISO_4217">ISO 4217</a> standard, such as USD for the US dollar and EUR for the euro. Optional. Default value is USD.</td>
 </tr>
 </tbody>
@@ -758,7 +885,7 @@ i18nClient.l10nService.getMessage('product.login.success', ['product.login.succe
 <table>
 <thead>
 <tr>
-<th align="center">Parameter</th>
+<th align="left">Parameter</th>
 <th align="center">Type</th>
 <th align="center">Required</th>
 <th align="left"><div style="text-align:center">Description</div></th>
@@ -766,49 +893,49 @@ i18nClient.l10nService.getMessage('product.login.success', ['product.login.succe
 </thead>
 <tbody>
 <tr>
-<td align="center">&ndash;source-dir</td>
+<td align="left">&ndash;source-dir</td>
 <td align="center">string</td>
 <td align="center">required</td>
 <td align="left">The root directory where App source files are involved.</td>
 </tr>
 <tr>
-<td align="center">&ndash;host</td>
+<td align="left">&ndash;host</td>
 <td align="center">string</td>
 <td align="center">required</td>
 <td align="left">This is singleton service which provides clients with translations and pattern.</td>
 </tr>
 <tr>
-<td align="center">&ndash;product</td>
+<td align="left">&ndash;product</td>
 <td align="center">string</td>
 <td align="center">required</td>
 <td align="left">Product name. For now, singleton service doesn’t explicitly restrict name of product, but it&rsquo;s better to keep short and sync with the name in release master.</td>
 </tr>
 <tr>
-<td align="center">&ndash;component</td>
+<td align="left">&ndash;component</td>
 <td align="center">string</td>
 <td align="center">required</td>
 <td align="left">Component name.</td>
 </tr>
 <tr>
-<td align="center">&ndash;version</td>
+<td align="left">&ndash;version</td>
 <td align="center">string</td>
 <td align="center">required</td>
 <td align="left">Release version.</td>
 </tr>
 <tr>
-<td align="center">&ndash;refresh-token</td>
+<td align="left">&ndash;refresh-token</td>
 <td align="center">string</td>
 <td align="center">No</td>
 <td align="left">Refresh token is only required for the CSP environment.</td>
 </tr>
 <tr>
-<td align="center">&ndash;verbose</td>
+<td align="left">&ndash;verbose</td>
 <td align="center">-</td>
 <td align="center">No</td>
 <td align="left">If set, will show all information during command execution for debug purpose.</td>
 </tr>
 <tr>
-<td align="center">&ndash;moduletype</td>
+<td align="left">&ndash;moduletype</td>
 <td align="center">string</td>
 <td align="center">No</td>
 <td align="left">Sometimes source files have ES6 statement involved,  due script itself is based on commonJS, so it requires to convert ES6 syntax to commonJS one.</td>
@@ -860,7 +987,7 @@ i18nClient.l10nService.getMessage('product.login.success', ['product.login.succe
 <table>
 <thead>
 <tr>
-<th align="center">Parameter</th>
+<th align="left">Parameter</th>
 <th align="center">Type</th>
 <th align="center">Value</th>
 <th align="left"><div style="text-align:center">Description</div></th>
@@ -868,43 +995,43 @@ i18nClient.l10nService.getMessage('product.login.success', ['product.login.succe
 </thead>
 <tbody>
 <tr>
-<td align="center">&ndash;directory</td>
+<td align="left">&ndash;directory</td>
 <td align="center">string</td>
 <td align="center">required</td>
 <td align="left">The directory should be consistent with the parameter &lsquo;i18nAssets&rsquo; at [Configuration], which is used to store translations and patterns on local.</td>
 </tr>
 <tr>
-<td align="center">&ndash;host</td>
+<td align="left">&ndash;host</td>
 <td align="center">string</td>
 <td align="center">required</td>
 <td align="left">This is singleton service which clients are able to communicate with and fetch translations and patterns.</td>
 </tr>
 <tr>
-<td align="center">&ndash;product</td>
+<td align="left">&ndash;product</td>
 <td align="center">string</td>
 <td align="center">required</td>
 <td align="left">Product name. For now, singleton service doesn’t explicitly restrict name of product, but it&rsquo;s better to keep short and sync with the name in release master.</td>
 </tr>
 <tr>
-<td align="center">&ndash;component</td>
+<td align="left">&ndash;component</td>
 <td align="center">string</td>
 <td align="center">required</td>
 <td align="left">Component name.</td>
 </tr>
 <tr>
-<td align="center">&ndash;version</td>
+<td align="left">&ndash;version</td>
 <td align="center">string</td>
 <td align="center">required</td>
 <td align="left">Release version.</td>
 </tr>
 <tr>
-<td align="center">&ndash;languages</td>
+<td align="left">&ndash;languages</td>
 <td align="center">string</td>
 <td align="center">required</td>
 <td align="left">Specified the languages your product supports; Separated by , for example, zh-cn,en-US.</td>
 </tr>
 <tr>
-<td align="center">&ndash;verbose</td>
+<td align="left">&ndash;verbose</td>
 <td align="center">-</td>
 <td align="center">optional</td>
 <td align="left">If set, it will show all information during command execution for debug purpose.</td>
@@ -943,7 +1070,6 @@ i18nClient.l10nService.getMessage('product.login.success', ['product.login.succe
 <p>Runtime mode means JSClient has to communicate with Singleton Service runtime fetching translations and patterns, it requires to deploy Singleon Service on backend.</p>
 <h5 id="offline-mode"><strong>Offline Mode</strong></h5>
 <p>Offline mode doesn&rsquo;t require to deploy Singleton Service on backend, it will be enabled no longer communicating with Singleton Service when setting &lsquo;i18nAssets&rsquo; parameter at [Configuration], but it needs to depend on CLI script &lsquo;download-locale-data&rsquo; exposed by Singleton JSClient to asynchronously fetch translations and patterns to local specified directory, then Singleton JSClient is able to load translations and patterns from local.</p>
-<p>Link to the sample project: <a href="https://github.com/vmware/singleton/tree/g11n-js-client">https://github.com/vmware/singleton/tree/g11n-js-client</a></p>
 <style>
     html {
         font-family: Metropolis;
