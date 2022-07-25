@@ -22,10 +22,11 @@ The Singleton JSClient(@singleton-i18n/js-core-sdk) is a Singleton Service-based
 
 How to initilize Singleton JSClient in frontend framework? it requires to figure out the root loading point where JSClient is able to comminicate with Singele Service fetching translations and patterns. E.g. index.js in React framework is the root loading point, during the initilizing process, it needs to provice basic product information (E.g. ProductID, Component, Version) and interacts with Singleton Service runtime, it will load corresponding translations and patterns by language and region when switching locale. Singleton JSClient offers API ***i18nClient.init(Configuration)*** as below snippet which is used to initilize JSClient when App startup. At the same time, Singleton JSClient also provides l10nService and i18nService APIs so that it is able to use their exposed methods to translate strings and format the data regarding datetime, number, percentage and currency. 
 
-Configuration
-|  Parameter  |  Type  | Required | <div style="text-align:center">Description</div>                                |
-|:-----------:|:----------------:|:----------:|:---------------------------------------------------------------------------------------------------------|
-| productID | String | Required | Product name. |
+###### **Configuration**
+
+| Parameter |    Type     | Required | <div style="text-align:center">Description</div>                                                                                  |
+|:--------|:--------|:--------|:-----------------------------------------------------------------------------------------------------------------------------------------|
+| productID | string | Required | Product name. |
 | version | string | Required | Translation version. |
 | component | string | Optional | From Singleton service perspective, it typically has backend component,frontend component.And default component is 'default'. |
 | host | string | Required | Singleton service with which Singleton JSClient commnicaites to fetch translations and patterns by language and region. |
@@ -144,7 +145,7 @@ import { i18nClient } from '@singleton-i18n/js-core-sdk';
 
 const username = 'Tom';
 
-i18nClient.l10nService.getMessage('product.login.success', ['product.login.success', [username]);
+i18nClient.l10nService.getMessage('product.login.success', [username]);
 
 ```
 
@@ -159,14 +160,14 @@ public formatDate(value: any, pattern: string = 'mediumDate', timezone?: string)
 
 ```
 
-| Parameter |    Type     | Required | <div style="text-align:center">Description</div>                                                                                     |
-|:--------:|:--------:|:--------:|:-----------------------------------------------------------------------------------------------------------------------------------------|
+| Parameter |    Type     | Required | <div style="text-align:center">Description</div>                                                                                  |
+|:--------|:--------|:--------|:-----------------------------------------------------------------------------------------------------------------------------------------|
 |value|any|Required| A date object or a number (milliseconds since UTC epoch) or an ISO string (https://www.w3.org/TR/NOTE-datetime). |
 |pattern|string|Required| The format can be predefined as shown below (all examples are given for en-US) or custom as shown in the table. Default is 'mediumDate'. |
 |timezone|string|No| It is used for formatting. It understands UTC/GMT and the continental US time zone abbreviations, but for general use, use a time zone offset, for example, '+0430' (4 hours, 30 minutes east of the Greenwich meridian) If not specified, the local system timezone of the end-user's browser will be used. |
 
+###### **Pre-defined format options**
 
-Pre-defined format options
 |   Format  |   Unit    | Output |
 |:------|:------|:------------------------------------------|
 |'shortTime'|'h:mm a'| e.g. 5:40 PM |
@@ -213,9 +214,9 @@ public formatCurrency(value: any, currencyCode?: string): any
 ```
 
 | Parameter |    Type     | Required | <div style="text-align:center">Description</div>                                                                                     |
-|:--------:|:--------:|:--------:|:-----------------------------------------------------------------------------------------------------------------------------------------|
-|value     |  any     | Required| The value to be formatted |
-|currencyCode     |  string     | No| Currency code should be in accordance with [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) standard, such as USD for the US dollar and EUR for the euro. Optional. Default value is USD. |
+|:--------|:--------|:--------|:-----------------------------------------------------------------------------------------------------------------------------------------|
+|value   |  any  | Required| The value to be formatted |
+|currencyCode |  string | No| Currency code should be in accordance with [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) standard, such as USD for the US dollar and EUR for the euro. Optional. Default value is USD. |
 
 
 #### **Source Management via CLI Scripts**
@@ -229,7 +230,7 @@ This script typically collects the collection named **ENGLISH** from the files n
 - Command line arguments description
 
 |    Parameter    |       Type       |  Required  | <div style="text-align:center">Description</div>                                                                                                              |
-|:---------------:|:----------------:|:--------:|:--------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|:---------------|:----------------:|:--------:|:--------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |  --source-dir   |      string      | required | The root directory where App source files are involved.                                                                                                       |
 |     --host      |      string      | required | This is singleton service which provides clients with translations and pattern.                                                                               |
 |    --product    |      string      | required | Product name. For now, singleton service doesn’t explicitly restrict name of product, but it's better to keep short and sync with the name in release master. |
@@ -292,7 +293,7 @@ Download translations and Patterns by language and region when ***Offline Mode**
 - Command line arguments description
 
 |  Parameter  |    Type    |  Value   | <div style="text-align:center">Description</div>                                                                                                              |
-|:-----------:|:----------:|:--------:|:--------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|:-----------|:----------:|:--------:|:--------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | --directory |   string   | required | The directory should be consistent with the parameter 'i18nAssets' at [Configuration], which is used to store translations and patterns on local.             |
 |   --host    |   string   | required | This is singleton service which clients are able to communicate with and fetch translations and patterns.                                                     |
 |  --product  |   string   | required | Product name. For now, singleton service doesn’t explicitly restrict name of product, but it's better to keep short and sync with the name in release master. |
@@ -346,8 +347,6 @@ Runtime mode means JSClient has to communicate with Singleton Service runtime fe
 ##### **Offline Mode**
 
 Offline mode doesn't require to deploy Singleton Service on backend, it will be enabled no longer communicating with Singleton Service when setting 'i18nAssets' parameter at [Configuration], but it needs to depend on CLI script 'download-locale-data' exposed by Singleton JSClient to asynchronously fetch translations and patterns to local specified directory, then Singleton JSClient is able to load translations and patterns from local.
-
-Link to the sample project: https://github.com/vmware/singleton/tree/g11n-js-client
 
 <style>
     html {
