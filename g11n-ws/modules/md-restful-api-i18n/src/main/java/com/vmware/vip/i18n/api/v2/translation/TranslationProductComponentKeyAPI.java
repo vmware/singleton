@@ -39,10 +39,6 @@ import com.vmware.vip.i18n.api.base.TranslationProductComponentKeyAction;
 import io.micrometer.core.instrument.MeterRegistry;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
-import io.swagger.v3.oas.annotations.Parameter;
-import io.swagger.v3.oas.annotations.media.ArraySchema;
-import io.swagger.v3.oas.annotations.media.Schema;
-import io.swagger.v3.oas.annotations.media.Content;
 
 /**
  * Provide RESTful API for product to get translation by String base.
@@ -125,7 +121,7 @@ public class TranslationProductComponentKeyAPI extends TranslationProductCompone
 			@ApiParam(name = APIParamName.VERSION, required = true, value = APIParamValue.VERSION) @PathVariable(value = APIParamName.VERSION) String version,
 			@ApiParam(name = APIParamName.LOCALE, required = true, value = APIParamValue.LOCALE) @PathVariable(value = APIParamName.LOCALE) String locale,
 			@ApiParam(name = APIParamName.COMPONENT, required = true, value = APIParamValue.COMPONENT) @PathVariable(APIParamName.COMPONENT) String component,
-			@ApiParam(name = "sourceSet", required = true, value = "an Array of KeySourceCommentDTO object needs to be translated") @RequestBody List<KeySourceCommentDTO> sourceSet,
+			@RequestBody List<KeySourceCommentDTO> sourceSet,
 			@ApiParam(name = APIParamName.COLLECT_SOURCE, value = APIParamValue.COLLECT_SOURCE) @RequestParam(value = APIParamName.COLLECT_SOURCE, required = false, defaultValue = "false") String collectSource,
 			HttpServletRequest request) throws JsonProcessingException, VIPAPIException {
 		request.setAttribute(ConstantsKeys.KEY, ConstantsKeys.JSON_KEYSET);
