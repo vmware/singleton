@@ -139,18 +139,14 @@ public class APISourceInterceptor implements HandlerInterceptor {
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
-		try {
-			String contentLength = request.getHeader("content-length");
-				if (StringUtils.equalsIgnoreCase(request.getParameter(ConstantsKeys.COLLECT_SOURCE), ConstantsKeys.TRUE) && (contentLength != null)
-						&& Integer.valueOf(contentLength) > this.sourceReqBodySize) {
-					throw new ValidationException(String.format(ValidationMsg.COLLECTSOURCE_REQUEST_BODY_NOT_VALIDE,
-							this.sourceReqBodySize, request.getHeader("content-length")));
-				}
-			
-		} catch (Exception e) {
-			LOGGER.error(e.getMessage(), e);
-			throw e;
+	
+		String contentLength = request.getHeader("content-length");
+		if (StringUtils.equalsIgnoreCase(request.getParameter(ConstantsKeys.COLLECT_SOURCE), ConstantsKeys.TRUE)
+				&& (contentLength != null) && Integer.valueOf(contentLength) > this.sourceReqBodySize) {
+			throw new ValidationException(String.format(ValidationMsg.COLLECTSOURCE_REQUEST_BODY_NOT_VALIDE,
+					this.sourceReqBodySize, request.getHeader("content-length")));
 		}
+
 		return true;
 
 	}
