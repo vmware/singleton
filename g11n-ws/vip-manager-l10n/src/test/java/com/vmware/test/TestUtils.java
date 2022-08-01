@@ -15,9 +15,9 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.context.WebApplicationContext;
 
 import com.vmware.l10n.BootApplication;
-import com.vmware.l10n.conf.RsaCryptUtil;
 import com.vmware.l10n.source.dto.GRMAPIResponseStatus;
 import com.vmware.l10n.utils.SourceUtils;
+import com.vmware.vip.common.utils.RsaCryptUtils;
 import com.vmware.l10n.utils.AllowListUtils;
 
 @RunWith(SpringRunner.class)
@@ -52,7 +52,7 @@ public class TestUtils {
 		File file = new File("testRSA.test");
 		try {
 			if(file.createNewFile()){
-				RsaCryptUtil.getPublicKeyStrFromFile(file);
+				RsaCryptUtils.getPublicKeyStrFromFile(file);
 			}
 			file.deleteOnExit();
 		} catch (IOException e) {
