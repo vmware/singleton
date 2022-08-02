@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Relative Time Format - Singleton</title>
+<meta name="description" content="One-fits-all Internationalization Solution">
+<meta name="generator" content="Hugo 0.90.0" />
+<link href="https://vmware.github.io/singleton//index.xml" rel="alternate" type="application/rss+xml">
+<link rel="canonical" href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/relative-time-format/">
+<link rel="stylesheet" href="https://vmware.github.io/singleton/css/theme.min.css">
+<link rel="stylesheet" href="https://vmware.github.io/singleton/css/chroma.min.css">
+<script defer src="https://vmware.github.io/singleton//js/fontawesome6/all.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery.easing@1.4.1/jquery.easing.min.js" integrity="sha256-H3cjtrm/ztDeuhCN9I4yh4iN2Ybx/y1RM7rMmAesA0k=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js" integrity="sha256-4XodgW4TwIJuDtf+v6vDJ39FVxI0veC/kSCCmnFp7ck=" crossorigin="anonymous"></script>
+<script src="https://vmware.github.io/singleton/js/bundle.js"></script><style>
+:root {}
+</style>
+<meta property="og:title" content="Relative Time Format" />
+<meta property="og:description" content="Overview Formats simple relative dates. Try to give the best relative time span representation based on start time and end time.
+API public formatRelativeTime( from: Date, to: Date, locale?: string, options?: Object ): string Parameters    Parameter Type Required Description     from Date Required Relative time start time.   to Date Required Relative time end time.   locale String Optional The locale is only required in async mode for non-blocking loading." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/relative-time-format/" /><meta property="og:image" content="https://vmware.github.io/singleton/images/og-image.png"/><meta property="article:section" content="docs-previous" />
+<meta property="article:published_time" content="2019-09-24T20:08:31+08:00" />
+<meta property="article:modified_time" content="2019-09-24T20:08:31+08:00" /><meta property="og:site_name" content="Hugo Techdoc Theme" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://vmware.github.io/singleton/images/og-image.png"/>
+
+<meta name="twitter:title" content="Relative Time Format"/>
+<meta name="twitter:description" content="Overview Formats simple relative dates. Try to give the best relative time span representation based on start time and end time.
+API public formatRelativeTime( from: Date, to: Date, locale?: string, options?: Object ): string Parameters    Parameter Type Required Description     from Date Required Relative time start time.   to Date Required Relative time end time.   locale String Optional The locale is only required in async mode for non-blocking loading."/>
+<meta itemprop="name" content="Relative Time Format">
+<meta itemprop="description" content="Overview Formats simple relative dates. Try to give the best relative time span representation based on start time and end time.
+API public formatRelativeTime( from: Date, to: Date, locale?: string, options?: Object ): string Parameters    Parameter Type Required Description     from Date Required Relative time start time.   to Date Required Relative time end time.   locale String Optional The locale is only required in async mode for non-blocking loading."><meta itemprop="datePublished" content="2019-09-24T20:08:31+08:00" />
+<meta itemprop="dateModified" content="2019-09-24T20:08:31+08:00" />
+<meta itemprop="wordCount" content="437"><meta itemprop="image" content="https://vmware.github.io/singleton/images/og-image.png"/>
+<meta itemprop="keywords" content="" /></head>
+<body><div class="container"><header>
+<h1>Singleton</h1><span class="version">Version 0.6</span><a href="https://github.com/vmware/singleton" class="github"><i class="fab fa-github"></i></a>
+<p class="description">One-fits-all Internationalization Solution</p>
+
+</header>
+<div class="global-menu">
+<nav>
+<ul>
+<li class=""><a href="/singleton/">Home</a></li>
+<li class=""><a href="/singleton/docs/get-started/download-and-installation">Download</a></li>
+<li class=""><a href="/singleton/docs/">Documentation</a></li>
+<li class=""><a href="https://github.com/vmware/singleton">Github Repo</a></li><li id="release" class="parent "><a href="#">Releases<i class="fas fa-angle-right"></i></a>
+<ul class="sub-menu">
+<li class="child "><a href="/singleton/docs/">v0.6-Latest</a></li>
+<li class="child "><a href="/singleton/docs-previous/v0.1/get-started/download-and-installation">v0.1</a></li>
+</ul>
+</li></ul>
+</nav>
+</div>
+
+<div class="content-container">
+<main><h1>Relative Time Format</h1>
+<h4 id="overview"><strong>Overview</strong></h4>
+<p>Formats simple relative dates. Try to give the best relative time span representation based on start time and end time.</p>
+<h4 id="api"><strong>API</strong></h4>
+<pre tabindex="0"><code>public formatRelativeTime( from: Date, to: Date, locale?: string, options?: Object ): string
+
+</code></pre><h4 id="parameters"><strong>Parameters</strong></h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Parameter</th>
+<th style="text-align:center">Type</th>
+<th style="text-align:center">Required</th>
+<th style="text-align:left"><div style="text-align:center">Description</div></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">from</td>
+<td style="text-align:center">Date</td>
+<td style="text-align:center">Required</td>
+<td style="text-align:left">Relative time start time.</td>
+</tr>
+<tr>
+<td style="text-align:center">to</td>
+<td style="text-align:center">Date</td>
+<td style="text-align:center">Required</td>
+<td style="text-align:left">Relative time end time.</td>
+</tr>
+<tr>
+<td style="text-align:center">locale</td>
+<td style="text-align:center">String</td>
+<td style="text-align:center">Optional</td>
+<td style="text-align:left">The locale is only required in async mode for non-blocking loading. Please refer to the <a href="../locale-management#asynchronous-api">stream API</a> usage.</td>
+</tr>
+<tr>
+<td style="text-align:center">options</td>
+<td style="text-align:center">Object</td>
+<td style="text-align:center">Optional</td>
+<td style="text-align:left">The numeric default value is &lsquo;always&rsquo;. If numeric: &lsquo;auto&rsquo; option is passed, it will produce the string yesterday or tomorrow instead of 1 day ago or in 1 day, this allows to not always have to use numeric values in the output.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="time-range-and-unit"><strong>Time Range and Unit</strong></h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Range</th>
+<th style="text-align:center">Unit</th>
+<th style="text-align:center">Output</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">0s ~ 44 seconds</td>
+<td style="text-align:center">second</td>
+<td style="text-align:center">x second(s)</td>
+</tr>
+<tr>
+<td style="text-align:center">45 ~ 89 seconds</td>
+<td style="text-align:center">minute</td>
+<td style="text-align:center">1 minute</td>
+</tr>
+<tr>
+<td style="text-align:center">90 seconds ~ 44 minutes</td>
+<td style="text-align:center">minute</td>
+<td style="text-align:center">2 ~ 44 minutes</td>
+</tr>
+<tr>
+<td style="text-align:center">45 ~ 89 minutes</td>
+<td style="text-align:center">hour</td>
+<td style="text-align:center">an hour</td>
+</tr>
+<tr>
+<td style="text-align:center">90 minutes ~ 21 hours</td>
+<td style="text-align:center">hour</td>
+<td style="text-align:center">2 ~ 21 hours</td>
+</tr>
+<tr>
+<td style="text-align:center">22 ~ 35 hours</td>
+<td style="text-align:center">day</td>
+<td style="text-align:center">a day</td>
+</tr>
+<tr>
+<td style="text-align:center">36 hours ~ 25 days</td>
+<td style="text-align:center">day</td>
+<td style="text-align:center">2 ~ 25 day</td>
+</tr>
+<tr>
+<td style="text-align:center">26 ~ 45 days</td>
+<td style="text-align:center">month</td>
+<td style="text-align:center">a month</td>
+</tr>
+<tr>
+<td style="text-align:center">45 ~ 319 days</td>
+<td style="text-align:center">month</td>
+<td style="text-align:center">2 ~ 10 months</td>
+</tr>
+<tr>
+<td style="text-align:center">320 ~ 547 days(1.5 years)</td>
+<td style="text-align:center">year</td>
+<td style="text-align:center">a year</td>
+</tr>
+<tr>
+<td style="text-align:center">548 days+</td>
+<td style="text-align:center">year</td>
+<td style="text-align:center">2+ years</td>
+</tr>
+</tbody>
+</table>
+<h4 id="example-code"><strong>Example Code</strong></h4>
+<pre tabindex="0"><code>import { I18nService } from ' @singleton-i18n/angular-client';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+
+
+@Component({
+    selector: 'test',
+    templateUrl: './test.component.html'
+})
+export class TestComponent implements OnInit, OnDestroy {
+    subscription: any;
+    time:string;
+    constructor(private i18nService: I18nService) {}
+
+    ngOnInit() {
+        this.subscription = this.i18nService.stream.subscribe((locale: string) =&gt; {
+            // Assuming locale is en-US :
+            const from = new Date(2019, 8, 1),
+                to = new Date(2019, 9, 1);
+
+            this.time = this.i18nService.formatRelativeTime( from, to, locale);
+            // Output: in 1 month
+
+            this.time = this.i18nService.formatRelativeTime( to, from, locale);
+            // Output: 1 month ago
+
+            this.time = this.i18nService.formatRelativeTime( from, to, locale, { numeric: 'auto' });
+            // Output: next month
+
+            this.time = this.i18nService.formatRelativeTime( to, from, locale, { numeric: 'auto' });
+            // Output: last month
+        });
+    }
+
+    ngOnDestroy() {
+        this.subscription.unsubscribe();
+        this.subscription = undefined;
+    }
+}
+
+</code></pre><style> 
+    html {
+        font-family: Metropolis;
+        color: #575757;
+    }
+    section strong {
+        font-weight: 400;
+    }
+    section p>strong {
+        font-weight: 600;
+    }
+    article section.page pre {
+        background-color: #444;
+        border: 0.5px solid #DBDBDB; 
+        padding: 1.5rem 1rem 1.5rem 1rem;
+        border-radius: 5px;
+        margin: 16px auto;
+    }
+    article section.page code {
+        font-size: 90%;
+        color: #17ff0b;  
+        white-space: pre-wrap;
+    }
+    article section.page pre span.copy-to-clipboard {
+        color: #b0bec5;
+        cursor: pointer;
+    }
+    article section.page table th {
+        font-weight:500;
+        text-transform: inherit;
+    }
+    table thead tr th:first-child {
+        width:13rem;
+    }
+    table thead tr th:nth-child(2) {
+        width:10rem;
+    }
+    table thead tr th:nth-child(3) {
+        width:10rem;
+    }
+    article section.page h1:first-of-type {
+        text-transform: inherit;
+        font-family: inherit;
+    }
+</style><blockquote>
+</blockquote>
+<div class="edit-meta">
+Last updated on 24 Sep 2019
+
+
+<br>
+Published on 24 Sep 2019
+<br><a href="https://github.com/thingsym/hugo-theme-techdoc/edit/master/docs-previous/v0.1/overview/singleton-sdk/Angular%20Client%20Introduction/relative-time-format.md" class="edit-page"><i class="fas fa-pen-square"></i>&nbsp;Edit on GitHub</a></div><nav class="pagination"><a class="nav nav-prev" href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/plural-format/" title="Plural Format"><i class="fas fa-arrow-left" aria-hidden="true"></i>&nbsp;Prev - Plural Format</a>
+<a class="nav nav-next" href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/date-time-format-pipe/" title="Date Time Format Pipe">Next - Date Time Format Pipe <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+</nav><footer><p class="powered">Powered by <a href="https://gohugo.io">Hugo</a>. Theme by <a href="https://themes.gohugo.io/hugo-theme-techdoc/">TechDoc</a>. Designed by <a href="https://github.com/thingsym/hugo-theme-techdoc">Thingsym</a>.</p>
+</footer>
+</main>
+<div class="sidebar">
+
+<nav class="slide-menu">
+<ul>
+<li class=""><a href="https://vmware.github.io/singleton/">Home</a></li>
+
+<li class=" has-sub-menu"><a href="https://vmware.github.io/singleton/docs/">Documentation<span class="mark closed">+</span></a>
+  
+<ul class="sub-menu">
+
+<li class=" has-sub-menu"><a href="https://vmware.github.io/singleton/docs/get-started/">Get Started<span class="mark closed">+</span></a>
+  
+<ul class="sub-menu">
+<li class=""><a href="https://vmware.github.io/singleton/docs/get-started/download-and-installation/">Download and Installation</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/get-started/quick-start/">Quick Start</a></li>
+</ul>
+  
+</li>
+
+<li class=" has-sub-menu"><a href="https://vmware.github.io/singleton/docs/overview/">Overview<span class="mark closed">+</span></a>
+  
+<ul class="sub-menu">
+
+<li class=" has-sub-menu"><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/">Singleton Service<span class="mark closed">+</span></a>
+  
+<ul class="sub-menu">
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-db-build-introducation/">DB builder for User guideline</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-script/">Singleton Service Script</a></li>
+
+<li class=" has-sub-menu"><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/">Configurations<span class="mark closed">+</span></a>
+  
+<ul class="sub-menu">
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-source-collection/">Enable Source Collection</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-pseudo-translation/">Enable Pseudo Translation</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-s3-key-encrypted/">Enable S3 Key Encrypted</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-new-product/">Enable New Product(s)</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-product-white-list/">Enable Product White List</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-s3-storage/">Enable S3 Storage</a></li>
+</ul>
+  
+</li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-apis/">Singleton Service APIs</a></li>
+</ul>
+  
+</li>
+
+<li class=" has-sub-menu"><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/">Singleton SDK<span class="mark closed">+</span></a>
+  
+<ul class="sub-menu">
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/python-client-introduction/">Python Client Introduction</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/java-client-introduction/">Java Client Introduction</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/javascript-client-introduction/">JavaScript Client Introduction</a></li>
+
+<li class=" has-sub-menu"><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/">Angular Client Introduction<span class="mark closed">+</span></a>
+  
+<ul class="sub-menu">
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/data-initialization/">Data Initialization</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/locale-management/">Locale Management</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/lazy-load-module/">Lazy Load Module</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/localized-component-mixin/">Localized Component Mixin</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/translate-pipe/">Translate Pipe</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/translate-directive/">Translate Directive</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/l10n-service/">L10n Service</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/i18n-service/">I18n Service</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/i18n-context/">I18n Context</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/plural-format/">Plural Format</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/relative-time-format/">Relative Time Format</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/date-time-format-pipe/">Date Time Format Pipe</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/number-format-pipe/">Number Format Pipe</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/currency-format-pipe/">Currency Format Pipe</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/percent-format-pipe/">Percent Format Pipe</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/command-line-utils/">Command Line Utils</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/standalone-mode/">Standalone Mode</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/shared-feature-module/">Shared Feature Module</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/error-handling/">Error Handling</a></li>
+</ul>
+  
+</li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/csharp-client-introduction/">C# Client Introduction</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/go-client-introduction/">Go Client Introduction</a></li>
+</ul>
+  
+</li>
+</ul>
+  
+</li>
+
+<li class=" has-sub-menu"><a href="https://vmware.github.io/singleton/docs/tutorials/">Tutorials<span class="mark closed">+</span></a>
+  
+<ul class="sub-menu">
+<li class=""><a href="https://vmware.github.io/singleton/docs/tutorials/integrate-singleton-in-java-app/">Integrate Singleton in Java App</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/tutorials/integrate-singleton-in-javascript-app/">Integrate Singleton in Javascript App</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/tutorials/integrate-singleton-in-angular-app/">Integrate Singleton in Angular App</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/tutorials/integrate-singleton-in-csharp-app/">Integrate Singleton in C# App</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/tutorials/integrate-singleton-in-python-app/">Integrate Singleton in Python App</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/tutorials/deploy-singleton-service-in-your-app/">Deploy Singleton Service in Your App</a></li>
+</ul>
+  
+</li>
+</ul>
+  
+</li>
+
+<li class="parent has-sub-menu"><a href="https://vmware.github.io/singleton/docs-previous/">Previous Releases<span class="mark opened">-</span></a>
+  
+<ul class="sub-menu">
+
+<li class="parent has-sub-menu"><a href="https://vmware.github.io/singleton/docs-previous/v0.1/">v0.1<span class="mark opened">-</span></a>
+  
+<ul class="sub-menu">
+
+<li class=" has-sub-menu"><a href="https://vmware.github.io/singleton/docs-previous/v0.1/get-started/">Get Started<span class="mark closed">+</span></a>
+  
+<ul class="sub-menu">
+<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/get-started/download-and-installation/">Download and Installation</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/get-started/quick-start/">Quick Start</a></li>
+</ul>
+  
+</li>
+
+<li class="parent has-sub-menu"><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/">Overview<span class="mark opened">-</span></a>
+  
+<ul class="sub-menu">
+
+<li class=" has-sub-menu"><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-service/">Singleton Service<span class="mark closed">+</span></a>
+  
+<ul class="sub-menu">
+<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-service/singleton-service-db-build-introducation/">DB builder for User guideline</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-service/singleton-service-script/">Singleton Service Script</a></li>
+
+<li class=" has-sub-menu"><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-service/configurations/">Configurations<span class="mark closed">+</span></a>
+  
+<ul class="sub-menu">
+<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-service/configurations/enable-source-collection/">Enable Source Collection</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-service/configurations/enable-pseudo-translation/">Enable Pseudo Translation</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-service/configurations/enable-s3-key-encrypted/">Enable S3 Key Encrypted</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-service/configurations/enable-new-product/">Enable New Product(s)</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-service/configurations/enable-product-white-list/">Enable Product White List</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-service/configurations/enable-s3-storage/">Enable S3 Storage</a></li>
+</ul>
+  
+</li>
+<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-service/singleton-service-apis/">Singleton Service APIs</a></li>
+</ul>
+  
+</li>
+
+<li class="parent has-sub-menu"><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/">Singleton SDK<span class="mark opened">-</span></a>
+  
+<ul class="sub-menu">
+<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/python-client-introduction/">Python Client Introduction</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/java-client-introduction/">Java Client Introduction</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/javascript-client-introduction/">JavaScript Client Introduction</a></li>
+
+<li class="parent has-sub-menu"><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/">Angular Client Introduction<span class="mark opened">-</span></a>
+  
+<ul class="sub-menu">
+<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/data-initialization/">Data Initialization</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/locale-management/">Locale Management</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/lazy-load-module/">Lazy Load Module</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/localized-component-mixin/">Localized Component Mixin</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/translate-pipe/">Translate Pipe</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/translate-directive/">Translate Directive</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/l10n-service/">L10n Service</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/i18n-service/">I18n Service</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/i18n-context/">I18n Context</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/plural-format/">Plural Format</a></li>
+<li class="active"><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/relative-time-format/">Relative Time Format</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/date-time-format-pipe/">Date Time Format Pipe</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/number-format-pipe/">Number Format Pipe</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/currency-format-pipe/">Currency Format Pipe</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/percent-format-pipe/">Percent Format Pipe</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/command-line-utils/">Command Line Utils</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/standalone-mode/">Standalone Mode</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/shared-feature-module/">Shared Feature Module</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/error-handling/">Error Handling</a></li>
+</ul>
+  
+</li>
+<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/csharp-client-introduction/">C# Client Introduction</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/go-client-introduction/">Go Client Introduction</a></li>
+</ul>
+  
+</li>
+</ul>
+  
+</li>
+
+<li class=" has-sub-menu"><a href="https://vmware.github.io/singleton/docs-previous/v0.1/tutorials/">Tutorials<span class="mark closed">+</span></a>
+  
+<ul class="sub-menu">
+<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/tutorials/integrate-singleton-in-java-app/">Integrate Singleton in Java App</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/tutorials/integrate-singleton-in-javascript-app/">Integrate Singleton in Javascript App</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/tutorials/integrate-singleton-in-angular-app/">Integrate Singleton in Angular App</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/tutorials/integrate-singleton-in-csharp-app/">Integrate Singleton in C# App</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/tutorials/integrate-singleton-in-python-app/">Integrate Singleton in Python App</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/tutorials/deploy-singleton-service-in-your-app/">Deploy Singleton Service in Your App</a></li>
+</ul>
+  
+</li>
+</ul>
+  
+</li>
+</ul>
+  
+</li>
+</ul>
+</nav>
+
+
+
+<div class="sidebar-footer"></div>
+</div>
+
+</div><a href="#" id="backtothetop-fixed" class="backtothetop"
+ data-backtothetop-duration="600"
+ data-backtothetop-easing="easeOutQuart"
+ data-backtothetop-fixed-fadeIn="1000"
+ data-backtothetop-fixed-fadeOut="1000"
+ data-backtothetop-fixed-bottom="10"
+ data-backtothetop-fixed-right="20">
+<span class="fa-layers fa-fw">
+<i class="fas fa-circle"></i>
+<i class="fas fa-arrow-circle-up"></i>
+</span></a>
+</div>
+</body>
+</html>

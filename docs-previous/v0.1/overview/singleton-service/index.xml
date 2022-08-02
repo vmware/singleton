@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Singleton Service on Singleton</title>
+    <link>https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-service/</link>
+    <description>Recent content in Singleton Service on Singleton</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 24 Sep 2019 22:59:34 +0800</lastBuildDate><atom:link href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-service/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>DB builder for User guideline</title>
+      <link>https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-service/singleton-service-db-build-introducation/</link>
+      <pubDate>Thu, 02 Jul 2020 11:09:53 +0800</pubDate>
+      
+      <guid>https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-service/singleton-service-db-build-introducation/</guid>
+      <description>1. Prerequisites  Java 8 (Java 9+ are not supported, will get compiler issue) Git Docker  2. Create Singleton Database docker image 2.1 Required  Linux 64-bit Operation System and install docker successfully  2.2 Prepare the init db scripts 2.2.1 prepare the create users and databases sql scripts vipinitdb.sql CREATE USER pgvipconfig WITH PASSWORD &#39;vipconfig&#39;; CREATE USER pgvipdata WITH PASSWORD &#39;vipdata&#39;; CREATE DATABASE vipconfig OWNER pgvipconfig; CREATE DATABASE vipdata0 OWNER pgvipdata; CREATE DATABASE vipdata1 OWNER pgvipdata; 2.</description>
+    </item>
+    
+    <item>
+      <title>Singleton Service Script</title>
+      <link>https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-service/singleton-service-script/</link>
+      <pubDate>Mon, 02 Mar 2020 14:52:31 +0800</pubDate>
+      
+      <guid>https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-service/singleton-service-script/</guid>
+      <description>Singleton adds script files to help user to start/check/stop Singleton Service build.
+How to generate Singleton Script The steps:
+ Clone Singleton Service code using Git  git clone git@github.com:vmware/singleton.gitComplie a build using Gradle wrapper under ./g11n-ws folder  ./gradlew build -x testGo to ./Singleton/Publish folder, find singletonScripts-0.1.0.zip, and extract it, you will get 4 files as below:  singletonall.shsingletonstart.shsingletoncheck.shsingletonstop.shHow to use Singleton Script singletonall.</description>
+    </item>
+    
+    <item>
+      <title>Singleton Service APIs</title>
+      <link>https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-service/singleton-service-apis/</link>
+      <pubDate>Tue, 24 Sep 2019 20:05:55 +0800</pubDate>
+      
+      <guid>https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-service/singleton-service-apis/</guid>
+      <description>Singleton Service has two API versions available at present: v1 and v2. API v1 was created in the early times of Singleton, while API v2 has been validated with many VMware products over years, which includes the largest number of APIs, and is closer to the Restful style. It is recommended to use API v2 in practice. This version provides two types of APIs: Formatting API, which is used to</description>
+    </item>
+    
+  </channel>
+</rss>
