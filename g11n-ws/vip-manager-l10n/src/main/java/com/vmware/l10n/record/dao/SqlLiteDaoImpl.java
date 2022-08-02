@@ -27,7 +27,7 @@ import com.vmware.vip.common.l10n.source.dto.ComponentSourceDTO;
 @Repository
 public class SqlLiteDaoImpl implements SqlLiteDao {
 	private static String Drivde = "org.sqlite.JDBC";
-	private static String Db = "jdbc:sqlite:resource:sourceRecord.db";
+	private static String Db = "jdbc:sqlite:sourceRecord.db";
 	private final static String LOGERRSTR= "get the sqllite datasource or ResultSet error";
 	private static Logger logger = LogManager.getLogger(SqlLiteDaoImpl.class);
 	static {
@@ -36,6 +36,7 @@ public class SqlLiteDaoImpl implements SqlLiteDao {
 		try {
 			Class.forName(Drivde);
 			connection = DriverManager.getConnection(Db);
+			logger.info("get SqlLite Connection successfully");
 			Statement statement = connection.createStatement();
 			String sql = "CREATE TABLE IF NOT EXISTS source_record(product VARCHAR NOT NUll, version VARCHAR NOT NULL, component VARCHAR NOT NULL,  locale VARCHAR NOT NULL, modify_edition integer not null, synch_edition integer not null, CONSTRAINT source_record_pk PRIMARY KEY (product, version, component, locale))";
 			statement.executeUpdate(sql);
