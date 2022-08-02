@@ -18,13 +18,13 @@ import javax.crypto.NoSuchPaddingException;
 import org.junit.Test;
 
 import com.vmware.l10n.conf.PublicKeyResponse;
-import com.vmware.l10n.conf.RsaCryptUtil;
 import com.vmware.l10n.conf.S3Cfg;
 import com.vmware.l10n.record.model.ComponentSourceModel;
 import  com.vmware.l10n.source.dto.GRMResponseDTO;
 import com.vmware.l10n.source.dto.SourceDTO;
 import com.vmware.l10n.translation.dto.UpdateListDTO;
 import com.vmware.l10n.translation.readers.LocalJSONReader;
+import com.vmware.vip.common.utils.RsaCryptUtils;
 
 public class TestModels {
     @Test
@@ -110,7 +110,7 @@ public class TestModels {
     	String pubKey = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCB2ahoumYOFtIN5W1I8NIPDQNH/wK1YQsWtxqrXAu67XEg6rCm7Lwdj889L5kXuI3+nW93833zxb5+K1W//R+srfcwA/jZMqs1EVKyrdareWqVW0b6DvZFPV38UQVJmwfBJBkdUoTSZtqBrFhSFMfFWSG7Qoxz1NlJaJylkaEk3QIDAQAB";
     	String data = "Jfe9vTfTsU6OQfZ4xikT+oKxytZOB1binD5wi10n2GMoI+4Jc/Yyy9x9WbTbzj1a4lM6nGBYnOQSjFn3e1QhcL8uj7eCg9mLt6bTec1FGi5ctPFrJexnkBX9lis+qQ1ntwkbf6h2g6U1SYN7N/t+/fq7ubybR6QdKY6hNwIJrCA=";
     	try {
-			RsaCryptUtil.decryptData(data, pubKey);
+			RsaCryptUtils.decryptData(data, pubKey);
 		} catch (InvalidKeyException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

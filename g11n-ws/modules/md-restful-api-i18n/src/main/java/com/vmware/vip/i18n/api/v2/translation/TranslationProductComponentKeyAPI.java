@@ -39,7 +39,6 @@ import com.vmware.vip.i18n.api.base.TranslationProductComponentKeyAction;
 import io.micrometer.core.instrument.MeterRegistry;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
-import springfox.documentation.annotations.ApiIgnore;
 
 /**
  * Provide RESTful API for product to get translation by String base.
@@ -67,7 +66,7 @@ public class TranslationProductComponentKeyAPI extends TranslationProductCompone
 			@ApiParam(name = APIParamName.LOCALE, required = true, value = APIParamValue.LOCALE) @PathVariable(value = APIParamName.LOCALE) String locale,
 			@ApiParam(name = APIParamName.COMPONENT, required = true, value = APIParamValue.COMPONENT) @PathVariable(APIParamName.COMPONENT) String component,
 			@ApiParam(name = APIParamName.KEY, required = true, value = APIParamValue.KEY) @PathVariable(APIParamName.KEY) String key,
-			@ApiParam(name = APIParamName.SOURCE, value = APIParamValue.SOURCE) @RequestParam(value = APIParamName.SOURCE, required = false) String source,
+			@ApiParam(name = APIParamName.SOURCE, value = APIParamValue.SOURCE) @RequestParam(value = APIParamName.SOURCE, required = false,  defaultValue = "") String source,
 			@ApiParam(name = APIParamName.COMMENT_SOURCE, value = APIParamValue.COMMENT_SOURCE) @RequestParam(value = APIParamName.COMMENT_SOURCE, required = false) String commentForSource,
 			@ApiParam(name = APIParamName.SOURCE_FORMAT, value = APIParamValue.SOURCE_FORMAT) @RequestParam(value = APIParamName.SOURCE_FORMAT, required = false) String sourceFormat,
 			@ApiParam(name = APIParamName.COLLECT_SOURCE, value = APIParamValue.COLLECT_SOURCE) @RequestParam(value = APIParamName.COLLECT_SOURCE, required = false, defaultValue = "false") String collectSource,
@@ -102,6 +101,7 @@ public class TranslationProductComponentKeyAPI extends TranslationProductCompone
          	//	@RequestHeader(required = true) String authorization,
             HttpServletRequest request, HttpServletResponse response)
 			throws L3APIException,IOException {
+		source = source != null ? source:"";
 	    if(meterRegistry!= null) {
 	    	meterRegistry.counter("vip.translation.key", APIParamName.KEY, key).increment();
 	    }

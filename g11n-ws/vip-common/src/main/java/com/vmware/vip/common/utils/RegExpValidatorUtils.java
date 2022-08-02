@@ -107,6 +107,7 @@ public final class RegExpValidatorUtils {
 	}
 	
 	/**
+	 * 
 	 * return true when the input parameter only contain ASCII code
 	 * 
 	 */

@@ -15,6 +15,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.context.WebApplicationContext;
 
 import com.vmware.l10n.BootApplication;
+
 import com.vmware.l10n.conf.RsaCryptUtil;
 import com.vmware.l10n.source.dao.AllowListDao;
 import com.vmware.l10n.source.dto.GRMAPIResponseStatus;
@@ -44,7 +45,8 @@ public class TestUtils {
 
 	@Test
 	public void testAllowList() {
-		AllowListDao allowListUtils = webApplicationContext.getBean(AllowListDao.class);		allowListUtils.getAllowList();
+		AllowListDao allowListUtils = webApplicationContext.getBean(AllowListDao.class);
+		allowListUtils.getAllowList();
 	}
 	
 	@Test
@@ -52,7 +54,7 @@ public class TestUtils {
 		File file = new File("testRSA.test");
 		try {
 			if(file.createNewFile()){
-				RsaCryptUtil.getPublicKeyStrFromFile(file);
+				RsaCryptUtils.getPublicKeyStrFromFile(file);
 			}
 			file.deleteOnExit();
 		} catch (IOException e) {
