@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Python Client Introduction - Singleton</title>
+<meta name="description" content="One-fits-all Internationalization Solution">
+<meta name="generator" content="Hugo 0.90.0" />
+<link href="https://vmware.github.io/singleton//index.xml" rel="alternate" type="application/rss+xml">
+<link rel="canonical" href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/python-client-introduction/">
+<link rel="stylesheet" href="https://vmware.github.io/singleton/css/theme.min.css">
+<link rel="stylesheet" href="https://vmware.github.io/singleton/css/chroma.min.css">
+<script defer src="https://vmware.github.io/singleton//js/fontawesome6/all.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery.easing@1.4.1/jquery.easing.min.js" integrity="sha256-H3cjtrm/ztDeuhCN9I4yh4iN2Ybx/y1RM7rMmAesA0k=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js" integrity="sha256-4XodgW4TwIJuDtf+v6vDJ39FVxI0veC/kSCCmnFp7ck=" crossorigin="anonymous"></script>
+<script src="https://vmware.github.io/singleton/js/bundle.js"></script><style>
+:root {}
+</style>
+<meta property="og:title" content="Python Client Introduction" />
+<meta property="og:description" content="Introduction Several python files are provided as the python client to support accessing Singleton service, making Singleton users to handle its globalization easily. Features in Python Client Getting configuration content. Getting the translation. Getting messages of a locale. Prerequisites Python 2.x Python 3.x It&rsquo;s better to install PyYAML module of python. Otherwise, the configuration file should be written in json. If formats like Plural, Date, Number are needed, please install" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/python-client-introduction/" /><meta property="og:image" content="https://vmware.github.io/singleton/images/og-image.png"/><meta property="article:section" content="docs-previous" />
+<meta property="article:published_time" content="2022-02-22T10:08:10+08:00" />
+<meta property="article:modified_time" content="2022-02-22T10:08:10+08:00" /><meta property="og:site_name" content="Hugo Techdoc Theme" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://vmware.github.io/singleton/images/og-image.png"/>
+
+<meta name="twitter:title" content="Python Client Introduction"/>
+<meta name="twitter:description" content="Introduction Several python files are provided as the python client to support accessing Singleton service, making Singleton users to handle its globalization easily. Features in Python Client Getting configuration content. Getting the translation. Getting messages of a locale. Prerequisites Python 2.x Python 3.x It&rsquo;s better to install PyYAML module of python. Otherwise, the configuration file should be written in json. If formats like Plural, Date, Number are needed, please install"/>
+<meta itemprop="name" content="Python Client Introduction">
+<meta itemprop="description" content="Introduction Several python files are provided as the python client to support accessing Singleton service, making Singleton users to handle its globalization easily. Features in Python Client Getting configuration content. Getting the translation. Getting messages of a locale. Prerequisites Python 2.x Python 3.x It&rsquo;s better to install PyYAML module of python. Otherwise, the configuration file should be written in json. If formats like Plural, Date, Number are needed, please install"><meta itemprop="datePublished" content="2022-02-22T10:08:10+08:00" />
+<meta itemprop="dateModified" content="2022-02-22T10:08:10+08:00" />
+<meta itemprop="wordCount" content="1217"><meta itemprop="image" content="https://vmware.github.io/singleton/images/og-image.png"/>
+<meta itemprop="keywords" content="" /></head>
+<body><div class="container"><header>
+<h1>Singleton</h1><span class="version">Version 0.6</span><a href="https://github.com/vmware/singleton" class="github"><i class="fab fa-github"></i></a>
+<p class="description">One-fits-all Internationalization Solution</p>
+
+</header>
+<div class="global-menu">
+<nav>
+<ul>
+<li class=""><a href="/singleton/">Home</a></li>
+<li class=""><a href="/singleton/docs/get-started/download-and-installation">Download</a></li>
+<li class=""><a href="/singleton/docs/">Documentation</a></li>
+<li class=""><a href="https://github.com/vmware/singleton">Github Repo</a></li><li id="release" class="parent "><a href="#">Releases<i class="fas fa-angle-right"></i></a>
+<ul class="sub-menu">
+<li class="child "><a href="/singleton/docs/">v0.6-Latest</a></li>
+<li class="child "><a href="/singleton/docs-previous/v0.1/get-started/download-and-installation">v0.1</a></li>
+</ul>
+</li></ul>
+</nav>
+</div>
+
+<div class="content-container">
+<main><h1>Python Client Introduction</h1>
+<h1 id="introduction">Introduction</h1>
+<p>Several python files are provided as the python client to support accessing Singleton service, making Singleton users to handle its globalization easily.</p>
+<h1 id="features-in-python-client">Features in Python Client</h1>
+<ul>
+<li>Getting configuration content.</li>
+<li>Getting the translation.</li>
+<li>Getting messages of a locale.</li>
+</ul>
+<h1 id="prerequisites">Prerequisites</h1>
+<p>Python 2.x</p>
+<p>Python 3.x</p>
+<p>It&rsquo;s better to install <a href="https://pypi.org/project/PyYAML/">PyYAML</a> module of python. Otherwise, the configuration file should be written in json.</p>
+<p>If formats like Plural, Date, Number are needed, please install <a href="https://pypi.org/project/PyICU/">PyICU</a> after icu4c is installed on the operating system.</p>
+<h1 id="how-to-use-python-client-as-a-python-package">How to use python client as a python package</h1>
+<p>Install <a href="https://pypi.org/project/sgtnclient">sgtnclient</a> as a python package.</p>
+<pre tabindex="0"><code>pip install sgtnclient
+</code></pre><pre tabindex="0"><code>pip3 install sgtnclient
+</code></pre><h1 id="how-to-get-and-use-the-client-code">How to get and use the client code</h1>
+<pre tabindex="0"><code>git clone -b g11n-python-client https://github.com/vmware/singleton.git
+</code></pre><p>Install it as a python package.</p>
+<pre tabindex="0"><code>python setup.py install
+</code></pre><p>Or use its code directly by putting them to a place where they can be imported to the application code.</p>
+<h1 id="how-to-write-a-configuration-file">How to write a configuration file</h1>
+<p>The python client of Singleton needs a configuration file. Here is an <a href="https://github.com/vmware/singleton/blob/g11n-python-client/sgtn4python/sample/sample_online_localsource.yml">example</a>.</p>
+<ul>
+<li>Basic definition</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>product</td>
+<td>string</td>
+<td>Product name</td>
+</tr>
+<tr>
+<td>l10n_version</td>
+<td>string</td>
+<td>L10N version, sometimes same with product version</td>
+</tr>
+<tr>
+<td>online_service_url</td>
+<td>string</td>
+<td>Points to singleton service</td>
+</tr>
+<tr>
+<td>offline_resources_base_url</td>
+<td>string</td>
+<td>Points to local directory starting with &lsquo;file://&rsquo;</td>
+</tr>
+<tr>
+<td>components</td>
+<td>dict</td>
+<td>Definition of components</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Extended definition</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>default_locale</td>
+<td>string</td>
+<td>Default locale</td>
+<td>en-US</td>
+</tr>
+<tr>
+<td>source_locale</td>
+<td>string</td>
+<td>Source locale</td>
+<td>Same with default locale</td>
+</tr>
+<tr>
+<td>log_path</td>
+<td>string</td>
+<td>Log path, &lsquo;./&rsquo; means the path of configuration.</td>
+<td>None. Not in use</td>
+</tr>
+<tr>
+<td>cache_type</td>
+<td>string</td>
+<td>Cache type. &lsquo;by_key&rsquo; means not using component in api.</td>
+<td>default</td>
+</tr>
+<tr>
+<td>cache_path</td>
+<td>string</td>
+<td>Cache file path, &lsquo;./&rsquo; means the path of configuration.</td>
+<td>None. Not in use</td>
+</tr>
+<tr>
+<td>try_wait</td>
+<td>integer</td>
+<td>Interval to try again when failed and max delay of http request</td>
+<td>10</td>
+</tr>
+<tr>
+<td>cache_expired_time</td>
+<td>integer</td>
+<td>Interval to update data</td>
+<td>3600</td>
+</tr>
+<tr>
+<td>pseudo</td>
+<td>string</td>
+<td>Switch of pseudo testing</td>
+<td>false</td>
+</tr>
+<tr>
+<td>multitask</td>
+<td>string</td>
+<td>&lsquo;async&rsquo; means using coroutine</td>
+<td>None. Not by coroutine</td>
+</tr>
+<tr>
+<td>format</td>
+<td>string</td>
+<td>&lsquo;icu&rsquo; means using ICU message format</td>
+<td>default. Use python format</td>
+</tr>
+<tr>
+<td>load_on_startup</td>
+<td>bool</td>
+<td>True means loading all translations on startup</td>
+<td>False</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Component definition</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>Component name</td>
+<td></td>
+</tr>
+<tr>
+<td>locales</td>
+<td>dict</td>
+<td>Definition for locales inside a component item</td>
+<td></td>
+</tr>
+<tr>
+<td>template</td>
+<td>string</td>
+<td>Top item name to define a template for component</td>
+<td>component_template</td>
+</tr>
+<tr>
+<td>locales_refer</td>
+<td>string</td>
+<td>Top item name to define locales</td>
+<td></td>
+</tr>
+<tr>
+<td>language_tag</td>
+<td>string</td>
+<td>Locale name</td>
+<td></td>
+</tr>
+<tr>
+<td>offline_resources_path</td>
+<td>string</td>
+<td>Local resource path</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Special string for component definition</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>String</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$COMPONENT</td>
+<td>Current component inside a component item</td>
+</tr>
+<tr>
+<td>$LOCALE</td>
+<td>Current locale inside a locale item</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Example of component definition in original way</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">components</span>:
+  - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">about</span>
+    <span style="color:#f92672">locales</span>:
+      - <span style="color:#f92672">language_tag</span>: <span style="color:#ae81ff">en-US</span>
+        <span style="color:#f92672">offline_resources_path</span>:
+          - <span style="color:#ae81ff">about/messages.properties</span>
+      - <span style="color:#f92672">language_tag</span>: <span style="color:#ae81ff">de</span>
+        <span style="color:#f92672">offline_resources_path</span>:
+          - <span style="color:#ae81ff">about/messages_de.json</span>
+      - <span style="color:#f92672">language_tag</span>: <span style="color:#ae81ff">fr</span>
+        <span style="color:#f92672">offline_resources_path</span>:
+          - <span style="color:#ae81ff">about/messages_fr.json</span>
+  - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">common</span>
+    <span style="color:#f92672">locales</span>:
+      - <span style="color:#f92672">language_tag</span>: <span style="color:#ae81ff">en-US</span>
+        <span style="color:#f92672">offline_resources_path</span>:
+          - <span style="color:#ae81ff">common/messages.properties</span>
+      - <span style="color:#f92672">language_tag</span>: <span style="color:#ae81ff">de</span>
+        <span style="color:#f92672">offline_resources_path</span>:
+          - <span style="color:#ae81ff">common/messages_de.json</span>
+      - <span style="color:#f92672">language_tag</span>: <span style="color:#ae81ff">fr</span>
+        <span style="color:#f92672">offline_resources_path</span>:
+          - <span style="color:#ae81ff">common/messages_fr.json</span>
+  - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">contact</span>
+    <span style="color:#f92672">locales</span>:
+      - <span style="color:#f92672">language_tag</span>: <span style="color:#ae81ff">en-US</span>
+        <span style="color:#f92672">offline_resources_path</span>:
+          - <span style="color:#ae81ff">contact/messages.properties</span>
+      - <span style="color:#f92672">language_tag</span>: <span style="color:#ae81ff">de</span>
+        <span style="color:#f92672">offline_resources_path</span>:
+          - <span style="color:#ae81ff">contact/messages_de.json</span>
+      - <span style="color:#f92672">language_tag</span>: <span style="color:#ae81ff">fr</span>
+        <span style="color:#f92672">offline_resources_path</span>:
+          - <span style="color:#ae81ff">contact/messages_fr.json</span>
+</code></pre></div><ul>
+<li>Example of component definition in concise way</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">locales</span>:
+  - <span style="color:#f92672">language_tag</span>: <span style="color:#ae81ff">en-US</span>
+    <span style="color:#f92672">offline_resources_path</span>:
+      - <span style="color:#ae81ff">$COMPONENT/messages.properties</span>
+  - <span style="color:#f92672">language_tag</span>: <span style="color:#ae81ff">de</span>
+  - <span style="color:#f92672">language_tag</span>: <span style="color:#ae81ff">fr</span>
+
+<span style="color:#f92672">component_template</span>:
+  <span style="color:#f92672">locales_refer</span>: <span style="color:#ae81ff">locales</span>
+  <span style="color:#f92672">offline_resources_path</span>:
+    - <span style="color:#ae81ff">$COMPONENT/messages_$LOCALE.json</span>
+
+<span style="color:#f92672">components</span>:
+  - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">about</span>
+    <span style="color:#f92672">template</span>: <span style="color:#ae81ff">component_template</span> <span style="color:#75715e"># default</span>
+  - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">common</span>
+  - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">contact</span>
+</code></pre></div><h1 id="apis-available">APIs Available</h1>
+<ul>
+<li><a href="#Entry-of-library">Entry of library</a>
+<ul>
+<li><a href="#I18N">I18N</a></li>
+</ul>
+</li>
+<li><a href="#Interface-For-Release">Interface For Release</a>
+<ul>
+<li><a href="#Release">Release</a></li>
+</ul>
+</li>
+<li><a href="#Interface-For-Configuration">Interface For Configuration</a>
+<ul>
+<li><a href="#Config">Config</a></li>
+</ul>
+</li>
+<li><a href="#Interface-For-Translation">Interface For Translation</a>
+<ul>
+<li><a href="#Translation">Translation</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="entry-of-library">Entry of library</h2>
+<h3 id="i18n">I18N</h3>
+<ul>
+<li>It&rsquo;s the entry code that creates and initializes the configuration object and the release object.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">add_config_file</span>(config_file, outside_config<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>)
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">add_config</span>(base_path, config_data)
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">set_current_locale</span>(locale)
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_current_locale</span>()
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_release</span>(product, version)
+</code></pre></div><h3 id="i18n--add_config_file">I18N / add_config_file</h3>
+<ul>
+<li>Load a configuration json or yaml file and initialize a corresponding release object.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>config_file</td>
+<td>string</td>
+<td>Configuration file</td>
+</tr>
+<tr>
+<td>outside_config</td>
+<td>dict</td>
+<td>Configuration that overrides the configuration file</td>
+</tr>
+</tbody>
+</table>
+<h3 id="i18n--add_config">I18N / add_config</h3>
+<ul>
+<li>Load a configuration json or yaml text with a base directory and initialize a correspondent release object.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>base_path</td>
+<td>string</td>
+<td>The path of configuration</td>
+</tr>
+<tr>
+<td>config_data</td>
+<td>dict</td>
+<td>Configuration data</td>
+</tr>
+</tbody>
+</table>
+<h3 id="i18n--set_current_locale">I18N / set_current_locale</h3>
+<ul>
+<li>Set locale of current thread.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>locale</td>
+<td>string</td>
+<td>Locale name</td>
+</tr>
+</tbody>
+</table>
+<h3 id="i18n--get_current_locale">I18N / get_current_locale</h3>
+<ul>
+<li>Get locale of current thread.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Return</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>string</td>
+<td>Locale name</td>
+</tr>
+</tbody>
+</table>
+<h3 id="i18n--get_release">I18N / get_release</h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>product</td>
+<td>string</td>
+<td>Product name</td>
+</tr>
+<tr>
+<td>version</td>
+<td>string</td>
+<td>Version</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Get release object.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Return</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#Release">Release</a></td>
+<td>Release object</td>
+</tr>
+</tbody>
+</table>
+<h2 id="interface-for-release">Interface For Release</h2>
+<h3 id="release">Release</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Release</span>:
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_config</span>(self)
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_translation</span>(self)
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">set_logger</span>(self, logger)
+</code></pre></div><h3 id="release--get_config">Release / get_config</h3>
+<ul>
+<li>Get the configuration object owned by the release object.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Return</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#Config">Config</a></td>
+<td>The configuration object</td>
+</tr>
+</tbody>
+</table>
+<h3 id="release--get_translation">Release / get_translation</h3>
+<ul>
+<li>Get the translation object owned by the release object.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Return</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#Translation">Translation</a></td>
+<td>The translation object</td>
+</tr>
+</tbody>
+</table>
+<h3 id="release--set_logger">Release / set_logger</h3>
+<ul>
+<li>Set customized logger to the release object for it to use.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>logger</td>
+<td><a href="#Logger">Logger</a></td>
+<td>Customized logger derived from <a href="#Logger">Logger</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="interface-for-configuration">Interface For Configuration</h2>
+<h3 id="config">Config</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Config</span>:
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_config_data</span>(self)
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_info</span>(self)
+</code></pre></div><h3 id="config--get_config_data">Config / get_config_data</h3>
+<ul>
+<li>Get configuration data.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Return</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>object</td>
+<td>Configuration data</td>
+</tr>
+</tbody>
+</table>
+<h3 id="config--get_info">Config / get_info</h3>
+<ul>
+<li>Get brief information of configuration.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Return</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>object</td>
+<td>Brief information data</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+  <span style="color:#f92672">&#34;product&#34;</span>: <span style="color:#e6db74">&#34;PYTHON1&#34;</span>,
+  <span style="color:#f92672">&#34;version&#34;</span>: <span style="color:#e6db74">&#34;1.0.0&#34;</span>,
+  <span style="color:#f92672">&#34;remote&#34;</span>: <span style="color:#66d9ef">null</span>,
+  <span style="color:#f92672">&#34;local&#34;</span>: <span style="color:#e6db74">&#34;/tmp/data/l10n&#34;</span>,
+  <span style="color:#f92672">&#34;pseudo&#34;</span>: <span style="color:#66d9ef">true</span>,
+  <span style="color:#f92672">&#34;source_locale&#34;</span>: <span style="color:#e6db74">&#34;en-US&#34;</span>,
+  <span style="color:#f92672">&#34;default_locale&#34;</span>: <span style="color:#e6db74">&#34;en-US&#34;</span>
+}
+</code></pre></div><h2 id="interface-for-translation">Interface For Translation</h2>
+<h3 id="translation">Translation</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Translation</span>:
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_string</span>(self, component, key, <span style="color:#f92672">**</span>kwargs)
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_locale_strings</span>(self, locale)
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_locale_supported</span>(self, locale)
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">format</span>(self, locale, text, array)
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_locales</span>(self, display_locale<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>)
+</code></pre></div><h3 id="translation--get_string">Translation / get_string</h3>
+<ul>
+<li>Get the translation message of a component and a key.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>component</td>
+<td>string</td>
+<td>Component</td>
+</tr>
+<tr>
+<td>key</td>
+<td>string</td>
+<td>Key</td>
+</tr>
+<tr>
+<td>kwargs</td>
+<td>object</td>
+<td>Parameters like &lsquo;source&rsquo;, &lsquo;locale&rsquo; and &lsquo;format_items&rsquo;</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>kwargs</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>locale</td>
+<td>string</td>
+<td>Locale</td>
+<td>Current locale</td>
+</tr>
+<tr>
+<td>source</td>
+<td>string</td>
+<td>Source message</td>
+<td>Source from resource file</td>
+</tr>
+<tr>
+<td>format_items</td>
+<td>string</td>
+<td>Items for string formatting</td>
+<td>Nothing</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Examples of string formatting which follow the python format function when &lsquo;format&rsquo; in configuration is set to &lsquo;default&rsquo;.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">msg <span style="color:#f92672">=</span> trans<span style="color:#f92672">.</span>get_string(COMPONENT, KEY) <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;AAA</span><span style="color:#e6db74">{0}</span><span style="color:#e6db74">BBB</span><span style="color:#e6db74">{1}</span><span style="color:#e6db74">CCC&#39;</span>
+msg <span style="color:#f92672">=</span> trans<span style="color:#f92672">.</span>get_string(COMPONENT, KEY, format_items <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;11&#39;</span>, <span style="color:#e6db74">&#39;22&#39;</span>]) <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;AAA11BBB22CCC&#39;</span>
+
+msg <span style="color:#f92672">=</span> trans<span style="color:#f92672">.</span>get_string(COMPONENT, KEY) <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;AAA</span><span style="color:#e6db74">{x}</span><span style="color:#e6db74">BBB</span><span style="color:#e6db74">{y}</span><span style="color:#e6db74">CCC&#39;</span>
+msg <span style="color:#f92672">=</span> trans<span style="color:#f92672">.</span>get_string(COMPONENT, KEY, format_items <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#39;x&#39;</span>: <span style="color:#e6db74">&#39;ee&#39;</span>, <span style="color:#e6db74">&#39;y&#39;</span>: <span style="color:#e6db74">&#39;ff&#39;</span>}) <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;AAAeeBBBffCCC&#39;</span>
+</code></pre></div><ul>
+<li>Example which follows the rules of CLDR MessageFormat when &lsquo;format&rsquo; in configuration is set to &lsquo;icu&rsquo;.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">msg <span style="color:#f92672">=</span> trans<span style="color:#f92672">.</span>get_string(COMPONENT, KEY, locale <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;en-US&#39;</span>, format_items <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">7</span>])
+<span style="color:#75715e"># COMPONENT, KEY =&gt; I bought {0, plural, one {# book} other {# books}} and {1, plural, one {# cup} other {# cups}}.</span>
+<span style="color:#75715e"># msg =&gt; I bought 1 book and 7 cups.</span>
+</code></pre></div><table>
+<thead>
+<tr>
+<th>Return</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>string</td>
+<td>The translation message</td>
+</tr>
+</tbody>
+</table>
+<h3 id="translation--get_locale_strings">Translation / get_locale_strings</h3>
+<ul>
+<li>Get translation messages of a locale.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>locale</td>
+<td>string</td>
+<td>Locale</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Return</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>object</td>
+<td>All translation messages of a locale</td>
+</tr>
+</tbody>
+</table>
+<h3 id="translation--get_locale_supported">Translation / get_locale_supported</h3>
+<ul>
+<li>Get supported locale name of the input locale.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>locale</td>
+<td>string</td>
+<td>Locale</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Return</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>string</td>
+<td>Supported locale name</td>
+</tr>
+</tbody>
+</table>
+<h3 id="translation--format">Translation / format</h3>
+<ul>
+<li>Get the formatted string by given locale, format text and arguments.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>locale</td>
+<td>string</td>
+<td>Locale</td>
+</tr>
+<tr>
+<td>text</td>
+<td>string</td>
+<td>Format string</td>
+</tr>
+<tr>
+<td>array</td>
+<td>array</td>
+<td>Format arguments</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Example which follows the rules of CLDR MessageFormat when &lsquo;format&rsquo; in configuration is set to &lsquo;icu&rsquo;.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">msg <span style="color:#f92672">=</span> trans<span style="color:#f92672">.</span>format(<span style="color:#e6db74">&#39;en&#39;</span>, <span style="color:#e6db74">&#39;I bought {0, plural, one {# book} other {# books}}.&#39;</span>, [<span style="color:#ae81ff">1</span>])
+</code></pre></div><ul>
+<li>When &lsquo;format&rsquo; in configuration is set to &lsquo;default&rsquo;, its format string follows the python format function.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Return</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>string</td>
+<td>The formatted string</td>
+</tr>
+</tbody>
+</table>
+<h3 id="translation--get_locales">Translation / get_locales</h3>
+<ul>
+<li>Get information of locales being used.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>display_locale</td>
+<td>string</td>
+<td>The locale for display</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Return</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>object</td>
+<td>Information of all supported locales</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+  <span style="color:#f92672">&#34;en-US&#34;</span>: {
+    <span style="color:#f92672">&#34;as&#34;</span>: <span style="color:#e6db74">&#34;source&#34;</span>,
+    <span style="color:#f92672">&#34;from&#34;</span>: <span style="color:#e6db74">&#34;local&#34;</span>,
+    <span style="color:#f92672">&#34;display&#34;</span>: <span style="color:#e6db74">&#34;英语（美国）&#34;</span>
+  },
+  <span style="color:#f92672">&#34;de&#34;</span>: {
+    <span style="color:#f92672">&#34;from&#34;</span>: <span style="color:#e6db74">&#34;remote&#34;</span>,
+    <span style="color:#f92672">&#34;display&#34;</span>: <span style="color:#e6db74">&#34;德语&#34;</span>
+  }
+}
+</code></pre></div><h2 id="interface-for-logger">Interface For Logger</h2>
+<h3 id="logger">Logger</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Logger</span>:
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">log</span>(self, text, log_type)
+</code></pre></div><h3 id="translation--log">Translation / log</h3>
+<ul>
+<li>Log text with type of log_type.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>text</td>
+<td>string</td>
+<td>Content</td>
+</tr>
+<tr>
+<td>log_type</td>
+<td>string</td>
+<td>info: Information<br>error: Error message</td>
+</tr>
+</tbody>
+</table>
+<div class="edit-meta">
+Last updated on 22 Feb 2022
+
+
+<br>
+Published on 22 Feb 2022
+<br><a href="https://github.com/thingsym/hugo-theme-techdoc/edit/master/docs-previous/v0.1/overview/singleton-sdk/python-client-introduction.md" class="edit-page"><i class="fas fa-pen-square"></i>&nbsp;Edit on GitHub</a></div><nav class="pagination"><a class="nav nav-prev" href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/" title="Singleton SDK"><i class="fas fa-arrow-left" aria-hidden="true"></i>&nbsp;Prev - Singleton SDK</a>
+<a class="nav nav-next" href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/java-client-introduction/" title="Java Client Introduction">Next - Java Client Introduction <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+</nav><footer><p class="powered">Powered by <a href="https://gohugo.io">Hugo</a>. Theme by <a href="https://themes.gohugo.io/hugo-theme-techdoc/">TechDoc</a>. Designed by <a href="https://github.com/thingsym/hugo-theme-techdoc">Thingsym</a>.</p>
+</footer>
+</main>
+<div class="sidebar">
+
+<nav class="slide-menu">
+<ul>
+<li class=""><a href="https://vmware.github.io/singleton/">Home</a></li>
+
+<li class=" has-sub-menu"><a href="https://vmware.github.io/singleton/docs/">Documentation<span class="mark closed">+</span></a>
+  
+<ul class="sub-menu">
+
+<li class=" has-sub-menu"><a href="https://vmware.github.io/singleton/docs/get-started/">Get Started<span class="mark closed">+</span></a>
+  
+<ul class="sub-menu">
+<li class=""><a href="https://vmware.github.io/singleton/docs/get-started/download-and-installation/">Download and Installation</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/get-started/quick-start/">Quick Start</a></li>
+</ul>
+  
+</li>
+
+<li class=" has-sub-menu"><a href="https://vmware.github.io/singleton/docs/overview/">Overview<span class="mark closed">+</span></a>
+  
+<ul class="sub-menu">
+
+<li class=" has-sub-menu"><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/">Singleton Service<span class="mark closed">+</span></a>
+  
+<ul class="sub-menu">
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-db-build-introducation/">DB builder for User guideline</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-script/">Singleton Service Script</a></li>
+
+<li class=" has-sub-menu"><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/">Configurations<span class="mark closed">+</span></a>
+  
+<ul class="sub-menu">
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-source-collection/">Enable Source Collection</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-pseudo-translation/">Enable Pseudo Translation</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-s3-key-encrypted/">Enable S3 Key Encrypted</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-new-product/">Enable New Product(s)</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-product-white-list/">Enable Product White List</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-s3-storage/">Enable S3 Storage</a></li>
+</ul>
+  
+</li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-apis/">Singleton Service APIs</a></li>
+</ul>
+  
+</li>
+
+<li class=" has-sub-menu"><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/">Singleton SDK<span class="mark closed">+</span></a>
+  
+<ul class="sub-menu">
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/python-client-introduction/">Python Client Introduction</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/java-client-introduction/">Java Client Introduction</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/javascript-client-introduction/">JavaScript Client Introduction</a></li>
+
+<li class=" has-sub-menu"><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/">Angular Client Introduction<span class="mark closed">+</span></a>
+  
+<ul class="sub-menu">
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/data-initialization/">Data Initialization</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/locale-management/">Locale Management</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/lazy-load-module/">Lazy Load Module</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/localized-component-mixin/">Localized Component Mixin</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/translate-pipe/">Translate Pipe</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/translate-directive/">Translate Directive</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/l10n-service/">L10n Service</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/i18n-service/">I18n Service</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/i18n-context/">I18n Context</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/plural-format/">Plural Format</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/relative-time-format/">Relative Time Format</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/date-time-format-pipe/">Date Time Format Pipe</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/number-format-pipe/">Number Format Pipe</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/currency-format-pipe/">Currency Format Pipe</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/percent-format-pipe/">Percent Format Pipe</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/command-line-utils/">Command Line Utils</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/standalone-mode/">Standalone Mode</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/shared-feature-module/">Shared Feature Module</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/error-handling/">Error Handling</a></li>
+</ul>
+  
+</li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/csharp-client-introduction/">C# Client Introduction</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/go-client-introduction/">Go Client Introduction</a></li>
+</ul>
+  
+</li>
+</ul>
+  
+</li>
+
+<li class=" has-sub-menu"><a href="https://vmware.github.io/singleton/docs/tutorials/">Tutorials<span class="mark closed">+</span></a>
+  
+<ul class="sub-menu">
+<li class=""><a href="https://vmware.github.io/singleton/docs/tutorials/integrate-singleton-in-java-app/">Integrate Singleton in Java App</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/tutorials/integrate-singleton-in-javascript-app/">Integrate Singleton in Javascript App</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/tutorials/integrate-singleton-in-angular-app/">Integrate Singleton in Angular App</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/tutorials/integrate-singleton-in-csharp-app/">Integrate Singleton in C# App</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/tutorials/integrate-singleton-in-python-app/">Integrate Singleton in Python App</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/tutorials/deploy-singleton-service-in-your-app/">Deploy Singleton Service in Your App</a></li>
+</ul>
+  
+</li>
+</ul>
+  
+</li>
+
+<li class="parent has-sub-menu"><a href="https://vmware.github.io/singleton/docs-previous/">Previous Releases<span class="mark opened">-</span></a>
+  
+<ul class="sub-menu">
+
+<li class="parent has-sub-menu"><a href="https://vmware.github.io/singleton/docs-previous/v0.1/">v0.1<span class="mark opened">-</span></a>
+  
+<ul class="sub-menu">
+
+<li class=" has-sub-menu"><a href="https://vmware.github.io/singleton/docs-previous/v0.1/get-started/">Get Started<span class="mark closed">+</span></a>
+  
+<ul class="sub-menu">
+<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/get-started/download-and-installation/">Download and Installation</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/get-started/quick-start/">Quick Start</a></li>
+</ul>
+  
+</li>
+
+<li class="parent has-sub-menu"><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/">Overview<span class="mark opened">-</span></a>
+  
+<ul class="sub-menu">
+
+<li class=" has-sub-menu"><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-service/">Singleton Service<span class="mark closed">+</span></a>
+  
+<ul class="sub-menu">
+<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-service/singleton-service-db-build-introducation/">DB builder for User guideline</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-service/singleton-service-script/">Singleton Service Script</a></li>
+
+<li class=" has-sub-menu"><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-service/configurations/">Configurations<span class="mark closed">+</span></a>
+  
+<ul class="sub-menu">
+<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-service/configurations/enable-source-collection/">Enable Source Collection</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-service/configurations/enable-pseudo-translation/">Enable Pseudo Translation</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-service/configurations/enable-s3-key-encrypted/">Enable S3 Key Encrypted</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-service/configurations/enable-new-product/">Enable New Product(s)</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-service/configurations/enable-product-white-list/">Enable Product White List</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-service/configurations/enable-s3-storage/">Enable S3 Storage</a></li>
+</ul>
+  
+</li>
+<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-service/singleton-service-apis/">Singleton Service APIs</a></li>
+</ul>
+  
+</li>
+
+<li class="parent has-sub-menu"><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/">Singleton SDK<span class="mark opened">-</span></a>
+  
+<ul class="sub-menu">
+<li class="active"><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/python-client-introduction/">Python Client Introduction</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/java-client-introduction/">Java Client Introduction</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/javascript-client-introduction/">JavaScript Client Introduction</a></li>
+
+<li class=" has-sub-menu"><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/">Angular Client Introduction<span class="mark closed">+</span></a>
+  
+<ul class="sub-menu">
+<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/data-initialization/">Data Initialization</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/locale-management/">Locale Management</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/lazy-load-module/">Lazy Load Module</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/localized-component-mixin/">Localized Component Mixin</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/translate-pipe/">Translate Pipe</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/translate-directive/">Translate Directive</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/l10n-service/">L10n Service</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/i18n-service/">I18n Service</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/i18n-context/">I18n Context</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/plural-format/">Plural Format</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/relative-time-format/">Relative Time Format</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/date-time-format-pipe/">Date Time Format Pipe</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/number-format-pipe/">Number Format Pipe</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/currency-format-pipe/">Currency Format Pipe</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/percent-format-pipe/">Percent Format Pipe</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/command-line-utils/">Command Line Utils</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/standalone-mode/">Standalone Mode</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/shared-feature-module/">Shared Feature Module</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/error-handling/">Error Handling</a></li>
+</ul>
+  
+</li>
+<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/csharp-client-introduction/">C# Client Introduction</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/go-client-introduction/">Go Client Introduction</a></li>
+</ul>
+  
+</li>
+</ul>
+  
+</li>
+
+<li class=" has-sub-menu"><a href="https://vmware.github.io/singleton/docs-previous/v0.1/tutorials/">Tutorials<span class="mark closed">+</span></a>
+  
+<ul class="sub-menu">
+<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/tutorials/integrate-singleton-in-java-app/">Integrate Singleton in Java App</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/tutorials/integrate-singleton-in-javascript-app/">Integrate Singleton in Javascript App</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/tutorials/integrate-singleton-in-angular-app/">Integrate Singleton in Angular App</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/tutorials/integrate-singleton-in-csharp-app/">Integrate Singleton in C# App</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/tutorials/integrate-singleton-in-python-app/">Integrate Singleton in Python App</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/tutorials/deploy-singleton-service-in-your-app/">Deploy Singleton Service in Your App</a></li>
+</ul>
+  
+</li>
+</ul>
+  
+</li>
+</ul>
+  
+</li>
+</ul>
+</nav>
+
+
+
+<div class="sidebar-footer"></div>
+</div>
+
+</div><a href="#" id="backtothetop-fixed" class="backtothetop"
+ data-backtothetop-duration="600"
+ data-backtothetop-easing="easeOutQuart"
+ data-backtothetop-fixed-fadeIn="1000"
+ data-backtothetop-fixed-fadeOut="1000"
+ data-backtothetop-fixed-bottom="10"
+ data-backtothetop-fixed-right="20">
+<span class="fa-layers fa-fw">
+<i class="fas fa-circle"></i>
+<i class="fas fa-arrow-circle-up"></i>
+</span></a>
+</div>
+</body>
+</html>

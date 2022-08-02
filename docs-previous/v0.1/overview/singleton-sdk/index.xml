@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Singleton SDK on Singleton</title>
+    <link>https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/</link>
+    <description>Recent content in Singleton SDK on Singleton</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 24 Sep 2019 22:59:26 +0800</lastBuildDate><atom:link href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Python Client Introduction</title>
+      <link>https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/python-client-introduction/</link>
+      <pubDate>Tue, 22 Feb 2022 10:08:10 +0800</pubDate>
+      
+      <guid>https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/python-client-introduction/</guid>
+      <description>Introduction Several python files are provided as the python client to support accessing Singleton service, making Singleton users to handle its globalization easily. Features in Python Client Getting configuration content. Getting the translation. Getting messages of a locale. Prerequisites Python 2.x Python 3.x It&amp;rsquo;s better to install PyYAML module of python. Otherwise, the configuration file should be written in json. If formats like Plural, Date, Number are needed, please install</description>
+    </item>
+    
+    <item>
+      <title>Java Client Introduction</title>
+      <link>https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/java-client-introduction/</link>
+      <pubDate>Tue, 24 Sep 2019 20:07:51 +0800</pubDate>
+      
+      <guid>https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/java-client-introduction/</guid>
+      <description>Singleton Java Client Library To facilitate consumption of the Singleton Service API, internationalization(i18n) client libraries have been developed in several programming languages. These libraries encapsulate API calls to the Singleton service, significantly improving development efficiency and reducing the cost of development work. This section gives a high-level overview of the Singleton Java Client Library.
+Features  Translation - retrieving localized/translated text Formatting - retrieving formatted data using CLDR-compliant, localized patterns (e.</description>
+    </item>
+    
+    <item>
+      <title>JavaScript Client Introduction</title>
+      <link>https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/javascript-client-introduction/</link>
+      <pubDate>Tue, 24 Sep 2019 20:08:23 +0800</pubDate>
+      
+      <guid>https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/javascript-client-introduction/</guid>
+      <description>Overview The Singleton JSClient(@singleton-i18n/js-core-sdk) is a Singleton Service-based JavaScript library used for l10n and i18n. It almost supports all JavaScript frameworks, and it can run in browsers, as well as NodeJS environments. With the Singleton JavaScript Client, it makes l10n and i18n implementation more easier in most projects. Now, let&amp;rsquo;s look at what it is and how it works.
+Features  JSClient Initilization Language and region management Load data API Provide string localization API Provide datetime,number,currency,percentage formatting API Source management via CLI scripts Runtime / Offline Mode  JSClient Initilization How to initilize Singleton JSClient in frontend framework?</description>
+    </item>
+    
+    <item>
+      <title>C# Client Introduction</title>
+      <link>https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/csharp-client-introduction/</link>
+      <pubDate>Sun, 15 Mar 2020 20:07:51 +0800</pubDate>
+      
+      <guid>https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/csharp-client-introduction/</guid>
+      <description>Introduction C# Client is a class libary running on Windows .NET Framework. It enables applications that can use .NET Framework libraries to handle its globalization easily.
+Features in C# Client  Getting the translation. Getting messages by cache interfaces. Getting configuration content. Enrich implementations by extending different extension interfaces.  APIs Available  Factory Class  I18N   Interface For Configuration  IConfig IConfigItem   Interface For Release  IRelease   Interface For Translation  ITranslation ISource   Interface For Cache Messages  IReleaseMessages ILocaleMessages IComponentMessages   Interface For Extension  IExtension ICacheManager ICacheComponentManager ICacheMessages ILog IResourceParser IAccessService    Factory Class I18N  It&amp;rsquo;s the factory class that creates and initializes the configuration object and the release object.</description>
+    </item>
+    
+    <item>
+      <title>Go Client Introduction</title>
+      <link>https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/go-client-introduction/</link>
+      <pubDate>Tue, 07 Apr 2020 10:30:59 +0800</pubDate>
+      
+      <guid>https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/go-client-introduction/</guid>
+      <description>The Singleton Go Client is a Singleton SDK to fetch translations from Singleton service or bundles easily.
+Features in Go Client SDK   Supported interfaces:  GetLocaleList: Get supported locale list GetComponentList: Get supported component list GetStringMessage: Get a message with optional arguments. Fallback to default locale is provided. GetComponentMessages: Get messages of a component. Fallback to default locale is NOT provided.   Provide cache management as well as cache registration.</description>
+    </item>
+    
+  </channel>
+</rss>
