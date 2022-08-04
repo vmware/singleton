@@ -4,7 +4,7 @@ require 'singleton-client'
 
 describe "tmplete 1 test" do
     before :each do
-        SgtnClient::Config.instance_variable_set(:@loader, nil)
+        SgtnClient.config.instance_variable_set('@loader', nil)
         Sgtn.load_config("./config/sgtnclient.yml", "development")
         #SgtnClient::Source.loadBundles("default")
     end

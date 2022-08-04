@@ -5,8 +5,9 @@ test: &default
   # client_secret: 89987
 
   # Mode can be 'live' or 'sandbox'
-  mode: sandbox
-
+  #mode: sandbox
+  log_file: ./smoke_test.log
+  log_level: INFO
   # Credentials for Classic APIs
   # app_id: APP-80W284485P519543T
   # username: linr
@@ -121,7 +122,6 @@ onlysource:
   vip_server: 
   source_bundle: ./config/locales/defaultonline
   translation_bundle:
-  disable_cache: true
 
 onlysourcetranslations:
   <<: *default
