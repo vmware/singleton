@@ -25,6 +25,7 @@ public class ExceptionHandle {
 	@ExceptionHandler(value = ValidationException.class)
 	private void processValidationException (HttpServletResponse resp, ValidationException ve) {
 		Response respObj =  new Response(APIResponseStatus.BAD_REQUEST.getCode(), ve.getMessage());
+		resp.setContentType("application/json;charset=utf-8");
 		try {
 			resp.getWriter().write(
 					new ObjectMapper().writerWithDefaultPrettyPrinter()
