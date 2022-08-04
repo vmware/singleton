@@ -27,7 +27,7 @@ import com.vmware.vip.common.l10n.source.dto.ComponentSourceDTO;
 @Repository
 public class SqlLiteDaoImpl implements SqlLiteDao {
 	private static String Drivde = "org.sqlite.JDBC";
-	private static String Db = "jdbc:sqlite:resource:sourceRecord.db";
+	private static String Db = "jdbc:sqlite:sourceRecord.db";
 	private final static String LOGERRSTR= "get the sqllite datasource or ResultSet error";
 	private static Logger logger = LogManager.getLogger(SqlLiteDaoImpl.class);
 	static {
