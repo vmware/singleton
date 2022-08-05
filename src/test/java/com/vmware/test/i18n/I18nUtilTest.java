@@ -24,7 +24,7 @@ public class I18nUtilTest {
 	final String LOCALE = "fr";
 	final String testURL = "https://github.com/unicode-cldr/cldr-core/archive/32.0.0.zip";
 	final String[] catesArr = { "dates", "numbers", "plurals", "measurements"};
-
+/**
 	@Before
 	public void network() throws Exception {
 		URL urlObj = new URL(testURL);
@@ -33,7 +33,7 @@ public class I18nUtilTest {
 		int status = conn.getResponseCode();
 		Assert.assertEquals(200, status);
 	}
-
+**/
 	@Test
 	public void testDataExtract() {
 		Map<String, Object> patternMap = new LinkedHashMap<String, Object>();

@@ -43,7 +43,7 @@ jar {
     baseName = "i18n-patterns-core"
     version = "$projectVersion"
     classifier = ''
-    exclude('**/cldr/data','**/cldr/pattern/**','**/cldr/localedata/**','**/cldr/misc/**')
+    exclude('**/cldr/data')
 }
 
 repositories {
@@ -86,6 +86,16 @@ task copyResources(type: Copy, dependsOn: download) {
 
 processTestResources.dependsOn copyResources
 
+
+task basePatternJar(type: Jar, dependsOn: copyResources) {
+    baseName = "i18n-patterns-core-base"
+    version = "$projectVersion"
+    classifier = ''
+    from("${buildDir}/classes/java/main", "${buildDir}/resources/main")
+    exclude('**/cldr/data','**/cldr/pattern/**','**/cldr/localedata/**','**/cldr/misc/**')
+
+}
+
 task generateBundleZip(type: Zip, dependsOn: copyResources){
     archiveBaseName='cldr'
     archiveVersion = "$projectVersion"
@@ -123,7 +133,7 @@ task javadocJar(type: Jar, dependsOn: javadoc) {
 }
 
 
-task copyLibs(type :Copy, dependsOn: [jar, generateBundleZip, generateEnZip, sourceCodeJar, javadocJar]) {
+task copyLibs(type :Copy, dependsOn: [jar, generateBundleZip, generateEnZip, sourceCodeJar, javadocJar, basePatternJar]) {
     from "$buildDir/libs", "$buildDir/distributions"
     into "$rootDir/publish/"
     println "The build was output to -> $rootDir/publish/"
@@ -142,6 +152,7 @@ artifacts {
     archives sourceCodeJar
     archives javadocJar
 }
+
 
 
 assemble.dependsOn.add copyLibs
