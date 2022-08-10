@@ -32,6 +32,7 @@ public class ExceptionHandle {
 		logger.error("====== Validation Exception =======");
 		logger.error(ve.getMessage());
 		Response respObj =  new Response(APIResponseStatus.BAD_REQUEST.getCode(), ve.getMessage());
+		resp.setContentType("application/json;charset=utf-8");
 		try {
 			resp.getWriter().write(
 					new ObjectMapper().writerWithDefaultPrettyPrinter()
