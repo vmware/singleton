@@ -13,8 +13,20 @@ module Sgtn # :nodoc:
       SgtnClient.load(config_file, env)
     end
 
+    private
+
+    def translation
+      @translation ||= begin
+        if config.pseudo_mode  
+          Translation.include Pseudo
+        end
+        Translation.new
+      end
+    end
+
     def_delegator SgtnClient::Config, :instance, :config
-    delegate %i[translate t get_translations locale locale=] => SgtnClient::Translation,
+    delegate %i[translate t get_translations] => :translation,
+             %i[locale locale=] => SgtnClient,
              %i[logger product_name version vip_server translation_bundle
                 source_bundle cache_expiry_period log_file log_level].flat_map { |m|
                [m, "#{m}=".to_sym]
@@ -22,4 +34,26 @@ module Sgtn # :nodoc:
   end
 
   I18nBackend = SgtnClient::I18nBackend
+
+  class Translation
+    include SgtnClient::Translation::Implementation
+  end
+
+  module Pseudo
+    PREFIX = '@@'
+    SUFFIX = PREFIX
+    EN_LOCALE = :en
+
+    def translate(key, component, locale = nil, **kwargs, &block)
+      translation = super(key, component, EN_LOCALE, **kwargs, &block)
+      "#{PREFIX}#{translation}#{SUFFIX}"
+    end
+    alias t translate
+
+    def get_translations(component, locale = nil)
+      translations = super(component, EN_LOCALE)
+      translations["messages"].transform_values! { |v| "#{PREFIX}#{v}#{SUFFIX}" }
+      translations
+    end
+  end
 end

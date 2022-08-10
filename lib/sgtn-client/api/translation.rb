@@ -43,7 +43,7 @@ module SgtnClient
         SgtnClient.logger.debug { "[#{method(__callee__).owner}.#{__callee__}] key: #{key}, component: #{component}, locale: #{locale}, args: #{kwargs}" }
 
         begin
-          best_match_locale = LocaleUtil.get_best_locale(locale || self.locale, component)
+          best_match_locale = LocaleUtil.get_best_locale(locale || SgtnClient.locale, component)
           messages, actual_locale = get_bundle_with_fallback(component, best_match_locale)
           result = messages&.fetch(key, nil)
         rescue StandardError => e
@@ -69,21 +69,13 @@ module SgtnClient
       def get_translations(component, locale = nil)
         SgtnClient.logger.debug { "[#{method(__callee__).owner}.#{__callee__}] component: #{component}, locale: #{locale}" }
 
-        best_match_locale = LocaleUtil.get_best_locale(locale || self.locale, component)
+        best_match_locale = LocaleUtil.get_best_locale(locale || SgtnClient.locale, component)
         messages, actual_locale = get_bundle_with_fallback(component, best_match_locale)
 
         { 'component' => component, 'locale' => actual_locale, 'messages' => messages } if messages
       rescue StandardError => e
         SgtnClient.logger.error "[#{method(__callee__).owner}.#{__callee__}] translations are missing. {#{component}, #{locale}}. #{e}"
         nil
-      end
-
-      def locale
-        RequestStore.store[:locale] ||= LocaleUtil.get_fallback_locale
-      end
-
-      def locale=(value)
-        RequestStore.store[:locale] = value
       end
 
       private
