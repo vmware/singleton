@@ -9,13 +9,13 @@ module SgtnClient
     SUFFIX = PREFIX
     EN_LOCALE = :en
 
-    def translate(key, component, locale = nil, **kwargs, &block)
+    def translate(key, component, _locale = nil, **kwargs, &block)
       translation = super(key, component, EN_LOCALE, **kwargs, &block)
       "#{PREFIX}#{translation}#{SUFFIX}"
     end
     alias t translate
 
-    def get_translations(component, locale = nil)
+    def get_translations(component, _locale = nil)
       translations = super(component, EN_LOCALE)
       translations['messages'].transform_values! { |v| "#{PREFIX}#{v}#{SUFFIX}" }
       translations

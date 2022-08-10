@@ -31,9 +31,7 @@ module Sgtn # :nodoc:
 
     def translation
       @translation ||= begin
-        if config.pseudo_mode  
-          Translation.include SgtnClient::Pseudo
-        end
+        Translation.include SgtnClient::Pseudo if config.pseudo_mode
         Translation.new
       end
     end
