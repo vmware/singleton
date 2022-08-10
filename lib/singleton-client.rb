@@ -19,6 +19,20 @@ module Sgtn # :nodoc:
                 source_bundle cache_expiry_period log_file log_level].flat_map { |m|
                [m, "#{m}=".to_sym]
              } => :config
+
+    def with_locale(tmp_locale = nil)
+      if tmp_locale.nil?
+        yield
+      else
+        current_locale = locale
+        self.locale = tmp_locale
+        begin
+          yield
+        ensure
+          self.locale = current_locale
+        end
+      end
+    end
   end
 
   I18nBackend = SgtnClient::I18nBackend
