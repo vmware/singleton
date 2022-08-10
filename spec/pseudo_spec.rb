@@ -1,4 +1,4 @@
-describe Sgtn::Pseudo, :include_helpers, :extend_helpers do
+describe SgtnClient::Pseudo, :include_helpers, :extend_helpers do
   include_context 'reset client' do
     Sgtn.config.pseudo_mode = true
   end

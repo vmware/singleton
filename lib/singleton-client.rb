@@ -32,7 +32,7 @@ module Sgtn # :nodoc:
     def translation
       @translation ||= begin
         if config.pseudo_mode  
-          Translation.include Pseudo
+          Translation.include SgtnClient::Pseudo
         end
         Translation.new
       end
@@ -51,23 +51,5 @@ module Sgtn # :nodoc:
 
   class Translation
     include SgtnClient::Translation::Implementation
-  end
-
-  module Pseudo
-    PREFIX = '@@'
-    SUFFIX = PREFIX
-    EN_LOCALE = :en
-
-    def translate(key, component, locale = nil, **kwargs, &block)
-      translation = super(key, component, EN_LOCALE, **kwargs, &block)
-      "#{PREFIX}#{translation}#{SUFFIX}"
-    end
-    alias t translate
-
-    def get_translations(component, locale = nil)
-      translations = super(component, EN_LOCALE)
-      translations["messages"].transform_values! { |v| "#{PREFIX}#{v}#{SUFFIX}" }
-      translations
-    end
   end
 end
