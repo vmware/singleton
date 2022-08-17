@@ -9,9 +9,10 @@ require 'set'
 
 module SgtnClient
   module TranslationLoader
-    class SgtnServer
+    class SgtnServer # :nodoc:
       ERROR_ILLEGAL_DATA = 'server returned illegal data.'
       ERROR_BUSINESS_ERROR = 'server returned business error.'
+      ERROR_PARTIAL_SUCCESS = 'the request to server was partially successful.'
       ERROR_NO_DATA = 'no expected data in response from server. path: %s. Body is: %s'
 
       REQUEST_ARGUMENTS = { timeout: 10 }.freeze
@@ -74,8 +75,8 @@ module SgtnClient
           raise SingletonError, "#{ERROR_BUSINESS_ERROR} #{parsedbody['response']}"
         end
 
-        # 600 means a successful response, 6xx means partial successful.
-        SgtnClient.logger.warn "#{ERROR_BUSINESS_ERROR} #{parsedbody['response']}" if b_code > 600
+        # 600/200 means a successful response, 6xx/2xx means partial successful.
+        SgtnClient.logger.warn "#{ERROR_PARTIAL_SUCCESS} #{parsedbody['response']}" if b_code != 600 && b_code != 200
       rescue TypeError, ArgumentError, NoMethodError => e
         raise SingletonError, "#{ERROR_ILLEGAL_DATA} #{e}. Body is: #{parsedbody}"
       end
