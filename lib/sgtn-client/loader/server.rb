@@ -12,24 +12,30 @@ module SgtnClient
     class SgtnServer
       ERROR_ILLEGAL_DATA = 'server returned illegal data.'
       ERROR_BUSINESS_ERROR = 'server returned business error.'
+      ERROR_NO_DATA = 'no expected data in response from server. path: %s. Body is: %s'
 
       REQUEST_ARGUMENTS = { timeout: 10 }.freeze
 
       def initialize(config)
-        @server_url = config.vip_server
-
-        product_root = format('i18n/api/v2/translation/products/%s/versions/%s', config.product_name, config.version)
+        product_root = format('i18n/api/v2/translation/products/%<name>s/versions/%<version>s',
+                              name: config.product_name, version: config.version)
 
         @bundle_url = "#{product_root}/locales/%s/components/%s"
         @locales_url = "#{product_root}/localelist"
         @components_url = "#{product_root}/componentlist"
+
+        @conn = Faraday.new(config.vip_server, request: REQUEST_ARGUMENTS) do |f|
+          f.response :json # decode response bodies as JSON
+          f.use :gzip
+          f.response :raise_error
+          f.response :logger, config.logger, { log_level: :debug, headers: false, bodies: true }
+        end
       end
 
       def load_bundle(component, locale)
         SgtnClient.logger.debug { "[#{method(__callee__).owner}.#{__callee__}] component=#{component}, locale=#{locale}" }
 
-        messages = query_server(format(@bundle_url, locale, component), ['messages'])
-        messages
+        query_server(format(@bundle_url, locale, component), ['messages'])
       end
 
       def available_bundles
@@ -54,23 +60,12 @@ module SgtnClient
       end
 
       def query_server(url, path_to_data = [], queries = nil, headers = nil)
-        conn = Faraday.new(@server_url, request: REQUEST_ARGUMENTS) do |f|
-          f.response :json # decode response bodies as JSON
-          f.use :gzip
-          f.response :raise_error
-          f.response :logger, SgtnClient.logger, { log_level: :debug }
-        end
-        resp = conn.get(url, queries, headers)
+        resp = @conn.get(url, queries, headers)
 
         process_business_error(resp.body)
-        extract_data(resp.body, path_to_data)
-      end
 
-      def extract_data(parsedbody, path_to_data)
-        data = parsedbody.dig('data', *path_to_data)
-        raise SingletonError, "no expected data in response. Body is: #{parsedbody}" unless data
-
-        data
+        resp.body&.dig('data', *path_to_data) ||
+          (raise SingletonError, format(ERROR_NO_DATA, path_to_data, resp.body))
       end
 
       def process_business_error(parsedbody)
