@@ -9,7 +9,7 @@ module SgtnClient # :nodoc:
   autoload :TranslationLoader,  'sgtn-client/loader'
   autoload :SingleOperation,    'sgtn-client/common/single_operation'
   autoload :Translation,        'sgtn-client/api/translation'
-  autoload :Pseudo,             'sgtn-client/pseudo'
+  autoload :PseudoTranslation,  'sgtn-client/pseudo'
   autoload :T,                  'sgtn-client/api/t'
   autoload :Source,             'sgtn-client/api/source'
   autoload :Config,             'sgtn-client/core/config'

@@ -1,5 +1,7 @@
-describe SgtnClient::Pseudo, :include_helpers, :extend_helpers do
-  include_context 'reset client' do
+describe SgtnClient::PseudoTranslation, :include_helpers, :extend_helpers do
+  include_context 'reset client'
+
+  before :all do
     Sgtn.config.pseudo_mode = true
   end
 

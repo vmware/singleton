@@ -4,7 +4,9 @@
 # SPDX-License-Identifier: EPL-2.0
 
 module SgtnClient
-  module Pseudo # :nodoc:
+  class PseudoTranslation # :nodoc:
+    include Translation::Implementation
+
     PREFIX = '@@'
     SUFFIX = PREFIX
     EN_LOCALE = :en

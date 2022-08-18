@@ -21,7 +21,8 @@ module Helpers
       'vip_server' => nil,
       'translation_bundle' => './spec/fixtures/bundles',
       'source_bundle' => './spec/fixtures/sources',
-      'cache_expiry_period' => 10
+      'cache_expiry_period' => 10,
+      'pseudo_mode' => false,
       # 'default_language' => 'en'
     }.freeze
 
@@ -91,5 +92,12 @@ module Helpers
 
   def nonexistent_response
     File.new('spec/fixtures/mock_responses/nonexistent').read
+  end
+
+  def reset_client
+    SgtnClient.config.update(Helpers::CONFIG_HASH)
+    Sgtn.instance_variable_set(:@translation, nil)
+    SgtnClient.config.instance_variable_set(:@loader, nil)
+    SgtnClient::LocaleUtil.send(:reset_locale_data, :available_locales)
   end
 end
