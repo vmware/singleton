@@ -97,6 +97,7 @@ task sourcesJar(type: Jar, dependsOn: classes) {
     archiveClassifier = 'sources'
 }
 javadoc {  
+    title = "${project.reporting.apiDocTitle}".replaceAll("g11n-java-client", "singleton-client-java" )
     options{
         encoding "UTF-8"
         charSet "UTF-8"
