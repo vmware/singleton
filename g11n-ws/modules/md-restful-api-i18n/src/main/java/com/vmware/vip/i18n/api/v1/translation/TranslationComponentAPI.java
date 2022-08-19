@@ -49,7 +49,7 @@ public class TranslationComponentAPI  extends BaseAction {
     IMultComponentService multipleComponentsService;
     
     @Autowired
-	IProductService productService;
+    IProductService productService;
 
     /**
      * Get translation based on single component.
@@ -110,12 +110,10 @@ public class TranslationComponentAPI  extends BaseAction {
         if(new Boolean(pseudo)) {
         	localeList.add(ConstantsKeys.LATEST);
         } else if(locales != null) {
-            List<String> supportedLocaleList = productService
-  	                  .getSupportedLocaleList(productName, version);
+            List<String> supportedLocaleList = productService.getSupportedLocaleList(productName, version);
   			for (String locale : locales.split(",")) {
   				localeList.add(getFormatLocale(productName, version, locale.trim(), supportedLocaleList));
   			}
-            
         }
         translationDTO.setLocales(localeList);
         translationDTO.setPseudo(new Boolean(pseudo));
