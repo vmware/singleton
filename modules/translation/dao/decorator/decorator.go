@@ -14,6 +14,7 @@ import (
 	"sgtnserver/modules/translation"
 	"sgtnserver/modules/translation/bundleinfo"
 
+	jsoniter "github.com/json-iterator/go"
 	"go.uber.org/zap"
 )
 
@@ -73,7 +74,7 @@ func (d *decorator) PutBundle(ctx context.Context, bundleData *translation.Bundl
 	defer locker.Unlock()
 
 	if ce := log.Check(zap.DebugLevel, "Bundle content"); ce != nil {
-		ce.Write(zap.String("content", bundleData.Messages.ToString()))
+		ce.Write(zap.String("content", bundleData.Messages.(jsoniter.Any).ToString()))
 	}
 	err := d.MessageOrigin.PutBundle(ctx, bundleData)
 	if err == nil {

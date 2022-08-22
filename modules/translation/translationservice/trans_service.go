@@ -20,6 +20,7 @@ import (
 	"sgtnserver/modules/translation/translationcache"
 
 	"github.com/fatih/structs"
+	jsoniter "github.com/json-iterator/go"
 	"go.uber.org/zap"
 )
 
@@ -152,6 +153,26 @@ func (ts Service) GetBundle(ctx context.Context, id *translation.BundleID) (*tra
 	return ts.msgOrigin.GetBundle(ctx, id)
 }
 
+// GetStrings ...
+func (ts Service) GetStrings(ctx context.Context, id *translation.BundleID, keys []string) (*translation.Bundle, error) {
+	name, version, locale, component := id.Name, id.Version, id.Locale, id.Component
+	logger.FromContext(ctx).Debug("Get translations of multiple keys", zap.String(translation.Name, name), zap.String(translation.Version, version),
+		zap.String(translation.Locale, locale), zap.String(translation.Component, component), zap.Strings("keys", keys))
+
+	bundle, err := ts.GetBundle(ctx, id)
+	if err != nil {
+		return nil, err
+	}
+
+	all_messages := make(map[string]string)
+	bundle.Messages.(jsoniter.Any).ToVal(&all_messages)
+	messages := make(map[string]string, len(keys))
+	for _, key := range keys {
+		messages[key] = all_messages[key]
+	}
+	return &translation.Bundle{ID: bundle.ID, Messages: messages}, err
+}
+
 // GetString ...
 func (ts Service) GetString(ctx context.Context, id *translation.MessageID) (*translation.StringMessage, error) {
 	b, err := ts.GetBundle(ctx, &translation.BundleID{Name: id.Name, Version: id.Version, Locale: id.Locale, Component: id.Component})
@@ -159,7 +180,7 @@ func (ts Service) GetString(ctx context.Context, id *translation.MessageID) (*tr
 		return nil, err
 	}
 
-	anyValue := b.Messages.Get(id.Key)
+	anyValue := b.Messages.(jsoniter.Any).Get(id.Key)
 	if anyValue.LastError() == nil {
 		return &translation.StringMessage{
 				Name:        id.Name,
@@ -320,8 +341,8 @@ func (ts Service) GetTranslationStatus(ctx context.Context, id *translation.Bund
 	}
 
 	var latestMessages, enMessages map[string]string
-	latestData.Messages.ToVal(&latestMessages)
-	enData.Messages.ToVal(&enMessages)
+	latestData.Messages.(jsoniter.Any).ToVal(&latestMessages)
+	enData.Messages.(jsoniter.Any).ToVal(&enMessages)
 
 	var result = make(map[string]interface{}, len(latestMessages))
 	var err = sgtnerror.TranslationReady

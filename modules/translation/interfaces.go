@@ -16,6 +16,8 @@ type Service interface {
 
 	GetString(ctx context.Context, id *MessageID) (*StringMessage, error)
 
+	GetStrings(context.Context, *BundleID, []string) (*Bundle, error)
+
 	GetStringWithSource(ctx context.Context, id *MessageID, source string) (map[string]interface{}, error)
 
 	GetMultipleBundles(ctx context.Context, name, version, localeString, componentString string) (data []*Bundle, err error)

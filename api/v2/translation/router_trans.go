@@ -21,7 +21,7 @@ func (r *translationRouter) Init(e *gin.RouterGroup) {
 	{
 		productPart := "/products/:productName/versions/:version"
 
-		// Product APIs
+		// Product API
 		tranGroup.GET(productPart, GetMultipleBundles)
 
 		tranGroup.GET(productPart+"/localelist", GetAvailableLocales)
@@ -30,8 +30,11 @@ func (r *translationRouter) Init(e *gin.RouterGroup) {
 		// Component API
 		tranGroup.GET(productPart+"/locales/:locale/components/:component", GetBundle)
 
-		// Key APIs
+		// Key API
 		tranGroup.GET(productPart+"/locales/:locale/components/:component/keys/:key", GetString)
+
+		// Keys API
+		tranGroup.GET(productPart+"/locales/:locale/components/:component/keys", GetStrings)
 	}
 
 	e.POST("/translation/products/:productName/versions/:version/locales/:locale/components/:component/keys/:key", HandleAllowList, GetStringByPost)

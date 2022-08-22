@@ -125,7 +125,7 @@ func (b *LocalBundle) GetBundle(ctx context.Context, id *translation.BundleID) (
 
 // PutBundle ...
 func (b *LocalBundle) PutBundle(ctx context.Context, bundleData *translation.Bundle) (returnErr error) {
-	bundle := &translation.BundleFile{Component: bundleData.ID.Component, Locale: bundleData.ID.Locale, Messages: bundleData.Messages}
+	bundle := &translation.BundleFile{Component: bundleData.ID.Component, Locale: bundleData.ID.Locale, Messages: bundleData.Messages.(jsoniter.Any)}
 	bts, err := json.MarshalIndent(bundle, "", "    ")
 	if err != nil {
 		returnErr = sgtnerror.StatusBadRequest.WrapErrorWithMessage(err, translation.WrongBundleContent, bundleData.ID.Name, bundleData.ID.Version, bundleData.ID.Locale, bundleData.ID.Component)

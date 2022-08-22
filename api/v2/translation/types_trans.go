@@ -32,6 +32,11 @@ type (
 		Source string `form:"source"`
 	}
 
+	GetStringsReq struct {
+		BundleID
+		Keys string `form:"keys"`
+	}
+
 	GetStringByPostReq struct {
 		StringID
 		Source                 string `form:"source"`

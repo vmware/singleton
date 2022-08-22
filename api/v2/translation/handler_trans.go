@@ -8,13 +8,16 @@ package translation
 import (
 	"io/ioutil"
 	"sgtnserver/api"
+	"sgtnserver/internal/common"
 	"sgtnserver/internal/logger"
 	"sgtnserver/internal/sgtnerror"
 	"sgtnserver/modules/translation"
 	"sgtnserver/modules/translation/translationservice"
+	"strings"
 
 	"github.com/emirpasic/gods/sets/linkedhashset"
 	"github.com/gin-gonic/gin"
+	jsoniter "github.com/json-iterator/go"
 )
 
 var l3Service translation.Service = translationservice.GetService()
@@ -137,6 +140,36 @@ func GetBundle(c *gin.Context) {
 	}
 
 	api.HandleResponse(c, bundleAPIData, mErr)
+}
+
+// GetStrings godoc
+// @Summary Get translations of multiple strings
+// @Description Get multiple translations together by their keys
+// @Tags translation-product-component-keys-api
+// @Produce json
+// @Param productName path string true "product name"
+// @Param version path string true "version"
+// @Param locale path string true "locale name"
+// @Param component path string true "component name"
+// @Param keys query string true "keys separated by commas"
+// @Success 200 {object} api.Response "OK"
+// @Failure 400 {string} string "Bad Request"
+// @Failure 401 {string} string "Unauthorized"
+// @Failure 403 {string} string "Forbidden"
+// @Failure 404 {string} string "Not Found"
+// @Failure 500 {string} string "Internal Server Error"
+// @Router /translation/products/{productName}/versions/{version}/locales/{locale}/components/{component}/keys [get]
+func GetStrings(c *gin.Context) {
+	params := GetStringsReq{}
+	if err := api.ExtractParameters(c, &params, &params); err != nil {
+		return
+	}
+
+	version := c.GetString(api.SgtnVersionKey)
+
+	bundleID := &translation.BundleID{Name: params.ProductName, Version: version, Locale: params.Locale, Component: params.Component}
+	data, err := l3Service.GetStrings(logger.NewContext(c, c.MustGet(api.LoggerKey)), bundleID, strings.Split(params.Keys, common.KeySep))
+	api.HandleResponse(c, ConvertBundleToAPI(data), err)
 }
 
 // GetString godoc
@@ -270,7 +303,7 @@ func ConvertReleaseToAPI(productName, version string, bundles []*translation.Bun
 	pData := ReleaseData{ProductName: productName, Version: version}
 	localeSet, componentSet := linkedhashset.New(), linkedhashset.New()
 	for _, d := range bundles {
-		pData.Bundles = append(pData.Bundles, BundleData{Component: d.ID.Component, Locale: d.ID.Locale, Messages: d.Messages})
+		pData.Bundles = append(pData.Bundles, BundleData{Component: d.ID.Component, Locale: d.ID.Locale, Messages: d.Messages.(jsoniter.Any)})
 		localeSet.Add(d.ID.Locale)
 		componentSet.Add(d.ID.Component)
 	}
@@ -290,7 +323,7 @@ func ConvertBundleToAPI(bundle *translation.Bundle) *SingleBundleData {
 		Version:     id.Version,
 		Locale:      id.Locale,
 		Component:   id.Component,
-		Messages:    bundle.Messages}
+		Messages:    bundle.Messages.(jsoniter.Any)}
 
 	return &data
 }
