@@ -29,7 +29,8 @@ module SgtnClient
       end
 
       component_result[locale] ||= begin
-                # component_result.shift if component_result.size >= 50
+                component_result.delete(component_result.keys[Random.rand(component_result.size)]) if component_result.size >= 50
+
                 if SgtnClient.config.available_locales(component).include?(locale)
                   locale
                 elsif locale.nil?
