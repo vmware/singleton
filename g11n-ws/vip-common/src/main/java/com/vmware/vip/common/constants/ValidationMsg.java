@@ -10,7 +10,7 @@ public final class ValidationMsg {
 	public final static String COMPONENT_NOT_VALIDE = "Incorrect component(only allows letter, number, dot, underline, dashline)";
 	public final static String COMPONENTS_NOT_VALIDE = "Incorrect components(only allows letter, number, comma, dot, underline, dashline)";
 	public final static String KEY_NOT_VALIDE = "Incorrect key(only allows ASCII char)";
-	public final static String KEY_NOT_VALIDE_FORMAT = "Incorrect key name '%s' contains non-ASCII char(only allows ASCII char)";
+	public final static String KEY_NOT_VALIDE_FORMAT = "Incorrect key name '%s' contains non-ASCII char(only allows standard ASCII char)";
 	public final static String KEYS_NOT_VALIDE = "Incorrect keys(only allows ASCII char)";
 	public final static String LOCALE_NOT_VALIDE = "Incorrect locale(only allows letter, number, dot, underline, dashline)";
 	public final static String LOCALES_NOT_VALIDE = "Incorrect locales(only allows letter, number, comma, dot, underline, dashline)";
@@ -20,7 +20,7 @@ public final class ValidationMsg {
 	public final static String SCOPE_NOT_VALIDE = "Incorrect scope(allows letter, comma)";
 	public final static String COLLECTSOURCE_NOT_VALIDE = "Incorrect collectsource(only allows true, false)";
 	public final static String COLLECTSOURCE_NOT_VALIDE_L10N = "Incorrect collectsource(only allows true)";
-	public final static String COLLECTSOURCE_REQUEST_BODY_NOT_VALIDE = "Incorrect source collection request body (max size: %d current size: %s )";
+	public final static String COLLECTSOURCE_REQUEST_BODY_NOT_VALIDE = "Incorrect source collection request body (max size: %d bytes, current size: %s bytes)";
 	public final static String PSEUDO_NOT_VALIDE = "Incorrect pseudo(only allows true, false)";
 	public final static String NUMBER_NOT_VALIDE = "Incorrect number";
 	public final static String SCALE_NOT_VALIDE = "Scale is empty or scale < 0";
