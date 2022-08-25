@@ -9,6 +9,7 @@ module SgtnClient # :nodoc:
   autoload :TranslationLoader,  'sgtn-client/loader'
   autoload :SingleOperation,    'sgtn-client/common/single_operation'
   autoload :Translation,        'sgtn-client/api/translation'
+  autoload :Fallbacks,          'sgtn-client/fallbacks'
   autoload :T,                  'sgtn-client/api/t'
   autoload :Source,             'sgtn-client/api/source'
   autoload :Config,             'sgtn-client/core/config'
@@ -37,6 +38,14 @@ module SgtnClient # :nodoc:
       config_hash['log_file'] = log_file if log_file
       config.update(config_hash)
       ValidateUtil.validate_config
+    end
+
+    def locale
+      RequestStore.store[:locale] ||= LocaleUtil.get_fallback_locale
+    end
+
+    def locale=(value)
+      RequestStore.store[:locale] = value
     end
   end
 end

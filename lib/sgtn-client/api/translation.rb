@@ -6,6 +6,8 @@ require 'request_store'
 module SgtnClient
   module Translation
     module Implementation
+      prepend Fallbacks
+
       # <b>DEPRECATED:</b> Please use <tt>Sgtn:translate</tt> instead.
       def getString(component, key, locale)
         SgtnClient.logger.debug { "[Translation.getString]component: #{component}, key: #{key}, locale: #{locale}" }
@@ -39,51 +41,56 @@ module SgtnClient
         get_translations(component, locale)
       end
 
-      def translate(key, component, locale = nil, **kwargs)
+      def translate(key, component, locale = nil, **kwargs, &block)
+        translate!(key, component, locale, **kwargs, &block)
+      rescue StandardError => e
+        SgtnClient.logger.debug { "[#{method(__callee__).owner}.#{__callee__}] {#{key}, #{component}, #{locale}}. #{e}" }
+        key
+      end
+      alias t translate
+
+      # raise error when translation is not found
+      def translate!(key, component, locale = nil, **kwargs, &block)
         SgtnClient.logger.debug { "[#{method(__callee__).owner}.#{__callee__}] key: #{key}, component: #{component}, locale: #{locale}, args: #{kwargs}" }
 
         begin
-          best_match_locale = LocaleUtil.get_best_locale(locale || self.locale, component)
-          messages, actual_locale = get_bundle_with_fallback(component, best_match_locale)
+          best_match_locale = LocaleUtil.get_best_locale(locale || SgtnClient.locale, component)
+          messages = get_bundle!(component, best_match_locale)
           result = messages&.fetch(key, nil)
-        rescue StandardError => e
-          SgtnClient.logger.debug { "[#{method(__callee__).owner}.#{__callee__}] translation is missing. {#{key}, #{component}, #{locale}}. #{e}" }
-          result = nil
+        rescue  StandardError => e
+          raise e if block.nil?
         end
-
         if result.nil?
-          return key unless block_given?
-
-          result = yield
-          return if result.nil?
+          if block
+            result = block.call
+            return if result.nil?
+          else
+            raise SingletonError, 'failed to translate.'
+          end
         end
 
         if kwargs.empty?
           result
         else
-          result.localize(actual_locale) % kwargs
+          result.localize(best_match_locale) % kwargs
         end
       end
-      alias t translate
+      alias t! translate!
 
       def get_translations(component, locale = nil)
-        SgtnClient.logger.debug { "[#{method(__callee__).owner}.#{__callee__}] component: #{component}, locale: #{locale}" }
-
-        best_match_locale = LocaleUtil.get_best_locale(locale || self.locale, component)
-        messages, actual_locale = get_bundle_with_fallback(component, best_match_locale)
-
-        { 'component' => component, 'locale' => actual_locale, 'messages' => messages } if messages
+        get_translations!(component, locale)
       rescue StandardError => e
-        SgtnClient.logger.error "[#{method(__callee__).owner}.#{__callee__}] translations are missing. {#{component}, #{locale}}. #{e}"
+        SgtnClient.logger.error "[#{method(__callee__).owner}.#{__callee__}] {#{component}, #{locale}}. #{e}"
         nil
       end
 
-      def locale
-        RequestStore.store[:locale] ||= LocaleUtil.get_fallback_locale
-      end
+      def get_translations!(component, locale = nil)
+        SgtnClient.logger.debug { "[#{method(__callee__).owner}.#{__callee__}] component: #{component}, locale: #{locale}" }
 
-      def locale=(value)
-        RequestStore.store[:locale] = value
+        best_match_locale = LocaleUtil.get_best_locale(locale || SgtnClient.locale, component)
+        messages = get_bundle!(component, best_match_locale)
+
+        { 'component' => component, 'locale' => best_match_locale, 'messages' => messages } if messages
       end
 
       private
@@ -105,18 +112,6 @@ module SgtnClient
         SgtnClient.config.changed
         SgtnClient.config.notify_observers(:available_locales, component)
         raise
-      end
-
-      def get_bundle_with_fallback(component, locale)
-        messages = get_bundle(component, locale)
-        return messages, locale if messages
-
-        LocaleUtil.locale_fallbacks.each do |l|
-          next if l == locale
-
-          messages = get_bundle(component, l)
-          return messages, l if messages
-        end
       end
     end
 

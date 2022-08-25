@@ -109,7 +109,7 @@ describe Sgtn, :include_helpers, :extend_helpers do
 
     it '#format messages with insufficient arguments, should return key' do
       # expect(Sgtn.translate(formatting_key, component, en_locale, error: 'syntax error')).to eq formatting_key
-      expect { Sgtn.translate(formatting_key, component, en_locale, error: 'syntax error') }.to raise_error(KeyError)
+      expect { Sgtn.translate!(formatting_key, component, en_locale, error: 'syntax error') }.to raise_error(KeyError)
     end
     it '#format messages with empty arguments' do
       expect(Sgtn.translate(formatting_key, component, locale)).to eq '检测到%{error}，请输入%{correct}!'
