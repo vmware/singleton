@@ -31,19 +31,35 @@ module Sgtn # :nodoc:
 
     def translation
       @translation ||= begin
-        if config.pseudo_mode
-          SgtnClient::PseudoTranslation.new
-        else
-          SgtnClient::Translation
-        end
+        Class.new do
+          include SgtnClient::Translation::Implementation
+          include SgtnClient::Pseudo if Sgtn.config.pseudo_mode
+
+          def get_translations(component, locale = nil)
+            get_translations!(component, locale)
+          rescue StandardError => e
+            Sgtn.logger.error "[#{method(__callee__).owner}.#{__callee__}] translations are missing. {#{component}, #{locale}}. #{e}"
+            nil
+          end
+
+          def translate(key, component, locale = nil, **kwargs, &block)
+            translate!(key, component, locale, **kwargs, &block)
+          rescue StandardError => e
+            Sgtn.logger.debug { "[#{method(__callee__).owner}.#{__callee__}] {#{key}, #{component}, #{locale}}. #{e}" }
+            key
+          end
+          alias_method :t, :translate
+          alias_method :t!, :translate!
+        end.new
       end
     end
 
     def_delegator SgtnClient::Config, :instance, :config
-    delegate %i[translate t get_translations] => :translation,
+    delegate %i[translate t translate! t! get_translations! get_translations] => :translation,
              %i[locale locale=] => SgtnClient,
              %i[logger product_name version vip_server translation_bundle
-                source_bundle cache_expiry_period log_file log_level].flat_map { |m|
+                source_bundle cache_expiry_period log_file log_level
+                pseudo_mode pseudo_prefix pseudo_suffix ].flat_map { |m|
                [m, "#{m}=".to_sym]
              } => :config
   end
