@@ -21,8 +21,7 @@ module SgtnClient
 
     def get_translations!(component, locale = nil)
       error = nil
-      locales = get_locales(locale)
-      locales.each do |l|
+      get_locales(locale).each do |l|
         result = super(component, l)
         return result if result
       rescue StandardError => e
