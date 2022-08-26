@@ -56,17 +56,15 @@ module SgtnClient
         begin
           best_match_locale = LocaleUtil.get_best_locale(locale || SgtnClient.locale, component)
           messages = get_bundle!(component, best_match_locale)
-          result = messages&.fetch(key, nil)
+          result = messages[key]
         rescue  StandardError => e
           raise e if block.nil?
         end
         if result.nil?
-          if block
-            result = block.call
-            return if result.nil?
-          else
-            raise SingletonError, 'failed to translate.'
-          end
+          raise SingletonError, 'translation is missing.' if block.nil?
+
+          result = block.call
+          return if result.nil?
         end
 
         if kwargs.empty?
