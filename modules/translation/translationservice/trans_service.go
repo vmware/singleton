@@ -159,7 +159,8 @@ func (ts Service) GetStrings(ctx context.Context, id *translation.BundleID, keys
 	logger.FromContext(ctx).Debug("Get translations of multiple keys", zap.String(translation.Name, name), zap.String(translation.Version, version),
 		zap.String(translation.Locale, locale), zap.String(translation.Component, component), zap.Strings("keys", keys))
 
-	bundle, err := ts.GetBundle(ctx, id)
+	id.Locale = PickupLocales(name, version, []string{locale})[0]
+	bundle, err := ts.msgOrigin.GetBundle(ctx, id)
 	if err != nil {
 		return nil, err
 	}
