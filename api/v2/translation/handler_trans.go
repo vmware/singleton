@@ -17,7 +17,6 @@ import (
 
 	"github.com/emirpasic/gods/sets/linkedhashset"
 	"github.com/gin-gonic/gin"
-	jsoniter "github.com/json-iterator/go"
 )
 
 var l3Service translation.Service = translationservice.GetService()
@@ -303,7 +302,7 @@ func ConvertReleaseToAPI(productName, version string, bundles []*translation.Bun
 	pData := ReleaseData{ProductName: productName, Version: version}
 	localeSet, componentSet := linkedhashset.New(), linkedhashset.New()
 	for _, d := range bundles {
-		pData.Bundles = append(pData.Bundles, BundleData{Component: d.ID.Component, Locale: d.ID.Locale, Messages: d.Messages.(jsoniter.Any)})
+		pData.Bundles = append(pData.Bundles, BundleData{Component: d.ID.Component, Locale: d.ID.Locale, Messages: d.Messages})
 		localeSet.Add(d.ID.Locale)
 		componentSet.Add(d.ID.Component)
 	}
@@ -323,7 +322,7 @@ func ConvertBundleToAPI(bundle *translation.Bundle) *SingleBundleData {
 		Version:     id.Version,
 		Locale:      id.Locale,
 		Component:   id.Component,
-		Messages:    bundle.Messages.(jsoniter.Any)}
+		Messages:    bundle.Messages}
 
 	return &data
 }

@@ -164,13 +164,19 @@ func (ts Service) GetStrings(ctx context.Context, id *translation.BundleID, keys
 		return nil, err
 	}
 
+	var returnErr *sgtnerror.MultiError
 	all_messages := make(map[string]string)
-	bundle.Messages.(jsoniter.Any).ToVal(&all_messages)
+	bundle.Messages.ToVal(&all_messages)
 	messages := make(map[string]string, len(keys))
 	for _, key := range keys {
-		messages[key] = all_messages[key]
+		message := all_messages[key]
+		if message == "" {
+			sgtnerror.Append(returnErr, sgtnerror.StatusNotFound.WrapErrorWithMessage(translation.ErrStringNotFound, "Fail to get translation for key '%s'", key))
+		} else {
+			messages[key] = message
+		}
 	}
-	return &translation.Bundle{ID: bundle.ID, Messages: messages}, err
+	return &translation.Bundle{ID: bundle.ID, Messages: jsoniter.Wrap(messages)}, returnErr.ErrorOrNil()
 }
 
 // GetString ...
@@ -180,7 +186,7 @@ func (ts Service) GetString(ctx context.Context, id *translation.MessageID) (*tr
 		return nil, err
 	}
 
-	anyValue := b.Messages.(jsoniter.Any).Get(id.Key)
+	anyValue := b.Messages.Get(id.Key)
 	if anyValue.LastError() == nil {
 		return &translation.StringMessage{
 				Name:        id.Name,
@@ -341,8 +347,8 @@ func (ts Service) GetTranslationStatus(ctx context.Context, id *translation.Bund
 	}
 
 	var latestMessages, enMessages map[string]string
-	latestData.Messages.(jsoniter.Any).ToVal(&latestMessages)
-	enData.Messages.(jsoniter.Any).ToVal(&enMessages)
+	latestData.Messages.ToVal(&latestMessages)
+	enData.Messages.ToVal(&enMessages)
 
 	var result = make(map[string]interface{}, len(latestMessages))
 	var err = sgtnerror.TranslationReady

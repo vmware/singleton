@@ -13,7 +13,7 @@ type (
 	// Bundle ...
 	Bundle struct {
 		ID       BundleID
-		Messages interface{}
+		Messages jsoniter.Any
 	}
 
 	// BundleID ...
