@@ -34,7 +34,7 @@ type (
 
 	GetStringsReq struct {
 		BundleID
-		Keys string `form:"keys"`
+		Keys string `form:"keys" binding:"required"`
 	}
 
 	GetStringByPostReq struct {
