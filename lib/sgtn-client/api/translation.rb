@@ -57,7 +57,7 @@ module SgtnClient
           best_match_locale = LocaleUtil.get_best_locale(locale || SgtnClient.locale, component)
           messages = get_bundle!(component, best_match_locale)
           result = messages[key]
-        rescue  StandardError => e
+        rescue StandardError => e
           raise e if block.nil?
         end
         if result.nil?

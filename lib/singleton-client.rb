@@ -57,8 +57,7 @@ module Sgtn # :nodoc:
     delegate %i[translate! t! translate t get_translations! get_translations] => :translation,
              %i[locale locale=] => SgtnClient,
              %i[logger product_name version vip_server translation_bundle
-                source_bundle cache_expiry_period log_file log_level
-                pseudo_mode pseudo_prefix pseudo_suffix ].flat_map { |m|
+                source_bundle cache_expiry_period log_file log_level].flat_map { |m|
                [m, "#{m}=".to_sym]
              } => :config
   end
