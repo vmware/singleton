@@ -72,6 +72,10 @@ public class FileUtil {
 			while (en.hasMoreElements()) {
 				ZipEntry ze = en.nextElement();
 				File f = new File(targetDir + ze.getName());
+				if (!f.toPath().normalize().startsWith(new File(targetDir).toPath())) {
+					throw new IOException("Bad zip entry");
+				}
+				     
 				if (ze.isDirectory()) {
 					f.mkdirs();
 				} else {

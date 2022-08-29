@@ -63,21 +63,16 @@ dependencies {
     implementation("org.ehcache:ehcache:$ehCacheVersion")
     implementation("javax.cache:cache-api:$cacheApiVersion")
     implementation("org.apache.httpcomponents:httpclient:$httpclient")
+    implementation("org.owasp.esapi:esapi:$esapiVersion")
     // Actuator - START
-    implementation("io.micrometer:micrometer-registry-prometheus:$micrometerVersion")
-	implementation("io.micrometer:micrometer-core:$micrometerVersion")
 	implementation ('org.springframework.boot:spring-boot-starter-actuator')
     // Actuator - END
+    
     //swagger UI -START  
-    implementation("io.springfox:springfox-swagger2:$swagger2Version"){
-       exclude group: 'io.swagger', module:'swagger-annotations'
-       exclude group: 'io.swagger', module:'swagger-models'
-    }
-    implementation("io.springfox:springfox-swagger-ui:$swagger2Version")
-    implementation('io.swagger:swagger-annotations:1.5.22')
-    implementation('io.swagger:swagger-models:1.5.22')
-    implementation("com.google.guava:guava:$guavaVersion")
+    implementation("io.springfox:springfox-boot-starter:$swaggerVersion")
     //swagger UI -END
+    
+    
     //jdk 11
     runtimeOnly 'javax.xml.bind:jaxb-api:2.4.0-b180830.0359'
     runtimeOnly 'javax.activation:activation:1.1.1'
@@ -241,17 +236,27 @@ if (project.hasProperty('datatype') && (project.getProperty('datatype') == 'pgdb
 	check.dependsOn.remove(test)
 }
 
-
-task sourcesJar(type: Jar) {
+task sourcesJar(type: Jar, dependsOn: classes) {
+    classifier = 'sources'
     from sourceSets.main.allJava
-    archiveClassifier = 'sources'
+}
+ 
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+ 
+tasks.withType(Javadoc) {
+    options.addStringOption('Xdoclint:none', '-quiet')
+    options.addStringOption('encoding', 'UTF-8')
+    options.addStringOption('charSet', 'UTF-8')
+}
+ 
+artifacts {
+    archives sourcesJar
+    archives javadocJar
 }
 
-task javadocJar(type: Jar) {
-    from javadoc
-    archiveClassifier = 'javadoc'
-
-}
 
 jacocoTestReport {
     reports {

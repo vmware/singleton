@@ -83,14 +83,15 @@ public class WebConfiguration implements WebMvcConfigurer {
 	@Value("${vipservice.cross.domain.maxage}")
 	private String maxAge;
 	
-	@Value("${swagger-ui.enable}")
-	private boolean swagger2enable;
 
 	@Value("${cache-control.value:}")
 	private String cacheControlValue;
 	
 	@Value("${config.client.requestIds:}")
 	private String requestIdsStr; 
+	
+	@Value("${source.request.max-size}")
+	private Integer sourceReqBodySize; 
 
 	@Autowired
 	private TokenService tokenService;
@@ -130,7 +131,8 @@ public class WebConfiguration implements WebMvcConfigurer {
 		 */
 
 		// Request Validation
-		InterceptorRegistration apival = registry.addInterceptor(new APIValidationInterceptor(productService.getAllowPrductList(), this.requestIdsStr)).addPathPatterns("/**").excludePathPatterns(API.I18N_API_ROOT+"doc/**");
+		InterceptorRegistration apival = registry.addInterceptor(new APIValidationInterceptor(productService.getAllowPrductList(), this.requestIdsStr)).addPathPatterns("/**")
+				.excludePathPatterns(API.I18N_API_ROOT+"doc/**", "/swagger-ui/**");
 
 		// authentication
 
@@ -154,7 +156,7 @@ public class WebConfiguration implements WebMvcConfigurer {
 		// Source collection
 		if (sourceCacheFlag.equalsIgnoreCase("true")) {
 			logger.info("add enable Source collection interceptor");
-			registry.addInterceptor(new APISourceInterceptor(sourceCacheServerUrl))
+			registry.addInterceptor(new APISourceInterceptor(sourceCacheServerUrl, this.sourceReqBodySize))
 					.addPathPatterns(API.I18N_API_ROOT + APIV1.V + "/**")
 					.addPathPatterns(API.I18N_API_ROOT + APIV2.V + "/**");
 		}
@@ -184,21 +186,6 @@ public class WebConfiguration implements WebMvcConfigurer {
 		configurer.favorPathExtension(false);
 	}
 
-	/**
-	 * For swagger-ui static files(css,js) import
-	 */
-	@Override
-	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-
-		if(swagger2enable) {
-			registry.addResourceHandler("/i18n/api/doc/webjars/**")
-			.addResourceLocations("classpath:/META-INF/resources/webjars/");	
-		} else {
-			registry.addResourceHandler("/swagger-ui.html")
-			.addResourceLocations("classpath:/META-INF/swagger-ui.html");
-		}
-			
-	}
 	
 	@Override
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {

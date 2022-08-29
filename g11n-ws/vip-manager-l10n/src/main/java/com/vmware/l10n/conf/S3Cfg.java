@@ -12,6 +12,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
+import com.vmware.vip.common.utils.RsaCryptUtils;
+
 /**
  * the configuration of the S3 client
  */
@@ -67,7 +69,7 @@ public class S3Cfg {
 		if (this.encryption) {
 			try {
 				logger.debug("accessKey: {}", this.accessKey);
-				return RsaCryptUtil.decryptData(this.accessKey, this.getPublicKey());
+				return RsaCryptUtils.decryptData(this.accessKey, this.getPublicKey());
 			} catch (Exception e) {
 				logger.error(e.getMessage(), e);
 				return null;
@@ -85,7 +87,7 @@ public class S3Cfg {
 		if (this.encryption) {
 			try {
 				logger.debug("secretkey: {}", this.secretkey);
-				return RsaCryptUtil.decryptData(this.secretkey, this.getPublicKey());
+				return RsaCryptUtils.decryptData(this.secretkey, this.getPublicKey());
 			} catch (Exception e) {
 				logger.error(e.getMessage(), e);
 				return null;
@@ -126,7 +128,7 @@ public class S3Cfg {
 	public String getPublicKey() {
 		File file = new File(this.publicKey);
 		if(file.exists()) {
-			String content = RsaCryptUtil.getPublicKeyStrFromFile(file);
+			String content = RsaCryptUtils.getPublicKeyStrFromFile(file);
 			logger.debug("public key: {}", content);
 			return content;
 		}else {

@@ -95,7 +95,7 @@ public class StringService implements IStringService {
 			if((source!= null)&& source.equals(enString)) {
 				strDTO.setStatus(String.format(ConstantsMsg.TRANS_FOUND_RETURN, ConstantsMsg.TRANS_IS_FOUND));
 			} else {
-				strDTO.setStatus(String.format(ConstantsMsg.EN_NOT_SOURCE, ConstantsMsg.TRANS_IS_FOUND));
+				strDTO.setStatus(ConstantsMsg.SOURCE_IS_NOT_PROVIDE);
 				
 			}
 		}

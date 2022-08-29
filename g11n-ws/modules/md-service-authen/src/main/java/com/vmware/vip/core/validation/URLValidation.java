@@ -44,7 +44,7 @@ public class URLValidation implements IVlidation {
 			return false;
 		}
 		boolean containedSwagger = false;
-		String[] rs = { "swagger-resources", "api-docs" };
+		String[] rs = { "swagger-resources", "api-docs", "swagger-ui" };
 		for (String r : rs) {
 			if (url.contains(r)) {
 				containedSwagger = true;

@@ -15,8 +15,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.HandlerMapping;
-import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -24,14 +24,16 @@ import com.vmware.vip.api.rest.APIParamName;
 import com.vmware.vip.api.rest.l10n.L10NAPIV1;
 import com.vmware.vip.common.constants.ConstantsKeys;
 import com.vmware.vip.common.constants.ConstantsUnicode;
+import com.vmware.vip.common.constants.ValidationMsg;
 import com.vmware.vip.common.exceptions.VIPHttpException;
+import com.vmware.vip.common.exceptions.ValidationException;
 import com.vmware.vip.common.http.HTTPRequester;
 import com.vmware.vip.common.i18n.dto.UpdateTranslationDTO;
 
 /**
  * Interceptor for collection new resource
  */
-public class APISourceInterceptor extends HandlerInterceptorAdapter {
+public class APISourceInterceptor implements HandlerInterceptor {
 
     private Logger LOGGER = LoggerFactory.getLogger(APISourceInterceptor.class);
     private static String PARAM = "param";
@@ -41,12 +43,16 @@ public class APISourceInterceptor extends HandlerInterceptorAdapter {
      * l10n server url
      */
     private String sourceCacheServerUrl;
+    private int sourceReqBodySize = 10485760;
 
     /**
      * Construction method for init sourceCacheFlag and sourceCacheServerUrl
      */
-    public APISourceInterceptor(String sourceCacheServerUrl) {
+    public APISourceInterceptor(String sourceCacheServerUrl, int sourceReqSize) {
         this.sourceCacheServerUrl = sourceCacheServerUrl;
+        if(sourceReqSize >0) {
+        	this.sourceReqBodySize =  sourceReqSize;
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -130,6 +136,22 @@ public class APISourceInterceptor extends HandlerInterceptorAdapter {
         }
     }
 
+	@Override
+	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
+			throws Exception {
+	
+		String contentLength = request.getHeader("content-length");
+		if (StringUtils.equalsIgnoreCase(request.getParameter(ConstantsKeys.COLLECT_SOURCE), ConstantsKeys.TRUE)
+				&& (contentLength != null) && Integer.valueOf(contentLength) > this.sourceReqBodySize) {
+			throw new ValidationException(String.format(ValidationMsg.COLLECTSOURCE_REQUEST_BODY_NOT_VALIDE,
+					this.sourceReqBodySize, request.getHeader("content-length")));
+		}
+
+		return true;
+
+	}
+   
+    
     @Override
     public void afterCompletion(HttpServletRequest request,
             HttpServletResponse response, Object handler, Exception ex)

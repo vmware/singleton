@@ -8,23 +8,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.web.server.WebServerFactoryCustomizer;
-import org.springframework.boot.web.servlet.server.ConfigurableServletWebServerFactory;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Profile;
-import org.springframework.web.servlet.config.annotation.ContentNegotiationConfigurer;
-import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.config.annotation.PathMatchConfigurer;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import org.springframework.web.util.UrlPathHelper;
 
-import com.vmware.l10n.utils.AllowListUtils;
-import com.vmware.l10n.utils.AllowListUtils.LocalAllowlistUtils;
-import com.vmware.l10n.utils.AllowListUtils.S3AllowlistUtils;
+import com.vmware.l10n.source.dao.AllowListDao;
 import com.vmware.vip.api.rest.l10n.L10nI18nAPI;
 
 /**
@@ -37,43 +26,15 @@ public class WebConfiguration implements WebMvcConfigurer {
 
 	@Value("${csp.api.auth.enable:false}")
 	private String cspAuthFlag;
+	
+	@Value("${source.collect.request.max-size}")
+	private Integer sourceCollectReqSize;
 
 	@Autowired
 	private TokenService tokenService;
 
 	@Autowired
-	private AllowListUtils allowlistUtils;
-
-	@Bean
-	@Profile("bundle")
-	@Autowired
-	public AllowListUtils bundleAllowlistUtils(ApplicationContext ctx) {
-		return new LocalAllowlistUtils();
-	}
-
-	@Bean
-	@Profile("s3")
-	@Autowired
-	public AllowListUtils s3AllowlistUtils(ApplicationContext ctx) {
-		return new S3AllowlistUtils();
-	}
-
-	@Override
-	public void configurePathMatch(PathMatchConfigurer configurer) {
-		UrlPathHelper urlPathHelper = new UrlPathHelper();
-		urlPathHelper.setUrlDecode(false);
-		configurer.setUrlPathHelper(urlPathHelper);
-	}
-
-	@Override
-	public void configureContentNegotiation(ContentNegotiationConfigurer configurer) {
-		configurer.favorPathExtension(false);
-	}
-
-	@Override
-	public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
-		configurer.enable();
-	}
+	private AllowListDao allowlistDao;
 
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
@@ -84,13 +45,11 @@ public class WebConfiguration implements WebMvcConfigurer {
 			.addPathPatterns(L10nI18nAPI.BASE_COLLECT_SOURCE_PATH + "/api/v2/translation/**", L10nI18nAPI.BASE_COLLECT_SOURCE_PATH + "/api/v1/translation/**");
 		}
 		logger.info("add source collection validation interceptor");
-		registry.addInterceptor(new CollectSourceValidationInterceptor(allowlistUtils.getAllowList()))
+		registry.addInterceptor(new CollectSourceValidationInterceptor(allowlistDao.getAllowList()))
 		.addPathPatterns(L10nI18nAPI.BASE_COLLECT_SOURCE_PATH + "/api/v2/translation/**", L10nI18nAPI.BASE_COLLECT_SOURCE_PATH + "/api/v1/translation/**");
-	}
+		registry.addInterceptor(new CollectSourceReqBodyInterceptor(this.sourceCollectReqSize))
+		.addPathPatterns(L10nI18nAPI.BASE_COLLECT_SOURCE_PATH + "/api/v2/translation/products/**");
 	
-	@Bean
-	WebServerFactoryCustomizer<ConfigurableServletWebServerFactory> enableDefaultServlet() {
-	    return (factory) -> factory.setRegisterDefaultServlet(true);
 	}
 
 }

@@ -7,13 +7,18 @@ package com.vmware.vip.i18n.api.base;
 import com.vmware.vip.common.i18n.dto.response.APIResponseDTO;
 import com.vmware.vip.common.i18n.status.APIResponseStatus;
 import com.vmware.vip.common.i18n.status.Response;
+import com.vmware.vip.core.messages.exception.L3APIException;
 import com.vmware.vip.core.messages.service.product.IProductService;
+import com.vmware.vip.core.messages.utils.LocaleUtility;
 import com.vmware.vip.i18n.api.base.utils.VersionMatcher;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 
 public class BaseAction {
 	private static Logger logger = LoggerFactory.getLogger(BaseAction.class);
@@ -86,4 +91,22 @@ public class BaseAction {
 		logger.info(endHandle);
 		return d;
 	}
+	
+	
+	/**
+     *this function use to locale fallback 
+     *
+     */
+    protected String getFormatLocale(String productName, String version,
+            String inputLocale,  List<String> supportedLocaleList) throws L3APIException {
+        List<Locale> supportedLocales = new ArrayList<Locale>();
+        for (String supportedLocale : supportedLocaleList) {
+            supportedLocale = supportedLocale.replace("_", "-");
+            supportedLocales.add(Locale.forLanguageTag(supportedLocale));
+        }
+        String requestLocale = inputLocale.replace("_", "-");
+        Locale fallbackLocale = LocaleUtility.pickupLocaleFromListNoDefault(
+                supportedLocales, Locale.forLanguageTag(requestLocale));
+        return fallbackLocale.toLanguageTag();
+    }
 }

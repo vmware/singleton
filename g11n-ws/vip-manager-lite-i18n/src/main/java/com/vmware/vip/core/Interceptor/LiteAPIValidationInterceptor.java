@@ -264,8 +264,8 @@ public class LiteAPIValidationInterceptor extends HandlerInterceptorAdapter {
 		if (StringUtils.isEmpty(key)) {
 			return;
 		}
-		if (!RegExpValidatorUtils.isLetterNumbPoundAndValidchar(key)) {
-			throw new ValidationException(ValidationMsg.KEY_NOT_VALIDE);
+		if (!RegExpValidatorUtils.isAscii(key)) {
+			throw new ValidationException(String.format(ValidationMsg.KEY_NOT_VALIDE_FORMAT, key));
 		}
 	}
 	
@@ -280,7 +280,7 @@ public class LiteAPIValidationInterceptor extends HandlerInterceptorAdapter {
 		if (StringUtils.isEmpty(keys)) {
 			return;
 		}
-		if (!RegExpValidatorUtils.isLetterNumbPoundCommAndValidchar(keys)) {
+		if (!RegExpValidatorUtils.isAscii(keys)) {
 			throw new ValidationException(ValidationMsg.KEYS_NOT_VALIDE);
 		}
 	}

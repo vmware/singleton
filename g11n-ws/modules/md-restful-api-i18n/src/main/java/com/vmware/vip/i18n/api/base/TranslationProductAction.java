@@ -53,7 +53,7 @@ public class TranslationProductAction  extends BaseAction {
 
 	public String getProductTrans(String productName, String version,String locale,String pseudo,
 			HttpServletRequest request, HttpServletResponse response)  throws Exception {
-		locale = locale == null ? ConstantsUnicode.EN : locale;
+		locale = locale == null ? ConstantsUnicode.EN : getMappingLocale(productName, version, locale.trim());
 		List<String> componentList = productService
 				.getComponentNameList(productName, version);
 		String newURI = "";
@@ -133,9 +133,11 @@ public class TranslationProductAction  extends BaseAction {
          if (new Boolean(pseudo)) {
              localeList.add(ConstantsKeys.LATEST);
          } else if (!StringUtils.isEmpty(locales)) {
-             for (String locale : locales.split(",")) {
-                 localeList.add(getMappingLocale(productName, version, locale.trim()));
-             }      
+            List<String> supportedLocaleList = productService
+	                  .getSupportedLocaleList(productName, version);
+			for (String locale : locales.split(",")) {
+				localeList.add(getFormatLocale(productName, version, locale.trim(), supportedLocaleList));
+			}
          } else {
              localeList = productService.getSupportedLocaleList(productName,version);
          }
@@ -243,15 +245,7 @@ public class TranslationProductAction  extends BaseAction {
               String inputLocale) throws L3APIException {
           List<String> supportedLocaleList = productService
                   .getSupportedLocaleList(productName, version);
-          List<Locale> supportedLocales = new ArrayList<Locale>();
-          for (String supportedLocale : supportedLocaleList) {
-              supportedLocale = supportedLocale.replace("_", "-");
-              supportedLocales.add(Locale.forLanguageTag(supportedLocale));
-          }
-          String requestLocale = inputLocale.replace("_", "-");
-          Locale fallbackLocale = LocaleUtility.pickupLocaleFromListNoDefault(
-                  supportedLocales, Locale.forLanguageTag(requestLocale));
-          return fallbackLocale.toLanguageTag();
+          return getFormatLocale(productName, version, inputLocale, supportedLocaleList);
       }
       
       

@@ -105,40 +105,10 @@ public class LiteWebConfiguration implements WebMvcConfigurer {
 	 */
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
-		/*
-		 * registry.addInterceptor(new APISecurityInterceptor())
-		 * .addPathPatterns(ConstantsKeys.TOKEN_INTERCEP_PATH)
-		 * .excludePathPatterns("/i18n/api/v1/security/authentication");
-		 */
-
+	
 		// Request Validation
 	     registry.addInterceptor(new LiteAPIValidationInterceptor(this.requestIdsStr)).addPathPatterns("/**").excludePathPatterns(API.I18N_API_ROOT+"doc/**");
 
-		// authentication
-
-		/*if (authConfig.getAuthSwitch().equalsIgnoreCase("true")) {
-			logger.info("add enable authentication interceptor");
-			apival.excludePathPatterns("/auth/**");
-			registry.addInterceptor(apiAuthInter)
-					
-					.addPathPatterns(API.I18N_API_ROOT + APIV1.V + "/**")
-					.addPathPatterns(API.I18N_API_ROOT + APIV2.V + "/**").addPathPatterns(APIV1.COMPONENTS);
-
-		}
-
-		// CSP authentication
-		if (cspAuthFlag.equalsIgnoreCase("true")) {
-			logger.info("add enable CSP authentication interceptor");
-			registry.addInterceptor(new AuthInterceptor(sourceCacheFlag, tokenService))
-					.addPathPatterns(API.I18N_API_ROOT + APIV2.V + "/**");
-		}
-		// Source collection
-		if (sourceCacheFlag.equalsIgnoreCase("true")) {
-			logger.info("add enable Source collection interceptor");
-			registry.addInterceptor(new APISourceInterceptor(sourceCacheServerUrl))
-					.addPathPatterns(API.I18N_API_ROOT + APIV1.V + "/**")
-					.addPathPatterns(API.I18N_API_ROOT + APIV2.V + "/**");
-		}*/
 		//cross domain
 		if (crossDomainFlag.equalsIgnoreCase("true")) {
 			logger.info("add enable cross domain interceptor");
@@ -166,21 +136,6 @@ public class LiteWebConfiguration implements WebMvcConfigurer {
 		configurer.favorPathExtension(false);
 	}
 
-	/**
-	 * For swagger-ui static files(css,js) import
-	 */
-/*	@Override
-	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-
-		if(swagger2enable) {
-			registry.addResourceHandler("/i18n/api/doc/webjars/**")
-			.addResourceLocations("classpath:/META-INF/resources/webjars/");	
-		} else {
-			registry.addResourceHandler("/swagger-ui.html")
-			.addResourceLocations("classpath:/META-INF/swagger-ui.html");
-		}
-			
-	}*/
 	
 	@Override
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {

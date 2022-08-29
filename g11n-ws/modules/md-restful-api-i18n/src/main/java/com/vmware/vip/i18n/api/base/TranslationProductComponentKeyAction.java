@@ -190,14 +190,20 @@ public class TranslationProductComponentKeyAction extends BaseAction {
 	}
 	
 	
-	protected void validateSourceSet(List<KeySourceCommentDTO> sourceSet) throws ValidationException {
+	protected void validateSourceSetAndKey(List<KeySourceCommentDTO> sourceSet) throws ValidationException {
 	
 		for(KeySourceCommentDTO ksc:sourceSet) {
 			String sft = ksc.getSourceFormat();
+			String key = ksc.getKey();
 			if (!StringUtils.isEmpty(sft) && !ConstantsKeys.SOURCE_FORMAT_LIST.contains(sft.toUpperCase())) {
-				String key = ksc.getKey();
+				
 				throw new ValidationException(String.format(ValidationMsg.SOURCEFORMAT_NOT_VALIDE_FORMAT, sft, key));
 			}
+			
+			if(!RegExpValidatorUtils.isAscii(key)) {
+				throw new ValidationException(String.format(ValidationMsg.KEY_NOT_VALIDE_FORMAT, key));
+			}
+			
 			
 		}
 					
