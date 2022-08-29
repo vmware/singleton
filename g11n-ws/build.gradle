@@ -3,7 +3,7 @@
 
 buildscript {
     ext {
-     springBootVersion = '2.5.13'
+     springBootVersion = '2.7.1'
     }
     repositories {
         mavenLocal()
@@ -52,7 +52,7 @@ subprojects{
     ext {
    	       
         projectVersion = '0.0.1-SNAPSHOT'
-        springWebVersion='5.3.19'
+        springWebVersion='5.3.21'
         tomcatVersion= '9.0.65'
         httpclient='4.5.13'
         jacksonVersion = '2.12.6.1'
@@ -80,7 +80,6 @@ subprojects{
     	druidVersion = "1.1.8"
     	awsS3Version = "1.12.261"
         swaggerVersion = "3.0.0"
-        micrometerVersion = "1.5.5"
         icu4jVersion = "60.3"
         
     	buildRelease = 'beta'

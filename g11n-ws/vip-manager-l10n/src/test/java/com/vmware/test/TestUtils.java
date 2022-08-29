@@ -4,9 +4,6 @@
  */
 package com.vmware.test;
 
-import java.io.File;
-import java.io.IOException;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,10 +12,9 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.context.WebApplicationContext;
 
 import com.vmware.l10n.BootApplication;
+import com.vmware.l10n.source.dao.AllowListDao;
 import com.vmware.l10n.source.dto.GRMAPIResponseStatus;
 import com.vmware.l10n.utils.SourceUtils;
-import com.vmware.vip.common.utils.RsaCryptUtils;
-import com.vmware.l10n.utils.AllowListUtils;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = BootApplication.class)
@@ -44,22 +40,9 @@ public class TestUtils {
 
 	@Test
 	public void testAllowList() {
-		AllowListUtils allowListUtils = webApplicationContext.getBean(AllowListUtils.class);		allowListUtils.getAllowList();
+		AllowListDao allowListUtils = webApplicationContext.getBean(AllowListDao.class);
+		allowListUtils.getAllowList();
 	}
 	
-	@Test
-	public void testRSAUtil() {
-		File file = new File("testRSA.test");
-		try {
-			if(file.createNewFile()){
-				RsaCryptUtils.getPublicKeyStrFromFile(file);
-			}
-			file.deleteOnExit();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-	}
 	
 }

@@ -20,10 +20,10 @@ dependencies {
     api project(":md-service-i18n-l3")
     compileOnly("org.springframework:spring-webmvc:$springWebVersion")
     compileOnly("org.apache.tomcat.embed:tomcat-embed-core:$tomcatVersion")
-    compileOnly("io.springfox:springfox-swagger2:$swaggerVersion")
 	compileOnly("commons-codec:commons-codec:$commonsCodecVersion")
+	compileOnly("io.springfox:springfox-swagger2:$swaggerVersion")
 	// Actuator - START
-    compileOnly("io.micrometer:micrometer-registry-prometheus:$micrometerVersion")
+    compileOnly("org.springframework.boot:spring-boot-starter-actuator")
     // Actuator - END
 }
 

@@ -36,6 +36,7 @@ public class SqlLiteDaoImpl implements SqlLiteDao {
 		try {
 			Class.forName(Drivde);
 			connection = DriverManager.getConnection(Db);
+			logger.info("get SqlLite Connection successfully");
 			Statement statement = connection.createStatement();
 			String sql = "CREATE TABLE IF NOT EXISTS source_record(product VARCHAR NOT NUll, version VARCHAR NOT NULL, component VARCHAR NOT NULL,  locale VARCHAR NOT NULL, modify_edition integer not null, synch_edition integer not null, CONSTRAINT source_record_pk PRIMARY KEY (product, version, component, locale))";
 			statement.executeUpdate(sql);
