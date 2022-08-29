@@ -28,6 +28,7 @@ import com.vmware.vip.common.i18n.dto.response.APIResponseDTO;
 import com.vmware.vip.common.i18n.status.APIResponseStatus;
 import com.vmware.vip.core.messages.service.multcomponent.IMultComponentService;
 import com.vmware.vip.core.messages.service.multcomponent.TranslationDTO;
+import com.vmware.vip.core.messages.service.product.IProductService;
 import com.vmware.vip.core.messages.service.singlecomponent.ComponentMessagesDTO;
 import com.vmware.vip.core.messages.service.singlecomponent.IOneComponentService;
 import com.vmware.vip.i18n.api.base.BaseAction;
@@ -46,6 +47,9 @@ public class TranslationComponentAPI  extends BaseAction {
     
     @Autowired
     IMultComponentService multipleComponentsService;
+    
+    @Autowired
+    IProductService productService;
 
     /**
      * Get translation based on single component.
@@ -106,9 +110,10 @@ public class TranslationComponentAPI  extends BaseAction {
         if(new Boolean(pseudo)) {
         	localeList.add(ConstantsKeys.LATEST);
         } else if(locales != null) {
-            for(String locale: locales.split(",")) {
-            	localeList.add(locale.trim());
-            }
+            List<String> supportedLocaleList = productService.getSupportedLocaleList(productName, version);
+  			for (String locale : locales.split(",")) {
+  				localeList.add(getFormatLocale(productName, version, locale.trim(), supportedLocaleList));
+  			}
         }
         translationDTO.setLocales(localeList);
         translationDTO.setPseudo(new Boolean(pseudo));
