@@ -144,7 +144,7 @@ public class CollectSourceValidationInterceptor extends HandlerInterceptorAdapte
 			return;
 		}
 		if (!RegExpValidatorUtils.isAscii(key)) {
-			throw new ValidationException(ValidationMsg.KEY_NOT_VALIDE);
+			throw new ValidationException(String.format(ValidationMsg.KEY_NOT_VALIDE_FORMAT, key));
 		}
 	}
 
