@@ -74,7 +74,7 @@ module SgtnClient
     end
 
     def self.locale_fallbacks
-      @locale_fallbacks ||= [get_default_locale, get_source_locale, EN_LOCALE].uniq(&:to_s) - [nil, '']
+      @locale_fallbacks ||= ([get_default_locale, get_source_locale, EN_LOCALE].uniq(&:to_s) - [nil, '']).freeze
     end
 
     def self.lowercase_locales_map(component)

@@ -23,6 +23,7 @@ module Helpers
       'source_bundle' => './spec/fixtures/sources',
       'cache_expiry_period' => 10,
       'pseudo_mode' => false,
+      # 'log_file' => './unit_test.log'
       # 'default_language' => 'en'
     }.freeze
 

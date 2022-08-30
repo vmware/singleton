@@ -44,7 +44,7 @@ module SgtnClient
       def translate(key, component, locale = nil, **kwargs, &block)
         translate!(key, component, locale, **kwargs, &block)
       rescue StandardError => e
-        SgtnClient.logger.debug { "[#{method(__callee__).owner}.#{__callee__}] translations is missing. {#{key}, #{component}, #{locale}}. #{e}" }
+        SgtnClient.logger.debug { "[#{method(__callee__).owner}.#{__callee__}] {#{key}, #{component}, #{locale}}. #{e}" }
         key
       end
       alias t translate
@@ -56,17 +56,15 @@ module SgtnClient
         begin
           best_match_locale = LocaleUtil.get_best_locale(locale || SgtnClient.locale, component)
           messages = get_bundle!(component, best_match_locale)
-          result = messages&.fetch(key, nil)
-        rescue  StandardError => e
+          result = messages[key]
+        rescue StandardError => e
           raise e if block.nil?
         end
         if result.nil?
-          if block
-            result = block.call
-            return if result.nil?
-          else
-            raise SingletonError, 'translation is missing.'
-          end
+          raise SingletonError, 'translation is missing.' if block.nil?
+
+          result = block.call
+          return if result.nil?
         end
 
         if kwargs.empty?
@@ -80,7 +78,7 @@ module SgtnClient
       def get_translations(component, locale = nil)
         get_translations!(component, locale)
       rescue StandardError => e
-        SgtnClient.logger.error "[#{method(__callee__).owner}.#{__callee__}] translations are missing. {#{component}, #{locale}}. #{e}"
+        SgtnClient.logger.error "[#{method(__callee__).owner}.#{__callee__}] {#{component}, #{locale}}. #{e}"
         nil
       end
 
@@ -94,14 +92,6 @@ module SgtnClient
       end
 
       private
-
-      def get_bundle(component, locale)
-        get_bundle!(component, locale)
-      rescue StandardError => e
-        SgtnClient.logger.error "[#{method(__callee__).owner}.#{__callee__}] failed to get a bundle. component: #{component}, locale: #{locale}"
-        SgtnClient.logger.error e
-        nil
-      end
 
       def get_bundle!(component, locale)
         SgtnClient.config.loader.get_bundle(component, locale)
