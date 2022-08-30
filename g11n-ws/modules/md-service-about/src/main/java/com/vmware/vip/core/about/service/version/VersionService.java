@@ -18,7 +18,7 @@ import com.vmware.vip.core.messages.service.product.ProductService;
 @Service
 public class VersionService implements IVersionService{
 	
-	private static Logger LOGGER = LoggerFactory.getLogger(VersionService.class);
+    private static Logger LOGGER = LoggerFactory.getLogger(VersionService.class);
 	
     @Value("${build.name}")
     private String name;
