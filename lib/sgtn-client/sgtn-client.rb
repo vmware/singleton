@@ -38,5 +38,13 @@ module SgtnClient # :nodoc:
       config.update(config_hash)
       ValidateUtil.validate_config
     end
+
+    def locale
+      RequestStore.store[:locale] ||= LocaleUtil.get_fallback_locale
+    end
+
+    def locale=(value)
+      RequestStore.store[:locale] = value
+    end
   end
 end
