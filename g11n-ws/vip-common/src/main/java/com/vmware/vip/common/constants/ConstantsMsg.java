@@ -10,6 +10,7 @@ package com.vmware.vip.common.constants;
  */
 public class ConstantsMsg {
    // message
+   public static final String TRANS_GET_FAILD = "Faild to get translation from data for %s";
    public static final String TRANS_IS_NOT_FOUND = "translation is not found";
    public static final String TRANS_IS_FOUND = "translation is found";
    public static final String EN_NOT_SOURCE =
@@ -32,6 +33,7 @@ public class ConstantsMsg {
    public static final String SCOPE_FILTER_NOT_VALIDATE = "The request parameter scopeFilter is invalid, only one filtering method is supported";
    public static final String PRODUCT_OR_VERSION_MISSING = "Only one parameter of 'productName' and 'version' is provided, they should be used in pairs!";
    public static final String SOURCE_IS_NOT_PROVIDE = "Source is not provided, the existing translation is found and returned";
+
    private ConstantsMsg() {
    }
 }

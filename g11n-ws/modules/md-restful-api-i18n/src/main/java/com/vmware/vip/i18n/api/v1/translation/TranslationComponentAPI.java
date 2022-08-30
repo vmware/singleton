@@ -22,10 +22,13 @@ import com.vmware.vip.api.rest.APIOperation;
 import com.vmware.vip.api.rest.APIParamName;
 import com.vmware.vip.api.rest.APIParamValue;
 import com.vmware.vip.api.rest.APIV1;
+import com.vmware.vip.common.constants.ConstantsChar;
 import com.vmware.vip.common.constants.ConstantsKeys;
+import com.vmware.vip.common.constants.ConstantsMsg;
 import com.vmware.vip.common.constants.ConstantsUnicode;
 import com.vmware.vip.common.i18n.dto.response.APIResponseDTO;
 import com.vmware.vip.common.i18n.status.APIResponseStatus;
+import com.vmware.vip.core.messages.exception.L3APIException;
 import com.vmware.vip.core.messages.service.multcomponent.IMultComponentService;
 import com.vmware.vip.core.messages.service.multcomponent.TranslationDTO;
 import com.vmware.vip.core.messages.service.product.IProductService;
@@ -118,6 +121,9 @@ public class TranslationComponentAPI  extends BaseAction {
         translationDTO.setLocales(localeList);
         translationDTO.setPseudo(new Boolean(pseudo));
         translationDTO =multipleComponentsService.getMultiComponentsTranslation(translationDTO);
+        if(translationDTO.getBundles() == null || translationDTO.getBundles().size() == 0) {
+        	throw new L3APIException(String.format(ConstantsMsg.TRANS_GET_FAILD,  productName + ConstantsChar.BACKSLASH + version));
+        }
         return super.handleResponse(APIResponseStatus.OK, translationDTO);
     }
 }
