@@ -114,27 +114,24 @@ public class S3ProductDaoImpl implements IProductDao {
    /**
     * get bundle version from s3 server
     */
-   @Override
-   public String getVersionInfo(String productName, String version) throws DataException {
-      String filePath =
-            S3Utils.genProductVersionS3Path(productName, version) + ConstantsFile.VERSION_FILE;
-      S3Object o = s3Client.getS3Client().getObject(config.getBucketName(), filePath);
-      String result = null;
-      if (o != null) {
-         try {
-            result = S3Utils.convertS3Obj2Str(o);
-         } catch (IOException e) {
-            logger.warn(e.getMessage(), e);
-            throw new DataException("File is not existing: " + filePath);
-         }
-      } else {
-         throw new DataException("File is not existing: " + filePath);
-      }
-      if (result == null) {
-         throw new DataException("File is not existing: " + filePath);
-      }
-      return result;
-   }
+	@Override
+	public String getVersionInfo(String productName, String version) throws DataException {
+		String filePath = S3Utils.genProductVersionS3Path(productName, version) + ConstantsFile.VERSION_FILE;
+		String result = null;
+		try {
+			S3Object o = s3Client.getS3Client().getObject(config.getBucketName(), filePath);
+			if (o != null) {
+				result = S3Utils.convertS3Obj2Str(o);
+			}
+		} catch (Exception e) {
+			logger.warn(e.getMessage(), e);
+			throw new DataException("File is not existing: " + filePath);
+		}
+		if (result == null) {
+			throw new DataException("File is not existing: " + filePath);
+		}
+		return result;
+	}
    
  /**
   * get one product's all available versions

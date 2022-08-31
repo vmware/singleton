@@ -4,17 +4,22 @@
  */
 package com.vmware.vip.core.about.service.version;
 
-import com.vmware.vip.common.constants.ConstantsChar;
-import com.vmware.vip.common.i18n.dto.DropVersionDTO;
-import com.vmware.vip.core.about.exception.AboutAPIException;
-import com.vmware.vip.core.messages.exception.L3APIException;
-import com.vmware.vip.core.messages.service.product.ProductService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import com.vmware.vip.common.constants.ConstantsChar;
+import com.vmware.vip.common.i18n.dto.DropVersionDTO;
+import com.vmware.vip.core.about.exception.AboutAPIException;
+import com.vmware.vip.core.messages.service.product.ProductService;
+
 @Service
 public class VersionService implements IVersionService{
+	
+    private static Logger LOGGER = LoggerFactory.getLogger(VersionService.class);
+	
     @Value("${build.name}")
     private String name;
 
@@ -67,7 +72,8 @@ public class VersionService implements IVersionService{
         DropVersionDTO dropVersionDTO = null;
         try {
             dropVersionDTO = productService.getVersionInfo(productName, version);
-        } catch (L3APIException e) {
+        } catch (Exception e) {
+            LOGGER.error(e.getMessage(), e);
             throw new AboutAPIException("[FATAL ERROR]Failed to get version info for "+ productName + ConstantsChar.BACKSLASH + version, e);
         }
         bundleVersionDTO.setChangeId(dropVersionDTO.getDropId());
