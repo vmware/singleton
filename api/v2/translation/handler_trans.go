@@ -107,8 +107,8 @@ func GetMultipleBundles(c *gin.Context) {
 	}
 	version := c.GetString(api.SgtnVersionKey)
 
-	bundlesData, multiErr := GetService(params.Pseudo).GetMultipleBundles(logger.NewContext(c, c.MustGet(api.LoggerKey)), params.ProductName, version, params.Locales, params.Components)
-	api.HandleResponse(c, ConvertReleaseToAPI(bundlesData), multiErr)
+	bundles, multiErr := GetService(params.Pseudo).GetMultipleBundles(logger.NewContext(c, c.MustGet(api.LoggerKey)), params.ProductName, version, params.Locales, params.Components)
+	api.HandleResponse(c, ConvertReleaseToAPI(bundles), multiErr)
 }
 
 // GetBundle godoc

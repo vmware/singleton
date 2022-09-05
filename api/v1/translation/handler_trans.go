@@ -80,8 +80,8 @@ func GetMultipleBundles2(c *gin.Context) {
 
 	version := c.GetString(api.SgtnVersionKey)
 
-	bundlesData, multiErr := v2Translation.GetService(params.Pseudo).GetMultipleBundles(logger.NewContext(c, c.MustGet(api.LoggerKey)), params.ProductName, version, params.Locales, params.Components)
-	data := v2Translation.ConvertReleaseToAPI(bundlesData)
+	bundles, multiErr := v2Translation.GetService(params.Pseudo).GetMultipleBundles(logger.NewContext(c, c.MustGet(api.LoggerKey)), params.ProductName, version, params.Locales, params.Components)
+	data := v2Translation.ConvertReleaseToAPI(bundles)
 	api.HandleResponse(c, data, multiErr)
 }
 
@@ -142,8 +142,8 @@ func GetProduct(c *gin.Context) {
 
 	version := c.GetString(api.SgtnVersionKey)
 
-	bundlesData, multiErr := v2Translation.GetService(params.Pseudo).GetMultipleBundles(logger.NewContext(c, c.MustGet(api.LoggerKey)), params.ProductName, version, params.Locale, "")
-	data := v2Translation.ConvertReleaseToAPI(bundlesData)
+	bundles, multiErr := v2Translation.GetService(params.Pseudo).GetMultipleBundles(logger.NewContext(c, c.MustGet(api.LoggerKey)), params.ProductName, version, params.Locale, "")
+	data := v2Translation.ConvertReleaseToAPI(bundles)
 	api.HandleResponse(c, data, multiErr)
 }
 
@@ -260,8 +260,8 @@ func GetMultipleBundles(c *gin.Context) {
 
 	version := c.GetString(api.SgtnVersionKey)
 
-	bundlesData, multiErr := v2Translation.GetService(formPart.Pseudo).GetMultipleBundles(logger.NewContext(c, c.MustGet(api.LoggerKey)), uriPart.ProductName, version, formPart.Locales, uriPart.Components)
-	data := v2Translation.ConvertReleaseToAPI(bundlesData)
+	bundles, multiErr := v2Translation.GetService(formPart.Pseudo).GetMultipleBundles(logger.NewContext(c, c.MustGet(api.LoggerKey)), uriPart.ProductName, version, formPart.Locales, uriPart.Components)
+	data := v2Translation.ConvertReleaseToAPI(bundles)
 	api.HandleResponse(c, data, multiErr)
 }
 
