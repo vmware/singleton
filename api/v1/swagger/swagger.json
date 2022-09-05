@@ -229,6 +229,13 @@
                         "description": "locale String. e.g. 'en-US'",
                         "name": "locale",
                         "in": "query"
+                    },
+                    {
+                        "type": "boolean",
+                        "default": false,
+                        "description": "a flag for returnning pseudo translation",
+                        "name": "pseudo",
+                        "in": "query"
                     }
                 ],
                 "responses": {
@@ -303,6 +310,13 @@
                         "name": "component",
                         "in": "query",
                         "required": true
+                    },
+                    {
+                        "type": "boolean",
+                        "default": false,
+                        "description": "a flag for returnning pseudo translation",
+                        "name": "pseudo",
+                        "in": "query"
                     }
                 ],
                 "responses": {
@@ -372,6 +386,13 @@
                         "name": "components",
                         "in": "query",
                         "required": true
+                    },
+                    {
+                        "type": "boolean",
+                        "default": false,
+                        "description": "a flag for returnning pseudo translation",
+                        "name": "pseudo",
+                        "in": "query"
                     }
                 ],
                 "responses": {
@@ -446,6 +467,13 @@
                         "name": "component",
                         "in": "path",
                         "required": true
+                    },
+                    {
+                        "type": "boolean",
+                        "default": false,
+                        "description": "a flag for returnning pseudo translation",
+                        "name": "pseudo",
+                        "in": "query"
                     }
                 ],
                 "responses": {
@@ -527,6 +555,13 @@
                         "description": "a source string",
                         "name": "source",
                         "in": "query"
+                    },
+                    {
+                        "type": "boolean",
+                        "default": false,
+                        "description": "a flag for returnning pseudo translation",
+                        "name": "pseudo",
+                        "in": "query"
                     }
                 ],
                 "responses": {
@@ -596,6 +631,13 @@
                         "name": "components",
                         "in": "path",
                         "required": true
+                    },
+                    {
+                        "type": "boolean",
+                        "default": false,
+                        "description": "a flag for returnning pseudo translation",
+                        "name": "pseudo",
+                        "in": "query"
                     }
                 ],
                 "responses": {
@@ -675,6 +717,13 @@
                         "type": "string",
                         "description": "a source string",
                         "name": "source",
+                        "in": "query"
+                    },
+                    {
+                        "type": "boolean",
+                        "default": false,
+                        "description": "a flag for returnning pseudo translation",
+                        "name": "pseudo",
                         "in": "query"
                     }
                 ],
@@ -884,6 +933,13 @@
                         "type": "string",
                         "description": "a source string",
                         "name": "source",
+                        "in": "query"
+                    },
+                    {
+                        "type": "boolean",
+                        "default": false,
+                        "description": "a flag for returnning pseudo translation",
+                        "name": "pseudo",
                         "in": "query"
                     }
                 ],

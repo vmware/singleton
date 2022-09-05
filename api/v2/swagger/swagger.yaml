@@ -26,6 +26,9 @@ definitions:
         type: string
       productName:
         type: string
+      pseudo:
+        default: false
+        type: boolean
       region:
         type: string
       scope:
@@ -34,13 +37,6 @@ definitions:
         type: string
       version:
         type: string
-    required:
-    - combine
-    - components
-    - language
-    - productName
-    - scope
-    - version
     type: object
   translation.BundleData:
     properties:
@@ -51,8 +47,6 @@ definitions:
       messages:
         type: string
     required:
-    - component
-    - locale
     - messages
     type: object
   translation.UpdateBundle:
@@ -73,9 +67,7 @@ definitions:
       version:
         type: string
     required:
-    - productName
     - translation
-    - version
     type: object
   translation.UpdateTranslationDTO:
     properties:
@@ -142,6 +134,11 @@ paths:
         in: query
         name: scopeFilter
         type: string
+      - default: false
+        description: a flag for returnning pseudo translation
+        in: query
+        name: pseudo
+        type: boolean
       produces:
       - application/json
       responses:
@@ -454,6 +451,11 @@ paths:
         in: query
         name: components
         type: string
+      - default: false
+        description: a flag for returnning pseudo translation
+        in: query
+        name: pseudo
+        type: boolean
       produces:
       - application/json
       responses:
@@ -623,6 +625,11 @@ paths:
         name: component
         required: true
         type: string
+      - default: false
+        description: a flag for returnning pseudo translation
+        in: query
+        name: pseudo
+        type: boolean
       - default: "false"
         description: checkTranslationStatus
         in: query
@@ -680,6 +687,11 @@ paths:
         name: key
         required: true
         type: string
+      - default: false
+        description: a flag for returnning pseudo translation
+        in: query
+        name: pseudo
+        type: boolean
       - description: a source string
         in: query
         name: source
@@ -735,6 +747,11 @@ paths:
         name: key
         required: true
         type: string
+      - default: false
+        description: a flag for returnning pseudo translation
+        in: query
+        name: pseudo
+        type: boolean
       - description: a source string
         in: body
         name: source
