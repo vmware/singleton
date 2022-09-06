@@ -23,7 +23,6 @@ import (
 	// "github.com/gin-contrib/pprof"
 
 	"github.com/gin-gonic/gin"
-	actuator "github.com/sinhashubham95/go-actuator"
 	"go.uber.org/zap"
 )
 
@@ -68,13 +67,6 @@ func InitServer() *gin.Engine {
 	// ginEngine.PUT("/loglevel", func(c *gin.Context) {
 	// 	LogLevel.ServeHTTP(c.Writer, c.Request)
 	// })
-
-	// get the handler for actuator
-	actuatorHandler := actuator.GetActuatorHandler(&actuator.Config{})
-	ginActuatorHandler := func(ctx *gin.Context) {
-		actuatorHandler(ctx.Writer, ctx.Request)
-	}
-	ginEngine.GET("/actuator/*endpoint", ginActuatorHandler)
 
 	return ginEngine
 }
