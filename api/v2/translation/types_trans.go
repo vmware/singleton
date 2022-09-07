@@ -30,11 +30,13 @@ type (
 	GetStringReq struct {
 		StringID
 		Source string `form:"source"`
+		Pseudo bool   `form:"pseudo" binding:"omitempty"`
 	}
 
 	GetStringByPostReq struct {
 		StringID
 		Source                 string `form:"source"`
+		Pseudo                 bool   `form:"pseudo" binding:"omitempty"`
 		CheckTranslationStatus bool   `form:"checkTranslationStatus"`
 	}
 
@@ -42,6 +44,7 @@ type (
 		ReleaseID
 		Locales    string `form:"locales" binding:"omitempty,locales"`
 		Components string `form:"components" binding:"omitempty,components"`
+		Pseudo     bool   `form:"pseudo" binding:"omitempty"`
 	}
 
 	UpdateTranslationDTO struct {
@@ -64,6 +67,7 @@ type (
 
 	GetBundleReq struct {
 		BundleID
+		Pseudo                 bool `form:"pseudo" binding:"omitempty"`
 		CheckTranslationStatus bool `form:"checkTranslationStatus" default:"false"`
 	}
 )
@@ -76,6 +80,7 @@ type (
 		Locale      string       `json:"locale"`
 		Component   string       `json:"component"`
 		ID          int          `json:"id,omitempty"`
+		Pseudo      bool         `json:"pseudo,omitempty"`
 		Messages    jsoniter.Any `json:"messages"`
 
 		Status map[string]interface{} `json:"status,omitempty"`
@@ -86,6 +91,7 @@ type (
 		Version     string        `json:"version"`
 		Locales     []interface{} `json:"locales"`
 		Components  []interface{} `json:"components"`
+		Pseudo      bool          `json:"pseudo,omitempty"`
 		Bundles     []BundleData  `json:"bundles,omitempty"`
 		URL         string        `json:"url,omitempty"`
 		ID          int           `json:"id,omitempty"`

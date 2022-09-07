@@ -18,6 +18,7 @@ type (
 		Language   string `form:"language" binding:"language"`
 		Region     string `form:"region" binding:"omitempty,region"`
 		Components string `form:"components" binding:"components"`
+		Pseudo     bool   `form:"pseudo" binding:"omitempty"`
 		cldr.PatternScope
 	}
 
@@ -33,6 +34,7 @@ type (
 		Language   string   `form:"language" binding:"language"`
 		Region     string   `form:"region" binding:"omitempty,region"`
 		Components []string `form:"components" binding:"dive,component"`
+		Pseudo     bool     `form:"pseudo" binding:"omitempty" default:"false"`
 		cldr.PatternScope
 	}
 )

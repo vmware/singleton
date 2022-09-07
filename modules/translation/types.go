@@ -9,10 +9,18 @@ import (
 	jsoniter "github.com/json-iterator/go"
 )
 
+type Release struct {
+	Name    string
+	Version string
+	Pseudo  bool
+	Bundles []*Bundle
+}
+
 type (
 	// Bundle ...
 	Bundle struct {
 		ID       BundleID
+		Pseudo   bool
 		Messages jsoniter.Any
 	}
 
