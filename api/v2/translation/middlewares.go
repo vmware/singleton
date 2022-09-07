@@ -6,6 +6,7 @@
 package translation
 
 import (
+	"net/http"
 	"sgtnserver/api"
 	"sgtnserver/internal/sgtnerror"
 	"sgtnserver/modules/translation/translationservice"
@@ -54,6 +55,7 @@ func HandleAllowList(c *gin.Context) {
 	}
 
 	if !translationservice.IsProductExist(productName) {
-		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage("Product '%s' doesn't exist", productName))
+		// to align with Java Service, body is a BusinessError
+		c.AbortWithStatusJSON(http.StatusOK, api.ToBusinessError(sgtnerror.StatusBadRequest.WithUserMessage("Product '%s' is NOT supported yet!", productName)))
 	}
 }
