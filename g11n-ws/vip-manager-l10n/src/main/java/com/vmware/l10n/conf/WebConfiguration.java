@@ -55,20 +55,19 @@ public class WebConfiguration implements WebMvcConfigurer {
 	
 	}
 	
-	
 	@Override
 	public void configurePathMatch(PathMatchConfigurer configurer) {
-	UrlPathHelper urlPathHelper = new UrlPathHelper();
-	urlPathHelper.setUrlDecode(false);
-	urlPathHelper.setAlwaysUseFullPath(true);
-	configurer.setUseSuffixPatternMatch(false);
-	configurer.setUseRegisteredSuffixPatternMatch(true);
-	configurer.setUrlPathHelper(urlPathHelper);
+		UrlPathHelper urlPathHelper = new UrlPathHelper();
+		urlPathHelper.setUrlDecode(false);
+		urlPathHelper.setAlwaysUseFullPath(true);
+		configurer.setUseSuffixPatternMatch(false);
+		configurer.setUseRegisteredSuffixPatternMatch(true);
+		configurer.setUrlPathHelper(urlPathHelper);
 	}
 
 	@Override
 	public void addCorsMappings(CorsRegistry registry) {
-	registry.addMapping("/**").allowedOrigins("*");
+		registry.addMapping("/**").allowedOrigins("*");
 	}
 
 }
