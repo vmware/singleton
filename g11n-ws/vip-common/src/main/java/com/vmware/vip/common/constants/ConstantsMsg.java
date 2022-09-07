@@ -10,7 +10,7 @@ package com.vmware.vip.common.constants;
  */
 public class ConstantsMsg {
    // message
-   public static final String TRANS_GET_FAILD = "Faild to get translation from data for %s";
+   public static final String TRANS_GET_FAILD = "Failed to get translations from the bundles for %s";
    public static final String TRANS_IS_NOT_FOUND = "translation is not found";
    public static final String TRANS_IS_FOUND = "translation is found";
    public static final String EN_NOT_SOURCE =
