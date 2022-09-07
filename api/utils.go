@@ -54,7 +54,7 @@ func HandleResponse(c *gin.Context, data interface{}, err error) {
 		ce.Write(zap.Any("business response", se))
 	}
 
-	// to align with Java Service, HTTP code should be 200
+	// HTTP code is always 200
 	c.JSON(http.StatusOK, Response{Error: se, Data: data})
 }
 
@@ -67,16 +67,14 @@ func AbortWithError(c *gin.Context, err error) {
 func ExtractParameters(c *gin.Context, uriPart, formPart interface{}) (err error) {
 	if uriPart != nil {
 		if err = c.ShouldBindUri(uriPart); err != nil {
-			// to align with Java Service, body is a BusinessError
-			c.AbortWithStatusJSON(http.StatusOK, ToBusinessError(sgtnerror.StatusBadRequest.WithUserMessage(ExtractErrorMsg(err))))
+			AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(ExtractErrorMsg(err)))
 			return err
 		}
 	}
 
 	if formPart != nil {
 		if err = c.ShouldBindQuery(formPart); err != nil {
-			// to align with Java Service, body is a BusinessError
-			c.AbortWithStatusJSON(http.StatusOK, ToBusinessError(sgtnerror.StatusBadRequest.WithUserMessage(ExtractErrorMsg(err))))
+			AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(ExtractErrorMsg(err)))
 			return err
 		}
 	}
