@@ -172,10 +172,10 @@ describe 'Cache' do
   end
 
   it '#default cache expiration' do
-      Sgtn.cache_expiry_period = nil
-      SgtnClient::Common::DataInfo.instance_variable_set(:@age, nil)
-      expect(SgtnClient::Common::DataInfo.age).to eq 24 * 60 *60
-    ensure
-      SgtnClient::Common::DataInfo.instance_variable_set(:@age, nil)
-    end
+    Sgtn.cache_expiry_period = nil
+    SgtnClient::Common::DataInfo.instance_variable_set(:@age, nil)
+    expect(SgtnClient::Common::DataInfo.age).to eq 24 * 60 *60
+  ensure
+    SgtnClient::Common::DataInfo.instance_variable_set(:@age, nil)
+  end
 end
