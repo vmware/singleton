@@ -61,7 +61,7 @@ func HandleResponse(c *gin.Context, data interface{}, err error) {
 func AbortWithError(c *gin.Context, err error) {
 	GetLogger(c).Error(err.Error())
 	bError := ToBusinessError(err)
-	c.AbortWithStatusJSON(bError.HTTPCode, Response{Error: bError})
+	c.AbortWithStatusJSON(http.StatusOK, Response{Error: bError})
 }
 
 func ExtractParameters(c *gin.Context, uriPart, formPart interface{}) (err error) {

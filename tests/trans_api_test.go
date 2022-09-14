@@ -219,7 +219,7 @@ func TestGetBundleNormal(t *testing.T) {
 	resp.Body().Empty()
 
 	resp = e.GET(GetBundleURL, Name, Version, "zh-Hans", "nonexistent").Expect()
-	resp.Status(sgtnerror.StatusNotFound.HTTPCode()).Body().Contains("nonexistent")
+	resp.Status(http.StatusOK).Body().Contains("nonexistent")
 }
 
 func TestGetSingleMessage(t *testing.T) {
@@ -277,9 +277,12 @@ func TestPutBundle(t *testing.T) {
 			defer os.RemoveAll(path.Join(config.Settings.LocalBundle.BasePath, tt.name, tt.version, component))
 
 			resp := e.PUT(PutBundlesURL, tt.name, tt.version).WithBytes([]byte(fmt.Sprintf(bundleDataToPut, tt.name, tt.version, tt.locale, component, Key, Msg))).Expect()
-			resp.Status(tt.wantedCode)
 
-			if tt.wantedCode == http.StatusOK {
+			resp.Status(http.StatusOK)
+			bError, _ := GetErrorAndData(resp.Body().Raw())
+			assert.Equal(t, tt.wantedCode, bError.Code)
+
+			if bError.Code == http.StatusOK {
 				id := transmodule.MessageID{Name: tt.name, Version: tt.version, Locale: Locale, Component: component, Key: Key}
 				// Query to check putting is successful
 				data, err := translationservice.GetService().GetString(context.TODO(), &id)
@@ -312,7 +315,10 @@ func TestPutBundleNameVersionInconsistent(t *testing.T) {
 			defer os.RemoveAll(path.Join(config.Settings.LocalBundle.BasePath, tt.name, tt.version, component))
 
 			resp := e.PUT(PutBundlesURL, tt.name, tt.version).WithBytes([]byte(fmt.Sprintf(bundleDataToPut, tt.nameInbody, tt.versionInbody, tt.locale, component, Key, Msg))).Expect()
-			resp.Status(tt.wantedCode)
+
+			resp.Status(http.StatusOK)
+			bError, _ := GetErrorAndData(resp.Body().Raw())
+			assert.Equal(t, tt.wantedCode, bError.Code)
 		})
 	}
 }
@@ -341,7 +347,10 @@ func TestPutBundleWithoutData(t *testing.T) {
 			req.Data.Translation = nil
 			bts, _ := json.Marshal(req)
 			resp := e.PUT(PutBundlesURL, tt.name, tt.version).WithBytes(bts).Expect()
-			resp.Status(tt.wantedCode)
+
+			resp.Status(http.StatusOK)
+			bError, _ := GetErrorAndData(resp.Body().Raw())
+			assert.Equal(t, tt.wantedCode, bError.Code)
 		})
 	}
 }
@@ -370,11 +379,11 @@ func TestApiTransExceptionArgs(t *testing.T) {
 		{testName: "illegalProductCharacter", name: "---", version: Version, locale: Locale, component: Component, key: Key, wantedCode: http.StatusBadRequest},
 		{testName: "invalidVersion", name: Name, version: "invalidVersion", locale: Locale, component: Component, key: Key, wantedCode: http.StatusBadRequest},
 		{testName: "illegalVersionCharacter", name: Name, version: "abc", locale: Locale, component: Component, key: Key, wantedCode: http.StatusBadRequest},
-		{testName: "invalidLocale", name: Name, version: Version, locale: "invalidLocale", component: Component, key: Key, wantedCode: sgtnerror.StatusNotFound.HTTPCode()},
+		{testName: "invalidLocale", name: Name, version: Version, locale: "invalidLocale", component: Component, key: Key, wantedCode: sgtnerror.StatusNotFound.Code()},
 		{testName: "illegalLocaleCharacter", name: Name, version: Version, locale: "€", component: Component, key: Key, wantedCode: http.StatusBadRequest},
-		{testName: "invalidComponent", name: Name, version: Version, locale: Locale, component: "invalidComponent", key: Key, wantedCode: sgtnerror.StatusNotFound.HTTPCode()},
+		{testName: "invalidComponent", name: Name, version: Version, locale: Locale, component: "invalidComponent", key: Key, wantedCode: sgtnerror.StatusNotFound.Code()},
 		{testName: "illegalComponentCharacter", name: Name, version: Version, locale: Locale, component: "\t", key: Key, wantedCode: http.StatusBadRequest},
-		{testName: "invalidKey", name: Name, version: Version, locale: Locale, component: Component, key: "nonexistent", wantedCode: sgtnerror.StatusNotFound.HTTPCode()},
+		{testName: "invalidKey", name: Name, version: Version, locale: Locale, component: Component, key: "nonexistent", wantedCode: sgtnerror.StatusNotFound.Code()},
 		{testName: "illegalKeyCharacter", name: Name, version: Version, locale: Locale, component: Component, key: "\t", wantedCode: http.StatusBadRequest},
 	}
 
@@ -384,27 +393,35 @@ func TestApiTransExceptionArgs(t *testing.T) {
 			// t.Parallel()
 
 			resp := e.GET(GetKeyURL, tt.name, tt.version, tt.locale, tt.component, tt.key).Expect()
+			bError, _ := GetErrorAndData(resp.Body().Raw())
+
+			resp.Status(http.StatusOK)
+
 			if tt.locale == "invalidLocale" {
-				resp.Status(http.StatusOK)
+				assert.Equal(t, http.StatusOK, bError.Code)
 			} else {
-				resp.Status(tt.wantedCode)
+				assert.Equal(t, tt.wantedCode, bError.Code)
 			}
 
 			if strings.Contains(tt.testName, "Product") || strings.Contains(tt.testName, "Version") {
 				resp := e.GET(GetSupportedComponentsURL, tt.name, tt.version).Expect()
-				resp.Status(tt.wantedCode)
+				bError, _ := GetErrorAndData(resp.Body().Raw())
+				assert.Equal(t, tt.wantedCode, bError.Code)
 
 				resp = e.GET(GetSupportedLocalesURL, tt.name, tt.version).Expect()
-				resp.Status(tt.wantedCode)
+				bError, _ = GetErrorAndData(resp.Body().Raw())
+				assert.Equal(t, tt.wantedCode, bError.Code)
 			}
 
 			if !strings.Contains(tt.testName, "Key") {
 				resp := e.GET(GetBundleURL, tt.name, tt.version, tt.locale, tt.component).Expect()
-				resp.Status(tt.wantedCode)
+				bError, _ := GetErrorAndData(resp.Body().Raw())
+				assert.Equal(t, tt.wantedCode, bError.Code)
 
 				resp = e.GET(GetBundlesURL, tt.name, tt.version).
 					WithQuery("locales", tt.locale).WithQuery("components", tt.component).Expect()
-				resp.Status(tt.wantedCode)
+				bError, _ = GetErrorAndData(resp.Body().Raw())
+				assert.Equal(t, tt.wantedCode, bError.Code)
 			}
 		})
 	}
