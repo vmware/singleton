@@ -76,6 +76,7 @@ internal/bindata/bindata.go: downloadgo-bindata
 
 downloadgo-bindata:
 	go get -u github.com/go-bindata/go-bindata/...
+	go install github.com/go-bindata/go-bindata/go-bindata
 
 swagger:
 	swag init -d api -g v1/swagger/swagger.go --exclude api/v2 -o api/v1/swagger
