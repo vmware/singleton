@@ -219,7 +219,10 @@ func TestCompressResponse(t *testing.T) {
 func TestAbortWithError(t *testing.T) {
 	e := CreateHTTPExpect(t, GinTestEngine)
 	resp := e.GET(GetBundleURL, Name, Version, "zh-Hans").Expect()
-	resp.Status(http.StatusBadRequest)
+	bError, _ := GetErrorAndData(resp.Body().Raw())
+
+	assert.Equal(t, http.StatusBadRequest, bError.Code)
+	resp.Status(http.StatusOK)
 	resp.Body().Contains("component")
 }
 
@@ -233,7 +236,7 @@ func TestAllFailed(t *testing.T) {
 	} {
 		resp := e.GET(GetBundlesURL, Name, Version).
 			WithQuery("locales", d.locales).WithQuery("components", d.components).Expect()
-		resp.Status(sgtnerror.StatusNotFound.HTTPCode())
+		resp.Status(http.StatusOK)
 		bError, _ := GetErrorAndData(resp.Body().Raw())
 		assert.Equal(t, sgtnerror.StatusNotFound.Code(), bError.Code)
 		for _, v := range strings.Split(d.locales, common.ParamSep) {
@@ -250,9 +253,9 @@ func TestPartialSuccess(t *testing.T) {
 		locales, components         string
 		wantedBCode, wantedHTTPCode int
 	}{
-		{testName: "Partially Successful", locales: "zh-Hans,en-Invalid", components: "sunglow", wantedBCode: sgtnerror.StatusPartialSuccess.Code(), wantedHTTPCode: sgtnerror.StatusPartialSuccess.HTTPCode()},
+		{testName: "Partially Successful", locales: "zh-Hans,en-Invalid", components: "sunglow", wantedBCode: sgtnerror.StatusPartialSuccess.Code(), wantedHTTPCode: http.StatusOK},
 		{testName: "All Successful", locales: "zh-Hans,en", components: "sunglow", wantedBCode: http.StatusOK, wantedHTTPCode: http.StatusOK},
-		{testName: "All Failed", locales: "zh-Hans,en", components: "invalidComponent", wantedBCode: sgtnerror.StatusNotFound.Code(), wantedHTTPCode: sgtnerror.StatusNotFound.HTTPCode()},
+		{testName: "All Failed", locales: "zh-Hans,en", components: "invalidComponent", wantedBCode: sgtnerror.StatusNotFound.Code(), wantedHTTPCode: http.StatusOK},
 	} {
 		d := d
 		t.Run(d.testName, func(t *testing.T) {
@@ -268,7 +271,7 @@ func TestPartialSuccess(t *testing.T) {
 func TestAllowList(t *testing.T) {
 	e := CreateHTTPExpect(t, GinTestEngine)
 	resp := e.GET(GetBundleURL, "not-found", Version, "zh-Hans", "sunglow").Expect()
-	resp.Status(http.StatusBadRequest)
+	resp.Status(http.StatusOK)
 	resp.Body().Contains("doesn't exist")
 }
 

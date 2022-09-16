@@ -37,24 +37,24 @@ func TestGetPatternByLangReg(t *testing.T) {
 		{lang: "zh-cn", reg: "TW", scope: "plurals", wantedBCode: http.StatusOK, wantedHTTPCode: http.StatusOK,
 			wanted: `{"response":{"code":200,"message":"OK"},"data":{"localeID":"zh-Hans","language":"zh-cn","region":"TW","categories":{"plurals":{"pluralRules" : {"pluralRule-count-other" : " @integer 0~15, 100, 1000, 10000, 100000, 1000000, … @decimal 0.0~1.5, 10.0, 100.0, 1000.0, 10000.0, 100000.0, 1000000.0, …"}}}}}`},
 
-		{lang: "zh-xxx", reg: "TW", scope: "plurals", wantedBCode: sgtnerror.StatusBadRequest.Code(), wantedHTTPCode: sgtnerror.StatusBadRequest.HTTPCode(),
+		{lang: "zh-xxx", reg: "TW", scope: "plurals", wantedBCode: sgtnerror.StatusBadRequest.Code(), wantedHTTPCode: http.StatusOK,
 			wanted: `{"response":{"code":400,"message":"Invalid locale 'zh-xxx'"}}`},
 		{lang: "zh-cn", reg: "xxx", scope: "plurals", wantedBCode: http.StatusOK, wantedHTTPCode: http.StatusOK,
 			wanted: `{"response":{"code":200,"message":"OK"},"data":{"localeID":"zh-Hans","language":"zh-cn","region":"xxx","categories":{"plurals":{"pluralRules" : {"pluralRule-count-other" : " @integer 0~15, 100, 1000, 10000, 100000, 1000000, … @decimal 0.0~1.5, 10.0, 100.0, 1000.0, 10000.0, 100000.0, 1000000.0, …"}}}}}`},
 
-		{lang: "zh-xxx", reg: "TW", scope: "dates,dateFields", wantedBCode: sgtnerror.StatusPartialSuccess.Code(), wantedHTTPCode: sgtnerror.StatusPartialSuccess.HTTPCode(),
+		{lang: "zh-xxx", reg: "TW", scope: "dates,dateFields", wantedBCode: sgtnerror.StatusPartialSuccess.Code(), wantedHTTPCode: http.StatusOK,
 			wanted: `{"response":{"code":207, "message":"Successful Partially"},"data":{"localeID":"zh-Hant","language":"zh-xxx","region":"TW","categories":{"dates":{"dayPeriodsFormat" : {"narrow" : [ "上午", "下午" ],"abbreviated" : [ "上午", "下午" ],"wide" : [ "上午", "下午" ]},"dayPeriodsStandalone" : {"narrow" : [ "上午", "下午" ],"abbreviated" : [ "上午", "下午" ],"wide" : [ "上午", "下午" ]},"daysFormat" : {"narrow" : [ "日", "一", "二", "三", "四", "五", "六" ],"abbreviated" : [ "週日", "週一", "週二", "週三", "週四", "週五", "週六" ],"wide" : [ "星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六" ],"short" : [ "日", "一", "二", "三", "四", "五", "六" ]},"daysStandalone" : {"narrow" : [ "日", "一", "二", "三", "四", "五", "六" ],"abbreviated" : [ "週日", "週一", "週二", "週三", "週四", "週五", "週六" ],"wide" : [ "星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六" ],"short" : [ "日", "一", "二", "三", "四", "五", "六" ]},"monthsFormat" : {"narrow" : [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" ],"abbreviated" : [ "1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月" ],"wide" : [ "1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月" ]},"monthsStandalone" : {"narrow" : [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" ],"abbreviated" : [ "1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月" ],"wide" : [ "1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月" ]},"eras" : {"narrow" : [ "西元前", "西元" ],"abbreviated" : [ "西元前", "西元" ],"wide" : [ "西元前", "西元" ]},"firstDayOfWeek" : 0,"weekendRange" : [ 6, 0 ],"dateFormats" : {"short" : "y/M/d","medium" : "y年M月d日","long" : "y年M月d日","full" : "y年M月d日 EEEE"},"timeFormats" : {"short" : "ah:mm","medium" : "ah:mm:ss","long" : "ah:mm:ss [z]","full" : "ah:mm:ss [zzzz]"},"dateTimeFormats" : {"short" : "{1} {0}","medium" : "{1} {0}","long" : "{1} {0}","full" : "{1} {0}","appendItems" : {"Day" : "{0} ({2}: {1})","Day-Of-Week" : "{0} {1}","Era" : "{1} {0}","Hour" : "{0} ({2}: {1})","Minute" : "{0} ({2}: {1})","Month" : "{0} ({2}: {1})","Quarter" : "{0} ({2}: {1})","Second" : "{0} ({2}: {1})","Timezone" : "{0} {1}","Week" : "{0} ({2}: {1})","Year" : "{1} {0}"},"intervalFormats" : {"d" : {"d" : "d日至d日"},"H" : {"H" : "HH – HH"},"h" : {"a" : "ah時至ah時","h" : "ah時至h時"},"hm" : {"a" : "ah:mm至ah:mm","h" : "ah:mm至h:mm","m" : "ah:mm至h:mm"},"Hm" : {"H" : "HH:mm – HH:mm","m" : "HH:mm – HH:mm"},"hmv" : {"a" : "ah:mm至ah:mm [v]","h" : "ah:mm至h:mm [v]","m" : "ah:mm至h:mm [v]"},"Hmv" : {"H" : "HH:mm – HH:mm [v]","m" : "HH:mm – HH:mm [v]"},"hv" : {"a" : "ah時至ah時 [v]","h" : "ah時至h時 [v]"},"Hv" : {"H" : "HH – HH [v]"},"intervalFormatFallback" : "{0} – {1}","M" : {"M" : "M月至M月"},"Md" : {"d" : "M/d至M/d","M" : "M/d至M/d"},"MEd" : {"d" : "M/dE至M/dE","M" : "M/dE至M/dE"},"MMM" : {"M" : "LLL至LLL"},"MMMd" : {"d" : "M月d日至d日","M" : "M月d日至M月d日"},"MMMEd" : {"d" : "M月d日E至d日E","M" : "M月d日E至M月d日E"},"MMMM" : {"M" : "LLLL至LLLL"},"y" : {"y" : "y至y"},"yM" : {"y" : "y/M至y/M","M" : "y/M至y/M"},"yMd" : {"d" : "y/M/d至y/M/d","y" : "y/M/d至y/M/d","M" : "y/M/d至y/M/d"},"yMEd" : {"d" : "y/M/dE至y/M/dE","y" : "y/M/dE至y/M/dE","M" : "y/M/dE至y/M/dE"},"yMMM" : {"y" : "y年M月至y年M月","M" : "y年M月至M月"},"yMMMd" : {"d" : "y年M月d日至d日","y" : "y年M月d日至y年M月d日","M" : "y年M月d日至M月d日"},"yMMMEd" : {"d" : "y年M月d日E至M月d日E","y" : "y年M月d日E至y年M月d日E","M" : "y年M月d日E至M月d日E"},"yMMMM" : {"y" : "y年M月至y年M月","M" : "y年M月至M月"}},"availableFormats" : {"Bh" : "Bh時","Bhm" : "Bh:mm","Bhms" : "Bh:mm:ss","d" : "d日","E" : "ccc","EBhm" : "E Bh:mm","EBhms" : "E Bh:mm:ss","Ed" : "d E","Ehm" : "E ah:mm","EHm" : "E HH:mm","Ehms" : "E ah:mm:ss","EHms" : "E HH:mm:ss","Gy" : "Gy年","GyMMM" : "Gy年M月","GyMMMd" : "Gy年M月d日","GyMMMEd" : "Gy年M月d日 E","H" : "H時","h" : "ah時","hm" : "ah:mm","Hm" : "HH:mm","hms" : "ah:mm:ss","Hms" : "HH:mm:ss","hmsv" : "ah:mm:ss [v]","Hmsv" : "HH:mm:ss [v]","hmv" : "ah:mm [v]","Hmv" : "HH:mm [v]","hmz" : "ah:mm [zzzz]","M" : "M月","Md" : "M/d","MEd" : "M/d（E）","MMdd" : "MM/dd","MMM" : "LLL","MMMd" : "M月d日","MMMEd" : "M月d日 E","MMMMd" : "M月d日","MMMMW-count-other" : "MMM的第W週","ms" : "mm:ss","y" : "y年","yM" : "y/M","yMd" : "y/M/d","yMEd" : "y/M/d（E）","yMM" : "y/MM","yMMM" : "y年M月","yMMMd" : "y年M月d日","yMMMEd" : "y年M月d日 E","yMMMM" : "y年M月","yQQQ" : "y年QQQ","yQQQQ" : "y年QQQQ","yw-count-other" : "Y年的第w週"}}}}}}`},
-		{lang: "zh-cn", reg: "xxx", scope: "dates,dateFields", wantedBCode: sgtnerror.StatusPartialSuccess.Code(), wantedHTTPCode: sgtnerror.StatusPartialSuccess.HTTPCode(),
+		{lang: "zh-cn", reg: "xxx", scope: "dates,dateFields", wantedBCode: sgtnerror.StatusPartialSuccess.Code(), wantedHTTPCode: http.StatusOK,
 			wanted: `{"response":{"code":207, "message":"Successful Partially"},"data":{"localeID":"zh-Hans","language":"zh-cn","region":"xxx","categories":{"dateFields":{"year" : {"displayName" : "年","relative-type-0" : "今年","relative-type-1" : "明年","relative-type--1" : "去年","relativeTime-type-future" : {"relativeTimePattern-count-other" : "{0}年后"},"relativeTime-type-past" : {"relativeTimePattern-count-other" : "{0}年前"}},"month" : {"displayName" : "月","relative-type-0" : "本月","relative-type-1" : "下个月","relative-type--1" : "上个月","relativeTime-type-future" : {"relativeTimePattern-count-other" : "{0}个月后"},"relativeTime-type-past" : {"relativeTimePattern-count-other" : "{0}个月前"}},"day" : {"displayName" : "日","relative-type-2" : "后天","relative-type-0" : "今天","relative-type-1" : "明天","relative-type--2" : "前天","relative-type--1" : "昨天","relativeTime-type-future" : {"relativeTimePattern-count-other" : "{0}天后"},"relativeTime-type-past" : {"relativeTimePattern-count-other" : "{0}天前"}},"hour" : {"displayName" : "小时","relative-type-0" : "这一时间 / 此时","relativeTime-type-future" : {"relativeTimePattern-count-other" : "{0}小时后"},"relativeTime-type-past" : {"relativeTimePattern-count-other" : "{0}小时前"}},"minute" : {"displayName" : "分钟","relative-type-0" : "此刻","relativeTime-type-future" : {"relativeTimePattern-count-other" : "{0}分钟后"},"relativeTime-type-past" : {"relativeTimePattern-count-other" : "{0}分钟前"}},"second" : {"displayName" : "秒","relative-type-0" : "现在","relativeTime-type-future" : {"relativeTimePattern-count-other" : "{0}秒钟后"},"relativeTime-type-past" : {"relativeTimePattern-count-other" : "{0}秒钟前"}}}}}}`},
 
 		{lang: "zh-xxx", reg: "TW", scope: "dates", wantedBCode: http.StatusOK, wantedHTTPCode: http.StatusOK,
 			wanted: `{"response":{"code":200,"message":"OK"},"data":{"localeID":"zh-Hant","language":"zh-xxx","region":"TW","categories":{"dates":{"dayPeriodsFormat" : {"narrow" : [ "上午", "下午" ],"abbreviated" : [ "上午", "下午" ],"wide" : [ "上午", "下午" ]},"dayPeriodsStandalone" : {"narrow" : [ "上午", "下午" ],"abbreviated" : [ "上午", "下午" ],"wide" : [ "上午", "下午" ]},"daysFormat" : {"narrow" : [ "日", "一", "二", "三", "四", "五", "六" ],"abbreviated" : [ "週日", "週一", "週二", "週三", "週四", "週五", "週六" ],"wide" : [ "星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六" ],"short" : [ "日", "一", "二", "三", "四", "五", "六" ]},"daysStandalone" : {"narrow" : [ "日", "一", "二", "三", "四", "五", "六" ],"abbreviated" : [ "週日", "週一", "週二", "週三", "週四", "週五", "週六" ],"wide" : [ "星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六" ],"short" : [ "日", "一", "二", "三", "四", "五", "六" ]},"monthsFormat" : {"narrow" : [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" ],"abbreviated" : [ "1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月" ],"wide" : [ "1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月" ]},"monthsStandalone" : {"narrow" : [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" ],"abbreviated" : [ "1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月" ],"wide" : [ "1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月" ]},"eras" : {"narrow" : [ "西元前", "西元" ],"abbreviated" : [ "西元前", "西元" ],"wide" : [ "西元前", "西元" ]},"firstDayOfWeek" : 0,"weekendRange" : [ 6, 0 ],"dateFormats" : {"short" : "y/M/d","medium" : "y年M月d日","long" : "y年M月d日","full" : "y年M月d日 EEEE"},"timeFormats" : {"short" : "ah:mm","medium" : "ah:mm:ss","long" : "ah:mm:ss [z]","full" : "ah:mm:ss [zzzz]"},"dateTimeFormats" : {"short" : "{1} {0}","medium" : "{1} {0}","long" : "{1} {0}","full" : "{1} {0}","appendItems" : {"Day" : "{0} ({2}: {1})","Day-Of-Week" : "{0} {1}","Era" : "{1} {0}","Hour" : "{0} ({2}: {1})","Minute" : "{0} ({2}: {1})","Month" : "{0} ({2}: {1})","Quarter" : "{0} ({2}: {1})","Second" : "{0} ({2}: {1})","Timezone" : "{0} {1}","Week" : "{0} ({2}: {1})","Year" : "{1} {0}"},"intervalFormats" : {"d" : {"d" : "d日至d日"},"H" : {"H" : "HH – HH"},"h" : {"a" : "ah時至ah時","h" : "ah時至h時"},"hm" : {"a" : "ah:mm至ah:mm","h" : "ah:mm至h:mm","m" : "ah:mm至h:mm"},"Hm" : {"H" : "HH:mm – HH:mm","m" : "HH:mm – HH:mm"},"hmv" : {"a" : "ah:mm至ah:mm [v]","h" : "ah:mm至h:mm [v]","m" : "ah:mm至h:mm [v]"},"Hmv" : {"H" : "HH:mm – HH:mm [v]","m" : "HH:mm – HH:mm [v]"},"hv" : {"a" : "ah時至ah時 [v]","h" : "ah時至h時 [v]"},"Hv" : {"H" : "HH – HH [v]"},"intervalFormatFallback" : "{0} – {1}","M" : {"M" : "M月至M月"},"Md" : {"d" : "M/d至M/d","M" : "M/d至M/d"},"MEd" : {"d" : "M/dE至M/dE","M" : "M/dE至M/dE"},"MMM" : {"M" : "LLL至LLL"},"MMMd" : {"d" : "M月d日至d日","M" : "M月d日至M月d日"},"MMMEd" : {"d" : "M月d日E至d日E","M" : "M月d日E至M月d日E"},"MMMM" : {"M" : "LLLL至LLLL"},"y" : {"y" : "y至y"},"yM" : {"y" : "y/M至y/M","M" : "y/M至y/M"},"yMd" : {"d" : "y/M/d至y/M/d","y" : "y/M/d至y/M/d","M" : "y/M/d至y/M/d"},"yMEd" : {"d" : "y/M/dE至y/M/dE","y" : "y/M/dE至y/M/dE","M" : "y/M/dE至y/M/dE"},"yMMM" : {"y" : "y年M月至y年M月","M" : "y年M月至M月"},"yMMMd" : {"d" : "y年M月d日至d日","y" : "y年M月d日至y年M月d日","M" : "y年M月d日至M月d日"},"yMMMEd" : {"d" : "y年M月d日E至M月d日E","y" : "y年M月d日E至y年M月d日E","M" : "y年M月d日E至M月d日E"},"yMMMM" : {"y" : "y年M月至y年M月","M" : "y年M月至M月"}},"availableFormats" : {"Bh" : "Bh時","Bhm" : "Bh:mm","Bhms" : "Bh:mm:ss","d" : "d日","E" : "ccc","EBhm" : "E Bh:mm","EBhms" : "E Bh:mm:ss","Ed" : "d E","Ehm" : "E ah:mm","EHm" : "E HH:mm","Ehms" : "E ah:mm:ss","EHms" : "E HH:mm:ss","Gy" : "Gy年","GyMMM" : "Gy年M月","GyMMMd" : "Gy年M月d日","GyMMMEd" : "Gy年M月d日 E","H" : "H時","h" : "ah時","hm" : "ah:mm","Hm" : "HH:mm","hms" : "ah:mm:ss","Hms" : "HH:mm:ss","hmsv" : "ah:mm:ss [v]","Hmsv" : "HH:mm:ss [v]","hmv" : "ah:mm [v]","Hmv" : "HH:mm [v]","hmz" : "ah:mm [zzzz]","M" : "M月","Md" : "M/d","MEd" : "M/d（E）","MMdd" : "MM/dd","MMM" : "LLL","MMMd" : "M月d日","MMMEd" : "M月d日 E","MMMMd" : "M月d日","MMMMW-count-other" : "MMM的第W週","ms" : "mm:ss","y" : "y年","yM" : "y/M","yMd" : "y/M/d","yMEd" : "y/M/d（E）","yMM" : "y/MM","yMMM" : "y年M月","yMMMd" : "y年M月d日","yMMMEd" : "y年M月d日 E","yMMMM" : "y年M月","yQQQ" : "y年QQQ","yQQQQ" : "y年QQQQ","yw-count-other" : "Y年的第w週"}}}}}}`},
-		{lang: "zh-cn", reg: "xxx", scope: "dates", wantedBCode: sgtnerror.StatusBadRequest.Code(), wantedHTTPCode: sgtnerror.StatusBadRequest.HTTPCode(),
+		{lang: "zh-cn", reg: "xxx", scope: "dates", wantedBCode: sgtnerror.StatusBadRequest.Code(), wantedHTTPCode: http.StatusOK,
 			wanted: `{"response":{"code":400,"message":"Can't get a locale ID with 'zh-cn' and 'xxx'"}}`},
 
-		{lang: "zh-cn", reg: "TW", scope: "invalid", wantedBCode: http.StatusBadRequest, wantedHTTPCode: http.StatusBadRequest,
+		{lang: "zh-cn", reg: "TW", scope: "invalid", wantedBCode: http.StatusBadRequest, wantedHTTPCode: http.StatusOK,
 			wanted: `{"response":{"code":400,"message":"'invalid' is invalid"}}`},
-		{lang: "zh-cn", reg: "TW", scope: "dates,invalid", wantedBCode: sgtnerror.StatusPartialSuccess.Code(), wantedHTTPCode: sgtnerror.StatusPartialSuccess.HTTPCode(),
+		{lang: "zh-cn", reg: "TW", scope: "dates,invalid", wantedBCode: sgtnerror.StatusPartialSuccess.Code(), wantedHTTPCode: http.StatusOK,
 			wanted: `{"response":{"code":207, "message":"Successful Partially"},"data":{"localeID":"zh-Hant","language":"zh-cn","region":"TW","categories":{"dates":{"dayPeriodsFormat" : {"narrow" : [ "上午", "下午" ],"abbreviated" : [ "上午", "下午" ],"wide" : [ "上午", "下午" ]},"dayPeriodsStandalone" : {"narrow" : [ "上午", "下午" ],"abbreviated" : [ "上午", "下午" ],"wide" : [ "上午", "下午" ]},"daysFormat" : {"narrow" : [ "日", "一", "二", "三", "四", "五", "六" ],"abbreviated" : [ "週日", "週一", "週二", "週三", "週四", "週五", "週六" ],"wide" : [ "星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六" ],"short" : [ "日", "一", "二", "三", "四", "五", "六" ]},"daysStandalone" : {"narrow" : [ "日", "一", "二", "三", "四", "五", "六" ],"abbreviated" : [ "週日", "週一", "週二", "週三", "週四", "週五", "週六" ],"wide" : [ "星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六" ],"short" : [ "日", "一", "二", "三", "四", "五", "六" ]},"monthsFormat" : {"narrow" : [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" ],"abbreviated" : [ "1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月" ],"wide" : [ "1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月" ]},"monthsStandalone" : {"narrow" : [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" ],"abbreviated" : [ "1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月" ],"wide" : [ "1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月" ]},"eras" : {"narrow" : [ "西元前", "西元" ],"abbreviated" : [ "西元前", "西元" ],"wide" : [ "西元前", "西元" ]},"firstDayOfWeek" : 0,"weekendRange" : [ 6, 0 ],"dateFormats" : {"short" : "y/M/d","medium" : "y年M月d日","long" : "y年M月d日","full" : "y年M月d日 EEEE"},"timeFormats" : {"short" : "ah:mm","medium" : "ah:mm:ss","long" : "ah:mm:ss [z]","full" : "ah:mm:ss [zzzz]"},"dateTimeFormats" : {"short" : "{1} {0}","medium" : "{1} {0}","long" : "{1} {0}","full" : "{1} {0}","appendItems" : {"Day" : "{0} ({2}: {1})","Day-Of-Week" : "{0} {1}","Era" : "{1} {0}","Hour" : "{0} ({2}: {1})","Minute" : "{0} ({2}: {1})","Month" : "{0} ({2}: {1})","Quarter" : "{0} ({2}: {1})","Second" : "{0} ({2}: {1})","Timezone" : "{0} {1}","Week" : "{0} ({2}: {1})","Year" : "{1} {0}"},"intervalFormats" : {"d" : {"d" : "d日至d日"},"H" : {"H" : "HH – HH"},"h" : {"a" : "ah時至ah時","h" : "ah時至h時"},"hm" : {"a" : "ah:mm至ah:mm","h" : "ah:mm至h:mm","m" : "ah:mm至h:mm"},"Hm" : {"H" : "HH:mm – HH:mm","m" : "HH:mm – HH:mm"},"hmv" : {"a" : "ah:mm至ah:mm [v]","h" : "ah:mm至h:mm [v]","m" : "ah:mm至h:mm [v]"},"Hmv" : {"H" : "HH:mm – HH:mm [v]","m" : "HH:mm – HH:mm [v]"},"hv" : {"a" : "ah時至ah時 [v]","h" : "ah時至h時 [v]"},"Hv" : {"H" : "HH – HH [v]"},"intervalFormatFallback" : "{0} – {1}","M" : {"M" : "M月至M月"},"Md" : {"d" : "M/d至M/d","M" : "M/d至M/d"},"MEd" : {"d" : "M/dE至M/dE","M" : "M/dE至M/dE"},"MMM" : {"M" : "LLL至LLL"},"MMMd" : {"d" : "M月d日至d日","M" : "M月d日至M月d日"},"MMMEd" : {"d" : "M月d日E至d日E","M" : "M月d日E至M月d日E"},"MMMM" : {"M" : "LLLL至LLLL"},"y" : {"y" : "y至y"},"yM" : {"y" : "y/M至y/M","M" : "y/M至y/M"},"yMd" : {"d" : "y/M/d至y/M/d","y" : "y/M/d至y/M/d","M" : "y/M/d至y/M/d"},"yMEd" : {"d" : "y/M/dE至y/M/dE","y" : "y/M/dE至y/M/dE","M" : "y/M/dE至y/M/dE"},"yMMM" : {"y" : "y年M月至y年M月","M" : "y年M月至M月"},"yMMMd" : {"d" : "y年M月d日至d日","y" : "y年M月d日至y年M月d日","M" : "y年M月d日至M月d日"},"yMMMEd" : {"d" : "y年M月d日E至M月d日E","y" : "y年M月d日E至y年M月d日E","M" : "y年M月d日E至M月d日E"},"yMMMM" : {"y" : "y年M月至y年M月","M" : "y年M月至M月"}},"availableFormats" : {"Bh" : "Bh時","Bhm" : "Bh:mm","Bhms" : "Bh:mm:ss","d" : "d日","E" : "ccc","EBhm" : "E Bh:mm","EBhms" : "E Bh:mm:ss","Ed" : "d E","Ehm" : "E ah:mm","EHm" : "E HH:mm","Ehms" : "E ah:mm:ss","EHms" : "E HH:mm:ss","Gy" : "Gy年","GyMMM" : "Gy年M月","GyMMMd" : "Gy年M月d日","GyMMMEd" : "Gy年M月d日 E","H" : "H時","h" : "ah時","hm" : "ah:mm","Hm" : "HH:mm","hms" : "ah:mm:ss","Hms" : "HH:mm:ss","hmsv" : "ah:mm:ss [v]","Hmsv" : "HH:mm:ss [v]","hmv" : "ah:mm [v]","Hmv" : "HH:mm [v]","hmz" : "ah:mm [zzzz]","M" : "M月","Md" : "M/d","MEd" : "M/d（E）","MMdd" : "MM/dd","MMM" : "LLL","MMMd" : "M月d日","MMMEd" : "M月d日 E","MMMMd" : "M月d日","MMMMW-count-other" : "MMM的第W週","ms" : "mm:ss","y" : "y年","yM" : "y/M","yMd" : "y/M/d","yMEd" : "y/M/d（E）","yMM" : "y/MM","yMMM" : "y年M月","yMMMd" : "y年M月d日","yMMMEd" : "y年M月d日 E","yMMMM" : "y年M月","yQQQ" : "y年QQQ","yQQQQ" : "y年QQQQ","yw-count-other" : "Y年的第w週"}}}}}}`},
 
 		{lang: "pt", reg: "pt", scope: "dates,plurals", wantedBCode: http.StatusOK, wantedHTTPCode: http.StatusOK,
@@ -164,13 +164,13 @@ func TestGetPatternByLangRegExcep(t *testing.T) {
 
 	tests := []struct {
 		testName, lang, reg, scope, scopeFilter string
-		wantedCode                              int
+		wantedBCode                             int
 	}{
-		{testName: "notFoundLocaleError", lang: "en-US", reg: "AB", scope: "dates", scopeFilter: "", wantedCode: sgtnerror.StatusBadRequest.HTTPCode()},
-		{testName: "invalidLang", lang: "€", reg: Region, scope: "dates", scopeFilter: "", wantedCode: http.StatusBadRequest},
-		{testName: "invalidRegion", lang: Language, reg: "€", scope: "dates", scopeFilter: "", wantedCode: http.StatusBadRequest},
-		{testName: "invalidScope", lang: Language, reg: Region, scope: "€", scopeFilter: "", wantedCode: http.StatusBadRequest},
-		{testName: "invalidScopeFilter", lang: Language, reg: Region, scope: "dates", scopeFilter: "€", wantedCode: http.StatusBadRequest},
+		{testName: "notFoundLocaleError", lang: "en-US", reg: "AB", scope: "dates", scopeFilter: "", wantedBCode: sgtnerror.StatusBadRequest.Code()},
+		{testName: "invalidLang", lang: "€", reg: Region, scope: "dates", scopeFilter: "", wantedBCode: http.StatusBadRequest},
+		{testName: "invalidRegion", lang: Language, reg: "€", scope: "dates", scopeFilter: "", wantedBCode: http.StatusBadRequest},
+		{testName: "invalidScope", lang: Language, reg: Region, scope: "€", scopeFilter: "", wantedBCode: http.StatusBadRequest},
+		{testName: "invalidScopeFilter", lang: Language, reg: Region, scope: "dates", scopeFilter: "€", wantedBCode: http.StatusBadRequest},
 	}
 
 	for _, tt := range tests {
@@ -187,7 +187,9 @@ func TestGetPatternByLangRegExcep(t *testing.T) {
 					"scopeFilter": tt.scopeFilter})
 			resp := req.Expect()
 
-			resp.Status(tt.wantedCode)
+			resp.Status(http.StatusOK)
+			bError, _ := GetErrorAndData(resp.Body().Raw())
+			assert.Equal(t, tt.wantedBCode, bError.Code)
 		})
 	}
 }
@@ -197,12 +199,12 @@ func TestGetPatternByLocaleExcep(t *testing.T) {
 
 	tests := []struct {
 		testName, locale, scope, scopeFilter string
-		wantedCode                           int
+		wantedBCode                          int
 	}{
-		{testName: "Locale_en-AB", locale: "en-AB", scope: "dates", scopeFilter: "", wantedCode: sgtnerror.StatusBadRequest.HTTPCode()},
-		{testName: "invalidLocale", locale: "€", scope: "dates", scopeFilter: "", wantedCode: http.StatusBadRequest},
-		{testName: "invalidScope", locale: Language, scope: "€", scopeFilter: "", wantedCode: http.StatusBadRequest},
-		{testName: "invalidScopeFilter", locale: Language, scope: "dates", scopeFilter: "€", wantedCode: http.StatusBadRequest},
+		{testName: "Locale_en-AB", locale: "en-AB", scope: "dates", scopeFilter: "", wantedBCode: sgtnerror.StatusBadRequest.Code()},
+		{testName: "invalidLocale", locale: "€", scope: "dates", scopeFilter: "", wantedBCode: http.StatusBadRequest},
+		{testName: "invalidScope", locale: Language, scope: "€", scopeFilter: "", wantedBCode: http.StatusBadRequest},
+		{testName: "invalidScopeFilter", locale: Language, scope: "dates", scopeFilter: "€", wantedBCode: http.StatusBadRequest},
 	}
 
 	for _, tt := range tests {
@@ -217,7 +219,9 @@ func TestGetPatternByLocaleExcep(t *testing.T) {
 					"scopeFilter": tt.scopeFilter})
 			resp := req.Expect()
 
-			resp.Status(tt.wantedCode)
+			resp.Status(http.StatusOK)
+			bError, _ := GetErrorAndData(resp.Body().Raw())
+			assert.Equal(t, tt.wantedBCode, bError.Code)
 		})
 	}
 }
@@ -227,11 +231,11 @@ func TestGetRegionsExcep(t *testing.T) {
 
 	for _, tt := range []struct {
 		testName, input string
-		wantedCode      int
+		wantedBCode     int
 	}{
-		{testName: "invalidLanguage-1", input: "€", wantedCode: http.StatusBadRequest},
-		{testName: "invalidLanguage-2", input: "zh,€,jp", wantedCode: http.StatusBadRequest},
-		{testName: "notFoundLanguage", input: "ABC,EDF", wantedCode: sgtnerror.StatusBadRequest.HTTPCode()},
+		{testName: "invalidLanguage-1", input: "€", wantedBCode: http.StatusBadRequest},
+		{testName: "invalidLanguage-2", input: "zh,€,jp", wantedBCode: http.StatusBadRequest},
+		{testName: "notFoundLanguage", input: "ABC,EDF", wantedBCode: sgtnerror.StatusBadRequest.Code()},
 	} {
 		tt := tt
 
@@ -239,7 +243,9 @@ func TestGetRegionsExcep(t *testing.T) {
 			// t.Parallel()
 
 			resp := e.GET(GetRegionsOfLanguagesURL).WithQuery("supportedLanguageList", tt.input).Expect()
-			resp.Status(tt.wantedCode)
+			resp.Status(http.StatusOK)
+			bError, _ := GetErrorAndData(resp.Body().Raw())
+			assert.Equal(t, tt.wantedBCode, bError.Code)
 		})
 	}
 }
