@@ -36,9 +36,12 @@ public class InitBundleListener implements ApplicationListener<ApplicationReadyE
 			logger.info("start unzip translation to local");
 		}
 		try {
-			String bundleAbsPath = new File(bundleConfig.getBasePathWithSeparator()).getAbsolutePath();
+			String bundleAbsPath = new File(bundleConfig.getBasePathWithSeparator()).toPath().toAbsolutePath().normalize().toString();
+			if(!bundleAbsPath.endsWith(File.separator)) {
+				bundleAbsPath = bundleAbsPath+File.separator;
+			}
 		    logger.info("the bundle's base path: {}", bundleAbsPath);
-			UnzipTranslationUtils.unzipTranslationToLocal(bundleConfig.getBasePathWithSeparator(),cleanflag, InitBundleListener.class);	
+			UnzipTranslationUtils.unzipTranslationToLocal(bundleAbsPath,cleanflag, InitBundleListener.class);	
 		} catch (IOException e) {
 			
 			logger.warn("init bundle exception or no bundle file need to unzip", e);

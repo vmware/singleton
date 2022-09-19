@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.charset.Charset;
+import java.nio.file.Path;
 import java.util.Enumeration;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
@@ -69,11 +70,13 @@ public class FileUtil {
 
 		try (ZipFile zf = new ZipFile(new File(zipPath), Charset.forName("UTF-8"))) {
 			Enumeration<? extends ZipEntry> en = zf.entries();
+			Path targetDirPath =  new File(targetDir).toPath();
 			while (en.hasMoreElements()) {
 				ZipEntry ze = en.nextElement();
 				File f = new File(targetDir + ze.getName());
-				if (!f.toPath().normalize().startsWith(new File(targetDir).toPath())) {
-					throw new IOException("Bad zip entry");
+				if (!f.toPath().normalize().startsWith(targetDirPath)) {
+					String normalStr = f.toPath().normalize().toString();
+					throw new IOException("Bad zip entry extract path: normalize path "+normalStr+" not start path "+targetDirPath.toString());
 				}
 				     
 				if (ze.isDirectory()) {

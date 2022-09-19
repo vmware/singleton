@@ -39,7 +39,10 @@ public class BootApplication extends SpringBootServletInitializer {
 			}
 		} else {
 			System.setProperty("translation.bundle.file.clean", "false");
+			
 		}
+		System.setProperty("org.apache.tomcat.util.buf.UDecoder.ALLOW_ENCODED_SLASH", "true");
+		System.setProperty("org.apache.catalina.connector.CoyoteAdapter.ALLOW_BACKSLASH", "true");
 		SpringApplication.run(BootApplication.class, args);
 	}
 	

@@ -19,6 +19,7 @@ jar {
 dependencies {
     api project(":vip-common")
     api project(":md-service-i18n-l3")
+    compileOnly("org.slf4j:slf4j-api:$slf4jVersion")
     compileOnly ("org.springframework.boot:spring-boot")
     compileOnly ('org.springframework.boot:spring-boot-autoconfigure')
 }

@@ -18,7 +18,11 @@ import com.vmware.vip.api.rest.APIOperation;
 import com.vmware.vip.api.rest.APIParamName;
 import com.vmware.vip.api.rest.APIParamValue;
 import com.vmware.vip.api.rest.APIV1;
+import com.vmware.vip.common.constants.ConstantsChar;
+import com.vmware.vip.common.constants.ConstantsMsg;
 import com.vmware.vip.common.i18n.dto.response.APIResponseDTO;
+import com.vmware.vip.core.messages.exception.L3APIException;
+import com.vmware.vip.core.messages.service.multcomponent.TranslationDTO;
 import com.vmware.vip.i18n.api.base.TranslationProductComponentAction;
 
 import io.swagger.annotations.ApiOperation;
@@ -56,14 +60,19 @@ public class TranslationProductComponentAPI extends TranslationProductComponentA
     @ApiOperation(value = APIOperation.MULT_COMPONENT_TRANSLATION_NOTES, notes = APIOperation.MULT_COMPONENT_TRANSLATION_NOTES)
     @RequestMapping(value = APIV1.COMPONENTS2, method = RequestMethod.GET, produces = { API.API_CHARSET })
     @ResponseStatus(HttpStatus.OK)
-    public APIResponseDTO getMultipleComponentsTrans(
-            @ApiParam(name = APIParamName.PRODUCT_NAME, required = true, value = APIParamValue.PRODUCT_NAME) @PathVariable(APIParamName.PRODUCT_NAME) String productName,
-            @ApiParam(name = APIParamName.COMPONENTS, required = true, value = APIParamValue.COMPONENTS) @PathVariable(APIParamName.COMPONENTS) String components,
-            @ApiParam(name = APIParamName.VERSION, required = true, value = APIParamValue.VERSION) @RequestParam(value = APIParamName.VERSION, required = true) String version,
-            @ApiParam(name = APIParamName.LOCALES, required = true, value = APIParamValue.LOCALES, defaultValue="") @RequestParam(value = APIParamName.LOCALES, required = true) String locales,
-            @ApiParam(name = APIParamName.PSEUDO, value = APIParamValue.PSEUDO)
-            @RequestParam(value = APIParamName.PSEUDO, required=false, defaultValue="false") String pseudo,
-            HttpServletRequest req)  throws Exception {
-    		return super.getMultipleComponentsTrans(productName, components, version, locales, pseudo, req);
-    }
+	public APIResponseDTO getMultipleComponentsTrans(
+			@ApiParam(name = APIParamName.PRODUCT_NAME, required = true, value = APIParamValue.PRODUCT_NAME) @PathVariable(APIParamName.PRODUCT_NAME) String productName,
+			@ApiParam(name = APIParamName.COMPONENTS, required = true, value = APIParamValue.COMPONENTS) @PathVariable(APIParamName.COMPONENTS) String components,
+			@ApiParam(name = APIParamName.VERSION, required = true, value = APIParamValue.VERSION) @RequestParam(value = APIParamName.VERSION, required = true) String version,
+			@ApiParam(name = APIParamName.LOCALES, required = true, value = APIParamValue.LOCALES, defaultValue = "") @RequestParam(value = APIParamName.LOCALES, required = true) String locales,
+			@ApiParam(name = APIParamName.PSEUDO, value = APIParamValue.PSEUDO) @RequestParam(value = APIParamName.PSEUDO, required = false, defaultValue = "false") String pseudo,
+			HttpServletRequest req) throws Exception {
+		APIResponseDTO resp = super.getMultipleComponentsTrans(productName, components, version, locales, pseudo, req);
+		TranslationDTO translationDTO = (TranslationDTO) resp.getData();
+		if (translationDTO.getBundles() == null || translationDTO.getBundles().size() == 0) {
+			throw new L3APIException(
+					String.format(ConstantsMsg.TRANS_GET_FAILD, productName + ConstantsChar.BACKSLASH + version));
+		}
+		return resp;
+	}
 }
