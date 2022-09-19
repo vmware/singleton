@@ -222,8 +222,10 @@ func doGetCombinedData(c *gin.Context, params *translationWithPatternReq) {
 	}
 	allErrors = sgtnerror.Append(patternError, translationError)
 
-	for _, t := range transData.Bundles {
-		data.Bundles = append(data.Bundles, transApi.ConvertBundleToAPI(t))
+	if translationError == nil {
+		for _, t := range transData.Bundles {
+			data.Bundles = append(data.Bundles, transApi.ConvertBundleToAPI(t))
+		}
 	}
 	if len(patternDataMap) > 0 && isExistPattern(patternDataMap) {
 		data.Pattern = &patternData{
@@ -236,6 +238,16 @@ func doGetCombinedData(c *gin.Context, params *translationWithPatternReq) {
 			IsExistPattern: true,
 		}
 	}
+
+	//!+ This is for JS client which can't handle 207
+	// In development env, when translation isn't ready, 
+	// server will return 207 because only pattern data is available.
+	se := api.ToBusinessError(allErrors)
+	if se.Code == 207 {
+		api.HandleResponse(c, data, nil)
+		return
+	}
+	//!- This is for JS client which can't handle 207
 
 	api.HandleResponse(c, data, allErrors)
 }
