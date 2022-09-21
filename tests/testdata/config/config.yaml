@@ -6,7 +6,7 @@ LocalBundle:
 S3Bundle:
   PublicKeyFile: # file content is used to decode AccessKey and SecretKey
   AccessKey: myAccessKey
-  Secretkey: mySecretkey
+  SecretKey: mySecretkey
   Region: myRegion
   BucketName: myBucketName
   BundleRoot: myBundleRoot
@@ -48,7 +48,7 @@ Cache:
   Enable: true
   MaxCost: 1000 # number of entities to store
   BufferItems: 64
-  Expiration: 10s #seconds
+  Expiration: 10s #seconds. 0s means cache never to expire.
 
 SwaggerUI: true
 AllowList: false
