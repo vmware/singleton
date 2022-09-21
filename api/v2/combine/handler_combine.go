@@ -240,7 +240,7 @@ func doGetCombinedData(c *gin.Context, params *translationWithPatternReq) {
 	//!+ This is for JS client which can't handle 207
 	// In development env, when translation isn't ready,
 	// server will return 207 because only pattern data is available.
-	if se := api.ToBusinessError(allErrors); se.Code == 207 {
+	if bError := api.ToBusinessError(allErrors); bError.Code == 207 {
 		api.HandleResponse(c, data, nil)
 		return
 	}
