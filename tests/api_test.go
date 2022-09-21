@@ -269,6 +269,10 @@ func TestPartialSuccess(t *testing.T) {
 }
 
 func TestAllowList(t *testing.T) {
+	oldvalue := config.Settings.AllowList
+	config.Settings.AllowList = true
+	defer func() { config.Settings.AllowList = oldvalue }()
+
 	e := CreateHTTPExpect(t, GinTestEngine)
 	resp := e.GET(GetBundleURL, "not-found", Version, "zh-Hans", "sunglow").Expect()
 	resp.Status(http.StatusOK)
