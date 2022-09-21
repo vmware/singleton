@@ -1080,8 +1080,7 @@ var doc = `{
                     "type": "string"
                 },
                 "pseudo": {
-                    "type": "boolean",
-                    "default": false
+                    "type": "string"
                 },
                 "region": {
                     "type": "string"
