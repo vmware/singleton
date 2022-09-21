@@ -24,16 +24,12 @@ type PseudoService struct {
 // GetMultipleBundles Get translation of multiple bundles
 func (ps *PseudoService) GetMultipleBundles(ctx context.Context, name, version, _localeString, componentString string) (*translation.Release, error) {
 	releaseData, err := ps.Service.GetMultipleBundles(ctx, name, version, translation.Latest, componentString)
-	if err != nil {
-		return nil, err
-	}
-
 	for i, bundle := range releaseData.Bundles {
 		releaseData.Bundles[i] = addPseudoTag(*bundle)
 	}
 	releaseData.Pseudo = true
 
-	return releaseData, nil
+	return releaseData, err
 }
 
 // GetBundle ...

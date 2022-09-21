@@ -125,11 +125,8 @@ func (ts Service) GetMultipleBundles(ctx context.Context, name, version, localeS
 		}
 	}
 
-	if bundles, err := ts.getMultipleBundles(ctx, name, version, bundleIDs); err != nil {
-		return nil, err
-	} else {
-		return &translation.Release{Name: name, Version: version, Bundles: bundles}, nil
-	}
+	bundles, err := ts.getMultipleBundles(ctx, name, version, bundleIDs)
+	return &translation.Release{Name: name, Version: version, Bundles: bundles}, err
 }
 
 func (ts Service) getMultipleBundles(ctx context.Context, name, version string, bundleIDs []translation.CompactBundleID) (data []*translation.Bundle, err error) {
