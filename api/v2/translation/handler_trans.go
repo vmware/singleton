@@ -275,7 +275,7 @@ func ConvertBundleToInternal(apiData *UpdateBundle) []*translation.Bundle {
 }
 
 func ConvertReleaseToAPI(release *translation.Release) *ReleaseData {
-	if release == nil && len(release.Bundles) == 0 {
+	if release == nil || len(release.Bundles) == 0 {
 		return nil
 	}
 
