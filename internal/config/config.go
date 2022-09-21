@@ -132,6 +132,8 @@ type Config struct {
 		AllowHeaders     string        `json:"AllowHeaders" yaml:"AllowHeaders"`
 		MaxAge           time.Duration `json:"MaxAge" yaml:"MaxAge"`
 	} `json:"CrossDomain" yaml:"CrossDomain"`
+
+	AllowList bool `yaml:"AllowList"`
 }
 
 var Settings Config

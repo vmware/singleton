@@ -11,7 +11,7 @@ S3Bundle:
   BucketName: myBucketName
   BundleRoot: myBundleRoot
 
-RefreshBundleInterval: 60s # interval to refresh bundle information
+RefreshBundleInterval: 0s # interval to refresh bundle information. 0s means never to refresh.
 
 HeaderOfTraceID: # comma separated headers carrying trace ID
 
@@ -51,4 +51,4 @@ Cache:
   Expiration: 10s #seconds
 
 SwaggerUI: true
-
+AllowList: false
