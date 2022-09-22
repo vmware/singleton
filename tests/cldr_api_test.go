@@ -246,9 +246,8 @@ func TestGetRegionsExcep(t *testing.T) {
 
 			resp := e.GET(GetRegionsOfLanguagesURL).WithQuery("supportedLanguageList", tt.input).Expect()
 			resp.Status(http.StatusOK)
-			bError, data := GetErrorAndData(resp.Body().Raw())
+			bError, _ := GetErrorAndData(resp.Body().Raw())
 			assert.Equal(t, tt.wantedBCode, bError.Code)
-			assert.Nil(t, data)
 		})
 	}
 }
