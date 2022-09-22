@@ -219,11 +219,9 @@ func TestCompressResponse(t *testing.T) {
 func TestAbortWithError(t *testing.T) {
 	e := CreateHTTPExpect(t, GinTestEngine)
 	resp := e.GET(GetBundleURL, Name, Version, "zh-Hans").Expect()
-	bError, _ := GetErrorAndData(resp.Body().Raw())
 
-	assert.Equal(t, http.StatusBadRequest, bError.Code)
 	resp.Status(http.StatusOK)
-	resp.Body().Contains("component")
+	assert.JSONEq(t, `{"response":{"code":400,"message":"Incorrect component(only allows letter, number, dot, underline, dash)"}}`, resp.Body().Raw())
 }
 
 func TestAllFailed(t *testing.T) {

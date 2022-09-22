@@ -188,8 +188,9 @@ func TestGetPatternByLangRegExcep(t *testing.T) {
 			resp := req.Expect()
 
 			resp.Status(http.StatusOK)
-			bError, _ := GetErrorAndData(resp.Body().Raw())
+			bError, data := GetErrorAndData(resp.Body().Raw())
 			assert.Equal(t, tt.wantedBCode, bError.Code)
+			assert.Nil(t, data)
 		})
 	}
 }
@@ -220,8 +221,9 @@ func TestGetPatternByLocaleExcep(t *testing.T) {
 			resp := req.Expect()
 
 			resp.Status(http.StatusOK)
-			bError, _ := GetErrorAndData(resp.Body().Raw())
+			bError, data := GetErrorAndData(resp.Body().Raw())
 			assert.Equal(t, tt.wantedBCode, bError.Code)
+			assert.Nil(t, data)
 		})
 	}
 }
@@ -244,8 +246,9 @@ func TestGetRegionsExcep(t *testing.T) {
 
 			resp := e.GET(GetRegionsOfLanguagesURL).WithQuery("supportedLanguageList", tt.input).Expect()
 			resp.Status(http.StatusOK)
-			bError, _ := GetErrorAndData(resp.Body().Raw())
+			bError, data := GetErrorAndData(resp.Body().Raw())
 			assert.Equal(t, tt.wantedBCode, bError.Code)
+			assert.Nil(t, data)
 		})
 	}
 }
