@@ -61,10 +61,10 @@ func (ps *PseudoService) GetStringWithSource(ctx context.Context, id *translatio
 
 	if stringMessage, err := ps.GetString(ctx, id); err == nil {
 		result["translation"] = pseudoTag + stringMessage.Translation + pseudoTag
-		result["status"] = "The pseudo translation is found."
+		result["status"] = translation.PseudoFound
 	} else {
 		result["translation"] = "@@" + source + "@@"
-		result["status"] = "The pseudo translation is not found, return the received source with pseudo tag."
+		result["status"] = translation.PseudoNotFound
 	}
 
 	return result, nil
