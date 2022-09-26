@@ -6,6 +6,7 @@
 package combine
 
 import (
+	"strconv"
 	"strings"
 
 	"sgtnserver/api"
@@ -172,6 +173,12 @@ func getCombinedDataByPost(c *gin.Context) {
 		return
 	}
 
+	pseudo, err := strconv.ParseBool(params.Pseudo)
+	if err != nil && params.Pseudo != "" {
+		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage("%s isn't a boolean value", params.Pseudo))
+		return
+	}
+
 	params.Version = transApi.DoVersionFallback(c, params.ProductName, params.Version)
 
 	req := translationWithPatternReq{
@@ -183,7 +190,7 @@ func getCombinedDataByPost(c *gin.Context) {
 		PatternScope: cldrApi.PatternScope{
 			Scope:       params.Scope,
 			ScopeFilter: params.ScopeFilter},
-		Pseudo: params.Pseudo}
+		Pseudo: pseudo}
 	doGetCombinedData(c, &req)
 }
 
