@@ -11,7 +11,7 @@ S3Bundle:
   BucketName: ###
   BundleRoot: ###
 
-RefreshBundleInterval: 0s # interval to refresh bundle information
+RefreshBundleInterval: 0s # interval to refresh bundle information. 0s means never to refresh.
 
 HeaderOfTraceID: # comma separated headers carrying trace ID
 
@@ -37,7 +37,7 @@ CrossDomain:
   MaxAge: 3600s
 
 LOG:
-  Filename:
+  Filename: logs/singleton.log
   MaxSize: 50 # megabytes
   MaxBackups: 20
   MaxAge: 365 # days
@@ -48,6 +48,7 @@ Cache:
   Enable: true
   MaxCost: 1000 # number of entities to store
   BufferItems: 64
-  Expiration: 0s #seconds
+  Expiration: 0s #seconds. 0s means cache never to expire.
 
 SwaggerUI: true
+AllowList: false

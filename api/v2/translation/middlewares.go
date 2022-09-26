@@ -7,6 +7,7 @@ package translation
 
 import (
 	"sgtnserver/api"
+	"sgtnserver/internal/config"
 	"sgtnserver/internal/sgtnerror"
 	"sgtnserver/modules/translation/translationservice"
 
@@ -45,6 +46,10 @@ func DoVersionFallback(c *gin.Context, name, version string) string {
 }
 
 func HandleAllowList(c *gin.Context) {
+	if !config.Settings.AllowList {
+		return
+	}
+
 	productName := c.Param(api.ProductNameAPIKey)
 	if productName == "" {
 		var ok bool
