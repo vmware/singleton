@@ -6,37 +6,72 @@ describe SgtnClient::Fallbacks, :include_helpers, :extend_helpers do
 
   err_msg = 'temporary error'
 
-  before  { clear_cache }
+  before  { reset_client }
 
-  it '#translate a string' do
-    expect(SgtnClient.config.loader).to receive(:get_bundle).with(component, locale).once.and_raise(SgtnClient::SingletonError.new(err_msg)).ordered
-    expect(SgtnClient.config.loader).to receive(:get_bundle).with(component, en_locale).once.and_call_original.ordered
+  describe '#zh-Hans' do
+    it '#translate a string' do
+      expect(SgtnClient.config.loader).to receive(:get_bundle).with(component, locale).once.and_raise(SgtnClient::SingletonError.new(err_msg)).ordered
+      expect(SgtnClient.config.loader).to receive(:get_bundle).with(component, en_locale).twice.and_call_original.ordered
 
-    expect(Sgtn.translate(key, component, locale)).to eq en_value
+      # request zh-Hans once then request en once
+      expect(Sgtn.translate(key, component, locale)).to eq en_value
 
-    expect(Sgtn.t(key, component, locale)).to eq en_value
+      # test 't' method
+      # request en directly because zh-Hans isn't a valid locale any more
+      expect(Sgtn.t(key, component, locale)).to eq en_value
+    end
+
+    it "#get a bundle's translation" do
+      expect(SgtnClient.config.loader).to receive(:get_bundle).with(component, locale).once.and_raise(SgtnClient::SingletonError.new(err_msg)).ordered
+      expect(SgtnClient.config.loader).to receive(:get_bundle).with(component, en_locale).once.and_call_original.ordered
+
+      bundle = Sgtn.get_translations(component, locale)
+      expect(bundle['messages']['helloworld']).to eq en_value
+    end
+
+    it '#translate a string to raise error' do
+      expect(SgtnClient.config.loader).to receive(:get_bundle).with(component, locale).once.and_raise(SgtnClient::SingletonError.new(err_msg)).ordered
+      expect(SgtnClient.config.loader).to receive(:get_bundle).with(component, en_locale).twice.and_raise(SgtnClient::SingletonError.new(err_msg)).ordered
+
+      expect { Sgtn.translate!(key, component, locale) }.to raise_error(err_msg)
+
+      # test 't!' method
+      # request en directly because zh-Hans isn't a valid locale any more
+      expect { Sgtn.t!(key, component, locale) }.to raise_error(err_msg)
+    end
+
+    it "#get a bundle's translation to raise error" do
+      expect(SgtnClient.config.loader).to receive(:get_bundle).with(component, locale).once.and_raise(SgtnClient::SingletonError.new(err_msg)).ordered
+      expect(SgtnClient.config.loader).to receive(:get_bundle).with(component, en_locale).once.and_raise(SgtnClient::SingletonError.new(err_msg)).ordered
+
+      expect { Sgtn.get_translations!(component, locale) }.to raise_error(err_msg)
+    end
   end
 
-  it '#translate a bundle\'s translation' do
-    expect(SgtnClient.config.loader).to receive(:get_bundle).with(component, locale).once.and_raise(SgtnClient::SingletonError.new(err_msg)).ordered
-    expect(SgtnClient.config.loader).to receive(:get_bundle).with(component, en_locale).once.and_call_original.ordered
+  describe '#English' do
+    it '#translate a string' do
+      expect(SgtnClient.config.loader).to receive(:get_bundle).with(component, en_locale).once.and_call_original.ordered
 
-    bundle = Sgtn.get_translations(component, locale)
-    expect(bundle['messages']['helloworld']).to eq en_value
-  end
+      expect(Sgtn.translate(key, component, en_locale)).to eq en_value
+    end
 
-  it '#translate a string to raise error' do
-    expect(SgtnClient.config.loader).to receive(:get_bundle).with(component, locale).once.and_raise(SgtnClient::SingletonError.new(err_msg)).ordered
-    expect(SgtnClient.config.loader).to receive(:get_bundle).with(component, en_locale).once.and_raise(SgtnClient::SingletonError.new(err_msg)).ordered
+    it "#get a bundle's translation" do
+      expect(SgtnClient.config.loader).to receive(:get_bundle).with(component, en_locale).once.and_call_original.ordered
 
-    expect { backend.t!(key, component, locale) }.to raise_error(err_msg)
-  end
+      bundle = Sgtn.get_translations(component, en_locale)
+      expect(bundle['messages']['helloworld']).to eq en_value
+    end
 
-  it '#translate a bundle\'s translation to raise error' do
-    expect(SgtnClient.config.loader).to receive(:get_bundle).with(component, locale).once.and_raise(SgtnClient::SingletonError.new(err_msg)).ordered
-    expect(SgtnClient.config.loader).to receive(:get_bundle).with(component, en_locale).once.and_call_original.ordered
+    it '#translate a string to raise error' do
+      expect(SgtnClient.config.loader).to receive(:get_bundle).with(component, en_locale).once.and_raise(SgtnClient::SingletonError.new(err_msg)).ordered
 
-    bundle = Sgtn.get_translations(component, locale)
-    expect(bundle['messages']['helloworld']).to eq en_value
+      expect { Sgtn.t!(key, component, en_locale) }.to raise_error(err_msg)
+    end
+
+    it "#get a bundle's translation to raise error" do
+      expect(SgtnClient.config.loader).to receive(:get_bundle).with(component, en_locale).once.and_raise(SgtnClient::SingletonError.new(err_msg)).ordered
+
+      expect { Sgtn.get_translations!(component, en_locale) }.to raise_error(err_msg)
+    end
   end
 end

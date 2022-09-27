@@ -7,17 +7,35 @@ describe 'raise_error', :include_helpers, :extend_helpers do
   backend = Class.new { include SgtnClient::Translation::Implementation }.new
   err_msg = 'temporary error'
 
-  before  { clear_cache }
+  before  { reset_client }
 
-  it '#translate a string' do
+  it '#translate a string with errors' do
     expect(SgtnClient.config.loader).to receive(:get_bundle).with(component, locale).twice.and_raise(SgtnClient::SingletonError.new(err_msg))
+
     expect { backend.translate!(key, component, locale) }.to raise_error(err_msg)
+
     clear_cache
     expect { backend.t!(key, component, locale) }.to raise_error(err_msg)
   end
 
-  it '#get a bundle\'s translation' do
+  it '#translate a string without errors' do
+    expect(SgtnClient.config.loader).to receive(:get_bundle).with(component, locale).twice.and_call_original
+
+    expect(backend.translate(key, component, locale)).to eq value
+
+    clear_cache
+    expect(backend.t(key, component, locale)).to eq value
+  end
+
+  it "#get a bundle's translation with errors" do
     expect(SgtnClient.config.loader).to receive(:get_bundle).with(component, locale).once.and_raise(SgtnClient::SingletonError.new(err_msg))
+
     expect { backend.get_translations!(component, locale) }.to raise_error(err_msg)
+  end
+
+  it "#get a bundle's translation without errors" do
+    expect(SgtnClient.config.loader).to receive(:get_bundle).with(component, locale).once.and_call_original
+
+    expect(backend.get_translations(component, locale)['messages']['helloworld']).to eq value
   end
 end

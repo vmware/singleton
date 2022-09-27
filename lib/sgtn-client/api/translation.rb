@@ -92,6 +92,8 @@ module SgtnClient
         { 'component' => component, 'locale' => best_match_locale, 'messages' => messages } if messages
       end
 
+      private
+
       def get_bundle!(component, locale)
         SgtnClient.config.loader.get_bundle(component, locale)
       rescue StandardError
