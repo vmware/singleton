@@ -15,11 +15,11 @@ def expire_cache(id)
   cache_item.last_update = Time.at(0)
 end
 
-def clear_cache(loader = SgtnClient.config.instance_variable_get(:@loader))
+def clear_cache(loader = Sgtn.config.instance_variable_get(:@loader))
   loader&.instance_variable_get(:@cache_hash)&.clear
 end
 
-def get_cache(key, loader = SgtnClient.config.instance_variable_get(:@loader))
+def get_cache(key, loader = Sgtn.config.instance_variable_get(:@loader))
   loader&.instance_variable_get(:@cache_hash)&.fetch(key, nil)
 end
 
@@ -39,7 +39,7 @@ def traverse_modules(m, &block)
   m.constants(false).each do |c|
     const = m.const_get(c, false)
     if [Class, Module].include? const.class
-      SgtnClient.logger.info "Enable trace on const #{const}"
+      Sgtn.logger.info "Enable trace on const #{const}"
       const.methods(false).each { |method| block.call(const.method(method)) }
       const.instance_methods(false).each { |method| block.call(const.instance_method(method)) }
       # const.singleton_methods(false).each { |method| block.call(const.singleton_method(method)) }

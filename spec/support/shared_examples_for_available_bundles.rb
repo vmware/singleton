@@ -4,7 +4,7 @@
 shared_examples 'Available Bundles' do
   let(:stubs) { [] }
   prepend_before :all do
-    @config = SgtnClient.config
+    @config = Sgtn.config
     WebMock.enable!
     WebMock.disable_net_connect!
   end

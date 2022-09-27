@@ -5,11 +5,11 @@
 
 describe "Autoload" do
   before(:all) do
-    @origin_level = SgtnClient.logger.level
-    SgtnClient.logger.level = Logger::INFO
+    @origin_level = Sgtn.logger.level
+    Sgtn.logger.level = Logger::INFO
   end
   after(:all) do
-    SgtnClient.logger.level = @origin_level
+    Sgtn.logger.level = @origin_level
   end
 
   it "#should be able to set trace on each methods" do
@@ -18,16 +18,16 @@ describe "Autoload" do
       traverse_modules(SgtnClient) do |method|
         # trace = TracePoint.new(:call, :return) do |tp|
         #   if tp.event == :return
-        #     SgtnClient.logger.info "#{prefix}#{[tp.defined_class, tp.method_id, tp.event]}"
+        #     Sgtn.logger.info "#{prefix}#{[tp.defined_class, tp.method_id, tp.event]}"
         #   else
-        #     SgtnClient.logger.info "#{prefix}#{[tp.defined_class, tp.method_id, tp.event, extract_arguments(tp)]}"
+        #     Sgtn.logger.info "#{prefix}#{[tp.defined_class, tp.method_id, tp.event, extract_arguments(tp)]}"
         #   end
         # end
         # trace.enable(target: method)
       rescue ArgumentError => e
-        SgtnClient.logger.error "********************Failed to enable trace on #{method} | #{e.message}"
+        Sgtn.logger.error "********************Failed to enable trace on #{method} | #{e.message}"
       else
-        SgtnClient.logger.info "#{prefix}Enabled trace on #{method}"
+        Sgtn.logger.info "#{prefix}Enabled trace on #{method}"
       end
     }.to_not raise_error
   end
@@ -43,7 +43,7 @@ describe "Autoload" do
       contents.scan(/^\s*autoload\s+:?(?<const>\w+),\s+(?<quote>['"])(?<path>.+)\k<quote>\s*$/).each do |m|
         # raise "add more than once. #{m[2]}" unless autoloaded_files.add?(m[2])
         # expect(autoloaded_files.add?(m[2])).to be_truthy
-        SgtnClient.logger.warn "add more than once. #{m[2]}" unless autoloaded_files.add?(m[2])
+        Sgtn.logger.warn "add more than once. #{m[2]}" unless autoloaded_files.add?(m[2])
       end
     end
     all_files.each do |file|

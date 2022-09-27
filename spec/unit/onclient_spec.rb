@@ -6,7 +6,7 @@ describe SgtnClient do
 
     before :each do
       clear_cache
-      SgtnClient.config.vip_server = nil
+      Sgtn.config.vip_server = nil
     end
 
     it "GET_EN" do

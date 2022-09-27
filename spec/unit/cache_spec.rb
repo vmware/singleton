@@ -3,12 +3,12 @@
 
 describe 'Cache' do
   before :all do
-    SgtnClient.config.instance_variable_set('@loader', nil)
+    Sgtn.config.instance_variable_set('@loader', nil)
   end
 
   before :each do
-    SgtnClient.config.vip_server = nil
-    SgtnClient.config.cache_expiry_period = 1
+    Sgtn.config.vip_server = nil
+    Sgtn.config.cache_expiry_period = 1
   end
 
   it 'GETTranslation' do
@@ -26,7 +26,7 @@ describe 'Cache' do
       include_context 'reset client'
 
       it '#populate cache at the beginning' do
-        SgtnClient.config.loader.loaders.each do |loader|
+        Sgtn.config.loader.loaders.each do |loader|
           if loader.is_a?(SgtnClient::TranslationLoader::Source)
             expect(loader).to receive(:load_bundle).once.with(component, latest_locale).and_call_original
             expect(loader).to receive(:load_bundle).once.with(component, en_locale).and_call_original
@@ -45,7 +45,7 @@ describe 'Cache' do
       end
 
       it '#get translations from cache for the first time' do
-        SgtnClient.config.loader.loaders.each do |loader|
+        Sgtn.config.loader.loaders.each do |loader|
           expect(loader).to_not receive(:load_bundle)
         end
         translations = Sgtn.get_translations(component, locale)
@@ -55,7 +55,7 @@ describe 'Cache' do
       end
 
       it '#get translations from cache for the second time' do
-        SgtnClient.config.loader.loaders.each do |loader|
+        Sgtn.config.loader.loaders.each do |loader|
           expect(loader).to_not receive(:load_bundle)
         end
         translations = Sgtn.get_translations(component, locale)
@@ -70,7 +70,7 @@ describe 'Cache' do
         cache_item = get_cache(bundle_id)
         expect(cache_item.expired?).to be true
 
-        SgtnClient.config.loader.loaders.each do |loader|
+        Sgtn.config.loader.loaders.each do |loader|
           if loader.is_a?(SgtnClient::TranslationLoader::Source)
             expect(loader).to receive(:load_bundle).once.with(component, latest_locale).and_call_original
             expect(loader).to receive(:load_bundle).once.with(component, en_locale).and_call_original
@@ -89,7 +89,7 @@ describe 'Cache' do
       end
 
       it '#get translations from cache for the second time after expiration' do
-        SgtnClient.config.loader.loaders.each do |loader|
+        Sgtn.config.loader.loaders.each do |loader|
           expect(loader).to_not receive(:load_bundle)
         end
 
@@ -105,32 +105,32 @@ describe 'Cache' do
       include_context 'reset client'
 
       it '#populate cache at the beginning' do
-        SgtnClient.config.loader.loaders.each do |loader|
+        Sgtn.config.loader.loaders.each do |loader|
           expect(loader).to receive(:available_bundles).once.with(no_args).and_call_original
         end
 
         cache_item = get_cache(SgtnClient::TranslationLoader::CONSTS::AVAILABLE_BUNDLES_KEY)
         expect(cache_item).to be_nil
 
-        bundles = SgtnClient.config.available_bundles
+        bundles = Sgtn.config.available_bundles
         expect(bundles).to include(bundle_id)
       end
 
       it '#get from cache for the first time' do
-        SgtnClient.config.loader.loaders.each do |loader|
+        Sgtn.config.loader.loaders.each do |loader|
           expect(loader).to_not receive(:available_bundles)
         end
-        bundles = SgtnClient.config.available_bundles
+        bundles = Sgtn.config.available_bundles
         expect(bundles).to include(bundle_id)
         cache_item = get_cache(SgtnClient::TranslationLoader::CONSTS::AVAILABLE_BUNDLES_KEY)
         expect(cache_item.expired?).to be false
       end
 
       it '#get from cache for the second time' do
-        SgtnClient.config.loader.loaders.each do |loader|
+        Sgtn.config.loader.loaders.each do |loader|
           expect(loader).to_not receive(:available_bundles)
         end
-        bundles = SgtnClient.config.available_bundles
+        bundles = Sgtn.config.available_bundles
         expect(bundles).to include(bundle_id)
         cache_item = get_cache(SgtnClient::TranslationLoader::CONSTS::AVAILABLE_BUNDLES_KEY)
         expect(cache_item.expired?).to be false
@@ -142,7 +142,7 @@ describe 'Cache' do
         cache_item = get_cache(SgtnClient::TranslationLoader::CONSTS::AVAILABLE_BUNDLES_KEY)
         expect(cache_item.expired?).to be true
 
-        SgtnClient.config.loader.loaders.each do |loader|
+        Sgtn.config.loader.loaders.each do |loader|
           if loader.is_a?(SgtnClient::TranslationLoader::Source)
             expect(loader).to receive(:available_bundles).once.with(no_args).and_return(Set[new_bundle])
           else
@@ -151,19 +151,19 @@ describe 'Cache' do
         end
 
         # still return expired value
-        bundles = SgtnClient.config.available_bundles
+        bundles = Sgtn.config.available_bundles
         expect(bundles).to include(bundle_id)
         expect(bundles).not_to include(new_bundle)
         wait_threads_finish
       end
 
       it '#get from cache for the second time after expiration' do
-        SgtnClient.config.loader.loaders.each do |loader|
+        Sgtn.config.loader.loaders.each do |loader|
           expect(loader).to_not receive(:available_bundles)
         end
 
         # return new value
-        bundles = SgtnClient.config.available_bundles
+        bundles = Sgtn.config.available_bundles
         expect(bundles).to include(new_bundle)
         cache_item = get_cache(SgtnClient::TranslationLoader::CONSTS::AVAILABLE_BUNDLES_KEY)
         expect(cache_item.expired?).to be false
