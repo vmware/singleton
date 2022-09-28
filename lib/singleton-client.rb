@@ -30,28 +30,10 @@ module Sgtn # :nodoc:
     private
 
     def translation
-      @translation ||= begin
-        Class.new do
-          include SgtnClient::Translation::Implementation
-          include SgtnClient::Pseudo if Sgtn.config.pseudo_mode
-
-          def get_translations(component, locale = nil)
-            get_translations!(component, locale)
-          rescue StandardError => e
-            Sgtn.logger.error "[#{method(__callee__).owner}.#{__callee__}] {#{component}, #{locale}}. #{e}"
-            nil
-          end
-
-          def translate(key, component, locale = nil, **kwargs, &block)
-            translate!(key, component, locale, **kwargs, &block)
-          rescue StandardError => e
-            Sgtn.logger.debug { "[#{method(__callee__).owner}.#{__callee__}] {#{key}, #{component}, #{locale}}. #{e}" }
-            key
-          end
-          alias_method :t, :translate
-          alias_method :t!, :translate!
-        end.new
-      end
+      @translation ||= Class.new do
+        include SgtnClient::Fallbacks, SgtnClient::Translation::Implementation
+        include SgtnClient::Pseudo if Sgtn.pseudo_mode
+      end.new
     end
 
     def_delegator SgtnClient::Config, :instance, :config

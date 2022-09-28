@@ -6,8 +6,6 @@ require 'request_store'
 module SgtnClient
   module Translation
     module Implementation
-      prepend Fallbacks
-
       # <b>DEPRECATED:</b> Please use <tt>Sgtn:translate</tt> instead.
       def getString(component, key, locale)
         SgtnClient.logger.debug { "[Translation.getString]component: #{component}, key: #{key}, locale: #{locale}" }
@@ -41,6 +39,10 @@ module SgtnClient
         get_translations(component, locale)
       end
 
+      def get_translation!(key, component, locale)
+        [get_bundle!(component, locale)[key], locale]
+      end
+
       def translate(key, component, locale = nil, **kwargs, &block)
         translate!(key, component, locale, **kwargs, &block)
       rescue StandardError => e
@@ -55,8 +57,7 @@ module SgtnClient
 
         begin
           best_match_locale = LocaleUtil.get_best_locale(locale || SgtnClient.locale, component)
-          messages = get_bundle!(component, best_match_locale)
-          result = messages[key]
+          result, actual_locale = get_translation!(key, component, best_match_locale)
         rescue StandardError => e
           raise e if block.nil?
         end
@@ -70,7 +71,7 @@ module SgtnClient
         if kwargs.empty?
           result
         else
-          result.localize(best_match_locale) % kwargs
+          result.localize(actual_locale) % kwargs
         end
       end
       alias t! translate!
@@ -106,5 +107,6 @@ module SgtnClient
     end
 
     extend Implementation
+    extend Fallbacks
   end
 end

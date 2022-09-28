@@ -12,8 +12,8 @@ module SgtnClient
       @suffix = SgtnClient.config.pseudo_suffix || @prefix
     end
 
-    def translate!(key, component, _locale = nil, **kwargs, &block)
-      translation = super(key, component, EN_LOCALE, **kwargs, &block)
+    def get_translation!(key, component, _locale)
+      translation = super(key, component, EN_LOCALE)
       "#{@prefix}#{translation}#{@suffix}"
     end
 

@@ -3,16 +3,10 @@
 
 module SgtnClient
   module Fallbacks # :nodoc:
-    def translate!(key, component, locale = nil, **kwargs, &block)
+    def get_translation!(key, component, locale)
       error = nil
-      locales = get_locales(locale)
-      locales.each_with_index do |l, i|
-        result = if i == locales.length - 1
-                   super(key, component, l, **kwargs, &block)
-                 else
-                   super(key, component, l, **kwargs)
-                 end
-        return result if result
+      localechain(locale) do |l|
+        return super(key, component, l)
       rescue StandardError => e
         error = e
       end
@@ -21,7 +15,7 @@ module SgtnClient
 
     def get_translations!(component, locale = nil)
       error = nil
-      get_locales(locale).each do |l|
+      localechain(locale) do |l|
         result = super(component, l)
         return result if result
       rescue StandardError => e
@@ -32,10 +26,13 @@ module SgtnClient
 
     private
 
-    def get_locales(locale)
-      fallbacks = LocaleUtil.locale_fallbacks.dup
-      (index = fallbacks.index(locale)) && fallbacks.delete_at(index)
-      [locale] + fallbacks
+    def localechain(locale)
+      yield locale
+      LocaleUtil.locale_fallbacks.each do |l|
+        next if l == locale
+
+        yield l
+      end
     end
   end
 end
