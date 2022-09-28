@@ -16,9 +16,9 @@ describe SgtnClient::TranslationLoader::SingleLoader, :include_helpers, :extend_
   # prefix = '-----------------------------'
   # trace = TracePoint.new(:call, :return) do |tp|
   #   if tp.event == :return
-  #     SgtnClient.logger.debug "#{prefix}#{[tp.method_id, tp.event, tp.return_value]}"
+  #     Sgtn.logger.debug "#{prefix}#{[tp.method_id, tp.event, tp.return_value]}"
   #   else
-  #     SgtnClient.logger.debug "#{prefix}#{[tp.method_id, tp.event, tp.binding.local_variables.map { |var| tp.binding.local_variable_get(var) }]}"
+  #     Sgtn.logger.debug "#{prefix}#{[tp.method_id, tp.event, tp.binding.local_variables.map { |var| tp.binding.local_variable_get(var) }]}"
   #   end
   # end
 
@@ -44,9 +44,9 @@ describe SgtnClient::TranslationLoader::SingleLoader, :include_helpers, :extend_
 
       loading.make_true
 
-      SgtnClient.logger.debug 'Start Loading...................'
+      Sgtn.logger.debug 'Start Loading...................'
       sleep 0.001
-      SgtnClient.logger.debug 'End Loading...................'
+      Sgtn.logger.debug 'End Loading...................'
 
       # return_value
       Thread.current.name
@@ -69,7 +69,7 @@ describe SgtnClient::TranslationLoader::SingleLoader, :include_helpers, :extend_
     lock.release_write_lock # let all threads to load simultaneously
 
     wait_threads_finish
-    SgtnClient.logger.info "test time: #{Time.now - start}"
+    Sgtn.logger.info "test time: #{Time.now - start}"
   end
 
   it '#return correct data' do

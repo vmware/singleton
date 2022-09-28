@@ -96,9 +96,9 @@ module Helpers
   end
 
   def reset_client
-    SgtnClient.config.update(Helpers::CONFIG_HASH)
+    Sgtn.config.update(Helpers::CONFIG_HASH)
     Sgtn.instance_variable_set(:@translation, nil)
-    SgtnClient.config.instance_variable_set(:@loader, nil)
+    Sgtn.config.instance_variable_set(:@loader, nil)
     SgtnClient::LocaleUtil.send(:reset_locale_data, :available_locales)
   end
 end

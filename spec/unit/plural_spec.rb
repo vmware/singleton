@@ -5,7 +5,7 @@ describe SgtnClient do
   describe "Plural" do
 
     before :each do
-      SgtnClient.config.vip_server = nil
+      Sgtn.vip_server = nil
     end
 
     it "getString_p_bundle_does_not_exist_use_fallback_bundle" do
