@@ -7,8 +7,8 @@ describe 'Cache' do
   end
 
   before :each do
-    Sgtn.config.vip_server = nil
-    Sgtn.config.cache_expiry_period = 1
+    Sgtn.vip_server = nil
+    Sgtn.cache_expiry_period = 1
   end
 
   it 'GETTranslation' do

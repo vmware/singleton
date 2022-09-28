@@ -11,8 +11,7 @@ def wait_threads_finish
 end
 
 def expire_cache(id)
-  cache_item = get_cache(id)
-  cache_item.last_update = Time.at(0)
+  get_cache(id)&.last_update = Time.at(0)
 end
 
 def clear_cache(loader = Sgtn.config.instance_variable_get(:@loader))

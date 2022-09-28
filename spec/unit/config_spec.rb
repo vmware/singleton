@@ -27,7 +27,7 @@ describe SgtnClient::Config do
       include_context 'webmock'
       let(:stubs) { [] }
       before :all do
-        Sgtn.config.vip_server = singleton_server
+        Sgtn.vip_server = singleton_server
       end
 
       before :each do

@@ -5,7 +5,7 @@ describe SgtnClient do
   describe "OfflineAPI" do
 
     before :all do
-      Sgtn.config.vip_server = nil
+      Sgtn.vip_server = nil
     end
 
     it "GET" do

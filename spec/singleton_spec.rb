@@ -169,12 +169,12 @@ describe Sgtn, :include_helpers, :extend_helpers do
   it "#don't repeat to access server for failed bundles" do
     err_msg = 'temporary error'
     expect(Sgtn.config.loader).to receive(:get_bundle).with(component, locale).once.and_raise(SgtnClient::SingletonError.new(err_msg)).ordered
-    expect(Sgtn.config.loader).to receive(:get_bundle).with(component, source_locale).once.and_call_original.ordered
+    expect(Sgtn.config.loader).to receive(:get_bundle).with(component, source_locale).twice.and_call_original.ordered
 
     expect(SgtnClient::LocaleUtil.get_best_locale(locale, component)).to eq locale
 
-    # fail first time
-    expect { SgtnClient::Translation.send(:get_bundle!, component, locale) }.to raise_error(err_msg)
+    # fail first time for zh-Hans and return source
+    expect(Sgtn.translate!(key, component, locale)).to eq en_value
 
     # return source second time
     expect(Sgtn.get_translations(component, locale)['locale']).to eq source_locale
