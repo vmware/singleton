@@ -13,6 +13,10 @@ module SgtnClient # :nodoc:
   class I18nBackend
     def initialize(component)
       @component = component
+      @translation = Class.new do
+        include SgtnClient::Translation::Implementation
+        include SgtnClient::Pseudo if SgtnClient.config.pseudo_mode
+      end.new
     end
 
     def initialized?
@@ -34,13 +38,17 @@ module SgtnClient # :nodoc:
     def translations; end
 
     def exists?(locale, key, options)
-      !!(translate(locale, key, options) { nil })
+      flat_key = I18n::Backend::Flatten.normalize_flat_keys(locale, key, options[:scope], '.')
+      result = @translation.get_translation!(flat_key, @component, locale)
+      !result.nil? && result != ''
+    rescue StandardError
+      false
     end
 
     def translate(locale, key, options)
       flat_key = I18n::Backend::Flatten.normalize_flat_keys(locale, key, options[:scope], '.')
       values = options.except(*I18n::RESERVED_KEYS)
-      Translation.translate(flat_key, @component, locale, **values) { nil }
+      @translation.translate(flat_key, @component, locale, **values) { nil }
     end
 
     def localize(locale, object, format, options) end
