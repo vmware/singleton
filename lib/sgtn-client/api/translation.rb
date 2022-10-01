@@ -68,11 +68,7 @@ module SgtnClient
           return if result.nil?
         end
 
-        if kwargs.empty?
-          result
-        else
-          result.localize(actual_locale) % kwargs
-        end
+        kwargs.empty? ? result : result.localize(actual_locale) % kwargs
       end
       alias t! translate!
 

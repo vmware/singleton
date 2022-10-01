@@ -2,7 +2,7 @@ describe SgtnClient::Pseudo, :include_helpers, :extend_helpers do
   include_context 'reset client'
 
   before :all do
-    Sgtn.config.pseudo_mode = true
+    Sgtn.pseudo_mode = true
   end
 
   it 'should be able to get pseudo translation' do
