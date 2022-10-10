@@ -37,7 +37,7 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 	public boolean preHandle(final HttpServletRequest request, final HttpServletResponse response, final Object handler)
 			throws Exception {
 		if (StringUtils.equalsIgnoreCase(request.getParameter(ConstantsKeys.COLLECT_SOURCE), ConstantsKeys.TRUE)
-				|| request.getMethod().equalsIgnoreCase(HttpMethod.GET.name())) {
+				|| request.getMethod().equalsIgnoreCase(HttpMethod.PUT.name())) {
 			PrintWriter writer = response.getWriter();
 			if (allowSourceCollection.equalsIgnoreCase(ConstantsKeys.TRUE)) {
 				final String token = request.getHeader(CSP_AUTH_TOKEN);
