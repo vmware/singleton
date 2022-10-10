@@ -92,4 +92,11 @@ module Helpers
   def nonexistent_response
     File.new('spec/fixtures/mock_responses/nonexistent').read
   end
+
+  def reset_client
+    Sgtn.config.update(Helpers::CONFIG_HASH)
+    Sgtn.instance_variable_set(:@translation, nil)
+    Sgtn.config.instance_variable_set(:@loader, nil)
+    SgtnClient::LocaleUtil.send(:reset_locale_data, :available_locales)
+  end
 end

@@ -5,7 +5,7 @@ describe SgtnClient do
   describe "Locale" do
 
     before :each do
-      SgtnClient.config.vip_server = nil
+      Sgtn.vip_server = nil
       RequestStore.store[:locale] = 'zh-Hans'
       RequestStore.store[:component] = 'JAVA'
     end

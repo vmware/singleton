@@ -39,54 +39,56 @@ module SgtnClient
         get_translations(component, locale)
       end
 
-      def translate(key, component, locale = nil, **kwargs)
+      def get_translation!(key, component, locale)
+        [get_bundle!(component, locale)[key], locale]
+      end
+
+      def translate(key, component, locale = nil, **kwargs, &block)
+        translate!(key, component, locale, **kwargs, &block)
+      rescue StandardError => e
+        SgtnClient.logger.debug { "[#{method(__callee__).owner}.#{__callee__}] {#{key}, #{component}, #{locale}}. #{e}" }
+        key
+      end
+      alias t translate
+
+      # raise error when translation is not found
+      def translate!(key, component, locale = nil, **kwargs, &block)
         SgtnClient.logger.debug { "[#{method(__callee__).owner}.#{__callee__}] key: #{key}, component: #{component}, locale: #{locale}, args: #{kwargs}" }
 
         begin
           best_match_locale = LocaleUtil.get_best_locale(locale || SgtnClient.locale, component)
-          messages, actual_locale = get_bundle_with_fallback(component, best_match_locale)
-          result = messages&.fetch(key, nil)
+          result, actual_locale = get_translation!(key, component, best_match_locale)
         rescue StandardError => e
-          SgtnClient.logger.debug { "[#{method(__callee__).owner}.#{__callee__}] translation is missing. {#{key}, #{component}, #{locale}}. #{e}" }
-          result = nil
+          raise e if block.nil?
         end
-
         if result.nil?
-          return key unless block_given?
+          raise SingletonError, 'translation is missing.' if block.nil?
 
-          result = yield
+          result = block.call
           return if result.nil?
         end
 
-        if kwargs.empty?
-          result
-        else
-          result.localize(actual_locale) % kwargs
-        end
+        kwargs.empty? ? result : result.localize(actual_locale) % kwargs
       end
-      alias t translate
+      alias t! translate!
 
       def get_translations(component, locale = nil)
+        get_translations!(component, locale)
+      rescue StandardError => e
+        SgtnClient.logger.error "[#{method(__callee__).owner}.#{__callee__}] {#{component}, #{locale}}. #{e}"
+        nil
+      end
+
+      def get_translations!(component, locale = nil)
         SgtnClient.logger.debug { "[#{method(__callee__).owner}.#{__callee__}] component: #{component}, locale: #{locale}" }
 
         best_match_locale = LocaleUtil.get_best_locale(locale || SgtnClient.locale, component)
-        messages, actual_locale = get_bundle_with_fallback(component, best_match_locale)
+        messages = get_bundle!(component, best_match_locale)
 
-        { 'component' => component, 'locale' => actual_locale, 'messages' => messages } if messages
-      rescue StandardError => e
-        SgtnClient.logger.error "[#{method(__callee__).owner}.#{__callee__}] translations are missing. {#{component}, #{locale}}. #{e}"
-        nil
+        { 'component' => component, 'locale' => best_match_locale, 'messages' => messages } if messages
       end
 
       private
-
-      def get_bundle(component, locale)
-        get_bundle!(component, locale)
-      rescue StandardError => e
-        SgtnClient.logger.error "[#{method(__callee__).owner}.#{__callee__}] failed to get a bundle. component: #{component}, locale: #{locale}"
-        SgtnClient.logger.error e
-        nil
-      end
 
       def get_bundle!(component, locale)
         SgtnClient.config.loader.get_bundle(component, locale)
@@ -98,20 +100,9 @@ module SgtnClient
         SgtnClient.config.notify_observers(:available_locales, component)
         raise
       end
-
-      def get_bundle_with_fallback(component, locale)
-        messages = get_bundle(component, locale)
-        return messages, locale if messages
-
-        LocaleUtil.locale_fallbacks.each do |l|
-          next if l == locale
-
-          messages = get_bundle(component, l)
-          return messages, l if messages
-        end
-      end
     end
 
     extend Implementation
+    extend Fallbacks
   end
 end

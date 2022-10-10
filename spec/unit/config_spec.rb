@@ -5,7 +5,7 @@ describe SgtnClient::Config do
   describe 'load_config' do
     it 'not define configuration' do
       begin
-        SgtnClient.load('./spec/config/sgtnclient.yml', 'aa')
+        Sgtn.load_config('./spec/config/sgtnclient.yml', 'aa')
       rescue StandardError => e
         expect(e.message).to eq 'Configuration[aa] NotFound'
       end
@@ -13,12 +13,12 @@ describe SgtnClient::Config do
   end
 
   describe '#availale bundles/locales - Config', :include_helpers, :extend_helpers do
-    subject { SgtnClient.config }
+    subject { Sgtn.config }
     it_behaves_like 'Available Bundles' do
       include_context 'reset client'
 
       before do
-        SgtnClient.config.instance_variable_set(:@loader, nil)
+        Sgtn.config.instance_variable_set(:@loader, nil)
       end
     end
 
@@ -27,7 +27,7 @@ describe SgtnClient::Config do
       include_context 'webmock'
       let(:stubs) { [] }
       before :all do
-        SgtnClient.config.vip_server = singleton_server
+        Sgtn.vip_server = singleton_server
       end
 
       before :each do
@@ -78,7 +78,7 @@ describe SgtnClient::Config do
     describe '#available_locales expired' do
       include_context 'reset client' do
         before(:all) do
-          @config = SgtnClient.config
+          @config = Sgtn.config
         end
       end
 
@@ -103,7 +103,7 @@ describe SgtnClient::Config do
 
         ### data is changed
         expire_cache(SgtnClient::TranslationLoader::CONSTS::AVAILABLE_BUNDLES_KEY)
-        expect(SgtnClient.config.loader.loaders[1]).to(receive(:available_bundles).with(no_args).once { Set[SgtnClient::Common::BundleID.new(component, 'fr')] })
+        expect(Sgtn.config.loader.loaders[1]).to(receive(:available_bundles).with(no_args).once { Set[SgtnClient::Common::BundleID.new(component, 'fr')] })
 
         ### return expired data
         locales1 = subject.available_locales(component)
