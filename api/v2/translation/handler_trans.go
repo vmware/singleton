@@ -15,6 +15,7 @@ import (
 
 	"github.com/emirpasic/gods/sets/linkedhashset"
 	"github.com/gin-gonic/gin"
+	jsoniter "github.com/json-iterator/go"
 )
 
 var l3Service translation.Service = translationservice.GetService()
@@ -268,7 +269,8 @@ func ConvertBundleToInternal(apiData *UpdateBundle) []*translation.Bundle {
 	internalData := make([]*translation.Bundle, 0, len(apiData.Translation))
 	for _, ad := range apiData.Translation {
 		id := translation.BundleID{Name: productName, Version: version, Locale: ad.Locale, Component: ad.Component}
-		internalData = append(internalData, &translation.Bundle{ID: id, Messages: ad.Messages})
+		marshaled, _ := jsoniter.Marshal(ad.Messages)
+		internalData = append(internalData, &translation.Bundle{ID: id, Messages: jsoniter.Get(marshaled)})
 	}
 
 	return internalData

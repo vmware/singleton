@@ -37,17 +37,6 @@ definitions:
       version:
         type: string
     type: object
-  translation.BundleData:
-    properties:
-      component:
-        type: string
-      locale:
-        type: string
-      messages:
-        type: string
-    required:
-    - messages
-    type: object
   translation.UpdateBundle:
     properties:
       creation:
@@ -61,12 +50,21 @@ definitions:
         type: string
       translation:
         items:
-          $ref: '#/definitions/translation.BundleData'
+          properties:
+            component:
+              type: string
+            locale:
+              type: string
+            messages:
+              additionalProperties:
+                type: string
+              required:
+              - messages
+              type: object
+          type: object
         type: array
       version:
         type: string
-    required:
-    - translation
     type: object
   translation.UpdateTranslationDTO:
     properties:
