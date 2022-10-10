@@ -40,7 +40,7 @@ module SgtnClient
       end
 
       def get_translation!(key, component, locale)
-        [get_bundle!(component, locale)[key], locale]
+        [get_bundle!(component, locale).fetch(key), locale]
       end
 
       def translate(key, component, locale = nil, **kwargs, &block)
