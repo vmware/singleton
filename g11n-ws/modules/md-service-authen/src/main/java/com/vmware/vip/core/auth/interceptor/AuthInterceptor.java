@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
@@ -35,7 +36,8 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 	@Override
 	public boolean preHandle(final HttpServletRequest request, final HttpServletResponse response, final Object handler)
 			throws Exception {
-		if (StringUtils.equalsIgnoreCase(request.getParameter(ConstantsKeys.COLLECT_SOURCE), ConstantsKeys.TRUE)) {
+		if (StringUtils.equalsIgnoreCase(request.getParameter(ConstantsKeys.COLLECT_SOURCE), ConstantsKeys.TRUE)
+				|| request.getMethod().equalsIgnoreCase(HttpMethod.GET.name())) {
 			PrintWriter writer = response.getWriter();
 			if (allowSourceCollection.equalsIgnoreCase(ConstantsKeys.TRUE)) {
 				final String token = request.getHeader(CSP_AUTH_TOKEN);
