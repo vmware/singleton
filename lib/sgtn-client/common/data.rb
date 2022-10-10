@@ -43,7 +43,7 @@ module SgtnClient
       end
 
       def self.age
-        @age ||= SgtnClient.config.cache_expiry_period * 60
+        @age ||= (SgtnClient.config.cache_expiry_period || 24 * 60) * 60
       end
     end
 
