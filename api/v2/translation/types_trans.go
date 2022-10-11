@@ -53,9 +53,13 @@ type (
 	}
 	UpdateBundle struct {
 		ReleaseID
-		Translation []*BundleData `json:"translation" binding:"required,dive"`
-		DataOrigin  string        `json:"dataOrigin"`
-		Creation    struct {
+		Translation []struct {
+			Component string            `json:"component" binding:"component"`
+			Locale    string            `json:"locale" binding:"locale"`
+			Messages  map[string]string `json:"messages" binding:"required"`
+		} `json:"translation" binding:"required,dive"`
+		DataOrigin string `json:"dataOrigin"`
+		Creation   struct {
 			OperationID string `json:"operationid"`
 		} `json:"creation"`
 	}

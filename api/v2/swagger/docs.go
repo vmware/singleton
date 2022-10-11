@@ -1096,28 +1096,8 @@ var doc = `{
                 }
             }
         },
-        "translation.BundleData": {
-            "type": "object",
-            "required": [
-                "messages"
-            ],
-            "properties": {
-                "component": {
-                    "type": "string"
-                },
-                "locale": {
-                    "type": "string"
-                },
-                "messages": {
-                    "type": "string"
-                }
-            }
-        },
         "translation.UpdateBundle": {
             "type": "object",
-            "required": [
-                "translation"
-            ],
             "properties": {
                 "creation": {
                     "type": "object",
@@ -1136,7 +1116,24 @@ var doc = `{
                 "translation": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/translation.BundleData"
+                        "type": "object",
+                        "properties": {
+                            "component": {
+                                "type": "string"
+                            },
+                            "locale": {
+                                "type": "string"
+                            },
+                            "messages": {
+                                "type": "object",
+                                "required": [
+                                    "messages"
+                                ],
+                                "additionalProperties": {
+                                    "type": "string"
+                                }
+                            }
+                        }
                     }
                 },
                 "version": {

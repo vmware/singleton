@@ -61,13 +61,13 @@ func TestPseudoSingleString(t *testing.T) {
 		code                int
 	}{
 		{"zh-Hans", "one.arg", "", true,
-			`{"response":{"code":200,"message":"OK"},"data":{"component":"sunglow","key":"one.arg","locale":"latest","productName":"VPE","pseudo":true,"source":"","status":"The pseudo translation is found.","translation":"#@test one argument {0}#@","version":"1.0.0"}}`,
+			`{"response":{"code":200,"message":"OK"},"data":{"component":"sunglow","key":"one.arg","locale":"latest","productName":"VPE","pseudo":true,"source":"","status":"The pseudo translation is found","translation":"#@test one argument {0}#@","version":"1.0.0"}}`,
 			http.StatusOK},
 		{"zh-Hans", "nonexistent", "", true,
-			`{"response":{"code":200,"message":"OK"},"data":{"component":"sunglow","key":"nonexistent","locale":"latest","productName":"VPE","pseudo":true,"source":"","status":"The pseudo translation is not found, return the received source with pseudo tag.","translation":"@@@@","version":"1.0.0"}}`,
+			`{"response":{"code":200,"message":"OK"},"data":{"component":"sunglow","key":"nonexistent","locale":"latest","productName":"VPE","pseudo":true,"source":"","status":"The pseudo translation is not found, return the received source with pseudo tag","translation":"@@@@","version":"1.0.0"}}`,
 			http.StatusOK},
 		{"zh-Hans", "nonexistent", "xxx", true,
-			`{"response":{"code":200,"message":"OK"},"data":{"component":"sunglow","key":"nonexistent","locale":"latest","productName":"VPE","pseudo":true,"source":"xxx","status":"The pseudo translation is not found, return the received source with pseudo tag.","translation":"@@xxx@@","version":"1.0.0"}}`,
+			`{"response":{"code":200,"message":"OK"},"data":{"component":"sunglow","key":"nonexistent","locale":"latest","productName":"VPE","pseudo":true,"source":"xxx","status":"The pseudo translation is not found, return the received source with pseudo tag","translation":"@@xxx@@","version":"1.0.0"}}`,
 			http.StatusOK},
 	} {
 		d := d
