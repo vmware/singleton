@@ -201,6 +201,9 @@ func ParseLocale(originalLocale string) *Locale {
 			} else if j := common.ContainsIgnoreCase(langData.Territories, p); j >= 0 {
 				locale.Region = langData.Territories[j]
 				return &locale
+			} else if matched, _ := regexp.MatchString(`^\d{3}$`, p); matched { // to process number regions
+				locale.Region = p
+				return &locale
 			} else {
 				return nil
 			}
