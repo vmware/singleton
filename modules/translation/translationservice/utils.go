@@ -52,6 +52,9 @@ func PickupLocaleFromList(locales sets.Set, preferredLocale string) string {
 	}
 
 	normalizedOriginalLocale := coreutil.ParseLocale(originalLocale)
+	if normalizedOriginalLocale == nil {
+		return ""
+	}
 
 	chosenLocale := ""
 	for _, locale := range locales.Values() {
@@ -60,9 +63,6 @@ func PickupLocaleFromList(locales sets.Set, preferredLocale string) string {
 			return inLoopLocale
 		}
 
-		if normalizedOriginalLocale == nil {
-			continue
-		}
 		normalizedInLoopLocale := coreutil.ParseLocale(inLoopLocale)
 		if normalizedInLoopLocale == nil {
 			continue
