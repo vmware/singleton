@@ -1,6 +1,6 @@
 test: &default
 
-  # #Product Name
+  # # product Name
   product_name: test
 
   # # bundle version
@@ -23,6 +23,15 @@ test: &default
 
   # # the lowest level to be logged, default value is INFO
   log_level: DEBUG
+
+  # # to return pseudo translation
+  pseudo_mode: false
+
+  # # prefix to be used for pseudo translation, default value is '@@'
+  pseudo_prefix: "@@"
+
+  # # suffix to be used for pseudo translation, default value is same as prefix
+  pseudo_suffix: "@@"
 
 development:
   <<: *default
