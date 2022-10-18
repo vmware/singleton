@@ -37,6 +37,8 @@ logger = format_logger()
 
 BASE_URL: str = "https://127.0.0.1:8090"
 
+__RESOURCE_DIR__ = os.path.join(os.path.dirname(__file__), 'resource')
+
 
 class HttpCollection:
     """
@@ -48,11 +50,10 @@ class HttpCollection:
         self.id: str = str(uuid.uuid4())
         self.name: str = name
         self.http_session = requests.Session()
-        self.base_dir: str = os.getcwd()
         self.cases: list[dict] = self.read_json(file)
 
     def read_json(self, file: str) -> list[dict]:
-        file_path = os.path.join(self.base_dir, 'resource', file)
+        file_path = os.path.join(__RESOURCE_DIR__, file)
         with open(file_path, mode='r', encoding='utf-8') as f:
             return json.load(f)
 
