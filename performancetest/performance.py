@@ -23,22 +23,18 @@ thread_group.create_task(thread_number=2, duration=10, HttpCollection(2))
 thread_group.run()
 
 """
-import json
-import os
+import time
 import uuid
 import threading
-from typing import Optional
-import requests
 from queue import Queue
-from datetime import datetime, timedelta
-from my_log import format_logger
+from typing import Optional
 
-requests.packages.urllib3.disable_warnings()
-logger = format_logger()
+import requests
+from loguru import logger
+
+from utils import read_json
 
 BASE_URL: str = "https://127.0.0.1:8090"
-
-__RESOURCE_DIR__ = os.path.join(os.path.dirname(__file__), 'resource')
 
 
 class HttpCollection:
@@ -51,18 +47,12 @@ class HttpCollection:
         self.id: str = str(uuid.uuid4())
         self.name: str = name
         self.http_session = requests.Session()
-        self.cases: list[dict] = self.read_json(file)
-
-    def read_json(self, file: str) -> list[dict]:
-        file_path = os.path.join(__RESOURCE_DIR__, file)
-        with open(file_path, mode='r', encoding='utf-8') as f:
-            return json.load(f)
+        self.testcases: list[dict] = read_json(file)
 
     def validate(self, response: requests.Response, case: dict):
         error_msg = (f'Actual status_code: {response.status_code} '
                      f'Expected status_code: {200} are inconsistent.')
         assert response.status_code == 200, error_msg
-        logger.debug(response.json())
         code: int = response.json().get("response").get("code")
         error_msg2 = (f'Actual status_code: {code} '
                       f'Expected status_code: {case.get("response").get("code")} are inconsistent.')
@@ -79,6 +69,7 @@ class HttpCollection:
         url: str = BASE_URL + case.get('url')
         req_json: dict = case.get('request_data')
         case_name: str = case.get("name")
+
         thread_id: str = threading.current_thread().name
         resp_data: dict = {
             'success': False,
@@ -99,11 +90,12 @@ class HttpCollection:
             except AssertionError as e:
                 resp_data['response_time'] = round(r.elapsed.total_seconds() * 1000, 3)
                 resp_data['data'] = r.json()
-                logger.error((f'[{case_name}] validate failed.\n'
+                logger.error((f'TestCase: <{case_name}> execute failed.\n'
                               f'{"*" * 30} request_data {"*" * 30}\n'
-                              f'url={url}\n'
-                              f'json={req_json}\n'
-                              f'error_msg={e}\n'
+                              f'url= {url}\n'
+                              f'json= {req_json}\n'
+                              f"response={r.json()}\n"
+                              f'error_msg= {e}\n'
                               f'{"*" * 74}\n'))
 
             except Exception as e:
@@ -114,7 +106,7 @@ class HttpCollection:
                 resp_data['response_time'] = round(r.elapsed.total_seconds() * 1000, 3)
                 resp_data['data'] = r.json()
                 resp_data['success'] = True
-                logger.info(f'[{case_name}] success, response_time={resp_data["response_time"]}.')
+                logger.debug(f'TestCase: <{case_name}> execute success!')
 
         q.put(resp_data)
 
@@ -125,17 +117,17 @@ class HttpCollection:
         """
 
         if duration:
-            start: float = datetime.now().timestamp()
-            stop: float = (datetime.now() + timedelta(seconds=duration)).timestamp()
+            start_tsp: float = time.time()
+            current_tsp: float = time.time()
 
-            while start <= stop:
-                for case in self.cases:
+            while current_tsp - start_tsp <= duration:
+                for case in self.testcases:
                     self.execute(case, q)
-                    start = datetime.now().timestamp()
+                    current_tsp: float = time.time()
 
         else:
             for i in range(loop_count):
-                for case in self.cases:
+                for case in self.testcases:
                     self.execute(case, q)
 
 
@@ -160,12 +152,12 @@ class ThreadGroup:
         return self
 
     def __call__(self, *args, **kwargs):
-        logger.info(f'ThreadGroups [{threading.current_thread().name}] start')
+        logger.debug(f'ThreadGroups: <{threading.current_thread().name}> start running!')
         for _task in self.group:
             _task.start()
         for _task in self.group:
             _task.join()
-        logger.info(f'ThreadGroups [{threading.current_thread().name}] done!!!')
+        logger.debug(f'ThreadGroups: <{threading.current_thread().name}>  done!!!')
 
 
 class PMeter:
@@ -230,31 +222,30 @@ class PMeter:
 
     def analysis(self):
         for collection, data in self.collections_map.items():
-            logger.info(f'{"-" * 20} analysis {collection.name} start!!! {"-" * 20}')
+            logger.info("@" + f' Analysis <{collection.name}> '.center(165, '@') + "@")
             self.average(data)
-            self.median(data)
-            self.ninety(data)
-            logger.info(f'{"-" * 20} analysis {collection.name} end!!! {"-" * 20}')
-
-        logger.info(f'*********** Finished analysis ************')
+            # self.median(data)
+            # self.ninety(data)
 
     def average(self, collection_data: dict[str, list[dict]]):
-        logger.info(f'{"-" * 20} start calculating the average {"-" * 20}')
+        logger.info("|" + f"Average Response Time Table".center(166, '-') + "|")
+        logger.info("|" + f"response_time".center(15, '-') + "|" + f"testcase".center(150, '-') + "|")
         for case_name, response_list in collection_data.items():
             response_list: list[dict]
 
             response_time_list: list[float] = [response_time.get('response_time') for response_time in response_list]
             avg: float = round(sum(response_time_list) / len(response_time_list), 3)
-            logger.info(f'[{case_name}] average response_time is {avg}ms')
+            logger.info("|" + f"{avg}ms".ljust(15) + "|" + f"{case_name}".ljust(150) + "|")
+            logger.info("|" + f"-".center(166, '-') + "|")
 
     def median(self, collections: dict[str, list]):
-        logger.debug(f'{"-" * 20} start calculating the Median {"-" * 20}')
+        logger.info(f'{"-" * 20} start calculating the Median {"-" * 20}')
         for case_name, response_list in collections.items():
             response_time_list: list[float] = [response_time.get('response_time') for response_time in response_list]
             response_time_list.sort()
             size: int = len(response_time_list)
             median_time: float = round(response_time_list[size // 2], 3)
-            logger.debug(f'{case_name} Response Time Median is {median_time}ms')
+            logger.info(f'TestCase: <{case_name}> Median Response Time is {median_time}ms.')
 
     def ninety(self, collections: dict[str, list]):
         logger.debug(f'{"-" * 20} start calculating the 90% Line {"-" * 20}')
@@ -275,4 +266,3 @@ if __name__ == '__main__':
     pmeter.run()
     pmeter.analysis()
     pmeter.exit()
-
