@@ -62,7 +62,7 @@ class HttpCollection:
         error_msg = (f'Actual status_code: {response.status_code} '
                      f'Expected status_code: {200} are inconsistent.')
         assert response.status_code == 200, error_msg
-
+        logger.debug(response.json())
         code: int = response.json().get("response").get("code")
         error_msg2 = (f'Actual status_code: {code} '
                       f'Expected status_code: {case.get("response").get("code")} are inconsistent.')
