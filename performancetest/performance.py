@@ -21,6 +21,7 @@ thread_group = ThreadGroup()
 thread_group.create_task(thread_number=2, duration=60, HttpCollection(1))
 thread_group.create_task(thread_number=2, duration=10, HttpCollection(2))
 thread_group.run()
+
 """
 import json
 import os
@@ -274,3 +275,4 @@ if __name__ == '__main__':
     pmeter.run()
     pmeter.analysis()
     pmeter.exit()
+

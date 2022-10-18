@@ -5,7 +5,7 @@ require 'singleton-client'
 #include Singleton
 describe "Translation test" do
     before :each do
-        SgtnClient::Config.instance_variable_set(:@loader, nil)
+        SgtnClient.config.instance_variable_set('@loader', nil)
         Sgtn.load_config("./config/sgtnclient.yml", "onlinemode")
         #SgtnClient::Source.loadBundles("default")
     end
