@@ -5,6 +5,14 @@ require 'forwardable'
 require_relative 'singleton-ruby'
 
 module Sgtn # :nodoc:
+  autoload :PseudoTranslation, 'sgtn/pseudo'
+  autoload :I18nBackend, 'sgtn/i18n_backend'
+
+  class Translation
+    include SgtnClient::Translation::Implementation
+    include SgtnClient::Fallbacks
+  end
+
   class << self
     extend Forwardable
 
@@ -30,10 +38,7 @@ module Sgtn # :nodoc:
     private
 
     def translation
-      @translation ||= Class.new do
-        include SgtnClient::Fallbacks, SgtnClient::Translation::Implementation
-        include SgtnClient::Pseudo if Sgtn.pseudo_mode
-      end.new
+      Sgtn.pseudo_mode ? @pseudo_translation : @regular_translation
     end
 
     def_delegator SgtnClient::Config, :instance, :config
@@ -46,5 +51,6 @@ module Sgtn # :nodoc:
              } => :config
   end
 
-  I18nBackend = SgtnClient::I18nBackend
+  @regular_translation = Translation.new
+  @pseudo_translation = PseudoTranslation.new
 end

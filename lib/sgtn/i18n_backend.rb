@@ -3,7 +3,7 @@
 
 require 'i18n'
 
-module SgtnClient # :nodoc:
+module Sgtn # :nodoc:
   # When integrating Singleton in a client application that is already using [I18n::Backend (https://www.rubydoc.info/github/svenfuchs/i18n/master/I18n/Backend/), it would be useful to have Singleton override the said module in order to minimize necessary changes. Here is a common usage:
   #
   #   I18n::Backend::Simple.include(I18n::Backend::Fallbacks) # add fallbacks behavior to current backend
@@ -15,7 +15,10 @@ module SgtnClient # :nodoc:
       @component = component
       @translation = Class.new do
         include SgtnClient::Translation::Implementation
-        include SgtnClient::Pseudo if SgtnClient.config.pseudo_mode
+      end.new
+      @pseudo_translation = Class.new do
+        include SgtnClient::Translation::Implementation
+        include Sgtn::PseudoTranslation::Implementation
       end.new
     end
 
@@ -39,7 +42,7 @@ module SgtnClient # :nodoc:
 
     def exists?(locale, key, options)
       flat_key = I18n::Backend::Flatten.normalize_flat_keys(locale, key, options[:scope], '.')
-      @translation.get_translation!(flat_key, @component, locale)
+      translation.get_string!(flat_key, @component, locale)
       true
     rescue StandardError
       false
@@ -48,9 +51,15 @@ module SgtnClient # :nodoc:
     def translate(locale, key, options)
       flat_key = I18n::Backend::Flatten.normalize_flat_keys(locale, key, options[:scope], '.')
       values = options.except(*I18n::RESERVED_KEYS)
-      @translation.translate(flat_key, @component, locale, **values) { nil }
+      translation.translate(flat_key, @component, locale, **values) { nil }
     end
 
     def localize(locale, object, format, options) end
+
+    private
+
+    def translation
+      Sgtn.pseudo_mode ? @pseudo_translation : @translation
+    end
   end
 end

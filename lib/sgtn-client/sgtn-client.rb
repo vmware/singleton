@@ -10,7 +10,6 @@ module SgtnClient # :nodoc:
   autoload :SingleOperation,    'sgtn-client/common/single_operation'
   autoload :Translation,        'sgtn-client/api/translation'
   autoload :Fallbacks,          'sgtn-client/fallbacks'
-  autoload :Pseudo,             'sgtn-client/pseudo'
   autoload :T,                  'sgtn-client/api/t'
   autoload :Source,             'sgtn-client/api/source'
   autoload :Config,             'sgtn-client/core/config'
@@ -19,7 +18,6 @@ module SgtnClient # :nodoc:
   autoload :LocaleUtil,         'sgtn-client/util/locale-util'
   autoload :StringUtil,         'sgtn-client/util/string-util'
   autoload :SingletonError,     'sgtn-client/exceptions'
-  autoload :I18nBackend,        'sgtn-client/i18n_backend'
 
   module Formatters # :nodoc:
     autoload :PluralFormatter, 'sgtn-client/formatters/plurals/plural_formatter'

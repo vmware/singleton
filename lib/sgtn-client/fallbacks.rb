@@ -3,7 +3,7 @@
 
 module SgtnClient
   module Fallbacks # :nodoc:
-    def get_translation!(key, component, locale)
+    def get_string!(key, component, locale)
       error = nil
       localechain(locale) do |l|
         return super(key, component, l)

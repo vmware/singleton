@@ -39,7 +39,7 @@ module SgtnClient
         get_translations(component, locale)
       end
 
-      def get_translation!(key, component, locale)
+      def get_string!(key, component, locale)
         [get_bundle!(component, locale).fetch(key), locale]
       end
 
@@ -57,7 +57,7 @@ module SgtnClient
 
         begin
           best_match_locale = LocaleUtil.get_best_locale(locale || SgtnClient.locale, component)
-          result, actual_locale = get_translation!(key, component, best_match_locale)
+          result, actual_locale = get_string!(key, component, best_match_locale)
         rescue StandardError => e
           raise e if block.nil?
         end
