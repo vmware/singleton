@@ -53,14 +53,11 @@ class HttpCollection:
         error_msg = (f'Actual status_code: {response.status_code} '
                      f'Expected status_code: {200} are inconsistent.')
         assert response.status_code == 200, error_msg
-        try:
-            code: int = response.json().get("response").get("code")
-        except Exception as e:
-            logger.critical(e)
-            logger.error(response.json())
-            exit(500)
-        error_msg2 = (f'Actual status_code: {code} '
-                      f'Expected status_code: {case.get("response").get("code")} are inconsistent.')
+
+        code: int = response.json().get("response", {}).get("code", -1)
+        error_msg2 = (f'Actual return_code: {code} '
+                      f'Expected return_code: {case.get("response").get("code")} are inconsistent.'
+                      f'The Actual Response: {response.json()}')
         assert code == case.get("response").get("code"), error_msg2
 
         expected_validate_time: float = case.get("validate_time")
@@ -227,21 +224,21 @@ class PMeter:
 
     def analysis(self):
         for collection, data in self.collections_map.items():
-            logger.info("@" + f' Analysis <{collection.name}> '.center(165, '@') + "@")
+            logger.info("@" + f' Analysis <{collection.name}> '.center(138, '@') + "@")
             self.average(data)
             # self.median(data)
             # self.ninety(data)
 
     def average(self, collection_data: dict[str, list[dict]]):
-        logger.info("|" + f"Average Response Time Table".center(166, '-') + "|")
-        logger.info("|" + f"response_time".center(15, '-') + "|" + f"testcase".center(150, '-') + "|")
+        logger.info("|" + f"Average Response Time Table".center(139, '-') + "|")
+        logger.info("|" + f"response_time".center(13, '-') + "|" + f"testcase".center(125, '-') + "|")
         for case_name, response_list in collection_data.items():
             response_list: list[dict]
 
             response_time_list: list[float] = [response_time.get('response_time') for response_time in response_list]
             avg: float = round(sum(response_time_list) / len(response_time_list), 3)
-            logger.info("|" + f"{avg}ms".ljust(15) + "|" + f"{case_name}".ljust(150) + "|")
-            logger.info("|" + f"-".center(166, '-') + "|")
+            logger.info("|" + f"{avg}ms".ljust(13) + "|" + f"{case_name}".ljust(125) + "|")
+            logger.info("|" + f"-".center(139, '-') + "|")
 
     def median(self, collections: dict[str, list]):
         logger.info(f'{"-" * 20} start calculating the Median {"-" * 20}')
