@@ -11,6 +11,7 @@ module Sgtn # :nodoc:
   class Translation
     include SgtnClient::Translation::Implementation
     include SgtnClient::Fallbacks
+    include Sgtn::PseudoTranslation::Implementation
   end
 
   class << self
@@ -35,14 +36,8 @@ module Sgtn # :nodoc:
       end
     end
 
-    private
-
-    def translation
-      Sgtn.pseudo_mode ? @pseudo_translation : @regular_translation
-    end
-
     def_delegator SgtnClient::Config, :instance, :config
-    delegate %i[translate! t! translate t get_translations! get_translations] => :translation,
+    delegate %i[translate! t! translate t get_translations! get_translations] => :@translation_inst,
              %i[locale locale=] => SgtnClient,
              %i[logger product_name version vip_server translation_bundle
                 source_bundle cache_expiry_period log_file log_level
@@ -51,6 +46,5 @@ module Sgtn # :nodoc:
              } => :config
   end
 
-  @regular_translation = Translation.new
-  @pseudo_translation = PseudoTranslation.new
+  @translation_inst = Translation.new
 end
