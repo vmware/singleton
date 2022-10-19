@@ -15,7 +15,7 @@ module Sgtn # :nodoc:
       @component = component
       @translation = Class.new do
         include SgtnClient::Translation::Implementation
-        include Sgtn::PseudoTranslation::Implementation
+        include Sgtn::Pseudo
       end.new
     end
 

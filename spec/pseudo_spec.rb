@@ -1,7 +1,7 @@
 #  Copyright 2022 VMware, Inc.
 #  SPDX-License-Identifier: EPL-2.0
 
-describe Sgtn::PseudoTranslation, :include_helpers, :extend_helpers do
+describe Sgtn::Pseudo, :include_helpers, :extend_helpers do
   include_context 'reset client'
 
   before :all do
