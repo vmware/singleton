@@ -30,6 +30,7 @@ from queue import Queue
 from typing import Optional
 
 import requests
+from requests.exceptions import RequestException
 from loguru import logger
 
 from utils import read_json
@@ -50,21 +51,26 @@ class HttpCollection:
         self.testcases: list[dict] = read_json(file)
 
     def validate(self, response: requests.Response, case: dict):
+        # assert http status_code == 200
         error_msg = (f'Actual status_code: {response.status_code} '
                      f'Expected status_code: {200} are inconsistent.')
         assert response.status_code == 200, error_msg
 
+        # assert response return_code
         code: int = response.json().get("response", {}).get("code", -1)
         error_msg2 = (f'Actual return_code: {code} '
                       f'Expected return_code: {case.get("response").get("code")} are inconsistent.'
                       f'The Actual Response: {response.json()}')
         assert code == case.get("response").get("code"), error_msg2
 
+        # assert response_time
         expected_validate_time: float = case.get("validate_time")
         response_time: float = round(response.elapsed.total_seconds() * 1000, 3)
         error_msg3 = (f'Actual response time: {"%.3f" % response_time}ms '
                       f'Expected response time: {expected_validate_time}ms')
         assert response_time < expected_validate_time, error_msg3
+
+        # assert response_content
 
     def execute(self, case: dict, q: Queue) -> None:
         method: str = case.get('method')
@@ -75,7 +81,7 @@ class HttpCollection:
         thread_id: str = threading.current_thread().name
         resp_data: dict = {
             'success': False,
-            'response_time': 1000,
+            'response_time': 10000000000,
             'data': {},
             'thread_id': thread_id,
             'case_name': case_name
@@ -83,16 +89,24 @@ class HttpCollection:
 
         try:
             r: requests.Response = self.http_session.request(method, url, json=req_json, verify=False)
-        except Exception as e:
-            logger.error(f'[{case_name}] request failed, {e}')
+        except RequestException as e:
+            # http request error
+            logger.error((f'[{thread_id}] TestCase: <{case_name}> execute failed.\n'
+                          f'{"*" * 30} request_data {"*" * 30}\n'
+                          f'url= {url}\n'
+                          f'json= {req_json}\n'
+                          f"response={{}}\n"
+                          f'error_msg= {e}\n'
+                          f'{"*" * 74}\n'))
 
         else:
+            # http request ok and validate
             try:
                 self.validate(r, case)
             except AssertionError as e:
                 resp_data['response_time'] = round(r.elapsed.total_seconds() * 1000, 3)
                 resp_data['data'] = r.json()
-                logger.error((f'TestCase: <{case_name}> execute failed.\n'
+                logger.error((f'[{thread_id}] TestCase: <{case_name}> execute failed.\n'
                               f'{"*" * 30} request_data {"*" * 30}\n'
                               f'url= {url}\n'
                               f'json= {req_json}\n'
@@ -101,15 +115,20 @@ class HttpCollection:
                               f'{"*" * 74}\n'))
 
             except Exception as e:
-                logger.critical(f'Execution exception, please contact the administrator!!!')
-                q.put(resp_data)
-                raise e
+                # default, code error
+                logger.critical((f'[{thread_id}] TestCase: <{case_name}> execute exception!!!\n'
+                                 f'{"*" * 30} request_data {"*" * 30}\n'
+                                 f'url= {url}\n'
+                                 f'json= {req_json}\n'
+                                 f"response={r.json()}\n"
+                                 f'error_msg= {e}\n'
+                                 f'{"*" * 74}\n'))
+
             else:
                 resp_data['response_time'] = round(r.elapsed.total_seconds() * 1000, 3)
                 resp_data['data'] = r.json()
                 resp_data['success'] = True
-                logger.debug(f'TestCase: <{case_name}> execute success!')
-
+                logger.debug(f'[{thread_id}] TestCase: <{case_name}> execute success!')
         q.put(resp_data)
 
     def __call__(self, q: Queue, loop_count: Optional[int], duration: Optional[float]):
@@ -123,9 +142,13 @@ class HttpCollection:
             current_tsp: float = time.time()
 
             while current_tsp - start_tsp <= duration:
+                # loop if duration and stop if timeout
                 for case in self.testcases:
-                    self.execute(case, q)
                     current_tsp: float = time.time()
+                    if current_tsp - start_tsp <= duration:
+                        self.execute(case, q)
+                    else:
+                        break
 
         else:
             for i in range(loop_count):
@@ -148,6 +171,9 @@ class ThreadGroup:
         self.q: Queue = q
 
     def create(self, collection: HttpCollection):
+        """
+        create collection in multi thread.
+        """
         for _ in range(self.thread_number):
             self.group.append(
                 threading.Thread(target=collection, args=(self.q, self.loop_count, self.duration)))
@@ -170,7 +196,7 @@ class PMeter:
 
     def __init__(self):
         self.task_group: list[threading.Thread] = []
-        self.q_map: dict[HttpCollection, Queue] = {}
+        self.q_map: dict[HttpCollection, Queue] = {}  # the map between http_collection and queue
 
         self.collections_data: dict[HttpCollection, list[dict]] = {}
         self.collections_map: dict[HttpCollection, dict] = {}
@@ -178,20 +204,21 @@ class PMeter:
 
     def create_task(self, collection: HttpCollection, thread_group_name: str = None,
                     thread_number: int = 1, loop_count: Optional[int] = 1,
-                    duration: Optional[float] = None, need_analysis: bool = True) -> 'PMeter':
+                    duration: Optional[float] = None) -> 'PMeter':
         q = Queue()
         target = ThreadGroup(thread_number=thread_number, q=q,
                              loop_count=loop_count, duration=duration).create(collection)
         self.task_group.append(threading.Thread(target=target, name=thread_group_name))
-        if need_analysis:
-            self.q_map[collection] = q
+        self.q_map[collection] = q
         return self
 
     def run(self) -> 'PMeter':
+        # run
         for task_group_thread in self.task_group:
             task_group_thread.start()
             task_group_thread.join()
 
+        # read q in collections_data
         for collection, q in self.q_map.items():
             q_list: list[dict] = []
             for _ in range(q.qsize()):
@@ -261,8 +288,8 @@ class PMeter:
 
 if __name__ == '__main__':
     pmeter = PMeter()
-    pmeter.create_task(collection=HttpCollection(name='API_V1', file='VMCUI_v1.json'), thread_number=2, loop_count=1,
-                       thread_group_name='Singleton_api_testing')
+    pmeter.create_task(collection=HttpCollection(name='API_V1', file='VMCUI_v1.json'), thread_number=10, loop_count=1,
+                       thread_group_name='API_V1')
     # pmeter.create_task(collection=HttpCollection(name='API_V2', file='VMCUI_v2.json'), thread_number=1, loop_count=1,
     #                    thread_group_name='Singleton_api_testing')
     pmeter.run()
