@@ -38,4 +38,8 @@ describe 'raise_error', :include_helpers, :extend_helpers do
 
     expect(backend.get_translations(component, locale)['messages']['helloworld']).to eq value
   end
+
+  it 'nonexistent key' do
+    expect { backend.translate!(key_nonexistent, component, locale) }.to raise_error(KeyError)
+  end
 end
