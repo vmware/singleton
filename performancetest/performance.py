@@ -35,7 +35,18 @@ from loguru import logger
 
 from utils import read_json
 
+
 BASE_URL: str = "https://127.0.0.1:8090"
+
+
+class CollectionResponse:
+    __slots__ = ["case_name", "success", "response_time", "response_content"]
+
+    def __init__(self):
+        self.case_name: str = ''
+        self.success: bool = False
+        self.response_time: float = 1000000.0
+        self.response_content: dict = {}
 
 
 class HttpCollection:
@@ -49,6 +60,7 @@ class HttpCollection:
         self.name: str = name
         self.http_session = requests.Session()
         self.testcases: list[dict] = read_json(file)
+        self.total_time: float = 0
 
     def validate(self, response: requests.Response, case: dict):
         # assert http status_code == 200
@@ -79,13 +91,8 @@ class HttpCollection:
         case_name: str = case.get("name")
 
         thread_id: str = threading.current_thread().name
-        resp_data: dict = {
-            'success': False,
-            'response_time': 10000000000,
-            'data': {},
-            'thread_id': thread_id,
-            'case_name': case_name
-        }
+        resp: CollectionResponse = CollectionResponse()
+        resp.case_name = case_name
 
         try:
             r: requests.Response = self.http_session.request(method, url, json=req_json, verify=False)
@@ -104,8 +111,8 @@ class HttpCollection:
             try:
                 self.validate(r, case)
             except AssertionError as e:
-                resp_data['response_time'] = round(r.elapsed.total_seconds() * 1000, 3)
-                resp_data['data'] = r.json()
+                resp.response_time = round(r.elapsed.total_seconds() * 1000, 3)
+                resp.response_content = r.json()
                 logger.error((f'[{thread_id}] TestCase: <{case_name}> execute failed.\n'
                               f'{"*" * 30} request_data {"*" * 30}\n'
                               f'url= {url}\n'
@@ -125,11 +132,11 @@ class HttpCollection:
                                  f'{"*" * 74}\n'))
 
             else:
-                resp_data['response_time'] = round(r.elapsed.total_seconds() * 1000, 3)
-                resp_data['data'] = r.json()
-                resp_data['success'] = True
+                resp.response_time = round(r.elapsed.total_seconds() * 1000, 3)
+                resp.response_content = r.json()
+                resp.success = True
                 logger.debug(f'[{thread_id}] TestCase: <{case_name}> execute success!')
-        q.put(resp_data)
+        q.put(resp)
 
     def __call__(self, q: Queue, loop_count: Optional[int], duration: Optional[float]):
         """
@@ -180,12 +187,14 @@ class ThreadGroup:
         return self
 
     def __call__(self, *args, **kwargs):
-        logger.debug(f'ThreadGroups: <{threading.current_thread().name}> start running!')
+        logger.debug(f'HttpCollection: <{threading.current_thread().name}> start running!')
+        tsp: float = time.time()
         for _task in self.group:
             _task.start()
         for _task in self.group:
             _task.join()
-        logger.debug(f'ThreadGroups: <{threading.current_thread().name}>  done!!!')
+        cost: float = round(time.time() - tsp, 3)
+        logger.debug(f'HttpCollection: <{threading.current_thread().name}>  completed in {cost} seconds!')
 
 
 class PMeter:
@@ -198,16 +207,16 @@ class PMeter:
         self.task_group: list[threading.Thread] = []
         self.q_map: dict[HttpCollection, Queue] = {}  # the map between http_collection and queue
 
-        self.collections_data: dict[HttpCollection, list[dict]] = {}
-        self.collections_map: dict[HttpCollection, dict] = {}
+        self.collections_data: dict[HttpCollection, list[CollectionResponse]] = {}
+        self.collections_map: dict[HttpCollection, dict[str, list[CollectionResponse]]] = {}
         self.collections_result: dict[HttpCollection, bool] = {}
 
     def create_task(self, collection: HttpCollection, thread_group_name: str = None,
                     thread_number: int = 1, loop_count: Optional[int] = 1,
                     duration: Optional[float] = None) -> 'PMeter':
         q = Queue()
-        target = ThreadGroup(thread_number=thread_number, q=q,
-                             loop_count=loop_count, duration=duration).create(collection)
+        target: ThreadGroup = ThreadGroup(thread_number=thread_number, q=q,
+                                          loop_count=loop_count, duration=duration).create(collection)
         self.task_group.append(threading.Thread(target=target, name=thread_group_name))
         self.q_map[collection] = q
         return self
@@ -220,25 +229,21 @@ class PMeter:
 
         # read q in collections_data
         for collection, q in self.q_map.items():
-            q_list: list[dict] = []
+            q_list: list[CollectionResponse] = []
             for _ in range(q.qsize()):
-                resp_data: dict = q.get()
+                resp_data: CollectionResponse = q.get()
                 q_list.append(resp_data)
             self.collections_data[collection] = q_list
 
         for collection, q_list in self.collections_data.items():
-            q_list: list[dict]
+            _collection: dict[str, list[CollectionResponse]] = {}
 
-            _collection: dict[str, list[dict]] = {}
             for _resp in q_list:
-                _resp: dict
-
-                case_name: str = _resp.get('case_name')
-                _collection.setdefault(case_name, []).append(_resp)
+                _collection.setdefault(_resp.case_name, []).append(_resp)
             self.collections_map[collection] = _collection
 
         for collection, q_list in self.collections_data.items():
-            self.collections_result[collection] = all([_data.get('success') for _data in q_list])
+            self.collections_result[collection] = all([_data.success for _data in q_list])
 
         return self
 
@@ -251,47 +256,34 @@ class PMeter:
 
     def analysis(self):
         for collection, data in self.collections_map.items():
-            logger.info("@" + f' Analysis <{collection.name}> '.center(138, '@') + "@")
+            logger.info("@" + f' Analysis <{collection.name}> '.center(162, '@') + "@")
             self.average(data)
-            # self.median(data)
-            # self.ninety(data)
 
-    def average(self, collection_data: dict[str, list[dict]]):
-        logger.info("|" + f"Average Response Time Table".center(139, '-') + "|")
-        logger.info("|" + f"response_time".center(13, '-') + "|" + f"testcase".center(125, '-') + "|")
+    def average(self, collection_data: dict[str, list[CollectionResponse]]):
+        logger.info("|" + f"Average Response Time Table".center(163, '-') + "|")
+        logger.info("|" + f"response_time".center(13, '-') +
+                    "|" + f"total_count".center(11, '-') +
+                    "|" + f"error_count".center(11, '-') +
+                    "|" + f"testcase".center(125, '-') + "|")
         for case_name, response_list in collection_data.items():
-            response_list: list[dict]
+            total_num: int = len(response_list)
+            success_num: int = len([response for response in response_list if response.success])
+            success_responses: list[float] = [r.response_time for r in response_list if r.success]
+            avg: float = round(sum(success_responses) / success_num, 3) if success_num else 0
 
-            response_time_list: list[float] = [response_time.get('response_time') for response_time in response_list]
-            avg: float = round(sum(response_time_list) / len(response_time_list), 3)
-            logger.info("|" + f"{avg}ms".ljust(13) + "|" + f"{case_name}".ljust(125) + "|")
-            logger.info("|" + f"-".center(139, '-') + "|")
-
-    def median(self, collections: dict[str, list]):
-        logger.info(f'{"-" * 20} start calculating the Median {"-" * 20}')
-        for case_name, response_list in collections.items():
-            response_time_list: list[float] = [response_time.get('response_time') for response_time in response_list]
-            response_time_list.sort()
-            size: int = len(response_time_list)
-            median_time: float = round(response_time_list[size // 2], 3)
-            logger.info(f'TestCase: <{case_name}> Median Response Time is {median_time}ms.')
-
-    def ninety(self, collections: dict[str, list]):
-        logger.debug(f'{"-" * 20} start calculating the 90% Line {"-" * 20}')
-        for case_name, response_list in collections.items():
-            response_time_list: list[float] = [response_time.get('response_time') for response_time in response_list]
-            response_time_list.sort()
-            size: int = len(response_time_list)
-            ninety_time: float = round(response_time_list[int(size * 0.9)], 3)
-            logger.debug(f'{case_name} Response Time 90% Line is {ninety_time}ms')
+            logger.info("|" + f"{avg}ms".ljust(13) +
+                        "|" + f"{total_num}".ljust(11) +
+                        "|" + f"{total_num - success_num}".ljust(11) +
+                        "|" + f"{case_name}".ljust(125) + "|")
+        logger.info("|" + f"-".center(163, '-') + "|")
 
 
 if __name__ == '__main__':
     pmeter = PMeter()
-    pmeter.create_task(collection=HttpCollection(name='API_V1', file='VMCUI_v1.json'), thread_number=10, loop_count=1,
+    pmeter.create_task(collection=HttpCollection(name='API_V1', file='VMCUI_v1.json'), thread_number=1, loop_count=10,
                        thread_group_name='API_V1')
-    # pmeter.create_task(collection=HttpCollection(name='API_V2', file='VMCUI_v2.json'), thread_number=1, loop_count=1,
-    #                    thread_group_name='Singleton_api_testing')
+    pmeter.create_task(collection=HttpCollection(name='API_V2', file='VMCUI_v2.json'), thread_number=1, loop_count=1,
+                       thread_group_name='Singleton_api_testing')
     pmeter.run()
     pmeter.analysis()
     pmeter.exit()
