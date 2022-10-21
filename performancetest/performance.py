@@ -87,10 +87,10 @@ class HttpCollection:
         resp.case_name = case.name
         url: str = BASE_URL + case.url
         try:
-            execute_start: float = time.time()
+            execute_start: float = time.time() * 1000
             r: requests.Response = self.http_session.request(case.method, url, params=case.params, json=case.body,
                                                              headers=case.headers, verify=False)
-            duration_time: float = round(time.time() - execute_start, 3)
+            duration_time: float = round(time.time() * 1000 - execute_start, 3)
         except RequestException as e:
             # http request error
             logger.error((f'[{thread_id}] TestCase: <{case.name}> execute failed.\n'
@@ -183,13 +183,13 @@ class ThreadGroup:
 
     def __call__(self, *args, **kwargs):
         logger.debug(f'HttpCollection: <{threading.current_thread().name}> start running!')
-        tsp: float = time.time()
+        tsp: float = time.time() * 1000
         for _task in self.group:
             _task.start()
         for _task in self.group:
             _task.join()
-        cost: float = round(time.time() - tsp, 3)
-        logger.debug(f'HttpCollection: <{threading.current_thread().name}>  completed in {cost} seconds!')
+        cost: float = round(time.time() * 1000 - tsp, 3)
+        logger.debug(f'HttpCollection: <{threading.current_thread().name}>  completed in {cost}ms!')
 
 
 class PMeter:
@@ -274,7 +274,7 @@ class PMeter:
 
 
 if __name__ == '__main__':
-    tsp: float = time.time()
+    tsp: float = time.time() * 1000
     pmeter = PMeter()
     pmeter.create_task(collection=HttpCollection(name='API_V1', file='VMCUI_v1.json'), thread_number=2, loop_count=1,
                        thread_group_name='API_V1')
@@ -282,6 +282,6 @@ if __name__ == '__main__':
                        thread_group_name='Singleton_api_testing')
     pmeter.run()
     pmeter.analysis()
-    cost: float = round(time.time() - tsp, 3)
-    logger.info(f"Test Completed in {cost} seconds!")
+    cost: float = round(time.time() * 1000 - tsp, 3)
+    logger.info(f"Test Completed in {cost}ms!")
     pmeter.exit()
