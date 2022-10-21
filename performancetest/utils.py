@@ -3,6 +3,7 @@
 
 import os
 import json
+import threading
 
 # disable InsecureRequestWarning
 import urllib3
@@ -10,27 +11,8 @@ import urllib3
 urllib3.disable_warnings()
 
 __RESOURCE_DIR__ = os.path.join(os.path.dirname(__file__), 'resource')
-"""
-  {
-    "name": "GET:/i18n/api/v1/date/localizedDate",
-    "url": "/i18n/api/v1/date/localizedDate",
-    "method": "GET",
-    "headers": {
-      "content-type": "application/json"
-    },
-    "params": {
-      "locale": "zh-CN",
-      "longDate": 1472728030290,
-      "pattern": "EEEEMMMMd"
-    },
-    "body": {},
-    "validators": {
-      "return_code": 200,
-      "response_time": 1000,
-      "response_content": {}
-    }
-  }
-"""
+default = ["VMCUI", "VMCUI1"]
+li = ["VMCUI", "VMCUI1"]
 
 
 class TestCase:
@@ -54,6 +36,18 @@ def read_json(file: str) -> list[TestCase]:
     for case in testcases:
         test_cases.append(TestCase(**case))
     return test_cases
+
+
+def get_ele():
+    # lock.acquire()
+    global li
+    try:
+        ele = li.pop()
+    except IndexError:
+        li = default.copy()
+        ele = li.pop()
+    # lock.release()
+    return ele
 
 
 if __name__ == '__main__':

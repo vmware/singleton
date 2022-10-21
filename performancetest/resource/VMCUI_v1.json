@@ -29,7 +29,7 @@
     },
     "params": {
       "locale": "ar-AE",
-      "number": 1,
+      "number": 4.2,
       "scale": 2
     },
     "body": {},
@@ -49,7 +49,8 @@
     },
     "params": {
       "locale": "zh-CN",
-      "scope": "dates"
+      "scope": "dates",
+      "scopeFilter": "dates_eras"
     },
     "body": {},
     "validators": {
@@ -203,7 +204,7 @@
   {
     "name": "GET:/i18n/api/v1/translation/product/{productName}/version/{version}/supportedLocales",
     "description": "translation-product-api",
-    "url": "/i18n/api/v1/translation/product/VMCUI/version/1.0.0/supportedLocales",
+    "url": "/i18n/api/v1/translation/product/{productName}/version/1.0.0/supportedLocales",
     "method": "GET",
     "headers": {
       "content-type": "application/json"
@@ -238,7 +239,7 @@
   {
     "name": "GET:/i18n/api/v1/translation/product/{productName}/component/{component}",
     "description": "translation-product-component-api",
-    "url": "/i18n/api/v1/translation/product/VMCUI/component/AngularJS2",
+    "url": "/i18n/api/v1/translation/product/{productName}/component/AngularJS2",
     "method": "GET",
     "headers": {
       "content-type": "application/json"
@@ -258,7 +259,7 @@
   {
     "name": "GET:/i18n/api/v1/translation/product/{productName}/components/{components}",
     "description": "translation-product-component-api",
-    "url": "/i18n/api/v1/translation/product/VMCUI/components/AngularJS2%2Ccomponent2",
+    "url": "/i18n/api/v1/translation/product/{productName}/components/AngularJS2%2Ccomponent2",
     "method": "GET",
     "headers": {
       "content-type": "application/json"
@@ -278,7 +279,7 @@
   {
     "name": "GET:/i18n/api/v1/translation/product/{productName}/component/{component}/key/{key}",
     "description": "translation-product-component-key-api",
-    "url": "/i18n/api/v1/translation/product/VMCUI/component/AngularJS2/key/sample.leg",
+    "url": "/i18n/api/v1/translation/product/{productName}/component/AngularJS2/key/sample.leg",
     "method": "GET",
     "headers": {
       "content-type": "application/json"
@@ -300,7 +301,7 @@
   {
     "name": "POST:/i18n/api/v1/translation/product/{productName}/component/{component}/key/{key}",
     "description": "translation-product-component-key-api",
-    "url": "/i18n/api/v1/translation/product/VMCUI/component/AngularJS2/key/sample.leg",
+    "url": "/i18n/api/v1/translation/product/{productName}/component/AngularJS2/key/sample.leg",
     "method": "POST",
     "headers": {
       "content-type": "application/json"
@@ -322,7 +323,7 @@
   {
     "name": "GET:/i18n/api/v1/translation/product/{productName}/key/{key}",
     "description": "translation-product-component-key-api",
-    "url": "/i18n/api/v1/translation/product/VMCUI/key/sample.leg",
+    "url": "/i18n/api/v1/translation/product/{productName}/key/sample.leg",
     "method": "GET",
     "headers": {
       "content-type": "application/json"
@@ -344,7 +345,7 @@
   {
     "name": "GET:/i18n/api/v1/translation/product/{productName}/component/{component}/sources",
     "description": "translation-source-api",
-    "url": "/i18n/api/v1/translation/product/VMCUI/component/AngularJS2/sources",
+    "url": "/i18n/api/v1/translation/product/{productName}/component/AngularJS2/sources",
     "method": "GET",
     "headers": {
       "content-type": "application/json"
@@ -366,7 +367,7 @@
   {
     "name": "POST:/i18n/api/v1/translation/product/{productName}/component/{component}/sources",
     "description": "translation-source-api",
-    "url": "/i18n/api/v1/translation/product/VMCUI/component/AngularJS2/sources",
+    "url": "/i18n/api/v1/translation/product/{productName}/component/AngularJS2/sources",
     "method": "POST",
     "headers": {
       "content-type": "application/json"
@@ -387,7 +388,7 @@
   {
     "name": "PUT:/i18n/api/v1/translation/product/{productName}/version/{version}",
     "description": "translation-sync-api",
-    "url": "/i18n/api/v1/translation/product/VMCUI/version/1.0.0",
+    "url": "/i18n/api/v1/translation/product/{productName}/version/1.0.0",
     "method": "PUT",
     "headers": {
       "content-type": "application/json"

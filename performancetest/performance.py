@@ -33,7 +33,7 @@ import requests
 from requests.exceptions import RequestException
 from loguru import logger
 
-from utils import read_json, TestCase
+from utils import read_json, TestCase, get_ele
 
 BASE_URL: str = "https://127.0.0.1:8090"
 
@@ -85,6 +85,16 @@ class HttpCollection:
         thread_id: str = threading.current_thread().name
         resp: CollectionResponse = CollectionResponse()
         resp.case_name = case.name
+
+        _product_name: str = get_ele()
+        case.url = case.url.format(productName=_product_name)
+        if case.params.get("productName", None):
+            case.params["productName"] = _product_name
+
+        if case.method == "PUT":
+            if case.body.get("data", {}).get("productName", None):
+                case.body["data"]["productName"] = _product_name
+
         url: str = BASE_URL + case.url
         try:
             execute_start: float = time.time() * 1000
@@ -130,7 +140,7 @@ class HttpCollection:
                 resp.response_time = round(r.elapsed.total_seconds() * 1000, 3)
                 resp.response_content = r.json()
                 resp.success = True
-                logger.debug(f'[{thread_id}] TestCase: <{case.name}> execute success! duration:{duration_time}ms')
+                logger.debug(f'[{thread_id}] TestCase: <{case.name}> execute success! duration:{duration_time}ms, {r.request.url},{r.request.body}')
         q.put(resp)
 
     def __call__(self, q: Queue, loop_count: Optional[int], duration: Optional[float]):
@@ -153,8 +163,8 @@ class HttpCollection:
                         break
 
         else:
-            for i in range(loop_count):
-                for case in self.testcases:
+            for case in self.testcases:
+                for i in range(loop_count):
                     self.execute(case, q)
 
 
@@ -276,10 +286,10 @@ class PMeter:
 if __name__ == '__main__':
     tsp: float = time.time() * 1000
     pmeter = PMeter()
-    pmeter.create_task(collection=HttpCollection(name='API_V1', file='VMCUI_v1.json'), thread_number=2, loop_count=1,
+    pmeter.create_task(collection=HttpCollection(name='API_V1', file='VMCUI_v1.json'), thread_number=1, loop_count=2,
                        thread_group_name='API_V1')
-    pmeter.create_task(collection=HttpCollection(name='API_V2', file='VMCUI_v2.json'), thread_number=1, loop_count=2,
-                       thread_group_name='Singleton_api_testing')
+    # pmeter.create_task(collection=HttpCollection(name='API_V2', file='VMCUI_v2.json'), thread_number=1, loop_count=2,
+    #                    thread_group_name='Singleton_api_testing')
     pmeter.run()
     pmeter.analysis()
     cost: float = round(time.time() * 1000 - tsp, 3)
