@@ -141,7 +141,7 @@ class HttpCollection:
                 resp.response_content = r.json()
                 resp.success = True
                 logger.debug(
-                    f'[{thread_id}] TestCase: <{case.name}> execute success! duration:{duration_time}ms, {r.request.url},{r.request.body}')
+                    f'[{thread_id}] TestCase: <{case.name}> execute success! duration:{duration_time}ms!')
         q.put(resp)
 
     def __call__(self, index: int, q: Queue, loop_count: Optional[int], duration: Optional[float]):
