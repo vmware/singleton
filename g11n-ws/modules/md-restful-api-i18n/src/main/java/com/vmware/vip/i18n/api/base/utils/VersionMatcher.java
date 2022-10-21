@@ -27,7 +27,6 @@ public class VersionMatcher {
             final List<String> vList) throws L3APIException {
         String mv = "";
        
- 
             if (vList != null) {
                 if (vList.contains(version)) {
                     return version;
