@@ -87,15 +87,15 @@ class HttpCollection:
         resp.case_name = case.name
 
         _product_name: str = get_ele()
-        case.url = case.url.format(productName=_product_name)
+        _url = case.url.format(productName=_product_name)
         if case.params.get("productName", None):
             case.params["productName"] = _product_name
 
-        if case.method == "PUT":
+        if case.method == "PUT" and case.name == "PUT:/i18n/api/v1/translation/product/{productName}/version/{version}":
             if case.body.get("data", {}).get("productName", None):
                 case.body["data"]["productName"] = _product_name
 
-        url: str = BASE_URL + case.url
+        url: str = BASE_URL + _url
         try:
             execute_start: float = time.time() * 1000
             r: requests.Response = self.http_session.request(case.method, url, params=case.params, json=case.body,
@@ -140,7 +140,8 @@ class HttpCollection:
                 resp.response_time = round(r.elapsed.total_seconds() * 1000, 3)
                 resp.response_content = r.json()
                 resp.success = True
-                logger.debug(f'[{thread_id}] TestCase: <{case.name}> execute success! duration:{duration_time}ms, {r.request.url},{r.request.body}')
+                logger.debug(
+                    f'[{thread_id}] TestCase: <{case.name}> execute success! duration:{duration_time}ms, {r.request.url},{r.request.body}')
         q.put(resp)
 
     def __call__(self, q: Queue, loop_count: Optional[int], duration: Optional[float]):
