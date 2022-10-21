@@ -87,8 +87,10 @@ class HttpCollection:
         resp.case_name = case.name
         url: str = BASE_URL + case.url
         try:
+            execute_start: float = time.time()
             r: requests.Response = self.http_session.request(case.method, url, params=case.params, json=case.body,
                                                              headers=case.headers, verify=False)
+            duration_time: float = round(time.time() - execute_start, 3)
         except RequestException as e:
             # http request error
             logger.error((f'[{thread_id}] TestCase: <{case.name}> execute failed.\n'
@@ -128,7 +130,7 @@ class HttpCollection:
                 resp.response_time = round(r.elapsed.total_seconds() * 1000, 3)
                 resp.response_content = r.json()
                 resp.success = True
-                logger.debug(f'[{thread_id}] TestCase: <{case.name}> execute success!')
+                logger.debug(f'[{thread_id}] TestCase: <{case.name}> execute success! duration:{duration_time}ms')
         q.put(resp)
 
     def __call__(self, q: Queue, loop_count: Optional[int], duration: Optional[float]):
