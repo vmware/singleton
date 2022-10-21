@@ -189,7 +189,7 @@
   {
     "name": "GET:/i18n/api/v2/translation/products/{productName}/versions/{version}",
     "description": "translation-product-api",
-    "url": "/i18n/api/v2/translation/products/VMCUI/versions/1.0.0",
+    "url": "/i18n/api/v2/translation/products/{productName}/versions/1.0.0",
     "method": "GET",
     "headers": {
       "content-type": "application/json"
@@ -209,7 +209,7 @@
   {
     "name": "GET:/i18n/api/v2/translation/products/{productName}/versions/{version}/componentlist",
     "description": "translation-product-api",
-    "url": "/i18n/api/v2/translation/products/VMCUI/versions/1.0.0/componentlist",
+    "url": "/i18n/api/v2/translation/products/{productName}/versions/1.0.0/componentlist",
     "method": "GET",
     "headers": {
       "content-type": "application/json"
@@ -228,7 +228,7 @@
   {
     "name": "GET:/i18n/api/v2/translation/products/{productName}/versions/{version}/localelist",
     "description": "translation-product-api",
-    "url": "/i18n/api/v2/translation/products/VMCUI/versions/1.0.0/localelist",
+    "url": "/i18n/api/v2/translation/products/{productName}/versions/1.0.0/localelist",
     "method": "GET",
     "headers": {
       "content-type": "application/json"
@@ -247,7 +247,7 @@
   {
     "name": "GET:/i18n/api/v2/translation/products/{productName}/versions/{version}/versioninfo",
     "description": "translation-product-api",
-    "url": "/i18n/api/v2/translation/products/VMCUI/versions/1.0.0/versioninfo",
+    "url": "/i18n/api/v2/translation/products/{productName}/versions/1.0.0/versioninfo",
     "method": "GET",
     "headers": {
       "content-type": "application/json"
@@ -266,7 +266,7 @@
   {
     "name": "GET:/i18n/api/v2/translation/products/{productName}/versions/{version}/locales/{locale}/components/{component}",
     "description": "translation-product-component-api",
-    "url": "/i18n/api/v2/translation/products/VMCUI/versions/1.0.0/locales/ja/components/AngularJS2",
+    "url": "/i18n/api/v2/translation/products/{productName}/versions/1.0.0/locales/ja/components/AngularJS2",
     "method": "GET",
     "headers": {
       "content-type": "application/json"
@@ -285,7 +285,7 @@
   {
     "name": "GET:/i18n/api/v2/translation/products/{productName}/versions/{version}/locales/{locale}/components/{component}/keys",
     "description": "translation-product-component-key-api",
-    "url": "/i18n/api/v2/translation/products/VMCUI/versions/1.0.0/locales/ja/components/AngularJS2/keys",
+    "url": "/i18n/api/v2/translation/products/{productName}/versions/1.0.0/locales/ja/components/AngularJS2/keys",
     "method": "GET",
     "headers": {
       "content-type": "application/json"
@@ -304,7 +304,7 @@
   {
     "name": "POST:/i18n/api/v2/translation/products/{productName}/versions/{version}/locales/{locale}/components/{component}/keys",
     "description": "translation-product-component-key-api",
-    "url": "/i18n/api/v2/translation/products/VMCUI/versions/1.0.0/locales/ja/components/AngularJS2/keys",
+    "url": "/i18n/api/v2/translation/products/{productName}/versions/1.0.0/locales/ja/components/AngularJS2/keys",
     "method": "POST",
     "headers": {
       "content-type": "application/json"
@@ -329,7 +329,7 @@
   {
     "name": "GET:/i18n/api/v2/translation/products/{productName}/versions/{version}/locales/{locale}/components/{component}/keys/{key}",
     "description": "translation-product-component-key-api",
-    "url": "/i18n/api/v2/translation/products/VMCUI/versions/1.0.0/locales/ja/components/AngularJS2/keys/add-cluster.cancel",
+    "url": "/i18n/api/v2/translation/products/{productName}/versions/1.0.0/locales/ja/components/AngularJS2/keys/add-cluster.cancel",
     "method": "GET",
     "headers": {
       "content-type": "application/json"
@@ -345,7 +345,7 @@
   {
     "name": "POST:/i18n/api/v2/translation/products/{productName}/versions/{version}/locales/{locale}/components/{component}/keys/{key}",
     "description": "translation-product-component-key-api",
-    "url": "/i18n/api/v2/translation/products/VMCUI/versions/1.0.0/locales/latest/components/AngularJS2/keys/sample.six",
+    "url": "/i18n/api/v2/translation/products/{productName}/versions/1.0.0/locales/latest/components/AngularJS2/keys/sample.six",
     "method": "POST",
     "headers": {
       "content-type": "application/json"
@@ -364,7 +364,7 @@
   {
     "name": "POST:/i18n/api/v2/translation/products/{productName}/versions/{version}/locales/{locale}/components/{component}",
     "description": "translation-source-api",
-    "url": "/i18n/api/v2/translation/products/VMCUI/versions/1.0.0/locales/ja/components/AngularJS2",
+    "url": "/i18n/api/v2/translation/products/{productName}/versions/1.0.0/locales/ja/components/AngularJS2",
     "method": "POST",
     "headers": {
       "content-type": "application/json"
@@ -380,7 +380,7 @@
   {
     "name": "PUT:/i18n/api/v2/translation/products/{productName}/versions/{version}",
     "description": "translation-sync-api",
-    "url": "/i18n/api/v2/translation/products/VMCUI/versions/1.0.0",
+    "url": "/i18n/api/v2/translation/products/{productName}/versions/1.0.0",
     "method": "PUT",
     "headers": {
       "content-type": "application/json"

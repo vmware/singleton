@@ -11,8 +11,6 @@ import urllib3
 urllib3.disable_warnings()
 
 __RESOURCE_DIR__ = os.path.join(os.path.dirname(__file__), 'resource')
-DEFAULT_BUNDLES = ["VMCUI", "VMCUI1", "VMCUI2", "VMCUI3", "VMCUI4", "VMCUI5"]
-BUNDLES = ["VMCUI", "VMCUI1", "VMCUI2", "VMCUI3", "VMCUI4", "VMCUI5"]
 
 
 class TestCase:
@@ -38,16 +36,17 @@ def read_json(file: str) -> list[TestCase]:
     return test_cases
 
 
-def get_ele():
-    # lock.acquire()
-    global BUNDLES
-    try:
-        ele = BUNDLES.pop()
-    except IndexError:
-        BUNDLES = DEFAULT_BUNDLES.copy()
-        ele = BUNDLES.pop()
-    # lock.release()
-    return ele
+class Parameters:
+
+    def __init__(self, index: int):
+        self.index = index
+        self.count = 0
+        self.bundles: list[str] = ["VMCUI", "VMCUI1", "VMCUI2", "VMCUI3", "VMCUI4", "VMCUI5"]
+
+    def get_ele(self) -> str:
+        ele: str = self.bundles[(self.count + self.index) % len(self.bundles)]
+        self.count += 1
+        return ele
 
 
 if __name__ == '__main__':

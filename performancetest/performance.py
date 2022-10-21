@@ -33,7 +33,7 @@ import requests
 from requests.exceptions import RequestException
 from loguru import logger
 
-from utils import read_json, TestCase, get_ele
+from utils import read_json, TestCase, Parameters
 
 BASE_URL: str = "https://127.0.0.1:8090"
 
@@ -81,17 +81,17 @@ class HttpCollection:
 
         # assert response_content
 
-    def execute(self, case: TestCase, q: Queue) -> None:
+    def execute(self, case: TestCase, q: Queue, p: Parameters) -> None:
         thread_id: str = threading.current_thread().name
         resp: CollectionResponse = CollectionResponse()
         resp.case_name = case.name
 
-        _product_name: str = get_ele()
+        _product_name: str = p.get_ele()
         _url = case.url.format(productName=_product_name)
         if case.params.get("productName", None):
             case.params["productName"] = _product_name
 
-        if case.method == "PUT" and case.name == "PUT:/i18n/api/v1/translation/product/{productName}/version/{version}":
+        if case.method == "PUT":
             if case.body.get("data", {}).get("productName", None):
                 case.body["data"]["productName"] = _product_name
 
@@ -144,12 +144,12 @@ class HttpCollection:
                     f'[{thread_id}] TestCase: <{case.name}> execute success! duration:{duration_time}ms, {r.request.url},{r.request.body}')
         q.put(resp)
 
-    def __call__(self, q: Queue, loop_count: Optional[int], duration: Optional[float]):
+    def __call__(self, index: int, q: Queue, loop_count: Optional[int], duration: Optional[float]):
         """
         There are durations, which are executed through durations. Cycle times fail
         Otherwise, execute the number of loops
         """
-
+        p = Parameters(index)
         if duration:
             start_tsp: float = time.time()
             current_tsp: float = time.time()
@@ -159,14 +159,14 @@ class HttpCollection:
                 for case in self.testcases:
                     current_tsp: float = time.time()
                     if current_tsp - start_tsp <= duration:
-                        self.execute(case, q)
+                        self.execute(case, q, p)
                     else:
                         break
 
         else:
             for case in self.testcases:
                 for i in range(loop_count):
-                    self.execute(case, q)
+                    self.execute(case, q, p)
 
 
 class ThreadGroup:
@@ -187,9 +187,9 @@ class ThreadGroup:
         """
         create collection in multi thread.
         """
-        for _ in range(self.thread_number):
+        for i in range(self.thread_number):
             self.group.append(
-                threading.Thread(target=collection, args=(self.q, self.loop_count, self.duration)))
+                threading.Thread(target=collection, args=(i, self.q, self.loop_count, self.duration)))
         return self
 
     def __call__(self, *args, **kwargs):
@@ -287,10 +287,10 @@ class PMeter:
 if __name__ == '__main__':
     tsp: float = time.time() * 1000
     pmeter = PMeter()
-    pmeter.create_task(collection=HttpCollection(name='API_V1', file='VMCUI_v1.json'), thread_number=1, loop_count=2,
+    pmeter.create_task(collection=HttpCollection(name='API_V1', file='VMCUI_v1.json'), thread_number=5, loop_count=1,
                        thread_group_name='API_V1')
-    # pmeter.create_task(collection=HttpCollection(name='API_V2', file='VMCUI_v2.json'), thread_number=1, loop_count=2,
-    #                    thread_group_name='Singleton_api_testing')
+    pmeter.create_task(collection=HttpCollection(name='API_V2', file='VMCUI_v2.json'), thread_number=1, loop_count=5,
+                       thread_group_name='Singleton_api_testing')
     pmeter.run()
     pmeter.analysis()
     cost: float = round(time.time() * 1000 - tsp, 3)
