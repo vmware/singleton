@@ -33,7 +33,7 @@ import requests
 from requests.exceptions import RequestException
 from loguru import logger
 
-from utils import read_json
+from utils import read_json, TestCase
 
 BASE_URL: str = "https://127.0.0.1:8090"
 
@@ -58,24 +58,22 @@ class HttpCollection:
         self.id: str = str(uuid.uuid4())
         self.name: str = name
         self.http_session = requests.Session()
-        self.testcases: list[dict] = read_json(file)
+        self.testcases: list[TestCase] = read_json(file)
         self.total_time: float = 0
 
-    def validate(self, response: requests.Response, case: dict):
+    def validate(self, response: requests.Response, case: TestCase):
         # assert http status_code == 200
-        error_msg = (f'Actual status_code: {response.status_code} '
-                     f'Expected status_code: {200} are inconsistent.')
-        assert response.status_code == 200, error_msg
+        assert response.status_code == 200, f"Bad Http Request!, status_code: {response.status_code} != 200."
 
         # assert response return_code
         code: int = response.json().get("response", {}).get("code", -1)
         error_msg2 = (f'Actual return_code: {code} '
-                      f'Expected return_code: {case.get("response").get("code")} are inconsistent.'
+                      f'Expected return_code: {case.validators.get("return_code", -1)} are inconsistent.'
                       f'The Actual Response: {response.json()}')
-        assert code == case.get("response").get("code"), error_msg2
+        assert code == case.validators.get("return_code", -1), error_msg2
 
         # assert response_time
-        expected_validate_time: float = case.get("validate_time")
+        expected_validate_time: float = case.validators.get("response_time", 0)
         response_time: float = round(response.elapsed.total_seconds() * 1000, 3)
         error_msg3 = (f'Actual response time: {"%.3f" % response_time}ms '
                       f'Expected response time: {expected_validate_time}ms')
@@ -83,24 +81,20 @@ class HttpCollection:
 
         # assert response_content
 
-    def execute(self, case: dict, q: Queue) -> None:
-        method: str = case.get('method')
-        url: str = BASE_URL + case.get('url')
-        req_json: dict = case.get('request_data')
-        case_name: str = case.get("name")
-
+    def execute(self, case: TestCase, q: Queue) -> None:
         thread_id: str = threading.current_thread().name
         resp: CollectionResponse = CollectionResponse()
-        resp.case_name = case_name
-
+        resp.case_name = case.name
+        url: str = BASE_URL + case.url
         try:
-            r: requests.Response = self.http_session.request(method, url, json=req_json, verify=False)
+            r: requests.Response = self.http_session.request(case.method, url, params=case.params, json=case.body,
+                                                             headers=case.headers, verify=False)
         except RequestException as e:
             # http request error
-            logger.error((f'[{thread_id}] TestCase: <{case_name}> execute failed.\n'
+            logger.error((f'[{thread_id}] TestCase: <{case.name}> execute failed.\n'
                           f'{"*" * 30} request_data {"*" * 30}\n'
                           f'url= {url}\n'
-                          f'json= {req_json}\n'
+                          f'json= {case.body}\n'
                           f"response={{}}\n"
                           f'error_msg= {e}\n'
                           f'{"*" * 74}\n'))
@@ -112,20 +106,20 @@ class HttpCollection:
             except AssertionError as e:
                 resp.response_time = round(r.elapsed.total_seconds() * 1000, 3)
                 resp.response_content = r.json()
-                logger.error((f'[{thread_id}] TestCase: <{case_name}> execute failed.\n'
+                logger.error((f'[{thread_id}] TestCase: <{case.name}> execute failed.\n'
                               f'{"*" * 30} request_data {"*" * 30}\n'
-                              f'url= {url}\n'
-                              f'json= {req_json}\n'
+                              f'url= {r.request.url}\n'
+                              f'json= {case.body}\n'
                               f"response={r.json()}\n"
                               f'error_msg= {e}\n'
                               f'{"*" * 74}\n'))
 
             except Exception as e:
                 # default, code error
-                logger.critical((f'[{thread_id}] TestCase: <{case_name}> execute exception!!!\n'
+                logger.critical((f'[{thread_id}] TestCase: <{case.name}> execute exception!!!\n'
                                  f'{"*" * 30} request_data {"*" * 30}\n'
-                                 f'url= {url}\n'
-                                 f'json= {req_json}\n'
+                                 f'url= {r.request.url}\n'
+                                 f'json= {case.body}\n'
                                  f"response={r.json()}\n"
                                  f'error_msg= {e}\n'
                                  f'{"*" * 74}\n'))
@@ -134,7 +128,7 @@ class HttpCollection:
                 resp.response_time = round(r.elapsed.total_seconds() * 1000, 3)
                 resp.response_content = r.json()
                 resp.success = True
-                logger.debug(f'[{thread_id}] TestCase: <{case_name}> execute success!')
+                logger.debug(f'[{thread_id}] TestCase: <{case.name}> execute success!')
         q.put(resp)
 
     def __call__(self, q: Queue, loop_count: Optional[int], duration: Optional[float]):
@@ -280,9 +274,9 @@ class PMeter:
 if __name__ == '__main__':
     tsp: float = time.time()
     pmeter = PMeter()
-    pmeter.create_task(collection=HttpCollection(name='API_V1', file='VMCUI_v1.json'), thread_number=1, loop_count=10,
-                       thread_group_name='API_V1')
-    pmeter.create_task(collection=HttpCollection(name='API_V2', file='VMCUI_v2.json'), thread_number=10, loop_count=1,
+    # pmeter.create_task(collection=HttpCollection(name='API_V1', file='VMCUI_v1.json'), thread_number=2, loop_count=1,
+    #                    thread_group_name='API_V1')
+    pmeter.create_task(collection=HttpCollection(name='API_V2', file='VMCUI_v2.json'), thread_number=1, loop_count=1,
                        thread_group_name='Singleton_api_testing')
     pmeter.run()
     pmeter.analysis()
