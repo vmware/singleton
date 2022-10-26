@@ -23,9 +23,8 @@ public class VersionMatcher {
      * @param productsAndVersions
      * @return a matched version, if there's no matched version then return input version
      */
-    public static String getMatchedVersion(final String version,
-            final List<String> vList) throws L3APIException {
-        String mv = "";
+	public static String getMatchedVersion(final String version, final List<String> vList) {
+		String mv = "";
        
             if (vList != null) {
                 if (vList.contains(version)) {
