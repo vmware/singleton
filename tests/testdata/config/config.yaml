@@ -11,7 +11,7 @@ S3Bundle:
   BucketName: myBucketName
   BundleRoot: myBundleRoot
 
-RefreshBundleInterval: 30m # interval to refresh bundle information. 0 means never to refresh.
+RefreshBundleInterval: 30m # interval to refresh bundle information. 0s means never to refresh.
 
 HeaderOfTraceID: # comma separated headers carrying trace ID
 
@@ -25,7 +25,7 @@ Server:
   CertFile:
   KeyFile:
   MaxHeaderBytes: 1024000
-  CacheControl: max-age=30, public
+  CacheControl: max-age=2, public
   CompressionAlgorithm: gzip&br #gzip, br, gzip&br
 
 CrossDomain:
@@ -45,8 +45,8 @@ LOG:
   Level: debug # level in console log
 
 Cache:
-  MaxEntities: 1000 # number of bundle files in cache
-  Expiration: 10s # 0 means cache never expires
+  MaxEntities: 100 # number of bundle files in cache
+  Expiration: 10s # 0s means cache never expires
 
 SwaggerUI: true
 AllowList: true
