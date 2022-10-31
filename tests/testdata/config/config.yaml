@@ -11,7 +11,7 @@ S3Bundle:
   BucketName: myBucketName
   BundleRoot: myBundleRoot
 
-RefreshBundleInterval: 30m # interval to refresh bundle information. 0s means never to refresh.
+RefreshBundleInterval: 30m # interval to refresh bundle information. 0 means never to refresh.
 
 HeaderOfTraceID: # comma separated headers carrying trace ID
 
@@ -38,15 +38,15 @@ CrossDomain:
 
 LOG:
   Filename: logs/singleton.log
-  MaxSize: 5 # megabytes
-  MaxBackups: 50
+  MaxSize: 1 # megabytes
+  MaxBackups: 1
   MaxAge: 365 # days
   FileLevel: debug # level in file log
   Level: debug # level in console log
 
 Cache:
   MaxEntities: 1000 # number of bundle files in cache
-  Expiration: 10s #seconds. 0s means cache never to expire.
+  Expiration: 10s # 0 means cache never expires
 
 SwaggerUI: true
 AllowList: true
