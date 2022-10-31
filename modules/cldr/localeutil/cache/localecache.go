@@ -76,8 +76,7 @@ func GetCache() localeCache {
 // InitCLDRCache .
 func InitCLDRCache() {
 	localeDataCache = cache.NewCache("cldr", map[string]interface{}{
-		"MaxCost":     100,
-		"BufferItems": 64,
+		"MaxEntities": int64(200),
 	})
 }
 
