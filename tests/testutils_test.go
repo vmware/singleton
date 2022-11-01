@@ -19,6 +19,7 @@ import (
 	v2 "sgtnserver/api/v2"
 	"sgtnserver/internal/config"
 	"sgtnserver/internal/logger"
+	"sgtnserver/modules/translation"
 
 	"github.com/gavv/httpexpect/v2"
 	"github.com/gin-gonic/gin"
@@ -58,6 +59,8 @@ const (
 	Language, Region                 = "en", "US"
 	Key, Msg                         = "message", "Message-en"
 )
+
+var ID = translation.BundleID{Name: Name, Version: Version, Locale: Locale, Component: Component}
 
 func TestMain(m *testing.M) {
 	defer logger.Log.Sync()
