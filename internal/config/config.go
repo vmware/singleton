@@ -114,9 +114,9 @@ type Config struct {
 		// deleted.)
 		MaxBackups int `json:"MaxBackups" yaml:"MaxBackups"`
 
-		FileLevel zapcore.Level `json:"FileLevel" yaml:"FileLevel"`
-
 		Level zapcore.Level `json:"Level" yaml:"Level"`
+
+		ConsoleLevel zapcore.Level `json:"ConsoleLevel" yaml:"ConsoleLevel"`
 	} `yaml:"LOG"`
 
 	Cache struct {
