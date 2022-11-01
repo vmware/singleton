@@ -92,13 +92,21 @@ func StartServer() {
 	for _, schema := range strings.Split(config.Settings.Server.Schema, common.ParamAnd) {
 		schema := schema
 
-		httpServer := &http.Server{
+		httpServer := http.Server{
 			Handler:        ginEngine,
 			ReadTimeout:    config.Settings.Server.ReadTimeout,
 			WriteTimeout:   config.Settings.Server.WriteTimeout,
 			MaxHeaderBytes: config.Settings.Server.MaxHeaderBytes,
 		}
-		servers = append(servers, httpServer)
+		servers = append(servers, &httpServer)
+
+		httpsServer := http.Server{
+			Handler:        ginEngine,
+			ReadTimeout:    config.Settings.Server.ReadTimeout,
+			WriteTimeout:   config.Settings.Server.WriteTimeout,
+			MaxHeaderBytes: config.Settings.Server.MaxHeaderBytes,
+		}
+		servers = append(servers, &httpsServer)
 
 		switch schema {
 		case "http":
@@ -112,9 +120,9 @@ func StartServer() {
 			}()
 		case "https":
 			go func() {
-				httpServer.Addr = fmt.Sprintf(":%d", config.Settings.Server.HTTPSPort)
-				logger.Log.Info(fmt.Sprintf(startServerInfo, schema, httpServer.Addr))
-				err := httpServer.ListenAndServeTLS(config.Settings.Server.CertFile, config.Settings.Server.KeyFile)
+				httpsServer.Addr = fmt.Sprintf(":%d", config.Settings.Server.HTTPSPort)
+				logger.Log.Info(fmt.Sprintf(startServerInfo, schema, httpsServer.Addr))
+				err := httpsServer.ListenAndServeTLS(config.Settings.Server.CertFile, config.Settings.Server.KeyFile)
 				if err != nil && err != http.ErrServerClosed {
 					logger.Log.Fatal(fmt.Sprintf(startServerError, schema, err))
 				}
