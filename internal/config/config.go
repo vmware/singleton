@@ -31,6 +31,8 @@ func InitConfig(filePath string) {
 		log.Fatalf("Fail to parse '%s': %+v", filePath, err)
 	}
 
+	Settings.Cache.Enable = true
+
 	err = pflag.CommandLine.Parse(os.Args[1:])
 	if err != nil {
 		log.Fatalf("Fail to parse arguments from CLI: %+v", err)
@@ -112,15 +114,14 @@ type Config struct {
 		// deleted.)
 		MaxBackups int `json:"MaxBackups" yaml:"MaxBackups"`
 
-		FileLevel zapcore.Level `json:"FileLevel" yaml:"FileLevel"`
-
 		Level zapcore.Level `json:"Level" yaml:"Level"`
+
+		ConsoleLevel zapcore.Level `json:"ConsoleLevel" yaml:"ConsoleLevel"`
 	} `yaml:"LOG"`
 
 	Cache struct {
-		Enable      bool          `json:"Enable" yaml:"Enable"`
-		MaxCost     int           `json:"MaxCost" yaml:"MaxCost"`
-		BufferItems int           `json:"BufferItems" yaml:"BufferItems"`
+		Enable      bool          //`json:"Enable" yaml:"Enable"`
+		MaxEntities int64         `json:"MaxEntities" yaml:"MaxEntities"`
 		Expiration  time.Duration `json:"Expiration" yaml:"Expiration"`
 	} `json:"Cache" yaml:"Cache"`
 

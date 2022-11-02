@@ -30,7 +30,7 @@ var (
 func InitLogger() {
 	var cores []zapcore.Core
 
-	logLevel := config.Settings.LOG.Level
+	logLevel := config.Settings.LOG.ConsoleLevel
 
 	// First, define our level-handling logic.
 	highPriority := zap.LevelEnablerFunc(func(lvl zapcore.Level) bool {
@@ -56,7 +56,7 @@ func InitLogger() {
 		lumberjackCore := zapcore.NewCore(
 			zapcore.NewJSONEncoder(zap.NewProductionEncoderConfig()),
 			w,
-			config.Settings.LOG.FileLevel,
+			config.Settings.LOG.Level,
 		)
 		cores = append(cores, lumberjackCore)
 	}

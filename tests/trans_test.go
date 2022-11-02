@@ -98,6 +98,43 @@ func TestTransCache(t *testing.T) {
 	assert.Nil(t, err)
 }
 
+func TestCacheMaxEntities(t *testing.T) {
+	c, ok := cache.GetCache("translation")
+	assert.True(t, ok)
+
+	realCache := c.(*cache.RistrettoCache).Cache
+	oldMax := realCache.MaxCost()
+	realCache.UpdateMaxCost(1)
+	defer func() { realCache.UpdateMaxCost(oldMax) }()
+
+	id := ID
+
+	// Query to populate cache
+	_, err := l3Service.GetBundle(context.TODO(), &id)
+	assert.Nil(t, err)
+
+	// query from cache to check entry exists
+	oldKey := fmt.Sprintf("%s:%s:%s:%s", id.Name, id.Version, id.Locale, id.Component)
+	_, err = c.Get(oldKey)
+	assert.Nil(t, err)
+
+	newID := ID
+	newID.Locale = "zh-Hans"
+	newKey := fmt.Sprintf("%s:%s:%s:%s", newID.Name, newID.Version, newID.Locale, newID.Component)
+
+	// update cache to save newID
+	_, err = l3Service.GetBundle(context.TODO(), &newID)
+	assert.Nil(t, err)
+
+	// new ID should exist
+	_, err = c.Get(newKey)
+	assert.Nil(t, err)
+
+	// old ID should not exist
+	_, err = c.Get(oldKey)
+	assert.NotNil(t, err)
+}
+
 func TestTransExceptionArgs(t *testing.T) {
 	var err error
 	invalidName, invalidVersion, invalidLocale, invalidComponent := "product_invalid", "version_invalid", "locale_invalid", "component_invalid"

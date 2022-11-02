@@ -1,7 +1,7 @@
 BundleLocation: local # local or s3
 
 LocalBundle:
-  BasePath:  ###
+  BasePath: ###
 
 S3Bundle:
   PublicKeyFile: ### file content is used to decode AccessKey and SecretKey
@@ -16,8 +16,8 @@ RefreshBundleInterval: 0s # interval to refresh bundle information. 0s means nev
 HeaderOfTraceID: # comma separated headers carrying trace ID
 
 Server:
-  RunMode: release # debug or release
-  Schema: http&https   # http, https, http&https
+  RunMode: release # debug, release
+  Schema: http&https # http, https, http&https
   HTTPSPort: 8090
   HTTPPort: 8091
   ReadTimeout: 0s
@@ -26,7 +26,7 @@ Server:
   KeyFile: ###
   MaxHeaderBytes: 1024000
   CacheControl: max-age=864000, public
-  CompressionAlgorithm:  #gzip, br, gzip&br
+  CompressionAlgorithm: #gzip, br, gzip&br
 
 CrossDomain:
   Enable: true
@@ -41,14 +41,12 @@ LOG:
   MaxSize: 50 # megabytes
   MaxBackups: 20
   MaxAge: 365 # days
-  FileLevel: debug
-  Level: info
+  Level: debug # level in file log
+  ConsoleLevel: info # level in console log
 
 Cache:
-  Enable: true
-  MaxCost: 1000 # number of entities to store
-  BufferItems: 64
-  Expiration: 0s #seconds. 0s means cache never to expire.
+  MaxEntities: 1000 # number of bundle files in cache
+  Expiration: 48h # 0s means cache never expires
 
 SwaggerUI: true
 AllowList: false
