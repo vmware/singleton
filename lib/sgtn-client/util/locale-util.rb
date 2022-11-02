@@ -84,7 +84,6 @@ module SgtnClient
     def self.reset_locale_data(type, component = nil)
       return unless type == :available_locales
 
-      Sgtn.logger.debug 'Resetting locale data'
       if component.nil?
         @locale_match_results.clear
         @lowercase_locales_map.clear
