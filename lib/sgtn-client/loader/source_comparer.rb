@@ -11,12 +11,11 @@ module SgtnClient
         real_locale = cache_to_real_map[locale]
         return super(component, real_locale) if real_locale
 
-        old_source_bundle_thread = Thread.new { load_bundle(component, CONSTS::OLD_SOURCE_LOCALE) }
         source_bundle_thread = Thread.new { load_bundle(component, LocaleUtil.get_source_locale) }
         translation_bundle = super(component, locale)
 
         begin
-          old_source_bundle = old_source_bundle_thread.value
+          old_source_bundle = translation_bundle.origin.load_bundle(component, LocaleUtil.get_source_locale)
           source_bundle = source_bundle_thread.value
         rescue StandardError => e
           SgtnClient.logger.error "[#{__FILE__}][#{__callee__}] failed to load soruce(or old source) bundle. component:#{component}. error: #{e}"
@@ -36,7 +35,7 @@ module SgtnClient
 
         source_bundle.each do |key, value|
           if old_source_bundle[key] != value || translation_bundle[key].nil?
-            translation_bundle[key] = StringUtil.new(value, LocaleUtil.get_source_locale)
+            translation_bundle[key] = LocalizedString.new(value, LocaleUtil.get_source_locale, source_bundle, translation_bundle)
           end
         end
         translation_bundle
@@ -44,8 +43,7 @@ module SgtnClient
 
       def cache_to_real_map
         @cache_to_real_map ||= {
-          LocaleUtil.get_source_locale => CONSTS::REAL_SOURCE_LOCALE,
-          CONSTS::OLD_SOURCE_LOCALE => LocaleUtil.get_source_locale
+          LocaleUtil.get_source_locale => CONSTS::REAL_SOURCE_LOCALE
         }.freeze
       end
     end

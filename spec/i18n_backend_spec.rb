@@ -49,13 +49,13 @@ describe Sgtn::I18nBackend, :include_helpers, :extend_helpers do
   it '#pseudo mode' do
     Sgtn.pseudo_mode = true
     old_enforce = I18n.enforce_available_locales
-    I18n.enforce_available_locales=false
+    I18n.enforce_available_locales = false
 
-    I18n.backend = Sgtn::I18nBackend.new(component_local_source_only) 
+    I18n.backend = Sgtn::I18nBackend.new(component_local_source_only)
 
     expect(I18n.exists?(message_only_in_local_source_key, locale)).to eq true
 
-    expect(I18n.translate(message_only_in_local_source_key, locale: locale)).to eq "@@New Hello world@@"
+    expect(I18n.translate(message_only_in_local_source_key, locale: locale)).to eq '@@New Hello world@@'
   ensure
     Sgtn.pseudo_mode = false
     I18n.enforce_available_locales = old_enforce

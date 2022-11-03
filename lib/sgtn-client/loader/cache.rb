@@ -35,7 +35,7 @@ module SgtnClient
       def load_bundle(component, locale)
         SgtnClient.logger.debug { "[#{__FILE__}][#{__callee__}] CacheFiller, component=#{component}, locale=#{locale}" }
 
-        @cache_hash[Common::BundleID.new(component, locale)] = Common::BundleData.new(super)
+        @cache_hash[Common::BundleID.new(component, locale)] = super
       end
 
       def available_bundles

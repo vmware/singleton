@@ -95,6 +95,10 @@ module Helpers
     File.new('spec/fixtures/mock_responses/nonexistent').read
   end
 
+  def pseudo_response
+    File.new('spec/fixtures/mock_responses/JAVA-pseudo').read
+  end
+
   def reset_client
     Sgtn.config.update(Helpers::CONFIG_HASH)
     Sgtn.instance_variable_set(:@translation, nil)

@@ -50,13 +50,18 @@ module SgtnClient
     class BundleData < Hash # :nodoc:
       include DataInfo
 
-      def initialize(*args)
+      attr_reader :origin, :locale
+
+      def initialize(*args, origin: nil, locale: nil)
         if !args.empty? && args[0].is_a?(Hash)
           update(args[0])
           super()
         else
           super
         end
+
+        @origin = origin
+        @locale = locale
       end
     end
 

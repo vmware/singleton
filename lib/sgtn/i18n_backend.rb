@@ -15,6 +15,9 @@ module Sgtn # :nodoc:
       @component = component
       @translation = Class.new do
         include SgtnClient::Translation::Implementation
+      end.new
+      @pseudo_translation = Class.new do
+        include SgtnClient::Translation::Implementation
         include Sgtn::Pseudo
       end.new
     end
@@ -52,5 +55,15 @@ module Sgtn # :nodoc:
     end
 
     def localize(locale, object, format, options) end
+
+    private
+
+    def translation
+      if Sgtn.pseudo_mode
+        @pseudo_translation
+      else
+        @translation
+      end
+    end
   end
 end

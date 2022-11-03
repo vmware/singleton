@@ -2,9 +2,14 @@
 # SPDX-License-Identifier: EPL-2.0
 
 module SgtnClient
-  class StringUtil < String
-    def initialize(str, locale)
-      super(str)
+  class LocalizedString < String
+    def initialize(value, locale, from, to)
+      if to.locale == Sgtn::PSEUDO_LOCALE
+        super("#{from.origin.pseudo_tag}#{value}#{from.origin.pseudo_tag}")
+      else
+        super(value)
+      end
+
       @locale = locale
     end
 

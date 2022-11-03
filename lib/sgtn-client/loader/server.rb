@@ -36,7 +36,8 @@ module SgtnClient
       def load_bundle(component, locale)
         SgtnClient.logger.debug { "[#{method(__callee__).owner}.#{__callee__}] component=#{component}, locale=#{locale}" }
 
-        query_server(format(@bundle_url, locale, component), ['messages'])
+        data = query_server(format(@bundle_url, locale, component), ['messages'], locale == Sgtn::PSEUDO_LOCALE ? { 'pseudo' => true } : nil)
+        Common::BundleData.new(data, origin: self, locale: locale)
       end
 
       def available_bundles
@@ -48,6 +49,10 @@ module SgtnClient
             inner_bundles << Common::BundleID.new(component, locale)
           end
         end
+      end
+
+      def pseudo_tag
+        '#@'
       end
 
       private

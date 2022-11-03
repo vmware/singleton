@@ -8,6 +8,8 @@ module Sgtn # :nodoc:
   autoload :Pseudo, 'sgtn/pseudo'
   autoload :I18nBackend, 'sgtn/i18n_backend'
 
+  PSEUDO_LOCALE = 'pseudo'.freeze
+
   class << self
     extend Forwardable
 
@@ -33,11 +35,17 @@ module Sgtn # :nodoc:
     private
 
     def translation
-      @translation ||= Class.new do
-        include SgtnClient::Translation::Implementation
-        include SgtnClient::Fallbacks
-        include Sgtn::Pseudo
-      end.new
+      if Sgtn.pseudo_mode
+        @pseudo_translation ||= Class.new do
+          include SgtnClient::Translation::Implementation
+          include Sgtn::Pseudo
+        end.new
+      else
+        @translation ||= Class.new do
+          include SgtnClient::Translation::Implementation
+          include SgtnClient::Fallbacks
+        end.new
+      end
     end
 
     def_delegator SgtnClient::Config, :instance, :config
@@ -45,7 +53,7 @@ module Sgtn # :nodoc:
              %i[locale locale=] => SgtnClient,
              %i[logger product_name version vip_server translation_bundle
                 source_bundle cache_expiry_period log_file log_level
-                pseudo_mode pseudo_prefix pseudo_suffix ].flat_map { |m|
+                pseudo_mode pseudo_tag ].flat_map { |m|
                [m, "#{m}=".to_sym]
              } => :config
   end
