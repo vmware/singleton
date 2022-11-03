@@ -15,40 +15,38 @@ module SgtnClient
     }.freeze
     LOCALE_SEPARATOR = '-'
     EN_LOCALE = 'en'
-    @locale_match_results = Concurrent::Map.new
+
+    @locale_match_results = Concurrent::Map.new do |hash, component|
+      components = SgtnClient.config.available_components
+      unless components.empty? || components.include?(component)
+        raise SingletonError, "component '#{component}' doesn't exist!"
+      end
+
+      hash[component] = Concurrent::Map.new
+    end
     @lowercase_locales_map = Concurrent::Map.new
 
     def self.get_best_locale(locale, component)
-      component_result = @locale_match_results[component] ||= begin
-        components = SgtnClient.config.available_components
-        unless components.empty? || components.include?(component)
-          raise SingletonError, "component '#{component}' doesn't exist!"
+      return locale if SgtnClient.config.available_locales(component).include?(locale)
+
+      component_result = @locale_match_results[component]
+      component_result[locale] ||= begin
+        if component_result.size >= 50
+          component_result.delete(component_result.keys[Random.rand(component_result.size)])
         end
 
-        Concurrent::Map.new
+        locale = locale.to_s
+        if locale.empty?
+          get_fallback_locale
+        else
+          candidates = lowercase_locales_map(component)
+          if candidates.empty?
+            locale
+          else
+            get_best_match(locale.gsub('_', LOCALE_SEPARATOR).downcase, candidates)
+          end
+        end
       end
-
-      component_result[locale] ||= begin
-                component_result.delete(component_result.keys[Random.rand(component_result.size)]) if component_result.size >= 50
-
-                if SgtnClient.config.available_locales(component).include?(locale)
-                  locale
-                elsif locale.nil?
-                  get_fallback_locale
-                else
-                  locale = locale.to_s
-                  if locale.empty?
-                    get_fallback_locale
-                  else
-                    candidates = lowercase_locales_map(component)
-                    if candidates.empty?
-                      locale
-                    else
-                      get_best_match(locale.gsub('_', LOCALE_SEPARATOR).downcase, candidates)
-                    end
-                  end
-                end
-              end
     end
 
     def self.get_best_match(locale, candidates)
