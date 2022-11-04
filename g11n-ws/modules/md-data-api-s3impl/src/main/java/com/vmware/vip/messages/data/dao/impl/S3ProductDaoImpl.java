@@ -70,7 +70,10 @@ public class S3ProductDaoImpl implements IProductDao {
             componentList.add(resultKey);
          }
       }
-      return componentList;
+      if (componentList.size() < 1) {
+          throw new DataException("Failed to get component list for " + productName + ConstantsChar.BACKSLASH + version);
+      }
+       return componentList;
    }
 
    /**
