@@ -108,6 +108,9 @@ public class S3ProductDaoImpl implements IProductDao {
          
          
       }
+      if(localeList.size()<1){
+          throw new DataException("Failed to get locale list for " + productName + "\\" + version);
+      }
       return localeList;
    }
 
