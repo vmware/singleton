@@ -3,13 +3,8 @@
 
 module SgtnClient
   class LocalizedString < String
-    def initialize(value, locale, from, to)
-      if to.locale == Sgtn::PSEUDO_LOCALE
-        super("#{from.origin.pseudo_tag}#{value}#{from.origin.pseudo_tag}")
-      else
-        super(value)
-      end
-
+    def initialize(value, locale)
+      super(value)
       @locale = locale
     end
 

@@ -6,6 +6,7 @@
 module SgtnClient
   module TranslationLoader
     module CONSTS
+      OLD_SOURCE_LOCALE = 'old_source'
       REAL_SOURCE_LOCALE = 'latest'
 
       AVAILABLE_BUNDLES_KEY = 'available_bundles'

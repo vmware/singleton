@@ -21,18 +21,13 @@ describe Sgtn::Pseudo, :include_helpers, :extend_helpers do
   end
 
   it 'should be able to get pseudo translation' do
-    stubs << components_stub << locales_stub
     stubs << bundle_stub(component, en_locale, stub_response("#{component}-#{en_locale}"))
-    stubs << bundle_stub(component, Sgtn::PSEUDO_LOCALE, pseudo_response).with(query: { 'pseudo' => true })
 
-    # expect(Sgtn.translate(key, component, en_locale)).to eq "#@#{en_value}#@"
-    # expect(Sgtn.t(source_changed_key, component, locale)).to eq '@@Source Hello world@@'
+    expect(Sgtn.translate(key, component, en_locale)).to eq "#@#{en_value}#@"
+    expect(Sgtn.t(source_changed_key, component, locale)).to eq '@@Source Hello world@@'
 
-    expect(Sgtn.get_translations(component, locale)['messages']).to include({ key => "#@#{en_value}#@" })
+    expect(Sgtn.get_translations(component, locale)).to include({ key => "#@#{en_value}#@" })
 
     stubs.each { |stub| expect(stub).to have_been_requested }
-  end
-
-  it 'should be able to get pseudo translations of a bundle' do
   end
 end

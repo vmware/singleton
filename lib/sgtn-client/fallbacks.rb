@@ -3,11 +3,13 @@
 
 module SgtnClient
   module Fallbacks # :nodoc:
+    protected
+
     def get_bundle!(component, locale)
       error = nil
       localechain(locale) do |l|
-        result, actual_locale = super(component, l)
-        return [result, actual_locale] if result
+        bundle = super(component, l)
+        return bundle if bundle
       rescue StandardError => e
         error = e
       end

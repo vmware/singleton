@@ -5,8 +5,8 @@ require 'forwardable'
 require_relative 'singleton-ruby'
 
 module Sgtn # :nodoc:
-  autoload :Pseudo, 'sgtn/pseudo'
-  autoload :I18nBackend, 'sgtn/i18n_backend'
+  autoload :Pseudo, 'singleton-client/pseudo'
+  autoload :I18nBackend, 'singleton-client/i18n_backend'
 
   PSEUDO_LOCALE = 'pseudo'.freeze
 

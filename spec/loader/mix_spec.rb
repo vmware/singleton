@@ -253,6 +253,8 @@ describe 'Mix', :include_helpers, :extend_helpers do
 
       expect(result).to_not be_nil
       expect(result[key]).to eq '你好世界-server'
+
+      wait_threads_finish
       stubs.each { |stub| expect(stub).to have_been_requested }
     end
 

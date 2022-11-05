@@ -39,11 +39,6 @@ module SgtnClient
         get_translations(component, locale)
       end
 
-      def get_string!(key, component, locale)
-        messages, actual_locale = get_bundle!(component, locale)
-        [messages.fetch(key), actual_locale]
-      end
-
       def translate(key, component, locale = nil, **kwargs, &block)
         translate!(key, component, locale, **kwargs, &block)
       rescue StandardError => e
@@ -57,8 +52,8 @@ module SgtnClient
         SgtnClient.logger.debug { "[#{method(__callee__).owner}.#{__callee__}] key: #{key}, component: #{component}, locale: #{locale}, args: #{kwargs}" }
 
         begin
-          matched_locale = match_locale(locale || SgtnClient.locale, component)
-          result, actual_locale = get_string!(key, component, matched_locale)
+          picked_locale = pickup_locale(locale || SgtnClient.locale, component)
+          result, actual_locale = get_string!(key, component, picked_locale)
         rescue StandardError => e
           raise e if block.nil?
         end
@@ -83,23 +78,22 @@ module SgtnClient
       def get_translations!(component, locale = nil)
         SgtnClient.logger.debug { "[#{method(__callee__).owner}.#{__callee__}] component: #{component}, locale: #{locale}" }
 
-        matched_locale = match_locale(locale || SgtnClient.locale, component)
-        messages, actual_locale = get_bundle!(component, matched_locale)
-        { 'component' => component, 'locale' => actual_locale, 'messages' => messages } if messages
+        picked_locale = pickup_locale(locale || SgtnClient.locale, component)
+        get_bundle!(component, picked_locale)
       end
 
       protected
+
+      def pickup_locale(locale, component)
+        LocaleUtil.get_best_locale(locale, component)
+      end
 
       def interpolate(translation, locale, **kwargs)
         translation.localize(locale) % kwargs
       end
 
-      def match_locale(locale, component)
-        LocaleUtil.get_best_locale(locale, component)
-      end
-
       def get_bundle!(component, locale)
-        [SgtnClient.config.loader.get_bundle(component, locale), locale]
+        SgtnClient.config.loader.get_bundle(component, locale)
       rescue StandardError
         # delete the locale from the available_bundles of component to avoid repeated calls to server
         SgtnClient.config.available_bundles.delete(Common::BundleID.new(component, locale))
@@ -107,6 +101,13 @@ module SgtnClient
         SgtnClient.config.changed
         SgtnClient.config.notify_observers(:available_locales, component)
         raise
+      end
+
+      private
+
+      def get_string!(key, component, locale)
+        bundle = get_bundle!(component, locale)
+        [bundle.fetch(key), bundle.locale]
       end
     end
 

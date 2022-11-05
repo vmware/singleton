@@ -29,7 +29,8 @@ module SgtnClient
 
         raise SingletonError, "no messages in local bundle file: #{file_path}." unless messages
 
-        Common::BundleData.new(messages, origin: self, locale: locale)
+        Common::BundleData.new(messages, origin: self, component: component,
+                                         locale: locale == CONSTS::REAL_SOURCE_LOCALE ? LocaleUtil.get_source_locale : locale)
       end
 
       def available_bundles

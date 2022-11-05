@@ -34,7 +34,7 @@ module SgtnClient
 
         raise SingletonError, "no local source messages for component #{component}" if total_messages.empty?
 
-        Common::BundleData.new(total_messages, origin: self, locale: locale)
+        Common::BundleData.new(total_messages, origin: self, component: component, locale: LocaleUtil.get_source_locale)
       end
 
       def available_bundles

@@ -16,7 +16,7 @@ module SgtnClient # :nodoc:
   autoload :Exceptions,         'sgtn-client/core/exceptions'
   autoload :ValidateUtil,       'sgtn-client/util/validate-util'
   autoload :LocaleUtil,         'sgtn-client/util/locale-util'
-  autoload :LocalizedString,    'sgtn-client/util/string-util'
+  autoload :LocalizedString,    'sgtn-client/util/localized_string'
   autoload :SingletonError,     'sgtn-client/exceptions'
 
   module Formatters # :nodoc:

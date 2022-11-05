@@ -15,6 +15,7 @@ module SgtnClient
 
         chain_loader = Class.new(Chain)
         chain_loader.include SourceComparer
+        chain_loader.include Pseudo
         chain_loader.include CacheFiller
         chain_loader.include SingleLoader
         chain_loader.include Cache

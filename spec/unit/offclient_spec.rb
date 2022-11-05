@@ -51,13 +51,13 @@ describe SgtnClient do
 
     it "Component" do
       jsonObj = SgtnClient::Translation.getStrings("JAVA", "zh-Hans");
-      expect(jsonObj["component"]).to eq 'JAVA'
+      expect(jsonObj.component).to eq 'JAVA'
       # get from cache in 2nd time
       jsonObj_c = SgtnClient::Translation.getStrings("JAVA", "zh-Hans");
-      expect(jsonObj_c["component"]).to eq 'JAVA'
+      expect(jsonObj_c.component).to eq 'JAVA'
       # get non-translation of a locale and fallback to source file
       default_sources = SgtnClient::Translation.getStrings("JAVA", "zh-ff");
-      expect(default_sources["locale"]).to eq SgtnClient::LocaleUtil.get_source_locale
+      expect(default_sources.locale).to eq SgtnClient::LocaleUtil.get_source_locale
     end
   end
 

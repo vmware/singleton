@@ -18,14 +18,14 @@ module SgtnClient
           old_source_bundle = translation_bundle.origin.load_bundle(component, LocaleUtil.get_source_locale)
           source_bundle = source_bundle_thread.value
         rescue StandardError => e
-          SgtnClient.logger.error "[#{__FILE__}][#{__callee__}] failed to load soruce(or old source) bundle. component:#{component}. error: #{e}"
+          SgtnClient.logger.error "[#{__FILE__}][#{__callee__}] failed to load source(or old source) bundle. component:#{component}. error: #{e}"
           return translation_bundle
         end
 
         compare_source(translation_bundle, old_source_bundle, source_bundle)
       end
 
-      private
+      protected
 
       def compare_source(translation_bundle, old_source_bundle, source_bundle)
         if !translation_bundle.is_a?(Hash) || !source_bundle.is_a?(Hash) || !old_source_bundle.is_a?(Hash)
@@ -35,15 +35,18 @@ module SgtnClient
 
         source_bundle.each do |key, value|
           if old_source_bundle[key] != value || translation_bundle[key].nil?
-            translation_bundle[key] = LocalizedString.new(value, LocaleUtil.get_source_locale, source_bundle, translation_bundle)
+            translation_bundle[key] = LocalizedString.new(value, LocaleUtil.get_source_locale)
           end
         end
         translation_bundle
       end
 
+      private
+
       def cache_to_real_map
         @cache_to_real_map ||= {
-          LocaleUtil.get_source_locale => CONSTS::REAL_SOURCE_LOCALE
+          LocaleUtil.get_source_locale => CONSTS::REAL_SOURCE_LOCALE,
+          CONSTS::OLD_SOURCE_LOCALE => LocaleUtil.get_source_locale
         }.freeze
       end
     end
