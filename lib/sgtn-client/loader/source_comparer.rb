@@ -12,14 +12,19 @@ module SgtnClient
         return super(component, real_locale) if real_locale
 
         source_bundle_thread = Thread.new { load_bundle(component, LocaleUtil.get_source_locale) }
-        translation_bundle = super(component, locale)
+        translation_bundle = super
 
         begin
-          old_source_bundle = translation_bundle.origin.load_bundle(component, LocaleUtil.get_source_locale)
           source_bundle = source_bundle_thread.value
         rescue StandardError => e
-          SgtnClient.logger.error "[#{__FILE__}][#{__callee__}] failed to load source(or old source) bundle. component:#{component}. error: #{e}"
+          SgtnClient.logger.error "[#{__FILE__}][#{__callee__}] failed to load source bundle. component:#{component}. error: #{e}"
           return translation_bundle
+        end
+
+        begin
+          old_source_bundle = translation_bundle.origin.load_bundle(component, old_source_locale(locale))
+        rescue StandardError => e
+          SgtnClient.logger.error "[#{__FILE__}][#{__callee__}] failed to load old source bundle. component:#{component}. error: #{e}"
         end
 
         compare_source(translation_bundle, old_source_bundle, source_bundle)
@@ -27,15 +32,14 @@ module SgtnClient
 
       protected
 
-      def compare_source(translation_bundle, old_source_bundle, source_bundle)
-        if !translation_bundle.is_a?(Hash) || !source_bundle.is_a?(Hash) || !old_source_bundle.is_a?(Hash)
-          SgtnClient.logger.warn "can't do source comparison because some bundle data are wrong."
-          return translation_bundle
-        end
+      def old_source_locale(_locale)
+        LocaleUtil.get_source_locale
+      end
 
-        source_bundle.each do |key, value|
-          if old_source_bundle[key] != value || translation_bundle[key].nil?
-            translation_bundle[key] = LocalizedString.new(value, LocaleUtil.get_source_locale)
+      def compare_source(translation_bundle, old_source_bundle, source_bundle)
+        source_bundle.each do |k, v|
+          if !v.nil? && (old_source_bundle&.fetch(k, nil) != v || translation_bundle[k].nil?)
+            translation_bundle[k] = LocalizedString.new(v, LocaleUtil.get_source_locale)
           end
         end
         translation_bundle
@@ -45,8 +49,7 @@ module SgtnClient
 
       def cache_to_real_map
         @cache_to_real_map ||= {
-          LocaleUtil.get_source_locale => CONSTS::REAL_SOURCE_LOCALE,
-          CONSTS::OLD_SOURCE_LOCALE => LocaleUtil.get_source_locale
+          LocaleUtil.get_source_locale => CONSTS::REAL_SOURCE_LOCALE
         }.freeze
       end
     end

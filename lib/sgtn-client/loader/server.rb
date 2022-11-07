@@ -36,7 +36,7 @@ module SgtnClient
       def load_bundle(component, locale)
         SgtnClient.logger.debug { "[#{method(__callee__).owner}.#{__callee__}] component=#{component}, locale=#{locale}" }
 
-        data = query_server(format(@bundle_url, locale, component), ['messages'])
+        data = query_server(format(@bundle_url, locale, component), ['messages'], locale == Sgtn::PSEUDO_LOCALE ? { 'pseudo' => true } : nil)
         Common::BundleData.new(data, origin: self, component: component,
                                      locale: locale == CONSTS::REAL_SOURCE_LOCALE ? LocaleUtil.get_source_locale : locale)
       end
