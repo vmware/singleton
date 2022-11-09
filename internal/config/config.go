@@ -70,6 +70,7 @@ type Config struct {
 		PublicKeyFile string `yaml:"PublicKeyFile"`
 		AccessKey     string `yaml:"AccessKey"`
 		SecretKey     string `yaml:"SecretKey"`
+		RoleArn       string `yaml:"RoleArn"`
 		Region        string `yaml:"Region"`
 		BucketName    string `yaml:"BucketName"`
 		BundleRoot    string `yaml:"BundleRoot"`
