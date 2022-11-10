@@ -8,6 +8,7 @@ package s3bundle
 import (
 	"context"
 	"sgtnserver/internal/logger"
+	"sync"
 	"time"
 
 	"github.com/aws/aws-sdk-go-v2/aws"
@@ -23,7 +24,9 @@ var (
 	updateTimeAdvance, _     = time.ParseDuration("60s")
 	expirationTimeAdvance, _ = time.ParseDuration("10s")
 
-	clientInst RoleClient
+	clientInst           RoleClient
+	clientInstLock       sync.RWMutex
+	clientInstUpdateLock sync.Mutex
 )
 
 type RoleClient struct {
@@ -32,7 +35,8 @@ type RoleClient struct {
 }
 
 var GetS3Client = func(s3Settings *S3Config) ClientAPI {
-	currentInst := clientInst
+	currentInst := readClient()
+
 	diff := time.Until(*currentInst.RoleCredentials.Expiration)
 	if diff >= expirationTimeAdvance {
 		if diff <= updateTimeAdvance {
@@ -45,6 +49,14 @@ var GetS3Client = func(s3Settings *S3Config) ClientAPI {
 }
 
 func newS3Client(s3Settings *S3Config) RoleClient {
+	clientInstUpdateLock.Lock()
+	defer clientInstUpdateLock.Unlock()
+
+	currentInst := readClient()
+	if currentInst.Client != nil && time.Until(*currentInst.RoleCredentials.Expiration) > updateTimeAdvance {
+		return currentInst
+	}
+
 	stsClient := sts.New(sts.Options{
 		Region:      s3Settings.GetRegion(),
 		Credentials: aws.NewCredentialsCache(credentials.NewStaticCredentialsProvider(s3Settings.GetAccessKey(), s3Settings.GetSecretKey(), "")),
@@ -58,15 +70,32 @@ func newS3Client(s3Settings *S3Config) RoleClient {
 
 	roleOutput, err := stsClient.AssumeRole(context.Background(), input)
 	if err != nil {
-		logger.Log.Fatal("fail to assume role, " + err.Error())
+		logger.Log.Panic("fail to assume role, " + err.Error())
 	}
 
 	creProvider := credentials.NewStaticCredentialsProvider(*roleOutput.Credentials.AccessKeyId,
 		*roleOutput.Credentials.SecretAccessKey, *roleOutput.Credentials.SessionToken)
-	clientInst = RoleClient{
+
+	newInst := RoleClient{
 		Client:          s3.New(s3.Options{Region: s3Settings.GetRegion(), Credentials: aws.NewCredentialsCache(creProvider)}),
 		RoleCredentials: roleOutput.Credentials,
 	}
 
+	writeClient(newInst)
+
+	return newInst
+}
+
+func readClient() RoleClient {
+	clientInstLock.RLock()
+	defer clientInstLock.RUnlock()
+
 	return clientInst
+}
+
+func writeClient(inst RoleClient) {
+	clientInstLock.Lock()
+	defer clientInstLock.Unlock()
+
+	clientInst = inst
 }

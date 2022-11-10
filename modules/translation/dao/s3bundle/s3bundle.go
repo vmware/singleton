@@ -69,8 +69,6 @@ func (b *S3Bundle) GetBundleInfo(ctx context.Context) (*translation.BundleInfo, 
 
 	p := s3.NewListObjectsV2Paginator(GetS3Client(b.Config), &s3.ListObjectsV2Input{Bucket: b.Bucket, Prefix: &b.RootPrefix})
 	for p.HasMorePages() {
-		// Next Page takes a new context for each page retrieval. This is where
-		// you could add timeouts or deadlines.
 		page, err := p.NextPage(ctx)
 		if err != nil {
 			wrapErr := sgtnerror.StatusInternalServerError.WrapErrorWithMessage(err, translation.FailToGetBundleInfo)
