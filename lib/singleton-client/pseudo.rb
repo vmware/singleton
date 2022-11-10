@@ -7,8 +7,8 @@ module Sgtn
   module Pseudo # :nodoc:
     protected
 
-    def pickup_locale(*)
-      PSEUDO_LOCALE
+    def pickup_locale(locale, _component)
+      locale == PSEUDO_LOCALE ? PSEUDO_LOCALE : super
     end
   end
 end

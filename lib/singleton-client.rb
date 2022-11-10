@@ -35,17 +35,13 @@ module Sgtn # :nodoc:
     private
 
     def translation
-      if Sgtn.pseudo_mode
-        @pseudo_translation ||= Class.new do
-          include SgtnClient::Translation::Implementation
-          include Sgtn::Pseudo
-        end.new
-      else
-        @translation ||= Class.new do
-          include SgtnClient::Translation::Implementation
-          include SgtnClient::Fallbacks
-        end.new
-      end
+      @translation ||= Class.new do
+        include SgtnClient::Translation::Implementation
+        include SgtnClient::Fallbacks
+        include Sgtn::Pseudo
+
+        alias_method :t!, :translate!
+      end.new
     end
 
     def_delegator SgtnClient::Config, :instance, :config

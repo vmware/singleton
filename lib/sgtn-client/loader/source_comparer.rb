@@ -15,16 +15,16 @@ module SgtnClient
         translation_bundle = super
 
         begin
+          old_source_bundle = translation_bundle.origin.load_bundle(component, old_source_locale(locale))
+        rescue StandardError => e
+          SgtnClient.logger.error "[#{__FILE__}][#{__callee__}] failed to load old source bundle. component:#{component}. error: #{e}"
+        end
+
+        begin
           source_bundle = source_bundle_thread.value
         rescue StandardError => e
           SgtnClient.logger.error "[#{__FILE__}][#{__callee__}] failed to load source bundle. component:#{component}. error: #{e}"
           return translation_bundle
-        end
-
-        begin
-          old_source_bundle = translation_bundle.origin.load_bundle(component, old_source_locale(locale))
-        rescue StandardError => e
-          SgtnClient.logger.error "[#{__FILE__}][#{__callee__}] failed to load old source bundle. component:#{component}. error: #{e}"
         end
 
         compare_source(translation_bundle, old_source_bundle, source_bundle)
