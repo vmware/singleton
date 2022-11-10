@@ -32,7 +32,7 @@ import (
 )
 
 var (
-	s3config = s3bundle.NewS3Config("", "", "", "", config.Settings.S3Bundle.Region)
+	s3config = s3bundle.NewS3Config("", "", "", "", 3600, config.Settings.S3Bundle.Region)
 
 	s3b = &s3bundle.S3Bundle{
 		RootPrefix: config.Settings.S3Bundle.BundleRoot,
