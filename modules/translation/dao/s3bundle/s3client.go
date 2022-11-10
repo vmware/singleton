@@ -18,8 +18,6 @@ import (
 	"github.com/aws/aws-sdk-go-v2/service/sts/types"
 )
 
-const sessionDurationSeconds = 3600
-
 var (
 	updateTimeAdvance, _     = time.ParseDuration("60s")
 	expirationTimeAdvance, _ = time.ParseDuration("10s")
@@ -65,7 +63,7 @@ func newS3Client(s3Settings *S3Config) RoleClient {
 	input := &sts.AssumeRoleInput{
 		RoleArn:         aws.String(s3Settings.GetRoleArn()),
 		RoleSessionName: aws.String("singleton_s3"),
-		DurationSeconds: aws.Int32(sessionDurationSeconds),
+		DurationSeconds: aws.Int32(s3Settings.sessionDuration),
 	}
 
 	roleOutput, err := stsClient.AssumeRole(context.Background(), input)

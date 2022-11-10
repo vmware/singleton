@@ -16,16 +16,19 @@ import (
 type (
 	S3Config struct {
 		publicKeyFile, accessKey, secretKey, roleArn, region string
+		sessionDuration int32
 	}
 )
 
-func NewS3Config(publicKeyFile, accessKey, secretKey, roleArn, region string) *S3Config {
+func NewS3Config(publicKeyFile, accessKey, secretKey, roleArn string, sessionDuration int32, region string) *S3Config {
 	config := &S3Config{
-		publicKeyFile: publicKeyFile,
-		accessKey:     accessKey,
-		secretKey:     secretKey,
-		roleArn:       roleArn,
-		region:        region}
+		publicKeyFile:   publicKeyFile,
+		accessKey:       accessKey,
+		secretKey:       secretKey,
+		roleArn:         roleArn,
+		sessionDuration: sessionDuration,
+		region:          region,
+	}
 
 	if len(config.publicKeyFile) != 0 {
 		// Get public key
