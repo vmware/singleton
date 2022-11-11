@@ -39,7 +39,6 @@ module Sgtn # :nodoc:
 
     def exists?(locale, key, options)
       flat_key = I18n::Backend::Flatten.normalize_flat_keys(locale, key, options[:scope], '.')
-      locale = Sgtn.pseudo_mode ? PSEUDO_LOCALE : locale
       @translation.translate!(flat_key, @component, locale)
       true
     rescue StandardError
@@ -48,7 +47,6 @@ module Sgtn # :nodoc:
 
     def translate(locale, key, options)
       flat_key = I18n::Backend::Flatten.normalize_flat_keys(locale, key, options[:scope], '.')
-      locale = Sgtn.pseudo_mode ? PSEUDO_LOCALE : locale
       values = options.except(*I18n::RESERVED_KEYS)
       @translation.translate(flat_key, @component, locale, **values) { nil }
     end
