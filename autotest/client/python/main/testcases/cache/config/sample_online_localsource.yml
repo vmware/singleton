@@ -6,7 +6,7 @@ offline_resources_base_url: file:///../resources/l10n/PythonClient/6.0.0/
 #l10n_version: 1.0.0
 
 # log path for the python client
-log_path: logs
+log_path: ../../logs
 
 # local storage path for caching
 cache_path: .cache
@@ -21,16 +21,16 @@ cache_expired_time: 10
 
 
 locales:
-  - language_tag: en-US
-    offline_resources_path:
-      - $COMPONENT/messages_en-US.json    # if use offline_resources_base_url, find resource in target dir.
+    -   language_tag: en-US
+        offline_resources_path:
+            - $COMPONENT/messages_en-US.json    # if use offline_resources_base_url, find resource in target dir.
 
 component_template:
-  locales_refer: locales
+    locales_refer: locales
 
 components:
-  - name: about
-  - name: common
-  - name: contact
-#  - name: addcomponent
-  - name: intest
+    -   name: about
+    -   name: common
+    -   name: contact
+    #  - name: addcomponent
+    -   name: intest

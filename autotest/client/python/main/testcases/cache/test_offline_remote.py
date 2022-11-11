@@ -1,37 +1,43 @@
-from sgtn4python.sgtnclient import I18N
-import time
+from pathlib import Path
 
 import pytest
+from sgtnclient import I18N
 
-PRODUCT = 'PythonClient'
-VERSION = '8.0.0'
+from .utils import ModifyFileContext
+
+PRODUCT = 'Cache'
+VERSION = '1.0.1'
 COMPONENT = 'about'
 LOCALE = 'de'
-Config_files = 'sample_offline_remote.yml'
+CONFIG_FILE = 'offline_remote.yml'
+
+__CACHE__ = Path(__file__).parent
+__CONFIG__ = __CACHE__.joinpath('config')
+__RESOURCES__ = __CACHE__.joinpath('resources')
 
 
-class TestOfflineRemoteCache:
+class TestCacheOfflineRemote:
+    CONFIG_FILE = 'sample_offline_disk.yml'
 
-    @pytest.mark.cache2
-    def test_l1(self):
-        print("test local 1")
-        I18N.add_config_file('sample_offline_remote.yml')
-        I18N.set_current_locale(LOCALE)
+    @pytest.mark.skip
+    def test_offline_remote_no_support_cache(self):
+        """
+        Offline Remote Mode:
+        1. no support cache_path
+        2. memory cache still active. run as script can clear memory  cache.
+        """
+        file = __CONFIG__.joinpath(self.CONFIG_FILE)
+        I18N.add_config_file(file)
         rel = I18N.get_release(PRODUCT, VERSION)
         translation = rel.get_translation()
-        tran1 = translation.get_string("about", "about.message")
-        print(tran1)
 
-        assert tran1 == "test de key"
-        # os.system(r'E:\E3\test_pythoncode\offline_remote_bat\test.bat')
-        time.sleep(35)
-        tran2 = translation.get_string("about", "about.message")
+        # get local messages.properties
+        tran1 = translation.get_string("about", "about.title")
+        assert tran1 == "About (Offline Source)"
+
+        tran2 = translation.get_string("about", "about.message", locale="de")
         assert tran2 == "test de key"
-        time.sleep(10)
-        tran3 = translation.get_string("about", "about.message")
-        assert tran3 == "test de key"
-        # os.system(r'E:\E3\test_pythoncode\offline_remote_bat\test_re.bat')
 
 
 if __name__ == '__main__':
-    pytest.main(['-s', '-k'])
+    pytest.main(['-s', 'TestCacheOfflineRemote'])

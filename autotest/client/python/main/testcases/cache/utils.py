@@ -34,10 +34,34 @@ class ModifyFileContext(BaseFileContextManage):
     def __exit__(self, exc_type, exc_val, exc_tb):
         with open(self._file, mode='r', encoding='utf-8') as f:
             data = f.readlines()
-        data[5] = '"about.message" : "test de key",\n'
+        data[5] = '    "about.message" : "test de key",\n'
         text = ''.join(data)
         with open(self._file, mode='w', encoding='utf-8') as f:
             f.write(text)
+
+
+class ModifyCacheContext(BaseFileContextManage):
+
+    def __init__(self, file: Path):
+        super().__init__(file=file)
+
+    def __enter__(self):
+        with open(self._file, mode='r', encoding='utf-8') as f:
+            data = f.readlines()
+        data[7] = '    "about.message" : "test de key (CACHED)",\n'
+        text = ''.join(data)
+        with open(self._file, mode='w', encoding='utf-8') as f:
+            f.write(text)
+        return self
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        # with open(self._file, mode='r', encoding='utf-8') as f:
+        #     data = f.readlines()
+        # data[7] = '    "about.message" : "test de key",\n'
+        # text = ''.join(data)
+        # with open(self._file, mode='w', encoding='utf-8') as f:
+        #     f.write(text)
+        pass
 
 
 class BaseContextManage:
@@ -180,6 +204,5 @@ class ContextModifyCacheDe1(BaseFileContextManage):
 
 
 if __name__ == '__main__':
-    files = Path(__file__).parent.joinpath(".cache", "PythonClient", "6.0.0", "about", "messages_de.json")
-    with ContextModifyCacheDe1(files):
-        ...
+    files = Path(__file__).parent.joinpath(".cache")
+    print(files.exists())

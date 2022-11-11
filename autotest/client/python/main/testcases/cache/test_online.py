@@ -1,16 +1,15 @@
-from sgtn4python.sgtnclient import I18N
-import os
-from pathlib import Path
 import time
+from pathlib import Path
+
 import pytest
+from sgtnclient import I18N
 
-from utils import ContextStringsDe1, ContextStringsFr1
+from .utils import ModifyCacheContext
 
-PRODUCT = 'PythonClient'
-VERSION = '5.0.0'
+PRODUCT = 'Cache'
+VERSION = '1.0.1'
 COMPONENT = 'about'
 LOCALE = 'de'
-Config_files = 'only_online.yml'
 
 __CACHE__ = Path(__file__).parent
 __CONFIG__ = __CACHE__.joinpath('config')
@@ -22,207 +21,187 @@ BASE_URL = "http://localhost:8091"
 class TestOnlineCache:
 
     @pytest.mark.cache1
-    def test_cache_control_expired_with_20_seconds(self):
+    def test_online_cache_with_no_server_cache_control(self):
         """
-        online mode: if server cache-control.value=max-age=83600, public.
-                    local cache_expired_time: 4 inactive.
+        Online Mode: java or go
+        1. server cache-control.value=max-age=83600, public. disabled
+        2. cache_expired_time: 5
+        3. cache_path: .cache
+        4. .cache directory is existed
+
+        cache_expired_time active
         """
-        file: Path = __CONFIG__.joinpath(Config_files)
+        config_file = "online_without_cache_control.yml"
+        file: Path = __CONFIG__.joinpath(config_file)
         I18N.add_config_file(file)
         I18N.set_current_locale(LOCALE)
         rel = I18N.get_release(PRODUCT, VERSION)
         translation = rel.get_translation()
+
+        # get old value and request server. a real request come in server
+        translation.get_string("about", "about.message")
+        # assert tran1 == "test de key"
+        time.sleep(4.5)
+
+        # get from cache
         tran1 = translation.get_string("about", "about.message")
-        assert tran1 == "test__de_value"
+        assert tran1 == "test de key"
+        time.sleep(5.5)
 
-        with ContextStringsDe1(base_url=BASE_URL):
-            # Cache-Control = 20 active, get local cache
-            time.sleep(7)
-            tran2 = translation.get_string("about", "about.message")
-            assert tran2 == "test__de_value"
-
-            # Cache-Control = 20 active, get local cache
-            time.sleep(7)
-            tran3 = translation.get_string("about", "about.message")
-            assert tran3 == "test__de_value"
-
-            # Cache-Control = 20 inactive, get local cache and request server and refresh cache
-            time.sleep(7)
-            tran3 = translation.get_string("about", "about.message")
-            assert tran3 == "test__de_value"
-
-            # get local cache
-            time.sleep(5)
-            tran3 = translation.get_string("about", "about.message")
-            assert tran3 == "test__de_value_change"
+        # cache expired and request server.
+        tran1 = translation.get_string("about", "about.message")
+        assert tran1 == "test de key"
 
     @pytest.mark.cache1
-    def test_no_cache_control_and_cache_expired_time_with_4_seconds(self):
+    def test_online_cache_control_max_age_0_seconds(self):
         """
-        online mode: if server cache-control.value=max-age=0, public.
-                     local cache_expired_time: 4 active.
+        Online Mode: java or go
+        1. server cache-control.value=max-age=0, public. disabled
+        2. cache_expired_time: 10
+        3. cache_path: .cache
+        4. .cache directory is existed
+
+        cache_expired_time: 10 active
         """
-        file: Path = __CONFIG__.joinpath(Config_files)
+        config_file = "online_with_cache_control_5_seconds.yml"
+        file: Path = __CONFIG__.joinpath(config_file)
         I18N.add_config_file(file)
         I18N.set_current_locale(LOCALE)
         rel = I18N.get_release(PRODUCT, VERSION)
         translation = rel.get_translation()
+
+        # get old value and request server. a real request come in server
         tran1 = translation.get_string("about", "about.message")
-        assert tran1 == "test__de_value"
+        assert tran1 == "test de key"
 
-        with ContextStringsDe1(base_url=BASE_URL):
-            # Cache-Control = 0 inactive, get local cache
-            time.sleep(3)
-            tran2 = translation.get_string("about", "about.message")
-            assert tran2 == "test__de_value"
+        # get from cache
+        time.sleep(9.5)
+        tran1 = translation.get_string("about", "about.message")
+        assert tran1 == "test de key"
 
-            # Cache-Control = 0 inactive, get local cache and request server and refresh cache
-            time.sleep(3)
-            tran3 = translation.get_string("about", "about.message")
-            assert tran3 == "test__de_value"
-
-            # Cache-Control = 0 inactive, get local cache
-            time.sleep(1)
-            tran3 = translation.get_string("about", "about.message")
-            assert tran3 == "test__de_value_change"
-
-        # Cache-Control = 0 inactive, get local cache, cache_expired_time: 3 active
-        time.sleep(1)
-        tran3 = translation.get_string("about", "about.message")
-        assert tran3 == "test__de_value_change"
-
-        # Cache-Control = 0 inactive, get local cache, cache_expired_time: 2 active
-        time.sleep(1)
-        tran3 = translation.get_string("about", "about.message")
-        assert tran3 == "test__de_value_change"
-
-        # Cache-Control = 0 inactive, get local cache, cache_expired_time: 1 active
-        time.sleep(1)
-        tran3 = translation.get_string("about", "about.message")
-        assert tran3 == "test__de_value_change"
-
-        # Cache-Control = 0 inactive, get local cache, cache_expired_time: 0, and request server
-        time.sleep(1)
-        tran3 = translation.get_string("about", "about.message")
-        assert tran3 == "test__de_value"
-
-        # Cache-Control = 0 inactive, get local cache, cache_expired_time: 3 active
-        time.sleep(1)
-        tran3 = translation.get_string("about", "about.message")
-        assert tran3 == "test__de_value"
+        # cache expired and request server
+        time.sleep(10.5)
+        tran1 = translation.get_string("about", "about.message")
+        assert tran1 == "test de key"
 
     @pytest.mark.cache1
-    def test_online_cache_no_cache_control_and_no_cache_expired_time(self):
+    def test_online_cache_control_max_age_5_seconds(self):
         """
-        online mode: Cache-Control = 0 and cache_expired_time: 0, never expired!
+        Online Mode: java or go
+        1. server cache-control.value=max-age=5, public. disabled
+        2. cache_expired_time: 10
+        3. cache_path: .cache
+        4. .cache directory is existed
+
+        server cache-control.value=max-age=5 active
         """
-        file: Path = __CONFIG__.joinpath(Config_files)
+        config_file = "online_with_cache_control_5_seconds.yml"
+        file: Path = __CONFIG__.joinpath(config_file)
         I18N.add_config_file(file)
-        I18N.set_current_locale("fr")
+        I18N.set_current_locale(LOCALE)
         rel = I18N.get_release(PRODUCT, VERSION)
         translation = rel.get_translation()
+
+        # get old value and request server. a real request come in server
         tran1 = translation.get_string("about", "about.message")
-        assert tran1 == "test_fr_value"
+        assert tran1 == "test de key"
+        time.sleep(4.5)
 
-        with ContextStringsFr1(base_url=BASE_URL):
-            time.sleep(5)
-            tran2 = translation.get_string("about", "about.message")
-            assert tran2 == "test_fr_value"
+        # get from cache
+        tran1 = translation.get_string("about", "about.message")
+        assert tran1 == "test de key"
+        time.sleep(5.5)
 
-            time.sleep(5)
-            tran3 = translation.get_string("about", "about.message")
-            assert tran3 == "test_fr_value"
+        # check cache expired and request server.
+        tran1 = translation.get_string("about", "about.message")
+        assert tran1 == "test de key"
 
-        time.sleep(5)
-        tran2 = translation.get_string("about", "about.message")
-        assert tran2 == "test_fr_value"
+        # with ContextStringsDe1(base_url=BASE_URL):
+        #     # Cache-Control = 20 active, get local cache
+        #     time.sleep(7)
+        #     tran2 = translation.get_string("about", "about.message")
+        #     assert tran2 == "test__de_value"
+        #
+        #     # Cache-Control = 20 active, get local cache
+        #     time.sleep(7)
+        #     tran3 = translation.get_string("about", "about.message")
+        #     assert tran3 == "test__de_value"
+        #
+        #     # Cache-Control = 20 inactive, get local cache and request server and refresh cache
+        #     time.sleep(7)
+        #     tran3 = translation.get_string("about", "about.message")
+        #     assert tran3 == "test__de_value"
+        #
+        #     # get local cache
+        #     time.sleep(5)
+        #     tran3 = translation.get_string("about", "about.message")
+        #     assert tran3 == "test__de_value_change"
 
-        time.sleep(5)
-        tran3 = translation.get_string("about", "about.message")
-        assert tran3 == "test_fr_value"
+    @pytest.mark.cache1
+    @pytest.mark.skip("Manual due to Conflict")
+    def test_online_cache_update(self):
+        """
+        Online Mode:
+        1. cache expire time: 5s
+        2. cache content {messages_$locale.json} and different key will return from cache.
+        3. must run as script, cache_path active only run as script
+        4. run as script could not expire. everytime it start, it will load .cache and recalculate expire time.
+        """
+        config_file = "online_without_cache_control.yml"
+        file: Path = __CONFIG__.joinpath(config_file)
+        I18N.add_config_file(file)
+        I18N.set_current_locale(LOCALE)
+        rel = I18N.get_release(PRODUCT, VERSION)
+        translation = rel.get_translation()
 
-    @pytest.mark.cache2
-    @pytest.mark.skip
-    def test_l6(self):
-        print("cache expired and add key")
-        self.rel = I18N.get_release(PRODUCT, VERSION)
-        translation = self.rel.get_translation()
-        tran1 = translation.get_string("about", "about.addkey", locale="de")
-        print("translation %s" % tran1)
-        # os.system(r'E:\python_client\test_pythoncode\online_bat\addkey_en.bat')
-        os.system(r'E:\E2\python_client\test_pythoncode\online_bat\addkey_en.bat')
-        os.system(r'E:\E2\python_client\test_pythoncode\online_bat\addkey_de.bat')
-        time.sleep(40)
-        tran2 = translation.get_string("about", "about.addkey", locale="de")
-        tran3 = translation.get_string("about", "about.addkey", locale="en")
-        print("translationen 1 %s" % tran3)
-        print("translationde 1 %s" % tran2)
-        time.sleep(3)
-        tran3 = translation.get_string("about", "about.addkey", locale="de")
-        print("translationde 2 %s" % tran3)
-        tran3 = translation.get_string("about", "about.addkey", locale="en")
-        print("translationen 2 %s" % tran3)
-        # time.sleep(31)
-        # tran4 = translation.get_string("about", "about.addkey",locale= "de")
-        # print("translationde 3 %s" % tran4)
-        # time.sleep(3)
-        # tran5 = translation.get_string("about", "about.addkey",locale= "en")
-        # print("translation en %s" % tran5)
-        # os.system(r'E:\python_client\test_pythoncode\online_bat\addkey_de.bat')
-        # assert tran3 == "Your application description page."
-        # time.sleep(3)
-        # tran3 = translation.get_string("about", "about.addkey")
-        # print("translation %s" % tran3)
-        # time.sleep(30)
-        # tran4 = translation.get_string("about", "about.addkey")
-        # print("translation %s" % tran4)
-        # time.sleep(3)
-        # tran5 = translation.get_string("about", "about.addkey")
-        # print("translation %s" % tran5)
-        # tran4 = translation.get_string("about", "about.message")
-        # #assert tran4 == "test_pl_value_change"
-        # print("translation %s" % tran4)
-        # time.sleep(10)
-        # tran5 = translation.get_string("about", "about.message")
-        # #assert tran4 == "test_pl_value_change"
-        # print("translation5 %s" % tran5)
+        # cache expired and get old value
+        file = Path(__file__).parent.joinpath(".cache").joinpath("Cache").joinpath("1.0.1").joinpath("about").joinpath(
+            "messages_de.json")
+        with ModifyCacheContext(file):
+            tran1 = translation.get_string("about", "about.message")
+            assert tran1 == "test de key (CACHED)"
 
-    @pytest.mark.cache2
-    @pytest.mark.skip
-    def test_l5(self):
-        print("cache expired and update conpomtent -- bug 1019")
-        I18N.set_current_locale("fr")
-        # tran = I18N.get_release(PRODUCT, VERSION).get_translation().get_string("aadcomponent","about.message")
-        # print(tran)
-        self.rel = I18N.get_release(PRODUCT, VERSION)
-        translation = self.rel.get_translation()
-        # tran1 = translation.get_string("about","about.message")
-        # print(tran1)
-        # assert tran1 == "about.message"
-        tran2 = translation.get_string("aadcomponent", "about.message")
-        # assert tran2 == "about.message"
-        print(tran2)
-        # tran3 = translation.get_string("contact","contact.message")
-        # #assert tran2 == "about.message"
-        # print(tran3)
-        # os.system(r'E:\python_client\test_pythoncode\online_bat\Addcomponenten.bat')
-        # os.system(r'E:\test_pythoncode\online_bat\Addcomponent.bat')
-        os.system(r'E:\E2\python_client\test_pythoncode\online_bat\Addcomponenten.bat')
-        os.system(r'E:\E2\python_client\test_pythoncode\online_bat\Addcomponent.bat')
-        time.sleep(15)
-        tran2 = translation.get_string("addcomponent", "about.message")
-        assert tran2 == "about.message"
-        time.sleep(10)
-        tran3 = translation.get_string("addcomponent", "about.message")
-        print(tran3)
-        time.sleep(10)
-        tran3 = translation.get_string("addcomponent", "about.message")
-        print(tran3)
-        # assert tran3 =="test_value_change123"
-        time.sleep(10)
-        tran4 = translation.get_string("addcomponent", "about.message")
-        assert tran4 == "test_value_change123"
+        # run as script, if start load .cache not check expire. during 5s expire
+        tran1 = translation.get_string("about", "about.message")
+        assert tran1 == "test de key (CACHED)"
+
+        # cache expired will request server to update
+        time.sleep(5.5)
+        tran1 = translation.get_string("about", "about.message")
+        assert tran1 == "test de key (CACHED)"
+
+        # cache will update
+        time.sleep(1)
+        with open(file, mode='r') as f:
+            data = f.readlines()
+        assert data[7] == '    "about.message": "test de key",\n'
+
+    @pytest.mark.cache1
+    def test_online_cache_translation(self):
+        """
+        Online Mode:
+        1. cache component + locale
+        2. same component + locale , diff key will return from cache.
+        3. diff component or diff locale will request server
+        """
+        config_file = "online_without_cache_control.yml"
+        file: Path = __CONFIG__.joinpath(config_file)
+        I18N.add_config_file(file)
+        rel = I18N.get_release(PRODUCT, VERSION)
+        translation = rel.get_translation()
+
+        # diff local will request server
+        tran1 = translation.get_string("about", "about.message", locale="fr")
+        assert tran1 == "test fr key"
+
+        # diff key will return from cache
+        tran1 = translation.get_string("about", "about.description", locale="fr")
+        assert tran1 == "Utilisez cette zone pour fournir des informations supplémentaires"
+
+        # diff component will request server
+        tran1 = translation.get_string("contact", "contact.message", locale="de")
+        assert tran1 == "Ihrer Kontaktseite."
 
 
 if __name__ == '__main__':
-    pytest.main(['-s', '-k test_online_cache_no_cache_control_and_no_cache_expired_time'])
+    pytest.main(['-s', 'TestOnlineCache'])
