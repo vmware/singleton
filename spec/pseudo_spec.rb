@@ -7,7 +7,6 @@ describe Sgtn::Pseudo, :include_helpers, :extend_helpers do
   let(:stubs) { [] }
 
   before :all do
-    Sgtn.pseudo_mode = true
     WebMock.enable!
     WebMock.disable_net_connect!
     Sgtn.vip_server = singleton_server

@@ -15,9 +15,6 @@ module Sgtn # :nodoc:
       @component = component
       @translation = Class.new do
         include SgtnClient::Translation::Implementation
-      end.new
-      @pseudo_translation = Class.new do
-        include SgtnClient::Translation::Implementation
         include Sgtn::Pseudo
       end.new
     end
@@ -42,7 +39,8 @@ module Sgtn # :nodoc:
 
     def exists?(locale, key, options)
       flat_key = I18n::Backend::Flatten.normalize_flat_keys(locale, key, options[:scope], '.')
-      translation.translate!(flat_key, @component, locale)
+      locale = Sgtn.pseudo_mode ? PSEUDO_LOCALE : locale
+      @translation.translate!(flat_key, @component, locale)
       true
     rescue StandardError
       false
@@ -50,16 +48,11 @@ module Sgtn # :nodoc:
 
     def translate(locale, key, options)
       flat_key = I18n::Backend::Flatten.normalize_flat_keys(locale, key, options[:scope], '.')
+      locale = Sgtn.pseudo_mode ? PSEUDO_LOCALE : locale
       values = options.except(*I18n::RESERVED_KEYS)
-      translation.translate(flat_key, @component, locale, **values) { nil }
+      @translation.translate(flat_key, @component, locale, **values) { nil }
     end
 
     def localize(locale, object, format, options) end
-
-    private
-
-    def translation
-      Sgtn.pseudo_mode ? @pseudo_translation : @translation
-    end
   end
 end

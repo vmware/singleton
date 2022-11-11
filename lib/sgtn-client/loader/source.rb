@@ -8,11 +8,8 @@ require 'yaml'
 module SgtnClient
   module TranslationLoader
     class Source # :nodoc:
-      attr_reader :pseudo_tag
-
       def initialize(config)
         @source_bundle_path = Pathname.new(config.source_bundle)
-        @pseudo_tag = Sgtn.pseudo_tag
       end
 
       def load_bundle(component, locale = nil)

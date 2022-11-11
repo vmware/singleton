@@ -52,10 +52,6 @@ module SgtnClient
         end
       end
 
-      def pseudo_tag
-        '#@'
-      end
-
       private
 
       def available_locales

@@ -8,6 +8,10 @@ module Sgtn # :nodoc:
   autoload :Pseudo, 'singleton-client/pseudo'
   autoload :I18nBackend, 'singleton-client/i18n_backend'
 
+  extend SgtnClient::Translation::Implementation
+  extend SgtnClient::Fallbacks
+  extend Sgtn::Pseudo
+
   PSEUDO_LOCALE = 'pseudo'.freeze
 
   class << self
@@ -32,25 +36,10 @@ module Sgtn # :nodoc:
       end
     end
 
-    private
-
-    def translation
-      @translation ||= Class.new do
-        include SgtnClient::Translation::Implementation
-        include SgtnClient::Fallbacks
-        include Sgtn::Pseudo
-
-        alias_method :t!, :translate!
-      end.new
-    end
-
     def_delegator SgtnClient::Config, :instance, :config
-    delegate %i[translate! t! translate t get_translations! get_translations] => :translation,
-             %i[locale locale=] => SgtnClient,
+    delegate %i[locale locale=] => SgtnClient,
              %i[logger product_name version vip_server translation_bundle
                 source_bundle cache_expiry_period log_file log_level
-                pseudo_mode pseudo_tag ].flat_map { |m|
-               [m, "#{m}=".to_sym]
-             } => :config
+                pseudo_mode pseudo_tag ].flat_map { |m| [m, "#{m}=".to_sym] } => :config
   end
 end

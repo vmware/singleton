@@ -11,11 +11,8 @@ module SgtnClient
       BUNDLE_PREFIX = 'messages_'.freeze
       BUNDLE_SUFFIX = '.json'.freeze
 
-      attr_reader :pseudo_tag
-
       def initialize(config)
         @base_path = Pathname.new(config.translation_bundle) + config.product_name + config.version.to_s
-        @pseudo_tag = Sgtn.pseudo_tag
       end
 
       def load_bundle(component, locale)

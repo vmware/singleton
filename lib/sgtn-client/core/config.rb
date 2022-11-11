@@ -12,8 +12,16 @@ module SgtnClient
     include Singleton
 
     attr_accessor :product_name, :version, :vip_server, :translation_bundle, :source_bundle, :cache_expiry_period,
-                  :log_file, :log_level, :pseudo_mode
+                  :log_file, :log_level
     attr_writer :logger, :pseudo_tag
+
+    def pseudo_mode
+      RequestStore.store[:pseudo_mode] || false
+    end
+
+    def pseudo_mode=(value)
+      RequestStore.store[:pseudo_mode] = value
+    end
 
     def pseudo_tag
       @pseudo_tag ||= '@@'

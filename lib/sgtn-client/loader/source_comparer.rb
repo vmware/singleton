@@ -38,8 +38,8 @@ module SgtnClient
 
       def compare_source(translation_bundle, old_source_bundle, source_bundle)
         source_bundle.each do |k, v|
-          if !v.nil? && (old_source_bundle&.fetch(k, nil) != v || translation_bundle[k].nil?)
-            translation_bundle[k] = LocalizedString.new(v, LocaleUtil.get_source_locale)
+          if translation_bundle[k].nil? || (!old_source_bundle.nil? && old_source_bundle[k] != v)
+            translation_bundle[k] = LocalizedString.new(v, LocaleUtil.get_source_locale) if v
           end
         end
         translation_bundle

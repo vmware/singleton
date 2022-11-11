@@ -8,8 +8,7 @@ module SgtnClient
     def get_bundle!(component, locale)
       error = nil
       localechain(locale) do |l|
-        bundle = super(component, l)
-        return bundle if bundle
+        return super(component, l)
       rescue StandardError => e
         error = e
       end
