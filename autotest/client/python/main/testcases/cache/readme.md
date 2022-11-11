@@ -46,3 +46,6 @@ b.缓存有效内，即使服务器资源更新，也只能读取缓存旧值。
 5.如果服务区配置了`cache-control=max-age=10`, 会覆盖本地`cache_expired_time=50`，过期时间为10s
 6.缓存只缓存en和对应locale的translation。请求不同locale和component的时候，会请求数据。请求相同component的locale的不同的key，直接使用缓存。
 7.如果采用run as script模式每次会加载`cache_path`，但是每次加载cache_path后，先返回，再判断是否过期，过期则请求服务器获取更新。
+
+8.混合模式下，如果online获取到数据了。直接走online模式。
+9.混合模式下，如果online返回4xx或者5xx，则直接走cache，cache不会失效？？？bug

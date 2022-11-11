@@ -1,5 +1,6 @@
 # @Time 2022/10/24 17:20
 # Author: beijingm
+import time
 from pathlib import Path
 
 import requests
@@ -172,7 +173,7 @@ class ContextStringsFr1(BaseContextManage):
         self.revert_string_fr1()
 
 
-class ContextModifyCacheDe1(BaseFileContextManage):
+class ContextModifyCacheFr1(BaseFileContextManage):
 
     def __init__(self, file: Path):
         super().__init__(file=file)
@@ -180,7 +181,7 @@ class ContextModifyCacheDe1(BaseFileContextManage):
     def modify_cache_de(self):
         with open(self._file, mode='r', encoding='utf-8') as f:
             data = f.readlines()
-        data[10] = '\t"about.message": "test__de_value_change_cache",\n'
+        data[7] = '    "about.message": "test fr key (CACHED)",\n'
         text = ''.join(data)
 
         with open(self._file, mode='w', encoding='utf-8') as f:
@@ -189,7 +190,7 @@ class ContextModifyCacheDe1(BaseFileContextManage):
     def revert_cache_de(self):
         with open(self._file, mode='r', encoding='utf-8') as f:
             data = f.readlines()
-        data[10] = '\t"about.message": "test__de_value",\n'
+        data[7] = '    "about.message": "test fr key",\n'
         text = ''.join(data)
 
         with open(self._file, mode='w', encoding='utf-8') as f:
@@ -197,6 +198,7 @@ class ContextModifyCacheDe1(BaseFileContextManage):
 
     def __enter__(self):
         self.modify_cache_de()
+        time.sleep(2)
         return self
 
     def __exit__(self, exc_type, exc_val, exc_tb):
