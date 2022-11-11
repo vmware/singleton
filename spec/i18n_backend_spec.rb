@@ -46,24 +46,15 @@ describe Sgtn::I18nBackend, :include_helpers, :extend_helpers do
     expect(I18n.t(key)).to eq en_value
   end
 
-  # it '#pseudo mode' do
-  #   Sgtn.pseudo_mode = true
-  #   old_enforce = I18n.enforce_available_locales
-  #   I18n.enforce_available_locales = false
+  it '#pseudo mode' do
+    old_enforce = I18n.enforce_available_locales
+    I18n.enforce_available_locales = false
 
-  #   stubs << components_stub << locales_stub
-  #   stubs << bundle_stub(component, en_locale, stub_response("#{component}-#{en_locale}"))
-  #   stubs << bundle_stub(component, Sgtn::PSEUDO_LOCALE, pseudo_response).with(query: { 'pseudo' => true })
+    I18n.backend = Sgtn::I18nBackend.new(component_local_source_only)
 
-  #   I18n.backend = Sgtn::I18nBackend.new(component_local_source_only)
-
-  #   expect(I18n.exists?(message_only_in_local_source_key, locale)).to eq true
-
-  #   expect(I18n.translate(message_only_in_local_source_key, locale: locale)).to eq '@@New Hello world@@'
-
-  #   stubs.each { |stub| expect(stub).to have_been_requested }
-  # ensure
-  #   Sgtn.pseudo_mode = false
-  #   I18n.enforce_available_locales = old_enforce
-  # end
+    expect(I18n.exists?(message_only_in_local_source_key, Sgtn::PSEUDO_LOCALE)).to eq true
+    expect(I18n.translate(message_only_in_local_source_key, locale: Sgtn::PSEUDO_LOCALE)).to eq '@@New Hello world@@'
+  ensure
+    I18n.enforce_available_locales = old_enforce
+  end
 end
