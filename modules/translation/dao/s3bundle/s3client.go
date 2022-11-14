@@ -9,6 +9,7 @@ import (
 	"context"
 	"sgtnserver/internal/logger"
 	"sync"
+	"sync/atomic"
 	"time"
 
 	"github.com/aws/aws-sdk-go-v2/aws"
@@ -24,7 +25,7 @@ var (
 
 	clientInst           RoleClient
 	clientInstLock       sync.RWMutex
-	clientInstUpdateLock sync.Mutex
+	clientInstUpdateFlag atomic.Value
 )
 
 type RoleClient struct {
@@ -37,7 +38,7 @@ var GetS3Client = func(s3Settings *S3Config) ClientAPI {
 
 	diff := time.Until(*currentInst.RoleCredentials.Expiration)
 	if diff >= expirationTimeAdvance {
-		if diff <= updateTimeAdvance {
+		if diff <= updateTimeAdvance && clientInstUpdateFlag.CompareAndSwap(false, true) {
 			go newS3Client(s3Settings)
 		}
 		return currentInst
@@ -47,13 +48,7 @@ var GetS3Client = func(s3Settings *S3Config) ClientAPI {
 }
 
 func newS3Client(s3Settings *S3Config) RoleClient {
-	clientInstUpdateLock.Lock()
-	defer clientInstUpdateLock.Unlock()
-
-	currentInst := readClient()
-	if currentInst.Client != nil && time.Until(*currentInst.RoleCredentials.Expiration) > updateTimeAdvance {
-		return currentInst
-	}
+	defer clientInstUpdateFlag.Store(false)
 
 	stsClient := sts.New(sts.Options{
 		Region:      s3Settings.GetRegion(),
@@ -96,4 +91,8 @@ func writeClient(inst RoleClient) {
 	defer clientInstLock.Unlock()
 
 	clientInst = inst
+}
+
+func init() {
+	clientInstUpdateFlag.Store(false)
 }
