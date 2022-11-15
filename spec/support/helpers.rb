@@ -22,7 +22,7 @@ module Helpers
       'translation_bundle' => './spec/fixtures/bundles',
       'source_bundle' => './spec/fixtures/sources',
       'cache_expiry_period' => 10,
-      # 'log_file' => './unit_test.log'
+      'log_file' => './unit_test.log',
       # 'default_language' => 'en'
     }.freeze
 

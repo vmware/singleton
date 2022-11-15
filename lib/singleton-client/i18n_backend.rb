@@ -38,11 +38,7 @@ module Sgtn # :nodoc:
     def translations; end
 
     def exists?(locale, key, options)
-      flat_key = I18n::Backend::Flatten.normalize_flat_keys(locale, key, options[:scope], '.')
-      @translation.translate!(flat_key, @component, locale)
-      true
-    rescue StandardError
-      false
+      !!translate(locale, key, options)
     end
 
     def translate(locale, key, options)
