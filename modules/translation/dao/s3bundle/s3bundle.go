@@ -8,6 +8,7 @@ package s3bundle
 import (
 	"bytes"
 	"context"
+	"errors"
 	"regexp"
 	"strings"
 
@@ -15,12 +16,9 @@ import (
 	"sgtnserver/internal/sgtnerror"
 	"sgtnserver/modules/translation"
 
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/aws/awserr"
-	"github.com/aws/aws-sdk-go/aws/credentials"
-	"github.com/aws/aws-sdk-go/aws/session"
-	"github.com/aws/aws-sdk-go/service/s3"
-	"github.com/aws/aws-sdk-go/service/s3/s3iface"
+	"github.com/aws/aws-sdk-go-v2/aws"
+	"github.com/aws/aws-sdk-go-v2/service/s3"
+	"github.com/aws/aws-sdk-go-v2/service/s3/types"
 	jsoniter "github.com/json-iterator/go"
 	"go.uber.org/zap"
 )
@@ -32,7 +30,6 @@ const slash = "/"
 type S3Bundle struct {
 	RootPrefix string
 	Bucket     *string
-	S3Client   s3iface.S3API
 	Config     *S3Config
 }
 
@@ -44,38 +41,20 @@ func NewS3Bundle(rootPrefix, bucket string, config *S3Config) *S3Bundle {
 	}
 	rootPrefix = regexp.MustCompile(`^(/+|\./)`).ReplaceAllLiteralString(rootPrefix, "")
 
-	// Create S3 session
-	awsConfig := aws.Config{
-		Credentials: credentials.NewStaticCredentials(config.GetAccessKey(), config.GetSecretKey(), ""),
-		Region:      aws.String(config.GetRegion()),
-	}
-
 	// Create bundle instance
-	bundle := &S3Bundle{
-		RootPrefix: rootPrefix,
-		Bucket:     aws.String(bucket),
-		S3Client:   s3.New(session.Must(session.NewSession(&awsConfig))),
-		Config:     config}
+	bundle := &S3Bundle{RootPrefix: rootPrefix, Bucket: aws.String(bucket), Config: config}
 
 	// check bucket
-	_, err := bundle.S3Client.HeadBucket(&s3.HeadBucketInput{Bucket: bundle.Bucket})
-	if err != nil {
-		if awsErr, ok := err.(awserr.Error); ok {
-			switch awsErr.Code() {
-			case s3.ErrCodeNoSuchBucket:
-				if err = bundle.createBucket(); err != nil {
-					createErr, ok := err.(awserr.Error)
-					if !ok || (createErr.Code() != s3.ErrCodeBucketAlreadyOwnedByYou) {
-						logger.Log.Fatal(err.Error())
-					}
-				}
-			default:
-				logger.Log.Fatal(err.Error())
-			}
-		} else {
+	_, err := newS3Client(config).HeadBucket(context.Background(), &s3.HeadBucketInput{Bucket: bundle.Bucket})
+	var noSuchBucketErr *types.NoSuchBucket
+	if errors.As(err, &noSuchBucketErr) {
+		err = bundle.createBucket()
+		var alreadyOwned *types.BucketAlreadyOwnedByYou
+		if !errors.As(err, &alreadyOwned) {
 			logger.Log.Fatal(err.Error())
 		}
-
+	} else if err != nil {
+		logger.Log.Fatal(err.Error())
 	}
 
 	return bundle
@@ -84,35 +63,34 @@ func NewS3Bundle(rootPrefix, bucket string, config *S3Config) *S3Bundle {
 // GetBundleInfo ...
 func (b *S3Bundle) GetBundleInfo(ctx context.Context) (*translation.BundleInfo, error) {
 	bundleInfo := translation.NewBundleInfo()
-	err := b.S3Client.ListObjectsV2Pages(
-		&s3.ListObjectsV2Input{Bucket: b.Bucket, Prefix: &b.RootPrefix},
-		func(page *s3.ListObjectsV2Output, lastPage bool) bool {
-			for _, entry := range page.Contents {
-				p := strings.TrimPrefix(*entry.Key, b.RootPrefix)
-				parts := strings.Split(p, slash)
-				if len(parts) < 4 {
-					continue
-				}
 
-				bundleName := parts[3]
-				if strings.HasPrefix(bundleName, translation.BundlePrefix) &&
-					strings.HasSuffix(bundleName, translation.BundleSuffix) {
-					locale := bundleName[len(translation.BundlePrefix) : len(bundleName)-len(translation.BundleSuffix)]
-					bundleInfo.AddBundle(&translation.BundleID{
-						Name:      parts[0],
-						Version:   parts[1],
-						Component: parts[2],
-						Locale:    locale})
-				}
+	p := s3.NewListObjectsV2Paginator(GetS3Client(b.Config), &s3.ListObjectsV2Input{Bucket: b.Bucket, Prefix: &b.RootPrefix})
+	for p.HasMorePages() {
+		page, err := p.NextPage(ctx)
+		if err != nil {
+			wrapErr := sgtnerror.StatusInternalServerError.WrapErrorWithMessage(err, translation.FailToGetBundleInfo)
+			logger.FromContext(ctx).Error(wrapErr.Error())
+			continue
+		}
+
+		for _, entry := range page.Contents {
+			p := strings.TrimPrefix(*entry.Key, b.RootPrefix)
+			parts := strings.Split(p, slash)
+			if len(parts) < 4 {
+				continue
 			}
 
-			return !lastPage
-		})
-
-	if err != nil {
-		returnErr := sgtnerror.StatusInternalServerError.WrapErrorWithMessage(err, translation.FailToGetBundleInfo)
-		logger.FromContext(ctx).Error(returnErr.Error())
-		return nil, returnErr
+			bundleName := parts[3]
+			if strings.HasPrefix(bundleName, translation.BundlePrefix) &&
+				strings.HasSuffix(bundleName, translation.BundleSuffix) {
+				locale := bundleName[len(translation.BundlePrefix) : len(bundleName)-len(translation.BundleSuffix)]
+				bundleInfo.AddBundle(&translation.BundleID{
+					Name:      parts[0],
+					Version:   parts[1],
+					Component: parts[2],
+					Locale:    locale})
+			}
+		}
 	}
 
 	return bundleInfo, nil
@@ -121,7 +99,7 @@ func (b *S3Bundle) GetBundleInfo(ctx context.Context) (*translation.BundleInfo, 
 // GetBundle ...
 func (b *S3Bundle) GetBundle(ctx context.Context, id *translation.BundleID) (bundle *translation.Bundle, returnErr error) {
 	input := s3.GetObjectInput{Bucket: b.Bucket, Key: b.GetKey(id)}
-	output, err := b.S3Client.GetObject(&input)
+	output, err := GetS3Client(b.Config).GetObject(ctx, &input)
 	if err == nil {
 		defer output.Body.Close()
 
@@ -136,7 +114,8 @@ func (b *S3Bundle) GetBundle(ctx context.Context, id *translation.BundleID) (bun
 		}
 	}
 
-	if awsErr, ok := err.(awserr.Error); ok && awsErr.Code() == s3.ErrCodeNoSuchKey {
+	var noSuchKeyErr *types.NoSuchKey
+	if errors.As(err, &noSuchKeyErr) {
 		returnErr = sgtnerror.StatusNotFound.WrapErrorWithMessage(err, translation.FailToReadBundle, id.Name, id.Version, id.Locale, id.Component)
 	} else {
 		returnErr = sgtnerror.StatusInternalServerError.WrapErrorWithMessage(err, translation.FailToReadBundle, id.Name, id.Version, id.Locale, id.Component)
@@ -154,7 +133,7 @@ func (b *S3Bundle) PutBundle(ctx context.Context, bundleData *translation.Bundle
 		returnErr = sgtnerror.StatusBadRequest.WrapErrorWithMessage(err, translation.WrongBundleContent, bundleData.ID.Name, bundleData.ID.Version, bundleData.ID.Locale, bundleData.ID.Component)
 	} else {
 		input := s3.PutObjectInput{Bucket: b.Bucket, Key: b.GetKey(&bundleData.ID), Body: bytes.NewReader(bts)}
-		if _, err = b.S3Client.PutObject(&input); err != nil {
+		if _, err = GetS3Client(b.Config).PutObject(ctx, &input); err != nil {
 			returnErr = sgtnerror.StatusInternalServerError.WrapErrorWithMessage(err, translation.FailToStoreBundle, bundleData.ID.Name, bundleData.ID.Version, bundleData.ID.Locale, bundleData.ID.Component)
 		}
 	}
@@ -168,7 +147,7 @@ func (b *S3Bundle) PutBundle(ctx context.Context, bundleData *translation.Bundle
 
 // func (b *S3Bundle) DeleteBundle(ctx context.Context, id *translation.BundleID) error {
 // 	input := s3.DeleteObjectInput{Bucket: b.Bucket, Key: b.GetKey(id)}
-// 	_, err := b.S3Client.DeleteObject(&input)
+// 	_, err := GetS3Client(b.Config).DeleteObject(&input)
 // 	if err == nil {
 // 		return nil
 // 	}
@@ -188,10 +167,10 @@ func (b *S3Bundle) GetKey(id *translation.BundleID) *string {
 }
 
 func (b *S3Bundle) createBucket() error {
-	createBucketConfig := s3.CreateBucketConfiguration{LocationConstraint: &b.Config.region}
-	input := &s3.CreateBucketInput{
+	createBucketConfig := types.CreateBucketConfiguration{LocationConstraint: types.BucketLocationConstraint(b.Config.region)}
+	input := s3.CreateBucketInput{
 		Bucket:                    b.Bucket,
 		CreateBucketConfiguration: &createBucketConfig}
-	_, err := b.S3Client.CreateBucket(input)
+	_, err := GetS3Client(b.Config).CreateBucket(context.Background(), &input)
 	return err
 }

@@ -23,7 +23,8 @@ import (
 	"sgtnserver/modules/translation/dao/localbundle"
 	"sgtnserver/modules/translation/dao/s3bundle"
 
-	"github.com/aws/aws-sdk-go/service/s3"
+	"github.com/aws/aws-sdk-go-v2/service/s3"
+	"github.com/aws/aws-sdk-go-v2/service/s3/types"
 	"github.com/buf1024/golib/crypt"
 	"github.com/go-test/deep"
 	"github.com/golang/mock/gomock"
@@ -31,7 +32,7 @@ import (
 )
 
 var (
-	s3config = s3bundle.NewS3Config("", "", "", config.Settings.S3Bundle.Region)
+	s3config = s3bundle.NewS3Config("", "", "", "", 3600, config.Settings.S3Bundle.Region)
 
 	s3b = &s3bundle.S3Bundle{
 		RootPrefix: config.Settings.S3Bundle.BundleRoot,
@@ -111,7 +112,7 @@ func TestGetBundleFromS3(t *testing.T) {
 			id: translation.BundleID{Name: Name, Version: Version, Locale: Locale, Component: Component}},
 		{testName: "FileContentWrong", mockOutput: fmt.Sprintf(bundleFile, "anotherLocale"), mockReturnError: nil, wantedCode: http.StatusOK,
 			id: translation.BundleID{Name: Name, Version: Version, Locale: "yue", Component: Component}},
-		{testName: "ReturnNotFound", mockOutput: fmt.Sprintf(bundleFile, Locale), mockReturnError: MockAWSError{s3.ErrCodeNoSuchKey}, wantedCode: sgtnerror.StatusNotFound.Code(),
+		{testName: "ReturnNotFound", mockOutput: fmt.Sprintf(bundleFile, Locale), mockReturnError: &types.NoSuchKey{}, wantedCode: sgtnerror.StatusNotFound.Code(),
 			id: translation.BundleID{Name: Name, Version: Version, Locale: Locale, Component: Component}},
 		{testName: "ReturnOtherError", mockOutput: fmt.Sprintf(bundleFile, Locale), mockReturnError: errors.New("other type of error"), wantedCode: http.StatusInternalServerError,
 			id: translation.BundleID{Name: Name, Version: Version, Locale: Locale, Component: Component}},
@@ -124,7 +125,7 @@ func TestGetBundleFromS3(t *testing.T) {
 			mockInput := s3.GetObjectInput{Bucket: bucket, Key: s3b.GetKey(&tt.id)}
 
 			// Set expect
-			s3api.EXPECT().GetObject(gomock.Eq(&mockInput)).Return(&s3.GetObjectOutput{Body: ioutil.NopCloser(strings.NewReader(tt.mockOutput))}, tt.mockReturnError)
+			s3api.EXPECT().GetObject(context.TODO(), gomock.Eq(&mockInput)).Return(&s3.GetObjectOutput{Body: ioutil.NopCloser(strings.NewReader(tt.mockOutput))}, tt.mockReturnError)
 
 			// Test
 			b, err := s3b.GetBundle(context.TODO(), &tt.id)
@@ -163,7 +164,7 @@ func TestPutBundleToS3(t *testing.T) {
 			json.UnmarshalFromString(tt.bundleToPut, &bf)
 			bundleToPut := translation.Bundle{ID: tt.id, Messages: bf.Messages}
 
-			s3api.EXPECT().PutObject(gomock.AssignableToTypeOf(&s3.PutObjectInput{})).Return(nil, tt.mockReturnError)
+			s3api.EXPECT().PutObject(context.TODO(), gomock.AssignableToTypeOf(&s3.PutObjectInput{})).Return(nil, tt.mockReturnError)
 
 			err := s3b.PutBundle(context.TODO(), &bundleToPut)
 			if tt.wantedCode == http.StatusOK {
@@ -219,25 +220,20 @@ func TestGetBundleInfoOfS3(t *testing.T) {
 		}
 		return keys
 	}
-	sendKeysMock := func(keys []string, err error) func(*s3.ListObjectsV2Input, func(*s3.ListObjectsV2Output, bool) bool) error {
-		return func(i *s3.ListObjectsV2Input, f func(*s3.ListObjectsV2Output, bool) bool) error {
-			contentsNumberInOnePage := 10
-			for i := 0; i < len(keys); i += contentsNumberInOnePage {
-				var output s3.ListObjectsV2Output
-				j := i
-				for ; j < i+contentsNumberInOnePage && j < len(keys); j++ {
-					output.Contents = append(output.Contents, &s3.Object{Key: &keys[j]})
-				}
-				f(&output, j >= len(keys))
+	sendKeysMock := func(keys []string, err error) func(context.Context, *s3.ListObjectsV2Input, ...func(*s3.Options)) (*s3.ListObjectsV2Output, error) {
+		return func(ctx context.Context, i *s3.ListObjectsV2Input, options ...func(*s3.Options)) (*s3.ListObjectsV2Output, error) {
+			var output s3.ListObjectsV2Output
+			for i := 0; i < len(keys); i++ {
+				output.Contents = append(output.Contents, types.Object{Key: &keys[i]})
 			}
-			return err
+			return &output, nil
 		}
 	}
 
 	expectedInfo := getExpectedInfo()
 	keys := getKeysFromInfo(expectedInfo)
 	expectedInput := &s3.ListObjectsV2Input{Bucket: bucket, Prefix: rootPrefix}
-	createMock(t).EXPECT().ListObjectsV2Pages(gomock.Eq(expectedInput), gomock.Any()).DoAndReturn(sendKeysMock(keys, nil))
+	createMock(t).EXPECT().ListObjectsV2(context.TODO(), gomock.Eq(expectedInput), gomock.Any()).DoAndReturn(sendKeysMock(keys, nil))
 
 	// Test
 	info, err := s3b.GetBundleInfo(context.TODO())
@@ -247,12 +243,14 @@ func TestGetBundleInfoOfS3(t *testing.T) {
 	}
 }
 
-func createMock(t *testing.T) *MockS3API {
+func createMock(t *testing.T) *MockClientAPI {
 	ctrl := gomock.NewController(t)
 
 	// Create mock object
-	s3api := NewMockS3API(ctrl)
-	s3b.S3Client = s3api
+	s3api := NewMockClientAPI(ctrl)
+	s3bundle.GetS3Client = func(*s3bundle.S3Config) s3bundle.ClientAPI {
+		return s3api
+	}
 
 	return s3api
 }
