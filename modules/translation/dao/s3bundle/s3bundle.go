@@ -42,18 +42,15 @@ func NewS3Bundle(rootPrefix, bucket string, config *S3Config) *S3Bundle {
 	rootPrefix = regexp.MustCompile(`^(/+|\./)`).ReplaceAllLiteralString(rootPrefix, "")
 
 	// Create bundle instance
-	bundle := &S3Bundle{
-		RootPrefix: rootPrefix,
-		Bucket:     aws.String(bucket),
-		Config:     config}
+	bundle := &S3Bundle{RootPrefix: rootPrefix, Bucket: aws.String(bucket), Config: config}
 
 	// check bucket
 	_, err := newS3Client(config).HeadBucket(context.Background(), &s3.HeadBucketInput{Bucket: bundle.Bucket})
 	var noSuchBucketErr *types.NoSuchBucket
-	var bucketExist *types.BucketAlreadyOwnedByYou
 	if errors.As(err, &noSuchBucketErr) {
 		err = bundle.createBucket()
-		if errors.As(err, &bucketExist) {
+		var alreadyOwned *types.BucketAlreadyOwnedByYou
+		if !errors.As(err, &alreadyOwned) {
 			logger.Log.Fatal(err.Error())
 		}
 	} else if err != nil {
