@@ -118,16 +118,16 @@ func GetMultipleBundles(c *gin.Context) {
 		allBundles := make([]*translation.Bundle, 0, len(locales)*len(components))
 		for _, locale := range locales {
 			for _, component := range components {
-				id := translation.BundleID{Name: params.ProductName, Version: version, Component: component, Locale: locale}
 				i := 0
 				for ; i < len(releaseData.Bundles); i++ {
 					bundle := releaseData.Bundles[i]
 					if bundle.ID.Component == component && bundle.ID.Locale == locale {
-						allBundles = append(allBundles, &translation.Bundle{ID: id, Pseudo: params.Pseudo, Messages: bundle.Messages})
+						allBundles = append(allBundles, bundle)
 						break
 					}
 				}
 				if i == len(releaseData.Bundles) {
+					id := translation.BundleID{Name: params.ProductName, Version: version, Component: component, Locale: locale}
 					allBundles = append(allBundles, &translation.Bundle{ID: id, Pseudo: params.Pseudo})
 				}
 			}
