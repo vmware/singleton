@@ -355,6 +355,31 @@ func TestPutBundleWithoutData(t *testing.T) {
 	}
 }
 
+func TestPutBundleUpdateKey(t *testing.T) {
+	e := CreateHTTPExpect(t, GinTestEngine)
+	newVersion := "100"
+
+	defer func() {
+		os.RemoveAll(path.Join(config.Settings.LocalBundle.BasePath, Name, newVersion))
+		bundleinfo.RefreshBundleInfo(context.TODO())
+	}()
+
+	resp := e.PUT(PutBundlesURL, Name, newVersion).WithBytes([]byte(fmt.Sprintf(bundleDataToPut, Name, newVersion, Locale, Component, Key, Msg))).Expect()
+	bError, _ := GetErrorAndData(resp.Body().Raw())
+	assert.Equal(t, http.StatusOK, bError.Code)
+
+	// put the second string
+	key2, trans2 := "key1", "msg1"
+	resp = e.PUT(PutBundlesURL, Name, newVersion).WithBytes([]byte(fmt.Sprintf(bundleDataToPut, Name, newVersion, Locale, Component, key2, trans2))).Expect()
+	bError, _ = GetErrorAndData(resp.Body().Raw())
+	assert.Equal(t, http.StatusOK, bError.Code)
+
+	// check existing keys still exist
+	id := transmodule.MessageID{Name: Name, Version: newVersion, Locale: Locale, Component: Component, Key: Key}
+	data, _ := translationservice.GetService().GetString(context.TODO(), &id)
+	assert.Equal(t, Msg, data.Translation)
+}
+
 func TestVersionFallback(t *testing.T) {
 	e := CreateHTTPExpect(t, GinTestEngine)
 
