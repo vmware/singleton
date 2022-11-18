@@ -251,12 +251,12 @@ func TestPartialSuccess(t *testing.T) {
 		wantedBody                  string
 	}{
 		{testName: "Partially Successful", locales: "zh-Hans,en-Invalid", components: "sunglow", wantedBCode: sgtnerror.StatusPartialSuccess.Code(), wantedHTTPCode: http.StatusOK,
-			wantedBody: `{"response":{"code":207,"message":"Successful Partially"},"data":{"productName":"VPE","version":"1.0.0","locales":["zh-Hans"],"components":["sunglow"],"bundles":[{"component":"sunglow","locale":"zh-Hans","messages":{
+			wantedBody: `{"response":{"code":207,"message":"Successful Partially"},"data":{"productName":"VPE","version":"1.0.0","locales":["zh-Hans","en-Invalid"],"components":["sunglow"],"bundles":[{"component":"sunglow","locale":"zh-Hans","messages":{
             "plural.files": "{files, plural,=0 {category 0 : 无文件。} =1 {category 1 : 在{place}上有且仅有一个文件。} one {category one : 在{place}上有一个文件。}other {category other : {place}上有 # 文件。}}",
             "message": "消息",
             "pagination": "{0}-{1} 个客户，共 {2} 个",
             "one.arg": "测试一个参数{0}"
-          }}]}}`},
+          }},{"component":"sunglow","locale":"en-Invalid","messages":null}]}}`},
 		{testName: "All Successful", locales: "zh-Hans,en", components: "sunglow", wantedBCode: http.StatusOK, wantedHTTPCode: http.StatusOK,
 			wantedBody: `{"response":{"code":200,"message":"OK"},"data":{"productName":"VPE","version":"1.0.0","locales":["zh-Hans","en"],"components":["sunglow"],"bundles":[{"component":"sunglow","locale":"zh-Hans","messages":{
             "plural.files": "{files, plural,=0 {category 0 : 无文件。} =1 {category 1 : 在{place}上有且仅有一个文件。} one {category one : 在{place}上有一个文件。}other {category other : {place}上有 # 文件。}}",

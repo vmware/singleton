@@ -8,10 +8,12 @@ package translation
 import (
 	"io/ioutil"
 	"sgtnserver/api"
+	"sgtnserver/internal/common"
 	"sgtnserver/internal/logger"
 	"sgtnserver/internal/sgtnerror"
 	"sgtnserver/modules/translation"
 	"sgtnserver/modules/translation/translationservice"
+	"strings"
 
 	"github.com/emirpasic/gods/sets/linkedhashset"
 	"github.com/gin-gonic/gin"
@@ -108,8 +110,33 @@ func GetMultipleBundles(c *gin.Context) {
 	}
 	version := c.GetString(api.SgtnVersionKey)
 
-	bundles, multiErr := GetService(params.Pseudo).GetMultipleBundles(logger.NewContext(c, c.MustGet(api.LoggerKey)), params.ProductName, version, params.Locales, params.Components)
-	api.HandleResponse(c, ConvertReleaseToAPI(bundles), multiErr)
+	releaseData, multiErr := GetService(params.Pseudo).GetMultipleBundles(logger.NewContext(c, c.MustGet(api.LoggerKey)), params.ProductName, version, params.Locales, params.Components)
+	if multiErr != nil && releaseData != nil && len(releaseData.Bundles) > 0 {
+		// make up failed bundles because JAVA client needs them when successful partially
+		locales := strings.Split(params.Locales, common.ParamSep)
+		components := strings.Split(params.Components, common.ParamSep)
+		allBundles := make([]*translation.Bundle, 0, len(locales)*len(components))
+		for _, locale := range locales {
+			locale = translationservice.PickupLocales(params.ProductName, version, []string{locale})[0]
+			for _, component := range components {
+				i := 0
+				for ; i < len(releaseData.Bundles); i++ {
+					bundle := releaseData.Bundles[i]
+					if bundle.ID.Component == component && bundle.ID.Locale == locale {
+						allBundles = append(allBundles, bundle)
+						break
+					}
+				}
+				if i == len(releaseData.Bundles) {
+					id := translation.BundleID{Name: params.ProductName, Version: version, Component: component, Locale: locale}
+					allBundles = append(allBundles, &translation.Bundle{ID: id, Pseudo: params.Pseudo})
+				}
+			}
+		}
+		releaseData.Bundles = allBundles
+	}
+
+	api.HandleResponse(c, ConvertReleaseToAPI(releaseData), multiErr)
 }
 
 // GetBundle godoc
