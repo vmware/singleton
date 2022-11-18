@@ -117,6 +117,7 @@ func GetMultipleBundles(c *gin.Context) {
 		components := strings.Split(params.Components, common.ParamSep)
 		allBundles := make([]*translation.Bundle, 0, len(locales)*len(components))
 		for _, locale := range locales {
+			locale = translationservice.PickupLocales(params.ProductName, version, []string{locale})[0]
 			for _, component := range components {
 				i := 0
 				for ; i < len(releaseData.Bundles); i++ {
