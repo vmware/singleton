@@ -1,5 +1,6 @@
 import time
 from pathlib import Path
+from multiprocessing import Process
 
 import pytest
 from sgtnclient import I18N
@@ -10,17 +11,11 @@ PRODUCT = 'Cache'
 VERSION = '1.0.2'
 COMPONENT = 'about'
 LOCALE = 'de'
-Config_files = 'mixed_online_local.yml'
+CONFIG_FILE = 'mixed_online_local.yml'
 
 __CACHE__ = Path(__file__).parent
 __CONFIG__ = __CACHE__.joinpath('config')
 __RESOURCES__ = __CACHE__.joinpath('resources')
-
-
-@pytest.fixture(scope="class", autouse=True)
-def clean():
-    yield
-    I18N._release_manager = None
 
 
 class TestMixedCacheOnlineSuccess:
@@ -31,7 +26,7 @@ class TestMixedCacheOnlineSuccess:
         Mixed Mode:
         1. if Online can get component + locale, use online and cached
         """
-        file: Path = __CONFIG__.joinpath(Config_files)
+        file = __CONFIG__.joinpath(CONFIG_FILE)
         I18N.add_config_file(file)
         I18N.set_current_locale(LOCALE)
         rel = I18N.get_release(PRODUCT, VERSION)
@@ -49,14 +44,14 @@ class TestMixedCacheOnlineSuccess:
 
 class TestMixedCacheOnlineFail:
 
-    @pytest.mark.cache1
-    def test_mixed_cache_online_fail_use_cache(self):
+    @staticmethod
+    def mixed_cache_online_fail_use_cache():
         """
         Mixed Mode:
         1. if Online can get component + locale, use online and cached
         """
         outside_config = {"online_service_url": "https://localhost:809011"}
-        file: Path = __CONFIG__.joinpath(Config_files)
+        file: Path = __CONFIG__.joinpath(CONFIG_FILE)
         I18N.add_config_file(file, outside_config)
         I18N.set_current_locale(LOCALE)
         rel = I18N.get_release(PRODUCT, VERSION)
@@ -68,9 +63,9 @@ class TestMixedCacheOnlineFail:
         # if online fail ,use cache
         with ContextModifyCacheFr1(cache):
             tran1 = translation.get_string("about", "about.message", locale="fr")
-            assert tran1 == "test fr key (CACHED)"
+            assert tran1 == "test fr key (CACHED)", cache.read_text()
 
-        time.sleep(12)
+        time.sleep(2)
         # use local  ？？ expire then from local？？
         tran1 = translation.get_string("about", "about.message", locale="fr")
         assert tran1 == "test fr key (CACHED)"
@@ -78,6 +73,13 @@ class TestMixedCacheOnlineFail:
         # if update
         tran1 = translation.get_string("about", "about.message", locale="de")
         assert tran1 == "test de key （Offline Local）"
+
+    @pytest.mark.cache1
+    def test_mixed_cache_online_fail_use_cache(self):
+        task = Process(target=self.mixed_cache_online_fail_use_cache)
+        task.daemon = True
+        task.start()
+        task.join()
 
 
 if __name__ == '__main__':

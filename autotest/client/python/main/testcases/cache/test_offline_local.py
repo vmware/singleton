@@ -1,4 +1,5 @@
 from pathlib import Path
+from multiprocessing import Process
 
 import pytest
 from sgtnclient import I18N
@@ -18,8 +19,8 @@ __RESOURCES__ = __CACHE__.joinpath('resources')
 
 class TestCacheOfflineLocal:
 
-    @pytest.mark.ci_cache
-    def test_offline_local_no_support_cache(self):
+    @staticmethod
+    def offline_local_no_support_cache():
         """
         Offline Mode:
         1. no support cache_path
@@ -48,6 +49,13 @@ class TestCacheOfflineLocal:
         with ModifyFileContext(file_path):
             tran2 = translation.get_string("about", "about.message", locale="de")
             assert tran2 == "test de key"
+
+    @pytest.mark.ci_cache
+    def test_offline_local_no_support_cache(self):
+        task = Process(target=self.offline_local_no_support_cache)
+        task.daemon = True
+        task.start()
+        task.join()
 
 
 if __name__ == '__main__':

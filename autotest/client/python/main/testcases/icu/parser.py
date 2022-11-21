@@ -1,8 +1,11 @@
 import csv
+from pathlib import Path
 
 _TESTCASES_: list = []
 
-with open('resources/plural.csv', encoding='utf-8') as f:
+_RESOURCES_ = Path(__file__).parent.joinpath("resources")
+
+with open(_RESOURCES_.joinpath("plural.csv"), mode="r", encoding='utf-8') as f:
     file = csv.reader(f)
     next(file)
     for item in file:

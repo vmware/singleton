@@ -1,6 +1,6 @@
 import pytest
 from pathlib import Path
-from sgtn4python.sgtnclient import I18N
+from sgtnclient import I18N
 
 PRODUCT = 'PythonClient'
 VERSION = '1.0.00.1'

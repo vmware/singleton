@@ -18,6 +18,12 @@ __RESOURCES__ = __CACHE__.joinpath('resources')
 BASE_URL = "http://localhost:8091"
 
 
+@pytest.fixture(scope="function", autouse=True)
+def clean():
+    yield
+    I18N._release_manager = None
+
+
 class TestOnlineCache:
 
     @pytest.mark.cache1
@@ -115,27 +121,6 @@ class TestOnlineCache:
         # check cache expired and request server.
         tran1 = translation.get_string("about", "about.message")
         assert tran1 == "test de key"
-
-        # with ContextStringsDe1(base_url=BASE_URL):
-        #     # Cache-Control = 20 active, get local cache
-        #     time.sleep(7)
-        #     tran2 = translation.get_string("about", "about.message")
-        #     assert tran2 == "test__de_value"
-        #
-        #     # Cache-Control = 20 active, get local cache
-        #     time.sleep(7)
-        #     tran3 = translation.get_string("about", "about.message")
-        #     assert tran3 == "test__de_value"
-        #
-        #     # Cache-Control = 20 inactive, get local cache and request server and refresh cache
-        #     time.sleep(7)
-        #     tran3 = translation.get_string("about", "about.message")
-        #     assert tran3 == "test__de_value"
-        #
-        #     # get local cache
-        #     time.sleep(5)
-        #     tran3 = translation.get_string("about", "about.message")
-        #     assert tran3 == "test__de_value_change"
 
     @pytest.mark.cache1
     @pytest.mark.skip("Manual due to Conflict")

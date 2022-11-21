@@ -1,6 +1,7 @@
 import pytest
 from pathlib import Path
-from sgtn4python.sgtnclient import I18N
+from multiprocessing import Process
+from sgtnclient import I18N
 
 PRODUCT = 'PythonClient'
 VERSION = '1.0.0'
@@ -15,46 +16,36 @@ __RESOURCES__ = __TRANSLATION__.joinpath('resources')
 
 class TestOnLine:
 
-    @pytest.mark.ci1
-    def test_online_default_locale(self):
-        """
-        Online Mode:
-        1. 默认源文件的语言：.yaml => source_locale配置控制。必填配置，固定配置en-US，用于申明源语言是什么类型。
-            如果配置ja，表示ja是源文件。获取文件是，会用message_ja.json和message_latest.json去比较。
-
-        2. 默认fallback。default_locale，在没有指定locale是，默认en
-
-        3. 如果default_locale,I18N.set_current_locale,get_string(locale)都未配置。默认查询latest.json
-
-        4. 优先级，default_locale < I18N.set_current_locale < get_string(locale)
-
-        5. Online模式下，如果请求的locale不是"en", 就会用latest.json和message_$locale.json下的key-value比较。"en"直接返回latest。
-        """
+    @staticmethod
+    def online_default_locale():
         file = __CONFIG__.joinpath(CONFIG_FILE)
         outside_config = {"product": "PythonClient", "online_service_url": "https://localhost:8090"}
         I18N.add_config_file(file, outside_config)
         rel = I18N.get_release(PRODUCT, VERSION)
         translation = rel.get_translation()
 
-        # 请求一次latest
         tran1 = translation.get_string("contact", "contact.title")
         assert tran1 == "Contact"
 
-        # 请求一次latest
         tran1 = translation.get_string("contact", "contact.title", locale="")
         assert tran1 == "Contact"
 
-        # 请求一次latest
         tran1 = translation.get_string("contact", "contact.title", locale="en")
         assert tran1 == "Contact"
 
-        # 请求latest，en(source_locale)，de(locale)，ko(default_locale)
+        # latest，en(source_locale)，de(locale)，ko(default_locale)
         tran1 = translation.get_string("contact", "contact.title", locale="de")
         assert tran1 == "Kontakt"
 
-        # 请求latest， en， ko
         tran1 = translation.get_string("contact", "contact.title", locale="da")
         assert tran1 == "연락처change {y} add {x} and {z}"
+
+    @pytest.mark.ci1
+    def test_online_default_locale(self):
+        task = Process(target=self.online_default_locale)
+        task.daemon = True
+        task.start()
+        task.join()
 
     @pytest.mark.ci1
     def test_online_compare_with_latest(self):

@@ -1,28 +1,18 @@
 import pytest
 from pathlib import Path
 from sgtnclient import I18N
+from multiprocessing import Process
 from main.testcases.icu.parser import _TESTCASES_
 
 PRODUCT = 'ICU'
 VERSION = '1.0.1'
 COMPONENT = 'plural'
-LOCALE = 'en'
 CONFIG_YAML = 'support_icu.yml'
 
 __RESOURCES__ = Path(__file__).parent.joinpath('config')
 
 
 class TestL2IcuFormat:
-
-    @pytest.mark.skip
-    def test_custom_logger(self):
-        from .custom_logger import MyLogger
-        logger = MyLogger()
-        file: Path = __RESOURCES__.joinpath(CONFIG_YAML)
-        I18N.add_config_file(file)
-        rel = I18N.get_release(PRODUCT, VERSION)
-        rel.get_string(COMPONENT, "pluralName", locale=LOCALE)
-        rel.set_logger(logger)
 
     def test_get_locale(self):
         file: Path = __RESOURCES__.joinpath(CONFIG_YAML)
@@ -44,17 +34,19 @@ class TestL2IcuFormat:
         I18N.add_config_file(file)
         rel = I18N.get_release(PRODUCT, VERSION)
         with pytest.raises(ValueError):
-            rel.get_string(COMPONENT, 'pluralName', locale=LOCALE, format_items=['12', '12'])
+            rel.get_string(COMPONENT, 'pluralName', locale="en", format_items=['12', '12'])
 
     def test_plurals_default_locale(self):
         """if no locale parameter, default is en"""
         file: Path = __RESOURCES__.joinpath(CONFIG_YAML)
         I18N.add_config_file(file)
+        I18N.set_current_locale("en")
         rel = I18N.get_release(PRODUCT, VERSION)
         txt = rel.get_string(COMPONENT, 'pluralName', format_items=[12, "I"])
         assert txt == 'I bought 12 books.'
 
-    def test_plurals_default_source_locale(self):
+    @staticmethod
+    def plurals_default_source_locale():
         """if locale not found, use default_locale"""
         file: Path = __RESOURCES__.joinpath(CONFIG_YAML)
         I18N.add_config_file(file)
@@ -62,11 +54,18 @@ class TestL2IcuFormat:
         txt = rel.get_string(COMPONENT, 'pluralName', locale='error', format_items=[12, "I"])
         assert txt == 'I gekauft 12 Bücher.'
 
+    def test_plurals_default_source_locale(self):
+        task = Process(target=self.plurals_default_source_locale)
+        task.daemon = True
+        task.start()
+        task.join()
+
     @pytest.mark.skip
     @pytest.mark.parametrize('tc', _TESTCASES_)
     def test_plurals_online(self, tc: dict):
         file: Path = __RESOURCES__.joinpath(tc['CONFIG'])
         I18N.add_config_file(file)
+        I18N.set_current_locale("en")
         rel = I18N.get_release(tc['PRODUCT'], tc['VERSION'])
         txt = rel.get_string(tc['COMPONENT'], tc['KEY'], locale=tc['LOCALE'], format_items=tc['FORMAT_ITEMS'])
         assert txt == tc['ASSERTION'], txt
@@ -83,4 +82,4 @@ class TestL2IcuFormat:
 
 
 if __name__ == '__main__':
-    pytest.main(['-sv', 'TestL2IcuFormat'])
+    pytest.main(['-s', 'TestL2IcuFormat'])

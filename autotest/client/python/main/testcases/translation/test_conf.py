@@ -9,7 +9,7 @@ PRODUCT = 'PythonClient'
 VERSION = '1.0.0'
 COMPONENT = 'about'
 LOCALE = 'fr'
-CONFIG = 'config_only.yml'
+CONFIG_FILE = 'config_only.yml'
 __RESOURCES__ = Path(__file__).parent.joinpath('config')
 
 
@@ -18,7 +18,7 @@ class TestConfig:
     def test_l1(self):
         """config success"""
 
-        file: Path = __RESOURCES__.joinpath(CONFIG)
+        file: Path = __RESOURCES__.joinpath(CONFIG_FILE)
         I18N.add_config_file(file)
         rel = I18N.get_release(PRODUCT, VERSION)
         conf = rel.get_config()
@@ -37,7 +37,7 @@ class TestConfig:
 
     def test_l3(self):
         """set_locale"""
-        file: Path = __RESOURCES__.joinpath(CONFIG)
+        file: Path = __RESOURCES__.joinpath(CONFIG_FILE)
         I18N.add_config_file(file)
 
         I18N.set_current_locale(LOCALE)

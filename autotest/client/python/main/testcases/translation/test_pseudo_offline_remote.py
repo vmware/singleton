@@ -1,6 +1,7 @@
 import pytest
+from multiprocessing import Process
 from pathlib import Path
-from sgtn4python.sgtnclient import I18N
+from sgtnclient import I18N
 
 PRODUCT = 'PythonClient'
 VERSION = '2.0.0'
@@ -16,8 +17,8 @@ __RESOURCES__ = __TRANSLATION__.joinpath('resources')
 
 class TestPseudoOfflineRemote:
 
-    @pytest.mark.ci1
-    def test_offline_remote_add_configuration(self):
+    @staticmethod
+    def offline_remote_add_configuration():
         """
         offline mode: add config
         """
@@ -37,9 +38,16 @@ class TestPseudoOfflineRemote:
         assert config_info["pseudo"] is True
 
     @pytest.mark.ci1
-    def test_offline_remote_pseudo(self):
+    def test_offline_remote_add_configuration(self):
+        task = Process(target=self.offline_remote_add_configuration)
+        task.daemon = True
+        task.start()
+        task.join()
+
+    @staticmethod
+    def offline_remote_pseudo():
         """
-        offline mode: pseudo True. 通过配置文件的source_resources_path: 找到源文件。返回，并且加上@@，如果找不到源文件，返回key。 如果是en，source direct
+        offline mode: pseudo True.
         """
         file: Path = __CONFIG__.joinpath('sample_offline_remote.yml')
         outside_config = {"product": "PythonClient", "l10n_version": "2.0.0", "pseudo": True}
@@ -50,7 +58,7 @@ class TestPseudoOfflineRemote:
 
         # not en and pseudo, return message.properties source and add @@
         tran1 = translation.get_string("about", "about.message")
-        assert tran1 == "@@Your application description page 123.@@"
+        assert tran1 == "@@Your application description page.@@"
 
         # not en and pseudo, if key miss, return key
         trans2 = translation.get_string("about", "about.message123", locale="zh-Hans-CN")
@@ -58,12 +66,12 @@ class TestPseudoOfflineRemote:
 
         # if non en and pseudo , the locale and source disable!
         tran2 = translation.get_string("about", "about.message", locale='de', source='active')
-        assert tran2 == "@@Your application description page 123.@@"
+        assert tran2 == "@@Your application description page.@@"
 
         # if en pseudo return source direct
         I18N.set_current_locale('en')
         tran3 = translation.get_string("about", "about.message")
-        assert tran3 == "Your application description page 123."
+        assert tran3 == "Your application description page."
 
         # if has source, return source
         tran3 = translation.get_string("about", "about.message", source='application')
@@ -72,6 +80,13 @@ class TestPseudoOfflineRemote:
         # key no exist
         tran3 = translation.get_string("about", "about.message123")
         assert tran3 == "about.message123"
+
+    @pytest.mark.ci1
+    def test_offline_remote_pseudo(self):
+        task = Process(target=self.offline_remote_pseudo)
+        task.daemon = True
+        task.start()
+        task.join()
 
 
 if __name__ == '__main__':

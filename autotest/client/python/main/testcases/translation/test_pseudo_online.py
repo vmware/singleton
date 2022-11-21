@@ -1,6 +1,6 @@
 import pytest
 from pathlib import Path
-from sgtn4python.sgtnclient import I18N
+from sgtnclient import I18N
 
 PRODUCT = 'PythonClient'
 VERSION = '1.10.251'
@@ -19,8 +19,6 @@ class TestOnlinePseudo:
     @pytest.mark.ci1
     def test_l1xxxxxxxx(self):
         """
-        如果指定pseudo，online模式会查找latest.json，如果没有latest。返回key。
-        如果有latest，就获取返回
         """
         file: Path = __CONFIG__.joinpath('only_online.yml')
         outside_config = {"product": "PythonClient", "l10n_version": "1.10.251",

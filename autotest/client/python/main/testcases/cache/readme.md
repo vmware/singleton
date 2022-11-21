@@ -48,4 +48,4 @@ b.缓存有效内，即使服务器资源更新，也只能读取缓存旧值。
 7.如果采用run as script模式每次会加载`cache_path`，但是每次加载cache_path后，先返回，再判断是否过期，过期则请求服务器获取更新。
 
 8.混合模式下，如果online获取到数据了。直接走online模式。
-9.混合模式下，如果online返回4xx或者5xx，则直接走cache，cache不会失效？？？bug
+9.混合模式下，如果online返回4xx或者5xx，则直接走cache，cache不会失效，直到下次获取到服务器值，才会触发更新。

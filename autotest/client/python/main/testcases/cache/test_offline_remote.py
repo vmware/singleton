@@ -3,8 +3,6 @@ from pathlib import Path
 import pytest
 from sgtnclient import I18N
 
-from .utils import ModifyFileContext
-
 PRODUCT = 'Cache'
 VERSION = '1.0.1'
 COMPONENT = 'about'
@@ -14,6 +12,12 @@ CONFIG_FILE = 'offline_remote.yml'
 __CACHE__ = Path(__file__).parent
 __CONFIG__ = __CACHE__.joinpath('config')
 __RESOURCES__ = __CACHE__.joinpath('resources')
+
+
+@pytest.fixture(scope="function", autouse=True)
+def clean():
+    yield
+    I18N._release_manager = None
 
 
 class TestCacheOfflineRemote:

@@ -16,28 +16,9 @@ __RESOURCES__ = __TRANSLATION__.joinpath('resources')
 
 class TestTranslationOffline:
 
+    @pytest.mark.skip
     @pytest.mark.ci1
     def test_offline_source_locale(self):
-        """
-        Offline Mode:
-        1. `default_locale` 指定获取回文件的locale类型.用于get_string(locale),或者set_locale(locale)
-
-        2. `source_locale` 指定source类型,用于OnlineMode. OnlineMode下不生效.
-
-        3. `locales`
-            如果`source_locale`配置en-US，则会从`locales`下查询 -   language_tag: en-US的配置
-
-        3.1. `language_tag:`
-            为`source_resources_path:`和`offline_resources_path:`指定locale，用于查询
-
-        3.2. `source_resources_path:`
-            - $COMPONENT/messages.properties. 表示找到对应COMPONENT的messages.properties作为源文件。
-
-        3.3. `offline_resources_path:`
-            - $COMPONENT/messages_en.json. 表示找到对应COMPONENT的messages_de.json作为对应locale的翻译回文件。
-
-        4. 如果找到了本地source,返回source,否则返回key
-        """
         file: Path = __CONFIG__.joinpath(CONFIG_FILE)
         outside_config = {"product": "PythonClient"}
         I18N.add_config_file(file, outside_config)

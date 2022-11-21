@@ -1,6 +1,7 @@
 import pytest
 from pathlib import Path
-from sgtn4python.sgtnclient import I18N
+from multiprocessing import Process
+from sgtnclient import I18N
 
 PRODUCT = 'PythonClient'
 VERSION = '1.10.252'
@@ -83,8 +84,8 @@ class TestPseudoMixMode:
         tran1 = translation.get_string("about", "about.message.notexist1", locale="en")
         assert tran1 == "about.message.notexist1"
 
-    @pytest.mark.ci1
-    def test_l5(self):
+    @staticmethod
+    def func_l5():
         print("the key both exist in online and offline ")
         file: Path = __CONFIG__.joinpath('sgtn_online_offline_before.yml')
         outside_config = {"l10n_version": "1.10.252", "pseudo": True,
@@ -92,8 +93,8 @@ class TestPseudoMixMode:
         I18N.add_config_file(file, outside_config)
         I18N.set_current_locale(LOCALE)
 
-        self.rel = I18N.get_release(PRODUCT, VERSION)
-        translation1 = self.rel.get_translation()
+        rel = I18N.get_release(PRODUCT, VERSION)
+        translation1 = rel.get_translation()
         # trans1 = translation1.get_string("about", "about.message")
         # assert trans1 == "test fr key"
         # trans3 = translation1.get_string("about", "about.message", locale ='en')
@@ -107,6 +108,13 @@ class TestPseudoMixMode:
         # trans3 = translation1.get_string("about", "about.message", locale = 'de')
         # print(trans3)
         # assert trans1 == "About1 fr"
+
+    @pytest.mark.ci1
+    def test_l5(self):
+        task = Process(target=self.func_l5)
+        task.daemon = True
+        task.start()
+        task.join()
 
     @pytest.mark.ci1
     def test_l6(self):
