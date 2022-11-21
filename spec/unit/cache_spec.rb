@@ -29,7 +29,6 @@ describe 'Cache' do
         Sgtn.config.loader.loaders.each do |loader|
           if loader.is_a?(SgtnClient::TranslationLoader::Source)
             expect(loader).to receive(:load_bundle).once.with(component, latest_locale).and_call_original
-            expect(loader).to receive(:load_bundle).once.with(component, en_locale).and_call_original
             expect(loader).to receive(:load_bundle).once.with(component, locale).and_call_original
           else
             expect(loader).to receive(:load_bundle).once.with(component, locale).and_call_original
@@ -41,7 +40,7 @@ describe 'Cache' do
         expect(cache_item).to be_nil
 
         translations = Sgtn.get_translations(component, locale)
-        expect(translations['messages']).to include({ key => value })
+        expect(translations).to include({ key => value })
       end
 
       it '#get translations from cache for the first time' do
@@ -49,7 +48,7 @@ describe 'Cache' do
           expect(loader).to_not receive(:load_bundle)
         end
         translations = Sgtn.get_translations(component, locale)
-        expect(translations['messages']).to include({ key => value })
+        expect(translations).to include({ key => value })
         cache_item = get_cache(bundle_id)
         expect(cache_item.expired?).to be false
       end
@@ -59,7 +58,7 @@ describe 'Cache' do
           expect(loader).to_not receive(:load_bundle)
         end
         translations = Sgtn.get_translations(component, locale)
-        expect(translations['messages']).to include({ key => value })
+        expect(translations).to include({ key => value })
         cache_item = get_cache(bundle_id)
         expect(cache_item.expired?).to be false
       end
@@ -73,18 +72,17 @@ describe 'Cache' do
         Sgtn.config.loader.loaders.each do |loader|
           if loader.is_a?(SgtnClient::TranslationLoader::Source)
             expect(loader).to receive(:load_bundle).once.with(component, latest_locale).and_call_original
-            expect(loader).to receive(:load_bundle).once.with(component, en_locale).and_call_original
             expect(loader).to receive(:load_bundle).once.with(component, locale).and_call_original
           else
-            expect(loader).to receive(:load_bundle).once.with(component, locale).and_return({ key => new_value })
+            expect(loader).to receive(:load_bundle).once.with(component, locale).and_return(SgtnClient::Common::BundleData.new({ key => new_value }, origin: loader, locale: locale))
             expect(loader).to receive(:load_bundle).once.with(component, source_locale).and_call_original
           end
         end
 
         # still return expired value
         translations = Sgtn.get_translations(component, locale)
-        expect(translations['messages']).to include({ key => value })
-        expect(translations['messages']).not_to include({ key => new_value })
+        expect(translations).to include({ key => value })
+        expect(translations).not_to include({ key => new_value })
         wait_threads_finish
       end
 
@@ -95,7 +93,7 @@ describe 'Cache' do
 
         # return new value
         translations = Sgtn.get_translations(component, locale)
-        expect(translations['messages']).to include({ key => new_value })
+        expect(translations).to include({ key => new_value })
         cache_item = get_cache(bundle_id)
         expect(cache_item.expired?).to be false
       end
@@ -174,7 +172,7 @@ describe 'Cache' do
   it '#default cache expiration' do
     Sgtn.cache_expiry_period = nil
     SgtnClient::Common::DataInfo.instance_variable_set(:@age, nil)
-    expect(SgtnClient::Common::DataInfo.age).to eq 24 * 60 *60
+    expect(SgtnClient::Common::DataInfo.age).to eq 24 * 60 * 60
   ensure
     SgtnClient::Common::DataInfo.instance_variable_set(:@age, nil)
   end

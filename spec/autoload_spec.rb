@@ -34,10 +34,11 @@ describe "Autoload" do
 
   it "#all files are autoloaded" do
     exception_files = Set["sgtn-client/sgtn-client", "sgtn-client/cldr/localized_datetime", "sgtn-client/cldr/localized_date",
-                          "sgtn-client/cldr/localized_time", "sgtn-client/cldr/localized_str", "sgtn-client/cldr/core_ext"]
+                          "sgtn-client/cldr/localized_time", "sgtn-client/cldr/localized_str", "sgtn-client/cldr/core_ext",
+                          "singleton-client", "singleton-ruby", "version"]
     autoloaded_files = Set[]
     base_path = Pathname.new("lib")
-    all_files = base_path.glob("*/**/*.rb").each_with_object(Set[]) do |file, obj|
+    all_files = base_path.glob("**/*.rb").each_with_object(Set[]) do |file, obj|
       obj.add(file.to_s.delete_prefix("lib/").delete_suffix(".rb"))
       contents = File.read(file)
       contents.scan(/^\s*autoload\s+:?(?<const>\w+),\s+(?<quote>['"])(?<path>.+)\k<quote>\s*$/).each do |m|

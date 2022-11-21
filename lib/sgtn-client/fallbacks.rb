@@ -3,21 +3,12 @@
 
 module SgtnClient
   module Fallbacks # :nodoc:
-    def get_translation!(key, component, locale)
-      error = nil
-      localechain(locale) do |l|
-        return super(key, component, l)
-      rescue StandardError => e
-        error = e
-      end
-      raise error if error
-    end
+    protected
 
-    def get_translations!(component, locale = nil)
+    def get_bundle!(component, locale)
       error = nil
       localechain(locale) do |l|
-        result = super(component, l)
-        return result if result
+        return super(component, l)
       rescue StandardError => e
         error = e
       end

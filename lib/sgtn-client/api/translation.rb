@@ -39,10 +39,6 @@ module SgtnClient
         get_translations(component, locale)
       end
 
-      def get_translation!(key, component, locale)
-        [get_bundle!(component, locale)[key], locale]
-      end
-
       def translate(key, component, locale = nil, **kwargs, &block)
         translate!(key, component, locale, **kwargs, &block)
       rescue StandardError => e
@@ -56,8 +52,8 @@ module SgtnClient
         SgtnClient.logger.debug { "[#{method(__callee__).owner}.#{__callee__}] key: #{key}, component: #{component}, locale: #{locale}, args: #{kwargs}" }
 
         begin
-          best_match_locale = LocaleUtil.get_best_locale(locale || SgtnClient.locale, component)
-          result, actual_locale = get_translation!(key, component, best_match_locale)
+          picked_locale = pickup_locale(locale || SgtnClient.locale, component)
+          result, actual_locale = get_string!(key, component, picked_locale)
         rescue StandardError => e
           raise e if block.nil?
         end
@@ -68,7 +64,7 @@ module SgtnClient
           return if result.nil?
         end
 
-        kwargs.empty? ? result : result.localize(actual_locale) % kwargs
+        kwargs.empty? ? result : interpolate(result, actual_locale, **kwargs)
       end
       alias t! translate!
 
@@ -82,13 +78,19 @@ module SgtnClient
       def get_translations!(component, locale = nil)
         SgtnClient.logger.debug { "[#{method(__callee__).owner}.#{__callee__}] component: #{component}, locale: #{locale}" }
 
-        best_match_locale = LocaleUtil.get_best_locale(locale || SgtnClient.locale, component)
-        messages = get_bundle!(component, best_match_locale)
-
-        { 'component' => component, 'locale' => best_match_locale, 'messages' => messages } if messages
+        picked_locale = pickup_locale(locale || SgtnClient.locale, component)
+        get_bundle!(component, picked_locale)
       end
 
-      private
+      protected
+
+      def pickup_locale(locale, component)
+        LocaleUtil.get_best_locale(locale, component)
+      end
+
+      def interpolate(translation, locale, **kwargs)
+        translation.localize(locale) % kwargs
+      end
 
       def get_bundle!(component, locale)
         SgtnClient.config.loader.get_bundle(component, locale)
@@ -99,6 +101,13 @@ module SgtnClient
         SgtnClient.config.changed
         SgtnClient.config.notify_observers(:available_locales, component)
         raise
+      end
+
+      private
+
+      def get_string!(key, component, locale)
+        bundle = get_bundle!(component, locale)
+        [bundle.fetch(key), bundle.locale]
       end
     end
 

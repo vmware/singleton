@@ -6,16 +6,16 @@ require 'set'
 module SgtnClient
   module TranslationLoader
     class Chain
-      attr_accessor :loaders
+      attr_reader :loaders
 
       def initialize(*loaders)
-        self.loaders = loaders
+        @loaders = loaders
       end
 
       def load_bundle(component, locale)
         exception = nil
 
-        loaders.each do |loader|
+        @loaders.each do |loader|
           begin
             bundle = loader.load_bundle(component, locale)
             return bundle if bundle
@@ -32,7 +32,7 @@ module SgtnClient
         exception = nil
         total_data = Set.new
 
-        loaders.each do |loader|
+        @loaders.each do |loader|
           begin
             item = loader.available_bundles
             total_data += item

@@ -11,9 +11,13 @@ module SgtnClient
     include Observable
     include Singleton
 
-    attr_accessor :product_name, :version, :vip_server, :translation_bundle, :source_bundle, :cache_expiry_period, :log_file, :log_level
+    attr_accessor :product_name, :version, :vip_server, :translation_bundle, :source_bundle, :cache_expiry_period,
+                  :log_file, :log_level
+    attr_writer :logger, :pseudo_tag
 
-    attr_writer :logger
+    def pseudo_tag
+      @pseudo_tag ||= '@@'
+    end
 
     def logger
       @logger ||= if log_file

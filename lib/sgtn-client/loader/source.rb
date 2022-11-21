@@ -7,7 +7,7 @@ require 'yaml'
 
 module SgtnClient
   module TranslationLoader
-    class Source
+    class Source # :nodoc:
       def initialize(config)
         @source_bundle_path = Pathname.new(config.source_bundle)
       end
@@ -31,7 +31,7 @@ module SgtnClient
 
         raise SingletonError, "no local source messages for component #{component}" if total_messages.empty?
 
-        total_messages
+        Common::BundleData.new(total_messages, origin: self, component: component, locale: LocaleUtil.get_source_locale)
       end
 
       def available_bundles

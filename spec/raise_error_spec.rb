@@ -36,6 +36,10 @@ describe 'raise_error', :include_helpers, :extend_helpers do
   it "#get a bundle's translation without errors" do
     expect(Sgtn.config.loader).to receive(:get_bundle).with(component, locale).once.and_call_original
 
-    expect(backend.get_translations(component, locale)['messages']['helloworld']).to eq value
+    expect(backend.get_translations(component, locale)['helloworld']).to eq value
+  end
+
+  it 'nonexistent key' do
+    expect { backend.translate!(key_nonexistent, component, locale) }.to raise_error(KeyError)
   end
 end

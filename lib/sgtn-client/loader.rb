@@ -11,6 +11,7 @@ module SgtnClient
     autoload :CONSTS, 'sgtn-client/loader/consts'
     autoload :LoaderFactory, 'sgtn-client/loader/loader_factory'
     autoload :LocalTranslation, 'sgtn-client/loader/local_translation'
+    autoload :Pseudo, 'sgtn-client/loader/pseudo'
     autoload :SgtnServer, 'sgtn-client/loader/server'
     autoload :SingleLoader, 'sgtn-client/loader/single_loader'
     autoload :SourceComparer, 'sgtn-client/loader/source_comparer'

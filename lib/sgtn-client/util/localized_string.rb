@@ -2,9 +2,9 @@
 # SPDX-License-Identifier: EPL-2.0
 
 module SgtnClient
-  class StringUtil < String
-    def initialize(str, locale)
-      super(str)
+  class LocalizedString < String
+    def initialize(value, locale)
+      super(value)
       @locale = locale
     end
 

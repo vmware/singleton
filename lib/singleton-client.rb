@@ -5,6 +5,15 @@ require 'forwardable'
 require_relative 'singleton-ruby'
 
 module Sgtn # :nodoc:
+  autoload :Pseudo, 'singleton-client/pseudo'
+  autoload :I18nBackend, 'singleton-client/i18n_backend'
+
+  extend SgtnClient::Translation::Implementation
+  extend SgtnClient::Fallbacks
+  extend Sgtn::Pseudo
+
+  PSEUDO_LOCALE = 'pseudo'.freeze
+
   class << self
     extend Forwardable
 
@@ -12,14 +21,6 @@ module Sgtn # :nodoc:
     def load_config(config_file, env)
       SgtnClient.load(config_file, env)
     end
-
-    def_delegator SgtnClient::Config, :instance, :config
-    delegate %i[translate! t! translate t get_translations! get_translations] => SgtnClient::Translation,
-             %i[locale locale=] => SgtnClient,
-             %i[logger product_name version vip_server translation_bundle
-                source_bundle cache_expiry_period log_file log_level].flat_map { |m|
-               [m, "#{m}=".to_sym]
-             } => :config
 
     def with_locale(tmp_locale = nil)
       if tmp_locale.nil?
@@ -34,7 +35,11 @@ module Sgtn # :nodoc:
         end
       end
     end
-  end
 
-  I18nBackend = SgtnClient::I18nBackend
+    def_delegator SgtnClient::Config, :instance, :config
+    delegate %i[locale locale=] => SgtnClient,
+             %i[logger product_name version vip_server translation_bundle
+                source_bundle cache_expiry_period log_file log_level
+                pseudo_tag ].flat_map { |m| [m, "#{m}=".to_sym] } => :config
+  end
 end

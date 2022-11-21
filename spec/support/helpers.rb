@@ -21,7 +21,8 @@ module Helpers
       'vip_server' => nil,
       'translation_bundle' => './spec/fixtures/bundles',
       'source_bundle' => './spec/fixtures/sources',
-      'cache_expiry_period' => 10
+      'cache_expiry_period' => 10,
+      'log_file' => './unit_test.log',
       # 'default_language' => 'en'
     }.freeze
 
@@ -91,6 +92,10 @@ module Helpers
 
   def nonexistent_response
     File.new('spec/fixtures/mock_responses/nonexistent').read
+  end
+
+  def pseudo_response
+    File.new('spec/fixtures/mock_responses/JAVA-pseudo').read
   end
 
   def reset_client

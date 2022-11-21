@@ -54,7 +54,7 @@ describe Sgtn, :include_helpers, :extend_helpers do
 
   describe '#get messages of a bundle' do
     it 'should be able to get translations of a bundle' do
-      expect(Sgtn.get_translations(component, locale)['messages']).to include({ key => value })
+      expect(Sgtn.get_translations(component, locale)).to include({ key => value })
     end
 
     it 'get translations of a nonexistent component, should return nil' do
@@ -65,11 +65,11 @@ describe Sgtn, :include_helpers, :extend_helpers do
     end
 
     it 'get translations of a nonexistent locale. should fallback to en' do
-      expect(Sgtn.get_translations(component, locale_nonexistent)['messages']).to include({ key => en_value })
+      expect(Sgtn.get_translations(component, locale_nonexistent)).to include({ key => en_value })
     end
 
     it 'get translations of a nil locale. should fallback to en' do
-      expect(Sgtn.get_translations(component, nil)['messages']).to include({ key => en_value })
+      expect(Sgtn.get_translations(component, nil)).to include({ key => en_value })
     end
     it 'get translations of a nil locale and nil component, should return nil' do
       expect(Sgtn.get_translations(nil, locale)).to be_nil
@@ -78,7 +78,7 @@ describe Sgtn, :include_helpers, :extend_helpers do
 
   # describe '#get messages of a bundle with exception enabled' do
   #   it 'should be able to get translations of a bundle' do
-  #     expect(Sgtn.get_translations!(component, locale)['messages']).to include({ key => value })
+  #     expect(Sgtn.get_translations!(component, locale)).to include({ key => value })
   #   end
 
   #   it 'get translations of a nonexistent component, should raise exception' do
@@ -89,10 +89,10 @@ describe Sgtn, :include_helpers, :extend_helpers do
   #   end
 
   #   it 'get translations of a nonexistent locale, should fallback to en' do
-  #     expect(Sgtn.get_translations!(component, locale_nonexistent)['messages']).to include({ key => en_value })
+  #     expect(Sgtn.get_translations!(component, locale_nonexistent)).to include({ key => en_value })
   #   end
   #   it 'get translations of a nil locale, should fallback to en' do
-  #     expect(Sgtn.get_translations!(component, nil)['messages']).to include({ key => en_value })
+  #     expect(Sgtn.get_translations!(component, nil)).to include({ key => en_value })
   #   end
   #   it 'get translations of a nil locale and nil component, should raise exception' do
   #     expect { Sgtn.get_translations!(nil, locale) }.to raise_error(SgtnClient::SingletonError)
@@ -177,7 +177,7 @@ describe Sgtn, :include_helpers, :extend_helpers do
     expect(Sgtn.translate!(key, component, locale)).to eq en_value
 
     # return source second time
-    expect(Sgtn.get_translations(component, locale)['locale']).to eq source_locale
+    expect(Sgtn.get_translations(component, locale).locale).to eq source_locale
   ensure
     Sgtn.config.available_bundles.add(SgtnClient::Common::BundleID.new(component, locale))
     Sgtn.config.available_locales(component).add(locale)

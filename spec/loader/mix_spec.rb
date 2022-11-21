@@ -118,7 +118,7 @@ describe 'Mix', :include_helpers, :extend_helpers do
     end
 
     it "should return nil for #{component_nonexistent}" do
-      stubs << stub_request(:get, format(bundle_url, en_locale, component_nonexistent)).to_return(body: nonexistent_response)
+      # stubs << stub_request(:get, format(bundle_url, en_locale, component_nonexistent)).to_return(body: nonexistent_response)
       stubs << stub_request(:get, format(bundle_url, latest_locale, component_nonexistent)).to_return(body: nonexistent_response)
       stubs << stub_request(:get, format(bundle_url, locale, component_nonexistent)).to_return(body: nonexistent_response)
 
@@ -130,7 +130,7 @@ describe 'Mix', :include_helpers, :extend_helpers do
 
     it "should return nil for #{locale_nonexistent}" do
       stubs << stub_request(:get, format(bundle_url, latest_locale, component)).to_return(body: nonexistent_response)
-      stubs << stub_request(:get, format(bundle_url, en_locale, component)).to_return(body: nonexistent_response)
+      # stubs << stub_request(:get, format(bundle_url, en_locale, component)).to_return(body: nonexistent_response)
       stubs << stub_request(:get, format(bundle_url, locale_nonexistent, component)).to_return(body: nonexistent_response)
 
       expect { loader.get_bundle(component, locale_nonexistent) }.to raise_error(SgtnClient::SingletonError)
@@ -189,7 +189,7 @@ describe 'Mix', :include_helpers, :extend_helpers do
     end
 
     it "should return nil for #{component_nonexistent}" do
-      stubs << stub_request(:get, format(bundle_url, en_locale, component_nonexistent)).to_return(body: nonexistent_response)
+      # stubs << stub_request(:get, format(bundle_url, en_locale, component_nonexistent)).to_return(body: nonexistent_response)
       stubs << stub_request(:get, format(bundle_url, latest_locale, component_nonexistent)).to_return(body: nonexistent_response)
       stubs << stub_request(:get, format(bundle_url, locale, component_nonexistent)).to_return(body: nonexistent_response)
 
@@ -200,7 +200,7 @@ describe 'Mix', :include_helpers, :extend_helpers do
     end
 
     it "should return nil for #{locale_nonexistent}" do
-      stubs << stub_request(:get, format(bundle_url, en_locale, component)).to_return(body: nonexistent_response)
+      # stubs << stub_request(:get, format(bundle_url, en_locale, component)).to_return(body: nonexistent_response)
       stubs << stub_request(:get, format(bundle_url, locale_nonexistent, component)).to_return(body: nonexistent_response)
 
       expect { loader.get_bundle(component, locale_nonexistent) }.to raise_error(SgtnClient::SingletonError)
@@ -244,7 +244,9 @@ describe 'Mix', :include_helpers, :extend_helpers do
       stubs.each { |stub| expect(stub).to have_been_requested }
     end
 
-    it "fallback En from remote to local when querying #{locale}" do
+    it 'should NOT fallback old SOURCE from remote to local when doing source comparison' do
+      local_translation = Sgtn.config.loader.loaders.filter { |v| v.is_a?(SgtnClient::TranslationLoader::LocalTranslation) }
+      expect(local_translation).to_not receive(:load_bundle)
       stubs << stub_request(:get, format(bundle_url, latest_locale, component)).to_return(body: stub_response("#{component}-#{latest_locale}"))
       stubs << stub_request(:get, format(bundle_url, en_locale, component)).to_return(body: nonexistent_response)
       stubs << stub_request(:get, format(bundle_url, locale, component)).to_return(body: stub_response("#{component}-#{locale}"))
@@ -252,7 +254,9 @@ describe 'Mix', :include_helpers, :extend_helpers do
       result = loader.get_bundle(component, locale)
 
       expect(result).to_not be_nil
-      expect(result[key]).to eq '你好世界-server'
+      expect(result[source_changed_key]).to eq '旧 Hello world'
+
+      wait_threads_finish
       stubs.each { |stub| expect(stub).to have_been_requested }
     end
 
@@ -264,7 +268,7 @@ describe 'Mix', :include_helpers, :extend_helpers do
       stubs.each { |stub| expect(stub).to have_been_requested }
     end
 
-    it "should be able to fallback to local latest for #{en_locale}" do
+    it "should be able to fallback to local latest for SOURCE locale - #{en_locale}" do
       stubs << stub_request(:get, format(bundle_url, latest_locale, component_local_translation_only)).to_return(body: nonexistent_response)
 
       result = loader.get_bundle(component_local_translation_only, en_locale)
@@ -276,7 +280,7 @@ describe 'Mix', :include_helpers, :extend_helpers do
 
     it "should be able to fallback to local translation for #{locale}" do
       stubs << stub_request(:get, format(bundle_url, latest_locale, component_local_translation_only)).to_return(body: nonexistent_response)
-      stubs << stub_request(:get, format(bundle_url, en_locale, component_local_translation_only)).to_return(body: nonexistent_response)
+      # stubs << stub_request(:get, format(bundle_url, en_locale, component_local_translation_only)).to_return(body: nonexistent_response)
       stubs << stub_request(:get, format(bundle_url, locale, component_local_translation_only)).to_return(body: nonexistent_response)
 
       result = loader.get_bundle(component_local_translation_only, locale)
@@ -288,7 +292,7 @@ describe 'Mix', :include_helpers, :extend_helpers do
 
     it "should return nil for #{component_nonexistent}" do
       stubs << stub_request(:get, format(bundle_url, latest_locale, component_nonexistent)).to_return(body: nonexistent_response)
-      stubs << stub_request(:get, format(bundle_url, en_locale, component_nonexistent)).to_return(body: nonexistent_response)
+      # stubs << stub_request(:get, format(bundle_url, en_locale, component_nonexistent)).to_return(body: nonexistent_response)
       stubs << stub_request(:get, format(bundle_url, locale, component_nonexistent)).to_return(body: nonexistent_response)
 
       expect { loader.get_bundle(component_nonexistent, locale) }.to raise_error(Errno::ENOENT)
@@ -299,7 +303,7 @@ describe 'Mix', :include_helpers, :extend_helpers do
 
     it "should return nil for #{locale_nonexistent}" do
       stubs << stub_request(:get, format(bundle_url, latest_locale, component)).to_return(body: nonexistent_response)
-      stubs << stub_request(:get, format(bundle_url, en_locale, component)).to_return(body: nonexistent_response)
+      # stubs << stub_request(:get, format(bundle_url, en_locale, component)).to_return(body: nonexistent_response)
       stubs << stub_request(:get, format(bundle_url, locale_nonexistent, component)).to_return(body: nonexistent_response)
 
       expect { loader.get_bundle(component, locale_nonexistent) }.to raise_error(Errno::ENOENT)
@@ -337,7 +341,7 @@ describe 'Mix', :include_helpers, :extend_helpers do
       expect(result[source_changed_key]).to eq 'Source Hello world'
     end
 
-    it "fallback En from local translation to local source when querying #{en_locale}" do
+    it "fallback SOURCE from local translation to local source when querying source locale - #{en_locale}" do
       result = loader.get_bundle(component_local_source_only, en_locale)
 
       expect(result).to_not be_nil
@@ -389,7 +393,7 @@ describe 'Mix', :include_helpers, :extend_helpers do
 
     it "should be able to fallback to local translation for #{locale}" do
       stubs << stub_request(:get, format(bundle_url, latest_locale, component_local_translation_only)).to_return(body: nonexistent_response)
-      stubs << stub_request(:get, format(bundle_url, en_locale, component_local_translation_only)).to_return(body: nonexistent_response)
+      # stubs << stub_request(:get, format(bundle_url, en_locale, component_local_translation_only)).to_return(body: nonexistent_response)
       stubs << stub_request(:get, format(bundle_url, locale, component_local_translation_only)).to_return(body: nonexistent_response)
 
       result = loader.get_bundle(component_local_translation_only, locale)
@@ -421,7 +425,7 @@ describe 'Mix', :include_helpers, :extend_helpers do
     end
 
     it "fallback translation from remote to local when querying #{locale}" do
-      stubs << stub_request(:get, format(bundle_url, en_locale, component)).to_return(body: stub_response("#{component}-#{en_locale}"))
+      # stubs << stub_request(:get, format(bundle_url, en_locale, component)).to_return(body: stub_response("#{component}-#{en_locale}"))
       stubs << stub_request(:get, format(bundle_url, locale, component)).to_return(body: nonexistent_response)
 
       result = loader.get_bundle(component, locale)
@@ -433,7 +437,7 @@ describe 'Mix', :include_helpers, :extend_helpers do
 
     it "should return nil for #{component_nonexistent}" do
       stubs << stub_request(:get, format(bundle_url, latest_locale, component_nonexistent)).to_return(body: nonexistent_response)
-      stubs << stub_request(:get, format(bundle_url, en_locale, component_nonexistent)).to_return(body: nonexistent_response)
+      # stubs << stub_request(:get, format(bundle_url, en_locale, component_nonexistent)).to_return(body: nonexistent_response)
       stubs << stub_request(:get, format(bundle_url, locale, component_nonexistent)).to_return(body: nonexistent_response)
 
       expect { loader.get_bundle(component_nonexistent, locale) }.to raise_error(Errno::ENOENT)
@@ -443,7 +447,7 @@ describe 'Mix', :include_helpers, :extend_helpers do
     end
 
     it "should raise exception for #{locale_nonexistent}" do
-      stubs << stub_request(:get, format(bundle_url, en_locale, component)).to_return(body: nonexistent_response)
+      # stubs << stub_request(:get, format(bundle_url, en_locale, component)).to_return(body: nonexistent_response)
       stubs << stub_request(:get, format(bundle_url, locale_nonexistent, component)).to_return(body: nonexistent_response)
 
       expect { loader.get_bundle(component, locale_nonexistent) }.to raise_error(Errno::ENOENT)

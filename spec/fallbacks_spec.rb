@@ -26,7 +26,7 @@ describe SgtnClient::Fallbacks, :include_helpers, :extend_helpers do
       expect(Sgtn.config.loader).to receive(:get_bundle).with(component, en_locale).once.and_call_original.ordered
 
       bundle = Sgtn.get_translations(component, locale)
-      expect(bundle['messages']['helloworld']).to eq en_value
+      expect(bundle['helloworld']).to eq en_value
     end
 
     it '#translate a string to raise error' do
@@ -59,7 +59,7 @@ describe SgtnClient::Fallbacks, :include_helpers, :extend_helpers do
       expect(Sgtn.config.loader).to receive(:get_bundle).with(component, en_locale).once.and_call_original.ordered
 
       bundle = Sgtn.get_translations(component, en_locale)
-      expect(bundle['messages']['helloworld']).to eq en_value
+      expect(bundle['helloworld']).to eq en_value
     end
 
     it '#translate a string to raise error' do
