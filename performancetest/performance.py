@@ -170,7 +170,7 @@ class ThreadGroup:
         return self
 
     def __call__(self, *args, **kwargs):
-        logger.debug(f'HttpCollection: <{threading.current_thread().name}> start running!')
+        logger.debug(f'🔔HttpCollection: <{threading.current_thread().name}> start running!')
         tsp: float = time.time() * 1000
         for _task in self.group:
             _task.start()
