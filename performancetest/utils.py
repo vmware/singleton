@@ -1,16 +1,14 @@
 # @Time 2022/10/18 13:20
 # Author: beijingm
-
-import os
 import json
-import threading
+from pathlib import Path
 
 # disable InsecureRequestWarning
 import urllib3
 
 urllib3.disable_warnings()
 
-__RESOURCE_DIR__ = os.path.join(os.path.dirname(__file__), 'resource')
+_RESOURCES_ = Path(__file__).parent.joinpath("resource")
 
 
 class TestCase:
@@ -27,20 +25,15 @@ class TestCase:
 
 
 def read_json(file: str) -> list[TestCase]:
-    file_path = os.path.join(__RESOURCE_DIR__, file)
-    test_cases: list[TestCase] = []
-    with open(file_path, mode='r', encoding='utf-8') as f:
-        testcases: list[dict] = json.load(f)
-    for case in testcases:
-        test_cases.append(TestCase(**case))
-    return test_cases
+    testcases: list[dict] = json.loads(_RESOURCES_.joinpath(file).read_bytes())
+    return [TestCase(**case) for case in testcases]
 
 
 class Parameters:
 
     def __init__(self, index: int):
-        self.index = index
-        self.count = 0
+        self.index: int = index
+        self.count: int = 0
         self.bundles: list[str] = ["VMCUI", "VMCUI1", "VMCUI2", "VMCUI3", "VMCUI4", "VMCUI5"]
 
     def get_ele(self) -> str:

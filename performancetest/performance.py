@@ -35,7 +35,7 @@ from loguru import logger
 
 from utils import read_json, TestCase, Parameters
 
-BASE_URL: str = "https://127.0.0.1:8090"
+BASE_URL: str = "https://localhost:8090"
 
 
 class CollectionResponse:
@@ -67,10 +67,11 @@ class HttpCollection:
 
         # assert response return_code
         code: int = response.json().get("response", {}).get("code", -1)
+        validate_code: int = case.validators.get("return_code", -100)
         error_msg2 = (f'Actual return_code: {code} '
-                      f'Expected return_code: {case.validators.get("return_code", -1)} are inconsistent.'
+                      f'Expected return_code: {validate_code} are inconsistent.'
                       f'The Actual Response: {response.json()}')
-        assert code == case.validators.get("return_code", -1), error_msg2
+        assert code == validate_code, error_msg2
 
         # assert response_time
         expected_validate_time: float = case.validators.get("response_time", 0)
@@ -285,12 +286,20 @@ class PMeter:
 
 
 if __name__ == '__main__':
+    import yaml
+    from pathlib import Path
+
+    _CONFIG_ = Path(__file__).parent.joinpath("config.yaml")
+
+    config: dict = yaml.safe_load(_CONFIG_.read_bytes())
     tsp: float = time.time() * 1000
     pmeter = PMeter()
-    pmeter.create_task(collection=HttpCollection(name='API_V1', file='VMCUI_v1.json'), thread_number=5, loop_count=1,
-                       thread_group_name='API_V1')
-    pmeter.create_task(collection=HttpCollection(name='API_V2', file='VMCUI_v2.json'), thread_number=1, loop_count=5,
-                       thread_group_name='Singleton_api_testing')
+
+    for conf in config.get("HttpCollections", []):
+        pmeter.create_task(collection=HttpCollection(name=conf["name"], file=conf["file"]),
+                           thread_number=conf["thread_number"], loop_count=conf["loop_count"],
+                           thread_group_name=conf["thread_group_name"])
+
     pmeter.run()
     pmeter.analysis()
     cost: float = round(time.time() * 1000 - tsp, 3)
