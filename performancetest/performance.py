@@ -275,7 +275,7 @@ class PMeter:
     @staticmethod
     def average(collection: HttpCollection, collection_data: dict[str, dict]):
         logger.info("|" + f"Average Response Time Table".center(169, '-') + "|")
-        logger.info("|" + f"ℹ".center(1, '-') +
+        logger.info("|" + f"➕".center(1, '-') +
                     "|" + f"Total".center(5, '-') +
                     "|" + f"Warn".center(4, '-') +
                     "|" + f"Fail".center(4, '-') +
