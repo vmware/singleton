@@ -275,7 +275,7 @@ class PMeter:
     @staticmethod
     def average(collection: HttpCollection, collection_data: dict[str, dict]):
         logger.info("|" + f"Average Response Time Table".center(169, '-') + "|")
-        logger.info("|" + f"➡".center(1, '-') +
+        logger.info("|" + f"ℹ".center(1, '-') +
                     "|" + f"Total".center(5, '-') +
                     "|" + f"Warn".center(4, '-') +
                     "|" + f"Fail".center(4, '-') +
@@ -284,7 +284,7 @@ class PMeter:
                     "|" + f"Threshold".center(9, '-') +
                     "|" + f"Testcase".center(122, '-') + "|")
         for case_name, response_dict in collection_data.items():
-            success: str = "✔" if response_dict["result"] else "❌"
+            success: str = "🟩" if response_dict["result"] else "🟥"
             total_num: int = response_dict["Total"]
             warn_num: int = response_dict["Warn"]
             fail_num: int = response_dict["Fail"]
