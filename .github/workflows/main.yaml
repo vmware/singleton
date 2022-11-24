@@ -47,6 +47,10 @@ jobs:
           git diff ${{ steps.get-commit-range-action.outputs.commit-range }} --stat
           git diff --name-only --diff-filter=d ${{ steps.get-commit-range-action.outputs.commit-range }}
           python devops/check_headers.py -f "$(git diff --name-only --diff-filter=d ${{ steps.get-commit-range-action.outputs.commit-range }})"
+          
+  run-its-woke-scan:
+    name: Inclusive Term Scan
+    uses: vmware/singleton/its-scan/woke.yml@devops
 
   run-unit-test:
     name: Run Unit Test
