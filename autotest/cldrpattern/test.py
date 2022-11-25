@@ -1,4 +1,4 @@
-import os,json,HTMLTestRunner,unittest,sys
+import os,json,HTMLTestRunner,unittest,sys,jpype
 from excelutility import excelutil
 from ddt import ddt,data
 from datetime import datetime
@@ -79,7 +79,11 @@ class Test(unittest.TestCase):
     @data(*excelutil())
     def test(self, case):
 
-
+        # invoke interface in jar package
+        global javaInstance
+        javaClass = jpype.JClass("com.vmware.vipclient.sample.Format2")
+        javaInstance = javaClass()
+        javaInstance.initVIPServer()
 
         #Check the count of languages
         if (case['category'] == 'FolderCountCheck'):
@@ -101,6 +105,24 @@ class Test(unittest.TestCase):
             print('############Case ID: %s #####Case Name: %s############' % (case['caseid'], case['casename']))
             result = readzipfile(case['zipdir'], case['innerzipdir'], case['filename'], case['key'])
             self.assertEqual(result, case['expected'])
+        # Check the cldr jar package works well
+        elif (case['category'] == 'CLDRJar'):
+            print('############Case ID: %s #####Case Name: %s############' % (case['caseid'], case['casename']))
+            if (case['zipdir'] == 'number'):
+                numberResult = javaInstance.number()
+                self.assertEqual(numberResult, "201,703.542")
+            if (case['zipdir'] == 'percent'):
+                percentResult = javaInstance.numberofPercent()
+                self.assertEqual(percentResult, '23%')
+            if (case['zipdir'] == 'currency'):
+                currencyResult = javaInstance.numberofCurrency()
+                self.assertEqual(currencyResult, "US$201,703.54")
+            if (case['zipdir'] == 'datetime'):
+                dtResult = javaInstance.dateTime()
+                self.assertEqual(dtResult, '2017年11月20日 GMT+8 下午1:39:24')
+            if (case['zipdir'] == 'plural'):
+                pluralResult = javaInstance.plural()
+                self.assertEqual(pluralResult, case['expected'])
 
 
 
@@ -108,7 +130,10 @@ if __name__ == "__main__":
 
     print('=====AutoTest Start======')
     unzipfile(constant.rootdir + constant.version, constant.unzipfile_dir)
-    # unittest.main()
+    # start JVM environment before cases execution
+    jvmPath = jpype.getDefaultJVMPath()
+    jpype.startJVM(jvmPath, "-ea", "-Djava.class.path=%s" % constant.jar_path)
+    # load and execute cases
     discover = unittest.defaultTestLoader.discover(constant.test_dir, pattern='test.py')
     now = datetime.now().strftime('%Y-%m-%d_%H_%M_%S_')
     filename = constant.test_dir + now + 'result.html'
@@ -119,8 +144,14 @@ if __name__ == "__main__":
     print('Passed test case run: %s' % result.success_count)
     unpass = int(result.error_count) + int(result.failure_count)
     print('Failed and error test case run: %d' % unpass)
+    for f in result.failures:
+        print('Failure details: ', f)
+    for e in result.errors:
+        print('Error details: ', e)
     print('Detailed test report can be found: %s' % os.path.abspath(filename))
     fp.close()
+    # close JVM environment after case execution
+    jpype.shutdownJVM()
     print('=====AutoTest End======')
     if (unpass > 0):
         sys.exit(1)
