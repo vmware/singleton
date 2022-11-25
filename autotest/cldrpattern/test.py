@@ -80,7 +80,6 @@ class Test(unittest.TestCase):
     def test(self, case):
 
         # invoke interface in jar package
-        global javaInstance
         javaClass = jpype.JClass("com.vmware.vipclient.sample.Format2")
         javaInstance = javaClass()
         javaInstance.initVIPServer()
@@ -131,8 +130,8 @@ if __name__ == "__main__":
     print('=====AutoTest Start======')
     unzipfile(constant.rootdir + constant.version, constant.unzipfile_dir)
     # start JVM environment before cases execution
-    jvmPath = jpype.getDefaultJVMPath()
-    jpype.startJVM(jvmPath, "-ea", "-Djava.class.path=%s" % constant.jar_path)
+    jvmpath = jpype.getDefaultJVMPath()
+    jpype.startJVM(jvmpath, "-ea", "-Djava.class.path=%s" % constant.jar_path)
     # load and execute cases
     discover = unittest.defaultTestLoader.discover(constant.test_dir, pattern='test.py')
     now = datetime.now().strftime('%Y-%m-%d_%H_%M_%S_')
