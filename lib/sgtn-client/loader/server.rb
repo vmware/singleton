@@ -27,9 +27,9 @@ module SgtnClient
 
         @conn = Faraday.new(config.vip_server, request: REQUEST_ARGUMENTS) do |f|
           f.response :json # decode response bodies as JSON
-          f.use :gzip
           f.response :raise_error
           f.response :logger, config.logger, { log_level: :debug, headers: false, bodies: true }
+          f.use :gzip
         end
       end
 
