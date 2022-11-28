@@ -1,3 +1,5 @@
+import time
+
 import pytest
 from pathlib import Path
 from sgtnclient import I18N
@@ -113,18 +115,7 @@ class TestTranslationOffline:
 
     @pytest.mark.ci1
     def test_get_string_with_diff_param(self):
-        """
-        Offline Mode:
-        1. I18N.set_current_locale(locale) 和 get_string(locale) 表示获取源文件(en)或者翻译对应locale的文件。
-        2. 如果客户端传递的locale=da不存在，则会使用config.default_locale的配置，默认是en-US，可以指定ja等。
-            一旦配置非en，source_locale必须配置en-US，否则会导致源文件不再是en格式的问题（只有offline存在该问题）。
-        2. 如果是Offline模式，读取source_locale: en-US，表示本地源文件的语言是en。这个必须配置成en-US。
-        3. 通过locale=en-US从locales下找到language_tag：en-US的配置。从中读取本地资源。
-        4. source_resources_path:表示本地源文件。offline_resources_path:表示翻译文件。
-        5. 如果获取源文件，Offline模式下不会比较message.properties和message_en.json,
-            默认获取源文件不需要增加source，如果添加，直接返回。因为不管是否有更新，都会返回最新的。
-        6. 如果是获取翻译文件，Offline模式下不会比较。如果传递了source参数，会和message.properties比较
-        """
+
         file: Path = __CONFIG__.joinpath('sample_offline_disk.yml')
         outside_config = {"product": "PythonClient"}
         I18N.add_config_file(file, outside_config)
@@ -217,6 +208,7 @@ class TestTranslationOffline:
 
         # get_string and cache
         translation.get_string("about", "about.message", locale="ar")
+
         trans1 = translation.get_locale_strings("ar", False)
         assert trans1["about"]["about.title"] == "حول"
 
@@ -226,6 +218,11 @@ class TestTranslationOffline:
         assert trans1["about"]["about.title"] is None
 
         # multi locale cache
+        trans1 = translation.get_locale_strings("ar", False)
+        assert trans1["about"]["about.title"] == "حول"
+
+        # cache never expired
+        time.sleep(15)
         trans1 = translation.get_locale_strings("ar", False)
         assert trans1["about"]["about.title"] == "حول"
 
