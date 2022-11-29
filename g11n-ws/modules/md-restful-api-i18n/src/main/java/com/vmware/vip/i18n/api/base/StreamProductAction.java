@@ -63,27 +63,7 @@ public class StreamProductAction extends TranslationProductAction{
 		 }else {
 			 wbc.write(sr.getRespStartBytes(APIResponseStatus.VERSION_FALLBACK_TRANSLATION.getCode()));
 		 }
-		 ByteBuffer buf = null;
-		 ReadableByteChannel firstReadChannel =  readChannels.get(0).getReadableByteChannel();
-		 boolean flag = (firstReadChannel instanceof FileChannel);
-		 if(flag) {
-			 transferTo(readChannels.get(0).getReadableByteChannel(), wbc, null);
-			 buf = ByteBuffer.wrap(byteComm);
-		 }else {
-			 buf = ByteBuffer.allocateDirect(16384);
-			 transferTo(readChannels.get(0).getReadableByteChannel(), wbc, buf);
-		 }
-		 
-		 
-		 for (int idx =1;  idx <readChannels.size(); idx++ ) {
-			 if(flag) {
-				 buf.rewind();
-				 wbc.write(buf);
-			 }else {
-				 buf.put(byteComm);
-			 }
-			 transferTo(readChannels.get(idx).getReadableByteChannel(), wbc, buf);
-		 }
+		 writeTranslationsToChanel(readChannels, wbc);
 		 if(isPartContent){
 			 wbc.write(ByteBuffer.wrap(addNullMessage(readChannels, componentList, localeList)));
 		 }
@@ -162,5 +142,27 @@ public class StreamProductAction extends TranslationProductAction{
 		}
 	}
 
+	private void writeTranslationsToChanel(List<ResultMessageChannel>  readChannels, WritableByteChannel wbc) throws Exception {
+		ByteBuffer buf = null;
+		ReadableByteChannel firstReadChannel =  readChannels.get(0).getReadableByteChannel();
+		boolean flag = (firstReadChannel instanceof FileChannel);
+		if(flag) {
+			transferTo(readChannels.get(0).getReadableByteChannel(), wbc, null);
+			buf = ByteBuffer.wrap(byteComm);
+		}else {
+			buf = ByteBuffer.allocateDirect(16384);
+			transferTo(readChannels.get(0).getReadableByteChannel(), wbc, buf);
+		}
+
+		for (int idx =1;  idx <readChannels.size(); idx++ ) {
+			if(flag) {
+				buf.rewind();
+				wbc.write(buf);
+			}else {
+				buf.put(byteComm);
+			}
+			transferTo(readChannels.get(idx).getReadableByteChannel(), wbc, buf);
+		}
+	}
 
 }
