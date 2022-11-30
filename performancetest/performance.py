@@ -1,3 +1,4 @@
+import random
 import time
 import uuid
 import threading
@@ -16,6 +17,8 @@ _CONFIG_ = Path(__file__).parent.joinpath("config.yaml")
 BASE_URL: str = "https://localhost:8090"
 
 config: dict = yaml.safe_load(_CONFIG_.read_bytes())
+
+LOCALES = ["de_DE", "en_GB", "es_ES", "fr_FR", "ja_JP", "ko_KR", "zh_CN", "zh_TW"]
 
 
 class CollectionResponse:
@@ -62,6 +65,12 @@ class HttpCollection:
         url: str = BASE_URL + case.url.format(productName=_product_name)
         if case.params.get("productName", None):
             case.params["productName"] = _product_name
+
+        if case.params.get("locale", None):
+            case.params["locale"] = random.choice(LOCALES)
+
+        if case.params.get("displayLanguage", None):
+            case.params["displayLanguage"] = random.choice(LOCALES)
 
         if case.method == "PUT":
             if case.body.get("data", {}).get("productName", None):
@@ -114,10 +123,12 @@ class HttpCollection:
                 response_time_threshold: float = case.validators.get("response_time_threshold", 0)
                 if resp.response_time > response_time_threshold:
                     resp.status = 1
-                    logger.warning(f'🆔{case.name}💢WARN🕜:{"%.3f" % resp.response_time}ms!')
+                    logger.warning(
+                        f'🆔{case.name}💢WARN🕜:{"%.3f" % resp.response_time}ms! 🔗content-size: {len(r.content)} bytes')
                 else:
                     resp.status = 0
-                    logger.debug(f'🆔{case.name}✅PASS🕜:{"%.3f" % resp.response_time}ms!')
+                    logger.debug(
+                        f'🆔{case.name}✅PASS🕜:{"%.3f" % resp.response_time}ms! 🔗content-size: {len(r.content)} bytes')
 
         q.put(resp)
 

@@ -34,7 +34,10 @@ class Parameters:
     def __init__(self, index: int):
         self.index: int = index
         self.count: int = 0
-        self.bundles: list[str] = ["VMCUI", "VMCUI1", "VMCUI2", "VMCUI3", "VMCUI4", "VMCUI5"]
+        self.bundles: list[str] = ["VMCUI", "VMCUI1", "VMCUI2", "VMCUI3", "VMCUI4", "VMCUI5", "VMCUI6", "VMCUI7",
+                                   "VMCUI8", "VMCUI9", "VMCUI10", "VMCUI11", "VMCUI12", "VMCUI13", "VMCUI14", "VMCUI15",
+                                   "VMCUI16", "VMCUI17", "VMCUI18", "VMCUI19", "VMCUI20", "VMCUI21", "VMCUI22",
+                                   "VMCUI23", "VMCUI24", "VMCUI25", "VMCUI26", "VMCUI27", "VMCUI28", "VMCUI29", "VMCUI30"]
 
     def get_ele(self) -> str:
         ele: str = self.bundles[(self.count + self.index) % len(self.bundles)]
