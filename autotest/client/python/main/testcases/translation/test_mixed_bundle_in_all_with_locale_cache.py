@@ -40,12 +40,7 @@ class TestMixedBundleInAllWithLocaleCache:
 
     @pytest.mark.ci1
     def test_translation_online_has_high_priority(self):
-        """
-        Mixed Mode:
-        1. 如果比较正常，在返回对应locale的translation时。
-        2. 如果online查询到对应的translation，不管本地的translation是否存在，直接使用online的。
-        3. 如果online未查询到对应的translation，获取本地的translation。
-        """
+
         file = __CONFIG__.joinpath(CONFIG_FILE)
         I18N.add_config_file(file)
         # I18N.set_current_locale("en")
