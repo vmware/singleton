@@ -1,5 +1,6 @@
 import csv
 from pathlib import Path
+import ast
 
 _TESTCASES_: list = []
 
@@ -10,7 +11,7 @@ with open(_RESOURCES_.joinpath("plural.csv"), mode="r", encoding='utf-8') as f:
     next(file)
     for item in file:
         try:
-            format_items = eval(item[9])
+            format_items = ast.literal_eval(item[9])
         except Exception:
             format_items = None
         _TESTCASES_.append(

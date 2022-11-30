@@ -1,9 +1,9 @@
 FROM adoptopenjdk:8u292-b10-jdk-hotspot-focal
 
-MAINTAINER singleton.io@outlook.com
+#MAINTAINER singleton.io@outlook.com
 
-ADD i18n-service.jar app.jar
-ADD l10n l10n
+COPY i18n-service.jar app.jar
+COPY l10n l10n
 
 EXPOSE 8090
 EXPOSE 8091
