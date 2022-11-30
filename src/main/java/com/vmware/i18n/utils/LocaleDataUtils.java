@@ -85,16 +85,9 @@ public class LocaleDataUtils {
 	 */
 	private Map<String, String> getAvailableLocaleRegion(Map<String, String> regionMap) {
 		Map<String, String> localesRegionMap = new TreeMap<String, String>();
-		String fileName = "cldr-core-" + CLDRUtils.CLDR_VERSION + "/availableLocales.json";
-		String zipPath = CLDRConstants.CORE_ZIP_FILE_PATH;
-		String json = CLDRUtils.readZip(fileName, zipPath);
-		JSONObject allLocalesContents = JSONUtil.string2JSON(json);
-		JSONArray array = (JSONArray) JSONUtil.select(allLocalesContents, "availableLocales.full");
-		for (Object item : array) {
+		Map<String, String> availableLocales = CLDRUtils.getAllCldrLocales();
+		for (Object item : availableLocales.values()) {
 			String locale = item.toString();
-			if (locale.equals("root") || "yue".equals(locale)) {
-				continue;
-			}
 			String[] arr = locale.split("-");
 			switch (arr.length) {
 			case 2:
