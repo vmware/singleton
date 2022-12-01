@@ -57,6 +57,7 @@ func (w *ccWriter) Write(data []byte) (int, error) {
 
 func (w *ccWriter) processCC(bts []byte) (notModified bool) {
 	etag := GenerateEtag(bts, w.weak)
+	// Write ETag directly because JAVA client can't read header case-insensitively.
 	w.ResponseWriter.Header()[headers.ETag] = []string{etag}
 	notModified = w.request.Header.Get(headers.IfNoneMatch) == etag
 	if notModified {
