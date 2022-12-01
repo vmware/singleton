@@ -129,7 +129,7 @@ if __name__ == "__main__":
 
     print('=====AutoTest Start======')
     unzipfile(constant.rootdir + constant.version, constant.unzipfile_dir)
-    # start JVM environment before cases execution
+    # start an JVM environment before cases execution
     jvmpath = jpype.getDefaultJVMPath()
     jpype.startJVM(jvmpath, "-ea", "-Djava.class.path=%s" % constant.jar_path)
     # load and execute cases
