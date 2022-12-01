@@ -210,7 +210,7 @@ func TestGetBundleNormal(t *testing.T) {
 
 	// Test CacheControl
 	resp.Header(headers.CacheControl).Equal(config.Settings.Server.CacheControl)
-	etag := resp.Header(headers.ETag).Raw()
+	etag := resp.Headers().Value(headers.ETag).Array().First().String().Raw()
 
 	// Send request again to test Etag
 	req = e.GET(GetBundleURL, Name, Version, "zh-Hans", "sunglow")
