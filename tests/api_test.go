@@ -301,11 +301,12 @@ func TestEtag(t *testing.T) {
 	resp := e.GET(GetBundleURL, Name, Version, Locale, Component).Expect()
 	resp.Status(http.StatusOK)
 	expectedEtag := api.GenerateEtag([]byte(resp.Body().Raw()), false)
-	resp.Header(headers.ETag).Equal(expectedEtag)
+	actualEtag := resp.Headers().Value(headers.ETag).Array().First().String()
+	actualEtag.Equal(expectedEtag)
 
 	// Send request again to test Etag
 	req := e.GET(GetBundleURL, Name, Version, Locale, Component)
-	resp = req.WithHeader(headers.IfNoneMatch, resp.Header(headers.ETag).Raw()).Expect()
+	resp = req.WithHeader(headers.IfNoneMatch, actualEtag.Raw()).Expect()
 	resp.Status(http.StatusNotModified)
 	resp.Body().Empty()
 }
