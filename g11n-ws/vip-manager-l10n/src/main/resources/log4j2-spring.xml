@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright 2019-2022 VMware, Inc.
+SPDX-License-Identifier: EPL-2.0
+-->
 <Configuration status="OFF">
       <Properties>
         <property name="application_name">VIP</property> 
@@ -21,7 +25,7 @@
 				<TimeBasedTriggeringPolicy/>
 				<SizeBasedTriggeringPolicy size="64 MB" />
 			</Policies>
-			<DefaultRolloverStrategy max="100" />
+			<DefaultRolloverStrategy max="10" />
 		</RollingFile>
 		<RollingFile name="ErrorFile"
 			fileName="${log_path}/${application_name}-error.log" filePattern="${log_path}/${application_name}-error-%d{yyyy-MM-dd}.%i.log">
@@ -33,7 +37,7 @@
 				<TimeBasedTriggeringPolicy/>
 				<SizeBasedTriggeringPolicy size="64 MB" />
 			</Policies>
-			<DefaultRolloverStrategy max="100" />
+			<DefaultRolloverStrategy max="5" />
 		</RollingFile>
     </Appenders>
     <Loggers>
