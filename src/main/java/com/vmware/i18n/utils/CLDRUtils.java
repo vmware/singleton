@@ -817,7 +817,7 @@ public class CLDRUtils {
 		JSONArray array = (JSONArray) JSONUtil.select(allLocalesContents, "availableLocales.full");
 		for (Object item : array) {
 			String locale = item.toString();
-			if (locale.equals("root") || "yue".equals(locale)) {
+			if ("yue".equals(locale)) {// no data for yue locale, so skip it, or data extract process will throw exception
 				continue;
 			}
 			localesMap.put(locale.toLowerCase(), locale);
