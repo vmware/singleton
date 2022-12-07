@@ -23,7 +23,7 @@ describe "get_translations online test" do
         end
 
         it "get component by get_translations" do
-            expect(Sgtn.get_translations("about", 'en')).to eq({"component"=>"about", "locale"=>"en", "messages"=>{"about.key1"=>"test value 1", "about.key2"=>"test value 2", "about.key3"=>"test value 3", "about.key4"=>"test value 4"}})
+            expect(Sgtn.get_translations("about", 'en')).to eq({"about.key1"=>"test value 1", "about.key2"=>"test value 2", "about.key3"=>"test value 3", "about.key4"=>"test value 4"})
         end
 
         it "get component by get_translations and component is int" do
@@ -48,12 +48,12 @@ describe "get_translations online test" do
         end
 
         it "get component by get_translations" do
-            expect(Sgtn.get_translations("about2", 'de')).to eq({"component"=>"about2", "locale"=>"en", "messages"=>{"about2.key1"=>"test value 1", "about2.key2"=>"test value 2"}})
+            expect(Sgtn.get_translations("about2", 'de')).to eq({"about2.key1"=>"test value 1", "about2.key2"=>"test value 2"})
         end
 
         
         it "get component by get_translations and locale is en-UK" do
-            expect(Sgtn.get_translations("intest", "en_UK")).to eq({"component"=>"intest", "locale"=>"en", "messages"=>{"intest.key1"=>"add value 1", "intest.key2"=>"add value source 2", "intest.key4"=>"add value 4"}})
+            expect(Sgtn.get_translations("intest", "en_UK")).to eq({"intest.key1"=>"add value 1", "intest.key2"=>"add value source 2", "intest.key4"=>"add value 4"})
         end
 
 
