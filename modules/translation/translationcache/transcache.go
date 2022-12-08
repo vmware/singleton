@@ -9,6 +9,7 @@ import (
 	"context"
 	"fmt"
 	"sync"
+	"time"
 
 	"sgtnserver/internal/cache"
 	"sgtnserver/internal/common"
@@ -44,7 +45,7 @@ func (c *TransCacheMgr) GetBundle(ctx context.Context, id *translation.BundleID)
 		data, err = c.DAO.GetBundle(ctx, id) // Set return value and error
 		if err == nil {
 			if cacheErr := c.Cache.Set(cacheKey, data); cacheErr != nil {
-				logger.FromContext(ctx).DPanic(cacheErr.Error())
+				logger.FromContext(ctx).Error(cacheErr.Error())
 				return cacheErr
 			}
 		}
@@ -56,14 +57,14 @@ func (c *TransCacheMgr) GetBundle(ctx context.Context, id *translation.BundleID)
 		defer c.locks.Delete(cacheKey)
 
 		// Don't need to process returned error because values to return have been set in 'populateCache'
-		common.DoAndCheck(ctx, actual.(chan struct{}), populateCache, func() { c.Cache.Wait() })
+		common.DoAndCheck(ctx, actual.(chan struct{}), populateCache, func() { c.Cache.Wait() }, time.Second)
 	} else { // For the routine waiting for cache population, get from cache
 		<-actual.(chan struct{})
 		if dataInCache, e := c.Cache.Get(cacheKey); e == nil {
 			data = dataInCache.(*translation.Bundle)
 		} else {
 			err = sgtnerror.StatusInternalServerError.WrapErrorWithMessage(e, common.FailToReadCache, cacheKey)
-			logger.FromContext(ctx).DPanic(err.Error())
+			logger.FromContext(ctx).Error(err.Error())
 			data, err = c.DAO.GetBundle(ctx, id) // Read from storage directly if failing to get from cache
 		}
 	}

@@ -7,6 +7,7 @@ package common
 
 import (
 	"context"
+	"errors"
 	"reflect"
 	"strings"
 	"time"
@@ -55,21 +56,15 @@ func TitleCase(s string) string {
 }
 
 // DoAndCheck ...
-func DoAndCheck(ctx context.Context, done chan struct{}, doer func() error, checker func()) (err error) {
-	defer func() {
-		if err := recover(); err != nil { // If error happens, close the channel
-			close(done)
-			panic(err)
-		}
-	}()
+func DoAndCheck(ctx context.Context, done chan struct{}, doer func() error, checker func(), duration time.Duration) (err error) {
+	defer close(done) // Close the channel
 
 	err = doer()
 	if err != nil {
 		return
 	}
 
-	const waitTime = time.Second
-	timeout := time.After(waitTime)
+	timeout := time.After(duration)
 	ready := make(chan struct{})
 
 	go func() {
@@ -77,34 +72,15 @@ func DoAndCheck(ctx context.Context, done chan struct{}, doer func() error, chec
 		ready <- struct{}{}
 	}()
 
-	go func() {
-		defer close(done) // Close the channel
-
-		select {
-		case <-ready:
-		case <-timeout:
-			logger.FromContext(ctx).DPanic("Time out to wait for cache ready. Suggest to wait more time!", zap.Duration("waitTime", waitTime))
-		}
-	}()
+	select {
+	case <-ready:
+	case <-timeout:
+		err = errors.New("time out to wait for cache ready")
+		logger.FromContext(ctx).Error("", zap.Error(err), zap.Duration("waitTime", duration))
+	}
 
 	return
 }
-
-// func WaitForOperation(ctx context.Context, operation func(), waitDuration time.Duration) {
-// 	timeout := time.After(waitDuration)
-// 	ready := make(chan struct{})
-
-// 	go func() {
-// 		operation()
-// 		ready <- struct{}{}
-// 	}()
-
-// 	select {
-// 	case <-ready:
-// 	case <-timeout:
-// 		logger.FromContext(ctx).DPanic("Time out to wait for cache ready. Suggest to wait more time!", zap.Duration("duration", waitDuration))
-// 	}
-// }
 
 func ToGenericArray(x []string) []interface{} {
 	s := make([]interface{}, len(x))
