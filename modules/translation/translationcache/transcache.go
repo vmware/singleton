@@ -57,18 +57,6 @@ func (c *TransCacheMgr) GetBundle(ctx context.Context, id *translation.BundleID)
 
 		// Don't need to process returned error because values to return have been set in 'populateCache'
 		common.DoAndCheck(ctx, actual.(chan struct{}), populateCache, func() { c.Cache.Wait() })
-
-		// data, err = c.DAO.GetBundle(ctx, id)
-		// if err == nil {
-		// 	if cacheErr := c.Cache.Set(cacheKey, data); cacheErr == nil {
-		// 		go func() {
-		// 			defer close(actual.(chan struct{}))
-		// 			common.WaitForOperation(ctx, func() { c.Cache.Wait() }, time.Second)
-		// 		}()
-		// 	} else {
-		// 		logger.FromContext(ctx).DPanic(cacheErr.Error())
-		// 	}
-		// }
 	} else { // For the routine waiting for cache population, get from cache
 		<-actual.(chan struct{})
 		if dataInCache, e := c.Cache.Get(cacheKey); e == nil {

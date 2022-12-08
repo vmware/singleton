@@ -93,6 +93,8 @@ func TestTransCache(t *testing.T) {
 	_, err = l3Service.GetBundle(context.TODO(), id)
 	assert.Nil(t, err)
 
+	c.Wait() // Wait for cache populated.
+
 	// query from cache to check entry exists
 	_, err = c.Get(fmt.Sprintf("%s:%s:%s:%s", id.Name, id.Version, id.Locale, id.Component))
 	assert.Nil(t, err)
