@@ -205,14 +205,14 @@
       "content-type": "application/json"
     },
     "params": {
-      "components": "AngularJS2",
-      "locales": "ja-JP,es-ES",
+      "components": "AngularJS",
+      "locales": "ja-JP,de-DE",
       "pseudo": "false"
     },
     "body": {},
     "validators": {
       "return_code": 200,
-      "average_response_time": 250,
+      "average_response_time": 300,
       "response_time_threshold": 500,
       "response_content": {}
     }
@@ -280,7 +280,7 @@
   {
     "name": "GET:/i18n/api/v2/translation/products/{productName}/versions/{version}/locales/{locale}/components/{component}",
     "description": "translation-product-component-api",
-    "url": "/i18n/api/v2/translation/products/{productName}/versions/1.0.0/locales/ja/components/AngularJS2",
+    "url": "/i18n/api/v2/translation/products/{productName}/versions/1.0.0/locales/ja/components/AngularJS",
     "method": "GET",
     "headers": {
       "content-type": "application/json"
@@ -300,13 +300,13 @@
   {
     "name": "GET:/i18n/api/v2/translation/products/{productName}/versions/{version}/locales/{locale}/components/{component}/keys",
     "description": "translation-product-component-key-api",
-    "url": "/i18n/api/v2/translation/products/{productName}/versions/1.0.0/locales/ja/components/AngularJS2/keys",
+    "url": "/i18n/api/v2/translation/products/{productName}/versions/1.0.0/locales/ja/components/AngularJS/keys",
     "method": "GET",
     "headers": {
       "content-type": "application/json"
     },
     "params": {
-      "keys": "add-cluster.cancel",
+      "keys": "key.star-laugh.information",
       "pseudo": "false"
     },
     "body": {},
@@ -320,7 +320,7 @@
   {
     "name": "POST:/i18n/api/v2/translation/products/{productName}/versions/{version}/locales/{locale}/components/{component}/keys",
     "description": "translation-product-component-key-api",
-    "url": "/i18n/api/v2/translation/products/{productName}/versions/1.0.0/locales/ja/components/AngularJS2/keys",
+    "url": "/i18n/api/v2/translation/products/{productName}/versions/1.0.0/locales/ja/components/AngularJS/keys",
     "method": "POST",
     "headers": {
       "content-type": "application/json"
@@ -346,7 +346,7 @@
   {
     "name": "GET:/i18n/api/v2/translation/products/{productName}/versions/{version}/locales/{locale}/components/{component}/keys/{key}",
     "description": "translation-product-component-key-api",
-    "url": "/i18n/api/v2/translation/products/{productName}/versions/1.0.0/locales/ja/components/AngularJS2/keys/add-cluster.cancel",
+    "url": "/i18n/api/v2/translation/products/{productName}/versions/1.0.0/locales/ja/components/AngularJS/keys/key.star-laugh.title",
     "method": "GET",
     "headers": {
       "content-type": "application/json"
@@ -363,7 +363,7 @@
   {
     "name": "POST:/i18n/api/v2/translation/products/{productName}/versions/{version}/locales/{locale}/components/{component}/keys/{key}",
     "description": "translation-product-component-key-api",
-    "url": "/i18n/api/v2/translation/products/{productName}/versions/1.0.0/locales/latest/components/AngularJS2/keys/sample.six",
+    "url": "/i18n/api/v2/translation/products/{productName}/versions/1.0.0/locales/latest/components/AngularJS/keys/key.star-laugh.message",
     "method": "POST",
     "headers": {
       "content-type": "application/json"
@@ -376,14 +376,14 @@
     "validators": {
       "return_code": 200,
       "average_response_time": 50,
-      "response_time_threshold": 80,
+      "response_time_threshold": 100,
       "response_content": {}
     }
   },
   {
     "name": "POST:/i18n/api/v2/translation/products/{productName}/versions/{version}/locales/{locale}/components/{component}",
     "description": "translation-source-api",
-    "url": "/i18n/api/v2/translation/products/{productName}/versions/1.0.0/locales/ja/components/AngularJS2",
+    "url": "/i18n/api/v2/translation/products/{productName}/versions/1.0.0/locales/ja/components/AngularJS",
     "method": "POST",
     "headers": {
       "content-type": "application/json"
@@ -499,7 +499,7 @@
     },
     "params": {
       "combine": 2,
-      "components": "AngularJS2",
+      "components": "AngularJS",
       "language": "ja-JP",
       "productName": "VMCUI",
       "scope": "dates",

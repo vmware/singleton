@@ -29,7 +29,7 @@
       "content-type": "application/json"
     },
     "params": {
-      "locale": "ar-AE",
+      "locale": "de_DE",
       "number": 4.2,
       "scale": 2
     },
@@ -127,9 +127,9 @@
       "content-type": "application/json"
     },
     "params": {
-      "component": "AngularJS2",
+      "component": "AngularJS",
       "locale": "ja",
-      "productName": "VMCUI",
+      "productName": "VMCUI1",
       "pseudo": "false",
       "version": "1.0.0"
     },
@@ -150,7 +150,7 @@
       "content-type": "application/json"
     },
     "params": {
-      "components": "AngularJS2,component2",
+      "components": "AngularJS,Android",
       "locales": "ja",
       "productName": "VMCUI",
       "pseudo": "false",
@@ -174,8 +174,8 @@
     },
     "params": {
       "collectSource": "false",
-      "component": "AngularJS2",
-      "key": "sample.apple",
+      "component": "AngularJS",
+      "key": "key.star-laugh.title",
       "locale": "ja",
       "productName": "VMCUI",
       "pseudo": "false",
@@ -251,7 +251,7 @@
   {
     "name": "GET:/i18n/api/v1/translation/product/{productName}/component/{component}",
     "description": "translation-product-component-api",
-    "url": "/i18n/api/v1/translation/product/{productName}/component/AngularJS2",
+    "url": "/i18n/api/v1/translation/product/{productName}/component/AngularJS",
     "method": "GET",
     "headers": {
       "content-type": "application/json"
@@ -272,7 +272,7 @@
   {
     "name": "GET:/i18n/api/v1/translation/product/{productName}/components/{components}",
     "description": "translation-product-component-api",
-    "url": "/i18n/api/v1/translation/product/{productName}/components/AngularJS2%2Ccomponent2",
+    "url": "/i18n/api/v1/translation/product/{productName}/components/AngularJS%2CAndroid",
     "method": "GET",
     "headers": {
       "content-type": "application/json"
@@ -339,7 +339,7 @@
   {
     "name": "GET:/i18n/api/v1/translation/product/{productName}/key/{key}",
     "description": "translation-product-component-key-api",
-    "url": "/i18n/api/v1/translation/product/{productName}/key/sample.leg",
+    "url": "/i18n/api/v1/translation/product/{productName}/key/key.star-laugh.title",
     "method": "GET",
     "headers": {
       "content-type": "application/json"
@@ -362,7 +362,7 @@
   {
     "name": "GET:/i18n/api/v1/translation/product/{productName}/component/{component}/sources",
     "description": "translation-source-api",
-    "url": "/i18n/api/v1/translation/product/{productName}/component/AngularJS2/sources",
+    "url": "/i18n/api/v1/translation/product/{productName}/component/AngularJS/sources",
     "method": "GET",
     "headers": {
       "content-type": "application/json"
@@ -377,15 +377,15 @@
     "body": {},
     "validators": {
       "return_code": 200,
-      "average_response_time": 50,
-      "response_time_threshold": 80,
+      "average_response_time": 80,
+      "response_time_threshold": 100,
       "response_content": {}
     }
   },
   {
     "name": "POST:/i18n/api/v1/translation/product/{productName}/component/{component}/sources",
     "description": "translation-source-api",
-    "url": "/i18n/api/v1/translation/product/{productName}/component/AngularJS2/sources",
+    "url": "/i18n/api/v1/translation/product/{productName}/component/AngularJS/sources",
     "method": "POST",
     "headers": {
       "content-type": "application/json"
@@ -400,7 +400,7 @@
     "validators": {
       "return_code": 200,
       "average_response_time": 50,
-      "response_time_threshold": 80,
+      "response_time_threshold": 100,
       "response_content": {}
     }
   },

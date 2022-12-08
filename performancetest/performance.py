@@ -18,7 +18,7 @@ BASE_URL: str = "https://localhost:8090"
 
 config: dict = yaml.safe_load(_CONFIG_.read_bytes())
 
-LOCALES = ["de_DE", "en_GB", "es_ES", "fr_FR", "ja_JP", "ko_KR", "zh_CN", "zh_TW"]
+LOCALES = ["de_DE", "fr_FR", "ja_JP", "ru_RU", "zh_CN", "zh_TW"]
 
 
 class CollectionResponse:
@@ -96,12 +96,12 @@ class HttpCollection:
             except AssertionError as e:
                 resp.status = 2  # fail
                 resp.response_time = round(r.elapsed.total_seconds() * 1000, 3)
-                resp.response_content = r.json()
+                resp.response_content = r.content
                 logger.error((f'🆔{case.name}❌FAIL\n'
                               f'{"*" * 30} request_data {"*" * 30}\n'
                               f'url= {r.request.url}\n'
                               f'json= {case.body}\n'
-                              f"response={str(r.json())[0:200]}...\n"
+                              f"response={r.text[0:200]}...\n"
                               f'error_msg= {e}\n'
                               f'{"*" * 74}\n'))
 
@@ -324,7 +324,7 @@ if __name__ == '__main__':
             collection=HttpCollection(name=conf["name"], file=conf["file"], threshold_limit=conf["threshold_limit"]),
             thread_number=conf["thread_number"], loop_count=conf["loop_count"],
             thread_group_name=conf["thread_group_name"])
-
+    time.sleep(5)  # wait cpu down when docker start
     pmeter.run()
     pmeter.analysis()
     cost: float = round(time.time() * 1000 - tsp, 3)
