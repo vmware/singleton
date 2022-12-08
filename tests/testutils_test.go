@@ -25,6 +25,7 @@ import (
 	"github.com/gin-gonic/gin"
 	jsoniter "github.com/json-iterator/go"
 	"github.com/jucardi/go-osx/paths"
+	"github.com/mackerelio/go-osstat/memory"
 )
 
 var (
@@ -85,6 +86,7 @@ func init() {
 	// Rid of debug output
 	gin.SetMode(gin.TestMode)
 
+	printOSInfo()
 	cwd, _ := os.Getwd()
 	log.Infof("Current directory is: %s", cwd)
 
@@ -202,4 +204,18 @@ func ReplaceLogger(tempLogFile string) func() {
 		logger.InitLogger()
 		os.Remove(tempLogFile)
 	}
+}
+
+func printOSInfo() {
+	memory, err := memory.Get()
+	if err != nil {
+		log.Errorf("%s", err)
+		return
+	}
+
+	var oneM uint64 = 1024 * 1024
+	log.Infof("memory total: %d MB", memory.Total/oneM)
+	log.Infof("memory used: %d MB", memory.Used/oneM)
+	log.Infof("memory cached: %d MB", memory.Cached/oneM)
+	log.Infof("memory free: %d MB", memory.Free/oneM)
 }
