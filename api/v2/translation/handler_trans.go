@@ -110,11 +110,23 @@ func GetMultipleBundles(c *gin.Context) {
 	}
 	version := c.GetString(api.SgtnVersionKey)
 
-	releaseData, multiErr := GetService(params.Pseudo).GetMultipleBundles(logger.NewContext(c, c.MustGet(api.LoggerKey)), params.ProductName, version, params.Locales, params.Components)
+	transService := GetService(params.Pseudo)
+	ctx := logger.NewContext(c, c.MustGet(api.LoggerKey))
+	releaseData, multiErr := transService.GetMultipleBundles(ctx, params.ProductName, version, params.Locales, params.Components)
 	if multiErr != nil && releaseData != nil && len(releaseData.Bundles) > 0 {
 		// make up failed bundles because JAVA client needs them when successful partially
-		locales := strings.Split(params.Locales, common.ParamSep)
-		components := strings.Split(params.Components, common.ParamSep)
+		var locales, components []string
+		if params.Locales == "" {
+			locales, _ = transService.GetAvailableLocales(ctx, params.ProductName, version)
+		} else {
+			locales = strings.Split(params.Locales, common.ParamSep)
+		}
+		if params.Components == "" {
+			components, _ = transService.GetAvailableComponents(ctx, params.ProductName, version)
+		} else {
+			components = strings.Split(params.Components, common.ParamSep)
+		}
+
 		allBundles := make([]*translation.Bundle, 0, len(locales)*len(components))
 		for _, locale := range locales {
 			locale = translationservice.PickupLocales(params.ProductName, version, []string{locale})[0]
