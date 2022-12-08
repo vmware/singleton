@@ -76,7 +76,7 @@ func DoAndCheck(ctx context.Context, done chan struct{}, doer func() error, chec
 	case <-ready:
 	case <-timeout:
 		err = errors.New("time out to wait for cache ready")
-		logger.FromContext(ctx).Error("", zap.Error(err), zap.Duration("waitTime", duration))
+		logger.FromContext(ctx).Error(err.Error(), zap.Duration("waitTime", duration))
 	}
 
 	return
