@@ -168,24 +168,6 @@ describe "tmplete 1 test" do
             #expect(SgtnClient::Translation.getString("about", "about.message", "en-US")).to eq("Your application description page. offline")
         end
 
-        it "Get a string's translation and locale is singleton locale" do
-            Sgtn.locale = "de"
-            expect(Sgtn.translate('about.testw', 'about',name:"hhh" , place:"test")).to eq("hhh, welcome de test!")
-            expect(Sgtn.translate('about.message', 'about')).to eq("test de key")
-            #expect(SgtnClient::Translation.getString("about", "about.message", "en-US")).to eq("Your application description page. offline")
-        end
-
-        it "Get a string's translation and locale is singleton locale and default value" do
-            Sgtn.locale = "de"
-            expect(Sgtn.translate('about.addkey', 'about',name:"hhh") {"default value"}) .to eq("test value hhh")
-            expect(Sgtn.translate('about.notexist', 'about',name:"hhhh") {"default value %{name}"}).to eq("default value hhhh")
-            expect(Sgtn.translate('about.notequal2', 'about',name:"hhhh" , place: "change") {"default value %{name} %{place}"}).to eq("hhhh, welcome login not equal source change!")
-            #expect(SgtnClient::Translation.getString("about", "about.message", "en-US")).to eq("Your application description page. offline")
-        end
-
-
-
-
 
 
     end

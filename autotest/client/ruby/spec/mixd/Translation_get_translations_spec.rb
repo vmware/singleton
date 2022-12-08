@@ -20,7 +20,7 @@ describe "get_translations online test" do
         it "get component by get_translations and arguments is less than 2" do
             #expect{Sgtn.get_translations("about")}.to raise_error(ArgumentError)
             Sgtn.locale = "de"
-            expect(Sgtn.get_translations("allin")).to eq({"component"=>"allin", "locale"=>"de", "messages"=>{"about.addkey"=>"test value %{name}", "about.change"=>"%{name}, welcome chanege de %{place}!", "about.description"=>"Use this area to provide additional information source", "about.insource"=>"%{name}, only in source %{place}!", "about.key1"=>"fall back key1", "about.key3"=>"fall back key31", "about.message"=>"test de key offline", "about.notequal"=>"{name}, welcome login not equal {place}!", "about.notequal2"=>"%{name}, welcome login not equal source %{place}!", "about.onlyonline"=>"online de 1", "about.sourceandoffline2"=>"test add offline 2", "about.test"=>"test de the %1$s to %2$s", "about.test1"=>"test source the {1} to {2}", "about.testw"=>"%{name}, welcome de %{place}!", "about.title"=>"About de", "about.welcome"=>"{name}, welcome login {place} latest!", "com.vmware.loginsight.web.settings.stats.StatsTable.host"=>"123"}})
+            expect(Sgtn.get_translations("allin")).to eq({"about.addkey"=>"test value %{name}", "about.change"=>"%{name}, welcome chanege de %{place}!", "about.description"=>"Use this area to provide additional information source", "about.insource"=>"%{name}, only in source %{place}!", "about.key1"=>"fall back key1", "about.key3"=>"fall back key31", "about.message"=>"test de key offline", "about.notequal"=>"{name}, welcome login not equal {place}!", "about.notequal2"=>"%{name}, welcome login not equal source %{place}!", "about.onlyonline"=>"online de 1", "about.sourceandoffline2"=>"test add offline 2", "about.test"=>"test de the %1$s to %2$s", "about.test1"=>"test source the {1} to {2}", "about.testw"=>"%{name}, welcome de %{place}!", "about.title"=>"About de", "about.welcome"=>"{name}, welcome login {place} latest!", "com.vmware.loginsight.web.settings.stats.StatsTable.host"=>"123"})
 
         end
 
@@ -31,7 +31,7 @@ describe "get_translations online test" do
         end
 
         it "get component by get_translations" do
-            expect(Sgtn.get_translations("allin", 'en')).to eq({"component"=>"allin", "locale"=>"en", "messages"=>{"about.addkey"=>"test value %{name}", "about.description"=>"Use this area to provide additional information source", "about.insource"=>"%{name}, only in source %{place}!", "about.key1"=>"fall back key1", "about.key3"=>"fall back key31", "about.message"=>"Your application description page. offline", "about.notequal"=>"{name}, welcome login not equal {place}!", "about.notequal2"=>"%{name}, welcome login not equal source %{place}!", "about.onlyonline"=>"online 1", "about.sourceandoffline2"=>"test add offline 2", "about.test1"=>"test source the {1} to {2}", "about.testw"=>"%{name}, welcome %{place}!", "about.title"=>"About", "about.welcome"=>"{name}, welcome login {place} latest!", "com.vmware.loginsight.web.settings.stats.StatsTable.host"=>"123"}})
+            expect(Sgtn.get_translations("allin", 'en')).to eq({"about.addkey"=>"test value %{name}", "about.description"=>"Use this area to provide additional information source", "about.insource"=>"%{name}, only in source %{place}!", "about.key1"=>"fall back key1", "about.key3"=>"fall back key31", "about.message"=>"Your application description page. offline", "about.notequal"=>"{name}, welcome login not equal {place}!", "about.notequal2"=>"%{name}, welcome login not equal source %{place}!", "about.onlyonline"=>"online 1", "about.sourceandoffline2"=>"test add offline 2", "about.test1"=>"test source the {1} to {2}", "about.testw"=>"%{name}, welcome %{place}!", "about.title"=>"About", "about.welcome"=>"{name}, welcome login {place} latest!", "com.vmware.loginsight.web.settings.stats.StatsTable.host"=>"123"})
         end
 
         it "get component by get_translations and component is int" do
@@ -48,15 +48,15 @@ describe "get_translations online test" do
         end
         
         it "get component by get_translations and component not in source" do
-            expect(Sgtn.get_translations("onlyonline", 'en')).to eq({"component"=>"onlyonline", "locale"=>"en", "messages"=>{"contact.applicationname"=>"Singleton Sample Web Application", "contact.message"=>"Your contact page.", "contact.title"=>"Contact"}})
+            expect(Sgtn.get_translations("onlyonline", 'en')).to eq({"contact.applicationname"=>"Singleton Sample Web Application", "contact.message"=>"Your contact page.", "contact.title"=>"Contact"})
         end
 
         it "get component by get_translations and component not in source and locale is de___new dleng bug" do
-            expect(Sgtn.get_translations("onlyonline", 'de')).to eq({"component"=>"onlyonline", "locale"=>"de", "messages"=>{"contact.applicationname"=>"Singleton Sample Web Application", "contact.message"=>"Your contact de page.", "contact.title"=>"Contact"}})
+            expect(Sgtn.get_translations("onlyonline", 'de')).to eq({"contact.applicationname"=>"Singleton Sample Web Application", "contact.message"=>"Your contact de page.", "contact.title"=>"Contact"})
         end
 
         it "get component by get_translations and component not in source and locale is de" do
-            expect(Sgtn.get_translations("onlyoffline", 'de')).to eq({"component"=>"onlyoffline", "locale"=>"de", "messages"=>{"onlyoffline.key1"=>"test value de1", "onlyoffline.key2"=>"test value 2 source", "onlyoffline.key3"=>"test value  de 3"}})
+            expect(Sgtn.get_translations("onlyoffline", 'de')).to eq({"onlyoffline.key1"=>"test value de1", "onlyoffline.key2"=>"test value 2 source", "onlyoffline.key3"=>"test value  de 3"})
         end
 
         
