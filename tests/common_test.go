@@ -36,10 +36,9 @@ func TestDoAndCheck(t *testing.T) {
 		time.Sleep(time.Millisecond)
 		return nil
 	}
-	waiter := func() error {
+	waiter := func() {
 		atomic.AddInt64(&waiterCount, 1)
 		time.Sleep(time.Millisecond)
-		return nil
 	}
 
 	maxNumber := 200

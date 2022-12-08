@@ -55,26 +55,56 @@ func TitleCase(s string) string {
 }
 
 // DoAndCheck ...
-func DoAndCheck(ctx context.Context, done chan struct{}, doer, checker func() error) (err error) {
-	defer close(done)
-
-	const waitTime, retryInterval = time.Millisecond * 30, time.Microsecond * 100
-	err = doer()
-	if err == nil {
-		start := time.Now()
-		for {
-			if err := checker(); err == nil {
-				break
-			}
-			if time.Since(start) >= waitTime {
-				logger.FromContext(ctx).DPanic("Time out to wait for cache ready. Suggest to wait more time!", zap.Duration("waitTime", waitTime))
-				break
-			}
-			time.Sleep(retryInterval)
+func DoAndCheck(ctx context.Context, done chan struct{}, doer func() error, checker func()) (err error) {
+	defer func() {
+		if err := recover(); err != nil { // If error happens, close the channel
+			close(done)
+			panic(err)
 		}
+	}()
+
+	err = doer()
+	if err != nil {
+		return
 	}
+
+	const waitTime = time.Second
+	timeout := time.After(waitTime)
+	ready := make(chan struct{})
+
+	go func() {
+		checker()
+		ready <- struct{}{}
+	}()
+
+	go func() {
+		defer close(done) // Close the channel
+
+		select {
+		case <-ready:
+		case <-timeout:
+			logger.FromContext(ctx).DPanic("Time out to wait for cache ready. Suggest to wait more time!", zap.Duration("waitTime", waitTime))
+		}
+	}()
+
 	return
 }
+
+// func WaitForOperation(ctx context.Context, operation func(), waitDuration time.Duration) {
+// 	timeout := time.After(waitDuration)
+// 	ready := make(chan struct{})
+
+// 	go func() {
+// 		operation()
+// 		ready <- struct{}{}
+// 	}()
+
+// 	select {
+// 	case <-ready:
+// 	case <-timeout:
+// 		logger.FromContext(ctx).DPanic("Time out to wait for cache ready. Suggest to wait more time!", zap.Duration("duration", waitDuration))
+// 	}
+// }
 
 func ToGenericArray(x []string) []interface{} {
 	s := make([]interface{}, len(x))

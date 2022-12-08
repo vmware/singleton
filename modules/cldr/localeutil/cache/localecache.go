@@ -37,8 +37,8 @@ func (localeCache) GetLocaleData(ctx context.Context, cldrLocale, dataType strin
 	}
 
 	// (Read from storage and populate cache) or (wait and read from cache)
-	populateCache := func() (err error) {
-		err = cldrDao.GetLocaleData(ctx, cldrLocale, dataType, data)
+	populateCache := func() error {
+		err = cldrDao.GetLocaleData(ctx, cldrLocale, dataType, data) // Set return error
 		if err == nil {
 			if cacheErr := localeDataCache.Set(cacheKey, reflect.ValueOf(data).Elem().Interface()); cacheErr != nil {
 				logger.FromContext(ctx).DPanic(cacheErr.Error())
@@ -47,15 +47,13 @@ func (localeCache) GetLocaleData(ctx context.Context, cldrLocale, dataType strin
 		}
 		return err
 	}
-	getFromCache := func() error {
-		_, err := localeDataCache.Get(cacheKey)
-		return err
-	}
 
 	actual, loaded := localeDataLocks.LoadOrStore(cacheKey, make(chan struct{}))
 	if !loaded {
 		defer localeDataLocks.Delete(cacheKey)
-		err = common.DoAndCheck(ctx, actual.(chan struct{}), populateCache, getFromCache)
+
+		// Don't need to process returned error because values to return have been set in 'populateCache'
+		common.DoAndCheck(ctx, actual.(chan struct{}), populateCache, func() { localeDataCache.Wait() })
 	} else { // For the routine waiting for cache population, get from cache
 		<-actual.(chan struct{})
 		if dataInCache, e := localeDataCache.Get(cacheKey); e == nil {
@@ -63,6 +61,7 @@ func (localeCache) GetLocaleData(ctx context.Context, cldrLocale, dataType strin
 		} else {
 			err = sgtnerror.StatusInternalServerError.WrapErrorWithMessage(e, common.FailToReadCache, cacheKey)
 			logger.FromContext(ctx).DPanic(err.Error())
+			err = cldrDao.GetLocaleData(ctx, cldrLocale, dataType, data) // Read from storage directly if failing to get from cache
 		}
 	}
 

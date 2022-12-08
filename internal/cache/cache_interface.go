@@ -18,4 +18,7 @@ type Cache interface {
 
 	// Clear
 	Clear() error
+
+	// Wait cache is ready
+	Wait()
 }

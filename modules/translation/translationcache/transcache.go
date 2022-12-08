@@ -40,25 +40,35 @@ func (c *TransCacheMgr) GetBundle(ctx context.Context, id *translation.BundleID)
 	}
 
 	// (Read from storage and populate cache) or (wait and read from cache)
-	populateCache := func() (err error) {
-		data, err = c.DAO.GetBundle(ctx, id)
+	populateCache := func() error {
+		data, err = c.DAO.GetBundle(ctx, id) // Set return value and error
 		if err == nil {
 			if cacheErr := c.Cache.Set(cacheKey, data); cacheErr != nil {
 				logger.FromContext(ctx).DPanic(cacheErr.Error())
 				return cacheErr
 			}
 		}
-		return
-	}
-	getFromCache := func() error {
-		_, err := c.Cache.Get(cacheKey)
 		return err
 	}
 
 	actual, loaded := c.locks.LoadOrStore(cacheKey, make(chan struct{}))
 	if !loaded {
 		defer c.locks.Delete(cacheKey)
-		err = common.DoAndCheck(ctx, actual.(chan struct{}), populateCache, getFromCache)
+
+		// Don't need to process returned error because values to return have been set in 'populateCache'
+		common.DoAndCheck(ctx, actual.(chan struct{}), populateCache, func() { c.Cache.Wait() })
+
+		// data, err = c.DAO.GetBundle(ctx, id)
+		// if err == nil {
+		// 	if cacheErr := c.Cache.Set(cacheKey, data); cacheErr == nil {
+		// 		go func() {
+		// 			defer close(actual.(chan struct{}))
+		// 			common.WaitForOperation(ctx, func() { c.Cache.Wait() }, time.Second)
+		// 		}()
+		// 	} else {
+		// 		logger.FromContext(ctx).DPanic(cacheErr.Error())
+		// 	}
+		// }
 	} else { // For the routine waiting for cache population, get from cache
 		<-actual.(chan struct{})
 		if dataInCache, e := c.Cache.Get(cacheKey); e == nil {
@@ -66,6 +76,7 @@ func (c *TransCacheMgr) GetBundle(ctx context.Context, id *translation.BundleID)
 		} else {
 			err = sgtnerror.StatusInternalServerError.WrapErrorWithMessage(e, common.FailToReadCache, cacheKey)
 			logger.FromContext(ctx).DPanic(err.Error())
+			data, err = c.DAO.GetBundle(ctx, id) // Read from storage directly if failing to get from cache
 		}
 	}
 
