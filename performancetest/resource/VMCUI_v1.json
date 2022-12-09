@@ -1,0 +1,499 @@
+[
+  {
+    "name": "GET:/i18n/api/v1/date/localizedDate",
+    "description": "formatting-date-api",
+    "url": "/i18n/api/v1/date/localizedDate",
+    "method": "GET",
+    "headers": {
+      "content-type": "application/json"
+    },
+    "params": {
+      "locale": "zh-CN",
+      "longDate": 1472728030290,
+      "pattern": "EEEEMMMMd"
+    },
+    "body": {},
+    "validators": {
+      "return_code": 200,
+      "average_response_time": 50,
+      "response_time_threshold": 50,
+      "response_content": {}
+    }
+  },
+  {
+    "name": "GET:/i18n/api/v1/number/localizedNumber",
+    "description": "formatting-number-api",
+    "url": "/i18n/api/v1/number/localizedNumber",
+    "method": "GET",
+    "headers": {
+      "content-type": "application/json"
+    },
+    "params": {
+      "locale": "de_DE",
+      "number": 4.2,
+      "scale": 2
+    },
+    "body": {},
+    "validators": {
+      "return_code": 200,
+      "average_response_time": 50,
+      "response_time_threshold": 100,
+      "response_content": {}
+    }
+  },
+  {
+    "name": "GET:/i18n/api/v1/i18nPattern",
+    "description": "formatting-pattern-api",
+    "url": "/i18n/api/v1/i18nPattern",
+    "method": "GET",
+    "headers": {
+      "content-type": "application/json"
+    },
+    "params": {
+      "locale": "zh-CN",
+      "scope": "dates",
+      "scopeFilter": "dates_eras"
+    },
+    "body": {},
+    "validators": {
+      "return_code": 200,
+      "average_response_time": 100,
+      "response_time_threshold": 100,
+      "response_content": {}
+    }
+  },
+  {
+    "name": "GET:/i18n/api/v1/locale/browserLocale",
+    "description": "locale-api",
+    "url": "/i18n/api/v1/locale/browserLocale",
+    "method": "GET",
+    "headers": {
+      "content-type": "application/json"
+    },
+    "params": {},
+    "body": {},
+    "validators": {
+      "return_code": 200,
+      "average_response_time": 20,
+      "response_time_threshold": 50,
+      "response_content": {}
+    }
+  },
+  {
+    "name": "GET:/i18n/api/v1/locale/normalizedBrowserLocale",
+    "description": "locale-api",
+    "url": "/i18n/api/v1/locale/normalizedBrowserLocale",
+    "method": "GET",
+    "headers": {
+      "content-type": "application/json"
+    },
+    "params": {},
+    "body": {},
+    "validators": {
+      "return_code": 200,
+      "average_response_time": 20,
+      "response_time_threshold": 50,
+      "response_content": {}
+    }
+  },
+  {
+    "name": "POST:/i18n/api/v1/security/authentication",
+    "description": "security-authentication-api",
+    "url": "/i18n/api/v1/security/authentication",
+    "method": "POST",
+    "headers": {
+      "content-type": "application/json"
+    },
+    "params": {
+      "key": "AngularJS2",
+      "userID": "ja",
+      "productName": "VMCUI",
+      "version": "1.0.0"
+    },
+    "body": {},
+    "validators": {
+      "return_code": 401,
+      "average_response_time": 50,
+      "response_time_threshold": 50,
+      "response_content": {}
+    }
+  },
+  {
+    "name": "GET:/i18n/api/v1/translation/component",
+    "description": "translation-component-api",
+    "url": "/i18n/api/v1/translation/component",
+    "method": "GET",
+    "headers": {
+      "content-type": "application/json"
+    },
+    "params": {
+      "component": "AngularJS",
+      "locale": "ja",
+      "productName": "VMCUI1",
+      "pseudo": "false",
+      "version": "1.0.0"
+    },
+    "body": {},
+    "validators": {
+      "return_code": 200,
+      "average_response_time": 100,
+      "response_time_threshold": 200,
+      "response_content": {}
+    }
+  },
+  {
+    "name": "GET:/i18n/api/v1/translation/components",
+    "description": "translation-component-api",
+    "url": "/i18n/api/v1/translation/components",
+    "method": "GET",
+    "headers": {
+      "content-type": "application/json"
+    },
+    "params": {
+      "components": "AngularJS,Android",
+      "locales": "ja",
+      "productName": "VMCUI",
+      "pseudo": "false",
+      "version": "1.0.0"
+    },
+    "body": {},
+    "validators": {
+      "return_code": 200,
+      "average_response_time": 100,
+      "response_time_threshold": 200,
+      "response_content": {}
+    }
+  },
+  {
+    "name": "GET:/i18n/api/v1/translation/string",
+    "description": "translation-key-api",
+    "url": "/i18n/api/v1/translation/string",
+    "method": "GET",
+    "headers": {
+      "content-type": "application/json"
+    },
+    "params": {
+      "collectSource": "false",
+      "component": "AngularJS",
+      "key": "key.star-laugh.title",
+      "locale": "ja",
+      "productName": "VMCUI",
+      "pseudo": "false",
+      "version": "1.0.0"
+    },
+    "body": {},
+    "validators": {
+      "return_code": 200,
+      "average_response_time": 100,
+      "response_time_threshold": 200,
+      "response_content": {}
+    }
+  },
+  {
+    "name": "GET:/i18n/api/v1/translation",
+    "description": "translation-product-api",
+    "url": "/i18n/api/v1/translation",
+    "method": "GET",
+    "headers": {
+      "content-type": "application/json"
+    },
+    "params": {
+      "locale": "ja",
+      "productName": "VMCUI",
+      "pseudo": "false",
+      "version": "1.0.0"
+    },
+    "body": {},
+    "validators": {
+      "return_code": 200,
+      "average_response_time": 100,
+      "response_time_threshold": 200,
+      "response_content": {}
+    }
+  },
+  {
+    "name": "GET:/i18n/api/v1/translation/product/{productName}/version/{version}/supportedLocales",
+    "description": "translation-product-api",
+    "url": "/i18n/api/v1/translation/product/{productName}/version/1.0.0/supportedLocales",
+    "method": "GET",
+    "headers": {
+      "content-type": "application/json"
+    },
+    "params": {},
+    "body": {},
+    "validators": {
+      "return_code": 200,
+      "average_response_time": 50,
+      "response_time_threshold": 100,
+      "response_content": {}
+    }
+  },
+  {
+    "name": "GET:/l10n/api/v1/bundles/components",
+    "description": "translation-product-api",
+    "url": "/l10n/api/v1/bundles/components",
+    "method": "GET",
+    "headers": {
+      "content-type": "application/json"
+    },
+    "params": {
+      "productName": "VMCUI",
+      "version": "1.0.0"
+    },
+    "body": {},
+    "validators": {
+      "return_code": 200,
+      "average_response_time": 50,
+      "response_time_threshold": 100,
+      "response_content": {}
+    }
+  },
+  {
+    "name": "GET:/i18n/api/v1/translation/product/{productName}/component/{component}",
+    "description": "translation-product-component-api",
+    "url": "/i18n/api/v1/translation/product/{productName}/component/AngularJS",
+    "method": "GET",
+    "headers": {
+      "content-type": "application/json"
+    },
+    "params": {
+      "locale": "ja",
+      "pseudo": "false",
+      "version": "1.0.0"
+    },
+    "body": {},
+    "validators": {
+      "return_code": 200,
+      "average_response_time": 50,
+      "response_time_threshold": 100,
+      "response_content": {}
+    }
+  },
+  {
+    "name": "GET:/i18n/api/v1/translation/product/{productName}/components/{components}",
+    "description": "translation-product-component-api",
+    "url": "/i18n/api/v1/translation/product/{productName}/components/AngularJS%2CAndroid",
+    "method": "GET",
+    "headers": {
+      "content-type": "application/json"
+    },
+    "params": {
+      "locales": "ja",
+      "pseudo": "false",
+      "version": "1.0.0"
+    },
+    "body": {},
+    "validators": {
+      "return_code": 200,
+      "average_response_time": 50,
+      "response_time_threshold": 100,
+      "response_content": {}
+    }
+  },
+  {
+    "name": "GET:/i18n/api/v1/translation/product/{productName}/component/{component}/key/{key}",
+    "description": "translation-product-component-key-api",
+    "url": "/i18n/api/v1/translation/product/{productName}/component/AngularJS2/key/sample.leg",
+    "method": "GET",
+    "headers": {
+      "content-type": "application/json"
+    },
+    "params": {
+      "collectSource": "false",
+      "locale": "ja",
+      "pseudo": "false",
+      "source": "leg",
+      "version": "1.0.0"
+    },
+    "body": {},
+    "validators": {
+      "return_code": 200,
+      "average_response_time": 50,
+      "response_time_threshold": 100,
+      "response_content": {}
+    }
+  },
+  {
+    "name": "POST:/i18n/api/v1/translation/product/{productName}/component/{component}/key/{key}",
+    "description": "translation-product-component-key-api",
+    "url": "/i18n/api/v1/translation/product/{productName}/component/AngularJS2/key/sample.leg",
+    "method": "POST",
+    "headers": {
+      "content-type": "application/json"
+    },
+    "params": {
+      "collectSource": "false",
+      "locale": "ja",
+      "pseudo": "false",
+      "source": "leg",
+      "version": "1.0.0"
+    },
+    "body": "leg",
+    "validators": {
+      "return_code": 200,
+      "average_response_time": 50,
+      "response_time_threshold": 100,
+      "response_content": {}
+    }
+  },
+  {
+    "name": "GET:/i18n/api/v1/translation/product/{productName}/key/{key}",
+    "description": "translation-product-component-key-api",
+    "url": "/i18n/api/v1/translation/product/{productName}/key/key.star-laugh.title",
+    "method": "GET",
+    "headers": {
+      "content-type": "application/json"
+    },
+    "params": {
+      "collectSource": "false",
+      "locale": "latest",
+      "pseudo": "false",
+      "source": "leg",
+      "version": "1.0.0"
+    },
+    "body": {},
+    "validators": {
+      "return_code": 200,
+      "average_response_time": 50,
+      "response_time_threshold": 100,
+      "response_content": {}
+    }
+  },
+  {
+    "name": "GET:/i18n/api/v1/translation/product/{productName}/component/{component}/sources",
+    "description": "translation-source-api",
+    "url": "/i18n/api/v1/translation/product/{productName}/component/AngularJS/sources",
+    "method": "GET",
+    "headers": {
+      "content-type": "application/json"
+    },
+    "params": {
+      "collectSource": "false",
+      "locale": "latest",
+      "pseudo": "false",
+      "source": "sample.leg",
+      "version": "1.0.0"
+    },
+    "body": {},
+    "validators": {
+      "return_code": 200,
+      "average_response_time": 80,
+      "response_time_threshold": 120,
+      "response_content": {}
+    }
+  },
+  {
+    "name": "POST:/i18n/api/v1/translation/product/{productName}/component/{component}/sources",
+    "description": "translation-source-api",
+    "url": "/i18n/api/v1/translation/product/{productName}/component/AngularJS/sources",
+    "method": "POST",
+    "headers": {
+      "content-type": "application/json"
+    },
+    "params": {
+      "collectSource": "false",
+      "locale": "latest",
+      "pseudo": "false",
+      "version": "1.0.0"
+    },
+    "body": {},
+    "validators": {
+      "return_code": 200,
+      "average_response_time": 80,
+      "response_time_threshold": 120,
+      "response_content": {}
+    }
+  },
+  {
+    "name": "PUT:/i18n/api/v1/translation/product/{productName}/version/{version}",
+    "description": "translation-sync-api",
+    "url": "/i18n/api/v1/translation/product/{productName}/version/1.0.0",
+    "method": "PUT",
+    "headers": {
+      "content-type": "application/json"
+    },
+    "params": {},
+    "body": {
+      "data": {
+        "creation": {
+          "operationid": "string"
+        },
+        "dataOrigin": "string",
+        "machineTranslation": true,
+        "productName": "VMCUI",
+        "pseudo": true,
+        "translation": [
+          {
+            "component": "ui",
+            "locale": "zh-Hans-CN",
+            "messages": {
+              "additionalProp1": "string",
+              "additionalProp2": "string",
+              "additionalProp3": "string"
+            }
+          },
+          {
+            "component": "ui",
+            "locale": "en",
+            "messages": {
+              "sample.apple": "apple",
+              "sample.banana": "banana",
+              "sample.cat": "cat",
+              "sample.dog": "dog",
+              "sample.egg": "egg",
+              "sample.fly": "fly",
+              "sample.giant": "giant"
+            }
+          },
+          {
+            "component": "ui",
+            "locale": "es",
+            "messages": {
+              "sample.apple": "manzana",
+              "sample.banana": "plátano",
+              "sample.cat": "gato",
+              "sample.dog": "perro",
+              "sample.egg": "huevo",
+              "sample.fly": "volar",
+              "sample.giant": "gigante"
+            }
+          },
+          {
+            "component": "ui",
+            "locale": "ja",
+            "messages": {
+              "sample.apple": "林檎",
+              "sample.banana": "バナナ",
+              "sample.cat": "ネコ",
+              "sample.dog": "犬",
+              "sample.egg": "卵",
+              "sample.fly": "飛ぶ",
+              "sample.giant": "巨人"
+            }
+          },
+          {
+            "component": "ui",
+            "locale": "latest",
+            "messages": {
+              "sample.apple": "apple",
+              "sample.banana": "banana",
+              "sample.cat": "cat",
+              "sample.dog": "dog",
+              "sample.egg": "egg",
+              "sample.fly": "fly",
+              "sample.giant": "giant"
+            }
+          }
+        ],
+        "version": "1.0.0"
+      },
+      "requester": "string"
+    },
+    "validators": {
+      "return_code": 200,
+      "average_response_time": 50,
+      "response_time_threshold": 100,
+      "response_content": {}
+    }
+  }
+]
