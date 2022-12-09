@@ -6,6 +6,8 @@ package com.vmware.vip.i18n.api.v2.translation;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.vmware.vip.common.constants.ConstantsKeys;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -32,12 +34,15 @@ import io.swagger.annotations.ApiOperation;
 @RestController("v2-TranslationSyncAPI")
 public class TranslationSyncAPI extends TranslationSyncAction {
 
+	@Value("${csp.api.auth.enable:false}")
+	private String cspAuthFlag;
+
 	/**
 	 * Synchronize the latest translation from GRM or other third party.
 	 * <p>
 	 * Apply to On-Premise and SaaS.
 	 *
-	 * @param updateTranslationDTO
+	 * @param translationData
 	 *            This Java Bean represents request content from GRM or other
 	 *            third party. Base on product.
 	 * @param productName
@@ -57,6 +62,9 @@ public class TranslationSyncAPI extends TranslationSyncAction {
 			@PathVariable(APIParamName.PRODUCT_NAME) String productName,
 			@PathVariable(APIParamName.VERSION) String version,
 			HttpServletRequest request) throws Exception {
+		if (cspAuthFlag.equalsIgnoreCase("true")) {
+			translationData = (UpdateTranslationDTO) request.getAttribute(ConstantsKeys.UPDATEDTO);
+		}
 		return super.updateTranslation(translationData, productName, version, request);
 	}
 }
