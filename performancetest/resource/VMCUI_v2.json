@@ -1,0 +1,517 @@
+[
+  {
+    "name": "GET:/i18n/api/v2/about/version",
+    "description": "about-version-api",
+    "url": "/i18n/api/v2/about/version",
+    "method": "GET",
+    "headers": {
+      "content-type": "application/json"
+    },
+    "params": {
+      "productName": "VMCUI",
+      "version": "1.0.0"
+    },
+    "body": {},
+    "validators": {
+      "return_code": 200,
+      "average_response_time": 50,
+      "response_time_threshold": 80,
+      "response_content": {}
+    }
+  },
+  {
+    "name": "GET:/i18n/api/v2/formatting/date/localizedDate ",
+    "description": "formatting-date-api",
+    "url": "/i18n/api/v2/formatting/date/localizedDate",
+    "method": "GET",
+    "headers": {
+      "content-type": "application/json"
+    },
+    "params": {
+      "locale": "zh_CN",
+      "longDate": 1655084911868,
+      "pattern": "MMMEd"
+    },
+    "body": {},
+    "validators": {
+      "return_code": 200,
+      "average_response_time": 50,
+      "response_time_threshold": 80,
+      "response_content": {}
+    }
+  },
+  {
+    "name": "GET:/i18n/api/v2/formatting/date/timezoneNameList",
+    "description": "formatting-date-api",
+    "url": "/i18n/api/v2/formatting/date/timezoneNameList",
+    "method": "GET",
+    "headers": {
+      "content-type": "application/json"
+    },
+    "params": {
+      "displayLanguage": "zh"
+    },
+    "body": {},
+    "validators": {
+      "return_code": 200,
+      "average_response_time": 80,
+      "response_time_threshold": 100,
+      "response_content": {}
+    }
+  },
+  {
+    "name": "GET:/i18n/api/v2/formatting/number/localizedNumber",
+    "description": "formatting-number-api",
+    "url": "/i18n/api/v2/formatting/number/localizedNumber",
+    "method": "GET",
+    "headers": {
+      "content-type": "application/json"
+    },
+    "params": {
+      "locale": "ja",
+      "number": 1234567890,
+      "scale": 2
+    },
+    "body": {},
+    "validators": {
+      "return_code": 200,
+      "average_response_time": 50,
+      "response_time_threshold": 80,
+      "response_content": {}
+    }
+  },
+  {
+    "name": "GET:/i18n/api/v2/formatting/patterns",
+    "description": "formatting-pattern-api",
+    "url": "/i18n/api/v2/formatting/patterns",
+    "method": "GET",
+    "headers": {
+      "content-type": "application/json"
+    },
+    "params": {
+      "language": "ja-JP",
+      "region": "JP",
+      "scope": "dates",
+      "scopeFilter": "dates_eras"
+    },
+    "body": {},
+    "validators": {
+      "return_code": 200,
+      "average_response_time": 50,
+      "response_time_threshold": 80,
+      "response_content": {}
+    }
+  },
+  {
+    "name": "GET:/i18n/api/v2/formatting/patterns/locales/{locale}",
+    "description": "formatting-pattern-api",
+    "url": "/i18n/api/v2/formatting/patterns/locales/ja",
+    "method": "GET",
+    "headers": {
+      "content-type": "application/json"
+    },
+    "params": {
+      "scope": "dates",
+      "scopeFilter": "dates_eras"
+    },
+    "body": {},
+    "validators": {
+      "return_code": 200,
+      "average_response_time": 50,
+      "response_time_threshold": 100,
+      "response_content": {}
+    }
+  },
+  {
+    "name": "GET:/i18n/api/v2/locale/browserLocale",
+    "description": "locale-api",
+    "url": "/i18n/api/v2/locale/browserLocale",
+    "method": "GET",
+    "headers": {
+      "content-type": "application/json"
+    },
+    "body": {},
+    "validators": {
+      "return_code": 200,
+      "average_response_time": 50,
+      "response_time_threshold": 100,
+      "response_content": {}
+    }
+  },
+  {
+    "name": "GET:/i18n/api/v2/locale/normalizedBrowserLocale",
+    "description": "locale-api",
+    "url": "/i18n/api/v2/locale/normalizedBrowserLocale",
+    "method": "GET",
+    "headers": {
+      "content-type": "application/json"
+    },
+    "body": {},
+    "validators": {
+      "return_code": 200,
+      "average_response_time": 50,
+      "response_time_threshold": 100,
+      "response_content": {}
+    }
+  },
+  {
+    "name": "GET:/i18n/api/v2/locale/regionList",
+    "description": "locale-api",
+    "url": "/i18n/api/v2/locale/regionList",
+    "method": "GET",
+    "headers": {
+      "content-type": "application/json"
+    },
+    "params": {
+      "supportedLanguageList": "en,zh,ja",
+      "displayCity": "true",
+      "regions": "CN"
+    },
+    "body": {},
+    "validators": {
+      "return_code": 200,
+      "average_response_time": 50,
+      "response_time_threshold": 200,
+      "response_content": {}
+    }
+  },
+  {
+    "name": "GET:/i18n/api/v2/locale/supportedLanguageList",
+    "description": "locale-api",
+    "url": "/i18n/api/v2/locale/supportedLanguageList",
+    "method": "GET",
+    "headers": {
+      "content-type": "application/json"
+    },
+    "params": {
+      "productName": "VMCUI",
+      "version": "1.0.0",
+      "displayLanguage": "zh"
+    },
+    "body": {},
+    "validators": {
+      "return_code": 200,
+      "average_response_time": 50,
+      "response_time_threshold": 100,
+      "response_content": {}
+    }
+  },
+  {
+    "name": "GET:/i18n/api/v2/translation/products/{productName}/versions/{version}",
+    "description": "translation-product-api",
+    "url": "/i18n/api/v2/translation/products/{productName}/versions/1.0.0",
+    "method": "GET",
+    "headers": {
+      "content-type": "application/json"
+    },
+    "params": {
+      "components": "AngularJS",
+      "locales": "ja-JP,de-DE",
+      "pseudo": "false"
+    },
+    "body": {},
+    "validators": {
+      "return_code": 200,
+      "average_response_time": 300,
+      "response_time_threshold": 500,
+      "response_content": {}
+    }
+  },
+  {
+    "name": "GET:/i18n/api/v2/translation/products/{productName}/versions/{version}/componentlist",
+    "description": "translation-product-api",
+    "url": "/i18n/api/v2/translation/products/{productName}/versions/1.0.0/componentlist",
+    "method": "GET",
+    "headers": {
+      "content-type": "application/json"
+    },
+    "params": {
+      "productName": "VMCUI",
+      "version": "1.0.0"
+    },
+    "body": {},
+    "validators": {
+      "return_code": 200,
+      "average_response_time": 50,
+      "response_time_threshold": 100,
+      "response_content": {}
+    }
+  },
+  {
+    "name": "GET:/i18n/api/v2/translation/products/{productName}/versions/{version}/localelist",
+    "description": "translation-product-api",
+    "url": "/i18n/api/v2/translation/products/{productName}/versions/1.0.0/localelist",
+    "method": "GET",
+    "headers": {
+      "content-type": "application/json"
+    },
+    "params": {
+      "productName": "VMCUI",
+      "version": "1.0.0"
+    },
+    "body": {},
+    "validators": {
+      "return_code": 200,
+      "average_response_time": 50,
+      "response_time_threshold": 100,
+      "response_content": {}
+    }
+  },
+  {
+    "name": "GET:/i18n/api/v2/translation/products/{productName}/versions/{version}/versioninfo",
+    "description": "translation-product-api",
+    "url": "/i18n/api/v2/translation/products/{productName}/versions/1.0.0/versioninfo",
+    "method": "GET",
+    "headers": {
+      "content-type": "application/json"
+    },
+    "params": {
+      "productName": "VMCUI",
+      "version": "1.0.0"
+    },
+    "body": {},
+    "validators": {
+      "return_code": 200,
+      "average_response_time": 50,
+      "response_time_threshold": 100,
+      "response_content": {}
+    }
+  },
+  {
+    "name": "GET:/i18n/api/v2/translation/products/{productName}/versions/{version}/locales/{locale}/components/{component}",
+    "description": "translation-product-component-api",
+    "url": "/i18n/api/v2/translation/products/{productName}/versions/1.0.0/locales/ja/components/AngularJS",
+    "method": "GET",
+    "headers": {
+      "content-type": "application/json"
+    },
+    "params": {
+      "pseudo": "false",
+      "machineTranslation": "false"
+    },
+    "body": {},
+    "validators": {
+      "return_code": 200,
+      "average_response_time": 100,
+      "response_time_threshold": 200,
+      "response_content": {}
+    }
+  },
+  {
+    "name": "GET:/i18n/api/v2/translation/products/{productName}/versions/{version}/locales/{locale}/components/{component}/keys",
+    "description": "translation-product-component-key-api",
+    "url": "/i18n/api/v2/translation/products/{productName}/versions/1.0.0/locales/ja/components/AngularJS/keys",
+    "method": "GET",
+    "headers": {
+      "content-type": "application/json"
+    },
+    "params": {
+      "keys": "key.star-laugh.information",
+      "pseudo": "false"
+    },
+    "body": {},
+    "validators": {
+      "return_code": 200,
+      "average_response_time": 50,
+      "response_time_threshold": 100,
+      "response_content": {}
+    }
+  },
+  {
+    "name": "POST:/i18n/api/v2/translation/products/{productName}/versions/{version}/locales/{locale}/components/{component}/keys",
+    "description": "translation-product-component-key-api",
+    "url": "/i18n/api/v2/translation/products/{productName}/versions/1.0.0/locales/ja/components/AngularJS/keys",
+    "method": "POST",
+    "headers": {
+      "content-type": "application/json"
+    },
+    "params": {
+      "collectSource": "false"
+    },
+    "body": [
+      {
+        "commentForSource": "string",
+        "key": "string",
+        "source": "string",
+        "sourceFormat": "string"
+      }
+    ],
+    "validators": {
+      "return_code": 200,
+      "average_response_time": 50,
+      "response_time_threshold": 100,
+      "response_content": {}
+    }
+  },
+  {
+    "name": "GET:/i18n/api/v2/translation/products/{productName}/versions/{version}/locales/{locale}/components/{component}/keys/{key}",
+    "description": "translation-product-component-key-api",
+    "url": "/i18n/api/v2/translation/products/{productName}/versions/1.0.0/locales/ja/components/AngularJS/keys/key.star-laugh.title",
+    "method": "GET",
+    "headers": {
+      "content-type": "application/json"
+    },
+    "params": {},
+    "body": {},
+    "validators": {
+      "return_code": 200,
+      "average_response_time": 80,
+      "response_time_threshold": 100,
+      "response_content": {}
+    }
+  },
+  {
+    "name": "POST:/i18n/api/v2/translation/products/{productName}/versions/{version}/locales/{locale}/components/{component}/keys/{key}",
+    "description": "translation-product-component-key-api",
+    "url": "/i18n/api/v2/translation/products/{productName}/versions/1.0.0/locales/latest/components/AngularJS/keys/key.star-laugh.message",
+    "method": "POST",
+    "headers": {
+      "content-type": "application/json"
+    },
+    "params": {
+      "machineTranslation": "false",
+      "pseudo": "false"
+    },
+    "body": {},
+    "validators": {
+      "return_code": 200,
+      "average_response_time": 80,
+      "response_time_threshold": 100,
+      "response_content": {}
+    }
+  },
+  {
+    "name": "POST:/i18n/api/v2/translation/products/{productName}/versions/{version}/locales/{locale}/components/{component}",
+    "description": "translation-source-api",
+    "url": "/i18n/api/v2/translation/products/{productName}/versions/1.0.0/locales/ja/components/AngularJS",
+    "method": "POST",
+    "headers": {
+      "content-type": "application/json"
+    },
+    "params": {},
+    "body": {},
+    "validators": {
+      "return_code": 200,
+      "average_response_time": 80,
+      "response_time_threshold": 100,
+      "response_content": {}
+    }
+  },
+  {
+    "name": "PUT:/i18n/api/v2/translation/products/{productName}/versions/{version}",
+    "description": "translation-sync-api",
+    "url": "/i18n/api/v2/translation/products/{productName}/versions/1.0.0",
+    "method": "PUT",
+    "headers": {
+      "content-type": "application/json"
+    },
+    "params": {},
+    "body": {
+      "data": {
+        "creation": {
+          "operationid": "string"
+        },
+        "dataOrigin": "string",
+        "machineTranslation": true,
+        "productName": "VMCUI",
+        "pseudo": true,
+        "translation": [
+          {
+            "component": "ui",
+            "locale": "zh-Hans-CN",
+            "messages": {
+              "additionalProp1": "string",
+              "additionalProp2": "string",
+              "additionalProp3": "string"
+            }
+          },
+          {
+            "component": "ui",
+            "locale": "en",
+            "messages": {
+              "sample.apple": "apple",
+              "sample.banana": "banana",
+              "sample.cat": "cat",
+              "sample.dog": "dog",
+              "sample.egg": "egg",
+              "sample.fly": "fly",
+              "sample.giant": "giant"
+            }
+          },
+          {
+            "component": "ui",
+            "locale": "es",
+            "messages": {
+              "sample.apple": "manzana",
+              "sample.banana": "plátano",
+              "sample.cat": "gato",
+              "sample.dog": "perro",
+              "sample.egg": "huevo",
+              "sample.fly": "volar",
+              "sample.giant": "gigante"
+            }
+          },
+          {
+            "component": "ui",
+            "locale": "ja",
+            "messages": {
+              "sample.apple": "林檎",
+              "sample.banana": "バナナ",
+              "sample.cat": "ネコ",
+              "sample.dog": "犬",
+              "sample.egg": "卵",
+              "sample.fly": "飛ぶ",
+              "sample.giant": "巨人"
+            }
+          },
+          {
+            "component": "ui",
+            "locale": "latest",
+            "messages": {
+              "sample.apple": "apple",
+              "sample.banana": "banana",
+              "sample.cat": "cat",
+              "sample.dog": "dog",
+              "sample.egg": "egg",
+              "sample.fly": "fly",
+              "sample.giant": "giant"
+            }
+          }
+        ],
+        "version": "1.0.0"
+      },
+      "requester": "string"
+    },
+    "validators": {
+      "return_code": 200,
+      "average_response_time": 50,
+      "response_time_threshold": 100,
+      "response_content": {}
+    }
+  },
+  {
+    "name": "GET:/i18n/api/v2/combination/translationsAndPattern",
+    "description": "translation-with-pattern-api",
+    "url": "/i18n/api/v2/combination/translationsAndPattern",
+    "method": "GET",
+    "headers": {
+      "content-type": "application/json"
+    },
+    "params": {
+      "combine": 2,
+      "components": "AngularJS",
+      "language": "ja-JP",
+      "productName": "VMCUI",
+      "scope": "dates",
+      "version": "1.0.0",
+      "scopeFilter": "dates_dayPeriodsFormat"
+    },
+    "body": {},
+    "validators": {
+      "return_code": 200,
+      "average_response_time": 50,
+      "response_time_threshold": 80,
+      "response_content": {}
+    }
+  }
+]
