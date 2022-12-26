@@ -42,7 +42,7 @@ public class TranslationSyncAPI extends TranslationSyncAction {
 	 * <p>
 	 * Apply to On-Premise and SaaS.
 	 *
-	 * @param translationData
+	 * @param updateTranslationDTO
 	 *            This Java Bean represents request content from GRM or other
 	 *            third party. Base on product.
 	 * @param productName
@@ -58,13 +58,17 @@ public class TranslationSyncAPI extends TranslationSyncAction {
 	@RequestMapping(value = APIV2.PRODUCT_TRANSLATION_PUT, method = RequestMethod.PUT, produces = { API.API_CHARSET })
 	@ResponseStatus(HttpStatus.OK)
 	public APIResponseDTO updateTranslation(
-			@RequestBody UpdateTranslationDTO translationData,
+			@RequestBody UpdateTranslationDTO updateTranslationDTO,
 			@PathVariable(APIParamName.PRODUCT_NAME) String productName,
 			@PathVariable(APIParamName.VERSION) String version,
 			HttpServletRequest request) throws Exception {
+
+		UpdateTranslationDTO translationData;
 		if (cspAuthFlag.equalsIgnoreCase("true")) {
 			translationData = (UpdateTranslationDTO) request.getAttribute(ConstantsKeys.UPDATEDTO);
 			request.removeAttribute(ConstantsKeys.UPDATEDTO);
+		}else{
+			translationData = updateTranslationDTO;
 		}
 		return super.updateTranslation(translationData, productName, version, request);
 	}
