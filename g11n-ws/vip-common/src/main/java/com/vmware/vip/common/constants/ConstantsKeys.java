@@ -107,4 +107,5 @@ public class ConstantsKeys {
 
    public final static Set<String> SOURCE_FORMAT_LIST = new HashSet<String>(Arrays.asList("STRING", "SVG", "MD", "HTML"));
    public static final String CSP_AUTH_TOKEN = "csp-auth-token";
+
 }

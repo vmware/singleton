@@ -4,18 +4,11 @@
  */
 package com.vmware.vip.core.auth.interceptor;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
-import java.nio.charset.StandardCharsets;
-import java.time.LocalDateTime;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.vmware.vip.common.constants.ConstantsKeys;
 import com.vmware.vip.common.i18n.dto.UpdateTranslationDTO;
+import com.vmware.vip.common.i18n.status.Response;
+import com.vmware.vip.core.csp.service.TokenService;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,15 +16,18 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-import com.vmware.vip.common.constants.ConstantsKeys;
-import com.vmware.vip.common.i18n.status.Response;
-import com.vmware.vip.core.csp.service.TokenService;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.time.LocalDateTime;
 
 public class AuthInterceptor extends HandlerInterceptorAdapter {
 
 	private static Logger logger = LoggerFactory.getLogger(AuthInterceptor.class);
 	private String allowSourceCollection;
 	private final TokenService tokenService;
+	private static final String CSP_AUTH_TOKEN = "csp-auth-token";
 	private ObjectMapper objectMapper = new ObjectMapper();
 	public AuthInterceptor(String allowSourceCollection, TokenService tokenService) {
 		this.allowSourceCollection = allowSourceCollection;
