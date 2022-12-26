@@ -64,6 +64,7 @@ public class TranslationSyncAPI extends TranslationSyncAction {
 			HttpServletRequest request) throws Exception {
 		if (cspAuthFlag.equalsIgnoreCase("true")) {
 			translationData = (UpdateTranslationDTO) request.getAttribute(ConstantsKeys.UPDATEDTO);
+			request.removeAttribute(ConstantsKeys.UPDATEDTO);
 		}
 		return super.updateTranslation(translationData, productName, version, request);
 	}
