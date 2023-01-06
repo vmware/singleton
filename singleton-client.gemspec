@@ -14,17 +14,17 @@ Gem::Specification.new do |s|
   require 'rake'
   s.files         = FileList['lib/**/*.rb', 'bin/*'].to_a
   s.executables   = s.files.grep(%r{^bin/}).map { |f| File.basename(f) }
-  s.test_files    = s.files.grep(%r{^(test|spec|features)/})
   s.require_paths = ['lib']
 
-  s.add_dependency('concurrent-ruby')
-  s.add_dependency('faraday', '~> 1.10')
-  s.add_dependency('faraday_middleware', '~> 1.2')
+  s.add_dependency('concurrent-ruby', '~> 1.1.10')
+  s.add_dependency('faraday', '~> 1.0.1')
+  s.add_dependency('faraday_middleware', '~> 1.2.0')
   s.add_dependency('i18n')
   s.add_dependency('logging')
-  s.add_dependency('multi_json', '~> 1.0') # TODO
-  s.add_dependency('request_store', '~> 1.0')
-  s.add_dependency('twitter_cldr', '~> 6.6')
+  s.add_dependency('multi_json') # TODO
+  s.add_dependency('request_store')
+  s.add_dependency('twitter_cldr')
 
-  s.required_ruby_version = '>= 2.0.0'
+  s.required_ruby_version = '>= 2.3.0'
+  s.metadata['rubygems_mfa_required'] = 'true'
 end
