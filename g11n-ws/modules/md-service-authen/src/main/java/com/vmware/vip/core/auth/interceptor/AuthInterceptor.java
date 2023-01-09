@@ -10,6 +10,7 @@ import java.time.LocalDateTime;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.vmware.vip.core.csp.service.CSPTokenService;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,12 +26,12 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 
 	private static Logger logger = LoggerFactory.getLogger(AuthInterceptor.class);
 	private String allowSourceCollection;
-	private final TokenService tokenService;
+	private final CSPTokenService cspTokenService;
 	private static final String CSP_AUTH_TOKEN = "csp-auth-token";
 
-	public AuthInterceptor(String allowSourceCollection, TokenService tokenService) {
+	public AuthInterceptor(String allowSourceCollection, CSPTokenService cspTokenService) {
 		this.allowSourceCollection = allowSourceCollection;
-		this.tokenService = tokenService;
+		this.cspTokenService = cspTokenService;
 	}
 
 	@Override
@@ -46,7 +47,7 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 					response.getWriter().write(this.buildRespBody(HttpStatus.UNAUTHORIZED.value(), ConstantsKeys.TOKEN_VALIDATION_ERROR));
 					return false;
 				}
-				if (!tokenService.isTokenValid(token)) {
+				if (!cspTokenService.isTokenValid(token)) {
 					// The user is not authenticated.
 					response.setStatus(HttpStatus.FORBIDDEN.value());
 					response.getWriter().write(this.buildRespBody(HttpStatus.FORBIDDEN.value(), ConstantsKeys.TOKEN_INVALIDATION_ERROR));

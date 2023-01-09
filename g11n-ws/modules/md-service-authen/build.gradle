@@ -36,6 +36,7 @@ dependencies {
 	      exclude group: "org.apache.httpcomponents.core5"
 	}
 	compileOnly("io.jsonwebtoken:jjwt:$jjwtVersion")
+    implementation("com.nimbusds:nimbus-jose-jwt:9.27")
 }
 
 bootJar {

@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.vmware.vip.core.csp.service.CSPTokenService;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -37,7 +38,6 @@ import com.vmware.vip.core.Interceptor.APISourceInterceptor;
 import com.vmware.vip.core.Interceptor.APIValidationInterceptor;
 import com.vmware.vip.core.auth.interceptor.AuthInterceptor;
 import com.vmware.vip.core.auth.interceptor.VipAPIAuthInterceptor;
-import com.vmware.vip.core.csp.service.TokenService;
 import com.vmware.vip.core.login.VipAuthConfig;
 import com.vmware.vip.core.messages.service.product.IProductService;
 
@@ -94,7 +94,7 @@ public class WebConfiguration implements WebMvcConfigurer {
 	private Integer sourceReqBodySize; 
 
 	@Autowired
-	private TokenService tokenService;
+	private CSPTokenService cspTokenService;
 
 	@Autowired
 	private VipAPIAuthInterceptor apiAuthInter;
@@ -150,7 +150,7 @@ public class WebConfiguration implements WebMvcConfigurer {
 		// CSP authentication
 		if (cspAuthFlag.equalsIgnoreCase("true")) {
 			logger.info("add enable CSP authentication interceptor");
-			registry.addInterceptor(new AuthInterceptor(sourceCacheFlag, tokenService))
+			registry.addInterceptor(new AuthInterceptor(sourceCacheFlag, cspTokenService))
 					.addPathPatterns(API.I18N_API_ROOT + APIV2.V + "/**");
 		}
 		// Source collection
