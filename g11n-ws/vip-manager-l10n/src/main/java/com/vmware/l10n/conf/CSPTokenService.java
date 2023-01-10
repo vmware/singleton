@@ -83,15 +83,12 @@ public class CSPTokenService {
     }
 
     private Claim validate(String token) throws ParseException, BadJOSEException, JOSEException {
-        // token can be null at the begin of login
         if (token == null) return null;
 
-        // Parse token header
         SignedJWT signedJWT = SignedJWT.parse(token);
         String tokenKid = signedJWT.getHeader().getKeyID();
 
         JWK matchKey = null;
-        // check kid already exists in memory.
         for (JWK key : jwksInMem.getKeys()) {
             if (key.getKeyID().equals(tokenKid)) {
                 matchKey = key;
@@ -99,38 +96,22 @@ public class CSPTokenService {
             }
         }
 
-        // refresh jwks into memory, only when key is not found in memory (i.e possibly key is rotated)//
         if ((matchKey == null) && !allowRefreshJwkset(cspTokenConfig.getRefreshIntervalSec())) {
-            LOGGER.info(
-                    "Trying to hit public key endpoint within {} sec, possibly a DoS (Denial of Service) attack",
+            LOGGER.info("Trying to hit public key endpoint within {} sec, possibly a DoS (Denial of Service) attack",
                     cspTokenConfig.getRefreshIntervalSec());
         }
 
-        if (matchKey == null)
-            return null;
-
+        if (matchKey == null) return null;
         JWSAlgorithm alg = getKeyAlg(matchKey);
+        ResourceRetriever resourceRetriever = new DefaultResourceRetriever(2000, 2000);
 
-        //Default timeout was 250 ms, hence custom timeout for n/w slow.
-        ResourceRetriever resourceRetriever =
-                new DefaultResourceRetriever(2000, 2000);
-
-        // Set up a JWT processor to parse
         ConfigurableJWTProcessor jwtProcessor = new DefaultJWTProcessor();
-
         JWKSource keySource = new RemoteJWKSet(url, resourceRetriever);
-
-        // Configure the key selector to feed matching public RSA key sourced from the JWK set URL
         JWSKeySelector keySelector = new JWSVerificationKeySelector(alg, keySource);
         jwtProcessor.setJWSKeySelector(keySelector);
 
-        // optional context parameter, not required here
         SecurityContext ctx = null;
-
-        // Process the token, throw Exception if expired or can't not parse
         JWTClaimsSet claimSet = jwtProcessor.process(token, ctx);
-
-        // issuer check
         jwtProcessor.setJWTClaimsSetVerifier(new DefaultJWTClaimsVerifier() {
             @Override
             public void verify(JWTClaimsSet claimsSet, SecurityContext c) throws BadJWTException {
@@ -140,7 +121,6 @@ public class CSPTokenService {
                 }
             }
         });
-
         jwtProcessor.getJWTClaimsSetVerifier().verify(claimSet, ctx);
 
         Claim claim = new Claim();
@@ -166,7 +146,6 @@ public class CSPTokenService {
     private synchronized void callCspJwksEndpoint()
     {
         try {
-            //set white listed CSP public key endpoint url
             url = new URL(cspTokenConfig.getJwksUri());
             jwksInMem = JWKSet.load(url);
             keyRotateEndpointLastAccess = Instant.now();
@@ -181,7 +160,6 @@ public class CSPTokenService {
 
     private synchronized boolean allowRefreshJwkset(int elapsed) {
         if (Instant.now().compareTo(keyRotateEndpointLastAccess.plusSeconds(elapsed)) > 0) {
-            // allow endpoint access, only after grace period elapsed
             callCspJwksEndpoint();
             return true;
         }
