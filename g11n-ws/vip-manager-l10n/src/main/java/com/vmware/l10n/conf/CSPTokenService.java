@@ -46,7 +46,6 @@ public class CSPTokenService {
     @Autowired
     private CSPTokenConfig cspTokenConfig;
 
-
     /**
      * @param token to validate
      * @return true if token is valid and not expired, o.w. return false
@@ -139,8 +138,9 @@ public class CSPTokenService {
     private JWSAlgorithm getKeyAlg(JWK key) throws BadJOSEException {
         if (key.getKeyType().toString().equals("RSA")) {
             return JWSAlgorithm.RS256;
+        } else {
+            throw new BadJOSEException("Unsupported algorithm by CSP");
         }
-        else throw new BadJOSEException("Unsupported algorithm by CSP");
     }
 
     private synchronized void callCspJwksEndpoint()
