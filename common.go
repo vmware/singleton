@@ -74,7 +74,6 @@ type dataItem struct {
 //!+ messageOrigin
 type messageOrigin interface {
 	Get(item *dataItem) error
-	// Set(item *dataItem)
 	IsExpired(item *dataItem) bool
 }
 

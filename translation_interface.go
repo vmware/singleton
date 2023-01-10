@@ -19,6 +19,6 @@ type Translation interface {
 	// GetComponentMessages Get component messages
 	GetComponentMessages(name, version, locale, component string) (ComponentMsgs, error)
 
-	// GetComponentsMessages Get messages of multiple component
+	// GetComponentsMessages Get messages of multiple components
 	GetComponentsMessages(name, version string, locales, components []string) ([]ComponentMsgs, error)
 }

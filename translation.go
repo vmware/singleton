@@ -101,7 +101,7 @@ func (t *transInst) GetComponentsMessages(name, version string, locales, compone
 				if bundleMsgs, bundleErr := t.GetComponentMessages(name, version, locale, component); bundleErr == nil {
 					msgs = append(msgs, bundleMsgs)
 				} else { // log a warning message if translation is unavailable.
-					logger.Warn(fmt.Sprintf("translation for locale '%s' and component '%s' not found", locale, component))
+					logger.Warn(fmt.Sprintf("fail to get translation for locale '%s' and component '%s'", locale, component))
 				}
 			}(locale, component)
 		}
