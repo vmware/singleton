@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.l10n.source.controller;
@@ -8,6 +8,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.vmware.vip.common.utils.SourceFormatUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -89,7 +90,6 @@ public class TranslationCollectKeyAPI {
 	 * @param locale
 	 * @param sourceFormat
 	 * @param collectSource
-	 * @param pseudo
 	 * @param request
 	 * @return
 	 * @throws L10nAPIException
@@ -177,6 +177,15 @@ public class TranslationCollectKeyAPI {
 			throws L10nAPIException {
 	
 		String newSource = source == null ? "" : source;
+
+		if (!StringUtils.isEmpty(sourceFormat)){
+			sourceFormat = sourceFormat.toUpperCase();
+			if (SourceFormatUtils.isBase64Encode(sourceFormat)){
+				newSource = SourceFormatUtils.decodeSourceBase64Str(newSource);
+				sourceFormat = SourceFormatUtils.formatSourceFormatStr(sourceFormat);
+			}
+		}
+
 		StringSourceDTO sourceObj = SourceUtils.createSourceDTO(productName, version, component, locale, key,
 				newSource, commentForSource, sourceFormat);
 		logger.info("The parameters are: productName={}, version={}, component={}, locale={}, key={}, source={}", productName, version, component, locale, key, newSource);
@@ -205,8 +214,13 @@ public class TranslationCollectKeyAPI {
 			String newLocale = locale == null ? ConstantsUnicode.EN : locale;
 			String newKey = sto.getKey();
 			String newSource =sto.getSource();
-			String sf = sto.getSourceFormat();
-			if (!StringUtils.isEmpty(sf) && !ConstantsKeys.SOURCE_FORMAT_LIST.contains(sf.toUpperCase())) {
+			String sf = sto.getSourceFormat().toUpperCase();
+			if (!StringUtils.isEmpty(sf) && SourceFormatUtils.isBase64Encode(sf)){
+				newSource = SourceFormatUtils.decodeSourceBase64Str(newSource);
+				sf = SourceFormatUtils.formatSourceFormatStr(sf);
+			}
+
+			if (!StringUtils.isEmpty(sf) && !ConstantsKeys.SOURCE_FORMAT_LIST.contains(sf)) {
 				throw new ValidationException(String.format(ValidationMsg.SOURCEFORMAT_NOT_VALIDE_FORMAT, newKey));
 			}
 			
