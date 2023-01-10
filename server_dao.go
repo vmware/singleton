@@ -51,7 +51,7 @@ func (s *serverDAO) Get(item *dataItem) (err error) {
 
 	switch item.id.iType {
 	case itemComponent:
-		data = new(queryProduct)
+		data = new(queryBundle)
 	case itemLocales:
 		data = new(queryLocales)
 	case itemComponents:
@@ -74,11 +74,8 @@ func (s *serverDAO) Get(item *dataItem) (err error) {
 
 	switch item.id.iType {
 	case itemComponent:
-		pData := data.(*queryProduct)
-		if len(pData.Bundles) != 1 || pData.Bundles[0].Messages == nil {
-			return errors.New(wrongServerData)
-		}
-		item.data = &defaultComponentMsgs{messages: pData.Bundles[0].Messages, locale: item.id.Locale, component: item.id.Component}
+		bData := data.(*queryBundle)
+		item.data = &defaultComponentMsgs{messages: bData.Messages, locale: item.id.Locale, component: item.id.Component}
 	case itemLocales:
 		localesData := data.(*queryLocales)
 		if localesData.Locales == nil {
@@ -104,6 +101,7 @@ func (s *serverDAO) IsExpired(item *dataItem) bool {
 }
 
 func (s *serverDAO) prepareURL(item *dataItem) string {
+	urlToQuery := *s.svrURL
 	var myURL string
 
 	switch item.id.iType {
@@ -115,7 +113,8 @@ func (s *serverDAO) prepareURL(item *dataItem) string {
 		myURL = fmt.Sprintf(productComponentListGetConst, item.id.Name, item.id.Version)
 	}
 
-	return path.Join(s.svrURL.Path, myURL)
+	urlToQuery.Path = path.Join(urlToQuery.Path, myURL)
+	return urlToQuery.String()
 }
 
 func (s *serverDAO) sendRequest(u string, header map[string]string, data interface{}) (*http.Response, error) {
@@ -204,7 +203,7 @@ var getDataFromServer = func(u string, header map[string]string, data interface{
 
 	bodyObj.Data.ToVal(data)
 
-	//logger.Debug(fmt.Sprintf("decoded data is: %#v", data))
+	// logger.Debug(fmt.Sprintf("decoded data is: %#v", data))
 
 	return resp, nil
 }
@@ -221,19 +220,12 @@ func isBusinessSuccess(code int) bool {
 
 //!+ REST API Response structures
 type (
-	queryProduct struct {
-		Name       string   `json:"productName"`
-		Version    string   `json:"version"`
-		Locales    []string `json:"locales"`
-		Components []string `json:"components"`
-		Bundles    []struct {
-			Component string            `json:"component"`
-			Messages  map[string]string `json:"messages"`
-			Locale    string            `json:"locale"`
-		} `json:"bundles"`
-		URL    string `json:"url"`
-		Status string `json:"status"`
-		ID     int    `json:"id"`
+	queryBundle struct {
+		Name      string            `json:"productName"`
+		Version   string            `json:"version"`
+		Locale    string            `json:"locale"`
+		Component string            `json:"component"`
+		Messages  map[string]string `json:"messages"`
 	}
 
 	queryComponents struct {
