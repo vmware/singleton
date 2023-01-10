@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.core.auth.interceptor;
@@ -20,7 +20,6 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import com.vmware.vip.common.constants.ConstantsKeys;
 import com.vmware.vip.common.i18n.status.Response;
-import com.vmware.vip.core.csp.service.TokenService;
 
 public class AuthInterceptor extends HandlerInterceptorAdapter {
 
