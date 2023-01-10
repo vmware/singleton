@@ -16,6 +16,10 @@ import (
 type ComponentMsgs interface {
 	// Get Get a message by key
 	Get(key string) (value string, found bool)
+
+	Component() string
+
+	Locale() string
 }
 
 // Logger The logger interface
@@ -70,6 +74,7 @@ type dataItem struct {
 //!+ messageOrigin
 type messageOrigin interface {
 	Get(item *dataItem) error
+	// Set(item *dataItem)
 	IsExpired(item *dataItem) bool
 }
 

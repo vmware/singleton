@@ -78,7 +78,7 @@ func (s *serverDAO) Get(item *dataItem) (err error) {
 		if len(pData.Bundles) != 1 || pData.Bundles[0].Messages == nil {
 			return errors.New(wrongServerData)
 		}
-		item.data = &defaultComponentMsgs{messages: pData.Bundles[0].Messages}
+		item.data = &defaultComponentMsgs{messages: pData.Bundles[0].Messages, locale: item.id.Locale, component: item.id.Component}
 	case itemLocales:
 		localesData := data.(*queryLocales)
 		if localesData.Locales == nil {
