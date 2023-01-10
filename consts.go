@@ -8,20 +8,13 @@ package sgtn
 // api url
 const (
 	apiRoot        = "/i18n/api/v2/translation"
-	aipProductRoot = apiRoot + "/products/{" + productNameConst + "}/versions/{" + versionConst + "}"
+	aipProductRoot = apiRoot + "/products/%s/versions/%s"
 
 	// product-based
 	productTranslationGetConst   = aipProductRoot
 	productLocaleListGetConst    = aipProductRoot + "/localelist"
 	productComponentListGetConst = aipProductRoot + "/componentlist"
-)
-
-// api param name
-const (
-	productNameConst = "productname"
-	versionConst     = "version"
-	componentsConst  = "components"
-	localesConst     = "locales"
+	bundleGetConst               = aipProductRoot + "/locales/%s/components/%s"
 )
 
 const (

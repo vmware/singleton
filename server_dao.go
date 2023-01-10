@@ -6,11 +6,11 @@
 package sgtn
 
 import (
+	"fmt"
 	"net"
 	"net/http"
 	"net/url"
 	"path"
-	"strings"
 	"sync/atomic"
 	"time"
 
@@ -103,32 +103,22 @@ func (s *serverDAO) IsExpired(item *dataItem) bool {
 	return info.isExpired()
 }
 
-func (s *serverDAO) prepareURL(item *dataItem) *url.URL {
-	urlToQuery := *s.svrURL
+func (s *serverDAO) prepareURL(item *dataItem) string {
 	var myURL string
-
-	id := item.id
-	name, version, locale, component := id.Name, id.Version, id.Locale, id.Component
 
 	switch item.id.iType {
 	case itemComponent:
-		myURL = productTranslationGetConst
-		addURLParams(&urlToQuery, map[string]string{localesConst: locale, componentsConst: component})
+		myURL = fmt.Sprintf(bundleGetConst, item.id.Name, item.id.Version, item.id.Locale, item.id.Component)
 	case itemLocales:
-		myURL = productLocaleListGetConst
+		myURL = fmt.Sprintf(productLocaleListGetConst, item.id.Name, item.id.Version)
 	case itemComponents:
-		myURL = productComponentListGetConst
+		myURL = fmt.Sprintf(productComponentListGetConst, item.id.Name, item.id.Version)
 	}
 
-	myURL = strings.Replace(myURL, "{"+productNameConst+"}", name, 1)
-	myURL = strings.Replace(myURL, "{"+versionConst+"}", version, 1)
-
-	urlToQuery.Path = path.Join(urlToQuery.Path, myURL)
-
-	return &urlToQuery
+	return path.Join(s.svrURL.Path, myURL)
 }
 
-func (s *serverDAO) sendRequest(u *url.URL, header map[string]string, data interface{}) (*http.Response, error) {
+func (s *serverDAO) sendRequest(u string, header map[string]string, data interface{}) (*http.Response, error) {
 	if atomic.LoadUint32(&s.status) == serverTimeout {
 		if time.Now().Unix()-atomic.LoadInt64(&s.lastErrorMoment) < serverRetryInterval {
 			return nil, errors.New("Server times out")
@@ -175,15 +165,8 @@ func (s *serverDAO) getHTTPHeaders() (newHeaders map[string]string) {
 //!- serverDAO
 
 //!+ common functions
-func addURLParams(u *url.URL, args map[string]string) {
-	values := u.Query()
-	for k, v := range args {
-		values.Add(k, v)
-	}
-	u.RawQuery = values.Encode()
-}
 
-var getDataFromServer = func(u *url.URL, header map[string]string, data interface{}) (*http.Response, error) {
+var getDataFromServer = func(u string, header map[string]string, data interface{}) (*http.Response, error) {
 	type respResult struct {
 		Code       int    `json:"code"`
 		Message    string `json:"message"`
@@ -196,7 +179,7 @@ var getDataFromServer = func(u *url.URL, header map[string]string, data interfac
 	}{}
 
 	var bodyBytes []byte
-	resp, err := httpget(u.String(), header, &bodyBytes)
+	resp, err := httpget(u, header, &bodyBytes)
 	if err != nil {
 		return resp, err
 	}
