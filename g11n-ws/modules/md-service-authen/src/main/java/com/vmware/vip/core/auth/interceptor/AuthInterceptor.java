@@ -4,11 +4,14 @@
  */
 package com.vmware.vip.core.auth.interceptor;
 
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDateTime;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.vmware.vip.common.i18n.dto.UpdateTranslationDTO;
 import com.vmware.vip.core.csp.service.CSPTokenService;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -27,6 +30,7 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 	private String allowSourceCollection;
 	private final CSPTokenService cspTokenService;
 	private static final String CSP_AUTH_TOKEN = "csp-auth-token";
+	private ObjectMapper objectMapper = new ObjectMapper();
 
 	public AuthInterceptor(String allowSourceCollection, CSPTokenService cspTokenService) {
 		this.allowSourceCollection = allowSourceCollection;
@@ -77,7 +81,7 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 			response.getWriter().write(this.buildRespBody(HttpStatus.UNAUTHORIZED.value(), ConstantsKeys.TOKEN_VALIDATION_ERROR));
 			return false;
 		}
-		if (!tokenService.isTokenValid(token)) {
+		if (!cspTokenService.isTokenValid(token)) {
 			// The user is not authenticated.
 			response.setStatus(HttpStatus.FORBIDDEN.value());
 			response.getWriter().write(this.buildRespBody(HttpStatus.FORBIDDEN.value(), ConstantsKeys.TOKEN_INVALIDATION_ERROR));
