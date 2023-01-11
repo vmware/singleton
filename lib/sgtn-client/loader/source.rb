@@ -39,7 +39,7 @@ module SgtnClient
 
         @available_bundles ||= begin
           @source_bundle_path.children.select(&:directory?).reduce(Set.new) do |bundles, component|
-            Pathname.glob('**/*.{yml, yaml}', base: component) do |_|
+            Pathname.glob(component + '**/*.{yml, yaml}') do |_|
               bundles << Common::BundleID.new(component.basename.to_s, LocaleUtil.get_source_locale)
               break bundles
             end || bundles
