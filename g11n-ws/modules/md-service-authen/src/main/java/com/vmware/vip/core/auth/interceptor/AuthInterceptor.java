@@ -5,7 +5,6 @@
 package com.vmware.vip.core.auth.interceptor;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.time.LocalDateTime;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -51,23 +50,11 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 
 		}
 		if (StringUtils.equalsIgnoreCase(request.getParameter(ConstantsKeys.COLLECT_SOURCE), ConstantsKeys.TRUE)) {
-			PrintWriter writer = response.getWriter();
 			if (allowSourceCollection.equalsIgnoreCase(ConstantsKeys.TRUE)) {
-				final String token = request.getHeader(CSP_AUTH_TOKEN);
-				if(token == null) {
-					response.setStatus(HttpStatus.UNAUTHORIZED.value());
-					response.getWriter().write(this.buildRespBody(HttpStatus.UNAUTHORIZED.value(), ConstantsKeys.TOKEN_VALIDATION_ERROR));
-					return false;
-				}
-				if (!cspTokenService.isTokenValid(token)) {
-					// The user is not authenticated.
-					response.setStatus(HttpStatus.FORBIDDEN.value());
-					response.getWriter().write(this.buildRespBody(HttpStatus.FORBIDDEN.value(), ConstantsKeys.TOKEN_INVALIDATION_ERROR));
-					return false;
-				}
+		        return validateCspToken(request, response);
 			} else {
 				response.setStatus(HttpStatus.FORBIDDEN.value());
-				writer.write(this.buildRespBody(HttpStatus.FORBIDDEN.value(), ConstantsKeys.SOURCE_COLLECTION_ERROR));
+				response.getWriter().write(this.buildRespBody(HttpStatus.FORBIDDEN.value(), ConstantsKeys.SOURCE_COLLECTION_ERROR));
 				return false;
 			}
 		}
