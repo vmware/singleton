@@ -45,16 +45,12 @@ public class ProductDao implements IProductDao {
 		String bundlePath = basePath + filePath;
 
 		File file = new File(bundlePath);
-		if (file.exists()) {
+		if (file.exists() && file.isDirectory()) {
 			File[] libfiles = file.listFiles();
 			for (File file2 : libfiles) {
 				if(file2.isDirectory()) {
 					componentList.add(file2.getName());
 				}
-			}
-
-			if (componentList.isEmpty()) {
-				throw new BundleException("Component list is empty.");
 			}
 		} else {
 			throw new BundleException("Can't find resource from " + productName + "\\" + version);
@@ -85,9 +81,7 @@ public class ProductDao implements IProductDao {
 		} else {
 			throw new BundleException("The file is not existing: " + bundlePath);
 		}
-		if (supportedLocaleList.isEmpty()) {
-			throw new BundleException("The locae list is empty.");
-		}
+
 		return supportedLocaleList;
 	}
 
