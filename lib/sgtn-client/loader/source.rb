@@ -19,7 +19,7 @@ module SgtnClient
 
         total_messages = {}
 
-        (@source_bundle_path + component).glob('**/*.{yml, yaml}') do |f|
+        Pathname.glob(@source_bundle_path + component + '**/*.{yml, yaml}') do |f|
           bundle = YAML.load(File.read(f))
           messages = bundle&.first&.last # TODO: Warn about inconsistent source locale
           if messages.is_a?(Hash)
