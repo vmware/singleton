@@ -1,5 +1,5 @@
 /*
- * Copyright 2020-2023 VMware, Inc.
+ * Copyright 2020-2022 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 
@@ -8,6 +8,7 @@ package sgtn
 import (
 	"net"
 	"net/http"
+	"net/url"
 	"testing"
 	"time"
 
@@ -22,7 +23,7 @@ func TestGetLocaleCompAbnormal(t *testing.T) {
 	defer func() { getDataFromServer = saved }()
 
 	errMsg := "TestGetLocaleCompAbnormal"
-	getDataFromServer = func(u string, header map[string]string, data interface{}) (*http.Response, error) {
+	getDataFromServer = func(u *url.URL, header map[string]string, data interface{}) (*http.Response, error) {
 		return nil, errors.New(errMsg)
 	}
 

@@ -100,7 +100,7 @@ func (s *serverDAO) IsExpired(item *dataItem) bool {
 	return info.isExpired()
 }
 
-func (s *serverDAO) prepareURL(item *dataItem) string {
+func (s *serverDAO) prepareURL(item *dataItem) *url.URL {
 	urlToQuery := *s.svrURL
 	var myURL string
 
@@ -114,10 +114,11 @@ func (s *serverDAO) prepareURL(item *dataItem) string {
 	}
 
 	urlToQuery.Path = path.Join(urlToQuery.Path, myURL)
-	return urlToQuery.String()
+
+	return &urlToQuery
 }
 
-func (s *serverDAO) sendRequest(u string, header map[string]string, data interface{}) (*http.Response, error) {
+func (s *serverDAO) sendRequest(u *url.URL, header map[string]string, data interface{}) (*http.Response, error) {
 	if atomic.LoadUint32(&s.status) == serverTimeout {
 		if time.Now().Unix()-atomic.LoadInt64(&s.lastErrorMoment) < serverRetryInterval {
 			return nil, errors.New("Server times out")
@@ -165,7 +166,7 @@ func (s *serverDAO) getHTTPHeaders() (newHeaders map[string]string) {
 
 //!+ common functions
 
-var getDataFromServer = func(u string, header map[string]string, data interface{}) (*http.Response, error) {
+var getDataFromServer = func(u *url.URL, header map[string]string, data interface{}) (*http.Response, error) {
 	type respResult struct {
 		Code       int    `json:"code"`
 		Message    string `json:"message"`
@@ -178,7 +179,7 @@ var getDataFromServer = func(u string, header map[string]string, data interface{
 	}{}
 
 	var bodyBytes []byte
-	resp, err := httpget(u, header, &bodyBytes)
+	resp, err := httpget(u.String(), header, &bodyBytes)
 	if err != nil {
 		return resp, err
 	}
@@ -203,7 +204,7 @@ var getDataFromServer = func(u string, header map[string]string, data interface{
 
 	bodyObj.Data.ToVal(data)
 
-	// logger.Debug(fmt.Sprintf("decoded data is: %#v", data))
+	//logger.Debug(fmt.Sprintf("decoded data is: %#v", data))
 
 	return resp, nil
 }
