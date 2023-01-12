@@ -81,13 +81,13 @@ func (t *transInst) GetComponentsMessages(name, version string, locales, compone
 	if len(locales) == 0 {
 		locales, err = t.GetLocaleList(name, version)
 		if err != nil {
-			return
+			return nil, err
 		}
 	}
 	if len(components) == 0 {
 		components, err = t.GetComponentList(name, version)
 		if err != nil {
-			return
+			return nil, err
 		}
 	}
 

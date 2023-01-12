@@ -746,13 +746,13 @@ func TestMultipleComponentsAbnormal(t *testing.T) {
 		errorString string
 	}{
 		{"Abnormal: fail to get locale list",
-			[]string{},
+			[]string{"productLocales_400"},
 			nil, []string{"sunglow"}, 0,
-			`Get "https://SingletonServer:8090/i18n/api/v2/translation/products/SgtnTest/versions/1.0.0/localelist": dial tcp: lookup SingletonServer: no such host`},
+			`Error from server is HTTP code: 400, message: 400 Bad Request, business code: 0, message: `},
 		{"Abnormal: fail to get component list",
-			[]string{},
+			[]string{"productComponents_400"},
 			[]string{"en"}, nil, 0,
-			`Get "https://SingletonServer:8090/i18n/api/v2/translation/products/SgtnTest/versions/1.0.0/componentlist": dial tcp: lookup SingletonServer: no such host`},
+			`Error from server is HTTP code: 400, message: 400 Bad Request, business code: 0, message: `},
 		{"Abnormal: partial translations are available is treated as successful",
 			[]string{
 				"productComponents", "productLocales",
