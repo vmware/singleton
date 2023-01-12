@@ -34,13 +34,20 @@ class Parameters:
     def __init__(self, index: int):
         self.index: int = index
         self.count: int = 0
-        self.bundles: list[str] = ["VMCUI1", "VMCUI2", "VMCUI3", "VMCUI4", "VMCUI5", "VMCUI6", "VMCUI7",
-                                   "VMCUI8", "VMCUI9", "VMCUI10", "VMCUI11", "VMCUI12", "VMCUI13", "VMCUI14", "VMCUI15",
-                                   "VMCUI16", "VMCUI17", "VMCUI18", "VMCUI19", "VMCUI20", "VMCUI21", "VMCUI22",
-                                   "VMCUI23", "VMCUI24", "VMCUI25", "VMCUI26", "VMCUI27", "VMCUI28", "VMCUI29",
-                                   "VMCUI30", "VMCUI31", "VMCUI32", "VMCUI33", "VMCUI34", "VMCUI35", "VMCUI36",
-                                   "VMCUI37", "VMCUI38", "VMCUI39", "VMCUI40", "VMCUI41", "VMCUI42", "VMCUI43",
-                                   "VMCUI44", "VMCUI45", "VMCUI46", "VMCUI47", "VMCUI48", "VMCUI49", "VMCUI50"]
+        self.bundles: list[str] = ["TestBundle1", "TestBundle2", "TestBundle3", "TestBundle4", "TestBundle5",
+                                   "TestBundle6", "TestBundle7",
+                                   "TestBundle8", "TestBundle9", "TestBundle10", "TestBundle11", "TestBundle12",
+                                   "TestBundle13", "TestBundle14", "TestBundle15",
+                                   "TestBundle16", "TestBundle17", "TestBundle18", "TestBundle19", "TestBundle20",
+                                   "TestBundle21", "TestBundle22",
+                                   "TestBundle23", "TestBundle24", "TestBundle25", "TestBundle26", "TestBundle27",
+                                   "TestBundle28", "TestBundle29",
+                                   "TestBundle30", "TestBundle31", "TestBundle32", "TestBundle33", "TestBundle34",
+                                   "TestBundle35", "TestBundle36",
+                                   "TestBundle37", "TestBundle38", "TestBundle39", "TestBundle40", "TestBundle41",
+                                   "TestBundle42", "TestBundle43",
+                                   "TestBundle44", "TestBundle45", "TestBundle46", "TestBundle47", "TestBundle48",
+                                   "TestBundle49", "TestBundle50"]
 
     def get_ele(self) -> str:
         ele: str = self.bundles[(self.count + self.index) % len(self.bundles)]
