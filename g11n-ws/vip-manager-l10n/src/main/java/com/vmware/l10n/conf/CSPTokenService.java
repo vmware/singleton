@@ -115,6 +115,7 @@ public class CSPTokenService {
             @Override
             public void verify(JWTClaimsSet claimsSet, SecurityContext c) throws BadJWTException {
                 final String issuer = claimsSet.getIssuer();
+                LOGGER.info("the remote issuer:{}", issuer);
                 if (!cspTokenConfig.getIssuer().equals(issuer)) {
                     throw new BadJWTException("Invalid token issuer");
                 }
