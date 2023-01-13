@@ -11,6 +11,7 @@ module SgtnClient
         begin
           return super(component, l)
         rescue StandardError => e
+          SgtnClient.logger.debug { (["[#{method(__callee__).owner}.#{__callee__}] {#{component}, #{locale}} #{e.message}"] + e.backtrace).join($/) }
           error = e
         end
       end

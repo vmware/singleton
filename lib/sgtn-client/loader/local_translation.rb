@@ -1,4 +1,4 @@
-# Copyright 2022 VMware, Inc.
+# Copyright 2022-2023 VMware, Inc.
 # SPDX-License-Identifier: EPL-2.0
 
 require 'json'
@@ -33,7 +33,7 @@ module SgtnClient
       def available_bundles
         SgtnClient.logger.debug { "[#{method(__callee__).owner}.#{__callee__}]" }
 
-        @available_bundles = @base_path.glob('*/*.json').reduce(Set.new) do |bundles, f|
+        @available_bundles = Pathname.glob(@base_path + '*/*.json').reduce(Set.new) do |bundles, f|
           locale = f.basename.to_s.sub(/\A#{BUNDLE_PREFIX}/i, '').sub(/#{BUNDLE_SUFFIX}\z/i, '')
           bundles.add Common::BundleID.new(f.parent.basename.to_s, locale)
         end

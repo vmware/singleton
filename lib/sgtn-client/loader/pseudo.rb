@@ -1,4 +1,4 @@
-# Copyright 2022 VMware, Inc.
+# Copyright 2022-2023 VMware, Inc.
 # SPDX-License-Identifier: EPL-2.0
 
 module SgtnClient
@@ -14,7 +14,8 @@ module SgtnClient
 
         SgtnClient.logger.debug { "[#{__FILE__}][#{__callee__}] component=#{component}, locale=#{locale}" }
 
-        super(component, LocaleUtil.get_source_locale).transform_values! { |v| "#{@pseudo_tag}#{v}#{@pseudo_tag}" }
+        data = super(component, LocaleUtil.get_source_locale)
+        data.each { |k, v| data[k] = "#{@pseudo_tag}#{v}#{@pseudo_tag}" }
       end
     end
   end
